@@ -1,8 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit user
+EAPI=7
 
 DESCRIPTION="Web caching proxy suitable for non-permanent Internet connections"
 HOMEPAGE="https://www.gedanken.org.uk/software/wwwoffle/"
@@ -13,27 +12,34 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="gnutls ipv6 zlib"
 
-RDEPEND="gnutls? ( net-libs/gnutls )
-	zlib? ( sys-libs/zlib )"
-DEPEND="dev-lang/perl
+RDEPEND="
+	acct-group/wwwoffle
+	acct-user/wwwoffle
+	gnutls? ( net-libs/gnutls )
+	zlib? ( sys-libs/zlib )
+"
+DEPEND="
+	dev-lang/perl
 	sys-devel/flex
-	${RDEPEND}"
-
+	${RDEPEND}
+"
 # Unsure whether to depend on >=www-misc/htdig-3.1.6-r4 or not
 
+PATCHES=( "${FILESDIR}"/${PN}-2.9i-define.patch )
+
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-2.9i-define.patch
-	sed -i cache/Makefile.in \
-		-e 's#$(TAR) xpf #$(TAR) --no-same-owner -xpf #' \
-		|| die
 	default
+	sed -e 's#$(TAR) xpf #$(TAR) --no-same-owner -xpf #' -i cache/Makefile.in || die
 }
 
 src_configure() {
-	econf \
-		$(use_with gnutls) \
-		$(use_with ipv6) \
+	local myeconfargs=(
+		$(use_with gnutls)
+		$(use_with ipv6)
 		$(use_with zlib)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -57,30 +63,23 @@ src_install() {
 	done
 
 	# empty dirs are removed during update
-	keepdir \
-		/var/spool/wwwoffle/search/{mnogosearch/db,htdig/tmp,htdig/db-lasttime,htdig/db,namazu/db}
+	keepdir /var/spool/wwwoffle/search/{mnogosearch/db,htdig/tmp,htdig/db-lasttime,htdig/db,namazu/db}
 
-	touch \
-		"${D}/var/spool/wwwoffle/search/htdig/wwwoffle-htdig.log" \
-		"${D}/var/spool/wwwoffle/search/mnogosearch/wwwoffle-mnogosearch.log" \
-		"${D}/var/spool/wwwoffle/search/namazu/wwwoffle-namazu.log"
+	touch "${D}/var/spool/wwwoffle/search/htdig/wwwoffle-htdig.log"
+	touch "${D}/var/spool/wwwoffle/search/mnogosearch/wwwoffle-mnogosearch.log"
+	touch "${D}/var/spool/wwwoffle/search/namazu/wwwoffle-namazu.log"
 
 	# TODO htdig indexing as part of initscripts
 
 	# robots.txt modification - /var/spool/wwwoffle/html/en
-	# 		- remove Disallow: /index
-	sed -i -e "s|Disallow:.*/index|#Disallow: /index|" "${D}/var/spool/wwwoffle/html/en/robots.txt"
+	# - remove Disallow: /index
+	sed -e "s|Disallow:.*/index|#Disallow: /index|" -i "${D}/var/spool/wwwoffle/html/en/robots.txt" || die
 }
 
 pkg_preinst() {
-	# Add a wwwoffle user
-	enewgroup wwwoffle
-	enewuser wwwoffle -1 -1 /var/spool/wwwoffle wwwoffle
-
 	# Changing the user:group to wwwoffle:woffle
 	fowners -R wwwoffle:wwwoffle /var/spool/wwwoffle /etc/wwwoffle
-	sed -i -e 's/^[# \t]\(run-[gu]id[ \t]*=[ \t]*\)[a-zA-Z0-9]*[ \t]*$/ \1wwwoffle/g' \
-		"${D}/etc/wwwoffle/wwwoffle.conf"
+	sed -e 's/^[# \t]\(run-[gu]id[ \t]*=[ \t]*\)[a-zA-Z0-9]*[ \t]*$/ \1wwwoffle/g' -i "${D}/etc/wwwoffle/wwwoffle.conf" || die
 
 }
 
@@ -93,10 +92,8 @@ pkg_postinst() {
 		[ ! -d "${ROOT}/var/spool/wwwoffle/prevout${number}" ] && \
 			keepdir "${ROOT}/var/spool/wwwoffle/prevout${number}"
 	done
-	chown -R wwwoffle:wwwoffle "${ROOT}/var/spool/wwwoffle" "${ROOT}/etc/wwwoffle"
 
-	[ -f "${T}/stopped" ] && \
-		ewarn "wwwoffled was stopped. /etc/init.d/wwwoffled start to restart AFTER etc-update"
+	[ -f "${T}/stopped" ] && ewarn "wwwoffled was stopped. /etc/init.d/wwwoffled start to restart AFTER etc-update"
 
 	einfo "wwwoffled should run as an ordinary user now. The run-uid and run-gid should be set"
 	einfo "to \"wwwoffle\" in your /etc/wwwoffle/wwwoffle.conf. Please uncomment this if it hasn't been already"

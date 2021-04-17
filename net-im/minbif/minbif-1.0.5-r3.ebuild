@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils user
+inherit cmake
 
 DESCRIPTION="IRC gateway to IM networks"
 HOMEPAGE="https://symlink.me/projects/minbif/wiki/"
@@ -13,12 +13,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="gnutls +imlib +libcaca pam xinetd"
-REQUIRED_USE="
-	libcaca? ( imlib )
-"
+REQUIRED_USE="libcaca? ( imlib )"
 
 DEPEND="
-	>=net-im/pidgin-2.6
+	acct-group/minbif
+	acct-user/minbif
+	net-im/pidgin
 	gnutls? ( net-libs/gnutls )
 	imlib? ( media-libs/imlib2 )
 	libcaca? (
@@ -27,7 +27,8 @@ DEPEND="
 	)
 	pam? ( sys-libs/pam )
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	virtual/logger
 	xinetd? ( sys-apps/xinetd )
 "
@@ -38,28 +39,20 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.5-rename-imlib-load-error.patch"
 )
 
-pkg_setup() {
-	enewgroup minbif
-	enewuser minbif -1 -1 /var/lib/minbif minbif
-}
-
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
-	sed -i "s/-Werror//g" CMakeLists.txt || die "sed failed"
-
-	sed -i "s#share/doc/minbif#share/doc/${P}#" \
-		CMakeLists.txt || die "sed failed"
+	sed "s/-Werror//g" -i CMakeLists.txt || die
 
 	if use xinetd; then
-		sed -i "s/type\s=\s[0-9]/type = 0/" \
-			minbif.conf || die "sed failed"
+		sed "s/type\s=\s[0-9]/type = 0/" -i minbif.conf || die
 	fi
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DCONF_PREFIX="${EPREFIX}"/etc/minbif
+		-DDOC_PREFIX="${EPREFIX}"/usr/share/doc/"${PF}"
 		-DENABLE_VIDEO=OFF
 		-DENABLE_TLS=$(usex gnutls)
 		-DENABLE_IMLIB=$(usex imlib)
@@ -67,11 +60,11 @@ src_configure() {
 		-DENABLE_PAM=$(usex pam)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	keepdir /var/lib/minbif
 	fperms 700 /var/lib/minbif
 	fowners minbif:minbif /var/lib/minbif
@@ -85,7 +78,6 @@ src_install() {
 
 	newinitd "${FILESDIR}"/minbif.initd minbif
 
-	dodir /usr/share/minbif
 	insinto /usr/share/minbif
 	doins -r scripts
 }

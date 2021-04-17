@@ -1,12 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit flag-o-matic user
+EAPI=7
+
+inherit flag-o-matic
 
 DESCRIPTION="ARIN rwhois daemon"
 HOMEPAGE="http://projects.arin.net/rwhois/"
 SRC_URI="https://github.com/arineng/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,12 +18,10 @@ DEPEND="
 	sys-devel/flex
 	virtual/yacc
 "
-S=${WORKDIR}/${P}/${PN}
-
-pkg_setup() {
-	enewgroup rwhoisd
-	enewuser rwhoisd -1 -1 /var/rwhoisd rwhoisd
-}
+RDEPEND="
+	acct-group/rwhoisd
+	acct-user/rwhoisd
+"
 
 src_compile() {
 	append-cflags -DNEW_STYLE_BIN_SORT

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic toolchain-funcs user
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Yet another small httpd"
 HOMEPAGE="http://www.fefe.de/fnord/"
@@ -14,24 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ppc sparc x86"
 IUSE="auth"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
+	acct-group/nofiles
+	acct-user/fnord
+	acct-user/fnordlog
+	sys-apps/ucspi-tcp
 	virtual/daemontools
-	sys-apps/ucspi-tcp"
+"
 
 DOCS=( TODO README README.auth SPEED CHANGES )
-PATCHES=( "${FILESDIR}/${PN}"-1.10-gentoo.diff )
 
-pkg_setup() {
-	enewgroup nofiles 200
-	enewuser fnord -1 -1 /etc/fnord nofiles
-	enewuser fnordlog -1 -1 /etc/fnord nofiles
-}
+PATCHES=( "${FILESDIR}/${PN}"-1.10-gentoo.diff )
 
 src_compile() {
 	# Fix for bug #45716
 	use sparc && replace-sparc64-flags
-
 	use auth && append-flags -DAUTH
 
 	emake DIET="" CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"

@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools epatch toolchain-funcs user
+inherit autotools toolchain-funcs
 
 DESCRIPTION="HTTP AntiVirus Proxy"
 HOMEPAGE="http://www.server-side.de/"
@@ -15,17 +15,19 @@ KEYWORDS="amd64 x86"
 IUSE="clamav ssl"
 
 DEPEND="clamav? ( >=app-antivirus/clamav-0.98.5 )"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	acct-group/havp
+	acct-user/havp
+"
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /etc/${PN} ${PN}
-}
+PATCHES=(
+	"${FILESDIR}"/havp-0.92a-run.patch
+	"${FILESDIR}"/${P}-pkg-config-libclamav.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-0.92a-run.patch \
-		"${FILESDIR}"/${P}-pkg-config-libclamav.patch
+	default
 
 	sed -i configure.in -e '/^CFLAGS=/d' || die
 	mv configure.{in,ac} || die
@@ -36,26 +38,30 @@ src_prepare() {
 src_configure() {
 	tc-export AR
 	export CFLAGS="${CXXFLAGS}"
-	econf \
-		$(use_enable clamav) \
-		$(use_enable ssl ssl-tunnel) \
+
+	local myeconfargs=(
+		$(use_enable clamav)
+		$(use_enable ssl ssl-tunnel)
 		--localstatedir=/var
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	dosbin ${PN}/${PN}
+	dosbin havp/havp
 
-	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newinitd "${FILESDIR}/havp.initd" havp
 
+	rm -r etc/havp/havp.config.in || die
 	insinto /etc
-	rm -r etc/${PN}/${PN}.config.in
-	doins -r etc/${PN}
+	doins -r etc/havp
 
-	dodoc ChangeLog
+	einstalldocs
 }
 
 pkg_postinst() {
-	ewarn "/var/tmp/${PN} must be on a filesystem with mandatory locks!"
+	ewarn "/var/tmp/havp must be on a filesystem with mandatory locks!"
 	ewarn "You should add  \"mand\" to the mount options on the relevant line in /etc/fstab."
 
 	if use ssl; then
@@ -69,7 +75,7 @@ pkg_postinst() {
 	if use clamav; then
 		echo
 		ewarn "If you plan to use clamav daemon, you should make sure clamav user can read"
-		ewarn "/var/tmp/${PN} content. This can be accomplished by enabling AllowSupplementaryGroups"
-		ewarn "in /etc/clamd.conf and adding clamav user to the ${PN} group."
+		ewarn "/var/tmp/havp content. This can be accomplished by enabling AllowSupplementaryGroups"
+		ewarn "in /etc/clamd.conf and adding clamav user to the havp group."
 	fi
 }

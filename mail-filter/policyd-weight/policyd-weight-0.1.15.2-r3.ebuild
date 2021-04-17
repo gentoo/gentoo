@@ -1,39 +1,37 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit user tmpfiles
+inherit tmpfiles
 
 PATCH_VER="1.0"
 
 DESCRIPTION="Weighted Policy daemon for Postfix"
 HOMEPAGE="http://www.policyd-weight.org/"
-SRC_URI="http://www.policyd-weight.org/releases/${P}.tar.gz
+SRC_URI="
+	http://www.policyd-weight.org/releases/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz
-	https://dev.gentoo.org/~whissi/dist/${PN}/${P}-patches-${PATCH_VER}.tar.xz"
+	https://dev.gentoo.org/~whissi/dist/${PN}/${P}-patches-${PATCH_VER}.tar.xz
+"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND="virtual/perl-File-Spec
-	virtual/perl-Sys-Syslog
+RDEPEND="
+	acct-group/polw
+	acct-user/polw
 	dev-perl/Net-DNS
 	dev-perl/Net-IP
-	>=mail-mta/postfix-2.1"
-
-pkg_setup() {
-	enewgroup 'polw'
-	enewuser 'polw' -1 -1 -1 'polw'
-}
+	mail-mta/postfix
+	virtual/perl-File-Spec
+	virtual/perl-Sys-Syslog
+"
 
 src_prepare() {
-	eapply "${WORKDIR}"/patches/*.patch
-
 	default
+	eapply "${WORKDIR}"/patches/*.patch
 }
 
 src_compile() { :; }
@@ -49,11 +47,11 @@ src_install() {
 	insinto /etc
 	newins policyd-weight.conf.sample policyd-weight.conf
 
-	newinitd "${FILESDIR}/${PN}.init.d-r2" "${PN}"
+	newinitd "${FILESDIR}"/policyd-weight.init.d-r2 policyd-weight
 
-	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
+	newtmpfiles "${FILESDIR}"/policyd-weight.tmpfile policyd-weight.conf
 }
 
 pkg_postinst() {
-	tmpfiles_process "${PN}.conf"
+	tmpfiles_process policyd-weight.conf
 }

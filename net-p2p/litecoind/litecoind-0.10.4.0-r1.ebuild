@@ -1,19 +1,20 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DB_VER="4.8"
 
-inherit autotools db-use epatch flag-o-matic systemd user
+inherit autotools db-use flag-o-matic systemd
 
-MyPV="${PV/_/-}"
-MyPN="litecoin"
-MyP="${MyPN}-${MyPV}"
+MY_PV="${PV/_/-}"
+MY_PN="litecoin"
+MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="The offical daemon to run your own (full) Litecoin node"
 HOMEPAGE="https://litecoin.org/"
-SRC_URI="https://github.com/${MyPN}-project/${MyPN}/archive/v${MyPV}.tar.gz -> ${MyP}.tar.gz"
+SRC_URI="https://github.com/${MY_PN}-project/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT ISC GPL-2"
 SLOT="0"
@@ -21,31 +22,31 @@ KEYWORDS="~amd64 ~x86"
 IUSE="logrotate upnp +wallet"
 
 RDEPEND="
+	acct-group/litecoin
+	acct-user/litecoin
 	dev-libs/boost:=[threads(+)]
+	dev-libs/leveldb:=
 	dev-libs/openssl:0[-bindist]
+	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
 	logrotate? ( app-admin/logrotate )
 	upnp? ( net-libs/miniupnpc )
-	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
-	>=dev-libs/leveldb-1.18-r1:=
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	>=app-shells/bash-4.1
 	sys-apps/sed
 "
 
-S="${WORKDIR}/${MyP}"
-
-pkg_setup() {
-	local UG='litecoin'
-	enewgroup "${UG}"
-	enewuser "${UG}" -1 -1 /var/lib/litecoin "${UG}"
-}
+PATCHES=(
+	"${FILESDIR}"/0.9.0-sys_leveldb.patch
+	"${FILESDIR}"/litecoind-0.10.2.2-memenv_h.patch
+	"${FILESDIR}"/litecoind-0.10.2.2-fix-gnustack.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/0.9.0-sys_leveldb.patch
-	epatch "${FILESDIR}"/litecoind-0.10.2.2-memenv_h.patch
-	epatch "${FILESDIR}"/litecoind-0.10.2.2-fix-gnustack.patch
-	epatch "${FILESDIR}"/${P}-gcc6.patch
+	default
+
 	eautoreconf
 	rm -r src/leveldb
 }
@@ -60,18 +61,22 @@ src_configure() {
 	else
 		my_econf="${my_econf} --without-miniupnpc --disable-upnp-default"
 	fi
-	econf \
-		$(use_enable wallet)\
-		--disable-ccache \
-		--disable-static \
-		--disable-tests \
-		--with-system-leveldb \
-		--with-system-libsecp256k1  \
-		--without-libs \
-		--with-daemon  \
-		--without-gui     \
-		--without-qrencode \
+
+	local myeconfargs=(
+		$(use_enable wallet)
+		--disable-ccache
+		--disable-static
+		--disable-tests
+		--with-system-leveldb
+		--with-system-libsecp256k1
+		--without-libs
+		--with-daemon
+		--without-gui
+		--without-qrencode
 		${my_econf}
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
