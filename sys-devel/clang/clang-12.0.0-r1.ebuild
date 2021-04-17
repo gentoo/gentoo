@@ -77,6 +77,7 @@ llvm.org_set_globals
 # multilib clang* libraries (not runtime, not wrappers).
 
 PATCHES=(
+	"${FILESDIR}"/12.0.0/readd-reporter.patch
 	"${FILESDIR}"/9999/prefix-dirs.patch
 )
 
