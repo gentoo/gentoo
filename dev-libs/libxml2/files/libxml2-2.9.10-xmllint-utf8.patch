@@ -12,12 +12,6 @@ Thanks to @SuhwanSong and the Agency for Defense Development (ADD) for
 the report.
 
 Fixes #178.
----
- xmllint.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/xmllint.c b/xmllint.c
-index f6a8e463..c647486f 100644
 --- a/xmllint.c
 +++ b/xmllint.c
 @@ -528,6 +528,12 @@ static void
@@ -34,5 +28,3 @@ index f6a8e463..c647486f 100644
      if (result) {
  	xmlGenericError(xmlGenericErrorContext, "%s", result);
 -- 
-GitLab
-
