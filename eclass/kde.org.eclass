@@ -52,6 +52,7 @@ declare -A KDE_ORG_CATEGORIES=(
 	[app-office]=office
 	[app-text]=office
 	[dev-libs]=libraries
+	[dev-qt]=qt/qt
 	[dev-util]=sdk
 	[games-board]=games
 	[games-kids]=education
@@ -250,6 +251,10 @@ _kde.org_calculate_live_repo() {
 	# This variable allows easy overriding of default kde mirror service
 	# (anongit) with anything else you might want to use.
 	EGIT_MIRROR=${EGIT_MIRROR:=https://invent.kde.org/${KDE_ORG_CATEGORY}}
+
+	if [[ ${PV} == ?.??.9999 && ${CATEGORY} = dev-qt ]]; then
+		EGIT_BRANCH="kde/$(ver_cut 1-2)"
+	fi
 
 	if [[ ${PV} == ??.??.49.9999 && ${KDE_GEAR} = true ]]; then
 		EGIT_BRANCH="release/$(ver_cut 1-2)"
