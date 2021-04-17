@@ -51,7 +51,10 @@ distutils_use_setuptools_check() {
 		eerror "This could mean the package has bad conditions:"
 		eerror "https://dev.gentoo.org/~mgorny/python-guide/distutils.html#conditional-distutils-setuptools-use-in-packages"
 		eerror "Please report a bug about this and CC python@"
-	elif [[ ${#expected[@]} -gt 0 ]]; then
+	else
+		# if we did not find anything, also assume 'no' is desired,
+		# we do not want the setuptools dep
+		[[ ${#expected[@]} -eq 0 ]] && expected=( no )
 		# *+rdepend=rdepend
 		has rdepend "${expected[@]}" && expected=( rdepend )
 		# for the time being, entry points imply rdepend
