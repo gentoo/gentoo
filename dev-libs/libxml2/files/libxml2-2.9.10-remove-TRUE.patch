@@ -10,11 +10,6 @@ icu-68.1 removed macro definitions for TRUE and FALSE
 
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
- encoding.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/encoding.c b/encoding.c
-index ad4d8a63..ea1fa99e 100644
 --- a/encoding.c
 +++ b/encoding.c
 @@ -1958,7 +1958,7 @@ xmlEncOutputChunk(xmlCharEncodingHandler *handler, unsigned char *out,
@@ -27,5 +22,3 @@ index ad4d8a63..ea1fa99e 100644
  #endif /* LIBXML_ICU_ENABLED */
      else {
 -- 
-2.29.2
-
