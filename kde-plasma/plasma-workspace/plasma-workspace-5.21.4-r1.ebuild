@@ -16,7 +16,7 @@ DESCRIPTION="KDE Plasma workspace"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="appstream +calendar +fontconfig geolocation gps qalculate screencast +semantic-desktop systemd telemetry"
+IUSE="appstream +calendar +fontconfig geolocation gps +qalculate screencast +semantic-desktop systemd telemetry"
 
 REQUIRED_USE="gps? ( geolocation )"
 RESTRICT+=" test"
@@ -198,4 +198,9 @@ pkg_postinst () {
 	elog "To enable gpg-agent and/or ssh-agent in Plasma sessions,"
 	elog "edit ${EPREFIX}/etc/xdg/plasma-workspace/env/10-agent-startup.sh"
 	elog "and ${EPREFIX}/etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh"
+
+	if ! use qalculate; then
+		ewarn "Qalculate is disabled, forcing krunner to use QJSEngine for"
+		ewarn "calculations, which will reduce floating point precision"
+	fi
 }
