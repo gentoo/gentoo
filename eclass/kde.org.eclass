@@ -15,6 +15,13 @@
 # It also contains default meta variables for settings not specific to any
 # particular build system.
 
+case ${EAPI} in
+	7) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_nofetch src_unpack
+
 if [[ -z ${_KDE_ORG_ECLASS} ]]; then
 _KDE_ORG_ECLASS=1
 
@@ -31,8 +38,6 @@ export KDE_BUILD_TYPE
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	inherit git-r3
 fi
-
-EXPORT_FUNCTIONS pkg_nofetch src_unpack
 
 # @ECLASS-VARIABLE: KDE_ORG_CATEGORIES
 # @INTERNAL
