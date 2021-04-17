@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="caps debug kernel_linux python seccomp"
 
 RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
@@ -24,16 +24,14 @@ RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 			dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]
 		')
 	)
-	seccomp? ( sys-libs/libseccomp )
 "
-# >=linux-headers-4.11 to pick linux headers with statx, bug #737094
+# >=linux-headers-5.8 to pick linux headers with faccessat2, bug #768624
 DEPEND="
 	${RDEPEND}
-	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-4.11 ) )
+	kernel_linux? ( !prefix-guest? ( >=sys-kernel/linux-headers-5.8 ) )
 "
 BDEPEND="
 	caps? ( virtual/pkgconfig )
-	seccomp? ( virtual/pkgconfig )
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
