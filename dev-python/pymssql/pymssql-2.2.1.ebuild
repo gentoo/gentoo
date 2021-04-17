@@ -27,4 +27,12 @@ BDEPEND="
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-clock_gettime.patch
+)
+
 distutils_enable_tests pytest
+
+src_configure() {
+	export LINK_FREETDS_STATICALLY=no
+}
