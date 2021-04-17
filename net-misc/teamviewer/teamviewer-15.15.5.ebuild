@@ -64,6 +64,9 @@ src_install() {
 	insinto ${dst}
 	doins -r tv_bin
 
+	# The doc folder is needed in /opt/${MY_PN}, see bug #778617
+	doins -r doc
+
 	# Set permissions for executables and libraries
 	for exe in $(find tv_bin -type f -executable -or -name '*.so'); do
 		fperms 755 ${dst}/${exe}
