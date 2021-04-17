@@ -6,6 +6,17 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
+# Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
+# for good. No commits to upstream repository for >9 months, latest available
+# tarball still "alpha" with warning about known unpatched vulnerabilities.
+# Bugs: #684580, #750893
+app-office/kexi webkit
+dev-libs/kreport webkit
+dev-python/PyQt5 webkit
+media-plugins/mythplugins mythbrowser mythmusic
+net-irc/kvirc webkit
+
 # Sam James <sam@gentoo.org> (2021-07-24)
 # USE=exec-static-trampoline can break consumers due to
 # faulty assumptions. Masked for now due to the possibility
