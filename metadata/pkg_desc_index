@@ -10768,7 +10768,7 @@ dev-util/abootimg 20150323: Manipulate Android boot images.
 dev-util/ald 0.1.7-r2: Assembly Language Debugger
 dev-util/amtterm 1.6: A nice tool to manage amt-enabled machines
 dev-util/android-ndk 11c 11c-r1 13b 14b 16b 18: Open Handset Alliance's Android NDK (Native Dev Kit)
-dev-util/android-sdk-update-manager 24.4.1: Open Handset Alliance's Android SDK
+dev-util/android-sdk-update-manager 24.4.1-r1: Open Handset Alliance's Android SDK
 dev-util/android-studio 4.0.1.0.193.6626763 4.1.0.19.201.6858069 4.1.1.0.201.6953283 4.1.2.0.201.7042882 4.1.3.0.201.7199119: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.34.0: A versatile IDE for GNOME
