@@ -119,7 +119,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local backends="alsa"
+	local backends="alsa,dummy"
 	use jack && backends+=",jack"
 	use pulseaudio && backends+=",pulseaudio"
 
