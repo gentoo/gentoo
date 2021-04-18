@@ -174,7 +174,8 @@ boostrap_rust_version_check() {
 }
 
 pre_build_checks() {
-	local M=6144
+	local M=8192
+	M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
 	M=$(( $(usex clippy 128 0) + ${M} ))
 	M=$(( $(usex miri 128 0) + ${M} ))
 	M=$(( $(usex rls 512 0) + ${M} ))
