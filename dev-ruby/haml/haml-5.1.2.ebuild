@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -16,7 +16,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A ruby web page templating engine"
-HOMEPAGE="http://haml.info/"
+HOMEPAGE="https://haml.info/"
 SRC_URI="https://github.com/haml/haml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
