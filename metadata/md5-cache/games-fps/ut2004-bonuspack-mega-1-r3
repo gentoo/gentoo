@@ -1,10 +1,10 @@
-BDEPEND=app-arch/unzip
 DEFINED_PHASES=install prepare
 DESCRIPTION=UT2004 Megapack - Megapack bonus pack
 EAPI=7
 HOMEPAGE=http://www.unrealtournament2004.com/
 KEYWORDS=~amd64 ~x86
 LICENSE=ut2003
+RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=http://ut2004.ut-files.com/BonusPacks/ut2004megapack-linux.tar.bz2
-_md5_=789dee638f9579a99ac606ec576cb095
+_md5_=b38b8151b46a0bd21aba515a0d253ac2
