@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=NVIDIA X Server Settings
-Comment=Configure NVIDIA X Server Settings
-Exec=/usr/bin/nvidia-settings
-Icon=nvidia-settings
-Categories=System;Settings;

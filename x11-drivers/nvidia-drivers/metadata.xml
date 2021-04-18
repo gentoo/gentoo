@@ -9,11 +9,8 @@
 		<email>soap@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="compat">Install non-GLVND libGL for backwards compatibility</flag>
 		<flag name="driver">Install kernel driver modules</flag>
-		<flag name="kms">Enable support for kernel mode setting (KMS)</flag>
 		<flag name="tools">Install additional tools such as nvidia-settings</flag>
-		<flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:nvidia:gpu_driver</remote-id>
