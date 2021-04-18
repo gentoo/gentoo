@@ -699,7 +699,7 @@ app-admin/abrt 2.14.2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.10.6 2.10.7 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.10.7 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-base 2.10.4 2.10.5 2.10.7 2.10.8: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28 1.30: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0 5.0.2: Checks ansible playbooks for practices and behaviour that can be improved
@@ -10121,7 +10121,7 @@ dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0 2.7.0-r1: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.3.8 1.3.9: A library to read EXIF info from JPEG and TIFF images
-dev-ruby/facter 3.14.16-r1: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.14.16-r1 3.14.17: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.8.1: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.19.2 0.20.1 1.2.1 1.2.2 1.2.3: A fake filesystem. Use it in your tests
 dev-ruby/faker 2.14.0 2.15.1 2.16.0 2.17.0: A library for generating fake data such as names, addresses, and phone numbers
@@ -11444,7 +11444,7 @@ games-board/grhino 0.16.1-r2: Reversi game for GNOME, supporting the Go/Game Tex
 games-board/gtkatlantic 0.6.3: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0-r2: Board games system
 games-board/hexxagon 1.0.2-r1: Clone of the original DOS game
-games-board/iagno 3.36.4: Dominate the board in a classic version of Reversi
+games-board/iagno 3.36.4 3.38.1: Dominate the board in a classic version of Reversi
 games-board/mah-jong 1.16: A networked Mah Jong program, together with a computer player
 games-board/maitretarot 0.1.98-r2: Server for the french tarot game maitretarot
 games-board/megamek 0.34.10-r1: an unofficial, online version of the Classic BattleTech board game
@@ -17464,7 +17464,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 16.3.0 16.3.1 17.1.0 17.1.1 2020.1.9999 2020.2.9999: A virtual network service for Openstack
 sys-cluster/nomad 1.0.4: A simple and flexible workload orchestrator
-sys-cluster/nova 21.1.2 21.2.0 22.1.0 22.2.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
+sys-cluster/nova 21.2.0 22.2.0 2020.1.9999 2020.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openmpi 1.4.5 1.6.5-r1 1.7.5-r1 1.8.8 1.10.7 2.0.4 2.1.6 3.0.4 3.1.4 4.0.2 4.0.3 4.0.4 4.0.5: A high-performance message passing library (MPI)
