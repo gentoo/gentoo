@@ -18193,7 +18193,7 @@ www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorr
 www-apps/trickster 0.1.9: Dashboard Accelerator for Prometheus
 www-apps/tt-rss 20200922 99999999: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/webdavcgi 1.1.2: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV.
-www-apps/webmcp 1.2.6-r1: Web application framework written in Lua and C
+www-apps/webmcp 1.2.6-r1 2.1.0: Web application framework written in Lua and C
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.7.1: Wordpress PHP and MySQL based content management system (CMS)
@@ -18268,6 +18268,7 @@ www-servers/h2o 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.55-r100 1.4.58: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
+www-servers/moonbridge 1.0.1: Network Server for Lua Applications
 www-servers/nginx 1.18.0-r2 1.19.9 1.19.10: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.22.0: Dynamic web and application server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
