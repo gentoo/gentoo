@@ -136,11 +136,11 @@ PATCHES=(
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.49.0-gentoo-musl-target-specs.patch
 	"${FILESDIR}"/1.51.0-bootstrap-panic.patch
-	"${FILESDIR}"/1.51.0-CVE-2020-36323.patch
-	"${FILESDIR}"/1.51.0-CVE-2021-28876.patch
-	#"${FILESDIR}"/1.51.0-CVE-2021-28878.patch
-	#"${FILESDIR}"/1.51.0-CVE-2021-28879.patch
-	"${FILESDIR}"/1.51.0-CVE-2021-31162.patch
+	"${FILESDIR}"/rustc-1.51.0-backport-pr81728.patch
+	"${FILESDIR}"/rustc-1.51.0-backport-pr81741.patch
+	"${FILESDIR}"/rustc-1.51.0-backport-pr82289.patch
+	"${FILESDIR}"/rustc-1.51.0-backport-pr82292.patch
+	"${FILESDIR}"/rustc-1.51.0-backport-pr83629.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
