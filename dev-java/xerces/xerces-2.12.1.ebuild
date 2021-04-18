@@ -12,7 +12,7 @@ MY_PN="xercesImpl"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Xerces Java XML parser"
-HOMEPAGE="https://xml.apache.org/xerces2-j/index.html"
+HOMEPAGE="https://xerces.apache.org/xerces2-j/index.html"
 SRC_URI="https://repo1.maven.org/maven2/xerces/${MY_PN}/${PV}/${MY_P}-sources.jar -> ${P}.jar"
 
 LICENSE="Apache-2.0"
@@ -23,11 +23,11 @@ CDEPEND="dev-java/xml-commons-resolver:0"
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.8:*"
+	>=virtual/jre-11:*"
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.8:*"
+	>=virtual/jdk-11:*"
 
 JAVA_SRC_DIR="org"
 
