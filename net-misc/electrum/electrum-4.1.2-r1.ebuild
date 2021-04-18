@@ -55,8 +55,10 @@ src_prepare() {
 	eapply "${FILESDIR}/3.3.2-desktop.patch"
 
 	# unbind aiorpcX dep
-	sed -e '/aiorpcX/s:,<0.19::' \
+	sed -e '/aiorpcx/s:,<0.19::' \
 		-i contrib/requirements/requirements.txt || die
+	sed -e '/aiorpcx/s:raise.*:pass:' \
+		-i run_electrum || die
 
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons_dirname/d' setup.py || die
