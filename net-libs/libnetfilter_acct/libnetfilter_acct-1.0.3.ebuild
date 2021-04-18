@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-info
 
@@ -17,12 +17,11 @@ IUSE="examples"
 RDEPEND="
 	net-libs/libmnl
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( README )
+
 CONFIG_CHECK="~NETFILTER_NETLINK_ACCT"
 
 pkg_setup() {
