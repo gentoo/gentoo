@@ -3,12 +3,13 @@ DEPEND=>=dev-lang/ocaml-4.08:= !dev-ml/jbuilder dev-ml/findlib test? ( dev-ml/co
 DESCRIPTION=A composable build system for OCaml
 EAPI=7
 HOMEPAGE=https://github.com/ocaml/dune
+INHERIT=multiprocessing
 IUSE=test
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/ocaml-4.08:= !dev-ml/jbuilder
 RESTRICT=!test? ( test )
 SLOT=0/2.8.4
 SRC_URI=https://github.com/ocaml/dune/archive/2.8.4.tar.gz -> dune-2.8.4.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=7ed7dc9998232bd32bcc67f01a3cd2a3
+_md5_=e9e07dc93f30839d616e5e40ec880c84
