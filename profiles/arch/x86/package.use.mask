@@ -299,10 +299,6 @@ sys-apps/systemd -gnuefi
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Jeroen Roovers <jer@gentoo.org> (2015-01-31)
-# >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
->x11-drivers/nvidia-drivers-346 uvm
-
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86
 sys-cluster/ceph zfs
