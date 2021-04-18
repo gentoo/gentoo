@@ -236,6 +236,9 @@ src_install() {
 	if use source; then
 		./clean.sh
 		cp -av src "${ED}/usr/$(get_libdir)/sbcl/" || die
+		for d in contrib/*/; do
+			cp -av "$d" "${ED}/usr/$(get_libdir)/sbcl/" || die
+		done
 	fi
 
 	# necessary for running newly-saved images
