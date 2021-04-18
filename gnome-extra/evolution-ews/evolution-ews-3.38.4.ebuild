@@ -44,6 +44,9 @@ RESTRICT="test !test? ( test )"
 # call; if needed, set them after cmake_src_prepare call, if that works
 src_prepare() {
 	cmake_src_prepare
+
+	eapply "${FILESDIR}"/${PN}-3.38.4-cmake-3.20.1.patch
+
 	gnome2_src_prepare
 }
 
