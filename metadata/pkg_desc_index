@@ -12001,7 +12001,7 @@ gnome-base/gnome-menus 3.36.0: Library and layout configuration for the Desktop 
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.38.0-r1 40.0: Gnome session manager
-gnome-base/gnome-settings-daemon 3.38.1: Gnome Settings Daemon
+gnome-base/gnome-settings-daemon 3.38.1 40.0: Gnome Settings Daemon
 gnome-base/gnome-shell 3.36.7 3.38.4 40.0: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.38.0 40.0: Collection of GSettings schemas for GNOME desktop
@@ -18560,7 +18560,7 @@ x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
 x11-misc/clipmenu 6.2.0: Clipboard management using dmenu
 x11-misc/clipnotify 1.0.2: Notify on new X clipboard events
-x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
+x11-misc/colord 1.3.5 1.4.5: System service to accurately color manage input and output devices
 x11-misc/compose-tables 1.7.0: X.Org Compose Key tables from libX11
 x11-misc/compton 0.1_beta2-r1: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/copyq 3.13.0: Clipboard manager with advanced features
