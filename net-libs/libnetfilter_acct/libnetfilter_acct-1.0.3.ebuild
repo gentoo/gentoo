@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit linux-info ltprune multilib
 
-DESCRIPTION="library providing interface to extended accounting infrastructure"
+inherit linux-info
+
+DESCRIPTION="Library providing interface to extended accounting infrastructure"
 HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
 SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
@@ -46,5 +47,5 @@ src_install() {
 		docompress -x /usr/share/doc/${P}/examples
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
