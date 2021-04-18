@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/gotoh/ssh-connect"
 SRC_URI="https://github.com/gotoh/ssh-connect/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 S="${WORKDIR}/ssh-connect-${PV}"
 

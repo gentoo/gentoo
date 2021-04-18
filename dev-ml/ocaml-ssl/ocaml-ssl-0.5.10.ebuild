@@ -12,7 +12,7 @@ SRC_URI="https://github.com/savonet/ocaml-ssl/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="+ocamlopt"
 
 BDEPEND="dev-ml/dune-configurator"
