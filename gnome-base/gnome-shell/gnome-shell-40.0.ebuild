@@ -106,6 +106,8 @@ RDEPEND="${DEPEND}
 		>=net-im/telepathy-logger-0.2.4[introspection]
 		>=net-libs/telepathy-glib-0.19[introspection] )
 	media-fonts/cantarell
+
+	sys-apps/xdg-desktop-portal-gtk
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
