@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -313,12 +313,15 @@ src_unpack() {
 		cargo_live_src_unpack
 	else
 		cargo_src_unpack
-		# patch git dep to use pre-fetched tarball
-		#echo "" >> "${P}/Cargo.toml"
-		#echo '[patch."https://github.com/rbtcollins/home"]' >> "${P}/Cargo.toml"
-		local home_path="home = { path = '"${WORKDIR}/home-${HOME_COMMIT}"' }"
-		sed -i "s@^home =.*@${home_path}@" "${P}/Cargo.toml" || die
 	fi
+}
+
+src_prepare() {
+	# patch git dep to use pre-fetched tarball
+	local home_path="home = { path = '"${WORKDIR}/home-${HOME_COMMIT}"' }"
+	sed -i "s@^home =.*@${home_path}@" "${P}/Cargo.toml" || die
+
+	default
 }
 
 src_configure() {
