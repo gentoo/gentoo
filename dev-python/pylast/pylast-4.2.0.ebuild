@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="
