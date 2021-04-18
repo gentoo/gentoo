@@ -36,6 +36,7 @@
 # Masked for testing.
 >=dev-libs/vala-common-0.51
 dev-lang/vala:0.52
+>=games-board/gnome-chess-40
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-17)
 # Superseded by dev-python/pycodestyle.  Last revdep masked for removal.
@@ -155,6 +156,7 @@ gui-libs/gtk
 >=gnome-extra/gnome-shell-extensions-40
 >=x11-wm/mutter-40
 >=media-sound/gnome-music-40
+>=games-board/gnome-chess-40
 
 # David Seifert <soap@gentoo.org> (2021-04-05)
 # Completely broken, unmaintained, does not build. Newer version
