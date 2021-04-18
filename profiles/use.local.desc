@@ -3305,7 +3305,9 @@ gnome-extra/gnome-commander:unique - Enable single instance support using dev-li
 gnome-extra/gnome-contacts:telepathy - Start chat from contact details
 gnome-extra/gnome-shell-extension-gsconnect:nautilus - Install Nautilus extension for sending files via GSConnect
 gnome-extra/gnome-software:firmware - Enable firmware update support through sys-apps/fwupd
+gnome-extra/gnome-software:flatpak - Enable support for flatpak applications using sys-apps/flatpak
 gnome-extra/gnome-software:packagekit - Enable module for package manager integration
+gnome-extra/gnome-software:sysprof - Enable profiling data capture support using dev-util/sysprof-capture
 gnome-extra/gnome-system-monitor:systemd - Display sys-apps/systemd metadata, e.g. unit names, for running processes
 gnome-extra/libgda:canvas - Enable support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server

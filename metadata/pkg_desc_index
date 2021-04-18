@@ -10943,8 +10943,8 @@ dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2019.11.30 2021.02.21: Converts profiling output to dot graphs
 dev-util/gtk-builder-convert 2.24.32-r1: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.33.1-r4: GTK+ Documentation Generator
-dev-util/gtk-doc-am 1.33.1: Automake files from gtk-doc
+dev-util/gtk-doc 1.33.1-r4 1.33.2: GTK+ Documentation Generator
+dev-util/gtk-doc-am 1.33.1 1.33.2: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.26: GTK update icon cache
 dev-util/gyp 20200512145953 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
@@ -12053,7 +12053,7 @@ gnome-extra/gnome-shell-extension-gsconnect 42 44 45: KDE Connect implementation
 gnome-extra/gnome-shell-extensions 3.38.2 40.0: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 27: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.38.0 40.0: Unofficial extension pack providing GNOME 2-like features for GNOME 3
-gnome-extra/gnome-software 3.34.2 3.36.1: Gnome install & update software
+gnome-extra/gnome-software 3.34.2 3.36.1 40.0: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.38.0 40.0: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.34.1 40.0: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.36.6 40.0: GNOME end user documentation
