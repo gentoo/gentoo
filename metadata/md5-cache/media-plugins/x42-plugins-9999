@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-libs/glib media-fonts/dejavu media-libs/ftgl media-libs/glu media-libs/liblo media-libs/libsamplerate media-libs/libsndfile media-libs/libltc media-libs/lv2 media-libs/zita-convolver sci-libs/fftw:3.0 virtual/jack virtual/opengl x11-libs/cairo[X] x11-libs/pango sys-apps/help2man
+DESCRIPTION=Collection of LV2 plugins
+EAPI=7
+HOMEPAGE=https://github.com/x42/x42-plugins
+INHERIT=git-r3
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=dev-libs/glib media-fonts/dejavu media-libs/ftgl media-libs/glu media-libs/liblo media-libs/libsamplerate media-libs/libsndfile media-libs/libltc media-libs/lv2 media-libs/zita-convolver sci-libs/fftw:3.0 virtual/jack virtual/opengl x11-libs/cairo[X] x11-libs/pango
+RESTRICT=mirror
+SLOT=0
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=c5d293b8db778102d25ba9f82e0c6fe3

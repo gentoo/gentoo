@@ -5357,7 +5357,7 @@ dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variable
 dev-lang/rakudo 2020.11 2020.12 2021.02 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.5.8 2.5.8-r1 2.5.9 2.6.6-r2 2.6.6-r3 2.6.7 2.7.2 2.7.2-r1 2.7.3 3.0.0 3.0.0-r1 3.0.0-r2 3.0.1: An object-oriented scripting language
-dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0 1.51.0 1.51.0-r2: Systems programming language from Mozilla
+dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0 1.51.0-r2: Systems programming language from Mozilla
 dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0 1.49.0 1.50.0 1.51.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.1: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
@@ -13356,6 +13356,7 @@ media-libs/liblo 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: Easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.2 9999: C++ library for the Linux Sampler control protocol
+media-libs/libltc 1.3.1 9999: Linear/Logitudinal Time Code (LTC) Library
 media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.24.0-r1 1.24.1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.6.2 1.6.3: Extensible multimedia container format based on EBML
@@ -13830,6 +13831,7 @@ media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specifie
 media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xineliboutput 2.2.0-r2 2.2.0-r4 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
+media-plugins/x42-plugins 9999 20210409: Collection of LV2 plugins
 media-plugins/xsynth-dssi 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
 media-radio/KochMorse 3.4.0-r1: Morse-code tutor using the Koch method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
