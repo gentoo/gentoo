@@ -4730,6 +4730,7 @@ media-sound/split2flac:enca - Try to guess the charset using enca
 media-sound/split2flac:flake - Add support for Flake, alternative FLAC encoder
 media-sound/split2flac:mac - Add support for Monkey's Audio files
 media-sound/split2flac:replaygain - Support for Replay Gain metadata, for relative volume adjustment
+media-sound/spotify:local-playback - Allows playing local files with the Spotify client
 media-sound/spotify:pax_kernel - Triggers a paxmarking of the main Spotify binary
 media-sound/spotify:pulseaudio - Controls the dependency on pulseaudio or apulse
 media-sound/spotify:systray - Pulls in dependencies needed for systray support on some desktop environments
