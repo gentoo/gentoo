@@ -3081,7 +3081,7 @@ app-text/fb2edit 0.1.0: Create and edit fb2 books
 app-text/fblog 1.4.1: Small command-line JSON Log viewer
 app-text/fbpdf 0_p20200614: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
-app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
+app-text/fictionup 0.2.1: Command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/foliate 2.4.2-r1 2.5.0 2.6.2: gtk ebook reader built with gjs
 app-text/ghostscript-gpl 9.52-r1 9.53.3-r5 9.54.0: Interpreter for the PostScript language and PDF
