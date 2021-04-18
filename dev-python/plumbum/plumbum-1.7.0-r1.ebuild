@@ -13,7 +13,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}] )"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 PATCHES=( "${FILESDIR}"/${PN}-1.7.0-test.patch )
 distutils_enable_tests pytest
