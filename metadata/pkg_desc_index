@@ -15287,7 +15287,7 @@ net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python
 net-misc/econnman 1.1-r2: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 4.0.2-r2 4.2.3: Lightweight Bitcoin Cash client (BCH fork of Electrum)
-net-misc/electrum 4.0.9-r1 4.0.9-r2 4.1.0 4.1.1 4.1.2: User friendly Bitcoin client
+net-misc/electrum 4.0.9-r1 4.0.9-r2 4.1.0 4.1.1 4.1.2-r1: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r2 4.0.9.1: Litecoin thin client
 net-misc/ena-driver 2.0.3-r1 2.2.3-r1: Amazon EC2 Elastic Network Adapter (ENA) kernel driver
 net-misc/endlessh 1.1-r1 9999: SSH tarpit that slowly sends and endless banner
