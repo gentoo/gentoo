@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~sparc x86 ~x64-macos"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
