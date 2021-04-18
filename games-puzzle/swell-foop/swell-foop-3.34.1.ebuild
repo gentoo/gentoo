@@ -27,6 +27,10 @@ BDEPEND="
 	$(vala_depend)
 "
 
+PATCHES=(
+	"${FILESDIR}"/3.34.1-fix-vala-0.50.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
