@@ -15,4 +15,4 @@ SRC_URI="mirror://gnu/${PN%%-*}/dict/${MY_ASPELL_LANG/-${PN##*-}/_${MY_ASPELL_SU
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
