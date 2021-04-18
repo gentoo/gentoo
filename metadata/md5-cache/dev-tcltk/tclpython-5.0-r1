@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=http://jfontain.free.fr/tclpython.htm
 INHERIT=multilib python-single-r1 toolchain-funcs
 IUSE=+python_single_target_python3_8
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) dev-lang/tcl:0=
 REQUIRED_USE=^^ ( python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/amykyta3/tclpython/archive/5.0.tar.gz -> tclpython-5.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a
-_md5_=d6a6425426f2a03bfbb13d5550b075dd
+_md5_=ac68261a396fed89eaab636a91a65ab9
