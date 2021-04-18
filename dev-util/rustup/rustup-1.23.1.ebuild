@@ -319,7 +319,7 @@ src_unpack() {
 src_prepare() {
 	# patch git dep to use pre-fetched tarball
 	local home_path="home = { path = '"${WORKDIR}/home-${HOME_COMMIT}"' }"
-	sed -i "s@^home =.*@${home_path}@" "${P}/Cargo.toml" || die
+	sed -i "s@^home =.*@${home_path}@" "${S}/Cargo.toml" || die
 
 	default
 }
