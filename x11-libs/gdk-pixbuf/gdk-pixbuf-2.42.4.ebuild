@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
+	dev-libs/glib:2
 	dev-libs/libxslt
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.20
