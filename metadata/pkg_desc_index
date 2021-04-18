@@ -10391,7 +10391,7 @@ dev-ruby/rexical 1.0.7: Rexical is a lexical scanner generator
 dev-ruby/rexml 3.2.5: An XML toolkit for Ruby
 dev-ruby/rinku 2.0.6: A Ruby library that does autolinking
 dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
-dev-ruby/rjb 1.6.1 1.6.2 1.6.4: Rjb is a Ruby-Java software bridge
+dev-ruby/rjb 1.6.4 1.6.4-r1: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 3.2.0 4.1.1 4.1.2: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/roadie 4.0.0: Making HTML emails comfortable for the Rails rockstars
@@ -14502,7 +14502,7 @@ net-analyzer/mrtg-ping-probe 2.2.0: Addon mrtg contrib for stats ping/loss packe
 net-analyzer/mtr 0.94 9999: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/multimon-ng 1.1.9 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/multipath-tcp-tools 2018_p12_p21 999999: Analysis tools for Multipath Transmission Control Protocol (MPTCP)
-net-analyzer/munin 2.0.59 2.0.66 2.0.67: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.59 2.0.66 2.0.67 2.0.67-r1: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
 net-analyzer/nagios 4.4.6: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
