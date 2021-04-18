@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2021-04-18)
+# Masked for testing.
+>=dev-libs/vala-common-0.51
+dev-lang/vala:0.52
+
 # Michał Górny <mgorny@gentoo.org> (2021-04-17)
 # Superseded by dev-python/pycodestyle.  Last revdep masked for removal.
 # Removal on 2021-05-17.  Bug #783369.
