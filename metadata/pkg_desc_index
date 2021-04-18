@@ -5357,7 +5357,7 @@ dev-lang/qu-prolog 10.6: Extended Prolog supporting quantifiers, object-variable
 dev-lang/rakudo 2020.11 2020.12 2021.02 9999: A compiler for the Perl 6 programming language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.5.8 2.5.8-r1 2.5.9 2.6.6-r2 2.6.6-r3 2.6.7 2.7.2 2.7.2-r1 2.7.3 3.0.0 3.0.0-r1 3.0.0-r2 3.0.1: An object-oriented scripting language
-dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0 1.51.0: Systems programming language from Mozilla
+dev-lang/rust 1.46.0 1.47.0-r2 1.48.0 1.49.0 1.50.0 1.51.0 1.51.0-r1: Systems programming language from Mozilla
 dev-lang/rust-bin 1.46.0 1.47.0-r1 1.48.0 1.49.0 1.50.0 1.51.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.1: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
@@ -11068,7 +11068,7 @@ dev-util/rosinstall_generator 0.1.22-r1 9999: Generates rosinstall metadata abou
 dev-util/rpmdevtools 8.10-r2 9.2: Collection of rpm packaging related utilities
 dev-util/rr 5.4.0: Record and Replay Framework
 dev-util/rt-tests 1.10: A collection of latency testing tools for the linux(-rt) kernel
-dev-util/rustup 1.22.1-r2 1.23.0 9999: Rust toolchain installer
+dev-util/rustup 1.23.1 9999: Rust toolchain installer
 dev-util/samurai 1.2 9999: ninja-compatible build tool written in C
 dev-util/sasm 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
@@ -17225,7 +17225,7 @@ sys-apps/sysvinit 2.97 2.98-r1 2.99: /sbin/init - parent of all processes
 sys-apps/tas 1.6.0.200601: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.6-r1 6.7: The GNU info program and utilities
-sys-apps/the_silver_searcher 2.2.0: A code-searching tool similar to ack, but faster
+sys-apps/the_silver_searcher 2.2.0 2.2.0_p20201217: A code-searching tool similar to ack, but faster
 sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space components
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
