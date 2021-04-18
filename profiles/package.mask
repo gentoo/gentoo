@@ -216,11 +216,6 @@ dev-libs/go-usb
 # Removal on 2021-04-29
 app-office/ical
 
-# Michał Górny <mgorny@gentoo.org> (2021-03-30)
-# Too strict entry_points.txt parsing causes revdeps to crash when
-# dev-python/paste is installed.
->=dev-python/importlib_metadata-3.9
-
 # Craig Andrews <candrews@gentoo.org> (2021-03-29)
 # Unmaintained upstream.
 # Project is also not useful due to changes in cryptocurrency mining.
