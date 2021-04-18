@@ -12,6 +12,8 @@ LICENSE="ut2003"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RESTRICT="bindist"
+
 BDEPEND="
 	games-util/uz2unpack
 	>=app-arch/unshield-0.5-r1
