@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
@@ -119,7 +119,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local backends="alsa"
+	local backends="alsa,dummy"
 	use jack && backends+=",jack"
 	use pulseaudio && backends+=",pulseaudio"
 
