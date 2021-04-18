@@ -42,6 +42,7 @@ dev-util/findbugs
 # obsolete deps, not used by any package
 # removal in 30 days
 dev-java/commons-configuration
+dev-java/commons-jelly
 dev-java/ezmorph
 dev-java/ical4j
 
@@ -135,6 +136,7 @@ x11-misc/xstroke
 >=media-plugins/grilo-plugins-0.3.13
 >=media-sound/gnome-music-40
 >=media-gfx/gnome-photos-40
+>=net-misc/rygel-0.40
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
@@ -215,11 +217,6 @@ dev-libs/go-usb
 # bugfix and 3.0.4 version bump. Bugs #677374, #692928
 # Removal on 2021-04-29
 app-office/ical
-
-# Michał Górny <mgorny@gentoo.org> (2021-03-30)
-# Too strict entry_points.txt parsing causes revdeps to crash when
-# dev-python/paste is installed.
->=dev-python/importlib_metadata-3.9
 
 # Craig Andrews <candrews@gentoo.org> (2021-03-29)
 # Unmaintained upstream.
