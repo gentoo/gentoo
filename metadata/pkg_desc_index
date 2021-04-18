@@ -12593,7 +12593,7 @@ lxqt-base/lxqt-globalkeys 0.16.0 0.17.0: Daemon and library for global keyboard 
 lxqt-base/lxqt-meta 0.16.0 0.17.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
 lxqt-base/lxqt-notificationd 0.16.0 0.17.0: LXQt notification daemon and library
 lxqt-base/lxqt-openssh-askpass 0.16.0 0.17.0: LXQt OpenSSH user password prompt tool
-lxqt-base/lxqt-panel 0.16.1 0.17.1: LXQt desktop panel and plugins
+lxqt-base/lxqt-panel 0.16.1-r1 0.17.1-r1: LXQt desktop panel and plugins
 lxqt-base/lxqt-policykit 0.16.0 0.17.0: LXQt PolKit authentication agent
 lxqt-base/lxqt-powermanagement 0.16.0-r1 0.17.0: LXQt daemon for power management and auto-suspend
 lxqt-base/lxqt-qtplugin 0.16.0 0.17.0: LXQt system integration plugin for Qt
@@ -14339,7 +14339,7 @@ media-video/pipewire 0.3.22 0.3.25: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2 0.91.0.10-r3: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 20.07.04 21.03.09 9999: A Qt-based video player, which can play most formats and codecs
-media-video/raspberrypi-omxplayer 0_p20160217-r1 0_p20160528-r2 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
+media-video/raspberrypi-omxplayer 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 0.3.5 0.4.0 0.4.1 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
@@ -14350,7 +14350,7 @@ media-video/shotcut 21.02.27 21.03.21 9999: A free, open source, cross-platform 
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.4.2 0.4.3 9999: A Simple Screen Recorder
 media-video/smplayer 20.6.0: Great Qt GUI front-end for mplayer/mpv
-media-video/snappy 1.0-r1 1.0_p20200428: A simple media player written using GStreamer and Clutter
+media-video/snappy 1.0_p20200428: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7-r1: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/streamdeck-ui 0.0_p20200102-r1 9999: A Linux compatible UI for the Elgato Stream Deck
 media-video/streamdvd 0.4-r2: fast tool to backup Video DVDs 'on the fly'
@@ -15023,7 +15023,7 @@ net-libs/libnetfilter_queue 1.0.3 1.0.4 1.0.5: API to packets that have been que
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.27: NFSv4 ID <-> name mapping library
 net-libs/libnftnl 1.1.7 1.1.8 1.1.9 9999: Netlink API to the in-kernel nf_tables subsystem
-net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
+net-libs/libnice 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r7: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
 net-libs/libnma 1.8.30: NetworkManager GUI library
@@ -15935,7 +15935,7 @@ ros-meta/vision_visp 0.11.1 9999: Virtual package providing ViSP related package
 ros-meta/visualization_tutorials 0.11.0 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.5.0 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
-sci-astronomy/casa-data 99999 20170703: Data and tables for the CASA software
+sci-astronomy/casa-data 20170703: Data and tables for the CASA software
 sci-astronomy/cdsclient 3.8.4: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.7.0_pre20200316-r100 9999: OpenGL 3D space simulator
 sci-astronomy/cpl 7.0: ESO common pipeline library for astronomical data reduction
@@ -16594,7 +16594,7 @@ sci-mathematics/gimps 30.3.6 30.5.2: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.7.11: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.65 5.0-r1: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
-sci-mathematics/gmp-ecm 7.0.4-r2 7.0.4-r3 9999: Elliptic Curve Method for Integer Factorization
+sci-mathematics/gmp-ecm 7.0.4-r2 7.0.4-r3: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gp2c 0.0.11.3 0.0.12: A GP to C translator
 sci-mathematics/gretl 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
@@ -16639,7 +16639,7 @@ sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019-r2 2020: Platform for deductive program verification
 sci-mathematics/wxmaxima 18.11.4 20.12.2 21.01.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
-sci-mathematics/yafu 1.34.3-r1 9999: Yet another factoring utility
+sci-mathematics/yafu 1.34.3-r1: Yet another factoring utility
 sci-mathematics/z3 4.8.10: An efficient theorem prover
 sci-misc/ViSP-images 3.3.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
