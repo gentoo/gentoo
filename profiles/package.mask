@@ -36,6 +36,8 @@
 # obsolete deps, not used by any package
 # removal in 30 days
 dev-java/commons-configuration
+dev-java/ezmorph
+dev-java/ical4j
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-18)
 # Broken, stay tuned
