@@ -15,14 +15,14 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1 LGPL-2.1+"
 SLOT="0"
 IUSE="+alsa colorpicker cpuload +desktopswitch +directorymenu dom +kbindicator
 +mainmenu +mount networkmonitor pulseaudio +quicklaunch lm-sensors +showdesktop
-+spacer +statusnotifier sysstat +taskbar tray +volume +worldclock"
++spacer statusnotifier sysstat +taskbar +tray +volume +worldclock"
 
 # Work around a missing header issue: https://bugs.gentoo.org/666278
 REQUIRED_USE="
@@ -32,7 +32,7 @@ REQUIRED_USE="
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	>=dev-util/lxqt-build-tools-0.9.0
+	>=dev-util/lxqt-build-tools-0.8.0
 	virtual/pkgconfig
 "
 DEPEND="
@@ -55,7 +55,10 @@ DEPEND="
 	lm-sensors? ( sys-apps/lm-sensors )
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
-	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] )
+	statusnotifier? (
+		dev-libs/libdbusmenu-qt[qt5(+)]
+		dev-qt/qtconcurrent:5
+	)
 	sysstat? ( >=lxqt-base/libsysstat-0.4.1 )
 	tray? (
 		x11-libs/libxcb:=
@@ -72,7 +75,9 @@ DEPEND="
 		)
 	)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!lxqt-base/lxqt-l10n
+"
 
 src_configure() {
 	local mycmakeargs=(
