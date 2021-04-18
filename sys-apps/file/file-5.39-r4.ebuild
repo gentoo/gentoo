@@ -135,7 +135,6 @@ multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
 
 	# Required for `file -C`
-	dodir /usr/share/misc/magic
 	insinto /usr/share/misc/magic
 	doins -r magic/Magdir/*
 
