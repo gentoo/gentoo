@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 multilib-minimal rust-toolchain vala
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-RDEPEND="
+DEPEND="
 	>=x11-libs/cairo-1.16.0[glib,${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.20:2[introspection?,${MULTILIB_USEDEP}]
@@ -27,9 +27,12 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
 "
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	>=virtual/rust-1.40[${MULTILIB_USEDEP}]
+"
+BDEPEND="
 	dev-util/glib-utils
+	x11-libs/gdk-pixbuf
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
@@ -79,6 +82,10 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	gnome2_src_install
+}
+
+multilib_src_install_all() {
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
