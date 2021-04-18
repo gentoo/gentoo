@@ -33,10 +33,15 @@ BDEPEND="
 	dev-util/intltool
 	dev-util/itstool
 	sys-devel/gettext
+	$(python_gen_cond_dep 'dev-python/distro[${PYTHON_USEDEP}]')
 "
 # dev-python/distro is soft-required in BDEPEND for python3.8 and onwards,
 # but it's mainly needed for debian and derivatives - seems the fallback
 # works fine, as we aren't a special_case, just an annoying warning.
+
+python_check_deps() {
+	has_version -b "dev-python/distro[${PYTHON_USEDEP}]"
+}
 
 python_compile_all() {
 	mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
