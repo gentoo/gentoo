@@ -1,0 +1,476 @@
+From 55f345f32505c2095966a5dc46c4ae3290dbf7a1 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Tue, 3 Nov 2020 22:47:16 +0100
+Subject: [PATCH 01/12] Support LLVM 12 in rustc
+
+---
+ compiler/rustc_codegen_llvm/src/abi.rs        |  17 ++-
+ compiler/rustc_codegen_llvm/src/context.rs    |   7 ++
+ compiler/rustc_codegen_llvm/src/llvm/ffi.rs   |   4 +
+ compiler/rustc_codegen_ssa/src/common.rs      |   1 +
+ .../rustc_llvm/llvm-wrapper/PassWrapper.cpp   | 119 ++++++++++++++----
+ .../rustc_llvm/llvm-wrapper/RustWrapper.cpp   |  53 +++++++-
+ .../src/spec/powerpc64_unknown_linux_gnu.rs   |   2 +-
+ .../src/spec/powerpc64_unknown_linux_musl.rs  |   2 +-
+ .../src/spec/powerpc64_wrs_vxworks.rs         |   2 +-
+ .../src/spec/powerpc64le_unknown_linux_gnu.rs |   2 +-
+ .../spec/powerpc64le_unknown_linux_musl.rs    |   2 +-
+ src/test/assembly/asm/riscv-types.rs          |  29 ++---
+ src/test/codegen/function-arguments.rs        |   3 +-
+ src/test/codegen/packed.rs                    |   4 +-
+ .../codegen/repr-transparent-aggregates-1.rs  |  18 +--
+ .../codegen/repr-transparent-aggregates-2.rs  |  18 +--
+ .../codegen/repr-transparent-aggregates-3.rs  |  18 +--
+ .../run-make-fulldeps/split-dwarf/Makefile    |   2 +-
+ 18 files changed, 226 insertions(+), 77 deletions(-)
+
+diff --git a/src/ci/docker/scripts/cmake.sh b/src/ci/docker/scripts/cmake.sh
+new file mode 100755
+index 0000000000000..70096173403d7
+--- /dev/null
++++ b/src/ci/docker/scripts/cmake.sh
+@@ -0,0 +1,34 @@
++#!/bin/bash
++set -ex
++
++hide_output() {
++  set +x
++  on_err="
++echo ERROR: An error was encountered with the build.
++cat /tmp/build.log
++exit 1
++"
++  trap "$on_err" ERR
++  bash -c "while true; do sleep 30; echo \$(date) - building ...; done" &
++  PING_LOOP_PID=$!
++  "$@" &> /tmp/build.log
++  trap - ERR
++  kill $PING_LOOP_PID
++  rm /tmp/build.log
++  set -x
++}
++
++# LLVM 12 requires CMake 3.13.4 or higher.
++# This script is not necessary for images using Ubuntu 20.04 or newer.
++CMAKE=3.13.4
++curl -L https://github.com/Kitware/CMake/releases/download/v$CMAKE/cmake-$CMAKE.tar.gz | tar xzf -
++
++mkdir cmake-build
++cd cmake-build
++hide_output ../cmake-$CMAKE/configure
++hide_output make -j$(nproc)
++hide_output make install
++
++cd ..
++rm -rf cmake-build
++rm -rf cmake-$CMAKE
+
+From b763d9a40c526f5f72c0668d26f69241e7a42511 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Wed, 3 Feb 2021 18:11:28 +0100
+Subject: [PATCH 05/12] Build both Python 2 and Python 3 on x86 dist builders
+
+Python 2 is needed for Clang 10, Python 3 for LLVM 12.
+
+The Python 2 dependency could be removed by upgrading to Clang 11,
+but that causes linker errors of unclear origin.
+---
+ src/ci/docker/host-x86_64/dist-i686-linux/Dockerfile      | 8 +++++---
+ src/ci/docker/host-x86_64/dist-x86_64-linux/Dockerfile    | 8 +++++---
+ .../docker/host-x86_64/dist-x86_64-linux/build-python.sh  | 7 ++++---
+ 3 files changed, 14 insertions(+), 9 deletions(-)
+
+diff --git a/src/ci/docker/host-x86_64/dist-i686-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-i686-linux/Dockerfile
+index 22d7cbb0d14d8..247b539652b15 100644
+--- a/src/ci/docker/host-x86_64/dist-i686-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-i686-linux/Dockerfile
+@@ -68,11 +68,13 @@ RUN ./build-binutils.sh
+ COPY host-x86_64/dist-x86_64-linux/build-gcc.sh /tmp/
+ RUN ./build-gcc.sh && apt-get remove -y gcc g++
+ 
+-# Debian 6 has Python 2.6 by default, but LLVM needs 2.7+
+ COPY host-x86_64/dist-x86_64-linux/build-python.sh /tmp/
+-RUN ./build-python.sh
++# Build Python 2.7 needed for Clang 10.
++RUN ./build-python.sh 2.7.12
++# Build Python 3 needed for LLVM 12.
++RUN ./build-python.sh 3.9.1
+ 
+-# LLVM needs cmake 3.4.3 or higher, and is planning to raise to 3.13.4.
++# LLVM needs cmake 3.13.4 or higher.
+ COPY host-x86_64/dist-x86_64-linux/build-cmake.sh /tmp/
+ RUN ./build-cmake.sh
+ 
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-x86_64-linux/Dockerfile
+index d1b4bbf7fffef..4dd4378f19692 100644
+--- a/src/ci/docker/host-x86_64/dist-x86_64-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-x86_64-linux/Dockerfile
+@@ -68,11 +68,13 @@ RUN ./build-binutils.sh
+ COPY host-x86_64/dist-x86_64-linux/build-gcc.sh /tmp/
+ RUN ./build-gcc.sh && apt-get remove -y gcc g++
+ 
+-# Debian 6 has Python 2.6 by default, but LLVM needs 2.7+
+ COPY host-x86_64/dist-x86_64-linux/build-python.sh /tmp/
+-RUN ./build-python.sh
++# Build Python 2.7 needed for Clang 10.
++RUN ./build-python.sh 2.7.12
++# Build Python 3 needed for LLVM 12.
++RUN ./build-python.sh 3.9.1
+ 
+-# LLVM needs cmake 3.4.3 or higher, and is planning to raise to 3.13.4.
++# LLVM needs cmake 3.13.4 or higher.
+ COPY host-x86_64/dist-x86_64-linux/build-cmake.sh /tmp/
+ RUN ./build-cmake.sh
+ 
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-linux/build-python.sh b/src/ci/docker/host-x86_64/dist-x86_64-linux/build-python.sh
+index c172b9781120d..970d67b6db3dd 100755
+--- a/src/ci/docker/host-x86_64/dist-x86_64-linux/build-python.sh
++++ b/src/ci/docker/host-x86_64/dist-x86_64-linux/build-python.sh
+@@ -3,7 +3,8 @@
+ set -ex
+ source shared.sh
+ 
+-curl https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz | \
++VERSION=$1
++curl https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tgz | \
+   tar xzf -
+ 
+ mkdir python-build
+@@ -12,10 +13,10 @@ cd python-build
+ # Gotta do some hackery to tell python about our custom OpenSSL build, but other
+ # than that fairly normal.
+ CFLAGS='-I /rustroot/include' LDFLAGS='-L /rustroot/lib -L /rustroot/lib64' \
+-    hide_output ../Python-2.7.12/configure --prefix=/rustroot
++    hide_output ../Python-$VERSION/configure --prefix=/rustroot
+ hide_output make -j10
+ hide_output make install
+ 
+ cd ..
+ rm -rf python-build
+-rm -rf Python-2.7.12
++rm -rf Python-$VERSION
+
+From 1d280b012d52fa95ed59942701e1a32c662e58a3 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Sat, 20 Feb 2021 16:43:05 +0100
+Subject: [PATCH 06/12] Don't directly expose coverage::CounterMappingRegion
+ via FFI
+
+The definition of this struct changes in LLVM 12 due to the addition
+of branch coverage support. To avoid future mismatches, declare our
+own struct and then convert between them.
+---
+ .../src/coverageinfo/mod.rs                   |  4 ++--
+ compiler/rustc_codegen_llvm/src/llvm/ffi.rs   |  6 ++---
+ .../llvm-wrapper/CoverageMappingWrapper.cpp   | 24 +++++++++++++++++--
+ 3 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/compiler/rustc_codegen_llvm/src/coverageinfo/mod.rs b/compiler/rustc_codegen_llvm/src/coverageinfo/mod.rs
+index e777f363eb084..e47b8fde40fee 100644
+--- a/compiler/rustc_codegen_llvm/src/coverageinfo/mod.rs
++++ b/compiler/rustc_codegen_llvm/src/coverageinfo/mod.rs
+@@ -162,7 +162,7 @@ pub(crate) fn write_filenames_section_to_buffer<'a>(
+ pub(crate) fn write_mapping_to_buffer(
+     virtual_file_mapping: Vec<u32>,
+     expressions: Vec<CounterExpression>,
+-    mut mapping_regions: Vec<CounterMappingRegion>,
++    mapping_regions: Vec<CounterMappingRegion>,
+     buffer: &RustString,
+ ) {
+     unsafe {
+@@ -171,7 +171,7 @@ pub(crate) fn write_mapping_to_buffer(
+             virtual_file_mapping.len() as c_uint,
+             expressions.as_ptr(),
+             expressions.len() as c_uint,
+-            mapping_regions.as_mut_ptr(),
++            mapping_regions.as_ptr(),
+             mapping_regions.len() as c_uint,
+             buffer,
+         );
+diff --git a/compiler/rustc_codegen_llvm/src/llvm/ffi.rs b/compiler/rustc_codegen_llvm/src/llvm/ffi.rs
+index 9eac7ad17b046..7f7575e58c9e6 100644
+--- a/compiler/rustc_codegen_llvm/src/llvm/ffi.rs
++++ b/compiler/rustc_codegen_llvm/src/llvm/ffi.rs
+@@ -676,9 +676,7 @@ pub mod coverageinfo {
+     /// array", encoded separately), and source location (start and end positions of the represented
+     /// code region).
+     ///
+-    /// Aligns with [llvm::coverage::CounterMappingRegion](https://github.com/rust-lang/llvm-project/blob/rustc/11.0-2020-10-12/llvm/include/llvm/ProfileData/Coverage/CoverageMapping.h#L224-L227)
+-    /// Important: The Rust struct layout (order and types of fields) must match its C++
+-    /// counterpart.
++    /// Matches LLVMRustCounterMappingRegion.
+     #[derive(Copy, Clone, Debug)]
+     #[repr(C)]
+     pub struct CounterMappingRegion {
+@@ -1796,7 +1794,7 @@ extern "C" {
+         NumVirtualFileMappingIDs: c_uint,
+         Expressions: *const coverage_map::CounterExpression,
+         NumExpressions: c_uint,
+-        MappingRegions: *mut coverageinfo::CounterMappingRegion,
++        MappingRegions: *const coverageinfo::CounterMappingRegion,
+         NumMappingRegions: c_uint,
+         BufferOut: &RustString,
+     );
+diff --git a/compiler/rustc_llvm/llvm-wrapper/CoverageMappingWrapper.cpp b/compiler/rustc_llvm/llvm-wrapper/CoverageMappingWrapper.cpp
+index 25badc3f4e17b..e97d96e3a4eab 100644
+--- a/compiler/rustc_llvm/llvm-wrapper/CoverageMappingWrapper.cpp
++++ b/compiler/rustc_llvm/llvm-wrapper/CoverageMappingWrapper.cpp
+@@ -8,6 +8,17 @@
+ 
+ using namespace llvm;
+ 
++struct LLVMRustCounterMappingRegion {
++  coverage::Counter Count;
++  uint32_t FileID;
++  uint32_t ExpandedFileID;
++  uint32_t LineStart;
++  uint32_t ColumnStart;
++  uint32_t LineEnd;
++  uint32_t ColumnEnd;
++  coverage::CounterMappingRegion::RegionKind Kind;
++};
++
+ extern "C" void LLVMRustCoverageWriteFilenamesSectionToBuffer(
+     const char* const Filenames[],
+     size_t FilenamesLen,
+@@ -27,13 +38,22 @@ extern "C" void LLVMRustCoverageWriteMappingToBuffer(
+     unsigned NumVirtualFileMappingIDs,
+     const coverage::CounterExpression *Expressions,
+     unsigned NumExpressions,
+-    coverage::CounterMappingRegion *MappingRegions,
++    LLVMRustCounterMappingRegion *RustMappingRegions,
+     unsigned NumMappingRegions,
+     RustStringRef BufferOut) {
++  // Convert from FFI representation to LLVM representation.
++  SmallVector<coverage::CounterMappingRegion, 0> MappingRegions;
++  MappingRegions.reserve(NumMappingRegions);
++  for (const auto &Region : makeArrayRef(RustMappingRegions, NumMappingRegions)) {
++    MappingRegions.emplace_back(
++        Region.Count, Region.FileID, Region.ExpandedFileID,
++        Region.LineStart, Region.ColumnStart, Region.LineEnd, Region.ColumnEnd,
++        Region.Kind);
++  }
+   auto CoverageMappingWriter = coverage::CoverageMappingWriter(
+       makeArrayRef(VirtualFileMappingIDs, NumVirtualFileMappingIDs),
+       makeArrayRef(Expressions, NumExpressions),
+-      makeMutableArrayRef(MappingRegions, NumMappingRegions));
++      MappingRegions);
+   RawRustStringOstream OS(BufferOut);
+   CoverageMappingWriter.write(OS);
+ }
+
+From 41b81584e2ff579fa4ff1d94496fb0884b50fa2e Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Sat, 20 Feb 2021 16:51:18 +0100
+Subject: [PATCH 07/12] Build newly added InstrProfilingVersionVar.c file
+
+---
+ library/profiler_builtins/build.rs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/library/profiler_builtins/build.rs b/library/profiler_builtins/build.rs
+index 7d5c601df535b..2de6db762b2fb 100644
+--- a/library/profiler_builtins/build.rs
++++ b/library/profiler_builtins/build.rs
+@@ -26,6 +26,7 @@ fn main() {
+         "InstrProfilingPlatformWindows.c",
+         "InstrProfilingUtil.c",
+         "InstrProfilingValue.c",
++        "InstrProfilingVersionVar.c",
+         "InstrProfilingWriter.c",
+         // This file was renamed in LLVM 10.
+         "InstrProfilingRuntime.cc",
+
+From bc96516a28d9e8e816b0f45c628a9cd49a2f380d Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Sat, 20 Feb 2021 17:02:23 +0100
+Subject: [PATCH 08/12] Mark pure asm as willreturn
+
+---
+ compiler/rustc_codegen_llvm/src/asm.rs           | 1 +
+ compiler/rustc_codegen_llvm/src/llvm/ffi.rs      | 1 +
+ compiler/rustc_llvm/llvm-wrapper/LLVMWrapper.h   | 1 +
+ compiler/rustc_llvm/llvm-wrapper/RustWrapper.cpp | 2 ++
+ 4 files changed, 5 insertions(+)
+
+diff --git a/compiler/rustc_codegen_llvm/src/asm.rs b/compiler/rustc_codegen_llvm/src/asm.rs
+index 26815de403fd2..38c8ae711a4cb 100644
+--- a/compiler/rustc_codegen_llvm/src/asm.rs
++++ b/compiler/rustc_codegen_llvm/src/asm.rs
+@@ -304,6 +304,7 @@ impl AsmBuilderMethods<'tcx> for Builder<'a, 'll, 'tcx> {
+             } else if options.contains(InlineAsmOptions::READONLY) {
+                 llvm::Attribute::ReadOnly.apply_callsite(llvm::AttributePlace::Function, result);
+             }
++            llvm::Attribute::WillReturn.apply_callsite(llvm::AttributePlace::Function, result);
+         } else if options.contains(InlineAsmOptions::NOMEM) {
+             llvm::Attribute::InaccessibleMemOnly
+                 .apply_callsite(llvm::AttributePlace::Function, result);
+diff --git a/compiler/rustc_codegen_llvm/src/llvm/ffi.rs b/compiler/rustc_codegen_llvm/src/llvm/ffi.rs
+index 7f7575e58c9e6..e6d60044c84b4 100644
+--- a/compiler/rustc_codegen_llvm/src/llvm/ffi.rs
++++ b/compiler/rustc_codegen_llvm/src/llvm/ffi.rs
+@@ -132,5 +132,7 @@ pub enum Attribute {
+     ReadNone = 26,
+     InaccessibleMemOnly = 27,
++    SanitizeHWAddress = 28,
++    WillReturn = 29,
+ }
+ 
+ /// LLVMIntPredicate
+diff --git a/compiler/rustc_llvm/llvm-wrapper/LLVMWrapper.h b/compiler/rustc_llvm/llvm-wrapper/LLVMWrapper.h
+index 0e3bf5615af7b..f67e06706ea57 100644
+--- a/compiler/rustc_llvm/llvm-wrapper/LLVMWrapper.h
++++ b/compiler/rustc_llvm/llvm-wrapper/LLVMWrapper.h
+@@ -86,5 +86,7 @@ enum LLVMRustAttribute {
+   ReadNone = 26,
+   InaccessibleMemOnly = 27,
++  SanitizeHWAddress = 28,
++  WillReturn = 29,
+ };
+ 
+ typedef struct OpaqueRustString *RustStringRef;
+diff --git a/compiler/rustc_llvm/llvm-wrapper/RustWrapper.cpp b/compiler/rustc_llvm/llvm-wrapper/RustWrapper.cpp
+index 09dfba292e431..a853659540442 100644
+--- a/compiler/rustc_llvm/llvm-wrapper/RustWrapper.cpp
++++ b/compiler/rustc_llvm/llvm-wrapper/RustWrapper.cpp
+@@ -207,4 +207,8 @@ static Attribute::AttrKind fromRust(LLVMRustAttribute Kind) {
+     return Attribute::InaccessibleMemOnly;
++  case SanitizeHWAddress:
++    return Attribute::SanitizeHWAddress;
++  case WillReturn:
++    return Attribute::WillReturn;
+   }
+   report_fatal_error("bad AttributeKind");
+ }
+
+From 34352d441a6430b5b85029efc0569a88999b2ac8 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Sun, 28 Feb 2021 18:16:39 +0100
+Subject: [PATCH 09/12] Set CMAKE_SYSTEM_NAME for solaris/illumos
+
+When cross-compiling to solaris/illumos targets, set
+CMAKE_SYSTEM_NAME to SunOS.
+---
+ src/bootstrap/native.rs | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/bootstrap/native.rs b/src/bootstrap/native.rs
+index b5a8b694c9420..fb5127bac54df 100644
+--- a/src/bootstrap/native.rs
++++ b/src/bootstrap/native.rs
+@@ -383,6 +383,8 @@ fn configure_cmake(
+             cfg.define("CMAKE_SYSTEM_NAME", "Windows");
+         } else if target.contains("haiku") {
+             cfg.define("CMAKE_SYSTEM_NAME", "Haiku");
++        } else if target.contains("solaris") || target.contains("illumos") {
++            cfg.define("CMAKE_SYSTEM_NAME", "SunOS");
+         }
+         // When cross-compiling we should also set CMAKE_SYSTEM_VERSION, but in
+         // that case like CMake we cannot easily determine system version either.
+
+From ea0aa8def379657559419a4dd2707e3bc60512b8 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Sun, 28 Feb 2021 20:52:44 +0100
+Subject: [PATCH 10/12] Build cmake earlier on dist-x86_64-musl
+
+musl-toolchain.sh is called with REPLACE_CC=1, so it will replace
+the host compiler and the subsequent cmake build will fail because
+it cannot find the openssl headers.
+
+Move the cmake build earlier, so it happens before the compiler
+is replaced.
+---
+ src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile b/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile
+index d779e8d7b5d5a..08f07eb828406 100644
+--- a/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile
+@@ -20,6 +20,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ 
+ WORKDIR /build/
+ 
++# Build cmake before musl toolchain, as we replace the compiler during that step.
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ COPY scripts/musl-toolchain.sh /build/
+ # We need to mitigate rust-lang/rust#34978 when compiling musl itself as well
+ RUN CFLAGS="-Wa,-mrelax-relocations=no -Wa,--compress-debug-sections=none -Wl,--compress-debug-sections=none" \
+@@ -29,9 +33,6 @@ RUN CFLAGS="-Wa,-mrelax-relocations=no -Wa,--compress-debug-sections=none -Wl,--
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
+-COPY scripts/cmake.sh /scripts/
+-RUN /scripts/cmake.sh
+-
+ ENV HOSTS=x86_64-unknown-linux-musl
+ 
+ ENV RUST_CONFIGURE_ARGS \
+
+From 9a8acea78355b604dbeb29bc38bd4dbf7bfce95f Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Tue, 2 Mar 2021 21:54:03 +0100
+Subject: [PATCH 11/12] Schedule ThinLTOBuffer passes again after sanitizer
+ passes
+
+This works around a design defect in the LLVM 12 pass builder
+implementation. In LLVM 13, the PreLink ThinLTO pipeline properly
+respects the OptimizerLastEPCallbacks.
+---
+ compiler/rustc_llvm/llvm-wrapper/PassWrapper.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/compiler/rustc_llvm/llvm-wrapper/PassWrapper.cpp b/compiler/rustc_llvm/llvm-wrapper/PassWrapper.cpp
+index 79babd27a304f..2f28162f908ac 100644
+--- a/compiler/rustc_llvm/llvm-wrapper/PassWrapper.cpp
++++ b/compiler/rustc_llvm/llvm-wrapper/PassWrapper.cpp
+@@ -1015,7 +1015,12 @@ LLVMRustOptimizeWithNewPassManager(
+       case LLVMRustOptStage::PreLinkThinLTO:
+ #if LLVM_VERSION_GE(12, 0)
+         MPM = PB.buildThinLTOPreLinkDefaultPipeline(OptLevel);
+-        NeedThinLTOBufferPasses = false;
++        // The ThinLTOPreLink pipeline already includes ThinLTOBuffer passes. However, callback
++        // passes may still run afterwards. This means we need to run the buffer passes again.
++        // FIXME: In LLVM 13, the ThinLTOPreLink pipeline also runs OptimizerLastEPCallbacks
++        // before the RequiredLTOPreLinkPasses, in which case we can remove these hacks.
++        if (OptimizerLastEPCallbacks.empty())
++          NeedThinLTOBufferPasses = false;
+ #else
+         MPM = PB.buildThinLTOPreLinkDefaultPipeline(OptLevel, DebugPassManager);
+ #endif
+
+From ab03c56ba2df69e5c01d2150a319343543a29ba9 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Wed, 3 Mar 2021 17:58:39 +0100
+Subject: [PATCH 12/12] Explicitly disable preinline during pgo-use test
+
+We previously used -Os to disable this pass, but since
+https://reviews.llvm.org/D91673 this no longer works. Explicitly
+disable it using -Cllvm-args instead.
+---
+ src/test/run-make-fulldeps/pgo-use/Makefile | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/test/run-make-fulldeps/pgo-use/Makefile b/src/test/run-make-fulldeps/pgo-use/Makefile
+index cb5e9e9a45580..01bc211df1616 100644
+--- a/src/test/run-make-fulldeps/pgo-use/Makefile
++++ b/src/test/run-make-fulldeps/pgo-use/Makefile
+@@ -12,12 +12,11 @@
+ # `else` branch. Accordingly, we expect the function that is never called to
+ # be marked as cold.
+ #
+-# The program is compiled with `-Copt-level=s` because this setting disables
+-# LLVM's pre-inlining pass (i.e. a pass that does some inlining before it adds
+-# the profiling instrumentation). Disabling this pass leads to rather
+-# predictable IR which we need for this test to be stable.
++# Disable the pre-inlining pass (i.e. a pass that does some inlining before
++# it adds the profiling instrumentation). Disabling this pass leads to
++# rather predictable IR which we need for this test to be stable.
+ 
+-COMMON_FLAGS=-Copt-level=s -Ccodegen-units=1
++COMMON_FLAGS=-Copt-level=2 -Ccodegen-units=1 -Cllvm-args=-disable-preinline
+ 
+ # LLVM doesn't support instrumenting binaries that use SEH:
+ # https://github.com/rust-lang/rust/issues/61002

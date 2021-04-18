@@ -1,0 +1,452 @@
+From 55f345f32505c2095966a5dc46c4ae3290dbf7a1 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Tue, 3 Nov 2020 22:47:16 +0100
+Subject: [PATCH 01/12] Support LLVM 12 in rustc
+
+---
+ compiler/rustc_codegen_llvm/src/abi.rs        |  17 ++-
+ compiler/rustc_codegen_llvm/src/context.rs    |   7 ++
+ compiler/rustc_codegen_llvm/src/llvm/ffi.rs   |   4 +
+ compiler/rustc_codegen_ssa/src/common.rs      |   1 +
+ .../rustc_llvm/llvm-wrapper/PassWrapper.cpp   | 119 ++++++++++++++----
+ .../rustc_llvm/llvm-wrapper/RustWrapper.cpp   |  53 +++++++-
+ .../src/spec/powerpc64_unknown_linux_gnu.rs   |   2 +-
+ .../src/spec/powerpc64_unknown_linux_musl.rs  |   2 +-
+ .../src/spec/powerpc64_wrs_vxworks.rs         |   2 +-
+ .../src/spec/powerpc64le_unknown_linux_gnu.rs |   2 +-
+ .../spec/powerpc64le_unknown_linux_musl.rs    |   2 +-
+ src/test/assembly/asm/riscv-types.rs          |  29 ++---
+ src/test/codegen/function-arguments.rs        |   3 +-
+ src/test/codegen/packed.rs                    |   4 +-
+ .../codegen/repr-transparent-aggregates-1.rs  |  18 +--
+ .../codegen/repr-transparent-aggregates-2.rs  |  18 +--
+ .../codegen/repr-transparent-aggregates-3.rs  |  18 +--
+ .../run-make-fulldeps/split-dwarf/Makefile    |   2 +-
+ 18 files changed, 226 insertions(+), 77 deletions(-)
+
+diff --git a/src/test/run-make-fulldeps/split-dwarf/Makefile b/src/test/run-make-fulldeps/split-dwarf/Makefile
+index e89cc1b2ede9b..f56b4168b2d66 100644
+--- a/src/test/run-make-fulldeps/split-dwarf/Makefile
++++ b/src/test/run-make-fulldeps/split-dwarf/Makefile
+@@ -4,6 +4,6 @@
+ # min-llvm-version: 11.0
+ 
+ all:
+-	$(RUSTC) -Z unstable-options -C split-debuginfo=packed foo.rs -g
++	$(RUSTC) -Z unstable-options -C split-debuginfo=packed -C debuginfo=2 foo.rs -g
+ 	rm $(TMPDIR)/foo.dwp
+ 	rm $(TMPDIR)/$(call BIN,foo)
+
+From 092643a2665f807ab045a533c04785f4f37d2d7d Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Tue, 23 Feb 2021 21:38:49 +0100
+Subject: [PATCH 02/12] Explicitly mark x86-interrupt ABI argument as byval
+
+The first argument to an x86-interrupt ABI function was implicitly
+treated as byval prior to LLVM 12. Since LLVM 12, it has to be
+marked as such explicitly: https://github.com/llvm/llvm-project/commit/2e0e03c6a089da39039ec3f464f7cee5df86646b
+---
+ compiler/rustc_target/src/abi/call/mod.rs | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/compiler/rustc_target/src/abi/call/mod.rs b/compiler/rustc_target/src/abi/call/mod.rs
+index 9c49922c286eb..0deb1186b0fd6 100644
+--- a/compiler/rustc_target/src/abi/call/mod.rs
++++ b/compiler/rustc_target/src/abi/call/mod.rs
+@@ -603,6 +603,13 @@ impl<'a, Ty> FnAbi<'a, Ty> {
+         Ty: TyAndLayoutMethods<'a, C> + Copy,
+         C: LayoutOf<Ty = Ty, TyAndLayout = TyAndLayout<'a, Ty>> + HasDataLayout + HasTargetSpec,
+     {
++        if abi == spec::abi::Abi::X86Interrupt {
++            if let Some(arg) = self.args.first_mut() {
++                arg.make_indirect_byval();
++            }
++            return Ok(());
++        }
++
+         match &cx.target_spec().arch[..] {
+             "x86" => {
+                 let flavor = if abi == spec::abi::Abi::Fastcall {
+
+From 1e21b2cba8c96e4ab930d7aad473e08ddb483a78 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Sat, 30 Jan 2021 12:29:22 +0100
+Subject: [PATCH 04/12] Build newer version of cmake in Docker images
+
+LLVM requires CMake 3.13.4, which is only available as of Ubuntu 20.04.
+On images using an older version, build it manually.
+---
+ .../docker/host-x86_64/arm-android/Dockerfile |  3 ++
+ .../host-x86_64/dist-aarch64-linux/Dockerfile |  3 ++
+ .../host-x86_64/dist-android/Dockerfile       |  3 ++
+ .../host-x86_64/dist-arm-linux/Dockerfile     |  3 ++
+ .../host-x86_64/dist-armhf-linux/Dockerfile   |  3 ++
+ .../host-x86_64/dist-armv7-linux/Dockerfile   |  3 ++
+ .../dist-i586-gnu-i586-i686-musl/Dockerfile   |  3 ++
+ .../host-x86_64/dist-mips-linux/Dockerfile    |  3 ++
+ .../host-x86_64/dist-mips64-linux/Dockerfile  |  3 ++
+ .../dist-mips64el-linux/Dockerfile            |  3 ++
+ .../host-x86_64/dist-mipsel-linux/Dockerfile  |  3 ++
+ .../host-x86_64/dist-powerpc-linux/Dockerfile |  3 ++
+ .../dist-powerpc64-linux/Dockerfile           |  3 ++
+ .../dist-powerpc64le-linux/Dockerfile         |  3 ++
+ .../host-x86_64/dist-riscv64-linux/Dockerfile |  3 ++
+ .../host-x86_64/dist-s390x-linux/Dockerfile   |  3 ++
+ .../dist-x86_64-freebsd/Dockerfile            |  3 ++
+ .../dist-x86_64-illumos/Dockerfile            |  3 ++
+ .../host-x86_64/dist-x86_64-musl/Dockerfile   |  3 ++
+ .../host-x86_64/dist-x86_64-netbsd/Dockerfile |  3 ++
+ .../host-x86_64/i686-gnu-nopt/Dockerfile      |  3 ++
+ src/ci/docker/host-x86_64/i686-gnu/Dockerfile |  3 ++
+ .../host-x86_64/x86_64-gnu-aux/Dockerfile     |  3 ++
+ .../x86_64-gnu-distcheck/Dockerfile           |  3 ++
+ .../host-x86_64/x86_64-gnu-tools/Dockerfile   |  3 ++
+ src/ci/docker/scripts/cmake.sh                | 34 +++++++++++++++++++
+ 26 files changed, 109 insertions(+)
+ create mode 100755 src/ci/docker/scripts/cmake.sh
+
+diff --git a/src/ci/docker/host-x86_64/arm-android/Dockerfile b/src/ci/docker/host-x86_64/arm-android/Dockerfile
+index f675252fb169d..43cdbbe92e3ac 100644
+--- a/src/ci/docker/host-x86_64/arm-android/Dockerfile
++++ b/src/ci/docker/host-x86_64/arm-android/Dockerfile
+@@ -36,5 +36,8 @@ ENV SCRIPT python3 ../x.py --stage 2 test --host='' --target $TARGETS
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ COPY scripts/android-start-emulator.sh /scripts/
+ ENTRYPOINT ["/scripts/android-start-emulator.sh"]
+diff --git a/src/ci/docker/host-x86_64/dist-aarch64-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-aarch64-linux/Dockerfile
+index 95c54ca1abc06..e6b6b6e53b99d 100644
+--- a/src/ci/docker/host-x86_64/dist-aarch64-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-aarch64-linux/Dockerfile
+@@ -24,6 +24,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/aarch64-unknown-linux-gnueabi/bin
+ 
+ ENV CC_aarch64_unknown_linux_gnu=aarch64-unknown-linux-gnueabi-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-android/Dockerfile b/src/ci/docker/host-x86_64/dist-android/Dockerfile
+index 258dcea06e6dc..ee727359f3961 100644
+--- a/src/ci/docker/host-x86_64/dist-android/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-android/Dockerfile
+@@ -36,3 +36,6 @@ ENV SCRIPT python3 ../x.py dist --host='' --target $TARGETS
+ 
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
++
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
+diff --git a/src/ci/docker/host-x86_64/dist-arm-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-arm-linux/Dockerfile
+index 88b13eab2d08c..1be3fecd88fff 100644
+--- a/src/ci/docker/host-x86_64/dist-arm-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-arm-linux/Dockerfile
+@@ -27,6 +27,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/arm-unknown-linux-gnueabi/bin
+ 
+ ENV CC_arm_unknown_linux_gnueabi=arm-unknown-linux-gnueabi-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-armhf-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-armhf-linux/Dockerfile
+index 977ef08c27478..66eb4137a87ca 100644
+--- a/src/ci/docker/host-x86_64/dist-armhf-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-armhf-linux/Dockerfile
+@@ -19,6 +19,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/arm-unknown-linux-gnueabihf/bin
+ 
+ ENV CC_arm_unknown_linux_gnueabihf=arm-unknown-linux-gnueabihf-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-armv7-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-armv7-linux/Dockerfile
+index 65d713359d99e..c13f63911f8fa 100644
+--- a/src/ci/docker/host-x86_64/dist-armv7-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-armv7-linux/Dockerfile
+@@ -19,6 +19,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/armv7-unknown-linux-gnueabihf/bin
+ 
+ ENV CC_armv7_unknown_linux_gnueabihf=armv7-unknown-linux-gnueabihf-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-i586-gnu-i586-i686-musl/Dockerfile b/src/ci/docker/host-x86_64/dist-i586-gnu-i586-i686-musl/Dockerfile
+index c734202eef642..c98fc7dcfff3e 100644
+--- a/src/ci/docker/host-x86_64/dist-i586-gnu-i586-i686-musl/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-i586-gnu-i586-i686-musl/Dockerfile
+@@ -30,6 +30,9 @@ RUN CC=gcc CFLAGS="-m32 -Wa,-mrelax-relocations=no" \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV RUST_CONFIGURE_ARGS \
+       --musl-root-i586=/musl-i586 \
+       --musl-root-i686=/musl-i686 \
+diff --git a/src/ci/docker/host-x86_64/dist-mips-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-mips-linux/Dockerfile
+index cb5c17c25ab9f..b0f06569a9c21 100644
+--- a/src/ci/docker/host-x86_64/dist-mips-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-mips-linux/Dockerfile
+@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV HOSTS=mips-unknown-linux-gnu
+ 
+ ENV RUST_CONFIGURE_ARGS --enable-extended --disable-docs
+diff --git a/src/ci/docker/host-x86_64/dist-mips64-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-mips64-linux/Dockerfile
+index 31146e3ead43e..245c28e1fa341 100644
+--- a/src/ci/docker/host-x86_64/dist-mips64-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-mips64-linux/Dockerfile
+@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV HOSTS=mips64-unknown-linux-gnuabi64
+ 
+ ENV RUST_CONFIGURE_ARGS --enable-extended --disable-docs
+diff --git a/src/ci/docker/host-x86_64/dist-mips64el-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-mips64el-linux/Dockerfile
+index dadd50a7e66d9..03998c8880aea 100644
+--- a/src/ci/docker/host-x86_64/dist-mips64el-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-mips64el-linux/Dockerfile
+@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV HOSTS=mips64el-unknown-linux-gnuabi64
+ 
+ ENV RUST_CONFIGURE_ARGS --enable-extended --disable-docs
+diff --git a/src/ci/docker/host-x86_64/dist-mipsel-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-mipsel-linux/Dockerfile
+index d2d65565b10f2..5861727062101 100644
+--- a/src/ci/docker/host-x86_64/dist-mipsel-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-mipsel-linux/Dockerfile
+@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV HOSTS=mipsel-unknown-linux-gnu
+ 
+ ENV RUST_CONFIGURE_ARGS --enable-extended --disable-docs
+diff --git a/src/ci/docker/host-x86_64/dist-powerpc-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-powerpc-linux/Dockerfile
+index 651daac86139d..ecaa495e97aee 100644
+--- a/src/ci/docker/host-x86_64/dist-powerpc-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-powerpc-linux/Dockerfile
+@@ -25,6 +25,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/powerpc-unknown-linux-gnu/bin
+ 
+ ENV \
+diff --git a/src/ci/docker/host-x86_64/dist-powerpc64-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-powerpc64-linux/Dockerfile
+index 6ff4d787212a0..a22d9a7553ecf 100644
+--- a/src/ci/docker/host-x86_64/dist-powerpc64-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-powerpc64-linux/Dockerfile
+@@ -26,6 +26,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/powerpc64-unknown-linux-gnu/bin
+ 
+ ENV \
+diff --git a/src/ci/docker/host-x86_64/dist-powerpc64le-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-powerpc64le-linux/Dockerfile
+index c1a621ff105b7..5157dd4c79b4c 100644
+--- a/src/ci/docker/host-x86_64/dist-powerpc64le-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-powerpc64le-linux/Dockerfile
+@@ -25,6 +25,9 @@ RUN ./build-powerpc64le-toolchain.sh
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV \
+     AR_powerpc64le_unknown_linux_gnu=powerpc64le-linux-gnu-ar \
+     CC_powerpc64le_unknown_linux_gnu=powerpc64le-linux-gnu-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-riscv64-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-riscv64-linux/Dockerfile
+index dff7c475157a2..80b7793cb7e3c 100644
+--- a/src/ci/docker/host-x86_64/dist-riscv64-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-riscv64-linux/Dockerfile
+@@ -19,6 +19,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/riscv64-unknown-linux-gnu/bin
+ 
+ ENV CC_riscv64gc_unknown_linux_gnu=riscv64-unknown-linux-gnu-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-s390x-linux/Dockerfile b/src/ci/docker/host-x86_64/dist-s390x-linux/Dockerfile
+index 1b261993cfc4f..5e62624395210 100644
+--- a/src/ci/docker/host-x86_64/dist-s390x-linux/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-s390x-linux/Dockerfile
+@@ -25,6 +25,9 @@ USER root
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/s390x-ibm-linux-gnu/bin
+ 
+ ENV \
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-freebsd/Dockerfile b/src/ci/docker/host-x86_64/dist-x86_64-freebsd/Dockerfile
+index 8413d775ac4c4..121dd3f455a9e 100644
+--- a/src/ci/docker/host-x86_64/dist-x86_64-freebsd/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-x86_64-freebsd/Dockerfile
+@@ -23,6 +23,9 @@ RUN /tmp/freebsd-toolchain.sh x86_64
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV \
+     AR_x86_64_unknown_freebsd=x86_64-unknown-freebsd11-ar \
+     CC_x86_64_unknown_freebsd=x86_64-unknown-freebsd11-clang \
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-illumos/Dockerfile b/src/ci/docker/host-x86_64/dist-x86_64-illumos/Dockerfile
+index 2a0f6a39c5781..c2e44ead51ee4 100644
+--- a/src/ci/docker/host-x86_64/dist-x86_64-illumos/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-x86_64-illumos/Dockerfile
+@@ -22,6 +22,9 @@ RUN bash /tmp/illumos-toolchain.sh x86_64 gcc
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV \
+     AR_x86_64_unknown_illumos=x86_64-illumos-ar \
+     CC_x86_64_unknown_illumos=x86_64-illumos-gcc \
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile b/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile
+index 904ee64db3b7e..d779e8d7b5d5a 100644
+--- a/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-x86_64-musl/Dockerfile
+@@ -29,6 +29,9 @@ RUN CFLAGS="-Wa,-mrelax-relocations=no -Wa,--compress-debug-sections=none -Wl,--
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV HOSTS=x86_64-unknown-linux-musl
+ 
+ ENV RUST_CONFIGURE_ARGS \
+diff --git a/src/ci/docker/host-x86_64/dist-x86_64-netbsd/Dockerfile b/src/ci/docker/host-x86_64/dist-x86_64-netbsd/Dockerfile
+index f3f7255f154dc..92bdc9811fd52 100644
+--- a/src/ci/docker/host-x86_64/dist-x86_64-netbsd/Dockerfile
++++ b/src/ci/docker/host-x86_64/dist-x86_64-netbsd/Dockerfile
+@@ -9,6 +9,9 @@ RUN /tmp/build-netbsd-toolchain.sh
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV PATH=$PATH:/x-tools/x86_64-unknown-netbsd/bin
+ 
+ ENV \
+diff --git a/src/ci/docker/host-x86_64/i686-gnu-nopt/Dockerfile b/src/ci/docker/host-x86_64/i686-gnu-nopt/Dockerfile
+index 0e28ea9668f07..0182ebb8b597e 100644
+--- a/src/ci/docker/host-x86_64/i686-gnu-nopt/Dockerfile
++++ b/src/ci/docker/host-x86_64/i686-gnu-nopt/Dockerfile
+@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ RUN mkdir -p /config
+ RUN echo "[rust]" > /config/nopt-std-config.toml
+ RUN echo "optimize = false" >> /config/nopt-std-config.toml
+diff --git a/src/ci/docker/host-x86_64/i686-gnu/Dockerfile b/src/ci/docker/host-x86_64/i686-gnu/Dockerfile
+index 195601755f303..feaab819bdda3 100644
+--- a/src/ci/docker/host-x86_64/i686-gnu/Dockerfile
++++ b/src/ci/docker/host-x86_64/i686-gnu/Dockerfile
+@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV RUST_CONFIGURE_ARGS --build=i686-unknown-linux-gnu
+ # Exclude some tests that are unlikely to be platform specific, to speed up
+ # this slow job.
+diff --git a/src/ci/docker/host-x86_64/x86_64-gnu-aux/Dockerfile b/src/ci/docker/host-x86_64/x86_64-gnu-aux/Dockerfile
+index a5bedadc05b61..00ad7b0a71037 100644
+--- a/src/ci/docker/host-x86_64/x86_64-gnu-aux/Dockerfile
++++ b/src/ci/docker/host-x86_64/x86_64-gnu-aux/Dockerfile
+@@ -42,5 +42,8 @@ RUN npm install browser-ui-test -g --unsafe-perm=true
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV RUST_CONFIGURE_ARGS --build=x86_64-unknown-linux-gnu
+ ENV RUST_CHECK_TARGET check-aux-and-gui
+diff --git a/src/ci/docker/host-x86_64/x86_64-gnu-distcheck/Dockerfile b/src/ci/docker/host-x86_64/x86_64-gnu-distcheck/Dockerfile
+index 5faa0ccab568b..09d9cda02bda6 100644
+--- a/src/ci/docker/host-x86_64/x86_64-gnu-distcheck/Dockerfile
++++ b/src/ci/docker/host-x86_64/x86_64-gnu-distcheck/Dockerfile
+@@ -19,6 +19,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ ENV RUST_CONFIGURE_ARGS --build=x86_64-unknown-linux-gnu --set rust.ignore-git=false
+ ENV SCRIPT python3 ../x.py --stage 2 test distcheck
+ ENV DIST_SRC 1
+diff --git a/src/ci/docker/host-x86_64/x86_64-gnu-tools/Dockerfile b/src/ci/docker/host-x86_64/x86_64-gnu-tools/Dockerfile
+index 89171a6f2153b..d4838c0d6f8e5 100644
+--- a/src/ci/docker/host-x86_64/x86_64-gnu-tools/Dockerfile
++++ b/src/ci/docker/host-x86_64/x86_64-gnu-tools/Dockerfile
+@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ COPY scripts/sccache.sh /scripts/
+ RUN sh /scripts/sccache.sh
+ 
++COPY scripts/cmake.sh /scripts/
++RUN /scripts/cmake.sh
++
+ COPY host-x86_64/x86_64-gnu-tools/checktools.sh /tmp/
+ 
+ ENV RUST_CONFIGURE_ARGS \
