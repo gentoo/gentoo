@@ -881,7 +881,7 @@ app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.7-r1 2.0.7-r2: A userspace logging daemon for netfilter/iptables related logging
 app-admin/undertaker-scripts 1: Scripts to help retiring Gentoo developers
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/vault 1.5.6 1.5.7 1.6.1 1.6.3: A tool for managing secrets
+app-admin/vault 1.5.6 1.5.7 1.6.1 1.6.3 1.7.0: A tool for managing secrets
 app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: Watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
