@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools toolchain-funcs xdg-utils
 MY_P=${P/_}
@@ -12,10 +12,10 @@ SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="media-libs/hamlib
+RDEPEND="media-libs/hamlib:=
 	dev-libs/glib:2
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
@@ -28,15 +28,14 @@ S=${WORKDIR}/${MY_P}
 DOCS=( AUTHORS data/doc/THANKS NEWS README )
 
 src_prepare() {
+	eapply_user
 	eapply -p0 "${FILESDIR}/${PN}-2.0.7-desktop.patch"
 
-	# Let portage handle updating mime/desktop databases,
-	eapply -p0 "${FILESDIR}/${PN}-2.0.13-desktop-update.patch"
 	# Drop -Werror
-	sed -i -e "s:-Werror::" configure.ac || die
+	sed -i -e "s:-Werror::g" configure.ac || die
 	# fix underlinking
 	sed -i -e "s:HAMLIB_LIBS@:HAMLIB_LIBS@ -lm:g" src/Makefile.am || die
-	eautoreconf
+	eautoconf
 
 	# Fix broken png files<<
 	einfo "Fixing broken png files."
@@ -48,12 +47,11 @@ src_prepare() {
 	popd
 	einfo "done ..."
 
-	eapply_user
 }
 
 src_configure() {
 	# mime-update causes file collisions if enabled
-	econf --disable-mime-update --disable-desktop-update
+	econf --disable-mime-update
 }
 
 src_compile() {
@@ -62,6 +60,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+	# build system makes it complicate to inhibit updating desktop 
+	# database, so just remove the offending file
+	rm  "${D}"/usr/share/applications/mimeinfo.cache || die
 	docompress -x /usr/share/doc/${PF}/{KEYS,ChangeLog,TODO,BUGS}
 	einstalldocs
 }
