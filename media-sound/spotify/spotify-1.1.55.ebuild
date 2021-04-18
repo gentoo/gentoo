@@ -12,7 +12,7 @@ SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libnotify libressl systray pax_kernel pulseaudio"
+IUSE="libnotify libressl local-playback pax_kernel pulseaudio systray"
 RESTRICT="mirror strip"
 
 BDEPEND=">=dev-util/patchelf-0.10"
@@ -31,6 +31,7 @@ RDEPEND="
 	net-print/cups[ssl]
 	pulseaudio? ( media-sound/pulseaudio )
 	!pulseaudio? ( media-sound/apulse )
+	local-playback? ( media-video/ffmpeg:0/56.58.58 )
 	systray? ( gnome-extra/gnome-integration-spotify )
 	x11-libs/gtk+:2
 	app-accessibility/at-spi2-atk
