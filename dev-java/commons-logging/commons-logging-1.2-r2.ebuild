@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="commons-logging:commons-logging:1.2"
 
 inherit java-pkg-2 java-ant-2 java-osgi
 
