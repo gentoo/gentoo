@@ -13357,7 +13357,7 @@ media-libs/liblo 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: Easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.2 9999: C++ library for the Linux Sampler control protocol
-media-libs/libltc 1.3.1 9999: Linear/Logitudinal Time Code (LTC) Library
+media-libs/libltc 1.3.1-r1 9999: Linear/Logitudinal Time Code (LTC) Library
 media-libs/libmad 0.15.1b-r10: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.24.0-r1 1.24.1: Mixer library for MATE Desktop
 media-libs/libmatroska 1.6.2 1.6.3: Extensible multimedia container format based on EBML
