@@ -14,7 +14,7 @@ S="${WORKDIR}"
 LICENSE="ut2003-demo"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	sys-libs/libstdc++-v3:5
@@ -22,6 +22,7 @@ RDEPEND="
 	x11-libs/libXext[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 "
+
 dir=opt/${PN}
 Ddir="${ED}"/${dir}
 QA_PREBUILT="${dir}/System/*"
