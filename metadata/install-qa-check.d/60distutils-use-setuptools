@@ -30,7 +30,7 @@ distutils_use_setuptools_check() {
 				then
 					# explicit *unconditional* rdepend in package metadata
 					new_expected=rdepend
-				elif grep -q -s -F '[console_scripts]' \
+				elif grep -q -s '\[\(console\|gui\)_scripts\]' \
 						"${egg}"/entry_points.txt
 				then
 					new_expected=entry-point
