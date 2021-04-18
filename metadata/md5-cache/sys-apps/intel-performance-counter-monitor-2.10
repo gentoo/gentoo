@@ -3,11 +3,12 @@ DEPEND=>=sys-devel/gcc-4:* sys-apps/sed
 DESCRIPTION=Intel Performance Counter Monitor - A better way to measure CPU utilization
 EAPI=5
 HOMEPAGE=https://software.intel.com/en-us/articles/intel-performance-counter-monitor-a-better-way-to-measure-cpu-utilization
+INHERIT=fcaps
 IUSE=+filecaps
 KEYWORDS=~amd64
 LICENSE=BSD
 RDEPEND=>=sys-devel/gcc-4:* filecaps? ( sys-libs/libcap )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~idella4/distfiles/IntelPerformanceCounterMonitor-PCM-V2.10.zip
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	fcaps	da689a8e04bbbb3518888ff668fee45b	versionator	d3fb3ba33acc3bbbdc4d7970227c100d
-_md5_=e4439d45183ea80c915cc16e03ef1640
+_eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b
+_md5_=1e87870d315a5ce86e33b6c7832d733c

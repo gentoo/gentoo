@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install nofetch unpack
-DEPEND=app-arch/unzip
 DESCRIPTION=Provides the capability to determine the health of Supermicro servers components
 EAPI=7
 HOMEPAGE=https://www.supermicro.com
@@ -9,4 +9,4 @@ LICENSE=supermicro
 RESTRICT=bindist fetch mirror
 SLOT=0
 SRC_URI=SuperDiag_1.4.0_20201120.zip
-_md5_=25bf9644bd55d956a2667e215a0602be
+_md5_=62b2c874ac7a07b2c2bb61ca2af42890

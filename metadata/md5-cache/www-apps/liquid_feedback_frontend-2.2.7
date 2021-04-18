@@ -3,11 +3,12 @@ DEPEND=www-apps/rocketwiki-lqfb www-servers/apache >=www-apps/liquid_feedback_co
 DESCRIPTION=Internet platforms for proposition development and decision making
 EAPI=7
 HOMEPAGE=https://www.public-software-group.org/liquid_feedback
+INHERIT=estack toolchain-funcs
 IUSE=l10n_de l10n_el l10n_en l10n_eo l10n_it
 KEYWORDS=~amd64
 LICENSE=HPND CC-BY-2.5
 RDEPEND=>=www-apps/liquid_feedback_core-2.2.6
 SLOT=0
 SRC_URI=https://www.public-software-group.org/pub/projects/liquid_feedback/frontend/v2.2.7/liquid_feedback_frontend-v2.2.7.tar.gz l10n_it? ( mirror://gentoo/liquid_feedback_frontend-italian-2.2.7.tar.gz )
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=7bd625f862442c78a670d8fe2ee5ca80
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=d17dc9bea70b403a6bc5db1750efd6cb

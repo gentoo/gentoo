@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DEPEND=app-arch/unzip
 DESCRIPTION=A PDF reader in JavaScript
 EAPI=7
 HOMEPAGE=https://mozilla.github.io/pdf.js/
@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/mozilla/pdf.js/releases/download/v2.4.456/pdfjs-2.4.456-dist.zip -> pdfjs-2.4.456.zip
-_md5_=094526fa9f2b32161723f3fd80d8018e
+_md5_=bd481478d9bd9f47adf5a431849e47e5

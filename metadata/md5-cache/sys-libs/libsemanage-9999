@@ -4,7 +4,7 @@ DEPEND=>=sys-libs/libsepol-9999:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,
 DESCRIPTION=SELinux kernel and policy management library
 EAPI=7
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
-INHERIT=multilib python-r1 toolchain-funcs multilib-minimal git-r3
+INHERIT=python-r1 toolchain-funcs multilib-minimal git-r3
 IUSE=python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
 LICENSE=GPL-2
 PROPERTIES=live
@@ -12,5 +12,5 @@ RDEPEND=>=sys-libs/libsepol-9999:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 RESTRICT=test
 SLOT=0/2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=0cd1826e124e45da179f9918389c82f1
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_md5_=039a98dfb653c95ac1ac7861068143c5

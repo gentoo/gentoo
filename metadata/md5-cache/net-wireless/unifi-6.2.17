@@ -1,6 +1,5 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=app-arch/unzip virtual/pkgconfig
 DEFINED_PHASES=install prepare
-DEPEND=app-arch/unzip
 DESCRIPTION=A Management Controller for Ubiquiti Networks UniFi APs
 EAPI=7
 HOMEPAGE=https://www.ubnt.com
@@ -13,4 +12,4 @@ RESTRICT=bindist mirror
 SLOT=0/6.2
 SRC_URI=https://dl.ui.com/unifi/6.2.17-ceb3ba714d/UniFi.unix.zip -> unifi-6.2.17.zip
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=4b8597bd135350c6232129a61078d46f
+_md5_=a52c6479892e991693937140d6f22ce8

@@ -1,14 +1,14 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile configure install
-DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
-DESCRIPTION=a fuzzy search tool for the command-line
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=A fuzzy search tool for the command-line
 EAPI=7
 HOMEPAGE=https://github.com/mptre/pick
-INHERIT=autotools toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/mptre/pick/releases/download/v4.0.0/pick-4.0.0.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=20bfbed3eab468cab3adb51b86cd936b
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=def794aa094041b9ba4f54d090ec7dcb

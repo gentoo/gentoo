@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install unpack
-DEPEND=app-arch/unzip
 DESCRIPTION=Unicode data from unicode.org
 EAPI=7
 HOMEPAGE=https://www.unicode.org/ucd/
@@ -7,4 +7,4 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 LICENSE=unicode
 SLOT=0
 SRC_URI=https://www.unicode.org/Public/zipped/12.1.0/UCD.zip -> unicode-data-12.1.0-UCD.zip https://www.unicode.org/Public/zipped/12.1.0/Unihan.zip -> unicode-data-12.1.0-Unihan.zip
-_md5_=6f13193987332dd9410cb7775c79f029
+_md5_=40e4c40a88688729e6b9a302b969a185

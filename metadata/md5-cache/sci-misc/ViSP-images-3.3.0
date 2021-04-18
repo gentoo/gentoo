@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DEPEND=app-arch/unzip
 DESCRIPTION=ViSP images data set
 EAPI=7
 HOMEPAGE=http://www.irisa.fr/lagadic/visp/
@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~arm
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://visp-doc.inria.fr/download/dataset/visp-images-3.3.0.zip
-_md5_=ed1e1d0b3506251b41a72d142a704bae
+_md5_=2d897b73bfe83626becc0aa4bd6895be

@@ -1,15 +1,12 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install
 DEPEND=sys-libs/ncurses
 DESCRIPTION=A tool to provide access to statistics about the system on which it's run
 EAPI=7
 HOMEPAGE=https://www.i-scream.org/libstatgrab/
-INHERIT=autotools
 IUSE=doc examples
 KEYWORDS=amd64 ~arm ~arm64 ~ia64 ppc x86
 LICENSE=|| ( GPL-2 LGPL-2.1 )
 RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=https://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/libstatgrab/libstatgrab-0.91.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=6fabf50302307b2fa8eb11f95f1e7ac5
+_md5_=51365a8130f839e7f5f01506cf5f3a4f

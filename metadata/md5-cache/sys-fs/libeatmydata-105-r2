@@ -1,5 +1,4 @@
 DEFINED_PHASES=compile configure install test
-DEPEND=sys-apps/sed
 DESCRIPTION=LD_PRELOAD hack to convert sync()/msync() and the like to NO-OP
 EAPI=7
 HOMEPAGE=https://launchpad.net/libeatmydata/
@@ -11,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://launchpad.net/libeatmydata/trunk/release-105/+download/libeatmydata-105.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
-_md5_=7e82c5eee6fd42ad91d9944ac82cd0c6
+_md5_=1957b73d49f87634f75a2641a1dfdcff

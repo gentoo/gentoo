@@ -1,5 +1,5 @@
+BDEPEND=app-arch/xz-utils
 DEFINED_PHASES=install
-DEPEND=app-arch/xz-utils
 DESCRIPTION=Gentoo Cross-toolchain generator
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Crossdev
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/portage-2.1 >=app-portage/portage-utils-0.55 app-shells/bash sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=mirror://gentoo/crossdev-20201129.tar.xz https://dev.gentoo.org/~slyfox/distfiles/crossdev-20201129.tar.xz
-_md5_=8e5192d638cbdf409017df02a58ffc20
+_md5_=c482bb7ad50b913236f85bc28e1de0ab

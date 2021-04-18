@@ -3,10 +3,10 @@ DEPEND=dev-util/gtk-doc-am virtual/pkgconfig sys-devel/gnuconfig >=app-portage/e
 DESCRIPTION=a small library to create and manage 64-bit disk based hash tables
 EAPI=5
 HOMEPAGE=https://www.gnu.org/software/libdbh/
-INHERIT=autotools
+INHERIT=autotools eutils
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/dbh/dbh/5.0.19/libdbh2-5.0.19.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=f07381f96d1932d8dc363f788596d707
+_md5_=680eea673053ccf0cb1400d9c4341361

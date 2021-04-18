@@ -3,6 +3,7 @@ DEPEND=>=sys-devel/make-4.0 static? ( >=dev-lang/execline-2.1.1.0[static-libs] >
 DESCRIPTION=skarnet.org's small and secure supervision software suite
 EAPI=5
 HOMEPAGE=http://www.skarnet.org/software/s6/
+INHERIT=multilib
 IUSE=static
 KEYWORDS=amd64 x86
 LICENSE=ISC
@@ -10,4 +11,4 @@ RDEPEND=!static? ( >=dev-lang/execline-2.1.1.0 >=dev-libs/skalibs-2.3.2.0 )
 SLOT=0
 SRC_URI=http://www.skarnet.org/software/s6/s6-2.1.3.0.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=202f9dc838dd68a52ceb585771b127c4
+_md5_=62905094183a9de82e70f5383427d0ea

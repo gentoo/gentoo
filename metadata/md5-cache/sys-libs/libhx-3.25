@@ -1,6 +1,5 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=app-arch/xz-utils sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare
-DEPEND=app-arch/xz-utils
 DESCRIPTION=Platform independent library providing basic system functions
 EAPI=7
 HOMEPAGE=https://inai.de/projects/libhx/
@@ -11,4 +10,4 @@ LICENSE=GPL-3
 SLOT=0/32
 SRC_URI=https://inai.de/files/libhx/libHX-3.25.tar.xz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=3dd3068a4c0b0a9881904f6fe5b00fda
+_md5_=275cd3608a1a45afbc1b5af5232a0b27

@@ -10159,7 +10159,7 @@ dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/google-protobuf 3.12.4 3.13.0 3.14.0: Protocol Buffers are Google's data interchange format
 dev-ruby/gpgme 2.0.20: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.7.0-r2 0.8.0 0.12.1: Beautiful graphs for one or multiple datasets
-dev-ruby/haml 5.1.2: A ruby web page templating engine
+dev-ruby/haml 5.1.2 5.1.2-r1: A ruby web page templating engine
 dev-ruby/haml-rails 2.0.0 2.0.1: Provides Haml generators for Rails 4
 dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes for Ruby
 dev-ruby/hashdiff 1.0.0 1.0.1: Simple Hash extension to make working with nested hashes easier
@@ -13157,7 +13157,7 @@ media-gfx/xfig 3.2.7b: A menu-driven tool to draw and manipulate objects interac
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
 media-gfx/xpaint 2.10.2-r1 3.1.3: Image editor with tiff, jpeg and png support
-media-gfx/xsane 0.999-r3: graphical scanning frontend
+media-gfx/xsane 0.999-r3: Graphical scanning frontend
 media-gfx/xv 3.10a-r19: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
 media-gfx/yafaray 3.4.1 3.5.1: A free open-source montecarlo raytracing engine
@@ -17159,7 +17159,7 @@ sys-apps/pcmciautils 018_p8-r3: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.9.0 1.9.1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.6 1.5.7: PC/SC Architecture smartcard tools
-sys-apps/pick 4.0.0: a fuzzy search tool for the command-line
+sys-apps/pick 4.0.0: A fuzzy search tool for the command-line
 sys-apps/pkgcore 0.11.2-r2 0.11.5-r3 0.11.6-r1 0.11.8-r1 9999: a framework for package management
 sys-apps/plocate 1.1.5 1.1.6: Posting locate is a much faster locate
 sys-apps/pmount 0.9.99_alpha-r6: Policy based mounter that gives the ability to mount removable devices as a user

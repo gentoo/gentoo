@@ -3,7 +3,7 @@ DEPEND=emacs? ( >=app-editors/emacs-23.1:* ) readline? ( sys-libs/readline:= ) a
 DESCRIPTION=GNU Common Lisp
 EAPI=5
 HOMEPAGE=https://www.gnu.org/software/gcl/gcl.html
-INHERIT=elisp-common eutils flag-o-matic
+INHERIT=elisp-common epatch flag-o-matic
 IUSE=+ansi athena emacs +readline tk X
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=LGPL-2 GPL-2
@@ -11,5 +11,5 @@ RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) readline? ( sys-libs/readline:= ) 
 RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://gnu/gcl/gcl-2.6.12.tar.gz https://dev.gentoo.org/~grozin/gcl-2.6.12-fedora.tar.bz2
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	l10n	8cdd85e169b835d518bc2fd59f780d8e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
-_md5_=683a39a62bea51a52c5226b965dfc10b
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa	preserve-libs	ef207dc62baddfddfd39a164d9797648	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
+_md5_=ad513d630fc7a0cd303f8e3180b2d36c

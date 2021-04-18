@@ -2,7 +2,7 @@ DEFINED_PHASES=compile install prepare setup
 DESCRIPTION=Server software for IRTrans
 EAPI=7
 HOMEPAGE=http://www.irtrans.de
-INHERIT=eutils flag-o-matic toolchain-funcs mono-env
+INHERIT=wrapper flag-o-matic toolchain-funcs mono-env
 IUSE=mono
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD GPL-2
@@ -10,5 +10,5 @@ RDEPEND=mono? ( >=dev-lang/mono-2.10.5 )
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://ftp.disconnected-by-peer.at/irtrans/irserver-src-6.09.04.tar.gz http://ftp.disconnected-by-peer.at/irtrans/irserver-6.09.04.tar.gz http://www.irtrans.de/download/Server/Linux/irserver-src.tar.gz -> irserver-src-6.09.04.tar.gz http://www.irtrans.de/download/Server/Linux/irserver.tar.gz -> irserver-6.09.04.tar.gz
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	mono-env	1f24c032c78290b0d9a07d5b343051a7
-_md5_=ace21329f1c8076591b5873c4cf28636
+_eclasses_=wrapper	4251d4c84c25f59094fd557e0063a974	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	mono-env	1f24c032c78290b0d9a07d5b343051a7
+_md5_=9069485c01b8dee6da32d87f3402c25d
