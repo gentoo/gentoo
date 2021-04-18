@@ -1,4 +1,4 @@
-BDEPEND=dev-util/gdbus-codegen dev-util/glib-utils dev-util/intltool sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.50 dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) )
+BDEPEND=dev-util/gdbus-codegen dev-util/glib-utils dev-util/intltool sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.52 dev-lang/vala:0.50 dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) )
 DEFINED_PHASES=configure install prepare test
 DEPEND=>=dev-libs/glib-2.50 sys-apps/dbus >=xfce-base/libxfce4util-4.14:= introspection? ( dev-libs/gobject-introspection:= ) !<xfce-base/xfce4-panel-4.13.1 !<xfce-base/xfce4-settings-4.13.1
 DESCRIPTION=A configuration management system for Xfce
@@ -12,5 +12,5 @@ RDEPEND=>=dev-libs/glib-2.50 sys-apps/dbus >=xfce-base/libxfce4util-4.14:= intro
 REQUIRED_USE=vala? ( introspection )
 SLOT=0/3
 SRC_URI=https://archive.xfce.org/src/xfce/xfconf/4.16/xfconf-4.16.0.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	vala	5fab64090cefe75c5df431cefa0b653d
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	vala	12de027593aabf8f7d7df8d6c702db16
 _md5_=616584c19f9e540023de97cc87c0c532
