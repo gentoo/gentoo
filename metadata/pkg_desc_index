@@ -4849,7 +4849,7 @@ dev-java/commons-io 2.4 2.8.0: Utility classes, stream implementations, file fil
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r3 1.3-r4: Applies XPath expressions to graphs of objects of all kinds
-dev-java/commons-lang 2.0-r3 2.6-r1 3.1 3.4-r1 3.6 3.11-r1 3.12.0: Commons components to manipulate core java classes
+dev-java/commons-lang 2.0-r3 2.6-r1 3.1 3.6 3.11-r1 3.12.0: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2-r1 1.2-r2: An ultra-thin bridge between different Java logging libraries
 dev-java/commons-math 3.2-r1 3.6.1-r1: Lightweight, self-contained mathematics and statistics components
@@ -8499,7 +8499,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.7.3 3.8.2 3.10.0 3.10.1: Read metadata from Python packages
+dev-python/importlib_metadata 3.7.3 3.8.2 3.10.1: Read metadata from Python packages
 dev-python/importlib_resources 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 21.3.0: Incremental is a small library that versions your Python projects
@@ -14340,7 +14340,7 @@ media-video/pipewire 0.3.22 0.3.25: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2 0.91.0.10-r3: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 20.07.04 21.03.09 9999: A Qt-based video player, which can play most formats and codecs
-media-video/raspberrypi-omxplayer 0_p20160528-r3 9999: Command line media player for the Raspberry Pi
+media-video/raspberrypi-omxplayer 0_p20160528-r3: Command line media player for the Raspberry Pi
 media-video/rav1e 0.3.5 0.4.0 0.4.1 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
@@ -15458,7 +15458,7 @@ net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port 
 net-misc/rsync 3.2.3-r2 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6-r1: ARIN rwhois daemon
-net-misc/rygel 0.38.4: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.38.4 0.40.1: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 2.1.0: Command line client for Amazon S3
 net-misc/s6-networking 2.3.0.2 2.3.0.3 2.3.0.4 2.3.1.1 2.3.2.0: Suite of small networking utilities for Unix systems
 net-misc/samplicator 1.3.6 1.3.8_rc1: UDP packets forwarder and duplicator
