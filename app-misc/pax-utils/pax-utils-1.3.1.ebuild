@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
@@ -10,7 +10,8 @@ inherit python-single-r1 toolchain-funcs
 DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
 SRC_URI="mirror://gentoo/${P}.tar.xz
-	https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
+	https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz
+	https://dev.gentoo.org/~vapier/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
