@@ -2714,7 +2714,7 @@ app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.4: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2_p6_p14-r1: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.9 1.3: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.9 1.3.1: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.4.1: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6 0.3.6-r1: Simple command-line snippet manager
@@ -6940,7 +6940,7 @@ dev-perl/Linux-Distribution 0.230.0: Perl extension to detect on which Linux dis
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-PipeMagic 0.30.0: Perl extension to use the zero copy IO syscalls
-dev-perl/Linux-Smaps 0.130.0 0.140.0: Perl interface to /proc/PID/smaps
+dev-perl/Linux-Smaps 0.140.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0 0.140.0: Combines many List::* utility modules in one bite-sized package
 dev-perl/List-MoreUtils 0.418.0 0.419.0 0.426.0 0.428.0: Provide the missing functionality from List::Util
@@ -7743,7 +7743,7 @@ dev-perl/XML-RSS-Feed 2.400.0-r1: Persistant XML RSS Encapsulation
 dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
 dev-perl/XML-RegExp 0.40.0-r1: Regular expressions for XML tokens
-dev-perl/XML-SAX 0.990.0-r1 1.0.0: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
+dev-perl/XML-SAX 1.0.0: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
 dev-perl/XML-SAX-Base 1.90.0: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.510.0: SAX2 Driver for Expat
 dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
