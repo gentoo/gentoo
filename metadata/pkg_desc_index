@@ -1084,7 +1084,7 @@ app-cdr/cdemu-daemon 3.2.4: Daemon of the CDEmu optical media image mounting sui
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha09 3.02_alpha09-r2 3.02_alpha09-r3: A set of tools for CD/DVD reading and recording, including cdrecord
-app-cdr/cdw 0.8.1 0.8.1-r1 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
+app-cdr/cdw 0.8.1-r1 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cue2toc 0.4: Convert CUE files to cdrdao's TOC format
 app-cdr/cuecue 0.2.2-r3: Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
 app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
@@ -18734,7 +18734,7 @@ x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessio
 x11-misc/vym 2.7.1 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
 x11-misc/wbar 2.3.4-r3: A fast, lightweight quick launch bar
-x11-misc/wdm 1.28-r6 1.28-r7: WINGs Display Manager
+x11-misc/wdm 1.28-r7: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing information about the windows below
 x11-misc/wmctrl 1.07-r2: Command line tool to interact with an EWMH/NetWM compatible X Window Manager
