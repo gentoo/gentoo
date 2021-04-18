@@ -7,7 +7,7 @@ inherit desktop unpacker
 
 DESCRIPTION="Tank combat game with lighthearted, fast paced pandemonium"
 HOMEPAGE="http://www.garagegames.com/pg/product/view.php?id=12"
-SRC_URI="ftp://ggdev-1.homelan.com/thinktanks/ThinkTanksDemo_v${PV}.sh.bin"
+SRC_URI="http://demos.garagegames.com/thinktanks/ThinkTanksDemo_v${PV}.sh.bin"
 S="${WORKDIR}"
 
 LICENSE="THINKTANKS"
