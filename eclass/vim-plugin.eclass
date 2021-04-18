@@ -4,6 +4,7 @@
 # @ECLASS: vim-plugin.eclass
 # @MAINTAINER:
 # vim@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: used for installing vim plugins
 # @DESCRIPTION:
 # This eclass simplifies installation of app-vim plugins into
@@ -11,7 +12,12 @@
 # which is read automatically by vim.  The only exception is
 # documentation, for which we make a special case via vim-doc.eclass.
 
-inherit estack vim-doc
+case ${EAPI} in
+	6|7);;
+	*) die "EAPI ${EAPI:-0} unsupported (too old)";;
+esac
+
+inherit vim-doc
 EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
 
 VIM_PLUGIN_VIM_VERSION="${VIM_PLUGIN_VIM_VERSION:-7.3}"
@@ -33,37 +39,9 @@ SLOT="0"
 # * installs all files in "${ED}"/usr/share/vim/vimfiles.
 vim-plugin_src_install() {
 	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED="${D}"
-	local f
-
-	# When globbing, if nothing exists, the shell literally returns the glob
-	# pattern. So turn on nullglob and extglob options to avoid this.
-	eshopts_push -s extglob
-	eshopts_push -s nullglob
-
-	ebegin "Cleaning up unwanted files and directories"
-	# We're looking for dotfiles, dotdirectories and Makefiles here.
-	local obj
-	eval "local matches=(@(.[^.]|.??*|Makefile*))"
-	for obj in "${matches[@]}"; do
-		rm -rv "${obj}" || die "cannot remove ${obj}"
-	done
-	eend $?
-
-	# Turn those options back off.
-	eshopts_pop
-	eshopts_pop
 
 	# Install non-vim-help-docs
-	cd "${S}" || die "couldn't cd in ${S}"
-	local f
-	for f in *; do
-		[[ -f "${f}" ]] || continue
-		if [[ "${f}" = *.html ]]; then
-			dohtml "${f}"
-		else
-			dodoc "${f}"
-		fi
-	done
+	einstalldocs
 
 	# Install remainder of plugin
 	insinto /usr/share/vim/vimfiles/
