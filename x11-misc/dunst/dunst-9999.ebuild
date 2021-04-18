@@ -50,11 +50,11 @@ src_configure() {
 src_compile() {
 	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0
 	sed -e "s|##PREFIX##|${EPREFIX}/usr|" \
-	    -i dunst.systemd.service.in > dunst.service
+	    dunst.systemd.service.in > dunst.service
 }
 
 src_install() {
 	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0 \
 	      DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	systemd_dounit dunst.service
+	systemd_douserunit dunst.service
 }
