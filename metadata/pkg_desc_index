@@ -12022,7 +12022,7 @@ gnome-extra/cinnamon-session 4.6.2 4.8.0: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 4.6.4 4.8.5: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 4.6.2 4.8.3: Translation data for Cinnamon
 gnome-extra/cjs 4.6.0 4.8.2: Linux Mint's fork of gjs for Cinnamon
-gnome-extra/eiciel 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
+gnome-extra/eiciel 0.9.12.1-r1 0.9.13: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.38.4 3.40.0: Evolution groupware backend
 gnome-extra/evolution-ews 3.38.4 3.40.0: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers user configurable context menu actions
@@ -14185,7 +14185,7 @@ media-sound/tk707 0.8-r2: An 7x7 type midi drum sequencer for Linux
 media-sound/toolame 02l-r4: tooLAME - an optimized mpeg 1/2 layer 2 audio encoder
 media-sound/ttaenc 3.4.1-r1: True Audio Compressor Software
 media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnostic volume management daemon
-media-sound/twolame 0.3.13-r2 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
+media-sound/twolame 0.4.0: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.17-r4 0.2.19 0.2.20 9999: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.5.7: UPnP Media Renderer front-end for MPD, the Music Player Daemon
