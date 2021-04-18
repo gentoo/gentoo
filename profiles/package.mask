@@ -42,6 +42,7 @@ dev-util/findbugs
 # obsolete deps, not used by any package
 # removal in 30 days
 dev-java/commons-configuration
+dev-java/commons-jelly
 dev-java/ezmorph
 dev-java/ical4j
 
