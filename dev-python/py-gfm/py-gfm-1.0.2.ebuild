@@ -16,5 +16,3 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="dev-python/markdown[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
