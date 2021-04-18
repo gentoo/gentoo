@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools eutils optfeature
+inherit autotools desktop optfeature
 
 DESCRIPTION="Graphical front-end for command-line debuggers"
 HOMEPAGE="https://www.gnu.org/software/ddd"

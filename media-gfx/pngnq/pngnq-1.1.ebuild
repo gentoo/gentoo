@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 WANT_AUTOMAKE=1.13
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="Pngnq is a tool for quantizing PNG images in RGBA format"
 HOMEPAGE="http://pngnq.sourceforge.net/"

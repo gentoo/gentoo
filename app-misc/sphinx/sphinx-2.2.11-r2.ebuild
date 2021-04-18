@@ -5,7 +5,7 @@ EAPI=6
 
 WANT_AUTOMAKE=1.15
 
-inherit eutils autotools toolchain-funcs
+inherit epatch autotools toolchain-funcs
 
 #MY_P=${P/_/-}
 MY_P=${P}-release

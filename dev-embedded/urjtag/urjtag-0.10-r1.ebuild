@@ -1,15 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: figure out htf to make python.eclass work
 
 EAPI="5"
 
-inherit eutils ltprune multilib
+inherit ltprune
+
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/urjtag/git"
 	inherit git-r3 autotools
-	S=${WORKDIR}/${P}/${PN}
+
+	S="${WORKDIR}"/${P}/${PN}
 else
 	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.bz2"
 	KEYWORDS="amd64 ppc sparc x86"

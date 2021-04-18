@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils fortran-2 multilib prefix toolchain-funcs
+inherit epatch fortran-2 multilib prefix toolchain-funcs
 
 MY_P="RasMol_${PV}"
 VERS="13May11"

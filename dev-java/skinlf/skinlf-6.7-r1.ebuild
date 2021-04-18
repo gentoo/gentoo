@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 JAVA_PKG_IUSE="examples source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 MY_P="${P}-20060722"
 

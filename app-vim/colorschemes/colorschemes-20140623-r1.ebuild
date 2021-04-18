@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit vim-plugin eutils
+inherit edos2unix epatch vim-plugin
 
 DESCRIPTION="vim plugin: a collection of color schemes from vim.org"
 HOMEPAGE="https://www.vim.org/"

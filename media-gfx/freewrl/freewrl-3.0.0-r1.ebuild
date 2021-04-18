@@ -3,13 +3,12 @@
 
 EAPI=5
 
-inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib toolchain-funcs
+inherit autotools nsplugins epatch java-pkg-opt-2 multilib toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.code.sf.net/p/freewrl/git"
 	S="${WORKDIR}/${P}/freex3d"
-	SRC_URI=
 else
 	SRC_URI="mirror://sourceforge/freewrl/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
@@ -17,6 +16,7 @@ fi
 
 DESCRIPTION="VRML97 and X3D compliant browser, library, and web-browser plugin"
 HOMEPAGE="http://freewrl.sourceforge.net/"
+
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="curl debug java libeai motif +nsplugin opencl osc +sox static-libs"
@@ -135,9 +135,9 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-	elog "By default, FreeWRL expects to find the 'firefox' binary in your include"
-	elog "path.  If you do not have firefox installed or you wish to use a different"
-	elog "web browser to open links that are within VRML / X3D files, please be sure to"
-	elog "specify the command via your BROWSER environment variable."
+		elog "By default, FreeWRL expects to find the 'firefox' binary in your include"
+		elog "path.  If you do not have firefox installed or you wish to use a different"
+		elog "web browser to open links that are within VRML / X3D files, please be sure to"
+		elog "specify the command via your BROWSER environment variable."
 	fi
 }

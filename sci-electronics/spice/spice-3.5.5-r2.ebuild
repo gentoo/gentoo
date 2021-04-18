@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit eutils flag-o-matic multilib
 
-IUSE=""
+inherit flag-o-matic toolchain-funcs
 
 MY_P="spice3f5sfix"
 DESCRIPTION="general-purpose circuit simulation program"
@@ -47,9 +46,7 @@ src_prepare() {
 		src/lib/fte/misccoms.c || die
 
 	# fix missing libtinfo if ncurses compiled with USE=tinfo (bug #605718)
-	if has_version 'sys-libs/ncurses:0[tinfo]' ;then
-		sed -i -e "s:-lncurses:-lncurses -ltinfo:g" conf/linux || die
-	fi
+	sed -i -e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" conf/linux || die
 
 	eapply_user
 }

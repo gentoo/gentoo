@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils java-pkg-2 multilib
+inherit epatch java-pkg-2 multilib
 
 MY_P=${P/gnu-/}
 DESCRIPTION="Free core class libraries for use with Java VMs and compilers"
@@ -109,7 +109,7 @@ src_install() {
 
 	if use doc; then
 		# Strangely the Makefile doesn't install these.
-		insinto "/usr/${PN}-${SLOT}/share/classpath/api"
+		insinto /usr/${PN}-${SLOT}/share/classpath/api
 		doins -r doc/api/html/*
 	fi
 }

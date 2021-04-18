@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic multilib xdg-utils desktop
+inherit autotools flag-o-matic xdg-utils desktop
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"

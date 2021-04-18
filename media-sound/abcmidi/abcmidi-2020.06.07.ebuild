@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,15 +9,14 @@ MY_P="abcMIDI-${PV}"
 DESCRIPTION="Programs for processing ABC music notation files"
 HOMEPAGE="https://ifdo.ca/~seymour/runabc/top.html"
 SRC_URI="https://ifdo.ca/~seymour/runabc/${MY_P}.zip"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-DEPEND="app-arch/unzip"
-
-S=${WORKDIR}/${PN}
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
 	default

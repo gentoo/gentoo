@@ -17,7 +17,6 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Crossdev"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
 	>=sys-apps/portage-2.1
@@ -25,7 +24,7 @@ RDEPEND="
 	app-shells/bash
 	sys-apps/gentoo-functions
 "
-DEPEND="app-arch/xz-utils"
+BDEPEND="app-arch/xz-utils"
 
 src_install() {
 	default

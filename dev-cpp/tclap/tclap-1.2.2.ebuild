@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc x86 ~amd64-linux"
 IUSE="doc"
 
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 src_configure() {
 	econf $(use_enable doc doxygen)

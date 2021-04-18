@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
+
 GNOME_ORG_MODULE="gamin"
 GNOME_TARBALL_SUFFIX="bz2"
-
-inherit autotools eutils flag-o-matic libtool multilib gnome.org
+inherit autotools epatch flag-o-matic multilib gnome.org
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
 HOMEPAGE="https://www.gnome.org/~veillard/gamin/"

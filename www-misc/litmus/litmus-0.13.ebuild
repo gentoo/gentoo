@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit autotools eutils
+inherit autotools epatch
 
 # TODO: FAIL (connection refused by '...' port 80: Connection refused)
 # We can't run tests that connect with the internet.

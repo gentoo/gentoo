@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic prefix toolchain-funcs
+inherit epatch flag-o-matic prefix toolchain-funcs
 
 DESCRIPTION="Development toolkit and applications for computational biology, including BLAST"
 HOMEPAGE="https://www.ncbi.nlm.nih.gov/"

@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils
+inherit epatch
 
 DESCRIPTION="A GTK based Run dialog resembling the Windows Run dialog, just like xexec"
 HOMEPAGE="https://github.com/lrgc/grun"

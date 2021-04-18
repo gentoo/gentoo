@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/haml/haml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 IUSE="doc test"
 
@@ -33,9 +33,9 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/minitest:5
 		dev-ruby/nokogiri
-		dev-ruby/railties:5.2
-		dev-ruby/activemodel:5.2
-		dev-ruby/actionpack:5.2
+		dev-ruby/railties:6.0
+		dev-ruby/activemodel:6.0
+		dev-ruby/actionpack:6.0
 	)
 	doc? (
 		dev-ruby/yard
@@ -48,9 +48,9 @@ all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#: ; /Bundler/,/end/ s:^:#:' Rakefile || die
 	sed -i -e '/bundler/I s:^:#:' \
 		-e 's/gem "minitest"/gem "minitest", "~>5.0"/'\
-		-e '1igem "actionpack", "~>5.2"'\
-		-e '1igem "activesupport", "~>5.2"; gem "activemodel", "~>5.2"'\
-		-e '1igem "railties", "~>5.2"'\
+		-e '1igem "actionpack", "~>6.0.0"'\
+		-e '1igem "activesupport", "~>6.0.0"; gem "activemodel", "~>6.0.0"'\
+		-e '1igem "railties", "~>6.0.0"'\
 		test/test_helper.rb || die
 	# Remove test that fails when RedCloth is available
 	sed -i -e "/should raise error when a Tilt filters dependencies are unavailable for extension/,/^  end/ s/^/#/"\

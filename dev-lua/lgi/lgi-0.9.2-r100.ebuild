@@ -6,7 +6,7 @@ EAPI=7
 VIRTUALX_REQUIRED="manual"
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua eutils toolchain-funcs flag-o-matic virtualx
+inherit lua toolchain-funcs virtualx
 
 DESCRIPTION="Lua bindings using gobject-introspection"
 HOMEPAGE="https://github.com/pavouk/lgi"

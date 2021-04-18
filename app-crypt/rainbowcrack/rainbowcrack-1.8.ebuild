@@ -21,7 +21,7 @@ RAINBOW_DESTDIR="opt/${PN}"
 QA_FLAGS_IGNORED="${RAINBOW_DESTDIR}/.*"
 QA_PRESTRIPPED="${RAINBOW_DESTDIR}/.*"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 DOCS=(
 	readme.txt

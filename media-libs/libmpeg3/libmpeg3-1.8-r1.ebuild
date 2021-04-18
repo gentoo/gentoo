@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils autotools toolchain-funcs multilib-minimal
+inherit autotools epatch multilib-minimal
 
 DESCRIPTION="An mpeg library for linux"
 HOMEPAGE="http://heroinewarrior.com/libmpeg3.php"

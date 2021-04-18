@@ -24,7 +24,7 @@ RDEPEND="
 	virtual/jre:1.8
 "
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist mirror"
 

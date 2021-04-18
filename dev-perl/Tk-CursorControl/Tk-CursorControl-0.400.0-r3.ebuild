@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 DIST_AUTHOR=DUNNIGANJ
 DIST_VERSION=0.4
 
-inherit eutils perl-module virtualx
+inherit edos2unix perl-module virtualx
 
 DESCRIPTION="Manipulate the mouse cursor programmatically"
 

@@ -5,7 +5,7 @@ EAPI=5
 
 JAVA_PKG_IUSE="doc"
 
-inherit java-pkg-2 java-ant-2 eutils
+inherit java-pkg-2 java-ant-2 epatch
 
 DESCRIPTION="Java based SVG toolkit"
 HOMEPAGE="https://xmlgraphics.apache.org/batik/"

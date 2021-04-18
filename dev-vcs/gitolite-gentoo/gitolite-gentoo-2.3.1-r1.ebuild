@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils perl-module user
+inherit perl-module user
 
 DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fork"
 HOMEPAGE="https://cgit.gentoo.org/proj/gitolite-gentoo.git"

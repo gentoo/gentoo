@@ -3,15 +3,16 @@
 
 EAPI=5
 
-inherit eutils versionator autotools
+inherit autotools
 
 DESCRIPTION="pcc portable c compiler"
 HOMEPAGE="http://pcc.ludd.ltu.se"
 
-if [[ ${PV} = 9999 ]]; then
-	inherit cvs
+if [[ ${PV} == 9999 ]]; then
 	ECVS_SERVER="pcc.ludd.ltu.se:/cvsroot"
 	ECVS_MODULE="${PN}"
+	inherit cvs
+
 	S="${WORKDIR}/${PN}"
 else
 	SRC_URI="ftp://pcc.ludd.ltu.se/pub/pcc-releases/${P}.tgz"
@@ -20,7 +21,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+
 DEPEND=">=dev-libs/pcc-libs-${PV}"
 RDEPEND="${DEPEND}"
 
@@ -32,10 +33,6 @@ src_prepare() {
 
 src_configure() {
 	econf --disable-stripping
-}
-
-src_compile() {
-	emake
 }
 
 src_install() {

@@ -5,7 +5,7 @@ EAPI=5
 
 FORTRAN_STANDARD="90"
 
-inherit eutils flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs
+inherit epatch flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
@@ -58,7 +58,7 @@ get_opts() {
 	fi
 
 	CHARM_OPTS+="$(usex numa ' --with-numa' '')"
-	echo $CHARM_OPTS
+	echo ${CHARM_OPTS}
 }
 
 src_prepare() {
@@ -155,7 +155,7 @@ src_install() {
 
 	# Install libs incl. charm objects
 	for i in lib*/*.{so,a}; do
-		[[ ${i} = *.a ]] && use !static-libs && continue
+		[[ ${i} = *.a ]] && ! use static-libs && continue
 		if [[ -L ${i} ]]; then
 			i=$(readlink -e "${i}") || die
 		fi

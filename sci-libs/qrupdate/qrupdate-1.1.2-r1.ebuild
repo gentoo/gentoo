@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils fortran-2 flag-o-matic multilib versionator toolchain-funcs
+inherit epatch fortran-2 flag-o-matic multilib versionator toolchain-funcs
 
 DESCRIPTION="Library for updating of QR and Cholesky decompositions"
 HOMEPAGE="https://sourceforge.net/projects/qrupdate"

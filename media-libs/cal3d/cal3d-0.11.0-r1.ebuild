@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools
+inherit epatch autotools
 
 DESCRIPTION="Cal3D is a skeletal based character animation library"
 HOMEPAGE="http://home.gna.org/cal3d"

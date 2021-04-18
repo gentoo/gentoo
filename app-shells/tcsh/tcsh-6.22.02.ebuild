@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic autotools prefix
+inherit epatch flag-o-matic autotools prefix
 
 CONFVER="1.9"
 

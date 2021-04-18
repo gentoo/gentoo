@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils unpacker
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.baldursgate.com/"
@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist fetch"
 
-DEPEND="app-arch/unzip"
 RDEPEND="dev-libs/expat
 	dev-libs/openssl:0
 	media-libs/openal
 	virtual/opengl
 	x11-libs/libX11"
+BDEPEND="app-arch/unzip"
 
 QA_PRESTRIPPED="/opt/${PN}/BaldursGate\(64\)\?"
 

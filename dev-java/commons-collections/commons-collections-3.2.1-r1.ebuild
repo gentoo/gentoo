@@ -5,7 +5,7 @@ EAPI=5
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit java-pkg-2 java-ant-2 java-utils-2 eutils
+inherit java-pkg-2 java-ant-2 java-utils-2 epatch
 
 DESCRIPTION="Jakarta-Commons Collections Component"
 HOMEPAGE="http://commons.apache.org/collections/"
