@@ -63,17 +63,15 @@ vim-plugin_src_install() {
 		else
 			dodoc "${f}"
 		fi
-		rm "${f}" || die
 	done
 
 	# Install remainder of plugin
-	cd "${WORKDIR}" || die "couldn't cd in ${WORKDIR}"
-	dodir /usr/share/vim
-	mv "${S}" "${ED}"/usr/share/vim/vimfiles || die \
-		"couldn't move ${S} to ${ED}/usr/share/vim/vimfiles"
-
-	# Set permissions
-	fperms -R a+rX /usr/share/vim/vimfiles
+	insinto /usr/share/vim/vimfiles/
+	local d
+	for d in *; do
+		[[ -d "${d}" ]] || continue
+		doins -r "${d}"
+	done
 }
 
 # @FUNCTION: vim-plugin_pkg_postinst
