@@ -17,6 +17,6 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 distutils_enable_tests pytest

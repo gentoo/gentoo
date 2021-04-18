@@ -9,12 +9,6 @@ When building out of tree, the relative path this test uses doesn't
 work.  Resolve the path relative to the test script itself instead.
 
 Url: https://bugs.gentoo.org/565576
----
- python/tests/reader5.py | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/python/tests/reader5.py b/python/tests/reader5.py
-index 82d0daea474a..da5355ffc4c6 100755
 --- a/python/tests/reader5.py
 +++ b/python/tests/reader5.py
 @@ -4,6 +4,7 @@
@@ -36,5 +30,3 @@ index 82d0daea474a..da5355ffc4c6 100755
  reader = input.newTextReader("REC")
  res=""
 -- 
-2.19.1
-

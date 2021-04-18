@@ -23,7 +23,7 @@ SRC_URI="https://github.com/lammps/lammps/archive/${MY_PV}.tar.gz -> ${MY_P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cuda examples gzip kokkos lammps-memalign mpi netcdf python test"
 RESTRICT="!test? ( test )"
 
