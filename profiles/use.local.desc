@@ -1671,6 +1671,9 @@ dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
 dev-java/icedtea:system-lcms - Build against the system LCMS installation rather than the in-tree copy.
 dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
 dev-java/icedtea-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
+dev-java/jaxen:dom4j - Includes org.jaxen.dom4j package
+dev-java/jaxen:jdom - Includes org.jaxen.jdom package
+dev-java/jaxen:xom - Includes org.jaxen.xom package
 dev-java/jdbc-mysql:c3p0 - Enable c3p0 support
 dev-java/jdbc-mysql:log4j - Enable log4 support
 dev-java/jfreesvg:debug - Enable debugging during compilation.

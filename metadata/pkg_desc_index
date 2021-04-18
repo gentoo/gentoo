@@ -4985,7 +4985,7 @@ dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation sim
 dev-java/javatoolkit 0.6.5: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2 1-r3: Dependency injection for Java (JSR-330)
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
-dev-java/jaxen 1.1.4-r1 1.1.6-r2 1.2.0: Jaxen is a universal XPath engine for Java.
+dev-java/jaxen 1.1.4-r1 1.1.6-r2 1.2.0-r1: Jaxen is a universal XPath engine for Java.
 dev-java/jazzy 0.5.2-r1: Java Spell Check API
 dev-java/jbitcollider-core 0.8: Core classes of jBitcollider: org.bitpedia.collider.core
 dev-java/jboss-logging 3.1.4: JBoss logging framework
@@ -12628,7 +12628,7 @@ mail-client/thunderbird-bin 78.9.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
-mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1: sendmail milter for amavisd-new
+mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1 1.7.1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.12.0-r5 2.12.1: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r3: Bayesian spam filter designed with fast algorithms, and tuned for speed
@@ -13861,7 +13861,7 @@ media-radio/unixcw 3.5.1-r1: A package of programs that fit together to form a m
 media-radio/wsjtx 2.2.2 2.3.0 2.3.1: Weak signal ham radio communication
 media-radio/xastir 2.1.6: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
-media-radio/xlog 2.0.19 2.0.20: An amateur radio logging program
+media-radio/xlog 2.0.20 2.0.22: An amateur radio logging program
 media-radio/xwxapt 3.4.2: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
@@ -16510,7 +16510,7 @@ sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10-r1: Additional utils for profphd
 sci-libs/proj 7.2.1 8.0.0: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
-sci-libs/pyshp 2.1.2: Pure Python read/write support for ESRI Shapefile format
+sci-libs/pyshp 2.1.2 2.1.3: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.22: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
