@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-18)
+# Broken, stay tuned
+=sys-devel/binutils-2.36*
+=sys-devel/binutils-hppa64-2.36*
+=sys-libs/binutils-libs-2.36*
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
