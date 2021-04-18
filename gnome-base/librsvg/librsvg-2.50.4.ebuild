@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-DEPEND="
+RDEPEND="
 	>=x11-libs/cairo-1.16.0[glib,${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.9:2[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.20:2[introspection?,${MULTILIB_USEDEP}]
@@ -27,7 +27,7 @@ DEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
 "
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=virtual/rust-1.40[${MULTILIB_USEDEP}]
 "
 BDEPEND="
