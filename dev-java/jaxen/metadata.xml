@@ -6,7 +6,9 @@
 		<name>Java</name>
 	</maintainer>
 	<use>
-		<flag name="dom4j">build the org.jaxen.dom4j.Dom4jXPath class</flag>
+		<flag name="dom4j">Includes org.jaxen.dom4j package</flag>
+		<flag name="jdom">Includes org.jaxen.jdom package</flag>
+		<flag name="xom">Includes org.jaxen.xom package</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">jaxen-xpath/jaxen</remote-id>
