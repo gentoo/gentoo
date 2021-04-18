@@ -135,6 +135,7 @@ x11-misc/xstroke
 >=media-plugins/grilo-plugins-0.3.13
 >=media-sound/gnome-music-40
 >=media-gfx/gnome-photos-40
+>=net-misc/rygel-0.40
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-10)
 # Obsolete backport to Python < 3.4.  No reverse dependencies left.
