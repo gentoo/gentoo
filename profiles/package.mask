@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
+# dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
+# https://bugs.gentoo.org/782697
+>=dev-java/xerces-2.12.1
+
 # Matt Turner <mattst88@gentoo.org> (2021-04-18)
 # Masked for testing.
 >=dev-libs/vala-common-0.51
