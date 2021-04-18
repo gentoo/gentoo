@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,9 @@ RUBY_FAKEGEM_TASK_TEST=""
 
 RUBY_FAKEGEM_EXTRAINSTALL="data"
 
-inherit java-pkg-2 ruby-ng ruby-fakegem
+RUBY_FAKEGEM_EXTENSIONS=(ext/extconf.rb)
+
+inherit java-pkg-2 ruby-fakegem
 
 DESCRIPTION="Rjb is a Ruby-Java software bridge"
 HOMEPAGE="https://github.com/arton/rjb"
@@ -20,9 +22,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples hardened"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND=">=virtual/jdk-1.8
 	hardened? ( sys-apps/paxctl )"
-RDEPEND="virtual/jre"
+RDEPEND=">=virtual/jre-1.8:*"
 
 pkg_setup() {
 	ruby-ng_pkg_setup
@@ -49,19 +51,8 @@ each_ruby_prepare() {
 	rm -rf data
 }
 
-each_ruby_configure() {
-	${RUBY} -C ext extconf.rb || die "extconf.rb failed"
-}
-
-each_ruby_compile() {
-	emake V=1 -C ext CFLAGS="${CFLAGS} -fPIC" archflags="${LDFLAGS}"
-}
-
 each_ruby_install() {
 	each_fakegem_install
-
-	# currently no elegant way to do this (bug #352765)
-	ruby_fakegem_newins ext/rjbcore.so lib/rjbcore.so
 
 	if use examples; then
 		dodoc -r samples
