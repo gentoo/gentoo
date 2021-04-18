@@ -1,4 +1,4 @@
-From 6d43225bfb08ec91f7476b76c7fec632c4a096ef Mon Sep 17 00:00:00 2001
+From 70f17ca715d3d7e2fd79cc909b95fd3a6357c13e Mon Sep 17 00:00:00 2001
 From: Yechan Bae <yechan@gatech.edu>
 Date: Wed, 3 Feb 2021 16:36:33 -0500
 Subject: [PATCH 1/2] Fixes #80335
@@ -9,10 +9,10 @@ Subject: [PATCH 1/2] Fixes #80335
  2 files changed, 54 insertions(+), 18 deletions(-)
 
 diff --git a/library/alloc/src/str.rs b/library/alloc/src/str.rs
-index 70e0c7dba5eab..a7584c6b65100 100644
+index 70e0c7dba5ea..a7584c6b6510 100644
 --- a/library/alloc/src/str.rs
 +++ b/library/alloc/src/str.rs
-@@ -90,8 +90,8 @@ impl<S: Borrow<str>> Join<&str> for [S] {
+@@ -90,8 +90,8 @@ fn join(slice: &Self, sep: &str) -> String {
      }
  }
  
@@ -49,7 +49,7 @@ index 70e0c7dba5eab..a7584c6b65100 100644
  }
  
  macro_rules! copy_slice_and_advance {
-@@ -153,7 +156,7 @@ where
+@@ -153,7 +156,7 @@ fn join_generic_copy<B, T, S>(slice: &[S], sep: &[T]) -> Vec<T>
      // if the `len` calculation overflows, we'll panic
      // we would have run out of memory anyway and the rest of the function requires
      // the entire Vec pre-allocated for safety
@@ -58,7 +58,7 @@ index 70e0c7dba5eab..a7584c6b65100 100644
          .checked_mul(iter.len())
          .and_then(|n| {
              slice.iter().map(|s| s.borrow().as_ref().len()).try_fold(n, usize::checked_add)
-@@ -161,22 +164,25 @@ where
+@@ -161,22 +164,25 @@ fn join_generic_copy<B, T, S>(slice: &[S], sep: &[T]) -> Vec<T>
          .expect("attempt to join into collection with len > usize::MAX");
  
      // crucial for safety
@@ -97,7 +97,7 @@ index 70e0c7dba5eab..a7584c6b65100 100644
      result
  }
 diff --git a/library/alloc/tests/str.rs b/library/alloc/tests/str.rs
-index 604835e6cc4a6..6df8d8c2f354f 100644
+index 604835e6cc4a..6df8d8c2f354 100644
 --- a/library/alloc/tests/str.rs
 +++ b/library/alloc/tests/str.rs
 @@ -160,6 +160,36 @@ fn test_join_for_different_lengths_with_long_separator() {
@@ -137,8 +137,11 @@ index 604835e6cc4a6..6df8d8c2f354f 100644
  #[test]
  #[cfg_attr(miri, ignore)] // Miri is too slow
  fn test_unsafe_slice() {
+-- 
+2.31.1
 
-From 26a62701e42d10c03ce5f2f911e7d5edeefa2f0f Mon Sep 17 00:00:00 2001
+
+From 10020817d2e6756be1ff2ac3c182af97cf7fe904 Mon Sep 17 00:00:00 2001
 From: Yechan Bae <yechan@gatech.edu>
 Date: Sat, 20 Mar 2021 13:42:54 -0400
 Subject: [PATCH 2/2] Update the comment
@@ -148,10 +151,10 @@ Subject: [PATCH 2/2] Update the comment
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/library/alloc/src/str.rs b/library/alloc/src/str.rs
-index a7584c6b65100..4d1e876457b8e 100644
+index a7584c6b6510..4d1e876457b8 100644
 --- a/library/alloc/src/str.rs
 +++ b/library/alloc/src/str.rs
-@@ -163,7 +163,7 @@ where
+@@ -163,7 +163,7 @@ fn join_generic_copy<B, T, S>(slice: &[S], sep: &[T]) -> Vec<T>
          })
          .expect("attempt to join into collection with len > usize::MAX");
  
@@ -160,7 +163,7 @@ index a7584c6b65100..4d1e876457b8e 100644
      let mut result = Vec::with_capacity(reserved_len);
      debug_assert!(result.capacity() >= reserved_len);
  
-@@ -178,9 +178,9 @@ where
+@@ -178,9 +178,9 @@ fn join_generic_copy<B, T, S>(slice: &[S], sep: &[T]) -> Vec<T>
          // massive improvements possible (~ x2)
          let remain = specialize_for_lengths!(sep, target, iter; 0, 1, 2, 3, 4);
  
@@ -173,3 +176,6 @@ index a7584c6b65100..4d1e876457b8e 100644
          let result_len = reserved_len - remain.len();
          result.set_len(result_len);
      }
+-- 
+2.31.1
+
