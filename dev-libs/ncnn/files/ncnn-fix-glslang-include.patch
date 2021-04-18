@@ -1,0 +1,13 @@
+diff --git a/src/gpu.cpp b/src/gpu.cpp
+index ce1306c..468cd03 100644
+--- a/src/gpu.cpp
++++ b/src/gpu.cpp
+@@ -21,7 +21,7 @@
+ #include <vulkan/vulkan.h>
+ 
+ #include "glslang/SPIRV/GlslangToSpv.h"
+-#include "glslang/glslang/Public/ShaderLang.h"
++#include "glslang/Public/ShaderLang.h"
+ 
+ #include "command.h"
+ #include "layer.h"
