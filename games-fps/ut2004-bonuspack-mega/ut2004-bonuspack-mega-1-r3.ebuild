@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,12 @@ EAPI=7
 DESCRIPTION="UT2004 Megapack - Megapack bonus pack"
 HOMEPAGE="http://www.unrealtournament2004.com/"
 SRC_URI="http://ut2004.ut-files.com/BonusPacks/ut2004megapack-linux.tar.bz2"
+S="${WORKDIR}"
 
 LICENSE="ut2003"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}"
+RESTRICT="bindist mirror"
 
 src_prepare() {
 	default
