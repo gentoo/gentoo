@@ -34,6 +34,7 @@
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
 # obsolete deps, not used by any package
+# removal in 30 days
 dev-java/commons-configuration
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-18)
