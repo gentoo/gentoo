@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 DEPEND=">=virtual/jdk-1.6
 	>=dev-java/ant-core-1.7.0:0
 	>=dev-java/ant-junit-1.7.0:0
-	app-arch/zip:0
+	app-arch/unzip:0
 	test? (
 		dev-java/hamcrest-core:0
 		>=dev-java/junit-4.4:4
