@@ -21,7 +21,7 @@ SLOT="0"
 
 RDEPEND="
 	app-admin/pass
-	mail-client/neomutt[notmuch]
+	mail-client/neomutt[notmuch,sasl]
 	mail-mta/msmtp
 	net-mail/isync[ssl]
 "
