@@ -16,7 +16,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~dev-libs/ncnn-20200727
+	~dev-libs/ncnn-20210322
 	media-libs/vulkan-loader
 	media-libs/libwebp
 	dev-util/glslang"
