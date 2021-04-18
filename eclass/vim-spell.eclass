@@ -119,9 +119,7 @@ vim-spell_src_install() {
 		fi
 	done
 
-	for f in README*; do
-		dodoc "${f}"
-	done
+	einstalldocs
 
 	[[ -z "${had_spell_file}" ]] && die "Didn't install any spell files?"
 }
