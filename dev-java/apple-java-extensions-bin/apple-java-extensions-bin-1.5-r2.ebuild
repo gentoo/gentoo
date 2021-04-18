@@ -11,7 +11,7 @@ SRC_URI="http://developer.apple.com/samplecode/AppleJavaExtensions/AppleJavaExte
 
 LICENSE="Apple"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 BDEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.8:*"
