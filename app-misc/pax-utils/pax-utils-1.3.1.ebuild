@@ -11,7 +11,7 @@ DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
 SRC_URI="mirror://gentoo/${P}.tar.xz
 	https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz
-	https://dev.gentoo.org/~vapier/distfiles/${P}.tar.xz"
+	https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
