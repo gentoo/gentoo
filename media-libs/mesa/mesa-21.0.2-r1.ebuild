@@ -142,9 +142,10 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 10.
 # 3. Specify LLVM_MAX_SLOT, e.g. 9.
-LLVM_MAX_SLOT="11"
+LLVM_MAX_SLOT="12"
 LLVM_DEPSTR="
 	|| (
+		sys-devel/llvm:12[${MULTILIB_USEDEP}]
 		sys-devel/llvm:11[${MULTILIB_USEDEP}]
 		sys-devel/llvm:10[${MULTILIB_USEDEP}]
 	)
@@ -240,6 +241,10 @@ x86? (
 	usr/lib*/libOSMesa.so.8.0.0
 	usr/lib/libGLX_mesa.so.0.0.0
 )"
+
+PATCHES=(
+	"${FILESDIR}/mesa-21.0.2-compile-llvm-12.patch"
+)
 
 llvm_check_deps() {
 	local flags=${MULTILIB_USEDEP}
@@ -352,6 +357,7 @@ pkg_setup() {
 	if use gallium && use llvm; then
 		llvm_pkg_setup
 	fi
+
 	python-any-r1_pkg_setup
 }
 

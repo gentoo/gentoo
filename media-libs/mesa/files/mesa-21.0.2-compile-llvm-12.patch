@@ -1,0 +1,72 @@
+diff --git a/src/gallium/frontends/clover/llvm/compat.hpp b/src/gallium/frontends/clover/llvm/compat.hpp
+index 78eb8c982a822aa5bfc8a49aaf1e58fa7e007b34..d537819f29223f5a32a6576e171376c2e8484e21 100644
+--- a/src/gallium/frontends/clover/llvm/compat.hpp
++++ b/src/gallium/frontends/clover/llvm/compat.hpp
+@@ -38,14 +38,14 @@
+ 
+ #include <llvm/Config/llvm-config.h>
+ 
++#include <llvm/ADT/Triple.h>
++#include <llvm/Analysis/TargetLibraryInfo.h>
++#include <llvm/IR/LegacyPassManager.h>
+ #include <llvm/IR/LLVMContext.h>
+ #include <llvm/Linker/Linker.h>
++#include <llvm/Target/TargetMachine.h>
+ #include <llvm/Transforms/IPO.h>
+ #include <llvm/Transforms/Utils/Cloning.h>
+-#include <llvm/Target/TargetMachine.h>
+-
+-#include <llvm/IR/LegacyPassManager.h>
+-#include <llvm/Analysis/TargetLibraryInfo.h>
+ 
+ #include <clang/Basic/TargetInfo.h>
+ #include <clang/Frontend/CompilerInstance.h>
+@@ -88,6 +88,20 @@ namespace clover {
+                cinv, copts.data(), copts.data() + copts.size(), diag);
+ #endif
+          }
++
++         static inline void
++         compiler_set_lang_defaults(std::unique_ptr<clang::CompilerInstance> &c,
++                                    clang::InputKind ik, const ::llvm::Triple& triple,
++                                    clang::LangStandard::Kind d)
++         {
++            c->getInvocation().setLangDefaults(c->getLangOpts(), ik, triple,
++#if LLVM_VERSION_MAJOR >= 12
++                                               c->getPreprocessorOpts().Includes,
++#else
++                                               c->getPreprocessorOpts(),
++#endif
++                                               d);
++         }
+       }
+    }
+ }
+diff --git a/src/gallium/frontends/clover/llvm/invocation.cpp b/src/gallium/frontends/clover/llvm/invocation.cpp
+index 536e952b100d7d06206b8162f69feefc534f28ff..30592e4343b0ac2df5527a30523274d35576f1b6 100644
+--- a/src/gallium/frontends/clover/llvm/invocation.cpp
++++ b/src/gallium/frontends/clover/llvm/invocation.cpp
+@@ -247,9 +247,8 @@ namespace {
+       // http://www.llvm.org/bugs/show_bug.cgi?id=19735
+       c->getDiagnosticOpts().ShowCarets = false;
+ 
+-      c->getInvocation().setLangDefaults(c->getLangOpts(),
+-                                compat::ik_opencl, ::llvm::Triple(target.triple),
+-                                c->getPreprocessorOpts(),
++      compat::compiler_set_lang_defaults(c, compat::ik_opencl,
++                                ::llvm::Triple(target.triple),
+                                 get_language_version(opts, device_clc_version));
+ 
+       c->createDiagnostics(new clang::TextDiagnosticPrinter(
+diff --git a/src/gallium/frontends/clover/llvm/compat.hpp b/src/gallium/frontends/clover/llvm/compat.hpp
+index d537819f29223f5a32a6576e171376c2e8484e21..380d16a8346f18453c3a123db8323054ed2083a8 100644
+--- a/src/gallium/frontends/clover/llvm/compat.hpp
++++ b/src/gallium/frontends/clover/llvm/compat.hpp
+@@ -49,6 +49,7 @@
+ 
+ #include <clang/Basic/TargetInfo.h>
+ #include <clang/Frontend/CompilerInstance.h>
++#include <clang/Lex/PreprocessorOptions.h>
+ 
+ #if LLVM_VERSION_MAJOR >= 10
+ #include <llvm/Support/CodeGen.h>
