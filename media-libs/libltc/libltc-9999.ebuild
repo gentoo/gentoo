@@ -21,3 +21,8 @@ src_prepare() {
 
 	[[ ${PV} == *9999 ]] && (eautoreconf || die)
 }
+
+src_install() {
+	default
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+}
