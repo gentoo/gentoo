@@ -1,18 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit desktop unpacker
 
 DESCRIPTION="Tank combat game with lighthearted, fast paced pandemonium"
 HOMEPAGE="http://www.garagegames.com/pg/product/view.php?id=12"
 SRC_URI="ftp://ggdev-1.homelan.com/thinktanks/ThinkTanksDemo_v${PV}.sh.bin"
+S="${WORKDIR}"
 
 LICENSE="THINKTANKS"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
-RESTRICT="strip"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="
 	media-libs/libsdl[video,joystick,abi_x86_32(-)]
@@ -21,9 +22,7 @@ RDEPEND="
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
 "
-DEPEND=""
 
-S="${WORKDIR}"
 dir="/opt/${PN}"
 
 QA_PREBUILT="${dir:1}/ThinkTanks.bin"
