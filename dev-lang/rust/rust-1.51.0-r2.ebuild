@@ -175,12 +175,20 @@ boostrap_rust_version_check() {
 
 pre_build_checks() {
 	local M=8192
+	# multiply requirements by 1.5 if we are doing x86-multilib
 	M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
 	M=$(( $(usex clippy 128 0) + ${M} ))
 	M=$(( $(usex miri 128 0) + ${M} ))
 	M=$(( $(usex rls 512 0) + ${M} ))
 	M=$(( $(usex rustfmt 256 0) + ${M} ))
-	M=$(( $(usex system-llvm 0 2048) + ${M} ))
+	# add 2G if we compile llvm and 256M per llvm_target
+	if ! use system-llvm; then
+		M=$(( 2048 + ${M} ))
+		local ltarget
+		for ltarget in ${ALL_LLVM_TARGETS[@]}; do
+			M=$(( $(usex ${ltarget} 256 0) + ${M} ))
+		done
+	fi
 	M=$(( $(usex wasm 256 0) + ${M} ))
 	M=$(( $(usex debug 15 10) * ${M} / 10 ))
 	eshopts_push -s extglob
