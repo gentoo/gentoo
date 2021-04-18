@@ -13879,7 +13879,7 @@ media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r3: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.13: PulseAudio emulation for ALSA
 media-sound/aqualung 1.1-r101: Music player for a wide range of formats designed for gapless playback
-media-sound/ardour 6.6 9999: Digital Audio Workstation
+media-sound/ardour 6.6-r1 9999: Digital Audio Workstation
 media-sound/ario 1.6: GTK client for MPD inspired by Rhythmbox but much lighter and faster
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.5 2.9.6: Graphical Audio CD ripper and encoder with support for many output formats
@@ -14727,7 +14727,7 @@ net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 0_pre20200925 9999: A lightweight DNS-over-HTTPS proxy
-net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
+net-dns/idnkit 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.9.8 3.0.4: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.36: Internationalized Domain Names (IDN) implementation
@@ -17501,7 +17501,7 @@ sys-devel/autogen 5.18.16-r1: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.15.1-r2 1.16.2-r1 1.16.3-r1 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
-sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
+sys-devel/bin86 0.16.21: Assembler and loader used to create kernel bootsector
 sys-devel/binutils 2.32-r1 2.32-r2 2.33.1-r1 2.34-r2 2.35.2 2.36.1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2.6 8.2.1-r1 8.2.1-r101 11.3.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 11.3.1
 sys-devel/binutils-config 5.3.2 5.4 9999: Utility to change the binutils version being used
@@ -18116,7 +18116,7 @@ www-apache/mod_jk 1.2.48: Provides an AJP Apache2-JK-connector for the Tomcat se
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24-r3: Limit the number of simultaneous apache connections
 www-apache/mod_log_rotate 1.01: Log rotation support for mod_log_config based on strftime(3)
-www-apache/mod_log_sql 1.101-r2 1.101-r3: An Apache module for logging to an SQL (MySQL) database
+www-apache/mod_log_sql 1.101-r3: An Apache module for logging to an SQL (MySQL) database
 www-apache/mod_maxminddb 1.2.0: MaxMind DB Apache Module
 www-apache/mod_musicindex 1.4.1-r1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.18: SSL/TLS module for the Apache HTTP server
@@ -18751,7 +18751,7 @@ x11-misc/xbindkeys 1.8.6-r1 1.8.7-r1: Tool for launching commands on keystrokes
 x11-misc/xbitmaps 1.1.2-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
 x11-misc/xcalib 0.10: Tiny monitor calibration loader for X.org
-x11-misc/xcape 1.1 1.2: Utility to make modifier keys send custom key events when pressed on their own
+x11-misc/xcape 1.2: Utility to make modifier keys send custom key events when pressed on their own
 x11-misc/xcave 2.5.1: View and manage contents of your wine cellar
 x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
 x11-misc/xclip 0.13 9999: Copy data from standard input to X clipboard
