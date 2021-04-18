@@ -5793,7 +5793,7 @@ dev-libs/opencl-clang 10.0.0.1-r1 10.0.0.2-r1 11.0.0 11.1.0_pre20201222: OpenCL-
 dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.6.1-r1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4 0.6.20-r5: library for accessing smart card terminals
-dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
+dev-libs/openobex 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.21.0 0.21.0-r1: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.3: A collection of special mathematical functions
 dev-libs/openssl 1.0.2u 1.1.1k: full-strength general purpose cryptography library (including SSL and TLS)
@@ -17436,7 +17436,7 @@ sys-cluster/ganglia 3.7.1-r2: A scalable distributed monitoring system for clust
 sys-cluster/ganglia-web 3.7.3-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gasnet 1.26.4 1.26.4-r1 1.28.0 1.28.2 1.30.0: Networking middleware for partitioned global address space (PGAS) language
 sys-cluster/glusterfs 7.9 8.3 8.4 9.0 9.1: GlusterFS is a powerful network/cluster filesystem
-sys-cluster/gmqtt 0.3.0: MQTT broker library with cluster support that implements MQTT V5.0 and V3.1.1
+sys-cluster/gmqtt 0.3.0 0.3.1: MQTT broker library with cluster support that implements MQTT V5.0 and V3.1.1
 sys-cluster/heat 14.1.0 15.0.0 2020.1.9999 2020.2.9999: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/hpl 2.0-r4 2.3: Portable Implementation of the Linpack Benchmark for Distributed-Memory Clusters
 sys-cluster/hpx 1.6.0 9999: C++ runtime system for parallel and distributed applications
@@ -18832,7 +18832,7 @@ x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r3: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/cputnik 0.2.0-r1: cputnik is a simple cpu monitor dockapp
-x11-plugins/docker 1.5-r1 1.5-r2: Openbox app which acts as a system tray for KDE and GNOME2
+x11-plugins/docker 1.5-r2: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/e16-epplets 0.16: Enlightenment DR16 epplets
 x11-plugins/enigmail 2.0.12-r1 2.2.4 9999: Mozilla extension to provide GPG support in mail clients
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
