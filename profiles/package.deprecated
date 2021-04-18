@@ -21,7 +21,7 @@
 # this version does not compile with java 1.5+ and will be removed
 # use slot 3.6 or newer
 # see: https://bugs.gentoo.org/779472
-<dev-java-commons-lang-3
+<dev-java/commons-lang-3
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
 # because of unmasking java 11, which does not support bytecode older
