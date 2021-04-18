@@ -16300,7 +16300,7 @@ sci-geosciences/osm-gps-map 1.1.0 1.2.0: A GTK+ widget for displaying OpenStreet
 sci-geosciences/osm2pgsql 1.4.0-r100 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and update OSM data files
 sci-geosciences/qgis 3.16.2 3.16.4 9999: User friendly Geographic Information System
-sci-geosciences/qmapshack 1.15.1-r1 1.15.2-r2: GPS mapping utility
+sci-geosciences/qmapshack 1.15.2-r2: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1 1.1.0a: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.3.2: Routing application based on openstreetmap data
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
