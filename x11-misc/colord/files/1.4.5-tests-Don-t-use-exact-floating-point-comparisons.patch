@@ -1,0 +1,39 @@
+From d68cd11cd31d379e4f3bb4c964b17fd50c8c54a6 Mon Sep 17 00:00:00 2001
+From: Christopher James Halse Rogers <raof@ubuntu.com>
+Date: Wed, 11 Nov 2020 17:13:19 +1100
+Subject: [PATCH] tests: Don't use exact floating point comparisons.
+
+The tests asserting that cd_icc_get_version are exactly equal to 3.4 or
+2.09 fail on (at least) i386, armel, and s390x because floating point is
+hateful.
+
+Signed-off-by: Christopher James Halse Rogers <raof@ubuntu.com>
+---
+ lib/colord/cd-test-private.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/colord/cd-test-private.c b/lib/colord/cd-test-private.c
+index 4b16ca5..231c4ae 100644
+--- a/lib/colord/cd-test-private.c
++++ b/lib/colord/cd-test-private.c
+@@ -1494,7 +1494,7 @@ colord_icc_func (void)
+ 	/* check profile properties */
+ 	g_assert_cmpint (cd_icc_get_size (icc), ==, 25244);
+ 	g_assert_cmpstr (cd_icc_get_checksum (icc), ==, "9ace8cce8baac8d492a93a2a232d7702");
+-	g_assert_cmpfloat (cd_icc_get_version (icc), ==, 3.4);
++	g_assert_cmpfloat_with_epsilon (cd_icc_get_version (icc), 3.4, 0.01);
+ 	g_assert (g_str_has_suffix (cd_icc_get_filename (icc), "ibm-t61.icc"));
+ 	g_assert_cmpint (cd_icc_get_kind (icc), ==, CD_PROFILE_KIND_DISPLAY_DEVICE);
+ 	g_assert_cmpint (cd_icc_get_colorspace (icc), ==, CD_COLORSPACE_RGB);
+@@ -1727,7 +1727,7 @@ colord_icc_save_func (void)
+ 	g_object_unref (file);
+ 
+ 	/* verify changed values */
+-	g_assert_cmpfloat (cd_icc_get_version (icc), ==, 2.09);
++	g_assert_cmpfloat_with_epsilon (cd_icc_get_version (icc), 2.09, 0.001);
+ 	g_assert_cmpint (cd_icc_get_kind (icc), ==, CD_PROFILE_KIND_OUTPUT_DEVICE);
+ 	g_assert_cmpint (cd_icc_get_colorspace (icc), ==, CD_COLORSPACE_XYZ);
+ 	g_assert_cmpstr (cd_icc_get_metadata_item (icc, "SelfTest"), ==, "true");
+-- 
+2.26.3
+

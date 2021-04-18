@@ -1,0 +1,53 @@
+From 2bbcefa35225ba836b1672449f1de59ce9a90078 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sun, 18 Apr 2021 16:46:52 -0400
+Subject: [PATCH] build: Fix building without vapi
+
+---
+ lib/colord/meson.build   | 2 +-
+ lib/colorhug/meson.build | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/colord/meson.build b/lib/colord/meson.build
+index dbb3d19..3126046 100644
+--- a/lib/colord/meson.build
++++ b/lib/colord/meson.build
+@@ -146,6 +146,7 @@ pkgg.generate(
+   description : 'colord is a system daemon for managing color devices',
+ )
+ 
++if get_option('vapi')
+ libcolord_girtarget = gnome.generate_gir(colord,
+   sources : [
+     'cd-client.c',
+@@ -203,7 +204,6 @@ libcolord_girtarget = gnome.generate_gir(colord,
+ libcolord_gir = libcolord_girtarget[0]
+ libcolord_typelib = libcolord_girtarget[1]
+ 
+-if get_option('vapi')
+ gnome.generate_vapi('colord',
+   sources: libcolord_girtarget[0],
+   packages: ['gio-2.0'],
+diff --git a/lib/colorhug/meson.build b/lib/colorhug/meson.build
+index 9526ea4..9f17553 100644
+--- a/lib/colorhug/meson.build
++++ b/lib/colorhug/meson.build
+@@ -73,6 +73,7 @@ pkgg.generate(
+   description : 'ColorHug is a simple display hardware colorimeter',
+ )
+ 
++if get_option('vapi')
+ libcolorhug_gir = gnome.generate_gir(colorhug,
+   sources : [
+     'ch-common.c',
+@@ -107,6 +108,7 @@ libcolorhug_gir = gnome.generate_gir(colorhug,
+   ],
+   install : true
+ )
++endif
+ 
+ if get_option('tests')
+   e = executable(
+-- 
+2.26.3
+
