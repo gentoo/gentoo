@@ -7,6 +7,8 @@
 	</maintainer>
 	<use>
 		<flag name="firmware">Enable firmware update support through <pkg>sys-apps/fwupd</pkg></flag>
+		<flag name="flatpak">Enable support for flatpak applications using <pkg>sys-apps/flatpak</pkg></flag>
 		<flag name="packagekit">Enable module for package manager integration</flag>
+		<flag name="sysprof">Enable profiling data capture support using <pkg>dev-util/sysprof-capture</pkg></flag>
 	</use>
 </pkgmetadata>
