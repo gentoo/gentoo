@@ -19,10 +19,10 @@ SRC_URI="https://github.com/${PN}-xpath/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 LICENSE="BSD-2"
 SLOT="1.2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="dom4j"
+IUSE="dom4j jdom xom"
 
-# It seems that most tests depend on dom4j, jdom and xom which all depend on jaxen
-RESTRICT="test"
+# It seems that most tests depend on dom4j, jdom and xom which all depend back on jaxen
+REQUIRED_USE="test? ( dom4j jdom xom )"
 
 # Compile dependencies
 # POM: pom.xml
@@ -31,13 +31,19 @@ RESTRICT="test"
 # POM: pom.xml
 # test? junit:junit:3.8.2 -> >=dev-java/junit-3.8.2:0
 
-DEPEND="
-	dev-java/xerces:2
-	>=virtual/jdk-1.8:*
+CDEPEND="
 	dom4j? ( dev-java/dom4j:1 )
+	jdom? ( dev-java/jdom:0 )
+	xom? ( dev-java/xom:0 )
+"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.8:*
 "
 
 RDEPEND="
+	${CDEPEND}
 	>=virtual/jre-1.8:*
 "
 
@@ -45,18 +51,31 @@ S="${WORKDIR}"
 
 DOCS=( "${P}"/{LICENSE.txt,README.md} )
 
-JAVA_CLASSPATH_EXTRA="xerces-2"
 JAVA_SRC_DIR="${P}/src/java/main"
+
+JAVA_TEST_SRC_DIR="${P}/src/java/test"
+JAVA_TEST_GENTOO_CLASSPATH="junit"
 
 src_prepare() {
 	default
 
-	# solve cyclic deps by removing these dirs
-	# dom4j, jdom and xom depend on jaxen
-	# https://bugs.gentoo.org/739894#c9
-	rm -rv "${JAVA_SRC_DIR}"/org/jaxen/{jdom,xom} || die
-	use dom4j || rm -rv "${JAVA_SRC_DIR}"/org/jaxen/dom4j || die
-	use dom4j && JAVA_GENTOO_CLASSPATH="dom4j-1"
+	if use dom4j; then
+		JAVA_GENTOO_CLASSPATH+=" dom4j-1"
+	else
+		rm -rv "${JAVA_SRC_DIR}"/org/jaxen/dom4j || die
+	fi
+
+	if use jdom; then
+		JAVA_GENTOO_CLASSPATH+=" jdom"
+	else
+		rm -rv "${JAVA_SRC_DIR}"/org/jaxen/jdom || die
+	fi
+
+	if use xom; then
+		JAVA_GENTOO_CLASSPATH+=" xom"
+	else
+		rm -rv "${JAVA_SRC_DIR}"/org/jaxen/xom || die
+	fi
 }
 
 src_install() {
