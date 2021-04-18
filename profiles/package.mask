@@ -284,6 +284,7 @@ sys-devel/autoconf:2.71
 >=gnome-extra/gnome-calendar-40
 # Bug #780633
 >=dev-libs/libgweather-40
+>=gnome-base/gnome-settings-daemon-40
 
 # Marek Szuba <marecki@gentoo.org> (2021-03-19)
 # Depends on bundled out-of-date Qt5 libraries, and even with those
