@@ -5,7 +5,7 @@
  INCLUDES=-I$(CHUCK_DIR)
  FLAGS=-D__LINUX_ALSA__ `pkg-config --cflags gtk+-2.0` $(CFLAGS) -c
 -LIBS=-lasound -lstdc++ -lm -lsndfile -lGL -lGLU -lglut `pkg-config --libs gtk+-2.0`
-+LIBS=-lasound -lstdc++ -lm -lsndfile -lGL -lGLU -lglut `${PKG_CONFIG} --libs gtk+-2.0` -lpthread
++LIBS=-lasound -lstdc++ -lm -lsndfile -lGL -lGLU -lglut `pkg-config --libs gtk+-2.0` -lpthread
  
  TAPS_OBJS= taps_analysis.o taps_birdbrain.o taps_driver.o \
  	taps_featurelibrary.o taps_pvc.o taps_regioncomparer.o \
@@ -20,8 +20,9 @@
  SF_OBJ=util_sndfile.o
  
  ifneq ($(CHUCK_DEBUG),)
---- a/src/makefile.alsa
-+++ b/src/makefile.alsa
+diff -Naur a/src/makefile.alsa b/src/makefile.alsa
+--- a/src/makefile.alsa	2014-01-30 02:21:02.173891275 +0100
++++ b/src/makefile.alsa	2014-01-30 02:21:23.026891253 +0100
 @@ -48,7 +48,7 @@
  OBJS+=ui_scripting.o
  # scripting disable needs most of chuck anyway due to includes 
