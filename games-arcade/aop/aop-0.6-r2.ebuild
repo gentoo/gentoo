@@ -24,7 +24,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	tc-export PKG_CONFIG
+	tc-export CC PKG_CONFIG
 
 	sed -i \
 		-e "s#/usr/local/share#/usr/share/${PN}#" \
