@@ -12605,7 +12605,7 @@ lxqt-base/lxqt-sudo 0.16.0 0.17.0: LXQt GUI frontend for sudo
 mail-client/aerc 0.5.2 9999: Email client for your terminal
 mail-client/alot 0.9 0.9.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.24: An easy to use text-based based mail and news client
-mail-client/balsa 2.6.1: Email client for GNOME
+mail-client/balsa 2.6.1 2.6.2: Email client for GNOME
 mail-client/bower 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.8 9999: An email client (and news reader) based on GTK+
 mail-client/clawsker 1.3.1 1.3.4: Applet to edit Claws Mail's hidden preferences
@@ -13014,7 +13014,7 @@ media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumb
 media-gfx/gnome-screenshot 3.38.0 40.0: Screenshot utility for GNOME
 media-gfx/gnuclad 0.2.4: Cladogram tree generator mainly used by the GNU/Linux distro timeline project
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.26: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.26 2.5.27: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.5 0.2.5-r1 0.2.5-r2: A Simple and Fast Image Viewer for X
 media-gfx/graphicsmagick 1.3.36 9999: Collection of tools and libraries for many image formats
@@ -13333,7 +13333,7 @@ media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
 media-libs/libgig 4.2.0 9999: C++ library for loading Gigasampler and DLS level 1/2 files
 media-libs/libgii 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libglvnd 1.3.2-r2 9999: The GL Vendor-Neutral Dispatch library
-media-libs/libgphoto2 2.5.26: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.26 2.5.27: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r5: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0-r1: Streaming audio processing library
 media-libs/libharu 2.3.0-r2: C/C++ library for PDF generation
