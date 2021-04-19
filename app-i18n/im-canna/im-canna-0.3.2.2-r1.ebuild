@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,8 +11,7 @@ SRC_URI="http://bonobo.gnome.gr.jp/~nakai/immodule/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="app-i18n/canna
 	x11-libs/gtk+:2"
