@@ -1,5 +1,3 @@
-diff --git a/gpomme/Makefile b/gpomme/Makefile
-index 0874b48..a3ab64a 100644
 --- a/gpomme/Makefile
 +++ b/gpomme/Makefile
 @@ -1,5 +1,3 @@
@@ -25,8 +23,6 @@ index 0874b48..a3ab64a 100644
  
  gpomme.o: gpomme.c gpomme.h theme.h ../client-common/dbus-client.h ../client-common/video-client.h
  
-diff --git a/pommed/Makefile b/pommed/Makefile
-index 5f3cbf9..3425a2a 100644
 --- a/pommed/Makefile
 +++ b/pommed/Makefile
 @@ -1,7 +1,5 @@
@@ -62,8 +58,6 @@ index 5f3cbf9..3425a2a 100644
  
  pommed.o: pommed.c pommed.h evloop.h kbd_backlight.h lcd_backlight.h cd_eject.h evdev.h conffile.h audio.h dbus.h beep.h
  
-diff --git a/wmpomme/Makefile b/wmpomme/Makefile
-index cc7a438..6c4bee1 100644
 --- a/wmpomme/Makefile
 +++ b/wmpomme/Makefile
 @@ -1,11 +1,9 @@
