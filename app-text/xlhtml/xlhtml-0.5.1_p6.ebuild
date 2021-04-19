@@ -21,6 +21,7 @@ KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}_${MY_PV}-${DEB_PR}.diff
+	"${FILESDIR}"/${PN}-0.5.1_p6-respect-AR.patch
 )
 
 src_prepare() {
