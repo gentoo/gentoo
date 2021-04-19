@@ -1,6 +1,5 @@
-diff -uNr nutcracker-0.3.0.orig/configure.ac nutcracker-0.3.0/configure.ac
---- nutcracker-0.3.0.orig/configure.ac	2014-03-17 17:55:54.500000001 -0400
-+++ nutcracker-0.3.0/configure.ac	2014-03-17 17:58:50.290000001 -0400
+--- a/configure.ac
++++ b/configure.ac
 @@ -195,11 +195,8 @@
    [AC_DEFINE([HAVE_STATS], [1], [Define to 1 if stats is not disabled])])
  AC_MSG_RESULT($disable_stats)
@@ -15,9 +14,8 @@ diff -uNr nutcracker-0.3.0.orig/configure.ac nutcracker-0.3.0/configure.ac
  
  # Define Makefiles
  AC_CONFIG_FILES([Makefile
-diff -uNr nutcracker-0.3.0.orig/Makefile.am nutcracker-0.3.0/Makefile.am
---- nutcracker-0.3.0.orig/Makefile.am	2014-03-17 17:55:54.500000001 -0400
-+++ nutcracker-0.3.0/Makefile.am	2014-03-17 17:56:38.920000001 -0400
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -2,7 +2,7 @@
  
  ACLOCAL_AMFLAGS = -I m4
@@ -27,9 +25,8 @@ diff -uNr nutcracker-0.3.0.orig/Makefile.am nutcracker-0.3.0/Makefile.am
  
  dist_man_MANS = man/nutcracker.8
  
-diff -uNr nutcracker-0.3.0.orig/src/Makefile.am nutcracker-0.3.0/src/Makefile.am
---- nutcracker-0.3.0.orig/src/Makefile.am	2014-03-17 17:55:54.500000001 -0400
-+++ nutcracker-0.3.0/src/Makefile.am	2014-03-17 18:00:08.480000001 -0400
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -7,7 +7,6 @@
  AM_CPPFLAGS += -I $(top_srcdir)/src/hashkit
  AM_CPPFLAGS += -I $(top_srcdir)/src/proto
