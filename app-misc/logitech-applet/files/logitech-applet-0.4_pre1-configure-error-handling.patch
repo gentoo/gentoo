@@ -1,0 +1,20 @@
+--- a/configure.in
++++ b/configure.in
+@@ -24,7 +24,7 @@ if test "$LUSB" = "no"; then
+   echo "   http://libusb.sourceforge.net"
+   echo "   or use the --with-libusb-includes option, if you have it installed"
+   echo "   in an unusual place"
+-  exit
++  exit 1
+ fi
+ AC_CHECK_LIB(usb, usb_init, LUSB="yes", LUSB="no")
+ if test "$LUSB" = "no"; then
+@@ -33,7 +33,7 @@ if test "$LUSB" = "no"; then
+   echo "   http://libusb.sourceforge.net"
+   echo "   or use the --with-libusb-libraries option, if you have it installed"
+   echo "   in an unusual place"
+-  exit
++  exit 1
+ fi
+ 
+ AC_OUTPUT(Makefile)

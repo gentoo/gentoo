@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit bash-completion-r1
 
@@ -12,19 +12,17 @@ SRC_URI="http://download.openvz.org/utils/${PN}/${PV}/src/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="
-	virtual/cron
-	sys-process/cronbase
-	net-misc/curl[ssl]
+DEPEND="sys-process/cronbase"
+RDEPEND="
+	${DEPEND}
 	app-portage/gentoolkit
+	net-misc/curl[ssl]
 	sys-cluster/vzctl
-	"
-RDEPEND="${DEPEND}"
+"
 
 src_install() {
-	emake install install-cronjob DESTDIR="${D}"
+	emake install install-cronjob DESTDIR="${ED}"
 	dodoc README
 	newbashcomp bash_completion.sh vzstats
 }
