@@ -1,9 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit epatch
+EAPI=7
 
 DESCRIPTION="script for converting XML and DocBook documents to a variety of output formats"
 HOMEPAGE="https://pagure.io/xmlto"
@@ -29,8 +27,12 @@ DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog FAQ NEWS README THANKS"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.0.22-format_fo_passivetex_check.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.0.22-format_fo_passivetex_check.patch
+	default
 
 	# fix symbol clash on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
@@ -42,5 +44,6 @@ src_configure() {
 	# We don't want the script to detect /bin/sh if it is bash.
 	export ac_cv_path_BASH=${BASH}
 	has_version sys-apps/util-linux || export GETOPT=getopt-long
+
 	econf
 }
