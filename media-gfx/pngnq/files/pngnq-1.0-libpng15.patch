@@ -1,5 +1,5 @@
---- src/rwpng.c
-+++ src/rwpng.c
+--- a/src/rwpng.c
++++ b/src/rwpng.c
 @@ -31,8 +31,9 @@
  
  #include <stdio.h>
