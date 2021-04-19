@@ -5373,7 +5373,7 @@ dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.2 8.2.3 8.3.18 8.3.19 8.3.20 8.3.21: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0 4.0.2: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
-dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9-r1 8.6.10 8.6.11: Tool Command Language
+dev-lang/tcl 8.6.8 8.6.9-r1 8.6.10 8.6.11: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.6.8 8.6.9 8.6.9.1 8.6.10 8.6.11 8.6.11.1: Tk Widget Set
 dev-lang/tuprolog 3.1.0-r1 3.2.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
@@ -10670,9 +10670,9 @@ dev-tcltk/tcllib 1.20: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 5.0 5.0-r1: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r5 2.3.8-r1: Readline extension to TCL
-dev-tcltk/tclx 8.4.1 8.4.4: A set of extensions to TCL
-dev-tcltk/tclxml 3.2-r2 3.2.7: Pure Tcl implementation of an XML parser
-dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
+dev-tcltk/tclx 8.4.4: A set of extensions to TCL
+dev-tcltk/tclxml 3.2.7: Pure Tcl implementation of an XML parser
+dev-tcltk/tdom 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
 dev-tcltk/thread 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkcon 2.5-r1 2.7.3: Tk GUI console
@@ -11226,7 +11226,7 @@ games-action/battalion 1.4b-r1: Be a rampaging monster and destroy the city
 games-action/beathazardultra 20130308-r2: Intense music-driven arcade shooter powered by your music
 games-action/bomberclone 0.11.9: Bomberman clone with network game support
 games-action/brutal-legend 20130615-r2: Unleash the power of Heavy Metal to reign down fire from the sky
-games-action/bzflag 2.4.12 2.4.14 2.4.16 2.4.18 2.4.20 2.4.22: 3D tank combat simulator game
+games-action/bzflag 2.4.20 2.4.22: 3D tank combat simulator game
 games-action/chickens 0.2.4-r1: Target chickens with rockets and shotguns. Funny
 games-action/chromium-bsu 0.9.15.1-r1: Chromium B.S.U. - an arcade game
 games-action/clanbomber 2.2.0: Bomberman-like multiplayer game
@@ -11900,7 +11900,7 @@ games-strategy/defcon-demo 1.60-r1: Global thermonuclear war simulation with mul
 games-strategy/dominions2 2.16-r1: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.6.1: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
-games-strategy/freeciv 2.5.12 2.6.2: multiplayer strategy game (Civilization Clone)
+games-strategy/freeciv 2.6.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.10.1-r1 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.5: Portable engine reimplementation for the classic Bullfrog game Syndicate
@@ -15016,7 +15016,7 @@ net-libs/libnatpmp 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
 net-libs/libnetconf2 1.1.36 1.1.43: C library for building NETCONF servers and clients
-net-libs/libnetfilter_acct 1.0.2 1.0.3: library providing interface to extended accounting infrastructure
+net-libs/libnetfilter_acct 1.0.3: Library providing interface to extended accounting infrastructure
 net-libs/libnetfilter_conntrack 1.0.6 1.0.7 1.0.8: Programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0-r1: Userspace library for interface to user-space helper for conntrack
 net-libs/libnetfilter_cttimeout 1.0.0-r1: netlink interface for conntrack timeout infrastructure in kernel's packet filter
@@ -17859,7 +17859,7 @@ sys-power/nvclock 0.8_p20110102-r2 0.8_p20110102-r3: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03-r1: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31-r2: Script to test whether computer is running on AC power
-sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
+sys-power/powernowd 1.00-r5: Daemon to control the speed and voltage of CPUs
 sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.13-r1 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.1-r1: GEMBIRD SiS-PM control utility
