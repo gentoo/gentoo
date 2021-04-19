@@ -26,7 +26,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 GPL-3 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="audit build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="audit build caps +cramfs cryptsetup fdformat hardlink kill +logger magic ncurses nls pam python +readline selinux slang static-libs su +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -38,8 +38,8 @@ RDEPEND="
 	cryptsetup? ( sys-fs/cryptsetup )
 	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? (
-		sys-apps/file:0=
 		>=sys-libs/ncurses-5.2-r2:0=[unicode?]
+		magic? ( sys-apps/file:0= )
 	)
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
@@ -192,6 +192,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with slang)
 		$(multilib_native_use_with systemd)
 		$(multilib_native_use_with udev)
+		$(multilib_native_usex ncurses "$(use_with libmagic magic)" '--without-libmagic')
 		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(multilib_native_use_with audit)
