@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/show_bug.cgi?id=566050#c2
 
---- paps-0.6.8/src/paps.c
-+++ paps-0.6.8/src/paps.c
+--- a/src/paps.c
++++ b/src/paps.c
 @@ -569,11 +569,14 @@
  
    fclose (file);
