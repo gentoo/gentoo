@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/9999"
+SLOT="0/13"
 IUSE="elogind icccm seatd systemd x11-backend X"
 REQUIRED_USE="?? ( elogind systemd )"
 
