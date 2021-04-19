@@ -1,12 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="Pedro is a subscription/notification communications system"
 HOMEPAGE="http://www.itee.uq.edu.au/~pjr/HomePages/PedroHome.html"
 SRC_URI="http://www.itee.uq.edu.au/~pjr/HomePages/PedroFiles/${P}.tgz
 	doc? ( mirror://gentoo/${PN}-manual-${PV}.tar.gz )"
+S="${WORKDIR}"/${P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,10 +18,17 @@ IUSE="doc examples"
 
 RDEPEND="dev-libs/glib:2"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}"/${P}
+PATCHES=(
+	"${FILESDIR}"/${P}-portage.patch
+)
 
-PATCHES=( "${FILESDIR}/${P}-portage.patch" )
+src_configure() {
+	tc-export PKG_CONFIG
+
+	default
+}
 
 src_install() {
 	default
