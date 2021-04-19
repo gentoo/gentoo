@@ -11044,7 +11044,7 @@ dev-util/pkgdev 0.1.2 0.1.3 9999: Collection of tools for Gentoo development
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
 dev-util/plan9port 0_pre20200526 9999: Port of many Plan 9 programs and libraries
 dev-util/ply 2.1.1-r1: Dynamic instrumentation of the Linux kernel with BPF and kprobes
-dev-util/poke 1.1: extensible editor for structured binary data
+dev-util/poke 1.1 1.2: extensible editor for structured binary data
 dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r2: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0 0.7.0 0.11.1: Prometheus Utility Tool
