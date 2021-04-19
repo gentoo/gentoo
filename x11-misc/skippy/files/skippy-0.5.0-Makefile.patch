@@ -11,8 +11,8 @@ Don't use LDFLAGS to pass libraries.
 -
 -CFLAGS += -I${X11PREFIX}/include `imlib2-config --cflags` `pkg-config xft --cflags` -g -pedantic -Wall
 -LDFLAGS += -L${X11PREFIX}/lib -lX11 -lm `imlib2-config --libs` `pkg-config xft --libs`
-+CFLAGS += `imlib2-config --cflags` `pkg-config xft --cflags` -pedantic -Wall
-+LDLIBS = -lX11 -lm `imlib2-config --libs` `pkg-config xft --libs`
++CFLAGS += `imlib2-config --cflags` `${PKG_CONFIG} xft --cflags` -pedantic -Wall
++LDLIBS = -lX11 -lm `imlib2-config --libs` `${PKG_CONFIG} xft --libs`
  
  # Comment these out to disable Xinerama support
  CFLAGS += -DXINERAMA
