@@ -2499,9 +2499,9 @@ app-laptop/tpacpi-bat 3.0-r1 3.1 9999: Control battery thresholds of recent Thin
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-laptop/tuxedo-control-center-bin 1.0.4: Tool to control performance, energy, fan and comfort settings on TUXEDO laptops
 app-laptop/tuxedo-keyboard 2.0.5-r1 3.0.3: Kernel Module for Tuxedo Keyboard
-app-metrics/alertmanager 0.21.0-r2: Alertmanager for alerts sent by client applications such as Prometheus
+app-metrics/alertmanager 0.21.0-r3: Alertmanager for alerts sent by client applications such as Prometheus
 app-metrics/bind_exporter 0.3.0: Prometheus exporter for BIND
-app-metrics/blackbox_exporter 0.18.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
+app-metrics/blackbox_exporter 0.18.0-r1: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
 app-metrics/collectd 5.12.0-r1: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0 0.6.0 0.7.1: Prometheus exporter for consul metrics
@@ -15271,7 +15271,7 @@ net-misc/connman-gtk 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r2: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/croc 8.6.11 8.6.12: Easily and securely send things from one computer to another
+net-misc/croc 8.6.12 9.0.0: Easily and securely send things from one computer to another
 net-misc/csync 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.74.0-r2 7.74.0-r4 7.75.0 7.76.0 7.76.1: A Client that groks URLs
 net-misc/dahdi 3.1.0-r2 3.1.0-r3: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
