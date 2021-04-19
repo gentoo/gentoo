@@ -1,0 +1,43 @@
+diff --git a/src/Network/Gitit/Authentication.hs b/src/Network/Gitit/Authentication.hs
+index 4c240e7..b41d87d 100644
+--- a/src/Network/Gitit/Authentication.hs
++++ b/src/Network/Gitit/Authentication.hs
+@@ -44,8 +44,8 @@ import System.Exit
+ import System.Log.Logger (logM, Priority(..))
+ import Data.Char (isAlphaNum, isAlpha)
+ import qualified Data.Map as M
+-import Text.Pandoc.Shared (substitute)
+ import Data.Maybe (isJust, fromJust, isNothing, fromMaybe)
++import Data.List (stripPrefix)
+ import Network.URL (exportURL, add_param, importURL)
+ import Network.BSD (getHostName)
+ import qualified Text.StringTemplate as T
+@@ -54,6 +54,15 @@ import Codec.Binary.UTF8.String (encodeString)
+ import Data.ByteString.UTF8 (toString)
+ import Network.Gitit.Rpxnow as R
+ 
++-- Taken from Pandoc-2.11.4, no longer exported since 2.12:
++substitute :: (Eq a) => [a] -> [a] -> [a] -> [a]
++substitute _ _ [] = []
++substitute [] _ xs = xs
++substitute target replacement lst@(x:xs) =
++    case stripPrefix target lst of
++      Just lst' -> replacement ++ substitute target replacement lst'
++      Nothing   -> x : substitute target replacement xs
++
+ data ValidationType = Register
+                     | ResetPassword
+                     deriving (Show,Read)
+diff --git a/src/Network/Gitit/Util.hs b/src/Network/Gitit/Util.hs
+index c5e9fe5..9588b3a 100644
+--- a/src/Network/Gitit/Util.hs
++++ b/src/Network/Gitit/Util.hs
+@@ -45,7 +45,7 @@ import Network.URL (encString)
+ 
+ -- | Read file as UTF-8 string.  Encode filename as UTF-8.
+ readFileUTF8 :: FilePath -> IO Text
+-readFileUTF8 = fmap T.pack . UTF8.readFile
++readFileUTF8 = UTF8.readFile
+ 
+ -- | Perform a function a directory and return to working directory.
+ inDir :: FilePath -> IO a -> IO a
