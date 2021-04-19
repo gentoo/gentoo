@@ -1,5 +1,5 @@
---- direwolf-1.5/Makefile.linux.orig	2020-09-13 16:24:04.878630130 +0200
-+++ direwolf-1.5/Makefile.linux	2020-09-13 16:30:13.744462027 +0200
+--- a/Makefile.linux
++++ b/Makefile.linux
 @@ -13,7 +13,7 @@
  	@echo "        sudo make install"
  	@echo " "
@@ -63,7 +63,7 @@
  ifneq ($(enable_hamlib),)
  CFLAGS += -DUSE_HAMLIB
 -LDFLAGS += -lhamlib
-+LDFLAGS += $(shell pkg-config --libs hamlib)
++LDFLAGS += $(shell ${PKG_CONFIG} --libs hamlib)
  endif
  
  
