@@ -46,6 +46,8 @@ lua_src_compile() {
 		"OPT_FLAGS=${CFLAGS}"
 	)
 
+	tc-export PKG_CONFIG
+
 	emake "${myemakeargs[@]}"
 
 	popd
