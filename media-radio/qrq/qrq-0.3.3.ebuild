@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -17,6 +17,7 @@ IUSE="pulseaudio"
 DEPEND="sys-libs/ncurses:=
 	pulseaudio? ( media-sound/pulseaudio )"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-0.3.2-tinfo.patch" )
 
@@ -28,14 +29,16 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	CONF="USE_PA=NO USE_OSS=YES"
 	if use pulseaudio; then
 		CONF="USE_PA=YES USE_OSS=NO"
 	fi
-	emake $CONF
+	emake ${CONF}
 }
 
 src_install() {
-	emake $CONF DESTDIR="${D}/usr" install
+	emake ${CONF} DESTDIR="${D}/usr" install
 	dodoc AUTHORS ChangeLog README
 }
