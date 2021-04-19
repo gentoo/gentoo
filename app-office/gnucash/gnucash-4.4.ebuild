@@ -96,6 +96,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-no-gui.patch
 	"${FILESDIR}"/${PN}-3.8-examples-subdir.patch
 	"${FILESDIR}"/${PN}-3.8-exclude-license.patch
+	"${FILESDIR}"/${P}-Fix-build-with-glib-2.68.patch
 )
 
 S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
