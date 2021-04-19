@@ -8108,7 +8108,7 @@ dev-python/apipkg 1.5-r1: Namespace control and lazy-import mechanism
 dev-python/apispec 3.3.0 4.2.0 4.3.0 4.4.0: A pluggable API specification generator.
 dev-python/appdirs 1.4.4-r1: Module for determining appropriate platform-specific dirs
 dev-python/apsw 3.32.2_p1: APSW - Another Python SQLite Wrapper
-dev-python/argcomplete 1.12.2-r1: Bash tab completion for argparse
+dev-python/argcomplete 1.12.2-r1 1.12.3: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
@@ -8170,8 +8170,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.33 1.17.44 1.17.49 1.17.50 1.17.51 1.17.52 1.17.53 9999: The AWS SDK for Python
-dev-python/botocore 1.20.33 1.20.44 1.20.49 1.20.50 1.20.51 1.20.52 1.20.53 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.33 1.17.44 1.17.49 1.17.50 1.17.51 1.17.52 1.17.53 1.17.54 9999: The AWS SDK for Python
+dev-python/botocore 1.20.33 1.20.44 1.20.49 1.20.50 1.20.51 1.20.52 1.20.53 1.20.54 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8551,7 +8551,7 @@ dev-python/jdcal 1.4.1: Julian dates from proleptic Gregorian and Julian calenda
 dev-python/jedi 0.17.2-r1 0.18.0: Autocompletion library for Python
 dev-python/jeepney 0.6.0: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.8.2: Python module for doing approximate and phonetic matching of strings
-dev-python/jikanpy 4.3.1: Python wrapper for jikan.moe API.
+dev-python/jikanpy 4.3.1 4.3.2: Python wrapper for jikan.moe API.
 dev-python/jinja 2.11.3: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
@@ -8561,7 +8561,7 @@ dev-python/josepy 1.8.0: JOSE protocol implementation in Python
 dev-python/js2py 0.70_p20210218: JavaScript to Python Translator & JavaScript interpreter in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
-dev-python/jsondiff 1.2.0: Diff JSON and JSON-like structures in Python
+dev-python/jsondiff 1.2.0 1.3.0: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.6.0 1.8.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.32: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
@@ -8614,7 +8614,7 @@ dev-python/lit 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: A sta
 dev-python/livereload 2.6.3: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 1.4.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.34.0 0.35.0 0.36.0: Python wrapper around the llvm C++ library
-dev-python/lmdb 1.1.1-r1 1.2.0-r1: Python bindings for the Lightning Database
+dev-python/lmdb 1.1.1-r1 1.2.0-r1 1.2.1: Python bindings for the Lightning Database
 dev-python/lmfit 1.0.1-r1 1.0.2: Non-Linear Least-Squares Minimization and Curve-Fitting for Python
 dev-python/locket 0.2.1: File-based locks for Python
 dev-python/lockfile 0.12.2-r2: Platform-independent file locking module
@@ -9253,7 +9253,7 @@ dev-python/ruamel-std-pathlib 0.6.4-r2 0.8.0: Ruamel enhancements to pathlib and
 dev-python/ruamel-yaml 0.16.13-r1 0.17.2 0.17.4: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.34: Component-based Software-defined Networking Framework
-dev-python/s3transfer 0.3.4 0.3.5 0.3.6 0.3.7: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.3.4 0.3.5 0.3.6 0.3.7 0.4.0: An Amazon S3 Transfer Manager
 dev-python/sabyenc 4.0.2: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0-r2: A better directory iterator and faster os.walk()
@@ -11518,7 +11518,7 @@ games-emulation/mastergear-bin 4.7: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8.7: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.8.4 0.9.0 0.9.1 9999: Game Boy Advance emulator written in C
+games-emulation/mgba 0.8.4-r1 0.9.1-r1 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.5.9-r2: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -12631,8 +12631,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.4.11 9999: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.19 14.9.22: Enhanced mailx-compatible mail client based on Heirloom mailx (nail)
 mail-client/sylpheed 3.7.0-r1: A lightweight email client and newsreader
-mail-client/thunderbird 78.9.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 78.9.1: Thunderbird Mail Client
+mail-client/thunderbird 78.9.1 78.10.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 78.9.1 78.10.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch

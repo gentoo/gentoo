@@ -11,4 +11,4 @@ RDEPEND=dev-games/clanlib:2.3[opengl,mikmod]
 SLOT=0
 SRC_URI=mirror://sourceforge/methane/methane-1.5.1.tgz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=ad248fe4ee060a20e8464f03fb4201c6
+_md5_=c0468bd36dc80fb99d9ae35e668f7b06
