@@ -1,0 +1,469 @@
+From 534e6d555736b97211523970d378dfb0db2608e9 Mon Sep 17 00:00:00 2001
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Date: Mon, 22 Feb 2021 21:44:07 -0800
+Subject: [PATCH 1/6] tmpnam.c: fix heap overflow
+
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+---
+ src/tmpnam.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tmpnam.c b/src/tmpnam.c
+index ce60817..917ee6b 100644
+--- a/src/tmpnam.c
++++ b/src/tmpnam.c
+@@ -42,7 +42,7 @@ wrapper(tmpnam, char *, (char * s))
+ 
+     expand_chroot_path(ptr);
+ 
+-    ptr2 = malloc(strlen(ptr));
++    ptr2 = malloc(strlen(ptr) + 1);
+     if (ptr2 == NULL) return NULL;
+ 
+     strcpy(ptr2, ptr);
+
+From 75d7e6fa191c11a791faff06a0de86eaa7801d05 Mon Sep 17 00:00:00 2001
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Date: Mon, 22 Feb 2021 21:46:36 -0800
+Subject: [PATCH 2/6] declare missing bufs, remove ver from lstat
+
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+---
+ src/lstat.c  | 8 +++++---
+ src/lstat.h  | 2 +-
+ src/mknod.c  | 2 ++
+ src/stat.c   | 2 ++
+ src/stat64.c | 2 ++
+ 5 files changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/src/lstat.c b/src/lstat.c
+index 3f6d819..54e3263 100644
+--- a/src/lstat.c
++++ b/src/lstat.c
+@@ -28,9 +28,11 @@
+ #include "lstat.h"
+ 
+ 
+-wrapper(lstat, int, (int ver, const char * filename, struct stat * buf))
++wrapper(lstat, int, (const char * filename, struct stat * buf))
+ {
+-    debug("lstat(%d, \"%s\", &buf)", ver, filename);
++    char fakechroot_abspath[FAKECHROOT_PATH_MAX];
++    char fakechroot_buf[FAKECHROOT_PATH_MAX];
++    debug("lstat(\"%s\", &buf)", filename);
+ 
+     if (!fakechroot_localdir(filename)) {
+         if (filename != NULL) {
+@@ -40,7 +42,7 @@ wrapper(lstat, int, (int ver, const char * filename, struct stat * buf))
+         }
+     }
+ 
+-    return lstat_rel(ver, filename, buf);
++    return lstat_rel(filename, buf);
+ }
+ 
+ 
+diff --git a/src/lstat.h b/src/lstat.h
+index 751c1ea..ee48303 100644
+--- a/src/lstat.h
++++ b/src/lstat.h
+@@ -26,7 +26,7 @@
+ 
+ #ifndef HAVE___LXSTAT
+ 
+-wrapper_proto(lstat, int, (int, const char *, struct stat *));
++wrapper_proto(lstat, int, (const char *, struct stat *));
+ 
+ int lstat_rel(const char *, struct stat *);
+ 
+diff --git a/src/mknod.c b/src/mknod.c
+index 52fd33b..2771037 100644
+--- a/src/mknod.c
++++ b/src/mknod.c
+@@ -28,6 +28,8 @@
+ 
+ wrapper(mknod, int, (const char * pathname, mode_t mode, dev_t dev))
+ {
++    char fakechroot_abspath[FAKECHROOT_PATH_MAX];
++    char fakechroot_buf[FAKECHROOT_PATH_MAX];
+     debug("mknod(\"%s\", 0%o, %ld)", pathname, mode, dev);
+     expand_chroot_path(pathname);
+     return nextcall(mknod)(pathname, mode, dev);
+diff --git a/src/stat.c b/src/stat.c
+index 7845662..7b37793 100644
+--- a/src/stat.c
++++ b/src/stat.c
+@@ -33,6 +33,8 @@
+ 
+ wrapper(stat, int, (const char * file_name, struct stat * buf))
+ {
++    char fakechroot_abspath[FAKECHROOT_PATH_MAX];
++    char fakechroot_buf[FAKECHROOT_PATH_MAX];
+     debug("stat(\"%s\", &buf)", file_name);
+     expand_chroot_path(file_name);
+     return nextcall(stat)(file_name, buf);
+diff --git a/src/stat64.c b/src/stat64.c
+index aac9c75..a360f66 100644
+--- a/src/stat64.c
++++ b/src/stat64.c
+@@ -34,6 +34,8 @@
+ 
+ wrapper(stat64, int, (const char * file_name, struct stat64 * buf))
+ {
++    char fakechroot_abspath[FAKECHROOT_PATH_MAX];
++    char fakechroot_buf[FAKECHROOT_PATH_MAX];
+     debug("stat64(\"%s\", &buf)", file_name);
+     expand_chroot_path(file_name);
+     return nextcall(stat64)(file_name, buf);
+
+From 693a3597ea7fccfb62f357503ff177bd3e3d5a89 Mon Sep 17 00:00:00 2001
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Date: Mon, 22 Feb 2021 21:47:09 -0800
+Subject: [PATCH 3/6] fix glibc 2.33+ compatibility
+
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+---
+ configure.ac        | 20 ++++++++++++++++++++
+ src/ftw.c           |  2 +-
+ src/ftw64.c         | 14 +++++++++++---
+ src/libfakechroot.h | 15 +++++++++++++++
+ src/lstat.c         |  2 +-
+ src/lstat.h         |  2 +-
+ src/lstat64.c       |  2 +-
+ src/mknod.c         |  2 +-
+ src/mknodat.c       |  2 +-
+ src/stat.c          |  2 +-
+ src/stat64.c        |  2 +-
+ 11 files changed, 54 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f8cdb32..9cc2e77 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -75,6 +75,26 @@ ACX_CHECK_C_ATTRIBUTE_VISIBILITY
+ # Checks for libraries.
+ AC_CHECK_LIB([dl], [dlsym])
+ 
++AH_TEMPLATE([NEW_GLIBC], [glibc >= 2.33])
++AC_MSG_CHECKING([for glibc 2.33+])
++  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
++       #include <sys/stat.h>
++  ]], [[
++#ifdef __GLIBC__
++#if !__GLIBC_PREREQ(2,33)
++#error glibc<2.33
++#endif
++#else
++#error not glibc
++#endif
++  ]])],[
++   AC_DEFINE(NEW_GLIBC,1)
++   AC_MSG_RESULT([yes])
++  ],[
++   AC_DEFINE(NEW_GLIBC,0)
++   AC_MSG_RESULT([no])
++  ])
++
+ # Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC
+diff --git a/src/ftw.c b/src/ftw.c
+index 92fc126..a9abc85 100644
+--- a/src/ftw.c
++++ b/src/ftw.c
+@@ -185,7 +185,7 @@ int rpl_lstat (const char *, struct stat *);
+ # define NFTW_NEW_NAME __new_nftw
+ # define INO_T ino_t
+ # define STAT stat
+-# ifdef _LIBC
++# if defined(_LIBC) && !NEW_GLIBC
+ #  define LXSTAT __lxstat
+ #  define XSTAT __xstat
+ #  define FXSTATAT __fxstatat
+diff --git a/src/ftw64.c b/src/ftw64.c
+index 7cc8cdf..cee1f2b 100644
+--- a/src/ftw64.c
++++ b/src/ftw64.c
+@@ -18,6 +18,8 @@
+    Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+    02111-1307 USA.  */
+ 
++#include "config.h"
++
+ #define __FTW64_C
+ #define FTW_NAME ftw64
+ #define NFTW_NAME nftw64
+@@ -25,9 +27,15 @@
+ #define NFTW_NEW_NAME __new_nftw64
+ #define INO_T ino64_t
+ #define STAT stat64
+-#define LXSTAT __lxstat64
+-#define XSTAT __xstat64
+-#define FXSTATAT __fxstatat64
++#if NEW_GLIBC
++#  define LXSTAT(V,f,sb) lstat64 (f,sb)
++#  define XSTAT(V,f,sb) stat64 (f,sb)
++#  define FXSTATAT(V,d,f,sb,m) fstatat64 (d, f, sb, m)
++#else
++#  define LXSTAT __lxstat64
++#  define XSTAT __xstat64
++#  define FXSTATAT __fxstatat64
++#endif
+ #define FTW_FUNC_T __ftw64_func_t
+ #define NFTW_FUNC_T __nftw64_func_t
+ 
+diff --git a/src/libfakechroot.h b/src/libfakechroot.h
+index 4cf199f..64ff15f 100644
+--- a/src/libfakechroot.h
++++ b/src/libfakechroot.h
+@@ -200,6 +200,21 @@
+ # endif
+ #endif
+ 
++#ifndef _STAT_VER
++ #if defined (__aarch64__)
++  #define _STAT_VER 0
++ #elif defined (__powerpc__) && __WORDSIZE == 64
++  #define _STAT_VER 1
++ #elif defined (__riscv) && __riscv_xlen==64
++  #define _STAT_VER 0
++ #elif defined (__s390x__)
++  #define _STAT_VER 1
++ #elif defined (__x86_64__)
++  #define _STAT_VER 1
++ #else
++  #define _STAT_VER 3
++ #endif
++#endif
+ 
+ typedef void (*fakechroot_wrapperfn_t)(void);
+ 
+diff --git a/src/lstat.c b/src/lstat.c
+index 54e3263..fa38323 100644
+--- a/src/lstat.c
++++ b/src/lstat.c
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ 
+-#ifndef HAVE___LXSTAT
++#if !defined(HAVE___LXSTAT) || NEW_GLIBC
+ 
+ #include <sys/stat.h>
+ #include <unistd.h>
+diff --git a/src/lstat.h b/src/lstat.h
+index ee48303..c46a2b9 100644
+--- a/src/lstat.h
++++ b/src/lstat.h
+@@ -24,7 +24,7 @@
+ #include <config.h>
+ #include "libfakechroot.h"
+ 
+-#ifndef HAVE___LXSTAT
++#if !defined(HAVE___LXSTAT) || NEW_GLIBC
+ 
+ wrapper_proto(lstat, int, (const char *, struct stat *));
+ 
+diff --git a/src/lstat64.c b/src/lstat64.c
+index b6212fc..a332d7c 100644
+--- a/src/lstat64.c
++++ b/src/lstat64.c
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ 
+-#if defined(HAVE_LSTAT64) && !defined(HAVE___LXSTAT64)
++#if defined(HAVE_LSTAT64) && (!defined(HAVE___LXSTAT64) || NEW_GLIBC)
+ 
+ #define _LARGEFILE64_SOURCE
+ #define _BSD_SOURCE
+diff --git a/src/mknod.c b/src/mknod.c
+index 2771037..aeb750b 100644
+--- a/src/mknod.c
++++ b/src/mknod.c
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ 
+-#ifndef HAVE___XMKNOD
++#if !defined(HAVE___XMKNOD) || NEW_GLIBC
+ 
+ #include <sys/stat.h>
+ #include "libfakechroot.h"
+diff --git a/src/mknodat.c b/src/mknodat.c
+index 732a22b..3239b35 100644
+--- a/src/mknodat.c
++++ b/src/mknodat.c
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ 
+-#if defined(HAVE_MKNODAT) && !defined(HAVE___XMKNODAT)
++#if defined(HAVE_MKNODAT) && (!defined(HAVE___XMKNODAT) || NEW_GLIBC)
+ 
+ #define _ATFILE_SOURCE
+ #include <sys/stat.h>
+diff --git a/src/stat.c b/src/stat.c
+index 7b37793..5ef57ba 100644
+--- a/src/stat.c
++++ b/src/stat.c
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ 
+-#ifndef HAVE___XSTAT
++#if !defined(HAVE___XSTAT) || NEW_GLIBC
+ 
+ #define _BSD_SOURCE
+ #define _DEFAULT_SOURCE
+diff --git a/src/stat64.c b/src/stat64.c
+index a360f66..993ce80 100644
+--- a/src/stat64.c
++++ b/src/stat64.c
+@@ -20,7 +20,7 @@
+ 
+ #include <config.h>
+ 
+-#if defined(HAVE_STAT64) && !defined(HAVE___XSTAT64)
++#if defined(HAVE_STAT64) && (!defined(HAVE___XSTAT64) || NEW_GLIBC)
+ 
+ #define _BSD_SOURCE
+ #define _LARGEFILE64_SOURCE
+
+From e7c1f3a446e594a4d0cce5f5d499c9439ce1d5c5 Mon Sep 17 00:00:00 2001
+From: neok-m4700 <neok-m4700@users.noreply.github.com>
+Date: Wed, 24 Feb 2021 17:36:57 +0100
+Subject: [PATCH 6/6] wrap fstatat and fstatat64
+
+---
+ configure.ac    |  2 ++
+ src/Makefile.am |  2 ++
+ src/fstatat.c   | 42 ++++++++++++++++++++++++++++++++++++++++++
+ src/fstatat64.c | 43 +++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 89 insertions(+)
+ create mode 100644 src/fstatat.c
+ create mode 100644 src/fstatat64.c
+
+diff --git a/configure.ac b/configure.ac
+index 9cc2e77..5b3053e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -218,6 +218,8 @@ AC_CHECK_FUNCS(m4_normalize([
+     freopen64
+     fstat
+     fstat64
++    fstatat
++    fstatat64
+     fts_children
+     fts_open
+     fts_read
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6066345..eb311c0 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -61,6 +61,8 @@ libfakechroot_la_SOURCES = \
+     fopen64.c \
+     freopen.c \
+     freopen64.c \
++    fstatat.c \
++    fstatat64.c \
+     fts.c \
+     fts64.c \
+     ftw.c \
+diff --git a/src/fstatat.c b/src/fstatat.c
+new file mode 100644
+index 0000000..ca7578b
+--- /dev/null
++++ b/src/fstatat.c
+@@ -0,0 +1,42 @@
++/*
++    libfakechroot -- fake chroot environment
++    Copyright (c) 2010, 2021 Piotr Roszatycki <dexter@debian.org>
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Lesser General Public
++    License as published by the Free Software Foundation; either
++    version 2.1 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Lesser General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public
++    License along with this library; if not, write to the Free Software
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
++*/
++
++
++#include <config.h>
++
++#ifdef HAVE_FSTATAT
++
++#define _ATFILE_SOURCE
++#define _POSIX_C_SOURCE 200809L
++#include <sys/stat.h>
++#include <limits.h>
++#include "libfakechroot.h"
++
++wrapper(fstatat, int, (int dirfd, const char *pathname, struct stat *buf, int flags))
++{
++    char fakechroot_abspath[FAKECHROOT_PATH_MAX];
++    char fakechroot_buf[FAKECHROOT_PATH_MAX];
++    debug("fstatat(%d, \"%s\", &buf, %d)", dirfd, pathname, flags);
++    expand_chroot_path_at(dirfd, pathname);
++    return nextcall(fstatat)(dirfd, pathname, buf, flags);
++}
++
++#else
++typedef int empty_translation_unit;
++#endif
+diff --git a/src/fstatat64.c b/src/fstatat64.c
+new file mode 100644
+index 0000000..1863372
+--- /dev/null
++++ b/src/fstatat64.c
+@@ -0,0 +1,43 @@
++/*
++    libfakechroot -- fake chroot environment
++    Copyright (c) 2010, 2021 Piotr Roszatycki <dexter@debian.org>
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Lesser General Public
++    License as published by the Free Software Foundation; either
++    version 2.1 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Lesser General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public
++    License along with this library; if not, write to the Free Software
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
++*/
++
++
++#include <config.h>
++
++#ifdef HAVE_FSTATAT64
++
++#define _ATFILE_SOURCE
++#define _POSIX_C_SOURCE 200809L
++#define _LARGEFILE64_SOURCE
++#include <sys/stat.h>
++#include <limits.h>
++#include "libfakechroot.h"
++
++wrapper(fstatat64, int, (int dirfd, const char *pathname, struct stat64 *buf, int flags))
++{
++    char fakechroot_abspath[FAKECHROOT_PATH_MAX];
++    char fakechroot_buf[FAKECHROOT_PATH_MAX];
++    debug("fstatat64(%d, \"%s\", &buf, %d)", dirfd, pathname, flags);
++    expand_chroot_path_at(dirfd, pathname);
++    return nextcall(fstatat64)(dirfd, pathname, buf, flags);
++}
++
++#else
++typedef int empty_translation_unit;
++#endif
