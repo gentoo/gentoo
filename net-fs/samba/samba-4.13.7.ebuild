@@ -16,7 +16,7 @@ if [[ ${PV} = *_rc* ]]; then
 	SRC_URI="mirror://samba/rc/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://samba/stable/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
@@ -71,7 +71,6 @@ COMMON_DEPEND="
 	>=sys-libs/ldb-2.2.1[ldap(+)?,${MULTILIB_USEDEP}]
 	<sys-libs/ldb-2.3.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
-	sys-libs/libunwind
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
@@ -80,7 +79,6 @@ COMMON_DEPEND="
 	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
-	acl? ( virtual/acl )
 	$(python_gen_cond_dep "
 		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
 		addns? (
@@ -88,6 +86,8 @@ COMMON_DEPEND="
 			net-dns/bind-tools[gssapi]
 		)
 	")
+	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
+	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? ( net-libs/rpcsvc-proto )
 	cups? ( net-print/cups )
