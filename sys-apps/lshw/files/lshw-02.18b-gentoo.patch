@@ -1,5 +1,5 @@
---- lshw-B.02.18/src/Makefile
-+++ lshw-B.02.18/src/Makefile
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -21,11 +21,11 @@
  CXX?=c++
  INCLUDES=-I./core/
@@ -82,8 +82,8 @@
  
  .timestamp:
  	date --utc +%Y%m%d%H%M%S > $@
---- lshw-B.02.18/src/core/Makefile
-+++ lshw-B.02.18/src/core/Makefile
+--- a/src/core/Makefile
++++ b/src/core/Makefile
 @@ -1,10 +1,9 @@
  PACKAGENAME?=lshw
  
@@ -97,8 +97,8 @@
  LDSTATIC=
  LIBS=
  
---- lshw-B.02.18/src/core/pci.cc
-+++ lshw-B.02.18/src/core/pci.cc
+--- a/src/core/pci.cc
++++ b/src/core/pci.cc
 @@ -17,7 +17,7 @@
  
  #define PROC_BUS_PCI "/proc/bus/pci"
@@ -108,8 +108,8 @@
  
  #define PCI_CLASS_REVISION      0x08              /* High 24 bits are class, low 8 revision */
  #define PCI_VENDOR_ID           0x00    /* 16 bits */
---- lshw-B.02.18/src/core/usb.cc
-+++ lshw-B.02.18/src/core/usb.cc
+--- a/src/core/usb.cc
++++ b/src/core/usb.cc
 @@ -27,7 +27,7 @@
  
  #define PROCBUSUSBDEVICES "/proc/bus/usb/devices"
@@ -119,8 +119,8 @@
  
  #define USB_CLASS_PER_INTERFACE         0         /* for DeviceClass */
  #define USB_CLASS_AUDIO                 1
---- lshw-B.02.18/src/gui/Makefile
-+++ lshw-B.02.18/src/gui/Makefile
+--- a/src/gui/Makefile
++++ b/src/gui/Makefile
 @@ -1,5 +1,7 @@
  PACKAGENAME?=lshw
  
