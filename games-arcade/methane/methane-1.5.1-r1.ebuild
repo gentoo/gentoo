@@ -31,7 +31,7 @@ src_prepare() {
 		-e "s:@GENTOO_DATADIR@:/usr/share:" \
 		sources/target.cpp || die
 
-	tc-export PKG_CONFIG
+	tc-export CXX PKG_CONFIG
 
 	# fix weird parallel make issue wrt #450422
 	mkdir build || die
