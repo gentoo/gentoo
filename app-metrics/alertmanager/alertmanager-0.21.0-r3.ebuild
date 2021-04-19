@@ -20,7 +20,7 @@ BDEPEND="dev-util/promu"
 
 RESTRICT+=" test"
 
-BDEPEND="
+DEPEND="
 	acct-group/alertmanager
 	acct-user/alertmanager
 "
