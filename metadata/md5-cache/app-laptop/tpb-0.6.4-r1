@@ -1,14 +1,14 @@
-DEFINED_PHASES=configure install prepare setup
+DEFINED_PHASES=configure install setup
 DEPEND=x11-libs/libXt x11-libs/libXext xosd? ( >=x11-libs/xosd-2.2.0 )
 DESCRIPTION=IBM ThinkPad buttons utility
-EAPI=5
+EAPI=7
 HOMEPAGE=https://savannah.nongnu.org/projects/tpb/
-INHERIT=linux-info epatch
+INHERIT=linux-info
 IUSE=nls xosd kernel_linux
 KEYWORDS=amd64 -ppc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libXt x11-libs/libXext xosd? ( >=x11-libs/xosd-2.2.0 )
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/tpb/tpb-0.6.4.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=f205023eb41d31263c0a052f0a472a50
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
+_md5_=2e56173b35453c3476e8dedde0918a80

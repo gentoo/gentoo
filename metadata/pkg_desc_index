@@ -712,7 +712,7 @@ app-admin/apache-tools 2.4.41 2.4.43 2.4.46: Useful Apache tools - htdigest, htp
 app-admin/apachetop 0.19.7: A realtime Apache log analyzer
 app-admin/apg 2.3.0b_p20150129: Another Password Generator
 app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration files
-app-admin/authbind 2.1.1 2.1.2: Bind sockets to privileged ports without root
+app-admin/authbind 2.1.2: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/bitwarden-desktop-bin 1.23.1 1.25.1: Bitwarden password manager desktop client
@@ -2788,7 +2788,7 @@ app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
 app-misc/tmuxp 1.5.4 1.6.5 1.7.2: tmux session manager. built on libtmux
 app-misc/todo 2.11.0 2.12.0-r1: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
-app-misc/tpconfig 3.1.3-r2 3.1.3-r3: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
+app-misc/tpconfig 3.1.3-r3: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 2.3.5 3.1.1: A tagging metadata database, search tool and indexer
@@ -2818,7 +2818,7 @@ app-misc/yq 2.9.2-r1 2.11.1 2.12.0: Command-line YAML processor - jq wrapper for
 app-misc/ytree 2.02 2.03: A curses-based file manager
 app-misc/zisofs-tools 1.0.8: User utilities for zisofs
 app-misc/zygrib 8.0.1-r1: GRIB File Viewer - Weather data visualization
-app-mobilephone/adb-sync 0_p20181127-r1 0_p20190101: Synchronize files between a PC and an Android device using ADB
+app-mobilephone/adb-sync 0_p20190101: Synchronize files between a PC and an Android device using ADB
 app-mobilephone/anyremote 6.5: Bluetooth, infrared or cable remote control service
 app-mobilephone/dfu-util 0.9 9999: implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol
 app-mobilephone/gammu 1.41.0: A tool to handle your cellular phone
@@ -3673,7 +3673,7 @@ dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 1.0.2: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/ms-gsl 3.1.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.6.1: Library for parsing mathematical expressions
-dev-cpp/nlohmann_json 3.6.1-r1 3.7.0 3.7.3 3.9.1: JSON for Modern C++
+dev-cpp/nlohmann_json 3.9.1: JSON for Modern C++
 dev-cpp/notcurses 2.2.3: Blingful TUIs and character graphics
 dev-cpp/pangomm 2.42.2 2.48.0: C++ interface for pango
 dev-cpp/picojson 1.3.0: Header-file-only, JSON parser serializer in C++
@@ -3821,7 +3821,7 @@ dev-embedded/dfu-programmer 0.7.2-r1: A Device Firmware Update based USB program
 dev-embedded/esptool 2.8-r2 3.0: Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32
 dev-embedded/freaklabs-boards 1.0.0: Arduino hardware definitions for freaklabs boards
 dev-embedded/gnusim8085 1.3.7: A GTK2 8085 Simulator
-dev-embedded/gpsim 0.29.0 0.30.0: A simulator for the Microchip PIC microcontrollers
+dev-embedded/gpsim 0.30.0: A simulator for the Microchip PIC microcontrollers
 dev-embedded/gputils 1.5.0: Tools including assembler, linker and librarian for PIC microcontrollers
 dev-embedded/icdprog 0.5: Microchip PIC Programmer using ICD hardware
 dev-embedded/include 0.4.2: A collection of useful, independent include files for C/Assembler developers
@@ -3833,7 +3833,7 @@ dev-embedded/libftdi 0.20-r1 1.4-r1 1.5-r2 1.5-r3 9999: Userspace access to FTDI
 dev-embedded/libjaylink 0.2.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
 dev-embedded/mcu8051ide 1.4.10: Graphical IDE for microcontrollers based on 8051.
-dev-embedded/mspdebug 0.24 0.25: A free debugger for use with MSP430 MCUs
+dev-embedded/mspdebug 0.25: A free debugger for use with MSP430 MCUs
 dev-embedded/nodemcu-uploader 1.0.0: Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU
 dev-embedded/openocd 0.10.0-r1 0.11.0 9999: OpenOCD - Open On-Chip Debugger
 dev-embedded/parapin 1.5.0 1.5.1_beta1: A parallel port pin programming library
@@ -3851,7 +3851,7 @@ dev-embedded/smdk-dltool 0.20-r4: Tool to communicate with Samsung SMDK boards
 dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM load files
 dev-embedded/stlink 1.6.0 9999: stm32 discovery line linux programmer
 dev-embedded/stm32flash 0.5: Open source flash program for STM32 using the ST serial bootloader
-dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
+dev-embedded/sunxi-tools 1.3-r1: Tools for Allwinner A10 devices.
 dev-embedded/u-boot-tools 2020.04-r2 2021.04_rc2: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
@@ -5567,7 +5567,7 @@ dev-libs/libbytesize 2.3 2.4 2.5: Tiny library providing a C "class" for working
 dev-libs/libcbor 0.8.0: CBOR protocol implementation for C and others
 dev-libs/libcdada 0.3.4-r2: Basic data structures in C
 dev-libs/libcdio 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
-dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
+dev-libs/libcdio-paranoia 0.94_p2-r2 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.4-r1 4.0.7 6.0.2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
 dev-libs/libcgroup 0.41-r5 0.41-r6: Tools and libraries to configure and manage kernel control groups
 dev-libs/libcharon 4.8.0: This library facilitates communication between Cura and its backend
@@ -5825,7 +5825,7 @@ dev-libs/protobuf-c 1.3.3: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.8_p20200406 1.3.9_p20210325: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pthreads4w 3.0.0: POSIX Threads for Windows
-dev-libs/pugixml 1.10 1.11.3 1.11.4 9999: Light-weight, simple, and fast XML parser for C++ with XPath support
+dev-libs/pugixml 1.11.4 9999: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/qcustomplot 2.0.1: Qt C++ widget for plotting and data visualization
 dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
@@ -11165,7 +11165,7 @@ dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled source
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.2_beta1-r1 3.13-r2: Generates patchset information from a CVS repository (supports fast-import)
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
-dev-vcs/cvsutils 0.2.5-r1 0.2.6: A small bundle of utilities to work with CVS repositories
+dev-vcs/cvsutils 0.2.6: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.16.3: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
@@ -11662,7 +11662,7 @@ games-misc/gBhed 0.17-r1: An Al Bhed translator
 games-misc/games-envd 0: Environment file for gentoo games
 games-misc/gtklife 5.2: A Conway's Life simulator for Unix
 games-misc/little-inferno 20130509-r1: Throw your toys into your fire, and play with them as they burn
-games-misc/lolcat 90.8.8-r1 100.0.1 100.0.1-r1: Rainbows and unicorns!
+games-misc/lolcat 100.0.1-r1: Rainbows and unicorns!
 games-misc/lucidlife 0.9.2-r1: A Conway's Life simulator written in GTK+2 - fork from Gtklife
 games-misc/nyancat 1.5.1: Nyan Cat Telnet Server
 games-misc/opengfx 0.6.0: OpenGFX data files for OpenTTD
@@ -11796,7 +11796,7 @@ games-puzzle/xye 0.12.2: Free version of the classic game Kye
 games-puzzle/zaz 1.0.0-r1: A puzzle game where the player has to arrange balls in triplets
 games-roguelike/FTL 1.5.13-r1: Faster Than Light: A spaceship simulation real-time roguelike-like game
 games-roguelike/FTL-gog 1.6.9.25330: Top-down roguelike space ship simulator
-games-roguelike/adom 1.1.1-r1 1.1.1-r2 3.3.3-r1: Ancient Domains Of Mystery rogue-like game
+games-roguelike/adom 1.1.1-r2 3.3.3-r1: Ancient Domains Of Mystery rogue-like game
 games-roguelike/angband 4.2.1 4.2.1-r1: A roguelike dungeon exploration game based on the books of J.R.R. Tolkien
 games-roguelike/crossfire-client 1.71.0-r100: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.44.12: A single-player fantasy game
@@ -12615,7 +12615,7 @@ mail-client/alpine 2.24: An easy to use text-based based mail and news client
 mail-client/balsa 2.6.1 2.6.2: Email client for GNOME
 mail-client/bower 0.12: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.8 9999: An email client (and news reader) based on GTK+
-mail-client/clawsker 1.3.1 1.3.4: Applet to edit Claws Mail's hidden preferences
+mail-client/clawsker 1.3.4: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 1.0: CONE: COnsole News reader and Emailer
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.38.4 3.40.0: Integrated mail, addressbook and calendaring functionality
@@ -13144,7 +13144,7 @@ media-gfx/svg2rlg 0.4.0: Converts SVG files to PDFs or reportlab graphics
 media-gfx/sxiv 26 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
-media-gfx/tachyon 0.99_beta6-r1 0.99_beta6-r2: A portable, high performance parallel ray tracing system
+media-gfx/tachyon 0.99_beta6-r2: A portable, high performance parallel ray tracing system
 media-gfx/termtosvg 1.1.0: Record terminal sessions as SVG animations
 media-gfx/tgif 4.2.5-r2: Xlib base 2-D drawing facility under X11
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
@@ -13415,10 +13415,10 @@ media-libs/libquvi-scripts 0.9.20131130-r100: Embedded lua scripts for libquvi
 media-libs/libraw 0.20.0 0.20.2: LibRaw is a library for reading RAW files obtained from digital photo cameras
 media-libs/libreplaygain 477-r1: Replay Gain library from Musepack
 media-libs/librosprite 0.1.3-r2: framebuffer abstraction library, written in C
-media-libs/libsamplerate 0.1.9-r1 0.2.1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
+media-libs/libsamplerate 0.2.1 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9 1.2.15_p20210224: Simple Direct Media Layer
-media-libs/libsdl2 2.0.12-r1 2.0.12-r2 2.0.14-r1: Simple Direct Media Layer
+media-libs/libsdl2 2.0.12-r2 2.0.14-r1: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.4.5: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
@@ -13506,7 +13506,7 @@ media-libs/rlottie 0.2: A platform independent standalone library that plays Lot
 media-libs/rtaudio 5.1.0: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.9.1-r1: An audio time-stretching and pitch-shifting library and utility program
 media-libs/sbc 1.5: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
-media-libs/sdl-gfx 2.0.26 2.0.26-r1: Graphics drawing primitives library for SDL
+media-libs/sdl-gfx 2.0.26-r1: Graphics drawing primitives library for SDL
 media-libs/sdl-image 1.2.12-r2 1.2.12_p20210314: Image file loading library
 media-libs/sdl-mixer 1.2.12-r4: Simple Direct Media Layer Mixer Library
 media-libs/sdl-net 1.2.8-r1: Simple Direct Media Layer Network Support Library
@@ -13746,7 +13746,7 @@ media-plugins/kodi-visualization-waveform 4.4.0 9999: Waveform visualizer for Ko
 media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r4: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2020.03.06 2020.05.15: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2020.05.15: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.2.6: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mythplugins 31.0-r1: Official MythTV plugins
@@ -13874,7 +13874,7 @@ media-radio/xwxapt 3.4.2: GTK+ linux weather satellite APT image decoder softwar
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/abcde 2.9.3-r1: Command line CD encoder
-media-sound/abcm2ps 8.14.4 8.14.6 8.14.11: Program to convert abc files to Postscript files
+media-sound/abcm2ps 8.14.11: Program to convert abc files to Postscript files
 media-sound/abcmidi 2020.01.22 2020.06.07: Programs for processing ABC music notation files
 media-sound/aeolus 0.9.9: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -14035,7 +14035,7 @@ media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.24: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
-media-sound/milkytracker 1.02.00-r1 1.03.00: FastTracker 2 inspired music tracker
+media-sound/milkytracker 1.03.00: FastTracker 2 inspired music tracker
 media-sound/mixxx 2.2.4 2.3.9999 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2-r1 2.6_alpha3-r3: Music On Console - ncurses interface for playing audio files
@@ -15336,7 +15336,7 @@ net-misc/htpdate 1.2.2 1.2.6 9999: Synchronize local workstation with time offer
 net-misc/httpie 2.4.0: Modern command line HTTP client
 net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty and clarity
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
-net-misc/hylafaxplus 7.0.2 7.0.3: Enterprise client-server fax package for class 1 and 2 fax modems
+net-misc/hylafaxplus 7.0.3: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/iaxmodem 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 21.1.0.14 21.3.0.38: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
@@ -15483,7 +15483,7 @@ net-misc/sipcalc 1.1.6 1.1.6-r1: Sipcalc is an advanced console-based IP subnet 
 net-misc/sipp 3.6.0 3.6.1: A free Open Source test tool / traffic generator for the SIP protocol
 net-misc/sipsak 0.9.8: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
-net-misc/sks 1.1.6_p20200624 1.1.6_p20200624-r1: An OpenPGP keyserver which is decentralized with highly reliable synchronization
+net-misc/sks 1.1.6_p20200624-r1: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/smb4k 3.0.6: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
@@ -16461,7 +16461,7 @@ sci-libs/libpdb 991112-r1: PDB Record I/O Libraries -- c version
 sci-libs/libpdb++ 040728-r1: PDB Record I/O Libraries -- c++ version
 sci-libs/libqalculate 3.16.1 3.17.0: A modern multi-purpose calculator library
 sci-libs/libsc 2.2-r100 9999: Support for parallel scientific applications
-sci-libs/libsigrok 0.5.2 0.5.2-r1 9999: Basic hardware drivers for logic analyzers and input/output file format support
+sci-libs/libsigrok 0.5.2-r1 9999: Basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libsigrokdecode 0.5.3 9999: Provide (streaming) protocol decoding functionality
 sci-libs/libspatialindex 1.9.3 1.9.3-r1: C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API
 sci-libs/libsvm 3.24: Library for Support Vector Machines
@@ -17608,7 +17608,7 @@ sys-firmware/nvidia-firmware 340.32-r1: Kernel and mesa firmware for nouveau (vi
 sys-firmware/raspberrypi-wifi-ucode 20190114.1_p9 20190114.1_p10: Most up-to-date uCode for the Broadcom wifi chips on Raspberry Pi SBCs
 sys-firmware/seabios 1.12.0 1.12.0-r1 1.14.0: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1 0.1_pre10: serial graphics adapter bios option rom for x86
-sys-firmware/sigrok-firmware-fx2lafw 0.1.6 0.1.7 0.1.7-r1 9999: Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
+sys-firmware/sigrok-firmware-fx2lafw 0.1.7-r1 9999: Firmware for Cypress FX2 chips for use as simple logic analyzer hardware
 sys-firmware/sof-firmware 1.4.2 1.5.1: Sound Open Firmware (SOF) binary files
 sys-firmware/tt-s2-6400-firmware 0.5.0 0.5.1: Firmware for the Technotrend S2-6400 DVB Card
 sys-firmware/vgabios 0.7a 0.7a-r1: VGA BIOS implementation
@@ -18678,7 +18678,7 @@ x11-misc/qcomicbook 0.9.1: Viewer for comic book archives containing jpeg/png im
 x11-misc/qlipper 5.1.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 2.2.0 2.3.0: Qt GUI Process Manager
 x11-misc/qt5ct 1.1: Qt5 configuration tool, similar to qtconfig for Qt4
-x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
+x11-misc/qterm 0.7.3: A BBS client based on Qt
 x11-misc/qtfm 6.2.0 99999: Small, lightweight file manager based on pure Qt
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
 x11-misc/qxkb 0.5.1_pre20190821: Qt-based keyboard layout switcher
@@ -18775,7 +18775,7 @@ x11-misc/xdo 0.5.7: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
 x11-misc/xdotool 3.20160805.1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Set the X root window to an image of the Earth
-x11-misc/xfe 1.42 1.43.1 1.43.2: MS-Explorer-like minimalist file manager for X
+x11-misc/xfe 1.43.2: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.5: Turns your root window into an aquarium
 x11-misc/xflux 20130927-r1 20170103: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.2.0-r1: A GUI for f.lux
