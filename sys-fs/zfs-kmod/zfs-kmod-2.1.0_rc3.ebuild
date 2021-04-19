@@ -12,18 +12,23 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openzfs.asc
+	inherit verify-sig
+
 	MY_PV="${PV/_rc/-rc}"
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
-	KEYWORDS=""
+	SRC_URI+=" verify-sig? ( https://github.com/openzfs/${PN}/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz.asc )"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
 	ZFS_KERNEL_COMPAT="5.11"
+
+	if [[ ${PV} != *_rc* ]]; then
+		KEYWORDS="~amd64 ~arm64 ~ppc64"
+	fi
 fi
 
 LICENSE="CDDL MIT debug? ( GPL-2+ )"
 SLOT="0"
 IUSE="custom-cflags debug +rootfs"
-
-DEPEND=""
 
 RDEPEND="${DEPEND}
 	!sys-kernel/spl
@@ -33,6 +38,10 @@ BDEPEND="
 	dev-lang/perl
 	virtual/awk
 "
+
+if [[ ${PV} != "9999" ]] ; then
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-openzfs )"
+fi
 
 RESTRICT="debug? ( strip ) test"
 

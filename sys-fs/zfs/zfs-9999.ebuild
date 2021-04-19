@@ -15,8 +15,12 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3 linux-mod
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/openzfs.asc
+	inherit verify-sig
+
 	MY_P="${P/_rc/-rc}"
 	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${MY_P}/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://github.com/openzfs/${PN}/releases/download/${MY_P}/${MY_P}.tar.gz.asc )"
 	S="${WORKDIR}/${P%_rc?}"
 
 	if [[ ${PV} != *_rc* ]]; then
@@ -51,6 +55,10 @@ BDEPEND="virtual/awk
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)
 "
+
+if [[ ${PV} != "9999" ]] ; then
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-openzfs )"
+fi
 
 # awk is used for some scripts, completions, and the Dracut module
 RDEPEND="${DEPEND}
