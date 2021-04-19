@@ -1,8 +1,7 @@
 # Try to fix pointer assigned to int and vice-versa problems.  Written by Joe Pelkey.
 
-diff -ru actkbd-0.2.7.orig/actkbd.h actkbd-0.2.7/actkbd.h
---- actkbd-0.2.7.orig/actkbd.h	2006-05-02 13:24:01.000000000 -0400
-+++ actkbd-0.2.7/actkbd.h	2006-10-27 03:37:37.000000000 -0400
+--- a/actkbd.h
++++ b/actkbd.h
 @@ -122,7 +122,7 @@
  typedef struct _attr_t attr_t;
  struct _attr_t {
@@ -12,9 +11,8 @@ diff -ru actkbd-0.2.7.orig/actkbd.h actkbd-0.2.7/actkbd.h
      attr_t *next;		/* The next node */
  };
  
-diff -ru actkbd-0.2.7.orig/config.c actkbd-0.2.7/config.c
---- actkbd-0.2.7.orig/config.c	2006-08-20 07:05:36.000000000 -0400
-+++ actkbd-0.2.7/config.c	2006-10-27 03:55:21.000000000 -0400
+--- a/config.c
++++ b/config.c
 @@ -107,7 +107,7 @@
      strtolower(attrs);
      while ((tmp = strsep(&attrs, ", \t")) != NULL) {
