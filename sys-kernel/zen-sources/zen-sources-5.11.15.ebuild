@@ -7,6 +7,7 @@ K_WANT_GENPATCHES="base extras"
 K_GENPATCHES_VER="1"
 K_SECURITY_UNSUPPORTED="1"
 K_NOSETEXTRAVERSION="1"
+ZEN_VER="v${PV}-zen1"
 
 inherit kernel-2
 detect_version
@@ -18,10 +19,10 @@ IUSE=""
 
 DESCRIPTION="The Zen Kernel Live Sources"
 
-ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-zen2/v${PV}-zen2.patch.xz"
+ZEN_URI="https://github.com/zen-kernel/zen-kernel/releases/download/${ZEN_VER}/${ZEN_VER}.patch.xz"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI} ${ZEN_URI}"
 
-UNIPATCH_LIST="${DISTDIR}/v${PV}-zen2.patch.xz"
+UNIPATCH_LIST="${DISTDIR}/${ZEN_VER}.patch.xz"
 UNIPATCH_STRICTORDER="yes"
 
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
