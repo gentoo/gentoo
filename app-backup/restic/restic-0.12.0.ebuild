@@ -9,7 +9,7 @@ DESCRIPTION="A backup program that is fast, efficient and secure"
 HOMEPAGE="https://restic.github.io/"
 
 EGO_SUM=(
-    "bazil.org/fuse v0.0.0-20200407214033-5883e5a4b512"
+	"bazil.org/fuse v0.0.0-20200407214033-5883e5a4b512"
 	"bazil.org/fuse v0.0.0-20200407214033-5883e5a4b512/go.mod"
 	"cloud.google.com/go v0.26.0/go.mod"
 	"cloud.google.com/go v0.34.0/go.mod"
