@@ -10,5 +10,5 @@ LICENSE=|| ( Apache-2.0 LGPL-2.1 )
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=http://www-labs.iro.umontreal.ca/~gambit/download/gambit/v4.8/source/gambit-v4_8_8.tgz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	6bfea130fc0f2cbd4cbc23dc12992349
 _md5_=fd5548f6e77a825a5ff3665015b05774

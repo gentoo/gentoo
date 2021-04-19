@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=>=net-misc/wget-1.8.2 >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://pop-club.hp.infoseek.co.jp/emacs/emacs-wget/emacs-wget-0.5.0.tar.gz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_eclasses_=elisp-common	6bfea130fc0f2cbd4cbc23dc12992349	elisp	8d41193227fc27c56371b201ec7d861c
 _md5_=f99c7d791d70edd27f142a4429e75895

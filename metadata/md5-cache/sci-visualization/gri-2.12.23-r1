@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl >=sci-libs/netcdf-4 virtual/latex-base virtual/imagemagick-tools[png] emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://sourceforge/gri/gri-2.12.23.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	6bfea130fc0f2cbd4cbc23dc12992349
 _md5_=84284f4f0d888389d343ca3dc57d2578

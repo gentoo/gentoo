@@ -12,5 +12,5 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libXmu x11-libs/libXrender emacs
 REQUIRED_USE=imlib? ( !gif !png )
 SLOT=0
 SRC_URI=ftp://sh.wide.ad.jp/WIDE/free-ware/mgp-snap/mgp-snap-20121015.tar.gz
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	elisp-common	36f97076abd90f943a34f8bcd58b5bcc
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	elisp-common	6bfea130fc0f2cbd4cbc23dc12992349
 _md5_=08fd46f322666d5eb8a697a133f26bba

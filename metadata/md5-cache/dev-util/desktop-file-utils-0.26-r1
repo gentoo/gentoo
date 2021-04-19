@@ -11,5 +11,5 @@ LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.12:2
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.26.tar.xz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	meson	e43eef9331f54965a573ed380854ff47
+_eclasses_=elisp-common	6bfea130fc0f2cbd4cbc23dc12992349	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	meson	e43eef9331f54965a573ed380854ff47
 _md5_=5181987665756aa14dda48b4cdfc34fe

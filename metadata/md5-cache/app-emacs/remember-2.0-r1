@@ -11,5 +11,5 @@ RDEPEND=bbdb? ( app-emacs/bbdb ) planner? ( app-emacs/planner ) >=app-editors/em
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/jwiegley/remember/archive/v2.0.tar.gz -> remember-2.0.tar.gz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_eclasses_=elisp-common	6bfea130fc0f2cbd4cbc23dc12992349	elisp	8d41193227fc27c56371b201ec7d861c
 _md5_=7717fe7ec6d7cf054a36115a58fb1e3f

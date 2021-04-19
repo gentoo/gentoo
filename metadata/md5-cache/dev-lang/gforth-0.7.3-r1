@@ -10,5 +10,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/ffcall emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://gnu/gforth/gforth-0.7.3.tar.gz
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc
+_eclasses_=elisp-common	6bfea130fc0f2cbd4cbc23dc12992349
 _md5_=7725916e4a9058691242d9015aa39fcc

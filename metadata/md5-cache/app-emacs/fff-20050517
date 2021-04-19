@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=sys-apps/mlocate >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://gentoo/fff-20050517.tar.bz2
-_eclasses_=elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_eclasses_=elisp-common	6bfea130fc0f2cbd4cbc23dc12992349	elisp	8d41193227fc27c56371b201ec7d861c
 _md5_=1f2c072727cbe6a2ef352f5435a97880

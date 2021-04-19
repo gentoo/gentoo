@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/voxpupuli/puppet-mode/archive/0.3.tar.gz -> puppet-mode-0.3.tar.gz
-_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	36f97076abd90f943a34f8bcd58b5bcc	elisp	023dd24ad9e6d5e62907e7007f548ca3
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	6bfea130fc0f2cbd4cbc23dc12992349	elisp	8d41193227fc27c56371b201ec7d861c
 _md5_=e4a9dbfd4450767946ea207b47218536
