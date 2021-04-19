@@ -12006,7 +12006,7 @@ gnome-base/gnome-settings-daemon 3.38.1 40.0: Gnome Settings Daemon
 gnome-base/gnome-shell 3.36.7 3.38.4 40.0: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.38.0 40.0: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.44.1: Virtual filesystem implementation for GIO
+gnome-base/gvfs 1.44.1 1.48.0: Virtual filesystem implementation for GIO
 gnome-base/libglade 2.6.4-r3: Library to construct graphical interfaces at runtime
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
 gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
