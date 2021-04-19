@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,13 +16,17 @@ DEPEND="dev-db/tokyocabinet"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/fix_rpath.patch"
-	"${FILESDIR}/fix_ldconfig.patch"
-	"${FILESDIR}/remove_docinst.patch"
+	"${FILESDIR}"/fix_rpath.patch
+	"${FILESDIR}"/fix_ldconfig.patch
+	"${FILESDIR}"/remove_docinst.patch
 )
 
 src_configure() {
 	econf --libexecdir="${EPREFIX}"/usr/libexec/${PN}
+}
+
+src_test() {
+	emake -j1 check
 }
 
 src_install() {
@@ -31,11 +35,7 @@ src_install() {
 	default
 
 	if use examples; then
-		insinto /usr/share/${PF}/example
-		doins example/.
+		docinto example
+		dodoc example/.
 	fi
-}
-
-src_test() {
-	emake -j1 check
 }
