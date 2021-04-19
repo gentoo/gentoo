@@ -192,7 +192,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with slang)
 		$(multilib_native_use_with systemd)
 		$(multilib_native_use_with udev)
-		$(multilib_native_usex ncurses "$(use_with libmagic magic)" '--without-libmagic')
+		$(multilib_native_usex ncurses "$(use_with magic libmagic)" '--without-libmagic')
 		$(multilib_native_usex ncurses "$(use_with unicode ncursesw)" '--without-ncursesw')
 		$(multilib_native_usex ncurses "$(use_with !unicode ncurses)" '--without-ncurses')
 		$(multilib_native_use_with audit)
