@@ -1254,7 +1254,7 @@ app-crypt/scute 1.7.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.38.1 40.0-r1: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r3: Generate or check digests or MACs of files
-app-crypt/signify 23 24 29 30: Cryptographically sign and verify files
+app-crypt/signify 30: Cryptographically sign and verify files
 app-crypt/signing-party 2.10-r1 2.11: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
@@ -17240,7 +17240,7 @@ sys-apps/the_silver_searcher 2.2.0 2.2.0_p20201217: A code-searching tool simila
 sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space components
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
-sys-apps/toybox 0.8.0 0.8.1 0.8.3 0.8.4 9999: Common linux commands in a multicall binary
+sys-apps/toybox 0.8.4 9999: Common linux commands in a multicall binary
 sys-apps/tuned 2.13.0-r1 2.15.0-r1: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
