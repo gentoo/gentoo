@@ -2801,6 +2801,7 @@ dev-util/geany-plugins:pretty-printer - Enable pretty-printer plugin
 dev-util/geany-plugins:scope - Enable the scope plugin which is a graphical GDB front-end
 dev-util/geany-plugins:soup - Enable updatechecker and geniuspaste plugins which require net-libs/libsoup
 dev-util/geany-plugins:workbench - Enable workbench plugin
+dev-util/glade:gjs - Build catalog support for dev-libs/gjs widgets.
 dev-util/glade:webkit - Build catalog support for net-libs/webkit-gtk:4 widgets.
 dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
 dev-util/gnome-builder:clang - Provide integration with sys-devel/clang for best possible C/C++ autocompletion, semantic highlighting, symbol resolving, and diagnostics support
