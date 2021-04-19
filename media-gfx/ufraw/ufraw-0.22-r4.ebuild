@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc9.patch
 	"${FILESDIR}"/${P}-CVE-2015-8366.patch
 	"${FILESDIR}"/${P}-CVE-2018-19655.patch
+	"${FILESDIR}"/${P}-glib-2.68.patch
 )
 
 src_prepare() {
