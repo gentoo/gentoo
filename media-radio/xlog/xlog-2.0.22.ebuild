@@ -60,7 +60,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	# build system makes it complicate to inhibit updating desktop 
+	# build system makes it complicate to inhibit updating desktop
 	# database, so just remove the offending file
 	rm  "${D}"/usr/share/applications/mimeinfo.cache || die
 	docompress -x /usr/share/doc/${PF}/{KEYS,ChangeLog,TODO,BUGS}
