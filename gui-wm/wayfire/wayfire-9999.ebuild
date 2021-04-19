@@ -18,8 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+gles +system-wfconfig +system-wlroots elogind systemd X"
-REQUIRED_USE="?? ( elogind systemd )"
+IUSE="+system-wfconfig +system-wlroots X"
 
 DEPEND="
 	dev-libs/libevdev
@@ -27,25 +26,25 @@ DEPEND="
 	gui-libs/gtk-layer-shell
 	media-libs/glm
 	media-libs/mesa:=[gles2,wayland,X?]
+	media-libs/libglvnd[X?]
 	media-libs/libjpeg-turbo
 	media-libs/libpng
 	media-libs/freetype:=[X?]
+	media-video/ffmpeg
 	x11-libs/libdrm
 	x11-libs/gtk+:3=[wayland,X?]
 	x11-libs/cairo:=[X?,svg]
-	X? ( x11-libs/libxkbcommon:=[X] )
+	x11-libs/libinotify
 	x11-libs/pixman
-	gles? ( media-libs/libglvnd[X?] )
 	system-wfconfig? ( >=gui-libs/wf-config-${PV%.*} )
 	!system-wfconfig? ( !gui-libs/wf-config )
-	system-wlroots? ( >=gui-libs/wlroots-0.12.0[elogind=,systemd=,X?] )
+	system-wlroots? ( >=gui-libs/wlroots-0.13.0[X?] )
 	!system-wlroots? ( !gui-libs/wlroots )
+	X? ( x11-libs/libxkbcommon:=[X] )
 "
 
 RDEPEND="
 	${DEPEND}
-	elogind? ( sys-auth/elogind )
-	systemd? ( sys-apps/systemd )
 	x11-misc/xkeyboard-config
 "
 
@@ -60,10 +59,10 @@ src_configure() {
 	sed -e "s:@EPREFIX@:${EPREFIX}:" \
 	    "${FILESDIR}"/wayfire-session.desktop > "${T}"/wayfire-session.desktop || die
 	local emesonargs=(
+		-Denable_gles32=true
 		$(meson_feature system-wfconfig use_system_wfconfig)
 		$(meson_feature system-wlroots use_system_wlroots)
 		$(meson_feature X xwayland)
-		$(meson_use gles enable_gles32)
 	)
 	meson_src_configure
 }
@@ -80,19 +79,15 @@ src_install() {
 	doins "${T}"/wayfire-session.desktop
 
 	dodoc wayfire.ini
-
-	if ! use systemd && ! use elogind; then
-		fowners root:0 /usr/bin/wayfire
-		fperms 4511 /usr/bin/wayfire
-	fi
+	docompress -x /usr/share/doc/${PF}/wayfire.ini
 }
 
 pkg_postinst() {
 	if [ -z "${REPLACING_VERSIONS}" ]; then
 		elog "Wayfire has been installed but the session cannot be used"
 		elog "until you install a configuration file. The default config"
-		elog "file is installed at \"/usr/share/doc/${PF}/wayfire.ini.bz2\""
+		elog "file is installed at \"/usr/share/doc/${PF}/wayfire.ini\""
 		elog "To install the file execute"
-		elog "\$ mkdir -p ~/.config && bzcat /usr/share/doc/${PF}/wayfire.ini.bz2 > ~/.config/wayfire.ini"
+		elog "\$ mkdir -p ~/.config && cp /usr/share/doc/${PF}/wayfire.ini ~/.config/wayfire.ini"
 	fi
 }
