@@ -912,34 +912,34 @@ BDEPEND="
 S="${WORKDIR}/${PN}-RELEASE.${MY_PV}"
 
 src_prepare() {
-default
+	default
 
-sed -i \
-	-e "s/time.Now().UTC().Format(time.RFC3339)/\"${MY_PV}\"/" \
-	-e "s/-s //" \
-	-e "/time/d" \
-	-e "s/+ commitID()/+ \"${EGIT_COMMIT}\"/" \
-	buildscripts/gen-ldflags.go || die
+	sed -i \
+		-e "s/time.Now().UTC().Format(time.RFC3339)/\"${MY_PV}\"/" \
+		-e "s/-s //" \
+		-e "/time/d" \
+		-e "s/+ commitID()/+ \"${EGIT_COMMIT}\"/" \
+		buildscripts/gen-ldflags.go || die
 }
 
 src_compile() {
-MINIO_RELEASE="${MY_PV}"
-go run buildscripts/gen-ldflags.go
-go build \
-	--ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
+	MINIO_RELEASE="${MY_PV}"
+	go run buildscripts/gen-ldflags.go
+	go build \
+		--ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
 }
 
 src_install() {
-dobin minio
+	dobin minio
 
-insinto /etc/defult
-doins "${FILESDIR}"/minio.default
+	insinto /etc/defult
+	doins "${FILESDIR}"/minio.default
 
-dodoc -r README.md CONTRIBUTING.md docs
+	dodoc -r README.md CONTRIBUTING.md docs
 
-systemd_dounit "${FILESDIR}"/minio.service
-newinitd "${FILESDIR}"/minio.initd minio
+	systemd_dounit "${FILESDIR}"/minio.service
+	newinitd "${FILESDIR}"/minio.initd minio
 
-keepdir /var/{lib,log}/minio
-fowners minio:minio /var/{lib,log}/minio
+	keepdir /var/{lib,log}/minio
+	fowners minio:minio /var/{lib,log}/minio
 }
