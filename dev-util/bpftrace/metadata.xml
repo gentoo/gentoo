@@ -4,6 +4,9 @@
   <maintainer type="person">
     <email>chutzpah@gentoo.org</email>
   </maintainer>
+  <use>
+    <flag name="fuzzing">Build bpftrace for fuzzing</flag>
+  </use>
   <upstream>
     <remote-id type="github">iovisor/bpftrace</remote-id>
   </upstream>
