@@ -1,0 +1,2372 @@
+From ca76877e8e72a1e716e084eac6953e53ba1ed428 Mon Sep 17 00:00:00 2001
+From: Bill Nottingham <notting@splat.cc>
+Date: Sat, 13 Feb 2021 16:35:27 -0500
+Subject: [PATCH] Fix build with glib 2.68
+
+c0f2c3ae2 ("Fix build with glib2 2.67.x.")
+7a7c26f87 ("Move glib and gtk includes out of extern C for tests.")
+1dd426e31 ("Potentially fix CI test on Arch related to glib and c++")
+cb0436501 ("More fixes for Arch ci failure")
+e9dfd0d9e ("Still more fixes for Arch ci failure")
+c49b45d8f ("Finish the glib 2.67 fixes for CI tests.")
+---
+ bindings/guile/test/test-scm-query.cpp                |  4 ++--
+ gnucash/gnome-utils/gnc-amount-edit.h                 |  2 ++
+ gnucash/gnome-utils/gnc-tree-model-commodity.c        |  1 +
+ gnucash/gnome/assistant-loan.cpp                      |  5 +++--
+ gnucash/import-export/csv-imp/gnc-imp-props-price.cpp |  6 +++---
+ gnucash/import-export/csv-imp/gnc-imp-props-tx.cpp    |  5 +++--
+ .../test/test-import-pending-matches.cpp              |  5 +++--
+ gnucash/register/register-gnome/datecell-gnome.c      |  1 +
+ libgnucash/app-utils/gnc-sx-instance-model.c          |  1 +
+ libgnucash/app-utils/gnc-ui-balances.c                |  1 +
+ libgnucash/app-utils/test/test-autoclear.cpp          |  2 +-
+ libgnucash/app-utils/test/test-option-util.cpp        |  7 ++++---
+ libgnucash/app-utils/test/test-print-parse-amount.cpp |  5 +++--
+ libgnucash/app-utils/test/test-print-queries.cpp      |  6 +++---
+ libgnucash/app-utils/test/test-scm-query-string.cpp   |  7 +++----
+ libgnucash/app-utils/test/test-sx.cpp                 |  5 +++--
+ libgnucash/backend/dbi/gnc-backend-dbi.cpp            |  7 ++++---
+ libgnucash/backend/dbi/test/test-backend-dbi.cpp      |  2 +-
+ libgnucash/backend/sql/gnc-address-sql.cpp            |  4 ++--
+ libgnucash/backend/sql/gnc-book-sql.cpp               |  4 ++--
+ libgnucash/backend/sql/gnc-customer-sql.cpp           |  3 ++-
+ libgnucash/backend/sql/gnc-employee-sql.cpp           |  2 +-
+ libgnucash/backend/sql/gnc-entry-sql.cpp              |  2 +-
+ libgnucash/backend/sql/gnc-job-sql.cpp                |  2 +-
+ libgnucash/backend/sql/gnc-price-sql.cpp              |  3 +--
+ libgnucash/backend/sql/gnc-recurrence-sql.cpp         |  3 +--
+ libgnucash/backend/sql/gnc-schedxaction-sql.cpp       |  4 ++--
+ libgnucash/backend/sql/gnc-vendor-sql.cpp             |  4 ++--
+ libgnucash/backend/sql/test/test-sqlbe.cpp            |  3 ++-
+ libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp |  3 ++-
+ libgnucash/backend/xml/gnc-account-xml-v2.cpp         |  4 ++--
+ libgnucash/backend/xml/gnc-address-xml-v2.cpp         |  4 ++--
+ libgnucash/backend/xml/gnc-backend-xml.cpp            |  7 ++++---
+ libgnucash/backend/xml/gnc-bill-term-xml-v2.cpp       |  2 --
+ libgnucash/backend/xml/gnc-book-xml-v2.cpp            |  4 ++--
+ libgnucash/backend/xml/gnc-budget-xml-v2.cpp          |  4 ++--
+ libgnucash/backend/xml/gnc-commodity-xml-v2.cpp       |  4 ++--
+ libgnucash/backend/xml/gnc-customer-xml-v2.cpp        |  4 ++--
+ libgnucash/backend/xml/gnc-employee-xml-v2.cpp        |  3 +--
+ libgnucash/backend/xml/gnc-entry-xml-v2.cpp           |  4 ++--
+ libgnucash/backend/xml/gnc-freqspec-xml-v2.cpp        |  3 +--
+ libgnucash/backend/xml/gnc-invoice-xml-v2.cpp         |  3 +--
+ libgnucash/backend/xml/gnc-job-xml-v2.cpp             |  3 +--
+ libgnucash/backend/xml/gnc-lot-xml-v2.cpp             |  3 +--
+ libgnucash/backend/xml/gnc-order-xml-v2.cpp           |  3 +--
+ libgnucash/backend/xml/gnc-owner-xml-v2.cpp           |  3 +--
+ libgnucash/backend/xml/gnc-recurrence-xml-v2.cpp      |  3 +--
+ libgnucash/backend/xml/gnc-schedxaction-xml-v2.cpp    |  3 +--
+ libgnucash/backend/xml/gnc-tax-table-xml-v2.cpp       |  3 +--
+ libgnucash/backend/xml/gnc-transaction-xml-v2.cpp     |  3 +--
+ libgnucash/backend/xml/gnc-vendor-xml-v2.cpp          |  3 +--
+ libgnucash/backend/xml/gnc-xml-backend.cpp            |  4 ++--
+ libgnucash/backend/xml/gnc-xml-helper.cpp             |  3 ---
+ libgnucash/backend/xml/gnc-xml-helper.h               |  3 +++
+ libgnucash/backend/xml/io-example-account.cpp         |  6 +++---
+ libgnucash/backend/xml/io-gncxml-gen.h                |  4 +---
+ libgnucash/backend/xml/io-gncxml-v2.cpp               |  5 +++--
+ libgnucash/backend/xml/io-utils.cpp                   |  2 +-
+ libgnucash/backend/xml/sixtp-dom-generators.cpp       |  2 +-
+ libgnucash/backend/xml/sixtp-dom-parsers.cpp          |  4 ++--
+ libgnucash/backend/xml/sixtp-to-dom-parser.cpp        |  5 ++---
+ libgnucash/backend/xml/sixtp.cpp                      |  6 +++---
+ libgnucash/backend/xml/sixtp.h                        |  2 +-
+ libgnucash/backend/xml/test/test-dom-converters1.cpp  |  7 ++++---
+ libgnucash/backend/xml/test/test-dom-parser1.cpp      |  7 ++++---
+ libgnucash/backend/xml/test/test-file-stuff.cpp       |  7 ++++---
+ libgnucash/backend/xml/test/test-file-stuff.h         |  4 ++--
+ .../backend/xml/test/test-load-example-account.cpp    |  6 ++++--
+ libgnucash/backend/xml/test/test-load-xml2.cpp        |  7 ++++---
+ libgnucash/backend/xml/test/test-save-in-lang.cpp     |  8 +++++---
+ libgnucash/backend/xml/test/test-xml-account.cpp      |  8 +++++---
+ libgnucash/backend/xml/test/test-xml-commodity.cpp    |  8 +++++---
+ libgnucash/backend/xml/test/test-xml-pricedb.cpp      |  5 +++--
+ libgnucash/backend/xml/test/test-xml-transaction.cpp  |  5 +++--
+ libgnucash/backend/xml/test/test-xml2-is-file.cpp     |  3 +--
+ libgnucash/core-utils/gnc-filepath-utils.cpp          |  9 +++++----
+ libgnucash/core-utils/gnc-locale-utils.cpp            |  3 ---
+ libgnucash/core-utils/gnc-prefs.h                     |  4 ++++
+ libgnucash/core-utils/test/gtest-path-utilities.cpp   |  3 ++-
+ libgnucash/engine/SX-book.h                           |  4 ++++
+ libgnucash/engine/engine-helpers.h                    |  4 ++++
+ libgnucash/engine/gnc-commodity.h                     |  5 +++++
+ libgnucash/engine/gnc-date.cpp                        |  2 +-
+ libgnucash/engine/gnc-date.h                          | 11 ++++++++++-
+ libgnucash/engine/gnc-engine.h                        |  5 +++++
+ libgnucash/engine/gnc-numeric.cpp                     |  2 +-
+ libgnucash/engine/gncBusiness.h                       |  4 ++++
+ libgnucash/engine/gncEntry.h                          |  6 ++++++
+ libgnucash/engine/guid.h                              |  2 +-
+ libgnucash/engine/qof-string-cache.cpp                |  3 ++-
+ libgnucash/engine/qof.h                               |  4 ++++
+ libgnucash/engine/qofbook.cpp                         |  2 +-
+ libgnucash/engine/qofbook.h                           |  1 +
+ libgnucash/engine/qofchoice.cpp                       |  5 -----
+ libgnucash/engine/qofclass.cpp                        |  3 ---
+ libgnucash/engine/qofevent.cpp                        |  3 ---
+ libgnucash/engine/qofid.cpp                           |  2 +-
+ libgnucash/engine/qoflog.cpp                          |  8 ++++----
+ libgnucash/engine/qofobject.cpp                       |  3 ---
+ libgnucash/engine/qofquery.cpp                        |  2 +-
+ libgnucash/engine/qofsession.cpp                      |  2 +-
+ libgnucash/engine/test-core/test-engine-stuff.h       |  2 +-
+ libgnucash/engine/test/test-account-object.cpp        |  3 ++-
+ libgnucash/engine/test/test-commodities.cpp           |  4 ++--
+ libgnucash/engine/test/test-gnc-guid-old.cpp          |  3 ++-
+ libgnucash/engine/test/test-group-vs-book.cpp         |  3 ++-
+ libgnucash/engine/test/test-guid.cpp                  |  3 ++-
+ libgnucash/engine/test/test-lots.cpp                  |  3 ++-
+ libgnucash/engine/test/test-numeric.cpp               |  2 +-
+ libgnucash/engine/test/test-qofinstance.cpp           |  3 ++-
+ libgnucash/engine/test/test-qofsession-old.cpp        |  3 ++-
+ libgnucash/engine/test/test-query.cpp                 |  3 ++-
+ libgnucash/engine/test/test-split-vs-account.cpp      |  3 ++-
+ libgnucash/engine/test/test-transaction-reversal.cpp  |  3 ++-
+ libgnucash/engine/test/test-transaction-voiding.cpp   |  3 ++-
+ libgnucash/engine/test/utest-Account.cpp              |  3 ++-
+ libgnucash/engine/test/utest-Split.cpp                |  3 ++-
+ libgnucash/engine/test/utest-Transaction.cpp          |  3 ++-
+ 118 files changed, 256 insertions(+), 199 deletions(-)
+
+diff --git a/bindings/guile/test/test-scm-query.cpp b/bindings/guile/test/test-scm-query.cpp
+index 8ded44992..b8ae768e7 100644
+--- a/bindings/guile/test/test-scm-query.cpp
++++ b/bindings/guile/test/test-scm-query.cpp
+@@ -18,12 +18,12 @@
+  *                                                                  *
+ \********************************************************************/
+ 
++#include <config.h>
+ #include <libguile.h>
++#include <glib.h>
+ 
+ extern "C"
+ {
+-#include <config.h>
+-#include <glib.h>
+ 
+ #include "gnc-engine-guile.h"
+ #include "test-engine-stuff.h"
+diff --git a/gnucash/gnome-utils/gnc-amount-edit.h b/gnucash/gnome-utils/gnc-amount-edit.h
+index b107af1a3..45d88dd4a 100644
+--- a/gnucash/gnome-utils/gnc-amount-edit.h
++++ b/gnucash/gnome-utils/gnc-amount-edit.h
+@@ -32,6 +32,8 @@
+ #include "qof.h"
+ #include "gnc-ui-util.h"
+ 
++#include <gtk/gtk.h>
++
+ #define GNC_TYPE_AMOUNT_EDIT          (gnc_amount_edit_get_type())
+ #define GNC_AMOUNT_EDIT(obj)          G_TYPE_CHECK_INSTANCE_CAST (obj, GNC_TYPE_AMOUNT_EDIT, GNCAmountEdit)
+ #define GNC_AMOUNT_EDIT_CLASS(klass)  G_TYPE_CHECK_CLASS_CAST (klass, GNC_TYPE_AMOUNT_EDIT, GNCAmountEditClass)
+diff --git a/gnucash/gnome-utils/gnc-tree-model-commodity.c b/gnucash/gnome-utils/gnc-tree-model-commodity.c
+index dbf1c5cca..cdb6e297d 100644
+--- a/gnucash/gnome-utils/gnc-tree-model-commodity.c
++++ b/gnucash/gnome-utils/gnc-tree-model-commodity.c
+@@ -36,6 +36,7 @@
+ 
+ #include <config.h>
+ 
++#include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #include <string.h>
+ 
+diff --git a/gnucash/gnome/assistant-loan.cpp b/gnucash/gnome/assistant-loan.cpp
+index ed08172f6..6878de2d4 100644
+--- a/gnucash/gnome/assistant-loan.cpp
++++ b/gnucash/gnome/assistant-loan.cpp
+@@ -26,8 +26,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-#include <gtk/gtk.h>
+-#include <glib/gi18n.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <math.h>
+@@ -52,6 +50,9 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
++#include <gtk/gtk.h>
+ #include <gnc-locale-utils.hpp>
+ #include <boost/locale.hpp>
+ #include <string>
+diff --git a/gnucash/import-export/csv-imp/gnc-imp-props-price.cpp b/gnucash/import-export/csv-imp/gnc-imp-props-price.cpp
+index 5419b1726..1116daeb6 100644
+--- a/gnucash/import-export/csv-imp/gnc-imp-props-price.cpp
++++ b/gnucash/import-export/csv-imp/gnc-imp-props-price.cpp
+@@ -27,13 +27,13 @@ extern "C" {
+ #include <windows.h>
+ #endif
+ 
+-#include <glib.h>
+-#include <glib/gi18n.h>
+-
+ #include "engine-helpers.h"
+ #include "gnc-ui-util.h"
+ }
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
++
+ #include <exception>
+ #include <map>
+ #include <string>
+diff --git a/gnucash/import-export/csv-imp/gnc-imp-props-tx.cpp b/gnucash/import-export/csv-imp/gnc-imp-props-tx.cpp
+index 4129c317a..dac6baf8e 100644
+--- a/gnucash/import-export/csv-imp/gnc-imp-props-tx.cpp
++++ b/gnucash/import-export/csv-imp/gnc-imp-props-tx.cpp
+@@ -26,8 +26,6 @@ extern "C" {
+ #include <windows.h>
+ #endif
+ 
+-#include <glib.h>
+-#include <glib/gi18n.h>
+ 
+ #include "engine-helpers.h"
+ #include "gnc-csv-account-map.h"
+@@ -39,6 +37,9 @@ extern "C" {
+ 
+ }
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
++
+ #include <algorithm>
+ #include <exception>
+ #include <map>
+diff --git a/gnucash/import-export/test/test-import-pending-matches.cpp b/gnucash/import-export/test/test-import-pending-matches.cpp
+index e5dccc441..3d3d61dfc 100644
+--- a/gnucash/import-export/test/test-import-pending-matches.cpp
++++ b/gnucash/import-export/test/test-import-pending-matches.cpp
+@@ -1,9 +1,10 @@
++#include <glib.h>
++#include <gtk/gtk.h> /* for references in import-backend.h */
++
+ extern "C" {
+ #include <config.h>
+ #include <unittest-support.h>
+ 
+-#include <glib.h>
+-#include <gtk/gtk.h> /* for references in import-backend.h */
+ #include "import-backend.h"
+ #include "import-pending-matches.h"
+ #include "Split.h"
+diff --git a/gnucash/register/register-gnome/datecell-gnome.c b/gnucash/register/register-gnome/datecell-gnome.c
+index c716465b4..ca0b961f7 100644
+--- a/gnucash/register/register-gnome/datecell-gnome.c
++++ b/gnucash/register/register-gnome/datecell-gnome.c
+@@ -37,6 +37,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <time.h>
++#include <glib/gi18n.h>
+ #include <gdk/gdkkeysyms.h>
+ 
+ #include "datecell.h"
+diff --git a/libgnucash/app-utils/gnc-sx-instance-model.c b/libgnucash/app-utils/gnc-sx-instance-model.c
+index 26a554f41..0f36e48af 100644
+--- a/libgnucash/app-utils/gnc-sx-instance-model.c
++++ b/libgnucash/app-utils/gnc-sx-instance-model.c
+@@ -32,6 +32,7 @@
+ 
+ #include <config.h>
+ #include <glib.h>
++#include <glib/gi18n.h>
+ #include <glib-object.h>
+ #include <stdlib.h>
+ 
+diff --git a/libgnucash/app-utils/gnc-ui-balances.c b/libgnucash/app-utils/gnc-ui-balances.c
+index 27ce97666..86b747cbc 100644
+--- a/libgnucash/app-utils/gnc-ui-balances.c
++++ b/libgnucash/app-utils/gnc-ui-balances.c
+@@ -29,6 +29,7 @@
+ #include "gnc-ui-util.h"
+ 
+ #include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include "Account.h"
+ #include "Split.h"
+diff --git a/libgnucash/app-utils/test/test-autoclear.cpp b/libgnucash/app-utils/test/test-autoclear.cpp
+index abb84e1c5..9a44e3c9d 100644
+--- a/libgnucash/app-utils/test/test-autoclear.cpp
++++ b/libgnucash/app-utils/test/test-autoclear.cpp
+@@ -22,7 +22,7 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  ********************************************************************/
+ #include "config.h"
+-
++#include <glib.h>
+ // GoogleTest is written in C++, however, the function we test in C.
+ extern "C" {
+ #include "../gnc-ui-balances.h"
+diff --git a/libgnucash/app-utils/test/test-option-util.cpp b/libgnucash/app-utils/test/test-option-util.cpp
+index c00f32978..c4b1c0c40 100644
+--- a/libgnucash/app-utils/test/test-option-util.cpp
++++ b/libgnucash/app-utils/test/test-option-util.cpp
+@@ -22,11 +22,12 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  ********************************************************************/
+ #include <kvp-frame.hpp>
+-#include <gmp.h> 
+-extern "C"
+-{
++#include <gmp.h>
+ #include <config.h>
+ #include <glib.h>
++
++extern "C"
++{
+ #include <unittest-support.h>
+ #include <qofbookslots.h>
+ #include "test-engine-stuff.h"
+diff --git a/libgnucash/app-utils/test/test-print-parse-amount.cpp b/libgnucash/app-utils/test/test-print-parse-amount.cpp
+index 62d378530..8dea72099 100644
+--- a/libgnucash/app-utils/test/test-print-parse-amount.cpp
++++ b/libgnucash/app-utils/test/test-print-parse-amount.cpp
+@@ -18,12 +18,13 @@
+  *                                                                  *
+ \********************************************************************/
+ 
++#include <glib.h>
++#include <glib/gprintf.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include <stdlib.h>
+-#include <glib/gprintf.h>
+ 
+ #include "gnc-ui-util.h"
+ #include "gnc-numeric.h"
+diff --git a/libgnucash/app-utils/test/test-print-queries.cpp b/libgnucash/app-utils/test/test-print-queries.cpp
+index 9d6fa5a04..972758ea8 100644
+--- a/libgnucash/app-utils/test/test-print-queries.cpp
++++ b/libgnucash/app-utils/test/test-print-queries.cpp
+@@ -18,13 +18,13 @@
+  *                                                                  *
+ \********************************************************************/
+ 
++#include <config.h>
++#include <glib.h>
+ #include <libguile.h>
++#include "guile-mappings.h"
+ 
+ extern "C"
+ {
+-#include <config.h>
+-#include <glib.h>
+-#include "guile-mappings.h"
+ 
+ #include "gnc-engine-guile.h"
+ #include "test-engine-stuff.h"
+diff --git a/libgnucash/app-utils/test/test-scm-query-string.cpp b/libgnucash/app-utils/test/test-scm-query-string.cpp
+index 13e9ad35e..a31078858 100644
+--- a/libgnucash/app-utils/test/test-scm-query-string.cpp
++++ b/libgnucash/app-utils/test/test-scm-query-string.cpp
+@@ -18,14 +18,13 @@
+  *                                                                  *
+ \********************************************************************/
+ 
+-#include <libguile.h>
+-
+-extern "C"
+-{
+ #include <config.h>
+ #include <glib.h>
+ #include "guile-mappings.h"
++#include <libguile.h>
+ 
++extern "C"
++{
+ #include "gnc-engine-guile.h"
+ #include "gnc-guile-utils.h"
+ #include "test-engine-stuff.h"
+diff --git a/libgnucash/app-utils/test/test-sx.cpp b/libgnucash/app-utils/test/test-sx.cpp
+index b635c00d2..c6070d9ab 100644
+--- a/libgnucash/app-utils/test/test-sx.cpp
++++ b/libgnucash/app-utils/test/test-sx.cpp
+@@ -18,11 +18,12 @@
+  *                                                                  *
+ \********************************************************************/
+ 
++#include <config.h>
++#include <glib.h>
++
+ extern "C"
+ {
+-#include <config.h>
+ #include <stdlib.h>
+-#include <glib.h>
+ #include "SX-book.h"
+ #include "gnc-date.h"
+ #include "gnc-sx-instance-model.h"
+diff --git a/libgnucash/backend/dbi/gnc-backend-dbi.cpp b/libgnucash/backend/dbi/gnc-backend-dbi.cpp
+index 25699e5ca..f5886c7d1 100644
+--- a/libgnucash/backend/dbi/gnc-backend-dbi.cpp
++++ b/libgnucash/backend/dbi/gnc-backend-dbi.cpp
+@@ -48,9 +48,6 @@ extern "C"
+ 
+ #include <inttypes.h>
+ #include <errno.h>
+-#include <glib.h>
+-#include <glib/gstdio.h>
+-
+ #include "qof.h"
+ #include "qofquery-p.h"
+ #include "qofquerycore-p.h"
+@@ -72,6 +69,10 @@ extern "C"
+ #endif
+ 
+ }
++
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ #include <boost/regex.hpp>
+ #include <string>
+ #include <iomanip>
+diff --git a/libgnucash/backend/dbi/test/test-backend-dbi.cpp b/libgnucash/backend/dbi/test/test-backend-dbi.cpp
+index 4ba484448..acb21e40c 100644
+--- a/libgnucash/backend/dbi/test/test-backend-dbi.cpp
++++ b/libgnucash/backend/dbi/test/test-backend-dbi.cpp
+@@ -19,11 +19,11 @@
+  * 51 Franklin Street, Fifth Floor    Fax:    +1-617-542-2652       *
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+ \********************************************************************/
++#include <glib.h>
+ 
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include "qof.h"
+ #include "cashobjects.h"
+ }
+diff --git a/libgnucash/backend/sql/gnc-address-sql.cpp b/libgnucash/backend/sql/gnc-address-sql.cpp
+index e3c18ca9b..8e78f0876 100644
+--- a/libgnucash/backend/sql/gnc-address-sql.cpp
++++ b/libgnucash/backend/sql/gnc-address-sql.cpp
+@@ -31,12 +31,12 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-
+ #include "gnc-engine.h"
+ 
+ #include "gncAddress.h"
+ }
++#include <glib.h>
++
+ #include <cstdlib>
+ #include <cstring>
+ #include <sstream>
+diff --git a/libgnucash/backend/sql/gnc-book-sql.cpp b/libgnucash/backend/sql/gnc-book-sql.cpp
+index d38487deb..580708f37 100644
+--- a/libgnucash/backend/sql/gnc-book-sql.cpp
++++ b/libgnucash/backend/sql/gnc-book-sql.cpp
+@@ -29,8 +29,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-
+ #include "qof.h"
+ 
+ #include "gnc-engine.h"
+@@ -42,6 +40,8 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+ #include "gnc-sql-object-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-customer-sql.cpp b/libgnucash/backend/sql/gnc-customer-sql.cpp
+index 6d3d84a9c..7fbc5c83c 100644
+--- a/libgnucash/backend/sql/gnc-customer-sql.cpp
++++ b/libgnucash/backend/sql/gnc-customer-sql.cpp
+@@ -31,7 +31,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -40,6 +39,8 @@ extern "C"
+ #include "gncTaxTableP.h"
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+ #include "gnc-sql-object-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-employee-sql.cpp b/libgnucash/backend/sql/gnc-employee-sql.cpp
+index 20c7fb526..c5b17fdb7 100644
+--- a/libgnucash/backend/sql/gnc-employee-sql.cpp
++++ b/libgnucash/backend/sql/gnc-employee-sql.cpp
+@@ -31,13 +31,13 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+ #include "gnc-commodity.h"
+ #include "gncEmployeeP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-entry-sql.cpp b/libgnucash/backend/sql/gnc-entry-sql.cpp
+index 554a50e6c..f7b9ef4a3 100644
+--- a/libgnucash/backend/sql/gnc-entry-sql.cpp
++++ b/libgnucash/backend/sql/gnc-entry-sql.cpp
+@@ -31,7 +31,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -40,6 +39,7 @@ extern "C"
+ #include "gncInvoiceP.h"
+ #include "gncTaxTableP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-job-sql.cpp b/libgnucash/backend/sql/gnc-job-sql.cpp
+index c68827152..421992ffd 100644
+--- a/libgnucash/backend/sql/gnc-job-sql.cpp
++++ b/libgnucash/backend/sql/gnc-job-sql.cpp
+@@ -31,12 +31,12 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+ #include "gncJobP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-price-sql.cpp b/libgnucash/backend/sql/gnc-price-sql.cpp
+index 1fcc5d5d9..95233b342 100644
+--- a/libgnucash/backend/sql/gnc-price-sql.cpp
++++ b/libgnucash/backend/sql/gnc-price-sql.cpp
+@@ -29,8 +29,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-
+ #include "qof.h"
+ #include "gnc-pricedb.h"
+ 
+@@ -38,6 +36,7 @@ extern "C"
+ #include "splint-defs.h"
+ #endif
+ }
++#include <glib.h>
+ 
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-recurrence-sql.cpp b/libgnucash/backend/sql/gnc-recurrence-sql.cpp
+index 892b83d1a..3aa33e54a 100644
+--- a/libgnucash/backend/sql/gnc-recurrence-sql.cpp
++++ b/libgnucash/backend/sql/gnc-recurrence-sql.cpp
+@@ -29,8 +29,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-
+ #include "qof.h"
+ #include "gnc-engine.h"
+ #include "Recurrence.h"
+@@ -39,6 +37,7 @@ extern "C"
+ #include "splint-defs.h"
+ #endif
+ }
++#include <glib.h>
+ 
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-schedxaction-sql.cpp b/libgnucash/backend/sql/gnc-schedxaction-sql.cpp
+index c883a9208..c9147ec3a 100644
+--- a/libgnucash/backend/sql/gnc-schedxaction-sql.cpp
++++ b/libgnucash/backend/sql/gnc-schedxaction-sql.cpp
+@@ -29,8 +29,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-
+ #include "qof.h"
+ #include "SchedXaction.h"
+ #include "SX-book.h"
+@@ -41,6 +39,8 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+ #include "gnc-sql-object-backend.hpp"
+diff --git a/libgnucash/backend/sql/gnc-vendor-sql.cpp b/libgnucash/backend/sql/gnc-vendor-sql.cpp
+index 11b27686d..57dd78b4a 100644
+--- a/libgnucash/backend/sql/gnc-vendor-sql.cpp
++++ b/libgnucash/backend/sql/gnc-vendor-sql.cpp
+@@ -30,8 +30,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -41,6 +39,8 @@ extern "C"
+ #include "gncTaxTableP.h"
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-sql-connection.hpp"
+ #include "gnc-sql-backend.hpp"
+ #include "gnc-sql-object-backend.hpp"
+diff --git a/libgnucash/backend/sql/test/test-sqlbe.cpp b/libgnucash/backend/sql/test/test-sqlbe.cpp
+index 644711df4..0a6191c3f 100644
+--- a/libgnucash/backend/sql/test/test-sqlbe.cpp
++++ b/libgnucash/backend/sql/test/test-sqlbe.cpp
+@@ -20,10 +20,11 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+ \********************************************************************/
+ 
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include "qof.h"
+ }
+ extern void test_suite_gnc_backend_sql ();
+diff --git a/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp b/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp
+index b89cde9a7..b7669f418 100644
+--- a/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp
++++ b/libgnucash/backend/sql/test/utest-gnc-backend-sql.cpp
+@@ -20,11 +20,12 @@
+  * 51 Franklin Street, Fifth Floor    Fax:    +1-617-542-2652       *
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+ ********************************************************************/
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <string.h>
+-#include <glib.h>
+ #include <unittest-support.h>
+ }
+ /* Add specific headers for this class */
+diff --git a/libgnucash/backend/xml/gnc-account-xml-v2.cpp b/libgnucash/backend/xml/gnc-account-xml-v2.cpp
+index 4feb75fae..3647c036c 100644
+--- a/libgnucash/backend/xml/gnc-account-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-account-xml-v2.cpp
+@@ -25,14 +25,14 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <AccountP.h>
+ #include <Account.h>
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+ #include "sixtp-utils.h"
+diff --git a/libgnucash/backend/xml/gnc-address-xml-v2.cpp b/libgnucash/backend/xml/gnc-address-xml-v2.cpp
+index 026e3e430..c3484f674 100644
+--- a/libgnucash/backend/xml/gnc-address-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-address-xml-v2.cpp
+@@ -24,11 +24,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ }
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ 
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-backend-xml.cpp b/libgnucash/backend/xml/gnc-backend-xml.cpp
+index 10a0d7cd8..2acdf71a0 100644
+--- a/libgnucash/backend/xml/gnc-backend-xml.cpp
++++ b/libgnucash/backend/xml/gnc-backend-xml.cpp
+@@ -32,9 +32,6 @@ extern "C"
+ #include <config.h>
+ 
+ 
+-#include <glib.h>
+-#include <glib/gi18n.h>
+-#include <glib/gstdio.h>
+ #include <libintl.h>
+ #include <locale.h>
+ #include <fcntl.h>
+@@ -76,6 +73,10 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
++#include <glib/gstdio.h>
++
+ #include <gnc-backend-prov.hpp>
+ #include "gnc-backend-xml.h"
+ #include <qof-backend.hpp>
+diff --git a/libgnucash/backend/xml/gnc-bill-term-xml-v2.cpp b/libgnucash/backend/xml/gnc-bill-term-xml-v2.cpp
+index c61f042b9..06c6799f2 100644
+--- a/libgnucash/backend/xml/gnc-bill-term-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-bill-term-xml-v2.cpp
+@@ -24,8 +24,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+diff --git a/libgnucash/backend/xml/gnc-book-xml-v2.cpp b/libgnucash/backend/xml/gnc-book-xml-v2.cpp
+index e049eb787..2270b9527 100644
+--- a/libgnucash/backend/xml/gnc-book-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-book-xml-v2.cpp
+@@ -25,13 +25,13 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "qof.h"
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ 
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-budget-xml-v2.cpp b/libgnucash/backend/xml/gnc-budget-xml-v2.cpp
+index b30d203f4..c39c6a0c7 100644
+--- a/libgnucash/backend/xml/gnc-budget-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-budget-xml-v2.cpp
+@@ -24,12 +24,12 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+ #include "sixtp-utils.h"
+diff --git a/libgnucash/backend/xml/gnc-commodity-xml-v2.cpp b/libgnucash/backend/xml/gnc-commodity-xml-v2.cpp
+index e09950db2..dd04f2100 100644
+--- a/libgnucash/backend/xml/gnc-commodity-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-commodity-xml-v2.cpp
+@@ -24,13 +24,13 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <string.h>
+ #include "AccountP.h"
+ #include "Account.h"
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+ #include "sixtp-utils.h"
+diff --git a/libgnucash/backend/xml/gnc-customer-xml-v2.cpp b/libgnucash/backend/xml/gnc-customer-xml-v2.cpp
+index dcaa9bff3..4396b7c15 100644
+--- a/libgnucash/backend/xml/gnc-customer-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-customer-xml-v2.cpp
+@@ -24,8 +24,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -34,6 +32,8 @@ extern "C"
+ #include "gncTaxTableP.h"
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ #include "gnc-customer-xml-v2.h"
+ #include "gnc-address-xml-v2.h"
+diff --git a/libgnucash/backend/xml/gnc-employee-xml-v2.cpp b/libgnucash/backend/xml/gnc-employee-xml-v2.cpp
+index 5eec282a8..eaae536a2 100644
+--- a/libgnucash/backend/xml/gnc-employee-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-employee-xml-v2.cpp
+@@ -24,12 +24,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gncEmployeeP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-entry-xml-v2.cpp b/libgnucash/backend/xml/gnc-entry-xml-v2.cpp
+index 25b88d935..df87a1f42 100644
+--- a/libgnucash/backend/xml/gnc-entry-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-entry-xml-v2.cpp
+@@ -24,8 +24,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -35,6 +33,8 @@ extern "C"
+ #include "gncTaxTableP.h"
+ }
+ 
++#include <glib.h>
++
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+ #include "sixtp-utils.h"
+diff --git a/libgnucash/backend/xml/gnc-freqspec-xml-v2.cpp b/libgnucash/backend/xml/gnc-freqspec-xml-v2.cpp
+index fe875f7ef..ec3edac8b 100644
+--- a/libgnucash/backend/xml/gnc-freqspec-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-freqspec-xml-v2.cpp
+@@ -25,13 +25,12 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <string.h>
+ #include "qof.h"
+ #include "SchedXaction.h"
+ #include "FreqSpec.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-invoice-xml-v2.cpp b/libgnucash/backend/xml/gnc-invoice-xml-v2.cpp
+index 333fbe5d4..3231198bc 100644
+--- a/libgnucash/backend/xml/gnc-invoice-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-invoice-xml-v2.cpp
+@@ -24,14 +24,13 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+ #include "gncBillTermP.h"
+ #include "gncInvoiceP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-job-xml-v2.cpp b/libgnucash/backend/xml/gnc-job-xml-v2.cpp
+index ba1ab367f..1132a996d 100644
+--- a/libgnucash/backend/xml/gnc-job-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-job-xml-v2.cpp
+@@ -24,12 +24,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gncJobP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-lot-xml-v2.cpp b/libgnucash/backend/xml/gnc-lot-xml-v2.cpp
+index 8bccae722..d42a5b4b7 100644
+--- a/libgnucash/backend/xml/gnc-lot-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-lot-xml-v2.cpp
+@@ -25,13 +25,12 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gnc-lot.h"
+ #include "gnc-lot-p.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-order-xml-v2.cpp b/libgnucash/backend/xml/gnc-order-xml-v2.cpp
+index 0b45ff9f0..3b95d6ce0 100644
+--- a/libgnucash/backend/xml/gnc-order-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-order-xml-v2.cpp
+@@ -24,12 +24,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gncOrderP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-owner-xml-v2.cpp b/libgnucash/backend/xml/gnc-owner-xml-v2.cpp
+index c9fc9ba98..42931c3e7 100644
+--- a/libgnucash/backend/xml/gnc-owner-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-owner-xml-v2.cpp
+@@ -24,8 +24,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gncCustomerP.h"
+@@ -33,6 +31,7 @@ extern "C"
+ #include "gncVendorP.h"
+ #include "gncEmployeeP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-recurrence-xml-v2.cpp b/libgnucash/backend/xml/gnc-recurrence-xml-v2.cpp
+index e2dd884d7..b67e24b07 100644
+--- a/libgnucash/backend/xml/gnc-recurrence-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-recurrence-xml-v2.cpp
+@@ -24,12 +24,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <string.h>
+ #include "qof.h"
+ #include "Recurrence.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml.h"
+ #include "gnc-xml-helper.h"
+diff --git a/libgnucash/backend/xml/gnc-schedxaction-xml-v2.cpp b/libgnucash/backend/xml/gnc-schedxaction-xml-v2.cpp
+index cb104e1a0..195f5a738 100644
+--- a/libgnucash/backend/xml/gnc-schedxaction-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-schedxaction-xml-v2.cpp
+@@ -23,12 +23,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <string.h>
+ 
+ #include "SX-book.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-tax-table-xml-v2.cpp b/libgnucash/backend/xml/gnc-tax-table-xml-v2.cpp
+index b9206a626..b8e602fa4 100644
+--- a/libgnucash/backend/xml/gnc-tax-table-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-tax-table-xml-v2.cpp
+@@ -24,13 +24,12 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gncEntry.h"
+ #include "gncTaxTableP.h"
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-transaction-xml-v2.cpp b/libgnucash/backend/xml/gnc-transaction-xml-v2.cpp
+index b4aad7309..560c0d0c6 100644
+--- a/libgnucash/backend/xml/gnc-transaction-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-transaction-xml-v2.cpp
+@@ -24,8 +24,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <string.h>
+ #include "AccountP.h"
+ #include "Transaction.h"
+@@ -33,6 +31,7 @@ extern "C"
+ #include "gnc-lot.h"
+ #include "gnc-lot-p.h"
+ }
++#include <glib.h>
+ #include "gnc-xml-helper.h"
+ 
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/gnc-vendor-xml-v2.cpp b/libgnucash/backend/xml/gnc-vendor-xml-v2.cpp
+index 983e4f258..e88fe7932 100644
+--- a/libgnucash/backend/xml/gnc-vendor-xml-v2.cpp
++++ b/libgnucash/backend/xml/gnc-vendor-xml-v2.cpp
+@@ -24,8 +24,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "gncBillTermP.h"
+@@ -33,6 +31,7 @@ extern "C"
+ #include "gncTaxTableP.h"
+ }
+ 
++#include <glib.h>
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+ #include "sixtp-utils.h"
+diff --git a/libgnucash/backend/xml/gnc-xml-backend.cpp b/libgnucash/backend/xml/gnc-xml-backend.cpp
+index dc3bbb19b..73c2cda4c 100644
+--- a/libgnucash/backend/xml/gnc-xml-backend.cpp
++++ b/libgnucash/backend/xml/gnc-xml-backend.cpp
+@@ -27,8 +27,6 @@ extern "C"
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #include <regex.h>
+ 
+ #include <gnc-engine.h> //for GNC_MOD_BACKEND
+@@ -38,6 +36,8 @@ extern "C"
+ 
+ }
+ 
++#include <glib.h>
++#include <glib/gstdio.h>
+ #include <sstream>
+ 
+ #include "gnc-xml-backend.hpp"
+diff --git a/libgnucash/backend/xml/gnc-xml-helper.cpp b/libgnucash/backend/xml/gnc-xml-helper.cpp
+index 61df6c2e4..2e4dd8153 100644
+--- a/libgnucash/backend/xml/gnc-xml-helper.cpp
++++ b/libgnucash/backend/xml/gnc-xml-helper.cpp
+@@ -21,10 +21,7 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  *                                                                  *
+ \********************************************************************/
+-extern "C"
+-{
+ #include <glib.h>
+-}
+ 
+ #include "gnc-xml-helper.h"
+ 
+diff --git a/libgnucash/backend/xml/gnc-xml-helper.h b/libgnucash/backend/xml/gnc-xml-helper.h
+index 601f89bcd..6c0f91d8d 100644
+--- a/libgnucash/backend/xml/gnc-xml-helper.h
++++ b/libgnucash/backend/xml/gnc-xml-helper.h
+@@ -24,6 +24,9 @@
+ 
+ #ifndef GNC_XML_HELPER_H
+ #define GNC_XML_HELPER_H
++
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <libxml/xmlversion.h>
+diff --git a/libgnucash/backend/xml/io-example-account.cpp b/libgnucash/backend/xml/io-example-account.cpp
+index 918217ee4..a9b4be190 100644
+--- a/libgnucash/backend/xml/io-example-account.cpp
++++ b/libgnucash/backend/xml/io-example-account.cpp
+@@ -41,9 +41,6 @@ extern "C"
+ # include <unistd.h>
+ #endif
+ 
+-#include <glib.h>
+-#include <glib/gi18n.h>
+-#include <glib/gstdio.h>
+ #include "gnc-engine.h"
+ #include "Scrub.h"
+ #include "TransLog.h"
+@@ -53,6 +50,9 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
++#include <glib/gstdio.h>
+ #include "sixtp.h"
+ 
+ #include "gnc-xml.h"
+diff --git a/libgnucash/backend/xml/io-gncxml-gen.h b/libgnucash/backend/xml/io-gncxml-gen.h
+index 5ad7b8eeb..dc1e7f660 100644
+--- a/libgnucash/backend/xml/io-gncxml-gen.h
++++ b/libgnucash/backend/xml/io-gncxml-gen.h
+@@ -24,10 +24,8 @@
+ 
+ #ifndef IO_GNCXML_GEN_H
+ #define IO_GNCXML_GEN_H
+-extern "C"
+-{
++
+ #include <glib.h>
+-}
+ 
+ #include "sixtp.h"
+ 
+diff --git a/libgnucash/backend/xml/io-gncxml-v2.cpp b/libgnucash/backend/xml/io-gncxml-v2.cpp
+index 7f7fc900f..1b6e22532 100644
+--- a/libgnucash/backend/xml/io-gncxml-v2.cpp
++++ b/libgnucash/backend/xml/io-gncxml-v2.cpp
+@@ -36,8 +36,6 @@ extern "C"
+ #endif
+ #include <windows.h>
+ #endif
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #include <fcntl.h>
+ #include <string.h>
+ #ifdef HAVE_UNISTD_H
+@@ -66,6 +64,9 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ #include "gnc-xml-backend.hpp"
+ #include "sixtp-parsers.h"
+ #include "sixtp-utils.h"
+diff --git a/libgnucash/backend/xml/io-utils.cpp b/libgnucash/backend/xml/io-utils.cpp
+index 8d9cbfe44..ca2f7e203 100644
+--- a/libgnucash/backend/xml/io-utils.cpp
++++ b/libgnucash/backend/xml/io-utils.cpp
+@@ -26,9 +26,9 @@ extern "C"
+ #include <config.h>
+ 
+ #include <stdio.h>
++}
+ 
+ #include <glib.h>
+-}
+ 
+ #include "gnc-xml.h"
+ #include "io-utils.h"
+diff --git a/libgnucash/backend/xml/sixtp-dom-generators.cpp b/libgnucash/backend/xml/sixtp-dom-generators.cpp
+index d8a58eda0..0b9a914a2 100644
+--- a/libgnucash/backend/xml/sixtp-dom-generators.cpp
++++ b/libgnucash/backend/xml/sixtp-dom-generators.cpp
+@@ -25,10 +25,10 @@ extern "C"
+ #define __EXTENSIONS__
+ 
+ #include <config.h>
+-#include <glib.h>
+ 
+ #include <gnc-date.h>
+ }
++#include <glib.h>
+ 
+ #include "gnc-xml-helper.h"
+ #include "sixtp-dom-generators.h"
+diff --git a/libgnucash/backend/xml/sixtp-dom-parsers.cpp b/libgnucash/backend/xml/sixtp-dom-parsers.cpp
+index 776290396..9b05f4883 100644
+--- a/libgnucash/backend/xml/sixtp-dom-parsers.cpp
++++ b/libgnucash/backend/xml/sixtp-dom-parsers.cpp
+@@ -24,13 +24,13 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+ #include <string.h>
+ 
+-#include "gnc-xml-helper.h"
+ #include <gnc-engine.h>
+ }
+ 
++#include <glib.h>
++#include "gnc-xml-helper.h"
+ #include "sixtp-utils.h"
+ #include "sixtp-dom-parsers.h"
+ #include <kvp-frame.hpp>
+diff --git a/libgnucash/backend/xml/sixtp-to-dom-parser.cpp b/libgnucash/backend/xml/sixtp-to-dom-parser.cpp
+index 9aba0801a..277a6f867 100644
+--- a/libgnucash/backend/xml/sixtp-to-dom-parser.cpp
++++ b/libgnucash/backend/xml/sixtp-to-dom-parser.cpp
+@@ -23,12 +23,11 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+-
+ #include <ctype.h>
+ }
+ 
++#include <glib.h>
++
+ #include "sixtp-parsers.h"
+ #include "sixtp-utils.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/sixtp.cpp b/libgnucash/backend/xml/sixtp.cpp
+index 95f499514..d231efa40 100644
+--- a/libgnucash/backend/xml/sixtp.cpp
++++ b/libgnucash/backend/xml/sixtp.cpp
+@@ -23,9 +23,6 @@
+ extern "C"
+ {
+ #include <config.h>
+-
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #include <string.h>
+ #include <ctype.h>
+ #include <stdarg.h>
+@@ -37,6 +34,9 @@ extern "C"
+ #endif
+ }
+ 
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ #include "sixtp.h"
+ #include "sixtp-parsers.h"
+ #include "sixtp-stack.h"
+diff --git a/libgnucash/backend/xml/sixtp.h b/libgnucash/backend/xml/sixtp.h
+index 5aa799235..585a42ac1 100644
+--- a/libgnucash/backend/xml/sixtp.h
++++ b/libgnucash/backend/xml/sixtp.h
+@@ -25,12 +25,12 @@
+ #define SIXTP_H
+ extern "C"
+ {
+-#include <glib.h>
+ #include <stdio.h>
+ 
+ #include <stdarg.h>
+ #include "gnc-engine.h"
+ }
++#include <glib.h>
+ #include "gnc-xml-helper.h"
+ #include "gnc-backend-xml.h"
+ 
+diff --git a/libgnucash/backend/xml/test/test-dom-converters1.cpp b/libgnucash/backend/xml/test/test-dom-converters1.cpp
+index fe6336841..02c31dfe6 100644
+--- a/libgnucash/backend/xml/test/test-dom-converters1.cpp
++++ b/libgnucash/backend/xml/test/test-dom-converters1.cpp
+@@ -21,21 +21,22 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <stdlib.h>
+ #include <string.h>
+ 
+-#include <glib.h>
+-
+ #include "test-engine-stuff.h"
+ #include "cashobjects.h"
+ #include "gnc-engine.h"
+ #include "gnc-commodity.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "test-file-stuff.h"
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+diff --git a/libgnucash/backend/xml/test/test-dom-parser1.cpp b/libgnucash/backend/xml/test/test-dom-parser1.cpp
+index 59933a4c5..28de9542c 100644
+--- a/libgnucash/backend/xml/test/test-dom-parser1.cpp
++++ b/libgnucash/backend/xml/test/test-dom-parser1.cpp
+@@ -17,18 +17,19 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  *                                                                  *
+ \********************************************************************/
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <stdlib.h>
+ #include <string.h>
+ 
+-#include <glib.h>
+-
+ #include "test-stuff.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "gnc-xml-helper.h"
+ #include "sixtp.h"
+ #include "sixtp-parsers.h"
+diff --git a/libgnucash/backend/xml/test/test-file-stuff.cpp b/libgnucash/backend/xml/test/test-file-stuff.cpp
+index 1ba6e974e..0264c8122 100644
+--- a/libgnucash/backend/xml/test/test-file-stuff.cpp
++++ b/libgnucash/backend/xml/test/test-file-stuff.cpp
+@@ -21,6 +21,8 @@
+  *  02110-1301, USA.
+  */
+ #include <kvp-frame.hpp>
++#include <glib.h>
++#include <glib/gstdio.h>
+ 
+ extern "C"
+ {
+@@ -31,15 +33,14 @@ extern "C"
+ #include <sys/stat.h>
+ #include <dirent.h>
+ #include <fcntl.h>
+-#include <stdlib.h>
+ #include <string.h>
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ 
+ #include "gnc-engine.h"
+ #include "test-stuff.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "test-file-stuff.h"
+ #include "sixtp-dom-parsers.h"
+ #include "sixtp-parsers.h"
+diff --git a/libgnucash/backend/xml/test/test-file-stuff.h b/libgnucash/backend/xml/test/test-file-stuff.h
+index fd9e00ea3..158d8cddf 100644
+--- a/libgnucash/backend/xml/test/test-file-stuff.h
++++ b/libgnucash/backend/xml/test/test-file-stuff.h
+@@ -24,10 +24,10 @@
+ 
+ #ifndef TEST_FILE_STUFF_H
+ #define TEST_FILE_STUFF_H
+-extern "C"
+-{
+ #include <glib.h>
+ 
++extern "C"
++{
+ #include <gnc-commodity.h>
+ #include <gnc-engine.h>
+ }
+diff --git a/libgnucash/backend/xml/test/test-load-example-account.cpp b/libgnucash/backend/xml/test/test-load-example-account.cpp
+index af0c43777..3596a7cad 100644
+--- a/libgnucash/backend/xml/test/test-load-example-account.cpp
++++ b/libgnucash/backend/xml/test/test-load-example-account.cpp
+@@ -20,12 +20,12 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include <string.h>
+-#include <stdlib.h>
+ #include <stdio.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -36,6 +36,8 @@ extern "C"
+ #include "test-engine-stuff.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "test-file-stuff.h"
+ #include "io-gncxml-v2.h"
+ 
+diff --git a/libgnucash/backend/xml/test/test-load-xml2.cpp b/libgnucash/backend/xml/test/test-load-xml2.cpp
+index f1e3cfdff..945470078 100644
+--- a/libgnucash/backend/xml/test/test-load-xml2.cpp
++++ b/libgnucash/backend/xml/test/test-load-xml2.cpp
+@@ -25,6 +25,10 @@
+ /* @file test-load-xml2.c
+  * @brief test the loading of a version-2 gnucash XML file
+  */
++#include <glib.h>
++#include <glib-object.h>
++#include <glib/gstdio.h>
++
+ extern "C"
+ {
+ #include <config.h>
+@@ -36,9 +40,6 @@ extern "C"
+ #include <unistd.h>
+ #include <dirent.h>
+ #include <string.h>
+-#include <glib.h>
+-#include <glib-object.h>
+-#include <glib/gstdio.h>
+ 
+ #include <cashobjects.h>
+ #include <TransLog.h>
+diff --git a/libgnucash/backend/xml/test/test-save-in-lang.cpp b/libgnucash/backend/xml/test/test-save-in-lang.cpp
+index 8501a7c88..78cc644b6 100644
+--- a/libgnucash/backend/xml/test/test-save-in-lang.cpp
++++ b/libgnucash/backend/xml/test/test-save-in-lang.cpp
+@@ -17,17 +17,17 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  *                                                                  *
+ \********************************************************************/
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <dirent.h>
+ #include <errno.h>
+-#include <stdlib.h>
+ #include <string.h>
+ 
+ #include "test-engine-stuff.h"
+@@ -36,6 +36,8 @@ extern "C"
+ #include "TransLog.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "test-file-stuff.h"
+ #include "io-gncxml-v2.h"
+ #include "test-stuff.h"
+diff --git a/libgnucash/backend/xml/test/test-xml-account.cpp b/libgnucash/backend/xml/test/test-xml-account.cpp
+index d336ec237..ee90e5901 100644
+--- a/libgnucash/backend/xml/test/test-xml-account.cpp
++++ b/libgnucash/backend/xml/test/test-xml-account.cpp
+@@ -21,13 +21,13 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-#include <glib/gstdio.h>
+-#include <stdlib.h>
+ #include <unistd.h>
+ #include <gnc-engine.h>
+ #include <cashobjects.h>
+@@ -39,6 +39,8 @@ extern "C"
+ #include "Scrub.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "../gnc-xml-helper.h"
+ #include "../gnc-xml.h"
+ #include "../sixtp-parsers.h"
+diff --git a/libgnucash/backend/xml/test/test-xml-commodity.cpp b/libgnucash/backend/xml/test/test-xml-commodity.cpp
+index 6ff7e7656..5deeeed9d 100644
+--- a/libgnucash/backend/xml/test/test-xml-commodity.cpp
++++ b/libgnucash/backend/xml/test/test-xml-commodity.cpp
+@@ -17,13 +17,13 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  *                                                                  *
+ \********************************************************************/
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-#include <glib/gstdio.h>
+-#include <stdlib.h>
+ #include <unistd.h>
+ 
+ #include "qof.h"
+@@ -32,6 +32,8 @@ extern "C"
+ #include "Account.h"
+ }
+ 
++#include <cstdlib>
++
+ #include "gnc-xml-helper.h"
+ #include "gnc-xml.h"
+ #include "sixtp-parsers.h"
+diff --git a/libgnucash/backend/xml/test/test-xml-pricedb.cpp b/libgnucash/backend/xml/test/test-xml-pricedb.cpp
+index 4660084f7..7bf5afe92 100644
+--- a/libgnucash/backend/xml/test/test-xml-pricedb.cpp
++++ b/libgnucash/backend/xml/test/test-xml-pricedb.cpp
+@@ -21,12 +21,13 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
+diff --git a/libgnucash/backend/xml/test/test-xml-transaction.cpp b/libgnucash/backend/xml/test/test-xml-transaction.cpp
+index 238920682..54a22262a 100644
+--- a/libgnucash/backend/xml/test/test-xml-transaction.cpp
++++ b/libgnucash/backend/xml/test/test-xml-transaction.cpp
+@@ -21,12 +21,13 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++#include <glib/gstdio.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
+diff --git a/libgnucash/backend/xml/test/test-xml2-is-file.cpp b/libgnucash/backend/xml/test/test-xml2-is-file.cpp
+index 8b698f45e..82ff4526d 100644
+--- a/libgnucash/backend/xml/test/test-xml2-is-file.cpp
++++ b/libgnucash/backend/xml/test/test-xml2-is-file.cpp
+@@ -22,10 +22,9 @@ extern "C"
+ #include <config.h>
+ #include <stdlib.h>
+ #include <string.h>
+-
+-#include "test-engine-stuff.h"
+ }
+ 
++#include "test-engine-stuff.h"
+ #include "io-gncxml-v2.h"
+ #include "test-file-stuff.h"
+ #include "test-stuff.h"
+diff --git a/libgnucash/core-utils/gnc-filepath-utils.cpp b/libgnucash/core-utils/gnc-filepath-utils.cpp
+index da1bf5189..a6446ba72 100644
+--- a/libgnucash/core-utils/gnc-filepath-utils.cpp
++++ b/libgnucash/core-utils/gnc-filepath-utils.cpp
+@@ -26,6 +26,11 @@
+  * @author Copyright (c) 2000 Dave Peticolas
+  */
+ 
++#include <glib.h>
++#include <glib/gi18n.h>
++#include <glib/gprintf.h>
++#include <glib/gstdio.h>
++
+ extern "C" {
+ #include <config.h>
+ 
+@@ -35,10 +40,6 @@ extern "C" {
+ #include <Shlobj.h>
+ #endif
+ 
+-#include <glib.h>
+-#include <glib/gi18n.h>
+-#include <glib/gprintf.h>
+-#include <glib/gstdio.h>
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
+diff --git a/libgnucash/core-utils/gnc-locale-utils.cpp b/libgnucash/core-utils/gnc-locale-utils.cpp
+index 10574c210..c73a02dd5 100644
+--- a/libgnucash/core-utils/gnc-locale-utils.cpp
++++ b/libgnucash/core-utils/gnc-locale-utils.cpp
+@@ -19,10 +19,7 @@
+  * 51 Franklin Street, Fifth Floor    Fax:    +1-617-542-2652       *
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+ \********************************************************************/
+-extern "C"
+-{
+ #include <glib.h>
+-}
+ #include <clocale>
+ #include <boost/locale.hpp>
+ #include "gnc-locale-utils.hpp"
+diff --git a/libgnucash/core-utils/gnc-prefs.h b/libgnucash/core-utils/gnc-prefs.h
+index b18d1e079..7d7a104d0 100644
+--- a/libgnucash/core-utils/gnc-prefs.h
++++ b/libgnucash/core-utils/gnc-prefs.h
+@@ -45,7 +45,11 @@
+ #ifndef GNC_PREFS_H
+ #define GNC_PREFS_H
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
++}
++#endif
+ 
+ /* Preference groups used across multiple modules */
+ #define GNC_PREFS_GROUP_GENERAL           "general"
+diff --git a/libgnucash/core-utils/test/gtest-path-utilities.cpp b/libgnucash/core-utils/test/gtest-path-utilities.cpp
+index 94e83566f..d7210007b 100644
+--- a/libgnucash/core-utils/test/gtest-path-utilities.cpp
++++ b/libgnucash/core-utils/test/gtest-path-utilities.cpp
+@@ -1,7 +1,8 @@
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include <gncla-dir.h>
+ #include <gnc-path.h>
+ #include <binreloc.h>
+diff --git a/libgnucash/engine/SX-book.h b/libgnucash/engine/SX-book.h
+index 0b674ebd3..111aaceaf 100644
+--- a/libgnucash/engine/SX-book.h
++++ b/libgnucash/engine/SX-book.h
+@@ -42,7 +42,11 @@
+ typedef struct xaccSchedXactionsDef SchedXactions;
+ typedef struct _SchedXactionsClass SchedXactionsClass;
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
++}
++#endif
+ #include "SchedXaction.h"
+ #include "qof.h"
+ 
+diff --git a/libgnucash/engine/engine-helpers.h b/libgnucash/engine/engine-helpers.h
+index 4b3abe6ee..517d4e148 100644
+--- a/libgnucash/engine/engine-helpers.h
++++ b/libgnucash/engine/engine-helpers.h
+@@ -25,7 +25,11 @@
+ #ifndef ENGINE_HELPERS_H
+ #define ENGINE_HELPERS_H
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
++}
++#endif
+ 
+ #include "gnc-engine.h"
+ #include "Account.h"
+diff --git a/libgnucash/engine/gnc-commodity.h b/libgnucash/engine/gnc-commodity.h
+index 1f20a7189..afb18fee3 100644
+--- a/libgnucash/engine/gnc-commodity.h
++++ b/libgnucash/engine/gnc-commodity.h
+@@ -49,8 +49,13 @@
+ typedef struct _GncCommodityClass gnc_commodityClass;
+ typedef struct _GncCommodityNamespaceClass gnc_commodity_namespaceClass;
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
+ #include <glib/gi18n.h>
++}
++#endif
++
+ #include "gnc-engine.h"
+ 
+ #ifdef __cplusplus
+diff --git a/libgnucash/engine/gnc-date.cpp b/libgnucash/engine/gnc-date.cpp
+index 5cdf3a655..2f48aa91f 100644
+--- a/libgnucash/engine/gnc-date.cpp
++++ b/libgnucash/engine/gnc-date.cpp
+@@ -26,11 +26,11 @@
+ \********************************************************************/
+ 
+ #define __EXTENSIONS__
++#include <glib.h>
+ extern "C"
+ {
+ 
+ #include <config.h>
+-#include <glib.h>
+ #include <libintl.h>
+ #include <stdlib.h>
+ #include "platform.h"
+diff --git a/libgnucash/engine/gnc-date.h b/libgnucash/engine/gnc-date.h
+index b911fa58b..7556fd1c6 100644
+--- a/libgnucash/engine/gnc-date.h
++++ b/libgnucash/engine/gnc-date.h
+@@ -68,12 +68,21 @@
+ 
+ #ifndef GNC_DATE_H
+ #define GNC_DATE_H
++
++
+ #ifdef __cplusplus
+ extern "C"
+ {
+ #endif
+- 
++
++#ifdef __cplusplus
++extern "C++" {
++#endif
+ #include <glib-object.h>
++#ifdef __cplusplus
++}
++#endif
++ 
+ #include <time.h>
+ 
+ /**
+diff --git a/libgnucash/engine/gnc-engine.h b/libgnucash/engine/gnc-engine.h
+index 651cf44e5..80aa8b4c2 100644
+--- a/libgnucash/engine/gnc-engine.h
++++ b/libgnucash/engine/gnc-engine.h
+@@ -36,7 +36,12 @@
+ #ifndef GNC_ENGINE_H
+ #define GNC_ENGINE_H
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
++}
++#endif
++
+ #include "qof.h"
+ 
+ #ifdef __cplusplus
+diff --git a/libgnucash/engine/gnc-numeric.cpp b/libgnucash/engine/gnc-numeric.cpp
+index 5e6773847..040845a31 100644
+--- a/libgnucash/engine/gnc-numeric.cpp
++++ b/libgnucash/engine/gnc-numeric.cpp
+@@ -26,7 +26,6 @@ extern "C"
+ {
+ #include <config.h>
+ 
+-#include <glib.h>
+ #include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -35,6 +34,7 @@ extern "C"
+ #include "qof.h"
+ }
+ 
++#include <glib.h>
+ #include <stdint.h>
+ #include <boost/regex.hpp>
+ #include <boost/locale/encoding_utf.hpp>
+diff --git a/libgnucash/engine/gncBusiness.h b/libgnucash/engine/gncBusiness.h
+index a0190e242..1b7ce063b 100644
+--- a/libgnucash/engine/gncBusiness.h
++++ b/libgnucash/engine/gncBusiness.h
+@@ -34,7 +34,11 @@
+ #ifndef GNC_BUSINESS_H_
+ #define GNC_BUSINESS_H_
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
++}
++#endif
+ #include "qof.h"
+ #include "Account.h"
+ 
+diff --git a/libgnucash/engine/gncEntry.h b/libgnucash/engine/gncEntry.h
+index d1d850fea..8c8c82e11 100644
+--- a/libgnucash/engine/gncEntry.h
++++ b/libgnucash/engine/gncEntry.h
+@@ -31,6 +31,12 @@
+ #ifndef GNC_ENTRY_H_
+ #define GNC_ENTRY_H_
+ 
++#ifdef __cplusplus
++extern "C++" {
++#include <glib.h>
++}
++#endif
++
+ typedef struct _gncEntry GncEntry;
+ typedef struct _gncEntryClass GncEntryClass;
+ 
+diff --git a/libgnucash/engine/guid.h b/libgnucash/engine/guid.h
+index 918b75a78..f43f194d1 100644
+--- a/libgnucash/engine/guid.h
++++ b/libgnucash/engine/guid.h
+@@ -25,13 +25,13 @@
+ #ifndef GUID_H
+ #define GUID_H
+ 
++#include <glib-object.h>
+ #ifdef __cplusplus
+ extern "C"
+ {
+ #endif
+ 
+ #include <stddef.h>
+-#include <glib-object.h>
+ 
+ /** @addtogroup Entity
+     @{ */
+diff --git a/libgnucash/engine/qof-string-cache.cpp b/libgnucash/engine/qof-string-cache.cpp
+index caba239fb..738bbf063 100644
+--- a/libgnucash/engine/qof-string-cache.cpp
++++ b/libgnucash/engine/qof-string-cache.cpp
+@@ -31,12 +31,13 @@ extern "C"
+ #include <config.h>
+ 
+ #include <ctype.h>
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include "qof.h"
+ }
+ 
++#include <glib.h>
++
+ /* Uncomment if you need to log anything.
+ static QofLogModule log_module = QOF_MOD_UTIL;
+ */
+diff --git a/libgnucash/engine/qof.h b/libgnucash/engine/qof.h
+index 08baaeabb..ac3fbf569 100644
+--- a/libgnucash/engine/qof.h
++++ b/libgnucash/engine/qof.h
+@@ -68,7 +68,11 @@
+ */
+ /** @} */
+ 
++#ifdef __cplusplus
++extern "C++" {
+ #include <glib.h>
++}
++#endif
+ #include "qofid.h"
+ #include "qoflog.h"
+ #include "gnc-date.h"
+diff --git a/libgnucash/engine/qofbook.cpp b/libgnucash/engine/qofbook.cpp
+index 55f8cf44b..47cfa85fb 100644
+--- a/libgnucash/engine/qofbook.cpp
++++ b/libgnucash/engine/qofbook.cpp
+@@ -41,7 +41,6 @@ extern "C"
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include <glib.h>
+ #ifdef GNC_PLATFORM_WINDOWS
+   /* Mingw disables the standard type macros for C++ without this override. */
+ #define __STDC_FORMAT_MACROS = 1
+@@ -50,6 +49,7 @@ extern "C"
+ 
+ }
+ 
++#include <glib.h>
+ #include "qof.h"
+ #include "qofevent-p.h"
+ #include "qofbackend.h"
+diff --git a/libgnucash/engine/qofbook.h b/libgnucash/engine/qofbook.h
+index bc315c80f..4a7877c0a 100644
+--- a/libgnucash/engine/qofbook.h
++++ b/libgnucash/engine/qofbook.h
+@@ -41,6 +41,7 @@
+ #define QOF_BOOK_H
+ 
+ #ifdef __cplusplus
++#include <glib.h> //To preempt it being included extern "C" in a later header.
+ extern "C"
+ {
+ #endif
+diff --git a/libgnucash/engine/qofchoice.cpp b/libgnucash/engine/qofchoice.cpp
+index 715417efa..16a9e4a7a 100644
+--- a/libgnucash/engine/qofchoice.cpp
++++ b/libgnucash/engine/qofchoice.cpp
+@@ -21,14 +21,9 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+  */
+ 
+-extern "C"
+-{
+-
+ #include <config.h>
+ #include <glib.h>
+ 
+-}
+-
+ #include "qof.h"
+ #include "qofchoice.h"
+ 
+diff --git a/libgnucash/engine/qofclass.cpp b/libgnucash/engine/qofclass.cpp
+index acaa8fb1c..fdabf3fb0 100644
+--- a/libgnucash/engine/qofclass.cpp
++++ b/libgnucash/engine/qofclass.cpp
+@@ -21,11 +21,8 @@
+  *                                                                  *
+ \********************************************************************/
+ 
+-extern "C"
+-{
+ #include <config.h>
+ #include <glib.h>
+-}
+ 
+ #include "qof.h"
+ #include "qofclass-p.h"
+diff --git a/libgnucash/engine/qofevent.cpp b/libgnucash/engine/qofevent.cpp
+index 674cdeb89..ae69048f4 100644
+--- a/libgnucash/engine/qofevent.cpp
++++ b/libgnucash/engine/qofevent.cpp
+@@ -22,11 +22,8 @@
+  *                                                                  *
+  ********************************************************************/
+ 
+-extern "C"
+-{
+ #include <config.h>
+ #include <glib.h>
+-}
+ 
+ #include "qof.h"
+ #include "qofevent-p.h"
+diff --git a/libgnucash/engine/qofid.cpp b/libgnucash/engine/qofid.cpp
+index 7f713c66f..ac5167fca 100644
+--- a/libgnucash/engine/qofid.cpp
++++ b/libgnucash/engine/qofid.cpp
+@@ -26,9 +26,9 @@ extern "C"
+ {
+ #include <config.h>
+ #include <string.h>
+-#include <glib.h>
+ }
+ 
++#include <glib.h>
+ #include "qof.h"
+ #include "qofid-p.h"
+ #include "qofinstance-p.h"
+diff --git a/libgnucash/engine/qoflog.cpp b/libgnucash/engine/qoflog.cpp
+index a545ff051..f91817668 100644
+--- a/libgnucash/engine/qoflog.cpp
++++ b/libgnucash/engine/qoflog.cpp
+@@ -34,8 +34,6 @@ extern "C"
+ #include <windows.h>
+ #endif
+ 
+-#include <glib.h>
+-#include <glib/gstdio.h>
+ #ifdef HAVE_UNISTD_H
+ # include <unistd.h>
+ #else
+@@ -48,10 +46,12 @@ extern "C"
+ #include <string.h>
+ #include <stdio.h>
+ 
+-#undef G_LOG_DOMAIN
+-#define G_LOG_DOMAIN "qof.log"
+ }
+ 
++#include <glib.h>
++#include <glib/gstdio.h>
++#undef G_LOG_DOMAIN
++#define G_LOG_DOMAIN "qof.log"
+ #include "qof.h"
+ #include "qoflog.h"
+ #include <string>
+diff --git a/libgnucash/engine/qofobject.cpp b/libgnucash/engine/qofobject.cpp
+index ba87e3434..0138aad15 100644
+--- a/libgnucash/engine/qofobject.cpp
++++ b/libgnucash/engine/qofobject.cpp
+@@ -23,11 +23,8 @@
+  * Copyright (C) 2001 Derek Atkins
+  * Author: Derek Atkins <warlord@MIT.EDU>
+  */
+-extern "C"
+-{
+ #include <config.h>
+ #include <glib.h>
+-}
+ 
+ #include "qof.h"
+ #include "qofobject-p.h"
+diff --git a/libgnucash/engine/qofquery.cpp b/libgnucash/engine/qofquery.cpp
+index 5af856039..41d49c1bb 100644
+--- a/libgnucash/engine/qofquery.cpp
++++ b/libgnucash/engine/qofquery.cpp
+@@ -27,11 +27,11 @@ extern "C"
+ 
+ #include <sys/types.h>
+ #include <time.h>
+-#include <glib.h>
+ #include <regex.h>
+ #include <string.h>
+ }
+ 
++#include <glib.h>
+ #include "qof.h"
+ #include "qof-backend.hpp"
+ #include "qofbook-p.h"
+diff --git a/libgnucash/engine/qofsession.cpp b/libgnucash/engine/qofsession.cpp
+index 86edb1fc6..dd96a609a 100644
+--- a/libgnucash/engine/qofsession.cpp
++++ b/libgnucash/engine/qofsession.cpp
+@@ -48,13 +48,13 @@ extern "C"
+ # endif
+ #endif
+ 
+-#include <glib.h>
+ #include "qof.h"
+ #include "qofobject-p.h"
+ 
+ static QofLogModule log_module = QOF_MOD_SESSION;
+ } //extern 'C'
+ 
++#include <glib.h>
+ #include "qofbook-p.h"
+ #include "qof-backend.hpp"
+ #include "qofsession.hpp"
+diff --git a/libgnucash/engine/test-core/test-engine-stuff.h b/libgnucash/engine/test-core/test-engine-stuff.h
+index bc661da44..54a47a1a4 100644
+--- a/libgnucash/engine/test-core/test-engine-stuff.h
++++ b/libgnucash/engine/test-core/test-engine-stuff.h
+@@ -24,11 +24,11 @@
+ 
+ #ifndef TEST_ENGINE_STUFF_H
+ #define TEST_ENGINE_STUFF_H
++#include <glib.h>
+ #ifdef __cplusplus
+ extern "C"
+ {
+ #endif
+-#include <glib.h>
+ #include <stdlib.h>
+ #include <stdint.h>
+ 
+diff --git a/libgnucash/engine/test/test-account-object.cpp b/libgnucash/engine/test/test-account-object.cpp
+index 32f612e65..f1d21a570 100644
+--- a/libgnucash/engine/test/test-account-object.cpp
++++ b/libgnucash/engine/test/test-account-object.cpp
+@@ -24,11 +24,12 @@
+  * @brief Minimal test of reading/writing account parameters
+  * @author David Hampton <hampton@employees.org>
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <unistd.h>
+-#include <glib.h>
+ #include "qof.h"
+ #include "Account.h"
+ #include "cashobjects.h"
+diff --git a/libgnucash/engine/test/test-commodities.cpp b/libgnucash/engine/test/test-commodities.cpp
+index 5aae8ec60..efd942158 100644
+--- a/libgnucash/engine/test/test-commodities.cpp
++++ b/libgnucash/engine/test/test-commodities.cpp
+@@ -22,11 +22,11 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+-
+ #include "gnc-commodity.h"
+ #include "qof.h"
+ #include "test-engine-stuff.h"
+diff --git a/libgnucash/engine/test/test-group-vs-book.cpp b/libgnucash/engine/test/test-group-vs-book.cpp
+index 31cf1aade..010913ebb 100644
+--- a/libgnucash/engine/test/test-group-vs-book.cpp
++++ b/libgnucash/engine/test/test-group-vs-book.cpp
+@@ -20,10 +20,11 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include "qof.h"
+ #include "cashobjects.h"
+ #include "Account.h"
+diff --git a/libgnucash/engine/test/test-guid.cpp b/libgnucash/engine/test/test-guid.cpp
+index 6c7607524..ad42ec49c 100644
+--- a/libgnucash/engine/test/test-guid.cpp
++++ b/libgnucash/engine/test/test-guid.cpp
+@@ -26,11 +26,12 @@
+  *
+  */
+ #include <guid.hpp>
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <ctype.h>
+-#include <glib.h>
+ #include "cashobjects.h"
+ #include "test-stuff.h"
+ #include "test-engine-stuff.h"
+diff --git a/libgnucash/engine/test/test-lots.cpp b/libgnucash/engine/test/test-lots.cpp
+index c1033d3d0..58d2f8ab1 100644
+--- a/libgnucash/engine/test/test-lots.cpp
++++ b/libgnucash/engine/test/test-lots.cpp
+@@ -24,11 +24,12 @@
+  * @brief Minimal test to see if automatic lot scrubbing works.
+  * @author Linas Vepstas <linas@linas.org>
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <ctype.h>
+-#include <glib.h>
+ #include "qof.h"
+ #include "Account.h"
+ #include "Scrub3.h"
+diff --git a/libgnucash/engine/test/test-numeric.cpp b/libgnucash/engine/test/test-numeric.cpp
+index 1963d80fe..c2cd7e534 100644
+--- a/libgnucash/engine/test/test-numeric.cpp
++++ b/libgnucash/engine/test/test-numeric.cpp
+@@ -21,12 +21,12 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
+ 
+ extern "C"
+ {
+ #include <config.h>
+ #include <ctype.h>
+-#include <glib.h>
+ #include "cashobjects.h"
+ #include "test-stuff.h"
+ #include "test-engine-stuff.h"
+diff --git a/libgnucash/engine/test/test-qofinstance.cpp b/libgnucash/engine/test/test-qofinstance.cpp
+index 1f979a161..9299e4223 100644
+--- a/libgnucash/engine/test/test-qofinstance.cpp
++++ b/libgnucash/engine/test/test-qofinstance.cpp
+@@ -20,11 +20,12 @@
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+ \********************************************************************/
+ 
++#include <glib.h>
+ #include <guid.hpp>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include <unittest-support.h>
+ #include "../qof.h"
+ }
+diff --git a/libgnucash/engine/test/test-query.cpp b/libgnucash/engine/test/test-query.cpp
+index f21c7922a..94ab2c0d8 100644
+--- a/libgnucash/engine/test/test-query.cpp
++++ b/libgnucash/engine/test/test-query.cpp
+@@ -20,10 +20,11 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include "qof.h"
+ #include "cashobjects.h"
+ #include "Transaction.h"
+diff --git a/libgnucash/engine/test/test-split-vs-account.cpp b/libgnucash/engine/test/test-split-vs-account.cpp
+index ee1e320a1..81c42d635 100644
+--- a/libgnucash/engine/test/test-split-vs-account.cpp
++++ b/libgnucash/engine/test/test-split-vs-account.cpp
+@@ -21,10 +21,11 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include "qof.h"
+ #include "cashobjects.h"
+ #include "AccountP.h"
+diff --git a/libgnucash/engine/test/test-transaction-reversal.cpp b/libgnucash/engine/test/test-transaction-reversal.cpp
+index c8e918e4f..e5183cc5a 100644
+--- a/libgnucash/engine/test/test-transaction-reversal.cpp
++++ b/libgnucash/engine/test/test-transaction-reversal.cpp
+@@ -20,10 +20,11 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include <string.h>
+ #include "cashobjects.h"
+ #include "Transaction.h"
+diff --git a/libgnucash/engine/test/test-transaction-voiding.cpp b/libgnucash/engine/test/test-transaction-voiding.cpp
+index f6037d178..e4aa60c63 100644
+--- a/libgnucash/engine/test/test-transaction-voiding.cpp
++++ b/libgnucash/engine/test/test-transaction-voiding.cpp
+@@ -20,10 +20,11 @@
+  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  *  02110-1301, USA.
+  */
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+-#include <glib.h>
+ #include <string.h>
+ #include "cashobjects.h"
+ #include "Account.h"
+diff --git a/libgnucash/engine/test/utest-Account.cpp b/libgnucash/engine/test/utest-Account.cpp
+index eab36c325..be3057f3b 100644
+--- a/libgnucash/engine/test/utest-Account.cpp
++++ b/libgnucash/engine/test/utest-Account.cpp
+@@ -19,11 +19,12 @@
+  * 51 Franklin Street, Fifth Floor    Fax:    +1-617-542-2652       *
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  ********************************************************************/
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <string.h>
+-#include <glib.h>
+ #include <unittest-support.h>
+ #include <gnc-event.h>
+ #include <gnc-date.h>
+diff --git a/libgnucash/engine/test/utest-Split.cpp b/libgnucash/engine/test/utest-Split.cpp
+index 18286e283..660210b16 100644
+--- a/libgnucash/engine/test/utest-Split.cpp
++++ b/libgnucash/engine/test/utest-Split.cpp
+@@ -21,11 +21,12 @@
+  * 51 Franklin Street, Fifth Floor    Fax:    +1-617-542-2652       *
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  ********************************************************************/
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <string.h>
+-#include <glib.h>
+ #include <unittest-support.h>
+ /* Add specific headers for this class */
+ #include <Split.h>
+diff --git a/libgnucash/engine/test/utest-Transaction.cpp b/libgnucash/engine/test/utest-Transaction.cpp
+index ac6effbe6..add1b029b 100644
+--- a/libgnucash/engine/test/utest-Transaction.cpp
++++ b/libgnucash/engine/test/utest-Transaction.cpp
+@@ -21,11 +21,12 @@
+  * 51 Franklin Street, Fifth Floor    Fax:    +1-617-542-2652       *
+  * Boston, MA  02110-1301,  USA       gnu@gnu.org                   *
+  ********************************************************************/
++#include <glib.h>
++
+ extern "C"
+ {
+ #include <config.h>
+ #include <string.h>
+-#include <glib.h>
+ #include <unittest-support.h>
+ /* Add specific headers for this class */
+ #include "../Transaction.h"
+-- 
+2.26.3
+
