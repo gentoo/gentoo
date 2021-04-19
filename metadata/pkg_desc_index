@@ -10936,7 +10936,7 @@ dev-util/glib-utils 2.66.7 2.68.0: Build utilities for GLib using projects
 dev-util/global 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 10.11.0.0_pre20201216 11.2.0 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1726 0.1807: GN is a meta-build system that generates build files for Ninja
-dev-util/gnome-builder 3.38.2: An IDE for writing GNOME-based software
+dev-util/gnome-builder 3.38.2 3.40.0: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.32.1 40.0: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2020.3.2: Golang IDE by JetBrains
@@ -12160,13 +12160,13 @@ gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk 4.2.0: Gimp ToolKit +
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
 gui-libs/libhandy 0.0.13 1.0.3 1.2.0 1.2.1: Building blocks for modern adaptive GNOME apps
-gui-libs/libwpe 1.8.0: Platform-agnostic interfaces for WPE WebKit
+gui-libs/libwpe 1.8.0 1.10.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/neatvnc 0.4.0 9999: liberally licensed VNC server library with a clean interface
 gui-libs/tepl 4.4.0 5.0.1 6.00.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wayfire-plugins-extra 0.6.0-r1 0.7.0 9999: extra plugins for wayfire
 gui-libs/wf-config 0.5.0 0.6.0 0.7.0 9999: library for managing wayfire configuration files
 gui-libs/wlroots 0.11.0 0.12.0 0.13.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
-gui-libs/wpebackend-fdo 1.8.0: WPE backend designed for Linux desktop systems
+gui-libs/wpebackend-fdo 1.8.0 1.8.3: WPE backend designed for Linux desktop systems
 gui-libs/xdg-desktop-portal-wlr 0.2.0 9999: xdg-desktop-portal backend for wlroots
 gui-wm/hikari 2.2.2-r1: Wayland compositor inspired by CWM
 gui-wm/sway 1.5.1-r1 1.6 9999: i3-compatible Wayland window manager
@@ -14684,7 +14684,7 @@ net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODE
 net-dialup/mgetty 1.2.1-r3: A programm for sending and receiving fax and voice
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.7.1 2.8: Serial Communication Program
-net-dialup/moserial 3.0.15: A clean and friendly gtk-based serial terminal
+net-dialup/moserial 3.0.15 3.0.16: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r2: User level application for IBM Mwave modem
 net-dialup/neocon 20110228: A simple serial console utility that tries to open ttys repeatedly
 net-dialup/openl2tp 1.8-r2: Userspace tools for kernel L2TP implementation
@@ -18421,7 +18421,7 @@ x11-libs/gdk-pixbuf 2.42.4 2.42.6: Image loading library for GTK+
 x11-libs/gdk-pixbuf-xlib 2.40.2: Deprecated Xlib integration for GdkPixbuf
 x11-libs/gl2ps 1.4.2: OpenGL to PostScript printing library
 x11-libs/gnome-pty-helper 0.40.2: GNOME Setuid helper for opening ptys
-x11-libs/goffice 0.10.48: A library of document-centric objects and utilities
+x11-libs/goffice 0.10.48 0.10.49: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.4-r1: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 2.24.32-r1 3.24.26: Gimp ToolKit +
 x11-libs/gtk+extra 3.3.4: Useful Additional GTK+ widgets
