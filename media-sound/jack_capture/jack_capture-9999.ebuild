@@ -38,9 +38,9 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export CC CXX PKG_CONFIG
+	tc-export CC CXX
 
-	emake PREFIX="${EPREFIX}/usr" jack_capture
+	emake PKG_CONFIG="$(tc-getPKG_CONFIG)" PREFIX="${EPREFIX}/usr" jack_capture
 }
 
 src_install() {
