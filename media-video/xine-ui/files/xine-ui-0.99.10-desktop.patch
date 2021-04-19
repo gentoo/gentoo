@@ -1,5 +1,5 @@
---- a/misc/desktops/xine.desktop.in	2017-12-28 17:34:15.000000000 +0100
-+++ b/misc/desktops/xine.desktop.in	2018-10-03 18:53:23.909196224 +0200
+--- a/misc/desktops/xine.desktop.in
++++ b/misc/desktops/xine.desktop.in
 @@ -6,5 +6,5 @@
  Icon=xine
  Terminal=false
@@ -10,8 +10,8 @@
 +Categories=AudioVideo;Player;
 +MimeType=
 \ No newline at end of file
---- a/misc/desktops/Makefile.am	2017-12-28 17:34:15.000000000 +0100
-+++ b/misc/desktops/Makefile.am	2018-10-03 19:52:23.262534618 +0200
+--- a/misc/desktops/Makefile.am
++++ b/misc/desktops/Makefile.am
 @@ -32,7 +32,7 @@
  if XINE_LIST
  xine.desktop: xine.desktop.in @XINE_LIST@
