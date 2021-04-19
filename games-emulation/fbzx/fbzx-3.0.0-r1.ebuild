@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Full Screen Sinclair Spectrum emulator"
 HOMEPAGE="https://github.com/rastersoft/fbzx"
@@ -28,6 +28,9 @@ PATCHES=(
 
 src_prepare() {
 	sed -i -e "s|/usr/share/|/usr/share/${PN}/|g" src/llscreen.cpp || die
+
+	tc-export PKG_CONFIG
+
 	default
 }
 
