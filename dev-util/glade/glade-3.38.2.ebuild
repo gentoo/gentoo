@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit gnome2 python-single-r1 meson virtualx
+inherit gnome2 python-single-r1 meson optfeature virtualx
 
 DESCRIPTION="A user interface designer for GTK+ and GNOME"
 HOMEPAGE="https://glade.gnome.org/"
