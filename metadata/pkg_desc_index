@@ -991,7 +991,7 @@ app-arch/xdms 1.3.2-r2: xDMS - Amiga DMS disk image decompressor
 app-arch/xz-utils 5.2.5 9999: utils for managing LZMA compressed files
 app-arch/zip 3.0-r4: Info ZIP (encryption support)
 app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
-app-arch/zopfli 1.0.2 1.0.3: Very good, but slow, deflate or zlib compression
+app-arch/zopfli 1.0.3: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 7.15: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-arch/zstd 1.4.9: zstd fast compression library
@@ -1061,7 +1061,7 @@ app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for me
 app-benchmarks/hyperfine 1.11.0: A command-line benchmarking tool (runs other benchmarks)
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/interbench 0.31: A Linux interactivity benchmark
-app-benchmarks/ioping 0.9 1.0 1.1: Simple disk I/0 latency measuring tool
+app-benchmarks/ioping 1.1: Simple disk I/0 latency measuring tool
 app-benchmarks/iozone 3.471 3.484 3.487 3.488: Filesystem benchmarking program
 app-benchmarks/libc-bench 20110206: Time and memory-efficiency tests of various C/POSIX standard library functions
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
@@ -1374,7 +1374,7 @@ app-dicts/aspell-zu 0.50.0: Aspell (Zulu) language dictionary
 app-dicts/bookview 3.2.1: NDTP client written in Tcl/Tk
 app-dicts/canna-2ch 20040519: Japanese Canna dictionary for 2channelers
 app-dicts/canna-cannadic 0.95c: Japanese dictionary as a supplement/replacement to Canna3.5b2
-app-dicts/dictd-vera 1.23 1.24: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
+app-dicts/dictd-vera 1.24: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
 app-dicts/dictd-wn 3.0_p33: WordNet for dict
 app-dicts/dikt 2s_p1: Dictionary application that implements the Dict protocol
 app-dicts/eblook 1.6.1: Interactive search utility for electronic dictionaries
@@ -2704,7 +2704,7 @@ app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.1: A zero-config tool to make locally trusted development certificates
 app-misc/mmv 1.01b_p19: Move/copy/append/link multiple files according to a set of wildcard patterns
 app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12 2.0.10: An Open Source MQTT v3 Broker
-app-misc/mouseremote 0.90-r2 0.90-r3: X10 MouseRemote
+app-misc/mouseremote 0.90-r3: X10 MouseRemote
 app-misc/muttprint 0.73-r5: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2-r1: Tools for controlling the LCD on a Logitech MX5000 keyboard
@@ -2742,7 +2742,7 @@ app-misc/recoll 1.25.19 1.27.12 1.28.5 1.29.2: Personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15 03.03.05: Ridiculously functional reminder program
-app-misc/reptyr 0.6.2 0.7.0 0.8.0: A utility to attach a running program to a new terminal
+app-misc/reptyr 0.8.0: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9.4 1.0.0: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.4: A utility for accessing various Rio media players
 app-misc/rl 0.2.7-r1: Randomize lines from text files or stdin
@@ -2810,7 +2810,7 @@ app-misc/vlock 2.2.3-r2: Allows to lock one or all of the sessions of your conso
 app-misc/votrify 5: Tool for community verification of Gentoo elections
 app-misc/vzstats 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 6.0.2: Wherever Change Directory
-app-misc/when 1.1.37 1.1.40: Minimalistic personal calendar program
+app-misc/when 1.1.40: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 4.6.1-r100: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/xmind 3.7.6_p201801311814: Brainstorming and mind mapping software tool
@@ -2973,7 +2973,7 @@ app-shells/fzy 1.0-r1 9999: Fuzzy text selector (interactive grep) for console
 app-shells/gentoo-bashcomp 20180302 20190211: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20200914 99999999: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/heirloom-sh 050706-r1: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
-app-shells/hstr 2.0 2.1 2.2: Shell history suggest box
+app-shells/hstr 2.0 2.2: Shell history suggest box
 app-shells/ksh 2020.0.0-r1 9999: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
@@ -3280,7 +3280,7 @@ app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
 app-text/xlsx2csv 0.7.6: Convert MS Office xlsx files to CSV
 app-text/xml2 0.5: These tools are used to convert XML and HTML to and from a line-oriented format
 app-text/xml2doc 20030510-r1: Tool to convert simple XML to a variety of formats (pdf, html, txt, manpage)
-app-text/xmldiff 2.3 2.4: A tool that figures out the differences between two similar XML files
+app-text/xmldiff 2.4: A tool that figures out the differences between two similar XML files
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.28-r3 0.0.28-r6: Script for converting XML and DocBook documents to a variety of output formats
@@ -3828,7 +3828,7 @@ dev-embedded/include 0.4.2: A collection of useful, independent include files fo
 dev-embedded/jal 0.4.62: A high-level language for Microchip PIC and Ubicom SX microcontrollers
 dev-embedded/kobs-ng 3.0.35.4.1.0: Utility to write u-boot images to NAND on Freescale iMX devices
 dev-embedded/libdisasm 0.23: Provides basic disassembly of Intel x86 instructions from a binary stream
-dev-embedded/libftd2xx 1.1.12-r1 1.4.8: Library that allows a direct access to a USB device
+dev-embedded/libftd2xx 1.4.8: Library that allows a direct access to a USB device
 dev-embedded/libftdi 0.20-r1 1.4-r1 1.5-r2 1.5-r3 9999: Userspace access to FTDI USB interface chips
 dev-embedded/libjaylink 0.2.0 9999: Library to access J-Link devices
 dev-embedded/lpc21isp 1.85: In-circuit programming (ISP) tool for the NXP microcontrollers
@@ -10866,7 +10866,7 @@ dev-util/cppunit 1.14.0 1.15.1-r2 9999: C++ port of the famous JUnit framework f
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
 dev-util/cproto 4.7q 4.7r 4.7s: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
-dev-util/cram 0.7 0.7-r1: Functional testing framework for command line applications
+dev-util/cram 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.9 9999: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
@@ -11033,7 +11033,7 @@ dev-util/ostree 2019.5 2020.6 2020.7 2020.8: Operating system and container bina
 dev-util/packer 1.6.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10 0.11 0.12: Small utility to modify the dynamic linker and RPATH of ELF executables
-dev-util/patchutils 0.3.4 0.4.2: A collection of tools that operate on patch files
+dev-util/patchutils 0.4.2: A collection of tools that operate on patch files
 dev-util/patdiff 0.14.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 5.8 5.9.9 5.10.16 5.11: Userland tools for Linux Performance Counters
@@ -15333,7 +15333,7 @@ net-misc/hashcash 1.22-r2: Utility to generate hashcash tokens
 net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.2.2 1.2.6 9999: Synchronize local workstation with time offered by remote webservers
-net-misc/httpie 2.3.0 2.4.0: Modern command line HTTP client
+net-misc/httpie 2.4.0: Modern command line HTTP client
 net-misc/httpstat 1.3.1: httpstat visualizes cURL statistics in a way of beauty and clarity
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 7.0.2 7.0.3: Enterprise client-server fax package for class 1 and 2 fax modems
@@ -17356,7 +17356,7 @@ sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
-sys-block/ms-sys 2.5.3 2.6.0 2.7.0: A command-line program for writing Microsoft compatible boot records
+sys-block/ms-sys 2.5.3 2.7.0: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.19 3.20 3.21-r1 9999: Userland client/server for kernel network block device
 sys-block/ndctl 71.1-r1: Helper tools and libraries for managing non-volatile memory on Linux
@@ -17809,7 +17809,7 @@ sys-libs/libsemanage 3.1-r1 3.2 9999: SELinux kernel and policy management libra
 sys-libs/libsepol 3.1 3.2 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.1.18: Provides a library for logging service-related events
 sys-libs/libsmbios 2.4.3: Provide access to (SM)BIOS information
-sys-libs/libstatgrab 0.91 0.92: A tool to provide access to statistics about the system on which it's run
+sys-libs/libstatgrab 0.92: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked against a pre gcc 3.4 libstdc++
 sys-libs/libtermcap-compat 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
