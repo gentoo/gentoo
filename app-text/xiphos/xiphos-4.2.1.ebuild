@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,7 @@ BDEPEND="${COMMON}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.1-appdata_metainfo.patch
+	"${FILESDIR}"/${PN}-4.2.1-glib_version_min_required.patch
 )
 
 src_configure() {
