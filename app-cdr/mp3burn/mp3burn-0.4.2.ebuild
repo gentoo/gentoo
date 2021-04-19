@@ -1,34 +1,32 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Burn mp3s without filling up your disk with .wav files"
 HOMEPAGE="https://sourceforge.net/projects/mp3burn"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND="dev-lang/perl"
-RDEPEND="${DEPEND}
+RDEPEND="
 	app-cdr/cdrtools
-	media-sound/mpg123
-	media-libs/flac
-	media-sound/vorbis-tools
+	dev-lang/perl
 	dev-perl/MP3-Info
 	dev-perl/Ogg-Vorbis-Header
 	dev-perl/String-ShellQuote
+	media-libs/flac
+	media-sound/mpg123
+	media-sound/vorbis-tools
 "
+BDEPEND="dev-lang/perl"
 
-S="${WORKDIR}/${PN}"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-build.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+)
 
 src_install() {
 	dobin ${PN}
