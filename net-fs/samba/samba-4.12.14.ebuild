@@ -68,7 +68,7 @@ CDEPEND="
 			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
 		)
 	")
-	!alpha? ( !sparc? ( sys-libs/libunwind ) )
+	!alpha? ( !sparc? ( sys-libs/libunwind:= ) )
 	acl? ( virtual/acl )
 	ceph? ( sys-cluster/ceph )
 	cluster? (
