@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">brettwooldridge/SparseBitSet</remote-id>
+		<bugs-to>https://github.com/brettwooldridge/SparseBitSet/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
