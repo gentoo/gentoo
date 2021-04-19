@@ -18,7 +18,9 @@ CDEPEND="
 	sys-libs/ncurses:0=[unicode?]
 	unicode? ( dev-libs/libunistring )"
 DEPEND="${CDEPEND}
-	app-text/ghostscript-gpl"
+	app-text/ghostscript-gpl
+	virtual/pkgconfig
+"
 RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${P}/src"
@@ -26,7 +28,7 @@ S="${WORKDIR}/${P}/src"
 src_prepare() {
 	eapply -p2 "${FILESDIR}"/${PN}-6.0.2-gentoo.patch
 	eapply_user
-	tc-export CC
+	tc-export CC PKG_CONFIG
 }
 
 src_compile() {
