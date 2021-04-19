@@ -1079,8 +1079,8 @@ app-cdr/burncdda 1.8.3-r1: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cddetect 2.1: Tool for detecting the type of a CD/DVD without mounting it
-app-cdr/cdemu 3.2.4: Command-line tool for controlling cdemu-daemon
-app-cdr/cdemu-daemon 3.2.4: Daemon of the CDEmu optical media image mounting suite
+app-cdr/cdemu 3.2.4 3.2.5: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu-daemon 3.2.4 3.2.5: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha09 3.02_alpha09-r2 3.02_alpha09-r3: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -1098,7 +1098,7 @@ app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for opt
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 3.2.4: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.2.4 3.2.5: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/geteltorito 0.6: El Torito boot image extractor
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
@@ -5649,7 +5649,7 @@ dev-libs/libmba 0.9.1-r4: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmirage 3.2.4: CD and DVD image access library
+dev-libs/libmirage 3.2.4 3.2.5: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.6: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
@@ -17723,7 +17723,7 @@ sys-fs/udftools 2.1 2.2 2.3: Ben Fennema's tools for packet writing and the UDF 
 sys-fs/udiskie 2.3.2 2.3.3: An automatic disk mounting service using udisks
 sys-fs/udisks 2.9.1 2.9.2: Daemon providing interfaces to work with storage devices
 sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUSE
-sys-fs/vhba 20200106-r1: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+sys-fs/vhba 20200106-r1 20210418: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.9: xfs dump/restore utilities
 sys-fs/xfsprogs 5.10.0-r1 5.11.0: xfs filesystem utilities
