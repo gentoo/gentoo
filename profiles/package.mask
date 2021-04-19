@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (2021-04-19)
+# Bad SRC_URI, missing license files
+# Removal on 2021-07-01.  Bug #784221.
+x11-apps/amlc
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
 # our version is outdated with security issues, new version
 # uses gradle to build which we don't support atm,
