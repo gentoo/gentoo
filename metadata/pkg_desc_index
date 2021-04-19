@@ -410,8 +410,10 @@ acct-user/dictd 0: uid for app-text/dictd
 acct-user/dirsrv 0: User for net-nds/389-ds-base
 acct-user/distcc 1: User used to run distcc daemon
 acct-user/dnrd 0: User for net-dns/dnrd
+acct-user/dnscache 0: System user: dnscache
 acct-user/dnscrypt-proxy 0-r1: User for net-dns/dnscrypt-proxy
 acct-user/dnsdist 0-r1: A user for net-dns/dnsdist
+acct-user/dnslog 0: System user: dnslog
 acct-user/dnsmasq 0-r1: User for net-dns/dnsmasq
 acct-user/dnsmasq_exporter 0-r1: user for dnsmasq_exporter
 acct-user/docker_auth 0-r1: User for docker_auth
@@ -633,6 +635,7 @@ acct-user/systemd-timesync 0-r1: System user: systemd-timesync
 acct-user/teamspeak 0-r1: A user for the TeamSpeak server
 acct-user/telegraf 0-r1: User for telegraf
 acct-user/tenshi 0: User for app-admin/tenshi
+acct-user/tinydns 0: System user: tinydns
 acct-user/tinyproxy 0: uid for net-proxy/tinyproxy
 acct-user/tomcat 0: User for Apache Tomcat
 acct-user/tor 0-r1: user for tor daemon
@@ -14712,7 +14715,7 @@ net-dns/bind-tools 9.16.12 9.16.13: bind tools: dig, nslookup, host, nsupdate, d
 net-dns/c-ares 1.17.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0 1.8.3: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
-net-dns/djbdns 1.05-r33: Collection of DNS client/server software
+net-dns/djbdns 1.05-r33 1.05-r34: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r3: A caching DNS proxy server
 net-dns/dnscap 1.10.3: Network capture utility designed specifically for DNS traffic
 net-dns/dnscrypt-proxy 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
