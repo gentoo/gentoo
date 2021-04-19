@@ -1,5 +1,3 @@
-diff --git a/configure.ac b/configure.ac
-index 1676ec8..73c8be5 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -47,39 +47,33 @@ then
@@ -44,14 +42,14 @@ index 1676ec8..73c8be5 100644
 +if pkg-config --exists ncursesw
 +then
 +		AC_MSG_NOTICE([Module ncursesw found])
-+		NCURSESW_CFLAGS=`pkg-config --cflags ncursesw`
-+		NCURSESW_LIBS=`pkg-config --libs ncursesw`
++		NCURSESW_CFLAGS=`${PKG_CONFIG} --cflags ncursesw`
++		NCURSESW_LIBS=`${PKG_CONFIG} --libs ncursesw`
 +else
-+		if pkg-config --exists ncurses
++		if ${PKG_CONFIG} --exists ncurses
 +		then
 +				AC_MSG_NOTICE([Module ncurses found])
-+				NCURSESW_CFLAGS=`pkg-config --cflags ncursesw`
-+				NCURSESW_LIBS=`pkg-config --libs ncurses`
++				NCURSESW_CFLAGS=`${PKG_CONFIG} --cflags ncursesw`
++				NCURSESW_LIBS=`${PKG_CONFIG} --libs ncurses`
 +		else
 +				AS_CASE([$host_os],
 +					[darwin*],
@@ -69,8 +67,6 @@ index 1676ec8..73c8be5 100644
  
  
  # Checks for libraries.
-diff --git a/src/Makefile.am b/src/Makefile.am
-index 7640d21..17a82b7 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -37,4 +37,4 @@ hstr_SOURCES = 						\
