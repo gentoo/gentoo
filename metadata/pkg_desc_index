@@ -3033,7 +3033,7 @@ app-text/catdoc 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF
 app-text/cb2bib 2.0.0-r1: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.7: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
-app-text/cherrytree 0.99.0_p20200523-r1 9999: A hierarchical note taking application (C++ version)
+app-text/cherrytree 0.99.0_p20200523-r1: A hierarchical note taking application (C++ version)
 app-text/cmark 0.29.0: CommonMark parsing and rendering library and program in C
 app-text/cmigemo 1.3c-r3: Migemo library implementation in C
 app-text/code2html 0.9.1-r2: Converts source files to colored HTML output
