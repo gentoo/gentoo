@@ -28,7 +28,7 @@
    ifeq ($(phoenix),gtk)
 -    phoenixflags := -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0`
 -    phoenixlink := `pkg-config --libs gtk+-2.0`
-+    phoenixflags := -DPHOENIX_GTK `${PKG_COFNIG} --cflags gtk+-2.0 x11`
++    phoenixflags := -DPHOENIX_GTK `${PKG_CONFIG} --cflags gtk+-2.0 x11`
 +    phoenixlink := `${PKG_CONFIG} --libs gtk+-2.0 x11` -ldl
    endif
  
