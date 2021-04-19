@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch multilib toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=higan_v${PV}-source
 
@@ -16,10 +16,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+)
+
 src_prepare() {
-	cd "${WORKDIR}/${MY_P}"
-	epatch \
-		"${FILESDIR}"/${P}-makefile.patch
+	cd "${WORKDIR}"/${MY_P} || die
+	default
 }
 
 src_compile() {
