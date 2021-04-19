@@ -35,6 +35,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake -C ${PN} CC="$(tc-getCC)"
 }
 
