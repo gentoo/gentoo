@@ -10,8 +10,8 @@ LIBDIR ?= /usr/lib
 # includes and libs
 PKGCONF_DEPS := freetype2 harfbuzz libopenjp2 libjpeg mupdf x11 zlib
 CPPFLAGS += -D_GNU_SOURCE -DFFP
-CFLAGS += -std=c99 -pedantic -Wall -Wextra -Wshadow $(shell pkg-config --cflags $(PKGCONF_DEPS))
-LDLIBS = -L$(LIBDIR) -lpthread -ljbig2dec $(shell pkg-config --libs $(PKGCONF_DEPS))
+CFLAGS += -std=c99 -pedantic -Wall -Wextra -Wshadow $(shell ${PKG_CONFIG} --cflags $(PKGCONF_DEPS))
+LDLIBS = -L$(LIBDIR) -lpthread -ljbig2dec $(shell ${PKG_CONFIG} --libs $(PKGCONF_DEPS))
 
 # ocaml
 CAMLOPT = ocamlopt
