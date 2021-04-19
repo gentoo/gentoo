@@ -28,7 +28,7 @@ RDEPEND=">=dev-haskell/blaze-html-0.5:=[profile?] <dev-haskell/blaze-html-0.10:=
 	>=dev-haskell/network-uri-2.6:=[profile?] <dev-haskell/network-uri-2.7:=[profile?]
 	>=dev-haskell/optparse-applicative-0.12:=[profile?] <dev-haskell/optparse-applicative-0.16:=[profile?]
 	>=dev-haskell/parsec-3.0:=[profile?] <dev-haskell/parsec-3.2:=[profile?]
-	>=dev-haskell/random-1.0:=[profile?] <dev-haskell/random-1.2:=[profile?]
+	>=dev-haskell/random-1.0:=[profile?] <dev-haskell/random-1.3:=[profile?]
 	>=dev-haskell/regex-tdfa-1.1:=[profile?] <dev-haskell/regex-tdfa-1.4:=[profile?]
 	>=dev-haskell/resourcet-1.1:=[profile?] <dev-haskell/resourcet-1.3:=[profile?]
 	>=dev-haskell/scientific-0.3.4:=[profile?] <dev-haskell/scientific-0.4:=[profile?]
@@ -39,7 +39,7 @@ RDEPEND=">=dev-haskell/blaze-html-0.5:=[profile?] <dev-haskell/blaze-html-0.10:=
 	>=dev-haskell/vector-0.11:=[profile?] <dev-haskell/vector-0.13:=[profile?]
 	>=dev-haskell/yaml-0.8.11:=[profile?] <dev-haskell/yaml-0.12:=[profile?]
 	>=dev-lang/ghc-8.6.3:=
-	buildwebsite? ( >=app-text/pandoc-2.11:=[profile?] <app-text/pandoc-2.12:=[profile?] )
+	buildwebsite? ( >=app-text/pandoc-2.11:=[profile?] <app-text/pandoc-2.14:=[profile?] )
 	checkexternal? ( >=dev-haskell/http-conduit-2.2:=[profile?] <dev-haskell/http-conduit-2.4:=[profile?] )
 	previewserver? ( >=dev-haskell/fsnotify-0.2:=[profile?] <dev-haskell/fsnotify-0.4:=[profile?]
 				>=dev-haskell/http-types-0.9:=[profile?] <dev-haskell/http-types-0.13:=[profile?]
@@ -48,26 +48,25 @@ RDEPEND=">=dev-haskell/blaze-html-0.5:=[profile?] <dev-haskell/blaze-html-0.10:=
 				>=dev-haskell/warp-3.2:=[profile?] <dev-haskell/warp-3.4:=[profile?] )
 	!previewserver? ( checkexternal? ( >=dev-haskell/http-types-0.7:=[profile?] <dev-haskell/http-types-0.13:=[profile?] )
 				watchserver? ( >=dev-haskell/fsnotify-0.2:=[profile?] <dev-haskell/fsnotify-0.4:=[profile?] ) )
-	usepandoc? ( >=app-text/pandoc-2.11:=[profile?] <app-text/pandoc-2.12:=[profile?] )
+	usepandoc? ( >=app-text/pandoc-2.11:=[profile?] <app-text/pandoc-2.14:=[profile?] )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.4.0.1
 	test? ( >=dev-haskell/quickcheck-2.8 <dev-haskell/quickcheck-2.15
 		>=dev-haskell/tasty-0.11 <dev-haskell/tasty-1.4
+		>=dev-haskell/tasty-golden-2.3 <dev-haskell/tasty-golden-2.4
 		>=dev-haskell/tasty-hunit-0.9 <dev-haskell/tasty-hunit-0.11
 		>=dev-haskell/tasty-quickcheck-0.8 <dev-haskell/tasty-quickcheck-0.11 )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-pandoc-2.11.patch )
-
 src_prepare() {
 	default
 
+	# See upstream commit making this change:
+	# https://github.com/jaspervdj/hakyll/commit/0dc6127d81ff688e27c36ce469230320eee60246
 	cabal_chdeps \
-		'pandoc          >= 2.10     && < 2.11,' 'pandoc          >= 2.11' \
-		'pandoc    >= 2.10  && < 2.11' 'pandoc    >= 2.11' \
-		'pandoc-citeproc >= 0.14     && < 0.18' ' ' \
-		'file-embed           >= 0.0.10.1 && < 0.0.12' 'file-embed           >= 0.0.10.1'
+		'pandoc >= 2.11 && < 2.12' 'pandoc >= 2.11' \
+		'pandoc    >= 2.11  && < 2.12' 'pandoc    >= 2.11'
 }
 
 src_configure() {

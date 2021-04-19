@@ -8,23 +8,21 @@ EAPI=7
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-DESCRIPTION="Pure Haskell commonmark parser"
-HOMEPAGE="https://github.com/jgm/commonmark-hs"
+DESCRIPTION="Lua module for text"
+HOMEPAGE="https://github.com/hslua/hslua-module-text"
 SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-haskell/parsec:=[profile?]
-	dev-haskell/text:=[profile?]
-	>=dev-lang/ghc-8.0.1:=
+RDEPEND=">=dev-haskell/hslua-1.2:=[profile?] <dev-haskell/hslua-1.4:=[profile?]
+	>=dev-haskell/text-1:=[profile?] <dev-haskell/text-1.3:=[profile?]
+	>=dev-lang/ghc-8.4.3:=
 "
 DEPEND="${RDEPEND}
-	>=dev-haskell/cabal-2.2
-	test? ( dev-haskell/quickcheck
-		dev-haskell/tasty
+	>=dev-haskell/cabal-2.2.0.1
+	test? ( dev-haskell/tasty
 		dev-haskell/tasty-hunit
-		dev-haskell/tasty-quickcheck )
+		>=dev-haskell/tasty-lua-0.2 <dev-haskell/tasty-lua-0.3 )
 "
