@@ -29,6 +29,7 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export PKG_CONFIG
 	emake CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
 
