@@ -924,7 +924,7 @@ src_prepare() {
 
 src_compile() {
 	MINIO_RELEASE="${MY_PV}"
-	go run buildscripts/gen-ldflags.go
+	go run buildscripts/gen-ldflags.go || die
 	go build \
 		--ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
 }
