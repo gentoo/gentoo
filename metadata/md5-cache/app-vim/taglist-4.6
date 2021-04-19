@@ -1,13 +1,13 @@
-DEFINED_PHASES=install postinst postrm prepare
+DEFINED_PHASES=install postinst postrm
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: ctags-based source code browser
-EAPI=5
+EAPI=7
 HOMEPAGE=http://vim-taglist.sourceforge.net/
-INHERIT=vim-plugin epatch
+INHERIT=vim-plugin
 KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=vim
 RDEPEND=dev-util/ctags || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/taglist-4.6.tar.bz2 https://dev.gentoo.org/~radhermit/vim/taglist-4.6.tar.bz2
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=cad2fbf6e1ccd7b5844f19f7031a4818
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	vim-doc	dd0828b15877b2a09c07f4719e45891f	vim-plugin	3160d9cb05ef44497be1485db0fe7590
+_md5_=47a939a1eae3787d45b1d1d28423a854
