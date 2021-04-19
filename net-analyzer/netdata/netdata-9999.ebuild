@@ -111,6 +111,11 @@ src_configure() {
 		$(use_with compression zlib)
 }
 
+src_compile() {
+	emake clean
+	default
+}
+
 src_install() {
 	default
 
