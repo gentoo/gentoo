@@ -1,6 +1,5 @@
-diff -Naur ttf2pt1-3.4.4-orig/Makefile ttf2pt1-3.4.4/Makefile
---- ttf2pt1-3.4.4-orig/Makefile	2007-07-15 20:06:50.000000000 -0600
-+++ ttf2pt1-3.4.4/Makefile	2007-07-15 20:12:40.000000000 -0600
+--- a/Makefile
++++ b/Makefile
 @@ -9,7 +9,7 @@
  #
  # Use GNU C even if it's not the default compiler
