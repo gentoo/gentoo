@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-	SLOT="0/13"
+	SLOT="0/14"
 fi
 
 LICENSE="MIT"
