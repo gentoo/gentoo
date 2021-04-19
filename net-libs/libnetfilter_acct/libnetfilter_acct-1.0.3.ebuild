@@ -1,10 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit linux-info ltprune multilib
+EAPI=7
 
-DESCRIPTION="library providing interface to extended accounting infrastructure"
+inherit linux-info
+
+DESCRIPTION="Library providing interface to extended accounting infrastructure"
 HOMEPAGE="https://netfilter.org/projects/libnetfilter_acct/"
 SRC_URI="https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
@@ -16,12 +17,11 @@ IUSE="examples"
 RDEPEND="
 	net-libs/libmnl
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( README )
+
 CONFIG_CHECK="~NETFILTER_NETLINK_ACCT"
 
 pkg_setup() {
@@ -46,5 +46,5 @@ src_install() {
 		docompress -x /usr/share/doc/${P}/examples
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
