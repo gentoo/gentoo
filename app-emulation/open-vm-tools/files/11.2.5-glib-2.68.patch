@@ -1,0 +1,12 @@
+--- a/open-vm-tools/lib/include/tracer.hh	2021-04-19 16:42:19.967147908 -0400
++++ b/open-vm-tools/lib/include/tracer.hh	2021-04-19 16:42:27.364829692 -0400
+@@ -28,9 +28,7 @@
+ 
+ #include "vm_basic_defs.h"
+ 
+-extern "C" {
+ #include "glib.h"
+-}
+ 
+ 
+ #ifdef VMX86_DEVEL
