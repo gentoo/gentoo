@@ -14538,7 +14538,7 @@ net-analyzer/nessus-agent-bin 8.2.4: A remote security scanner for Linux - agent
 net-analyzer/nessus-bin 8.14.0: A remote security scanner for Linux
 net-analyzer/net-snmp 5.9-r2 5.9-r3 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111-r1: The network swiss army knife
-net-analyzer/netdata 1.29.0 1.29.1 1.29.2 1.29.3 1.30.1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.29.0 1.29.1 1.29.2 1.29.3 1.30.1-r1 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.7: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.6-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
