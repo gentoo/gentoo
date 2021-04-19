@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,6 +26,7 @@ REQUIRED_USE="|| ( qt5 sdl )
 RDEPEND="
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
+	debug? ( dev-libs/libedit )
 	elf? ( dev-libs/elfutils )
 	ffmpeg? ( media-video/ffmpeg:= )
 	opengl? ( media-libs/libglvnd )

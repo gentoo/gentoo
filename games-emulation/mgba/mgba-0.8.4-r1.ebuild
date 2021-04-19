@@ -14,7 +14,7 @@ else
 	MY_PV="${PV/_beta/-b}"
 	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	[[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 LICENSE="MPL-2.0"
@@ -26,6 +26,7 @@ REQUIRED_USE="|| ( qt5 sdl )
 RDEPEND="
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
+	debug? ( dev-libs/libedit )
 	elf? ( dev-libs/elfutils )
 	ffmpeg? ( media-video/ffmpeg:= )
 	opengl? ( media-libs/libglvnd )
