@@ -1,5 +1,3 @@
-diff --git a/Makefile b/Makefile
-index 3331e30..7693bd2 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,4 +1,5 @@
