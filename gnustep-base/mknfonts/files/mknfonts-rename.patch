@@ -1,5 +1,5 @@
---- mknfonts-0.5/mknfonts.m.orig	2007-05-03 11:46:27.000000000 +0200
-+++ mknfonts-0.5/mknfonts.m	2007-05-03 11:47:34.000000000 +0200
+--- a/mknfonts.m
++++ b/mknfonts.m
 @@ -310,12 +310,6 @@
  			{
  				fi=[faceinfos objectAtIndex: i];

@@ -49,8 +49,10 @@ DEPEND="
 	x11-libs/libxkbfile"
 BDEPEND="
 	app-text/rman
+	virtual/pkgconfig
 	x11-base/xorg-proto
-	>=x11-misc/imake-1.0.8-r1"
+	>=x11-misc/imake-1.0.8-r1
+"
 
 SITEFILE="50${PN}-gentoo.el"
 
@@ -105,6 +107,9 @@ src_configure() {
 		--x-libraries="${ESYSROOT}/usr/$(get_libdir)"
 		--x-includes="${ESYSROOT}/usr/include"
 	)
+
+	tc-export PKG_CONFIG
+
 	econf "${myeconfargs[@]}"
 
 	export IMAKECPP="${IMAKECPP:-$(tc-getCPP)}"

@@ -2,23 +2,13 @@ From 8fe1e7fa9239ed8b604a59ef2202f183f1f56eb6 Mon Sep 17 00:00:00 2001
 From: Fabrice THIROUX <fabrice.thiroux@net-c.com>
 Date: Sat, 13 Feb 2021 14:46:53 +0100
 Subject: [PATCH] Updated for gtk3. Remove icon_theme annoying variable
-
----
- Makefile           |  4 ++--
- src/menu.c         |  1 -
- src/openbox-menu.h |  1 +
- src/utils.c        | 16 ++++++----------
- 4 files changed, 9 insertions(+), 13 deletions(-)
-
-diff --git a/Makefile b/Makefile
-index 5d8af49..5e09ef2 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,5 @@
 -LIBS= `pkg-config --libs glib-2.0 gtk+-2.0 libmenu-cache`
 -CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-2.0 libmenu-cache`
-+LIBS= `pkg-config --libs glib-2.0 gtk+-3.0 libmenu-cache`
-+CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-3.0 libmenu-cache`
++LIBS= `${PKG_CONFIG} --libs glib-2.0 gtk+-3.0 libmenu-cache`
++CFLAGS+= -Wall `${PKG_CONFIG} --cflags glib-2.0 gtk+-3.0 libmenu-cache`
  CC=gcc
  #-DG_DISABLE_DEPRECATED
  
@@ -34,8 +24,6 @@ index 5b7e8f8..3b752d9 100644
  #endif
  
  	if ((ob_context = configure (argc, argv)) == NULL)
-diff --git a/src/openbox-menu.h b/src/openbox-menu.h
-index 7035e9d..f5a7bce 100644
 --- a/src/openbox-menu.h
 +++ b/src/openbox-menu.h
 @@ -19,6 +19,7 @@
@@ -46,8 +34,6 @@ index 7035e9d..f5a7bce 100644
  #include <menu-cache.h>
  
  #ifdef WITH_ICONS
-diff --git a/src/utils.c b/src/utils.c
-index 7a68316..2f4f95b 100644
 --- a/src/utils.c
 +++ b/src/utils.c
 @@ -169,8 +169,6 @@ clean_exec (MenuCacheApp *app)

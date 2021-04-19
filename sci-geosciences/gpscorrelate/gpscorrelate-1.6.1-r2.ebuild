@@ -32,7 +32,7 @@ PATCHES=(
 )
 
 src_compile() {
-	tc-export CC CXX
+	tc-export CC CXX PKG_CONFIG
 	local opts="gpscorrelate gpscorrelate.1"
 	use gtk && opts+=" gpscorrelate-gui BUILD_GUI=1"
 	emake ${opts}

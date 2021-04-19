@@ -1,12 +1,11 @@
-diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/Makefile.in wmclockmon-0.8.1/wmclockmon-cal/Makefile.in
---- wmclockmon-0.8.1.orig/wmclockmon-cal/Makefile.in	2005-06-15 16:55:27.000000000 +0300
-+++ wmclockmon-0.8.1/wmclockmon-cal/Makefile.in	2008-01-13 13:23:11.000000000 +0200
+--- a/wmclockmon-cal/Makefile.in
++++ b/wmclockmon-cal/Makefile.in
 @@ -96,17 +96,17 @@
  
  
  DEFS = @DEFS@ -I. -I$(srcdir) -I..
 -LDFLAGS = @LDFLAGS@ `gtk-config --libs`
-+LIBS = @LIBS@ `pkg-config gtk+-2.0 --libs`
++LIBS = @LIBS@ `${PKG_CONFIG} gtk+-2.0 --libs`
  X_CFLAGS = @X_CFLAGS@
  X_LIBS = @X_LIBS@
  X_PRE_LIBS = @X_PRE_LIBS@
@@ -14,7 +13,7 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/Makefile.in wmclockmon-0.8.1/wmclo
  wmclockmon_DEPENDENCIES = 
  wmclockmon_LDFLAGS = 
 -CFLAGS = @CFLAGS@ `gtk-config --cflags`
-+CFLAGS = @CFLAGS@ `pkg-config gtk+-2.0 --cflags`
++CFLAGS = @CFLAGS@ `${PKG_CONFIG} gtk+-2.0 --cflags`
  COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
  CCLD = $(CC)
 -LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
@@ -22,9 +21,8 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/Makefile.in wmclockmon-0.8.1/wmclo
  DIST_COMMON =  Makefile.am Makefile.in
  
  
-diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.c wmclockmon-0.8.1/wmclockmon-cal/mainwindow.c
---- wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.c	2005-06-15 17:03:21.000000000 +0300
-+++ wmclockmon-0.8.1/wmclockmon-cal/mainwindow.c	2008-01-13 13:04:53.000000000 +0200
+--- a/wmclockmon-cal/mainwindow.c
++++ b/wmclockmon-cal/mainwindow.c
 @@ -51,7 +51,6 @@
      gtk_widget_hide(calendar);
      gtk_widget_hide(closewindow);
@@ -170,15 +168,14 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.c wmclockmon-0.8.1/wmcl
      gtk_widget_show(closewindow);
  
  
-diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/Makefile.in wmclockmon-0.8.1/wmclockmon-config/Makefile.in
---- wmclockmon-0.8.1.orig/wmclockmon-config/Makefile.in	2005-06-15 16:55:27.000000000 +0300
-+++ wmclockmon-0.8.1/wmclockmon-config/Makefile.in	2008-01-13 13:23:44.000000000 +0200
+--- a/wmclockmon-config/Makefile.in
++++ b/wmclockmon-config/Makefile.in
 @@ -96,17 +96,17 @@
  
  
  DEFS = @DEFS@ -I. -I$(srcdir) -I..
 -LDFLAGS = @LDFLAGS@ `gtk-config --libs`
-+LIBS = @LIBS@ `pkg-config gtk+-2.0 --libs`
++LIBS = @LIBS@ `${PKG_CONFIG} gtk+-2.0 --libs`
  X_CFLAGS = @X_CFLAGS@
  X_LIBS = @X_LIBS@
  X_PRE_LIBS = @X_PRE_LIBS@
@@ -186,7 +183,7 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/Makefile.in wmclockmon-0.8.1/wm
  wmclockmon_DEPENDENCIES = 
  wmclockmon_LDFLAGS = 
 -CFLAGS = @CFLAGS@ `gtk-config --cflags`
-+CFLAGS = @CFLAGS@ `pkg-config gtk+-2.0 --cflags`
++CFLAGS = @CFLAGS@ `${PKG_CONFIG} gtk+-2.0 --cflags`
  COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
  CCLD = $(CC)
 -LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
@@ -194,9 +191,8 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/Makefile.in wmclockmon-0.8.1/wm
  DIST_COMMON =  Makefile.am Makefile.in
  
  
-diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/dialogs.c wmclockmon-0.8.1/wmclockmon-config/dialogs.c
---- wmclockmon-0.8.1.orig/wmclockmon-config/dialogs.c	2005-06-15 16:55:27.000000000 +0300
-+++ wmclockmon-0.8.1/wmclockmon-config/dialogs.c	2008-01-13 13:04:53.000000000 +0200
+--- a/wmclockmon-config/dialogs.c
++++ b/wmclockmon-config/dialogs.c
 @@ -38,7 +38,6 @@
                         bouton, TRUE, TRUE, 0);
      GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
@@ -213,9 +209,8 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/dialogs.c wmclockmon-0.8.1/wmcl
      gtk_widget_show(bouton);
  
      gtk_container_set_border_width(GTK_CONTAINER
-diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/edit.c wmclockmon-0.8.1/wmclockmon-config/edit.c
---- wmclockmon-0.8.1.orig/wmclockmon-config/edit.c	2005-06-15 16:55:27.000000000 +0300
-+++ wmclockmon-0.8.1/wmclockmon-config/edit.c	2008-01-13 13:04:53.000000000 +0200
+--- a/wmclockmon-config/edit.c
++++ b/wmclockmon-config/edit.c
 @@ -76,7 +76,6 @@
                         bouton, TRUE, TRUE, 0);
      GTK_WIDGET_SET_FLAGS(GTK_WIDGET(bouton), GTK_CAN_DEFAULT);
@@ -224,9 +219,8 @@ diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/edit.c wmclockmon-0.8.1/wmclock
      gtk_widget_show(bouton);
  
      bouton = gtk_button_new_with_label("Cancel");
-diff -ur wmclockmon-0.8.1.orig/wmclockmon-config/mainwindow.c wmclockmon-0.8.1/wmclockmon-config/mainwindow.c
---- wmclockmon-0.8.1.orig/wmclockmon-config/mainwindow.c	2005-06-15 16:55:27.000000000 +0300
-+++ wmclockmon-0.8.1/wmclockmon-config/mainwindow.c	2008-01-13 13:04:53.000000000 +0200
+--- a/wmclockmon-config/mainwindow.c
++++ b/wmclockmon-config/mainwindow.c
 @@ -10,9 +10,9 @@
  #include "actions.h"
  

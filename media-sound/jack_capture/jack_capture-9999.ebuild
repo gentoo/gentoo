@@ -11,21 +11,20 @@ EGIT_REPO_URI="https://github.com/kmatheussen/jack_capture.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="mp3 ogg osc"
 
-CDEPEND="
+RDEPEND="
 	media-libs/libsndfile
 	virtual/jack
 	mp3? ( media-sound/lame )
 	ogg? ( media-libs/libogg )
 	osc? ( media-libs/liblo )
 "
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.9.73-r1-Makefile.patch"
+	"${FILESDIR}"/${PN}-0.9.73-r1-Makefile.patch
 )
 
 DOCS=( README config )
@@ -38,15 +37,13 @@ src_prepare() {
 	use osc || sed -i -e 's/HAVE_LIBLO 1/HAVE_LIBLO 0/' -e '/COMPILEFLAGS .* liblo/d' gen_das_config_h.sh
 }
 
-src_compile()
-{
-	tc-export CC CXX
+src_compile() {
+	tc-export CC CXX PKG_CONFIG
 
 	emake PREFIX="${EPREFIX}/usr" jack_capture
 }
 
-src_install()
-{
+src_install() {
 	dobin jack_capture
 
 	dodoc "${DOCS[@]}"

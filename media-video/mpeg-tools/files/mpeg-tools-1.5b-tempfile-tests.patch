@@ -2,8 +2,8 @@ When running tests, don't use /tmp for obvious reasons
 
 Also rewrite the diffscript in sh since csh isnt always available
 
---- mepg_encode/Makefile
-+++ mepg_encode/Makefile
+--- a/mpeg_encode/Makefile
++++ b/mpeg_encode/Makefile
 @@ -187,16 +187,16 @@
  #########
  
@@ -28,8 +28,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  ############
  # BINARIES #
---- mepg_encode/tst/diffscript.sh
-+++ mepg_encode/tst/diffscript.sh
+--- a/mpeg_encode/tst/diffscript.sh
++++ b/mpeg_encode/tst/diffscript.sh
 @@ -0,0 +1,16 @@
 +diff $1 $2 > ./foobar
 +egrep Blocks ./foobar > ./blockbar
@@ -47,8 +47,8 @@ Also rewrite the diffscript in sh since csh isnt always available
 +	echo "FAILURE! (different exection).  Please send bug report."
 +	exit 1
 +fi
---- mpeg_encode/tst/test_all
-+++ mpeg_encode/tst/test_all
+--- a/mpeg_encode/tst/test_all
++++ b/mpeg_encode/tst/test_all
 @@ -1,19 +1,19 @@
 -#!/bin/csh -f
 +#!/bin/sh
@@ -78,8 +78,8 @@ Also rewrite the diffscript in sh since csh isnt always available
 -csh diffscript /tmp/tsd.stat tsd.stat /tmp/tsd.mpg tsd.mpg
 +sh diffscript.sh ./tsd.stat.new tsd.stat ./tsd.mpg.new tsd.mpg
  
---- mpeg_encode/tst/diffscript
-+++ mpeg_encode/tst/diffscript
+--- a/mpeg_encode/tst/diffscript
++++ b/mpeg_encode/tst/diffscript
 @@ -3,23 +3,23 @@
  #
  # NOTE:  if this script doesn't work, then basically all you need to know
@@ -114,8 +114,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  		echo "SUCCESS."
  	else
  		echo "FAILURE! (different output -- probably endian bug).  Please send bug report."
---- mpeg_encode/tst/ts.param
-+++ mpeg_encode/tst/ts.param
+--- a/mpeg_encode/tst/ts.param
++++ b/mpeg_encode/tst/ts.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  
@@ -125,8 +125,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/tsd.param
-+++ mpeg_encode/tst/tsd.param
+--- a/mpeg_encode/tst/tsd.param
++++ b/mpeg_encode/tst/tsd.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  
@@ -136,8 +136,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/gop.param
-+++ mpeg_encode/tst/gop.param
+--- a/mpeg_encode/tst/gop.param
++++ b/mpeg_encode/tst/gop.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  
@@ -147,8 +147,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/short.param
-+++ mpeg_encode/tst/short.param
+--- a/mpeg_encode/tst/short.param
++++ b/mpeg_encode/tst/short.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  
@@ -158,8 +158,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/ts2.param
-+++ mpeg_encode/tst/ts2.param
+--- a/mpeg_encode/tst/ts2.param
++++ b/mpeg_encode/tst/ts2.param
 @@ -2,7 +2,7 @@
  
  PATTERN		IBBPBBPBB
@@ -169,8 +169,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/ts3.param
-+++ mpeg_encode/tst/ts3.param
+--- a/mpeg_encode/tst/ts3.param
++++ b/mpeg_encode/tst/ts3.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  
@@ -180,8 +180,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/ts4.param
-+++ mpeg_encode/tst/ts4.param
+--- a/mpeg_encode/tst/ts4.param
++++ b/mpeg_encode/tst/ts4.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  
@@ -191,8 +191,8 @@ Also rewrite the diffscript in sh since csh isnt always available
  
  YUV_SIZE	352x240
  
---- mpeg_encode/tst/tstl.param
-+++ mpeg_encode/tst/tstl.param
+--- a/mpeg_encode/tst/tstl.param
++++ b/mpeg_encode/tst/tstl.param
 @@ -1,7 +1,7 @@
  # test suite parameter file
  

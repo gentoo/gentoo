@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Shell history suggest box"
 HOMEPAGE="https://github.com/dvorka/hstr http://www.mindforger.com"
@@ -17,17 +17,24 @@ RDEPEND="
 	sys-libs/ncurses:0=[unicode]"
 
 DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig"
+	${RDEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( CONFIGURATION.md README.md )
 
-PATCHES=( ${FILESDIR}/${PN}-2.0-fix-ncurses-configure.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0-fix-ncurses-configure.patch
+)
 
 src_prepare() {
 	default
+
 	sed \
 		-e 's:-O2::g' \
 		-i src/Makefile.am || die
+
+	tc-export PKG_CONFIG
+
 	eautoreconf
 }

@@ -1,5 +1,5 @@
---- Makefile.original	2009-10-04 19:06:09.000000000 -0600
-+++ Makefile	2009-10-04 19:08:25.000000000 -0600
+--- a/Makefile
++++ b/Makefile
 @@ -3,14 +3,13 @@
  all:
  	make clean

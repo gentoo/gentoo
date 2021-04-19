@@ -11,14 +11,16 @@ SRC_URI="http://waterlan.home.xs4all.nl/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux"
 IUSE="nls unicode"
 
 CDEPEND="
 	sys-libs/ncurses:0=[unicode?]
 	unicode? ( dev-libs/libunistring )"
 DEPEND="${CDEPEND}
-	app-text/ghostscript-gpl"
+	app-text/ghostscript-gpl
+	virtual/pkgconfig
+"
 RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${P}/src"
@@ -26,7 +28,7 @@ S="${WORKDIR}/${P}/src"
 src_prepare() {
 	eapply -p2 "${FILESDIR}"/${PN}-6.0.2-gentoo.patch
 	eapply_user
-	tc-export CC
+	tc-export CC PKG_CONFIG
 }
 
 src_compile() {

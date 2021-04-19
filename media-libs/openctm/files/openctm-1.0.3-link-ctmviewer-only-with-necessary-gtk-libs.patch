@@ -4,7 +4,7 @@
  	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
 
  ctmviewer: $(CTMVIEWEROBJS)
--	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `pkg-config --libs gtk+-2.0`
+-	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `${PKG_CONFIG} --libs gtk+-2.0`
 +	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
 +	-ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW \
 +	-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0
