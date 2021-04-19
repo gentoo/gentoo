@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -52,6 +52,8 @@ src_compile() {
 		"OS_RELEASE=2.6"
 		"BUILD_OPT=1"
 	)
+
+	tc-export PKG_CONFIG
 
 	export JAVA_GENTOO_OPTS="$(java-pkg_javac-args)"
 	use amd64 && export USE_64=1
