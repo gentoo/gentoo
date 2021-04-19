@@ -11,4 +11,4 @@ RDEPEND=media-libs/hamlib:= dev-libs/glib:2 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=https://download.savannah.gnu.org/releases/xlog/xlog-2.0.22.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e6ea7cc0c57ed8608ed77f4a3101af01
+_md5_=41d63581b064af5d5722739576c9e3de
