@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install postinst prepare setup
+DEFINED_PHASES=compile install postinst setup
 DESCRIPTION=A keyboard shortcut daemon
-EAPI=5
+EAPI=7
 HOMEPAGE=http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/
-INHERIT=linux-info epatch toolchain-funcs
+INHERIT=linux-info toolchain-funcs
 IUSE=kernel_linux
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/files/actkbd-0.2.8.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=8bc3b339c053e233fab8fb7d46dbd77e
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
+_md5_=e56cbf5957e34c2d0f3a8f8c99f7dce9
