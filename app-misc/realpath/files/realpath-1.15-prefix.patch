@@ -1,5 +1,3 @@
-diff --git a/common.mk b/common.mk
-index 2443a40..0a342ee 100644
 --- a/common.mk
 +++ b/common.mk
 @@ -8,17 +8,19 @@ override TOPDIR   := $(dir $(call getCurrentMakefileName))
