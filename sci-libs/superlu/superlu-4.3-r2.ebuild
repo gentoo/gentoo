@@ -46,6 +46,8 @@ src_configure() {
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 	)
 
+	tc-export PKG_CONFIG
+
 	econf "${myeconfargs[@]}"
 
 	rm EXAMPLE/*itersol1 || die
