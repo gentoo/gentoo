@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="commons-codec:commons-codec:1.11"
 
 inherit java-pkg-2 java-ant-2
 
