@@ -37,7 +37,7 @@ BDEPEND="
 	virtual/pkgconfig
 	java? (
 		dev-java/ant-core
-		>=virtual/jdk-1.6
+		>=virtual/jdk-1.8:*
 	)
 "
 
