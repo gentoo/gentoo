@@ -904,7 +904,7 @@ KEYWORDS="~amd64 ~amd64-linux"
 
 RESTRICT="test"
 
-BDEPEND="
+DEPEND="
 	acct-user/minio
 	acct-group/minio
 "
