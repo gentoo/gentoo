@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ src_configure() {
 	use xrandr && export MULTIHEAD=1
 	sed -i -e "s|/usr/lib|/usr/$(get_libdir)|g" config.mk || die
 
-	tc-export CC
+	tc-export CC PKG_CONFIG
 }
 
 src_install() {
@@ -50,6 +50,7 @@ pkg_postinst() {
 		elog "to launch dmenu_run. Check echinus documentation for details."
 		elog ""
 	fi
+
 	elog "A standard config file with its pixmaps has been installed to:"
 	elog "${EROOT}/usr/share/${PN}/examples"
 	elog "Copy this folder to ~/.${PN}/ and modify the echinusrc as you wish."
