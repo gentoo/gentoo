@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER=3.0
-inherit autotools desktop wxwidgets
+inherit autotools desktop toolchain-funcs wxwidgets
 
 DESCRIPTION="Chemical 3D graphics program with GAMESS input builder"
 HOMEPAGE="http://www.scl.ameslab.gov/MacMolPlt/"
@@ -32,6 +32,8 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
+
 	setup-wxwidgets unicode
 	econf \
 		--with-glew \
