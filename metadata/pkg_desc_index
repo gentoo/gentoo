@@ -2702,7 +2702,7 @@ app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45-r1: Self-employed-mode software for 3COM/USR message modems
 app-misc/mime-types 9: Provides /etc/mime.types file
 app-misc/mkcert 1.4.1: A zero-config tool to make locally trusted development certificates
-app-misc/mmv 1.01b_p18-r1 1.01b_p19: Move/copy/append/link multiple files according to a set of wildcard patterns
+app-misc/mmv 1.01b_p19: Move/copy/append/link multiple files according to a set of wildcard patterns
 app-misc/mosquitto 1.6.8 1.6.9 1.6.10 1.6.12 2.0.10: An Open Source MQTT v3 Broker
 app-misc/mouseremote 0.90-r2 0.90-r3: X10 MouseRemote
 app-misc/muttprint 0.73-r5: Script for pretty printing of your mails
@@ -3068,7 +3068,7 @@ app-text/docbook-xsl-ns-stylesheets 1.79.1: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
 app-text/docx2txt 1.4: Convert MS Office docx files to plain text
-app-text/dos2unix 7.3.5 7.4.1 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
+app-text/dos2unix 7.4.2: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/dvipng 1.17: Translate DVI files into PNG or GIF graphics
 app-text/dvipsk 2020.1_p20200406 2021.1_p20210325: DVI-to-PostScript translator
 app-text/dvisvgm 2.10.1-r1 2.11-r1: Converts DVI files to SVG
@@ -10918,7 +10918,7 @@ dev-util/dwdiff 2.1.3: diff-like program operating at word level instead of line
 dev-util/edb-debugger 1.3.0 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.8.0 0.8.0-r1: An EFL-based IDE
 dev-util/editorconfig-geany 0.2: EditorConfig plugin for Geany
-dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
+dev-util/egypt 1.10: Devilishly simple tool for creating call graphs of C programs
 dev-util/elfkickers 3.1a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r4 9999: a graphical disassembler for a large number of instruction sets
 dev-util/envman 2.1.1: Environment variable manager for Bitrise CLI
@@ -11094,7 +11094,7 @@ dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.1: Shell script analysis tool
 dev-util/shellcheck-bin 0.7.1: Shell script analysis tool (binary package)
 dev-util/shelltestrunner 1.9: A tool for testing command-line programs
-dev-util/shflags 1.0.3 1.2.3: Command-line flags module for Unix shell scripts
+dev-util/shflags 1.2.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/smem 1.5-r1: A tool that can give numerous reports on memory usage on Linux systems
@@ -12679,7 +12679,7 @@ mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.6-r1: S/MIME signing milter
 mail-filter/spamassassin 3.4.4-r4 3.4.4-r5 3.4.5 3.4.6: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
-mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
+mail-filter/spamdyke 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/spf-engine 2.0.2-r1 2.9.2: Policy daemon and milter for Postfix SPF verification
@@ -13467,7 +13467,7 @@ media-libs/openal 1.21.0 1.21.1-r1: A software implementation of the OpenAL 3D a
 media-libs/opencollada 1.6.68: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.5-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
-media-libs/openctm 1.0.3-r1: OpenCTM - the Open Compressed Triangle Mesh.
+media-libs/openctm 1.0.3-r1: OpenCTM - the Open Compressed Triangle Mesh
 media-libs/opencv 4.1.2-r3 4.5.0 4.5.1: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.5.5: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
@@ -13848,7 +13848,7 @@ media-radio/ax25-apps 0.0.8_rc5: Basic AX.25 (Amateur Radio) user tools, additio
 media-radio/ax25-tools 0.0.10_rc5: Basic AX.25 (Amateur Radio) administrative tools and daemons
 media-radio/cqrlog 2.4.0: CQRLOG is an advanced ham radio logger based on MySQL database
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
-media-radio/direwolf 1.4 1.5 1.5-r1: Decoded Information from Radio Emissions for Windows Or Linux Fans
+media-radio/direwolf 1.5 1.5-r1: Decoded Information from Radio Emissions for Windows Or Linux Fans
 media-radio/dxcc 20190309 20191204: A ham radio callsign DXCC lookup utility
 media-radio/flamp 2.2.03 2.2.05: Fldigi helper for transferring files
 media-radio/fldigi 4.1.18: Sound card based multimode software modem for Amateur Radio use
@@ -15268,7 +15268,7 @@ net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.11.01: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.6 0.8.7 0.9.0 0.9.1: Standard networking plugins for container networking
-net-misc/connect 1.103 1.105: SSH Proxy Command
+net-misc/connect 1.105: SSH Proxy Command
 net-misc/connman 1.39-r1 9999: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721-r2: An ncurses UI for connman
@@ -18595,7 +18595,7 @@ x11-misc/fpm2 0.90: A GUI password manager utility with password generator
 x11-misc/fracplanet 0.5.1: Fractal planet and terrain generator
 x11-misc/fraqtive 0.4.8-r2: Open source, multi-platform generator of the Mandelbrot family fractals
 x11-misc/ftmenu 0.4.0-r1: A tray menu for the Fluxbox toolbar
-x11-misc/gbase 0.5-r1: a convert program for decimal, hexadecimal, octal and binary values
+x11-misc/gbase 0.5-r1: A convert program for decimal, hexadecimal, octal and binary values
 x11-misc/gbdfed 1.6: gbdfed Bitmap Font Editor
 x11-misc/gccmakedep 1.0.3-r1 9999: create dependencies in makefiles using 'gcc -M'
 x11-misc/gcolor2 0.4-r4: A GTK+ color selector
@@ -18929,7 +18929,7 @@ x11-plugins/wmcalendar 0.5.2-r2: a calendar dockapp
 x11-plugins/wmcdplay 1.1-r1: CD player applet for WindowMaker
 x11-plugins/wmcliphist 2.1-r2: Dockable clipboard history application for Window Maker
 x11-plugins/wmclock 1.0.16-r1: a dockapp that displays time and date (same style as NEXTSTEP(tm) OS)
-x11-plugins/wmclockmon 0.8.1-r1: a nice digital clock with 7 different styles either in LCD or LED style
+x11-plugins/wmclockmon 0.8.1-r1: A nice digital clock with 7 different styles either in LCD or LED style
 x11-plugins/wmcms 0.3.5-r4: WindowMaker CPU and Memory Usage Monitor Dock App
 x11-plugins/wmcoincoin 2.6.3: a dockapp for browsing dacode news and board sites
 x11-plugins/wmcp 1.2.8-r1: A pager dockapp

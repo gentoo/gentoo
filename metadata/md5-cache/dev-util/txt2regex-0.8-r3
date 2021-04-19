@@ -1,14 +1,12 @@
 DEFINED_PHASES=install prepare
 DEPEND=nls? ( sys-devel/gettext )
 DESCRIPTION=A Regular Expression wizard that converts human sentences to regexs
-EAPI=5
+EAPI=7
 HOMEPAGE=http://txt2regex.sourceforge.net/
-INHERIT=epatch
 IUSE=nls cjk
 KEYWORDS=~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=app-shells/bash-2.04
 SLOT=0
 SRC_URI=http://txt2regex.sourceforge.net/txt2regex-0.8.tgz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=a9b2660cc2a986ecf4ac64f5979eb659
+_md5_=da463782ce969c89d10432c6447bc616

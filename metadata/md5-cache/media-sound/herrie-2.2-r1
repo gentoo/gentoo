@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( ao alsa pulseaudio oss )
 SLOT=0
 SRC_URI=http://herrie.info/distfiles/herrie-2.2.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=baed3c95f88d901e984c8beffeb4d7a9
+_md5_=f19be987afc3028ad27b0e3e87f46da3

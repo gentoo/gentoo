@@ -1,4 +1,4 @@
-BDEPEND=doc? ( virtual/latex-base )
+BDEPEND=virtual/pkgconfig doc? ( virtual/latex-base )
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-libs/readline:0= data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1= ) gmp? ( dev-libs/gmp:0= ) X? ( x11-libs/libX11:0= )
 DESCRIPTION=Computer-aided number theory C library and tools
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/7
 SRC_URI=https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.13.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
-_md5_=af075fadcd7704eb1460d966e276129b
+_md5_=84fd55483e7e826cb7aea993f931a7c3

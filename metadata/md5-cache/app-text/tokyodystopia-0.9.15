@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-db/tokyocabinet
 SLOT=0
 SRC_URI=https://fallabs.com/tokyodystopia/tokyodystopia-0.9.15.tar.gz
-_md5_=6d1ba6a0bb49a9b3f9391e0047b4b405
+_md5_=176db518b8d5ef05d3cfb52bb7cea75f

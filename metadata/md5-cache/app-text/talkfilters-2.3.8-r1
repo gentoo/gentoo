@@ -1,11 +1,9 @@
-DEFINED_PHASES=configure install prepare
+DEFINED_PHASES=configure install
 DESCRIPTION=Convert ordinary English text into text that mimics a stereotyped dialect
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.hyperrealm.com/talkfilters/talkfilters.html
-INHERIT=epatch
 KEYWORDS=amd64 ~hppa ~mips ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.hyperrealm.com/talkfilters/talkfilters-2.3.8.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=326668ac8bb886212faa128ebdf99e3d
+_md5_=54f5839fc2c3c4c63a9d15bb225ce133

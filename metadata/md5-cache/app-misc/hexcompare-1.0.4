@@ -1,13 +1,14 @@
-DEFINED_PHASES=install prepare
-DEPEND=sys-libs/ncurses:0
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=ncurses-based visual comparison of binary files
-EAPI=5
+EAPI=7
 HOMEPAGE=http://hexcompare.sourceforge.net/
-INHERIT=epatch toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=sys-libs/ncurses:0
+RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/hexcompare/hexcompare-1.0.4.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=b0733dad407d300296e3ef296499e667
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=f26ad85fff4be714eb29cf98c0a59788

@@ -3,11 +3,12 @@ DEPEND=media-libs/libsdl image? ( media-libs/sdl-image ) truetype? ( >=media-lib
 DESCRIPTION=Graphics extensions library for SDL
 EAPI=6
 HOMEPAGE=http://www.etek.chalmers.se/~e8cal1/sge/
+INHERIT=toolchain-funcs
 IUSE=doc examples image truetype
 KEYWORDS=amd64 ~ia64 ppc x86
 LICENSE=LGPL-2.1
 RDEPEND=media-libs/libsdl image? ( media-libs/sdl-image ) truetype? ( >=media-libs/freetype-2 )
 SLOT=0
 SRC_URI=http://www.etek.chalmers.se/~e8cal1/sge/files/sge030809.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=fb44ac07346cc3b629630cc7c40b6fd4
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=1b27dd6ba62f51531690432da2a82ecf

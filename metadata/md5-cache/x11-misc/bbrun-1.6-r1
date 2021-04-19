@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXext x11-lib
 SLOT=0
 SRC_URI=http://www.darkops.net/bbrun/bbrun-1.6.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=12a90ed0832db68354a9c3bc5e4601de
+_md5_=bf708401655b58d1fcc15d6463dd0c8f

@@ -1,11 +1,9 @@
 DEFINED_PHASES=install prepare
 DESCRIPTION=Utilities for converting between and manipulating mac fonts and unix fonts
-EAPI=5
+EAPI=7
 HOMEPAGE=http://fondu.sourceforge.net/
-INHERIT=epatch
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://fondu.sourceforge.net/fondu_src-060102.tgz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=4c54a8cea04a8901b7ffdaa1ae3b2a5c
+_md5_=24bbf493157909c90f7297004b680092

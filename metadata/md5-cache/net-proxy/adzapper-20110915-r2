@@ -1,12 +1,10 @@
 DEFINED_PHASES=install postinst prepare
 DESCRIPTION=Redirector for squid to intercept advertising, page counters and web bugs
-EAPI=5
+EAPI=7
 HOMEPAGE=http://adzapper.sourceforge.net/
-INHERIT=epatch
 KEYWORDS=~alpha amd64 ~hppa ppc sparc x86
 LICENSE=BSD
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://adzapper.sourceforge.net/adzap-20110915.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=d9b3570f631b91a9173f0bf926db8e86
+_md5_=5ecc76b2693a9f100411af7258eb57ce

@@ -1,12 +1,12 @@
-DEFINED_PHASES=install prepare
+DEFINED_PHASES=install
 DESCRIPTION=Type the regexp and visualize it on a sample of your choice
-EAPI=5
+EAPI=7
 HOMEPAGE=http://laurent.riesterer.free.fr/regexp/
-INHERIT=desktop epatch
+INHERIT=desktop
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/tk-8.3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/visualregexp-icon.png.tar http://laurent.riesterer.free.fr/regexp/visual_regexp-3.0.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=97b23ee325c512ea04b18c121cfc43a3
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28
+_md5_=181dd210b636ba882302e79395bfa8b6

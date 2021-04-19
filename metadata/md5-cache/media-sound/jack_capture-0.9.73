@@ -1,5 +1,5 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install prepare
-DEPEND=media-libs/libsndfile virtual/jack mp3? ( media-sound/lame ) ogg? ( media-libs/libogg ) osc? ( media-libs/liblo )
 DESCRIPTION=JACK Recording utility
 EAPI=7
 HOMEPAGE=https://github.com/kmatheussen/jack_capture
@@ -11,4 +11,4 @@ RDEPEND=media-libs/libsndfile virtual/jack mp3? ( media-sound/lame ) ogg? ( medi
 SLOT=0
 SRC_URI=https://github.com/kmatheussen/jack_capture/archive/0.9.73.tar.gz -> jack_capture-0.9.73.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=e1342adf4efd77dec874cdfada79410d
+_md5_=c617dd53d527455e6171a2b40807f92c

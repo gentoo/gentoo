@@ -1,12 +1,14 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install
 DEPEND=dev-libs/libclthreads >=media-libs/zita-alsa-pcmi-0.3 sci-libs/fftw:3.0= virtual/jack x11-libs/gtk+:2 x11-libs/libclxclient
 DESCRIPTION=JACK and ALSA Audio Analyser is an audio signal generator and spectrum analyser
 EAPI=7
 HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libclthreads >=media-libs/zita-alsa-pcmi-0.3 sci-libs/fftw:3.0= virtual/jack x11-libs/gtk+:2 x11-libs/libclxclient
 SLOT=0
 SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/jaaa-0.9.2.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=048c8887bcb52d74c27da47dce4d1e54
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=227ba2d63e3390d7a0f8acd892e0acd4

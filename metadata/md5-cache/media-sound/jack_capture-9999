@@ -1,4 +1,4 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare unpack
 DEPEND=media-libs/libsndfile virtual/jack mp3? ( media-sound/lame ) ogg? ( media-libs/libogg ) osc? ( media-libs/liblo )
 DESCRIPTION=JACK Recording utility
@@ -11,4 +11,4 @@ PROPERTIES=live
 RDEPEND=media-libs/libsndfile virtual/jack mp3? ( media-sound/lame ) ogg? ( media-libs/libogg ) osc? ( media-libs/liblo )
 SLOT=0
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=d61657647646af772315769d0b367410
+_md5_=4e4b8eefac2101d994d2879451ef70fa

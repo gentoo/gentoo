@@ -1,11 +1,12 @@
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
 DESCRIPTION=A file sorting program which uses the bogosort algorithm
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.lysator.liu.se/~qha/bogosort/
-INHERIT=epatch toolchain-funcs
+INHERIT=autotools toolchain-funcs
 KEYWORDS=amd64 ~hppa ~mips ppc sparc x86 ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ulrik.haugen.se/pub/unix/bogosort/bogosort-0.4.2.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=5c59e1925da676197a4a5dea3f6cc411
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
+_md5_=5329a1ea4673099f92b0691527d200f0
