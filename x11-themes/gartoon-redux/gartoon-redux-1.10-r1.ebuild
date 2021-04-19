@@ -43,7 +43,6 @@ src_install() {
 
 pkg_preinst() {
 	gnome2_icon_savelist
-
 }
 
 pkg_postinst() {
