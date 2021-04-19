@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ncurses nls unicode"
 
-DEPEND="
-	app-arch/xz-utils
-	nls? ( >=sys-devel/gettext-0.17 )"
 RDEPEND="nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-arch/xz-utils
+	nls? ( >=sys-devel/gettext-0.17 )
+"
 
 DOCS=( BUGS LIMITATIONS NEWS README THANKS TODO )
 
