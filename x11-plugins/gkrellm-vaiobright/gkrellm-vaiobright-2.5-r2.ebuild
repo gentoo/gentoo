@@ -17,8 +17,10 @@ SLOT="2"
 KEYWORDS="~amd64 x86"
 
 RDEPEND="app-admin/gkrellm:2[X]"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-textrel.patch
