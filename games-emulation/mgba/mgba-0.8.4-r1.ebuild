@@ -26,6 +26,7 @@ REQUIRED_USE="|| ( qt5 sdl )
 RDEPEND="
 	media-libs/libpng:0=
 	sys-libs/zlib[minizip]
+	debug? ( dev-libs/libedit )
 	elf? ( dev-libs/elfutils )
 	ffmpeg? ( media-video/ffmpeg:= )
 	opengl? ( media-libs/libglvnd )
