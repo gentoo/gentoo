@@ -1,12 +1,10 @@
+BDEPEND=sys-apps/texinfo
 DEFINED_PHASES=compile install prepare
-DEPEND=sys-apps/texinfo
 DESCRIPTION=The GNU Emacs Lisp Reference Manual
-EAPI=5
+EAPI=7
 HOMEPAGE=https://www.gnu.org/software/emacs/manual/
-INHERIT=epatch
 KEYWORDS=amd64 ~ppc x86
 LICENSE=Texinfo-manual
 SLOT=18
 SRC_URI=ftp://ftp.gnu.org/old-gnu/emacs/elisp-manual-18-1.03.tar.gz https://dev.gentoo.org/~ulm/emacs/elisp-manual-18.1.03-patches.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=178ce72cd28700979fc136235c491933
+_md5_=2085ab5b41fb6b46a9f321bfc7744fea
