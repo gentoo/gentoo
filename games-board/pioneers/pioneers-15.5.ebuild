@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,11 +23,12 @@ RDEPEND="
 		help? ( app-text/yelp-tools )
 	)
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}"
-BDEPEND="
+DEPEND="
+	${RDEPEND}
 	dev-util/gob:2
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
 
 DOCS=( AUTHORS ChangeLog README TODO NEWS )
 
