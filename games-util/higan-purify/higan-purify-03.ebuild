@@ -35,6 +35,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake \
 		platform="x" \
 		compiler="$(tc-getCXX)" \
