@@ -3170,7 +3170,7 @@ app-text/openjade 1.3.2-r9: Jade is an implementation of DSSSL for formatting SG
 app-text/openpaperwork-core 2.0.1 2.0.2: Core part of Paperwork (plugin management)
 app-text/openpaperwork-gtk 2.0.1 2.0.2: Paperwork plugins
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
-app-text/pandoc 2.9.2.1 2.11.3.1: Conversion between markup formats
+app-text/pandoc 2.9.2.1 2.11.3.1 2.13: Conversion between markup formats
 app-text/paperwork 1.3.1 2.0.1 2.0.2: a personal document manager for scanned documents (and PDFs)
 app-text/paperwork-backend 1.3.1 1.3.1-r1 2.0.1 2.0.2: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
@@ -4062,7 +4062,7 @@ dev-haskell/cipher-aes128 0.7.0.5-r1: AES and common modes using AES-NI when ava
 dev-haskell/cipher-camellia 0.0.2: Camellia block cipher primitives
 dev-haskell/cipher-des 0.0.6: DES and 3DES primitives
 dev-haskell/cipher-rc4 0.1.4: Fast RC4 cipher implementation
-dev-haskell/citeproc 0.3.0.1: Generates citations and bibliography from CSL styles
+dev-haskell/citeproc 0.3.0.9: Generates citations and bibliography from CSL styles
 dev-haskell/classy-prelude 1.5.0: A typeclass-based Prelude
 dev-haskell/clientsession 0.9.1.2: Securely store session data in a client-side cookie
 dev-haskell/clock 0.7.2: High-resolution clock functions: monotonic, realtime, cputime
@@ -4071,7 +4071,7 @@ dev-haskell/cmark-gfm 0.2.1: Fast, accurate GitHub Flavored Markdown parser and 
 dev-haskell/cmdargs 0.10.20: Command line argument processing
 dev-haskell/code-page 0.1.3: Windows code page library for Haskell
 dev-haskell/colour 2.3.5: A model for human colour/color perception
-dev-haskell/commonmark 0.1.1.2: Pure Haskell commonmark parser
+dev-haskell/commonmark 0.1.1.4: Pure Haskell commonmark parser
 dev-haskell/commonmark-extensions 0.2.0.4: Pure Haskell commonmark parser
 dev-haskell/commonmark-pandoc 0.2.0.1: Bridge between commonmark and pandoc AST
 dev-haskell/comonad 5.0.7: Haskell package providing comonads
@@ -4145,7 +4145,7 @@ dev-haskell/djinn-lib 0.0.1.3: Generate Haskell code from a type. Library extrac
 dev-haskell/dlist 0.8.0.7: Difference lists
 dev-haskell/dlist-instances 0.1.1.1: Difference lists instances
 dev-haskell/dns 4.0.1: DNS library in Haskell
-dev-haskell/doclayout 0.3: A prettyprinting library for laying out text documents
+dev-haskell/doclayout 0.3.0.2: A prettyprinting library for laying out text documents
 dev-haskell/doctemplates 0.8.2 0.9: Pandoc-style document templates
 dev-haskell/doctest 0.16.3: Test interactive Haskell examples
 dev-haskell/double-conversion 2.0.2.0: Fast conversion between double precision floating point and text
@@ -4228,7 +4228,7 @@ dev-haskell/hackage-security 0.5.3.0-r3 0.6.0.1-r1: Hackage security library
 dev-haskell/haddock 2.23.1 2.24.0: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-api 2.23.1 2.24.0: A documentation-generation tool for Haskell libraries
 dev-haskell/haddock-library 1.8.0 1.9.0: Library exposing some functionality of Haddock
-dev-haskell/hakyll 4.13.4.1: A static website compiler library
+dev-haskell/hakyll 4.14.0.0-r1: A static website compiler library
 dev-haskell/half 0.3-r1: Half-precision floating-point
 dev-haskell/hamlet 1.2.0: Haml-like template files that are compile-time checked (deprecated)
 dev-haskell/happstack-server 7.6.1: Web related tools and services
@@ -4272,9 +4272,10 @@ dev-haskell/hs3 0.5.9: Interface to Amazon's Simple Storage Service (S3)
 dev-haskell/hsb2hs 0.3.1: Preprocesses a file, adding blobs from files as string literals
 dev-haskell/hscolour 1.24.4: Colourise Haskell code
 dev-haskell/hslogger 1.3.1.0-r1: Versatile logging framework
-dev-haskell/hslua 1.0.3.1 1.1.2: A Lua language interpreter embedding in Haskell
-dev-haskell/hslua-module-system 0.2.1: Lua module wrapper around Haskell's System module
-dev-haskell/hslua-module-text 0.2.1: Lua module for text
+dev-haskell/hslua 1.0.3.1 1.1.2 1.3.0.1: Bindings to Lua, an embeddable scripting language
+dev-haskell/hslua-module-path 0.1.0.1: Lua module to work with file paths
+dev-haskell/hslua-module-system 0.2.2.1: Lua module wrapper around Haskell's System module
+dev-haskell/hslua-module-text 0.2.1 0.3.0.1: Lua module for text
 dev-haskell/hsopenssl 0.11.4.17: Partial OpenSSL binding for Haskell
 dev-haskell/hspec 2.7.1: A Testing Framework for Haskell
 dev-haskell/hspec-contrib 0.5.1: Contributed functionality for Hspec
@@ -4333,7 +4334,7 @@ dev-haskell/io-streams-haproxy 1.0.1.0-r1: HAProxy protocol 1.5 support for io-s
 dev-haskell/iproute 1.7.8: IP Routing Table
 dev-haskell/ipynb 0.1: Data structure for working with Jupyter notebooks (ipynb)
 dev-haskell/iwlib 0.1.0: Bindings for the iw C library
-dev-haskell/jira-wiki-markup 1.1.4 1.3.2: Parse jira wiki text into an abstract syntax tree
+dev-haskell/jira-wiki-markup 1.1.4 1.3.4: Handle Jira wiki markup
 dev-haskell/js-flot 0.8.3: Obtain minified flot code
 dev-haskell/js-jquery 3.3.1: Obtain minified jQuery code
 dev-haskell/json 0.10: Support for serialising Haskell to and from JSON
@@ -4540,7 +4541,7 @@ dev-haskell/rio 0.1.18.0: A standard library for Haskell
 dev-haskell/rio-orphans 0.1.1.0: Orphan instances for the RIO type in the rio package
 dev-haskell/rio-prettyprint 0.1.1.0: Pretty-printing for RIO
 dev-haskell/rsa 2.3.1: Implementation of RSA, using the padding schemes of PKCS#1 v2.1
-dev-haskell/safe 0.3.17: Library of safe (exception free) functions
+dev-haskell/safe 0.3.19: Library of safe (exception free) functions
 dev-haskell/safe-exceptions 0.1.7.0: Safe, consistent, and easy exception handling
 dev-haskell/safesemaphore 0.10.1: Much safer replacement for QSemN, QSem, and SampleVar
 dev-haskell/sandi 0.5: Data encoding library
@@ -4569,8 +4570,8 @@ dev-haskell/simple-sendfile 0.2.28: Cross platform library for the sendfile syst
 dev-haskell/singleton-bool 0.1.5-r1: Type level booleans
 dev-haskell/size-based 0.1.2.0: Sized functors, for size-based enumerations
 dev-haskell/skein 1.0.9.4: Skein, a family of cryptographic hash functions. Includes Skein-MAC as well
-dev-haskell/skylighting 0.8.5 0.10.2: syntax highlighting library
-dev-haskell/skylighting-core 0.8.5 0.10.2: syntax highlighting library
+dev-haskell/skylighting 0.8.5 0.10.5: syntax highlighting library
+dev-haskell/skylighting-core 0.8.5 0.10.5: syntax highlighting library
 dev-haskell/smallcheck 1.2.0: A property-based testing library
 dev-haskell/snap-core 1.0.4.2: Snap: A Haskell Web Framework (core interfaces and types)
 dev-haskell/snap-server 1.1.1.2: A fast, iteratee-based, epoll-enabled web server for the Snap Framework
@@ -4613,7 +4614,7 @@ dev-haskell/tasty-golden 2.3.1.1: Golden tests support for tasty
 dev-haskell/tasty-hedgehog 1.0.0.2-r1: Integration for tasty and hedgehog
 dev-haskell/tasty-hunit 0.10.0.2: HUnit support for the Tasty test framework
 dev-haskell/tasty-kat 0.0.3: Known Answer Tests (KAT) framework for tasty
-dev-haskell/tasty-lua 0.2.0.1: Write tests in Lua, integrate into tasty
+dev-haskell/tasty-lua 0.2.3.1: Write tests in Lua, integrate into tasty
 dev-haskell/tasty-quickcheck 0.10.1.1: QuickCheck support for the Tasty test framework
 dev-haskell/tasty-rerun 1.1.17: Run tests by filtering the tests depending on the result of previous runs
 dev-haskell/tasty-smallcheck 0.8.1: SmallCheck support for the Tasty test framework
@@ -4631,7 +4632,7 @@ dev-haskell/test-framework-quickcheck2 0.3.0.5-r1: QuickCheck2 support for the t
 dev-haskell/test-framework-th 0.2.4: Automagically generate the HUnit and Quickcheck using Template Haskell
 dev-haskell/testing-feat 1.1.0.0: Functional Enumeration of Algebraic Types
 dev-haskell/testing-type-modifiers 0.1.0.1: Data type modifiers for property based testing
-dev-haskell/texmath 0.12.0.3: Conversion between formats used to represent mathematics
+dev-haskell/texmath 0.12.2: Conversion between formats used to represent mathematics
 dev-haskell/text 1.2.4.0-r1 1.2.4.1_rc1: An efficient packed Unicode text type
 dev-haskell/text-binary 0.2.1.1: Binary instances for text types
 dev-haskell/text-conversions 0.3.0: Safe conversions between textual types
@@ -4729,7 +4730,7 @@ dev-haskell/x509-system 1.6.6: Handle per-operating-system X.509 accessors and s
 dev-haskell/x509-validation 1.6.11: X.509 Certificate and CRL validation
 dev-haskell/xhtml 3000.2.2.1: An XHTML combinator library
 dev-haskell/xml 1.3.14: A simple XML library
-dev-haskell/xml-conduit 1.9.0.0: Pure-Haskell utilities for dealing with XML with the conduit package
+dev-haskell/xml-conduit 1.9.1.1: Pure-Haskell utilities for dealing with XML with the conduit package
 dev-haskell/xml-hamlet 0.5.0.1: Hamlet-style quasiquoter for XML content
 dev-haskell/xml-types 0.3.8: Basic types for representing XML
 dev-haskell/xmlgen 0.6.2.2: Fast XML generation library
@@ -4857,6 +4858,7 @@ dev-java/commons-math 3.6.1-r1: Lightweight, self-contained mathematics and stat
 dev-java/commons-net 3.2 3.6-r1 3.8.0: Client-oriented Java library to implement many Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
 dev-java/commons-primitives 1.0-r3: The Jakarta-Commons Primitives Component
+dev-java/commons-text 1.9: Apache Commons Text is a library focused on algorithms working on strings.
 dev-java/commons-validator 1.4.0 1.4.1: Commons component to validate user input, or data input
 dev-java/commons-vfs 1.0-r1 2.0-r1: A single API for accessing various different file systems
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
@@ -5367,7 +5369,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.4.1-r1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.1 78.8.0 78.9.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.1 78.8.0 78.9.0 78.10.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.2 8.2.3 8.3.18 8.3.19 8.3.20 8.3.21: versatile implementation of the Prolog programming language
@@ -15624,7 +15626,7 @@ net-p2p/transmission 3.00-r1 9999: A fast, easy, and free BitTorrent client
 net-p2p/transmission-remote-gtk 1.4.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tremc 0.9.2: Ncurses interface for the Transmission BitTorrent client
 net-p2p/tvrss 1.8_beta: TV RSS is a tool for automating torrent downloads
-net-p2p/vuze 5.7.6.0: BitTorrent client in Java, formerly called Azureus
+net-p2p/vuze 5.7.6.0 5.7.6.0-r1: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 5.7.6.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xmr-stak 2.10.8 9999: Unified all-in-one Monero miner
 net-p2p/xmr-stak-rx 1.0.4 1.0.5 9999: Monero RandomX Miner
@@ -18208,8 +18210,8 @@ www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web 
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3 1.0-r4: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 78.9.0 87.0 87.0-r1: Firefox Web Browser
-www-client/firefox-bin 78.9.0 87.0: Firefox Web Browser
+www-client/firefox 78.9.0 78.10.0 87.0 87.0-r1 88.0: Firefox Web Browser
+www-client/firefox-bin 78.9.0 78.10.0 87.0 88.0: Firefox Web Browser
 www-client/google-chrome 90.0.4430.72: The web browser from Google
 www-client/google-chrome-beta 90.0.4430.72: The web browser from Google
 www-client/google-chrome-unstable 91.0.4472.10: The web browser from Google
