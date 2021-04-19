@@ -36,7 +36,7 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export PKG_CONFIG
+	tc-export CC PKG_CONFIG
 
 	emake \
 		PREFIX="/usr" \
