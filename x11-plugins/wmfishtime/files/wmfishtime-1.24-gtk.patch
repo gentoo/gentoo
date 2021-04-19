@@ -1,6 +1,5 @@
-diff -ur wmfishtime-1.24.orig/fishmon.c wmfishtime-1.24/fishmon.c
---- wmfishtime-1.24.orig/fishmon.c	2004-05-13 02:55:59.000000000 +0300
-+++ wmfishtime-1.24/fishmon.c	2008-01-12 16:19:34.000000000 +0200
+--- a/fishmon.c
++++ b/fishmon.c
 @@ -648,6 +648,7 @@
  
      /* make a copy for the iconwin - parameters are the same */
@@ -26,9 +25,8 @@ diff -ur wmfishtime-1.24.orig/fishmon.c wmfishtime-1.24/fishmon.c
  #undef MASK
  }				/* make_new_fishmon_dockapp */
  
-diff -ur wmfishtime-1.24.orig/Makefile wmfishtime-1.24/Makefile
---- wmfishtime-1.24.orig/Makefile	2001-05-26 23:49:41.000000000 +0300
-+++ wmfishtime-1.24/Makefile	2008-01-12 16:22:30.000000000 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -2,11 +2,11 @@
  DESTDIR =
  
@@ -39,7 +37,7 @@ diff -ur wmfishtime-1.24.orig/Makefile wmfishtime-1.24/Makefile
  # no user serviceable parts below this line
  # optimization cflags
 -CFLAGS = -O3 -Wall `gtk-config --cflags` ${EXTRA}
-+CFLAGS += -Wall `pkg-config gtk+-2.0 --cflags` ${EXTRA}
++CFLAGS += -Wall `${PKG_CONFIG} gtk+-2.0 --cflags` ${EXTRA}
  # profiling cflags
  # CFLAGS=-ansi -pedantic -Wall -pg -O3 `gtk-config --cflags` ${EXTRA} -DPRO
  # test coverage cflags
@@ -48,7 +46,7 @@ diff -ur wmfishtime-1.24.orig/Makefile wmfishtime-1.24/Makefile
  SHELL = sh
  OBJS = fishmon.o
 -LIBS = `gtk-config --libs | sed "s/-lgtk//g"`
-+LIBS = `pkg-config gtk+-2.0 --libs` -lm -lX11
++LIBS = `${PKG_CONFIG} gtk+-2.0 --libs` -lm -lX11
  INSTALL = -m 755
  
  all: wmfishtime
