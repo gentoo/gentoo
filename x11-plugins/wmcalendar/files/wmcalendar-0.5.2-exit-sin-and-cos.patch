@@ -1,5 +1,5 @@
---- a/calendarfunc.c	2003-07-13 17:41:02.000000000 +0300
-+++ b/calendarfunc.c	2008-05-03 10:03:06.000000000 +0300
+--- a/calendarfunc.c
++++ b/calendarfunc.c
 @@ -22,7 +22,7 @@
  
  #include "calendarfunc.h"
@@ -9,8 +9,8 @@
  
  
  long persian_jdn(struct icaltimetype dt)
---- a/dockapp.c	2003-07-15 18:15:12.000000000 +0300
-+++ b/dockapp.c	2008-05-03 10:03:34.000000000 +0300
+--- a/dockapp.c
++++ b/dockapp.c
 @@ -23,6 +23,7 @@
   * modified by Seiichi SATO <ssato@sh.rim.or.jp>
   */
@@ -19,8 +19,8 @@
  #include "dockapp.h"
  
  #define WINDOWED_SIZE_W 64
---- a/Makefile	2003-07-15 18:19:26.000000000 +0300
-+++ b/Makefile	2008-05-03 10:11:48.000000000 +0300
+--- a/Makefile
++++ b/Makefile
 @@ -1,19 +1,15 @@
 -CC     = gcc
 +CC     ?= gcc
