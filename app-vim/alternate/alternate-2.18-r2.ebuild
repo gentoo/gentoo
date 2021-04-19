@@ -13,7 +13,7 @@ SRC_URI="
 	https://www.vim.org/scripts/download_script.php?src_id=6347 -> ${PN}.txt"
 
 LICENSE="alternate"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides a new :A command which will switch between a .c
