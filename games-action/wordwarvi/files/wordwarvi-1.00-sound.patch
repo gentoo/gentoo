@@ -1,3 +1,5 @@
+diff --git a/Makefile b/Makefile
+index faf7e8f..2c06010 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,5 @@
@@ -7,7 +9,18 @@
  MANDIR?=${PREFIX}/share/man
  MANPAGEDIR=${MANDIR}/man6
  
-@@ -24,18 +24,6 @@
+@@ -12,8 +12,8 @@ WITHAUDIO=yes
+ # WITHAUDIO=no
+ 
+ ifeq (${WITHAUDIO},yes)
+-SNDLIBS=`pkg-config --libs portaudio-2.0 vorbisfile`
+-SNDFLAGS=-DWITHAUDIOSUPPORT `pkg-config --cflags portaudio-2.0`
++SNDLIBS=`${PKG_CONFIG} --libs portaudio-2.0 vorbisfile`
++SNDFLAGS=-DWITHAUDIOSUPPORT `${PKG_CONFIG} --cflags portaudio-2.0`
+ OGGOBJ=ogg_to_pcm.o
+ else
+ SNDLIBS=
+@@ -24,53 +24,41 @@ endif
  CC ?= gcc
  BUILD_CC ?= gcc
  
@@ -26,7 +39,19 @@
  DEFINES=${SNDFLAGS} -DDATADIR=\"${DATADIR}/\"
  
  all:	wordwarvi wordwarvi.6.gz
-@@ -53,24 +41,24 @@
+ 
+ HAS_PORTAUDIO_2_0:
+ ifeq (${WITHAUDIO},yes)
+-	pkg-config --print-errors --exists portaudio-2.0
++	${PKG_CONFIG} --print-errors --exists portaudio-2.0
+ else
+ endif
+ 
+ HAS_VORBISFILE:
+ ifeq (${WITHAUDIO},yes)
+-	pkg-config --print-errors --exists vorbisfile
++	${PKG_CONFIG} --print-errors --exists vorbisfile
+ else
  endif
  
  joystick.o:	joystick.c joystick.h Makefile
@@ -42,7 +67,8 @@
 -	$(CC) -Wall ${DEBUG} ${PROFILE_FLAG} ${OPTIMIZE_FLAG} \
 +	$(CC) -Wall ${DEBUG} ${PROFILE_FLAG} ${CFLAGS} \
  		${DEFINES} \
- 		-pthread `pkg-config --cflags vorbisfile` \
+-		-pthread `pkg-config --cflags vorbisfile` \
++		-pthread `${PKG_CONFIG} --cflags vorbisfile` \
  		-c wwviaudio.c
  
  rumble.o:	rumble.c rumble.h Makefile
@@ -56,7 +82,7 @@
  
  stamp:	stamp.c
  	$(BUILD_CC) -o stamp stamp.c
-@@ -78,7 +66,7 @@
+@@ -78,14 +66,14 @@ stamp:	stamp.c
  wordwarvi:	wordwarvi.c joystick.o rumble.o ${OGGOBJ} wwviaudio.o wwvi_font.o \
  		Makefile version.h stamp levels.h rumble.h
  	./stamp > stamp.h
@@ -65,9 +91,19 @@
  		joystick.o \
  		rumble.o \
  		wwvi_font.o \
+ 		${OGGOBJ} \
+ 		wwviaudio.o \
+ 		wordwarvi.c -o wordwarvi -lm ${SNDLIBS} \
+-		`pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0 gthread-2.0`
++		`${PKG_CONFIG} --cflags gtk+-2.0` `${PKG_CONFIG} --libs gtk+-2.0 gthread-2.0`
+ 	/bin/rm stamp.h
+ 
+ wordwarvi.6.gz:	wordwarvi.6
+diff --git a/wwviaudio.c b/wwviaudio.c
+index ad79d96..dca0cb4 100644
 --- a/wwviaudio.c
 +++ b/wwviaudio.c
-@@ -121,7 +121,7 @@
+@@ -121,7 +121,7 @@ int wwviaudio_read_ogg_clip(int clipnum, char *filename)
  	if (clipnum >= max_sound_clips || clipnum < 0)
  		return -1;
  
