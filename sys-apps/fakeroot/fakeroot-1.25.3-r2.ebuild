@@ -24,6 +24,9 @@ BDEPEND="app-text/po4a"
 DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/fakeroot-1.25.3-glibc-2.33.patch"
+	)
 	default
 	eautoreconf
 }
