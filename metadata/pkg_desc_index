@@ -8357,7 +8357,7 @@ dev-python/eventlet 0.30.0-r1 0.30.2-r1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/exdown 0.8.6 0.8.8: Extract code blocks from markdown
 dev-python/execnet 1.8.0: Rapid multi-Python deployment
-dev-python/executing 0.5.4: Get information about what a Python frame is currently doing
+dev-python/executing 0.5.4 0.6.0: Get information about what a Python frame is currently doing
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.9.6: Module for manipulating ID3 (v1 + v2) tags in Python
@@ -8500,7 +8500,7 @@ dev-python/imagesize 1.2.0: Pure Python module for getting image size from png/j
 dev-python/imapclient 2.2.0: easy-to-use, pythonic, and complete IMAP client library
 dev-python/iminuit 2.3.0 2.4.0: Minuit numerical function minimization in Python
 dev-python/immutables 0.15: A high-performance immutable mapping type for Python
-dev-python/importlib_metadata 3.7.3 3.8.2 3.10.1: Read metadata from Python packages
+dev-python/importlib_metadata 3.7.3 3.8.2 3.10.1 4.0.0: Read metadata from Python packages
 dev-python/importlib_resources 5.1.2: Read resources from Python packages
 dev-python/imread 0.7.3-r1: Read Image Files
 dev-python/incremental 21.3.0: Incremental is a small library that versions your Python projects
@@ -9007,7 +9007,7 @@ dev-python/pyrqlite 2.1: Python client for rqlite
 dev-python/pyrsistent 0.17.3: Persistent/Functional/Immutable data structures
 dev-python/pysaml2 6.1.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 2.0.0: Smart cards support in python
-dev-python/pyscreenshot 2.2 2.3: Python screenshot library
+dev-python/pyscreenshot 2.2 2.3 3.0: Python screenshot library
 dev-python/pyserial 3.5: Python Serial Port extension
 dev-python/pyside2 5.15.1: Python bindings for the Qt framework
 dev-python/pyside2-tools 5.15.1-r1: PySide development tools (pyside2-lupdate with support for Python)
