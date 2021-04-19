@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit autotools epatch versionator
+inherit autotools epatch toolchain-funcs versionator
 
 DESCRIPTION="C-Client Library for Open Source Java Message Service (JMS)"
 HOMEPAGE="https://mq.java.net/"
@@ -14,7 +14,6 @@ MY_BUILDV="b7"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 if [[ $(x=( $(get_all_version_components) ); echo ${x[3]}) == '.' ]]; then
 	MY_PV=$(replace_version_separator 2 'u' $(get_version_component_range 1-3))
@@ -79,6 +78,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
 	econf --disable-static
 }
 
