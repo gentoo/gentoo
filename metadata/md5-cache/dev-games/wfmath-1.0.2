@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install
-DEPEND=doc? ( app-doc/doxygen ) virtual/pkgconfig
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare
 DESCRIPTION=Worldforge math library
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.worldforge.org/dev/eng/libraries/wfmath
-INHERIT=ltprune
-IUSE=doc static-libs
+INHERIT=autotools
+IUSE=doc
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/worldforge/wfmath-1.0.2.tar.bz2
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	ltprune	4f3f2db5ce3ccbeeacdf3f94954043aa
-_md5_=e15cc6c5286c740621f0225a089e79f8
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
+_md5_=5882618f76d0b2a14c625b476d4f6100

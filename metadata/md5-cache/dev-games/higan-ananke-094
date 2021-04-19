@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=A higan helper library needed for extra rom load options
-EAPI=5
+EAPI=7
 HOMEPAGE=http://byuu.org/higan/
-INHERIT=epatch multilib toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 x86
 LICENSE=GPL-3
 SLOT=0
 SRC_URI=http://byuu.org/files/higan_v094-source.tar.xz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=3794d743ccdfe5f11b282d70f7b8bd68
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=fd329bdbdccb01e1192d19cc833a0556

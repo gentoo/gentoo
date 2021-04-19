@@ -11426,7 +11426,7 @@ games-board/cgoban 1.9.14-r2: A Go-frontend
 games-board/chessx 1.5.4-r3: Qt5-based Chess Database Utility
 games-board/cockatrice 20200823: An open-source multiplatform software for playing card games over a network
 games-board/crafty 24.1-r1: Bob Hyatt's strong chess engine
-games-board/domination 1.1.1.6-r1: The well-known board game, written in java
+games-board/domination 1.1.1.6-r2: The well-known board game, written in java
 games-board/eboard 1.1.1-r2: chess interface for POSIX systems
 games-board/four-in-a-row 3.36.4 3.38.1: Make lines of the same color to win
 games-board/freedoko 0.7.16 0.7.16-r1: FreeDoko is a Doppelkopf-game
@@ -15456,7 +15456,7 @@ net-misc/realtek-r8152 2.14.0: Out-of-tree driver for Realtek's 2.5 GbE USB NICs
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.4.11 1.4.12 1.4.13: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
-net-misc/rsync 3.2.3-r2 9999: File transfer program to keep remote files into sync
+net-misc/rsync 3.2.3-r2 3.2.3-r3 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
 net-misc/rwhoisd 1.5.9.6-r1: ARIN rwhois daemon
 net-misc/rygel 0.38.4 0.40.1: Rygel is an open source UPnP/DLNA MediaServer
