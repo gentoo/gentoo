@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A retro side-scrolling shoot'em up based on the editor war story"
 HOMEPAGE="http://wordwarvi.sourceforge.net"
@@ -36,6 +36,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake \
 		PREFIX="/usr" \
 		DATADIR="/usr/share/${PN}" \
@@ -51,7 +53,7 @@ src_install() {
 		install
 
 	if ! use portaudio ; then
-		rm -rf "${D}/usr/share" || die
+		rm -rf "${ED}/usr/share" || die
 	fi
 
 	dodoc README AUTHORS changelog.txt AAA_HOW_TO_MAKE_NEW_LEVELS.txt
