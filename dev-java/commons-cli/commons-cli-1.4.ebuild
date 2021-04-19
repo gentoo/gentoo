@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="commons-cli:commons-cli:1.4"
 
 inherit java-pkg-2 java-pkg-simple
 
