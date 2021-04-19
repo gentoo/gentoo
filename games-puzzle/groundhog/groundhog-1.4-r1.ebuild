@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop epatch autotools
+EAPI=7
+
+inherit autotools desktop
 
 DEB_VER="9"
 DESCRIPTION="Put the balls in the pockets of the same color by manipulating a maze of tubes"
@@ -26,16 +27,22 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	cd "${WORKDIR}"
-	epatch groundhog_${PV}-${DEB_VER}.diff
-	cd "${S}"
+
+	cd "${WORKDIR}" || die
+	eapply groundhog_${PV}-${DEB_VER}.diff
+
+	cd "${S}" || die
 	sed -e "s:groundhog-1.4/::" -i \
-		debian/patches/sv.po.patch || die
+		"${WORKDIR}"/debian/patches/sv.po.patch || die
+
 	eapply \
-		$(sed -e 's:^:debian/patches/:' debian/patches/series) \
+		$(sed -e "s:^:${WORKDIR}/debian/patches/:" "${WORKDIR}"/debian/patches/series) \
 		"${FILESDIR}"/${P}-flags.patch
+
 	mv configure.in configure.ac || die
+
 	AT_M4DIR="m4" eautoreconf
+
 	sed -i 's:$(localedir):/usr/share/locale:' \
 		$(find . -name 'Makefile.in*') || die
 }
@@ -46,6 +53,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	doicon src/pixmaps/${PN}.xpm
 	make_desktop_entry ${PN} "Groundhog" /usr/share/pixmaps/${PN}.xpm
 }
