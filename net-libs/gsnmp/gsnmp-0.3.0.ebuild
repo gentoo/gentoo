@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools epatch ltprune
+inherit autotools
 
 DESCRIPTION="An SNMP library based on glib and gnet"
 HOMEPAGE="https://github.com/schoenw/gsnmp"
@@ -19,14 +19,18 @@ DEPEND="
 	net-libs/gnet
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS="README"
+DOCS=( README )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-g_access.patch
+	"${FILESDIR}"/${P}-pkg_config.patch
+	"${FILESDIR}"/${P}-underquoting.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-g_access.patch \
-		"${FILESDIR}"/${P}-pkg_config.patch \
-		"${FILESDIR}"/${P}-underquoting.patch
+	default
 
 	eautoreconf
 }
@@ -38,5 +42,5 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
