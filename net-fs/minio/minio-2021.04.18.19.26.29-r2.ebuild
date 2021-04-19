@@ -932,7 +932,7 @@ src_compile() {
 src_install() {
 	dobin minio
 
-	insinto /etc/defult
+	insinto /etc/default
 	doins "${FILESDIR}"/minio.default
 
 	dodoc -r README.md CONTRIBUTING.md docs
