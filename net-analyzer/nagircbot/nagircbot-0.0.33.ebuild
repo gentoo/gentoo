@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,14 +23,16 @@ RDEPEND="net-analyzer/nagios-core
 	${CDEPEND}"
 
 src_prepare() {
-cp -av Makefile{,.org}
+	cp -av Makefile{,.org}
+
 	sed -i Makefile \
-		-e 's:-lcrypto -lssl:$(shell pkg-config --libs openssl):g' \
+		-e 's:-lcrypto -lssl:$(shell ${PKG_CONFIG} --libs openssl):g' \
 		-e 's:-O2::g;s:-g::g' \
 		|| die
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
 	emake CC=$(tc-getCC) CXX=$(tc-getCXX)
 }
 
