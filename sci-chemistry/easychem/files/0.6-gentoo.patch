@@ -1,5 +1,3 @@
-diff --git a/Makefile.linux b/Makefile.linux
-index 6638394..5da56b0 100644
 --- a/Makefile.linux
 +++ b/Makefile.linux
 @@ -1,5 +1,5 @@
