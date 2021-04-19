@@ -30,8 +30,12 @@ PATCHES=(
 )
 
 src_compile() {
-	tc-export PKG_CONFIG
-	emake mp3info $(usex gtk gmp3info '') CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	emake \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		mp3info \
+		$(usex gtk gmp3info '')
 }
 
 src_install() {
