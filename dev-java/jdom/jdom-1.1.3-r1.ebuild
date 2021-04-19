@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 JAVA_PKG_IUSE="doc examples source"
 
 inherit java-pkg-2 java-ant-2
@@ -9,17 +10,18 @@ inherit java-pkg-2 java-ant-2
 DESCRIPTION="Java API to manipulate XML data"
 SRC_URI="http://www.jdom.org/dist/binary/archive/${P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
+
 LICENSE="JDOM"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
-IUSE=""
 
-RDEPEND=">=virtual/jre-1.6"
-DEPEND=">=virtual/jdk-1.6"
+RDEPEND=">=virtual/jre-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${PN}"
 
-java_prepare() {
+src_prepare() {
+	default
 	java-pkg_clean
 
 	rm -r build/apidocs || die
