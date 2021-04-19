@@ -12027,7 +12027,7 @@ gnome-extra/evolution-data-server 3.38.4 3.40.0: Evolution groupware backend
 gnome-extra/evolution-ews 3.38.4 3.40.0: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/filemanager-actions 3.2.4 3.4: File manager extension which offers user configurable context menu actions
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.36.6: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.36.6 40.0: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.38.2 40.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.38.2 40.0: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.34.0 40.0: Unicode character map viewer and library
