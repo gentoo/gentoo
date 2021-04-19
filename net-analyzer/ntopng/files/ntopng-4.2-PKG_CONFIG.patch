@@ -1,5 +1,3 @@
-diff --git a/Makefile.in b/Makefile.in
-index 1435357..38209c7 100755
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -44,9 +44,9 @@ LUA_LIB=$(LUA_HOME)/src/liblua.a
@@ -54,8 +52,6 @@ index 1435357..38209c7 100755
   endif
  endif
  
-diff --git a/configure.seed b/configure.seed
-index a321f9b..f1a7740 100644
 --- a/configure.seed
 +++ b/configure.seed
 @@ -190,10 +190,10 @@ if test -z "$NDPI_INC" || test -z "$NDPI_LIB" ; then :
