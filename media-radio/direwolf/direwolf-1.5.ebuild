@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd toolchain-funcs
 
 DESCRIPTION="Decoded Information from Radio Emissions for Windows Or Linux Fans"
 HOMEPAGE="https://github.com/wb2osz/direwolf/blob/master/README.md"
@@ -44,6 +44,10 @@ src_prepare() {
 	if use udev ; then
 		sed -i -e 's/#enable_cm108/enable_cm108/' Makefile.linux || die "Sed failed!"
 	fi
+}
+
+src_compile() {
+	emake PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install() {
