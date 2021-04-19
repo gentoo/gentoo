@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils libtool ltprune
+inherit libtool
 
 DESCRIPTION="Support library for syslog-ng"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
@@ -17,6 +17,8 @@ IUSE="static-libs"
 DOCS=( AUTHORS CREDITS ChangeLog NEWS PORTS README )
 
 src_prepare() {
+	default
+
 	elibtoolize
 }
 
@@ -26,6 +28,6 @@ src_configure() {
 
 src_install() {
 	default
-	einstalldocs
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 }
