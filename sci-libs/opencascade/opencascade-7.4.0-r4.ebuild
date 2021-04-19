@@ -9,19 +9,21 @@ EAPI=7
 
 inherit check-reqs cmake flag-o-matic java-pkg-opt-2
 
+MY_PV="$(ver_rs 1- '_')"
+
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
-MY_PV="$(ver_rs 1- '_')"
 SRC_URI="https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${MY_PV};sf=tgz -> ${P}.tar.gz"
+S="${WORKDIR}/occt-V${MY_PV}"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-# gl2ps
-IUSE="debug doc examples ffmpeg freeimage gles2 inspector java optimize qt5 tbb +vtk"
+IUSE="debug doc +examples ffmpeg freeimage gles2 inspector java optimize qt5 tbb +vtk"
 
 REQUIRED_USE="
 	inspector? ( qt5 )
+	qt5? ( examples )
 	?? ( optimize tbb )
 "
 
@@ -56,10 +58,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	doc? (
-		app-doc/doxygen
-		qt5? ( dev-qt/linguist-tools:5 )
-	)
+	doc? ( app-doc/doxygen )
+	qt5? ( dev-qt/linguist-tools:5 )
 "
 
 # There's no easy way to test. Testing needs a rather big environment
@@ -70,8 +70,6 @@ CHECKREQS_MEMORY="256M"
 CHECKREQS_DISK_BUILD="3584M"
 
 CMAKE_BUILD_TYPE=Release
-
-S="${WORKDIR}/occt-V${MY_PV}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-find-qt.patch"
@@ -116,7 +114,7 @@ src_configure() {
 	cmake_src_configure
 
 	# prepare /etc/env.d file
-	sed -e 's|VAR_CASROOT|'${EROOT%}'/usr/'$(get_libdir)'/'${P}'/ros|g' < "${FILESDIR}/${P}.env.in" >> "${T}/${PV}" || die
+	sed -e 's|VAR_CASROOT|'${ESYSROOT}'/usr/'$(get_libdir)'/'${P}'/ros|g' < "${FILESDIR}/${P}.env.in" >> "${T}/${PV}" || die
 	sed -i -e 's|ros/lib|ros/'$(get_libdir)'|' "${T}/${PV}" || die
 
 	# use TBB for memory allocation optimizations?
