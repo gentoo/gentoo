@@ -1,5 +1,3 @@
-diff --git a/src/Makefile b/src/Makefile
-index 5bc6aaa..4eab2e8 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -1,14 +1,14 @@
@@ -7,7 +5,7 @@ index 5bc6aaa..4eab2e8 100644
  
  CPPFLAGS += -D_GNU_SOURCE
 -CFLAGS += -g -Wall -Werror $(shell pkg-config --cflags libnl-3.0)
-+CFLAGS += -g -Wall $(shell pkg-config --cflags libnl-3.0)
++CFLAGS += -Wall $(shell ${PKG_CONFIG} --cflags libnl-3.0)
  LDLIBS += -lbfd -lreadline -lnl-3 -lnl-genl-3
  
  OBJFILES := main.o lookup.o\
