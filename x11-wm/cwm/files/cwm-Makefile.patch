@@ -1,5 +1,3 @@
-diff --git a/Makefile b/Makefile
-index 74d0d0d..802cd33 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -13,12 +13,14 @@ OBJS=		calmwm.o screen.o xmalloc.o client.o menu.o \
