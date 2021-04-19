@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile install
 DEPEND=x11-libs/libXtst x11-base/xorg-proto
-DESCRIPTION=tool to use the Sony Vaios jog-dial as a mouse-wheel
-EAPI=5
+DESCRIPTION=Tool to use the Sony Vaios jog-dial as a mouse-wheel
+EAPI=7
 HOMEPAGE=http://www.popies.net/sonypi/
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/libXtst
 SLOT=0
 SRC_URI=http://www.popies.net/sonypi/sonypid-1.9.tar.bz2
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=59ce1a1d8df55b2d10aafc6961653af1
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=b0ae7305fdaf7c773d4b03e1ff8cf9cb

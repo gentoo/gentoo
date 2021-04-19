@@ -1,13 +1,14 @@
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install prepare
 DEPEND=virtual/libusb:0
 DESCRIPTION=Control utility for some special features of some special Logitech USB mice!
-EAPI=5
+EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-INHERIT=epatch
+INHERIT=autotools
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=virtual/libusb:0
 SLOT=0
 SRC_URI=mirror://gentoo/logitech_applet-0.4test1.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=2639dd1c03664fb275780ccc5737c1aa
+_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
+_md5_=fa827fb3f0527c98c1a2a9aff2b1046b
