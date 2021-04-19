@@ -17,8 +17,10 @@ KEYWORDS="amd64 ppc x86"
 IUSE="doc examples"
 
 RDEPEND="dev-libs/glib:2"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-portage.patch
