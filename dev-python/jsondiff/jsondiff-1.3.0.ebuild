@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://github.com/xlwings/jsondiff/
 	https://pypi.org/project/jsondiff/"
 SRC_URI="
-	https://github.com/fzumstein/${PN}/archive/${PV}.tar.gz
+	https://github.com/xlwings/${PN}/archive/${PV}.tar.gz
 		-> ${P}.tar.gz"
 
 LICENSE="MIT"
