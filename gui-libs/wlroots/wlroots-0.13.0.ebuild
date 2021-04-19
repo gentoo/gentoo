@@ -11,13 +11,14 @@ HOMEPAGE="https://github.com/swaywm/wlroots"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 	inherit git-r3
+	SLOT="0/9999"
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	SLOT="0/13"
 fi
 
 LICENSE="MIT"
-SLOT="0/9999"
 IUSE="elogind icccm seatd systemd x11-backend X"
 REQUIRED_USE="?? ( elogind systemd )"
 
