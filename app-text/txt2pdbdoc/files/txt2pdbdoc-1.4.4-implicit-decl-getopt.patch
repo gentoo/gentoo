@@ -1,0 +1,10 @@
+--- a/txt2pdbdoc.c
++++ b/txt2pdbdoc.c
+@@ -25,6 +25,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ /* local */
+ #include "palm.h"
