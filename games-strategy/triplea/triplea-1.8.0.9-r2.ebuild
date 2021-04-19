@@ -1,13 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit desktop epatch java-pkg-2 java-ant-2 versionator
+EAPI=7
 
-MY_PV=$(replace_all_version_separators _)
+JAVA_ANT_REWRITE_CLASSPATH="true"
+EANT_GENTOO_CLASSPATH="apple-java-extensions-bin,commons-httpclient-3,oracle-javamail,osgi-core-api,upnplib"
+inherit desktop java-pkg-2 java-ant-2
+
+MY_PV=$(ver_rs 1- _)
 DESCRIPTION="An open source clone of the popular Axis and Allies boardgame"
 HOMEPAGE="http://triplea.sourceforge.net/"
 SRC_URI="mirror://sourceforge/triplea/${PN}_${MY_PV}_source_code_only.zip"
+S="${WORKDIR}"/${PN}_${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,28 +19,36 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="test" # Needs X11 maybe use virtualx.eclass
 
-RDEPEND="dev-java/apple-java-extensions-bin:0
+DEPEND="
+	dev-java/apple-java-extensions-bin:0
 	dev-java/commons-httpclient:3
 	dev-java/oracle-javamail:0
 	dev-java/osgi-core-api:0
-	dev-java/upnplib:0"
-DEPEND="${RDEPEND}
-	>=virtual/jdk-1.7
+	dev-java/upnplib:0
+"
+RDEPEND="
+	${DEPEND}
+	>=virtual/jre-1.8:*
+"
+DEPEND+=" >=virtual/jdk-1.8:*"
+BDEPEND="
 	app-arch/unzip
-	test? ( dev-java/ant-junit:0 )"
-RDEPEND="${RDEPEND}
-	>=virtual/jre-1.7"
+	test? ( dev-java/ant-junit:0 )
+"
 
-S=${WORKDIR}/${PN}_${MY_PV}
-
-JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_GENTOO_CLASSPATH="apple-java-extensions-bin,commons-httpclient-3,oracle-javamail,osgi-core-api,upnplib"
-
-java_prepare() {
+PATCHES=(
 	# Use ~/.triplea, not ~/triplea.
 	# Don't write server files under /usr/share or ${PWD}.
 	# Fix to build against our packaged upnplib.
-	epatch "${FILESDIR}"/{paths,upnplib}.patch
+	"${FILESDIR}"/{paths,upnplib}.patch
+	# Fix build with newer Ant
+	"${FILESDIR}"/${PN}-1.8.0.9-drop-ant-check.patch
+)
+
+src_prepare() {
+	default
+
+	java-pkg-2_src_prepare
 
 	# Remove packaged or unneeded libs. Unfortunately Apache Derby was
 	# last-rited due to packaging issues. See bug #561410.
