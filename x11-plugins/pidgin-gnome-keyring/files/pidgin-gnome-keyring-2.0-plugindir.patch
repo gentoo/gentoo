@@ -1,10 +1,10 @@
---- a/Makefile	2015-02-07 03:23:05.000000000 +0000
-+++ b/Makefile	2016-04-28 09:53:59.915565380 +0000
+--- a/Makefile
++++ b/Makefile
 @@ -2,6 +2,7 @@
  
  SECRETFLAGS = `pkg-config --libs --cflags libsecret-1`
  PURPLEFLAGS = `pkg-config --cflags purple`
-+PLUGINDIR = `pkg-config --variable=plugindir purple`
++PLUGINDIR = `${PKG_CONFIG} --variable=plugindir purple`
  VERSION = $(shell cat VERSION)
  ifeq ($(strip $(VERSION)),)
  	VERSION = `git describe --tags`
