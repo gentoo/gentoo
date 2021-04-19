@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 MY_P=ClanLib-${PV}
-DESCRIPTION="multi-platform game development library"
+DESCRIPTION="Multi-platform game development library"
 HOMEPAGE="http://www.clanlib.org/"
 SRC_URI="http://clanlib.org/download/releases-2.0/${MY_P}.tgz"
 S="${WORKDIR}"/${MY_P}
@@ -82,6 +82,8 @@ src_configure() {
 		|| use vorbis \
 		|| use mikmod \
 		|| myeconfargs+=( --disable-clanSound )
+
+	tc-export PKG_CONFIG
 
 	econf "${myeconfargs[@]}"
 }

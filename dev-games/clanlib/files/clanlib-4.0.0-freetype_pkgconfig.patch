@@ -5,12 +5,6 @@ Subject: [PATCH] Use pkg-config to find freetype.
 
 As of freetype-2.9.1 the freetype-config file no longer gets installed
 by default.
----
- configure.ac | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/configure.ac b/configure.ac
-index 6b9def916..c97e959f7 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -307,7 +307,7 @@ echo ""
@@ -18,7 +12,7 @@ index 6b9def916..c97e959f7 100644
  	echo "Checking for clanDisplay stuff"
  	echo "=============================="
 -	CLANLIB_CHECK_LIB(ttf, [`cat $srcdir/Setup/Unix/Tests/ttf.cpp`], clanDisplay, [ *** Cannot find ttf (freetype) (See http://freetype.sourceforge.net )  (Try libfreetype6-dev or better) ], [`freetype-config --libs` ], [ `freetype-config --cflags`])
-+	CLANLIB_CHECK_LIB(ttf, [`cat $srcdir/Setup/Unix/Tests/ttf.cpp`], clanDisplay, [ *** Cannot find ttf (freetype) (See http://freetype.sourceforge.net )  (Try libfreetype6-dev or better) ], [`pkg-config --libs freetype2` ], [ `pkg-config --cflags freetype2`])
++	CLANLIB_CHECK_LIB(ttf, [`cat $srcdir/Setup/Unix/Tests/ttf.cpp`], clanDisplay, [ *** Cannot find ttf (freetype) (See http://freetype.sourceforge.net )  (Try libfreetype6-dev or better) ], [`${PKG_CONFIG} --libs freetype2` ], [ `${PKG_CONFIG} --cflags freetype2`])
  
  	dnl  Optional linux/joystick.h
  	AC_CHECK_HEADERS(linux/joystick.h, has_linux_joystick=yes)

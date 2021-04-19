@@ -1,5 +1,3 @@
-diff --git a/Documentation/Utilities/webbuilder.pl.in b/Documentation/Utilities/webbuilder.pl.in
-index ea9de63..c000432 100644
 --- a/Documentation/Utilities/webbuilder.pl.in
 +++ b/Documentation/Utilities/webbuilder.pl.in
 @@ -68,11 +68,7 @@ sub convert
