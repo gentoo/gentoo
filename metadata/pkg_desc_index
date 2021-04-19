@@ -3053,7 +3053,7 @@ app-text/diction 1.14: Diction and style checkers for english and german texts
 app-text/diff-pdf 0.4.1-r2: A simple tool for visually comparing two PDF files
 app-text/diffpdf 2.1.3-r2: Program that textually or visually compares two PDF files
 app-text/ding 1.8.1 1.9: Tk based dictionary (German-English) (incl. dictionary itself)
-app-text/discount 2.2.7 2.2.7-r1: A Markdown-to HTML translator written in C
+app-text/discount 2.2.7-r1: A Markdown-to HTML translator written in C
 app-text/djview 4.10.6-r2: Portable DjVu viewer using Qt
 app-text/djvu 3.5.27-r2 3.5.28: DjVu viewers, encoders and utilities
 app-text/docbook-dsssl-stylesheets 1.79-r4: DSSSL Stylesheets for DocBook
@@ -14377,7 +14377,7 @@ media-video/transcode 1.1.7-r5: Utilities for transcoding video and audio codecs
 media-video/tsmuxer 2.6.11-r1: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6_p1-r1: Tool for cutting MPEG files especially for removing commercials
 media-video/unifi-video 3.10.13-r2: UniFi Video Server
-media-video/ushare 1.1a_p20200824 1.1a_p20210221: uShare is a UPnP (TM) A/V & DLNA Media Server
+media-video/ushare 1.1a_p20210221: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.12.5-r1 9999: v4l2 loopback device whose output is its own input
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 2.0.1: GNU VCDimager
@@ -15287,7 +15287,7 @@ net-misc/dibbler 1.0.1-r3: Portable DHCPv6 implementation (server, client and re
 net-misc/dleyna-server 0.6.0: Service that allows to discover and manipulate DLNA Digital Media servers (DMS)
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2020.81-r2: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 118.4.460 119.4.1772 120.4.4598: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 120.4.4598: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 2020.03.04 2020.03.04-r1: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1-r2: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a_p19_p1: A simple fax program for single-user systems
@@ -15458,7 +15458,7 @@ net-misc/rdate 1.4-r4 1.10: Use TCP or UDP to retrieve the current time of anoth
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/realtek-r8152 2.14.0: Out-of-tree driver for Realtek's 2.5 GbE USB NICs.
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.4.11 1.4.12 1.4.13: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.4.12 1.4.13: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.2.3-r2 3.2.3-r3 9999: File transfer program to keep remote files into sync
 net-misc/rwbs 0.27-r2: Roger Wilco base station
@@ -17108,7 +17108,7 @@ sys-apps/kcheck 0.0.2-r1 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.20-r3 2.0.21 9999: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.6.1 1.6.3: Linux Key Management Utilities
 sys-apps/kmod 27-r2 28 9999: library and tools for managing linux kernel modules
-sys-apps/kmscon 8-r1 8_p20180906 8_p20180906-r1: KMS/DRM based virtual Console Emulator
+sys-apps/kmscon 8_p20180906-r1: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdutils 0.2-r1: (Sun) Cobalt Qube/RaQ button reading and LCD writing utilities
 sys-apps/less 563-r1 581: Excellent text file viewer
@@ -17465,7 +17465,7 @@ sys-cluster/libqb 2.0.1-r1: Library providing high performance logging, tracing,
 sys-cluster/libquo 1.2.9 9999: run-time tuning of process binding policies made easy
 sys-cluster/lmod 8.4.20 9999: Environment Module System based on Lua
 sys-cluster/lustre 2.13.0-r1: Lustre is a parallel distributed file system
-sys-cluster/minikube 1.10.1 1.11.0 1.13.1 1.14.0 1.14.1 1.17.1: Single Node Kubernetes Cluster
+sys-cluster/minikube 1.10.1 1.11.0 1.13.1 1.14.0 1.14.1 1.17.1 1.19.0: Single Node Kubernetes Cluster
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4 3.3-r1: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
@@ -17724,7 +17724,7 @@ sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 243-r2 245.5-r1 246-r1 247.2 248 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 34 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2 2.3: Ben Fennema's tools for packet writing and the UDF filesystem
-sys-fs/udiskie 2.3.2 2.3.3: An automatic disk mounting service using udisks
+sys-fs/udiskie 2.3.3: An automatic disk mounting service using udisks
 sys-fs/udisks 2.9.1 2.9.2: Daemon providing interfaces to work with storage devices
 sys-fs/unionfs-fuse 2.1 9999: Self-syncing tree-merging file system based on FUSE
 sys-fs/vhba 20200106-r1 20210418: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
@@ -18219,7 +18219,7 @@ www-client/google-chrome-beta 90.0.4430.72: The web browser from Google
 www-client/google-chrome-unstable 91.0.4472.10: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
-www-client/links 2.21 2.22: A fast and lightweight web browser running in both graphics and text mode
+www-client/links 2.22: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
 www-client/microsoft-edge-dev 91.0.838.3 91.0.845.2 91.0.852.0: The web browser from Microsoft
@@ -18655,7 +18655,7 @@ x11-misc/notify-osd 0.9.34-r1: Canonical's on-screen-display notification agent
 x11-misc/numlockx 1.2: Changes keyboard's numlock state under X
 x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.16.0: Qt GUI Openbox Configuration Tool
-x11-misc/obmenu-generator 0.88 0.89: A fast pipe/static menu generator for the Openbox Window Manager
+x11-misc/obmenu-generator 0.89: A fast pipe/static menu generator for the Openbox Window Manager
 x11-misc/openbox-menu 0.8.0 0.8.1: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9-r1: utility for binding keys in Oroborus

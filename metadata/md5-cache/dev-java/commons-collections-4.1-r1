@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=4
 SRC_URI=mirror://apache/commons/collections/source/commons-collections4-4.1-src.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=e64c71e599a5a8e13559ab036b612d2f
+_md5_=0143d2f90f3dfa4626276c2d2dd4284b
