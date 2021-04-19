@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install preinst prepare setup
+DEPEND=>=dev-java/java-config-2.2.0-r3
+DESCRIPTION=Apache Rat is a release audit tool, focused on licenses.
+EAPI=7
+HOMEPAGE=https://creadur.apache.org/rat/
+INHERIT=java-pkg-2
+IUSE=elibc_FreeBSD
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=~dev-java/apache-rat-core-0.13:0 ~dev-java/apache-rat-tasks-0.13:0 >=virtual/jre-1.8:* >=dev-java/java-config-2.2.0-r3
+SLOT=0
+_eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888
+_md5_=e658eea0a32a959fde7bd218278e5428

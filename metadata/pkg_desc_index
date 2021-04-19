@@ -4785,6 +4785,8 @@ dev-java/ant-testutil 1.10.9: Apache Ant's optional test utility classes
 dev-java/ant-xz 1.10.9: Apache Ant's optional tasks for XZ compression
 dev-java/antlr 2.7.7-r7 2.7.7-r8 3.2 3.5.2-r1 4.5.1 4.5.3: A parser generator for many languages
 dev-java/aopalliance 1.0-r2: Aspect-Oriented Programming (AOP) Alliance classes
+dev-java/apache-rat-core 0.13: The core functionality, shared by the Ant tasks and the Maven plugin.
+dev-java/apache-rat-tasks 0.13: A plugin for Apache Ant that runs Apache Rat to audit the source
 dev-java/appframework 1.03-r5: Set of Java classes to build desktop applications easily
 dev-java/apple-java-extensions-bin 1.5-r2: Apple eAWT and eIO APIs for Java on Mac OS X
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
@@ -5174,7 +5176,7 @@ dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visua
 dev-java/protobuf-java 3.13.0 3.14.0 3.15.0 3.15.1 3.15.2 3.15.3 3.15.4 3.15.5 3.15.6 3.15.7 3.15.8 9999: Google's Protocol Buffers - Java bindings
 dev-java/qdox 1.6.3-r2 1.12.1-r2: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
-dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
+dev-java/rat 0.11 0.13: Apache Rat is a release audit tool, focused on licenses.
 dev-java/reflectasm 1.11.0 1.11.1: High performance Java reflection
 dev-java/reflections 0.9.10-r1: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r2: Interface between RELAX NG validators and datatype libraries
