@@ -52,6 +52,8 @@ src_configure() {
 	use vorbis || EXTRA_CONF="${EXTRA_CONF} no_vorbis"
 	use xspf || EXTRA_CONF="${EXTRA_CONF} no_xspf"
 
+	tc-export PKG_CONFIG
+
 	einfo "./configure ${EXTRA_CONF}"
 	CC="$(tc-getCC)" PREFIX=/usr MANDIR=/usr/share/man \
 		./configure ${EXTRA_CONF} || die "configure failed"
