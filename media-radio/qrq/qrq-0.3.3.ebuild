@@ -29,13 +29,11 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export PKG_CONFIG
-
 	CONF="USE_PA=NO USE_OSS=YES"
 	if use pulseaudio; then
 		CONF="USE_PA=YES USE_OSS=NO"
 	fi
-	emake ${CONF}
+	emake PKG_CONFIG="$(tc-getPKG_CONFIG)" ${CONF}
 }
 
 src_install() {
