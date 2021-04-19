@@ -36,7 +36,10 @@ RDEPEND="
 	cramfs? ( sys-libs/zlib:= )
 	cryptsetup? ( sys-fs/cryptsetup )
 	hardlink? ( dev-libs/libpcre2:= )
-	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
+	ncurses? (
+		sys-apps/file:0=
+		>=sys-libs/ncurses-5.2-r2:0=[unicode?]
+	)
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	ppc? ( sys-libs/librtas )
