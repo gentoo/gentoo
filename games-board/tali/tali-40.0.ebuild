@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org gnome2-utils meson xdg
+PYTHON_COMPAT=( python3_{7..9} )
+inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Beat the odds in a poker-style dice game"
 HOMEPAGE="https://wiki.gnome.org/Apps/Tali"
@@ -10,7 +11,6 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Tali"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE=""
 
 DEPEND="
 	dev-libs/glib:2
@@ -20,7 +20,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=gnome-base/librsvg-2.32:2
 "
-DEPEND="
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
