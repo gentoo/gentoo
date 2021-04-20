@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://github.com/wahern/luaossl
 INHERIT=lua toolchain-funcs
 IUSE=examples lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~sparc ~x86
 LICENSE=MIT
 RDEPEND=dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl !dev-lua/luasec lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 SLOT=0
 SRC_URI=https://github.com/wahern/luaossl/archive/rel-20200709.tar.gz -> luaossl-rel-20200709.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
-_md5_=4161b3ecbc7a22793285e95373973fe7
+_md5_=5fbc3d316c31b134649a6d607f4d3317

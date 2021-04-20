@@ -782,7 +782,7 @@ app-admin/hardinfo 0.6_alpha_pre20201116: System information and benchmark tool 
 app-admin/haskell-updater 1.3.2: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.20.0 1.22.1: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r29: A simple utility to read the temperature of SMART capable hard drives
-app-admin/helm 3.3.4 3.4.1 3.4.2: Kubernetes Package Manager
+app-admin/helm 3.3.4 3.4.1 3.4.2 3.5.4: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/integrit 4.1-r1 4.2_rc1: file integrity verification program
 app-admin/keepass 2.46 2.47: A free, open source, light-weight and easy-to-use password manager
@@ -5376,7 +5376,7 @@ dev-lang/scala-bin 2.13.1: The Scala Programming Language
 dev-lang/smlnj 110.82: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 1.4.1-r1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
 dev-lang/spark 2018-r1 2019: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.6.0 78.7.1 78.8.0 78.9.0 78.10.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
+dev-lang/spidermonkey 1.8.5-r9 52.9.1_pre1-r2 60.5.2_p0-r4 68.12.0 78.9.0 78.10.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-lang/squirrel 3.1_p20200612: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.2.2 8.2.3 8.3.18 8.3.19 8.3.20 8.3.21: versatile implementation of the Prolog programming language
@@ -10982,7 +10982,7 @@ dev-util/itstool 2.0.6-r1: Translation tool for XML documents that uses gettext 
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.277.2 2.287: Extensible continuous integration server
+dev-util/jenkins-bin 2.277.3 2.289: Extensible continuous integration server
 dev-util/jfrog-cli 1.35.3: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3407 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -15647,7 +15647,7 @@ net-print/cnrdrvcups-lb 5.20 5.30: Canon UFR II / LIPSLX Printer Driver for Linu
 net-print/cups 2.3.3-r2 2.3.3_p2 9999: The Common Unix Printing System
 net-print/cups-bjnp 2.0.3: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.28.3 1.28.7 9999: Cups filters
-net-print/cups-pdf 3.0.1: Provides a virtual printer for CUPS to produce PDF files
+net-print/cups-pdf 3.0.1-r1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0-r2: Dymo SDK for LabelWriter/LabelManager printers
@@ -18219,8 +18219,8 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3 1.0-r4: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 78.9.0 78.10.0 87.0 87.0-r1 88.0: Firefox Web Browser
 www-client/firefox-bin 78.9.0 78.10.0 87.0 88.0: Firefox Web Browser
-www-client/google-chrome 90.0.4430.72: The web browser from Google
-www-client/google-chrome-beta 90.0.4430.72: The web browser from Google
+www-client/google-chrome 90.0.4430.85: The web browser from Google
+www-client/google-chrome-beta 90.0.4430.85: The web browser from Google
 www-client/google-chrome-unstable 91.0.4472.10: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18263,7 +18263,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 90.0.4430.72_beta 90.0.4430.72 91.0.4472.10_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 90.0.4430.85_beta 90.0.4430.85 91.0.4472.10_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension

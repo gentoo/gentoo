@@ -7,8 +7,8 @@ HOMEPAGE=https://jenkins.io/
 INHERIT=systemd
 KEYWORDS=~amd64 ~arm64 ~x86 ~amd64-linux
 LICENSE=MIT
-RDEPEND=acct-group/jenkins acct-user/jenkins media-fonts/dejavu media-libs/freetype !dev-util/jenkins-bin:0 >=virtual/jre-1.8.0
-SLOT=lts
-SRC_URI=http://mirrors.jenkins-ci.org/war-stable/2.277.2/jenkins.war -> jenkins-bin-2.277.2.war
+RDEPEND=acct-group/jenkins acct-user/jenkins media-fonts/dejavu media-libs/freetype !dev-util/jenkins-bin:lts >=virtual/jre-1.8.0
+SLOT=0
+SRC_URI=http://mirrors.jenkins-ci.org/war/2.289/jenkins.war -> jenkins-bin-2.289.war
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=9369810fc28b3c2fae1d352965a22b3c
+_md5_=610aabe05920e3fac00aa72bd83b376e
