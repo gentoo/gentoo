@@ -1,16 +1,16 @@
 BDEPEND=sys-apps/help2man
 DEFINED_PHASES=prepare setup
-DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) app-arch/rpm[python,python_single_target_python3_7(-)?] dev-lang/perl:* python_single_target_python3_7? ( dev-python/progressbar2[python_targets_python3_7(-)] ) python_single_target_python3_7? ( dev-python/requests_download[python_targets_python3_7(-)] )
+DEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-arch/rpm[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] dev-lang/perl:* python_single_target_python3_7? ( dev-python/progressbar2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/progressbar2[python_targets_python3_8(-)] ) python_single_target_python3_7? ( dev-python/requests_download[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/requests_download[python_targets_python3_8(-)] )
 DESCRIPTION=Collection of rpm packaging related utilities
 EAPI=7
 HOMEPAGE=https://pagure.io/rpmdevtools
 INHERIT=python-single-r1
-IUSE=emacs +python_single_target_python3_7
+IUSE=emacs python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) app-arch/rpm[python,python_single_target_python3_7(-)?] dev-lang/perl:* python_single_target_python3_7? ( dev-python/progressbar2[python_targets_python3_7(-)] ) python_single_target_python3_7? ( dev-python/requests_download[python_targets_python3_7(-)] ) net-misc/curl emacs? ( app-emacs/rpm-spec-mode )
-REQUIRED_USE=^^ ( python_single_target_python3_7 )
+RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-arch/rpm[python,python_single_target_python3_7(-)?,python_single_target_python3_8(-)?] dev-lang/perl:* python_single_target_python3_7? ( dev-python/progressbar2[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/progressbar2[python_targets_python3_8(-)] ) python_single_target_python3_7? ( dev-python/requests_download[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/requests_download[python_targets_python3_8(-)] ) net-misc/curl emacs? ( app-emacs/rpm-spec-mode )
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://releases.pagure.org/rpmdevtools/rpmdevtools-9.2.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a
-_md5_=90e211651e79a3845c2f200525543a1e
+_md5_=17cbb9a75ce99b0950a47fbfd35804d9
