@@ -2233,7 +2233,7 @@ app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc ima
 app-emulation/libguestfs 1.38.6-r103: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.4.4 1.5.0: Spectrum emulation library
-app-emulation/libvirt 7.0.0-r1 7.1.0 7.2.0 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 7.0.0-r2 7.1.0-r1 7.2.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 3.0.0 4.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment features
@@ -18231,7 +18231,7 @@ www-client/microsoft-edge-dev 91.0.838.3 91.0.845.2 91.0.852.0: The web browser 
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
-www-client/opera 75.0.3969.171: A fast and secure web browser
+www-client/opera 75.0.3969.171 75.0.3969.218: A fast and secure web browser
 www-client/opera-beta 76.0.4017.5 76.0.4017.40: A fast and secure web browser
 www-client/opera-developer 76.0.4016.0 77.0.4023.0 77.0.4028.0: A fast and secure web browser
 www-client/otter 1.0.02 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
