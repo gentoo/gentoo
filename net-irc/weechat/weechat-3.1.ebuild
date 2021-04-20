@@ -20,7 +20,7 @@ DESCRIPTION="Portable and multi-interface IRC client"
 HOMEPAGE="https://weechat.org/"
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 
 NETWORKS="+irc"
 PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spell +trigger +xfer"
