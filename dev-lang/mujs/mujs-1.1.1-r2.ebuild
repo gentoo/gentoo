@@ -52,7 +52,7 @@ src_compile() {
 src_install() {
 	local myemakeargs=(
 		DESTDIR="${ED}"
-		VERSION=${PF}
+		VERSION=${PV}
 		libdir="/usr/$(get_libdir)"
 		prefix=/usr
 	)
