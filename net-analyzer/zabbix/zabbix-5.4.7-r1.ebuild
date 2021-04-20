@@ -432,7 +432,7 @@ src_install() {
 		fperms 0640 /etc/zabbix/zabbix_server.conf
 		fowners root:zabbix /etc/zabbix/zabbix_server.conf
 
-		newinitd "${FILESDIR}"/zabbix-server.init zabbix-server
+		newinitd "${FILESDIR}"/zabbix-server-r1.init zabbix-server
 
 		dosbin src/zabbix_server/zabbix_server
 
