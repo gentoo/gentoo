@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://www.kernel.org/pub/software/network/tftp/
 INHERIT=systemd toolchain-funcs
 IUSE=ipv6 readline selinux tcpd +client +server
-KEYWORDS=~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos
+KEYWORDS=~alpha ~amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc ~x86 ~ppc-macos
 LICENSE=BSD-4
 RDEPEND=readline? ( sys-libs/readline:0= ) tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-tftp ) !net-ftp/atftp server? ( !net-misc/iputils[tftpd(+)] !net-ftp/uftpd )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-5.2.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=530bcaea11d73df8864803a284839036
+_md5_=6bd045a227e4e5db13846215252d6f7e

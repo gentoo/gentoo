@@ -12,6 +12,6 @@ RDEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib
 REQUIRED_USE=default-gold? ( gold )
 RESTRICT=!test? ( test )
 SLOT=2.36
-SRC_URI=mirror://gnu/binutils/binutils-2.36.1.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/binutils-2.36.1-patches-1.tar.xz
+SRC_URI=mirror://gnu/binutils/binutils-2.36.1.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/binutils-2.36.1-patches-3.tar.xz
 _eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	gnuconfig	9f91b4b0c84e734a87492d4293f03de5
-_md5_=021c23ce75bb87cf2e318abc1db3733a
+_md5_=363fd016a636611f402117ae9c33075f
