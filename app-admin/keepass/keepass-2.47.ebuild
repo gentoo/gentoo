@@ -46,6 +46,9 @@ src_prepare() {
 src_compile() {
 	export MONO_REGISTRY_PATH=/dev/null # bug 659808
 
+	# bug 704358
+	export LANG=C LC_ALL=C
+
 	# Build with Release target
 	xbuild /target:KeePass /property:Configuration=Release || die
 
