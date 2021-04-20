@@ -1,0 +1,103 @@
+https://bugs.gentoo.org/771765
+https://sourceware.org/PR27397
+
+On i586-like CPUs endbr32 added by -Wl,-z,ibt,-z,shstk
+generates crashing binaries and causes ./configure failure.
+
+From 847e4b3207f97762dc641db8d3b188081c3370c3 Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Fri, 12 Feb 2021 16:30:23 -0800
+Subject: [PATCH] GCC_CET_HOST_FLAGS: Check if host supports multi-byte NOPs
+
+---
+ config/cet.m4       | 19 ++++++++++++++++---
+ libiberty/configure | 29 +++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 3 deletions(-)
+
+diff --git a/config/cet.m4 b/config/cet.m4
+index c67fb4f35b6..7718be1afe8 100644
+--- a/config/cet.m4
++++ b/config/cet.m4
+@@ -130,6 +130,18 @@ fi
+ if test x$may_have_cet = xyes; then
+   if test x$cross_compiling = xno; then
+     AC_TRY_RUN([
++int
++main ()
++{
++  asm ("endbr32");
++  return 0;
++}
++    ],
++    [have_multi_byte_nop=yes],
++    [have_multi_byte_nop=no])
++    have_cet=no
++    if test x$have_multi_byte_nop = xyes; then
++      AC_TRY_RUN([
+ static void
+ foo (void)
+ {
+@@ -155,9 +167,10 @@ main ()
+   bar ();
+   return 0;
+ }
+-    ],
+-    [have_cet=no],
+-    [have_cet=yes])
++      ],
++      [have_cet=no],
++      [have_cet=yes])
++    fi
+     if test x$enable_cet = xno -a x$have_cet = xyes; then
+       AC_MSG_ERROR([Intel CET must be enabled on Intel CET enabled host])
+     fi
+diff --git a/libiberty/configure b/libiberty/configure
+index 160b8c9e8b1..29a690d44fc 100755
+--- a/libiberty/configure
++++ b/libiberty/configure
+@@ -5539,6 +5539,34 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++int
++main ()
++{
++  asm ("endbr32");
++  return 0;
++}
++
++_ACEOF
++if ac_fn_c_try_run "$LINENO"; then :
++  have_multi_byte_nop=yes
++else
++  have_multi_byte_nop=no
++fi
++rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
++  conftest.$ac_objext conftest.beam conftest.$ac_ext
++fi
++
++    have_cet=no
++    if test x$have_multi_byte_nop = xyes; then
++      if test "$cross_compiling" = yes; then :
++  { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
++$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
++as_fn_error $? "cannot run test program while cross compiling
++See \`config.log' for more details" "$LINENO" 5; }
++else
++  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
+ static void
+ foo (void)
+ {
+@@ -5575,6 +5603,7 @@ rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
+   conftest.$ac_objext conftest.beam conftest.$ac_ext
+ fi
+ 
++    fi
+     if test x$enable_cet = xno -a x$have_cet = xyes; then
+       as_fn_error $? "Intel CET must be enabled on Intel CET enabled host" "$LINENO" 5
+     fi
+-- 
+2.29.2
+
