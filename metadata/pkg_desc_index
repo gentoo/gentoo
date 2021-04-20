@@ -5290,7 +5290,7 @@ dev-java/xz-java 1.8-r1: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-java/zstd-jni 1.4.9.1: JNI bindings for Zstd native library
-dev-lang/R 3.4.1 3.6.3-r1 4.0.2 4.0.4 4.0.5: Language and environment for statistical computing and graphics
+dev-lang/R 4.0.4 4.0.5: Language and environment for statistical computing and graphics
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
 dev-lang/bff 1.0.5: A brainfuck interpreter
