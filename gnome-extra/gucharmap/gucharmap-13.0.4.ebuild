@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
+PYTHON_COMPAT=( python3_{7..9} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2-utils meson vala xdg
+inherit gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Unicode character map viewer and library"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gucharmap"
@@ -21,7 +21,9 @@ UNICODE_VERSION="13.0"
 IUSE="debug +introspection gtk-doc vala"
 REQUIRED_USE="vala? ( introspection )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
 	>=sys-devel/gettext-0.19.8
 	gtk-doc? ( >=dev-util/gtk-doc-1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
