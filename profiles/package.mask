@@ -69,13 +69,6 @@ dev-java/commons-jelly
 dev-java/ezmorph
 dev-java/ical4j
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-18)
-# Do not use yet, may lead under certain circumstances to a
-# non-functional ld (bug 783777)
-=sys-devel/binutils-2.36*
-=sys-devel/binutils-hppa64-2.36*
-=sys-libs/binutils-libs-2.36*
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
