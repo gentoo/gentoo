@@ -39,8 +39,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# We need to use ${PV} for the pkgconfig file
+	# #784461
 	emake \
-		VERSION=${PF} \
+		VERSION=${PV} \
 		XCFLAGS="${CFLAGS}" \
 		XCPPFLAGS="${CPPFLAGS}" \
 		prefix=/usr \
@@ -50,7 +52,7 @@ src_compile() {
 src_install() {
 	local myemakeargs=(
 		DESTDIR="${ED}"
-		VERSION=${PF}
+		VERSION=${PV}
 		libdir="/usr/$(get_libdir)"
 		prefix=/usr
 	)
