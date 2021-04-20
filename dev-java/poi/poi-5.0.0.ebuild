@@ -53,11 +53,10 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 	${CDEPEND}"
 
-S="${WORKDIR}"
+S="${WORKDIR}/${P}"
 
-#	JAVA_GENTOO_CLASSPATH="sparsebitset,commons-codec,commons-collections-4,commons-math-3,!!!artifactId-not-found!!!,slf4j-api"
 JAVA_GENTOO_CLASSPATH="sparsebitset,commons-codec,commons-collections-4,commons-logging,commons-math-3,slf4j-api"
-JAVA_SRC_DIR="${P}/src/java"
+JAVA_SRC_DIR="src/java"
 
 src_prepare() {
 	default
