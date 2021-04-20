@@ -1,5 +1,5 @@
---- a/src/calendar.c
-+++ b/Src/calendar.c
+--- a/calendar.c
++++ b/calendar.c
 @@ -1,5 +1,10 @@
  #include "calendar.h"
  
@@ -11,8 +11,8 @@
  int  get_datetype(int day){return datetype[day][0];}
  
  /*------------------------------------------------------
---- a/Src/calendarfunc.c
-+++ b/Src/calendarfunc.c
+--- a/calendarfunc.c
++++ b/calendarfunc.c
 @@ -24,6 +24,7 @@
  #include <stdio.h>
  
@@ -21,8 +21,8 @@
  
  long persian_jdn(struct icaltimetype dt)
  {
---- a/Src/calendarfunc.h
-+++ b/Src/calendarfunc.h
+--- a/calendarfunc.h
++++ b/calendarfunc.h
 @@ -70,5 +70,5 @@
  
  int Ceil(float number);
@@ -30,8 +30,8 @@
 -int     datemoon[200][2];   /* hashtable for moonphase.[jdn%32][0] stores moonphase of day jdn, 
 +extern int     datemoon[200][2];   /* hashtable for moonphase.[jdn%32][0] stores moonphase of day jdn, 
  			    [jdn%32][1] stores jdn. */
---- a/Src/calendar.h
-+++ b/Src/calendar.h
+--- a/calendar.h
++++ b/calendar.h
 @@ -5,10 +5,10 @@
  #include <sys/stat.h>
  
@@ -47,8 +47,8 @@
  				 [jdn%32][1] stores jdn. */
  struct calobj{
      struct icaltimetype start;
---- a/Src/settings.c
-+++ b/Src/settings.c
+--- a/settings.c
++++ b/settings.c
 @@ -1,4 +1,14 @@
  #include "settings.h"
 +
@@ -64,8 +64,8 @@
  void set_lang(int language){lang = language;}
  void setAppicon(int app){appicon = app;}
  void enter_callback( GtkWidget *widget, GtkWidget *entry ){ 
---- a/Src/settings.h
-+++ b/Src/settings.h
+--- a/settings.h
++++ b/settings.h
 @@ -7,14 +7,14 @@
  
  

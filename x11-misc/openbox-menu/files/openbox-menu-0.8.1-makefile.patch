@@ -76,6 +76,7 @@ Misc enhancements to file globbing.
  doc:
  	robodoc --src . --doc doc/ --multidoc --index --html --cmode
 
+diff --git a/README.md b/README.md
 --- a/README.md
 +++ b/README.md
 @@ -6,17 +6,17 @@ Type `make` then, with superuser privileges, `make install` to install it. openb
