@@ -13,7 +13,7 @@ SRC_URI="https://repo1.maven.org/maven2/${PN}/${PN}/${PV}/${P}-sources.jar -> ${
 
 LICENSE="JDOM"
 SLOT="1.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x86"
 
 RDEPEND="
 	${CDEPEND}
