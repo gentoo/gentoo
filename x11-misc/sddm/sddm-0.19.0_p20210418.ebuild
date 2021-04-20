@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	x11-base/xorg-server
+	x11-libs/libXau
 	x11-libs/libxcb[xkb]
 	elogind? ( sys-auth/elogind )
 	pam? ( sys-libs/pam )
@@ -53,6 +54,8 @@ PATCHES=(
 	# fix for groups: https://github.com/sddm/sddm/issues/1159
 	"${FILESDIR}"/${PN}-0.19.0-revert-honor-PAM-supplemental-groups.patch
 	"${FILESDIR}"/${PN}-0.18.1-honor-PAM-supplemental-groups-v2.patch
+	# ACK'd for merge but pending rebase: https://github.com/sddm/sddm/pull/1230
+	"${FILESDIR}"/${P}-redesign-Xauth.patch # by openSUSE, Fedora usage for >1y
 	# Downstream patches
 	"${FILESDIR}"/${PN}-0.18.1-respect-user-flags.patch
 	"${FILESDIR}"/${PN}-0.19.0-Xsession.patch # bug 611210
