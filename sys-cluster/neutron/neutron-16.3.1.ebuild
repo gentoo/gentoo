@@ -19,7 +19,7 @@ else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/ussuri/configs.tar.gz -> neutron-configs-${PV}.tar.gz
 	https://dev.gentoo.org/~prometheanfire/dist/openstack/neutron/ussuri/ml2_plugins.tar.gz -> neutron-ml2-plugins-${PV}.tar.gz
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
