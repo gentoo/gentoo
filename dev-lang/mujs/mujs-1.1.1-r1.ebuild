@@ -39,8 +39,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# We need to use ${PV} for the pkgconfig file
+	# #784461
 	emake \
-		VERSION=${PF} \
+		VERSION=${PV} \
 		XCFLAGS="${CFLAGS}" \
 		XCPPFLAGS="${CPPFLAGS}" \
 		prefix=/usr \
