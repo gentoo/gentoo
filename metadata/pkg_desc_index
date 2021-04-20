@@ -2082,7 +2082,7 @@ app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
 app-emacs/meson-mode 0.3: A GNU Emacs major mode for Meson build-system files
 app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
-app-emacs/mic-paren 3.11 3.15: Advanced highlighting of matching parentheses
+app-emacs/mic-paren 3.11 3.13 3.15: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
 app-emacs/mmm-mode 0.5.7: Enables the user to edit different parts of a file in different major modes
 app-emacs/moccur-edit 2.16: An improved interface to color-moccur for editing
@@ -11942,7 +11942,7 @@ games-strategy/war1gus 2.4.3 3.0.0: Warcraft: Orcs & Humans for the Stratagus ga
 games-strategy/wargus 2.4.3 3.0.0-r1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
-games-strategy/warzone2100 3.3.0 3.4.1: 3D real-time strategy game
+games-strategy/warzone2100 3.3.0 3.4.1 4.0.1: 3D real-time strategy game
 games-strategy/wesnoth 1.14.14 1.15.12: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20-r1 9999: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
@@ -13543,7 +13543,7 @@ media-libs/taglib 1.12: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/tg_owt 0_pre20201105 0_pre20201112 0_pre20210309-r1: WebRTC build for Telegram
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
-media-libs/tiff 4.2.0: Tag Image File Format (TIFF) library
+media-libs/tiff 4.2.0 4.3.0: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
