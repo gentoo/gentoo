@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 VALA_MIN_API_VERSION="0.40"
 
-inherit gnome.org gnome2-utils meson vala xdg
+inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Complete the puzzle by matching numbered tiles"
 HOMEPAGE="https://wiki.gnome.org/Apps/Tetravex"
@@ -19,7 +20,9 @@ RDEPEND="
 	>=dev-libs/glib-2.42.0:2
 	gui? ( >=x11-libs/gtk+-3.22.23:3 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
 	$(vala_depend)
 	gui? ( dev-util/itstool )
 	>=sys-devel/gettext-0.19.8
