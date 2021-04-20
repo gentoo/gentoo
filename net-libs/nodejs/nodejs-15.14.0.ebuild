@@ -41,6 +41,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-14.16.1-v8_icu69.patch
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
 )
 

@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-14.15.0-fix_ppc64_crashes.patch
+	"${FILESDIR}"/${PN}-14.16.1-v8_icu69.patch
 )
 
 S="${WORKDIR}/node-v${PV}"
