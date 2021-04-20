@@ -1,5 +1,5 @@
---- htb.init.old	2004-01-29 22:41:23.000000000 +0100
-+++ htb.init		2006-09-08 00:22:11.000000000 +0200
+--- a/htb.init
++++ b/htb.init
 @@ -468,8 +468,8 @@
  	### List of classes in $HTB_PATH
  	htb_class_list () {

@@ -1,6 +1,5 @@
-diff -NrU5 levee-3.5a.original/configure.inc levee-3.5a/configure.inc
---- levee-3.5a.original/configure.inc	2009-08-12 19:51:26.000000000 +0000
-+++ levee-3.5a/configure.inc	2009-08-12 20:13:41.000000000 +0000
+--- a/configure.inc
++++ b/configure.inc
 @@ -1074,11 +1074,11 @@
      else
  	PROG_INSTALL="$DEST"
