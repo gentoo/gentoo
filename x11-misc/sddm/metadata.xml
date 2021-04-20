@@ -9,6 +9,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="openrc-init">Install SDDM init.d and conf.d files for use with openrc-init</flag>
+	</use>
 	<longdescription lang="en">
 		SDDM is a modern display manager for X11 aiming to be fast, simple and
 		beautiful. It uses modern technologies like QtQuick, which in turn gives

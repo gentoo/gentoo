@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+elogind +pam systemd test"
+IUSE="+elogind openrc-init +pam systemd test"
 
 REQUIRED_USE="?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -40,7 +40,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	acct-group/sddm
 	acct-user/sddm
-	!systemd? ( gui-libs/display-manager-init )
+	!systemd? ( !openrc-init? ( gui-libs/display-manager-init ) )
 "
 BDEPEND="
 	dev-python/docutils
@@ -127,6 +127,11 @@ src_install() {
 	insinto /etc/sddm.conf.d/
 	doins "${S}"/01gentoo.conf
 	[[ -f "${T}"/sddm.conf.old ]] && dodoc "${T}"/sddm.conf.old
+
+	if use openrc-init; then
+		newinitd "${FILESDIR}"/sddm.initd sddm
+		newconfd "${FILESDIR}"/sddm.confd sddm
+	fi
 
 	if use pam; then
 		newpamd "${FILESDIR}"/${PN}.pam ${PN} # bug 728550
