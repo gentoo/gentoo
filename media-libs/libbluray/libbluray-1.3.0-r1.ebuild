@@ -7,7 +7,7 @@ if [[ "${PV#9999}" != "${PV}" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libbluray.git"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
 	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
 fi
 
