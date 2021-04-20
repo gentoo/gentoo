@@ -8119,7 +8119,7 @@ dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance an
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
 dev-python/astroid 2.5 2.5.1 2.5.2 2.5.3: Abstract Syntax Tree for logilab packages
-dev-python/asttokens 2.0.4: Annotate Python AST trees with source text and token information
+dev-python/asttokens 2.0.4 2.0.5: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async-lru 1.0.2_p20201029: Simple lru_cache for asyncio
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
