@@ -1,5 +1,5 @@
---- htb.init.old	2004-01-29 22:41:23.000000000 +0100
-+++ htb.init		2006-09-07 23:32:58.000000000 +0200
+--- a/htb.init
++++ b/htb.init
 @@ -226,7 +226,7 @@
  #	priority. Also, classes with higher priority are offered excess
  #	bandwidth first.
