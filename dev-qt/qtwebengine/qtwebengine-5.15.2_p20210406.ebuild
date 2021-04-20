@@ -94,6 +94,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.2_p20210224-disable-git.patch" # downstream snapshot fix
 	"${FILESDIR}/${P}-glibc-2.33.patch" # by Fedora, bug 769989
 	"${FILESDIR}/${P}-gcc11.patch" # by Fedora, bug 768261
+	"${FILESDIR}/${P}-icu69.patch" # bug 781236
 )
 
 src_prepare() {
