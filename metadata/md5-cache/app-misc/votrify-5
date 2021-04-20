@@ -3,12 +3,12 @@ DESCRIPTION=Tool for community verification of Gentoo elections
 EAPI=7
 HOMEPAGE=https://github.com/mgorny/votrify
 INHERIT=python-single-r1
-IUSE=python_single_target_python3_7 python_single_target_python3_8
+IUSE=python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
 KEYWORDS=amd64 x86
 LICENSE=BSD-2
-RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-misc/gentoo-elections
-REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 )
+RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) app-misc/gentoo-elections
+REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/mgorny/votrify/archive/v5.tar.gz -> votrify-5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a
-_md5_=a5c476abe87aebfe329d349e87a5b2fd
+_md5_=fc3fbd3b3fec87f4c9cf51570ca476de
