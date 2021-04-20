@@ -133,6 +133,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-doc-path.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-7.3.0-vircgroup-Fix-virCgroupKillRecursive-wrt-nested-cont.patch
 )
 
 pkg_setup() {

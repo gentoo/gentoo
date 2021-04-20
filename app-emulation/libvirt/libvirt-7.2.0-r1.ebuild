@@ -132,6 +132,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-6.7.0-do-not-use-sysconfig.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-7.3.0-vircgroup-Fix-virCgroupKillRecursive-wrt-nested-cont.patch
 )
 
 pkg_setup() {
@@ -294,12 +295,6 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
 	rm -rf "${D}"/run
-
-	# Fix up doc paths for revisions
-	if [[ $PV != $PVR ]]; then
-		mv "${D}"/usr/share/doc/${PN}-${PV}/* "${D}"/usr/share/doc/${PF} || die
-		rmdir "${D}"/usr/share/doc/${PN}-${PV} || die
-	fi
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
