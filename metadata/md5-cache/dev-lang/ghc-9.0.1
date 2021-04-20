@@ -1,10 +1,10 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) ) test? ( || ( dev-lang/python:3.9 dev-lang/python:3.8 dev-lang/python:3.7 ) ) sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare prerm pretend setup test unpack
-DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( dev-libs/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 ) virtual/pkgconfig doc? ( app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-python/sphinx >=dev-libs/libxslt-1.1.2 ) !ghcbootstrap? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) )
+DEPEND=>=dev-lang/perl-5.6.1 dev-libs/gmp:0= sys-libs/ncurses:0=[unicode] elfutils? ( dev-libs/elfutils ) !ghcmakebinary? ( dev-libs/libffi:= ) numa? ( sys-process/numactl ) binary? ( !prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) ) sys-libs/ncurses:0/6 )
 DESCRIPTION=The Glasgow Haskell Compiler
 EAPI=7
 HOMEPAGE=https://www.haskell.org/ghc/
-INHERIT=autotools bash-completion-r1 eutils flag-o-matic ghc-package multilib multiprocessing pax-utils toolchain-funcs prefix check-reqs
+INHERIT=python-any-r1 autotools bash-completion-r1 eutils flag-o-matic ghc-package multilib multiprocessing pax-utils toolchain-funcs prefix check-reqs
 IUSE=big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test binary
 LICENSE=BSD
 PDEPEND=!ghcbootstrap? ( >=app-admin/haskell-updater-1.2 )
@@ -13,5 +13,5 @@ REQUIRED_USE=?? ( ghcbootstrap binary ) ?? ( profile binary )
 RESTRICT=!test? ( test )
 SLOT=0/9.0.1
 SRC_URI=!binary? ( https://downloads.haskell.org/ghc/9.0.1/ghc-9.0.1-src.tar.xz test? ( https://downloads.haskell.org/ghc/9.0.1/ghc-9.0.1-testsuite.tar.xz ) ) !ghcbootstrap? ( amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-9.0.1-x86_64-pc-linux-gnu.tbz2 ) x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-9.0.1-i686-pc-linux-gnu.tbz2 ) )
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	2f31876646b777a7851b22816735765c	pax-utils	d3fc79d3d50544347e324864f95206e2	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	check-reqs	97b90bd8fb799993925e6b3a683184e5
-_md5_=5ec47a1035ed66685fb40f0e3717479c
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	2f31876646b777a7851b22816735765c	pax-utils	d3fc79d3d50544347e324864f95206e2	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	check-reqs	97b90bd8fb799993925e6b3a683184e5
+_md5_=0da09902425558628fd3aee3f8a01e12
