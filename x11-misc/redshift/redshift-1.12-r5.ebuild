@@ -74,10 +74,10 @@ src_install() {
 		dosym redshift-gtk /usr/bin/gtk-redshift
 
 		python_foreach_impl python_optimize
-	fi
 
-	# https://bugs.gentoo.org/784281
-	mv "${D}"/usr/share/{appdata,metainfo}/ || die
+		# https://bugs.gentoo.org/784281
+		mv "${D}"/usr/share/{appdata,metainfo}/ || die
+	fi
 }
 
 pkg_preinst() {
