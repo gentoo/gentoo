@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
