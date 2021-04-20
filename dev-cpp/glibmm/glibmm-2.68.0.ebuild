@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org meson multilib-minimal
+PYTHON_COMPAT=( python3_{7..9} )
+inherit gnome.org meson multilib-minimal python-any-r1
 
 DESCRIPTION="C++ interface for glib2"
 HOMEPAGE="https://www.gtkmm.org"
@@ -19,6 +20,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen[dot]
