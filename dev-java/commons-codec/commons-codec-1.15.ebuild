@@ -18,7 +18,7 @@ SRC_URI="mirror://apache/commons/codec/source/${P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 # Compile dependencies
 # POM: ${P}-src/pom.xml
@@ -36,21 +36,15 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-S="${WORKDIR}"
+S="${WORKDIR}/${P}-src"
 
-JAVA_SRC_DIR="${P}-src/src/main/java"
+JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS=(
-	"${P}-src/src/main/resources"
-	"${P}-src"
+	"src/main/resources"
 )
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,commons-lang-3.6"
-JAVA_TEST_SRC_DIR="${P}-src/src/test/java"
+JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS=(
-	"${P}-src/src/test/resources"
-	"${P}-src"
+	"src/test/resources"
 )
-
-# testSha224_PathAsHex(org.apache.commons.codec.digest.DigestUtilsTest)
-# java.nio.file.NoSuchFileException: src/test/resources/org/apache/commons/codec/empty.bin
-JAVA_TEST_EXCLUDES="org.apache.commons.codec.digest.DigestUtilsTest"
