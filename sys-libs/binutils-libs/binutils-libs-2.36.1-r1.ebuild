@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PATCH_VER=1
+PATCH_VER=3
 PATCH_DEV=dilfridge
 
 inherit libtool toolchain-funcs multilib-minimal
@@ -29,12 +29,6 @@ DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}
 	>=sys-devel/binutils-config-5
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.35.1-cet.patch
-	"${FILESDIR}"/${PN}-2.36.1-bfd-ctf.patch
-	"${FILESDIR}"/${PN}-2.36.1-ld-ctf.patch
-)
 
 S="${WORKDIR}/${MY_P}"
 
