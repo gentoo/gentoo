@@ -7,4 +7,7 @@
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">tat/mimetic</remote-id>
+	</upstream>
 </pkgmetadata>
