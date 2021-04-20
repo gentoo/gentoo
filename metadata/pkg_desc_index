@@ -18576,7 +18576,7 @@ x11-misc/dclock 2.2.2_p12: Digital clock for the X window system
 x11-misc/devilspie 0.23-r2: Window matching utility similar to Sawfish's Matched Windows
 x11-misc/devilspie2 0.43-r100: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.8.0: DesktopEntry eXecution - tool to manage and launch autostart entries
-x11-misc/dmenu 4.6 4.8 4.9 5.0 9999: a generic, highly customizable, and efficient menu for the X Window System
+x11-misc/dmenu 4.8 4.9 5.0 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dunst 1.4.1 1.5.0 1.6.1 9999: Customizable and lightweight notification-daemon
 x11-misc/dxpc 3.9.2-r2: Differential X Protocol Compressor
 x11-misc/dzen 0.9.5_p2: General purpose messaging, notification, and menu utility
