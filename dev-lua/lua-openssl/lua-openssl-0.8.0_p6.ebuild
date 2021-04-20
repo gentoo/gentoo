@@ -23,7 +23,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT openssl PHP-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE="libressl test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
