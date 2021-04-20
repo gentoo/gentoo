@@ -41,7 +41,7 @@ RDEPEND="
 	dev-libs/lzo
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[jpeg]
 	dev-qt/qtnetwork:5
 	dev-qt/qtscript:5
 	dev-qt/qtsql:5[mysql]
