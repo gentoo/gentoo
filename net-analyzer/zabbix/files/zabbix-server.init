@@ -17,3 +17,7 @@ start_pre() {
 	checkpath -q -d -m 0750 -o root:zabbix /etc/zabbix
 	checkpath -q -f -m 0640 -o root:zabbix /etc/zabbix/*.conf
 }
+
+reload() {
+    /usr/sbin/zabbix_server -c /etc/zabbix/zabbix_server.conf -R config_cache_reload
+}
