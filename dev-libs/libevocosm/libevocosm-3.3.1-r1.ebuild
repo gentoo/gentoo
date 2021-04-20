@@ -12,15 +12,15 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-BDEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="dev-libs/libcoyotl
 	dev-libs/libbrahe"
 DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 PATCHES=(
-	"${FILESDIR}/${P}-gcc47.patch"
+	"${FILESDIR}"/${P}-gcc47.patch
 )
 
 src_configure() {
