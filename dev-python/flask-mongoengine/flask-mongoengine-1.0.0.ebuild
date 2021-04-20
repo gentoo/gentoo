@@ -22,6 +22,7 @@ RDEPEND=">=dev-python/flask-1.1.2[${PYTHON_USEDEP}]
 BDEPEND="
 	test? (
 		dev-db/mongodb
+		dev-python/python-email-validator[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_sphinx docs
