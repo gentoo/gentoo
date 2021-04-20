@@ -82,7 +82,6 @@ src_configure() {
 		-DSTATIC_LINKING:BOOL=OFF
 		-DBUILD_TESTING:BOOL=OFF
 		-DBUILD_FUZZ:BOOL=$(usex fuzzing)
-		-DUSE_LIBFUZZER:BOOL=$(usex libfuzzer)
 	)
 
 	cmake_src_configure
