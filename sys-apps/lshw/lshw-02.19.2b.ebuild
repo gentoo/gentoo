@@ -70,7 +70,6 @@ src_compile() {
 }
 
 src_install() {
-	default
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install $(usex gtk 'install-gui' '')
 	if use gtk ; then
 		newicon -s scalable src/gui/artwork/logo.svg gtk-lshw.svg
