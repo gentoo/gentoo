@@ -1,5 +1,5 @@
---- spotify-dbus.py_orig	2021-04-12 11:11:00.710360694 +0200
-+++ spotify-dbus.py	2021-04-12 11:50:55.946631871 +0200
+--- a/spotify-dbus.py	2021-04-12 11:11:00.710360694 +0200
++++ b/spotify-dbus.py	2021-04-12 11:50:55.946631871 +0200
 @@ -227,8 +227,7 @@
  			if self.debug == True:
  				print("Opening " + param + "...")
