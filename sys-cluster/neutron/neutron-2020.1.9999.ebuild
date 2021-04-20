@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -205,8 +205,8 @@ python_install_all() {
 	unpack "neutron-ml2-plugins-${PV}.tar.gz"
 
 	# correcting perms
-	fowners neutron:neutron -R "/etc/neutron"
-	fperms o-rwx -R "/etc/neutron/"
+	chown neutron:neutron -R "/etc/neutron"
+	chmod o-rwx -R "/etc/neutron/"
 
 	#remove superfluous stuff
 	rm -R "${D}/usr/etc/"
