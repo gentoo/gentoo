@@ -12049,7 +12049,7 @@ gnome-extra/gnome-directory-thumbnailer 0.1.11: Thumbnail generator for director
 gnome-extra/gnome-documents 3.34.0: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90-r1: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.36.3 3.38.1: Help a new user get started in GNOME
-gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
+gnome-extra/gnome-integration-spotify 20140907-r2: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.36.0: Log viewer for the systemd journal
 gnome-extra/gnome-power-manager 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
