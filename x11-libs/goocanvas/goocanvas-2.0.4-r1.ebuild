@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit gnome2
+PYTHON_COMPAT=( python3_{7..9} )
+inherit gnome2 python-any-r1
 
 DESCRIPTION="Canvas widget for GTK+ using the cairo 2D library for drawing"
 HOMEPAGE="https://wiki.gnome.org/GooCanvas"
@@ -20,6 +20,7 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.16
 	>=sys-devel/gettext-0.19.4
