@@ -28,7 +28,7 @@ HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug kerberos lprng-compat pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
 REQUIRED_USE="usb? ( threads )"
 # upstream includes an interactive test which is a nono for gentoo
@@ -50,7 +50,6 @@ DEPEND="
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	!lprng-compat? ( !net-print/lprng )
 	pam? ( sys-libs/pam )
 	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
@@ -277,17 +276,6 @@ multilib_src_install_all() {
 	# the following are created by the init script
 	rm -r "${ED}"/var/cache/cups || die
 	rm -r "${ED}"/run || die
-
-	# for the special case of running lprng and cups together, bug 467226
-	if use lprng-compat ; then
-		rm -v "${ED}"/usr/bin/{lp*,cancel} || die
-		rm -v "${ED}"/usr/sbin/lp* || die
-		rm -v "${ED}"/usr/share/man/man1/{lp*,cancel*} || die
-		rm -v "${ED}"/usr/share/man/man8/lp* || die
-		ewarn "Not installing lp... binaries, since the lprng-compat useflag is set."
-		ewarn "Unless you plan to install an exotic server setup, you most likely"
-		ewarn "do not want this. Disable the useflag then and all will be fine."
-	fi
 }
 
 pkg_preinst() {
