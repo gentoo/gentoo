@@ -1,6 +1,5 @@
-diff -NrU5 libcoyotl-3.1.0.orig/libcoyotl/command_line.cpp libcoyotl-3.1.0/libcoyotl/command_line.cpp
---- libcoyotl-3.1.0.orig/libcoyotl/command_line.cpp	2008-03-21 22:41:41.000000000 +0100
-+++ libcoyotl-3.1.0/libcoyotl/command_line.cpp	2008-03-21 22:41:59.000000000 +0100
+--- a/libcoyotl/command_line.cpp
++++ b/libcoyotl/command_line.cpp
 @@ -30,10 +30,13 @@
  //      http://www.coyotegulch.com
  //  
@@ -15,9 +14,8 @@ diff -NrU5 libcoyotl-3.1.0.orig/libcoyotl/command_line.cpp libcoyotl-3.1.0/libco
  command_line::command_line(int argc, char * argv[], const set<string> & bool_opts)
    : m_options(),
      m_inputs(),
-diff -NrU5 libcoyotl-3.1.0.orig/libcoyotl/sortutil.h libcoyotl-3.1.0/libcoyotl/sortutil.h
---- libcoyotl-3.1.0.orig/libcoyotl/sortutil.h	2008-03-21 22:41:41.000000000 +0100
-+++ libcoyotl-3.1.0/libcoyotl/sortutil.h	2008-03-21 22:41:59.000000000 +0100
+--- a/libcoyotl/sortutil.h
++++ b/libcoyotl/sortutil.h
 @@ -34,10 +34,11 @@
  //-----------------------------------------------------------------------
  
