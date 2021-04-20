@@ -11,4 +11,4 @@ RDEPEND=dev-games/higan-ananke x11-libs/gtk+:2 x11-libs/libX11
 SLOT=0
 SRC_URI=https://higan.googlecode.com/files/purify_v03-source.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=d7ca8d4fb7e10344e9aadbcbccdb5a33
+_md5_=d07cf30304fa696ae17d9b5ea3bfd6af

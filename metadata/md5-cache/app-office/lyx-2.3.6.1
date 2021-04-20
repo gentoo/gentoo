@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://www.lyx.org/
 INHERIT=desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
 IUSE=aspell cups debug dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he X python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) app-text/mythes dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-texlive/texlive-fontsextra sys-apps/file sys-libs/zlib virtual/imagemagick-tools[png,svg?] aspell? ( app-text/aspell ) cups? ( net-print/cups ) dia? ( app-office/dia ) dot? ( media-gfx/graphviz ) enchant? ( app-text/enchant:2 ) gnumeric? ( app-office/gnumeric ) html? ( dev-tex/html2latex ) hunspell? ( app-text/hunspell ) l10n_he? ( dev-tex/culmus-latex ) latex? ( app-text/dvipng app-text/ghostscript-gpl app-text/ps2eps app-text/texlive dev-texlive/texlive-fontsrecommended dev-texlive/texlive-latexextra dev-texlive/texlive-mathscience dev-texlive/texlive-pictures dev-texlive/texlive-plaingeneric || ( dev-tex/hevea dev-tex/latex2html dev-tex/tex4ht[java] dev-tex/tth ) ) rcs? ( dev-vcs/rcs ) rtf? ( app-text/unrtf dev-tex/html2latex dev-tex/latex2rtf ) svg? ( || ( gnome-base/librsvg media-gfx/inkscape ) )
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/lyx-2.3.6.1.tar.xz ftp://ftp.lyx.org/pub/lyx/devel/lyx-2.3/lyx-2.3.6.1/lyx-2.3.6.1.tar.xz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	font	0667878c2b594871023dd1833d05996f	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=965c560e5f2c4f69f46b2cb00e6ff07b
+_md5_=162cf0d19768a2b17d4813170977550e

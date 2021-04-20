@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://github.com/ocaml-ppx/cinaps
 INHERIT=dune
 IUSE=+ocamlopt test
-KEYWORDS=amd64 arm ~arm64 ~ppc ~ppc64 x86
+KEYWORDS=amd64 arm ~arm64 ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=dev-ml/re:= >=dev-lang/ocaml-4:=[ocamlopt?]
 RESTRICT=!test? ( test )
 SLOT=0/0.15.0
 SRC_URI=https://github.com/ocaml-ppx/cinaps/archive/v0.15.0.tar.gz -> cinaps-0.15.0.tar.gz
 _eclasses_=dune	2d138ae1c0f7d4624876ad486529731f
-_md5_=0e02d6d91b7f697a95859dd21524b539
+_md5_=bae81665a54df8b0078a358759fdc244
