@@ -68,6 +68,7 @@ PDEPEND=">=net-print/cups-filters-1.0.43"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
+	"${FILESDIR}/${PN}-2.3.3-user-AR.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
