@@ -6,7 +6,7 @@ EAPI=7
 inherit xdg cmake desktop
 
 DESCRIPTION="Alf's PDF Viewer Like Vim"
-HOMEPAGE="https://naihe2010.github.com/apvlv/"
+HOMEPAGE="https://github.com/naihe2010/apvlv/"
 SRC_URI="https://github.com/naihe2010/apvlv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
