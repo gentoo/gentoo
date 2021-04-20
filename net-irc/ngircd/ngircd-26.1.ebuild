@@ -42,6 +42,7 @@ BDEPEND="
 		dev-tcltk/expect
 		net-misc/netkit-telnetd
 	)
+	verify-sig? ( app-crypt/openpgp-keys-alexbarton )
 "
 
 src_prepare() {
