@@ -1,5 +1,5 @@
---- unixcall.c.orig	2007-03-18 17:46:05 +0100
-+++ unixcall.c	2007-03-18 17:51:13 +0100
+--- a/unixcall.c
++++ b/unixcall.c
 @@ -77,6 +77,13 @@
  static int ioset = 0;
  static struct termios old;
