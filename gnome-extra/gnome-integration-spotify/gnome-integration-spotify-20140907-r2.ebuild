@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,12 @@ RDEPEND="${DEPEND}
 	x11-misc/xautomation
 	x11-misc/xdotool
 	x11-apps/xwininfo"
+
+PATCHES=(
+	"${FILESDIR}/gnome-integration-spotify-command-line-parsing.patch"
+	"${FILESDIR}/gnome-integration-spotify-correct-interface.patch"
+	"${FILESDIR}/gnome-integration-spotify-use-glib.patch"
+)
 
 src_install() {
 	dobin spotify-dbus.py
