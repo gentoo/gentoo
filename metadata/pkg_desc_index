@@ -12011,7 +12011,7 @@ gnome-base/gnome-menus 3.36.0: Library and layout configuration for the Desktop 
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.36.2: The GNOME Flashback Panel
 gnome-base/gnome-session 3.38.0-r1 40.0: Gnome session manager
-gnome-base/gnome-settings-daemon 3.38.1 40.0: Gnome Settings Daemon
+gnome-base/gnome-settings-daemon 3.38.1 40.0 40.0.1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.36.7 3.38.4 40.0: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.38.0 40.0: Collection of GSettings schemas for GNOME desktop
