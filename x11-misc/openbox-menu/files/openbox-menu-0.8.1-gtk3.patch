@@ -2,18 +2,18 @@ From 8fe1e7fa9239ed8b604a59ef2202f183f1f56eb6 Mon Sep 17 00:00:00 2001
 From: Fabrice THIROUX <fabrice.thiroux@net-c.com>
 Date: Sat, 13 Feb 2021 14:46:53 +0100
 Subject: [PATCH] Updated for gtk3. Remove icon_theme annoying variable
+
+---
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,5 @@
 -LIBS= `pkg-config --libs glib-2.0 gtk+-2.0 libmenu-cache`
 -CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-2.0 libmenu-cache`
-+LIBS= `${PKG_CONFIG} --libs glib-2.0 gtk+-3.0 libmenu-cache`
-+CFLAGS+= -Wall `${PKG_CONFIG} --cflags glib-2.0 gtk+-3.0 libmenu-cache`
++LIBS= `pkg-config --libs glib-2.0 gtk+-3.0 libmenu-cache`
++CFLAGS+= -g -Wall `pkg-config --cflags glib-2.0 gtk+-3.0 libmenu-cache`
  CC=gcc
  #-DG_DISABLE_DEPRECATED
  
-diff --git a/src/menu.c b/src/menu.c
-index 5b7e8f8..3b752d9 100644
 --- a/src/menu.c
 +++ b/src/menu.c
 @@ -240,7 +240,6 @@ main (int argc, char **argv)
