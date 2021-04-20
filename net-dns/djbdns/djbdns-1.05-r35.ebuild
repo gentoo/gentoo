@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/increase-cname-recustion-depth.patch"
 	"${FILESDIR}/CVE2009-0858_0001-check-response-domain-name-length.patch"
 	"${FILESDIR}/CVE2012-1191_0001-ghost-domain-attack.patch"
+	"${FILESDIR}/AR-and-RANLIB-support.patch"
 )
 
 src_prepare() {
@@ -73,7 +74,7 @@ src_compile() {
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo "/usr" > conf-home || die
-	emake
+	emake AR=$(tc-getAR) RANLIB=$(tc-getRANLIB)
 }
 
 src_install() {
