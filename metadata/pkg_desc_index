@@ -1000,7 +1000,7 @@ app-backup/attic 0.16-r1 9999: Attic is a deduplicating backup program written i
 app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.2.1: lightweight, extensible meta-backup system
-app-backup/backuppc 3.3.1-r5 3.3.1-r6: High-performance backups to a server's disk
+app-backup/backuppc 3.3.1-r6: High-performance backups to a server's disk
 app-backup/bacula 9.6.5 9.6.6 9.6.7: Featureful client/server network backup suite
 app-backup/bareos 17.2.10 18.2.10 19.2.9: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.15 1.1.16 9999: Deduplicating backup program with compression and authenticated encryption
@@ -1146,7 +1146,7 @@ app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with 
 app-crypt/codecrypt 1.7.2-r1 1.8-r2: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
 app-crypt/coolkey 1.1.0-r7: Linux Driver support for the CoolKey and CAC products
-app-crypt/crackpkcs12 0.2.10: multithreaded program to crack PKCS#12 files
+app-crypt/crackpkcs12 0.2.10: Multithreaded program to crack PKCS#12 files
 app-crypt/debian-archive-keyring 2019.1-r1 2021.1 2021.1.1: GnuPG archive keys of the Debian archive
 app-crypt/dehydrated 0.7.0: A client for signing certificates with an ACME-server
 app-crypt/dieharder 3.31.1-r3: An advanced suite for testing the randomness of RNGs
@@ -1939,7 +1939,7 @@ app-editors/moe 1.9 1.10 1.11: A powerful and user-friendly console text editor
 app-editors/mousepad 0.5.3-r1 0.5.4: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 5.3-r1 5.5 5.6 5.6.1 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.3.0: The nice editor, easy to use for the beginner and powerful for the wizard
-app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
+app-editors/nedit 5.6-r2 5.7: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.4.4-r100 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
@@ -14715,7 +14715,7 @@ net-dns/bind-tools 9.16.12 9.16.13: bind tools: dig, nslookup, host, nsupdate, d
 net-dns/c-ares 1.17.1: C library that resolves names asynchronously
 net-dns/coredns 1.6.9 1.7.0 1.8.3: A DNS server that chains middleware
 net-dns/ddclient 3.9.1: Perl client used to update dynamic DNS entries
-net-dns/djbdns 1.05-r33 1.05-r34: Collection of DNS client/server software
+net-dns/djbdns 1.05-r33 1.05-r35: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r3: A caching DNS proxy server
 net-dns/dnscap 1.10.3: Network capture utility designed specifically for DNS traffic
 net-dns/dnscrypt-proxy 2.0.45 9999: A flexible DNS proxy, with support for encrypted DNS protocols
@@ -14808,7 +14808,7 @@ net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r2: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.4: Advanced TFTP implementation client/server
-net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
+net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-likefunctions
 net-ftp/filezilla 3.53.1-r1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client

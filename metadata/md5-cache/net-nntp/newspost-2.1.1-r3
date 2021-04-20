@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=A usenet binary autoposter for unix
-EAPI=5
+EAPI=7
 HOMEPAGE=http://newspost.unixcab.org/
-INHERIT=epatch toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://newspost.unixcab.org/download/newspost-2.1.1.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=affeda3ab4f4dcbdc1e5f13479b752ea
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=4edb6ef5085cf43612d159335484a923

@@ -1,7 +1,7 @@
 DEFINED_PHASES=install postinst prepare
 DEPEND=>=app-arch/tar-1.13
 DESCRIPTION=Reoback Backup Solution
-EAPI=5
+EAPI=7
 HOMEPAGE=http://reoback.sourceforge.net/
 INHERIT=vcs-clean
 KEYWORDS=amd64 ppc x86
@@ -10,4 +10,4 @@ RDEPEND=>=dev-lang/perl-5.6.1
 SLOT=0
 SRC_URI=mirror://sourceforge/reoback/reoback-1.0_r3.tar.gz
 _eclasses_=vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b438fe89c942f8d750f1a90076cd0c00
+_md5_=81dd63323f1046acca8e0cef9bcb1551

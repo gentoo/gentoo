@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=http://backuppc.sourceforge.net/
 INHERIT=depend.apache systemd
 IUSE=rss samba
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=acct-group/backuppc acct-user/backuppc app-admin/apache-tools app-admin/makepasswd dev-lang/perl app-arch/par2cmdline dev-perl/Archive-Zip dev-perl/CGI dev-perl/File-RsyncP dev-perl/libwww-perl virtual/mta virtual/perl-IO-Compress www-apache/mod_perl www-apache/mpm_itk || ( >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authn_core,apache2_modules_authz_core,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_cgi] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authn_core,apache2_modules_authz_core,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_cgid] >=www-servers/apache-2.4[apache2_modules_alias,apache2_modules_authn_core,apache2_modules_authz_core,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_fcgid] ) rss? ( dev-perl/XML-RSS ) samba? ( net-fs/samba ) =www-servers/apache-2.4*
 SLOT=0
 SRC_URI=https://github.com/backuppc/backuppc/releases/download/3.3.1/BackupPC-3.3.1.tar.gz
 _eclasses_=depend.apache	d54e0d0bd6b36c476594edc2cee2e332	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=ccd92ee223d2a6a5b12b17e83c3483ad
+_md5_=a1064459a2581130df63cbbfb00db3df

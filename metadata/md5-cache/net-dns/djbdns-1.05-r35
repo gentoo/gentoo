@@ -10,4 +10,4 @@ RDEPEND=acct-user/dnscache acct-user/dnslog acct-user/tinydns sys-apps/ucspi-tcp
 SLOT=0
 SRC_URI=http://cr.yp.to/djbdns/djbdns-1.05.tar.gz http://smarden.org/pape/djb/manpages/djbdns-1.05-man.tar.gz ipv6? ( http://www.fefe.de/dns/djbdns-1.05-test28.diff.xz )
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=c73d24b1fb4bd80ad07739c474231467
+_md5_=36972b6060a9641e12a0b76cf6eaee0d
