@@ -47,6 +47,7 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	acct-group/colord
 	acct-user/colord
+	app-text/docbook-xsl-ns-stylesheets
 	dev-libs/libxslt
 	>=dev-util/intltool-0.35
 	>=sys-devel/gettext-0.17
