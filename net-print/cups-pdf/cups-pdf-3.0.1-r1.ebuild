@@ -8,6 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="Provides a virtual printer for CUPS to produce PDF files"
 HOMEPAGE="https://www.cups-pdf.de/"
 SRC_URI="https://www.cups-pdf.de/src/${PN}_${PV/_}.tar.gz"
+S=${WORKDIR}/${PN}-${PV/_}
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -16,11 +17,9 @@ IUSE="+ppds"
 
 RDEPEND="
 	net-print/cups
-	app-text/ghostscript-gpl
+	<app-text/ghostscript-gpl-9.54
 "
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${PN}-${PV/_}
 
 src_compile() {
 	pushd src >/dev/null
