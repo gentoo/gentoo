@@ -31,19 +31,20 @@ index a95c60a1..f5c4d676 100644
  function(embed_headers output)
    file(WRITE ${output} "#include \"headers.h\"\n\nnamespace bpftrace {\n")
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 37ee2204..d35574f5 100644
+index 37ee2204..8b2e1909 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -145,7 +145,7 @@ if (ALLOW_UNSAFE_PROBE)
+@@ -145,7 +145,8 @@ if (ALLOW_UNSAFE_PROBE)
    target_compile_definitions(libbpftrace PRIVATE HAVE_UNSAFE_PROBE)
  endif(ALLOW_UNSAFE_PROBE)
  
 -target_link_libraries(libbpftrace arch ast parser resources)
 +target_link_libraries(libbpftrace bpftracearch bpftraceast bpftraceparser bpftraceresources)
++install(TARGETS bpftracearch bpftraceast bpftraceparser LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
  
  target_link_libraries(libbpftrace ${LIBBCC_LIBRARIES})
  if(STATIC_LINKING)
-@@ -194,6 +194,7 @@ if (USE_LIBFUZZER)
+@@ -194,6 +195,7 @@ if (USE_LIBFUZZER)
  endif()
  
  install(TARGETS ${BPFTRACE} DESTINATION ${CMAKE_INSTALL_BINDIR})
