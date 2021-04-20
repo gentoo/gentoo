@@ -10553,7 +10553,7 @@ dev-ruby/tdiff 0.3.4: Calculates the differences between two tree-like structure
 dev-ruby/temple 0.8.2: An abstraction and a framework for compiling templates to pure Ruby
 dev-ruby/term-ansicolor 1.7.1: Small Ruby library that colors strings using ANSI escape sequences
 dev-ruby/terminal-table 1.8.0-r2 2.0.0 3.0.0: Simple, feature rich ascii table generation library
-dev-ruby/test-unit 3.3.3 3.3.7 3.3.8 3.3.9 3.4.0: An xUnit family unit testing framework for Ruby
+dev-ruby/test-unit 3.3.3 3.3.7 3.3.8 3.3.9 3.4.0 3.4.1: An xUnit family unit testing framework for Ruby
 dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_construct 2.0.2: Creates temporary files and directories for testing
 dev-ruby/test_declarative 0.0.6: Simply adds a declarative test method syntax to test/unit
