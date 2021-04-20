@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="mbox selinux"
 
-DEPEND="virtual/mta"
+DEPEND="acct-group/mail
+	virtual/mta"
 RDEPEND="selinux? ( sec-policy/selinux-procmail )"
 
 src_prepare() {
