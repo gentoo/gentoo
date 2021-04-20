@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org gnome2-utils meson readme.gentoo-r1 xdg
+PYTHON_COMPAT=( python3_{7..9} )
+inherit gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="Archive manager for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/FileRoller"
@@ -28,6 +29,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/glib-utils
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
