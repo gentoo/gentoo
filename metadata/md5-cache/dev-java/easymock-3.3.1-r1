@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=https://easymock.org/
 INHERIT=java-pkg-2 java-pkg-simple
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=amd64 ~arm64 ~ppc64 x86
+KEYWORDS=amd64 ~arm64 ppc64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.8:* dev-java/cglib:3 dev-java/junit:4 dev-java/objenesis:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=3.2
 SRC_URI=https://github.com/easymock/easymock/archive/refs/tags/easymock-3.3.1.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=80ebd6d7f6eb03e976286b93f98ebb6b
+_md5_=f0cb9df7c49da6e9b503d9a35281c971
