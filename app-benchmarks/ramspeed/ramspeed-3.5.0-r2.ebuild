@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -11,13 +11,12 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Benchmarking for memory and cache"
 HOMEPAGE="http://www.alasir.com/software/ramspeed/"
 SRC_URI="http://www.alasir.com/software/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Alasir"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="cpu_flags_x86_sse pic"
-
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local obj
@@ -28,7 +27,7 @@ src_configure() {
 
 	tc-export CC AS
 
-	#fix the stack
+	# Fix the stack
 	append-ldflags -Wl,-z,noexecstack
 	obj=( ramsmp.o ${arch_prefix}{fltmark,fltmem,intmark,intmem}.o )
 
@@ -50,7 +49,7 @@ src_configure() {
 		obj+=( ${arch_prefix}{mmxmark,mmxmem,ssemark,ssemem}.o )
 	fi
 
-	echo "ramsmp: ${obj[@]}" > Makefile
+	echo "ramsmp: ${obj[@]}" > Makefile || die
 }
 
 src_install() {
