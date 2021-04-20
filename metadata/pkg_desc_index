@@ -8344,7 +8344,7 @@ dev-python/duecredit 0.7.0 0.8.0 0.9.1: Publications (and donations) tracer
 dev-python/dulwich 0.20.6 0.20.15 0.20.18 0.20.19 0.20.20 0.20.21: Pure-Python implementation of the Git file formats and protocols
 dev-python/easy-thumbnails 2.7 2.7.1: Easy thumbnails for Django
 dev-python/easyprocess 0.3 0.3-r1: Easy to use Python subprocess interface
-dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27 0.1.29: A dockerized approach to test a Gentoo package within a clean stage3 container
+dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27 0.1.29 0.1.30: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editdistance-s 1.0.0: Fast implementation of edit (Levenshtein) distance
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
