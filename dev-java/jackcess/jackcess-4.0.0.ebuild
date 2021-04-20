@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jahlborn/${PN}/archive/refs/tags/${P}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~ppc-macos ~x86-linux"
 
 # Common dependencies
 # POM: pom.xml
@@ -43,6 +43,10 @@ RDEPEND="
 
 S="${WORKDIR}/${PN}-${P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-tests.patch"
+)
+
 JAVA_GENTOO_CLASSPATH="commons-logging,commons-lang-3.6,poi"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
@@ -57,7 +61,13 @@ JAVA_TEST_EXCLUDES=(
 	"com.healthmarketscience.jackcess.TestUtil"
 )
 
+src_prepare() {
+	default
+	java-utils-2_src_prepare
+}
+
 src_test() {
-	TZ=UTC
+	export TZ=UTC
+	export LC_ALL=C
 	java-pkg-simple_src_test
 }
