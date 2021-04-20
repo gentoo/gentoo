@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,18 +11,17 @@ MY_P="${MY_PN}_${PV}"
 DESCRIPTION="Recovery tool for wpa passphrase"
 HOMEPAGE="https://www.salvatorefresta.net"
 SRC_URI="https://tools.salvatorefresta.net/${MY_P}.zip -> ${P}.zip"
+S="${WORKDIR}"/${MY_P}
 
-KEYWORDS="amd64 ppc x86"
-IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ppc x86"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
-
-S=${WORKDIR}/${MY_P}
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
+	default
+
 	sed -i "s:wirouterkeyrec:${PN}:" src/*.h || die
 }
 
