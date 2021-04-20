@@ -5614,7 +5614,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r6: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.8.6 1.8.7 1.9.1-r1 1.9.2: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.8.6 1.8.7 1.9.1-r1 1.9.2 1.9.3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
 dev-libs/libgdata 0.17.13 0.18.1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.20.3 0.20.4: GObject-based interfaces and classes for commonly used data structures
