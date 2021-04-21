@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 MAVEN_ID="commons-logging:commons-logging:1.2"
@@ -14,23 +14,23 @@ SRC_URI="mirror://apache/commons/logging/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="avalon-framework avalon-logkit log4j servletapi test"
 RESTRICT="!test? ( test ) !servletapi? ( test )"
 
 CDEPEND="
-	log4j? ( dev-java/log4j:0 )
-	servletapi? ( java-virtuals/servlet-api:3.1 )
 	avalon-logkit? ( dev-java/avalon-logkit:2.0 )
-	avalon-framework? ( dev-java/avalon-framework:4.2 )"
+	avalon-framework? ( dev-java/avalon-framework:4.2 )
+	log4j? ( dev-java/log4j:0 )
+	servletapi? ( dev-java/tomcat-servlet-api:4.0 )"
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.8:*
 	test? ( dev-java/ant-junit:0 )"
 
 S="${WORKDIR}/${P}-src"
@@ -62,7 +62,7 @@ src_prepare() {
 	fi
 
 	if use servletapi; then
-		echo "servletapi.jar=$(java-pkg_getjar --virtual servlet-api-3.1 servlet-api.jar)" >> build.properties || die
+		echo "servletapi.jar=$(java-pkg_getjar tomcat-servlet-api-4.0 servlet-api.jar)" >> build.properties || die
 	fi
 }
 
