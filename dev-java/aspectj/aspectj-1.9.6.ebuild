@@ -14,7 +14,7 @@ LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-CDEPEND="dev-java/asm:7
+CDEPEND="dev-java/asm:9
 	dev-java/commons-logging:0"
 DEPEND="${CDEPEND}
 	>=virtual/jdk-1.8:*"
@@ -25,7 +25,7 @@ BDEPEND="app-arch/zip"
 S=${WORKDIR}
 
 JAVA_SRC_DIR="${S}/src"
-JAVA_GENTOO_CLASSPATH="commons-logging,asm-7"
+JAVA_GENTOO_CLASSPATH="commons-logging,asm-9"
 JAVA_ENCODING="iso8859-1"
 
 src_unpack() {
@@ -41,5 +41,4 @@ src_prepare() {
 	# aspectj uses a renamed version of asm:4
 	find -name "*.java" -exec sed -i -e 's/import aj.org.objectweb.asm./import org.objectweb.asm./g' {} \; || die
 	mkdir -p "${S}"/target/classes/org/aspectj/weaver/ || die
-#	cp -vr "${S}"/src/org/aspectj/weaver/*.properties "${S}"/target/classes/org/aspectj/weaver/ || die
 }
