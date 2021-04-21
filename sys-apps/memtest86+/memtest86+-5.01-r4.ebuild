@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit mount-boot eutils toolchain-funcs
+inherit mount-boot epatch toolchain-funcs
 
 DESCRIPTION="Memory tester based on memtest86"
 HOMEPAGE="http://www.memtest.org/"

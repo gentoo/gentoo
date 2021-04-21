@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 DOLILO_V="0.6"
 IUSE="static minimal pxeserial device-mapper"
@@ -63,7 +63,7 @@ src_install() {
 	keepdir /boot
 	emake DESTDIR="${D}" install
 
-	if use !minimal; then
+	if ! use minimal; then
 		into /
 		dosbin "${WORKDIR}"/dolilo/dolilo
 
@@ -76,7 +76,8 @@ src_install() {
 		newconfd "${WORKDIR}"/dolilo/dolilo.conf.d dolilo.example
 
 		dodoc CHANGELOG* readme/README.* readme/INCOMPAT README
-		docinto samples ; dodoc sample/*
+		docinto samples
+		dodoc sample/*
 	fi
 }
 

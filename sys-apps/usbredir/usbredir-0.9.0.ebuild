@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils flag-o-matic autotools
+
+inherit autotools flag-o-matic
 
 MY_PV=${PV/_p*/}
 
@@ -16,8 +17,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs"
 
 RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 
