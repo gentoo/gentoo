@@ -1,0 +1,173 @@
+From dfb9322ae70236edd45fad695dd6c24517f2ceaf Mon Sep 17 00:00:00 2001
+From: James Westman <james@flyingpimonster.net>
+Date: Wed, 23 Sep 2020 13:14:07 -0500
+Subject: [PATCH] glade: Fix macro renamed in GladeUI 3.37
+
+Glade 3.37 renamed the macro GWA_GET_CLASS to
+GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS [1]. This commit switches to use the new
+macro name, and for older versions of Glade, defines the new name as the old
+one for compatibility.
+
+Fixes #335 and obsoletes !607.
+
+[1]: https://gitlab.gnome.org/GNOME/glade/-/commit/bb626dd41d93c92b587b37f03d295356e39a7d04
+
+mattst88: Backported to 0.0.13
+---
+ glade/glade-hdy-header-group.c | 14 +++++++++++---
+ glade/glade-hdy-paginator.c    | 18 +++++++++++++-----
+ glade/glade-hdy-swipe-group.c  | 14 +++++++++++---
+ 3 files changed, 35 insertions(+), 11 deletions(-)
+
+diff --git a/glade/glade-hdy-header-group.c b/glade/glade-hdy-header-group.c
+index bd620ad..11c3aad 100644
+--- a/glade/glade-hdy-header-group.c
++++ b/glade/glade-hdy-header-group.c
+@@ -14,6 +14,14 @@
+ #include <glib/gi18n-lib.h>
+ #include <gladeui/glade.h>
+ 
++/*
++ * Another macro got renamed in GladeUI 3.38. For older versions of GladeUI,
++ * define the new macro as the old one.
++ */
++#ifndef GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS
++#define GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS GWA_GET_CLASS
++#endif
++
+ /* Guess wether we are using a Glade version older than 3.36.
+  *
+  * If yes, redefine some symbols which got renamed.
+@@ -83,7 +91,7 @@ glade_hdy_header_group_read_widget (GladeWidgetAdaptor *adaptor,
+     return;
+ 
+   /* First chain up and read in all the normal properties.. */
+-  GWA_GET_CLASS (G_TYPE_OBJECT)->read_widget (adaptor, widget, node);
++  GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (G_TYPE_OBJECT)->read_widget (adaptor, widget, node);
+ 
+   glade_hdy_header_group_read_widgets (widget, node);
+ }
+@@ -129,7 +137,7 @@ glade_hdy_header_group_write_widget (GladeWidgetAdaptor *adaptor,
+     return;
+ 
+   /* First chain up and read in all the normal properties.. */
+-  GWA_GET_CLASS (G_TYPE_OBJECT)->write_widget (adaptor, widget, context, node);
++  GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (G_TYPE_OBJECT)->write_widget (adaptor, widget, context, node);
+ 
+   glade_hdy_header_group_write_widgets (widget, context, node);
+ }
+@@ -163,7 +171,7 @@ glade_hdy_header_group_set_property (GladeWidgetAdaptor *adaptor,
+                                          GTK_HEADER_BAR (list->data));
+     }
+   } else {
+-    GWA_GET_CLASS (G_TYPE_OBJECT)->set_property (adaptor, object,
++    GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (G_TYPE_OBJECT)->set_property (adaptor, object,
+                                                  property_name, value);
+   }
+ }
+diff --git a/glade/glade-hdy-paginator.c b/glade/glade-hdy-paginator.c
+index cce9abf..f34acc8 100644
+--- a/glade/glade-hdy-paginator.c
++++ b/glade/glade-hdy-paginator.c
+@@ -16,6 +16,14 @@
+ 
+ #include <math.h>
+ 
++/*
++ * Another macro got renamed in GladeUI 3.38. For older versions of GladeUI,
++ * define the new macro as the old one.
++ */
++#ifndef GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS
++#define GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS GWA_GET_CLASS
++#endif
++
+ #define CENTER_CONTENT_INSENSITIVE_MSG _("This property does not apply unless Show Indicators is set.")
+ 
+ static gint
+@@ -231,7 +239,7 @@ glade_hdy_paginator_child_action_activate (GladeWidgetAdaptor *adaptor,
+ 
+     glade_command_pop_group ();
+   } else
+-    GWA_GET_CLASS (GTK_TYPE_CONTAINER)->child_action_activate (adaptor,
++    GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (GTK_TYPE_CONTAINER)->child_action_activate (adaptor,
+                                                                container,
+                                                                object,
+                                                                action_path);
+@@ -315,7 +323,7 @@ glade_hdy_paginator_set_property (GladeWidgetAdaptor *adaptor,
+     if (!strcmp (id, "indicator-style"))
+       set_indicator_style (object, value);
+ 
+-    GWA_GET_CLASS (GTK_TYPE_CONTAINER)->set_property (adaptor, object, id, value);
++    GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (GTK_TYPE_CONTAINER)->set_property (adaptor, object, id, value);
+   }
+ }
+ 
+@@ -332,7 +340,7 @@ glade_hdy_paginator_get_property (GladeWidgetAdaptor *adaptor,
+     g_value_reset (value);
+     g_value_set_int (value, hdy_paginator_get_page (HDY_PAGINATOR (object)));
+   } else {
+-    GWA_GET_CLASS (GTK_TYPE_CONTAINER)->get_property (adaptor, object, id, value);
++    GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (GTK_TYPE_CONTAINER)->get_property (adaptor, object, id, value);
+   }
+ }
+ 
+@@ -370,8 +378,8 @@ glade_hdy_paginator_verify_property (GladeWidgetAdaptor *adaptor,
+     return glade_hdy_paginator_verify_n_pages (object, value);
+   else if (!strcmp (id, "page"))
+     return glade_hdy_paginator_verify_page (object, value);
+-  else if (GWA_GET_CLASS (GTK_TYPE_CONTAINER)->verify_property)
+-    return GWA_GET_CLASS (GTK_TYPE_CONTAINER)->verify_property (adaptor, object,
++  else if (GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (GTK_TYPE_CONTAINER)->verify_property)
++    return GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (GTK_TYPE_CONTAINER)->verify_property (adaptor, object,
+                                                                 id, value);
+ 
+   return TRUE;
+diff --git a/glade/glade-hdy-swipe-group.c b/glade/glade-hdy-swipe-group.c
+index 5b165a2..927dea0 100644
+--- a/glade/glade-hdy-swipe-group.c
++++ b/glade/glade-hdy-swipe-group.c
+@@ -15,6 +15,14 @@
+ #include <glib/gi18n-lib.h>
+ #include <gladeui/glade.h>
+ 
++/*
++ * Another macro got renamed in GladeUI 3.38. For older versions of GladeUI,
++ * define the new macro as the old one.
++ */
++#ifndef GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS
++#define GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS GWA_GET_CLASS
++#endif
++
+ /* Guess wether we are using a Glade version older than 3.36.
+  *
+  * If yes, redefine some symbols which got renamed.
+@@ -87,7 +95,7 @@ glade_hdy_swipe_group_read_widget (GladeWidgetAdaptor *adaptor,
+     return;
+ 
+   /* First chain up and read in all the normal properties.. */
+-  GWA_GET_CLASS (G_TYPE_OBJECT)->read_widget (adaptor, widget, node);
++  GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (G_TYPE_OBJECT)->read_widget (adaptor, widget, node);
+ 
+   glade_hdy_swipe_group_read_widgets (widget, node);
+ }
+@@ -131,7 +139,7 @@ glade_hdy_swipe_group_write_widget (GladeWidgetAdaptor *adaptor,
+     return;
+ 
+   /* First chain up and read in all the normal properties.. */
+-  GWA_GET_CLASS (G_TYPE_OBJECT)->write_widget (adaptor, widget, context, node);
++  GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (G_TYPE_OBJECT)->write_widget (adaptor, widget, context, node);
+ 
+   glade_hdy_swipe_group_write_widgets (widget, context, node);
+ }
+@@ -164,7 +172,7 @@ glade_hdy_swipe_group_set_property (GladeWidgetAdaptor *adaptor,
+                                        HDY_SWIPEABLE (list->data));
+     }
+   } else {
+-    GWA_GET_CLASS (G_TYPE_OBJECT)->set_property (adaptor, object,
++    GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (G_TYPE_OBJECT)->set_property (adaptor, object,
+                                                  property_name, value);
+   }
+ }
+-- 
+2.26.3
+
