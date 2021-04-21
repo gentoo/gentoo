@@ -17,13 +17,13 @@ DEPEND="
 	app-arch/bzip2
 	sys-libs/zlib
 	x11-libs/libX11
-	x11-libs/libXaw
 	x11-libs/libXext
-	x11-libs/libXt"
+	x11-libs/libXt
+	x11-libs/motif"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf \
-		--enable-athena \
-		--disable-motif2
+		--disable-athena \
+		--enable-motif2
 }
