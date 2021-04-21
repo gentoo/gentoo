@@ -38,7 +38,7 @@ RDEPEND="
 	dev-db/sqlite:3
 	>=dev-libs/totem-pl-parser-3.4.1
 	tracker? (
-		>=app-misc/tracker-2.3.0:= )
+		>=app-misc/tracker-2.3.0:0= )
 	upnp-av? (
 		net-libs/dleyna-connector-dbus
 		net-misc/dleyna-server )
