@@ -1,27 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Sendmail restricted shell, for use with MTAs other than Sendmail"
 HOMEPAGE="http://www.sendmail.org/"
 SRC_URI="ftp://ftp.fu-berlin.de/unix/mail/sendmail/sendmail.${PV}.tar.gz"
+S="${WORKDIR}/sendmail-${PV}"
 
 LICENSE="Sendmail"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="!mail-mta/sendmail"
 DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/sed-4"
-
-S="${WORKDIR}/sendmail-${PV}"
+	sys-devel/m4"
 
 src_prepare() {
-	cd "${S}/${PN}"
+	cd "${S}/${PN}" || die
+
+	default
+
 	sed -e "s:/usr/libexec:/usr/sbin:g" \
 		-e "s:/usr/adm/sm.bin:/var/lib/smrsh:g" \
 		-i README -i smrsh.8 || die "sed failed"
@@ -33,8 +34,8 @@ src_prepare() {
 }
 
 src_compile() {
-	cd "${S}/${PN}"
-	/bin/sh Build
+	cd "${S}/${PN}" || die
+	/bin/sh Build || die
 }
 
 src_install() {
@@ -44,10 +45,9 @@ src_install() {
 	doman "${PN}.8"
 	dodoc README
 
-	keepdir "/var/lib/${PN}"
+	keepdir /var/lib/${PN}
 }
 
 pkg_postinst() {
 	elog "smrsh is compiled to look for programs in /var/lib/smrsh."
-	echo
 }
