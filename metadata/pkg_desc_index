@@ -105,6 +105,7 @@ acct-group/gnupg-pkcs11 0: Group for app-crypt/gnupg-pkcs11-scd
 acct-group/gnupg-pkcs11-scd-proxy 0: Group for app-crypt/gnupg-pkcs11-scd
 acct-group/gopher 0: System group: gopher
 acct-group/gpib 0-r1: System group: gpib
+acct-group/gpio 0: System group: gpio
 acct-group/grafana 0-r1: grafana program group
 acct-group/graylog 0-r1: Graylog program group
 acct-group/greetd 0-r1: Group for gui-libs/greetd
@@ -114,6 +115,7 @@ acct-group/haproxy 0-r1: System group: haproxy
 acct-group/havp 0: Group for net-proxy/havp
 acct-group/heat 0-r1: System group: heat
 acct-group/http 0: System group: http
+acct-group/i2c 0: System group: i2c
 acct-group/i2p 0-r1: Group for system-wide net-vpn/i2p
 acct-group/i2pd 0-r1: Group for the system-wide net-vpn/i2pd server
 acct-group/icinga 0-r1: System group: icinga
@@ -272,6 +274,7 @@ acct-group/sobexsrv 0: A group for sobexsrv: a secure OBEX server
 acct-group/sogo 0-r1: Group for gnustep-apps/sogo
 acct-group/spamd 0-r1: Group for the SpamAssassin daemon
 acct-group/spectrum 0-r1: A group for the Spectrum messaging transport
+acct-group/spi 0: System group: spi
 acct-group/spire 0-r1: System group: spire
 acct-group/sqlgrey 0-r1: Group for SQLGrey
 acct-group/squid 0-r1: System group: squid
@@ -8538,7 +8541,7 @@ dev-python/ipywidgets 7.5.1-r1 7.6.2 7.6.3: IPython HTML widgets for Jupyter
 dev-python/irc 19.0.1: IRC client framework written in Python
 dev-python/iso8601 0.1.14: Simple module to parse ISO 8601 dates
 dev-python/isodate 0.6.0-r1: ISO 8601 date/time/duration parser and formatter
-dev-python/isort 5.7.0 5.8.0: A python utility/library to sort imports
+dev-python/isort 5.8.0: A python utility/library to sort imports
 dev-python/itsdangerous 1.1.0-r1: Various helpers to pass trusted data to untrusted environments and back
 dev-python/itypes 1.1.0: basic immutable container types for python
 dev-python/jaraco-classes 3.2.1: Classes used by other projects by developer jaraco
@@ -8921,7 +8924,7 @@ dev-python/pydecomp 0.3-r1 9999: A python library of common (de)compression and 
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 3.2.1: Python DNS (Domain Name System) library
-dev-python/pydocstyle 5.1.1 6.0.0: Python docstring style checker
+dev-python/pydocstyle 6.0.0: Python docstring style checker
 dev-python/pydot 1.4.2: Python interface to Graphviz's Dot language
 dev-python/pydotplus 2.0.2: Improved version of the old pydot project
 dev-python/pyelftools 0.27: pure-Python library for analyzing ELF files and DWARF debugging information
@@ -9204,7 +9207,7 @@ dev-python/rcssmin 1.0.6: CSS minifier written in python.
 dev-python/rdflib 5.0.0: RDF library containing a triple store and parser/serializer
 dev-python/re-assert 1.1.0: Show where your regex match assertion failed
 dev-python/readme_renderer 29.0: a library for rendering "readme" descriptions for Warehouse
-dev-python/readthedocs-sphinx-ext 2.1.3 2.1.4: Code specific for Read the Docs and Sphinx
+dev-python/readthedocs-sphinx-ext 2.1.4: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 3.0.1: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.7.1: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.5.3: Python client for Redis key-value store
@@ -9313,7 +9316,7 @@ dev-python/socketio-client 0.7.2: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
 dev-python/socketpool 0.5.3-r3: A simple Python socket pool
 dev-python/sortedcontainers 2.3.0: Python library to sort collections and containers
-dev-python/soupsieve 2.2 2.2.1: A modern CSS selector implementation for BeautifulSoup
+dev-python/soupsieve 2.2.1: A modern CSS selector implementation for BeautifulSoup
 dev-python/sparql-wrapper 1.8.5: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3-r2: A PEG-based parser interpreter with memoization
@@ -14674,7 +14677,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPnP capable devices
 net-analyzer/vnstat 1.17 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.3 3.0.4 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r2: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.4.3 3.4.4 9999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.4.3 3.4.4 3.4.5 9999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: Displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3-r1: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.8.2 9999: A framework for layer 2 attacks

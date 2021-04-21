@@ -1,8 +1,9 @@
-DEFINED_PHASES=compile configure install postinst prepare setup
+DEFINED_PHASES=compile configure install postinst prepare
 DEPEND=diet? ( dev-libs/dietlibc )
 DESCRIPTION=The diet shell
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.blah.ch/shish/
+INHERIT=toolchain-funcs
 IUSE=debug diet
 KEYWORDS=~x86
 LICENSE=GPL-2
@@ -10,4 +11,4 @@ RDEPEND=diet? ( dev-libs/dietlibc )
 SLOT=0
 SRC_URI=http://www.blah.ch/shish/pkg/shish-0.7-pre3.tar.bz2
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=0ed117c6358b339199586d7837df95d2
+_md5_=eafb93f6af28170e7fde8becd57621d3

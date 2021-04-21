@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile install postinst prepare
-DEPEND=!mail-mta/sendmail sys-devel/m4 >=sys-apps/sed-4
+DEPEND=!mail-mta/sendmail sys-devel/m4
 DESCRIPTION=Sendmail restricted shell, for use with MTAs other than Sendmail
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.sendmail.org/
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=Sendmail
 RDEPEND=!mail-mta/sendmail
 SLOT=0
 SRC_URI=ftp://ftp.fu-berlin.de/unix/mail/sendmail/sendmail.8.15.2.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=836dabd3b15ec64fa7495be0d9dca4d8
+_md5_=ba37468bf2e3f8ef519cec87da6c763e
