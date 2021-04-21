@@ -21,7 +21,6 @@ RDEPEND="!www-client/chromium
 S="${WORKDIR}"
 QA_PREBUILT="usr/bin/chromedriver"
 
-src_install()
-{
+src_install() {
 	dobin chromedriver
 }
