@@ -4,7 +4,7 @@ DEPEND=gd? ( media-libs/gd:2= ) nscd? ( selinux? ( audit? ( sys-process/audit ) 
 DESCRIPTION=GNU libc C library
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/libc/
-INHERIT=python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig multilib systemd multiprocessing tmpfiles
+INHERIT=python-any-r1 prefix toolchain-funcs flag-o-matic gnuconfig multilib systemd multiprocessing tmpfiles
 IUSE=audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla
 KEYWORDS=~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86
 LICENSE=LGPL-2.1+ BSD HPND ISC inner-net rc PCRE
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=2.2
 SRC_URI=mirror://gnu/glibc/glibc-2.32.tar.xz https://dev.gentoo.org/~dilfridge/distfiles/glibc-2.32-patches-6.tar.xz riscv? ( https://dev.gentoo.org/~dilfridge/distfiles/backport-rv32.txz ) https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-2.10.tar.gz multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-20201208.tar.xz )
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	multiprocessing	cac3169468f893670dac3e7cb940e045	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
-_md5_=520bae5ab1df01df9cdfda7926c29a02
+_md5_=64b39bdc723802c2794a713720904c85

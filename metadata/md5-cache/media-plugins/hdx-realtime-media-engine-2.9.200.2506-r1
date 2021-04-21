@@ -1,5 +1,5 @@
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=install nofetch postinst setup unpack
-DEPEND=app-arch/unzip
 DESCRIPTION=HDX RealTime Media Engine plugin for Citrix Workspace App
 EAPI=7
 HOMEPAGE=https://www.citrix.com/
@@ -11,4 +11,4 @@ RESTRICT=fetch mirror strip
 SLOT=0
 SRC_URI=amd64? ( HDX_RealTime_Media_Engine_2.9.200_for_Linux_x64.zip ) x86? ( HDX_RealTime_Media_Engine_2.9.200_for_Linux.zip )
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	unpacker	517f16af48ee3ab88180dd58b5143213
-_md5_=7e7ca5167ff320ed516d235844eb9585
+_md5_=0a0d61ab9cc2d659af86b6a81e76293f

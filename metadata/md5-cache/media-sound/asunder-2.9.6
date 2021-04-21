@@ -4,11 +4,12 @@ DEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 dev-uti
 DESCRIPTION=Graphical Audio CD ripper and encoder with support for many output formats
 EAPI=7
 HOMEPAGE=http://littlesvr.ca/asunder/
+INHERIT=xdg
 IUSE=flac mac mp3 musepack opus vorbis wavpack
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libcddb-0.9.5 media-sound/cdparanoia x11-libs/gtk+:2 flac? ( media-libs/flac ) mac? ( media-sound/mac ) mp3? ( media-sound/lame ) musepack? ( media-sound/musepack-tools ) opus? ( media-sound/opus-tools ) vorbis? ( media-sound/vorbis-tools ) wavpack? ( media-sound/wavpack )
 SLOT=0
 SRC_URI=http://littlesvr.ca/asunder/releases/asunder-2.9.6.tar.bz2
-_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=55d8242ded84e0fcdd81f013675bbe11
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=b1f5eebada431dbb55607f50d3b9639a

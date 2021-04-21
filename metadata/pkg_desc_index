@@ -17800,7 +17800,7 @@ sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card r
 sys-libs/libcxx 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: Low level support for a standard C++ library
 sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8 0.9.9: Report faked system time to programs
-sys-libs/libhugetlbfs 2.22 2.23: easy hugepage access
+sys-libs/libhugetlbfs 2.22 2.23: Easy hugepage access
 sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client

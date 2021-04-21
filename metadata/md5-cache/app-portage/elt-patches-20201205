@@ -1,5 +1,5 @@
+BDEPEND=app-arch/xz-utils
 DEFINED_PHASES=compile install
-DEPEND=app-arch/xz-utils
 DESCRIPTION=Collection of patches for libtool.eclass
 EAPI=7
 HOMEPAGE=https://gitweb.gentoo.org/proj/elt-patches.git/
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~grobian/distfiles/elt-patches-20201205.tar.xz
-_md5_=172f45b4f8503eb57aad7c19ca48973f
+_md5_=00ecbfced8f01ccea041126c340430b6
