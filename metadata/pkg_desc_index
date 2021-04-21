@@ -4802,7 +4802,7 @@ dev-java/asm-analysis 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for
 dev-java/asm-commons 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Common class adaptors)
 dev-java/asm-tree 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Tree API)
 dev-java/asm-util 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Utilities)
-dev-java/aspectj 1.7.4: A seamless aspect-oriented extension to the Java programming language
+dev-java/aspectj 1.7.4 1.9.6: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r2 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
