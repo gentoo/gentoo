@@ -17,12 +17,11 @@ LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND="dev-util/promu"
+
 DEPEND="
 	acct-group/blackbox_exporter
-	acct-user/blackbox_exporter
-"
-
-DEPEND="dev-util/promu"
+	acct-user/blackbox_exporter"
 
 FILECAPS=(
 	cap_net_raw usr/bin/blackbox_exporter
