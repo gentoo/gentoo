@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ IUSE="icu +idn +man"
 RDEPEND="
 	icu? ( !idn? ( dev-libs/icu:=[${MULTILIB_USEDEP}] ) )
 	idn? (
-		dev-libs/libunistring[${MULTILIB_USEDEP}]
+		dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 		net-dns/libidn2:=[${MULTILIB_USEDEP}]
 	)
 "
