@@ -7,7 +7,7 @@ inherit cmake udev
 
 DESCRIPTION="GUI application for configuring and programming cheap DMR radios"
 HOMEPAGE="https://dm3mat.darc.de/qdmr/"
-SRC_URI="https://github.com/hmatuschek/qdmr/archive/refs/tags/v0.6.4.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hmatuschek/qdmr/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
