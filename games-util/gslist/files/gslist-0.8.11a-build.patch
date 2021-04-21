@@ -1,5 +1,5 @@
---- work.orig/Makefile
-+++ work/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,26 +1,30 @@
 -CFLAGS	+= -O2 -s -fstack-protector-all
 +CFLAGS	+= -Wall -D_GNU_SOURCE
