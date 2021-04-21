@@ -6,9 +6,8 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="gpl">Use GPL libraries, specifically hscolour.</flag>
+		<flag name="gpl">Use GPL libraries, specifically hscolour</flag>
+		<flag name="hsyaml">Use HsYAML instead of yaml</flag>
+		<flag name="threaded">Build with support for multithreaded execution</flag>
 	</use>
-	<upstream>
-		<remote-id type="github">ndmitchell/hlint</remote-id>
-	</upstream>
 </pkgmetadata>
