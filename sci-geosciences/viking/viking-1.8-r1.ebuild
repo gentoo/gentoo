@@ -51,8 +51,7 @@ PATCHES=( "${FILESDIR}/${PN}-1.7-no-common.patch" "${FILESDIR}/${P}-libexif.patc
 
 S="${WORKDIR}/${PN}-${P}"
 
-src_prepare()
-{
+src_prepare() {
 	default
 	eautoreconf
 }
