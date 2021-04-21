@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.25-linux_3.9.patch
 	"${FILESDIR}"/${PN}-1.9.25-no-man-compression.patch
 	"${FILESDIR}"/${PN}-1.9.25-wrapdemo-buf-overflow.patch
+	"${FILESDIR}"/${PN}-1.9.25-ar.patch
 )
 
 pkg_setup() {
