@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools epatch
+inherit autotools
 
 DESCRIPTION="Japanese input method Anthy IMEngine for SCIM"
 HOMEPAGE="http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMAnthy"
@@ -30,9 +30,9 @@ src_prepare() {
 	default
 
 	if use gtk3; then
-		EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" epatch
+		eapply "${WORKDIR}"/patches/*.patch
 	else
-		epatch "${DISTDIR}/${P}-gtk2_build.patch"
+		eapply "${DISTDIR}"/${P}-gtk2_build.patch
 	fi
 
 	eautoreconf
