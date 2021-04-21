@@ -1,4 +1,4 @@
-# Copyright 2013-2016 Gentoo Foundation
+# Copyright 2013-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,8 +25,7 @@ src_prepare() {
 	sed -i "s~tryldflag LDFLAGS_AUTO -Wl,--hash-style=both~:~" "${S}/configure" || die
 }
 
-src_configure()
-{
+src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable static allstatic) \
@@ -42,13 +41,11 @@ src_configure()
 		--with-sysdeps=/usr/$(get_libdir)/skalibs
 }
 
-src_compile()
-{
+src_compile() {
 	emake DESTDIR="${D}"
 }
 
-src_install()
-{
+src_install() {
 	default
 	dohtml -r doc/*
 }
