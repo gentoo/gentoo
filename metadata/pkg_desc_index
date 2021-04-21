@@ -17820,7 +17820,7 @@ sys-libs/liburing 0.7-r1 2.0 9999: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r3 1.2.0 1.2.1: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.8: Library implementation for listing Vital Product Data
-sys-libs/libxcrypt 4.4.16 4.4.17: Extended crypt library for descrypt, md5crypt, bcrypt, and others
+sys-libs/libxcrypt 4.4.16 4.4.17 4.4.19: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.6: Multitouch Protocol Translation Library
