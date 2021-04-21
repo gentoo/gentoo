@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A preload (sandbox) library to restrict filesystem writes"
 HOMEPAGE="http://dag.wieers.com/home-made/soapbox/"
