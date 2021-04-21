@@ -12679,7 +12679,7 @@ mail-filter/rspamd 2.6-r100 2.7-r100 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.90: Sieve Command Line Interface
 mail-filter/sigh 1607.1.6-r1: S/MIME signing milter
-mail-filter/spamassassin 3.4.4-r4 3.4.4-r5 3.4.5 3.4.6: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.5 3.4.6: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spamdyke 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
