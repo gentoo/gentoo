@@ -18,7 +18,7 @@ IUSE="icu +idn +man"
 RDEPEND="
 	icu? ( !idn? ( dev-libs/icu:=[${MULTILIB_USEDEP}] ) )
 	idn? (
-		dev-libs/libunistring[${MULTILIB_USEDEP}]
+		dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 		net-dns/libidn2:=[${MULTILIB_USEDEP}]
 	)
 "

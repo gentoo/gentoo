@@ -208,13 +208,11 @@ src_install() {
 	python_optimize
 }
 
-src_test()
-{
+src_test() {
 	virtx cmake_src_test
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	if use grc ; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
@@ -222,8 +220,7 @@ pkg_postinst()
 	fi
 }
 
-pkg_postrm()
-{
+pkg_postrm() {
 	if use grc ; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update

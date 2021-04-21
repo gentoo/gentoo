@@ -38,8 +38,7 @@ S=${WORKDIR}/${PYSDL}-for-renpy-${PV}
 
 # PyGame distribution for this version has some pregenerated files;
 # we need to remove them
-python_prepare_all()
-{
+python_prepare_all() {
 	rm -r gen{,3} || die
 	distutils-r1_python_prepare_all
 }

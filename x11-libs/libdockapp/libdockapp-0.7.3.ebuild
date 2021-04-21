@@ -26,8 +26,7 @@ FONT_S=${S}/fonts
 FONT_SUFFIX="gz"
 DOCS="README ChangeLog NEWS AUTHORS"
 
-src_configure()
-{
+src_configure() {
 	# Font installation handled by font eclass
 	econf \
 		$(use_enable static-libs static) \
@@ -35,8 +34,7 @@ src_configure()
 		--without-examples
 }
 
-src_install()
-{
+src_install() {
 	emake DESTDIR="${D}" install
 	font_src_install
 }

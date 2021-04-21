@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use epatch flag-o-matic gnome2 java-pkg-opt-2 vala
+inherit db-use flag-o-matic gnome2 java-pkg-opt-2 vala
 
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="https://www.gnome-db.org/"
