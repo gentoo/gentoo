@@ -16,7 +16,7 @@ RDEPEND="
 	>=dev-libs/gjs-1.50
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/gobject-introspection-1.35.9:=
-	>=dev-libs/libunistring-0.9.5
+	>=dev-libs/libunistring-0.9.5:=
 	>=x11-libs/gtk+-3.20:3[introspection]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.36[introspection]
