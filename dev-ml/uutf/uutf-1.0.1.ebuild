@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit findlib
 
@@ -35,7 +35,7 @@ src_test() {
 		ocamlbuild -use-ocamlfind tests.otarget || die
 		pushd _build/test || die
 		./test.native || die
-		#Rebuild to avoid mismatches between installed files, bug #604674
+		# Rebuild to avoid mismatches between installed files, bug #604674
 		popd || die
 		ocaml pkg/pkg.ml build \
 			--with-cmdliner "$(usex utftrip true false)" \
@@ -49,9 +49,15 @@ src_install() {
 	# Can't use opam-installer here as it is an opam dep...
 	findlib_src_preinst
 	local nativelibs=""
+
 	use ocamlopt && nativelibs="$(echo _build/src/uutf.cm{x,xa,xs} _build/src/uutf.a)"
 	ocamlfind install uutf _build/pkg/META _build/src/uutf.mli _build/src/uutf.cm{a,i} ${nativelibs} || die
+
 	use utftrip && newbin utftrip.$(usex ocamlopt native byte) utftrip
 	dodoc CHANGES.md README.md
-	use doc && dohtml -r doc/*
+
+	if use doc ; then
+		docinto html
+		dodoc -r doc/*
+	fi
 }
