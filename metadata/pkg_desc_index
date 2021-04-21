@@ -4841,7 +4841,7 @@ dev-java/commons-beanutils 1.9.2: Provides easy-to-use wrappers around Reflectio
 dev-java/commons-chain 1.2: API exposing the Chain of Responsability design pattern - by the ASF
 dev-java/commons-cli 1.3.1 1.4: A Java library for working with the command line arguments and options
 dev-java/commons-codec 1.7 1.15: Implementations of common encoders and decoders in Java
-dev-java/commons-collections 3.2.1-r1 3.2.1-r2 3.2.1-r3 4.1 4.1-r1: Extends the JCF classes with new interfaces, implementations and utilities
+dev-java/commons-collections 3.2.1-r1 3.2.2 4.1 4.1-r1: Extends the JCF classes with new interfaces, implementations and utilities
 dev-java/commons-compress 1.10 1.20: Java API for working with archive files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.15 1.1.0: Tools to allow Java programs to run as UNIX daemons
@@ -17053,7 +17053,7 @@ sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3-r1: A fake root environmen
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.39-r4 5.40 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.39-r4 5.40-r1 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0 4.8.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64.4 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
