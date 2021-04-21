@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=http://luaforge.net/projects/luaevent
 INHERIT=lua toolchain-funcs
 IUSE=lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
-KEYWORDS=amd64 arm arm64 ~hppa ~ia64 ~sparc x86
+KEYWORDS=amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) dev-libs/libevent:0=
 REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
 SLOT=0
 SRC_URI=https://github.com/harningt/luaevent/archive/v0.4.6.tar.gz -> luaevent-0.4.6.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
-_md5_=43d7afe1a84071e46a8dfce437d7cbd8
+_md5_=bb1e4519a64aceca5be69971d87c60fd

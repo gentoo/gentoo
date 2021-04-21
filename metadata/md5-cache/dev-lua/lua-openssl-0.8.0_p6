@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://github.com/zhaozg/lua-openssl
 INHERIT=lua toolchain-funcs
 IUSE=libressl test lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4
-KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=MIT openssl PHP-3
 RDEPEND=!dev-lua/luaossl !dev-lua/luasec libressl? ( dev-libs/libressl:0= ) !libressl? ( dev-libs/openssl:0=[-bindist] ) lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 )
 REQUIRED_USE=|| ( lua_targets_luajit lua_targets_lua5-1 lua_targets_lua5-2 lua_targets_lua5-3 lua_targets_lua5-4 )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/zhaozg/lua-openssl/archive/refs/tags/0.8.0-6.tar.gz -> lua-openssl-0.8.0_p6.tar.gz https://github.com/zhaozg/lua-auxiliar/archive/8d09895473b73e4fb72b7573615f69c36e1860a2.tar.gz -> lua-auxiliar-8d09895473b73e4fb72b7573615f69c36e1860a2.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/v0.10.tar.gz -> lua-compat-5.3-0.10.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
-_md5_=e0bd6ceceb74db590255656012a207fd
+_md5_=f53d7d86dbd505eacdb598cdf1f29585

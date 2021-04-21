@@ -18729,7 +18729,7 @@ x11-misc/svkbd 0.2.1-r1: Simple Virtual Keyboard
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
 x11-misc/sxhkd 0.6.1 0.6.2: Simple X hotkey daemon
 x11-misc/synergy 1.13.0 1.13.1.41: Lets you easily share a single mouse and keyboard between multiple computers
-x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
+x11-misc/tabbed 0.6-r1: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tdrop 0.3.0 0.4.0 9999: WM-Independent Dropdown Creator
 x11-misc/tint2 16.7: Lightweight panel/taskbar for Linux
 x11-misc/tinynotify-send 1.2.1-r1 9999: A notification sending utility (using libtinynotify)
