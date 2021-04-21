@@ -1,13 +1,5 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 03_cflags.dpatch by Sylvain Le Gall <gildor@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: No description.
-
-@DPATCH@
-diff -urNad xml-light-2.2~/Makefile xml-light-2.2/Makefile
---- xml-light-2.2~/Makefile	2006-10-26 00:22:41.000000000 +0200
-+++ xml-light-2.2/Makefile	2006-10-26 00:24:45.000000000 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -3,8 +3,8 @@
  .SUFFIXES : .ml .mli .cmo .cmx .cmi .mll .mly
  

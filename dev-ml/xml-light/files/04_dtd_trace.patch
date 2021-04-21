@@ -1,13 +1,5 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 04_dtd_trace.dpatch by Sylvain Le Gall <gildor@debian.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: No description.
-
-@DPATCH@
-diff -urNad xml-light-2.2~/dtd.ml xml-light-2.2/dtd.ml
---- xml-light-2.2~/dtd.ml	2005-02-18 10:01:54.000000000 +0100
-+++ xml-light-2.2/dtd.ml	2006-10-26 23:22:25.000000000 +0200
+--- a/dtd.ml
++++ b/dtd.ml
 @@ -267,7 +267,7 @@
  exception TmpResult of dtd_result
  
