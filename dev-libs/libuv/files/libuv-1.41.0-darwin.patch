@@ -1,0 +1,45 @@
+--- a/src/unix/darwin-proctitle.c
++++ b/src/unix/darwin-proctitle.c
+@@ -41,7 +41,7 @@ static int uv__pthread_setname_np(const char* name) {
+   strncpy(namebuf, name, sizeof(namebuf) - 1);
+   namebuf[sizeof(namebuf) - 1] = '\0';
+ 
+-  err = pthread_setname_np(namebuf);
++  err = 0;
+   if (err)
+     return UV__ERR(err);
+ 
+--- a/src/unix/getaddrinfo.c
++++ b/src/unix/getaddrinfo.c
+@@ -225,6 +225,13 @@ void uv_freeaddrinfo(struct addrinfo* ai) {
+     freeaddrinfo(ai);
+ }
+ 
++static size_t strnlen(char *x, size_t len) {
++  char *r = memchr(x, '\n', len);
++  if (r == NULL)
++    return len;
++  else
++    return r - x;
++}
+ 
+ int uv_if_indextoname(unsigned int ifindex, char* buffer, size_t* size) {
+   char ifname_buf[UV_IF_NAMESIZE];
+--- a/src/unix/udp.c
++++ b/src/unix/udp.c
+@@ -854,6 +854,7 @@ static int uv__udp_set_membership6(uv_udp_t* handle,
+ #if !defined(__OpenBSD__) &&                                        \
+     !defined(__NetBSD__) &&                                         \
+     !defined(__ANDROID__) &&                                        \
++    !defined(__APPLE__) &&                                          \
+     !defined(__DragonFly__) &                                       \
+     !defined(__QNX__)
+ static int uv__udp_set_source_membership4(uv_udp_t* handle,
+@@ -1046,6 +1047,7 @@ int uv_udp_set_source_membership(uv_udp_t* handle,
+ #if !defined(__OpenBSD__) &&                                        \
+     !defined(__NetBSD__) &&                                         \
+     !defined(__ANDROID__) &&                                        \
++    !defined(__APPLE__) &&                                          \
+     !defined(__DragonFly__) &&                                      \
+     !defined(__QNX__)
+   int err;
