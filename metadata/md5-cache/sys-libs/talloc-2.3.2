@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://talloc.samba.org/
 INHERIT=waf-utils python-single-r1 multilib-minimal
 IUSE=compat +python python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris
 LICENSE=GPL-3 LGPL-3+ LGPL-2
 RDEPEND=!elibc_FreeBSD? ( !elibc_SunOS? ( !elibc_Darwin? ( dev-libs/libbsd[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) ) ) python? ( python_single_target_python3_7? ( dev-lang/python:3.7[threads(+)] >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8[threads(+)] >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9[threads(+)] >=dev-lang/python-exec-2:=[python_targets_python3_9] ) ) !!<sys-libs/talloc-2.0.5
 REQUIRED_USE=^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
@@ -14,4 +14,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://www.samba.org/ftp/talloc/talloc-2.3.2.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multiprocessing	cac3169468f893670dac3e7cb940e045	waf-utils	941688efbf28e7ea7a106e516fc9bc91	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
-_md5_=d3e3e912784379619c4690ba93ab7c98
+_md5_=6464a45e2f74b2bb508dad575f2f7eb8
