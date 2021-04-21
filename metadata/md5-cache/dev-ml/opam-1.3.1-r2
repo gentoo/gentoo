@@ -1,9 +1,8 @@
-DEFINED_PHASES=compile install prepare test
+DEFINED_PHASES=compile install test
 DEPEND=dev-lang/ocaml:= || ( net-misc/wget net-misc/curl ) dev-ml/extlib:= dev-ml/re:= dev-ml/ocamlgraph:= dev-ml/cmdliner:= dev-ml/cudf:= >=dev-ml/dose3-5:= dev-ml/uutf:= dev-ml/jsonm:= dev-ml/findlib test? ( dev-vcs/git )
 DESCRIPTION=A source-based package manager for OCaml
-EAPI=5
+EAPI=7
 HOMEPAGE=http://opam.ocaml.org/
-INHERIT=epatch
 IUSE=test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
 LICENSE=LGPL-3-with-linking-exception
@@ -11,5 +10,4 @@ RDEPEND=dev-lang/ocaml:= || ( net-misc/wget net-misc/curl ) dev-ml/extlib:= dev-
 RESTRICT=!test? ( test )
 SLOT=0/1.3.1
 SRC_URI=https://github.com/ocaml/opam/archive/1.3.1.tar.gz -> opam-1.3.1.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e
-_md5_=f691fc96d33ef9ebd7b3a015ae021343
+_md5_=c0a60e5380bac2f49784adf04c3138bc

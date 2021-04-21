@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install
 DEPEND=dev-lang/ocaml:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Pretty-printing library for OCaml
-EAPI=5
+EAPI=7
 HOMEPAGE=https://github.com/mjambon/easy-format
 INHERIT=findlib
 IUSE=examples +ocamlopt
@@ -11,4 +11,4 @@ RDEPEND=dev-lang/ocaml:=[ocamlopt?]
 SLOT=0/1.2.0
 SRC_URI=https://github.com/mjambon/easy-format/archive/v1.2.0.tar.gz -> easy-format-1.2.0.tar.gz
 _eclasses_=findlib	197b318e28cee28e11c2b474328b50dd
-_md5_=6e7952ad6480e325dea6b9fd42f83911
+_md5_=ac78b787a31b18fe4756015720b0ac9d

@@ -1,7 +1,8 @@
+BDEPEND=dev-ml/opam-installer dev-lang/ocaml
 DEFINED_PHASES=compile install test
-DEPEND=dev-lang/ocaml:=[ocamlopt] dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib >=dev-lang/ocaml-4:= dev-ml/opam-installer
+DEPEND=dev-lang/ocaml:=[ocamlopt] dev-ml/topkg dev-ml/ocamlbuild dev-ml/findlib >=dev-lang/ocaml-4:=
 DESCRIPTION=OCaml module to access monotonic wall-clock time
-EAPI=5
+EAPI=7
 HOMEPAGE=https://erratique.ch/software/mtime https://github.com/dbuenzli/mtime
 INHERIT=opam
 IUSE=test
@@ -12,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/1.1.0
 SRC_URI=https://erratique.ch/software/mtime/releases/mtime-1.1.0.tbz
 _eclasses_=opam	bb6e97cce1eab4343c4db2c51acf1349
-_md5_=b3937426d0a01d9b7a099c82b885651f
+_md5_=957c3c7cc5a87d8554ee54eb4d131469

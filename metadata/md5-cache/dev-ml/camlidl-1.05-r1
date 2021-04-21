@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile install prepare test
+DEFINED_PHASES=compile install test
 DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt]
 DESCRIPTION=CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
-EAPI=5
+EAPI=7
 HOMEPAGE=http://caml.inria.fr/camlidl/
-INHERIT=epatch toolchain-funcs
+INHERIT=toolchain-funcs
 KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=QPL-1.0 LGPL-2
 RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt]
 SLOT=0/1.05
 SRC_URI=http://caml.inria.fr/distrib/bazar-ocaml/camlidl-1.05.tar.gz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=483495005833fe2e8149026cdeb0f07a
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=33abe98661ca190e941a2edc5c21ba6f

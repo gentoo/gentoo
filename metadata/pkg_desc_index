@@ -6128,7 +6128,7 @@ dev-ml/ppxlib 0.18.0 0.20.0 0.21.0-r1 0.22.0-r1: Base library and tools for ppx 
 dev-ml/protocol_version_header 0.14.0: Protocol aware version negotiation for OCaml
 dev-ml/re 1.9.0: Regular expression library for OCaml
 dev-ml/react 1.2.1-r1: OCaml module for functional reactive programming
-dev-ml/reactiveData 0.2.1 9999: Functional reactive programming with incremental changes in data structures
+dev-ml/reactiveData 0.2.1: Functional reactive programming with incremental changes in data structures
 dev-ml/result 1.5: Compat result type
 dev-ml/rresult 0.5.0: Result value combinators for OCaml
 dev-ml/seq 0.2: Compatibility package for the standard OCaml iterator type
