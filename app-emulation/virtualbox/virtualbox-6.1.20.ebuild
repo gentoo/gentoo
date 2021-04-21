@@ -91,7 +91,7 @@ BDEPEND="
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	java? ( >=virtual/jdk-1.6 )
+	java? ( >=virtual/jdk-1.8 )
 "
 RDEPEND="
 	${CDEPEND}

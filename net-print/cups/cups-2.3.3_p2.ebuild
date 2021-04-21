@@ -227,7 +227,7 @@ multilib_src_install_all() {
 	rm "${ED}"/etc/cups/cupsd.conf.default || die
 
 	# clean out cups init scripts
-	rm -r "${ED}"/etc/{init.d/cups,rc*,pam.d/cups} || die
+	rm -r "${ED}"/etc/{init.d/cups,rc*} || die
 
 	# install our init script
 	local neededservices=(
@@ -239,7 +239,8 @@ multilib_src_install_all() {
 	sed -i -e "s/@neededservices@/${neededservices}/" "${T}"/cupsd || die
 	doinitd "${T}"/cupsd
 
-	if use pam; then
+	if use pam ; then
+		rm "${ED}"/etc/pam.d/${PN} || die
 		pamd_mimic_system cups auth account
 	fi
 
