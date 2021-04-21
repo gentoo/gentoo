@@ -27,6 +27,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-lua/busted[${LUA_USEDEP}]
+		dev-lua/lua_cliargs[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "
