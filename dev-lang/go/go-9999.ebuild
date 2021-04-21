@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,8 +55,7 @@ PATENTS
 README.md
 )
 
-go_arch()
-{
+go_arch() {
 	# By chance most portage arch names match Go
 	local portage_arch=$(tc-arch $@)
 	case "${portage_arch}" in
@@ -68,8 +67,7 @@ go_arch()
 	esac
 }
 
-go_arm()
-{
+go_arm() {
 	case "${1:-${CHOST}}" in
 		armv5*)	echo 5;;
 		armv6*)	echo 6;;
@@ -80,8 +78,7 @@ go_arm()
 	esac
 }
 
-go_os()
-{
+go_os() {
 	case "${1:-${CHOST}}" in
 		*-linux*)	echo linux;;
 		*-darwin*)	echo darwin;;
@@ -98,18 +95,15 @@ go_os()
 	esac
 }
 
-go_tuple()
-{
+go_tuple() {
 	echo "$(go_os $@)_$(go_arch $@)"
 }
 
-go_cross_compile()
-{
+go_cross_compile() {
 	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
 }
 
-src_compile()
-{
+src_compile() {
 	if has_version -b dev-lang/go; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
 	elif has_version -b dev-lang/go-bootstrap; then
@@ -140,8 +134,7 @@ src_compile()
 	bash -x ./make.bash || die "build failed"
 }
 
-src_test()
-{
+src_test() {
 	go_cross_compile && return 0
 
 	cd src
@@ -152,8 +145,7 @@ src_test()
 	rm -fr pkg/obj/go-build || die
 }
 
-src_install()
-{
+src_install() {
 	# There is a known issue which requires the source tree to be installed [1].
 	# Once this is fixed, we can consider using the doc use flag to control
 	# installing the doc and src directories.
