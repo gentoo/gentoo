@@ -16,17 +16,13 @@ LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BDEPEND="dev-util/promu"
-
 RESTRICT+=" test"
+
+BDEPEND="dev-util/promu"
 
 DEPEND="
 	acct-group/alertmanager
-	acct-user/alertmanager
-"
-
-DEPEND=">=dev-lang/go-1.11
-	dev-util/promu"
+	acct-user/alertmanager"
 
 src_prepare() {
 	default
