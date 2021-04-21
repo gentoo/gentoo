@@ -73,7 +73,7 @@ REQUIRED_USE="
 	zink? ( gallium vulkan )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.105"
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.100"
 RDEPEND="
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
