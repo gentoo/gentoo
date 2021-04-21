@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="source"
 
@@ -15,20 +15,20 @@ LICENSE="MIT"
 SLOT="2.1"
 KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
-CDEPEND="dev-java/asm:3
+CDEPEND="dev-java/asm:9
 	dev-java/jcodings:1"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+	>=virtual/jre-1.8:*"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.5"
+	>=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${PN}-${PN}-${PV}"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_BUILD_TARGET="build"
-EANT_GENTOO_CLASSPATH="asm-3 jcodings-1"
+EANT_GENTOO_CLASSPATH="asm-9 jcodings-1"
 
 src_install() {
 	java-pkg_dojar target/${PN}.jar
