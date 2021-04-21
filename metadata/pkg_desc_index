@@ -13462,7 +13462,7 @@ media-libs/lsp-plugins 1.1.22 1.1.24 1.1.29 9999: Linux Studio Plugins
 media-libs/lv2 1.18.2: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0-r1: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 20.3.5 21.0.1 21.0.2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 20.3.5 21.0.1 21.0.2 21.0.3 21.1.0_rc2 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.24.0-r1 6.26.1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.4.2 2.5.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -18233,7 +18233,7 @@ www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.22: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2.2.1-r100 9999: A fast, extensible, and customizable web browser
 www-client/lynx 2.9.0_pre6-r1: An excellent console-based web browser with ssl support
-www-client/microsoft-edge-dev 91.0.838.3 91.0.845.2 91.0.852.0: The web browser from Microsoft
+www-client/microsoft-edge-dev 91.0.845.2 91.0.852.0 91.0.864.1: The web browser from Microsoft
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.10-r4: a free, open source web browser
