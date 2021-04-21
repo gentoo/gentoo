@@ -24,10 +24,15 @@ RDEPEND="
 		dev-qt/qtgui:5[dbus]
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	dev-qt/qtpaths:5
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake.patch
+)
 
 src_install() {
 	cmake_src_install
