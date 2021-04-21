@@ -7555,6 +7555,7 @@ sci-physics/root:shadow - Enable shadow authentication in rootd and proofd
 sci-physics/root:tbb - Enable implicit multi-threading (IMT) with dev-cpp/tbb
 sci-physics/root:tmva - Built TMVA (ROOT's multi-variate analysis toolkit for machine learning)
 sci-physics/root:unuran - Enable support for sci-mathematics/unuran
+sci-physics/root:uring - Enable support for sys-libs/liburing in RNTuple
 sci-physics/root:vc - Enable support for dev-libs/vc with VecCore
 sci-physics/root:vmc - Built the Virtual Monte Carlo library
 sci-physics/root:xrootd - Build the interface for net-libs/xrootd
