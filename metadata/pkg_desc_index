@@ -4802,7 +4802,7 @@ dev-java/asm-analysis 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for
 dev-java/asm-commons 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Common class adaptors)
 dev-java/asm-tree 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Tree API)
 dev-java/asm-util 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Java (Utilities)
-dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
+dev-java/aspectj 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r2 4.2.0-r2: Avalon Framework
 dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
@@ -4956,7 +4956,7 @@ dev-java/icedtea-web 1.8.4-r1: FOSS Java browser plugin and Web Start implementa
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/ini4j 0.5.1 0.5.2: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
-dev-java/iso-relax 20050331-r4: Interfaces useful for applications which support RELAX Core
+dev-java/iso-relax 20050331-r5: Interfaces useful for applications which support RELAX Core
 dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
