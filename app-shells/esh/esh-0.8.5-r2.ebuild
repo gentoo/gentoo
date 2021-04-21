@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs prefix
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A UNIX Shell with a simplified Scheme syntax"
 HOMEPAGE="http://slon.ttk.ru/esh/"
