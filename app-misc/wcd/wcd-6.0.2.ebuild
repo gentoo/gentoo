@@ -16,7 +16,7 @@ IUSE="nls unicode"
 
 CDEPEND="
 	sys-libs/ncurses:0=[unicode?]
-	unicode? ( dev-libs/libunistring )"
+	unicode? ( dev-libs/libunistring:= )"
 DEPEND="${CDEPEND}
 	app-text/ghostscript-gpl
 	virtual/pkgconfig
