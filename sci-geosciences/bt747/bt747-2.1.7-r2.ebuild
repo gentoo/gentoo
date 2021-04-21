@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit epatch java-pkg-2 java-ant-2
+inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="MTK GPS Datalogger Device Control"
 HOMEPAGE="https://www.bt747.org"
@@ -46,7 +46,7 @@ S="${WORKDIR}"
 
 src_prepare() {
 	# Fix for newer jchart2d.
-	epatch "${FILESDIR}/jchart2d-3.2.patch"
+	eapply "${FILESDIR}/jchart2d-3.2.patch"
 
 	# Remove all the bundled stuff.
 	rm -rv dist/ lib/ || die
