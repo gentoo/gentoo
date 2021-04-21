@@ -94,6 +94,7 @@ multilib_src_configure() {
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
 	)
+	addpredict /dev/nvidiactl
 	cmake_src_configure
 }
 
