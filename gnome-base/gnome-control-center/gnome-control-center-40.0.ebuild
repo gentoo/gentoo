@@ -8,7 +8,7 @@ inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
-SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-40.0-patchset.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-40.0-patchset-2.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2"
