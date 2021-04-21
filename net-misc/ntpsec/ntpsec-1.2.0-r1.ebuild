@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit epatch distutils-r1 flag-o-matic waf-utils systemd
+inherit distutils-r1 flag-o-matic waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -68,12 +68,12 @@ WAF_BINARY="${S}/waf"
 src_prepare() {
 	default
 	# Remove autostripping of binaries
-	sed -i -e '/Strip binaries/d' wscript
+	sed -i -e '/Strip binaries/d' wscript || die
 	if ! use libbsd ; then
-		epatch "${FILESDIR}/${PN}-no-bsd.patch"
+		eapply "${FILESDIR}/${PN}-no-bsd.patch"
 	fi
 	# remove extra default pool servers
-	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf
+	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf || die
 
 	python_copy_sources
 }
