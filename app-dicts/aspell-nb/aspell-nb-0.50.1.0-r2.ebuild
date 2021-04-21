@@ -4,7 +4,7 @@
 EAPI=7
 
 ASPELL_LANG="Norwegian Bokmal"
-MY_P="${PN/aspell/aspell-${PV%.*}-${PV##*.}"
+MY_P="${PN}-${PV%.*}-${PV##*.}"
 
 inherit aspell-dict-r1
 
