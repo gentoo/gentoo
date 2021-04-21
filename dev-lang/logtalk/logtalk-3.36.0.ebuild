@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit epatch xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="Open source object-oriented logic programming language"
 HOMEPAGE="https://logtalk.org"
@@ -19,22 +19,20 @@ RDEPEND="${DEPEND}
 	xslt? ( dev-libs/libxslt )
 	fop? ( dev-java/fop )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-portage.patch
-
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-portage.patch
+)
 
 src_install() {
 	# Look at scripts/install.sh for upstream installation process.
 	# Install logtalk base
 	mv scripts/logtalk_user_setup.sh integration/
-	mkdir -p "${D}/usr/share/${P}"
+	mkdir -p "${ED}/usr/share/${P}" || die
 	cp -r adapters coding contributions core docs examples integration \
 		library manuals paths scratch tests tools VERSION.txt \
 		loader-sample.lgt settings-sample.lgt tester-sample.lgt \
 		tests-sample.lgt \
-		"${D}/usr/share/${P}" \
+		"${ED}/usr/share/${P}" \
 		|| die "Failed to install files"
 
 	# Install mime file, the database will be updated later
