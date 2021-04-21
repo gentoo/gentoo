@@ -6236,7 +6236,7 @@ dev-perl/BSD-Resource 1.291.100-r2: Perl module for BSD process resource limit a
 dev-perl/BSON 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.300: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
-dev-perl/BerkeleyDB 0.550.0 0.640.0: This module provides Berkeley DB interface for Perl
+dev-perl/BerkeleyDB 0.640.0: This module provides Berkeley DB interface for Perl
 dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
