@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit autotools findlib
 
@@ -18,7 +18,10 @@ RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
+
 	eautoreconf
+
 	sed -i -e 's/$(OCAMLFIND) remove/#/' Makefile.in || die
 }
 
@@ -31,7 +34,12 @@ src_compile() {
 }
 
 src_install() {
-	dodir "$(ocamlfind printconf destdir)/hashcons"
-	emake DESTDIR="-destdir ${D}/$(ocamlfind printconf destdir)/" $(usex ocamlopt install-opt install-byte)
+	local destdir=$(ocamlfind printconf destdir || die)
+	dodir ${destdir}/hashcons
+
+	emake \
+		DESTDIR="-destdir ${D}"/${destdir}/ \
+		$(usex ocamlopt install-opt install-byte)
+
 	dodoc README.md CHANGES
 }
