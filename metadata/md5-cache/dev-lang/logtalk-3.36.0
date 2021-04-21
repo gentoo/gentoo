@@ -1,13 +1,13 @@
-DEFINED_PHASES=install postinst postrm prepare
+DEFINED_PHASES=install postinst postrm
 DESCRIPTION=Open source object-oriented logic programming language
 EAPI=6
 HOMEPAGE=https://logtalk.org
-INHERIT=epatch xdg-utils
+INHERIT=xdg-utils
 IUSE=fop xslt
 KEYWORDS=amd64 ppc x86
 LICENSE=Apache-2.0
 RDEPEND=xslt? ( dev-libs/libxslt ) fop? ( dev-java/fop )
 SLOT=0
 SRC_URI=https://logtalk.org/files/logtalk-3.36.0.tar.bz2
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	epatch	9f813bb3c47cf2e60619a663b87c5f4e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=462d181d706d9d0e084cc3cd08c6ee68
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=fc019711872c4849e3b4286ead8c8117

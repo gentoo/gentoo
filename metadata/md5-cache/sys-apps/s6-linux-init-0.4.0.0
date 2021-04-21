@@ -9,4 +9,4 @@ LICENSE=ISC
 RDEPEND=>=dev-lang/execline-2.3.0.4 >=sys-apps/s6-2.7.1.0 >=sys-apps/s6-linux-utils-2.4.0.2 >=sys-apps/s6-portable-utils-2.2.1.1 !static? ( >=dev-libs/skalibs-2.6.4.0:= )
 SLOT=0
 SRC_URI=https://www.skarnet.org/software/s6-linux-init/s6-linux-init-0.4.0.0.tar.gz
-_md5_=23797b638cf74c60f134744f8a183948
+_md5_=0639902dbedfd3898eb49f779b7a35eb

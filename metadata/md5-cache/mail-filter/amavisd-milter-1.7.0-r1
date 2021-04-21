@@ -3,9 +3,9 @@ DEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) elibc_uclibc? ( net-libs/l
 DESCRIPTION=sendmail milter for amavisd-new
 EAPI=7
 HOMEPAGE=https://github.com/prehor/amavisd-milter/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=BSD
 RDEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) elibc_uclibc? ( net-libs/libnsl:0= ) mail-filter/amavisd-new
 SLOT=0
 SRC_URI=https://github.com/prehor/amavisd-milter/releases/download/1.7.0/amavisd-milter-1.7.0.tar.gz
-_md5_=f99bf57bb38ad4d5f216c1376b20448b
+_md5_=4019c3e0d32ffe1d20d8fd1cbc046b3c

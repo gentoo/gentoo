@@ -9,4 +9,4 @@ RDEPEND=!www-client/chromium www-client/google-chrome
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=amd64? ( https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip -> chromedriver-bin-90.0.4430.24.linux64.zip )
-_md5_=36115b51621dd156a720cba289172001
+_md5_=4cb81edcf5c8b86f5b8175bc58c4fb97

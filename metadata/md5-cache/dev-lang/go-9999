@@ -10,4 +10,4 @@ RDEPEND=!<dev-go/go-tools-0_pre20150902
 RESTRICT=strip
 SLOT=0/9999
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
-_md5_=8593868bbc0070c0f39099912392eeb7
+_md5_=677d24033b9667a8580209084940181b
