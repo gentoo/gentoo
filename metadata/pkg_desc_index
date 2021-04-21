@@ -2278,11 +2278,11 @@ app-emulation/virt-manager 2.2.1-r3 3.1.0 3.2.0 9999: A graphical tool for admin
 app-emulation/virt-viewer 7.0 8.0 9.0: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.18 1.19 1.20: Detects if the current machine is running in a virtual machine
 app-emulation/virtio-win 0.1.190.1: VirtIO drivers for Windows virtual machines running on KVM
-app-emulation/virtualbox 6.1.16-r1 6.1.18: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 6.1.16-r1 6.1.18: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-extpack-oracle 6.1.16.140961-r1 6.1.18.142142: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 6.1.16-r1 6.1.18 6.1.18-r1: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 6.1.16-r1 6.1.18: Kernel Modules for Virtualbox
+app-emulation/virtualbox 6.1.18 6.1.20: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 6.1.18 6.1.20: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-extpack-oracle 6.1.18.142142 6.1.20.143896: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 6.1.18-r1 6.1.20: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 6.1.18 6.1.20: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
