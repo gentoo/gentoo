@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/zhaozg/lua-openssl/archive/refs/tags/0.8.0-6.tar.gz -> lua-openssl-0.8.0_p6.tar.gz https://github.com/zhaozg/lua-auxiliar/archive/8d09895473b73e4fb72b7573615f69c36e1860a2.tar.gz -> lua-auxiliar-8d09895473b73e4fb72b7573615f69c36e1860a2.tar.gz https://github.com/keplerproject/lua-compat-5.3/archive/v0.10.tar.gz -> lua-compat-5.3-0.10.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
-_md5_=16ade3786410b96692c8c8b72de2d5a9
+_md5_=e0bd6ceceb74db590255656012a207fd

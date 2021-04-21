@@ -15819,7 +15819,7 @@ net-wireless/neard 0.16: Near Field Communication (NFC) management daemon
 net-wireless/osmo-fl2k 0.1.1 9999: turns FL2000-based USB 3.0 to VGA adapters into low cost DACs
 net-wireless/portapack-firmware 20190405: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/portapack-havoc 0.0_p20180612: Custom firmware for the HackRF SDR + PortaPack H1 addon
-net-wireless/qdmr 0.6.4-r1: GUI application for configuring and programming cheap DMR radios
+net-wireless/qdmr 0.7.0: GUI application for configuring and programming cheap DMR radios
 net-wireless/reaver 1.6.5: Brute force attack against Wifi Protected Setup
 net-wireless/rfkill 0.5-r2 0.5-r3 1.0: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/rtl-sdr 0.5.3_p20170919 0.5.4 0.6.0-r1 0.6.0_p2020802 9999: turns your Realtek RTL2832 based DVB dongle into a SDR receiver
@@ -18184,7 +18184,7 @@ www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prom
 www-apps/kibana-bin 6.8.15 7.10.2 7.12.0-r1: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4 3.2.2: Internet platforms for proposition development and decision making
-www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
+www-apps/liquid_feedback_frontend 2.2.7 3.0.6 3.2.1: Internet platforms for proposition development and decision making
 www-apps/mediawiki 1.35.2: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
 www-apps/moodle 3.5.17 3.8.8 3.9.5 3.10.2: The Moodle Course Management System
