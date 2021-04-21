@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/aeson-1.1.2.0:=[profile?] >=dev-haskell/ansi-terminal-0.8.1:=[profile?] >=dev-haskell/cmdargs-0.10:=[profile?] >=dev-haskell/cpphs-1.20.1:=[profile?] >=dev-haskell/data-default-0.3:=[profile?] >=dev-haskell/extra-1.7.3:=[profile?] dev-haskell/file-embed:=[profile?] >=dev-haskell/filepattern-0.1.1:=[profile?] >=dev-haskell/ghc-lib-parser-8.10:=[profile?] <dev-haskell/ghc-lib-parser-8.11:=[profile?] >=dev-haskell/ghc-lib-parser-ex-8.10.0.17:=[profile?] <dev-haskell/ghc-lib-parser-ex-8.10.1:=[profile?] >=dev-haskell/refact-0.3:=[profile?] dev-haskell/text:=[profile?] >=dev-haskell/uniplate-1.5:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/utf8-string:=[profile?] dev-haskell/vector:=[profile?] >=dev-lang/ghc-8.4.3:= gpl? ( >=dev-haskell/hscolour-1.21:=[profile?] ) hsyaml? ( >=dev-haskell/hsyaml-0.2:=[profile?] >=dev-haskell/hsyaml-aeson-0.2:=[profile?] ) !hsyaml? ( >=dev-haskell/yaml-0.5.0:=[profile?] ) >=dev-haskell/cabal-2.2.0.1 hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Source code suggestions
+EAPI=7
+HOMEPAGE=https://github.com/ndmitchell/hlint#readme
+INHERIT=haskell-cabal
+IUSE=+gpl hsyaml +threaded test doc hscolour profile
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/aeson-1.1.2.0:=[profile?] >=dev-haskell/ansi-terminal-0.8.1:=[profile?] >=dev-haskell/cmdargs-0.10:=[profile?] >=dev-haskell/cpphs-1.20.1:=[profile?] >=dev-haskell/data-default-0.3:=[profile?] >=dev-haskell/extra-1.7.3:=[profile?] dev-haskell/file-embed:=[profile?] >=dev-haskell/filepattern-0.1.1:=[profile?] >=dev-haskell/ghc-lib-parser-8.10:=[profile?] <dev-haskell/ghc-lib-parser-8.11:=[profile?] >=dev-haskell/ghc-lib-parser-ex-8.10.0.17:=[profile?] <dev-haskell/ghc-lib-parser-ex-8.10.1:=[profile?] >=dev-haskell/refact-0.3:=[profile?] dev-haskell/text:=[profile?] >=dev-haskell/uniplate-1.5:=[profile?] dev-haskell/unordered-containers:=[profile?] dev-haskell/utf8-string:=[profile?] dev-haskell/vector:=[profile?] >=dev-lang/ghc-8.4.3:= gpl? ( >=dev-haskell/hscolour-1.21:=[profile?] ) hsyaml? ( >=dev-haskell/hsyaml-0.2:=[profile?] >=dev-haskell/hsyaml-aeson-0.2:=[profile?] ) !hsyaml? ( >=dev-haskell/yaml-0.5.0:=[profile?] )
+RESTRICT=!test? ( test )
+SLOT=0/3.2.7
+SRC_URI=https://hackage.haskell.org/package/hlint-3.2.7/hlint-3.2.7.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	multiprocessing	cac3169468f893670dac3e7cb940e045	ghc-package	2f31876646b777a7851b22816735765c	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	haskell-cabal	781f607e5fa6b3d28f694be10c79646b
+_md5_=42541a254b41077d7f5ed236bcf5181b

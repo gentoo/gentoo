@@ -4193,6 +4193,7 @@ dev-haskell/file-location 0.4.9.1: common functions that show file location info
 dev-haskell/filelock 0.1.1.5: Portable interface to file locking (flock / LockFileEx)
 dev-haskell/filemanip 0.3.6.3: Expressive file and directory manipulation for Haskell
 dev-haskell/filepath-bytestring 1.4.2.1.6: Library for manipulating RawFilePaths in a cross platform way
+dev-haskell/filepattern 0.1.2: File path glob-like matching
 dev-haskell/filestore 0.6.5: Interface for versioning file stores
 dev-haskell/findbin 0.0.5-r1: Locate directory of original program
 dev-haskell/fingertree 0.1.4.2: Generic finger-tree structure, with example instances
@@ -4209,6 +4210,8 @@ dev-haskell/genvalidity 0.10.0.2: Testing utilities for the validity library
 dev-haskell/genvalidity-hspec 0.7.0.4: Standard spec's for GenValidity instances
 dev-haskell/genvalidity-property 0.5.0.1: Standard properties for functions on 'Validity' types
 dev-haskell/getopt-generics 0.13.0.4: Create command line interfaces with ease
+dev-haskell/ghc-lib-parser 8.10.2.20200916: The GHC API, decoupled from GHC versions
+dev-haskell/ghc-lib-parser-ex 8.10.0.19: Algorithms on GHC parse trees
 dev-haskell/ghc-paths 0.1.0.12-r1: Knowledge of GHC's installation directories
 dev-haskell/gio 0.13.8.1: Binding to GIO
 dev-haskell/git 0.3.0: Git operations in haskell
@@ -4264,7 +4267,7 @@ dev-haskell/highlighting-kate 0.6.4: Syntax highlighting
 dev-haskell/hinotify 0.3.10: Haskell binding to inotify
 dev-haskell/hit 0.7.0: Git operations in haskell
 dev-haskell/hjsmin 0.2.0.4: Haskell implementation of a javascript minifier
-dev-haskell/hlint 2.1.17-r1: Source code suggestions
+dev-haskell/hlint 3.2.7: Source code suggestions
 dev-haskell/hoauth2 1.16.0: Haskell OAuth2 authentication client
 dev-haskell/hostname 1.0-r1: A a cross-platform means of determining the hostname
 dev-haskell/hourglass 0.2.12: simple performant time related library
@@ -14804,7 +14807,7 @@ net-fs/openafs 1.8.7: The OpenAFS distributed file system
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.86 1.89: Amazon S3 mounting via fuse
-net-fs/samba 4.12.9-r1 4.12.14 4.13.7 4.14.2: Samba Suite Version 4
+net-fs/samba 4.12.9-r1 4.12.14 4.13.7 4.14.2 4.14.3: Samba Suite Version 4
 net-fs/smbnetfs 0.6.3: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 3.7.0 3.7.1: Fuse-filesystem utilizing the sftp service
@@ -17657,7 +17660,7 @@ sys-fs/encfs 1.9.5 1.9.5-r1: An implementation of encrypted filesystem in user-s
 sys-fs/etcd-fs 0_p20140620 0_p20170517: Use etcd as a FUSE filesystem
 sys-fs/eudev 3.2.5 3.2.7-r2 3.2.8 3.2.9 3.2.10 4.9999 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.3.0: exFAT filesystem utilities
-sys-fs/exfatprogs 1.0.4 1.1.0 9999: Userspace utilities for new exfat filesystem (kernel 5.7+)
+sys-fs/exfatprogs 1.1.0 1.1.1 9999: Userspace utilities for new exfat filesystem (kernel 5.7+)
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
