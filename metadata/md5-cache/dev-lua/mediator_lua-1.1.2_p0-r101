@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig test? ( dev-lua/busted[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) )
+BDEPEND=virtual/pkgconfig test? ( dev-lua/busted[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] dev-lua/lua_cliargs[lua_targets_luajit(-)?,lua_targets_lua5-1(-)?,lua_targets_lua5-2(-)?,lua_targets_lua5-3(-)?,lua_targets_lua5-4(-)?] lua_targets_luajit? ( dev-lang/luajit:= ) lua_targets_lua5-1? ( dev-lang/lua:5.1 ) lua_targets_lua5-2? ( dev-lang/lua:5.2 ) lua_targets_lua5-3? ( dev-lang/lua:5.3 ) lua_targets_lua5-4? ( dev-lang/lua:5.4 ) )
 DEFINED_PHASES=install test
 DESCRIPTION=Mediator pattern implementation for pub-sub management
 EAPI=7
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/mediator_lua/archive/v1.1.2-0.tar.gz -> mediator_lua-1.1.2_p0.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	lua-utils	736947973cfbc9de01fdb8548f942f82	lua	117840f7c4855d27ccde1c6cca990331
-_md5_=e9b3f14f7aecb350a65dfc9066a4a227
+_md5_=9cb907a1740f830f49a2e39d5210af43
