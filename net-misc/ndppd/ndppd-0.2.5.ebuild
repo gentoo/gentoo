@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_install()
-{
+src_install() {
 	emake PREFIX=/usr DESTDIR="${D}" install
 	insinto /etc
 	newins ndppd.conf-dist ndppd.conf
