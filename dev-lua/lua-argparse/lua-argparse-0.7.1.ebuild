@@ -15,6 +15,7 @@ S="${WORKDIR}/${PN//lua-/}-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 x86"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}"
 DEPEND="${RDEPEND}"
