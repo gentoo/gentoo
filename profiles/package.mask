@@ -33,8 +33,15 @@
 #--- END OF EXAMPLES ---
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-21)
+# no consumers, last commit 2017
+# see: https://bugs.gentoo.org/784836
+# removal in 30 days
+dev-java/apt-mirror
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-21)
 # java library, no consumers
 # see: https://bugs.gentoo.org/784830
+# removal in 30 days
 dev-java/ant-owanttask
 
 # Ulrich Müller <ulm@gentoo.org> (2021-04-20)
