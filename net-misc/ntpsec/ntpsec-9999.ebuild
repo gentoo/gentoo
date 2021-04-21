@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit epatch flag-o-matic python-r1 waf-utils systemd
+inherit flag-o-matic python-r1 waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -61,9 +61,9 @@ WAF_BINARY="${S}/waf"
 src_prepare() {
 	default
 	# Remove autostripping of binaries
-	sed -i -e '/Strip binaries/d' wscript
+	sed -i -e '/Strip binaries/d' wscript || die
 	if ! use libbsd ; then
-		epatch "${FILESDIR}/${PN}-no-bsd.patch"
+		eapply "${FILESDIR}/${PN}-no-bsd.patch"
 	fi
 	python_copy_sources
 }
