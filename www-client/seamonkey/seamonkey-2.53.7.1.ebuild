@@ -60,6 +60,7 @@ ASM_DEPEND=">=dev-lang/yasm-1.1"
 BDEPEND="
 	app-arch/unzip
 	app-arch/zip
+	>=dev-lang/nasm-2.13
 	dev-lang/perl
 	sys-apps/findutils
 	>=sys-devel/binutils-2.16.1
