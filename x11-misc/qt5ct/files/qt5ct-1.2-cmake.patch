@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,7 +39,7 @@
+ set(QT_QTPATHS_EXECUTABLE ${QT_QTPATHS_EXECUTABLE}/qtpaths)
+ 
+ if(EXISTS ${QT_QTPATHS_EXECUTABLE})
+-    message(STATUS "Found qtpaths executable: " ${QT_QTPATHS_EXECUTABLE})    
++    message(STATUS "Found qtpaths executable: " ${QT_QTPATHS_EXECUTABLE})
+ else()
+     message(FATAL_ERROR "Could NOT find qtpaths executable")
+ endif()
+@@ -54,8 +54,8 @@
+ add_subdirectory(src/qt5ct-qtplugin)
+ add_subdirectory(src/qt5ct-style)
+ 
+-install(DIRECTORY qss DESTINATION ${CMAKE_INSTALL_DATADIR})
+-install(DIRECTORY colors DESTINATION ${CMAKE_INSTALL_DATADIR})
++install(DIRECTORY qss DESTINATION ${CMAKE_INSTALL_DATADIR}/qt5ct)
++install(DIRECTORY colors DESTINATION ${CMAKE_INSTALL_DATADIR}/qt5ct)
+ 
+ if(UNIX)
+     add_custom_target(distclean @echo cleaning for source distribution)
