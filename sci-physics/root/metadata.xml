@@ -42,6 +42,7 @@
     <flag name="tbb">Enable implicit multi-threading (IMT) with <pkg>dev-cpp/tbb</pkg></flag>
     <flag name="tmva">Built TMVA (ROOT's multi-variate analysis toolkit for machine learning)</flag>
     <flag name="unuran">Enable support for <pkg>sci-mathematics/unuran</pkg></flag>
+    <flag name="uring">Enable support for <pkg>sys-libs/liburing</pkg> in RNTuple</flag>
     <flag name="vc">Enable support for <pkg>dev-libs/vc</pkg> with VecCore</flag>
     <flag name="vmc">Built the Virtual Monte Carlo library</flag>
     <flag name="xrootd">Build the interface for <pkg>net-libs/xrootd</pkg> </flag>
