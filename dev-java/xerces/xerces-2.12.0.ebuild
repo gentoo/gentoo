@@ -41,8 +41,12 @@ JAVA_GENTOO_CLASSPATH="
 
 S="${WORKDIR}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-overrides.patch"
+)
+
 src_prepare() {
 	default
 
-	epatch "${FILESDIR}/${P}-overrides.patch"
+	java-pkg-2_src_prepare
 }
