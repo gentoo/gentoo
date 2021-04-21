@@ -14874,7 +14874,7 @@ net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(
 net-im/signal-cli-bin 0.7.4 0.8.0: Send and receive messages of Signal Messenger over a command line interface
 net-im/signal-desktop-bin 5.0.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.69.0.77: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.69.0.77 8.71.0.36: Instant messaging client, with support for audio and video
 net-im/slack 4.12.2 4.13.0 4.14.0: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
@@ -17753,7 +17753,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.109 5.4.111 5.4.112 5.4.113 5.10.27 5.10.29 5.10.30 5.10.31 5.11.13 5.11.14 5.11.15: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.109 5.4.109-r1 5.4.111 5.4.111-r1 5.4.112 5.4.112-r1 5.4.113 5.4.113-r1 5.10.27 5.10.27-r1 5.10.29 5.10.29-r1 5.10.30 5.10.30-r1 5.10.31 5.10.31-r1 5.11.13 5.11.13-r1 5.11.14 5.11.14-r1 5.11.15 5.11.15-r1: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.4.114 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.10.32 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15 5.11.16: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5 5.12_rc6 5.12_rc7 5.12_rc8: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18392,7 +18392,7 @@ x11-base/xorg-drivers 1.20-r2 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2020.1 2021.3 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.10-r2 1.20.10-r3 1.20.11 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 390.141 390.141-r1 450.102.04 450.102.04-r1 460.56 460.67 465.19.01: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 390.141-r1 390.143 450.102.04-r1 450.119.03 460.67 460.73.01 465.24.02: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
