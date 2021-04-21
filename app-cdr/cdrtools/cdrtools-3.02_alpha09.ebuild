@@ -48,7 +48,7 @@ src_prepare() {
 	# going to include this so let's try to carry it forward.
 	# Contact me if it needs updating.  Bug #486782.
 	# Anthony G. Basile <blueness@gentoo.org>.
-	use elibc_uclibc && epatch "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
+	use elibc_uclibc && eapply "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
 
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete || die "delete *_p.mk"
