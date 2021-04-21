@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic linux-info udev user
+inherit autotools flag-o-matic linux-info udev
 
 DESCRIPTION="Program for querying and changing monitor settings"
 HOMEPAGE="http://www.ddcutil.com/"
@@ -21,9 +21,13 @@ RDEPEND="dev-libs/glib:2
 	drm? ( x11-libs/libdrm )
 	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
 	usb-monitor? (
+		acct-group/video
 		dev-libs/hidapi
 		virtual/libusb:1
 		sys-apps/usbutils
+	)
+	user-permissions? (
+		acct-group/i2c
 	)
 	X? (
 		x11-libs/libXrandr
@@ -88,7 +92,6 @@ src_install() {
 
 pkg_postinst() {
 	if use user-permissions; then
-		enewgroup i2c
 		einfo "To allow non-root users access to the /dev/i2c-* devices, add those"
 		einfo "users to the i2c group: usermod -aG i2c user"
 		einfo "Restart the computer or reload the i2c-dev module to activate"
@@ -96,7 +99,6 @@ pkg_postinst() {
 		einfo "For more information read: http://www.ddcutil.com/i2c_permissions/"
 
 		if use usb-monitor; then
-			enewgroup video
 			einfo "To allow non-root users access to USB monitors, add those users"
 			einfo "to the video group: usermod -aG video user"
 			einfo "Restart the computer, reload the hiddev and hidraw modules, or replug"
