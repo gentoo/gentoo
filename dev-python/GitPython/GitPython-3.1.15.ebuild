@@ -27,7 +27,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	dev-vcs/git
-	>=dev-python/gitdb-4.0.1[${PYTHON_USEDEP}]"
+	>=dev-python/gitdb-4.0.1[${PYTHON_USEDEP}]
+	dev-python/typing-extensions[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		>=dev-python/ddt-1.1.1[${PYTHON_USEDEP}]
