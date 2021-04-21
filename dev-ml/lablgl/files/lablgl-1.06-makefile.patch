@@ -1,7 +1,7 @@
 Make sure install dir exists before copying file to it.
 
---- lablgl-1.06/LablGlut/src/Makefile
-+++ lablgl-1.06/LablGlut/src/Makefile
+--- a/LablGlut/src/Makefile
++++ b/LablGlut/src/Makefile
 @@ -68,6 +68,7 @@
  	cd "$(INSTALLDIR)" && $(RANLIB) liblablglut$(XA)
  	@if test -f dlllablglut$(XS); then $(MAKE) installdll; \
