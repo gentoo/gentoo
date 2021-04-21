@@ -39,7 +39,7 @@ RDEPEND="!mail-client/nmh
 	postgres? ( dev-db/postgresql:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( virtual/gsasl )
-	servers? ( virtual/libiconv dev-libs/libunistring )
+	servers? ( virtual/libiconv dev-libs/libunistring:= )
 	ssl? ( net-libs/gnutls:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tokyocabinet? ( dev-db/tokyocabinet )"
