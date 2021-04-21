@@ -1340,7 +1340,6 @@ app-dicts/aspell-mn 0.06.2: Aspell (Mongolian) language dictionary
 app-dicts/aspell-mr 0.10.0: Aspell (Marathi) language dictionary
 app-dicts/aspell-ms 0.50.0: Aspell (Malay) language dictionary
 app-dicts/aspell-mt 0.50.0: Aspell (Maltese) language dictionary
-app-dicts/aspell-nb 0.50.1.0-r1: Aspell (Norwegian Bokmal) language dictionary
 app-dicts/aspell-nds 0.01.0: Aspell (Lower Saxony Plattdüütsch) language dictionary
 app-dicts/aspell-nl 0.50.2: Aspell (Dutch) language dictionary
 app-dicts/aspell-nn 0.50.1.1: Aspell (Norwegian Nynorsk) language dictionary
