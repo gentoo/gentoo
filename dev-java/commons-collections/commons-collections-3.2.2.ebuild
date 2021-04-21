@@ -19,17 +19,19 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=virtual/jdk-1.8
+	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/junit:0
 		dev-java/ant-junit:0
 	)"
 
-RDEPEND=">=virtual/jre-1.8"
+RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}/${P}-src"
 
-PATCHES=( "${FILESDIR}/${P}-Java-8.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fixes.patch"
+)
 
 src_prepare() {
 	default
@@ -38,7 +40,7 @@ src_prepare() {
 src_compile() {
 	local antflags
 	if use test; then
-		antflags="tf.jar -Djunit.jar=$(java-pkg_getjars junit)"
+		antflags="tf.jar -Djunit.jar=$(java-pkg_getjars --build-only junit)"
 	fi
 	eant jar $(use_doc) ${antflags}
 }
