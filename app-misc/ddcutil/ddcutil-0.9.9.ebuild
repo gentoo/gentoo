@@ -21,17 +21,21 @@ RDEPEND="dev-libs/glib:2
 	drm? ( x11-libs/libdrm )
 	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
 	usb-monitor? (
-		acct-group/video
 		dev-libs/hidapi
 		virtual/libusb:1
 		sys-apps/usbutils
 	)
-	user-permissions? (
-		acct-group/i2c
-	)
 	X? (
 		x11-libs/libXrandr
 		x11-libs/libX11
+	)
+"
+RDEPEND="${COMMON_DEPEND}
+	usb-monitor? (
+		acct-group/video
+	)
+	user-permissions? (
+		acct-group/i2c
 	)"
 
 DEPEND="${RDEPEND}

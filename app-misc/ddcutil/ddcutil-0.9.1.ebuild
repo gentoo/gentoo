@@ -15,25 +15,29 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="drm usb-monitor user-permissions video_cards_nvidia X"
 REQUIRED_USE="drm? ( X )"
 
-RDEPEND="dev-libs/glib:2
+COMMON_DEPEND="dev-libs/glib:2
 	sys-apps/i2c-tools
 	virtual/udev
 	drm? ( x11-libs/libdrm )
 	usb-monitor? (
-		acct-group/video
 		dev-libs/hidapi
 		virtual/libusb:1
 		sys-apps/usbutils
 	)
-	user-permissions? (
-		acct-group/i2c
-	)
 	X? (
 		x11-libs/libXrandr
 		x11-libs/libX11
+	)
+"
+RDEPEND="${COMMON_DEPEND}
+	usb-monitor? (
+		acct-group/video
+	)
+	user-permissions? (
+		acct-group/i2c
 	)"
 
-DEPEND="${RDEPEND}
+BDEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 pkg_pretend() {
