@@ -12,6 +12,7 @@ inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-func
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
+SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
@@ -20,21 +21,9 @@ IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	vc vmc +xml xrootd"
 RESTRICT="!test? ( test )"
 
-if [[ ${PV} =~ "9999" ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/root-project/root.git"
-	if [[ ${PV} == "9999" ]]; then
-		SLOT="0"
-	else
-		SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
-		EGIT_BRANCH="v$(ver_cut 1)-$(ver_cut 2)-00-patches"
-	fi
-else
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
-fi
-
+SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
+KEYWORDS="~amd64 ~x86"
 
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
@@ -242,10 +231,9 @@ src_configure() {
 		-Dopengl=$(usex opengl)
 		-Doracle=$(usex oracle)
 		-Dpgsql=$(usex postgres)
-		-Dpythia6=$(usex pythia6)
 		-Dpyroot=$(usex python) # python was renamed to pyroot
-		#-Dpyroot_legacy=OFF # set to ON to use legacy PyROOT (6.22 and later)
-		#-Dpyroot_experimental=OFF # set to ON to use new PyROOT (6.20 and earlier)
+		-Dpyroot_legacy=OFF
+		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
 		-Dqt5web=$(usex qt5)
 		-Dr=$(usex R)
@@ -294,12 +282,7 @@ src_install() {
 	cmake_src_install
 
 	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
-
-	if [[ ${PV} == "9999" ]]; then
-		ROOTENV="9900${PN}-git"
-	else
-		ROOTENV="$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)-git"
-	fi
+	ROOTENV="$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)"
 
 	cat > ${ROOTENV} <<- EOF || die
 	MANPATH="${ROOTSYS}/share/man"
@@ -327,10 +310,8 @@ src_install() {
 	fi
 
 	# create versioned symlinks for binaries
-	if [[ ! ${PV} == "9999" ]]; then
-		cd bin;
-		for exe in *; do
-			dosym "${exe}" "/usr/lib/${PN}/$(ver_cut 1-2)/bin/${exe}-$(ver_cut 1-2)"
-		done
-	fi
+	cd bin;
+	for exe in *; do
+		dosym "${exe}" "/usr/lib/${PN}/$(ver_cut 1-2)/bin/${exe}-$(ver_cut 1-2)"
+	done
 }
