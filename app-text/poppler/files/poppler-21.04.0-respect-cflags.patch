@@ -1,17 +1,18 @@
-From 37f8326557eeb291d78a866d5ff78d79b32f6f8b Mon Sep 17 00:00:00 2001
-From: Lars Wendler <polynomial-c@gentoo.org>
-Date: Wed, 2 Dec 2020 09:29:33 +0100
+From a9f54d7c37b2b738767d757517466768a9f5a8fe Mon Sep 17 00:00:00 2001
+From: Theo Anderson <telans@posteo.de>
+Date: Wed, 14 Apr 2021 10:16:11 +1200
 Subject: [PATCH] build: respect cflags
 
+Signed-off-by: Theo Anderson <telans@posteo.de>
 ---
- cmake/modules/PopplerMacros.cmake | 81 +------------------------------
- 1 file changed, 2 insertions(+), 79 deletions(-)
+ cmake/modules/PopplerMacros.cmake | 77 ++-----------------------------
+ 1 file changed, 4 insertions(+), 73 deletions(-)
 
 diff --git a/cmake/modules/PopplerMacros.cmake b/cmake/modules/PopplerMacros.cmake
-index 707e7497..882cf11b 100644
+index fe1182da..b77eaa3e 100644
 --- a/cmake/modules/PopplerMacros.cmake
 +++ b/cmake/modules/PopplerMacros.cmake
-@@ -79,8 +79,6 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+@@ -79,14 +79,11 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
    set(CMAKE_BUILD_TYPE RelWithDebInfo)
  endif(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
  
@@ -20,10 +21,17 @@ index 707e7497..882cf11b 100644
    set(_warn "-Wall -Wextra -Wpedantic")
    set(_warn "${_warn} -Wno-unused-parameter")
    set(_warn "${_warn} -Wcast-align")
-@@ -105,80 +103,5 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+   set(_warn "${_warn} -Wformat-security")
+   set(_warn "${_warn} -Wframe-larger-than=65536")
+-  set(_warn "${_warn} -Wlogical-op")
+   set(_warn "${_warn} -Wmissing-format-attribute")
+   set(_warn "${_warn} -Wnon-virtual-dtor")
+   set(_warn "${_warn} -Woverloaded-virtual")
+@@ -102,22 +99,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+ 
    set(DEFAULT_COMPILE_WARNINGS "${_warn}")
    set(DEFAULT_COMPILE_WARNINGS_EXTRA "${_warn} ${_warnx}")
- 
+-
 -  set(_save_cxxflags "${CMAKE_CXX_FLAGS}")
 -  set(CMAKE_CXX_FLAGS                "-fno-exceptions -fno-check-new -fno-common -fno-operator-names -D_DEFAULT_SOURCE")
 -  set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g ${_save_cxxflags}")
@@ -39,14 +47,15 @@ index 707e7497..882cf11b 100644
 -  set(CMAKE_C_FLAGS_DEBUGFULL        "-g3 -fno-inline ${_save_cflags}")
 -  set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs ${_save_cflags}")
 -
--  poppler_check_link_flag("-Wl,--as-needed" GCC_HAS_AS_NEEDED)
--  if(GCC_HAS_AS_NEEDED)
--    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--as-needed")
--    set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,--as-needed")
--    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--as-needed")
--  endif(GCC_HAS_AS_NEEDED)
--endif (CMAKE_COMPILER_IS_GNUCXX)
--
++  
++if(CMAKE_COMPILER_IS_GNUCXX)
+   poppler_check_link_flag("-Wl,--as-needed" GCC_HAS_AS_NEEDED)
+   if(GCC_HAS_AS_NEEDED)
+     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--as-needed")
+@@ -126,57 +109,5 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+   endif(GCC_HAS_AS_NEEDED)
+ endif (CMAKE_COMPILER_IS_GNUCXX)
+ 
 -if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 -# set the default compile warnings
 -  set(_warn "-Wall -Wextra -Wpedantic")
@@ -104,5 +113,5 @@ index 707e7497..882cf11b 100644
 +set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor -Woverloaded-virtual")
 +set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 -- 
-2.29.2
+2.31.1
 
