@@ -36,6 +36,9 @@ BDEPEND="
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
+
+	# Bug #784365
+	sed -i -e 's:40\.alpha:40~alpha:' data/org.gnome.Sudoku.appdata.xml.in || die
 }
 
 pkg_postinst() {
