@@ -1,0 +1,17 @@
+From bcdc0714b9dcd08714374aa83ab112f1da0600a7 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 21 Apr 2021 00:45:47 +0000
+Subject: [PATCH 2/2] Don't strip binary
+
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -53,7 +53,7 @@ install-prog:
+ 	@if [ -f "$(DESTDIR)$(bindir)/$(PROG)" ]; then \
+ 		mv -f "$(DESTDIR)$(bindir)/$(PROG)" "$(DESTDIR)$(bindir)/$(PROG).old"; \
+ 	fi
+-	$(INSTALL) -s $(PROG) $(DESTDIR)$(bindir)/ ;
++	$(INSTALL) $(PROG) $(DESTDIR)$(bindir)/ ;
+ 
+ 	@echo -e \
+ 	" **********************************************************\n"\
+-- 
