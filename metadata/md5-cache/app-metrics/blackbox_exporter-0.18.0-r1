@@ -1,6 +1,6 @@
-BDEPEND=filecaps? ( sys-libs/libcap ) >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+BDEPEND=dev-util/promu filecaps? ( sys-libs/libcap ) >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=dev-util/promu
+DEPEND=acct-group/blackbox_exporter acct-user/blackbox_exporter
 DESCRIPTION=Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 EAPI=7
 HOMEPAGE=https://github.com/prometheus/blackbox_exporter
@@ -13,4 +13,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prometheus/blackbox_exporter/archive/v0.18.0.tar.gz -> blackbox_exporter-0.18.0.tar.gz
 _eclasses_=fcaps	da689a8e04bbbb3518888ff668fee45b	go-module	92660621959e7fab813173772987588b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=fce3043067063d7bcee54d90287230a7
+_md5_=ce252cea130e401e9a9422637665f86e

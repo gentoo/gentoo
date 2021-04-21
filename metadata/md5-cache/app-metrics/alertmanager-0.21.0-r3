@@ -1,6 +1,6 @@
 BDEPEND=dev-util/promu >=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=>=dev-lang/go-1.11 dev-util/promu
+DEPEND=acct-group/alertmanager acct-user/alertmanager
 DESCRIPTION=Alertmanager for alerts sent by client applications such as Prometheus
 EAPI=7
 HOMEPAGE=https://github.com/prometheus/alertmanager
@@ -11,4 +11,4 @@ RESTRICT=strip test
 SLOT=0
 SRC_URI=https://github.com/prometheus/alertmanager/archive/v0.21.0.tar.gz -> alertmanager-0.21.0.tar.gz
 _eclasses_=go-module	92660621959e7fab813173772987588b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6
-_md5_=2f22b544ae8cb7f96cb37cd72e104ff5
+_md5_=fff12fef81ddcb12f8ef315549a0cc9a
