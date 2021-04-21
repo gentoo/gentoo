@@ -4861,7 +4861,7 @@ dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded 
 dev-java/commons-jxpath 1.3-r3 1.3-r4: Applies XPath expressions to graphs of objects of all kinds
 dev-java/commons-lang 2.0-r3 2.6-r1 3.1 3.6 3.11-r1 3.12.0: Commons components to manipulate core java classes
 dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
-dev-java/commons-logging 1.2-r1 1.2-r2: An ultra-thin bridge between different Java logging libraries
+dev-java/commons-logging 1.2-r1 1.2-r3: An ultra-thin bridge between different Java logging libraries
 dev-java/commons-math 3.6.1-r1: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 3.2 3.6-r1 3.8.0: Client-oriented Java library to implement many Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
@@ -18682,7 +18682,7 @@ x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: Viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.1.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 2.2.0 2.3.0: Qt GUI Process Manager
-x11-misc/qt5ct 1.1 1.2: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 1.1 1.2-r1: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.3: A BBS client based on Qt
 x11-misc/qtfm 6.2.0 99999: Small, lightweight file manager based on pure Qt
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
