@@ -6,7 +6,7 @@ EAPI=7
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
 
@@ -16,8 +16,8 @@ HOMEPAGE="https://root.cern"
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
 	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
-	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
-	vmc +xml xrootd"
+	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran uring
+	vc vmc +xml xrootd"
 RESTRICT="!test? ( test )"
 
 if [[ ${PV} =~ "9999" ]] ; then
@@ -46,6 +46,7 @@ REQUIRED_USE="
 	qt5? ( root7 )
 	root7? ( || ( c++14 c++17 ) )
 	tmva? ( gsl )
+	uring? ( root7 )
 "
 
 CDEPEND="
@@ -53,6 +54,7 @@ CDEPEND="
 	app-arch/zstd
 	app-arch/xz-utils
 	fortran? ( dev-lang/cfortran )
+	dev-cpp/nlohmann_json
 	dev-libs/libpcre:3
 	dev-libs/xxhash
 	media-fonts/dejavu
@@ -103,12 +105,13 @@ CDEPEND="
 	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( >=dev-cpp/tbb-2018 )
+	tbb? ( dev-cpp/tbb )
 	tmva? (
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		')
 	)
+	uring? ( sys-libs/liburing )
 	vc? ( dev-libs/vc:= )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
@@ -166,6 +169,8 @@ src_configure() {
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
+		-Dasserts=OFF
+		-Ddev=OFF
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
 		-Dgnuinstall=OFF
@@ -173,6 +178,8 @@ src_configure() {
 		-Dsoversion=ON
 		-Dbuiltin_llvm=ON
 		-Dbuiltin_clang=ON
+		-Dbuiltin_cling=ON
+		-Dbuiltin_openui5=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
 		-Dbuiltin_davix=OFF
@@ -184,6 +191,7 @@ src_configure() {
 		-Dbuiltin_gsl=OFF
 		-Dbuiltin_lz4=OFF
 		-Dbuiltin_lzma=OFF
+		-Dbuiltin_nlohmannjson=OFF
 		-Dbuiltin_openssl=OFF
 		-Dbuiltin_pcre=OFF
 		-Dbuiltin_tbb=OFF
@@ -208,6 +216,7 @@ src_configure() {
 		-Ddataframe=ON
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
+		-Ddistcc=OFF
 		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
@@ -251,6 +260,7 @@ src_configure() {
 		-Dsqlite=$(usex sqlite)
 		-Dssl=$(usex ssl)
 		-Dtcmalloc=OFF
+		-Dtest_distrdf_pyspark=OFF
 		-Dtesting=$(usex test)
 		-Dtmva=$(usex tmva)
 		-Dtmva-cpu=$(usex tmva)
@@ -258,6 +268,7 @@ src_configure() {
 		-Dtmva-pymva=$(usex tmva)
 		-Dtmva-rmva=$(usex R)
 		-Dunuran=$(usex unuran)
+		-During=$(usex uring)
 		-Dvc=$(usex vc)
 		-Dvdt=OFF
 		-Dveccore=OFF
