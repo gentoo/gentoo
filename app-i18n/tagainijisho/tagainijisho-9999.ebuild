@@ -49,6 +49,10 @@ LICENSE="GPL-3+ public-domain"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
+if [[ "${PV}" == 9999 ]]; then
+	# We wget dictionary files in addition to using git
+	PROPERTIES="live"
+fi
 
 BDEPEND="dev-qt/linguist-tools:5"
 DEPEND=">=dev-db/sqlite-3.12:3
