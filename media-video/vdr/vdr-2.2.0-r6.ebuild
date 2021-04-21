@@ -78,8 +78,7 @@ enable_patch() {
 	done
 }
 
-extensions_add_make_conf()
-{
+extensions_add_make_conf() {
 	# copy all ifdef for extensions-patch to Make.config
 	sed -e '1,/need to touch the following:/d' \
 		-e '/need to touch the following/,/^$/d' \
