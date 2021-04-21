@@ -19,7 +19,7 @@ SRC_URI="https://download.virtualbox.org/virtualbox/${DIR_PV:-${MY_PV}}/${MY_P}.
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
 # automount Error: VBoxServiceAutoMountWorker: Group "vboxsf" does not exist
@@ -140,7 +140,7 @@ src_install() {
 	newins mount.vboxsf mount.vboxsf
 	fperms 4755 /sbin/mount.vboxsf
 
-	newinitd "${FILESDIR}"/${PN}-8.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}-8.initd-r1 ${PN}
 
 	insinto /usr/sbin/
 	newins VBoxService vboxguest-service
