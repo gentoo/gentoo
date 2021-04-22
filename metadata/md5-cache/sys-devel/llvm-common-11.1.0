@@ -8,5 +8,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
 SRC_URI=https://github.com/llvm/llvm-project/archive/llvmorg-11.1.0.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	llvm.org	ac34ccc0ab197b128f6d3d2a4fe1cc5e
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	llvm.org	947bf87d74971ddf91feb19e4fa5f92f
 _md5_=c92048d8a701f59288ed1244d7de2a00

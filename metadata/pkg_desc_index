@@ -4808,7 +4808,7 @@ dev-java/asm-util 6.2.1 7.3.1 8.0.1 9.1: Bytecode manipulation framework for Jav
 dev-java/aspectj 1.7.4 1.9.6: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.2.0-r2: Avalon Framework
-dev-java/avalon-logkit 2.1-r8: Easy-to-use Java logging toolkit
+dev-java/avalon-logkit 2.1-r9: Easy-to-use Java logging toolkit
 dev-java/backport-util-concurrent 3.1-r1: A portability wrapper for java.util.concurrent API (jsr166) 6.0
 dev-java/batik 1.9: Java based SVG toolkit
 dev-java/bcel 6.5.0 6.5.0-r1: Apache Commons Bytecode Engineering Library
