@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools toolchain-funcs usr-ldscript
+
+inherit autotools usr-ldscript
 
 DESCRIPTION="System Utilities Based on Sysfs"
 HOMEPAGE="http://linux-diag.sourceforge.net/Sysfsutils.html"
@@ -14,14 +15,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc 
 IUSE="static-libs"
 
 src_prepare() {
-	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #467642
+	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die # bug #467642
 
-	# workaround maintainer mode
+	# Workaround maintainer mode
 	AT_M4DIR=m4 eautoreconf
-
-	# with eautoreconf you get "Useless epunt_cxx usage"
-	# without you don't
-#	epunt_cxx
 }
 
 src_configure() {
