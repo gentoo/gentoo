@@ -58,7 +58,6 @@ src_install() {
 		rm -r VIRTUAL_VACATION/{vacation.pl,INSTALL.md,tests,FILTER_README} || die
 	fi
 
-	docinto /usr/share/doc/${PF}/
 	dodoc -r ADDITIONS
 
 	local docs="DOCUMENTS/*.txt INSTALL.TXT CHANGELOG.TXT"
