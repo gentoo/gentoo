@@ -295,8 +295,8 @@ src_install() {
 	rm -rf "${D}"/var || die
 	rm -rf "${D}"/run || die
 
-	newbashcomp "${S}/tools/bash-completion/vsh" virsh
-	bashcomp_alias virsh virt-admin
+	newbashcomp "${BUILD_DIR}/tools/bash-completion/virsh" virsh
+	newbashcomp "${BUILD_DIR}/tools/bash-completion/virt-admin" virt-admin
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
