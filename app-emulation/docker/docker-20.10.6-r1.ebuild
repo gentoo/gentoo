@@ -160,6 +160,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	# https://bugs.gentoo.org/748984 https://github.com/etcd-io/etcd/pull/12552
 	pushd "${S}/vendor/github.com/coreos/etcd" >/dev/null || die
 	eapply "${FILESDIR}/etcd-F_OFD_GETLK-fix.patch"
 	popd >/dev/null || die
