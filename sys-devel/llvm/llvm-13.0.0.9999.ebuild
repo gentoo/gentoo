@@ -11,7 +11,7 @@ DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY VE )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
@@ -274,6 +274,7 @@ get_distribution_components() {
 			llvm-objcopy
 			llvm-objdump
 			llvm-opt-report
+			llvm-otool
 			llvm-pdbutil
 			llvm-profdata
 			llvm-profgen
