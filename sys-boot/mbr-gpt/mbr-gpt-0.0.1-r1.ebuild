@@ -3,19 +3,20 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="An MBR that can handle BIOS-based boot on GPT"
 MY_P="${PN}_${PV}"
 HOMEPAGE="https://web.archive.org/web/20080704173538/http://aybabtu.com/mbr-gpt/"
 SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${MY_P}.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="0"
 # This should probably NEVER go to stable. It's crazy advanced dangerous magic.
 # It's also pure ASM, so not suitable for elsewhere anyway.
 # Please don't remove it, robbat2 has a box that depends on it for # booting!
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
 # It only depends on binutils/gcc/make, and doesn't link against libc even.
 DEPEND=""
 RDEPEND=""
@@ -30,12 +31,15 @@ RESTRICT="binchecks strip"
 
 src_prepare() {
 	default
+
 	# Messy upstream
 	emake clean
 
 	# Need to build it 32-bit for the MBR
 	# Btw, no CFLAGS are respected, it's ASM!
-	use amd64 && sed -i -e 's/-Wall/-Wall -m32/g' "${S}"/Makefile
+	if use amd64 ; then
+		sed -i -e 's/-Wall/-Wall -m32/g' "${S}"/Makefile || die
+	fi
 }
 
 src_compile() {
@@ -47,9 +51,11 @@ src_install() {
 	# location.
 	insinto /usr/lib/${PN}
 	doins mbr
+
 	exeinto /usr/lib/${PN}
 	exeopts -m 700
 	doexe boot.elf
+
 	dodoc AUTHORS
 }
 
