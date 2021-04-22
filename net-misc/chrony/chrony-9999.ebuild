@@ -195,6 +195,8 @@ pkg_preinst() {
 	HAD_CAPS=false
 	HAD_SECCOMP=false
 
+	# See https://dev.gentoo.org/~zmedico/portage/doc/portage.html#package-ebuild-phases-after-2.1.5
+	# in "Ebuild Phases" for an explanation of why we need to save the variable beforehand
 	if has_version 'net-misc/chrony[caps]' ; then
 		HAD_CAPS=true
 	fi
@@ -202,7 +204,6 @@ pkg_preinst() {
 	if has_version 'net-misc/chrony[seccomp]' ; then
 		HAD_SECCOMP=true
 	fi
-
 }
 
 pkg_postinst() {
