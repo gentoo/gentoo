@@ -13760,6 +13760,7 @@ media-plugins/live 2020.05.15: Libraries for standards-based RTP/RTCP/RTSP multi
 media-plugins/mcp-plugins 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.2.6: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mythplugins 31.0-r1: Official MythTV plugins
+media-plugins/noise-repellent 0.1.5: An lv2 plug-in for broadband noise reduction
 media-plugins/qmmp-plugin-pack 1.4.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
@@ -18229,7 +18230,7 @@ www-client/fetch 1.0-r3 1.0-r4: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 78.9.0 78.10.0 87.0 87.0-r1 88.0: Firefox Web Browser
 www-client/firefox-bin 78.9.0 78.10.0 87.0 88.0: Firefox Web Browser
 www-client/google-chrome 90.0.4430.85: The web browser from Google
-www-client/google-chrome-beta 90.0.4430.85: The web browser from Google
+www-client/google-chrome-beta 91.0.4472.19: The web browser from Google
 www-client/google-chrome-unstable 91.0.4472.19: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18272,7 +18273,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 90.0.4430.85_beta 90.0.4430.85 91.0.4472.19_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 90.0.4430.85 91.0.4472.19_alpha 91.0.4472.19_beta: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension
