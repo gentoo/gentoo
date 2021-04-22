@@ -13,7 +13,7 @@ SRC_URI="https://github.com/telegramdesktop/libtgvoip/archive/${LIBTGVOIP_COMMIT
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="+dsp libressl pulseaudio"
 
 DEPEND="
