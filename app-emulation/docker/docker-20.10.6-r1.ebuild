@@ -158,6 +158,13 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
+src_prepare() {
+	default
+	pushd "${S}/vendor/github.com/coreos/etcd" >/dev/null || die
+	eapply "${FILESDIR}/etcd-F_OFD_GETLK-fix.patch"
+	popd >/dev/null || die
+}
+
 src_compile() {
 	export DOCKER_GITCOMMIT="${GIT_COMMIT}"
 	export GOPATH="${WORKDIR}/${P}"
