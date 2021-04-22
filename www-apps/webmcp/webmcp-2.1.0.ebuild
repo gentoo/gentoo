@@ -22,6 +22,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+
 S="${WORKDIR}"/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
