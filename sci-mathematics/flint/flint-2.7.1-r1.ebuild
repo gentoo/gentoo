@@ -36,6 +36,8 @@ DEPEND="dev-libs/gmp:=
 	virtual/cblas"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fix-cmake-findgmp.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_NTL="$(usex ntl)"
