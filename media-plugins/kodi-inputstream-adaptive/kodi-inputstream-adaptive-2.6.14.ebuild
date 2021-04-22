@@ -8,9 +8,6 @@ inherit cmake kodi-addon
 DESCRIPTION="Kodi's Adaptive inputstream addon"
 HOMEPAGE="https://github.com/peak3d/inputstream.adaptive.git"
 SRC_URI=""
-PATCHES=(
-	"${FILESDIR}/${PN}-2.6.11.patch"
-)
 
 case ${PV} in
 9999)
