@@ -35,6 +35,7 @@ BDEPEND="
 DOCS=( CREDITS.TXT )
 
 LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
+LLVM_PATCHSET=11.1.0-1
 llvm.org_set_globals
 
 python_check_deps() {
@@ -56,14 +57,6 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
-}
-
-src_prepare() {
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-
-	llvm.org_src_prepare
 }
 
 test_compiler() {
