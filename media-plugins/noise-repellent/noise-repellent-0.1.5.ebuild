@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib
+inherit meson
 
 DESCRIPTION="An lv2 plug-in for broadband noise reduction"
 HOMEPAGE="https://github.com/lucianodato/noise-repellent"
@@ -13,7 +13,7 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-BEPEND="
+BDEPEND="
 	media-libs/lv2
 "
 RDEPEND="
