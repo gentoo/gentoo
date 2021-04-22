@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info multilib pam toolchain-funcs
+inherit linux-info pam toolchain-funcs
 
 PATCH_TARBALL_NAME="${PN}-2.4.9-patches-02"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
@@ -82,11 +82,11 @@ src_prepare() {
 		pppd/{pathnames.h,pppd.8} || die
 
 	if use radius ; then
-		#set the right paths in radiusclient.conf
+		# Set the right paths in radiusclient.conf
 		sed -e "s:/usr/local/etc:/etc:" \
 			-e "s:/usr/local/sbin:/usr/sbin:" \
 			-i pppd/plugins/radius/etc/radiusclient.conf || die
-		#set config dir to /etc/ppp/radius
+		# Set config dir to /etc/ppp/radius
 		sed -i -e "s:/etc/radiusclient:/etc/ppp/radius:g" \
 			pppd/plugins/radius/{*.8,*.c,*.h} \
 			pppd/plugins/radius/etc/* || die
