@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The program makes the following operations on map files in Garmin format:
+		- join several maps into single file.
+		- split map into files for Mapsource,
+		- split map into parts,
+		- write corrections into original files and insert a new unlock code,
+		- display informations about maps.
+	</longdescription>
+</pkgmetadata>
