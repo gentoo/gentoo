@@ -70,7 +70,6 @@ COMMON_DEPEND="
 	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
-	<sys-libs/glibc-2.33
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
@@ -232,6 +231,17 @@ src_prepare() {
 		"${FILESDIR}/chromium-91-system-icu.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
+
+	# seccomp sandbox is broken if compiled against >=sys-libs/glibc-2.33, bug #769989
+	if has_version -d ">=sys-libs/glibc-2.33"; then
+		ewarn "Adding experimental glibc-2.33 sandbox patch. Seccomp sandbox might"
+		ewarn "still not work correctly. In case of issues, try to disable seccomp"
+		ewarn "sandbox by adding --disable-seccomp-filter-sandbox to CHROMIUM_FLAGS"
+		ewarn "in /etc/chromium/default."
+		PATCHES+=(
+			"${FILESDIR}/chromium-glibc-2.33.patch"
+		)
+	fi
 
 	default
 
