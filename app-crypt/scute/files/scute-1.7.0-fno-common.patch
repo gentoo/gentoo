@@ -1,0 +1,52 @@
+From 49ad2b0e05e3fcb8c8c2e23bb1c6063b390dee02 Mon Sep 17 00:00:00 2001
+From: Damien Goutte-Gattat <dgouttegattat@incenp.org>
+Date: Tue, 30 Mar 2021 22:31:40 +0100
+Subject: [PATCH] Do not declare global variable in header file.
+
+* src/options.h (_scute_opt_t): New typedef.
+(_scute_opt): Declare as extern and move definition to ...
+* src/readconf.c (_scute_opt): here.
+--
+
+This fixes build with gcc-10, which has -fno-common enabled by
+default.
+
+GnuPG-bug-id: 5360
+Signed-off-by: Damien Goutte-Gattat <dgouttegattat@incenp.org>
+---
+ src/options.h  | 6 ++++--
+ src/readconf.c | 2 ++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/options.h b/src/options.h
+index 10667db..d74071d 100644
+--- a/src/options.h
++++ b/src/options.h
+@@ -22,10 +22,12 @@
+ #define OPTIONS_H 1
+ 
+ /* Global options.  */
+-struct {
++typedef struct {
+   char *user;
+   int debug_flags;
+-} _scute_opt;
++} _scute_opt_t;
++
++extern _scute_opt_t _scute_opt;
+ 
+ 
+ /*-- readconf.c --*/
+diff --git a/src/readconf.c b/src/readconf.c
+index 387a44f..5af2336 100644
+--- a/src/readconf.c
++++ b/src/readconf.c
+@@ -31,6 +31,8 @@
+ 
+ #include "options.h"
+ 
++_scute_opt_t _scute_opt;
++
+ static const char *
+ my_strusage (int level)
+ {
