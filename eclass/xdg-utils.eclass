@@ -22,6 +22,15 @@ case "${EAPI:-0}" in
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
+# Avoid dependency loop as both depend on glib-2
+if [[ ${CATEGORY}/${P} != dev-libs/glib-2.* ]] ; then
+RDEPEND="
+	dev-util/desktop-file-utils
+	dev-util/gtk-update-icon-cache
+	x11-misc/shared-mime-info
+"
+fi
+
 # @ECLASS-VARIABLE: DESKTOP_DATABASE_DIR
 # @INTERNAL
 # @DESCRIPTION:
