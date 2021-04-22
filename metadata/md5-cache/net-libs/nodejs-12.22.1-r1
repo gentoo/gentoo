@@ -1,0 +1,17 @@
+BDEPEND=|| ( dev-lang/python:3.9[threads(+)] dev-lang/python:3.8[threads(+)] dev-lang/python:3.7[threads(+)] ) sys-apps/coreutils virtual/pkgconfig systemtap? ( dev-util/systemtap ) test? ( net-misc/curl )
+DEFINED_PHASES=compile configure install postinst prepare pretend setup test
+DEPEND=>=app-arch/brotli-1.0.9 >=dev-libs/libuv-1.39.0:= >=net-dns/c-ares-1.16.0 >=net-libs/http-parser-2.9.3:= >=net-libs/nghttp2-1.40.0 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
+DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
+EAPI=7
+HOMEPAGE=https://nodejs.org/
+INHERIT=bash-completion-r1 pax-utils python-any-r1 toolchain-funcs xdg-utils
+IUSE=cpu_flags_x86_sse2 debug doc icu inspector lto +npm +snapshot +ssl +system-ssl systemtap test
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos
+LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
+RDEPEND=>=app-arch/brotli-1.0.9 >=dev-libs/libuv-1.39.0:= >=net-dns/c-ares-1.16.0 >=net-libs/http-parser-2.9.3:= >=net-libs/nghttp2-1.40.0 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
+REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl ) system-ssl? ( ssl )
+RESTRICT=test
+SLOT=0/12
+SRC_URI=https://nodejs.org/dist/v12.22.1/node-v12.22.1.tar.xz
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	pax-utils	d3fc79d3d50544347e324864f95206e2	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=4e3f7224a8a48775163eca71a953d2c6
