@@ -63,6 +63,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{lit,llvm-lit,unittest}
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
+LLVM_PATCHSET=12.0.0-1
 llvm.org_set_globals
 
 # Multilib notes:
@@ -75,11 +76,6 @@ llvm.org_set_globals
 #
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-PATCHES=(
-	"${FILESDIR}"/12.0.0/readd-reporter.patch
-	"${FILESDIR}"/9999/prefix-dirs.patch
-)
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
