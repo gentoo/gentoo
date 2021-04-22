@@ -3635,7 +3635,7 @@ dev-ada/gtkada 2017-r1 2018-r2 2019-r1: A complete Ada graphical toolkit
 dev-ada/libgpr 2019-r1 2020: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2019-r1 2020: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15-r1: Multi-platform class and template library
-dev-cpp/abseil-cpp 20200225.2-r1 20200923.2-r1 20210324.0-r2: Abseil Common Libraries (C++), LTS Branch
+dev-cpp/abseil-cpp 20200225.2-r1 20200923.2-r1 20210324.1: Abseil Common Libraries (C++), LTS Branch
 dev-cpp/aixlog 1.5.0 9999: Header-only C++ logging library
 dev-cpp/amqp-cpp 4.3.10: AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker
 dev-cpp/antlr-cpp 2.7.7-r1 4.7.2: The ANTLR 4 C++ Runtime
@@ -10806,7 +10806,7 @@ dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0-r1 0.19.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20210108: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
-dev-util/bear 2.4.3 2.4.4: Build EAR generates a compilation database for clang tooling
+dev-util/bear 2.4.3 2.4.4 3.0.11: Build EAR generates a compilation database for clang tooling
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
