@@ -9,6 +9,7 @@ inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( compiler-rt )
+LLVM_PATCHSET=11.0.0-1
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
@@ -28,10 +29,6 @@ BDEPEND="
 		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT} )
 	${PYTHON_DEPS}"
-
-PATCHES=(
-	"${FILESDIR}/11.1.0/${PN}-prefix-paths.patch"
-)
 
 python_check_deps() {
 	use test || return 0

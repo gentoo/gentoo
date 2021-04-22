@@ -29,11 +29,8 @@ BDEPEND="
 	${PYTHON_DEPS}"
 
 LLVM_COMPONENTS=( compiler-rt )
+LLVM_PATCHSET=12.0.0-1
 llvm.org_set_globals
-
-PATCHES=(
-	"${FILESDIR}/9999/${PN}-prefix-paths.patch"
-)
 
 python_check_deps() {
 	use test || return 0
