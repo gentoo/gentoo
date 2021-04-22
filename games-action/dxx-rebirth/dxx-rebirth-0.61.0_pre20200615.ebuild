@@ -16,7 +16,7 @@ else
 	MY_COMMIT='0c2fcf691ffb2a586991350d67f3efd1cca2a1f3'
 	# dxx-rebirth-0.61.0_pre20200627.ebuild
 	#MY_COMMIT='aba40babb47d36a88011af01e4bc0fc00dca74ef'
-	S="${WORKDIR}/${P}N-${MY_COMMIT}"
+	S="${WORKDIR}/${PN}-${MY_COMMIT}"
 	#SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/${MY_COMMIT}.tar.gz -> ${PN}-${PVR}.tar.gz"
 	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
 	unset MY_COMMIT
