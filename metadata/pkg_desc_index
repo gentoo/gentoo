@@ -13962,7 +13962,7 @@ media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
 media-sound/erec 2.2.0.1-r1: Shared audio recording server
 media-sound/exaile 4.1.0_alpha1 9999: GTK+ based media player aiming to be similar to Amarok
 media-sound/ezstream 0.6.0-r1: A command line source client for Icecast media streaming servers
-media-sound/fapg 0.42 0.43: Fast Audio Playlist Generator
+media-sound/fapg 0.43: Fast Audio Playlist Generator
 media-sound/flac-image 1.00: Utility for adding image files (e.g. album cover art) to metadata of FLAC files
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flack 2.0.6: edit FLAC tags from command line
