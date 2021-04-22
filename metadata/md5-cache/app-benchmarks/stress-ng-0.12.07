@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile postinst prepare
+DEFINED_PHASES=compile postinst
 DEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= sys-apps/attr sys-apps/keyutils:= sys-libs/libcap sys-libs/zlib
 DESCRIPTION=Stress test for a computer system with various selectable ways
 EAPI=7
@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= sys-apps/attr sys-apps/keyutils:= sys-libs/libcap sys-libs/zlib
 SLOT=0
-SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.12.06.tar.xz
+SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.12.07.tar.xz
 _eclasses_=optfeature	e142388219c7fee6ff016fe1c78a10a5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=2baf4be5f6f9f27d6843b100c4f03a16
+_md5_=0eb237a3db017e93f942597ca2f398e6
