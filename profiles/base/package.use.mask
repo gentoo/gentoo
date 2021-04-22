@@ -291,10 +291,6 @@ app-i18n/xcin unicode
 net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# media-libs/libnut is slated for removal.
-media-video/mplayer nut
-
 # Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
 # PGO not yet supported for comm-central, #693160
 >=mail-client/thunderbird-68 pgo
