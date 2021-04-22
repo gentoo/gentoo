@@ -76,10 +76,6 @@ sys-block/gparted xfs
 >=kde-apps/umbrello-20.08.3 php
 
 # Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/digikam has no arm64 keyword yet. Bug #753362.
-media-gfx/gmic digikam
-
-# Marek Szuba <marecki@gentoo.org> (2020-11-06)
 # media-gfx/gmic has no arm64 keyword yet. Bug #753356.
 media-gfx/darktable gmic
 
