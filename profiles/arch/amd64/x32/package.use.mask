@@ -9,7 +9,7 @@ kde-apps/kde-apps-meta:5 pim
 kde-apps/kdenetwork-meta:5 bittorrent
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive kaccounts
-media-gfx/gmic digikam krita
+media-gfx/gmic krita
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
