@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://www.lesbonscomptes.com/recoll/
 INHERIT=linux-info optfeature python-single-r1 qmake-utils
 IUSE=camelcase chm doc +inotify qt5 session +spell webengine kernel_linux python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9
-KEYWORDS=~amd64 x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/xapian:= sys-libs/zlib:= virtual/libiconv chm? ( dev-libs/chmlib dev-python/pychm ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 webengine? ( dev-qt/qtwebengine:5[widgets] ) ) session? ( inotify? ( x11-libs/libSM x11-libs/libICE x11-libs/libX11 ) ) spell? ( app-text/aspell ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python_single_target_python3_9? ( dev-lang/python:3.9 >=dev-lang/python-exec-2:=[python_targets_python3_9] ) app-arch/unzip
 REQUIRED_USE=session? ( inotify ) webengine? ( qt5 ) ^^ ( python_single_target_python3_7 python_single_target_python3_8 python_single_target_python3_9 )
 SLOT=0
 SRC_URI=https://www.lesbonscomptes.com/recoll/recoll-1.28.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	optfeature	e142388219c7fee6ff016fe1c78a10a5	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-single-r1	d25ac9d5d91fe9d44fda6ec192aca11a	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47
-_md5_=7eb2d651eab640e145f356ee20059a9e
+_md5_=6e02deb01f07729d77021f6ccebecd1b

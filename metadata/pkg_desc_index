@@ -1960,7 +1960,7 @@ app-editors/shed 1.15: Simple Hex EDitor
 app-editors/sublime-text 3_p3211-r1: Sophisticated text editor for code, markup and prose
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 36_p19940820: Classic TECO editor, Predecessor to EMACS
-app-editors/ted 2.23 2.23-r1: X-based rich text editor
+app-editors/ted 2.23-r1: X-based rich text editor
 app-editors/texworks 0.6.5-r100 0.6.6: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone

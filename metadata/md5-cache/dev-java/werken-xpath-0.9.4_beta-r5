@@ -5,10 +5,10 @@ EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/werken-xpath/
 INHERIT=java-pkg-2 java-ant-2
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=JDOM
 RDEPEND=>=virtual/jre-1.8:* dev-java/jdom:0 >=dev-java/antlr-2.7.7-r7:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=mirror://gentoo/werken.xpath-0.9.4-beta-src.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	java-ant-2	51fb0a4707d58382310390ad47ab0ab0
-_md5_=4c1cd9f5d4ad567238caf1ade62cb591
+_md5_=116a07c7cee46e18fa6952cf574e7fd0
