@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 PN_F=${PN}
 PV_F=v${PV}
