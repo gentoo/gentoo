@@ -27,15 +27,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
-src_prepare() {
-	default
-
-	# Don't install compressed man page.
-	# Respect users CFLAGS.
-	sed -e 's/stress-ng.1.gz/stress-ng.1/' -e 's/-O2//' -i Makefile
-}
-
 src_compile() {
+	export MAN_COMPRESS=0
 	export VERBOSE=1
 	tc-export CC
 
