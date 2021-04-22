@@ -130,7 +130,7 @@ src_install() {
 	# install examples, controlled by the respective useflag
 	if use examples ; then
 		# dodoc does not supportly support directory traversal, #15193
-		docinto /usr/share/doc/${PF}/examples
+		docinto examples
 		dodoc -r sample contrib
 	fi
 
@@ -139,12 +139,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use x64-macos; then
+	if use x64-macos ; then
 		elog "You might want to install tuntaposx for TAP interface support:"
 		elog "http://tuntaposx.sourceforge.net"
 	fi
 
-	if systemd_is_booted ||  has_version sys-apps/systemd; then
+	if systemd_is_booted || has_version sys-apps/systemd ; then
 		elog "In order to use OpenVPN with systemd please use the correct systemd service file."
 		elog  ""
 		elog "server:"
