@@ -29,6 +29,8 @@ RDEPEND="
 BDEPEND+="
 	sys-apps/texinfo"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 src_unpack() {
 	default
 
