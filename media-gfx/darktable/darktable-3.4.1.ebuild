@@ -25,7 +25,7 @@ else
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
 		doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 ~arm64 -x86"
 	LANGS=" af cs de es fi fr he hu it pl pt-BR ru sk sl"
 fi
 
