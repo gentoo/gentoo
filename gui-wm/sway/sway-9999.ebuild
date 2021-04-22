@@ -20,13 +20,12 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag seatd systemd tray wallpapers X zsh-completion"
-REQUIRED_USE="?? ( elogind systemd )
-	tray? ( || ( elogind seatd systemd ) )"
+IUSE="fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag tray wallpapers X zsh-completion"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
 	>=dev-libs/libinput-1.6.0:0=
+	sys-auth/seatd:=
 	dev-libs/libpcre
 	dev-libs/wayland
 	x11-libs/cairo
@@ -34,21 +33,19 @@ DEPEND="
 	x11-libs/pango
 	x11-libs/pixman
 	media-libs/mesa[gles2,libglvnd(+)]
-	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )
 	swayidle? ( gui-apps/swayidle )
 	swaylock? ( gui-apps/swaylock )
-	systemd? ( >=sys-apps/systemd-239[policykit] )
 	wallpapers? ( x11-libs/gdk-pixbuf:2[jpeg] )
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,seatd=,systemd=,X=]"
+	DEPEND+="~gui-libs/wlroots-9999:=[X=]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.13:=[elogind=,seatd=,systemd=,X=]
-		<gui-libs/wlroots-0.14:=[elogind=,seatd=,systemd=,X=]
+		>=gui-libs/wlroots-0.14:=[X=]
+		<gui-libs/wlroots-0.15:=[X=]
 	"
 fi
 RDEPEND="
@@ -96,20 +93,4 @@ src_configure() {
 	fi
 
 	meson_src_configure
-}
-
-pkg_preinst() {
-	if ! use systemd && ! use elogind && ! use seatd; then
-		fowners root:0 /usr/bin/sway
-		fperms 4511 /usr/bin/sway
-	fi
-}
-
-pkg_postinst() {
-	if ! use systemd && ! use elogind && ! use seatd; then
-		elog ""
-		elog "If your system does not set the XDG_RUNTIME_DIR environment"
-		elog "variable, you must set it manually to run Sway. See wiki"
-		elog "for details: https://wiki.gentoo.org/wiki/Sway"
-	fi
 }

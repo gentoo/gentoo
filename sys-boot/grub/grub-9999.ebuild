@@ -8,13 +8,14 @@ if [[ ${PV} == 9999  ]]; then
 	GRUB_BOOTSTRAP=1
 fi
 
+PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
+WANT_LIBTOOL=none
+
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
-	PYTHON_COMPAT=( python{2_7,3_{6,7,8,9}} )
 	inherit python-any-r1
 fi
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
-	WANT_LIBTOOL=none
 	inherit autotools
 fi
 
