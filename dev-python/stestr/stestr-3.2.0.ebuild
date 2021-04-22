@@ -13,9 +13,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-BDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]"
 RDEPEND="
 	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
@@ -25,6 +26,10 @@ RDEPEND="
 	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.10.0[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.8.9[${PYTHON_USEDEP}]"
+BDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
+	)"
 
 python_test() {
 	distutils_install_for_testing
