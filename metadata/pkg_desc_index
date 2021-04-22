@@ -18184,7 +18184,7 @@ www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prom
 www-apps/kibana-bin 6.8.15 7.10.2 7.12.0-r1: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.5.1 1.5.2: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4 3.2.2: Internet platforms for proposition development and decision making
-www-apps/liquid_feedback_frontend 2.2.7 3.0.6 3.2.1: Internet platforms for proposition development and decision making
+www-apps/liquid_feedback_frontend 3.2.1: Internet platforms for proposition development and decision making
 www-apps/mediawiki 1.35.2: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/mirmon 2.11-r2: Simple webapp to monitor the status of mirrors
 www-apps/moodle 3.5.17 3.8.8 3.9.5 3.10.2: The Moodle Course Management System
