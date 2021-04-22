@@ -21,13 +21,12 @@ src_prepare() {
 	default
 	tc-export CC
 	sed -i -e '/install: all/install:/' Makefile || die "sed failed"
-
 }
 
 src_install() {
-	emake PREFIX="/usr" DESTDIR="${D}" install
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
 
-	emake PREFIX="/usr" DESTDIR="${D}" install-desktop
+	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install-desktop
 
 	newbashcomp misc/auto-completion/bash/nnn-completion.bash nnn
 
