@@ -14,4 +14,4 @@ SRC_URI="https://github.com/ispell-lt/ispell-lt/releases/download/rel-${PV}/${MY
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
