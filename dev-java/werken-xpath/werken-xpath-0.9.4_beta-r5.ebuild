@@ -19,7 +19,7 @@ SRC_URI="mirror://gentoo/${MY_P}-src.tar.gz"
 
 LICENSE="JDOM"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 COMMON_DEP="
 	dev-java/jdom:0
