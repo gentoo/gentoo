@@ -75,10 +75,6 @@ sys-block/gparted xfs
 # dev-util/kdevelop-php is not keyworded, bug #751337
 >=kde-apps/umbrello-20.08.3 php
 
-# Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/gmic has no arm64 keyword yet. Bug #753356.
-media-gfx/darktable gmic
-
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
 # Available on: amd64, x86, arm{,64}.
