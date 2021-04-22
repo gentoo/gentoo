@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 tmpfiles
+inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -13,13 +13,14 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	SLOT="0"
 else
-	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
+	SRC_URI="https://libvirt.org/sources/${P}.tar.xz
+		verify-sig? ( https://libvirt.org/sources/${P}.tar.xz.asc )"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 	SLOT="0/${PV}"
 fi
 
 DESCRIPTION="C toolkit to manipulate virtual machines"
-HOMEPAGE="https://www.libvirt.org/"
+HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
 LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
@@ -197,13 +198,6 @@ pkg_setup() {
 		~NET_SCH_INGRESS
 		~NET_SCH_SFQ"
 
-	# Handle specific kernel versions for different features
-	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
-	if kernel_is ge 3 6; then
-		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
-		kernel_is lt 4 5 && CONFIG_CHECK+=" ~MEMCG_KMEM "
-	fi
-
 	ERROR_USER_NS="Optional depending on LXC configuration."
 
 	if [[ -n ${CONFIG_CHECK} ]]; then
@@ -289,14 +283,18 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	# Remove bogus, empty directories. They are either not used, or
-	# libvirtd is able to create them on demand
-	rm -rf "${D}"/etc/sysconfig || die
-	rm -rf "${D}"/var || die
-	rm -rf "${D}"/run || die
+	# Depending on configuration option, libvirt will create some bogus
+	# directoreis. They are either not used, or libvirtd is able to create
+	# them on demand, so let's remove them.
+	#
+	# Note, we are using -f here so that rm does not fail or warn if the
+	# directory is nonexistent.
+	rm -rf "${D}"/etc/sysconfig
+	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
-	newbashcomp "${S}/tools/bash-completion/vsh" virsh
-	bashcomp_alias virsh virt-admin
+	newbashcomp "${BUILD_DIR}/tools/bash-completion/virsh" virsh
+	newbashcomp "${BUILD_DIR}/tools/bash-completion/virt-admin" virt-admin
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
@@ -314,13 +312,6 @@ src_install() {
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r3")
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_create_doc
-}
-
-pkg_preinst() {
-	# we only ever want to generate this once
-	if [[ -e "${ROOT}"/etc/libvirt/qemu/networks/default.xml ]]; then
-		rm -rf "${D}"/etc/libvirt/qemu/networks/default.xml || die
-	fi
 }
 
 pkg_postinst() {
