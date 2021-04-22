@@ -13858,7 +13858,7 @@ media-radio/ax25-apps 0.0.8_rc5: Basic AX.25 (Amateur Radio) user tools, additio
 media-radio/ax25-tools 0.0.10_rc5: Basic AX.25 (Amateur Radio) administrative tools and daemons
 media-radio/cqrlog 2.4.0: CQRLOG is an advanced ham radio logger based on MySQL database
 media-radio/cwdaemon 0.10.2: A morse daemon for the parallel or serial port
-media-radio/direwolf 1.5 1.5-r1: Decoded Information from Radio Emissions for Windows Or Linux Fans
+media-radio/direwolf 1.5-r1: Decoded Information from Radio Emissions for Windows Or Linux Fans
 media-radio/dxcc 20190309 20191204: A ham radio callsign DXCC lookup utility
 media-radio/flamp 2.2.03 2.2.05: Fldigi helper for transferring files
 media-radio/fldigi 4.1.18: Sound card based multimode software modem for Amateur Radio use
