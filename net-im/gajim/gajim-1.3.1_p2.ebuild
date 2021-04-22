@@ -16,7 +16,7 @@ SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${PN}-${PV/_p/-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+crypt geolocation jingle remote rst +spell upnp +webp"
 S="${WORKDIR}/${PN}-${PV/_p2/}"
 
