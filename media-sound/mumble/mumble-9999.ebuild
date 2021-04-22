@@ -37,6 +37,7 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
+	dev-libs/poco
 	>=dev-libs/protobuf-2.2.0:=
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.3.1
