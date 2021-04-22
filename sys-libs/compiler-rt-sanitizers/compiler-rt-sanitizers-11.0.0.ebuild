@@ -10,6 +10,7 @@ DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( compiler-rt )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+LLVM_PATCHSET=11.0.0-1
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
@@ -34,10 +35,6 @@ BDEPEND="
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT}
 		sys-libs/compiler-rt:${SLOT} )
 	${PYTHON_DEPS}"
-
-PATCHES=(
-	"${FILESDIR}/11.1.0/compiler-rt-prefix-paths.patch"
-)
 
 python_check_deps() {
 	use test || return 0
