@@ -67,6 +67,7 @@ PDEPEND="sys-devel/llvm-common
 
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=pregenerated
+LLVM_PATCHSET=11.1.0-1
 llvm.org_set_globals
 
 python_check_deps() {
@@ -169,10 +170,6 @@ check_distribution_components() {
 }
 
 src_prepare() {
-	# Fix llvm-config for shared linking and sane flags
-	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
-
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
