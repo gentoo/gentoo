@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -16,7 +16,7 @@ LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector +npm pax_kernel +snapshot +ssl system-icu +system-ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax_kernel +snapshot +ssl system-icu +system-ssl systemtap test"
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-16.0.0-v8_lto.patch
 )
 
 S="${WORKDIR}/node-v${PV}"
@@ -49,6 +50,12 @@ S="${WORKDIR}/node-v${PV}"
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
+
+	if [[ ${MERGE_TYPE} != "binary" ]]; then
+		if use lto; then
+			tc-is-gcc || die "${PN} only supports LTO for gcc"
+		fi
+	fi
 }
 
 src_prepare() {
@@ -103,6 +110,7 @@ src_configure() {
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
+	use lto && myconf+=( --enable-lto )
 	if use system-icu; then
 		myconf+=( --with-intl=system-icu )
 	elif use icu; then
