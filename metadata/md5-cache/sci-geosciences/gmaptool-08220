@@ -1,0 +1,10 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Program for splitting and merging maps in Garmin format
+EAPI=7
+HOMEPAGE=https://www.gmaptool.eu/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=CC-BY-SA-3.0 LGPL-2.1+
+SLOT=0
+SRC_URI=https://www.gmaptool.eu/sites/default/files/lgmt08220.zip
+_md5_=6900f6ec0a01fe5368a2e8683bf5567a
