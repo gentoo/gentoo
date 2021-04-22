@@ -10,6 +10,7 @@ inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
 LLVM_COMPONENTS=( libcxx )
+LLVM_PATCHSET=10.0.1-1
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
@@ -47,14 +48,6 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
-}
-
-src_prepare() {
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-
-	llvm.org_src_prepare
 }
 
 test_compiler() {

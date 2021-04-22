@@ -35,6 +35,7 @@ BDEPEND="
 DOCS=( CREDITS.TXT )
 
 LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
+LLVM_PATCHSET=12.0.0-1
 llvm.org_set_globals
 
 python_check_deps() {
@@ -59,10 +60,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-
 	# Known failures.
 	rm test/libcxx/gdb/gdb_pretty_printer_test.sh.cpp || die
 	rm test/libcxx/memory/trivial_abi/unique_ptr_ret.pass.cpp || die
