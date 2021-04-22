@@ -19,6 +19,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">hacking</remote-id>
-		<remote-id type="github">openstack-dev/hacking</remote-id>
+		<remote-id type="github">openstack/hacking</remote-id>
 	</upstream>
 </pkgmetadata>
