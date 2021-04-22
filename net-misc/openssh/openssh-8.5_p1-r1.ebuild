@@ -112,7 +112,7 @@ pkg_pretend() {
 		eerror "that you requested:	 ${fail}"
 		eerror "Please mask ${PF} for now and check back later:"
 		eerror " # echo '=${CATEGORY}/${PF}' >> /etc/portage/package.mask"
-		die "booooo"
+		die "Missing requested third party patch."
 	fi
 
 	# Make sure people who are using tcp wrappers are notified of its removal. #531156
