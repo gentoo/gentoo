@@ -7,7 +7,7 @@ inherit kernel-install toolchain-funcs
 
 MY_P=linux-${PV%.*}
 GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 3 ))
-BINPKG=${P/-bin/}-1
+BINPKG=${P/-bin/}-2
 
 DESCRIPTION="Pre-built Linux kernel with genpatches"
 HOMEPAGE="https://www.kernel.org/"
@@ -20,6 +20,7 @@ SRC_URI+="
 			-> ${BINPKG}.arm64.xpak
 	)
 "
+
 S=${WORKDIR}
 
 LICENSE="GPL-2"
