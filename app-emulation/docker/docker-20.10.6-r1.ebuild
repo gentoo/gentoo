@@ -54,6 +54,9 @@ RESTRICT="installsources strip"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
+# https://bugs.gentoo.org/748984 https://github.com/etcd-io/etcd/pull/12552
+PATCHES=( "${FILESDIR}/etcd-F_OFD_GETLK-fix.patch" )
+
 # see "contrib/check-config.sh" from upstream's sources
 CONFIG_CHECK="
 	~NAMESPACES ~NET_NS ~PID_NS ~IPC_NS ~UTS_NS
@@ -156,14 +159,6 @@ pkg_setup() {
 	fi
 
 	linux-info_pkg_setup
-}
-
-src_prepare() {
-	default
-	# https://bugs.gentoo.org/748984 https://github.com/etcd-io/etcd/pull/12552
-	pushd "${S}/vendor/github.com/coreos/etcd" >/dev/null || die
-	eapply "${FILESDIR}/etcd-F_OFD_GETLK-fix.patch"
-	popd >/dev/null || die
 }
 
 src_compile() {

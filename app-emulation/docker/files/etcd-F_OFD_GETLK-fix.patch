@@ -15,8 +15,8 @@ Fixes #31182
 
 diff --git a/pkg/fileutil/lock_linux.go b/pkg/fileutil/lock_linux.go
 index 939fea62381..004d35fa23b 100644
---- a/pkg/fileutil/lock_linux.go
-+++ b/pkg/fileutil/lock_linux.go
+--- a/vendor/github.com/coreos/etcd/pkg/fileutil/lock_linux.go
++++ b/vendor/github.com/coreos/etcd/pkg/fileutil/lock_linux.go
 @@ -29,7 +29,7 @@ import (
  //
  // constants from /usr/include/bits/fcntl-linux.h
