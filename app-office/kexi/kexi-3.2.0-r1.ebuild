@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -67,6 +67,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-missing-header.patch
 	"${FILESDIR}"/${P}-postgresql-9.12.patch
+	"${FILESDIR}"/${P}-glib-2.68.patch # bug 784974
 )
 
 src_prepare() {
