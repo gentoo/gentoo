@@ -380,7 +380,6 @@ media-plugins/kodi-game-libretro-dosbox
 # Alfredo Tupone <tupone@gentoo.org> (2020-11-05)
 # will be upgraded after new lua release
 www-apps/liquid_feedback_frontend
-www-apps/webmcp
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-30)
 # broken acl handling, possible broken chattr handling
