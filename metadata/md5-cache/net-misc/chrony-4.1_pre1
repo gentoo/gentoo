@@ -1,0 +1,15 @@
+BDEPEND=html? ( dev-ruby/asciidoctor ) nts? ( virtual/pkgconfig ) sechash? ( nettle? ( virtual/pkgconfig ) nss? ( virtual/pkgconfig ) ) virtual/pkgconfig verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=compile configure install postinst preinst prepare unpack
+DEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) libedit? ( dev-libs/libedit ) !libedit? ( sys-libs/readline:= ) nettle? ( dev-libs/nettle:= ) nss? ( dev-libs/nss:= ) nts? ( net-libs/gnutls:= ) pps? ( net-misc/pps-tools ) seccomp? ( sys-libs/libseccomp )
+DESCRIPTION=NTP client and server programs
+EAPI=7
+HOMEPAGE=https://chrony.tuxfamily.org/ https://git.tuxfamily.org/chrony/chrony.git
+INHERIT=systemd tmpfiles toolchain-funcs verify-sig
+IUSE=+caps +cmdmon debug html ipv6 libedit libtomcrypt +nettle nss +ntp +nts +phc pps +refclock +rtc samba +seccomp +sechash selinux verify-sig
+LICENSE=GPL-2
+RDEPEND=caps? ( acct-group/ntp acct-user/ntp sys-libs/libcap ) libedit? ( dev-libs/libedit ) !libedit? ( sys-libs/readline:= ) nettle? ( dev-libs/nettle:= ) nss? ( dev-libs/nss:= ) nts? ( net-libs/gnutls:= ) pps? ( net-misc/pps-tools ) seccomp? ( sys-libs/libseccomp ) selinux? ( sec-policy/selinux-chronyd ) virtual/tmpfiles
+REQUIRED_USE=sechash? ( || ( nettle nss libtomcrypt ) ) nettle? ( !nss ) nss? ( !nettle ) libtomcrypt? ( !nettle !nss ) !sechash? ( !nss ) !sechash? ( !nts? ( !nettle ) )
+SLOT=0
+SRC_URI=https://download.tuxfamily.org/chrony/chrony-4.1-pre1.tar.gz verify-sig? ( https://download.tuxfamily.org/chrony/chrony-4.1-pre1-tar-gz-asc.txt -> chrony-4.1-pre1.tar.gz.asc )
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_md5_=ce94d047df6a37a9e3308ae6cd95a04e

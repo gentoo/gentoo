@@ -15275,7 +15275,7 @@ net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.10.0: Bitcoin CPU/GPU/FPGA/ASIC miner in C
 net-misc/chrome-remote-desktop 88.0.4324.33: access remote computers via Chrome!
-net-misc/chrony 4.0-r1 9999: NTP client and server programs
+net-misc/chrony 4.0-r2 4.1_pre1 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r7: Simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2020.11.01: Qt GUI for Connman with system tray icon
