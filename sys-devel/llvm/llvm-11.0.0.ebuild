@@ -11,6 +11,7 @@ DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=pregenerated
+LLVM_PATCHSET=11.0.0-1
 llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
@@ -67,12 +68,6 @@ RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
-
-PATCHES=(
-	# backport tensorflow finding fix (avoids broken automagic dep)
-	# https://bugs.gentoo.org/748444
-	"${FILESDIR}"/11.0.0/0001-backport-D88371-guard-find_library-tensorflow_c_api.patch
-)
 
 python_check_deps() {
 	use doc || return 0
@@ -174,10 +169,6 @@ check_distribution_components() {
 }
 
 src_prepare() {
-	# Fix llvm-config for shared linking and sane flags
-	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
-
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 

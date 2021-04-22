@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{lit,llvm-lit,unittest}
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
+LLVM_PATCHSET=11.0.0-1
 llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
@@ -74,10 +75,6 @@ PDEPEND="
 #
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-PATCHES=(
-	"${FILESDIR}"/9999/prefix-dirs.patch
-)
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
