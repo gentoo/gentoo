@@ -9,6 +9,7 @@ inherit cmake flag-o-matic llvm llvm.org python-any-r1 toolchain-funcs
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( compiler-rt )
+LLVM_PATCHSET=10.0.1-1
 llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
