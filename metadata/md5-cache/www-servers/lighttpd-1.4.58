@@ -6,7 +6,7 @@ EAPI=7
 HOMEPAGE=https://www.lighttpd.net https://github.com/lighttpd
 INHERIT=autotools flag-o-matic lua-single readme.gentoo-r1 systemd tmpfiles toolchain-funcs
 IUSE=brotli bzip2 dbi doc gdbm gnutls ipv6 kerberos ldap libev lua maxminddb minimal mbedtls mmap memcached mysql nss pcre php postgres rrdtool sasl selinux ssl sqlite test webdav xattr zlib lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 lua_single_target_lua5-4
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86
+KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=BSD GPL-2
 RDEPEND=brotli? ( app-arch/brotli ) bzip2? ( app-arch/bzip2 ) dbi? ( dev-db/libdbi mysql? ( dev-db/libdbi-drivers[mysql] ) postgres? ( dev-db/libdbi-drivers[postgres] ) sqlite? ( dev-db/libdbi-drivers[sqlite] ) ) gdbm? ( sys-libs/gdbm:= ) gnutls? ( net-libs/gnutls ) kerberos? ( virtual/krb5 ) ldap? ( >=net-nds/openldap-2.1.26 ) libev? ( >=dev-libs/libev-4.01 ) lua? ( lua_single_target_lua5-1? ( dev-lang/lua:5.1 ) lua_single_target_lua5-2? ( dev-lang/lua:5.2 ) lua_single_target_lua5-3? ( dev-lang/lua:5.3 ) lua_single_target_lua5-4? ( dev-lang/lua:5.4 ) ) maxminddb? ( dev-libs/libmaxminddb ) mbedtls? ( net-libs/mbedtls ) memcached? ( dev-libs/libmemcached ) nss? ( dev-libs/nss ) pcre? ( >=dev-libs/libpcre-3.1 ) php? ( dev-lang/php:*[cgi] ) rrdtool? ( net-analyzer/rrdtool ) sasl? ( dev-libs/cyrus-sasl ) ssl? ( >=dev-libs/openssl-0.9.7:0= ) webdav? ( dev-libs/libxml2 sys-fs/e2fsprogs ) xattr? ( kernel_linux? ( sys-apps/attr ) ) zlib? ( >=sys-libs/zlib-1.1 ) acct-group/lighttpd acct-user/lighttpd selinux? ( sec-policy/selinux-apache ) virtual/tmpfiles
 REQUIRED_USE=lua? ( ^^ ( lua_single_target_lua5-1 lua_single_target_lua5-2 lua_single_target_lua5-3 lua_single_target_lua5-4 ) ) mysql? ( dbi ) postgres? ( dbi ) sqlite? ( dbi ) webdav? ( sqlite )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.58.tar.xz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	lua-utils	736947973cfbc9de01fdb8548f942f82	lua-single	f91b5656f00869c220a6e35ae0521c54	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
-_md5_=afdfb4e105a276e9c837002c8a7b0b6a
+_md5_=6252f9d0fbd25916607abb655696bcd5

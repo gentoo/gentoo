@@ -688,7 +688,7 @@ app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesize
 app-accessibility/epos 2.5.37-r3: language independent text-to-speech system
 app-accessibility/espeak 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
-app-accessibility/flite 1.4-r4 2.1 2.2: Flite text to speech engine
+app-accessibility/flite 2.2: Flite text to speech engine
 app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/kontrast 20.12.3: Tool to check contrast for colors to verify they are correctly accessible
@@ -1942,7 +1942,7 @@ app-editors/moe 1.9 1.10 1.11: A powerful and user-friendly console text editor
 app-editors/mousepad 0.5.3-r1 0.5.4: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 5.3-r1 5.5 5.6 5.6.1 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 3.3.0: The nice editor, easy to use for the beginner and powerful for the wizard
-app-editors/nedit 5.6-r2 5.7: Multi-purpose text editor for the X Window System
+app-editors/nedit 5.7: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.4.4-r100 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
@@ -4883,7 +4883,7 @@ dev-java/dnsjava 2.1.8: An implementation of DNS in Java
 dev-java/dom4j 1.6.1-r8 1.6.1-r9: XML Java library
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
-dev-java/easymock 3.3.1 3.3.1-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
+dev-java/easymock 3.3.1-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
 dev-java/eclipse-ecj 4.4.2-r1 4.5.1 4.10 4.13-r2 4.15: Eclipse Compiler for Java
@@ -10874,7 +10874,7 @@ dev-util/cppi 1.18: a cpp directive indenter
 dev-util/cpptest 2.0.0-r1: Simple but powerful unit testing framework for C++
 dev-util/cppunit 1.14.0 1.15.1-r2 9999: C++ port of the famous JUnit framework for unit testing
 dev-util/cpputest 4.0: Unit testing and mocking framework for C/C++
-dev-util/cproto 4.7q 4.7r 4.7s: Generate C function prototypes from C source code
+dev-util/cproto 4.7r 4.7s: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7-r1: Functional testing framework for command line applications
 dev-util/crash 7.2.9 9999: Red Hat crash utility; used for analyzing kernel core dumps
@@ -13971,7 +13971,7 @@ media-sound/flack 2.0.6: edit FLAC tags from command line
 media-sound/flacon 5.5.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 2.1.5 2.2.0-r1: Software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 2.2.0-r1: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15-r3: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
@@ -14071,7 +14071,7 @@ media-sound/mpd 0.21.26 0.22.3 0.22.4-r1 0.22.5 0.22.6: The Music Player Daemon 
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.26.3 1.26.4 1.26.5: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.26.5: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.8-r2 9999: Terminal-based YouTube player and downloader
@@ -17155,7 +17155,7 @@ sys-apps/miscfiles 1.5-r3: Miscellaneous files
 sys-apps/mlocate 0.26-r2 0.26-r3: Merging locate is an utility to index and quickly search for files
 sys-apps/mlxup-bin 4.13.0: Mellanox Update and Query Utility
 sys-apps/moreutils 0.65: A collection of tools that nobody thought to write when Unix was young
-sys-apps/most 5.0.0a-r1 5.1.0: Paging program that displays, one windowful at a time, the contents of a file
+sys-apps/most 5.1.0: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.5.1: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
 sys-apps/msr-tools 1.3: Utilities allowing the read and write of CPU model-specific registers (MSR)
