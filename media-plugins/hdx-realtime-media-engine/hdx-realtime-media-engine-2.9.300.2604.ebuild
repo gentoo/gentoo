@@ -15,7 +15,6 @@ LICENSE="icaclient"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="fetch mirror strip"
 
 BDEPEND="app-arch/unzip"
