@@ -24,7 +24,7 @@ start_server() {
 
 	start-stop-daemon \
 		--quiet --start --user ${USER}:${GROUP} --chdir ${SERVERCONFIG} \
-		--make-pidfile --pidfile %GAMES_STATEDIR%/run/sauerbraten/server.pid \
+		--make-pidfile --pidfile /var/run/sauerbraten/server.pid \
 		--background --exec %LIBEXECDIR%/sauer_server -- ${SERVERARGS}
 	eend $?
 }
@@ -45,7 +45,7 @@ start_master() {
 
 	start-stop-daemon \
 		--quiet --start --user ${USER}:${GROUP} \
-		--make-pidfile --pidfile %GAMES_STATEDIR%/run/sauerbraten/master.pid \
+		--make-pidfile --pidfile /var/run/sauerbraten/master.pid \
 		--background --exec %LIBEXECDIR%/sauer_master -- ${MASTERARGS}
 	eend $?
 }
@@ -58,13 +58,13 @@ stop() {
 
 stop_server() {
 	ebegin "Stopping Sauerbraten dedicated server"
-	start-stop-daemon --stop --retry 3 --pidfile %GAMES_STATEDIR%/run/sauerbraten/server.pid
+	start-stop-daemon --stop --retry 3 --pidfile /var/run/sauerbraten/server.pid
 	eend $?
 }
 
 stop_master() {
 	ebegin "Stopping Sauerbraten master server"
-	start-stop-daemon --stop --retry 3 --pidfile %GAMES_STATEDIR%/run/sauerbraten/master.pid
+	start-stop-daemon --stop --retry 3 --pidfile /var/run/sauerbraten/master.pid
 	eend $?
 }
 
