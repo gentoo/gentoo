@@ -35,7 +35,6 @@ REQUIRED_USE="
 	!sechash? ( !nts? ( !nettle ) )
 	nts? ( nettle )
 "
-RESTRICT="test"
 
 BDEPEND="
 	nettle? ( virtual/pkgconfig )
@@ -121,7 +120,7 @@ src_configure() {
 		$(usex rtc '' --disable-rtc)
 		$(usex samba --enable-ntp-signd '')
 		$(usex sechash '' --disable-sechash)
-		$(usex libtomcrypt '' --disable-tomcrypt)
+		$(usex libtomcrypt '' --without-tomcrypt)
 		--chronysockdir="${EPREFIX}/run/chrony"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--mandir="${EPREFIX}/usr/share/man"
