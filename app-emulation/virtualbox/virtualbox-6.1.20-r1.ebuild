@@ -139,6 +139,10 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-lsilogicsas_crash_fix.patch"
+)
+
 pkg_pretend() {
 	if ! use headless && ! use qt5 ; then
 		einfo "No USE=\"qt5\" selected, this build will not include any Qt frontend."
@@ -214,7 +218,7 @@ src_prepare() {
 
 	eapply "${WORKDIR}/patches"
 
-	eapply_user
+	default
 }
 
 doecho() {
