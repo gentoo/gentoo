@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -8,7 +8,7 @@ PHP_EXT_SKIP_PHPIZE="yes"
 USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
 PHP_EXT_ECONF_ARGS=()
 
-inherit php-ext-source-r3 autotools flag-o-matic
+inherit php-ext-source-r3 autotools
 
 DESCRIPTION="PHP bindings for libvirt"
 HOMEPAGE="http://libvirt.org/php/"
@@ -43,16 +43,12 @@ src_unpack() {
 
 src_prepare() {
 	php-ext-source-r3_src_prepare
+
 	local slot
 	for slot in $(php_get_slots); do
 		php_init_slot_env "${slot}"
 		eautoreconf
 	done
-}
-
-src_configure() {
-	append-cflags -fcommon
-	php-ext-source-r3_src_configure
 }
 
 src_install() {
@@ -62,10 +58,12 @@ src_install() {
 		insinto "${EXT_DIR}"
 		doins "src/.libs/${PHP_EXT_NAME}.so"
 	done
+
 	php-ext-source-r3_createinifiles
 	einstalldocs
+
 	if use doc ; then
-		docinto /usr/share/doc/${PF}/html
+		docinto html
 		dodoc -r docs/*
 	fi
 }
