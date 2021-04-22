@@ -29,7 +29,6 @@ RDEPEND="
 	x11-libs/xcb-util-renderutil
 	config-file? (
 		dev-libs/libconfig:=
-		dev-libs/libxdg-basedir
 	)
 	dbus? ( sys-apps/dbus )
 	drm? ( x11-libs/libdrm )
