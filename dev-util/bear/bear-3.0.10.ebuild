@@ -25,9 +25,10 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-test? (
-	>=dev-cpp/gtest-1.10
-)"
+	test? (
+		>=dev-cpp/gtest-1.10
+	)
+"
 
 BDEPEND="test? (
 	$(python_gen_any_dep '
@@ -43,10 +44,16 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	cmake_src_prepare
+	# Turn off testing before installation
+	sed -i 's/TEST_BEFORE_INSTALL/TEST_EXCLUDE_FROM_MAIN/g' CMakeLists.txt || die
+}
+
 src_configure() {
 	local mycmakeargs=(
-		"-DENABLE_UNIT_TESTS=OFF"
-		"-DENABLE_FUNC_TESTS=OFF"
+		-DENABLE_UNIT_TESTS="$(usex test ON OFF)"
+		-DENABLE_FUNC_TESTS="$(usex test ON OFF)"
 	)
 	cmake_src_configure
 }
@@ -71,12 +78,9 @@ src_test() {
 		ewarn "Skipping tests"
 	else
 		einfo "test may use optional tools if found: qmake gfortran valgrind"
-		local mycmakeargs=(
-			"-DENABLE_UNIT_TESTS=ON"
-			"-DENABLE_FUNC_TESTS=ON"
-		)
-		# bear has no seperate "make check"
-		cmake_src_configure
-		cmake_build all
+		# unit tests
+		cmake_run_in "${BUILD_DIR}/subprojects/Build/BearSource" ctest --verbose
+		# functional tests
+		cmake_run_in "${BUILD_DIR}/subprojects/Build/BearTest" ctest --verbose
 	fi
 }
