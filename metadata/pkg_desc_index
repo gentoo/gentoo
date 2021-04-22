@@ -16597,7 +16597,7 @@ sci-mathematics/eclib 20190909: Programs for elliptic curves defined over the ra
 sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0-r1: Mathematical programming environment
 sci-mathematics/fann 2.2.0-r1 9999: Fast Artificial Neural Network Library
-sci-mathematics/flint 2.5.2-r1 2.6.3-r1 2.7.1: Fast Library for Number Theory
+sci-mathematics/flint 2.5.2-r1 2.6.3-r1 2.7.1-r1: Fast Library for Number Theory
 sci-mathematics/flintqs 1.0: Multi-polynomial quadratic sieve for integer factorization
 sci-mathematics/form 4.2.1: Symbolic Manipulation System
 sci-mathematics/fricas 1.3.6: FriCAS is a fork of Axiom computer algebra system
