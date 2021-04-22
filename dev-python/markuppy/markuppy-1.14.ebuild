@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN="MarkupPy"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Format-agnostic tabular dataset library"
+DESCRIPTION="MarkupPy - An HTML/XML generator"
 HOMEPAGE="https://pypi.org/project/MarkupPy/ https://github.com/tylerbakke/MarkupPy"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
