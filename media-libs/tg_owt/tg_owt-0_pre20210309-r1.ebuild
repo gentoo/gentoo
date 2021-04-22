@@ -18,7 +18,7 @@ SRC_URI="https://github.com/desktop-app/tg_owt/archive/${TG_OWT_COMMIT}.tar.gz -
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="pulseaudio"
 
 # Bundled libs:
