@@ -11608,7 +11608,7 @@ games-fps/qudos 0.40.1: Enhanced Quake 2 engine
 games-fps/red-blue-quake2 0.1-r1: Red-blue Quake II! Play quake2 with 3D glasses!
 games-fps/redeclipse 1.6.0-r3 2.0.0-r1: First-person ego-shooter, built as a total conversion of Cube Engine 2
 games-fps/rott 1.1.2-r1: Rise of the Triad for Linux!
-games-fps/sauerbraten 2013.02.03-r2: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
+games-fps/sauerbraten 2013.02.03-r2 2020.12.27: Sauerbraten is a FOSS game engine (Cube 2) with freeware game data (Sauerbraten)
 games-fps/serious-sam-tse 1_beta1-r1: Serious Sam: The Second Encounter
 games-fps/soldieroffortune 1.06a-r2: First-person shooter based on the mercenary trade
 games-fps/tenebrae 1.04-r1: Adds stencil shadows and per pixel lights to quake
