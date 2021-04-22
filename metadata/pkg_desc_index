@@ -1226,6 +1226,7 @@ app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-r
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/openpgp-keys-mlichvar 20210416: OpenPGP keys used by Miroslav Lichvar
 app-crypt/openpgp-keys-nmap 20210416: OpenPGP keys used to sign Nmap releases
+app-crypt/openpgp-keys-oletange 20210422: OpenPGP keys used by Ole Tange
 app-crypt/openpgp-keys-openzfs 20210419: OpenPGP keys used to sign OpenZFS releases
 app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
 app-crypt/openpgp-keys-tcpdump 20210416: OpenPGP keys used to sign tcpdump releases
@@ -1291,24 +1292,24 @@ app-dicts/aspell-be 0.01-r1: Aspell (Belarusian) language dictionary
 app-dicts/aspell-bg 4.1.0: Aspell (Bulgarian) language dictionary
 app-dicts/aspell-bn 0.01.1.1: Aspell (Bengali) language dictionary
 app-dicts/aspell-br 0.50.2: Aspell (Breton) language dictionary
-app-dicts/aspell-ca 2.1.5.1 2.5.0: Aspell (Catalan) language dictionary
+app-dicts/aspell-ca 2.5.0: Aspell (Catalan) language dictionary
 app-dicts/aspell-cs 20040614.1: Aspell (Czech) language dictionary
 app-dicts/aspell-csb 0.02.0: Aspell (Kashubian) language dictionary
 app-dicts/aspell-cy 0.50.3: Aspell (Welsh) language dictionary
 app-dicts/aspell-da 1.7.42: Aspell (Danish) language dictionary
-app-dicts/aspell-de 0.60_pre20030222 20161207.7.0: Aspell (German, Austria-German and Swiss-German) language dictionary
+app-dicts/aspell-de 20161207.7.0: Aspell (German, Austria-German and Swiss-German) language dictionary
 app-dicts/aspell-de-alt 2.1.1-r1: Aspell (German (traditional orthography)) language dictionary
-app-dicts/aspell-el 0.08.0 0.50.3: Aspell (Greek) language dictionary
-app-dicts/aspell-en 2018.04.16.0 2020.12.07.0: Aspell (English (British, Canadian, US)) language dictionary
+app-dicts/aspell-el 0.08.0: Aspell (Greek) language dictionary
+app-dicts/aspell-en 2020.12.07.0: Aspell (English (British, Canadian, US)) language dictionary
 app-dicts/aspell-eo 2.1.20000225.2: Aspell (Esperanto) language dictionary
-app-dicts/aspell-es 1.9a 1.11.2: Aspell (Spanish) language dictionary
+app-dicts/aspell-es 1.11.2: Aspell (Spanish) language dictionary
 app-dicts/aspell-et 0.1.21.1: Aspell (Estonian) language dictionary
 app-dicts/aspell-fa 0.11.0: Aspell (Persian) language dictionary
 app-dicts/aspell-fi 0.7.0: Aspell (Finnish) language dictionary
-app-dicts/aspell-fo 0.2.16.1 0.51.0: Aspell (Faroese) language dictionary
+app-dicts/aspell-fo 0.2.16.1: Aspell (Faroese) language dictionary
 app-dicts/aspell-fr 0.50.3: Aspell (French) language dictionary
 app-dicts/aspell-fy 0.12.0: Aspell (Frisian Frysk) language dictionary
-app-dicts/aspell-ga 0.50.4 5.1.0: Aspell (Irish) language dictionary
+app-dicts/aspell-ga 5.1.0: Aspell (Irish) language dictionary
 app-dicts/aspell-gd 0.1.1.1: Aspell (Scottish Gaelic) language dictionary
 app-dicts/aspell-gl 0.5.2: Aspell (Galician) language dictionary
 app-dicts/aspell-grc 0.02.0: Aspell (Ancient Greek) language dictionary
@@ -1330,7 +1331,7 @@ app-dicts/aspell-kn 0.01.1: Aspell (Kannada) language dictionary
 app-dicts/aspell-ku 0.20.1: Aspell (Kurdi) language dictionary
 app-dicts/aspell-ky 0.01.0: Aspell (Kirghiz) language dictionary
 app-dicts/aspell-la 20020503.0: Aspell (Latin) language dictionary
-app-dicts/aspell-lt 1.0.1 1.3.2: Aspell (Lithuanian) language dictionary
+app-dicts/aspell-lt 1.3.2: Aspell (Lithuanian) language dictionary
 app-dicts/aspell-lv 0.5.5.1: Aspell (Latvian) language dictionary
 app-dicts/aspell-mg 0.03.0: Aspell (Malagasy) language dictionary
 app-dicts/aspell-mi 0.50.0: Aspell (Maori) language dictionary
@@ -1348,15 +1349,15 @@ app-dicts/aspell-no 0.50.2-r1: Aspell (Norwegian) language dictionary
 app-dicts/aspell-ny 0.01.0: Aspell (Chichewa) language dictionary
 app-dicts/aspell-or 0.03.1: Aspell (Oriya) language dictionary
 app-dicts/aspell-pa 0.01.1: Aspell (Punjabi) language dictionary
-app-dicts/aspell-pl 6.0.20120418.0 6.0.20210216.0: Aspell (Polish) language dictionary
-app-dicts/aspell-pt 0.50.2-r1 20190329.1.0: Aspell (Portuguese) language dictionary
-app-dicts/aspell-pt-br 20090702.0 20131030.12.0: Aspell (Brazilian Portuguese) language dictionary
+app-dicts/aspell-pl 6.0.20210216.0: Aspell (Polish) language dictionary
+app-dicts/aspell-pt 20190329.1.0: Aspell (Portuguese) language dictionary
+app-dicts/aspell-pt-br 20131030.12.0: Aspell (Brazilian Portuguese) language dictionary
 app-dicts/aspell-qu 0.02.0: Aspell (Quechua Runasimi) language dictionary
-app-dicts/aspell-ro 3.3.2 3.3.10: Aspell (Romanian) language dictionary
+app-dicts/aspell-ro 3.3.10: Aspell (Romanian) language dictionary
 app-dicts/aspell-ru 0.99.1-r1: Aspell (Russian) language dictionary
 app-dicts/aspell-rw 0.50.0: Aspell (Kinyarwanda) language dictionary
 app-dicts/aspell-sc 1.0: Aspell (Sardinian) language dictionary
-app-dicts/aspell-sk 2.01.2 2.02.0: Aspell (Slovak) language dictionary
+app-dicts/aspell-sk 2.02.0: Aspell (Slovak) language dictionary
 app-dicts/aspell-sl 0.50.0: Aspell (Slovenian) language dictionary
 app-dicts/aspell-sr 0.02: Aspell (Serbian) language dictionary
 app-dicts/aspell-sv 0.51.0: Aspell (Swedish) language dictionary
@@ -17759,7 +17760,7 @@ sys-kernel/dracut 050-r2 051-r1 053 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.109 5.4.111 5.4.112 5.4.113 5.4.114 5.10.27 5.10.29 5.10.30 5.10.31 5.10.32 5.11.13 5.11.14 5.11.15 5.11.16: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 5.4.109 5.4.109-r1 5.4.111 5.4.111-r1 5.4.112 5.4.112-r1 5.4.113 5.4.113-r1 5.4.114 5.4.114-r1 5.10.27 5.10.27-r1 5.10.29 5.10.29-r1 5.10.30 5.10.30-r1 5.10.31 5.10.31-r1 5.10.32 5.10.32-r1 5.11.13 5.11.13-r1 5.11.14 5.11.14-r1 5.11.15 5.11.15-r1 5.11.16 5.11.16-r1: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel-bin 5.4.109 5.4.109-r1 5.4.111 5.4.111-r1 5.4.112 5.4.112-r1 5.4.113 5.4.113-r1 5.4.114 5.4.114-r2 5.10.27 5.10.27-r1 5.10.29 5.10.29-r1 5.10.30 5.10.30-r1 5.10.31 5.10.31-r1 5.10.32 5.10.32-r2 5.11.13 5.11.13-r1 5.11.14 5.11.14-r1 5.11.15 5.11.15-r1 5.11.16 5.11.16-r2: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.4.114 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.10.32 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15 5.11.16: Full sources including the Gentoo patchset for the 5.11 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5 5.12_rc6 5.12_rc7 5.12_rc8: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
@@ -17921,7 +17922,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j 16m: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.12 2.0.13 2.0.14 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20201222 20210122 20210222 20210322: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20201222 20210122 20210222 20210322 20210422: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.4: A utility for parallelizing execution of shell functions
 sys-process/procenv 0.51: command-line utility to show process environment

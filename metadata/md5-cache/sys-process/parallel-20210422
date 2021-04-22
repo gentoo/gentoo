@@ -1,0 +1,15 @@
+BDEPEND=verify-sig? ( app-crypt/openpgp-keys-oletange ) verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=configure unpack
+DEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
+DESCRIPTION=A shell tool for executing jobs in parallel locally or on remote machines
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/parallel/ https://git.savannah.gnu.org/cgit/parallel.git/
+INHERIT=verify-sig
+IUSE=verify-sig
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=GPL-3+
+RDEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
+SLOT=0
+SRC_URI=mirror://gnu/parallel/parallel-20210422.tar.bz2 verify-sig? ( mirror://gnu/parallel/parallel-20210422.tar.bz2.sig )
+_eclasses_=verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_md5_=1083f90e70fb55cdee5458ecba4ccd9f
