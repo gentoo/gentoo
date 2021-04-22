@@ -50,11 +50,8 @@ BDEPEND="
 
 LLVM_COMPONENTS=( compiler-rt )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
+LLVM_PATCHSET=12.0.0-1
 llvm.org_set_globals
-
-PATCHES=(
-	"${FILESDIR}/9999/compiler-rt-prefix-paths.patch"
-)
 
 python_check_deps() {
 	use test || return 0
