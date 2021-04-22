@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/libgpg-error-1.4 >=dev-libs/libassuan-2.0.0 >=app-crypt/pinentry-0.7.0 >=app-crypt/gnupg-2.0.17-r1[smartcard]
 SLOT=0
 SRC_URI=mirror://gnupg/scute/scute-1.7.0.tar.bz2 https://dev.gentoo.org/~soap/distfiles/scute-1.7.0-manual-eps-images.tar.xz
-_md5_=858e446a83ea61805ffb232bd4348356
+_md5_=7a2df78ecca606cb07e0ccc2fff75b6b
