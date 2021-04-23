@@ -14088,7 +14088,7 @@ media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 3.6.2 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.3: Organizes audio files into directories based on metadata tags
 media-sound/musique 1.5-r1: Qt music player
-media-sound/ncmpc 0.34 0.39: Ncurses client for the Music Player Daemon (MPD)
+media-sound/ncmpc 0.39: Ncurses client for the Music Player Daemon (MPD)
 media-sound/ncmpcpp 0.8.2-r1 0.9.1 0.9.2 9999: featureful ncurses based MPD client inspired by ncmpc
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1-r1: Perl script to convert Ogg Vorbis files to MP3 files
