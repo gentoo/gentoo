@@ -1,0 +1,34 @@
+From abcd583135bb0762e6bfd0f2e06c50bea1fb3cd0 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Tue, 6 Apr 2021 22:02:17 +0000
+Subject: [PATCH] On ARM64 Linux access() syscall is no longer a real syscall
+ to the kernel. Instead it's emulated by glibc with a new faccessat() syscall.
+ (Icenowy Zheng)
+
+---
+ src/seccomp.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+index 0da907ff7..81842cf5c 100644
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -27,7 +27,7 @@
+ #include "file.h"
+ 
+ #ifndef	lint
+-FILE_RCSID("@(#)$File: seccomp.c,v 1.18 2021/03/14 17:01:58 christos Exp $")
++FILE_RCSID("@(#)$File: seccomp.c,v 1.19 2021/04/06 22:02:17 christos Exp $")
+ #endif	/* lint */
+ 
+ #if HAVE_LIBSECCOMP
+@@ -171,6 +171,9 @@ enable_sandbox_full(void)
+ 	ALLOW_RULE(dup2);
+ 	ALLOW_RULE(exit);
+ 	ALLOW_RULE(exit_group);
++#ifdef __NR_faccessat
++	ALLOW_RULE(faccessat);
++#endif
+ 	ALLOW_RULE(fcntl);
+  	ALLOW_RULE(fcntl64);
+ 	ALLOW_RULE(fstat);
