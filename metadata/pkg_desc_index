@@ -19224,7 +19224,7 @@ x11-wm/wmii 3.9.2-r6: A dynamic window manager for X11
 x11-wm/xmonad 0.15: A tiling window manager
 x11-wm/xmonad-contrib 0.16: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
-x11-wm/xpra 3.0.5-r2 4.1.1 4.1.2: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
+x11-wm/xpra 3.0.5-r2 4.1.2 4.1.3: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 4.16.2: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.8.0: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.16.0: Unified widget and session management libs for Xfce
