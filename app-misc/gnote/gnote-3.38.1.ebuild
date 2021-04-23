@@ -38,6 +38,8 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=("${FILESDIR}"/${PN}-3.38.1-cstddef.patch)
+
 src_prepare() {
 	# Do not alter CFLAGS
 	sed 's/-DDEBUG -g/-DDEBUG/' -i configure.ac configure || die
