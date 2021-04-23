@@ -13872,13 +13872,13 @@ media-radio/grig 0.8.1 0.8.1-r1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/js8call 2.2.0 2.2.0-r1: Weak signal ham radio communication
 media-radio/qrq 0.3.3: Yet another CW trainer for Linux/Unix
-media-radio/qsstv 9.4.4 9.5.3: Amateur radio SSTV software
+media-radio/qsstv 9.4.4-r1 9.5.3: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.4.1: Console-mode amateur radio contest logger
 media-radio/tqsl 2.5.1: ARRL Logbook of the World
 media-radio/tucnak 4.25 4.27: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1-r1: A package of programs that fit together to form a morse code tutor program
-media-radio/wsjtx 2.2.2 2.3.0 2.3.1: Weak signal ham radio communication
+media-radio/wsjtx 2.2.2-r1 2.3.1: Weak signal ham radio communication
 media-radio/xastir 2.1.6: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.20 2.0.22: An amateur radio logging program
