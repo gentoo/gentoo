@@ -39,6 +39,8 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/file-5.39-portage-sandbox.patch" #713710 #728978
 	"${FILESDIR}/file-5.40-xz_magic.patch" #784773
+	"${FILESDIR}/file-5.40-seccomp-faccessat.patch"
+	"${FILESDIR}/file-5.40-seccomp-fstatat64.patch" #784857
 )
 
 src_prepare() {
