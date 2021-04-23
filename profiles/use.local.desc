@@ -7281,6 +7281,8 @@ sci-libs/hypre:int64 - Build the 64 bits integer library
 sci-libs/indilib:websocket - Enable support for WebSocket protocol
 sci-libs/ipopt:hsl - hsl
 sci-libs/ipopt:mumps - Enable sci-libs/mumps support
+sci-libs/kissfft:alloca - Use alloca(3) instead of malloc(3) for memory management
+sci-libs/kissfft:tools - Build command line tools
 sci-libs/lapack:deprecated - Also build deprecated functions
 sci-libs/lapack:eselect-ldso - Enable runtime library switching by eselect and ld.so.
 sci-libs/lapack:lapacke - Build LAPACKE
