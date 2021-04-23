@@ -61,6 +61,10 @@ src_prepare() {
 	if use system-tbb; then
 		rm -f "${WORKDIR}/${INTEL_CL}"/lib64/libtbb*
 	fi
+	# Prepend EPREFIX to library path in intel64.icd
+	if [[ -n ${EPREFIX} ]]; then
+		sed -i -e "s@^/opt@${EPREFIX}/opt@" "${WORKDIR}/${INTEL_CL}"/etc/intel64.icd
+	fi
 	default
 }
 
