@@ -4371,7 +4371,7 @@ dev-haskell/lens-family-core 1.2.3: Haskell 98 Lens Families
 dev-haskell/lens-family-th 0.5.1.0: Generate lens-family style lenses
 dev-haskell/lens-simple 0.1.0.9: simplified import of elementary lens-family combinators
 dev-haskell/lhs2tex 1.24: Preprocessor for typesetting Haskell sources with LaTeX
-dev-haskell/libmpd 0.9.1.0: An MPD client library
+dev-haskell/libmpd 0.9.1.0 0.9.2.0: An MPD client library
 dev-haskell/libxml 0.1.1: Binding to libxml2
 dev-haskell/libxml-sax 0.7.5: Bindings for the libXML2 SAX interface
 dev-haskell/libyaml 0.1.2: Low-level, streaming YAML interface
@@ -4665,7 +4665,7 @@ dev-haskell/time-compat 1.9.3: This packages tries to compat as much of \'time\'
 dev-haskell/time-locale-compat 0.1.1.5: Compatibility of TimeLocale between old-locale and time-1.5
 dev-haskell/time-manager 0.0.0: Scalable timer
 dev-haskell/timeit 2.0: Time a computation
-dev-haskell/timezone-olson 0.1.9: A pure Haskell parser and renderer for binary Olson timezone files
+dev-haskell/timezone-olson 0.1.9 0.2.0: A pure Haskell parser and renderer for binary Olson timezone files
 dev-haskell/timezone-series 0.1.9: Enhanced timezone handling for Data.Time
 dev-haskell/tls 1.5.4: TLS/SSL protocol native implementation (Server and Client)
 dev-haskell/tls-session-manager 0.0.4: In-memory TLS session manager
@@ -18803,7 +18803,7 @@ x11-misc/xkbset 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47_p7: GUI frontend to xmodmap
 x11-misc/xlockmore 5.65-r1 5.66_alpha12-r1 5.66: Just another screensaver application for X
-x11-misc/xmobar 0.36: A Minimalistic Text Based Status Bar
+x11-misc/xmobar 0.36 0.37: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
 x11-misc/xnots 0.2.1-r2 9999: A desktop sticky note program for the unix geek
