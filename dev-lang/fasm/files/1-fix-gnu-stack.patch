@@ -1,0 +1,37 @@
+Fix executable stack on linking
+diff -ru a/source/libc/fasm.asm b/source/libc/fasm.asm
+--- a/source/libc/fasm.asm	2021-01-27 10:07:54.000000000 +0000
++++ b/source/libc/fasm.asm	2021-04-22 19:38:43.062385256 +0000
+@@ -360,3 +360,5 @@
+ 
+ predefinitions rb 1000h
+ buffer rb 1000h
++
++section '.note.GNU-stack'
+diff -ru a/tools/libc/listing.asm b/tools/libc/listing.asm
+--- a/tools/libc/listing.asm	2021-01-27 10:07:54.000000000 +0000
++++ b/tools/libc/listing.asm	2021-04-22 19:39:21.121384169 +0000
+@@ -175,3 +175,5 @@
+   params rb 1000h
+   characters rb 100h
+   buffer rb 1000h
++
++section '.note.GNU-stack'
+diff -ru a/tools/libc/prepsrc.asm b/tools/libc/prepsrc.asm
+--- a/tools/libc/prepsrc.asm	2021-01-27 10:07:54.000000000 +0000
++++ b/tools/libc/prepsrc.asm	2021-04-22 19:39:39.364383649 +0000
+@@ -92,3 +92,5 @@
+ 
+   params rb 1000h
+   buffer rb 1000h
++
++section '.note.GNU-stack'
+diff -ru a/tools/libc/symbols.asm b/tools/libc/symbols.asm
+--- a/tools/libc/symbols.asm	2021-01-27 10:07:54.000000000 +0000
++++ b/tools/libc/symbols.asm	2021-04-22 19:39:57.551383129 +0000
+@@ -96,3 +96,5 @@
+ 
+   params rb 1000h
+   buffer rb 1000h
++
++section '.note.GNU-stack'

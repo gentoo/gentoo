@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name="tools">Build tools working with fasm symbolic information</flag>
+		<flag name="libc">Build fasm linked with libc instead of self-contained binary. 32-bit only</flag>
+	</use>
+</pkgmetadata>
