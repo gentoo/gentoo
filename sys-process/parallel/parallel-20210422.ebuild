@@ -21,7 +21,7 @@ RDEPEND="dev-lang/perl:=
 	virtual/perl-File-Temp
 	virtual/perl-IO"
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( app-crypt/openpgp-keys-oletange )"
+BDEPEND="verify-sig? ( >=app-crypt/openpgp-keys-oletange-20210423 )"
 
 src_configure() {
 	econf --docdir="${EPREFIX}"/usr/share/doc/${PF}/html
