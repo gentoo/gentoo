@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -104,6 +104,9 @@ src_prepare() {
 
 src_configure() {
 	xdg_environment_reset
+
+	# LTO compiler flags are handled by configure.py itself
+	filter-flags '-flto*'
 
 	local myconf=(
 		--shared-brotli
