@@ -1226,7 +1226,7 @@ app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-r
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/openpgp-keys-mlichvar 20210416: OpenPGP keys used by Miroslav Lichvar
 app-crypt/openpgp-keys-nmap 20210416: OpenPGP keys used to sign Nmap releases
-app-crypt/openpgp-keys-oletange 20210422: OpenPGP keys used by Ole Tange
+app-crypt/openpgp-keys-oletange 20210423: OpenPGP keys used by Ole Tange
 app-crypt/openpgp-keys-openzfs 20210419: OpenPGP keys used to sign OpenZFS releases
 app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
 app-crypt/openpgp-keys-tcpdump 20210416: OpenPGP keys used to sign tcpdump releases
