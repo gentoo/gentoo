@@ -85,7 +85,10 @@ if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
-PATCHES=( "${FILESDIR}/${PN}-2020_beta1-pytest.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2020-pytest.patch"
+	"${FILESDIR}/${PN}-2021-nblib.patch"
+)
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
