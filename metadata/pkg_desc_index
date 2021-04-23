@@ -13441,7 +13441,7 @@ media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input 
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r2: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: A library for reading media metadata
-media-libs/libtgvoip 2.4.4_p20201030 2.4.4_p20210302: VoIP library for Telegram clients
+media-libs/libtgvoip 2.4.4_p20210302: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.6: MIDI to WAVE converter library
@@ -13550,7 +13550,7 @@ media-libs/svt-av1 0.8.6 9999: Scalable Video Technology for AV1 (SVT-AV1 Encode
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.12: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tg_owt 0_pre20201105 0_pre20201112 0_pre20210309-r1: WebRTC build for Telegram
+media-libs/tg_owt 0_pre20210309-r1: WebRTC build for Telegram
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
 media-libs/tiff 4.2.0 4.3.0: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
@@ -14886,7 +14886,7 @@ net-im/slack 4.12.2 4.13.0 4.14.0: Team collaboration tool
 net-im/spectrum2 2.0.13-r2: An open source instant messaging transport
 net-im/swift 4.0.2-r102: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/teams 1.4.00.4855-r1 1.4.00.7556: Microsoft Teams, an Office 365 multimedia collaboration client, pre-release
-net-im/telegram-desktop 2.4.7-r1 2.4.11 2.7.1-r1: Official desktop client for Telegram
+net-im/telegram-desktop 2.7.1-r1: Official desktop client for Telegram
 net-im/telegram-desktop-bin 2.6.1 2.7.1: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2-r1: Daemon that centralizes the communication logging within the Telepathy framework
@@ -17062,7 +17062,7 @@ sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3-r1: A fake root environmen
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.39-r4 5.40-r1 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.39-r4 5.40-r2 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0 4.8.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64.4 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
