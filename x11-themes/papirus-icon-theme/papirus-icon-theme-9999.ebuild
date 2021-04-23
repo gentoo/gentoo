@@ -24,5 +24,4 @@ src_compile() { :; }
 src_install() {
 	insinto /usr/share/icons
 	doins -r ePapirus Papirus{,-Dark,-Light}
-
 }
