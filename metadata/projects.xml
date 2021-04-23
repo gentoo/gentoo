@@ -775,10 +775,6 @@
     <name>Dotnet Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Dotnet</url>
     <description>The Dotnet Project handles the development using the C# language. More specifically, it is often oriented with the mono development environment.</description>
-    <member is-lead="1">
-      <email>cynede@gentoo.org</email>
-      <name>Cynede</name>
-    </member>
   </project>
   <project>
     <email>ejabberd@gentoo.org</email>
@@ -1239,10 +1235,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:GitHub</url>
     <description>Support team for the Gentoo organization on GitHub and the related resources (mirrors, pull requests).</description>
     <member>
-      <email>cynede@gentoo.org</email>
-      <name>Cynede</name>
-    </member>
-    <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
       <role>Administrator</role>
@@ -1368,10 +1360,6 @@
     <name>Haskell</name>
     <url>https://wiki.gentoo.org/wiki/Project:Haskell</url>
     <description>Support Haskell programming language ecosystem on Gentoo systems.</description>
-    <member>
-      <email>cynede@gentoo.org</email>
-      <name>Cynede</name>
-    </member>
     <member>
       <email>gienah@gentoo.org</email>
       <name>Mark Wright</name>
@@ -2865,10 +2853,6 @@
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
-    </member>
-    <member>
-      <email>cynede@gentoo.org</email>
-      <name>Cynede</name>
     </member>
     <member>
       <email>djc@gentoo.org</email>
