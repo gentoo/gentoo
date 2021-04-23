@@ -10809,7 +10809,7 @@ dev-util/bbe 0.2.2-r1: Sed-like editor for binary files
 dev-util/bcc 0.16.0-r1 0.17.0 0.17.0-r100 0.18.0-r1 0.19.0: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20210108: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
-dev-util/bear 2.4.3 2.4.4 3.0.11: Build EAR generates a compilation database for clang tooling
+dev-util/bear 2.4.4 3.0.11: Build EAR generates a compilation database for clang tooling
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bingrep 0.8.2: Binary file analysis tool
