@@ -55,6 +55,8 @@ DEPEND="${RDEPEND}
 	dev-libs/grantlee:5
 "
 
+PATCHES=( "${FILESDIR}/${PN}-21.04.0-fix-dependencies.patch" ) # bug 783921
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package telemetry KUserFeedback)
