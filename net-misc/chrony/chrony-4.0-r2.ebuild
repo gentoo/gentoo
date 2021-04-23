@@ -17,7 +17,7 @@ else
 
 	SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://download.tuxfamily.org/chrony/${P}-tar-gz-asc.txt -> ${P}.tar.gz.asc )"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 fi
 
 S="${WORKDIR}/${P/_/-}"
