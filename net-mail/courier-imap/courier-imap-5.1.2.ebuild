@@ -43,7 +43,6 @@ RDEPEND="${RDEPEND}
 	!mail-mta/courier
 	!net-mail/bincimap
 	!net-mail/cyrus-imapd
-	!net-mail/uw-imap
 "
 
 RC_VER="4.0.6-r1"
