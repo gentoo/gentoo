@@ -13418,7 +13418,7 @@ media-libs/libplacebo 2.43.0 2.43.1 2.72.2 9999: Reusable library for GPU-accele
 media-libs/libpng 1.6.37-r2: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpqstego 0.0.1: Library for Perturbed Quantization Steganography
-media-libs/libprojectm 3.1.8 3.1.8-r1 3.1.11 3.1.12 9999: A graphical music visualization plugin similar to milkdrop
+media-libs/libprojectm 3.1.12 9999: A graphical music visualization plugin similar to milkdrop
 media-libs/libqaccessibilityclient 0.4.1: Library for writing accessibility clients such as screen readers
 media-libs/libquicktime 1.2.4-r3: An enhanced version of the quicktime4linux library
 media-libs/libquvi 0.9.4-r100: Library for parsing video download links
@@ -18233,7 +18233,7 @@ www-client/firefox 78.9.0 78.10.0 87.0 87.0-r1 88.0: Firefox Web Browser
 www-client/firefox-bin 78.9.0 78.10.0 87.0 88.0: Firefox Web Browser
 www-client/google-chrome 90.0.4430.85: The web browser from Google
 www-client/google-chrome-beta 91.0.4472.19: The web browser from Google
-www-client/google-chrome-unstable 91.0.4472.19: The web browser from Google
+www-client/google-chrome-unstable 92.0.4484.7: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.22: A fast and lightweight web browser running in both graphics and text mode
@@ -18275,7 +18275,7 @@ www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-plugins/browserpass 3.0.7: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 90.0.4430.85 91.0.4472.19_alpha 91.0.4472.19_beta: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 90.0.4430.85 91.0.4472.19_beta 92.0.4484.7_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/google-talkplugin 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2-r1 0.8.3 0.8.4: High performance flash player
 www-plugins/passff-host 1.2.1-r1: Host app for the PassFF WebExtension

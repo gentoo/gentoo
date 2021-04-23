@@ -8,6 +8,6 @@ LICENSE=google-chrome
 RDEPEND=dev-libs/glib:2 dev-libs/nspr dev-libs/nss !www-plugins/chrome-binary-plugins:0 !www-plugins/chrome-binary-plugins:beta !www-plugins/chrome-binary-plugins:stable
 RESTRICT=bindist mirror strip
 SLOT=unstable
-SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_91.0.4472.19-1_amd64.deb
+SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_92.0.4484.7-1_amd64.deb
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	unpacker	517f16af48ee3ab88180dd58b5143213
 _md5_=5f3ea21bdfa8ac8a2d6473433e7959b2
