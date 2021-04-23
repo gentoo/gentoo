@@ -2224,7 +2224,7 @@ app-emulation/fuse-utils 1.4.3-r1: Utils for the Free Unix Spectrum Emulator by 
 app-emulation/gallium-nine-standalone 0.7 9999: A standalone version of the WINE parts of Gallium Nine
 app-emulation/ganeti-os-noop 0.2: Dummy OS provider for Ganeti
 app-emulation/genymotion-bin 3.2.0: Complete set of tools that provide a virtual environment for Android
-app-emulation/glean 1.17.0 1.18.2: Simple program to write static config from config-drive
+app-emulation/glean 1.18.2: Simple program to write static config from config-drive
 app-emulation/go-secbench 0.1.0 0.1.0-r1: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.2: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
