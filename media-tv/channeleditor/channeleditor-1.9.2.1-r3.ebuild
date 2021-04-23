@@ -4,7 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE=source
-inherit desktop eutils java-pkg-2 java-ant-2 xdg
+inherit desktop edos2unix java-pkg-2 java-ant-2 xdg
 
 DESCRIPTION="Editor for VDR channels.conf"
 HOMEPAGE="https://sites.google.com/site/reniershomepage/"
