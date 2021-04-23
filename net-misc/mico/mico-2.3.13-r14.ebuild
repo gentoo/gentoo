@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="
 		http://www.mico.org/${P}.tar.gz
-		https://github.com/haubi/mico/compare/${PV}-raw...${PV}-gentoo-${PR}.patch -> ${P}-gentoo-${PR}.patch
+		https://github.com/ssi-schaefer/mico/compare/${PV}-raw...${PV}-gentoo-${PR}.patch -> ${P}-gentoo-${PR}.patch
 	"
 	PATCHES="${DISTDIR}/${P}-gentoo-${PR}.patch"
 	KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt"
@@ -44,7 +44,7 @@ BDEPEND="
 
 if [[ ${PV} == 9999 ]]; then
 	src_unpack() {
-		wget -O ${P}-gentoo.patch "https://github.com/haubi/mico/compare/gentoo.patch" || die
+		wget -O ${P}-gentoo.patch "https://github.com/ssi-schaefer/mico/compare/gentoo.patch" || die
 		darcs_src_unpack
 		default
 	}
