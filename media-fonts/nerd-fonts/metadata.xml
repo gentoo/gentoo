@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@aisha.cc</email>
+		<name>Aisha Tammy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="3270">Install nerd-fonts patched '3270'</flag>
+		<flag name="agave">Install nerd-fonts patched 'agave'</flag>
+		<flag name="anonymouspro">Install nerd-fonts patched 'anonymouspro'</flag>
+		<flag name="arimo">Install nerd-fonts patched 'arimo'</flag>
+		<flag name="aurulentsansmono">Install nerd-fonts patched 'aurulentsansmono'</flag>
+		<flag name="bigblueterminal">Install nerd-fonts patched 'bigblueterminal'</flag>
+		<flag name="bitstreamverasansmono">Install nerd-fonts patched 'bitstreamverasansmono'</flag>
+		<flag name="cascadiacode">Install nerd-fonts patched 'cascadiacode'</flag>
+		<flag name="codenewroman">Install nerd-fonts patched 'codenewroman'</flag>
+		<flag name="cousine">Install nerd-fonts patched 'cousine'</flag>
+		<flag name="daddytimemono">Install nerd-fonts patched 'daddytimemono'</flag>
+		<flag name="dejavusansmono">Install nerd-fonts patched 'dejavusansmono'</flag>
+		<flag name="droidsansmono">Install nerd-fonts patched 'droidsansmono'</flag>
+		<flag name="fantasquesansmono">Install nerd-fonts patched 'fantasquesansmono'</flag>
+		<flag name="firacode">Install nerd-fonts patched 'firacode'</flag>
+		<flag name="firamono">Install nerd-fonts patched 'firamono'</flag>
+		<flag name="go-mono">Install nerd-fonts patched 'go-mono'</flag>
+		<flag name="gohu">Install nerd-fonts patched 'gohu'</flag>
+		<flag name="hack">Install nerd-fonts patched 'hack'</flag>
+		<flag name="hasklig">Install nerd-fonts patched 'hasklig'</flag>
+		<flag name="heavydata">Install nerd-fonts patched 'heavydata'</flag>
+		<flag name="hermit">Install nerd-fonts patched 'hermit'</flag>
+		<flag name="ia-writer">Install nerd-fonts patched 'ia-writer'</flag>
+		<flag name="ibmplexmono">Install nerd-fonts patched 'ibmplexmono'</flag>
+		<flag name="inconsolata">Install nerd-fonts patched 'inconsolata'</flag>
+		<flag name="inconsolatago">Install nerd-fonts patched 'inconsolatago'</flag>
+		<flag name="inconsolatalgc">Install nerd-fonts patched 'inconsolatalgc'</flag>
+		<flag name="iosevka">Install nerd-fonts patched 'iosevka'</flag>
+		<flag name="jetbrainsmono">Install nerd-fonts patched 'jetbrainsmono'</flag>
+		<flag name="lekton">Install nerd-fonts patched 'lekton'</flag>
+		<flag name="liberationmono">Install nerd-fonts patched 'liberationmono'</flag>
+		<flag name="meslo">Install nerd-fonts patched 'meslo'</flag>
+		<flag name="monofur">Install nerd-fonts patched 'monofur'</flag>
+		<flag name="monoid">Install nerd-fonts patched 'monoid'</flag>
+		<flag name="mononoki">Install nerd-fonts patched 'mononoki'</flag>
+		<flag name="mplus">Install nerd-fonts patched 'mplus'</flag>
+		<flag name="noto">Install nerd-fonts patched 'noto'</flag>
+		<flag name="opendyslexic">Install nerd-fonts patched 'opendyslexic'</flag>
+		<flag name="overpass">Install nerd-fonts patched 'overpass'</flag>
+		<flag name="profont">Install nerd-fonts patched 'profont'</flag>
+		<flag name="proggyclean">Install nerd-fonts patched 'proggyclean'</flag>
+		<flag name="robotomono">Install nerd-fonts patched 'robotomono'</flag>
+		<flag name="sharetechmono">Install nerd-fonts patched 'sharetechmono'</flag>
+		<flag name="sourcecodepro">Install nerd-fonts patched 'sourcecodepro'</flag>
+		<flag name="spacemono">Install nerd-fonts patched 'spacemono'</flag>
+		<flag name="terminus">Install nerd-fonts patched 'terminus'</flag>
+		<flag name="tinos">Install nerd-fonts patched 'tinos'</flag>
+		<flag name="ubuntu">Install nerd-fonts patched 'ubuntu'</flag>
+		<flag name="ubuntumono">Install nerd-fonts patched 'ubuntumono'</flag>
+		<flag name="victormono">Install nerd-fonts patched 'victormono'</flag>
+	</use>
+</pkgmetadata>
