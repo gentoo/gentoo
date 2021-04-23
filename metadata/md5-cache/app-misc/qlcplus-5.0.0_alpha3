@@ -1,15 +1,15 @@
 BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig test? ( x11-base/xorg-server[xvfb] x11-apps/xhost )
 DEFINED_PHASES=configure install postinst postrm preinst prepare test
-DEPEND=dev-embedded/libftdi:= dev-libs/glib:2 dev-qt/qt3d:5[qml] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets,qml] dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev dev-qt/qttest:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=dev-embedded/libftdi:= dev-libs/glib:2 dev-qt/qt3d:5[qml] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets,qml] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev dev-qt/qttest:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A software to control DMX or analog lighting systems
 EAPI=7
 HOMEPAGE=https://www.qlcplus.org/
 INHERIT=qmake-utils udev virtualx xdg
 IUSE=test test
 LICENSE=Apache-2.0
-RDEPEND=dev-embedded/libftdi:= dev-libs/glib:2 dev-qt/qt3d:5[qml] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets,qml] dev-qt/qtnetwork:5 dev-qt/qtscript:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev
+RDEPEND=dev-embedded/libftdi:= dev-libs/glib:2 dev-qt/qt3d:5[qml] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5[widgets,qml] dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-libs/alsa-lib media-libs/libmad media-libs/libsndfile sci-libs/fftw:3.0 virtual/libusb:0 virtual/libusb:1 virtual/udev
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/mcallegari/qlcplus/archive/QLC+_5.0.0_alpha3.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	udev	452708c3f55cf6e918b045adb949a9e6	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=7c4c21cc6bf900ebcb37055724ed1f49
+_md5_=51c20ac1d11f83aabbd35f0bd628ee37
