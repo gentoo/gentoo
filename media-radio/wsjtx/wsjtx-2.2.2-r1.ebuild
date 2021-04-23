@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtsql:5
 	dev-qt/qtprintsupport:5
 	virtual/libusb:1
-	media-libs/hamlib
+	media-libs/hamlib:=
 	media-libs/portaudio
 	sci-libs/fftw:3.0[threads,fortran]
 	virtual/fortran
