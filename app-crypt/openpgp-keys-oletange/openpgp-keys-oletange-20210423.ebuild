@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 src_install() {
 	local files=(
-		"${FILESDIR}"/BE9CB49381DE3166A3BC66C12C6229E2FFFFFFF1.asc
+		"${FILESDIR}"/CDA01A4208C4F74506107E7BD1AB451688888888.asc
 	)
 
 	insinto /usr/share/openpgp-keys
