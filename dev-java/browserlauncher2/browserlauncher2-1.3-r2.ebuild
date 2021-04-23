@@ -15,7 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/project/browserlaunch2/browserlaunche
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
@@ -30,9 +30,9 @@ src_prepare() {
 	# fixing build.xml
 	sed -i -e "s: includes=\"\*\*/\*\.class\"::g" "${S}/build.xml" || die
 
-	iconv -f ISO-8859-1 -t UTF8 -o /var/tmp/portage/dev-java/browserlauncher2-1.3-r2/work/source/at/jta/Regor.java~ \
-		/var/tmp/portage/dev-java/browserlauncher2-1.3-r2/work/source/at/jta/Regor.java || die "recoding failed"
-	mv -f /var/tmp/portage/dev-java/browserlauncher2-1.3-r2/work/source/at/jta/Regor.java{~,} || die "cannot rename"
+	iconv -f ISO-8859-1 -t UTF8 -o "${S}/source/at/jta/Regor.java~" \
+		"${S}/source/at/jta/Regor.java" || die "recoding failed"
+	mv -f "${S}"/source/at/jta/Regor.java{~,} || die "cannot rename"
 }
 
 EANT_BUILD_TARGET="build"
