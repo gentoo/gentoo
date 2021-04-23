@@ -14574,7 +14574,7 @@ net-analyzer/ngrep 1.47: A grep for network layers
 net-analyzer/nikto 2.1.6_p20200901 2.1.6_p20210304: Web server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4-r1: Real time network traffic monitor for the command line interface
-net-analyzer/nmap 7.80-r2 7.91-r1 7.91-r2 9999: Network exploration tool and security / port scanner
+net-analyzer/nmap 7.80-r2 7.91-r2 9999: Network exploration tool and security / port scanner
 net-analyzer/nmapsi 0.5_alpha2: Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 4.0.0 4.0.2 4.0.3: Nagios Remote Plugin Executor
@@ -17750,9 +17750,9 @@ sys-fs/xfsprogs 5.10.0-r1 5.11.0: xfs filesystem utilities
 sys-fs/xwmfs 0.90: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.1.1: Zeroes out all free space on a filesystem
-sys-fs/zfs 0.8.6 2.0.3 2.0.4 2.1.0_rc3 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs 0.8.6 2.0.3 2.0.4 2.1.0_rc4 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-auto-snapshot 1.2.4 1.2.4-r1 9999: ZFS Automatic Snapshot Service for Linux
-sys-fs/zfs-kmod 0.8.6 2.0.3 2.0.4 2.1.0_rc3 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs-kmod 0.8.6 2.0.3 2.0.4 2.1.0_rc4 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/bliss-initramfs 8.1.0-r1 9.3.0: Boot your system's rootfs from Encrypted/OpenZFS.
 sys-kernel/bliss-kernel-bin 4.14.178 5.4.51: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/cryptodev 1.11 1.12 9999: device that allows access to Linux kernel cryptographic drivers
