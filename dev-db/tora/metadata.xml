@@ -5,10 +5,6 @@
 		<email>ikonta@yandex.ru</email>
 		<name>Sergey Starikoff</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>haubi@gentoo.org</email>
-		<name>Michael Haubenwallner</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
