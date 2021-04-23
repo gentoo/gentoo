@@ -43,3 +43,8 @@ python_test() {
 	cd tests || die
 	epytest
 }
+
+python_install() {
+	distutils-r1_python_install
+	python_optimize
+}
