@@ -85,8 +85,6 @@ if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
 
-PATCHES=( "${FILESDIR}/${PN}-2020_beta1-pytest.patch" )
-
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
 	use openmp && ! tc-has-openmp && \
