@@ -2558,7 +2558,7 @@ app-misc/bfr 1.6-r3: General-purpose command-line pipe buffer
 app-misc/bgrep 0_p20110121-r1 0.2_p20210221: Grep-like tool to search for binary strings
 app-misc/bijiben 3.36.3 40.0: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
-app-misc/binwalk 2.2.0 2.3.0 9999: A tool for identifying files embedded inside firmware images
+app-misc/binwalk 2.2.0 2.3.1 9999: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near future
 app-misc/blink1 1.98: blink(1) USB RGB LED status light control suite
 app-misc/bottlerocket 0.04c-r2: CLI interface to the X-10 Firecracker Kit
