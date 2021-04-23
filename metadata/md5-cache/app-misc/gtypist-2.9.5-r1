@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://www.gnu.org/software/gtypist/
 INHERIT=elisp-common autotools
 IUSE=nls emacs xemacs
-KEYWORDS=amd64 ppc x86 ~amd64-linux
+KEYWORDS=amd64 ~arm64 ppc x86 ~amd64-linux
 LICENSE=GPL-2 public-domain
 RDEPEND=>=sys-libs/ncurses-5.2:0= emacs? ( >=app-editors/emacs-23.1:* ) xemacs? ( !emacs? ( app-editors/xemacs app-xemacs/fsf-compat ) )
 SLOT=0
 SRC_URI=mirror://gnu/gtypist/gtypist-2.9.5.tar.xz http://colemak.com/pub/learn/colemak.typ
-_eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	elisp-common	6bfea130fc0f2cbd4cbc23dc12992349
-_md5_=c1a2ec824b4ae4cf4e4415cf96f50261
+_eclasses_=elisp-common	6bfea130fc0f2cbd4cbc23dc12992349	gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
+_md5_=a28b8cda4378bbd50a137d9129a3f5d7
