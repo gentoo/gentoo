@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtsql:5[mysql?,postgres?]
 	dev-qt/qtwidgets:5
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
-	oracle? ( || ( =dev-db/oracle-instantclient-basic-11* dev-db/oracle-instantclient ) )
+	oracle? ( dev-db/oracle-instantclient )
 	postgres? ( dev-db/postgresql:* )
 "
 DEPEND="${RDEPEND}
