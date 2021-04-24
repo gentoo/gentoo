@@ -37,3 +37,5 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-bogus-dep.patch" ) # KDE-Bug #436132
