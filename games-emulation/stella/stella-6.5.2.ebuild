@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop flag-o-matic gnome2-utils toolchain-funcs
+inherit desktop gnome2-utils toolchain-funcs
 
 DESCRIPTION="Multi-platform Atari 2600 VCS Emulator"
 HOMEPAGE="https://stella-emu.github.io"
