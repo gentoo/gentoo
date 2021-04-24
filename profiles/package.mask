@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-92
+
 # Michał Górny <mgorny@gentoo.org> (2021-04-22)
 # py3.7 backport with no revdeps left.
 # Removal on 2021-05-22.  Bug #784983.
