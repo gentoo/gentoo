@@ -1,0 +1,49 @@
+From 3c578beeb5d3748d9fdacae4ace42fe6098d9184 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 25 Apr 2021 00:26:12 +0200
+Subject: [PATCH] Add missing Qt5Concurrent to target_link_libraries
+
+This was working as long as it was implicitly provided by KIO.
+Other backends are fine.
+
+Fixes:
+- DiscoverCommon w/ AppStreamQt
+- packagekit-backend
+
+See also: https://invent.kde.org/frameworks/kio/-/merge_requests/426
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ libdiscover/CMakeLists.txt                            | 2 +-
+ libdiscover/backends/PackageKitBackend/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libdiscover/CMakeLists.txt b/libdiscover/CMakeLists.txt
+index 1097ea84..3e2a6c9c 100644
+--- a/libdiscover/CMakeLists.txt
++++ b/libdiscover/CMakeLists.txt
+@@ -48,7 +48,7 @@ if(TARGET AppStreamQt)
+         appstream/AppStreamIntegration.cpp
+         appstream/AppStreamUtils.cpp
+     )
+-    target_link_libraries(DiscoverCommon PRIVATE AppStreamQt)
++    target_link_libraries(DiscoverCommon PRIVATE Qt5::Concurrent AppStreamQt)
+ 
+     if(AppStreamQt_VERSION VERSION_GREATER 0.12.4)
+         target_compile_definitions(DiscoverCommon PRIVATE -DAPPSTREAM_HAS_SPDX=1)
+diff --git a/libdiscover/backends/PackageKitBackend/CMakeLists.txt b/libdiscover/backends/PackageKitBackend/CMakeLists.txt
+index cfeb38f1..466dbc49 100644
+--- a/libdiscover/backends/PackageKitBackend/CMakeLists.txt
++++ b/libdiscover/backends/PackageKitBackend/CMakeLists.txt
+@@ -19,7 +19,7 @@ ecm_qt_declare_logging_category(packagekit-backend_SRCS HEADER libdiscover_backe
+ 
+ add_library(packagekit-backend MODULE ${packagekit-backend_SRCS})
+ 
+-target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
++target_link_libraries(packagekit-backend PRIVATE Discover::Common Qt5::Core Qt5::Concurrent PK::packagekitqt5 KF5::ConfigGui KF5::KIOCore KF5::Archive AppStreamQt)
+ install(TARGETS packagekit-backend DESTINATION ${PLUGIN_INSTALL_DIR}/discover)
+ 
+ if(TARGET PkgConfig::Markdown)
+-- 
+2.31.1
+
