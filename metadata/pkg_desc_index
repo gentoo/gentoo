@@ -8826,6 +8826,7 @@ dev-python/pendulum 2.1.2-r1: Drop-in replacement for the standard datetime clas
 dev-python/pep8 1.7.1: Python style guide checker
 dev-python/pexpect 4.8.0-r1: Python module for spawning child apps and responding to expected patterns
 dev-python/pgspecial 1.12.1: Python implementation of PostgreSQL meta commands
+dev-python/pgzero 1.2.1: A zero-boilerplate games programming framework based on Pygame
 dev-python/phonenumbers 8.12.20 8.12.21: Python port of Google's libphonenumber
 dev-python/phply 1.2.5: Lexer and parser for PHP source implemented using PLY
 dev-python/picklemagic 0.0_pre20160415: A library for analysing python pickles safely
@@ -17787,7 +17788,7 @@ sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.34-r2 2.35.2 2.36.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/blocksruntime 0_pre20171027-r1: BlocksRuntime library needed for clang's -fblocks support
 sys-libs/compiler-rt 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: Compiler runtime library for clang (built-in part)
-sys-libs/compiler-rt-sanitizers 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
+sys-libs/compiler-rt-sanitizers 10.0.1-r1 11.0.0-r1 11.0.1-r1 11.1.0-r1 12.0.0 12.0.0.9999 13.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.7: Password Checking Library
 sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
@@ -18258,7 +18259,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.6.2165.40 3.7.2218.55 3.7.2218.58: A browser for our friends
-www-client/vivaldi-snapshot 3.8.2259.3 3.8.2259.16: A browser for our friends
+www-client/vivaldi-snapshot 3.8.2259.16 3.8.2259.21: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
