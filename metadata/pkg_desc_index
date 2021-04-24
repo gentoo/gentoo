@@ -11480,7 +11480,7 @@ games-board/mt_ncurses_client 0.1.98-r1: client for the french tarot game maitre
 games-board/natch 2.4-r1: A program to solve chess proof games
 games-board/openyahtzee 1.9.3-r1: A full-featured wxWidgets version of the classic dice game Yahtzee
 games-board/pasang-emas 3.1.0-r1: A traditional game of Brunei
-games-board/peg-e 1.2.8: A peg solitaire game
+games-board/peg-e 1.2.8: Peg solitaire game
 games-board/phalanx 22-r1: A chess engine suitable for beginner and intermediate players
 games-board/pioneers 15.5: Clone of the popular board game The Settlers of Catan
 games-board/pokerth 1.1.2: Texas Hold'em poker game
@@ -11801,7 +11801,7 @@ games-puzzle/twindistress 1.1.0: Match and remove all of the blocks before time 
 games-puzzle/wakkabox 1.1.0-r1: A simple block-pushing game
 games-puzzle/wizznic 369-r1: Block-clearing puzzle game
 games-puzzle/wmpuzzle 0.5.2-r1: a 4x4 puzzle on a 64x64 mini window
-games-puzzle/world-of-goo-demo 1.41-r3: A puzzle game with a strong emphasis on physics (demo version)
+games-puzzle/world-of-goo-demo 1.41-r3: Puzzle game with a strong emphasis on physics (demo version)
 games-puzzle/world-of-goo-gog 1.51.29337: A puzzle game with a strong emphasis on physics (GOG edition)
 games-puzzle/world-of-goo-hb 1.53: A puzzle game with a strong emphasis on physics (Humble Bundle edition)
 games-puzzle/xblockout 1.1.6-r2: X Window block dropping game in 3 Dimension
@@ -11834,7 +11834,7 @@ games-rpg/avadon 1.0.4_p1331768904: Epic fantasy role-playing adventure in an en
 games-rpg/baldurs-gate-ee 2.3.67.3-r1 2.5.23121: Baldur's Gate: Enhanced Edition
 games-rpg/bass 1.3 1.3-r1: Beneath a Steel Sky: a SciFi thriller set in a bleak vision of the future
 games-rpg/bastion 20161016: An original action role-playing game set in a lush imaginative world
-games-rpg/broken-age 2.4.800398: A point-and-click adventure from Tim Schafer's Double Fine Productions
+games-rpg/broken-age 2.4.800398: Point-and-click adventure from Tim Schafer's Double Fine Productions
 games-rpg/coe2 2007-r2: Precursor to the Dominions series
 games-rpg/comi 1: The Curse of Monkey Island, the third game in the series
 games-rpg/costume-quest 2.0.0.3: A Halloween adventure from Tim Schafer's Double Fine Productions

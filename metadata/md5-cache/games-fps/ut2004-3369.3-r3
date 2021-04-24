@@ -3,11 +3,12 @@ DEFINED_PHASES=config install postinst postrm prepare
 DESCRIPTION=Editor's Choice Edition plus Mega Pack for the well-known first-person shooter
 EAPI=7
 HOMEPAGE=https://liandri.beyondunreal.com/Unreal_Tournament_2004
+INHERIT=desktop wrapper
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=ut2003
 RDEPEND=!games-server/ut2004-ded games-fps/ut2004-bonuspack-ece games-fps/ut2004-bonuspack-mega >=games-fps/ut2004-data-3186-r5 media-libs/libsdl media-libs/openal sys-libs/glibc sys-libs/libstdc++-v3:5 virtual/opengl x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=http://ut2004.ut-files.com/Patches/Linux/ut2004-lnxpatch3369-2.tar.bz2 https://dev.gentoo.org/~chewi/distfiles/ut2004-v3369-3-linux-dedicated.7z
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974
-_md5_=364dfd515c40276121d49e16df542cdf
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=cb13cc0bcd95eaa9a1fc16a5cfacbe3c

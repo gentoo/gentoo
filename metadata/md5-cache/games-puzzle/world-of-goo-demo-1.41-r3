@@ -1,13 +1,14 @@
 DEFINED_PHASES=install postinst postrm preinst prepare
 DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
-DESCRIPTION=A puzzle game with a strong emphasis on physics (demo version)
+DESCRIPTION=Puzzle game with a strong emphasis on physics (demo version)
 EAPI=7
 HOMEPAGE=https://2dboy.com/
+INHERIT=desktop wrapper xdg
 KEYWORDS=~amd64 ~x86
 LICENSE=2dboy-EULA
 RDEPEND=media-libs/libsdl[opengl,sound,video] media-libs/sdl-mixer[vorbis] >=sys-devel/gcc-3.4 sys-libs/glibc virtual/opengl virtual/glu
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=mirror://sourceforge/slackbuildsdirectlinks/worldofgoo/WorldOfGooDemo.1.41.tar.gz
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	2d5b3f4b315094768576b6799e4f926e	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=6da9f31ad7e2412e6b6101ebdabfe1cd
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_md5_=b2c52090644f1fa0be62c66c4d725bae
