@@ -16562,7 +16562,7 @@ sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/stellarsolver 1.5: Cross-platform Sextractor and Astrometry.net-Based internal astrometric solver
 sci-libs/suitesparse 5.4.0: Metapackage for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 5.4.0: Common configurations for all packages in suitesparse
-sci-libs/sundials 3.2.1 5.2.0: Suite of nonlinear solvers
+sci-libs/sundials 3.2.1 5.2.0 5.7.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r2 5.2.2: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.6.0 0.7.0: Fast symbolic manipulation library, written in C++
