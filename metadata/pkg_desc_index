@@ -2248,7 +2248,7 @@ app-emulation/nerdctl 0.8.0: Docker-compatible CLI for containerd, with support 
 app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
-app-emulation/podman 3.0.1: Library and podman tool for running OCI-based containers in Pods
+app-emulation/podman 3.0.1 3.1.2: Library and podman tool for running OCI-based containers in Pods
 app-emulation/protontricks 1.4.3 1.4.4 1.5.0: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.107: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
