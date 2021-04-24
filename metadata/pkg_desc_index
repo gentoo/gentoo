@@ -13372,7 +13372,7 @@ media-libs/libilbc 3.0.4 9999: Packaged version of iLBC codec from the WebRTC pr
 media-libs/libinsane 1.0.7 1.0.8 1.0.9: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
-media-libs/libjpeg-turbo 1.5.3-r4 2.0.6: MMX, SSE, and SSE2 SIMD accelerated JPEG library
+media-libs/libjpeg-turbo 1.5.3-r4 2.0.6 2.1.0: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/libkeyfinder 2.2.4: Musical key detection library for digital audio
