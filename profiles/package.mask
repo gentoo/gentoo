@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-04-24)
+# Doesn't build, live ebuild broken too, blocks wxwidgets.eclass
+# modernization, unmaintained, requires unreleased changes in
+# net-libs/liquid-dsp. Bug #777720, removal in 30 days.
+net-wireless/cubicsdr
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
 # Unmaintained, depends on dev-dotnet/gtk-sharp which is dead upstream.
 # Removal on 2021-05-24; bugs #769050, #769059
