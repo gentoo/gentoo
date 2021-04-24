@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="drm introspection usb-monitor user-permissions video_cards_nvidia X"
 REQUIRED_USE="drm? ( X )"
 
-RDEPEND="dev-libs/glib:2
+COMMON_DEPEND="dev-libs/glib:2
 	sys-apps/i2c-tools
 	virtual/udev
 	drm? ( x11-libs/libdrm )
