@@ -2815,6 +2815,7 @@ app-misc/votrify 5: Tool for community verification of Gentoo elections
 app-misc/vzstats 0.5.1: OpenVZ stats collection daemon
 app-misc/wcd 6.0.2: Wherever Change Directory
 app-misc/when 1.1.40: Minimalistic personal calendar program
+app-misc/wildq 1.1.10: Command-line TOML/JSON/INI/YAML/XML processor using jq c bindings
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 4.6.1-r100: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/xmind 3.7.6_p201801311814: Brainstorming and mind mapping software tool

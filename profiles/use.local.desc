@@ -912,6 +912,9 @@ app-misc/vifm:developer - Enable features of interest to developers
 app-misc/vifm:extended-keys - Support for extended keys (arrows, home etc)
 app-misc/vifm:gtk - Use gtk+ to determine mimetypes
 app-misc/vifm:vim - Install the vifm vim plugin and vim-compatible documentation
+app-misc/wildq:hcl - HCL support via pyhcl
+app-misc/wildq:toml - TOML support via pytoml
+app-misc/wildq:xml - XML support via xmltodict
 app-misc/worker:avfs - Enable support for sys-fs/avfs
 app-misc/zygrib:maps - Installs additional GSHHS maps for high resolution coastline data and cities
 app-mobilephone/adb-sync:channel - Install the adb-channel script
