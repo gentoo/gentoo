@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wolfcw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 
 src_prepare() {
 	default
@@ -22,11 +22,6 @@ src_prepare() {
 
 	# Bug #617624 (GCC-6 compatibility)
 	sed -i 's/-Wno-nonnull-compare //' "${S}/src/Makefile" || die
-
-	# upstream doesn't want that we set this by default but
-	# I didn't find a single system where libfaketime passed
-	# CLOCK_MONOTONIC test without that
-	append-cflags -DFORCE_MONOTONIC_FIX
 
 	multilib_copy_sources
 }
