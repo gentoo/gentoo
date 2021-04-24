@@ -21,6 +21,7 @@ IUSE="+annotate kipi share"
 # TODO: Qt5Svg leaking from media-libs/kimageannotator
 DEPEND="
 	>=dev-qt/qdbus-${QTMIN}:5
+	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtsvg-${QTMIN}:5
@@ -52,6 +53,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	kipi? ( >=kde-apps/kipi-plugins-${PVCUT}:5 )
 "
+
+PATCHES=( "${FILESDIR}/${P}-implicit-dep.patch" ) # bug 785403
 
 src_prepare() {
 	ecm_src_prepare
