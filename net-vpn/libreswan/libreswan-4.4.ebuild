@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,7 +51,7 @@ usetf() {
 	usex "$1" true false
 }
 
-PATCHES=( "${FILESDIR}/${PN}-3.30-ip-path.patch" )
+PATCHES=( "${FILESDIR}/${PN}-4.2-ip-path.patch" )
 
 src_prepare() {
 	sed -i -e 's:/sbin/runscript:/sbin/openrc-run:' initsystems/openrc/ipsec.init.in || die
@@ -79,7 +79,7 @@ src_configure() {
 	export USE_SECCOMP=$(usetf seccomp)
 	export USE_SYSTEMD_WATCHDOG=$(usetf systemd)
 	export SD_WATCHDOGSEC=$(usex systemd 200 0)
-	export USE_XAUTHPAM=$(usetf pam)
+	export USE_AUTHPAM=$(usetf pam)
 	export DEBUG_CFLAGS=
 	export OPTIMIZE_CFLAGS=
 	export WERROR_CFLAGS=
@@ -101,13 +101,16 @@ src_install() {
 	echo "include /etc/ipsec.d/*.secrets" > "${D}"/etc/ipsec.secrets
 	fperms 0600 /etc/ipsec.secrets
 
+	keepdir /var/lib/ipsec/nss
+	fperms 0700 /var/lib/ipsec/nss
+
 	dodoc -r docs
 
 	find "${D}" -type d -empty -delete || die
 }
 
 pkg_postinst() {
-	local IPSEC_CONFDIR=${ROOT}/etc/ipsec.d
+	local IPSEC_CONFDIR=${ROOT}/var/lib/ipsec/nss
 	if [[ ! -f ${IPSEC_CONFDIR}/cert8.db && ! -f ${IPSEC_CONFDIR}/cert9.db ]] ; then
 		ebegin "Setting up NSS database in ${IPSEC_CONFDIR} with empty password"
 		certutil -N -d "${IPSEC_CONFDIR}" --empty-password
