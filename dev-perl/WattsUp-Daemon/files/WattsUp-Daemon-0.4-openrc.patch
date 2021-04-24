@@ -1,0 +1,9 @@
+diff -ruN WattsUp-Daemon-0.4.orig/gentoo/wattsup-daemon.initd WattsUp-Daemon-0.4/gentoo/wattsup-daemon.initd
+--- WattsUp-Daemon-0.4.orig/gentoo/wattsup-daemon.initd	2007-12-02 09:44:07.000000000 +0100
++++ WattsUp-Daemon-0.4/gentoo/wattsup-daemon.initd	2021-04-24 15:51:40.437424079 +0200
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 2007, Robin H. Johnson <robbat2@gentoo.org>
+ # You can use and redistribute WattsUpDaemon under the same terms as Perl itself.
+ 
