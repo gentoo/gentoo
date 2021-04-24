@@ -237,11 +237,11 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
-meson_use() {
+sd_use() {
 	usex "$1" true false
 }
 
-meson_multilib() {
+sd_native() {
 	if multilib_is_native_abi; then
 		echo true
 	else
@@ -249,7 +249,7 @@ meson_multilib() {
 	fi
 }
 
-meson_multilib_native_use() {
+sd_native_use() {
 	if multilib_is_native_abi && use "$1"; then
 		echo true
 	else
@@ -275,67 +275,67 @@ multilib_src_configure() {
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Optional components/dependencies
-		-Dacl=$(meson_multilib_native_use acl)
-		-Dapparmor=$(meson_multilib_native_use apparmor)
-		-Daudit=$(meson_multilib_native_use audit)
-		-Dlibcryptsetup=$(meson_multilib_native_use cryptsetup)
-		-Dlibcurl=$(meson_multilib_native_use curl)
-		-Ddns-over-tls=$(meson_multilib_native_use dns-over-tls)
-		-Delfutils=$(meson_multilib_native_use elfutils)
-		-Dgcrypt=$(meson_use gcrypt)
-		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
+		-Dacl=$(sd_native_use acl)
+		-Dapparmor=$(sd_native_use apparmor)
+		-Daudit=$(sd_native_use audit)
+		-Dlibcryptsetup=$(sd_native_use cryptsetup)
+		-Dlibcurl=$(sd_native_use curl)
+		-Ddns-over-tls=$(sd_native_use dns-over-tls)
+		-Delfutils=$(sd_native_use elfutils)
+		-Dgcrypt=$(sd_use gcrypt)
+		-Dgnu-efi=$(sd_native_use gnuefi)
 		-Defi-includedir="${ESYSROOT}/usr/include/efi"
 		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
-		-Dhomed=$(meson_multilib_native_use homed)
-		-Dhwdb=$(meson_multilib_native_use hwdb)
-		-Dmicrohttpd=$(meson_multilib_native_use http)
-		-Didn=$(meson_multilib_native_use idn)
-		-Dimportd=$(meson_multilib_native_use importd)
-		-Dbzip2=$(meson_multilib_native_use importd)
-		-Dzlib=$(meson_multilib_native_use importd)
-		-Dkmod=$(meson_multilib_native_use kmod)
-		-Dlz4=$(meson_use lz4)
-		-Dxz=$(meson_use lzma)
-		-Dzstd=$(meson_use zstd)
-		-Dlibiptc=$(meson_multilib_native_use nat)
-		-Dpam=$(meson_use pam)
-		-Dp11kit=$(meson_multilib_native_use pkcs11)
-		-Dpcre2=$(meson_multilib_native_use pcre)
-		-Dpolkit=$(meson_multilib_native_use policykit)
-		-Dpwquality=$(meson_multilib_native_use pwquality)
-		-Dqrencode=$(meson_multilib_native_use qrcode)
-		-Drepart=$(meson_multilib_native_use repart)
-		-Dseccomp=$(meson_multilib_native_use seccomp)
-		-Dselinux=$(meson_multilib_native_use selinux)
-		-Dtpm2=$(meson_multilib_native_use tpm)
-		-Ddbus=$(meson_multilib_native_use test)
-		-Dxkbcommon=$(meson_multilib_native_use xkb)
+		-Dhomed=$(sd_native_use homed)
+		-Dhwdb=$(sd_native_use hwdb)
+		-Dmicrohttpd=$(sd_native_use http)
+		-Didn=$(sd_native_use idn)
+		-Dimportd=$(sd_native_use importd)
+		-Dbzip2=$(sd_native_use importd)
+		-Dzlib=$(sd_native_use importd)
+		-Dkmod=$(sd_native_use kmod)
+		-Dlz4=$(sd_use lz4)
+		-Dxz=$(sd_use lzma)
+		-Dzstd=$(sd_use zstd)
+		-Dlibiptc=$(sd_native_use nat)
+		-Dpam=$(sd_use pam)
+		-Dp11kit=$(sd_native_use pkcs11)
+		-Dpcre2=$(sd_native_use pcre)
+		-Dpolkit=$(sd_native_use policykit)
+		-Dpwquality=$(sd_native_use pwquality)
+		-Dqrencode=$(sd_native_use qrcode)
+		-Drepart=$(sd_native_use repart)
+		-Dseccomp=$(sd_native_use seccomp)
+		-Dselinux=$(sd_native_use selinux)
+		-Dtpm2=$(sd_native_use tpm)
+		-Ddbus=$(sd_native_use test)
+		-Dxkbcommon=$(sd_native_use xkb)
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
 		-Dcreate-log-dirs=false
 
 		# multilib options
-		-Dbacklight=$(meson_multilib)
-		-Dbinfmt=$(meson_multilib)
-		-Dcoredump=$(meson_multilib)
-		-Denvironment-d=$(meson_multilib)
-		-Dfirstboot=$(meson_multilib)
-		-Dhibernate=$(meson_multilib)
-		-Dhostnamed=$(meson_multilib)
-		-Dldconfig=$(meson_multilib)
-		-Dlocaled=$(meson_multilib)
-		-Dman=$(meson_multilib)
-		-Dnetworkd=$(meson_multilib)
-		-Dquotacheck=$(meson_multilib)
-		-Drandomseed=$(meson_multilib)
-		-Drfkill=$(meson_multilib)
-		-Dsysusers=$(meson_multilib)
-		-Dtimedated=$(meson_multilib)
-		-Dtimesyncd=$(meson_multilib)
-		-Dtmpfiles=$(meson_multilib)
-		-Dvconsole=$(meson_multilib)
+		-Dbacklight=$(sd_native)
+		-Dbinfmt=$(sd_native)
+		-Dcoredump=$(sd_native)
+		-Denvironment-d=$(sd_native)
+		-Dfirstboot=$(sd_native)
+		-Dhibernate=$(sd_native)
+		-Dhostnamed=$(sd_native)
+		-Dldconfig=$(sd_native)
+		-Dlocaled=$(sd_native)
+		-Dman=$(sd_native)
+		-Dnetworkd=$(sd_native)
+		-Dquotacheck=$(sd_native)
+		-Drandomseed=$(sd_native)
+		-Drfkill=$(sd_native)
+		-Dsysusers=$(sd_native)
+		-Dtimedated=$(sd_native)
+		-Dtimesyncd=$(sd_native)
+		-Dtmpfiles=$(sd_native)
+		-Dvconsole=$(sd_native)
 
 		# static-libs
 		-Dstatic-libsystemd=$(usex static-libs true false)
