@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop flag-o-matic
+
+inherit autotools desktop
 
 DESCRIPTION="3D tank combat simulator game"
 HOMEPAGE="https://www.bzflag.org/"
@@ -67,5 +68,5 @@ src_install() {
 		make_desktop_entry ${PN} "BZFlag"
 	fi
 
-	find "${D}"/ -name \*.la -delete
+	find "${ED}" -name '*.la' -delete || die
 }
