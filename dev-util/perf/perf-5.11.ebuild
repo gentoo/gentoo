@@ -46,7 +46,9 @@ BDEPEND="
 		app-text/sgml-common
 		app-text/xmlto
 		sys-process/time
-	)"
+	)
+	${PYTHON_DEPS}
+"
 
 RDEPEND="audit? ( sys-process/audit )
 	crypt? ( dev-libs/openssl:0= )
@@ -88,6 +90,9 @@ pkg_pretend() {
 
 pkg_setup() {
 	use clang && LLVM_MAX_SLOT=9 llvm_pkg_setup
+	# We enable python unconditionally as libbpf always generates
+	# API headers using python script
+	python_setup
 }
 
 src_unpack() {
