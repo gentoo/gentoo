@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_PV=7.16
+MY_PV=$(ver_cut 1-2)
 WX_GTK_VER=3.0-gtk3
 
 inherit autotools desktop flag-o-matic linux-info systemd wxwidgets xdg-utils
