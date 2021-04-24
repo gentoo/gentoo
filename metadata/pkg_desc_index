@@ -2244,6 +2244,7 @@ app-emulation/lxc 4.0.6: A userspace interface for the Linux kernel containment 
 app-emulation/lxc-templates 3.0.4: Old style template scripts for LXC
 app-emulation/lxd 4.0.4-r7 4.0.5: Fast, dense and secure container management
 app-emulation/nemu 2.2.1 2.5.0 9999: ncurses interface for QEMU
+app-emulation/nerdctl 0.8.0: Docker-compatible CLI for containerd, with support for Compose
 app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced tools for VMware guests
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
