@@ -8567,6 +8567,7 @@ dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jmespath 0.10.0: JSON Matching Expressions
 dev-python/joblib 1.0.1: Tools to provide lightweight pipelining in Python
 dev-python/josepy 1.8.0: JOSE protocol implementation in Python
+dev-python/jq 1.1.2: Python bindings for jq
 dev-python/js2py 0.70_p20210218: JavaScript to Python Translator & JavaScript interpreter in Python
 dev-python/jsmin 2.2.2: JavaScript minifier
 dev-python/json-rpc 1.13.0: JSON-RPC transport implementation for python
