@@ -26,6 +26,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	emake -C cli wvtest
 	cli/wvtest --default || die
 }
 
