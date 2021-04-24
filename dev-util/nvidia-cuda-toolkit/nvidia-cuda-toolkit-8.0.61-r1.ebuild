@@ -22,7 +22,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	>=sys-devel/gcc-4.7[cxx]
 	<sys-devel/gcc-6[cxx]
-	>=x11-drivers/nvidia-drivers-375.26[X,uvm(+)]
+	>=x11-drivers/nvidia-drivers-${DRIVER_PV}
 	debugger? (
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses-compat:5[tinfo]
