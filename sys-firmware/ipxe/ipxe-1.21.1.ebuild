@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit toolchain-funcs savedconfig
+inherit savedconfig toolchain-funcs
 
 DESCRIPTION="Open source network boot (PXE) firmware"
 HOMEPAGE="https://ipxe.org/"
@@ -20,17 +20,15 @@ REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
 
 SOURCE_DEPEND="app-arch/xz-utils
 	dev-lang/perl
-	sys-libs/zlib
 	iso? (
 		app-cdr/cdrtools
 		sys-boot/syslinux
 	)"
-DEPEND="
+BDEPEND="
 	!binary? (
 		amd64? ( ${SOURCE_DEPEND} )
 		x86? ( ${SOURCE_DEPEND} )
 	)"
-RDEPEND=""
 
 S="${WORKDIR}/${P}/src"
 
