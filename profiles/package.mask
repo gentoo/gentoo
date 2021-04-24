@@ -387,14 +387,6 @@ sys-devel/autoconf:2.71
 >=dev-libs/libgweather-40
 >=gnome-base/gnome-settings-daemon-40
 
-# Marek Szuba <marecki@gentoo.org> (2021-03-19)
-# Depends on bundled out-of-date Qt5 libraries, and even with those
-# installed recent upstream versions fail to run. Moreover, we have now
-# got a source variant in the tree which, while still CLI-only for now,
-# is up to date and actually works.
-# Removal in 30 days. Bug #768228.
-mail-mta/protonmail-bridge-bin
-
 # Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
 # Dead upstream. No revdeps.
 # Removal in 60 days to allow people extra time
