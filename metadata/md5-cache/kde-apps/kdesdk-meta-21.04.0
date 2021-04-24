@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=KDE SDK - merge this to pull in all kdesdk-derived packages
+EAPI=7
+HOMEPAGE=https://apps.kde.org/development
+IUSE=cvs git mercurial python ruby subversion
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/kapptemplate-21.04.0:5 >=kde-apps/kcachegrind-21.04.0:5 >=kde-apps/kde-dev-scripts-21.04.0:5 >=kde-apps/kde-dev-utils-21.04.0:5 >=kde-apps/kdesdk-kioslaves-21.04.0:5 >=kde-apps/kdesdk-thumbnailers-21.04.0:5 >=kde-apps/kompare-21.04.0:5 >=kde-apps/libkomparediff2-21.04.0:5 >=kde-apps/poxml-21.04.0:5 >=kde-apps/umbrello-21.04.0:5 cvs? ( >=kde-apps/cervisia-21.04.0:5 ) git? ( >=kde-apps/dolphin-plugins-git-21.04.0:5 ) mercurial? ( >=kde-apps/dolphin-plugins-mercurial-21.04.0:5 ) python? ( >=kde-apps/lokalize-21.04.0:5 ) ruby? ( >=kde-apps/kross-interpreters-21.04.0:5 ) subversion? ( >=kde-apps/dolphin-plugins-subversion-21.04.0:5 )
+SLOT=5
+_md5_=df2292b438908b8fb5cfef44aa6b09d0

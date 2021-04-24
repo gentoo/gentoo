@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=KDE PIM - merge this to pull in all kdepim-derived packages
+EAPI=7
+HOMEPAGE=https://apps.kde.org/en/kontact
+IUSE=bogofilter clamav spamassassin
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/akonadi-21.04.0:5 >=kde-apps/akonadiconsole-21.04.0:5 >=kde-apps/akonadi-calendar-21.04.0:5 >=kde-apps/akonadi-contacts-21.04.0:5 >=kde-apps/akonadi-import-wizard-21.04.0:5 >=kde-apps/akonadi-mime-21.04.0:5 >=kde-apps/akonadi-notes-21.04.0:5 >=kde-apps/akonadi-search-21.04.0:5 >=kde-apps/akregator-21.04.0:5 >=kde-apps/calendarjanitor-21.04.0:5 >=kde-apps/calendarsupport-21.04.0:5 >=kde-apps/eventviews-21.04.0:5 >=kde-apps/grantlee-editor-21.04.0:5 >=kde-apps/grantleetheme-21.04.0:5 >=kde-apps/incidenceeditor-21.04.0:5 >=kde-apps/kaddressbook-21.04.0:5 >=kde-apps/kalarm-21.04.0:5 >=kde-apps/kalarmcal-21.04.0:5 >=kde-apps/kcalutils-21.04.0:5 >=kde-apps/kdepim-addons-21.04.0:5 >=kde-apps/kdepim-runtime-21.04.0:5 >=kde-apps/kidentitymanagement-21.04.0:5 >=kde-apps/kimap-21.04.0:5 >=kde-apps/kitinerary-21.04.0:5 >=kde-apps/kldap-21.04.0:5 >=kde-apps/kleopatra-21.04.0:5 >=kde-apps/kmail-21.04.0:5 >=kde-apps/kmail-account-wizard-21.04.0:5 >=kde-apps/kmailtransport-21.04.0:5 >=kde-apps/kmbox-21.04.0:5 >=kde-apps/kmime-21.04.0:5 >=kde-apps/knotes-21.04.0:5 >=kde-apps/konsolekalendar-21.04.0:5 >=kde-apps/kontact-21.04.0:5 >=kde-apps/kontactinterface-21.04.0:5 >=kde-apps/korganizer-21.04.0:5 >=kde-apps/kpimtextedit-21.04.0:5 >=kde-apps/kpkpass-21.04.0:5 >=kde-apps/ksmtp-21.04.0:5 >=kde-apps/libgravatar-21.04.0:5 >=kde-apps/libkdepim-21.04.0:5 >=kde-apps/libkgapi-21.04.0:5 >=kde-apps/libkleo-21.04.0:5 >=kde-apps/libksieve-21.04.0:5 >=kde-apps/libktnef-21.04.0:5 >=kde-apps/mailcommon-21.04.0:5 >=kde-apps/mailimporter-21.04.0:5 >=kde-apps/mbox-importer-21.04.0:5 >=kde-apps/messagelib-21.04.0:5 >=kde-apps/pim-data-exporter-21.04.0:5 >=kde-apps/pim-sieve-editor-21.04.0:5 >=kde-apps/pimcommon-21.04.0:5 bogofilter? ( mail-filter/bogofilter ) clamav? ( app-antivirus/clamav ) spamassassin? ( mail-filter/spamassassin )
+SLOT=5
+_md5_=98cf147d1a443e40daef368b9f3f0b47

@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Meta package for the KDE Release Service collection
+EAPI=7
+HOMEPAGE=https://kde.org/
+IUSE=accessibility +admin +education +games +graphics +multimedia +network pim sdk +utils
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/kdecore-meta-21.04.0:5 accessibility? ( >=kde-apps/kdeaccessibility-meta-21.04.0:5 ) admin? ( >=kde-apps/kdeadmin-meta-21.04.0:5 ) education? ( >=kde-apps/kdeedu-meta-21.04.0:5 ) games? ( >=kde-apps/kdegames-meta-21.04.0:5 ) graphics? ( >=kde-apps/kdegraphics-meta-21.04.0:5 ) multimedia? ( >=kde-apps/kdemultimedia-meta-21.04.0:5 ) network? ( >=kde-apps/kdenetwork-meta-21.04.0:5 ) pim? ( >=kde-apps/kdepim-meta-21.04.0:5 ) sdk? ( >=kde-apps/kdesdk-meta-21.04.0:5 ) utils? ( >=kde-apps/kdeutils-meta-21.04.0:5 )
+SLOT=5
+_md5_=79dbf402b21e931d0725000340ec5a15

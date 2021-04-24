@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=kdegames - merge this to pull in all kdegames-derived packages
+EAPI=7
+HOMEPAGE=https://games.kde.org/
+IUSE=opengl python
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/bomber-21.04.0:5 >=kde-apps/bovo-21.04.0:5 >=kde-apps/granatier-21.04.0:5 >=kde-apps/kapman-21.04.0:5 >=kde-apps/katomic-21.04.0:5 >=kde-apps/kblackbox-21.04.0:5 >=kde-apps/kblocks-21.04.0:5 >=kde-apps/kbounce-21.04.0:5 >=kde-apps/kbreakout-21.04.0:5 >=kde-apps/kdiamond-21.04.0:5 >=kde-apps/kfourinline-21.04.0:5 >=kde-apps/kgoldrunner-21.04.0:5 >=kde-apps/kigo-21.04.0:5 >=kde-apps/killbots-21.04.0:5 >=kde-apps/kiriki-21.04.0:5 >=kde-apps/kjumpingcube-21.04.0:5 >=kde-apps/klickety-21.04.0:5 >=kde-apps/klines-21.04.0:5 >=kde-apps/kmahjongg-21.04.0:5 >=kde-apps/kmines-21.04.0:5 >=kde-apps/knavalbattle-21.04.0:5 >=kde-apps/knetwalk-21.04.0:5 >=kde-apps/knights-21.04.0:5 >=kde-apps/kolf-21.04.0:5 >=kde-apps/kollision-21.04.0:5 >=kde-apps/konquest-21.04.0:5 >=kde-apps/kpat-21.04.0:5 >=kde-apps/kreversi-21.04.0:5 >=kde-apps/kshisen-21.04.0:5 >=kde-apps/ksirk-21.04.0:5 >=kde-apps/ksnakeduel-21.04.0:5 >=kde-apps/kspaceduel-21.04.0:5 >=kde-apps/ksquares-21.04.0:5 >=kde-apps/ktuberling-21.04.0:5 >=kde-apps/libkdegames-21.04.0:5 >=kde-apps/libkmahjongg-21.04.0:5 >=kde-apps/lskat-21.04.0:5 >=kde-apps/palapeli-21.04.0:5 >=kde-apps/picmi-21.04.0:5 opengl? ( >=kde-apps/ksudoku-21.04.0:5 >=kde-apps/kubrick-21.04.0:5 ) python? ( >=kde-apps/kajongg-21.04.0:5 )
+SLOT=5
+_md5_=0566e9acfe33742b47489bc829c238d0
