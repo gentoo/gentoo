@@ -1,4 +1,4 @@
-From 07e6813244435c93a944cca17dc3c4364a579606 Mon Sep 17 00:00:00 2001
+From 93d8c2a1887ab70455f471d8e05f346921497a36 Mon Sep 17 00:00:00 2001
 From: Andreas Sturmlechner <asturm@gentoo.org>
 Date: Sat, 24 Apr 2021 18:08:33 +0200
 Subject: [PATCH] addons: Add missing Qt5Concurrent to project and search
@@ -9,12 +9,12 @@ See also: https://invent.kde.org/frameworks/kio/-/merge_requests/426
 
 Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
 ---
- addons/project/CMakeLists.txt | 5 ++++-
- addons/search/CMakeLists.txt  | 7 +++++--
- 2 files changed, 9 insertions(+), 3 deletions(-)
+ addons/project/CMakeLists.txt | 4 +++-
+ addons/search/CMakeLists.txt  | 6 ++++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/addons/project/CMakeLists.txt b/addons/project/CMakeLists.txt
-index 16487f6cc..6fbf5a819 100644
+index 16487f6cc..b1f66ada3 100644
 --- a/addons/project/CMakeLists.txt
 +++ b/addons/project/CMakeLists.txt
 @@ -1,3 +1,4 @@
@@ -31,17 +31,16 @@ index 16487f6cc..6fbf5a819 100644
    return()
  endif()
  
-@@ -18,6 +19,8 @@ target_compile_definitions(kateprojectplugin PRIVATE TRANSLATION_DOMAIN="katepro
- 
+@@ -19,6 +20,7 @@ target_compile_definitions(kateprojectplugin PRIVATE TRANSLATION_DOMAIN="katepro
  target_link_libraries(
    kateprojectplugin
-+  PUBLIC
-+    Qt5::Concurrent
    PRIVATE
++    Qt5::Concurrent
      KF5::GuiAddons
      KF5::NewStuff
+     KF5::TextEditor
 diff --git a/addons/search/CMakeLists.txt b/addons/search/CMakeLists.txt
-index 9bbe2c1c9..8dc18699b 100644
+index 9bbe2c1c9..a541f78b8 100644
 --- a/addons/search/CMakeLists.txt
 +++ b/addons/search/CMakeLists.txt
 @@ -1,7 +1,8 @@
@@ -54,17 +53,17 @@ index 9bbe2c1c9..8dc18699b 100644
    return()
  endif()
  
-@@ -9,7 +10,9 @@ add_library(katesearchplugin MODULE "")
+@@ -9,8 +10,9 @@ add_library(katesearchplugin MODULE "")
  target_compile_definitions(katesearchplugin PRIVATE TRANSLATION_DOMAIN="katesearch")
  
  target_link_libraries(
 -  katesearchplugin 
 +  katesearchplugin
-+  PUBLIC
-+    Qt5::Concurrent
    PRIVATE
++    Qt5::Concurrent
      KF5::ItemViews
      KF5::TextEditor
+ )
 -- 
 2.31.1
 
