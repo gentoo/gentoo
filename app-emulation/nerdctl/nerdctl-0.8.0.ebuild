@@ -1061,6 +1061,6 @@ src_prepare() {
 }
 
 src_install() {
-	DOCS=(docs/* examples)
+	DOCS=(README.md docs examples)
 	default_src_install
 }
