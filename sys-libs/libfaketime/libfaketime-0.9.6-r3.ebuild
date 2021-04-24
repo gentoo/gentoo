@@ -1,27 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit toolchain-funcs multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Report faked system time to programs"
 HOMEPAGE="http://www.code-wizards.com/projects/libfaketime/ https://github.com/wolfcw/libfaketime"
-SRC_URI="http://www.code-wizards.com/projects/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/wolfcw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 sparc x86"
 
 src_prepare() {
+	default
+
 	sed -i 's/-Werror //' "${S}/src/Makefile" || die
 
 	sed -i 's/-Werror //' "${S}/test/Makefile" || die
 
 	# Bug #617624 (GCC-6 compatibility)
 	sed -i 's/-Wno-nonnull-compare //' "${S}/src/Makefile" || die
-
-	eapply_user
 
 	multilib_copy_sources
 }
