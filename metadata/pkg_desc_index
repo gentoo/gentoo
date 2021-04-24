@@ -14363,7 +14363,7 @@ media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 4.16.0: A simple Xfce4 media player using GStreamer
 media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
-media-video/pipewire 0.3.22 0.3.25: Multimedia processing graphs
+media-video/pipewire 0.3.22 0.3.25 0.3.26: Multimedia processing graphs
 media-video/pitivi 0.999-r3: A non-linear video editor using the GStreamer multimedia framework
 media-video/projectx 0.91.0.10-r2 0.91.0.10-r3: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/qmplay2 20.07.04 21.03.09 9999: A Qt-based video player, which can play most formats and codecs

@@ -1,0 +1,17 @@
+BDEPEND=app-doc/xmltoman doc? ( app-doc/doxygen media-gfx/graphviz ) >=dev-util/meson-0.54.0 >=dev-util/ninja-1.8.2 dev-util/meson-format-array virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=media-libs/alsa-lib sys-apps/dbus sys-libs/ncurses[unicode] virtual/libudev bluetooth? ( aac? ( media-libs/fdk-aac ) aptx? ( media-libs/libopenaptx ) ldac? ( media-libs/libldac ) media-libs/sbc >=net-wireless/bluez-4.101:= ) extra? ( >=media-libs/libsndfile-1.0.20 ) gstreamer? ( >=dev-libs/glib-2.32.0:2 >=media-libs/gstreamer-1.10.0:1.0 media-libs/gst-plugins-base:1.0 ) jack-client? ( >=media-sound/jack2-1.9.10:2[dbus] ) pipewire-alsa? ( >=media-libs/alsa-lib-1.1.7 || ( media-plugins/alsa-plugins[-pulseaudio] !media-plugins/alsa-plugins ) ) !pipewire-alsa? ( media-plugins/alsa-plugins[pulseaudio] ) systemd? ( sys-apps/systemd ) v4l? ( media-libs/libv4l )
+DESCRIPTION=Multimedia processing graphs
+EAPI=7
+HOMEPAGE=https://pipewire.org/
+INHERIT=meson optfeature udev
+IUSE=aac aptx bluetooth doc extra gstreamer jack-client ldac pipewire-alsa systemd test v4l
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1+
+RDEPEND=media-libs/alsa-lib sys-apps/dbus sys-libs/ncurses[unicode] virtual/libudev bluetooth? ( aac? ( media-libs/fdk-aac ) aptx? ( media-libs/libopenaptx ) ldac? ( media-libs/libldac ) media-libs/sbc >=net-wireless/bluez-4.101:= ) extra? ( >=media-libs/libsndfile-1.0.20 ) gstreamer? ( >=dev-libs/glib-2.32.0:2 >=media-libs/gstreamer-1.10.0:1.0 media-libs/gst-plugins-base:1.0 ) jack-client? ( >=media-sound/jack2-1.9.10:2[dbus] ) pipewire-alsa? ( >=media-libs/alsa-lib-1.1.7 || ( media-plugins/alsa-plugins[-pulseaudio] !media-plugins/alsa-plugins ) ) !pipewire-alsa? ( media-plugins/alsa-plugins[pulseaudio] ) systemd? ( sys-apps/systemd ) v4l? ( media-libs/libv4l )
+REQUIRED_USE=aac? ( bluetooth ) aptx? ( bluetooth ) ldac? ( bluetooth )
+RESTRICT=!test? ( test )
+SLOT=0/0.3
+SRC_URI=https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/0.3.26/pipewire-0.3.26.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	meson	e43eef9331f54965a573ed380854ff47	optfeature	e142388219c7fee6ff016fe1c78a10a5	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=6d6ade53fcbc02eec6f8498c9e661159
