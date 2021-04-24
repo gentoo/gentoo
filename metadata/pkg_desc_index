@@ -6237,7 +6237,7 @@ dev-perl/B-Flags 0.170.0-r1: Friendlier flags for B
 dev-perl/B-Hooks-EndOfScope 0.240.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.220.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.210.0-r1: Interface to perls parser variables
-dev-perl/B-Keywords 1.210.0: Lists of reserved barewords and symbol names
+dev-perl/B-Keywords 1.210.0 1.220.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.320.0-r1: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0-r2: Helper functions for op tree manipulation
 dev-perl/BDB 1.920.0-r1: Asynchronous Berkeley DB access
@@ -6246,10 +6246,10 @@ dev-perl/BSON 1.12.2: BSON serialization and deserialization (EOL)
 dev-perl/BZ-Client 4.400.300: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.711.200: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.640.0: This module provides Berkeley DB interface for Perl
-dev-perl/Bio-ASN1-EntrezGene 1.720.0: Regular expression-based Perl Parser for NCBI Entrez Gene
+dev-perl/Bio-ASN1-EntrezGene 1.720.0 1.730.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-DB-HTS 3.10.0-r1: Perl bindings for sci-libs/htslib
 dev-perl/Bio-Das 1.170.0-r2: Interface to Distributed Annotation System
-dev-perl/Bio-Graphics 2.390.0 2.400.0: Generate images from Bio::Seq objects for visualization purposes
+dev-perl/Bio-Graphics 2.400.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.430.0-r2: Read SAM/BAM database files
 dev-perl/Bit-Vector 7.400.0-r2: Efficient bit vector, set of integers and big int math library
 dev-perl/Bit-Vector-Minimal 1.300.0-r2: Object-oriented wrapper around vec()
@@ -6257,8 +6257,8 @@ dev-perl/Boulder 1.300.0-r2: An API for hierarchical tag/value structures
 dev-perl/Browser-Open 0.40.0: Open a browser at a given URL
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r2: Interface to FedEx Ship Manager Direct
 dev-perl/Business-Hours 0.130.0: Calculate business hours in a time period
-dev-perl/Business-ISBN 3.5.0: Work with ISBN as objects
-dev-perl/Business-ISBN-Data 20191107.0.0: Data pack for Business::ISBN
+dev-perl/Business-ISBN 3.5.0 3.6.0: Work with ISBN as objects
+dev-perl/Business-ISBN-Data 20191107.0.0 20210112.6.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.201.0: International Standard Music Numbers
 dev-perl/Business-ISSN 1.4.0: Object and functions to work with International Standard Serial Numbers
 dev-perl/Business-Tax-VAT-Validation 1.120.0: A class for european VAT numbers validation
@@ -13041,7 +13041,7 @@ media-gfx/gphotofs 0.5-r1: FUSE file system for interfacing with digital cameras
 media-gfx/gpicview 0.2.5 0.2.5-r1 0.2.5-r2: A Simple and Fast Image Viewer for X
 media-gfx/graphicsmagick 1.3.36 9999: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.14: Library providing rendering capabilities for complex non-Roman writing systems
-media-gfx/graphviz 2.44.1-r1: Open Source Graph Visualization Software
+media-gfx/graphviz 2.44.1-r1 2.47.1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 2.9.1 2.11.1: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.10.2 3.10.3: Image viewer and browser for Gnome
