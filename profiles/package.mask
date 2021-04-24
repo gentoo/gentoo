@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-04-24)
+# Masked for testing and until revdeps have been fixed, Bug #763201.
+# Sync concurrent unmasking with icu/chromium/qtwebengine.
+>=dev-libs/boost-1.76.0
+>=dev-util/boost-build-1.76.0
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
