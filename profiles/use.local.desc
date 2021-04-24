@@ -8022,6 +8022,8 @@ sys-cluster/heat:memcached - Installs the memcached server
 sys-cluster/hpx:papi - Use dev-libs/papi for NaCl
 sys-cluster/hpx:perftools - Use dev-util/google-perftools for memory allocation
 sys-cluster/hpx:tbb - Use dev-cpp/tbb for memory allocation
+sys-cluster/k3s:kubectl-symlink - Install a kubectl symlink that points to k3s.
+sys-cluster/k3s:rootless - Enables dependencies for running in rootless mode.
 sys-cluster/keepalived:bfd - compile with support for Bidirectional Forwarding Detection (BFD).
 sys-cluster/keepalived:json - compile with signal to dump configuration and stats as JSON.
 sys-cluster/keepalived:regex - compile with support for regex in health checks
