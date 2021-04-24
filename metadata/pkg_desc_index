@@ -6842,12 +6842,12 @@ dev-perl/HTTP-Cache-Transparent 1.400.0: Cache the result of http get-requests p
 dev-perl/HTTP-CookieJar 0.8.0: A minimalist HTTP user agent cookie jar
 dev-perl/HTTP-Cookies 6.40.0: Storage of cookies
 dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
-dev-perl/HTTP-Daemon 6.10.0-r2 6.60.0: Base class for simple HTTP servers
+dev-perl/HTTP-Daemon 6.60.0 6.120.0: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Entity-Parser 0.200.0: PSGI compliant HTTP Entity Parser
 dev-perl/HTTP-Exception 0.40.70: throw HTTP-Errors as (Exception::Class-) Exceptions
 dev-perl/HTTP-Headers-Fast 0.210.0 0.220.0: Faster implementation of HTTP::Headers
-dev-perl/HTTP-Message 6.130.0: Base class for Request/Response
+dev-perl/HTTP-Message 6.130.0 6.290.0: Base class for Request/Response
 dev-perl/HTTP-MultiPartParser 0.20.0: Low Level MultiPart MIME HTTP parser
 dev-perl/HTTP-Negotiate 6.10.0-r1: HTTP content negotiation
 dev-perl/HTTP-Request-AsCGI 1.200.0: Set up a CGI environment from an HTTP::Request
@@ -7158,7 +7158,7 @@ dev-perl/Net-Daemon 0.480.0-r2: Abstract base class for portable servers
 dev-perl/Net-Domain-TLD 1.750.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r2: Query a Google SafeBrowsing table
-dev-perl/Net-HTTP 6.170.0: Low-level HTTP connection (client)
+dev-perl/Net-HTTP 6.170.0 6.210.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.400.0 2.500.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.900: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
@@ -7346,7 +7346,7 @@ dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/Quota 1.7.2-r1: Perl interface to file system quotas
 dev-perl/REST-Client 273: A simple client for interacting with RESTful http/https resources
-dev-perl/RPC-XML 0.790.0 0.800.0: An implementation of XML-RPC
+dev-perl/RPC-XML 0.790.0 0.800.0 0.820.0: An implementation of XML-RPC
 dev-perl/RRD-Simple 1.440.0-r2: Simple interface to create and store data in RRD files
 dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
 dev-perl/Rcs 1.50.0-r2: Perl bindings for Revision Control System
@@ -7757,7 +7757,7 @@ dev-perl/XML-LibXSLT 1.960.0: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.120.0: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
-dev-perl/XML-Parser 2.440.0: A Perl extension interface to James Clark's XML parser, expat
+dev-perl/XML-Parser 2.440.0 2.460.0: A perl module for parsing XML documents
 dev-perl/XML-Parser-Lite 0.721.0: Lightweight regexp-based XML parser
 dev-perl/XML-RAI 1.303.100-r1: RSS Abstraction Interface
 dev-perl/XML-RSS 1.600.0: a basic framework for creating and maintaining RSS files
@@ -7817,7 +7817,7 @@ dev-perl/gtk2-traymanager 0.50.0-r2: Perl bindings for EggTrayManager
 dev-perl/indirect 0.370.0: Lexically warn about using the indirect method call syntax
 dev-perl/libintl-perl 1.280.0 1.310.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43-r1: Parsers and format conversion utilities used by (e.g.) profphd
-dev-perl/libwww-perl 6.270.0: A collection of Perl Modules for the WWW
+dev-perl/libwww-perl 6.270.0 6.530.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r2: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.24: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
@@ -15889,6 +15889,7 @@ perl-core/Math-BigInt 1.999.806: Arbitrary size floating point math package
 perl-core/Math-Complex 1.590.0: complex numbers and associated mathematical functions
 perl-core/Memoize 1.30.0-r1: Generic Perl function result caching system
 perl-core/Module-CoreList 5.201.806.260: what modules shipped with versions of perl
+perl-core/Module-Load 0.360.0: Runtime require of both modules and files
 perl-core/Module-Loaded 0.80.0-r1: Mark modules as loaded or unloaded
 perl-core/Module-Metadata 1.0.26: Gather package and POD information from perl module files
 perl-core/Params-Check 0.380.0-r1: A generic input parsing/checking mechanism
@@ -18060,7 +18061,7 @@ virtual/perl-Math-BigRat 0.261.400-r1: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.100-r4: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.100_rc-r10: Virtual for Memoize
 virtual/perl-Module-CoreList 5.202.6.13.0_rc 5.202.6.200 5.202.101.230: Virtual for Module-CoreList
-virtual/perl-Module-Load 0.340.0-r1: Virtual for Module-Load
+virtual/perl-Module-Load 0.340.0-r1 0.360.0: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.680.0-r3 0.700.0: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r13: Virtual for Module-Loaded
 virtual/perl-Module-Metadata 1.0.36 1.0.37: Virtual for Module-Metadata
