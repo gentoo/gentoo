@@ -1,14 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop unpacker xdg-utils
+inherit desktop unpacker wrapper xdg-utils
 
 MY_PN="ShovelKnight"
 DESCRIPTION="Sweeping classic action adventure with an 8-bit retro aesthetic"
 HOMEPAGE="https://yachtclubgames.com/shovel-knight/"
 SRC_URI="${PN//-/_}_treasure_trove_en_3_3_15418.sh"
+
 LICENSE="Yacht-Club-Games-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
