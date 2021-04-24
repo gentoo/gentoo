@@ -126,7 +126,7 @@ src_configure() {
 		$(meson_use systemd)
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
-		$(meson_use tpm plugin_tpm)
+		$(meson_use tpm tpm)
 		$(meson_use uefi plugin_uefi)
 		# Although our sys-apps/flashrom package now provides
 		# libflashrom.a, meson still can't find it
