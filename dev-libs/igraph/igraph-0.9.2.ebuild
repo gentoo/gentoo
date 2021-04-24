@@ -25,7 +25,7 @@ RDEPEND="
 	virtual/lapack"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.0-cmakedirs.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.9.2-disable-broken-tests.patch )
 
 src_configure() {
 	local mycmakeargs=(
