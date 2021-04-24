@@ -2292,8 +2292,8 @@ app-emulation/vkd3d 1.0 1.1 1.1-r1 1.2 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1 2.47.2: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4 5.0.0 5.1.0 5.1.1 6.0.0 6.1.1: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 6.3-r1 6.4 6.5 6.6 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 6.0 6.3-r1 6.4 6.5 6.6 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 6.4 6.5 6.6 6.7 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 6.0 6.4 6.5 6.6 6.7 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20210206 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 0.35.0-r1: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -15764,8 +15764,8 @@ net-vpn/tor 0.4.4.8 0.4.5.7 0.4.6.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550-r2: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3-r2: Create tunnels over TCP/IP networks with shaping, encryption, and compression
-net-vpn/wireguard-modules 1.0.20210219: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
-net-vpn/wireguard-tools 1.0.20200513 1.0.20200827 1.0.20210223 1.0.20210315: Required tools for WireGuard, such as wg(8) and wg-quick(8)
+net-vpn/wireguard-modules 1.0.20210424: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-vpn/wireguard-tools 1.0.20200513 1.0.20200827 1.0.20210223 1.0.20210315 1.0.20210424: Required tools for WireGuard, such as wg(8) and wg-quick(8)
 net-wireless/aircrack-ng 1.6_p20200722 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
