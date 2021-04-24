@@ -51,7 +51,7 @@ DEPEND="
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
 	lua? ( ${LUA_DEPS} )
-	opencv? ( >=media-libs/opencv-3.2.0:= )
+	opencv? ( >=media-libs/opencv-4.5.1:= )
 	opengl? ( media-video/movit )
 	python? ( ${PYTHON_DEPS} )
 	qt5? (
@@ -88,6 +88,7 @@ DOCS=( AUTHORS NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
+	"${FILESDIR}"/${P}-fix-crash-w-ogg-album-art.patch # git master
 )
 
 pkg_setup() {
