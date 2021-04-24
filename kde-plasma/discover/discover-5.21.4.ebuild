@@ -56,6 +56,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-link.patch" ) # bug 785457
+
 src_prepare() {
 	ecm_src_prepare
 	# we don't need it with PackageKitBackend off
