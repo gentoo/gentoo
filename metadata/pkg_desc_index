@@ -853,7 +853,7 @@ app-admin/rcm 1.3.3 1.3.4: rc file (dotfile) management
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.15.2 0.16.0 0.16.1 0.17.0: Tool to manage OpenRC and systemd services that need to be restarted
 app-admin/rex 1.13.3 9999: (R)?ex, the friendly automation framework
-app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.2008.0 8.2010.0 8.2012.0 8.2012.0-r1 8.2102.0 8.2104.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 1.0.0_rc3-r1 2.0.1-r4: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20140617 20210208 99999999: Rules for Sagan log analyzer
 app-admin/salt 3000.8 3001.6 3002.5 3003: Salt is a remote execution and configuration manager
@@ -17817,7 +17817,7 @@ sys-libs/libcap-ng 0.7.11 0.8 0.8.1-r1 0.8.2-r1: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxabi 10.0.1 11.0.0 11.0.1 11.1.0 12.0.0 12.0.0.9999 13.0.0.9999: Low level support for a standard C++ library
-sys-libs/libfaketime 0.9.6-r2 0.9.7 0.9.8 0.9.9: Report faked system time to programs
+sys-libs/libfaketime 0.9.6-r3 0.9.9: Report faked system time to programs
 sys-libs/libhugetlbfs 2.22 2.23: Easy hugepage access
 sys-libs/libhx 3.24-r1 3.25: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r8: Library to query devices using IEEE1284
