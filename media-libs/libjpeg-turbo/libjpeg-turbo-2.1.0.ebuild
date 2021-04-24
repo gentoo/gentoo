@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 LICENSE="BSD IJG ZLIB"
 SLOT="0/0.2"
 if [[ "$(ver_cut 3)" -lt 90 ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 fi
 IUSE="java static-libs"
 
@@ -107,9 +107,14 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
 
+	local -a DOCS=( README.md ChangeLog.md )
+	einstalldocs
+
+	newdoc "${WORKDIR}"/debian/changelog changelog.debian
+
 	docinto html
 	dodoc -r "${S}"/doc/html/*
-	newdoc "${WORKDIR}"/debian/changelog changelog.debian
+
 	if use java; then
 		docinto html/java
 		dodoc -r "${S}"/java/doc/*
