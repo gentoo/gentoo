@@ -62,7 +62,7 @@ RDEPEND="dev-libs/boost
 	scalapack? ( sci-libs/scalapack )
 	slepc? ( sci-mathematics/slepc[mpi=] )
 	sparse? ( sci-libs/umfpack )
-	sundials? ( <sci-libs/sundials-4:= )
+	sundials? ( sci-libs/sundials:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
 	trilinos? ( sci-libs/trilinos )"
 
