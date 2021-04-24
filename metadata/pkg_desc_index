@@ -12256,7 +12256,7 @@ kde-apps/kamoso 20.12.3 21.04.0: Application to take pictures and videos from yo
 kde-apps/kanagram 20.12.3 21.04.0: Game based on anagrams of words
 kde-apps/kapman 20.12.3 21.04.0: Pac-Man clone by KDE
 kde-apps/kapptemplate 20.12.3 21.04.0: Shell script to create the necessary framework to develop KDE applications
-kde-apps/kate 20.12.3 21.04.0: Multi-document editor with network transparency, Plasma integration and more
+kde-apps/kate 20.12.3 21.04.0-r1: Multi-document editor with network transparency, Plasma integration and more
 kde-apps/katomic 20.12.3 21.04.0: KDE Atomic Entertainment Game
 kde-apps/kbackup 20.12.3 21.04.0: Program that lets you back up any directories or files
 kde-apps/kblackbox 20.12.3 21.04.0: Game of hide and seek played on a grid of boxes
@@ -12427,7 +12427,7 @@ kde-apps/poxml 20.12.3 21.04.0: KDE utility to translate DocBook XML files using
 kde-apps/print-manager 20.12.3 21.04.0: Manage print jobs and printers in Plasma
 kde-apps/rocs 20.12.3 21.04.0: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 20.12.3 21.04.0: KWallet extension for signond
-kde-apps/spectacle 20.12.3 21.04.0: Screenshot capture utility
+kde-apps/spectacle 20.12.3 21.04.0-r1: Screenshot capture utility
 kde-apps/step 20.12.3 21.04.0: Interactive physics simulator
 kde-apps/svgpart 20.12.3 21.04.0: Kpart for viewing SVGs
 kde-apps/sweeper 20.12.3 21.04.0: Privacy settings widget to clean unwanted traces on the system

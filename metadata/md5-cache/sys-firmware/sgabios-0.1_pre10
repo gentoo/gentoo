@@ -1,6 +1,6 @@
-DEFINED_PHASES=compile install prepare
+DEFINED_PHASES=compile install
 DESCRIPTION=serial graphics adapter bios option rom for x86
-EAPI=6
+EAPI=7
 HOMEPAGE=https://code.google.com/p/sgabios/
 INHERIT=toolchain-funcs
 IUSE=+binary
@@ -10,4 +10,4 @@ REQUIRED_USE=!amd64? ( !x86? ( binary ) )
 SLOT=0
 SRC_URI=mirror://gentoo/sgabios-0.1_pre10.tar.gz !binary? ( https://dev.gentoo.org/~tamiko/distfiles/sgabios-0.1_pre10.tar.gz ) binary? ( https://dev.gentoo.org/~tamiko/distfiles/sgabios-0.1_pre10-bin.tar.xz )
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=054742f7d634956fe019f2a8d08b615a
+_md5_=74309d3b16b4f0680fcbe88793bba354
