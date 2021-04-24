@@ -5,7 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit desktop eutils python-any-r1 scons-utils toolchain-funcs xdg
+inherit desktop python-any-r1 scons-utils toolchain-funcs xdg
+
 if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
