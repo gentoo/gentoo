@@ -34,10 +34,10 @@ BDEPEND=">=dev-util/cmake-3.16.5
 	x64-cygwin? ( ${ASM_DEPEND} )"
 
 DEPEND="${COMMON_DEPEND}
-	java? ( >=virtual/jdk-1.5 )"
+	java? ( >=virtual/jdk-1.8:* )"
 
 RDEPEND="${COMMON_DEPEND}
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.8:* )"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/jconfig.h )
 
