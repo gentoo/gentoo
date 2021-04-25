@@ -78,8 +78,8 @@ BDEPEND="
 	app-arch/xz-utils
 	sys-apps/texinfo
 	virtual/yacc
-	source-highlight? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
+	source-highlight? ( virtual/pkgconfig )
 	test? ( dev-util/dejagnu )
 "
 
