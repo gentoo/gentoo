@@ -347,12 +347,6 @@ app-eselect/eselect-lcdfilter
 media-libs/fontconfig-ultimate
 media-libs/fontconfig-infinality
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-28)
-# No release since 2012, depends on deprecated dev-ml/lablgtk:2, no more
-# revdeps in Gentoo ebuild repository.
-# Removal on 2021-04-07, bug #769326
-dev-ml/cairo-ocaml
-
 # Jonas Stein <jstein@gentoo.org> (2021-03-27)
 # Upstream is gone. Open bugs. Removal after 2021-05-01.
 # Bug #778800
