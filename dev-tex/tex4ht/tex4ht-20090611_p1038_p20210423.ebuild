@@ -25,12 +25,12 @@ IUSE="java"
 RDEPEND="app-text/ghostscript-gpl
 	media-gfx/imagemagick
 	dev-libs/kpathsea
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.8:* )"
 
-DEPEND="dev-libs/kpathsea"
+DEPEND="dev-libs/kpathsea
+	java? ( >=virtual/jdk-1.8:* )"
 
-BDEPEND="virtual/pkgconfig
-	java? ( >=virtual/jdk-1.5 )"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,12 +25,12 @@ IUSE="java"
 RDEPEND="app-text/ghostscript-gpl
 	media-gfx/imagemagick
 	dev-libs/kpathsea
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.8:* )"
 
-DEPEND="dev-libs/kpathsea"
+DEPEND="dev-libs/kpathsea
+	java? ( >=virtual/jdk-1.8:* )"
 
-BDEPEND="virtual/pkgconfig
-	java? ( >=virtual/jdk-1.5 )"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
