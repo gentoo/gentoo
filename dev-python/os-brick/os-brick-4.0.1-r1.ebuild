@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,3 +32,8 @@ RDEPEND="
 	>=dev-python/tenacity-6.0.0[${PYTHON_USEDEP}]
 	>=dev-python/os-win-3.0.0[${PYTHON_USEDEP}]
 "
+
+python_prepare_all() {
+	sed -i -e 's/\tetc/\t\/etc/g' setup.cfg || die
+	distutils-r1_python_prepare_all
+}
