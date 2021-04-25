@@ -57,6 +57,7 @@ src_prepare() {
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS_FLTO="" \
 		PREFIX="${EPREFIX}/usr" \
 		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
@@ -64,9 +65,17 @@ src_compile() {
 		MAN_PATH="${EPREFIX}/usr/share/man/man8"
 }
 
+src_test() {
+	emake \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)"
+}
+
 src_install() {
 	emake \
-		DESTDIR="${D}"
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
+		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
 		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}" \
