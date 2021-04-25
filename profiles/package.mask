@@ -352,14 +352,6 @@ net-p2p/xmr-stak
 # Bug #779148.
 app-editors/beaver
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-27)
-# Dead upstream. Bugs #437056, #453964, #550592, #768303
-# Removal on 2021-04-26.
-app-eselect/eselect-infinality
-app-eselect/eselect-lcdfilter
-media-libs/fontconfig-ultimate
-media-libs/fontconfig-infinality
-
 # Jonas Stein <jstein@gentoo.org> (2021-03-27)
 # Upstream is gone. Open bugs. Removal after 2021-05-01.
 # Bug #778800
