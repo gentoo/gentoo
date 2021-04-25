@@ -347,28 +347,10 @@ app-eselect/eselect-lcdfilter
 media-libs/fontconfig-ultimate
 media-libs/fontconfig-infinality
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-28)
-# No release since 2012, depends on deprecated dev-ml/lablgtk:2, no more
-# revdeps in Gentoo ebuild repository.
-# Removal on 2021-04-07, bug #769326
-dev-ml/cairo-ocaml
-
 # Jonas Stein <jstein@gentoo.org> (2021-03-27)
 # Upstream is gone. Open bugs. Removal after 2021-05-01.
 # Bug #778800
 x11-themes/nimbus
-
-# Jimi Huotari <chiitoo@gentoo.org> (2021-03-26)
-# No consumers since 2020-09-05 (dev-libs/liboobs), and no known
-# stand-alone use.
-# Removal on 2021-04-25.
-app-admin/system-tools-backends
-
-# Michał Górny <mgorny@gentoo.org> (2021-03-26)
-# Pins to a vulnerable version of dev-python/urllib3.  No maintainer
-# in Gentoo.
-# Removal on 2021-04-25.  Bug #714860.
-dev-python/elasticsearch-curator
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
 # Has unidentified race condition on very fast CPUs that causes maintainer-
@@ -392,14 +374,6 @@ sys-devel/autoconf:2.71
 # Bug #780633
 >=dev-libs/libgweather-40
 >=gnome-base/gnome-settings-daemon-40
-
-# Marek Szuba <marecki@gentoo.org> (2021-03-19)
-# Depends on bundled out-of-date Qt5 libraries, and even with those
-# installed recent upstream versions fail to run. Moreover, we have now
-# got a source variant in the tree which, while still CLI-only for now,
-# is up to date and actually works.
-# Removal in 30 days. Bug #768228.
-mail-mta/protonmail-bridge-bin
 
 # Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
 # Dead upstream. No revdeps.
