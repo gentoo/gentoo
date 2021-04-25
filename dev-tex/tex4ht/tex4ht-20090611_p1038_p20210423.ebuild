@@ -1,25 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit latex-package toolchain-funcs java-pkg-opt-2 flag-o-matic
-
-# from ftp://ftp.cstug.cz/pub/tex/local/tlpretest/archive/tex4ht.tar.xz
-TL_TEX4HT_VER="2019-03-22"
+inherit latex-package toolchain-funcs java-pkg-opt-2 flag-o-matic readme.gentoo-r1
 
 # tex4ht-20050331_p2350 -> tex4ht-1.0.2005_03_31_2350
-MY_P="${PN}-1.0.${PV:0:4}_${PV:4:2}_${PV:6:2}_${PV/*_p/}"
+MY_P="${PN}-1.0.${PV:0:4}_${PV:4:2}_${PV:6:2}_$(ver_cut 3)"
+
+# from https://mirrors.ctan.org/systems/texlive/tlnet/archive/tex4ht.tar.xz
+MY_P_TEXLIVE="${PN}-texlive-$(ver_cut 5)"
 
 DESCRIPTION="Converts (La)TeX to (X)HTML, XML and OO.org"
 HOMEPAGE="http://www.cse.ohio-state.edu/~gurari/TeX4ht/
 	http://www.cse.ohio-state.edu/~gurari/TeX4ht/bugfixes.html"
 SRC_URI="http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/${MY_P}.tar.gz
-	mirror://gentoo/${PN}-texlive-${TL_TEX4HT_VER}.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${MY_P_TEXLIVE}.tar.xz"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="java"
 
 RDEPEND="app-text/ghostscript-gpl
@@ -36,7 +36,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	cp -a "${WORKDIR}/texmf-dist/"* texmf/ || die
-	eapply_user
+	default
 	cd "${S}/texmf/tex4ht/base/unix" || die
 	sed -i \
 		-e "s#~/tex4ht.dir#${EPREFIX}/usr/share#" \
@@ -56,7 +56,7 @@ src_compile() {
 
 	cd "${S}/src" || die
 	einfo "Compiling postprocessor sources..."
-	for f in tex4ht t4ht htcmd ; do
+	for f in tex4ht t4ht; do
 		$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o $f $f.c \
 			-DENVFILE="\"${EPREFIX}${TEXMF}/tex4ht/base/tex4ht.env\"" \
 			-DHAVE_DIRENT_H -DKPATHSEA -lkpathsea \
@@ -74,7 +74,7 @@ src_compile() {
 
 src_install() {
 	# install the binaries
-	dobin "${S}/src/tex4ht" "${S}/src/t4ht" "${S}/src/htcmd"
+	dobin "${S}/src/tex4ht" "${S}/src/t4ht"
 	# install the scripts
 	if ! use java; then
 		rm -f "${S}"/bin/unix/oo*
@@ -110,12 +110,16 @@ src_install() {
 	insinto ${TEXMF}/tex/generic/${PN}
 	insopts -m755
 	doins "${S}"/bin/ht/unix/*
+
+	local DOC_CONTENTS="In order to avoid collisions with multiple packages,
+		we are not installing the scripts in /usr/bin any more.
+		If you want to use, say, htlatex, you can use 'mk4ht htlatex file'."
+	use java || DOC_CONTENTS+="\n\nODF converters (oolatex & friends)
+		require the java use flag."
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	use java ||	elog 'ODF converters (oolatex & friends) require the java use flag'
 	latex-package_pkg_postinst
-	elog "In order to avoid collisions with multiple packages"
-	elog "We are not installing the scripts in /usr/bin anymore"
-	elog "If you want to use, say, htlatex, you can use 'mk4ht htlatex file'"
+	readme.gentoo_print_elog
 }
