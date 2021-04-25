@@ -5,10 +5,6 @@
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>cjk@gentoo.org</email>
-		<name>Cjk</name>
-	</maintainer>
 	<use>
 		<flag name="aspell">Add support for aspell spellchecking</flag>
 		<flag name="enchant">Add support for enchant spellchecking wrapper
