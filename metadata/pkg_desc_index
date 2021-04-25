@@ -8840,7 +8840,7 @@ dev-python/pika 1.1.0: Pure-Python implementation of the AMQP
 dev-python/pikepdf 2.10.0 2.11.0 2.11.1 2.11.2: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 8.1.2 8.2.0: Python Imaging Library (fork)
-dev-python/pip 21.0.1: Installs python packages -- replacement for easy_install
+dev-python/pip 21.0.1 21.1: Installs python packages -- replacement for easy_install
 dev-python/pipenv 2020.11.4 2020.11.15: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pivy 0.6.5 0.6.6: Coin3D bindings for Python
@@ -9555,7 +9555,7 @@ dev-python/zope-deprecation 4.4.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.5.0-r1: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-exceptions 4.4: General purpose exceptions for Zope packages
 dev-python/zope-i18nmessageid 5.0.1: Zope support for i18nmessageid (tagging source of i18n strings)
-dev-python/zope-interface 5.2.0 5.3.0 5.4.0: Interfaces for Python
+dev-python/zope-interface 5.3.0 5.4.0: Interfaces for Python
 dev-python/zope-schema 6.0.0 6.0.1 6.1.0: Zope schema Architecture
 dev-python/zope-testing 4.9: Zope testing helpers
 dev-python/zope-testrunner 5.2 5.3.0: Zope testrunner script
