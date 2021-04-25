@@ -14606,7 +14606,7 @@ net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of availabl
 net-analyzer/pbnj 2.04-r1: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pktstat 1.8.5-r1: A network monitoring tool with bandwidth tracking
-net-analyzer/pmacct 1.7.6 999999: A network tool to gather IP traffic information
+net-analyzer/pmacct 1.7.6 1.7.6-r1 999999: A network tool to gather IP traffic information
 net-analyzer/pnp4nagios 0.6.26-r9: A performance data analyzer for nagios
 net-analyzer/poink 2.03: TCP/IP-based ping implementation
 net-analyzer/portmon 2.0-r1: Portmon is a network service monitoring daemon
