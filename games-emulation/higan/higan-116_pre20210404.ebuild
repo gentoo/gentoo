@@ -41,6 +41,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	# insane build system, reinvents every built-in rule
+	"${FILESDIR}"/${P}-makefile.patch
+)
+
 src_compile() {
 	local makeopts=(
 		platform=linux
@@ -80,7 +85,7 @@ src_install() {
 	# Install higan
 	dobin higan-ui/out/higan
 
-	insinto "/usr/share/${P}"
+	insinto /usr/share/${P}
 	doins -r higan/System
 
 	domenu higan-ui/resource/higan.desktop
@@ -94,8 +99,8 @@ src_install() {
 	domenu icarus/resource/icarus.desktop
 	doicon -s scalable icarus/resource/icarus.svg
 
-	insinto "/usr/share/${P}/Database"
+	insinto /usr/share/${P}/Database
 	doins -r icarus/Database
-	insinto "/usr/share/${P}/Firmware"
+	insinto /usr/share/${P}/Firmware
 	doins -r icarus/Firmware
 }
