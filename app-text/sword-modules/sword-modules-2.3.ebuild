@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -85,18 +85,23 @@ RDEPEND="
 	l10n_de? (
 		app-dicts/sword-GerAlbrecht
 		app-dicts/sword-GerAugustinus
+		app-dicts/sword-GerBoLut
 		app-dicts/sword-GerElb1871
 		app-dicts/sword-GerElb1905
 		app-dicts/sword-GerGruenewald
+		app-dicts/sword-GerKingComm
 		app-dicts/sword-GerLeoNA28
 		app-dicts/sword-GerLeoRP18
 		app-dicts/sword-GerLut1545
 		app-dicts/sword-GerLutherpredigten
+		app-dicts/sword-GerMenge
 		app-dicts/sword-GerNeUe
+		app-dicts/sword-GerOffBiSt
 		app-dicts/sword-GerReinhardt
 		app-dicts/sword-GerSch
 		app-dicts/sword-GerTafel
 		app-dicts/sword-GerTextbibel
+		app-dicts/sword-GerZurcher
 		app-dicts/sword-MAK
 		app-dicts/sword-Rieger
 	)
@@ -240,6 +245,7 @@ RDEPEND="
 		app-dicts/sword-Esperanto
 	)
 	l10n_es? (
+		app-dicts/sword-SpaPlatense
 		app-dicts/sword-SpaRV
 		app-dicts/sword-SpaRV1865
 		app-dicts/sword-SpaRV1909
@@ -344,6 +350,8 @@ RDEPEND="
 		app-dicts/sword-Haitian
 	)
 	l10n_hu? (
+		app-dicts/sword-HunIMIT
+		app-dicts/sword-HunKNB
 		app-dicts/sword-HunKar
 		app-dicts/sword-HunUj
 	)
@@ -428,7 +436,9 @@ RDEPEND="
 	)
 	l10n_nl? (
 		app-dicts/sword-DutKant
+		app-dicts/sword-DutKingComm
 		app-dicts/sword-DutSVV
+		app-dicts/sword-DutSVVA
 		app-dicts/sword-NlCanisius1939
 	)
 	l10n_nn? (
@@ -479,7 +489,6 @@ RDEPEND="
 	)
 	l10n_sl? (
 		app-dicts/sword-SloKJV
-		app-dicts/sword-SloKJVA
 		app-dicts/sword-SloOjacano
 		app-dicts/sword-SloStritar
 	)
@@ -558,6 +567,7 @@ RDEPEND="
 	l10n_zh? (
 		app-dicts/sword-ChiNCVs
 		app-dicts/sword-ChiNCVt
+		app-dicts/sword-ChiSB
 		app-dicts/sword-ChiUn
 		app-dicts/sword-ChiUnL
 		app-dicts/sword-ChiUns
