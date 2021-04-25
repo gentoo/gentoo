@@ -284,6 +284,10 @@ multilib_src_configure() {
 	echo "Requires.private: ${priv[*]}" >> libcurl.pc
 }
 
+multilib_src_test() {
+	multilib_is_native_abi && default_src_test
+}
+
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -type f -name '*.la' -delete || die
