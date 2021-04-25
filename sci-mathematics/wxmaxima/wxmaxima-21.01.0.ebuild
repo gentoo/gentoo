@@ -67,6 +67,7 @@ src_test() {
 		ImgCell
 	)
 
+	local test
 	for test in "${tests[@]}" ; do
 		./test_${test} || die "Unit test ${test} failed!"
 	done
