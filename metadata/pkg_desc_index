@@ -11336,7 +11336,7 @@ games-arcade/asteroid 1.2.1: Modern version of the arcade classic that uses Open
 games-arcade/balloonchase 0.9.6-r1: Fly a hot air balloon and try to blow the other player out of the screen
 games-arcade/barbarian-bin 1.01-r2: Save Princess Mariana through one-on-one battles with demonic barbarians
 games-arcade/batrachians 0.1.6-r1: A fly-eating frog video game
-games-arcade/berusky 1.7.1-r1: Free logic game based on an ancient puzzle named Sokoban
+games-arcade/berusky 1.7.1-r2: Free logic game based on an ancient puzzle named Sokoban
 games-arcade/betna 0.9.7-r1: Defend your volcano from the attacking ants by firing rocks/bullets at them
 games-arcade/blobby 1.0-r1: Beach ball game with blobs of goo
 games-arcade/blobwars 2.00 2.00-r1: Platform game about a blob and his quest to rescue MIAs from an alien invader
@@ -18553,7 +18553,7 @@ x11-libs/spread-sheet-widget 0.3-r1 0.6: GNU Spread Sheet Widget
 x11-libs/startup-notification 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.22: Touchscreen Access Library
 x11-libs/vte 0.28.2-r209 0.62.3: Library providing a virtual terminal emulator widget
-x11-libs/wxGTK 3.0.4-r2 3.0.4-r302 3.0.4-r303: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
+x11-libs/wxGTK 3.0.4-r2 3.0.4-r302 3.0.4-r303 3.0.5.1: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xapps 1.8.9 2.0.6: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0-r2: X C-language Bindings sample implementations

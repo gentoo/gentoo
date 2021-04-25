@@ -3,10 +3,11 @@ DEPEND=dev-db/sqlite:3 >=net-libs/mbedtls-2.1[havege] net-libs/zeromq
 DESCRIPTION=A language agnostic web server focused on web applications
 EAPI=7
 HOMEPAGE=http://mongrel2.org
+INHERIT=toolchain-funcs
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-db/sqlite:3 >=net-libs/mbedtls-2.1[havege] net-libs/zeromq
 SLOT=0
 SRC_URI=https://github.com/mongrel2/mongrel2/archive/v1.11.0.tar.gz -> mongrel2-1.11.0.tar.gz
-_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=90a9d038c3218876e5108cdbefe935de
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=dfbd4c530d1ec2334ade458a9b548ae5
