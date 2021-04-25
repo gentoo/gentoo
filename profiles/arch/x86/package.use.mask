@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-25)
+# Depends on either unkeyworded dev-java/openjdk:11
+# or unavailable >=dev-java/icedtea-4, bug #785640
+>=app-office/libreoffice-7 base java
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
