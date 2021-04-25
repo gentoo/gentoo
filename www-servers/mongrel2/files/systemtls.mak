@@ -43,12 +43,12 @@ builddirs:
 	@mkdir -p bin
 
 bin/mongrel2: build/libm2.a src/mongrel2.o
-	$(CC) $(CFLAGS) $(LDFLAGS) src/mongrel2.o -o $@ $< $(LIBS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) src/mongrel2.o -o $@ $< $(LIBS)
 
 build/libm2.a: CFLAGS += -fPIC
 build/libm2.a: ${LIB_OBJ}
-	ar rcs $@ ${LIB_OBJ}
-	ranlib $@
+	$(AR) rcs $@ ${LIB_OBJ}
+	$(RANLIB) $@
 
 clean:
 	rm -rf build bin lib ${OBJECTS} ${TESTS} tests/config.sqlite
@@ -88,7 +88,7 @@ tests/config.sqlite: src/config/config.sql src/config/example.sql src/config/mim
 	sqlite3 $@ < src/config/mimetypes.sql
 
 $(TESTS): %: %.c build/libm2.a
-	$(CC) $(CFLAGS) -o $@ $< build/libm2.a $(LIBS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ $< build/libm2.a $(LIBS)
 
 src/state.c: src/state.rl src/state_machine.rl
 src/http11/http11_parser.c: src/http11/http11_parser.rl
@@ -133,4 +133,4 @@ ragel:
 	ragel -G2 src/http11/httpclient_parser.rl
 
 %.o: %.S
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -c $< -o $@

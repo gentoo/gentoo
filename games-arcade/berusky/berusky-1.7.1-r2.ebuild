@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit desktop gnome2
 
 DATAFILE="${PN}-data-1.7"
@@ -14,20 +15,36 @@ SRC_URI="https://www.anakreon.cz/download/${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl[X,video]
 	media-libs/sdl-image[png]
 	x11-libs/gtk+:2
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.1-r1-gentoo.patch
+)
+
+src_prepare() {
+	mv ../${DATAFILE}/{berusky.ini,GameData,Graphics,Levels} . || die
+
+	default
+}
 
 src_install() {
 	gnome2_src_install
-	rm -rf "${ED}"/usr/doc
+
+	rm -rf "${ED}"/usr/doc || die
+
+	insinto /usr/share/${PN}
+	doins -r GameData Graphics Levels
+
+	insinto /var/lib/${PN}
+	doins berusky.ini
+
 	doicon -s 32 "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN}
 }
