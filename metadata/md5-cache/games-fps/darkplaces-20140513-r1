@@ -12,4 +12,4 @@ RDEPEND=net-misc/curl cdinstall? ( games-fps/quake1-data ) demo? ( games-fps/qua
 SLOT=0
 SRC_URI=http://icculus.org/twilight/darkplaces/files/darkplacesengine20140513.zip lights? ( http://www.fuhquake.net/files/extras/fuhquake-lits.rar http://www.kgbsyndicate.com/romi/id1.pk3 )
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88	unpacker	517f16af48ee3ab88180dd58b5143213
-_md5_=b2db07dbe6df427cb870dd000a2d1986
+_md5_=a5b4ce8b4d538aee47df303cad75c0a4

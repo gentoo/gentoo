@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
 INHERIT=fortran-2 toolchain-funcs flag-o-matic
 IUSE=debug examples fortran int64 openmp mpi
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=sci-libs/superlu:= virtual/blas virtual/lapack mpi? ( virtual/mpi ) fortran? ( virtual/fortran )
 SLOT=0/2.20.0
 SRC_URI=https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz -> hypre-2.20.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	fortran-2	b4796813ccda91c9c0d3463fc90aa969	edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	8cdd85e169b835d518bc2fd59f780d8e	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	2d5b3f4b315094768576b6799e4f926e	flag-o-matic	c0964e43ba712cb933da5f65b958fa88
-_md5_=96454ac664689e3b5dd5a3789717742d
+_md5_=911c5704684a376f811600860c9659d1
