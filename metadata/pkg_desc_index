@@ -1521,6 +1521,7 @@ app-dicts/sword-Chamorro 2.7.2: Chamorro: Y Santa Biblia (1908)
 app-dicts/sword-Che1860 1.2: Cherokee New Testament (1860)
 app-dicts/sword-ChiNCVs 1.0: New Chinese Version of the Bible, simplified script
 app-dicts/sword-ChiNCVt 1.0: New Chinese Version of the Bible, traditional script
+app-dicts/sword-ChiSB 1.0: The Studium Biblicum Version in traditional Chinese
 app-dicts/sword-ChiUn 2.6: Chinese Union Version of the Bible, traditional script
 app-dicts/sword-ChiUnL 1.0: Chinese Union Version of the Bible, classical (literary) script
 app-dicts/sword-ChiUns 2.5.2: Chinese Union Version of the Bible, simplified script
@@ -1550,7 +1551,9 @@ app-dicts/sword-DarkNightOfTheSoul 1.0: 'The Dark Night of the Soul' by St. John
 app-dicts/sword-Diaglott 1.1: The Emphatic Diaglott
 app-dicts/sword-Dodson 1.0: Dodson Greek-English Lexicon
 app-dicts/sword-DutKant 1.1: Kanttekeningen Statenvertaling
+app-dicts/sword-DutKingComm 1.0: Kingcomments-NL, Commentaar op de hele Bijbel.
 app-dicts/sword-DutSVV 2.1: Dutch Statenvertaling Bijbel, including footnotes
+app-dicts/sword-DutSVVA 1.0: Dutch Statenvertaling Bijbel including deuterocanonical books
 app-dicts/sword-EMBReality 0.5: The Reality of Prayer by E.M. Bounds
 app-dicts/sword-EMTV 2.2: English Majority Text Version, 2012 Edition with Greek Explanatory Notes
 app-dicts/sword-Easton 2.0: Easton's Bible Dictionary
@@ -1595,20 +1598,25 @@ app-dicts/sword-Geneva 1.1: Geneva Bible Translation Notes
 app-dicts/sword-Geneva1599 2.0: Geneva Bible (1599)
 app-dicts/sword-GerAlbrecht 1.5: German Albrecht Neues Testament und Psalmen
 app-dicts/sword-GerAugustinus 1.5: Augustines Confessions (German)
+app-dicts/sword-GerBoLut 3.0: Deutsch Bolsingerߴs Luther 1545 Bibel (moderne Rechtschreibung)
 app-dicts/sword-GerElb1871 1.2: German Elberfelder (1871)
 app-dicts/sword-GerElb1905 1.5: German Darby Unrevidierte Elberfelder (1905)
 app-dicts/sword-GerGruenewald 1.5: 1924 Grünewaldbibel
 app-dicts/sword-GerHfa2002 1.1: Hoffnung fuer alle - Die Bibel
 app-dicts/sword-GerHfaLex2002 1.0.1: Hoffnung fuer alle - Worterklaerungen
+app-dicts/sword-GerKingComm 1.0: Kingcomments (German), Kommentar zur ganzen Bibel.
 app-dicts/sword-GerLeoNA28 1.2.1: Leonberger Bibel, NT (NA28)
 app-dicts/sword-GerLeoRP18 1.2: Leonberger Bibel, NT (RP19)
 app-dicts/sword-GerLut1545 2.0.1: German Luther Übersetzung von 1545 (moderne Rechtschreibung)
 app-dicts/sword-GerLutherpredigten 1.7: Eine Sammlung von Lutherpredigten
+app-dicts/sword-GerMenge 1.0: Menge-Bibel (1939)
 app-dicts/sword-GerNeUe 2.7: Neue evangelistische Übersetzung der Bibel
+app-dicts/sword-GerOffBiSt 1.0: Offene Bibel - Studienfassung
 app-dicts/sword-GerReinhardt 1.6: German Reinhardt Evangelien
 app-dicts/sword-GerSch 1.1.1: German Schlachter Bibel (1951)
 app-dicts/sword-GerTafel 1.1: German Tafelbibel (1911)
 app-dicts/sword-GerTextbibel 1.1: German Textbibel AT (1906)
+app-dicts/sword-GerZurcher 1.0: Deutsche Zürcher Bibel von 1931.
 app-dicts/sword-Godbey 1.0: 1902 William Baxter Godbey NT
 app-dicts/sword-GodsWord 1.3.1: God'S Word to the Nations
 app-dicts/sword-GreVamvas 1.0.2: Neophytos Vamvas's translation of the Holy Bible into modern Greek (1850)
@@ -1620,6 +1628,8 @@ app-dicts/sword-HebrewGreek 1.1: Hebrew to Greek Dictionary of Septuagint Words
 app-dicts/sword-Heretics 1.1: Heretics by Gilbert K. Chesterton (1874-1936)
 app-dicts/sword-HinERV 1.1: Holy Bible: Easy-to-Read Version (Hindi ERV)
 app-dicts/sword-Hitchcock 1.3: Hitchcock's Bible Names
+app-dicts/sword-HunIMIT 1.0: The Bible of the Jewish-Hungarian Literature Society (Jewish)
+app-dicts/sword-HunKNB 1.0: Káldi-Neovulgáta (Catholic) 2013
 app-dicts/sword-HunKar 2.0: The Karoli Bible revised version 1908
 app-dicts/sword-HunUj 1.8: The New Translation Bible of the Hungarian Bible Society
 app-dicts/sword-ISBE 2.2: International Standard Bible Encyclopedia
@@ -1765,12 +1775,12 @@ app-dicts/sword-ScotsGaelic 1.2: Scots Gaelic Gospel of Mark
 app-dicts/sword-Sentiment 1.0: Sentiment Analysis of the Bible
 app-dicts/sword-Shona 2.1: Shona Bible
 app-dicts/sword-SloKJV 12.0: Slovenian translation of Holy Bible King James Version (1769)
-app-dicts/sword-SloKJVA 0.3.41: Sveto pismo Kralja Jakoba (1769)
 app-dicts/sword-SloOjacano 1.0: Ojačano Sveto pismo (Ps + Gal)
 app-dicts/sword-SloStritar 1.1: Novi testament in Psalmi Davidovi Josipa Stritarja (1882)
 app-dicts/sword-Smith 1.3: Smith's Bible Dictionary
 app-dicts/sword-SomKQA 2.0: Kitaabka Quduuska Ah (Somali Bible)
 app-dicts/sword-Sorani 2.0.1: Bible in Sorani Kurdish language
+app-dicts/sword-SpaPlatense 1.0: The Platense Bible (Straubinger)
 app-dicts/sword-SpaRV 1.6: Spanish Biblia Reina-Valera (1909)
 app-dicts/sword-SpaRV1865 1.1: Spanish Reina-Valera Bible (1865) with updated orthography
 app-dicts/sword-SpaRV1909 1.0.1: Spanish Reina-Valera 1909 with Strong's numbers
@@ -3235,7 +3245,7 @@ app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r4 4.0.0_pre20170304-r1: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.9.0-r1: Library for Bible reading software
-app-text/sword-modules 2.2: All the unlocked modules for app-text/sword, grouped by language
+app-text/sword-modules 2.3: All the unlocked modules for app-text/sword, grouped by language
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect

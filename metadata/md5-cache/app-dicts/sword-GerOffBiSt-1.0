@@ -1,0 +1,13 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Offene Bibel - Studienfassung
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=GerOffBiSt
+INHERIT=sword-module
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=CC-BY-SA-4.0
+RDEPEND=>=app-text/sword-1.5.9
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/GerOffBiSt.zip -> GerOffBiSt-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=10f262d0e8f2ee4bf2d48cbf96f53dda

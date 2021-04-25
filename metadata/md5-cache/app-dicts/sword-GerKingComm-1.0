@@ -1,0 +1,13 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install
+DESCRIPTION=Kingcomments (German), Kommentar zur ganzen Bibel.
+EAPI=7
+HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=GerKingComm
+INHERIT=sword-module
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=free-noncomm
+RDEPEND=>=app-text/sword-1.5.9
+SLOT=0
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/GerKingComm.zip -> GerKingComm-1.0.zip
+_eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
+_md5_=2a1f0fe81f10f1a66fec2f7793fd3bba
