@@ -5,11 +5,11 @@ DESCRIPTION=RabbitMQ is a high-performance AMQP-compliant message broker written
 EAPI=7
 HOMEPAGE=https://www.rabbitmq.com/
 INHERIT=python-any-r1 systemd user
-KEYWORDS=~amd64 ~arm64 ~x86
+KEYWORDS=amd64 ~arm64 x86
 LICENSE=GPL-2 MPL-2.0
 RDEPEND=>=dev-lang/erlang-22[ssl]
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.14/rabbitmq-server-3.8.14.tar.xz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
-_md5_=8761b4ee03c78d0ef1a04be83d8b5b9a
+_md5_=cc37aefa4435a94562c187ec268fa814
