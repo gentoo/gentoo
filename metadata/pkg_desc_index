@@ -8100,7 +8100,7 @@ dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.7.1-r1: SOCKS client module
 dev-python/PyUtilib 5.7.2: A collection of Python utilities
 dev-python/QtPy 1.9.0-r2 1.9.0-r3: Abstraction layer on top of PyQt5 and PySide2 and additional custom QWidgets
-dev-python/Rx 3.1.0: Reactive Extensions for Python
+dev-python/Rx 3.1.0 3.2.0: Reactive Extensions for Python
 dev-python/SaltTesting 2018.9.21: Required testing tools needed in the several Salt Stack projects
 dev-python/WSME 0.10.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 2.14: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
@@ -8113,7 +8113,7 @@ dev-python/aiohttp 3.7.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.7.0-r1: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.6.0: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1 0.20.2 0.21.0 0.21.1: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.18.5 0.19 0.19.1 0.20.1 0.20.2 0.21.0 0.21.1 0.22.0: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.2 1.2.2 1.2.4 1.3.2 1.4.0 1.4.1 1.4.2: asyncio based SMTP server
 dev-python/alabaster 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23-r1: alabaster sub-theme used on git-pull docs
@@ -8135,13 +8135,13 @@ dev-python/argcomplete 1.12.2-r1 1.12.3: Bash tab completion for argparse
 dev-python/argh 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2-cffi 20.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/argparse-manpage 1.4 1.5: Automatically build man-pages for your Python project
-dev-python/arpeggio 1.10.0: Parser interpreter based on PEG grammars
+dev-python/arpeggio 1.10.0 1.10.2: Parser interpreter based on PEG grammars
 dev-python/arrow 1.0.3: Better dates and times for Python
 dev-python/asgiref 3.3.1 3.3.2 3.3.4: ASGI utilities (successor to WSGI)
 dev-python/asn1crypto 1.4.0: Python ASN.1 library with a focus on performance and a pythonic API
 dev-python/asteval 0.9.21 0.9.22 0.9.23: Evaluator of Python expression using ast module
 dev-python/astor 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 2.5 2.5.1 2.5.2 2.5.3 2.5.5: Abstract Syntax Tree for logilab packages
+dev-python/astroid 2.5 2.5.1 2.5.2 2.5.3 2.5.5 2.5.6: Abstract Syntax Tree for logilab packages
 dev-python/asttokens 2.0.4 2.0.5: Annotate Python AST trees with source text and token information
 dev-python/astunparse 1.6.3: Astun parser for python
 dev-python/async-lru 1.0.2_p20201029: Simple lru_cache for asyncio
@@ -8298,7 +8298,7 @@ dev-python/dbutils 1.3 2.0 2.0.1: Database connections for multi-threaded enviro
 dev-python/ddt 1.4.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.4.2-r1 5.0.0 5.0.3 5.0.5 5.0.6 5.0.7: Simplifies the usage of decorators for the average programmer
-dev-python/deepmerge 0.1.1_p1 0.2.1: Tools to handle merging of nested data structures in python
+dev-python/deepmerge 0.1.1_p1 0.2.1 0.3.0: Tools to handle merging of nested data structures in python
 dev-python/defcon 0.8.1: A set of UFO based objects for use in font editing applications
 dev-python/defusedxml 0.7.1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/denonavr 0.9.9 0.9.10 0.10.1 0.10.3 0.10.4 0.10.5: Automation Library for Denon AVR receivers
@@ -8980,7 +8980,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.7.1 2.7.2-r1 2.7.4 2.8.0: Python code static checker
+dev-python/pylint 2.7.1 2.7.2-r1 2.7.4 2.8.0 2.8.1: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6 0.4.6-r1: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.2 0.3.2-r1: Spyder extensions for the python language server
@@ -9190,7 +9190,7 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2021.2 2021.2.1 2021.2.3 2021.2.5 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.2 2021.2.1 2021.2.3 2021.2.5 2021.2.6 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
@@ -15579,7 +15579,7 @@ net-misc/x2goclient 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.1039_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.1432 0.4.1500 0.4.1520: Utility to download media contents from the web
-net-misc/youtube-dl 2021.04.07 2021.04.17 9999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2021.04.07 2021.04.17 2021.04.26 9999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.7.4-r2 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.6.3 1.6.4: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
