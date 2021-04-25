@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib java-pkg-opt-2 libtool toolchain-funcs
+inherit cmake-multilib java-pkg-opt-2
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"
@@ -85,7 +85,7 @@ multilib_src_configure() {
 	)
 
 	# bug #420239, bug #723800
-	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DWITH_SIMD=OFF ) #420239
+	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DWITH_SIMD=OFF )
 
 	# mostly for Prefix, ensure that we use our yasm if installed and
 	# not pick up host-provided nasm
