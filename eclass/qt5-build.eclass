@@ -70,13 +70,6 @@ case ${PV} in
 		QT5_BUILD_TYPE="live"
 		EGIT_BRANCH="kde/5.15"
 		;;
-	*_alpha*|*_beta*|*_rc*)
-		# development release
-		QT5_BUILD_TYPE="release"
-		MY_P=${QT5_MODULE}-everywhere-src-${PV/_/-}
-		SRC_URI="https://download.qt.io/development_releases/qt/${PV%.*}/${PV/_/-}/submodules/${MY_P}.tar.xz"
-		S=${WORKDIR}/${MY_P}
-		;;
 	*)
 		# official stable release
 		QT5_BUILD_TYPE="release"
