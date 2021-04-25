@@ -57,6 +57,7 @@ src_prepare() {
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		CFLAGS_FLTO="" \
 		PREFIX="${EPREFIX}/usr" \
 		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
@@ -66,7 +67,7 @@ src_compile() {
 
 src_install() {
 	emake \
-		DESTDIR="${D}"
+		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
 		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}" \
