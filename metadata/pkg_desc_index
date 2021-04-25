@@ -17231,7 +17231,7 @@ sys-apps/s6-portable-utils 2.2.1.1 2.2.1.2 2.2.1.3 2.2.2.1 2.2.3.0: Set of tiny 
 sys-apps/s6-rc 0.3.0.0 0.4.0.0 0.4.0.1 0.4.1.0 0.5.0.0 0.5.1.1 0.5.2.0: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.20 2.21 2.22 2.23: sandbox'd LD_PRELOAD hack
-sys-apps/sdparm 1.10-r1 1.11-r1 1.12: Utility to output and modify parameters on a SCSI device, like hdparm
+sys-apps/sdparm 1.11-r1 1.12: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 3.1 3.2 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.7 4.8: Super-useful stream editor
 sys-apps/selinux-python 3.1-r2 3.2 9999: SELinux core utilities
