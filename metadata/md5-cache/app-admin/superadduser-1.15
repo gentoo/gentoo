@@ -1,9 +1,9 @@
 DEFINED_PHASES=install
 DESCRIPTION=Interactive adduser script from Slackware
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.interlude.org.uk/unix/slackware/
 KEYWORDS=~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86
 LICENSE=BSD
 RDEPEND=sys-apps/shadow
 SLOT=0
-_md5_=58605ce9ea3ed9e447d1034892bee37c
+_md5_=2aeeb8478ebb962a0d2ed0e1df935b3e

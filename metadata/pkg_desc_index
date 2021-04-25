@@ -810,7 +810,7 @@ app-admin/makepasswd 1.10: Random password generator
 app-admin/mcelog 175: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
-app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
+app-admin/metalog 20200113-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mongo-tools 4.2.11 4.2.12 100.2.0 100.2.1 100.3.0: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.27.1 5.27.2 5.28.0: Monitoring and managing daemons or similar programs running on a Unix system
@@ -867,7 +867,7 @@ app-admin/stow 2.3.1: GNU Stow is a symlink farm manager
 app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
 app-admin/sudo 1.9.5_p2-r1 1.9.6_p1-r1 9999: Allows users or groups to run commands as other users
-app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
+app-admin/superadduser 1.15: Interactive adduser script from Slackware
 app-admin/supervisor 4.2.0 4.2.1 4.2.2: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
@@ -980,7 +980,7 @@ app-arch/unadf 0.7.12-r1: Extract files from Amiga adf disk images
 app-arch/unar 1.10.7: Unpacker for various archiving formats, e.g. rar v3
 app-arch/unmakeself 1.1: Makeself archive extractor
 app-arch/unp 2.0_pre7_p1-r1 2.0_pre8 2.0_pre9: Script for unpacking various file formats
-app-arch/unrar 6.0.3 6.0.4 6.0.5: Uncompress rar files
+app-arch/unrar 6.0.4 6.0.5: Uncompress rar files
 app-arch/unrpa 2.3.0: Ren'Py's RPA data file extractor
 app-arch/unshield 1.4.3: InstallShield CAB file extractor
 app-arch/unzip 6.0_p25-r1 6.0_p26: unzipper for pkzip-compressed files
@@ -15086,7 +15086,7 @@ net-libs/libsrtp 1.6.0-r1 2.2.0 2.3.0-r1: Open-source implementation of the Secu
 net-libs/libssh 0.9.5 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.9.0_p20200614-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.23 9999: Simple RFC-compliant TELNET implementation as a C library
-net-libs/libtirpc 1.2.6 1.3.1: Transport Independent RPC library (SunRPC replacement)
+net-libs/libtirpc 1.3.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.2.6 1.2.9 1.2.10 1.2.11 1.2.12: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.15_p1 9999: A library and tools for trace processing
