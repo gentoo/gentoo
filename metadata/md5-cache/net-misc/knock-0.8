@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=server? ( net-libs/libpcap )
+DESCRIPTION=Simple port-knocking daemon
+EAPI=7
+HOMEPAGE=https://www.zeroflux.org/projects/knock
+IUSE=+server
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=server? ( net-libs/libpcap )
+SLOT=0
+SRC_URI=https://www.zeroflux.org/proj/knock/files/knock-0.8.tar.gz
+_md5_=4410849c0538c8967388adc37cffa141

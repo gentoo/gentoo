@@ -2581,7 +2581,7 @@ app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
 app-misc/cfiles 1.5 1.8: A ncurses file manager written in C with vim like keybindings
 app-misc/chkcrontab 1.7 1.7-r1: A tool to detect crontab errors
 app-misc/ckb 0.4.3-r2 0.4.4 0.4.4-r1: Corsair K65/K70/K95 Driver
-app-misc/ckermit 8.0.211-r4 9.0.302: combined serial and network communication software package
+app-misc/ckermit 9.0.302: combined serial and network communication software package
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 2.0-r2: An ncurses based app to show a scrolling screen from the Matrix
 app-misc/color 1.2-r2: Easily add ANSI colouring to shell scripts
@@ -5683,7 +5683,7 @@ dev-libs/libnfc 1.7.2 1.8.0: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4-r1 1.1.9999 3.5.0 99999999: Libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.2.2-r1: C library for framebuffer abstraction
 dev-libs/libnsutils 0.1.0-r1: C library for base64 and time
-dev-libs/libofx 0.10.1-r1: Library to support the Open Financial eXchange XML format
+dev-libs/libofx 0.10.1-r1 0.10.2: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r3: Library of simple functions that are optimized for various CPUs
 dev-libs/liborcus 0.15.4 0.16.1 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.16: Library for handling OpenType fonts (OTF)
@@ -6097,7 +6097,7 @@ dev-ml/opam-repository 2.0.8: opam repository libraries
 dev-ml/opam-solver 2.0.8: opam solver
 dev-ml/opam-state 2.0.8: opam state libraries
 dev-ml/ounit2 2.2.3 2.2.4: Unit testing framework for OCaml
-dev-ml/parmap 1.2: Library to exploit multicore architectures for OCaml programs
+dev-ml/parmap 1.2 1.2.1: Library to exploit multicore architectures for OCaml programs
 dev-ml/parsexp 0.14.0: S-expression parsing library
 dev-ml/patience_diff 0.14.0: Tool and library implementing patience diff
 dev-ml/pcre-ocaml 7.4.6-r1: Perl Compatibility Regular Expressions for O'Caml
@@ -10051,7 +10051,7 @@ dev-ruby/best_in_place 3.1.1: In-place editor helper for Rails 3
 dev-ruby/bindata 2.4.6 2.4.7 2.4.8: Parsing Binary Data in Ruby
 dev-ruby/bindex 0.8.1: Bindings for your Ruby exceptions
 dev-ruby/binding_of_caller 0.8.0 1.0.0: Retrieve the binding of a method's caller
-dev-ruby/bit-struct 0.16: Library for packed binary data stored in ruby Strings
+dev-ruby/bit-struct 0.16 0.17: Library for packed binary data stored in ruby Strings
 dev-ruby/blankslate 3.1.3 3.1.3-r1: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/blinkstick 1.0.1_p20150901: ruby interface for blinkstick via libusb
 dev-ruby/bogus 0.1.6: Ensuring that the things you stub or mock actually exist
@@ -10398,7 +10398,7 @@ dev-ruby/rb-readline 0.5.5: Ruby implementation of the GNU readline C library
 dev-ruby/rbnacl 4.0.2-r1 7.1.1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rbpdf 1.20.1-r2: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
-dev-ruby/rbs 1.0.0 1.0.4 1.0.6 1.1.0 1.1.1: The language for type signatures for Ruby and standard library definitions
+dev-ruby/rbs 1.0.6 1.1.1 1.2.0: The language for type signatures for Ruby and standard library definitions
 dev-ruby/rbst 0.6.5: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.5 1.16.6: Ruby bindings for cairo
 dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
@@ -13372,7 +13372,7 @@ media-libs/libilbc 3.0.4 9999: Packaged version of iLBC codec from the WebRTC pr
 media-libs/libinsane 1.0.7 1.0.8 1.0.9: Crossplatform access to image scanners
 media-libs/libiptcdata 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
-media-libs/libjpeg-turbo 1.5.3-r4 2.0.6 2.1.0: MMX, SSE, and SSE2 SIMD accelerated JPEG library
+media-libs/libjpeg-turbo 1.5.3-r4 2.0.6 2.1.0-r1: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/libkeyfinder 2.2.4: Musical key detection library for digital audio
@@ -15378,7 +15378,7 @@ net-misc/kafka-bin 2.0.1 2.1.1 2.2.1 2.3.0 2.4.0 2.4.1 2.5.0 2.5.1 2.6.0 2.6.1 2
 net-misc/kafkacat 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.8.1-r1 1.8.2 1.9.4 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
-net-misc/knock 0.7-r1: Simple port-knocking daemon
+net-misc/knock 0.7-r1 0.8: Simple port-knocking daemon
 net-misc/l7-filter-userspace 0.12_beta1-r1: Userspace utilities for layer 7 iptables QoS
 net-misc/l7-protocols 2009.05.28-r1: Protocol definitions of l7-filter kernel modules
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
