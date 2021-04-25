@@ -6,11 +6,11 @@ EAPI=7
 HOMEPAGE=https://stacked-git.github.io
 INHERIT=bash-completion-r1 distutils-r1
 IUSE=doc python_targets_python3_7 python_targets_python3_8 python_targets_python3_9
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-vcs/git-1.6.3.3 python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_7(-)?,python_targets_python3_8(-)?,python_targets_python3_9(-)?,-python_single_target_python3_7(-),-python_single_target_python3_8(-),-python_single_target_python3_9(-)]
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/ctmarinas/stgit/archive/v1.0.tar.gz -> stgit-1.0.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	multiprocessing	cac3169468f893670dac3e7cb940e045	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1
-_md5_=c1dc1b2f71a9b5e8eb1ed7ce804f87a6
+_md5_=87dd173aded9e7d8b94bc9eedb620567
