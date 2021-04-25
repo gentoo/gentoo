@@ -13266,7 +13266,7 @@ media-libs/gexiv2 0.12.1 0.12.2: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.2.0: The OpenGL Extension Wrangler Library
-media-libs/glfw 3.3.2 3.3.3: The Portable OpenGL FrameWork
+media-libs/glfw 3.3.2 3.3.3 3.3.4: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.5 0.9.9.7 0.9.9.8 0.9.9.8-r1: OpenGL Mathematics
 media-libs/glpng 1.46-r1: OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
@@ -15634,7 +15634,7 @@ net-p2p/eiskaltdcpp 2.4.2 9999: Qt/DC++ based client for DirectConnect and ADC p
 net-p2p/fms 0.3.82: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1488: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/go-ethereum 1.10.1: Official golang implementation of the Ethereum protocol
+net-p2p/go-ethereum 1.10.1 1.10.2: Official golang implementation of the Ethereum protocol
 net-p2p/go-ipfs 0.7.0 0.8.0: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.22 0.7.0: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.2.0-r1: A GTK+ Gnutella client
@@ -17167,7 +17167,7 @@ sys-apps/memtest86 4.3.7-r2: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 5.01-r4 5.01-r5: Memory tester based on memtest86
 sys-apps/memtest86-bin 9.0_beta2 9.0_p2000: Stand alone memory testing software for x86 computers
 sys-apps/memtester 4.3.0 4.4.0 4.5.0: userspace utility for testing the memory subsystem for faults
-sys-apps/miller 5.10.0 5.10.1: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
+sys-apps/miller 5.10.0 5.10.1 5.10.2: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minijail 9 12: helper binary and library for sandboxing & restricting privs of service
 sys-apps/minised 1.15: a smaller, cheaper and faster sed implementation
 sys-apps/miscfiles 1.5-r3: Miscellaneous files
@@ -18820,7 +18820,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.31 2.32 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.65-r1 5.66_alpha12-r1 5.66: Just another screensaver application for X
+x11-misc/xlockmore 5.65-r1 5.66: Just another screensaver application for X
 x11-misc/xmobar 0.37: A Minimalistic Text Based Status Bar
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
 x11-misc/xnee 3.19-r2: Program suite to record, replay and distribute user actions
@@ -19051,7 +19051,7 @@ x11-terms/terminator 2.0.1 2.1.0 2.1.1: Multiple GNOME terminals in one window
 x11-terms/terminology 1.9.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.5.2: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.9.2 0.8.10: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 351 363 365 366 367: Terminal Emulator for X Windows
+x11-terms/xterm 366 367: Terminal Emulator for X Windows
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-terms/zutty 0.8: X terminal emulator rendering through OpenGL ES Compute Shaders
 x11-themes/QGnomePlatform 0.6.1-r1 0.7.0 0.7.1: A Qt Platform Theme aimed to accommodate GNOME settings
