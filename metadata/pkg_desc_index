@@ -7955,7 +7955,7 @@ dev-php/PHP_TokenStream 3.1.1: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Text_Template 1.1.1 1.2.1: A simple template engine
 dev-php/YAML 1.0.6-r3: The Symfony YAML Component
-dev-php/adodb 5.20.14 5.20.18 5.20.20: Database abstraction layer for PHP
+dev-php/adodb 5.20.14 5.20.18 5.20.20 5.21.0: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.61 0.62: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
@@ -7966,7 +7966,7 @@ dev-php/doctrine 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0 1.3.1 1.4.0: Utility to instantiate objects in PHP without invoking their constructors
 dev-php/fedora-autoloader 1.0.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0-r1: A PHP interface to GEOS - Geometry Engine, Open Source
-dev-php/igbinary 3.1.5 3.1.6 3.1.6-r1 3.2.1: A fast drop-in replacement for the standard PHP serialize
+dev-php/igbinary 3.1.5 3.1.6 3.1.6-r1 3.2.1 3.2.2: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
 dev-php/json-schema 5.2.10: PHP implementation of JSON schema
 dev-php/jsonlint 1.8.2 1.8.3-r1: JSON Lint for PHP
@@ -7995,7 +7995,7 @@ dev-php/pecl-mailparse 3.1.1: PHP extension for parsing and working with RFC822 
 dev-php/pecl-mcrypt 1.0.3: Bindings for the libmcrypt library
 dev-php/pecl-memcache 4.0.5.2-r1 8.0: PHP extension for using memcached
 dev-php/pecl-memcached 3.1.5-r1: Interface PHP with memcached via libmemcached library
-dev-php/pecl-mongodb 1.7.4 1.7.5 1.8.0 1.8.1 1.9.0: MongoDB database driver for PHP
+dev-php/pecl-mongodb 1.7.4 1.7.5 1.8.0 1.8.1 1.9.0 1.9.1: MongoDB database driver for PHP
 dev-php/pecl-ncurses 1.0.2-r5: Terminal screen handling and optimization package
 dev-php/pecl-oauth 2.0.7: OAuth is an authorization protocol built on top of HTTP
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
