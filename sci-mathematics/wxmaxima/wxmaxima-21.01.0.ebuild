@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 WX_GTK_VER="3.0-gtk3"
 PLOCALES="ca cs da de el en es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_TW"
 inherit cmake wxwidgets l10n xdg
@@ -9,12 +10,13 @@ inherit cmake wxwidgets l10n xdg
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
 HOMEPAGE="https://wxmaxima-developers.github.io/wxmaxima/"
 SRC_URI="https://github.com/wxMaxima-developers/wxmaxima/archive/Version-${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-Version-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
-S="${WORKDIR}"/${PN}-Version-${PV}
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libxml2:2
@@ -43,6 +45,31 @@ src_prepare() {
 	}
 	l10n_find_plocales_changes locales/wxMaxima '' '.po'
 	l10n_for_each_disabled_locale_do rm_po
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DWXM_UNIT_TESTS=$(usex test)
+	)
+
+	cmake_src_configure
+}
+
+src_test() {
+	# Just run the unit tests manually for now as tests fail in a non-descriptive
+	# way even with virtualx
+	# bug #736695
+	cd "${BUILD_DIR}/test/unit_tests" || die
+
+	local tests=(
+		AFontSize
+		CellPtr
+		ImgCell
+	)
+
+	for test in "${tests[@]}" ; do
+		./test_${test} || die "Unit test ${test} failed!"
+	done
 }
 
 src_install() {
