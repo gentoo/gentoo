@@ -123,7 +123,7 @@ src_compile() {
 
 	# Protect against people choosing a strip implementation
 	# bug #739194
-	opts+="STRIP=true"
+	unset STRIP
 
 	tc-export CC
 

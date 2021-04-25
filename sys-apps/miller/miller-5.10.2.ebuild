@@ -40,7 +40,7 @@ src_test() {
 }
 
 src_install() {
-	local HTML_DOCS=( $(usex doc docs) )
+	local HTML_DOCS=( $(usex doc docs '') )
 
 	default
 
