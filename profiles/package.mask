@@ -358,7 +358,6 @@ app-editors/beaver
 app-eselect/eselect-infinality
 app-eselect/eselect-lcdfilter
 media-libs/fontconfig-ultimate
-media-libs/fontconfig-infinality
 
 # Jonas Stein <jstein@gentoo.org> (2021-03-27)
 # Upstream is gone. Open bugs. Removal after 2021-05-01.
