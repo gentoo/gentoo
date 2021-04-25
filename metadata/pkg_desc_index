@@ -5179,7 +5179,7 @@ dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library 
 dev-java/openjdk 8.272_p10 8.282_p08-r1 8.292_p10 11.0.9_p11 11.0.10_p9 11.0.11_p9: Open source implementation of the Java programming language
 dev-java/openjdk-bin 8.272_p10 8.282_p08 8.292_p10 11.0.9_p11 11.0.10_p9 11.0.11_p9: Prebuilt Java JDK binaries provided by AdoptOpenJDK
 dev-java/openjdk-jre-bin 8.272_p10 8.282_p08 8.292_p10 11.0.9_p11 11.0.10_p9 11.0.11_p9: Prebuilt Java JRE binaries provided by AdoptOpenJDK
-dev-java/openjfx 8.999 11.0.9_p0: Java OpenJFX client application platform
+dev-java/openjfx 8.1000 11.0.9_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.6-r1: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0-r1: OSGi Service Platform Core API (Companion Code)

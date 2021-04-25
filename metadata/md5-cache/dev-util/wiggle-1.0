@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://neil.brown.name/wiggle/wiggle-1.0.tar.gz
 _eclasses_=fixheadtails	1721997ed44d035654efe12da50797ef	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=e525cb9b5e3ecfddb84c95157a2b2cd9
+_md5_=a4e7292e317f568e555f26d621428150
