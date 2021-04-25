@@ -17910,7 +17910,7 @@ sys-power/uhubctl 2.4.0: USB hub per-port power control
 sys-power/upower 0.99.9-r1 0.99.11: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities
 sys-process/anacron 2.3-r4: a periodic command scheduler
-sys-process/at 3.1.23-r1 3.2.1-r1: Queues jobs for later execution
+sys-process/at 3.1.23-r1 3.2.1-r1 3.2.2: Queues jobs for later execution
 sys-process/atop 2.3.0-r1 2.4.0 2.5.0-r1 2.6.0: Resource-specific view of processes
 sys-process/audit 2.8.5-r2 3.0 3.0.1: Userspace utilities for storing and processing auditing records
 sys-process/bashtop 0.9.25: Resource monitor that shows usage and stats
