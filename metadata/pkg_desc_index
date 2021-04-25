@@ -877,7 +877,6 @@ app-admin/syslog-summary 1.14-r5: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17-r1: Daemon providing access to the kernel sysrq functions via network
 app-admin/sysstat 12.2.1 12.2.2 12.2.3 12.4.0 12.4.1 12.5.3: System performance tools for Linux
 app-admin/system-config-printer 1.5.15: Graphical user interface for CUPS administration
-app-admin/system-tools-backends 2.10.2-r1: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
 app-admin/tenshi 0.17 0.17-r1: Log parsing and notification program
 app-admin/terraform 0.14.5 0.14.6 0.14.7 0.14.8 0.14.9 0.14.10 0.15.0: A tool for building, changing, and combining infrastructure safely
@@ -3029,7 +3028,7 @@ app-text/barcode 0.99: barcode generator
 app-text/bdf2psf 1.155: Converter to generate console fonts from BDF source fonts
 app-text/bibclean 2.17 3.04: BibTeX bibliography prettyprinter and syntax checker
 app-text/bibletime 3.0: Qt Bible-study application using the SWORD library
-app-text/bibutils 6.7 6.10: Interconverts between various bibliography formats using common XML intermediate
+app-text/bibutils 6.10: Interconverts between various bibliography formats using common XML intermediate
 app-text/binfind 0.0.3: Search files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
 app-text/blogc 0.20.0 9999: A blog compiler
@@ -6005,7 +6004,6 @@ dev-ml/bigarray-compat 1.0.0: Compatibility library to use Stdlib.Bigarray when 
 dev-ml/bin_prot 0.14.0: Binary protocol generator
 dev-ml/biniou 1.2.1: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bos 0.1.6: Basic OS interaction for OCaml
-dev-ml/cairo-ocaml 1.2.0-r1: Ocaml bindings for the cairo vector graphics library
 dev-ml/cairo2 0.6.1: Binding to Cairo, a 2D Vector Graphics Library
 dev-ml/calendar 2.04: An Ocaml library to handle dates and time
 dev-ml/calendars 1.0.0: Convert dates between gregorian/julian/french/hebrew calendars
@@ -8360,7 +8358,6 @@ dev-python/ebuildtester 0.1.16 0.1.16-r1 0.1.27 0.1.29 0.1.30: A dockerized appr
 dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editdistance-s 1.0.0: Fast implementation of edit (Levenshtein) distance
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
-dev-python/elasticsearch-curator 5.8.1-r2 5.8.1-r3 5.8.3: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 7.7.0-r1: Official Python low-level client for Elasticsearch
 dev-python/elementpath 2.2.0 2.2.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
@@ -12713,7 +12710,6 @@ mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.5.10 3.6_pre20210422: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge 1.6.3 1.6.6: Serves ProtonMail to IMAP/SMTP clients
-mail-mta/protonmail-bridge-bin 1.4.5 1.5.0 1.5.2: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.95-r1 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r4: Extremely simple MTA to get mail off the system to a Mailhub
