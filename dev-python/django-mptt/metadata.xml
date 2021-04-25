@@ -5,6 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>marco@scardovi.com</email>
+		<name>Marco Scardovi</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">django-mptt</remote-id>
 	</upstream>
