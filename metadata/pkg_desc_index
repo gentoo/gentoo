@@ -16668,7 +16668,7 @@ sci-mathematics/topcom 0.17.7 0.17.8-r1: Computing Triangulations Of Point Confi
 sci-mathematics/twelf 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019-r2 2020: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 20.12.2 21.01.0: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 20.12.2 21.01.0 21.04.0: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3-r1: Yet another factoring utility
 sci-mathematics/z3 4.8.10: An efficient theorem prover
