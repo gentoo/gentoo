@@ -1177,7 +1177,7 @@ app-crypt/hashcat-utils 1.9: a set of small utilities that are useful in advance
 app-crypt/heimdal 7.6.0 7.7.0-r1: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
-app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
+app-crypt/jacksum 1.7.0-r1: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/jetring 0.27 0.30: GPG keyring maintenance using changesets
 app-crypt/jitterentropy 2.2.0 3.0.1: Hardware RNG based on CPU timing jitter
 app-crypt/jitterentropy-rngd 1.1.0: Jitter RNG daemon
