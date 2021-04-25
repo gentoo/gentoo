@@ -7,7 +7,7 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop linux-info linux-mod multilib-build \
 	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
-NV_KERNEL_MAX="5.11"
+NV_KERNEL_MAX="5.10"
 NV_BIN_URI="https://download.nvidia.com/XFree86/Linux-"
 NV_GIT_URI="https://github.com/NVIDIA/nvidia-"
 
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 MIT NVIDIA-r2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="+X +driver static-libs +tools"
 
 COMMON_DEPEND="
@@ -137,6 +137,12 @@ src_prepare() {
 	rm nvidia-xconfig && mv nvidia-xconfig{-${PV},} || die
 
 	default
+
+	# alternate tls library needed for 390's libglx.so (bug #785289)
+	mv tls/libnvidia-tls.so.${PV} . || die
+	if [[ -d 32 ]]; then
+		mv 32/tls/libnvidia-tls.so.${PV} 32 || die
+	fi
 
 	# prevent detection of incomplete kernel DRM support (bug #603818)
 	sed 's/defined(CONFIG_DRM)/defined(CONFIG_DRM_KMS_HELPER)/' \
@@ -337,7 +343,6 @@ src_install() {
 	doman nvidia-smi.1
 
 	# install prebuilt-only libraries
-	mv tls/libnvidia-tls.so.${PV} . || die # alt tls lib needed by libglx.so
 	multilib_foreach_abi nvidia-drivers_libs_install
 
 	einstalldocs
