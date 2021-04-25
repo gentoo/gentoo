@@ -103,6 +103,9 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	eapply "${FILESDIR}"/${PN}-1.4.0-verbose-build.patch
 
+	# bug #777582
+	eapply "${FILESDIR}"/${PN}-1.4.9-gcc-10.patch
+
 	eapply_user
 
 	# Make sure the *FLAGS variables are sane.
