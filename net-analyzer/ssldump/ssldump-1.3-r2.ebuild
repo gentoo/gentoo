@@ -30,5 +30,5 @@ src_prepare() {
 src_install() {
 	dosbin ssldump
 	doman ssldump.1
-	dodoc ChangeLog CREDITS README
+	dodoc ChangeLog CREDITS README README.md
 }
