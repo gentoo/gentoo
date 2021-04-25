@@ -1190,7 +1190,7 @@ app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98.1-r2 0.98.1-r3: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
 app-crypt/libmd 1.0.3 9999: Message Digest functions from BSD systems
-app-crypt/libnitrokey 3.5 3.6 9999: Support library for the Nitrokey
+app-crypt/libnitrokey 3.6 9999: Support library for the Nitrokey
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.20.4: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.10: Yubico Universal 2nd Factor (U2F) Host C Library
