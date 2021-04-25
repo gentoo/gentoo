@@ -1,39 +1,38 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools ltprune multilib-minimal versionator
+EAPI=7
 
-MY_MAJ=$(get_version_component_range 1-2)
+inherit autotools multilib-minimal
+
+MY_MAJ=$(ver_cut 1-2)
 
 DESCRIPTION="C++ library to emulate the C64 SID chip"
 HOMEPAGE="http://sidplay2.sourceforge.net"
 SRC_URI="mirror://sourceforge/sidplay2/${P/_p/-p}.tgz"
+S="${WORKDIR}"/${PN}-${MY_MAJ}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc sparc x86"
-IUSE="static-libs"
 
-S=${WORKDIR}/${PN}-${MY_MAJ}
-
-DOCS=(
-	AUTHORS ChangeLog NEWS README THANKS TODO VC_CC_SUPPORT.txt
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16_p2-drop-CXXFLAGS-override.patch
 )
 
 src_prepare() {
 	default
 
+	mv configure.{in,ac} || die
+
 	# This is required, otherwise the shared libraries get installed as
 	# libresid.0.0.0 instead of libresid.so.0.0.0.
 	eautoreconf
-
-	multilib_copy_sources
 }
 
 multilib_src_configure() {
-	econf \
-		$(use_enable static-libs static) \
+	ECONF_SOURCE="${S}" econf \
+		--disable-static \
 		--enable-resid-install \
 		--enable-shared
 }
@@ -41,5 +40,7 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 
-	prune_libtool_files
+	dodoc "${S}"/VC_CC_SUPPORT.txt
+
+	find "${ED}" -name '*.la' -delete || die
 }
