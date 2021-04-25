@@ -23,10 +23,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/freetype
+	media-libs/libpng:0=
 	>=media-libs/sdl2-image-1.2.2
 	>=media-libs/sdl2-mixer-1.2.4
 	>=media-libs/sdl2-ttf-2.0.6
 	>=media-libs/smpeg2-0.4.4-r1
+	virtual/jpeg
 	midi? ( media-libs/portmidi )
 	X? ( >=media-libs/libsdl2-1.2.5[opengl?,threads,video,X] )
 	!X? ( >=media-libs/libsdl2-1.2.5[threads] )"
