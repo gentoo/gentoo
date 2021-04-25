@@ -12,4 +12,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext alsa? ( media-libs/alsa-lib ) ao? ( med
 SLOT=0
 SRC_URI=https://github.com/higan-emu/higan/archive/9a625c545ca89b094d5c1da40bbfa5d07156a4aa.tar.gz -> higan-116_pre20210404.tar.gz
 _eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
-_md5_=943b95df3dc2a09658e9b40209caa220
+_md5_=64afc532b0e142804a6aa0e26fea86ae
