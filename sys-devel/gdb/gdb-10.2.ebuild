@@ -86,6 +86,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
 	"${FILESDIR}"/${PN}-10.1-cet.patch
+	"${FILESDIR}"/${PN}-10.2-sparc-nat.patch
 )
 
 pkg_setup() {
