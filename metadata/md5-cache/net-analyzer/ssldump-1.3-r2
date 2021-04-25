@@ -11,4 +11,4 @@ RDEPEND=dev-libs/json-c:= net-libs/libnet:1.1 net-libs/libpcap >=dev-libs/openss
 SLOT=0
 SRC_URI=https://github.com/adulau/ssldump/archive/v1.3.tar.gz -> ssldump-1.3.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=5cdbb09453c23e2bab747d3c57723333
+_md5_=dc2ae3bc149affa8e5ac9fbb0ee26c84
