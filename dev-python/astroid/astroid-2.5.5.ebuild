@@ -8,8 +8,12 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="Abstract Syntax Tree for logilab packages"
-HOMEPAGE="https://github.com/PyCQA/astroid https://pypi.org/project/astroid/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+HOMEPAGE="
+	https://github.com/PyCQA/astroid/
+	https://pypi.org/project/astroid/"
+SRC_URI="
+	https://github.com/PyCQA/astroid/archive/${P}.tar.gz"
+S=${WORKDIR}/${PN}-${P}
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -34,11 +38,10 @@ distutils_enable_tests pytest
 python_test() {
 	local deselect=(
 		# no clue why it's broken
-		--deselect
 		tests/unittest_modutils.py::GetModulePartTest::test_knownValues_get_builtin_module_part
 	)
 
 	# Faker causes sys.path_importer_cache keys to be overwritten
 	# with PosixPaths
-	epytest -p no:faker "${deselect[@]}"
+	epytest -p no:faker ${deselect[@]/#/--deselect }
 }
