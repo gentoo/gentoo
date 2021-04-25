@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DESCRIPTION=A replacement for the APM tool
+EAPI=7
+HOMEPAGE=https://packages.debian.org/sid/acpitool
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=mirror://gentoo/acpitool-0.5.1.tar.bz2
+_md5_=1c53c7e50bcee15d4df049273e311c88
