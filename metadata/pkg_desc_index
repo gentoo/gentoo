@@ -7177,7 +7177,7 @@ dev-perl/Net-IPv4Addr 0.100.0: Perl extension for manipulating IPv4 addresses
 dev-perl/Net-IRC 0.790.0-r1: Perl IRC module
 dev-perl/Net-IRR 0.80.0-r1: Internet Route Registry daemon (IRRd) client
 dev-perl/Net-Ident 1.240.0-r1: lookup the username on the remote end of a TCP/IP connection
-dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
+dev-perl/Net-Jabber 2.0.0-r1 2.0.0-r2: Jabber Perl library
 dev-perl/Net-LDAP-Server 0.430.0-r1: LDAP server side protocol handling
 dev-perl/Net-LDAPapi 3.0.5: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r2: Perl bindings for GNU Libidn
@@ -7346,7 +7346,7 @@ dev-perl/PortageXS 0.02.10-r4 0.2.10-r5 0.2.12-r1: Portage abstraction layer for
 dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block of text in PostScript
 dev-perl/PostScript-Simple 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
 dev-perl/Probe-Perl 0.30.0: Information about the currently running perl
-dev-perl/Proc-Background 1.100.0-r1: Generic interface to background process management
+dev-perl/Proc-Background 1.100.0-r1 1.210.0: Generic interface to background process management
 dev-perl/Proc-Daemon 0.230.0: Run Perl program as a daemon process
 dev-perl/Proc-Guard 0.70.0: process runner with RAII pattern
 dev-perl/Proc-ProcessTable 0.530.0: Unix process table information
@@ -8952,7 +8952,7 @@ dev-python/pyflakes 2.2.0 2.3.0 2.3.1: Passive checker for Python programs
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
-dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1 9999: Python bindings for SDL multimedia library
+dev-python/pygame 1.9.6-r1 2.0.0_pre10 2.0.0 2.0.1-r1 9999: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.12.4-r5 7.3.5-r1 7.3.5-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pyghmi 1.5.22: A pure python implementation of IPMI protocol
 dev-python/pygit2 1.5.0: Python bindings for libgit2
