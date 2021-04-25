@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/ORLite-1.98.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	58b5d72d607014c48b5a1e106318d584
-_md5_=a4dedbc0a07dbe6dc47d3b973639f23c
+_md5_=ea2c5b7282d3e054290da762c4b8ea47

@@ -6451,7 +6451,7 @@ dev-perl/Crypt-Random-Source 0.120.0 0.140.0: Get weak or strong random data fro
 dev-perl/Crypt-Random-TESHA2 0.10.0: Random numbers using timer/schedule entropy
 dev-perl/Crypt-Rijndael 1.140.0 1.150.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.270.0: S/MIME message signing, verification, encryption and decryption
-dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3: OpenSSL support for LWP
+dev-perl/Crypt-SSLeay 0.720.0-r2 0.720.0-r3 0.720.0-r4: OpenSSL support for LWP
 dev-perl/Crypt-Simple 0.60.0-r1 0.60.0-r2: encrypt stuff simply
 dev-perl/Crypt-SmbHash 0.120.0-r2 0.120.0-r3: LM/NT hashing, for Samba's smbpasswd entries
 dev-perl/Crypt-Twofish 2.170.0-r1 2.170.0-r2: The Twofish Encryption Algorithm
