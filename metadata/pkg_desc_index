@@ -2359,7 +2359,7 @@ app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.19: Library that implements the AFF image standard
 app-forensics/afl 2.56b 2.57b: american fuzzy lop - compile-time instrumentation fuzzer
-app-forensics/aflplusplus 3.12c: A fork of AFL, the popular compile-time instrumentation fuzzer
+app-forensics/aflplusplus 3.12c-r1: A fork of AFL, the popular compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.54: Tool to locally check for signs of a rootkit
@@ -18130,7 +18130,7 @@ virtual/texi2dvi 0-r2: Virtual for texi2dvi (and texi2pdf)
 virtual/tmpfiles 0-r1: Virtual to select between different tmpfiles.d handlers
 virtual/ttf-fonts 1-r1: Virtual for Serif/Sans/Monospace font packages
 virtual/udev 217-r2: Virtual to select between different udev daemon providers
-virtual/w3m 0: Virtual for the w3m web browser
+virtual/w3m 0 1: Virtual for the w3m web browser
 virtual/wine 0-r7: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/anyterm 1.1.29-r1: A terminal anywhere
@@ -18273,7 +18273,7 @@ www-client/surfraw 2.3.0-r3 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 3.6.2165.40 3.7.2218.55 3.7.2218.58: A browser for our friends
 www-client/vivaldi-snapshot 3.8.2259.16 3.8.2259.21: A browser for our friends
-www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
+www-client/w3m 0.5.3_p20180125 0.5.3_p20190105 0.5.3_p20210102: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.8-r1: AWStats is short for Advanced Web Statistics
 www-misc/bookmarksync 0.3.4-r3: bookmarksync synchronizes various browser bookmark files

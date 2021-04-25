@@ -1,13 +1,14 @@
 DEFINED_PHASES=compile install prepare unpack
 DEPEND=virtual/jpeg:0 net-misc/curl opengl? ( media-libs/libmodplug media-libs/libogg >=media-libs/libpng-1.4:0 media-libs/libtheora media-libs/libvorbis x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl[joystick,opengl,video] ) ) !dedicated? ( !opengl? ( media-libs/libmodplug media-libs/libogg >=media-libs/libpng-1.4:0 media-libs/libtheora media-libs/libvorbis x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl[joystick,opengl,video] ) ) ) app-arch/unzip opengl? ( x11-base/xorg-proto ) !dedicated? ( !opengl? ( x11-base/xorg-proto ) )
 DESCRIPTION=Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.nexuiz.com/
+INHERIT=desktop toolchain-funcs
 IUSE=alsa dedicated maps opengl sdl
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=virtual/jpeg:0 net-misc/curl opengl? ( media-libs/libmodplug media-libs/libogg >=media-libs/libpng-1.4:0 media-libs/libtheora media-libs/libvorbis x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl[joystick,opengl,video] ) ) !dedicated? ( !opengl? ( media-libs/libmodplug media-libs/libogg >=media-libs/libpng-1.4:0 media-libs/libtheora media-libs/libvorbis x11-libs/libX11 x11-libs/libXau x11-libs/libXdmcp x11-libs/libXext x11-libs/libXpm x11-libs/libXxf86dga x11-libs/libXxf86vm virtual/opengl alsa? ( media-libs/alsa-lib ) sdl? ( media-libs/libsdl[joystick,opengl,video] ) ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/nexuiz/nexuiz-252.zip maps? ( mirror://sourceforge/nexuiz/nexmappack_r2.zip )
-_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=f150151b43ea72686b4cab7cc8f06bfb
+_eclasses_=desktop	c0d27bf73aa08ca05b663dbd31fbef28	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
+_md5_=ea45919c9801c243a354892d00d4b190
