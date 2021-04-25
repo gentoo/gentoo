@@ -352,12 +352,6 @@ media-libs/fontconfig-infinality
 # Bug #778800
 x11-themes/nimbus
 
-# Jimi Huotari <chiitoo@gentoo.org> (2021-03-26)
-# No consumers since 2020-09-05 (dev-libs/liboobs), and no known
-# stand-alone use.
-# Removal on 2021-04-25.
-app-admin/system-tools-backends
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
 # Has unidentified race condition on very fast CPUs that causes maintainer-
 # mode to be triggered.
