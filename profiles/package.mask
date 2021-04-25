@@ -358,12 +358,6 @@ x11-themes/nimbus
 # Removal on 2021-04-25.
 app-admin/system-tools-backends
 
-# Michał Górny <mgorny@gentoo.org> (2021-03-26)
-# Pins to a vulnerable version of dev-python/urllib3.  No maintainer
-# in Gentoo.
-# Removal on 2021-04-25.  Bug #714860.
-dev-python/elasticsearch-curator
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
 # Has unidentified race condition on very fast CPUs that causes maintainer-
 # mode to be triggered.
