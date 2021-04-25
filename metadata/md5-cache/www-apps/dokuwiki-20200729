@@ -5,10 +5,10 @@ EAPI=7
 HOMEPAGE=https://wiki.dokuwiki.org
 INHERIT=webapp
 IUSE=gd vhosts
-KEYWORDS=~amd64 ~arm ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/php-5.3[xml] virtual/httpd-php:* gd? ( || ( dev-lang/php[gd] media-gfx/imagemagick ) ) >=app-admin/webapp-config-1.50.15
 SLOT=20200729
 SRC_URI=https://download.dokuwiki.org/src/dokuwiki/dokuwiki-2020-07-29.tgz
 _eclasses_=webapp	990ad6a000cf18d1ef87117e8c7b0a54
-_md5_=a456bba235822f6b09a5c90264faf7c8
+_md5_=afcc89412328a392bb3e91d0aa835a08

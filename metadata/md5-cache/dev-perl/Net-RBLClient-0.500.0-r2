@@ -4,10 +4,10 @@ DESCRIPTION=Queries multiple Realtime Blackhole Lists in parallel
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Net-RBLClient
 INHERIT=perl-module
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Time-HiRes dev-perl/Net-DNS dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AB/ABLUM/Net-RBLClient-0.5.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	58b5d72d607014c48b5a1e106318d584
-_md5_=2f0f92c5628a3fbfa309bf936bb9d20b
+_md5_=cf4571c42fa6857377aae8cf8e955778

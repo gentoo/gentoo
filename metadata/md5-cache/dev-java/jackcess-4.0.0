@@ -5,11 +5,11 @@ EAPI=7
 HOMEPAGE=https://jackcess.sourceforge.io
 INHERIT=java-pkg-2 java-pkg-simple
 IUSE=elibc_FreeBSD doc source test elibc_FreeBSD
-KEYWORDS=~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jre-1.8:* >=dev-java/commons-lang-3.11:3.6 >=dev-java/commons-logging-1.2:0 >=dev-java/poi-5.0.0:0 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 RESTRICT=!test? ( test ) !test? ( test )
 SLOT=1
 SRC_URI=https://github.com/jahlborn/jackcess/archive/refs/tags/jackcess-4.0.0.tar.gz -> jackcess-4.0.0-sources.tar.gz
 _eclasses_=java-utils-2	2440f41421207d084e5e3f1fb001b34e	java-pkg-2	45c44ec10db6affb3ebee1ac72039888	java-pkg-simple	c85bf2d75a5f53e7b39fc9104701ebfb
-_md5_=dc5a239ee754e8bdccfab3deed2ae290
+_md5_=2757e497919a88ba5f7ac7edae969c08
