@@ -8465,7 +8465,7 @@ dev-python/geoip-python 1.3.2-r1: Python bindings for GeoIP
 dev-python/gevent 21.1.2: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
-dev-python/git-review 1.28.0: Tool to submit code to Gerrit
+dev-python/git-review 1.28.0 2.1.0: Tool to submit code to Gerrit
 dev-python/gitdb 4.0.5-r1 4.0.6 4.0.7: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
@@ -8766,7 +8766,7 @@ dev-python/openstackdocstheme 2.2.5: Theme and extension support for Sphinx docu
 dev-python/openstacksdk 0.50.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/opt-einsum 3.3.0: Optimized Einsum: A tensor contraction order optimizer
 dev-python/ordered-set 4.0.2: A mutable set that remembers the order of its entries
-dev-python/os-brick 4.0.1: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 4.0.1-r1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 2.1.0: OpenStack Client Configuation Library
 dev-python/os-ken 1.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-resource-classes 1.0.0: A list of standardized resource classes for OpenStack.
@@ -11275,7 +11275,7 @@ games-action/descent2-vertigo 1.0: Data files for Descent 2: The Vertigo Series
 games-action/descent3 1.4.0b-r3: Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
 games-action/descent3-demo 1.4.0a-r1: Indoor/outdoor 3D combat with evil robotic mining spacecraft
 games-action/dxx-rebirth 0.61.0_pre20200615 9999: Descent Rebirth - enhanced Descent 1 & 2 engine
-games-action/extreme-tuxracer 0.7.5: High speed arctic racing game based on Tux Racer
+games-action/extreme-tuxracer 0.7.5 0.8.0: High speed arctic racing game based on Tux Racer
 games-action/fakk2 1.02-r1: 3D third-person action shooter based on the Heavy Metal comics/movies
 games-action/formido 1.0.1-r2: A shooting game in the spirit of Phobia games
 games-action/garden 1.0.9-r2: Multiplatform vertical shoot-em-up with non-traditional elements
