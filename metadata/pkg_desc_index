@@ -10755,7 +10755,7 @@ dev-tex/rubber 1.5.1 1.6.0_alpha1: A LaTeX wrapper for automatically building do
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
-dev-tex/tex4ht 20090611_p1038-r8 20090611_p1038-r11: Converts (La)TeX to (X)HTML, XML and OO.org
+dev-tex/tex4ht 20090611_p1038-r11 20090611_p1038_p20210423: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/tth 4.08: Translate TEX into HTML
 dev-tex/vc 0.6: The vc (version control) bundle
 dev-texlive/texlive-basic 2020-r1 2021: TeXLive Essential programs and files
