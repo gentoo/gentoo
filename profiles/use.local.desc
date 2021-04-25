@@ -4103,7 +4103,6 @@ media-libs/dumb:allegro - Add support for Allegro 4
 media-libs/esdl:image - Enable image support
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
-media-libs/fontconfig-infinality:nyx - Additional style using croscorefonts
 media-libs/freetype:adobe-cff - Use Adobe CFF as default font-renderer
 media-libs/freetype:bindist - Disable ClearType support (see http://freetype.org/patents.html)
 media-libs/freetype:brotli - Enable brotli decompression support via app-arch/brotli

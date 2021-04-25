@@ -2323,11 +2323,9 @@ app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
 app-eselect/eselect-fontconfig 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnome-shell-extensions 20180306: Manages system defaults for GNOME Shell extensions
-app-eselect/eselect-infinality 1-r1 1.1: Eselect module to choose an infinality font configuration style
 app-eselect/eselect-iptables 20200508: Manages the {,/usr}/sbin/iptables symlink
 app-eselect/eselect-java 0.4.0 0.4.2: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.2: LAPACK module for eselect
-app-eselect/eselect-lcdfilter 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1.1-r1 9999: An eselect library to manage executable symlinks
 app-eselect/eselect-lua 4-r1: Lua eselect module
 app-eselect/eselect-luajit 1: Manages LuaJIT symlinks
@@ -13250,8 +13248,6 @@ media-libs/flac 1.3.3-r1: free lossless audio encoder and decoder
 media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0-r1: DSSI Soft Synth Interface
 media-libs/fontconfig 2.13.1-r2 2.13.93: A library for configuring and customizing font access
-media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
-media-libs/fontconfig-ultimate 2015.08.01: A set of font rendering and replacement rules for fontconfig-infinality
 media-libs/freealut 1.1.0-r4: The OpenAL Utility Toolkit
 media-libs/freeglut 3.2.1: A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library
 media-libs/freeimage 3.18.0-r1 3.18.0-r2: Image library supporting many formats
