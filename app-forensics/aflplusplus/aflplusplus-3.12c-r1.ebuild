@@ -65,8 +65,16 @@ src_compile() {
 		MAN_PATH="${EPREFIX}/usr/share/man/man8"
 }
 
+src_test() {
+	emake \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)"
+}
+
 src_install() {
 	emake \
+		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
