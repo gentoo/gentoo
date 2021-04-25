@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">xdg</remote-id>
