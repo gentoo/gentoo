@@ -5350,7 +5350,7 @@ dev-lang/jsonnet 0.15.0 0.16.0 0.16.0-r2 0.17.0-r1: A data templating language f
 dev-lang/julia 1.5.3 1.6.0: High-performance programming language for technical computing
 dev-lang/julia-bin 1.5.2 1.5.3 1.6.0 9999: High-performance programming language for technical computing
 dev-lang/jwasm 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
-dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.6: Lazarus IDE is a feature rich visual programming environment emulating Delphi
+dev-lang/lazarus 1.8.4-r2 2.0.6: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 1.1.1 1.3.0_p20210112: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: An object prototype based language
 dev-lang/logtalk 3.36.0: Open source object-oriented logic programming language
@@ -5570,7 +5570,7 @@ dev-libs/kreport 3.2.0-r1: Framework for creation and generation of reports in m
 dev-libs/kuserfeedback 1.0.0: Framework to collect user feedback for applications via telemetry and surveys
 dev-libs/leatherman 1.12.2 1.12.4: A C++ toolkit
 dev-libs/level-zero 0.91.10 1.0.0: oneAPI Level Zero headers, loader and validation layer
-dev-libs/leveldb 1.18-r2 1.20: a fast key-value storage library written at Google
+dev-libs/leveldb 1.20: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14-r2: CORBA tree builder
 dev-libs/libaio 0.3.112 9999: Asynchronous input/output library that uses the kernels native interface
 dev-libs/libappindicator 12.10.0-r301: A library to allow applications to export a menu into the Unity Menu bar
@@ -14772,7 +14772,7 @@ net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a M
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.3.4 4.3.5 4.3.6: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
-net-dns/opendnssec 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
+net-dns/opendnssec 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.11.0 3.12.0: A framework for managing DNS information
 net-dns/pdns 4.4.0-r100 4.4.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.4.2-r100 4.4.3: The PowerDNS Recursor
@@ -15504,7 +15504,7 @@ net-misc/selfdhcp 0.2a-r2: Small stealth network autoconfigure software
 net-misc/ser2net 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 18.08: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3-r1 9999: Command line client for ISDS
-net-misc/shmux 1.0.2 1.0.2-r1: run the same command across many hosts in parallel
+net-misc/shmux 1.0.2-r1: run the same command across many hosts in parallel
 net-misc/sipcalc 1.1.6 1.1.6-r1: Sipcalc is an advanced console-based IP subnet calculator
 net-misc/sipp 3.6.0 3.6.1: A free Open Source test tool / traffic generator for the SIP protocol
 net-misc/sipsak 0.9.8: small command line tool for testing SIP applications and devices
@@ -17077,7 +17077,7 @@ sys-apps/fakeroot 1.22 1.23 1.24 1.25.1 1.25.2 1.25.3-r1: A fake root environmen
 sys-apps/fakeroot-ng 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 8.1.1 8.2.1: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.39-r4 5.40-r2 9999: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.40-r2 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.7.0 4.8.0: GNU utilities for finding files
 sys-apps/firejail 0.9.64.4 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.56.2-r1 0.9.56.2-r2: Security sandbox for any type of processes; LTS version
