@@ -26,7 +26,7 @@ IUSE="test"
 ruby_add_bdepend "test? ( dev-ruby/bundler dev-ruby/test-unit )"
 
 all_ruby_prepare() {
-	sed -i -e 's/git ls-files -z/find -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -i -e 's/git ls-files -z/find * -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid JSON schema validation tests due to a large dependency stack
 	# that would be needed.
