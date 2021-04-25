@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,7 +20,10 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-PATCHES=( "${FILESDIR}"/${PN}-0.5.12-use-execl-instead-system.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.12-use-execl-instead-system.patch
+	"${FILESDIR}"/${PN}-0.5.12-issue25.patch
+)
 
 # < 2.6.18 => INOTIFY, >= 2.6.18 => INOTIFY_USER
 # It should be ok to expect at least 2.6.18
