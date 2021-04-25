@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools desktop xdg-utils
 
 DESCRIPTION="High speed arctic racing game based on Tux Racer"
-HOMEPAGE="https://extremetuxracer.sourceforge.net"
+HOMEPAGE="https://sourceforge.net/p/extremetuxracer/wiki/Home/"
 SRC_URI="https://download.sourceforge.net/extremetuxracer/etr-${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2+"
