@@ -2296,7 +2296,7 @@ app-emulation/wine-staging 6.4 6.5 6.6 6.7 9999: Free implementation of Windows(
 app-emulation/wine-vanilla 6.0 6.4 6.5 6.6 6.7 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20210206 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
-app-emulation/xcpc 0.35.0-r1: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
+app-emulation/xcpc 0.35.0-r1 0.36.0: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
 app-emulation/xe-guest-utilities 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.13.2-r5 4.13.2-r6 4.13.2-r7 4.13.3 4.14.1-r2 4.14.1-r3: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.13.2 4.13.3 4.14.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
