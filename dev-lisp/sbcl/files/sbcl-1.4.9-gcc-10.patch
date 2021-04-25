@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/777582
+https://src.fedoraproject.org/rpms/sbcl/blob/rawhide/f/sbcl-1.4.14-gcc10.patch
+--- a/src/runtime/linux-os.c
++++ b/src/runtime/linux-os.c
+@@ -64,7 +64,7 @@ int personality (unsigned long);
+ #include <sys/personality.h>
+ #endif
+ 
+-size_t os_vm_page_size;
++//size_t os_vm_page_size;
+ 
+ #if defined(LISP_FEATURE_SB_THREAD) && defined(LISP_FEATURE_SB_FUTEX) && !defined(LISP_FEATURE_SB_PTHREAD_FUTEX)
+ #include <sys/syscall.h>
