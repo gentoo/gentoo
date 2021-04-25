@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-polarssl-platform-590512.patch
 	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${PN}-1.11.0-respect-FLAGS.patch
 )
 
 src_prepare() {
@@ -30,7 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC
+	tc-export AR CC RANLIB
 	default
 }
 
