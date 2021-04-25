@@ -3,10 +3,11 @@ DEFINED_PHASES=install
 DESCRIPTION=Holy Bible: Easy-to-Read Version (Hindi ERV)
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=HinERV
+INHERIT=sword-module
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=crosswire
-RDEPEND=>=app-text/sword-1.5.9
+RDEPEND=>=app-text/sword-1.6.0
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/HinERV.zip -> HinERV-1.1.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/HinERV.zip -> HinERV-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=ed0c9b9dc24d2df17ebd800e146f56dd
+_md5_=eef4f15841b5901e9ed008d7d49c3f03

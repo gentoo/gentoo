@@ -3,10 +3,11 @@ DEFINED_PHASES=install
 DESCRIPTION=Nave's Topical Bible
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Nave
+INHERIT=sword-module
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
 RDEPEND=>=app-text/sword-1.5.1a
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Nave.zip -> Nave-2.0.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Nave.zip -> Nave-3.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=58306a30cb3aaf5e7e26255c0dfc2db3
+_md5_=fed1f090073ef721aa88ee90787384ad

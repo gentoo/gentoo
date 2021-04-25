@@ -3,10 +3,11 @@ DEFINED_PHASES=install
 DESCRIPTION=The New Testament in Original Greek: Byzantine Textform 2005
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz
+INHERIT=sword-module
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=CC-BY-NC-SA-4.0
-RDEPEND=>=app-text/sword-1.7.2
+RDEPEND=>=app-text/sword-1.5.9
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Byz.zip -> Byz-2.4.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/Byz.zip -> Byz-3.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=022699c5695e79ef37f33fd4a8d44611
+_md5_=aa3c69be1e51906b71337dc1879da4e7

@@ -1,12 +1,13 @@
 BDEPEND=app-arch/unzip
 DEFINED_PHASES=install
-DESCRIPTION=French Bible Martin (1744)
+DESCRIPTION=Bible David Martin (1744)
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=FreBDM1744
+INHERIT=sword-module
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=>=app-text/sword-1.5.9
+RDEPEND=>=app-text/sword-1.8.0
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FreBDM1744.zip -> FreBDM1744-1.2.1.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/FreBDM1744.zip -> FreBDM1744-2.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=44b8348851cb3976d32ad569afe9304d
+_md5_=cff7e418e1377e3d37b82d8c772e77d9

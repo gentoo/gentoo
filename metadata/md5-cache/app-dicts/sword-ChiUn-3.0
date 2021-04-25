@@ -3,10 +3,11 @@ DEFINED_PHASES=install
 DESCRIPTION=Chinese Union Version of the Bible, traditional script
 EAPI=7
 HOMEPAGE=https://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiUn
+INHERIT=sword-module
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain
-RDEPEND=>=app-text/sword-1.5.9
+RDEPEND=>=app-text/sword-1.6.0
 SLOT=0
-SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/ChiUn.zip -> ChiUn-2.6.zip
+SRC_URI=https://crosswire.org/ftpmirror/pub/sword/packages/rawzip/ChiUn.zip -> ChiUn-3.0.zip
 _eclasses_=sword-module	d2a109c71affd5956a1566704d9bda47
-_md5_=ec297edad2ea4a9b25fecbc7fce7048d
+_md5_=720680a41136d75f3301edd4783ff439
