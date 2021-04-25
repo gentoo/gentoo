@@ -14,7 +14,7 @@ DESCRIPTION="Java OpenJFX 8 client application platform"
 HOMEPAGE="https://openjfx.io"
 SRC_URI="
 	https://hg.openjdk.java.net/${PN}/8u-dev/rt/archive/${EHG_COMMIT}.tar.bz2 -> ${P}.tar.bz2
-	https://dev.gentoo.org/~gyakovlev/distfiles/${P}-backports.tar.xz
+	https://dev.gentoo.org/~gyakovlev/distfiles/${P}-backports.tar.bz2
 	https://services.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
 "
 
@@ -67,7 +67,6 @@ PATCHES=(
 	"${FILESDIR}"/8/0004-Fix-Compilation-Flags.patch
 	"${FILESDIR}"/8/0005-don-t-include-xlocale.h.patch
 	"${FILESDIR}"/8/06-disable-architecture-verification.patch
-	"${FILESDIR}"/8/07-disable-assembler-on-unsupported-archs.patch
 	"${FILESDIR}"/8/10-javadoc-locale.patch
 	"${FILESDIR}"/8/Wno-error.patch
 	"${FILESDIR}"/8/don-t-force-msse.patch
