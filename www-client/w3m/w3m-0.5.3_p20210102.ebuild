@@ -11,6 +11,7 @@ MY_PV="${PV/_p/+git}"
 DESCRIPTION="Text based WWW browser, supports tables and frames"
 HOMEPAGE="https://github.com/tats/w3m"
 SRC_URI="https://github.com/tats/w3m/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${P/_p/-git}"
 
 LICENSE="w3m"
 SLOT="0"
@@ -47,16 +48,17 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/lang.patch" )
-
-S="${WORKDIR}/${P/_p/-git}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.3_p20210102-restore-gettext-macro.patch
+)
 
 src_prepare() {
 	default
+
 	sed -i "/^AR=/s:ar:$(tc-getAR):" {.,${PN}img,libwc}/Makefile.in || die
 	hprefixify acinclude.m4
 
-	eautoconf
+	AT_M4DIR="m4" eautoreconf
 }
 
 src_configure() {

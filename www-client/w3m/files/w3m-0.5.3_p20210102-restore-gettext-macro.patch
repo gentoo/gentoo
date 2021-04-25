@@ -1,5 +1,5 @@
-new file mode 100644
-index 00000000..da1b2aef
+https://sources.debian.org/patches/gnokii/0.6.30+dfsg-1.3/0001-Add-codeset.m4-to-m4-to-prevent-build-failure-with-g.patch/
+https://bugs.gentoo.org/778482
 --- /dev/null
 +++ b/m4/codeset.m4
 @@ -0,0 +1,25 @@
@@ -29,4 +29,3 @@ index 00000000..da1b2aef
 +])
 +
 --
-2.20.1
