@@ -5903,7 +5903,7 @@ dev-libs/stb 20200713: single-file public domain (or MIT licensed) libraries for
 dev-libs/stfl 0.24-r3: A library which implements a curses-based widget set for text terminals
 dev-libs/stp 2.3.3: Simple Theorem Prover, an efficient SMT solver for bitvectors
 dev-libs/template-glib 3.34.0: Templating library for GLib
-dev-libs/tinyxml 2.6.2-r3 2.6.2-r4: Simple and small C++ XML parser
+dev-libs/tinyxml 2.6.2-r4: Simple and small C++ XML parser
 dev-libs/tinyxml2 7.1.0 8.0.0: A simple, small, efficient, C++ XML parser
 dev-libs/tntnet 2.2.1 2.2.1-r3 3.0: Modular, multithreaded web application server extensible with C++
 dev-libs/tomsfastmath 0.13.1-r1: Fast public domain large integer arithmetic library
