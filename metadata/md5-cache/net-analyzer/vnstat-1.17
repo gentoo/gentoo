@@ -1,15 +1,16 @@
-DEFINED_PHASES=compile install prepare setup
+BDEPEND=verify-sig? ( app-crypt/openpgp-keys-teemutoivola ) verify-sig? ( app-crypt/gnupg >=app-portage/gemato-16 )
+DEFINED_PHASES=compile install prepare setup unpack
 DEPEND=gd? ( media-libs/gd[png] ) test? ( dev-libs/check )
 DESCRIPTION=Console-based network traffic monitor that keeps statistics of network usage
 EAPI=7
 HOMEPAGE=https://humdi.net/vnstat/
-INHERIT=toolchain-funcs user
-IUSE=gd selinux test
+INHERIT=toolchain-funcs user verify-sig
+IUSE=gd selinux test verify-sig
 KEYWORDS=amd64 arm ~hppa ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=gd? ( media-libs/gd[png] ) selinux? ( sec-policy/selinux-vnstatd )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://humdi.net/vnstat/vnstat-1.17.tar.gz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2
-_md5_=49aeb7da4ccbd8d5984f9985e88b718d
+SRC_URI=https://humdi.net/vnstat/vnstat-1.17.tar.gz verify-sig? ( https://humdi.net/vnstat/vnstat-1.17.tar.gz.asc )
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	user	26d8ce6329c43cbac965617f1c0627e2	verify-sig	40b4f4f782cf67118f594ce604cc4c0a
+_md5_=200ff16ccde70efc0687abc778e82e9e

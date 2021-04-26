@@ -1215,6 +1215,7 @@ app-crypt/nitrocli 0.3.4 0.3.5 0.4.0: A command line tool for interacting with N
 app-crypt/nitrokey-app 1.4.2 9999: Cross platform personalization tool for the Nitrokey
 app-crypt/nwipe 0.30: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
+app-crypt/openpgp-keys-adamspiers 20210426: OpenPGP keys used by Adam Spiers
 app-crypt/openpgp-keys-alexbarton 20210416: OpenPGP keys used by Alex Barton
 app-crypt/openpgp-keys-bcl 20210128: OpenPGP keys used by Brian C. Lane
 app-crypt/openpgp-keys-botan 20210416: OpenPGP keys used to sign Botan releases
@@ -1226,6 +1227,7 @@ app-crypt/openpgp-keys-jedisct1 20210416: OpenPGP keys used by Frank Denis (jedi
 app-crypt/openpgp-keys-kernel 20201103: OpenPGP keys used to sign Linux kernel releases
 app-crypt/openpgp-keys-libvirt 20210401: OpenPGP keys used by libvirt
 app-crypt/openpgp-keys-linuxcontainers 20201014: OpenPGP keys used to sign LXC-related packages
+app-crypt/openpgp-keys-midipix 20210426: OpenPGP keys used to sign midipix releases
 app-crypt/openpgp-keys-miniupnp 20201006: OpenPGP keys used to sign miniupnp* packages
 app-crypt/openpgp-keys-mlichvar 20210416: OpenPGP keys used by Miroslav Lichvar
 app-crypt/openpgp-keys-nmap 20210416: OpenPGP keys used to sign Nmap releases
@@ -1233,6 +1235,7 @@ app-crypt/openpgp-keys-oletange 20210423: OpenPGP keys used by Ole Tange
 app-crypt/openpgp-keys-openzfs 20210419: OpenPGP keys used to sign OpenZFS releases
 app-crypt/openpgp-keys-python 20210121: OpenPGP keys used to sign CPython releases
 app-crypt/openpgp-keys-tcpdump 20210416: OpenPGP keys used to sign tcpdump releases
+app-crypt/openpgp-keys-teemutoivola 20210426: OpenPGP keys used by Teemu Toivola
 app-crypt/openpgp-keys-terminator 20210306: OpenPGP keys used to sign x11-terms/terminator package
 app-crypt/openpgp-keys-voikko 20201013: OpenPGP keys used to sign voikko* packages
 app-crypt/ophcrack 3.8.0: A time-memory-trade-off-cracker
@@ -5733,7 +5736,7 @@ dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 2.10.6 3.0.6: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.12-r1 2.13: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0 1.2.0: stateless, zlib-compatible, and very fast compression library
-dev-libs/libsodium 1.0.18 1.0.18_p20210508: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.18 1.0.18_p20210421: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.3 0.2.3-r1: libspnav is a replacement for the magellan library with a cleaner API
 dev-libs/libspt 1.1-r4: Library for handling root privilege
 dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()
@@ -13402,7 +13405,7 @@ media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmms 0.6.4-r1: Library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3 2.0.3-r1: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0-r1: Library for playing MOD-like music files
-media-libs/libmp3splt 0.9.2-r2 0.9.2-r4: Library for mp3splt to split mp3 and ogg files without decoding
+media-libs/libmp3splt 0.9.2-r4: Library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r2: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.19: Library for interfacing Music Player Daemon (media-sound/mpd)
@@ -14039,7 +14042,7 @@ media-sound/jack_capture 0.9.73 9999: JACK Recording utility
 media-sound/jalv 1.6.6: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.98.9_pre20170111: Audio mastering interface for JACK Audio Connection Kit (JACK)
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/kid3 3.8.5 3.8.6: Simple tag editor based on Qt
+media-sound/kid3 3.8.6: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.2.0: MIDI based metronome using ALSA sequencer
 media-sound/kmidimon 1.0.0: MIDI monitor for ALSA sequencer
@@ -14197,7 +14200,7 @@ media-sound/spek 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 122 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.72-r1 1.1.26-r1 1.1.26-r2 1.1.55: Spotify is a social music platform
-media-sound/strawberry 0.8.5 0.9.2 0.9.3 9999: Modern music player and library organizer based on Clementine and Qt
+media-sound/strawberry 0.9.2 0.9.3 9999: Modern music player and library organizer based on Clementine and Qt
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Commandline program to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r2: Subsonic is a complete, personal media streaming solution
@@ -14940,7 +14943,7 @@ net-irc/muh 2.2a-r1: Persistent IRC bouncer
 net-irc/ngircd 26.1: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
-net-irc/oragono 2.5.1 2.6.0: A modern IRC server written in Go
+net-irc/oragono 2.6.1: A modern IRC server written in Go
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.36.3: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r4: A multi-user and multi-server gateway to IRC networks
