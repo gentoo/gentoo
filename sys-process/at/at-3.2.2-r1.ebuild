@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic pam user systemd
+inherit autotools flag-o-matic pam systemd
 
 MY_P="${PN}_${PV}"
 
@@ -17,14 +17,22 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="pam selinux"
 
-DEPEND="virtual/mta
+DEPEND="
+	acct-group/at
+	acct-user/at
+	virtual/mta
+	pam? ( sys-libs/pam )
+"
+RDEPEND="${DEPEND}
+	virtual/mta
+	virtual/logger
+	selinux? ( sec-policy/selinux-at )
+"
+BDEPEND="
 	>=sys-devel/autoconf-2.64
 	sys-devel/bison
 	>=sys-devel/flex-2.5.4a
-	pam? ( sys-libs/pam )"
-RDEPEND="virtual/mta
-	virtual/logger
-	selinux? ( sec-policy/selinux-at )"
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.8-more-deny.patch
@@ -37,19 +45,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.13-getloadavg.patch
 )
 
-pkg_setup() {
-	# Cannot be moved into pkg_preinst!
-	enewgroup at 25
-	enewuser at 25 -1 /var/spool/at/atjobs at
-}
-
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
-	local my_conf=(
+	local myeconfargs=(
 		--sysconfdir="${EPREFIX}"/etc/at
 		--with-jobdir="${EPREFIX}"/var/spool/at/atjobs
 		--with-atspool="${EPREFIX}"/var/spool/at/atspool
@@ -59,7 +61,7 @@ src_configure() {
 		$(usex pam '' --without-pam)
 		$(use_with selinux)
 	)
-	econf ${my_conf[@]}
+	econf ${myeconfargs[@]}
 }
 
 src_install() {
@@ -68,7 +70,7 @@ src_install() {
 	newinitd "${FILESDIR}"/atd.rc8 atd
 	newconfd "${FILESDIR}"/atd.confd atd
 
-	if use pam; then
+	if use pam ; then
 		newpamd "${FILESDIR}"/at.pamd-3.1.13-r1 atd
 	fi
 
