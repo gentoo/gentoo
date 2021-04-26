@@ -7,11 +7,24 @@ inherit systemd user tmpfiles
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
-SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
+
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/vergoh/vnstat"
+	inherit git-r3
+else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/teemutoivola.asc
+	inherit verify-sig
+
+	SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://humdi.net/vnstat/${P}.tar.gz.asc )"
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+
+	BDEPEND="verify-sig? ( app-crypt/openpgp-keys-teemutoivola )"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="gd selinux test"
 RESTRICT="!test? ( test )"
 
@@ -61,6 +74,7 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
 
 	use gd && doman man/vnstati.1
+
 	doman man/vnstat.1 man/vnstatd.8
 
 	newdoc INSTALL README.setup
