@@ -1,9 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.assertj:assertj-core:2.3.0"
 
 inherit java-pkg-2 java-pkg-simple
 
