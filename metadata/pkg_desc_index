@@ -3744,12 +3744,12 @@ dev-db/mongodb 4.2.11 4.2.12 4.4.1 4.4.2 4.4.4: A high-performance, open source,
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.22.2_p20201026 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.5-r1 0.10.1 0.10.3: A high-performance multi-threaded backup (and restore) toolset for MySQL
-dev-db/myodbc 8.0.22 8.0.23: ODBC driver for MySQL
-dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 5.7.33 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22 8.0.23: A fast, multi-threaded, multi-user SQL database server
+dev-db/myodbc 8.0.22 8.0.23 8.0.24: ODBC driver for MySQL
+dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 5.7.33 5.7.34 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22 8.0.23 8.0.24: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
-dev-db/mysql-connector-c 8.0.22 8.0.23-r1: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22 8.0.23: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c 8.0.22 8.0.23-r1 8.0.24: C client library for MariaDB/MySQL
+dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19 8.0.20 8.0.21 8.0.22 8.0.23 8.0.24: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 8.0.23 8.0.24: MySQL Workbench
