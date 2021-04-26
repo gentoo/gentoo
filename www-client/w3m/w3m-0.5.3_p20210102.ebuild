@@ -42,14 +42,14 @@ RDEPEND="
 	)
 	xface? ( media-libs/compface )
 "
-
+DEPEND="${RDEPEND}"
 BDEPEND="
-	${RDEPEND}
 	virtual/pkgconfig
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.3_p20210102-restore-gettext-macro.patch
+	"${FILESDIR}"/${PN}-0.5.3_p20210102-fix-configure-gettext.patch
 )
 
 src_prepare() {
@@ -58,7 +58,7 @@ src_prepare() {
 	sed -i "/^AR=/s:ar:$(tc-getAR):" {.,${PN}img,libwc}/Makefile.in || die
 	hprefixify acinclude.m4
 
-	AT_M4DIR="m4" eautoconf
+	AT_M4DIR="m4" eautoreconf
 }
 
 src_configure() {
