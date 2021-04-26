@@ -13888,7 +13888,7 @@ media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the Internation
 media-radio/js8call 2.2.0 2.2.0-r1: Weak signal ham radio communication
 media-radio/qrq 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.4.4-r1 9.5.3: Amateur radio SSTV software
-media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
+media-radio/svxlink 17.12.1 17.12.2 19.09.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.4.1: Console-mode amateur radio contest logger
 media-radio/tqsl 2.5.1: ARRL Logbook of the World
 media-radio/tucnak 4.25 4.27: Amateur Radio VHF Contest Logbook
@@ -16339,7 +16339,7 @@ sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and up
 sci-geosciences/qgis 3.16.2 3.16.4 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.15.2-r2: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1 1.1.0a: Library to extract valid data from an Open Street Map input file
-sci-geosciences/routino 3.3.2: Routing application based on openstreetmap data
+sci-geosciences/routino 3.3.2 3.3.3: Routing application based on openstreetmap data
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/viking 1.8 1.8-r1: GPS data editor and analyzer
