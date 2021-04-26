@@ -12665,7 +12665,7 @@ mail-client/thunderbird-bin 78.10.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 3.0.0 3.0.1: Initial tagging script for Notmuch
-mail-filter/amavisd-milter 1.5.0-r1 1.6.0-r1 1.7.0-r1 1.7.1: sendmail milter for amavisd-new
+mail-filter/amavisd-milter 1.7.0-r1 1.7.1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.12.0-r5 2.12.1: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r3: Bayesian spam filter designed with fast algorithms, and tuned for speed
