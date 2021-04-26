@@ -49,8 +49,8 @@ BDEPEND="
 	dev-go/go-md2man
 	virtual/pkgconfig
 "
-
-RESTRICT="installsources strip"
+# tests require running dockerd as root and downloading containers
+RESTRICT="installsources strip test"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
