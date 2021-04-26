@@ -56,6 +56,8 @@ src_prepare() {
 	default
 
 	sed -i "/^AR=/s:ar:$(tc-getAR):" {.,${PN}img,libwc}/Makefile.in || die
+	sed -i "3 a AM_GNU_GETTEXT_VERSION([0.18])" configure.ac || die
+
 	hprefixify acinclude.m4
 
 	AT_M4DIR="m4" eautoreconf
