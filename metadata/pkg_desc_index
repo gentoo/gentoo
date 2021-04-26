@@ -19304,4 +19304,4 @@ xfce-extra/xfce4-wavelan-plugin 0.6.2: A panel plug-in to display wireless inter
 xfce-extra/xfce4-weather-plugin 0.11.0: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.5.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-xkb-plugin 0.8.2: XKB layout switching panel plug-in for the Xfce desktop environment
-xfce-extra/xfdashboard 0.9.1 0.9.2: Maybe a GNOME shell like dashboard for the Xfce desktop environment
+xfce-extra/xfdashboard 0.9.1 0.9.2 0.9.3: Maybe a GNOME shell like dashboard for the Xfce desktop environment
