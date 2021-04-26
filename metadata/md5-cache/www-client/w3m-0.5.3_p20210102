@@ -1,5 +1,6 @@
-BDEPEND=dev-libs/boehm-gc:= sys-libs/ncurses:0= sys-libs/zlib gdk-pixbuf? ( x11-libs/gdk-pixbuf X? ( x11-libs/gdk-pixbuf-xlib ) ) !gdk-pixbuf? ( imlib? ( media-libs/imlib2[X?] ) ) gpm? ( sys-libs/gpm ) ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libXdmcp x11-libs/libXext ) xface? ( media-libs/compface ) virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/boehm-gc:= sys-libs/ncurses:0= sys-libs/zlib gdk-pixbuf? ( x11-libs/gdk-pixbuf X? ( x11-libs/gdk-pixbuf-xlib ) ) !gdk-pixbuf? ( imlib? ( media-libs/imlib2[X?] ) ) gpm? ( sys-libs/gpm ) ssl? ( dev-libs/openssl:0= ) X? ( x11-libs/libXdmcp x11-libs/libXext ) xface? ( media-libs/compface )
 DESCRIPTION=Text based WWW browser, supports tables and frames
 EAPI=7
 HOMEPAGE=https://github.com/tats/w3m
@@ -12,4 +13,4 @@ REQUIRED_USE=fbcon? ( ?? ( gdk-pixbuf imlib ) ) X? ( ?? ( gdk-pixbuf imlib ) )
 SLOT=0
 SRC_URI=https://github.com/tats/w3m/archive/v0.5.3+git20210102.tar.gz -> w3m-0.5.3+git20210102.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	prefix	de7d8e2b10085ed5ff09ad70e4753e5c
-_md5_=05ec5315f65be915f221fc5352ee1c0b
+_md5_=2dc6809b41d962e17e956cffb7b7c600
