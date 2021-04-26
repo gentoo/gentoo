@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PLOCALES="cs_CS de_DE es fr_FR id_ID ie it nl pt_BR ru_RU sv tr uk zh_CN zh_TW"
+PLOCALES="cs de es eu fr id ie it ko nb nl nn pt_BR ru sv tr uk zh_CN zh_TW"
 inherit meson l10n xdg-utils gnome2-utils
 SRC_URI="https://github.com/johnfactotum/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="gtk ebook reader built with gjs"
