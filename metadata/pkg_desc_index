@@ -8089,7 +8089,7 @@ dev-python/GridDataFormats 0.5.0: Reading and writing of data on regular grids i
 dev-python/MechanicalSoup 0.12.0 1.0.0: A python library for automating interaction with websites
 dev-python/PyContracts 1.8.14-r1: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.54.1: Python library to access the Github API v3
+dev-python/PyGithub 1.54.1 1.55: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0-r1: Python library to work with pdf files
 dev-python/PyQt5 5.15.1 5.15.2: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.24 4.19.25: Private sip module for PyQt5
@@ -8182,7 +8182,7 @@ dev-python/bibtexparser 1.1.0: A BibTeX parser written in python
 dev-python/binaryornot 0.4.4-r2: Ultra-lightweight pure Python package to guess whether a file is binary or text
 dev-python/bitarray 1.7.1 1.9.2 2.0.0 2.0.1: Efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.7: A pure Python module for creation and analysis of binary data
-dev-python/black 20.8_beta1: The uncompromising Python code formatter
+dev-python/black 20.8_beta1 21.4_beta0: The uncompromising Python code formatter
 dev-python/bleach 3.3.0: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessed 1.17.11 1.17.12 1.18.0: Library for making terminal apps using colors, keyboard input and positioning
 dev-python/blessings 1.7-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
