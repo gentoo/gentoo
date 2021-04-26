@@ -61,7 +61,7 @@ RDEPEND="
 	container-init? ( >=sys-process/tini-0.18.0[static] )
 "
 
-RESTRICT="installsources strip"
+RESTRICT="installsources strip test"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
