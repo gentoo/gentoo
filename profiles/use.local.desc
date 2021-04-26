@@ -8909,8 +8909,8 @@ x11-themes/arc-theme:gtk3 - Install GTK+3 theme
 x11-themes/arc-theme:mate - Install Metacity theme for mate-base/mate
 x11-themes/arc-theme:pre-rendered - Avoid media-gfx/inkscape and media-gfx/optipng dependencies by using pre-rendered PNGs
 x11-themes/arc-theme:xfce - Install theme for xfce-base/xfwm4
-x11-themes/comix-xcursors:lefthanded - Install lefthanded version of theme in addition to default one
-x11-themes/comix-xcursors:opaque - Install non-transparent version of theme in addition to default one
+x11-themes/comix-xcursors:lefthanded - Install lefthanded version of theme in addition to default one.
+x11-themes/comix-xcursors:opaque - Install non-transparent version of theme in addition to default one.
 x11-themes/gentoo-artwork:grub - Install extra sys-boot/grub themes
 x11-themes/gentoo-artwork:icons - Install icons
 x11-themes/gentoo-artwork:lilo - Install extra sys-boot/lilo themes

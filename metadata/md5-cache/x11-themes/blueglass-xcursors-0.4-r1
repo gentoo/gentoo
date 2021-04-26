@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=A high quality set of Xfree 4.3.0 animated mouse cursors
+EAPI=7
+HOMEPAGE=https://store.kde.org/p/999915/
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=x11-libs/libXcursor
+SLOT=0
+SRC_URI=mirror://gentoo/5532-BlueGlass-XCursors-3D-0.4.tar.bz2
+_md5_=b705ddd7cafedf077a8b384e3308736d

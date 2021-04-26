@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=A shiny and clean xcursor theme
+EAPI=7
+HOMEPAGE=https://store.kde.org/p/999984/
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXcursor
+SLOT=0
+SRC_URI=mirror://gentoo/73135-Obsidian.tar.bz2
+_md5_=18e8b9fd88ccf0e16c44f394919ac520
