@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 name="amavisd-milter"
@@ -15,4 +15,5 @@ depend() {
 start_pre() {
 	# needed to avoid potential mi_stop errors
 	[ "${RC_CMD}" = "restart" ] && sleep 4
+	:
 }
