@@ -6189,6 +6189,7 @@ dev-perl/Algorithm-Diff 1.190.300-r1 1.201.0: Compute intelligent differences be
 dev-perl/Algorithm-Munkres 0.80.0-r2: Munkres solution to classical Assignment problem
 dev-perl/Alien-Base-ModuleBuild 1.150.0: A Module::Build subclass for building Alien:: modules and their libraries
 dev-perl/Alien-Build 2.230.0 2.380.0: Build external dependencies for use in CPAN
+dev-perl/Alien-GMP 1.160.0: Alien package for the GNU Multiple Precision library
 dev-perl/Alien-Gnuplot 1.33.0-r1: Find and verify functionality of the gnuplot executable
 dev-perl/Alien-LibGumbo 0.50.0-r2: Gumbo parser library
 dev-perl/Alien-Libxml2 0.160.0 0.170.0: Install the C libxml2 library on your system
@@ -7052,7 +7053,7 @@ dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 1.10.0: 1st and 2nd order differentiation of data
 dev-perl/Math-FFT 1.340.0: Perl module to calculate Fast Fourier Transforms
 dev-perl/Math-Factor-XS 0.400.0: Factorize numbers and calculate matching multiplications
-dev-perl/Math-GMP 2.150.0: High speed arbitrary size integer math
+dev-perl/Math-GMP 2.150.0 2.200.0: High speed arbitrary size integer math
 dev-perl/Math-Int128 0.220.0: Manipulate 128 bits integers in Perl
 dev-perl/Math-Int64 0.540.0: Manipulate 64 bits integers in Perl
 dev-perl/Math-Libm 1.0.0: wrapper to libm functions
