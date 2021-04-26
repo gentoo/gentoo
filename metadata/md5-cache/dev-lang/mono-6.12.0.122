@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://mono-project.com
 INHERIT=autotools check-reqs linux-info mono-env pax-utils multilib-minimal
 IUSE=doc minimal nls pax_kernel xen kernel_linux abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux
 LICENSE=MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL
 RDEPEND=app-crypt/mit-krb5[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] sys-libs/zlib[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ia64? ( sys-libs/libunwind ) !minimal? ( >=dev-dotnet/libgdiplus-6.0.2 ) nls? ( sys-devel/gettext ) app-misc/ca-certificates
 SLOT=0
 SRC_URI=https://download.mono-project.com/sources/mono/mono-6.12.0.122.tar.xz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	check-reqs	97b90bd8fb799993925e6b3a683184e5	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	mono-env	1f24c032c78290b0d9a07d5b343051a7	pax-utils	d3fc79d3d50544347e324864f95206e2	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
-_md5_=59d86c806ce80ab60583dc2e00449b43
+_md5_=826bc4c91acd7cbb8b4462b62acaed02
