@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	EGIT_COMMIT=v${PV}
 	SRC_URI="https://github.com/williamh/espeakup/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	inherit vcs-snapshot
 fi
 
