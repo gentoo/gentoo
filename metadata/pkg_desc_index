@@ -3748,7 +3748,7 @@ dev-db/mongodb 4.2.11 4.2.12 4.4.1 4.4.2 4.4.4: A high-performance, open source,
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.22.2_p20201026 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.5-r1 0.10.1 0.10.3: A high-performance multi-threaded backup (and restore) toolset for MySQL
-dev-db/myodbc 8.0.22 8.0.23 8.0.24: ODBC driver for MySQL
+dev-db/myodbc 8.0.22 8.0.23 8.0.24-r1: ODBC driver for MySQL
 dev-db/mysql 5.7.27-r2 5.7.29-r1 5.7.30-r1 5.7.31 5.7.32 5.7.33 5.7.34 8.0.19-r2 8.0.20-r1 8.0.21-r1 8.0.22 8.0.23 8.0.24: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
@@ -5282,7 +5282,7 @@ dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7-r2 2.3: Apache Velocity is a general purpose template engine.
 dev-java/velocity-dvsl 1.0: Declarative Velocity Style Language
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
-dev-java/werken-xpath 0.9.4_beta-r4 0.9.4_beta-r5: W3C XPath-Rec implementation for DOM4J
+dev-java/werken-xpath 0.9.4_beta-r5: W3C XPath-Rec implementation for DOM4J
 dev-java/ws-commons-util 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2-r1: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
