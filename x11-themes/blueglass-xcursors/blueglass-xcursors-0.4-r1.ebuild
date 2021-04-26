@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,15 @@ EAPI=7
 MY_P="5532-BlueGlass-XCursors-3D-${PV}"
 
 DESCRIPTION="A high quality set of Xfree 4.3.0 animated mouse cursors"
-HOMEPAGE="http://www.kde-look.org/content/show.php?content=5532"
-SRC_URI="http://kde-look.org/content/files/$MY_P.tar.bz2"
+HOMEPAGE="https://store.kde.org/p/999915/"
+SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P:5}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 
-S="${WORKDIR}/${MY_P:5}"
+RDEPEND="x11-libs/libXcursor"
 
 # Note: although the package name is BlueGlass, the tarball & authors directions
 # use the directory 'Blue'.

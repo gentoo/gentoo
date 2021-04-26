@@ -1,23 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MY_PN="${PN/-xcursors/}"
+MY_PN="Obsidian"
 
-DESCRIPTION="A simple crispy dark-grey xcursor theme"
-HOMEPAGE="http://www.kde-look.org/content/show.php/Haematite?content=19594"
-SRC_URI="http://www.kde-look.org/CONTENT/content-files/19594-${MY_PN}-${PV}.tar.gz"
+DESCRIPTION="A shiny and clean xcursor theme"
+HOMEPAGE="https://store.kde.org/p/999984/"
+SRC_URI="mirror://gentoo/73135-${MY_PN}.tar.bz2"
+S="${WORKDIR}/${MY_PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+RDEPEND="x11-libs/libXcursor"
 
 src_install() {
-	insinto /usr/share/cursors/xorg-x11/${MY_PN}
-	doins -r ${MY_PN}/cursors
+	insinto /usr/share/cursors/xorg-x11/Obsidian
+	doins -r cursors
 }
 
 pkg_postinst() {
