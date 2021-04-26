@@ -17349,7 +17349,7 @@ sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.13-r1: Realtime Policy and Watchdog Daemon
 sys-auth/seatd 0.4.0-r1 0.5.0 9999: Minimal seat management daemon and universal library
 sys-auth/skey 1.1.5-r11: Linux Port of OpenBSD Single-key Password System
-sys-auth/solo-python 0.0.26 0.0.27: Python tool and library for SoloKeys
+sys-auth/solo-python 0.0.27 0.0.28: Python tool and library for SoloKeys
 sys-auth/ssh-ldap-pubkey 1.3.2: Utility to manage SSH public keys stored in LDAP
 sys-auth/sssd 2.2.0-r1 2.3.1-r2 2.4.2: System Security Services Daemon provides access to identity and authentication
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads
