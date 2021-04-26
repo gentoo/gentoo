@@ -292,6 +292,7 @@ acct-group/stunnel 0-r1: group for stunnel
 acct-group/supervisor 0-r1: Group to grant access to app-admin/supervisor's management
 acct-group/suricata 0-r1: Group for Suricata IDS
 acct-group/svnusers 0-r1: System group: svnusers
+acct-group/svxlink 0: A group for the svxlink server
 acct-group/swift 0-r1: System group: swift
 acct-group/syncthing 0-r1: Group for the system-wide net-p2p/syncthing server
 acct-group/systemd-coredump 0-r1: System group: systemd-coredump
@@ -627,6 +628,7 @@ acct-user/stubby 0-r1: Stubby program user (from net-dns/getdns)
 acct-user/stunnel 0-r1: user for stunnel
 acct-user/suricata 0-r1: User for Suricata IDS
 acct-user/svn 0-r1: System user: svn
+acct-user/svxlink 0: A user for the svxlink server
 acct-user/swift 0-r1: USER for swift - Openstack object storage backend
 acct-user/syncthing 0-r1: User for the system-wide net-p2p/syncthing server
 acct-user/systemd-coredump 0-r1: System user: systemd-coredump
