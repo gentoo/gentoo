@@ -18,10 +18,9 @@ SLOT="${MAJOR}"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-# Broken when built dynamically against libmysqlclient.so
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
-	>=dev-db/mysql-connector-c-8.0:0=[static-libs,${MULTILIB_USEDEP}]
+	>=dev-db/mysql-connector-c-8.0:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 S=${WORKDIR}/${MY_P}
@@ -44,19 +43,27 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	CMAKE_BUILD_TYPE="RelWithDebInfo"
+
 	mycmakeargs+=(
-		-DMYSQLCLIENT_STATIC_LINKING=1
-		-DMYSQL_CXX_LINKAGE=1
-		-DWITH_UNIXODBC=1
+		-DCMAKE_C_FLAGS_RELWITHDEBINFO=-DNDEBUG
+		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO=-DNDEBUG
+		-DMYSQLCLIENT_STATIC_LINKING=OFF
+		-DMYSQL_CXX_LINKAGE=YES
+		-DWITH_UNIXODBC=YES
 		-DWITH_DOCUMENTATION_INSTALL_PATH=${EPREFIX}/usr/share/doc/${PF}
 		-DLIB_SUBDIR="$(get_libdir)/${PN}-${MAJOR}"
 		-DMYSQLCLIENT_NO_THREADS=ON
 		-DDISABLE_GUI=ON
+		# Don't build "libmysql_strings.so" and "libmysql_sys.so" which are only
+		# used internally
+		-DBUILD_SHARED_LIBS=OFF
 		# The NUMA and LIBWRAP options are not really used.
 		# They are just copied from the server code
 		-DWITH_NUMA=OFF
 		-DWITH_LIBWRAP=OFF
 	)
+
 	cmake-utils_src_configure
 }
 
