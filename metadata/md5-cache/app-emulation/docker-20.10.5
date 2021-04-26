@@ -9,8 +9,8 @@ IUSE=apparmor aufs btrfs +cli +container-init device-mapper hardened overlay sec
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
 LICENSE=Apache-2.0
 RDEPEND=acct-group/docker >=dev-db/sqlite-3.7.9:3 apparmor? ( sys-libs/libapparmor ) btrfs? ( >=sys-fs/btrfs-progs-3.16.1 ) device-mapper? ( >=sys-fs/lvm2-2.02.89[thin] ) seccomp? ( >=sys-libs/libseccomp-2.2.1 ) >=net-firewall/iptables-1.4 sys-process/procps >=dev-vcs/git-1.7 >=app-arch/xz-utils-4.9 dev-libs/libltdl >=app-emulation/containerd-1.4.1[apparmor?,btrfs?,device-mapper?,seccomp?] ~app-emulation/docker-proxy-0.8.0_p20201215 cli? ( app-emulation/docker-cli ) container-init? ( >=sys-process/tini-0.19.0[static] )
-RESTRICT=installsources strip
+RESTRICT=installsources strip test
 SLOT=0
 SRC_URI=https://github.com/moby/moby/archive/v20.10.5.tar.gz -> docker-20.10.5.tar.gz
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	linux-info	30ded7f9adbdd03d3e848cdd74f6c395	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	udev	452708c3f55cf6e918b045adb949a9e6	golang-base	b8fb27dacacea08140c53857f439fc7d	golang-vcs-snapshot	ff485cabd3f37b060f110b0be95092ec
-_md5_=db389f5530ff449b7a044b7934033c9e
+_md5_=309bfe2735bba7253b5a3c1a0a8231db
