@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-26)
+# no consumer
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/785847
+dev-java/commons-fileupload
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-26)
 # does not compile with java 1.8, no consumer
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/785796
