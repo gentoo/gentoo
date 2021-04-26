@@ -16,7 +16,7 @@ SRC_URI="https://ezix.org/src/pkg/lshw/archive/${MY_COMMIT}.tar.gz -> ${MY_P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gtk sqlite static"
 
 REQUIRED_USE="static? ( !gtk !sqlite )"
@@ -71,7 +71,6 @@ src_compile() {
 }
 
 src_install() {
-	default
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install $(usex gtk 'install-gui' '')
 	if use gtk ; then
 		newicon -s scalable src/gui/artwork/logo.svg gtk-lshw.svg
