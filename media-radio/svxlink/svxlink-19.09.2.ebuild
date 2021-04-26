@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+CMAKE_MAKEFILE_GENERATOR=emake
+
 inherit cmake systemd
 
 CMAKE_USE_DIR="${S}/src"
@@ -45,7 +48,6 @@ src_configure() {
 		-DSYSCONF_INSTALL_DIR=/etc
 		-DLOCAL_STATE_DIR=/var
 	)
-	CMAKE_MAKEFILE_GENERATOR=emake
 	cmake_src_configure
 }
 
