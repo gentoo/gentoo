@@ -5341,7 +5341,7 @@ dev-lang/gnuprologjava 0.2.6-r1: GNU Prolog for Java is an implementation of ISO
 dev-lang/go 1.15.10 1.15.11 1.16.2 1.16.3 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
-dev-lang/hy 0.17.0: A LISP dialect running in python
+dev-lang/hy 0.17.0 0.20.0: A LISP dialect running in python
 dev-lang/icon 9.5.1-r1 9.5.1-r2 9.5.20h 9.5.20i: Very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
@@ -16294,7 +16294,7 @@ sci-geosciences/gpscorrelate 1.6.1-r2: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.21 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxlab 0.7.0: An application to display and manage GPS tracks
-sci-geosciences/gpxsee 8.1 8.8 8.9: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 8.1 8.9 9.0: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.8.5 9999: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
@@ -17780,7 +17780,7 @@ sys-kernel/dracut-crypt-ssh 1.0.7: Early unlocking of encrypted systems via ssh 
 sys-kernel/genkernel 3.5.3.3 4.0.10 4.1.2-r3 4.2.1-r1 9999: Gentoo automatic kernel building scripts
 sys-kernel/gentoo-kernel 5.4.109 5.4.111 5.4.112 5.4.113 5.4.114 5.10.27 5.10.29 5.10.30 5.10.31 5.10.32 5.11.13 5.11.14 5.11.15 5.11.16: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 5.4.109 5.4.109-r1 5.4.111 5.4.111-r1 5.4.112 5.4.112-r1 5.4.113 5.4.113-r1 5.4.114 5.4.114-r2 5.10.27 5.10.27-r1 5.10.29 5.10.29-r1 5.10.30 5.10.30-r1 5.10.31 5.10.31-r1 5.10.32 5.10.32-r2 5.11.13 5.11.13-r1 5.11.14 5.11.14-r1 5.11.15 5.11.15-r1 5.11.16 5.11.16-r2: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.4.114 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.10.32 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15 5.11.16: Full sources including the Gentoo patchset for the 5.11 kernel tree
+sys-kernel/gentoo-sources 4.4.257 4.4.261 4.4.262 4.4.263 4.4.264 4.4.265 4.4.266 4.4.267 4.9.257 4.9.261 4.9.262 4.9.263 4.9.264 4.9.265 4.9.266 4.9.267 4.14.221 4.14.225 4.14.226 4.14.227 4.14.228 4.14.229 4.14.230 4.14.231 4.19.175 4.19.181 4.19.182 4.19.183 4.19.184 4.19.185 4.19.186 4.19.187 4.19.188 5.4.97 5.4.105 5.4.106 5.4.107 5.4.108 5.4.109 5.4.110 5.4.111 5.4.112 5.4.113 5.4.114 5.10.24 5.10.25 5.10.26 5.10.27 5.10.28 5.10.29 5.10.30 5.10.31 5.10.32 5.11.6 5.11.7 5.11.8-r1 5.11.9 5.11.10 5.11.11 5.11.12 5.11.13 5.11.14 5.11.15 5.11.16 5.12.0: Full sources including the Gentoo patchset for the 5.12 kernel tree
 sys-kernel/git-sources 5.12_rc2 5.12_rc3 5.12_rc4 5.12_rc5 5.12_rc6 5.12_rc7 5.12_rc8: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2 3: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
