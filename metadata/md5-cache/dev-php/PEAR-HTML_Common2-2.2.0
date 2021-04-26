@@ -1,15 +1,13 @@
 DEFINED_PHASES=install postinst postrm test
-DEPEND=test? ( dev-php/phpunit )
 DESCRIPTION=Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)
-EAPI=6
+EAPI=7
 HOMEPAGE=https://pear.php.net/package/HTML_Common2
 INHERIT=php-pear-r2
-IUSE=test
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
-RESTRICT=!test? ( test )
+RESTRICT=test
 SLOT=0
-SRC_URI=https://pear.php.net/get/HTML_Common2-2.1.1.tgz
+SRC_URI=https://pear.php.net/get/HTML_Common2-2.2.0.tgz
 _eclasses_=php-pear-r2	4a7c293febeea04349068d5716ad29ff
-_md5_=3a05389d9b88e6bf1936e9c1c431a47e
+_md5_=2f3974c71e0354aab0d064ef1726001c

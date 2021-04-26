@@ -7874,7 +7874,7 @@ dev-php/PEAR-File_SMBPasswd 1.0.3-r1: Class for managing SAMBA style password fi
 dev-php/PEAR-HTML_AJAX 0.5.8: PHP and JavaScript AJAX library
 dev-php/PEAR-HTML_CSS 1.5.4-r2: Provides a simple interface for generating a stylesheet declaration
 dev-php/PEAR-HTML_Common 1.2.5-r1: Base class for other HTML classes
-dev-php/PEAR-HTML_Common2 2.1.1 2.1.2: Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)
+dev-php/PEAR-HTML_Common2 2.1.2 2.2.0: Abstract base class for HTML classes (PHP5 port of PEAR-HTML_Common package)
 dev-php/PEAR-HTML_Javascript 1.1.2-r1: Provides an interface for creating simple JS scripts within PHP
 dev-php/PEAR-HTML_QuickForm2 2.0.2-r1 2.1.0 2.2.0: Creating, validating, processing HTML forms methods (PHP5 optimize)
 dev-php/PEAR-HTML_Table 1.8.4-r1: Makes the design of HTML tables easy, flexible, reusable and efficient
