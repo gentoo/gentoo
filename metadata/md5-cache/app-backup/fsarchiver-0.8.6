@@ -6,10 +6,10 @@ EAPI=7
 HOMEPAGE=https://www.fsarchiver.org
 INHERIT=autotools
 IUSE=debug lz4 lzma lzo static +zstd
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libgcrypt:0= >=sys-fs/e2fsprogs-1.41.4 lz4? ( app-arch/lz4 ) lzma? ( >=app-arch/xz-utils-4.999.9_beta ) lzo? ( >=dev-libs/lzo-2.02 ) zstd? ( app-arch/zstd ) static? ( app-arch/bzip2[static-libs] dev-libs/libgcrypt:0=[static-libs] dev-libs/libgpg-error[static-libs] sys-apps/util-linux[static-libs] >=sys-fs/e2fsprogs-1.41.4[static-libs] sys-libs/e2fsprogs-libs[static-libs] sys-libs/zlib[static-libs] lz4? ( app-arch/lz4[static-libs] ) lzma? ( app-arch/xz-utils[static-libs] ) lzo? ( dev-libs/lzo[static-libs] ) zstd? ( app-arch/zstd[static-libs] ) )
 SLOT=0
 SRC_URI=https://github.com/fdupoux/fsarchiver/releases/download/0.8.6/fsarchiver-0.8.6.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=702201977f5efa3dae9ec75034cda5e6
+_md5_=c7ca26e6b2fae124b359ed431df0efcd
