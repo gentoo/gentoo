@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=x11-apps/xcursorgen
+DESCRIPTION=Style neutral scalable cursor theme (black version)
+EAPI=7
+HOMEPAGE=https://jimmac.eu/
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86
+LICENSE=MIT
+RDEPEND=x11-libs/libXcursor
+SLOT=0
+SRC_URI=mirror://debian/pool/main/d/dmz-cursor-theme/dmz-cursor-theme_0.4.5.tar.xz
+_md5_=ce8220e87da6b0c115a3ff222e49faf0

@@ -19093,7 +19093,7 @@ x11-themes/gartoon-redux 1.10-r1: A massively improved variant of the well-known
 x11-themes/geany-themes 1.22.2-r1: A collection of colour schemes for Geany
 x11-themes/gentoo-artwork 0.4.2-r1: Collection of miscellaneous Gentoo Linux logos and artwork
 x11-themes/gentoo-artwork-livecd 2006.1 2007.0: A collection of Gentoo Linux wallpapers for the LiveCD
-x11-themes/gentoo-xcursors 0.3.2: A high quality set of animated mouse cursors
+x11-themes/gentoo-xcursors 0.3.2-r1: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1-r1: A pack of ~200 themes for GKrellM
@@ -19173,8 +19173,8 @@ x11-themes/tangerine-icon-theme 0.27: a derivative of the standard Tango theme, 
 x11-themes/tango-icon-theme 0.8.90-r1: SVG and PNG icon theme from the Tango project
 x11-themes/tango-icon-theme-extras 0.1.0-r2: Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP
 x11-themes/ubuntu-wallpapers 20.10.3: Ubuntu wallpapers
-x11-themes/vanilla-dmz-aa-xcursors 0.4.5: Style neutral scalable cursor theme (black version)
-x11-themes/vanilla-dmz-xcursors 0.4.5: Style neutral scalable cursor theme (white version)
+x11-themes/vanilla-dmz-aa-xcursors 0.4.5-r1: Style neutral scalable cursor theme (black version)
+x11-themes/vanilla-dmz-xcursors 0.4.5-r1: Style neutral scalable cursor theme (black version)
 x11-themes/vdr-channel-logos 0.2 0.2-r3: Logos for vdr-skin*
 x11-themes/verne-backgrounds 15.91.0.1-r1: Fedora 16 official background artwork
 x11-themes/vertex-icon-theme 20150506: Vertex icon theme
