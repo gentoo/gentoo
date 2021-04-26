@@ -58,7 +58,7 @@ src_prepare() {
 	sed -i "/^AR=/s:ar:$(tc-getAR):" {.,${PN}img,libwc}/Makefile.in || die
 	hprefixify acinclude.m4
 
-	AT_M4DIR="m4" eautoreconf
+	AT_M4DIR="m4" eautoconf
 }
 
 src_configure() {
