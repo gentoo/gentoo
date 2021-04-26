@@ -5137,7 +5137,7 @@ dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1 0.95-r2: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
-dev-java/maven-bin 3.1.1-r1 3.2.5-r1 3.3.9-r1 3.6.3 3.8.1: Project Management and Comprehension Tool for Java
+dev-java/maven-bin 3.6.3 3.8.1: Project Management and Comprehension Tool for Java
 dev-java/maven-hawtjni-plugin 1.15: Maven plugin for the HawtJNI code generator (resources only)
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
