@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install unpack
+DEPEND=!app-admin/puppet !dev-ruby/hiera !dev-ruby/facter app-emulation/virt-what acct-user/puppet acct-group/puppet app-admin/augeas
+DESCRIPTION=general puppet client utils along with hiera and facter
+EAPI=7
+HOMEPAGE=https://puppetlabs.com/
+INHERIT=systemd unpacker tmpfiles
+IUSE=puppetdb selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=!app-admin/puppet !dev-ruby/hiera !dev-ruby/facter app-emulation/virt-what acct-user/puppet acct-group/puppet app-portage/eix sys-apps/dmidecode sys-libs/libselinux sys-libs/glibc sys-libs/readline:0/8 sys-libs/libxcrypt sys-libs/ncurses:0[tinfo] selinux? ( sys-libs/libselinux[ruby] sec-policy/selinux-puppet ) puppetdb? ( >=dev-ruby/puppetdb-termini-5.0.1 ) virtual/tmpfiles
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://apt.puppetlabs.com/pool/focal/puppet/p/puppet-agent/puppet-agent_7.6.1-1focal_amd64.deb
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	systemd	fdf0d765c3f11f91fe54f8def9a8c0e6	unpacker	517f16af48ee3ab88180dd58b5143213	tmpfiles	5cd6e8cf3288d5b19ff8b5c78c7e3e31
+_md5_=e9a49b89c8da003acf2beab840a9053d
