@@ -44,7 +44,8 @@ src_prepare() {
 	find -type f -exec sed -i -e 's:\r$::' {} + || die
 	# klipper is hard to get working, and once we make it work,
 	# it breaks most of the other backends
-	sed -e 's:_executable_exists("klipper"):False:' \
+	# wl-copy requires wayland, not Xvfb
+	sed -e 's:_executable_exists("\(klipper\|wl-copy\)"):False:' \
 		-i tests/test_pyperclip.py || die
 	distutils-r1_src_prepare
 }
