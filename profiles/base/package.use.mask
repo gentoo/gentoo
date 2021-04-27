@@ -124,13 +124,6 @@ mail-mta/protonmail-bridge gui
 # libclangformat-ide is masked for removal.
 dev-qt/qt-creator clang
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
-# USE=doc broken on 1.47.0 and later
-# error: unresolved link to `crate::os::unix::ffi::OsStrExt`
-# miri seems to be not working on 1.48.0 and later
->=dev-lang/rust-1.47.0 doc
->=dev-lang/rust-1.48.0 doc miri
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
