@@ -5,10 +5,10 @@ DESCRIPTION=Computes changes between binary or text files and creates deltas
 EAPI=7
 HOMEPAGE=https://xdelta.googlecode.com/
 INHERIT=autotools toolchain-funcs
-KEYWORDS=~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2 >=sys-libs/zlib-1.1.4:=
 SLOT=0
 SRC_URI=https://xdelta.googlecode.com/files/xdelta-1.1.4.tar.gz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354
-_md5_=37e67d3070cb5f59e282429a7c4d0e88
+_md5_=c4b5f3f27c6057b25c288974394c6050
