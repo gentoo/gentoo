@@ -33,7 +33,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/mangler-version-info.patch" )
+PATCHES=(
+	"${FILESDIR}/mangler-version-info.patch"
+	"${FILESDIR}/fix_ftbfs_narrowing_conversion.patch"
+)
 
 src_configure() {
 	tc-export CC
