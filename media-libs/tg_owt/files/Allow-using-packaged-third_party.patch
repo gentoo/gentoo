@@ -1,0 +1,487 @@
+From dbfceeea4280412358202d511e02e95a040d0297 Mon Sep 17 00:00:00 2001
+From: mid-kid <esteve.varela@gmail.com>
+Date: Sun, 7 Mar 2021 17:12:34 +0100
+Subject: [PATCH] Allow using packaged third_party
+
+This patch adds support for building tg_owt using system libraries
+instead of bundled third_party modules.
+
+Some libraries haven't been converted for the following reasons:
+- pffft: No stable ABI, patched, and not available in major distributions.
+- rnnoise: All of the remaining files are custom.
+- libsrtp: This project uses private APIs.
+- libyuv: No stable ABI, frequent breaking updates, and not available in major distributions.
+
+Note that: This still installs the system headers for the third_party
+modules (albeit in a convenient sub-directory). I haven't figured out a
+method to avoid this.
+---
+ CMakeLists.txt                                | 78 +++++++---------
+ cmake/external.cmake                          | 91 +++++++++++++++++++
+ cmake/libabsl.cmake                           |  2 +-
+ cmake/libevent.cmake                          |  5 +-
+ cmake/libopenh264.cmake                       | 17 +++-
+ cmake/libpffft.cmake                          |  2 +-
+ cmake/librnnoise.cmake                        |  2 +-
+ cmake/libsrtp.cmake                           |  2 +-
+ cmake/libusrsctp.cmake                        |  2 +-
+ cmake/libvpx.cmake                            |  2 +-
+ cmake/libwebrtcbuild.cmake                    |  4 +-
+ cmake/libyuv.cmake                            |  2 +-
+ cmake/tg_owtConfig.cmake                      |  5 +
+ .../codecs/h264/h264_encoder_impl.cc          |  8 +-
+ .../codecs/h264/h264_encoder_impl.h           |  2 +-
+ src/rtc_base/task_queue_libevent.cc           |  2 +-
+ 16 files changed, 166 insertions(+), 60 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f8e3bd..3462351 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,7 +60,6 @@ include(cmake/librnnoise.cmake)
+ include(cmake/libsrtp.cmake)
+ include(cmake/libusrsctp.cmake)
+ include(cmake/libvpx.cmake)
+-include(cmake/libwebrtcbuild.cmake)
+ include(cmake/libyuv.cmake)
+ if (NOT WIN32 AND NOT APPLE)
+     include(cmake/libevent.cmake)
+@@ -80,41 +79,19 @@ init_target(tg_owt)
+ 
+ set_target_properties(tg_owt PROPERTIES SOVERSION 0 VERSION 0.0.0)
+ 
++target_link_libraries(tg_owt
++PRIVATE
++    tg_owt::libpffft
++    tg_owt::librnnoise
++    tg_owt::libsrtp
++    tg_owt::libyuv
++)
++
+ if (is_x86 OR is_x64)
+     target_link_libraries(tg_owt
+-    PUBLIC
+-        tg_owt::libwebrtcbuild
+     PRIVATE
+         tg_owt::tg_owt_avx2
+         tg_owt::tg_owt_sse2
+-        tg_owt::libabsl
+-        tg_owt::libopenh264
+-        tg_owt::libpffft
+-        tg_owt::librnnoise
+-        tg_owt::libsrtp
+-        tg_owt::libusrsctp
+-        tg_owt::libvpx
+-        tg_owt::libvpx_mmx
+-        tg_owt::libvpx_sse2
+-        tg_owt::libvpx_ssse3
+-        tg_owt::libvpx_sse4
+-        tg_owt::libvpx_avx
+-        tg_owt::libvpx_avx2
+-        tg_owt::libyuv
+-    )
+-else()
+-    target_link_libraries(tg_owt
+-    PUBLIC
+-        tg_owt::libwebrtcbuild
+-    PRIVATE
+-        tg_owt::libabsl
+-        tg_owt::libopenh264
+-        tg_owt::libpffft
+-        tg_owt::librnnoise
+-        tg_owt::libsrtp
+-        tg_owt::libusrsctp
+-        tg_owt::libvpx
+-        tg_owt::libyuv
+     )
+ endif()
+ 
+@@ -131,9 +108,6 @@ PRIVATE
+     ${libopenh264_yasm_objects}
+ )
+ 
+-if (NOT WIN32 AND NOT APPLE)
+-    target_link_libraries(tg_owt PRIVATE tg_owt::libevent)
+-endif()
+ if (APPLE)
+     target_link_libraries(tg_owt PUBLIC tg_owt::libsdkmacos)
+ endif()
+@@ -141,6 +115,17 @@ endif()
+ link_openssl(tg_owt)
+ link_ffmpeg(tg_owt)
+ link_opus(tg_owt)
++link_libabsl(tg_owt)
++link_libopenh264(tg_owt)
++link_libusrsctp(tg_owt)
++link_libvpx(tg_owt)
++
++if (NOT WIN32 AND NOT APPLE)
++    link_libevent(tg_owt)
++endif()
++
++include(cmake/libwebrtcbuild.cmake)
++target_link_libraries(tg_owt PUBLIC tg_owt::libwebrtcbuild)
+ 
+ function(add_sublibrary postfix)
+     add_library(tg_owt_${postfix} OBJECT)
+@@ -149,9 +134,8 @@ function(add_sublibrary postfix)
+     target_link_libraries(tg_owt_${postfix}
+     PUBLIC
+         tg_owt::libwebrtcbuild
+-    PRIVATE
+-        tg_owt::libabsl
+     )
++    link_libabsl(tg_owt_${postfix})
+     target_include_directories(tg_owt_${postfix}
+     PUBLIC
+         $<BUILD_INTERFACE:${webrtc_loc}>
+@@ -2165,7 +2149,7 @@ else()
+ endif()
+ 
+ set(platform_export)
+-if (NOT WIN32 AND NOT APPLE)
++if (NOT WIN32 AND NOT APPLE AND NOT LIBEVENT_FOUND)
+     set(platform_export
+         libevent
+     )
+@@ -2198,14 +2182,9 @@ endif()
+ 
+ set(export_targets
+     ${tg_owt_export}
+-    libabsl
+-    libopenh264
+     libpffft
+     librnnoise
+     libsrtp
+-    libusrsctp
+-    libvpx
+-    ${vpx_export}
+     libwebrtcbuild
+     libyuv
+     ${platform_export}
+@@ -2214,6 +2193,19 @@ if (TG_OWT_USE_PROTOBUF)
+     list(APPEND export_targets proto)
+ endif()
+ 
++if (NOT absl_FOUND)
++    list(APPEND export_targets libabsl)
++endif()
++if (NOT LIBOPENH264_FOUND)
++    list(APPEND export_targets libopenh264)
++endif()
++if (NOT LIBUSRSCTP_FOUND)
++    list(APPEND export_targets libusrsctp)
++endif()
++if (NOT LIBVPX_FOUND)
++    list(APPEND export_targets libvpx ${vpx_export})
++endif()
++
+ export(
+     TARGETS ${export_targets}
+     NAMESPACE tg_owt::
+@@ -2223,7 +2215,7 @@ export(
+ configure_file(
+     "cmake/tg_owtConfig.cmake"
+     "${CMAKE_CURRENT_BINARY_DIR}/tg_owtConfig.cmake"
+-    COPYONLY
++    @ONLY
+ )
+ 
+ target_include_directories(tg_owt
+diff --git a/cmake/external.cmake b/cmake/external.cmake
+index 2132546..e09af96 100644
+--- a/cmake/external.cmake
++++ b/cmake/external.cmake
+@@ -105,3 +105,94 @@ function(link_libjpeg target_name)
+         )
+     endif()
+ endfunction()
++
++# libabsl
++# HINT: System abseil should be built with -DCMAKE_CXX_STANDARD=17
++function(link_libabsl target_name)
++    if (TG_OWT_PACKAGED_BUILD)
++        find_package(absl)
++        set(absl_FOUND ${absl_FOUND} PARENT_SCOPE)
++        if (absl_FOUND)
++            target_link_libraries(${target_name} INTERFACE absl::strings)
++        endif()
++    endif()
++    if (NOT absl_FOUND)
++        target_link_libraries(${target_name} PRIVATE tg_owt::libabsl)
++    endif()
++endfunction()
++
++# libopenh264
++function(link_libopenh264 target_name)
++    if (TG_OWT_PACKAGED_BUILD)
++        find_package(PkgConfig REQUIRED)
++        pkg_check_modules(LIBOPENH264 openh264)
++        set(LIBOPENH264_FOUND ${LIBOPENH264_FOUND} PARENT_SCOPE)
++        if (LIBOPENH264_FOUND)
++            target_link_libraries(${target_name} PRIVATE ${LIBOPENH264_LIBRARIES})
++            target_include_directories(${target_name} PRIVATE ${LIBOPENH264_INCLUDE_DIRS})
++        endif()
++    endif()
++    if (NOT LIBOPENH264_FOUND)
++        target_link_libraries(${target_name} PRIVATE tg_owt::libopenh264)
++        target_include_directories(${target_name} PRIVATE ${libopenh264_loc}/include)
++    endif()
++endfunction()
++
++# libusrsctp
++function(link_libusrsctp target_name)
++    if (TG_OWT_PACKAGED_BUILD)
++        find_package(PkgConfig REQUIRED)
++        pkg_check_modules(LIBUSRSCTP usrsctp)
++        set(LIBUSRSCTP_FOUND ${LIBUSRSCTP_FOUND} PARENT_SCOPE)
++        if (LIBUSRSCTP_FOUND)
++            target_link_libraries(${target_name} PRIVATE ${LIBUSRSCTP_LIBRARIES})
++            target_include_directories(${target_name} PRIVATE ${LIBUSRSCTP_INCLUDE_DIRS})
++        endif()
++    endif()
++    if (NOT LIBUSRSCTP_FOUND)
++        target_link_libraries(${target_name} PRIVATE tg_owt::libusrsctp)
++    endif()
++endfunction()
++
++# libvpx
++function(link_libvpx target_name)
++    if (TG_OWT_PACKAGED_BUILD)
++        find_package(PkgConfig REQUIRED)
++        pkg_check_modules(LIBVPX vpx>=1.10.0)
++        set(LIBVPX_FOUND ${LIBVPX_FOUND} PARENT_SCOPE)
++        if (LIBVPX_FOUND)
++            target_link_libraries(${target_name} PRIVATE ${LIBVPX_LIBRARIES})
++            target_include_directories(${target_name} PRIVATE ${LIBVPX_INCLUDE_DIRS})
++        endif()
++    endif()
++    if (NOT LIBVPX_FOUND)
++        target_link_libraries(${target_name} PRIVATE tg_owt::libvpx)
++        if (is_x86 OR is_x64)
++            target_link_libraries(${target_name}
++            PRIVATE
++                tg_owt::libvpx_mmx
++                tg_owt::libvpx_sse2
++                tg_owt::libvpx_ssse3
++                tg_owt::libvpx_sse4
++                tg_owt::libvpx_avx
++                tg_owt::libvpx_avx2
++            )
++        endif()
++    endif()
++endfunction()
++
++# libevent
++function(link_libevent target_name)
++    if (TG_OWT_PACKAGED_BUILD)
++        find_package(PkgConfig REQUIRED)
++        pkg_check_modules(LIBEVENT libevent)
++        set(LIBEVENT_FOUND ${LIBEVENT_FOUND} PARENT_SCOPE)
++        if (LIBEVENT_FOUND)
++            target_link_libraries(${target_name} PRIVATE ${LIBEVENT_LIBRARIES})
++            target_include_directories(${target_name} PRIVATE ${LIBEVENT_INCLUDE_DIRS})
++        endif()
++    endif()
++    if (NOT LIBEVENT_FOUND)
++        target_link_libraries(${target_name} PRIVATE tg_owt::libevent)
++    endif()
++endfunction()
+diff --git a/cmake/libabsl.cmake b/cmake/libabsl.cmake
+index 0cc8920..a82732a 100644
+--- a/cmake/libabsl.cmake
++++ b/cmake/libabsl.cmake
+@@ -1,4 +1,4 @@
+-add_library(libabsl OBJECT)
++add_library(libabsl OBJECT EXCLUDE_FROM_ALL)
+ init_target(libabsl)
+ add_library(tg_owt::libabsl ALIAS libabsl)
+ 
+diff --git a/cmake/libevent.cmake b/cmake/libevent.cmake
+index 0192896..31248fb 100644
+--- a/cmake/libevent.cmake
++++ b/cmake/libevent.cmake
+@@ -1,4 +1,4 @@
+-add_library(libevent OBJECT)
++add_library(libevent OBJECT EXCLUDE_FROM_ALL)
+ init_target(libevent)
+ add_library(tg_owt::libevent ALIAS libevent)
+ 
+@@ -40,7 +40,8 @@ PRIVATE
+ )
+ 
+ target_include_directories(libevent
++PUBLIC
++    $<BUILD_INTERFACE:${libevent_loc}>
+ PRIVATE
+     ${webrtc_loc}
+-    ${libevent_loc}
+ )
+diff --git a/cmake/libopenh264.cmake b/cmake/libopenh264.cmake
+index 45ce7c9..7d4742e 100644
+--- a/cmake/libopenh264.cmake
++++ b/cmake/libopenh264.cmake
+@@ -1,4 +1,4 @@
+-add_library(libopenh264 OBJECT)
++add_library(libopenh264 OBJECT EXCLUDE_FROM_ALL)
+ init_target(libopenh264)
+ add_library(tg_owt::libopenh264 ALIAS libopenh264)
+ 
+@@ -207,6 +207,21 @@ set(include_directories
+ 
+ target_include_directories(libopenh264 PRIVATE ${include_directories})
+ 
++# Create include-able wels/ directory for public use of the library
++set(GEN_INC ${CMAKE_CURRENT_BINARY_DIR}/openh264_include)
++add_custom_command(OUTPUT ${GEN_INC}/wels
++COMMAND ${CMAKE_COMMAND} -E make_directory ${GEN_INC}/wels
++COMMAND ${CMAKE_COMMAND} -E copy
++    ${libopenh264_loc}/codec/api/svc/codec_api.h
++    ${libopenh264_loc}/codec/api/svc/codec_app_def.h
++    ${libopenh264_loc}/codec/api/svc/codec_def.h
++    ${libopenh264_loc}/codec/api/svc/codec_ver.h
++    ${GEN_INC}/wels
++VERBATIM
++)
++target_sources(libopenh264 PRIVATE ${GEN_INC}/wels)
++target_include_directories(libopenh264 PUBLIC $<BUILD_INTERFACE:${GEN_INC}>)
++
+ if (is_x86)
+     set(yasm_defines X86_32)
+ else()
+diff --git a/cmake/libpffft.cmake b/cmake/libpffft.cmake
+index fa2e66f..02c3db4 100644
+--- a/cmake/libpffft.cmake
++++ b/cmake/libpffft.cmake
+@@ -1,4 +1,4 @@
+-add_library(libpffft OBJECT)
++add_library(libpffft OBJECT EXCLUDE_FROM_ALL)
+ init_target(libpffft)
+ add_library(tg_owt::libpffft ALIAS libpffft)
+ 
+diff --git a/cmake/librnnoise.cmake b/cmake/librnnoise.cmake
+index 04f72ae..a3e682e 100644
+--- a/cmake/librnnoise.cmake
++++ b/cmake/librnnoise.cmake
+@@ -1,4 +1,4 @@
+-add_library(librnnoise OBJECT)
++add_library(librnnoise OBJECT EXCLUDE_FROM_ALL)
+ init_target(librnnoise)
+ add_library(tg_owt::librnnoise ALIAS librnnoise)
+ 
+diff --git a/cmake/libsrtp.cmake b/cmake/libsrtp.cmake
+index ce4ff64..4754f13 100644
+--- a/cmake/libsrtp.cmake
++++ b/cmake/libsrtp.cmake
+@@ -1,4 +1,4 @@
+-add_library(libsrtp OBJECT)
++add_library(libsrtp OBJECT EXCLUDE_FROM_ALL)
+ init_target(libsrtp)
+ add_library(tg_owt::libsrtp ALIAS libsrtp)
+ 
+diff --git a/cmake/libusrsctp.cmake b/cmake/libusrsctp.cmake
+index ad41d12..1dc5e5e 100644
+--- a/cmake/libusrsctp.cmake
++++ b/cmake/libusrsctp.cmake
+@@ -1,4 +1,4 @@
+-add_library(libusrsctp OBJECT)
++add_library(libusrsctp OBJECT EXCLUDE_FROM_ALL)
+ init_target(libusrsctp)
+ add_library(tg_owt::libusrsctp ALIAS libusrsctp)
+ 
+diff --git a/cmake/libvpx.cmake b/cmake/libvpx.cmake
+index e6775c4..0fdfbac 100644
+--- a/cmake/libvpx.cmake
++++ b/cmake/libvpx.cmake
+@@ -1,4 +1,4 @@
+-add_library(libvpx OBJECT)
++add_library(libvpx OBJECT EXCLUDE_FROM_ALL)
+ init_target(libvpx)
+ add_library(tg_owt::libvpx ALIAS libvpx)
+ 
+diff --git a/cmake/libwebrtcbuild.cmake b/cmake/libwebrtcbuild.cmake
+index 15f854e..8efd18d 100644
+--- a/cmake/libwebrtcbuild.cmake
++++ b/cmake/libwebrtcbuild.cmake
+@@ -3,9 +3,11 @@ add_library(tg_owt::libwebrtcbuild ALIAS libwebrtcbuild)
+ 
+ target_link_libraries(libwebrtcbuild
+ INTERFACE
+-    tg_owt::libabsl
+     tg_owt::libyuv
+ )
++if (NOT absl_FOUND)
++    target_link_libraries(libwebrtcbuild INTERFACE tg_owt::libabsl)
++endif()
+ 
+ target_compile_definitions(libwebrtcbuild
+ INTERFACE
+diff --git a/cmake/libyuv.cmake b/cmake/libyuv.cmake
+index 881f9db..143e239 100644
+--- a/cmake/libyuv.cmake
++++ b/cmake/libyuv.cmake
+@@ -1,4 +1,4 @@
+-add_library(libyuv OBJECT)
++add_library(libyuv OBJECT EXCLUDE_FROM_ALL)
+ init_target(libyuv)
+ add_library(tg_owt::libyuv ALIAS libyuv)
+ 
+diff --git a/cmake/tg_owtConfig.cmake b/cmake/tg_owtConfig.cmake
+index d0001ac..e9f4388 100644
+--- a/cmake/tg_owtConfig.cmake
++++ b/cmake/tg_owtConfig.cmake
+@@ -1 +1,6 @@
++if (@absl_FOUND@)
++    include(CMakeFindDependencyMacro)
++    find_dependency(absl REQUIRED)
++endif()
++
+ include("${CMAKE_CURRENT_LIST_DIR}/tg_owtTargets.cmake")
+diff --git a/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc b/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
+index ccf0bc5..85ddc90 100644
+--- a/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
++++ b/src/modules/video_coding/codecs/h264/h264_encoder_impl.cc
+@@ -29,10 +29,10 @@
+ #include "system_wrappers/include/metrics.h"
+ #include "third_party/libyuv/include/libyuv/convert.h"
+ #include "third_party/libyuv/include/libyuv/scale.h"
+-#include "third_party/openh264/src/codec/api/svc/codec_api.h"
+-#include "third_party/openh264/src/codec/api/svc/codec_app_def.h"
+-#include "third_party/openh264/src/codec/api/svc/codec_def.h"
+-#include "third_party/openh264/src/codec/api/svc/codec_ver.h"
++#include <wels/codec_api.h>
++#include <wels/codec_app_def.h>
++#include <wels/codec_def.h>
++#include <wels/codec_ver.h>
+ 
+ namespace webrtc {
+ 
+diff --git a/src/modules/video_coding/codecs/h264/h264_encoder_impl.h b/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
+index 4eb4ad3..98e4c2f 100644
+--- a/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
++++ b/src/modules/video_coding/codecs/h264/h264_encoder_impl.h
+@@ -25,7 +25,7 @@
+ #include "common_video/h264/h264_bitstream_parser.h"
+ #include "modules/video_coding/codecs/h264/include/h264.h"
+ #include "modules/video_coding/utility/quality_scaler.h"
+-#include "third_party/openh264/src/codec/api/svc/codec_app_def.h"
++#include <wels/codec_app_def.h>
+ 
+ class ISVCEncoder;
+ 
+diff --git a/src/rtc_base/task_queue_libevent.cc b/src/rtc_base/task_queue_libevent.cc
+index 38660cd..04bc278 100644
+--- a/src/rtc_base/task_queue_libevent.cc
++++ b/src/rtc_base/task_queue_libevent.cc
+@@ -27,7 +27,7 @@
+ #include "absl/strings/string_view.h"
+ #include "api/task_queue/queued_task.h"
+ #include "api/task_queue/task_queue_base.h"
+-#include "base/third_party/libevent/event.h"
++#include <event.h>
+ #include "rtc_base/checks.h"
+ #include "rtc_base/logging.h"
+ #include "rtc_base/numerics/safe_conversions.h"
+-- 
+2.26.3
+
