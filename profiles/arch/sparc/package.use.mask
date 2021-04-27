@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sam James <sam@gentoo.org> (2021-04-24)
+# Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
 sys-devel/clang default-compiler-rt default-libcxx default-lld
 sys-devel/clang-runtime compiler-rt libcxx
