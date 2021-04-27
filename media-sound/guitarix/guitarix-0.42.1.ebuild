@@ -65,6 +65,7 @@ DOCS=( changelog README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.41.0-nostrip.patch
+	"${FILESDIR}"/${P}-fix-build-with-glib-2.68.patch
 )
 
 src_configure() {
