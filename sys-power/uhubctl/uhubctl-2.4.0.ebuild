@@ -16,6 +16,7 @@ IUSE=""
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
