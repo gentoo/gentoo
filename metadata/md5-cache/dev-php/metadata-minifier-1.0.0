@@ -1,0 +1,11 @@
+BDEPEND=dev-php/theseer-Autoload
+DEFINED_PHASES=install prepare
+DESCRIPTION=Small utility library that handles metadata minification and expansion
+EAPI=7
+HOMEPAGE=https://github.com/composer/metadata-minifier
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-7.2:*
+SLOT=0
+SRC_URI=https://github.com/composer/metadata-minifier/archive/1.0.0.tar.gz -> metadata-minifier-1.0.0.tar.gz
+_md5_=f845203c3b1e0c3fc94dc7fa49bb8171
