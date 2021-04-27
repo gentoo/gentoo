@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 ETYPE="sources"
 KEYWORDS="~amd64 ~arm64"
 
-HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
+HOMEPAGE="https://wiki.linuxfoundation.org/realtime/start"
 
 inherit eapi7-ver
 
@@ -36,7 +36,7 @@ src_prepare() {
 
 	# 627796
 	sed \
-		"s/default PREEMPT_NONE/default PREEMPT_RT_FULL/g" \
+		"s/default PREEMPT_NONE/default PREEMPT_RT/g" \
 		-i "${S}/kernel/Kconfig.preempt" || die "sed failed"
 }
 
