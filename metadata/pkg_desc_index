@@ -8199,8 +8199,8 @@ dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutin
 dev-python/blurb 1.0.7 1.0.8: Tool to create and manage NEWS blurbs for CPython
 dev-python/booleanOperations 0.9.0-r1: Boolean operations on paths
 dev-python/boto 2.49.0-r4: Amazon Web Services API
-dev-python/boto3 1.17.33 1.17.44 1.17.49 1.17.50 1.17.51 1.17.52 1.17.53 1.17.54 1.17.55 1.17.56 1.17.57 9999: The AWS SDK for Python
-dev-python/botocore 1.20.33 1.20.44 1.20.49 1.20.50 1.20.51 1.20.52 1.20.53 1.20.54 1.20.55 1.20.56 1.20.57 9999: Low-level, data-driven core of boto 3
+dev-python/boto3 1.17.33 1.17.44 1.17.49 1.17.50 1.17.51 1.17.52 1.17.53 1.17.54 1.17.55 1.17.56 1.17.57 1.17.58 9999: The AWS SDK for Python
+dev-python/botocore 1.20.33 1.20.44 1.20.49 1.20.50 1.20.51 1.20.52 1.20.53 1.20.54 1.20.55 1.20.56 1.20.57 1.20.58 9999: Low-level, data-driven core of boto 3
 dev-python/bottle 0.12.19: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.3.2: Fast NumPy array functions written in Cython
 dev-python/bpython 0.21: Syntax highlighting and autocompletion for the Python interpreter
@@ -8387,7 +8387,7 @@ dev-python/environs 9.3.2: Python library for simplified environment variable pa
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/eradicate 2.0.0: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
-dev-python/et_xmlfile 1.0.1: An implementation of lxml.xmlfile for the standard library
+dev-python/et_xmlfile 1.0.1 1.1.0: An implementation of lxml.xmlfile for the standard library
 dev-python/eventlet 0.30.0-r1 0.30.2-r1: Highly concurrent networking library
 dev-python/exam 0.10.6: Helpers for better testing
 dev-python/exdown 0.8.6 0.8.8: Extract code blocks from markdown
@@ -8447,7 +8447,7 @@ dev-python/flit_core 2.1.0 3.2.0: Simplified packaging of Python modules (core m
 dev-python/flufl-bounce 3.0.1: Email bounce detectors.
 dev-python/flufl-i18n 2.0.2 3.1.4 3.1.5: A high level API for Python internationalization
 dev-python/flufl-lock 5.0.1 5.0.4 5.0.5: NFS-safe file locking with timeouts for POSIX systems
-dev-python/fonttools 4.21.1 4.22.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 4.21.1 4.22.0 4.22.1: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/fqdn 1.5.0-r1 1.5.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -8480,7 +8480,7 @@ dev-python/gmpy 2.0.8-r2: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/google-api-core 1.26.1-r1 1.26.3: Core Library for Google Client Libraries
 dev-python/google-api-python-client 1.8.3-r1 2.0.0 2.0.2 2.1.0 2.2.0: Google API Client for Python
 dev-python/google-apitools 0.5.31: Python library to manipulate Google APIs
-dev-python/google-auth 1.28.0 1.28.1 1.29.0: Google Authentication Library
+dev-python/google-auth 1.28.0 1.28.1 1.29.0 1.30.0: Google Authentication Library
 dev-python/google-auth-httplib2 0.1.0: httplib2 Transport for Google Auth
 dev-python/google-auth-oauthlib 0.4.1-r1 0.4.3 0.4.4: Google Authentication Library
 dev-python/google-pasta 0.1.1 0.2.0: AST-based Python refactoring library
@@ -8523,7 +8523,7 @@ dev-python/hvac 0.10.8 0.10.9: hashicorp vault client in python
 dev-python/hyper-h2 3.2.0 4.0.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 5.2.0 6.0.0 6.0.1: HTTP/2 framing layer for Python
 dev-python/hyperlink 21.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 6.6.0 6.8.1 6.8.9 6.9.0 6.9.1 6.9.2 6.10.0: A library for property based testing
+dev-python/hypothesis 6.6.0 6.8.1 6.8.9 6.9.0 6.9.1 6.9.2 6.10.0 6.10.1: A library for property based testing
 dev-python/icalendar 4.0.7: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/identify 2.2.3 2.2.4: File identification library for Python
 dev-python/idna 2.10-r1 3.0 3.1: Internationalized Domain Names in Applications (IDNA)
@@ -8833,7 +8833,7 @@ dev-python/pathspec 0.8.1: Utility library for gitignore style pattern matching 
 dev-python/pathtools 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.5.1: Python module to describe statistical models and design matrices
 dev-python/pbkdf2 1.3-r1: Implementation of PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 5.5.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 5.5.1 5.6.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.4_p1: PDF file reader/writer library
 dev-python/pebble 4.6.1: Threading and multiprocessing eye-candy
 dev-python/pecan 1.4.0: A WSGI object-dispatching web framework, lean, fast, with few dependencies.
@@ -8942,7 +8942,7 @@ dev-python/pycurl 7.43.0.6: python binding for curl/libcurl
 dev-python/pycurl-requests 0.2.0: Requests-compatible interface for PycURL
 dev-python/pycxx 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydantic 1.6.1 1.8.1: Data parsing and validation using Python type hints
-dev-python/pydata-sphinx-theme 0.4.3 0.5.1 0.5.2 0.6.0 0.6.1: Bootstrap-based Sphinx theme from the PyData community
+dev-python/pydata-sphinx-theme 0.4.3 0.5.1 0.5.2 0.6.0 0.6.1 0.6.3: Bootstrap-based Sphinx theme from the PyData community
 dev-python/pydecomp 0.3-r1 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
@@ -8986,7 +8986,7 @@ dev-python/pylatex 1.4.1: A Python library for creating LaTeX files and snippets
 dev-python/pylev 1.2.0: Python Levenshtein implementation
 dev-python/pylibacl 0.6.0: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 2.7.1 2.7.2-r1 2.7.4 2.8.0 2.8.1: Python code static checker
+dev-python/pylint 2.7.1 2.7.2-r1 2.7.4 2.8.0 2.8.1 2.8.2: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pyls-black 0.4.6 0.4.6-r1: Black plugin for the Python Language Server
 dev-python/pyls-spyder 0.3.2 0.3.2-r1: Spyder extensions for the python language server
