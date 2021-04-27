@@ -2364,7 +2364,7 @@ app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.19: Library that implements the AFF image standard
 app-forensics/afl 2.56b 2.57b: american fuzzy lop - compile-time instrumentation fuzzer
-app-forensics/aflplusplus 3.12c-r1: A fork of AFL, the popular compile-time instrumentation fuzzer
+app-forensics/aflplusplus 3.12c-r2: A fork of AFL, the popular compile-time instrumentation fuzzer
 app-forensics/aide 0.16-r1 0.16.2_p20200614: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.54: Tool to locally check for signs of a rootkit
@@ -4876,7 +4876,7 @@ dev-java/commons-fileupload 1.3: High-performance file upload capability to your
 dev-java/commons-graph 0.1: A toolkit for managing graphs and graph based data structures
 dev-java/commons-httpclient 3.1-r2: The Jakarta Commons HttpClient library
 dev-java/commons-imaging 0.97: A minimalistic realtime charting library for Java
-dev-java/commons-io 2.4 2.8.0: Utility classes, stream implementations, file filters, and endian classes
+dev-java/commons-io 2.8.0: Utility classes, stream implementations, file filters, and endian classes
 dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing engine
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r3 1.3-r4: Applies XPath expressions to graphs of objects of all kinds
@@ -5181,9 +5181,9 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.272_p10 8.282_p08-r1 8.292_p10 11.0.9_p11 11.0.10_p9 11.0.11_p9: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.272_p10 8.282_p08 8.292_p10 11.0.9_p11 11.0.10_p9 11.0.11_p9: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.272_p10 8.282_p08 8.292_p10 11.0.9_p11 11.0.10_p9 11.0.11_p9: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk 8.272_p10 8.282_p08-r1 8.292_p10 11.0.11_p9: Open source implementation of the Java programming language
+dev-java/openjdk-bin 8.272_p10 8.282_p08 8.292_p10 11.0.11_p9: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.272_p10 8.282_p08 8.292_p10 11.0.11_p9: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 8.1000 11.0.9_p0: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.6-r1: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
@@ -5229,11 +5229,11 @@ dev-java/shared-objects 1.4-r4: Core factory for maximal sharing of arbitrary ob
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
 dev-java/sjsxp 1.0.1-r3: Sun Java Streaming XML Parser
 dev-java/skinlf 6.7-r1: Skin Look and Feel - Skinning Engine for the Swing toolkit
-dev-java/slf4j-api 1.7.7 1.7.30-r1: The slf4j API
+dev-java/slf4j-api 1.7.30-r1: The slf4j API
 dev-java/slf4j-ext 1.7.5 1.7.7 1.7.30: Extensions to the SLF4J API
-dev-java/slf4j-log4j12 1.7.7 1.7.30: SLF4J LOG4J-12 Binding
-dev-java/slf4j-nop 1.7.7 1.7.30: SLF4J NOP Binding
-dev-java/slf4j-simple 1.7.7 1.7.30-r1: SLF4J Simple binding
+dev-java/slf4j-log4j12 1.7.30: SLF4J LOG4J-12 Binding
+dev-java/slf4j-nop 1.7.30: SLF4J NOP Binding
+dev-java/slf4j-simple 1.7.30-r1: SLF4J Simple binding
 dev-java/snakeyaml 1.16 1.28-r1: YAML 1.1 parser and emitter for Java
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
@@ -5270,7 +5270,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.26 1.2.28: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.108 8.5.64 8.5.65 9.0.44 9.0.45 10.0.4 10.0.5: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
+dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.108 7.0.109 8.5.64 8.5.65 9.0.44 9.0.45 10.0.4 10.0.5: Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -8300,7 +8300,7 @@ dev-python/cython-test-exception-raiser 1.0.0: A trivial extension that just rai
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dask 2021.3.0 2021.4.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/dbus-python 1.2.16-r1: Python bindings for the D-Bus messagebus
-dev-python/dbusmock 0.22.0 0.23.0: Easily create mock objects on D-Bus for software testing
+dev-python/dbusmock 0.23.0: Easily create mock objects on D-Bus for software testing
 dev-python/dbutils 1.3 2.0 2.0.1: Database connections for multi-threaded environments
 dev-python/ddt 1.4.2: A library to multiply test cases
 dev-python/debtcollector 2.2.0: Python deprecation patterns and strategies that collect technical debt
@@ -8377,7 +8377,7 @@ dev-python/ecdsa 0.16.1: ECDSA cryptographic signature library in pure Python
 dev-python/editdistance-s 1.0.0: Fast implementation of edit (Levenshtein) distance
 dev-python/editorconfig-core-py 0.12.0 0.12.3-r1: Clone of EditorConfig core written in Python
 dev-python/elasticsearch-py 7.7.0-r1: Official Python low-level client for Elasticsearch
-dev-python/elementpath 2.2.0 2.2.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
+dev-python/elementpath 2.2.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
 dev-python/emcee 3.0.2: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3.4: A powerful and robust templating system for Python
@@ -8397,7 +8397,7 @@ dev-python/executing 0.5.4 0.6.0: Get information about what a Python frame is c
 dev-python/expects 0.9.0: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 1.0.0-r1: Useful extra bits for Python that should be in the standard library
 dev-python/eyeD3 0.9.6: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fakeredis 1.4.5 1.5.0: Fake implementation of redis API for testing purposes
+dev-python/fakeredis 1.5.0: Fake implementation of redis API for testing purposes
 dev-python/falcon 2.0.0: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.16-r1: Python package that provides useful locks
 dev-python/fastimport 0.9.8-r1 0.9.9 0.9.11: Library for parsing the fastimport VCS serialization format
@@ -8453,7 +8453,7 @@ dev-python/fqdn 1.5.0-r1 1.5.1: RFC-compliant FQDN validation and manipulation f
 dev-python/freezegun 1.1.0: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
 dev-python/frozendict 1.2: A simple immutable mapping for python
-dev-python/fs 2.4.12 2.4.13: Filesystem abstraction layer
+dev-python/fs 2.4.13: Filesystem abstraction layer
 dev-python/fsspec 0.8.5 0.8.7 0.9.0 2021.04.0: A specification that python filesystems should adhere to
 dev-python/fudge 1.1.1: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6-r1: Recursive descent parsing library based on functional combinators
@@ -8473,7 +8473,7 @@ dev-python/gevent 21.1.2: Coroutine-based network library
 dev-python/gevent-websocket 0.10.1: Websocket handler for the gevent pywsgi server
 dev-python/geventhttpclient 1.4.5: A high performance, concurrent HTTP client library for Python using gevent
 dev-python/git-review 1.28.0 2.1.0: Tool to submit code to Gerrit
-dev-python/gitdb 4.0.5-r1 4.0.6 4.0.7: GitDB is a pure-Python git object database
+dev-python/gitdb 4.0.7: GitDB is a pure-Python git object database
 dev-python/github3 1.3.0: A wrapper for the GitHub API written in python
 dev-python/glance_store 2.3.0: A library for glance
 dev-python/glooey 0.3.4-r1: An object-oriented GUI library for pyglet
@@ -8569,7 +8569,7 @@ dev-python/jaraco-classes 3.2.1: Classes used by other projects by developer jar
 dev-python/jaraco-collections 3.2.0 3.3.0: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-context 4.0.0: Context managers by jaraco
 dev-python/jaraco-envs 2.1.1: Classes for orchestrating Python (virtual) environments.
-dev-python/jaraco-functools 3.2.1 3.3.0: Additional functions used by other projects by developer jaraco
+dev-python/jaraco-functools 3.3.0: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 6.0.1: Tools for working with iterables. Complements itertools and more_itertools
 dev-python/jaraco-logging 3.1.0: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-packaging 8.2.1: Tools to supplement packaging Python releases
@@ -8614,7 +8614,7 @@ dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.8.0: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keep 2.10.1: Personal shell command keeper and snippets manager
-dev-python/keyring 23.0.0 23.0.1: Provides access to the system keyring service
+dev-python/keyring 23.0.1: Provides access to the system keyring service
 dev-python/keystoneauth 4.2.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 9.1.0: A middleware for the OpenStack Keystone API
 dev-python/kiwisolver 1.3.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
@@ -8873,7 +8873,7 @@ dev-python/pmw 2.0.1-r2: Toolkit for building high-level compound Python widgets
 dev-python/pocketlint 0.20 0.21: Shared code for running pylint against rhinstaller projects
 dev-python/pockets 0.9.1-r1: Collection of helpful Python tools
 dev-python/podcastparser 0.6.5: Podcast parser for the gpodder client
-dev-python/polib 1.1.0-r1 1.1.1: A library to manipulate gettext files (.po and .mo files)
+dev-python/polib 1.1.1: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 3.0.7: Python package to handle polygonal shapes in 2D
 dev-python/pony 0.7.14: Python ORM with beautiful query syntax
 dev-python/pooch 1.2.0: manages your Python library's sample data files
@@ -8955,7 +8955,7 @@ dev-python/pyelftools 0.27: pure-Python library for analyzing ELF files and DWAR
 dev-python/pyenchant 3.2.0: Python bindings for the Enchant spellchecking system
 dev-python/pyfakefs 4.4.0: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r2: Python package for drawing Feynman diagrams
-dev-python/pyflakes 2.2.0 2.3.0 2.3.1: Passive checker for Python programs
+dev-python/pyflakes 2.2.0 2.3.1: Passive checker for Python programs
 dev-python/pyformance 0.4-r1: Performance metrics, based on Coda Hale's Yammer metrics
 dev-python/pyftpdlib 1.5.6-r1: Python FTP server library
 dev-python/pygal 2.4.0-r1: A python SVG charts generator
@@ -9026,7 +9026,7 @@ dev-python/pypng 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.24: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.4 1.4.5: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 3.0.1: Python interface to the PROJ library
-dev-python/pyproject2setuppy 10 11 12: Cheap setup.py hack to install flit & poetry-based projects
+dev-python/pyproject2setuppy 11 12: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pypugjs 5.9.5 5.9.8 5.9.9: Pug (Jade) syntax adapter for Django, Jinja2 and Mako templates
 dev-python/pypy 7.3.3_p2-r1 7.3.3_p3 7.3.4: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-exe 7.3.3_p2 7.3.4: PyPy executable (build from source)
@@ -9260,7 +9260,7 @@ dev-python/responses 0.13.1 0.13.2: Utility for mocking out the Python Requests 
 dev-python/restructuredtext-lint 1.3.0: Checks PyPI validity of reStructuredText
 dev-python/retry-decorator 1.1.1: Decorator for retrying when exceptions occur
 dev-python/retrying 1.3.3: General-purpose retrying library
-dev-python/rfc3339-validator 0.1.2 0.1.3: A pure python RFC3339 validator
+dev-python/rfc3339-validator 0.1.3: A pure python RFC3339 validator
 dev-python/rfc3986 1.4.0: Validating URI References per RFC 3986
 dev-python/rfc3986-validator 0.1.1: Pure python RFC3986 validator
 dev-python/rfc3987 1.3.8-r1: Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)
@@ -9354,7 +9354,7 @@ dev-python/sphinx-jinja 0.3.0: A sphinx extension to include jinja based templat
 dev-python/sphinx-multiversion 0.2.4: Add support for multiple versions to sphinx
 dev-python/sphinx-notfound-page 0.5: Create a custom 404 page with absolute URLs hardcoded.
 dev-python/sphinx-panels 0.5.2: A sphinx extension for creating panels in a grid layout
-dev-python/sphinx-prompt 1.3.0 1.4.0: Sphinx directive to add unselectable prompt
+dev-python/sphinx-prompt 1.4.0: Sphinx directive to add unselectable prompt
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 2.0.0-r1: Celery Sphinx Theme and Utilities
@@ -18246,7 +18246,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.7.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 90.0.4430.85 91.0.4472.19 92.0.4484.7: Open-source version of Google Chrome web browser
+www-client/chromium 90.0.4430.85 90.0.4430.93 91.0.4472.19 92.0.4484.7: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5-r3 3.1_pre20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.13.5-r100 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.34.4 3.36.4: GNOME webbrowser based on Webkit
@@ -18327,7 +18327,7 @@ www-servers/servefile 0.5.1: Serve a single file via HTTP
 www-servers/sniproxy 0.6.0-r1: Proxies incoming HTTP and TLS connections based on the hostname
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.108 8.5.64 8.5.65 9.0.44 9.0.45 10.0.4 10.0.5: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
+www-servers/tomcat 7.0.108 7.0.109 8.5.64 8.5.65 9.0.44 9.0.45 10.0.4 10.0.5: Tomcat Servlet-5.0/JSP-3.0/EL-4.0/WebSocket-2.0/JASIC-2.0 Container
 www-servers/tornado 6.0.4 6.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.19.1-r100 2.0.19.1-r101: uWSGI server for Python web applications
 www-servers/varnish 6.0.6 6.3.2 6.4.0 6.5.0 6.5.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
@@ -18929,7 +18929,7 @@ x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private convers
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.23.3 1.25.0-r1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
-x11-plugins/pidgin-skypeweb 1.5 1.7 9999: SkypeWeb Plugin for Pidgin
+x11-plugins/pidgin-skypeweb 1.7 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-telegram 1.4.6: A libpurple protocol plugin that adds support for the Telegram messenger
 x11-plugins/pidgin-window_merge 0.3: A Pidgin plugin that merges the Buddy List window with a conversation window
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
@@ -19069,7 +19069,7 @@ x11-themes/arc-theme 20201013 20210127 20210412: A flat theme with transparent e
 x11-themes/blueglass-xcursors 0.4-r1: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/chameleon-xcursors 0.5-r2: Style neutral scalable cursor theme
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
-x11-themes/clearlooks-phenix 7.0.1 9999: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
+x11-themes/clearlooks-phenix 7.0.1: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
 x11-themes/comix-xcursors 0.8.2 0.9.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
