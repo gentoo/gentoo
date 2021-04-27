@@ -16,6 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	KEYWORDS="amd64 x86"
 	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
+	SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${P}-volatile-atomic-glib-2.68.patch.gz"
 	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
@@ -86,6 +87,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	xdg_src_prepare
+
+	eapply "${WORKDIR}/${P}-volatile-atomic-glib-2.68.patch"
 
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
