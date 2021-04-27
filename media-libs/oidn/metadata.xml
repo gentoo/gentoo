@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Intel Open Image Denoise is an open source library of high-performance,
+		high-quality denoising filters for images rendered with ray tracing. Intel
+		Open Image Denoise is part of the Intel® oneAPI Rendering Toolkit and is
+	</longdescription>
+	<upstream>
+		<remote-id type="github">OpenImageDenoise/oidn</remote-id>
+	</upstream>
+</pkgmetadata>
