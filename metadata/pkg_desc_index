@@ -12200,7 +12200,7 @@ gui-libs/gdk-pixbuf-loader-webp 0.0.2: WebP GDK Pixbuf Loader library
 gui-libs/greetd 0.6.1 0.7.0: ipc based login daemon
 gui-libs/gtk 4.2.0: Gimp ToolKit +
 gui-libs/gtk-layer-shell 0.1.0-r1: Library to create desktop components for Wayland using the Layer Shell protocol
-gui-libs/libhandy 0.0.13 1.0.3 1.2.0 1.2.1: Building blocks for modern adaptive GNOME apps
+gui-libs/libhandy 0.0.13 1.0.3 1.2.0 1.2.1 1.2.2: Building blocks for modern adaptive GNOME apps
 gui-libs/libwpe 1.8.0 1.10.0: Platform-agnostic interfaces for WPE WebKit
 gui-libs/neatvnc 0.4.0 9999: liberally licensed VNC server library with a clean interface
 gui-libs/tepl 4.4.0 5.0.1 6.00.0: GtkSourceView-based text editors and IDE helper library
@@ -15412,7 +15412,7 @@ net-misc/minidlna 1.3.0-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190824 1.5.20200928: MiniSSDP Daemon
 net-misc/miniupnpd 2.2.0 2.2.1: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20201225: Database of mobile broadband service providers
-net-misc/modemmanager 1.14.8-r1 1.16.2: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.14.8-r1 1.16.2 1.16.4: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.3.2 9999: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 4.2: IP multicast routing daemon
@@ -17196,7 +17196,7 @@ sys-apps/onerng 3.6-r3: Software for the Open Hardware Random Number Generator c
 sys-apps/opal-utils 6.7: OPAL firmware utilities
 sys-apps/openrc 0.42.1-r1 0.43.1 0.43.2 0.43.3 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 0.3.1 9999: A standalone utility to process systemd-style tmpfiles.d files
-sys-apps/osinfo-db 20210312: osinfo database files
+sys-apps/osinfo-db 20210312 20210426: osinfo database files
 sys-apps/osinfo-db-tools 1.9.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.2.3 1.2.5: PaX flags maintenance daemon
