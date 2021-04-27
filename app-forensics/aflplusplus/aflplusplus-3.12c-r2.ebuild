@@ -91,7 +91,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	# TODO: Any otherrs?
+	# TODO: Any others?
 	optfeature "fuzzing with AFL_USE_ASAN" sys-libs/compiler-rt-sanitizers[asan]
 	optfeature "fuzzing with AFL_USE_MSAN" sys-libs/compiler-rt-sanitizers[msan]
 }
