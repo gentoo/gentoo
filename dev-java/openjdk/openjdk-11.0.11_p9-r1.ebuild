@@ -175,7 +175,7 @@ src_configure() {
 	)
 
 	if use javafx; then
-		local zip="${EROOT%/}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
+		local zip="${EPREFIX%/}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
 		if [[ -r ${zip} ]]; then
 			myconf+=( --with-import-modules="${zip}" )
 		else
