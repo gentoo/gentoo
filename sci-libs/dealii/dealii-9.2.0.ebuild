@@ -73,6 +73,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
+	"${FILESDIR}"/${PN}-9.2.0-fix-boost-include-file.patch
 )
 
 src_configure() {
