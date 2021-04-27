@@ -35,6 +35,19 @@
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-27)
 # library with no consumer
 # removal in 30 days
+# see bug: https://bugs.gentoo.org/785886
+dev-java/easymock-classextension
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-27)
+# libraries with no consumer
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/785883
+dev-java/httpcomponents-client
+dev-java/httpcomponents-core
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-27)
+# library with no consumer
+# removal in 30 days
 # see bug: https://bugs.gentoo.org/785877
 dev-java/dtdparser
 
