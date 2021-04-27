@@ -4950,7 +4950,7 @@ dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protoco
 dev-java/gnu-jaf 1.1.1-r1 1.1.2: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/gradle-bin 6.3: A project automation and build tool with a Groovy based DSL
-dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
+dev-java/gson 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/gwt 2.8.2: Google Web Toolkit library
