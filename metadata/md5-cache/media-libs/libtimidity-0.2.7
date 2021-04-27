@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install test
+DEPEND=ao? ( >=media-libs/libao-1.1.0-r2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+DESCRIPTION=MIDI to WAVE converter library
+EAPI=7
+HOMEPAGE=http://libtimidity.sourceforge.net
+INHERIT=multilib-minimal
+IUSE=ao debug abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=ao? ( >=media-libs/libao-1.1.0-r2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
+RESTRICT=test
+SLOT=0/2
+SRC_URI=mirror://sourceforge/libtimidity/libtimidity-0.2.7.tar.gz
+_eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566
+_md5_=855c85bd7370f4003fefee03a65a7745
