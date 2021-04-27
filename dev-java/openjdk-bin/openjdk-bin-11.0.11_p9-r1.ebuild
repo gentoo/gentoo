@@ -38,6 +38,7 @@ RDEPEND="
 	kernel_linux? (
 		media-libs/fontconfig:1.0
 		media-libs/freetype:2
+		media-libs/harfbuzz
 		>=sys-libs/glibc-2.2.5:*
 		sys-libs/zlib
 		alsa? ( media-libs/alsa-lib )
@@ -83,6 +84,9 @@ src_install() {
 		# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
 		# also has an explicit dependency while Oracle seemingly dlopens it.
 		rm -vf lib/libfreetype.so || die
+
+		# prefer system copy # https://bugs.gentoo.org/776676
+		rm -vf lib/libharfbuzz.so || die
 
 		# Oracle and IcedTea have libjsoundalsa.so depending on
 		# libasound.so.2 but AdoptOpenJDK only has libjsound.so. Weird.
