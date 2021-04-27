@@ -17797,7 +17797,7 @@ sys-kernel/mips-sources 4.14.227 4.19.183 5.4.108: Kernel.org sources for MIPS-b
 sys-kernel/pf-sources 5.9_p7 5.10_p12 5.11_p1 5.11_p2 5.11_p3 5.11_p4 5.11_p5 5.11_p6 5.11_p7 5.11_p8: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.75_p20190925 5.4.79_p20201201 5.10.11_p20210201 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.79_p20201201-r1 5.4.9999 5.10.11_p20210201: Raspberry Pi kernel sources
-sys-kernel/rt-sources 4.4.240_p209 4.4.245_p211 4.4.249_p212 4.9.240_p155 4.9.247_p162 4.14.206_p99 4.14.209_p101 4.14.214_p104 4.19.148_p64 4.19.160_p69 4.19.165_p70 5.4.70_p40 5.4.84_p47 5.10.1_p20 5.10.4_p22: Full Linux 5.10 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 4.4.249_p212 4.4.267_p221 4.9.247_p162 4.9.263_p177 4.14.214_p104 4.14.226_p109 4.19.165_p70 4.19.188_p77 5.4.84_p47 5.4.109_p56 5.10.4_p22 5.10.30_p37 5.11.4_p11: Full Linux 5.11 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/vanilla-kernel 5.4.109 5.4.111 5.4.112 5.4.113 5.4.114 5.10.27 5.10.29 5.10.30 5.10.31 5.10.32 5.11.13 5.11.14 5.11.15 5.11.16: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-sources 4.4.267 4.9.267 4.14.231 4.19.188 5.4.114 5.10.32 5.11.16 5.12.0: Full sources for the Linux kernel
 sys-kernel/zen-sources 5.10.16 5.11.15: The Zen Kernel Live Sources

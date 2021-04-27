@@ -2,14 +2,14 @@ DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=6
-HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://www.kernel.org/pub/linux/kernel/projects/rt/ https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
+HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://wiki.linuxfoundation.org/realtime/start https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
 INHERIT=eapi7-ver kernel-2
 IUSE=symlink build deblob
 KEYWORDS=~amd64 ~arm64
 LICENSE=GPL-2
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
-SLOT=5.4.70_p40
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.4.70.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-5.4 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-check -> deblob-check-5.4 ) https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.70-rt40.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.70-rt40.patch.xz
+SLOT=5.4.109_p56
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/patch-5.4.109.xz https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-5.4 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//5.4-gnu/deblob-check -> deblob-check-5.4 ) https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.109-rt56.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.109-rt56.patch.xz
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	estack	055c42df72f76a4f45ec92b35e83cd56	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-any-r1	17241a11501065ff3651350040875aa9	kernel-2	198f6aa4709a3392bdc99b64f962e342
-_md5_=2524629bd8b115fb50d4edeee9c7bf5c
+_md5_=30e10915a43e18095020124626754a13
