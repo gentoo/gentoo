@@ -60,7 +60,7 @@ pkg_setup() {
 	# make checks non-fatal. The correct fix is blackisting ssb and, perhaps
 	# b43 via udev rules. Moreover, previous fix broke binpkgs support.
 	CONFIG_CHECK="~!B43 ~!BCMA ~!SSB ~!X86_INTEL_LPSS"
-	CONFIG_CHECK2="LIB80211 ~!MAC80211 ~LIB80211_CRYPT_TKIP"
+	CONFIG_CHECK2="~LIB80211 ~!MAC80211 ~LIB80211_CRYPT_TKIP"
 	ERROR_B43="B43: If you insist on building this, you must blacklist it!"
 	ERROR_BCMA="BCMA: If you insist on building this, you must blacklist it!"
 	ERROR_SSB="SSB: If you insist on building this, you must blacklist it!"
