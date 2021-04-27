@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.4.6-dash_doc.patch )
 
-src_prepare(){
+src_prepare() {
 	default
 
 	eautoreconf
