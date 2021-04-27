@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,6 +41,8 @@ BDEPEND="
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 	gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
+
+PATCHES=( "${FILESDIR}"/${P}-yelp.patch )
 
 src_prepare() {
 	default
