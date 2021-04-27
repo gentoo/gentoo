@@ -34,7 +34,7 @@ BDEPEND="
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/sphinx_rtd_theme dev-python/sphinxcontrib-autoprogram
 
-python_prepare_all(){
+python_prepare_all() {
 	# Exception: Versioning for this project requires either an sdist tarball, or access to an
 	# upstream git repository. It's also possible that there is a mismatch between the package
 	# name in setup.cfg and the argument given to pbr.version.VersionInfo. Project name qstylizer
