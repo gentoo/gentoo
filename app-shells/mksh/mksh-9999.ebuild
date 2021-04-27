@@ -57,6 +57,18 @@ src_compile() {
 	sh FAQ2HTML.sh || die
 }
 
+src_test() {
+	einfo "Testing regular mksh."
+	./mksh test.sh -v || die
+
+	if use lksh; then
+		einfo "Testing lksh, POSIX long-bit mksh."
+		pushd "${S}"_lksh >/dev/null || die
+		./lksh test.sh -v || die
+		popd >/dev/null || die
+	fi
+}
+
 src_install() {
 	into /
 	dobin mksh
@@ -69,17 +81,5 @@ src_install() {
 		dobin "${S}"_lksh/lksh
 		dosym lksh /bin/rlksh
 		doman "${S}"_lksh/lksh.1
-	fi
-}
-
-src_test() {
-	einfo "Testing regular mksh."
-	./mksh test.sh -v || die
-
-	if use lksh; then
-		einfo "Testing lksh, POSIX long-bit mksh."
-		pushd "${S}"_lksh >/dev/null || die
-		./lksh test.sh -v || die
-		popd >/dev/null || die
 	fi
 }
