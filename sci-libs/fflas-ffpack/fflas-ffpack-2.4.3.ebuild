@@ -29,16 +29,14 @@ pkg_pretend() {
 	[[ "${MERGE_TYPE}" != "binary" ]] && use openmp && tc-check-openmp
 }
 
-pkg_setup(){
-	tc-export PKG_CONFIG
-}
-
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
+
 	econf \
 		--enable-precompilation \
 		$(use_enable openmp) \
@@ -56,7 +54,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }
