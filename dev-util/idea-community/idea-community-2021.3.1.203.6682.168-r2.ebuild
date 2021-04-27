@@ -34,20 +34,17 @@ LICENSE="Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CDDL-1.1
 	JDOM LGPL-2.1 LGPL-2.1+ LGPL-3-with-linking-exception MIT
 	MPL-1.0 MPL-1.1 OFL ZLIB"
 
-DEPEND="!dev-util/${PN}:14
-	!dev-util/${PN}:15
+DEPEND="
 	|| (
-		dev-java/openjdk:11
-		dev-java/openjdk-bin:11
+		<=dev-java/openjdk-11.0.11_p9:11
+		<=dev-java/openjdk-bin-11.0.11_p9:11
 	)"
 RDEPEND="${DEPEND}
 	dev-java/jansi-native
 	dev-libs/libdbusmenu
-	=dev-util/lldb-10*
-	|| (
-		dev-java/openjdk:11
-		dev-java/openjdk-bin:11
-	)"
+	media-libs/harfbuzz
+	=dev-util/lldb-10*"
+
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
@@ -134,4 +131,7 @@ src_install() {
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	mkdir -p "${D}/etc/sysctl.d/" || die
 	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
+
+	# remove bundled harfbuzz
+	rm -f "${D}"/lib/libharfbuzz.so || die
 }
