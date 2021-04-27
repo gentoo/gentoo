@@ -21,7 +21,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-src_prepare(){
+src_prepare() {
 	default
 
 	# The autodetection finds "lib" first, which may e.g. contain 32-bit
