@@ -30,7 +30,7 @@ SLOT="0"
 IUSE="
 	adolc assimp arpack cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 cuda +debug doc +examples ginkgo gmsh +gsl hdf5
-	+lapack metis mpi muparser nanoflann opencascade netcdf p4est petsc
+	+lapack metis mpi muparser nanoflann opencascade p4est petsc
 	scalapack slepc +sparse static-libs sundials symengine +tbb trilinos
 "
 
@@ -56,7 +56,6 @@ RDEPEND="dev-libs/boost
 	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
 	nanoflann? ( sci-libs/nanoflann )
-	netcdf? ( sci-libs/netcdf-cxx:0 )
 	opencascade? ( sci-libs/opencascade:* )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
@@ -109,7 +108,6 @@ src_configure() {
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
 		-DDEAL_II_WITH_NANOFLANN="$(usex nanoflann)"
-		-DDEAL_II_WITH_NETCDF="$(usex netcdf)"
 		-DOPENCASCADE_DIR="${CASROOT}"
 		-DDEAL_II_WITH_OPENCASCADE="$(usex opencascade)"
 		-DDEAL_II_WITH_P4EST="$(usex p4est)"
