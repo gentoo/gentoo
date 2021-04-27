@@ -20,6 +20,7 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	>=dev-perl/Alien-Build-0.320.0
+	dev-perl/Devel-CheckLib
 	virtual/perl-ExtUtils-CBuilder
 	>=virtual/perl-ExtUtils-MakeMaker-6.520.0
 	test? (
