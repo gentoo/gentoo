@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-04-24)
+# Deps not yet tested/keyworded.
+sys-devel/clang default-compiler-rt default-libcxx default-lld
+sys-devel/llvm gold z3
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-devel/clang not keyworded on SPARC.
 sys-libs/llvm-libunwind test
