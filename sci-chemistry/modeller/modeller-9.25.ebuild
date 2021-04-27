@@ -37,7 +37,7 @@ pkg_setup() {
 	esac
 }
 
-python_prepare_all(){
+python_prepare_all() {
 	sed "s:i386-intel8:${EXECTYPE}:g" -i src/swig/setup.py || die
 	rm -rf modlib/modeller/python_library || die
 	sed -i '1 i\#!/usr/bin/python' bin/modslave.py || die
@@ -45,7 +45,7 @@ python_prepare_all(){
 	distutils-r1_python_prepare_all
 }
 
-python_compile(){
+python_compile() {
 	cd src/swig || die
 	swig -python -keyword -nodefaultctor -nodefaultdtor -noproxy modeller.i || die
 	distutils-r1_python_compile
@@ -56,7 +56,7 @@ python_install() {
 	distutils-r1_python_install
 }
 
-python_install_all(){
+python_install_all() {
 	cd "${S}" || die
 	sed \
 		-e "/^EXECUTABLE_TYPE/s:xxx:${EXECTYPE}:g" \
