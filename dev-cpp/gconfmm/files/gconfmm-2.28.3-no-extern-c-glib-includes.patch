@@ -1,0 +1,44 @@
+diff -Naur gconfmm-2.28.3-original/gconf/gconfmm/callback.h gconfmm-2.28.3/gconf/gconfmm/callback.h
+--- gconfmm-2.28.3-original/gconf/gconfmm/callback.h	2011-10-18 11:33:49.000000000 -0400
++++ gconfmm-2.28.3/gconf/gconfmm/callback.h	2021-02-13 09:21:06.167235506 -0500
+@@ -22,10 +22,7 @@
+ #ifndef GCONFMM_CALLBACK_H
+ #define GCONFMM_CALLBACK_H
+ 
+-extern "C"
+-{
+ #include <gconf/gconf-client.h>
+-}
+ 
+ #include <glibmm/object.h>
+ #include <gconfmm/entry.h>
+diff -Naur gconfmm-2.28.3-original/gconf/gconfmm/schema.h gconfmm-2.28.3/gconf/gconfmm/schema.h
+--- gconfmm-2.28.3-original/gconf/gconfmm/schema.h	2011-10-21 04:51:27.000000000 -0400
++++ gconfmm-2.28.3/gconf/gconfmm/schema.h	2021-02-13 09:21:24.616354041 -0500
+@@ -31,10 +31,8 @@
+ #include <gconfmm/value.h>
+ 
+ 
+-extern "C" {
+-    // TODO: do not include this.
++// TODO: do not include this.
+ #include <gconf/gconf-schema.h>
+-}
+ 
+ namespace Gnome
+ {
+diff -Naur gconfmm-2.28.3-original/gconf/src/schema.hg gconfmm-2.28.3/gconf/src/schema.hg
+--- gconfmm-2.28.3-original/gconf/src/schema.hg	2011-10-18 11:33:49.000000000 -0400
++++ gconfmm-2.28.3/gconf/src/schema.hg	2021-02-13 09:21:58.002568546 -0500
+@@ -24,10 +24,8 @@
+ 
+ _DEFS(gconfmm,gconf)
+ 
+-extern "C" {
+-    // TODO: do not include this.
++// TODO: do not include this.
+ #include <gconf/gconf-schema.h>
+-}
+ 
+ namespace Gnome
+ {
