@@ -11,7 +11,7 @@ SRC_URI="https://github.com/atheme/atheme/releases/download/v${PV}/${PN}-v${PV}.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cracklib largenet ldap nls +pcre perl profile ssl"
 S="${WORKDIR}/${PN}-v${PV}"
 
