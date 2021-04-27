@@ -184,7 +184,9 @@ boostrap_rust_version_check() {
 pre_build_checks() {
 	local M=8192
 	# multiply requirements by 1.5 if we are doing x86-multilib
-	M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
+	if use amd64; then
+		M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
+	fi
 	M=$(( $(usex clippy 128 0) + ${M} ))
 	M=$(( $(usex miri 128 0) + ${M} ))
 	M=$(( $(usex rls 512 0) + ${M} ))
