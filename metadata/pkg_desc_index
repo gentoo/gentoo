@@ -2891,7 +2891,7 @@ app-office/plan 1.10: Motif based schedule planner
 app-office/planner 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.6.1 9999: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.6.1 1.5.7 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.24.6: Personal finances manager, aiming at being simple and intuitive
 app-office/texmacs 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0.3 5.0.4: A nice LaTeX-IDE
