@@ -373,7 +373,7 @@ src_unpack() {
 
 src_prepare() {
 
-	eapply_bin(){
+	eapply_bin() {
 		local patch
 		for patch in ${PATCHES_BIN[@]}; do
 			patchbin --nogit < "${patch}" || die
@@ -436,7 +436,7 @@ src_prepare() {
 \164\2/' loader/Makefile.in || die
 	fi
 
-	rm_man_file(){
+	rm_man_file() {
 		local file="${1}"
 		loc=${2}
 		sed -i "/${loc}\.UTF-8\.man\.in/d" "${file}" || die
