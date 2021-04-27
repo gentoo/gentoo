@@ -13,5 +13,5 @@ REQUIRED_USE=boot2qt? ( remotelinux ) clang? ( test? ( qbs ) ) mcu? ( cmake ) py
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://download.qt.io/official_releases/qtcreator/4.12/4.12.3/qt-creator-opensource-src-4.12.3.tar.xz
-_eclasses_=llvm	9a7b0b234f4be44fe82e04eefb36e8f2	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
+_eclasses_=llvm	e00745e3b8d63dc13bfe5a2d7310ee6b	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	qmake-utils	dc74fe3891abc25e80dad5cd3d7c6e47	virtualx	d828f8a6cfc731f2683d0967d3f2f95a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba	xdg	c7ba313ea1eaf266f95cc6235f7d6a07
 _md5_=5c9c7b683d4e4841f5283154aec317a5

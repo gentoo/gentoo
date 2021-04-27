@@ -12,5 +12,5 @@ RDEPEND=audit? ( sys-process/audit ) crypt? ( dev-libs/openssl:0= ) clang? ( <sy
 REQUIRED_USE=python? ( || ( python_targets_python3_7 python_targets_python3_8 ) )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz
-_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	estack	055c42df72f76a4f45ec92b35e83cd56	llvm	9a7b0b234f4be44fe82e04eefb36e8f2	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
+_eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	bash-completion-r1	8e7c071081c68c2c398b77fe3a1d6908	estack	055c42df72f76a4f45ec92b35e83cd56	llvm	e00745e3b8d63dc13bfe5a2d7310ee6b	prefix	de7d8e2b10085ed5ff09ad70e4753e5c	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	linux-info	30ded7f9adbdd03d3e848cdd74f6c395
 _md5_=80c822abdc3acf71e719d963dd5769b0

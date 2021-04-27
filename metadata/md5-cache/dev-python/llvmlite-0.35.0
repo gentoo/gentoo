@@ -12,5 +12,5 @@ RDEPEND=sys-devel/llvm:10 sys-libs/zlib:0= python_targets_python3_7? ( dev-lang/
 REQUIRED_USE=|| ( python_targets_python3_7 python_targets_python3_8 python_targets_python3_9 )
 SLOT=0
 SRC_URI=https://github.com/numba/llvmlite/archive/v0.35.0.tar.gz -> llvmlite-0.35.0.gh.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	llvm	9a7b0b234f4be44fe82e04eefb36e8f2
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	python-utils-r1	3ea803de86891185c7b1db2c0b5bc8c8	python-r1	26e4ad0a4190b14f70973dc253e86535	distutils-r1	d8655e1387589a2e1930339b1627d5c1	llvm	e00745e3b8d63dc13bfe5a2d7310ee6b
 _md5_=fcf68d194e0702ec090b9ea0dc2a39a7
