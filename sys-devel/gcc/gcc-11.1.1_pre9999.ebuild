@@ -3,8 +3,8 @@
 
 EAPI="7"
 
-PATCH_GCC_VER="11.0.0"
-PATCH_VER="6"
+PATCH_GCC_VER="11.1.0"
+PATCH_VER="1"
 
 inherit toolchain
 
