@@ -16,7 +16,7 @@ SRC_URI="https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="audit berkdb debug nis selinux"
+IUSE="audit berkdb debug nis selinux xcrypt"
 
 BDEPEND="
 	dev-libs/libxslt
@@ -33,6 +33,7 @@ DEPEND="
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	nis? ( net-libs/libnsl[${MULTILIB_USEDEP}]
+	xcrypt? ( >=sys-libs/glibc-2.30[-crypt] sys-libs/libxcrypt[system] )
 	>=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )"
 
 RDEPEND="${DEPEND}"
@@ -51,11 +52,9 @@ multilib_src_configure() {
 	# Do not let user's BROWSER setting mess us up. #549684
 	unset BROWSER
 
-	# Disable automatic detection of libxcrypt; we _don't_ want the
-	# user to link libxcrypt in by default, since we won't track the
-	# dependency and allow to break PAM this way.
-
-	export ac_cv_header_xcrypt_h=no
+	if ! use xcrypt; then
+		export ac_cv_header_xcrypt_h=no
+	fi
 
 	local myconf=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
