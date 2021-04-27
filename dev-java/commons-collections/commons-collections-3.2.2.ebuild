@@ -4,7 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="commons-collections:commons-collections:3.2.1"
+MAVEN_ID="commons-collections:commons-collections:3.2.2"
 
 inherit java-pkg-2 java-ant-2 java-utils-2
 
