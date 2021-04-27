@@ -177,7 +177,7 @@ get_llvm_prefix() {
 		die "${FUNCNAME}: invalid max_slot=${max_slot}"
 	fi
 
-	die "No LLVM slot${1:+ <= ${1}} found installed!"
+	die "No LLVM slot${1:+ <= ${1}} satisfying the package's dependencies found installed!"
 }
 
 # @FUNCTION: llvm_pkg_setup

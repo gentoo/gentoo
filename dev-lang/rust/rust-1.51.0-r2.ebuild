@@ -35,7 +35,7 @@ SRC_URI="
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
-LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
+LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
@@ -46,17 +46,26 @@ IUSE="clippy cpu_flags_x86_sse2 debug doc libressl miri nightly parallel-compile
 # simultaneously.
 
 # How to use it:
-# 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 12.
-# 3. Specify LLVM_MAX_SLOT, e.g. 11.
-LLVM_DEPEND="
-	|| (
-		sys-devel/llvm:11[${LLVM_TARGET_USEDEPS// /,}]
-	)
-	<sys-devel/llvm-12:=
+# List all the working slots in LLVM_VALID_SLOTS, newest first.
+LLVM_VALID_SLOTS=( 11 )
+LLVM_MAX_SLOT="${LLVM_VALID_SLOTS[0]}"
+
+# splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
+# (-) usedep needed because we may build with older llvm without that target
+LLVM_DEPEND="|| ( "
+for _s in ${LLVM_VALID_SLOTS[@]}; do
+	LLVM_DEPEND+=" ( "
+	for _x in ${ALL_LLVM_TARGETS[@]}; do
+		LLVM_DEPEND+="
+			${_x}? ( sys-devel/llvm:${_s}[${_x}(-)] )"
+	done
+	LLVM_DEPEND+=" )"
+done
+unset _s _x
+LLVM_DEPEND+=" )
+	<sys-devel/llvm-$(( LLVM_MAX_SLOT + 1 )):=
 	wasm? ( sys-devel/lld )
 "
-LLVM_MAX_SLOT=11
 
 # to bootstrap we need at least exactly previous version, or same.
 # most of the time previous versions fail to bootstrap with newer
@@ -83,6 +92,7 @@ BDEPEND="${PYTHON_DEPS}
 		dev-util/cmake
 		dev-util/ninja
 	)
+	test? ( sys-devel/gdb )
 "
 
 DEPEND="
@@ -92,9 +102,7 @@ DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	elibc_musl? ( sys-libs/libunwind:= )
-	system-llvm? (
-		${LLVM_DEPEND}
-	)
+	system-llvm? ( ${LLVM_DEPEND} )
 "
 
 # we need to block older versions due to layout changes.
@@ -201,6 +209,10 @@ pre_build_checks() {
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
 }
 
+llvm_check_deps() {
+	has_version -r "sys-devel/llvm:${LLVM_SLOT}[${LLVM_TARGET_USEDEPS// /,}]"
+}
+
 pkg_pretend() {
 	pre_build_checks
 }
@@ -216,7 +228,7 @@ pkg_setup() {
 	if use system-llvm; then
 		llvm_pkg_setup
 
-		local llvm_config="$(get_llvm_prefix "$LLVM_MAX_SLOT")/bin/llvm-config"
+		local llvm_config="$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
 		export LLVM_LINK_SHARED=1
 		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
 	fi
@@ -290,8 +302,9 @@ src_configure() {
 		target = [${rust_targets}]
 		cargo = "${rust_stage0_root}/bin/cargo"
 		rustc = "${rust_stage0_root}/bin/rustc"
+		rustfmt = "${rust_stage0_root}/bin/rustfmt"
 		docs = $(toml_usex doc)
-		compiler-docs = $(toml_usex doc)
+		compiler-docs = false
 		submodules = false
 		python = "${EPYTHON}"
 		locked-deps = true
@@ -329,6 +342,10 @@ src_configure() {
 		dist-src = false
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex wasm))
+		# only deny warnings if doc+wasm are NOT requested, documenting stage0 wasm std fails without it
+		# https://github.com/rust-lang/rust/issues/74976
+		# https://github.com/rust-lang/rust/issues/76526
+		deny-warnings = $(usex wasm $(usex doc false true) true)
 		backtrace-on-ice = true
 		jemalloc = false
 		[dist]
