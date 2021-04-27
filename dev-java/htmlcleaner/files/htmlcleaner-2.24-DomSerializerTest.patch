@@ -1,0 +1,12 @@
+--- a/src/test/java/org/htmlcleaner/DomSerializerTest.java
++++ b/src/test/java/org/htmlcleaner/DomSerializerTest.java
+@@ -132,8 +132,7 @@ public class DomSerializerTest extends AbstractHtmlCleanerTest {
+ 	            + "</html>";
+ 
+ 	    final String expectedOutput = 
+-	            "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
+-	            + "<html>\n" + 
++	            "<?xml version=\"1.0\" encoding=\"UTF-8\"?><html>\n";
+ 	            "    <head/>\n" + 
+ 	            "    <body>\n" + 
+ 	            "        <p>" + nonAsciiWord + "</p>\n" + 
