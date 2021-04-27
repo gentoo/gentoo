@@ -50,7 +50,7 @@ RDEPEND="${DEPEND}
 
 PATCHES=( "${FILESDIR}/${PN}-21.03.90-cmake.patch" )
 
-src_configure(){
+src_configure() {
 	# Fix missing finite()
 	[[ ${CHOST} == *-solaris* ]] && append-cppflags -DHAVE_IEEEFP_H
 
