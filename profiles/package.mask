@@ -413,22 +413,6 @@ x11-themes/nimbus
 #   https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=aba75f6d4a9c875a9d5d90a07c6b3678db66a4bf
 sys-devel/autoconf:2.71
 
-# Sam James <sam@gentoo.org> (2021-03-22)
-# Many reverse dependencies need to be ported due to changes in new glib
-# Masking until they've been updated, see tracker bug for details
-# bug #777675
->=dev-libs/gobject-introspection-common-1.68.0
->=dev-libs/gobject-introspection-1.68.0
->=dev-util/gdbus-codegen-2.68.0
->=dev-util/glib-utils-2.68.0
->=dev-libs/glib-2.68.0
->=net-libs/glib-networking-2.68.0
->=gnome-base/nautilus-40
->=gnome-extra/gnome-calendar-40
-# Bug #780633
->=dev-libs/libgweather-40
->=gnome-base/gnome-settings-daemon-40
-
 # Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
 # Dead upstream. No revdeps.
 # Removal in 60 days to allow people extra time
