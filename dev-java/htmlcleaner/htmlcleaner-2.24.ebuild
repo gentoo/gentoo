@@ -32,7 +32,6 @@ DEPEND="
 BDEPEND="
 	app-arch/unzip"
 
-
 JAVA_SRC_DIR="src/main/java"
 JAVA_GENTOO_CLASSPATH="jdom-2"
 
