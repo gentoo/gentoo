@@ -3,13 +3,14 @@
 
 EAPI=7
 
-MY_PN=${PN}${PV/\.*}
+MY_MAJOR="$(ver_cut 1)"
+MY_P="${PN}${MY_MAJOR}"
 inherit desktop systemd xdg
 
 DESCRIPTION="All-In-One Solution for Remote Access and Support over the Internet"
 HOMEPAGE="https://www.teamviewer.com"
-SRC_URI="amd64? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${PV}_amd64.tar.xz )
-		x86? ( https://dl.tvcdn.de/download/linux/version_${PV/\.*}x/${PN}_${PV}_i386.tar.xz )"
+SRC_URI="amd64? ( https://dl.tvcdn.de/download/linux/version_${MY_MAJOR}x/${PN}_${PV}_amd64.tar.xz )
+		x86? ( https://dl.tvcdn.de/download/linux/version_${MY_MAJOR}x/${PN}_${PV}_i386.tar.xz )"
 
 LICENSE="TeamViewer MIT"
 SLOT="0"
@@ -34,7 +35,7 @@ RDEPEND="
 RESTRICT="bindist mirror"
 
 # Silence QA messages
-QA_PREBUILT="opt/${MY_PN}/*"
+QA_PREBUILT="opt/${MY_P}/*"
 
 S="${WORKDIR}"/teamviewer
 
@@ -49,7 +50,7 @@ src_prepare() {
 }
 
 src_install() {
-	local dst="/opt/${MY_PN}" # install destination
+	local dst="/opt/${MY_P}" # install destination
 
 	# Quirk:
 	# Remove Intel 80386 32-bit ELF binary 'libdepend' present in all
@@ -63,6 +64,7 @@ src_install() {
 	doins -r tv_bin
 
 	# Set permissions for executables and libraries
+	local exe
 	for exe in $(find tv_bin -type f -executable -or -name '*.so'); do
 		fperms 755 ${dst}/${exe}
 	done
@@ -78,32 +80,34 @@ src_install() {
 	insinto /usr/share/polkit-1/actions
 	doins tv_bin/script/com.teamviewer.TeamViewer.policy
 
+	local size
 	for size in 16 24 32 48 256; do
-		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png TeamViewer.png
+		newicon -s ${size} tv_bin/desktop/teamviewer_${size}.png teamviewer.png
 	done
 
-	# Install documents (NOTE: using 'dodoc -r doc' instead of loop will
-	# have the undesired result of installing subdirectory 'doc' in /usr/
-	# share/doc/teamviewer-<version>)
-	for doc in $(find doc -type f); do
-		dodoc ${doc}
-	done
+	dodoc -r doc
 
-	keepdir /etc/${MY_PN}
-	dosym ../../etc/${MY_PN} ${dst}/config
+	# Make docs available in expected location
+	dosym ../../usr/share/doc/${PF}/doc ${dst}/doc
+
+	# We need to keep docs uncompressed, bug #778617
+	docompress -x /usr/share/doc/${PF}/*
+
+	keepdir /etc/${MY_P}
+	dosym ../../etc/${MY_P} ${dst}/config
 
 	# Create directory and symlink for log files (NOTE: according to Team-
 	# Viewer devs, all paths are hard-coded in the binaries; therefore
 	# using the same path as the DEB/RPM archives, i.e. '/var/log/teamviewer
 	# <major-version>')
-	keepdir /var/log/${MY_PN}
-	dosym ../../var/log/${MY_PN} ${dst}/logfiles
+	keepdir /var/log/${MY_P}
+	dosym ../../var/log/${MY_P} ${dst}/logfiles
 
 	dodir /opt/bin
 	dosym ${dst}/tv_bin/teamviewerd /opt/bin/teamviewerd
 	dosym ${dst}/tv_bin/script/teamviewer /opt/bin/teamviewer
 
-	make_desktop_entry teamviewer "TeamViewer ${SLOT}" TeamViewer
+	make_desktop_entry teamviewer "TeamViewer ${MY_MAJOR}" teamviewer
 }
 
 pkg_postinst() {
