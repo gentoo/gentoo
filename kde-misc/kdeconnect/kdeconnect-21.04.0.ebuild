@@ -75,7 +75,7 @@ src_configure() {
 	ecm_src_configure
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	elog "The Android .apk file is available via"
