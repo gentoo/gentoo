@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.5-static.patch"
+	"${FILESDIR}/${PN}-5.11-static.patch"
 )
 
 src_prepare() {
@@ -97,8 +97,9 @@ src_test() {
 
 src_install() {
 	default
-	if ! use perl ; then
-		rm "${ED}"/usr/bin/strace-graph || die
+	if use perl ; then
+		exeinto /usr/bin
+		doexe src/strace-graph
 	fi
 	dodoc CREDITS
 }
