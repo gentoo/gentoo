@@ -14060,7 +14060,7 @@ media-sound/loudness-scanner 0.5.1_p20190709 9999: Scans your music files and ta
 media-sound/lxmusic 0.4.7: A simple GUI XMMS2 client with minimal functionality
 media-sound/mac 4.11.4.5.7-r1: Monkey's Audio Codecs
 media-sound/madplay 0.15.2b-r1: The MAD audio player
-media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to Ventrilo 3.x servers
+media-sound/mangler 1.2.5-r2: Open source VOIP client capable of connecting to Ventrilo 3.x servers
 media-sound/marrie 0.4 9999: A simple podcast client that runs on the Command Line Interface
 media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system

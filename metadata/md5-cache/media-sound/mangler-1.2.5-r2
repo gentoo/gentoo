@@ -12,4 +12,4 @@ RDEPEND=dev-cpp/gtkmm:2.4 gnome-base/librsvg >=dev-libs/dbus-glib-0.80 >=dev-lib
 SLOT=0
 SRC_URI=http://www.mangler.org/downloads/mangler-1.2.5.tar.bz2
 _eclasses_=toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
-_md5_=d4c0d4f660ba93869976eb9b01478d40
+_md5_=83229d2908fd6af235c2420b0f4787c5
