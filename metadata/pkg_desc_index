@@ -2266,7 +2266,7 @@ app-emulation/open-vm-tools 11.2.0_p16938113-r1 11.2.5_p17337674: Opensourced to
 app-emulation/pcem 17: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/podman 3.1.2: Library and podman tool for running OCI-based containers in Pods
-app-emulation/protontricks 1.4.3 1.4.4 1.5.0: app-emulation/winetricks wrapper for Proton (Steam Play) games
+app-emulation/protontricks 1.4.3 1.5.0: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.107: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.12: Qt GUI configuration tool for Wine
 app-emulation/qemu 5.2.0-r2 5.2.0-r3 5.2.0-r50 9999: QEMU + Kernel-based Virtual Machine userland tools
@@ -5667,7 +5667,7 @@ dev-libs/libisoburn 1.5.2 1.5.4: Creation/expansion of ISO-9660 filesystems on C
 dev-libs/libisofs 1.5.2 1.5.4: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.2.0: A collection of useful BSD APIs
 dev-libs/libixion 0.15.0 0.16.1 9999: General purpose formula parser & interpreter
-dev-libs/libjcat 0.1.4 0.1.5 0.1.6: Library and tool for reading and writing Jcat files
+dev-libs/libjcat 0.1.6: Library and tool for reading and writing Jcat files
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.5.0 1.5.1: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 242 243: A Library for Large Linear Classification
@@ -5827,7 +5827,7 @@ dev-libs/ocl-icd 2.2.12-r3 2.2.14: Alternative to vendor specific OpenCL ICD loa
 dev-libs/onigmo 6.1.3 6.2.0: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.6-r1 6.9.7 6.9.7.1 9999: Regular expression library for different character encodings
 dev-libs/opencl-clang 10.0.0.1-r1 10.0.0.2-r1 11.0.0 11.1.0_pre20201222: OpenCL-oriented thin wrapper library around clang
-dev-libs/opencl-icd-loader 2020.03.13-r1 2020.06.16: Official Khronos OpenCL ICD Loader
+dev-libs/opencl-icd-loader 2020.06.16: Official Khronos OpenCL ICD Loader
 dev-libs/opencryptoki 3.6.1-r1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4 0.6.20-r5: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
@@ -8972,7 +8972,7 @@ dev-python/pygresql 5.2.2: A Python interface for the PostgreSQL database
 dev-python/pyh2o 1: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 2.0.2: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.4.4: HCL configuration parser for python
-dev-python/pyicu 2.6 2.7.1 2.7.2: Python bindings for dev-libs/icu
+dev-python/pyicu 2.6 2.7.2: Python bindings for dev-libs/icu
 dev-python/pyilmbase 2.5.5: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjsparser 2.7.1_p20190421: Fast javascript parser based on esprima.js
@@ -9196,7 +9196,7 @@ dev-python/python3-saml 1.9.0 1.10.0 1.10.1: OneLogin's SAML Python Toolkit
 dev-python/python_orocos_kdl 1.4.0-r1 9999: Python bindings for KDL
 dev-python/pythondialog 3.5.1: A Python module for making simple text/console-mode user interfaces
 dev-python/pytidylib 0.3.2-r1: Python wrapper for HTML Tidy (tidylib)
-dev-python/pytools 2021.2 2021.2.1 2021.2.3 2021.2.5 2021.2.6 9999: Collection of tools missing from the Python standard library
+dev-python/pytools 2021.2 2021.2.6 9999: Collection of tools missing from the Python standard library
 dev-python/pytrie 0.4.0: A pure Python implementation of the trie data structure
 dev-python/pytz 2021.1: World timezone definitions for Python
 dev-python/pytzdata 2020.1: The Olson timezone database for Python
@@ -9280,8 +9280,8 @@ dev-python/rsa 4.7.2: Pure-Python RSA implementation
 dev-python/rst-linker 2.2.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.74: A Python object API for managing the Linux LIO kernel target
-dev-python/ruamel-std-pathlib 0.6.4-r2 0.8.0: Ruamel enhancements to pathlib and pathlib2
-dev-python/ruamel-yaml 0.16.13-r1 0.17.2 0.17.4: YAML parser/emitter that supports roundtrip comment preservation
+dev-python/ruamel-std-pathlib 0.8.0: Ruamel enhancements to pathlib and pathlib2
+dev-python/ruamel-yaml 0.16.13-r1 0.17.4: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ruamel-yaml-clib 0.2.2-r1: C-based reader/scanner and emitter for dev-python/ruamel-yaml
 dev-python/ryu 4.34: Component-based Software-defined Networking Framework
 dev-python/s3transfer 0.3.6 0.3.7 0.4.1 0.4.2: An Amazon S3 Transfer Manager
@@ -11060,7 +11060,7 @@ dev-util/nvidia-cuda-toolkit 8.0.61-r1 9.2.88-r1 10.2.89-r3 11.1.1-r2 11.2.0-r3 
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
-dev-util/opencl-headers 2020.03.13-r1 2020.06.16 2020.12.18: Unified C language headers for the OpenCL API
+dev-util/opencl-headers 2020.06.16 2020.12.18: Unified C language headers for the OpenCL API
 dev-util/oprofile 1.3.0 1.4.0: A transparent low-overhead system-wide profiler
 dev-util/ostree 2019.5 2020.6 2020.7 2020.8: Operating system and container binary deployment and upgrades
 dev-util/packer 1.6.5: A tool to create identical machine images for multiple platforms
@@ -11236,7 +11236,7 @@ dev-vcs/lab 0.17.2 0.19.0: Lab wraps Git or Hub, making it simple to interact wi
 dev-vcs/mercurial 5.5.2 5.6.1-r1 5.7 9999: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
-dev-vcs/pre-commit 2.12.0 2.12.1: A framework for managing and maintaining multi-language Git pre-commit hooks
+dev-vcs/pre-commit 2.12.1: A framework for managing and maintaining multi-language Git pre-commit hooks
 dev-vcs/python-gitlab 2.5.0 2.6.0: Python command line interface to gitlab API
 dev-vcs/qgit 2.9: Qt GUI for git repositories
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
@@ -12727,7 +12727,7 @@ mail-mta/notqmail 1.08-r3 9999: qmail -- a secure, reliable, efficient, simple m
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.7.1_p1 6.8.0_p2: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.5.8-r1 3.5.9-r1 3.5.10 3.6_pre20210422 3.6.0_rc1: A fast and secure drop-in replacement for sendmail
-mail-mta/protonmail-bridge 1.6.3 1.6.6: Serves ProtonMail to IMAP/SMTP clients
+mail-mta/protonmail-bridge 1.6.6 1.6.9: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.95-r1 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.15.2-r2 8.16.1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r4: Extremely simple MTA to get mail off the system to a Mailhub
@@ -13045,7 +13045,7 @@ media-gfx/gifsicle 1.92: Create, manipulate, and optimize GIF images and animati
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.10.22-r2 2.10.24 2.99.4 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gmic 2.9.5 2.9.6 2.9.7: GREYC's Magic Image Converter
+media-gfx/gmic 2.9.5 2.9.7: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.3_p20201029: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.34.0 40.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.34.2 40.0: Access, organize and share your photos on GNOME
@@ -16337,7 +16337,7 @@ sci-geosciences/opencpn-plugin-watchdog 1.9.051 9999: Watchdog Plugin for OpenCP
 sci-geosciences/opencpn-plugin-weather_routing 1.10.1 9999: Weather Routing Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
-sci-geosciences/osm-gps-map 1.1.0 1.2.0: A GTK+ widget for displaying OpenStreetMap tiles
+sci-geosciences/osm-gps-map 1.2.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 1.4.0-r100 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmctools 0.9: A few really fast tools to convert, filter and update OSM data files
 sci-geosciences/qgis 3.16.2 3.16.4 9999: User friendly Geographic Information System
@@ -17360,7 +17360,7 @@ sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson fingerprint reader
 sys-auth/ykclient 2.15: Yubico C client library
 sys-auth/ykneo-ccid-tools 0.0.0: Tools for Yubico's YubiKey NEO in CCID mode
 sys-auth/ykpers 1.20.0: Library and tool for personalization of Yubico's YubiKey
-sys-auth/yubico-piv-tool 2.1.1-r2 2.2.0: Command-line tool and p11-kit module for the YubiKey PIV application
+sys-auth/yubico-piv-tool 2.2.0: Command-line tool and p11-kit module for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 2.01.22270-r1 3.04.23731: Microsemi Adaptec RAID Controller Command Line Utility
@@ -18599,7 +18599,7 @@ x11-misc/birdtray 1.9.0 9999: A new mail system tray notification icon for Thund
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1_p20190421-r1 3.2.1_p20210112-r1 3.2.1_p20210112-r4 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r2: An analog clock displaying the system-time
-x11-misc/cbatticon 1.6.5 1.6.10: A lightweight and fast battery icon that sits in your system tray
+x11-misc/cbatticon 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
 x11-misc/clipmenu 6.2.0: Clipboard management using dmenu
@@ -18937,7 +18937,7 @@ x11-plugins/purple-facebook 20170608 20170831 20190113: Facebook protocol plugin
 x11-plugins/purple-hangouts 0_p20181202 0_p20200710: Hangouts Plugin for libpurple
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch
 x11-plugins/purple-mattermost 2.0: A libpurple/Pidgin plugin for Mattermost
-x11-plugins/vicious 2.3.1 2.5.0: Modular widget library for x11-wm/awesome
+x11-plugins/vicious 2.5.0: Modular widget library for x11-wm/awesome
 x11-plugins/wmCalClock 1.25-r3: WMaker DockApp: A Calendar clock with antialiased text
 x11-plugins/wmDownload 0.1.2a-r3: dockapp that displays how much data you've received on each eth and ppp device
 x11-plugins/wmMatrix 0.2-r2: WMaker DockApp: Slightly modified version of Jamie Zawinski's xmatrix screenhack
