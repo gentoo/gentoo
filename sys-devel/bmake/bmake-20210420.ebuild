@@ -3,27 +3,26 @@
 
 EAPI=7
 
-MK_VER=20191111
+MK_VER=20210330
 
 DESCRIPTION="NetBSD's portable make"
 HOMEPAGE="http://www.crufty.net/help/sjg/bmake.html"
 SRC_URI="
 	http://void.crufty.net/ftp/pub/sjg/${P}.tar.gz
 	http://void.crufty.net/ftp/pub/sjg/mk-${MK_VER}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
-
-S="${WORKDIR}/${PN}"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 # Skip failing test (sandbox and csh)
-PATCHES=( "${FILESDIR}"/${P}-tests.patch )
+PATCHES=( "${FILESDIR}"/${PN}-20210206-tests.patch )
 
 src_prepare() {
 	default
 	cd "${WORKDIR}" || die
-	eapply "${FILESDIR}"/${P}-lib-mk.patch
+	eapply "${FILESDIR}"/${PN}-20210314-mk-fixes.patch
 }
 
 src_configure() {
