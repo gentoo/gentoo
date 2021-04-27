@@ -28,7 +28,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
-src_prepare(){
+src_prepare() {
 	sed -i "s/ + SETUP_PACKAGES,/,/g" setup.py
 	distutils-r1_src_prepare
 }
