@@ -16,6 +16,7 @@ RDEPEND="dev-lang/php:*[curl]
 	dev-php/fedora-autoloader
 	>=dev-php/jsonlint-1.4
 	>=dev-php/json-schema-5.2.10
+	>=dev-php/metadata-minifier-1.0
 	>=dev-php/phar-utils-1.0
 	>=dev-php/psr-log-1.0
 	>=dev-php/reactphp-promise-2.7
@@ -44,6 +45,7 @@ src_prepare() {
 // Dependencies
 \Fedora\Autoloader\Dependencies::required([
 	'/usr/share/php/Composer/CaBundle/autoload.php',
+	'/usr/share/php/Composer/MetadataMinifier/autoload.php',
 	'/usr/share/php/Composer/Semver/autoload.php',
 	'/usr/share/php/Composer/Spdx/autoload.php',
 	'/usr/share/php/Composer/XdebugHandler/autoload.php',
