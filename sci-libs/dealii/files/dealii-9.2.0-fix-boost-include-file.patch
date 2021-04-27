@@ -1,0 +1,25 @@
+From 9c1a580139f557433a226da437382b3f4307f7c8 Mon Sep 17 00:00:00 2001
+From: Luca Heltai <luca.heltai@sissa.it>
+Date: Wed, 30 Dec 2020 09:54:02 +0100
+Subject: [PATCH] Fix boost include file.
+
+---
+ source/fe/mapping.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/source/fe/mapping.cc b/source/fe/mapping.cc
+index 288a9debcb..4ef3ef7714 100644
+--- a/source/fe/mapping.cc
++++ b/source/fe/mapping.cc
+@@ -20,6 +20,8 @@
+ 
+ #include <deal.II/grid/tria.h>
+ 
++#include <boost/geometry.hpp>
++
+ DEAL_II_NAMESPACE_OPEN
+ 
+ 
+-- 
+2.26.3
+
