@@ -11,6 +11,6 @@ LICENSE=BSD-2
 RDEPEND=app-crypt/gpgme app-crypt/gnupg php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) php_targets_php8-0? ( dev-lang/php:8.0 )
 REQUIRED_USE=|| ( php_targets_php7-3 php_targets_php7-4 php_targets_php8-0 )
 SLOT=0
-SRC_URI=https://pecl.php.net/get/gnupg-1.5.0RC2.tgz
+SRC_URI=https://pecl.php.net/get/gnupg-1.5.0.tgz
 _eclasses_=gnuconfig	9f91b4b0c84e734a87492d4293f03de5	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e	libtool	f143db5a74ccd9ca28c1234deffede96	autotools	9e63f92c2a5d867fea55ecb160c7d354	php-ext-source-r3	59705d3e8b4658c589d46b4c7f90150c	php-ext-pecl-r3	597ff70c7422e3b3cebf00f526a32626
 _md5_=169a9a0857f4197159541aaaf7da41f2
