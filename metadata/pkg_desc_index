@@ -15543,7 +15543,7 @@ net-misc/sysrepo 1.4.104 1.4.122: YANG-based configuration and operational state
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r4: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
-net-misc/teamviewer 15.15.5: All-In-One Solution for Remote Access and Support over the Internet
+net-misc/teamviewer 15.15.5 15.17.6: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
@@ -17589,7 +17589,7 @@ sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian
 sys-devel/prelink 20151030-r1 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
-sys-devel/rust-std 1.46.0 1.47.0 1.48.0 1.49.0 1.50.0: Rust standard library, standalone (for crossdev)
+sys-devel/rust-std 1.51.0: Rust standard library, standalone (for crossdev)
 sys-devel/slibtool 0.5.32 0.5.33 9999: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
 sys-devel/sparse 0.6.3 9999: C semantic parser
