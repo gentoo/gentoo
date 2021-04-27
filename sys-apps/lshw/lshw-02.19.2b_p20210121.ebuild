@@ -5,7 +5,7 @@ EAPI=7
 
 PLOCALES='fr'
 
-inherit desktop flag-o-matic toolchain-funcs l10n
+inherit desktop flag-o-matic toolchain-funcs l10n xdg
 
 MY_COMMIT="fdab06ac0b190ea0aa02cd468f904ed69ce0d9f1"
 MY_P=${PN}-$(ver_cut 3 PV/b/B).$(ver_cut 1-3)_$(ver_cut 5-6)
