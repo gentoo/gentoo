@@ -4950,7 +4950,7 @@ dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protoco
 dev-java/gnu-jaf 1.1.1-r1 1.1.2: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/gradle-bin 6.3: A project automation and build tool with a Groovy based DSL
-dev-java/gson 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
+dev-java/gson 2.7-r1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
 dev-java/gwt 2.8.2: Google Web Toolkit library
@@ -6002,7 +6002,7 @@ dev-lua/luv 1.36.0.0: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0-r101: Mediator pattern implementation for pub-sub management
 dev-lua/messagepack 0.5.2_p20201025-r100: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.8-r100: Lua bindings for libmpack
-dev-lua/penlight 1.9.2-r101: Lua utility libraries loosely based on the Python standard libraries
+dev-lua/penlight 1.9.2-r101 1.10.0: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1-r101: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r100: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 1.2.3-r3: A lightweight and colourful test framework
