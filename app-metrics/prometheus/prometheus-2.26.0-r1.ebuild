@@ -1366,7 +1366,7 @@ src_prepare() {
 src_compile() {
 	# no need in promu here
 
-	go build -mod=readonly ./cmd/prometheus || die
+	go build -mod=readonly -tags builtinassets ./cmd/prometheus || die
 
 	go build -mod=readonly ./cmd/promtool || die
 }
