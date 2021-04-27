@@ -440,8 +440,7 @@ pkg_postinst() {
 
 	# Don't bother checking for USE=-gui here, it has never worked yet
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
-		ewarn "Please note that following the removal of ${PF}-bin, the executable and the systemd unit file installed by ${PF}"
-		ewarn "are now called simply '${PN}' rather than '${PN}'-cli"
+		ewarn "Please note that following the removal of ${CATEGORY}/${PN}-bin, the executable and the systemd unit file installed by ${PN} are now called simply '${PN}' rather than '${PN}-cli'"
 	fi
 }
 
