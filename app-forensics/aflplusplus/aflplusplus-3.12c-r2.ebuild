@@ -4,8 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
-LLVM_MAX_SLOT=11
-inherit toolchain-funcs llvm python-single-r1
+LLVM_MAX_SLOT=12
+inherit toolchain-funcs llvm optfeature python-single-r1
 
 DESCRIPTION="A fork of AFL, the popular compile-time instrumentation fuzzer"
 HOMEPAGE="https://github.com/AFLplusplus/AFLplusplus"
@@ -14,7 +14,7 @@ S="${WORKDIR}/AFLplusplus-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -23,12 +23,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # This isn't compatible with sandbox
 RESTRICT="test"
 
+# It turns out we need Clang too
 RDEPEND="
 	${PYTHON_DEPS}
+	>=sys-devel/llvm-10:=
 	|| (
-		sys-devel/llvm:10
-		sys-devel/llvm:11
-		sys-devel/llvm:12
+		sys-devel/clang:10
+		sys-devel/clang:11
+		sys-devel/clang:12
 	)
 "
 DEPEND="
@@ -42,6 +44,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0c-LDFLAGS.patch"
 	"${FILESDIR}/${PN}-3.0c-CFLAGS.patch"
 )
+
+llvm_check_deps() {
+	has_version -b "sys-devel/clang:${LLVM_SLOT}" && \
+		has_version -b "sys-devel/llvm:${LLVM_SLOT}"
+}
 
 pkg_setup() {
 	llvm_pkg_setup
@@ -81,4 +88,10 @@ src_install() {
 		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}" \
 		MAN_PATH="${EPREFIX}/usr/share/man/man8" \
 		install
+}
+
+pkg_postinst() {
+	# TODO: Any others?
+	optfeature "fuzzing with AFL_USE_ASAN" sys-libs/compiler-rt-sanitizers[asan]
+	optfeature "fuzzing with AFL_USE_MSAN" sys-libs/compiler-rt-sanitizers[msan]
 }
