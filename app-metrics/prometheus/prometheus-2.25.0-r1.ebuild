@@ -398,8 +398,8 @@ EGO_SUM=(
 	"github.com/golang/protobuf v1.4.3/go.mod"
 	"github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db/go.mod"
 	"github.com/golang/snappy v0.0.1/go.mod"
-	"github.com/golang/snappy v0.0.3"
-	"github.com/golang/snappy v0.0.3/go.mod"
+	"github.com/golang/snappy v0.0.2"
+	"github.com/golang/snappy v0.0.2/go.mod"
 	"github.com/google/btree v0.0.0-20180813153112-4030bb1f1f0c/go.mod"
 	"github.com/google/btree v1.0.0"
 	"github.com/google/btree v1.0.0/go.mod"
@@ -1327,8 +1327,8 @@ MY_PV=v${PV/_rc/-rc.}
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
 SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
-https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}-asset.tar.xz
-${EGO_SUM_SRC_URI}"
+	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}-asset.tar.xz
+	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
@@ -1351,7 +1351,7 @@ src_prepare() {
 src_compile() {
 	# no need in promu here
 
-	go build -mod=readonly ./cmd/prometheus || die
+	go build -mod=readonly -tags builtinassets ./cmd/prometheus || die
 
 	go build -mod=readonly ./cmd/promtool || die
 }
