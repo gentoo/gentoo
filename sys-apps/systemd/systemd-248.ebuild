@@ -214,6 +214,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}/248-rfkill.patch"
 	)
 
 	if ! use vanilla; then
