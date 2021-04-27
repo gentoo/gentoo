@@ -85,8 +85,8 @@ EGO_SUM=(
 	"github.com/emersion/go-imap-idle v0.0.0-20200601154248-f05f54664cc4/go.mod"
 	"github.com/emersion/go-imap-move v0.0.0-20190710073258-6e5a51a5b342"
 	"github.com/emersion/go-imap-move v0.0.0-20190710073258-6e5a51a5b342/go.mod"
-	"github.com/emersion/go-imap-quota v0.0.0-20200423100218-dcfd1b7d2b41"
-	"github.com/emersion/go-imap-quota v0.0.0-20200423100218-dcfd1b7d2b41/go.mod"
+	"github.com/emersion/go-imap-quota v0.0.0-20210203125329-619074823f3c"
+	"github.com/emersion/go-imap-quota v0.0.0-20210203125329-619074823f3c/go.mod"
 	"github.com/emersion/go-imap-unselect v0.0.0-20171113212723-b985794e5f26"
 	"github.com/emersion/go-imap-unselect v0.0.0-20171113212723-b985794e5f26/go.mod"
 	"github.com/emersion/go-mbox v1.0.2"
@@ -270,6 +270,12 @@ EGO_SUM=(
 	"github.com/stretchr/testify v1.6.1/go.mod"
 	"github.com/therecipe/qt v0.0.0-20200701200531-7f61353ee73e"
 	"github.com/therecipe/qt v0.0.0-20200701200531-7f61353ee73e/go.mod"
+	"github.com/therecipe/qt v0.0.0-20200904063919-c0c124a5770d"
+	"github.com/therecipe/qt/internal/binding/files/docs v0.0.0-20191019224306-1097424d656c"
+	"github.com/therecipe/qt/internal/binding/files/docs/5.12.0 v0.0.0-20200904063919-c0c124a5770d"
+	"github.com/therecipe/qt/internal/binding/files/docs/5.12.0 v0.0.0-20200904063919-c0c124a5770d/go.mod"
+	"github.com/therecipe/qt/internal/binding/files/docs/5.13.0 v0.0.0-20200904063919-c0c124a5770d"
+	"github.com/therecipe/qt/internal/binding/files/docs/5.13.0 v0.0.0-20200904063919-c0c124a5770d/go.mod"
 	"github.com/ugorji/go v1.1.4/go.mod"
 	"github.com/ugorji/go v1.1.7/go.mod"
 	"github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8/go.mod"
@@ -393,8 +399,7 @@ IUSE="gui"
 # Some of the tests fail without access to a keyring service
 RESTRICT="test"
 
-RDEPEND="app-crypt/libsecret
-	gui? ( !mail-mta/protonmail-bridge-bin )" # /usr/bin file collision
+RDEPEND="app-crypt/libsecret"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
@@ -420,22 +425,10 @@ src_test() {
 }
 
 src_install() {
-	# A slight hack to allow this package (which is currently limited to CLI mode)
-	# and protonmail-bridge-bin (which supports GUI mode) to co-exist.
-	local bin_name unit_name
-	if use gui; then
-		bin_name="${PN}"
-		unit_name="${FILESDIR}/${PN}.service"
-	else
-		bin_name="${PN}-cli"
-		unit_name="${PN}-cli.service"
-		sed -e "s|${PN}|${bin_name}|" "${FILESDIR}"/${PN}.service > ${unit_name} || die
-	fi
-
 	exeinto /usr/bin
-	newexe proton-bridge ${bin_name}
+	newexe proton-bridge ${PN}
 
-	systemd_douserunit ${unit_name}
+	systemd_douserunit "${FILESDIR}"/${PN}.service
 
 	# FIXME: USE=gui will probably need more files
 
@@ -444,6 +437,12 @@ src_install() {
 
 pkg_postinst() {
 	use gui && xdg_icon_cache_update
+
+	# Don't bother checking for USE=-gui here, it has never worked yet
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		ewarn "Please note that following the removal of ${PF}-bin, the executable and the systemd unit file installed by ${PF}"
+		ewarn "are now called simply '${PN}' rather than '${PN}'-cli"
+	fi
 }
 
 pkg_postrm() {
