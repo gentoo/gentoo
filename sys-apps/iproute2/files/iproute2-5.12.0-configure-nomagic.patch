@@ -1,0 +1,245 @@
+The hand-rolled configure script, for multiple options (selinux,mnl,elf), sets
+a variable as well as modifying CFLAGS & LDLIBS.
+
+If config.mk is later amended to disable a feature, the CFLAGS/LDLIBS tweaks
+are still in place.
+
+Push the CFLAGS/LDLIBS changes into new conditional Makefile code, so that they
+are only passed when correctly needed.
+
+Prior Gentoo testcase for reproduction:
+USE=minimal ebuild ... compile.
+- Linking with libbsd, libelf, libmnl & libcap based only on presence.
+- Links based on libselinux based only on presence.
+
+Closes: https://bugs.gentoo.org/643722
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+Forward-ported from v4.14.1 to v4.16.0 by Lars Wendler <polynomial-c@gentoo.org>
+Added libcap to v4.17.0 by Lars Wendler <polynomial-c@gentoo.org>
+Forward-ported from v4.17.0 to v4.20.0 by Lars Wendler <polynomial-c@gentoo.org>
+Forward-ported from v4.20.0 to v5.11.0 by Lars Wendler <polynomial-c@gentoo.org>
+Forward-ported from v5.11.0 to v5.12.0 by Lars Wendler <polynomial-c@gentoo.org>
+
+--- iproute2-5.12.0/bridge/Makefile
++++ iproute2-5.12.0/bridge/Makefile
+@@ -2,6 +2,7 @@
+ BROBJ = bridge.o fdb.o monitor.o link.o mdb.o vlan.o
+ 
+ include ../config.mk
++include ../config.include
+ 
+ all: bridge
+ 
+--- iproute2-5.12.0/config.include
++++ iproute2-5.12.0/config.include
+@@ -0,0 +1,32 @@
++# We can only modify CFLAGS/LDLIBS after all the config options are known.
++ifeq ($(IP_CONFIG_SETNS),y)
++	CFLAGS += $(IP_CONFIG_SETNS_CFLAGS)
++endif
++ifeq ($(HAVE_ELF),y)
++	CFLAGS += $(HAVE_ELF_CFLAGS)
++	LDLIBS += $(HAVE_ELF_LDLIBS)
++endif
++ifeq ($(HAVE_SELINUX),y)
++	CFLAGS += $(HAVE_SELINUX_CFLAGS)
++	LDLIBS += $(HAVE_SELINUX_LDLIBS)
++endif
++ifeq ($(HAVE_MNL),y)
++	CFLAGS += $(HAVE_MNL_CFLAGS)
++	LDLIBS += $(HAVE_MNL_LDLIBS)
++endif
++ifeq ($(HAVE_CAP),y)
++	CFLAGS += $(HAVE_CAP_CFLAGS)
++	LDLIBS += $(HAVE_CAP_LDLIBS)
++endif
++ifeq ($(HAVE_LIBBSD),y)
++	CFLAGS += $(HAVE_LIBBSD_CFLAGS)
++	LDLIBS += $(HAVE_LIBBSD_LDLIBS)
++else
++	CFLAGS += -DNEED_STRLCPY
++endif
++
++# Rules can only be declared after all variables in them are known.
++%.o: %.c
++	$(QUIET_CC)$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CPPFLAGS) -c -o $@ $<
++
++# vim: ft=make:
+--- iproute2-5.12.0/configure
++++ iproute2-5.12.0/configure
+@@ -195,7 +195,7 @@
+     if $CC -I$INCLUDE -o $TMPDIR/setnstest $TMPDIR/setnstest.c >/dev/null 2>&1; then
+ 	echo "IP_CONFIG_SETNS:=y" >>$CONFIG
+ 	echo "yes"
+-	echo "CFLAGS += -DHAVE_SETNS" >>$CONFIG
++	echo "IP_CONFIG_SETNS_CFLAGS += -DHAVE_SETNS" >>$CONFIG
+     else
+ 	echo "no"
+     fi
+@@ -238,8 +238,8 @@
+ 	echo "HAVE_ELF:=y" >>$CONFIG
+ 	echo "yes"
+ 
+-	echo 'CFLAGS += -DHAVE_ELF' `${PKG_CONFIG} libelf --cflags` >> $CONFIG
+-	echo 'LDLIBS += ' `${PKG_CONFIG} libelf --libs` >>$CONFIG
++	echo 'HAVE_ELF_CFLAGS += -DHAVE_ELF' `${PKG_CONFIG} libelf --cflags` >> $CONFIG
++	echo 'HAVE_ELF_LDLIBS += ' `${PKG_CONFIG} libelf --libs` >>$CONFIG
+     else
+ 	echo "no"
+     fi
+@@ -357,8 +357,8 @@
+ 		echo "HAVE_SELINUX:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'LDLIBS +=' `${PKG_CONFIG} --libs libselinux` >>$CONFIG
+-		echo 'CFLAGS += -DHAVE_SELINUX' `${PKG_CONFIG} --cflags libselinux` >>$CONFIG
++		echo 'HAVE_SELINUX_CFLAGS += -DHAVE_SELINUX' `${PKG_CONFIG} --cflags libselinux` >>$CONFIG
++		echo 'HAVE_SELINUX_LDLIBS +=' `${PKG_CONFIG} --libs libselinux` >>$CONFIG
+ 	else
+ 		echo "no"
+ 	fi
+@@ -370,8 +370,8 @@
+ 		echo "HAVE_MNL:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'CFLAGS += -DHAVE_LIBMNL' `${PKG_CONFIG} libmnl --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libmnl --libs` >> $CONFIG
++		echo 'HAVE_MNL_CFLAGS += -DHAVE_LIBMNL' `${PKG_CONFIG} libmnl --cflags` >>$CONFIG
++		echo 'HAVE_MNL_LDLIBS +=' `${PKG_CONFIG} libmnl --libs` >> $CONFIG
+ 	else
+ 		echo "no"
+ 	fi
+@@ -411,8 +411,8 @@
+ 	echo "no"
+     else
+ 	if ${PKG_CONFIG} libbsd --exists; then
+-		echo 'CFLAGS += -DHAVE_LIBBSD' `${PKG_CONFIG} libbsd --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libbsd --libs` >> $CONFIG
++		echo 'HAVE_LIBBSD_CFLAGS += -DHAVE_LIBBSD' `${PKG_CONFIG} libbsd --cflags` >>$CONFIG
++		echo 'HAVE_LIBBSD_LDLIBS +=' `${PKG_CONFIG} libbsd --libs` >> $CONFIG
+ 		echo "no"
+ 	else
+ 		echo 'CFLAGS += -DNEED_STRLCPY' >>$CONFIG
+@@ -428,8 +428,8 @@
+ 		echo "HAVE_CAP:=y" >>$CONFIG
+ 		echo "yes"
+ 
+-		echo 'CFLAGS += -DHAVE_LIBCAP' `${PKG_CONFIG} libcap --cflags` >>$CONFIG
+-		echo 'LDLIBS +=' `${PKG_CONFIG} libcap --libs` >> $CONFIG
++		echo 'HAVE_CAP_CFLAGS += -DHAVE_LIBCAP' `${PKG_CONFIG} libcap --cflags` >>$CONFIG
++		echo 'HAVE_CAP_LDLIBS +=' `${PKG_CONFIG} libcap --libs` >> $CONFIG
+ 	else
+ 		echo "no"
+ 	fi
+@@ -512,7 +512,3 @@
+ 
+ echo -n "libcap support: "
+ check_cap
+-
+-echo >> $CONFIG
+-echo "%.o: %.c" >> $CONFIG
+-echo '	$(QUIET_CC)$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CPPFLAGS) -c -o $@ $<' >> $CONFIG
+--- iproute2-5.12.0/dcb/Makefile
++++ iproute2-5.12.0/dcb/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ TARGETS :=
+ 
+--- iproute2-5.12.0/devlink/Makefile
++++ iproute2-5.12.0/devlink/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ TARGETS :=
+ 
+--- iproute2-5.12.0/genl/Makefile
++++ iproute2-5.12.0/genl/Makefile
+@@ -2,6 +2,7 @@
+ GENLOBJ=genl.o
+ 
+ include ../config.mk
++include ../config.include
+ SHARED_LIBS ?= y
+ 
+ CFLAGS += -fno-strict-aliasing
+--- iproute2-5.12.0/ip/Makefile
++++ iproute2-5.12.0/ip/Makefile
+@@ -16,6 +16,7 @@
+ RTMONOBJ=rtmon.o
+ 
+ include ../config.mk
++include ../config.include
+ 
+ ALLOBJ=$(IPOBJ) $(RTMONOBJ)
+ SCRIPTS=ifcfg rtpr routel routef
+--- iproute2-5.12.0/lib/Makefile
++++ iproute2-5.12.0/lib/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ CFLAGS += -fPIC
+ 
+--- iproute2-5.12.0/misc/Makefile
++++ iproute2-5.12.0/misc/Makefile
+@@ -5,6 +5,7 @@
+ TARGETS=ss nstat ifstat rtacct lnstat
+ 
+ include ../config.mk
++include ../config.include
+ 
+ ifeq ($(HAVE_BERKELEY_DB),y)
+ 	TARGETS += arpd
+--- iproute2-5.12.0/netem/Makefile
++++ iproute2-5.12.0/netem/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ DISTGEN = maketable normal pareto paretonormal
+ DISTDATA = normal.dist pareto.dist paretonormal.dist experimental.dist
+--- iproute2-5.12.0/rdma/Makefile
++++ iproute2-5.12.0/rdma/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0 OR Linux-OpenIB
+ include ../config.mk
++include ../config.include
+ 
+ TARGETS :=
+ 
+--- iproute2-5.12.0/tc/Makefile
++++ iproute2-5.12.0/tc/Makefile
+@@ -4,6 +4,7 @@
+        emp_ematch.tab.o emp_ematch.lex.o
+ 
+ include ../config.mk
++include ../config.include
+ 
+ SHARED_LIBS ?= y
+ 
+--- iproute2-5.12.0/tipc/Makefile
++++ iproute2-5.12.0/tipc/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ TARGETS :=
+ 
+--- iproute2-5.12.0/vdpa/Makefile
++++ iproute2-5.12.0/vdpa/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ include ../config.mk
++include ../config.include
+ 
+ TARGETS :=
+ 
