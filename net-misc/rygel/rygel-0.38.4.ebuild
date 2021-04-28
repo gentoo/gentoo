@@ -36,7 +36,7 @@ RDEPEND="
 		dev-libs/libunistring:=
 		x11-libs/gdk-pixbuf:2
 	)
-	tracker? ( app-misc/tracker:= )
+	tracker? ( app-misc/tracker:0= )
 	transcode? (
 		media-libs/gst-plugins-bad:1.0
 		media-plugins/gst-plugins-twolame:1.0
