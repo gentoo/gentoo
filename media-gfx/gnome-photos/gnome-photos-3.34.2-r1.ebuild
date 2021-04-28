@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 	net-misc/gnome-online-miners[flickr?]
 	upnp-av? ( media-plugins/grilo-plugins:0.3[upnp-av] )
 	flickr? ( media-plugins/grilo-plugins:0.3[flickr] )
-	>=app-misc/tracker-miners-2
+	>=app-misc/tracker-miners-2:0
 "
 BDEPEND="
 	dev-libs/appstream-glib
