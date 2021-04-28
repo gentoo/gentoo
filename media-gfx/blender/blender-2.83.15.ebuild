@@ -1,27 +1,29 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 \
+inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 subversion \
 	toolchain-funcs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
-SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 
-# Blender can have letters in the version string,
-# so strip off the letter if it exists.
-MY_PV="$(ver_cut 1-2)"
+if [[ ${PV} = *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.blender.org/blender.git"
+else
+	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
-SLOT="0"
-LICENSE="|| ( GPL-2 BL )"
-KEYWORDS="amd64 ~x86"
-IUSE="+bullet +dds +elbeem +openexr +system-python +system-numpy +tbb \
-	abi6-compat abi7-compat alembic collada color-management cuda cycles \
-	debug doc ffmpeg fftw headless jack jemalloc jpeg2k llvm \
+SLOT="${PV%.*}"
+LICENSE="|| ( GPL-3 BL )"
+IUSE="+bullet +dds +fluid +openexr +system-python +system-numpy +tbb \
+	alembic collada +color-management cuda cycles \
+	debug doc ffmpeg fftw headless jack jemalloc jpeg2k \
 	man ndof nls openal opencl openimageio openmp opensubdiv \
 	openvdb osl sdl sndfile standalone test tiff valgrind"
 RESTRICT="!test? ( test )"
@@ -30,15 +32,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
 	cuda? ( cycles )
 	cycles? ( openexr tiff openimageio )
-	elbeem? ( tbb )
+	fluid? ( tbb )
 	opencl? ( cycles )
-	openvdb? (
-		^^ ( abi6-compat abi7-compat )
-		tbb
-	)
-	osl? ( cycles llvm )
-	standalone? ( cycles )"
+	openvdb? ( tbb )
+	osl? ( cycles )
+	standalone? ( cycles )
+	test? ( color-management osl )"
 
+# Library versions for official builds can be found in the blender source directory in:
+# build_files/build_environment/install_deps.sh
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[nls?,threads(+)]
 	dev-libs/lzo:2=
@@ -57,9 +59,9 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/opengl
 	alembic? ( >=media-gfx/alembic-1.7.12[boost(+),hdf(+)] )
 	collada? ( >=media-libs/opencollada-1.6.68 )
-	color-management? ( media-libs/opencolorio )
+	color-management? ( <media-libs/opencolorio-2.0.0 )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
+	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	!headless? (
 		x11-libs/libX11
@@ -69,7 +71,6 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
-	llvm? ( sys-devel/llvm:= )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
@@ -84,13 +85,14 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.4.0[cuda=,opencl=] )
 	openvdb? (
-		~media-gfx/openvdb-7.0.0[abi6-compat(-)?,abi7-compat(-)?]
+		>=media-gfx/openvdb-7.0.0
 		dev-libs/c-blosc:=
 	)
-	osl? ( media-libs/osl:= )
+	osl? ( <media-libs/osl-1.11.0 )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb )
+	test? ( dev-vcs/subversion )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
@@ -113,7 +115,12 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-CMAKE_BUILD_TYPE="Release"
+PATCHES=(
+	"${FILESDIR}/blender-2.83.6-libmv_eigen_alignment.patch"
+	"${FILESDIR}/blender-2.83.6-constraints_test.patch"
+	"${FILESDIR}/blender-2.83.6-fix_opevdb_abi.patch"
+	"${FILESDIR}/blender-2.83.13-ffmpeg-4_4.patch"
+)
 
 blender_check_requirements() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -121,6 +128,13 @@ blender_check_requirements() {
 	if use doc; then
 		CHECKREQS_DISK_BUILD="4G" check-reqs_pkg_pretend
 	fi
+}
+
+blender_get_version() {
+	# Get blender version from blender itself.
+	BV=$(grep "BLENDER_VERSION " source/blender/blenkernel/BKE_blender_version.h | cut -d " " -f 3; assert)
+	# Add period.
+	BV=${BV:0:1}.${BV:1}
 }
 
 pkg_pretend() {
@@ -132,40 +146,59 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
+src_unpack() {
+	if [[ ${PV} = *9999* ]] ; then
+		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
+		git-r3_src_unpack
+	else
+		default
+		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
+	fi
+
+	if use test; then
+		subversion_fetch ${TESTS_SVN_URL} ../lib/tests
+	fi
+}
+
 src_prepare() {
 	cmake_src_prepare
 
-	# we don't want static glew, but it's scattered across
-	# multiple files that differ from version to version
-	# !!!CHECK THIS SED ON EVERY VERSION BUMP!!!
-	local file
-	while IFS="" read -d $'\0' -r file ; do
-		sed -i -e '/-DGLEW_STATIC/d' "${file}" || die
-	done < <(find . -type f -name "CMakeLists.txt")
+	blender_get_version
 
 	# Disable MS Windows help generation. The variable doesn't do what it
 	# it sounds like.
 	sed -e "s|GENERATE_HTMLHELP      = YES|GENERATE_HTMLHELP      = NO|" \
 		-i doc/doxygen/Doxyfile || die
+
+	# Prepare icons and .desktop files for slotting.
+	sed -e "s|blender.svg|blender-${BV}.svg|" -i source/creator/CMakeLists.txt || die
+	sed -e "s|blender-symbolic.svg|blender-${BV}-symbolic.svg|" -i source/creator/CMakeLists.txt || die
+	sed -e "s|blender.desktop|blender-${BV}.desktop|" -i source/creator/CMakeLists.txt || die
+	sed -e "s|blender-thumbnailer.py|blender-${BV}-thumbnailer.py|" -i source/creator/CMakeLists.txt || die
+
+	sed -e "s|Name=Blender|Name=Blender ${PV}|" -i release/freedesktop/blender.desktop || die
+	sed -e "s|Exec=blender|Exec=blender-${BV}|" -i release/freedesktop/blender.desktop || die
+	sed -e "s|Icon=blender|Icon=blender-${BV}|" -i release/freedesktop/blender.desktop || die
+
+	mv release/freedesktop/icons/scalable/apps/blender.svg release/freedesktop/icons/scalable/apps/blender-${BV}.svg || die
+	mv release/freedesktop/icons/symbolic/apps/blender-symbolic.svg release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg || die
+	mv release/freedesktop/blender.desktop release/freedesktop/blender-${BV}.desktop || die
+	mv release/bin/blender-thumbnailer.py release/bin/blender-${BV}-thumbnailer.py || die
+
+	if use test; then
+		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i tests/CMakeLists.txt || die
+		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${ED}/usr/)|g" -i build_files/cmake/Modules/GTestTesting.cmake || die
+	fi
 }
 
 src_configure() {
-	# FIX: forcing '-funsigned-char' fixes an anti-aliasing issue with menu
-	# shadows, see bug #276338 for reference
-	append-flags -funsigned-char
+	# Without this the floating point math will differ when for example
+	# "-march=native" is set. This will make automated tests fail and we will
+	# not match the behaviour of some operators/modifiers with the official
+	# builds.
+	append-flags -ffp-contract=off
 	append-lfs-flags
-
-	if use openvdb; then
-		local version
-		if use abi6-compat; then
-			version=6;
-		elif use abi7-compat; then
-			version=7;
-		else
-			die "Openvdb abi version not compatible"
-		fi
-		append-cppflags -DOPENVDB_ABI_VERSION_NUMBER=${version}
-	fi
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
@@ -197,11 +230,10 @@ src_configure() {
 		-DWITH_INPUT_NDOF=$(usex ndof)
 		-DWITH_INTERNATIONAL=$(usex nls)
 		-DWITH_JACK=$(usex jack)
-		-DWITH_LLVM=$(usex llvm)
 		-DWITH_MEM_JEMALLOC=$(usex jemalloc)
 		-DWITH_MEM_VALGRIND=$(usex valgrind)
-		-DWITH_MOD_FLUID=$(usex elbeem)
-		-DWITH_MOD_OCEANSIM=$(usex fftw)
+		-DWITH_MOD_FLUID=$(usex fluid)
+		-DWITH_MOD_OCEANSIM=ON
 		-DWITH_OPENAL=$(usex openal)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENCOLORIO=$(usex color-management)
@@ -218,8 +250,13 @@ src_configure() {
 		-DWITH_SYSTEM_GLEW=ON
 		-DWITH_SYSTEM_LZO=ON
 		-DWITH_TBB=$(usex tbb)
-		-DWITH_X11=$(usex !headless)
+		-DWITH_USD=OFF
 	)
+	if ! use debug ; then
+		append-flags  -DNDEBUG
+	else
+		append-flags  -DDEBUG
+	fi
 	cmake_src_configure
 }
 
@@ -247,17 +284,27 @@ src_compile() {
 }
 
 src_test() {
-	if use test; then
-		einfo "Running Blender Unit Tests ..."
-		cd "${BUILD_DIR}"/bin/tests || die
-		local f
-		for f in *_test; do
-			./"${f}" || die
-		done
-	fi
+	# A lot of tests needs to have access to the installed data files.
+	# So install them into the image directory now.
+	cmake_src_install
+
+	blender_get_version
+	# Define custom blender data/script file paths not be able to find them otherwise during testing.
+	# (Because the data is in the image directory and it will default to look in /usr/share)
+	export BLENDER_SYSTEM_SCRIPTS=${ED}/usr/share/blender/${BV}/scripts
+	export BLENDER_SYSTEM_DATAFILES=${ED}/usr/share/blender/${BV}/datafiles
+
+	# NOTE: The 'modifiers' test will fail if opensubdiv was compiled with -march=native
+	# This this is fixed in blender version 2.92 and up."
+	cmake_src_test
+
+	# Clean up the image directory for src_install
+	rm -fr ${ED}/* || die
 }
 
 src_install() {
+	blender_get_version
+
 	# Pax mark blender for hardened support.
 	pax-mark m "${BUILD_DIR}"/bin/blender
 
@@ -280,8 +327,10 @@ src_install() {
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -r "${ED}"/usr/share/doc/blender || die
 
-	python_fix_shebang "${ED}/usr/bin/blender-thumbnailer.py"
-	python_optimize "${ED}/usr/share/blender/${MY_PV}/scripts"
+	python_fix_shebang "${ED}/usr/bin/blender-${BV}-thumbnailer.py"
+	python_optimize "${ED}/usr/share/blender/${BV}/scripts"
+
+	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}"
 }
 
 pkg_postinst() {
@@ -292,7 +341,7 @@ pkg_postinst() {
 	elog "It is recommended to change your blender temp directory"
 	elog "from /tmp to /home/user/tmp or another tmp file under your"
 	elog "home directory. This can be done by starting blender, then"
-	elog "dragging the main menu down do display all paths."
+	elog "changing the 'Temporary Files' directory in Blender preferences."
 	elog
 	ewarn
 	ewarn "This ebuild does not unbundle the massive amount of 3rd party"
@@ -302,13 +351,12 @@ pkg_postinst() {
 	ewarn "  https://developer.blender.org/"
 	ewarn
 
-	if use python_single_target_python3_8; then
-		elog "You've enabled python-3.8 support for blender, which is still experimental."
-		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "python_single_target_python3_7 instead."
-		elog "Bug: https://bugs.gentoo.org/737388"
-		elog
-	fi
+	elog "You are building Blender with a newer python version than"
+	elog "supported by this version upstream."
+	elog "If you experience breakages with e.g. plugins, please download"
+	elog "the official Blender LTS binary release instead."
+	elog "Bug: https://bugs.gentoo.org/737388"
+	elog
 
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
@@ -322,7 +370,7 @@ pkg_postrm() {
 
 	ewarn ""
 	ewarn "You may want to remove the following directory."
-	ewarn "~/.config/${PN}/${MY_PV}/cache/"
+	ewarn "~/.config/${PN}/<blender version>/cache/"
 	ewarn "It may contain extra render kernels not tracked by portage"
 	ewarn ""
 }

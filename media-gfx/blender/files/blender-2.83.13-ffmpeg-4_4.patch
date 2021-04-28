@@ -1,0 +1,27 @@
+From 9cdf11676ecd753fd86c3d8057c2375174ef0a70 Mon Sep 17 00:00:00 2001
+From: Sebastian Parborg <darkdefende@gmail.com>
+Date: Fri, 7 May 2021 16:51:28 +0200
+Subject: [PATCH] Fix: No sound is exported with ffmpeg 4.4
+
+We were not assigning the amount of sound channels to the output frames.
+Newer ffmpeg releases has sanity checks in place and doesn't fall back
+to two channels anymore.
+---
+ source/blender/blenkernel/intern/writeffmpeg.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/source/blender/blenkernel/intern/writeffmpeg.c b/source/blender/blenkernel/intern/writeffmpeg.c
+index 7fc9e8cc0ef..e5550cee124 100644
+--- a/source/blender/blenkernel/intern/writeffmpeg.c
++++ b/source/blender/blenkernel/intern/writeffmpeg.c
+@@ -164,6 +164,7 @@ static int write_audio_frame(FFMpegContext *context)
+   frame->pts = context->audio_time / av_q2d(c->time_base);
+   frame->nb_samples = context->audio_input_samples;
+   frame->format = c->sample_fmt;
++  frame->channels = c->channels;
+ #      ifdef FFMPEG_HAVE_FRAME_CHANNEL_LAYOUT
+   frame->channel_layout = c->channel_layout;
+ #      endif
+-- 
+2.26.3
+
