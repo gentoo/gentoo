@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vim-plugin
 
@@ -26,4 +26,5 @@ VIM_PLUGIN_MESSAGES="filetype"
 
 src_prepare() {
 	rm addon-info.json || die
+	default
 }
