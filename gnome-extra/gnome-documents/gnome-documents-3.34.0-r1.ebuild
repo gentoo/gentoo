@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	x11-libs/pango[introspection]
 "
 RDEPEND="${COMMON_DEPEND}
-	>=app-misc/tracker-miners-2
+	>=app-misc/tracker-miners-2:0
 	net-misc/gnome-online-miners
 	sys-apps/dbus
 	x11-themes/adwaita-icon-theme
