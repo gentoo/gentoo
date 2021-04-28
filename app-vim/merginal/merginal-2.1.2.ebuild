@@ -25,6 +25,8 @@ RDEPEND="app-vim/fugitive"
 
 VIM_PLUGIN_HELPFILES="${PN}"
 
+DOCS=( CHANGELOG.md )
+
 src_prepare() {
 	rm README.md || die
 	default

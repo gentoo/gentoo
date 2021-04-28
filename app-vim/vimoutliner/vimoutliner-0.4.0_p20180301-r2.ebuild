@@ -30,6 +30,8 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}"
 
+DOCS=( README CHANGELOG TODO.otl )
+
 src_prepare() {
 	default
 
