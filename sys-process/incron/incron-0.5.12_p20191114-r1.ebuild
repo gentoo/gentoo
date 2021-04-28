@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit linux-info systemd toolchain-funcs
+inherit flag-o-matic linux-info systemd toolchain-funcs
 
 COMMIT="1eedfbc9b318372efd119fd17f4abdbde561a53d"
 S="${WORKDIR}/${PN}-${COMMIT}"
@@ -39,6 +39,9 @@ src_prepare() {
 }
 
 src_compile() {
+	# code is not C++17 ready
+	append-cxxflags -std=c++14
+
 	emake CXX=$(tc-getCXX)
 }
 
