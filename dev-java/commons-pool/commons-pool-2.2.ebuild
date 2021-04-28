@@ -16,7 +16,7 @@ SRC_URI="mirror://apache/commons/pool/source/${MY_P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 
 COMMON_DEP="dev-java/cglib:3
 	dev-java/asm:4"
