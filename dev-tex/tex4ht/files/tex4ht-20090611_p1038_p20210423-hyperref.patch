@@ -1,0 +1,17 @@
+https://puszcza.gnu.org.ua/bugs/?508
+
+--- a/texmf/tex/generic/tex4ht/hyperref.4ht
++++ b/texmf/tex/generic/tex4ht/hyperref.4ht
+@@ -306,6 +306,12 @@
+   \Hy@MakeCurrentHref{#1.\the\Hy@linkcounter}%
+ }
+ 
++\@ifpackageloaded{nameref}{}
++{%
++   \let\sv:label\label
++   \RequirePackage{nameref}%
++   \let\label\sv:label
++}
+ \def\hyper@makecurrent#1{%
+   \begingroup
+     \edef\Hy@param{#1}%
