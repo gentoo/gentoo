@@ -33,6 +33,7 @@ DEPEND="dev-libs/kpathsea
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
+PATCHES=("${FILESDIR}/${P}-hyperref.patch")
 
 src_prepare() {
 	cp -a "${WORKDIR}/texmf-dist/"* texmf/ || die
