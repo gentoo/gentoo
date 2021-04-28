@@ -50,6 +50,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.22-remove-rpm.patch
 	"${FILESDIR}"/${PN}-8.0.22-fix-building-against-ICU-68.patch
+	"${FILESDIR}"/${PN}-8.0.23-gcc11.patch
 )
 
 S="${WORKDIR}/percona-xtrabackup-${MY_PV}"
