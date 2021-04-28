@@ -30,6 +30,7 @@ S="${WORKDIR}/${P}-src"
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.22-fix-build.patch
 	"${FILESDIR}"/${PN}-8.0.20-fix-libressl-support.patch
+	"${FILESDIR}"/${PN}-8.0.24-gcc11-numeric_limits.patch
 )
 
 src_configure() {
