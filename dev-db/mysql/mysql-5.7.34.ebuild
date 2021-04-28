@@ -269,6 +269,9 @@ src_configure() {
 
 	append-cxxflags -felide-constructors
 
+	# code is not C++17 ready, bug #786402
+	append-cxxflags -std=c++14
+
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
 
