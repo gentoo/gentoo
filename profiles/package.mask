@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# no consumers
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/786408
+dev-java/jboss-logmanager
+dev-java/jboss-logging
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # last release in 2017, website is offline
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786381
