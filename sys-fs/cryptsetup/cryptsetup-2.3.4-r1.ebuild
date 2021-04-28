@@ -89,6 +89,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable udev)
 		$(use_enable !urandom dev-random)
+		$(usex argon2 '' '--with-luks2-pbkdf=pbkdf2')
 	)
 	econf "${myeconfargs[@]}"
 }
