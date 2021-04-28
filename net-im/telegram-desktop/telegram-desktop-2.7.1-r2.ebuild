@@ -65,6 +65,10 @@ REQUIRED_USE="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/tdesktop-2.7.1-fix-disable-dbus-integration.patch"
+)
+
 pkg_pretend() {
 	if has ccache ${FEATURES}; then
 		ewarn
