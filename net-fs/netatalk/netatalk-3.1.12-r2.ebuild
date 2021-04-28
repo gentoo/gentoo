@@ -34,7 +34,7 @@ CDEPEND="
 	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	tracker? ( app-misc/tracker )
+	tracker? ( app-misc/tracker:0= )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 RDEPEND="${CDEPEND}"
