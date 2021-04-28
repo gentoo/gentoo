@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 	gnome-base/gvfs
 "
 BDEPEND="
-	${vala_depend}
+	$(vala_depend)
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1 )
