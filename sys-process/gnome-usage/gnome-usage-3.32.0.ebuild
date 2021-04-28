@@ -23,7 +23,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	${vala_depend}
+	$(vala_depend)
 	>=sys-devel/gettext-0.19.8
 "
 
