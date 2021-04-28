@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# last release in 2017, website is offline
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/786381
+dev-java/javolution
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # library with no consumer
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786237
