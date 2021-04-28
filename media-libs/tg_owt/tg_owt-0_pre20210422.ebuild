@@ -33,7 +33,6 @@ DEPEND="
 	media-libs/openh264:=
 	media-libs/opus
 	media-video/ffmpeg:=
-	net-libs/usrsctp
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -48,6 +47,9 @@ src_unpack() {
 
 src_prepare() {
 	eapply "${FILESDIR}/Allow-using-packaged-third_party.patch"
+
+	# Keep usrsctp bundled (missing ~ppc64 keyword)
+	sed -i '/pkg_check_modules(LIBUSRSCTP usrsctp)/d' cmake/external.cmake || die
 
 	# We aren't installing any third_party headers
 	sed -i '/third_party\/libyuv/d' cmake/libyuv.cmake || die
