@@ -309,6 +309,7 @@ src_configure() {
 	if use server ; then
 		mycmakeargs+=(
 			-DWITH_AUTHENTICATION_LDAP=$(usex ldap system OFF)
+			-DWITH_COREDUMPER=OFF
 			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
 			-DWITH_MECAB=$(usex cjk system OFF)
