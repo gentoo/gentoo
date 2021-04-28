@@ -25,6 +25,8 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+DOCS=( README.md CHANGELOG.md )
+
 src_install() {
 	mv api.py iris-api || die
 	mv idle.py iris-idle || die

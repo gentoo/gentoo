@@ -18,6 +18,8 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 S=${WORKDIR}/${MY_P}
 
+DOCS=( README CHANGES.TXT )
+
 src_prepare() {
 	default
 	rm -r test samples addon-info.json || die

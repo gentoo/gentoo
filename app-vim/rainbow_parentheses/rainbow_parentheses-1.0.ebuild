@@ -15,3 +15,5 @@ DEPEND="app-arch/unzip"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}.vim-master"
+
+DOCS=( readme.md )

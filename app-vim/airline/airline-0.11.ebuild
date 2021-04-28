@@ -21,6 +21,8 @@ HOMEPAGE="https://github.com/vim-airline/vim-airline/ https://www.vim.org/script
 LICENSE="MIT"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
+DOCS=( CHANGELOG.md )
+
 src_prepare() {
 	default
 

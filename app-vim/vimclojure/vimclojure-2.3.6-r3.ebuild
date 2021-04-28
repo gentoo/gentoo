@@ -19,7 +19,7 @@ RDEPEND="dev-lang/clojure"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-DOCS=( doc/LICENSE.txt )
+DOCS=( README README.markdown )
 
 # Files with similar names are already installed by app-vim/slimv.
 DUPLICATE_FILES=(
@@ -47,6 +47,6 @@ src_prepare() {
 
 src_install() {
 	einstalldocs
-	rm -rv "${DOCS[@]}" bin || die
+	rm -rv doc/LICENSE.txt bin || die
 	vim-plugin_src_install
 }
