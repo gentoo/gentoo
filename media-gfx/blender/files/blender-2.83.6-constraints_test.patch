@@ -1,0 +1,13 @@
+diff --git a/tests/python/bl_constraints.py b/tests/python/bl_constraints.py
+index 323dd874ac0..7cbc46d680a 100644
+--- a/tests/python/bl_constraints.py
++++ b/tests/python/bl_constraints.py
+@@ -44,7 +44,7 @@ class AbstractConstraintTests(unittest.TestCase):
+             collection = top_collection.children[self.layer_collection]
+             collection.exclude = False
+ 
+-    def assert_matrix(self, actual_matrix, expect_matrix, object_name: str, places=6, delta=None):
++    def assert_matrix(self, actual_matrix, expect_matrix, object_name: str, places=None, delta=1e-6):
+         """Asserts that the matrices almost equal."""
+         self.assertEqual(len(actual_matrix), 4, 'Expected a 4x4 matrix')
+ 
