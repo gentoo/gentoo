@@ -67,6 +67,10 @@ DOCS=( AUTHORS README.md )
 
 S="${WORKDIR}/${P/_/-}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-atomic.patch"
+)
+
 src_configure() {
 	my_config() {
 		local value
