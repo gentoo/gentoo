@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# obsolete, use dev-util/visualvm
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/786513
+dev-java/jvmstat
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786510
