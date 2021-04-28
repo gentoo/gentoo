@@ -77,7 +77,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-26.1.2-python-3.8.patch" ) # https://github.com/obsproject/obs-studio/pull/3335
+PATCHES=(
+	"${FILESDIR}/${PN}-26.1.2-fix-alsa-crash.patch"
+	"${FILESDIR}/${PN}-26.1.2-python-3.8.patch" # https://github.com/obsproject/obs-studio/pull/3335
+)
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
