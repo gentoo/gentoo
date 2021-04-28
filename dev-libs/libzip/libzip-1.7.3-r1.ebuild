@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake multibuild
+inherit cmake multibuild flag-o-matic
 
 DESCRIPTION="Library for manipulating zip archives"
 HOMEPAGE="https://nih.at/libzip/"
@@ -43,6 +43,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	append-lfs-flags
 	myconfigure() {
 		local mycmakeargs=(
 			-DBUILD_EXAMPLES=OFF # nothing is installed
