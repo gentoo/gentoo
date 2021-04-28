@@ -21,7 +21,7 @@ SRC_URI="
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="alsa cups headless-awt selinux"
 
