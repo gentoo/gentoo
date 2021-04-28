@@ -23,7 +23,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack lua nvenc pulseaudio python speex +ssl truetype v4l vlc"
+IUSE="+alsa decklink fdk imagemagick jack lua nvenc pipewire pulseaudio python speex +ssl truetype v4l vlc wayland"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -37,7 +37,7 @@ DEPEND="
 	>=dev-libs/jansson-2.5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[wayland?]
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
@@ -64,6 +64,7 @@ DEPEND="
 	jack? ( virtual/jack )
 	lua? ( ${LUA_DEPS} )
 	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
+	pipewire? ( media-video/pipewire )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
@@ -74,6 +75,7 @@ DEPEND="
 	)
 	v4l? ( media-libs/libv4l )
 	vlc? ( media-video/vlc:= )
+	wayland? ( dev-libs/wayland )
 "
 RDEPEND="${DEPEND}"
 
@@ -87,10 +89,15 @@ pkg_setup() {
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DBUILD_BROWSER=no
+		-DBUILD_VST=no
+		-DENABLE_WAYLAND=$(usex wayland)
 		-DDISABLE_ALSA=$(usex !alsa)
+		-DDISABLE_DECKLINK=$(usex !decklink)
 		-DDISABLE_FREETYPE=$(usex !truetype)
 		-DDISABLE_JACK=$(usex !jack)
 		-DDISABLE_LIBFDK=$(usex !fdk)
+		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
