@@ -50,7 +50,7 @@ DEPEND="
 # app-emulation/qemu qemu-img used to convert image to QCOW2 format during copy
 RDEPEND="${DEPEND}
 	app-cdr/cdrtools
-	>=app-misc/tracker-miners-2[iso]
+	>=app-misc/tracker-miners-2:0[iso]
 	app-emulation/spice[smartcard]
 	>=app-emulation/libvirt-0.9.3[libvirtd,qemu]
 	>=app-emulation/qemu-1.3.1[spice,smartcard,usbredir]
