@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-libs/libdazzle-3.30
 	>=gnome-base/libgtop-2.34.0:2
 	>=gui-libs/libhandy-1.0.0:1=
-	>=app-misc/tracker-3.0.3:=
+	>=app-misc/tracker-3.0.3:3=
 "
 
 DEPEND="${RDEPEND}
