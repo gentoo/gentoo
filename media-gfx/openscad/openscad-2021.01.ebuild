@@ -69,9 +69,9 @@ src_prepare() {
 
 src_configure() {
 	if has ccache ${FEATURES}; then
-		eqmake5 "PREFIX = ${EROOT}/usr" "CONFIG += ccache" "${PN}.pro"
+		eqmake5 "PREFIX = ${ESYSROOT}/usr" "CONFIG += ccache" "${PN}.pro"
 	else
-		eqmake5 "PREFIX = ${EROOT}/usr" "${PN}.pro"
+		eqmake5 "PREFIX = ${ESYSROOT}/usr" "${PN}.pro"
 	fi
 }
 
