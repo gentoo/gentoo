@@ -35,6 +35,13 @@
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
+# see bug: https://bugs.gentoo.org/786483
+dev-java/l2fprod-common
+dev-java/jreleaseinfo
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# no consumers
+# removal in 30 days
 # see bug: https://bugs.gentoo.org/786480
 dev-java/jortho
 
