@@ -35,7 +35,7 @@ COMMON_DEPEND="
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	selinux? ( sys-libs/libselinux )
-	tracker? ( >=app-misc/tracker-2.0:= )
+	tracker? ( >=app-misc/tracker-2.0:0= )
 	xmp? ( >=media-libs/exempi-2.2.0:= )
 "
 RDEPEND="
