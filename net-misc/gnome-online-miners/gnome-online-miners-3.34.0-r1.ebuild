@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~arm64 x86"
 
 # libgdata[gnome] needed for goa support
 RDEPEND="
-	>=app-misc/tracker-2:=
+	>=app-misc/tracker-2:0=
 	>=dev-libs/glib-2.35.1:2
 	>=dev-libs/libgdata-0.15.2:0=[crypt,gnome-online-accounts]
 	media-libs/grilo:0.3
