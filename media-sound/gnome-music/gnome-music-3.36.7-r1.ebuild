@@ -24,7 +24,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libdazzle-3.28.0[introspection]
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]
 	net-libs/libsoup:2.4[introspection]
-	>=app-misc/tracker-2.3.0:=[introspection(+)]
+	>=app-misc/tracker-2.3.0:0=[introspection(+)]
 	$(python_gen_cond_dep '
 		>=dev-python/pygobject-3.29.1:3[cairo,${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pycairo-1.14.0[${PYTHON_MULTI_USEDEP}]
@@ -36,8 +36,8 @@ DEPEND="${PYTHON_DEPS}
 # https://bugzilla.gnome.org/show_bug.cgi?id=731613
 RDEPEND="${DEPEND}
 	|| (
-		>=app-misc/tracker-miners-2.2.0[gstreamer]
-		>=app-misc/tracker-miners-2.2.0[ffmpeg]
+		>=app-misc/tracker-miners-2.2.0:0[gstreamer]
+		>=app-misc/tracker-miners-2.2.0:0[ffmpeg]
 	)
 	x11-libs/libnotify[introspection]
 	media-libs/gstreamer:1.0[introspection]
