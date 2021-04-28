@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit vim-plugin
 
@@ -15,4 +15,5 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 src_prepare() {
 	rm Makefile .gitignore || die
+	default
 }

@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vim-plugin vcs-snapshot
 
@@ -18,4 +18,5 @@ RDEPEND="|| ( app-misc/screen app-misc/tmux )"
 
 src_prepare() {
 	rm README || die
+	default
 }

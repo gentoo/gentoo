@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit edos2unix epatch vim-plugin
+inherit edos2unix vim-plugin
 
 DESCRIPTION="vim plugin: a collection of color schemes from vim.org"
 HOMEPAGE="https://www.vim.org/"
@@ -18,10 +18,8 @@ for scheme names). To automatically set a scheme at startup, please see
 :help vimrc."
 
 src_prepare() {
-	EPATCH_SOURCE="${S}/patches" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch
+	default
+	eapply -p0 "${S}"/patches/*.patch
 	rm -rf patches/
 
 	# fix line endings
