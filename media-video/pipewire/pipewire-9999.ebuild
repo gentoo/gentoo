@@ -248,7 +248,6 @@ pkg_postinst() {
 		elog
 		ewarn "Both new users and those upgrading need to enable pipewire-media-session:"
 		ewarn "systemctl --user enable pipewire-media-session.service"
-		ewarn "People using it for screencasting still need only pipewire.socket enabled."
 	else
 		elog "This ebuild auto-enables PulseAudio replacement. Because of that users"
 		elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable"
@@ -263,6 +262,8 @@ pkg_postinst() {
 		elog
 		ewarn "${EROOT}/etc/xdg/autostart/pipewire.desktop has been installed. Users of XDG"
 		ewarn "compliant desktops on OpenRC must not manually start pipewire anymore!"
+		ewarn "Users wishing to use PulseAudio must remove the file manually and add the"
+		ewarn "path above to the INSTALL_MASK variable in their make.conf"
 	fi
 
 	optfeature_header "The following can be installed for optional runtime features:"
