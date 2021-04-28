@@ -35,6 +35,12 @@
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
+# see bug: https://bugs.gentoo.org/786441
+dev-java/jlibeps
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# no consumers
+# removal in 30 days
 # see bug: https://bugs.gentoo.org/786438
 dev-java/jisp
 
