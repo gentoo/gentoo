@@ -37,7 +37,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}" \
 		CALCPAGER="${PAGER}" \
 		USE_READLINE="-DUSE_READLINE" \
-		READLINE_LIB="-lreadline -lhistory $(tc-getPKG_CONFIG --libs ncurses) -L\"${S}\"/custom -lcustcalc" \
+		READLINE_LIB="-lreadline -lhistory $($(tc-getPKG_CONFIG) --libs ncurses) -L\"${S}\"/custom -lcustcalc" \
 		all
 }
 
