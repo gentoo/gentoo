@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.6.12
 	>=dev-libs/libxslt-1.1.8
 	dev-util/itstool
-	>=gnome-extra/yelp-xsl-3.36
+	>=gnome-extra/yelp-xsl-3.38
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
