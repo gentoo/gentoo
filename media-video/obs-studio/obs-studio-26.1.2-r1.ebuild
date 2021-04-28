@@ -153,7 +153,7 @@ pkg_postinst() {
 }
 
 pkg_postinst() {
-	if [[ use python ]]; then
+	if use python; then
 		ewarn "This ebuild applies a patch that is not yet accepted upstream,"
 		ewarn "and while it fixes Python support at least to some extent, it"
 		ewarn "may cause other issues."
