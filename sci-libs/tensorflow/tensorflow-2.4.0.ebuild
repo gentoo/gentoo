@@ -20,7 +20,7 @@ KEYWORDS="~amd64"
 IUSE="cuda mpi +python xla"
 CPU_USE_FLAGS_X86="sse sse2 sse3 sse4_1 sse4_2 avx avx2 fma3 fma4"
 for i in $CPU_USE_FLAGS_X86; do
-	IUSE+=" cpu_flags_x86_$i"
+	IUSE+=" cpu_flags_x86_${i}"
 done
 
 # distfiles that bazel uses for the workspace, will be copied to basel-distdir
@@ -127,6 +127,7 @@ BDEPEND="
 	>=dev-libs/protobuf-3.8.0
 	dev-java/java-config
 	=dev-util/bazel-3*
+	virtual/pkgconfig
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
 	)
