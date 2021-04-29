@@ -38,14 +38,6 @@ REQUIRED_USE="
 	!sechash? ( !nts? ( !nettle ) )
 "
 
-if [[ ${PV} == "9999" ]] ; then
-	# Needed for doc generation in 9999
-	REQUIRED_USE+=" html"
-	BDEPEND+=" virtual/w3m"
-else
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-mlichvar )"
-fi
-
 DEPEND="
 	caps? (
 		acct-group/ntp
@@ -72,6 +64,14 @@ BDEPEND="
 		nss? ( virtual/pkgconfig )
 	)
 "
+
+if [[ ${PV} == "9999" ]] ; then
+	# Needed for doc generation in 9999
+	REQUIRED_USE+=" html"
+	BDEPEND+=" virtual/w3m"
+else
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-mlichvar )"
+fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
