@@ -16,10 +16,6 @@ fi
 LICENSE="ISC Apache-2.0 MIT"
 SLOT="0"
 
-PATCHES=(
-	"${FILESDIR}/${P}-null_pointer_fix.patch" #786957
-)
-
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
 	dodoc README.md
