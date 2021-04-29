@@ -35,6 +35,15 @@
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
+# see bug: https://bugs.gentoo.org/786753
+dev-java/msv
+dev-java/relaxngcc
+dev-java/wstx
+dev-java/jettison
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# no consumers
+# removal in 30 days
 # see bug: https://bugs.gentoo.org/786744
 dev-java/minlog
 
