@@ -14,12 +14,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	x11-libs/libXaw
 	>=app-misc/editor-wrapper-3"
 
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+	virtual/pkgconfig
+	x11-base/xorg-proto
+	"
 
 S=${WORKDIR}/${MY_P}
 
