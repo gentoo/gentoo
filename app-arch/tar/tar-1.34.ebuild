@@ -14,11 +14,16 @@ LICENSE="GPL-3+"
 SLOT="0"
 [[ -n "$(ver_cut 3)" ]] && [[ "$(ver_cut 3)" -ge 90 ]] || \
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl elibc_glibc minimal nls selinux userland_GNU xattr"
+IUSE="acl elibc_glibc minimal nls parallel selinux userland_GNU xattr"
 
 RDEPEND="
 	acl? ( virtual/acl )
 	selinux? ( sys-libs/libselinux )
+	parallel? (
+		app-arch/pigz
+		app-arch/pxz
+		app-arch/pbzip2
+	)
 "
 DEPEND="${RDEPEND}
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )
@@ -48,6 +53,9 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with selinux)
 		$(use_with xattr xattrs)
+		$(usex parallel "--with-gzip=pigz" "")
+		$(usex parallel "--with-bzip2=pbzip2" "")
+		$(usex parallel "--with-xz=pxz" "")
 	)
 	FORCE_UNSAFE_CONFIGURE=1 econf "${myeconfargs[@]}"
 }
