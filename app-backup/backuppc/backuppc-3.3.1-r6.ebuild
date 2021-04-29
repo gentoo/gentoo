@@ -25,14 +25,14 @@ DEPEND="
 	dev-lang/perl
 "
 
-# The CGI modules are handled in $RDEPEND.
+# The CGI modules are handled in ${RDEPEND}.
 APACHE_MODULES="apache2_modules_alias," # RedirectMatch
 APACHE_MODULES+="apache2_modules_authn_core," # AuthType
 APACHE_MODULES+="apache2_modules_authz_core," # Require
 APACHE_MODULES+="apache2_modules_authz_host," # Require host
 APACHE_MODULES+="apache2_modules_authz_user" # Require valid-user
 
-# Older versions of mod_perl think they're compatibile with apache-2.4,
+# Older versions of mod_perl think they're compatible with apache-2.4,
 # so we require the new one explicitly.
 RDEPEND="
 	${DEPEND}
