@@ -63,7 +63,6 @@ BDEPEND="${BDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-tests-Don-t-use-exact-floating-point-comparisons.patch
-	"${FILESDIR}"/${PV}-build-Fix-building-without-vapi.patch
 )
 
 src_prepare() {
