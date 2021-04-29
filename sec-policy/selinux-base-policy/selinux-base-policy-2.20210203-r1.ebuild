@@ -22,7 +22,7 @@ IUSE="systemd +unconfined"
 
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
 DEPEND="=sec-policy/selinux-base-${PVR}[systemd?]"
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-apps/checkpolicy
 	sys-devel/m4"
