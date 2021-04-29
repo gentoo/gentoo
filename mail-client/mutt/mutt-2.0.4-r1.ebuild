@@ -14,7 +14,7 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
-IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme +hcache idn +imap kerberos libressl +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
+IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme +hcache idn +imap kerberos +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
 # hcache: allow multiple, bug #607360
 REQUIRED_USE="
 	hcache?           ( || ( berkdb gdbm lmdb qdbm tokyocabinet ) )
@@ -42,11 +42,8 @@ CDEPEND="
 
 	ssl? (
 		gnutls?    ( >=net-libs/gnutls-1.0.17:= )
-		!gnutls? (
-			libressl? ( dev-libs/libressl:= )
-			!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+		!gnutls? ( >=dev-libs/openssl-0.9.6:0= )
 		)
-	)
 
 	nls?           ( virtual/libintl )
 	sasl?          ( >=dev-libs/cyrus-sasl-2 )
