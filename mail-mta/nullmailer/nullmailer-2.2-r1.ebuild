@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib systemd user
+inherit autotools flag-o-matic multilib systemd toolchain-funcs user
 
 DESCRIPTION="Simple relay-only local mail transport agent"
 HOMEPAGE="http://untroubled.org/nullmailer/ https://github.com/bruceg/nullmailer"
@@ -69,6 +69,12 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		$(use_enable ssl tls)
+}
+
+src_compile() {
+	export AR="$(tc-getAR)"
+	export RANLIB="$(tc-getAR)"
+	default
 }
 
 src_install() {
