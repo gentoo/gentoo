@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	>=x11-libs/motif-2.3:0
 	ppc? ( dev-libs/elfutils )
 	ppc64? ( dev-libs/elfutils )
-	readline? ( sys-libs/readline:* )
+	readline? ( sys-libs/readline:= )
 "
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
