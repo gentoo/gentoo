@@ -1,27 +1,37 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -11,16 +11,16 @@
+@@ -4,23 +4,23 @@ DESTDIR		?=	/
+ 
+ TARGET		=	xbattbar
+ APM_CHECK	=	xbattbar-check-apm
+-CPPFLAGS	=	-D_FORTIFY_SOURCE=2
+-CFLAGS		=	-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security $(CPPFLAGS)
+-LDFLAGS		=	-Wl,-z,relro
++CPPFLAGS	?=	-D_FORTIFY_SOURCE=2
++CFLAGS		?=	-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security
++LDFLAGS		?=	-Wl,-z,relro
+ 
  all: $(TARGET) $(APM_CHECK)
  
  $(TARGET): obj/xbattbar.o
 -	gcc -o $@ $< -lX11 $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(shell $(PKG_CONFIG) --libs x11)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $< $(shell $(PKG_CONFIG) --libs x11)
  
  obj/xbattbar.o: xbattbar.c obj/stamp
 -	gcc -MMD -o $@ -c $< $(CFLAGS)
-+	$(CC) $(CFLAGS) $(LDFLAGS) -MMD -o $@ -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -MMD -o $@ -c $<
  
  $(APM_CHECK): obj/xbattbar-check-apm.o
 -	gcc -o $@ $< $(LDFLAGS)
-+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $<
  
  obj/xbattbar-check-apm.o: xbattbar-check-apm.c obj/stamp
 -	gcc -MMD -D$(OS_TYPE) -o $@ -c $< $(CFLAGS)
-+	$(CC) $(CFLAGS) $(LDFLAGS) -MMD -D$(OS_TYPE) -o $@ -c $<
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -MMD -D$(OS_TYPE) -o $@ -c $<
  
  obj/stamp:
  	mkdir obj
-@@ -32,12 +32,12 @@
+@@ -32,12 +32,12 @@ clean:
  
  
  install: $(TARGET) $(APM_CHECK)
