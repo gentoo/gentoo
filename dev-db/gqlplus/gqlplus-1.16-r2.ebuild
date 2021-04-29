@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~amd64-linux ~x64-macos"
 IUSE=""
 
-DEPEND="sys-libs/readline:*"
+DEPEND="sys-libs/readline:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
