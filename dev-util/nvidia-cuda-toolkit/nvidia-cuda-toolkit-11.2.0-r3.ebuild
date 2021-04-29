@@ -28,7 +28,7 @@ RDEPEND="
 	)
 	vis-profiler? (
 		dev-libs/openssl
-		virtual/jre
+		>=virtual/jre-1.8:*
 	)"
 
 S="${WORKDIR}"
