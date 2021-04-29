@@ -33,7 +33,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
-S="${WORKDIR}/$PN-${MY_PV}/"
+S="${WORKDIR}/${PN}-${MY_PV}/"
 
 pkg_pretend() {
 	if use kernel_linux; then
