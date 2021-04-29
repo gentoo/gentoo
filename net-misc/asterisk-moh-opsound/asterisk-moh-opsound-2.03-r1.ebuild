@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -27,8 +27,8 @@ src_install() {
 	for c in ${CODECS}; do
 		if use ${c#+}; then
 			for pf in CREDITS LICENSE CHANGES; do
-				dodoc "$pf-$PN-${c#+}"
-				rm "$pf-$PN-${c#+}"
+				dodoc "${pf}-${PN}-${c#+}"
+				rm "${pf}-${PN}-${c#+}"
 			done
 		fi
 	done
