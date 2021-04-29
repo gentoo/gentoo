@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,6 +10,7 @@ DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
 HOMEPAGE="https://www.advancemame.it/comp-readme.html"
 SRC_URI="https://github.com/amadvance/advancecomp/archive/${EGIT_COMMIT}.tar.gz
 	-> ${PN}-${EGIT_COMMIT}.tar.gz"
+S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 
 LICENSE="GPL-2+ Apache-2.0 LGPL-2.1+ MIT"
 SLOT="0"
@@ -24,7 +25,9 @@ DEPEND="${RDEPEND}"
 # https://sourceforge.net/p/advancemame/bugs/270/
 RESTRICT="test"
 
-S=${WORKDIR}/${PN}-${EGIT_COMMIT}
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-11.patch
+)
 
 src_prepare() {
 	default
