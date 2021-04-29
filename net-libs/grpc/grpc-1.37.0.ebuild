@@ -18,7 +18,7 @@ IUSE="doc examples libressl test"
 
 # look for submodule versions in third_party dir
 RDEPEND="
-	=dev-cpp/abseil-cpp-20200923*[cxx17(+)]:=
+	=dev-cpp/abseil-cpp-20200923*:=[cxx17(+)]
 	>=dev-libs/re2-0.2021.04.01:=
 	>=dev-libs/protobuf-3.15.2:=
 	>=net-dns/c-ares-1.15.0:=
