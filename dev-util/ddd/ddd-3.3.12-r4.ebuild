@@ -16,7 +16,7 @@ IUSE="readline"
 
 COMMON_DEPEND="
 	sys-devel/gdb
-	sys-libs/ncurses:*
+	sys-libs/ncurses:=
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXmu
