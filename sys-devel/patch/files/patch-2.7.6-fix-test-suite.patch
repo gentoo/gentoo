@@ -1,5 +1,6 @@
-http://git.savannah.gnu.org/cgit/patch.git/commit/?id=f6bc5b14bd193859851d15a049bafb1007acd288
-http://git.savannah.gnu.org/cgit/patch.git/commit/?id=074e2395f81d0ecaa66b71a6c228c70b49db72e5
+https://git.savannah.gnu.org/cgit/patch.git/commit/?id=f6bc5b14bd193859851d15a049bafb1007acd288
+https://git.savannah.gnu.org/cgit/patch.git/commit/?id=074e2395f81d0ecaa66b71a6c228c70b49db72e5
+https://git.savannah.gnu.org/cgit/patch.git/commit/?id=7623b2dc0d1837ecfd58f32efc78e35834deeb38
 
 --- a/tests/crlf-handling
 +++ b/tests/crlf-handling
@@ -117,4 +118,16 @@ http://git.savannah.gnu.org/cgit/patch.git/commit/?id=074e2395f81d0ecaa66b71a6c2
      while test $# -gt 0 ; do
  	echo "$1"
  	shift
--- 
+ 
+--- a/tests/test-lib.sh
++++ b/tests/test-lib.sh
+@@ -113,7 +113,7 @@ cleanup() {
+     exit $status
+ }
+ 
+-if eval 'test -n "${BASH_LINENO[0]}" 2>/dev/null'; then
++if ( eval 'test -n "${BASH_LINENO[0]}"' 2>/dev/null ); then
+     eval '
+ 	_start_test() {
+ 	    printf "[${BASH_LINENO[2]}] %s -- " "$*"
+ 
