@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,9 +27,10 @@ BDEPEND="
 		dev-python/sympy[${PYTHON_USEDEP}]
 	)
 "
+# See bug #786582 for symengine constraint
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	>=sci-libs/symengine-0.6
+	>=sci-libs/symengine-$(ver_cut 1-2)
 "
 
 distutils_enable_tests pytest
