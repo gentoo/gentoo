@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib versionator
 
 MY_COMMIT="8120430"
-MY_P="${PN#nagios-}_v$(get_major_version $PV)-${MY_COMMIT}"
+MY_P="${PN#nagios-}_v$(get_major_version ${PV})-${MY_COMMIT}"
 
 DESCRIPTION="IPMI Sensor Monitoring Plugin for Nagios/Icinga"
 HOMEPAGE="http://www.thomas-krenn.com/en/oss/ipmi-plugin/"
