@@ -94,12 +94,8 @@ BDEPEND="${PYTHON_DEPS}
 			)
 		)
 	)
-	amd64? ( >=dev-lang/yasm-1.1 )
-	x86? ( >=dev-lang/yasm-1.1 )
-	!system-av1? (
-		amd64? ( >=dev-lang/nasm-2.13 )
-		x86? ( >=dev-lang/nasm-2.13 )
-	)"
+	amd64? ( >=dev-lang/nasm-2.13 )
+	x86? ( >=dev-lang/nasm-2.13 )"
 
 CDEPEND="
 	>=dev-libs/nss-3.63
