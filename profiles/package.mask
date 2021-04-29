@@ -35,6 +35,12 @@
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
+# see bug: https://bugs.gentoo.org/786843
+dev-java/sun-httpserver-bin
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# no consumers
+# removal in 30 days
 # see bug: https://bugs.gentoo.org/786840
 dev-java/stax-ex
 dev-java/xmlstreambuffer
