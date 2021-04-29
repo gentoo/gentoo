@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,8 @@ PATCHES=(
 
 src_prepare() {
 	default
-	cp /usr/share/gettext/config.rpath . || die
+
+	config_rpath_update .
 	eautoreconf
 }
 
