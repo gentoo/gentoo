@@ -17,7 +17,7 @@ IUSE="tools"
 DEPEND="
 	sys-fabric/libibmad:${SLOT}
 	sys-fabric/libibumad:${SLOT}"
-RDEPEND="$DEPEND
+RDEPEND="${DEPEND}
 	 tools? (
 		net-misc/iputils
 		net-misc/openssh
