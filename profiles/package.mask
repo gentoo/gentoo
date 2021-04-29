@@ -37,6 +37,12 @@
 =mail-mta/postfix-3.7*
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# security issues, last release in 2004
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/631394
+media-sound/bladeenc
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786522
