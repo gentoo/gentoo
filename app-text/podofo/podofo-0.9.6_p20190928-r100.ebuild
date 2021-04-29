@@ -29,9 +29,9 @@ RDEPEND="${LUA_DEPS}
 	media-libs/tiff:0=
 	sys-libs/zlib:="
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	boost? ( dev-util/boost-build )
 	test? ( dev-util/cppunit )"
+BDEPEND="virtual/pkgconfig
+	boost? ( dev-util/boost-build )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.6_p20190928-cmake_lua_version.patch
