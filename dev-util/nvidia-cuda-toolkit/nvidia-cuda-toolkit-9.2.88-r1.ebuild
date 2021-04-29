@@ -26,8 +26,8 @@ RDEPEND="${DEPEND}
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses-compat:5[tinfo]
 		)
-	eclipse? ( virtual/jre )
-	profiler? ( virtual/jre )"
+	eclipse? ( >=virtual/jre-1.8:* )
+	profiler? ( >=virtual/jre-1.8:* )"
 
 S="${WORKDIR}"
 

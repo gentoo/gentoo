@@ -29,11 +29,11 @@ RDEPEND="
 	)
 	eclipse? (
 		dev-libs/openssl-compat:1.0.0
-		virtual/jre
+		>=virtual/jre-1.8:*
 	)
 	profiler? (
 		dev-libs/openssl-compat:1.0.0
-		virtual/jre
+		>=virtual/jre-1.8:*
 	)"
 
 S="${WORKDIR}"
