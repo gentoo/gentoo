@@ -15,9 +15,8 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/ncurses-5.4:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	sed -i Makefile \
