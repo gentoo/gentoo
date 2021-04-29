@@ -26,4 +26,6 @@ DEPEND="
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.8-gcc11.patch )
+
 DOCS=( doc/KEYS.org doc/USAGE.org )
