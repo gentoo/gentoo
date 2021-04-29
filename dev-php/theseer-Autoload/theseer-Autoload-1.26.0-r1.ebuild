@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-lang/php:*
+CDEPEND="dev-lang/php:*[cli]
 	>=dev-php/theseer-DirectoryScanner-1.3
 	<dev-php/theseer-DirectoryScanner-2
 	>=dev-php/zetacomponents-Base-1.8
