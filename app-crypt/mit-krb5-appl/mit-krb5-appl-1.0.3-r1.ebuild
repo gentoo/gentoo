@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 BDEPEND="virtual/pkgconfig"
 RDEPEND=">=app-crypt/mit-krb5-1.8.0
 	sys-libs/e2fsprogs-libs
-	sys-libs/ncurses"
+	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
