@@ -15,7 +15,7 @@ SLOT="0"
 LICENSE="|| ( GPL-2 BSD-2 )"
 
 DEPEND="sys-cluster/rdma-core"
-RDEPEND="$DEPEND
+RDEPEND="${DEPEND}
 	 tools? (
 		net-misc/iputils
 		net-misc/openssh
