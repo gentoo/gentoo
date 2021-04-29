@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qthelp:5
 	x11-base/xorg-proto"
 
-PATCHES=( "${FILESDIR}"/${PN}-libressl.patch )
 DOCS=( README.rst RELEASE_NOTES TODO doc/script.txt )
 
 src_prepare() {
