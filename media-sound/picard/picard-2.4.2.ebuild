@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,7 +64,9 @@ python_install() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	elog "If you are upgrading Picard and it does not start, try removing"
-	elog "Picard's settings:"
-	elog "        rm ~/.config/MusicBrainz/Picard.conf"
+	if [[ -n "${REPLACING_VERSIONS}" ]]; then
+		elog "If you are upgrading Picard and it does not start, try removing"
+		elog "Picard's settings:"
+		elog "        rm ~/.config/MusicBrainz/Picard.conf"
+	fi
 }
