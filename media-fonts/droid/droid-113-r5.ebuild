@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="${PN/d/D}"
 inherit font
 
-# $PV is a build number, use fontforge to find it out. 113 was taken from:
+# ${PV} is a build number, use fontforge to find it out. 113 was taken from:
 # https://android.git.kernel.org/?p=platform/frameworks/base.git;a=tree;f=data/fonts;hb=HEAD
 DESCRIPTION="Font family from Google's Android project"
 HOMEPAGE="https://www.cosmix.org/software/#Drois%20Sans%20Mono%20%28Slashed%20Zero%29"
