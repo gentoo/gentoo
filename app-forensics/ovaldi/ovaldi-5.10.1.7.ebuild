@@ -1,33 +1,31 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Free implementation of OVAL"
 HOMEPAGE="http://oval.mitre.org/language/interpreter.html"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
+S="${WORKDIR}/${P}-src"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl ldap selinux"
 
-CDEPEND="dev-libs/libgcrypt:0
-	dev-libs/libpcre
-	dev-libs/xalan-c
-	dev-libs/xerces-c
-	sys-apps/util-linux
+DEPEND="
+	dev-libs/libgcrypt:=
+	dev-libs/libpcre:=
+	dev-libs/xalan-c:=
+	dev-libs/xerces-c:=
+	sys-apps/util-linux:=
 	sys-libs/libcap
-	acl? ( sys-apps/acl )
+	acl? ( sys-apps/acl:= )
 	ldap? ( net-nds/openldap )"
-DEPEND="${CDEPEND}
-	sys-apps/sed"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sys-libs/libselinux )"
-
-S="${WORKDIR}/${P}-src"
 
 src_prepare() {
 	if ! use ldap ; then
@@ -42,7 +40,7 @@ src_prepare() {
 
 	if ! use acl ; then
 		sed -i 's,.*libacl,//&,' src/probes/unix/FileProbe.h || die
-		epatch "${FILESDIR}"/${P}-disable-acl.patch
+		eapply "${FILESDIR}"/${P}-disable-acl.patch
 		sed -i 's, -lacl , ,' project/linux/Makefile || die
 	fi
 
@@ -58,7 +56,7 @@ src_prepare() {
 		rm src/probes/linux/SelinuxSecurityContextProbe.cpp || die
 		rm src/probes/linux/SelinuxBooleanProbe.cpp || die
 		rm src/probes/linux/SelinuxBooleanProbe.h || die
-		epatch "${FILESDIR}"/${P}-disable_RetrieveSelinuxDomainLabel.patch
+		eapply "${FILESDIR}"/${P}-disable_RetrieveSelinuxDomainLabel.patch
 		sed -i 's,.*selinux.*,//&,' src/linux/ProbeFactory.cpp || die
 		sed -i 's,.*Selinux.*,//&,' src/linux/ProbeFactory.cpp || die
 		sed -i 's,.*selinux.*.h.*,//&,' src/probes/unix/Process58Probe.cpp || die
@@ -70,11 +68,19 @@ src_prepare() {
 	sed -i 's,#include <unistd.h>,&\n#include <stdlib.h>,' src/linux/NetworkInterfaces.cpp || die
 	sed -i 's,#include <unistd.h>,&\n#include <stdlib.h>,' src/linux/SystemInfo.cpp || die
 
-	# respect CXXFLAGS and CXX
-	sed -i -e '/^CPPFLAGS/s/$(INCDIRS)/$(CXXFLAGS) \0/' project/linux/Makefile || die
+	# respect CXX, CXXFLAGS and LDFLAGS
+	sed -e '/^CPPFLAGS/s/$(INCDIRS)/$(CXXFLAGS) \0/' \
+		-e 's/$(CXX) $^/$(CXX) $(LDFLAGS) $^/g' \
+		-i project/linux/Makefile || die
 
 	# no such library on linux
 	sed -i 's,-lxalanMsg,,' project/linux/Makefile || die
+
+	eapply "${FILESDIR}"/${P}-gcc11.patch
+	eapply_user
+}
+
+src_configure() {
 	tc-export CXX
 }
 
@@ -85,9 +91,11 @@ src_compile() {
 src_install() {
 	# no make install in Makefile
 	dosbin project/linux/Release/ovaldi project/linux/ovaldi.sh
-	dodir /var/log/${PN}
-	insinto /usr/share/${PN}
-	doins xml/*
+	dodir /var/log/ovaldi
+
+	insinto /usr/share/ovaldi
+	doins -r xml/.
+
 	dodoc docs/{README.txt,version.txt}
 	doman docs/ovaldi.1
 }
