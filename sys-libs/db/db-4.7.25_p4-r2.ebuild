@@ -35,9 +35,9 @@ IUSE="doc java cxx tcl test"
 # the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4 )
 	test? ( >=dev-lang/tcl-8.4 )
-	java? ( >=virtual/jdk-1.5 )"
+	java? ( >=virtual/jdk-1.8 )"
 RDEPEND="tcl? ( dev-lang/tcl )
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.8 )"
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-4.4-libtool.patch

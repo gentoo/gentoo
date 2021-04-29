@@ -37,9 +37,9 @@ REQUIRED_USE="test? ( tcl )"
 # the entire testsuite needs the TCL functionality
 DEPEND="tcl? ( >=dev-lang/tcl-8.4:0 )
 	test? ( >=dev-lang/tcl-8.4:0 )
-	java? ( >=virtual/jdk-1.5 )"
+	java? ( >=virtual/jdk-1.8 )"
 RDEPEND="tcl? ( dev-lang/tcl:0 )
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.8 )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8-libtool.patch
