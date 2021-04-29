@@ -1,17 +1,18 @@
---- a/Makefile	2015-01-12 11:27:07.396319323 +0100
-+++ b/Makefile	2015-01-12 11:29:21.531298827 +0100
-@@ -13,8 +13,8 @@
+--- a/Makefile
++++ b/Makefile
+@@ -12,9 +12,8 @@ BUILD_CLI = 1
+ # debugging options (don't bother with these)
  #OPT	= -pg -g
  
- CC	:= gcc
+-CC	:= gcc
 -CFLAGS	+= $(OPT) -Wall -W -g -ansi
 -LDFLAGS += $(OPT) -lX11 -ldockapp
-+CFLAGS	:= -Wall -W -g -ansi
-+LIBS := -lX11 -ldockapp
++CFLAGS	?= -Wall -W -g -ansi
++LIBS += -lX11 -ldockapp
  
  WMSRC	:= wmacpi.c libacpi.c
  HEADERS := libacpi.h wmacpi.h
-@@ -26,7 +26,7 @@
+@@ -26,7 +25,7 @@ targets += wmacpi-cli
  doc_targets += wmacpi-cli.1
  endif
  
@@ -20,7 +21,7 @@
  
  all: $(targets)
  
-@@ -37,7 +37,7 @@
+@@ -37,7 +36,7 @@ WMOBJ := $(patsubst %.c,%.o,$(filter %.c,$(WMSRC)))
  -include $(WMOBJ:.o=.d)
  
  wmacpi:	$(WMOBJ)
@@ -29,7 +30,7 @@
  
  # for the Debian package, we want to make building the command line tools
  # optional. So, we hide all the necessary stuff here . . .
-@@ -47,13 +47,13 @@
+@@ -47,13 +46,13 @@ CLOBJ := $(patsubst %.c,%.o,$(filter %.c,$(CLSRC)))
  -include $(CLOBJ:.o=.d)
  
  wmacpi-cli: $(CLOBJ)
