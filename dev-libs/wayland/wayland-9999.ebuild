@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -72,7 +72,7 @@ multilib_src_test() {
 src_test() {
 	# We set it on purpose to only a short subdir name, as socket paths are
 	# created in there, which are 108 byte limited. With this it hopefully
-	# barely fits to the limit with /var/tmp/portage/$CAT/$PF/temp/x
+	# barely fits to the limit with /var/tmp/portage/${CATEGORY}/${PF}/temp/x
 	export XDG_RUNTIME_DIR="${T}"/x
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
