@@ -526,12 +526,6 @@ dev-libs/go-usb
 # bug #737406
 =media-fonts/culmus-0.133-r1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-03-30)
-# Completely broken since profile 17.1, package needs a real maintainer,
-# bugfix and 3.0.4 version bump. Bugs #677374, #692928
-# Removal on 2021-04-29
-app-office/ical
-
 # Jonas Stein <jstein@gentoo.org> (2021-03-29)
 # Depends on gtk-2, no release since 2010.
 # Removal on 2021-05-01.
