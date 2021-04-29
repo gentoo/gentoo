@@ -46,7 +46,7 @@ BDEPEND="test? ( ${RDEPEND}
 
 python_prepare_all() {
 	# Install documentation to the proper location. This can't be done
-	# easily with a patch because we substitute in the $PF variable,
+	# easily with a patch because we substitute in the ${PF} variable,
 	# and that changes with every revision.
 	sed -i "s:share/doc/gramps:share/doc/${PF}:g" setup.py || die
 	distutils-r1_python_prepare_all
