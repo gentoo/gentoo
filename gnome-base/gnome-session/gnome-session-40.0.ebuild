@@ -61,7 +61,7 @@ PATCHES=(
 
 src_prepare() {
 	xdg_src_prepare
-	# Install USE=doc in $PF if enabled
+	# Install USE=doc in ${PF} if enabled
 	sed -i -e "s:meson\.project_name(), 'dbus':'${PF}', 'dbus':" doc/dbus/meson.build || die
 }
 
