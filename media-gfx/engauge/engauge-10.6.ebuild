@@ -70,7 +70,7 @@ src_install() {
 	# Install qt help files
 	insinto /usr/share/doc/${PF} # this must match sed expression in src_prepare
 	doins bin/documentation/engauge.{qch,qhc}
-	docompress -x "${EPREFIX}"/usr/share/doc/$PF/engauge.{qch,qhc}
+	docompress -x "${EPREFIX}"/usr/share/doc/${PF}/engauge.{qch,qhc}
 
 	if use doc; then
 		pushd doc >/dev/null || die
