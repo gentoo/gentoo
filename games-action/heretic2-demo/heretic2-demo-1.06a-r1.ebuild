@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop multilib unpacker wrapper
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Third-person classic magical action-adventure game"
 HOMEPAGE="http://www.lokigames.com/products/heretic2/
@@ -24,7 +24,7 @@ RDEPEND="
 BDEPEND="games-util/loki_patch"
 
 dir=opt/${PN}
-QA_PREBUILT="${dir:1}/*"
+QA_PREBUILT="${dir}/*"
 QA_TEXTRELS="opt/heretic2-demo/ref_glx.so"
 
 src_install() {
