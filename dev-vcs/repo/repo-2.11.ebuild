@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# NB: The $PV tracks the *repo launcher version*, not the last signed release
+# NB: The ${PV} tracks the *repo launcher version*, not the last signed release
 # of the repo project.  The launcher only gets a new update when changes are
 # made in it.
 
