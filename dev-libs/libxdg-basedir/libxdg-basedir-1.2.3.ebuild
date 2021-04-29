@@ -43,5 +43,5 @@ src_install() {
 	use doc && local HTML_DOCS=( doc/html/. )
 	einstalldocs
 
-	find "${ED}" -type f -name '*.la' -delete
+	find "${ED}" -type f -name '*.la' -delete || die
 }
