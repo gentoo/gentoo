@@ -27,8 +27,8 @@ DEPEND="
 		ncurses? ( >=sys-libs/ncurses-5.7-r7:0=[unicode,static-libs(+)] )
 		kernel_linux? ( sys-apps/util-linux[static-libs(+)] )
 	)
-	virtual/pkgconfig
 "
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}.1-spurious_mbr_warnings.patch"
