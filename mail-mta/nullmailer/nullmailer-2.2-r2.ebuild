@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd
+inherit autotools flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Simple relay-only local mail transport agent"
 HOMEPAGE="http://untroubled.org/nullmailer/ https://github.com/bruceg/nullmailer"
@@ -71,6 +71,11 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		$(use_enable ssl tls)
+}
+
+src_compile() {
+	tc-export AR RANLIB
+	default
 }
 
 src_install() {
