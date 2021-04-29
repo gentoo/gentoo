@@ -35,6 +35,12 @@
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
+# see bug: https://bugs.gentoo.org/786774
+dev-java/radeox
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
+# no consumers
+# removal in 30 days
 # see bugs: https://bugs.gentoo.org/786771
 dev-java/prefuse
 
