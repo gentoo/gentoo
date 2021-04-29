@@ -27,8 +27,8 @@ src_install() {
 	perl-module_src_install
 
 	docompress -x /usr/share/doc/${PF}/examples
-	insinto /usr/share/doc/${PF}/examples
-	doins examples/*
+	docinto examples
+	dodoc -r examples/.
 }
 
 src_test() {
