@@ -7,7 +7,7 @@ inherit meson gnome2-utils vala xdg
 
 DESCRIPTION="Simple backup tool using duplicity back-end"
 HOMEPAGE="https://wiki.gnome.org/Apps/DejaDup"
-SRC_URI="https://gitlab.gnome.org/World/${PN}/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="https://gitlab.gnome.org/World/deja-dup/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -20,8 +20,8 @@ BDEPEND="
 	dev-util/intltool
 	dev-util/itstool
 	sys-devel/gettext
-	test? ( >=dev-libs/appstream-glib-0.7.16 )
 	virtual/pkgconfig
+	test? ( dev-libs/appstream-glib )
 "
 
 DEPEND="
@@ -44,7 +44,6 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	default
 	vala_src_prepare
-	eapply_user
 }
 
 pkg_postinst() {
