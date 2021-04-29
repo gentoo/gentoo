@@ -64,7 +64,7 @@ DEPEND="${CDEPEND}
 	)"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mutt )
-	smime-classic? ( || ( dev-libs/libressl >=dev-libs/openssl-0.9.6:0 ) )
+	smime-classic? ( >=dev-libs/openssl-0.9.6:0 )
 	pgp-classic? ( app-crypt/gnupg )
 "
 
