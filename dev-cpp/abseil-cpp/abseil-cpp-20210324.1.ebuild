@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake python-any-r1 toolchain-funcs
+inherit cmake flag-o-matic python-any-r1 toolchain-funcs
 
 # yes, it needs SOURCE, not just installed one
 GTEST_COMMIT="aee0f9d9b5b87796ee8a0ab26b7587ec30e8858e"
@@ -61,6 +61,7 @@ src_prepare() {
 
 src_configure() {
 	if use arm || use arm64; then
+		# bug #778926
 		if [[ $($(tc-getCXX) ${CXXFLAGS} -E -P - <<<$'#if defined(__ARM_FEATURE_CRYPTO)\nHAVE_ARM_FEATURE_CRYPTO\n#endif') != *HAVE_ARM_FEATURE_CRYPTO* ]]; then
 			append-cxxflags -DABSL_ARCH_ARM_NO_CRYPTO
 		fi
