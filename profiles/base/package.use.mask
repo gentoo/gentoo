@@ -237,8 +237,8 @@ dev-python/zeep tornado
 sci-chemistry/gromacs python
 
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues Bug 703326
-# Associated packages are not ready for new versions tracked in bug 702110
+# PHP 7.1 is end of life and has security issues, bug #703326
+# Associated packages are not ready for new versions tracked in bug #702110
 dev-libs/ossp-uuid php
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
@@ -285,7 +285,7 @@ net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
 # Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
-# PGO not yet supported for comm-central, #693160
+# PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
@@ -402,7 +402,7 @@ dev-db/mariadb client-libs
 dev-db/mysql client-libs
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
-# This feature is not ready yet pre-2.29-r4, see bug 146882 comment 26
+# This feature is not ready yet pre-2.29-r4, see bug #146882 comment 26
 <sys-libs/glibc-2.29-r4 compile-locales
 
 # Mart Raudsepp <leio@gentoo.org> (2018-01-10)
@@ -428,11 +428,11 @@ dev-java/openjdk:11 gentoo-vm
 sys-libs/glibc vanilla
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-08-24)
-# This is a security risk if not used carefully, bug 628596.
+# This is a security risk if not used carefully, bug #628596.
 net-analyzer/nrpe command-args
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-04)
-# sys-kernel/openvz-sources is being treecleaned wrt #580516.
+# sys-kernel/openvz-sources is being treecleaned wrt bug #580516.
 app-emulation/libvirt openvz
 
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
@@ -468,7 +468,7 @@ net-fs/samba system-heimdal
 # Robin H. Johnson <robbat2@gentoo.org> (2016-12-04)
 # Additional HAProxy functionality waiting for related stuff to land in the
 # tree.
-# bug 541042 - lua 5.3
+# bug #541042 - lua 5.3
 net-proxy/haproxy lua
 # bug (none) - 51Degrees
 net-proxy/haproxy 51degrees
@@ -487,12 +487,11 @@ app-editors/emacs:25 cairo
 app-editors/emacs:26 cairo
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-06-02)
-# Acked-by: Amy Liffey <amynka@gentoo.org>
 # Currently broken upstream.
 >=dev-lang/rakudo-2016.05 java
 
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
-# Most targets do not support VTV #547040.
+# Most targets do not support VTV, bug #547040.
 sys-devel/gcc vtv
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-05-08)
@@ -599,11 +598,11 @@ media-libs/avidemux-core system-ffmpeg
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
 
-# Diego Elio Pettenò (2012-08-27)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp pci
 
-# Diego Elio Pettenò (2012-08-20)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-20)
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp prevent-removal
 
@@ -627,7 +626,6 @@ sys-devel/gcc libssp
 sci-libs/mathgl octave
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
-#
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd urandom
 
@@ -639,7 +637,7 @@ net-dns/pdnsd urandom
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
 
-# Diego E. Pettenò <flameeyes@gmail.com> (2010-01-18)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2010-01-18)
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide
