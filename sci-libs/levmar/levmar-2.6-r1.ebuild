@@ -18,8 +18,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	virtual/blas
 	virtual/lapack"
-BDEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-shared.patch
