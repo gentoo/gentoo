@@ -34,7 +34,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # TODO: automagic sysprof dep for tracing paths from toplevel meson.build
 RDEPEND="
 	>=dev-libs/libdazzle-3.37.0[introspection]
-	>=dev-libs/glib-2.65.0:2
+	>=dev-libs/glib-2.67.4:2
 	>=x11-libs/gtk+-3.22.26:3[introspection]
 	>=x11-libs/gtksourceview-4.0.0:4[introspection]
 	>=dev-libs/json-glib-1.2.0
