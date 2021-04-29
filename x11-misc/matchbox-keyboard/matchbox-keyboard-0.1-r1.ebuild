@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,7 +20,7 @@ PATCHES=( "${FILESDIR}"/${PN}-0.1-r1-modernize_desktop.patch )
 DEPEND="x11-libs/libfakekey
 	cairo? ( x11-libs/cairo[X] )
 	!cairo? ( x11-libs/libXft )"
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf $(use_enable debug) $(use_enable cairo)
