@@ -35,6 +35,10 @@ BDEPEND="
 	>=sys-auth/polkit-0.114
 " # polkit needed at buildtime for ITS rules of policy files, first available in 0.114
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Dropped-non-gnome-workaround-causing-crash-fixes-182.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use X wnck)
