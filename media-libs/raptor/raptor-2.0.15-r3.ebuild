@@ -41,6 +41,7 @@ HTML_DOCS=( {NEWS,README,RELEASE,UPGRADING}.html )
 PATCHES=(
 	"${FILESDIR}/${P}-heap-overflow.patch"
 	"${FILESDIR}/${P}-dont_use_curl-config.patch" #552474
+	"${FILESDIR}/0001-CVE-2020-25713-raptor2-malformed-input-file-can-lead.patch"
 )
 
 src_prepare() {
