@@ -41,6 +41,8 @@ DEPEND="${RDEPEND}
 	>=dev-cpp/asio-1.12.1
 	>=dev-cpp/popl-1.2.0"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-11.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_CLIENT=$(usex client)
