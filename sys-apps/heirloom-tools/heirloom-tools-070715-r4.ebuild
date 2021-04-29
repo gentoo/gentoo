@@ -14,15 +14,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	sys-libs/ncurses:=
 	sys-libs/zlib
 "
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 BDEPEND="
 	sys-apps/ed
 	sys-devel/bc
 	virtual/pkgconfig
 "
+
 S="${WORKDIR}/heirloom-${PV}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-major.patch
 	"${FILESDIR}"/${P}-makefile.patch
