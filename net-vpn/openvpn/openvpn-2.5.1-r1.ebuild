@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="down-root examples inotify iproute2 libressl +lz4 +lzo mbedtls +openssl"
+IUSE="down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
 IUSE+=" pam pkcs11 +plugins selinux systemd test userland_BSD"
 
 RESTRICT="!test? ( test )"
@@ -31,10 +31,7 @@ CDEPEND="
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
 	mbedtls? ( net-libs/mbedtls:= )
-	openssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.8:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	openssl? ( >=dev-libs/openssl-0.9.8:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )
