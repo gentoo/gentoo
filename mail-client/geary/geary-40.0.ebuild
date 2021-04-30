@@ -73,7 +73,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dprofile=development
+		-Dprofile=release
 		-Drevno="${PR}"
 		-Dvaladoc=disabled
 		-Dcontractor=disabled
