@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="PSF-2"
 SLOT="${PYVER}/${PYVER}m"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="bluetooth build examples gdbm hardened ipv6 libressl +ncurses +readline +sqlite +ssl test tk wininst +xml"
+IUSE="bluetooth build examples gdbm hardened ipv6 +ncurses +readline +sqlite +ssl test tk wininst +xml"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -42,10 +42,7 @@ RDEPEND="app-arch/bzip2:=
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
 	readline? ( >=sys-libs/readline-4.1:= )
 	sqlite? ( >=dev-db/sqlite-3.3.8:3= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:= )
 	tk? (
 		>=dev-lang/tcl-8.0:=
 		>=dev-lang/tk-8.0:=
