@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-libs/glib-2.58.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.6:2=[${MULTILIB_USEDEP}]
 	dev-db/sqlite:3=[${MULTILIB_USEDEP}]
-	>=dev-libs/libgusb-0.2.7[${MULTILIB_USEDEP}]
+	>=dev-libs/libgusb-0.2.7[introspection?,${MULTILIB_USEDEP}]
 	udev? (
 		dev-libs/libgudev:=[${MULTILIB_USEDEP}]
 		virtual/libudev:=[${MULTILIB_USEDEP}]
@@ -55,14 +55,10 @@ BDEPEND="
 	extra-print-profiles? ( media-gfx/argyllcms )
 	vala? ( $(vala_depend) )
 "
-# These dependencies are required to build native build-time programs.
-BDEPEND="${BDEPEND}
-	dev-libs/glib:2
-	media-libs/lcms
-"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-tests-Don-t-use-exact-floating-point-comparisons.patch
+	"${FILESDIR}"/${PV}-optional-introspection.patch
 )
 
 src_prepare() {
@@ -96,6 +92,7 @@ multilib_src_configure() {
 		-Dargyllcms_sensor=$(multilib_native_usex argyllcms true false)
 		-Dreverse=false
 		-Dsane=$(multilib_native_usex scanner true false)
+		-Dintrospection=$(multilib_native_usex introspection true false)
 		-Dvapi=$(multilib_native_usex vala true false)
 		-Dprint_profiles=$(multilib_native_usex extra-print-profiles true false)
 		$(meson_use test tests)
