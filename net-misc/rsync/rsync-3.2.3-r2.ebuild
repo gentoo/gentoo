@@ -25,15 +25,12 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE_CPU_FLAGS_X86=" sse2"
-IUSE="acl examples iconv ipv6 libressl lz4 ssl stunnel system-zlib xattr xxhash zstd"
+IUSE="acl examples iconv ipv6 lz4 ssl stunnel system-zlib xattr xxhash zstd"
 IUSE+=" ${IUSE_CPU_FLAGS_X86// / cpu_flags_x86_}"
 
 RDEPEND="acl? ( virtual/acl )
 	lz4? ( app-arch/lz4 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	system-zlib? ( sys-libs/zlib )
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	xxhash? ( dev-libs/xxhash )
