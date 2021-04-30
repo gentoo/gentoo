@@ -6,12 +6,20 @@ EAPI=7
 inherit autotools flag-o-matic systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
 HOMEPAGE="https://openvpn.net/"
+
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
+	EGIT_SUBMODULES=(-cmocka)
+
+	inherit git-r3
+else
+	SRC_URI="https://build.openvpn.net/downloads/releases/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
 IUSE+=" pam pkcs11 +plugins selinux systemd test userland_BSD"
@@ -48,8 +56,13 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-openvpn )
 "
 
+if [[ ${PV} = "9999" ]]; then
+	BDEPEND+=" dev-python/docutils"
+fi
+
 PATCHES=(
-	"${FILESDIR}/openvpn-2.5.0-auth-pam-missing-header.patch"
+	"${FILESDIR}"/openvpn-2.5.0-auth-pam-missing-header.patch
+	"${FILESDIR}"/openvpn-2.5.2-detect-python-rst2man.patch
 )
 
 pkg_setup() {
