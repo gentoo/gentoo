@@ -36,6 +36,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-build-disable-Werror-for-incompatible-pointer-types.patch
+)
+
 src_prepare() {
 	use vala && vala_src_prepare
 	xdg_src_prepare
