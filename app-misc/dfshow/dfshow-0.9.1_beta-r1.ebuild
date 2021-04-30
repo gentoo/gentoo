@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools bash-completion-r1
+inherit autotools bash-completion-r1 flag-o-matic
 
 MY_PV="${PV//_beta/-beta}"
 DESCRIPTION="DF-SHOW is a Unix-like rewrite of some of the applications from DF-EDIT"
@@ -19,11 +19,20 @@ DEPEND="dev-libs/libconfig:=
 	sys-libs/ncurses:0=
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1_beta-use-PKG_CHECK_MODULES-for-ncurses-libconfig.patch
+)
 
 src_prepare() {
 	default
-	sed -i 's/LDADD = -lncursesw -lm -lconfig/LDADD = -lncursesw -lm -lconfig -ltinfow/' Makefile.am ||
-		die "sed in Makefile.am failed"
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# Standard on macOS
+		# No real motivation to push libtool upstream just for this
+		append-ldflags -Wl,-undefined -Wl,dynamic_lookup
+	fi
 
 	eautoreconf
 }
