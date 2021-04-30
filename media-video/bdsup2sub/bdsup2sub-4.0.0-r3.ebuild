@@ -25,8 +25,7 @@ RDEPEND="
 	>=virtual/jre-1.8:*"
 
 DEPEND="
-	>=virtual/jdk-1.8:*
-	app-arch/xz-utils"
+	>=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${PN}/${PV}"
 
