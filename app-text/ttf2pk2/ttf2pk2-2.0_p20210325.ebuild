@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/kpathsea-6.2.1
 	media-libs/freetype:2
 	sys-libs/zlib
 	!media-libs/freetype:1"
-
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
