@@ -42,11 +42,12 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 
 src_unpack() {
 	unpack "${P}.tar.gz"
-	cd "$S/src/third_party/libyuv" || die
+	cd "${S}/src/third_party/libyuv" || die
 	unpack "libyuv-${LIBYUV_COMMIT}.tar.gz"
 }
 
 src_prepare() {
+	# https://github.com/desktop-app/tg_owt/pull/55
 	eapply "${FILESDIR}/Allow-using-packaged-third_party.patch"
 
 	# We aren't installing any third_party headers
@@ -57,6 +58,7 @@ src_prepare() {
 
 	# Remove screen_drawer files that cause linking errors
 	# (not used right now I don't think, maybe in a future version)
+	# https://github.com/desktop-app/tg_owt/issues/58
 	sed -i -e '/desktop_capture\/screen_drawer\.cc/d' \
 		-e '/desktop_capture\/screen_drawer_lock_posix\.cc/d' CMakeLists.txt || die
 
