@@ -95,6 +95,10 @@ src_unpack() {
 src_prepare() {
 	default
 
+	if ! use binary; then
+		eapply "${FILESDIR}"/${PN}-1.14.0-binutils-2.36.patch
+	fi
+
 	# Ensure precompiled iasl files are never used
 	find "${WORKDIR}" -name '*.hex' -delete || die
 }
