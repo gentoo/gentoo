@@ -88,6 +88,8 @@ src_configure() {
 }
 
 src_test() {
+	local -x RUN_SUDO=false
+
 	make check || die "top-level tests failed"
 	pushd tests/unit_tests &>/dev/null || die
 	make check || die "unit tests failed"
