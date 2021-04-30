@@ -205,6 +205,7 @@ perf_make() {
 		WERROR=0 \
 		LIBDIR="/usr/libexec/perf-core" \
 		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins" \
 		"$@"
 }
 
