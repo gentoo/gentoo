@@ -5,11 +5,11 @@
  
  nfbtrans: $(OBJFILES)
 -	$(CC) $(CFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
-+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
  
  nfbtrans.exe:$(OBJFILES)
 -	$(CC)  $(CFLAGS) $(OBJFILES) -o nfbtrans.exe
-+	$(CC)  $(CFLAGS) $(LDFLAGS) $(OBJFILES) -o nfbtrans.exe
++	$(CC)  $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(OBJFILES) -o nfbtrans.exe
  
  ultrix:
  	$(MAKE) CFLAGS=-O
@@ -18,7 +18,7 @@
  insight:
  	insight -fno-builtin -fwritable-strings \
 -	$(CFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
-+	$(CFLAGS) $(LDFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
++	$(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJFILES) $(LIBS) -o nfbtrans
  
  aix:
  	$(MAKE) all CC=cc CFLAGS="-o -Dunix -Daix"
