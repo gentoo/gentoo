@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-c++11-narrowing.patch
 	"${FILESDIR}"/${P}-hang.patch
 	"${FILESDIR}"/${P}-matrixview-copy-font.patch
+	"${FILESDIR}"/${P}-missing-include.patch
 )
 
 src_prepare() {
