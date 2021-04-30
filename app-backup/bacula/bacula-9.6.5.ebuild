@@ -154,7 +154,6 @@ src_prepare() {
 	touch src/qt-console/.libs/bat || die
 	chmod 755 src/qt-console/.libs/bat || die
 
-
 	# Don't let program install man pages directly
 	sed -i -e 's/ manpages//' Makefile.in || die
 
