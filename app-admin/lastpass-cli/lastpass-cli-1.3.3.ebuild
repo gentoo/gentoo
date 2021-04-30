@@ -14,13 +14,12 @@ SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 SLOT="0"
 LICENSE="GPL-2+ GPL-2+-with-openssl-exception"
 KEYWORDS="amd64 x86"
-IUSE="libressl X +pinentry test"
+IUSE="X +pinentry test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	X? ( || ( x11-misc/xclip x11-misc/xsel ) )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	net-misc/curl
 	dev-libs/libxml2
 	pinentry? ( app-crypt/pinentry )
