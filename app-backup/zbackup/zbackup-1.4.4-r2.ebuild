@@ -12,14 +12,13 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl tartool"
+IUSE="tartool"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
 	dev-libs/protobuf:0=
 	sys-libs/zlib
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 
 # Add tartool build
