@@ -19,7 +19,7 @@ HOMEPAGE="https://neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
+IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet
 	lmdb nls notmuch pgp-classic qdbm sasl selinux slang smime-classic
 	ssl tokyocabinet test"
 REQUIRED_USE="
@@ -50,11 +50,8 @@ CDEPEND="
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	!slang? ( sys-libs/ncurses:0= )
 	slang? ( sys-libs/slang )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2u:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
-"
+	ssl? ( >=dev-libs/openssl-1.0.2u:0= )
+	"
 DEPEND="${CDEPEND}
 	dev-lang/tcl:=
 	net-mail/mailbase
