@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,12 +20,10 @@ HOMEPAGE="https://attic-backup.org/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="libressl"
 
 RDEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	dev-python/llfuse[${PYTHON_USEDEP}]"
 
 DEPEND="
