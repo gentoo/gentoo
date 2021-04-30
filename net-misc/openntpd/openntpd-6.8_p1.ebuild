@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,12 +14,10 @@ SRC_URI="mirror://openbsd/OpenNTPD/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="libressl selinux"
+IUSE="selinux"
 
 DEPEND="
-	!net-misc/ntp[-openntpd]
-	libressl? ( dev-libs/libressl:0= )"
-
+	!net-misc/ntp[-openntpd]"
 RDEPEND="
 	${DEPEND}
 	acct-group/openntpd
@@ -43,14 +41,13 @@ src_prepare() {
 	sed -i 's:^server:#server:g' ntpd.conf || die
 	printf "\n# Choose servers announced from Gentoo NTP Pool\nservers 0.gentoo.pool.ntp.org\nservers 1.gentoo.pool.ntp.org\nservers 2.gentoo.pool.ntp.org\nservers 3.gentoo.pool.ntp.org\n" >> ntpd.conf || die
 
-	# disable constraint config if libressl not enabled
-	use libressl || sed -ie 's/^constraints/#constraints/g' ntpd.conf || die
+	sed -ie 's/^constraints/#constraints/g' ntpd.conf || die
 }
 
 src_configure() {
 	econf \
 		--with-privsep-user=openntpd \
-		$(use_enable libressl https-constraint)
+		--disable-https-constraint
 }
 
 src_install() {
