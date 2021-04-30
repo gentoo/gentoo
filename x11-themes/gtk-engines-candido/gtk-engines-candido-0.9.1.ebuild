@@ -21,7 +21,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-glib-2.31.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-glib-2.31.patch
+	"${FILESDIR}"/${P}-libm.patch
+)
 
 src_prepare() {
 	default
