@@ -14,5 +14,3 @@ SLOT="0"
 S="${WORKDIR}"
 
 BDEPEND="app-text/asciidoc"
-
-DOCS=( COPYING )
