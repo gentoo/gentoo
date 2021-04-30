@@ -22,7 +22,7 @@ LICENSE="
 "
 SLOT="0/${PV%%.*}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="+cxx17 test"
+IUSE="test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -70,8 +70,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DABSL_ENABLE_INSTALL=TRUE
 		-DABSL_LOCAL_GOOGLETEST_DIR="${WORKDIR}/googletest-${GTEST_COMMIT}"
-		-DBUILD_SHARED_LIBS=TRUE
-		$(usex cxx17 -DCMAKE_CXX_STANDARD=17 '') # it has to be a useflag for some consumers
+		-DCMAKE_CXX_STANDARD=17
 		$(usex test -DBUILD_TESTING=ON '') #intentional usex
 	)
 	cmake_src_configure
