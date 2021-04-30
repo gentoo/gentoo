@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ HOMEPAGE="https://www.falkon.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="dbus kde libressl +X"
+IUSE="dbus kde +X"
 
 COMMON_DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
@@ -39,8 +39,7 @@ COMMON_DEPEND="
 		>=kde-frameworks/kwallet-${KFMIN}:5
 		>=kde-frameworks/purpose-${KFMIN}:5
 	)
-	libressl? ( dev-libs/libressl:= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	X? (
 		>=dev-qt/qtx11extras-${QTMIN}:5
 		x11-libs/libxcb:=
