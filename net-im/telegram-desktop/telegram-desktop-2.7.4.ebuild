@@ -66,7 +66,10 @@ REQUIRED_USE="
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	# https://github.com/desktop-app/cmake_helpers/pull/91
+	# https://github.com/desktop-app/lib_webview/pull/2
 	"${FILESDIR}/tdesktop-2.7.3-disable-webkit-separately.patch"
+	# https://github.com/desktop-app/lib_webview/commit/0b4100d7cecc4e748c51f3f51ebfd1392ec3978a
 	"${FILESDIR}/tdesktop-2.7.3-webview-include-gdkx.patch"
 )
 
