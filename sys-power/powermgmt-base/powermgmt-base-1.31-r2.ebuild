@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Script to test whether computer is running on AC power"
 HOMEPAGE="http://packages.debian.org/testing/utils/powermgmt-base"
@@ -24,18 +24,21 @@ S="${WORKDIR}/${PN}"
 src_prepare() {
 	default
 	sed -i \
-		-e 's:$(CC) $(CFLAGS):$(CC) $(LDFLAGS) $(CFLAGS):' \
+		-e 's:$(CC) $(CFLAGS):$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS):' \
 		src/Makefile || die
 }
 
 src_compile() {
 	tc-export CC
-	emake CFLAGS="${CFLAGS} -Wall -Wstrict-prototypes -DLINUX"
+
+	use kernel_linux && append-cppflags -DLINUX
+
+	emake CFLAGS="${CFLAGS} -Wall -Wstrict-prototypes" CPPFLAGS="${CPPFLAGS}"
 }
 
 src_install() {
 	dodir /sbin
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${ED}" install
 
 	doman man/{acpi,apm}_available.1
 
