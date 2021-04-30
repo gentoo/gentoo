@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=0
+	UPSTREAM_VER=
 	SECURITY_VER=
 	GENTOO_VER=
 
@@ -99,7 +99,7 @@ src_prepare() {
 	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
 	# Symlinks do not work on fat32 volumes
-	eapply "${FILESDIR}"/${PN}-4.15-efi.patch
+	eapply "${FILESDIR}"/${PN}-4.14-efi.patch
 
 	# Workaround new gcc-11 options
 	sed -e '/^CFLAGS/s/-Werror//g' -i xen/Makefile || die
