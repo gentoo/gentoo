@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="5"
-IUSE="libressl scim semantic-desktop"
+IUSE="scim semantic-desktop"
 
 DEPEND="
 	app-i18n/ibus
@@ -43,8 +43,7 @@ DEPEND="
 	>=kde-frameworks/plasma-${KFMIN}:5
 	media-libs/libpng:0=[apng]
 	x11-libs/libX11
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	scim? (
 		>=app-i18n/scim-1.4.9
 		dev-libs/dbus-c++
