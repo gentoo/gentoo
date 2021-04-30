@@ -12,13 +12,10 @@ SRC_URI="https://github.com/Tripwire/tripwire-open-source/archive/${PV}.tar.gz -
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="libressl selinux ssl static +tools"
+IUSE="selinux ssl static +tools"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="${DEPEND}
 	virtual/cron
