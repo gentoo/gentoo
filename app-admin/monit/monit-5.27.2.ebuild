@@ -11,13 +11,10 @@ SRC_URI="http://mmonit.com/monit/dist/${P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux"
-IUSE="ipv6 libressl pam ssl"
+IUSE="ipv6 pam ssl"
 
 RDEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	pam? ( sys-libs/pam )"
 BDEPEND="
