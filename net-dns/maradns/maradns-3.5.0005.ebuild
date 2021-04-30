@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="A security-aware DNS server"
