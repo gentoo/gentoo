@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 java-ant-2
+inherit desktop java-pkg-2 java-ant-2
 
 XDG_P="xdg-20100731"
 
@@ -22,10 +22,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
 DEPEND="
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.8:*
 	app-arch/xz-utils"
 
 S="${WORKDIR}/${PN}/${PV}"
