@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Utility to control your cd/dvd drive"
 HOMEPAGE="http://cdctl.sourceforge.net/"
@@ -19,4 +19,9 @@ PATCHES=( "${FILESDIR}"/${PN}-0.16-Makefile.in.patch )
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	tc-export CC
+	default
 }
