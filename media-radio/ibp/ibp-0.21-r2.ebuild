@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
+
 inherit toolchain-funcs
 
 DESCRIPTION="Shows currently transmitting beacons of the International Beacon Project (IBP)"
@@ -13,18 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="X"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	X? ( x11-libs/libX11  )"
 DEPEND="${RDEPEND}
 	X? ( >=x11-misc/imake-1.0.8-r1 )"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	# respect CFLAGS if built without USE=X
+	# Respect CFLAGS if built without USE=X
 	sed -i -e "s/= -D/+= -D/" Makefile || die
-	# fix compile if ncurses is built with separate libtinfo
-	if has_version "sys-libs/ncurses:0[tinfo]" ;then
-		sed -i -e "s/-lcurses/-lcurses -ltinfo/" Imakefile Makefile || die
-	fi
+
+	# Fix compile if ncurses is built with separate libtinfo
+	sed -i -e "s:-lcurses:$($(tc-getPKG_CONFIG) --libs ncurses):" Imakefile Makefile || die
 
 	eapply_user
 }
