@@ -46,8 +46,12 @@ src_prepare() {
 }
 
 src_configure() {
+	local PPPD_VER=`best_version net-dialup/ppp`
+	PPPD_VER=${PPPD_VER#*/*-} #reduce it to ${PV}-${PR}
+	PPPD_VER=${PPPD_VER%%[_-]*} # main version without beta/pre/patch/revision
 	local myeconfargs=(
 		--localstatedir=/var
+		--with-pppd-plugin-dir=/usr/$(get_libdir)/pppd/${PPPD_VER}
 		$(use_with gnome)
 		$(use_enable static-libs static)
 	)
