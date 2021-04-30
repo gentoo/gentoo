@@ -15,12 +15,13 @@ DESCRIPTION="Converts (La)TeX to (X)HTML, XML and OO.org"
 HOMEPAGE="http://www.cse.ohio-state.edu/~gurari/TeX4ht/
 	http://www.cse.ohio-state.edu/~gurari/TeX4ht/bugfixes.html"
 SRC_URI="http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/${MY_P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${MY_P_TEXLIVE}.tar.xz"
+	https://dev.gentoo.org/~ulm/distfiles/${MY_P_TEXLIVE}.tar.xz
+	doc? ( https://dev.gentoo.org/~ulm/distfiles/${MY_P_TEXLIVE}.doc.tar.xz )"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="java"
+IUSE="doc java"
 
 RDEPEND="app-text/ghostscript-gpl
 	media-gfx/imagemagick
@@ -33,7 +34,6 @@ DEPEND="dev-libs/kpathsea
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=("${FILESDIR}/${P}-hyperref.patch")
 
 src_prepare() {
 	cp -a "${WORKDIR}/texmf-dist/"* texmf/ || die
@@ -78,14 +78,20 @@ src_install() {
 	dobin "${S}/src/tex4ht" "${S}/src/t4ht"
 	# install the scripts
 	if ! use java; then
-		rm -f "${S}"/bin/unix/oo*
-		rm -f "${S}"/bin/unix/jh*
+		rm -f "${S}"/bin/unix/oo* || die
+		rm -f "${S}"/bin/unix/jh* || die
 	fi
 	dobin "${S}"/bin/unix/mk4ht
 
 	# install the .4ht scripts
 	insinto ${TEXMF}/tex/generic/tex4ht
 	doins "${S}"/texmf/tex/generic/tex4ht/*
+
+	if use doc; then
+		# install the documentation
+		insinto ${TEXMF}/doc/generic/tex4ht
+		doins "${S}"/texmf/doc/generic/tex4ht/*
+	fi
 
 	# install the special htf fonts
 	insinto ${TEXMF}/tex4ht
