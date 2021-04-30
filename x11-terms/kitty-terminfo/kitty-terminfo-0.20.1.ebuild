@@ -5,14 +5,16 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit python-any-r1 toolchain-funcs xdg git-r3
+inherit python-any-r1 toolchain-funcs xdg
 
 DESCRIPTION="Terminfo for kitty, an OpenGL-based terminal emulator"
 HOMEPAGE="https://github.com/kovidgoyal/kitty"
-EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
+SRC_URI="https://github.com/kovidgoyal/kitty/releases/download/v${PV}/kitty-${PV}.tar.xz"
+S="${WORKDIR}/kitty-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="${PYTHON_DEPS}"
