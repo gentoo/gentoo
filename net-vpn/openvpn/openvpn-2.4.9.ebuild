@@ -66,7 +66,7 @@ src_configure() {
 		myeconfargs+=(
 			$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl))
 		)
-		if use libressl || ! use mbedtls; then
+		if ! use mbedtls; then
 			myeconfargs+=(
 				$(use_enable pkcs11)
 			)

@@ -62,7 +62,7 @@ src_prepare() {
 src_configure() {
 	local -a myeconfargs
 
-	if use libressl || ! use mbedtls; then
+	if ! use mbedtls; then
 		myeconfargs+=(
 			$(use_enable pkcs11)
 		)
