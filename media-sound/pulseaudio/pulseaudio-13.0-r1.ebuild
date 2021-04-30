@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x
 
 # +alsa-plugin as discussed in bug #519530
 IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gconf
-+gdbm +glib gtk ipv6 jack libsamplerate libressl lirc native-headset cpu_flags_arm_neon
++gdbm +glib gtk ipv6 jack libsamplerate lirc native-headset cpu_flags_arm_neon
 ofono-headset +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test
 +udev +webrtc-aec +X zeroconf"
 
@@ -71,10 +71,7 @@ RDEPEND="
 	ofono-headset? ( >=net-misc/ofono-1.13 )
 	orc? ( >=dev-lang/orc-0.4.15 )
 	sox? ( >=media-libs/soxr-0.1.1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	media-libs/speexdsp
 	gdbm? ( sys-libs/gdbm:= )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
