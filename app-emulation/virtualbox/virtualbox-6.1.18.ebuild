@@ -21,7 +21,7 @@ LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="amd64"
-IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc dtrace headless java lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 CDEPEND="
 	${PYTHON_DEPS}
@@ -54,8 +54,7 @@ CDEPEND="
 			x11-libs/libXinerama
 		)
 	)
-	libressl? ( dev-libs/libressl:= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	lvm? ( sys-fs/lvm2 )
 	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
