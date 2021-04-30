@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gnutls gpm guile idn ipv6
-	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
+	lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 BDEPEND="virtual/pkgconfig"
@@ -33,8 +33,7 @@ RDEPEND="
 	samba? ( net-fs/samba )
 	ssl? (
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 		gnutls? ( net-libs/gnutls:= )
 	)
