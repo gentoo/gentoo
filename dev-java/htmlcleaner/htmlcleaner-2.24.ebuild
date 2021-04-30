@@ -35,16 +35,15 @@ BDEPEND="
 JAVA_SRC_DIR="src/main/java"
 JAVA_GENTOO_CLASSPATH="jdom-2"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-tests.patch"
+)
+
 src_prepare() {
 	default
 	# Don't require default.xml to be in the current directory.
 	sed -i "s:\"default\.xml\":\"${JAVA_PKG_SHAREPATH}/default.xml\":g" \
 		src/main/java/org/htmlcleaner/ConfigFileTagProvider.java || die
-
-	sed -i \
-		-e '/encoding=/s: standalone.*?>:?><html>:' \
-		-e '/\+ \"<html>/d' \
-		src/test/java/org/htmlcleaner/{Traversal,}DomSerializerTest.java || die
 }
 
 src_configure() {
