@@ -13,6 +13,7 @@
     <name>Guilherme Amadio</name>
   </maintainer>
   <use>
+    <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
     <flag name="clang">Enable builtin clang and LLVM support</flag>
     <flag name="demangle">
       Enable C++ symbol name demangling, using libbfd from
