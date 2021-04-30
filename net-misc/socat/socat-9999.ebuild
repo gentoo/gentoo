@@ -11,14 +11,11 @@ EGIT_REPO_URI="https://repo.or.cz/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="bindist libressl ipv6 readline ssl tcpd"
+IUSE="bindist ipv6 readline ssl tcpd"
 
 BDEPEND="app-text/yodl"
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
@@ -48,7 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags '-Wno-error*' #293324
+	# bug #293324
+	filter-flags '-Wno-error*'
 	tc-export AR
 
 	econf \
