@@ -3,9 +3,11 @@
 
 EAPI=7
 
+MY_P="${P/-/_}"
+
 DESCRIPTION="A shell frontend for duplicity"
 HOMEPAGE="https://duply.net"
-SRC_URI="https://jztkft.dl.sourceforge.net/project/ftplicity/${PN}%20%28simple%20duplicity%29/2.3.x/${PN}_${PV}.tgz"
+SRC_URI="https://jztkft.dl.sourceforge.net/project/ftplicity/${PN}%20%28simple%20duplicity%29/2.3.x/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -14,11 +16,11 @@ KEYWORDS="amd64 x86"
 BDEPEND="app-text/txt2man"
 RDEPEND="app-backup/duplicity"
 
-S="${WORKDIR}/${PN}_${PV}"
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	dobin ${PN}
-	./${PN} txt2man > ${PN}.1 || die
-	doman ${PN}.1
+	dobin "${PN}"
+	./"${PN}" txt2man > "${PN}".1 || die
+	doman "${PN}".1
 	dodoc CHANGELOG.txt
 }
