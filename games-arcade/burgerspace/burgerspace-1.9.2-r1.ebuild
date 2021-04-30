@@ -19,6 +19,8 @@ RDEPEND=">=dev-games/flatzebra-0.1.6"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.9.2-gcc11.patch )
+
 src_prepare() {
 	default
 
