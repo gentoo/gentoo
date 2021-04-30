@@ -31,6 +31,7 @@ fi
 LICENSE="BSD-2 CDDL MIT"
 # just libzfs soname major for now.
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
+# see libsoversion_check() below as well
 SLOT="0/5"
 IUSE="custom-cflags debug kernel-builtin minimal nls pam python +rootfs test-suite static-libs"
 
@@ -111,8 +112,33 @@ pkg_setup() {
 	fi
 }
 
+libsoversion_check() {
+
+	local bugurl libzfs_sover
+	bugurl="https://bugs.gentoo.org/enter_bug.cgi?form_name=enter_bug&product=Gentoo+Linux&component=Current+packages"
+
+	libzfs_sover="$(grep 'libzfs_la_LDFLAGS += -version-info' lib/libzfs/Makefile.am \
+		| grep -Eo '[0-9]+:[0-9]+:[0-9]+')"
+	libzfs_sover="${libzfs_sover%%:*}"
+
+	if [[ ${libzfs_sover} -ne $(ver_cut 2 ${SLOT}) ]]; then
+		echo
+		eerror "BUG BUG BUG BUG BUG BUG BUG BUG"
+		eerror "ebuild subslot does not match libzfs soversion!"
+		eerror "libzfs soversion: ${libzfs_sover}"
+		eerror "ebuild value: $(ver_cut 2 ${SLOT})"
+		eerror "This is a bug in the ebuild, please use the following URL to report it"
+		eerror "${bugurl}&short_desc=${CATEGORY}%2F${P}+update+subslot"
+		echo
+		# we want to abort for releases, but just print a warning for live ebuild
+		# to keep package installable
+		[[  ${PV} == "9999" ]] || die
+	fi
+}
+
 src_prepare() {
 	default
+	libsoversion_check
 
 	if [[ ${PV} == "9999" ]]; then
 		eautoreconf
