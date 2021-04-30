@@ -7,7 +7,7 @@ inherit autotools flag-o-matic systemd
 
 DESCRIPTION="Optimized multi algo CPU miner"
 HOMEPAGE="https://github.com/JayDDee/cpuminer-opt"
-IUSE="cpu_flags_x86_sse2 curl libressl"
+IUSE="cpu_flags_x86_sse2 curl"
 LICENSE="GPL-2"
 SLOT="0"
 REQUIRED_USE="cpu_flags_x86_sse2"
@@ -15,8 +15,7 @@ DEPEND="
 	dev-libs/gmp:0
 	dev-libs/jansson
 	>=net-misc/curl-7.15[ssl]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}"
 if [[ ${PV} == "9999" ]] ; then
