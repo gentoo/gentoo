@@ -47,13 +47,13 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-S="${WORKDIR}"
+S="${WORKDIR}/${P}"
 
-DOCS=( "${P}"/{LICENSE.txt,README.md} )
+DOCS=( "${S}"/{LICENSE.txt,README.md} )
 
-JAVA_SRC_DIR="${P}/src/java/main"
+JAVA_SRC_DIR="src/java/main"
 
-JAVA_TEST_SRC_DIR="${P}/src/java/test"
+JAVA_TEST_SRC_DIR="src/java/test"
 JAVA_TEST_GENTOO_CLASSPATH="junit"
 
 src_prepare() {
