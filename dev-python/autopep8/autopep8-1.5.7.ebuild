@@ -22,7 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	>=dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
+	>=dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
 
