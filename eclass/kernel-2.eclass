@@ -1241,8 +1241,32 @@ unipatch() {
 			local GCC_MAJOR_VER=$(gcc-major-version)
 			local GCC_MINOR_VER=$(gcc-minor-version)
 
-			# optimization patch for gcc < 8.X and kernel > 4.13
-			if kernel_is ge 4 13 ; then 
+			# this section should be the target state to handle the cpu opt
+			# patch for kernels > 4.19.189, 5.4.115, 5.10.33 and 5.11.17,
+			# 5.12.0 and gcc >= 9  The patch now handles the
+			# gcc version enabled on the system through the Kconfig file as
+			# 'depends'. The legacy section can hopefully be retired in the future
+			# Note the patch for 4.19-5.8 version are the same and the patch for 
+			# 5.8+ version is the same
+			# eventually we can remove everything except the gcc ver <9 check
+			# based on stablization, time, kernel removals or a combo of all three
+			if ( kernel_is eq 4 19 && kernel_is gt 4 19 189 ) ||
+				( kernel_is eq 5 4 && kernel_is gt 5 4 115 ) ||
+				( kernel_is eq 5 10 && kernel_is gt 5 10 33 ) ||
+				( kernel_is eq 5 11 && kernel_is gt 5 11 17 ) ||
+				( kernel_is eq 5 12 && kernel_is gt 5 12 0 ); then
+				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+				UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+				UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
+				if [[ ${GCC_MAJOR_VER} -lt 9 ]]; then
+					UNIPATCH_DROP+=" 5010_enable-cpu-optimizations-universal.patch"
+				fi
+				# this legacy section should be targeted for removal
+				# optimization patch for gcc < 8.X and kernel > 4.13 and <  4.19
+			elif kernel_is ge 4 13; then
+				UNIPATCH_DROP+=" 5010_enable-cpu-optimizations-universal.patch"
 				if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
@@ -1272,6 +1296,7 @@ unipatch() {
 					UNIPATCH_DROP+=" 5013_enable-cpu-optimizations-for-gcc10.patch"
 				fi
 			else
+				UNIPATCH_DROP+=" 5010_enable-cpu-optimizations-universal.patch"
 				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
