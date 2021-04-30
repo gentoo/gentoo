@@ -27,13 +27,15 @@ DEPEND="
 	static? ( ${LIB_DEPEND} )
 "
 
+PATCHES=(
+	"${WORKDIR}"/nc-v6-20000918.patch
+)
+
 src_prepare() {
 	default
 
-	eapply "${WORKDIR}"/nc-v6-20000918.patch
-
 	sed -i 's:#define HAVE_BIND:#undef HAVE_BIND:' netcat.c
-	# bug 34250
+	# bug #34250
 	sed -i 's:#define FD_SETSIZE 16:#define FD_SETSIZE 1024:' netcat.c
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
@@ -43,7 +45,11 @@ src_prepare() {
 
 src_compile() {
 	export XLIBS=""
-	export XFLAGS="-DLINUX -DTELNET -DGAPING_SECURITY_HOLE"
+	export XFLAGS="-DTELNET -DGAPING_SECURITY_HOLE"
+
+	if use kernel_linux ; then
+		XFLAGS+=" -DLINUX"
+	fi
 
 	if use ipv6 ; then
 		XFLAGS+=" -DINET6"
@@ -62,13 +68,14 @@ src_compile() {
 		XLIBS+=" -lnsl -lsocket"
 	fi
 
-	emake -e CC="$(tc-getCC) ${CFLAGS} ${LDFLAGS}" nc
+	emake -e CC="$(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}" nc
 }
 
 src_install() {
 	dobin nc
 	dodoc README* netcat.blurb debian-*
 	doman nc.1
+
 	docinto scripts
 	dodoc scripts/*
 }
