@@ -61,7 +61,7 @@ src_install() {
 
 	# Install standard sub packages
 	local builddirs=(
-		builds/cuda_{cudart,cuobjdump,memcheck,nvcc,nvdisasm,nvml_dev,nvprune,nvrtc,nvtx}
+		builds/cuda_{cudart,cuobjdump,memcheck,nvcc,nvdisasm,nvml_dev,nvprune,nvrtc,nvtx,thrust}
 		builds/lib{cublas,cufft,curand,cusolver,cusparse,npp,nvjpeg}
 		$(usex profiler "builds/cuda_nvprof builds/cuda_cupti" "")
 		$(usex vis-profiler "builds/cuda_nvvp" "")
