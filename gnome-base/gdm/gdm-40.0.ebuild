@@ -147,8 +147,6 @@ src_configure() {
 		-Drun-dir=/run/gdm
 		$(meson_feature selinux)
 		$(meson_use systemd systemd-journal)
-		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
-		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
 		$(meson_use tcpd tcp-wrappers)
 		-Dudev-dir=$(get_udevdir)
 		-Duser=gdm
@@ -160,6 +158,14 @@ src_configure() {
 	if use elogind; then
 		emesonargs+=(
 			-Dinitial-vt=7 # TODO: Revisit together with startDM.sh and other xinit talks; also ignores plymouth possibility
+			-Dsystemdsystemunitdir=no
+			-Dsystemduserunitdir=no
+		)
+	else
+		emesonargs+=(
+			-Dinitial-vt=1
+			-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
+			-Dsystemduserunitdir="$(systemd_get_userunitdir)"
 		)
 	fi
 
