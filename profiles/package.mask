@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2021-04-30)
+# doesn't build without patching, upstream disagrees with suggested patch
+# https://github.com/trusteddomainproject/OpenDMARC/issues/163
+=mail-filter/opendmarc-1.4.1
+
 # Matt Turner <mattst88@gentoo.org> (2021-04-29)
 # Incompatible with gdm-3.36. Bug #786573
 >=gnome-base/gnome-settings-daemon-40
