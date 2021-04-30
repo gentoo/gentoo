@@ -86,6 +86,7 @@ RDEPEND="${DEPEND}
 		)
 		cvs? (
 			>=dev-vcs/cvsps-2.1:0
+			net-misc/netkit-rsh
 			dev-perl/DBI
 			dev-perl/DBD-SQLite
 		)
