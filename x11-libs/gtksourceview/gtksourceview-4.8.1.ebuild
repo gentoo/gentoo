@@ -38,6 +38,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-build-disable-Werror-for-incompatible-pointer-types.patch
+	"${FILESDIR}"/${PV}-build-ensure-access-to-resources-in-corelib-build.patch
 )
 
 src_prepare() {
