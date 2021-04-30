@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
+# Superceded by dev-perl/Image-Sane. Tests hang, bug 626594
+# Removal in 30 days.
+dev-perl/Sane
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
 # Outdated, not pulled in by any virtuals anymore, no
 # keywords. Removal in 30 days.
 perl-core/Devel-PPPort
