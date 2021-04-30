@@ -29,3 +29,6 @@ DEPEND="${RDEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.2.1
 	>=dev-libs/wayland-protocols-1.15
 "
+BDEPEND="
+	>=dev-util/wayland-scanner-1.19.0
+"
