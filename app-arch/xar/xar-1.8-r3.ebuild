@@ -12,13 +12,12 @@ SRC_URI="https://opensource.apple.com/tarballs/xar/xar-${APPLE_PV}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="libressl kernel_Darwin"
+IUSE="kernel_Darwin"
 
 RDEPEND="
 	!kernel_Darwin? (
 		!kernel_SunOS? ( virtual/acl )
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	)
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
