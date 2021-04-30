@@ -26,7 +26,6 @@ esac
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="libressl"
 
 DEPEND="
 	app-arch/libarchive[bzip2,lz4,lzma,lzo,zlib]
@@ -35,11 +34,7 @@ DEPEND="
 	sys-libs/zlib
 	app-arch/lz4
 	dev-libs/lzo:2
-	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
-	libressl? (
-		dev-libs/libressl:0=
-		app-arch/libarchive[libressl]
-	)
+	>=dev-libs/openssl-1.0.2l:0=
 	=media-tv/kodi-19*
 	"
 RDEPEND="${DEPEND}"
