@@ -37,8 +37,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/pytest-3.0.1[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
-
 distutils_enable_sphinx doc \
 	dev-python/sphinx_rtd_theme
 
