@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-30)
+# no consumers
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787152
+dev-java/tagsoup
+
 # Fabian Groffen <grobian@gentoo.org> (2021-04-30)
 # doesn't build without patching, upstream disagrees with suggested patch
 # https://github.com/trusteddomainproject/OpenDMARC/issues/163
