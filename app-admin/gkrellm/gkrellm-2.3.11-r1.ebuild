@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ else
 fi
 LICENSE="GPL-3"
 SLOT="2"
-IUSE="gnutls hddtemp libressl lm-sensors nls ntlm ssl kernel_FreeBSD X"
+IUSE="gnutls hddtemp lm-sensors nls ntlm ssl kernel_FreeBSD X"
 
 RDEPEND="
 	acct-group/gkrellmd
@@ -28,8 +28,7 @@ RDEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	lm-sensors? ( sys-apps/lm-sensors:= )
