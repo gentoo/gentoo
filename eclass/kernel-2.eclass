@@ -770,7 +770,7 @@ universal_unpack() {
 	local OKV_ARRAY
 	IFS="." read -r -a OKV_ARRAY <<<"${OKV}"
 
-	cd "${WORKDIR}"
+	cd "${WORKDIR}" || die
 	if [[ ${#OKV_ARRAY[@]} -ge 3 ]] && [[ ${KV_MAJOR} -ge 3 ]]; then
 		unpack linux-${KV_MAJOR}.${KV_MINOR}.tar.xz
 	else
@@ -796,7 +796,7 @@ universal_unpack() {
 		mv linux-${KV_MAJOR}.${KV_MINOR} linux-${KV_FULL} \
 			|| die "Unable to move source tree to ${KV_FULL}."
 	fi
-	cd "${S}"
+	cd "${S}" || die
 
 	# remove all backup files
 	find . -iname "*~" -exec rm {} \; 2> /dev/null
@@ -809,9 +809,7 @@ universal_unpack() {
 # handle EXTRAVERSION
 
 unpack_set_extraversion() {
-	cd "${S}"
-	sed -i -e "s:^\(EXTRAVERSION =\).*:\1 ${EXTRAVERSION}:" Makefile
-	cd "${OLDPWD}"
+	sed -i -e "s:^\(EXTRAVERSION =\).*:\1 ${EXTRAVERSION}:" "${S}"/Makefile || die
 }
 
 # @FUNCTION: unpack_fix_install_path
@@ -821,8 +819,7 @@ unpack_set_extraversion() {
 # Otherwise patches that modify the same area of Makefile will fail
 
 unpack_fix_install_path() {
-	cd "${S}"
-	sed -i -e 's:#export\tINSTALL_PATH:export\tINSTALL_PATH:' Makefile
+	sed -i -e 's:#export\tINSTALL_PATH:export\tINSTALL_PATH:' "${S}"/Makefile || die
 }
 
 # Compile Functions
@@ -852,7 +849,7 @@ compile_headers() {
 		# autoconf.h isnt generated unless it already exists. plus, we have
 		# no guarantee that any headers are installed on the system...
 		[[ -f ${EROOT%/}/usr/include/linux/autoconf.h ]] \
-			|| touch include/linux/autoconf.h
+			|| touch include/linux/autoconf.h || die
 
 		# if K_DEFCONFIG isn't set, force to "defconfig"
 		# needed by mips
@@ -910,10 +907,8 @@ compile_headers_tweak_config() {
 # Fix permissions in tarball
 
 install_universal() {
-	cd "${WORKDIR}"
-	chown -R 0:0 * >& /dev/null
-	chmod -R a+r-w+X,u+w *
-	cd ${OLDPWD}
+	chown -R 0:0 "${WORKDIR}"/* >& /dev/null || die
+	chmod -R a+r-w+X,u+w "${WORKDIR}"/* || die
 }
 
 # @FUNCTION: install_headers
@@ -928,7 +923,7 @@ install_headers() {
 	# of this crap anymore :D
 	if kernel_is ge 2 6 18 ; then
 		env_setup_xmakeopts
-		emake headers_install INSTALL_HDR_PATH="${ED%/}"${ddir}/.. ${xmakeopts} || die
+		emake headers_install INSTALL_HDR_PATH="${ED%/}"${ddir}/.. ${xmakeopts}
 
 		# let other packages install some of these headers
 		rm -rf "${ED%/}"${ddir}/scsi || die #glibc/uclibc/etc...
@@ -937,7 +932,7 @@ install_headers() {
 
 	# Do not use "linux/*" as that can cause problems with very long
 	# $S values where the cmdline to cp is too long
-	pushd "${S}" >/dev/null
+	pushd "${S}" >/dev/null || die
 	dodir ${ddir}/linux
 	cp -pPR "${S}"/include/linux "${ED%/}"${ddir}/ || die
 	rm -rf "${ED%/}"${ddir}/linux/modules || die
@@ -951,9 +946,9 @@ install_headers() {
 	fi
 
 	# clean up
-	find "${D}" -name '*.orig' -exec rm -f {} \;
+	find "${D}" -name '*.orig' -exec rm -f {} \; || die
 
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
 # @FUNCTION: install_sources
@@ -964,7 +959,7 @@ install_headers() {
 install_sources() {
 	local file
 
-	cd "${S}"
+	cd "${S}" || die
 	dodir /usr/src
 	echo ">>> Copying sources ..."
 
@@ -1161,13 +1156,13 @@ unipatch() {
 				PATCH_ORDER="${z}${STRICT_COUNT}"
 
 				mkdir -p "${KPATCH_DIR}/${PATCH_ORDER}"
-				pushd "${KPATCH_DIR}/${PATCH_ORDER}" >/dev/null
+				pushd "${KPATCH_DIR}/${PATCH_ORDER}" >/dev/null || die
 				unpack ${i##*/}
-				popd >/dev/null
+				popd >/dev/null || die
 			else
-				pushd "${KPATCH_DIR}" >/dev/null
+				pushd "${KPATCH_DIR}" >/dev/null || die
 				unpack ${i##*/}
-				popd >/dev/null
+				popd >/dev/null || die
 			fi
 
 			[[ ${i} == *:* ]] && echo ">>> Strict patch levels not currently supported for tarballed patchsets"
@@ -1435,22 +1430,19 @@ unipatch() {
 # pulled from linux-info
 
 getfilevar() {
-	local workingdir basefname basedname xarch=$(tc-arch-kernel)
+	local basefname basedname xarch=$(tc-arch-kernel)
 
 	if [[ -z ${1} ]] && [[ ! -f ${2} ]]; then
 		echo -e "\n"
 		eerror "getfilevar requires 2 variables, with the second a valid file."
 		eerror "   getfilevar <VARIABLE> <CONFIGFILE>"
 	else
-		workingdir=${PWD}
 		basefname=$(basename ${2})
 		basedname=$(dirname ${2})
 		unset ARCH
 
-		cd ${basedname}
-		echo -e "include ${basefname}\ne:\n\t@echo \$(${1})" | \
-			make ${BUILD_FIXES} -s -f - e 2>/dev/null
-		cd ${workingdir}
+		echo -e "include ${basefname}\ne:\n\t@echo \$(${1})" |
+			make -C "${basedname}" ${BUILD_FIXES} -s -f - e 2>/dev/null
 
 		ARCH=${xarch}
 	fi
@@ -1537,7 +1529,7 @@ kernel-2_src_unpack() {
 
 	# Setup xmakeopts and cd into sourcetree.
 	env_setup_xmakeopts
-	cd "${S}"
+	cd "${S}" || die
 
 	# We dont need a version.h for anything other than headers
 	# at least, I should hope we dont. If this causes problems
@@ -1589,7 +1581,7 @@ kernel-2_src_prepare() {
 # conpile headers or run deblob script
 
 kernel-2_src_compile() {
-	cd "${S}"
+	cd "${S}" || die
 	[[ ${ETYPE} == headers ]] && compile_headers
 
 	if [[ $K_DEBLOB_AVAILABLE == 1 ]] && use deblob ; then
