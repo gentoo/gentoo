@@ -44,11 +44,10 @@ python_check_deps() {
 	has_version -b ">=x11-base/xcb-proto-1.14[${PYTHON_USEDEP}]"
 }
 
-pkg_setup() {
-	python-any-r1_pkg_setup
-
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable doc devel-docs)
 		$(use_enable selinux)
 	)
+	xorg-3_src_configure
 }
