@@ -51,6 +51,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc11.patch ) # bug 787179
+
 src_prepare() {
 	ecm_src_prepare
 	ecm_punt_bogus_dep KF5 Completion
