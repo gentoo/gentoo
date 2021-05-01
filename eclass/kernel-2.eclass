@@ -731,7 +731,7 @@ unpack_2_4() {
 	make -s mrproper ${xmakeopts} || die "make mrproper failed"
 	make -s symlinks ${xmakeopts} || die "make symlinks failed"
 	make -s include/linux/version.h ${xmakeopts} || die "make include/linux/version.h failed"
-	echo ">>> version.h compiled successfully."
+	elog ">>> version.h compiled successfully."
 }
 
 # @FUNCTION: unpack_2_6
@@ -839,7 +839,7 @@ compile_headers() {
 
 	if kernel_is 2 4; then
 		yes "" | make oldconfig ${xmakeopts}
-		echo ">>> make oldconfig complete"
+		elog ">>> make oldconfig complete"
 		make dep ${xmakeopts}
 	elif kernel_is 2 6; then
 		# 2.6.18 introduces headers_install which means we dont need any
@@ -961,7 +961,7 @@ install_sources() {
 
 	cd "${S}" || die
 	dodir /usr/src
-	echo ">>> Copying sources ..."
+	elog ">>> Copying sources ..."
 
 	file="$(find ${WORKDIR} -iname "docs" -type d)"
 	if [[ -n ${file} ]]; then
@@ -1030,11 +1030,9 @@ postinst_sources() {
 	# Don't forget to make directory for sysfs
 	[[ ! -d ${EROOT%/}/sys ]] && kernel_is 2 6 && { mkdir "${EROOT%/}"/sys || die ; }
 
-	echo
 	elog "If you are upgrading from a previous kernel, you may be interested"
 	elog "in the following document:"
 	elog "  - General upgrade guide: https://wiki.gentoo.org/wiki/Kernel/Upgrade"
-	echo
 
 	# if K_EXTRAEINFO is set then lets display it now
 	if [[ -n ${K_EXTRAEINFO} ]]; then
@@ -1062,12 +1060,10 @@ postinst_sources() {
 	#  And now the general message.
 	if [[ -n ${K_SECURITY_UNSUPPORTED} ]]; then
 		ewarn "This means that it is likely to be vulnerable to recent security issues."
-		echo
 		ewarn "Upstream kernel developers recommend always running the latest "
 		ewarn "release of any current long term supported Linux kernel version."
 		ewarn "To see a list of these versions, their most current release and "
 		ewarn "long term support status, please go to https://www.kernel.org ."
-		echo
 		ewarn "For specific information on why this kernel is unsupported, please read:"
 		ewarn "https://wiki.gentoo.org/wiki/Project:Kernel_Security"
 	fi
@@ -1079,7 +1075,6 @@ postinst_sources() {
 	if [[ "$(tc-arch)" = "sparc" ]]; then
 		if [[ $(gcc-major-version) -lt 4 && $(gcc-minor-version) -lt 4 ]]; then
 			if [[ ${KV_MAJOR} -ge 3 ]] || ver_test ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} -gt 2.6.24 ; then
-				echo
 				elog "NOTE: Since 2.6.25 the kernel Makefile has changed in a way that"
 				elog "you now need to do"
 				elog "  make CROSS_COMPILE=sparc64-unknown-linux-gnu-"
@@ -1087,7 +1082,6 @@ postinst_sources() {
 				elog "  make"
 				elog "to compile the kernel. For more information please browse to"
 				elog "https://bugs.gentoo.org/show_bug.cgi?id=214765"
-				echo
 			fi
 		fi
 	fi
@@ -1107,7 +1101,6 @@ setup_headers() {
 	done
 
 	if [[ ${H_ACCEPT_ARCH} != "yes" ]]; then
-		echo
 		eerror "This version of ${PN} does not support $(tc-arch)."
 		eerror "Please merge the appropriate sources, in most cases"
 		eerror "(but not all) this will be called $(tc-arch)-headers."
@@ -1165,7 +1158,7 @@ unipatch() {
 				popd >/dev/null || die
 			fi
 
-			[[ ${i} == *:* ]] && echo ">>> Strict patch levels not currently supported for tarballed patchsets"
+			[[ ${i} == *:* ]] && elog ">>> Strict patch levels not currently supported for tarballed patchsets"
 		else
 			extention=${i/*./}
 			extention=${extention/:*/}
@@ -1188,7 +1181,6 @@ unipatch() {
 
 			if [ -n "${PIPE_CMD}" ]; then
 				if [ ! -r "${i}" ]; then
-					echo
 					eerror "FATAL: unable to locate:"
 					eerror "${i}"
 					eerror "for read-only. The file either has incorrect permissions"
@@ -1310,11 +1302,9 @@ unipatch() {
 		if [[ ${KV_MAJOR} -ge 3 ]] || ver_test ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} -gt 2.6.28 ; then
 			if [[ ! -z ${K_WANT_GENPATCHES} ]] ; then
 				UNIPATCH_DROP="${UNIPATCH_DROP} *_fbcondecor*.patch"
-				echo
 				ewarn "fbcondecor currently prevents sparc/sparc64 from booting"
 				ewarn "for kernel versions >= 2.6.29. Removing fbcondecor patch."
 				ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=272676 for details"
-				echo
 			fi
 		fi
 	fi
@@ -1433,7 +1423,6 @@ getfilevar() {
 	local basefname basedname xarch=$(tc-arch-kernel)
 
 	if [[ -z ${1} ]] && [[ ! -f ${2} ]]; then
-		echo -e "\n"
 		eerror "getfilevar requires 2 variables, with the second a valid file."
 		eerror "   getfilevar <VARIABLE> <CONFIGFILE>"
 	else
@@ -1585,7 +1574,7 @@ kernel-2_src_compile() {
 	[[ ${ETYPE} == headers ]] && compile_headers
 
 	if [[ $K_DEBLOB_AVAILABLE == 1 ]] && use deblob ; then
-		echo ">>> Running deblob script ..."
+		elog ">>> Running deblob script ..."
 		python_setup
 		sh "${T}/${DEBLOB_A}" --force || die "Deblob script failed to run!!!"
 	fi
@@ -1639,14 +1628,11 @@ kernel-2_pkg_postinst() {
 kernel-2_pkg_setup() {
 	if kernel_is 2 4; then
 		if [[ $(gcc-major-version) -ge 4 ]] ; then
-			echo
 			ewarn "Be warned !! >=sys-devel/gcc-4.0.0 isn't supported with linux-2.4!"
 			ewarn "Either switch to another gcc-version (via gcc-config) or use a"
 			ewarn "newer kernel that supports >=sys-devel/gcc-4."
-			echo
 			ewarn "Also, be aware that bug reports about gcc-4 not working"
 			ewarn "with linux-2.4 based ebuilds will be closed as INVALID!"
-			echo
 		fi
 	fi
 
@@ -1657,7 +1643,7 @@ kernel-2_pkg_setup() {
 	fi
 
 	[[ ${ETYPE} == headers ]] && setup_headers
-	[[ ${ETYPE} == sources ]] && echo ">>> Preparing to unpack ..."
+	[[ ${ETYPE} == sources ]] && elog ">>> Preparing to unpack ..."
 }
 
 # @FUNCTION: kernel-2_pkg_postrm
@@ -1672,14 +1658,11 @@ kernel-2_pkg_postrm() {
 
 	# If there isn't anything left behind, then don't complain.
 	[[ -e ${EROOT%/}/usr/src/linux-${KV_FULL} ]] || return 0
-	echo
 	ewarn "Note: Even though you have successfully unmerged "
 	ewarn "your kernel package, directories in kernel source location: "
 	ewarn "${EROOT%/}/usr/src/linux-${KV_FULL}"
 	ewarn "with modified files will remain behind. By design, package managers"
 	ewarn "will not remove these modified files and the directories they reside in."
-	echo
 	ewarn "For more detailed kernel removal instructions, please see: "
 	ewarn "https://wiki.gentoo.org/wiki/Kernel/Removal"
-	echo
 }
