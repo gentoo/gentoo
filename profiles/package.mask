@@ -615,15 +615,6 @@ dev-java/slf4j-ext
 # Masked for removal in 30 days.
 dev-php/PEAR-Net_LDAP3
 
-# Matt Turner <mattst88@gentoo.org> (2021-04-05)
-# Masked for testing and for dependence on masked pango
-gui-libs/gtk
->=gnome-base/gnome-shell-40
->=gnome-extra/gnome-shell-extensions-40
->=x11-wm/mutter-40
->=media-sound/gnome-music-40
->=games-board/gnome-chess-40
-
 # David Seifert <soap@gentoo.org> (2021-04-05)
 # Completely broken, unmaintained, does not build. Newer version
 # use Maven, good luck with that. Bugs #418625, #431644, #515816
