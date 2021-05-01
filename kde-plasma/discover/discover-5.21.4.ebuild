@@ -56,7 +56,10 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-missing-link.patch" ) # bug 785457
+PATCHES=(
+	"${FILESDIR}/${P}-missing-link.patch" # bug 785457
+	"${FILESDIR}/${P}-glib-2.68.patch" # bug 787155
+)
 
 src_prepare() {
 	ecm_src_prepare
