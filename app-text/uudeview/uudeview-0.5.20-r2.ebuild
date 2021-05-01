@@ -20,6 +20,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-man.patch
 	"${FILESDIR}"/${P}-rename.patch
 	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-fix-append_signature.patch
 )
 
 DOCS=( HISTORY INSTALL README )
