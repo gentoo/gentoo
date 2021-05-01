@@ -19,8 +19,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-multiple-definition-of-linker-error.patch
 )
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ztv)
 	)
+	xorg-3_src_configure
 }
