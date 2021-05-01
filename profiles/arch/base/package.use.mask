@@ -90,6 +90,7 @@ gnome-extra/cjs sysprof
 x11-libs/gtk+ sysprof
 net-libs/libsoup sysprof
 x11-libs/pango sysprof
+gui-libs/gtk sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
