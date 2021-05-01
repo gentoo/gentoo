@@ -79,20 +79,18 @@ esac
 
 # @FUNCTION: setup-wxwidgets
 # @DESCRIPTION:
-# Call this in your ebuild to set up the environment for wxGTK.  Besides
-# controlling the wx-config wrapper this exports WX_CONFIG containing
-# the path to the config in case it needs to be passed to a build system.
+# Call this in your ebuild to set up the environment for wxGTK in src_configure.
+# Besides controlling the wx-config wrapper, this exports WX_CONFIG containing
+# the path to the config in case it needs to be passed to the build system.
 #
-# In wxGTK-2.9 and later it also controls the level of debugging output
-# from the libraries.  In these versions debugging features are enabled
-# by default and need to be disabled at the package level.  Because this
-# causes many warning dialogs to pop up during runtime we add -DNDEBUG to
-# CPPFLAGS to disable debugging features (unless your ebuild has a debug
-# USE flag and it's enabled).  If you don't like this behavior you can set
-# WX_DISABLE_NDEBUG to override it.
+# This function also controls the level of debugging output from the libraries.
+# Debugging features are enabled by default and need to be disabled at the
+# package level.  Because this causes many warning dialogs to pop up during
+# runtime, we add -DNDEBUG to CPPFLAGS to disable debugging features (unless
+# your ebuild has a debug USE flag and it's enabled).  If you don't like this
+# behavior, you can set WX_DISABLE_NDEBUG to override it.
 #
-# See: http://docs.wxwidgets.org/trunk/overview_debugging.html
-
+# See: https://docs.wxwidgets.org/trunk/overview_debugging.html
 setup-wxwidgets() {
 	local w wxtoolkit wxconf
 
