@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,6 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD Boost-1.0 CC0-1.0 MIT Un
 SLOT="0"
 IUSE=""
 
-# requires old libressl-2.5, so openssl only for now.
 DEPEND="
 	app-arch/xz-utils
 	net-misc/curl:=[http2,ssl]
@@ -48,8 +47,21 @@ src_unpack() {
 }
 
 src_configure() {
-	local myfeatures=( no-self-update )
-	cargo_src_configure
+	# modeled after ci/run.bash upstream
+	# reqwest-rustls-tls requires ring crate, which is not very portable.
+	local myfeatures=(
+		no-self-update
+		curl-backend
+		reqwest-backend
+		reqwest-default-tls
+	)
+	case ${ARCH} in
+		ppc*|mips*|riscv*|s390*)
+			;;
+		*) myfeatures+=( reqwest-rustls-tls )
+			;;
+	esac
+	cargo_src_configure --no-default-features
 }
 
 src_compile() {
