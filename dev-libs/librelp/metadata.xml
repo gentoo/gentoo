@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="gnutls">Use GnuTLS</flag>
-		<flag name="libressl">Use LibreSSL</flag>
 		<flag name="openssl">Use OpenSSL</flag>
 	</use>
 </pkgmetadata>
