@@ -7,9 +7,7 @@ inherit udev xorg-3
 
 DESCRIPTION="VMWare mouse input driver"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="x11-base/xorg-proto"
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
