@@ -5,8 +5,8 @@ EAPI=7
 
 inherit gnome.org gnome2-utils meson virtualx xdg
 
-DESCRIPTION="Gimp ToolKit +"
-HOMEPAGE="https://www.gtk.org/"
+DESCRIPTION="GTK is a multi-platform toolkit for creating graphical user interfaces"
+HOMEPAGE="https://www.gtk.org/ https://gitlab.gnome.org/GNOME/gtk/"
 
 LICENSE="LGPL-2+"
 SLOT="4"
@@ -61,19 +61,11 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	>=sys-devel/gettext-0.19.7
 	sysprof? ( >=dev-util/sysprof-capture-3.38:4 )
-	test? (
-		media-fonts/font-misc-misc
-		media-fonts/font-cursor-misc
-	)
 	X? ( x11-base/xorg-proto )
 "
-# gtk+-3.2.2 breaks Alt key handling in <=x11-libs/vte-0.30.1:2.90
-# gtk+-3.3.18 breaks scrolling in <=x11-libs/vte-0.31.0:2.90
 RDEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-update-icon-cache-3
-	!<x11-libs/vte-0.31.0:2.90
 "
 # librsvg for svg icons (PDEPEND to avoid circular dep), bug #547710
 PDEPEND="
@@ -89,10 +81,18 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
+	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 	gtk-doc? (
 		app-text/docbook-xml-dtd:4.3
 		>=dev-util/gtk-doc-1.33
+	)
+	test? (
+		dev-libs/glib:2
+		wayland? ( dev-libs/weston )
+
+		media-fonts/font-misc-misc
+		media-fonts/font-cursor-misc
 	)
 "
 
@@ -136,7 +136,7 @@ src_configure() {
 }
 
 src_test() {
-	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/gtk" || die
+	"${BROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/gtk" || die
 
 	if use X; then
 		einfo "Running tests under X"
