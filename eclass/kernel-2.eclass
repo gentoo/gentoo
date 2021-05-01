@@ -8,7 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>
 # Mike Pagano <mpagano@gentoo.org>
 # <so many, many others, please add yourself>
-# @SUPPORTED_EAPIS: 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for kernel packages
 # @DESCRIPTION:
 # This is the kernel.eclass rewrite for a clean base regarding the 2.6
@@ -199,10 +199,9 @@
 # that of course does not mean we're not willing to help.
 
 inherit estack toolchain-funcs
-[[ ${EAPI:-0} == [012345] ]] && inherit epatch
-[[ ${EAPI:-0} == [0123456] ]] && inherit eapi7-ver
+[[ ${EAPI:-0} == 6 ]] && inherit eapi7-ver
 case ${EAPI:-0} in
-	2|3|4|5|6|7)
+	6|7)
 		EXPORT_FUNCTIONS src_{unpack,prepare,compile,install,test} \
 			pkg_{setup,preinst,postinst,postrm} ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
@@ -597,7 +596,7 @@ kernel_is_2_6() {
 
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
-	[[ ${EAPI} == [0-6] ]] && DEPEND="!build? ( sys-apps/sed )" ||
+	[[ ${EAPI} == 6 ]] && DEPEND="!build? ( sys-apps/sed )" ||
 	BDEPEND="!build? ( sys-apps/sed )"
 	RDEPEND="!build? (
 		dev-lang/perl
@@ -633,7 +632,7 @@ if [[ ${ETYPE} == sources ]]; then
 			# tree has been dropped from the kernel.
 			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
 
-			[[ ${EAPI} == [0-6] ]] && DEPEND+=" deblob? ( ${PYTHON_DEPS} )" ||
+			[[ ${EAPI} == 6 ]] && DEPEND+=" deblob? ( ${PYTHON_DEPS} )" ||
 			BDEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
 			if [[ -n KV_MINOR ]]; then
@@ -1559,12 +1558,7 @@ kernel-2_src_unpack() {
 
 kernel-2_src_prepare() {
 	debug-print "Applying any user patches"
-
-	# apply any user patches
-	case ${EAPI:-0} in
-		0|1|2|3|4|5) epatch_user ;;
-		*) eapply_user ;;
-	esac
+	eapply_user
 }
 
 # @FUNCTION: kernel-2_src_compile
