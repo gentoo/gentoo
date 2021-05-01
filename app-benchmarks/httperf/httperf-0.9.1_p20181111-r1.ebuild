@@ -23,8 +23,6 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
-
 src_prepare() {
 	default
 	eautoreconf
