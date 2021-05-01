@@ -12,7 +12,7 @@ SRC_URI="https://www.nih.at/libzip/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gnutls libressl lzma mbedtls ssl static-libs test tools"
+IUSE="bzip2 gnutls lzma mbedtls ssl static-libs test tools"
 REQUIRED_USE="test? ( tools )"
 
 RESTRICT="!test? ( test )"
@@ -28,10 +28,7 @@ DEPEND="
 		)
 		!gnutls? (
 			mbedtls? ( net-libs/mbedtls:= )
-			!mbedtls? (
-				!libressl? ( dev-libs/openssl:0= )
-				libressl? ( dev-libs/libressl:0= )
-			)
+			!mbedtls? ( dev-libs/openssl:0= )
 		)
 	)
 "
