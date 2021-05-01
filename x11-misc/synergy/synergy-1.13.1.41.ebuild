@@ -24,12 +24,11 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
-IUSE="libressl gui test zeroconf"
+IUSE="gui test zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:=
 	x11-libs/libICE:=
 	x11-libs/libSM:=
 	x11-libs/libX11:=
