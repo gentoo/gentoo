@@ -7,6 +7,6 @@ inherit acct-user
 
 DESCRIPTION="user for github-exporter"
 ACCT_USER_ID=238
-ACCT_USER_GROUPS=( bithub-exporter )
+ACCT_USER_GROUPS=( github-exporter )
 
 acct-user_add_deps
