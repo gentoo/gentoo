@@ -23,7 +23,7 @@ LICENSE="Apache-2.0"
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="doc emacs +hipe java +kpoll libressl odbc sctp ssl systemd tk wxwidgets"
+IUSE="doc emacs +hipe java +kpoll odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
 	acct-group/epmd
@@ -34,10 +34,7 @@ RDEPEND="
 	java? ( >=virtual/jdk-1.8:* )
 	odbc? ( dev-db/unixODBC )
 	sctp? ( net-misc/lksctp-tools )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7d:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( >=dev-libs/openssl-0.9.7d:0= )
 	systemd? ( sys-apps/systemd )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 "
