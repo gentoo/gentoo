@@ -22,12 +22,11 @@ HOMEPAGE="https://www.virtualgl.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 wxWinLL-3.1 FLTK"
-IUSE="libressl ssl"
+IUSE="ssl"
 
 RDEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	)
 	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
