@@ -23,6 +23,6 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	if has_version ">=media-video/vdr-2.3.1"; then
-		epatch "${FILESDIR}/${P}_vdr-2.3.1.patch"
+		eapply "${FILESDIR}/${P}_vdr-2.3.1.patch"
 	fi
 }
