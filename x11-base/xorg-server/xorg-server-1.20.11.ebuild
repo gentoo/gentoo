@@ -132,13 +132,15 @@ pkg_setup() {
 		ewarn "Performance may be unacceptable without it."
 		ewarn "Build with USE=-minimal to enable glamor."
 	fi
+}
 
+src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	# NOTE: fop is used for doc generating; and I have no idea if Gentoo
 	#	package it somewhere
-	XORG_CONFIGURE_OPTIONS=(
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_enable debug)
 		$(use_enable dmx)
@@ -178,17 +180,19 @@ pkg_setup() {
 
 	if use systemd || use elogind; then
 		XORG_CONFIGURE_OPTIONS+=(
-			"--enable-systemd-logind"
-			"--disable-install-setuid"
-			"$(use_enable suid suid-wrapper)"
+			--enable-systemd-logind
+			--disable-install-setuid
+			$(use_enable suid suid-wrapper)
 		)
 	else
 		XORG_CONFIGURE_OPTIONS+=(
-			"--disable-systemd-logind"
-			"--disable-suid-wrapper"
-			"$(use_enable suid install-setuid)"
+			--disable-systemd-logind
+			--disable-suid-wrapper
+			$(use_enable suid install-setuid)
 		)
 	fi
+
+	xorg-3_src_configure
 }
 
 src_install() {
