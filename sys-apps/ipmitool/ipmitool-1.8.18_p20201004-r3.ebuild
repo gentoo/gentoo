@@ -27,14 +27,13 @@ SRC_URI+="
 	#http://http.debian.net/debian/pool/main/i/${PN}/${DEBIAN_PF}.tar.xz
 	# https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz
 #IUSE="freeipmi openipmi status"
-IUSE="libressl openbmc openipmi static"
+IUSE="openbmc openipmi static"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 LICENSE="BSD"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	openbmc? ( sys-apps/systemd:0= )
 	sys-libs/readline:0="
 DEPEND="${RDEPEND}
