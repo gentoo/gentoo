@@ -26,12 +26,12 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
-		"--without-xf86misc"
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
+		--without-xf86misc
 		$(use_with dga)
 		$(use_with dmx)
 		$(use_with xinerama)
 	)
-
+	xorg-3_src_configure
 }
