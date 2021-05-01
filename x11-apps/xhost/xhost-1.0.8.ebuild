@@ -15,6 +15,9 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXau"
 DEPEND="${RDEPEND}"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS="$(use_enable ipv6)"
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
+		$(use_enable ipv6)
+	)
+	xorg-3_src_configure
 }
