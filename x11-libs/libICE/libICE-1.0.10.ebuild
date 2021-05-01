@@ -16,11 +16,12 @@ DEPEND="x11-base/xorg-proto
 RDEPEND="${DEPEND}
 	elibc_glibc? ( dev-libs/libbsd )"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		--disable-docs
 		--disable-specs
 		--without-fop
 	)
+	xorg-3_src_configure
 }
