@@ -36,7 +36,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
-IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
+IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
 
 RESTRICT="!test? ( test )"
 
@@ -45,7 +45,7 @@ REQUIRED_USE="
 	pie? ( !static )
 	static? ( !kerberos !pam )
 	X509? ( !sctp !security-key ssl !xmss )
-	xmss? ( || ( ssl libressl ) )
+	xmss? ( ssl  )
 	test? ( ssl )
 "
 
@@ -64,7 +64,6 @@ LIB_DEPEND="
 	security-key? ( >=dev-libs/libfido2-1.5.0:=[static-libs(+)] )
 	selinux? ( >=sys-libs/libselinux-1.28[static-libs(+)] )
 	ssl? (
-		!libressl? (
 			|| (
 				(
 					>=dev-libs/openssl-1.0.1:0[bindist=]
@@ -73,8 +72,6 @@ LIB_DEPEND="
 				>=dev-libs/openssl-1.1.0g:0[bindist=]
 			)
 			dev-libs/openssl:0=[static-libs(+)]
-		)
-		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 	)
 	virtual/libcrypt:=[static-libs(+)]
 	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
