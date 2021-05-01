@@ -43,7 +43,7 @@ RDEPEND="
 		virtual/freedesktop-icon-theme
 		x11-libs/gdk-pixbuf:2[jpeg]
 	)
-	|| ( >=media-video/ffmpeg-4.1.3[openssl,-libressl] >=media-video/ffmpeg-4.1.3[-openssl,libressl] >=media-video/ffmpeg-4.1.3[gnutls] )
+	|| ( >=media-video/ffmpeg-4.1.3[openssl] >=media-video/ffmpeg-4.1.3[gnutls] )
 	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"
 DEPEND="dev-perl/Module-Build"
 
