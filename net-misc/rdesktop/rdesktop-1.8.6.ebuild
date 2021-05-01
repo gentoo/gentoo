@@ -37,7 +37,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-sound_configure.patch
 	"${FILESDIR}"/${PN}-1.8.3-no_strip.patch
 	"${FILESDIR}"/${PN}-1.8.3-xrandr_configure.patch
-	"${FILESDIR}"/${PN}-1.8.4-libressl.patch
 	"${FILESDIR}"/${PN}-1.8.5-use_standard_gssapi.patch
 )
 
