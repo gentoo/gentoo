@@ -20,13 +20,13 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="mongodb mysql postgres redis sqlite"
 RDEPEND="acct-group/turnserver
-	 acct-user/turnserver
-	 || ( dev-libs/libevent[-ssl,libressl] dev-libs/libevent[ssl,-libressl] >dev-libs/libevent-2.1.8[ssl,libressl] )
-	 mongodb? ( dev-libs/mongo-c-driver )
-	 mysql?  ( dev-db/mysql-connector-c )
-	 postgres? ( dev-db/postgresql:* )
-	 redis? ( dev-libs/hiredis )
-	 sqlite? ( dev-db/sqlite )"
+	acct-user/turnserver
+	>dev-libs/libevent-2.1.8
+	mongodb? ( dev-libs/mongo-c-driver )
+	mysql?  ( dev-db/mysql-connector-c )
+	postgres? ( dev-db/postgresql:* )
+	redis? ( dev-libs/hiredis )
+	sqlite? ( dev-db/sqlite )"
 
 DEPEND="${RDEPEND}"
 
