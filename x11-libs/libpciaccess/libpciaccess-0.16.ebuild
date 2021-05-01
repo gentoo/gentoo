@@ -16,15 +16,16 @@ DEPEND="
 RDEPEND="${DEPEND}
 	sys-apps/hwids"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
-		"$(use_with zlib)"
-		"--with-pciids-path=${EPREFIX}/usr/share/misc"
-	)
-}
-
 src_prepare() {
 	# Let autotools install scanpci (#765706)
 	sed 's@^noinst_@bin_@' -i scanpci/Makefile.am || die
 	xorg-3_src_prepare
+}
+
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
+		$(use_with zlib)
+		--with-pciids-path="${EPREFIX}"/usr/share/misc
+	)
+	xorg-3_src_configure
 }
