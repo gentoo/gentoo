@@ -22,8 +22,7 @@ REQUIRED_USE="inspector? ( icu ssl )
 	system-icu? ( icu )
 	system-ssl? ( ssl )"
 
-# FIXME: test-fs-mkdir fails with "no such file or directory". Investigate.
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-arch/brotli-1.0.9
 	>=dev-libs/libuv-1.40.0:=
@@ -223,6 +222,12 @@ src_install() {
 }
 
 src_test() {
+	# parallel/test-fs-mkdir is known to fail with FEATURES=usersandbox
+	if has usersandbox ${FEATURES}; then
+		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
+			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	fi
+
 	out/${BUILDTYPE}/cctest || die
 	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
