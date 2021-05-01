@@ -55,10 +55,6 @@ dev-java/tagsoup
 # https://github.com/trusteddomainproject/OpenDMARC/issues/163
 =mail-filter/opendmarc-1.4.1
 
-# Matt Turner <mattst88@gentoo.org> (2021-04-29)
-# Incompatible with gdm-3.36. Bug #786573
->=gnome-base/gnome-settings-daemon-40
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
