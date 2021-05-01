@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telemetry telepathy vnc webkit zeroconf"
+IUSE="appindicator crypt cups examples gnome-keyring kwallet nls spice ssh rdp telemetry telepathy vnc webkit zeroconf"
 
 DEPEND="
 	app-emulation/spice-protocol
@@ -35,8 +35,7 @@ DEPEND="
 		cups? ( net-print/cups:= ) )
 	gnome-keyring? ( app-crypt/libsecret )
 	kwallet? ( kde-frameworks/kwallet )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh:0=[sftp]
 		x11-libs/vte:2.91 )
