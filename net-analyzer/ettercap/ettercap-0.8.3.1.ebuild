@@ -47,8 +47,6 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
-
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die
 	cmake_src_prepare
