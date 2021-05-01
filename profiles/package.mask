@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-01)
+# nsplugin is dead, bug #771801
+# Removal on 2021-05-31
+www-plugins/google-talkplugin
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-01)
 # Unmaintained, java depends on deprecated JDK-7, nsplugin is dead.
 # Multiple bugs: #446508, #678776, #682600, #787407
 # Removal on 2021-05-31
