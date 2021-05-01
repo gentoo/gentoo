@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -18,14 +18,15 @@ KEYWORDS="amd64 ~ppc64 x86"
 CDEPEND="dev-java/glassfish-persistence:0
 	dev-java/osgi-core-api:0
 	dev-java/osgi-foundation:0
-	dev-java/tomcat-servlet-api:3.0"
+	dev-java/tomcat-servlet-api:4.0"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.5
-	app-arch/unzip"
+	>=virtual/jdk-1.8:*"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+	>=virtual/jre-1.8:*"
+
+BDEPEND="app-arch/unzip"
 
 JAVA_SRC_DIR="OSGI-OPT/src"
 
@@ -36,6 +37,7 @@ JAVA_GENTOO_CLASSPATH="
 	tomcat-servlet-api-3.0
 "
 
-java_prepare() {
+src_prepare() {
+	default
 	rm -r org || die
 }
