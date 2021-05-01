@@ -138,10 +138,6 @@ LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.4.41-libressl.patch" #668060
-)
-
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
 	# to USE flag conditionals (bug #499260)

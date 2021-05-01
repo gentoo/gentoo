@@ -145,10 +145,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~
 RDEPEND+=" apache2_modules_lua? ( ${LUA_DEPS} )"
 REQUIRED_USE+=" apache2_modules_lua? ( ${LUA_REQUIRED_USE} )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.4.41-libressl.patch" #668060
-)
-
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
 	# to USE flag conditionals (bug #499260)
