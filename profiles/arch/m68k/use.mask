@@ -1,13 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -m68k
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
-# dev-libs/libressl has no m68k keywords.
-libressl
-curl_ssl_libressl
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
 # valgrind has no m68k port.

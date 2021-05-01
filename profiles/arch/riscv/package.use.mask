@@ -134,7 +134,7 @@ net-irc/irssi socks5
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-libs/libpcap rdma
-net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss rtmp ssh nss mbedtls
+net-misc/curl brotli curl_ssl_mbedtls curl_ssl_nss rtmp ssh nss mbedtls
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
