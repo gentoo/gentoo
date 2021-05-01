@@ -34,7 +34,7 @@ JAVA_GENTOO_CLASSPATH="
 	osgi-core-api
 	osgi-foundation
 	glassfish-persistence
-	tomcat-servlet-api-3.0
+	tomcat-servlet-api-4.0
 "
 
 src_prepare() {
