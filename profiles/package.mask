@@ -702,13 +702,6 @@ app-admin/lastpass-cli
 # Mask development versions now that they were bumped...
 =net-misc/kea-1.9*
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-01)
-# LibreSSL support is discontinued.  Please read the relevant news item
-# and either migrate to dev-libs/openssl, or use the unsupported
-# user-maintained libressl overlay.
-# Removal on 2021-05-01.  Bug #762847.
-dev-libs/libressl
-
 # Marek Szuba <marecki@gentoo.org> (2021-01-21)
 # Masked for testing and further work - the golang-vcs-snapshot variant
 # seems to be incompatible with revdeps using go-module, the variant
