@@ -67,6 +67,10 @@ src_prepare() {
 	# compiles ruby in a non-standard way, may be dropped
 	eapply "${FILESDIR}"/2.7/{002,003,010}*.patch
 
+	# Reset time on patched gem_prelude.rb to avoid the need for a base
+	# ruby during bootstrapping, bug 787137
+	touch -t 202001010000 gem_prelude.rb || die
+
 	einfo "Unbundling gems..."
 	cd "$S"
 	# Remove bundled gems that we will install via PDEPEND, bug
