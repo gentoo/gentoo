@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,14 +26,13 @@ RDEPEND="dev-libs/libwacom
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
-pkg_setup() {
-	linux-info_pkg_setup
-
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
 		--with-udev-rules-dir="$(get_udevdir)/rules.d"
 		$(use_enable debug)
 	)
+	xorg-3_src_configure
 }
 
 pkg_pretend() {
