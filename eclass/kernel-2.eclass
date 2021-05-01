@@ -28,7 +28,7 @@
 # @ECLASS-VARIABLE:  K_NODRYRUN
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# if this is set then patch --dry-run will not 
+# if this is set then patch --dry-run will not
 # be run. Certain patches will fail with this parameter
 # See bug #507656
 
@@ -314,7 +314,6 @@ handle_genpatches() {
 # - KV: Kernel Version (2.6.0-gentoo/2.6.0-test11-gentoo-r1)
 # - EXTRAVERSION: The additional version appended to OKV (-gentoo/-gentoo-r1)
 detect_version() {
-
 	# We've already run, so nothing to do here.
 	[[ -n ${KV_FULL} ]] && return 0
 
@@ -539,8 +538,6 @@ detect_version() {
 
 			UNIPATCH_LIST_DEFAULT="${DISTDIR}/patch-${KV_MAJOR}.${KV_PATCH}${RELEASE/-git*}.xz ${DISTDIR}/patch-${KV_MAJOR}.${KV_PATCH}${RELEASE}.xz"
 		fi
-
-
 	fi
 
 	debug-print-kernel2-variables
@@ -825,7 +822,7 @@ unpack_set_extraversion() {
 
 unpack_fix_install_path() {
 	cd "${S}"
-	sed	-i -e 's:#export\tINSTALL_PATH:export\tINSTALL_PATH:' Makefile
+	sed -i -e 's:#export\tINSTALL_PATH:export\tINSTALL_PATH:' Makefile
 }
 
 # Compile Functions
@@ -864,7 +861,7 @@ compile_headers() {
 				case ${CTARGET} in
 					powerpc64*)	K_DEFCONFIG="ppc64_defconfig";;
 					powerpc*)	K_DEFCONFIG="pmac32_defconfig";;
-					*)			K_DEFCONFIG="defconfig";;
+					*)		K_DEFCONFIG="defconfig";;
 				esac
 			else
 				K_DEFCONFIG="defconfig"
@@ -1047,13 +1044,13 @@ postinst_sources() {
 	# if K_EXTRAEINFO is set then lets display it now
 	if [[ -n ${K_EXTRAEINFO} ]]; then
 		echo ${K_EXTRAEINFO} | fmt |
-		while read -s ELINE; do	einfo "${ELINE}"; done
+		while read -s ELINE; do einfo "${ELINE}"; done
 	fi
 
 	# if K_EXTRAELOG is set then lets display it now
 	if [[ -n ${K_EXTRAELOG} ]]; then
 		echo ${K_EXTRAELOG} | fmt |
-		while read -s ELINE; do	elog "${ELINE}"; done
+		while read -s ELINE; do elog "${ELINE}"; done
 	fi
 
 	# if K_EXTRAEWARN is set then lets display it now
@@ -1245,7 +1242,7 @@ unipatch() {
 			# 5.12.0 and gcc >= 9  The patch now handles the
 			# gcc version enabled on the system through the Kconfig file as
 			# 'depends'. The legacy section can hopefully be retired in the future
-			# Note the patch for 4.19-5.8 version are the same and the patch for 
+			# Note the patch for 4.19-5.8 version are the same and the patch for
 			# 5.8+ version is the same
 			# eventually we can remove everything except the gcc ver <9 check
 			# based on stablization, time, kernel removals or a combo of all three
@@ -1347,8 +1344,8 @@ unipatch() {
 			if [ -z "${PATCH_DEPTH}" ]; then PATCH_DEPTH=0; fi
 
 			####################################################################
-			# IMPORTANT: This code is to support kernels which cannot be	   #
-			# tested with the --dry-run parameter									   #	
+			# IMPORTANT: This code is to support kernels which cannot be       #
+			# tested with the --dry-run parameter                              #
 			#                                                                  #
 			# These patches contain a removal of a symlink, followed by        #
 			# addition of a file with the same name as the symlink in the      #
@@ -1467,7 +1464,6 @@ getfilevar() {
 # patchsets.
 
 detect_arch() {
-
 	local ALL_ARCH LOOP_ARCH LOOP_ARCH_L COMPAT_URI i TC_ARCH_KERNEL
 
 	# COMPAT_URI is the contents of ${ARCH}_URI
@@ -1578,7 +1574,6 @@ kernel-2_src_unpack() {
 # Apply any user patches
 
 kernel-2_src_prepare() {
-
 	debug-print "Applying any user patches"
 
 	# apply any user patches
