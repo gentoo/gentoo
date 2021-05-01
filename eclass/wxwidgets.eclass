@@ -24,6 +24,19 @@
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 _WXWIDGETS_ECLASS=1
 
+# @ECLASS-VARIABLE: WX_GTK_VER
+# @PRE_INHERIT
+# @REQUIRED
+# @DESCRIPTION:
+# The SLOT of the x11-libs/wxGTK you're targeting.  Needs to be defined before
+# inheriting the eclass.  Can be either "3.0" or "3.0-gtk3".
+case ${WX_GTK_VER} in
+	3.0|3.0-gtk3) ;;
+	"")           die "WX_GTK_VER not declared" ;;
+	*)            die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT ('3.0' or '3.0-gtk3')" ;;
+esac
+readonly WX_GTK_VER
+
 inherit flag-o-matic
 
 case ${EAPI:-0} in
@@ -82,9 +95,6 @@ esac
 
 setup-wxwidgets() {
 	local w wxtoolkit wxdebug wxconf
-
-	[[ -z ${WX_GTK_VER} ]] \
-		&& die "WX_GTK_VER must be set before calling $FUNCNAME."
 
 	case "${WX_GTK_VER}" in
 		3.0-gtk3)
