@@ -34,7 +34,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit clang crypt debug +demangle +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib"
 # TODO babeltrace
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
