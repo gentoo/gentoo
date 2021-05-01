@@ -130,13 +130,4 @@ setup-wxwidgets() {
 	einfo
 }
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		# deprecated
-		need-wxwidgets() {
-			setup-wxwidgets
-		}
-		;;
-esac
-
 fi
