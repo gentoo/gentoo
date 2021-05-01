@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="uu, xx, base64, binhex decoder"
 HOMEPAGE="http://www.fpx.de/fp/Software/UUDeview/"
@@ -25,6 +25,8 @@ PATCHES=(
 DOCS=( HISTORY INSTALL README )
 
 src_prepare() {
+	sed -i "s/^\tar r/\t$(tc-getAR) r/" uulib/Makefile.in || die
+
 	default
 	mv configure.{in,ac} || die
 	eautoreconf
