@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-macos"
 
-IUSE="debug gnutls iconv kerberos libressl mssql iodbc odbc ssl static-libs"
+IUSE="debug gnutls iconv kerberos mssql iodbc odbc ssl static-libs"
 # iODBC and unixODBC are mutually-exclusive choices for
 # the ODBC driver manager. Future versions of FreeTDS
 # will throw an error if you specify both.
