@@ -15,14 +15,13 @@ SRC_URI="https://github.com/adaptivecomputing/torque/archive/ddf5c4f40091b615716
 LICENSE="torque-2.5"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpusets +crypt doc drmaa kernel_linux libressl munge nvidia server +syslog tk"
+IUSE="cpusets +crypt doc drmaa kernel_linux munge nvidia server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib
 	sys-libs/readline:0=
 	dev-libs/libxml2
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	cpusets? ( sys-apps/hwloc )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )
