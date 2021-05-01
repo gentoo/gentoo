@@ -20,7 +20,7 @@ SRC_URI="https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz"
 LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
 IUSE="
-	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
+	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
 "
 
@@ -51,8 +51,7 @@ COMMON_DEPEND="
 		dev-libs/popt
 	)
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6d:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.6d:0=
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )

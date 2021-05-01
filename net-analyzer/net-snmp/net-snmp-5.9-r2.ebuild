@@ -22,7 +22,7 @@ LICENSE="HPND BSD GPL-2"
 SLOT="0/40"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="
-	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
+	X bzip2 doc elf kmem ipv6 lm-sensors mfd-rewrites minimal mysql
 	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
 "
 REQUIRED_USE="
@@ -50,8 +50,7 @@ COMMON_DEPEND="
 		dev-libs/popt
 	)
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6d:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.6d:0=
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
