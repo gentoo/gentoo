@@ -59,9 +59,7 @@ S=${WORKDIR}/${MY_P}/src
 PATCHES=(
 	"${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	"${FILESDIR}/${PN}-config_LDFLAGS-r1.patch"
-	"${FILESDIR}/${PN}-1.16.3-libressl-r1.patch"
 	"${FILESDIR}/${PN}_dont_create_run.patch"
-	"${FILESDIR}/${PN}-1.18-libressl.patch"
 	"${FILESDIR}/CVE-2020-28196.patch"
 	"${FILESDIR}/${PN}-1.18.2-krb5-config.patch"
 	"${FILESDIR}/${PN}-1.18.2-autoconf-2.70.patch"
