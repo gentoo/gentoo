@@ -18,7 +18,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	|| (
 		dev-libs/apr-util[openssl]
-		dev-libs/apr-util[libressl]
 		dev-libs/apr-util[nss]
 	)
 	perl? (
