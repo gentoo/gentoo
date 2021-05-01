@@ -10,7 +10,6 @@
 </maintainer>
 <use>
 	<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
-	<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
 	<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
 </use>
 </pkgmetadata>
