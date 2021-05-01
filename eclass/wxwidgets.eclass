@@ -64,7 +64,9 @@ setup-wxwidgets() {
 
 	case ${WX_GTK_VER} in
 		3.0-gtk3) wxtoolkit=gtk3 ;;
-		3.0)      wxtoolkit=gtk2 ;;
+		3.0)      wxtoolkit=gtk2
+		          eqawarn "This package relies on the deprecated GTK 2 slot, which will go away soon (https://bugs.gentoo.org/618642)"
+		          ;;
 	esac
 
 	if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
