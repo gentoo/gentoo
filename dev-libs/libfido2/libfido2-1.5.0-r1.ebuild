@@ -12,13 +12,12 @@ SRC_URI="https://github.com/Yubico/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0/1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
-IUSE="libressl +static-libs"
+IUSE="+static-libs"
 
 DEPEND="
 	dev-libs/libcbor:=
 	virtual/libudev:=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 
 RDEPEND="
