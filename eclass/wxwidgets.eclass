@@ -94,30 +94,16 @@ esac
 # See: http://docs.wxwidgets.org/trunk/overview_debugging.html
 
 setup-wxwidgets() {
-	local w wxtoolkit wxdebug wxconf
+	local w wxtoolkit wxconf
 
-	case "${WX_GTK_VER}" in
-		3.0-gtk3)
-			wxtoolkit=gtk3
-			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
-				( in_iuse debug && use debug ) || append-cppflags -DNDEBUG
-			fi
-			;;
-		2.9|3.0)
-			wxtoolkit=gtk2
-			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
-				( in_iuse debug && use debug ) || append-cppflags -DNDEBUG
-			fi
-			;;
-		2.8)
-			wxtoolkit=gtk2
-			wxdebug="release-"
-			has_version x11-libs/wxGTK:${WX_GTK_VER}[debug] && wxdebug="debug-"
-			;;
-		*)
-			die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT"
-			;;
+	case ${WX_GTK_VER} in
+		3.0-gtk3) wxtoolkit=gtk3 ;;
+		3.0)      wxtoolkit=gtk2 ;;
 	esac
+
+	if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
+		{ in_iuse debug && use debug; } || append-cppflags -DNDEBUG
+	fi
 
 	# toolkit overrides
 	if has_version "x11-libs/wxGTK:${WX_GTK_VER}[aqua]"; then
@@ -126,7 +112,7 @@ setup-wxwidgets() {
 		wxtoolkit="base"
 	fi
 
-	wxconf="${wxtoolkit}-unicode-${wxdebug}${WX_GTK_VER}"
+	wxconf="${wxtoolkit}-unicode-${WX_GTK_VER}"
 	for w in "${CHOST:-${CBUILD}}-${wxconf}" "${wxconf}"; do
 		[[ -f ${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${w} ]] && wxconf=${w} && break
 	done || die "Failed to find configuration ${wxconf}"
