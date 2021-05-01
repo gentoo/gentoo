@@ -12,7 +12,7 @@ DESCRIPTION="An implementation of XML-RPC"
 
 SLOT="0"
 LICENSE="|| ( Artistic-2 LGPL-2.1 )"
-KEYWORDS="~amd64 ~ppc ~x86"
+#KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	>=virtual/perl-Scalar-List-Utils-1.550.0
 	>=dev-perl/XML-Parser-2.460.0
 "
-BEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.560.0
 	test? (
 		virtual/perl-IO-Socket-IP
