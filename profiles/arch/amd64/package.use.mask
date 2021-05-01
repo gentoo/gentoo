@@ -109,6 +109,7 @@ dev-libs/glib -sysprof
 gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
