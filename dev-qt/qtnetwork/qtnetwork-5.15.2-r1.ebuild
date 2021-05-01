@@ -50,7 +50,6 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-QNetworkAccessManager-memleak.patch # QTBUG-88063
-	"${FILESDIR}"/${PN}-5.15.2-libressl.patch # Bug 562050, not upstreamable
 	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 752012
 )
 
