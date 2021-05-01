@@ -8,7 +8,6 @@
 <use>
   <flag name="cjk">Add CJK support for InnoDB fulltext search using <pkg>app-text/mecab</pkg></flag>
   <flag name="latin1">Use LATIN1 encoding instead of UTF8</flag>
-  <flag name="libressl">Enable SSL connections and crypto functions using <pkg>dev-libs/libressl</pkg></flag>
   <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
   <flag name="profiling">Add support for statement profiling (requires USE=community).</flag>
   <flag name="rocksdb">Add support for RocksDB; a key/value, LSM database optimized for flash storage</flag>
