@@ -4,14 +4,14 @@
 # @ECLASS: wxwidgets.eclass
 # @MAINTAINER:
 # wxwidgets@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Manages build configuration for wxGTK-using packages.
 # @DESCRIPTION:
 # This eclass sets up the proper environment for ebuilds using the wxGTK
 # libraries.  Ebuilds using wxPython do not need to inherit this eclass.
 #
 # More specifically, this eclass controls the configuration chosen by the
-# /usr/bin/wx-config wrapper.
+# ${ESYSROOT}/usr/bin/wx-config wrapper.
 #
 # Using the eclass is simple:
 #
@@ -20,6 +20,12 @@
 #
 # The configuration chosen is based on the version required and the flags
 # wxGTK was built with.
+
+case ${EAPI:-0} in
+	[0-6]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	7)     ;;
+	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+esac
 
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 _WXWIDGETS_ECLASS=1
@@ -38,44 +44,6 @@ esac
 readonly WX_GTK_VER
 
 inherit flag-o-matic
-
-case ${EAPI:-0} in
-	0|1|2|3|4|5)
-		inherit eutils multilib
-
-		# This was used to set up a sane default for ebuilds so they could
-		# avoid calling need-wxwidgets if they didn't need a particular build.
-		# This was a bad idea for a couple different reasons, and because
-		# get_libdir() is now illegal in global scope in EAPI 6 we can't do it
-		# anymore.  All ebuilds must now use setup-wxwidgets and this code is
-		# only here for backwards compatability.
-		if [[ -z ${WX_CONFIG} ]]; then
-			if [[ -n ${WX_GTK_VER} ]]; then
-				for _wxtoolkit in mac gtk2 base; do
-					# newer versions don't have a seperate debug config
-					for _wxdebug in xxx release- debug-; do
-						_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
-
-						[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] \
-							|| continue
-
-						WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
-						WX_ECLASS_CONFIG="${WX_CONFIG}"
-						break
-					done
-					[[ -n ${WX_CONFIG} ]] && break
-				done
-				[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
-			fi
-		fi
-		unset _wxtoolkit
-		unset _wxdebug
-		unset _wxconf
-		;;
-	6)	inherit multilib ;; # compatibility only, not needed by eclass
-	7)	;;
-	*)	die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
-esac
 
 # @FUNCTION: setup-wxwidgets
 # @DESCRIPTION:
@@ -104,18 +72,18 @@ setup-wxwidgets() {
 	fi
 
 	# toolkit overrides
-	if has_version "x11-libs/wxGTK:${WX_GTK_VER}[aqua]"; then
+	if has_version -d "x11-libs/wxGTK:${WX_GTK_VER}[aqua]"; then
 		wxtoolkit="mac"
-	elif ! has_version "x11-libs/wxGTK:${WX_GTK_VER}[X]"; then
+	elif ! has_version -d "x11-libs/wxGTK:${WX_GTK_VER}[X]"; then
 		wxtoolkit="base"
 	fi
 
 	wxconf="${wxtoolkit}-unicode-${WX_GTK_VER}"
 	for w in "${CHOST:-${CBUILD}}-${wxconf}" "${wxconf}"; do
-		[[ -f ${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${w} ]] && wxconf=${w} && break
+		[[ -f ${ESYSROOT}/usr/$(get_libdir)/wx/config/${w} ]] && wxconf=${w} && break
 	done || die "Failed to find configuration ${wxconf}"
 
-	export WX_CONFIG="${ESYSROOT:-${EPREFIX}}/usr/$(get_libdir)/wx/config/${wxconf}"
+	export WX_CONFIG="${ESYSROOT}/usr/$(get_libdir)/wx/config/${wxconf}"
 	export WX_ECLASS_CONFIG="${WX_CONFIG}"
 
 	einfo
