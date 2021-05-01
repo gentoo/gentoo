@@ -9,9 +9,7 @@ DESCRIPTION="VMWare mouse input driver"
 
 KEYWORDS="amd64 x86"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+DEPEND="x11-base/xorg-proto"
 
 src_configure() {
 	local XORG_CONFIGURE_OPTIONS=(
