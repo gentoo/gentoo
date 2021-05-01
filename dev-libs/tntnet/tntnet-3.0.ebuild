@@ -12,7 +12,7 @@ SRC_URI="http://www.tntnet.org/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
-IUSE="doc gnutls libressl server ssl"
+IUSE="doc gnutls server ssl"
 
 RDEPEND=">=dev-libs/cxxtools-3.0
 	sys-libs/zlib[minizip]
@@ -22,8 +22,7 @@ RDEPEND=">=dev-libs/cxxtools-3.0
 			dev-libs/libgcrypt:0
 		)
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)"
 DEPEND="${RDEPEND}"
