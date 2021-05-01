@@ -27,7 +27,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -39,10 +39,7 @@ LIB_DEPEND="
 			gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] )
 			!gcrypt? (
 				nettle? ( dev-libs/nettle[static-libs(+)] )
-				!nettle? (
-					libressl? ( dev-libs/libressl:0=[static-libs(+)] )
-					!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-				)
+				!nettle? ( dev-libs/openssl:0=[static-libs(+)] )
 			)
 		)
 	)
