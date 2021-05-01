@@ -28,7 +28,6 @@ java
 kerberos
 latex
 libedit
-libressl
 lua
 motif
 opencl
