@@ -14,7 +14,7 @@ SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.gz.sig )"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86 ~x64-macos"
-IUSE="debug gnutls ident irc-plus +ipv6 libressl pam +ssl strict-rfc tcpd test zlib"
+IUSE="debug gnutls ident irc-plus +ipv6 pam +ssl strict-rfc tcpd test zlib"
 
 # Flaky test needs investigation (bug 719256)
 RESTRICT="test"
@@ -28,8 +28,7 @@ RDEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
