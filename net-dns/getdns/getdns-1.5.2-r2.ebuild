@@ -79,11 +79,4 @@ pkg_postinst() {
 		enewuser stubby -1 -1 -1 stubby
 		fcaps cap_net_bind_service=ei /usr/bin/stubby
 	fi
-
-	if has_version '<dev-libs/libressl-2.7.0'; then
-		ewarn "BEWARE: dev-libs/libressl prior to 2.7 does NOT check TLS certificates."
-		if use stubby; then
-			ewarn "You will NOT be able to use strict profile in Stubby."
-		fi
-	fi
 }
