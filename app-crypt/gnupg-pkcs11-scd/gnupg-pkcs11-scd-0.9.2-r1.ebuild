@@ -10,11 +10,10 @@ SRC_URI="https://github.com/alonbl/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl proxy"
+IUSE="proxy"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	dev-libs/libassuan:=
 	dev-libs/libgcrypt:=
 	dev-libs/libgpg-error:=
