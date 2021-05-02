@@ -12,15 +12,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/0.2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug infiniband libressl +tcp rdma systemd"
+IUSE="debug infiniband +tcp rdma systemd"
 
 DEPEND="
 	sys-apps/kmod
 	sys-block/open-isns:=
 	sys-kernel/linux-headers
 	infiniband? ( sys-fabric/ofed )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}
