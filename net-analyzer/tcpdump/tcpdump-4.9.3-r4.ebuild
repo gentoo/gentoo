@@ -12,7 +12,7 @@ SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+drop-root libressl smi ssl samba suid test"
+IUSE="+drop-root smi ssl samba suid test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -24,8 +24,7 @@ RDEPEND="
 	)
 	smi? ( net-libs/libsmi )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.6m:0=
 	)
 	suid? (
 		acct-group/pcap
