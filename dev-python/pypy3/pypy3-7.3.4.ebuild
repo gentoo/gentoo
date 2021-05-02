@@ -21,7 +21,7 @@ LICENSE="MIT"
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy37-pp73"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl ncurses sqlite test tk"
+IUSE="bzip2 gdbm +jit ncurses sqlite test tk"
 # pypy3.7 is in alpha state and a lot of tests are failing
 RESTRICT="test"
 
@@ -30,8 +30,7 @@ RDEPEND="
 		>=dev-python/pypy3-exe-${PV}:${PV%_p*}[bzip2?,ncurses?]
 		>=dev-python/pypy3-exe-bin-${PV}:${PV%_p*}
 	)
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
