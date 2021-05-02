@@ -18,16 +18,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0/4"
-IUSE="doc libressl test +ssl static-libs tools"
+IUSE="doc test +ssl static-libs tools"
 
 REQUIRED_USE="test? ( static-libs )"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="ssl? (
-		libressl? ( dev-libs/libressl:= )
-		!libressl? ( dev-libs/openssl:0= )
-	)
+RDEPEND="ssl? ( dev-libs/openssl:0= )
 	tools? ( dev-libs/popt )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
