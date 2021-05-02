@@ -73,6 +73,7 @@ COMMON_DEPEND="
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
+	x11-libs/libxkbcommon:=
 	x11-libs/pango:=
 	media-libs/flac:=
 	>=media-libs/libwebp-0.4.0:=
@@ -86,11 +87,9 @@ COMMON_DEPEND="
 		x11-libs/gtk+:3[X]
 		wayland? (
 			dev-libs/wayland:=
-			dev-libs/libffi:=
 			screencast? ( media-video/pipewire:0/0.3 )
 			x11-libs/gtk+:3[wayland,X]
 			x11-libs/libdrm:=
-			x11-libs/libxkbcommon:=
 		)
 	)
 "
