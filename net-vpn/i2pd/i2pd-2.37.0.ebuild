@@ -12,23 +12,21 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening libressl static +upnp"
+IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening static +upnp"
 
 RDEPEND="
 	acct-user/i2pd
 	acct-group/i2pd
 	!static? (
 		dev-libs/boost:=[threads]
-		!libressl? ( dev-libs/openssl:0=[-bindist] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=[-bindist]
 		upnp? ( net-libs/miniupnpc:= )
 	)"
 DEPEND="${RDEPEND}
 	static? (
 		dev-libs/boost:=[static-libs,threads]
 		sys-libs/zlib[static-libs]
-		!libressl? ( dev-libs/openssl:0=[static-libs] )
-		libressl? ( dev-libs/libressl:0=[static-libs] )
+		dev-libs/openssl:0=[static-libs]
 		upnp? ( net-libs/miniupnpc:=[static-libs] )
 	)"
 
