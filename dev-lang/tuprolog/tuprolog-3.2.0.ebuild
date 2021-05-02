@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jdk-1.8:=
 	dev-java/javassist:3
-	dev-java/commons-lang:3.1
+	dev-java/commons-lang:3.6
 	dev-java/gson:2.6"
 
 DEPEND="${RDEPEND}
