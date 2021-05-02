@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="https://tmate.io/"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug libressl static-libs"
+IUSE="debug static-libs"
 
 SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -21,8 +21,7 @@ RDEPEND="
 	dev-libs/libevent[static-libs?]
 	dev-libs/msgpack[static-libs?]
 	>=net-libs/libssh-0.6.0[static-libs?]
-	!libressl? ( dev-libs/openssl:0=[static-libs?] )
-	libressl? ( dev-libs/libressl:0=[static-libs?] )
+	dev-libs/openssl:0=[static-libs?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
