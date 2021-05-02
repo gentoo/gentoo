@@ -11,12 +11,10 @@ SRC_URI="mirror://nongnu/linphone/${PN}/sources/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/9"
 KEYWORDS="~alpha amd64 arm64 ~ia64 ppc ppc64 sparc x86 ~ppc-macos ~x64-macos"
-IUSE="debug doc examples ipv6 libressl minimal ntp-timestamp ssl srtp"
+IUSE="debug doc examples ipv6 minimal ntp-timestamp ssl srtp"
 
 RDEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= ) )
+	ssl? ( dev-libs/openssl:0= )
 	srtp? ( net-libs/libsrtp:0= )
 "
 DEPEND="${RDEPEND}
