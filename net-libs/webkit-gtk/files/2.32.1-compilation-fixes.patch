@@ -1,0 +1,319 @@
+https://bugs.webkit.org/show_bug.cgi?id=225563
+
+From dc198d5d2a4c171f5241482bae83a3c61928c34c Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 8 May 2021 11:07:53 -0700
+Subject: [PATCH 1/4] Fix UNUSED_PARAMs
+
+The signature of this function changed in commit 38b951021158
+("GraphicsContextGL has a couple non-robust getters and other small API
+problems preventing GPU process implementation")
+---
+ .../platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp b/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp
+index 176be75621a4..cf4c81877a3c 100644
+--- a/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp
++++ b/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp
+@@ -2287,8 +2287,7 @@ void GraphicsContextGLOpenGL::getInternalformativ(GCGLenum target, GCGLenum inte
+     UNUSED_PARAM(target);
+     UNUSED_PARAM(internalformat);
+     UNUSED_PARAM(pname);
+-    UNUSED_PARAM(bufSize);
+-    UNUSED_PARAM(params);
++    UNUSED_PARAM(data);
+ #endif
+ }
+ 
+-- 
+2.26.3
+
+
+From 5c1a3f0263f875031ead427540b938460f6a5553 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 8 May 2021 11:09:32 -0700
+Subject: [PATCH 2/4] Fix call to
+ GraphicsContextGLOpenGL::primitiveRestartIndex
+
+I think this should be have been changed in commit 52defac7c6fa ("Final
+refactor for WebGL implementation to use only GraphicsContextGL").
+---
+ Source/WebCore/html/canvas/WebGLRenderingContextBase.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/WebCore/html/canvas/WebGLRenderingContextBase.cpp b/Source/WebCore/html/canvas/WebGLRenderingContextBase.cpp
+index 53c56f3b1e85..37220aa08d8d 100644
+--- a/Source/WebCore/html/canvas/WebGLRenderingContextBase.cpp
++++ b/Source/WebCore/html/canvas/WebGLRenderingContextBase.cpp
+@@ -2659,7 +2659,7 @@ void WebGLRenderingContextBase::drawElements(GCGLenum mode, GCGLsizei count, GCG
+ 
+ #if USE(OPENGL) && ENABLE(WEBGL2)
+     if (isWebGL2())
+-        m_context->primitiveRestartIndex(getRestartIndex(type));
++        static_cast<GraphicsContextGLOpenGL*>(m_context.get())->primitiveRestartIndex(getRestartIndex(type));
+ #endif
+ 
+     {
+-- 
+2.26.3
+
+
+From 8e79a72f0e3d34fb9239879471bdd57388bbe343 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 8 May 2021 11:10:47 -0700
+Subject: [PATCH 3/4] Add more functions to OpenGL Shim layer
+
+These functions are called by functions in
+GraphicsContextGLOpenGLCommon.cpp that are currently guarded by #if
+HAVE(OPENGL_4) which is never set. The next patch fixes that, and thus
+will need these functions.
+---
+ .../WebCore/platform/graphics/OpenGLShims.cpp |  7 +++++++
+ .../WebCore/platform/graphics/OpenGLShims.h   | 21 +++++++++++++++++++
+ 2 files changed, 28 insertions(+)
+
+diff --git a/Source/WebCore/platform/graphics/OpenGLShims.cpp b/Source/WebCore/platform/graphics/OpenGLShims.cpp
+index 90b98085cb87..b66083e26f3c 100644
+--- a/Source/WebCore/platform/graphics/OpenGLShims.cpp
++++ b/Source/WebCore/platform/graphics/OpenGLShims.cpp
+@@ -129,6 +129,7 @@ bool initializeOpenGLShims()
+     ASSIGN_FUNCTION_TABLE_ENTRY(glCompileShader, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glCompressedTexImage2D, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glCompressedTexSubImage2D, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glCopyBufferSubData, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glCreateProgram, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glCreateShader, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glDeleteBuffers, success);
+@@ -152,6 +153,7 @@ bool initializeOpenGLShims()
+     ASSIGN_FUNCTION_TABLE_ENTRY_EXT(glGenVertexArrays);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glGetActiveAttrib, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glGetActiveUniform, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glGetActiveUniformsiv, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glGetAttachedShaders, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glGetAttribLocation, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glGetBufferParameteriv, success);
+@@ -179,6 +181,8 @@ bool initializeOpenGLShims()
+     ASSIGN_FUNCTION_TABLE_ENTRY(glIsShader, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY_EXT(glIsVertexArray);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glLinkProgram, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glMapBufferRange, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glPrimitiveRestartIndex, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glRenderbufferStorage, success);
+     // In GLES2 there are optional ANGLE and APPLE extensions for glRenderbufferStorageMultisample.
+ #if defined(GL_ES_VERSION_2_0)
+@@ -191,6 +195,8 @@ bool initializeOpenGLShims()
+     ASSIGN_FUNCTION_TABLE_ENTRY(glStencilFuncSeparate, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glStencilMaskSeparate, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glStencilOpSeparate, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glTexStorage2D, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glTexStorage3D, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUniform1f, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUniform1fv, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUniform1i, success);
+@@ -210,6 +216,7 @@ bool initializeOpenGLShims()
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUniformMatrix2fv, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUniformMatrix3fv, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUniformMatrix4fv, success);
++    ASSIGN_FUNCTION_TABLE_ENTRY(glUnmapBuffer, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glUseProgram, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glValidateProgram, success);
+     ASSIGN_FUNCTION_TABLE_ENTRY(glVertexAttrib1f, success);
+diff --git a/Source/WebCore/platform/graphics/OpenGLShims.h b/Source/WebCore/platform/graphics/OpenGLShims.h
+index 4c357dde981f..f6d66299ac9f 100644
+--- a/Source/WebCore/platform/graphics/OpenGLShims.h
++++ b/Source/WebCore/platform/graphics/OpenGLShims.h
+@@ -65,6 +65,7 @@ typedef GLenum (GLAPIENTRY *glCheckFramebufferStatusType) (GLenum);
+ typedef void (GLAPIENTRY *glCompileShaderType) (GLuint);
+ typedef void (GLAPIENTRY *glCompressedTexImage2DType) (GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const GLvoid*);
+ typedef void (GLAPIENTRY *glCompressedTexSubImage2DType) (GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const GLvoid*);
++typedef void (GLAPIENTRY *glCopyBufferSubDataType) (GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr);
+ typedef GLuint (GLAPIENTRY *glCreateProgramType) ();
+ typedef GLuint (GLAPIENTRY *glCreateShaderType) (GLenum);
+ typedef void (GLAPIENTRY *glDeleteBuffersType) (GLsizei, const GLuint*);
+@@ -88,6 +89,7 @@ typedef void (GLAPIENTRY *glGenRenderbuffersType) (GLsizei, GLuint*);
+ typedef void (GLAPIENTRY *glGenVertexArraysType) (GLsizei, GLuint*);
+ typedef void (GLAPIENTRY *glGetActiveAttribType) (GLuint, GLuint, GLsizei, GLsizei*, GLint*, GLenum*, GLchar*);
+ typedef void (GLAPIENTRY *glGetActiveUniformType) (GLuint, GLuint, GLsizei, GLsizei*, GLint*, GLenum*, GLchar*);
++typedef void (GLAPIENTRY *glGetActiveUniformsivType) (GLuint, GLsizei, const GLuint*, GLenum, GLint*);
+ typedef void (GLAPIENTRY *glGetAttachedShadersType) (GLuint, GLsizei, GLsizei*, GLuint*);
+ typedef GLint (GLAPIENTRY *glGetAttribLocationType) (GLuint, const char*);
+ typedef void (GLAPIENTRY *glGetBufferParameterivType) (GLenum, GLenum, GLint*);
+@@ -113,6 +115,8 @@ typedef GLboolean (GLAPIENTRY *glIsRenderbufferType) (GLuint);
+ typedef GLboolean (GLAPIENTRY *glIsShaderType) (GLuint);
+ typedef GLboolean (GLAPIENTRY *glIsVertexArrayType) (GLuint);
+ typedef void (GLAPIENTRY *glLinkProgramType) (GLuint);
++typedef void* (GLAPIENTRY *glMapBufferRangeType) (GLenum, GLintptr, GLsizeiptr, GLbitfield);
++typedef void (GLAPIENTRY *glPrimitiveRestartIndexType) (GLuint);
+ typedef void (GLAPIENTRY *glRenderbufferStorageType) (GLenum, GLenum, GLsizei, GLsizei);
+ typedef void (GLAPIENTRY *glRenderbufferStorageMultisampleType) (GLenum, GLsizei, GLenum, GLsizei, GLsizei);
+ typedef void (GLAPIENTRY *glSampleCoverageType) (GLclampf, GLboolean);
+@@ -120,6 +124,8 @@ typedef void (GLAPIENTRY *glShaderSourceType) (GLuint, GLsizei, const char**, co
+ typedef void (GLAPIENTRY *glStencilFuncSeparateType) (GLenum, GLenum, GLint, GLuint);
+ typedef void (GLAPIENTRY *glStencilMaskSeparateType) (GLenum, GLuint);
+ typedef void (GLAPIENTRY *glStencilOpSeparateType) (GLenum, GLenum, GLenum, GLenum);
++typedef void (GLAPIENTRY *glTexStorage2DType) (GLenum, GLsizei, GLenum, GLsizei, GLsizei);
++typedef void (GLAPIENTRY *glTexStorage3DType) (GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei);
+ typedef void (GLAPIENTRY *glUniform1fType) (GLint, GLfloat);
+ typedef void (GLAPIENTRY *glUniform1fvType) (GLint, GLsizei, const GLfloat*);
+ typedef void (GLAPIENTRY *glUniform1iType) (GLint, GLint);
+@@ -139,6 +145,7 @@ typedef void (GLAPIENTRY *glUniform4ivType) (GLint, GLsizei, const GLint*);
+ typedef void (GLAPIENTRY *glUniformMatrix2fvType) (GLint, GLsizei, GLboolean, const GLfloat*);
+ typedef void (GLAPIENTRY *glUniformMatrix3fvType) (GLint, GLsizei, GLboolean, const GLfloat*);
+ typedef void (GLAPIENTRY *glUniformMatrix4fvType) (GLint, GLsizei, GLboolean, const GLfloat*);
++typedef GLboolean (GLAPIENTRY *glUnmapBufferType) (GLenum);
+ typedef void (GLAPIENTRY *glUseProgramType) (GLuint);
+ typedef void (GLAPIENTRY *glValidateProgramType) (GLuint);
+ typedef void (GLAPIENTRY *glVertexAttrib1fType) (GLuint, const GLfloat);
+@@ -173,6 +180,7 @@ typedef struct _OpenGLFunctionTable {
+     FUNCTION_TABLE_ENTRY(glCompileShader);
+     FUNCTION_TABLE_ENTRY(glCompressedTexImage2D);
+     FUNCTION_TABLE_ENTRY(glCompressedTexSubImage2D);
++    FUNCTION_TABLE_ENTRY(glCopyBufferSubData);
+     FUNCTION_TABLE_ENTRY(glCreateProgram);
+     FUNCTION_TABLE_ENTRY(glCreateShader);
+     FUNCTION_TABLE_ENTRY(glDeleteBuffers);
+@@ -196,6 +204,7 @@ typedef struct _OpenGLFunctionTable {
+     FUNCTION_TABLE_ENTRY(glGenVertexArrays);
+     FUNCTION_TABLE_ENTRY(glGetActiveAttrib);
+     FUNCTION_TABLE_ENTRY(glGetActiveUniform);
++    FUNCTION_TABLE_ENTRY(glGetActiveUniformsiv);
+     FUNCTION_TABLE_ENTRY(glGetAttachedShaders);
+     FUNCTION_TABLE_ENTRY(glGetAttribLocation);
+     FUNCTION_TABLE_ENTRY(glGetBufferParameteriv);
+@@ -221,6 +230,8 @@ typedef struct _OpenGLFunctionTable {
+     FUNCTION_TABLE_ENTRY(glIsShader);
+     FUNCTION_TABLE_ENTRY(glIsVertexArray);
+     FUNCTION_TABLE_ENTRY(glLinkProgram);
++    FUNCTION_TABLE_ENTRY(glMapBufferRange);
++    FUNCTION_TABLE_ENTRY(glPrimitiveRestartIndex);
+     FUNCTION_TABLE_ENTRY(glRenderbufferStorage);
+     FUNCTION_TABLE_ENTRY(glRenderbufferStorageMultisample);
+     FUNCTION_TABLE_ENTRY(glSampleCoverage);
+@@ -228,6 +239,8 @@ typedef struct _OpenGLFunctionTable {
+     FUNCTION_TABLE_ENTRY(glStencilFuncSeparate);
+     FUNCTION_TABLE_ENTRY(glStencilMaskSeparate);
+     FUNCTION_TABLE_ENTRY(glStencilOpSeparate);
++    FUNCTION_TABLE_ENTRY(glTexStorage2D);
++    FUNCTION_TABLE_ENTRY(glTexStorage3D);
+     FUNCTION_TABLE_ENTRY(glUniform1f);
+     FUNCTION_TABLE_ENTRY(glUniform1fv);
+     FUNCTION_TABLE_ENTRY(glUniform1i);
+@@ -247,6 +260,7 @@ typedef struct _OpenGLFunctionTable {
+     FUNCTION_TABLE_ENTRY(glUniformMatrix2fv);
+     FUNCTION_TABLE_ENTRY(glUniformMatrix3fv);
+     FUNCTION_TABLE_ENTRY(glUniformMatrix4fv);
++    FUNCTION_TABLE_ENTRY(glUnmapBuffer);
+     FUNCTION_TABLE_ENTRY(glUseProgram);
+     FUNCTION_TABLE_ENTRY(glValidateProgram);
+     FUNCTION_TABLE_ENTRY(glVertexAttrib1f);
+@@ -287,6 +301,7 @@ typedef struct _OpenGLFunctionTable {
+ #define glCompileShader                        LOOKUP_GL_FUNCTION(glCompileShader)
+ #define glCompressedTexImage2D                 LOOKUP_GL_FUNCTION(glCompressedTexImage2D)
+ #define glCompressedTexSubImage2D              LOOKUP_GL_FUNCTION(glCompressedTexSubImage2D)
++#define glCopyBufferSubData                    LOOKUP_GL_FUNCTION(glCopyBufferSubData)
+ #define glCreateProgram                        LOOKUP_GL_FUNCTION(glCreateProgram)
+ #define glCreateShader                         LOOKUP_GL_FUNCTION(glCreateShader)
+ #define glDeleteBuffers                        LOOKUP_GL_FUNCTION(glDeleteBuffers)
+@@ -322,6 +337,7 @@ typedef struct _OpenGLFunctionTable {
+ #define glGenVertexArrays                      LOOKUP_GL_FUNCTION(glGenVertexArrays)
+ #define glGetActiveAttrib                      LOOKUP_GL_FUNCTION(glGetActiveAttrib)
+ #define glGetActiveUniform                     LOOKUP_GL_FUNCTION(glGetActiveUniform)
++#define glGetActiveUniformsiv                  LOOKUP_GL_FUNCTION(glGetActiveUniformsiv)
+ #define glGetAttachedShaders                   LOOKUP_GL_FUNCTION(glGetAttachedShaders)
+ #define glGetAttribLocation                    LOOKUP_GL_FUNCTION(glGetAttribLocation)
+ #define glGetBufferParameterivEXT              glGetBufferParameteriv
+@@ -353,6 +369,8 @@ typedef struct _OpenGLFunctionTable {
+ #define glIsVertexArrayOES                     glIsVertexArray;
+ #define glIsVertexArray                        LOOKUP_GL_FUNCTION(glIsVertexArray)
+ #define glLinkProgram                          LOOKUP_GL_FUNCTION(glLinkProgram)
++#define glMapBufferRange                       LOOKUP_GL_FUNCTION(glMapBufferRange)
++#define glPrimitiveRestartIndex                LOOKUP_GL_FUNCTION(glPrimitiveRestartIndex)
+ #define glRenderbufferStorageEXT               glRenderbufferStorage
+ #define glRenderbufferStorage                  LOOKUP_GL_FUNCTION(glRenderbufferStorage)
+ #define glRenderbufferStorageMultisampleEXT    glRenderbufferStorageMultisample
+@@ -362,6 +380,8 @@ typedef struct _OpenGLFunctionTable {
+ #define glStencilFuncSeparate                  LOOKUP_GL_FUNCTION(glStencilFuncSeparate)
+ #define glStencilMaskSeparate                  LOOKUP_GL_FUNCTION(glStencilMaskSeparate)
+ #define glStencilOpSeparate                    LOOKUP_GL_FUNCTION(glStencilOpSeparate)
++#define glTexStorage2D                         LOOKUP_GL_FUNCTION(glTexStorage2D)
++#define glTexStorage3D                         LOOKUP_GL_FUNCTION(glTexStorage3D)
+ #define glUniform1f                            LOOKUP_GL_FUNCTION(glUniform1f)
+ #define glUniform1fv                           LOOKUP_GL_FUNCTION(glUniform1fv)
+ #define glUniform1i                            LOOKUP_GL_FUNCTION(glUniform1i)
+@@ -381,6 +401,7 @@ typedef struct _OpenGLFunctionTable {
+ #define glUniformMatrix2fv                     LOOKUP_GL_FUNCTION(glUniformMatrix2fv)
+ #define glUniformMatrix3fv                     LOOKUP_GL_FUNCTION(glUniformMatrix3fv)
+ #define glUniformMatrix4fv                     LOOKUP_GL_FUNCTION(glUniformMatrix4fv)
++#define glUnmapBuffer                          LOOKUP_GL_FUNCTION(glUnmapBuffer)
+ #define glUseProgram                           LOOKUP_GL_FUNCTION(glUseProgram)
+ #define glValidateProgram                      LOOKUP_GL_FUNCTION(glValidateProgram)
+ #define glVertexAttrib1f                       LOOKUP_GL_FUNCTION(glVertexAttrib1f)
+-- 
+2.26.3
+
+
+From bc6e08a419d3832d3a91a11ceebd58c4ec732070 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 8 May 2021 11:11:00 -0700
+Subject: [PATCH 4/4] Remove use of the OPENGL_4 macro
+
+The OPENGL_4 macro definition was removed in commit 12c6e159bcb5
+("Remove GraphicsContextGLOpenGL::setRenderbufferStorageFromDrawable
+declaration").
+---
+ .../graphics/opengl/GraphicsContextGLOpenGLCommon.cpp  | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp b/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp
+index cf4c81877a3c..8d929d861a57 100644
+--- a/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp
++++ b/Source/WebCore/platform/graphics/opengl/GraphicsContextGLOpenGLCommon.cpp
+@@ -2169,7 +2169,7 @@ void GraphicsContextGLOpenGL::vertexAttribDivisor(GCGLuint index, GCGLuint divis
+     getExtensions().vertexAttribDivisorANGLE(index, divisor);
+ }
+ 
+-#if HAVE(OPENGL_4) && ENABLE(WEBGL2)
++#if USE(OPENGL) && ENABLE(WEBGL2)
+ void GraphicsContextGLOpenGL::primitiveRestartIndex(GCGLuint index)
+ {
+     if (!makeContextCurrent())
+@@ -2197,7 +2197,7 @@ void GraphicsContextGLOpenGL::bufferSubData(GCGLenum target, GCGLintptr dstByteO
+     UNUSED_PARAM(length);
+ }
+ 
+-#if HAVE(OPENGL_4) || HAVE(OPENGL_ES_3)
++#if USE(OPENGL) || HAVE(OPENGL_ES_3)
+ void GraphicsContextGLOpenGL::copyBufferSubData(GCGLenum readTarget, GCGLenum writeTarget, GCGLintptr readOffset, GCGLintptr writeOffset, GCGLsizeiptr size)
+ {
+     if (!makeContextCurrent())
+@@ -2213,7 +2213,7 @@ void GraphicsContextGLOpenGL::copyBufferSubData(GCGLenum, GCGLenum, GCGLintptr,
+ 
+ void GraphicsContextGLOpenGL::getBufferSubData(GCGLenum target, GCGLintptr offset, GCGLSpan<GCGLvoid> data)
+ {
+-#if HAVE(OPENGL_4) || HAVE(OPENGL_ES_3)
++#if USE(OPENGL) || HAVE(OPENGL_ES_3)
+     if (!makeContextCurrent())
+         return;
+     GCGLvoid* ptr = ::glMapBufferRange(target, offset, data.bufSize, GraphicsContextGL::MAP_READ_BIT);
+@@ -2275,7 +2275,7 @@ void GraphicsContextGLOpenGL::readBuffer(GCGLenum src)
+     UNUSED_PARAM(src);
+ }
+ 
+-#if HAVE(OPENGL_4) || HAVE(OPENGL_ES_3)
++#if USE(OPENGL) || HAVE(OPENGL_ES_3)
+ void GraphicsContextGLOpenGL::getInternalformativ(GCGLenum target, GCGLenum internalformat, GCGLenum pname, GCGLSpan<GCGLint> data)
+ {
+ #if USE(OPENGL_ES)
+@@ -2752,7 +2752,7 @@ Vector<GCGLuint> GraphicsContextGLOpenGL::getUniformIndices(PlatformGLObject pro
+ Vector<GCGLint> GraphicsContextGLOpenGL::getActiveUniforms(PlatformGLObject program, const Vector<GCGLuint>& uniformIndices, GCGLenum pname)
+ {
+     Vector<GCGLint> result(uniformIndices.size(), 0);
+-#if HAVE(OPENGL_4) || HAVE(OPENGL_ES_3)
++#if USE(OPENGL) || HAVE(OPENGL_ES_3)
+     ASSERT(program);
+     if (!makeContextCurrent())
+         return result;
+-- 
+2.26.3
+
