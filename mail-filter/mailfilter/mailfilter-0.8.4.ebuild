@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,11 @@ SRC_URI="mirror://sourceforge/mailfilter/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE="libressl +ssl"
+IUSE="+ssl"
 
 DEPEND="sys-devel/flex
 	ssl? (
-		libressl? ( dev-libs/libressl:0= )
-		!libressl? ( dev-libs/openssl:0= )
+		dev-libs/openssl:0=
 )"
 
 RDEPEND=""
