@@ -16,13 +16,12 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86"
-IUSE="afs +berkdb caps gdbm hdb-ldap libressl +lmdb otp selinux ssl static-libs test X"
+IUSE="afs +berkdb caps gdbm hdb-ldap +lmdb otp selinux ssl static-libs test X"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	)
 	berkdb? ( >=sys-libs/db-4.8.30-r1:*[${MULTILIB_USEDEP}] )
 	gdbm? ( >=sys-libs/gdbm-1.10-r1:=[${MULTILIB_USEDEP}] )
