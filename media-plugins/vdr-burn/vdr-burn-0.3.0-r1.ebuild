@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,6 +62,9 @@ src_prepare() {
 	# fix deprecated warnings pkg-config
 	sed -i Makefile \
 		-e "s:gdlib-config:pkg-config gdlib:" || die
+
+	# 786492
+	sed -e "s|=min|=std::min|" -i genindex/pes.c || die
 
 	fix_vdr_libsi_include scanner.c
 }
