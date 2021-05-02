@@ -15,15 +15,14 @@ LICENSE="GPL-3"
 # Check upstream changelog: https://camaya.net/gloox/changelog/
 SLOT="0/18"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug gnutls idn libressl ssl static-libs test zlib"
+IUSE="debug gnutls idn ssl static-libs test zlib"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	idn? ( net-dns/libidn:= )
 	gnutls? ( net-libs/gnutls:= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	zlib? ( sys-libs/zlib )
 "
