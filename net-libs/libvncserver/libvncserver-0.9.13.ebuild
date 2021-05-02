@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ LICENSE="GPL-2 GPL-2+ LGPL-2.1+ BSD MIT"
 # no sub slot wanted (yet), see #578958
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="+24bpp +filetransfer gcrypt gnutls ipv6 +jpeg libressl lzo +png sasl ssl systemd +threads +zlib"
+IUSE="+24bpp +filetransfer gcrypt gnutls ipv6 +jpeg lzo +png sasl ssl systemd +threads +zlib"
 # https://bugs.gentoo.org/690202
 # https://bugs.gentoo.org/435326
 # https://bugs.gentoo.org/550916
@@ -32,8 +32,7 @@ DEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0= )
 	ssl? (
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.2:0= )
-			libressl? ( >=dev-libs/libressl-2.7.0:0= )
+			>=dev-libs/openssl-1.0.2:0=
 		)
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6:0= )
 	)
