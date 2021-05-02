@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 
-IUSE="gnome +gnome-keyring kerberos ldap libressl rubrica sqlite webkit xface"
+IUSE="gnome +gnome-keyring kerberos ldap rubrica sqlite webkit xface"
 
 # TODO: internal spell checking via enchant-2 instead of gtkspell/gspell?
 RDEPEND="
@@ -40,8 +40,7 @@ RDEPEND="
 	net-mail/mailbase
 	x11-themes/hicolor-icon-theme
 	x11-themes/adwaita-icon-theme
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 DEPEND="${RDEPEND}
 	dev-util/gtk-update-icon-cache
