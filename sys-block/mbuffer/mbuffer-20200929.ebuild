@@ -12,15 +12,14 @@ SRC_URI="https://www.maier-komor.de/software/mbuffer/${P}.tgz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ppc x86"
-IUSE="debug libressl ssl test"
+IUSE="debug ssl test"
 
 REQUIRED_USE="test? ( ssl )"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}"
 
