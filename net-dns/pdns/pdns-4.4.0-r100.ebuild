@@ -20,15 +20,14 @@ KEYWORDS="amd64 x86"
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="debug doc geoip ldap libressl lua-records mydns mysql postgres protobuf remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap lua-records mydns mysql postgres protobuf remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	mydns? ( mysql )"
 
 DEPEND="${LUA_DEPS}
-	libressl? ( dev-libs/libressl:= )
-	!libressl? ( dev-libs/openssl:= )
+	dev-libs/openssl:=
 	>=dev-libs/boost-1.35:=
 	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c:= )
