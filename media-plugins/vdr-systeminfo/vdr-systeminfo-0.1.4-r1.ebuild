@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -23,7 +23,10 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	# Makefile correction, .eclass fails in some Makefiles
-	sed -e "s:(VDRINCDIR):(VDRDIR)/include:" -i Makefile
+	sed -e "s:(VDRINCDIR):(VDRDIR)/include:" -i Makefile || die
+
+	# 787707
+	eapply "${FILESDIR}/${P}_gcc11.patch"
 }
 
 src_install() {
