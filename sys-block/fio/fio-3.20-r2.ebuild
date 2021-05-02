@@ -17,9 +17,8 @@ SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~ia64 ppc ppc64 x86"
-IUSE="aio curl glusterfs gnuplot gtk libressl io-uring numa python rbd rdma static tcmalloc test zbc zlib"
+IUSE="aio curl glusterfs gnuplot gtk io-uring numa python rbd rdma static tcmalloc test zbc zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	libressl? ( curl )
 	gnuplot? ( python )
 	io-uring? ( aio )"
 RESTRICT="!test? ( test )"
@@ -30,8 +29,7 @@ BDEPEND="virtual/pkgconfig"
 LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
 	curl? (
 		net-misc/curl:=[static-libs(+)]
-		!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+		dev-libs/openssl:0=[static-libs(+)]
 	)
 	glusterfs? ( sys-cluster/glusterfs[static-libs(+)] )
 	gtk? ( dev-libs/glib:2[static-libs(+)] )
