@@ -22,6 +22,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}
 RDEPEND="${LUA_DEPS}
 	idn? ( net-dns/libidn:= )
 	dev-libs/openssl:0=
+	media-libs/fontconfig:=
 	media-libs/freetype:2=
 	virtual/jpeg:0=
 	media-libs/libpng:0=
