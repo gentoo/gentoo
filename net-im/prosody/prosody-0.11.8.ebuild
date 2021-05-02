@@ -15,7 +15,7 @@ SRC_URI="https://prosody.im/downloads/source/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 x86"
-IUSE="icu +idn +libevent libressl mysql postgres selinux +sqlite +ssl test +zlib"
+IUSE="icu +idn +libevent mysql postgres selinux +sqlite +ssl test +zlib"
 REQUIRED_USE="
 	^^ ( icu idn )
 	${LUA_REQUIRED_USE}
@@ -30,8 +30,7 @@ DEPEND="
 	icu? ( dev-libs/icu:= )
 	idn? ( net-dns/libidn:= )
 	libevent? ( $(lua_gen_cond_dep 'dev-lua/luaevent[${LUA_USEDEP}]') )
-	libressl? ( dev-libs/libressl:= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	lua_single_target_lua5-1? ( $(lua_gen_cond_dep 'dev-lua/lua-bit32[lua_targets_lua5-1(-)]') )
 	mysql? ( $(lua_gen_cond_dep 'dev-lua/luadbi[mysql,${LUA_USEDEP}]') )
 	postgres? ( $(lua_gen_cond_dep 'dev-lua/luadbi[postgres,${LUA_USEDEP}]') )
