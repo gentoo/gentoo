@@ -31,7 +31,7 @@ RDEPEND="sys-libs/ncurses:=
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)
-	java? ( >=virtual/jdk-1.7:= )
+	java? ( >=virtual/jdk-1.8:* )
 	uuid? ( dev-libs/ossp-uuid )
 	qt5? (
 		dev-qt/qtwidgets:5
