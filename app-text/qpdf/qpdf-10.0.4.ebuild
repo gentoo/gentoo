@@ -11,7 +11,7 @@ LICENSE="|| ( Apache-2.0 Artistic-2 )"
 # subslot = libqpdf soname version
 SLOT="0/28"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris"
-IUSE="doc examples libressl ssl test"
+IUSE="doc examples ssl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -19,8 +19,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0=
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 "
 DEPEND="${RDEPEND}
