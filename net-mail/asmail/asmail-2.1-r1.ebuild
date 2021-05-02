@@ -12,11 +12,10 @@ SRC_URI="http://www.tigr.net/afterstep/download/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE="jpeg libressl"
+IUSE="jpeg"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXpm
