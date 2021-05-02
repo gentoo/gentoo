@@ -14,7 +14,7 @@ SRC_URI="http://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="archive berkdb debug doc +gmp java +libedit libressl minimal odbc pcre qt5 readline ssl test uuid X yaml"
+IUSE="archive berkdb debug doc +gmp java +libedit minimal odbc pcre qt5 readline ssl test uuid X yaml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
@@ -27,8 +27,7 @@ RDEPEND="sys-libs/ncurses:=
 	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		dev-libs/openssl:0
 	)
 	java? ( >=virtual/jdk-1.8:* )
 	uuid? ( dev-libs/ossp-uuid )
