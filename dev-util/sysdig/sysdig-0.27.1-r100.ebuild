@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl +modules test"
+IUSE="+modules test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -31,8 +31,7 @@ RDEPEND="${LUA_DEPS}
 	net-libs/grpc:0=
 	sys-libs/ncurses:0=
 	sys-libs/zlib:0=
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	net-misc/curl:0="
 DEPEND="${RDEPEND}
 	virtual/os-headers
