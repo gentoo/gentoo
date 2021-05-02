@@ -15,20 +15,15 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-IUSE="libressl"
-
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	dev-libs/libpcre
 	${LUA_DEPS}"
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS NEWS README samples/*"
-
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
 
 src_prepare() {
 	default
