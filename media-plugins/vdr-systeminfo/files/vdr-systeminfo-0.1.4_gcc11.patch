@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/787707
+
+fix declaring of max/min
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (02 Mar 2021)
+diff -Naur systeminfo-0.1.4.orig/displayinfo.c systeminfo-0.1.4/displayinfo.c
+--- systeminfo-0.1.4.orig/displayinfo.c	2021-05-02 17:41:51.702653108 +0200
++++ systeminfo-0.1.4/displayinfo.c	2021-05-02 17:43:41.404653108 +0200
+@@ -173,7 +173,7 @@
+          if (fval1 == 0.0)
+             osdline = cString::sprintf("%s:\t%.1f GB / %.1f GB", pname, fval1, fval2);
+          else {
+-            int frac = min(BARLEN,max(0, int((fval1-fval2)*BARLEN/fval1)));
++            int frac = std::min(BARLEN,std::max(0, int((fval1-fval2)*BARLEN/fval1)));
+             memset(progressbar + 1,'|',frac);
+             memset(progressbar + 1 + frac ,' ', BARLEN - frac);
+ 
+@@ -188,7 +188,7 @@
+          if (fval1 == 0.0)
+             osdline = cString::sprintf("%s:\t%.1f kB / %.1f kB", pname, fval1, fval2);
+          else {
+-            int frac = min(BARLEN,max(0, int((fval1-fval2)*BARLEN/fval1)));
++            int frac = std::min(BARLEN,std::max(0, int((fval1-fval2)*BARLEN/fval1)));
+             memset(progressbar + 1,'|',frac);
+             memset(progressbar + 1 + frac ,' ', BARLEN - frac);
+ 
+@@ -209,7 +209,7 @@
+       // check for CPU%
+       else if (1 == sscanf(systeminfo, "%a[a-zA-Z,/0-9 ]: CPU%%", &pname) && NULL != strstr(systeminfo, "CPU%")) {
+          fval2 = GetCpuPct();
+-         int frac = min(BARLEN,max(0, int(fval2*BARLEN/100.0)));
++         int frac = std::min(BARLEN,std::max(0, int(fval2*BARLEN/100.0)));
+          memset(progressbar + 1,'|',frac);
+          memset(progressbar + 1 + frac ,' ', BARLEN - frac);
+ 
