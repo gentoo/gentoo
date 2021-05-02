@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.1,gson:2.6"
+EANT_GENTOO_CLASSPATH="javassist:3,commons-lang:3.6,gson:2.6"
 
 PATCHES=( "${WORKDIR}/${PV}" )
 

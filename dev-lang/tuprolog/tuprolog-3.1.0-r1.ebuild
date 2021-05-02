@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist:3,commons-lang-3.1"
+EANT_GENTOO_CLASSPATH="javassist:3,commons-lang-3.6"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-no-ikvm.patch
