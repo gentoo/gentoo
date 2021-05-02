@@ -13,7 +13,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount libressl selinux sodium ssl soup systemd zeroconf"
+IUSE="archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount selinux sodium ssl soup systemd zeroconf"
 RESTRICT="test"
 REQUIRED_USE="httpd? ( || ( curl soup ) )"
 
@@ -34,8 +34,7 @@ COMMON_DEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	>=sys-fs/fuse-2.9.2:0
