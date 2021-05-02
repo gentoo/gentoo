@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,11 +12,10 @@ SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
 LICENSE="CPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~s390 ~x86"
-IUSE="libressl nls pkcs11 debug"
+IUSE="nls pkcs11 debug"
 
 DEPEND=">=app-crypt/trousers-0.3.0
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	pkcs11? ( dev-libs/opencryptoki )"
 RDEPEND="${DEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
