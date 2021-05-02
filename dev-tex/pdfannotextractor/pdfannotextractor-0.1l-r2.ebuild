@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,14 +18,14 @@ COMMON_DEPEND="virtual/latex-base
 	dev-java/fontbox:1.7"
 
 DEPEND="${COMMON_DEPEND}
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.8:*"
 
 BDEPEND="app-arch/unzip"
 
 RDEPEND="${COMMIN_DEPEND}
 	virtual/perl-Getopt-Long
 	dev-perl/File-Which
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
 TEXMF=/usr/share/texmf-site
 
@@ -36,12 +36,12 @@ EANT_GENTOO_CLASSPATH="
 	pdfbox-1.8
 	fontbox-1.7
 "
-src_prepare() {
-	eapply "${FILESDIR}"/javajars.patch
-	eapply "${FILESDIR}"/StringVisitor.java.patch
-	eapply "${FILESDIR}"/PDFAnnotExtractor.java.patch
-	default
-}
+
+PATCHES=(
+	"${FILESDIR}"/javajars.patch
+	"${FILESDIR}"/StringVisitor.java.patch
+	"${FILESDIR}"/PDFAnnotExtractor.java.patch
+	)
 
 src_compile() {
 	cd "${S}/source/latex/pax" || die
