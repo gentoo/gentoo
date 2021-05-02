@@ -20,7 +20,7 @@ HOMEPAGE="https://www.cryfs.org/"
 
 LICENSE="LGPL-3 MIT"
 SLOT="0"
-IUSE="custom-optimization debug libressl test"
+IUSE="custom-optimization debug test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,8 +28,7 @@ RDEPEND="
 	>=dev-libs/crypto++-8.2.0:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:0
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
