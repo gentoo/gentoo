@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-IUSE="+capmt +constcw +cwc dbus debug dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl satip systemd +timeshift uriparser xmltv zeroconf zlib"
+IUSE="+capmt +constcw +cwc dbus debug dvbcsa dvben50221 +dvb +ffmpeg hdhomerun +imagecache +inotify iptv satip systemd +timeshift uriparser xmltv zeroconf zlib"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -31,8 +31,7 @@ RDEPEND="
 	dvben50221? ( media-tv/linuxtv-dvb-apps )
 	ffmpeg? ( media-video/ffmpeg:0= )
 	hdhomerun? ( media-libs/libhdhomerun )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )
 	zeroconf? ( net-dns/avahi )
 	zlib? ( sys-libs/zlib )
