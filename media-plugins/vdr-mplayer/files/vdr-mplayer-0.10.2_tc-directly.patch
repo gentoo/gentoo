@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/787557
+
+fixed call g++ directly fixed
+some minor clang warnings fixed
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (02 Mar 2021)
+diff -Naur mp3-0.10.2.orig/Makefile mp3-0.10.2/Makefile
+--- mp3-0.10.2.orig/Makefile	2021-05-02 16:13:39.489653108 +0200
++++ mp3-0.10.2/Makefile	2021-05-02 16:13:55.695653108 +0200
+@@ -179,7 +179,7 @@
+ 
+ # Dependencies:
+ 
+-MAKEDEP = g++ -MM -MG
++MAKEDEP = $(CXX) -MM -MG
+ DEPFILE = .dependencies
+ DEPFILES = $(subst i18n.c,,$(subst version.c,,$(OBJS:%.o=%.c) $(OBJS2:%.o=%.c)))
+ $(DEPFILE): Makefile $(DEPFILES) $(wildcard *.h)
+diff -Naur mp3-0.10.2.orig/data-mp3.c mp3-0.10.2/data-mp3.c
+--- mp3-0.10.2.orig/data-mp3.c	2021-05-02 16:13:39.490653108 +0200
++++ mp3-0.10.2/data-mp3.c	2021-05-02 16:14:18.543653108 +0200
+@@ -43,7 +43,7 @@
+ // image suffixes to search
+ const char *img_suff[] = { "jpg","png","gif",0 };
+ // exclude list for instant playlist creation
+-const char *excl_pl[] = { "*"PLAYLISTEXT,"*.jpg","*.gif","*.png",0 };
++const char *excl_pl[] = { "*" PLAYLISTEXT,"*.jpg","*.gif","*.png",0 };
+ // exclude list for song browser
+ const char *excl_br[] = { ".*","*.jpg","*.gif","*.png",0 };
+ 
+@@ -550,7 +550,7 @@
+ 
+ bool cPlayLists::Load(cFileSource *Source)
+ {
+-  static const char *spec[] = { "*"PLAYLISTEXT,0 };
++  static const char *spec[] = { "*" PLAYLISTEXT,0 };
+   Clear();
+   bool res=ScanDir(Source,0,stFile,spec,0,false);
+   Sort();
+diff -Naur mp3-0.10.2.orig/data.c mp3-0.10.2/data.c
+--- mp3-0.10.2.orig/data.c	2021-05-02 16:13:39.490653108 +0200
++++ mp3-0.10.2/data.c	2021-05-02 16:14:27.279653108 +0200
+@@ -89,7 +89,8 @@
+   va_list ap;
+   va_start(ap,fmt);
+   char *str=0;
+-  if(vasprintf(&str,fmt,ap)<0);
++  if(vasprintf(&str,fmt,ap)<0)
++  ;
+   va_end(ap);
+   return str;
+ }

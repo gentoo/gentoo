@@ -35,6 +35,9 @@ src_prepare() {
 		-i decoder.c \
 		-i player-mplayer.c
 	fi
+
+	# bug 787557
+	eapply "${FILESDIR}/${P}_tc-directly.patch"
 }
 
 src_install() {
