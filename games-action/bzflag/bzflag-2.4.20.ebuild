@@ -36,6 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.12-sdl2-cppflags.patch
 )
 
+DOCS=( AUTHORS ChangeLog DEVINFO PORTING README README.Linux )
+
 src_prepare() {
 	default
 	eautoreconf
@@ -60,8 +62,7 @@ src_configure() {
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog DEVINFO PORTING README README.Linux" \
-		default
+	default
 
 	if ! use dedicated ; then
 		newicon data/bzflag-48x48.png ${PN}.png
