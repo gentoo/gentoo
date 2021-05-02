@@ -16,12 +16,12 @@ SRC_URI="https://github.com/utelle/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="doc debug aes128 aes256 chacha20 sqlcipher rc4"
 
 DEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X,${MULTILIB_USEDEP}]
-	>=dev-db/sqlite-3.35.5:3[${MULTILIB_USEDEP}]
+	>=dev-db/sqlite-3.32.0:3[${MULTILIB_USEDEP}]
 	aes128? ( dev-db/sqlcipher[${MULTILIB_USEDEP}] ) 
 	aes256? ( dev-db/sqlcipher[${MULTILIB_USEDEP}] ) 
 	chacha20? ( dev-db/sqlcipher[${MULTILIB_USEDEP}] ) 
