@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ppc x86 ~x64-macos"
-IUSE="fuse libressl ncurses python qemu readline s3 static-libs threads"
+IUSE="fuse ncurses python qemu readline s3 static-libs threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # Tests don't play well with sandbox
 RESTRICT="test"
@@ -27,8 +27,7 @@ RDEPEND="
 	dev-libs/expat
 	sys-libs/zlib:0=
 	fuse? ( sys-fs/fuse:= )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	ncurses? ( sys-libs/ncurses:0= )
 	python? (
 		${PYTHON_DEPS}
