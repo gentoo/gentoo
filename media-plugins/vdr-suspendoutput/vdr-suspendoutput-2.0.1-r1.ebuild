@@ -23,8 +23,8 @@ src_prepare() {
 	# compile fix, wrt bug 574162
 	sed -e 246c"unsigned int TimeoutMs, bool runOnce)" \
 		-e 254c"unsigned int TimeoutMs, bool runOnce)" \
-		-i timer.h
+		-i timer.h || die
 
 	# gcc-11, bug 787506
-	sed -e "s|max|std::max|" -i timer.c
+	sed -e "s|max|std::max|" -i timer.c || die
 }
