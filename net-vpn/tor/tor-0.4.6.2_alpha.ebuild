@@ -16,15 +16,14 @@ S="${WORKDIR}/${MY_PF}"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
-IUSE="caps doc libressl lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
+IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 
 DEPEND="
 	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	!libressl? ( dev-libs/openssl:0=[-bindist] )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=[-bindist]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
