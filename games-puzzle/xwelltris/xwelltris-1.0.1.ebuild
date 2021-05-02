@@ -25,6 +25,7 @@ RDEPEND="
 PATCHES=(
 	# Look in ${EPREFIX}/var/lib/xwelltris for score file
 	"${FILESDIR}"/${PN}-1.0.1-scorefile-dir.patch
+	"${FILESDIR}"/${PN}-1.0.1-gcc-11.patch
 )
 
 src_prepare() {
