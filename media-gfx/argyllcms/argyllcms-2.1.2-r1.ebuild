@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="http://www.argyllcms.com/${MY_P}_src.zip"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~hppa x86"
-IUSE="doc libressl"
+IUSE="doc"
 
 RDEPEND="
 	media-libs/tiff:0
@@ -28,8 +28,8 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXxf86vm
 	x11-libs/libXScrnSaver
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip
 	dev-util/ftjam"
