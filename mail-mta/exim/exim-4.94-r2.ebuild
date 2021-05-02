@@ -25,7 +25,7 @@ REQUIRED_USE="
 # incorrect, but b) is the only "correct" view from repoman.
 
 SDIR=$([[ ${PV} == *_rc* ]]   && echo /test
-       [[ ${PV} == *.*.*.* ]] && echo /fixes)
+	 [[ ${PV} == *.*.*.* ]] && echo /fixes)
 COMM_URI="https://downloads.exim.org/exim4${SDIR}"
 
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
