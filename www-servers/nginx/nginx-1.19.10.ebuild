@@ -247,7 +247,7 @@ NGINX_MODULES_3RD="
 	stream_javascript
 "
 
-IUSE="aio debug +http +http2 +http-cache +ipv6 libatomic libressl +pcre
+IUSE="aio debug +http +http2 +http-cache +ipv6 libatomic +pcre
 	pcre-jit rtmp selinux ssl threads userland_GNU vim-syntax"
 
 for mod in $NGINX_MODULES_STD; do
@@ -282,17 +282,14 @@ CDEPEND="
 	pcre? ( dev-libs/libpcre:= )
 	pcre-jit? ( dev-libs/libpcre:=[jit] )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 	http2? (
-		!libressl? ( >=dev-libs/openssl-1.0.1c:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-1.0.1c:0=
 	)
 	http-cache? (
 		userland_GNU? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			dev-libs/openssl:0=
 		)
 	)
 	nginx_modules_http_brotli? ( app-arch/brotli:= )
@@ -306,8 +303,7 @@ CDEPEND="
 	nginx_modules_http_rewrite? ( dev-libs/libpcre:= )
 	nginx_modules_http_secure_link? (
 		userland_GNU? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			dev-libs/openssl:0=
 		)
 	)
 	nginx_modules_http_xslt? ( dev-libs/libxml2:= dev-libs/libxslt )
