@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dbmail/dbmail/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+doc jemalloc ldap libressl sieve ssl static systemd"
+IUSE="+doc jemalloc ldap sieve ssl static systemd"
 
 DEPEND="dev-db/libzdb
 	sieve? ( >=mail-filter/libsieve-2.2.1 )
@@ -26,8 +26,7 @@ DEPEND="dev-db/libzdb
 	>=dev-libs/glib-2.16
 	dev-libs/libevent
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${DEPEND}
 	acct-group/dbmail
