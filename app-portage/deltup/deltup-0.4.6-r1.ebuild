@@ -15,13 +15,11 @@ S="${WORKDIR}/${MY_PN}-${PV}/src"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
-IUSE="libressl"
 
 DEPEND="
 	sys-libs/zlib
 	app-arch/bzip2
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}
 	|| ( dev-util/bdelta =dev-util/xdelta-1* )"
