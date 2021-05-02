@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-IUSE="fuse libressl python qt5 taglib zune"
+IUSE="fuse python qt5 taglib zune"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -43,8 +43,7 @@ RDEPEND="
 	)
 	taglib? ( media-libs/taglib )
 	zune? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 "
 
