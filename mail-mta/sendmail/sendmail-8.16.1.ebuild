@@ -12,15 +12,14 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
 #KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="ipv6 ldap libressl mbox nis sasl sockets ssl tcpd"
+IUSE="ipv6 ldap mbox nis sasl sockets ssl tcpd"
 
 BDEPEND="sys-devel/m4"
 DEPEND="net-mail/mailbase
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	ldap? ( net-nds/openldap )
 	>=sys-libs/db-3.2:=

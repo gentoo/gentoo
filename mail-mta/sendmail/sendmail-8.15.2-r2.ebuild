@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,15 +11,14 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="ssl ldap libressl sasl tcpd mbox ipv6 nis sockets"
+IUSE="ssl ldap sasl tcpd mbox ipv6 nis sockets"
 
 DEPEND="net-mail/mailbase
 	sys-devel/m4
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 	ldap? ( net-nds/openldap )
 	>=sys-libs/db-3.2
