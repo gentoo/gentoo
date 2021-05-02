@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,13 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libressl +magic qrcode ssl upnp"
+IUSE="+magic qrcode ssl upnp"
 
 RDEPEND=">=dev-libs/libevent-2:0=
 	magic? ( sys-apps/file:0= )
 	qrcode? ( media-gfx/qrencode:0= )
 	ssl? ( >=dev-libs/libevent-2.1:0=[ssl]
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 	upnp? ( net-libs/miniupnpc:0= )"
 DEPEND="${RDEPEND}"
