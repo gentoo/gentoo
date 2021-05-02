@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0/17" # libwebsockets.so.17
 KEYWORDS="amd64 arm arm64 ppc x86"
 IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
-	+lejp libev libevent libressl libuv mbedtls peer-limits server-status smtp socks5
+	+lejp libev libevent libuv mbedtls peer-limits server-status smtp socks5
 	sqlite3 ssl static-libs threads zip"
 
 REQUIRED_USE="
@@ -22,7 +22,7 @@ REQUIRED_USE="
 	http-proxy? ( client )
 	smtp? ( libuv )
 	socks5? ( client http-proxy )
-	ssl? ( ?? ( libressl mbedtls ) )
+	ssl? ( mbedtls )
 	mbedtls? ( ssl )
 	?? ( libev libevent )
 "
@@ -37,10 +37,8 @@ RDEPEND="
 	libuv? ( dev-libs/libuv:= )
 	sqlite3? ( dev-db/sqlite:= )
 	ssl? (
-		!libressl? (
 			!mbedtls? ( dev-libs/openssl:0= )
 			mbedtls? ( >net-libs/mbedtls-2.0.0 )
-		)
 	)
 "
 DEPEND="${RDEPEND}"
