@@ -13,11 +13,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ~ia64 ~mips ppc ppc64 x86"
-IUSE="hybrid idea ipv6 kerberos ldap libressl nat pam rc5 readline selinux stats"
+IUSE="hybrid idea ipv6 kerberos ldap nat pam rc5 readline selinux stats"
 
 CDEPEND="
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	dev-libs/openssl:0
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
