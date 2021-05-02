@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0/2" # just libzfs soname major for now. possible candidates: libuutil, libzpool, libnvpair
-IUSE="custom-cflags debug kernel-builtin libressl minimal nls python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin minimal nls python +rootfs test-suite static-libs"
 
 DEPEND="
 	net-libs/libtirpc[static-libs?]
@@ -29,8 +29,7 @@ DEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
 	virtual/libudev[static-libs(-)?]
-	libressl? ( dev-libs/libressl:0=[static-libs?] )
-	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	dev-libs/openssl:0=[static-libs?]
 	!minimal? ( ${PYTHON_DEPS} )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
