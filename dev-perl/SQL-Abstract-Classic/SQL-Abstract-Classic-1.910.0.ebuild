@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DIST_AUTHOR=RIBASUSHI
 DIST_VERSION=1.91
-DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
 DESCRIPTION="Generate SQL from Perl data structures with backwards/forwards compat"
