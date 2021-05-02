@@ -455,6 +455,9 @@ DEPEND="acct-group/memcached_exporter
 	acct-user/memcached_exporter"
 RDEPEND="${DEPEND}"
 
+# tests require the memcached_exporter daemon to be running locally
+RESTRICT+=" test "
+
 src_prepare() {
 	default
 	sed -i \
