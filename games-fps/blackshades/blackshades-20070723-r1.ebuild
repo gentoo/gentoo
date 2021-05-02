@@ -27,6 +27,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-datadir.patch
+	"${FILESDIR}"/${P}-gcc-11.patch
 )
 
 src_prepare() {
