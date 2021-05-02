@@ -10,6 +10,5 @@ SRC_URI="http://distfiles.atheme.org/${P}.tar.bz2"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 DOCS=( AUTHORS README doc/BOOST )
