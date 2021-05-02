@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit db-use toolchain-funcs multilib pam systemd
 
-IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +ssl syslog tcpd +tpda X"
+IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +ssl syslog tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
@@ -51,8 +51,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 			dev-libs/libtasn1
 		)
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			dev-libs/openssl:0=
 		)
 	)
 	ldap? ( >=net-nds/openldap-2.0.7 )
