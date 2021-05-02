@@ -20,7 +20,7 @@ KEYWORDS="-* ~amd64"
 RDEPEND="
 	net-misc/stunnel
 	sys-libs/ncurses-compat:5
-	virtual/jre:1.8
+	>=virtual/jre-1.8:*
 "
 
 BDEPEND="app-arch/unzip"
