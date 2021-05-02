@@ -19,7 +19,7 @@ IUSE_VOICEMAIL_STORAGE=(
 	voicemail_storage_odbc
 	voicemail_storage_imap
 )
-IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap libressl lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog systemd vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog systemd vorbis xmpp"
 REQUIRED_USE="gtalk? ( xmpp )
 	lua? ( ${LUA_REQUIRED_USE} )
 	^^ ( ${IUSE_VOICEMAIL_STORAGE[*]//+/} )
@@ -80,8 +80,7 @@ DEPEND="acct-user/asterisk
 	)
 	srtp? ( net-libs/libsrtp:0 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	systemd? ( sys-apps/systemd )
 	!systemd? ( !sys-apps/systemd )
