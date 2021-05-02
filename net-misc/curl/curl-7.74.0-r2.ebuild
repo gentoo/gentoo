@@ -13,8 +13,8 @@ LICENSE="curl"
 SLOT="0"
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap ipv6 kerberos ldap libressl mbedtls metalink nss +openssl +pop3 +progress-meter rtmp samba +smtp ssh ssl static-libs test telnet +tftp threads winssl zstd"
-IUSE+=" curl_ssl_gnutls curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
+IUSE="adns alt-svc brotli +ftp gnutls gopher hsts +http2 idn +imap ipv6 kerberos ldap mbedtls metalink nss +openssl +pop3 +progress-meter rtmp samba +smtp ssh ssl static-libs test telnet +tftp threads winssl zstd"
+IUSE+=" curl_ssl_gnutls curl_ssl_mbedtls curl_ssl_nss +curl_ssl_openssl curl_ssl_winssl"
 IUSE+=" nghttp3 quiche"
 IUSE+=" elibc_Winnt"
 
@@ -34,8 +34,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 			app-misc/ca-certificates
 		)
 		openssl? (
-			!libressl? ( dev-libs/openssl:0=[static-libs?,${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl:0=[static-libs?,${MULTILIB_USEDEP}] )
+			dev-libs/openssl:0=[static-libs?,${MULTILIB_USEDEP}]
 		)
 		nss? (
 			dev-libs/nss:0[${MULTILIB_USEDEP}]
@@ -82,7 +81,6 @@ REQUIRED_USE="
 	ssl? (
 		^^ (
 			curl_ssl_gnutls
-			curl_ssl_libressl
 			curl_ssl_mbedtls
 			curl_ssl_nss
 			curl_ssl_openssl
@@ -136,7 +134,7 @@ multilib_src_configure() {
 			einfo "SSL provided by nss"
 			myconf+=( --with-nss )
 		fi
-		if use openssl || use curl_ssl_openssl || use curl_ssl_libressl; then
+		if use openssl || use curl_ssl_openssl; then
 			einfo "SSL provided by openssl"
 			myconf+=( --with-ssl --with-ca-path="${EPREFIX}"/etc/ssl/certs )
 		fi
@@ -148,9 +146,6 @@ multilib_src_configure() {
 		if use curl_ssl_gnutls; then
 			einfo "Default SSL provided by gnutls"
 			myconf+=( --with-default-ssl-backend=gnutls )
-		elif use curl_ssl_libressl; then
-			einfo "Default SSL provided by LibreSSL"
-			myconf+=( --with-default-ssl-backend=openssl )  # NOTE THE HACK HERE
 		elif use curl_ssl_mbedtls; then
 			einfo "Default SSL provided by mbedtls"
 			myconf+=( --with-default-ssl-backend=mbedtls )
