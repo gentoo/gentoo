@@ -16,15 +16,12 @@ else
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 fi
 
-IUSE="libressl sasl ssl zlib"
+IUSE="sasl ssl zlib"
 
 RDEPEND="
 	>=sys-libs/db-4.2:=
 	sasl?	( dev-libs/cyrus-sasl )
-	ssl?	(
-			!libressl?	( >=dev-libs/openssl-0.9.6:0= )
-			libressl?	( dev-libs/libressl:0= )
-		)
+	ssl?	( >=dev-libs/openssl-0.9.6:0= )
 	zlib?	( sys-libs/zlib:0= )
 "
 DEPEND=${RDEPEND}
