@@ -23,7 +23,7 @@ inherit myspell-r2
 
 DESCRIPTION="Catalan dictionaries for myspell/hunspell"
 HOMEPAGE="https://www.softcatala.org/programes/corrector-ortografic-de-catala-general-per-al-libreoffice-i-lapache-openoffice/ https://github.com/Softcatala/catalan-dict-tools/"
-SRC_URI="https://github.com/Softcatala/catalan-dict-tools/releases/download/v${PV}/ca.${PV}.oxt"
+SRC_URI="https://github.com/Softcatala/catalan-dict-tools/releases/download/v${PV}/ca.${PV}.oxt -> ${P}.oxt"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
