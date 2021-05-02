@@ -26,7 +26,7 @@ fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="curl dbi debug doc elasticsearch +gcrypt gnutls jemalloc kafka kerberos kubernetes libressl mdblookup"
+IUSE="curl dbi debug doc elasticsearch +gcrypt gnutls jemalloc kafka kerberos kubernetes mdblookup"
 IUSE+=" mongodb mysql normalize clickhouse omhttp omhttpfs omudpspoof openssl postgres"
 IUSE+=" rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools +uuid xxhash zeromq"
 RESTRICT="!test? ( test )"
@@ -58,15 +58,13 @@ RDEPEND="
 	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
-		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.8y:0=
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23:0= )
 		openssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	systemd? ( >=sys-apps/systemd-234 )
