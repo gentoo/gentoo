@@ -24,6 +24,7 @@ S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.7.0-current_pos.patch"
+	"${FILESDIR}/${PN}-4.1.0-fix-missing-include.patch"
 )
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
