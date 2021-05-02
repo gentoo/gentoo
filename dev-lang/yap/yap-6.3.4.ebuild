@@ -26,7 +26,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="dev-libs/libutf8proc
 	sys-libs/zlib
 	gmp? ( dev-libs/gmp:0 )
-	java? ( >=virtual/jdk-1.7:= )
+	java? ( >=virtual/jdk-1.8:* )
 	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
