@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+fapi libressl"
+IUSE="+fapi"
 
 # Integration test are now run as part of the testing suite, which will fail
 # because none of the supported TPM emulators are in Portage. In a future
@@ -21,13 +21,11 @@ RESTRICT="test"
 
 RDEPEND="net-misc/curl:=
 	>=app-crypt/tpm2-tss-2.4.0:=[fapi?]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	sys-devel/autoconf-archive"
 PATCHES=(
-	"${FILESDIR}/${PN}-4.3.0-libressl.patch"
 	"${FILESDIR}/${PN}-4.3.0-Remove-WError.patch"
 )
 
@@ -42,5 +40,5 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable fapi) \
-		$(use_enable !libressl hardening)
+		--enable-hardening
 }
