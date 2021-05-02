@@ -15,7 +15,7 @@ SRC_URI="https://github.com/mitmproxy/mitmproxy/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="libressl test"
+IUSE="test"
 
 RDEPEND="
 	>=app-arch/brotli-1.0.0[python,${PYTHON_USEDEP}]
@@ -43,8 +43,7 @@ RDEPEND="
 	>=dev-python/urwid-2.1.1[${PYTHON_USEDEP}]
 	>=dev-python/wsproto-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/zstandard-0.11.0[${PYTHON_USEDEP}]
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( >=dev-libs/libressl-3.2.0:0 )
+	dev-libs/openssl:0
 "
 
 DEPEND="${RDEPEND}
