@@ -3,11 +3,11 @@
 <catmetadata>
 	<longdescription lang="en">
 		The perl-core category contains libraries and utilities relevant to the
-		Perl programming language.
+		Perl programming language which correspond to parts of core dev-lang/perl.
 	</longdescription>
 	<longdescription lang="de">
 		Die Kategorie perl-core enthält Bibliotheken und Werkzeuge für die 
-		Programmiersprache Perl.
+		Programmiersprache Perl, die Teilen von dev-lang/perl selbst entsprechen.
 	</longdescription>
 	<longdescription lang="es">
 		La categoría perl-core contiene librerías y utilidades referentes
