@@ -9,7 +9,7 @@ DESCRIPTION="Protein secondary structure assignment from atomic coordinates"
 HOMEPAGE="http://webclu.bio.wzw.tum.de/stride/"
 SRC_URI="
 	ftp://ftp.ebi.ac.uk/pub/software/unix/${PN}/src/${PN}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~jlec/distfiles/${PN}-20060723-update.patch.bz2"
+	https://dev.gentoo.org/~pacho/${PN}/${PN}-20060723-update.patch.bz2"
 
 LICENSE="STRIDE"
 SLOT="0"
