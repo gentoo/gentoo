@@ -13,7 +13,7 @@ HOMEPAGE="https://www.gnome.org/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="acl gnutls ipv6 kerberos libressl samba ssl zeroconf"
+IUSE="acl gnutls ipv6 kerberos samba ssl zeroconf"
 
 RDEPEND="
 	>=gnome-base/gconf-2.32.4-r1[${MULTILIB_USEDEP}]
@@ -33,8 +33,7 @@ RDEPEND="
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
 			!gnome-extra/gnome-vfs-sftp )
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+			>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 			!gnome-extra/gnome-vfs-sftp ) )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[dbus,${MULTILIB_USEDEP}] )
 "
