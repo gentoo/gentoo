@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.14:=
 	>=dev-libs/libfmt-6.2
 	>=dev-libs/spdlog-1.5
-	>=net-libs/grpc-1.26
+	>=net-libs/grpc-1.26:=
 "
 
 DEPEND="${RDEPEND}
