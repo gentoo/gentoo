@@ -671,12 +671,6 @@ dev-libs/go-usb
 # bug #737406
 =media-fonts/culmus-0.133-r1
 
-# Jonas Stein <jstein@gentoo.org> (2021-03-29)
-# Depends on gtk-2, no release since 2010.
-# Removal on 2021-05-01.
-# Bug #779148.
-app-editors/beaver
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
 # Has unidentified race condition on very fast CPUs that causes maintainer-
 # mode to be triggered.
