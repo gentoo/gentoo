@@ -36,4 +36,9 @@ src_prepare() {
 	if has_version ">=media-video/vdr-2.1.3"; then
 		sed -i player-dvd.c -e "s:DeviceTrickSpeed(sp):DeviceTrickSpeed(sp,true):"
 	fi
+
+	#bug 787485
+	sed -e "s:MAKEDEP = g++:MAKEDEP = \$(CXX):" -i Makefile
+	#bug 787488
+	sed -e "s|min(|std::min(|" -i control-dvd.c
 }
