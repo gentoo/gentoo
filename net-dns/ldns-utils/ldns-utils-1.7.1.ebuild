@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	# >=openssl-1.1.0 required for dane-ta
-	if has_version "<dev-libs/openssl-1.1.0" || has_version dev-libs/libressl; then
+	if has_version "<dev-libs/openssl-1.1.0" ; then
 		local dane_ta_usage="--disable-dane-ta-usage"
 	else
 		local dane_ta_usage=""
