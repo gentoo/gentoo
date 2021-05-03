@@ -46,6 +46,8 @@ BDEPEND="
 
 BUILD_DIR="${S}_build"
 
+PATCHES=( "${FILESDIR}"/${P}-slibtool.patch )
+
 src_prepare() {
 	default
 	eautoreconf
