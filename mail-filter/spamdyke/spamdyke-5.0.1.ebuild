@@ -12,12 +12,11 @@ SRC_URI="http://www.spamdyke.org/releases/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl +ssl"
+IUSE="+ssl"
 
 DEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)"
 
 RDEPEND="
