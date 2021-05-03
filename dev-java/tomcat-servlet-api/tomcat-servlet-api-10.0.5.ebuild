@@ -41,7 +41,7 @@ JSP_API_SRC="src/main/jsp-api"
 JSP_API_RESOURCES="src/resources/jsp-api"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 
 	# The sources and also resources are mixed together so we first give it a structure to make it easier to compile and package
 	mkdir -p ${SERVLET_API_SRC} ${SERVLET_API_RESOURCES} \
@@ -64,8 +64,6 @@ src_prepare() {
 	done
 
 	mv test/jakarta ${JAVA_TEST_SRC_DIR} || die "Failed to copy test sources"
-
-	java-pkg-2_src_prepare
 }
 
 src_compile() {
