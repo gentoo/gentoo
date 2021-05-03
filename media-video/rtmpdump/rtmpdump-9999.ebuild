@@ -13,7 +13,6 @@ LICENSE="LGPL-2.1 tools? ( GPL-2 )"
 SLOT="0"
 IUSE="gnutls ssl static-libs +tools"
 
-
 DEPEND="ssl? (
 		gnutls? (
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
