@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,11 +20,11 @@ COMMON_DEPEND="swt? ( dev-java/swt:3.7 )"
 BDEPEND="app-arch/unzip"
 RDEPEND="
 	${COMMON_DEPEND}
-	>=virtual/jre-1.5
+	>=virtual/jre-1.8:*
 "
 DEPEND="
 	${COMMON_DEPEND}
-	>=virtual/jdk-1.5
+	>=virtual/jdk-1.8:*
 "
 
 S="${WORKDIR}"
