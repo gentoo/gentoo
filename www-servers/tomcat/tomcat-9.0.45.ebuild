@@ -68,8 +68,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
-
 	find -name '*.jar' -type f -delete -print || die
 
 	# Remove bundled servlet-api
