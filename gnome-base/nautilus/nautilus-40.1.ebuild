@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}
 " # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.51.2
+	>=dev-util/meson-0.57.2
 	dev-util/glib-utils
 	gtk-doc? (
 		>=dev-util/gtk-doc-1.10
