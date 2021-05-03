@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,28 +12,20 @@ SRC_URI="https://github.com/inverse-inc/sope/archive/SOPE-${PV}.tar.gz -> ${P}.t
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnutls ldap libressl mysql postgres +ssl +xml"
+IUSE="gnutls ldap mysql postgres +ssl +xml"
 
 RDEPEND="
 	sys-libs/zlib
 	ldap? ( net-nds/openldap )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	xml? ( dev-libs/libxml2:2 )
 "
 DEPEND="${RDEPEND}"
-
-pkg_pretend() {
-	if use ssl && use gnutls && use libressl ; then
-		ewarn "You have enabled both gnutls and libressl, but only"
-		ewarn "one provider can be active. Using gnutls!"
-	fi
-}
 
 src_configure() {
 	local ssl_provider
