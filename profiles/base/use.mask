@@ -4,11 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-01)
-# dev-libs/libressl is masked for removal.
-libressl
-curl_ssl_libressl
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
