@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libnotify libressl systray pax_kernel pulseaudio"
+IUSE="libnotify systray pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
 BDEPEND=">=dev-util/patchelf-0.10"
@@ -21,8 +21,7 @@ RDEPEND="
 	dev-python/dbus-python
 	dev-python/pygobject:3
 	libnotify? ( x11-libs/libnotify )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/harfbuzz
