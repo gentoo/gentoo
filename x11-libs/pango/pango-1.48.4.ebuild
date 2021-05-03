@@ -11,11 +11,12 @@ SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/pango/$(ver_cut 1-2)/${P}.tar.xz
 
 LICENSE="LGPL-2+ FTL"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64"
 
 # X USE flag is simply a stub until all revdeps have been adjusted to use X(+)
 IUSE="gtk-doc +introspection sysprof test +X"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="gtk-doc? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/fribidi-0.19.7[${MULTILIB_USEDEP}]
@@ -38,7 +39,7 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 	gtk-doc? (
-		>=dev-util/gtk-doc-1.20
+		dev-util/gi-docgen
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 	)
@@ -68,12 +69,16 @@ muiltilib_src_compile() {
 	meson_src_compile
 }
 
+multilib_src_test() {
+	meson_src_test
+}
+
 multilib_src_install() {
 	meson_src_install
 }
 
-multilib_src_test() {
-	meson_src_test
+multilib_src_install_all() {
+	mv "${ED}"/usr/share/doc/{${PN},${P}} || die
 }
 
 pkg_postinst() {
