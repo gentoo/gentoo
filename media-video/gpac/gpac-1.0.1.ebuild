@@ -19,7 +19,7 @@ HOMEPAGE="https://gpac.wp.imt.fr/"
 LICENSE="GPL-2"
 # subslot == libgpac major
 SLOT="0/10"
-IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k libressl mad opengl oss png
+IUSE="a52 aac alsa cpu_flags_x86_sse2 debug dvb ffmpeg ipv6 jack jpeg jpeg2k mad opengl oss png
 	pulseaudio sdl ssl static-libs theora truetype vorbis xml xvid X"
 
 BDEPEND="virtual/pkgconfig"
@@ -45,8 +45,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	sdl? ( media-libs/libsdl )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	vorbis? ( media-libs/libvorbis )
 	X? (
