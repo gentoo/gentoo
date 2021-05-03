@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/inverse-inc/sogo/archive/SOGo-${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="activesync gnutls libressl +ssl"
+IUSE="activesync gnutls +ssl"
 
 RDEPEND="
 	acct-user/sogo
@@ -23,19 +23,11 @@ RDEPEND="
 	activesync? ( dev-libs/libwbxml )
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 "
 DEPEND="${RDEPEND}
 	>=gnustep-base/gnustep-make-2.6.3"
-
-pkg_pretend() {
-	if use ssl && use gnutls && use libressl ; then
-		ewarn "You have enabled both gnutls and libressl, but only"
-		ewarn "one provider can be active. Using gnutls!"
-	fi
-}
 
 src_prepare() {
 	gnustep-base_src_prepare
