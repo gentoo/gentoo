@@ -32,7 +32,7 @@ DOCS=( Changelog )
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable fontconfig) \
-		--disable-static
+		--disable-static \
 		--disable-require-system-font-provider
 }
 
