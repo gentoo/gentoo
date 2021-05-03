@@ -8,12 +8,12 @@ inherit desktop
 MY_PN="NetLogo"
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="Cross-platform multi-agent programmable modeling environment"
-HOMEPAGE="http://ccl.northwestern.edu/netlogo/"
+DESCRIPTION="Programming language and IDE for agent-based modelling"
+HOMEPAGE="https://ccl.northwestern.edu/netlogo/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${PN/-bin}.gif.tar
-	amd64? ( http://ccl.northwestern.edu/netlogo/${PV}/${MY_P}-64.tgz )
-	x86? ( http://ccl.northwestern.edu/netlogo/${PV}/${MY_P}-32.tgz )
+	amd64? ( https://ccl.northwestern.edu/netlogo/${PV}/${MY_P}-64.tgz )
+	x86? ( https://ccl.northwestern.edu/netlogo/${PV}/${MY_P}-32.tgz )
 "
 S="${WORKDIR}/${MY_PN} ${PV}"
 
