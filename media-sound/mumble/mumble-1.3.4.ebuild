@@ -26,7 +26,7 @@ fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="+alsa +dbus debug g15 jack libressl +opus oss pch portaudio pulseaudio +rnnoise speech zeroconf"
+IUSE="+alsa +dbus debug g15 jack +opus oss pch portaudio pulseaudio +rnnoise speech zeroconf"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -47,8 +47,7 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:5 )
 	g15? ( app-misc/g15daemon )
 	jack? ( virtual/jack )
-	!libressl? ( >=dev-libs/openssl-1.0.0b:0= )
-	libressl? ( dev-libs/libressl )
+	>=dev-libs/openssl-1.0.0b:0=
 	opus? ( >=media-libs/opus-1.0.1 )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-sound/pulseaudio )
