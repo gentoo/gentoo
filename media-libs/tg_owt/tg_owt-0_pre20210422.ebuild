@@ -62,9 +62,12 @@ src_prepare() {
 	sed -i -e '/desktop_capture\/screen_drawer\.cc/d' \
 		-e '/desktop_capture\/screen_drawer_lock_posix\.cc/d' CMakeLists.txt || die
 
-	# Causes forced inclusion of SSE2, so we strip it out on x86* arches
-	if ! use amd64 && ! use x86; then
-		sed -i '/modules\/desktop_capture/d' CMakeLists.txt || die
+	# HACK
+	# build/headers don't have ppc64 condition and force SSE2.
+	# sed it out and force C version on ppc64
+	# without this linking tdesktop will fail with undef reference to `webrtc::VectorDifference_SSE2_W32
+	if use ppc64; then
+		sed -i 's/VectorDifference_SSE2_W.*/VectorDifference_C;/g' src/modules/desktop_capture/differ_block.cc || die
 	fi
 
 	cmake_src_prepare
