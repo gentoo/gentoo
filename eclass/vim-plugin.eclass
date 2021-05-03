@@ -126,7 +126,7 @@ update_vim_afterscripts() {
 display_vim_plugin_help() {
 	local h
 
-	if ! has_version ${CATEGORY}/${PN} ; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if [[ -n "${VIM_PLUGIN_HELPFILES}" ]] ; then
 			elog " "
 			elog "This plugin provides documentation via vim's help system. To"
