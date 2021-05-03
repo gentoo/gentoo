@@ -28,7 +28,7 @@ HOMEPAGE="https://mariadb.org/"
 LICENSE="LGPL-2.1"
 
 SLOT="0/3"
-IUSE="+curl gnutls kerberos libressl +ssl static-libs test"
+IUSE="+curl gnutls kerberos +ssl static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -40,8 +40,7 @@ DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-3.3.24:0=[${MULTILIB_USEDEP}] )
 		!gnutls? (
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+			dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 		)
 	)
 	"
