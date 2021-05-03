@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,8 +28,7 @@ DEPEND="
 	dev-libs/libpcre
 	sys-libs/zlib:0=
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	mysql? (
 		php_targets_php7-2? ( dev-lang/php:7.2[mysql,mysqli(+)] )
@@ -41,7 +40,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-IUSE="debug http2 libressl mysql sockets ssl"
+IUSE="debug http2 mysql sockets ssl"
 
 src_configure() {
 	# JEMalloc not included as it refuses to find a ${EROOT}/usr/includes/jemalloc subdirectory
