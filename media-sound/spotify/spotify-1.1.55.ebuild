@@ -12,7 +12,7 @@ SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libnotify libressl local-playback pax_kernel pulseaudio systray"
+IUSE="libnotify local-playback pax_kernel pulseaudio systray"
 RESTRICT="mirror strip"
 
 BDEPEND=">=dev-util/patchelf-0.10"
@@ -21,8 +21,7 @@ RDEPEND="
 	dev-python/dbus-python
 	dev-python/pygobject:3
 	libnotify? ( x11-libs/libnotify )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/harfbuzz
