@@ -677,11 +677,6 @@ dev-libs/go-usb
 # Bug #779148.
 app-editors/beaver
 
-# Jonas Stein <jstein@gentoo.org> (2021-03-27)
-# Upstream is gone. Open bugs. Removal after 2021-05-01.
-# Bug #778800
-x11-themes/nimbus
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
 # Has unidentified race condition on very fast CPUs that causes maintainer-
 # mode to be triggered.
