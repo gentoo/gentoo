@@ -31,6 +31,7 @@ BDEPEND="
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-qtsingleapplication.patch"
+	"${FILESDIR}/${P}-dont-force-ccache.patch"
 )
 
 src_prepare() {
