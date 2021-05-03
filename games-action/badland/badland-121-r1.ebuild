@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils
+inherit desktop wrapper xdg
 
 DESCRIPTION="Atmospheric side-scrolling action adventure platformer set in a gorgeous forest"
 HOMEPAGE="http://badlandgame.com"
@@ -62,6 +62,3 @@ src_install() {
 
 	doicon -s 128 "${DISTDIR}"/${PN}.png
 }
-
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
