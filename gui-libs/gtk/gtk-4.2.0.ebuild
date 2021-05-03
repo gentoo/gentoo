@@ -13,6 +13,7 @@ SLOT="4"
 IUSE="aqua broadway cloudprint colord cups examples ffmpeg gstreamer gtk-doc +introspection sysprof test vulkan wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
+	gtk-doc? ( introspection )
 	xinerama? ( X )
 "
 
@@ -80,12 +81,11 @@ BDEPEND="
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.20
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 	gtk-doc? (
 		app-text/docbook-xml-dtd:4.3
-		>=dev-util/gtk-doc-1.33
+		dev-util/gi-docgen
 	)
 	test? (
 		dev-libs/glib:2
@@ -157,6 +157,11 @@ src_test() {
 		exit_code=$?
 		kill ${compositor}
 	fi
+}
+
+src_install() {
+	meson_src_install
+	mv "${ED}"/usr/share/doc/{gtk4,${P}} || die
 }
 
 pkg_preinst() {
