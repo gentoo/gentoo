@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop eutils gnome2-utils unpacker
+inherit desktop unpacker wrapper xdg
 
 TIMESTAMP="${PV:4:2}${PV:6:2}${PV:0:4}"
-DESCRIPTION="A minimal action game by Terry Cavanagh, with music by Chipzel"
-HOMEPAGE="https://www.superhexagon.com/"
+DESCRIPTION="Minimal action game by Terry Cavanagh, with music by Chipzel"
+HOMEPAGE="https://superhexagon.com"
 SRC_URI="superhexagon-${TIMESTAMP}-bin"
 
 LICENSE="all-rights-reserved"
@@ -54,7 +54,3 @@ src_install() {
 
 	einstalldocs
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
