@@ -1,4 +1,4 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -142,6 +142,11 @@ _meson_get_machine_info() {
 	case ${cpu_family} in
 		amd64) cpu_family=x86_64 ;;
 		arm64) cpu_family=aarch64 ;;
+		riscv)
+			case ${tuple} in
+				riscv32*) cpu_family=riscv32 ;;
+				riscv64*) cpu_family=riscv64 ;;
+			esac ;;
 	esac
 
 	# This may require adjustment based on CFLAGS
