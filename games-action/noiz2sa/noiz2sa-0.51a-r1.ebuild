@@ -1,25 +1,22 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit user
+EAPI=7
 
 DESCRIPTION="Abstract Shooting Game"
-HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/noiz2sa_e.html https://sourceforge.net/projects/noiz2sa/"
+HOMEPAGE="https://www.asahi-net.or.jp/~cs8k-cyu/windows/noiz2sa_e.html https://sourceforge.net/projects/noiz2sa/"
 SRC_URI="mirror://sourceforge/noiz2sa/${P}.tar.gz"
+S="${WORKDIR}/${PN}/src"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	>=dev-libs/libbulletml-0.0.3
 	media-libs/sdl-mixer[vorbis]
 	virtual/opengl"
 RDEPEND="${DEPEND}"
-
-S=${WORKDIR}/${PN}/src
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc41.patch
