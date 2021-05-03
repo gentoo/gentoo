@@ -58,7 +58,7 @@ python_prepare_all() {
 
 python_configure_all() {
 	# Override faulty detection in setup.py, bug 510974.
-	export PYCURL_SSL_LIBRARY=${CURL_SSL/libressl/openssl}
+	export PYCURL_SSL_LIBRARY=${CURL_SSL}
 }
 
 src_test() {
