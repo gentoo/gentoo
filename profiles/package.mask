@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-03)
+# Sync concurrent unmasking with icu/chromium/boost.
+~dev-qt/qtwebengine-5.15.2_p20210421
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-01)
 # nsplugin is dead, bug #771801
 # Removal on 2021-05-31
