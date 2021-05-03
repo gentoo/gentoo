@@ -786,10 +786,6 @@ dev-lang/spark
 >=dev-java/eclipse-ecj-4.10
 >=www-servers/tomcat-9
 
-# Mart Raudsepp <leio@gentoo.org> (2020-02-16)
-# Fails to automatically launch pipewire for me. Help welcome figuring it out.
-net-misc/gnome-remote-desktop
-
 # Stefan Strogin <steils@gentoo.org> (2020-02-12)
 # Mask for testing revdeps.
 >=dev-games/mygui-3.4.0
