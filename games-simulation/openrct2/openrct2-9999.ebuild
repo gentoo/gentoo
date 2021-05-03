@@ -27,7 +27,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated libressl +lightfx +opengl scripting test +truetype"
+IUSE="dedicated +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -41,8 +41,7 @@ COMMON_DEPEND="
 		media-libs/speexdsp
 		opengl? ( virtual/opengl )
 	)
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	scripting? ( dev-lang/duktape:= )
 	truetype? (
 		media-libs/fontconfig:1.0
