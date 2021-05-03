@@ -1356,6 +1356,8 @@ DEPEND="!app-metrics/prometheus-bin
 
 RDEPEND="${COMMON_DEPEND}"
 
+BDEPEND=">=dev-util/promu-0.3.0"
+
 RESTRICT+=" test"
 
 src_prepare() {
@@ -1364,16 +1366,12 @@ src_prepare() {
 }
 
 src_compile() {
-	# no need in promu here
-
-	go build -mod=readonly -tags builtinassets ./cmd/prometheus || die
-
-	go build -mod=readonly ./cmd/promtool || die
+	promu build --prefix bin -v || die
 }
 
 src_install() {
-	dobin "${S}"/prometheus
-	dobin "${S}"/promtool
+	dobin "${S}"/bin/prometheus
+	dobin "${S}"/bin/promtool
 	dodoc -r {documentation,{README,CHANGELOG,CONTRIBUTING}.md}
 	insinto /etc/prometheus
 	doins documentation/examples/prometheus.yml
