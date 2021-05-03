@@ -28,11 +28,10 @@ HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server https:/
 DESCRIPTION="Fully compatible, enhanced and open source drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="8.0"
-IUSE="cjk cracklib debug jemalloc latin1 ldap libressl numa pam +perl profiling
+IUSE="cjk cracklib debug jemalloc latin1 ldap numa pam +perl profiling
 	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!test? ( test ) libressl? ( test )"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	cjk? ( server )
@@ -55,8 +54,7 @@ COMMON_DEPEND="
 	app-arch/zstd:=
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+	>=dev-libs/openssl-1.0.0:0=
 	server? (
 		dev-libs/icu:=
 		dev-libs/libevent:=[ssl,threads]
