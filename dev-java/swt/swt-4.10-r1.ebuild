@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic java-pkg-2 java-ant-2 toolchain-funcs java-osgi
 
@@ -34,16 +34,18 @@ COMMON_DEP="
 		net-libs/webkit-gtk:4
 	)"
 DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.8
-	app-arch/unzip
-	virtual/pkgconfig
+	>=virtual/jdk-1.8:*
 	x11-base/xorg-proto
 	x11-libs/libX11
 	x11-libs/libXrender
 	x11-libs/libXt
 	>=x11-libs/libXtst-1.1.0"
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.8"
+	>=virtual/jre-1.8:*"
+BDEPEND="
+	app-arch/unzip
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}"
 
