@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -29,13 +29,12 @@ DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="10.2/${SUBSLOT:-0}"
 IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
-	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
+	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup sst-xtrabackup static systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) !test? ( test ) libressl? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
@@ -82,8 +81,7 @@ COMMON_DEPEND="
 	kerberos? ( virtual/krb5 )
 	yassl? ( net-libs/gnutls:0= )
 	!yassl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.0:0=
 	)
 	sys-libs/ncurses:0=
 	!bindist? (
