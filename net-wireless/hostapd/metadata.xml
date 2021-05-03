@@ -8,7 +8,7 @@
 	</longdescription>
 	<use>
 		<flag name="crda">Add CRDA support</flag>
-		<flag name="internal-tls">Use internal TLSv1 implementation instead of depending on OpenSSL, LibreSSL or GnuTLS</flag>
+		<flag name="internal-tls">Use internal TLSv1 implementation instead of depending on OpenSSL or GnuTLS</flag>
 		<flag name="logwatch">Install support files for 
 			<pkg>sys-apps/logwatch</pkg></flag>
 		<flag name="netlink">Adding support for using netlink to create VLANs</flag>
