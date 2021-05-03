@@ -11,7 +11,7 @@ HOMEPAGE="https://exiftool.org/"
 SRC_URI="https://exiftool.org/${DIST_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ppc ~ppc64 ~x86 ~x64-macos"
 IUSE="doc"
 
 PATCHES=( "${FILESDIR}"/exiftool-12.16-CVE-2021-22204.patch )
