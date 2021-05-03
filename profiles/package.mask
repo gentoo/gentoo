@@ -660,11 +660,6 @@ sci-biology/diya
 >=dev-util/pkgdev-0.1.3
 >=sys-apps/pkgcore-0.11.7
 
-# Rick Farina <zerochaos@gentoo.org> (2021-03-30)
-# Gentoo doesn't use this package, and the one package which needs it now uses the bundled version
-# Masked for removal in 30 days
-dev-libs/go-usb
-
 # Sam James <sam@gentoo.org> (2021-03-30)
 # Seems to break dev-tex/culmus-latex
 # Masking until we can investigate & fix
