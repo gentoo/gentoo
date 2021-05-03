@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
-inherit toolchain-funcs versionator autotools java-pkg-2
+inherit toolchain-funcs autotools java-pkg-2
 
-MY_PV="$(delete_version_separator 2)"
+MY_PV="$(ver_rs 2 '')"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Native lib providing serial and parallel communication for Java"
@@ -18,13 +18,19 @@ SLOT="2"
 KEYWORDS="amd64 x86"
 IUSE="lfd"
 
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.8:*
 	lfd? ( sys-apps/xinetd )"
-
-DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip"
+DEPEND=">=virtual/jdk-1.8:*"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.1-7r2-lfd.diff"
+	"${FILESDIR}/${PN}-2.1-7r2-nouts.diff"
+	"${FILESDIR}/${P}-add-ttyACM.patch"
+	"${FILESDIR}/${P}-limits.patch"
+)
 
 src_prepare() {
 	sed -i -e "s:\(\$(JAVADOC)\):\1 -d api:g" Makefile.am || die
@@ -34,11 +40,7 @@ src_prepare() {
 		-e "s:-source ... -target ...:$(java-pkg_javac-args):g" \
 		configure.in || die
 
-	epatch \
-		"${FILESDIR}/${PN}-2.1-7r2-lfd.diff" \
-		"${FILESDIR}/${PN}-2.1-7r2-nouts.diff" \
-		"${FILESDIR}/${P}-add-ttyACM.patch" \
-		"${FILESDIR}/${P}-limits.patch"
+	default
 
 	rm acinclude.m4 || die
 	eautoreconf
