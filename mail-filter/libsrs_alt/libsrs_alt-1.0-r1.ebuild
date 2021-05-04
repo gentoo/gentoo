@@ -20,12 +20,10 @@ IUSE="static-libs"
 
 RDEPEND="!dev-perl/Mail-SRS"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-ftime.patch
-	"${FILESDIR}"/${P}-link-fix.patch
-)
-
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-ftime.patch
+	eapply "${FILESDIR}"/${P}-link-fix.patch
+
 	# add missing header
 	sed -i -e '/timeb.h>/ a #include <stdlib.h>' test.c
 
