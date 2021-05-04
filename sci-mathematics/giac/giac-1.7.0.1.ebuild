@@ -60,12 +60,12 @@ RESTRICT="!test? ( test ) mirror"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
 
-src_configure(){
+src_configure() {
 	if use gui; then
 		append-cppflags -I$(fltk-config --includedir)
 		append-lfs-flags
@@ -148,14 +148,14 @@ src_install() {
 	find "${ED}" -type f -name '*.la' -delete || die
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	if use gui; then
 		xdg_desktop_database_update
 		xdg_icon_cache_update
