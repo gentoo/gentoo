@@ -536,12 +536,6 @@ dev-java/ical4j
 # https://bugs.gentoo.org/782697
 >=dev-java/xerces-2.12.1
 
-# Matt Turner <mattst88@gentoo.org> (2021-04-18)
-# Masked for testing.
->=dev-libs/vala-common-0.51
-dev-lang/vala:0.52
->=games-board/gnome-chess-40
-
 # Michał Górny <mgorny@gentoo.org> (2021-04-17)
 # Superseded by dev-python/pycodestyle.  Last revdep masked for removal.
 # Removal on 2021-05-17.  Bug #783369.
