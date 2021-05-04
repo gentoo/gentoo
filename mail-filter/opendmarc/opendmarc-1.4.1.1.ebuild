@@ -25,10 +25,6 @@ RDEPEND="${DEPEND}
 	)
 	spf? ( mail-filter/libspf2 )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.1-build-fix.patch
-)
-
 S=${WORKDIR}/OpenDMARC-rel-${PN}-${PV//./-}
 
 src_prepare() {
