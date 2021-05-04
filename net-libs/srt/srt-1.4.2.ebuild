@@ -34,6 +34,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
+	"${FILESDIR}/${P}-cxx-include-gcc11.patch"
 )
 
 src_prepare() {
