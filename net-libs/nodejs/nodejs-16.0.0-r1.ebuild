@@ -41,6 +41,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-16.0.0-v8_lto.patch
 )
