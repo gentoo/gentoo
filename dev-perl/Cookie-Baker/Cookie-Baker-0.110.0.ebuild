@@ -19,9 +19,6 @@ RDEPEND="
 	dev-perl/URI
 	xs? ( >=dev-perl/Cookie-Baker-XS-0.110.0 )
 "
-DEPEND="
-	dev-perl/Module-Build-Tiny
-"
 BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.35.0
 	test? (
