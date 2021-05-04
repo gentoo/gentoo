@@ -453,6 +453,7 @@ KEYWORDS="~amd64"
 DEPEND="acct-group/postgres_exporter
 	acct-user/postgres_exporter"
 RDEPEND="${DEPEND}"
+BDEPEND="dev-util/promu"
 
 RESTRICT+=" test "
 
