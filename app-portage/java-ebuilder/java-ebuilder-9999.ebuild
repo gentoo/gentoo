@@ -1,4 +1,4 @@
-# Copyright 2016-2020 Gentoo Authors
+# Copyright 2016-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,8 +19,8 @@ HOMEPAGE="https://github.com/gentoo/java-ebuilder"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=virtual/jdk-1.8"
-RDEPEND=">=virtual/jre-1.8
+DEPEND=">=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*
 	sys-process/parallel
 	>=dev-java/maven-bin-3"
 
