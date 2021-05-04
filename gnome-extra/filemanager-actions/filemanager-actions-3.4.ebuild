@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/filemanager-actions"
 
 LICENSE="GPL-2+ FDL-1.3"
 SLOT="3"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="caja +nautilus nemo"
 REQUIRED_USE="|| ( caja nautilus nemo )"
 
