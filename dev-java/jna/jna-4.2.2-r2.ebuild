@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -25,18 +25,19 @@ RESTRICT="test"
 CDEPEND="dev-libs/libffi"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.7"
+	>=virtual/jre-1.8:*"
 
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.7
+	>=virtual/jdk-1.8:*
 	x11-libs/libXt
-	virtual/pkgconfig
 	test? (
 		dev-java/ant-junit:0
 		dev-java/guava:20
 		dev-java/javassist:3
 		dev-java/reflections:0
 	)"
+
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-build.xml.patch
@@ -50,8 +51,6 @@ EANT_TEST_EXTRA_ARGS="-Dheadless=true -Djava.io.tmpdir=${T}"
 EANT_TEST_GENTOO_CLASSPATH="guava-20,javassist-3,reflections"
 
 src_prepare() {
-	default
-
 	# delete bundled jars and copy of libffi
 	# except native jars because build.xml needs them all
 	find ! -path "./lib/native/*" -name "*.jar" -delete || die
