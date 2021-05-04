@@ -861,7 +861,10 @@ distutils-r1_python_install() {
 
 	esetup.py install --skip-build --root="${root}" "${args[@]}"
 
-	local forbidden_package_names=( examples test tests .pytest_cache )
+	local forbidden_package_names=(
+		examples test tests
+		.pytest_cache .hypothesis
+	)
 	local p
 	for p in "${forbidden_package_names[@]}"; do
 		if [[ -d ${root}$(python_get_sitedir)/${p} ]]; then
