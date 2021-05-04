@@ -35,7 +35,7 @@ ruby_add_rdepend "
 	>=dev-ruby/nokogiri-1.8:0
 	>=dev-ruby/rack-1.6.0:*
 	>=dev-ruby/rack-test-0.6.3:*
-	>=dev-ruby/regexp_parser-1.5:1
+	|| ( dev-ruby/regexp_parser:2 >=dev-ruby/regexp_parser-1.5:1 )
 	>=dev-ruby/xpath-3.2:3"
 
 all_ruby_prepare() {
