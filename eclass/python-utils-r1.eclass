@@ -125,7 +125,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9])
+				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9]|python3_10)
 					;;
 				*)
 					if has "${i}" "${_PYTHON_ALL_IMPLS[@]}" \
