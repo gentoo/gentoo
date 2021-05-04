@@ -1,6 +1,6 @@
 https://gitlab.gnome.org/GNOME/phodav/-/merge_requests/19
 
-From c67bd2f698e0e1c6d0747a1be6217e6e435ef798 Mon Sep 17 00:00:00 2001
+From 5f6ca03ab91df31ede9a4435c63cf5af0ef50c06 Mon Sep 17 00:00:00 2001
 From: Matt Turner <mattst88@gmail.com>
 Date: Mon, 3 May 2021 22:47:16 -0400
 Subject: [PATCH] meson: Allow specifying systemd/udev directories
@@ -12,7 +12,7 @@ Closes: https://gitlab.gnome.org/GNOME/phodav/-/issues/1
  2 files changed, 24 insertions(+), 12 deletions(-)
 
 diff --git a/data/meson.build b/data/meson.build
-index c466030..57ee6d1 100644
+index c466030..26ad939 100644
 --- a/data/meson.build
 +++ b/data/meson.build
 @@ -1,16 +1,28 @@
@@ -20,7 +20,7 @@ index c466030..57ee6d1 100644
 -if systemd.found()
 +systemd_systemunitdir = get_option('systemdsystemunitdir')
 +if systemd_systemunitdir == ''
-+  systemd = dependency('systemd')
++  systemd = dependency('systemd', required : false)
 +  if systemd.found()
 +    systemd_systemunitdir = systemd.get_pkgconfig_variable('systemdsystemunitdir')
 +  endif
@@ -37,7 +37,7 @@ index c466030..57ee6d1 100644
 -if udev.found()
 +udev_rulesdir = get_option('udevrulesdir')
 +if udev_rulesdir == ''
-+  udev = dependency('udev')
++  udev = dependency('udev', required : false)
 +  if udev.found()
 +    udev_rulesdir = '@0@/@1@'.format(udev.get_pkgconfig_variable('udevdir'), 'rules.d')
 +  endif
