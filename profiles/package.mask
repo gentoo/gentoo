@@ -32,8 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-03)
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-04)
 # Sync concurrent unmasking with icu/chromium/boost.
+# LO-7.1.3.2 is NOT RELEASED YET.
+~app-office/libreoffice-7.1.3.2
+~app-office/libreoffice-l10n-7.1.3.2
+~app-text/poppler-21.05.0
 ~dev-qt/qtwebengine-5.15.2_p20210421
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-01)
