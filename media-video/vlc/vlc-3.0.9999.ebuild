@@ -77,7 +77,7 @@ RDEPEND="
 		media-libs/harfbuzz
 		virtual/ttf-fonts
 	)
-	bluray? ( media-libs/libbluray:= )
+	bluray? ( >=media-libs/libbluray-1.3.0:= )
 	cddb? ( media-libs/libcddb )
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
@@ -93,8 +93,8 @@ RDEPEND="
 	dts? ( media-libs/libdca )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:= )
 	dvd? (
-		>=media-libs/libdvdnav-4.9:0=
-		>=media-libs/libdvdread-4.9:0=
+		>=media-libs/libdvdnav-6.1.1:0=
+		>=media-libs/libdvdread-6.1.2:0=
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
@@ -149,7 +149,7 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
-		>=dev-libs/libebml-1.3.6:=
+		>=dev-libs/libebml-1.4.2:=
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
