@@ -9,7 +9,4 @@
 		<email>gnu-emacs@gentoo.org</email>
 		<name>Gentoo GNU Emacs project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">jauhien/gs-elpa</remote-id>
-	</upstream>
 </pkgmetadata>
