@@ -24,6 +24,7 @@ IUSE="+svg man"
 RDEPEND="
 	dev-libs/wayland
 	x11-libs/cairo
+	x11-libs/libxkbcommon
 	svg? ( gnome-base/librsvg )
 "
 DEPEND="${RDEPEND}"
