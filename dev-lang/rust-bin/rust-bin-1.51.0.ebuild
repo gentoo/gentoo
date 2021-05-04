@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 prefix rust-toolchain toolchain-funcs multilib-minimal
+inherit bash-completion-r1 prefix rust-toolchain toolchain-funcs verify-sig multilib-minimal
 
 MY_P="rust-${PV}"
 
@@ -18,7 +18,10 @@ IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rustfmt"
 
 DEPEND=""
 RDEPEND=">=app-eselect/eselect-rust-20190311"
-BDEPEND="prefix? ( dev-util/patchelf )"
+BDEPEND="
+	prefix? ( dev-util/patchelf )
+	verify-sig? ( app-crypt/openpgp-keys-rust )
+"
 
 REQUIRED_USE="x86? ( cpu_flags_x86_sse2 )"
 
@@ -30,6 +33,8 @@ QA_PREBUILT="
 	opt/${P}/lib/rustlib/.*/lib/.*
 "
 
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
+
 pkg_pretend() {
 	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
 		die "${CHOST} is not supported by upstream Rust. You must use a hard float version."
@@ -37,7 +42,7 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	default
+	verify-sig_src_unpack
 	mv "${WORKDIR}/${MY_P}-$(rust_abi)" "${S}" || die
 }
 
