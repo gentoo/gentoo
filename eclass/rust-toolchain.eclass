@@ -89,6 +89,7 @@ rust_arch_uri() {
 		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz -> ${3}-${1}.tar.xz"
 	else
 		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz"
+		echo "verify-sig? ( ${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz.asc )"
 	fi
 }
 
