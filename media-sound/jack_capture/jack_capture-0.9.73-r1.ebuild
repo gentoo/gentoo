@@ -21,7 +21,7 @@ RDEPEND="
 	ogg? ( media-libs/libogg )
 	osc? ( media-libs/liblo )
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
