@@ -25,7 +25,8 @@ FILECAPS=(
 )
 
 # tests require the network
-restrict+=" test "
+RESTRICT+=" test "
+
 src_prepare() {
 	default
 	sed -i \
