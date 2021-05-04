@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,10 +21,10 @@ IUSE=""
 CDEPEND="~dev-java/eclipse-ecj-${PV}:${SLOT}
 	dev-java/ant-core:0"
 RDEPEND="${CDEPEND}
-	>=virtual/jre-11"
+	>=virtual/jre-11:*"
 DEPEND="${CDEPEND}
-	app-arch/unzip
-	>=virtual/jdk-11"
+	>=virtual/jdk-11:*"
+BDEPEND="app-arch/unzip"
 
 JAVA_GENTOO_CLASSPATH="ant-core,eclipse-ecj-${SLOT}"
 
