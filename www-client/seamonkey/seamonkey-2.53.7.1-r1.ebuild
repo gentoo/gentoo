@@ -388,19 +388,18 @@ src_configure() {
 	# Linking fails without this due to memory exhaustion
 	use x86 && append-ldflags "-Wl,--no-keep-memory"
 
-	if ! use chatzilla ; then
-		MEXTENSIONS+=",-irc"
-	fi
 	if ! use roaming ; then
 		MEXTENSIONS+=",-sroaming"
 	fi
 
 	# Setup api key for location services
-	echo -n "${_google_api_key}" > "${S}"/google-api-key
+	printf '%s' "${_google_api_key}" > "${S}"/google-api-key
 	mozconfig_annotate '' --with-google-location-service-api-keyfile="${S}/google-api-key"
 	mozconfig_annotate '' --with-google-safebrowsing-api-keyfile="${S}/google-api-key"
 
 	mozconfig_annotate '' --enable-extensions="${MEXTENSIONS}"
+	mozconfig_use_enable chatzilla irc
+	mozconfig_annotate '' --enable-dominspector
 
 	# use startup-cache for faster startup time
 	mozconfig_annotate '' --enable-startupcache
@@ -504,8 +503,8 @@ src_install() {
 		emid='{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}'
 
 		# remove the en_US-only xpi file so a version with all requested locales can be installed
-		if [[ -e "${ED}"/${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi ]] ; then
-			rm -f "${ED}"/${MOZILLA_FIVE_HOME}/distribution/extensions/${emid}.xpi || die
+		if [[ -e "${ED}"/${MOZILLA_FIVE_HOME}/extensions/${emid}.xpi ]] ; then
+			rm -f "${ED}"/${MOZILLA_FIVE_HOME}/extensions/${emid}.xpi || die
 		fi
 
 		# merge the extra locales into the main extension
@@ -514,7 +513,7 @@ src_install() {
 		# install the merged extension
 		mkdir -p "${T}/${emid}" || die
 		cp -RLp -t "${T}/${emid}" dist/xpi-stage/chatzilla/* || die
-		insinto ${MOZILLA_FIVE_HOME}/distribution/extensions
+		insinto ${MOZILLA_FIVE_HOME}/extensions
 		doins -r "${T}/${emid}"
 	fi
 
