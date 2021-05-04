@@ -3,7 +3,8 @@
 
 EAPI="7"
 
-inherit flag-o-matic readme.gentoo-r1 systemd verify-sig
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit flag-o-matic python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -40,6 +41,13 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
+# bug #764260
+DEPEND+="
+	test? (
+		${DEPEND}
+		${PYTHON_DEPS}
+	)"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
 )
@@ -47,6 +55,10 @@ PATCHES=(
 DOCS=()
 
 RESTRICT="!test? ( test )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
