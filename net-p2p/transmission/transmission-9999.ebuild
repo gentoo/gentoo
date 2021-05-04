@@ -111,8 +111,12 @@ src_install() {
 
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
-	systemd_dounit daemon/transmission-daemon.service
-	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+
+	if use systemd; then
+		# Service sets Type=notify
+		systemd_dounit daemon/transmission-daemon.service
+		systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+	fi
 
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf
