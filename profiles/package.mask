@@ -78,11 +78,6 @@ perl-core/Unicode-Normalize
 # see bug: https://bugs.gentoo.org/787152
 dev-java/tagsoup
 
-# Fabian Groffen <grobian@gentoo.org> (2021-04-30)
-# doesn't build without patching, upstream disagrees with suggested patch
-# https://github.com/trusteddomainproject/OpenDMARC/issues/163
-=mail-filter/opendmarc-1.4.1
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
 # no consumers
 # removal in 30 days
