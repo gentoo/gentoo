@@ -631,12 +631,6 @@ dev-java/slf4j-ext
 # Masked for removal in 30 days.
 dev-php/PEAR-Net_LDAP3
 
-# David Seifert <soap@gentoo.org> (2021-04-05)
-# Completely broken, unmaintained, does not build. Newer version
-# use Maven, good luck with that. Bugs #418625, #431644, #515816
-# #542940, #574632, #780396, removal in 30 days.
-sci-biology/gatk
-
 # Michał Górny <mgorny@gentoo.org> (2021-03-31)
 # New versions remove PORTAGE_CONFIGROOT support, breaking a lot
 # of scripts.
