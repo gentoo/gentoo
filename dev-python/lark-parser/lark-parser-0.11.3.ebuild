@@ -25,5 +25,5 @@ BDEPEND="
 	)"
 
 python_test() {
-	"${EPYTHON}" -m tests || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m tests -v || die "Tests fail with ${EPYTHON}"
 }
