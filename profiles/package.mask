@@ -93,14 +93,6 @@ sci-physics/jaxodraw
 # see bug: https://bugs.gentoo.org/785400
 dev-java/cldc-api
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-04)
-# Sync concurrent unmasking with icu/chromium/boost.
-# LO-7.1.3.2 is NOT RELEASED YET.
-~app-office/libreoffice-7.1.3.2
-~app-office/libreoffice-l10n-7.1.3.2
-~app-text/poppler-21.05.0
-~dev-qt/qtwebengine-5.15.2_p20210421
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-01)
 # nsplugin is dead, bug #771801
 # Removal on 2021-05-31
@@ -519,12 +511,6 @@ dev-util/bless
 dev-dotnet/gkeyfile-sharp
 dev-dotnet/notify-sharp
 
-# David Seifert <soap@gentoo.org> (2021-04-24)
-# Masked for testing and until revdeps have been fixed, Bug #763201.
-# Sync concurrent unmasking with icu/chromium/qtwebengine.
->=dev-libs/boost-1.76.0
->=dev-util/boost-build-1.76.0
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
@@ -671,12 +657,6 @@ dev-python/monotonic
 # Removal on 2021-05-09.
 # bug #574082
 games-misc/games-envd
-
-# Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
-# Masked for testing and until revdeps have been fixed:
-# bug #781188
->=dev-libs/icu-69.1
->=dev-libs/icu-layoutex-69.1
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
