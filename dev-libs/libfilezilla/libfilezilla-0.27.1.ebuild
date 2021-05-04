@@ -22,6 +22,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc11.patch )
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if ! test-flag-CXX -std=c++14; then
