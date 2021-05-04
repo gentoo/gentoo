@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit desktop java-pkg-2 java-pkg-simple
 
 MY_P="GCalc-${PV/_/-}"
 DESCRIPTION="Java Mathematical Graphing System"
@@ -12,12 +12,10 @@ SRC_URI="http://gcalc.net/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64"
-IUSE=""
 SLOT="0"
 
-RDEPEND=">=virtual/jre-1.7
-	!!sci-mathematics/gcalc"
-DEPEND=">=virtual/jdk-1.7"
+RDEPEND=">=virtual/jre-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*"
 
 S="${WORKDIR}/${MY_P}"
 
