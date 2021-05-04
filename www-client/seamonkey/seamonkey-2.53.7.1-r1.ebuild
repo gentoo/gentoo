@@ -192,6 +192,9 @@ src_prepare() {
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=1623054
 	eapply "${FILESDIR}/${PN}-2.53.7-ownertab.patch"
 
+	# https://github.com/JustOff/github-wc-polyfill/issues/10
+	eapply "${FILESDIR}/${PN}-2.53.7.1-cpu_hog_fix.patch"
+
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
 	while read -r -d $'\0' file ; do
