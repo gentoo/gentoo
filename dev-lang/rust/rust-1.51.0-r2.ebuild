@@ -5,7 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit bash-completion-r1 check-reqs estack flag-o-matic llvm multiprocessing \
+	multilib-build python-any-r1 rust-toolchain toolchain-funcs verify-sig
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -28,6 +29,7 @@ HOMEPAGE="https://www.rust-lang.org/"
 
 SRC_URI="
 	https://static.rust-lang.org/dist/${SRC}
+	verify-sig? ( https://static.rust-lang.org/dist/${SRC}.asc )
 	!system-bootstrap? ( $(rust_all_arch_uris rust-${RUST_STAGE0_VERSION}) )
 "
 
@@ -93,6 +95,7 @@ BDEPEND="${PYTHON_DEPS}
 		dev-util/ninja
 	)
 	test? ( sys-devel/gdb )
+	verify-sig? ( app-crypt/openpgp-keys-rust )
 "
 
 DEPEND="
@@ -137,6 +140,8 @@ QA_SONAME="
 
 # causes double bootstrap
 RESTRICT="test"
+
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
 
 PATCHES=(
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
