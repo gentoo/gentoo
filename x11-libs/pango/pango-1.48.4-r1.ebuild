@@ -24,16 +24,18 @@ RDEPEND="
 	>=media-libs/fontconfig-2.12.92:1.0=[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}]
 	>=media-libs/harfbuzz-2.0:=[glib(+),introspection?,truetype(+),${MULTILIB_USEDEP}]
-	>=x11-libs/cairo-1.12.10:=[X,${MULTILIB_USEDEP}]
-	>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
-	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-	>=x11-libs/libXft-2.3.1-r1[${MULTILIB_USEDEP}]
-	x11-libs/libXrender[${MULTILIB_USEDEP}]
+	>=x11-libs/cairo-1.12.10:=[X?,${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
+	X? (
+		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
+		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libXft-2.3.1-r1[${MULTILIB_USEDEP}]
+		x11-libs/libXrender[${MULTILIB_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
 	sysprof? ( dev-util/sysprof-capture:4[${MULTILIB_USEDEP}] )
+	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
 	dev-util/glib-utils
@@ -56,6 +58,7 @@ multilib_src_configure() {
 		--wrap-mode nofallback
 
 		$(meson_feature sysprof)
+		$(meson_feature X xft)
 		-Dcairo=enabled
 		-Dfontconfig=enabled
 		-Dfreetype=enabled
@@ -63,7 +66,6 @@ multilib_src_configure() {
 		-Dintrospection="$(multilib_native_usex introspection enabled disabled)"
 		-Dinstall-tests=false
 		-Dlibthai=disabled
-		-Dxft=enabled
 	)
 	meson_src_configure
 }
