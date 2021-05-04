@@ -103,6 +103,6 @@ src_prepare() {
 	rm -r ${bad_tests[@]} || die "Failed to remove broken/inappropriate tests"
 }
 
-src_configure(){
+src_configure() {
 	:
 }
