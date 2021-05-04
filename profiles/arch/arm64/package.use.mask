@@ -359,10 +359,6 @@ app-crypt/heimdal afs
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
 
-# Markus Meier <maekke@gentoo.org> (2017-03-24)
-# unkeyworded deps, bug #552330
-app-portage/g-sorcery bson
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # Unkeyworded dependencies
 app-admin/rsyslog mongodb
