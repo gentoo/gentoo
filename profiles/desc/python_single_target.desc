@@ -6,4 +6,5 @@
 python3_7 - Build for Python 3.7 only
 python3_8 - Build for Python 3.8 only
 python3_9 - Build for Python 3.9 only
+python3_10 - Build for Python 3.10 only
 pypy3 - Build for PyPy3 only
