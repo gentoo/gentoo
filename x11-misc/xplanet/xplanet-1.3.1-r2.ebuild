@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Render images of the earth into the X root window"
 HOMEPAGE="http://xplanet.sourceforge.net/"
@@ -65,4 +65,8 @@ src_configure() {
 		--with-xscreensaver$(usex X '' '=no')
 	)
 	econf --with-cspice=no "${myconf[@]}"
+}
+
+src_compile() {
+	emake AR=$(tc-getAR)
 }
