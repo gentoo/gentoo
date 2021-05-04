@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit epatch flag-o-matic autotools
+inherit flag-o-matic autotools
 
 PATCHREV="r0"
 PATCHSET="gentoo-${PVR}/${PATCHREV}"
@@ -73,8 +73,6 @@ src_prepare() {
 
 	if use !vanilla ; then
 		# apply patches
-		export EPATCH_FORCE="yes"
-		export EPATCH_SUFFIX="patch"
 		# http://hg.code.sf.net/p/gentoomuttpatches/code/file/mutt-1.10
 		local patches=(
 			patches-mutt
@@ -83,12 +81,13 @@ src_prepare() {
 			features-extra
 			gentoo
 		)
-		local patchset
+		local patchset p
 		for patchset in "${patches[@]}" ; do
 			[[ -d "${PATCHDIR}/${patchset}" ]] || continue
 			einfo "Patches for ${PATCHSET} patchset ${patchset}"
-			EPATCH_SOURCE="${PATCHDIR}"/${patchset} epatch \
-				|| die "patchset ${patchset} failed"
+			for p in "${PATCHDIR}/${patchset}"/*.patch ; do
+				eapply "${p}" || die
+			done
 		done
 		# add some explanation as to why not to go upstream
 		sed -i \
