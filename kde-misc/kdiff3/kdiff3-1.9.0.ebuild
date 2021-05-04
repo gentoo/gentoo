@@ -39,3 +39,5 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/diffutils
 "
+
+PATCHES=( "${FILESDIR}/${P}-gcc11.patch" ) # bug 788058, git master
