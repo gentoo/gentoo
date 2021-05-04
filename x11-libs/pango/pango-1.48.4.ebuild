@@ -52,6 +52,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
+		# Never use gi-docgen subproject
+		--wrap-mode nofallback
+
 		$(meson_feature sysprof)
 		-Dcairo=enabled
 		-Dfontconfig=enabled
@@ -78,7 +81,10 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	mv "${ED}"/usr/share/doc/{${PN},${P}} || die
+	if use gtk-doc; then
+		mv "${ED}"/usr/share/doc/{${PN},${P}} || die
+	fi
+	einstalldocs
 }
 
 pkg_postinst() {
