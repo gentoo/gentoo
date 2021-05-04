@@ -55,7 +55,6 @@ media-gfx/freewrl
 # on 2021-06-01).
 #
 # Removal on 2021-05-31.  Relevant bugs found on tracker #701178.
-dev-python/quex
 gnome-extra/gnome-dvb-daemon
 sci-chemistry/gmxapi
 www-apps/netbox
