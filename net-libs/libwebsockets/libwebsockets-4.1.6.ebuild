@@ -22,7 +22,6 @@ REQUIRED_USE="
 	http-proxy? ( client )
 	smtp? ( libuv )
 	socks5? ( client http-proxy )
-	ssl? ( mbedtls )
 	mbedtls? ( ssl )
 	?? ( libev libevent )
 "
