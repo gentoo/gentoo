@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-glibc-2.10.patch
 	"${FILESDIR}"/${P}-make.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 src_prepare() {
