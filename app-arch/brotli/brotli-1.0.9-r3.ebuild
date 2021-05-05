@@ -34,7 +34,12 @@ else
 	SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-RESTRICT="!test? ( test )"
+# tests are currently broken, see https://github.com/google/brotli/issues/850
+RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${PV}-linker.patch"
+)
 
 src_prepare() {
 	use python && distutils-r1_src_prepare
