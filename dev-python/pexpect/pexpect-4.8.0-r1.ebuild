@@ -32,6 +32,13 @@ python_compile_all() {
 	use doc && emake -C doc html
 }
 
+src_test() {
+	# workaround new readline defaults
+	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
+	local -x INPUTRC="${T}"/inputrc
+	distutils-r1_src_test
+}
+
 python_install() {
 	distutils-r1_python_install
 	if ! python_is_python3; then
