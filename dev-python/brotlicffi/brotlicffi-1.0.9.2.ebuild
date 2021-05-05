@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -54,6 +54,5 @@ python_test() {
 		test/test_compatibility.py::test_brotli_version
 	)
 
-	pytest -vv ${deselect[@]/#/--deselect } ||
-		die "Tests failed with ${EPYTHON}"
+	epytest ${deselect[@]/#/--deselect }
 }
