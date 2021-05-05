@@ -32,6 +32,54 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers, dead homepage
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787329
+app-misc/jitac
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# last release in 2009
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787332
+app-office/hourglass
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers, last release in 2005
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787368
+dev-util/jarwizard
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers, last release in 2008
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787428
+media-sound/entagged-tageditor
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers, last release in 2009
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787434
+media-sound/protux
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers, last release in 2013
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787638
+net-nds/jxplorer
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers, last release in 2011
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/787656
+sci-physics/jaxodraw
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
+# no consumers
+# removal in 30 days
+# see bug: https://bugs.gentoo.org/785400
+dev-java/cldc-api
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-04)
 # Sync concurrent unmasking with icu/chromium/boost.
 # LO-7.1.3.2 is NOT RELEASED YET.
