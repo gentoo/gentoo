@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ MY_PN="MarkupSafe"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Implements a XML/HTML/XHTML Markup safe string for Python"
-HOMEPAGE="https://pypi.org/project/MarkupSafe"
+HOMEPAGE="https://pypi.org/project/MarkupSafe/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
