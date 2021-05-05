@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
@@ -37,7 +37,8 @@ PATCHES=(
 src_prepare() {
 	default
 
-	append-cppflags -DUSE_GETCWD -DLINUX -DUSLEEP
+	append-cppflags -DUSE_GETCWD -DUSLEEP
+	use kernel_linux && append-cppflags -DLINUX
 	use jpeg && append-cppflags -DDOJPEG
 	use png && append-cppflags -DDOPNG
 	use tiff && append-cppflags -DDOTIFF -DUSE_TILED_TIFF_BOTLEFT_FIX

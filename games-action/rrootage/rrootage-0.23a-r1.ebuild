@@ -3,17 +3,19 @@
 
 EAPI=6
 
+inherit flag-o-matic toolchain-funcs
+
 MY_PN="rRootage"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Abstract shooter - defeat auto-created huge battleships"
 HOMEPAGE="http://www.asahi-net.or.jp/~cs8k-cyu/windows/rr_e.html
 	http://rrootage.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_PN}/src
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	>=dev-libs/libbulletml-0.0.3
@@ -21,12 +23,10 @@ DEPEND="
 	media-libs/sdl-mixer[vorbis]
 	virtual/glu
 	virtual/opengl"
-RDEPEND=${DEPEND}
-
-S=${WORKDIR}/${MY_PN}/src
+RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-gcc41.patch
+	"${FILESDIR}"/${P}-gcc41.patch
 )
 
 src_prepare() {
@@ -49,15 +49,19 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export CC CXX
+	use kernel_linux && append-cppflags -DLINUX
+
 	emake \
-		MORE_CFLAGS="-DLINUX ${CFLAGS}" \
-		MORE_CXXFLAGS="-DLINUX ${CXXFLAGS}"
+		MORE_CFLAGS="${CFLAGS} ${CPPFLAGS}" \
+		MORE_CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}"
 }
 
 src_install() {
 	newbin rr ${PN}
-	dodir "/usr/share/${MY_PN}"
-	cp -r ../rr_share/* "${D}/usr/share/${MY_PN}" || die
+
+	dodir /usr/share/${MY_PN}
+	cp -r ../rr_share/* "${ED}"/usr/share/${MY_PN} || die
 	dodoc ../readme*
 }
 

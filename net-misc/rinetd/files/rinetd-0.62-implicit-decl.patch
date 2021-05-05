@@ -1,0 +1,101 @@
+--- a/rinetd.c
++++ b/rinetd.c
+@@ -5,6 +5,7 @@
+ #include <winsock.h>
+ #include "getopt.h"
+ #else
++#include <arpa/inet.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/ioctl.h>
+@@ -23,6 +24,7 @@
+ #include <fcntl.h>
+ #include <time.h>
+ #include <ctype.h>
++#include <math.h>
+ 
+ #ifndef WIN32
+ /* Windows sockets compatibility defines */
+--- a/rinetd.c
++++ b/rinetd.c
+@@ -175,7 +175,7 @@ void RegisterPID(void);
+ 
+ void selectLoop(void);
+ 
+-void log(int i, int coSe, int result);
++void r_log(int i, int coSe, int result);
+ 
+ int getAddress(char *host, struct in_addr *iaddr);
+ 
+@@ -867,7 +867,7 @@ void handleRemoteWrite(int i)
+ 		reClosed[i] = 1;
+ 		coClosed[i] = 1;
+ 		PERROR("rinetd: local closed and no more output");
+-		log(i, coSe[i], logDone | coLog[i]); 
++		r_log(i, coSe[i], logDone | coLog[i]);
+ 		closesocket(reFds[i]);
+ 		return;
+ 	}
+@@ -923,7 +923,7 @@ void handleLocalWrite(int i)
+ 		loClosed[i] = 1;
+ 		coClosed[i] = 1;
+ 		PERROR("remote closed and no more input");
+-		log(i, coSe[i], logDone | coLog[i]);
++		r_log(i, coSe[i], logDone | coLog[i]);
+ 		closesocket(loFds[i]);
+ 		return;
+ 	}
+@@ -1015,7 +1015,7 @@ void handleAccept(int i)
+ 	addrlen = sizeof(addr);
+ 	nfd = accept(seFds[i], &addr, &addrlen);
+ 	if (nfd == INVALID_SOCKET) {
+-		log(-1, i, logAcceptFailed);
++		r_log(-1, i, logAcceptFailed);
+ 		return;
+ 	}
+ #ifndef WIN32
+@@ -1244,7 +1244,7 @@ void openLocalFd(int se, int i)
+ 		reClosed[i] = 1;
+ 		loClosed[i] = 1;
+ 		coClosed[i] = 1;	
+-		log(i, coSe[i], logLocalSocketFailed);
++		r_log(i, coSe[i], logLocalSocketFailed);
+ 		return;
+ 	}
+ #ifndef WIN32
+@@ -1262,7 +1262,7 @@ void openLocalFd(int se, int i)
+ 		reClosed[i] = 1;
+ 		loClosed[i] = 1;
+ 		coClosed[i] = 1;	
+-		log(i, coSe[i], logLocalBindFailed);
++		r_log(i, coSe[i], logLocalBindFailed);
+ 		return;
+ 	}
+ 	memset(&saddr, 0, sizeof(struct sockaddr_in));
+@@ -1292,7 +1292,7 @@ void openLocalFd(int se, int i)
+ 			reClosed[i] = 1;
+ 			loClosed[i] = 1;
+ 			coClosed[i] = 1;	
+-			log(i, coSe[i], logLocalConnectFailed);
++			r_log(i, coSe[i], logLocalConnectFailed);
+ 			return;
+ 		}
+ 	}
+@@ -1383,7 +1383,7 @@ unsigned char nullAddress[4] = { 0, 0, 0, 0 };
+ 
+ struct tm *get_gmtoff(int *tz);
+ 
+-void log(int i, int coSe, int result)
++void r_log(int i, int coSe, int result)
+ {
+ 	unsigned char *reAddress;
+ 	int bytesOutput;
+@@ -1553,7 +1553,7 @@ void refuse(int index, int logCode)
+ 	reClosed[index] = 1;
+ 	loClosed[index] = 1;
+ 	coClosed[index] = 1;	
+-	log(index, coSe[index], logCode);
++	r_log(index, coSe[index], logCode);
+ }
+ 
+ void term(int s)

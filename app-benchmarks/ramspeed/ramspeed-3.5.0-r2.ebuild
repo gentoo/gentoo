@@ -44,8 +44,8 @@ src_configure() {
 	use x86 && obj+=( ${arch_prefix}{cpuinfo/cpuinfo_main,cpuinfo/cpuinfo_ext}.o )
 
 	if use cpu_flags_x86_sse; then
-		use x86 && append-flags "-DLINUX -DI386_ASM"
-		use amd64 && append-flags "-DLINUX -DAMD64_ASM"
+		use kernel_linux && use x86 && append-cppflags "-DLINUX -DI386_ASM"
+		use kernel_linux && use amd64 && append-cppflags "-DLINUX -DAMD64_ASM"
 		obj+=( ${arch_prefix}{mmxmark,mmxmem,ssemark,ssemem}.o )
 	fi
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,17 +11,18 @@ DESCRIPTION="ASCII Client for the IRTrans Server"
 HOMEPAGE="http://www.irtrans.de"
 SRC_URI="http://www.irtrans.de/download/Client/irclient-src.tar.gz -> irclient-src-${PV}.tar.gz
 	http://ftp.disconnected-by-peer.at/irtrans/${PN}-5.11.04-ip_assign-1.patch.bz2"
+S="${WORKDIR}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-S="${WORKDIR}"
-
-PATCHES=( "${WORKDIR}/${PN}"-5.11.04-ip_assign-1.patch )
+PATCHES=(
+	"${WORKDIR}"/${PN}-5.11.04-ip_assign-1.patch
+)
 
 src_compile() {
-	append-flags -DLINUX
+	use kernel_linux && append-cppflags -DLINUX
 
 	# Set sane defaults (arm target has no -D flags added)
 	local irbuild
@@ -41,6 +42,8 @@ src_compile() {
 	elif use x86; then
 		irbuild=irclient
 		ipbuild=ip_assign
+	else
+		die "No targets to build!"
 	fi
 
 	emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" \

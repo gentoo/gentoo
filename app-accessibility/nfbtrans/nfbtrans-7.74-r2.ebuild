@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Braille translator from the National Federation of the Blind"
 HOMEPAGE="http://www.nfb.org/nfbtrans"
@@ -14,7 +14,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-BDEPEND=" >=app-arch/unzip-5.50-r2"
+BDEPEND=">=app-arch/unzip-5.50-r2"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo-fix.patch
@@ -32,10 +32,12 @@ src_prepare() {
 }
 
 src_compile() {
+	use kernel_linux && append-cppflags -DLINUX
+
 	emake \
 		CC="$(tc-getCC)" \
 		LIBS= \
-		CFLAGS="${CFLAGS} -DLINUX" \
+		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		all
 }
@@ -43,6 +45,7 @@ src_compile() {
 src_install() {
 	dobin nfbtrans
 	dodoc *fmt readme.txt makedoc
+
 	insinto /etc/nfbtrans
 	doins *cnf *tab *dic spell.dat *zip
 }

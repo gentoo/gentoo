@@ -11,6 +11,7 @@ SRC_URI="http://ftp.disconnected-by-peer.at/irtrans/irserver-src-${PV}.tar.gz
 	 http://ftp.disconnected-by-peer.at/irtrans/irserver-${PV}.tar.gz
 	http://www.irtrans.de/download/Server/Linux/irserver-src.tar.gz -> irserver-src-${PV}.tar.gz
 	http://www.irtrans.de/download/Server/Linux/irserver.tar.gz -> irserver-${PV}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -20,15 +21,15 @@ RESTRICT="strip"
 
 RDEPEND="mono? ( >=dev-lang/mono-2.10.5 )"
 
-S="${WORKDIR}"
-
 src_prepare() {
 	default
 	sed -e 's!^ODIRARM = .*!ODIRARM = n800!' -i makefile || die
 }
 
 src_compile() {
-	append-flags -DLINUX -DMEDIACENTER
+	use kernel_linux && append-cppflags -DLINUX
+
+	append-flags -DMEDIACENTER
 	append-ldflags --static
 
 	# Set sane defaults (arm target has no -D flags added)
@@ -43,6 +44,8 @@ src_compile() {
 		irserver=irserver64
 	elif use arm ; then
 		irbuild=irserver_arm
+	else
+		die "No targets to build!"
 	fi
 
 	emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" \
