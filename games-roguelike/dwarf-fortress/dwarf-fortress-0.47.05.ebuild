@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic optfeature prefix toolchain-funcs
 
 MY_PV=$(ver_rs 0- _ "$(ver_cut 2-)")
 MY_PN=df
@@ -32,29 +32,40 @@ RDEPEND="media-libs/glew:0
 DEPEND="${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses-compat:5[unicode]
-	virtual/pkgconfig"
+	sys-libs/ncurses-compat:5[unicode]"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_PN}_linux
+S="${WORKDIR}/${MY_PN}_linux"
 
 gamesdir="/opt/${PN}"
 QA_PREBUILT="${gamesdir#/}/libs/Dwarf_Fortress"
 RESTRICT="strip"
 
-src_prepare() {
-	rm -f libs/*.so* || die
-	sed -i -e '1i#include <cmath>' g_src/ttf_manager.cpp || die
+src_unpack() {
 	default
+
+	# We're going to modify this file, so let's make a copy
+	cp "${FILESDIR}/dwarf-fortress" "${WORKDIR}/dwarf-fortress" || die
 }
 
-src_configure() {
+src_prepare() {
+	# for eapply_user
+	default
+
+	# We don't want to use any of the bundled libraries
+	rm -f libs/*.so* || die
+	# This file seems to be missing this import, resulting in a compile error.
+	sed -i -e '1i#include <cmath>' g_src/ttf_manager.cpp || die
+	# This ensures that our wrapper script properly respects ${EPREFIX}
+	hprefixify "${WORKDIR}/dwarf-fortress"
+	# These variables are needed by ${FILESDIR}/Makefile.native
 	tc-export CXX PKG_CONFIG
-	CXXFLAGS+=" -D$(use debug || echo N)DEBUG"
+	# use the correct debug flag
+	use debug && append-cppflags "-DDEBUG"
 }
 
 src_compile() {
 	emake -f "${FILESDIR}/Makefile.native"
-	sed -e "s:^gamesdir=.*:gamesdir=${gamesdir}:" "${FILESDIR}/dwarf-fortress" > dwarf-fortress || die
 }
 
 src_install() {
@@ -63,7 +74,7 @@ src_install() {
 	doins -r raw data libs
 
 	# install our wrapper
-	dobin dwarf-fortress
+	dobin "${WORKDIR}/dwarf-fortress"
 
 	# install docs
 	dodoc README.linux *.txt
@@ -74,12 +85,11 @@ src_install() {
 pkg_postinst() {
 	elog "System-wide Dwarf Fortress has been installed to ${gamesdir}. This is"
 	elog "symlinked to ~/.dwarf-fortress when dwarf-fortress is run."
-	elog "For more information on what exactly is replaced, see /usr/bin/dwarf-fortress."
-	elog "Note: This means that the primary entry point is /usr/bin/dwarf-fortress."
+	elog "For more information on what exactly is replaced, see ${EPREFIX}/usr/bin/dwarf-fortress."
+	elog "Note: This means that the primary entry point is ${EPREFIX}/usr/bin/dwarf-fortress."
 	elog "Do not run ${gamesdir}/libs/Dwarf_Fortress."
-	elog
-	elog "Optional runtime dependencies:"
-	elog "Install sys-libs/ncurses[unicode] for [PRINT_MODE:TEXT]"
-	elog "Install media-libs/openal and media-libs/libsndfile for audio output"
-	elog "Install media-libs/libsdl[opengl] for the OpenGL PRINT_MODE settings"
+
+	optfeature "text PRINT_MODE" sys-libs/ncurses[unicode]
+	optfeature "audio output" "media-libs/openal media-libs/libsndfile"
+	optfeature "OpenGL PRINT_MODE" media-libs/libsdl[opengl]
 }
