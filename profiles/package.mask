@@ -621,13 +621,6 @@ games-misc/games-envd
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-06)
-# Last release of dev-java/cal10n in 2013, no consumer
-# in the tree except dev-java/slf4j-ext which is not
-# needed by any package aswell. Removal in 30 days.
-dev-java/cal10n
-dev-java/slf4j-ext
-
 # Sergey Popov <pinkbyte@gentoo.org> (2021-04-06)
 # Ancient version, currently no consumers in main tree
 # The only one consumer was mail-client/roundcube
