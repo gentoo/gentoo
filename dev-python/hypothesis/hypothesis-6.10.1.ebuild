@@ -3,8 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 
 inherit distutils-r1 multiprocessing optfeature
@@ -26,7 +25,7 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/black[${PYTHON_USEDEP}]
 			dev-python/click[${PYTHON_USEDEP}]
-		' 'python*')
+		' python3_{7..9})
 	)
 "
 BDEPEND="
@@ -40,8 +39,12 @@ BDEPEND="
 
 distutils_enable_tests --install pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-py310.patch
+)
+
 python_prepare() {
-	if ! use cli || [[ ${EPYTHON} != python* ]]; then
+	if ! use cli || ! has "${EPYTHON}" python3_{7..9}; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
 }
