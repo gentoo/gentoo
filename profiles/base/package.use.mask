@@ -27,10 +27,6 @@ net-analyzer/wireshark lto
 # bug #651740
 net-misc/openssh debug
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-03-21)
-# Requires unreleased sys-devel/icu-69.1
->=www-client/chromium-91 system-icu
-
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
 <dev-lang/julia-1.6.0 system-llvm
