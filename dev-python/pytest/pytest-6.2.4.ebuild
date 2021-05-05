@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Simple powerful testing with Python"
@@ -29,16 +29,18 @@ RDEPEND="
 	>=dev-python/py-1.8.2[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
 	>=dev-python/setuptools_scm-3.4[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/argcomplete[${PYTHON_USEDEP}]
-		>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/xmlschema[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/argcomplete[${PYTHON_USEDEP}]
+			>=dev-python/hypothesis-3.56[${PYTHON_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
+			dev-python/xmlschema[${PYTHON_USEDEP}]
+		' python3_{7..9} pypy3)
 	)"
 
 src_test() {
@@ -49,6 +51,8 @@ src_test() {
 }
 
 python_test() {
+	[[ ${EPYTHON} == python3.10 ]] && return
+
 	distutils_install_for_testing --via-root
 
 	"${EPYTHON}" -m pytest -vv --lsof -rfsxX -p no:pkgcore -p no:flaky ||
