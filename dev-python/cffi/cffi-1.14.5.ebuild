@@ -5,7 +5,7 @@ EAPI=7
 
 # DO NOT ADD pypy to PYTHON_COMPAT
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -46,9 +46,8 @@ src_configure() {
 
 python_test() {
 	"${EPYTHON}" -c "import _cffi_backend as backend" || die
-	pytest -x -vv \
+	epytest \
 		--ignore testing/test_zintegration.py \
 		--ignore testing/embedding \
-		c/ testing/ \
-		|| die "Testing failed with ${EPYTHON}"
+		c/ testing/
 }
