@@ -63,7 +63,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
-	"${FILESDIR}"/openmw-0.47.0-bullet-debian.patch
 )
 
 src_prepare() {
