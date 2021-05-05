@@ -469,8 +469,15 @@ src_configure() {
 	done
 	fi # I_KNOW_WHAT_I_AM_DOING_CROSS
 
-	einfo "Rust configured with the following settings:"
+	einfo "Rust configured with the following flags:"
+
+	echo "RUSTFLAGS=\"${RUSTFLAGS:-}\""
+	echo "RUSTFLAGS_BOOTSTRAP=\"${RUSTFLAGS_BOOTSTRAP:-}\""
+	echo "RUSTFLAGS_NOT_BOOTSTRAP=\"${RUSTFLAGS_NOT_BOOTSTRAP:-}\""
+	echo
+	einfo "config.toml contents:"
 	cat "${S}"/config.toml || die
+	echo
 }
 
 src_compile() {
