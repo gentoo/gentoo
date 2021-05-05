@@ -106,9 +106,6 @@ src_prepare() {
 	# https://bugs.gentoo.org/764959
 	AT_NOEAUTOHEADER="yes" AT_M4DIR="/usr/share/aclocal acinclude" \
 		eautoreconf
-
-	# libsdl2-2.0.14 build regression. Please check if still needed
-	multilib_copy_sources
 }
 
 multilib_src_configure() {
@@ -195,7 +192,7 @@ multilib_src_configure() {
 		$(use_with X x)
 	)
 
-	#ECONF_SOURCE="${S}"
+	ECONF_SOURCE="${S}" \
 	econf "${myeconfargs[@]}"
 }
 
