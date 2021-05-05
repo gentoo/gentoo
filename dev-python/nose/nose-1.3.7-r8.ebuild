@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
@@ -20,12 +20,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
-		!hppa? ( dev-python/coverage[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			!hppa? ( dev-python/coverage[${PYTHON_USEDEP}] )
+		' python3_{7..9} pypy3)
 		$(python_gen_cond_dep '
 			dev-python/twisted[${PYTHON_USEDEP}]
-		' 'python3*')
+		' python3_{7..9})
 	)"
 
 PATCHES=(
