@@ -5,13 +5,6 @@
 # depends on sys-apps/systemd
 kde-plasma/plasma-firewall
 
-# Jason Zaman <perfinion@gentoo.org> (2019-12-01)
-# SELinux userspace 3.0 dropped python2_7 support
-# python2_7-only packages that depend on portage
-# cause unresolvable deps
-app-portage/distpatch
-app-portage/metagen
-
 # Gilles Dartiguelongue <eva@gentoo.org> (2018-05-24)
 # Packages use systemd unconditionally for now
 >=app-admin/abrt-2.10
