@@ -214,7 +214,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/gobject-introspection
 		gnome-base/dconf
 		media-libs/mesa[egl]
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X]
 		x11-libs/pango
 	)
 	kde? (
