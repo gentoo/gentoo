@@ -10,10 +10,10 @@ HOMEPAGE="http://www.tvdr.de/"
 SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/2.4.7;sf=tbz2 -> ${P}.tbz2
 	mainmenuhooks? ( http://vdr.websitec.de/download/${PN}/${PN}-2.4.1/${PN}-2.4.1_mainmenuhook-1.0.1.patch.bz2 )
 	menuorg? ( https://projects.vdr-developer.org/projects/plg-menuorg/repository/revisions/master/raw/vdr-patch/vdr-menuorg-2.3.x.diff )
-	naludump? ( http://www.udo-richter.de/vdr/files/vdr-2.1.5-naludump-0.1.diff )
-	pinplugin? ( http://vdr.websitec.de/download/${PN}/${P}/${PN}-2.4.6_pinplugin.patch.bz2 )
-	ttxtsubs? ( http://vdr.websitec.de/download/${PN}/${P}/${PN}-2.4.6_ttxtsubs_v2.patch.bz2 )
-	permashift? ( http://vdr.websitec.de/download/${PN}/${P}/vdr-2.4-patch-for-permashift.diff.bz2 )"
+	naludump? ( https://www.udo-richter.de/vdr/files/vdr-2.1.5-naludump-0.1.diff )
+	pinplugin? ( http://vdr.websitec.de/download/${PN}/vdr-2.4.6/${PN}-2.4.6_pinplugin.patch.bz2 )
+	ttxtsubs? ( http://vdr.websitec.de/download/${PN}/vdr-2.4.6/${PN}-2.4.6_ttxtsubs_v2.patch.bz2 )
+	permashift? ( http://vdr.websitec.de/download/${PN}/vdr-2.4.6/vdr-2.4-patch-for-permashift.diff.bz2 )"
 
 LICENSE="GPL-2+"
 SLOT="0"
