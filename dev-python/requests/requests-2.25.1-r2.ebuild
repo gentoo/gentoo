@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-python/chardet-3.0.2[${PYTHON_USEDEP}]
 	<dev-python/chardet-5[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.5[${PYTHON_USEDEP}]
-	<dev-python/idna-3[${PYTHON_USEDEP}]
+	<dev-python/idna-4[${PYTHON_USEDEP}]
 	<dev-python/urllib3-1.27[${PYTHON_USEDEP}]
 	socks5? ( >=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}] )
 "
@@ -38,16 +38,23 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	distutils-r1_src_prepare
+	# allow idna-3
+	sed -i -e '/idna/s:<3:<4:' setup.py || die
 
-	# strip tests that require some kind of network
-	sed -e 's:test_connect_timeout:_&:' \
-		-e 's:test_total_timeout_connect:_&:' \
-		-i tests/test_requests.py || die
-	# probably pyopenssl version dependent
-	sed -e 's:test_https_warnings:_&:' \
-		-i tests/test_requests.py || die
-	# doctests rely on networking
-	sed -e 's:--doctest-modules::' \
-		-i pytest.ini || die
+	distutils-r1_src_prepare
+}
+
+python_test() {
+	local deselect=(
+		# Internet
+		requests/__init__.py::requests
+		requests/api.py::requests.api.request
+		requests/models.py::requests.models.PreparedRequest
+		requests/sessions.py::requests.sessions.Session
+		tests/test_requests.py::TestRequests::test_https_warnings
+		tests/test_requests.py::TestTimeout::test_connect_timeout
+		tests/test_requests.py::TestTimeout::test_total_timeout_connect
+	)
+
+	epytest ${deselect[@]/#/--deselect }
 }
