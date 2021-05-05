@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.49.0-gentoo-musl-target-specs.patch
 	"${FILESDIR}"/1.51.0-bootstrap-panic.patch
+	"${FILESDIR}"/1.51.0-slow-doc-install.patch
 	"${FILESDIR}"/rustc-1.51.0-backport-pr81728.patch
 	"${FILESDIR}"/rustc-1.51.0-backport-pr81741.patch
 	"${FILESDIR}"/rustc-1.51.0-backport-pr82289.patch
