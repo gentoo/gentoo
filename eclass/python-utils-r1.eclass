@@ -318,16 +318,13 @@ _python_export() {
 				;;
 			PYTHON_SITEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				# sysconfig can't be used because:
-				# 1) pypy doesn't give site-packages but stdlib
-				# 2) jython gives paths with wrong case
-				PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
+				PYTHON_SITEDIR=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_path("purelib"))') || die
 				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
+				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_path("platinclude"))') || die
 				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
