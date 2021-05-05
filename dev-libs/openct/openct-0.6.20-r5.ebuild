@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic udev
+inherit autotools flag-o-matic udev
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
@@ -26,6 +26,16 @@ RDEPEND="
 	acct-user/openctd
 "
 BDEPEND="doc? ( app-doc/doxygen )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-automake.patch
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	use debug && append-cppflags -DDEBUG_IFDH
