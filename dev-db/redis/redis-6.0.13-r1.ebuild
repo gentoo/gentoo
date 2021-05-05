@@ -125,6 +125,8 @@ src_compile() {
 		myconf+=" BUILD_TLS=yes"
 	fi
 
+	export USE_SYSTEMD=$(usex systemd)
+
 	tc-export AR CC RANLIB
 	emake V=1 ${myconf} AR="${AR}" CC="${CC}" RANLIB="${RANLIB}"
 }
