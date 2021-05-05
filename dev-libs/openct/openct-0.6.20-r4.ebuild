@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic udev user
+inherit autotools flag-o-matic udev user
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
@@ -21,9 +21,19 @@ RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= )
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-automake.patch
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
 pkg_setup() {
 	enewgroup openct
 	enewuser openctd
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
