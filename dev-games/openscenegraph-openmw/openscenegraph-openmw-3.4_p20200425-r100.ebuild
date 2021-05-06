@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -87,6 +87,7 @@ PATCHES=(
 	"${FILESDIR}"/openscenegraph-3.4-cmake.patch
 	"${FILESDIR}"/openscenegraph-3.5.1-jpeg-9.patch
 	"${FILESDIR}"/openscenegraph-3.6.3-docdir.patch
+	"${FILESDIR}"/openscenegraph-3.4-gcc11.patch
 )
 
 pkg_setup() {
