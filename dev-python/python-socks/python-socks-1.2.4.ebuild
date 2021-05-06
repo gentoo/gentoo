@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # trio, curio are not packaged
 # asyncio is the only backend we have, so dep on its deps unconditionally
