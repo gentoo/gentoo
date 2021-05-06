@@ -1,5 +1,5 @@
---- jni/GNUmakefile
-+++ jni/GNUmakefile
+--- a/jni/GNUmakefile
++++ b/jni/GNUmakefile
 @@ -41,6 +41,7 @@
  JFFI_BUILD_DIR = $(BUILD_DIR)/jffi
  
@@ -37,8 +37,8 @@
  
  ifeq ($(OS), darwin)
  build_ffi = \
---- libtest/GNUmakefile
-+++ libtest/GNUmakefile
+--- a/libtest/GNUmakefile
++++ b/libtest/GNUmakefile
 @@ -44,8 +44,8 @@
  # Compiler/linker flags from:
  #   http://weblogs.java.net/blog/kellyohair/archive/2006/01/compilation_of_1.html
