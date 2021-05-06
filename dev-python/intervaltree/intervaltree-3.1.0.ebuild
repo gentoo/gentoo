@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Editable interval tree data structure for Python 2 and 3"
