@@ -629,6 +629,9 @@ src_configure() {
 	# Disable forced lld, bug 641556
 	myconf_gn+=" use_lld=false"
 
+	# Disable pseudolocales, only used for testing
+	myconf_gn+=" enable_pseudolocales=false"
+
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf_gn+=" proprietary_codecs=$(usex proprietary-codecs true false)"
 	myconf_gn+=" ffmpeg_branding=\"${ffmpeg_branding}\""
