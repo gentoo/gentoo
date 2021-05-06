@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/
 LICENSE="BSD"
 SLOT="0/27" # based on SONAME
 # imath needs keywording: arm{,64}, hppa, ia64, ppc{,64}, sparc, x64-macos, x86-solaris
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="~amd64 ~ia64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="cpu_flags_x86_avx doc examples large-stack static-libs utils test threads"
 RESTRICT="!test? ( test )"
 
