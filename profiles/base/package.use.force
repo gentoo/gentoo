@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-05-07)
+# Forced on for now as generated headers are now
+# included unconditionally.
+# (https://github.com/cyrusimap/cyrus-imapd/pull/3270)
+>=net-mail/cyrus-imapd-3.4.0 sieve
+
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
 # Needs to link with libiconv, bug #774507
