@@ -1,2 +1,3 @@
 move dev-python/PyICU dev-python/pyicu
 move dev-python/python-fastimport dev-python/fastimport
+move dev-python/ebuildtester dev-util/ebuildtester
