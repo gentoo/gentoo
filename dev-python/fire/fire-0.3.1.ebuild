@@ -8,8 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="library for automatically generating command line interfaces"
 HOMEPAGE="https://github.com/google/python-fire"
-#SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-SRC_URI="https://github.com/google/python-fire/archive/refs/tags/v0.3.1.tar.gz
+SRC_URI="https://github.com/google/python-fire/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
