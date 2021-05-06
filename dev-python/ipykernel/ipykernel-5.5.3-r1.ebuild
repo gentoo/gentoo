@@ -19,7 +19,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-python/ipython[${PYTHON_USEDEP}]
-	dev-python/jupyter_client[${PYTHON_USEDEP}]
+	<dev-python/jupyter_client-6.2[${PYTHON_USEDEP}]
 	dev-python/jupyter_core[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]"
