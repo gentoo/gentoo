@@ -3,9 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
-
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit distutils-r1 optfeature
 
 MY_P=${P^}
