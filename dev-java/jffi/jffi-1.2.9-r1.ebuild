@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit epatch java-pkg-2 java-ant-2 versionator
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="An optimized Java interface to libffi"
 HOMEPAGE="https://github.com/jnr/jffi"
@@ -18,15 +18,17 @@ KEYWORDS="amd64 ~arm64 ppc64 x86 ~ppc-macos ~x64-macos"
 CDEPEND="dev-libs/libffi:0="
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
+# java 1.8 is needed because javah is called which is not in newer jdks
 DEPEND="${CDEPEND}
-	>=virtual/jdk-1.6
-	virtual/pkgconfig
+	virtual/jdk:1.8
 	test? (
 		dev-java/ant-junit4:0
 		dev-java/junit:4
 	)"
+
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.8-makefile.patch
@@ -35,10 +37,10 @@ PATCHES=(
 
 RESTRICT="test"
 
-java_prepare() {
-	cp "${FILESDIR}"/${PN}_maven-build.xml build.xml || die
+src_prepare() {
+	default
 
-	epatch "${PATCHES[@]}"
+	cp "${FILESDIR}"/${PN}_maven-build.xml build.xml || die
 
 	# misc fixes for Darwin
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -59,7 +61,7 @@ java_prepare() {
 			jni/GNUmakefile || die
 	fi
 
-	find "${WORKDIR}" -iname '*.jar' -delete || die
+	java-pkg_clean
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
@@ -71,9 +73,9 @@ src_compile() {
 		package com.kenai.jffi;
 		public final class Version {
 			private Version() {}
-			public static final int MAJOR = $(get_version_component_range 1);
-			public static final int MINOR = $(get_version_component_range 2);
-			public static final int MICRO = $(get_version_component_range 3);
+			public static final int MAJOR = $(ver_cut 1);
+			public static final int MINOR = $(ver_cut 2);
+			public static final int MICRO = $(ver_cut 3);
 		}
 	EOF
 
@@ -92,7 +94,7 @@ src_compile() {
 		SRC_DIR=jni
 		JNI_DIR=jni
 		BUILD_DIR=build/jni
-		VERSION=$(get_version_component_range 1-2)
+		VERSION=$(ver_cut 1-2)
 		USE_SYSTEM_LIBFFI=1
 		CCACHE=
 		-f jni/GNUmakefile
@@ -114,7 +116,7 @@ src_install() {
 	local libname=".so"
 
 	[[ ${CHOST} == *-darwin* ]] && libname=.jnilib
-	java-pkg_doso build/jni/lib${PN}-$(get_version_component_range 1-2)${libname}
+	java-pkg_doso build/jni/lib${PN}-$(ver_cut 1-2)${libname}
 
 	# must by after _doso to have JAVA_PKG_LIBDEST set
 	cat > boot.properties <<-EOF
