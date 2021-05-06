@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-games/mygui
 	dev-games/recastnavigation
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads,zlib]
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
