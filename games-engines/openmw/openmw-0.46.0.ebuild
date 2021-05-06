@@ -72,6 +72,7 @@ PATCHES=(
 	# https://gitlab.com/OpenMW/openmw/-/merge_requests/163
 	"${DISTDIR}"/openmw-0.46.0-floattest.patch
 	"${FILESDIR}"/openmw-0.46.0-floattest2.patch
+	"${FILESDIR}"/openmw-0.46.0-gcc11.patch
 )
 
 src_prepare() {
