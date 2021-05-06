@@ -12,4 +12,7 @@
   <flag name="srp">Enable SRP authentication</flag>
   <flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
 </use>
+<upstream>
+  <remote-id type="github">cyrusimap/cyrus-imapd</remote-id>
+</upstream>
 </pkgmetadata>
