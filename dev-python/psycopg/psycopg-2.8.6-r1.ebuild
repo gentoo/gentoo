@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 flag-o-matic
 
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 # automagic dep on mxdatetime (from egenix-mx-base)
 # the package was removed, so let's just make sure it's gone
 RDEPEND=">=dev-db/postgresql-8.1:*"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	test? ( >=dev-db/postgresql-8.1[server] )
 	!!dev-python/egenix-mx-base"
 
