@@ -102,7 +102,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	virtual/ttf-fonts
 	media-fonts/roboto
 	>=media-libs/freetype-2.10.1
-	>=media-libs/libass-0.13.4
+	>=media-libs/libass-0.15.1
 	!raspberry-pi? ( media-libs/mesa[egl] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
