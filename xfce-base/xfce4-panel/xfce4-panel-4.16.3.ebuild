@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	vala? ( $(vala_depend) )
 	dev-lang/perl
+	dev-util/gdbus-codegen
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext
