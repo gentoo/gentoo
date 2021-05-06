@@ -12,4 +12,7 @@
     <flag name="xapian">Enable Xapian search engine support</flag>
     <flag name="lmdb">Enable support for using <pkg>dev-db/lmdb</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="github">cyrusimap/cyrus-imapd</remote-id>
+  </upstream>
 </pkgmetadata>
