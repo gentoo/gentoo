@@ -226,6 +226,7 @@ src_configure() {
 	)
 
 	if has_version ">=sci-libs/opencascade-7.5"; then
+		# bug https://bugs.gentoo.org/788274
 		mycmakeargs+=(
 			-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.1
 			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.1
