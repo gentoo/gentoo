@@ -1,9 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit user
+EAPI=7
 
 DESCRIPTION="Sets up realtime scheduling"
 HOMEPAGE="https://jackaudio.org/faq/linux_rt_config.html"
@@ -15,16 +13,13 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="sys-libs/pam"
+RDEPEND="acct-group/realtime
+	sys-libs/pam"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 limitsdfile=40-${PN}.conf
 rtgroup=realtime
-
-pkg_setup() {
-	enewgroup ${rtgroup}
-}
 
 src_compile() {
 	einfo "Generating ${limitsdfile}"
