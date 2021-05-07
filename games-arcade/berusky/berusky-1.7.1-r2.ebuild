@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop gnome2
+inherit desktop flag-o-matic gnome2
 
 DATAFILE="${PN}-data-1.7"
 DESCRIPTION="Free logic game based on an ancient puzzle named Sokoban"
@@ -30,6 +30,14 @@ PATCHES=(
 
 src_prepare() {
 	mv ../${DATAFILE}/{berusky.ini,GameData,Graphics,Levels} . || die
+
+	default
+}
+
+src_configure() {
+	# https://bugs.gentoo.org/787287
+	# clashes with C++17's "std::byte" type
+	append-cxxflags -std=c++14
 
 	default
 }
