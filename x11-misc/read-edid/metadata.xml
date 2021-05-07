@@ -5,4 +5,8 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<use>
+		<flag name="vbe-mode">Build get-edid with support for legacy, VBE-based interface.
+			Requires <pkg>dev-libs/libx86</pkg>.</flag>
+	</use>
 </pkgmetadata>
