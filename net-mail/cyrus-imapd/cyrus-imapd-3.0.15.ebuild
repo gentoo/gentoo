@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic pam ssl-cert
 
 DESCRIPTION="The Cyrus IMAP Server"
@@ -74,12 +75,7 @@ REQUIRED_USE="
 # TODO: check underlinking for other libraries
 PATCHES=(
 	"${FILESDIR}/cyrus-imapd-libcap-libs-r1.patch"
-	)
-
-pkg_setup() {
-	# https://bugs.gentoo.org/604466
-	append-ldflags $(no-as-needed)
-}
+)
 
 src_prepare() {
 	default
@@ -104,10 +100,15 @@ src_prepare() {
 
 src_configure() {
 	local myconf
+
+	# https://bugs.gentoo.org/604466
+	append-ldflags $(no-as-needed)
+
 	if use afs ; then
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
 		myconf+=" --with-afs-incdir=/usr/include/afs"
 	fi
+
 	# sphinx is unmaintained and dead, bug #662944
 	econf \
 		--enable-unit-tests \
