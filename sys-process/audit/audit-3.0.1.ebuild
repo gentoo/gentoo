@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit multilib multilib-minimal toolchain-funcs python-r1 linux-info systemd usr-ldscript
+inherit autotools multilib multilib-minimal toolchain-funcs python-r1 linux-info systemd usr-ldscript
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records"
 HOMEPAGE="https://people.redhat.com/sgrubb/audit/"
@@ -30,6 +30,8 @@ BDEPEND="python? ( dev-lang/swig:0 )"
 
 CONFIG_CHECK="~AUDIT"
 
+PATCHES=( "${FILESDIR}"/${P}-slibtool.patch )
+
 src_prepare() {
 	# audisp-remote moved in multilib_src_install_all
 	sed -i \
@@ -40,6 +42,7 @@ src_prepare() {
 	echo -e '%:\n\t:' | tee rules/Makefile.{am,in} >/dev/null
 
 	default
+	eautoreconf
 }
 
 multilib_src_configure() {
