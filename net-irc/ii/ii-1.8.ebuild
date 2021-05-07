@@ -15,7 +15,8 @@ KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux"
 src_prepare() {
 	default
 
-	sed -i -e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' config.mk || die
+	sed -i -e '/^LDFLAGS/{s:-s::g; s:= :+= :g}' \
+		-e '/^CFLAGS/{s: -Os::g; s:= :+= :g}' config.mk || die
 }
 
 src_compile() {
