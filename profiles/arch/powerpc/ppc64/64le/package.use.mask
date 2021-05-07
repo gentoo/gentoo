@@ -15,6 +15,7 @@ app-emulation/crun -criu
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
 # openjfx is keyworded on ppc64le
+dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)

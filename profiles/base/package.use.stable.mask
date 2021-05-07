@@ -41,12 +41,6 @@ x11-themes/arc-theme cinnamon
 media-gfx/openvdb python numpy
 media-libs/openimageio python
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# openjfx:8 will never be stabilized
-# openjfx:11 probably will neither
-dev-java/openjdk:8 javafx
-dev-java/openjdk:11 javafx
-
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
