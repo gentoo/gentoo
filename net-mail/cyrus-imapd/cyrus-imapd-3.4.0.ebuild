@@ -73,11 +73,6 @@ REQUIRED_USE="
 #	"${FILESDIR}/cyrus-imapd-libcap-libs-r1.patch"
 #)
 
-pkg_setup() {
-	# https://bugs.gentoo.org/604466
-	append-ldflags $(no-as-needed)
-}
-
 src_prepare() {
 	default
 
@@ -102,6 +97,9 @@ src_prepare() {
 
 src_configure() {
 	local myconf
+
+	# https://bugs.gentoo.org/604466
+	append-ldflags $(no-as-needed)
 
 	if use afs ; then
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
