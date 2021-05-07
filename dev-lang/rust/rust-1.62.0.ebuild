@@ -259,8 +259,8 @@ src_configure() {
 	local rust_target="" rust_targets="" arch_cflags use_libcxx="false"
 
 	# Collect rust target names to compile standard libs for all ABIs.
-	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_targets="${rust_targets},\"$(get_abi_RUSTHOST ${v##*.})\""
+	for v in $(get_all_abis); do
+		rust_targets="${rust_targets},\"$(get_abi_RUSTHOST ${v})\""
 	done
 	if use wasm; then
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
@@ -410,9 +410,9 @@ src_configure() {
 		compression-formats = ["xz"]
 	_EOF_
 
-	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_target=$(get_abi_RUSTHOST ${v##*.})
-		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
+	for v in $(get_all_abis); do
+		arch_cflags=$(get_abi_CFLAGS ${v})
+		rust_target=$(get_abi_RUSTHOST ${v})
 
 		cat <<- _EOF_ >> "${S}"/config.env
 			CFLAGS_${rust_target}=${arch_cflags}
