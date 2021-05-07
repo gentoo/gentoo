@@ -1,10 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation.
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 CHOST="x86_64-gentoo-linux-musl"
+RUSTHOST="x86_64-unknown-linux-musl"
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-07-01)
 # Multilib-related setup, bug #515130
 MULTILIB_ABIS="amd64"
 CHOST_amd64="${CHOST}"
+RUSTHOST_amd64="${RUSTHOST}"
 LIBDIR_amd64="lib"

@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Main RISC-V profile directory. Common settings for all riscv profiles.
@@ -29,6 +29,7 @@ LIBDIR_lp64d="lib64/lp64d"
 CFLAGS_lp64d="-mabi=lp64d"
 LDFLAGS_lp64d="-m elf64lriscv"
 CHOST_lp64d="riscv64-unknown-linux-gnu"
+RUSTHOST_lp64d="riscv64gc-unknown-linux-gnu"
 
 # Flags for lp64
 LIBDIR_lp64="lib64/lp64"
@@ -41,6 +42,7 @@ LIBDIR_ilp32d="lib32/ilp32d"
 CFLAGS_ilp32d="-mabi=ilp32d -march=rv32imafdc"
 LDFLAGS_ilp32d="-m elf32lriscv"
 CHOST_ilp32d="riscv32-unknown-linux-gnu"
+RUSTHOST_ilp32d="riscv32gc-unknown-linux-gnu"
 
 # Flags for ilp32
 LIBDIR_ilp32="lib32/ilp32"

@@ -4,6 +4,7 @@
 # RISC-V rv32imac/ilp32d no-multilib profile
 
 CHOST="riscv32-unknown-linux-gnu"
+RUSTHOST="riscv32gc-unknown-linux-gnu"
 
 MULTILIB_ABIS="ilp32d"
 DEFAULT_ABI="ilp32d"

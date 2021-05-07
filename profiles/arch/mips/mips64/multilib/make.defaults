@@ -11,12 +11,14 @@ FCFLAGS="${CFLAGS}"
 
 CFLAGS_o32="-mabi=32"
 CHOST_o32="${CHOST}"
+RUSTHOST_o32="mips-unknown-linux-gnu"
 
 CFLAGS_n32="-mabi=n32"
 CHOST_n32="${CHOST}"
 
 CFLAGS_n64="-mabi=64"
 CHOST_n64="${CHOST}"
+RUSTHOST_n64="mips64-unknown-linux-gnuabi64"
 
 SYMLINK_LIB="no"
 
