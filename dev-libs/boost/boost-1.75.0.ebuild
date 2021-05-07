@@ -12,7 +12,7 @@ MAJOR_V="$(ver_cut 1-2)"
 
 DESCRIPTION="Boost Libraries for C++"
 HOMEPAGE="https://www.boost.org/"
-SRC_URI="https://dl.bintray.com/boostorg/release/${PV}/source/boost_${MY_PV}.tar.bz2"
+SRC_URI="https://boostorg.jfrog.io/artifactory/main/release/${PV}/source/boost_${MY_PV}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}" # ${PV} instead ${MAJOR_V} due to bug 486122
