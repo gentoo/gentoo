@@ -1,0 +1,252 @@
+--- a/conf.cc
++++ b/conf.cc
+@@ -28,7 +28,7 @@
+ 
+ using namespace std;
+ 
+-static void expand_tree(const string& path, filepath_container& ds) throw (error)
++static void expand_tree(const string& path, filepath_container& ds)
+ {
+ 	DIR* dir = opendir(path.c_str());
+ 	if (!dir)
+--- a/file.cc
++++ b/file.cc
+@@ -98,7 +98,7 @@
+ /**
+  * Check if a file exists.
+  */
+-bool file_exists(const string& path) throw (error)
++bool file_exists(const string& path)
+ {
+ 	struct stat s;
+ 	if (stat(path.c_str(), &s) != 0) {
+@@ -114,7 +114,7 @@
+ /**
+  * Write a whole file.
+  */
+-void file_write(const string& path, const char* data, unsigned size) throw (error)
++void file_write(const string& path, const char* data, unsigned size)
+ {
+ 	FILE* f = fopen(path.c_str(), "wb");
+ 	if (!f)
+@@ -134,7 +134,7 @@
+ /**
+  * Read a whole file.
+  */
+-void file_read(const string& path, char* data, unsigned size) throw (error)
++void file_read(const string& path, char* data, unsigned size)
+ {
+ 	file_read(path, data, 0, size);
+ }
+@@ -142,7 +142,7 @@
+ /**
+  * Read a whole file.
+  */
+-void file_read(const string& path, char* data, unsigned offset, unsigned size) throw (error)
++void file_read(const string& path, char* data, unsigned offset, unsigned size)
+ {
+ 	FILE* f = fopen(path.c_str(), "rb");
+ 	if (!f)
+@@ -166,7 +166,7 @@
+ /**
+  * Get the time of a file.
+  */
+-time_t file_time(const string& path) throw (error)
++time_t file_time(const string& path)
+ {
+ 	struct stat s;
+ 	if (stat(path.c_str(), &s)!=0)
+@@ -178,7 +178,7 @@
+ /**
+  * Set the time of a file.
+  */
+-void file_utime(const string& path, time_t tod) throw (error)
++void file_utime(const string& path, time_t tod)
+ {
+ 	struct utimbuf u;
+ 
+@@ -192,7 +192,7 @@
+ /**
+  * Get the size of a file.
+  */
+-unsigned file_size(const string& path) throw (error)
++unsigned file_size(const string& path)
+ {
+ 	struct stat s;
+ 	if (stat(path.c_str(), &s)!=0)
+@@ -204,7 +204,7 @@
+ /**
+  * Get the crc of a file.
+  */
+-crc_t file_crc(const string& path) throw (error)
++crc_t file_crc(const string& path)
+ {
+ 	unsigned size = file_size(path);
+ 
+@@ -227,7 +227,7 @@
+ /**
+  * Copy a file.
+  */
+-void file_copy(const string& path1, const string& path2) throw (error)
++void file_copy(const string& path1, const string& path2)
+ {
+ 	unsigned size;
+ 
+@@ -249,7 +249,7 @@
+ /**
+  * Move a file.
+  */
+-void file_move(const string& path1, const string& path2) throw (error)
++void file_move(const string& path1, const string& path2)
+ {
+ 	if (rename(path1.c_str(), path2.c_str())!=0
+ 		&& errno==EXDEV) {
+@@ -271,7 +271,7 @@
+ /**
+  * Remove a file.
+  */
+-void file_remove(const string& path1) throw (error)
++void file_remove(const string& path1)
+ {
+ 	if (remove(path1.c_str())!=0) {
+ 		throw error() << "Failed remove of " << path1;
+@@ -281,7 +281,7 @@
+ /**
+  * Rename a file.
+  */
+-void file_rename(const string& path1, const string& path2) throw (error)
++void file_rename(const string& path1, const string& path2)
+ {
+ 	if (rename(path1.c_str(), path2.c_str())!=0) {
+ 		throw error() << "Failed rename of " << path1 << " to " << path2;
+@@ -291,7 +291,7 @@
+ /**
+  * Randomize a name file.
+  */
+-string file_randomize(const string& path, int n) throw ()
++string file_randomize(const string& path, int n)
+ {
+ 	ostringstream os;
+ 
+@@ -310,7 +310,7 @@
+ /**
+  * Get the directory from a path.
+  */
+-string file_dir(const string& path) throw ()
++string file_dir(const string& path)
+ {
+ 	size_t pos = path.rfind('/');
+ 	if (pos == string::npos) {
+@@ -323,7 +323,7 @@
+ /**
+  * Get the file name from a path.
+  */
+-string file_name(const string& path) throw ()
++string file_name(const string& path)
+ {
+ 	size_t pos = path.rfind('/');
+ 	if (pos == string::npos) {
+@@ -336,7 +336,7 @@
+ /**
+  * Get the basepath (path without extension) from a path.
+  */
+-string file_basepath(const string& path) throw ()
++string file_basepath(const string& path)
+ {
+ 	size_t dot = path.rfind('.');
+ 	if (dot == string::npos)
+@@ -348,7 +348,7 @@
+ /**
+  * Get the basename (name without extension) from a path.
+  */
+-string file_basename(const string& path) throw ()
++string file_basename(const string& path)
+ { 
+ 	string name = file_name(path);
+ 	size_t dot = name.rfind('.');
+@@ -361,7 +361,7 @@
+ /**
+  * Get the extension from a path.
+  */
+-string file_ext(const string& path) throw ()
++string file_ext(const string& path)
+ { 
+ 	string name = file_name(path);
+ 	size_t dot = name.rfind('.');
+@@ -374,7 +374,7 @@
+ /**
+  * Compare two path.
+  */
+-int file_compare(const string& path1, const string& path2) throw ()
++int file_compare(const string& path1, const string& path2)
+ {
+ 	return strcasecmp(path1.c_str(), path2.c_str());
+ }
+@@ -382,7 +382,7 @@
+ /**
+  * Convert a path to the C format.
+  */
+-string file_adjust(const string& path) throw ()
++string file_adjust(const string& path)
+ {
+ 	string r;
+ 	for(unsigned i=0;i<path.length();++i) {
+@@ -400,7 +400,7 @@
+ /**
+  * Make a drectory tree.
+  */
+-void file_mktree(const std::string& path) throw (error)
++void file_mktree(const std::string& path)
+ {
+ 	string dir = file_dir(path);
+ 	string name = file_name(path);
+--- a/file.h
++++ b/file.h
+@@ -67,27 +67,27 @@
+ crc_t crc_compute(const char* data, unsigned len);
+ crc_t crc_compute(crc_t pred, const char* data, unsigned len);
+ 
+-bool file_exists(const std::string& file) throw (error);
+-void file_write(const std::string& path, const char* data, unsigned size) throw (error);
+-void file_read(const std::string& path, char* data, unsigned size) throw (error);
+-void file_read(const std::string& path, char* data, unsigned offset, unsigned size) throw (error);
+-time_t file_time(const std::string& path) throw (error);
+-void file_utime(const std::string& path, time_t tod) throw (error);
+-unsigned file_size(const std::string& path) throw (error);
+-crc_t file_crc(const std::string& path) throw (error);
+-void file_copy(const std::string& path1, const std::string& path2) throw (error);
+-void file_move(const std::string& path1, const std::string& path2) throw (error);
+-void file_remove(const std::string& path1) throw (error);
+-void file_mktree(const std::string& path1) throw (error);
++bool file_exists(const std::string& file);
++void file_write(const std::string& path, const char* data, unsigned size);
++void file_read(const std::string& path, char* data, unsigned size);
++void file_read(const std::string& path, char* data, unsigned offset, unsigned size);
++time_t file_time(const std::string& path);
++void file_utime(const std::string& path, time_t tod);
++unsigned file_size(const std::string& path);
++crc_t file_crc(const std::string& path);
++void file_copy(const std::string& path1, const std::string& path2);
++void file_move(const std::string& path1, const std::string& path2);
++void file_remove(const std::string& path1);
++void file_mktree(const std::string& path1);
+ 
+-std::string file_randomize(const std::string& path, int n) throw ();
+-std::string file_name(const std::string& file) throw ();
+-std::string file_dir(const std::string& file) throw ();
+-std::string file_basename(const std::string& file) throw ();
+-std::string file_basepath(const std::string& file) throw ();
+-std::string file_ext(const std::string& file) throw ();
+-int file_compare(const std::string& path1, const std::string& path2) throw ();
+-std::string file_adjust(const std::string& path) throw ();
++std::string file_randomize(const std::string& path, int n);
++std::string file_name(const std::string& file);
++std::string file_dir(const std::string& file);
++std::string file_basename(const std::string& file);
++std::string file_basepath(const std::string& file);
++std::string file_ext(const std::string& file);
++int file_compare(const std::string& path1, const std::string& path2);
++std::string file_adjust(const std::string& path);
+ 
+ #endif
+ 
