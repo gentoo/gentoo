@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-hang.patch
 	"${FILESDIR}"/${P}-matrixview-copy-font.patch
 	"${FILESDIR}"/${P}-missing-include.patch
+	"${FILESDIR}"/${P}-bashism.patch
 )
 
 src_prepare() {
