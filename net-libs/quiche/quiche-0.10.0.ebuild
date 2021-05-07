@@ -201,11 +201,11 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_compile bssl
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta" --target="$(rust_abi)"
+	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features "ffi pkg-config-meta" --target="${RUSTHOST}"
 }
 
 multilib_src_test() {
-	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test  --target="$(rust_abi)"
+	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_test --target="${RUSTHOST}"
 }
 
 multilib_src_install() {
@@ -213,7 +213,7 @@ multilib_src_install() {
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins target/release/quiche.pc
 	doheader -r include/*
-	dolib.so "target/$(rust_abi)/release/libquiche.so"
+	dolib.so "target/${RUSTHOST}/release/libquiche.so"
 	QA_FLAGS_IGNORED+=" usr/$(get_libdir)/libquiche.so" # rust libraries don't use LDFLAGS
 	QA_SONAME+=" usr/$(get_libdir)/libquiche.so" # https://github.com/cloudflare/quiche/issues/165
 }
