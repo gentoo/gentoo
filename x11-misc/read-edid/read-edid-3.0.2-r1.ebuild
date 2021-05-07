@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic linux-info
 
 DESCRIPTION="Program that can get information from a PnP monitor"
 HOMEPAGE="http://www.polypux.org/projects/read-edid/"
@@ -16,6 +16,17 @@ IUSE="vbe-mode"
 
 DEPEND="vbe-mode? ( >=dev-libs/libx86-1.1 )"
 RDEPEND="${DEPEND}"
+
+pkg_setup() {
+	CONFIG_CHECK="~I2C_CHARDEV"
+	ERROR_I2C_CHARDEV="I2C_CHARDEV support not enabled in the kernel. get-edid will "
+	if use vbe-mode; then
+		ERROR_I2C_CHARDEV+="fall back to the legacy, VBE-based interface."
+	else
+		ERROR_I2C_CHARDEV+="not work."
+	fi
+	linux-info_pkg_setup
+}
 
 src_prepare() {
 	sed -i -e 's|COPYING||g;s|share/doc/read-edid|share/doc/'"${PF}"'|g' \
