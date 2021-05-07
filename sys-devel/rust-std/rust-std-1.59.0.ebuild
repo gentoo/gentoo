@@ -76,10 +76,9 @@ src_configure() {
 
 	local rust_root x
 	rust_root="$(rustc --print sysroot)"
-	rtarget="$(rust_abi ${CTARGET})"
-	rtarget="${ERUST_STD_RTARGET:-${rtarget}}" # some targets need to be custom.
-	rbuild="$(rust_abi ${CBUILD})"
-	rhost="$(rust_abi ${CHOST})"
+	rtarget="${ERUST_STD_RTARGET:-${RUSTHOST}}" # some targets need to be custom.
+	rbuild="${RUSTBUILD:-${RUSTHOST}}"
+	rhost="${RUSTHOST}"
 
 	echo
 	for x in CATEGORY rust_root rbuild rhost rtarget RUSTFLAGS CFLAGS CXXFLAGS LDFLAGS; do
