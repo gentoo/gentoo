@@ -40,7 +40,7 @@ BDEPEND="
 	)
 	java? (
 		dev-lang/swig
-		virtual/jdk:1.8
+		>=virtual/jdk-1.8:*
 	)
 	nls? ( >=sys-devel/gettext-0.14.5 )
 	perl? ( dev-lang/swig )
@@ -66,7 +66,7 @@ RDEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	gts? ( sci-libs/gts )
 	guile? ( dev-scheme/guile )
-	java? ( virtual/jdk:1.8 )
+	java? ( >=virtual/jre-1.8:* )
 	lasi? ( media-libs/lasi )
 	pdf? ( app-text/poppler )
 	perl? ( dev-lang/perl:= )
