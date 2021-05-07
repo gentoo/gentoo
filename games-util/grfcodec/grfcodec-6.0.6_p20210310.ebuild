@@ -25,6 +25,18 @@ DEPEND="
 
 S="${WORKDIR}/grfcodec-${COMMIT}"
 
+src_configure() {
+	local mycmakeargs=(
+		# Make sure we don't use git by accident.
+		# Build system does not care much if it's
+		# executed successfully and populates
+		# YEARS / VERSION with empty values.
+		-DGIT_EXECUTABLE=/bin/do-not-use-git-executable
+	)
+
+	cmake_src_configure
+}
+
 src_install() {
 	dobin "${BUILD_DIR}"/{grfcodec,grfid,grfstrip,nforenum}
 	doman docs/*.1
