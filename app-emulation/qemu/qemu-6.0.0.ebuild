@@ -111,6 +111,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
 	vhost-user-fs? ( caps seccomp )
+	virgl? ( opengl )
 	virtfs? ( caps xattr )
 	vte? ( gtk )
 	multipath? ( udev )
