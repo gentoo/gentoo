@@ -248,7 +248,7 @@ pkg_setup() {
 src_prepare() {
 	if ! use system-bootstrap; then
 		local rust_stage0_root="${WORKDIR}"/rust-stage0
-		local rust_stage0="rust-${RUST_STAGE0_VERSION}-$(rust_abi)"
+		local rust_stage0="rust-${RUST_STAGE0_VERSION}-${RUSTHOST}"
 
 		"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig \
 			--without=rust-docs --destdir="${rust_stage0_root}" --prefix=/ || die
@@ -262,7 +262,7 @@ src_configure() {
 
 	# Collect rust target names to compile standard libs for all ABIs.
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_targets="${rust_targets},\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
+		rust_targets="${rust_targets},\"$(get_abi_RUSTHOST ${v##*.})\""
 	done
 	if use wasm; then
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
@@ -302,8 +302,6 @@ src_configure() {
 	# in case of prefix it will be already prefixed, as --print sysroot returns full path
 	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
 
-	rust_target="$(rust_abi)"
-
 	cat <<- _EOF_ > "${S}"/config.toml
 		changelog-seen = 2
 		[llvm]
@@ -315,7 +313,7 @@ src_configure() {
 		targets = "${LLVM_TARGETS// /;}"
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
-		$(case "${rust_target}" in
+		$(case ${RUSTHOST} in
 			i586-*-linux-*)
 				# https://github.com/rust-lang/rust/issues/93059
 				echo 'cflags = "-fcf-protection=none"'
@@ -327,8 +325,8 @@ src_configure() {
 		build-stage = 2
 		test-stage = 2
 		doc-stage = 2
-		build = "${rust_target}"
-		host = ["${rust_target}"]
+		build = "${RUSTBUILD:-${RUSTHOST}}"
+		host = ["${RUSTHOST}"]
 		target = [${rust_targets}]
 		cargo = "${rust_stage0_root}/bin/cargo"
 		rustc = "${rust_stage0_root}/bin/rustc"
@@ -389,7 +387,7 @@ src_configure() {
 	_EOF_
 
 	for v in $(multilib_get_enabled_abi_pairs); do
-		rust_target=$(rust_abi $(get_abi_CHOST ${v##*.}))
+		rust_target=$(get_abi_RUSTHOST ${v##*.})
 		arch_cflags="$(get_abi_CFLAGS ${v##*.})"
 
 		cat <<- _EOF_ >> "${S}"/config.env
