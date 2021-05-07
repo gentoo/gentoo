@@ -42,6 +42,7 @@ DOCS=( CHANGES README )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"
+	"${FILESDIR}/${PN}-fix-bindings.patch"
 
 	# upstream fixes (can be removed with next version bump)
 )
