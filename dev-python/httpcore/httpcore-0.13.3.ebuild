@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	=dev-python/h11-0*[${PYTHON_USEDEP}]
+	<dev-python/h11-0.13[${PYTHON_USEDEP}]
+	<dev-python/hyper-h2-5[${PYTHON_USEDEP}]
 	=dev-python/sniffio-1*[${PYTHON_USEDEP}]
 "
 BDEPEND="
