@@ -140,6 +140,10 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins Makefile.inc
+	if [ "${PV}" = "9999" ];then
+		doins "${FILESDIR}"/gdb
+		dobin "${FILESDIR}"/kismet-gdb
+	fi
 
 	dodoc CHANGELOG README*
 	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
