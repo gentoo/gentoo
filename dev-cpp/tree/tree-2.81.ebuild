@@ -8,15 +8,17 @@ inherit toolchain-funcs
 DESCRIPTION="An STL-like tree class"
 HOMEPAGE="http://www.aei.mpg.de/~peekas/tree/"
 SRC_URI="http://www.aei.mpg.de/~peekas/tree/${P}.tar.gz"
+S="${WORKDIR}/${P}/src"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc"
 
-S="${WORKDIR}/${P}/src"
-
-PATCHES=( "${FILESDIR}"/${P}-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+	"${FILESDIR}"/${P}-gcc11.patch
+)
 
 src_configure() {
 	tc-export CXX
