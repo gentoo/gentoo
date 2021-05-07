@@ -197,10 +197,6 @@ sys-apps/flashrom jlink-spi
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
-# not yet keyworded
-dev-java/openjdk javafx
-
 # Aaron Bauman <bman@gentoo.org> (2019-04-08)
 # app-text/dblatex not keyword yet
 net-firewall/nftables doc

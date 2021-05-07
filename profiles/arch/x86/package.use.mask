@@ -51,10 +51,6 @@ sys-libs/compiler-rt-sanitizers -profile
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# swt 4.10 not keyworded on x86
-dev-java/openjdk:8 javafx
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
 # Columnstore engine is supported on x86
 dev-db/mariadb -columnstore

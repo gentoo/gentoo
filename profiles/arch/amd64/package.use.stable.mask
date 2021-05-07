@@ -17,7 +17,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-05)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
 # openjfx:8 will never be stabilized
 # openjfx:11 probably will neither
 dev-java/openjdk:8 javafx
