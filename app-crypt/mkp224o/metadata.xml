@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>matt@offtopica.uk</email>
+    <name>Matt Smith</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="amd64-51-30k">Use x86_64 amd64-51-30k SUPERCOP implementation</flag>
+    <flag name="amd64-64-24k">Use x86_64 amd64-64-24k SUPERCOP implementation</flag>
+    <flag name="besort">Force intfilter binary search case to use big endian sorting; useful if your filters aren't of the same length</flag>
+    <flag name="binsearch">Enable binary search algo; much faster if there are a lot of filters</flag>
+    <flag name="donna">Use portable ed25519-donna implementation</flag>
+    <flag name="donna-sse2">Use x86 + SSE2 ed25519-donna implementation</flag>
+    <flag name="pcre2">Enable the regex engine and use pcre2</flag>
+    <flag name="ref10">Use portable ref10 SUPERCOP implementation</flag>
+    <flag name="statistics">Collect performance statistics</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">cathugger/mkp224o</remote-id>
+  </upstream>
+</pkgmetadata>
