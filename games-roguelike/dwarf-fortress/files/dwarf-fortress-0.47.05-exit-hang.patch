@@ -1,0 +1,27 @@
+# It's unclear exactly why the bundled libgraphics.so does not have this same
+# issue - I imagine it is because the source code in the release archive is not
+# equivalent to whatever the devs are using for the pre-compiled library.
+#
+# An attempt is being made to submit this upstream.
+
+--- a/g_src/enabler.cpp
++++ b/g_src/enabler.cpp
+@@ -590,6 +590,11 @@ int enablerst::loop(string cmdline) {
+ 
+   // Clean up graphical resources
+   delete renderer;
++
++  // indicate to the main loop that we're ready to exi
++  loopvar = 1;
++
++  return 0;
+ }
+ 
+ void enablerst::override_grid_size(int x, int y) {
+@@ -966,4 +971,4 @@ void curses_text_boxst::add_paragraph(stringvectst &src,int32_t para_width)
+ 
+ 	//FLUSH FINAL BIT
+ 	if(!curstr.empty())text.add_string(curstr);
+-}
+\ No newline at end of file
++}

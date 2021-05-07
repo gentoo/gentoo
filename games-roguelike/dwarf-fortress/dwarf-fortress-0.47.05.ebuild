@@ -41,6 +41,8 @@ gamesdir="/opt/${PN}"
 QA_PREBUILT="${gamesdir#/}/libs/Dwarf_Fortress"
 RESTRICT="strip"
 
+PATCHES=( "${FILESDIR}/${PN}-0.47.05-exit-hang.patch" )
+
 src_unpack() {
 	default
 
@@ -49,7 +51,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	# for eapply_user
+	# for patches
 	default
 
 	# We don't want to use any of the bundled libraries
