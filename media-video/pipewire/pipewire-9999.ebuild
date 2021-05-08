@@ -1,13 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit meson optfeature udev multilib-minimal
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
-#	EGIT_BRANCH="master"
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
@@ -33,6 +32,8 @@ REQUIRED_USE="
 	jack-sdk? ( !jack-client )
 	ldac? ( bluetooth )
 "
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-doc/xmltoman
@@ -92,8 +93,6 @@ DEPEND="${RDEPEND}"
 #	>=dev-util/vulkan-headers-1.1.69
 
 DOCS=( {README,INSTALL}.md NEWS )
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
