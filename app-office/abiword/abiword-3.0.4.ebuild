@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
 SRC_URI="
 	http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${P}-patchset-r2.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patchset-r3.txz"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -74,6 +74,7 @@ PATCHES=(
 	"${WORKDIR}"/patches/${PN}-3.0.4-enchant-2.patch # backport
 	"${WORKDIR}"/patches/${PN}-3.0.4-pygobject.patch
 	"${WORKDIR}"/patches/${PN}-3.0.4-asio-standalone-placeholders.patch
+	"${WORKDIR}"/patches/${PN}-3.0.4-c++17-dynamic-exception-specifications.patch
 )
 
 src_prepare() {
