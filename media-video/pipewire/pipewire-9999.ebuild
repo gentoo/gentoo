@@ -19,7 +19,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/0.3"
-IUSE="aac aptx bluetooth doc extra gstreamer jack-client ldac pipewire-alsa systemd test v4l"
+IUSE="aac aptx bluetooth doc extra gstreamer jack-client jack-sdk ldac pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -30,6 +30,7 @@ IUSE="aac aptx bluetooth doc extra gstreamer jack-client ldac pipewire-alsa syst
 REQUIRED_USE="
 	aac? ( bluetooth )
 	aptx? ( bluetooth )
+	jack-sdk? ( !jack-client )
 	ldac? ( bluetooth )
 "
 
@@ -61,6 +62,10 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jack-client? ( >=media-sound/jack2-1.9.10:2[dbus] )
+	jack-sdk? (
+		!media-sound/jack-audio-connection-kit
+		!media-sound/jack2
+	)
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7
 		|| (
@@ -122,8 +127,6 @@ src_configure() {
 		-Dsystemd-system-service=disabled # Matches upstream
 		$(meson_feature systemd systemd-user-service)
 		$(meson_feature pipewire-alsa) # Allows integrating ALSA apps into PW graph
-		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
-		#-Dlibjack-path="" # Where to install libjack.so et al (if an absolute path is used, remember to prefix it with ${EROOT} or similar!); setting this will also break pw-jack's multilib support (but presumably that's okay as the intended use would be to replace system's libraries making the loader irrelevant)
 		-Dspa-plugins=enabled
 		-Dalsa=enabled # Allows using kernel ALSA for sound I/O (-Dmedia-session depends on this)
 		-Daudiomixer=enabled # Matches upstream
@@ -139,7 +142,9 @@ src_configure() {
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
+		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
 		$(meson_feature jack-client jack) # Allows PW to act as a JACK client
+		$(usex jack-sdk "-Dlibjack-path=${EPREFIX}/usr/$(get_libdir)" '')
 		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
 		-Devl=disabled # Matches upstream
 		-Dtest=disabled # fakesink and fakesource plugins
@@ -201,12 +206,14 @@ pkg_postinst() {
 		elog
 	fi
 
-	elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
-	elog "alternative libraries have been installed to a non-default location."
-	elog "To use them, put pw-jack <application> before every JACK application."
-	elog "When using pw-jack, do not run jackd/jackdbus. However, a virtual/jack"
-	elog "provider is still needed to compile the JACK applications themselves."
-	elog
+	if ! use jack-sdk; then
+		elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
+		elog "alternative libraries have been installed to a non-default location."
+		elog "To use them, put pw-jack <application> before every JACK application."
+		elog "When using pw-jack, do not run jackd/jackdbus. However, a virtual/jack"
+		elog "provider is still needed to compile the JACK applications themselves."
+		elog
+	fi
 
 	if use systemd; then
 		elog "Per Gentoo policy installed systemd units must be manually enabled:"
