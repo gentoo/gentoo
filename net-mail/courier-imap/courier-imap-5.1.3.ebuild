@@ -64,7 +64,6 @@ and rerun mkdhparams if needed. Location has changed
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.17-disable-fam-configure.ac.patch"
 	"${FILESDIR}/${PN}-4.17-aclocal-fix.patch"
 	"${FILESDIR}/${PN}-5.0.8-ar-fix.patch"
 )
@@ -79,7 +78,6 @@ src_prepare() {
 		eapply "${FILESDIR}/${PN}-4.17-db4-configure.ac.patch"
 	fi
 
-	cd libs/rootcerts & autoupdate
 	eautoreconf
 }
 
