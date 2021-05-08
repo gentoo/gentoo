@@ -1,0 +1,11 @@
+--- a/tools/qfcc/test/Makefile.am
++++ b/tools/qfcc/test/Makefile.am
+@@ -144,7 +144,7 @@ voidfor.dat: $(voidfor_obj) $(QFCC_DEP)
+ voidfor.run: Makefile build-run
+ 	$(srcdir)/build-run $@
+ 
+-include ./$(DEPDIR)/*.Qo
++-include ./$(DEPDIR)/*.Po
+ 
+ EXTRA_DIST= test-bi.h build-run
+ CLEANFILES= *.dat *.sym *.qfo *.run
