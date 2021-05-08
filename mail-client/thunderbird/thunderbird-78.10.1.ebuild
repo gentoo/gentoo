@@ -192,11 +192,6 @@ DEPEND="${CDEPEND}
 S="${WORKDIR}/${PN}-${PV%_*}"
 
 llvm_check_deps() {
-	if ! has_version -b "sys-devel/llvm:${LLVM_SLOT}" ; then
-		ewarn "sys-devel/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
-		return 1
-	fi
-
 	if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
 		ewarn "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
 		return 1
