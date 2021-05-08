@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_OPTIONAL=1
 
 inherit cmake distutils-r1 toolchain-funcs
@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="doc examples python"
+IUSE="+doc python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -40,10 +40,16 @@ RDEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	doc? ( app-text/asciidoc )
 "
 
+if [[ -n "${EGIT_REPO_URI}" ]]; then
+	# Herbstluftwm tarballs ship with pre-compiled documentation, only
+	# if we build from git asciidoc is needed.
+	BDEPEND+=" doc? ( app-text/asciidoc )"
+fi
+
 src_prepare() {
+	# Do not install LICENSE and respect CMAKE_INSTALL_DOCDIR.
 	sed -i \
 		-e '/^install.*LICENSEDIR/d' \
 		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
@@ -80,7 +86,7 @@ src_compile() {
 src_install() {
 	cmake_src_install
 
-	if ! use examples; then
+	if ! use doc; then
 		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
 
@@ -90,4 +96,18 @@ src_install() {
 		popd > /dev/null || die
 	fi
 
+	# The man pages exists in src_install either in non-live ebuilds,
+	# since they are then shipped pre-compiled in herbstluftwm's
+	# release tarbal. Or they exist in live ebuilds if the 'doc' USE
+	# flag is enabled.
+	if [[ "${PV}" != 9999 ]] || use doc; then
+		local man_pages=(
+			herbstluftwm.1
+			herbstclient.1
+			herbstluftwm-tutorial.7
+		)
+		for man_page in "${man_pages[@]}"; do
+			doman "doc/${man_page}"
+		done
+	fi
 }
