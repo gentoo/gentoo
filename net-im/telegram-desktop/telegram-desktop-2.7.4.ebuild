@@ -71,6 +71,8 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-2.7.3-disable-webkit-separately.patch"
 	# https://github.com/desktop-app/lib_webview/commit/0b4100d7cecc4e748c51f3f51ebfd1392ec3978a
 	"${FILESDIR}/tdesktop-2.7.3-webview-include-gdkx.patch"
+	# https://github.com/desktop-app/lib_webview/pull/3
+	"${FILESDIR}/tdesktop-2.7.4-webview-fix-gcc11.patch"
 )
 
 pkg_pretend() {
