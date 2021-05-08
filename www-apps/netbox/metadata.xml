@@ -5,4 +5,8 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>alarig@swordarmor.fr</email>
+		<name>Alarig Le Lay</name>
+	</maintainer>
 </pkgmetadata>
