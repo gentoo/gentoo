@@ -711,7 +711,7 @@ app-admin/lastpass-cli
 # API. Likely to break several consumers
 # which haven't yet ported.
 # bug #729098
-~sci-libs/proj-8.0.0
+>=sci-libs/proj-8.0.0
 
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes
