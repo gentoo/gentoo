@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic multilib
+inherit cmake flag-o-matic multilib
 
 PATCHSET_VER="0"
 
@@ -27,9 +27,7 @@ RDEPEND="sys-libs/ncurses:=
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
-	ssl? (
-		dev-libs/openssl:0
-	)
+	ssl? ( dev-libs/openssl:0 )
 	java? ( >=virtual/jdk-1.8:* )
 	uuid? ( dev-libs/ossp-uuid )
 	qt5? (
@@ -64,7 +62,7 @@ src_prepare() {
 	sed -i -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" CMakeLists.txt || die
 	sed -i -e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -88,17 +86,17 @@ src_configure() {
 		-DSWIPL_PACKAGES_TERM=$(if use libedit || use readline; then echo yes; else echo no; fi)
 		)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	XDG_CONFIG_DIRS="${HOME}" \
 	XDG_DATA_DIRS="${HOME}" \
-		cmake-utils_src_compile
+		cmake_src_compile
 }
 
 src_test() {
 	USE_PUBLIC_NETWORK_TESTS=false \
 	USE_ODBC_TESTS=false \
-		cmake-utils_src_test -V
+		cmake_src_test -V
 }
