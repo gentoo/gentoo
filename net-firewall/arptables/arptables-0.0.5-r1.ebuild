@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 BDEPEND=">=app-eselect/eselect-iptables-20200508"
