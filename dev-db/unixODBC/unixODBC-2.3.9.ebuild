@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit libtool multilib-minimal
+inherit multilib-minimal
 
-DESCRIPTION="A complete ODBC driver manager"
+DESCRIPTION="complete ODBC driver manager"
 HOMEPAGE="http://www.unixodbc.org/"
 SRC_URI="ftp://ftp.unixodbc.org/pub/${PN}/${P}.tar.gz"
 
