@@ -43,6 +43,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
+	acct-group/audio
 	media-libs/alsa-lib
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/ncurses[unicode]
@@ -122,6 +123,15 @@ src_prepare() {
 		# significantly worse user experience on systemd then.
 		eapply "${FILESDIR}"/${PN}-0.3.25-non-systemd-integration.patch
 	fi
+
+	einfo "Generating ${limitsdfile}"
+	cat > ${limitsdfile} <<- EOF || die
+		# Start of ${limitsdfile} from ${P}
+
+		@audio	-	memlock 256
+
+		# End of ${limitsdfile} from ${P}
+	EOF
 }
 
 multilib_src_configure() {
@@ -178,17 +188,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	meson_src_compile
-
-	if multilib_is_native_abi; then
-		einfo "Generating ${limitsdfile}"
-		cat > ${limitsdfile} <<- EOF || die
-			# Start of ${limitsdfile} from ${P}
-
-			1000:60000	-	memlock 256
-
-			# End of ${limitsdfile} from ${P}
-		EOF
-	fi
 }
 
 multilib_src_install() {
@@ -221,6 +220,11 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	if ! use pipewire-alsa; then
+		elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for user"
+		elog "using PipeWire. Do it either manually or add yourself"
+		elog "to the 'audio' group:"
+		elog "  usermod -aG audio <youruser>"
+		elog
 		elog "Contrary to what some online resources may suggest, avoid setting"
 		elog "PULSE_LATENCY_MSEC environment variable since it may break ALSA clients."
 		elog
