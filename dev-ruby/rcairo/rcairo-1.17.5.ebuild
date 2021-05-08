@@ -24,7 +24,7 @@ IUSE=""
 
 SLOT="0"
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="${RDEPEND}
 	>=x11-libs/cairo-1.2.0[svg]"
