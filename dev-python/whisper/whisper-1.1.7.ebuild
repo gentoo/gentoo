@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Fixed size round-robin style database"
@@ -15,19 +15,7 @@ SRC_URI="https://github.com/graphite-project/${PN}/archive/${PV}.tar.gz -> ${P}.
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="
-	test? (
-		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
-
-#python_test() {
-#	py.test || die "tests failed with ${EPYTHON}"
-#}
