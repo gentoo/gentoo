@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit bash-completion-r1 toolchain-funcs optfeature udev
+inherit bash-completion-r1 optfeature udev
 
 DESCRIPTION="OpenVZ ConTainers control utility"
-HOMEPAGE="http://openvz.org/"
-SRC_URI="http://download.openvz.org/utils/${PN}/${PV}/src/${P}.tar.bz2"
+HOMEPAGE="https://openvz.org/"
+SRC_URI="https://download.openvz.org/utils/${PN}/${PV}/src/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
 IUSE="+ploop +vzmigrate"
