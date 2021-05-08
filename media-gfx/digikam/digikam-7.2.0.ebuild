@@ -108,6 +108,8 @@ RDEPEND="${COMMON_DEPEND}
 	panorama? ( media-gfx/hugin )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-qt-5.15.2-after-f8ad329f.patch )
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	ecm_pkg_pretend
