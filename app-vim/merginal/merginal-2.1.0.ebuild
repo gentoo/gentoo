@@ -24,8 +24,3 @@ LICENSE="vim"
 RDEPEND="app-vim/fugitive"
 
 VIM_PLUGIN_HELPFILES="${PN}"
-
-src_prepare() {
-	rm README.md || die
-	default
-}

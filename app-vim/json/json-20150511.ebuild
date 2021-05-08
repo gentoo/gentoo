@@ -11,8 +11,3 @@ LICENSE="MIT"
 KEYWORDS="amd64 x86"
 
 DOCS=( readme.md )
-
-src_prepare() {
-	rm *-test.* license.md || die
-	default
-}

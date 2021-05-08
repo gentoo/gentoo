@@ -17,9 +17,4 @@ S="${WORKDIR}/vim-${P}"
 
 VIM_PLUGIN_HELPFILES="${PN}"
 
-DOCS=( CHANGELOG.md )
-
-src_prepare() {
-	default
-	rm LICENSE README.md || die
-}
+DOCS=( CHANGELOG.md README.md )

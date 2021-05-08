@@ -19,17 +19,4 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}.vim-${PV}"
 
-src_prepare() {
-	default
-	local CLEANUP=(
-		Makefile
-		config.mk
-		README.mkd
-		README.mkd.old
-		win32-install.bat
-		TODO
-	)
-	rm -v "${CLEANUP[@]}" || die
-}
-
 src_compile() { :; }

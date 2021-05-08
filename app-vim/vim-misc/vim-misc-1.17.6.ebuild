@@ -14,6 +14,6 @@ KEYWORDS="amd64 x86"
 VIM_PLUGIN_HELPFILES="misc.txt"
 
 src_prepare() {
-	rm INSTALL.md addon-info.json autoload/xolox/misc/echo.exe || die
+	rm autoload/xolox/misc/echo.exe || die
 	default
 }

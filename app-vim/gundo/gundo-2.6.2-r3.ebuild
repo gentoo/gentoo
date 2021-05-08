@@ -27,6 +27,6 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 PATCHES=( "${FILESDIR}"/${P}-python3.patch )
 
 src_prepare() {
-	rm -r .gitignore .hg* package.sh README* site tests || die
+	rm -r site tests || die
 	default
 }

@@ -13,7 +13,4 @@ KEYWORDS="amd64 ~mips ppc ppc64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
-src_prepare() {
-	rm Makefile .gitignore || die
-	default
-}
+src_compile() { :; }

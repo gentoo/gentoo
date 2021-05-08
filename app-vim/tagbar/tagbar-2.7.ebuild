@@ -15,8 +15,3 @@ KEYWORDS="amd64 x86"
 RDEPEND=">=dev-util/ctags-5.5"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
-
-src_prepare() {
-	rm LICENSE || die
-	default
-}

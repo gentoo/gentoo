@@ -15,10 +15,3 @@ KEYWORDS="amd64 ~mips ppc x86"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 S=${WORKDIR}/${MY_PN}-${PV}
-
-src_prepare() {
-	default
-
-	# discard unwanted files
-	rm .gitignore README.md || die
-}

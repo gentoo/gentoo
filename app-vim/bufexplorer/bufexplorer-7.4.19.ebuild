@@ -12,8 +12,3 @@ LICENSE="BSD"
 KEYWORDS="~amd64 ~x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
-
-src_prepare() {
-	default
-	rm LICENSE README.md || die
-}

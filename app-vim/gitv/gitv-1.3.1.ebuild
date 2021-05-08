@@ -24,7 +24,7 @@ RDEPEND="
 	app-vim/fugitive"
 
 src_prepare() {
-	rm -f doc/tags addon-info.json roadmap.md || die
+	rm -f doc/tags || die
 	rm -r img || die
 	default
 }

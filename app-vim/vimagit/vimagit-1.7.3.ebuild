@@ -20,8 +20,3 @@ VIM_PLUGIN_HELPFILES="${PN}"
 RDEPEND="dev-vcs/git"
 
 DOCS=( README.md Changelog )
-
-src_prepare() {
-	rm _config.yml || die
-	default
-}
