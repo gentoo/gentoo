@@ -9,6 +9,10 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">hvac/hvac</remote-id>
