@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Sniff out which async library your code is running under"
@@ -26,6 +26,5 @@ python_test() {
 		sniffio/_tests/test_sniffio.py::test_curio
 	)
 
-	pytest -vv ${deselect[@]/#/--deselect } ||
-		die "Tests failed with ${EPYTHON}"
+	epytest ${deselect[@]/#/--deselect }
 }
