@@ -1,0 +1,239 @@
+From 6fb37dc0260c298bc35ec5e39399aa1f31693e79 Mon Sep 17 00:00:00 2001
+From: Carson Black <uhhadd@gmail.com>
+Date: Thu, 6 Aug 2020 11:58:23 +0200
+Subject: [PATCH] Implement adaptive opacity for panels
+
+---
+ .../contents/applet/CompactApplet.qml         |   1 +
+ .../panelconfiguration/MoreSettingsMenu.qml   |  35 +++++
+ desktoppackage/contents/views/Panel.qml       | 144 +++++++++++++++++-
+ 3 files changed, 174 insertions(+), 6 deletions(-)
+
+diff --git a/desktoppackage/contents/applet/CompactApplet.qml b/desktoppackage/contents/applet/CompactApplet.qml
+index 0d4c85f52..65eb0468e 100644
+--- a/desktoppackage/contents/applet/CompactApplet.qml
++++ b/desktoppackage/contents/applet/CompactApplet.qml
+@@ -153,6 +153,7 @@ PlasmaCore.ToolTipArea {
+         visualParent: compactRepresentation ? compactRepresentation : null
+         location: plasmoid.location
+         hideOnWindowDeactivate: plasmoid.hideOnWindowDeactivate
++        backgroundHints: (plasmoid.containmentDisplayHints & PlasmaCore.Types.DesktopFullyCovered) ? PlasmaCore.Dialog.SolidBackground : PlasmaCore.Dialog.StandardBackground
+ 
+         property var oldStatus: PlasmaCore.Types.UnknownStatus
+ 
+diff --git a/desktoppackage/contents/configuration/panelconfiguration/MoreSettingsMenu.qml b/desktoppackage/contents/configuration/panelconfiguration/MoreSettingsMenu.qml
+index 2e577fbcc..d668eb3c2 100644
+--- a/desktoppackage/contents/configuration/panelconfiguration/MoreSettingsMenu.qml
++++ b/desktoppackage/contents/configuration/panelconfiguration/MoreSettingsMenu.qml
+@@ -131,6 +131,41 @@ PlasmaCore.Dialog {
+                 flat: false
+             }
+         }
++        PlasmaExtras.Heading {
++            level: 3
++            text: i18nd("plasma_shell_org.kde.plasma.desktop", "Opacity")
++            visible: panel.adaptiveOpacityEnabled
++        }
++        PlasmaComponents.ButtonColumn {
++            spacing: 0
++            visible: panel.adaptiveOpacityEnabled
++            Layout.fillWidth: true
++            Layout.minimumWidth: implicitWidth
++            PlasmaComponents.ToolButton {
++                width: Math.max(implicitWidth, parent.width)
++                text: i18nd("plasma_shell_org.kde.plasma.desktop", "Adaptive")
++                checkable: true
++                checked: configDialog.opacityMode === 0
++                onClicked: configDialog.opacityMode = 0
++                flat: false
++            }
++            PlasmaComponents.ToolButton {
++                width: Math.max(implicitWidth, parent.width)
++                text: i18nd("plasma_shell_org.kde.plasma.desktop", "Opaque")
++                checkable: true
++                checked: configDialog.opacityMode === 1
++                onClicked: configDialog.opacityMode = 1
++                flat: false
++            }
++            PlasmaComponents.ToolButton {
++                width: Math.max(implicitWidth, parent.width)
++                text: i18nd("plasma_shell_org.kde.plasma.desktop", "Translucent")
++                checkable: true
++                checked: configDialog.opacityMode === 2
++                onClicked: configDialog.opacityMode = 2
++                flat: false
++            }
++        }
+         PlasmaComponents.ToolButton {
+             Layout.fillWidth: true
+             text: i18nd("plasma_shell_org.kde.plasma.desktop", "Maximize Panel")
+diff --git a/desktoppackage/contents/views/Panel.qml b/desktoppackage/contents/views/Panel.qml
+index 2fd6ac4d5..cf6c04328 100644
+--- a/desktoppackage/contents/views/Panel.qml
++++ b/desktoppackage/contents/views/Panel.qml
+@@ -21,17 +21,27 @@ import QtQuick.Layouts 1.1
+ import QtQml 2.15
+ 
+ import org.kde.plasma.core 2.0 as PlasmaCore
++import org.kde.taskmanager 0.1 as TaskManager
+ 
+-PlasmaCore.FrameSvgItem {
++Item {
+     id: root
+ 
+-    imagePath: containment && containment.backgroundHints === PlasmaCore.Types.NoBackground ? "" : "widgets/panel-background"
+-
+-    enabledBorders: panel.enabledBorders
+-
+     property Item containment
+ 
+-    property alias panelMask: root.mask
++    property alias panelMask: privateSwapper.mask
++
++    QtObject {
++        id: privateSwapper
++        property string completedState: ""
++        // Work around the fact that we can't use a ternary if in an alias
++        readonly property var mask: {
++            if (completedState == "opaque") {
++                return opaqueItem.mask
++            } else {
++                return translucentItem.mask
++            }
++        }
++    }
+ 
+     readonly property bool verticalPanel: containment && containment.formFactor === PlasmaCore.Types.Vertical
+ 
+@@ -47,6 +57,128 @@ PlasmaCore.FrameSvgItem {
+     readonly property int leftPadding: Math.round(Math.min(thickPanelSvg.fixedMargins.left, spacingAtMinSize));
+     readonly property int rightPadding: Math.round(Math.min(thickPanelSvg.fixedMargins.right, spacingAtMinSize));
+ 
++    TaskManager.VirtualDesktopInfo {
++        id: virtualDesktopInfo
++    }
++
++    TaskManager.ActivityInfo {
++        id: activityInfo
++    }
++
++    PlasmaCore.SortFilterModel {
++        id: visibleWindowsModel
++        filterRole: 'IsMinimized'
++        filterRegExp: 'false'
++        sourceModel: TaskManager.TasksModel {
++            filterByVirtualDesktop: true
++            filterByActivity: true
++            filterNotMaximized: true
++            filterByScreen: true
++
++            screenGeometry: panel.screenGeometry
++            virtualDesktop: virtualDesktopInfo.currentDesktop
++            activity: activityInfo.currentActivity
++
++            id: tasksModel
++            groupMode: TaskManager.TasksModel.GroupDisabled
++        }
++    }
++
++    PlasmaCore.FrameSvgItem {
++        id: translucentItem
++        enabledBorders: panel.enabledBorders
++        anchors.fill: parent
++
++        imagePath: containment && containment.backgroundHints === PlasmaCore.Types.NoBackground ? "" : "widgets/panel-background"
++    }
++
++    PlasmaCore.FrameSvgItem {
++        id: opaqueItem
++        enabledBorders: panel.enabledBorders
++        anchors.fill: parent
++
++        imagePath: containment && containment.backgroundHints === PlasmaCore.Types.NoBackground ? "" : "solid/widgets/panel-background"
++    }
++
++    transitions: [
++        Transition {
++            from: "*"
++            to: "transparent"
++            SequentialAnimation {
++                ScriptAction {
++                    script: {
++                        translucentItem.visible = true
++                    }
++                }
++                NumberAnimation {
++                    target: opaqueItem
++                    properties: "opacity"
++                    from: 1
++                    to: 0
++                    duration: units.veryLongDuration
++                    easing.type: Easing.InOutQuad
++                }
++                ScriptAction {
++                    script: {
++                        opaqueItem.visible = false
++                        privateSwapper.completedState = "transparent"
++                        root.panelMaskChanged()
++                    }
++                }
++            }
++        },
++        Transition {
++            from: "*"
++            to: "opaque"
++            SequentialAnimation {
++                ScriptAction {
++                    script: {
++                        opaqueItem.visible = true
++                    }
++                }
++                NumberAnimation {
++                    target: opaqueItem
++                    properties: "opacity"
++                    from: 0
++                    to: 1
++                    duration: units.veryLongDuration
++                    easing.type: Easing.InOutQuad
++                }
++                ScriptAction {
++                    script: {
++                        translucentItem.visible = false
++                        privateSwapper.completedState = "opaque"
++                        root.panelMaskChanged()
++                    }
++                }
++            }
++        }
++    ]
++
++    Component.onCompleted: {
++        state = Qt.binding(function() {
++            let mstate = '';
++            if (panel.opacityMode == 0) {
++                mstate = visibleWindowsModel.count > 0 ? "opaque" : "transparent"
++            } else if (panel.opacityMode == 1) {
++                mstate = "opaque"
++            } else {
++                mstate = "transparent"
++            }
++            if (mstate == 'opaque') {
++                containment.containmentDisplayHints |= PlasmaCore.Types.DesktopFullyCovered;
++            } else {
++                containment.containmentDisplayHints &= ~PlasmaCore.Types.DesktopFullyCovered;
++            }
++            return mstate;
++        })
++    }
++    state: ""
++    states: [
++        State { name: "opaque" },
++        State { name: "transparent" }
++    ]
++
+     function adjustPrefix() {
+         if (!containment) {
+             return "";
+-- 
+GitLab
+
