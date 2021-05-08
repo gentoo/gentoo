@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake toolchain-funcs python-any-r1 llvm
+inherit cmake python-any-r1 llvm
 
 LLVM_MAX_SLOT=10
 
 DESCRIPTION="Intel SPMD Program Compiler"
-HOMEPAGE="https://ispc.github.com/"
+HOMEPAGE="https://ispc.github.io"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
