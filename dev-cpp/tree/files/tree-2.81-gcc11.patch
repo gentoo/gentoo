@@ -1,5 +1,5 @@
---- "ORIG/simple tree.hpp"
-+++ "MOD/simple tree.hpp"
+--- "a/simple tree.hpp"
++++ "b/simple tree.hpp"
 @@ -323,7 +323,7 @@
  	public:
  		compare_nodes(StrictWeakOrdering comp) : comp_(comp) {};
