@@ -13,4 +13,5 @@ RDEPEND="
 	|| (
 		media-sound/jack2[${MULTILIB_USEDEP}]
 		media-sound/jack-audio-connection-kit[${MULTILIB_USEDEP}]
+		media-video/pipewire[${MULTILIB_USEDEP},jack-sdk(-)]
 	)"
