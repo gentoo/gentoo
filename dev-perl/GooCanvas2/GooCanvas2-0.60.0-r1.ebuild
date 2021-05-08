@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DIST_AUTHOR=PERLMAX
 DIST_VERSION=0.06
@@ -14,12 +14,15 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	x11-libs/goocanvas:2.0
+	x11-libs/goocanvas:2.0[introspection]
 	dev-perl/Gtk3
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test
 	)
+"
+DEPEND="
+	x11-libs/goocanvas:2.0[introspection]
 "
