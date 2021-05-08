@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="DSA Signatures and Key Generation"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc ~x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86 ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
