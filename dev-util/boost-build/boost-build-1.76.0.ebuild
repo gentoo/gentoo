@@ -45,7 +45,7 @@ src_configure() {
 
 src_compile() {
 	cd engine || die
-	./build.sh cxx --cxx="$(tc-getCXX)" --cxxflags="${CXXFLAGS}" -d+2 --without-python || die "building bjam failed"
+	${CONFIG_SHELL:-${BASH}} ./build.sh cxx --cxx="$(tc-getCXX)" --cxxflags="${CXXFLAGS}" -d+2 --without-python || die "building bjam failed"
 }
 
 src_test() {
