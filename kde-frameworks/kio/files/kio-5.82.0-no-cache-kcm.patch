@@ -1,0 +1,79 @@
+From 581fab08ff4d5539e4684adcffc74ec3517ce29d Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 6 May 2021 21:26:31 +0200
+Subject: [PATCH] Remove the cache KCM
+
+Same reasoning as for
+https://invent.kde.org/frameworks/kio/-/merge_requests/438.
+
+It is very targeted towards KIO-based browsers which don't really exist
+any more.
+
+The setting is also global to everything that uses KIO and it's a bit
+questionable whether for example webdav browsing in Dolphin should
+automatically have the same cache settings as network access in Choqok.
+
+It being part of system settings is also confusing for users since it
+gives the false impression of true globality. They might expect it to
+affect Firefox or Webengine-based Konqueror which it does not.
+---
+ docs/kcontrol5/CMakeLists.txt       |   1 -
+ src/kcms/kio/CMakeLists.txt         |   4 +-
+ src/kcms/kio/main.cpp               |   4 +-
+ 3 files changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/docs/kcontrol5/CMakeLists.txt b/docs/kcontrol5/CMakeLists.txt
+index 2dd1ae16a..6c2f21b07 100644
+--- a/docs/kcontrol5/CMakeLists.txt
++++ b/docs/kcontrol5/CMakeLists.txt
+@@ -1,4 +1,3 @@
+-add_subdirectory(cache)
+ add_subdirectory(cookies)
+ add_subdirectory(netpref)
+ add_subdirectory(proxy)
+diff --git a/src/kcms/kio/CMakeLists.txt b/src/kcms/kio/CMakeLists.txt
+index 11cd239f2..5281fc7dc 100644
+--- a/src/kcms/kio/CMakeLists.txt
++++ b/src/kcms/kio/CMakeLists.txt
+@@ -12,11 +12,9 @@ set(kcm_kio_PART_SRCS
+     smbrodlg.cpp
+     kproxydlg.cpp
+     netpref.cpp
+-    cache.cpp
+     ksaveioconfig.cpp)
+ 
+ ki18n_wrap_ui(kcm_kio_PART_SRCS
+-    cache.ui
+     kproxydlg.ui
+     kcookiespolicies.ui
+     kcookiesmanagement.ui
+@@ -41,5 +39,5 @@ install(TARGETS kcm_kio  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
+ 
+ ########### install files ###############
+ 
+-install( FILES smb.desktop cookies.desktop cache.desktop
++install( FILES smb.desktop cookies.desktop
+     netpref.desktop proxy.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
+diff --git a/src/kcms/kio/main.cpp b/src/kcms/kio/main.cpp
+index 8bacb10ca..2c0ebc29b 100644
+--- a/src/kcms/kio/main.cpp
++++ b/src/kcms/kio/main.cpp
+@@ -13,7 +13,6 @@
+ #include <KPluginFactory>
+ 
+ // Local
+-#include "cache.h"
+ #include "kcookiesmain.h"
+ #include "kproxydlg.h"
+ #include "netpref.h"
+@@ -21,7 +20,6 @@
+ 
+ K_PLUGIN_FACTORY(KioConfigFactory, registerPlugin<SMBRoOptions>(QStringLiteral("smb")); registerPlugin<KIOPreferences>(QStringLiteral("netpref"));
+                  registerPlugin<KProxyDialog>(QStringLiteral("proxy"));
+-                 registerPlugin<KCookiesMain>(QStringLiteral("cookie"));
+-                 registerPlugin<CacheConfigModule>(QStringLiteral("cache"));)
++                 registerPlugin<KCookiesMain>(QStringLiteral("cookie"));)
+ 
+ #include "main.moc"
+-- 
+GitLab

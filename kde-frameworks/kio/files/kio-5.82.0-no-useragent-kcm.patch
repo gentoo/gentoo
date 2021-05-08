@@ -1,0 +1,105 @@
+From 1aa42558a0f539abfe4bc92cf2c8078ac4adb9a0 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 5 May 2021 22:27:25 +0200
+Subject: [PATCH] Remove the Browser Identification KCM
+
+It's purpose is to control the user agent used by kio-http.
+
+Very few things use kio-http these days, not even Konqueror with the
+webengine part.
+
+For the remaining use cases (kioclient, webdav kio worker, etc.) this
+kind of configurability is overkill.
+
+Moreover being part of systemsettings this gives a false impression of
+globality. A user might change something in there and wonder why it does
+not apply to Firefox or Falkon.
+
+Given the questionable usefulness and the potential for confusion I
+propose to remove it entirely.
+---
+ docs/kcontrol5/CMakeLists.txt                 |   1 -
+ src/kcms/kio/CMakeLists.txt                   |  18 +-
+ src/kcms/kio/main.cpp                         |   4 +-
+ 3 files changed, 2 insertions(+), 21 deletions(-)
+
+diff --git a/docs/kcontrol5/CMakeLists.txt b/docs/kcontrol5/CMakeLists.txt
+index 1b19e5e7b..2dd1ae16a 100644
+--- a/docs/kcontrol5/CMakeLists.txt
++++ b/docs/kcontrol5/CMakeLists.txt
+@@ -4,5 +4,4 @@ add_subdirectory(netpref)
+ add_subdirectory(proxy)
+ add_subdirectory(smb)
+ add_subdirectory(trash)
+-add_subdirectory(useragent)
+ add_subdirectory(webshortcuts)
+diff --git a/src/kcms/kio/CMakeLists.txt b/src/kcms/kio/CMakeLists.txt
+index a354651b0..11cd239f2 100644
+--- a/src/kcms/kio/CMakeLists.txt
++++ b/src/kcms/kio/CMakeLists.txt
+@@ -1,6 +1,4 @@
+ 
+-add_subdirectory( uasproviders )
+-
+ find_package(KF5TextWidgets ${KF_DEP_VERSION} REQUIRED)
+ 
+ ########### next target ###############
+@@ -12,31 +10,18 @@ set(kcm_kio_PART_SRCS
+     kcookiesmanagement.cpp
+     kcookiespolicyselectiondlg.cpp
+     smbrodlg.cpp
+-    useragentdlg.cpp
+     kproxydlg.cpp
+-    useragentinfo.cpp
+-    useragentselectordlg.cpp
+     netpref.cpp
+     cache.cpp
+     ksaveioconfig.cpp)
+ 
+ ki18n_wrap_ui(kcm_kio_PART_SRCS
+     cache.ui
+-    useragentselectordlg.ui
+-    useragentdlg.ui
+     kproxydlg.ui
+     kcookiespolicies.ui
+     kcookiesmanagement.ui
+     kcookiespolicyselectiondlg.ui)
+ 
+-ecm_qt_export_logging_category(
+-    IDENTIFIER KIO_USERAGENTDLG
+-    CATEGORY_NAME kf.configwidgets.cms.kf.kio.useragentdlg
+-    OLD_CATEGORY_NAMES kf5.kio.useragentdlg
+-    DESCRIPTION "kio useragentdialog (KIO)"
+-    EXPORT KIO
+-)
+-
+ add_library(kcm_kio MODULE ${kcm_kio_PART_SRCS})
+ 
+ target_link_libraries(kcm_kio
+@@ -56,6 +41,5 @@ install(TARGETS kcm_kio  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
+ 
+ ########### install files ###############
+ 
+-install( FILES smb.desktop cookies.desktop useragent.desktop cache.desktop
++install( FILES smb.desktop cookies.desktop cache.desktop
+     netpref.desktop proxy.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
+-install( FILES uasprovider.desktop  DESTINATION  ${KDE_INSTALL_KSERVICETYPES5DIR} )
+diff --git a/src/kcms/kio/main.cpp b/src/kcms/kio/main.cpp
+index f1b065f46..8bacb10ca 100644
+--- a/src/kcms/kio/main.cpp
++++ b/src/kcms/kio/main.cpp
+@@ -18,10 +18,8 @@
+ #include "kproxydlg.h"
+ #include "netpref.h"
+ #include "smbrodlg.h"
+-#include "useragentdlg.h"
+ 
+-K_PLUGIN_FACTORY(KioConfigFactory, registerPlugin<UserAgentDlg>(QStringLiteral("useragent")); registerPlugin<SMBRoOptions>(QStringLiteral("smb"));
+-                 registerPlugin<KIOPreferences>(QStringLiteral("netpref"));
++K_PLUGIN_FACTORY(KioConfigFactory, registerPlugin<SMBRoOptions>(QStringLiteral("smb")); registerPlugin<KIOPreferences>(QStringLiteral("netpref"));
+                  registerPlugin<KProxyDialog>(QStringLiteral("proxy"));
+                  registerPlugin<KCookiesMain>(QStringLiteral("cookie"));
+                  registerPlugin<CacheConfigModule>(QStringLiteral("cache"));)
+-- 
+GitLab
+
