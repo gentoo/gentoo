@@ -219,16 +219,12 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	if ! use pipewire-alsa; then
-		elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for user"
-		elog "using PipeWire. Do it either manually or add yourself"
-		elog "to the 'audio' group:"
-		elog "  usermod -aG audio <youruser>"
-		elog
-		elog "Contrary to what some online resources may suggest, avoid setting"
-		elog "PULSE_LATENCY_MSEC environment variable since it may break ALSA clients."
-		elog
-	fi
+	elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for users"
+	elog "using PipeWire. Do it either manually or add yourself"
+	elog "to the 'audio' group:"
+	elog
+	elog "  usermod -aG audio <youruser>"
+	elog
 
 	if ! use jack-sdk; then
 		elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
@@ -240,29 +236,43 @@ pkg_postinst() {
 	fi
 
 	if use systemd; then
-		elog "Per Gentoo policy installed systemd units must be manually enabled:"
-		elog "systemctl --user disable pulseaudio.service pulseaudio.socket"
-		elog "systemctl --user enable pipewire.socket pipewire-pulse.socket"
-		elog "Rebooting is strongly recommended to avoid surprises from"
-		elog "remnant PulseAudio daemon auto-spawning and surviving logouts."
+		elog "To use PipeWire for audio, the user units must be manually enabled:"
 		elog
-		ewarn "Both new users and those upgrading need to enable pipewire-media-session:"
-		ewarn "systemctl --user enable pipewire-media-session.service"
+		elog "  systemctl --user enable pipewire.socket pipewire-pulse.socket"
+		elog
+		elog "When switching from PulseAudio, do not forget to disable PulseAudio:"
+		elog
+		elog "  systemctl --user disable pulseaudio.service pulseaudio.socket"
+		elog
+		elog "A reboot is recommended to avoid interferences from still running"
+		elog "PulseAudio daemon."
+		elog
+		elog "Both, new users and those upgrading, need to enable pipewire-media-session:"
+		elog
+		elog "  systemctl --user enable pipewire-media-session.service"
+		elog
+		elog "NOTE: This is not required when using PipeWire only for screencasting."
+		elog
 	else
-		elog "This ebuild auto-enables PulseAudio replacement. Because of that users"
+		elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
 		elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable "
 		elog "autospawn'ing of the original daemon by setting:"
-		elog "autospawn = no"
+		elog
+		elog "  autospawn = no"
+		elog
 		elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
 		elog
 		elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
-		elog "${EROOT}/etc/pipewire/pipewire.conf"
-		elog "by commenting out the relevant command near the end of the file:"
+		elog "${EROOT}/etc/pipewire/pipewire.conf by commenting out the relevant"
+		elog "command near the end of the file:"
+		elog
 		elog "#\"/usr/bin/pipewire\" = { args = \"-c pipewire-pulse.conf\" }"
 		elog
-		elog "It is still necessary to manually enable PipeWire startup. Setup specific"
-		elog "instructions can be found at: https://wiki.gentoo.org/wiki/PipeWire"
 	fi
+
+	elog "For latest tips and tricks, troubleshooting information and documentation"
+	elog "in general, please refer to https://wiki.gentoo.org/wiki/PipeWire"
+	elog
 
 	optfeature_header "The following can be installed for optional runtime features:"
 	optfeature "restricted realtime capabilities vai D-Bus" sys-auth/rtkit
