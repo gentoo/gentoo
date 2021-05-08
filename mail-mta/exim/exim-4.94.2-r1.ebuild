@@ -69,7 +69,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 )
 	redis? ( dev-libs/hiredis )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
-	dmarc? ( mail-filter/opendmarc )
+	dmarc? ( mail-filter/opendmarc:= )
 	srs? ( srs-alt? ( mail-filter/libsrs_alt ) )
 	X? (
 		x11-libs/libX11
@@ -116,6 +116,12 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.94-localscan_dlopen.patch
+
+	# for this reason we have a := dep on opendmarc, they changed their
+	# API in a minor release
+	if use dmarc && has_version ">=mail-filter/opendmarc-1.4" ; then
+		eapply "${FILESDIR}"/exim-4.94-opendmarc-1.4.patch
+	fi
 
 	if use maildir ; then
 		eapply "${FILESDIR}"/exim-4.94-maildir.patch
