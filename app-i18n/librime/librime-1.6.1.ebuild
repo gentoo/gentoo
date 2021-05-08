@@ -1,4 +1,4 @@
-# Copyright 2012-2020 Gentoo Authors
+# Copyright 2012-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -43,6 +43,7 @@ DEPEND="${RDEPEND}
 DOCS=(CHANGELOG.md README.md)
 
 src_prepare() {
+	eapply "${FILESDIR}/${PN}-1.6.0-boost-1.76.patch"
 	eapply "${FILESDIR}/${PN}-1.6.1-plugins.patch"
 
 	# Use headers of dev-libs/darts, dev-libs/utfcpp and x11-base/xorg-proto.
