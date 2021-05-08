@@ -18,8 +18,3 @@ HOMEPAGE="https://github.com/scrooloose/nerdcommenter https://www.vim.org/script
 LICENSE="WTFPL-2 "
 
 VIM_PLUGIN_HELPFILES="NERD_commenter.txt"
-
-src_prepare() {
-	default
-	rm README.md Rakefile || die
-}

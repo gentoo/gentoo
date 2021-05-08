@@ -21,5 +21,5 @@ src_prepare() {
 	default
 
 	# tests are written in ruby, prefer to avoid that
-	rm -r .travis.yml test || die
+	rm -r test || die
 }

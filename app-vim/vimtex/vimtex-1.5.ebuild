@@ -20,6 +20,6 @@ RDEPEND="
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm -r *.md media test || die
+	# remove unwanted dirs
+	rm -r media test || die
 }

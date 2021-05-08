@@ -24,6 +24,6 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm -r t Gemfile Rakefile LICENSE README* .travis.yml .gitignore || die
+	# remove unwanted test dir
+	rm -r t || die
 }

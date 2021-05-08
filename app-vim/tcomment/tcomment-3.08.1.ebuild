@@ -22,9 +22,9 @@ LICENSE="GPL-3"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
-DOCS=( CHANGES.TXT )
+DOCS=( CHANGES.TXT README )
 
 src_prepare() {
 	default
-	rm -r README LICENSE.TXT etc spec addon* || die
+	rm -r etc spec addon* || die
 }

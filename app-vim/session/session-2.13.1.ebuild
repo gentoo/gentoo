@@ -16,10 +16,3 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 RDEPEND=">=app-vim/vim-misc-1.17.6"
 
 S=${WORKDIR}/vim-${P}
-
-src_prepare() {
-	default
-
-	# remove unneeded files
-	rm addon-info.json *.md || die
-}

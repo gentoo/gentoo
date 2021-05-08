@@ -14,8 +14,3 @@ KEYWORDS="~amd64 ~x86"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 RDEPEND="net-misc/curl"
-
-src_prepare() {
-	rm *.md *.json *.rest || die
-	default
-}

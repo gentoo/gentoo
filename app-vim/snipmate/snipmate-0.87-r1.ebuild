@@ -23,8 +23,3 @@ S=${WORKDIR}/${MY_P}
 
 VIM_PLUGIN_HELPFILES="SnipMate"
 VIM_PLUGIN_MESSAGES="filetype"
-
-src_prepare() {
-	rm addon-info.json || die
-	default
-}

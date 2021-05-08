@@ -13,8 +13,3 @@ KEYWORDS="amd64 x86"
 VIM_PLUGIN_HELPFILES="${PN}"
 
 PATCHES=( "${FILESDIR}/${PN}-doc.patch" )
-
-src_prepare() {
-	rm -v LICENSE README.md || die
-	default
-}

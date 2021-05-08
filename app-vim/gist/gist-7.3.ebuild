@@ -24,7 +24,4 @@ VIM_PLUGIN_HELPFILES="Gist.vim"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	default
-	rm README.md gist.vim* Makefile || die
-}
+src_compile() { :; }

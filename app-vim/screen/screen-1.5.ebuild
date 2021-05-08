@@ -15,8 +15,3 @@ KEYWORDS="amd64 ~arm64 x86"
 VIM_PLUGIN_HELPFILES="screen.txt"
 
 RDEPEND="|| ( app-misc/screen app-misc/tmux )"
-
-src_prepare() {
-	rm README || die
-	default
-}

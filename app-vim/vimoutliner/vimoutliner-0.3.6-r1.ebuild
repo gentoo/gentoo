@@ -18,6 +18,5 @@ src_prepare() {
 	default
 	sed -i -e '/^if exists/,/endif/d' ftdetect/vo_base.vim || die
 	sed -i -e 's/g:vo_modules2load/g:vo_modules_load/' vimoutliner/vimoutlinerrc || die
-	rm -v install.sh || die
 	find "${S}" -type f -exec chmod a+r {} \; || die
 }

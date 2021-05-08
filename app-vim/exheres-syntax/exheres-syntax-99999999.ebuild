@@ -16,7 +16,4 @@ IUSE=""
 VIM_PLUGIN_HELPFILES="exheres-syntax"
 VIM_PLUGIN_MESSAGES="filetype"
 
-src_prepare() {
-	default
-	rm .gitignore Makefile || die
-}
+src_compile() { :; }

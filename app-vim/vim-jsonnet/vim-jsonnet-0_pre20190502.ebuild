@@ -16,9 +16,3 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-lang/jsonnet"
 
 S="${WORKDIR}/${PN}-${COMMIT_HASH}"
-
-src_prepare() {
-	default
-
-	rm -f LICENSE .gitignore || die
-}

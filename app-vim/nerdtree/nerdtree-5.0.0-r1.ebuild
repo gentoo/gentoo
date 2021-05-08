@@ -12,8 +12,3 @@ LICENSE="WTFPL-2"
 KEYWORDS="amd64 x86 ~x64-macos"
 
 VIM_PLUGIN_HELPFILES="NERD_tree"
-
-src_prepare() {
-	default
-	rm LICENCE || die
-}
