@@ -40,7 +40,7 @@ DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:5
 	media-video/vlc[X]
 	x11-libs/libXScrnSaver
-	dvb? ( media-libs/libv4l )
+	dvb? ( media-libs/libv4l[dvb] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
