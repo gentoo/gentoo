@@ -49,7 +49,9 @@ setup-allowed-flags() {
 _setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[12sg]' -mcpu -march -mtune
-		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
+		'-fstack-protector*'
+		'-fsanitize*' '-fno-sanitize*'
+		'-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking -fno-strict-overflow
 		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
 
