@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="appstream">Enable AppStream software metadata support</flag>
+		<flag name="calculator">Enable calculator runner using <pkg>sci-libs/libqalculate</pkg></flag>
 		<flag name="geolocation">Enables dataengine providing location information</flag>
 		<flag name="qalculate">Enable Qalculate runner using <pkg>sci-libs/libqalculate</pkg></flag>
 		<flag name="screencast">Enable screencast portal using <pkg>media-video/pipewire</pkg></flag>
