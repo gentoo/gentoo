@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info flag-o-matic
+inherit autotools linux-info
 
 MY_PV=${PV/_/.}-3
 
