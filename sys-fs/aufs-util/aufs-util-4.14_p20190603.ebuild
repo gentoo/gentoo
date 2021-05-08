@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-info multilib toolchain-funcs
+inherit linux-info multilib toolchain-funcs
 
 DESCRIPTION="Utilities are always necessary for aufs"
 HOMEPAGE="http://aufs.sourceforge.net/"
@@ -12,9 +12,8 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/${P}.tar.xz"
 # xz -ve9 *.tar
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	!sys-fs/aufs2
