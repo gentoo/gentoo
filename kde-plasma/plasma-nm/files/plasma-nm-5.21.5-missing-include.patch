@@ -1,0 +1,30 @@
+From 8d1720ac924c8453f80ac560470d9d92bdd94b07 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Tue, 4 May 2021 20:49:29 +0200
+Subject: [PATCH] Add missing QQueue include
+
+Used since 64dc6234b6980172bb53084c16a0e4e693d6011a. I suppose it's
+implicitly pulled in some cases, but for me the build fails with
+"networkmodel.h:126:56: error: field 'm_updateQueue' has incomplete
+type 'QQueue<QPair<NetworkModel::ModelChangeType, NetworkModelItem*> >'".
+
+(cherry picked from commit 2bccd7c3bc3aa12ddd1886b14041f1448c634a69)
+---
+ libs/models/networkmodel.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libs/models/networkmodel.h b/libs/models/networkmodel.h
+index ebe6db52..749cb919 100644
+--- a/libs/models/networkmodel.h
++++ b/libs/models/networkmodel.h
+@@ -22,6 +22,7 @@
+ #define PLASMA_NM_NETWORK_MODEL_H
+ 
+ #include <QAbstractListModel>
++#include <QQueue>
+ 
+ #include "networkitemslist.h"
+ 
+-- 
+GitLab
+
