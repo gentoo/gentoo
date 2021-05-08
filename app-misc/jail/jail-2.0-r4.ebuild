@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Builds a chroot and configures all the required files, directories and libraries"
 HOMEPAGE="https://github.com/spiculator/jail"
