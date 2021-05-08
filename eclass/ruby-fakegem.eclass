@@ -408,7 +408,7 @@ EOF
 # Configure extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
 each_fakegem_configure() {
 	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
-		${RUBY} -C ${extension%/*} ${extension##*/} || die
+		${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} || die
 	done
 }
 
@@ -517,7 +517,7 @@ all_ruby_compile() {
 each_fakegem_test() {
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			${RUBY} -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
