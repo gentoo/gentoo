@@ -113,6 +113,11 @@ RDEPEND="${CDEPEND}"
 S="${WORKDIR}/firefox-${MY_PV}/js/src"
 
 llvm_check_deps() {
+	if ! has_version -b "sys-devel/llvm:${LLVM_SLOT}" ; then
+		ewarn "sys-devel/llvm:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
+		return 1
+	fi
+
 	if use clang ; then
 		if ! has_version -b "sys-devel/clang:${LLVM_SLOT}" ; then
 			ewarn "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..." >&2
