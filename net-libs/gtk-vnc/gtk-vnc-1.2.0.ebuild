@@ -41,7 +41,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/1.0.0-honor-python-ver.patch
+	"${FILESDIR}"/${P}-build-improve-with-coroutine-auto-choice.patch
+	"${FILESDIR}"/${P}-meson-Find-python-explicitly-to-honor-downstream-pyt.patch
+	"${FILESDIR}"/${P}-meson-Fix-configuration-failure-with-Dwith-vala-disa.patch
 )
 
 src_prepare() {
@@ -54,14 +56,8 @@ src_configure() {
 		$(meson_feature introspection)
 		$(meson_feature pulseaudio)
 		$(meson_feature sasl)
+		-Dwith-coroutine=auto # gthread on windows, libc ucontext elsewhere; neither has extra deps
 		$(meson_feature vala with-vala)
 	)
-
-	if use elibc_musl; then
-		emesonargs+=( -Dwith-coroutine=gthread )
-	else
-		emesonargs+=( -Dwith-coroutine=auto )
-	fi
-
 	meson_src_configure
 }
