@@ -40,6 +40,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		$(meson_use test tests)
+		-Dpython="${EPYTHON}"
 	)
 	meson_src_configure
 }
