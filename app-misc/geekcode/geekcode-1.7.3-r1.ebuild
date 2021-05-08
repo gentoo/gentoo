@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs
 
 DESCRIPTION="Geek code generator"
 HOMEPAGE="https://sourceforge.net/projects/geekcode"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
