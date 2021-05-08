@@ -320,12 +320,6 @@ multilib_src_configure() {
 		options+=(--disable-tcl)
 	fi
 
-	if [[ "${CHOST}" == *-mint* ]]; then
-		# sys/mman.h not available in MiNTLib.
-		# https://sqlite.org/compile.html#omit_wal
-		append-cppflags -DSQLITE_OMIT_WAL
-	fi
-
 	if [[ "${ABI}" == "x86" ]]; then
 		if $(tc-getCC) ${CPPFLAGS} ${CFLAGS} -E -P -dM - < /dev/null 2> /dev/null | grep -q "^#define __SSE__ 1$"; then
 			append-cflags -mfpmath=sse
