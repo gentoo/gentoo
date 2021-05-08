@@ -4,13 +4,13 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit desktop wxwidgets
+inherit wxwidgets
 
 DESCRIPTION="Photo editor for selective color, saturation, and hue shift adjustments"
-HOMEPAGE="https://www.indii.org/software/tintii"
+HOMEPAGE="https://www.indii.org/software/tintii/"
 SRC_URI="https://www.indii.org/files/tint/releases/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
