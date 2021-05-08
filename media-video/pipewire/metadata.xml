@@ -25,6 +25,7 @@
 		<flag name="ffmpeg">Builds an unsupported SPA (file a Gentoo bug if you need this)</flag>
 		<flag name="jack">Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire</flag>
 		<flag name="jack-client">Install a plugin for running PipeWire as a JACK client</flag>
+		<flag name="jack-sdk">Use PipeWire as JACK replacement</flag>
 		<flag name="ldac">LDAC over Bluetooth (primarily Sony headphones)</flag>
 		<flag name="pipewire-alsa">Replace PulseAudio's ALSA plugin with PipeWire's plugin</flag>
 		<flag name="vulkan">Uses Vulkan compute shaders to provide a CGI video source</flag>
