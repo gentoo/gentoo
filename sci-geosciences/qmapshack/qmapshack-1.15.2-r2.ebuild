@@ -27,7 +27,7 @@ RDEPEND="
 	>=sci-geosciences/routino-3.1.1
 	sci-libs/alglib
 	sci-libs/gdal
-	>=sci-libs/proj-6.0.0:=
+	<sci-libs/proj-8:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/linguist-tools:5"
