@@ -22,5 +22,5 @@ DOCS=( README CHANGES.TXT )
 
 src_prepare() {
 	default
-	rm -r test samples addon-info.json || die
+	rm -r test samples || die
 }

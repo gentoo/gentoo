@@ -17,8 +17,3 @@ KEYWORDS="~amd64 ~x86"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 S=${WORKDIR}/${MY_P}
-
-src_prepare() {
-	rm *.markdown || die
-	default
-}

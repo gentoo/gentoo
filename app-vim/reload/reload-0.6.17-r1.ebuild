@@ -16,8 +16,3 @@ RDEPEND=">=app-vim/vim-misc-1.8.5"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 S="${WORKDIR}/vim-${P}"
-
-src_prepare() {
-	default
-	rm addon-info.json *.md || die
-}

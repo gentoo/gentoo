@@ -48,5 +48,4 @@ src_compile() {
 		2to3 -w -n --no-diffs "${pyscript}" >& /dev/null || die
 		python_fix_shebang -f -q "${pyscript}"
 	done
-	rm -v README.detailed || die
 }

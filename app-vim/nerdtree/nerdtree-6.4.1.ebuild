@@ -14,8 +14,3 @@ KEYWORDS="~amd64 ~x86 ~x64-macos"
 VIM_PLUGIN_HELPFILES="NERD_tree"
 
 DOCS=( CHANGELOG.md README.markdown )
-
-src_prepare() {
-	default
-	rm LICENCE || die
-}

@@ -20,8 +20,3 @@ LICENSE="WTFPL-2"
 VIM_PLUGIN_HELPFILES="NERD_tree"
 
 DOCS=( CHANGELOG.md README.markdown )
-
-src_prepare() {
-	rm LICENCE screenshot.png _config.yml || die
-	default
-}

@@ -24,7 +24,6 @@ RDEPEND="dev-vcs/git"
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm LICENCE README* screenshot.png unplace.vim || die
+	# remove unwanted test dir
 	rm -r test || die
 }

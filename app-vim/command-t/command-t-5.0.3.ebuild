@@ -38,7 +38,6 @@ each_ruby_install() {
 }
 
 all_ruby_install() {
-	rm Gemfile* Rakefile LICENSE README.md || die
 	rm -r appstream bin fixtures data ruby/${PN}/{ext,lib,*.gemspec} spec vendor || die
 
 	vim-plugin_src_install

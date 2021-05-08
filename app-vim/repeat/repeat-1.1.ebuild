@@ -15,8 +15,3 @@ LICENSE="vim"
 KEYWORDS="amd64 x86"
 
 S=${WORKDIR}/${MY_P}
-
-src_prepare() {
-	rm *.markdown || die
-	default
-}

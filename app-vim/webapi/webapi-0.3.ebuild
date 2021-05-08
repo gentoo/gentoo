@@ -15,7 +15,4 @@ RDEPEND="net-misc/curl"
 
 S="${WORKDIR}/${PN}-vim-${PV}"
 
-src_prepare() {
-	default
-	rm -v Makefile || die
-}
+src_compile() { :; }

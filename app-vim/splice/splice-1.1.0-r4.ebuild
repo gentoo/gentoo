@@ -26,9 +26,10 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 src_prepare() {
 	default
-	rm .[a-z]* Makefile LICENSE.markdown package.sh || die
 	rm -r site || die
 }
+
+src_compile() { :; }
 
 src_install() {
 	vim-plugin_src_install

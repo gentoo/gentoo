@@ -20,7 +20,7 @@ VIM_PLUGIN_HELPFILES="${PN}"
 
 src_prepare() {
 	default
-	rm -r _assets LICENCE README.markdown || die
+	rm -r _assets || die
 }
 
 pkg_postinst() {

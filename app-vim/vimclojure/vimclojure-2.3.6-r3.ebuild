@@ -46,7 +46,6 @@ src_prepare() {
 }
 
 src_install() {
-	einstalldocs
 	rm -rv doc/LICENSE.txt bin || die
 	vim-plugin_src_install
 }

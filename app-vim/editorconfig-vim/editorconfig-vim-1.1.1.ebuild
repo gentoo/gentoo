@@ -18,15 +18,6 @@ KEYWORDS="amd64 x86"
 
 VIM_PLUGIN_HELPFILES="${PN%-vim}.txt"
 
-src_prepare() {
-	default
-
-	rm LICENSE LICENSE.PSF \
-		mkzip.sh .editorconfig \
-		.git{ignore,modules} \
-		.{travis,appveyor}.yml || die
-}
-
 src_install() {
 	# we don't want to install the tests
 	rm -r tests || die

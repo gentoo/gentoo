@@ -14,8 +14,3 @@ LICENSE="vim.org"
 KEYWORDS="~amd64 ~x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
-
-src_prepare() {
-	default
-	rm *.gif *.png *.md || die
-}
