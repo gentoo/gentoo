@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-session-restore-w-o-tabs.patch" # KDE-bug 434911
+	# TODO: Downstream hack, track upstream bug for better solution
+	"${FILESDIR}/${PN}-21.04.0-fix-no-semantic-desktop.patch" # KDE-bug 435586
 )
 
 src_configure() {
