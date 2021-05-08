@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/26"
+SLOT="0/27"
 KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
