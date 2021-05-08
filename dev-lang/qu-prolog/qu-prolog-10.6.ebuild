@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools multilib qmake-utils
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit autotools multilib python-any-r1 qmake-utils
 
 MY_P=qp${PV}
 
@@ -35,6 +37,8 @@ src_prepare() {
 	eapply_user
 
 	eautoconf
+
+	python_fix_shebang "${S}"/bin/qc.in
 }
 
 src_configure() {
