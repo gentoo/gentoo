@@ -23,7 +23,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/26"
+SLOT="0/27"
 KEYWORDS=""
 IUSE=""
 
@@ -62,5 +62,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	find "${D}" -name "*.pth" -type f -delete || die
+	find "${ED}" -name "*.pth" -type f -delete || die
 }
