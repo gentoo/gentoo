@@ -1,0 +1,376 @@
+From 7db8d5ee551f30576588d31470fe287b6ad2adcd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Niccol=C3=B2=20Venerandi?= <niccolo@venerandi.com>
+Date: Mon, 1 Mar 2021 22:14:43 +0000
+Subject: [PATCH] Add support for adaptive opacity panels
+
+Co-authored-by: Jan Blackquill <uhhadd@gmail.com>
+---
+ libtaskmanager/taskfilterproxymodel.cpp | 26 ++++++++++++++++++
+ libtaskmanager/taskfilterproxymodel.h   | 19 ++++++++++++++
+ libtaskmanager/tasksmodel.cpp           | 11 ++++++++
+ libtaskmanager/tasksmodel.h             | 19 ++++++++++++++
+ shell/panelconfigview.cpp               | 11 ++++++++
+ shell/panelconfigview.h                 |  5 ++++
+ shell/panelview.cpp                     | 35 +++++++++++++++++++++++++
+ shell/panelview.h                       | 28 ++++++++++++++++++++
+ 8 files changed, 154 insertions(+)
+
+diff --git a/libtaskmanager/taskfilterproxymodel.cpp b/libtaskmanager/taskfilterproxymodel.cpp
+index 37a3076fd..6bb27537a 100644
+--- a/libtaskmanager/taskfilterproxymodel.cpp
++++ b/libtaskmanager/taskfilterproxymodel.cpp
+@@ -40,6 +40,7 @@ public:
+     bool filterByScreen = false;
+     bool filterByActivity = false;
+     bool filterNotMinimized = false;
++    bool filterNotMaximized = false;
+     bool filterSkipTaskbar = true;
+     bool filterSkipPager = false;
+ 
+@@ -185,6 +186,22 @@ void TaskFilterProxyModel::setFilterNotMinimized(bool filter)
+     }
+ }
+ 
++bool TaskFilterProxyModel::filterNotMaximized() const
++{
++    return d->filterNotMaximized;
++}
++
++void TaskFilterProxyModel::setFilterNotMaximized(bool filter)
++{
++    if (d->filterNotMaximized != filter) {
++        d->filterNotMaximized = filter;
++
++        invalidateFilter();
++
++        emit filterNotMaximizedChanged();
++    }
++}
++
+ bool TaskFilterProxyModel::filterSkipTaskbar() const
+ {
+     return d->filterSkipTaskbar;
+@@ -301,6 +318,15 @@ bool TaskFilterProxyModel::acceptsRow(int sourceRow) const
+         }
+     }
+ 
++    // Filter not maximized.
++    if (d->filterNotMaximized) {
++        bool isMaximized = sourceIdx.data(AbstractTasksModel::IsMaximized).toBool();
++
++        if (!isMaximized) {
++            return false;
++        }
++    }
++
+     return true;
+ }
+ 
+diff --git a/libtaskmanager/taskfilterproxymodel.h b/libtaskmanager/taskfilterproxymodel.h
+index 7ad2cb9ce..88ba3adab 100644
+--- a/libtaskmanager/taskfilterproxymodel.h
++++ b/libtaskmanager/taskfilterproxymodel.h
+@@ -52,6 +52,7 @@ class TASKMANAGER_EXPORT TaskFilterProxyModel : public QSortFilterProxyModel, pu
+     Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
+     Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
+     Q_PROPERTY(bool filterNotMinimized READ filterNotMinimized WRITE setFilterNotMinimized NOTIFY filterNotMinimizedChanged)
++    Q_PROPERTY(bool filterNotMaximized READ filterNotMaximized WRITE setFilterNotMaximized NOTIFY filterNotMaximizedChanged)
+     Q_PROPERTY(bool filterSkipTaskbar READ filterSkipTaskbar WRITE setFilterSkipTaskbar NOTIFY filterSkipTaskbarChanged)
+     Q_PROPERTY(bool filterSkipPager READ filterSkipPager WRITE setFilterSkipPager NOTIFY filterSkipPagerChanged)
+ 
+@@ -212,6 +213,23 @@ public:
+      **/
+     void setFilterNotMinimized(bool filter);
+ 
++    /**
++     * Whether non-maximized tasks should be filtered. Defaults to
++     * @c false.
++     *
++     * @see setFilterNotMaximized
++     * @returns @c true if non-maximized tasks should be filtered.
++     **/
++    bool filterNotMaximized() const;
++
++    /**
++     * Set whether non-maximized tasks should be filtered.
++     *
++     * @see filterNotMaximized
++     * @param filter Whether non-maximized tasks should be filtered.
++     **/
++    void setFilterNotMaximized(bool filter);
++
+     /**
+      * Whether tasks which should be omitted from 'task bars' should be
+      * filtered. Defaults to @c true.
+@@ -285,6 +303,7 @@ Q_SIGNALS:
+     void filterByScreenChanged() const;
+     void filterByActivityChanged() const;
+     void filterNotMinimizedChanged() const;
++    void filterNotMaximizedChanged() const;
+     void filterSkipTaskbarChanged() const;
+     void filterSkipPagerChanged() const;
+     void demandingAttentionSkipsFiltersChanged() const;
+diff --git a/libtaskmanager/tasksmodel.cpp b/libtaskmanager/tasksmodel.cpp
+index c6e66926b..11eb53fdf 100644
+--- a/libtaskmanager/tasksmodel.cpp
++++ b/libtaskmanager/tasksmodel.cpp
+@@ -302,6 +302,7 @@ void TasksModel::Private::initModels()
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByScreenChanged, q, &TasksModel::filterByScreenChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterByActivityChanged, q, &TasksModel::filterByActivityChanged);
+     QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterNotMinimizedChanged, q, &TasksModel::filterNotMinimizedChanged);
++    QObject::connect(filterProxyModel, &TaskFilterProxyModel::filterNotMaximizedChanged, q, &TasksModel::filterNotMaximizedChanged);
+ 
+     groupingProxyModel = new TaskGroupingProxyModel(q);
+     groupingProxyModel->setSourceModel(filterProxyModel);
+@@ -1152,6 +1153,16 @@ void TasksModel::setFilterNotMinimized(bool filter)
+     d->filterProxyModel->setFilterNotMinimized(filter);
+ }
+ 
++bool TasksModel::filterNotMaximized() const
++{
++    return d->filterProxyModel->filterNotMaximized();
++}
++
++void TasksModel::setFilterNotMaximized(bool filter)
++{
++    d->filterProxyModel->setFilterNotMaximized(filter);
++}
++
+ TasksModel::SortMode TasksModel::sortMode() const
+ {
+     return d->sortMode;
+diff --git a/libtaskmanager/tasksmodel.h b/libtaskmanager/tasksmodel.h
+index 18e3d9bb4..8c84012d0 100644
+--- a/libtaskmanager/tasksmodel.h
++++ b/libtaskmanager/tasksmodel.h
+@@ -73,6 +73,7 @@ class TASKMANAGER_EXPORT TasksModel : public QSortFilterProxyModel, public Abstr
+     Q_PROPERTY(bool filterByScreen READ filterByScreen WRITE setFilterByScreen NOTIFY filterByScreenChanged)
+     Q_PROPERTY(bool filterByActivity READ filterByActivity WRITE setFilterByActivity NOTIFY filterByActivityChanged)
+     Q_PROPERTY(bool filterNotMinimized READ filterNotMinimized WRITE setFilterNotMinimized NOTIFY filterNotMinimizedChanged)
++    Q_PROPERTY(bool filterNotMaximized READ filterNotMaximized WRITE setFilterNotMaximized NOTIFY filterNotMaximized)
+ 
+     Q_PROPERTY(SortMode sortMode READ sortMode WRITE setSortMode NOTIFY sortModeChanged)
+     Q_PROPERTY(bool separateLaunchers READ separateLaunchers WRITE setSeparateLaunchers NOTIFY separateLaunchersChanged)
+@@ -295,6 +296,23 @@ public:
+      **/
+     void setFilterNotMinimized(bool filter);
+ 
++    /**
++     * Whether non-maximized tasks should be filtered. Defaults to
++     * @c false.
++     *
++     * @see setFilterNotMaximized
++     * @returns @c true if non-maximized tasks should be filtered.
++     **/
++    bool filterNotMaximized() const;
++
++    /**
++     * Set whether non-maximized tasks should be filtered.
++     *
++     * @see filterNotMaximized
++     * @param filter Whether non-maximized tasks should be filtered.
++     **/
++    void setFilterNotMaximized(bool filter);
++
+     /**
+      * The sort mode used in sorting tasks. Defaults to SortAlpha.
+      *
+@@ -848,6 +866,7 @@ Q_SIGNALS:
+     void filterByScreenChanged() const;
+     void filterByActivityChanged() const;
+     void filterNotMinimizedChanged() const;
++    void filterNotMaximizedChanged() const;
+     void sortModeChanged() const;
+     void separateLaunchersChanged() const;
+     void launchInPlaceChanged() const;
+diff --git a/shell/panelconfigview.cpp b/shell/panelconfigview.cpp
+index a331c0bb2..5637f3233 100644
+--- a/shell/panelconfigview.cpp
++++ b/shell/panelconfigview.cpp
+@@ -289,6 +289,17 @@ PanelView::VisibilityMode PanelConfigView::visibilityMode() const
+     return m_panelView->visibilityMode();
+ }
+ 
++void PanelConfigView::setOpacityMode(PanelView::OpacityMode mode)
++{
++    m_panelView->setOpacityMode(mode);
++    emit opacityModeChanged();
++}
++
++PanelView::OpacityMode PanelConfigView::opacityMode() const
++{
++    return m_panelView->opacityMode();
++}
++
+ Plasma::FrameSvg::EnabledBorders PanelConfigView::enabledBorders() const
+ {
+     return m_enabledBorders;
+diff --git a/shell/panelconfigview.h b/shell/panelconfigview.h
+index 8e0abd314..db2af6bf9 100644
+--- a/shell/panelconfigview.h
++++ b/shell/panelconfigview.h
+@@ -51,6 +51,7 @@ class PanelConfigView : public PlasmaQuick::ConfigView
+ {
+     Q_OBJECT
+     Q_PROPERTY(PanelView::VisibilityMode visibilityMode READ visibilityMode WRITE setVisibilityMode NOTIFY visibilityModeChanged)
++    Q_PROPERTY(PanelView::OpacityMode opacityMode READ opacityMode WRITE setOpacityMode NOTIFY opacityModeChanged)
+     Q_PROPERTY(Plasma::FrameSvg::EnabledBorders enabledBorders READ enabledBorders NOTIFY enabledBordersChanged)
+ 
+ public:
+@@ -62,6 +63,9 @@ public:
+     PanelView::VisibilityMode visibilityMode() const;
+     void setVisibilityMode(PanelView::VisibilityMode mode);
+ 
++    PanelView::OpacityMode opacityMode() const;
++    void setOpacityMode(PanelView::OpacityMode mode);
++
+     Plasma::FrameSvg::EnabledBorders enabledBorders() const;
+ 
+ protected:
+@@ -84,6 +88,7 @@ private Q_SLOTS:
+ 
+ Q_SIGNALS:
+     void visibilityModeChanged();
++    void opacityModeChanged();
+     void enabledBordersChanged();
+ 
+ private:
+diff --git a/shell/panelview.cpp b/shell/panelview.cpp
+index 4654a7a72..a699cc84c 100644
+--- a/shell/panelview.cpp
++++ b/shell/panelview.cpp
+@@ -64,6 +64,7 @@ PanelView::PanelView(ShellCorona *corona, QScreen *targetScreen, QWindow *parent
+     , m_alignment(Qt::AlignLeft)
+     , m_corona(corona)
+     , m_visibilityMode(NormalPanel)
++    , m_opacityMode(Adaptive)
+     , m_backgroundHints(Plasma::Types::StandardBackground)
+     , m_shellSurface(nullptr)
+ {
+@@ -76,8 +77,10 @@ PanelView::PanelView(ShellCorona *corona, QScreen *targetScreen, QWindow *parent
+     setClearBeforeRendering(true);
+     setColor(QColor(Qt::transparent));
+     setFlags(Qt::FramelessWindowHint | Qt::WindowDoesNotAcceptFocus);
++    updateAdaptiveOpacityEnabled();
+ 
+     connect(&m_theme, &Plasma::Theme::themeChanged, this, &PanelView::updateMask);
++    connect(&m_theme, &Plasma::Theme::themeChanged, this, &PanelView::updateAdaptiveOpacityEnabled);
+     connect(this, &PanelView::backgroundHintsChanged, this, &PanelView::updateMask);
+     connect(this, &PanelView::backgroundHintsChanged, this, &PanelView::updateEnabledBorders);
+     // TODO: add finished/componentComplete signal to QuickViewSharedEngine,
+@@ -405,6 +408,37 @@ PanelView::VisibilityMode PanelView::visibilityMode() const
+     return m_visibilityMode;
+ }
+ 
++PanelView::OpacityMode PanelView::opacityMode() const
++{
++    if (!m_theme.adaptiveTransparencyEnabled()) {
++        return PanelView::Translucent;
++    }
++    return m_opacityMode;
++}
++
++bool PanelView::adaptiveOpacityEnabled()
++{
++    return m_theme.adaptiveTransparencyEnabled();
++}
++
++void PanelView::setOpacityMode(PanelView::OpacityMode mode)
++{
++    if (m_opacityMode != mode) {
++        m_opacityMode = mode;
++        if (config().isValid() && config().parent().isValid()) {
++            config().parent().writeEntry("panelOpacity", (int)mode);
++            m_corona->requestApplicationConfigSync();
++        }
++        emit opacityModeChanged();
++    }
++}
++
++void PanelView::updateAdaptiveOpacityEnabled()
++{
++    emit opacityModeChanged();
++    emit adaptiveOpacityEnabledChanged();
++}
++
+ void PanelView::positionPanel()
+ {
+     if (!containment()) {
+@@ -599,6 +633,7 @@ void PanelView::restore()
+     // the place for this config key is changed in Plasma 5.9
+     // Do NOT use readConfigValueWithFallBack
+     setVisibilityMode((VisibilityMode)panelConfig.parent().readEntry<int>("panelVisibility", panelConfig.readEntry<int>("panelVisibility", (int)NormalPanel)));
++    setOpacityMode((OpacityMode)readConfigValueWithFallBack("panelOpacity", PanelView::OpacityMode::Adaptive));
+     m_initCompleted = true;
+     resizePanel();
+     positionPanel();
+diff --git a/shell/panelview.h b/shell/panelview.h
+index 60e4d446e..c312d4907 100644
+--- a/shell/panelview.h
++++ b/shell/panelview.h
+@@ -100,6 +100,18 @@ class PanelView : public PlasmaQuick::ContainmentView
+      */
+     Q_PROPERTY(VisibilityMode visibilityMode READ visibilityMode WRITE setVisibilityMode NOTIFY visibilityModeChanged)
+ 
++    /**
++     *  Property that determines how a panel's opacity behaves.
++     *
++     * @see OpacityMode
++     */
++    Q_PROPERTY(OpacityMode opacityMode READ opacityMode WRITE setOpacityMode NOTIFY opacityModeChanged)
++
++    /**
++    /*  Property that determines whether adaptive opacity is used.
++     */
++    Q_PROPERTY(bool adaptiveOpacityEnabled READ adaptiveOpacityEnabled NOTIFY adaptiveOpacityEnabledChanged)
++
+ public:
+     enum VisibilityMode {
+         NormalPanel = 0, /** default, always visible panel, the windowmanager reserves a places for it */
+@@ -109,6 +121,14 @@ public:
+     };
+     Q_ENUM(VisibilityMode)
+ 
++    /** Enumeration of possible opacity modes. */
++    enum OpacityMode {
++        Adaptive = 0, /** The panel will change opacity depending on the presence of a maximized window */
++        Opaque, /** The panel will always be opaque */
++        Translucent /** The panel will always be translucent */
++    };
++    Q_ENUM(OpacityMode)
++
+     explicit PanelView(ShellCorona *corona, QScreen *targetScreen = nullptr, QWindow *parent = nullptr);
+     ~PanelView() override;
+ 
+@@ -147,6 +167,11 @@ public:
+     VisibilityMode visibilityMode() const;
+     void setVisibilityMode(PanelView::VisibilityMode mode);
+ 
++    PanelView::OpacityMode opacityMode() const;
++	bool adaptiveOpacityEnabled();
++    void setOpacityMode(PanelView::OpacityMode mode);
++    void updateAdaptiveOpacityEnabled();
++
+     /**
+      * @returns the geometry of the panel given a distance
+      */
+@@ -185,6 +210,8 @@ Q_SIGNALS:
+     // QWindow does not have a property for screen. Adding this property requires re-implementing the signal
+     void screenToFollowChanged(QScreen *screen);
+     void visibilityModeChanged();
++    void opacityModeChanged();
++    void adaptiveOpacityEnabledChanged();
+ 
+ protected Q_SLOTS:
+     /**
+@@ -235,6 +262,7 @@ private:
+     ShellCorona *m_corona;
+     QTimer m_strutsTimer;
+     VisibilityMode m_visibilityMode;
++    OpacityMode m_opacityMode;
+     Plasma::Theme m_theme;
+     QTimer m_positionPaneltimer;
+     QTimer m_unhideTimer;
+-- 
+GitLab
+
