@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake eutils flag-o-matic xdg-utils
+
+inherit cmake flag-o-matic l10n xdg-utils
 
 DESCRIPTION="sakura is a terminal emulator based on GTK and VTE"
 HOMEPAGE="https://www.pleyades.net/david/projects/sakura"
