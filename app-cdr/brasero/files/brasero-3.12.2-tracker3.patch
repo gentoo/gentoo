@@ -1,0 +1,240 @@
+From ca0d487aac3b9cf21e520a00b94cb3eaf833b9a3 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 24 Dec 2020 12:19:49 +0100
+Subject: [PATCH 1/5] Obtain TrackerSparqlConnection in a single point
+
+The is_available vmethod tries to create a connection if it's not
+there. But the BraseroSearchTracker initialization already tries to
+obtain the SPARQL connection. Let this method return wether
+initialiation was successful.
+---
+ src/brasero-search-tracker.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/brasero-search-tracker.c b/src/brasero-search-tracker.c
+index fe7be2bd..f8c29c0d 100644
+--- a/src/brasero-search-tracker.c
++++ b/src/brasero-search-tracker.c
+@@ -56,12 +56,6 @@ brasero_search_tracker_is_available (BraseroSearchEngine *engine)
+ 	BraseroSearchTrackerPrivate *priv;
+ 
+ 	priv = BRASERO_SEARCH_TRACKER_PRIVATE (engine);
+-	GError *error = NULL;
+-	if (priv->connection)
+-		return TRUE;
+-	
+-	priv->cancellable = g_cancellable_new ();
+- 	priv->connection = tracker_sparql_connection_get (priv->cancellable, &error);
+ 	return (priv->connection != NULL);
+ }
+ 
+-- 
+GitLab
+
+
+From c0dace005ec34b345845aacd1f929fd618b199af Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 24 Dec 2020 12:37:13 +0100
+Subject: [PATCH 2/5] Fix ORDER BY clauses in Tracker search
+
+The ?urn variable is not defined anywhere else in the query, so
+ordering is left undefined. Access the url/filename properly here.
+---
+ src/brasero-search-tracker.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/brasero-search-tracker.c b/src/brasero-search-tracker.c
+index f8c29c0d..94085070 100644
+--- a/src/brasero-search-tracker.c
++++ b/src/brasero-search-tracker.c
+@@ -307,7 +307,7 @@ brasero_search_tracker_query_start_real (BraseroSearchEngine *search,
+ 	g_string_append (query, ")");
+ 
+ 	g_string_append (query,
+-			 "} ORDER BY DESC(nie:url(?urn)) DESC(nfo:fileName(?urn))");
++			 "} ORDER BY DESC(?url) DESC(nfo:fileName(?file))");
+ 
+ 	tracker_sparql_connection_query_async (priv->connection,
+ 					       query->str,
+-- 
+GitLab
+
+
+From f7181445bf9c88b7fab1bb5237d602b491694a9e Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 24 Dec 2020 13:04:03 +0100
+Subject: [PATCH 3/5] Only use fts:rank with FTS searches
+
+This fixes two things:
+- The use of fts:match depends on priv->keywords being set, but
+  fts:rank() has undefined behavior if fts:match is not present.
+  Its value is returned in the cursor, but fortunately unused,
+  so it can go away.
+
+- Fixes "garbage" being added at the end of the query, concretely
+  ") } ORDER BY ... " is appended at the supposed end of the query
+  string. Older SPARQL parser implementations would allow garbage
+  at the end of its parsing state, I suspect "LIMIT 0 OFFSET 10000"
+  was just a mean to push it to that state that it'd allow the
+  remaining string, so that is gone too.
+---
+ src/brasero-search-tracker.c | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
+
+diff --git a/src/brasero-search-tracker.c b/src/brasero-search-tracker.c
+index 94085070..ae1d388a 100644
+--- a/src/brasero-search-tracker.c
++++ b/src/brasero-search-tracker.c
+@@ -234,7 +234,7 @@ brasero_search_tracker_query_start_real (BraseroSearchEngine *search,
+ 
+ 	priv = BRASERO_SEARCH_TRACKER_PRIVATE (search);
+ 
+-	query = g_string_new ("SELECT ?file ?url ?mime fts:rank(?file) "	/* Which variables should be returned */
++	query = g_string_new ("SELECT ?file ?url ?mime "			/* Which variables should be returned */
+ 			      "WHERE {"						/* Start defining the search and its scope */
+ 			      "  ?file a nfo:FileDataObject . "			/* File must be a file (not a stream, ...) */
+ 	                      "  ?file nie:url ?url . "				/* Get the url of the file */
+@@ -293,21 +293,18 @@ brasero_search_tracker_query_start_real (BraseroSearchEngine *search,
+ 				 " ) ");
+ 	}
+ 
+-	if (priv->keywords)
++	if (priv->keywords) {
+ 		g_string_append_printf (query,
+ 					"  ?file fts:match \"%s\" ",		/* File must match possible keywords */
+ 					priv->keywords);
+ 
+-	g_string_append (query,
+-			 " } "
+-			 "ORDER BY ASC(fts:rank(?file)) "
+-			 "OFFSET 0 "
+-			 "LIMIT 10000");
+-
+-	g_string_append (query, ")");
+-
+-	g_string_append (query,
+-			 "} ORDER BY DESC(?url) DESC(nfo:fileName(?file))");
++		g_string_append (query,
++				 " } "
++				 "ORDER BY ASC(fts:rank(?file))");
++	} else {
++		g_string_append (query,
++				 "} ORDER BY DESC(?url) DESC(nfo:fileName(?file))");
++	}
+ 
+ 	tracker_sparql_connection_query_async (priv->connection,
+ 					       query->str,
+-- 
+GitLab
+
+
+From ede7758e2fae487d57be641a120c4c02bfd249f1 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 24 Dec 2020 13:15:21 +0100
+Subject: [PATCH 4/5] Observe nfo:FileDataObject/nie:InformationElement split
+
+These resources are interpreted differently in Tracker 3.0 compared
+to older versions, the newer version makes those 2 different resources
+(one representing the "file", other the "content) that relate to each
+other. In older tracker versions, these 2 aspects were conflated in
+a single resource.
+
+The query is implicitly crossing that barrier, so make it explicit.
+With this change, the query may run with either version.
+---
+ src/brasero-search-tracker.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/brasero-search-tracker.c b/src/brasero-search-tracker.c
+index ae1d388a..9aa06289 100644
+--- a/src/brasero-search-tracker.c
++++ b/src/brasero-search-tracker.c
+@@ -238,7 +238,8 @@ brasero_search_tracker_query_start_real (BraseroSearchEngine *search,
+ 			      "WHERE {"						/* Start defining the search and its scope */
+ 			      "  ?file a nfo:FileDataObject . "			/* File must be a file (not a stream, ...) */
+ 	                      "  ?file nie:url ?url . "				/* Get the url of the file */
+-	                      "  ?file nie:mimeType ?mime . ");			/* Get its mime */
++	                      "  ?file nie:mimeType ?mime . "			/* Get its mime */
++			      "  ?content nie:isStoredAs ?file . ");		/* Get the resource representing the content */
+ 
+ 	if (priv->mimes) {
+ 		int i;
+@@ -259,7 +260,7 @@ brasero_search_tracker_query_start_real (BraseroSearchEngine *search,
+ 		gboolean param_added = FALSE;
+ 
+ 		g_string_append (query,
+-				 "  ?file a ?type . "
++				 "  ?content a ?type . "
+ 				 "  FILTER ( ");
+ 
+ 		if (priv->scope & BRASERO_SEARCH_SCOPE_MUSIC) {
+-- 
+GitLab
+
+
+From 05589be7da3a0dfb00617df049d129abba703c36 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Thu, 24 Dec 2020 13:22:43 +0100
+Subject: [PATCH 5/5] Support Tracker 3.0
+
+Add the compile-time checks, and add the minimal code catering for
+the API changes. In 3.0 connections are no longer singletons.
+---
+ configure.ac                 | 6 +++++-
+ src/brasero-search-tracker.c | 8 ++++++++
+ 2 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index d0c7a870..96afc551 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -388,7 +388,7 @@ AC_ARG_ENABLE(search,
+ if test x"$enable_search" != "xno"; then
+         # Try to figure out the tracker API version to use
+         tracker_api="0.10"
+-        m4_foreach([VERSION], [[0.10], [0.12], [0.14], [0.16], [0.18], [1.0], [2.0]],
++        m4_foreach([VERSION], [[0.10], [0.12], [0.14], [0.16], [0.18], [1.0], [2.0], [3.0]],
+                               [PKG_CHECK_EXISTS([tracker-sparql-VERSION >= $TRACKER_REQUIRED],
+                                                 [tracker_api="VERSION"])
+                               ])
+@@ -408,6 +408,10 @@ if test x"$enable_search" = "xyes"; then
+ 	AC_SUBST(BRASERO_SEARCH_LIBS)
+ 	build_tracker="yes"
+ 	build_search="yes"
++
++	if test x"$tracker_api" = x"3.0"; then
++		AC_DEFINE(HAVE_TRACKER3, 1, [define if tracker3 is available])
++	fi
+ else
+ 	build_search="no"
+ fi
+diff --git a/src/brasero-search-tracker.c b/src/brasero-search-tracker.c
+index 9aa06289..40c5f1ac 100644
+--- a/src/brasero-search-tracker.c
++++ b/src/brasero-search-tracker.c
+@@ -17,6 +17,8 @@
+  * with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "config.h"
++
+ #include <stdlib.h>
+ 
+ #include <libtracker-sparql/tracker-sparql.h>
+@@ -444,7 +446,13 @@ brasero_search_tracker_init (BraseroSearchTracker *object)
+ 
+ 	priv = BRASERO_SEARCH_TRACKER_PRIVATE (object);
+ 	priv->cancellable = g_cancellable_new ();
++
++#ifdef HAVE_TRACKER3
++	priv->connection = tracker_sparql_connection_bus_new ("org.freedesktop.Tracker3.Miner.Files",
++							      NULL, NULL, &error);
++#else
+ 	priv->connection = tracker_sparql_connection_get (priv->cancellable, &error);
++#endif
+ 
+ 	if (error) {
+ 		g_warning ("Could not establish a connection to Tracker: %s", error->message);
+-- 
+GitLab
+
