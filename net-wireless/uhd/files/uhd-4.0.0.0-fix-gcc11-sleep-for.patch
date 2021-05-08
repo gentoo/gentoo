@@ -1,0 +1,21 @@
+From: Huang Rui <vowstar@gmail.com>
+Date: Sun, 9 May 2021 21:09:55 +0800
+Subject: [PATCH 1/1] Add header file for gcc-11 compile
+Bug: https://bugs.gentoo.org/788103
+
+gcc-11 need #include <thread> to compile.
+
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+
+--- a/lib/include/uhdlib/utils/rpc.hpp	2020-09-14 03:14:04.000000000 +0800
++++ b/lib/include/uhdlib/utils/rpc.hpp	2021-05-09 00:59:02.434254809 +0800
+@@ -13,6 +13,9 @@
+ #include <rpc/rpc_error.h>
+ #include <boost/format.hpp>
+ #include <memory>
++#include <iostream>
++#include <chrono>
++#include <thread>
+ 
+ namespace {
+ 

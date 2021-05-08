@@ -1,0 +1,29 @@
+From: Huang Rui <vowstar@gmail.com>
+Date: Sun, 9 May 2021 21:04:49 +0800
+Subject: [PATCH 1/1] Add header file for boost::math sign
+Bug: https://bugs.gentoo.org/788103
+
+Explicit boost/math/special_functions.hpp required with Boost 1.76
+
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+
+--- a/lib/usrp/cores/rx_dsp_core_3000.cpp	2020-09-14 03:14:04.000000000 +0800
++++ b/lib/usrp/cores/rx_dsp_core_3000.cpp	2021-05-09 01:58:59.798277148 +0800
+@@ -14,6 +14,7 @@
+ #include <uhdlib/usrp/cores/rx_dsp_core_3000.hpp>
+ #include <boost/assign/list_of.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ #include <algorithm>
+ #include <cmath>
+ #include <functional>
+--- a/lib/usrp/cores/rx_frontend_core_3000.cpp	2021-05-09 02:02:16.674288000 +0800
++++ b/lib/usrp/cores/rx_frontend_core_3000.cpp	2021-05-09 02:01:56.424774173 +0800
+@@ -12,6 +12,7 @@
+ #include <uhdlib/usrp/cores/rx_frontend_core_3000.hpp>
+ #include <boost/assign/list_of.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ #include <functional>
+ 
+ using namespace uhd;

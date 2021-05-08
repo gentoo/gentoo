@@ -1,12 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-#not sure why, but eapi 7 fails
+EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils multilib
+inherit cmake gnome2-utils multilib python-single-r1
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"
@@ -22,33 +21,41 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+b100 +b200 doc e300 examples +mpmd octoclock +n230 test +usb +usrp1 +usrp2 +utils +x300"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-			b100? ( usb )
-			b200? ( usb )
-			usrp1? ( usb )
-			usrp2? ( usb )
-			|| ( b100 b200 e300 mpmd n230 usrp1 usrp2 x300 )"
+	b100? ( usb )
+	b200? ( usb )
+	usrp1? ( usb )
+	usrp2? ( usb )
+	|| ( b100 b200 e300 mpmd n230 usrp1 usrp2 x300 )
+"
 
 RDEPEND="${PYTHON_DEPS}
-	e300? ( virtual/udev )
-	usb? ( virtual/libusb:1 )
 	dev-libs/boost:=
+	e300? ( virtual/udev )
 	sys-libs/ncurses:0[tinfo]
+	usb? ( virtual/libusb:1 )
 	$(python_gen_cond_dep '
 	dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 	dev-python/requests[${PYTHON_MULTI_USEDEP}]
 	')
 "
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
+	app-arch/gzip
+	app-arch/unzip
 	doc? ( app-doc/doxygen )
 	$(python_gen_cond_dep '
 	dev-python/mako[${PYTHON_MULTI_USEDEP}]
 	')
-	app-arch/unzip
-	app-arch/gzip
 "
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.0.0-tinfo.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch"
+	"${FILESDIR}/${P}-fix-frequency-offsets.patch"
+	"${FILESDIR}/${P}-fix-gcc11-sleep-for.patch"
+	"${FILESDIR}/${P}-fix-boost-math-header.patch"
+)
 
 S="${WORKDIR}/${P}/host"
 
@@ -58,7 +65,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	gnome2_environment_reset #534582
 
@@ -91,10 +98,10 @@ src_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize
 	use utils && python_fix_shebang "${ED}"/usr/$(get_libdir)/${PN}/utils/
 	if [ "${PV}" != "9999" ]; then
@@ -142,5 +149,5 @@ src_install() {
 src_test() {
 	#we can disable the python tests
 	#ctest -E 'py*'
-	PYTHON_PATH=python/ cmake-utils_src_test
+	PYTHON_PATH=python/ cmake_src_test
 }
