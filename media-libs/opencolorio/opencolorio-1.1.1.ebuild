@@ -5,9 +5,9 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake flag-o-matic python-single-r1
+inherit cmake python-single-r1
 
-DESCRIPTION="A color management framework for visual effects and animation"
+DESCRIPTION="color management framework for visual effects and animation"
 HOMEPAGE="https://opencolorio.org/"
 SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/OpenColorIO-${PV}"
