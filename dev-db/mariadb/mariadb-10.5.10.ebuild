@@ -227,9 +227,9 @@ src_prepare() {
 	}
 
 	if use jemalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd jemalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mariadbd LINK_PUBLIC jemalloc)" >> "${S}/sql/CMakeLists.txt"
 	elif use tcmalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd tcmalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mariadbd LINK_PUBLIC tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
 
 	local plugin
