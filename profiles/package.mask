@@ -661,14 +661,6 @@ x11-misc/xstroke
 # Removal on 2021-05-10.  Bug #781902.
 dev-python/monotonic
 
-# Sam James <sam@gentoo.org> (2021-04-09)
-# Support package for games.eclass (which is now being last-rited). Please
-# port away from games.eclass and use general ebuild functions/helpers.
-# No specific eclass is needed for general games installation.
-# Removal on 2021-05-09.
-# bug #574082
-games-misc/games-envd
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
