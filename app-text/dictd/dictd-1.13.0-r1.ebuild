@@ -43,8 +43,8 @@ DOC_CONTENTS="
 "
 
 PATCHES=(
-	"${FILESDIR}"/dictd-1.10.11-colorit-nopp-fix.patch
-	"${FILESDIR}"/dictd-1.12.0-build.patch
+	"${FILESDIR}/${P}-colorit-nopp-fix.patch"
+	"${FILESDIR}/${P}-build.patch"
 )
 
 src_prepare() {
@@ -59,7 +59,7 @@ src_configure() {
 	econf \
 		$(use_with dbi plugin-dbi) \
 		$(use_with judy plugin-judy) \
-		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/${PN} \
+		--libexecdir="${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		--sysconfdir="${EPREFIX}"/etc/dict
 }
 
@@ -76,8 +76,8 @@ src_test() {
 	if [[ ${EUID} -eq 0 ]]; then
 		# If dictd is run as root user (-userpriv) it drops its privileges to
 		# dictd user and group. Give dictd group write access to test directory.
-		chown :dictd "${WORKDIR}" "${S}/test" || die
-		chmod 770 "${WORKDIR}" "${S}/test" || die
+		chown :dictd "${WORKDIR}" "${S}/test" || die "Failed to chown for test suite"
+		chmod 770 "${WORKDIR}" "${S}/test" || die "Failed to chmod for test suite"
 	fi
 	emake test
 }
@@ -95,19 +95,19 @@ src_install() {
 		# conf files. For dict.conf see below.
 		insinto /etc/dict
 		for f in dictd.conf site.info colorit.conf; do
-			doins "${FILESDIR}/1.10.11/${f}"
+			doins "${FILESDIR}/${PV}/${f}"
 		done
 
 		# startups for dictd
-		newinitd "${FILESDIR}/1.10.11/dictd.initd" dictd
-		newconfd "${FILESDIR}/1.10.11/dictd.confd" dictd
-		systemd_dounit "${FILESDIR}"/${PN}.service
+		newinitd "${FILESDIR}/${PV}/dictd.initd" dictd
+		newconfd "${FILESDIR}/${PV}/dictd.confd" dictd
+		systemd_dounit "${FILESDIR}/${PN}.service"
 	fi
 
 	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
 
 	insinto /etc/dict
-	doins "${FILESDIR}"/1.10.11/dict.conf
+	doins "${FILESDIR}/${PV}/dict.conf"
 
 	dodoc ANNOUNCE NEWS README TODO
 
