@@ -6,7 +6,7 @@ EAPI=5
 inherit user
 
 DESCRIPTION="Icecast OGG streaming client, supports on the fly re-encoding"
-HOOMEPAGE="https://icecast.org/ices/"
+HOMEPAGE="https://icecast.org/ices/"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
