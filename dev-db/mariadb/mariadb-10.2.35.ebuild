@@ -25,7 +25,7 @@ IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	sst-rsync sst-mariabackup sst-xtrabackup static systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
-RESTRICT="!bindist? ( bindist ) test? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
