@@ -15,7 +15,7 @@ SRC_URI="https://bitbucket.org/powARman/dvbhddevice/get/${REVISION}.tar.bz2 ->
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=media-video/vdr-2.0.0"
 RDEPEND="${DEPEND}"
