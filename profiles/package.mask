@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-09)
+# Work in progress, do not use yet
+=dev-lang/perl-5.34*
+
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
 # Bug #772815, removal in 30 days.
