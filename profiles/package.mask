@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
+# Unmaintained, last revdep of dev-perl/gtk2-spell, bugs #724796, #769296
+# Removal on 2021-06-08
+app-misc/gcstar
+dev-perl/gtk2-spell
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-09)
 # Work in progress, do not use yet
 =dev-lang/perl-5.34*
