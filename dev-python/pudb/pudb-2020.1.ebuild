@@ -4,8 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
 inherit distutils-r1
 
 DESCRIPTION="A full-screen, console-based Python debugger"
@@ -20,6 +18,4 @@ RDEPEND="
 	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]"
 
-DEPEND="
-	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+distutils_enable_tests pytest
