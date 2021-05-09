@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-05-09)
+# All revdeps masked, last release in 1999, needs to do now.
+# Bug #772815, removal in 30 days.
+sci-libs/fftw:2.1
+
+# David Seifert <soap@gentoo.org> (2021-05-09)
 # Last consumer of sci-libs/fftw:2.1, last release over 20 years
 # ago, dead upstream. Bug #779421, removal in 30 days.
 media-sound/gramofile
