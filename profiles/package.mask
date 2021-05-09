@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-05-09)
+# Not working properly with cmake.eclass port
+# bug #788448
+=app-arch/brotli-1.0.9-r3
+
 # Sam James <sam@gentoo.org> (2021-05-07)
 # Masked for testing. Two major releases ahead of last packaged version.
 # Please report bugs but this is experimental for now.
