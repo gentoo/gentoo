@@ -1,0 +1,6 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
+# Dependency requires sys-apps/systemd.
+kde-plasma/plasma-meta -firewall
