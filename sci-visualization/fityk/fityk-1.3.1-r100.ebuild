@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
-WX_GTK_VER=3.0
+WX_GTK_VER=3.0-gtk3
 
 inherit lua-single wxwidgets xdg
 
@@ -30,7 +30,14 @@ RDEPEND="${DEPEND}
 	gnuplot? ( sci-visualization/gnuplot )"
 BDEPEND="dev-lang/swig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-gtk3.patch
+)
+
 src_configure() {
+	# bug 787317
+	append-cxxflags -std=c++14
+
 	use wxwidgets && setup-wxwidgets
 
 	econf \
