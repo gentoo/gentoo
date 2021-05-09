@@ -20,6 +20,8 @@ RDEPEND="
 	virtual/perl-Encode
 	virtual/perl-Exporter
 	>=dev-perl/PPI-1.117.0
+	dev-perl/PPIx-Regexp
+	dev-perl/Readonly
 	virtual/perl-Scalar-List-Utils
 "
 BDEPEND="${RDEPEND}
