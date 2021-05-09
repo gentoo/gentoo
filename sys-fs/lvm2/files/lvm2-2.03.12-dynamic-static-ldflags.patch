@@ -1,9 +1,10 @@
-From 93101699f5e1190184c00c99ab7b6e9717e5019a Mon Sep 17 00:00:00 2001
+From 4bdd215fd84e83a8119d0b971904221743a87a23 Mon Sep 17 00:00:00 2001
 From: "Robin H. Johnson" <robbat2@gentoo.org>
 Date: Wed, 24 Jul 2019 11:11:35 +0200
 Subject: [PATCH] Add dynamic static ldflags
 
 Forward-ported from 2.02.178 to 2.03.05
+Forward-ported from 2.03.05 to 2.03.12
 Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 ---
  configure.ac                 | 2 ++
@@ -13,18 +14,18 @@ Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
  4 files changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 1e45c0edcb..cc2625294a 100644
+index 1a49e7fe7e..354b53b5ec 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -33,6 +33,7 @@ case "$host_os" in
- 		CLDFLAGS="${CLDFLAGS:"$LDFLAGS"} -Wl,--version-script,.export.sym"
+@@ -32,6 +32,7 @@ case "$host_os" in
+ 	linux*)
  		# equivalent to -rdynamic
  		ELDFLAGS="-Wl,--export-dynamic"
 +		STATIC_LDFLAGS="-Wl,--no-export-dynamic"
  		# FIXME Generate list and use --dynamic-list=.dlopen.sym
  		CLDWHOLEARCHIVE="-Wl,-whole-archive"
  		CLDNOWHOLEARCHIVE="-Wl,-no-whole-archive"
-@@ -1758,6 +1759,7 @@ AC_SUBST(SYSCONFDIR)
+@@ -1860,6 +1861,7 @@ AC_SUBST(SYSCONFDIR)
  AC_SUBST(SYSTEMD_LIBS)
  AC_SUBST(SNAPSHOTS)
  AC_SUBST(STATICDIR)
@@ -33,23 +34,23 @@ index 1e45c0edcb..cc2625294a 100644
  AC_SUBST(TESTSUITE_DATA)
  AC_SUBST(THIN)
 diff --git a/daemons/dmeventd/Makefile.in b/daemons/dmeventd/Makefile.in
-index 6bd36d0325..a3c30ec1a0 100644
+index af51198aae..f7896e581e 100644
 --- a/daemons/dmeventd/Makefile.in
 +++ b/daemons/dmeventd/Makefile.in
-@@ -66,7 +66,7 @@ dmeventd: $(LIB_SHARED) dmeventd.o
+@@ -76,7 +76,7 @@ dmeventd: $(LIB_SHARED) dmeventd.o
  
  dmeventd.static: $(LIB_STATIC) dmeventd.o
  	@echo "    [CC] $@"
--	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) -static -L. -L$(interfacebuilddir) dmeventd.o \
-+	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static -L. -L$(interfacebuilddir) dmeventd.o \
+-	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) -static dmeventd.o \
++	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static dmeventd.o \
  		-o $@ $(DL_LIBS) $(DMEVENT_LIBS) $(LIBS) $(STATIC_LIBS)
  
  ifeq ("@PKGCONFIG@", "yes")
 diff --git a/make.tmpl.in b/make.tmpl.in
-index f3332e91c1..1489c2afad 100644
+index 200ea2e05f..99f02e8b77 100644
 --- a/make.tmpl.in
 +++ b/make.tmpl.in
-@@ -68,6 +68,7 @@ DEFS += @DEFS@
+@@ -69,6 +69,7 @@ DEFS += @DEFS@
  # FIXME set this only where it's needed, not globally?
  CFLAGS ?= @COPTIMISE_FLAG@ @CFLAGS@
  LDFLAGS ?= @LDFLAGS@
@@ -58,18 +59,18 @@ index f3332e91c1..1489c2afad 100644
  ELDFLAGS += @ELDFLAGS@
  LDDEPS += @LDDEPS@
 diff --git a/tools/Makefile.in b/tools/Makefile.in
-index 2620daa17c..e5fc9c4ae4 100644
+index ec546ca632..cdede2a058 100644
 --- a/tools/Makefile.in
 +++ b/tools/Makefile.in
-@@ -136,7 +136,7 @@ man-generator: man-generator.o
+@@ -137,7 +137,7 @@ man-generator: man-generator.o
  
  lvm.static: $(OBJECTS) lvm-static.o $(LVMINTERNAL_LIBS)
  	@echo "    [CC] $@"
--	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) -static -L$(interfacebuilddir) -o $@ $+ \
-+	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static -L$(interfacebuilddir) -o $@ $+ \
- 	      $(DMEVENT_LIBS) $(STATIC_LIBS) $(LVMLIBS)
+-	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) -static -L$(interfacebuilddir) \
++	$(Q) $(CC) $(CFLAGS) $(LDFLAGS) $(STATIC_LDFLAGS) -static -L$(interfacebuilddir) \
+ 		-o $@ $+ $(LVMLIBS) $(STATIC_LIBS)
  
  liblvm2cmd.a: $(top_builddir)/lib/liblvm-internal.a $(OBJECTS) lvmcmdlib.o lvm2cmd.o
 -- 
-2.22.0
+2.31.1
 
