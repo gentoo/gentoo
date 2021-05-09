@@ -97,6 +97,13 @@ src_prepare() {
 	# We need to disable mprotect on two files when it builds Bug 694100.
 	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
 
+	# All this test does is check if the npm CLI produces warnings of any sort,
+	# failing if it does. Overkill, much? Especially given one possible warning
+	# is that there is a newer version of npm available upstream (yes, it does
+	# use the network if available), thus making it a real possibility for this
+	# test to begin failing one day even though it was fine before.
+	rm -f test/parallel/test-release-npm.js
+
 	default
 }
 
