@@ -55,11 +55,9 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( app-text/docbook-xml-dtd:4.3 )
+	app-text/yelp-tools
+	gnome-base/gnome-common
 "
-# eautoreconf deps
-#	app-text/yelp-tools
-#	gnome-base/gnome-common
-
 PDEPEND="gnome-base/gvfs"
 
 PATCHES=(
