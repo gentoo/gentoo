@@ -17,7 +17,6 @@
 		providing optimal speed with GCC.
 	</longdescription>
 	<use>
-		<flag name="c++11">Build using the C++11 standard</flag>
 		<flag name="cuda">Build with cuda support</flag>
 	</use>
 	<upstream>
