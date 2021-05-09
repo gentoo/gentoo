@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby25 ruby26 ruby27"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -24,8 +24,6 @@ IUSE=""
 
 # Note that nio4r bundles a patched copy of libev, and without these
 # patches the tests fail: https://github.com/celluloid/nio4r/issues/15
-
-ruby_add_bdepend "test? ( dev-ruby/rspec-retry )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Cc]overalls/d' -e '/[Bb]undler/d' -e '1irequire "openssl"' spec/spec_helper.rb || die
