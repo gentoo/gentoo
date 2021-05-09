@@ -1,0 +1,55 @@
+From eedae0e7c67da4e12c65ef049665258c1d8f44a8 Mon Sep 17 00:00:00 2001
+From: Michal Petrucha <michal.petrucha@koniiiik.org>
+Date: Thu, 22 Apr 2021 22:55:40 +0200
+Subject: [PATCH] Add support for fluidsynth 2.2.0
+
+---
+ SDL_audiolib/src/DecoderFluidsynth.cpp | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/SDL_audiolib/src/DecoderFluidsynth.cpp b/SDL_audiolib/src/DecoderFluidsynth.cpp
+index 62a99df..0f4760d 100644
+--- a/SDL_audiolib/src/DecoderFluidsynth.cpp
++++ b/SDL_audiolib/src/DecoderFluidsynth.cpp
+@@ -11,6 +11,14 @@
+ #include <cstdio>
+ #include <fluidsynth.h>
+ 
++#if FLUIDSYNTH_VERSION_MAJOR == 2 && FLUIDSYNTH_VERSION_MINOR >= 2
++using read_cb_count_type = fluid_long_long_t;
++using seek_cb_offset_type = fluid_long_long_t;
++#else
++using read_cb_count_type = int;
++using seek_cb_offset_type = long;
++#endif
++
+ namespace chrono = std::chrono;
+ 
+ static fluid_settings_t* settings = nullptr;
+@@ -36,7 +44,7 @@ static void* sfontOpenCb(const char* filename)
+     return rwops;
+ }
+ 
+-static int sfontReadCb(void* dst, int count, void* rwops)
++static int sfontReadCb(void* dst, read_cb_count_type count, void* rwops)
+ {
+     Buffer<char> buf(count);
+     if (SDL_RWread(static_cast<SDL_RWops*>(rwops), buf.get(), 1, count) <= 0) {
+@@ -46,7 +54,7 @@ static int sfontReadCb(void* dst, int count, void* rwops)
+     return FLUID_OK;
+ }
+ 
+-static int sfontSeekCb(void* rwops, long offset, int whence)
++static int sfontSeekCb(void* rwops, seek_cb_offset_type offset, int whence)
+ {
+     switch (whence) {
+     case SEEK_SET:
+@@ -72,7 +80,7 @@ static int sfontCloseCb(void* rwops)
+     return FLUID_OK;
+ }
+ 
+-static long sfontTellCb(void* rwops)
++static seek_cb_offset_type sfontTellCb(void* rwops)
+ {
+     auto pos = SDL_RWtell(static_cast<SDL_RWops*>(rwops));
+     if (pos == -1) {
