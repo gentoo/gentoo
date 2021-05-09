@@ -6,7 +6,7 @@ EAPI=7
 inherit gnome.org gnome2-utils meson multilib multilib-minimal xdg
 
 DESCRIPTION="Image loading library for GTK+"
-HOMEPAGE="https://git.gnome.org/browse/gdk-pixbuf"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"

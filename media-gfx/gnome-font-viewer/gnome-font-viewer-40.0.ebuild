@@ -5,7 +5,7 @@ EAPI=7
 inherit gnome.org meson xdg
 
 DESCRIPTION="Font viewer utility for GNOME"
-HOMEPAGE="https://git.gnome.org/browse/gnome-font-viewer"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-font-viewer"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

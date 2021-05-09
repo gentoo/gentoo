@@ -6,7 +6,7 @@ EAPI=6
 inherit gnome.org meson xdg
 
 DESCRIPTION="GObject based library for handling and rendering epub documents"
-HOMEPAGE="https://git.gnome.org/browse/libgepub"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgepub"
 
 LICENSE="LGPL-2+"
 SLOT="0"

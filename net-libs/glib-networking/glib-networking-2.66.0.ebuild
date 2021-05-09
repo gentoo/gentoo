@@ -6,7 +6,7 @@ EAPI=7
 inherit gnome.org gnome2-utils meson multilib-minimal xdg
 
 DESCRIPTION="Network-related giomodules for glib"
-HOMEPAGE="https://git.gnome.org/browse/glib-networking/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/glib-networking"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -5,7 +5,7 @@ EAPI=7
 inherit gnome2
 
 DESCRIPTION="GNOME end user documentation"
-HOMEPAGE="https://git.gnome.org/browse/gnome-user-docs"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-user-docs"
 
 LICENSE="CC-BY-3.0"
 SLOT="0"

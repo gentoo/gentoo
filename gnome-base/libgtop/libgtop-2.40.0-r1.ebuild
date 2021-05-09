@@ -6,7 +6,7 @@ GNOME2_EAUTORECONF="yes"
 inherit flag-o-matic gnome2
 
 DESCRIPTION="A library that provides top functionality to applications"
-HOMEPAGE="https://git.gnome.org/browse/libgtop"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgtop"
 SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
