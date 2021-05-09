@@ -56,12 +56,12 @@ src_test() {
 src_install() {
 	dobin engine/{bjam,b2}
 
-	insinto /usr/share/boost-build
+	insinto /usr/share/boost-build/src
 	doins -r "${FILESDIR}/site-config.jam" \
 		../boost-build.jam bootstrap.jam build-system.jam ../example/user-config.jam *.py \
 		build kernel options tools util
 
-	find "${ED}"/usr/share/boost-build -iname '*.py' -delete || die
+	find "${ED}"/usr/share/boost-build/src -iname '*.py' -delete || die
 
 	dodoc ../notes/{changes,release_procedure,build_dir_option,relative_source_paths}.txt
 
