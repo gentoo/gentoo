@@ -17,5 +17,9 @@ KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 RDEPEND="
 	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
