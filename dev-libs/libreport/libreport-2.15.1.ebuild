@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/abrt/libreport"
 SRC_URI="https://github.com/abrt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="gtk +python"
