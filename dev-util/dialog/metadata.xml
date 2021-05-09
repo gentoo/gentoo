@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>base-system@gentoo.org</email>
-<name>Gentoo Base System Project</name>
-</maintainer>
-<use>
-<flag name="minimal">Disable library, install command-line program only</flag>
-</use>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System Project</name>
+	</maintainer>
+	<use>
+		<flag name="minimal">Disable library, install command-line program only</flag>
+	</use>
+	<upstream>
+		<changelog>https://invisible-island.net/dialog/CHANGES.html</changelog>
+	</upstream>
 </pkgmetadata>
