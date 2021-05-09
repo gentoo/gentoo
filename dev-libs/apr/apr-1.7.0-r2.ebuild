@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools libtool toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/apr/${P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="1/${PV%.*}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc elibc_FreeBSD older-kernels-compatibility selinux static-libs +urandom"
 
 CDEPEND="elibc_glibc? ( >=sys-apps/util-linux-2.16 )
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.0-cross-types.patch
 	"${FILESDIR}"/${PN}-1.5.0-sysroot.patch #385775
 	"${FILESDIR}"/${PN}-1.6.3-skip-known-failing-tests.patch
+	"${FILESDIR}"/${PN}-1.7.0-autoconf-2.70.patch #750353
 )
 
 src_prepare() {
@@ -108,6 +109,14 @@ src_configure() {
 			myconf+=( --disable-nonportable-atomics )
 			;;
 		esac
+	else
+		if use ppc || use sparc; then
+			# Avoid libapr containing undefined references (underlinked)
+			# undefined reference to `__sync_val_compare_and_swap_8'
+			# (May be possible to fix via libatomic linkage in future?)
+			# bug #740464
+			myconf+=( --disable-nonportable-atomics )
+		fi
 	fi
 
 	econf "${myconf[@]}"
@@ -137,11 +146,8 @@ src_test() {
 src_install() {
 	default
 
-	# Parallel install breaks since apr-1.5.1
-	#make -j1 DESTDIR="${D}" install || die
-
 	if ! use static-libs; then
-		find "${ED%/}" -name '*.la' -delete || die
+		find "${ED}" -name '*.la' -delete || die
 	fi
 
 	if use doc; then
@@ -152,5 +158,5 @@ src_install() {
 	# This file is only used on AIX systems, which Gentoo is not,
 	# and causes collisions between the SLOTs, so remove it.
 	# Even in Prefix, we don't need this on AIX.
-	rm -f "${ED%/}/usr/$(get_libdir)/apr.exp"
+	rm "${ED}/usr/$(get_libdir)/apr.exp" || die
 }
