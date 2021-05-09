@@ -3,6 +3,7 @@
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
+VALA_MIN_API_VERSION=0.46
 
 inherit gnome2 multilib-minimal rust-toolchain vala
 
