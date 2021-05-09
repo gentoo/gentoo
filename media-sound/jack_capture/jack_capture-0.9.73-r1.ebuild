@@ -25,7 +25,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}/${P}-Makefile.patch"
+	"${FILESDIR}/${P}-avoid-custom-asprintf.patch"
 )
 
 DOCS=( README config )
