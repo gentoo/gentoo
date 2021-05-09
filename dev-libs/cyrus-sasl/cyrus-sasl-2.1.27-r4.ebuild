@@ -87,19 +87,22 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# getpassphrase is defined in /usr/include/stdlib.h
 		append-cppflags -DHAVE_GETPASSPHRASE
 	else
 		# this horrendously breaks things on Solaris
 		append-cppflags -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -D_BSD_SOURCE -DLDAP_DEPRECATED
+		# replaces BSD_SOURCE (bug #579218)
+		append-cppflags -D_DEFAULT_SOURCE
 	fi
 
 	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
-	# Java support.
+	# Java support
 	multilib_is_native_abi && use java && export JAVAC="${JAVAC} ${JAVACFLAGS}"
 
 	local myeconfargs=(
