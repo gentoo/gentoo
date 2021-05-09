@@ -35,7 +35,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
-	sys-apps/systemd
 	|| (
 		net-firewall/firewalld
 		net-firewall/ufw
@@ -47,4 +46,13 @@ src_prepare() {
 	# this kind of cmake magic doesn't work for us at all.
 	sed -e "1 s:^.*$:\#\!/usr/bin/env python3.8:" \
 		-i kcm/backends/ufw/helper/kcm_ufw_helper.py.cmake || die
+}
+
+pkg_postinst () {
+	ecm_pkg_postinst
+
+	if ! has_version sys-apps/systemd; then
+		ewarn "${PN} is not functional without sys-apps/systemd at this point."
+		ewarn "See also: https://bugs.gentoo.org/778527"
+	fi
 }
