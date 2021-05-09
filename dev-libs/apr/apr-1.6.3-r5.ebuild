@@ -109,6 +109,14 @@ src_configure() {
 			myconf+=( --disable-nonportable-atomics )
 			;;
 		esac
+	else
+		if use ppc || use sparc; then
+			# Avoid libapr containing undefined references (underlinked)
+			# undefined reference to `__sync_val_compare_and_swap_8'
+			# (May be possible to fix via libatomic linkage in future?)
+			# bug #740464
+			myconf+=( --disable-nonportable-atomics )
+		fi
 	fi
 
 	econf "${myconf[@]}"
