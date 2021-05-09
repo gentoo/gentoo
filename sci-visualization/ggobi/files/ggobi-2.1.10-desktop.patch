@@ -1,5 +1,5 @@
---- xdg/ggobi.desktop.orig	2013-02-24 22:20:02.616872402 -0800
-+++ xdg/ggobi.desktop	2013-02-24 22:20:13.293924862 -0800
+--- a/xdg/ggobi.desktop
++++ b/xdg/ggobi.desktop
 @@ -6,6 +6,6 @@
  Comment=Multivariate interactive graphics for exploratory data analysis
  TryExec=ggobi
