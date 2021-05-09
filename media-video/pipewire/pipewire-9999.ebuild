@@ -166,6 +166,7 @@ multilib_src_configure() {
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
 		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
 		$(meson_native_feature jack-client jack) # Allows PW to act as a JACK client
+		$(meson_feature jack-sdk jack-devel)
 		$(usex jack-sdk "-Dlibjack-path=${EPREFIX}/usr/$(get_libdir)" '')
 		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
 		-Devl=disabled # Matches upstream
