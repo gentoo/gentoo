@@ -45,7 +45,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
-BDEPEND="=dev-util/boost-build-${MAJOR_V}*"
+BDEPEND=">=dev-util/boost-build-${MAJOR_V}-r1"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.71.0-disable_icu_rpath.patch
@@ -169,7 +169,7 @@ src_configure() {
 		$(usex context '' '--without-context --without-coroutine --without-fiber')
 		$(usex threads '' '--without-thread')
 		--without-stacktrace
-		--boost-build="${BROOT}"/usr/share/boost-build
+		--boost-build="${BROOT}"/usr/share/boost-build/src
 		--layout=system
 		# CMake has issues working with multiple python impls,
 		# disable cmake config generation for the time being
