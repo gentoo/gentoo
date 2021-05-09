@@ -14,12 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="mp3"
 
-# mpg123?
 RDEPEND="
 	dev-libs/glib
-	media-sound/mpg123
 	media-libs/libao
 	x11-libs/gtk+:3
+	mp3? ( media-sound/mpg123 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
