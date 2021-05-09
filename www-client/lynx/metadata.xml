@@ -9,4 +9,7 @@
 		<flag name="ssl">Enable HTTPS support.</flag>
 		<flag name="gnutls">Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).</flag>
 	</use>
+	<upstream>
+		<changelog>https://lynx.invisible-island.net/current/CHANGES.html</changelog>
+	</upstream>
 </pkgmetadata>
