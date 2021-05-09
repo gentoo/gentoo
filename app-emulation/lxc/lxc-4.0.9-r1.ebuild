@@ -72,6 +72,7 @@ pkg_setup() {
 }
 
 PATCHES=(
+	"${FILESDIR}"/lxc-4.0.9-handle-kernels-with-CAP_SETFCAP.patch # bug 789012
 	"${FILESDIR}"/${PN}-3.0.0-bash-completion.patch
 	"${FILESDIR}"/${PN}-2.0.5-omit-sysconfig.patch # bug 558854
 )
