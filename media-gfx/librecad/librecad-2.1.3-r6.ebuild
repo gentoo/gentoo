@@ -51,7 +51,7 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
 	use doc && docinto html && dodoc -r librecad/support/doc/*
-	insinto /usr/share/appdata
+	insinto /usr/share/metainfo
 	doins unix/appdata/librecad.appdata.xml
 	doicon librecad/res/main/${PN}.png
 	make_desktop_entry ${PN} LibreCAD ${PN} Graphics
