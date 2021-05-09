@@ -66,6 +66,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++14 # bug 788283
+
 	if use gui; then
 		append-cppflags -I$(fltk-config --includedir)
 		append-lfs-flags
