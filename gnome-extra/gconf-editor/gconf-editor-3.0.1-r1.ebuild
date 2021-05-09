@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="An editor to the GNOME config system"
-HOMEPAGE="https://git.gnome.org/browse/gconf-editor"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gconf-editor"
 
 LICENSE="GPL-2"
 SLOT="0"

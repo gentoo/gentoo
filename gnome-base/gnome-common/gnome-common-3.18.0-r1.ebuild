@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Common files for development of Gnome packages"
-HOMEPAGE="https://git.gnome.org/browse/gnome-common"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-common"
 
 LICENSE="GPL-3"
 SLOT="3"

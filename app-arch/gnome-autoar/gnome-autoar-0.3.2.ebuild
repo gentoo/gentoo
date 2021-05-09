@@ -7,7 +7,7 @@ VALA_USE_DEPEND="vapigen"
 inherit gnome2 vala
 
 DESCRIPTION="Automatic archives creating and extracting library"
-HOMEPAGE="https://git.gnome.org/browse/gnome-autoar"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-autoar"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -6,7 +6,7 @@ EAPI=7
 inherit gnome.org gnome2-utils meson multilib systemd xdg
 
 DESCRIPTION="Personal file sharing for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-user-share"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-user-share"
 
 LICENSE="GPL-2"
 SLOT="0"

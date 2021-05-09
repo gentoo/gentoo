@@ -9,7 +9,7 @@ GNOME_ORG_MODULE="nautilus-actions"
 inherit gnome2
 
 DESCRIPTION="Configures programs to be launched when files are selected in Nautilus"
-HOMEPAGE="http://www.nautilus-actions.org/ https://git.gnome.org/browse/nautilus-actions/"
+HOMEPAGE="http://www.nautilus-actions.org/ https://gitlab.gnome.org/Archive/nautilus-actions"
 
 LICENSE="GPL-2 FDL-1.3"
 SLOT="3"

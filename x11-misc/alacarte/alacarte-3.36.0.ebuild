@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml"
 inherit gnome2 python-single-r1
 
 DESCRIPTION="Simple GNOME menu editor"
-HOMEPAGE="https://git.gnome.org/browse/alacarte"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/alacarte"
 
 LICENSE="GPL-2+"
 SLOT="0"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-control-center"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.38.3-patchset.tar.xz"
 
 LICENSE="GPL-2+"
