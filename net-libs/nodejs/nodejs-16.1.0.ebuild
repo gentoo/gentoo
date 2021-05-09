@@ -42,6 +42,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
+	"${FILESDIR}"/${PN}-16.1.0-test-repl-history-navigation.patch
 )
 
 S="${WORKDIR}/node-v${PV}"
@@ -69,10 +70,6 @@ src_prepare() {
 	tc-export AR CC CXX PKG_CONFIG
 	export V=1
 	export BUILDTYPE=Release
-
-	# See https://github.com/nodejs/node/issues/38558
-	# FIXME: temporary, until we have figured out why that one single test fails.
-	rm -f test/parallel/test-repl-history-navigation.js
 
 	# fix compilation on Darwin
 	# https://code.google.com/p/gyp/issues/detail?id=260
