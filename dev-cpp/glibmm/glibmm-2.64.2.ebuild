@@ -23,6 +23,7 @@ BDEPEND="
 	>=dev-cpp/mm-common-1.0.0
 	sys-devel/m4
 	dev-lang/perl
+	dev-perl/XML-Parser
 	doc? (
 		app-doc/doxygen
 		dev-libs/libxslt
