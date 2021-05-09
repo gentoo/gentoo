@@ -42,6 +42,10 @@ BDEPEND="
 
 distutils_enable_tests setup.py
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.7-py310-update.patch
+)
+
 src_test() {
 	local -x PYTHONDONTWRITEBYTECODE=
 	distutils-r1_src_test
