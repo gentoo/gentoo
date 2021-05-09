@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-09)
+# PortageXS saw its last release in 2016 and would need
+# a new upstream maintainer. Multiple bugs, e.g.,
+# 688238, 625536, 613114, 473394, 332611, 289524, 264680
+# Masked for removal in 30 days, including reverse deps.
+dev-perl/PortageXS
+app-portage/demerge
+app-portage/perl-info
+
 # Sam James <sam@gentoo.org> (2021-05-09)
 # Not working properly with cmake.eclass port
 # bug #788448
