@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,9 +14,6 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc tools"
 
-BDEPEND="
-	dev-qt/linguist-tools:5
-"
 RDEPEND="
 	dev-cpp/muParser
 	dev-libs/boost:=
@@ -31,13 +28,17 @@ DEPEND="${RDEPEND}
 	dev-qt/qthelp:5
 	dev-qt/qtxml:5
 "
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 
 S="${WORKDIR}/LibreCAD-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-qt-5.11.patch"
 	"${FILESDIR}/${P}-gcc-9.patch"
-	"${FILESDIR}/${P}-qt-5.15.patch" # pending upstream PR#1224
+	"${FILESDIR}/${P}-qt-5.15.patch"
+	"${FILESDIR}/${P}-boost-1.76.patch" # bug 788706, upstream PR#1345
 )
 
 src_configure() {
