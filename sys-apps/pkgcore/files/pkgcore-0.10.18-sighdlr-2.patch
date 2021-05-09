@@ -1,0 +1,56 @@
+From 9faa4288ce0b9f90292e9afc2777ce62317d861a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 9 May 2021 21:36:32 +0200
+Subject: [PATCH] ebuild.processor: Ensure that signal handlers are set only
+ once
+
+Prevent the signal.signal() calls from being made more than once.  This
+was changed in 533f1edd70054a5479ee85719d3cbef0d15627fd when the calls
+were moved to EbuildProcessor's __init__ method.  However, it seems
+to cause 'pmaint regen' to hang randomly which keeps blocking Gentoo
+git repository mirrors.
+
+Fixes #307
+---
+ src/pkgcore/ebuild/processor.py | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/pkgcore/ebuild/processor.py b/src/pkgcore/ebuild/processor.py
+index 323e7e9a..384dc1f0 100644
+--- a/src/pkgcore/ebuild/processor.py
++++ b/src/pkgcore/ebuild/processor.py
+@@ -24,7 +24,7 @@ import os
+ import signal
+ import threading
+ import traceback
+-from functools import partial, wraps
++from functools import partial, wraps, lru_cache
+ from itertools import chain
+ 
+ from snakeoil import bash, fileutils, klass
+@@ -297,6 +297,12 @@ def chuck_StoppingCommand(ebp, line):
+         raise ProcessorError(args[1])
+ 
+ 
++@lru_cache(maxsize=None)
++def set_signal_handlers():
++    signal.signal(signal.SIGTERM, partial(chuck_TermInterrupt, None))
++    signal.signal(signal.SIGINT, chuck_KeyboardInterrupt)
++
++
+ class EbuildProcessor:
+     """Abstraction of a running ebd instance.
+ 
+@@ -320,8 +326,7 @@ class EbuildProcessor:
+         self._outstanding_expects = []
+         self._metadata_paths = None
+ 
+-        signal.signal(signal.SIGTERM, partial(chuck_TermInterrupt, None))
+-        signal.signal(signal.SIGINT, chuck_KeyboardInterrupt)
++        set_signal_handlers()
+ 
+         spawn_opts = {'umask': 0o002}
+         if self.userpriv:
+-- 
+2.31.1
+
