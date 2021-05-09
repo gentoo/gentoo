@@ -10,11 +10,18 @@ inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs 
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
-
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
-SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/nodejs/node"
+	SLOT="0"
+else
+	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
+	SLOT="0/$(ver_cut 1)"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+	S="${WORKDIR}/node-v${PV}"
+fi
 
 IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax_kernel +snapshot +ssl system-icu +system-ssl systemtap test"
 REQUIRED_USE="inspector? ( icu ssl )
@@ -45,8 +52,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-14.15.0-fix_ppc64_crashes.patch
 	"${FILESDIR}"/${PN}-14.16.1-v8_icu69.patch
 )
-
-S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
