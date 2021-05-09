@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
+# Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
+kde-plasma/plasma-meta firewall
+
 # Matt Turner <mattst88@gentoo.org> (2021-04-14)
 # Was masked since 2014. Unmasked starting with 0.3.13.
 <media-plugins/grilo-plugins-0.3.13 lua
