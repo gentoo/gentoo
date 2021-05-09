@@ -48,8 +48,6 @@ RDEPEND="${DEPEND}
 	)
 "
 BDEPEND="
-	app-text/yelp-tools
-	gnome-base/gnome-common
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	>=dev-util/gtk-doc-am-1.12
