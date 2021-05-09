@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.10.0:3
-	>=dev-libs/libreport-2.0.20[python,${PYTHON_USEDEP}]
+	>=dev-libs/libreport-2.0.20:0=[python,${PYTHON_USEDEP}]
 	>=app-admin/abrt-2.10.10-r1
 	>=dev-python/pygobject-3.29.1:3[${PYTHON_USEDEP}]
 	>=dev-python/pyxdg-0.19[${PYTHON_USEDEP}]
