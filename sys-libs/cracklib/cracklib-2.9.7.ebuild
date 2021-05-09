@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Note: ideally bump with sys-apps/cracklib-words
+
 PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_OPTIONAL=1
 
