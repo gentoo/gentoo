@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module systemd
+inherit go-module linux-info systemd
 
 DESCRIPTION="Lightweight Kubernetes"
 HOMEPAGE="https://k3s.io"
 K3S_ROOT_VERSION=0.8.1
 K3S_TRAEFIK_VERSION=1.81.0
 K3S_CNIPLUGINS_VERSION=0.8.6
+CONFIG_CHECK="~BRIDGE_NETFILTER ~CFS_BANDWIDTH ~CGROUP_DEVICE ~CGROUP_PERF ~CGROUP_PIDS ~IP_VS ~MEMCG ~NETFILTER_XT_MATCH_COMMENT ~OVERLAY_FS ~VLAN ~VXLAN"
 
 EGO_SUM=(
 "bazil.org/fuse v0.0.0-20160811212531-371fbbdaa898"
