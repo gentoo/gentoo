@@ -110,11 +110,11 @@ src_prepare() {
 	fi
 
 	# avoid ugly depend.mk warnings
-	touch $(find . -name Makefile | sed s:Makefile:depend.mk:g)
+	touch $(find . -name Makefile -exec sed "s:Makefile:depend.mk:g" {} + || die)
 }
 
 src_configure() {
-	cat config.mk.in - >> config.mk <<-EOF
+	cat config.mk.in - >> config.mk <<-EOF || die
 	# Misc crap
 	BUILD_FIASCO = N
 	SYMLINK = ln -sf
