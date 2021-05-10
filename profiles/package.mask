@@ -688,13 +688,6 @@ dev-python/monotonic
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
 
-# Sergey Popov <pinkbyte@gentoo.org> (2021-04-06)
-# Ancient version, currently no consumers in main tree
-# The only one consumer was mail-client/roundcube
-# and now it uses bundled version
-# Masked for removal in 30 days.
-dev-php/PEAR-Net_LDAP3
-
 # Sam James <sam@gentoo.org> (2021-03-30)
 # Seems to break dev-tex/culmus-latex
 # Masking until we can investigate & fix
