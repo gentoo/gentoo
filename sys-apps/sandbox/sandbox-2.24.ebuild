@@ -25,6 +25,14 @@ sandbox_death_notice() {
 	ewarn "FEATURES='-sandbox -usersandbox' emerge sandbox"
 }
 
+src_prepare() {
+	default
+
+	# sandbox uses `__asm__ (".symver "...` which does
+	# not play well with gcc's LTO: https://gcc.gnu.org/PR48200
+	append-flags -fno-lto
+}
+
 multilib_src_configure() {
 	filter-lfs-flags #90228
 
