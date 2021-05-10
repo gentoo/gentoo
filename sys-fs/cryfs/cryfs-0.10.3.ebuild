@@ -37,8 +37,10 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	# TODO upstream:
-	"${FILESDIR}/0.10.2-unbundle-libs.patch"
-	"${FILESDIR}/0.10.2-install-targets.patch"
+	"${FILESDIR}/${PN}-0.10.2-unbundle-libs.patch"
+	"${FILESDIR}/${PN}-0.10.2-install-targets.patch"
+	# From upstream
+	"${FILESDIR}/${PN}-0.10.3-gcc11.patch"
 )
 
 pkg_setup() {
@@ -71,6 +73,7 @@ src_configure() {
 		-DUSE_SYSTEM_LIBS=ON
 		-DBUILD_TESTING=$(usex test)
 	)
+
 	use custom-optimization || append-flags -O3
 	use debug || append-flags -DNDEBUG
 
