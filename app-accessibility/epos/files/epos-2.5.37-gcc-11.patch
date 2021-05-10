@@ -1,0 +1,81 @@
+Avoid `container` namespace clash with gcc-11's libstdc++ headers.
+
+https://bugs.gentoo.org/786264
+--- a/src/nnet/xmltempl.cc
++++ b/src/nnet/xmltempl.cc
+@@ -22,10 +22,10 @@ CXml * x ::print () const { \
+ #define RP(x) x
+ 
+ #define child(x,tag) retval->AddChild (*xml_print (x,tag));
+-#define container(x,tag) retval->AddChild (*xml_print_container (x,tag));
++#define epos_container(x,tag) retval->AddChild (*xml_print_container (x,tag));
+ #define child_opt(x,tag) if(x) child(x,tag)
+ #define child_enum(x,tag,enumS) retval->AddChild (*xml_print (enumS[x],tag));
+-#define container_opt(x,tag) if(x.size()) container(x,tag)
++#define container_opt(x,tag) if(x.size()) epos_container(x,tag)
+ #define structure(x,tag) retval->AddChild (*xml_print_str (x,tag));
+ #define structure_opt(x,tag,write_cond) if (write_cond) structure(x,tag)
+ 
+@@ -40,7 +40,7 @@ CXml * x ::print () const { \
+ #define CHILD(x)		child(x,#x)
+ #define CHILD_OPT(x)		child_opt(x,#x)
+ #define CHILD_ENUM(x,enumS)	child_enum(x,#x,enumS)
+-#define CONTAINER(x)		container(x,#x)
++#define CONTAINER(x)		epos_container(x,#x)
+ #define CONTAINER_OPT(x)	container_opt (x,#x)
+ #define STRUCTURE(x)		structure(x,#x)
+ #define STRUCTURE_OPT(x,cond)	structure_opt(x,#x,cond)
+@@ -60,7 +60,7 @@ return retval; }
+ #undef child
+ #undef child_opt
+ #undef child_enum
+-#undef container
++#undef epos_container
+ #undef container_opt
+ #undef structure
+ #undef structure_opt
+@@ -82,7 +82,7 @@ CString x ::read (CRox *xml) { \
+ #define child(x,tag) err += xml_read (xml,x,tag);
+ #define child_opt(x,tag) err += xml_read(xml,x,tag,false);
+ #define child_enum(x,tag,enumS) err += xml_read_enum(xml,x,enumS,tag);
+-#define container(x,tag) err += xml_read_container (xml,x,tag);
++#define epos_container(x,tag) err += xml_read_container (xml,x,tag);
+ #define container_opt(x,tag) err += xml_read_container (xml,x,tag,false);
+ #define structure(x,tag) err += xml_read_str (xml,x,tag);
+ #define structure_opt(x,tag,write_cond) err += xml_read_str (xml,x,tag,false);
+@@ -105,7 +105,7 @@ else return ""; }
+ #undef child
+ #undef child_opt
+ #undef child_enum
+-#undef container
++#undef epos_container
+ #undef container_opt
+ #undef structure
+ #undef structure_opt
+@@ -119,7 +119,7 @@ else return ""; }
+ 
+ #define XMLIZE(x,tag) x tmp##tag; retval->AddChild (*tmp##tag.printTemplate ());
+ #define child(x,tag) 
+-#define container(x,tag) 
++#define epos_container(x,tag) 
+ #define child_opt(x,tag) 
+ #define child_enum(x,tag,enumS) 
+ #define container_opt(x,tag) 
+@@ -145,7 +145,7 @@ CRox *xmltempl ()
+ #undef child
+ #undef child_opt
+ #undef child_enum
+-#undef container
++#undef epos_container
+ #undef container_opt
+ #undef structure
+ #undef structure_opt
+@@ -171,7 +171,7 @@ CXml * x ::printTemplate () const { \
+ 	CXml *retval = new CXml (#tag,1,0,"comment","structure " #x); \
+ 	retval->SetFF(DODELETE);
+ #define child(x,tag) retval->AddChild (*(new CXml(tag,1,0,"comment",#x))->SetFF(DODELETE));
+-#define container(x,tag) 
++#define epos_container(x,tag) 
+ #define child_opt(x,tag) 
+ #define child_enum(x,tag,enumS) 
+ #define container_opt(x,tag) 
