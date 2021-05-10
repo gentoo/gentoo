@@ -1,0 +1,11 @@
+diff -Nuar a/gcstar/install b/gcstar/install
+--- a/gcstar/install	2021-03-04 10:24:09.000000000 +0000
++++ b/gcstar/install	2021-05-24 17:12:02.000000000 +0000
+@@ -206,7 +206,6 @@
+     mkpath $baseDir.'share/man/man1';
+     my $manPage = $baseDir."share/man/man1/$binName.1";
+     copy 'man/gcstar.1', $manPage;
+-    `gzip -f $manPage 2>&1 >/dev/null`;
+ 
+     chmod 0755, $baseDir.'bin/'.$binName;
+ 
