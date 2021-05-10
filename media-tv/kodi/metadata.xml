@@ -20,6 +20,7 @@
 		<flag name="dav1d">Enables AV1 decoding via <pkg>media-libs/dav1d</pkg></flag>
 		<flag name="nfs">Enable NFS client support</flag>
 		<flag name="optical">Enable Audio CD playback, optical disks detection and reading (CD-ROM, Video CD, and others), and ISO optical disk images direct reading. DVD disks may require additional 'udf' flag.</flag>
+		<flag name="pipewire">Enable pipewire support</flag>
 		<flag name="power-control">Enable control of shutdown, reboot, suspend, and hibernate</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
