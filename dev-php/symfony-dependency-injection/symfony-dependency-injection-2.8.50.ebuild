@@ -10,7 +10,7 @@ SRC_URI="https://github.com/symfony/dependency-injection/archive/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 # The test suite requires the unpackaged symfony-expression-language.
