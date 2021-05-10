@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
-DESCRIPTION="A collection of fancy functional tools focused on practicality"
+DESCRIPTION="Easy anonymous functions by partial application of operators"
 HOMEPAGE="https://github.com/Suor/whatever"
 SRC_URI="
 	https://github.com/Suor/whatever/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
