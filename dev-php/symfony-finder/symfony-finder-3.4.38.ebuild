@@ -9,7 +9,7 @@ SRC_URI="https://github.com/symfony/finder/archive/v${PV}.tar.gz -> symfony-find
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
