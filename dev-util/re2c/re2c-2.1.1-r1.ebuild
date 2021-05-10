@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="tool for generating C-based recognizers from regular expressions"
 HOMEPAGE="http://re2c.org/"
 SRC_URI="https://github.com/skvadrik/re2c/releases/download/${PV}/${P}.tar.xz"
@@ -13,6 +15,16 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="debug"
 
 PATCHES=("${FILESDIR}"/${P}-sh.patch)
+
+src_prepare() {
+	default
+
+	# Only needed for the sh patch
+	# Despite the patch modifying the configure directly,
+	# this is sometimes fragile and triggers maintainer mode anyway.
+	# bug #779187
+	eautoreconf
+}
 
 src_configure() {
 	econf \
