@@ -12,7 +12,7 @@ S="${WORKDIR}/thc-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="
 	debug firebird gcrypt gtk idn memcached mongodb mysql ncurses
 	oracle pcre postgres rdp libssh subversion zlib
