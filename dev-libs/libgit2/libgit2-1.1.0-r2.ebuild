@@ -14,7 +14,7 @@ S=${WORKDIR}/${P/_/-}
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0/1.1"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~ppc-macos"
-IUSE="examples gssapi ssh test +threads trace"
+IUSE="examples gssapi +ssh test +threads trace"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
