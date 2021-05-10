@@ -6,13 +6,13 @@ inherit eutils desktop
 
 SLOT="0"
 PV_STRING="$(ver_cut 2-6)"
-MY_PV="$(ver_cut 1-1).$(ver_cut 3-3)"
+MY_PV="$(ver_cut 1-2).$(ver_cut 3-3)"
 MY_PN="idea"
 # Using the most recent Jetbrains Runtime binaries available at the time of writing
 # ( jre 11.0.10 build 1304.4  )
 JRE11_BASE="11_0_10"
 JRE11_VER="1304.4"
-IDEA_VER="2.111705284.1737970125.1619718960-2104634719.1619551776"
+IDEA_VER="2.236075331.371301151.1620596360-682219170.1619910833"
 
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
