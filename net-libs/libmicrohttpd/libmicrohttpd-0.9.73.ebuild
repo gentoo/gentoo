@@ -18,13 +18,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc 
 IUSE="+epoll ssl static-libs test thread-names"
 RESTRICT="!test? ( test )"
 
+# libcurl is linked to for tests and the
+# curl binary is used during tests too
+# if available
 RDEPEND="ssl? ( >net-libs/gnutls-2.12.20:= )"
 DEPEND="${RDEPEND}
-	test? ( net-misc/curl[ssl?] )
-"
-BDEPEND="
-	virtual/pkgconfig
-"
+	test? ( net-misc/curl[ssl?] )"
+BDEPEND="virtual/pkgconfig
+	test? ( net-misc/curl[ssl?] )"
 
 DOCS=( AUTHORS NEWS README ChangeLog )
 
