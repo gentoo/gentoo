@@ -70,7 +70,7 @@ app-portage/perl-info
 # Masked for testing. Two major releases ahead of last packaged version.
 # Please report bugs but this is experimental for now.
 # bug #731266
-~net-mail/cyrus-imapd-3.4.0
+>=net-mail/cyrus-imapd-3.4.0
 
 # Joonas Niilola <juippis@gentoo.org> (2021-05-06)
 # sci-libs/cbflib: Doesn't compile with GCC-10 or GCC-11. Was never
