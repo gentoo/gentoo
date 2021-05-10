@@ -35,6 +35,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-windowsNavigator-Adjust-to-gnome-shell-change.patch
+)
+
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="Installed extensions installed are initially disabled by default.
 To change the system default and enable some extensions, you can use
