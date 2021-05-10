@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	ngspice? (
 		>sci-electronics/ngspice-27[shared]
 	)
-	occ? ( >=sci-libs/opencascade-6.8.0:= )
+	occ? ( sci-libs/opencascade:=[vtk(+)] )
 	oce? ( sci-libs/oce )
 	python? (
 		$(python_gen_cond_dep '
@@ -79,6 +79,15 @@ src_unpack() {
 	mv "${S}/resources/linux/appdata" "${S}/resources/linux/metainfo" || die "Appdata move failed"
 }
 
+src_prepare() {
+	# Fix OpenCASCADE lookup
+	sed -e 's|/usr/include/opencascade|${CASROOT}/include/opencascade|' \
+		-e 's|/usr/lib|${CASROOT}/'$(get_libdir)' NO_DEFAULT_PATH|' \
+		-i CMakeModules/FindOpenCASCADE.cmake || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	xdg_environment_reset
 
@@ -104,10 +113,20 @@ src_configure() {
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
-	use occ && mycmakeargs+=(
-		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
-		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
-	)
+	if use occ; then
+		if has_version ">=sci-libs/opencascade-7.5"; then
+			mycmakeargs+=(
+				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.1
+				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.1
+			)
+		else
+			# <occ-7.5 uses different layout
+			mycmakeargs+=(
+				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
+			)
+		fi
+	fi
 
 	cmake_src_configure
 }
