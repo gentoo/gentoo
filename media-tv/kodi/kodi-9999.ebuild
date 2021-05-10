@@ -39,7 +39,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -122,6 +122,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	raspberry-pi? (
 		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl,gles2,video_cards_vc4] )
 	)
+	pipewire? ( media-video/pipewire )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	>=sys-libs/zlib-1.2.11
@@ -285,6 +286,7 @@ src_configure() {
 		-DENABLE_OPENGL=$(usex !gles)
 		-DENABLE_OPTICAL=$(usex optical)
 		-DENABLE_PLIST=$(usex airplay)
+		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
 		-DENABLE_SNDIO=OFF
