@@ -11,7 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="epoll">Use epoll() system call</flag>
-		<flag name="thread-names">Assign thread names to internal threads</flag>
+		<flag name="thread-names">Assign thread names to internal threads, useful for dependent apps debugging</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:libmicrohttpd</remote-id>
