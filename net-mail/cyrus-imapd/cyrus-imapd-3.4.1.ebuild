@@ -28,15 +28,19 @@ CDEPEND="
 	calalarm? ( dev-libs/libical:0= )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
-	http? ( dev-libs/libxml2:2 dev-libs/libical:0= net-libs/nghttp2 )
+	http? (
+		dev-libs/libxml2:2
+		dev-libs/libical:0=
+		net-libs/nghttp2
+	)
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nntp? ( !net-nntp/leafnode )
 	pam? (
-			sys-libs/pam
-			>=net-mail/mailbase-1
-		)
+		>=net-mail/mailbase-1
+		sys-libs/pam
+	)
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
 	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] )
@@ -156,32 +160,33 @@ src_install() {
 
 	dodoc README*
 	dodoc -r doc
-	cp -r contrib tools "${D}/usr/share/doc/${PF}"
-	rm -f doc/text/Makefile*
 
-	mv "${D}"/usr/libexec/{master,cyrusmaster} || die
+	cp -r contrib tools "${ED}/usr/share/doc/${PF}" || die
+	rm -f doc/text/Makefile* || die
+
+	mv "${ED}"/usr/libexec/{master,cyrusmaster} || die
 
 	insinto /etc
-	newins "${D}/usr/share/doc/${PF}/doc/examples/cyrus_conf/normal.conf" cyrus.conf
-	newins "${D}/usr/share/doc/${PF}/doc/examples/imapd_conf/normal.conf" imapd.conf
+	newins "${ED}/usr/share/doc/${PF}/doc/examples/cyrus_conf/normal.conf" cyrus.conf
+	newins "${ED}/usr/share/doc/${PF}/doc/examples/imapd_conf/normal.conf" imapd.conf
 
 	sed -i -e '/^configdirectory/s|/var/.*|/var/imap|' \
 		-e '/^partition-default/s|/var/.*|/var/spool/imap|' \
 		-e '/^sievedir/s|/var/.*|/var/imap/sieve|' \
-		"${D}"/etc/imapd.conf
+		"${ED}"/etc/imapd.conf || die
 
 	sed -i -e 's|/var/imap/socket/lmtp|/run/cyrus/socket/lmtp|' \
 		-e 's|/var/imap/socket/notify|/run/cyrus/socket/notify|' \
-		"${D}"/etc/cyrus.conf
+		"${ED}"/etc/cyrus.conf || die
 
 	# turn off sieve if not installed
 	if ! use sieve; then
-		sed -i -e "/sieve/s/^/#/" "${D}/etc/cyrus.conf" || die
+		sed -i -e "/sieve/s/^/#/" "${ED}/etc/cyrus.conf" || die
 	fi
 
 	# same thing for http(s) as well
 	if ! use http; then
-		sed -i -e "/http/s/^/#/" "${D}/etc/cyrus.conf" || die
+		sed -i -e "/http/s/^/#/" "${ED}/etc/cyrus.conf" || die
 	fi
 
 	newinitd "${FILESDIR}/cyrus.rc8" cyrus
@@ -218,7 +223,7 @@ pkg_preinst() {
 pkg_postinst() {
 	# do not install server.{key,pem) if they exist
 	if use ssl ; then
-		if [ ! -f "${ROOT}"/etc/ssl/cyrus/server.key ]; then
+		if [[ ! -f "${ROOT}"/etc/ssl/cyrus/server.key ]]; then
 			install_cert /etc/ssl/cyrus/server
 			chown cyrus:mail "${ROOT}"/etc/ssl/cyrus/server.{key,pem}
 		fi
