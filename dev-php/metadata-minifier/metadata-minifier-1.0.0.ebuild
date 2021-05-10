@@ -9,7 +9,7 @@ SRC_URI="https://github.com/composer/metadata-minifier/archive/${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="dev-php/theseer-Autoload"
 
