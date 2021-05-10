@@ -5,7 +5,7 @@ EAPI=7
 inherit gnome2
 
 DESCRIPTION="A clean and friendly gtk-based serial terminal"
-HOMEPAGE="https://wiki.gnome.org/moserial"
+HOMEPAGE="https://wiki.gnome.org/Apps/Moserial https://gitlab.gnome.org/GNOME/moserial"
 
 LICENSE="GPL-3+"
 SLOT="0"
