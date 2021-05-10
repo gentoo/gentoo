@@ -118,9 +118,9 @@ src_test() {
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		einfo "Configuration files for ${CATEGORY}/${PN}"
-		einfo "in \$HOME may need to be updated after a version change"
+		einfo "in \$HOME often need to be updated after a version change"
 		einfo ""
-		einfo "An up-to-date sample configuration file can be found at"
-		einfo "${ROOT}/usr/share/doc/${PF}/alacritty.yml.bz2"
+		einfo "An up-to-date sample configuration file always can be found at"
+		einfo "${ROOT}/usr/share/doc/${PF}/alacritty.yml.*"
 	fi
 }
