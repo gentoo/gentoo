@@ -37,6 +37,7 @@ BDEPEND="
 		dev-python/aiohttp[${PYTHON_USEDEP}]
 		dev-python/aiohttp-cors[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
 	)
 "
 
