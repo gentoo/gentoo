@@ -19,6 +19,7 @@
 		<flag name="bundled-toluapp">Enable support for bundled toluapp. This only makes sense in combination with the lua-* flags</flag>
 		<flag name="cmus">Enable monitoring of music played by <pkg>media-sound/cmus</pkg></flag>
 		<flag name="ical">Enable support for events from iCalendar (RFC 5545) files using <pkg>dev-libs/libical</pkg></flag>
+		<flag name="intel-backlight">Enable support for Intel backlight</flag>
 		<flag name="iostats">Enable support for per-task I/O statistics</flag>
 		<flag name="irc">Enable support for displaying everything from an irc channel using <pkg>net-libs/libircclient</pkg></flag>
 		<flag name="lua-cairo">Enable if you want Lua Cairo bindings</flag>
