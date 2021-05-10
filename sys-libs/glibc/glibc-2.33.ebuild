@@ -393,6 +393,9 @@ setup_flags() {
 	# glibc aborts if rpath is set by LDFLAGS
 	filter-ldflags '-Wl,-rpath=*'
 
+	# ld can't use -r & --relax at the same time
+	filter-ldflags '-Wl,--relax'
+
 	# #492892
 	filter-flags -frecord-gcc-switches
 
