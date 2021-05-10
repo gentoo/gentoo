@@ -9,7 +9,7 @@ SRC_URI="https://erratique.ch/software/bos/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
