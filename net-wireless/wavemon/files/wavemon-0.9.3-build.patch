@@ -1,5 +1,5 @@
 --- a/configure.ac	2020-12-26 17:44:01.616731241 +0100
-+++ b/configure.ac	2020-12-26 17:45:02.447292151 +0100
++++ b/configure.ac	2021-05-09 21:57:37.000000000 +0000
 @@ -8,8 +8,6 @@
  AC_CONFIG_AUX_DIR([config])
  AC_CONFIG_FILES([Makefile])
@@ -18,14 +18,17 @@
  # Checks for header files.
  AC_HEADER_STDC
  AC_HEADER_TIME
-@@ -29,6 +31,7 @@
- 		  net/if_arp.h netinet/ether.h net/ethernet.h pthread.h],
- 		 [], [AC_MSG_ERROR($ac_header not found)])
- AC_CHECK_HEADERS([ncursesw/curses.h])
-+PKG_CHECK_MODULES(ncurses,ncurses,LIBS="$LIBS $ncurses_LIBS",)
+@@ -54,8 +54,8 @@
+ # Tests involving libraries
+ AC_CHECK_LIB([m], [pow], [],              [AC_MSG_ERROR(math library not found)])
+ AC_CHECK_LIB([ncursesw], [waddstr],
+-	     [],
+-	     [AC_CHECK_LIB([ncurses], [waddstr], [], [AC_MSG_ERROR(ncurses library not found)])])
++	     [PKG_CHECK_MODULES([ncursesw], [ncursesw], [LIBS="$LIBS $ncursesw_LIBS"], [])],
++	     [AC_CHECK_LIB([ncurses], [waddstr], [PKG_CHECK_MODULES([ncurses], [ncurses], [LIBS="$LIBS $ncurses_LIBS"], [])], [AC_MSG_ERROR(ncurses library not found)])])
+ AC_CHECK_LIB([pthread], [pthread_create], [CFLAGS="$CFLAGS -pthread"],
+ 					  [AC_MSG_ERROR(pthread library not found)])
  
- # linux/if.h needs 'struct sockaddr'
- # linux/wireless.h in turn depends on linux/if.h
 --- a/Makefile.in	2017-07-14 21:35:18.154423280 +0300
 +++ b/Makefile.in	2017-07-14 21:35:34.613402738 +0300
 @@ -9,7 +9,7 @@
