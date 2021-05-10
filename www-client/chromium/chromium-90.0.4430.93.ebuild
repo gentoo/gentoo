@@ -781,7 +781,8 @@ src_compile() {
 	python_setup
 
 	# https://bugs.gentoo.org/717456
-	local -x PYTHONPATH="${WORKDIR}/setuptools-44.1.0:${PYTHONPATH+:}${PYTHONPATH}"
+	# don't inherit PYTHONPATH from environment, bug #789021
+	local -x PYTHONPATH="${WORKDIR}/setuptools-44.1.0"
 
 	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
 
