@@ -1,0 +1,20 @@
+--- duplicity-0.8.19/setup.py	2021-05-10 13:37:38.352142737 -0400
++++ duplicity-0.8.19/setup.py	2021-05-10 13:39:02.829865546 -0400
+@@ -93,17 +93,6 @@
+                 u'bin/rdiffdir.1'
+                 ]
+             ),
+-            (u'share/doc/duplicity-%s' % Version,
+-                [
+-                u'AUTHORS',
+-                u'CHANGELOG.md',
+-                u'COPYING',
+-                u'README.md',
+-                u'README-LOG.md',
+-                u'README-REPO.md',
+-                u'README-TESTING.md',
+-                ],
+-            ),
+         ]
+ 
+     if not os.environ.get(u'READTHEDOCS') == u'True':
