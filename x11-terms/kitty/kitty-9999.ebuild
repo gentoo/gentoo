@@ -58,7 +58,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
-	"${FILESDIR}"/${P}-remove-terminfo.patch
+	"${FILESDIR}"/kitty-0.20.1-remove-terminfo.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
