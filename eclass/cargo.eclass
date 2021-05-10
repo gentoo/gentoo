@@ -142,6 +142,7 @@ cargo_gen_config() {
 
 	[build]
 	jobs = $(makeopts_jobs)
+	incremental = false
 
 	[term]
 	verbose = true
