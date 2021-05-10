@@ -20,10 +20,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-pcre.patch
+	"${FILESDIR}"/${P}-bool.patch
+	"${FILESDIR}"/${P}-slibtool.patch
+)
+
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}"/ferite-pcre.patch
 
 	# use docsdir variable, install to DESTDIR
 	sed \
@@ -38,23 +42,6 @@ src_prepare() {
 		scripts/test/Makefile.am \
 		scripts/test/rmi/Makefile.am || die
 
-	# Don't override the user's LDFLAGS
-	sed \
-		-e 's:_LDFLAGS = :&$(AM_LDFLAGS) :' \
-		-e '/^LDFLAGS/s:^:AM_:' \
-		-i modules/*/Makefile.am \
-		libs/{aphex,triton}/src/Makefile.am \
-		src/Makefile.am || die
-
-	# Only build/install shared libs for modules (can't use static anyway)
-	sed -i -e '/_LDFLAGS/s:-module:& -shared:' modules/*/Makefile.am || die
-
-	# use LIBADD to ensure proper deps (fix parallel build)
-	sed \
-		-e '/^stream_la_LDFLAGS/s:-L\. -lferitestream::' \
-		-e '/^stream_la_LIBADD/s:$:libferitestream.la:' \
-		-i modules/stream/Makefile.am || die
-
 	# Make sure we install in $(get_libdir), not lib
 	sed -i -e "s|\$prefix/lib|\$prefix/$(get_libdir)|g" configure.ac || die
 
@@ -67,7 +54,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --libdir="${EPREFIX}/usr/$(get_libdir)"
+	econf --libdir="${EPREFIX}/usr/$(get_libdir)" --disable-static
 }
 
 src_install() {
