@@ -12,20 +12,17 @@ HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+epoll ssl static-libs test thread-names"
 RESTRICT="!test? ( test )"
 
-# libcurl is linked to for tests and the
-# curl binary is used during tests too
-# if available
 RDEPEND="ssl? ( >net-libs/gnutls-2.12.20:= )"
+# libcurl and the curl binary are used during tests on CHOST
 DEPEND="${RDEPEND}
 	test? ( net-misc/curl[ssl?] )"
-BDEPEND="virtual/pkgconfig
-	test? ( net-misc/curl[ssl?] )"
+BDEPEND="ssl? ( virtual/pkgconfig )"
 
 DOCS=( AUTHORS NEWS README ChangeLog )
 
