@@ -10,6 +10,7 @@ MY_P="${P/_/}"
 DESCRIPTION="Small C library to run an HTTP server as part of another application"
 HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="LGPL-2.1"
 SLOT="0/12"
@@ -17,21 +18,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc 
 IUSE="+epoll ssl static-libs test thread-names"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	ssl? ( virtual/pkgconfig )
-	test? ( virtual/pkgconfig )
-	"
-
 RDEPEND="ssl? ( >net-libs/gnutls-2.12.20:= )"
-
 DEPEND="${RDEPEND}
 	test? ( net-misc/curl[ssl?] )
+"
+BDEPEND="
 	virtual/pkgconfig
-	"
+"
 
-S=${WORKDIR}/${MY_P}
-
-DOCS="AUTHORS NEWS README ChangeLog"
+DOCS=( AUTHORS NEWS README ChangeLog )
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
@@ -57,5 +52,7 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	default
 
-	use static-libs || find "${ED}" -name '*.la' -delete
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }
