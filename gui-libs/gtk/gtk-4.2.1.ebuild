@@ -17,7 +17,7 @@ REQUIRED_USE="
 	xinerama? ( X )
 "
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/fribidi-0.19.7
