@@ -13,20 +13,21 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="CAOSL"
 SLOT="0"
-IUSE=""
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"
 
+# needs java stuff that is missing in java > 1.8 os has to be restricted
 COMMON_DEPEND="
 	>=dev-java/javahelp-2.0.02_p46:0
 "
 RDEPEND="${COMMON_DEPEND}
-	>=virtual/jre-1.5
+	virtual/jre:1.8
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/jdk:1.8
 	test? ( dev-java/junit:0 )
 "
+BDEPEND="app-arch/unzip"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_GENTOO_CLASSPATH="javahelp"
