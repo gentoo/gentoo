@@ -679,11 +679,6 @@ x11-misc/superswitcher
 # Removal on 2021-06-01.  Bug #782727.
 x11-misc/xstroke
 
-# Michał Górny <mgorny@gentoo.org> (2021-04-10)
-# Obsolete backport to Python < 3.4.  No reverse dependencies left.
-# Removal on 2021-05-10.  Bug #781902.
-dev-python/monotonic
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
