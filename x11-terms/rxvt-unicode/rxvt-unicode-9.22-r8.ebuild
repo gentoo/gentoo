@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop systemd prefix
+inherit autotools desktop flag-o-matic systemd prefix
 
 COLOUR_PATCH_NAME="${PN}-9.22_24-bit-color_cpixl-20201108.patch"
 
@@ -50,6 +50,9 @@ DOCS=(
 )
 
 src_prepare() {
+	# Bug #787104
+	append-cxxflags -std=c++14
+
 	default
 
 	# kill the rxvt-unicode terminfo file - #192083
