@@ -116,12 +116,6 @@ media-sound/entagged-tageditor
 media-sound/protux
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2013
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787638
-net-nds/jxplorer
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
 # no consumers, last release in 2011
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/787656
