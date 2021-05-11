@@ -24,5 +24,4 @@ RDEPEND="
 	>=dev-python/attrs-19.1.0[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 
-distutils_enable_sphinx docs
 distutils_enable_tests pytest
