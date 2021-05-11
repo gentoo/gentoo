@@ -4,6 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info pam systemd toolchain-funcs udev usr-ldscript
