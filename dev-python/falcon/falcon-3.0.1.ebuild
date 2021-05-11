@@ -33,6 +33,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# do not install 'examples'
+	sed -i -e "s:'tests':'examples', &:" setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	local deselect=(
 		# mujson is unpackaged, test-only dep
