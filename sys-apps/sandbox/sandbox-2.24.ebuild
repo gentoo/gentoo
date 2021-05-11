@@ -31,6 +31,7 @@ src_prepare() {
 	# sandbox uses `__asm__ (".symver "...` which does
 	# not play well with gcc's LTO: https://gcc.gnu.org/PR48200
 	append-flags -fno-lto
+	append-ldflags -fno-lto
 }
 
 multilib_src_configure() {
