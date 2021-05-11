@@ -1,0 +1,12 @@
+diff --git a/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h b/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
+index ab9d5724..202aaa27 100644
+--- a/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
++++ b/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
+@@ -25,6 +25,7 @@
+ #include "vtkIdList.h"
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <unordered_map>
+ #include <vector>
+ 
