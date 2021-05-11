@@ -94,6 +94,8 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/tasty-quickcheck-0.8 <dev-haskell/tasty-quickcheck-0.11 )
 "
 
+PATCHES=("${FILESDIR}"/${P}-trypandoc.patch)
+
 src_prepare() {
 	default
 	# optimisations require ~16GB of memory on ghc-8.8.3
