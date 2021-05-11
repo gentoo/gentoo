@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,6 +59,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.0_pre20200723-cmake_lua_version.patch
+	"${FILESDIR}"/${P}-gcc11-include.patch
 )
 
 S="${WORKDIR}/s25client-${COMMIT}"
@@ -101,6 +102,9 @@ src_configure() {
 		-DRTTR_VERSION="${PV##*_pre}" # Tests expect a date.
 		-DLUA_VERSION=$(lua_get_version)
 	)
+
+	# bug #787299
+	append-cxxflags -std=gnu++14
 
 	if use test && tc-is-gcc; then
 		# Work around libasan and libsandbox both wanting to be first.
