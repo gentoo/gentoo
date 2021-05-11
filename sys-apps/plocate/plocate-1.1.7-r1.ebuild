@@ -62,8 +62,11 @@ src_install() {
 	fperms 0644 /etc/{updatedb,plocate-cron}.conf
 
 	insinto /etc/cron.daily
-	newins "${FILESDIR}"/plocate.cron plocate
-	fperms 0755 /etc/cron.daily/plocate
+	# Ensure that the cron file has the same name as the
+	# systemd-timer, to avoid plocate being run twice daily on systems
+	# with a systemd compatiblity layer. See also bug #780351.
+	newins "${FILESDIR}"/plocate.cron plocate-updatedb
+	fperms 0755 /etc/cron.daily/plocate-updatedb
 
 	systemd_dounit "${BUILD_DIR}"/${PN}-updatedb.service "${S}"/${PN}-updatedb.timer
 }
