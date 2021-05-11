@@ -65,8 +65,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
-# Note [Disable automatic stripping]
-# Disabling automatic stripping for a few reasons:
+# Use strip-debug instead of default strip-unneeded:
 # - portage's attempt to strip breaks non-native binaries at least on
 #   arm: bug #697428
 # - portage's attempt to strip libpthread.so.0 breaks gdb thread
@@ -79,11 +78,10 @@ fi
 #     (unexported) is used to sanity check compatibility before enabling
 #     debugging.
 #     Also see https://sourceware.org/gdb/wiki/FAQ#GDB_does_not_see_any_threads_besides_the_one_in_which_crash_occurred.3B_or_SIGTRAP_kills_my_program_when_I_set_a_breakpoint
-#   * normal 'strip' command trims '.symtab'
 #   Thus our main goal here is to prevent 'libpthread.so.0' from
 #   losing it's '.symtab' entries.
-# As Gentoo's strip does not allow us to pass less aggressive stripping
-# options and does not check the machine target we strip selectively.
+#   * normal 'strip' command trims '.symtab' but "--strip-debug" keeps .symtab.
+export PORTAGE_STRIP_FLAGS="--strip-debug -N __gentoo_check_ldflags__ -R .comment"
 
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
@@ -1230,9 +1228,6 @@ glibc_do_src_install() {
 	# Avoid stripping binaries not targeted by ${CHOST}. Or else
 	# ${CHOST}-strip would break binaries build for ${CTARGET}.
 	is_crosscompile && dostrip -x /
-	# gdb thread introspection relies on local libpthreas symbols. stripping breaks it
-	# See Note [Disable automatic stripping]
-	dostrip -x $(alt_libdir)/libpthread-${upstream_pv}.so
 
 	if [[ -e ${ED}/$(alt_usrlibdir)/libm-${upstream_pv}.a ]] ; then
 		# Move versioned .a file out of libdir to evade portage QA checks
