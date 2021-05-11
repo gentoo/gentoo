@@ -3,15 +3,15 @@
 
 EAPI=7
 
-inherit autotools subversion
+inherit autotools flag-o-matic
 
 DESCRIPTION="Software audio sampler engine with professional grade features"
 HOMEPAGE="https://www.linuxsampler.org/"
-ESVN_REPO_URI="https://svn.linuxsampler.org/svn/linuxsampler/trunk"
+SRC_URI="https://download.linuxsampler.org/packages/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa doc jack lv2 sf2 sqlite"
 REQUIRED_USE="|| ( alsa jack )"
 
@@ -35,15 +35,16 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.0-nptl-hardened.patch"
 	"${FILESDIR}/${PN}-2.0.0-lv2-automagic.patch"
+	"${FILESDIR}/${PN}-2.1.1-fix-yyterror-not-declared.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_prepare() {
 	default
-
-	emake -f Makefile.svn
-
+	# Force regeneration of the file to let it build with all bison
+	# versions, bug #556204
+	rm src/network/lscpparser.cpp || die
 	eautoreconf
 }
 
