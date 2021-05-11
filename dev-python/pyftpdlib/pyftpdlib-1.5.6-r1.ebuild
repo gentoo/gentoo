@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -64,10 +64,17 @@ python_test() {
 		# https://bugs.gentoo.org/758686
 		pyftpdlib/test/test_functional.py::ThreadedFTPTests::test_idle_timeout
 		pyftpdlib/test/test_functional.py::ThreadedFTPTests::test_stou_max_tries
+		# https://github.com/giampaolo/pyftpdlib/issues/550
+		# https://bugs.gentoo.org/759040
+		pyftpdlib/test/test_functional.py::TestConfigurableOptions::test_masquerade_address
+		pyftpdlib/test/test_functional.py::TestConfigurableOptions::test_masquerade_address_map
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptions::test_masquerade_address
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptions::test_masquerade_address_map
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptionsTLSMixin::test_masquerade_address
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptionsTLSMixin::test_masquerade_address_map
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
-	TZ=UTC+1 pytest -vv ${skipped_tests[@]/#/--deselect } \
-			|| die "Tests failed with ${EPYTHON}"
+	TZ=UTC+1 epytest ${skipped_tests[@]/#/--deselect }
 }
 
 python_install_all() {
