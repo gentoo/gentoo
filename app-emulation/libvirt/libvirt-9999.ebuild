@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles
+inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfiles verify-sig
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -22,9 +22,10 @@ fi
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
 LICENSE="LGPL-2.1"
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
-	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
-	iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
+	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
+	iscsi iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
 	parted pcap policykit +qemu rbd sasl selinux +udev
 	virtualbox +virt-network wireshark-plugins xen zfs
 "
@@ -45,7 +46,9 @@ BDEPEND="
 	dev-libs/libxslt
 	dev-perl/XML-XPath
 	dev-python/docutils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	bash-completion? ( >=app-shells/bash-completion-2.0 )
+	verify-sig? ( app-crypt/openpgp-keys-libvirt )"
 
 # gettext.sh command is used by the libvirt command wrappers, and it's
 # non-optional, so put it into RDEPEND.
@@ -98,7 +101,7 @@ RDEPEND="
 		>=sys-auth/polkit-0.9
 	)
 	qemu? (
-		>=app-emulation/qemu-1.5.0
+		>=app-emulation/qemu-2.11
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -292,9 +295,6 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
 	rm -rf "${D}"/run
-
-	newbashcomp "${BUILD_DIR}/tools/bash-completion/virsh" virsh
-	newbashcomp "${BUILD_DIR}/tools/bash-completion/virt-admin" virt-admin
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
