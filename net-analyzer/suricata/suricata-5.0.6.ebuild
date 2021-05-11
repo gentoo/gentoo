@@ -56,6 +56,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
 	"${FILESDIR}/${PN}-5.0.1_default-config.patch"
+	"${FILESDIR}/${PN}-5.0.6_configure-no-sphinx-pdflatex-automagic.patch"
 )
 
 pkg_pretend() {
