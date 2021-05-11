@@ -26,7 +26,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	>=media-libs/phonon-4.11.0
-	media-video/vlc:=[dbus,ogg,vorbis]
+	media-video/vlc:=[dbus,ogg,vorbis(+)]
 "
 RDEPEND="${DEPEND}"
 
