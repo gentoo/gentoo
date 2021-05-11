@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-13.38.1-r1-func_lock-fix-races.patch"
 	"${FILESDIR}/${PN}-13.18.1-r2-autoconf-2.70.patch"
 	"${FILESDIR}/${PN}-13.38.2-r1-menuselect-exitcodes.patch"
+	"${FILESDIR}/${PN}-13.38.2-r2-func_odbc_minargs-ARGC.patch"
 )
 
 DEPEND="acct-user/asterisk
