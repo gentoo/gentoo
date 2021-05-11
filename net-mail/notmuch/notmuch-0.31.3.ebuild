@@ -35,7 +35,7 @@ BDEPEND="
 		dev-lang/perl
 	)
 	doc? (
-		dev-python/sphinx
+		<dev-python/sphinx-4
 		sys-apps/texinfo
 	)
 	python? ( dev-python/pytest[${PYTHON_USEDEP}] )
