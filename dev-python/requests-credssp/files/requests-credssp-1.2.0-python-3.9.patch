@@ -1,0 +1,50 @@
+From b3583f2e959600ea27a2b8577c172c5695ec7f2c Mon Sep 17 00:00:00 2001
+From: Matthew <matthewabtin@protonmail.com>
+Date: Mon, 10 May 2021 10:36:23 +0000
+Subject: [PATCH] Python 3.9 support (#22)
+
+* Python 3.9 support
+
+* Add 3.9 to pipelines
+---
+ azure-pipelines.yml | 8 ++++++++
+ setup.py            | 1 +
+ 2 files changed, 9 insertions(+)
+
+diff --git a/azure-pipelines.yml b/azure-pipelines.yml
+index a60bd62..1f0cbde 100644
+--- a/azure-pipelines.yml
++++ b/azure-pipelines.yml
+@@ -38,6 +38,8 @@ stages:
+           python.version: 3.7
+         Python38:
+           python.version: 3.8
++        Python39:
++          python.version: 3.9
+ 
+     steps:
+     - task: UsePythonVersion@0
+@@ -119,6 +121,12 @@ stages:
+         Python38-x64:
+           python.version: 3.8
+           python.arch: x64
++        Python39-x86:
++          python.version: 3.9
++          python.arch: x86
++        Python39-x64:
++          python.version: 3.9
++          python.arch: x64
+ 
+     steps:
+     - task: UsePythonVersion@0
+diff --git a/setup.py b/setup.py
+index ee5268f..49af47b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -53,5 +53,6 @@ def abs_path(rel_path):
+         'Programming Language :: Python :: 3.6',
+         'Programming Language :: Python :: 3.7',
+         'Programming Language :: Python :: 3.8',
++        'Programming Language :: Python :: 3.9',
+     ],
+ )
