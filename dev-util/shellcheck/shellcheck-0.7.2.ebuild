@@ -31,3 +31,5 @@ RDEPEND="dev-haskell/aeson:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1
 "
+
+PATCHES=("${FILESDIR}"/${P}-haddock.patch)
