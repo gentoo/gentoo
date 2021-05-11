@@ -60,11 +60,11 @@ src_install() {
 	fperms +x /opt/${PN}/chrome-sandbox
 	fperms -R +x /opt/${PN}/resources/app/out/vs/base/node
 	fperms +x /opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
-	dosym "../../opt/${PN}/bin/code" "usr/bin/code"
-	domenu "${FILESDIR}/code.desktop"
-	domenu "${FILESDIR}/code-url-handler.desktop"
+	dosym "../../opt/${PN}/bin/code" "usr/bin/vscode"
+	domenu "${FILESDIR}/vscode.desktop"
+	domenu "${FILESDIR}/vscode-url-handler.desktop"
 	dodoc "resources/app/LICENSE.rtf"
-	newicon "resources/app/resources/linux/code.png" "visual-studio-code.png"
+	newicon "resources/app/resources/linux/code.png" "vscode.png"
 }
 
 pkg_postinst() {
