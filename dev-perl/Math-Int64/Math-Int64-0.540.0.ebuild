@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Manipulate 64 bits integers in Perl"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
