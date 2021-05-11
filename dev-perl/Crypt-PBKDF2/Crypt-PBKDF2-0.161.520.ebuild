@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="The PBKDF2 password hashing algorithm"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ia64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
