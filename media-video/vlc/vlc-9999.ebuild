@@ -38,7 +38,7 @@ IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d
 	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
 	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
-	twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X x264 x265 xml zeroconf
+	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
 	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
@@ -62,6 +62,7 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 "
 RDEPEND="
+	media-libs/libvorbis
 	net-dns/libidn:=
 	sys-libs/zlib[minizip]
 	virtual/libintl
@@ -206,7 +207,6 @@ RDEPEND="
 	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
-	vorbis? ( media-libs/libvorbis )
 	vpx? ( media-libs/libvpx:= )
 	wayland? (
 		>=dev-libs/wayland-1.15
@@ -292,6 +292,7 @@ src_configure() {
 		--enable-screen
 		--enable-vcd
 		--enable-vlc
+		--enable-vorbis
 		$(use_enable a52)
 		$(use_enable alsa)
 		$(use_enable aom)
@@ -394,7 +395,6 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vdpau)
 		$(use_enable vnc)
-		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_with X x)
