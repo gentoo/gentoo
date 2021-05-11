@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs theano"
 
 RDEPEND="
