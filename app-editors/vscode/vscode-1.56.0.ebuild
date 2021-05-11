@@ -36,7 +36,7 @@ RDEPEND="
 	x11-libs/pango
 "
 
-QA_PREBUILT="*"
+QA_PREBUILT="/opt/vscode/*"
 
 pkg_setup() {
 	if use amd64; then
@@ -61,7 +61,6 @@ src_install() {
 	dosym "../../opt/${PN}/bin/code" "usr/bin/vscode"
 	domenu "${FILESDIR}/vscode.desktop"
 	domenu "${FILESDIR}/vscode-url-handler.desktop"
-	dodoc "resources/app/LICENSE.rtf"
 	newicon "resources/app/resources/linux/code.png" "vscode.png"
 }
 
