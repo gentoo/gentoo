@@ -1,0 +1,12 @@
+diff --git a/libAvKys/Plugins/VirtualCamera/src/VCamUtils/src/image/videoformat.cpp b/libAvKys/Plugins/VirtualCamera/src/VCamUtils/src/image/videoformat.cpp
+index 2a32732..5175d1d 100644
+--- a/libAvKys/Plugins/VirtualCamera/src/VCamUtils/src/image/videoformat.cpp
++++ b/libAvKys/Plugins/VirtualCamera/src/VCamUtils/src/image/videoformat.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include <map>
+ #include <algorithm>
++#include <limits>
+ 
+ #include "videoformat.h"
+ #include "../utils.h"
