@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
 	SRC_URI+=" verify-sig? ( https://github.com/openzfs/${PN}/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz.asc )"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
-	ZFS_KERNEL_COMPAT="5.11"
+	ZFS_KERNEL_COMPAT="5.12"
 
 	if [[ ${PV} != *_rc* ]]; then
 		KEYWORDS="~amd64 ~arm64 ~ppc64"
