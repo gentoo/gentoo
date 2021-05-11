@@ -282,18 +282,6 @@ pkg_postinst() {
 		fi
 	fi
 
-	# https://bugs.gentoo.org/361349
-	if use kernel_linux; then
-		mkdir -p "${EROOT}"/run || die
-
-		local found fstype mountpoint
-		while read -r _ mountpoint fstype _; do
-		[[ ${mountpoint} = /run ]] && [[ ${fstype} = tmpfs ]] && found=1
-		done < "${ROOT}"/proc/mounts
-		[[ -z ${found} ]] &&
-			ewarn "You should reboot now to get /run mounted with tmpfs!"
-	fi
-
 	for x in ${REPLACING_VERSIONS}; do
 		if ver_test 2.4 -lt ${x}; then
 			ewarn "After updating ${EROOT}/etc/profile, please run"
