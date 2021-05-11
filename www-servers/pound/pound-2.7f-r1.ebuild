@@ -13,11 +13,14 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc x86"
 
-DEPEND="dev-libs/libpcre
-	dev-libs/openssl:0"
+DEPEND="
+	dev-libs/libpcre
+	dev-libs/openssl:0
+"
+
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	dodir /usr/sbin
