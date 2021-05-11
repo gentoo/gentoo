@@ -26,7 +26,7 @@ else
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER="1.12.1"
+	SEABIOS_VER="1.12.0"
 	EDK2_COMMIT="06dc822d045c2bb42e497487935485302486e151"
 	EDK2_OPENSSL_VERSION="1_1_1g"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
@@ -46,7 +46,7 @@ else
 		OVMF_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-ovmf-patches-${OVMF_VER}.tar.xz"
 
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
-	https://github.com/qemu/seabios/archive/rel-${SEABIOS_VER}.tar.gz -> seabios-${SEABIOS_VER}.tar.gz
+	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
 	ipxe? ( http://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
 		https://github.com/openssl/openssl/archive/OpenSSL_${EDK2_OPENSSL_VERSION}.tar.gz
