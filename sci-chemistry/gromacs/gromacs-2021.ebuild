@@ -300,7 +300,7 @@ src_compile() {
 src_test() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake_src_make check
+			cmake_src_compile check
 	done
 }
 
