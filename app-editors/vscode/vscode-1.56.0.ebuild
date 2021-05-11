@@ -36,8 +36,6 @@ RDEPEND="
 	x11-libs/pango
 "
 
-QA_PRESTRIPPED="*"
-
 QA_PREBUILT="*"
 
 pkg_setup() {
