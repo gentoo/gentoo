@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
-	dev-libs/boost:=[python]
+	dev-libs/boost:=[nls,python]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
