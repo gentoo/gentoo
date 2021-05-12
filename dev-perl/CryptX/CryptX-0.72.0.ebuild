@@ -25,7 +25,7 @@ RDEPEND="
 #	dev-libs/libtommath
 #	dev-libs/libtomcrypt
 
-BEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		>=virtual/perl-Test-Simple-0.880.0
