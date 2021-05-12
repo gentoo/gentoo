@@ -23,9 +23,11 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 DEPEND="
 	test? (
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/greenlet[${PYTHON_USEDEP}]
-		' 'python*')
+		!hppa? ( !ia64? (
+			$(python_gen_cond_dep '
+				dev-python/greenlet[${PYTHON_USEDEP}]
+			' 'python*')
+		) )
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
