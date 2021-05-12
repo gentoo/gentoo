@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="ASGI utilities (successor to WSGI)"
@@ -20,7 +20,7 @@ KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~sparc x86"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' python3_7)"
+	' python3_7 pypy3)"
 BDEPEND="
 	test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
 
