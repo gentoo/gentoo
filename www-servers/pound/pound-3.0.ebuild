@@ -29,10 +29,6 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( README.md )
 
-src_compile() {
-	cmake_src_compile
-}
-
 src_install() {
 	rm GPL.txt || die
 
