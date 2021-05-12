@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( luajit )
+LUA_COMPAT=( lua5-1 luajit )
 
 inherit cmake lua-single xdg
 
@@ -62,6 +62,10 @@ BDEPEND="
 	)
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.1-system_puc_lua.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -91,7 +95,7 @@ src_configure() {
 		-DENABLE_GETTEXT=$(usex nls)
 		-DENABLE_GLES=0
 		-DENABLE_LEVELDB=$(usex leveldb)
-		-DENABLE_LUAJIT=1
+		-DENABLE_LUAJIT=$(usex lua_single_target_luajit)
 		-DENABLE_POSTGRESQL=$(usex postgres)
 		-DENABLE_PROMETHEUS=$(usex prometheus)
 		-DENABLE_REDIS=$(usex redis)
