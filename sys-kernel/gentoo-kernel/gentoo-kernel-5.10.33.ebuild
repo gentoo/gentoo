@@ -53,6 +53,7 @@ src_prepare() {
 	local PATCHES=(
 		# meh, genpatches have no directory
 		"${WORKDIR}"/*.patch
+		"${FILESDIR}"/5.10.33-amdgpu-pagesz.patch
 	)
 	default
 
