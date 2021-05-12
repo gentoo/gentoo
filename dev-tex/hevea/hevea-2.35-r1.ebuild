@@ -7,7 +7,7 @@ DESCRIPTION="HeVeA is a quite complete and fast LaTeX to HTML translator"
 HOMEPAGE="http://hevea.inria.fr/"
 SRC_URI="http://hevea.inria.fr/distri/${P}.tar.gz"
 
-LICENSE="QPL"
+LICENSE="QPL-1.0"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt"
