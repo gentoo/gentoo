@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="source"
 
@@ -27,12 +27,12 @@ CDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.6
+	>=virtual/jdk-1.8:*
 	xqtests? ( app-arch/unzip:0 )"
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.8:*"
 
 xtestsuite="XQTS_${XQTS_Ver}"
 
@@ -47,12 +47,6 @@ src_unpack() {
 		cd "${WORKDIR}/${xtestsuite}" || die
 		unpack ${xtestsuite}.Zip || die
 	fi
-}
-
-src_prepare() {
-	default
-
-	java-pkg-2_src_prepare
 }
 
 src_configure() {

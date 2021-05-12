@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ CP_DEPEND="
 DEPEND="${CP_DEPEND}
 	dev-java/eclipse-ecj:*
 	nls? ( >=sys-devel/gettext-0.19 )
-	virtual/jdk:1.8
+	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/ant-junit4:0
 		dev-java/hamcrest-core:1.3
@@ -39,7 +39,7 @@ DEPEND="${CP_DEPEND}
 RDEPEND="${CP_DEPEND}
 	acct-user/i2p
 	acct-group/i2p
-	virtual/jre:1.8
+	>=virtual/jre-1.8:*
 	net-libs/nativebiginteger:0
 "
 
@@ -55,9 +55,6 @@ src_prepare() {
 			-i build.xml ||
 			die "unable to remove ministreaming tests"
 	fi
-
-	# as early as possible to allow generic patches to be applied
-	default
 
 	java-ant_rewrite-classpath
 

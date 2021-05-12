@@ -1,5 +1,5 @@
---- src/lfd/lockdaemon.c.orig	2004-10-12 10:59:28.000000000 +0200
-+++ src/lfd/lockdaemon.c	2006-10-29 22:46:58.000000000 +0100
+--- a/src/lfd/lockdaemon.c
++++ b/src/lfd/lockdaemon.c
 @@ -248,9 +248,8 @@
  
  	if ( check_group_uucp() )

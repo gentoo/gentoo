@@ -1,4 +1,4 @@
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,15 +17,11 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/gmp:0=
-	virtual/jdk:1.8
+	>=virtual/jdk-1.8:*
 "
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/i2p-${PV}/core"
-
-PATCHES=(
-	"${FILESDIR}/${P}-asmfix.patch"
-)
 
 src_compile() {
 	local compile_lib
