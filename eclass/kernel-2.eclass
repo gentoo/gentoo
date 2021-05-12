@@ -719,45 +719,6 @@ env_setup_xmakeopts() {
 	export xmakeopts
 }
 
-# @FUNCTION: unpack_2_4
-# @USAGE:
-# @DESCRIPTION:
-# unpack and generate .config for 2.4 kernels
-
-unpack_2_4() {
-	# this file is required for other things to build properly,
-	# so we autogenerate it
-	make -s mrproper ${xmakeopts} || die "make mrproper failed"
-	make -s symlinks ${xmakeopts} || die "make symlinks failed"
-	make -s include/linux/version.h ${xmakeopts} || die "make include/linux/version.h failed"
-	elog ">>> version.h compiled successfully."
-}
-
-# @FUNCTION: unpack_2_6
-# @USAGE:
-# @DESCRIPTION:
-# unpack and generate .config for 2.6 kernels
-
-unpack_2_6() {
-	# this file is required for other things to build properly, so we
-	# autogenerate it ... generate a .config to keep version.h build from
-	# spitting out an annoying warning
-	make -s mrproper ${xmakeopts} 2>/dev/null \
-		|| die "make mrproper failed"
-
-	# quick fix for bug #132152 which triggers when it cannot include linux
-	# headers (ie, we have not installed it yet)
-	if ! make -s defconfig ${xmakeopts} &>/dev/null; then
-		touch .config
-		eerror "make defconfig failed."
-		eerror "assuming you dont have any headers installed yet and continuing"
-	fi
-
-	make -s include/linux/version.h ${xmakeopts} 2>/dev/null \
-		|| die "make include/linux/version.h failed"
-	rm -f .config >/dev/null
-}
-
 # @FUNCTION: universal_unpack
 # @USAGE:
 # @DESCRIPTION:
@@ -1295,19 +1256,6 @@ unipatch() {
 		KPATCH_DIR="${KPATCH_DIR} ${i}"
 	done
 
-	# do not apply fbcondecor patch to sparc/sparc64 as it breaks boot
-	# bug #272676
-	if [[ $(tc-arch) = sparc || $(tc-arch) = sparc64 ]]; then
-		if [[ ${KV_MAJOR} -ge 3 ]] || ver_test ${KV_MAJOR}.${KV_MINOR}.${KV_PATCH} -gt 2.6.28; then
-			if [[ ! -z ${K_WANT_GENPATCHES} ]]; then
-				UNIPATCH_DROP="${UNIPATCH_DROP} *_fbcondecor*.patch"
-				ewarn "fbcondecor currently prevents sparc/sparc64 from booting"
-				ewarn "for kernel versions >= 2.6.29. Removing fbcondecor patch."
-				ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=272676 for details"
-			fi
-		fi
-	fi
-
 	#so now lets get rid of the patchno's we want to exclude
 	UNIPATCH_DROP="${UNIPATCH_EXCLUDE} ${UNIPATCH_DROP}"
 	for i in ${UNIPATCH_DROP}; do
@@ -1522,15 +1470,6 @@ kernel-2_src_unpack() {
 	env_setup_xmakeopts
 	cd "${S}" || die
 
-	# We dont need a version.h for anything other than headers
-	# at least, I should hope we dont. If this causes problems
-	# take out the if/fi block and inform me please.
-	# unpack_2_6 should now be 2.6.17 safe anyways
-	if [[ ${ETYPE} == headers ]]; then
-		kernel_is 2 4 && unpack_2_4
-		kernel_is 2 6 && unpack_2_6
-	fi
-
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
 		cp "${DISTDIR}/${DEBLOB_A}" "${T}" || die "cp ${DEBLOB_A} failed"
 		cp "${DISTDIR}/${DEBLOB_CHECK_A}" "${T}/deblob-check" || die "cp ${DEBLOB_CHECK_A} failed"
@@ -1623,15 +1562,6 @@ kernel-2_pkg_postinst() {
 # if necessary
 
 kernel-2_pkg_setup() {
-	if kernel_is 2 4; then
-		if [[ $(gcc-major-version) -ge 4 ]]; then
-			ewarn "Be warned !! >=sys-devel/gcc-4.0.0 isn't supported with linux-2.4!"
-			ewarn "Either switch to another gcc-version (via gcc-config) or use a"
-			ewarn "newer kernel that supports >=sys-devel/gcc-4."
-			ewarn "Also, be aware that bug reports about gcc-4 not working"
-			ewarn "with linux-2.4 based ebuilds will be closed as INVALID!"
-		fi
-	fi
 
 	ABI="${KERNEL_ABI}"
 	if [[ ${ETYPE} != sources && ${ETYPE} != headers ]]; then
