@@ -62,8 +62,8 @@ RDEPEND="${DEPEND}
 	>=kde-apps/kio-extras-${PVCUT}:5
 "
 
-# TODO: Downstream hack, track upstream bug for better solution
-PATCHES=( "${FILESDIR}/${P}-fix-no-semantic-desktop.patch" ) # KDE-bug 435586
+# pending https://invent.kde.org/system/dolphin/-/merge_requests/208
+PATCHES=( "${FILESDIR}/${PN}-21.04.1-fix-no-semantic-desktop.patch" ) # KDE-bug 435586
 
 src_configure() {
 	local mycmakeargs=(
