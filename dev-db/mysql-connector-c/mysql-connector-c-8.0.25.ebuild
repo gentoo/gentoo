@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib
+inherit cmake-multilib flag-o-matic
 
 # wrap the config script
 MULTILIB_CHOST_TOOLS=( /usr/bin/mysql_config )
@@ -83,6 +83,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
+
+	# code is not C++17 ready, bug #786402
+	append-cxxflags -std=c++14
 
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO=-DNDEBUG
