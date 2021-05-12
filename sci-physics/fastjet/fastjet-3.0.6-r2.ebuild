@@ -11,7 +11,7 @@ DESCRIPTION="Fast implementation of several recombination jet algorithms"
 HOMEPAGE="http://www.fastjet.fr/"
 SRC_URI="http://www.fastjet.fr/repo/${P}.tar.gz"
 
-LICENSE="GPL-2 QPL"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cgal doc examples +plugins"
