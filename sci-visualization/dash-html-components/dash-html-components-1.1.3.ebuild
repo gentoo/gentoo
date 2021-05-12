@@ -8,7 +8,8 @@ inherit distutils-r1
 
 DESCRIPTION="Vanilla HTML components for Dash"
 HOMEPAGE="https://plot.ly/dash"
-SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/plotly/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
