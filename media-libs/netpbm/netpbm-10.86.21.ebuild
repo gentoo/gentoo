@@ -108,13 +108,11 @@ src_prepare() {
 			test/legacy-names.{ok,test} || die
 		sed -i -e '/^$/d' test/legacy-names.ok || die
 	fi
-
-	# avoid ugly depend.mk warnings
-	touch $(find . -name Makefile -exec sed "s:Makefile:depend.mk:g" {} + || die)
 }
 
 src_configure() {
-	cat config.mk.in - >> config.mk <<-EOF || die
+	# cannot chain the die with the heredoc, please check the comment below
+	cat config.mk.in - >> config.mk <<-EOF
 	# Misc crap
 	BUILD_FIASCO = N
 	SYMLINK = ln -sf
