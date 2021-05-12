@@ -61,6 +61,9 @@ die() {
 }
 
 has_version() {
+	while [[ $1 == -* ]]; do
+		shift
+	done
 	portageq has_version / "$@"
 }
 
