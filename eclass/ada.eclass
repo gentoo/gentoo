@@ -58,7 +58,7 @@ EXPORT_FUNCTIONS pkg_setup
 # @DESCRIPTION:
 # All supported Ada implementations, most preferred last.
 _ADA_ALL_IMPLS=(
-	gnat_2016 gnat_2017 gnat_2018 gnat_2019
+	gnat_2016 gnat_2017 gnat_2018 gnat_2019 gnat_2020
 )
 readonly _ADA_ALL_IMPLS
 
@@ -84,6 +84,9 @@ _ada_impl_supported() {
 	# (not using that list because inline patterns shall be faster)
 	case "${impl}" in
 		gnat_201[6789])
+			return 0
+			;;
+		gnat_2020)
 			return 0
 			;;
 		*)
@@ -181,6 +184,10 @@ ada_export() {
 			impl=${1}
 			shift
 			;;
+		gnat_2020)
+			impl=${1}
+			shift
+			;;
 		*)
 			impl=${EADA}
 			if [[ -z ${impl} ]]; then
@@ -203,6 +210,9 @@ ada_export() {
 			;;
 		gnat_2019)
 			gcc_pv=8.3.1
+			;;
+		gnat_2020)
+			gcc_pv=9.3.1
 			;;
 		*)
 			gcc_pv="9.9.9"
