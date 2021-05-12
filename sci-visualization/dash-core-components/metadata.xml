@@ -6,7 +6,9 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<longdescription lang="en">
-		This package provides the core React component suite for Dash.
+		Dash ships with supercharged components for interactive user
+		interfaces. A core set of components, written and maintained by
+		the Dash team, is available in the dash-core-components library.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">plotly/dash-core-components</remote-id>
