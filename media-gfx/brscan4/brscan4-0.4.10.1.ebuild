@@ -23,7 +23,7 @@ RDEPEND="media-gfx/sane-backends
 	virtual/libusb:0
 	zeroconf? ( net-dns/avahi )"
 
-QA_PREBUILT="/opt/brother/*"
+QA_PREBUILT="opt/brother/*"
 
 src_install() {
 	local dest=/opt/brother/scanner/${PN}
