@@ -16,7 +16,7 @@ REQUIRED_USE="test? ( sqlite ) || ( mysql sqlite postgres )"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-#KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 MOGILE_USER="mogile"
 # Warning! It is important that the uid is constant over Gentoo machines
