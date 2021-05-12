@@ -9,9 +9,8 @@ DESCRIPTION="Dictionary Client/Server for the DICT protocol"
 HOMEPAGE="http://www.dict.org/ https://sourceforge.net/projects/dict/"
 SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
 
+LICENSE="GPL-1+ GPL-2+"
 SLOT="0"
-# We install rfc so - ISOC-rfc
-LICENSE="GPL-2 ISOC-rfc"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="dbi judy minimal test"
 RESTRICT="!test? ( test )"
@@ -88,7 +87,8 @@ src_install() {
 	else
 		default
 
-		dodoc doc/{dicf.ms,rfc.ms,rfc.sh,rfc2229.txt}
+		# Don't install rfc2229.txt because it is non-free
+		dodoc doc/{dicf.ms,rfc.ms,rfc.sh}
 		dodoc doc/{security.doc,toc.ms}
 		dodoc -r examples
 
