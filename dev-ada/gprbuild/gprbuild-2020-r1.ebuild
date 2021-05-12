@@ -1,25 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{7,8,9} )
+ADA_COMPAT=( gnat_201{7..9} gnat_2020 )
 
 inherit ada toolchain-funcs multiprocessing
 
-MYP=${P}-20190517-194D8-src
-XMLADA=xmlada-${PV}-20190429-19B9D-src
+MYP=${P}-20200429-19BD2-src
+XMLADA=xmlada-${PV}-20200429-19A99-src
 
 DESCRIPTION="Multi-Language Management"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="
-	http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093
+	https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=${MYP}.tar.gz
 		-> ${MYP}.tar.gz
-	http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5
+	https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=${XMLADA}.tar.gz
 		-> ${XMLADA}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="${ADA_DEPS}"
@@ -60,11 +60,11 @@ src_compile() {
 	gcc -c ${CFLAGS} gpr/src/gpr_imports.c -o gpr_imports.o || die
 	for bin in ${bin_progs}; do
 		gnatmake -j$(makeopts_jobs) ${incflags} $ADAFLAGS ${bin}-main \
-			-o ${bin} -largs gpr_imports.o || die
+			-o ${bin} -largs ${LDFLAGS} gpr_imports.o || die
 	done
 	for lib in $lib_progs; do
 		gnatmake -j$(makeopts_jobs) ${incflags} ${lib} $ADAFLAGS \
-			-largs gpr_imports.o || die
+			-largs ${LDFLAGS} gpr_imports.o || die
 	done
 }
 
