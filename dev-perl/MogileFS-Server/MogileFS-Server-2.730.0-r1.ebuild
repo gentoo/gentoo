@@ -18,12 +18,16 @@ SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
 #KEYWORDS="~amd64 ~ppc ~x86"
 
+MOGILE_USER="mogile"
+# Warning! It is important that the uid is constant over Gentoo machines
+# As mogilefs may be used with non-local block devices that move!
+
 # Upstream site recommends this,
 # but it breaks Perlbal
 # dev-perl/Perlbal-XS-HTTPHeaders
 RDEPEND="
-	acct-group/mogile
-	acct-user/mogile
+	acct-group/${MOGILE_USER}
+	acct-user/${MOGILE_USER}
 	dev-perl/Net-Netmask
 	>=dev-perl/Danga-Socket-1.610.0
 	>=dev-perl/Sys-Syscall-0.220.0
@@ -44,7 +48,6 @@ BDEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.720.0-gentoo-init-conf.patch"
 )
-
 DIST_TEST="never verbose"
 
 src_install() {
@@ -59,21 +62,21 @@ src_install() {
 
 	newinitd "${S}"/gentoo/init.d/mogautomount mogautomount
 
-	diropts -m 700 -o mogile
+	diropts -m 700 -o ${MOGILE_USER}
 	keepdir /var/mogdata
 
 	diropts -m 755 -o root
 	dodir /etc/mogilefs
 
 	insinto /etc/mogilefs
-	insopts -m 600 -o root -g mogile
+	insopts -m 600 -o root -g ${MOGILE_USER}
 	newins "${S}"/gentoo/conf/mogilefsd.conf mogilefsd.conf
 	newins "${S}"/gentoo/conf/mogstored.conf mogstored.conf
 }
 
 pkg_postinst() {
 	chmod 640 "${ROOT}"/etc/mogilefs/{mogilefsd,mogstored}.conf
-	chown root:mogile "${ROOT}"/etc/mogilefs/{mogilefsd,mogstored}.conf
+	chown root:${MOGILE_USER} "${ROOT}"/etc/mogilefs/{mogilefsd,mogstored}.conf
 }
 
 src_test() {
