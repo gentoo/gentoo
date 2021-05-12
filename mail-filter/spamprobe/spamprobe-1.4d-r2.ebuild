@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ DESCRIPTION="Fast, intelligent, automatic spam detector using Bayesian analysis"
 HOMEPAGE="http://spamprobe.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="QPL"
+LICENSE="QPL-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="berkdb gif jpeg png"
