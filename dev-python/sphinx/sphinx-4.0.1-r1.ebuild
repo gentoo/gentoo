@@ -69,6 +69,11 @@ python_prepare_all() {
 	sed -i -e 's:^intersphinx_mapping:disabled_&:' \
 		doc/conf.py || die
 
+	# remove unnecessary upper bounds
+	sed -e '/Jinja2/s:,<3.0::' \
+		-e '/MarkupSafe/s:<2.0::' \
+		-i setup.py || die
+
 	distutils-r1_python_prepare_all
 }
 
