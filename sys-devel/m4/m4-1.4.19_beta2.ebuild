@@ -3,7 +3,7 @@
 
 EAPI=7
 
-MY_P="${PN}-1.4.18b"
+MY_P="${PN}-1.4.18d"
 
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
