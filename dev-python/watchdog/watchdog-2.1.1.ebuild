@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..9} pypy3 )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Python API and shell utilities to monitor file system events"
@@ -30,7 +30,12 @@ src_prepare() {
 }
 
 python_test() {
-	epytest -p no:django
+	local deselect=()
+	[[ ${EPYTHON} == pypy3 ]] && deselect+=(
+		tests/test_inotify_buffer.py::test_move_internal_batch
+	)
+
+	epytest -p no:django ${deselect[@]/#/--deselect }
 }
 
 pkg_postinst() {
