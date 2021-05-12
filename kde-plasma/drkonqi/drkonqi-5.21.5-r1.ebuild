@@ -42,7 +42,10 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 RDEPEND="${COMMON_DEPEND}
-	sys-devel/gdb
+	|| (
+		sys-devel/gdb
+		dev-util/lldb
+	)
 "
 
 src_configure() {
