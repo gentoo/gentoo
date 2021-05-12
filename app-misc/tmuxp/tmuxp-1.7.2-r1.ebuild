@@ -22,7 +22,6 @@ RDEPEND="
 	>=dev-python/libtmux-0.8.5[${PYTHON_USEDEP}]
 	<dev-python/libtmux-0.9[${PYTHON_USEDEP}]
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
-	<dev-python/click-8.0[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.9[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}
@@ -37,6 +36,7 @@ BDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/tmuxp-1.6.4-tests.patch"
 	"${FILESDIR}/tmuxp-1.7.2-tests.patch"
+	"${FILESDIR}/tmuxp-1.7.2-relax-click-dep.patch"
 )
 
 distutils_enable_tests --install pytest
