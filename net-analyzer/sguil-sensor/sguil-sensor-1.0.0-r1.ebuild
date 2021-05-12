@@ -10,7 +10,7 @@ DESCRIPTION="Sensor part of sguil Network Security Monitoring"
 HOMEPAGE="https://github.com/bammv/sguil"
 SRC_URI="https://github.com/bammv/sguil/archive/v${PV}.tar.gz -> ${P/-sensor}.tar.gz"
 
-LICENSE="GPL-2 QPL"
+LICENSE="GPL-3 GPL-2+ QPL-1.0 GPL-2"    # GPL-2 for init script
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
