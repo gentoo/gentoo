@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/google/benchmark/issues</bugs-to>
-		<doc lang="en">https://github.com/google/benchmark/blob/master/docs/</doc>
+		<doc lang="en">https://github.com/google/benchmark/tree/master/docs/</doc>
 		<remote-id type="github">google/benchmark</remote-id>
 	</upstream>
 </pkgmetadata>
