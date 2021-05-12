@@ -8,7 +8,7 @@ DOCS_DEPEND="dev-texlive/texlive-fontutils"
 DOCS_DIR="${S}/doc"
 
 LUA_REQ_USE="deprecated(+)"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1,2} luajit )
 
 PYTHON_COMPAT=( python3_{7..10} )
 
