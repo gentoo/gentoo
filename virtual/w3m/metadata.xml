@@ -5,4 +5,5 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
