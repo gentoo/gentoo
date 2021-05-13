@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">stomp.py</remote-id>
 		<remote-id type="github">jasonrbriggs/stomp.py</remote-id>
