@@ -26,6 +26,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!<net-misc/netifrc-0.7.1-r2"
+BDEPEND="virtual/pkgconfig"
 PDEPEND="net-dialup/ppp-scripts"
 
 S="${WORKDIR}/${PN}-${P}"
