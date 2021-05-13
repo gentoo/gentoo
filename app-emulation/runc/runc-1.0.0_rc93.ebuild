@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,9 +42,9 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
-	export CGO_CFLAGS="-I${ROOT}/usr/include"
+	export CGO_CFLAGS="-I${ESYSROOT}/usr/include"
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')
-		-L${ROOT}/usr/$(get_libdir)"
+		-L${ESYSROOT}/usr/$(get_libdir)"
 
 	# build up optional flags
 	local options=(
@@ -54,17 +54,19 @@ src_compile() {
 	)
 
 	myemakeargs=(
-		BINDIR="/usr/bin"
 		BUILDTAGS="${options[*]}"
-		COMMIT=${RUNC_COMMIT}
-		DESTDIR="${ED}"
-		PREFIX="/usr"
+		COMMIT="${RUNC_COMMIT}"
 	)
 
 	emake "${myemakeargs[@]}" runc man
 }
 
 src_install() {
+	myemakeargs+=(
+		PREFIX="${ED}/usr"
+		BINDIR="${ED}/usr/bin"
+		MANDIR="${ED}/usr/share/man"
+	)
 	emake "${myemakeargs[@]}" install install-man install-bash
 
 	local DOCS=( README.md PRINCIPLES.md docs/. )
