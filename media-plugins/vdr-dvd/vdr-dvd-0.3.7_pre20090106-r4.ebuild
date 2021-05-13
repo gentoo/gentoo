@@ -26,8 +26,9 @@ DEPEND="${RDEPEND}"
 KEEP_I18NOBJECT="yes"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-compile_warnings.diff
-	"${FILESDIR}"/${P}-fix-dvdnav-using-c++-keywords.patch
+	"${FILESDIR}/${P}-compile_warnings.diff"
+	"${FILESDIR}/${P}-fix-dvdnav-using-c++-keywords.patch"
+	"${FILESDIR}/${P}_clang.patch"
 	)
 
 src_prepare() {
@@ -39,6 +40,4 @@ src_prepare() {
 
 	#bug 787485
 	sed -e "s:MAKEDEP = g++:MAKEDEP = \$(CXX):" -i Makefile
-	#bug 787488
-	sed -e "s|min(|std::min(|" -i control-dvd.c
 }
