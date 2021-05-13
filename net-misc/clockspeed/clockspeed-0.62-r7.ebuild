@@ -14,7 +14,8 @@ LEAPSECONDS_DATE="20081114"
 SRC_URI="https://cr.yp.to/clockspeed/${P}.tar.gz
 	https://dev.gentoo.org/~pacho/maintainer-needed/leapsecs.dat."$LEAPSECONDS_DATE""
 
-LICENSE="all-rights-reserved"
+# http://cr.yp.to/distributors.html
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~mips x86"
 IUSE="static selinux"
