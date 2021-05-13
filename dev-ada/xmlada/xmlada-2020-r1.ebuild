@@ -1,21 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6,7,8,9} )
+ADA_COMPAT=( gnat_201{6..9} gnat_2020 )
 inherit ada multiprocessing
 
-MYP=${P}-20190429-19B9D
+MYP=${P}-20200429-19A99-src
 
 DESCRIPTION="Set of modules that provide a simple manipulation of XML streams"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5
-	-> ${MYP}-src.tar.gz"
+SRC_URI="https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=${MYP}.tar.gz
+	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	${ADA_REQUIRED_USE}"
@@ -24,9 +24,9 @@ RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 
-S="${WORKDIR}"/${MYP}-src
+S="${WORKDIR}"/${MYP}
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2019-gentoo.patch )
 
 src_configure() {
 	econf --prefix="${D}"/usr
@@ -34,8 +34,13 @@ src_configure() {
 
 src_compile() {
 	build () {
+		echo gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
+			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
+			-largs ${LDFLAGS} \
+			-cargs ${ADAFLAGS}
 		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
 			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
+			-largs ${LDFLAGS} \
 			-cargs ${ADAFLAGS} || die "gprbuild failed"
 	}
 	if use shared; then
@@ -76,5 +81,6 @@ src_install() {
 	einstalldocs
 	dodoc xmlada-roadmap.txt
 	rm -f "${D}"/usr/share/doc/${PN}/.buildinfo
+	rm -rf "${D}"/usr/share/examples
 	rm -rf "${D}"/usr/share/gpr/manifests
 }
