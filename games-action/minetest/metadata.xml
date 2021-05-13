@@ -48,7 +48,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/minetest/minetest/issues</bugs-to>
-		<doc lang="en">http://wiki.minetest.net/Main_Page</doc>
+		<doc lang="en">https://wiki.minetest.net/Main_Page</doc>
 		<remote-id type="github">minetest/minetest</remote-id>
 	</upstream>
 </pkgmetadata>
