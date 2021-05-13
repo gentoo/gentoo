@@ -239,7 +239,7 @@ src_prepare() {
 	fi
 
 	# move before Gentoo patch, one patch should apply to seabios, to fix gcc-4.5.x build err
-	mv ../seabios-rel-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
+	mv ../seabios-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
 	pushd tools/firmware/ > /dev/null
 	ln -s seabios-dir-remote seabios-dir || die
 	popd > /dev/null
