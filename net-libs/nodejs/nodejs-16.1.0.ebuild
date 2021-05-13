@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
@@ -47,6 +47,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-12.22.1-jinja_collections_abc.patch
 	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-16.1.0-test-repl-history-navigation.patch
