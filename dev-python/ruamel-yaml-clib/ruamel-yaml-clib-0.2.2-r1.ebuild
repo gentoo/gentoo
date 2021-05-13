@@ -11,7 +11,7 @@ MY_PN="${PN//-/.}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="C-based reader/scanner and emitter for dev-python/ruamel-yaml"
-HOMEPAGE="https://pypi.org/project/ruamel.yaml.clib/ https://sourceforge.net/p/ruamel-yaml-clib"
+HOMEPAGE="https://pypi.org/project/ruamel.yaml.clib/ https://sourceforge.net/p/ruamel-yaml-clib/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
