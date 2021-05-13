@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
@@ -45,6 +45,10 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( net-misc/curl )
 	pax_kernel? ( sys-apps/elfix )"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-12.22.1-jinja_collections_abc.patch  # still needed as of 2021-05-13
+)
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
