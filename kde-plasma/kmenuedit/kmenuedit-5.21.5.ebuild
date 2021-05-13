@@ -36,6 +36,4 @@ RDEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
 "
-DEPEND="${RDEPEND}
-	>=kde-frameworks/kinit-${KFMIN}:5
-"
+DEPEND="${RDEPEND}"
