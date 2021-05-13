@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ RDEPEND="
 	!dedicated? (
 		app-arch/bzip2:=
 		media-libs/freetype
-		media-libs/libsdl[X,sound,opengl,video]
+		media-libs/libsdl2[X,sound,opengl,video]
 		media-libs/pnglite
 		media-sound/wavpack
 		virtual/glu
