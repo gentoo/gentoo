@@ -13,6 +13,7 @@ if [[ ${PV} = 9999* ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/isc-projects/kea.git"
 else
+	inherit autotools
 	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
 	[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
@@ -39,9 +40,11 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.8.2-fix-cxx11-detection.patch )
+
 src_prepare() {
 	default
-	[[ ${PV} = *9999 ]] && eautoreconf
+	eautoreconf
 	# Brand the version with Gentoo
 	sed -i \
 		-e "/VERSION=/s:'$: Gentoo-${PR}':" \
