@@ -5,4 +5,5 @@
 		<email>dist-kernel@gentoo.org</email>
 		<name>Distribution Kernel Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
