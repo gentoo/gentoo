@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 if [[ ${PV} =~ 99999999$ ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/neomutt/neomutt.git"
@@ -106,7 +108,7 @@ src_configure() {
 		"$(usex test --testing --disable-testing)"
 	)
 
-	econf CCACHE=none "${myconf[@]}"
+	econf CCACHE=none CC_FOR_BUILD=$(tc-getCC) "${myconf[@]}"
 }
 
 src_test() {
