@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit vdr-plugin-2 flag-o-matic
+inherit vdr-plugin-2
 
 MY_PV=0.9.13-MKIV-pre3
 MY_P=${PN}-${MY_PV}
@@ -43,20 +43,26 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-0.0.1_pre4-vdr-1.5.1.diff"
 	eapply "${FILESDIR}/${PN}-0.0.1_pre4-glibc-2.10.patch"
 
-	use !vorbis && sed -i "s:#WITHOUT_LIBVORBISFILE:WITHOUT_LIBVORBISFILE:" Makefile
-	use oss && sed -i "s:#WITH_OSS_OUTPUT:WITH_OSS_OUTPUT:" Makefile
+	use !vorbis && sed -e "s:#WITHOUT_LIBVORBISFILE:WITHOUT_LIBVORBISFILE:" -i Makefile
+	use oss && sed -e "s:#WITH_OSS_OUTPUT:WITH_OSS_OUTPUT:" -i Makefile
+
+	#wrt bug 789687
+	sed -e "s:MAKEDEP = g++:MAKEDEP = \$(CXX):" -i Makefile || die
 
 	has_version ">=media-video/vdr-1.3.37" && eapply "${FILESDIR}/${PN}-0.0.1_pre4-1.3.37.diff"
 	has_version ">=media-gfx/imagemagick-6.4" && eapply "${FILESDIR}/imagemagick-6.4.x.diff"
 
 	sed -i mp3ng.c -e "s:RegisterI18n:// RegisterI18n:" || die
 
-	if has_version ">=media-video/vdr-2.1.2"; then
-		sed -e "s#VideoDirectory#cVideoDirectory::Name\(\)#" -i decoder.c
-	fi
+	# >=vdr-2.1.2
+	sed -e "s#VideoDirectory#cVideoDirectory::Name\(\)#" -i decoder.c || die
 
 	#wrt bug 705372
 	eapply "${FILESDIR}/${P}_gcc-9.patch"
+
+	#wrt bug 740247, 786240
+	sed -e "s:while(fgets(buffer,sizeof(buffer),f)>0:while(fgets(buffer,sizeof(buffer),f)> (char *)0:" \
+		-i data-mp3.c || die
 }
 
 src_install() {
