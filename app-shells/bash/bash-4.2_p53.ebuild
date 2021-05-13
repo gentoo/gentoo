@@ -42,21 +42,22 @@ LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
-# we only need yacc when the .y files get patched (bash42-005)
+# We only need yacc when the .y files get patched (bash42-005)
 BDEPEND="virtual/yacc"
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.2-execute-job-control.patch #383237
+	"${FILESDIR}"/${PN}-4.2-execute-job-control.patch # bug #383237
 	"${FILESDIR}"/${PN}-4.2-parallel-build.patch
 	"${FILESDIR}"/${PN}-4.2-no-readline.patch
-	"${FILESDIR}"/${PN}-4.2-read-retry.patch #447810
+	"${FILESDIR}"/${PN}-4.2-read-retry.patch # bug #447810
 	"${FILESDIR}"/${PN}-4.2-speed-up-read-N.patch
 )
 
 pkg_setup() {
-	if is-flag -malign-double ; then #7332
+	# bug #7332
+	if is-flag -malign-double ; then
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
@@ -86,7 +87,13 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--with-installed-readline=.
+
+		# Force linking with system curses ... the bundled termcap lib
+		# sucks bad compared to ncurses.  For the most part, ncurses
+		# is here because readline needs it.  But bash itself calls
+		# ncurses in one or two small places :(.
 		--with-curses
+
 		$(use_with afs)
 		$(use_enable net net-redirections)
 		--disable-profiling
@@ -120,12 +127,9 @@ src_configure() {
 	# is at least what's in the DEPEND up above.
 	export ac_cv_rl_version=6.2
 
-	# Force linking with system curses ... the bundled termcap lib
-	# sucks bad compared to ncurses.  For the most part, ncurses
-	# is here because readline needs it.  But bash itself calls
-	# ncurses in one or two small places :(.
+	# bug #444070
+	tc-export AR
 
-	tc-export AR #444070
 	econf "${myconf[@]}"
 }
 
