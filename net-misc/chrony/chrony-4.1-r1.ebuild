@@ -97,7 +97,7 @@ src_configure() {
 
 	if ! use seccomp ; then
 		sed -i \
-			-e 's/ -F 0//' \
+			-e 's/ -F 2//' \
 			"${T}"/chronyd.conf examples/chronyd.service || die
 	fi
 
