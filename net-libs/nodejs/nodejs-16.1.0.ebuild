@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
 	"${FILESDIR}"/${PN}-15.2.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-16.1.0-test-repl-history-navigation.patch
+	"${FILESDIR}"/${PN}-16.1.0-ppc64-segfault.patch #785751, drop after it stops applying
 )
 
 pkg_pretend() {
