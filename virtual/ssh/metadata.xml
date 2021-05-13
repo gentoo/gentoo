@@ -10,8 +10,7 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<use>
-		<flag name="minimal">
-		Prefer <pkg>net-misc/dropbear</pkg> over <pkg>net-misc/openssh</pkg>
-	</flag>
+		<flag name="minimal">Prefer <pkg>net-misc/dropbear</pkg> over <pkg>net-misc/openssh</pkg></flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>
