@@ -7,8 +7,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
-
-inherit autotools flag-o-matic prefix python-r1 multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielveillard.asc
+inherit autotools flag-o-matic prefix python-r1 multilib-minimal verify-sig
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
@@ -25,6 +25,7 @@ SRC_URI="
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
 		https://www.w3.org/XML/Test/${XMLCONF_TARBALL}
 	)
+	verify-sig? ( ftp://xmlsoft.org/${PN}/${PN}-${PV/_rc/-rc}.tar.gz.asc )
 "
 S="${WORKDIR}/${PN}-${PV%_rc*}"
 
@@ -38,6 +39,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 BDEPEND="
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
+	verify-sig? ( app-crypt/openpgp-keys-danielveillard )
 "
 RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
@@ -73,9 +75,15 @@ PATCHES=(
 )
 
 src_unpack() {
+	local tarname=${P/_rc/-rc}.tar.gz
+
+	if use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${tarname}{,.asc}
+	fi
+
 	# ${A} isn't used to avoid unpacking of test tarballs into ${WORKDIR},
 	# as they are needed as tarballs in ${S}/xstc instead and not unpacked
-	unpack ${P/_rc/-rc}.tar.gz
+	unpack ${tarname}
 	cd "${S}" || die
 
 	if use test ; then
