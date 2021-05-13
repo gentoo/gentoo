@@ -15,5 +15,5 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc 
 
 src_install() {
 	insinto /usr/share/cpuinfo
-	doins -r *
+	doins -r .
 }
