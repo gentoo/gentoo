@@ -58,7 +58,6 @@ src_compile() {
 
 	myemakeargs=(
 		BUILDTAGS="${options[*]}"
-		DESTDIR="${ED}"
 		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')"
 	)
 
