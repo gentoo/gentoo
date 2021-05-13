@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ppc64 ~sparc ~x86"
 
 PATCHES=( "${FILESDIR}"/${PN}-32-build.patch )
 
