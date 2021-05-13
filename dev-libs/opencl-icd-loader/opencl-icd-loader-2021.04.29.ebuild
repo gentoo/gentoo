@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib
 
 MY_PN="OpenCL-ICD-Loader"
 MY_P="${MY_PN}-${PV}"
