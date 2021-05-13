@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.9.4-fltk-detection.patch
 	"${FILESDIR}/${PN}"-2.11.2-Makefile-LDFLAGS.patch
 	"${FILESDIR}/${PN}"-2.11.2-Makefile-docinstall.patch
+	"${FILESDIR}/${P}"-rnfdisc.patch
 )
 
 src_prepare() {
