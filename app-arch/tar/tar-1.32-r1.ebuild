@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit flag-o-matic
-
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
 SRC_URI="mirror://gnu/tar/${P}.tar.bz2
