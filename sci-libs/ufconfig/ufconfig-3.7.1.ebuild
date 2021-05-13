@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit multilib toolchain-funcs
 
 MY_PN=UFconfig
 DESCRIPTION="Common configuration scripts for the SuiteSparse libraries"
