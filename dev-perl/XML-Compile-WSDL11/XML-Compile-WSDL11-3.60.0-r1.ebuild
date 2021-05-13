@@ -22,7 +22,7 @@ RDEPEND="
 "
 
 # bug 774777
-BEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Deep
