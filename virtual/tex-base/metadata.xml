@@ -5,4 +5,5 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
