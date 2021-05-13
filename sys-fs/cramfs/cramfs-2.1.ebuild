@@ -11,7 +11,7 @@ SRC_URI="https://github.com/npitre/cramfs-tools/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND="sys-libs/zlib:="
