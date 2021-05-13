@@ -5,12 +5,6 @@
 # only works on little-endian
 sci-mathematics/geogebra-bin
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-06)
-# segfaults building qtwebengine or chromium
-# https://bugs.gentoo.org/785751
-# https://github.com/nodejs/node/issues/38521
->=net-libs/nodejs-16
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
 # Fails to build with buildmode=pie assumptions, which
 # does not work on big-endian ppc64
