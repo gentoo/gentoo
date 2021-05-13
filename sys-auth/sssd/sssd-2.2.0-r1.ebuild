@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,11 +57,14 @@ RDEPEND="${COMMON_DEP}
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )
 	"
 DEPEND="${COMMON_DEP}
-	test? ( dev-libs/check )
+	test? ( dev-libs/check )"
+BDEPEND="
+	virtual/pkgconfig
 	manpages? (
-		>=dev-libs/libxslt-1.1.26
 		app-text/docbook-xml-dtd:4.4
-		)"
+		>=dev-libs/libxslt-1.1.26
+	)
+"
 
 CONFIG_CHECK="~KEYS"
 
