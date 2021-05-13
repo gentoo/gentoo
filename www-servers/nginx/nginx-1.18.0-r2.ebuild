@@ -325,6 +325,7 @@ RDEPEND="${CDEPEND}
 	!www-servers/nginx:mainline"
 DEPEND="${CDEPEND}
 	nginx_modules_http_brotli? ( virtual/pkgconfig )
+	nginx_modules_http_lua? ( virtual/pkgconfig )
 	nginx_modules_http_security? ( ${AUTOTOOLS_DEPEND} )
 	arm? ( dev-libs/libatomic_ops )
 	libatomic? ( dev-libs/libatomic_ops )"
@@ -507,8 +508,8 @@ src_configure() {
 
 	if use nginx_modules_http_lua; then
 		http_enabled=1
-		export LUAJIT_LIB=$(pkg-config --variable libdir luajit)
-		export LUAJIT_INC=$(pkg-config --variable includedir luajit)
+		export LUAJIT_LIB=$($(tc-getPKG_CONFIG) --variable libdir luajit)
+		export LUAJIT_INC=$($(tc-getPKG_CONFIG) --variable includedir luajit)
 		myconf+=( --add-module=${DEVEL_KIT_MODULE_WD} )
 		myconf+=( --add-module=${HTTP_LUA_MODULE_WD} )
 	fi
