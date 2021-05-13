@@ -12,6 +12,7 @@ DESCRIPTION="Parse, manipulate and lookup IP network blocks"
 SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
 IUSE="minimal test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!minimal? ( >=dev-perl/AnyEvent-7.140.0 )
