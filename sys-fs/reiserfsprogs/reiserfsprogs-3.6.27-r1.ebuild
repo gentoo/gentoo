@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic usr-ldscript
 
@@ -20,6 +20,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6.27-loff_t.patch"
 )
 
+# Needed for libuuid
+RDEPEND="sys-apps/util-linux"
+DEPEND="${RDEPEND}"
+
 src_prepare() {
 	default
 	eautoreconf
@@ -27,17 +31,20 @@ src_prepare() {
 
 src_configure() {
 	append-flags -std=gnu89 #427300
+
 	local myeconfargs=(
 		--bindir="${EPREFIX}/bin"
 		--libdir="${EPREFIX}/$(get_libdir)"
 		--sbindir="${EPREFIX}/sbin"
 		$(use_enable static-libs static)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+
 	dodir /usr/$(get_libdir)
 	mv "${ED}"/$(get_libdir)/pkgconfig "${ED}"/usr/$(get_libdir) || die
 
@@ -45,6 +52,6 @@ src_install() {
 		mv "${ED}"/$(get_libdir)/*a "${ED}"/usr/$(get_libdir) || die
 		gen_usr_ldscript libreiserfscore.so
 	else
-		find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete
+		find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
 	fi
 }
