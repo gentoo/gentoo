@@ -232,7 +232,7 @@ pkg_postinst() {
 	local show_seccomp_enable_msg=0
 
 	# Was seccomp disabled before and now enabled?
-    if [[ ${HAD_SECCOMP} -eq 0 ]] && use seccomp ; then
+	if [[ ${HAD_SECCOMP} -eq 0 ]] && use seccomp ; then
 		show_seccomp_enable_msg=1
 	fi
 
