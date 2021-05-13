@@ -1,28 +1,24 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 DESCRIPTION="A skeleton, statically managed /dev"
 HOMEPAGE="https://bugs.gentoo.org/107875"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
-IUSE=""
 
 RDEPEND="sys-apps/makedev"
-DEPEND="${RDEPEND}"
-
-abort() {
-	echo
-	eerror "We have detected that you currently use udev or devfs or devtmpfs"
-	eerror "and this ebuild cannot install to the same mount-point."
-	die "Cannot install on udev/devfs tmpfs."
-}
 
 pkg_pretend() {
+	abort() {
+		eerror "We have detected that you currently use udev or devfs or devtmpfs"
+		eerror "and this ebuild cannot install to the same mount-point."
+		die "Cannot install on udev/devfs tmpfs."
+	}
+
 	if [[ ${MERGE_TYPE} == "buildonly" ]] ; then
 		# User is just compiling which is fine -- all our checks are merge-time.
 		return
@@ -32,6 +28,7 @@ pkg_pretend() {
 	if [[ -d ${ROOT}/dev/.udev || -c ${ROOT}/dev/.devfs ]] ; then
 		abort
 	fi
+
 	# We also want to not clobber newer devtmpfs setups.
 	if [[ ${ROOT} == "/" ]] && \
 	   ! awk '$2 == "/dev" && $3 == "devtmpfs" { exit 1 }' /proc/mounts ; then
