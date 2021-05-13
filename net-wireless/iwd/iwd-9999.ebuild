@@ -14,6 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	MYRST2MAN="RST2MAN=:"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
@@ -150,8 +151,12 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	emake ${MYRST2MAN}
+}
+
 src_install() {
-	default
+	emake DESTDIR="${D}" ${MYRST2MAN} install
 	keepdir /var/lib/${PN}
 
 	newinitd "${FILESDIR}/iwd.initd-r1" iwd
