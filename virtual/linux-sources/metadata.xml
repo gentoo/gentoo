@@ -12,4 +12,5 @@
 	<use>
 		<flag name="firmware">Install linux kernel firmware</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>
