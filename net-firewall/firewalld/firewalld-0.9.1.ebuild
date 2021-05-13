@@ -70,7 +70,6 @@ src_configure() {
 
 	local econf_args=(
 		--enable-systemd
-		$(use_with nftables nft "${EPREFIX}/sbin/nft")
 		$(use_with iptables iptables "${EPREFIX}/sbin/iptables")
 		$(use_with iptables iptables_restore "${EPREFIX}/sbin/iptables-restore")
 		$(use_with iptables ip6tables "${EPREFIX}/sbin/ip6tables")
