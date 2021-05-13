@@ -65,7 +65,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	insinto /etc
-	doins "${WORKDIR}"/patch/termcap
+	doins "${S}"/patch/termcap
 
 	dodoc ChangeLog README
 }
