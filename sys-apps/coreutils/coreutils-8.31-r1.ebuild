@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_7 )
 
-inherit eutils flag-o-matic python-any-r1 toolchain-funcs
+inherit flag-o-matic python-any-r1 toolchain-funcs
 
 PATCH="${PN}-8.30-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
