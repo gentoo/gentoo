@@ -15,12 +15,15 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# bug 787551: T::Fatal and T::Warnings needed
 BDEPEND="
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/B-COW
 		virtual/perl-File-Temp
+		dev-perl/Test-Fatal
 		virtual/perl-Test-Simple
+		dev-perl/Test-Warnings
 	)
 "
 
