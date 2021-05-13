@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="xfs dump/restore utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/"
@@ -43,6 +43,7 @@ src_prepare() {
 		-e "/^PKG_DOC_DIR/s:@pkg_name@:${PF}:" \
 		include/builddefs.in \
 		|| die
+
 	sed -i \
 		-e "s:enable_curses=[a-z]*:enable_curses=$(usex ncurses):" \
 		-e "s:libcurses=\"[^\"]*\":libcurses='$(use ncurses && $(tc-getPKG_CONFIG) --libs ncurses)':" \
