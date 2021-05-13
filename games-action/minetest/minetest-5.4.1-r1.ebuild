@@ -63,6 +63,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.1-gcc11.patch
 	"${FILESDIR}"/${PN}-5.4.1-system_puc_lua.patch
 )
 
