@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
 
-inherit cmake lua-single xdg
+inherit cmake lua-single systemd xdg
 
 DESCRIPTION="A free open-source voxel game engine with easy modding and game creation"
 HOMEPAGE="https://www.minetest.net"
@@ -69,12 +69,6 @@ PATCHES=(
 src_prepare() {
 	cmake_src_prepare
 
-	# set paths
-	sed \
-		-e "s#@BINDIR@#${EPREFIX}/usr/bin#g" \
-		-e "s#@GROUP@#${PN}#g" \
-		"${FILESDIR}"/minetestserver.confd > "${T}"/minetestserver.confd || die
-
 	# remove bundled libraries
 	rm -rf lib || die
 }
@@ -112,7 +106,7 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 
-	if use doc ; then
+	if use doc; then
 		cmake_src_compile doc
 		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	fi
@@ -121,12 +115,19 @@ src_compile() {
 src_install() {
 	cmake_src_install
 
-	if use server ; then
+	if use server; then
+		keepdir /etc/minetest
+		fowners root:minetest /etc/minetest
+		fperms 2750 /etc/minetest
+
 		keepdir /var/log/minetest
 		fowners minetest:minetest /var/log/minetest
 
-		newconfd "${T}"/minetestserver.confd minetest-server
+		newconfd "${FILESDIR}"/minetestserver.confd minetest-server
 		newinitd "${FILESDIR}"/minetestserver.initd minetest-server
+
+		systemd_newunit "${FILESDIR}"/minetestserver_default.service minetest-server.service
+		systemd_newunit "${FILESDIR}"/minetestserver_template.service minetest-server@.service
 
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/minetestserver.logrotate minetest-server
@@ -135,17 +136,4 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-
-	if use server ; then
-		elog
-		elog "Configure your server via /etc/conf.d/minetest-server"
-		elog
-	fi
-
-	elog
-	elog "The version 5.x series is not compatible to the version 0.4 series."
-	elog "This applies to clients and servers, other content such as mods,"
-	elog "texture packs and worlds is unaffected and backwards-compatible"
-	elog "as usual."
-	elog
 }
