@@ -10,14 +10,10 @@ DESCRIPTION="A supersonic micro-framework for building cloud APIs"
 HOMEPAGE="https://falconframework.org/ https://pypi.org/project/falcon/"
 SRC_URI="https://github.com/falconry/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
-	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/python-mimeparse[${PYTHON_USEDEP}]
-"
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
