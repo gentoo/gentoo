@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit flag-o-matic libtool toolchain-funcs multilib-minimal usr-ldscript
+inherit flag-o-matic libtool multilib-minimal usr-ldscript
 
-DESCRIPTION="access control list utilities, libraries and headers"
+DESCRIPTION="Access control list utilities, libraries, and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
@@ -20,37 +20,38 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 
-pkg_setup() {
-	# filter out -flto flags as they break getfacl/setfacl binaries
-	# (bug #667372)
-	filter-flags -flto*
-}
-
 src_prepare() {
 	default
-	elibtoolize #580792
+
+	# bug #580792
+	elibtoolize
 }
 
 multilib_src_configure() {
+	# Filter out -flto flags as they break getfacl/setfacl binaries
+	# bug #667372
+	filter-flags -flto*
+
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
 		$(use_enable static-libs static)
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
 		$(use_enable nls)
 	)
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_test() {
 	# Tests call native binaries with an LD_PRELOAD wrapper
-	# https://bugs.gentoo.org/772356
+	# bug #772356
 	multilib_is_native_abi && default
 }
 
 multilib_src_install() {
 	default
 
-	# move shared libs to /
+	# Move shared libs to /
 	gen_usr_ldscript -a acl
 }
 
