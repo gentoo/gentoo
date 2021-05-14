@@ -13,7 +13,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2 GPL-2+ LGPL-2.1+"
@@ -21,7 +21,7 @@ SLOT="0"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	>=dev-util/lxqt-build-tools-0.8.0
+	>=dev-util/lxqt-build-tools-0.9.0
 "
 DEPEND="
 	dev-libs/glib:2
@@ -30,14 +30,14 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	sys-apps/util-linux
 	=x11-libs/libfm-qt-$(ver_cut 1-2)*
 	x11-libs/libxcb:=
 	x11-misc/xdg-utils
-	virtual/eject
 	virtual/freedesktop-icon-theme
 "
 RDEPEND="${DEPEND}
-	!lxqt-base/lxqt-l10n
+	>=lxde-base/lxmenu-data-0.1.5
 "
 
 pkg_postinst() {
