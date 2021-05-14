@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /sbin/agetty 38400 TTY linux
