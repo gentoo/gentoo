@@ -18,7 +18,7 @@ DEPEND=">=media-video/vdr-1.4.2"
 
 RDEPEND="${DEPEND}
 	|| ( media-video/mplay-sh >=media-video/mplayer-sh-0.8.6-r1 )
-	virtual/eject"
+	sys-apps/util-linux"
 
 S=${WORKDIR}/mp3-${PV}
 
