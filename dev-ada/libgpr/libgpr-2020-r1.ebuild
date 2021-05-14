@@ -1,20 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6,7,8,9} )
+ADA_COMPAT=( gnat_201{6..9} gnat_2020 )
 inherit ada toolchain-funcs multiprocessing
 
-MYP=gprbuild-${PV}-20190517-194D8
+MYP=gprbuild-${PV}-20200429-19BD2-src
 
 DESCRIPTION="Ada library to handle GPRbuild project files"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093
-		-> ${MYP}-src.tar.gz"
+SRC_URI="https://community.download.adacore.com/v1/408ec35c3bb86bd227db3da55d3e1e0c572a56e3?filename=${MYP}.tar.gz
+		-> ${MYP}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
-S="${WORKDIR}"/${MYP}-src
+S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
