@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
@@ -46,6 +46,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/numpy-1.20.1-no-hardcode-blasv2.patch
 	"${FILESDIR}"/numpy-1.20.2-fix-ccompiler-tests.patch
+	"${FILESDIR}"/numpy-1.20.3-float-hashing-py310.patch
 )
 
 distutils_enable_tests pytest
