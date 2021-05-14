@@ -1,17 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="A clean, lightweight, object oriented scripting language"
 HOMEPAGE="http://ferite.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-slibtool.patch.bz2"
 
 LICENSE="BSD"
 SLOT="1"
 KEYWORDS="~alpha amd64 ppc -sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
 RDEPEND="
 	dev-libs/boehm-gc[threads]
@@ -23,7 +24,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-pcre.patch
 	"${FILESDIR}"/${P}-bool.patch
-	"${FILESDIR}"/${P}-slibtool.patch
+	"${WORKDIR}"/${P}-slibtool.patch
 )
 
 src_prepare() {
