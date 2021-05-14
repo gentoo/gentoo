@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,10 +54,6 @@ src_prepare() {
 	fi
 }
 
-src_configure() {
-	emake prefix="${D}"/usr setup
-}
-
 bin_progs="gprbuild gprconfig gprclean gprinstall gprname gprls"
 lib_progs="gprlib gprbind"
 
@@ -69,11 +65,11 @@ src_compile() {
 	gcc -c ${CFLAGS} gpr/src/gpr_imports.c -o gpr_imports.o || die
 	for bin in ${bin_progs}; do
 		gnatmake -j$(makeopts_jobs) ${incflags} $ADAFLAGS ${bin}-main \
-			-o ${bin} -largs gpr_imports.o || die
+			-o ${bin} -largs ${LDFLAGS} gpr_imports.o || die
 	done
 	for lib in $lib_progs; do
 		gnatmake -j$(makeopts_jobs) ${incflags} ${lib} $ADAFLAGS \
-			-largs gpr_imports.o || die
+			-largs ${LDFLAGS} gpr_imports.o || die
 	done
 }
 

@@ -45,10 +45,6 @@ src_prepare() {
 		|| die
 }
 
-src_configure() {
-	emake prefix="${D}"/usr setup
-}
-
 bin_progs="gprbuild gprconfig gprclean gprinstall gprname gprls"
 lib_progs="gprlib gprbind"
 
