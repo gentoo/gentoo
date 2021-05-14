@@ -19,7 +19,10 @@ DEPEND="dev-libs/libgcrypt:0
 	media-video/vdr"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-boost-1.67.patch" )
+PATCHES=(
+		"${FILESDIR}/${P}-boost-1.67.patch"
+		"${FILESDIR}/${P}_clang.patch"
+		)
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
