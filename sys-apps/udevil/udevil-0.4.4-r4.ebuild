@@ -63,7 +63,6 @@ pkg_postinst() {
 	elog "  net-fs/curlftpfs   (mounting ftp shares)"
 	elog "  net-fs/nfs-utils   (mounting nfs shares)"
 	elog "  net-fs/sshfs       (mounting sftp shares)"
-	elog "  virtual/eject      (eject via devmon)"
 	if ! has_version 'sys-fs/udisks' ; then
 		elog
 		elog "When using ${PN} without udisks, and without the udisks-daemon running,"
