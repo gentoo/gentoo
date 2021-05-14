@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,5 +40,6 @@ BDEPEND="${RDEPEND}
 		virtual/perl-IO
 	)
 "
-
-DIST_TEST=skip # bug 774312 - needs debugging
+# Before disabling test here again, please file a bug and help kentnl
+# track it down, so we can at least run some tests where its sensible.
+#DIST_TEST=skip
