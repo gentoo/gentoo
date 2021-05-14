@@ -9,4 +9,5 @@
 		<email>rust@gentoo.org</email>
 		<name>Rust</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>
