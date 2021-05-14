@@ -9,7 +9,7 @@ DESCRIPTION="The Open Racing Car Simulator"
 HOMEPAGE="http://torcs.sourceforge.net/"
 SRC_URI="mirror://sourceforge/torcs/${P}.tar.bz2"
 
-LICENSE="GPL-2 FreeArt"
+LICENSE="GPL-2+ Free-Art-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
