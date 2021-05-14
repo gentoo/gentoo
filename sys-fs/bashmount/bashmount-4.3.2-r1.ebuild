@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,7 @@ RDEPEND="
 	app-shells/bash:*
 	sys-apps/dbus
 	sys-apps/util-linux
-	sys-fs/udisks:2
-	virtual/eject"
+	sys-fs/udisks:2"
 DEPEND="${RDEPEND}"
 
 src_install() {
