@@ -6,35 +6,39 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 distutils-r1 git-r3 systemd tmpfiles
+inherit bash-completion-r1 distutils-r1 systemd tmpfiles
 
 DESCRIPTION="Scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="selinux systemd"
-# Needs some work to enable them right now
-RESTRICT="test"
 
 RDEPEND="
 	virtual/logger
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
 	systemd? (
-		$(python_gen_cond_dep '|| (
-			dev-python/python-systemd[${PYTHON_USEDEP}]
-			sys-apps/systemd[python(-),${PYTHON_USEDEP}]
-		)' 'python*' )
+		$(python_gen_cond_dep '
+			|| (
+				dev-python/python-systemd[${PYTHON_USEDEP}]
+				sys-apps/systemd[python(-),${PYTHON_USEDEP}]
+			)
+		' 'python*')
 	)
 "
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 python_prepare_all() {
-	default
-
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
@@ -49,17 +53,24 @@ python_compile() {
 	distutils-r1_python_compile
 }
 
+python_test() {
+	bin/fail2ban-testcases \
+		--no-network \
+		--no-gamin \
+		--verbosity=4 || die "Tests failed with ${EPYTHON}"
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
-	rm -rf "${D}"/usr/share/doc/${PN} "${D}"/run || die
+	rm -rf "${ED}"/usr/share/doc/${PN} "${ED}"/run || die
 
-	# not ${FILESDIR}
+	# Not ${FILESDIR}
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
 
-	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}/${PN}.service" || die
-	systemd_dounit "${T}/${PN}.service"
+	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}"/${PN}.service || die
+	systemd_dounit "${T}"/${PN}.service
 	dotmpfiles files/${PN}-tmpfiles.conf
 
 	doman man/*.{1,5}
@@ -81,13 +92,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ $previous_less_than_0_7 = 0 ]] ; then
+	if [[ ${previous_less_than_0_7} == 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"
 		elog "You probably have to manually update your configuration"
-		elog "files before restarting Fail2ban!"
+		elog "files before restarting Fail2Ban!"
 		elog
-		elog "Fail2ban is not installed under /usr/lib anymore. The"
+		elog "Fail2Ban is not installed under /usr/lib anymore. The"
 		elog "new location is under /usr/share."
 		elog
 		elog "You are upgrading from version 0.6.x, please see:"
