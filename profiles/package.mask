@@ -659,12 +659,6 @@ media-video/orion
 # Removal on 2021-06-01.  Bug #782904.
 x11-themes/gtk-engines-aurora
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
-# java libraries not used by any other package,
-# masked for removal
-dev-java/odfdom
-dev-java/saaj
-
 # Jonas Stein <jstein@gentoo.org> (2021-04-14)
 # Open bugs, dead upstream.
 # Removal on 2021-06-01.  Bug #782730.
