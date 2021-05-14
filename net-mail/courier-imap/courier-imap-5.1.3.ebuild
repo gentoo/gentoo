@@ -20,7 +20,7 @@ CDEPEND="
 	!gnutls? (
 		dev-libs/openssl:0=
 	)
-	>=net-libs/courier-authlib-0.66.4
+	>=net-libs/courier-authlib-0.71
 	>=net-libs/courier-unicode-2
 	>=net-mail/mailbase-0.00-r8
 	net-dns/libidn:=
