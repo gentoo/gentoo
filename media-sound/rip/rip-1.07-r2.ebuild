@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
 
-RDEPEND="media-sound/cdparanoia
-	virtual/eject
-	dev-lang/perl
-	>=dev-perl/CDDB_get-2.10
+RDEPEND=">=dev-perl/CDDB_get-2.10
 	>=dev-perl/MP3-Info-0.91
-	|| ( media-sound/vorbis-tools media-sound/lame media-libs/flac media-sound/bladeenc )"
+	dev-lang/perl
+	media-sound/cdparanoia
+	sys-apps/util-linux
+	|| (
+		media-libs/flac
+		media-sound/bladeenc
+		media-sound/lame
+		media-sound/vorbis-tools
+	)"
 
 PATCHES=(
 	"${FILESDIR}/${P}-change-to-gnudb-org.patch"
