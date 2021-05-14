@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 		x11-libs/libX11
 	)"
 RDEPEND="${COMMON_DEPEND}
-	virtual/eject"
+	sys-apps/util-linux"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
