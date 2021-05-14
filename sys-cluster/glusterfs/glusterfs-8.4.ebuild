@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit autotools elisp-common python-single-r1 systemd
 
 SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~x86"
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
