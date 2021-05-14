@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE=""
 DEPEND="
 	app-cdr/cdrtools
 	net-misc/openssh
-	virtual/eject
+	sys-apps/util-linux
 "
 RDEPEND="${DEPEND}
 	!app-misc/cdcat
