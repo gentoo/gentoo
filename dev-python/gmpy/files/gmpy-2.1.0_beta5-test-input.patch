@@ -1,0 +1,12 @@
+diff --git a/test/runtests.py b/test/runtests.py
+index 5e5842d..7d64e52 100644
+--- a/test/runtests.py
++++ b/test/runtests.py
+@@ -81,7 +81,6 @@ if sys.version.startswith('3.1.'):
+     print("with Python 3.1. The doctest module in Python 3.2 and later does not")
+     print("have this issue.")
+     print()
+-    input("Press ENTER to continue.. ")
+     print()
+ 
+ mpz_doctests = ["test_mpz_create.txt", "test_mpz.txt", "test_mpz_io.txt",
