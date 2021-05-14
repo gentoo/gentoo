@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -22,6 +22,11 @@ RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)
 	!dev-python/dnspython:py2
 	!dev-python/dnspython:py3"
+
+PATCHES=(
+	# Mutable mapping was moved to a different module in 3.10 and removed from the old one
+	"${FILESDIR}"/${P}-py310.patch
+)
 
 src_prepare() {
 	sed -i -e '/network_avail/s:True:False:' \
