@@ -70,12 +70,12 @@ if [[ ${PV} == "9999" ]] ; then
 	REQUIRED_USE+=" html"
 	BDEPEND+=" virtual/w3m"
 else
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-mlichvar )"
+	BDEPEND+=" verify-sig? ( >=app-crypt/openpgp-keys-mlichvar-20210513 )"
 fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
-	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
+	"${FILESDIR}"/${PN}-4.1-systemd-gentoo.patch
 )
 
 src_prepare() {
@@ -85,7 +85,7 @@ src_prepare() {
 		-e 's:/etc/chrony\.conf:/etc/chrony/chrony.conf:g' \
 		doc/* examples/* || die
 
-	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf || die
+	cp "${FILESDIR}"/chronyd.conf-r3 "${T}"/chronyd.conf || die
 }
 
 src_configure() {
@@ -97,7 +97,7 @@ src_configure() {
 
 	if ! use seccomp ; then
 		sed -i \
-			-e 's/ -F 0//' \
+			-e 's/ -F 2//' \
 			"${T}"/chronyd.conf examples/chronyd.service || die
 	fi
 
@@ -192,17 +192,24 @@ src_install() {
 }
 
 pkg_preinst() {
-	HAD_CAPS=false
-	HAD_SECCOMP=false
+	HAD_CAPS=0
+	HAD_SECCOMP=0
+	HAD_PRE_NEW_SECCOMP_LEVEL=0
 
 	# See https://dev.gentoo.org/~zmedico/portage/doc/portage.html#package-ebuild-phases-after-2.1.5
 	# in "Ebuild Phases" for an explanation of why we need to save the variable beforehand
 	if has_version 'net-misc/chrony[caps]' ; then
-		HAD_CAPS=true
+		HAD_CAPS=1
 	fi
 
 	if has_version 'net-misc/chrony[seccomp]' ; then
-		HAD_SECCOMP=true
+		HAD_SECCOMP=1
+	fi
+
+	if has_version '>=net-misc/chrony-4.1[seccomp]' ; then
+		# This version introduced a new filter level: -F 2
+		# It's a limited set of seccomp filters designed to be 'bare minimum'
+		HAD_PRE_NEW_SECCOMP_LEVEL=1
 	fi
 }
 
@@ -210,22 +217,36 @@ pkg_postinst() {
 	tmpfiles_process chronyd.conf
 
 	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
-		if use caps && ! ${HAD_CAPS} ; then
+		if use caps && ! [[ ${HAD_CAPS} -eq 1 ]] ; then
 			# bug #719876
 			ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by ntp:ntp"
 			ewarn "e.g. chown -R ntp:ntp ${EROOT}/var/{lib,log}/chrony"
 			ewarn "This is necessary for chrony to drop privileges"
-		elif ! use caps && ! ${HAD_CAPS} ; then
+		elif ! use caps && [[ ${HAD_CAPS} -eq 0 ]] ; then
 			ewarn "Please adjust permissions on ${EROOT}/var/{lib,log}/chrony to be owned by root:root"
 		fi
 	fi
 
-	# TODO: Will try to re-enable before final release ideally?
-	# bug #783915
-	if [[ ! ${HAD_SECCOMP} ]] && use seccomp ; then
-		elog "To enable seccomp in enforcing mode, please modify:"
+	# See bug #783915 for general discussion on enabling seccomp filtering
+	# by default.
+	local show_seccomp_enable_msg=0
+
+	# Was seccomp disabled before and now enabled?
+	if [[ ${HAD_SECCOMP} -eq 0 ]] && use seccomp ; then
+		show_seccomp_enable_msg=1
+	fi
+
+	# Are we coming from an old version without the new 'minimal' filter?
+	# (-F 2)
+	if [[ ${HAD_PRE_NEW_SECCOMP_LEVEL} -eq 0 ]] ; then
+		show_seccomp_enable_msg=1
+	fi
+
+	if [[ ${show_seccomp_enable_msg} -eq 1 ]] ; then
+		elog "To enable seccomp in a stricter mode, please modify:"
 		elog "- /etc/conf.d/chronyd for OpenRC"
 		elog "- systemctl edit chronyd for systemd"
-		elog "to use -F 1 or -F -1 instead of -F 0 (see man chronyd)"
+		elog "By default, we now use -F 2 which is a baseline/minimal filter."
+		elog "to use -F 1 or -F -1 instead of -F 2 (see man chronyd)"
 	fi
 }
