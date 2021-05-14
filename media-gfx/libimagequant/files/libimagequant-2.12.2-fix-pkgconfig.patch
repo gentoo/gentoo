@@ -1,5 +1,3 @@
-diff --git a/Makefile b/Makefile
-index 2666b3d..ba58cf1 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -133,7 +133,7 @@ ifeq ($(filter %clean %distclean, $(MAKECMDGOALS)), )
@@ -11,8 +9,6 @@ index 2666b3d..ba58cf1 100644
  
  .PHONY: all static shared clean dist distclean dll java cargo
  .DELETE_ON_ERROR:
-diff --git a/imagequant.pc.in b/imagequant.pc.in
-index 980da8c..6c6569d 100644
 --- a/imagequant.pc.in
 +++ b/imagequant.pc.in
 @@ -1,6 +1,6 @@
