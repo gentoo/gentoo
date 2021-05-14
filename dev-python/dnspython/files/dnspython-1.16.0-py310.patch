@@ -1,0 +1,13 @@
+diff --git a/dns/namedict.py b/dns/namedict.py
+index 37a1310..7d52668 100644
+--- a/dns/namedict.py
++++ b/dns/namedict.py
+@@ -32,7 +32,7 @@ import dns.name
+ from ._compat import xrange
+ 
+ 
+-class NameDict(collections.MutableMapping):
++class NameDict(collections.abc.MutableMapping):
+     """A dictionary whose keys are dns.name.Name objects.
+ 
+     In addition to being like a regular Python dictionary, this
