@@ -1,0 +1,25 @@
+diff --git a/Makefile b/Makefile
+index 3210d54..ca2acf6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -134,7 +134,7 @@ ifeq ($(filter %clean %distclean, $(MAKECMDGOALS)), )
+ endif
+ 
+ $(PKGCONFIG): config.mk
+-	sed 's|@PREFIX@|$(PREFIX)|;s|@VERSION@|$(VERSION)|' < imagequant.pc.in > $(PKGCONFIG)
++	sed 's|@PREFIX@|$(PREFIX)|;s|@VERSION@|$(VERSION)|;s|LIBDIR|$(LIBDIR)|' < imagequant.pc.in > $(PKGCONFIG)
+ 
+ .PHONY: all static shared clean dist distclean dll java cargo
+ .DELETE_ON_ERROR:
+diff --git a/imagequant.pc.in b/imagequant.pc.in
+index 16935b7..4810a25 100644
+--- a/imagequant.pc.in
++++ b/imagequant.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@PREFIX@
+ includedir=${prefix}/include
+-libdir=${prefix}/lib
++libdir=LIBDIR
+ 
+ Name: imagequant
+ Description: Small, portable C library for high-quality conversion of RGBA images to 8-bit indexed-color (palette) images.
