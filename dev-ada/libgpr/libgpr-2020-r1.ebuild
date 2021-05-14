@@ -21,7 +21,8 @@ RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-REQUIRED_USE="${ADA_REQUIRED_USE}"
+REQUIRED_USE="${ADA_REQUIRED_USE}
+	|| ( shared static-libs static-pic )"
 
 S="${WORKDIR}"/${MYP}
 
