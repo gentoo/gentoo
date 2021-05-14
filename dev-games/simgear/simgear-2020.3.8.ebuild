@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 # TODO aeonwave
 COMMON_DEPEND="
+	app-arch/xz-utils
 	dev-libs/expat
 	dev-games/openscenegraph
 	media-libs/openal
