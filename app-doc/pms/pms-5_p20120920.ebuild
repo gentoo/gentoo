@@ -14,11 +14,9 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~a
 IUSE="html"
 
 BDEPEND="dev-texlive/texlive-bibtexextra
-	dev-texlive/texlive-fontsrecommended
-	dev-texlive/texlive-latex
 	>=dev-texlive/texlive-latexextra-2020-r2
-	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
+	virtual/latex-base
 	html? (
 		app-text/recode
 		>=dev-tex/tex4ht-20090611_p1038-r11
