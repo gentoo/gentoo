@@ -16,10 +16,16 @@ IUSE="doc test"
 
 RESTRICT+=" !test? ( test )"
 
+RDEPEND="
+	app-arch/libarchive[bzip2]
+"
 BDEPEND="
 	doc? (
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
+		')
 		>=dev-qt/qthelp-${QTMIN}:5
 	)
 	test? (
@@ -27,18 +33,17 @@ BDEPEND="
 		>=dev-qt/qtcore-${QTMIN}:5
 	)
 "
-RDEPEND="
-	app-arch/libarchive[bzip2]
-"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.49.0-no-fatal-warnings.patch"
 	"${FILESDIR}/${PN}-5.72.0-skip-ecm_add_test-early.patch"
 	"${FILESDIR}/${PN}-5.74.0-disable-qmlplugindump.patch"
+	"${FILESDIR}/${P}-sphinx-4.patch" # bug 789096, pending upstream MR 121
 )
 
 python_check_deps() {
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
+	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" &&
+	has_version "dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
