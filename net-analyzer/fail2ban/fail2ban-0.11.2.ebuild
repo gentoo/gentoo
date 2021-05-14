@@ -16,8 +16,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
 IUSE="selinux systemd"
-# Needs some work to enable them right now
-RESTRICT="test"
 
 RDEPEND="
 	virtual/logger
@@ -34,9 +32,11 @@ RDEPEND="
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
-python_prepare_all() {
-	default
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-tests-for-2021.patch
+)
 
+python_prepare_all() {
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
@@ -49,6 +49,10 @@ python_prepare_all() {
 python_compile() {
 	./fail2ban-2to3 || die
 	distutils-r1_python_compile
+}
+
+python_test() {
+	bin/fail2ban-testcases -n -g --verbosity=4 || die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
