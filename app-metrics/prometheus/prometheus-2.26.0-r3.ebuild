@@ -1345,7 +1345,7 @@ SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="amd64 ~arm"
 
 COMMON_DEPEND="acct-group/prometheus
 	acct-user/prometheus"
