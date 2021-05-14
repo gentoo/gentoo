@@ -50,7 +50,7 @@ REQUIRED_USE="
 "
 
 # tests currently fail with XMSS
-REQUIRED_USE="test? ( !xmss )"
+REQUIRED_USE+="test? ( !xmss )"
 
 LIB_DEPEND="
 	audit? ( sys-process/audit[static-libs(+)] )
