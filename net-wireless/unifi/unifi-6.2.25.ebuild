@@ -4,7 +4,7 @@
 EAPI=7
 
 # Set this var for any releases except stable
-RC_SUFFIX="-b4730eadd0"
+RC_SUFFIX="-de0c6132b7"
 
 inherit systemd
 
