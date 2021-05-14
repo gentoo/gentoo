@@ -10,7 +10,7 @@ HOMEPAGE="http://www.users.waitrose.com/~thunor/pipepanic/"
 SRC_URI="http://www.users.waitrose.com/~thunor/pipepanic/dload/${P}-source.tar.gz"
 S="${WORKDIR}"/${P}-source
 
-LICENSE="GPL-2 FreeArt"
+LICENSE="GPL-2+ Free-Art-1.2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
