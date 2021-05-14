@@ -5,4 +5,7 @@
 	<email>sound@gentoo.org</email>
 	<name>Gentoo Sound project</name>
 </maintainer>
+<use>
+	<flag name="sndio">Add support for <pkg>media-sound/sndio</pkg></flag>
+</use>
 </pkgmetadata>
