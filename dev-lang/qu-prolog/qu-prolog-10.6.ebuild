@@ -28,6 +28,7 @@ RDEPEND="
 	pedro? ( net-misc/pedro )
 	readline? ( app-misc/rlwrap )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-lang/perl"
 
 S="${WORKDIR}"/${MY_P}
