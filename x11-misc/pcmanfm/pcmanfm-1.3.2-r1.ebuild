@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.18:2
 	>=lxde-base/menu-cache-1.1.0-r1
-	virtual/eject
+	sys-apps/util-linux
 	virtual/freedesktop-icon-theme
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
