@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 	media-video/mjpegtools[png]
 	media-video/projectx
 	media-video/transcode
-	virtual/eject"
+	sys-apps/util-linux"
 
 # depends that are not rdepend
 DEPEND="${DEPEND}

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,18 +18,18 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE="dvdarchive"
 
-DEPEND="media-video/vdr
-		media-libs/gd[png,truetype,jpeg]"
+DEPEND="media-libs/gd[png,truetype,jpeg]
+	media-video/vdr"
 RDEPEND="${DEPEND}
-		>=dev-libs/libcdio-0.71
-		>=media-video/dvdauthor-0.6.14
-		>=media-video/mjpegtools-1.6.2[png]
-		media-video/transcode
-		media-fonts/corefonts
-		virtual/eject
-		>=app-cdr/dvd+rw-tools-5.21
-		>=media-video/projectx-0.90.4.00_p32
-		dvdarchive? ( media-video/vdrtools-genindex )"
+	dvdarchive? ( media-video/vdrtools-genindex )
+	>=app-cdr/dvd+rw-tools-5.21
+	>=dev-libs/libcdio-0.71
+	media-fonts/corefonts
+	>=media-video/dvdauthor-0.6.14
+	>=media-video/mjpegtools-1.6.2[png]
+	>=media-video/projectx-0.90.4.00_p32
+	media-video/transcode
+	sys-apps/util-linux"
 
 # depends that are not rdepend
 DEPEND="${DEPEND}
