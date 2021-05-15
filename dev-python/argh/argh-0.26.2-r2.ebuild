@@ -12,7 +12,7 @@ HOMEPAGE="https://pythonhosted.org/argh/"
 SRC_URI="mirror://pypi/a/${PN}/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 LICENSE="LGPL-3"
 
 BDEPEND="
