@@ -67,7 +67,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=("${FILESDIR}"/${PN}-2.35.1-cet.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.35.1-cet.patch
+	"${FILESDIR}"/${PN}-2.35.2-powerpc-tests.patch
+)
 
 MY_BUILDDIR=${WORKDIR}/build
 
