@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
+# Dead upstream, dead downstream, GTK+2 based.  Bug #770898
+# Removal on 2021-06-14.
+app-editors/amyedit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
 # Unmaintained, GTK+2-based, dubiously duplicating app-mobilephone/gnokii[X]
 # Removal on 2021-06-14. Bug #769032
 app-mobilephone/gnocky
