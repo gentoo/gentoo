@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-05-15)
+# Relies on dev-python/astunparse that is broken with Python 3.8+
+# and abandoned upstream.  The current version is also broken
+# w/ sphinx-4 but with Python 3.7 being removed in half a month, bumping
+# makes little sense.  No reverse dependencies.
+# Removal on 2021-06-14.  Bug #743889.
+dev-python/sphinxcontrib-httpexample
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Unmaintained, last revdep of dev-perl/gtk2-spell, bugs #724796, #769296
 # Removal on 2021-06-08
