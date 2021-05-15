@@ -104,12 +104,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i 's:/var/run:/run:' \
-		"${S}"/src/examples/logrotate || die
-
 	default
+
+	sed -i \
+		-e 's:/var/run:/run:' \
+		"${S}"/src/examples/logrotate \
+		|| die
+
 	eautoreconf
+
 	multilib_copy_sources
+
 	if use python && multilib_is_native_abi; then
 		python_setup
 	fi
@@ -142,6 +147,7 @@ multilib_src_configure() {
 		--with-nscd="${EPREFIX}"/usr/sbin/nscd
 		--with-unicode-lib="glib2"
 		--disable-rpath
+		--disable-static
 		--sbindir=/usr/sbin
 		--enable-local-provider
 		$(multilib_native_use_with systemd kcm)
@@ -212,6 +218,10 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	multilib_is_native_abi && emake check
+}
+
 multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake -j1 DESTDIR="${D}" "${_at_args[@]}" install
@@ -219,7 +229,6 @@ multilib_src_install() {
 			python_optimize
 			python_fix_shebang "${ED}"
 		fi
-
 	else
 		# easier than playing with automake...
 		dopammod .libs/pam_sss.so
@@ -264,16 +273,12 @@ multilib_src_install_all() {
 	keepdir /var/log/sssd
 
 	# strip empty dirs
-	if ! use doc ; then
+	if ! use doc; then
 		rm -r "${ED}"/usr/share/doc/"${PF}"/doc || die
 		rm -r "${ED}"/usr/share/doc/"${PF}"/{hbac,idmap,nss_idmap,sss_simpleifp}_doc || die
 	fi
 
 	rm -r "${ED}"/run || die
-}
-
-multilib_src_test() {
-	multilib_is_native_abi && emake check
 }
 
 pkg_postinst() {
