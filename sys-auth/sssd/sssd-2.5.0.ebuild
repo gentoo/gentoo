@@ -111,6 +111,12 @@ src_prepare() {
 		"${S}"/src/examples/logrotate \
 		|| die
 
+	# disable flaky test, see https://github.com/SSSD/sssd/issues/5631
+	sed -i \
+		-e '/^\s*pam-srv-tests[ \\]*$/d' \
+		"${S}"/Makefile.am \
+		|| die
+
 	eautoreconf
 
 	multilib_copy_sources
