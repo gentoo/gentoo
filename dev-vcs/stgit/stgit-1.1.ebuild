@@ -59,8 +59,7 @@ src_compile() {
 
 	# bug 526468
 	if use doc; then
-		emake DESTDIR="${D}" \
-			htmldir="${EPREFIX}/usr/share/doc/${PF}/html/" \
+		emake htmldir="${EPREFIX}/usr/share/doc/${PF}/html/" \
 			mandir="${EPREFIX}/usr/share/man/" \
 			doc
 	fi
