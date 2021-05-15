@@ -44,6 +44,10 @@ BDEPEND="test? ( ${RDEPEND}
 	')
 )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.1.3-test_locale.patch
+)
+
 python_prepare_all() {
 	# Install documentation to the proper location. This can't be done
 	# easily with a patch because we substitute in the ${PF} variable,
@@ -67,10 +71,14 @@ python_test_all() {
 	rm -rf "${S}/build" && ln -s "${BUILD_DIR}" "${S}"/build || \
 		die "Failed to symlink build directory to source directory"
 
-	# FIXME: some of the tests fail if the locale 'en_US.UTF-8' is absent,
-	# at least as of 5.1.2 this failure does not propagate back to this
-	# function but we should still handle this properly somehow.
-	esetup.py test
+	# Set a sane default locale for the tests which do not explicitly set one.
+	local -x LC_ALL=C.UTF-8
+
+	# Note that as of 5.1.3, test failures do not actually propagate back
+	# to this function. For now this is fortunate because the test suite
+	# does not handle the absence of bsddb3 well, in the long run however
+	# this should be fixed.
+	esetup.py test || die
 }
 
 # Ugly hack to work around Bug #717922
