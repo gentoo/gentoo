@@ -15,7 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 # Tests fail with network-sandbox, since they try to resolve google.com
-#RESTRICT="test"
+RESTRICT="test"
 
 DEPEND="net-dns/c-ares"
 BDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]"
