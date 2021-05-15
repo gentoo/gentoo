@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -31,6 +31,14 @@ BDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme \
 	dev-python/sphinxcontrib-asyncio
+
+python_prepare_all() {
+	# Disable deprecation-warnings-as-errors because tornado has a lot of stuff deprecated in 3.10
+	sed 's/warnings.filterwarnings("error", category=DeprecationWarning, module=r"tornado\\..*")//' \
+		-i tornado/test/runtests.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	local -x ASYNC_TEST_TIMEOUT=60
