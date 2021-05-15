@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -17,8 +17,8 @@ IUSE="gui"
 RDEPEND="sys-libs/ncurses:0=
 	gui? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	gui? ( x11-base/xorg-proto )"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	econf \
@@ -27,6 +27,6 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTALL="${ED%/}"/usr install
+	emake INSTALL="${ED}"/usr install
 	#dodoc README
 }
