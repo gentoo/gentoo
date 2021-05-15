@@ -17,15 +17,15 @@ SRC_URI="https://github.com/gramps-project/${PN}/archive/v${PV}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+rcs +reports exif geo postscript spell test"
+IUSE="berkdb exif geo postscript +rcs +reports spell test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/bsddb3[${PYTHON_USEDEP}]
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
 		dev-python/pyicu[${PYTHON_USEDEP}]
+		berkdb? ( dev-python/bsddb3[${PYTHON_USEDEP}] )
 		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
 	')
 	gnome-base/librsvg:2
@@ -95,6 +95,13 @@ python_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
+
+	if use berkdb; then
+		ewarn "The BSDDB back-end in ${PN} has got known stability and data-corruption issues. It has been deprecated since version 5.1.0 and might be removed in 5.2.0."
+		ewarn "If you have any family trees in this format you are highly advised to convert them to SQLite, as described here:"
+		ewarn
+		ewarn "https://gramps-project.org/wiki/index.php/Gramps_5.1_Wiki_Manual_-_Manage_Family_Trees#Converting_a_BSDDB_Family_Tree_to_SQLite"
+	fi
 }
 
 pkg_postrm() {
