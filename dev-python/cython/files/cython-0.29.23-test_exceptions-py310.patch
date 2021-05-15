@@ -1,0 +1,14 @@
+--- a/tests/run/test_exceptions.pyx
++++ b/tests/run/test_exceptions.pyx
+@@ -188,7 +188,10 @@
+ 
+         # should not apply to subclasses, see issue #31161
+         s = '''if True:\nprint "No indent"'''
+-        ckmsg(s, "expected an indented block", IndentationError)
++        if sys.version_info >= (3, 10):
++            ckmsg(s, "expected an indented block after 'if' statement on line 1", IndentationError)
++        else:
++            ckmsg(s, "expected an indented block", IndentationError)
+ 
+         s = '''if True:\n        print()\n\texec "mixed tabs and spaces"'''
+         ckmsg(s, "inconsistent use of tabs and spaces in indentation", TabError)
