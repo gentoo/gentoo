@@ -10,7 +10,7 @@ inherit perl-module elisp-common
 DESCRIPTION="Critique Perl source code for best-practices"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE="test minimal examples emacs"
 RESTRICT="!test? ( test )"
 
