@@ -5,4 +5,8 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">stacked-git/stgit</remote-id>
+	</upstream>
 </pkgmetadata>
