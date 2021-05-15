@@ -219,7 +219,10 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi && emake check
+	if multilib_is_native_abi; then
+		local -x CK_TIMEOUT_MULTIPLIER=10
+		emake check VERBOSE=yes
+	fi
 }
 
 multilib_src_install() {
