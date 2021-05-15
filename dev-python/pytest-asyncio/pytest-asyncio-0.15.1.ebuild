@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -22,5 +22,9 @@ BDEPEND="
 	test? (
 		>=dev-python/hypothesis-3.64[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${P}-310-test-warnings.patch"
+)
 
 distutils_enable_tests --install pytest
