@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encrypt Data with Cipher Block Chaining Mode"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64"
+KEYWORDS="~amd64 ~arm64 ~ia64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
