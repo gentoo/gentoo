@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Merge nested Perl data structures"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -23,6 +23,7 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.440.0
 	)
 "
+
 # Its a silly EUMM Shim
 # and it doesn't work anyway without '.' in @INC
 PREFER_BUILDPL=no
