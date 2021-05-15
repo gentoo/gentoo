@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit multiprocessing perl-functions python-single-r1 ruby-single toolchain-funcs
