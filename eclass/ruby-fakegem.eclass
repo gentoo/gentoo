@@ -562,7 +562,7 @@ each_fakegem_install() {
 		local _extensionsdir="$(ruby_fakegem_gemsdir)/extensions/$(ruby_rbconfig_value 'arch')/$(ruby_rbconfig_value 'ruby_version')/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
 
 		for extension in ${RUBY_FAKEGEM_EXTENSIONS[@]} ; do
-			emake V=1 sitearchdir="${ED}/${_extensionsdir}" -C ${extension%/*} install
+			emake V=1 sitearchdir="${ED}${_extensionsdir}" -C ${extension%/*} install
 		done
 
 		# Add the marker to indicate that the extensions are installed
