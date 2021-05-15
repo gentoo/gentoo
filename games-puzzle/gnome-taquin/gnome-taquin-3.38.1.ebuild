@@ -34,6 +34,12 @@ BDEPEND="
 	gnome-base/librsvg:2[vala]
 "
 
+PATCHES=(
+	# backport for https://gitlab.gnome.org/GNOME/gnome-nibbles/-/issues/52
+	"${FILESDIR}"/${P}-vala-0.50.4-GtkChild-1.patch
+	"${FILESDIR}"/${P}-vala-0.50.4-GtkChild-2.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	vala_src_prepare
