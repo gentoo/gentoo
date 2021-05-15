@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A module used to generate random data"
 
 SLOT="0"
-KEYWORDS="amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
