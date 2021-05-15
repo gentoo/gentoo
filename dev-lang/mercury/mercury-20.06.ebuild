@@ -22,7 +22,7 @@ IUSE="debug doc emacs erlang examples java mono profile readline threads trail"
 DEPEND="net-libs/libnsl:0=
 	readline? ( sys-libs/readline:= )
 	erlang? ( dev-lang/erlang )
-	java? ( >=virtual/jdk-1.6:= )
+	java? ( >=virtual/jdk-1.8:* )
 	mono? ( dev-lang/mono )
 	doc? ( sys-apps/texinfo )"
 
