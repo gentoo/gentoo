@@ -1,0 +1,120 @@
+From ad876a1282423c5e677392814eec09d826fd311e Mon Sep 17 00:00:00 2001
+From: Matthew Bakhtiari <dev@mtbk.me>
+Date: Mon, 10 May 2021 05:47:33 +0200
+Subject: [PATCH 1/5] Add python 3.8 and 3.9 support
+
+---
+ setup.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/setup.py b/setup.py
+index 012827f..ef63b70 100644
+--- a/setup.py
++++ b/setup.py
+@@ -37,6 +37,8 @@
+         'Programming Language :: Python :: 3.5',
+         'Programming Language :: Python :: 3.6',
+         'Programming Language :: Python :: 3.7',
++        'Programming Language :: Python :: 3.8',
++        'Programming Language :: Python :: 3.9',
+         'Programming Language :: Python :: Implementation :: PyPy',
+         'Environment :: Plugins',
+         'Intended Audience :: Developers',
+
+From 28d1baa81ac17c2281c8ca439ca0444910740ae5 Mon Sep 17 00:00:00 2001
+From: Matthew Bakhtiari <dev@mtbk.me>
+Date: Mon, 10 May 2021 05:49:53 +0200
+Subject: [PATCH 2/5] Remove deprecated yield_fixture
+
+---
+ tests/conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index a43b8cf..e20513b 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -20,7 +20,7 @@ def source(base):
+                                    identifier='demo')
+ 
+ 
+-@pytest.yield_fixture(scope='function', autouse=True)
++@pytest.fixture(scope='function', autouse=True)
+ def run_garbage_collection():
+     gc.collect()
+     try:
+
+From 95edc820811dac75a5f8d11697cbe197b4024efb Mon Sep 17 00:00:00 2001
+From: Matthew Bakhtiari <dev@mtbk.me>
+Date: Mon, 10 May 2021 06:26:32 +0200
+Subject: [PATCH 3/5] Remove deprecated tests
+
+---
+ tox.ini | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tox.ini b/tox.ini
+index dbea2bd..678eff6 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,5 +1,5 @@
+ [tox]
+-envlist = py26,py27,py33,py34,py35,py36,pypy
++envlist = py27,py34,py35,py36,py37,py38,py39,pypy
+ 
+ [testenv]
+ commands = make test
+
+From 06ab2ca2ee843e62a1a6bf26ef2d118995a4f210 Mon Sep 17 00:00:00 2001
+From: Matthew Bakhtiari <dev@mtbk.me>
+Date: Mon, 10 May 2021 06:32:07 +0200
+Subject: [PATCH 4/5] Remove old versions from travis.yml
+
+---
+ .travis.yml | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/.travis.yml b/.travis.yml
+index 743a38a..739db3e 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -1,11 +1,12 @@
+ language: python
+ python:
+-  - "2.6"
+   - "2.7"
+-  - "3.3"
+   - "3.4"
+   - "3.5"
+   - "3.6"
++  - "3.7"
++  - "3.8"
++  - "3.9"
+   - "pypy"
+ 
+ install:
+
+From 382037ce6cd81e2767143db744d1049081051ce3 Mon Sep 17 00:00:00 2001
+From: Matthew Bakhtiari <dev@mtbk.me>
+Date: Mon, 10 May 2021 06:37:02 +0200
+Subject: [PATCH 5/5] Remove old versions from setup.py
+
+---
+ setup.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index ef63b70..8f9f4e6 100644
+--- a/setup.py
++++ b/setup.py
+@@ -29,10 +29,8 @@
+     classifiers=[
+         'License :: OSI Approved :: BSD License',
+         'Programming Language :: Python',
+-        'Programming Language :: Python :: 2.6',
+         'Programming Language :: Python :: 2.7',
+         'Programming Language :: Python :: 3',
+-        'Programming Language :: Python :: 3.3',
+         'Programming Language :: Python :: 3.4',
+         'Programming Language :: Python :: 3.5',
+         'Programming Language :: Python :: 3.6',
