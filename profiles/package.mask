@@ -32,11 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2012-05-15)
-# no consumer, removal in 30 days
-# see bug: https://bugs.gentoo.org/788364
-dev-java/netty-common
-
 # Michał Górny <mgorny@gentoo.org> (2021-05-15)
 # Relies on dev-python/astunparse that is broken with Python 3.8+
 # and abandoned upstream.  The current version is also broken
