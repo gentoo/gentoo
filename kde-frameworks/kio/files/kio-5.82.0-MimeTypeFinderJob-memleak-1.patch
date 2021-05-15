@@ -1,0 +1,69 @@
+From e79da836c34fce66231e396c7215314d0eba51b4 Mon Sep 17 00:00:00 2001
+From: Jonathan Marten <jjm@keelhaul.me.uk>
+Date: Sat, 8 May 2021 15:20:39 +0000
+Subject: [PATCH] MimeTypeFinderJob: Resolve symlinks for a local file
+
+---
+ autotests/mimetypefinderjobtest.cpp | 18 +++++++++++++++++-
+ src/core/mimetypefinderjob.cpp      |  2 +-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/autotests/mimetypefinderjobtest.cpp b/autotests/mimetypefinderjobtest.cpp
+index 72296b9b8..f494ff3b6 100644
+--- a/autotests/mimetypefinderjobtest.cpp
++++ b/autotests/mimetypefinderjobtest.cpp
+@@ -48,6 +48,7 @@ void MimeTypeFinderJobTest::determineMimeType_data()
+     QTest::newRow("text_file_no_extension") << "text/plain" << "srcfile";
+     QTest::newRow("desktop_file") << "application/x-desktop" << "foo.desktop";
+     QTest::newRow("script") << "application/x-shellscript" << "srcfile.sh";
++    QTest::newRow("directory") << "inode/directory" << "srcdir";
+     /* clang-format on */
+ }
+ 
+@@ -60,7 +61,12 @@ void MimeTypeFinderJobTest::determineMimeType()
+     QTemporaryDir tempDir;
+     const QString srcDir = tempDir.path();
+     const QString srcFile = srcDir + QLatin1Char('/') + fileName;
+-    createSrcFile(srcFile);
++    if (mimeType == "inode/directory") {
++        QVERIFY(QDir(srcDir).mkdir(fileName));
++    } else {
++        createSrcFile(srcFile);
++    }
++
+     QVERIFY(QFile::exists(srcFile));
+     const QUrl url = QUrl::fromLocalFile(srcFile);
+ 
+@@ -68,6 +74,16 @@ void MimeTypeFinderJobTest::determineMimeType()
+     KIO::MimeTypeFinderJob *job = new KIO::MimeTypeFinderJob(url, this);
+     QVERIFY2(job->exec(), qPrintable(job->errorString()));
+     QCOMPARE(job->mimeType(), mimeType);
++
++    // Check that the result is the same when accessing the source
++    // file through a symbolic link (bug #436708)
++    const QString srcLink = srcDir + QLatin1String("/link_") + fileName;
++    QVERIFY(QFile::link(srcFile, srcLink));
++    const QUrl linkUrl = QUrl::fromLocalFile(srcLink);
++
++    job = new KIO::MimeTypeFinderJob(linkUrl, this);
++    QVERIFY2(job->exec(), qPrintable(job->errorString()));
++    QCOMPARE(job->mimeType(), mimeType);
+ }
+ 
+ void MimeTypeFinderJobTest::invalidUrl()
+diff --git a/src/core/mimetypefinderjob.cpp b/src/core/mimetypefinderjob.cpp
+index f5e50cdc4..48fc8c289 100644
+--- a/src/core/mimetypefinderjob.cpp
++++ b/src/core/mimetypefinderjob.cpp
+@@ -122,7 +122,7 @@ void KIO::MimeTypeFinderJobPrivate::statFile()
+ {
+     Q_ASSERT(m_mimeTypeName.isEmpty());
+ 
+-    KIO::StatJob *job = KIO::statDetails(m_url, KIO::StatJob::SourceSide, KIO::StatBasic, KIO::HideProgressInfo);
++    KIO::StatJob *job = KIO::statDetails(m_url, KIO::StatJob::SourceSide, KIO::StatBasic | KIO::StatResolveSymlink, KIO::HideProgressInfo);
+     if (!m_authPrompts) {
+         job->addMetaData(QStringLiteral("no-auth-prompt"), QStringLiteral("true"));
+     }
+-- 
+GitLab
+
