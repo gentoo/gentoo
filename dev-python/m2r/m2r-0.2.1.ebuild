@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Markdown to reStructuredText converter"
@@ -23,7 +22,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pygments[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )
+	)
 	${RDEPEND}
 "
 
@@ -44,6 +43,12 @@ python_prepare_all() {
 	cp "${FILESDIR}/"test.md tests/ || die
 	cp "${FILESDIR}/"test.rst tests/ || die
 	cp "${FILESDIR}/"m2r.1 "${S}" || die
+
+	# in python 3.10, the text changed from "optional arguments" to "options".
+	# the test matches on the concrete string, make it match on the part that is shared
+	# by both versions
+	sed -e 's/optional arguments:/option/' -i tests/test_cli.py || die
+
 	distutils-r1_python_prepare_all
 }
 
