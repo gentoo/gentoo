@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
+# Unmaintained, GTK+2-based, dubiously duplicating app-mobilephone/gnokii[X]
+# Removal on 2021-06-14. Bug #769032
+app-mobilephone/gnocky
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
 # Long-standing bugs, GTK+2-based, last revdep of media-libs/libexif-gtk.
 # Alternative: media-gfx/shotwell
 # Removal on 2021-06-14.  Bugs #560032, #740020, #769095
