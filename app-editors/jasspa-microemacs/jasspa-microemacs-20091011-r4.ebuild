@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop toolchain-funcs xdg-utils
 
@@ -13,6 +13,7 @@ SRC_URI="http://www.jasspa.com/release_20090909/jasspa-mesrc-${PV}.tar.gz
 		http://www.jasspa.com/release_20090909/jasspa-memacros-${MACROS_PV}.tar.gz
 		http://www.jasspa.com/release_20090909/jasspa-mehtml-${PV}.tar.gz
 		http://www.jasspa.com/release_20060909/meicons-extra.tar.gz )"
+S="${WORKDIR}/me${PV:2}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -27,13 +28,13 @@ RDEPEND="sys-libs/ncurses:0=
 	nanoemacs? ( !app-editors/ne )"
 
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	gui? (
 		x11-base/xorg-proto
 		x11-libs/libXt
 	)"
 
-S="${WORKDIR}/me${PV:2}"
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${PV}-ncurses.patch
 	"${FILESDIR}"/${PV}-linux3.patch
