@@ -7,7 +7,7 @@ MY_P=YAP-${PV}
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit cmake-utils flag-o-matic multilib python-r1
+inherit cmake flag-o-matic python-r1
 
 PATCHSET_VER="0"
 
@@ -45,14 +45,11 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )"
 
 S="${WORKDIR}"/yap-6.3-${MY_P}
-BUILD_DIR="${S}"/build
-CMAKE_USE_DIR="${S}"
 
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
 		eapply "${WORKDIR}"/${PV}
 	fi
-	eapply_user
 
 	sed -i \
 		-e "s|\(set ( libdir \"\${exec_prefix}\)/lib\")|\1/$(get_libdir)\")|" \
@@ -61,7 +58,7 @@ src_prepare() {
 		CMakeLists.txt || die
 	rm -rf "${S}"/yap || die "failed to remove yap xcode project"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -92,14 +89,14 @@ src_configure() {
 		-DWITH_Matlab=no
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc ; then
-		cmake-utils_src_compile doc
+		cmake_src_compile doc
 	fi
 }
 
@@ -110,7 +107,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	dodoc changes*.html README
 
