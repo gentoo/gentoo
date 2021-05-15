@@ -1,0 +1,52 @@
+From c19876052ecec18a87a82f5950e8909e22e895ba Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Thu, 13 May 2021 17:02:52 +0200
+Subject: [PATCH] MimeTypeFinderJob: the StatJob details should include the
+ mimetype
+
+Apparently we forgot to specify that we want the UDS_MIME_TYPE field in
+the statFile() method (both when it lived in OpenUrlJob and when it was moved
+to MimeTypeFinderJob). And now there is a dedicated StatJob flag, StatMimeType,
+that we can use.
+
+Not passing KIO::StatMimeType when creating the StatJob meant the code always
+used a get job to determine the mime type, which mean that e.g. opening an
+ISO file from Dolphin, which supposedly just needs to launch Ark, had the
+whole file read into memory, which means that opening a couple of ISO's and
+you're out of memory...
+
+Thanks to sitter for doing a big chunk of the investigative work in the bug
+report.
+
+CCBUG: 398908
+---
+ src/core/mimetypefinderjob.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/core/mimetypefinderjob.cpp b/src/core/mimetypefinderjob.cpp
+index 48fc8c289..baca58695 100644
+--- a/src/core/mimetypefinderjob.cpp
++++ b/src/core/mimetypefinderjob.cpp
+@@ -122,7 +122,9 @@ void KIO::MimeTypeFinderJobPrivate::statFile()
+ {
+     Q_ASSERT(m_mimeTypeName.isEmpty());
+ 
+-    KIO::StatJob *job = KIO::statDetails(m_url, KIO::StatJob::SourceSide, KIO::StatBasic | KIO::StatResolveSymlink, KIO::HideProgressInfo);
++    static constexpr auto statFlags = KIO::StatBasic | KIO::StatResolveSymlink | KIO::StatMimeType;
++
++    KIO::StatJob *job = KIO::statDetails(m_url, KIO::StatJob::SourceSide, statFlags, KIO::HideProgressInfo);
+     if (!m_authPrompts) {
+         job->addMetaData(QStringLiteral("no-auth-prompt"), QStringLiteral("true"));
+     }
+@@ -147,6 +149,8 @@ void KIO::MimeTypeFinderJobPrivate::statFile()
+ 
+         const KIO::UDSEntry entry = job->statResult();
+ 
++        qCDebug(KIO_CORE) << "UDSEntry from StatJob in MimeTypeFinderJob" << entry;
++
+         const QString localPath = entry.stringValue(KIO::UDSEntry::UDS_LOCAL_PATH);
+         if (!localPath.isEmpty()) {
+             m_url = QUrl::fromLocalFile(localPath);
+-- 
+GitLab
+

@@ -1,0 +1,62 @@
+From 71484c97dee0c977a00f141123d8ccd9b93c2e96 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Fri, 14 May 2021 21:19:31 +0200
+Subject: [PATCH] kio_file: fix how createUDSEntry() is called
+
+When calling createUDSEntry() from listDir(), we need to concatenate the full
+path to the item.
+
+This is an addendum to commit c748d6987252f.
+---
+ src/ioslaves/file/file_unix.cpp | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/src/ioslaves/file/file_unix.cpp b/src/ioslaves/file/file_unix.cpp
+index 940e3cbc4..3573c200e 100644
+--- a/src/ioslaves/file/file_unix.cpp
++++ b/src/ioslaves/file/file_unix.cpp
+@@ -364,7 +364,7 @@ inline static time_t stat_mtime(QT_STATBUF &buf)
+ }
+ #endif
+ 
+-static bool createUDSEntry(const QString &filename, const QByteArray &path, UDSEntry &entry, KIO::StatDetails details, const QUrl &url)
++static bool createUDSEntry(const QString &filename, const QByteArray &path, UDSEntry &entry, KIO::StatDetails details, const QString &fullPath)
+ {
+     assert(entry.count() == 0); // by contract :-)
+     int entries = 0;
+@@ -539,7 +539,7 @@ static bool createUDSEntry(const QString &filename, const QByteArray &path, UDSE
+ 
+     if (details & KIO::StatMimeType) {
+         QMimeDatabase db;
+-        entry.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, db.mimeTypeForFile(url.toLocalFile()).name());
++        entry.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, db.mimeTypeForFile(fullPath).name());
+     }
+ 
+     return true;
+@@ -1186,7 +1186,13 @@ void FileProtocol::listDir(const QUrl &url)
+             listEntry(entry);
+ 
+         } else {
+-            if (createUDSEntry(filename, QByteArray(ep->d_name), entry, details, url)) {
++            QString fullPath(path);
++            if (!fullPath.endsWith(QLatin1Char('/'))) {
++                fullPath += QLatin1Char('/');
++            }
++            fullPath += filename;
++
++            if (createUDSEntry(filename, QByteArray(ep->d_name), entry, details, fullPath)) {
+ #if HAVE_SYS_XATTR_H
+                 if (isNtfsHidden(filename)) {
+                     bool ntfsHidden = true;
+@@ -1476,7 +1482,7 @@ void FileProtocol::stat(const QUrl &url)
+     const KIO::StatDetails details = getStatDetails();
+ 
+     UDSEntry entry;
+-    if (!createUDSEntry(url.fileName(), _path, entry, details, url)) {
++    if (!createUDSEntry(url.fileName(), _path, entry, details, path)) {
+         error(KIO::ERR_DOES_NOT_EXIST, path);
+         return;
+     }
+-- 
+GitLab
+
