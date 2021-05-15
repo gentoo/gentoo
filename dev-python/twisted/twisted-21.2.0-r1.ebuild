@@ -3,8 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 virtualx
@@ -77,6 +76,13 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# https://twistedmatrix.com/trac/ticket/10200
+	"${FILESDIR}/${P}-force-gtk3.patch"
+	# int_from_bytes is deprecated
+	"${FILESDIR}/${P}-int-from-bytes.patch"
+)
+
 python_prepare_all() {
 	eapply "${FILESDIR}"/${P}-incremental-21.patch
 
@@ -100,6 +106,10 @@ python_prepare_all() {
 	sed -e '/class RealDeviceTestsMixin/a\
     skip = "Requires extra permissions"' \
 		-i src/twisted/pair/test/test_tuntap.py || die
+
+	# These tests rely on warnings which seems work unreliably between python versions
+	sed -e 's:test_currentEUID:_&:' \
+		-e 's:test_currentUID:_&:' -i src/twisted/python/test/test_util.py || die
 
 	# relies on the pre-CVE parse_qs() behavior in Python
 	sed -e '/d=c;+=f/d' \
