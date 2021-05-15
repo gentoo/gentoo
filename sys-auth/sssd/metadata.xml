@@ -16,6 +16,7 @@
 		<flag name="nfsv4">Add support for the nfsv4 idmapd plugin provided by <pkg>net-libs/libnfsidmap</pkg></flag>
 		<flag name="pac">Add Privileged Attribute Certificate Support for Kerberos</flag>
 		<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="valgrind">Depend on <pkg>dev-util/valgrind</pkg> for test suite</flag>
 	</use>
 	<upstream>

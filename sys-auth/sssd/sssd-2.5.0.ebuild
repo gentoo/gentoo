@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd test valgrind"
+IUSE="acl doc +locator +netlink nfsv4 nls +man pac python samba selinux sudo systemd systemtap test valgrind"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="pac? ( samba )
@@ -62,7 +62,8 @@ DEPEND="
 		dev-libs/jansson:0=
 		net-libs/http-parser:0=
 		net-misc/curl:0=
-	)"
+	)
+	systemtap? ( dev-util/systemtap )"
 RDEPEND="${DEPEND}
 	>=sys-libs/glibc-2.17[nscd]
 	selinux? ( >=sec-policy/selinux-sssd-2.20120725-r9 )"
@@ -172,6 +173,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with sudo)
 		$(multilib_native_with autofs)
 		$(multilib_native_with ssh)
+		$(use_enable systemtap)
 		$(use_enable valgrind)
 		--without-python2-bindings
 		$(multilib_native_use_with python python3-bindings)
