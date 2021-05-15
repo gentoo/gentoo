@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="gui +nftables +iptables"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test" # bug 650760
 
-PLOCALES="ar as bg bn_IN ca cs da de el en_GB en_US es et eu fi fr gl gu hi hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ru sk sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
+PLOCALES="ar as ast bg bn_IN ca cs da de el en_GB en_US es et eu fa fi fr gl gu hi hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ru sk sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 pkg_setup() {
 	local CONFIG_CHECK="~NF_CONNTRACK ~NETFILTER_XT_MATCH_CONNTRACK"
