@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic multilib toolchain-funcs multilib-minimal
 
@@ -29,10 +29,11 @@ RDEPEND=">=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 	)"
 
 DEPEND="${RDEPEND}
-	sys-devel/flex
-	dev-util/byacc
 	x11-base/xorg-proto
 	x11-misc/xbitmaps"
+
+BDEPEND="sys-devel/flex
+	dev-util/byacc"
 
 src_prepare() {
 	eapply ../patch
@@ -102,7 +103,7 @@ multilib_src_install_all() {
 	newins "${FILESDIR}"/Mwm.defaults Mwm
 
 	# cleanup
-	rm -rf "${ED}"/usr/share/Xm
+	rm -rf "${ED}"/usr/share/Xm || die
 	find "${D}" -type f -name "*.la" -delete || die
 
 	dodoc BUGREPORT ChangeLog README RELEASE RELNOTES TODO
