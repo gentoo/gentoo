@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
+# Unmaintained, dead upstream since 2004, no hope to port away from GTK+2.
+# Removal on 2021-06-14.  Bug #769110
+media-gfx/gimageview
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-15)
 # Relies on dev-python/astunparse that is broken with Python 3.8+
 # and abandoned upstream.  The current version is also broken
