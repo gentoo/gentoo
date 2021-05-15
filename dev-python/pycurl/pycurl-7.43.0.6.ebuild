@@ -5,7 +5,7 @@ EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
 # The selftests fail with pypy, and urlgrabber segfaults for me.
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -53,6 +53,10 @@ python_prepare_all() {
 	sed -e 's:import wheel:raise ImportError:' -i setup.py || die
 	# these tests are broken with newer versions of bottle
 	sed -e 's:test.*_invalid_utf8:_&:' -i tests/getinfo_test.py || die
+	# these tests break with newer version of curl, because they rely
+	# on specific error messages
+	rm tests/failonerror_test.py || die
+
 	distutils-r1_python_prepare_all
 }
 
