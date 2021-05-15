@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Parse Perl string literals and string-literal-like things"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~ppc64"
 IUSE="test examples"
 RESTRICT="!test? ( test )"
 
