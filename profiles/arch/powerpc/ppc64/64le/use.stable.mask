@@ -11,10 +11,6 @@ python_targets_python3_10
 # Prebuilt kernel rebuilds are supported on stable yet.
 dist-kernel
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
-# works, but deps not stable yet
-vaapi
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # works on ppc64le, but not yet stable
 video_cards_amdgpu
