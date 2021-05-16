@@ -32,7 +32,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2011-05-15)
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-15)
 # Dead upstream, homepage missing, EAPI=5, no systemd units.
 # https://bugs.gentoo.org/790413 , #434900, #552760
 # Use any of or combination of the following instead:
