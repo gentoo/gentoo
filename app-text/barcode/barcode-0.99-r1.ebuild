@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,11 @@ KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 RDEPEND="app-text/libpaper"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-install-static-lib.patch
+)
+
 
 src_prepare() {
 	sed -i -e '/^LDFLAGS =/s:=:+=:' \
@@ -24,4 +28,8 @@ src_prepare() {
 		Makefile.in || die
 
 	default
+}
+
+src_configure() {
+	econf --disable-shared
 }
