@@ -12,7 +12,7 @@ inherit openib toolchain-funcs
 
 DESCRIPTION="OpenIB userspace rds-tools"
 
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 
 DEPEND="sys-fabric/libibverbs:${SLOT}"
 RDEPEND="
