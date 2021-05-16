@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.25-no-man-compression.patch
 	"${FILESDIR}"/${PN}-1.9.25-wrapdemo-buf-overflow.patch
 	"${FILESDIR}"/${PN}-1.9.25-ar.patch
+	"${FILESDIR}"/${PN}-1.9.25-gl-asm-width.patch
 )
 
 pkg_setup() {
