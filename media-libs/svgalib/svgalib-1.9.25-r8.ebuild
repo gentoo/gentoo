@@ -11,7 +11,7 @@ SRC_URI="http://www.arava.co.il/matan/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 IUSE="build +kernel-helper"
 
 MODULE_NAMES="svgalib_helper(misc:${S}/kernel/svgalib_helper)"
