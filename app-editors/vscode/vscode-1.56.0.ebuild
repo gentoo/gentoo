@@ -68,6 +68,12 @@ pkg_setup() {
 }
 
 src_install() {
+	# Cleanup
+	rm "${S}/resources/app/LICENSES.chromium.html"
+	rm "${S}/resources/app/LICENSE.rtf"
+	rm -r "${S}/resources/app/licenses"
+
+	# Install
 	pax-mark m code
 	insinto "/opt/${PN}"
 	doins -r *
