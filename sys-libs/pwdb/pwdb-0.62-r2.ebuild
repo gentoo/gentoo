@@ -26,7 +26,10 @@ BDEPEND="virtual/pkgconfig"
 DOCS=( CHANGES CREDITS README doc/pwdb.txt )
 HTML_DOCS=( doc/html/. )
 
-PATCHES=( "${FILESDIR}"/${P}-build.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-disable-static.patch # bug 725972
+)
 
 src_prepare() {
 	default
