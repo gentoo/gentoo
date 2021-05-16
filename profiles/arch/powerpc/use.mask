@@ -62,7 +62,6 @@ ayatana
 #
 3dfx
 acpi
-lm-sensors
 rar
 hdf
 xvmc
@@ -72,7 +71,6 @@ cg
 dmi
 # Masked vaapi for PowerPC until it works on hardware available to PowerPC users (cell, etc.)
 vaapi
-
 
 ### Other flags -- Please put additional maskings below here
 
