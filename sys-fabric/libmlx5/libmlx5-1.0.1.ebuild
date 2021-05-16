@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ OFED_SUFFIX="1"
 inherit openib
 
 DESCRIPTION="OpenIB userspace driver for Mellanox ConnectIB HCA"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 
 DEPEND="sys-fabric/libibverbs:${SLOT}"
 RDEPEND="!sys-fabric/openib-userspace"
