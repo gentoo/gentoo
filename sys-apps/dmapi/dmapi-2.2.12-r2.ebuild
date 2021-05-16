@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit epatch ltprune multilib multilib-minimal usr-ldscript
+inherit multilib-minimal usr-ldscript
 
 DESCRIPTION="XFS data management API library"
 HOMEPAGE="https://xfs.wiki.kernel.org/"
@@ -18,13 +18,15 @@ IUSE="static-libs"
 RDEPEND="sys-fs/xfsprogs"
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	sed -i \
-		-e "/^PKG_DOC_DIR/s:@pkg_name@:${PF}:" \
-		include/builddefs.in \
-		|| die
-	epatch "${FILESDIR}"/${P}-headers.patch
+DOCS=( doc/{CHANGES,PORTING} README )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-headers.patch
+	"${FILESDIR}"/${P}-no-doc.patch # bug 732042
+)
+
+src_prepare() {
+	default
 	multilib_copy_sources
 }
 
@@ -43,6 +45,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
-	rm "${ED}"/usr/share/doc/${PF}/COPYING
+	einstalldocs
+	find "${ED}" -name '*.la' -delete || die
 }

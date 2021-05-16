@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch toolchain-funcs flag-o-matic usr-ldscript
+inherit toolchain-funcs flag-o-matic usr-ldscript
 
 DESCRIPTION="Password database"
 HOMEPAGE="https://packages.gentoo.org/package/sys-libs/pwdb"
@@ -16,23 +16,32 @@ IUSE="selinux"
 RESTRICT="test" #122603
 
 # Note: NIS could probably be made conditional if anyone cared ...
-RDEPEND="selinux? ( sys-libs/libselinux )
+RDEPEND="
 	net-libs/libnsl:0=
-	net-libs/libtirpc"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	net-libs/libtirpc
+	selinux? ( sys-libs/libselinux )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+DOCS=( CHANGES CREDITS README doc/pwdb.txt )
+HTML_DOCS=( doc/html/. )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-disable-static.patch # bug 725972
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch
+	default
 
-	use selinux && epatch "${FILESDIR}"/${P}-selinux.patch
+	use selinux && eapply "${FILESDIR}"/${P}-selinux.patch
 
 	append-cppflags $($(tc-getPKG_CONFIG) --cflags libtirpc)
 	export LDLIBS=$($(tc-getPKG_CONFIG) --libs libtirpc)
 
 	sed -i \
 		-e "s/^DIRS = .*/DIRS = libpwdb/" \
-		-e "s:EXTRAS += :EXTRAS += ${CFLAGS} :" \
+		-e "s;EXTRAS += ;EXTRAS += ${CFLAGS} ;" \
 		Makefile || die
 	sed -i \
 		-e "s:=gcc:=$(tc-getCC):g" \
@@ -54,6 +63,5 @@ src_install() {
 	insinto /etc
 	doins conf/pwdb.conf
 
-	dodoc CHANGES CREDITS README doc/*.txt
-	dohtml -r doc/html/*
+	einstalldocs
 }
