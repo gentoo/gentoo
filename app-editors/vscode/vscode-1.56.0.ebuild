@@ -15,7 +15,24 @@ SRC_URI="
 
 RESTRICT="mirror strip bindist"
 
-LICENSE="Microsoft-VSCode"
+LICENSE="
+	Apache-2.0
+	BSD
+	BSD-1
+	BSD-2
+	BSD-4
+	CC-BY-4.0
+	ISC
+	LGPL-2.1+
+	Microsoft-vscode
+	MIT
+	MPL-2.0
+	PYTHON
+	Textmate-bundle
+	Unlicense
+	UoI-NCSA
+	W3C
+"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64"
 IUSE=""
