@@ -25,6 +25,7 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/mocha
 		dev-ruby/test-unit:2
+		dev-ruby/timecop
 		dev-ruby/activerecord[sqlite]
 	)"
 
