@@ -62,7 +62,6 @@ games-emulation/nestra
 games-emulation/vgba
 games-emulation/zinc
 games-emulation/zsnes
-games-fps/avp
 games-fps/etqw-bin
 games-fps/etqw-data
 games-fps/etqw-demo
