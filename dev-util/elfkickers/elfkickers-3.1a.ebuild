@@ -32,6 +32,6 @@ src_prepare() {
 
 	tc-export AR CC
 
-	sed -i -e "s:^prefix = /usr/local:prefix = ${D}:" Makefile \
+	sed -i -e "s:^prefix = /usr/local:prefix = \${DESTDIR}/:" Makefile \
 		|| die "sed failed"
 }
