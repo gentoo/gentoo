@@ -82,7 +82,7 @@ DEPEND="${DEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
 "
-# wayland bdepend for wayland-scanner, xorg-server for cvt utility
+# wayland bdepend for wayland-scanner, and either libxcvt or xorg-server[xorg,-minimal] for the cvt binary
 BDEPEND="
 	dev-libs/wayland
 	dev-util/gdbus-codegen
@@ -90,8 +90,13 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( app-text/docbook-xml-dtd:4.5 )
-	wayland? ( >=sys-kernel/linux-headers-4.4
-		x11-base/xorg-server )
+	wayland? (
+		>=sys-kernel/linux-headers-4.4
+		|| (
+			x11-libs/libxcvt
+			x11-base/xorg-server[xorg,-minimal]
+		)
+	)
 "
 
 PATCHES=(
