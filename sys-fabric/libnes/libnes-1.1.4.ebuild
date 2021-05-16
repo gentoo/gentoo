@@ -11,7 +11,7 @@ OFED_SUFFIX="0"
 inherit openib
 
 DESCRIPTION="NetEffect RNIC Userspace Library"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="static-libs"
 
 DEPEND="sys-fabric/libibverbs:${SLOT}"
