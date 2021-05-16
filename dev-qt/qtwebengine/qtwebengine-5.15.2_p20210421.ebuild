@@ -103,6 +103,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.15.2_p20210406-glibc-2.33.patch" # by Fedora, bug 769989
 	"${FILESDIR}/${PN}-5.15.2_p20210406-gcc11.patch" # by Fedora, bug 768261
 	"${FILESDIR}/${PN}-5.15.2_p20210406-icu69.patch" # bug 781236
+	"${FILESDIR}/${P}-qtbug-91773.patch" # in Qt "5.15.5"
 )
 
 src_unpack() {
