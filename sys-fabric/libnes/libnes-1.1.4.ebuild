@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,6 +18,16 @@ DEPEND="sys-fabric/libibverbs:${SLOT}"
 RDEPEND="${DEPEND}
 	!sys-fabric/openib-userspace"
 block_other_ofed_versions
+
+src_unpack() {
+	default
+
+	# /var/tmp/portage/sys-fabric/libnes-1.1.4/work/OFED-3.12-rc1/SRPMS/libnes-1.1.4-0..src.rpm
+	# bug #514258
+	mv "${WORKDIR}"/OFED-3.12-rc1/SRPMS/libnes-1.1.4-0..src.rpm "${WORKDIR}"/OFED-3.12-rc1/SRPMS/libnes-1.1.4-0.src.rpm || die
+
+	openib_src_unpack
+}
 
 src_configure() {
 	econf $(use_enable static-libs static)
