@@ -38,6 +38,8 @@
     engine</flag>
   <flag name="imagemagick">Use <pkg>media-gfx/imagemagick</pkg> for image
     processing</flag>
+  <flag name="jit">Compile with Emacs Lisp native compiler support via
+    libgccjit</flag>
   <flag name="json">Compile with native JSON support using
     <pkg>dev-libs/jansson</pkg></flag>
   <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
