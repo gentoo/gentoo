@@ -11,7 +11,7 @@ USE_PHP="php7-3 php7-4"
 
 inherit php-ext-pecl-r3
 
-SRC_URI="https://pecl.php.net/get/pecl-${PHP_EXT_NAME}-${PV/_/}.tgz"
+SRC_URI="${SRC_URI} -> ${P}.tgz"
 
 KEYWORDS="~amd64 ~x86"
 
