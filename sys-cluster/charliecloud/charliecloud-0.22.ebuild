@@ -46,6 +46,10 @@ DEPEND="
 		net-misc/rsync
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.22-sphinx-4.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
