@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ RESTRICT="test"
 # TODO: tools? (
 # TODO:		>=dev-erlang/luerl-0.3
 # TODO: )
-DEPEND=">=dev-lang/erlang-19.3[hipe?,odbc?,ssl]
+DEPEND=">=dev-lang/erlang-19.3[hipe(-)?,odbc?,ssl]
 	>=dev-erlang/cache_tab-1.0.25
 	>=dev-erlang/eimp-1.0.17
 	>=dev-erlang/fast_tls-1.1.8
