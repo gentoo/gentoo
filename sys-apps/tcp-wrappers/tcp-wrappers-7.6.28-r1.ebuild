@@ -18,7 +18,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 netgroups static-libs"
 
-RDEPEND=""
+RDEPEND="netgroups? ( net-libs/libnsl:= )"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
