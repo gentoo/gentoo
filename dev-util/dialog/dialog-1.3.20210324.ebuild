@@ -22,11 +22,16 @@ BDEPEND="!minimal? ( sys-devel/libtool )"
 
 src_prepare() {
 	default
+
 	sed -i -e '/LIB_CREATE=/s:${CC}:& ${LDFLAGS}:g' configure || die
 	sed -i '/$(LIBTOOL_COMPILE)/s:$: $(LIBTOOL_OPTS):' makefile.in || die
 }
 
 src_configure() {
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		export ac_cv_prog_LIBTOOL=glibtool
+	fi
+
 	econf \
 		--disable-rpath-hack \
 		$(use_enable nls) \
