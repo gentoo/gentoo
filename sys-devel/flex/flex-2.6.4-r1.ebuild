@@ -6,7 +6,7 @@ EAPI=7
 inherit flag-o-matic libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="The Fast Lexical Analyzer"
-HOMEPAGE="https://flex.sourceforge.net/ https://github.com/westes/flex"
+HOMEPAGE="https://github.com/westes/flex"
 SRC_URI="https://github.com/westes/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="FLEX"
