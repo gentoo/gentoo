@@ -7,17 +7,6 @@
 dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-27)
-# vulkan tested and works on ppc64le, but not stabilized yet
-dev-qt/qtdeclarative vulkan
-dev-qt/qtgui vulkan
-dev-qt/qtwayland vulkan
-media-libs/mesa vulkan vulkan-overlay
-media-libs/libsdl2 vulkan
-media-video/mpv vulkan
-media-video/pipewire vulkan
-media-video/vlc libplacebo
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-15)
 # deps are not yet stable on ppc64
 media-libs/mesa llvm video_cards_radeonsi
