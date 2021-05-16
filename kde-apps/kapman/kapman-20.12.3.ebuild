@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Pac-Man clone by KDE"
-HOMEPAGE="https://apps.kde.org/en/kapman"
+HOMEPAGE="https://apps.kde.org/kapman/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

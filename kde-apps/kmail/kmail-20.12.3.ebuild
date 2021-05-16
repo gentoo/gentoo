@@ -11,8 +11,8 @@ QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
 
-DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes."
-HOMEPAGE="https://apps.kde.org/en/kmail2
+DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes"
+HOMEPAGE="https://apps.kde.org/kmail2/
 https://kontact.kde.org/components/kmail.html"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"

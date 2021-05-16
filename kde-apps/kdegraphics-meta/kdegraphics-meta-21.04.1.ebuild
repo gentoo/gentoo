@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="kdegraphics - merge this to pull in all kdegraphics-derived packages"
-HOMEPAGE="https://apps.kde.org/graphics"
+HOMEPAGE="https://apps.kde.org/graphics/"
 
 LICENSE="metapackage"
 SLOT="5"

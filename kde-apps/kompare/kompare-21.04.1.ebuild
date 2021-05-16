@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="A program to view the differences between files"
-HOMEPAGE="https://apps.kde.org/en/kompare"
+HOMEPAGE="https://apps.kde.org/kompare/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

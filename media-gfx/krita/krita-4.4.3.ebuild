@@ -17,7 +17,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
-HOMEPAGE="https://apps.kde.org/en/krita https://krita.org/en/"
+HOMEPAGE="https://apps.kde.org/krita/ https://krita.org/en/"
 
 LICENSE="GPL-3"
 SLOT="5"

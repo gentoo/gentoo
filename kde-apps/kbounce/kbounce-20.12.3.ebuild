@@ -11,8 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE Bounce Ball Game"
-HOMEPAGE="https://apps.kde.org/en/kbounce
-https://games.kde.org/games/kbounce"
+HOMEPAGE="https://apps.kde.org/kbounce/ https://games.kde.org/games/kbounce/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

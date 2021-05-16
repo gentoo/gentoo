@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
 
 DESCRIPTION="Plasma filemanager focusing on usability"
-HOMEPAGE="https://apps.kde.org/en/dolphin https://userbase.kde.org/Dolphin"
+HOMEPAGE="https://apps.kde.org/dolphin/ https://userbase.kde.org/Dolphin"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

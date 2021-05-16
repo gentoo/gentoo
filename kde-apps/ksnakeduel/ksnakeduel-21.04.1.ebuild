@@ -11,7 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE Tron game"
-HOMEPAGE="https://apps.kde.org/en/ksnakeduel"
+HOMEPAGE="https://apps.kde.org/ksnakeduel/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

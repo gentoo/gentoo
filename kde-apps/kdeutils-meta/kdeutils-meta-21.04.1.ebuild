@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="kdeutils - merge this to pull in all kdeutils-derived packages"
-HOMEPAGE="https://apps.kde.org/utilities https://utils.kde.org"
+HOMEPAGE="https://apps.kde.org/utilities/ https://utils.kde.org"
 
 LICENSE="metapackage"
 SLOT="5"

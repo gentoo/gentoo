@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Quake-style terminal emulator based on konsole"
-HOMEPAGE="https://apps.kde.org/en/yakuake"
+HOMEPAGE="https://apps.kde.org/yakuake/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="5"

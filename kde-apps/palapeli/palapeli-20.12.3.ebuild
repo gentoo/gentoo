@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Jigsaw puzzle game by KDE"
-HOMEPAGE="https://apps.kde.org/en/palapeli"
+HOMEPAGE="https://apps.kde.org/palapeli/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Markdown viewer KParts plugin based on QTextDocument"
-HOMEPAGE="https://apps.kde.org/en/markdownpart"
+HOMEPAGE="https://apps.kde.org/markdownpart/"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"

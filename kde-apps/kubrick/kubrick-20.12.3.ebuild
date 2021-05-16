@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Game based on the \"Rubik's Cube\" puzzle by KDE"
-HOMEPAGE="https://apps.kde.org/en/kubrick"
+HOMEPAGE="https://apps.kde.org/kubrick/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE calculator"
-HOMEPAGE="https://apps.kde.org/en/kcalc https://utils.kde.org/projects/kcalc/"
+HOMEPAGE="https://apps.kde.org/kcalc/ https://utils.kde.org/projects/kcalc/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

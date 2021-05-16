@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
 
 DESCRIPTION="Multi-document editor with network transparency, Plasma integration and more"
-HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/en/kate"
+HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/kate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Tool to check contrast for colors to verify they are correctly accessible"
-HOMEPAGE="https://apps.kde.org/en/kontrast"
+HOMEPAGE="https://apps.kde.org/kontrast/"
 
 LICENSE="GPL-3+"
 SLOT="5"
