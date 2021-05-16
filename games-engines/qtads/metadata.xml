@@ -5,7 +5,12 @@
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
   </maintainer>
+  <longdescription lang="en">
+    QTads is a cross-platform, multimedia interpreter for playing TADS games. It
+    is fully compatible with HTML TADS (aka "Multimedia TADS.") Both TADS
+    versions in use today (v2 and v3) are supported.
+  </longdescription>
   <upstream>
-    <remote-id type="sourceforge">qtads</remote-id>
+    <remote-id type="github">realnc/qtads</remote-id>
   </upstream>
 </pkgmetadata>

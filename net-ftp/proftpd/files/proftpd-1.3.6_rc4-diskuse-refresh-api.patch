@@ -1,0 +1,17 @@
+diff --git a/mod_diskuse.c b/mod_diskuse.c
+index 0e0a0d0..7eb5edf 100644
+--- a/mod_diskuse.c
++++ b/mod_diskuse.c
+@@ -53,6 +53,12 @@
+ 
+ #define MOD_DISKUSE_VERSION		"mod_diskuse/0.9"
+ 
++#define pr_parse_expression     pr_expr_create
++#define pr_class_or_expression  pr_expr_eval_class_or
++#define pr_group_and_expression pr_expr_eval_group_and
++#define pr_group_or_expression  pr_expr_eval_group_or
++#define pr_user_or_expression   pr_expr_eval_user_or
++
+ static unsigned char have_max_diskuse = FALSE;
+ static double min_diskfree = 0.0;
+ static double current_diskfree = 0.0;

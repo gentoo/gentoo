@@ -1,0 +1,26 @@
+From ad432e066fcc3d985fb5a451ad128cdf35c1dad9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 20 Nov 2020 20:41:36 +0100
+Subject: [PATCH] cmake: Fix DEFAULT_QML_DIR path to comply with LFS layout
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 61b4c863d0..e7d0bdc8d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -750,7 +750,7 @@ if (WITH_CORE)
+       set (DEFAULT_LIBEXEC_SUBDIR lib${LIB_SUFFIX}/qgis)
+       set (DEFAULT_PLUGIN_SUBDIR  lib${LIB_SUFFIX}/qgis/plugins)
+       set (DEFAULT_INCLUDE_SUBDIR include/qgis)
+-      set (DEFAULT_QML_SUBDIR     qml)
++      set (DEFAULT_QML_SUBDIR     ${DEFAULT_DATA_SUBDIR}/qml)
+ 
+       set (DEFAULT_SERVER_MODULE_SUBDIR ${DEFAULT_LIBEXEC_SUBDIR}/server)
+     endif()
+-- 
+2.29.2
+

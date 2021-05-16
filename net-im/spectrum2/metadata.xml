@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<longdescription>
+		Spectrum is an open source instant messaging transport.
+		It allows users to chat together even when they are using
+		different IM networks. It acts as a transport layer between
+		the users as showed in the animation above.
+	</longdescription>
+	<use>
+		<flag name="frotz">Enables the Z-Engine backend.</flag>
+		<flag name="irc">Enables the IRC backend, based on <pkg>net-im/libcommuni</pkg>.</flag>
+		<flag name="purple">Enables the libpurple backend, based on <pkg>net-im/pidgin</pkg>.</flag>
+		<flag name="sms">Enables the SMS backend, based on <pkg>app-mobilephone/smstools</pkg>.</flag>
+		<flag name="whatsapp">Enables the WhatsApp backend, based on <pkg>net-im/transwhat</pkg>.</flag>
+		<flag name="twitter">Enables the Twitter backend.</flag>
+	</use>
+</pkgmetadata>

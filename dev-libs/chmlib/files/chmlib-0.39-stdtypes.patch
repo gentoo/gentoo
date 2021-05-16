@@ -1,5 +1,5 @@
---- src/chm_lib.c
-+++ src/chm_lib.c
+--- a/src/chm_lib.c
++++ b/src/chm_lib.c
 @@ -149,6 +149,17 @@ typedef unsigned __int32        UInt32;
  typedef __int64                 Int64;
  typedef unsigned __int64        UInt64;

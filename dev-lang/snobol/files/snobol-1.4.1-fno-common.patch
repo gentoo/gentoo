@@ -1,0 +1,31 @@
+--- a/include/macros.h
++++ b/include/macros.h
+@@ -192,7 +192,7 @@ extern volatile int math_error;
+ #define RETURN(VALUE) {RSTSTK(); return (VALUE);}
+ #endif /* TRACE_DEPTH not defined */
+ 
+-struct descr _NORET[1];
++extern struct descr _NORET[1];
+ #define NORET ((ptr_t)_NORET)
+ 
+ /****************/
+--- a/isnobol4.c
++++ b/isnobol4.c
+@@ -4,6 +4,7 @@
+ 
+ # include "mlink.h"
+ # include "parms.h"
++extern struct descr _NORET[1];
+ static int
+ ENDALL(retval)
+     ret_t retval;
+--- a/main.c
++++ b/main.c
+@@ -46,6 +46,7 @@ struct vars *varp;
+ const char vers[] = VERSION;
+ const char vdate[] = VERSION_DATE;
+ const char snoname[] = "CSNOBOL4";
++struct descr _NORET[1];
+ 
+ int
+ main(argc, argv)

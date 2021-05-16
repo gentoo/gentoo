@@ -1,0 +1,22 @@
+ax_boost_regex.m4 |    4 ++--
+1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- mira-4.0.2/m4/ax_boost_regex.m4
++++ mira-4.0.2/m4/ax_boost_regex.m4
+@@ -78,14 +78,14 @@
+                 for libextension in `ls $BOOSTLIBDIR/libboost_regex*.so* $BOOSTLIBDIR/libboost_regex*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^lib\(boost_regex.*\)\.so.*$;\1;' -e 's;^lib\(boost_regex.*\)\.a*$;\1;'` ; do
+                      ax_lib=${libextension}
+ 				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_REGEX_LIB="-l$ax_lib"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
++                                 [BOOST_REGEX_LIB="-l$ax_lib -lboost_system"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
+                                  [link_regex="no"])
+ 				done
+                 if test "x$link_regex" != "xyes"; then
+                 for libextension in `ls $BOOSTLIBDIR/boost_regex*.{dll,a}* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^\(boost_regex.*\)\.dll.*$;\1;' -e 's;^\(boost_regex.*\)\.a*$;\1;'` ; do
+                      ax_lib=${libextension}
+ 				    AC_CHECK_LIB($ax_lib, exit,
+-                                 [BOOST_REGEX_LIB="-l$ax_lib"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
++                                 [BOOST_REGEX_LIB="-l$ax_lib -lboost_system"; AC_SUBST(BOOST_REGEX_LIB) link_regex="yes"; break],
+                                  [link_regex="no"])
+ 				done
+                 fi

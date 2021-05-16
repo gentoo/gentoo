@@ -1,11 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=6
 
 MY_P="${P/cluster-}"
-inherit autotools multilib eutils base user
+inherit autotools multilib user
 
 DESCRIPTION="Library pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Cluster_Glue"
@@ -13,7 +12,7 @@ SRC_URI="http://hg.linux-ha.org/glue/archive/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE="doc libnet static-libs"
 
 RDEPEND="app-text/asciidoc
@@ -25,8 +24,7 @@ RDEPEND="app-text/asciidoc
 	net-misc/curl
 	net-misc/iputils
 	|| ( net-misc/netkit-telnetd net-misc/telnet-bsd )
-	dev-libs/libxml2
-	!<sys-cluster/heartbeat-3.0"
+	dev-libs/libxml2"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-libs/libxslt
@@ -35,17 +33,14 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/Reusable-Cluster-Components-glue--${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/1.0.12-respect_cflags.patch"
-)
-
 pkg_setup() {
 	enewgroup haclient
 	enewuser  hacluster -1 /dev/null /var/lib/heartbeat haclient
 }
 
 src_prepare() {
-	base_src_prepare
+	default
+	sed -e '/ -ggdb/d' -i configure.ac || die
 	sed -e "s@http://docbook.sourceforge.net/release/xsl/current@/usr/share/sgml/docbook/xsl-stylesheets/@g" \
 		-i doc/Makefile.am || die
 	eautoreconf
@@ -59,8 +54,6 @@ src_configure() {
 		$(use_enable libnet) \
 		$(use_enable static-libs static) \
 		--disable-fatal-warnings \
-		--disable-dependency-tracking \
-		--docdir=/usr/share/doc/${PF} \
 		--localstatedir=/var \
 		--with-ocf-root=/usr/$(get_libdir)/ocf \
 		${myopts} \
@@ -70,7 +63,7 @@ src_configure() {
 }
 
 src_install() {
-	base_src_install
+	default
 
 	dodir /var/lib/heartbeat/cores
 	dodir /var/lib/heartbeat/lrm
@@ -83,7 +76,7 @@ src_install() {
 	sed -i \
 		-e "s:%libdir%:$(get_libdir):" \
 		"${T}/heartbeat-logd.init" || die
-# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd || die
+# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd
 	rm "${D}"/etc/init.d/logd
 
 	use static-libs || find "${D}" -type f -name "*.la" -delete

@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 87b1456..832a1e1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -56,9 +56,7 @@ BUILDTIME?=$(shell date +%FT%T%z)
+ 
+ MAIN_PACKAGE_PATH=$(shell go list . 2> /dev/null)/
+ LDFLAGS+=-X $(MAIN_PACKAGE_PATH)config.VERSION=${VERSION} -X $(MAIN_PACKAGE_PATH)config.REVISION=${REVISION} -X $(MAIN_PACKAGE_PATH)config.BUILDTIME=${BUILDTIME}
+-ifeq ($(DEBUG),0)
+-  LDFLAGS+=-s -w
+-else
++ifneq ($(DEBUG),0)
+   LDFLAGS+=-X $(MAIN_PACKAGE_PATH)config.RELEASE=false
+ endif
+ CYCLOTHRESHOLD?=20

@@ -1,0 +1,64 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -150,10 +150,6 @@
+     'packaging/rpm/gpsd.spec',
+     'packet_names.h',
+     'Qgpsmm.pc',
+-    'ubxtool',
+-    'xgps',
+-    'xgpsspeed',
+-    'zerk',
+    ]
+ 
+ generated_www = [
+@@ -172,10 +168,6 @@
+     "gpscat",
+     "gpsfake",
+     "gpsprof",
+-    "ubxtool",
+-    "xgps",
+-    "xgpsspeed",
+-    "zerk",
+ ]
+ 
+ # All man pages.  Always build them all.
+@@ -205,10 +197,6 @@
+     "man/ntpshmmon.1": "man/ntpshmmon.xml",
+     "man/ppscheck.8": "man/ppscheck.xml",
+     "man/srec.5": "man/srec.xml",
+-    "man/ubxtool.1": "man/ubxtool.xml",
+-    "man/xgps.1": "man/gps.xml",
+-    "man/xgpsspeed.1": "man/gps.xml",
+-    "man/zerk.1": "man/zerk.xml",
+ }
+ 
+ # doc files to install in share/gpsd/doc
+@@ -1964,6 +1952,28 @@
+         "valgrind-audit.py"
+     ]
+ 
++    if env['greis']:
++        generated_sources.extend(["zerk"])
++        python_progs.extend(["zerk"])
++        all_manpages.update({
++            "man/zerk.1": "man/zerk.xml",
++        })
++
++    if env['ublox']:
++        generated_sources.extend(["ubxtool"])
++        python_progs.extend(["ubxtool"])
++        all_manpages.update({
++            "man/ubxtool.1": "man/ubxtool.xml",
++        })
++
++    if env['xgps']:
++        generated_sources.extend(["xgps", "xgpsspeed"])
++        python_progs.extend(["xgps", "xgpsspeed"])
++        all_manpages.update({
++            "man/xgps.1": "man/xgps.xml",
++            "man/xgpsspeed.1": "man/xgps.xml",
++        })
++
+     # Dependencies for imports in test programs
+     env.Depends('tests/test_clienthelpers.py',
+                 ['gps/__init__.py', 'gps/clienthelpers.py', 'gps/misc.py'])

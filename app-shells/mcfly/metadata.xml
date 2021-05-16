@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mmk@levelnine.at</email>
+		<name>Michael Mair-Keimberger</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		McFly replaces your default ctrl-r Bash history search with an intelligent search engine
+		that takes into account your working directory and the context of recently executed commands.
+		McFly's suggestions are prioritized in real time with a small neural network.
+
+		TL;DR: an upgraded ctrl-r for Bash whose history results make sense for what you're working on right now.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">cantino/mcfly</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,5 +1,5 @@
---- runtests.sh~	2000-10-31 23:42:01.000000000 +0200
-+++ runtests.sh	2003-03-02 01:59:55.000000000 +0200
+--- ./runtests.sh~	2000-10-31 23:42:01.000000000 +0200
++++ ./runtests.sh	2003-03-02 01:59:55.000000000 +0200
 @@ -9,6 +9,6 @@
  XPATH_CP=./build/werken.xpath.jar
  TEST_CP=./build/test/classes/

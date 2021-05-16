@@ -1,0 +1,13 @@
+diff --git a/config/Makefile.SH b/config/Makefile.SH
+index 27c6d5b..43debb1 100644
+--- a/config/Makefile.SH
++++ b/config/Makefile.SH
+@@ -185,7 +185,7 @@ LD         = $LD \$(LD_FLAVOR)
+ LDFLAGS    = $LDFLAGS
+ DLLD_FLAVOR  = \$(LD_FLAVOR)
+ DLLD       = $DLLD \$(DLLD_FLAVOR)
+-DLLDFLAGS  = $DLLDFLAGS
++DLLDFLAGS  = $DLLDFLAGS \$(LDFLAGS)
+ EXTRADLLDFLAGS = $EXTRADLLDFLAGS
+ RUNTEST    = $RUNTEST
+ 

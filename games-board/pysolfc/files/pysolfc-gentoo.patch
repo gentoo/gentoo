@@ -1,0 +1,10 @@
+--- a/pysollib/settings.py	2014-04-07 20:05:02.335276008 +0200
++++ b/pysollib/settings.py	2014-04-07 20:05:33.099062670 +0200
+@@ -63,6 +63,7 @@
+         '/usr/local/share/PySolFC',
+         '/usr/games/PySolFC',
+         '/usr/local/games/PySolFC',
++        '/usr/share/pysolfc',
+         ]
+ if os.name == 'nt':
+     pass

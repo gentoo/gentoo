@@ -1,5 +1,29 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -m68k
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-04-23)
+# valgrind has no m68k port.
+valgrind
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependencies not keyworded.
+appindicator
+ayatana
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
+# sys-auth/elogind is not keyworded here.
+elogind
+
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Unmask as this profile is big endian.
+-big-endian
 
 hardened
 
@@ -15,7 +39,6 @@ java
 php
 djbfft
 qdbm
-mzscheme
 
 emacs
 xemacs
@@ -24,18 +47,14 @@ gnome-keyring
 afs
 tcl
 tk
-tcltk
 ldap
 slang
 diet
 gtk
-qt4
 mono
-python
 cairo
 svg
 X
-crypt
 mysql
 samba
 dbus
@@ -46,15 +65,11 @@ guile
 lua
 djvu
 nss
-chicken
 diet
 emf
-fusion
-pike
 R
 octave
 bluetooth
-autotrace
 lqr
 policykit
 bash-completion
@@ -65,12 +80,9 @@ tk
 clang
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007 
+# Bug #184563, (2007-09-18)
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
-
-# Masking since dev-db/sqlite is masked
-sqlite
 
 # Masking these globally, since we don't have X
 gnome
@@ -78,15 +90,9 @@ gnome-keyring
 pango
 
 # Masking since net-dns/avahi and net-misc/mDNSResponder are masked
-avahi
 zeroconf
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 

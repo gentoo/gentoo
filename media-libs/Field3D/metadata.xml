@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Field3D is an open source library for storing voxel data.
+		It provides C++ classes that handle in-memory storage and
+		a file format based on HDF5 that allows the C++ objects 
+		to be written to and read from disk.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">imageworks/Field3D</remote-id>
+	</upstream>
+</pkgmetadata>

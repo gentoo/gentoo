@@ -1,0 +1,40 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -15,22 +15,22 @@
+ 
+ all:
+ 	@echo Making all
+-	-$(CC) $(CFLAGS) -c source/rain_command_line.c
+-	-$(CC) $(CFLAGS) -c source/rain_defaults.c
+-	-$(CC) $(CFLAGS) -c source/rain_die.c
+-	-$(CC) $(CFLAGS) -c source/rain_icmp.c
+-	-$(CC) $(CFLAGS) -c source/rain_igmp.c
+-	-$(CC) $(CFLAGS) -c source/rain_inet_common.c
+-	-$(CC) $(CFLAGS) -c source/rain_mem.c
+-	-$(CC) $(CFLAGS) -c source/rain_resolv.c
+-	-$(CC) $(CFLAGS) -c source/rain_services.c
+-	-$(CC) $(CFLAGS) -c source/rain_signal.c
+-	-$(CC) $(CFLAGS) -c source/rain_string.c
+-	-$(CC) $(CFLAGS) -c source/rain_tcp.c
+-	-$(CC) $(CFLAGS) -c source/rain_udp.c
+-	-$(CC) $(CFLAGS) -c source/rain_main.c
++	$(CC) $(CFLAGS) -c source/rain_command_line.c
++	$(CC) $(CFLAGS) -c source/rain_defaults.c
++	$(CC) $(CFLAGS) -c source/rain_die.c
++	$(CC) $(CFLAGS) -c source/rain_icmp.c
++	$(CC) $(CFLAGS) -c source/rain_igmp.c
++	$(CC) $(CFLAGS) -c source/rain_inet_common.c
++	$(CC) $(CFLAGS) -c source/rain_mem.c
++	$(CC) $(CFLAGS) -c source/rain_resolv.c
++	$(CC) $(CFLAGS) -c source/rain_services.c
++	$(CC) $(CFLAGS) -c source/rain_signal.c
++	$(CC) $(CFLAGS) -c source/rain_string.c
++	$(CC) $(CFLAGS) -c source/rain_tcp.c
++	$(CC) $(CFLAGS) -c source/rain_udp.c
++	$(CC) $(CFLAGS) -c source/rain_main.c
+ 
+-	-$(CC) $(CFLAGS) $(LDFLAGS) -o rain rain_command_line.o rain_defaults.o rain_die.o rain_icmp.o rain_igmp.o rain_inet_common.o rain_main.o rain_mem.o rain_resolv.o rain_services.o rain_signal.o rain_string.o rain_tcp.o rain_udp.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o rain rain_command_line.o rain_defaults.o rain_die.o rain_icmp.o rain_igmp.o rain_inet_common.o rain_main.o rain_mem.o rain_resolv.o rain_services.o rain_signal.o rain_string.o rain_tcp.o rain_udp.o
+ 
+ 	@echo done.
+ 

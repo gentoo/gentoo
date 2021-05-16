@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt	2020-02-17 02:07:48.201051509 +0100
++++ b/CMakeLists.txt	2020-02-17 02:10:26.790061722 +0100
+@@ -176,18 +176,7 @@
+ ENDIF()
+ 
+ #=========================Changelog custom target==============================
+-FIND_PROGRAM( GZIP_CMD gzip )
+-IF( GZIP_CMD )
+-   SET( CHANGELOG_UNCOMPRESSED "${CMAKE_CURRENT_SOURCE_DIR}/CHANGES.markdown" )
+-   SET( CHANGELOG "${CMAKE_CURRENT_BINARY_DIR}/changelog.gz" )
+-   ADD_CUSTOM_COMMAND(
+-      OUTPUT ${CHANGELOG}
+-      COMMAND ${GZIP_CMD} -9 -n -c ${CHANGELOG_UNCOMPRESSED} > ${CHANGELOG}
+-      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+-      MAIN_DEPENDENCY ${CHANGELOG_UNCOMPRESSED}
+-   )
+-   ADD_CUSTOM_TARGET(changelog ALL DEPENDS ${CHANGELOG})
+-ENDIF()
++SET( CHANGELOG "${CMAKE_CURRENT_SOURCE_DIR}/CHANGES.markdown" )
+ 
+ #=========================Detect Debian======================================== 
+ IF( EXISTS "/etc/debian_version" )

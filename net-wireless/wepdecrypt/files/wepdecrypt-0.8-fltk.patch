@@ -1,8 +1,3 @@
- configure |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
-
-diff --git a/configure b/configure
-index 12fa395..258b157 100755
 --- a/configure
 +++ b/configure
 @@ -2915,7 +2915,7 @@ fi

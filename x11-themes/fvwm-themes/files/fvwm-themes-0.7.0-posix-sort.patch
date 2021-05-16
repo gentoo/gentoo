@@ -1,5 +1,5 @@
---- fvwm-themes-0.7.0/configure.in
-+++ fvwm-themes-0.7.0/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -195,7 +195,7 @@
  
  # Hopefully this "sort" is portable (after many tries using awk and expr)

@@ -1,5 +1,5 @@
---- src/tse3/Serializable.h.orig	2008-06-08 12:17:05.000000000 +0200
-+++ src/tse3/Serializable.h	2008-06-08 12:17:27.000000000 +0200
+--- a/src/tse3/Serializable.h
++++ b/src/tse3/Serializable.h
 @@ -20,6 +20,7 @@
  #include <iosfwd>
  #include <iomanip>
@@ -9,8 +9,8 @@
  namespace TSE3
  {
 
---- src/tse3/TSE2MDL.h.orig	2008-06-08 12:17:41.000000000 +0200
-+++ src/tse3/TSE2MDL.h	2008-06-08 12:18:02.000000000 +0200
+--- a/src/tse3/TSE2MDL.h
++++ b/src/tse3/TSE2MDL.h
 @@ -22,6 +22,7 @@
  #include <string>
  #include <iostream>
@@ -20,8 +20,8 @@
  namespace TSE3
  {
 
---- src/tse3/MidiFile.h.orig	2008-06-08 12:18:26.000000000 +0200
-+++ src/tse3/MidiFile.h	2008-06-08 12:18:42.000000000 +0200
+--- a/src/tse3/MidiFile.h
++++ b/src/tse3/MidiFile.h
 @@ -25,6 +25,7 @@
  #include <string>
  #include <iosfwd>
@@ -30,8 +30,8 @@
  
  namespace TSE3
  {
---- src/examples/recording/recording.cpp.orig	2008-06-08 12:18:56.000000000 +0200
-+++ src/examples/recording/recording.cpp	2008-06-08 12:19:18.000000000 +0200
+--- a/src/examples/recording/recording.cpp
++++ b/src/examples/recording/recording.cpp
 @@ -26,6 +26,7 @@
       *
       **************************************************************/
@@ -41,8 +41,8 @@
  
  // Used in step 1
 
---- src/tse3play/tse3play.h.orig	2008-06-08 12:19:34.000000000 +0200
-+++ src/tse3play/tse3play.h	2008-06-08 12:19:53.000000000 +0200
+--- a/src/tse3play/tse3play.h
++++ b/src/tse3play/tse3play.h
 @@ -19,6 +19,7 @@
  
  #include <string>
@@ -51,8 +51,8 @@
  
  #include "tse3/Transport.h"
  
---- src/tse3/plt/Alsa-0.9.cpp.orig	2008-06-08 12:39:53.000000000 +0200
-+++ src/tse3/plt/Alsa-0.9.cpp	2008-06-08 12:40:25.000000000 +0200
+--- a/src/tse3/plt/Alsa-0.9.cpp
++++ b/src/tse3/plt/Alsa-0.9.cpp
 @@ -25,12 +25,11 @@
  #define HAVE_SYS_ASOUNDLIB_H
  #endif
@@ -68,8 +68,8 @@
  #include <sys/asoundlib.h>
  #endif
 
---- src/tse3/plt/OSS.h.orig	2008-06-08 12:45:46.000000000 +0200
-+++ src/tse3/plt/OSS.h	2008-06-08 12:46:06.000000000 +0200
+--- a/src/tse3/plt/OSS.h
++++ b/src/tse3/plt/OSS.h
 @@ -21,6 +21,7 @@
  
  #include <string>

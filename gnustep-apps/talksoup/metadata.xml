@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer> 
+<longdescription>TalkSoup is an IRC client for GNUstep and Mac OS X. It is highly configurable and extensible with a fully-featured plugin system already in place. It has all the features one would expect from a graphical IRC client.</longdescription>
+</pkgmetadata>

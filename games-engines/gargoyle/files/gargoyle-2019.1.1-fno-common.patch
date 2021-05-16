@@ -1,0 +1,168 @@
+Author: Chris Spiegel <cspiegel@gmail.com>
+Taken from: https://sources.debian.org/patches/gargoyle-free/2019.1.1-2/gcc-10.patch/
+--- a/garglk/launcher.c
++++ b/garglk/launcher.c
+@@ -48,10 +48,10 @@
+ #define ID_GLUL (giblorb_make_id('G','L','U','L'))
+ 
+ #define MaxBuffer 1024
+-char tmp[MaxBuffer];
+-char terp[MaxBuffer];
+-char exe[MaxBuffer];
+-char flags[MaxBuffer];
++static char tmp[MaxBuffer];
++static char terp[MaxBuffer];
++static char exe[MaxBuffer];
++static char flags[MaxBuffer];
+ 
+ int runblorb(char *path, char *game)
+ {
+--- a/garglk/launchgtk.c
++++ b/garglk/launchgtk.c
+@@ -41,9 +41,9 @@ static const char * AppName = "Gargoyle " VERSION;
+ static const char * LaunchingTemplate = "%s/%s";
+ static const char * DirSeparator = "/";
+ 
+-char dir[MaxBuffer];
+-char buf[MaxBuffer];
+-char tmp[MaxBuffer];
++static char dir[MaxBuffer];
++static char buf[MaxBuffer];
++static char tmp[MaxBuffer];
+ 
+ struct filter
+ {
+--- a/garglk/launchmac.m
++++ b/garglk/launchmac.m
+@@ -40,13 +40,13 @@
+ static const char * LaunchingTemplate = "%s/%s";
+ static const char * DirSeparator = "/";
+ 
+-char dir[MaxBuffer];
+-char buf[MaxBuffer];
+-char tmp[MaxBuffer];
+-char etc[MaxBuffer];
++static char dir[MaxBuffer];
++static char buf[MaxBuffer];
++static char tmp[MaxBuffer];
++static char etc[MaxBuffer];
+ 
+ enum FILEFILTERS { FILTER_SAVE, FILTER_TEXT, FILTER_ALL };
+-char *winfilters[] =
++static char *winfilters[] =
+ {
+     "sav",
+     "txt",
+--- a/garglk/launchwin.c
++++ b/garglk/launchwin.c
+@@ -33,11 +33,11 @@ static const char * AppName = "Gargoyle " VERSION;
+ static const char * LaunchingTemplate = "\"%s\\%s.exe\" %s \"%s\"";
+ static const char * DirSeparator = "\\";
+ 
+-char dir[MaxBuffer];
+-char buf[MaxBuffer];
+-char tmp[MaxBuffer];
++static char dir[MaxBuffer];
++static char buf[MaxBuffer];
++static char tmp[MaxBuffer];
+ 
+-char filterlist[] =
++static char filterlist[] =
+ "All Games\0*.taf;*.agx;*.d$$;*.acd;*.a3c;*.asl;*.cas;*.ulx;*.hex;*.jacl;*.j2;*.gam;*.t3;*.z?;*.l9;*.sna;*.mag;*.dat;*.saga;*.blb;*.glb;*.zlb;*.blorb;*.gblorb;*.zblorb\0"
+ "Adrift Games (*.taf)\0*.taf\0"
+ "AdvSys Games (*.dat)\0*.dat\0"
+@@ -65,7 +65,7 @@ void winmsg(const char *msg)
+     MessageBox(NULL, msg, AppName, MB_ICONERROR);
+ }
+ 
+-int urldecode(char *decoded, unsigned int maxlen, const char *encoded)
++static int urldecode(char *decoded, unsigned int maxlen, const char *encoded)
+ {
+     unsigned int i;
+     int convert, ascii;
+
+--- a/terps/alan2/glkio.h
++++ b/terps/alan2/glkio.h
+@@ -11,8 +11,8 @@
+ 
+ #include "glk.h"
+ 
+-winid_t glkMainWin;
+-winid_t glkStatusWin;
++extern winid_t glkMainWin;
++extern winid_t glkStatusWin;
+ 
+ /* NB: this header must be included in any file which calls printf() */
+ 
+--- a/terps/alan2/main.c
++++ b/terps/alan2/main.c
+@@ -43,6 +43,9 @@
+ 
+ /* PUBLIC DATA */
+ 
++winid_t glkMainWin;
++winid_t glkStatusWin;
++
+ /* The Amachine memory */
+ Aword *memory;
+ static AcdHdr dummyHeader;	/* Dummy to use until memory allocated */
+--- a/terps/alan3/glkio.h
++++ b/terps/alan3/glkio.h
+@@ -11,8 +11,8 @@
+ 
+ #include "glk.h"
+ 
+-winid_t glkMainWin;
+-winid_t glkStatusWin;
++static winid_t glkMainWin;
++static winid_t glkStatusWin;
+ 
+ /* NB: this header must be included in any file which calls printf() */
+ 
+--- a/terps/alan3/output.h
++++ b/terps/alan3/output.h
+@@ -22,9 +22,9 @@ extern bool capitalize;
+ /* Log file */
+ #ifdef HAVE_GLK
+ #include "glk.h"
+-strid_t logFile;
++extern strid_t logFile;
+ #else
+-FILE *logFile;
++extern FILE *logFile;
+ #endif
+ 
+ 
+--- a/terps/alan3/term.h
++++ b/terps/alan3/term.h
+@@ -10,7 +10,7 @@
+ 
+ 
+ /* DATA */
+-bool onStatusLine;
++extern bool onStatusLine;
+ 
+ 
+ /* FUNCTIONS */
+--- a/terps/jacl/glk_startup.c
++++ b/terps/jacl/glk_startup.c
+@@ -31,7 +31,7 @@ extern short int	release;
+ glkunix_startup_t *arguments;
+ 
+ /* THE STREAM FOR OPENING UP THE ARCHIVE CONTAINING GRAPHICS AND SOUND */
+-strid_t				blorb_stream;
++extern strid_t				blorb_stream;
+ 
+ /* PROTOTYPE FOR NEEDED UTILITY FUNCTION */
+ void create_paths();
+--- a/terps/jacl/parser.c
++++ b/terps/jacl/parser.c
+@@ -62,7 +62,7 @@ char							*from_word;
+ 
+ int								object_expected = FALSE;
+ 
+-char							default_function[84];
++extern char							default_function[84];
+ char							object_name[84];
+ 
+ char				            base_function[84];

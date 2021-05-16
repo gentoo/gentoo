@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
-DESCRIPTION="A program and library for generating standard and non-standard InChI and InChIKeys"
+DESCRIPTION="Program and library for generating standard and non-standard InChI and InChIKeys"
 HOMEPAGE="http://www.iupac.org/inchi/"
 SRC_URI="
 	http://www.inchi-trust.org/sites/default/files/inchi-${PV}/INCHI-1-API.ZIP -> ${P}.zip

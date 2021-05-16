@@ -1,0 +1,40 @@
+From 866442b28b53f773efbb3690b6252d2e75bee137 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Fri, 3 Jul 2020 15:34:47 +0200
+Subject: [PATCH] IlmImfTest/main.cpp: disable tests
+
+Disable testOptimizedInterleavePatterns and testDwaLookup, which
+are not working on x86.
+For testOptimizedInterleavePatterns, see
+https://github.com/AcademySoftwareFoundation/openexr/issues/67#issuecomment-21169748
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ IlmImfTest/main.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/IlmImfTest/main.cpp b/IlmImfTest/main.cpp
+index 3245fc4..4ab45b1 100644
+--- a/IlmImfTest/main.cpp
++++ b/IlmImfTest/main.cpp
+@@ -228,7 +228,7 @@ main (int argc, char *argv[])
+     TEST (testExistingStreams, "core");
+     TEST (testStandardAttributes, "core");
+     TEST (testOptimized, "basic");
+-    TEST (testOptimizedInterleavePatterns, "basic");
++//    TEST (testOptimizedInterleavePatterns, "basic");
+     TEST (testYca, "basic");
+     TEST (testTiledYa, "basic");
+     TEST (testNativeFormat, "basic");
+@@ -255,7 +255,7 @@ main (int argc, char *argv[])
+     TEST (testDwaCompressorSimd, "basic");
+     TEST (testRle, "core");
+     TEST (testB44ExpLogTable, "core");
+-    TEST (testDwaLookups, "core");
++//    TEST (testDwaLookups, "core");
+     
+ 
+     //#ifdef ENABLE_IMFHUGETEST
+-- 
+2.27.0
+

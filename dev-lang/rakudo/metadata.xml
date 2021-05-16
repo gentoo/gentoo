@@ -5,10 +5,6 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
-  <maintainer type="person">
-    <email>tomboy64@sina.cn</email>
-    <name>Matthew Brewer</name>
-  </maintainer>
   <maintainer type="project">
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>

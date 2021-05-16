@@ -1,6 +1,5 @@
-# Copyright 2003-2004 Gentoo Foundation 
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 IFACE="eth0"
 DELAY=50

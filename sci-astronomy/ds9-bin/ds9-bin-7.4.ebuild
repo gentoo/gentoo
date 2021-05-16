@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -35,7 +34,7 @@ S="${WORKDIR}"
 QA_PRESTRIPPED="usr/bin/ds9"
 QA_PREBUILT="usr/bin/ds9"
 
-src_install () {
+src_install() {
 	dobin ds9
 	doicon ds9.png
 	make_desktop_entry ds9 "SAOImage DS9" ds9

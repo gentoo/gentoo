@@ -1,34 +1,35 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="man-${PV}"
 
 DESCRIPTION="Standard commands to read man pages"
 HOMEPAGE="http://primates.ximian.com/~flucifredi/man/"
 SRC_URI="http://primates.ximian.com/~flucifredi/man/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE=""
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="!sys-apps/man"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=(
+	"${FILESDIR}"/man-1.6f-man2html-compression-2.patch
+	"${FILESDIR}"/man-1.6-cross-compile.patch
+	"${FILESDIR}"/man-1.6g-compress.patch #205147
+)
 
-src_prepare() {
-	epatch "${FILESDIR}"/man-1.6f-man2html-compression-2.patch
-	epatch "${FILESDIR}"/man-1.6-cross-compile.patch
-	epatch "${FILESDIR}"/man-1.6g-compress.patch #205147
-}
-
-echoit() { echo "$@" ; "$@" ; }
 src_configure() {
+	echoit() {
+		echo "$@"
+		"$@"
+	}
+
 	tc-export CC BUILD_CC
 
 	# Just a stub to disable configure check.  man2html doesn't use it.
@@ -49,7 +50,8 @@ src_compile() {
 
 src_install() {
 	# A little faster to run this by hand than `emake install`.
-	cd man2html
+	cd man2html || die
+
 	dobin man2html
 	doman man2html.1
 	dodoc README TODO

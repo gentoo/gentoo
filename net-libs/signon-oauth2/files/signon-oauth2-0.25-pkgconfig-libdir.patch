@@ -1,0 +1,14 @@
+--- a/src/signon-oauth2plugin.pc	2016-06-02 11:44:21.000000000 +0200
++++ b/src/signon-oauth2plugin.pc	2017-11-03 10:57:35.659278702 +0100
+@@ -1,9 +1,9 @@
+ prefix=/usr
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib/
++libdir=${prefix}/@LIBDIR@/
+ includedir=${prefix}/include
+ Name: signon-oauth2plugin
+ Description: Signon OAuth 2.0 plugin
+ Version: 0.0.1
+ Requires: signon-plugins
+-Libs.private: -L/usr/lib  -lQtCore
++Libs.private: -L/usr/@LIBDIR@  -lQtCore

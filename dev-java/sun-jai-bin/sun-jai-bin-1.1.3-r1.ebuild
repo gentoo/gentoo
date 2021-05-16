@@ -1,6 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit java-pkg-2
 
@@ -17,28 +18,29 @@ SRC_URI="
 LICENSE="sun-bcla-jai"
 SLOT="0"
 KEYWORDS="amd64"
+IUSE=""
+
 DEPEND=""
 RDEPEND=">=virtual/jre-1.3"
-IUSE=""
-RESTRICT="mirror"
+
+RESTRICT="bindist mirror"
 QA_PREBUILT="*"
 
-S=${WORKDIR}/${MY_P}/
+S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	rm "${S}/LICENSE-jai.txt"
+src_prepare() {
+	default
+	rm LICENSE-jai.txt || die
 }
 
 src_compile() { :; }
 
 src_install() {
-	dodoc *.txt || die
+	dodoc *.txt
 
-	cd lib
-	java-pkg_dojar *.jar
-	use x86 && java-pkg_doso *.so
-	use amd64 && java-pkg_doso *.so
+	java-pkg_dojar lib/*.jar
+	use x86 && java-pkg_doso lib/*.so
+	use amd64 && java-pkg_doso lib/*.so
 }
 
 pkg_postinst() {

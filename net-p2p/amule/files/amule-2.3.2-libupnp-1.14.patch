@@ -1,0 +1,24 @@
+--- a/src/UPnPBase.cpp	2016-09-16 09:55:07.000000000 +0200
++++ b/src/UPnPBase.cpp	2020-09-03 12:37:43.861231093 +0200
+@@ -824,13 +824,17 @@ m_WanService(NULL)
+ 	// Null string at first
+ 	std::ostringstream msg;
+ 
++	// Declare those here to avoid 
++	// "jump to label ‘error’ [-fpermissive] crosses initialization
++	// of ‘char* ipAddress’"
++	unsigned short port;
++	char *ipAddress;
++
+ 	// Start UPnP
+ 	int ret;
+-	char *ipAddress = NULL;
+-	unsigned short port = 0;
+-	ret = UpnpInit(ipAddress, udpPort);
++	ret = UpnpInit2(0, udpPort);
+ 	if (ret != UPNP_E_SUCCESS) {
+-		msg << "error(UpnpInit): Error code ";
++		msg << "error(UpnpInit2): Error code ";
+ 		goto error;
+ 	}
+ 	port = UpnpGetServerPort();

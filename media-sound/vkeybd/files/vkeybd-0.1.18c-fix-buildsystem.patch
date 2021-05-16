@@ -1,0 +1,81 @@
+--- a/Makefile
++++ b/Makefile
+@@ -8,7 +8,7 @@
+ #
+ # installation directory
+ #
+-PREFIX = /usr/local
++PREFIX = $(EPREFIX)/usr
+ # binary and Tcl script are put there
+ BIN_DIR = $(PREFIX)/bin
+ # man page
+@@ -27,21 +27,21 @@
+ # device selections -- multiple avaialble
+ # to disable the device, set value 0 (do not comment out!)
+ #
+-USE_AWE = 1
+-USE_MIDI = 1
+-USE_ALSA = 1
+-USE_LASH = 0
++USE_AWE ?= 1
++USE_MIDI ?= 1
++USE_ALSA ?= 1
++USE_LASH ?= 0
+ 
+ #
+ # Tcl/Tk library -- depends on your distribution
+ #
+-TCL_VERSION = 8.4
++TCL_VERSION ?= 8.4
+ TCLLIB = -ltcl$(TCL_VERSION)
+ TCLINC =
+ TKLIB = -ltk$(TCL_VERSION)
+ TKINC =
+-XLIB = -L/usr/X11R6/lib -lX11
+-XINC = -I/usr/X11R6/include
++XLIB = $(shell $(PKG_CONFIG) --libs x11)
++XINC = $(shell $(PKG_CONFIG) --cflags x11)
+ EXTRALIB += -ldl
+ 
+ #----------------------------------------------------------------
+@@ -71,9 +71,9 @@
+ # LASH stuff
+ #
+ ifeq (1,$(USE_LASH))
+-LASHCFLAGS = $(shell pkg-config --cflags lash-1.0) \
+-	       $(shell pkg-config --exists lash-1.0 && echo "-DHAVE_LASH" )
+-LASHLIBS   = $(shell pkg-config --libs lash-1.0)
++LASHCFLAGS = $(shell $(PKG_CONFIG) --cflags lash-1.0) \
++	       $(shell $(PKG_CONFIG) --exists lash-1.0 && echo "-DHAVE_LASH" )
++LASHLIBS   = $(shell $(PKG_CONFIG) --libs lash-1.0)
+ DEVICES += $(LASHCFLAGS)
+ EXTRALIB += $(LASHLIBS)
+ endif
+@@ -84,8 +84,7 @@
+ 
+ VKB_TCLFILE = $(VKBLIB_DIR)/vkeybd.tcl
+ 
+-COPTFLAGS = -Wall -O
+-CFLAGS = $(COPTFLAGS) -DVKB_TCLFILE=\"$(VKB_TCLFILE)\" \
++CFLAGS += -Wall -DVKB_TCLFILE=\"$(VKB_TCLFILE)\" \
+ 	-DVKBLIB_DIR=\"$(VKBLIB_DIR)\"\
+ 	-DVERSION_STR=\"$(VERSION)\"\
+ 	$(DEVICES) $(XINC) $(TCLINC) $(TKINC) $(LASHCFLAGS)
+@@ -100,7 +99,7 @@
+ sftovkb: sftovkb.o sffile.o malloc.o fskip.o
+ 	$(CC) $(LDFLAGS) -o $@ $^ -lm
+ 
+-install: $(TARGETS) vkeybd.tcl vkeybd.list vkeybdmap*
++install-default: $(TARGETS) vkeybd.tcl vkeybd.list vkeybdmap*
+ 	mkdir -p $(DESTDIR)$(BIN_DIR)
+ 	install -c -m 755 vkeybd $(DESTDIR)$(BIN_DIR)
+ 	install -c -m 755 sftovkb $(DESTDIR)$(BIN_DIR)
+@@ -120,7 +119,7 @@
+ 	mkdir -p $(DESTDIR)$(DATA_DIR)/pixmaps
+ 	install -c -m 644 pixmaps/*.png $(DESTDIR)$(DATA_DIR)/pixmaps
+ 
+-install-all: install install-man install-desktop
++install: install-default install-man install-desktop
+ 
+ clean:
+ 	rm -f *.o $(TARGETS)

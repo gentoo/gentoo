@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>wraeth@gentoo.org</email>
+		<name>Sam Jorna</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/wraeth/kcheck/issues</bugs-to>
+		<changelog>https://github.com/wraeth/kcheck/commits/master</changelog>
+		<remote-id type="github">wraeth/kcheck</remote-id>
+	</upstream>
+</pkgmetadata>

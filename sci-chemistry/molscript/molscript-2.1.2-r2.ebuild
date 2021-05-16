@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
-DESCRIPTION="Display molecular 3D structures, such as proteins, in both schematic and detailed representations"
+DESCRIPTION="Display 3D molecules (e.g., proteins) in schematic and detailed representations"
 HOMEPAGE="http://www.avatar.se/molscript/"
 SRC_URI="${P}.tar.gz"
 
@@ -32,7 +31,7 @@ RESTRICT="fetch"
 pkg_nofetch() {
 	elog "Please visit ${HOMEPAGE}"
 	elog "and get ${A}."
-	elog "Place it in ${DISTDIR}"
+	elog "Place it into your DISTDIR directory."
 }
 
 src_prepare() {

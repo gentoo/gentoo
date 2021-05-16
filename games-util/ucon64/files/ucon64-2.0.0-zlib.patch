@@ -1,5 +1,5 @@
---- misc/unzip.h.old	2011-09-23 19:53:09.708884325 +0200
-+++ misc/unzip.h	2011-09-23 19:54:00.012878355 +0200
+--- a/misc/unzip.h
++++ b/misc/unzip.h
 @@ -49,6 +49,10 @@
  #include "zlib.h"
  #endif
@@ -11,8 +11,8 @@
  #if defined(STRICTUNZIP) || defined(STRICTZIPUNZIP)
  /* like the STRICT of WIN32, we define a pointer that cannot be converted
      from (void*) without cast */
---- libdiscmage/unzip.h.old	2011-09-23 19:59:47.319837133 +0200
-+++ libdiscmage/unzip.h	2011-09-23 20:00:07.230834769 +0200
+--- a/libdiscmage/unzip.h
++++ b/libdiscmage/unzip.h
 @@ -48,6 +48,9 @@
  #ifndef _ZLIB_H
  #include "zlib.h"
@@ -23,8 +23,8 @@
  
  #if defined(STRICTUNZIP) || defined(STRICTZIPUNZIP)
  /* like the STRICT of WIN32, we define a pointer that cannot be converted
---- libdiscmage/misc_z.c.old	2012-03-19 08:39:41.975022496 +0100
-+++ libdiscmage/misc_z.c	2012-03-19 08:40:13.109803301 +0100
+--- a/libdiscmage/misc_z.c
++++ b/libdiscmage/misc_z.c
 @@ -27,6 +27,7 @@
  #include <string.h>
  #include <errno.h>
@@ -33,8 +33,8 @@
  #include <zlib.h>
  #include "misc_z.h"
  #include "misc.h"
---- misc/archive.c.old	2012-03-19 08:41:06.478999810 +0100
-+++ misc/archive.c	2012-03-19 08:41:24.134741668 +0100
+--- a/misc/archive.c
++++ b/misc/archive.c
 @@ -27,6 +27,7 @@
  #include <string.h>
  #include <errno.h>

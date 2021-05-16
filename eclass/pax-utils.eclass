@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: pax-utils.eclass
 # @MAINTAINER:
 # The Gentoo Linux Hardened Team <hardened@gentoo.org>
 # @AUTHOR:
-# Original Author: Kevin F. Quinn <kevquinn@gentoo.org>
-# Modifications for bugs #365825, #431092, #520198, @ ECLASS markup: Anthony G. Basile <blueness@gentoo.org>
+# Author: Kevin F. Quinn <kevquinn@gentoo.org>
+# Author: Anthony G. Basile <blueness@gentoo.org>
 # @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
@@ -16,10 +15,10 @@
 # The eclass wraps the use of paxctl-ng, paxctl, set/getattr and scanelf utilities,
 # deciding which to use depending on what's installed on the build host, and
 # whether we're working with PT_PAX, XATTR_PAX or both.
+# Legacy PT_PAX markings no longer supported.
 #
 # To control what markings are made, set PAX_MARKINGS in /etc/portage/make.conf
-# to contain either "PT", "XT" or "none".  The default is to attempt both
-# PT_PAX and XATTR_PAX.
+# to contain either "PT", "XT" or "none".  The default is none
 
 if [[ -z ${_PAX_UTILS_ECLASS} ]]; then
 _PAX_UTILS_ECLASS=1
@@ -28,8 +27,8 @@ _PAX_UTILS_ECLASS=1
 # @DESCRIPTION:
 # Control which markings are made:
 # PT = PT_PAX markings, XT = XATTR_PAX markings
-# Default to PT markings.
-PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
+# Default to none markings.
+PAX_MARKINGS=${PAX_MARKINGS:="none"}
 
 # @FUNCTION: pax-mark
 # @USAGE: <flags> <ELF files>
@@ -48,11 +47,11 @@ PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
 # @CODE
 #
 # Default flags are 'PeMRS', which are the most restrictive settings.  Refer
-# to http://pax.grsecurity.net/ for details on what these flags are all about.
+# to https://pax.grsecurity.net/ for details on what these flags are all about.
 #
 # Please confirm any relaxation of restrictions with the Gentoo Hardened team.
-# Either ask on the gentoo-hardened mailing list, or CC/assign hardened@g.o on
-# the bug report.
+# Either ask on the gentoo-hardened mailing list, or CC/assign
+# hardened@gentoo.org on the bug report.
 pax-mark() {
 	local f								# loop over paxables
 	local flags							# pax flags
@@ -77,16 +76,14 @@ pax-mark() {
 		# _pax_list_files einfo "$@"
 		for f in "$@"; do
 
-			# First try paxctl -> this might try to create/convert program headers.
+			# First try paxctl
 			if type -p paxctl >/dev/null; then
 				einfo "PT_PAX marking -${flags} ${f} with paxctl"
-				# First, try modifying the existing PAX_FLAGS header.
+				# We try modifying the existing PT_PAX_FLAGS header.
 				paxctl -q${flags} "${f}" >/dev/null 2>&1 && continue
-				# Second, try creating a PT_PAX header (works on ET_EXEC).
-				# Even though this is less safe, most exes need it. #463170
-				paxctl -qC${flags} "${f}" >/dev/null 2>&1 && continue
-				# Third, try stealing the (unused under PaX) PT_GNU_STACK header
-				paxctl -qc${flags} "${f}" >/dev/null 2>&1 && continue
+				# We no longer try to create/convert a PT_PAX_FLAGS header, bug #590422
+				# paxctl -qC${flags} "${f}" >/dev/null 2>&1 && continue
+				# paxctl -qc${flags} "${f}" >/dev/null 2>&1 && continue
 			fi
 
 			# Next try paxctl-ng -> this will not create/convert any program headers.
@@ -179,6 +176,10 @@ host-is-pax() {
 # them elsewhere as they are not supported (i.e. they may be removed
 # or their function may change arbitrarily).
 
+# @FUNCTION: _pax_list_files
+# @INTERNAL
+# @USAGE: <command to display items> [items]
+# @DESCRIPTION:
 # Display a list of things, one per line, indented a bit, using the
 # display command in $1.
 _pax_list_files() {

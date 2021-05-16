@@ -1,0 +1,14 @@
+Fix byte compilation with Emacs 26.
+https://bugs.gentoo.org/647638
+
+--- mldonkey-el-0.0.4b-orig/mldonkey-vd.el
++++ mldonkey-el-0.0.4b/mldonkey-vd.el
+@@ -801,7 +801,7 @@
+     (insert "\n")))
+ 
+ 
+-(defun mldonkey-vd-insert (&optional ignore-1 &optional ignore-2)
++(defun mldonkey-vd-insert (&optional ignore-1 ignore-2)
+ 
+   "Insert the table with the downloads in the MlDonkey buffer."
+ 

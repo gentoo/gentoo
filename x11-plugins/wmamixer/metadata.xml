@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+
+<longdescription>
+Wmamixer is a fork of wmsmixer and is an ALSA mixer dockapp for Window Maker.
+
+The code for the ALSA part was taken and adapted from amixer and alsamixer programs from alsa-utils package.
+</longdescription>
+</pkgmetadata>

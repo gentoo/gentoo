@@ -1,0 +1,44 @@
+diff --git a/panel-plugin/kbdleds-dialogs.c b/panel-plugin/kbdleds-dialogs.c
+index 7f751f3ef446..7e4125f2be22 100644
+--- a/panel-plugin/kbdleds-dialogs.c
++++ b/panel-plugin/kbdleds-dialogs.c
+@@ -25,7 +25,7 @@
+ #include <gtk/gtk.h>
+ 
+ #include <libxfce4ui/libxfce4ui.h>
+-#include <libxfce4panel/xfce-panel-plugin.h>
++#include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "kbdleds.h"
+ #include "kbdleds-dialogs.h"
+diff --git a/panel-plugin/kbdleds.c b/panel-plugin/kbdleds.c
+index 9c78d402b1c7..502a2885bcea 100644
+--- a/panel-plugin/kbdleds.c
++++ b/panel-plugin/kbdleds.c
+@@ -28,7 +28,7 @@
+ 
+ #include <gtk/gtk.h>
+ #include <libxfce4util/libxfce4util.h>
+-#include <libxfce4panel/xfce-panel-plugin.h>
++#include <libxfce4panel/libxfce4panel.h>
+ 
+ #include "kbdleds.h"
+ #include "kbdleds-dialogs.h"
+@@ -140,7 +140,7 @@ kbdleds_new (XfcePanelPlugin *plugin)
+   GtkWidget      *label;
+ 
+   /* allocate memory for the plugin structure */
+-  kbdleds = panel_slice_new0 (kbdledsPlugin);
++  kbdleds = g_slice_new0 (kbdledsPlugin);
+ 
+   /* pointer to plugin */
+   kbdleds->plugin = plugin;
+@@ -187,7 +187,7 @@ kbdleds_free (XfcePanelPlugin *plugin,
+     //g_free (kbdleds->setting1);
+ 
+   /* free the plugin structure */
+-  panel_slice_free (kbdledsPlugin, kbdleds);
++  g_slice_free (kbdledsPlugin, kbdleds);
+ 
+   /* free the timeout */
+   if (timeoutId) {

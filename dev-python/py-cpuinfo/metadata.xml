@@ -11,5 +11,6 @@
       <email>matthew.brennan.jones@gmail.com</email>
       <name>Matthew Brennan Jones</name>
     </maintainer>
+    <remote-id type="github">workhorsy/py-cpuinfo</remote-id>
   </upstream>
 </pkgmetadata>

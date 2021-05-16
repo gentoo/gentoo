@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit gnome2-utils
@@ -32,7 +31,7 @@ src_install() {
 	insinto /usr/share/icons
 	for i in gnome*; do
 		if [ "$i" != "gnome-colors-common" ]; then
-			doins -r "${i}" || die
+			doins -r "${i}"
 		fi
 	done
 	einstalldocs

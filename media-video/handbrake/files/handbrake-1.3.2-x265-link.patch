@@ -1,0 +1,12 @@
+diff -Naru a/test/module.defs b/test/module.defs
+--- a/test/module.defs	2020-05-23 17:23:21.912103481 +0200
++++ b/test/module.defs	2020-05-23 17:23:36.106103799 +0200
+@@ -16,7 +16,7 @@
+ TEST.GCC.l = \
+         ass avformat avfilter avcodec avutil swresample postproc mp3lame dvdnav \
+         dvdread fribidi \
+-        swscale vpx theoraenc theoradec vorbis vorbisenc ogg x264 \
++        swscale vpx theoraenc theoradec vorbis vorbisenc ogg x264 x265 \
+         bluray freetype xml2 bz2 z jansson harfbuzz opus speex lzma dav1d
+ 
+ ifeq (,$(filter $(HOST.system),darwin cygwin mingw))

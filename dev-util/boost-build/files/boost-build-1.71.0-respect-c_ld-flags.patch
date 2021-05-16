@@ -1,0 +1,9 @@
+--- a/engine/build.sh
++++ b/engine/build.sh
+@@ -439,5 +439,5 @@
+ if check_debug_build "$@" ; then B2_CXXFLAGS="${B2_CXXFLAGS_DEBUG}"
+ else B2_CXXFLAGS="${B2_CXXFLAGS_RELEASE} -DNDEBUG"
+ fi
+-echo_run ${B2_CXX} ${CXXFLAGS} ${B2_CXXFLAGS} ${B2_SOURCES} -o b2
++echo_run ${B2_CXX} ${CPPFLAGS} ${CXXFLAGS} ${LDFLAGS} ${B2_CXXFLAGS} ${B2_SOURCES} -o b2
+ echo_run cp b2 bjam

@@ -9,4 +9,8 @@
   <email>cjk@gentoo.org</email>
   <name>Cjk</name>
 </maintainer>
+<stabilize-allarches/>
+<use>
+  <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
+</use>
 </pkgmetadata>

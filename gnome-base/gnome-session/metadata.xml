@@ -6,7 +6,6 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
-	<flag name="gconf">Optional support for <pkg>gnome-base/gconf</pkg>
-		configuration storage system</flag>
+	<flag name="elogind">Support <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 </use>
 </pkgmetadata>

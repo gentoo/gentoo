@@ -22,7 +22,7 @@
 +++ svgalib/kernel/svgalib_helper/Makefile.alt
 @@ -37,7 +37,7 @@
  CFLAGS += -DSVGALIB_HELPER_MAJOR=$(SVGALIB_HELPER_MAJOR)
- 
+                                                                                                   
  ifeq (1,$(findstring 1,$(MODVER)))
 -	CFLAGS += -DMODVERSIONS -include $(INCLUDEDIR)/linux/modversions.h
 +	CFLAGS += -DMODVERSIONS -DCONFIG_MODVERSIONS=1

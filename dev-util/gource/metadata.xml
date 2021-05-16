@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>flameeyes@gentoo.org</email>
-  </maintainer>
-  <upstream>
-    <remote-id type="google-code">gource</remote-id>
-    <remote-id type="github">acaudwell/Gource</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>kensington@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="google-code">gource</remote-id>
+		<remote-id type="github">acaudwell/Gource</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>idl0r@gentoo.org</email>
-		<name>Christian Ruppert</name>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>
-		Video Disk Recorder Xinelib PlugIn ( VDR )
-	</longdescription>
 	<use>
 		<flag name="cec">Enable CEC support through <pkg>dev-libs/libcec</pkg></flag>
 		<flag name="bluray">Enable BluRay metadata support through <pkg>media-libs/libbluray</pkg></flag>

@@ -5,6 +5,7 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 The Python X2Go module integrates X2Go client support into your python programmes.
 Python X2Go is used in the headless X2Go client "pyhoca-cli" and by the tiny systray GUI applet "pyhoca-gui"

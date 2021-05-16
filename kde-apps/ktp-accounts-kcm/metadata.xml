@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="experimental">Enables disabled telepathy services (currently only steam)</flag>
-		<flag name="modemmanager">Enable support for mobile broadband devices</flag>
 	</use>
 </pkgmetadata>

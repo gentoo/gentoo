@@ -1,0 +1,67 @@
+--- a/arss.c
++++ b/arss.c
+@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
+ 
+ char *version = "0.2.3";
+ char *date = "May 29th, 2008";
++extern int32_t quiet;
+ 
+ #define MSG_NUMBER_EXPECTED "A number is expected after %s\nExiting with error.\n"
+ 
+--- a/dsp.c
++++ b/dsp.c
+@@ -1,5 +1,12 @@
+ #include "dsp.h"
+ 
++double pi;
++double LOGBASE;
++double LOOP_SIZE_SEC;
++int32_t BMSQ_LUT_SIZE;
++int32_t clocka;
++
++
+ void fft(double *in, double *out, int32_t N, uint8_t method)
+ {
+ 	/* method :
+--- a/dsp.h
++++ b/dsp.h
+@@ -17,13 +17,13 @@
+ #define LOOP_SIZE_SEC_D	10.0
+ #define BMSQ_LUT_SIZE_D	16000
+ 
+-double pi;
+-double LOGBASE;			// Base for log() operations. Anything other than 2 isn't really supported
++extern double pi;
++extern double LOGBASE;			// Base for log() operations. Anything other than 2 isn't really supported
+ #define TRANSITION_BW_SYNT 16.0		// defines the transition bandwidth for the low-pass filter on the envelopes during synthesisation
+-double LOOP_SIZE_SEC;		// size of the noise loops in seconds
+-int32_t BMSQ_LUT_SIZE;		// defines the number of elements in the Blackman Square look-up table. It's best to make it small enough to be entirely cached
++extern double LOOP_SIZE_SEC;		// size of the noise loops in seconds
++extern int32_t BMSQ_LUT_SIZE;		// defines the number of elements in the Blackman Square look-up table. It's best to make it small enough to be entirely cached
+ 
+-int32_t clocka;
++extern int32_t clocka;
+ 
+ extern void fft(double *in, double *out, int32_t N, uint8_t method);
+ extern void normi(double **s, int32_t xs, int32_t ys, double ratio);
+--- a/util.c
++++ b/util.c
+@@ -1,5 +1,7 @@
+ #include "util.h"
+ 
++int32_t quiet;
++
+ void win_return()
+ {
+ 	#ifdef WIN32
+--- a/util.h
++++ b/util.h
+@@ -11,7 +11,7 @@
+ 
+ #include "dsp.h"
+ 
+-int32_t quiet;
++extern int32_t quiet;
+ 
+ extern void win_return();
+ extern int32_t gettime();

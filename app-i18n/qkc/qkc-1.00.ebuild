@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -14,18 +13,16 @@ SRC_URI="http://hp.vector.co.jp/authors/VA000501/${MY_P}.zip"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
+
 S="${WORKDIR}"
 
-src_prepare() {
-	sed -i "/^LFLAGS/s:$: \${LDFLAGS}:" Makefile
-}
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
-src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+src_configure() {
+	tc-export CC
 }
 
 src_install() {

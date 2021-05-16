@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,9 +11,7 @@ SRC_URI="http://www.isthe.com/chongo/src/calc/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-
-IUSE=""
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	sys-libs/ncurses:0=
@@ -40,7 +37,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}" \
 		CALCPAGER="${PAGER}" \
 		USE_READLINE="-DUSE_READLINE" \
-		READLINE_LIB="-lreadline -lhistory $(pkg-config --libs ncurses) -L\"${S}\"/custom -lcustcalc" \
+		READLINE_LIB="-lreadline -lhistory $($(tc-getPKG_CONFIG) --libs ncurses) -L\"${S}\"/custom -lcustcalc" \
 		all
 }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">lassekongo83/zuki-themes</remote-id>
+	</upstream>
+	<use>
+		<flag name="gnome-shell">Install theme for <pkg>gnome-base/gnome-shell</pkg></flag>
+		<flag name="mate">Install Metacity theme for <pkg>mate-base/mate</pkg></flag>
+		<flag name="xfce">Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
+	</use>
+</pkgmetadata>

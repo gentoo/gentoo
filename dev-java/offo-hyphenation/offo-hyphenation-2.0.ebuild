@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -20,7 +19,6 @@ S="${WORKDIR}/${PN}"
 src_compile() { :; }
 
 src_install() {
-	dodir /usr/share/${PN}/
 	insinto /usr/share/${PN}/
 	doins -r hyph
 

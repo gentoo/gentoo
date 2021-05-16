@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="simple and flexible workload orchestrator"
+command="/usr/bin/${RC_SVCNAME}"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_background="true"
+start_stop_daemon_args="--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+stopsig=SIGINT
+extra_started_commands=reload
+
+depend() {
+	after net
+}
+
+reload() {
+	start-stop-daemon --signal HUP --pidfile "${pidfile}"
+}

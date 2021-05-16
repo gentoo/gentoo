@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/dino/dino/issues</bugs-to>
+		<remote-id type="github">dino/dino</remote-id>
+	</upstream>
+	<use>
+		<flag name="gpg">Enable OpenPGP encryption plugin</flag>
+		<flag name="http">Enable HTTP file upload plugin</flag>
+		<flag name="omemo">Enable OMEMO encryption plugin</flag>
+		<flag name="notification-sound">notification sounds plugin</flag>
+	</use>
+</pkgmetadata>

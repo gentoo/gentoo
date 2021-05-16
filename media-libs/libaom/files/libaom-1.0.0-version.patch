@@ -1,0 +1,10 @@
+--- a/build/cmake/version.cmake	2018-09-21 01:20:32.299238765 +0200
++++ b/build/cmake/version.cmake	2018-09-21 01:21:01.473106534 +0200
+@@ -46,6 +46,7 @@
+ endif()
+ 
+ if(NOT "${aom_version}" STREQUAL "${last_aom_version}")
++  set(aom_version "v1.0.0")
+ 
+   # TODO(tomfinegan): Perl dependency is unnecessary. CMake can do everything
+   # that is done by version.pl on its own (if a bit more verbose...).

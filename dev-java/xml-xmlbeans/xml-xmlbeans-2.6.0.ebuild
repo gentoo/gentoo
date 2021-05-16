@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source"
@@ -10,8 +9,8 @@ inherit java-pkg-2 java-ant-2
 MY_P="xmlbeans-${PV}"
 
 DESCRIPTION="An XML-Java binding tool"
-HOMEPAGE="http://xmlbeans.apache.org/"
-SRC_URI="http://archive.apache.org/dist/xmlbeans/source/${MY_P}-src.zip"
+HOMEPAGE="https://xmlbeans.apache.org/"
+SRC_URI="https://archive.apache.org/dist/xmlbeans/source/${MY_P}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="2"
@@ -31,6 +30,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
+	app-arch/unzip
 	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${MY_P}"

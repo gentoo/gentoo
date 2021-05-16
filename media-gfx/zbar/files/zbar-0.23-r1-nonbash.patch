@@ -1,0 +1,120 @@
+https://bugs.gentoo.org/769716
+
+From 4bd586181dde6196cb60602f228c4deb07818989 Mon Sep 17 00:00:00 2001
+From: Klaus Ethgen <Klaus@Ethgen.de>
+Date: Sun, 7 Feb 2021 14:22:52 +0100
+Subject: [PATCH] =?iso8859-1?q?Configure-Patch=20f=FCr=20nicht-bash?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso8859-1
+Content-Transfer-Encoding: 8bit
+
+---
+ configure.ac | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index c2b7819..f6224a1 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -489,7 +489,7 @@ AC_ARG_WITH([gtk],
+ AC_ARG_VAR([GLIB_GENMARSHAL], [full path to glib-genmarshal])
+ AC_ARG_VAR([GTK_VERSION_MAJOR])
+ 
+-AS_IF([test "x$with_gtk" == "xgtk3" || test "x$with_gtk" == "xauto"],
++AS_IF([test "x$with_gtk" = "xgtk3" || test "x$with_gtk" = "xauto"],
+   [PKG_CHECK_MODULES([GTK3], [gtk+-3.0],
+     [GLIB_GENMARSHAL=`$PKG_CONFIG glib-2.0 --variable=glib_genmarshal`
+      GTK_VERSION=`$PKG_CONFIG gtk+-3.0 --modversion`
+@@ -501,7 +501,7 @@ AS_IF([test "x$with_gtk" == "xgtk3" || test "x$with_gtk" == "xauto"],
+     ])
+   ])
+ 
+-AS_IF([test "x$with_gtk" == "xgtk2" || test "x$with_gtk" == "xauto"],
++AS_IF([test "x$with_gtk" = "xgtk2" || test "x$with_gtk" = "xauto"],
+   [PKG_CHECK_MODULES([GTK2], [gtk+-2.0],
+     [GLIB_GENMARSHAL=`$PKG_CONFIG glib-2.0 --variable=glib_genmarshal`
+      GTK_VERSION=`$PKG_CONFIG gtk+-2.0 --modversion`
+@@ -550,11 +550,11 @@ AC_ARG_VAR([PYGTK_CODEGEN], [full path to pygtk-codegen program (python2 only)])
+ AC_ARG_VAR([PYGTK_DEFS], [directory where PyGTK definitions may be found (python2 only)])
+ 
+ AS_IF([test -z "$PYTHON"],
+-      [AS_IF([test "x$with_python" == "xauto"],
++      [AS_IF([test "x$with_python" = "xauto"],
+              [AC_PATH_PROGS([PYTHON], [python3 python2 python], [:], [$PATH])],
+-             [AS_IF([test "x$with_python" == "xpython3"],
++             [AS_IF([test "x$with_python" = "xpython3"],
+                     [AC_PATH_PROGS([PYTHON], [python3 python], [:], [$PATH])],
+-                    [AS_IF([test "x$with_python" == "xpython2"],
++                    [AS_IF([test "x$with_python" = "xpython2"],
+                            [AC_PATH_PROGS([PYTHON], [python2 python], [:], [$PATH])],
+                            [with_python="no"])
+                     ])
+@@ -608,7 +608,7 @@ AM_CONDITIONAL([HAVE_PYGTK2], [test "x$with_pygtk2" != "xno"])
+ 
+ dnl GObject Introspection (GIR)
+ 
+-AS_IF([test "x$with_gir" == "xyes" && test "x$with_gtk" != "xno"],
++AS_IF([test "x$with_gir" = "xyes" && test "x$with_gtk" != "xno"],
+   [m4_ifdef([GOBJECT_INTROSPECTION_CHECK],
+     [GOBJECT_INTROSPECTION_CHECK([0.6.7])
+      AS_IF([test "x$found_introspection" = "xyes"],
+@@ -696,7 +696,7 @@ AC_ARG_WITH([java],
+   [],
+   [with_java="check"])
+ 
+-JAVAC=${JAVAC/ecj/ecj -1.5}
++JAVAC="$(echo $JAVAC | sed 's/ecj/ecj -1.5/')"
+ 
+ # Javah was obsoleted on Java 8 and removed on Java 11. So, we need to
+ # look strictly at the $JAVA_HOME in order to avoid mixing different versions
+@@ -707,13 +707,13 @@ AM_CONDITIONAL([HAVE_JAVAH], [test "x$JAVAH" != "x"])
+ 
+ AC_ARG_VAR([JAR], [location of Java archive tool])
+ AC_PATH_PROGS([JAR], [jar], [:], [$JAVA_PATH])
+-AS_IF([test "x$JAR" == "x:"], [have_java="no"])
++AS_IF([test "x$JAR" = "x:"], [have_java="no"])
+ 
+ AC_ARG_VAR([JAVA], [location of Java application launcher])
+ AC_PATH_PROGS([JAVA], [java], [/bin/false], [$JAVA_PATH])
+ 
+ AC_ARG_VAR([CLASSPATH], [Java class path (include JUnit to run java tests)])
+-AS_IF([test "x$CLASSPATH" == "x"], [CLASSPATH="."])
++AS_IF([test "x$CLASSPATH" = "x"], [CLASSPATH="."])
+ 
+ dnl Search for Java unit test library
+ AS_IF([test -z "$JUNIT_HOME"],
+@@ -850,7 +850,7 @@ echo "GTK                    --with-gtk=$with_gtk          Gtk${GTK_VERSION}"
+ echo "GObject introspection  --with-gir=$with_gir"
+ echo "Qt                     --with-qt=$with_qt            Qt${QT_VERSION}"
+ echo "Java                   --with-java=$with_java"
+-AS_IF([test "x$win32" == "xno"],
++AS_IF([test "x$win32" = "xno"],
+   [echo "Dbus                   --with-dbus=$with_dbus"])
+ AS_IF([test "x$have_GM" = "xyes"],
+   [echo "GraphicsMagick         --with-graphicsmagick=yes"],
+@@ -873,13 +873,13 @@ AS_IF([test "x$have_IM" != "xyes" && test "x$have_GM" != "xyes"],
+   [echo "        => the zbarimg file scanner will *NOT* be built"])
+ AS_IF([test "x$have_GM" = "xyes"],
+   [echo "        => ImageMagick is preferred, as GraphicsMagick doesn't support https"])
+-AS_IF([test "x$with_gtk" == "xno"],
++AS_IF([test "x$with_gtk" = "xno"],
+   [echo "        => GTK support will *NOT* be built"])
+ AS_IF([test "x$with_pygtk2" != "xyes" && test "xPYTHON_VERSION_MAJOR" = "x2"],
+   [echo "        => the Python 2 GTK widget wrapper will *NOT* be built"])
+ AS_IF([test "x$with_qt" != "xyes"],
+   [echo "        => the Qt widget will *NOT* be built"])
+-AS_IF([test "x$with_qt" == "xyes" && test "x$enable_static_qt" == "xyes" ],
++AS_IF([test "x$with_qt" = "xyes" && test "x$enable_static_qt" = "xyes" ],
+   [echo "        => Building a static Qt library"])
+ AS_IF([test "x$with_java" != "xyes"],
+   [echo "        => the Java interface will *NOT* be built"])
+@@ -888,5 +888,5 @@ AS_IF([test "x$with_java_unit" != "xyes"],
+ #echo "NPAPI Plugin     --with-npapi=$with_npapi"
+ #AS_IF([test "x$with_mozilla" != "xyes"],
+ #  [echo "       => the Mozilla/Firefox/OpenOffice plugin will *NOT* be built"])
+-AS_IF([test "x$enable_pdf417" == "xyes"],
++AS_IF([test "x$enable_pdf417" = "xyes"],
+   [echo "        => the pdf417 code support is incomplete!"])
+-- 
+2.30.0
+

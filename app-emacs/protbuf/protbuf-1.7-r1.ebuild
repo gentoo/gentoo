@@ -1,14 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Protect Emacs buffers from accidental killing"
 HOMEPAGE="http://www.splode.com/~friedman/software/emacs-lisp/
-	http://www.emacswiki.org/emacs/ProtectingBuffers"
+	https://www.emacswiki.org/emacs/ProtectingBuffers"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2+"

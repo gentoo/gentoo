@@ -1,0 +1,18 @@
+Allow compiling with Clang
+https://bugs.gentoo.org/739330
+
+--- a/src/sdlhandler.cpp
++++ b/src/sdlhandler.cpp
+@@ -1034,10 +1034,10 @@
+ bool SDLHandler::intersects( int x, int y, int w, int h,
+                              int x2, int y2, int w2, int h2 ) {
+ 	SDL_Rect ra = {
+-		x, y, w, h
++		static_cast<Sint16>(x), static_cast<Sint16>(y), static_cast<Uint16>(w), static_cast<Uint16>(h)
+ 	};
+ 	SDL_Rect rb = {
+-		x2, y2, w2, h2
++		static_cast<Sint16>(x2), static_cast<Sint16>(y2), static_cast<Uint16>(w2), static_cast<Uint16>(h2)
+ 	};
+ 	return intersects( &ra, &rb );
+ }

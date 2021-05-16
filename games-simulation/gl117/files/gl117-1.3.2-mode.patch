@@ -1,5 +1,5 @@
---- src/main.cpp.orig	2010-07-13 09:35:18.374122609 +0100
-+++ src/main.cpp	2010-07-13 09:35:45.334955120 +0100
+--- a/src/main.cpp	2010-07-13 09:35:18.374122609 +0100
++++ b/src/main.cpp	2010-07-13 09:35:45.334955120 +0100
 @@ -71,8 +71,7 @@ int mode = 0;
  
  // pre-defined screen resolutions (x, y, bpp, fullscreen)

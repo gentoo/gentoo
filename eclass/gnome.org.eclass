@@ -1,6 +1,5 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: gnome.org.eclass
 # @MAINTAINER:
@@ -12,9 +11,11 @@
 # @DESCRIPTION:
 # Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
 
-inherit versionator
+# versionator inherit kept for older EAPIs due to ebuilds (potentially) relying on it
+[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver versionator
 
 # @ECLASS-VARIABLE: GNOME_TARBALL_SUFFIX
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Most projects hosted on gnome.org mirrors provide tarballs as tar.bz2 or
 # tar.xz. This eclass defaults to bz2 for EAPI 0, 1, 2, 3 and defaults to xz for
@@ -29,7 +30,11 @@ fi
 # Even though xz-utils are in @system, they must still be added to DEPEND; see
 # https://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
 if [[ ${GNOME_TARBALL_SUFFIX} == "xz" ]]; then
-	DEPEND="${DEPEND} app-arch/xz-utils"
+	if [[ ${EAPI:-0} != [0123456] ]]; then
+		BDEPEND="app-arch/xz-utils"
+	else
+		DEPEND="app-arch/xz-utils"
+	fi
 fi
 
 # @ECLASS-VARIABLE: GNOME_ORG_MODULE
@@ -41,8 +46,12 @@ fi
 # @ECLASS-VARIABLE: GNOME_ORG_PVP
 # @INTERNAL
 # @DESCRIPTION:
-# Major and minor numbers of the version number.
-: ${GNOME_ORG_PVP:=$(get_version_component_range 1-2)}
+# Components of the version number that correspond to a 6 month release.
+if ver_test -ge 40.0; then
+	: ${GNOME_ORG_PVP:=$(ver_cut 1)}
+else
+	: ${GNOME_ORG_PVP:=$(ver_cut 1-2)}
+fi
 
 SRC_URI="mirror://gnome/sources/${GNOME_ORG_MODULE}/${GNOME_ORG_PVP}/${GNOME_ORG_MODULE}-${PV}.tar.${GNOME_TARBALL_SUFFIX}"
 

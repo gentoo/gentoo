@@ -1,33 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
-GCONF_DEBUG=no
+[[ ${PV} == *9999 ]] && GNOME2_EAUTORECONF=yes
 
-inherit gnome2 autotools
+inherit gnome2
 
-DESCRIPTION="Xournal is an application for notetaking, sketching, and keeping a journal using a stylus"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.code.sf.net/p/xournal/code"
+	unset SRC_URI
+else
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+fi
+
+DESCRIPTION="An application for notetaking, sketching, and keeping a journal using a stylus"
 HOMEPAGE="http://xournal.sourceforge.net/"
 
 LICENSE="GPL-2"
-
 SLOT="0"
 IUSE="+pdf"
 
-if [[ "${PV}" != "9999" ]]; then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-else
-	inherit git-2
-	SRC_URI=""
-	KEYWORDS=""
-	EGIT_REPO_URI="git://xournal.git.sourceforge.net/gitroot/xournal/xournal"
-fi
-
 COMMONDEPEND="
-	app-text/poppler:=[cairo]
+	app-text/poppler[cairo]
 	dev-libs/atk
 	dev-libs/glib
 	gnome-base/libgnomecanvas
@@ -47,9 +44,8 @@ DEPEND="${COMMONDEPEND}
 "
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	emake DESTDIR="${D}" desktop-install
 
-	dodoc ChangeLog AUTHORS README
-	dohtml -r html-doc/*
+	dodoc -r html-doc/*
 }

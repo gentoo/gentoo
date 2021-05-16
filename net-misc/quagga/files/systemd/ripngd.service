@@ -1,7 +1,7 @@
 [Unit]
 Description=RIP routing daemon for IPv6
 Documentation=man:ripngd(8) man:zebra(8)
-BindTo=zebra.service
+BindsTo=zebra.service
 After=network.target zebra.service
 ConditionPathExists=/etc/quagga/ripngd.conf
 

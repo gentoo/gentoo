@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	peco can be a great tool to filter stuff like logs, process stats,
+	find files, because unlike grep, you can type as you think and
+	look through the current results.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">peco/peco</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,43 @@
+From 737acaff3658663de61813ba877379841e76631e Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Thu, 19 Mar 2020 09:50:22 -0700
+Subject: [PATCH] remove werror
+
+---
+ buildSrc/linux.gradle | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
+index 7a7cbc7..6955155 100644
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -223,7 +223,7 @@ FileTree ft_gtk = fileTree("${project(":graphics").projectDir}/src/main/native-g
+ LINUX.glass.glass = [:]
+ LINUX.glass.glass.nativeSource = ft_gtk_launcher.getFiles()
+ LINUX.glass.glass.compiler = compiler
+-LINUX.glass.glass.ccFlags = [ccFlags, gtk2CCFlags,  "-Werror"].flatten()
++LINUX.glass.glass.ccFlags = [ccFlags, gtk2CCFlags].flatten()
+ LINUX.glass.glass.linker = linker
+ LINUX.glass.glass.linkFlags = [linkFlags, "-lX11", "-ldl" ].flatten()
+ LINUX.glass.glass.lib = "glass"
+@@ -231,7 +231,7 @@ LINUX.glass.glass.lib = "glass"
+ LINUX.glass.glassgtk2 = [:]
+ LINUX.glass.glassgtk2.nativeSource =  ft_gtk.getFiles()
+ LINUX.glass.glassgtk2.compiler = compiler
+-LINUX.glass.glassgtk2.ccFlags = [ccFlags, gtk2CCFlags, "-Werror"].flatten()
++LINUX.glass.glassgtk2.ccFlags = [ccFlags, gtk2CCFlags].flatten()
+ LINUX.glass.glassgtk2.linker = linker
+ LINUX.glass.glassgtk2.linkFlags = [linkFlags, gtk2LinkFlags ].flatten()
+ LINUX.glass.glassgtk2.lib = "glassgtk2"
+@@ -239,7 +239,7 @@ LINUX.glass.glassgtk2.lib = "glassgtk2"
+ LINUX.glass.glassgtk3 = [:]
+ LINUX.glass.glassgtk3.nativeSource =  ft_gtk.getFiles()
+ LINUX.glass.glassgtk3.compiler = compiler
+-LINUX.glass.glassgtk3.ccFlags = [ccFlags, gtk3CCFlags, "-Werror"].flatten()
++LINUX.glass.glassgtk3.ccFlags = [ccFlags, gtk3CCFlags].flatten()
+ LINUX.glass.glassgtk3.linker = linker
+ LINUX.glass.glassgtk3.linkFlags = [linkFlags, gtk3LinkFlags ].flatten()
+ LINUX.glass.glassgtk3.lib = "glassgtk3"
+-- 
+2.24.1
+

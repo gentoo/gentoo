@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 2016-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Docker Volume Netshare plugin"
+pidfile=${pidfile:-"/run/${SVCNAME}.pid"}
+command="/usr/bin/docker-volume-netshare"
+command_args="${command_args:nfs}"
+command_background="true"
+start_stop_daemon_args="--stdout /var/log/${SVCNAME}.log \
+	--stderr /var/log/${SVCNAME}.log"

@@ -1,0 +1,12 @@
+--- a/Makefile.in~	2018-04-02 11:58:30.000000000 +0200
++++ b/Makefile.in	2018-04-02 12:00:15.173470572 +0200
+@@ -42,8 +42,7 @@
+ 	$(AR) -rc $@ $^
+ 	@RANLIB@ $@ || true
+ 
+-l2tpd: libl2tp.a libevent/libevent.a
+-	$(MAKE) -C handlers
++l2tpd: libl2tp.a libevent/libevent.a handlers
+ 	@CC@ $(LDFLAGS) -o l2tpd -rdynamic $(OBJS) $(EXTRA_LIBS)
+ 
+ libevent/libevent.a:

@@ -1,0 +1,36 @@
+From 415c730133476d6652f479242b0638496b5f673b Mon Sep 17 00:00:00 2001
+From: Steven Xu <stevenxxiu@gmail.com>
+Date: Tue, 23 Mar 2021 20:12:52 +1100
+Subject: [PATCH] fix: update `update last_update_time` earlier, so the network
+ speed is correctly displayed, otherwise the speed shown is much lower than
+ the actual speed (resolves #863)
+
+---
+ src/conky.cc | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/conky.cc b/src/conky.cc
+index b116b2bed..af5602c5b 100644
+--- a/src/conky.cc
++++ b/src/conky.cc
+@@ -766,6 +766,12 @@ static void generate_text() {
+    * some info.mem entries */
+   update_stuff();
+ 
++  /* Update `last_update_time` before `generate_text_internal()`, as the latter
++   * calls `evaluate()` -> `update_net_stats()`, which needs `last_update_time`
++   * to be set correctly. If this is not done, than the network speed being
++   * shown will be much lower than the actual speed.*/
++  last_update_time = current_update_time;
++
+   /* populate the text buffer; generate_text_internal() iterates through
+    * global_root_object (an instance of the text_object struct) and calls
+    * any callbacks that were set on startup by construct_text_object(). */
+@@ -822,7 +828,6 @@ static void generate_text() {
+   if (next_update_time < time || next_update_time > time + ui) {
+     next_update_time = time - fmod(time, ui) + ui;
+   }
+-  last_update_time = current_update_time;
+   total_updates++;
+ }
+ 

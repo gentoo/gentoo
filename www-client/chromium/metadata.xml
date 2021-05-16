@@ -5,16 +5,18 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
-	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
 	<use>
-		<flag name="gn">Use GN (generate ninja) instead of GYP for building</flag>
-		<flag name="gtk3">Use gtk3 instead of gtk2</flag>
+		<flag name="js-type-check">Enable JavaScript type-checking for Chrome's web technology-based UI. Requires Java.</flag>
+		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
+		<flag name="headless">Build Ozone only with headless backend, NOT RECOMMENDED for general use.</flag>
 		<flag name="hangouts">Enable support for Google Hangouts features such as screen sharing</flag>
-		<flag name="hidpi">Enable support for high-resolution screens (high dots per inch)</flag>
-		<flag name="hotwording">Enable voice-recognition support (Ok Google)</flag>
+		<flag name="official">Enable Official build instead of Developer build.</flag>
 		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
-		<flag name="proprietary-codecs">Enable proprietary codecs like H.264, MP3</flag>
+		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+		<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
+		<flag name="suid">Build the SUID sandbox, which is only needed on CONFIG_USER_NS=n kernels</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
+		<flag name="system-icu">Use system icu instead of the bundled one</flag>
 		<flag name="tcmalloc">Use bundled tcmalloc instead of system malloc</flag>
 		<flag name="widevine">Unsupported closed-source DRM capability (required by Netflix VOD)</flag>
 	</use>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		OneRNG is an entropy source / hardware random number generator (HWRNG),
+		designed to be connected via USB to your computer. Entropy is collected
+		from an avalanche diode circuit and optionally an RF circuit,
+		whitened and presented over a USB/Serial connection.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/OneRNG/onerng.github.io/issues</bugs-to>
+		<remote-id type="github">OneRNG/onerng.github.io</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -4,4 +4,4 @@
 # - user (default: vault)
 
 # extra arguments for the consul agent
-command_args="-config=/etc/consul.d"
+command_args="-config=/etc/vault.d"

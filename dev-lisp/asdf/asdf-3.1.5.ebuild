@@ -1,24 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils prefix
+
+inherit prefix
 
 DESCRIPTION="ASDF is Another System Definition Facility for Common Lisp"
 HOMEPAGE="http://common-lisp.net/project/asdf/"
 SRC_URI="http://common-lisp.net/project/${PN}/archives/${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+SLOT="0/${PVR}"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="doc"
 
-SLOT="0/${PVR}"
-
 DEPEND="!dev-lisp/cl-${PN}
-		!dev-lisp/asdf-binary-locations
-		!dev-lisp/gentoo-init
 		!<dev-lisp/asdf-2.33-r3
 		doc? ( virtual/texi2dvi )"
 RDEPEND=""

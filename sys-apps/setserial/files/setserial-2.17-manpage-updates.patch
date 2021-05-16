@@ -1,5 +1,5 @@
---- setserial-2.17/setserial.8.in
-+++ setserial-2.17/setserial.8.in
+--- a/setserial.8.in
++++ b/setserial.8.in
 @@ -34,7 +34,7 @@
  program should be used.  Typically it is called from an
 -.I rc.serial

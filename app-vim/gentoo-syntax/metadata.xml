@@ -6,9 +6,10 @@
     <name>Gentoo Vim Project</name>
   </maintainer>
   <maintainer type="person">
-    <email>yngwin@gentoo.org</email>
-    <name>Ben de Groot</name>
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
   </maintainer>
+  <stabilize-allarches/>
   <use>
     <flag name="ignore-glep31">Remove GLEP 31 (UTF-8 file encodings) settings</flag>
   </use>

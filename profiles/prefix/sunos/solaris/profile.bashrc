@@ -1,5 +1,4 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
-# $Id$
 
 # Automatically determine whether or not gen_usr_ldscript should be
 # doing something or not.  This is necessary due to previous screwups,

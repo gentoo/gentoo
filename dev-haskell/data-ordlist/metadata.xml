@@ -5,7 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This module provides set and multiset operations on ordered lists.
-	</longdescription>
 </pkgmetadata>

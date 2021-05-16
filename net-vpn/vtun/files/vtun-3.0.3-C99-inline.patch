@@ -1,0 +1,49 @@
+--- a/lfd_shaper.c
++++ b/lfd_shaper.c
+@@ -69,7 +69,7 @@ int shaper_counter(int len, char *in, char **out)
+ }
+ 
+ /* Convert tv struct to milisec */
+-unsigned long inline tv2ms(struct timeval tv)
++unsigned long tv2ms(struct timeval tv)
+ {
+      register unsigned long ms = (tv.tv_sec * 1000)+(tv.tv_usec / 1000); 
+      return  ms ? ms : 1;
+--- a/linkfd.c
++++ b/linkfd.c
+@@ -105,7 +105,7 @@ int lfd_free_mod(void)
+ }
+ 
+  /* Run modules down (from head to tail) */
+-inline int lfd_run_down(int len, char *in, char **out)
++int lfd_run_down(int len, char *in, char **out)
+ {
+      register struct lfd_mod *mod;
+      
+@@ -119,7 +119,7 @@ inline int lfd_run_down(int len, char *in, char **out)
+ }
+ 
+ /* Run modules up (from tail to head) */
+-inline int lfd_run_up(int len, char *in, char **out)
++int lfd_run_up(int len, char *in, char **out)
+ {
+      register struct lfd_mod *mod;
+      
+@@ -133,7 +133,7 @@ inline int lfd_run_up(int len, char *in, char **out)
+ }
+ 
+ /* Check if modules are accepting the data(down) */
+-inline int lfd_check_down(void)
++int lfd_check_down(void)
+ {
+      register struct lfd_mod *mod;
+      int err = 1;
+@@ -145,7 +145,7 @@ inline int lfd_check_down(void)
+ }
+ 
+ /* Check if modules are accepting the data(up) */
+-inline int lfd_check_up(void)
++int lfd_check_up(void)
+ {
+      register struct lfd_mod *mod;
+      int err = 1;

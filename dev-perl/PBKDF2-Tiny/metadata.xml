@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">PBKDF2-Tiny</remote-id>
+    <remote-id type="cpan-module">PBKDF2::Tiny</remote-id>
+  </upstream>
 </pkgmetadata>

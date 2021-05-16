@@ -1,4 +1,0 @@
-# $Id$
-PIDFILE="/var/run/mogile/mogstored.pid"
-MOGSTORED_OPTS=""
-# vim: ft=gentoo-conf-d:

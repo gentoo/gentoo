@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arzano@gentoo.org</email>
+		<name>Max Magorsch</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<longdescription>
+		pgo is a small command line interface for packages.gentoo.org. It is
+		using the graphql api of packages.gentoo.org to display information
+		about packages like: versions, metadata, dependencies, QA reports,
+		pull requests, bugs and the changelog. It's also able to display
+		information for maintainers, as a list of packages they are maintaining,
+		a list of outdated packages, or bugs related to the packages they are
+		maintaining.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<use>
+		<flag name="server">Compile and install Super Mario War server files</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">mmatyas/supermariowar</remote-id>
+	</upstream>
+</pkgmetadata>

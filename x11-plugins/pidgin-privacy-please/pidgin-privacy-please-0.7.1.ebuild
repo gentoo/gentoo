@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI=6
 
 inherit autotools
 
@@ -13,7 +12,6 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="linguas_de linguas_pl linguas_ru"
 
 RDEPEND="<net-im/pidgin-3[gtk]"
 DEPEND="${RDEPEND}
@@ -21,11 +19,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
+	default
 	sed -e 's: -Wall -g3::' -i configure.ac || die
 	eautoreconf
-}
-
-src_install() {
-	emake DESTDIR="${D}" ALL_LINGUAS="${LANGS}" install || die
-	dodoc AUTHORS ChangeLog NEWS README || die
 }

@@ -5,5 +5,7 @@
 	<email>voyageur@gentoo.org</email>
 	<name>Bernard Cafarelli</name>
 </maintainer>
-<longdescription>Special versions of the X11 libraries to support NX compression</longdescription>
+<upstream>
+	<remote-id type="github">ArcticaProject/nx-libs</remote-id>
+</upstream>
 </pkgmetadata>

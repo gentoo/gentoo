@@ -1,0 +1,60 @@
+From 840bee84bff9529f2f7de4293cf7d5f567985123 Mon Sep 17 00:00:00 2001
+From: Matt Ezell <ezellma@ornl.gov>
+Date: Thu, 8 Oct 2015 15:32:30 -0400
+Subject: [PATCH] Remove unnecessary dependency on openssl-devel
+
+Closes #219
+---
+ README.building_40            |  3 ---
+ configure.ac                  | 10 ----------
+ src/daemon_client/Makefile.am |  2 +-
+ 3 files changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/README.building_40 b/README.building_40
+index bd2af03070..4b3a8c5f8a 100644
+--- a/README.building_40
++++ b/README.building_40
+@@ -14,9 +14,6 @@ automake
+ libtool
+ pkg-config
+ 
+-Non-standard packages required for building the source:
+-libssl-dev (name may vary among OSes)
+-
+ *** For admins that use cpusets in any form ***
+ hwloc version 1.1 or greater is now required for building TORQUE with cpusets, as pbs_mom now uses the 
+ hwloc API to create the cpusets instead of creating them manually.
+diff --git a/configure.ac b/configure.ac
+index 14f238a519..636575c1b4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -745,16 +745,6 @@ AC_CHECK_LIB(pthread, pthread_create,
+ LIBS="$LIBS $PTHREAD_LIBS"
+ 
+ 
+-dnl we need -lssl and -lcrypto, lets make sure they exist
+-AC_CHECK_LIB(ssl, SSL_accept,
+-  [],
+-  [AC_MSG_ERROR([TORQUE needs lib openssl-devel in order to build]) ])
+-AC_CHECK_LIB(crypto, BN_init,
+-  [],
+-  [AC_MSG_ERROR([TORQUE needs lib crypto (often openssl-devel) in order to build]) ])
+-
+-
+-
+ dnl
+ dnl we need libxml2
+ dnl 
+diff --git a/src/daemon_client/Makefile.am b/src/daemon_client/Makefile.am
+index e39f5e70b2..fe9d592b06 100644
+--- a/src/daemon_client/Makefile.am
++++ b/src/daemon_client/Makefile.am
+@@ -5,7 +5,7 @@ CLEANFILES = *.gcda *.gcno *.gcov
+ 
+ include_HEADERS = trq_auth_daemon.h
+ 
+-AM_CFLAGS = -DPBS_SERVER_HOME=\"$(PBS_SERVER_HOME)\" -Wall -pthread -ldl -lrt -lssl -lcrypto
++AM_CFLAGS = -DPBS_SERVER_HOME=\"$(PBS_SERVER_HOME)\" -Wall -pthread -ldl -lrt
+ 
+ sbin_PROGRAMS = trqauthd
+ 

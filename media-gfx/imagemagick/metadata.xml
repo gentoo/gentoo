@@ -2,20 +2,25 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>graphics@gentoo.org</email>
-    <name>Gentoo Graphics Project</name>
+    <email>codec@gentoo.org</email>
+    <name>Gentoo Codec Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>dilfridge@gentoo.org</email>
+    <name>Andreas K. Huettel</name>
   </maintainer>
   <use>
-    <flag name="autotrace">Use <pkg>media-gfx/autotrace</pkg> to convert bitmaps into vector graphics</flag>
     <flag name="corefonts">Use <pkg>media-fonts/corefonts</pkg> which is required by some commands</flag>
     <flag name="fpx">Enable <pkg>media-libs/libfpx</pkg> support</flag>
-    <flag name="hdri">enable High Dynamic Range Images formats</flag>
+    <flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
+    <flag name="hdri">Enable High Dynamic Range Images formats</flag>
     <flag name="lqr">Enable experimental liquid rescale support using <pkg>media-libs/liblqr</pkg></flag>
     <flag name="opencl">Enable OpenCL support</flag>
     <flag name="pango">Enable Pango support using <pkg>x11-libs/pango</pkg></flag>
     <flag name="q32">Set quantum depth value to 32</flag>
-    <flag name="q64">Set quantum depth value to 64</flag>
     <flag name="q8">Set quantum depth value to 8</flag>
-    <flag name="webp">Enable webp image format support using <pkg>media-libs/libwebp</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:imagemagick:imagemagick</remote-id>
+  </upstream>
 </pkgmetadata>

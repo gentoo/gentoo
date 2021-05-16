@@ -1,7 +1,6 @@
 #!/bin/sh
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 #
 # run a vblade daemon using a logger process
 # output is directed to syslogd

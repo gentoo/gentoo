@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>sir.suriv@gmail.com</email>
+		<name>Diogo Pereira</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
+	Losslessly convert raster images to PDF. The file size will not
+	unnecessarily increase. It can for example be used to create a PDF
+	document from a number of scans that are only available in JPEG format.
+	Existing solutions would either re-encode the input JPEG files (leading
+	to quality loss) or store them in the zip/flate format which results in
+	the PDF becoming unnecessarily large in terms of its file size.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>josch@mister-muffin.de</email>
+			<name>Johannes Schauer</name>
+		</maintainer>
+		<remote-id type="pypi">img2pdf</remote-id>
+		<bugs-to>https://gitlab.mister-muffin.de/josch/img2pdf/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

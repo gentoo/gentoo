@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Cross-platform object-oriented scripting shell using the squirrel language"
 HOMEPAGE="http://squirrelsh.sourceforge.net/"
@@ -16,16 +15,17 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
 RDEPEND="dev-libs/libpcre"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-rename-LDFLAGS.patch
-	epatch "${FILESDIR}"/${PN}-no-strip.patch
-	epatch "${FILESDIR}"/${PN}-fix-in_LDFLAGS.patch
-	epatch "${FILESDIR}"/${PN}-remove-forced-abi.patch
-	epatch "${FILESDIR}"/${PN}-no-docs.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-rename-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-no-strip.patch
+	"${FILESDIR}"/${PN}-fix-in_LDFLAGS.patch
+	"${FILESDIR}"/${PN}-remove-forced-abi.patch
+	"${FILESDIR}"/${PN}-no-docs.patch
+	"${FILESDIR}"/${P}-gcc6.patch
+)
 
 src_configure() {
 	#This package uses a custom written configure script

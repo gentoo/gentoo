@@ -1,6 +1,5 @@
-diff -up mhash-0.9.9.9/lib/stdfns.c.BAD mhash-0.9.9.9/lib/stdfns.c
---- mhash-0.9.9.9/lib/stdfns.c.BAD	2009-07-02 16:38:43.217029623 -0400
-+++ mhash-0.9.9.9/lib/stdfns.c	2009-07-02 16:41:58.647120391 -0400
+--- a/lib/stdfns.c
++++ b/lib/stdfns.c
 @@ -152,6 +152,18 @@ mutils_bzero(void *s, __const mutils_wor
  	}
  }

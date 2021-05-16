@@ -1,0 +1,25 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: fix typos found by Lintian
+
+--- a/helper_functions.c
++++ b/helper_functions.c
+@@ -528,7 +528,7 @@ void Test_Or_Make_MSR_DEVICE_FILES()
+ 								n=`expr $n + 1`; \
+ 							done; \
+ 							");
+-            printf ("i7z DEBUG: modprobbing for msr\n");
++            printf ("i7z DEBUG: modprobing for msr\n");
+             system ("modprobe msr");
+         } else {
+             printf ("i7z DEBUG: You DO NOT have root privileges, mknod to create device entries won't work out\n");
+--- a/perfmon-i7z/helper_functions.cpp
++++ b/perfmon-i7z/helper_functions.cpp
+@@ -484,7 +484,7 @@ void Test_Or_Make_MSR_DEVICE_FILES()
+ 								n=`expr $n + 1`; \
+ 							done; \
+ 							");
+-            printf ("i7z DEBUG: modprobbing for msr\n");
++            printf ("i7z DEBUG: modprobing for msr\n");
+             system ("modprobe msr");
+         } else {
+             printf ("i7z DEBUG: You DONOT have root privileges, mknod to create device entries won't work out\n");

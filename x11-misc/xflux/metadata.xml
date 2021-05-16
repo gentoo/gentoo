@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		F.lux makes your computer screen look like the room you're in, all the time.
+		When the sun sets, it makes your computer look like your indoor lights.
+		In the morning, it makes things look like sunlight again.
+	</longdescription>
+</pkgmetadata>

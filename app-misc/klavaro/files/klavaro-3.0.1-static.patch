@@ -1,5 +1,5 @@
---- gtkdatabox/Makefile.am	2014-12-18 21:26:18.129806730 -0500
-+++ gtkdatabox/Makefile.am	2014-12-18 21:26:30.528364491 -0500
+--- a/gtkdatabox/Makefile.am
++++ b/gtkdatabox/Makefile.am
 @@ -1,4 +1,4 @@
 -lib_LTLIBRARIES		= libgtkdataboks.la
 +noinst_LTLIBRARIES		= libgtkdataboks.la

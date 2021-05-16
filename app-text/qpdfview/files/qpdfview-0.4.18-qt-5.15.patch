@@ -1,0 +1,11 @@
+diff -ur qpdfview-0.4.18.orig/sources/model.h qpdfview-0.4.18/sources/model.h
+--- a/sources/model.h	2019-07-24 21:18:33.000000000 +0200
++++ b/sources/model.h	2020-05-29 11:44:33.012891583 +0200
+@@ -27,6 +27,7 @@
+ #include <QtPlugin>
+ #include <QWidget>
+ #include <QVector>
++#include <QPainterPath>
+ 
+ class QAbstractItemModel;
+ class QColor;

@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# Mac OS X is built with LLVM/Clang
+# macOS has LLVM/Clang as system compiler
 -*sys-devel/gcc
 -*sys-devel/gcc-config
 *sys-devel/clang

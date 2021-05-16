@@ -1,0 +1,68 @@
+commit 090398d4181797d2284be16026f8e0573fd0579b
+Author: Leon Bottou <leon@bottou.org>
+Date:   Wed Mar 2 20:52:03 2016 -0500
+
+    High dpi support for page thumbnails
+
+diff --git a/src/djview.cpp b/src/djview.cpp
+index 2571c49..df14110 100644
+--- a/src/djview.cpp
++++ b/src/djview.cpp
+@@ -137,7 +137,12 @@ QDjViewApplication::QDjViewApplication(int &argc, char **argv)
+   extern void qt_mac_set_native_menubar(bool);
+   qt_mac_set_native_menubar(false);
+ #endif
+-
++  
++  // Enable highdpi pixmaps
++#if QT_VERSION >= 0x50200
++  setAttribute(Qt::AA_UseHighDpiPixmaps, true);
++#endif
++  
+   // Wire session management signals
+   connect(this, SIGNAL(saveStateRequest(QSessionManager&)),
+           this, SLOT(saveSessionState(QSessionManager&)) );
+diff --git a/src/qdjviewsidebar.cpp b/src/qdjviewsidebar.cpp
+index 38edf45..34e8c3c 100644
+--- a/src/qdjviewsidebar.cpp
++++ b/src/qdjviewsidebar.cpp
+@@ -603,9 +603,14 @@ QDjViewThumbnails::Model::makeIcon(int pageno) const
+   if (doc)
+     {
+       // render thumbnail
+-      int w = size;
+-      int h = size;
+-      QImage img(size, size, QImage::Format_RGB32);
++#if QT_VERSION >= 0x50200
++      int dpr = djview->devicePixelRatio();
++#else
++      int dpr = 1;
++#endif
++      int w = size * dpr;
++      int h = size * dpr;
++      QImage img(size*dpr, size*dpr, QImage::Format_RGB32);
+       int status = ddjvu_thumbnail_status(*doc, pageno, 0);
+       if (status == DDJVU_JOB_NOTSTARTED)
+         {
+@@ -614,9 +619,9 @@ QDjViewThumbnails::Model::makeIcon(int pageno) const
+       else if (ddjvu_thumbnail_render(*doc, pageno, &w, &h, format, 
+                                       img.bytesPerLine(), (char*)img.bits() ))
+         {
+-          QPixmap pixmap(size,size);
++          QPixmap pixmap(size*dpr,size*dpr);
+           pixmap.fill();
+-          QPoint dst((size-w)/2, (size-h)/2);
++          QPoint dst((size*dpr-w)/2, (size*dpr-h)/2);
+           QRect src(0,0,w,h);
+           QPainter painter;
+           painter.begin(&pixmap);
+@@ -625,6 +630,9 @@ QDjViewThumbnails::Model::makeIcon(int pageno) const
+           painter.setPen(Qt::darkGray);
+           painter.drawRect(dst.x(), dst.y(), w-1, h-1);
+           painter.end();
++#if QT_VERSION >= 0x50200
++          pixmap.setDevicePixelRatio(dpr);
++#endif
+           return QIcon(pixmap);
+         }
+     }

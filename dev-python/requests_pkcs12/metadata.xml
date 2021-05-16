@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Adds PKCS#12 support to the Python requests library in a clean way, without monkey patching or temporary files.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">m-click/requests_pkcs12</remote-id>
+		<remote-id type="pypi">requests-pkcs12</remote-id>
+	</upstream>
+</pkgmetadata>

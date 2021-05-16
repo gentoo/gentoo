@@ -1,0 +1,48 @@
+diff -Naur wmacpi-2.4.orig/Makefile wmacpi-2.4/Makefile
+--- wmacpi-2.4.orig/Makefile	2020-05-03 14:30:36.000000000 +0200
++++ wmacpi-2.4/Makefile	2020-06-15 17:32:49.549006100 +0200
+@@ -15,8 +15,8 @@
+ #OPT	= -pg -g
+ 
+ CC	:= gcc
+-CFLAGS	+= $(OPT) -Wall -W -g -ansi -DWMACPI_VER='"$(WMACPI_VER)"'
+-LDFLAGS += $(OPT) -lX11 -ldockapp
++CFLAGS	+= -DWMACPI_VER='"$(WMACPI_VER)"'
++LIBS := -lX11 -ldockapp
+ 
+ WMSRC	:= wmacpi.c libacpi.c
+ HEADERS := libacpi.h
+@@ -28,7 +28,7 @@
+ doc_targets += wmacpi-cli.1
+ endif
+ 
+-PREFIX := /usr/local
++PREFIX := /usr
+ 
+ all: $(targets)
+ 
+@@ -39,7 +39,7 @@
+ -include $(WMOBJ:.o=.d)
+ 
+ wmacpi:	$(WMOBJ)
+-	$(CC) -o $@ $^ $(LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ # for the Debian package, we want to make building the command line tools
+ # optional. So, we hide all the necessary stuff here . . .
+@@ -49,13 +49,13 @@
+ -include $(CLOBJ:.o=.d)
+ 
+ wmacpi-cli: $(CLOBJ)
+-	$(CC) $(LDFLAGS) -o $@ $^
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ endif
+ 
+ # build per-file dependencies - note that -MM may not be supported
+ # in gcc versions older than 2.95.4, but most likely is.
+ %.d: %.c
+-	gcc -MM $(CFLAGS) $< > $@
++	$(CC) -MM $(CFLAGS) $< > $@
+ 
+ clean:
+ 	rm -f TAGS *.o *~ trace *.out *.bb *.bbg

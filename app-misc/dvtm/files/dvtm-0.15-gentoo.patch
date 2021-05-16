@@ -1,0 +1,36 @@
+--- a/config.mk
++++ b/config.mk
+@@ -10,12 +10,12 @@
+ TERMINFO := ${DESTDIR}${PREFIX}/share/terminfo
+ 
+ INCS = -I.
+-LIBS = -lc -lutil -lncursesw
+-CPPFLAGS = -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_XOPEN_SOURCE_EXTENDED
++LIBS = -lc -lutil $(shell $(PKG_CONFIG) --libs ncursesw)
++CPPFLAGS += -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700 -D_XOPEN_SOURCE_EXTENDED
+ CFLAGS += -std=c99 ${INCS} -DVERSION=\"${VERSION}\" -DNDEBUG ${CPPFLAGS}
+ LDFLAGS += ${LIBS}
+ 
+-DEBUG_CFLAGS = ${CFLAGS} -UNDEBUG -O0 -g -ggdb -Wall -Wextra -Wno-unused-parameter
++DEBUG_CFLAGS += ${CFLAGS} -UNDEBUG -O0 -g -ggdb -Wall -Wextra -Wno-unused-parameter
+ 
+ CC ?= cc
+ STRIP ?= strip
+--- a/Makefile
++++ b/Makefile
+@@ -16,13 +16,13 @@
+ 
+ .c.o:
+ 	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.h config.mk
+ 
+ dvtm: ${OBJ}
+ 	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -o $@ ${OBJ} ${LDFLAGS}
+ 
+ debug: clean
+ 	@make CFLAGS='${DEBUG_CFLAGS}'

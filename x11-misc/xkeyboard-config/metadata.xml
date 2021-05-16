@@ -5,4 +5,7 @@
 	<email>x11@gentoo.org</email>
 	<name>X11</name>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:xkeyboard_config_project:xkeyboard-config</remote-id>
+</upstream>
 </pkgmetadata>

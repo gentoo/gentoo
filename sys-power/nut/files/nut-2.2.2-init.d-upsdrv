@@ -1,13 +1,12 @@
-#!/sbin/runscript
-# Copyright 1999-2011 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 extra_commands="stopall startall"
 
 UPSNAME=${SVCNAME#*.}
 msgtext="drivers"
-[ "${UPSNAME}" == "${SVCNAME}" ] && UPSNAME=''
+[ "${UPSNAME}" = "${SVCNAME}" ] && UPSNAME=''
 [ -n "$UPSNAME" ] && msgtext="driver for $UPSNAME"
 
 depend() {

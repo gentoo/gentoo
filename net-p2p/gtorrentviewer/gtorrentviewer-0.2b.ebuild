@@ -1,11 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 GCONF_DEBUG="yes"
 
-inherit autotools eutils gnome2
+inherit autotools epatch gnome2
 
 MY_PN=${PN/gtorrentviewer/GTorrentViewer}
 MY_P=${MY_PN}-${PV}
@@ -15,7 +14,7 @@ HOMEPAGE="http://gtorrentviewer.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gtorrentviewer/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86"
 
 SLOT="0"
 IUSE=""

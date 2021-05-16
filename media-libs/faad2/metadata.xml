@@ -10,6 +10,7 @@
     <flag name="digitalradio">Digital Radio Mondiale (warning: disables other decoders)</flag>
   </use>
   <upstream>
+    <remote-id type="github">knik0/faad2</remote-id>
     <remote-id type="sourceforge">faac</remote-id>
   </upstream>
 </pkgmetadata>

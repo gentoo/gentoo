@@ -8,4 +8,7 @@
 	<use>
 		<flag name="ithreads">Enable Perl threads, has some compatibility problems</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">arsv/perl-cross</remote-id>
+	</upstream>
 </pkgmetadata>

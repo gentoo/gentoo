@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person" proxied="yes">
+        <email>ktrace@yandex.ru</email>
+        <name>Victor Kustov</name>
+    </maintainer>
+    <maintainer type="project" proxied="proxy">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="gui">Install Qt5 hex editor</flag>
+    </use>
+    <longdescription lang="en">
+        QHexEdit is a hex editor widget written in C++ for the Qt5 framework.
+        It is a simple editor for binary data, and has bindings to PyQt
+        with python 2 and 3.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">lancos/qhexedit2</remote-id>
+        <remote-id type="github">Simsys/qhexedit2</remote-id>
+    </upstream>
+</pkgmetadata>

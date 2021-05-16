@@ -11,5 +11,6 @@
       <email>nicolas@nicolargo.com</email>
       <name>Nicolas Hennion</name>
     </maintainer>
+    <remote-id type="github">nicolargo/pymdstat</remote-id>
   </upstream>
 </pkgmetadata>

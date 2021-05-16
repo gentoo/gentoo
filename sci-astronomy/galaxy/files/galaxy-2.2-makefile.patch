@@ -1,0 +1,61 @@
+--- a/Makefile
++++ b/Makefile
+@@ -5,30 +5,28 @@
+ SOURCE = $(PROGRAM)-$(VERSION).cc
+ 
+ # defaults for parameters that may be pre-defined
+-CXXFLAGS ?= -O3 -g -Wall
+-LDFLAGS ?= -O3 -g -Wall -rdynamic
+-PREFIX ?= /usr
++PREFIX = $(EPREFIX)/usr
+ 
+ # target install directories
+ BINDIR = $(PREFIX)/bin
+ SHAREDIR = $(PREFIX)/share/$(PROGRAM)
+ DATADIR = $(SHAREDIR)/data
+ ICONDIR = $(SHAREDIR)/icons
+-DOCDIR = $(PREFIX)/share/doc/$(PROGRAM)
++DOCDIR = $(PREFIX)/share/doc/$(PF)
+ MANDIR = $(PREFIX)/share/man/man1
+ MENUFILE = $(PREFIX)/share/applications/kornelix-$(PROGRAM).desktop
+ 
+-CFLAGS = $(CXXFLAGS) -c `pkg-config --cflags gtk+-3.0`
+-LIBS = `pkg-config --libs gtk+-3.0`
++CXXFLAGS += $(shell $(PKG_CONFIG) --cflags gtk+-3.0)
++LIBS += $(shell $(PKG_CONFIG) --libs gtk+-3.0)
+ 
+ $(PROGRAM): $(PROGRAM).o zfuncs.o
+-	$(CXX) $(LDFLAGS) $(PROGRAM).o zfuncs.o $(LIBS) -o $(PROGRAM)
++	$(CXX) $(LDFLAGS) $(PROGRAM).o zfuncs.o -o $(PROGRAM) $(LIBS)
+ 
+ $(PROGRAM).o: $(SOURCE)
+-	$(CXX) $(CFLAGS) -o $(PROGRAM).o $(SOURCE)
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $(PROGRAM).o $(SOURCE)
+ 
+ zfuncs.o: zfuncs.cc zfuncs.h
+-	$(CXX) $(CFLAGS) zfuncs.cc \
++	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c zfuncs.cc \
+           -D PREFIX=\"$(PREFIX)\" -D DOCDIR=\"$(DOCDIR)\"   \
+           -Wno-deprecated-declarations 
+ 
+@@ -45,19 +43,16 @@
+ 	cp -f -R  doc/* $(DESTDIR)$(DOCDIR)
+ 	# man page
+ 	cp -f doc/$(PROGRAM).man $(PROGRAM).1
+-	gzip -f -9 $(PROGRAM).1
+-	cp $(PROGRAM).1.gz $(DESTDIR)$(MANDIR)
++	cp $(PROGRAM).1 $(DESTDIR)$(MANDIR)
+ 	rm -f $(PROGRAM).1.gz
+ 	# menu (desktop) file 
+ 	cp -f desktop $(DESTDIR)$(MENUFILE)
+-	xdg-desktop-menu install $(DESTDIR)$(MENUFILE)
+ 
+ uninstall:
+ 	rm -f  $(DESTDIR)$(BINDIR)/$(PROGRAM)
+ 	rm -R -f  $(DESTDIR)$(SHAREDIR)
+ 	rm -R -f  $(DESTDIR)$(DOCDIR)
+ 	rm -f  $(DESTDIR)$(MANDIR)/$(PROGRAM).1.gz
+-	xdg-desktop-menu uninstall $(DESTDIR)$(MENUFILE)
+ 	rm -f  $(DESTDIR)$(MENUFILE)
+ 
+ clean: 

@@ -1,0 +1,207 @@
+From 8d6a7be8e29d00ab08c0cdcaf0dd293ed834205d Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 31 Mar 2021 05:51:53 -0700
+Subject: [PATCH] build: Link with libtool archives instead.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ audisp/Makefile.am                    | 10 +++++-----
+ audisp/plugins/ids/Makefile.am        |  2 +-
+ audisp/plugins/remote/Makefile.am     |  2 +-
+ audisp/plugins/statsd/Makefile.am     |  2 +-
+ audisp/plugins/syslog/Makefile.am     |  2 +-
+ audisp/plugins/zos-remote/Makefile.am |  2 +-
+ src/Makefile.am                       | 11 +++++------
+ src/libev/Makefile.am                 |  5 +++--
+ tools/aulast/Makefile.am              |  2 +-
+ tools/aulastlog/Makefile.am           |  2 +-
+ tools/ausyscall/Makefile.am           |  2 +-
+ tools/auvirt/Makefile.am              |  2 +-
+ 12 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/audisp/Makefile.am b/audisp/Makefile.am
+index 852169e0..c477ee19 100644
+--- a/audisp/Makefile.am
++++ b/audisp/Makefile.am
+@@ -23,13 +23,13 @@
+ SUBDIRS = plugins 
+ CONFIG_CLEAN_FILES = *.rej *.orig
+ AM_CPPFLAGS = -D_GNU_SOURCE -fPIC -DPIC -I${top_srcdir} -I${top_srcdir}/lib -I${top_srcdir}/src -I${top_srcdir}/src/libev
+-LIBS = -L${top_builddir}/lib -laudit 
++LIBS = ${top_builddir}/lib/libaudit.la
+ LDADD = -lpthread
+ 
+ noinst_HEADERS = audispd-pconfig.h audispd-llist.h audispd-config.h \
+ 	queue.h audispd-builtins.h libdisp.h
+-libdisp_a_SOURCES = audispd.c audispd-pconfig.c queue.c \
++libdisp_la_SOURCES = audispd.c audispd-pconfig.c queue.c \
+ 	audispd-llist.c audispd-builtins.c
+-libdisp_a_CFLAGS = -fno-strict-aliasing
+-noinst_LIBRARIES = libdisp.a
+-
++libdisp_la_CFLAGS = -fno-strict-aliasing
++libdisp_la_LDFLAGS = -no-undefined -static
++noinst_LTLIBRARIES = libdisp.la
+diff --git a/audisp/plugins/ids/Makefile.am b/audisp/plugins/ids/Makefile.am
+index 65d83b64..9bb141fa 100644
+--- a/audisp/plugins/ids/Makefile.am
++++ b/audisp/plugins/ids/Makefile.am
+@@ -37,7 +37,7 @@ audisp_ids_SOURCES = account.c avl.c ids.c ids_config.c model_bad_event.c \
+ 	model_behavior.c nvpair.c origin.c reactions.c session.c \
+ 	timer-services.c
+ audisp_ids_CFLAGS = -D_GNU_SOURCE
+-audisp_ids_LDADD = -L${top_builddir}/lib -laudit -L${top_builddir}/auparse -lauparse -L${top_builddir}/common -laucommon -lpthread
++audisp_ids_LDADD = ${top_builddir}/lib/libaudit.la ${top_builddir}/auparse/libauparse.la ${top_builddir}/common/libaucommon.la -lpthread
+ 
+ install-data-hook:
+ 	mkdir -p -m 0750 ${DESTDIR}${plugin_confdir}
+diff --git a/audisp/plugins/remote/Makefile.am b/audisp/plugins/remote/Makefile.am
+index bd3f3016..ae867079 100644
+--- a/audisp/plugins/remote/Makefile.am
++++ b/audisp/plugins/remote/Makefile.am
+@@ -37,7 +37,7 @@ audisp_remote_DEPENDENCIES = ${top_builddir}/common/libaucommon.la
+ audisp_remote_SOURCES = audisp-remote.c remote-config.c queue.c
+ audisp_remote_CFLAGS = -fPIE -DPIE -g -D_REENTRANT -D_GNU_SOURCE -Wundef
+ audisp_remote_LDFLAGS = -pie -Wl,-z,relro -Wl,-z,now
+-audisp_remote_LDADD = $(CAPNG_LDADD) $(gss_libs) -L${top_builddir}/common -laucommon
++audisp_remote_LDADD = $(CAPNG_LDADD) $(gss_libs) ${top_builddir}/common/libaucommon.la
+ 
+ test_queue_SOURCES = queue.c test-queue.c
+ 
+diff --git a/audisp/plugins/statsd/Makefile.am b/audisp/plugins/statsd/Makefile.am
+index 7ba887df..a105e66b 100644
+--- a/audisp/plugins/statsd/Makefile.am
++++ b/audisp/plugins/statsd/Makefile.am
+@@ -30,7 +30,7 @@ sbin_PROGRAMS = audisp-statsd
+ man_MANS = audisp-statsd.8
+ audisp_statsd_SOURCES = audisp-statsd.c
+ audisp_statsd_CFLAGS = -g -D_GNU_SOURCE
+-audisp_statsd_LDADD = -L${top_builddir}/auparse -lauparse -L${top_builddir}/lib -laudit
++audisp_statsd_LDADD = ${top_builddir}/auparse/libauparse.la ${top_builddir}/lib/libaudit.la
+ 
+ install-data-hook:
+ 	mkdir -p -m 0750 ${DESTDIR}${plugin_confdir}
+diff --git a/audisp/plugins/syslog/Makefile.am b/audisp/plugins/syslog/Makefile.am
+index 353229ec..e5451866 100644
+--- a/audisp/plugins/syslog/Makefile.am
++++ b/audisp/plugins/syslog/Makefile.am
+@@ -33,7 +33,7 @@ audisp_syslog_DEPENDENCIES = ${top_builddir}/common/libaucommon.la
+ audisp_syslog_SOURCES = audisp-syslog.c
+ audisp_syslog_CFLAGS = -fPIE -DPIE -g -D_GNU_SOURCE -Wundef
+ audisp_syslog_LDFLAGS = -pie -Wl,-z,relro -Wl,-z,now
+-audisp_syslog_LDADD = $(CAPNG_LDADD) -L${top_builddir}/common -laucommon -L${top_builddir}/auparse -lauparse
++audisp_syslog_LDADD = $(CAPNG_LDADD) ${top_builddir}/common/libaucommon.la ${top_builddir}/auparse/libauparse.la
+ 
+ install-data-hook:
+ 	mkdir -p -m 0750 ${DESTDIR}${plugin_confdir}
+diff --git a/audisp/plugins/zos-remote/Makefile.am b/audisp/plugins/zos-remote/Makefile.am
+index d8d88b3f..d51e83e7 100644
+--- a/audisp/plugins/zos-remote/Makefile.am
++++ b/audisp/plugins/zos-remote/Makefile.am
+@@ -24,7 +24,7 @@
+ AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/lib -I${top_srcdir}/auparse
+ CONFIG_CLEAN_FILES = *.rej *.orig
+ EXTRA_DIST = zos-remote.conf audispd-zos-remote.conf
+-LIBS = -L${top_builddir}/auparse -lauparse
++LIBS = ${top_builddir}/auparse/libauparse.la
+ LDADD = -lpthread -lldap -llber $(CAPNG_LDADD) 
+ plugin_confdir=$(sysconfdir)/audit
+ plugin_conf = zos-remote.conf
+diff --git a/src/Makefile.am b/src/Makefile.am
+index fda612b1..e2e58acb 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -33,22 +33,21 @@ auditd_SOURCES += auditd-listen.c
+ endif
+ auditd_CFLAGS = -fPIE -DPIE -g -D_REENTRANT -D_GNU_SOURCE -fno-strict-aliasing -pthread -Wno-pointer-sign
+ auditd_LDFLAGS = -pie -Wl,-z,relro -Wl,-z,now
+-auditd_DEPENDENCIES = libev/libev.a ${top_builddir}/audisp/libdisp.a
+-auditd_LDADD = @LIBWRAP_LIBS@ -Llibev -lev -L${top_builddir}/audisp -ldisp -L${top_builddir}/lib -laudit -L${top_builddir}/auparse -lauparse -lpthread -lrt -lm $(gss_libs) -L${top_builddir}/common -laucommon
++auditd_LDADD = @LIBWRAP_LIBS@ ${top_builddir}/src/libev/libev.la ${top_builddir}/audisp/libdisp.la ${top_builddir}/lib/libaudit.la ${top_builddir}/auparse/libauparse.la -lpthread -lrt -lm $(gss_libs) ${top_builddir}/common/libaucommon.la
+ 
+ auditctl_SOURCES = auditctl.c auditctl-llist.c delete_all.c auditctl-listing.c
+ auditctl_CFLAGS = -fPIE -DPIE -g -D_GNU_SOURCE
+ auditctl_LDFLAGS = -pie -Wl,-z,relro -Wl,-z,now
+-auditctl_LDADD = -L${top_builddir}/lib -laudit -L${top_builddir}/auparse -lauparse -L${top_builddir}/common -laucommon
++auditctl_LDADD = ${top_builddir}/lib/libaudit.la ${top_builddir}/auparse/libauparse.la ${top_builddir}/common/libaucommon.la
+ 
+ aureport_SOURCES = aureport.c auditd-config.c ausearch-llist.c aureport-options.c ausearch-string.c ausearch-parse.c aureport-scan.c aureport-output.c ausearch-lookup.c ausearch-int.c ausearch-time.c ausearch-nvpair.c ausearch-avc.c ausearch-lol.c
+-aureport_LDADD = -L${top_builddir}/lib -laudit -L${top_builddir}/auparse -lauparse -L${top_builddir}/common -laucommon
++aureport_LDADD = ${top_builddir}/lib/libaudit.la ${top_builddir}/auparse/libauparse.la ${top_builddir}/common/libaucommon.la
+ 
+ ausearch_SOURCES = ausearch.c auditd-config.c ausearch-llist.c ausearch-options.c ausearch-report.c ausearch-match.c ausearch-string.c ausearch-parse.c ausearch-int.c ausearch-time.c ausearch-nvpair.c ausearch-lookup.c ausearch-avc.c ausearch-lol.c ausearch-checkpt.c
+-ausearch_LDADD = -L${top_builddir}/lib -laudit -L${top_builddir}/auparse -lauparse -L${top_builddir}/common -laucommon
++ausearch_LDADD = ${top_builddir}/lib/libaudit.la ${top_builddir}/auparse/libauparse.la ${top_builddir}/common/libaucommon.la
+ 
+ autrace_SOURCES = autrace.c delete_all.c auditctl-llist.c
+-autrace_LDADD = -L${top_builddir}/lib -laudit
++autrace_LDADD = ${top_builddir}/lib/libaudit.la
+ 
+ libev/libev.a:
+ 	make -C libev
+diff --git a/src/libev/Makefile.am b/src/libev/Makefile.am
+index d6094a76..85f4da52 100644
+--- a/src/libev/Makefile.am
++++ b/src/libev/Makefile.am
+@@ -24,6 +24,7 @@ EXTRA_DIST = README ev_epoll.c ev_poll.c ev_select.c ev_iouring.c ev_linuxaio.c
+ AM_CFLAGS = -fPIC -DPIC -g -fno-strict-aliasing ${DEBUG}
+ 
+ noinst_HEADERS = ev.h ev_vars.h ev_wrap.h event.h
+-noinst_LIBRARIES = libev.a
++noinst_LTLIBRARIES = libev.la
+ 
+-libev_a_SOURCES = ev.c event.c
++libev_la_SOURCES = ev.c event.c
++libev_la_LDFLAGS = -no-undefined -static
+diff --git a/tools/aulast/Makefile.am b/tools/aulast/Makefile.am
+index 2f15525a..1ee0b8c0 100644
+--- a/tools/aulast/Makefile.am
++++ b/tools/aulast/Makefile.am
+@@ -23,7 +23,7 @@
+ CONFIG_CLEAN_FILES = *.loT *.rej *.orig
+ EXTRA_DIST = $(man_MANS)
+ AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/lib -I${top_srcdir}/auparse
+-LIBS = -L${top_builddir}/auparse -lauparse
++LIBS = ${top_builddir}/auparse/libauparse.la
+ AM_CFLAGS = -D_GNU_SOURCE
+ bin_PROGRAMS = aulast
+ noinst_HEADERS = aulast-llist.h
+diff --git a/tools/aulastlog/Makefile.am b/tools/aulastlog/Makefile.am
+index e45076ba..f208b4c3 100644
+--- a/tools/aulastlog/Makefile.am
++++ b/tools/aulastlog/Makefile.am
+@@ -23,7 +23,7 @@
+ CONFIG_CLEAN_FILES = *.loT *.rej *.orig
+ EXTRA_DIST = $(man_MANS)
+ AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/auparse
+-LIBS = -L${top_builddir}/auparse -lauparse
++LIBS = ${top_builddir}/auparse/libauparse.la
+ AM_CFLAGS = -D_GNU_SOURCE
+ bin_PROGRAMS = aulastlog
+ noinst_HEADERS = aulastlog-llist.h
+diff --git a/tools/ausyscall/Makefile.am b/tools/ausyscall/Makefile.am
+index 1dce67c0..daa277d7 100644
+--- a/tools/ausyscall/Makefile.am
++++ b/tools/ausyscall/Makefile.am
+@@ -23,7 +23,7 @@
+ CONFIG_CLEAN_FILES = *.loT *.rej *.orig
+ EXTRA_DIST = $(man_MANS)
+ AM_CPPFLAGS = -I${top_srcdir} -I${top_srcdir}/lib
+-LIBS = -L${top_builddir}/lib -laudit
++LIBS = ${top_builddir}/lib/libaudit.la
+ AM_CFLAGS = -D_GNU_SOURCE
+ bin_PROGRAMS = ausyscall
+ man_MANS = ausyscall.8
+diff --git a/tools/auvirt/Makefile.am b/tools/auvirt/Makefile.am
+index 50b9b323..dafeeccf 100644
+--- a/tools/auvirt/Makefile.am
++++ b/tools/auvirt/Makefile.am
+@@ -29,7 +29,7 @@ AM_CPPFLAGS = -I${top_srcdir} \
+ 		   -I${top_srcdir}/lib \
+ 		   -I${top_srcdir}/auparse \
+ 		   -I${top_srcdir}/src
+-LIBS = -L${top_builddir}/auparse -lauparse
++LIBS = ${top_builddir}/auparse/libauparse.la
+ AM_CFLAGS = -D_GNU_SOURCE
+ bin_PROGRAMS = auvirt
+ noinst_HEADERS = auvirt-list.h

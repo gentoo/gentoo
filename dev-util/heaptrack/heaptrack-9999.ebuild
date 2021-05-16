@@ -1,27 +1,67 @@
-# Copyright 2015-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-EGIT_REPO_URI="git://anongit.kde.org/heaptrack"
-[[ ${PV} = 9999 ]] && inherit git-r3
-inherit cmake-utils
+inherit cmake kde.org xdg-utils
 
-DESCRIPTION="A fast heap memory profiler"
-HOMEPAGE="http://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
-[[ ${PV} = 9999 ]] || SRC_URI="${P}.tar.gz"
+DESCRIPTION="Fast heap memory profiler"
+HOMEPAGE="https://apps.kde.org/en/heaptrack
+https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
-# Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ ${PV} = 9999 ]] || \
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS=""
+IUSE="+gui test zstd"
 
-RDEPEND="sys-libs/libunwind
-	>=dev-libs/boost-1.41.0"
-DEPEND="${RDEPEND}"
+BDEPEND="
+	gui? ( kde-frameworks/extra-cmake-modules:5 )
+"
+DEPEND="
+	dev-libs/boost:=
+	sys-libs/libunwind
+	sys-libs/zlib
+	gui? (
+		dev-libs/kdiagram:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		kde-frameworks/kconfig:5
+		kde-frameworks/kconfigwidgets:5
+		kde-frameworks/kcoreaddons:5
+		kde-frameworks/ki18n:5
+		kde-frameworks/kio:5
+		kde-frameworks/kitemmodels:5
+		kde-frameworks/kwidgetsaddons:5
+		kde-frameworks/threadweaver:5
+	)
+	zstd? ( app-arch/zstd:= )
+"
+RDEPEND="${DEPEND}
+	gui? ( >=kde-frameworks/kf-env-4 )
+"
 
-DOCS=()
-[[ ${PV} = 9999 ]] || DOCS+=( ChangeLog )
+RESTRICT+=" !test? ( test )"
+
+src_configure() {
+	local mycmakeargs=(
+		-DHEAPTRACK_BUILD_GUI=$(usex gui)
+		-DBUILD_TESTING=$(usex test)
+		$(cmake_use_find_package zstd Zstd)
+	)
+	cmake_src_configure
+}
+
+xdg_pkg_postinst() {
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
+}
+
+xdg_pkg_postrm() {
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
+}

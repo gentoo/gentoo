@@ -1,7 +1,6 @@
-#!/sbin/runscript
-# Copyright 1999-2011 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 DAEMON=/usr/sbin/automount
 PIDFILE=/var/run/autofs.pid
@@ -9,7 +8,7 @@ DEVICE=autofs
 
 depend() {
 	need localmount	
-	use ypbind nfs slapd portmap net
+	use ypbind nfsclient slapd net
 }
 
 extra_started_commands="reload"

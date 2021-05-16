@@ -1,7 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
+# Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # This target supports ASAN/etc... #504200.
 sys-devel/gcc -sanitize

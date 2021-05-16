@@ -1,67 +1,58 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit toolchain-funcs bash-completion-r1
+EAPI=7
 
-if [[ ${PV} == 9999* ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm.git"
-	EXTRA_DEPEND="app-text/asciidoc"
-else
-	SRC_URI="http://herbstluftwm.org/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	EXTRA_DEPEND=""
-fi
+PYTHON_COMPAT=( python3_{7,8,9} )
+
+inherit cmake git-r3 python-any-r1 toolchain-funcs
 
 DESCRIPTION="A manual tiling window manager for X"
-HOMEPAGE="http://herbstluftwm.org"
+HOMEPAGE="https://herbstluftwm.org/"
+EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="examples xinerama zsh-completion"
+IUSE="doc examples"
 
-CDEPEND=">=dev-libs/glib-2.24:2
+DEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
-	xinerama? ( x11-libs/libXinerama )"
-RDEPEND="${CDEPEND}
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+"
+RDEPEND="
+	${DEPEND}
 	app-shells/bash
-	zsh-completion? ( app-shells/zsh )"
-DEPEND="${CDEPEND}
-	${EXTRA_DEPEND}
-	virtual/pkgconfig"
+"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+	doc? ( app-text/asciidoc )
+"
 
-src_compile() {
-	emake CC="$(tc-getCC)" LD="$(tc-getCC)" COLOR=0 VERBOSE= \
-		$(use xinerama || echo XINERAMAFLAGS= XINERAMALIBS= )
+src_prepare() {
+	sed -i \
+		-e '/^install.*LICENSEDIR/d' \
+		-e '/set(DOCDIR / s#.*#set(DOCDIR ${CMAKE_INSTALL_DOCDIR})#' \
+		CMakeLists.txt || die
+	cmake_src_prepare
+}
+
+src_configure() {
+	# Ensure that 'python3' is in PATH. #765118
+	python_setup
+
+	mycmakeargs=(
+		-DWITH_DOCUMENTATION=$(usex doc)
+	)
+	cmake_src_configure
 }
 
 src_install() {
-	dobin herbstluftwm herbstclient
-	dodoc BUGS MIGRATION NEWS README.md
+	cmake_src_install
 
-	doman doc/{herbstluftwm,herbstclient}.1
-
-	exeinto /etc/xdg/herbstluftwm
-	doexe share/{autostart,panel.sh,restartpanels.sh}
-
-	insinto /usr/share/xsessions
-	doins share/herbstluftwm.desktop
-
-	newbashcomp share/herbstclient-completion herbstclient
-
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		doins share/_herbstclient
-	fi
-
-	if use examples ; then
-		exeinto /usr/share/doc/${PF}/examples
-		doexe scripts/*.sh
-		docinto examples
-		dodoc scripts/README
-		docompress -x /usr/share/doc/${PF}/examples
+	if ! use examples; then
+		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
 }

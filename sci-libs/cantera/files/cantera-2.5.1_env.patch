@@ -1,0 +1,103 @@
+diff -Naur old/SConstruct new/SConstruct
+--- old/SConstruct	2021-03-21 01:18:43.000000000 +0300
++++ new/SConstruct	2021-03-21 01:27:06.000000000 +0300
+@@ -193,7 +193,7 @@
+     toolchain = ['default']
+ 
+ env = Environment(tools=toolchain+['textfile', 'subst', 'recursiveInstall', 'wix', 'gch'],
+-                  ENV={'PATH': os.environ['PATH']},
++                  ENV={'PATH': os.environ['PATH'], 'CCACHE_DIR': os.environ.get('CCACHE_DIR','')},
+                   toolchain=toolchain,
+                   **extraEnvArgs)
+ 
+@@ -239,6 +239,9 @@
+     sys.exit(1)
+ 
+ compiler_options = [
++     ('AR',
++     """The archiver to use.""",
++     env['AR']),
+     ('CXX',
+      """The C++ compiler to use.""",
+      env['CXX']),
+@@ -734,10 +734,7 @@
+ env['cantera_pure_version'] = re.match(r'(\d+\.\d+\.\d+)', env['cantera_version']).group(0)
+ env['cantera_short_version'] = re.match(r'(\d+\.\d+)', env['cantera_version']).group(0)
+ 
+-try:
+-    env['git_commit'] = getCommandOutput('git', 'rev-parse', '--short', 'HEAD')
+-except Exception:
+-    env['git_commit'] = 'unknown'
++env['git_commit'] = 'unknown'
+ 
+ # Print values of all build options:
+ print("Configuration variables read from 'cantera.conf' and command line:")
+diff -Naur old/interfaces/cython/SConscript new/interfaces/cython/SConscript
+--- old/interfaces/cython/SConscript	2021-03-21 01:18:43.000000000 +0300
++++ new/interfaces/cython/SConscript	2021-03-21 01:59:29.000000000 +0300
+@@ -108,8 +108,7 @@
+     elif localenv['libdirname'] != 'lib':
+         # 64-bit RHEL / Fedora etc. or e.g. x32 Gentoo profile
+         extra = localenv.subst(
+-            ' --prefix=${{python_prefix}}'
+-            ' --install-lib=${{python_prefix}}/${{libdirname}}/python{}/site-packages'.format(py_version))
++            ' --prefix=${stage_dir}${prefix} --install-lib=${python_prefix}')
+     else:
+         extra = '--user'
+         localenv.AppendENVPath(
+diff -Naur old/interfaces/python_minimal/SConscript new/interfaces/python_minimal/SConscript
+--- old/interfaces/python_minimal/SConscript	2021-02-13 00:57:15.000000000 +0300
++++ new/interfaces/python_minimal/SConscript	2021-04-09 23:26:28.000000000 +0300
+@@ -8,7 +8,7 @@
+ make_setup = build(localenv.SubstFile('setup.py', 'setup.py.in'))
+ 
+ # copy scripts from the full Cython module
+-for script in ['ctml_writer', 'ck2cti']:
++for script in ['ctml_writer', 'ck2cti', 'ck2yaml', 'cti2yaml', 'ctml2yaml']:
+     # The actual script
+     s = build(env.Command('cantera/{}.py'.format(script),
+                           '#interfaces/cython/cantera/{}.py'.format(script),
+@@ -38,8 +38,7 @@
+         elif localenv['libdirname'] != 'lib':
+             # 64-bit RHEL / Fedora etc. or e.g. x32 Gentoo profile
+             extra = localenv.subst(
+-                ' --prefix=${{python_prefix}}'
+-                ' --install-lib=${{python_prefix}}/${{libdirname}}/python{}/site-packages'.format(py_version))
++                ' --prefix=${stage_dir}${prefix} --install-lib=${python_prefix}')
+         else:
+             extra = '--user'
+             localenv.AppendENVPath(
+diff -Naur old/interfaces/python_minimal/cantera/__init__.py new/interfaces/python_minimal/cantera/__init__.py
+--- old/interfaces/python_minimal/cantera/__init__.py	2021-02-13 00:57:15.000000000 +0300
++++ new/interfaces/python_minimal/cantera/__init__.py	2021-04-10 00:07:38.000000000 +0300
+@@ -1,2 +1,5 @@
+ from . import ck2cti
+ from . import ctml_writer
++from . import ck2yaml
++from . import cti2yaml
++from . import ctml2yaml
+diff -Naur old/interfaces/python_minimal/setup.py.in new/interfaces/python_minimal/setup.py.in
+--- old/interfaces/python_minimal/setup.py.in	2021-02-13 00:57:15.000000000 +0300
++++ new/interfaces/python_minimal/setup.py.in	2021-04-09 23:32:09.000000000 +0300
+@@ -12,6 +12,9 @@
+         'console_scripts': [
+             'ck2cti=cantera.ck2cti:script_entry_point',
+             'ctml_writer=cantera.ctml_writer:main',
++            'ck2yaml=cantera.ck2yaml:script_entry_point',
++            'cti2yaml=cantera.cti2yaml:main',
++            'ctml2yaml=cantera.ctml2yaml:main',
+         ],
+       },
+ )
+diff -Naur old/test_problems/SConscript new/test_problems/SConscript
+--- old/test_problems/SConscript	2021-03-21 01:18:43.000000000 +0300
++++ new/test_problems/SConscript	2021-03-21 01:42:19.000000000 +0300
+@@ -222,7 +222,7 @@
+ CompileAndTest('VPsilane_test')
+ 
+ CompileAndTest('clib', 'clib_test', 'clib_test',
+-               extensions=['^clib_test.c'], libs=['cantera_shared'])
++               extensions=['^clib_test.c'])
+ 
+ # C++ Samples
+ Test('cxx-bvp', 'cxx_samples', '#build/samples/cxx/bvp/blasius', None,

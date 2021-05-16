@@ -6,8 +6,8 @@
 		<name>SELinux Team</name>
 	</maintainer>
 	<longdescription>
-        The SELinux CIL Compiler is a compiler that converts the CIL language as
-        described on the CIL design wiki into a kernel binary policy file.
+		The SELinux CIL Compiler is a compiler that converts the CIL language as
+		described on the CIL design wiki into a kernel binary policy file.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>

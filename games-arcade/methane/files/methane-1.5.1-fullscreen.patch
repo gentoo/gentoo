@@ -1,0 +1,96 @@
+--- methane-1.5.1/sources/methane.cpp	2011-12-11 13:52:54.904083515 +0100
++++ methane-1.5.1.new/sources/methane.cpp	2011-12-11 13:51:27.174080706 +0100
+@@ -37,6 +37,7 @@
+ 
+ RenderTarget GLOBAL_RenderTarget = opengl2;
+ bool GLOBAL_SoundEnable = true;
++bool GLOBAL_FullScreenEnable = true;
+ 
+ //------------------------------------------------------------------------------
+ // Keyboard stuff
+@@ -60,6 +61,20 @@
+ 
+ 	int main(const std::vector<CL_String> &args)
+ 	{
++		unsigned int i;
++
++		for (i = 1; i < args.size(); i++)
++		{
++			if (args[i].compare("-w") == 0)
++				GLOBAL_FullScreenEnable = false;
++			else
++				fprintf(stderr,
++					"Unknown commandline parameter: '%s', ignoring\n\n"
++					"Valid parameters:\n"
++					"'-w': start in windowed mode\n",
++					args[i].c_str());
++		}
++
+ 		try
+ 		{
+ 			CL_SetupGL target_opengl2;
+@@ -105,8 +120,15 @@
+ 			CL_DisplayWindowDescription desc;
+ 			desc.set_title("Super Methane Brothers");
+ 			desc.set_size(CL_Size(SCR_WIDTH*2,SCR_HEIGHT*2), true);
+-			desc.set_allow_resize(true);
++			if (GLOBAL_FullScreenEnable)
++			{
++				desc.set_fullscreen(true);
++			}
++			else
++				desc.set_allow_resize(true);
+ 			CL_DisplayWindow window(desc);
++			if (GLOBAL_FullScreenEnable)
++				window.hide_cursor();
+ 
+ 			CMethDoc Game(window);
+ 
+@@ -131,8 +154,6 @@
+ 			int last_time = CL_System::get_time();
+ 
+ 			int quit_flag = 0;
+-			int disable_scale_flag = 0;
+-			int full_screen_flag = 0;
+ 			int on_options_screen = 1;
+ 			int option_page = 0;
+ 			int game_speed = 60;
+@@ -281,7 +302,8 @@
+ 
+ 	bool get_options()
+ 	{
+-		CL_DisplayWindow window("Methane Options", 640, 480);
++		CL_DisplayWindow window("Methane Options", 640, 480,
++					GLOBAL_FullScreenEnable);
+ 
+ 		// Connect the Window close event
+ 		CL_Slot slot_quit = window.sig_window_close().connect(this, &SuperMethaneBrothers::on_window_close);
+@@ -320,6 +342,12 @@
+ 				GLOBAL_RenderTarget = swrender;
+ 			}
+ 
++			if ( (LastKey == 'f') || (LastKey == 'F') )
++			{
++				LastKey = 0;
++				GLOBAL_FullScreenEnable = !GLOBAL_FullScreenEnable;
++			}
++
+ 			gc.clear(CL_Colorf(0.0f,0.0f,0.2f));
+ 
+ 			int ypos = 40;
+@@ -360,6 +388,15 @@
+ 			{
+ 				options_font.draw_text(gc, 10, ypos, "Audio - Disabled. Press 'A' to toggle");
+ 			}
++			ypos += 50;
++			if (GLOBAL_FullScreenEnable)
++			{
++				options_font.draw_text(gc, 10, ypos, "Full screen - Enabled. Press 'F' to modify");
++			}
++			else
++			{
++				options_font.draw_text(gc, 10, ypos, "Full screen - Disabled. Press 'F' to modify");
++			}
+ 
+ 			ypos += 100;
+ 			options_font.draw_text(gc, 10, ypos, "Press the spacebar to start");

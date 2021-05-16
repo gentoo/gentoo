@@ -1,29 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+EAPI=7
 
-inherit distutils-r1
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{7,8} )
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-inherit git-r3
-#endif
+inherit distutils-r1 git-r3
 
 DESCRIPTION="A utility to maintain package.unmask entries up-to-date with masks"
-HOMEPAGE="https://bitbucket.org/mgorny/diffmask/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/diffmask/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
-#if LIVE
-
-KEYWORDS=
-SRC_URI=
-#endif

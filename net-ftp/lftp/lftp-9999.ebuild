@@ -1,25 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit autotools eutils git-r3 libtool
+EAPI=7
+inherit autotools git-r3 libtool xdg-utils
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
-HOMEPAGE="http://lftp.yar.ru/"
+HOMEPAGE="https://lftp.tech/"
 EGIT_REPO_URI="https://github.com/lavv17/lftp"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-
-IUSE="convert-mozilla-cookies +gnutls idn nls openssl socks5 +ssl verify-file"
-LFTP_LINGUAS=( cs de es fr it ja ko pl pt_BR ru uk zh_CN zh_HK zh_TW )
-IUSE+=" ${LFTP_LINGUAS[@]/#/linguas_}"
-
-REQUIRED_USE="
-	ssl? ( ^^ ( openssl gnutls ) )
-"
+IUSE="convert-mozilla-cookies +gnutls idn ipv6 nls socks5 +ssl verify-file"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:=
@@ -27,14 +19,14 @@ RDEPEND="
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
-	idn? ( net-dns/libidn )
+	idn? ( net-dns/libidn2:= )
 	socks5? (
 		>=net-proxy/dante-1.1.12
-		virtual/pam
+		sys-libs/pam
 	)
 	ssl? (
-		gnutls? ( >=net-libs/gnutls-1.2.3:= )
-		openssl? ( dev-libs/openssl:0= )
+		gnutls? ( >=net-libs/gnutls-1.2.3:0= )
+		!gnutls? ( dev-libs/openssl:0= )
 	)
 	verify-file? (
 		dev-perl/String-CRC32
@@ -47,7 +39,7 @@ DEPEND="
 	dev-libs/gnulib
 	=sys-devel/libtool-2*
 	app-arch/xz-utils
-	nls? ( sys-devel/gettext )
+	nls? ( >=sys-devel/gettext-0.19 )
 	virtual/pkgconfig
 "
 
@@ -55,10 +47,18 @@ DOCS=(
 	BUGS ChangeLog FAQ FEATURES MIRRORS NEWS README README.debug-levels
 	README.dnssec README.modules THANKS TODO
 )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
+	"${FILESDIR}"/${PN}-4.7.5-libdir-expat.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-configure.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-libidn2.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-openssl.patch
+	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
+	"${FILESDIR}"/${PN}-4.9.1-libdir-readline.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch
+	default
 
 	gnulib-tool --update || die
 
@@ -70,14 +70,16 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		$(use_enable ipv6) \
 		$(use_enable nls) \
-		$(use_with gnutls) \
-		$(use_with idn libidn) \
-		$(use_with openssl openssl "${EPREFIX}"/usr) \
+		$(use_with idn libidn2) \
 		$(use_with socks5 socksdante "${EPREFIX}"/usr) \
+		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
+		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
 		--enable-packager-mode \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \
 		--with-modules \
+		--with-readline="${EPREFIX}"/usr \
 		--without-included-regex
 }
 
@@ -89,4 +91,12 @@ src_install() {
 	for script in {convert-mozilla-cookies,verify-file}; do
 		use ${script} || { rm "${ED}"/usr/share/${PN}/${script} || die ;}
 	done
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

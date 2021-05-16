@@ -1,6 +1,0 @@
-[Unit]
-Description=Store and restore nftables firewall rules
-
-[Install]
-Also=nftables-store.service
-Also=nftables-restore.service

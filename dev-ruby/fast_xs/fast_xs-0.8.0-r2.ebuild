@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -18,13 +17,10 @@ HOMEPAGE="https://github.com/brianmario/fast_xs"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_bdepend "test? (
-	>=dev-ruby/hoe-2.3.2
-	dev-ruby/rack
-)"
+ruby_add_bdepend "test? ( dev-ruby/rack )"
 
 RUBY_PATCHES=( "${P}+ruby-1.9.patch" )
 

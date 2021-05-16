@@ -5,7 +5,13 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="pypi">urlwatch</remote-id>
+		<remote-id type="github">thp/urlwatch</remote-id>
+		<bugs-to>https://github.com/thp/urlwatch/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

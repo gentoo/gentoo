@@ -1,0 +1,39 @@
+From 7b988445b29b2bffb0714ad419c9b6dd90baccd2 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 7 Jul 2019 21:51:44 +0200
+Subject: [PATCH] Makefile.in: Ignore /usr/local/ + fix .so symlink creation
+
+---
+ Makefile.in | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 7abe595..39714f8 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -5,8 +5,8 @@ hdr = spnav.h spnav_magellan.h spnav_config.h
+ name = spnav
+ lib_a = lib$(name).a
+ 
+-incpaths = -I. -I/usr/local/include -I/usr/X11R6/include
+-libpaths = -L/usr/local/lib -L/usr/X11R6/lib
++incpaths = -I.
++libpaths =
+ 
+ CC = gcc
+ AR = ar
+@@ -54,9 +54,8 @@ install: $(lib_a) $(lib_so)
+ 	cp $(lib_so) $(DESTDIR)$(PREFIX)/$(libdir)/$(lib_so)
+ 	[ -n "$(soname)" ] && \
+ 		rm -f $(DESTDIR)$(PREFIX)/$(libdir)/$(soname) $(DESTDIR)$(PREFIX)/$(libdir)/$(devlink) && \
+-		ln -s $(DESTDIR)$(PREFIX)/$(libdir)/$(lib_so) $(DESTDIR)$(PREFIX)/$(libdir)/$(soname) && \
+-		ln -s $(DESTDIR)$(PREFIX)/$(libdir)/$(soname) $(DESTDIR)$(PREFIX)/$(libdir)/$(devlink) || \
+-		true
++		ln -s "$(lib_so)" $(DESTDIR)$(PREFIX)/$(libdir)/$(soname) && \
++		ln -s "$(lib_so)" $(DESTDIR)$(PREFIX)/$(libdir)/$(devlink)
+ 	for h in $(hdr); do cp -p $(srcdir)/$$h $(DESTDIR)$(PREFIX)/include/; done
+ 
+ .PHONY: uninstall
+-- 
+2.21.0
+

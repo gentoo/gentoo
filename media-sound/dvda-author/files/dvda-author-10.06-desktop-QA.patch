@@ -1,0 +1,11 @@
+--- a/dvda-author.desktop.in
++++ b/dvda-author.desktop.in
+@@ -7,7 +7,5 @@
+ Icon=@prefix@/share/pixmaps/dvda-author.png
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;Audio
+-GenericName[en_EN]=Terminal Program
++Categories=AudioVideo;Audio
+ StartupNotify=true
+-GenericName[fr_FR]=

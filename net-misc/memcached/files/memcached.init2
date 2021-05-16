@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 CONF="${SVCNAME#*.}"
 CONFBASE="/etc/conf.d/memcached"
@@ -10,7 +10,7 @@ if [ -n "${CONF}" ]; then
     PIDFILE="${PIDBASE}.${CONF}.pid"
     CONFSRC="${CONFBASE}.${CONF}"
     if [ -f "${CONFSRC}" ]; then
-        source "${CONFSRC}"
+        . "${CONFSRC}"
     else
         eerror "The configuration file $CONFSRC was not found!"
     fi

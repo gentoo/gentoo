@@ -1,5 +1,5 @@
---- src/savegame.c.orig
-+++ src/savegame.c
+--- a/src/savegame.c.
++++ b/src/savegame.c
 @@ -21,23 +21,24 @@
  char *partySavFilename() {
      char *fname;
@@ -61,8 +61,8 @@
      return fname;
  }
      
---- src/u4.c.orig
-+++ src/u4.c
+--- a/src/u4.c
++++ b/src/u4.c
 @@ -38,6 +38,10 @@
      osxInit(argv[0]);
  #endif

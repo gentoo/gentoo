@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A simple command-line snippet manager for rarely used commands.
+	It is capable: register command snippets, use variables in snippets,
+	search snippets interactively, run snippets directly,
+	edit snippets easily (config is just a TOML file),
+	sync snippets via Gist.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">knqyf263/pet</remote-id>
+	</upstream>
+</pkgmetadata>

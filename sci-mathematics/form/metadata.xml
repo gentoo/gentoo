@@ -5,11 +5,11 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <longdescription lang="en">
-A system which can efficiently manipulate huge formulas limited only by available disk space.
-</longdescription>
   <use>
     <flag name="devref">Build and install developers reference</flag>
     <flag name="doxygen">Build and install API documentation</flag>
   </use>
+  <upstream>
+    <remote-id type="github">vermaseren/form</remote-id>
+  </upstream>
 </pkgmetadata>

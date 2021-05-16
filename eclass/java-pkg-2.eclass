@@ -1,6 +1,5 @@
-# Copyright 2004-2015 Gentoo Foundation
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: java-pkg-2.eclass
 # @MAINTAINER:
@@ -15,6 +14,7 @@
 inherit java-utils-2
 
 # @ECLASS-VARIABLE: JAVA_PKG_IUSE
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Use JAVA_PKG_IUSE instead of IUSE for doc, source and examples so that
@@ -43,7 +43,6 @@ esac
 # @FUNCTION: java-pkg-2_pkg_setup
 # @DESCRIPTION:
 # pkg_setup initializes the Java environment
-
 java-pkg-2_pkg_setup() {
 	java-pkg_init
 }
@@ -52,7 +51,6 @@ java-pkg-2_pkg_setup() {
 # @FUNCTION: java-pkg-2_src_prepare
 # @DESCRIPTION:
 # wrapper for java-utils-2_src_prepare
-
 java-pkg-2_src_prepare() {
 	java-utils-2_src_prepare
 }
@@ -73,9 +71,11 @@ java-pkg-2_src_prepare() {
 #   EANT_EXTRA_ARGS - extra arguments to pass to eant
 #   EANT_ANT_TASKS - modifies the ANT_TASKS variable in the eant environment
 # @CODE
-
 java-pkg-2_src_compile() {
 	if [[ -e "${EANT_BUILD_XML:=build.xml}" ]]; then
+		# auto generate classpath
+		java-pkg_gen-cp EANT_GENTOO_CLASSPATH
+
 		[[ "${EANT_FILTER_COMPILER}" ]] && \
 			java-pkg_filter-compiler ${EANT_FILTER_COMPILER}
 		local antflags="${EANT_BUILD_TARGET:=jar}"
@@ -94,7 +94,6 @@ java-pkg-2_src_compile() {
 # @FUNCTION: java-pkg-2_src_test
 # @DESCRIPTION:
 # src_test, not exported.
-
 java-pkg-2_src_test() {
 	[[ -e "${EANT_BUILD_XML:=build.xml}" ]] || return
 
@@ -147,7 +146,6 @@ java-pkg-2_src_test() {
 # @FUNCTION: java-pkg-2_pkg_preinst
 # @DESCRIPTION:
 # wrapper for java-utils-2_pkg_preinst
-
 java-pkg-2_pkg_preinst() {
 	java-utils-2_pkg_preinst
 }

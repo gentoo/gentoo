@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -48,8 +47,8 @@ java_prepare() {
 	mkdir src || die
 	mv * src
 
-	# We *MUST* bump Groovy to 2.4 at some point 
-	# to make this stuff work correctly. 
+	# We *MUST* bump Groovy to 2.4 at some point
+	# to make this stuff work correctly.
 	rm -v src/com/sun/faces/scripting/groovy/GroovyHelperImpl.java || die
 	epatch "${FILESDIR}"/${P}-Util.java.patch
 }

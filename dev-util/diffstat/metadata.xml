@@ -6,6 +6,6 @@
     <name>Gentoo Shell Tools Project</name>
   </maintainer>
   <upstream>
-    <changelog>http://invisible-island.net/diffstat/CHANGES</changelog>
+    <changelog>https://invisible-island.net/diffstat/CHANGES</changelog>
   </upstream>
 </pkgmetadata>

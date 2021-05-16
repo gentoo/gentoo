@@ -1,13 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
-
-inherit eutils
+EAPI="7"
 
 DESCRIPTION="a GTK+ TCP/IP DX-cluster and ON4KST chat client"
-HOMEPAGE="http://sourceforge.net/projects/xdxclusterclient"
+HOMEPAGE="https://sourceforge.net/projects/xdxclusterclient"
 SRC_URI="mirror://sourceforge/xdxclusterclient/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -20,13 +17,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}/"${P}-fno-common.patch )
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
+
 src_configure() {
 	econf $(use_enable nls)
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	einstalldocs
 }
 
 pkg_postinst() {

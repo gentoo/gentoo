@@ -5,7 +5,9 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		A collection of libraries for building applications to work with OpenStack clouds.
-	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">openstack/python-openstacksdk</remote-id>
+		<remote-id type="pypi">openstacksdk</remote-id>
+	</upstream>
 </pkgmetadata>

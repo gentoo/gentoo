@@ -1,0 +1,390 @@
+diff -Naur cronolog-1.6.2/configure cronolog-1.6.2-new/configure
+--- a/configure	Thu May  3 17:44:22 2001
++++ b/configure	Mon Jun  3 00:38:32 2002
+@@ -1757,15 +1757,49 @@
+ 
+ fi
+ 
++echo $ac_n "checking for uid_t in sys/types.h""... $ac_c" 1>&6
++echo "configure:1762: checking for uid_t in sys/types.h" >&5
++if eval "test \"`echo '$''{'ac_cv_type_uid_t'+set}'`\" = set"; then
++  echo $ac_n "(cached) $ac_c" 1>&6
++else
++  cat > conftest.$ac_ext <<EOF
++#line 1767 "configure"
++#include "confdefs.h"
++#include <sys/types.h>
++EOF
++if (eval "$ac_cpp conftest.$ac_ext") 2>&5 |
++  egrep "uid_t" >/dev/null 2>&1; then
++  rm -rf conftest*
++  ac_cv_type_uid_t=yes
++else
++  rm -rf conftest*
++  ac_cv_type_uid_t=no
++fi
++rm -f conftest*
++
++fi
++
++echo "$ac_t""$ac_cv_type_uid_t" 1>&6
++if test $ac_cv_type_uid_t = no; then
++  cat >> confdefs.h <<\EOF
++#define uid_t int
++EOF
++
++  cat >> confdefs.h <<\EOF
++#define gid_t int
++EOF
++
++fi
++
+ 
+ 
+ echo $ac_n "checking for strftime""... $ac_c" 1>&6
+-echo "configure:1764: checking for strftime" >&5
++echo "configure:1798: checking for strftime" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_strftime'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1769 "configure"
++#line 1803 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char strftime(); below.  */
+@@ -1788,7 +1822,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1792: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:1826: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_strftime=yes"
+ else
+@@ -1810,7 +1844,7 @@
+   echo "$ac_t""no" 1>&6
+ # strftime is in -lintl on SCO UNIX.
+ echo $ac_n "checking for strftime in -lintl""... $ac_c" 1>&6
+-echo "configure:1814: checking for strftime in -lintl" >&5
++echo "configure:1848: checking for strftime in -lintl" >&5
+ ac_lib_var=`echo intl'_'strftime | sed 'y%./+-%__p_%'`
+ if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+@@ -1818,7 +1852,7 @@
+   ac_save_LIBS="$LIBS"
+ LIBS="-lintl  $LIBS"
+ cat > conftest.$ac_ext <<EOF
+-#line 1822 "configure"
++#line 1856 "configure"
+ #include "confdefs.h"
+ /* Override any gcc2 internal prototype to avoid an error.  */
+ /* We use char because int might match the return type of a gcc2
+@@ -1829,7 +1863,7 @@
+ strftime()
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1833: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:1867: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_lib_$ac_lib_var=yes"
+ else
+@@ -1856,12 +1890,12 @@
+ fi
+ 
+ echo $ac_n "checking for vprintf""... $ac_c" 1>&6
+-echo "configure:1860: checking for vprintf" >&5
++echo "configure:1894: checking for vprintf" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_vprintf'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1865 "configure"
++#line 1899 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char vprintf(); below.  */
+@@ -1884,7 +1918,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1888: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:1922: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_vprintf=yes"
+ else
+@@ -1908,12 +1942,12 @@
+ 
+ if test "$ac_cv_func_vprintf" != yes; then
+ echo $ac_n "checking for _doprnt""... $ac_c" 1>&6
+-echo "configure:1912: checking for _doprnt" >&5
++echo "configure:1946: checking for _doprnt" >&5
+ if eval "test \"`echo '$''{'ac_cv_func__doprnt'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1917 "configure"
++#line 1951 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char _doprnt(); below.  */
+@@ -1936,7 +1970,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1940: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:1974: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func__doprnt=yes"
+ else
+@@ -1963,12 +1997,12 @@
+ for ac_func in mkdir mktime putenv
+ do
+ echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:1967: checking for $ac_func" >&5
++echo "configure:2001: checking for $ac_func" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 1972 "configure"
++#line 2006 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char $ac_func(); below.  */
+@@ -1991,7 +2025,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:1995: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:2029: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_$ac_func=yes"
+ else
+@@ -2018,12 +2052,12 @@
+ for ac_func in strptime localtime_r
+ do
+ echo $ac_n "checking for $ac_func""... $ac_c" 1>&6
+-echo "configure:2022: checking for $ac_func" >&5
++echo "configure:2056: checking for $ac_func" >&5
+ if eval "test \"`echo '$''{'ac_cv_func_$ac_func'+set}'`\" = set"; then
+   echo $ac_n "(cached) $ac_c" 1>&6
+ else
+   cat > conftest.$ac_ext <<EOF
+-#line 2027 "configure"
++#line 2061 "configure"
+ #include "confdefs.h"
+ /* System header to define __stub macros and hopefully few prototypes,
+     which can conflict with char $ac_func(); below.  */
+@@ -2046,7 +2080,7 @@
+ 
+ ; return 0; }
+ EOF
+-if { (eval echo configure:2050: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
++if { (eval echo configure:2084: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   rm -rf conftest*
+   eval "ac_cv_func_$ac_func=yes"
+ else
+diff -Naur cronolog-1.6.2/configure.in cronolog-1.6.2-new/configure.in
+--- cronolog-1.6.2/configure.in	Thu May  3 17:30:50 2001
++++ cronolog-1.6.2-new/configure.in	Mon Jun  3 00:38:32 2002
+@@ -56,6 +56,7 @@
+ AC_C_CONST
+ AC_TYPE_SIZE_T
+ AC_STRUCT_TM
++AC_TYPE_UID_T
+ 
+ dnl Checks for library functions.
+ 
+diff -Naur cronolog-1.6.2/doc/cronolog.1m cronolog-1.6.2-new/doc/cronolog.1m
+--- cronolog-1.6.2/doc/cronolog.1m	Fri May  4 09:44:55 2001
++++ cronolog-1.6.2-new/doc/cronolog.1m	Mon Jun  3 00:39:10 2002
+@@ -89,6 +89,20 @@
+ .IP --help
+ print a help message and then exit.
+ .\"
++.IP "-u \fIUSER\fP"
++.IP "--set-uid=\fIUSER\fP"
++sets the user ID of the cronolog process before any logs are opened.
++\fIUSER\fP can be a username or a numeric user ID. If \fIUSER\fP
++contains solely digits, it will be assumed to be a numeric user ID;
++otherwise, it will be assumed to be a username.
++.\"
++.IP "-g \fIGROUP\fP"
++.IP "--set-gid=\fIGROUP\fP"
++sets the group ID of the cronolog process before any logs are opened.
++\fIGROUP\fP can be a group name or a numeric group ID. If \fIGROUP\fP
++contains solely digits, it will be assumed to be a numeric group ID;
++otherwise, it will be assumed to be a group name.
++.\"
+ .IP "-p \fIPERIOD\fP"
+ .IP "--period=\fIPERIOD\fP"
+ specifies the period explicitly as an optional digit string followed
+diff -Naur cronolog-1.6.2/src/cronolog.c cronolog-1.6.2-new/src/cronolog.c
+--- cronolog-1.6.2/src/cronolog.c	Thu May  3 17:42:48 2001
++++ cronolog-1.6.2-new/src/cronolog.c	Mon Jun  3 00:38:32 2002
+@@ -100,6 +100,12 @@
+ #define VERSION_MSG      "cronolog version 0.1\n"
+ #endif
+ 
++#ifndef _WIN32
++#define SETUGID_USAGE	"   -u USER,   --set-uid=USER  change to USER before doing anything (name or UID)\n" \
++			"   -g GROUP,  --set-gid=GROUP change to GROUP before doing anything (name or GID)\n"
++#else
++#define SETUGID_USAGE	""
++#endif
+ 
+ #define USAGE_MSG 	"usage: %s [OPTIONS] logfile-spec\n" \
+ 			"\n" \
+@@ -117,12 +123,17 @@
+ 			"   -e,        --european         European date formats (default)\n" \
+ 			"   -s,    --start-time=TIME   starting time\n" \
+ 			"   -z TZ, --time-zone=TZ      use TZ for timezone\n" \
++			SETUGID_USAGE \
+ 			"   -V,      --version         print version number, then exit\n"
+ 
+ 
+ /* Definition of the short and long program options */
+ 
++#ifndef _WIN32
++char          *short_options = "ad:eop:s:z:H:P:S:l:hVx:u:g:";
++#else
+ char          *short_options = "ad:eop:s:z:H:P:S:l:hVx:";
++#endif        
+ 
+ #ifndef _WIN32
+ struct option long_options[] =
+@@ -137,6 +148,8 @@
+     { "link",      	required_argument, 	NULL, 'l' },
+     { "period",		required_argument,	NULL, 'p' },
+     { "delay",		required_argument,	NULL, 'd' },
++    { "set-uid",      	required_argument,     	NULL, 'u' },
++    { "set-gid",      	required_argument,     	NULL, 'g' },
+     { "once-only", 	no_argument,       	NULL, 'o' },
+     { "help",      	no_argument,       	NULL, 'h' },
+     { "version",   	no_argument,       	NULL, 'V' }
+@@ -160,6 +173,12 @@
+     char	*template;
+     char	*linkname = NULL;
+     char	*prevlinkname = NULL;
++#ifndef _WIN32
++    uid_t	new_uid = 0;
++    gid_t	new_gid = 0;
++    int		change_uid = 0;
++    int		change_gid = 0;
++#endif
+     mode_t	linktype = 0;
+     int 	n_bytes_read;
+     int		ch;
+@@ -234,6 +253,16 @@
+ 	    }		
+ 	    break;
+ 	    
++#ifndef _WIN32
++	case 'u':
++	    new_uid = parse_uid(optarg, argv[0]);
++	    change_uid = 1;
++	    break;
++	case 'g':
++	    new_gid = parse_gid(optarg, argv[0]);
++	    change_gid = 1;
++	    break;
++#endif
+ 	case 'o':
+ 	    periodicity = ONCE_ONLY;
+ 	    break;
+@@ -265,6 +294,17 @@
+ 	fprintf(stderr, USAGE_MSG, argv[0]);
+ 	exit(1);
+     }
++
++#ifndef _WIN32
++    if (change_gid && setgid(new_gid) == -1) {
++	fprintf(stderr, "setgid: unable to change to gid: %d\n", new_gid);
++       	exit(1);
++    }
++    if (change_uid && setuid(new_uid) == -1) {
++	fprintf(stderr, "setuid: unable to change to uid: %d\n", new_uid);
++       	exit(1);
++    }
++#endif
+ 
+     DEBUG((VERSION_MSG "\n"));
+ 
+diff -Naur cronolog-1.6.2/src/cronoutils.c cronolog-1.6.2-new/src/cronoutils.c
+--- cronolog-1.6.2/src/cronoutils.c	Thu May  3 17:43:21 2001
++++ cronolog-1.6.2-new/src/cronoutils.c	Mon Jun  3 00:38:32 2002
+@@ -710,4 +710,50 @@
+     return retval;
+ }
+ 
+-    
++
++#ifndef _WIN32
++/* Turn a string specifying either a username or UID into an actual
++ * uid_t for use in setuid(). A string is assumed to be a UID if
++ * it contains only decimal digits. */
++uid_t
++parse_uid(char *user, char *argv0)
++{
++    char		*probe = user;
++    struct passwd	*ent;
++
++    while (*probe && isdigit(*probe)) {
++	probe++;
++    }
++    if (!(*probe)) {
++	return atoi(user);
++    }
++    if (!(ent = getpwnam(user))) {
++	fprintf(stderr, "%s: Bad username %s\n", argv0, user);
++	exit(1);
++    }
++    return (ent->pw_uid);
++}
++
++
++/* Turn a string specifying either a group name or GID into an actual
++ * gid_t for use in setgid(). A string is assumed to be a GID if
++ * it contains only decimal digits. */
++gid_t
++parse_gid(char *group, char *argv0)
++{
++    char		*probe = group;
++    struct group	*ent;
++
++    while (*probe && isdigit(*probe)) {
++	probe++;
++    }
++    if (!(*probe)) {
++	return atoi(group);
++    }
++    if (!(ent = getgrnam(group))) {
++	fprintf(stderr, "%s: Bad group name %s\n", argv0, group);
++	exit(1);
++    }
++    return (ent->gr_gid);
++}
++#endif /* _WIN32 */
+diff -Naur cronolog-1.6.2/src/cronoutils.h cronolog-1.6.2-new/src/cronoutils.h
+--- cronolog-1.6.2/src/cronoutils.h	Thu May  3 17:40:12 2001
++++ cronolog-1.6.2-new/src/cronoutils.h	Mon Jun  3 00:38:32 2002
+@@ -84,6 +84,8 @@
+ #include <limits.h>
+ #ifndef _WIN32
+ #include <unistd.h>
++#include <pwd.h>
++#include <grp.h>
+ #else
+ #include <io.h>
+ #include <direct.h>
+@@ -172,7 +174,8 @@
+ void		print_debug_msg(char *msg, ...);
+ time_t		parse_time(char *time_str, int);
+ char 		*timestamp(time_t thetime);
+-
++uid_t		parse_uid(char *user, char *argv0);
++gid_t		parse_gid(char *group, char *argv0);
+ 
+ /* Global variables */
+ 

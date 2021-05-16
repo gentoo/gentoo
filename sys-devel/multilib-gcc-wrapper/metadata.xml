@@ -5,8 +5,4 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>multilib@gentoo.org</email>
-		<name>gx86 multilib team</name>
-	</maintainer>
 </pkgmetadata>

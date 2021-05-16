@@ -1,0 +1,30 @@
+From 05e1090603ca81eb54a23febe41a8823a0e7d572 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Tue, 23 Mar 2021 00:29:31 +0100
+Subject: [PATCH] MimeTypeFinderJob: don't put job on hold for local files
+
+Fixes: 434455
+---
+ src/core/mimetypefinderjob.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/mimetypefinderjob.cpp b/src/core/mimetypefinderjob.cpp
+index 147f3aa9a..f5e50cdc4 100644
+--- a/src/core/mimetypefinderjob.cpp
++++ b/src/core/mimetypefinderjob.cpp
+@@ -241,8 +241,10 @@ void KIO::MimeTypeFinderJobPrivate::scanFileWithGet()
+             m_suggestedFileName = job->queryMetaData(QStringLiteral("content-disposition-filename"));
+         }
+ 
+-        job->putOnHold();
+-        KIO::Scheduler::publishSlaveOnHold();
++        if (!m_url.isLocalFile()) { // #434455
++            job->putOnHold();
++            KIO::Scheduler::publishSlaveOnHold();
++        }
+         q->emitResult();
+     });
+ }
+-- 
+GitLab
+

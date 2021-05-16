@@ -1,0 +1,7 @@
+slotmove >=sys-auth/libfprint-1.90 0 2
+move app-emulation/libpod app-emulation/podman
+move app-laptop/radeontool sys-apps/radeontool
+move x11-libs/gdk-pixbuf-loader-webp gui-libs/gdk-pixbuf-loader-webp
+move app-emacs/emacs-common-gentoo app-emacs/emacs-common
+move dev-libs/distorm64 dev-libs/distorm3
+move media-fonts/infinality-ultimate-meta media-fonts/fonts-meta

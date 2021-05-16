@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>c.affolter@purplehaze.ch</email>
+    <name>Christian Affolter</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DateTime-Format-Human-Duration</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::de</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::es</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::fr</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::it</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::ja</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::ko</remote-id>
+    <remote-id type="cpan-module">DateTime::Format::Human::Duration::Locale::pt</remote-id>
+  </upstream>
+</pkgmetadata>

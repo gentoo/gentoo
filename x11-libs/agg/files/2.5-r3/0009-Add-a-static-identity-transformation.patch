@@ -1,0 +1,37 @@
+From be9ed90897bc43b4547a3a1f8046827caaf13b4c Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sun, 19 May 2013 16:15:36 +0100
+Subject: [PATCH 09/15] Add a static identity transformation
+
+---
+ include/agg_trans_affine.h | 1 +
+ src/agg_trans_affine.cpp   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/include/agg_trans_affine.h b/include/agg_trans_affine.h
+index 2f602a0..67fe5ca 100644
+--- a/include/agg_trans_affine.h
++++ b/include/agg_trans_affine.h
+@@ -92,6 +92,7 @@ namespace agg
+     //----------------------------------------------------------------------
+     struct trans_affine
+     {
++        static const trans_affine identity;
+         double sx, shy, shx, sy, tx, ty;
+ 
+         //------------------------------------------ Construction
+diff --git a/src/agg_trans_affine.cpp b/src/agg_trans_affine.cpp
+index aca18c2..b3d9bc0 100644
+--- a/src/agg_trans_affine.cpp
++++ b/src/agg_trans_affine.cpp
+@@ -28,6 +28,7 @@
+ 
+ namespace agg
+ {
++    const trans_affine trans_affine::identity;
+ 
+     //------------------------------------------------------------------------
+     const trans_affine& trans_affine::parl_to_parl(const double* src, 
+-- 
+1.8.1.4
+

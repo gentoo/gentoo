@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="project">
+                <email>perl@gentoo.org</email>
+                <name>Gentoo Perl Project</name>
+        </maintainer>
+        <upstream>
+                <remote-id type="cpan">XML-FeedPP</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Atom03</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Atom03::Entry</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Atom03::Feed</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Atom10</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Atom10::Entry</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Atom10::Feed</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Common</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Common::Entry</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Atom::Common::Feed</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Element</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Item</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Plugin</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::RDF</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::RDF::Channel</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::RDF::Item</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::RSS</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::RSS::Channel</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::RSS::Item</remote-id>
+                <remote-id type="cpan-module">XML::FeedPP::Util</remote-id>
+        </upstream>
+</pkgmetadata>

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,6 +22,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-gsl-ocaml.patch"
+	"${FILESDIR}"/${P}-ocaml-4.09.patch
 )
 
 src_prepare() {

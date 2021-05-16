@@ -1,0 +1,27 @@
+From 1414ff3eb0b1ac9e5f096b0a28efa459cb8be1cd Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Fri, 10 Jul 2020 19:46:10 -0700
+Subject: [PATCH] Ignore trailing junk on .gz by default, to emulate gzip.
+
+backport of
+https://github.com/madler/pigz/commit/9696c84cb1963651707e649978afb07d0c11b254
+---
+ pigz.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pigz.c b/pigz.c
+index bbbfd2c..f2e79d7 100644
+--- a/pigz.c
++++ b/pigz.c
+@@ -3368,7 +3368,7 @@ local void infchk(void) {
+         cat();
+     else if (was > 1 && get_header(0) != -5)
+         complain("warning: %s: entries after the first were ignored", g.inf);
+-    else if ((was == 0 && ret != -1) || (was == 1 && (GET(), !g.in_eof)))
++    else if (( g.verbosity > 1 && was == 0 && ret != -1) || (was == 1 && (GET(), !g.in_eof)))
+         complain("warning: %s: trailing junk was ignored", g.inf);
+ }
+ 
+-- 
+2.27.0
+

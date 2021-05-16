@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils multilib
+inherit epatch multilib
 
 DESCRIPTION="IRSIM is a \"switch-level\" simulator"
 HOMEPAGE="http://opencircuitdesign.com/irsim/"
@@ -28,7 +27,6 @@ src_prepare() {
 src_configure() {
 	# Short-circuit top-level configure script to retain CFLAGS
 	cd scripts
-	#tc-export CPP
 	econf
 }
 

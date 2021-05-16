@@ -1,22 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="Sudoku puzzle generator and solver"
-HOMEPAGE="http://qqwing.com/"
-SRC_URI="http://qqwing.com/${P}.tar.gz"
+HOMEPAGE="https://qqwing.com"
+SRC_URI="https://qqwing.com/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/2"
-KEYWORDS="amd64 arm x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
+KEYWORDS="amd64 arm ~arm64 x86"
 
 src_install() {
 	default

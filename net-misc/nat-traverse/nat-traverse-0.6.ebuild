@@ -1,10 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 DESCRIPTION="Traverse NAT gateways with the Use of UDP"
-HOMEPAGE="http://linide.sourceforge.net/nat-traverse/"
-SRC_URI="http://linide.sourceforge.net/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://gitlab.com/iblech/nat-traverse"
+SRC_URI="https://gitlab.com/iblech/${PN}/blob/master/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

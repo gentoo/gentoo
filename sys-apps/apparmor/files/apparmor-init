@@ -1,7 +1,6 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 description="Load all configured profiles for the AppArmor security module."
 description_reload="Reload all profiles"

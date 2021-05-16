@@ -1,0 +1,28 @@
+From 36f61caaa95340817098b8b9f6631c9f2060a292 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 10 Oct 2017 08:17:01 +1300
+Subject: Remove 'use lib lib'
+
+There's no sense in blindly adding lib based on wherever you currently
+are to an installed program, its just a security problem asking to be
+invented.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123225
+---
+ bin/hexdump.pl | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/bin/hexdump.pl b/bin/hexdump.pl
+index 9f86cd8..1ce8962 100755
+--- a/bin/hexdump.pl
++++ b/bin/hexdump.pl
+@@ -1,6 +1,5 @@
+ #!/usr/bin/perl -w
+ 
+-use lib "lib";
+ use strict;
+ use Data::HexDump;
+ use FileHandle;
+-- 
+2.14.1
+

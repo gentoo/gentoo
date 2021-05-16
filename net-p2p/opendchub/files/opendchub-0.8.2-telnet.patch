@@ -1,5 +1,5 @@
---- opendchub-0.8.2/src/main.c.orig
-+++ opendchub-0.8.2/src/main.c
+--- a/src/main.c
++++ b/src/main.c
 @@ -1073,7 +1073,7 @@
  	     /* The chat command, starts with <nick> */
  	     else if(*temp == '<')

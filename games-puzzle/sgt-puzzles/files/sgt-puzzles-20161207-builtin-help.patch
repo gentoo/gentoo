@@ -1,0 +1,107 @@
+Based on http://sources.debian.net/patches/sgt-puzzles/20160429.b31155b-1/202_online-help.diff/
+Simply opens HTML help files with xdg-open
+
+Author: Ben Hutchings <ben@decadent.org.uk>
+Description: Add HTML-based online help
+
+This works along the same lines as the Windows implementation,
+though we have to try a bit harder to find a help browser.
+
+--- a/gtk.c	2016-12-08 07:53:06.812409184 -0500
++++ b/gtk.c	2016-12-08 07:58:06.426415886 -0500
+@@ -2,6 +2,10 @@
+  * gtk.c: GTK front end for my puzzle collection.
+  */
+ 
++#ifndef _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1 /* for PATH_MAX */
++#endif
++
+ #include <stdio.h>
+ #include <assert.h>
+ #include <stdlib.h>
+@@ -10,6 +14,9 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <math.h>
++#include <limits.h>
++#include <unistd.h>
++#include <locale.h>
+ 
+ #include <sys/time.h>
+ #include <sys/resource.h>
+@@ -2270,6 +2277,37 @@
+     resize_fe(fe);
+ }
+ 
++static void show_help(frontend *fe, const char *topic)
++{
++    char path[PATH_MAX + 1];
++
++    sprintf(path, "%s/%s.html", HTMLDIR, topic);
++    if (access(path, R_OK) != 0) {
++        error_box(fe->window, "Help file could not be found");
++        return;
++    }
++
++    const char *argv[3];
++
++    argv[0] = "xdg-open";
++    argv[1] = path;
++    argv[2] = NULL;
++    if (! g_spawn_async(NULL, (char **)argv, NULL,
++                      G_SPAWN_SEARCH_PATH,
++                      NULL, NULL, NULL, NULL))
++        error_box(fe->window, "Failed to open help file");
++}
++
++static void menu_help_contents_event(GtkMenuItem *menuitem, gpointer data)
++{
++    show_help((frontend *)data, "index");
++}
++
++static void menu_help_specific_event(GtkMenuItem *menuitem, gpointer data)
++{
++    show_help((frontend *)data, thegame.htmlhelp_topic);
++}
++
+ static void menu_about_event(GtkMenuItem *menuitem, gpointer data)
+ {
+     frontend *fe = (frontend *)data;
+@@ -2590,6 +2628,25 @@
+     menu = gtk_menu_new();
+     gtk_menu_item_set_submenu(GTK_MENU_ITEM(menuitem), menu);
+ 
++    menuitem = gtk_menu_item_new_with_label("Contents");
++    gtk_container_add(GTK_CONTAINER(menu), menuitem);
++    g_signal_connect(G_OBJECT(menuitem), "activate",
++                     G_CALLBACK(menu_help_contents_event), fe);
++    gtk_widget_show(menuitem);
++
++    if (thegame.htmlhelp_topic) {
++        char *item;
++        assert(thegame.name);
++        item = snewn(9+strlen(thegame.name), char); /*ick*/
++        sprintf(item, "Help on %s", thegame.name);
++        menuitem = gtk_menu_item_new_with_label(item);
++        sfree(item);
++        gtk_container_add(GTK_CONTAINER(menu), menuitem);
++        g_signal_connect(G_OBJECT(menuitem), "activate",
++                         G_CALLBACK(menu_help_specific_event), fe);
++        gtk_widget_show(menuitem);
++    }
++
+     menuitem = gtk_menu_item_new_with_label("About");
+     gtk_container_add(GTK_CONTAINER(menu), menuitem);
+     g_signal_connect(G_OBJECT(menuitem), "activate",
+--- a/Recipe
++++ b/Recipe
+@@ -95,6 +95,7 @@ Puzzles.dmg: Puzzles
+
+ !begin am
+ bin_PROGRAMS = $(GAMES)
++GTK_CFLAGS += -DHTMLDIR="\"$(htmldir)\""
+ !end
+ !begin am_begin
+ GAMES =
+

@@ -1,0 +1,68 @@
+Fix building with C++14, which errors out due to bool -> T* conversions
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594376
+
+--- a/src/SprBinaryEncoder.cc
++++ b/src/SprBinaryEncoder.cc
+@@ -165,7 +165,7 @@
+   if( found != vars.end() ) {
+     cerr << "Variable " << sclass.c_str() << " is already included " 
+ 	 << "in the input list for SprBinaryEncoder." << endl;
+-    return false;
++    return NULL;
+   }
+   vars.push_back(sclass);
+ 
+--- a/src/SprDecisionTree.cc
++++ b/src/SprDecisionTree.cc
+@@ -362,7 +362,7 @@
+ {
+   // header
+   char s [200];
+-  sprintf(s,"Trained DecisionTree %-6i signal nodes.    Overall FOM=%-10g W0=%-10g W1=%-10g N0=%-10i N1=%-10i    Version=%s",nodes1_.size(),fom_,w0_,w1_,n0_,n1_,SprVersion.c_str());
++  sprintf(s,"Trained DecisionTree %-6lu signal nodes.    Overall FOM=%-10g W0=%-10g W1=%-10g N0=%-10i N1=%-10i    Version=%s",nodes1_.size(),fom_,w0_,w1_,n0_,n1_,SprVersion.c_str());
+   os << s << endl;
+   os << "-------------------------------------------------------" << endl;
+ 
+--- a/src/SprVarTransformerReader.cc
++++ b/src/SprVarTransformerReader.cc
+@@ -50,7 +50,7 @@
+   nLine++;
+   if( !getline(is,line) ) {
+     cerr << "Unable to read VarTransformer from line " << nLine << endl;
+-    return 0;
++    return NULL;
+   }
+   istringstream ist(line);
+   string dummy, transformerName, version;
+@@ -59,9 +59,9 @@
+   // decode name
+   if( transformerName.empty() ) {
+     cerr << "Unable to read VarTransformer name on line " << nLine << endl;
+-    return false;
++    return NULL;
+   }
+-  SprAbsVarTransformer* t = 0;
++  SprAbsVarTransformer* t = NULL;
+   if(      transformerName == "PCA" )
+     t = SprVarTransformerReader::readPCATransformer(is,nLine);
+   else if( transformerName == "InputNormalizer" )
+@@ -72,16 +72,16 @@
+     t = SprVarTransformerReader::readTransformerSequence(is,nLine);
+   else {
+     cerr << "Unknown VarTransformer name specified on line " << nLine << endl;
+-    return 0;
++    return NULL;
+   }
+-  if( t == 0 ) return 0;
++  if( t == NULL ) return NULL;
+   
+   // read vars
+   vector<string> oldVars, newVars;
+   if( !SprVarTransformerReader::readVars(is,nLine,oldVars,newVars) ||
+       oldVars.empty() || newVars.empty() ) {
+     cerr << "Unable to read VarTransformer variables." << endl;
+-    return 0;
++    return NULL;
+   }
+   t->setOldVars(oldVars);
+   t->setNewVars(newVars);

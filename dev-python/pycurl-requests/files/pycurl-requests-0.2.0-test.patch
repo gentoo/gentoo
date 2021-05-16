@@ -1,0 +1,33 @@
+diff --git a/pycurl_requests/tests/test_exceptions.py b/pycurl_requests/tests/test_exceptions.py
+index 2415ba8..6960615 100644
+--- a/pycurl_requests/tests/test_exceptions.py
++++ b/pycurl_requests/tests/test_exceptions.py
+@@ -32,7 +32,7 @@ def test_connecterror_resolve():
+     if IS_PYCURL_REQUESTS:
+         assert isinstance(exception.__cause__, pycurl.error)
+         assert exception.curl_code == pycurl.E_COULDNT_RESOLVE_HOST
+-        assert 'Could not resolve host' in exception.curl_message
++        assert 't resolve host' in exception.curl_message
+ 
+ 
+ def test_toomanyredirects(http_server):
+diff --git a/pycurl_requests/tests/test_requests.py b/pycurl_requests/tests/test_requests.py
+index 7d2c627..850d530 100644
+--- a/pycurl_requests/tests/test_requests.py
++++ b/pycurl_requests/tests/test_requests.py
+@@ -160,6 +160,7 @@ def test_get_timeout_urllib3(http_server, timeout):
+         requests.get(http_server.base_url + '/slow', timeout=timeout)
+ 
+ 
++@pytest.mark.skip("not compatible with network-sandbox")
+ @pytest.mark.parametrize('timeout', [0.1, (0.1, None)])
+ def test_get_connect_timeout(http_server, timeout):
+     with pytest.raises(requests.Timeout):
+@@ -168,6 +169,7 @@ def test_get_connect_timeout(http_server, timeout):
+         requests.get(http_server.base_url + '/slow', timeout=timeout)
+ 
+ 
++@pytest.mark.skip("not compatible with network-sandbox")
+ @pytest.mark.skipif('urllib3' not in sys.modules, reason='urllib3 not available')
+ @pytest.mark.parametrize('timeout', [Timeout(connect=0.1), Timeout(total=0.1)])
+ def test_get_connect_timeout_urllib3(http_server, timeout):

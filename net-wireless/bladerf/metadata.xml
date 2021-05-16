@@ -9,8 +9,6 @@
 		<email>radio@gentoo.org</email>
 		<name>Radio</name>
 	</maintainer>
-	<longdescription lang="en">
-</longdescription>
 	<use>
 		<flag name="tecla">use libtecla for command line editing, tab completion, and history</flag>
 	</use>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription lang="en">
+    Distributed Machine Learning Common Codebase Core is the backbone
+    library to support all DMLC projects, offers the bricks to build
+    efficient and scalable distributed machine learning libraries. 
+  </longdescription>
+  <upstream>
+    <remote-id type="github">dmlc/dmlc-core</remote-id>
+  </upstream>
+  <use>
+    <flag name="s3">Support for the Amazon Simple Storage Service</flag>
+  </use>
+</pkgmetadata>

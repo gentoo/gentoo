@@ -1,5 +1,5 @@
---- src/config.cpp.orig	2004-09-27 11:35:48.000000000 +0200
-+++ src/config.cpp	2006-02-13 00:00:01.000000000 +0100
+--- a/src/config.cpp
++++ b/src/config.cpp
 @@ -78,6 +78,7 @@
  // makefile.
  char *get_config_location(bool write) {

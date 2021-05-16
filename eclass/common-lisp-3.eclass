@@ -1,6 +1,5 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
@@ -12,9 +11,10 @@
 
 inherit eutils
 
-# CL packages in the overlay don't have their tarballs on the mirrors
-# so it's useless to mirror them
-RESTRICT="mirror"
+# @ECLASS-VARIABLE: CLIMPLEMENTATIONS
+# @DESCRIPTION:
+# Common Lisp implementations
+CLIMPLEMENTATIONS="sbcl clisp clozurecl cmucl ecls gcl abcl"
 
 # @ECLASS-VARIABLE: CLSOURCEROOT
 # @DESCRIPTION:
@@ -42,7 +42,9 @@ EXPORT_FUNCTIONS src_compile src_install
 # @DESCRIPTION:
 # Since there's nothing to build in most cases, default doesn't do
 # anything.
-common-lisp-3_src_compile() { true; }
+common-lisp-3_src_compile() {
+	true;
+}
 
 # @FUNCTION: absolute-path-p
 # @DESCRIPTION:
@@ -73,6 +75,7 @@ common-lisp-install-one-source() {
 }
 
 # @FUNCTION: lisp-file-p
+# @USAGE: <file>
 # @DESCRIPTION:
 # Returns true if ${1} is lisp source file.
 lisp-file-p() {
@@ -82,6 +85,7 @@ lisp-file-p() {
 }
 
 # @FUNCTION: common-lisp-get-fpredicate
+# @USAGE: <type>
 # @DESCRIPTION:
 # Outputs the corresponding predicate to check files of type ${1}.
 common-lisp-get-fpredicate() {
@@ -96,7 +100,7 @@ common-lisp-get-fpredicate() {
 }
 
 # @FUNCTION: common-lisp-install-sources
-# @USAGE: common-lisp-install-sources path [<other_paths>...]
+# @USAGE: <path> [...]
 # @DESCRIPTION:
 # Recursively install lisp sources of type ${2} if ${1} is -t or
 # Lisp by default. When given a directory, it will be recursively
@@ -118,12 +122,13 @@ common-lisp-install-sources() {
 		elif [[ -d ${path} ]] ; then
 			common-lisp-install-sources -t ${ftype} $(find "${path}" -type f)
 		else
-			die "${path} it neither a regular file nor a directory"
+			die "${path} is neither a regular file nor a directory"
 		fi
 	done
 }
 
 # @FUNCTION: common-lisp-install-one-asdf
+# @USAGE: <file>
 # @DESCRIPTION:
 # Installs ${1} asdf file in CLSOURCEROOT/CLPACKAGE and symlinks it in
 # CLSYSTEMROOT.
@@ -131,14 +136,14 @@ common-lisp-install-one-asdf() {
 	[[ $# != 1 ]] && die "${FUNCNAME[0]} must receive exactly one argument"
 
 	# the suffix «.asd» is optional
-	local source=${1/.asd}.asd
+	local source=${1%.asd}.asd
 	common-lisp-install-one-source true "${source}" "$(dirname "${source}")"
 	local target="${CLSOURCEROOT%/}/${CLPACKAGE}/${source}"
 	dosym "${target}" "${CLSYSTEMROOT%/}/$(basename ${target})"
 }
 
 # @FUNCTION: common-lisp-install-asdf
-# @USAGE: common-lisp-install-asdf path [<other_paths>...]
+# @USAGE: <path> [...]
 # @DESCRIPTION:
 # Installs all ASDF files and creates symlinks in CLSYSTEMROOT.
 # When given a directory, it will be recursively scanned for ASDF
@@ -164,11 +169,23 @@ common-lisp-3_src_install() {
 	done
 }
 
-# @FUNCTION: common-lisp-export-impl-args
-# @USAGE: common-lisp-export-impl-args <lisp-implementation>
+# @FUNCTION: common-lisp-find-lisp-impl
 # @DESCRIPTION:
-#   Export a few variables containing the switches necessary
-#   to make the CL implementation perform basic functions:
+# Outputs an installed Common Lisp implementation. Transverses
+# CLIMPLEMENTATIONS to find it.
+common-lisp-find-lisp-impl() {
+	for lisp in ${CLIMPLEMENTATIONS} ; do
+		[[ "$(best_version dev-lisp/${lisp})" ]] && echo "${lisp}" && return
+	done
+	die "No CommonLisp implementation found"
+}
+
+# @FUNCTION: common-lisp-export-impl-args
+# @USAGE: <lisp-implementation>
+# @DESCRIPTION:
+# Export a few variables containing the switches necessary
+# to make the CL implementation perform basic functions:
+#   * CL_BINARY: Common Lisp implementation
 #   * CL_NORC: don't load syste-wide or user-specific initfiles
 #   * CL_LOAD: load a certain file
 #   * CL_EVAL: eval a certain expression at startup
@@ -177,13 +194,20 @@ common-lisp-export-impl-args() {
 		eerror "Usage: ${FUNCNAME[0]} lisp-implementation"
 		die "${FUNCNAME[0]}: wrong number of arguments: $#"
 	fi
-	case ${1} in
+	CL_BINARY="${1}"
+	case "${CL_BINARY}" in
+		sbcl)
+			CL_NORC="--sysinit /dev/null --userinit /dev/null"
+			CL_LOAD="--load"
+			CL_EVAL="--eval"
+			;;
 		clisp)
 			CL_NORC="-norc"
 			CL_LOAD="-i"
 			CL_EVAL="-x"
 			;;
-		clozure | ccl | openmcl)
+		clozure | clozurecl | ccl | openmcl)
+			CL_BINARY="ccl"
 			CL_NORC="--no-init"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
@@ -193,19 +217,20 @@ common-lisp-export-impl-args() {
 			CL_LOAD="-load"
 			CL_EVAL="-eval"
 			;;
-		ecl)
+		ecl | ecls)
+			CL_BINARY="ecl"
 			CL_NORC="-norc"
 			CL_LOAD="-load"
 			CL_EVAL="-eval"
 			;;
-		sbcl)
-			CL_NORC="--sysinit /dev/null --userinit /dev/null"
+		abcl)
+			CL_NORC="--noinit"
 			CL_LOAD="--load"
 			CL_EVAL="--eval"
 			;;
 		*)
-			die ${1} is not supported by ${0}
+			die "${CL_BINARY} is not supported by ${0}"
 			;;
 	esac
-	export CL_NORC CL_LOAD CL_EVAL
+	export CL_BINARY CL_NORC CL_LOAD CL_EVAL
 }

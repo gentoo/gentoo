@@ -1,14 +1,14 @@
 Respect LDFLAGS, CFLAGS, CC  #334715
 Fix install paths
 
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,33 +1,29 @@
  # Makefile for spectromatic
  
 -CFLAGS = -O2 -Wall 
 -LIBS = -lgsl -lgslcblas -lpng -lm
-+LIBS = -lpng `pkg-config --libs gsl`
++LIBS = -lpng `${PKG_CONFIG} --libs gsl`
  DESTDIR =
 -TOPLEVEL_HOME = /usr
 +TOPLEVEL_HOME ?= /usr

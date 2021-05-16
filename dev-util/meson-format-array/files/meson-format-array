@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+# Copyright 2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+import itertools
+import shlex
+import sys
+
+def quote(s):
+    return "'" + s.replace("\\", "\\\\").replace("'", "\\'") + "'"
+
+def main(args):
+    # Split each argument according to shell rules
+    args = (shlex.split(x) for x in args)
+
+    # Flatten the resulting list of lists
+    args = itertools.chain.from_iterable(args)
+
+    # Add quotes and escape embedded quotes
+    args = (quote(x) for x in args)
+
+    # Format the result
+    print("[" + ", ".join(args) + "]")
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

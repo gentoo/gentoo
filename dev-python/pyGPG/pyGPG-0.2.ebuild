@@ -1,24 +1,29 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5})
+PYTHON_COMPAT=( python3_{7,8} )
+
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
-EGIT_REPO_URI="git://github.com/dol-sen/pyGPG.git"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/dol-sen/pyGPG.git"
+	EGIT_BRANCH="master"
+else
+	SRC_URI="https://dev.gentoo.org/~dolsen/releases/pyGPG/${P}.tar.gz"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+fi
 
 DESCRIPTION="A python interface wrapper for gnupg's gpg command"
 HOMEPAGE="https://github.com/dol-sen/pyGPG"
-SRC_URI="https://dev.gentoo.org/~dolsen/releases/pyGPG/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
-
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~x86"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -30,13 +35,6 @@ pkg_postinst() {
 	einfo "This is experimental software."
 	einfo "The API's it installs should be considered unstable"
 	einfo "and are subject to change."
-	einfo
-	einfo "This version includes a new gkeys-gpg command"
-	einfo "It can be used as an alternate gpg command for git"
-	einfo "It will set the correct keyring to verify signed commits"
-	einfo "provided the key it needs to verify against is part of the gkeys"
-	einfo "keyring system.   It only works for verification, any other call "
-	einfo "to it will re-direct directly to the normal gpg command."
 	einfo
 	einfo "Please file any enhancement requests, or bugs"
 	einfo "at https://github.com/dol-sen/pyGPG/issues"

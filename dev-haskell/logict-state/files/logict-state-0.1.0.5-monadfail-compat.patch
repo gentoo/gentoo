@@ -1,0 +1,64 @@
+diff --git a/src/Control/Monad/LogicState.hs b/src/Control/Monad/LogicState.hs
+index 93be8aa..613a77c 100644
+--- a/src/Control/Monad/LogicState.hs
++++ b/src/Control/Monad/LogicState.hs
+@@ -1,4 +1,4 @@
+-{-# LANGUAGE UndecidableInstances, Rank2Types, FlexibleInstances, FlexibleContexts, GADTs, ScopedTypeVariables, FunctionalDependencies #-}
++{-# LANGUAGE UndecidableInstances, Rank2Types, FlexibleInstances, FlexibleContexts, GADTs, ScopedTypeVariables, FunctionalDependencies, CPP #-}
+ 
+ -------------------------------------------------------------------------
+ -- |
+@@ -39,6 +39,9 @@ import Control.Applicative
+ 
+ import Control.Monad
+ import Control.Monad.Identity
++#if !MIN_VERSION_base(4,11,0)
++import qualified Control.Monad.Fail as Fail
++#endif
+ import Control.Monad.Trans
+ 
+ import Control.Monad.State
+@@ -83,7 +86,12 @@ instance Applicative (LogicStateT gs bs f) where
+ instance Monad (LogicStateT gs bs m) where
+     return a = LogicStateT ($ a)
+     m >>= f = LogicStateT $ \sk -> unLogicStateT m (\a -> unLogicStateT (f a) sk)
+-    fail _ = LogicStateT $ flip const
++#if !MIN_VERSION_base(4,11,0)
++    fail = Fail.fail
++#endif
++
++instance MonadFail (LogicStateT gs bs m) where
++  fail _ = LogicStateT $ flip const
+ 
+ instance Alternative (LogicStateT gs bs f) where
+     empty = LogicStateT $ flip const
+diff --git a/src/Control/Monad/TransLogicState/Class.hs b/src/Control/Monad/TransLogicState/Class.hs
+index 4fa61c4..267704a 100644
+--- a/src/Control/Monad/TransLogicState/Class.hs
++++ b/src/Control/Monad/TransLogicState/Class.hs
+@@ -1,4 +1,4 @@
+-{-# LANGUAGE ScopedTypeVariables #-}
++{-# LANGUAGE ScopedTypeVariables, CPP #-}
+ 
+ module Control.Monad.TransLogicState.Class
+   ( TransLogicState(..)
+@@ -15,12 +15,19 @@ import Control.Arrow
+ import Control.Monad.Identity
+ -- import Control.Monad.Trans
+ 
++instance MonadFail Identity where
++  fail msg = runIdentity $ fail msg
++
+ -- | Additions to MonadTrans specifically useful for LogicState
+ class {- MonadTrans t => -} TransLogicState s t where
+   -------------------------------------------------------------------------
+   -- | Extracts the first result from a 't m' computation,
+   -- failing otherwise.
++#if !MIN_VERSION_base(4,13,0)
+   observeT :: (Monad m) => s -> t m a -> m a
++#else
++  observeT :: (MonadFail m) => s -> t m a -> m a
++#endif
+   observeT e m = fmap head $ observeManyT e 1 m
+   
+   -------------------------------------------------------------------------

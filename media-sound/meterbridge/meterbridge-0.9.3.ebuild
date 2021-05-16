@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Software meterbridge for the UNIX based JACK audio system"
 HOMEPAGE="http://plugin.org.uk/meterbridge/"
@@ -15,21 +14,25 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-RDEPEND="media-sound/jack-audio-connection-kit
+BDEPEND="
+	virtual/pkgconfig
+"
+RDEPEND="
 	>=media-libs/libsdl-1.2
 	>=media-libs/sdl-image-1.2.10[png]
-	virtual/opengl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/jack
+	virtual/opengl
+"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-gcc41.patch"
+	"${FILESDIR}/${P}-asneeded.patch"
+	"${FILESDIR}/${P}-cflags.patch"
+	"${FILESDIR}/${P}-setrgba.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc41.patch
-	epatch "${FILESDIR}"/${P}-asneeded.patch
-	epatch "${FILESDIR}"/${P}-cflags.patch
+	default
 	eautoreconf
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog
 }

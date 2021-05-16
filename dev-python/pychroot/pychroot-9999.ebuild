@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+EAPI=7
+PYTHON_COMPAT=( python3_{8,9} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -20,21 +19,19 @@ HOMEPAGE="https://github.com/pkgcore/pychroot"
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	=dev-python/snakeoil-9999[${PYTHON_USEDEP}]
-"
-DEPEND="${RDEPEND}
+if [[ ${PV} == *9999 ]]; then
+	RDEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+else
+	RDEPEND=">=dev-python/snakeoil-0.8.9[${PYTHON_USEDEP}]"
+fi
+
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
-[[ ${PV} == *9999 ]] && DEPEND+=" dev-python/sphinx[${PYTHON_USEDEP}]"
-
-python_compile_all() {
-	esetup.py build_man
-}
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+"
 
 python_test() {
 	esetup.py test
@@ -42,6 +39,6 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( NEWS.rst README.rst )
-	distutils-r1_python_install install_man
+	[[ ${PV} == *9999 ]] || doman man/*
 	distutils-r1_python_install_all
 }

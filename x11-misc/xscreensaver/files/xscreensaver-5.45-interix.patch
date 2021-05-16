@@ -1,0 +1,32 @@
+diff --git a/driver/prefs.c b/driver/prefs.c
+index ab97ffa..cc04cc9 100644
+--- a/driver/prefs.c
++++ b/driver/prefs.c
+@@ -969,7 +969,10 @@ write_init_file (Display *dpy,
+ 	     sure that the bits actually land on the disk right away. */
+           /* Update 2020: Apparently here in the future, this sometimes takes
+              3+ seconds, so let's not. */
++/* Interix has no sync() or alike. */
++#ifndef __INTERIX
+ 	  /* sync(); */
++#endif
+ 
+           status = 0;    /* wrote and renamed successfully! */
+ 	}
+diff --git a/driver/setuid.c b/driver/setuid.c
+index 3ac78e4..a2b9e15 100644
+--- a/driver/setuid.c
++++ b/driver/setuid.c
+@@ -136,9 +136,12 @@ set_ids_by_number (uid_t uid, gid_t gid, char **message_ret)
+   if (uid == (uid_t) -1) uid = (uid_t) -2;
+ 
+   errno = 0;
++
++#ifndef __INTERIX
+   if (setgroups_needed_p (gid) &&
+       setgroups (1, &gid) < 0)
+     sgs_errno = errno ? errno : -1;
++#endif
+ 
+   errno = 0;
+   if (setgid (gid) != 0)

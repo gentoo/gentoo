@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>maddin081591@gmail.com</email>
-		<name>Martin-Kevin Neumann</name>
-		<description>Proxy maintainer, CC him on bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription lang="en">
 		Minetest is an infinite-world block sandbox game and a game
 		engine, inspired by InfiniMiner, Minecraft and the like. It has
@@ -38,22 +29,26 @@
 		* Runs natively on Windows, Linux, OS X and FreeBSD.
 		* Supports multiple languages, translated by the community.
 	</longdescription>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<use>
+		<flag name="client">Build Minetest client</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
-		<flag name="luajit">
-			Use <pkg>dev-lang/luajit</pkg>
-			instead of <pkg>dev-lang/lua</pkg>
-		</flag>
-		<flag name="redis">Enable redis backend via
-			<pkg>dev-libs/hiredis</pkg>
-		</flag>
+		<flag name="prometheus">Enable prometheus client support</flag>
+		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="server">Build Minetest server</flag>
 		<flag name="spatial">Enable SpatialIndex AreaStore backend
 		</flag>
-		<flag name="server">Build minetest server</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/minetest/minetest/issues</bugs-to>
-		<doc lang="en">http://wiki.minetest.net/Main_Page</doc>
+		<doc lang="en">https://wiki.minetest.net/Main_Page</doc>
 		<remote-id type="github">minetest/minetest</remote-id>
 	</upstream>
 </pkgmetadata>

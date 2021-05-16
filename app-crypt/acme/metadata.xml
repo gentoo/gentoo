@@ -2,10 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">letsencrypt/letsencrypt</remote-id>
+		<remote-id type="pypi">acme</remote-id>
+		<remote-id type="github">certbot/certbot</remote-id>
 	</upstream>
 </pkgmetadata>

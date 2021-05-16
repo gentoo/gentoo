@@ -1,64 +1,62 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="git://anongit.freedesktop.org/git/wayland/${PN}"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/wayland/weston.git"
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
-VIRTUALX_REQUIRED="test"
-RESTRICT="test"
 
-inherit autotools readme.gentoo-r1 toolchain-funcs virtualx $GIT_ECLASS
+inherit meson readme.gentoo-r1 xdg-utils ${GIT_ECLASS}
 
 DESCRIPTION="Wayland reference compositor"
-HOMEPAGE="https://wayland.freedesktop.org/"
+HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
 
-if [[ $PV = 9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
-	KEYWORDS=""
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86 ~arm-linux"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE_VIDEO_CARDS="video_cards_intel video_cards_v4l"
-IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi lcms rdp +resize-optimization rpi +launch screen-sharing static-libs +suid systemd test unwind wayland-compositor +X xwayland ${IUSE_VIDEO_CARDS}"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
+	colord? ( lcms )
 	drm? ( gles2 )
+	pipewire? ( drm )
 	screen-sharing? ( rdp )
-	test? ( X )
+	test? ( desktop headless xwayland )
 	wayland-compositor? ( gles2 )
+	|| ( drm fbdev headless rdp wayland-compositor X )
 "
 
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
-	>=dev-libs/wayland-1.9.90
-	>=dev-libs/wayland-protocols-1.0
+	>=dev-libs/wayland-1.17.0
+	>=dev-libs/wayland-protocols-1.18
 	lcms? ( media-libs/lcms:2 )
 	media-libs/libpng:0=
-	media-libs/libwebp:0=
-	virtual/jpeg:0=
+	webp? ( media-libs/libwebp:0= )
+	jpeg? ( virtual/jpeg:0= )
 	>=x11-libs/cairo-1.11.3
-	>=x11-libs/libdrm-2.4.30
-	x11-libs/libxkbcommon
-	x11-libs/pixman
+	>=x11-libs/libdrm-2.4.68
+	>=x11-libs/libxkbcommon-0.5.0
+	>=x11-libs/pixman-0.25.2
 	x11-misc/xkeyboard-config
 	fbdev? (
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
 	)
 	colord? ( >=x11-misc/colord-0.1.27 )
-	dbus? ( sys-apps/dbus )
 	drm? (
-		media-libs/mesa[gbm]
+		>=media-libs/mesa-17.1[gbm]
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
 	)
@@ -66,85 +64,83 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
-	rdp? ( >=net-misc/freerdp-1.1.0_beta1_p20130710 )
-	rpi? (
-		>=sys-libs/mtdev-1.1.0
-		>=virtual/udev-136
+	pipewire? ( >=media-video/pipewire-0.2:= )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc2:= )
+	remoting? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
 	)
 	systemd? (
 		sys-auth/pambase[systemd]
-		sys-apps/systemd[pam]
+		>=sys-apps/dbus-1.6
+		>=sys-apps/systemd-209[pam]
 	)
 	launch? ( sys-auth/pambase )
-	unwind? ( sys-libs/libunwind )
 	X? (
-		x11-libs/libxcb
+		>=x11-libs/libxcb-1.9
 		x11-libs/libX11
 	)
 	xwayland? (
 		x11-base/xorg-server[wayland]
-		x11-libs/cairo[xcb]
-		x11-libs/libxcb
+		x11-libs/cairo[X,xcb(+)]
+		>=x11-libs/libxcb-1.9
 		x11-libs/libXcursor
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	if [[ ${PV} = 9999* ]]; then
-		eautoreconf
-	fi
-}
-
 src_configure() {
-	local myconf
-	if use examples || use test; then
-		myconf="--enable-simple-clients"
-	else
-		myconf="--disable-simple-clients"
-	fi
-
-	myconf+=" --with-cairo=image --disable-simple-egl-clients"
-
-	econf \
-		$(use_enable examples demo-clients-install) \
-		$(use_enable fbdev fbdev-compositor) \
-		$(use_enable dbus) \
-		$(use_enable drm drm-compositor) \
-		$(use_enable headless headless-compositor) \
-		$(use_enable ivi ivi-shell) \
-		$(use_enable lcms) \
-		$(use_enable rdp rdp-compositor) \
-		$(use_enable rpi rpi-compositor) \
-		$(use_enable wayland-compositor) \
-		$(use_enable X x11-compositor) \
-		$(use_enable launch weston-launch) \
-		$(use_enable colord) \
-		$(use_enable gles2 egl) \
-		$(use_enable unwind libunwind) \
-		$(use_enable resize-optimization) \
-		$(use_enable screen-sharing) \
-		$(use_enable suid setuid-install) \
-		$(use_enable xwayland) \
-		$(use_enable xwayland xwayland-test) \
-		$(use_enable video_cards_intel simple-dmabuf-intel-client) \
-		$(use_enable video_cards_v4l simple-dmabuf-v4l-client) \
-		${myconf}
+	local emesonargs=(
+		$(meson_use drm backend-drm)
+		-Dbackend-drm-screencast-vaapi=false
+		$(meson_use headless backend-headless)
+		$(meson_use rdp backend-rdp)
+		$(meson_use screen-sharing screenshare)
+		$(meson_use wayland-compositor backend-wayland)
+		$(meson_use X backend-x11)
+		$(meson_use fbdev backend-fbdev)
+		-Dbackend-default=auto
+		$(meson_use gles2 renderer-gl)
+		$(meson_use launch weston-launch)
+		$(meson_use xwayland)
+		$(meson_use systemd)
+		$(meson_use remoting)
+		$(meson_use pipewire)
+		$(meson_use desktop shell-desktop)
+		$(meson_use fullscreen shell-fullscreen)
+		$(meson_use ivi shell-ivi)
+		$(meson_use kiosk shell-kiosk)
+		$(meson_use lcms color-management-lcms)
+		$(meson_use colord color-management-colord)
+		$(meson_use systemd launcher-logind)
+		$(meson_use jpeg image-jpeg)
+		$(meson_use webp image-webp)
+		-Dtools=debug,info,terminal
+		$(meson_use examples demo-clients)
+		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
+		$(meson_use resize-optimization resize-pool)
+		-Dtest-junit-xml=false
+		-Dtest-gl-renderer=false
+		"${myconf[@]}"
+	)
+	meson_src_configure
 }
 
 src_test() {
-	export XDG_RUNTIME_DIR="${T}/runtime-dir"
-	mkdir "${XDG_RUNTIME_DIR}" || die
-	chmod 0700 "${XDG_RUNTIME_DIR}" || die
+	xdg_environment_reset
 
+	# devices test usually fails.
 	cd "${BUILD_DIR}" || die
-	Xemake check
+	meson test $(meson test --list | grep -Fxv devices) || die
 }
 
 src_install() {
-	default
-
+	meson_src_install
+	if use launch && use suid; then
+		chmod u+s "${ED}"/usr/bin/weston-launch || die
+	fi
 	readme.gentoo_create_doc
 }

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,12 +12,13 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JTS Topology Suite for Java"
-HOMEPAGE="http://tsusiatsoftware.net/jts/main.html"
+HOMEPAGE="https://tsusiatsoftware.net/jts/main.html"
 SRC_URI="https://github.com/dr-jts/jts/archive/${GIT_REF}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND=">=virtual/jdk-1.7
 	app-arch/unzip

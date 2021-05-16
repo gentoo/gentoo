@@ -1,7 +1,0 @@
-# Config file for /etc/init.d/clamd
-
-START_CLAMD=yes
-START_FRESHCLAM=yes
-CLAMD_NICELEVEL=3
-FRESHCLAM_NICELEVEL=19
-IONICE_LEVEL=2

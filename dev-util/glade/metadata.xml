@@ -5,4 +5,8 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="gjs">Build catalog support for <pkg>dev-libs/gjs</pkg> widgets.</flag>
+	<flag name="webkit">Build catalog support for <pkg>net-libs/webkit-gtk</pkg>:4 widgets.</flag>
+</use>
 </pkgmetadata>

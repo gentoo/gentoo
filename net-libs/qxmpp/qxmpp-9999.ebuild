@@ -1,58 +1,59 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/qxmpp-project/qxmpp"
-
-inherit qt4-r2 multilib git-2
+inherit git-r3 cmake
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
 HOMEPAGE="https://github.com/qxmpp-project/qxmpp/"
+EGIT_REPO_URI="https://github.com/qxmpp-project/qxmpp"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug doc +speex test theora vpx"
+IUSE="debug doc opus +speex test theora vpx"
+RESTRICT="!test? ( test )"
 
-RDEPEND="dev-qt/qtcore:4
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtxml:5
+	opus? ( media-libs/opus )
 	speex? ( media-libs/speex )
 	theora? ( media-libs/libtheora )
-	vpx? ( media-libs/libvpx )"
+	vpx? ( media-libs/libvpx:= )
+"
 DEPEND="${RDEPEND}
-	test? ( dev-qt/qttest:4 )"
+	test? ( dev-qt/qttest:5 )
+"
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
 
-src_prepare(){
-	if ! use doc; then
-		sed -i \
-			-e '/SUBDIRS/s/doc//' \
-			-e '/INSTALLS/d' \
-			qxmpp.pro || die "sed for removing docs failed"
-	fi
-	if ! use test; then
-		sed -i -e '/SUBDIRS/s/tests//' \
-			qxmpp.pro || die "sed for removing tests failed"
-	fi
-	qt4-r2_src_prepare
+src_prepare() {
+	# requires network connection, bug #623708
+	sed \
+		-e "/qxmppiceconnection/d" \
+		-e "/qxmppserver/d" \
+		-e "/qxmpptransfermanager/d" \
+		-i tests/CMakeLists.txt \
+		|| die "failed to drop certain network tests"
+
+	cmake_src_prepare
 }
 
-src_configure(){
-	local conf_speex
-	local conf_theora
-	local conf_vpx
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_DOCUMENTATION=$(usex doc)
+		-DBUILD_EXAMPLES=OFF
+		-DBUILD_TESTS=$(usex test)
+		-DBUILD_INTERNAL_TESTS=$(usex test)
+		-DWITH_OPUS=$(usex opus)
+		-DWITH_SPEEX=$(usex speex)
+		-DWITH_THEORA=$(usex theora)
+		-DWITH_VPX=$(usex vpx)
+	)
 
-	use speex && conf_speex="QXMPP_USE_SPEEX=1"
-	use theora && conf_theora="QXMPP_USE_THEORA=1"
-	use vpx && conf_vpx="QXMPP_USE_VPX=1"
-
-	eqmake4 "${S}"/qxmpp.pro "PREFIX=${EPREFIX}/usr" "LIBDIR=$(get_libdir)" "${conf_speex}" "${conf_theora}" "${conf_vpx}"
-}
-
-src_install() {
-	qt4-r2_src_install
-	if use doc; then
-		# Use proper path for documentation
-		mv "${ED}"/usr/share/doc/${PN} "${ED}"/usr/share/doc/${PF} || die "doc mv failed"
-	fi
+	cmake_src_configure
 }

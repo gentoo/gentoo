@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>d.scheller.oss@gmail.com</email>
+		<name>Daniel Scheller</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jasmin-j/vdr-plugin-ddci2</remote-id>
+	</upstream>
+</pkgmetadata>

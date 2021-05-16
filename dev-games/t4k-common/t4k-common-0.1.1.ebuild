@@ -1,20 +1,21 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A library of code shared between tuxmath and tuxtype"
-HOMEPAGE="http://tux4kids.alioth.debian.org/tuxmath/download.php"
-SRC_URI="http://alioth.debian.org/frs/download.php/3540/t4k_common-${PV}.tar.gz"
+HOMEPAGE="https://github.com/tux4kids/t4kcommon"
+SRC_URI="https://github.com/tux4kids/t4kcommon/archive/upstream/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="static-libs svg"
+IUSE="svg"
 
-RDEPEND="dev-libs/libxml2:2
+RDEPEND="
+	dev-libs/libxml2:2
 	media-libs/libsdl
 	media-libs/sdl-image
 	media-libs/sdl-mixer
@@ -26,22 +27,33 @@ RDEPEND="dev-libs/libxml2:2
 		media-libs/libpng:0
 		x11-libs/cairo
 	)"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+# need sys-devel/gettext for AM_ICONV in iconv.m4
+BDEPEND="
+	sys-devel/gettext
 	virtual/pkgconfig"
 
-S=${WORKDIR}/t4k_common-${PV}
+S="${WORKDIR}/t4kcommon-upstream-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libpng.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-ICONV_CONST.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libpng.patch
+	default
+	rm m4/iconv.m4 || die
+	eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(usex svg "" "--without-rsvg") \
-		$(use_enable static-libs static)
+		--disable-static \
+		$(usex svg "" --without-rsvg)
 }
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

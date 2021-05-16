@@ -1,0 +1,9 @@
+diff --git a/test/test.hs b/test/test.hs
+index 38238b5..c3a99b0 100644
+--- a/test/test.hs
++++ b/test/test.hs
+@@ -35,3 +35,3 @@ testPattern = 0xdeadbeef
+ 
+-type PolyTest = (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => a -> Assertion
++type PolyTest = forall a . (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => a -> Assertion
+ 

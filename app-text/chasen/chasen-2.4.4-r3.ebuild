@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit eutils perl-module
+inherit epatch ltprune perl-module
 
 DESCRIPTION="Japanese Morphological Analysis System, ChaSen"
 HOMEPAGE="http://chasen-legacy.sourceforge.jp/"
@@ -48,7 +47,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	default
 
 	if use perl ; then

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 #
 # Openssl doesn't play along nicely with cross-compiling
 # like autotools based projects, so let's teach it new tricks.
@@ -82,8 +81,8 @@ chost_machine=${CHOST%%-*}
 case ${system} in
 linux)
 	case ${chost_machine}:${ABI} in
-		aarch64*be*)  machine="generic64 -DB_ENDIAN";;
-		aarch64*)     machine="generic64 -DL_ENDIAN";;
+		aarch64*be*)  machine="aarch64 -DB_ENDIAN";;
+		aarch64*)     machine="aarch64 -DL_ENDIAN";;
 		alphaev56*|\
 		alphaev[678]*)machine=alpha+bwx-${compiler};;
 		alpha*)       machine=alpha-${compiler};;
@@ -105,6 +104,8 @@ linux)
 		powerpc64*)   machine=ppc64;;
 		powerpc*le*)  machine="generic32 -DL_ENDIAN";;
 		powerpc*)     machine=ppc;;
+		riscv32*)     machine="generic32 -DL_ENDIAN";;
+		riscv64*)     machine="generic64 -DL_ENDIAN";;
 	#	sh64*)        machine=elf;;
 		sh*b*)        machine="generic32 -DB_ENDIAN";;
 		sh*)          machine="generic32 -DL_ENDIAN";;

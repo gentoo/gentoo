@@ -1,10 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit base flag-o-matic pam toolchain-funcs
+inherit flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="A Unix Web Authenticator"
 HOMEPAGE="https://github.com/phokz/pwauth/tree/master/pwauth"
@@ -15,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="faillog pam ignore-case domain-aware"
 
-DEPEND="pam? ( virtual/pam )"
+DEPEND="pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(

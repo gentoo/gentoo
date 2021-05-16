@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Dumbbench</remote-id>
+    <remote-id type="cpan-module">Benchmark::Dumb</remote-id>
+    <remote-id type="cpan-module">Dumbbench</remote-id>
+    <remote-id type="cpan-module">Dumbbench::BoxPlot</remote-id>
+    <remote-id type="cpan-module">Dumbbench::CPUFrequencyPinner</remote-id>
+    <remote-id type="cpan-module">Dumbbench::Instance</remote-id>
+    <remote-id type="cpan-module">Dumbbench::Instance::Cmd</remote-id>
+    <remote-id type="cpan-module">Dumbbench::Instance::PerlEval</remote-id>
+    <remote-id type="cpan-module">Dumbbench::Instance::PerlSub</remote-id>
+    <remote-id type="cpan-module">Dumbbench::Result</remote-id>
+    <remote-id type="cpan-module">Dumbbench::Stats</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+prefix=%PREFIX%
+exec_prefix=${prefix}
+libdir=${prefix}/%LIB%
+includedir=${prefix}/include/FAudio
+
+Name: faudio
+Description: Accuracy-focused XAudio reimplementation for open platforms
+Version:
+
+Libs: -L${libdir} -lFAudio
+Cflags: -I${includedir}

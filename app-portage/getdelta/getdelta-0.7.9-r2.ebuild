@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="dynamic deltup client"
 HOMEPAGE="http://linux01.gwdg.de/~nlissne/"
@@ -23,7 +22,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}.patch
 }
 
-src_install () {
+src_install() {
 	# portage has moved make.globals, so we just hotfix it
 	sed -i -e "s:/etc/make.globals:/usr/share/portage/config/make.globals:g" "${WORKDIR}"/getdelta.sh || die "Couldn't fix make.globals path"
 
@@ -31,7 +30,7 @@ src_install () {
 	sed -i -e "s:source /etc/make.conf:source /etc/make.conf || source /etc/portage/make.conf:" "${WORKDIR}"/getdelta.sh || die "Couldn't fix make.conf path"
 
 	sed -i -e "s:/bin/sh:/bin/bash:" "${WORKDIR}"/getdelta.sh || die
-	dobin "${WORKDIR}"/getdelta.sh || die
+	dobin "${WORKDIR}"/getdelta.sh
 }
 
 pkg_postinst() {

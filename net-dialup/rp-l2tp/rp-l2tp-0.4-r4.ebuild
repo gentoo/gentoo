@@ -1,32 +1,33 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="User-space implementation of L2TP for Linux and other UNIX systems"
-HOMEPAGE="http://sourceforge.net/projects/rp-l2tp/"
+HOMEPAGE="https://sourceforge.net/projects/rp-l2tp/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~ppc x86"
 SLOT="0"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gentoo.patch"
+	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-parallel-build.patch"
+)
+
 src_prepare() {
 	tc-export AR CC RANLIB
-	epatch \
-		"${FILESDIR}/${P}-gentoo.patch" \
-		"${FILESDIR}/${P}-flags.patch" \
-		"${FILESDIR}/${P}-build.patch"
-	epatch_user
+	default
 }
 
 src_install() {
 	emake RPM_INSTALL_ROOT="${D}" install
 
-	dodoc README
+	einstalldocs
 	newdoc l2tp.conf rp-l2tpd.conf
 	docinto libevent
 	dodoc libevent/Doc/*

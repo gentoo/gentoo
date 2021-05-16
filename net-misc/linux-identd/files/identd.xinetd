@@ -1,9 +1,0 @@
-service ident
-{
-	disable		= no
-	socket_type = stream
-	wait		= no
-	user		= nobody
-	protocol	= tcp
-	server		= /usr/sbin/in.identd
-}

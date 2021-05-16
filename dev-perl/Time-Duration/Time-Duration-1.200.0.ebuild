@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Rounded or exact English expression of durations"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x86-linux ~x64-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/perl-Exporter"
 DEPEND="${RDEPEND}

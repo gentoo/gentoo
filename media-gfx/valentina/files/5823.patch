@@ -1,0 +1,50 @@
+# HG changeset patch
+# User Roman Telezhynskyi <kroluku@gmail.com>
+# Date 1551441739 -7200
+#      Fri Mar 01 14:02:19 2019 +0200
+# Branch release
+# Node ID 82e62ea2d785e093af68089e509b224f3f4f843f
+# Parent  0108ef767e2447e5b5f39378bcf245e25947a25d
+Don't use Qt OpenGL module since Q5.4.
+
+diff -r 0108ef767e24 -r 82e62ea2d785 src/app/valentina/valentina.pro
+--- a/src/app/valentina/valentina.pro	Sun Feb 24 17:29:12 2019 +0200
++++ b/src/app/valentina/valentina.pro	Fri Mar 01 14:02:19 2019 +0200
+@@ -297,7 +297,6 @@
+         $$[QT_INSTALL_BINS]/icuuc*.dll \ # Different name for different Qt releases
+         $$[QT_INSTALL_BINS]/Qt5Core.dll \
+         $$[QT_INSTALL_BINS]/Qt5Concurrent.dll \
+-        $$[QT_INSTALL_BINS]/Qt5OpenGL.dll \
+         $$[QT_INSTALL_BINS]/Qt5Gui.dll \
+         $$[QT_INSTALL_BINS]/Qt5Network.dll \
+         $$[QT_INSTALL_BINS]/Qt5PrintSupport.dll \
+@@ -309,6 +308,11 @@
+         $$[QT_INSTALL_BINS]/libstdc++-6.dll \
+         $$[QT_INSTALL_BINS]/libwinpthread-1.dll
+ 
++    # Don't use Qt OpenGL module since Q5.4
++    equals(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 4) {
++        package.files += $$[QT_INSTALL_BINS]/Qt5OpenGL.dll
++    }
++
+     # For support Windows 7+
+     greaterThan(QT_MAJOR_VERSION, 4):greaterThan(QT_MINOR_VERSION, 6) {
+         package.files += $$[QT_INSTALL_BINS]/Qt5WinExtras.dll
+diff -r 0108ef767e24 -r 82e62ea2d785 src/libs/vwidgets/vwidgets.pro
+--- a/src/libs/vwidgets/vwidgets.pro	Sun Feb 24 17:29:12 2019 +0200
++++ b/src/libs/vwidgets/vwidgets.pro	Fri Mar 01 14:02:19 2019 +0200
+@@ -7,7 +7,12 @@
+ # File with common stuff for whole project
+ include(../../../common.pri)
+ 
+-QT += widgets printsupport opengl
++QT += widgets printsupport
++
++# Don't use Qt OpenGL module since Q5.4
++equals(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 4) {
++    QT += opengl
++}
+ 
+ # Name of the library
+ TARGET = vwidgets
+

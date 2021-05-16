@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-inherit eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Inference of RNA alignments"
 HOMEPAGE="http://infernal.janelia.org/"
@@ -12,36 +11,34 @@ SRC_URI="ftp://selab.janelia.org/pub/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="mpi"
 KEYWORDS="amd64 x86"
+IUSE="mpi"
 
-DEPEND="mpi? ( virtual/mpi )"
-RDEPEND="${DEPEND}"
+RDEPEND="mpi? ( virtual/mpi )"
+DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-parallel-build.patch \
-		"${FILESDIR}"/${P}-overflows.patch \
-		"${FILESDIR}"/${P}-perl-5.16-2.patch \
-		"${FILESDIR}"/${P}-ldflags.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-build-system.patch
+	"${FILESDIR}"/${P}-overflows.patch
+	"${FILESDIR}"/${P}-perl-5.16-2.patch
+)
 
 src_configure() {
-	econf \
-		--prefix="${D}/usr" \
-		$(use_enable mpi)
+	tc-export AR
+	econf $(use_enable mpi)
 }
 
 src_install() {
+	DOCS=( 00README* Userguide.pdf documentation/release-notes )
 	default
 
-	pushd documentation/manpages > /dev/null
-	for i in *;
-		do newman ${i} ${i/.man/.1}
+	pushd documentation/manpages >/dev/null || die
+	local i
+	for i in *.man; do
+		newman "${i}" "${i/.man/.1}"
 	done
-	popd > /dev/null
+	popd >/dev/null || die
 
 	insinto /usr/share/${PN}
 	doins -r benchmarks tutorial intro matrices
-	dodoc 00README* Userguide.pdf documentation/release-notes/*
 }

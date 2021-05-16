@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -8,12 +7,12 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Symbolic icons for GNOME default icon theme"
-HOMEPAGE="https://git.gnome.org/browse/gnome-icon-theme-symbolic/"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gnome-icon-theme-symbolic"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND=">=x11-themes/hicolor-icon-theme-0.10"
 

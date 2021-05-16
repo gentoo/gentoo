@@ -1,18 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="A command-line compatible rm which destroys file contents before unlinking"
-HOMEPAGE="http://sourceforge.net/projects/srm/"
+HOMEPAGE="https://sourceforge.net/projects/srm/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="debug"
 
 DEPEND="!app-misc/secure-delete

@@ -1,0 +1,66 @@
+--- a/src/cli-crypt.h
++++ b/src/cli-crypt.h
+@@ -27,16 +27,16 @@
+ #define LSIZE	1024	/* our standard buffer size for static memory */
+ 
+ /* our global variables */
+-char cleartext_pass[LSIZE];	/* where do we store the initial cleartext of the password */
+-char encrypted_pass[LSIZE];	/* where we stuff our password once it's encrypted */
+-char salt_src[LSIZE];		/* a place we can store text to scramble to get our salt */
+-char salt[LSIZE];		/* the actual salt we end up with using in our call to crypt(); */
++extern char cleartext_pass[LSIZE];	/* where do we store the initial cleartext of the password */
++extern char encrypted_pass[LSIZE];	/* where we stuff our password once it's encrypted */
++extern char salt_src[LSIZE];		/* a place we can store text to scramble to get our salt */
++extern char salt[LSIZE];		/* the actual salt we end up with using in our call to crypt(); */
+ 
+ /* flags we use to determine how we're doing things */
+-short int md5;		/* we doing md5 passwords */
+-short int quiet;	/* are we to be quiet */
+-short int debug;	/* do we print debug info? */
+-short int do_salt;	/* do we need to provide a salt? */
++extern short int md5;		/* we doing md5 passwords */
++extern short int quiet;	/* are we to be quiet */
++extern short int debug;	/* do we print debug info? */
++extern short int do_salt;	/* do we need to provide a salt? */
+ 
+ 
+ /* from main.c */
+--- a/src/crypt.c
++++ b/src/crypt.c
+@@ -26,7 +26,7 @@
+ 
+ #include "include.h"
+ 
+-
++char encrypted_pass[LSIZE];
+ 
+ short int cr_crypt() {
+        	char *cp;
+--- a/src/getopt.c
++++ b/src/getopt.c
+@@ -25,6 +25,13 @@
+ 
+ #include "include.h"
+ 
++char cleartext_pass[LSIZE];
++
++short int md5;
++short int quiet;
++short int debug;
++short int do_salt;
++
+ void cr_version(char *me) {
+ 	/* some quick mutzing around to get the == of `basename $0` */
+ 	char lme[LSIZE];
+--- a/src/random.c
++++ b/src/random.c
+@@ -27,6 +27,9 @@
+ 
+ #include "include.h"
+ 
++char salt_src[LSIZE];
++char salt[LSIZE];
++
+ /* shared amongst the functions in this file */
+ long int rand_file;
+ 

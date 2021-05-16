@@ -1,10 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils elisp-common
+inherit autotools elisp-common
 
 DESCRIPTION="Namazu is a full-text search engine"
 HOMEPAGE="http://www.namazu.org/"
@@ -13,11 +12,11 @@ SRC_URI="http://www.namazu.org/stable/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
-IUSE="emacs nls tk linguas_ja"
+IUSE="emacs l10n_ja nls static-libs tk"
 
-RDEPEND=">=dev-perl/File-MMagic-1.20
-	emacs? ( virtual/emacs )
-	linguas_ja? (
+RDEPEND="dev-perl/File-MMagic
+	emacs? ( >=app-editors/emacs-23.1:* )
+	l10n_ja? (
 		app-i18n/nkf
 		|| (
 			dev-perl/Text-Kakasi
@@ -28,27 +27,40 @@ RDEPEND=">=dev-perl/File-MMagic-1.20
 	)
 	nls? ( virtual/libintl )
 	tk? (
-		dev-lang/tk
+		dev-lang/tk:0
 		www-client/lynx
 	)"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-gentoo.patch
+	"${FILESDIR}"/${PN}-perl-5.18.patch
+	"${FILESDIR}"/${PN}-perl-5.26.patch
+	"${FILESDIR}"/${P}-memmove.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.0.19-gentoo.patch"
-	epatch "${FILESDIR}/${PN}-2.0.21-search.patch"
+	default
+
+	mv configure.{in,ac}
+	mv tk${PN}/configure.{in,ac}
+	eautoreconf
 }
 
 src_configure() {
-	local myconf
-	use tk && myconf="--with-namazu=/usr/bin/namazu
-					--with-mknmz=/usr/bin/mknmz
-					--with-indexdir=/var/lib/namazu/index"
+	local myconf=(
+		$(use_enable nls)
+		$(use_enable static-libs static)
+		$(use_enable tk tk${PN})
+	)
+	use tk && myconf+=(
+		--with-${PN}="${EPREFIX}"/usr/bin/${PN}
+		--with-mknmz="${EPREFIX}"/usr/bin/mknmz
+		--with-indexdir="${EPREFIX}"/var/lib/${PN}/index
+	)
 
-	econf \
-		$(use_enable nls) \
-		$(use_enable tk tknamazu) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -56,17 +68,21 @@ src_compile() {
 
 	if use emacs; then
 		cd lisp
-		elisp-compile gnus-nmz-1.el namazu.el
+		rm -f browse*
+		elisp-compile *.el
 	fi
 }
 
-src_install () {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS CREDITS ChangeLog* HACKING* NEWS README* THANKS TODO etc/*.png
-	dohtml -r doc/*
+src_test() {
+	emake -j1 check
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 
 	if use emacs; then
-		elisp-install ${PN} lisp/gnus-nmz-1.el* lisp/namazu.el*
+		elisp-install ${PN} lisp/*.el*
 		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
 
 		docinto lisp

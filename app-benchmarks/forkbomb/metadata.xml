@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription>
-	Controlled fork() bomber for testing heavy system load
-	</longdescription>
 </pkgmetadata>

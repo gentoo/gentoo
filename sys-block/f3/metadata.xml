@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<longdescription lang="en">
+		F3 - an alternative to h2testw
+
+		The "Fight Flash Fraud" or "Fight Fake Flash" tool represents
+		a GPLv3 implementation of the algorithm of h2testw and further
+		improvements to speed up the identification of fake drives
+		as well as making them usable.
+
+		You can also use these utilities if you want to test the
+		integrity of your USB/flash medium.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/AltraMayor/f3/issues</bugs-to>
+		<remote-id type="github">AltraMayor/f3</remote-id>
+	</upstream>
+	<use>
+		<flag name="extra">Build the additional f3probe, f3brew and f3fix utility (requires <pkg>sys-block/parted</pkg> and <pkg>virtual/udev</pkg>)</flag>
+	</use>
+</pkgmetadata>

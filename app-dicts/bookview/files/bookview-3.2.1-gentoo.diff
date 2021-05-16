@@ -1,5 +1,5 @@
---- bookview.in.ORIG	2004-11-03 18:39:28.000000000 +0900
-+++ bookview.in	2004-11-22 21:22:42.000000000 +0900
+--- a/bookview/bookview.in
++++ b/bookview/bookview.in
 @@ -120,6 +120,11 @@
  # Bitmap size.
  set bitmap_size 16

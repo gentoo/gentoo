@@ -1,0 +1,84 @@
+--- a/libdieharder/rng_dev_arandom.c
++++ b/libdieharder/rng_dev_arandom.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <dieharder/libdieharder.h>
++#include <stdint.h>
+ 
+ static unsigned long int dev_arandom_get (void *vstate);
+ static double dev_arandom_get_double (void *vstate);
+@@ -21,7 +22,7 @@
+ dev_arandom_get (void *vstate)
+ {
+   dev_arandom_state_t *state = (dev_arandom_state_t *) vstate;
+-  unsigned long int j;
++  uint32_t j;
+ 
+   if(state->fp != NULL) {
+     fread(&j,sizeof(j),1,state->fp);
+@@ -36,7 +37,7 @@
+ static double
+ dev_arandom_get_double (void *vstate)
+ {
+-  return dev_arandom_get (vstate) / (double) UINT_MAX;
++  return dev_arandom_get (vstate) / (double) UINT32_MAX;
+ }
+ 
+ static void
+--- a/libdieharder/rng_dev_random.c
++++ b/libdieharder/rng_dev_random.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <dieharder/libdieharder.h>
++#include <stdint.h>
+ 
+ static unsigned long int dev_random_get (void *vstate);
+ static double dev_random_get_double (void *vstate);
+@@ -21,7 +22,7 @@
+ dev_random_get (void *vstate)
+ {
+   dev_random_state_t *state = (dev_random_state_t *) vstate;
+-  unsigned long int j;
++  uint32_t j;
+ 
+   if(state->fp != NULL) {
+     fread(&j,sizeof(j),1,state->fp);
+@@ -36,7 +37,7 @@
+ static double
+ dev_random_get_double (void *vstate)
+ {
+-  return dev_random_get (vstate) / (double) UINT_MAX;
++  return dev_random_get (vstate) / (double) UINT32_MAX;
+ }
+ 
+ static void
+--- a/libdieharder/rng_dev_urandom.c
++++ b/libdieharder/rng_dev_urandom.c
+@@ -3,6 +3,7 @@
+  */
+ 
+ #include <dieharder/libdieharder.h>
++#include <stdint.h>
+ 
+ /*
+  * This is a wrapping of the /dev/random hardware rng
+@@ -21,7 +22,7 @@
+ dev_urandom_get (void *vstate)
+ {
+   dev_urandom_state_t *state = (dev_urandom_state_t *) vstate;
+-  unsigned long int j;
++  uint32_t j;
+ 
+   if(state->fp != NULL) {
+     fread(&j,sizeof(j),1,state->fp);
+@@ -36,7 +37,7 @@
+ static double
+ dev_urandom_get_double (void *vstate)
+ {
+-  return dev_urandom_get (vstate) / (double) UINT_MAX;
++  return dev_urandom_get (vstate) / (double) UINT32_MAX;
+ }
+ 
+ static void

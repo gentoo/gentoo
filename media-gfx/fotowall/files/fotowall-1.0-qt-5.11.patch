@@ -1,0 +1,28 @@
+Fix build with Qt 5.11.
+
+Bug: https://bugs.gentoo.org/661596
+
+--- a/App/CanvasAppliance.h
++++ b/App/CanvasAppliance.h
+@@ -17,6 +17,9 @@
+ 
+ #include "Shared/PlugGui/AbstractAppliance.h"
+ #include "ui_CanvasAppliance.h"
++
++#include <QActionGroup>
++
+ class QMenu;
+ class AbstractContent;
+ class Canvas;
+
+--- a/3rdparty/likebackfrontend/LikeBackDialog.cpp
++++ b/3rdparty/likebackfrontend/LikeBackDialog.cpp
+@@ -37,6 +37,7 @@
+ #include "LikeBackDialog.h"
+ 
+ #include <QApplication>
++#include <QButtonGroup>
+ #include <QLocale>
+ #include <QMessageBox>
+ #include <QNetworkAccessManager>
+

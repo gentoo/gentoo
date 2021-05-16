@@ -1,0 +1,82 @@
+* Fix build system to honour CC, CFLAGS, CPPFLAGS and LDFLAGS
+* Specify a default target, in order to keep the ebuild slim
+
+--- a/Makefile
++++ b/Makefile
+@@ -12,9 +12,9 @@
+ 
+ # UNIX specific definitions (default)
+ #
+-CC= cc
+-CFLAGS= -O -DANSI_C $(LXFLAGS)
+-CLIB= -lm
++CC ?= cc
++CPPFLAGS += -DANSI_C $(LXFLAGS)
++LIBS += -lm
+ 
+ # Windows 'nmake' specific definitions
+ #
+@@ -133,9 +133,6 @@
+   $(objdir)writeSDF.o \
+   $(objdir)writeSeq.o
+ 
+-SRCS = $(OBJS:.o=.c)
+-WOBJ = $(OBJS:.o=.obj)
+-
+ INCS = \
+   $(incdir)chromatData.h \
+   $(incdir)freeChromatData.h \
+@@ -179,48 +176,18 @@
+ # UNIX make specific phred target
+ # note: a horizontal tab character must precede `$(CC)'
+ #
+-phred: $(OBJS)
+-	$(CC) $(CFLAGS) -o phred $(OBJS) $(CLIB)
+ 
+ 
+-# Windows nmake specific phred target
+-#
+-forwindows: $(WOBJ)
+-	$(CC) $(CFLAGS) /Fephred $(WOBJ)
+-#	$(CC) $(CFLAGS) /Fedaev daev.c
++.PHONY: all
++all: phred daev
+ 
+ 
+-# test CC: refuse to compile if
+-#
+-#   o  SunOS
+-#
+-#   AND
+-#
+-#   o  using /usr/ucb/cc compiler
+-#
+-#   NOTE: this compiler causes problems: see PHRED.DOC
+-#
+-test_cc:
+-	@if [ `uname` = SunOS ] ; \
+-        then \
+-          if [ `which $(CC)` = "/usr/ucb/cc" ] ; \
+-          then \
+-            echo ""; \
+- echo "============================================================"; \
+- echo "|                                                          |"; \
+- echo "|   This SUN C compiler produces a bad phred executable.   |"; \
+- echo "|                                                          |"; \
+- echo "|   Please see the PHRED.DOC file for more information.    |"; \
+- echo "|                                                          |"; \
+- echo "============================================================"; \
+-            echo ""; \
+-             exit 1; \
+-          fi \
+-        fi
++phred: $(OBJS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o phred $^ $(LIBS)
+ 
+ 
+ daev: daev.o
+-	$(CC) $(CFLAGS) -o daev daev.o -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o daev $^ $(LIBS)
+ 
+ 
+ clean:

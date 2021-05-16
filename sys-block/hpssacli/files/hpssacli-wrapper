@@ -1,0 +1,22 @@
+#!/bin/sh
+
+#
+# Uncomment the line below to turn off discovery of Fibre
+# export INFOMGR_BYPASS_FIBRE=1
+#
+# Uncomment the lines below to turn off discovery of Non-Smart Array controllers
+# export INFOMGR_BYPASS_NONSA=1
+#
+
+cmd="$(basename "$0")"
+
+HPSSACLI_BASEDIR="/opt/hp/hpssacli"
+HPSSACLI_BIN="${HPSSACLI_BASEDIR}/${cmd}.bin"
+
+if pgrep --exact "${cmd}.bin" 1>/dev/null; then
+        echo "Another instance of ${cmd} is running! Stop it first."
+        exit 1
+fi
+
+export LD_LIBRARY_PATH="${HPSSACLI_BASEDIR}"
+"${HPSSACLI_BIN}" "${@}"

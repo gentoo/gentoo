@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>twitch153@gentoo.org</email>
-		<name>Devan Franchini</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
@@ -14,7 +10,7 @@
 		<name>Gentoo Webapps</name>
 	</maintainer>
 	<use>
-		<flag name="portage">Propagete python_targets dependencies to sys-apps/portage</flag>
+		<flag name="portage">Propagate python_targets dependencies to sys-apps/portage</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">webapp-config</remote-id>

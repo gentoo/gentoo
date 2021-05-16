@@ -1,0 +1,56 @@
+--- a/src/common.h
++++ b/src/common.h
+@@ -130,25 +130,25 @@
+ } playlist_widgets_t;
+ 
+ /* Globally known widgets */
+-transfer_widgets_t transfer_widgets;
+-data_widgets_t data_widgets;
+-playlist_widgets_t playlist_widgets;
++extern transfer_widgets_t transfer_widgets;
++extern data_widgets_t data_widgets;
++extern playlist_widgets_t playlist_widgets;
+ 
+ /* Global progress bar - not so good but... */
+-GtkWidget *progress_bar;
++extern GtkWidget *progress_bar;
+ 
+ /* Global playlist selection for the popup, not good either ... */
+-GList *jukebox_playlist;
+-GList *selected_target_playlists;
++extern GList *jukebox_playlist;
++extern GList *selected_target_playlists;
+ 
+ /* Global lock variable for the jukebox */
+-gboolean volatile jukebox_locked;
++extern gboolean volatile jukebox_locked;
+ 
+ /* Global cancellation variable for jukebox operations */
+-gboolean volatile cancel_jukebox_operation;
++extern gboolean volatile cancel_jukebox_operation;
+ 
+ /* Global debug level variable (standard = 7) */
+-gint gnomad_debug;
++extern gint gnomad_debug;
+ 
+ /* A proc for hiding dialog windows */
+ GCallback dispose_of_dialog_window(GtkButton * button, gpointer data);
+--- a/src/gnomad2.c
++++ b/src/gnomad2.c
+@@ -34,6 +34,16 @@
+ guint uevent_device_hooked = 0;
+ #endif
+ 
++transfer_widgets_t transfer_widgets;
++data_widgets_t data_widgets;
++playlist_widgets_t playlist_widgets;
++GtkWidget *progress_bar;
++GList *jukebox_playlist;
++GList *selected_target_playlists;
++gboolean volatile jukebox_locked;
++gboolean volatile cancel_jukebox_operation;
++gint gnomad_debug;
++
+ /* This one should be global really */
+ GtkWidget *main_window;
+ 

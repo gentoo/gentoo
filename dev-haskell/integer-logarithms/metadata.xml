@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		"Math.NumberTheory.Logarithms" and "Math.NumberTheory.Powers.Integer"
+		from the arithmoi package.
+		
+		Also provides "GHC.Integer.Logarithms.Compat" and
+		"Math.NumberTheory.Power.Natural" modules, as well as some
+		additional functions in migrated modules.
+	</longdescription>
+</pkgmetadata>

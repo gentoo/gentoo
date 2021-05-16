@@ -1,17 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="An SNMP library based on glib and gnet"
-HOMEPAGE="http://cnds.eecs.jacobs-university.de/users/schoenw/articles/software/index.html"
+HOMEPAGE="https://github.com/schoenw/gsnmp"
 SRC_URI="ftp://ftp.ibr.cs.tu-bs.de/pub/local/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~amd64-linux ~ppc x86"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux"
 IUSE="static-libs"
 
 DEPEND="
@@ -19,14 +19,18 @@ DEPEND="
 	net-libs/gnet
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS="README"
+DOCS=( README )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-g_access.patch
+	"${FILESDIR}"/${P}-pkg_config.patch
+	"${FILESDIR}"/${P}-underquoting.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-g_access.patch \
-		"${FILESDIR}"/${P}-pkg_config.patch \
-		"${FILESDIR}"/${P}-underquoting.patch
+	default
 
 	eautoreconf
 }
@@ -38,5 +42,5 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

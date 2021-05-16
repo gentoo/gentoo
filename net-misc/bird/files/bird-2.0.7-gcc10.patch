@@ -1,0 +1,12 @@
+diff -ruN bird-2.0.7.orig/nest/route.h bird-2.0.7/nest/route.h
+--- bird-2.0.7.orig/nest/route.h	2019-10-16 13:45:52.000000000 +0300
++++ bird-2.0.7/nest/route.h	2020-11-01 02:59:41.199775491 +0200
+@@ -458,7 +458,7 @@
+ 					   protocol-specific metric is availabe */
+ 
+ 
+-const char * rta_dest_names[RTD_MAX];
++extern const char * rta_dest_names[RTD_MAX];
+ 
+ static inline const char *rta_dest_name(uint n)
+ { return (n < RTD_MAX) ? rta_dest_names[n] : "???"; }

@@ -1,4 +1,3 @@
-# $Id$
 PIDFILE="/var/run/gearmand.pid"
 GEARMAND_OPTS="--daemonize --port=7003 --pidfile=${PIDFILE}"
 # vim: ft=gentoo-conf-d:

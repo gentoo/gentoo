@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		A cross-platform IRC framework written with Qt.
+		Communi provides a set of tools for enabling
+		IRC connectivity in Qt-based C++ and QML applications.
+	</longdescription>
+	<use>
+		<flag name="qml">Install optional qml files.</flag>
+		<flag name="uchardet">Use <pkg>app-i18n/uchardet</pkg>, which is upstreams default, instead of <pkg>dev-libs/icu</pkg>, which makes impossible to run tests.</flag>
+	</use>
+</pkgmetadata>

@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+#
+# init.d script for net-analyzer/netperf's netserver
+#
+
+depend() {
+	use net
+}
+
+start() {
+	checkpath -o netperf:netperf -d /var/log/netperf
+
+	ebegin 'Starting netperf server (netserver)'
+	start-stop-daemon --start --user netperf \
+		--exec /usr/sbin/netserver -- ${NETSERVER_ARGS}
+	eend $?
+}
+
+stop() {
+	ebegin 'Stopping netperf server (netserver)'
+	start-stop-daemon --stop --quiet --exec /usr/sbin/netserver
+	eend $?
+}

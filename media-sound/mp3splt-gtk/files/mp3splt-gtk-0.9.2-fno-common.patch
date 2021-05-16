@@ -1,0 +1,11 @@
+--- a/src/splitpoints_window.h
++++ b/src/splitpoints_window.h
+@@ -41,7 +41,7 @@
+ #include "all_includes.h"
+ 
+ //!The enum telling which item is kept in which column of the splitpoint tree
+-enum {
++typedef enum {
+   COL_CHECK = 0,
+   COL_DESCRIPTION = 1,
+   COL_MINUTES = 2,

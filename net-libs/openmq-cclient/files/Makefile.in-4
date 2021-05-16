@@ -18,8 +18,8 @@ LTCC = $(LIBTOOL) --mode=compile --tag=CC $(CC)
 LTCXX = $(LIBTOOL) --mode=compile --tag=CXX $(CXX)
 LTLD = $(LIBTOOL) --mode=link --tag=CXX $(CXX)
 
-NS_S_PR_CFLAGS = $(shell pkg-config --cflags nss nspr)
-NS_S_PR_LIBS = $(shell pkg-config --libs nss nspr)
+NS_S_PR_CFLAGS = $(shell ${PKG_CONFIG} --cflags nss nspr)
+NS_S_PR_LIBS = $(shell ${PKG_CONFIG} --libs nss nspr)
 
 SRCS = $(shell find "$(top_srcdir)" -name examples -prune -o -type f '(' -name '*.cpp' -o -name '*.c' -not -name '*Test*' ')')
 LTOBJS = $(subst .c,.lo,$(subst .cpp,.lo,$(SRCS)))

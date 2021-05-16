@@ -1,0 +1,34 @@
+commit 4cbb42cc3d2c7e7574dc10f0e6f9f53bdf4d34e8
+Author: blubee <gurenchan@gmail.com>
+Date:   Sun Oct 22 16:22:23 2017 +0800
+
+    Export correct symbols
+    
+    The factory was renamed to scanner_factory in 4b77b4a4.
+
+diff --git a/drivers/Makefile.am b/drivers/Makefile.am
+index 86694ac..282eaa3 100644
+--- a/drivers/Makefile.am
++++ b/drivers/Makefile.am
+@@ -28,7 +28,7 @@ driverlibdir    = $(pkglibdir)
+ driverdatadir   = $(pkgsysconfdir)
+ driver_ldflags  = $(AM_LDFLAGS)
+ driver_ldflags += -export-dynamic
+-driver_ldflags += -export-symbols-regex libdrv_$(driver)_LTX_factory
++driver_ldflags += -export-symbols-regex libdrv_$(driver)_LTX_scanner_factory
+ 
+ driverlib_LTLIBRARIES = libdrv-combo.la
+ 
+diff --git a/drivers/esci/Makefile.am b/drivers/esci/Makefile.am
+index 78ed9be..9cb6bc8 100644
+--- a/drivers/esci/Makefile.am
++++ b/drivers/esci/Makefile.am
+@@ -37,7 +37,7 @@ driverlibdir    = $(pkglibdir)
+ driverdatadir   = $(pkgdatadir)/drivers/esci
+ driver_ldflags  = $(AM_LDFLAGS)
+ driver_ldflags += -export-dynamic
+-driver_ldflags += -export-symbols-regex libdrv_$(driver)_LTX_factory
++driver_ldflags += -export-symbols-regex libdrv_$(driver)_LTX_scanner_factory
+ 
+ driverlib_LTLIBRARIES = libdrv-esci.la
+ 

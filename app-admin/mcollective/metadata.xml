@@ -7,8 +7,7 @@
 	<use>
 		<flag name="client">Install client utilities</flag>
 	</use>
-	<longdescription lang="en">
-	mcollective is a framework to build server orchestration or parallel job
-	execution systems.
-	</longdescription>
+	<upstream>
+		<remote-id type="github">puppetlabs/marionette-collective</remote-id>
+	</upstream>
 </pkgmetadata>

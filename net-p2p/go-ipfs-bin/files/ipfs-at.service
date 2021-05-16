@@ -1,0 +1,18 @@
+[Unit]
+Description=InterPlanetary File System
+After=network.target
+
+[Service]
+CPUSchedulingPolicy=batch
+EnvironmentFile=-/etc/conf.d/ipfs.%i
+ExecStart=/usr/bin/ipfs daemon --enable-gc --migrate
+ExecStop=/usr/bin/ipfs shutdown
+LimitNOFILE=8192
+PrivateTmp=yes
+ProtectSystem=full
+Restart=on-failure
+Type=simple
+User=%i
+
+[Install]
+WantedBy=multi-user.target

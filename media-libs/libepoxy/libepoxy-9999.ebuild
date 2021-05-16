@@ -1,43 +1,54 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=yes
-
-EGIT_REPO_URI="git://github.com/anholt/libepoxy.git"
-
-if [[ ${PV} = 9999* ]]; then
-	GIT_ECLASS="git-r3"
-fi
-
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='xml(+)'
-inherit autotools-multilib ${GIT_ECLASS} python-any-r1
+inherit meson multilib-minimal python-any-r1 virtualx
 
-DESCRIPTION="Epoxy is a library for handling OpenGL function pointer management for you"
-HOMEPAGE="https://github.com/anholt/libepoxy"
 if [[ ${PV} = 9999* ]]; then
-	KEYWORDS=""
-	SRC_URI=""
+	EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
+	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-	SRC_URI="https://github.com/anholt/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/anholt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
+
+DESCRIPTION="Library for handling OpenGL function pointer management"
+HOMEPAGE="https://github.com/anholt/libepoxy"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
-RESTICT="test" # FIXME: tests fail when run from portage.
+IUSE="+egl test +X"
 
-DEPEND="${PYTHON_DEPS}
-	media-libs/mesa[egl]
-	x11-misc/util-macros
-	x11-libs/libX11"
-RDEPEND=""
+RESTRICT="!test? ( test )"
 
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
+RDEPEND="
+	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}
+	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
+BDEPEND="${PYTHON_DEPS}
+	virtual/pkgconfig"
+
+multilib_src_configure() {
+	local emesonargs=(
+		-Degl=$(usex egl)
+		-Dglx=$(usex X)
+		$(meson_use X x11)
+		$(meson_use test tests)
+	)
+	meson_src_configure
+}
+
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	virtx meson_src_test
+}
+
+multilib_src_install() {
+	meson_src_install
 }

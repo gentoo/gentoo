@@ -2,18 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>yngwin@gentoo.org</email>
-		<name>Ben de Groot</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>multilib@gentoo.org</email>
-		<name>gx86-multilib project</name>
-		<description>Handling the bugs related to multilib support in the
-			package and related changes.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>fonts@gentoo.org</email>
@@ -21,8 +11,11 @@
 	</maintainer>
 	<use>
 		<flag name="adobe-cff">Use Adobe CFF as default font-renderer</flag>
-		<flag name="auto-hinter">Use the unpatented auto-hinter instead
-			of the (recommended) TrueType bytecode interpreter</flag>
+		<flag name="brotli">Enable brotli decompression support via <pkg>app-arch/brotli</pkg></flag>
+		<flag name="cleartype-hinting">Bytecode hinting mode for TrueType fonts that
+			activates subpixel hinting (a.k.a. ClearType hinting) by default</flag>
+		<flag name="cleartype_hinting">New bytecode hinting mode for TrueType fonts that
+			activates subpixel hinting (a.k.a. ClearType hinting) by default</flag>
 		<flag name="bindist">Disable ClearType support (see http://freetype.org/patents.html)</flag>
 		<flag name="bzip2">Support bzip2 compressed PCF fonts.</flag>
 		<flag name="fontforge">Install internal headers required for TrueType

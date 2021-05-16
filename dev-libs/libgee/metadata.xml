@@ -5,7 +5,4 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<longdescription lang="en">
-libgee is a collection library providing GObject-based interfaces and classes for commonly used data structures. 
-</longdescription>
 </pkgmetadata>

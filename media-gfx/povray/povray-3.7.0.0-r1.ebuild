@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -17,11 +16,12 @@ fi
 
 DESCRIPTION="The Persistence of Vision Raytracer"
 HOMEPAGE="http://www.povray.org/"
-SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~soap/distfiles/${P}_p20160914-fix-c++14.patch.bz2"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="debug +io-restrictions openexr static-libs tiff X"
 
 DEPEND="
@@ -43,6 +43,8 @@ S=${WORKDIR}/${PN}-${MY_PV}
 PATCHES=(
 	"${FILESDIR}"/${P}-user-conf.patch
 	"${FILESDIR}"/${P}-automagic.patch
+	"${WORKDIR}"/${P}_p20160914-fix-c++14.patch
+	"${FILESDIR}"/${P}-gcc6-openexr.patch
 )
 
 src_prepare() {
@@ -50,8 +52,8 @@ src_prepare() {
 		PATCHES+=( "${FILESDIR}"/${PN}-3.7.0_rc6-darwin-defaults.patch )
 	eapply "${FILESDIR}"/${PF}-boost-1.50.patch
 
-	pushd unix
-		pushd config
+	pushd unix &>/dev/null || die
+		pushd config &>/dev/null || die
 		rm -rf \
 			acx_pthread.m4 \
 			ax_boost_base.m4 \
@@ -59,18 +61,20 @@ src_prepare() {
 			ax_compare_version.m4 \
 			ax_compiler_vendor.m4 \
 			ax_compiler_version.m4 || die
-		popd
+		popd &>/dev/null || die
 	bash -x prebuild.sh || die
-	popd
+	popd &>/dev/null || die
 
 	rm -rf libraries || die
 
-	# Change some destination directories that cannot be adjusted via configure
+	# Change some directories that cannot be adjusted via configure
 	sed \
 		-e 's:${povsysconfdir}/$PACKAGE/$VERSION_BASE:${povsysconfdir}/'${PN}':g' \
 		-e 's:${povdatadir}/$PACKAGE-$VERSION_BASE:${povdatadir}/'${PN}':g' \
 		-e 's:${povdatadir}/doc/$PACKAGE-$VERSION_BASE:${povdatadir}/doc/'${PF}':g' \
 		-e 's:BOOST_THREAD_LIBS $LIBS:BOOST_THREAD_LIBS $LIBS -lboost_date_time:g' \
+		-e 's:"/usr/include":"'${EPREFIX}'/usr/include":' \
+		-e 's:"/usr/lib":"'${EPREFIX}'/usr/'$(get_libdir)'":' \
 		-i configure.ac || die
 
 	sed \
@@ -110,6 +114,7 @@ src_configure() {
 		$(use_with X x "${EPREFIX}/usr/$(get_libdir)") \
 		$(use_enable static-libs static) \
 		$(usex tiff "" "NON_REDISTRIBUTABLE_BUILD=yes") \
+		--with-boost-libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--without-libmkl \
 		--disable-pipe \
 		--disable-strip \
@@ -118,9 +123,7 @@ src_configure() {
 }
 
 src_test() {
-	# For the beta releases, we generate a license extension in case needed
-	VIRTUALX_COMMAND="autotools-utils_src_test"
-	virtualmake
+	virtx default
 }
 
 pkg_preinst() {

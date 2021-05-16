@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <use>
+    <flag name="pyzord">Enable the pyzord server daemon</flag>
+    <flag name="gdbm">
+      Enables the Gdbm back-end database engine for pyzord
+    </flag>
+    <flag name="mysql">
+      Enables the MySQL back-end database engine for pyzord through
+      <pkg>dev-python/mysqlclient</pkg>.
+    </flag>
+    <flag name="redis">
+      Enables the redis back-end database engine for pyzord through
+      <pkg>dev-python/redis-py</pkg>
+    </flag>
+    <flag name="gevent">
+      Use <pkg>dev-python/gevent</pkg> to enable asynchronous operation
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">SpamExperts/pyzor</remote-id>
+    <remote-id type="sourceforge">pyzor</remote-id>
+  </upstream>
+</pkgmetadata>

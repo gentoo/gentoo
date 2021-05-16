@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: toolchain-funcs.eclass
 # @MAINTAINER:
@@ -22,7 +21,7 @@ inherit multilib
 _tc-getPROG() {
 	local tuple=$1
 	local v var vars=$2
-	local prog=$3
+	local prog=( $3 )
 
 	var=${vars%% *}
 	for v in ${vars} ; do
@@ -34,14 +33,20 @@ _tc-getPROG() {
 	done
 
 	local search=
-	[[ -n $4 ]] && search=$(type -p "$4-${prog}")
-	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p "${!tuple}-${prog}")
-	[[ -n ${search} ]] && prog=${search##*/}
+	[[ -n $4 ]] && search=$(type -p $4-${prog[0]})
+	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p ${!tuple}-${prog[0]})
+	[[ -n ${search} ]] && prog[0]=${search##*/}
 
-	export ${var}=${prog}
+	export ${var}="${prog[*]}"
 	echo "${!var}"
 }
-tc-getBUILD_PROG() { _tc-getPROG CBUILD "BUILD_$1 $1_FOR_BUILD HOST$1" "${@:2}"; }
+tc-getBUILD_PROG() {
+	local vars="BUILD_$1 $1_FOR_BUILD HOST$1"
+	# respect host vars if not cross-compiling
+	# https://bugs.gentoo.org/630282
+	tc-is-cross-compiler || vars+=" $1"
+	_tc-getPROG CBUILD "${vars}" "${@:2}"
+}
 tc-getPROG() { _tc-getPROG CHOST "$@"; }
 
 # @FUNCTION: tc-getAR
@@ -59,7 +64,7 @@ tc-getCC() { tc-getPROG CC gcc "$@"; }
 # @FUNCTION: tc-getCPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor
-tc-getCPP() { tc-getPROG CPP cpp "$@"; }
+tc-getCPP() { tc-getPROG CPP "${CC:-gcc} -E" "$@"; }
 # @FUNCTION: tc-getCXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler
@@ -68,6 +73,10 @@ tc-getCXX() { tc-getPROG CXX g++ "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the linker
 tc-getLD() { tc-getPROG LD ld "$@"; }
+# @FUNCTION: tc-getSTRINGS
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the strings program
+tc-getSTRINGS() { tc-getPROG STRINGS strings "$@"; }
 # @FUNCTION: tc-getSTRIP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the strip program
@@ -78,8 +87,12 @@ tc-getSTRIP() { tc-getPROG STRIP strip "$@"; }
 tc-getNM() { tc-getPROG NM nm "$@"; }
 # @FUNCTION: tc-getRANLIB
 # @USAGE: [toolchain prefix]
-# @RETURN: name of the archiver indexer
+# @RETURN: name of the archive indexer
 tc-getRANLIB() { tc-getPROG RANLIB ranlib "$@"; }
+# @FUNCTION: tc-getREADELF
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the ELF reader
+tc-getREADELF() { tc-getPROG READELF readelf "$@"; }
 # @FUNCTION: tc-getOBJCOPY
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the object copier
@@ -132,7 +145,7 @@ tc-getBUILD_CC() { tc-getBUILD_PROG CC gcc "$@"; }
 # @FUNCTION: tc-getBUILD_CPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor for building binaries to run on the build machine
-tc-getBUILD_CPP() { tc-getBUILD_PROG CPP cpp "$@"; }
+tc-getBUILD_CPP() { tc-getBUILD_PROG CPP "$(tc-getBUILD_CC) -E" "$@"; }
 # @FUNCTION: tc-getBUILD_CXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler for building binaries to run on the build machine
@@ -141,6 +154,10 @@ tc-getBUILD_CXX() { tc-getBUILD_PROG CXX g++ "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the linker for building binaries to run on the build machine
 tc-getBUILD_LD() { tc-getBUILD_PROG LD ld "$@"; }
+# @FUNCTION: tc-getBUILD_STRINGS
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the strings program for building binaries to run on the build machine
+tc-getBUILD_STRINGS() { tc-getBUILD_PROG STRINGS strings "$@"; }
 # @FUNCTION: tc-getBUILD_STRIP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the strip program for building binaries to run on the build machine
@@ -151,8 +168,12 @@ tc-getBUILD_STRIP() { tc-getBUILD_PROG STRIP strip "$@"; }
 tc-getBUILD_NM() { tc-getBUILD_PROG NM nm "$@"; }
 # @FUNCTION: tc-getBUILD_RANLIB
 # @USAGE: [toolchain prefix]
-# @RETURN: name of the archiver indexer for building binaries to run on the build machine
+# @RETURN: name of the archive indexer for building binaries to run on the build machine
 tc-getBUILD_RANLIB() { tc-getBUILD_PROG RANLIB ranlib "$@"; }
+# @FUNCTION: tc-getBUILD_READELF
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the ELF reader for building binaries to run on the build machine
+tc-getBUILD_READELF() { tc-getBUILD_PROG READELF readelf "$@"; }
 # @FUNCTION: tc-getBUILD_OBJCOPY
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the object copier for building binaries to run on the build machine
@@ -162,6 +183,17 @@ tc-getBUILD_OBJCOPY() { tc-getBUILD_PROG OBJCOPY objcopy "$@"; }
 # @RETURN: name of the pkg-config tool for building binaries to run on the build machine
 tc-getBUILD_PKG_CONFIG() { tc-getBUILD_PROG PKG_CONFIG pkg-config "$@"; }
 
+# @FUNCTION: tc-getTARGET_CPP
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the C preprocessor for the toolchain being built (or used)
+tc-getTARGET_CPP() {
+	if [[ -n ${CTARGET} ]]; then
+		_tc-getPROG CTARGET TARGET_CPP "gcc -E" "$@"
+	else
+		tc-getCPP "$@"
+	fi
+}
+
 # @FUNCTION: tc-export
 # @USAGE: <list of toolchain variables>
 # @DESCRIPTION:
@@ -169,8 +201,8 @@ tc-getBUILD_PKG_CONFIG() { tc-getBUILD_PROG PKG_CONFIG pkg-config "$@"; }
 tc-export() {
 	local var
 	for var in "$@" ; do
-		[[ $(type -t tc-get${var}) != "function" ]] && die "tc-export: invalid export variable '${var}'"
-		eval tc-get${var} > /dev/null
+		[[ $(type -t "tc-get${var}") != "function" ]] && die "tc-export: invalid export variable '${var}'"
+		"tc-get${var}" > /dev/null
 	done
 }
 
@@ -178,6 +210,90 @@ tc-export() {
 # @RETURN: Shell true if we are using a cross-compiler, shell false otherwise
 tc-is-cross-compiler() {
 	[[ ${CBUILD:-${CHOST}} != ${CHOST} ]]
+}
+
+# @FUNCTION: tc-cpp-is-true
+# @USAGE: <condition> [cpp flags]
+# @RETURN: Shell true if the condition is true, shell false otherwise.
+# @DESCRIPTION:
+# Evaluate the given condition using the C preprocessor for CTARGET, if
+# defined, or CHOST. Additional arguments are passed through to the cpp
+# command. A typical condition would be in the form defined(__FOO__).
+tc-cpp-is-true() {
+	local CONDITION=${1}
+	shift
+
+	$(tc-getTARGET_CPP) "${@}" -P - <<-EOF >/dev/null 2>&1
+		#if ${CONDITION}
+		true
+		#else
+		#error false
+		#endif
+	EOF
+}
+
+# @FUNCTION: tc-detect-is-softfloat
+# @RETURN: Shell true if detection was possible, shell false otherwise
+# @DESCRIPTION:
+# Detect whether the CTARGET (or CHOST) toolchain is a softfloat based
+# one by examining the toolchain's output, if possible.  Outputs a value
+# alike tc-is-softfloat if detection was possible.
+tc-detect-is-softfloat() {
+	# If fetching CPP falls back to the default (gcc -E) then fail
+	# detection as this may not be the correct toolchain.
+	[[ $(tc-getTARGET_CPP) == "gcc -E" ]] && return 1
+
+	case ${CTARGET:-${CHOST}} in
+		# Avoid autodetection for bare-metal targets. bug #666896
+		*-newlib|*-elf|*-eabi)
+			return 1 ;;
+
+		# arm-unknown-linux-gnueabi is ambiguous. We used to treat it as
+		# hardfloat but we now treat it as softfloat like most everyone
+		# else. Check existing toolchains to respect existing systems.
+		arm*)
+			if tc-cpp-is-true "defined(__ARM_PCS_VFP)"; then
+				echo "no"
+			else
+				# Confusingly __SOFTFP__ is defined only when
+				# -mfloat-abi is soft, not softfp.
+				if tc-cpp-is-true "defined(__SOFTFP__)"; then
+					echo "yes"
+				else
+					echo "softfp"
+				fi
+			fi
+
+			return 0 ;;
+		*)
+			return 1 ;;
+	esac
+}
+
+# @FUNCTION: tc-tuple-is-softfloat
+# @RETURN: See tc-is-softfloat for the possible values.
+# @DESCRIPTION:
+# Determine whether the CTARGET (or CHOST) toolchain is a softfloat
+# based one solely from the tuple.
+tc-tuple-is-softfloat() {
+	local CTARGET=${CTARGET:-${CHOST}}
+	case ${CTARGET//_/-} in
+		bfin*|h8300*)
+			echo "only" ;;
+		*-softfloat-*)
+			echo "yes" ;;
+		*-softfp-*)
+			echo "softfp" ;;
+		arm*-hardfloat-*|arm*eabihf)
+			echo "no" ;;
+		# bare-metal targets have their defaults. bug #666896
+		*-newlib|*-elf|*-eabi)
+			echo "no" ;;
+		arm*)
+			echo "yes" ;;
+		*)
+			echo "no" ;;
+	esac
 }
 
 # @FUNCTION: tc-is-softfloat
@@ -194,20 +310,7 @@ tc-is-cross-compiler() {
 # softfloat flags in the case where support is optional, but
 # rejects softfloat flags where the target always lacks an fpu.
 tc-is-softfloat() {
-	local CTARGET=${CTARGET:-${CHOST}}
-	case ${CTARGET} in
-		bfin*|h8300*)
-			echo "only" ;;
-		*)
-			if [[ ${CTARGET//_/-} == *-softfloat-* ]] ; then
-				echo "yes"
-			elif [[ ${CTARGET//_/-} == *-softfp-* ]] ; then
-				echo "softfp"
-			else
-				echo "no"
-			fi
-			;;
-	esac
+	tc-detect-is-softfloat || tc-tuple-is-softfloat
 }
 
 # @FUNCTION: tc-is-static-only
@@ -221,19 +324,42 @@ tc-is-static-only() {
 	[[ ${host} == *-mint* ]]
 }
 
+# @FUNCTION: tc-stack-grows-down
+# @DESCRIPTION:
+# Return shell true if the stack grows down.  This is the default behavior
+# for the vast majority of systems out there and usually projects shouldn't
+# care about such internal details.
+tc-stack-grows-down() {
+	# List the few that grow up.
+	case ${ARCH} in
+	hppa|metag) return 1 ;;
+	esac
+
+	# Assume all others grow down.
+	return 0
+}
+
 # @FUNCTION: tc-export_build_env
 # @USAGE: [compiler variables]
 # @DESCRIPTION:
 # Export common build related compiler settings.
 tc-export_build_env() {
 	tc-export "$@"
-	# Some build envs will initialize vars like:
-	# : ${BUILD_LDFLAGS:-${LDFLAGS}}
-	# So make sure all variables are non-empty. #526734
-	: ${BUILD_CFLAGS:=-O1 -pipe}
-	: ${BUILD_CXXFLAGS:=-O1 -pipe}
-	: ${BUILD_CPPFLAGS:= }
-	: ${BUILD_LDFLAGS:= }
+	if tc-is-cross-compiler; then
+		# Some build envs will initialize vars like:
+		# : ${BUILD_LDFLAGS:-${LDFLAGS}}
+		# So make sure all variables are non-empty. #526734
+		: ${BUILD_CFLAGS:=-O1 -pipe}
+		: ${BUILD_CXXFLAGS:=-O1 -pipe}
+		: ${BUILD_CPPFLAGS:= }
+		: ${BUILD_LDFLAGS:= }
+	else
+		# https://bugs.gentoo.org/654424
+		: ${BUILD_CFLAGS:=${CFLAGS}}
+		: ${BUILD_CXXFLAGS:=${CXXFLAGS}}
+		: ${BUILD_CPPFLAGS:=${CPPFLAGS}}
+		: ${BUILD_LDFLAGS:=${LDFLAGS}}
+	fi
 	export BUILD_{C,CXX,CPP,LD}FLAGS
 
 	# Some packages use XXX_FOR_BUILD.
@@ -266,6 +392,7 @@ tc-env_build() {
 	NM=$(tc-getBUILD_NM) \
 	PKG_CONFIG=$(tc-getBUILD_PKG_CONFIG) \
 	RANLIB=$(tc-getBUILD_RANLIB) \
+	READELF=$(tc-getBUILD_READELF) \
 	"$@"
 }
 
@@ -342,18 +469,57 @@ tc-ld-is-gold() {
 	return 1
 }
 
+# @FUNCTION: tc-ld-is-lld
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Return true if the current linker is set to lld.
+tc-ld-is-lld() {
+	local out
+
+	# First check the linker directly.
+	out=$($(tc-getLD "$@") --version 2>&1)
+	if [[ ${out} == *"LLD"* ]] ; then
+		return 0
+	fi
+
+	# Then see if they're selecting lld via compiler flags.
+	# Note: We're assuming they're using LDFLAGS to hold the
+	# options and not CFLAGS/CXXFLAGS.
+	local base="${T}/test-tc-lld"
+	cat <<-EOF > "${base}.c"
+	int main() { return 0; }
+	EOF
+	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
+	rm -f "${base}"*
+	if [[ ${out} == *"LLD"* ]] ; then
+		return 0
+	fi
+
+	# No lld here!
+	return 1
+}
+
 # @FUNCTION: tc-ld-disable-gold
 # @USAGE: [toolchain prefix]
 # @DESCRIPTION:
 # If the gold linker is currently selected, configure the compilation
 # settings so that we use the older bfd linker instead.
 tc-ld-disable-gold() {
-	if ! tc-ld-is-gold "$@" ; then
-		# They aren't using gold, so nothing to do!
+	tc-ld-is-gold "$@" && tc-ld-force-bfd "$@"
+}
+
+# @FUNCTION: tc-ld-force-bfd
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# If the gold or lld linker is currently selected, configure the compilation
+# settings so that we use the bfd linker instead.
+tc-ld-force-bfd() {
+	if ! tc-ld-is-gold "$@" && ! tc-ld-is-lld "$@" ; then
+		# They aren't using gold or lld, so nothing to do!
 		return
 	fi
 
-	ewarn "Forcing usage of the BFD linker instead of GOLD"
+	ewarn "Forcing usage of the BFD linker"
 
 	# Set up LD to point directly to bfd if it's available.
 	# We need to extract the first word in case there are flags appended
@@ -363,22 +529,36 @@ tc-ld-disable-gold() {
 	local path_ld=$(which "${bfd_ld}" 2>/dev/null)
 	[[ -e ${path_ld} ]] && export LD=${bfd_ld}
 
-	# Set up LDFLAGS to select gold based on the gcc version.
-	local major=$(gcc-major-version "$@")
-	local minor=$(gcc-minor-version "$@")
-	if [[ ${major} -lt 4 ]] || [[ ${major} -eq 4 && ${minor} -lt 8 ]] ; then
-		# <=gcc-4.7 requires some coercion.  Only works if bfd exists.
+	# Set up LDFLAGS to select bfd based on the gcc / clang version.
+	local fallback="true"
+	if tc-is-gcc; then
+		local major=$(gcc-major-version "$@")
+		local minor=$(gcc-minor-version "$@")
+		if [[ ${major} -gt 4 ]] || [[ ${major} -eq 4 && ${minor} -ge 8 ]]; then
+			# gcc-4.8+ supports -fuse-ld directly.
+			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+			fallback="false"
+		fi
+	elif tc-is-clang; then
+		local major=$(clang-major-version "$@")
+		local minor=$(clang-minor-version "$@")
+		if [[ ${major} -gt 3 ]] || [[ ${major} -eq 3 && ${minor} -ge 5 ]]; then
+			# clang-3.5+ supports -fuse-ld directly.
+			export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
+			fallback="false"
+		fi
+	fi
+	if [[ ${fallback} == "true" ]] ; then
+		# <=gcc-4.7 and <=clang-3.4 require some coercion.
+		# Only works if bfd exists.
 		if [[ -e ${path_ld} ]] ; then
 			local d="${T}/bfd-linker"
 			mkdir -p "${d}"
 			ln -sf "${path_ld}" "${d}"/ld
 			export LDFLAGS="${LDFLAGS} -B${d}"
 		else
-			die "unable to locate a BFD linker to bypass gold"
+			die "unable to locate a BFD linker"
 		fi
-	else
-		# gcc-4.8+ supports -fuse-ld directly.
-		export LDFLAGS="${LDFLAGS} -fuse-ld=bfd"
 	fi
 }
 
@@ -404,6 +584,27 @@ tc-has-openmp() {
 	local ret=$?
 	rm -f "${base}"*
 	return ${ret}
+}
+
+# @FUNCTION: tc-check-openmp
+# @DESCRIPTION:
+# Test for OpenMP support with the current compiler and error out with
+# a clear error message, telling the user how to rectify the missing
+# OpenMP support that has been requested by the ebuild. Using this function
+# to test for OpenMP support should be preferred over tc-has-openmp and
+# printing a custom message, as it presents a uniform interface to the user.
+tc-check-openmp() {
+	if ! tc-has-openmp; then
+		eerror "Your current compiler does not support OpenMP!"
+
+		if tc-is-gcc; then
+			eerror "Enable OpenMP support by building sys-devel/gcc with USE=\"openmp\"."
+		elif tc-is-clang; then
+			eerror "OpenMP support in sys-devel/clang is provided by sys-libs/libomp."
+		fi
+
+		die "Active compiler does not have required support for OpenMP"
+	fi
 }
 
 # @FUNCTION: tc-has-tls
@@ -445,10 +646,6 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 	local host=$2
 	[[ -z ${host} ]] && host=${CTARGET:-${CHOST}}
 
-	local KV=${KV:-${KV_FULL}}
-	[[ ${type} == "kern" ]] && [[ -z ${KV} ]] && \
-	ewarn "QA: Kernel version could not be determined, please inherit kernel-2 or linux-info"
-
 	case ${host} in
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
@@ -464,7 +661,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
 			# FreeBSD still uses i386
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -lt $(KV_to_int 2.6.24) || ${host} == *freebsd* ]] ; then
+			if [[ ${type} == "kern" && ${host} == *freebsd* ]] ; then
 				echo i386
 			else
 				echo x86
@@ -477,23 +674,15 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		mips*)		echo mips;;
 		nios2*)		echo nios2;;
 		nios*)		echo nios;;
-		or32*)		echo openrisc;;
+		or1k*|or32*)	echo openrisc;;
 		powerpc*)
 			# Starting with linux-2.6.15, the 'ppc' and 'ppc64' trees
 			# have been unified into simply 'powerpc', but until 2.6.16,
 			# ppc32 is still using ARCH="ppc" as default
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.16) ]] ; then
+			if [[ ${type} == "kern" ]] ; then
 				echo powerpc
-			elif [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -eq $(KV_to_int 2.6.15) ]] ; then
-				if [[ ${host} == powerpc64* ]] || [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
-					echo powerpc
-				else
-					echo ppc
-				fi
 			elif [[ ${host} == powerpc64* ]] ; then
 				echo ppc64
-			elif [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
-				ninj ppc64 ppc
 			else
 				echo ppc
 			fi
@@ -514,10 +703,10 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		x86_64*)
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.24) ]] ; then
+			if [[ ${type} == "kern" ]] ; then
 				echo x86
 			else
-				ninj x86_64 amd64
+				echo amd64
 			fi
 			;;
 		xtensa*)	echo xtensa;;
@@ -549,7 +738,7 @@ tc-endian() {
 	case ${host} in
 		aarch64*be)	echo big;;
 		aarch64)	echo little;;
-		alpha*)		echo big;;
+		alpha*)		echo little;;
 		arm*b*)		echo big;;
 		arm*)		echo little;;
 		cris*)		echo little;;
@@ -561,6 +750,7 @@ tc-endian() {
 		mips*)		echo big;;
 		powerpc*le)	echo little;;
 		powerpc*)	echo big;;
+		riscv*)		echo little;;
 		s390*)		echo big;;
 		sh*b*)		echo big;;
 		sh*)		echo little;;
@@ -570,12 +760,46 @@ tc-endian() {
 	esac
 }
 
+# @FUNCTION: tc-get-compiler-type
+# @RETURN: keyword identifying the compiler: gcc, clang, pathcc, unknown
+tc-get-compiler-type() {
+	local code='
+#if defined(__PATHSCALE__)
+	HAVE_PATHCC
+#elif defined(__clang__)
+	HAVE_CLANG
+#elif defined(__GNUC__)
+	HAVE_GCC
+#endif
+'
+	local res=$($(tc-getCPP "$@") -E -P - <<<"${code}")
+
+	case ${res} in
+		*HAVE_PATHCC*)	echo pathcc;;
+		*HAVE_CLANG*)	echo clang;;
+		*HAVE_GCC*)		echo gcc;;
+		*)				echo unknown;;
+	esac
+}
+
+# @FUNCTION: tc-is-gcc
+# @RETURN: Shell true if the current compiler is GCC, false otherwise.
+tc-is-gcc() {
+	[[ $(tc-get-compiler-type) == gcc ]]
+}
+
+# @FUNCTION: tc-is-clang
+# @RETURN: Shell true if the current compiler is clang, false otherwise.
+tc-is-clang() {
+	[[ $(tc-get-compiler-type) == clang ]]
+}
+
 # Internal func.  The first argument is the version info to expand.
 # Query the preprocessor to improve compatibility across different
 # compilers rather than maintaining a --version flag matrix. #335943
 _gcc_fullversion() {
 	local ver="$1"; shift
-	set -- `$(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__"`
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
 	eval echo "$ver"
 }
 
@@ -603,6 +827,39 @@ gcc-minor-version() {
 # @RETURN: micro compiler version (micro: 3.4.[6])
 gcc-micro-version() {
 	_gcc_fullversion '$3' "$@"
+}
+
+# Internal func. Based on _gcc_fullversion() above.
+_clang_fullversion() {
+	local ver="$1"; shift
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__clang_major__ __clang_minor__ __clang_patchlevel__")
+	eval echo "$ver"
+}
+
+# @FUNCTION: clang-fullversion
+# @RETURN: compiler version (major.minor.micro: [3.4.6])
+clang-fullversion() {
+	_clang_fullversion '$1.$2.$3' "$@"
+}
+# @FUNCTION: clang-version
+# @RETURN: compiler version (major.minor: [3.4].6)
+clang-version() {
+	_clang_fullversion '$1.$2' "$@"
+}
+# @FUNCTION: clang-major-version
+# @RETURN: major compiler version (major: [3].4.6)
+clang-major-version() {
+	_clang_fullversion '$1' "$@"
+}
+# @FUNCTION: clang-minor-version
+# @RETURN: minor compiler version (minor: 3.[4].6)
+clang-minor-version() {
+	_clang_fullversion '$2' "$@"
+}
+# @FUNCTION: clang-micro-version
+# @RETURN: micro compiler version (micro: 3.4.[6])
+clang-micro-version() {
+	_clang_fullversion '$3' "$@"
 }
 
 # Returns the installation directory - internal toolchain
@@ -702,21 +959,57 @@ gcc-specs-stack-check() {
 }
 
 
+# @FUNCTION: tc-enables-pie
+# @RETURN: Truth if the current compiler generates position-independent code (PIC) which can be linked into executables
+# @DESCRIPTION:
+# Return truth if the current compiler generates position-independent code (PIC)
+# which can be linked into executables.
+tc-enables-pie() {
+	tc-cpp-is-true "defined(__PIE__)" ${CPPFLAGS} ${CFLAGS}
+}
+
+# @FUNCTION: tc-enables-ssp
+# @RETURN: Truth if the current compiler enables stack smashing protection (SSP) on at least minimal level
+# @DESCRIPTION:
+# Return truth if the current compiler enables stack smashing protection (SSP)
+# on level corresponding to any of the following options:
+#  -fstack-protector
+#  -fstack-protector-strong
+#  -fstack-protector-all
+tc-enables-ssp() {
+	tc-cpp-is-true "defined(__SSP__) || defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
+}
+
+# @FUNCTION: tc-enables-ssp-strong
+# @RETURN: Truth if the current compiler enables stack smashing protection (SSP) on at least middle level
+# @DESCRIPTION:
+# Return truth if the current compiler enables stack smashing protection (SSP)
+# on level corresponding to any of the following options:
+#  -fstack-protector-strong
+#  -fstack-protector-all
+tc-enables-ssp-strong() {
+	tc-cpp-is-true "defined(__SSP_STRONG__) || defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
+}
+
+# @FUNCTION: tc-enables-ssp-all
+# @RETURN: Truth if the current compiler enables stack smashing protection (SSP) on maximal level
+# @DESCRIPTION:
+# Return truth if the current compiler enables stack smashing protection (SSP)
+# on level corresponding to any of the following options:
+#  -fstack-protector-all
+tc-enables-ssp-all() {
+	tc-cpp-is-true "defined(__SSP_ALL__)" ${CPPFLAGS} ${CFLAGS}
+}
+
+
 # @FUNCTION: gen_usr_ldscript
 # @USAGE: [-a] <list of libs to create linker scripts for>
 # @DESCRIPTION:
-# This function generate linker scripts in /usr/lib for dynamic
-# libs in /lib.  This is to fix linking problems when you have
-# the .so in /lib, and the .a in /usr/lib.  What happens is that
-# in some cases when linking dynamic, the .a in /usr/lib is used
-# instead of the .so in /lib due to gcc/libtool tweaking ld's
-# library search path.  This causes many builds to fail.
-# See bug #4411 for more info.
-#
-# Note that you should in general use the unversioned name of
-# the library (libfoo.so), as ldconfig should usually update it
-# correctly to point to the latest version of the library present.
+# This function is deprecated. Use the version from
+# usr-ldscript.eclass instead.
 gen_usr_ldscript() {
+	ewarn "${FUNCNAME}: Please migrate to usr-ldscript.eclass"
+
 	local lib libdir=$(get_libdir) output_format="" auto=false suffix=$(get_libname)
 	[[ -z ${ED+set} ]] && local ED=${D%/}${EPREFIX}/
 

@@ -1,0 +1,142 @@
+https://bugs.gentoo.org/776988
+https://github.com/MidnightCommander/mc/commit/1ed638d66cf803f69ac12ee80a72d217f2146e43
+
+From 1ed638d66cf803f69ac12ee80a72d217f2146e43 Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Tue, 16 Feb 2021 16:29:51 +0300
+Subject: [PATCH] Ticket #4180: fix zip handling.
+
+After 8857423e4ebb770b6f0ea3103abf5d35c85fcbe8 zip archives opened with
+an error:
+
+    file -L -z archive.zip: Bad system call
+
+This caused by using /usr/bin/file with -z option, because seccomp (a
+security sandbox) doesn't allow it..
+
+Solution: use -S option together with -z one.
+
+The file command accepts the -S option since 5.33.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ configure.ac          | 66 +++++++++++++++++++++++++++++++++++--------
+ src/filemanager/ext.c |  7 +++--
+ src/setup.c           |  2 ++
+ 3 files changed, 60 insertions(+), 15 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5f372dc3f5..f2351c99ad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -115,23 +115,65 @@ fi
+ AC_SUBST(MANDOC)
+ AC_SUBST(MAN_FLAGS)
+ 
+-dnl Check for -L option to file
++dnl Check for -z, -L, and -S options to file
+ AC_CHECK_PROG(HAVE_FILECMD, file, true, false)
+ if $HAVE_FILECMD; then
+-    AC_MSG_CHECKING([for -L option to file command])
+-    AC_CACHE_VAL(mc_cv_filel, [
+-    file -L . > /dev/null 2>&1
+-    if test $? = 0; then
+-	mc_cv_filel=yes
++    dnl Don't use the file command if it doesn't accept the -z option
++    AC_MSG_CHECKING([for -z option to file command])
++    AC_CACHE_VAL(mc_cv_file_z, [
++        file -z . > /dev/null 2>&1
++        if test $? = 0; then
++            mc_cv_file_z=yes
++        else
++            mc_cv_file_z=no
++        fi
++    ])
++    AC_MSG_RESULT([$mc_cv_file_z])
++
++    if test x$mc_cv_file_z = xyes; then
++        AC_DEFINE(USE_FILE_CMD, 1, [Define if the file command accepts the -z option])
+     else
+-	mc_cv_filel=no
++        AC_MSG_WARN([The file command doesn't accept the -z option and will not be used])
+     fi
+-    ])
+-    if test x$mc_cv_filel = xyes; then
+-	AC_DEFINE(FILE_L, 1, [Define if the file command accepts the -L option])
++
++    if test x$mc_cv_file_z = xyes; then
++        dnl file is used; check -L and -S options
++
++        AC_MSG_CHECKING([for -L option to file command])
++        AC_CACHE_VAL(mc_cv_file_L, [
++            file -L . > /dev/null 2>&1
++            if test $? = 0; then
++                mc_cv_file_L=yes
++            else
++                mc_cv_file_L=no
++            fi
++        ])
++        AC_MSG_RESULT([$mc_cv_file_L])
++
++        if test x$mc_cv_file_L = xyes; then
++            AC_DEFINE(FILE_L, "-L ", [Define if the file command accepts the -L option])
++        else
++            AC_DEFINE(FILE_L, "", [Define if the file command accepts the -L option])
++        fi
++
++        dnl The file command accepts the -S option since 5.33
++        AC_MSG_CHECKING([for -S option to file command])
++        AC_CACHE_VAL(mc_cv_file_S, [
++            file -S . > /dev/null 2>&1
++            if test $? = 0; then
++                mc_cv_file_S=yes
++            else
++                mc_cv_file_S=no
++            fi
++        ])
++        AC_MSG_RESULT([$mc_cv_file_S])
++
++        if test x$mc_cv_file_S = xyes; then
++            AC_DEFINE(FILE_S, "-S ", [Define if file command accepts the -S option])
++        else
++            AC_DEFINE(FILE_S, "", [Define if file command accepts the -S option])
++        fi
+     fi
+-    filel=$mc_cv_filel
+-    AC_MSG_RESULT([$filel])
+ fi
+ 
+ dnl Only list browsers here that can be run in background (i.e. with `&')
+diff --git a/src/filemanager/ext.c b/src/filemanager/ext.c
+index 4e6f10c6c5..d6a09df7bb 100644
+--- a/src/filemanager/ext.c
++++ b/src/filemanager/ext.c
+@@ -71,10 +71,11 @@
+ 
+ /*** file scope macro definitions ****************************************************************/
+ 
+-#ifdef FILE_L
+-#define FILE_CMD "file -L -z "
++#ifdef USE_FILE_CMD
++#define FILE_CMD "file -z " FILE_S FILE_L
+ #else
+-#define FILE_CMD "file -z "
++/* actually file is unused, but define some reasonable command */
++#define FILE_CMD "file "
+ #endif
+ 
+ /*** file scope type declarations ****************************************************************/
+diff --git a/src/setup.c b/src/setup.c
+index 77c07649d5..2ef07f2569 100644
+--- a/src/setup.c
++++ b/src/setup.c
+@@ -317,7 +317,9 @@ static const struct
+     { "old_esc_mode", &old_esc_mode },
+     { "cd_symlinks", &mc_global.vfs.cd_symlinks },
+     { "show_all_if_ambiguous", &mc_global.widget.show_all_if_ambiguous },
++#ifdef USE_FILE_CMD
+     { "use_file_to_guess_type", &use_file_to_check_type },
++#endif
+     { "alternate_plus_minus", &mc_global.tty.alternate_plus_minus },
+     { "only_leading_plus_minus", &only_leading_plus_minus },
+     { "show_output_starts_shell", &output_starts_shell },

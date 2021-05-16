@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index 1e74bb1..4249fb5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -241,11 +241,7 @@ ENABLE_KA_TABLE_GEN="no"
+ # This way we just need one call to AC_PATH_PROGS to likely get a
+ # suitable version of Python.  The version check afterwards is for
+ # the case just a generic 'python3' or 'python' executable was found.
+-PYTHON_CANDIDATE_VERSIONS="python3 python"
+-
+-for ver in `seq 6 1 10`; do
+-  PYTHON_CANDIDATE_VERSIONS="python3.$ver $PYTHON_CANDIDATE_VERSIONS"
+-done
++PYTHON_CANDIDATE_VERSIONS="${EPYTHON}"
+ 
+ AC_PATH_PROGS([PYTHON], [$PYTHON_CANDIDATE_VERSIONS], [])
+ 

@@ -5,12 +5,12 @@
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
-<longdescription lang="en">
-Packages for LuaTeX, a Unicode-aware extension of pdfTeX, using Lua 
-as an embedded scripting and extension language. http://luatex.org/
-</longdescription>
+	<longdescription lang="en">
+		Packages for LuaTeX, a Unicode-aware extension of pdfTeX, using Lua
+		as an embedded scripting and extension language. http://luatex.org/
+	</longdescription>
 </pkgmetadata>

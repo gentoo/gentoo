@@ -1,15 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 
 inherit gnome2
 
 DESCRIPTION="Nautilus extension for encrypting and decrypting files with GnuPG"
-HOMEPAGE="https://wiki.gnome.org/action/show/Apps/Seahorse"
+HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +17,7 @@ IUSE=""
 
 COMMON_DEPEND="
 	>=app-crypt/gpgme-1.0.0
-	>=app-crypt/gcr-3.4
+	>=app-crypt/gcr-3.4[gtk]
 	>=dev-libs/dbus-glib-0.35
 	>=dev-libs/glib-2.28:2
 	gnome-base/gnome-keyring
@@ -45,6 +44,10 @@ src_prepare() {
 	# Fix icon location, upstream bug #719763
 	sed -i 's/pixmaps\/seahorse-plugins\/48x48/pixmaps\/cryptui\/48x48/' \
 		tool/seahorse-notification.c || die
+
+	# Doesn't really need libgnome-keyring (from Fedora, fixed in
+	# 'master')
+	eapply "${FILESDIR}"/${P}-remove-libgnome-keyring.patch # needs eautoreconf
 
 	gnome2_src_prepare
 }

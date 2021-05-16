@@ -1,0 +1,14 @@
+https://github.com/eXeC64/imv/issues/305
+--- a/src/wl_window.c	2020-12-17 15:30:42.000000000 -0500
++++ b/src/wl_window.c	2021-02-02 19:03:52.598901093 -0500
+@@ -545,2 +545,3 @@
+     wl_surface_commit(window->wl_surface);
++    wl_display_roundtrip(window->wl_display);
+     size_t buffer_width = window->width * window->scale;
+@@ -636,4 +637,4 @@
+         .height = window->height,
+-        .buffer_width = window->width * window->scale,
+-        .buffer_height = window->height * window->scale
++        .buffer_width = buffer_width,
++        .buffer_height = buffer_height,
+       }

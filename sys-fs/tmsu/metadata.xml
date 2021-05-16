@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@chymera.eu</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		TMSU is a tool for tagging your files. It provides a simple
+		command-line utility for applying tags and a virtual
+		filesystem to give you a tag-based view of your files from
+		any other program.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">oniony/TMSU</remote-id>
+	</upstream>
+</pkgmetadata>

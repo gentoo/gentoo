@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/514008
 
---- dc1394/usb/Makefile.am
-+++ dc1394/usb/Makefile.am
+--- a/dc1394/usb/Makefile.am
++++ b/dc1394/usb/Makefile.am
 @@ -8,7 +8,7 @@
  endif
  

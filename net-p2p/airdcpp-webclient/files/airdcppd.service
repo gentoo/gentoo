@@ -1,0 +1,15 @@
+[Unit]
+Description=Cross-platform Direct Connect client
+After=network-online.target
+
+[Service]
+Type=forking
+User=airdcppd
+Group=airdcppd
+# Grant write access to group members
+UMask=007
+PIDFile=/var/lib/airdcppd/.airdc++/airdcppd.pid
+ExecStart=/usr/bin/airdcppd -d
+
+[Install]
+WantedBy=multi-user.target

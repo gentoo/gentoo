@@ -1,0 +1,11 @@
+--- a/src/nvcontrol/nvcontrol.h
++++ b/src/nvcontrol/nvcontrol.h
+@@ -42,7 +42,7 @@
+ } NVOptionList;
+ 
+ #define OPTION_LIST_SIZE 27
+-NVOptionList option_list[OPTION_LIST_SIZE];
++extern NVOptionList option_list[OPTION_LIST_SIZE];
+ int init_nvcontrol();
+ NVOptionList *nvcontrol_lookup_option(int option);
+ 

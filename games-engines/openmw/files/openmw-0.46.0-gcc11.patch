@@ -1,0 +1,36 @@
+diff --git a/components/sceneutil/mwshadowtechnique.cpp b/components/sceneutil/mwshadowtechnique.cpp
+index cb3a1b2..62cfeec 100644
+--- a/components/sceneutil/mwshadowtechnique.cpp
++++ b/components/sceneutil/mwshadowtechnique.cpp
+@@ -24,6 +24,7 @@
+ #include <osg/io_utils>
+ 
+ #include <sstream>
++#include <limits>
+ 
+ namespace {
+ 
+diff --git a/components/sceneutil/shadow.cpp b/components/sceneutil/shadow.cpp
+index 035c19a..aba1b81 100644
+--- a/components/sceneutil/shadow.cpp
++++ b/components/sceneutil/shadow.cpp
+@@ -4,6 +4,7 @@
+ 
+ #include <components/sceneutil/vismask.hpp>
+ #include <components/settings/settings.hpp>
++#include <limits>
+ 
+ namespace SceneUtil
+ {
+diff --git a/components/terrain/quadtreeworld.cpp b/components/terrain/quadtreeworld.cpp
+index f998b78..e0e47dd 100644
+--- a/components/terrain/quadtreeworld.cpp
++++ b/components/terrain/quadtreeworld.cpp
+@@ -3,6 +3,7 @@
+ #include <osgUtil/CullVisitor>
+ 
+ #include <sstream>
++#include <limits>
+ 
+ #include <components/misc/constants.hpp>
+ #include <components/sceneutil/mwshadowtechnique.hpp>

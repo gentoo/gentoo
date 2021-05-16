@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: dotnet.eclass
-# @MAINTAINER: cynede@gentoo.org
+# @MAINTAINER:
+# maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
 # @BLURB: common settings and functions for mono and dotnet related packages
 # @DESCRIPTION:
 # The dotnet eclass contains common environment settings that are useful for
@@ -12,18 +13,21 @@
 # of dotnet packages.
 
 case ${EAPI:-0} in
-	0) die "this eclass doesn't support EAPI 0" ;;
-	1|2|3) ;;
-	*) ;; #if [[ ${USE_DOTNET} ]]; then REQUIRED_USE="|| (${USE_DOTNET})"; fi;;
+	0)
+		die "this eclass doesn't support EAPI 0" ;;
+	[1-6])
+		inherit eapi7-ver multilib
+		DEPEND="dev-lang/mono" ;;
+	*)
+		BDEPEND="dev-lang/mono" ;;
 esac
 
-inherit eutils versionator mono-env
+inherit mono-env
 
 # @ECLASS-VARIABLE: USE_DOTNET
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Use flags added to IUSE
-
-DEPEND+=" dev-lang/mono"
 
 # SET default use flags according on DOTNET_TARGETS
 for x in ${USE_DOTNET}; do
@@ -51,7 +55,7 @@ dotnet_pkg_setup() {
 				FRAMEWORK="${F}";
 			fi
 		else
-			version_is_at_least "${F}" "${FRAMEWORK}" || FRAMEWORK="${F}"
+			ver_test "${F}" -le "${FRAMEWORK}" || FRAMEWORK="${F}"
 		fi
 	done
 	if [[ -z ${FRAMEWORK} ]]; then

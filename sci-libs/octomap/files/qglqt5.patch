@@ -1,0 +1,231 @@
+Index: octomap-1.9.0/octovis/src/ViewerGui.cpp
+===================================================================
+--- octomap-1.9.0.orig/octovis/src/ViewerGui.cpp
++++ octomap-1.9.0/octovis/src/ViewerGui.cpp
+@@ -286,7 +286,7 @@ void ViewerGui::showOcTree() {
+   m_mapSizeStatus->setText(size);
+   //}
+ 
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ 
+   // generate cubes -> display
+   // timeval start;
+@@ -299,7 +299,7 @@ void ViewerGui::showOcTree() {
+   //    gettimeofday(&stop, NULL);  // stop timer
+   //    double time_to_generate = (stop.tv_sec - start.tv_sec) + 1.0e-6 *(stop.tv_usec - start.tv_usec);
+   //    fprintf(stderr, "setOcTree took %f sec\n", time_to_generate);
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ }
+ 
+ 
+@@ -983,7 +983,7 @@ void ViewerGui::on_actionSelection_box_t
+   m_glwidget->enableSelectionBox(checked);
+ 
+ 
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ }
+ 
+ void ViewerGui::on_actionHeight_map_toggled(bool checked){
+@@ -1040,7 +1040,7 @@ void ViewerGui::on_actionAxes_toggled(bo
+       it != m_octrees.end(); ++it) {
+     it->second.octree_drawer->enableAxes(checked);
+   }
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ }
+ 
+ void ViewerGui::on_actionHideBackground_toggled(bool checked) {
+@@ -1048,7 +1048,7 @@ void ViewerGui::on_actionHideBackground_
+   if (getOctreeRecord(DEFAULT_OCTREE_ID, r)) {
+     if (checked) m_glwidget->removeSceneObject(r->octree_drawer);
+     else         m_glwidget->addSceneObject(r->octree_drawer);
+-    m_glwidget->updateGL();
++    m_glwidget->update();
+   }
+ }
+ 
+@@ -1142,7 +1142,7 @@ void ViewerGui::on_actionOctree_cells_to
+       it != m_octrees.end(); ++it) {
+     it->second.octree_drawer->enableOcTreeCells(enabled);
+   }
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ }
+ 
+ void ViewerGui::on_actionOctree_structure_toggled(bool enabled) {
+@@ -1150,7 +1150,7 @@ void ViewerGui::on_actionOctree_structur
+       it != m_octrees.end(); ++it) {
+     it->second.octree_drawer->enableOcTree(enabled);
+   }
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ }
+ 
+ void ViewerGui::on_actionFree_toggled(bool enabled) {
+@@ -1158,7 +1158,7 @@ void ViewerGui::on_actionFree_toggled(bo
+       it != m_octrees.end(); ++it) {
+     it->second.octree_drawer->enableFreespace(enabled);
+   }
+-  m_glwidget->updateGL();
++  m_glwidget->update();
+ 
+ }
+ 
+@@ -1176,24 +1176,21 @@ void ViewerGui::on_actionSelected_toggle
+   //   } else{
+   //     m_octreeDrawer->clearOcTreeSelection();
+   //   }
+-  //   m_glwidget->updateGL();
++  //   m_glwidget->update();
+   // }
+ }
+ 
+ 
+ void ViewerGui::on_action_bg_black_triggered() {
+   m_glwidget->setBackgroundColor( QColor(0,0,0) );
+-  m_glwidget->qglClearColor( m_glwidget->backgroundColor() );
+ }
+ 
+ void ViewerGui::on_action_bg_white_triggered() {
+   m_glwidget->setBackgroundColor( QColor(255,255,255) );
+-  m_glwidget->qglClearColor( m_glwidget->backgroundColor() );
+ }
+ 
+ void ViewerGui::on_action_bg_gray_triggered() {
+   m_glwidget->setBackgroundColor( QColor(117,117,117) );
+-  m_glwidget->qglClearColor( m_glwidget->backgroundColor() );
+ }
+ 
+ void ViewerGui::on_savecampose_triggered() {
+Index: octomap-1.9.0/octovis/src/ViewerWidget.cpp
+===================================================================
+--- octomap-1.9.0.orig/octovis/src/ViewerWidget.cpp
++++ octomap-1.9.0/octovis/src/ViewerWidget.cpp
+@@ -67,13 +67,12 @@ void ViewerWidget::init() {
+ 
+   // background color defaults to white
+   this->setBackgroundColor( QColor(255,255,255) );
+-  this->qglClearColor( this->backgroundColor() );
+ }
+ 
+ void ViewerWidget::resetView(){
+   this->camera()->setOrientation((float) -M_PI_2, (float) M_PI_2);
+   this->showEntireScene();
+-  updateGL();
++  update();
+ }
+ 
+ 
+@@ -98,7 +97,7 @@ void ViewerWidget::enableHeightColorMode
+   for(std::vector<SceneObject*>::iterator it = m_sceneObjects.begin(); it != m_sceneObjects.end(); it++) {
+     (*it)->enableHeightColorMode(enabled);
+   }
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::enablePrintoutMode(bool enabled) {
+@@ -106,7 +105,7 @@ void ViewerWidget::enablePrintoutMode(bo
+   for(std::vector<SceneObject*>::iterator it = m_sceneObjects.begin(); it != m_sceneObjects.end(); it++) {
+     (*it)->enablePrintoutMode(enabled);
+   }
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::enableSemanticColoring (bool enabled) {
+@@ -114,12 +113,12 @@ void ViewerWidget::enableSemanticColorin
+   for(std::vector<SceneObject*>::iterator it = m_sceneObjects.begin(); it != m_sceneObjects.end(); it++) {
+     (*it)->enableSemanticColoring(enabled);
+   }
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::enableSelectionBox(bool enabled) {
+   m_drawSelectionBox = enabled;
+-  updateGL();
++  update();
+ }
+ 
+ 
+@@ -145,7 +144,7 @@ void ViewerWidget::setCamPosition(double
+   camera()->setPosition(qglviewer::Vec(x, y, z));
+   camera()->lookAt(qglviewer::Vec(lookX, lookY, lookZ));
+   camera()->setUpVector(qglviewer::Vec(0.0, 0.0, 1.0));
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::setCamPose(const octomath::Pose6D& pose){
+@@ -161,12 +160,12 @@ void ViewerWidget::jumpToCamFrame(int id
+   } else {
+     std::cerr << "Error: Could not jump to frame " << frame << " of " << kfi->numberOfKeyFrames() << std::endl;
+   }
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::deleteCameraPath(int id) {
+   if(camera()->keyFrameInterpolator(id)) {
+-    disconnect(camera()->keyFrameInterpolator(id), SIGNAL(interpolated()), this, SLOT(updateGL()));
++    disconnect(camera()->keyFrameInterpolator(id), SIGNAL(interpolated()), this, SLOT(update()));
+     disconnect(camera()->keyFrameInterpolator(id), SIGNAL(interpolated()), this, SLOT(cameraPathInterpolated()));
+     disconnect(camera()->keyFrameInterpolator(id), SIGNAL(endReached()), this, SLOT(cameraPathFinished()));
+     camera()->deletePath(id);
+@@ -243,7 +242,7 @@ void ViewerWidget::playCameraPath(int id
+     m_current_camera_frame = start_frame;
+     kfi->setInterpolationTime(kfi->keyFrameTime(start_frame));
+     std::cout << "Playing path of length " << kfi->numberOfKeyFrames() << ", start time " << kfi->keyFrameTime(start_frame) << std::endl;
+-    connect(kfi, SIGNAL(interpolated()), this, SLOT(updateGL()));
++    connect(kfi, SIGNAL(interpolated()), this, SLOT(update()));
+     connect(kfi, SIGNAL(interpolated()), this, SLOT(cameraPathInterpolated()));
+     connect(kfi, SIGNAL(endReached()), this, SLOT(cameraPathFinished()));
+     kfi->startInterpolation();
+@@ -252,7 +251,7 @@ void ViewerWidget::playCameraPath(int id
+ 
+ void ViewerWidget::stopCameraPath(int id) {
+   if(camera()->keyFrameInterpolator(id) && camera()->keyFrameInterpolator(id)->interpolationIsStarted()) {
+-    disconnect(camera()->keyFrameInterpolator(id), SIGNAL(interpolated()), this, SLOT(updateGL()));
++    disconnect(camera()->keyFrameInterpolator(id), SIGNAL(interpolated()), this, SLOT(update()));
+     disconnect(camera()->keyFrameInterpolator(id), SIGNAL(interpolated()), this, SLOT(cameraPathInterpolated()));
+     disconnect(camera()->keyFrameInterpolator(id), SIGNAL(endReached()), this, SLOT(cameraPathFinished()));
+     camera()->keyFrameInterpolator(id)->stopInterpolation();
+@@ -261,7 +260,7 @@ void ViewerWidget::stopCameraPath(int id
+ 
+ void ViewerWidget::cameraPathFinished() {
+   if(camera()->keyFrameInterpolator(m_current_camera_path)) {
+-    disconnect(camera()->keyFrameInterpolator(m_current_camera_path), SIGNAL(interpolated()), this, SLOT(updateGL()));
++    disconnect(camera()->keyFrameInterpolator(m_current_camera_path), SIGNAL(interpolated()), this, SLOT(update()));
+     disconnect(camera()->keyFrameInterpolator(m_current_camera_path), SIGNAL(interpolated()), this, SLOT(cameraPathInterpolated()));
+     disconnect(camera()->keyFrameInterpolator(m_current_camera_path), SIGNAL(endReached()), this, SLOT(cameraPathFinished()));
+     emit cameraPathStopped(m_current_camera_path);
+@@ -292,7 +291,7 @@ void ViewerWidget::setSceneBoundingBox(c
+ void ViewerWidget::addSceneObject(SceneObject* obj){
+   assert (obj);
+   m_sceneObjects.push_back(obj);
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::removeSceneObject(SceneObject* obj){
+@@ -304,7 +303,7 @@ void ViewerWidget::removeSceneObject(Sce
+     else
+       ++it;
+   }
+-  updateGL();
++  update();
+ }
+ 
+ void ViewerWidget::clearAll(){
+@@ -364,7 +363,6 @@ void ViewerWidget::postDraw(){
+   glPushAttrib(GL_ALL_ATTRIB_BITS);
+ 
+   glDisable(GL_COLOR_MATERIAL);
+-  qglColor(foregroundColor());
+ 
+   if (gridIsDrawn()){
+     glLineWidth(1.0);

@@ -1,0 +1,29 @@
+From 8e0f11c8805c8f7b1dc6f03b864cf782ea8607a5 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 27 Dec 2017 18:59:04 +1300
+Subject: Fence off VIM tests without explicit activation
+
+---
+ t/05_vim.t | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/t/05_vim.t b/t/05_vim.t
+index 8b3c682..becf93a 100644
+--- a/t/05_vim.t
++++ b/t/05_vim.t
+@@ -1,4 +1,12 @@
+ use strict; use warnings;
++
++BEGIN {
++  if ( not $ENV{VIM_TESTS} ) {
++    print "1..0 # SKIP VIM_TESTS not set";
++    exit;
++  }
++}
++
+ use Data::Dumper;
+ 
+ use Test::More tests=>1;
+-- 
+2.15.1
+

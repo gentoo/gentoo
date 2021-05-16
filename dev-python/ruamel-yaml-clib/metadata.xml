@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>zoltan@sinustrom.info</email>
+		<name>Zoltan Puskas</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		This package was split of from ruamel.yaml, so that ruamel.yaml can be
+		built as a universal wheel. Apart from the C code seldom changing, and
+		taking a long time to compile for all platforms, this allows
+		installation of the .so on Linux systems under /usr/lib64/pythonX.Y
+		(without a .pth file or a ruamel directory) and the Python code for
+		ruamel.yaml under /usr/lib/pythonX.Y.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">ruamel.yaml.clib</remote-id>
+		<remote-id type="sourceforge">ruamel-yaml-clib</remote-id>
+	</upstream>
+</pkgmetadata>

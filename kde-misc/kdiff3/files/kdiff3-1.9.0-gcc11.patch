@@ -1,0 +1,24 @@
+From 0476b1daa73159aec411c7f10da6f313294f0e38 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Tue, 4 May 2021 19:21:46 +0200
+Subject: [PATCH] Explicitly include <limits> for compatibility with gcc-11
+
+---
+ src/TypeUtils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/TypeUtils.h b/src/TypeUtils.h
+index c072681..f0ab9c2 100644
+--- a/src/TypeUtils.h
++++ b/src/TypeUtils.h
+@@ -9,6 +9,7 @@
+ 
+ #include <stdlib.h>
+ #include <type_traits>
++#include <limits>
+ 
+ #include <QtGlobal>
+ 
+-- 
+GitLab
+

@@ -7,7 +7,7 @@ index bffa9fb..8fc90ee 100644
    )
  
 +# Gentoo portage requires that you use exactly the given python version
-+if (CMAKE_BUILD_TYPE STREQUAL Gentoo)
++if (CMAKE_GENTOO_BUILD OR CMAKE_BUILD_TYPE STREQUAL Gentoo)
 +    execute_process(COMMAND python -c "import sys; sys.stdout.write('.'.join([str(x) for x in sys.version_info[:2]]))"
 +                    OUTPUT_VARIABLE _Gentoo_Python_VERSION)
 +    list(FIND _Python_VERSIONS "${_Gentoo_Python_VERSION}" _Gentoo_Python_INDEX)

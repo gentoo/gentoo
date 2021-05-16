@@ -1,34 +1,29 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
 # Can't really call them backports when they're fixes that upstream
 # won't carry
 FIXES=1
 
-inherit eutils
-
 DESCRIPTION="VGA BIOS implementation"
 HOMEPAGE="http://www.nongnu.org/vgabios/"
-SRC_URI="http://savannah.gnu.org/download/${PN}/${P}.tgz
+SRC_URI="https://savannah.gnu.org/download/${PN}/${P}.tgz
 	https://dev.gentoo.org/~cardoe/distfiles/${P}-fixes-${FIXES}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="binary debug"
-
-DEPEND="!binary? ( sys-devel/dev86 )"
-RDEPEND=""
+BDEPEND="!binary? ( sys-devel/dev86 )"
 
 src_prepare() {
-	[[ -n ${FIXES} ]] && \
-		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
-			epatch
+	if [[ -n ${FIXES} ]] ; then
+		eapply patches/*.patch
+	fi
 
-	epatch_user
+	default
 }
 
 src_compile() {

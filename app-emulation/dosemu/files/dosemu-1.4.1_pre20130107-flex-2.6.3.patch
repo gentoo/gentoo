@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/604610
+
+New flex seems to define yywrap even for non-yywrap lexers.
+diff --git a/src/base/init/lexer.l.in b/src/base/init/lexer.l.in
+index aeaa2e2..9e42ddf 100644
+--- a/src/base/init/lexer.l.in
++++ b/src/base/init/lexer.l.in
+@@ -810,7 +810,2 @@ static void enter_includefile(char * fname)
+ 
+-
+-#ifdef yywrap
+-  error "yywrap defined elsewere, need our own one"
+-#endif
+-
+ int yywrap(void)    /* this gets called at EOF of a parsed file */

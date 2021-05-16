@@ -1,0 +1,263 @@
+--- a/configure
++++ b/configure
+@@ -16,8 +16,8 @@
+ if [ "$CC" = "" ]; then
+     CC=gcc
+ fi
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -Iutil"
+-LIBS="util/ddutil-dbg.a"
++CFLAGS="${CFLAGS} -Wall -W -Wno-unused-parameter -Wno-unused-function -Iutil"
++LIBS="util/ddutil.a"
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+     CFLAGS="$CFLAGS -m64"
+@@ -74,17 +74,17 @@
+ 
+ echo "
+ 
+-datadraw: \$(OBJECTS) util/ddutil-dbg.a
+-	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) -o datadraw
++datadraw: \$(OBJECTS) util/ddutil.a
++	\$(CC) \$(CFLAGS) \$(LDFLAGS) \$(OBJECTS) \$(LIBS) -o datadraw
+ 
+ clean:
+ 	rm -f \$(OBJECTS)
+-	make -C util clean
++	+\$(MAKE) -C util clean
+ 
+ install: datadraw
+ 	install -d \$(PREFIX)/bin
+ 	install datadraw \$(PREFIX)/bin
+-	make -C util PREFIX=\$(PREFIX) install
++	+\$(MAKE) -C util PREFIX=\$(PREFIX) install
+ 
+ deb:
+ 	fakeroot debian/rules binary && sudo dpkg -i ../*.deb
+@@ -99,8 +99,8 @@
+ src/dvdatabase.h src/dvdatabase.c: src/Database.dd
+ 	datadraw src/Database.dd
+ 
+-util/ddutil-dbg.a:
+-	make -C util
++util/ddutil.a:
++	+\$(MAKE) -C util
+ 
+ " >> Makefile
+ 
+--- a/dataview/configure
++++ b/dataview/configure
+@@ -43,13 +43,8 @@
+     shift
+ done
+ 
+-if [ "$debugging" = "true" ]; then
+-    CFLAGS="-g -DDD_DEBUG $CFLAGS"
+-    LIBS="$LIBS ../util/ddutil-dbg.a"
+-else
+-    CFLAGS="-O2 $CFLAGS"
+-    LIBS="$LIBS ../util/ddutil.a"
+-fi
++CFLAGS="$CFLAGS"
++LIBS="$LIBS ../util/ddutil.a"
+ 
+ if [ ! -d obj ]; then
+     mkdir obj
+@@ -74,7 +69,7 @@
+ 
+ echo "
+ 
+-dataview: \$(OBJECTS) ../util/ddutil-dbg.a
++dataview: \$(OBJECTS)
+ 	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) -o dataview
+ 
+ clean:
+--- a/examples/array/configure
++++ b/examples/array/configure
+@@ -9,7 +9,7 @@
+ 
+ ../../datadraw Array.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+@@ -28,8 +28,8 @@
+ 
+ echo "
+ 
+-array: ../../util/ddutil-dbg.a \$(OBJECTS)
+-	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil-dbg.a -o array
++array: ../../util/ddutil.a \$(OBJECTS)
++	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil.a -o array
+ 
+ htdatabase.c htdatabase.h: Array.dd
+ 	../../datadraw Array.dd
+--- a/examples/attributes/configure
++++ b/examples/attributes/configure
+@@ -9,7 +9,7 @@
+ 
+ ../../datadraw Attrtest.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+@@ -28,8 +28,8 @@
+ 
+ echo "
+ 
+-attrtest: ../../util/ddutil-dbg.a \$(OBJECTS)
+-	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil-dbg.a -o attrtest
++attrtest: ../../util/ddutil.a \$(OBJECTS)
++	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil.a -o attrtest
+ 
+ htdatabase.c htdatabase.h: Attrtest.dd
+ 	../../datadraw Attrtest.dd
+--- a/examples/extension/configure
++++ b/examples/extension/configure
+@@ -12,7 +12,7 @@
+ ../../datadraw Graph.dd
+ ../../datadraw Color.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+--- a/examples/graph/configure
++++ b/examples/graph/configure
+@@ -13,7 +13,7 @@
+ 
+ ../../datadraw -I ../../util Graph.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+@@ -53,8 +53,8 @@
+ 	../../datadraw -I ../../util Graph.dd
+ 
+ ../../util/ddutilup.a:
+-	make -C ../../util clean
+-	make -C ../../util ddutilup.a
++	+\$(MAKE) -C ../../util clean
++	+\$(MAKE) -C ../../util ddutilup.a
+ 
+ clean:
+ 	rm -f \$(OBJECTS)
+--- a/examples/hash/configure
++++ b/examples/hash/configure
+@@ -9,7 +9,7 @@
+ 
+ ../../datadraw Hash.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+@@ -28,8 +28,8 @@
+ 
+ echo "
+ 
+-hash: ../../util/ddutil-dbg.a \$(OBJECTS)
+-	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil-dbg.a -o hash
++hash: ../../util/ddutil.a \$(OBJECTS)
++	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil.a -o hash
+ 
+ htdatabase.c htdatabase.h: Hash.dd
+ 	../../datadraw Hash.dd
+--- a/examples/heap/configure
++++ b/examples/heap/configure
+@@ -13,7 +13,7 @@
+ 
+ ../../datadraw -I ../../util Heap.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+@@ -53,8 +53,8 @@
+ 	../../datadraw -I ../../util Heap.dd
+ 
+ ../../util/ddutilup.a:
+-	make -C ../../util clean
+-	make -C ../../util ddutilup.a
++	+\$(MAKE) -C ../../util clean
++	+\$(MAKE) -C ../../util ddutilup.a
+ 
+ clean:
+ 	rm -f \$(OBJECTS)
+--- a/examples/sparse/configure
++++ b/examples/sparse/configure
+@@ -9,7 +9,7 @@
+ 
+ ../../datadraw Sparse.dd
+ 
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -DDD_DEBUG -I../../util"
++CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function -I../../util"
+ LIBS=""
+ 
+ if [ "`uname -m`" = x86_64 ]; then
+@@ -28,8 +28,8 @@
+ 
+ echo "
+ 
+-sparse: ../../util/ddutil-dbg.a \$(OBJECTS)
+-	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil-dbg.a -o sparse
++sparse: ../../util/ddutil.a \$(OBJECTS)
++	\$(CC) \$(CFLAGS) \$(OBJECTS) \$(LIBS) ../../util/ddutil.a -o sparse
+ 
+ htdatabase.c htdatabase.h: Sparse.dd
+ 	../../datadraw Sparse.dd
+--- a/util/configure
++++ b/util/configure
+@@ -16,7 +16,7 @@
+ if [ "$CC" = "" ]; then
+     CC=gcc
+ fi
+-CFLAGS="-g -Wall -W -Wno-unused-parameter -Wno-unused-function"
++CFLAGS="${CFLAGS} -Wall -W -Wno-unused-parameter -Wno-unused-function"
+ 
+ if [ "`uname -m`" = "x86_64" ]; then
+     CFLAGS="$CFLAGS -m64"
+@@ -72,21 +72,14 @@
+ makeMakefileTop "u-dbg"
+ makeMakefileTop "up-dbg"
+ 
+-echo 'all: debug optimized
+-
+-debug dev:
+-	@echo "Making debug build:"
+-	@$(MAKE) -f Makefile ddutil-dbg.a CFLAGS="$(CFLAGS) -DDD_DEBUG"
+-	@$(MAKE) -f Makefile ddutilp-dbg.a CFLAGS="$(CFLAGS) -DDD_DEBUG"
+-	@$(MAKE) -f Makefile ddutilu-dbg.a CFLAGS="$(CFLAGS) -DDD_DEBUG"
+-	@$(MAKE) -f Makefile ddutilup-dbg.a CFLAGS="$(CFLAGS) -DDD_DEBUG"
++echo 'all: optimized
+ 
+ optimized opt rel:
+ 	@echo "Making release build:"
+-	@$(MAKE) -f Makefile ddutil.a CFLAGS="$(CFLAGS) -O2"
+-	@$(MAKE) -f Makefile ddutilp.a CFLAGS="$(CFLAGS) -O2"
+-	@$(MAKE) -f Makefile ddutilu.a CFLAGS="$(CFLAGS) -O2"
+-	@$(MAKE) -f Makefile ddutilup.a CFLAGS="$(CFLAGS) -O2"
++	@$(MAKE) -f Makefile ddutil.a CFLAGS="$(CFLAGS)"
++	@$(MAKE) -f Makefile ddutilp.a CFLAGS="$(CFLAGS)"
++	@$(MAKE) -f Makefile ddutilu.a CFLAGS="$(CFLAGS)"
++	@$(MAKE) -f Makefile ddutilup.a CFLAGS="$(CFLAGS)"
+ 
+ clean:
+ 	rm -f obj/* objp/* obju/* objup/* obj-dbg/* objp-dbg/* obju-dbg/* objup-dbg/* *.a
+@@ -120,7 +113,7 @@
+     UPPER_SUFFIX=`echo $SUFFIX | tr '[a-z]' '[A-Z]'`
+     UPPER_NONDBG_SUFFIX=`echo $NONDBG_SUFFIX | tr '[a-z]' '[A-Z]'`
+     echo "ddutil$SUFFIX.a: \$(OBJECTS$UPPER_SUFFIX)
+-	ar -rcs ddutil$SUFFIX.a \$(OBJECTS$UPPER_SUFFIX)
++	\$(AR) -rcs ddutil$SUFFIX.a \$(OBJECTS$UPPER_SUFFIX)
+ 
+ " >> Makefile
+ 

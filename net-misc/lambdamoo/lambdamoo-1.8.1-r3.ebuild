@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="6"
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="networked mud that can be used for different types of collaborative software"
-HOMEPAGE="http://sourceforge.net/projects/lambdamoo/"
+HOMEPAGE="https://sourceforge.net/projects/lambdamoo/"
 SRC_URI="mirror://sourceforge/lambdamoo/LambdaMOO-${PV}.tar.gz"
 
 LICENSE="LambdaMOO GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~sparc ~x86"
 IUSE=""
 
 DEPEND="sys-devel/bison"

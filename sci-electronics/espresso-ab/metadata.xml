@@ -5,7 +5,4 @@
     <email>sci-electronics@gentoo.org</email>
     <name>Gentoo Electronics Project</name>
   </maintainer>
-  <longdescription>
-  POSIX compliant version of the espresso logic minimization tool.
-  </longdescription>
 </pkgmetadata>

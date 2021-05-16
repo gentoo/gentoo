@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>alunduil@gentoo.org</email>
-		<name>Alex Brandt</name>
+	<maintainer type="person" proxied="yes">
+		<email>andrewammerlaan@riseup.net</email>
+		<name>Andrew Ammerlaan</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">mkdocs-bootstrap</remote-id>
+		<remote-id type="github">mkdocs/mkdocs-bootstrap</remote-id>
+	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

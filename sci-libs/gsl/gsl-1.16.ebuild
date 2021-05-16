@@ -1,18 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic autotools toolchain-funcs
+inherit epatch flag-o-matic autotools toolchain-funcs
 
 DESCRIPTION="The GNU Scientific Library"
 HOMEPAGE="https://www.gnu.org/software/gsl/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~mgorny/dist/${P}-cblas.patch.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="cblas-external static-libs"
 
 RDEPEND="cblas-external? ( virtual/cblas )"
@@ -46,7 +46,7 @@ src_prepare() {
 		&& filter-mfpmath sse
 	filter-flags -ffast-math
 
-	epatch "${FILESDIR}"/${P}-cblas.patch
+	epatch "${WORKDIR}"/${P}-cblas.patch
 	eautoreconf
 
 	cp "${FILESDIR}"/eselect.cblas.gsl "${T}"/ || die

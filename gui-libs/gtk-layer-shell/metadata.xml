@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>np-hardass@gentoo.org</email>
+		<name>Adam Feldman</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">wmww/gtk-layer-shell</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,49 @@
+--- a/src/c-parser.c
++++ b/src/c-parser.c
+@@ -1668,6 +1668,7 @@
+ {
+     static ScmObj trigger_line = SCM_FALSE;
+     ScmObj line_str;
++    ScmObj regexp = Scm_RegComp(SCM_STRING(SCM_MAKE_STR_IMMUTABLE("^#\\s+\\d+\\s+\"<stdin>\"")), 0);
+ 
+     /* skip the first line '# 1 "<stdin>"' */
+     Scm_ReadLineUnsafe(SCM_PORT(in));
+@@ -1682,16 +1683,30 @@
+         }
+     }
+ 
+-    while (!SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))) {
+-        if (SCM_NULLP(macro_list)) {
++    line_str = SCM_NIL;
++    while (!SCM_NULLP(macro_list)) {
++        ScmObj body_str = line_str;
++        if (SCM_NULLP(body_str)
++            && SCM_EOFP(body_str = Scm_ReadLineUnsafe(SCM_PORT(in)))) {
+             Scm_Error("[bug] lost macro body");
+-        } else {
+-            ScmObj pos_name_args = SCM_CDAR(macro_list);
+-            macro_list = SCM_CDR(macro_list);
+-            Scm_FilenameSet(SCM_CAAR(pos_name_args));
+-            Scm_LineNumberSet(SCM_INT_VALUE(SCM_CDAR(pos_name_args)));
+-            parse_macro_body(SCM_CADR(pos_name_args), SCM_CDDR(pos_name_args), line_str);
+         }
++        while (!SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))
++#ifdef SCM_REGEXP_MULTI_LINE
++            && SCM_REGMATCHP(Scm_RegExec(SCM_REGEXP(regexp), SCM_STRING(line_str), SCM_UNDEFINED, SCM_UNDEFINED))) {
++#else
++            && SCM_REGMATCHP(Scm_RegExec(SCM_REGEXP(regexp), SCM_STRING(line_str)))) {
++#endif
++            if (SCM_EOFP(line_str = Scm_ReadLineUnsafe(SCM_PORT(in)))) {
++                Scm_Error("[bug] unexpected EOF while parsing macro body");
++            }
++            body_str = Scm_StringAppend2(SCM_STRING(body_str), SCM_STRING(line_str));
++            line_str = SCM_NIL;
++        }
++        ScmObj pos_name_args = SCM_CDAR(macro_list);
++        macro_list = SCM_CDR(macro_list);
++        Scm_FilenameSet(SCM_CAAR(pos_name_args));
++        Scm_LineNumberSet(SCM_INT_VALUE(SCM_CDAR(pos_name_args)));
++        parse_macro_body(SCM_CADR(pos_name_args), SCM_CDDR(pos_name_args), body_str);
+     }
+ 
+     SCM_RETURN(SCM_UNDEFINED);

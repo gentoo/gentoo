@@ -1,0 +1,41 @@
+--- a/extra/robin-hood-hashing/robin_hood.h
++++ b/extra/robin-hood-hashing/robin_hood.h
+@@ -42,6 +42,7 @@
+ #include <algorithm>
+ #include <cstdlib>
+ #include <cstring>
++#include <limits>
+ #include <functional>
+ #include <memory> // only to support hash of smart pointers
+ #include <stdexcept>
+--- a/include/my_alloc.h
++++ b/include/my_alloc.h
+@@ -32,6 +32,7 @@
+ 
+ #include <string.h>
+ 
++#include <cstdint>
+ #include <memory>
+ #include <new>
+ #include <type_traits>
+--- a/include/mysql/components/services/page_track_service.h
++++ b/include/mysql/components/services/page_track_service.h
+@@ -27,6 +27,7 @@
+ #include <mysql/components/service.h>
+ #include <functional>
+ 
++#include <stddef.h>
+ #include <stdint.h>
+ 
+ #ifdef __cplusplus
+--- a/sql-common/sql_string.cc
++++ b/sql-common/sql_string.cc
+@@ -23,6 +23,7 @@
+ #include "sql_string.h"
+ 
+ #include <algorithm>
++#include <limits>
+ 
+ #include "my_dbug.h"
+ #include "my_macros.h"
+ 

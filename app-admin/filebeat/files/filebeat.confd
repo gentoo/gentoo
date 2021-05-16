@@ -1,0 +1,15 @@
+# Run filebeat under this user/group
+#FILEBEAT_USER=""
+#FILEBEAT_GROUP=""
+
+# Configuration path
+#FILEBEAT_CONFIG=""
+
+# Path to data directory
+#FILEBEAT_DATADIR=""
+
+# Path to log directory
+#FILEBEAT_LOGDIR=""
+
+# Additional arguments passed to filebeat
+#FILEBEAT_OPTS=""

@@ -5,7 +5,9 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Wraps the dogpile.cache library
-	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="launchpad">oslo</remote-id>
+		<remote-id type="pypi">oslo.cache</remote-id>
+	</upstream>
 </pkgmetadata>

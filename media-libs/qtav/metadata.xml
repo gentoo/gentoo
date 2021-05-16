@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
+	<use>
+		<flag name="gui">Build a video player gui</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">wang-bin/QtAV</remote-id>
+	</upstream>
+</pkgmetadata>

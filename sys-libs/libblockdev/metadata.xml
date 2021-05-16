@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>polynomial-c@gentoo.org</email>
+    <name>Lars Wendler</name>
+  </maintainer>
+  <use>
+    <flag name="bcache">Enable block device cache support.</flag>
+    <flag name="cryptsetup">Enable <pkg>sys-fs/cryptsetup</pkg> support</flag>
+    <flag name="device-mapper">Enable support for device-mapper from <pkg>sys-fs/lvm2</pkg></flag>
+    <flag name="dmraid">Support for dmraid devices, also known as ATA-RAID, or Fake RAID.</flag>
+    <flag name="escrow">Support for building crypto plugin with escrow device support</flag>
+    <flag name="kbd">Enable kernel block device support.</flag>
+    <flag name="lvm">Enable support for Logical Volume Management via <pkg>sys-fs/lvm2</pkg>.</flag>
+    <flag name="tools">Build tools</flag>
+    <flag name="vdo">Enable Virtual Data Optimizer support.</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">storaged-project/libblockdev</remote-id>
+  </upstream>
+</pkgmetadata>

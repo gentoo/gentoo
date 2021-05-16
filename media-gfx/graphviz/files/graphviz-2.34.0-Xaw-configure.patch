@@ -1,5 +1,5 @@
---- configure.ac	2011-05-07 05:25:24.000000000 +0200
-+++ configure.ac	2011-06-24 13:24:49.000000000 +0200
+--- a/configure.ac
++++ b/configure.ac
 @@ -560,8 +560,8 @@
    use_xlib="Yes"
  #no x11.pc on centos4

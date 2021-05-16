@@ -5,7 +5,6 @@
 		<email>sci-mathematics@gentoo.org</email>
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
-	<longdescription>Geomview is an interactive geometry viewer and Object Oriented Graphics Library (OOGL).</longdescription>
 	<use>
 		<flag name="motionaveraging">Enable experimental motion averaging technique</flag>
 	</use>

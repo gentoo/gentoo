@@ -1,0 +1,67 @@
+From bcdf81cdcd7fe531e11cb1db55e63468b7d73d47 Mon Sep 17 00:00:00 2001
+From: Salvo 'LtWorf' Tomaselli <tiposchi@tiscali.it>
+Date: Sat, 26 Aug 2017 17:51:04 +0200
+Subject: [PATCH] Remove embedded browser with website
+
+---
+ relational_gui/about.py | 32 --------------------------------
+ 1 file changed, 32 deletions(-)
+
+diff --git a/relational_gui/about.py b/relational_gui/about.py
+index 4c03c99..55abfc9 100644
+--- a/relational_gui/about.py
++++ b/relational_gui/about.py
+@@ -18,12 +18,6 @@
+ 
+ from PyQt5 import QtCore, QtGui, QtWidgets
+ 
+-try:  # If QtWebKit is available, uses it
+-    from PyQt5 import QtWebKitWidgets
+-    webk = True
+-except:
+-    webk = False
+-
+ version = 0
+ 
+ 
+@@ -85,31 +79,7 @@ def setupUi(self, Dialog):
+         self.tab_2.setObjectName("tab_2")
+         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.tab_2)
+         self.verticalLayout_7.setObjectName("verticalLayout_7")
+-        if (webk):
+-            self.webView = QtWebKitWidgets.QWebView(self.tab_2)
+-            self.webView.setUrl(
+-                QtCore.QUrl("http://ltworf.github.io/relational/allowed_expressions.html"))
+-            self.webView.setObjectName("webView")
+-            self.verticalLayout_7.addWidget(self.webView)
+-        else:
+-            self.webLink = QtWidgets.QLabel(self.groupBox)
+-            self.webLink.setFont(font)
+-            self.webLink.setObjectName("lblLink")
+-            self.webLink.setText(QtWidgets.QApplication.translate(
+-                "Dialog", "<a href=\"http://ltworf.github.io/relational/\">Relational's website</a>", None,))
+-            self.webLink.setOpenExternalLinks(True)
+-            self.webLink.setTextFormat(QtCore.Qt.AutoText)
+-            self.webLink.setTextInteractionFlags(
+-                QtCore.Qt.LinksAccessibleByKeyboard |
+-                QtCore.Qt.LinksAccessibleByMouse |
+-                QtCore.Qt.TextBrowserInteraction |
+-                QtCore.Qt.TextSelectableByKeyboard |
+-                QtCore.Qt.TextSelectableByMouse
+-            )
+-
+-            self.verticalLayout_7.addWidget(self.webLink)
+ 
+-        self.tabWidget.addTab(self.tab_2, "")
+         self.verticalLayout_2.addWidget(self.tabWidget)
+         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
+         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+@@ -294,8 +264,6 @@ def retranslateUi(self, Dialog):
+                                                                "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">The GNU General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. But first, please read &lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;. </p></body></html>", None))
+         self.tabWidget.setTabText(self.tabWidget.indexOf(self.License), QtWidgets.QApplication.translate(
+             "Dialog", "License", None))
+-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QtWidgets.QApplication.translate(
+-            "Dialog", "Docs", None))
+ 
+ 
+ if __name__ == "__main__":

@@ -1,0 +1,20 @@
+At halt/killpower time, /usr may already be umounted, and wall
+lives in /usr. Avoid failing by using cat if needed.
+
+Index: apcupsd/platforms/apccontrol.in
+===================================================================
+--- apcupsd.orig/platforms/apccontrol.in
++++ apcupsd/platforms/apccontrol.in
+@@ -62,10 +62,10 @@ fi
+ 
+ case "$1" in
+     killpower)
+-	echo "Apccontrol doing: ${APCUPSD} --killpower on UPS ${2}" | ${WALL}
++	echo "Apccontrol doing: ${APCUPSD} --killpower on UPS ${2}" | (${WALL} 2>/dev/null || cat)
+ 	sleep 10
+ 	${APCUPSD} --killpower
+-	echo "Apccontrol has done: ${APCUPSD} --killpower on UPS ${2}" | ${WALL}
++	echo "Apccontrol has done: ${APCUPSD} --killpower on UPS ${2}" | (${WALL} 2>/dev/null || cat)
+     ;;
+     commfailure)
+ 	echo "Warning communications lost with UPS ${2}" | ${WALL}

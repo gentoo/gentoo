@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>gregkh@gentoo.org</email>
-	<name>Greg Kroah-Hartman</name>
-</maintainer>
-<maintainer type="person">
 	<email>chithanh@gentoo.org</email>
 	<name>Chí-Thanh Christopher Nguyễn</name>
 </maintainer>
@@ -18,6 +14,9 @@
 	<name>Gentoo Kernel Project</name>
 </maintainer>
 <use>
+	<flag name="initramfs">Create and install initramfs for early microcode loading in /boot (only AMD for now)</flag>
+	<flag name="redistributable">Install also non-free (but redistributable) firmware files</flag>
 	<flag name="savedconfig">Allows individual selection of firmware files</flag>
+	<flag name="unknown-license">Install firmware files whose license is unknown</flag>
 </use>
 </pkgmetadata>

@@ -1,0 +1,19 @@
+diff -ur sawfish_1.12.0.orig/data/sawfish-config.desktop sawfish_1.12.0/data/sawfish-config.desktop
+--- sawfish_1.12.0.orig/data/sawfish-config.desktop	2016-08-13 11:26:23.000000000 +0300
++++ sawfish_1.12.0/data/sawfish-config.desktop	2016-08-13 12:02:33.283152716 +0300
+@@ -3,4 +3,4 @@
+ Name=Sawfish Config
+ Exec=sawfish-config
+ GenericName=Sawfish Config
+-Categories=Utility;Applet;
++Categories=Settings;DesktopSettings;
+diff -ur sawfish_1.12.0.orig/data/sawfish.desktop sawfish_1.12.0/data/sawfish.desktop
+--- sawfish_1.12.0.orig/data/sawfish.desktop	2016-08-13 11:26:23.000000000 +0300
++++ sawfish_1.12.0/data/sawfish.desktop	2016-08-13 12:02:31.790154154 +0300
+@@ -4,5 +4,5 @@
+ Name[el]=Πριονόψαρο (Sawfish)
+ Exec=sawfish
+ GenericName=Sawfish
+-Categories=Utility;DesktopUtility;
++Categories=System;
+ Keywords=Window Manager

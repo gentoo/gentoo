@@ -1,0 +1,56 @@
+Subject: [PATCH] debian/use-system-libs
+
+Path to build irrlicht using the system libraries for png,zlib and
+jpeg as well as the glext family of header files.
+
+Signed-off-by: Christoph Egger <debian@christoph-egger.org
+
+--- a/lib/irrlicht/source/Irrlicht/COpenGLExtensionHandler.h
++++ b/lib/irrlicht/source/Irrlicht/COpenGLExtensionHandler.h
+@@ -21,7 +21,7 @@
+ 	#endif
+ 	#include <GL/gl.h>
+ 	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+-		#include "glext.h"
++		#include <GL/glext.h>
+ 	#endif
+ 	#include "wglext.h"
+ 
+@@ -36,7 +36,7 @@
+ 	#endif
+ 	#include <OpenGL/gl.h>
+ 	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+-		#include "glext.h"
++		#include <GL/glext.h>
+ 	#endif
+ #elif defined(_IRR_COMPILE_WITH_SDL_DEVICE_) && !defined(_IRR_COMPILE_WITH_X11_DEVICE_)
+ 	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+@@ -50,7 +50,7 @@
+ 	#include <SDL/SDL_video.h>
+ 	#include <SDL/SDL_opengl.h>
+         typedef void (APIENTRYP PFNGLBLENDEQUATIONPROC) (GLenum mode);
+-	#include "glext.h"
++	#include <GL/glext.h>
+ #else
+ 	#if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+ 		#define GL_GLEXT_LEGACY 1
+--- a/lib/irrlicht/source/Irrlicht/COpenGLSLMaterialRenderer.h
++++ b/lib/irrlicht/source/Irrlicht/COpenGLSLMaterialRenderer.h
+@@ -12,7 +12,7 @@
+ 	#define WIN32_LEAN_AND_MEAN
+ 	#include <windows.h>
+ 	#include <GL/gl.h>
+-	#include "glext.h"
++	#include <GL/glext.h>
+ #else
+ #if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+ 	#define GL_GLEXT_LEGACY 1
+@@ -25,7 +25,7 @@
+ 	#include <GL/gl.h>
+ #endif
+ #if defined(_IRR_OPENGL_USE_EXTPOINTER_)
+-	#include "glext.h"
++	#include <GL/glext.h>
+ #endif
+ #endif
+ 

@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/726130
+
+From bd66ce3ba4a9d1d1490cb5775a2fdd0b408879b6 Mon Sep 17 00:00:00 2001
+From: Marvin Schmidt <marv@exherbo.org>
+Date: Fri, 27 May 2016 15:13:56 +0200
+Subject: [PATCH util/macros] XORG_PROG_RAWCPP: Use AC_PATH_TOOL to find
+ preprocessor
+
+On some distributions tools like cpp are prefixed with the host-triple,
+to check for this prefixed version first AC_PATH_TOOL should be used. If
+no prefixed cpp, it will fallback to the unprefixed name.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=96257
+
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+---
+ xorg-macros.m4.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/xorg-macros.m4.in
++++ b/xorg-macros.m4.in
+@@ -57,7 +57,7 @@ m4_undefine([maj_needed])
+ # such as man pages and config files
+ AC_DEFUN([XORG_PROG_RAWCPP],[
+ AC_REQUIRE([AC_PROG_CPP])
+-AC_PATH_PROGS(RAWCPP, [cpp], [${CPP}],
++AC_PATH_TOOL(RAWCPP, [cpp], [${CPP}],
+    [$PATH:/bin:/usr/bin:/usr/lib:/usr/libexec:/usr/ccs/lib:/usr/ccs/lbin:/lib])
+ 
+ # Check for flag to avoid builtin definitions - assumes unix is predefined,
+-- 
+2.27.0
+

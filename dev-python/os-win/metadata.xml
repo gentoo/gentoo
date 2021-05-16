@@ -5,7 +5,9 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Windows / Hyper-V library for OpenStack projects.
-	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">openstack/os-win</remote-id>
+		<remote-id type="pypi">os-win</remote-id>
+	</upstream>
 </pkgmetadata>

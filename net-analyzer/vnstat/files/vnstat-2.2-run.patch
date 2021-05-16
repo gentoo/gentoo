@@ -1,0 +1,11 @@
+--- a/src/common.h
++++ b/src/common.h
+@@ -229,7 +229,7 @@
+ #define CREATEDIRS 1
+ #define UPDATEFILEOWNER 1
+ #define LOGFILE "/var/log/vnstat/vnstat.log"
+-#define PIDFILE "/var/run/vnstat/vnstat.pid"
++#define PIDFILE "/run/vnstat/vnstat.pid"
+ #define IS64BIT -2
+ 
+ /* no transparency by default */

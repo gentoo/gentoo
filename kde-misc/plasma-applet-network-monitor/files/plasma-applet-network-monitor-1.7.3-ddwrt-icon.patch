@@ -1,0 +1,22 @@
+From 70481c09ac1434ea1e72d89faeb5d9194463de4e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tomasz=20Przyby=C5=82?= <fademind@gmail.com>
+Date: Mon, 18 Apr 2016 20:55:22 +0200
+Subject: [PATCH] fix dd-wrt icon visible against qt5.6 changes
+
+---
+ package/contents/config/config.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/contents/config/config.qml b/package/contents/config/config.qml
+index 5ebb5e6..b9e286a 100644
+--- a/package/contents/config/config.qml
++++ b/package/contents/config/config.qml
+@@ -19,7 +19,7 @@ ConfigModel {
+     }
+     ConfigCategory {
+          name: i18n('DD-WRT')
+-         icon: Qt.resolvedUrl('../images/dd-wrt.png')
++         icon: Qt.resolvedUrl('../images/dd-wrt.png').replace('file://', '')
+          source: 'config/ConfigDDWRT.qml'
+     }
+ }

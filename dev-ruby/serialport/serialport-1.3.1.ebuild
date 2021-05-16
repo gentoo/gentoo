@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -17,7 +16,7 @@ HOMEPAGE="http://rubyforge.org/projects/ruby-serialport/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 all_ruby_prepare() {
@@ -43,7 +42,5 @@ each_ruby_compile() {
 all_ruby_install() {
 	all_fakegem_install
 
-	# don't compress it
-	insinto /usr/share/doc/${PF}/examples
-	doins test/miniterm.rb
+	dodoc test/miniterm.rb
 }

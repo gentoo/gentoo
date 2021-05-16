@@ -1,0 +1,108 @@
+--- a/compute.c
++++ b/compute.c
+@@ -210,7 +210,7 @@
+ 
+   Current_atom = atom_id;
+ 
+-  if (!compute_neighbors(atom_id, &num_constraints)) return;
++  if (!compute_neighbors(atom_id, &num_constraints)) return -1;
+ 
+   compute_planes(atom_id, num_constraints,constraints);
+ 
+@@ -597,7 +597,7 @@
+   */
+   if (all_verts_in_sphere(rvertices, rvertices_count, sq_radius)) 
+   { /* printf("atom_id %d all_in = TRUE \n", atom_id); */
+-    return;
++    return -1;
+   }
+ 
+   for(i = 0; i < rfaces_count; i++)	       /* for each face    */
+@@ -647,7 +647,7 @@
+   if (DOTPROD3(diff, diff) < 1e-10)
+   /* atom center lies in the feasible region, and so can be also
+      taken to be the tes_origin - no more computations required */
+-    return;
++    return -1;
+ 
+   /* try computing the tes_origin as the average of all int_pts */
+   VEC3_ZERO(temp_origin); count = 0;
+--- a/tessel_concave.c
++++ b/tessel_concave.c
+@@ -178,7 +178,7 @@
+   if ((sq_side_len[0] < EPS) && 
+       (sq_side_len[1] < EPS) && 
+       (sq_side_len[2] < EPS)) 
+-  { return;
++  { return -1;
+   }
+ 
+   /* evaluate which side of the plane the points lie wrt the probe center */
+@@ -195,14 +195,14 @@
+   max_len = FMAX((FMAX(sq_side_len[0], sq_side_len[1])), sq_side_len[2]);
+   max_side = (max_len==sq_side_len[0])?0:((max_len==sq_side_len[1])? 1 : 2);
+ 
+-  if (num_fine_points == 0) return;      /* all points are on the wrong side */
++  if (num_fine_points == 0) return -1;      /* all points are on the wrong side */
+ 
+   if (max_len <= Max_Tess_Len_Sq)
+   { /* sufficiently small so display but first check to see whether it
+        intersects the plane or not and if so, clip it accordingly */
+     if (num_fine_points == 3)
+     { gen_tris(points[0], points[1], points[2]);
+-      return;
++      return -1;
+     }
+     else if (num_fine_points == 1) /* two points are on the wrong side */
+       i = (itemp[0] == 1)? 0 : ((itemp[1] == 1)? 1: 2);
+@@ -305,7 +305,7 @@
+       (sq_side_len[1] < EPS) && 
+       (sq_side_len[2] < EPS)) 
+   { 
+-    return;
++    return -1;
+   }
+ 
+   if (max_len > Max_Tess_Len_Sq)
+--- a/tessel_convex.c
++++ b/tessel_convex.c
+@@ -74,7 +74,7 @@
+      atoms[atom_id].center[Y], atoms[atom_id].center[Z], atoms[atom_id].radius);
+     fflush(stderr);
+     free(sph_side);
+-    return;
++    return -1;
+   }
+ 
+   
+--- a/tessel_torus.c
++++ b/tessel_torus.c
+@@ -191,7 +191,7 @@
+ 
+   if (j > n)
+   { printf("gen_torus(): Too many torus verts %d (limit %d)\n",j, n);
+-    return ;
++    return -1;
+   }
+   old_j = j;
+ 
+@@ -202,7 +202,7 @@
+     gen_linear_recurse(tor_pts[0][i],tor_pts[1][i],r[k],&j,fcenter,fradius,0);
+     if (j > n)
+     { printf("gen_torus(): Too many torus verts %d (limit %d)\n",j, n);
+-      return ;
++      return -1;
+     }
+ 
+     for(m = 0; m < j-1; m++)
+--- a/utils.c
++++ b/utils.c
+@@ -91,7 +91,7 @@
+   disc = radius*radius - DOTPROD3(EO, EO);
+   if (FP_EQ_EPS(disc, 0, GP_EPS*GP_EPS))
+   { VEC3_ASN_OP(int_point, =, ray_pt);
+-    return;
++    return -1;
+   }
+ 
+   one_by_sq_dir_mag = 1.0/DOTPROD3(ray_dir, ray_dir);

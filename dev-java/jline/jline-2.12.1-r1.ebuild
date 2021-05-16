@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,12 +9,13 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A Java library for handling console input"
 HOMEPAGE="https://github.com/jline/jline2"
-SRC_URI="https://github.com/jline/${PN}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/jline/${PN}2/archive/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-java/jansi:0

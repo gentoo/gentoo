@@ -1,0 +1,41 @@
+commit fd604b269398aebdb0c5fa5511d9f3c38b6ecb45 (HEAD, origin/upgrade-ppxlib-0.18.0)
+Author: Nathan Rebours <nathan.p.rebours@gmail.com>
+Date:   Mon Oct 5 18:04:41 2020 +0200
+
+    Make ppx_sexp_message compatible with ppxlib.0.18.0
+    
+    ppxlib.0.18.0 upgrades to the 4.11 AST which results in a change
+    in string constants representation. This PR makes ppx_sexp_message
+    compatible with the latest ppxlib.
+    
+    You might want for the actual release of ppxlib.0.18.0 before merging
+    this!
+    
+    Signed-off-by: Nathan Rebours <nathan.p.rebours@gmail.com>
+
+diff --git a/expander/ppx_sexp_message_expander.ml b/expander/ppx_sexp_message_expander.ml
+index e0c2477..c801cd7 100644
+--- a/expander/ppx_sexp_message_expander.ml
++++ b/expander/ppx_sexp_message_expander.ml
+@@ -97,7 +97,7 @@ let sexp_of_expr ~omit_nil e =
+   let e = rewrite_here e in
+   let loc = { e.pexp_loc with loc_ghost = true } in
+   match e.pexp_desc with
+-  | Pexp_constant (Pconst_string ("", _)) -> Absent
++  | Pexp_constant (Pconst_string ("", _, _)) -> Absent
+   | Pexp_constant const ->
+     present_or_omit_nil ~loc ~omit_nil:false (sexp_of_constant ~loc const)
+   | Pexp_constraint (expr, ctyp) -> sexp_of_constraint ~omit_nil ~loc expr ctyp
+diff --git a/ppx_sexp_message.opam b/ppx_sexp_message.opam
+index d8a6d95..3d6ef41 100644
+--- a/ppx_sexp_message.opam
++++ b/ppx_sexp_message.opam
+@@ -16,7 +16,7 @@ depends: [
+   "ppx_here"      {>= "v0.14" & < "v0.15"}
+   "ppx_sexp_conv" {>= "v0.14" & < "v0.15"}
+   "dune"          {>= "2.0.0"}
+-  "ppxlib"        {>= "0.11.0"}
++  "ppxlib"        {>= "0.18.0"}
+ ]
+ synopsis: "A ppx rewriter for easy construction of s-expressions"
+ description: "

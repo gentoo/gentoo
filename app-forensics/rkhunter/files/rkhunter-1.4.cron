@@ -1,0 +1,134 @@
+#!/bin/bash
+# original author: Aaron Walker <ka0ttic@gentoo.org>
+
+########################## Begin Configuration ###############################
+
+# Default options - more options may be added depending on the
+# configuration variables you set below
+# --cronjob implies -c, --nocolor, --sk
+RKHUNTER_OPTS="--cronjob --summary"
+
+# Set this to 'yes' to enable ; this script does nothing otherwise
+ENABLE=no
+
+# Automatically update rkhunter's dat files prior to running?
+UPDATE=no
+
+# Set this to 'yes' if you wish the output to be mailed to you
+SEND_EMAIL=no
+
+# NOTE: the following EMAIL_* variables are only relevant if you set the
+# SEND_EMAIL variable to 'yes'
+EMAIL_SUBJECT="${HOSTNAME}: rkhunter output"
+EMAIL_RECIPIENT=root
+EMAIL_CMD="|mail -s \"${EMAIL_SUBJECT}\" ${EMAIL_RECIPIENT}"
+
+# Log rkhunter output?
+LOG=no
+
+# The default log location is /var/log/rkhunter.log. Set this variable if
+# you'd like to use an alternate location.
+#LOGFILE=""
+
+# By default, the log file created by rkhunter is world-readable (0644). If
+# you'd like to modify the permissions afterwards, set this variable.  The 
+# value of this variable, must be a valid chmod argument such as '0600' or 
+# 'u+rw,go-rwx'.  See the chmod(1) manual page for more information.
+#LOGFILE_PERMS="0600"
+
+# By default, rkhunter overwrites the previous log.  Set this variable
+# to 'yes' if you'd like the log output appended to the logfile, instead
+# of overwriting it.
+SAVE_OLD_LOGS=no
+
+# Set to 1 to recieve only warnings & errors
+# Set to 2 to recieve ALL rkhunter output
+# Set to 3 to recieve rkhunter report
+VERBOSITY=3
+
+########################### End Configuration ################################
+
+# exit immediately, unless enabled
+[[ "${ENABLE}" == "yes" ]] || exit 0
+
+# debug mode?  (mainly for my benefit)
+if [[ -n "${1}" ]] && [[ ${1} = "-d" ]] ; then
+        set -o verbose -o xtrace
+fi
+
+[[ -z "${LOGFILE}" ]] && LOGFILE="/var/log/rkhunter.log"
+
+# moved this out of config section since it'll
+# probably never need to be changed
+RKHUNTER_EXEC="/usr/sbin/rkhunter"
+
+# sanity check
+if [[ ! -x "${RKHUNTER_EXEC}" ]] ; then
+        echo "${RKHUNTER_EXEC} does not exist or is not executable!"
+        exit 1
+fi
+
+# we create a few tmp files, so let's at least make
+# them readable/writable by root only
+umask 0077
+
+# all output goes to this temp file
+_tmpout=$(mktemp /tmp/rkhunter.cron.XXXXXX)
+exec > ${_tmpout} 2>&1
+
+# update data files
+if [[ "${UPDATE}" == "yes" ]] ; then
+        # save the output of --update in a tmp file so that it can be mailed
+        # along with the scan output; otherwise the user will get 2 mails
+        #${RKHUNTER_EXEC} --nocolor --update
+        echo "In Gentoo, update option is disabled due to CVE-2017-7480."
+fi
+
+# formulate options string according to user configuration
+[[ "${LOG}" == "yes" ]] && \
+    RKHUNTER_OPTS="${RKHUNTER_OPTS} --createlogfile ${LOGFILE}"
+
+case "${VERBOSITY}" in
+        # warnings and errors only
+        1)      RKHUNTER_OPTS="${RKHUNTER_OPTS} --quiet" ;;
+        # default rkhunter output (no extra options)
+#       2)      ;;
+        # default to option 3
+        *)      ;;
+esac
+
+# save old log
+if [[ "${LOG}" == "yes" && "${SAVE_OLD_LOGS}" == "yes" ]] ; then
+        if [[ -e "${LOGFILE}" ]] ; then
+                _tmpfile=$(mktemp ${LOGFILE}.XXXXXX)
+                mv -f ${LOGFILE} ${_tmpfile}
+                echo -e "--\nrkhunter.cron commencing at: $(date)\n--" >> ${_tmpfile}
+        fi
+fi
+
+# finally, run rkhunter
+CMD="${RKHUNTER_EXEC} ${RKHUNTER_OPTS}"
+eval ${CMD}
+RV=$?
+
+# email output?
+if [[ "${SEND_EMAIL}" == "yes" ]] ; then
+        CMD="cat ${_tmpout} ${EMAIL_CMD}"
+        eval ${CMD}
+fi
+
+# remove temp file
+[[ -n "${_tmpout}" ]] && rm -f ${_tmpout}
+
+[[ "${LOG}" != "yes" ]] && exit ${RV}
+
+# from this point on, we can assume logging is enabled
+
+# append new log to old log and restore
+if [[ -n "${_tmpfile}" ]] ; then
+        cat ${LOGFILE} >> ${_tmpfile}
+        mv ${_tmpfile} ${LOGFILE}
+fi
+
+chmod ${LOGFILE_PERMS:-0644} ${LOGFILE}
+exit ${RV}

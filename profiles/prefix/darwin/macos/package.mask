@@ -1,13 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
-# Recent Oracle releases only support recent Mac OS releases. We can't
-# keep old versions due to vulnerabilities.
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
-
-# Fabian Groffen <grobian@gentoo.org> (29 Sep 2012)
-# Use Apple's provided Java6 instead!
-dev-java/soylatte-jdk-bin
+# Fabian Groffen <grobian@gentoo.org> (2021-01-10)
+# fails to compile on regex and nonull definitions in
+# gnulib/malloc/dynarray-skeleton.c
+=net-misc/wget-1.21.1
+=sys-apps/findutils-4.8.0

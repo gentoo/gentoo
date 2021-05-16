@@ -1,0 +1,81 @@
+From 7a22a7fb85804c834c4597adca4a69dd5a82ffa4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 4 Apr 2021 17:01:12 +0200
+Subject: [PATCH] Make Qt5WebEngine optional
+
+Qt5WebEngine is a very big package and not easily available on every
+architecture. It should be optional at least when easily possible.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt           | 9 ++++++++-
+ plugins/CMakeLists.txt   | 4 +++-
+ providers/CMakeLists.txt | 9 +++++----
+ services/CMakeLists.txt  | 9 +++++----
+ 4 files changed, 21 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c7207b..906893e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,10 +16,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules" ${ECM_MODULE_PATH})
+ 
++include(FeatureSummary)
++
+ find_package(Intltool REQUIRED)
+ find_package(KAccounts REQUIRED)
+ 
+-find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Core Qml WebEngine)
++find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Core Qml)
++find_package(Qt5WebEngine ${QT_REQUIRED_VERSION} CONFIG)
++set_package_properties(Qt5WebEngine
++        PROPERTIES TYPE OPTIONAL
++        PURPOSE "Required for Nextcloud Accounts plugin"
++        )
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED KIO I18n Declarative Package)
+ 
+ include(KDEInstallDirs)
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 3ea1817..f87b8f6 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -1,2 +1,4 @@
+ add_subdirectory(owncloud-ui)
+-add_subdirectory(nextcloud-ui)
+\ No newline at end of file
++if(Qt5WebEngine_FOUND)
++    add_subdirectory(nextcloud-ui)
++endif()
+diff --git a/providers/CMakeLists.txt b/providers/CMakeLists.txt
+index 987fb6e..cff3420 100644
+--- a/providers/CMakeLists.txt
++++ b/providers/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-file(GLOB provider_in_files *.provider.in)
+-foreach(provider_in_file ${provider_in_files})
+-    kaccounts_add_provider(${provider_in_file})
+-endforeach()
++kaccounts_add_provider(google.provider.in)
++kaccounts_add_provider(owncloud.provider.in)
++if(Qt5WebEngine_FOUND)
++    kaccounts_add_provider(nextcloud.provider.in)
++endif()
+diff --git a/services/CMakeLists.txt b/services/CMakeLists.txt
+index 93e14fc..cc58f91 100644
+--- a/services/CMakeLists.txt
++++ b/services/CMakeLists.txt
+@@ -1,4 +1,5 @@
+-file(GLOB service_files_in *.service.in)
+-foreach(service_file_in ${service_files_in})
+-    kaccounts_add_service(${service_file_in})
+-endforeach()
++kaccounts_add_service(owncloud-storage.service.in)
++if(Qt5WebEngine_FOUND)
++    kaccounts_add_service(nextcloud-contacts.service.in)
++    kaccounts_add_service(nextcloud-storage.service.in)
++endif()
+-- 
+2.31.1
+

@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -58,7 +57,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar target/${P}.jar ${PN}.jar
-	dodoc NOTICE.txt README.txt RELEASE-NOTES.txt || die
+	dodoc NOTICE.txt README.txt RELEASE-NOTES.txt
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/java/*
 }

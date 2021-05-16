@@ -1,6 +1,5 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ AMD64_VID="77370"
 X86_PID="414707558"
 X86_VID="77371"
 
-DESCRIPTION="HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)"
+DESCRIPTION="HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)"
 HOMEPAGE="http://h18000.www1.hp.com/products/servers/linux/documentation.html"
 SRC_URI="
 	amd64? ( ${SRC_URI_BASE}/p${AMD64_PID}/v${AMD64_VID}/${PN}-${MY_PV}.x86_64.rpm )

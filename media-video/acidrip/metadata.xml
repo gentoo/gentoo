@@ -5,6 +5,6 @@
 		<email>media-video@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">.tar.gz</remote-id>
+		<remote-id type="sourceforge">acidrip</remote-id>
 	</upstream>
 </pkgmetadata>

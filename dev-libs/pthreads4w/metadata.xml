@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		Also known as "pthreads-win32", POSIX Threads for Windows implements a large
+		subset of the threads related API from the Single Unix Specification Version 3.
+	</longdescription>
+</pkgmetadata>

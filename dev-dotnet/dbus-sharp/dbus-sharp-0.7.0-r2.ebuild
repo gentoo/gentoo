@@ -1,17 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit autotools mono-env eutils
+inherit autotools mono-env epatch
 
 DESCRIPTION="D-Bus for .NET"
 HOMEPAGE="https://github.com/mono/dbus-sharp"
-SRC_URI="mirror://github/mono/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/mono/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-lang/mono

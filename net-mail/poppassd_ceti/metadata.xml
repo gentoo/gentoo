@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>net-mail@gentoo.org</email>
-    <name>Net-Mail</name>
+  <maintainer type="person" proxied="yes">
+    <email>mmogilvi+gnto@zoho.com</email>
+    <name>Matthew Ogilvie</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
     Provides a daemon for changing passwords over the network. This feature

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -15,10 +14,10 @@ if [ "${PV}" != "9999" ]; then
 		amd64? ( ${MY_URL}/${MY_PKG/i386/amd64} )"
 	KEYWORDS="-* ~amd64 ~x86"
 else
-	inherit cvs #hack to make it part of @live-rebuild
 	MY_URL="https://dl.google.com/linux/direct"
 	MY_PKG="${PN}_current_i386.deb"
 	SRC_URI=""
+	PROPERTIES="live"
 fi
 
 DESCRIPTION="Video chat browser plug-in for Google Talk"
@@ -31,7 +30,7 @@ SLOT="0"
 LICENSE="Google-TOS openssl BSD"
 
 OBSOLETE="no"
-[[ $OBSOLETE = yes ]] && RESTRICT="fetch strip" || RESTRICT="strip mirror"
+[[ $OBSOLETE = yes ]] && RESTRICT="bindist fetch strip" || RESTRICT="bindist strip mirror"
 
 RDEPEND="|| ( media-sound/pulseaudio media-libs/alsa-lib )
 	dev-libs/expat
@@ -63,10 +62,6 @@ LANGS="ar cs en et fr hu lt ms pl ru sv tl vi bg da fa gu id ja lv nl
 sk ta tr bn de es fi hi is kn ml no sl te uk ca el fil hr it ko mr or
 ro sr th ur"
 
-for X in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${X}"
-done
-
 # nofetch means upstream bumped and thus needs version bump
 pkg_nofetch() {
 	if [[ ${OBSOLETE} = yes ]]; then
@@ -75,7 +70,7 @@ pkg_nofetch() {
 		elog "with ${PV}+. If you can get the distfile from e.g. another computer of yours, or search"
 		use amd64 && MY_PKG="${MY_PKG/i386/amd64}"
 		elog "it with google: https://www.google.com/search?q=intitle:%22index+of%22+${MY_PKG}"
-		elog "and copy the file ${MY_PKG} to ${DISTDIR}."
+		elog "and copy ${MY_PKG} to your DISTDIR directory."
 	else
 		einfo "This version is no longer available from Google."
 		einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."

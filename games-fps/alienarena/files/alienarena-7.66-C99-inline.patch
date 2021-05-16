@@ -1,0 +1,25 @@
+From: Markus Koschany <apo@debian.org>
+Date: Fri, 18 Aug 2017 23:24:22 +0200
+Subject: gcc7
+
+Fix FTBFS with GCC 7.
+
+Bug-Debian: https://bugs.debian.org/871218
+Forwarded: no
+---
+ source/ref_gl/r_iqm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/ref_gl/r_iqm.c b/source/ref_gl/r_iqm.c
+index ba5d178..cb3d2da 100644
+--- a/source/ref_gl/r_iqm.c
++++ b/source/ref_gl/r_iqm.c
+@@ -1263,7 +1263,7 @@ void IQM_Vlight (vec3_t baselight, mnormal_t *normal, vec3_t angles, vec3_t ligh
+ void R_Mesh_SetupShell (int shell_skinnum, qboolean ragdoll, qboolean using_varray, vec3_t lightcolor);
+ void R_Mesh_SetupGLSL (int skinnum, rscript_t *rs, vec3_t lightcolor);
+ 
+-inline void IQM_DrawVBO (qboolean tangents)
++void IQM_DrawVBO (qboolean tangents)
+ {
+ 	qglEnableClientState( GL_VERTEX_ARRAY );
+ 	GL_BindVBO(vbo_xyz);

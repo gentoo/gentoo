@@ -1,0 +1,32 @@
+https://gitlab.gnome.org/GNOME/libxml2/merge_requests/14
+
+From 54878c018af979b20ca1bfbf12599973484cae5b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 3 Jan 2019 05:44:03 -0500
+Subject: [PATCH] fix reader5.py test when building out of tree
+
+When building out of tree, the relative path this test uses doesn't
+work.  Resolve the path relative to the test script itself instead.
+
+Url: https://bugs.gentoo.org/565576
+--- a/python/tests/reader5.py
++++ b/python/tests/reader5.py
+@@ -4,6 +4,7 @@
+ # this extract the Dragon bibliography entries from the XML specification
+ #
+ import libxml2
++import os
+ import sys
+ 
+ # Memory debug specific
+@@ -14,7 +15,8 @@ Ravi Sethi, and Jeffrey D. Ullman.
+ <emph>Compilers:  Principles, Techniques, and Tools</emph>.
+ Reading:  Addison-Wesley, 1986, rpt. corr. 1988.</bibl>"""
+ 
+-f = open('../../test/valid/REC-xml-19980210.xml', 'rb')
++basedir = os.path.dirname(os.path.realpath(__file__))
++f = open(os.path.join(basedir, '../../test/valid/REC-xml-19980210.xml'), 'rb')
+ input = libxml2.inputBuffer(f)
+ reader = input.newTextReader("REC")
+ res=""
+-- 

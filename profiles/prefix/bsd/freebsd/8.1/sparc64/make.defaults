@@ -1,9 +1,0 @@
-# Copyright 1999-2010 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# retain backwards compatability for freebsd keywords/conditionals
-ARCH="sparc64-fbsd"
-CHOST="sparc64-unknown-freebsd8.1"
-ACCEPT_KEYWORDS="~sparc64-freebsd"
-

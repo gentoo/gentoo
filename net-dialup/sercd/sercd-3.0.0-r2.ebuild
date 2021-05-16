@@ -1,13 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="RFC2217-compliant serial port redirector"
-HOMEPAGE="http://sourceforge.net/projects/sercd"
+HOMEPAGE="https://sourceforge.net/projects/sercd"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -24,7 +21,7 @@ src_prepare() {
 	eapply_user
 }
 
-src_install () {
+src_install() {
 	default
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"

@@ -1,6 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit font
 
@@ -12,8 +13,6 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="MagentaMgOpen"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 FONT_S=${S}
-
 FONT_SUFFIX="ttf"

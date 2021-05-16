@@ -5,6 +5,9 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
 	<longdescription lang="en">
 Pyocr is an optical character recognition (OCR) tool wrapper for python. That is, it helps using OCR tools from a Python program.
 
@@ -17,6 +20,6 @@ Pyocr can be used as a wrapper for google's Tesseract-OCR or Cuneiform. It can r
 		<flag name="tesseract">Enable support for the <pkg>app-text/tesseract</pkg> OCR engine</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">jflesch/pyocr</remote-id>
+		<remote-id type="pypi">pyocr</remote-id>
 	</upstream>
 </pkgmetadata>

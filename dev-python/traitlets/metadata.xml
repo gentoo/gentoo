@@ -5,11 +5,16 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
   <longdescription>
     A lightweight pure-Python derivative of Enthought Traits,
     used for configuring Python objects. This package powers
     the config system of IPython and Jupyter.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">traitlets</remote-id>
     <remote-id type="github">ipython/traitlets</remote-id>

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,8 +10,8 @@ inherit java-pkg-2 java-ant-2
 
 MY_P="${PN}-mop-${PV}"
 
-DESCRIPTION="Library for implementation of interoperable metaobject protocols for dynamic languages"
-HOMEPAGE="http://sourceforge.net/projects/dynalang/"
+DESCRIPTION="Library of interoperable metaobject protocols for dynamic languages"
+HOMEPAGE="https://sourceforge.net/projects/dynalang/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}.tgz"
 
 LICENSE="Apache-2.0"
@@ -20,6 +19,7 @@ SLOT="0"
 KEYWORDS="amd64"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6

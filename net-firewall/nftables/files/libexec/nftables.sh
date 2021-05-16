@@ -25,9 +25,10 @@ main() {
             retval=$?
         ;;
         "store")
+            umask 177
             local tmp_save="${NFTABLES_SAVE}.tmp"
             if ! use_legacy; then
-                nft list ruleset > ${tmp_save}
+                nft ${SAVE_OPTIONS} list ruleset > ${tmp_save}
             else
                 save_legacy ${tmp_save}
             fi
@@ -100,7 +101,7 @@ use_legacy() {
     major_ver=$(uname -r | cut -d '.' -f1)
     minor_ver=$(uname -r | cut -d '.' -f2)
 
-    [[ $major_ver -ge 4 || $major_ver -eq 3 && $minor_ver -ge 18 ]] && return 1
+    [ $major_ver -ge 4 -o $major_ver -eq 3 -a $minor_ver -ge 18 ] && return 1
     return 0
 }
 
@@ -147,4 +148,3 @@ deletetable() {
 }
 
 main "$@"
-exit $?

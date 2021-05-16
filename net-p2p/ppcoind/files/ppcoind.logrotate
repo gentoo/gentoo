@@ -1,7 +1,0 @@
-/var/lib/ppcoin/.ppcoin/debug.log {
-	weekly
-	sharedscripts
-	postrotate
-		killall -HUP ppcoind
-	endscript
-}

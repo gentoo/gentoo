@@ -1,0 +1,8 @@
+diff --git a/src/xlstool.c b/src/xlstool.c
+index 54eab0e..ef1c7e9 100644
+--- a/src/xlstool.c
++++ b/src/xlstool.c
+@@ -32,2 +32,3 @@
+ 
++#define _GNU_SOURCE /* asprintf */
+ #include "config.h"

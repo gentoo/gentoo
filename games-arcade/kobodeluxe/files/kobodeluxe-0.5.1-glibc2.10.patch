@@ -1,5 +1,5 @@
---- graphics/window.cpp
-+++ graphics/window.cpp
+--- a/graphics/window.cpp
++++ b/graphics/window.cpp
 @@ -398,7 +398,7 @@
  		 */
  		if(token)

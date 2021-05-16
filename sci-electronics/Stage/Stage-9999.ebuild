@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,7 +12,6 @@ fi
 inherit ${SCM} cmake-utils
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
@@ -23,13 +21,14 @@ fi
 DESCRIPTION="The Stage Robot Simulator"
 HOMEPAGE="http://rtv.github.io/Stage/"
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/4.3"
 IUSE=""
 
 RDEPEND="
 	dev-libs/libltdl:0
 	virtual/jpeg:0
 	media-libs/libpng:0=
+	sys-libs/zlib:0=
 	x11-libs/fltk[opengl]
 	virtual/glu
 	virtual/opengl

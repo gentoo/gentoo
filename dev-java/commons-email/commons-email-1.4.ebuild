@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="source doc test"
@@ -48,7 +47,7 @@ src_test() {
 
 src_install() {
 	java-pkg_newjar "target/${P}.jar" "${PN}.jar"
-	dodoc {NOTICE,README,RELEASE-NOTES}.txt || die
+	dodoc {NOTICE,README,RELEASE-NOTES}.txt
 	use doc && java-pkg_dojavadoc target/site/apidocs
 	use source && java-pkg_dosrc src/main/java
 }

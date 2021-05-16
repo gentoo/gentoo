@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-# ruby22 -> not compatible since Config is removed
-USE_RUBY="ruby20 ruby21"
+
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="AUTHORS.txt ChangeLog README.textile"
@@ -26,6 +25,8 @@ RDEPEND+=" sci-visualization/gnuplot"
 all_ruby_prepare() {
 	# Existing metadata causes a crash in jruby, so use our own.
 	rm -f ../metadata || die "Unable to remove metadata."
+
+	sed -i -e 's/Config/RbConfig/' test/test_gnuplot.rb || die
 }
 
 each_ruby_test() {

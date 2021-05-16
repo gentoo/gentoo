@@ -1,26 +1,33 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="Offline Windows NT Password & Registry Editor"
-HOMEPAGE="http://pogostick.net/~pnh/ntpasswd/"
-SRC_URI="http://pogostick.net/~pnh/ntpasswd/${PN}-source-${PV}.zip"
+HOMEPAGE="https://pogostick.net/~pnh/ntpasswd/"
+SRC_URI="https://pogostick.net/~pnh/ntpasswd/${PN}-source-${PV}.zip"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="static"
 
-RDEPEND="dev-libs/openssl:0"
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	static? ( dev-libs/openssl:0[static-libs] )"
 
+DOCS=(
+	HISTORY.txt
+	README.txt
+	WinReg.txt
+	regedit.txt
+)
+
 src_prepare() {
+	default
 	sed -i -e '/-o/s:$(CC):$(CC) $(LDFLAGS):' Makefile || die
 
 	if ! use static ; then
@@ -38,11 +45,10 @@ src_compile() {
 }
 
 src_install() {
+	einstalldocs
 	dobin chntpw cpnt reged
 
 	if use static; then
 		dobin {chntpw,reged}.static
 	fi
-
-	dodoc {HISTORY,README,regedit,WinReg}.txt
 }

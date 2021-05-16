@@ -1,0 +1,6 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# We add this here so that it runs after ccid's and ifd-gempc's rules;
+# if we just added a pcscd-owned device, we hotplug the pcscd service.
+ACTION=="add", ENV{PCSCD}=="1", GROUP="pcscd", TAG+="systemd", ENV{SYSTEMD_WANTS}+="pcscd.service", RUN+="pcscd.sh"

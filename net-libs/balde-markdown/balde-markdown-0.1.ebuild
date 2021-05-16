@@ -1,12 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/balde/balde-markdown.git
-		https://github.com/balde/balde-markdown.git"
+	EGIT_REPO_URI="https://github.com/balde/${PN}.git"
 	inherit git-r3 autotools
 fi
 
@@ -17,12 +15,12 @@ SRC_URI="https://github.com/balde/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
-	KEYWORDS=""
 fi
 
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.34
 	>=net-libs/balde-0.1
@@ -37,5 +35,11 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--without-valgrind
+		--without-valgrind \
+		--disable-static
+}
+
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

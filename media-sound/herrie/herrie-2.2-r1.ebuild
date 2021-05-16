@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Herrie is a command line music player"
 HOMEPAGE="http://herrie.info/"
@@ -12,12 +11,8 @@ SRC_URI="http://herrie.info/distfiles/${P}.tar.bz2"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ao +alsa pulseaudio oss http modplug mp3 sndfile vorbis xspf unicode nls"
-APP_LINGUAS="ca da de es fi ga nl pl pt_BR ru sv tr vi zh_CN"
-for X in ${APP_LINGUAS}; do
-	IUSE="${IUSE} linguas_${X}"
-done
 REQUIRED_USE="|| ( ao alsa pulseaudio oss )"
 
 RDEPEND="sys-libs/ncurses:0=[unicode?]
@@ -56,6 +51,8 @@ src_configure() {
 	use unicode || EXTRA_CONF="${EXTRA_CONF} ncurses"
 	use vorbis || EXTRA_CONF="${EXTRA_CONF} no_vorbis"
 	use xspf || EXTRA_CONF="${EXTRA_CONF} no_xspf"
+
+	tc-export PKG_CONFIG
 
 	einfo "./configure ${EXTRA_CONF}"
 	CC="$(tc-getCC)" PREFIX=/usr MANDIR=/usr/share/man \

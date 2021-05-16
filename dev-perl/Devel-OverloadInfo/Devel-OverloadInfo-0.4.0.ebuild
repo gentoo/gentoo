@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Introspect overloaded operators"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Scalar::Util -> Scalar-List-Utils
 RDEPEND="

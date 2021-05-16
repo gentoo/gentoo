@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>powerman-asdf@yandex.ru</email>
 		<name>Alex Efros</name>
-		<description>Proxy maintainer. Assign bugs to him please.</description>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -21,5 +20,7 @@
 		sylog and ODBC logging, etc.  It's created to be small, simple (I'd
 		like to say secure - but it's just a beta) and yet functional.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">z3APA3A/3proxy</remote-id>
+	</upstream>
 </pkgmetadata>
-

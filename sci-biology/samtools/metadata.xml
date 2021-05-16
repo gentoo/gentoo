@@ -7,5 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">samtools</remote-id>
+    <remote-id type="github">samtools/samtools</remote-id>
   </upstream>
 </pkgmetadata>

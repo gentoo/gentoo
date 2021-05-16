@@ -1,5 +1,5 @@
---- Makefile.old
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -30,7 +30,7 @@
  ########
  

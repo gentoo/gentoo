@@ -1,0 +1,134 @@
+https://bugs.gentoo.org/728618
+
+Backported by Victor Mataré
+
+From 30e5057f01627539dd170a1e831bb14278433deb Mon Sep 17 00:00:00 2001
+From: Jochen Sprickerhof <git@jochen.sprickerhof.de>
+Date: Fri, 26 Jun 2020 17:04:12 +0200
+Subject: [PATCH] Declare assignment operator private for SIP (Closes: #260)
+
+Starting with v4.19.23 SIP expects a working operator= or one marked
+private explicitly. All classes in this PR have a reference member
+(&chain) resulting in the compiler deleting the default assignment
+operator. This PR makes this known to SIP as well.
+---
+ python_orocos_kdl/PyKDL/dynamics.sip |  3 +++
+ python_orocos_kdl/PyKDL/kinfam.sip   | 29 ++++++++++++++++++++++++++++
+ 2 files changed, 32 insertions(+)
+
+diff --git a/PyKDL/dynamics.sip b/python_orocos_kdl/PyKDL/dynamics.sip
+index e0096dd..36f833c 100644
+--- a/PyKDL/dynamics.sip
++++ b/PyKDL/dynamics.sip
+@@ -72,4 +72,7 @@ public:
+     int JntToCoriolis(const JntArray &q, const JntArray &q_dot, JntArray &coriolis);
+ 	int JntToMass(const JntArray &q, JntSpaceInertiaMatrix& H);
+ 	int JntToGravity(const JntArray &q,JntArray &gravity);
++
++private:
++    ChainDynParam& operator=(const ChainDynParam&);
+ };
+diff --git a/PyKDL/kinfam.sip b/python_orocos_kdl/PyKDL/kinfam.sip
+index d87fd00..e87ceb8 100644
+--- a/PyKDL/kinfam.sip
++++ b/PyKDL/kinfam.sip
+@@ -344,6 +344,9 @@ public:
+     ChainFkSolverPos_recursive(const Chain& chain);
+     virtual int JntToCart(const JntArray& q_in, Frame& p_out,int segmentNr=-1);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainFkSolverPos_recursive& operator=(const ChainFkSolverPos_recursive&);
+ };
+ 
+ class ChainFkSolverVel_recursive : ChainFkSolverVel
+@@ -357,6 +360,9 @@ public:
+     virtual int JntToCart(const JntArrayVel& q_in ,FrameVel& out,int
+     segmentNr=-1 );
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainFkSolverVel_recursive& operator=(const ChainFkSolverVel_recursive&);
+ };
+ 
+ class ChainIkSolverPos : SolverI {
+@@ -392,6 +398,9 @@ public:
+     
+     virtual int CartToJnt(const JntArray& q_init , const Frame& p_in ,JntArray& q_out);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainIkSolverPos_NR& operator=(const ChainIkSolverPos_NR&);
+ };
+ 
+ class ChainIkSolverPos_NR_JL : ChainIkSolverPos
+@@ -407,6 +416,9 @@ public:
+     
+     virtual int CartToJnt(const JntArray& q_init , const Frame& p_in ,JntArray& q_out);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainIkSolverPos_NR_JL& operator=(const ChainIkSolverPos_NR_JL&);
+ };
+ 
+ class ChainIkSolverVel_pinv : ChainIkSolverVel
+@@ -420,6 +432,9 @@ public:
+         
+     virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainIkSolverVel_pinv& operator=(const ChainIkSolverVel_pinv&);
+ };
+ 
+ class ChainIkSolverVel_wdls : ChainIkSolverVel
+@@ -506,6 +521,8 @@ public:
+ 
+     void setLambda(const double& lambda);
+ 
++private:
++    ChainIkSolverVel_wdls& operator=(const ChainIkSolverVel_wdls&);
+ };
+ 
+ 
+@@ -520,6 +537,9 @@ public:
+ 
+     virtual int CartToJnt(const JntArray& q_init , const Frame& p_in ,JntArray& q_out);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainIkSolverPos_LMA& operator=(const ChainIkSolverPos_LMA&);
+ };
+ 
+ 
+@@ -546,6 +566,9 @@ public:
+     const JntArray& getOptPos()const /Factory/;
+ 
+     const double& getAlpha()const /Factory/;
++
++private:
++    ChainIkSolverVel_pinv_nso& operator=(const ChainIkSolverVel_pinv_nso&);
+ };
+ 
+ class ChainIkSolverVel_pinv_givens : ChainIkSolverVel
+@@ -559,6 +582,9 @@ public:
+         
+     virtual int CartToJnt(const JntArray& q_in, const Twist& v_in, JntArray& qdot_out);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainIkSolverVel_pinv_givens& operator=(const ChainIkSolverVel_pinv_givens&);
+ };
+ 
+ class ChainJntToJacSolver : SolverI
+@@ -571,4 +597,7 @@ public:
+     ChainJntToJacSolver(const Chain& chain);
+     int JntToJac(const JntArray& q_in,Jacobian& jac);
+     virtual void updateInternalDataStructures();
++
++private:
++    ChainJntToJacSolver& operator=(const ChainJntToJacSolver&);
+ };
+-- 
+2.27.0
+

@@ -6,6 +6,7 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">.tar.gz</remote-id>
+    <remote-id type="sourceforge">qalculate-0.9.7</remote-id>
+    <remote-id type="github">Qalculate/libqalculate</remote-id>
   </upstream>
 </pkgmetadata>

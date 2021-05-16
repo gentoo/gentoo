@@ -1,0 +1,147 @@
+https://bugs.gentoo.org/690088
+
+--- rhapsody-0.28b/configure
++++ rhapsody-0.28b/configure
+@@ -66,6 +66,7 @@
+ OSNAME=`uname -o 2>/dev/null`
+ OSVER=`uname -r 2>/dev/null`
+ USER=`whoami 2>/dev/null`
++PKGCONFIG="${PKGCONFIG:-pkg-config}"
+ 
+ echo "The OS appears to be $OS ($OSNAME) version $OSVER."
+ echo ""
+@@ -75,7 +76,7 @@
+ 	CCPATH="/usr/bin /usr/local/bin"
+ 	CURSESPATH="/usr/include /usr/include/ncurses /usr/local/include /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses"
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)"
+ 	GCCBASELIBPATHS="-L/usr/lib"
+ 	GCCBASEINCPATHS="-I/usr/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+@@ -86,12 +87,12 @@
+ 	CCPATH="/usr/bin /usr/local/bin"
+ 	CURSESPATH="/usr/include /usr/include/ncurses /usr/local/include /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses -lnsl -lsocket" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses) -lnsl -lsocket" 
+ 	GCCBASELIBPATHS=""
+ 	GCCBASEINCPATHS="-I/usr/local/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+ 
+-	CCBASELIBS="-lncurses -lnsl -lsocket" 
++	CCBASELIBS="$(${PKGCONFIG} --libs ncurses) -lnsl -lsocket" 
+ 	CCBASELIBPATHS=""
+ 	CCBASEINCPATHS="-I/usr/local/include"
+ 	CCBASEFLAGS="-g -Wall"
+@@ -102,7 +103,7 @@
+ 	CCPATH="/usr/bin /usr/local/bin"
+ 	CURSESPATH="/sw/include /usr/include /sw/include/ncurses /usr/include/ncurses /usr/local/include /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/sw/lib"
+ 	GCCBASEINCPATHS="/usr/include /usr/local/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused -no-cpp-precomp"
+@@ -113,7 +114,7 @@
+ 	CCPATH="/usr/bin /usr/local/bin"
+ 	CURSESPATH="/usr/include /usr/include/ncurses /usr/local/include /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/usr/lib"
+ 	GCCBASEINCPATHS="-I/usr/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+@@ -124,12 +125,12 @@
+ 	CCPATH="/usr/freeware/bin /usr/bin"
+ 	CURSESPATH="/usr/freeware/include/ncurses /usr/include /usr/local/include /usr/include/ncurses /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/usr/freeware/lib64"
+ 	GCCBASEINCPATHS=""
+ 	GCCBASEFLAGS="-mabi=64 -g -Wall -Wno-unused"
+ 
+-	CCBASELIBS="-lncurses" 
++	CCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	CCBASELIBPATHS=""
+ 	CCBASEINCPATHS=""
+ 	CCBASEFLAGS="-mabi=64"
+@@ -140,12 +141,12 @@
+ 	CCPATH="/usr/freeware/bin /usr/bin"
+ 	CURSESPATH="/usr/freeware/include/ncurses /usr/include /usr/local/include /usr/include/ncurses /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/usr/freeware/lib32"
+ 	GCCBASEINCPATHS=""
+ 	GCCBASEFLAGS="-mabi=n32 -g -Wall -Wno-unused"
+ 
+-	CCBASELIBS="-lncurses" 
++	CCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	CCBASELIBPATHS=""
+ 	CCBASEINCPATHS=""
+ 	CCBASEFLAGS="-mabi=n32 -g -Wall"
+@@ -156,7 +157,7 @@
+ 	CCPATH="/boot/develop/bin /bin /usr/bin /usr/local/bin"
+ 	CURSESPATH="/boot/develop/headers /boot/develop/headers/gnu /boot/home/config/include"
+ 
+-	GCCBASELIBS="-lncurses -lsocket -lbind"
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses) -lsocket -lbind"
+ 	GCCBASELIBPATHS="-L/boot/home/config/lib"
+ 	GCCBASEINCPATHS="-I/boot/home/config/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+@@ -172,12 +173,12 @@
+ 	CCPATH="/bin /usr/bin /usr/local/bin"
+ 	CURSESPATH="/usr/include /usr/local/include /usr/include/ncurses /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/usr/lib -L/lib -L/usr/local/lib"
+ 	GCCBASEINCPATHS="-I/usr/local/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+ 
+-	CCBASELIBS="-lncurses" 
++	CCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	CCBASELIBPATHS="-L/usr/lib -L/lib -L/usr/local/lib"
+ 	CCBASEINCPATHS="-I/usr/local/include"
+ 	CCBASEFLAGS="-g"
+@@ -188,12 +189,12 @@
+ 	CCPATH="/bin /usr/bin /usr/local/bin"
+ 	CURSESPATH="/usr/include /usr/local/include /usr/include/ncurses /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/usr/lib -L/lib -L/usr/local/lib"
+ 	GCCBASEINCPATHS="-I/usr/include -I/usr/local/include"
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+ 
+-	CCBASELIBS="-lncurses" 
++	CCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	CCBASELIBPATHS="-L/usr/lib -L/lib -L/usr/local/lib"
+ 	CCBASEINCPATHS="-I/usr/include -I/usr/local/include"
+ 	CCBASEFLAGS="-g"
+@@ -204,7 +205,7 @@
+ 	CCPATH="/usr/bin /usr/local/bin"
+ 	CURSESPATH="/usr/freeware/include/ncurses /usr/include /usr/local/include /usr/include/ncurses /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses" 
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)" 
+ 	GCCBASELIBPATHS="-L/usr/lib -L/lib"
+ 	GCCBASEINCPATHS=""
+ 	GCCBASEFLAGS="-g -Wall -Wno-unused"
+@@ -217,12 +218,12 @@
+ 	CCPATH="/bin /sbin /usr/bin /usr/sbin/ /usr/local/bin/ /usr/local/sbin" 
+ 	CURSESPATH="/include /usr/include /include/ncurses /usr/include/ncurses /usr/local/include /usr/local/include/ncurses"
+ 
+-	GCCBASELIBS="-lncurses"
++	GCCBASELIBS="$(${PKGCONFIG} --libs ncurses)"
+ 	GCCBASELIBPATHS="-L/usr/lib"
+ 	GCCBASEINCPATHS="-I/usr/include -I/include"
+ 	GCCBASEFLAGS=""
+ 
+-	CCBASELIBS="-lncurses"
++	CCBASELIBS="$(${PKGCONFIG} --libs ncurses)"
+ 	CCBASELIBPATHS="-L/usr/lib"
+ 	CCBASEINCPATHS="-I/usr/include -I/include"
+ 	CCBASEFLAGS=""

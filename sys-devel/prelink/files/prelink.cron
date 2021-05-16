@@ -55,7 +55,7 @@ fi
 echo /usr/sbin/prelink -av $PRELINK_OPTS > ${log}
 /usr/sbin/prelink -av $PRELINK_OPTS >> ${log} 2>&1 \
   || echo Prelink failed with return value $? >> ${log}
-# Restart init if needed
-[ -n "$(find `ldd /sbin/init | awk 'NF == 4 { print $3 }'` /sbin/init -ctime -1 2>/dev/null )" ] && /sbin/telinit u
+# Restart init if needed (and if exists)
+[ -n "$(find `ldd /sbin/init 2>/dev/null | awk 'NF == 4 { print $3 }'` /sbin/init -ctime -1 2>/dev/null )" ] && /sbin/telinit u
 
 exit 0

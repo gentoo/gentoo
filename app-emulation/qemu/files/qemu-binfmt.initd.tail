@@ -1,0 +1,14 @@
+	eend 0
+}
+
+stop() {
+	# We unregister everything in the "qemu-xxx" namespace.
+	ebegin "Unregistering qemu-user binaries"
+	local f
+	for f in /proc/sys/fs/binfmt_misc/qemu-* ; do
+		if [ -f "${f}" ] ; then
+			echo '-1' > "${f}"
+		fi
+	done
+	eend 0
+}

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <maintainer type="project">
+	<maintainer type="project">
 		<email>mate@gentoo.org</email>
 		<name>Gentoo MATE Desktop</name>
-    </maintainer>
+	</maintainer>
 	<use>
 		<flag name="base">Install base MATE Desktop applications that are
 			recommended for the most common usage; for example, this installs
@@ -21,5 +21,7 @@
 			applications. Disable this if you plan to use your own non-MATE
 			Desktop alternatives or a custom mixture of MATE and non-MATE
 			packages.</flag>
+		<flag name="help">Install <pkg>gnome-extra/yelp</pkg> to handle in application
+			help menus and documentation browsing</flag>
 	</use>
 </pkgmetadata>

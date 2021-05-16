@@ -1,0 +1,43 @@
+From 57b9f1a710c2eee1c8f54eb87d164584aa9532ce Mon Sep 17 00:00:00 2001
+From: Torsten Veller <tove@gentoo.org>
+Date: Mon, 5 Nov 2012 01:02:48 +1300
+Subject: Remove automatic radis-db installer code
+
+---
+ MANIFEST                                          | 1 -
+ Makefile.PL                                       | 1 -
+ install-radius-db.PL => install-radius-db.PL.orig | 0
+ 3 files changed, 2 deletions(-)
+ rename install-radius-db.PL => install-radius-db.PL.orig (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index a8e2801..09913da 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -4,7 +4,6 @@ README
+ LICENSE
+ MANIFEST
+ Radius.pm
+-install-radius-db.PL
+ t/decode.t
+ t/dictionary.t
+ t/digest.t
+diff --git a/Makefile.PL b/Makefile.PL
+index 45653ab..7f1b202 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -4,7 +4,6 @@ use ExtUtils::MakeMaker;
+ WriteMakefile(
+     NAME => 'Authen::Radius',
+     VERSION_FROM => 'Radius.pm', # finds $VERSION
+-    PPM_INSTALL_SCRIPT => 'install-radius-db.PL',
+     MIN_PERL_VERSION => "v5.10",
+     BUILD_REQUIRES => {
+         # Support for TEST_REQUIRES
+diff --git a/install-radius-db.PL b/install-radius-db.PL.orig
+similarity index 100%
+rename from install-radius-db.PL
+rename to install-radius-db.PL.orig
+-- 
+2.15.1
+

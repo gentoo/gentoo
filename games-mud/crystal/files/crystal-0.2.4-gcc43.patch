@@ -1,5 +1,5 @@
---- common.h
-+++ common.h
+--- a/common.h
++++ b/common.h
 @@ -3,6 +3,8 @@
  
  #include <string>

@@ -1,0 +1,317 @@
+From 76764e7f7b64d36fc4f650516838662b406aa8ac Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Mon, 2 Nov 2020 18:53:22 +0100
+Subject: [PATCH 1/4] cmake: stop requiring the Solid framework
+
+It is not used.
+
+(cherry picked from commit aaf83474c8a145ad67ed03074dd4033f5a12c2ab)
+---
+ CMakeLists.txt | 1 -
+ README         | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 15efb196..73e40695 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,6 @@ find_package(KF5 REQUIRED COMPONENTS
+     Parts
+     TextEditor
+     TextWidgets
+-    Solid
+     WidgetsAddons
+     WindowSystem
+     XmlGui
+diff --git a/README b/README
+index 940e2b3b..9f91740d 100644
+--- a/README
++++ b/README
+@@ -122,7 +122,7 @@ Required dependencies
+ - Extra Cmake Modules (ECM)
+ - KDE Frameworks 5 libraries -dev  (at the time of writing:
+    Config CoreAddons DocTools IconThemes I18n KDELibs4Support
+-    KHtml KIO Parts TextEditor TextWidgets Solid WidgetsAddons
++    KHtml KIO Parts TextEditor TextWidgets WidgetsAddons
+     WindowSystem XmlGui)
+ 
+ Optional dependencies
+-- 
+2.29.2
+
+
+From 672dc6a1d4b8d1fd8f44b64779a43f0e4b65e946 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Mon, 2 Nov 2020 13:10:45 +0100
+Subject: [PATCH 2/4] cmake: build test_ktechlab only if testing is enabled
+
+The test_ktechlab static library basically builds almost all the
+ktechlab sources, resulting in a "double build" in case testing is
+enabled. Considering that is used only by test binaries built only
+when testing is enabled, then limit its build accordingly.
+
+(cherry picked from commit f3a754ddcbc8a086ca48920bd33e96082cef699c)
+---
+ src/CMakeLists.txt | 26 +++++++++++++++-----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index e84f737d..1a9af964 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -379,19 +379,23 @@ install(TARGETS ktechlab ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ # for helping testing
+ 
+-add_library(test_ktechlab STATIC ${ktechlab_SRCS})
++if(BUILD_TESTING)
+ 
+-target_link_libraries(test_ktechlab
+-    KF5::TextEditor
+-    KF5::IconThemes
+-    KF5::Parts
+-    KF5::KHtml
+-    KF5::WidgetsAddons
+-    KF5::WindowSystem
++    add_library(test_ktechlab STATIC ${ktechlab_SRCS})
+ 
+-    Qt5::Widgets
+-    Qt5::PrintSupport
+-)
++    target_link_libraries(test_ktechlab
++        KF5::TextEditor
++        KF5::IconThemes
++        KF5::Parts
++        KF5::KHtml
++        KF5::WidgetsAddons
++        KF5::WindowSystem
++
++        Qt5::Widgets
++        Qt5::PrintSupport
++    )
++
++endif()
+ 
+ ########### install files ###############
+ 
+-- 
+2.29.2
+
+
+From 1d416ac6e3191eefca0f7e98487ae912d8bafe23 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Wed, 4 Nov 2020 13:13:44 +0100
+Subject: [PATCH 3/4] cmake: explicitly require and link to KCompletion
+
+It is already used (because of KLineEdit), so make sure to explicitly
+use it.
+
+(cherry picked from commit 852f94f4e6f3cb8d4e4ec60c2c77dfd5ae4b6fc0)
+---
+ CMakeLists.txt     | 1 +
+ src/CMakeLists.txt | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73e40695..45442519 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,6 +31,7 @@ find_package(Qt5 CONFIG REQUIRED COMPONENTS
+     )
+ 
+ find_package(KF5 REQUIRED COMPONENTS
++    Completion
+     Config
+     CoreAddons
+     DocTools
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1a9af964..ac6e487a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -343,6 +343,7 @@ target_link_libraries( ktechlab
+ 	#itemeditor math
+     KF5::TextEditor
+     KF5::Parts
++    KF5::Completion
+     KF5::ConfigCore
+     KF5::ConfigGui
+     KF5::CoreAddons
+@@ -390,6 +391,7 @@ if(BUILD_TESTING)
+         KF5::KHtml
+         KF5::WidgetsAddons
+         KF5::WindowSystem
++        KF5::Completion
+ 
+         Qt5::Widgets
+         Qt5::PrintSupport
+-- 
+2.29.2
+
+
+From 56fb8dde63c19f6c4bc0decda879843e552fad85 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Tue, 22 Dec 2020 11:46:54 +0100
+Subject: [PATCH 4/4] replace khtml with qtextbrowser
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                     |  1 -
+ src/CMakeLists.txt                 |  2 --
+ src/gui/contexthelp.cpp            | 33 +++++++++++-------------------
+ src/gui/contexthelp.h              |  6 ++----
+ tests/tests_app/CMakeLists.txt     |  1 -
+ tests/tests_compile/CMakeLists.txt |  1 -
+ 6 files changed, 14 insertions(+), 30 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 45442519..5adaec45 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,6 @@ find_package(KF5 REQUIRED COMPONENTS
+     DocTools
+     IconThemes
+     I18n
+-    KHtml
+     KIO
+     Parts
+     TextEditor
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ac6e487a..e09d9070 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -349,7 +349,6 @@ target_link_libraries( ktechlab
+     KF5::CoreAddons
+     KF5::IconThemes
+     KF5::KIOCore
+-    KF5::KHtml
+     KF5::XmlGui
+     KF5::WidgetsAddons
+     KF5::WindowSystem
+@@ -388,7 +387,6 @@ if(BUILD_TESTING)
+         KF5::TextEditor
+         KF5::IconThemes
+         KF5::Parts
+-        KF5::KHtml
+         KF5::WidgetsAddons
+         KF5::WindowSystem
+         KF5::Completion
+diff --git a/src/gui/contexthelp.cpp b/src/gui/contexthelp.cpp
+index 567c0c3d..cce84617 100644
+--- a/src/gui/contexthelp.cpp
++++ b/src/gui/contexthelp.cpp
+@@ -20,8 +20,6 @@
+ 
+ #include <KParts/ReadWritePart>
+ #include <KParts/BrowserExtension>
+-#include <KHTMLView>
+-#include <KHTMLPart>
+ #include <KIO/Global>
+ #include <KIconLoader>
+ #include <KLocalizedString>
+@@ -43,6 +41,7 @@
+ // #include <q3widgetstack.h>
+ #include <QMimeData>
+ #include <QStandardPaths>
++#include <QTextBrowser>
+ 
+ #include <cassert>
+ 
+@@ -81,15 +80,13 @@ ContextHelp::ContextHelp( KateMDI::ToolView * parent )
+ 	m_pNameLabel->setFont( font );
+ 	m_pNameLabel->setTextFormat( Qt::RichText );
+ 
+-	m_pBrowser = new KHTMLPart( m_pWidgetStack->widget( 0 ) );
+-	m_pBrowserView = m_pBrowser->view();
++	m_pBrowserView = new QTextBrowser;
++	m_pBrowserView->setOpenLinks(false);
++
+ 	m_pBrowserView->setFocusPolicy( Qt::NoFocus );
+ 	m_pBrowserLayout->addWidget( m_pBrowserView );
+-	connect(m_pBrowser->browserExtension(), &KParts::BrowserExtension::openUrlRequest,
+-	        this, &ContextHelp::openURL);
+ 
+-	// Adjust appearance of browser
+-	m_pBrowserView->setMarginWidth( 4 );
++	connect(m_pBrowserView, &QTextBrowser::anchorClicked, this, &ContextHelp::openURL);
+ 
+ 	m_pEditor = new RichTextEditor( m_pWidgetStack->widget( 1 ), "ContextHelpEditor" );
+ 	m_pTopLayout->addWidget( m_pEditor );
+@@ -280,20 +277,14 @@ void ContextHelp::setContextHelp( QString name, QString help )
+ 	addLinkTypeAppearances( & help );
+ 	//END modify help string as appropriate
+ 
+-	// HACK Adjust top spacing according to whether the item description uses <p>.
+-	// This is because the help editor uses paragraphs, but old item help stored
+-	// in the items just uses <br>
+-	QFont f;
+-	int fontPixelSize = QFontInfo( f ).pixelSize();
+-	if ( help.contains( "<p>" ) )
+-		m_pBrowserView->setMarginHeight( 3-fontPixelSize );
+-	else
+-		m_pBrowserView->setMarginHeight( 3 );
+-
+ 	m_pNameLabel->setText( name );
+-     m_pBrowser->begin( QUrl::fromLocalFile( itemLibrary()->itemDescriptionsDirectory() ) );
+-     m_pBrowser->write( help );
+-     m_pBrowser->end();
++    m_pBrowserView->setSearchPaths({itemLibrary()->itemDescriptionsDirectory()});
++    m_pBrowserView->clear();
++    if (help.startsWith("<html>")) {
++        m_pBrowserView->insertHtml(help);
++    } else {
++        m_pBrowserView->insertPlainText(help);
++    }
+ }
+ 
+ 
+diff --git a/src/gui/contexthelp.h b/src/gui/contexthelp.h
+index fe992deb..7190ea81 100644
+--- a/src/gui/contexthelp.h
++++ b/src/gui/contexthelp.h
+@@ -20,8 +20,7 @@ class Item;
+ class ContextHelp;
+ class RichTextEditor;
+ 
+-class KHTMLPart;
+-class KHTMLView;
++class QTextBRowser;
+ class QUrl;
+ class QLabel;
+ class QTextBrowser;
+@@ -123,8 +122,7 @@ class ContextHelp : public QWidget, public Ui::ContextHelpWidget
+ 		bool isEditChanged();
+ 		QString m_currentLanguage;
+ 		QString m_lastItemType;
+-		KHTMLPart * m_pBrowser;
+-		KHTMLView * m_pBrowserView;
++		QTextBrowser *m_pBrowserView;
+ 		RichTextEditor * m_pEditor;
+ 
+ 	private slots:
+diff --git a/tests/tests_app/CMakeLists.txt b/tests/tests_app/CMakeLists.txt
+index b0a505d4..c93137a4 100644
+--- a/tests/tests_app/CMakeLists.txt
++++ b/tests/tests_app/CMakeLists.txt
+@@ -36,7 +36,6 @@ target_link_libraries( tests_app
+     KF5::ConfigCore
+     KF5::ConfigGui
+     KF5::KIOCore
+-    KF5::KHtml
+     KF5::CoreAddons
+     KF5::XmlGui
+     KF5::TextEditor
+diff --git a/tests/tests_compile/CMakeLists.txt b/tests/tests_compile/CMakeLists.txt
+index 424692be..bec8b864 100644
+--- a/tests/tests_compile/CMakeLists.txt
++++ b/tests/tests_compile/CMakeLists.txt
+@@ -37,7 +37,6 @@ target_link_libraries( test_compile
+     KF5::ConfigCore
+     KF5::ConfigGui
+     KF5::KIOCore
+-    KF5::KHtml
+     KF5::CoreAddons
+     KF5::XmlGui
+     KF5::TextEditor
+-- 
+2.29.2
+

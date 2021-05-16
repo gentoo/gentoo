@@ -1,0 +1,194 @@
+"These are the combined Debian changes from upstream. They have been made only to the Debian packaging because the source is no longer maintained upstream."
+https://sources.debian.org/patches/dvorak7min/1.6.1+repack-4/debian-changes.patch/
+----
+--- a/README
++++ b/README
+@@ -2,28 +2,16 @@ First of all, please read COPYING.  Note
+ courtesy of Dan Wood <danwood@karelia.com>, and that they are available in
+ the original html format at http://www.karelia.com/abcd/
+ 
+-After that, just type
+-
+-        make
+-	
+-and when it's done, try running ``./dvorak7min''.
++Once the program is installed, try running ``./dvorak7min''.
+ 
+ If you get screwed up chars on the keyboard layout, you might want to try:
+ 
+   rm ~/.terminfo -R
+   
+-and, if that doesn't work, try uncommenting the COLORS and/or the
+-NOT_SO_PRETTY lines in the Makefile, and doing a ``make clean all''.  You
+-have a few other options in the Makefile, have a look to them.
+-
+ In addition of the built-in lessons, you can use any ascii file (as Smoke
+ suggests, Gutenberg books are good idea).  Just specify the filename as an
+ argument to the program, and you are done. 
+ 
+-If you are satisfied with the program, simply
+-
+-        make install
+-	
+ Remember that you can set your keyboard map with
+ 
+         loadkeys dvorak.map
+--- dvorak7min-1.6.1.orig/lessons.c
++++ dvorak7min-1.6.1/lessons.c
+@@ -166,6 +166,7 @@ char *lessons[] =
+ "gggg pppp gggg pppp gggg pppp gggg pppp gggg pppp gggg pppp gggg ppp\n"
+ "pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg pg\n"
+ "gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp gp\n"
++"\x1"
+ "gggg hhhh pppp uuuu gggg hhhh pppp uuuu gggg hhhh pppp uuuu\n"
+ "up up up up hug hug hug hug pug pug pug pug pup pup pup pup\n"
+ "ugh ugh ugh ugh Hugh Hugh Hugh Hugh Pugh Pugh Pugh Pugh",
+@@ -263,7 +264,7 @@ char *lessons[] =
+ "The catchup accident at the picnic depicted Dutch as an apathetic nuisance.\n"
+ "It is no coincidence that this idiotic sentence has eight concise Cs in it.\n"
+ "The enthusiastic duchess noticed the Pontiac coupe...and decided to chase it."
+-"\1"
++"\x1"
+ "I detect a headache...I hope it is not the\n"
+ "Schnapps and Cocoa I had as a nightcap.\n"
+ "\n"
+@@ -362,11 +363,12 @@ char *lessons[] =
+ "Allegra, an unparalleled intellectual, calculated the celestial latitudes and\n"
+ "longitudes in her sleep.",
+ 
+-    "YF: index fingers streching up",
++    "YF: index fingers stretching up",
+ "\x2"   
+ "ffff yyyy ffff yyyy ffff yyyy ffff yyyy ffff yyyy ffff yyyy ffff yyyy\n"
+ "ffff yyyy ffff yyyy ffff yyyy ffff yyyy ffff yyyy ffff yyyy ffff yyyy\n"
+ "fy fy fy fy fy fy fy yf yf yf yf yf yf yf ffff gggg hhhh yyyy pppp uuuu\n"
++"\x1"
+ "guy guy guy guy guy guy guy guy guy gyp gyp gyp gyp gyp gyp gyp gyp gyp\n"
+ "UHF UHF UHF UHF UHF UHF UHF UHF UHF yuh yuh yuh yuh yuh yuh yuh yuh yuh\n"
+ "huff huff huff huff huff huff huff puff puff puff puff puff puff puff\n"
+@@ -406,6 +408,7 @@ char *lessons[] =
+ "kkkk mmmm kkkk mmmm kkkk mmmm kkkk mmmm kkkk mmmm kkkk mmmm\n"
+ "kkkk mmmm kkkk mmmm kkkk mmmm kkkk mmmm kkkk mmmm kkkk mmmm\n"
+ "km km km km km km km km km km mk mk mk mk mk mk mk mk mk mk\n"
++"\x1"
+ "hhhh kkkk mmmm uuuu hhhh kkkk mmmm uuuu hhhh kkkk mmmm uuuu\n"
+ "ku ku ku ku ku ku ku ku ku ku mu mu mu mu mu mu mu mu mu mu\n"
+ "UK UK UK UK UK UK UK UK UK UK UK UK UK UK UK UK UK UK UK UK\n"
+@@ -442,6 +445,7 @@ char *lessons[] =
+ "jjjj wwww jjjj wwww jjjj wwww jjjj wwww jjjj wwww jjjj wwww\n"
+ "jjjj wwww jjjj wwww jjjj wwww jjjj wwww jjjj wwww jjjj wwww\n"
+ "jw jw jw jw jw jw jw jw jw jw jw wj wj wj wj wj wj wj wj wj\n"
++"\x1"
+ "eeee jjjj tttt wwww eeee jjjj tttt wwww eeee jjjj tttt wwww\n"
+ "ewe ewe ewe ewe ewe jet jet jet jet jet Jew Jew Jew Jew Jew\n"
+ "wee wee wee wee wee wee wee wet wet wet wet wet wet wet wet\n"
+@@ -500,6 +504,7 @@ char *lessons[] =
+ "An acquisitive mind helped Pavlov evolve his theories.\n"
+ "QVC's involvement with Paramount may give it new verve.\n"
+ "Vivian's new Volvo unequivocally vanquished her fears of driving.\n"
++"\x1"
+ "According to Pravda, Vladivostok was a quiet village in its Soviet days.\n"
+ "This unique, opaque liquor does not quench your thirst, it makes you queasy.\n"
+ "David's vivid imagination and his inquisitive and inventive mind suggest a high IQ."
+@@ -548,7 +553,7 @@ char *lessons[] =
+ "activity; several lizards hazarded the freezing waters and capsized the fish\n"
+ "tanks; a dozen grizzlies were waltzing in the plaza.",
+ 
+-    "XB: index fingers streching down",
++    "XB: index fingers stretching down",
+ "\x2"   
+ "bbbb xxxx bbbb xxxx bbbb xxxx bbbb xxxx bbbb xxxx bbbb xxxx\n"
+ "bbbb xxxx bbbb xxxx bbbb xxxx bbbb xxxx bbbb xxxx bbbb xxxx\n"
+--- dvorak7min-1.6.1.orig/Makefile
++++ dvorak7min-1.6.1/Makefile
+@@ -6,7 +6,7 @@ INSTALL = /usr/local/games/bin
+ #NASTINESS = -DNASTY_AS_USUAL
+ #BEEPS = -DBEEPS_ARENT_IRRITATING
+ #FLASHES = -DFLASHES_ARENT_IRRITATING
+-#COLORS = -DNO_COLORS_PLEASE
++COLORS = -DNO_COLORS_PLEASE
+ 
+ # Max length of imported texts.  Set it to 0 or comment it if you don't want
+ # a limit
+@@ -14,7 +14,7 @@ LIMIT_LENGTH = -DLIMIT_LENGTH=1024
+ 
+ ### That's all ###
+ 
+-#CC      = gcc
++CC      = gcc
+ PROF    = -g0 -O2
+ CFLAGS  = $(PROF) -Wall \
+ 	$(PRETTINESS) $(NASTINESS) $(BEEPS) $(FLASHES) $(COLORS) \
+--- dvorak7min-1.6.1.orig/dvorak7min.c
++++ dvorak7min-1.6.1/dvorak7min.c
+@@ -173,7 +173,8 @@ int myGetch(char shouldBe)
+ /* calculate typing speed in a given interval */
+ inline float calcSpeed (time_t timeStart, time_t timeFinish, int hits)
+ {
+-    return (float) hits / (timeFinish - timeStart);
++    // Use WPS/WPM as better standard, so also divide by 5 
++    return (float) hits / 5 / (timeFinish - timeStart);
+ }
+ 
+ 
+@@ -193,7 +194,7 @@ int importText (char const * const fileN
+    
+    file = fopen (fileName, "r");
+    if (!file) {
+-      postmortem = sys_errlist[errno];
++      postmortem = strerror(errno);
+       return -1;
+    }
+    
+@@ -220,7 +221,7 @@ int importText (char const * const fileN
+    while (1) {
+       c = fgetc (file);
+       if (errno) {
+-	 postmortem = sys_errlist[errno];
++	 postmortem = strerror(errno);
+ 	 fclose (file);
+ 	 return -1;
+       }
+@@ -418,6 +419,7 @@ void do_text (char * const text)
+ 	  ++p;
+ 	  if (!timeStart) {
+ 	     timeStart = time(0);
++	     hits = 0;
+ 	  }
+        }
+        
+@@ -431,8 +433,9 @@ void do_text (char * const text)
+ 	     float ratio = hits - misses;
+ 	     ratio = (ratio < 0) ? 0 : (100.0 * ratio / hits);
+ 	     timeCurrent = time(0);
+-	     speed = calcSpeed (timeStart, timeCurrent, hits);
+-	     mvprintw (LINES - 1, 0, "CPS %.2f  CPM %.2f Hits: %d Misses: %d Seconds: %d Ratio: %.2f%%", speed, speed * 60, hits, misses, time(0) - timeStart, ratio);
++	     speed = calcSpeed (timeStart, timeCurrent, hits + misses);
++	     // Use WPS/WPM as better standards
++	     mvprintw (LINES - 1, 0, "WPS %.2f  WPM %.2f Hits: %d Misses: %d Seconds: %d Ratio: %.2f%%", speed, speed * 60, hits, misses, time(0) - timeStart, ratio);
+ 	     clrtoeol();
+ 	  }
+        } while (ch == ERR);
+@@ -510,7 +513,7 @@ void do_text (char * const text)
+     }
+ 
+     timeFinish = time(0);
+-    speed = calcSpeed(timeStart, timeFinish, hits);
++    speed = calcSpeed(timeStart, timeFinish, hits + misses);
+     clear();
+     cbreak();
+     if (!timeStart) {
+@@ -519,8 +522,11 @@ void do_text (char * const text)
+        float ratio = hits - misses;
+        ratio = (ratio < 0) ? 0 : (100.0 * ratio / hits);
+        mvprintw (0, 0, "Elapsed time: %d seconds", timeFinish - timeStart);
+-       mvprintw (1, 0, "Total: %d  Misses: %d  Ratio: %.2f%%", hits, misses, ratio);
+-       mvprintw (2, 0, "CPS: %.2f  CPM: %.2f", speed, speed * 60);
++       mvprintw (1, 0, "Total: %d  Misses: %d  Ratio: %.2f%%",
++                 hits + misses, misses,
++		 (float)100*(hits) / (hits + misses));
++       // Use WPM/WPS as better standard
++       mvprintw (2, 0, "WPS: %.2f  WPM: %.2f", speed, speed * 60);
+     }
+    
+    mvprintw (4, 0, "[ ] Press ESCAPE to continue.");

@@ -1,0 +1,25 @@
+From 3066463eb407853626277442eba725ddde58b843 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 6 Jan 2019 17:41:10 +0100
+Subject: [PATCH] Try to fix test dir path
+
+---
+ src/test/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/test/CMakeLists.txt b/src/test/CMakeLists.txt
+index b1179c2c..af7ce3fc 100644
+--- a/src/test/CMakeLists.txt
++++ b/src/test/CMakeLists.txt
+@@ -27,7 +27,7 @@ add_definitions(-DTEST_DATADIR=${TEST_DATADIR})
+ macro(setprops _name)
+   if(UNIX)
+     set_tests_properties(${_name} PROPERTIES
+-      WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
++      WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/src/test"
+     )
+   endif()
+   if(WIN32)
+-- 
+2.20.1
+

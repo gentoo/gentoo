@@ -6,12 +6,12 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  GL2PS is a C library providing high quality vector output for any
-  OpenGL application. The main difference between GL2PS and other
-  similar libraries is the use of sorting algorithms
-  capable of handling intersecting and stretched polygons, as well as
-  non manifold objects. GL2PS provides advanced smooth shading and
-  text rendering, culling of invisible primitives, mixed vector/bitmap
-  output, and much more.
-</longdescription>
+		GL2PS is a C library providing high quality vector output for any
+		OpenGL application. The main difference between GL2PS and other
+		similar libraries is the use of sorting algorithms
+		capable of handling intersecting and stretched polygons, as well as
+		non manifold objects. GL2PS provides advanced smooth shading and
+		text rendering, culling of invisible primitives, mixed vector/bitmap
+		output, and much more.
+	</longdescription>
 </pkgmetadata>

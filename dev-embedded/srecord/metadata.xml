@@ -5,9 +5,6 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
-	<longdescription>
-The SRecord package is a collection of powerful tools for manipulating EPROM load files.
-</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">srecord</remote-id>
 	</upstream>

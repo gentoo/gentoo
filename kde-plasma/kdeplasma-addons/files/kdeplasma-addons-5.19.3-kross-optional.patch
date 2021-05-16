@@ -1,0 +1,65 @@
+From bbaaa3e2eac712887780c0849f955889e64ff358 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 7 Jul 2020 22:22:13 +0200
+Subject: [PATCH] Make KF5Kross optional, it is only used for comic applet
+
+---
+ CMakeLists.txt             | 7 ++++++-
+ applets/CMakeLists.txt     | 4 +++-
+ dataengines/CMakeLists.txt | 4 +++-
+ 3 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c4697a52..e5d14bc8c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,7 +48,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     IconThemes
+     KIO
+     KCMUtils
+-    Kross
+     Notifications
+     Plasma
+     Runner
+@@ -59,6 +58,12 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+     NewStuff
+ )
+ 
++find_package(KF5Kross CONFIG QUIET)
++set_package_properties(KF5Kross PROPERTIES
++    PURPOSE "Needed for Comic applet"
++    TYPE OPTIONAL
++)
++
+ find_package(KF5Purpose CONFIG QUIET)
+ set_package_properties(KF5Purpose PROPERTIES
+     DESCRIPTION "Framework for cross-application services and actions"
+diff --git a/applets/CMakeLists.txt b/applets/CMakeLists.txt
+index 93b637b1b..6af5ffc67 100644
+--- a/applets/CMakeLists.txt
++++ b/applets/CMakeLists.txt
+@@ -6,7 +6,9 @@ plasma_install_package(keyboardindicator org.kde.plasma.keyboardindicator)
+ add_subdirectory(binary-clock)
+ add_subdirectory(calculator)
+ add_subdirectory(colorpicker)
+-add_subdirectory(comic)
++if(KF5Kross_FOUND)
++    add_subdirectory(comic)
++endif()
+ add_subdirectory(dict)
+ if(NOT WIN32)
+     # uses the command line tool 'quota', does not make sense on Windows
+diff --git a/dataengines/CMakeLists.txt b/dataengines/CMakeLists.txt
+index 8d91dd84f..38f715b11 100644
+--- a/dataengines/CMakeLists.txt
++++ b/dataengines/CMakeLists.txt
+@@ -1,3 +1,5 @@
+- add_subdirectory(comic)
++if(KF5Kross_FOUND)
++    add_subdirectory(comic)
++endif()
+ add_subdirectory(potd)
+ add_subdirectory(konsoleprofiles)
+-- 
+2.27.0
+

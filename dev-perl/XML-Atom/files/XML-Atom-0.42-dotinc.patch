@@ -1,0 +1,27 @@
+From d2c045a8ca0d0ca147b04bc9e7c70b27db8cc4e1 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Mon, 26 Mar 2018 23:28:08 +1300
+Subject: Fix tests failing without '.' in @INC
+
+Bug: https://github.com/miyagawa/xml-atom/issues/12
+Bug: https://github.com/miyagawa/xml-atom/pull/14
+---
+ t/11-entry.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/11-entry.t b/t/11-entry.t
+index bbcb107..5955e97 100644
+--- a/t/11-entry.t
++++ b/t/11-entry.t
+@@ -2,7 +2,7 @@
+ 
+ use strict;
+ 
+-use t::TestLib;
++BEGIN { require './t/TestLib.pm'; t::TestLib->import() }
+ use Test::More;
+ use XML::Atom;
+ use XML::Atom::Entry;
+-- 
+2.16.2
+

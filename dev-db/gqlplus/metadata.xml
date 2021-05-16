@@ -11,4 +11,7 @@
 		completion. Otherwise the user interface is identical to that of
 		sqlplus. Command-line editing works as in bash/tcsh shells.
 	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">gqlplus</remote-id>
+	</upstream>
 </pkgmetadata>

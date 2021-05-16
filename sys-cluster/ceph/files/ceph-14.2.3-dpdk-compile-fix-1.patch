@@ -1,0 +1,111 @@
+diff --git a/src/msg/async/dpdk/DPDKStack.cc b/src/msg/async/dpdk/DPDKStack.cc
+index 3101ae57ac..1db97c289a 100644
+--- a/src/msg/async/dpdk/DPDKStack.cc
++++ b/src/msg/async/dpdk/DPDKStack.cc
+@@ -203,7 +203,9 @@ DPDKWorker::Impl::~Impl()
+   _dev->unset_local_queue(id);
+ }
+
+-int DPDKWorker::listen(entity_addr_t &sa, const SocketOptions &opt,
++int DPDKWorker::listen(entity_addr_t &sa,
++		       unsigned addr_slot,
++		       const SocketOptions &opt,
+                        ServerSocket *sock)
+ {
+   ceph_assert(sa.get_family() == AF_INET);
+diff --git a/src/msg/async/dpdk/DPDKStack.h b/src/msg/async/dpdk/DPDKStack.h
+index a44ae38367..622ff8a3c6 100644
+--- a/src/msg/async/dpdk/DPDKStack.h
++++ b/src/msg/async/dpdk/DPDKStack.h
+@@ -37,7 +37,7 @@ class DPDKServerSocketImpl : public ServerSocketImpl {
+   typename Protocol::listener _listener;
+  public:
+   DPDKServerSocketImpl(Protocol& proto, uint16_t port, const SocketOptions &opt,
+-		       int type);
++		       int type, unsigned addr_slot);
+   int listen() {
+     return _listener.listen();
+   }
+@@ -184,8 +184,9 @@ class NativeConnectedSocketImpl : public ConnectedSocketImpl {
+
+ template <typename Protocol>
+ DPDKServerSocketImpl<Protocol>::DPDKServerSocketImpl(
+-  Protocol& proto, uint16_t port, const SocketOptions &opt, int type)
+-  : ServerSocketImpl(type), _listener(proto.listen(port)) {}
++  Protocol& proto, uint16_t port, const SocketOptions &opt,
++  int type, unsigned addr_slot)
++  : ServerSocketImpl(type, addr_slot), _listener(proto.listen(port)) {}
+
+ template <typename Protocol>
+ int DPDKServerSocketImpl<Protocol>::accept(ConnectedSocket *s, const SocketOptions &options, entity_addr_t *out, Worker *w) {
+@@ -229,7 +230,8 @@ class DPDKWorker : public Worker {
+
+  public:
+   explicit DPDKWorker(CephContext *c, unsigned i): Worker(c, i) {}
+-  virtual int listen(entity_addr_t &addr, const SocketOptions &opts, ServerSocket *) override;
++  virtual int listen(entity_addr_t &addr, unsigned addr_slot,
++		     const SocketOptions &opts, ServerSocket *) override;
+   virtual int connect(const entity_addr_t &addr, const SocketOptions &opts, ConnectedSocket *socket) override;
+   void arp_learn(ethernet_address l2, ipv4_address l3) {
+     _impl->_inet.learn(l2, l3);
+diff --git a/src/msg/async/dpdk/TCP.cc b/src/msg/async/dpdk/TCP.cc
+index c6397709b1..26f29e10f7 100644
+--- a/src/msg/async/dpdk/TCP.cc
++++ b/src/msg/async/dpdk/TCP.cc
+@@ -153,9 +153,10 @@ bool ipv4_tcp::forward(forward_hash& out_hash_data, Packet& p, size_t off)
+ }
+
+ int tcpv4_listen(tcp<ipv4_traits>& tcpv4, uint16_t port, const SocketOptions &opts,
+-                 int type, ServerSocket *sock)
++                 int type, unsigned addr_slot, ServerSocket *sock)
+ {
+-  auto p = new DPDKServerSocketImpl<tcp<ipv4_traits>>(tcpv4, port, opts, type);
++  auto p = new DPDKServerSocketImpl<tcp<ipv4_traits>>(tcpv4, port, opts,
++						      type, addr_slot);
+   int r = p->listen();
+   if (r < 0) {
+     delete p;
+diff --git a/src/msg/async/dpdk/DPDK.h b/src/msg/async/dpdk/DPDK.h
+index fa12af6b27..6bb52973e0 100644
+--- a/src/msg/async/dpdk/DPDK.h
++++ b/src/msg/async/dpdk/DPDK.h
+@@ -833,7 +833,7 @@ class DPDKDevice {
+   subscription<Packet> receive(unsigned cpuid, std::function<int (Packet)> next_packet) {
+     auto sub = _queues[cpuid]->_rx_stream.listen(std::move(next_packet));
+     _queues[cpuid]->rx_start();
+-    return std::move(sub);
++    return sub;
+   }
+   ethernet_address hw_address() {
+     struct ether_addr mac;
+@@ -849,7 +849,7 @@ class DPDKDevice {
+   std::unique_ptr<DPDKQueuePair> init_local_queue(CephContext *c, EventCenter *center, string hugepages, uint16_t qid) {
+     std::unique_ptr<DPDKQueuePair> qp;
+     qp = std::unique_ptr<DPDKQueuePair>(new DPDKQueuePair(c, center, this, qid));
+-    return std::move(qp);
++    return qp;
+   }
+   unsigned hash2qid(uint32_t hash) {
+     // return hash % hw_queues_count();
+diff --git a/src/msg/async/dpdk/Packet.h b/src/msg/async/dpdk/Packet.h
+index db9cd2a764..f929da3178 100644
+--- a/src/msg/async/dpdk/Packet.h
++++ b/src/msg/async/dpdk/Packet.h
+@@ -125,7 +125,7 @@ class Packet {
+       n->rss_hash.construct(old->rss_hash);
+       std::copy(old->frags, old->frags + old->_nr_frags, n->frags);
+       old->copy_internal_fragment_to(n.get());
+-      return std::move(n);
++      return n;
+     }
+
+     static std::unique_ptr<impl> copy(impl* old) {
+@@ -134,7 +134,7 @@ class Packet {
+
+     static std::unique_ptr<impl> allocate_if_needed(std::unique_ptr<impl> old, size_t extra_frags) {
+       if (old->_allocated_frags >= old->_nr_frags + extra_frags) {
+-        return std::move(old);
++        return old;
+       }
+       return copy(old.get(), std::max<size_t>(old->_nr_frags + extra_frags, 2 * old->_nr_frags));
+     }

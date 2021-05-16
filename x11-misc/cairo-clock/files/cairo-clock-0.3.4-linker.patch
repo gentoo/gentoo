@@ -1,0 +1,22 @@
+From 9e1575324da26ef15143ab2dd38f61af222576b4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mirco=20M=C3=BCller?= <macslow@gmail.com>
+Date: Thu, 9 Feb 2017 01:02:03 +0100
+Subject: [PATCH] Updated linker-options so ld is happy.
+
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7057198..fd88852 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,7 +1,7 @@
+ bin_PROGRAMS = cairo_clock
+ transform = s/_/-/g
+ 
+-cairo_clock_LDFLAGS = -Wl, --export-dynamic
++cairo_clock_LDFLAGS = -Wl,-export-dynamic
+ 
+ cairo_clock_LDADD =	\
+ 	$(GLIB_LIBS)	\

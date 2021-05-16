@@ -5,12 +5,4 @@
 			<email>vdr@gentoo.org</email>
 			<name>Gentoo VDR Project</name>
 		</maintainer>
-		<longdescription lang="en">
-			The Plugin knows is used the 
-			PowerMate of Griffin to the VDR to bind.
-		</longdescription>
-		<longdescription lang="de">
-			Das Plugin kann benutzt werden den PowerMate von Griffin 
-			an den VDR zu binden.
-		</longdescription>
 </pkgmetadata>

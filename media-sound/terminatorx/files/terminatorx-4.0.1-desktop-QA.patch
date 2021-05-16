@@ -1,0 +1,12 @@
+--- a/terminatorX.desktop
++++ b/terminatorX.desktop
+@@ -8,5 +8,5 @@ Comment=Versatile DJ scratching and mixing application.
+ Terminal=false
+ Type=Application
+ Icon=terminatorX
+-Categories=Application;AudioVideo;
++Categories=AudioVideo;
+ StartupNotify=true
+-- 
+2.26.2
+

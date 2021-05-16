@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 8a526f0..88b90b3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@ u2ps: u2ps.o u2ps_opts.o u2ps_data.o u2ps_file.o u2ps_page.o u2ps_pswr.o \
+ ttf2pt42: ttf2pt42.o warn.o
+ 
+ %: %.o
+-	$(CC) -o $@ $(filter %.o,$^)
++	$(CC) -o $@ $(filter %.o,$^) ${LDFLAGS}
+ 
+ .c.o:
+ 	$(CC) $(CFLAGS) -o $@ -c $<

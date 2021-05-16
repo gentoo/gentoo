@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<longdescription lang="en">
+		Instantly make your loops show a progress meter - just wrap 
+		any iterator with "tqdm(iterator)", and you're done!
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">tqdm</remote-id>
+		<remote-id type="github">tqdm/tqdm</remote-id>
+		<bugs-to>https://github.com/tqdm/tqdm/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,13 @@
+diff --git a/lib/exabgp/application/healthcheck.py b/lib/exabgp/application/healthcheck.py
+index a4f6b8d1..2b4e928e 100644
+--- a/lib/exabgp/application/healthcheck.py
++++ b/lib/exabgp/application/healthcheck.py
+@@ -184,7 +184,7 @@ def loopback_ips(label, label_only):
+         # Use "ip" (ifconfig is not able to see all addresses)
+         ipre = re.compile(r"^(?P<index>\d+):\s+(?P<name>\S+)\s+inet6?\s+" r"(?P<ip>[\da-f.:]+)/(?P<mask>\d+)\s+.*")
+         labelre = re.compile(r".*\s+lo:(?P<label>\S+).*")
+-        cmd = subprocess.Popen("/sbin/ip -o address show dev lo".split(), shell=False, stdout=subprocess.PIPE)
++        cmd = subprocess.Popen("ip -o address show dev lo".split(), shell=False, stdout=subprocess.PIPE)
+     else:
+         # Try with ifconfig
+         ipre = re.compile(

@@ -5,4 +5,15 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<use>
+		<flag name="dom4j">Includes org.jaxen.dom4j package</flag>
+		<flag name="jdom">Includes org.jaxen.jdom package</flag>
+		<flag name="xom">Includes org.jaxen.xom package</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jaxen-xpath/jaxen</remote-id>
+		<doc>https://github.com/jaxen-xpath/jaxen/wiki/Jaxen-Wiki</doc>
+		<bugs-to>https://github.com/jaxen-xpath/jaxen/issues</bugs-to>
+		<changelog>https://github.com/jaxen-xpath/jaxen/wiki/Changelog</changelog>
+	</upstream>
 </pkgmetadata>

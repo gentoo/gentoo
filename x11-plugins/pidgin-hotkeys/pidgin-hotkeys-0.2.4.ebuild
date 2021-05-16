@@ -1,10 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="2"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Pidgin plugin to define global hotkeys for various actions"
 HOMEPAGE="http://pidgin-hotkeys.sourceforge.net/"
@@ -12,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="net-im/pidgin[gtk]
@@ -20,8 +17,3 @@ RDEPEND="net-im/pidgin[gtk]
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog README NEWS || die
-}

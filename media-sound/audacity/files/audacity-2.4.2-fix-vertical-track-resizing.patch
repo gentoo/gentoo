@@ -1,0 +1,14 @@
+--- a/src/menus/ViewMenus.cpp	2020-05-27 17:49:20.645538517 +0500
++++ b/src/menus/ViewMenus.cpp	2020-05-27 17:49:26.844538493 +0500
+@@ -4,10 +4,10 @@
+ #include "../CommonCommandFlags.h"
+ #include "../Menus.h"
+ #include "../Prefs.h"
++#include "../ProjectWindow.h"
+ #include "../Project.h"
+ #include "../ProjectHistory.h"
+ #include "../ProjectSettings.h"
+-#include "../ProjectWindow.h"
+ #include "../Track.h"
+ #include "../TrackInfo.h"
+ #include "../TrackPanel.h"

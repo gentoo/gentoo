@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -74,35 +74,46 @@ endif
  
  CC=gcc
@@ -85,8 +85,8 @@
  
  targets: $(TARGETS)
  
---- src/linux/qgl_linux.c
-+++ src/linux/qgl_linux.c
+--- a/src/linux/qgl_linux.c
++++ b/src/linux/qgl_linux.c
 @@ -3006,13 +3006,17 @@ qboolean QGL_Init( const char *dllname )
  //				dllname, dlerror());
  
@@ -108,8 +108,8 @@
  		}
  		Com_Printf ("Using %s for OpenGL...", fn); 
  	} else {
---- src/linux/vid_so.c
-+++ src/linux/vid_so.c
+--- a/src/linux/vid_so.c
++++ b/src/linux/vid_so.c
 @@ -237,13 +237,17 @@ qboolean VID_LoadRefresh( char *name )
  	//regain root
  	seteuid(saved_euid);
@@ -154,8 +154,8 @@
  }
  
  /*****************************************************************************/
---- src/qcommon/files.c
-+++ src/qcommon/files.c
+--- a/src/qcommon/files.c
++++ b/src/qcommon/files.c
 @@ -60,6 +60,7 @@ typedef struct pack_s
  
  char	fs_gamedir[MAX_OSPATH];
@@ -195,8 +195,8 @@
  
  	//
  	// then add a '.quake2/baseq2' directory in home directory by default
---- src/qcommon/qcommon.h
-+++ src/qcommon/qcommon.h
+--- a/src/qcommon/qcommon.h
++++ b/src/qcommon/qcommon.h
 @@ -74,6 +74,13 @@ Foundation, Inc., 59 Temple Place - Suit
  
  #endif

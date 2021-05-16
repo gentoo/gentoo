@@ -3,8 +3,8 @@
 * don't strip binaries
 * fix install paths
 
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,11 +1,8 @@
  
  include Makefile.inc
@@ -19,16 +19,16 @@
  
  clean:
  	(cd src && $(MAKE) $@)
---- src/Makefile
-+++ src/Makefile
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -5,8 +5,8 @@
  CFLAGS=-g -Wall -Werror `pkg-config --cflags gtk+-2.0 gthread-2.0` -DGTK_DISABLE_DEPRECATED -DAPWAL_DEBUG
  LDFLAGS=`pkg-config --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
  else
 -CFLAGS=-O2 `pkg-config --cflags gtk+-2.0 gthread-2.0`
 -LDFLAGS=-O2 `pkg-config --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
-+CPPFLAGS=`pkg-config --cflags gtk+-2.0 gthread-2.0`
-+LIBS=`pkg-config --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
++CPPFLAGS=`${PKG_CONFIG} --cflags gtk+-2.0 gthread-2.0`
++LIBS=`${PKG_CONFIG} --libs gtk+-2.0 gthread-2.0` `xml2-config --libs`
  endif
  
  OBJS=main.o app.o launcher.o editor.o property.o \

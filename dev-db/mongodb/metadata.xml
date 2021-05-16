@@ -5,15 +5,6 @@
 		<email>ultrabug@gentoo.org</email>
 		<name>Alexys Jacob</name>
 	</maintainer>
-    <maintainer type="person">
-        <email>julien@thebault.co</email>
-        <name>Lujeni</name>
-        <description>Proxy-Maintainer, assign bugs</description>
-    </maintainer>
-	<maintainer type="project">
-        <email>proxy-maint@gentoo.org</email>
-        <name>Proxy Maintainers</name>
-    </maintainer>
 	<longdescription lang="en">
 	MongoDB (from "humongous") is a scalable, high-performance, open source,
 	schema-free, document-oriented database. Written in C++, MongoDB features:
@@ -23,8 +14,7 @@
 	and powerful queries).
 	</longdescription>
 	<use>
-		<flag name="mms-agent">Install the MongoDB Monitoring Service agent</flag>
-		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) 
-			from <pkg>app-admin/mongo-tools</pkg></flag>
+		<flag name="lto">Adds support for link time optimization</flag>
+		<flag name="tools">Install the MongoDB tools (mongoimport, mongodump...) from <pkg>app-admin/mongo-tools</pkg></flag>
 	</use>
 </pkgmetadata>

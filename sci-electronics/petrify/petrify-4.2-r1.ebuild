@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -22,7 +21,7 @@ QA_PREBUILT="/opt/petrify/petrify"
 
 S="${WORKDIR}"/${PN}
 
-src_install () {
+src_install() {
 	exeinto /opt/petrify
 	doexe bin/petrify lib/petrify.lib
 	dosym petrify /opt/petrify/draw_astg

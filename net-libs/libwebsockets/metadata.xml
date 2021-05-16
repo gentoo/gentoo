@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>jaco@uls.co.za</email>
 		<name>Jaco Kroon</name>
-		<description>Proxy-Maintainer. Assign bugs to him</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>yuchen.xie@live.com</email>
-		<name>Yuchen Xie</name>
-		<description>Proxy-Maintainer. Assign bugs to him</description>
+	<maintainer type="person" proxied="yes">
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="person" proxied="yes">
+		<email>luka.perkov@sartura.hr</email>
+		<name>Luka Perkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-		libwebsockets is a C library designed to make development of websockets clients and servers easier (possible).
-	</longdescription>
 	<use>
-		<flag name="ssl">Include SSL support (default <pkg>dev-libs/openssl</pkg>)</flag>
-		<flag name="zlib">Include zlib support</flag>
-		<flag name="static-libs">Build the static version of the library</flag>
-		<flag name="http2">Compile with support for http2</flag>
-		<flag name="ipv6">Compile with support for ipv6</flag>
-		<flag name="server">The server part of the library</flag>
-		<flag name="client">The client part of the library</flag>
+		<flag name="access-log">Support generating Apache-compatible access logs</flag>
+		<flag name="client">The client part of the library and libwebsockets-test-client</flag>
+		<flag name="generic-sessions">With the Generic Sessions plugin</flag>
+		<flag name="http2">Support the HTTP/2 protocol</flag>
+		<flag name="http-proxy">Support for rewriting HTTP proxying</flag>
+		<flag name="lejp">With the Lightweight JSON Parser</flag>
+		<flag name="libev">Support event loops via dev-libs/libev</flag>
+		<flag name="libevent">Support event loops via dev-libs/libevent</flag>
+		<flag name="libuv">Support asynchronous I/O via dev-libs/libuv</flag>
+		<flag name="mbedtls">Use mbedTLS replacement for OpenSSL</flag>
+		<flag name="peer-limits">Track peers and restrict resources a single peer can allocate</flag>
+		<flag name="server-status">Support json + jscript server monitoring</flag>
+		<flag name="smtp">Provide SMTP support</flag>
+		<flag name="sqlite3">Require SQLITE3 support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">warmcat/libwebsockets</remote-id>
+	</upstream>
 </pkgmetadata>

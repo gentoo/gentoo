@@ -13,4 +13,7 @@ A parser module with : A SAC like api and A CSSOM like api.
 A CSS2 selection engine
 An XML/CSS layout/rendering engine
 </longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gnome:libcroco</remote-id>
+</upstream>
 </pkgmetadata>

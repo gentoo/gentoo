@@ -1,11 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 DESCRIPTION="Server's configuration management and monitoring tool"
-HOMEPAGE="http://sourceforge.net/projects/pmsvn/"
+HOMEPAGE="https://sourceforge.net/projects/pmsvn/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"

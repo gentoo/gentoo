@@ -1,0 +1,110 @@
+From 82942523b2db5143a9da0f9d2f8ec83a26c8d5b0 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentfredric@gmail.com>
+Date: Sun, 10 Sep 2017 13:33:32 +1200
+Subject: Fix linking/compiling for bam-0.1-legacy
+
+---
+ Build.PL             | 14 +++++++-------
+ c_bin/bam2bedgraph.c |  2 +-
+ c_bin/makefile       |  6 +++---
+ lib/Bio/DB/Sam.xs    |  6 +++---
+ 4 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/Build.PL b/Build.PL
+index 685815f..882f231 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -4,11 +4,10 @@ use strict;
+ use Module::Build;
+ use Module::Load::Conditional qw(can_load);
+ 
+-my $HeaderFile = "bam.h";
+-my $LibFile    = "libbam.a";
+-my $ReadLine;
+-
+-my ($sam_include,$sam_lib) = find_sam(); # may exit with error here
++my ($sam_include,$sam_lib) = do {
++  ($ENV{"SAM_INCLUDE"} || die "SAM_INCLUDE not set"),
++  ($ENV{"SAM_LIB"} || die "SAM_LIB not set")
++};
+ 
+ my $class = Module::Build->subclass(code=><<EOF);
+     sub process_c_bin_files {
+@@ -39,7 +38,7 @@ my $build = $class->new(
+     dist_abstract      => 'Perl interface to SamTools library for DNA sequencing',
+     license            => 'perl',
+     include_dirs       => [$sam_include],
+-    extra_linker_flags => ["-L$sam_lib",'-lbam','-lpthread','-lz'],
++    extra_linker_flags => ["-L$sam_lib",'-lbam-0.1-legacy','-lpthread','-lz'],
+ 
+     extra_compiler_flags=>[
+ 
+@@ -67,7 +66,7 @@ $build->add_build_element('c_bin');
+ $build->create_build_script;
+ 
+ exit 0;
+-
++=for non-gentoo
+ sub find_sam {
+     my ($sam_include,$sam_lib);
+ 
+@@ -162,6 +161,7 @@ sub prompt {
+     $ReadLine->addhistory($in) if $in =~ /\S/;
+     return $in;
+ }
++=cut
+ 
+ sub _samtools {
+     $ENV{SAMTOOLS} ||
+diff --git a/c_bin/bam2bedgraph.c b/c_bin/bam2bedgraph.c
+index 298e9a8..91218fa 100644
+--- a/c_bin/bam2bedgraph.c
++++ b/c_bin/bam2bedgraph.c
+@@ -1,5 +1,5 @@
+ #include <stdio.h>
+-#include "sam.h"
++#include "bam-0.1-legacy/sam.h"
+ 
+ typedef struct {
+   uint32_t ltid;
+diff --git a/c_bin/makefile b/c_bin/makefile
+index 9aef917..0abbb4c 100644
+--- a/c_bin/makefile
++++ b/c_bin/makefile
+@@ -1,5 +1,5 @@
+-CC=		gcc
+-CFLAGS=		-g -Wall -O2 -fPIC
++CC?=		gcc
++CFLAGS?=		-g -Wall -O2 -fPIC
+ DFLAGS=		-D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_USE_KNETFILE -D_CURSES_LIB=1
+ INCLUDES=
+ LIBPATH=
+@@ -14,7 +14,7 @@ PROG=		bam2bedgraph
+ all:$(PROG)
+ 
+ bam2bedgraph: bam2bedgraph.o
+-	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBPATH) -lbam -lpthread -lm -lz
++	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS) $(LIBPATH) -lbam-0.1-legacy -lpthread -lm -lz
+ 
+ clean:
+ 	rm -f *.o $(PROG)
+diff --git a/lib/Bio/DB/Sam.xs b/lib/Bio/DB/Sam.xs
+index 023f655..86410fb 100644
+--- a/lib/Bio/DB/Sam.xs
++++ b/lib/Bio/DB/Sam.xs
+@@ -25,9 +25,9 @@
+ 
+ #include <unistd.h>
+ #include <math.h>
+-#include "bam.h"
+-#include "khash.h"
+-#include "faidx.h"
++#include "bam-0.1-legacy/bam.h"
++#include "bam-0.1-legacy/khash.h"
++#include "bam-0.1-legacy/faidx.h"
+ 
+ /* stolen from bam_aux.c */
+ #define MAX_REGION 1<<29
+-- 
+2.26.2
+

@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Framebuffer screenshot utility"
-HOMEPAGE="http://fbgrab.monells.se/"
-SRC_URI="http://fbgrab.monells.se/${P}.tar.gz"
+HOMEPAGE="https://fbgrab.monells.se/"
+SRC_URI="https://fbgrab.monells.se/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ~ppc64 ~s390 ~sparc x86"
 IUSE=""
 
 RDEPEND="media-libs/libpng:=
@@ -21,6 +20,7 @@ RDEPEND="media-libs/libpng:=
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	sed -i -e "s:-g::" Makefile || die "sed failed"
 }
 

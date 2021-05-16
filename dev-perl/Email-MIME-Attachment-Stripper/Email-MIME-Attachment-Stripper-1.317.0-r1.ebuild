@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -16,13 +15,12 @@ LICENSE="|| ( GPL-2 GPL-3 )" # GPL-2+
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Email-MIME-1.900
 	>=dev-perl/Email-MIME-ContentType-1.012"
 DEPEND="${RDEPEND}
 	test? (
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 		dev-perl/Capture-Tiny
 	)"
 

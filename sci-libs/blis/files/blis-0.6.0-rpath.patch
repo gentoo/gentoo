@@ -1,0 +1,13 @@
+diff --git a/common.mk b/common.mk
+index ef0acfb..e1ce31d 100644
+--- a/common.mk
++++ b/common.mk
+@@ -527,7 +527,7 @@ LIBBLIS_L      := $(LIBBLIS_SO)
+ LIBBLIS_LINK   := $(LIBBLIS_SO_PATH)
+ ifeq ($(IS_WIN),no)
+ # For Linux and OS X: set rpath property of shared object.
+-LDFLAGS        += -Wl,-rpath,$(BASE_LIB_PATH)
++#LDFLAGS        += -Wl,-rpath,$(BASE_LIB_PATH)
+ endif
+ endif
+ endif

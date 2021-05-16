@@ -1,20 +1,15 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=3
+EAPI=7
 
-DESCRIPTION="Generate random passwords using the in-kernel cryptographically secure random number generator"
+DESCRIPTION="Generate random passwords using the in-kernel cryptographically"
 HOMEPAGE="https://www.kernel.org/pub/software/utils/admin/ranpwd/"
-SRC_URI="mirror://kernel/software/utils/admin/${PN}/${P}.tar.gz"
+SRC_URI="https://www.kernel.org/pub/software/utils/admin/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ppc ppc64 x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
 
 src_test() {
 	einfo "generating random passwords"
@@ -25,5 +20,5 @@ src_test() {
 }
 
 src_install() {
-	emake INSTALLROOT="${D}" install || die
+	emake INSTALLROOT="${D}" install
 }

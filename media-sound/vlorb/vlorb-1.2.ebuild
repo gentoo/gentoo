@@ -1,8 +1,9 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-DESCRIPTION="a high quality Audio CD to audio file encoder"
+EAPI=7
+
+DESCRIPTION="A high quality Audio CD to audio file encoder"
 HOMEPAGE="http://jk.yazzy.org/projects/vlorb/"
 SRC_URI="http://jk.yazzy.org/projects/vlorb/releases/${P}.tar.gz"
 
@@ -11,14 +12,17 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE="ogg"
 
-DEPEND=">=media-sound/cdparanoia-3.9.8
-	>=dev-perl/CDDB-1.12
-	ogg? ( >=media-sound/vorbis-tools-1.0.1 )"
+RDEPEND="
+	dev-lang/perl
+	dev-perl/CDDB
+	media-sound/cdparanoia
+	ogg? ( media-sound/vorbis-tools )"
 
 src_compile() { :; }
 
 src_install() {
-	dodoc ChangeLog README
 	dobin vlorb
+
+	einstalldocs
 	doman vlorb.1
 }

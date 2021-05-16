@@ -1,0 +1,23 @@
+--- a/input-pad/window-gtk.c
++++ b/input-pad/window-gtk.c
+@@ -5462,7 +5462,7 @@
+ 
+     app = INPUT_PAD_GTK_APPLICATION (window_data);
+ 
+-    g_return_if_fail (app->window != NULL);
++    g_return_val_if_fail (app->window != NULL, 0);
+ 
+     return gtk_widget_get_visible (GTK_WIDGET (app->window));
+ }
+@@ -5661,8 +5661,9 @@
+ {
+     InputPadGtkApplication *app;
+ 
+-    g_return_if_fail (window_data != NULL &&
+-                      INPUT_PAD_IS_GTK_APPLICATION (window_data));
++    g_return_val_if_fail (window_data != NULL &&
++                          INPUT_PAD_IS_GTK_APPLICATION (window_data),
++                          -1);
+ 
+     app = INPUT_PAD_GTK_APPLICATION (window_data);
+ 

@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>prometheanfire@gentoo.org</email>
-		<name>Matthew Thode</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>alunduil@gentoo.org</email>
-		<name>Alex Brandt</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
-	</maintainer>
-	<longdescription lang="en">
-    Package provides configuration and customization of cloud instance.
+  <maintainer type="person">
+    <email>prometheanfire@gentoo.org</email>
+    <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>eva@gentoo.org</email>
+    <name>Gilles Dartiguelongue</name>
+  </maintainer>
+  <longdescription lang="en">
+    Cloud-init is the industry standard multi-distribution method for cross-platform cloud instance initialization. It is supported across all major public cloud providers, provisioning systems for private cloud infrastructure, and bare-metal installations.
   </longdescription>
-	<upstream>
-		<remote-id type="launchpad">cloud-init</remote-id>
-	</upstream>
+  <upstream>
+    <remote-id type="launchpad">cloud-init</remote-id>
+  </upstream>
 </pkgmetadata>

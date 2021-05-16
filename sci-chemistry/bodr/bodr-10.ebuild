@@ -1,11 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 DESCRIPTION="The Blue Obelisk Data Repository listing element and isotope properties"
-HOMEPAGE="http://sourceforge.net/projects/bodr"
+HOMEPAGE="https://sourceforge.net/projects/bodr"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
@@ -18,7 +17,7 @@ RDEPEND=""
 
 DOCS=( "THANKS" "AUTHORS" "README" "ChangeLog" )
 
-src_prepare(){
+src_prepare() {
 	sed -i -e "s/COPYING//g" Makefile.* || die
 }
 

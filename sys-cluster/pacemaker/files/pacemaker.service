@@ -1,5 +1,0 @@
-service {
-        # Load the Pacemaker Cluster Resource Manager
-        name: pacemaker
-        ver:  1
-}

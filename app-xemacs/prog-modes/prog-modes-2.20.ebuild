@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=6
 
 SLOT="0"
-IUSE=""
 DESCRIPTION="Support for various programming languages"
-PKG_CAT="standard"
+XEMACS_PKG_CAT="standard"
 
 RDEPEND="app-xemacs/mail-lib
 app-xemacs/xemacs-devel
@@ -23,6 +23,6 @@ app-xemacs/ilisp
 app-xemacs/sh-script
 app-xemacs/cedet-common
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="SDL app to test joysticks and game controllers"
@@ -11,7 +10,7 @@ SRC_URI="mirror://sourceforge/sdljoytest/SDLJoytest-GL-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[joystick,opengl,video]
@@ -21,7 +20,10 @@ RDEPEND=${DEPEND}
 
 S=${WORKDIR}/SDLJoytest-GL
 
+PATCHES=("${FILESDIR}"/${P}-no-common.patch)
+
 src_prepare() {
+	default
 	emake clean
 	sed -i -e 's:/usr/local:/usr:' joytest.h || die
 	sed -i -e 's:SDL/::' *.c || die

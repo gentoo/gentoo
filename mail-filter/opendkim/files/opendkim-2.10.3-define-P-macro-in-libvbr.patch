@@ -1,0 +1,40 @@
+From 50a91575cee8d08682f090d2d6bdb4806eccfbcd Mon Sep 17 00:00:00 2001
+From: Wynn Wolf Arbor <wolf@oriole.systems>
+Date: Wed, 10 Jun 2020 09:37:03 +0200
+Subject: [PATCH] Define __P() macro in libvbr
+
+Definitions for this macro have been added throughout the codebase in
+commits 91e7407d, 705948fd, 227fa252, 842c1733, and b730bdc0, but one
+was still missing from libvbr. glibc contains a definition for legacy
+reasons, but other libcs might not. Particularly, the musl libc does not
+contain it, leading to build errors when enabling support for VBR.
+
+Add a definition for __P() to vbr.h to fix this.
+---
+ libvbr/vbr.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/libvbr/vbr.h b/libvbr/vbr.h
+index 4bef1f36..3bcb9212 100644
+--- a/libvbr/vbr.h
++++ b/libvbr/vbr.h
+@@ -12,6 +12,16 @@
+ /* system includes */
+ #include <sys/types.h>
+
++#ifdef __STDC__
++# ifndef __P
++#  define __P(x)  x
++# endif /* ! __P */
++#else /* __STDC__ */
++# ifndef __P
++#  define __P(x)  ()
++# endif /* ! __P */
++#endif /* __STDC__ */
++
+ /* strings */
+ #define	VBR_ALL			"all"
+ #define	VBR_INFOHEADER		"VBR-Info"
+--
+2.27.0
+

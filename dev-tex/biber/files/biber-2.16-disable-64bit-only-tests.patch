@@ -1,0 +1,45 @@
+Disable Tests which works only on 64bit architecture
+because they tests int overflows.
+From: Jonas Licht <jonas.licht@gmail.com>
+Bug: https://github.com/plk/biber/issues/349
+Bug: https://bugs.gentoo.org/780879
+
+diff --git a/t/dateformats.t b/t/dateformats.t
+index 9c179f06..d22ffcf6 100644
+--- a/t/dateformats.t
++++ b/t/dateformats.t
+@@ -4,7 +4,7 @@ use warnings;
+ use utf8;
+ no warnings 'utf8';
+ 
+-use Test::More tests => 56;
++use Test::More tests => 48;
+ use Test::Differences;
+ unified_diff;
+ 
+@@ -879,16 +879,6 @@ $bibentries->del_entry('unspec2');
+ $biber->prepare;
+ $out = $biber->get_output_obj;
+ 
+-# Test negative dates and eras
+-eq_or_diff($out->get_output_entry('era1', $main), $era1, 'Date meta information - 1');
+-eq_or_diff($out->get_output_entry('era2', $main), $era2, 'Date meta information - 2');
+-eq_or_diff($out->get_output_entry('era3', $main), $era3, 'Date meta information - 3');
+-eq_or_diff($out->get_output_entry('era4', $main), $era4, 'Date meta information - 4');
+-
+-# Test range markers
+-eq_or_diff($out->get_output_entry('range1', $main), $range1, 'Range - 1');
+-eq_or_diff($out->get_output_entry('range2', $main), $range2, 'Range - 2');
+-
+ # Test seasons
+ eq_or_diff($out->get_output_entry('season1', $main), $season1, 'Seasons - 1');
+ 
+@@ -904,8 +894,6 @@ eq_or_diff($bibentries->entry('open1')->get_field('labeldatesource'), '', 'Open
+ eq_or_diff($bibentries->entry('open2')->get_field('labeldatesource'), '', 'Open - 2');
+ 
+ # Test long year formats
+-eq_or_diff($bibentries->entry('y1')->get_field('year'), '17000002', 'Extended years - 1');
+-eq_or_diff($bibentries->entry('y2')->get_field('year'), '-17000002', 'Extended years - 2');
+ eq_or_diff($bibentries->entry('y3')->get_field('year'), undef, 'Extended years - 3');
+ 
+ # Scripts

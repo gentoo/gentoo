@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,12 +10,12 @@ inherit java-pkg-2 java-pkg-simple
 MY_P="gnu.regexp-${PV}"
 
 DESCRIPTION="GNU regular expression package for Java"
-HOMEPAGE="http://savannah.gnu.org/projects/gnu-regexp"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://savannah.gnu.org/projects/gnu-regexp"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE=""
 
 CDEPEND="dev-java/java-getopt:1"

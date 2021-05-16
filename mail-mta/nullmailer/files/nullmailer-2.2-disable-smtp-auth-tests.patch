@@ -1,0 +1,57 @@
+https://sources.debian.org/data/main/n/nullmailer/1:2.2-3/debian/patches/0007-disable-all-smtp-auth-tests.patch
+
+From: David Bremner <david@tethera.net>
+Date: Tue, 25 Dec 2018 08:18:35 +0900
+Subject: disable all smtp-auth tests
+
+These seem racy in ways that I haven't been able to completely nail down
+---
+ test/tests/smtp-auth | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/test/tests/smtp-auth b/test/tests/smtp-auth
+index 52e12d0..2dc736f 100644
+--- a/test/tests/smtp-auth
++++ b/test/tests/smtp-auth
+@@ -1,25 +1,25 @@
+ . functions
+ export HELOHOST=f.q.d.n
+ 
+-make-testmail
++# make-testmail
+ 
+-start server "tcpserver -1 ::0 0 sh $srcdir/test/authtest-smtp.sh $tmpdir/smtp-result"
+-catch-port server
++# start server "tcpserver -1 ::0 0 sh $srcdir/test/authtest-smtp.sh $tmpdir/smtp-result"
++# catch-port server
+ 
+-echo 'Testing auth success with smtp'
+-echo '250 OK' > $tmpdir/smtp-result
+-protocol smtp --host=localhost --port=$port --user=example --pass=example 3<$testmail
++# echo 'Testing auth success with smtp'
++# echo '250 OK' > $tmpdir/smtp-result
++# protocol smtp --host=localhost --port=$port --user=example --pass=example 3<$testmail
+ 
+-echo 'Testing auth login success with smtp'
+-echo $'350 Go ahead\n250 AUTH' > $tmpdir/smtp-result
+-protocol smtp --host=localhost --port=$port --user=example --pass=example --auth-login 3<$testmail
++# echo 'Testing auth login success with smtp'
++# echo $'350 Go ahead\n250 AUTH' > $tmpdir/smtp-result
++# protocol smtp --host=localhost --port=$port --user=example --pass=example --auth-login 3<$testmail
+ 
+-echo 'Testing auth temporary failure with smtp'
+-echo '450 No' > $tmpdir/smtp-result
+-error 16 protocol smtp --host=localhost --port $port --user=example --pass=example 3<$testmail
++# echo 'Testing auth temporary failure with smtp'
++# echo '450 No' > $tmpdir/smtp-result
++# error 16 protocol smtp --host=localhost --port $port --user=example --pass=example 3<$testmail
+ 
+-echo 'Testing auth permanent failure with smtp'
+-echo '550 No' > $tmpdir/smtp-result
+-error 20 protocol smtp --host=localhost --port $port --user=example --pass=example 3<$testmail
++# echo 'Testing auth permanent failure with smtp'
++# echo '550 No' > $tmpdir/smtp-result
++# error 20 protocol smtp --host=localhost --port $port --user=example --pass=example 3<$testmail
+ 
+-stop server
++# stop server

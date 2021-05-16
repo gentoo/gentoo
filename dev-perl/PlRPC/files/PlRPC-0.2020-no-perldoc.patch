@@ -1,0 +1,27 @@
+From d5df770e01a68a8f90c406a7018c820514fd7371 Mon Sep 17 00:00:00 2001
+From: Michael Cummings <mcummings@gentoo.org>
+Date: Tue, 26 Jun 2007 04:02:12 +1200
+Subject: Fix perldoc generation permissions bug
+
+Bizarre bug that showed up randomly here, but Cardoe had it full time.
+
+Bug: https://bugs.gentoo.org/183157
+---
+ Makefile.PL | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 22e04c5..c332ffe 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -86,7 +86,6 @@ sub postamble {
+ pm_to_blib: README
+ 
+ README: lib/RPC/PlServer.pm
+-\tperldoc -t lib/RPC/PlServer.pm >README
+ 
+ END_OF_POSTAMBLE
+ }
+-- 
+2.15.1
+

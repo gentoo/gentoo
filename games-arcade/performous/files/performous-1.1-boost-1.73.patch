@@ -1,0 +1,11 @@
+--- a/game/surface.cc	2021-01-18 14:22:05.876604740 +0300
++++ b/game/surface.cc	2021-01-18 14:23:08.908716258 +0300
+@@ -135,7 +135,7 @@
+ 	bitmap.resize(1, 1);
+ 	target->load(bitmap);
+ 	// Ask the loader to retrieve the image
+-	ldr->push(target, Job(name, boost::bind(&T::load, target, _1)));
++	ldr->push(target, Job(name, boost::bind(&T::load, target, boost::placeholders::_1)));
+ }
+ 
+ Surface::Surface(fs::path const& filename) { loader(this, filename); }

@@ -1,0 +1,21 @@
+--- a/runtime/backtrace.c
++++ b/runtime/backtrace.c
+@@ -28,7 +28,7 @@
+ #include "caml/fail.h"
+ 
+ /* The table of debug information fragments */
+-struct ext_table caml_debug_info;
++extern struct ext_table caml_debug_info;
+ 
+ CAMLexport int32_t caml_backtrace_active = 0;
+ CAMLexport int32_t caml_backtrace_pos = 0;
+--- a/runtime/startup_nat.c
++++ b/runtime/startup_nat.c
+@@ -44,7 +44,6 @@
+ #endif
+ 
+ extern int caml_parser_trace;
+-CAMLexport header_t caml_atom_table[256];
+ char * caml_code_area_start, * caml_code_area_end;
+ struct ext_table caml_code_fragments_table;
+ 

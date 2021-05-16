@@ -10,15 +10,10 @@ Starting with gcc-4.8, there's a -fuse-ld flag that can be used to select
 between bfd & gold.  Make sure we pass it through to the linking stage.
 
 * build-aux/ltmain.in (func_mode_link): Pass -fuse-ld=* flags through.
----
- build-aux/ltmain.in | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
-index 2a5aaad..4c24d5d 100644
 --- a/build-aux/ltmain.in
 +++ b/build-aux/ltmain.in
-@@ -5383,10 +5383,11 @@ func_mode_link ()
+@@ -5363,10 +5363,11 @@
        # -specs=*             GCC specs files
        # -stdlib=*            select c++ std lib with clang
        # -fsanitize=*         Clang/GCC memory and address sanitizer
@@ -31,13 +26,9 @@ index 2a5aaad..4c24d5d 100644
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
-
-patch the generated file too to keep help2man from generating man pages
-https://bugs.gentoo.org/556512
-
 --- a/build-aux/ltmain.sh
 +++ b/build-aux/ltmain.sh
-@@ -5383,10 +5383,11 @@ func_mode_link ()
+@@ -7275,10 +7275,11 @@
        # -specs=*             GCC specs files
        # -stdlib=*            select c++ std lib with clang
        # -fsanitize=*         Clang/GCC memory and address sanitizer
@@ -50,5 +41,3 @@ https://bugs.gentoo.org/556512
          func_quote_for_eval "$arg"
  	arg=$func_quote_for_eval_result
          func_append compile_command " $arg"
--- 
-2.3.2

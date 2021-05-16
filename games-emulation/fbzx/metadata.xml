@@ -5,8 +5,7 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<longdescription>
-		FBZX is a Sinclair Spectrum emulator, designed to work at full screen
-		using the FrameBuffer.
-	</longdescription>
+	<upstream>
+		<remote-id type="github">rastersoft/fbzx</remote-id>
+	</upstream>
 </pkgmetadata>

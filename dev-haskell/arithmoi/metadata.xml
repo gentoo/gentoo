@@ -16,4 +16,7 @@
 		for efficiency. Portability is on the to-do list (with
 		low priority, however).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">cartazio/arithmoi</remote-id>
+	</upstream>
 </pkgmetadata>

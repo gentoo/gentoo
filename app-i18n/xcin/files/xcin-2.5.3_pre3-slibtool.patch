@@ -1,0 +1,37 @@
+commit 376d5276758b7eb2ee2b5e11d60f2105aac263f2
+Author: orbea <orbea@riseup.net>
+Date:   Sat Apr 10 16:40:33 2021 -0700
+
+    build: Fix linking with slibtool.
+    
+    Linking with the static libraries is not ideal, but since
+    that is what is provided...
+
+diff --git a/src/Makefile.in b/src/Makefile.in
+index 62e6154..ac15131 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -6,8 +6,8 @@ top_srcdir	= @top_srcdir@
+ include $(top_srcdir)/Rules
+ 
+ INC	= ${xcininc} ${intl_inc} ${x_includes} -I${ximd_inc}
+-LIB	= ${xcinlib} -lXimd -lim_comm lib/libxcin.la \
+-	  ${x_libraries} ${locale_lib} ${dl_lib} ${intl_lib} -lm
++LIB	= lib/libxcin.la lib/libim_comm.a lib/libXimd.a ${x_libraries} \
++	  ${locale_lib} ${dl_libs} ${intl_lib} -lm
+ 
+ BIN	= xcin
+ SRC	= xcin_main.c module.c gui.c xim.c xim_IC.c fkey.c gui_main.c \
+diff --git a/src/util/cin2tab/Makefile.in b/src/util/cin2tab/Makefile.in
+index a2ad6f8..0663c5e 100644
+--- a/src/util/cin2tab/Makefile.in
++++ b/src/util/cin2tab/Makefile.in
+@@ -3,7 +3,7 @@ top_srcdir = @top_srcdir@
+ include $(top_srcdir)/Rules
+ 
+ INC = $(x_includes) $(xcininc) $(intl_inc)
+-LIB = $(xcinlib) -lim_comm ../../lib/libxcin.la $(locale_lib) $(intl_lib) -lm
++LIB = ../../lib/libxcin.la ../../lib/libim_comm.a $(locale_lib) $(intl_lib) -lm
+ 
+ BIN = cin2tab
+ SRC = cin2tab.c syscin.c gencin.c bimscin.c

@@ -1,0 +1,13 @@
+Needed because libtomcrypt expects this symbol to be available
+https://github.com/libtom/tomsfastmath/commit/81530c207da8b3a43867da14df7d79d2cdf96978.patch
+--- a/libtfm.symbols
++++ b/libtfm.symbols
+@@ -16,6 +16,7 @@ fp_gcd
+ fp_ident
+ fp_invmod
+ fp_isprime
++fp_isprime_ex
+ fp_lcm
+ fp_lshd
+ fp_mod
+

@@ -15,7 +15,4 @@
 		only if they support BangPatterns. If you need it to
 		work with other compilers, send a feature request.
 	</longdescription>
-	<upstream>
-		<remote-id type="bitbucket">dafis/stringsearch</remote-id>
-	</upstream>
 </pkgmetadata>

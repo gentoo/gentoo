@@ -1,7 +1,6 @@
-diff -Naur vdr-2.1.7.orig/Makefile vdr-2.1.7/Makefile
---- vdr-2.1.7.orig/Makefile	2015-01-18 12:37:45.506034673 +0100
-+++ vdr-2.1.7/Makefile	2015-01-18 12:38:34.086037162 +0100
-@@ -116,7 +116,7 @@
+--- a/Makefile
++++ b/Makefile
+@@ -124,7 +124,7 @@
  VDRVERSION = $(shell sed -ne '/define VDRVERSION/s/^.*"\(.*\)".*$$/\1/p' config.h)
  APIVERSION = $(shell sed -ne '/define APIVERSION/s/^.*"\(.*\)".*$$/\1/p' config.h)
  
@@ -10,7 +9,7 @@ diff -Naur vdr-2.1.7.orig/Makefile vdr-2.1.7/Makefile
  
  # Implicit rules:
  
-@@ -170,7 +170,7 @@
+@@ -179,7 +179,7 @@
  
  PODIR     = po
  LOCALEDIR = locale
@@ -19,7 +18,7 @@ diff -Naur vdr-2.1.7.orig/Makefile vdr-2.1.7/Makefile
  I18Nmo    = $(addsuffix .mo, $(foreach file, $(I18Npo), $(basename $(file))))
  I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr.mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
  I18Npot   = $(PODIR)/vdr.pot
-@@ -193,7 +193,7 @@
+@@ -202,7 +202,7 @@
  
  install-i18n: i18n
  	@mkdir -p $(DESTDIR)$(LOCDIR)
@@ -28,7 +27,7 @@ diff -Naur vdr-2.1.7.orig/Makefile vdr-2.1.7/Makefile
  
  # The 'include' directory (for plugins):
  
-@@ -255,7 +255,7 @@
+@@ -264,7 +264,7 @@
  
  # Install the files (note that 'install-pc' must be first!):
  
@@ -37,16 +36,13 @@ diff -Naur vdr-2.1.7.orig/Makefile vdr-2.1.7/Makefile
  
  # VDR binary:
  
-@@ -267,12 +267,13 @@
+@@ -276,12 +276,10 @@
  
  install-dirs:
  	@mkdir -p $(DESTDIR)$(VIDEODIR)
 -	@mkdir -p $(DESTDIR)$(CONFDIR)
 -	@mkdir -p $(DESTDIR)$(ARGSDIR)
 -	@mkdir -p $(DESTDIR)$(CACHEDIR)
-+#	@mkdir -p $(DESTDIR)$(CONFDIR)
-+#	@mkdir -p $(DESTDIR)$(ARGSDIR)
-+#	@mkdir -p $(DESTDIR)$(CACHEDIR)
  	@mkdir -p $(DESTDIR)$(RESDIR)
  
  install-conf:
@@ -54,14 +50,25 @@ diff -Naur vdr-2.1.7.orig/Makefile vdr-2.1.7/Makefile
  	@cp -pn *.conf $(DESTDIR)$(CONFDIR)
  
  # Documentation:
-@@ -299,8 +300,11 @@
+@@ -289,9 +287,9 @@
+ install-doc:
+ 	@mkdir -p $(DESTDIR)$(MANDIR)/man1
+ 	@mkdir -p $(DESTDIR)$(MANDIR)/man5
+-	@gzip -c vdr.1 > $(DESTDIR)$(MANDIR)/man1/vdr.1.gz
+-	@gzip -c vdr.5 > $(DESTDIR)$(MANDIR)/man5/vdr.5.gz
+-	@gzip -c svdrpsend.1 > $(DESTDIR)$(MANDIR)/man1/svdrpsend.1.gz
++	@cp vdr.1 $(DESTDIR)$(MANDIR)/man1/
++	@cp vdr.5 $(DESTDIR)$(MANDIR)/man5/
++	@cp svdrpsend.1 $(DESTDIR)$(MANDIR)/man1/
+ 
+ # Plugins:
+ 
+@@ -308,8 +306,9 @@
  # Includes:
  
  install-includes: include-dir
 -	@mkdir -p $(DESTDIR)$(INCDIR)
 -	@cp -pLR include/vdr include/libsi $(DESTDIR)$(INCDIR)
-+#	@mkdir -p $(DESTDIR)$(INCDIR)
-+#	@cp -pLR include/vdr include/libsi $(DESTDIR)$(INCDIR)
 +	@mkdir -p $(DESTDIR)$(INCDIR)/vdr $(DESTDIR)$(INCDIR)/vdr/libsi
 +	@cp -pLR include/vdr $(DESTDIR)$(INCDIR)
 +	@cp -pLR include/libsi Make.config $(DESTDIR)$(INCDIR)/vdr

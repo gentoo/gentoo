@@ -1,0 +1,13 @@
+Index: hector_pose_estimation_core/src/measurements/poseupdate.cpp
+===================================================================
+--- hector_pose_estimation_core.orig/src/measurements/poseupdate.cpp
++++ hector_pose_estimation_core/src/measurements/poseupdate.cpp
+@@ -382,7 +382,7 @@ double PoseUpdate::updateInternal(State
+   ROS_DEBUG_STREAM_NAMED("poseupdate", "alpha = " << alpha << ", beta = " << beta);
+ 
+   if (max_error > 0.0) {
+-    double error2 = error.transpose() * Ix * (Ix + Iy).inverse() * Iy * error;
++    double error2 = error.transpose().dot( Ix * (Ix + Iy).inverse() * Iy * error);
+     if (error2 > max_error * max_error) {
+       if (!jump_on_max_error_ || !jump_function) {
+         ROS_WARN_STREAM_NAMED("poseupdate", "Ignoring poseupdate for " << text << " as the error [ " << error.transpose() << " ], |error| = " << sqrt(error2) << " sigma exceeds max_error!");

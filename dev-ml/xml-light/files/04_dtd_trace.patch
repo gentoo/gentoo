@@ -1,0 +1,18 @@
+--- a/dtd.ml
++++ b/dtd.ml
+@@ -267,7 +267,7 @@
+ exception TmpResult of dtd_result
+ 
+ let prove_child dtd tag = 
+-	trace dtd tag;
++	(*trace dtd tag;*)
+ 	match dtd.current with
+ 	| DTDEmpty -> raise (Prove_error EmptyExpected)
+ 	| DTDAny -> ()
+@@ -505,4 +505,4 @@
+ 		sprintf "<!ELEMENT %s %s>" tag (etype_to_string etype)
+ 
+ ;;
+-to_string_ref := to_string
+\ No newline at end of file
++to_string_ref := to_string

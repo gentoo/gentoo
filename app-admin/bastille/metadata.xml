@@ -5,7 +5,6 @@
 		<email>hardened@gentoo.org</email>
 		<name>Gentoo Hardened</name>
 	</maintainer>
-	<longdescription>The Bastille Hardening System attempts to "harden" or "tighten" Unix operating systems.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">bastille-linux</remote-id>
 	</upstream>

@@ -12,6 +12,7 @@
   <longdescription lang="en">
     Oslo concurrency library has utilities for safely running multi-thread, multi-process applications using locking mechanisms and for running external processes.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">oslo.concurrency</remote-id>
   </upstream>

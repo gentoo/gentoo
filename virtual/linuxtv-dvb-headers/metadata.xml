@@ -8,4 +8,5 @@
 		accessing the DVB-hardware to record/watch tv or
 		use internet over satellite connection.
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>

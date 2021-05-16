@@ -1,0 +1,28 @@
+--- a/scripts/Dpkg/Compression.pm
++++ b/scripts/Dpkg/Compression.pm
+@@ -81,20 +81,12 @@
+ };
+ 
+ #
+-# XXX: The gzip package in Debian at some point acquired a Debian-specific
+-# --rsyncable option via a vendor patch. Which is not present in most of the
+-# major distributions, dpkg downstream systems, nor gzip upstream, who have
+-# stated they will most probably not accept it because people should be using
+-# pigz instead.
++# If gzip supports --rsyncable (version >=1.7 or the Debian patched variant),
++# we use it. Sadly a non-compliant gzip will not complain about the argument
++# when it does not understand it, so we can only print out the usage and infer
++# --rsyncable support from that.
+ #
+-# This option should have never been accepted in dpkg, ever. But removing it
+-# now would probably cause demands for tarring and feathering. In addition
+-# we cannot use the Dpkg::Vendor logic because that would cause circular
+-# module dependencies. The whole affair is pretty disgusting really.
+-#
+-# Check the perl Config to discern Debian and hopefully derivatives too.
+-#
+-if ($Config{cf_by} eq 'Debian Project') {
++if (system("gzip --help 2>&1 | grep -q -- --rsyncable") == 0) {
+     push @{$COMP->{gzip}->{comp_prog}}, '--rsyncable';
+ }
+ 

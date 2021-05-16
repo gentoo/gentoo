@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>lezsakdomi1@gmail.com</email>
+		<name>Domonkos Lezsák</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	
+	<longdescription lang="en">
+		X Steps Recorder is a clone of PSR for Windows, a program that allows users
+		to make a recording of all of the steps they took. (It's like a screen
+		recorder except it doesn't record a video.)
+
+		The main differences are that this only runs on Linux, that it records
+		your keystrokes too (!), and that it saves the output as standard html
+		(base64-uri-encoded images) rather than mhtml. This allows for easy
+		editing of the resultant file, such as to remove passwords you typed
+		(which is why psr doesn't record keystrokes in the first place).
+	</longdescription>
+	
+	<use>
+		<flag name="cursor">Capture mouse cursor using <pkg>x11-misc/xdotool</pkg>, and place them on the screenshots using <pkg>media-gfx/imagemagick</pkg></flag>
+	</use>
+
+	<upstream>
+		<remote-id type="github">nonnymoose/xsr</remote-id>
+	</upstream>
+</pkgmetadata>

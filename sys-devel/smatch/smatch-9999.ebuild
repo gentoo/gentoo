@@ -1,18 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://repo.or.cz/${PN}.git
-		http://repo.or.cz/r/${PN}.git"
-	inherit git-2
+	inherit git-r3
+	EGIT_REPO_URI="https://repo.or.cz/r/${PN}.git"
 else
 	SRC_URI="http://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gentoo/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	S=${WORKDIR}/${PN}
 fi
 
 DESCRIPTION="static analysis tool for C"
@@ -24,12 +23,14 @@ IUSE=""
 
 RDEPEND="dev-db/sqlite"
 DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${PN}
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^CFLAGS =/{s:=:+=:;s:-O2 -finline-functions:${CPPFLAGS}:}' \
+		-e 's:pkg-config:$(PKG_CONFIG):' \
 		Makefile || die
 }
 
@@ -41,6 +42,7 @@ _emake() {
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		LD='$(CC)' \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		HAVE_GTK2=no \
 		HAVE_LLVM=no \
 		HAVE_LIBXML=no \

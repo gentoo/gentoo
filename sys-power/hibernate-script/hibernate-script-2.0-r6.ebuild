@@ -1,16 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils
-
-PATCH_VERSION="4"
+PATCH_VERSION="5"
 
 DESCRIPTION="Hibernate script supporting multiple suspend methods"
-HOMEPAGE="http://www.tuxonice.net/"
-SRC_URI="http://www.tuxonice.net/downloads/all/${P}.tar.gz
+HOMEPAGE="https://gitlab.com/nigelcunningham/Hibernate-Script"
+SRC_URI="http://tuxonice.nigelcunningham.com.au/downloads/all/${P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCH_VERSION}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -19,14 +16,17 @@ KEYWORDS="amd64 ppc x86"
 
 IUSE="vim-syntax"
 
-DEPEND=""
 RDEPEND="!<media-gfx/splashutils-1.5.2"
 
-DOCS=( CHANGELOG README SCRIPTLET-API hibernate.vim )
+DOCS=(
+	CHANGELOG
+	README
+	SCRIPTLET-API
+)
 
-src_prepare() {
-	epatch "${WORKDIR}/${PV}/"*.patch
-}
+PATCHES=(
+	"${WORKDIR}/${PV}"
+)
 
 src_install() {
 	BASE_DIR="${D}" \
@@ -36,7 +36,7 @@ src_install() {
 		"${S}/install.sh" || die "Install failed"
 
 	# hibernate-ram will default to using ram.conf
-	dosym /usr/sbin/hibernate /usr/sbin/hibernate-ram
+	dosym hibernate /usr/sbin/hibernate-ram
 
 	newinitd init.d/hibernate-cleanup.sh hibernate-cleanup
 

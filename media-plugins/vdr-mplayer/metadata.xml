@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-  <email>vdr@gentoo.org</email>
-  <name>Gentoo VDR Project</name>
-  <description>
-	Please contacts maintainer before you something change.
-  </description>
-</maintainer>
-  <longdescription>
-	VDR Plugin to play video files, the plugin use for this the mplayer.
-	All supported file types in mplayer will be played.
-  </longdescription>
+	<maintainer type="project">
+		<email>vdr@gentoo.org</email>
+		<name>Gentoo VDR Project</name>
+		<description>
+			Please contact maintainer before you change something.
+		</description>
+	</maintainer>
+	<longdescription>
+		VDR Plugin to play video files, the plugin uses mplayer for this.
+		All supported file types in mplayer can be played.
+	</longdescription>
 </pkgmetadata>

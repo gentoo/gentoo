@@ -1,5 +1,5 @@
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -64,14 +64,12 @@
   ,dnl default action of assigning shell value
   with_games_dir="${runtime_datadir}/games"
@@ -15,8 +15,8 @@
  
  
  echo $ac_n "ordering crap from http://www.amazon.com/gp/registry/296ST2NHEBO0Z" 1>&6
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -1,6 +1,4 @@
 -pkgdata_PROGRAMS = snipe2d.@CPU_IS@.dynamic snipe2d.@CPU_IS@.static
 -BUILT_SOURCES = snipe2d

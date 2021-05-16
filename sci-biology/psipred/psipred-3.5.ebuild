@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils prefix toolchain-funcs versionator
+inherit epatch prefix toolchain-funcs versionator
 
 #MY_P="${PN}$(delete_all_version_separators)"
 MY_P="${PN}${PV}"
@@ -19,11 +18,12 @@ LICENSE="psipred"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-shells/tcsh
 	sci-biology/ncbi-tools
-	|| ( sci-biology/update-blastdb sci-biology/ncbi-tools++ )"
+	sci-biology/update-blastdb"
 DEPEND=""
 
 S="${WORKDIR}"/${PN}

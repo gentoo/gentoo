@@ -7,5 +7,54 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Curses-UI</remote-id>
+    <remote-id type="cpan-module">Curses::UI</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Buttonbox</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Calendar</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Checkbox</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Color</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Common</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Container</remote-id>
+    <remote-id type="cpan-module">Curses::UI::ContainerWidget</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Basic</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Calendar</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Dirbrowser</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Error</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Filebrowser</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Progress</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Question</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Dialog::Status</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Label</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::chinese</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::czech</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::dutch</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::english</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::french</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::german</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::italian</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::japanese</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::norwegian</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::polish</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::portuguese</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::russian</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::slovak</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::spanish</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Language::turkish</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Listbox</remote-id>
+    <remote-id type="cpan-module">Curses::UI::MenuListbox</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Menubar</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Notebook</remote-id>
+    <remote-id type="cpan-module">Curses::UI::PasswordEntry</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Popupmenu</remote-id>
+    <remote-id type="cpan-module">Curses::UI::PopupmenuListbox</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Progressbar</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Radiobuttonbox</remote-id>
+    <remote-id type="cpan-module">Curses::UI::SearchEntry</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Searchable</remote-id>
+    <remote-id type="cpan-module">Curses::UI::TextEditor</remote-id>
+    <remote-id type="cpan-module">Curses::UI::TextEntry</remote-id>
+    <remote-id type="cpan-module">Curses::UI::TextViewer</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Widget</remote-id>
+    <remote-id type="cpan-module">Curses::UI::Window</remote-id>
   </upstream>
 </pkgmetadata>

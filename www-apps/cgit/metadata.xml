@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zx2c4@gentoo.org</email>
-		<name>Jason A. Donenfeld</name>
+		<email>bman@gentoo.org</email>
+		<name>Aaron Bauman</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>web-apps@gentoo.org</email>
@@ -18,6 +18,5 @@
 	<use>
 		<flag name="highlight">Enable source code highlighting</flag>
 		<flag name="lua">Enable support for Lua scripting</flag>
-		<flag name="jit">If the lua flag is enabled, jit uses LuaJIT instead of vanilla Lua</flag>
 	</use>
 </pkgmetadata>

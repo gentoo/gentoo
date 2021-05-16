@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Extensible NMEA-0183 (GPS) data parser in standard C.
+		A directly linkable library intended for applications
+		that want to embed GPS support, like app-misc/lcd4linux.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/nmeap/bugs/</bugs-to>
+		<remote-id type="sourceforge">nmeap</remote-id>
+	</upstream>
+</pkgmetadata>

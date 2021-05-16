@@ -1,0 +1,35 @@
+From 009a27f86c882e229ea8e9cc7efdff9f6f5f751b Mon Sep 17 00:00:00 2001
+From: Matt Chorman <matt@legalizefreedom.org>
+Date: Wed, 21 Jan 2004 03:02:36 +1300
+Subject: Patch issues with newer MakeMaker
+
+Bug: https://bugs.gentoo.org/34940
+Bug: https://bugs.gentoo.org/70000
+---
+ pTk/Makefile.PL | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/pTk/Makefile.PL b/pTk/Makefile.PL
+index d035029..3d66a0f 100755
+--- a/pTk/Makefile.PL
++++ b/pTk/Makefile.PL
+@@ -234,12 +234,10 @@ sub MY::postamble {
+ my $self = shift;
+ my $dep = $self->Tk::MMutil::mTk_postamble;
+ 
+-$dep .= $self->dir_target(@{$self->{'dir_targets'}}); 
+-
+-$dep .= "config :: " . join(" \\\n\t",map($self->catfile($_,".exists"),@{$self->{'dir_targets'}})) .
+-        "\n\t".$self->{NOECHO}."\$(NOOP)\n";
+-
+-
++if ($Tk::MMutil::IsWin32 or ($win_arch eq 'MSWin32' and $^O eq 'cygwin'))
++ {
++  my $cc = $Config{'cc'};
++  }
+ $dep . '
+ 
+ 	'.$self->{NOECHO}.'$(NOOP)
+-- 
+2.16.2
+

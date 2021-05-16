@@ -1,0 +1,25 @@
+From b48ee895ce7fc1db1dce20dac5115ec4c60f75fa Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 18 Aug 2020 15:03:59 +0200
+Subject: [PATCH] sidebar: Add missing STATIC keyword (similar to #1085)
+
+Fixes unresolved soname dependency after install.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/libs/sidebar/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libs/sidebar/CMakeLists.txt b/src/libs/sidebar/CMakeLists.txt
+index 4332b8f..dc6be0e 100644
+--- a/src/libs/sidebar/CMakeLists.txt
++++ b/src/libs/sidebar/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(Sidebar
++add_library(Sidebar STATIC
+     container.cpp
+     proxyview.cpp
+     view.cpp
+-- 
+2.28.0
+

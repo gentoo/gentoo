@@ -7,7 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="cpan">Business-ISMN</remote-id>
-		<remote-id type="cpan-module">Business::ISBM::Data</remote-id>
 		<remote-id type="cpan-module">Business::ISMN</remote-id>
+		<remote-id type="cpan-module">Business::ISMN::Data</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -6,12 +6,12 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  UNU.RAN  is an ANSI C library licensed under GPL. 
-  It contains universal (also called automatic or black-box) algorithms
-  that can generate random numbers from large classes of continuous or
-  discrete distributions, and also from practically all standard
-  distributions.
-</longdescription>
+		UNU.RAN  is an ANSI C library licensed under GPL.
+		It contains universal (also called automatic or black-box) algorithms
+		that can generate random numbers from large classes of continuous or
+		discrete distributions, and also from practically all standard
+		distributions.
+	</longdescription>
 	<use>
 		<flag name="rngstreams">Use <pkg>sci-mathematics/rngstreams</pkg> library</flag>
 		<flag name="prng">Use <pkg>sci-mathematics/prng</pkg> library</flag>

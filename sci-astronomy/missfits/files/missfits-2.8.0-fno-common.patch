@@ -1,0 +1,65 @@
+--- a/src/file.c
++++ b/src/file.c
+@@ -45,6 +45,8 @@
+ #include "prefs.h"
+ #include "xml.h"
+ 
++char    gstr[MAXCHAR];
++
+ /****** load_fitsfiles *******************************************************
+ PROTO	catstruct **load_fitsfiles(char *name, int *ncat, int * outcat,
+                                    filenum *filetype, int *headflag)
+--- a/src/fits/fitscat.h
++++ b/src/fits/fitscat.h
+@@ -333,6 +333,6 @@
+ 		warning(char *msg1, char *msg2);
+ 
+ 
+-int		bswapflag;
++extern int		bswapflag;
+ 
+ #endif
+--- a/src/fits/fitscheck.c
++++ b/src/fits/fitscheck.c
+@@ -38,6 +38,8 @@
+ #include "fitscat_defs.h"
+ #include "fitscat.h"
+ 
++int   bswapflag;
++
+ #define	ENCODE_OFFSET	0x30
+ unsigned int	exclude[13] = {0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40,
+ 				0x5b, 0x5c, 0x5d, 0x5e, 0x5f, 0x60};
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -30,7 +30,7 @@
+ #include	"types.h"
+ 
+ /*----------------------- miscellaneous variables ---------------------------*/
+-char		gstr[MAXCHAR];
++extern char		gstr[MAXCHAR];
+ 
+ /*------------------------------- functions ---------------------------------*/
+ extern	void	makeit(void),
+--- a/src/prefs.c
++++ b/src/prefs.c
+@@ -50,6 +50,8 @@
+ #include 	"prefs.h"
+ #include	"preflist.h"
+ 
++prefstruct  prefs;
++
+ /********************************* dumpprefs ********************************/
+ /*
+ Print the default preference parameters.
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -84,7 +84,7 @@
+   double	time_diff;		    /* Execution time */
+   }	prefstruct;
+ 
+-prefstruct	prefs;
++extern prefstruct	prefs;
+ 
+ /*----------------------------- Internal constants --------------------------*/
+ 

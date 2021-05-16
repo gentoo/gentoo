@@ -12,5 +12,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">pid</remote-id>
+    <remote-id type="github">trbs/pid</remote-id>
   </upstream>
 </pkgmetadata>

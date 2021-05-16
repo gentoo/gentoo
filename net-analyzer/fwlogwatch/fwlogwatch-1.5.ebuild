@@ -1,16 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic l10n toolchain-funcs
 
 DESCRIPTION="A packet filter and firewall log analyzer"
 HOMEPAGE="http://fwlogwatch.inside-security.de/"
-SRC_URI="${HOMEPAGE}sw/${P}.tar.bz2"
+SRC_URI="http://fwlogwatch.inside-security.de/sw/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 LICENSE="GPL-1"
 SLOT="0"
 IUSE="geoip nls zlib"
@@ -19,13 +18,15 @@ RDEPEND="
 	geoip? ( dev-libs/geoip )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	nls? ( sys-devel/gettext )
 "
 
 src_prepare() {
+	default
+
 	if use nls; then
 		strip-linguas -i po/
 		local lingua pofile
@@ -63,7 +64,7 @@ src_configure() {
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
+		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 	use nls && emake -C po
@@ -73,6 +74,7 @@ src_install() {
 	emake \
 		LOCALE_DIR="${D}/usr" INSTALL_DIR="${D}/usr" \
 		install
+
 	use nls && emake \
 		LOCALE_DIR="${D}/usr" INSTALL_DIR="${D}/usr" \
 		install-i18n

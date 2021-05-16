@@ -1,0 +1,60 @@
+--- rstudio-1.3.959-orig/src/cpp/desktop/CMakeLists.txt	2020-05-19 04:11:10.000000000 +1000
++++ rstudio-1.3.959/src/cpp/desktop/CMakeLists.txt	2020-05-24 17:15:47.039422975 +1000
+@@ -138,6 +138,13 @@
+ get_filename_component(QT_LIBRARY_PATH "${QT_BIN_DIR}/../lib"     ABSOLUTE CACHE)
+ get_filename_component(QT_INSTALL_PATH "${QT_BIN_DIR}/.."         ABSOLUTE CACHE)
+ 
++find_path(QTSINGLEAPPLIB_INCLUDE_DIR NAMES QtSingleApplication
++  PATH_SUFFIXES QtSolutions
++  PATHS
++  /usr/include/qt5)
++find_library(QTSINGLEAPPLIB Qt5Solutions_SingleApplication-2.6
++  libQt5Solutions_SingleApplication-2.6)
++
+ # disable clang warnings for qt sources
+ if(APPLE)
+    add_definitions(-Wno-unused-private-field
+@@ -156,7 +163,6 @@
+ 
+ set(MOC_DESKTOP_HEADER_FILES ${DESKTOP_HEADER_FILES})
+ list(REMOVE_ITEM MOC_DESKTOP_HEADER_FILES
+-  ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/qtsingleapplication/qtlockedfile.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/DesktopDetectRHome.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/DesktopOptions.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/DesktopRVersion.hpp
+@@ -225,8 +231,6 @@
+   DesktopSynctex.cpp
+   DesktopJobLauncherOverlay.cpp
+   RemoteDesktopSessionLauncherOverlay.cpp
+-  3rdparty/qtsingleapplication/qtsingleapplication.cpp
+-  3rdparty/qtsingleapplication/qtlocalpeer.cpp
+ )
+ 
+ if(WIN32)
+@@ -283,6 +287,7 @@
+   ${OPENSSL_INCLUDE_DIR}
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_BINARY_DIR}
++  ${QTSINGLEAPPLIB_INCLUDE_DIR}
+   ${EXT_SOURCE_DIR}
+   ${SESSION_SOURCE_DIR}/include
+   ${TESTS_INCLUDE_DIR}
+@@ -386,6 +391,7 @@
+    # set link dependencies
+    target_link_libraries(rstudio
+       ${RSTUDIO_QTMODULES}
++      ${QTSINGLEAPPLIB}
+       ${QT_LIBRARIES}
+       ${Boost_LIBRARIES}
+       rstudio-core
+--- rstudio-1.3.959-orig/src/cpp/desktop/DesktopPosixApplication.hpp	2020-05-19 04:11:10.000000000 +1000
++++ rstudio-1.3.959/src/cpp/desktop/DesktopPosixApplication.hpp	2020-05-24 17:13:22.050016953 +1000
+@@ -16,7 +16,7 @@
+ #ifndef DESKTOP_POSIX_APPLICATION_HPP
+ #define DESKTOP_POSIX_APPLICATION_HPP
+ 
+-#include "3rdparty/qtsingleapplication/QtSingleApplication"
++#include <QtSingleApplication>
+ 
+ #include "DesktopApplicationLaunch.hpp"
+ 

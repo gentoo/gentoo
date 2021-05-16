@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils java-pkg-2 java-ant-2 java-osgi
+inherit epatch java-pkg-2 java-ant-2 java-osgi
 
 DESCRIPTION="EL is the JSP 2.0 Expression Language Interpreter from Apache"
 HOMEPAGE="http://commons.apache.org/el/"
@@ -14,7 +13,7 @@ SRC_URI="mirror://apache/jakarta/commons/el/source/${P}-src.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 COMMON_DEP="

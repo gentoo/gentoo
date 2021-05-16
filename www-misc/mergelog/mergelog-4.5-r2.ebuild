@@ -1,26 +1,27 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils eutils
+inherit autotools
 
 DESCRIPTION="A utility to merge apache logs in chronological order"
-SRC_URI="mirror://sourceforge/mergelog/${P}.tar.gz"
 HOMEPAGE="http://mergelog.sourceforge.net"
+SRC_URI="mirror://sourceforge/mergelog/${P}.tar.gz"
 
-IUSE=""
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86"
+SLOT="0"
+KEYWORDS="amd64 ~arm64 ppc x86"
 
 RDEPEND="sys-libs/zlib"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS ChangeLog README)
 PATCHES=(
 	"${FILESDIR}"/${P}-splitlog.patch
 	"${FILESDIR}"/${P}-asneeded.patch
 )
+
+src_prepare() {
+	eapply_user
+	eautoreconf
+}

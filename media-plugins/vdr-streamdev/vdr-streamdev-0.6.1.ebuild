@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -9,13 +8,13 @@ inherit vdr-plugin-2
 VERSION="1580" # every bump, new version !
 
 DESCRIPTION="VDR Plugin: Client/Server and http streaming plugin"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-streamdev"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-streamdev"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="client +server"
+IUSE="client server"
 
 DEPEND=">=media-video/vdr-1.7.25"
 RDEPEND="${DEPEND}"
@@ -57,8 +56,7 @@ src_install() {
 		insinto /usr/share/vdr/rcscript
 		newins "${FILESDIR}"/rc-addon-0.6.0.sh plugin-streamdev-server.sh
 
-		insinto /etc/conf.d
-		newins "${FILESDIR}"/confd-0.6.0 vdr.streamdev-server
+		newconfd "${FILESDIR}"/confd-0.6.0 vdr.streamdev-server
 
 		insinto /etc/vdr/plugins/streamdev-server
 		newins streamdev-server/streamdevhosts.conf streamdevhosts.conf

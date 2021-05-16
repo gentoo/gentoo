@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -8,13 +7,13 @@ JAVA_PKG_IUSE="doc examples source"
 
 inherit java-pkg-2 java-ant-2
 
-DESCRIPTION="Small XML pull parser for constrained environments such as Applets, Personal Java or MIDP devices"
+DESCRIPTION="Small XML Pull Parser"
 HOMEPAGE="http://kxml.org/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}2-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="2"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 CDEPEND="dev-java/xpp3:0"
 

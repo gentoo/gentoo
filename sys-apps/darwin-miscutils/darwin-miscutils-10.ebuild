@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="6"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 # from 10.8
 MISC_VER=31
@@ -24,7 +23,7 @@ SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/misc_cmds-$
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 IUSE=""
 
 S=${WORKDIR}
@@ -38,6 +37,8 @@ src_prepare() {
 		"${S}"/adv_cmds-${MD_VER}/md/md.c || die
 	cp "${DISTDIR}"/adv_cmds-md-${MD_VER}.1 \
 		"${S}"/adv_cmds-${MD_VER}/md/md.1 || die
+
+	eapply_user
 }
 
 src_compile() {
@@ -52,7 +53,7 @@ src_compile() {
 	)
 
 	local TS=${S}/misc_cmds-${MISC_VER}
-	# tsort is provided by coreutils
+	# tsort is provided by corepatch
 	for t in leave units calendar; do
 		cd "${TS}/${t}"
 		echo "in ${TS}/${t}:"
@@ -72,7 +73,7 @@ src_compile() {
 	$(tc-getCC) ${flags[@]} -o cal calendar.o easter.o ncal.o || die "failed to compile cal"
 
 	TS=${S}/shell_cmds-${SHELL_VER}
-	# only pick those tools not provided by coreutils, findutils
+	# only pick those tools not provided by corepatch, findutils
 	for t in \
 		apply getopt hostname jot kill killall \
 		lastcomm renice script shlock time whereis;

@@ -1,0 +1,12 @@
+--- a/Makefile.old	2019-12-25 20:55:37.932303932 +0100
++++ b/Makefile	2019-12-25 20:55:58.584530808 +0100
+@@ -4,9 +4,6 @@
+ 
+ all: write-highscores docs
+ 
+-write-highscores: write-highscores.c
+-	gcc -s -o write-highscores write-highscores.c
+-
+ docs: html/wheel.png
+ html/wheel.png:
+ 	./makehtml

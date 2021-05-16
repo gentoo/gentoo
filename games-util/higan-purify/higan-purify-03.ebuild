@@ -1,65 +1,48 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib toolchain-funcs qmake-utils
+inherit toolchain-funcs
 
 MY_P=purify_v${PV}-source
-
 DESCRIPTION="Rom purifier for higan"
 HOMEPAGE="http://byuu.org/higan/"
 SRC_URI="https://higan.googlecode.com/files/${MY_P}.tar.xz"
+S="${WORKDIR}"/${MY_P}/purify
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="qt4"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-games/higan-ananke
-	x11-libs/libX11
-	!qt4? ( x11-libs/gtk+:2 )
-	qt4? ( >=dev-qt/qtgui-4.5:4 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	x11-libs/gtk+:2
+	x11-libs/libX11"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}/purify
-
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 7 || $(gcc-major-version) -lt 4 ]] ; then
-			eerror "You need at least sys-devel/gcc-4.7.0"
-			die "You need at least sys-devel/gcc-4.7.0"
-		fi
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-QA.patch
+	"${FILESDIR}"/${PN}-03-respect-CXX.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-QA.patch
+	default
+
 	sed -i \
 		-e "/handle/s#/usr/local/lib#/usr/$(get_libdir)#" \
 		nall/dl.hpp || die
-
-	# regenerate .moc if needed
-	if use qt4; then
-		cd phoenix/qt || die
-		 "$(qt4_get_bindir)"/moc -i -I. -o platform.moc platform.moc.hpp || die
-	fi
 }
 
 src_compile() {
-	if use qt4; then
-		mytoolkit="qt"
-	else
-		mytoolkit="gtk"
-	fi
+	tc-export CXX
 
 	emake \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		platform="x" \
 		compiler="$(tc-getCXX)" \
-		phoenix="${mytoolkit}"
+		phoenix="gtk"
 }
 
 src_install() {

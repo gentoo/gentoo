@@ -1,0 +1,30 @@
+From 33edaf1a021bc466aea7c6b0bfdd624b951a15ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Ketelaars?= <bjorn.ketelaars@hydroxide.nl>
+Date: Tue, 30 Jun 2020 07:10:28 +0200
+Subject: [PATCH] Move from freedb.org to gnudb.gnudb.org
+
+The freedb.org database of compact track listings has shut down. Any
+program functionality that tries to fetch from or submit data to
+freedb.org is broken now.
+
+An alternative service is available at gnudb.gnudb.org, see
+https://www.gnudb.org/
+
+Fixes https://redmine.audacious-media-player.org/issues/994
+---
+ src/cdaudio/cdaudio-ng.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cdaudio/cdaudio-ng.cc b/src/cdaudio/cdaudio-ng.cc
+index 6fd02de14..1b9c7bf1e 100644
+--- a/src/cdaudio/cdaudio-ng.cc
++++ b/src/cdaudio/cdaudio-ng.cc
+@@ -126,7 +126,7 @@ const char * const CDAudio::defaults[] = {
+  "use_cdtext", "TRUE",
+  "use_cddb", "TRUE",
+  "cddbhttp", "FALSE",
+- "cddbserver", "freedb.org",
++ "cddbserver", "gnudb.gnudb.org",
+  "cddbport", "8880",
+  nullptr};
+ 

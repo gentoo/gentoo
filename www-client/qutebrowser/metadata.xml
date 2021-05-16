@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>guillaumeseren@gmail.com</email>
+		<name>Guillaume Seren</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">The-Compiler/qutebrowser</remote-id>
+		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>
+	<use>
+		<flag name="scripts">Installs userscripts from the misc/userscripts
+			directory to /usr/share/qutebrowser/userscripts.</flag>
+	</use>
 </pkgmetadata>

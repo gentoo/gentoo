@@ -1,0 +1,114 @@
+--- a/src/client.c
++++ b/src/client.c
+@@ -37,7 +37,7 @@
+ 
+ int client_initialized = 0;
+ UDPsocket local_socket = NULL;
+-UDPpacket *packet;
++extern UDPpacket *packet;
+ 
+ #define PACKET_POOL_SIZE 20
+ 
+--- a/src/game_output.c
++++ b/src/game_output.c
+@@ -31,6 +31,11 @@
+ #include "go_sdl.h"
+ #include "go_gl.h"
+ 
++void (*game_output_handle_event)(game *g, int event, float x, float y, direction dir);
++void (*game_output_refresh)(game *g, SDL_Surface *out);
++void (*game_output_bigchange)(game *g);
++void (*game_output_exit)(game *g);
++
+ void game_output_init(game *g, int type)
+ {
+   switch(type) {
+--- a/src/game_output.h
++++ b/src/game_output.h
+@@ -38,10 +38,10 @@
+   GL
+ };
+ 
+-void (*game_output_handle_event)(game *g, int event, float x, float y, direction dir);
+-void (*game_output_refresh)(game *g, SDL_Surface *out);
+-void (*game_output_bigchange)(game *g);
+-void (*game_output_exit)(game *g);
++extern void (*game_output_handle_event)(game *g, int event, float x, float y, direction dir);
++extern void (*game_output_refresh)(game *g, SDL_Surface *out);
++extern void (*game_output_bigchange)(game *g);
++extern void (*game_output_exit)(game *g);
+ 
+ void game_output_init(game *g, int type);
+ 
+--- a/src/gi_sdl.c
++++ b/src/gi_sdl.c
+@@ -60,6 +60,7 @@
+ #define GI (*(gi_sdl_data*)g->input)
+ 
+ SDL_Joystick *js;
++gi_sdl_settings ks;
+ 
+ int gi_sdl_player_exists(game *g, int p)
+ {
+--- a/src/gi_sdl.h
++++ b/src/gi_sdl.h
+@@ -88,7 +88,7 @@
+   int joy_y[MAX_JOY];
+ } gi_sdl_settings;  
+ 
+-gi_sdl_settings ks;
++extern gi_sdl_settings ks;
+ 
+ int gi_sdl_player_exists(game *g, int p);
+ grid_int_position gi_sdl_player_grid_pos(game *g, int p);
+--- a/src/gui.h
++++ b/src/gui.h
+@@ -47,6 +47,6 @@
+ void gui_remove_object(int i);
+ void gui_clear();
+ 
+-int factor_h, factor_w;
++extern int factor_h, factor_w;
+ 
+ #endif
+--- a/src/lua.c
++++ b/src/lua.c
+@@ -22,6 +22,7 @@
+ }
+ */
+ 
++lua_State *L;
+ 
+ static int lua_write(lua_State *L)
+ {
+--- a/src/lua.h
++++ b/src/lua.h
+@@ -4,7 +4,7 @@
+ #include "lua/lua.h"
+ 
+ 
+-lua_State *L;
++extern lua_State *L;
+ 
+ int lua_init();
+ void lua_exit();
+--- a/src/main.c
++++ b/src/main.c
+@@ -44,6 +44,7 @@
+ #include "lua.h"
+ 
+ root_type root;
++int opengl;
+ 
+ void root_quit()
+ {
+--- a/src/main.h
++++ b/src/main.h
+@@ -44,6 +44,6 @@
+ 
+ void root_quit();
+ 
+-int opengl;
++extern int opengl;
+ 
+ #endif

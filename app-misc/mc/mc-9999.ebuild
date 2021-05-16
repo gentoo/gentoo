@@ -1,30 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/MidnightCommander/mc.git https://github.com/MidnightCommander/mc.git git://repo.or.cz/midnight-commander.git"
+	EGIT_REPO_URI="https://github.com/MidnightCommander/mc.git"
 	LIVE_ECLASSES="git-r3 autotools"
 	LIVE_EBUILD=yes
 fi
 
-inherit eutils flag-o-matic ${LIVE_ECLASSES}
-
-MY_P=${P/_/-}
+inherit flag-o-matic ${LIVE_ECLASSES}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
-	SRC_URI="http://www.midnight-commander.org/downloads/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+	SRC_URI="http://ftp.midnight-commander.org/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="http://www.midnight-commander.org"
+HOMEPAGE="https://www.midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+edit gpm mclib nls samba sftp +slang spell test X +xdg"
+IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
@@ -34,7 +31,7 @@ RDEPEND=">=dev-libs/glib-2.26.0:2
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
-	!slang? ( sys-libs/ncurses:0= )
+	!slang? ( sys-libs/ncurses:0=[unicode?] )
 	spell? ( app-text/aspell )
 	X? ( x11-libs/libX11
 		x11-libs/libICE
@@ -48,6 +45,14 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+RESTRICT="!test? ( test )"
+
+pkg_pretend() {
+	if use slang && use unicode ; then
+		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
+	fi
+}
+
 src_prepare() {
 	default
 
@@ -55,32 +60,39 @@ src_prepare() {
 }
 
 src_configure() {
-	local myscreen=ncurses
-	use slang && myscreen=slang
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags "-lnsl -lsocket"
 
-	local homedir=".mc"
-	use xdg && homedir="XDG"
-
-	econf \
-		--disable-silent-rules \
-		--disable-dependency-tracking \
-		$(use_enable nls) \
-		--enable-vfs \
-		$(use_enable kernel_linux vfs-undelfs) \
-		--enable-charset \
-		$(use_with X x) \
-		$(use_enable samba vfs-smb) \
-		$(use_enable sftp vfs-sftp) \
-		$(use_enable spell aspell) \
-		$(use_with gpm gpm-mouse) \
-		--with-screen=${myscreen} \
-		$(use_with edit internal-edit) \
-		$(use_enable mclib) \
-		$(use_enable test tests) \
-		--with-homedir=${homedir}
+	local myeconfargs=(
+		--enable-charset
+		--enable-vfs
+		--with-homedir=$(usex xdg 'XDG' '.mc')
+		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
+		$(use_enable kernel_linux vfs-undelfs)
+		# Today mclib does not expose any headers and is linked to
+		# single 'mc' binary. Thus there is no advantage of having
+		# a library. Let's avoid shared library altogether
+		# as it also conflicts with sci-libs/mc: bug #685938
+		--disable-mclib
+		$(use_enable nls)
+		$(use_enable samba vfs-smb)
+		$(use_enable sftp vfs-sftp)
+		$(use_enable spell aspell)
+		$(use_enable test tests)
+		$(use_with gpm gpm-mouse)
+		$(use_with X x)
+		$(use_with edit internal-edit)
+	)
+	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# CK_FORK=no to avoid using fork() in check library
+	# as mc mocks fork() itself: bug #644462.
+	#
+	# VERBOSE=1 to make test failures contain detailed
+	# information.
+	CK_FORK=no emake check VERBOSE=1
+}
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS doc/{FAQ,NEWS,README}
@@ -98,6 +110,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use spell && ! has_version app-dicts/aspell-en ; then
+		elog "'spell' USE flag is enabled however app-dicts/aspell-en is not installed."
+		elog "You should manually set 'spell_language' in the Misc section of ~/.config/mc/ini"
+		elog "It has to be set to one of your installed aspell dictionaries or 'NONE'"
+		elog
+	fi
 	elog "To enable exiting to latest working directory,"
 	elog "put this into your ~/.bashrc:"
 	elog ". ${EPREFIX}/usr/libexec/mc/mc.sh"

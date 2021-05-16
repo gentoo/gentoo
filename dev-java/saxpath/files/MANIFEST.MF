@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Extension-Name: org.saxpath
-Specification-Title: saxpth
-Specification-Version: 1.0 FCS
-Specification-Vendor: werken digital.
-Created-By: Ant 1.4.1
-Implementation-Vendor:  werken digital.
-Implementation-Version: 1.0
-Implementation-Title: saxpath

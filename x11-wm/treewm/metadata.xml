@@ -5,7 +5,6 @@
     <email>lordvan@gentoo.org</email>
     <name>Thomas Raschbacher</name>
   </maintainer>
-  <longdescription>WindowManager that arranges the windows in a tree not a list</longdescription>
   <upstream>
     <remote-id type="sourceforge">treewm</remote-id>
   </upstream>

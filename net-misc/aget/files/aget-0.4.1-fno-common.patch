@@ -1,0 +1,66 @@
+--- a/Aget.c
++++ b/Aget.c
+@@ -33,6 +33,8 @@ extern pthread_t hthread;
+ #include <errno.h>
+ extern int errno;
+ 
++extern time_t  t_start, t_finish;
++
+ 
+ void get(struct request *req)
+ {
+--- a/Head.c
++++ b/Head.c
+@@ -34,6 +34,8 @@
+ extern int errno;
+ extern int h_errno;
+ 
++time_t  t_start, t_finish;
++
+ #ifdef SOLARIS
+ extern const char *hstrerror(int);
+ #endif
+--- a/Misc.h
++++ b/Misc.h
+@@ -24,7 +24,7 @@ void Log(char *, ...);				/* Log 						*/
+ void updateProgressBar(float, float);
+ void handleHttpRetcode(char *);
+ 
+-time_t  t_start, t_finish;
++extern time_t  t_start, t_finish;
+ 
+ #endif
+ 
+--- a/Signal.c
++++ b/Signal.c
+@@ -16,6 +16,8 @@ extern struct request *req;
+ extern int bwritten;
+ extern pthread_mutex_t bwritten_mutex;
+ 
++sigset_t signal_set;
++
+ void * signal_waiter(void *arg)
+ {
+ 	int signal;
+--- a/Signal.h
++++ b/Signal.h
+@@ -4,7 +4,7 @@
+ #include <signal.h>
+ #include <pthread.h>
+ 
+-sigset_t signal_set;
++extern sigset_t signal_set;
+ 
+ void * signal_waiter(void *arg);
+ void sigint_handler(void);
+--- a/main.c
++++ b/main.c
+@@ -15,6 +15,8 @@
+ #include "main.h"
+ #include <errno.h>
+ 
++extern sigset_t signal_set;
++
+ int main(int argc, char **argv)
+ {
+ 	extern char *optarg;

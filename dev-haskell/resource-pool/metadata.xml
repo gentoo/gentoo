@@ -5,12 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A high-performance striped pooling abstraction for managing
-		flexibly-sized collections of resources such as database
-		connections.
-	</longdescription>
-	<upstream>
-		<remote-id type="github">bos/pool</remote-id>
-	</upstream>
 </pkgmetadata>

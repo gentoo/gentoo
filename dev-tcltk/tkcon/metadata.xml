@@ -6,12 +6,12 @@
 		<name>Gentoo Tcltk Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  tkcon is a replacement for the standard console that comes with
-  Tk. The console itself provides  more features than the standard
-  console. It is meant primarily to aid one when working with the
-  little details inside tcl and tk, giving UNIX users the GUI console
-  provided by default in the Mac and Windows Tk.
-</longdescription>
+		tkcon is a replacement for the standard console that comes with
+		Tk. The console itself provides  more features than the standard
+		console. It is meant primarily to aid one when working with the
+		little details inside tcl and tk, giving UNIX users the GUI console
+		provided by default in the Mac and Windows Tk.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">tkcon</remote-id>
 	</upstream>

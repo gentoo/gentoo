@@ -1,0 +1,18 @@
+Skip testlfs test which only runs on non 64-bit systems and fails
+on Gentoo due to a sandbox issue. Bug #603244
+
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -172,7 +172,11 @@ check: $(TESTALL_COMPONENTS) $(STDTEST_PORTABLE) $(STDTEST_NONPORTABLE)
+ 				fi; \
+ 			done; \
+ 	        else \
+-			./$$prog -v; \
++			if test "$$prog" = 'testall@EXEEXT@'; then \
++				./$$prog -v -x testlfs; \
++			else \
++				./$$prog -v; \
++			fi; \
+ 			status=$$?; \
+ 			if test $$status != 0; then \
+ 				teststatus=$$status; \

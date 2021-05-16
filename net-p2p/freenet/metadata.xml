@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">freenet/fred</remote-id>
 	</upstream>
+	<use>
+		<flag name="nss">Use nss for crypto operations, if it is the fastest way</flag>
+	</use>
 </pkgmetadata>

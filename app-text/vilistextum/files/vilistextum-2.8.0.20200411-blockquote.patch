@@ -1,0 +1,120 @@
+Many clients seem to use blockquote tags to flag quotes these days, so
+write them out as quotes, so they remain readable.
+
+--- a/src/html_tags.c	2019-10-23 16:25:27.000000000 +0200
++++ b/src/html_tags.c	2020-02-05 20:11:57.308596941 +0100
+@@ -261,6 +261,7 @@
+ 		line_break();
+ 	} else {
+ 		start_p();
++		quote++;
+ 	}
+ } /* html_pre */
+ 
+@@ -271,6 +272,7 @@
+ 		line_break();
+ 	} else {
+ 		paragraphen_ende();
++		quote -= quote != 0;
+ 	}
+ } /* html_pre_end */
+ 
+--- a/src/multibyte.h	2020-02-05 20:08:43.863715764 +0100
++++ b/src/multibyte.h	2020-02-05 20:12:34.401382354 +0100
+@@ -18,6 +18,7 @@
+  #define ATOI(n) wcstoi(n)
+ 
+  #define ONESPACE L" "
++ #define QUOTE L">"
+  #define WORT_PLUS_STRING(str) wort_plus_string(L##str)
+ 
+  #define STRSTR(haystack, needle) wcsstr(haystack, L##needle)
+@@ -43,6 +44,7 @@
+  #define ATOI(n) atoi(n)
+ 
+  #define ONESPACE " "
++ #define QUOTE ">"
+  #define WORT_PLUS_STRING(str) wort_plus_string(str)
+ 
+  #define STRSTR(haystack, needle) strstr(haystack, needle)
+--- a/src/text.c	2019-10-23 16:25:27.000000000 +0200
++++ b/src/text.c	2020-02-05 20:16:04.852164539 +0100
+@@ -28,6 +28,7 @@
+ int breite=76,
+ 	hr_breite=76,
+ 	paragraph=0,
++	quote=0,
+ 
+ 	tab=4,         /* tabulator */
+ 	spaces=0,      /* spaces at beginning of line */
+@@ -378,6 +379,12 @@
+ 			printf(" z0: zeilen_pos: %d\n",zeilen_pos);
+ #endif
+ 			print_zeile();
++			if (quote > 0)
++			{
++				i=0;
++				while (i<quote) { zeile_plus_wort(QUOTE,1,1); i++; }
++				zeile_plus_wort(ONESPACE,1,1);
++			}
+ 			i=0;
+ 			while (i<spaces) { zeile_plus_wort(ONESPACE,1,1); i++; }
+ 			if (orderedlist>0) { zeile_plus_wort(ONESPACE,1,1); }
+@@ -398,6 +405,12 @@
+ 			printf(" z2: zeilen_len: %d\n",zeilen_len);
+ 			printf(" z2: zeilen_pos: %d\n",zeilen_pos);
+ #endif
++			if (quote > 0)
++			{
++				i=0;
++				while (i<quote) { zeile_plus_wort(QUOTE,1,1); i++; }
++				zeile_plus_wort(ONESPACE,1,1);
++			}
+ 			i=0;
+ 			while (i<spaces) { zeile_plus_wort(ONESPACE,1,1); i++; }
+ 			if (orderedlist>0) { zeile_plus_wort(ONESPACE,1,1); }
+--- a/src/text.h	2019-10-23 16:25:27.000000000 +0200
++++ b/src/text.h	2020-02-05 20:18:40.792261818 +0100
+@@ -26,6 +26,7 @@
+ 
+ extern int tab;
+ extern int spaces;
++extern int quote;
+ 
+ void print_zeile();
+ int is_zeile_empty();
+--- a/tests/test_functions
++++ b/tests/test_functions
+@@ -12,6 +12,9 @@
+   rm -f testcases/$prefix.output.test
+   ../src/vilistextum 2>/dev/null $args testcases/$prefix.html testcases/$output_prefix.output.test
+ 
++  # remove (block)quotes
++  sed -i -e 's/^>\+ //' testcases/$output_prefix.output.test
++
+   diff >/dev/null testcases/$output_prefix.output testcases/$output_prefix.output.test
+   retval=$?
+   if [ $retval -ne 0 ]; then
+--- a/tests/testcases/utf-8-sampler.output
++++ b/tests/testcases/utf-8-sampler.output.test
+@@ -100,8 +100,8 @@
+ ვეპხის ტყაოსანი შოთა რუსთაველი
+ 
+ ღმერთსი შემვედრე, ნუთუ კვლა დამხსნას სოფლისა შრომასა, ცეცხლს, წყალსა და
+-მიწასა, ჰაერთა თანა მრომასა; მომცნეს ფრთენი და აღვფრინდე, მივჰხვდე მას ჩემსა
+-ნდომასა, დღისით და ღამით ვჰხედვიდე მზისა ელვათა კრთომაასა.
++მიწასა, ჰაერთა თანა მრომასა; მომცნეს ფრთენი და აღვფრინდე, მივჰხვდე მას
++ჩემსა ნდომასა, დღისით და ღამით ვჰხედვიდე მზისა ელვათა კრთომაასა.
+ 
+ Tamil poetry of Cupiramaniya Paarathiyar: சுப்ரமணிய பாரதியார் (1882-1921)
+ 
+@@ -446,7 +446,8 @@
+ д, п, and/or т:
+ 
+  Bulgarian:    [ бгдпт ]    [ бгдпт ]     Мога да ям стъкло и не ме боли.
+- Russian:  [ бгдпт ]    [ бгдпт ]    Я могу есть стекло, это мне не вредит.
++ Russian:  [ бгдпт ]    [ бгдпт ]    Я могу есть стекло, это мне не
++вредит.
+  Serbian:  [ бгдпт ]    [ бгдпт ]     Могу јести стакло а да ми не шкоди.
+ 
+   ------------------------------------------------------------------------

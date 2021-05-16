@@ -1,36 +1,31 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
-inherit eutils
+EAPI=6
 
 DESCRIPTION="An MPD client that submits information to Audioscrobbler"
-HOMEPAGE="http://mpd.wikia.com/wiki/Client:Mpdscribble"
-SRC_URI="mirror://sourceforge/musicpd/${P}.tar.bz2"
+HOMEPAGE="https://www.musicpd.org/clients/mpdscribble/"
+SRC_URI="https://www.musicpd.org/download/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+curl"
 
-RDEPEND=">=dev-libs/glib-2.16:2
-	>=media-libs/libmpdclient-2.2
+RDEPEND="dev-libs/glib:2
+	media-libs/libmpdclient
 	curl? ( net-misc/curl )
 	!curl? ( net-libs/libsoup:2.4 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	local myclient=soup
-	use curl && myclient=curl
 	econf \
-		--with-http-client=${myclient} \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-http-client=$(usex curl curl soup)
 }
 
 src_install() {
 	default
 	newinitd "${FILESDIR}/mpdscribble.rc" mpdscribble
-	dodir /var/cache/mpdscribble
+	keepdir /var/cache/mpdscribble
 }

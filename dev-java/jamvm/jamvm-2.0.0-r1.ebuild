@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib java-vm-2 autotools
+inherit epatch flag-o-matic multilib java-vm-2 autotools toolchain-funcs
 
 DESCRIPTION="An extremely small and specification-compliant virtual machine"
 HOMEPAGE="http://jamvm.sourceforge.net/"
@@ -17,9 +16,9 @@ IUSE="debug libffi"
 
 DEPEND="dev-java/gnu-classpath:0.98
 	|| ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* )
-	libffi? ( virtual/libffi )
-	ppc64? ( virtual/libffi )
-	sparc? ( virtual/libffi )"
+	libffi? ( dev-libs/libffi:= )
+	ppc64? ( dev-libs/libffi:= )
+	sparc? ( dev-libs/libffi:= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -45,7 +44,7 @@ src_configure() {
 	filter-flags "-fomit-frame-pointer"
 
 	if use ppc64 || use sparc || use libffi; then
-		append-cflags "$(pkg-config --cflags-only-I libffi)"
+		append-cflags "$($(tc-getPKG_CONFIG) --cflags-only-I libffi)"
 	fi
 
 	local fficonf="--enable-ffi"
@@ -54,7 +53,6 @@ src_configure() {
 	fi
 
 	econf ${fficonf} \
-		--disable-dependency-tracking \
 		$(use_enable debug trace) \
 		--libdir="${EPREFIX}"/usr/$(get_libdir)/${PN} \
 		--includedir="${EPREFIX}"/usr/include/${PN} \
@@ -87,10 +85,10 @@ src_install() {
 	dosym /usr/bin/jamvm ${JDK_DIR}/bin/java
 	for files in ${CLASSPATH_DIR}/g*; do
 		if [ $files = "${CLASSPATH_DIR}/bin/gjdoc" ] ; then
-			dosym $files ${JDK_DIR}/bin/javadoc || die
+			dosym $files ${JDK_DIR}/bin/javadoc
 		else
 			dosym $files \
-				${JDK_DIR}/bin/$(echo $files|sed "s#$(dirname $files)/g##") || die
+				${JDK_DIR}/bin/$(echo $files|sed "s#$(dirname $files)/g##")
 		fi
 	done
 

@@ -1,0 +1,36 @@
+Fix implicit declarations:
+* daev.c: In function ‘processParameters’:
+* daev.c:849:14: warning: implicit declaration of function ‘isdigit’ [-Wimplicit-function-declaration]
+*          if( !isdigit( argv[iarg][0] ) )
+
+--- a/autoPhred.c
++++ b/autoPhred.c
+@@ -57,6 +57,7 @@
+ static int xstrcmp();
+ #endif
+ 
++int freeMBRData( MBRData *mbrData );
+ #ifdef ANSI_C
+ int autoPhred( Option *option )
+ #else
+--- a/daev.c
++++ b/daev.c
+@@ -58,6 +58,7 @@
+ #include <sys/stat.h>
+ #include <time.h>
+ #include <math.h>
++#include <ctype.h>
+ 
+ #ifndef _WIN32
+ #include <dirent.h>
+--- a/mergedBaseRead.c
++++ b/mergedBaseRead.c
+@@ -63,7 +63,7 @@
+   Peak *peak;
+   Observed_peak *obs_peak;
+ 
+-  static initFlag = 0;
++  static int initFlag = 0;
+   static char mchar[256][256];
+ 
+   if( initFlag == 0 )

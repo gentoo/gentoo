@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: s6.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: helper functions to install s6 services
 # @DESCRIPTION:
 # This eclass provides helpers to install s6 services.
@@ -26,7 +26,7 @@
 # @CODE
 
 case ${EAPI:-0} in
-	5|6) ;;
+	5|6|7) ;;
 	*) die "${ECLASS}.eclass: API in EAPI ${EAPI} not yet established" ;;
 esac
 
@@ -48,7 +48,7 @@ s6_get_servicedir() {
 }
 
 # @FUNCTION: s6_install_service
-# @USAGE: servicename run finish
+# @USAGE: <servicename> <run> [finish]
 # @DESCRIPTION:
 # Install an s6 service.
 # servicename is the name of the service.
@@ -75,7 +75,7 @@ s6_install_service() {
 }
 
 # @FUNCTION: s6_service_down
-# @USAGE: servicename
+# @USAGE: <servicename>
 # @DESCRIPTION:
 # Install the "down" flag so this service will not be started by
 # default.
@@ -97,7 +97,7 @@ s6_service_down() {
 }
 
 # @FUNCTION: s6_service_nosetsid
-# @USAGE: servicename
+# @USAGE: <servicename>
 # @DESCRIPTION:
 # Install the "nosetsid" flag so this service will not be made a session
 # leader.

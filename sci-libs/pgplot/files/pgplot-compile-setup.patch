@@ -1,5 +1,5 @@
---- sys_linux/g77_gcc.conf.orig	1999-07-05 19:10:33.000000000 +0100
-+++ sys_linux/g77_gcc.conf	2008-10-29 18:30:33.000000000 +0000
+--- a/sys_linux/g77_gcc.conf.orig	1999-07-05 19:10:33.000000000 +0100
++++ b/sys_linux/g77_gcc.conf	2008-10-29 18:30:33.000000000 +0000
 @@ -1,4 +1,4 @@
 -# The GNU g77 FORTRAN compiler and Gnu gcc C compiler on an elf-system.
 +# The GNU gfortran FORTRAN compiler and Gnu gcc C compiler on an elf-system.

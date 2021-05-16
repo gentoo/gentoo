@@ -1,0 +1,18 @@
+Do not install pkgconfig data files, pkg-config does not presently look at
+/usr/lib/llvm/.../pkgconfig and putting them in /usr/lib*/pkgconfig would
+cause collisions between slots.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,11 +66,3 @@
+   DESTINATION
+     ${CMAKE_INSTALL_PREFIX}/include/LLVMSPIRVLib
+ )
+-
+-configure_file(LLVMSPIRVLib.pc.in ${CMAKE_BINARY_DIR}/LLVMSPIRVLib.pc @ONLY)
+-install(
+-  FILES
+-    ${CMAKE_BINARY_DIR}/LLVMSPIRVLib.pc
+-  DESTINATION
+-    ${CMAKE_INSTALL_PREFIX}/lib${LLVM_LIBDIR_SUFFIX}/pkgconfig
+-)

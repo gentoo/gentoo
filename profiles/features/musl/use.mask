@@ -1,0 +1,14 @@
+# Copyright 1999-2020 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Select the correct ELIBC
+-elibc_musl
+elibc_uclibc
+elibc_glibc
+
+# Musl doesn't have support for utmp/wtmp by design
+utmp
+wtmp
+
+# sys-apps/systemd is masked
+systemd

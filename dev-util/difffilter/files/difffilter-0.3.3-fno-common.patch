@@ -1,0 +1,11 @@
+--- a/src/block.h
++++ b/src/block.h
+@@ -38,7 +38,7 @@
+  *   The string literal ``\ No newline at end of file'' including the
+  *   newline at the end.
+  */
+-const char *DIFFFILTER_DIFF_NO_NL_AT_EOF;
++extern const char *DIFFFILTER_DIFF_NO_NL_AT_EOF;
+ 
+ struct diff_block;
+ typedef struct diff_block *diff_block_t;

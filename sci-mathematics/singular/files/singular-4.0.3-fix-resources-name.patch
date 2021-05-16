@@ -1,0 +1,307 @@
+From a3a6a07858b7e91c4c8a3c8d07e53957a8547af2 Mon Sep 17 00:00:00 2001
+From: Hans Schoenemann <hannes@mathematik.uni-kl.de>
+Date: Thu, 1 Sep 2016 10:48:08 +0200
+Subject: [PATCH] change library name: libresources -> libsingular_resources
+
+---
+ Singular/Makefile.am               |  4 ++--
+ autogen.sh                         |  1 +
+ factory/configure.ac               |  8 ++++----
+ gfanlib/configure.ac               |  2 +-
+ libpolys/configure.ac              |  8 ++++----
+ m4/options.m4                      | 10 +++++-----
+ resources/Makefile.am              | 18 +++++++++---------
+ resources/configure.ac             |  6 +++---
+ resources/feFopen.cc               |  2 +-
+ resources/feResource.cc            |  2 +-
+ resources/omFindExec.c             |  2 +-
+ resources/resources.pc.in          | 17 -----------------
+ resources/singular_resources.pc.in | 17 +++++++++++++++++
+ 13 files changed, 49 insertions(+), 48 deletions(-)
+ delete mode 100644 resources/resources.pc.in
+ create mode 100644 resources/singular_resources.pc.in
+
+diff --git a/Singular/Makefile.am b/Singular/Makefile.am
+index e2bcc23..be84a08 100644
+--- a/Singular/Makefile.am
++++ b/Singular/Makefile.am
+@@ -176,7 +176,7 @@ ESingular_CPPFLAGS = ${AM_CPPFLAGS} -DESINGULAR -DPROTO
+ # ESingular_LDFLAGS = -static ${AM_LDFLAGS}
+ ESingular_LDADD =  ${top_builddir}/libpolys/reporter/libreporter.la \
+ ${top_builddir}/libpolys/misc/libmisc.la ${top_builddir}/omalloc/libomalloc.la \
+-${top_builddir}/resources/libresources.la
++${top_builddir}/resources/libsingular_resources.la
+ 
+ 
+ ESingular_SOURCES = emacs.cc fegetopt.c fegetopt.h feOptES.inc feOpt.cc
+@@ -186,7 +186,7 @@ TSingular_CPPFLAGS = ${AM_CPPFLAGS} -DTSINGULAR -DPROTO
+ # TSingular_LDFLAGS = -static ${AM_LDFLAGS}
+ TSingular_LDADD = ${top_builddir}/libpolys/reporter/libreporter.la \
+ ${top_builddir}/libpolys/misc/libmisc.la ${top_builddir}/omalloc/libomalloc.la \
+-${top_builddir}/resources/libresources.la
++${top_builddir}/resources/libsingular_resources.la
+ 
+ TSingular_SOURCES = emacs.cc fegetopt.c fegetopt.h feOptTS.inc feOpt.cc
+ # utils.cc utils.h
+diff --git a/autogen.sh b/autogen.sh
+index d027997..0d09c08 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -4,6 +4,7 @@ cd `dirname "$0"`
+ 
+ # -d --warnings=all
+ autoreconf  -v -f -i
++find . -name configure -exec sed -i "s/-g -O2/-g/g" {} \; -print
+ 
+ cd -
+ 
+diff --git a/factory/configure.ac b/factory/configure.ac
+index 7ea255b..a9caf73 100644
+--- a/factory/configure.ac
++++ b/factory/configure.ac
+@@ -120,10 +120,10 @@ AM_CONDITIONAL(
+     [WITH_PARSER_FOR_CANONICAL_FORM],
+     [test "x$enable_streamio" = xyes])
+ 
+-AC_ARG_VAR( [RESOURCES_INCLUDES], [INCLUDES for libresources] )
+-AC_ARG_VAR( [RESOURCES_LIBS], [LIBS for libresources] )
++AC_ARG_VAR( [RESOURCES_INCLUDES], [INCLUDES for libsingular_resources] )
++AC_ARG_VAR( [RESOURCES_LIBS], [LIBS for libsingular_resources] )
+ 
+-AC_MSG_CHECKING(whether libresources should be used)
++AC_MSG_CHECKING(whether libsingular_resources should be used)
+ if test "x$with_Singular" = xyes;
+ then
+   AC_MSG_RESULT(yes)
+@@ -134,7 +134,7 @@ then
+   AC_MSG_CHECKING([  RESOURCES_LIBS?..])
+   AC_MSG_RESULT(${RESOURCES_LIBS:-unset})
+ 
+-  PKG_REQUIRE="$PKG_REQUIRE resources"
++  PKG_REQUIRE="$PKG_REQUIRE singular_resources"
+   AC_SUBST(PKG_REQUIRE)
+ else
+   AC_MSG_RESULT(no)
+diff --git a/gfanlib/configure.ac b/gfanlib/configure.ac
+index 015134c..d3d2cd7 100644
+--- a/gfanlib/configure.ac
++++ b/gfanlib/configure.ac
+@@ -2,7 +2,7 @@
+ # Process this file with autoconf to produce a configure script.
+ 
+ AC_PREREQ([2.63])
+-AC_INIT([libgfan], [0.1], [ren@mathematik.uni-kl.de])
++AC_INIT([libgfan], [0.6], [ren@mathematik.uni-kl.de])
+ AC_CONFIG_MACRO_DIR([../m4])
+ AC_CONFIG_AUX_DIR([../build-aux])
+ AC_CONFIG_SRCDIR([gfanlib.h])
+diff --git a/libpolys/configure.ac b/libpolys/configure.ac
+index 049e44d..4b2f1ae 100644
+--- a/libpolys/configure.ac
++++ b/libpolys/configure.ac
+@@ -90,10 +90,10 @@ SING_CHECK_OMALLOC()
+ 
+ ENABLE_RESOURCES="yes"
+ 
+-AC_ARG_VAR( [RESOURCES_INCLUDES], [INCLUDES for libresources] )
+-AC_ARG_VAR( [RESOURCES_LIBS], [LIBS for libresources] )
++AC_ARG_VAR( [RESOURCES_INCLUDES], [INCLUDES for libsingular_resources] )
++AC_ARG_VAR( [RESOURCES_LIBS], [LIBS for libsingular_resources] )
+ 
+-AC_MSG_CHECKING(whether libresources should be used)
++AC_MSG_CHECKING(whether libsingular_resources should be used)
+ 
+ if test "x$ENABLE_RESOURCES" = xyes;
+ then
+@@ -105,7 +105,7 @@ then
+   AC_MSG_CHECKING([  RESOURCES_LIBS?..])
+   AC_MSG_RESULT(${RESOURCES_LIBS:-unset})
+ 
+-  PKG_REQUIRE="$PKG_REQUIRE resources"
++  PKG_REQUIRE="$PKG_REQUIRE singular_resources"
+   AC_SUBST(PKG_REQUIRE)
+ else
+   AC_MSG_RESULT(no)
+diff --git a/m4/options.m4 b/m4/options.m4
+index 31b86e4..066dc4d 100644
+--- a/m4/options.m4
++++ b/m4/options.m4
+@@ -150,19 +150,19 @@ AC_DEFUN([SING_USE_OMALLOC],
+ 
+ AC_DEFUN([SING_USE_RESOURCES],
+ [
+- AC_ARG_ENABLE(resources,
+-  [AS_HELP_STRING([--disable-resources], [do NOT use libresources within the factory])],
++ AC_ARG_ENABLE(singular_resources,
++  [AS_HELP_STRING([--disable-singular_resources], [do NOT use libsingular_resources within the factory])],
+   [if test "x$enableval"  = "xyes"; then
+     ENABLE_RESOURCES=yes
+    fi],
+     ENABLE_RESOURCES=yes)
+ 
+- AC_MSG_CHECKING(whether to use libresources in factory and co.)
++ AC_MSG_CHECKING(whether to use libsingular_resources in factory and co.)
+  if test "x$ENABLE_RESOURCES" = xyes; then
+   AC_MSG_RESULT(yes)
+   RESOURCES_INCLUDES="-I$ac_abs_top_srcdir "
+ 
+-  RESOURCES_LIBS="$ac_abs_top_builddir/resources/libresources.la"
++  RESOURCES_LIBS="$ac_abs_top_builddir/resources/libsingular_resources.la"
+ 
+   AC_SUBST(RESOURCES_INCLUDES)
+   AC_SUBST(RESOURCES_LIBS)
+@@ -171,7 +171,7 @@ AC_DEFUN([SING_USE_RESOURCES],
+ 
+   ac_configure_args="$ac_configure_args $ENABLE_ARG"
+ 
+-  PKG_REQUIRE="$PKG_REQUIRE resources"
++  PKG_REQUIRE="$PKG_REQUIRE singular_resources"
+   AC_SUBST(PKG_REQUIRE)
+  else
+   AC_MSG_RESULT(no)
+diff --git a/resources/Makefile.am b/resources/Makefile.am
+index fa69ccc..934175b 100644
+--- a/resources/Makefile.am
++++ b/resources/Makefile.am
+@@ -1,24 +1,24 @@
+ ACLOCAL_AMFLAGS = -I ../m4
+ 
+-libresources_LTLIBRARIES = libresources.la
++libsingular_resources_LTLIBRARIES = libsingular_resources.la
+ 
+-libresourcesdir = $(libdir)
++libsingular_resourcesdir = $(libdir)
+ 
+ 
+ AM_CPPFLAGS = -I${top_srcdir} -I${top_builddir}
+ 
+ 
+ SOURCES  = omFindExec.c feResource.cc feFopen.cc
+-libresources_la_SOURCES   = $(SOURCES)
++libsingular_resources_la_SOURCES   = $(SOURCES)
+ 
+-libresources_la_LDFLAGS   = -release ${PACKAGE_VERSION}
++libsingular_resources_la_LDFLAGS   = -release ${PACKAGE_VERSION}
+ 
+-libresources_includedir  =$(includedir)/resources
++libsingular_resources_includedir  =$(includedir)/resources
+ 
+-libresources_include_HEADERS = omFindExec.h feResource.h feFopen.h
++libsingular_resources_include_HEADERS = omFindExec.h feResource.h feFopen.h
+ 
+-nodist_libresources_include_HEADERS = resourcesconfig.h
+-DISTCLEANFILES = $(nodist_libresources_include_HEADERS)
++nodist_libsingular_resources_include_HEADERS = singular_resourcesconfig.h
++DISTCLEANFILES = $(nodist_libsingular_resources_include_HEADERS)
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+-pkgconfig_DATA = resources.pc
++pkgconfig_DATA = singular_resources.pc
+diff --git a/resources/configure.ac b/resources/configure.ac
+index bc5f294..212a1d5 100644
+--- a/resources/configure.ac
++++ b/resources/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT([resources], [4.0.3])
++AC_INIT([singular_resources], [4.0.3])
+ 
+ AC_CONFIG_MACRO_DIR([../m4])
+ AC_CONFIG_AUX_DIR([../build-aux])
+@@ -14,7 +14,7 @@ dnl Check if build env is sane
+ AM_SANITY_CHECK
+ 
+ # Add pre'prefixed config
+-AX_PREFIX_CONFIG_H([resourcesconfig.h],[],[_config.h])
++AX_PREFIX_CONFIG_H([singular_resourcesconfig.h],[],[_config.h])
+ 
+ SING_RESET_FLAGS()
+ SING_CHECK_SET_ARGS()
+@@ -70,5 +70,5 @@ AX_RECURSIVE_EVAL([[$]datadir], [config_datadir])
+ AX_NORMALIZE_PATH([config_datadir],['/'])
+ AC_DEFINE_UNQUOTED([DATA_DIR],"$config_datadir",[datadir])
+ 
+-AC_CONFIG_FILES([resources.pc Makefile])
++AC_CONFIG_FILES([singular_resources.pc Makefile])
+ AC_OUTPUT
+diff --git a/resources/feFopen.cc b/resources/feFopen.cc
+index 98cfd44..10800a0 100644
+--- a/resources/feFopen.cc
++++ b/resources/feFopen.cc
+@@ -1,4 +1,4 @@
+-#include "resourcesconfig.h"
++#include "singular_resourcesconfig.h"
+ #include "feResource.h"
+ #include "feFopen.h"
+ 
+diff --git a/resources/feResource.cc b/resources/feResource.cc
+index 49a6855..a3accf9 100644
+--- a/resources/feResource.cc
++++ b/resources/feResource.cc
+@@ -5,7 +5,7 @@
+ * ABSTRACT: management of resources
+ */
+ 
+-#include "resourcesconfig.h"
++#include "singular_resourcesconfig.h"
+ #include "feResource.h"
+ #include "omFindExec.h"
+ 
+diff --git a/resources/omFindExec.c b/resources/omFindExec.c
+index e79f2c8..1d5852a 100644
+--- a/resources/omFindExec.c
++++ b/resources/omFindExec.c
+@@ -6,7 +6,7 @@
+  *******************************************************************/
+ 
+ 
+-#include "resourcesconfig.h"
++#include "singular_resourcesconfig.h"
+ 
+ 
+ #if defined(HAVE_UNISTD_H) && defined(STDC_HEADERS)
+diff --git a/resources/resources.pc.in b/resources/resources.pc.in
+deleted file mode 100644
+index d040056..0000000
+--- a/resources/resources.pc.in
++++ /dev/null
+@@ -1,17 +0,0 @@
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
+-
+-Name: @PACKAGE@
+-Description: The Singular resources manager
+-Version: @PACKAGE_VERSION@
+-URL: https://github.com/Singular/Sources/tree/spielwiese/@PACKAGE@
+-
+-# Requires:
+-# Conflicts:
+-
+-Cflags: -I${includedir} @SINGULAR_CFLAGS@
+-Libs: -L${libdir} -l@PACKAGE@
+-# Libs.private:
+-
+diff --git a/resources/singular_resources.pc.in b/resources/singular_resources.pc.in
+new file mode 100644
+index 0000000..d040056
+--- /dev/null
++++ b/resources/singular_resources.pc.in
+@@ -0,0 +1,17 @@
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++libdir=@libdir@
++includedir=@includedir@
++
++Name: @PACKAGE@
++Description: The Singular resources manager
++Version: @PACKAGE_VERSION@
++URL: https://github.com/Singular/Sources/tree/spielwiese/@PACKAGE@
++
++# Requires:
++# Conflicts:
++
++Cflags: -I${includedir} @SINGULAR_CFLAGS@
++Libs: -L${libdir} -l@PACKAGE@
++# Libs.private:
++

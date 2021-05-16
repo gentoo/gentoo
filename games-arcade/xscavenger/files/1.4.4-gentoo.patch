@@ -1,6 +1,5 @@
-diff -urN xscavenger-1.4.4.orig/src/Imakefile xscavenger-1.4.4/src/Imakefile
---- xscavenger-1.4.4.orig/src/Imakefile
-+++ xscavenger-1.4.4/src/Imakefile
+--- a/Imakefile
++++ b/Imakefile
 @@ -1,20 +1,36 @@
  # set this to the path where data files should be stored.  LIBDIR
  # is automatically defined by imake, usually to /usr/X11R6/lib/X11, so
@@ -44,9 +43,8 @@ diff -urN xscavenger-1.4.4.orig/src/Imakefile xscavenger-1.4.4/src/Imakefile
 +NormalProgramTarget(scavenger,$(OBJS),,,$(XLIB))
 +InstallProgram(scavenger,GENTOO_BINDIR)
  InstallMultipleFlags($(LIB_DATA),$(LIBNAME),-m 644)
-diff -urN xscavenger-1.4.4.orig/src/scav.c xscavenger-1.4.4/src/scav.c
---- xscavenger-1.4.4.orig/src/scav.c
-+++ xscavenger-1.4.4/src/scav.c
+--- a/scav.c
++++ b/scav.c
 @@ -240,15 +240,19 @@
  
  

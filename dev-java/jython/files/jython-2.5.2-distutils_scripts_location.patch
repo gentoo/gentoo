@@ -1,5 +1,5 @@
---- Lib/distutils/command/install.py
-+++ Lib/distutils/command/install.py
+--- a/Lib/distutils/command/install.py
++++ b/Lib/distutils/command/install.py
 @@ -70,7 +70,7 @@
          'purelib': '$base/Lib/site-packages',
          'platlib': '$base/Lib/site-packages',

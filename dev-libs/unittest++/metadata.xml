@@ -2,15 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sautier.louis@gmail.com</email>
+		<email>sbraz@gentoo.org</email>
 		<name>Louis Sautier</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<upstream>
-		<remote-id type="github">unittest-cpp/issues</remote-id>
+		<remote-id type="github">unittest-cpp/unittest-cpp</remote-id>
 		<bugs-to>https://github.com/unittest-cpp/unittest-cpp/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

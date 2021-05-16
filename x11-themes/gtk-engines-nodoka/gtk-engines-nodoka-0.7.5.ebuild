@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
-inherit eutils
+EAPI=7
+
+inherit autotools
 
 MY_P="gtk-nodoka-engine-${PV}"
 
@@ -16,24 +16,32 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="animation-rtl"
 
-RDEPEND=">=x11-libs/gtk+-2.18.0:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="x11-libs/gtk+:2"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glib2.32.patch
+	"${FILESDIR}"/${P}-autoreconf.patch
+	"${FILESDIR}"/${P}-libm.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${P}-glib2.32.patch"
+	default
+	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--enable-animation \
 		$(use_enable animation-rtl animationtoleft)
 }
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -delete || die
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

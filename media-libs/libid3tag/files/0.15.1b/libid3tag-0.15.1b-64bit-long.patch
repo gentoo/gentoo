@@ -1,5 +1,5 @@
---- id3tag.h.orig	2004-01-23 18:22:46.000000000 -0500
-+++ id3tag.h	2008-05-04 19:46:33.000000000 -0400
+--- a/id3tag.h
++++ b/id3tag.h
 @@ -25,6 +25,8 @@
  # ifndef LIBID3TAG_ID3TAG_H
  # define LIBID3TAG_ID3TAG_H

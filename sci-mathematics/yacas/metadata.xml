@@ -14,7 +14,7 @@
   algorithms.
   </longdescription>
   <use>
-    <flag name="server">Build the network server version</flag>
+    <flag name="jupyter">Add support for jupyter notebook</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">yacas</remote-id>

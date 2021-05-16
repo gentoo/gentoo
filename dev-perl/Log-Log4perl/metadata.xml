@@ -33,6 +33,7 @@
     <remote-id type="cpan-module">Log::Log4perl::Filter::Boolean</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::Filter::LevelMatch</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::Filter::LevelRange</remote-id>
+    <remote-id type="cpan-module">Log::Log4perl::Filter::MDC</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::Filter::StringMatch</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::InternalDebug</remote-id>
     <remote-id type="cpan-module">Log::Log4perl::JavaMap</remote-id>

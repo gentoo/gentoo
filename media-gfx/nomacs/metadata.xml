@@ -6,12 +6,12 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://nomacs.org/redmine/projects/nomacs</bugs-to>
+		<remote-id type="github">nomacs/nomacs</remote-id>
 		<remote-id type="sourceforge">nomacs</remote-id>
-		<bugs-to>http://www.nomacs.org/redmine/projects/nomacs</bugs-to>
 	</upstream>
 	<use>
 		<flag name="opencv">Build support for <pkg>media-libs/opencv</pkg></flag>
-		<flag name="webp">Build support for WEBP image format</flag>
-		<flag name="zip">Build support for zip archives</flag>
+		<flag name="plugins">Build officially support plugins</flag>
 	</use>
 </pkgmetadata>

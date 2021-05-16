@@ -1,6 +1,5 @@
-diff -C 2 -r -N /tmp/automake-1.5/automake.in automake-1.5/automake.in
-*** /tmp/automake-1.5/automake.in	Thu Aug 23 07:26:53 2001
---- automake-1.5/automake.in	Tue Feb  5 20:38:55 2002
+*** automake-1.5/automake.in
+--- automake-1.5/automake.in
 ***************
 *** 1941,1945 ****
   
@@ -16,9 +15,8 @@ diff -C 2 -r -N /tmp/automake-1.5/automake.in automake-1.5/automake.in
 ! 	}
   
   	if ($derived_source)
-diff -C 2 -r -N /tmp/automake-1.5/m4/depout.m4 automake-1.5/m4/depout.m4
-*** /tmp/automake-1.5/m4/depout.m4	Mon May 14 02:01:09 2001
---- automake-1.5/m4/depout.m4	Wed Jan 30 22:03:33 2002
+*** automake-1.5/m4/depout.m4
+--- automake-1.5/m4/depout.m4
 ***************
 *** 13,18 ****
   for mf in $CONFIG_FILES; do

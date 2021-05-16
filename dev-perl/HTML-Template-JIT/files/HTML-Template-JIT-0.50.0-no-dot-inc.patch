@@ -1,0 +1,61 @@
+From efbee2adfeb592240e1c84326ece8c90c239bbee Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 26 Oct 2017 08:26:53 +1300
+Subject: Fix compiling templates under Perl 5.26 without '.' in @INC
+
+Perl 5.26 changes the default contents of @INC to no longer include
+".", which is required for "require q[foo.tpl]" semantics.
+
+This breakage is invisible in tests  due to a workaround P5P put in
+place to avoid breaking tests, by setting PERL_USE_UNSAFE_INC=1 in
+Test::Harness and CPAN installers, which makes '.' re-appear in @INC
+during installation, while still being silently broken in production.
+
+This fix works by relying on the mechanic of require() to *NOT* consult
+@INC if $path is either an absolute, or a "./" prefixed relative path,
+by converting it to an absolute path just before requiring it.
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=123380
+Bug: https://bugs.gentoo.org/635464
+---
+ JIT.pm          | 2 +-
+ JIT/Compiler.pm | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/JIT.pm b/JIT.pm
+index 9e5a6be..1e2afc8 100644
+--- a/JIT.pm
++++ b/JIT.pm
+@@ -63,7 +63,7 @@ sub new {
+ 
+   # try to load the module and return package handle if successful
+   my $result;
+-  eval { $result = require $package_path; };
++  eval { $result = require File::Spec->rel2abs($package_path); };
+   if ($result) {
+     $package->clear_params(); # need to clear out params from prior run
+     return $package;
+diff --git a/JIT/Compiler.pm b/JIT/Compiler.pm
+index 6ef3e02..bc1e05f 100644
+--- a/JIT/Compiler.pm
++++ b/JIT/Compiler.pm
+@@ -9,6 +9,7 @@ our $VERSION = '0.01';
+ use HTML::Template;
+ use Carp qw(croak confess);
+ use File::Path qw(mkpath rmtree);
++use File::Spec;
+ 
+ sub compile {
+   my %args = @_;
+@@ -53,7 +54,7 @@ sub compile {
+ 
+   # try to load the module and return package handle if successful
+   my $result;
+-  eval { $result = require $self->{package_path}; };
++  eval { $result = require File::Spec->rel2abs($self->{package_path}); };
+   return 1 if $result;
+ 
+   # don't leave failed compiles lying around unless we're debuging
+-- 
+2.14.3
+

@@ -1,5 +1,5 @@
---- builders/resid-builder/src/resid.cpp
-+++ builders/resid-builder/src/resid.cpp
+--- a/builders/resid-builder/src/resid.cpp
++++ b/builders/resid-builder/src/resid.cpp
 @@ -16,6 +16,8 @@
   *                                                                         *
   ***************************************************************************/
@@ -9,8 +9,8 @@
  #include "config.h"
  
  #ifdef HAVE_EXCEPTIONS
---- builders/resid-builder/src/resid-builder.cpp
-+++ builders/resid-builder/src/resid-builder.cpp
+--- a/builders/resid-builder/src/resid-builder.cpp
++++ b/builders/resid-builder/src/resid-builder.cpp
 @@ -37,6 +37,7 @@
   ***************************************************************************/
  
@@ -19,8 +19,8 @@
  
  #include "config.h"
  #ifdef HAVE_EXCEPTIONS
---- builders/hardsid-builder/src/hardsid-builder.cpp
-+++ builders/hardsid-builder/src/hardsid-builder.cpp
+--- a/builders/hardsid-builder/src/hardsid-builder.cpp
++++ b/builders/hardsid-builder/src/hardsid-builder.cpp
 @@ -47,6 +47,7 @@
   ***************************************************************************/
  
@@ -29,8 +29,8 @@
  #include "config.h"
  
  #ifdef HAVE_EXCEPTIONS
---- libsidplay/src/sidtune/SidTune.cpp
-+++ libsidplay/src/sidtune/SidTune.cpp
+--- a/libsidplay/src/sidtune/SidTune.cpp
++++ b/libsidplay/src/sidtune/SidTune.cpp
 @@ -283,7 +283,7 @@
      uint_least32_t fileLen = 0;
  

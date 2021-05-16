@@ -1,0 +1,33 @@
+--- a/cvoicecontrol/Makefile.am
++++ b/cvoicecontrol/Makefile.am
+@@ -11,7 +11,7 @@
+ model_editor_SOURCES = audio.c configuration.c keypressed.c mixer.c model.c ncurses_tools.c preprocess.c realfftf.c model_editor.c
+ model_editor_LDADD   = -lm ${LIBNCURSES}
+ 
+-SUBDIRS = docs
++#SUBDIRS = docs
+ 
+ EXTRA_DIST = audio.c audio.h bb_queue.c bb_queue.h configuration.c configuration.h keypressed.c keypressed.h microphone_config.c microphone_config.h mixer.c mixer.h model.c model.h model_editor.c model_editor.h ncurses_tools.c ncurses_tools.h preprocess.c preprocess.h queue.h realfftf.c realfftf.h score.c score.h semaphore.c semaphore.h cvoicecontrol.c cvoicecontrol.h
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,19 +8,3 @@
+ 
+ ####### kdevelop will overwrite this part!!! (end)############
+ AUTOMAKE_OPTIONS = foreign
+-
+-install-data-local:
+-	$(mkinstalldirs) $(prefix)/share/doc/cvoicecontrol
+-	$(INSTALL_DATA) AUTHORS $(prefix)/share/doc/cvoicecontrol/AUTHORS
+-	$(INSTALL_DATA) FAQ     $(prefix)/share/doc/cvoicecontrol/FAQ    
+-	$(INSTALL_DATA) BUGS    $(prefix)/share/doc/cvoicecontrol/BUGS   
+-	$(INSTALL_DATA) README  $(prefix)/share/doc/cvoicecontrol/README 
+-	$(INSTALL_DATA) COPYING $(prefix)/share/doc/cvoicecontrol/COPYING
+-
+-uninstall-local:
+-	-rm -f $(prefix)/share/doc/cvoicecontrol/AUTHORS
+-	-rm -f $(prefix)/share/doc/cvoicecontrol/FAQ    
+-	-rm -f $(prefix)/share/doc/cvoicecontrol/BUGS   
+-	-rm -f $(prefix)/share/doc/cvoicecontrol/README 
+-	-rm -f $(prefix)/share/doc/cvoicecontrol/COPYING
+-	rmdir $(prefix)/share/doc/cvoicecontrol

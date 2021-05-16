@@ -1,10 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-FORLANG="German"
-TOLANG="English"
+EAPI=7
+
 inherit freedict
 
+DESCRIPTION="Freedict for language translation from German to English"
 KEYWORDS="~amd64 ~x86"
-IUSE=""

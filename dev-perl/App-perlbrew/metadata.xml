@@ -7,6 +7,11 @@
     </maintainer>
     <upstream>
         <remote-id type="cpan">App-perlbrew</remote-id>
+        <remote-id type="cpan-module">App::Perlbrew::Path</remote-id>
+        <remote-id type="cpan-module">App::Perlbrew::Path::Installation</remote-id>
+        <remote-id type="cpan-module">App::Perlbrew::Path::Installations</remote-id>
+        <remote-id type="cpan-module">App::Perlbrew::Path::Root</remote-id>
+        <remote-id type="cpan-module">App::Perlbrew::Util</remote-id>
         <remote-id type="cpan-module">App::perlbrew</remote-id>
     </upstream>
 </pkgmetadata>

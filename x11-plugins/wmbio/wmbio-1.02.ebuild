@@ -1,13 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A Window Maker applet that shows your biorhythm"
-SRC_URI="http://wmbio.sourceforge.net/${P}.tar.gz"
 HOMEPAGE="http://wmbio.sourceforge.net/"
+SRC_URI="mirror://sourceforge/wmbio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,23 +16,20 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 S=${WORKDIR}/${P}/src
 
 src_prepare() {
+	default
 	# Honour Gentoo CFLAGS
-	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile
-
+	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile || die
 	# Honour Gentoo LDFLAGS
-	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile
+	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile || die
 }
 
-src_compile() {
-	emake || die "emake failed"
-}
-
-src_install () {
-	dobin wmbio || die "dobin failed"
-	dodoc ../{AUTHORS,Changelog,NEWS,README} || die
+src_install() {
+	dobin wmbio
+	dodoc ../{AUTHORS,Changelog,NEWS,README}
 }

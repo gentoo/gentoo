@@ -1,35 +1,41 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit multilib autotools python-r1 eutils
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit autotools python-single-r1
 
-DESCRIPTION="A standards compliant, fast, light-weight, extensible window manager"
-HOMEPAGE="http://openbox.org/"
+DESCRIPTION="Standards compliant, fast, light-weight, extensible window manager"
+HOMEPAGE="http://openbox.org/wiki/Main_Page"
+
 if [[ ${PV} == *9999* ]]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="git://git.openbox.org/dana/openbox"
-	SRC_URI="branding? (
-	https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS=""
-
 else
-	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
-	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~arm-linux ~x86-linux"
+	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86	~x86-linux"
 fi
+
+SRC_URI+=" branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="3"
-IUSE="branding debug imlib nls session startup-notification static-libs svg xdg"
+IUSE="branding debug imlib nls session startup-notification svg xdg"
 REQUIRED_USE="xdg? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/glib:2
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig
+"
+RDEPEND="
+	dev-libs/glib:2
 	>=dev-libs/libxml2-2.0
 	>=media-libs/fontconfig-2
+	x11-libs/cairo
+	x11-libs/libXau
+	x11-libs/libXcursor
+	x11-libs/libXext
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/libXrandr
@@ -40,45 +46,54 @@ RDEPEND="dev-libs/glib:2
 	svg? ( gnome-base/librsvg:2 )
 	xdg? (
 		${PYTHON_DEPS}
-		dev-python/pyxdg[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		')
 	)
-	"
+"
 DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
-	x11-proto/xextproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xineramaproto"
+	x11-base/xorg-proto
+"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.5.2-gnome-session.patch"
+	# see https://github.com/danakj/openbox/pull/35
+	"${FILESDIR}/${PN}-3.6.1-py3-xdg.patch"
+)
+
+pkg_setup() {
+	use xdg && python-single-r1_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
-		git-2_src_unpack
-	else
-		unpack ${A}
+		git-r3_src_unpack
 	fi
+
+	default
 }
 
 src_prepare() {
-	use xdg && python_export_best
-	epatch "${FILESDIR}"/${PN}-3.5.2-gnome-session.patch
+	default
 	sed -i \
 		-e "s:-O0 -ggdb ::" \
-		"${S}"/m4/openbox.m4 || die
-	epatch_user
+		-e 's/-fno-strict-aliasing//' \
+		m4/openbox.m4 || die
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_enable debug) \
-		$(use_enable static-libs static) \
-		$(use_enable nls) \
-		$(use_enable imlib imlib2) \
-		$(use_enable svg librsvg) \
-		$(use_enable startup-notification) \
-		$(use_enable session session-management) \
+	local myeconfargs=(
+		--disable-static
 		--with-x
+		$(use_enable debug)
+		$(use_enable imlib imlib2)
+		$(use_enable nls)
+		$(use_enable session session-management)
+		$(use_enable startup-notification)
+		$(use_enable svg librsvg)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -95,9 +110,9 @@ src_install() {
 			"${D}"/etc/xdg/openbox/rc.xml \
 			|| die "failed to set Surreal Gentoo as the default theme"
 	fi
-	use static-libs || prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 	if use xdg ; then
-		python_replicate_script "${ED}"/usr/libexec/openbox-xdg-autostart
+		python_fix_shebang "${ED}"/usr/libexec/openbox-xdg-autostart
 	else
 		rm "${ED}"/usr/libexec/openbox-xdg-autostart || die
 	fi

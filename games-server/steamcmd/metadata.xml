@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The Steam Console Client or SteamCMD is a command-line version of the Steam client.
+		Its primary use is to install and update various dedicated servers available on Steam
+		using a command-line interface. It works with games that use the SteamPipe content system.
+		All games have been migrated from the deprecated HLDSUpdateTool to SteamCMD.
+	</longdescription>
+</pkgmetadata>

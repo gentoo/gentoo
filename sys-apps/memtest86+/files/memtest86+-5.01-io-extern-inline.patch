@@ -1,3 +1,5 @@
+http://forum.canardpc.com/threads/110951-fix-build-with-newer-gcc-versions
+
 the meaning of extern inline changed between standards.  use static inline
 for these tiny I/O functions everywhere to keep things simple.
 

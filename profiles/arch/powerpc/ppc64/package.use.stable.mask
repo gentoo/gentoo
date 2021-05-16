@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -9,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -18,22 +17,24 @@
 
 #--- END OF EXAMPLES ---
 
-# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# media-libs/libsdl2 wasn't stabilized in the past, but now
-# it's ready for the next stable mpv release after the one below.
-=media-video/mpv-0.9.2-r1 sdl
+# Sam James <sam@gentoo.org> (2021-02-06)
+# Drags in too much unstable GNOME for now
+# bug #727572
+mail-client/claws-mail gdata
 
-# Davide Pesavento <pesa@gentoo.org> (11 May 2015)
-# dev-qt/qtopenvg not yet stable
-dev-qt/qtdemo openvg
+# Michał Górny <mgorny@gentoo.org> (2020-08-07)
+# Unstable test deps.
+dev-cpp/eigen test
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
+# media-libs/libheif not stable, bugs #717242, #720438
+media-gfx/gimp heif
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
+# app-text/libwpd and app-text/libwpg are not stable
+media-gfx/inkscape cdr visio wpg
+
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
-dev-java/swt webkit
-dev-util/geany-plugins devhelp markdown webkit
->=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
->=net-libs/webkit-gtk-2.4 geoloc
 >=x11-libs/gtk+-3.12.2 cloudprint
-x11-libs/gksu gnome

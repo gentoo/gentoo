@@ -1,14 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
-DESCRIPTION="top like program for network activity"
-SRC_URI="http://srparish.net/scripts/${P}.tar.gz"
-HOMEPAGE="http://srparish.net/software/"
+DESCRIPTION="top-like program for network activity"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 SLOT="0"
 LICENSE="BSD"
@@ -20,10 +19,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc411.patch
+	"${FILESDIR}"/${P}-offbyone.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gcc411.patch \
-		"${FILESDIR}"/${P}-offbyone.patch
+	default
 	tc-export CC
 }
 

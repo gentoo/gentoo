@@ -1,8 +1,8 @@
 Don't require po4a at build time.
 http://bugs.gentoo.org/269905
 
---- realpath-1.14-orig/po/Makefile	2009-02-22 12:56:47.000000000 +0100
-+++ realpath-1.14/po/Makefile	2009-05-19 23:45:26.000000000 +0200
+--- a/po/Makefile
++++ b/po/Makefile
 @@ -4,5 +4,5 @@
  #
  

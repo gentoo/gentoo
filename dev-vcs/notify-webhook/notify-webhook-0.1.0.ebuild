@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python3_{3,4,5} pypy3 )
+PYTHON_COMPAT=( pypy3 )
 
 DESCRIPTION="Git post-receive web hook notifier in Python."
 HOMEPAGE="https://github.com/metajack/notify-webhook"
@@ -24,6 +23,6 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	dodoc *markdown
-	exeinto /usr/libexec/githook/$PN/
+	exeinto /usr/libexec/githook/${PN}/
 	doexe notify-webhook.py
 }

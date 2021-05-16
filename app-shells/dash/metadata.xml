@@ -8,4 +8,8 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:dash:dash</remote-id>
 	</upstream>
+	<longdescription lang="en">
+		DASH is a direct descendant of the NetBSD version of ash (the Almquist SHell)
+		and is POSIX compliant.
+	</longdescription>
 </pkgmetadata>

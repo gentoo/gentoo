@@ -1,0 +1,22 @@
+X-Git-Url: https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blobdiff_plain;f=m4%2Fstd-gnu11.m4;h=b5ab8abed0288b1197fe9f49dcf6aeb6b503ddf3;hp=db833d820f3b5b26e0f218ef87daf4fc1be54f2d;hb=a3b3fc85e3e632374811b27cb2111e50fa177e36;hpb=c6b798d3754a4ee18c3e5e0fff4310105d7894b2
+
+diff --git a/m4/std-gnu11.m4 b/m4/std-gnu11.m4
+index db833d8..b5ab8ab 100644
+--- a/m4/std-gnu11.m4
++++ b/m4/std-gnu11.m4
+@@ -6,6 +6,8 @@
+ # This implementation will be obsolete once we can assume Autoconf 2.70
+ # or later is installed everywhere a Gnulib program might be developed.
+ 
++m4_version_prereq([2.70], [], [
++
+ 
+ # Copyright (C) 2001-2020 Free Software Foundation, Inc.
+ 
+@@ -822,3 +824,6 @@ dnl Tru64	N/A (no support)
+ dnl with extended modes being tried first.
+ [[-std=gnu++11 -std=c++11 -std=gnu++0x -std=c++0x -qlanglvl=extended0x -AA]], [$1], [$2])[]dnl
+ ])# _AC_PROG_CXX_CXX11
++
++
++])# m4_version_prereq

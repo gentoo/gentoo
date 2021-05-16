@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<use>
-		<flag name="graphicsmagick">Enable support for many common image file formats using the GraphicsMagick++ library</flag>
+		<flag name="cli">Build CLI interface</flag>
+		<flag name="krita">Build <pkg>media-gfx/krita</pkg> plugin</flag>
 		<flag name="opencv">Enable support for webcams using the OpenCV library</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">gmic</remote-id>
+		<remote-id type="github">dtschump/gmic</remote-id>
 	</upstream>
 </pkgmetadata>

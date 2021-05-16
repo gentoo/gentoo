@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		NGINX Unit is a dynamic web and application server, designed to run
+		applications in multiple languages. Unit is lightweight, polyglot, and
+		dynamically configured via API. The design of the server allows
+		reconfiguration of specific application parameters as needed by the
+		engineering or operations.
+	</longdescription>
+	<use>
+		<flag name="php7-2">Support for PHP 7.2</flag>
+		<flag name="php7-3">Support for PHP 7.3</flag>
+		<flag name="php7-4">Support for PHP 7.4</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nginx/unit</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,77 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -58,7 +58,6 @@ AC_CHECK_PROGS(TAR, gnutar gtar tar)
+ AC_CHECK_PROGS(LUA, lua)
+ AC_CHECK_PROGS(PYTHON, python)
+ AC_CHECK_PROGS(PERL, perl)
+-AC_CHECK_PROGS(PHP, php)
+ AC_CHECK_PROGS(RUBY, ruby)
+ AC_CHECK_PROGS(SWIG, swig)
+ # Gnome
+@@ -153,15 +152,28 @@ if test "X$LUA_VERSION" != X; then
+   fi
+ fi
+ 
++dnl Find php-config script.
++AC_ARG_WITH([php-config],
++  [AS_HELP_STRING([--with-php-config=PATH], [Path to php-config [php-config]])],
++  [with_php_config=${withval}],
++  [with_php_config=php-config])
++
++if test "${with_php_config}" = "php-config"; then
++  AC_CHECK_PROG(PHP_CONFIG, php-config, php-config)
++elif test -x "${with_php_config}"; then
++  PHP_CONFIG=${with_php_config}
++  AC_SUBST(PHP_CONFIG)
++  AC_MSG_NOTICE([found ${PHP_CONFIG}])
++fi
+ 
+-AC_CHECK_PROG(PHP_CONFIG, php-config, php-config)
+ if test "X$PHP_CONFIG" != X ; then
++  PHP_VERSION=`${PHP_CONFIG} --version`
++  PHP_INCLUDES=`${PHP_CONFIG} --includes`
++  PHP_EXTENSION_DIR=`${PHP_CONFIG} --extension-dir`
+ 
+-  PHP_VERSION=`$PHP_CONFIG --version`
+-  PHP_INCLUDES=`$PHP_CONFIG --includes`
+-  PHP_EXTENSION_DIR=`$PHP_CONFIG --extension-dir`
+-
+-  if test $PHP_VERSION '>' 5.0.0; then
++  if test $PHP_VERSION '>' 7; then
++    PHP_SWIG="-php7"
++  elif test $PHP_VERSION '>' 5.0.0; then
+     PHP_SWIG="-php5"
+   else
+     PHP_SWIG="-php4"
+@@ -200,6 +212,8 @@ if test "X$PHP_CONFIG" != X ; then
+   AC_MSG_RESULT(compile '$PHP_CFLAGS' link '$PHP_LDFLAGS' suffix $PHP_SO_SUFFIX)
+ 
+ else
++  AC_MSG_WARN([php-config not found])
++
+   # This allows 'make clean' in the php directory to work when
+   # php isn't available
+   PHP=:
+@@ -445,13 +459,17 @@ if test "X$with_php" != Xno ; then
+   with_php=yes
+ fi
+ 
+-PHP_VERSION=`php-config --version 2>/dev/null`
+-if test "X$PHP_VERSION" != X; then
+-  languages_available="$languages_available php($PHP_VERSION)"
+-  if test $with_php = yes; then
+-    languages="$languages php"
++if test "X${PHP_VERSION}" != "X"; then
++  languages_available="$languages_available php(${PHP_VERSION})"
++fi
++
++if test ${with_php} = yes; then
++  if test "X${PHP_VERSION}" = "X"; then
++    AC_MSG_ERROR([Failed to detect PHP version])
+   fi
++  languages="$languages php"
+ fi
++
+ AC_MSG_RESULT($with_php)
+ AC_SUBST(PHP_VERSION)
+ 

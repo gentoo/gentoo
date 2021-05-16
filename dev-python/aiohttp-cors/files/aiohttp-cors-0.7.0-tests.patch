@@ -1,0 +1,66 @@
+From fed5542836c6afa925f3b607d544a92307c5e09f Mon Sep 17 00:00:00 2001
+From: Andrew Svetlov <andrew.svetlov@gmail.com>
+Date: Mon, 15 Oct 2018 21:32:48 +0300
+Subject: [PATCH] Fix tests
+
+---
+ tests/integration/test_real_browser.py | 18 ++++++++----------
+ tests/unit/test_cors_config.py         |  5 ++---
+ 2 files changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/tests/integration/test_real_browser.py b/tests/integration/test_real_browser.py
+index a5c9030..5dff79a 100644
+--- a/tests/integration/test_real_browser.py
++++ b/tests/integration/test_real_browser.py
+@@ -193,22 +193,20 @@ class IntegrationServers:
+ 
+         # Start servers.
+         for server_name, server_descr in self.servers.items():
+-            handler = server_descr.app.make_handler()
+-            server = await self.loop.create_server(
+-                handler,
+-                sock=server_sockets[server_name])
+-            server_descr.handler = handler
+-            server_descr.server = server
++            runner = web.AppRunner(server_descr.app)
++            await runner.setup()
++            site = web.SockSite(runner, server_sockets[server_name])
++            await site.start()
++            server_descr.runner = runner
+ 
+             self._logger.info("Started server '%s' at '%s'",
+                               server_name, server_descr.url)
+ 
+     async def stop_servers(self):
+         for server_descr in self.servers.values():
+-            server_descr.server.close()
+-            await server_descr.handler.shutdown()
+-            await server_descr.server.wait_closed()
+-            await server_descr.app.cleanup()
++            runner = server_descr.runner
++            await runner.shutdown()
++            await runner.cleanup()
+ 
+         self.servers = {}
+ 
+diff --git a/tests/unit/test_cors_config.py b/tests/unit/test_cors_config.py
+index 5b8d8f3..817410e 100644
+--- a/tests/unit/test_cors_config.py
++++ b/tests/unit/test_cors_config.py
+@@ -58,11 +58,10 @@ def options_route(app):
+         "OPTIONS", "/options_path", _handler)
+ 
+ 
+-def test_add_options_route(cors, options_route):
++def test_add_options_route(app, cors, options_route):
+     """Test configuring OPTIONS route"""
+-
+     with pytest.raises(ValueError,
+-                       match="/options_path already has OPTIONS handler"):
++                       match="already has OPTIONS handler"):
+         cors.add(options_route.resource)
+ 
+ 
+-- 
+2.25.1
+

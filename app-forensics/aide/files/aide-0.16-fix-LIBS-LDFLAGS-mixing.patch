@@ -1,0 +1,23 @@
+commit 6da37687ba7cf259ac19cae2e1c16115b6848143
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Thu May 25 13:34:55 2017 +0300
+
+build: fix incorrect LIBS/LDFLAGS mixing
+
+Otherwise build with LDFLAGS='-Wl,--as-needed' and curl support fails.
+See https://bugs.gentoo.org/show_bug.cgi?id=271326
+and https://sourceforge.net/p/aide/bugs/96/
+
+diff --git a/configure.ac b/configure.ac
+index 3598ebe..0c5cb0c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -713,7 +713,7 @@ if test x$with_curl = xyes; then
+   AC_CHECK_HEADERS(curl/curl.h,,
+  	[AC_MSG_ERROR([You don't have curl properly installed. Install it or try --without-curl.])])
+   CFLAGS="$CFLAGS $CURL_CFLAGS"
+-  LDFLAGS="$LDFLAGS $CURL_LIBS"
++  LIBS="$LIBS $CURL_LIBS"
+   AC_CHECK_LIB(curl,curl_easy_init,havecurl=yes,
+  	[AC_MSG_ERROR([You don't have curl properly installed. Install it or try --without-curl.])]
+ )

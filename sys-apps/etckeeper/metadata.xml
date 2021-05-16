@@ -2,12 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
-		<flag name="bazaar">Support <pkg>dev-vcs/bzr</pkg> based repository
-		</flag>
 		<flag name="cron">Install cron script</flag>
 	</use>
 	<longdescription>etckeeper is a collection of tools to let /etc be stored in

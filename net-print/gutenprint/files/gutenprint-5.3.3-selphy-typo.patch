@@ -1,0 +1,22 @@
+From: "Andreas B. Mundt" <andi@debian.org>
+Date: Mon, 4 Nov 2019 18:40:58 +0100
+Subject: Fix 'selpyh' for 'selphy' typo for Canon CP300
+
+Closes: #943964
+---
+ src/cups/backend_canonselphy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cups/backend_canonselphy.c b/src/cups/backend_canonselphy.c
+index 978df0d..3ef0c31 100644
+--- a/src/cups/backend_canonselphy.c
++++ b/src/cups/backend_canonselphy.c
+@@ -1165,7 +1165,7 @@ struct dyesub_backend canonselphy_backend = {
+ 		{ USB_VID_CANON, USB_PID_CANON_CP100, P_CP_XXX, NULL, "canon-cp100"},
+ 		{ USB_VID_CANON, USB_PID_CANON_CP200, P_CP_XXX, NULL, "canon-cp200"},
+ 		{ USB_VID_CANON, USB_PID_CANON_CP220, P_CP_XXX, NULL, "canon-cp220"},
+-		{ USB_VID_CANON, USB_PID_CANON_CP300, P_CP_XXX, NULL, "selpyhcp300"},
++		{ USB_VID_CANON, USB_PID_CANON_CP300, P_CP_XXX, NULL, "selphycp300"},
+ 		{ USB_VID_CANON, USB_PID_CANON_CP330, P_CP_XXX, NULL, "canon-cp330"},
+ 		{ USB_VID_CANON, USB_PID_CANON_CP400, P_CP_XXX, NULL, "canon-cp400"},
+ 		{ USB_VID_CANON, USB_PID_CANON_CP500, P_CP_XXX, NULL, "canon-cp500"},

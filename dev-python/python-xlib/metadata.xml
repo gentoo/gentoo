@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">python-xlib</remote-id>
+		<remote-id type="github">python-xlib/python-xlib</remote-id>
+		<remote-id type="pypi">python-xlib</remote-id>
 	</upstream>
 </pkgmetadata>

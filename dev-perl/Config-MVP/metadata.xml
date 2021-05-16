@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Config-MVP</remote-id>
+    <remote-id type="cpan-module">Config::MVP</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Assembler</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Assembler::WithBundles</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Error</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Reader</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Reader::Findable</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Reader::Findable::ByExtension</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Reader::Finder</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Reader::Hash</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Section</remote-id>
+    <remote-id type="cpan-module">Config::MVP::Sequence</remote-id>
+  </upstream>
+</pkgmetadata>

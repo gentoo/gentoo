@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Re-add Winnt libc
 -elibc_Winnt
@@ -16,21 +15,16 @@ alsa
 altivec
 apm
 bluetooth
-cap
 caps
 cdr
 coreaudio
 dga
-directfb
-divx4linux
 djbfft
 dri
 dvdr
 # emacs USE flag is masked because of missing implementation for unexec()
 emacs
 fbcon
-fdftk
-fmod
 ggi
 glut
 gpm
@@ -38,19 +32,11 @@ gps
 hardened
 hddtemp
 ibm
-icc
-icc-pgo
 ieee1394
-ifc
 ipod
 ipv6
-lm_sensors
-matrox
+lm-sensors
 ncurses
-netboot
-old-linux
-# the following USE flag requires device-mapper
-on-the-fly-crypt
 opengl
 oss
 pcmcia
@@ -64,7 +50,6 @@ uclibc
 # unicode is totally b0rked on interix
 unicode
 usb
-voodoo3
 v4l
 wifi
 
@@ -79,7 +64,6 @@ ladspa
 openmp
 portaudio
 pulseaudio
-qt4
 readline
 # libtiff only static, so avoid the tiff USE flag!
 tiff

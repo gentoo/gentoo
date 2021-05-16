@@ -1,5 +1,5 @@
---- data/klavaro.desktop.in 2015-01-07 21:52:37.877646655 -0500
-+++ data/klavaro.desktop.in	2015-01-07 21:52:56.391720366 -0500
+--- a/data/klavaro.desktop.in
++++ b/data/klavaro.desktop.in
 @@ -2,7 +2,7 @@
  Name=Klavaro
  _Comment=A very flexible and efficient touch typing tutor.

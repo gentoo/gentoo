@@ -1,5 +1,5 @@
---- Makefile.am 2014-07-29 14:44:37.851568232 +0800
-+++ Makefile.am.new     2014-07-29 14:44:54.687855718 +0800
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -196,7 +196,7 @@
  TESTS = $(check_PROGRAMS)
  

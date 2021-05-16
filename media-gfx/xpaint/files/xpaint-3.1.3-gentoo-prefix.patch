@@ -1,0 +1,103 @@
+This patch fixes compiling xpaint inside a gentoo prefix.
+There are multiple issues:
+	search paths hardcoded to /usr/include,
+	install paths outside prefix,
+	X resources in app-defaults with path hardcoded to /usr/share/xpaint
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,7 @@
+ ## Local Configuration arguments
+ BINDIR = $(prefix)/bin
+ SHAREDIR = $(prefix)/share/xpaint
+-XAPPLOADDIR = /etc/X11/app-defaults
++XAPPLOADDIR = $(sysconfdir)/X11/app-defaults
+ 
+ ## Enable/disable PRINTCAP (for older BSD style printing configuration)
+ ## PRINTCAP = -DPRINTCAP
+@@ -85,7 +85,7 @@
+ .PHONY:
+ 
+ version.h:
+-	rm -f xaw_incdir ; ln -s /usr/include/X11/Xaw3dxft xaw_incdir
++	rm -f xaw_incdir ; ln -s @includedir@/X11/Xaw3dxft xaw_incdir
+ 	echo "#define XPAINT_VERSION \"$(PACKAGE_VERSION)\"" > version.h
+ 
+ substads: substads.c
+@@ -149,8 +149,7 @@
+ 	mkdir -p $(DESTDIR)$(SHAREDIR)/messages
+ 	cd share/messages ; $(RM) -f *~ ; cp -f Messages* $(DESTDIR)$(SHAREDIR)/messages
+ 	chmod -R a+r $(DESTDIR)$(SHAREDIR)/
+-	cd util ; make install
+-	cd vxp2ps ; make install
++	cd vxp2ps ; make BINDIR=$(BINDIR) install
+ 
+ clean-local:
+ 	rm -f xaw_incdir
+--- a/util/Makefile
++++ b/util/Makefile
+@@ -17,9 +17,9 @@
+ 
+ ifneq ($(WITH_PGF),no)
+ pgf2pnm: main.cpp pnm.cpp
+-	@if [ -x /usr/include/libpgf ] ; then \
+-	$(CXX) $(CXXFLAGS) -fpermissive -c main.cpp -o main.o -I/usr/include/libpgf ; \
+-	$(CXX) $(CXXFLAGS) -fpermissive -c pnm.cpp -o pnm.o -I/usr/include/libpgf ; \
++	@if [ -x $(includedir)/libpgf ] ; then \
++	$(CXX) $(CXXFLAGS) -fpermissive -c main.cpp -o main.o -I$(includedir)/libpgf ; \
++	$(CXX) $(CXXFLAGS) -fpermissive -c pnm.cpp -o pnm.o -I$(includedir)/libpgf ; \
+ 	$(CXX) $(CXXFLAGS) -fpermissive -o pgf2pnm main.o pnm.o $(LDFLAGS) -lpgf ; \
+ 	else \
+ 	echo "libpgf not installed !!" ; \
+--- a/configure.ac
++++ b/configure.ac
+@@ -32,7 +32,7 @@
+ AC_TYPE_UINT32_T
+ AC_TYPE_UINT64_T
+ 
+-CFLAGS="$CFLAGS -I/usr/include -I/usr/include/X11 -I/usr/include/X11/Xaw3dxft"
++CFLAGS="$CFLAGS -I${prefix}/include -I${prefix}/include/X11 -I${prefix}/include/X11/Xaw3dxft"
+ LIBS="$LIBS -lm"
+ echo "VERSION = $VERSION" > .version
+ 
+@@ -40,7 +40,7 @@
+ AC_CHECK_LIB([X11], [XOpenDisplay], have_x11="yes")
+ if test x"$have_x11" = xyes; then
+   AC_SUBST([X_LIBS], ["-lXmu -lXt -lSM -lICE -lXext -lX11 -lXpm -ldl -rdynamic"])
+-  AC_SUBST([X_CFLAGS], ["-I/usr/include/X11"])
++  AC_SUBST([X_CFLAGS], ["-I${prefix}/include/X11"])
+ else
+   echo "X11 libraries not installed !"
+   exit 1
+@@ -291,7 +291,7 @@
+ fi
+ 
+ if test x$enable_libopenjp2 = xyes; then
+-  CFLAGS="$CFLAGS -I/usr/include/openjpeg-2.3"
++  CFLAGS="$CFLAGS -I${prefix}/include/openjpeg-2.3"
+   LIBS="$LIBS -lopenjp2"
+   AC_SUBST(LIBOPENJP2_LIBS)
+   AC_DEFINE(HAVE_OPENJP2)
+@@ -323,9 +323,9 @@
+   [AC_LANG_PROGRAM([[#include <freetype2/config/ftheader.h>]])],
+   [AC_MSG_RESULT([already in path])],
+   [AC_PREPROC_IFELSE(
+-    [AC_LANG_PROGRAM([[#include </usr/include/freetype2/freetype/config/ftheader.h>]])],
+-    [AC_MSG_RESULT([/usr/include/freetype2])
+-     AC_SUBST([SPECIAL_CFLAGS], ["-I/usr/include/freetype2"])],
++    [AC_LANG_PROGRAM([[#include <${prefix}/include/freetype2/freetype/config/ftheader.h>]])],
++    [AC_MSG_RESULT([${prefix}/include/freetype2])
++     AC_SUBST([SPECIAL_CFLAGS], ["-I${prefix}/include/freetype2"])],
+     [AC_MSG_ERROR([cannot find freetype2 headers; try setting CFLAGS.])]
+   )]
+ )
+--- a/xpaintrw/Makefile.am
++++ b/xpaintrw/Makefile.am
+@@ -13,7 +13,7 @@
+ ARCH_DEFINES = -fPIC
+ 
+ ## PBM_DEFINES = -DNETPBM10
+-PBM_DEFINES = -I/usr/include/netpbm -DNETPBM11
++PBM_DEFINES = -I@includedir@/netpbm -DNETPBM11
+ 
+ ## 
+ ## Specific xpaint options

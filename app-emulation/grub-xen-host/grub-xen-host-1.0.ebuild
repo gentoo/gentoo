@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -19,22 +18,18 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
 
-STRIP_MASK="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-QA_EXECSTACK="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-QA_WX_LOAD="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-QA_PRESTRIPPED="usr/libexec/xen/bin/grub-x86_64-xen.bin"
-RESTRICT="test"
+RESTRICT="binchecks strip test"
 
 src_configure() {
 	:
 }
 
 src_compile() {
-	cat > "${S}/grub-bootstrap.cfg" <<- EOF
+	cat > "${S}/grub-bootstrap.cfg" <<- EOF || die
 		normal (memdisk)/grub.cfg
 	EOF
 
-	cat > "${S}/grub.cfg" <<- EOF
+	cat > "${S}/grub.cfg" <<- EOF || die
 		if search -s -f /boot/xen/pvboot-x86_64.elf ; then
 			echo "Chainloading (${root})/boot/xen/pvboot-x86_64.elf"
 			multiboot "/boot/xen/pvboot-x86_64.elf"
@@ -60,12 +55,22 @@ src_compile() {
 
 	tar cf memdisk.tar grub.cfg || die "failed to tar"
 
-	grub2-mkimage -O x86_64-xen \
-		-c grub-bootstrap.cfg \
-		-m memdisk.tar \
-		-o grub-x86_64-xen.bin \
-		/usr/lib/grub/x86_64-xen/*.mod \
-		|| die "failed to grub-mkimage"
+	local grub_mkimage=grub-mkimage
+	if type grub2-mkimage &> /dev/null; then
+		grub_mkimage=grub2-mkimage
+	fi
+
+	local args=(
+		"${grub_mkimage}"
+		-O x86_64-xen
+		-c grub-bootstrap.cfg
+		-m memdisk.tar
+		-o grub-x86_64-xen.bin
+		/usr/lib/grub/x86_64-xen/*.mod
+	)
+
+	echo "${args[@]}"
+	"${args[@]}" || die "failed to grub-mkimage"
 }
 
 src_install() {

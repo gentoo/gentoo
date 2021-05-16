@@ -1,16 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-DESCRIPTION="CLI designed to validate AppData descriptions for standards compliance and to the style guide"
+DESCRIPTION="CLI designed to validate AppData descriptions for standards and style compliance"
 HOMEPAGE="https://github.com/hughsie/appdata-tools/"
 SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 # Superseeded by appstream-glib.

@@ -1,0 +1,117 @@
+* Makes static libs optional
+* Removes auto-SSE2 detection
+----
+diff --git a/Makefile b/Makefile
+index 303a413..1ef750e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -284,8 +284,9 @@ ifeq ($(GPAC_ENST),yes)
+ endif
+ 
+ 	$(INSTALL) -d "$(DESTDIR)$(prefix)/$(lib_dir)"
++ifeq ($(STATIC_LIBS), yes)
+ 	$(INSTALL) $(INSTFLAGS) -m 644 "./bin/gcc/libgpac_static.a" "$(DESTDIR)$(prefix)/$(lib_dir)" || true
+-
++endif
+ 	$(INSTALL) -d $(DESTDIR)$(prefix)/$(lib_dir)/pkgconfig
+ 	$(INSTALL) $(INSTFLAGS) -m 644 gpac.pc "$(DESTDIR)$(prefix)/$(lib_dir)/pkgconfig"
+ 
+diff --git a/configure b/configure
+index de8ea99..4f5a6a8 100755
+--- a/configure
++++ b/configure
+@@ -105,6 +105,7 @@ has_dvb4linux="no"
+ has_openjpeg="no"
+ gprof_build="no"
+ static_build="no"
++static_libs="no"
+ want_pic="no"
+ want_gcov="no"
+ has_joystick="no"
+@@ -264,6 +265,7 @@ GPAC configuration options:
+   --enable-amr-wb          enable AMR WB library
+   --enable-amr             enable both AMR NB and WB libraries
+   --enable-static-bin      link statically against libgpac
++  --enable-static-lib      GPAC static libraries build
+   --static-mp4box          configure for static linking of MP4Box only.
+   --enable-depth           enables depth handling in the compositor
+ 
+@@ -706,14 +708,6 @@ if docc -lz -Wno-pointer-sign ; then
+ fi
+ 
+ 
+-#GCC opt
+-if test "$no_gcc_opt" = "no"; then
+-    CFLAGS="-O3 $CFLAGS"
+-else
+-    CFLAGS="-O0 $CFLAGS"
+-fi
+-
+-
+ #GCC PIC
+ if test "$cross_prefix" != "" ; then
+     want_pic="no"
+@@ -1710,6 +1704,8 @@ for opt do
+             ;;
+         --enable-static-bin) static_build="yes";
+             ;;
++        --enable-static-libs) static_libs="yes";
++            ;;
+         --disable-ipv6) has_ipv6="no"
+             ;;
+         --disable-platinum) has_platinum="no"
+@@ -2357,6 +2353,7 @@ echo "** GPAC $version rev$revision Core Configuration **"
+ echo "debug version: $debuginfo"
+ echo "GProf enabled: $gprof_build"
+ echo "Static build enabled: $static_build"
++echo "Static libs enabled: $static_libs"
+ echo "Memory tracking enabled: $use_memory_tracking"
+ echo "Sanitizer enabled: $enable_sanitizer"
+ echo "Fixed-Point Version: $use_fixed_point"
+@@ -3049,6 +3046,7 @@ echo "DEBUGBUILD=$debuginfo" >> config.mak
+ echo "GPROFBUILD=$gprof_build" >> config.mak
+ echo "MP4BOX_STATIC=$static_mp4box" >> config.mak
+ echo "STATICBUILD=$static_build" >> config.mak
++echo "STATICLIBS=$static_libs" >> config.mak
+ 
+ echo "CONFIG_IPV6=$has_ipv6" >> config.mak
+ if test "$has_ipv6" = "yes" ; then
+diff --git a/src/Makefile b/src/Makefile
+index c483c8d..b24d5bb 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -347,7 +347,6 @@ filters_svc: $(LIBGPAC_FILTERS_SVC)
+ 	@echo "LIBS $(EXTRALIBS)"
+ 
+ ifeq ($(CONFIG_DARWIN),yes)
+-
+ 	$(LIBTOOL) -s -o ../bin/gcc/libgpac_static.a $(OBJS)
+ 	$(RANLIB) ../bin/gcc/libgpac_static.a
+ ifneq ($(STATICBUILD),yes)
+@@ -355,9 +354,10 @@ ifneq ($(STATICBUILD),yes)
+ endif
+ 
+ else
+-
++ifeq ($(STATICLIBS), yes)
+ 	$(AR) cr ../bin/gcc/libgpac_static.a $(OBJS)
+ 	$(RANLIB) ../bin/gcc/libgpac_static.a
++endif
+ ifneq ($(STATICBUILD),yes)
+ 	$(CC) $(SHFLAGS) $(LD_SONAME) -o $@ $(OBJS) $(EXTRALIBS)	 $(LDFLAGS)
+ 	mv $@ $@.$(VERSION_SONAME)
+diff --git a/configure b/configure
+index 4f5a6a8..baba248 100755
+--- a/configure
++++ b/configure
+@@ -735,10 +735,6 @@ cat > $TMPC << EOF
+ int main( void ) { return 0; }
+ EOF
+ 
+-if docc -msse2 $LDFLAGS ; then
+-  CFLAGS="$CFLAGS -msse2"
+-fi
+-
+ 
+ #look for zlib
+ cat > $TMPC << EOF

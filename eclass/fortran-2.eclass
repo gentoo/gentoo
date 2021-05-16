@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: fortran-2.eclass
 # @MAINTAINER:
-# jlec@gentoo.org
 # sci@gentoo.org
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -27,12 +26,15 @@
 #
 # FORTRAN_NEED_OPENMP=1
 
-inherit eutils toolchain-funcs
-
+inherit toolchain-funcs
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
+	# not used in the eclass, but left for backward compatibility with legacy users
+	4|5|6) inherit eutils ;;
+	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
+
+EXPORT_FUNCTIONS pkg_setup
 
 if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
@@ -88,11 +90,10 @@ unset _f_use
 # @DESCRIPTION:
 # Return the Fortran compiler flag to enable 64 bit integers for
 # array indices
-# @CODE
 fortran_int64_abi_fflags() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_FC=$(tc-getFC)
+	local _FC=$(tc-getFC)
 	if [[ ${_FC} == *gfortran* ]]; then
 		echo "-fdefault-integer-8"
 	elif [[ ${_FC} == ifort ]]; then
@@ -112,17 +113,17 @@ _fortran_write_testsuite() {
 	local filebase=${T}/test-fortran
 
 	# f77 code
-	cat <<- EOF > "${filebase}.f"
+	cat <<- EOF > "${filebase}.f" || die
 	       end
 	EOF
 
 	# f90/95 code
-	cat <<- EOF > "${filebase}.f90"
+	cat <<- EOF > "${filebase}.f90" || die
 	end
 	EOF
 
 	# f2003 code
-	cat <<- EOF > "${filebase}.f03"
+	cat <<- EOF > "${filebase}.f03" || die
 	       procedure(), pointer :: p
 	       end
 	EOF
@@ -170,7 +171,7 @@ _fortran-has-openmp() {
 	local ret
 	local _fc=$(tc-getFC)
 
-	cat <<- EOF > "${fcode}"
+	cat <<- EOF > "${fcode}" || die
 	       call omp_get_num_threads
 	       end
 	EOF
@@ -179,7 +180,7 @@ _fortran-has-openmp() {
 		${_fc} ${flag} "${fcode}" -o "${fcode}.x" \
 			&>> "${T}"/_fortran_compile_test.log
 		ret=$?
-		(( ${ret} )) || break
+		[[ ${ret} == 0 ]] && break
 	done
 
 	rm -f "${fcode}.x"
@@ -193,12 +194,12 @@ _fortran-has-openmp() {
 _fortran_die_msg() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	echo
+	eerror
 	eerror "Please install currently selected gcc version with USE=fortran."
 	eerror "If you intend to use a different compiler then gfortran, please"
 	eerror "set FC variable accordingly and take care that the necessary"
 	eerror "fortran dialects are supported."
-	echo
+	eerror
 	die "Currently no working fortran compiler is available (see ${T}/_fortran_compile_test.log for information)"
 }
 
@@ -250,7 +251,7 @@ _fortran-2_pkg_setup() {
 	for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
-			_fortran_test_function && break
+			_fortran_test_function && break 2
 			;;
 		no)
 			einfo "Forcing fortran support off"
@@ -258,7 +259,7 @@ _fortran-2_pkg_setup() {
 			;;
 		*)
 			if use ${_f_use}; then
-				_fortran_test_function && break
+				_fortran_test_function && break 2
 			else
 				unset FC
 				unset F77
@@ -276,19 +277,9 @@ _fortran-2_pkg_setup() {
 fortran-2_pkg_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	case ${EAPI:-0} in
-		0|1|2|3)
-			eqawarn "Support for EAPI < 4 will be removed from the"
-			eqawarn "fortran-2.eclass in until 2013-09-30."
-			eqawarn "Please migrate your package to a higher EAPI"
-			eqawarn "or file a bug at https://bugs.gentoo.org"
-			_fortran-2_pkg_setup ;;
-		*)
-			if [[ ${MERGE_TYPE} != binary ]]; then
-				_fortran-2_pkg_setup
-			fi
-			;;
-	esac
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		_fortran-2_pkg_setup
+	fi
 }
 
 _FORTRAN_2_ECLASS=1

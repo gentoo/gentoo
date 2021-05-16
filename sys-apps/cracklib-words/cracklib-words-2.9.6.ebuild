@@ -1,19 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-DESCRIPTION="large set of crack/cracklib dictionaries"
+DESCRIPTION="Large set of crack/cracklib dictionaries"
 HOMEPAGE="https://github.com/cracklib/cracklib/"
 SRC_URI="https://github.com/cracklib/cracklib/releases/download/${P/-words}/${P}.gz"
+S="${WORKDIR}"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE=""
-
-S=${WORKDIR}
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 src_install() {
 	insinto /usr/share/dict
@@ -21,7 +18,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ "${ROOT}" = "/" ] && create-cracklib-dict -h >&/dev/null ; then
+	if [[ -z "${ROOT}" ]] && create-cracklib-dict -h >&/dev/null ; then
 		ebegin "Regenerating cracklib dictionary"
 		create-cracklib-dict /usr/share/dict/* >/dev/null
 		eend $?

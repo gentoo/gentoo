@@ -1,0 +1,11 @@
+--- a/tests/hybrid.tml
++++ b/tests/hybrid.tml
+@@ -10,7 +10,7 @@
+   </test>
+   <test command="hybrid --version" return="0">
+     <stdin></stdin>
+-    <stdout>hybrid (UNAFold) 3.7
++    <stdout>hybrid (UNAFold) 3.8
+ By Nicholas R. Markham and Michael Zuker
+ Copyright (C) 2006
+ Rensselaer Polytechnic Institute

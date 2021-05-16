@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
-	</maintainer>
 	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
+		<email>codec@gentoo.org</email>
+		<name>Gentoo Codec Project</name>
 	</maintainer>
 	<longdescription>
 gd is a graphics library. It allows your code to quickly draw images complete  
@@ -29,9 +26,10 @@ and so forth.
 	<upstream>
 		<remote-id type="github">libgd/libgd</remote-id>
 		<bugs-to>https://github.com/libgd/libgd/issues</bugs-to>
-		<remote-id type="bitbucket">libgd/gd-libgd</remote-id>
 	</upstream>
 	<use>
+		<flag name="avif">Enable support for the avif format via <pkg>media-libs/libavif</pkg></flag>
+		<flag name="heif">Enable support for the heif format via <pkg>media-libs/libheif</pkg></flag>
 		<flag name="webp">Enable support for the webp format</flag>
 	</use>
 </pkgmetadata>

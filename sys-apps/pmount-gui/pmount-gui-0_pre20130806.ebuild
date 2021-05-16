@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -15,7 +14,7 @@ fi
 inherit toolchain-funcs
 
 DESCRIPTION="A simple graphical frontend for pmount"
-HOMEPAGE="http://git.tdb.fi/?p=pmount-gui:a=summary"
+HOMEPAGE="http://git.tdb.fi/?p=pmount-gui.git;a=summary"
 
 LICENSE="BSD-2"
 SLOT="0"

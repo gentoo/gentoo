@@ -10,12 +10,14 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-    Cliff is a framework for building command line programs.
-	It uses setuptools entry points to provide subcommands,
-	output formatters, and other extensions.
-  </longdescription>
+		Cliff is a framework for building command line programs.
+		It uses setuptools entry points to provide subcommands,
+		output formatters, and other extensions.
+	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">cliff</remote-id>
 		<remote-id type="github">dreamhost/cliff</remote-id>
+		<remote-id type="github">openstack/cliff</remote-id>
 	</upstream>
 </pkgmetadata>

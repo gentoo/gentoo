@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source test"
@@ -13,7 +12,7 @@ SRC_URI="mirror://apache/commons/beanutils/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="1.7"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE=""
 
 CDEPEND="dev-java/commons-collections:0
@@ -26,7 +25,6 @@ DEPEND=">=virtual/jdk-1.6
 	test? (
 		dev-java/ant-junit:0
 		dev-java/junit:0
-		dev-java/commons-collections[test-framework]
 	)
 	${CDEPEND}"
 
@@ -59,7 +57,7 @@ src_test() {
 src_install() {
 	java-pkg_newjar dist/${P}.jar
 
-	dodoc RELEASE-NOTES.txt || die
+	dodoc RELEASE-NOTES.txt
 
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/main/java/org

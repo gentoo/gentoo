@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- bogus commit to force manifest regeneration #596462 -->
+	<maintainer type="person" proxied="yes">
+		<email>otakuto.gentoo@gmail.com</email>
+		<name>Tact Yoshida</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>alicef@gentoo.org</email>
+		<name>Alice Ferrazzi</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="mosh">Install Support for mosh</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Russell91/sshrc</remote-id>
+	</upstream>
+</pkgmetadata>

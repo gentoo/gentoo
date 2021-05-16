@@ -1,5 +1,5 @@
---- stormbaancoureur-2.1.6.orig/src-stormbaancoureur/Makefile
-+++ stormbaancoureur-2.1.6/src-stormbaancoureur/Makefile
+--- src-stormbaancoureur/Makefile
++++ src-stormbaancoureur/Makefile
 @@ -5,21 +5,21 @@
  GLPREFIX=/usr
  PLIBPREFIX=/usr
@@ -89,8 +89,8 @@
  
  debugrun: stormbaancoureur
  	PLODE_DATADIR=`pwd` gdb ./stormbaancoureur
---- stormbaancoureur-2.1.6.orig/src-stormbaancoureur/main.cxx
-+++ stormbaancoureur-2.1.6/src-stormbaancoureur/main.cxx
+--- src-stormbaancoureur/main.cxx
++++ src-stormbaancoureur/main.cxx
 @@ -836,15 +836,7 @@
    fprintf(stderr,"plib is (c) by Steve Baker\n");
    fprintf(stderr,"OpenDE is (c) by Russel L. Smith\n");

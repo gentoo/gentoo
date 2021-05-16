@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
 inherit autotools flag-o-matic
 
 DESCRIPTION="Tecla command-line editing library"
-HOMEPAGE="http://www.astro.caltech.edu/~mcs/tecla/"
-SRC_URI="http://www.astro.caltech.edu/~mcs/tecla/${P}.tar.gz"
+HOMEPAGE="https://www.astro.caltech.edu/~mcs/tecla/"
+SRC_URI="https://www.astro.caltech.edu/~mcs/tecla/${P}.tar.gz"
 
 LICENSE="icu"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 DEPEND="sys-libs/ncurses:="

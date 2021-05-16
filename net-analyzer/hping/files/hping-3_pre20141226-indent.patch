@@ -1,0 +1,13 @@
+--- a/rtt.c
++++ b/rtt.c
+@@ -45,8 +45,8 @@
+ 				tablepos = i;
+ 				break;
+ 			}
+-			if (i != TABLESIZE)
+-				*seqp = delaytable[i].seq;
++		if (i != TABLESIZE)
++			*seqp = delaytable[i].seq;
+ 	}
+ 
+ 	if (tablepos != -1)

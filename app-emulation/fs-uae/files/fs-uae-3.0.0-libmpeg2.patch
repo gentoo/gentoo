@@ -1,0 +1,48 @@
+From b10a8c60fb2cc4d80eb5a95591a9e79681f7830a Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 19 Apr 2019 21:56:58 +0100
+Subject: [PATCH] Only run configure in libmpeg2 when using built-in version
+
+---
+ Makefile.am  | 3 +++
+ configure.ac | 4 +++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 66356baa..eece9f1e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,6 +1,7 @@
+ # Makefile.am for FS-UAE
+ 
+ SUBDIRS =
++DIST_SUBDIRS =
+ 
+ WARNINGS =
+ 
+@@ -1262,6 +1263,7 @@ endif
+ 
+ if BUILTIN_LIBMPEG2
+ SUBDIRS += libmpeg2
++DIST_SUBDIRS += libmpeg2
+ AM_CPPFLAGS += -I$(s)/libmpeg2/include
+ fs_uae_LDADD += \
+ 	libmpeg2/libmpeg2/.libs/libmpeg2.a \
+diff --git a/configure.ac b/configure.ac
+index 5dd3bfbd..4d4849fd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -801,7 +801,9 @@ OPT_FEATURE([A_ZIP], [zip], [zip],
+ 
+ AC_DEFINE([FPU_UAE], [1], [Define to 1])
+ 
+-AC_CONFIG_SUBDIRS([libmpeg2])
++AS_IF([test "x$with_libmpeg2" = xbuiltin], [
++    AC_CONFIG_SUBDIRS([libmpeg2])
++])
+ 
+ # Write Makefile
+ 
+-- 
+2.21.0
+

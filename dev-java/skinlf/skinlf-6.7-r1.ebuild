@@ -1,23 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
-
 JAVA_PKG_IUSE="examples source"
-WANT_ANT_TASKS="ant-nodeps"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 MY_P="${P}-20060722"
 
 DESCRIPTION="Skin Look and Feel - Skinning Engine for the Swing toolkit"
-HOMEPAGE="http://${PN}.l2fprod.com/"
+HOMEPAGE="http://skinlf.l2fprod.com/"
 SRC_URI="https://${PN}.dev.java.net/files/documents/66/37801/${MY_P}.zip"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/laf-plugin:0
 	dev-java/xalan:0"

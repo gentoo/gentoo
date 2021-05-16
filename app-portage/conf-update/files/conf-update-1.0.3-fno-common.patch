@@ -1,0 +1,64 @@
+--- a/config.c
++++ b/config.c
+@@ -1,5 +1,7 @@
+ #include "conf-update.h"
+ 
++struct configuration config;
++
+ bool get_boolean(GKeyFile *conffile, const char *key, bool default_value) {
+ 	GError *error = NULL;
+ 	bool value, invalid_value, key_not_found;
+@@ -26,7 +28,6 @@ char *get_string(GKeyFile *conffile, const char *key, char *default_value) {
+ }
+ 
+ void read_config() {
+-	extern struct configuration config;
+ 	GKeyFile *conffile;
+ 	
+ 	// set reasonable defaults
+--- a/config.h
++++ b/config.h
+@@ -8,6 +8,8 @@ struct configuration {
+ 	char *diff_tool;
+ 	char *merge_tool;
+ 	char *edit_tool;
+-} config;
++};
++
++extern struct configuration config;
+ 
+ void read_config();
+--- a/core.c
++++ b/core.c
+@@ -1,5 +1,7 @@
+ #include "conf-update.h"
+ 
++extern struct configuration config;
++
+ char *get_real_filename(const char *update) {
+ 	char *file = (char *)calloc(strlen(update) + 1 - strlen("._cfg????_"), sizeof(char));
+ 	strncpy(file, update, strrchr(update, '/') - update + 1);
+@@ -73,7 +75,6 @@ void merge(char *update, char **index) {
+ }
+ 
+ int show_diff(char *update) {
+-	extern struct configuration config;
+ 	char *realfile = get_real_filename(update);
+ 	char *esc_realfile = g_shell_quote(realfile);
+ 	char *esc_update = g_shell_quote(update);
+@@ -98,7 +99,6 @@ int show_diff(char *update) {
+ }
+ 
+ int edit_update(char *update) {
+-	extern struct configuration config;
+ 	char *esc_update = g_shell_quote(update);
+ 	char *cmd = calloc(strlen(config.edit_tool) + strlen("  ") + strlen(esc_update), sizeof(char));
+ 	int ret;
+@@ -116,7 +116,6 @@ int edit_update(char *update) {
+ char **merge_interactively(char *update, char **index) {
+ 	// customized versions are ._cfg????- with a minus instead of a underscore
+ 	// that way get_real_filename() works without modification
+-	extern struct configuration config;
+ 	char *realfile = get_real_filename(update);
+ 	char *esc_realfile = g_shell_quote(realfile);
+ 	char *esc_update = g_shell_quote(update);

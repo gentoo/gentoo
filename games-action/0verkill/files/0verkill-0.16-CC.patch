@@ -1,5 +1,5 @@
---- Makefile.in.orig	2010-11-08 13:30:42.060916323 -0500
-+++ Makefile.in	2010-11-08 13:31:03.199940471 -0500
+--- a/Makefile.in	2010-11-08 13:30:42.060916323 -0500
++++ b/Makefile.in	2010-11-08 13:31:03.199940471 -0500
 @@ -24,7 +24,7 @@
  server.o: server.c server.h net.h data.h hash.h cfg.h time.h math.h config.h error.h
  client.o: client.c data.h sprite.h cfg.h net.h hash.h time.h math.h console.h help.h blit.h config.h error.h

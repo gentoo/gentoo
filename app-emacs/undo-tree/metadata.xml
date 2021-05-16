@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>tomka@gentoo.org</email>
-  <name>Thomas Kahle</name>
-</maintainer>
 <maintainer type="project">
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
@@ -31,4 +27,5 @@
   was inspired by Vim. But, after all, most successful religions steal the
   best ideas from their competitors!
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

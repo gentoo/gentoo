@@ -1,0 +1,22 @@
+--- a/configure	2020-07-23 19:16:47.199283125 +0200
++++ b/configure	2020-07-23 19:17:01.229075367 +0200
+@@ -19,19 +19,6 @@
+ 
+ parse_options $*
+ 
+-compile c++ available.c ||
+-	status_error "A C++ compiler is not installed or does not work correctly.
+-A C++ compiler is vital for exact-image - so you need to install it first."
+-
+-compile c++ stl.c template.c template-specialization.c \
+-        partial-template-specialization.c function-template.c \
+-        || status_error \
+-	"At least one of the advanced ANSI C++ tests failed. Since these
+-features are vital for exact-image you need to update to a more recent compiler first."
+-
+-headercheck c++ iostream string iostream sstream fstream ||
+-	status_error "Not all tested STL headers are present - please install them."
+-
+ pkgcheck x11 compile X11 atleast 11.0
+ pkgcheck libagg pkg-config LIBAGG atleast 2.3 ||
+ 	status_error "Anti-Grain Geometry was not found, since it is vital

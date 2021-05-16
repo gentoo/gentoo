@@ -1,7 +1,0 @@
-# Dummy patch, not needed by libtool-1.2
-
---- ltmain.sh
-+++ ltmain.sh
-@@ -32,1 +32,1 @@
--PACKAGE=libtool
-+PACKAGE=libtool

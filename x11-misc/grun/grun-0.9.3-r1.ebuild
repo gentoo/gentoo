@@ -1,9 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A GTK based Run dialog resembling the Windows Run dialog, just like xexec"
 HOMEPAGE="https://github.com/lrgc/grun"
@@ -11,7 +9,7 @@ SRC_URI="https://grun.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE="nls"
 
 RDEPEND="
@@ -19,15 +17,15 @@ RDEPEND="
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:2
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-no_nls.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-no_nls.patch
+)
 
 src_configure() {
 	[[ -z ${TERM} ]] && TERM=xterm

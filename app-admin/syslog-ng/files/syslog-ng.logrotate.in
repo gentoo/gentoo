@@ -1,10 +1,10 @@
-# $Id$
 #
 # Syslog-ng logrotate snippet for Gentoo Linux
 # contributed by Michael Sterrett
 #
 
 /var/log/messages {
+    delaycompress
     missingok
     sharedscripts
     postrotate

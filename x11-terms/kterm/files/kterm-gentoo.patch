@@ -1,0 +1,43 @@
+--- a/main.c
++++ b/main.c
+@@ -75,9 +75,7 @@
+ #include <X11/Xos.h>
+ #include <X11/cursorfont.h>
+ #include <X11/Xaw/SimpleMenu.h>
+-#ifndef NO_XPOLL_H
+-#include <X11/Xpoll.h>
+-#endif
++#include <termios.h>
+ #include <X11/Xlocale.h>
+ #include <pwd.h>
+ #include <ctype.h>
+@@ -283,7 +281,6 @@
+ #include <lastlog.h>
+ # endif
+ #endif
+-#include <sys/param.h>	/* for NOFILE */
+ 
+ #ifdef  PUCC_PTYD
+ #include <local/openpty.h>
+--- a/screen.c
++++ b/screen.c
+@@ -46,7 +46,7 @@
+ #include <sys/ptem.h>
+ #endif
+ 
+-extern Char *calloc(), *malloc(), *realloc();
++extern void *calloc(), *malloc(), *realloc();
+ extern void free();
+ 
+ ScrnBuf Allocate (nrow, ncol, addr)
+--- a/scrollbar.c
++++ b/scrollbar.c
+@@ -324,7 +324,7 @@
+ 	register TScreen *screen = &xw->screen;
+ 	register int border = 2 * screen->border;
+ 	register int i;
+-	Char *realloc(), *calloc();
++	void *realloc(), *calloc();
+ 
+ 	if(screen->scrollbar)
+ 		return;

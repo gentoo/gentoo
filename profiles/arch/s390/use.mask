@@ -1,26 +1,43 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -s390
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on S390.
+llvm-libunwind
+
+# Sam James <sam@gentoo.org> (2021-02-05)
+# No luajit available for s390
+luajittex
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
 
 # Unmask ABI flags for this arch.
 -abi_s390_32
 
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependencies not keyworded.
+appindicator
+ayatana
+
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
+# Unmask as this profile is big endian.
+-big-endian
+
 # Stuff we don't want/not tested
-pbins
-chicken
 R
 octave
 xindy
-lyx
 lasi
 kde
 mpi
 fuse
-prolog
-libnl
-autotrace
 lqr
 libproxy
-libvirt
 tokyocabinet
 lpsol
 openexr
@@ -33,34 +50,27 @@ clang
 rtmp
 metalink
 lucene
+valgrind
 
 # This file contains a list of useflags that cannot be used on s390.
 bluetooth
-dell
 pcmcia
 cdr
-qt4
 gpm
 3dfx
 acpi
 afs
 alsa
 apm
-directfb
 lirc
-trusted
-voodoo3
-wavelan
+llvm
 java
-java-internal
-java-external
 hardened
+vaapi
+qt5
 
 # Needs java
 pdfannotextractor
-
-# not working for now
-mzscheme
 
 # no gnome love yet
 fits
@@ -72,65 +82,30 @@ gtk3
 gnome
 gnome-keyring
 
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 diet
 m17n-lib
 xemacs
 Xaw3d
 neXt
 motif
-glitz
 mono
-pike
 ocaml
 sdl
-lm_sensors
-wxwindows
+lm-sensors
 wxwidgets
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
 # Many X drivers make no sense on this platform.
-input_devices_acecad
-input_devices_aiptek
 input_devices_elographics
 input_devices_evdev
-input_devices_fpit
-input_devices_hyperpen
 input_devices_joystick
-input_devices_keyboard
-input_devices_mouse
-input_devices_mutouch
-input_devices_penmount
 input_devices_vmmouse
 input_devices_synaptics
-input_devices_tslib
 input_devices_wacom
 video_cards_amdgpu
-video_cards_apm
-video_cards_ark
-video_cards_ast
-video_cards_chips
-video_cards_cirrus
 video_cards_fbdev
 video_cards_geode
 video_cards_glint
-video_cards_i128
-video_cards_i740
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-video_cards_intel
-video_cards_mach64
 video_cards_mga
-video_cards_modesetting
-video_cards_neomagic
-video_cards_newport
 video_cards_nouveau
 video_cards_nv
 video_cards_r100
@@ -140,26 +115,10 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_rendition
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
-video_cards_siliconmotion
-video_cards_sis
-video_cards_sisusb
-video_cards_tdfx
-video_cards_tga
-video_cards_trident
-video_cards_tseng
-video_cards_v4l
-video_cards_vesa
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
 # Unmask once sys-libs/libunwind gets ported & keyworded.
 unwind
-
-# sys-libs/libseccomp has not been ported to this arch yet #524148
-seccomp

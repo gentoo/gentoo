@@ -7,5 +7,11 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Sort-Key</remote-id>
+    <remote-id type="cpan-module">Sort::Key</remote-id>
+    <remote-id type="cpan-module">Sort::Key::Maker</remote-id>
+    <remote-id type="cpan-module">Sort::Key::Multi</remote-id>
+    <remote-id type="cpan-module">Sort::Key::Natural</remote-id>
+    <remote-id type="cpan-module">Sort::Key::Register</remote-id>
+    <remote-id type="cpan-module">Sort::Key::Types</remote-id>
   </upstream>
 </pkgmetadata>

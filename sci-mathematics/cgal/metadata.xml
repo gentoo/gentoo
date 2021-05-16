@@ -5,6 +5,14 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>gentoo@aisha.cc</email>
+    <name>Aisha Tammy</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription lang="en">
   The Computational Geometry Algorithms Library is a collaborative
   open source library containing:
@@ -17,9 +25,12 @@
     enclosing circle, and multidimensional query structures.
   * the Support Library which offers interfaces to other packages,
     e.g., for visualisation, and I/O, and other support facilities.
-</longdescription>
+  </longdescription>
   <use>
     <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-libs/mpfi</pkg></flag>
-	<flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
+    <flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="github">CGAL/cgal</remote-id>
+  </upstream>
 </pkgmetadata>

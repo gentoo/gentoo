@@ -29,4 +29,7 @@
 		<flag name="testprog">Build the test program</flag>
 		<flag name="quotation">Build quote module</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">ndmitchell/cmdargs</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/724714
+--- svgalib-1.9.25/Makefile.cfg.orig	2021-04-21 15:27:13.000000000 +0300
++++ svgalib-1.9.25/Makefile.cfg	2021-04-21 15:47:57.152922480 +0300
+@@ -318,7 +318,7 @@
+ DLLFLAGS = -fPIC -DPIC
+ 
+ # Utilites used.
+-AR	  = ar
++AR	  ?= ar
+ INSTALL_PROGRAM	= install -m755
+ INSTALL_SCRIPT	= install -m755
+ INSTALL_SHLIB	= install -m755

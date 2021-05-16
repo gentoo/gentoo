@@ -1,0 +1,24 @@
+From c9826827c3ab83f5a14a936e2a2dd468250e1eed Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 29 Apr 2020 21:17:45 +1200
+Subject: Ensure "." in @INC for Perl 5.28+
+
+---
+ Makefile.PL | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 1d2b114..4c77d8d 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -3,6 +3,7 @@
+ use strict;
+ use warnings;
+ use Config;
++use lib '.';
+ use inc::Module::Install;
+ 
+ # Automatically select XS or PP version in case neither argument is given
+-- 
+2.26.2
+

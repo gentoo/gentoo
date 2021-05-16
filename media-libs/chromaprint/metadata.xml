@@ -10,5 +10,6 @@
   </use>
   <upstream>
     <remote-id type="bitbucket">acoustid/chromaprint</remote-id>
+    <remote-id type="github">google/googletest</remote-id>
   </upstream>
 </pkgmetadata>

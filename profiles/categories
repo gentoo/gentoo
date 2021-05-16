@@ -1,3 +1,5 @@
+acct-group
+acct-user
 app-accessibility
 app-admin
 app-antivirus
@@ -15,7 +17,7 @@ app-eselect
 app-forensics
 app-i18n
 app-laptop
-app-leechcraft
+app-metrics
 app-misc
 app-mobilephone
 app-office
@@ -31,6 +33,7 @@ dev-cpp
 dev-db
 dev-dotnet
 dev-embedded
+dev-erlang
 dev-games
 dev-go
 dev-haskell
@@ -74,9 +77,11 @@ gnome-extra
 gnustep-apps
 gnustep-base
 gnustep-libs
+gui-apps
+gui-libs
+gui-wm
 java-virtuals
 kde-apps
-kde-base
 kde-frameworks
 kde-misc
 kde-plasma
@@ -113,6 +118,7 @@ net-p2p
 net-print
 net-proxy
 net-voip
+net-vpn
 net-wireless
 perl-core
 ros-meta
@@ -134,14 +140,14 @@ sys-block
 sys-boot
 sys-cluster
 sys-devel
+sys-fabric
 sys-firmware
-sys-freebsd
 sys-fs
-sys-infiniband
 sys-kernel
 sys-libs
 sys-power
 sys-process
+virtual
 www-apache
 www-apps
 www-client
@@ -154,10 +160,8 @@ x11-drivers
 x11-libs
 x11-misc
 x11-plugins
-x11-proto
 x11-terms
 x11-themes
 x11-wm
 xfce-base
 xfce-extra
-virtual

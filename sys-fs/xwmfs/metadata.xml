@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>matthias.gerstner@nefkom.net</email>
+    <name>Matthias Gerstner</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    This is xwmfs (X window manager file system), a userspace file system based on
+    fuse that allows interaction with an EWMH compliant X11 window manager
+    via files.
+
+    Some of its features are:
+
+    - newly appearing and disappearing windows in the X server are recognized and
+      the file system is updated in an event based manner
+    - new values for properties of window manager and windows will be reflected in
+      the file system in an event based manner
+    - properties of windows and window manager can be changed via writing to files
+      in the file system
+    - some X operations are accessible via control files in the file system
+
+    The file system can be used for easily implementing scripts that operate on
+    the window manager and windows (for example identifying specific windows,
+    rename a window, move it around and so on).
+  </longdescription>
+  <upstream>
+    <remote-id type="github">gestner-hub/xwmfs</remote-id>
+  </upstream>
+</pkgmetadata>

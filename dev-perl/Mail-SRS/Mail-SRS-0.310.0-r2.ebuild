@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,6 +12,7 @@ DESCRIPTION="Interface to Sender Rewriting Scheme"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Digest-HMAC-1.01-r1
@@ -21,10 +21,7 @@ RDEPEND="
 	>=virtual/perl-Digest-MD5-2.33
 	>=virtual/perl-Storable-2.04-r1"
 DEPEND="${RDEPEND}
-	test? (
-		>=dev-perl/Test-Pod-1.00
-		>=dev-perl/Test-Pod-Coverage-0.02
-	)"
+	test? ( virtual/perl-Test-Simple )"
 
 SRC_TEST="do"
 
@@ -44,4 +41,9 @@ pkg_postinst() {
 	einfo ''
 	einfo 'If you want to use a secret file, make sure the file'
 	einfo 'is NOT empty and contains characters.'
+}
+
+src_test() {
+	perl_rm_files t/10_pod.t t/11_pod_coverage.t
+	perl-module_src_test
 }

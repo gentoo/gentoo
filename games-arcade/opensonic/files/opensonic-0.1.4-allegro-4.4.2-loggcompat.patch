@@ -1,0 +1,46 @@
+Source: FreeBSD
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,12 +82,6 @@ IF(NOT LJPGALLEG)
+   MESSAGE(FATAL_ERROR "Fatal error: libjpgalleg not found! ${RTFM}")
+ ENDIF(NOT LJPGALLEG)
+ 
+-# LOGG: liblogg, libogg, libvorbis, libvorbisfile
+-FIND_LIBRARY(LLOGG NAMES logg PATH "${CMAKE_LIBRARY_PATH}")
+-IF(NOT LLOGG)
+-  MESSAGE(FATAL_ERROR "Fatal error: liblogg not found! ${RTFM}")
+-ENDIF(NOT LLOGG)
+-
+ FIND_LIBRARY(LOGG NAMES ogg PATH "${CMAKE_LIBRARY_PATH}")
+ IF(NOT LOGG)
+   MESSAGE(FATAL_ERROR "Fatal error: libogg not found! ${RTFM}")
+@@ -150,6 +144,7 @@ SET(
+   src/core/util.c
+   src/core/v2d.c
+   src/core/video.c
++  loggcompat-4.4.2/logg-4.4.2.c
+ 
+   src/scenes/util/editorgrp.c
+   src/scenes/util/grouptree.c
+@@ -250,7 +245,8 @@ IF(UNIX)
+ IF(UNIX)
+   SET(GAME_SRCS ${GAME_SRCS} src/misc/iconlin.c)
+   ADD_EXECUTABLE(${GAME_UNIXNAME} ${GAME_SRCS})
+-  TARGET_LINK_LIBRARIES(${GAME_UNIXNAME} m logg vorbisfile vorbis ogg jpgalleg z png loadpng ${ALLEGRO_UNIX_LIBS})
++  INCLUDE_DIRECTORIES(loggcompat-4.4.2)
++  TARGET_LINK_LIBRARIES(${GAME_UNIXNAME} m vorbisfile vorbis ogg jpgalleg z png loadpng ${ALLEGRO_UNIX_LIBS})
+   SET_TARGET_PROPERTIES(${GAME_UNIXNAME} PROPERTIES COMPILE_FLAGS "-Wall")
+ ENDIF(UNIX)
+ 
+--- a/src/core/audio.c
++++ b/src/core/audio.c
+@@ -18,7 +18,7 @@
+  */
+ 
+ #include <allegro.h>
+-#include <logg.h>
++#include <logg-4.4.2.h>
+ #include <stdlib.h>
+ #include "audio.h"
+ #include "osspec.h"

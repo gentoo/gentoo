@@ -6,6 +6,9 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <use>
-    <flag name="editor">Depend on inkscape, scripts to convert svg to level (svg2lvl)</flag>
+    <flag name="double-precision">more precise calculations at the expense of speed</flag>
   </use>
+  <upstream>
+    <remote-id type="github">xmoto/xmoto</remote-id>
+  </upstream>
 </pkgmetadata>

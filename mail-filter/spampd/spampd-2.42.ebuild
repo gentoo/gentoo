@@ -1,15 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-DESCRIPTION="spampd is a program to scan messages for possible Unsolicited Commercial E-mail content"
+DESCRIPTION="spampd is a program to scan messages for Unsolicited Commercial E-mail content"
 HOMEPAGE="http://www.worlddesign.com/index.cfm/rd/mta/spampd.htm"
 SRC_URI="https://github.com/mpaperno/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl

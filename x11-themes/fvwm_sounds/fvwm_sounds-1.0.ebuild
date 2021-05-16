@@ -1,23 +1,20 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 DESCRIPTION="Sounds for use with FVWM"
-HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="http://www.fvwm.org/generated/sounds_download/fvwm_sounds.tgz"
+HOMEPAGE="https://www.fvwm.org/"
+SRC_URI="mirror://gentoo/${P}.tgz"
+S="${WORKDIR}"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE=""
 
 RDEPEND=">=x11-wm/fvwm-2.6.2"
-DEPEND=""
-
-S=${WORKDIR}
 
 src_install() {
-	dodir /usr/share/sounds/fvwm
 	insinto /usr/share/sounds/fvwm
-	doins "${S}"/*
+	doins -r .
 }

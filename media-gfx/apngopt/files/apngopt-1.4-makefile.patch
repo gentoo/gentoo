@@ -1,0 +1,27 @@
+Use system zopfli library and respect CFLAGS.
+
+--- apngopt-1.4-src/Makefile
++++ apngopt-1.4-src/Makefile
+@@ -1,10 +1,10 @@
+ PACKAGE    = apngopt
+ CC         = gcc
+-SRC_DIRS   = . 7z zopfli
++SRC_DIRS   = . 7z
+ CFLAGS     = -Wall -pedantic
+-CFLAGS_OPT = -O2
++#CFLAGS_OPT = -O2
+ CFLAGS_7Z  = -Wno-sign-compare -Wno-reorder -Wno-maybe-uninitialized -Wno-parentheses
+-LIBS       = -lstdc++ -lm -lpng -lz
++LIBS       = -lstdc++ -lm -lpng -lz -lzopfli
+ 
+ INCUDE_DIRS := $(addprefix -I./, $(SRC_DIRS))
+ OBJ_DIRS := $(addprefix obj/, $(SRC_DIRS))
+@@ -16,7 +16,7 @@
+ all : $(PACKAGE)
+ 
+ $(PACKAGE) : objdirs $(OBJECTS)
+-	$(CC) -o $@ $(OBJECTS) -s $(LIBS)
++	$(CC) -o $@ $(OBJECTS) $(LIBS)
+ 
+ objdirs :
+ 	mkdir -p $(OBJ_DIRS)

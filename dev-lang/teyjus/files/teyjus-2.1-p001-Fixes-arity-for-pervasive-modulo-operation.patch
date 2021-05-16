@@ -1,0 +1,28 @@
+commit 4e53477a6685b515363f7123dbeeece4f60f103a
+Author: Fabien Renaud <fafounet@gmail.com>
+Date:   Sun Aug 9 21:15:16 2015 +0200
+
+    Fixes arity for pervasive modulo operation
+
+diff --git a/source/tables_gen/pervasives/pervasives.in b/source/tables_gen/pervasives/pervasives.in
+index 2a332da..fcac330 100644
+--- a/source/tables_gen/pervasives/pervasives.in
++++ b/source/tables_gen/pervasives/pervasives.in
+@@ -91,8 +91,6 @@
+       TYPE      7      int -> int
+         /* unary minus on integers */
+        56  %i~        intuminus  0 0  0  TRUE   FALSE  MAX PREFIX   NOCODE -
+-        /* modulus */
+-       61  mod        mod        0 0  0  TRUE   TRUE   160 INFIXL   NOCODE 
+         /* integer abs */
+        63  %iabs        iabs       0 0  0  TRUE   TRUE   0   NOFIXITY NOCODE abs
+       ;;
+@@ -107,6 +105,8 @@
+        59  %i*        intmult    0 0  0  TRUE   FALSE  160 INFIXL   NOCODE *
+         /* integer division */
+        60  div        intdiv     0 0  0  TRUE   FALSE  160 INFIXL   NOCODE
++        /* modulus */
++       61  mod        mod        0 0  0  TRUE   TRUE   160 INFIXL   NOCODE
+       ;;
+ 
+       /* int -> int -> o */  

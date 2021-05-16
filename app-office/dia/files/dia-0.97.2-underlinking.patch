@@ -6,13 +6,13 @@ Subject: [PATCH] Fix missing linkage with gmodule-2.0.
 Fixes: https://bugzilla.gnome.org/show_bug.cgi?id=678761
 Fixes: https://bugs.gentoo.org/show_bug.cgi?id=420685
 ---
- dia-0.97.2/configure.in | 2 +-
+ configure.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/dia-0.97.2/configure.in b/dia-0.97.2/configure.in
+diff --git a/configure.in b/configure.in
 index 72830de..6b7394a 100644
---- a/dia-0.97.2/configure.in
-+++ b/dia-0.97.2/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -55,7 +55,7 @@ AC_SUBST(GMODULE_CFLAGS)
  AC_SUBST(GMODULE_LIBS)
  AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)

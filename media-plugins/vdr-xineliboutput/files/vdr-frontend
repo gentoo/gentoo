@@ -1,11 +1,10 @@
-#!/sbin/runscript
-# Copyright 1999-2015 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 description="Start xineliboutput sxfe/sxfb remote frontend"
 
-source /etc/conf.d/vdr.xineliboutput
+. /etc/conf.d/vdr.xineliboutput
 
 command="/usr/bin/vdr-sxfe"
 command_args="${REMOTE_FRONTEND}"

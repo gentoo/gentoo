@@ -1,12 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
-
-WANT_ANT_TASKS="ant-trax"
-
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 DESCRIPTION="Java/Swing GUI components and libraries for building desktop applications"
 HOMEPAGE="http://common.l2fprod.com/"
@@ -46,5 +42,5 @@ src_compile() {
 src_install() {
 	java-pkg_dojar build/jars/*.jar
 
-	dodoc README.txt || die
+	dodoc README.txt
 }

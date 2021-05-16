@@ -1,102 +1,90 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="sqlite,xml"
-inherit eutils flag-o-matic git-r3 python-single-r1 toolchain-funcs user
+LUA_COMPAT=( lua5-3 )
+LUA_REQ_USE="deprecated"
+inherit autotools lua-single toolchain-funcs
 
-MY_P=${P/_beta/BETA}
+DESCRIPTION="Network exploration tool and security / port scanner"
+HOMEPAGE="https://nmap.org/"
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
 
-DESCRIPTION="A utility for network discovery and security auditing"
-HOMEPAGE="http://nmap.org/"
+	EGIT_REPO_URI="https://github.com/nmap/nmap"
 
-EGIT_REPO_URI="https://github.com/nmap/nmap"
-SRC_URI="https://dev.gentoo.org/~jer/nmap-logo-64.png"
+	# Just in case for now as future seems undecided.
+	LICENSE="NPSL"
+else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nmap.asc
+	inherit verify-sig
 
-LICENSE="GPL-2"
+	SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
+	SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
+
+	LICENSE="|| ( NPSL GPL-2 )"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+fi
+
 SLOT="0"
-
-IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
-NMAP_LINGUAS=( de fr hr it ja pl pt_BR ru zh )
-IUSE+=" ${NMAP_LINGUAS[@]/#/linguas_}"
-
-REQUIRED_USE="
-	system-lua? ( nse )
-	ndiff? ( ${PYTHON_REQUIRED_USE} )
-	zenmap? ( ${PYTHON_REQUIRED_USE} )
-"
+IUSE="ipv6 libssh2 ncat nping +nse ssl +system-lua"
+REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
-	net-libs/libpcap[ipv6?]
-	zenmap? (
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
+	net-libs/libpcap
+	libssh2? (
+		net-libs/libssh2[zlib]
+		sys-libs/zlib
 	)
-	system-lua? ( >=dev-lang/lua-5.2[deprecated] )
-	ndiff? ( ${PYTHON_DEPS} )
-	nls? ( virtual/libintl )
-	nmap-update? ( dev-libs/apr dev-vcs/subversion )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	nse? ( sys-libs/zlib )
+	ssl? ( dev-libs/openssl:0= )
+	system-lua? ( ${LUA_DEPS} )
 "
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${MY_P}"
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+="verify-sig? ( app-crypt/openpgp-keys-nmap )"
+fi
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.10_beta1-string.patch
+	"${FILESDIR}"/${PN}-5.21-python.patch
+	"${FILESDIR}"/${PN}-6.46-uninstaller.patch
+	"${FILESDIR}"/${PN}-6.25-liblua-ar.patch
+	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
+	"${FILESDIR}"/${PN}-7.25-libpcre.patch
+	"${FILESDIR}"/${PN}-7.31-libnl.patch
+	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
+	"${FILESDIR}"/${PN}-7.91-no-FORTIFY_SOURCE.patch
+	"${FILESDIR}"/${PN}-9999-netutil-else.patch
+)
 
 pkg_setup() {
-	if use ndiff || use zenmap; then
-		python-single-r1_pkg_setup
-	fi
+	use system-lua && lua-single_pkg_setup
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-4.75-nolua.patch \
-		"${FILESDIR}"/${PN}-5.10_beta1-string.patch \
-		"${FILESDIR}"/${PN}-5.21-python.patch \
-		"${FILESDIR}"/${PN}-6.25-liblua-ar.patch \
-		"${FILESDIR}"/${PN}-6.46-uninstaller.patch \
-		"${FILESDIR}"/${PN}-6.47-no-libnl.patch \
-		"${FILESDIR}"/${PN}-no-FORTIFY_SOURCE.patch
+	rm -r liblinear/ libpcap/ libpcre/ libssh2/ libz/ || die
 
-	if use nls; then
-		local lingua=''
-		for lingua in ${NMAP_LINGUAS[@]}; do
-			if ! use linguas_${lingua}; then
-				rm -r zenmap/share/zenmap/locale/${lingua} || die
-				rm zenmap/share/zenmap/locale/${lingua}.po || die
-			fi
-		done
-	else
-		# configure/make ignores --disable-nls
-		for lingua in ${NMAP_LINGUAS[@]}; do
-			rm -r zenmap/share/zenmap/locale/${lingua} || die
-			rm zenmap/share/zenmap/locale/${lingua}.po || die
-		done
-	fi
+	cat "${FILESDIR}"/nls.m4 >> "${S}"/acinclude.m4 || die
+
+	default
 
 	sed -i \
 		-e '/^ALL_LINGUAS =/{s|$| id|g;s|jp|ja|g}' \
 		Makefile.in || die
 
-	# Fix desktop files wrt bug #432714
-	sed -i \
-		-e '/^Encoding/d' \
-		-e 's|^Categories=.*|Categories=Network;System;Security;|g' \
-		zenmap/install_scripts/unix/zenmap-root.desktop \
-		zenmap/install_scripts/unix/zenmap.desktop || die
+	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
 
-	epatch_user
+	eautoreconf
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# we need the original for a Darwin-specific fix, bug #604432
+		mv libdnet-stripped/include/config.h.in{.nmap-orig,} || die
+	fi
 }
 
 src_configure() {
@@ -104,26 +92,27 @@ src_configure() {
 	# tree, so we cannot use the system library here.
 	econf \
 		$(use_enable ipv6) \
-		$(use_enable nls) \
-		$(use_with zenmap) \
-		$(usex nse --with-liblua=$(usex system-lua /usr included '' '') --without-liblua) \
+		$(use_with libssh2) \
 		$(use_with ncat) \
-		$(use_with ndiff) \
-		$(use_with nmap-update) \
 		$(use_with nping) \
 		$(use_with ssl openssl) \
+		$(usex libssh2 --with-zlib) \
+		$(usex nse --with-liblua=$(usex system-lua yes included '' '') --without-liblua) \
+		$(usex nse --with-zlib) \
+		--cache-file="${S}"/config.cache \
 		--with-libdnet=included \
-		--with-pcre=/usr
-	#	--with-liblinear=/usr \
-	#	Commented because configure does weird things, while autodetection works
+		--with-pcre=/usr \
+		--without-ndiff \
+		--without-zenmap
 }
 
 src_compile() {
-	local dep deps="build-dnet build-nbase build-nsock build-netutil"
-	use system-lua || deps="build-lua ${deps}"
-
-	for dep in ${deps}; do
-		emake makefile.dep ${dep}
+	local directory
+	for directory in . libnetutil nsock/src \
+		$(usex ncat ncat '') \
+		$(usex nping nping '')
+	do
+		emake -C "${directory}" makefile.dep
 	done
 
 	emake \
@@ -137,19 +126,6 @@ src_install() {
 		STRIP=: \
 		nmapdatadir="${EPREFIX}"/usr/share/nmap \
 		install
-	if use nmap-update;then
-		LC_ALL=C emake -j1 \
-			-C nmap-update \
-			DESTDIR="${D}" \
-			STRIP=: \
-			nmapdatadir="${EPREFIX}"/usr/share/nmap \
-			install
-	fi
 
 	dodoc CHANGELOG HACKING docs/README docs/*.txt
-
-	if use zenmap; then
-		doicon "${DISTDIR}/nmap-logo-64.png"
-		python_optimize
-	fi
 }

@@ -1,0 +1,17 @@
+--- a/aws-cpp-sdk-core-tests/http/HttpClientTest.cpp	2021-03-14 12:52:01.193340560 +0100
++++ b/aws-cpp-sdk-core-tests/http/HttpClientTest.cpp	2021-03-14 12:52:42.684342951 +0100
+@@ -18,7 +18,7 @@
+ using namespace Aws::Utils;
+ using namespace Aws::Client;
+ 
+-#ifndef NO_HTTP_CLIENT
++#if !defined(NO_HTTP_CLIENT) && ENABLE_HTTP_CLIENT_TESTING
+ static void makeRandomHttpRequest(std::shared_ptr<HttpClient> httpClient)
+ {
+     auto request = CreateHttpRequest(Aws::String("http://some.unknown1234xxx.test.aws"),
+@@ -319,4 +319,4 @@
+ }
+ #endif // ENABLE_CURL_CLIENT
+ #endif // ENABLE_HTTP_CLIENT_TESTING
+-#endif // NO_HTTP_CLIENT
++#endif // !defined(NO_HTTP_CLIENT) && ENABLE_HTTP_CLIENT_TESTING

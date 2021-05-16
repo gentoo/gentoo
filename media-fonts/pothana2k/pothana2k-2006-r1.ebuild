@@ -1,6 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit font
 
@@ -13,8 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="doc"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 FONT_S="${WORKDIR}"
@@ -24,8 +24,5 @@ FONT_CONF=( "${FILESDIR}/65-pothana2k.conf" )
 
 src_install() {
 	font_src_install
-	if use doc
-	then
-		dodoc MANUAL.PDF
-	fi
+	use doc && dodoc MANUAL.PDF
 }

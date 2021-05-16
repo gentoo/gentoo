@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Complaint generator for GNU Emacs"
-HOMEPAGE="http://www.emacswiki.org/emacs/Whine"
+HOMEPAGE="https://www.emacswiki.org/emacs/Whine"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.bz2"
 
 LICENSE="public-domain"

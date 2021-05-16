@@ -1,18 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
-# Needs dev-lang/luajit tested #499974
-dev-libs/efl oldlua
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-18)
+# Force host target
+dev-libs/keystone llvm_targets_PowerPC
 
-# Matti Bickel <mabi@gentoo.org> - 2007-12-31
-# only the java interface is usable on ppc
-net-p2p/sancho-bin java
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -binary
 
-# Kacper Kowalik <xarthisius@gentoo.org> (16 Jan 2011)
-# bug 303931
-# sci-chemistry/arp-warp-bin is not available for ppc
-# sci-chemistry/solve-resolve-bin is not available for ppc
-# sci-chemistry/cns is not available for ppc
-sci-libs/cctbx minimal
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-12-25)
+# Enable powerpc target by default.
+dev-lang/rust llvm_targets_PowerPC
+
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
+# Force the host target to avoid dependency hell
+dev-ml/llvm-ocaml llvm_targets_PowerPC
+sys-devel/clang llvm_targets_PowerPC
+sys-devel/llvm llvm_targets_PowerPC

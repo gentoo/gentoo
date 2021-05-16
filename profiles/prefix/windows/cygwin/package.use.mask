@@ -1,0 +1,6 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Fabian Groffen <grobian@gentoo.org> (2020-08-04)
+# missing keywords on deps
+dev-util/ninja doc test

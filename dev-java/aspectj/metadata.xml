@@ -5,4 +5,8 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">eclipse/org.aspectj</remote-id>
+		<bugs-to>https://www.eclipse.org/aspectj/bugs.php</bugs-to>
+	</upstream>
 </pkgmetadata>

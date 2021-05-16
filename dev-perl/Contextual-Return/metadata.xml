@@ -11,6 +11,5 @@
     <remote-id type="cpan-module">Contextual::Return::Failure</remote-id>
     <remote-id type="cpan-module">Contextual::Return::Lvalue</remote-id>
     <remote-id type="cpan-module">Contextual::Return::Value</remote-id>
-    <remote-id type="cpan-module">DB</remote-id>
   </upstream>
 </pkgmetadata>

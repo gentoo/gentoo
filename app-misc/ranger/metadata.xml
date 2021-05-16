@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<longdescription lang="en">
 	Ranger is a console file manager that gives you greater flexibility and a
@@ -12,4 +12,7 @@
 	one, lists of files on the other, with a preview to the right so you know
 	where you'll be going.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ranger/ranger</remote-id>
+	</upstream>
 </pkgmetadata>

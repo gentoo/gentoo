@@ -1,0 +1,11 @@
+--- a/localip.c
++++ b/localip.c
+@@ -58,7 +58,7 @@
+    } else {
+       /* Warn about changed address. */
+       if (!addr_equal(ips->addrs + *idx, a)) {
+-         static char before[INET6_ADDRSTRLEN];
++         static char before[INET6_ADDRSTRLEN + 1];
+          strncpy(before, addr_to_str(ips->addrs + *idx), INET6_ADDRSTRLEN);
+          verbosef("interface '%s' address %d/%d changed from %s to %s",
+             iface, *idx+1, ips->num_addrs, before, addr_to_str(a));

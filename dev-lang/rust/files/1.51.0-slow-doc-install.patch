@@ -1,0 +1,92 @@
+From 6dfd700c595a8853fd58349c38c4768b922a2e85 Mon Sep 17 00:00:00 2001
+From: Anders Kaseorg <andersk@mit.edu>
+Date: Sat, 17 Apr 2021 22:20:36 -0700
+Subject: [PATCH] bootstrap: Restore missing --bulk-dirs for rust-docs,
+ rustc-docs
+
+The --bulk-dirs argument was removed for rust-docs in commit
+c768ce138427b1844c1f6594daba9c0e33928032 and rustc-docs in commit
+8ca46fc7a83734c9622f11f25d16b82316f44bcc (#79788), presumably by
+mistake; that slowed down installation of rust-docs from under a
+second to some twenty *minutes*.  Restoring --bulk-dirs reverses this
+slowdown.
+
+Fixes #80684.
+
+Signed-off-by: Anders Kaseorg <andersk@mit.edu>
+---
+ src/bootstrap/dist.rs    |  4 ++--
+ src/bootstrap/tarball.rs | 17 +++++++++++++++++
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/src/bootstrap/dist.rs b/src/bootstrap/dist.rs
+index 38ebe0e52083d..aee3c8324bc11 100644
+--- a/src/bootstrap/dist.rs
++++ b/src/bootstrap/dist.rs
+@@ -74,7 +74,7 @@ impl Step for Docs {
+ 
+         let mut tarball = Tarball::new(builder, "rust-docs", &host.triple);
+         tarball.set_product_name("Rust Documentation");
+-        tarball.add_dir(&builder.doc_out(host), dest);
++        tarball.add_bulk_dir(&builder.doc_out(host), dest);
+         tarball.add_file(&builder.src.join("src/doc/robots.txt"), dest, 0o644);
+         Some(tarball.generate())
+     }
+@@ -107,7 +107,7 @@ impl Step for RustcDocs {
+ 
+         let mut tarball = Tarball::new(builder, "rustc-docs", &host.triple);
+         tarball.set_product_name("Rustc Documentation");
+-        tarball.add_dir(&builder.compiler_doc_out(host), "share/doc/rust/html/rustc");
++        tarball.add_bulk_dir(&builder.compiler_doc_out(host), "share/doc/rust/html/rustc");
+         Some(tarball.generate())
+     }
+ }
+diff --git a/src/bootstrap/tarball.rs b/src/bootstrap/tarball.rs
+index b02d7e062a524..9ff5c2327e0f7 100644
+--- a/src/bootstrap/tarball.rs
++++ b/src/bootstrap/tarball.rs
+@@ -99,6 +99,7 @@ pub(crate) struct Tarball<'a> {
+     temp_dir: PathBuf,
+     image_dir: PathBuf,
+     overlay_dir: PathBuf,
++    bulk_dirs: Vec<PathBuf>,
+ 
+     include_target_in_component_name: bool,
+     is_preview: bool,
+@@ -137,6 +138,7 @@ impl<'a> Tarball<'a> {
+             temp_dir,
+             image_dir,
+             overlay_dir,
++            bulk_dirs: Vec::new(),
+ 
+             include_target_in_component_name: false,
+             is_preview: false,
+@@ -201,6 +203,11 @@ impl<'a> Tarball<'a> {
+         self.builder.cp_r(src.as_ref(), &dest);
+     }
+ 
++    pub(crate) fn add_bulk_dir(&mut self, src: impl AsRef<Path>, dest: impl AsRef<Path>) {
++        self.bulk_dirs.push(dest.as_ref().to_path_buf());
++        self.add_dir(src, dest);
++    }
++
+     pub(crate) fn generate(self) -> GeneratedTarball {
+         let mut component_name = self.component.clone();
+         if self.is_preview {
+@@ -221,6 +228,16 @@ impl<'a> Tarball<'a> {
+                 .arg("--image-dir")
+                 .arg(&this.image_dir)
+                 .arg(format!("--component-name={}", &component_name));
++
++            if let Some((dir, dirs)) = this.bulk_dirs.split_first() {
++                let mut arg = dir.as_os_str().to_os_string();
++                for dir in dirs {
++                    arg.push(",");
++                    arg.push(dir);
++                }
++                cmd.arg("--bulk-dirs").arg(&arg);
++            }
++
+             this.non_bare_args(cmd);
+         })
+     }

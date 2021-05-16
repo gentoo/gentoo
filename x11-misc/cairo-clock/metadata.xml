@@ -5,4 +5,7 @@
 		<email>desktop-misc@gentoo.org</email>
 		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="launchpad">cairo-clock</remote-id>
+	</upstream>
 </pkgmetadata>

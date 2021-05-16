@@ -1,0 +1,207 @@
+From 543a835b7027e7f79d1fe882cbd06137b6c6aa3b Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sat, 27 Jul 2019 20:20:45 +0300
+Subject: [PATCH] build: Make valadoc doclets & data parallel installable
+
+---
+ libvaladoc/Makefile.am              |  7 ++++++-
+ valadoc/Makefile.am                 |  7 ++++++-
+ valadoc/doclets/devhelp/Makefile.am | 11 ++++++++---
+ valadoc/doclets/gtkdoc/Makefile.am  | 11 ++++++++---
+ valadoc/doclets/html/Makefile.am    | 11 ++++++++---
+ valadoc/icons/Makefile.am           |  4 ++++
+ valadoc/tests/Makefile.am           |  7 ++++++-
+ 7 files changed, 46 insertions(+), 12 deletions(-)
+
+diff --git a/libvaladoc/Makefile.am b/libvaladoc/Makefile.am
+index 0ad42cb32..e8e6704ac 100644
+--- a/libvaladoc/Makefile.am
++++ b/libvaladoc/Makefile.am
+@@ -4,7 +4,6 @@ NULL =
+ 
+ AM_CFLAGS = \
+ 	-DG_LOG_DOMAIN=\"valadoc\" \
+-	-DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc\" \
+ 	-DPACKAGE_VERSION=\"$(VERSION)\" \
+ 	$(COVERAGE_CFLAGS) \
+ 	$(LIBGVC_CFLAGS) \
+@@ -16,6 +15,12 @@ AM_CFLAGS = \
+ 	-I$(top_srcdir)/codegen \
+ 	$(NULL)
+ 
++if ENABLE_UNVERSIONED
++AM_CFLAGS += -DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc\"
++else
++AM_CFLAGS += -DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc@PACKAGE_SUFFIX@\"
++endif
++
+ AM_VALAFLAGS = \
+ 	$(NULL)
+ 
+diff --git a/valadoc/Makefile.am b/valadoc/Makefile.am
+index 26028f5e3..60712cf00 100644
+--- a/valadoc/Makefile.am
++++ b/valadoc/Makefile.am
+@@ -10,7 +10,6 @@ SUBDIRS = \
+ 
+ AM_CFLAGS = \
+ 	-DG_LOG_DOMAIN=\"valadoc\" \
+-	-DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc\" \
+ 	-DPACKAGE_VERSION=\"$(VERSION)\" \
+ 	-I$(top_srcdir)/libvaladoc/ \
+ 	-I$(top_srcdir)/gee \
+@@ -23,6 +22,12 @@ AM_CFLAGS = \
+ 	$(LIBGVC_CFLAGS) \
+ 	$(NULL)
+ 
++if ENABLE_UNVERSIONED
++AM_CFLAGS += -DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc\"
++else
++AM_CFLAGS += -DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc@PACKAGE_SUFFIX@\"
++endif
++
+ BUILT_SOURCES = valadoc.vala.stamp
+ 
+ bin_PROGRAMS = valadoc
+diff --git a/valadoc/doclets/devhelp/Makefile.am b/valadoc/doclets/devhelp/Makefile.am
+index b151eb371..435e87235 100644
+--- a/valadoc/doclets/devhelp/Makefile.am
++++ b/valadoc/doclets/devhelp/Makefile.am
+@@ -4,7 +4,6 @@ NULL =
+ 
+ AM_CFLAGS = \
+ 	-DG_LOG_DOMAIN=\"valadoc-devhelp\" \
+-	-DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc/icons/\" \
+ 	-I$(top_srcdir)/gee/ \
+ 	-I$(top_srcdir)/vala/ \
+ 	-I$(top_srcdir)/libvaladoc/ \
+@@ -13,12 +12,18 @@ AM_CFLAGS = \
+ 	$(LIBGVC_CFLAGS) \
+ 	$(NULL)
+ 
++if ENABLE_UNVERSIONED
++AM_CFLAGS += -DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc/icons/\"
++docletdir = $(libdir)/valadoc/doclets/devhelp
++else
++AM_CFLAGS += -DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc@PACKAGE_SUFFIX@/icons/\"
++docletdir = $(libdir)/valadoc@PACKAGE_SUFFIX@/doclets/devhelp
++endif
++
+ BUILT_SOURCES = libdoclet.vala.stamp
+ 
+ doclet_LTLIBRARIES = libdoclet.la
+ 
+-docletdir = $(libdir)/valadoc/doclets/devhelp
+-
+ libdoclet_la_LDFLAGS = -module -avoid-version -no-undefined
+ 
+ libdoclet_la_VALASOURCES = \
+diff --git a/valadoc/doclets/gtkdoc/Makefile.am b/valadoc/doclets/gtkdoc/Makefile.am
+index 74d3c5702..0ee8695bd 100644
+--- a/valadoc/doclets/gtkdoc/Makefile.am
++++ b/valadoc/doclets/gtkdoc/Makefile.am
+@@ -4,7 +4,6 @@ NULL =
+ 
+ AM_CFLAGS = \
+ 	-DG_LOG_DOMAIN=\"valadoc-gtkdoc\" \
+-	-DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc/icons/\" \
+ 	-I$(top_srcdir)/gee/ \
+ 	-I$(top_srcdir)/vala/ \
+ 	-I$(top_srcdir)/libvaladoc/ \
+@@ -13,12 +12,18 @@ AM_CFLAGS = \
+ 	$(LIBGVC_CFLAGS) \
+ 	$(NULL)
+ 
++if ENABLE_UNVERSIONED
++AM_CFLAGS += -DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc/icons/\"
++docletdir = $(libdir)/valadoc/doclets/gtkdoc
++else
++AM_CFLAGS += -DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc@PACKAGE_SUFFIX@/icons/\"
++docletdir = $(libdir)/valadoc@PACKAGE_SUFFIX@/doclets/gtkdoc
++endif
++
+ BUILT_SOURCES = libdoclet.vala.stamp
+ 
+ doclet_LTLIBRARIES = libdoclet.la
+ 
+-docletdir = $(libdir)/valadoc/doclets/gtkdoc
+-
+ libdoclet_la_LDFLAGS = -module -avoid-version -no-undefined
+ 
+ libdoclet_la_VALASOURCES = \
+diff --git a/valadoc/doclets/html/Makefile.am b/valadoc/doclets/html/Makefile.am
+index 7541cc3f8..7ceebe4fa 100644
+--- a/valadoc/doclets/html/Makefile.am
++++ b/valadoc/doclets/html/Makefile.am
+@@ -4,7 +4,6 @@ NULL =
+ 
+ AM_CFLAGS = \
+ 	-DG_LOG_DOMAIN=\"valadoc-html\" \
+-	-DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc/icons/\" \
+ 	-I$(top_srcdir)/gee/ \
+ 	-I$(top_srcdir)/vala/ \
+ 	-I$(top_srcdir)/libvaladoc/ \
+@@ -13,12 +12,18 @@ AM_CFLAGS = \
+ 	$(LIBGVC_CFLAGS) \
+ 	$(NULL)
+ 
++if ENABLE_UNVERSIONED
++AM_CFLAGS += -DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc/icons/\"
++docletdir = $(libdir)/valadoc/doclets/html
++else
++AM_CFLAGS += -DPACKAGE_VALADOC_ICONDIR=\"$(datadir)/valadoc@PACKAGE_SUFFIX@/icons/\"
++docletdir = $(libdir)/valadoc@PACKAGE_SUFFIX@/doclets/html
++endif
++
+ BUILT_SOURCES = libdoclet.vala.stamp
+ 
+ doclet_LTLIBRARIES = libdoclet.la
+ 
+-docletdir = $(libdir)/valadoc/doclets/html
+-
+ libdoclet_la_LDFLAGS = -module -avoid-version -no-undefined
+ 
+ libdoclet_la_VALASOURCES = \
+diff --git a/valadoc/icons/Makefile.am b/valadoc/icons/Makefile.am
+index 454bdba7c..668956f3b 100644
+--- a/valadoc/icons/Makefile.am
++++ b/valadoc/icons/Makefile.am
+@@ -1,6 +1,10 @@
+ NULL =
+ 
++if ENABLE_UNVERSIONED
+ iconsdir = $(datadir)/valadoc/icons
++else
++iconsdir = $(datadir)/valadoc@PACKAGE_SUFFIX@/icons
++endif
+ 
+ dist_icons_DATA = \
+ 	abstractclass.png \
+diff --git a/valadoc/tests/Makefile.am b/valadoc/tests/Makefile.am
+index b49de43cb..b32615b50 100644
+--- a/valadoc/tests/Makefile.am
++++ b/valadoc/tests/Makefile.am
+@@ -22,7 +22,6 @@ check-TESTS: $(TESTS)
+ 	G_DEBUG=fatal_warnings $(builddir)/driver
+ 
+ AM_CFLAGS = \
+-	-DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc\" \
+ 	-DPACKAGE_VERSION=\"$(VERSION)\" \
+ 	-DTOP_SRC_DIR=\"$(abs_top_srcdir)\" \
+ 	-I$(top_srcdir)/libvaladoc/ \
+@@ -36,6 +35,12 @@ AM_CFLAGS = \
+ 	$(LIBGVC_CFLAGS) \
+ 	$(NULL)
+ 
++if ENABLE_UNVERSIONED
++AM_CFLAGS += -DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc\"
++else
++AM_CFLAGS += -DPACKAGE_VALADOC_LIBDIR=\"$(libdir)/valadoc@PACKAGE_SUFFIX@\"
++endif
++
+ BUILT_SOURCES = driver.vala.stamp
+ 
+ check_PROGRAMS = driver
+-- 
+2.20.1
+

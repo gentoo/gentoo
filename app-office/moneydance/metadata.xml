@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Moneydance is easy to use personal finance software that is loaded
+		with all the features you need: online banking and bill payment,
+		account management, budgeting and investment tracking.
+	</longdescription>
+</pkgmetadata>

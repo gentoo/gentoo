@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="attica">Enable support for <pkg>kde-frameworks/attica</pkg></flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 	</use>
 </pkgmetadata>

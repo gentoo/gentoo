@@ -1,0 +1,112 @@
+compile fix for gcc-7.2
+this will only attache the core vdr, not the extpatch-ng
+https://www.linuxtv.org/pipermail/vdr/2017-March/029229.html
+
+Signed-of by: Joerg Bornkessel <hd_brummy@gentoo.org> (2018/07/15)
+diff -Naur vdr-2.2.0.orig/diseqc.c vdr-2.2.0/diseqc.c
+--- vdr-2.2.0.orig/diseqc.c	2018-07-15 15:59:17.000000000 +0200
++++ vdr-2.2.0/diseqc.c	2018-07-15 16:04:00.000000000 +0200
+@@ -253,10 +253,10 @@
+   return result;
+ }
+ 
+-uint cDiseqc::SetScrFrequency(uint SatFrequency, const cScr *Scr, uint8_t *Codes) const
++int cDiseqc::SetScrFrequency(int SatFrequency, const cScr *Scr, uint8_t *Codes) const
+ {
+   if ((Codes[0] & 0xF0) == 0x70 ) { // EN50607 aka JESS
+-     uint t = SatFrequency == 0 ? 0 : (SatFrequency - 100);
++     int t = SatFrequency == 0 ? 0 : (SatFrequency - 100);
+      if (t < 2048 && Scr->Channel() >= 0 && Scr->Channel() < 32) {
+         Codes[1] = t >> 8 | Scr->Channel() << 3;
+         Codes[2] = t;
+@@ -266,7 +266,7 @@
+         }
+      }
+   else { // EN50494 aka Unicable
+-     uint t = SatFrequency == 0 ? 0 : (SatFrequency + Scr->UserBand() + 2) / 4 - 350; // '+ 2' together with '/ 4' results in rounding!
++     int t = SatFrequency == 0 ? 0 : (SatFrequency + Scr->UserBand() + 2) / 4 - 350; // '+ 2' together with '/ 4' results in rounding!
+      if (t < 1024 && Scr->Channel() >= 0 && Scr->Channel() < 8) {
+         Codes[3] = t >> 8 | (t == 0 ? 0 : scrBank << 2) | Scr->Channel() << 5;
+         Codes[4] = t;
+@@ -399,7 +399,7 @@
+   return NULL;
+ }
+ 
+-cDiseqc::eDiseqcActions cDiseqc::Execute(const char **CurrentAction, uchar *Codes, uint8_t *MaxCodes, const cScr *Scr, uint *Frequency) const
++cDiseqc::eDiseqcActions cDiseqc::Execute(const char **CurrentAction, uchar *Codes, uint8_t *MaxCodes, const cScr *Scr, int *Frequency) const
+ {
+   if (!*CurrentAction)
+      *CurrentAction = commands;
+diff -Naur vdr-2.2.0.orig/diseqc.h vdr-2.2.0/diseqc.h
+--- vdr-2.2.0.orig/diseqc.h	2018-07-15 15:59:17.000000000 +0200
++++ vdr-2.2.0/diseqc.h	2018-07-15 16:02:11.000000000 +0200
+@@ -86,7 +86,7 @@
+   mutable int scrBank;
+   char *commands;
+   bool parsing;
+-  uint SetScrFrequency(uint SatFrequency, const cScr *Scr, uint8_t *Codes) const;
++  int SetScrFrequency(int SatFrequency, const cScr *Scr, uint8_t *Codes) const;
+   int SetScrPin(const cScr *Scr, uint8_t *Codes) const;
+   const char *Wait(const char *s) const;
+   const char *GetPosition(const char *s) const;
+@@ -96,7 +96,7 @@
+   cDiseqc(void);
+   ~cDiseqc();
+   bool Parse(const char *s);
+-  eDiseqcActions Execute(const char **CurrentAction, uchar *Codes, uint8_t *MaxCodes, const cScr *Scr, uint *Frequency) const;
++  eDiseqcActions Execute(const char **CurrentAction, uchar *Codes, uint8_t *MaxCodes, const cScr *Scr, int *Frequency) const;
+       ///< Parses the DiSEqC commands and returns the appropriate action code
+       ///< with every call. CurrentAction must be the address of a character pointer,
+       ///< which is initialized to NULL. This pointer is used internally while parsing
+diff -Naur vdr-2.2.0.orig/dvbdevice.c vdr-2.2.0/dvbdevice.c
+--- vdr-2.2.0.orig/dvbdevice.c	2018-07-15 15:59:17.000000000 +0200
++++ vdr-2.2.0/dvbdevice.c	2018-07-15 16:02:11.000000000 +0200
+@@ -329,7 +329,7 @@
+   void ClearEventQueue(void) const;
+   bool GetFrontendStatus(fe_status_t &Status) const;
+   cPositioner *GetPositioner(void);
+-  void ExecuteDiseqc(const cDiseqc *Diseqc, unsigned int *Frequency);
++  void ExecuteDiseqc(const cDiseqc *Diseqc, int *Frequency);
+   void ResetToneAndVoltage(void);
+   bool SetFrontend(void);
+   virtual void Action(void);
+@@ -696,7 +696,7 @@
+   return positioner;
+ }
+ 
+-void cDvbTuner::ExecuteDiseqc(const cDiseqc *Diseqc, unsigned int *Frequency)
++void cDvbTuner::ExecuteDiseqc(const cDiseqc *Diseqc, int *Frequency)
+ {
+   if (!lnbPowerTurnedOn) {
+      CHECK(ioctl(fd_frontend, FE_SET_VOLTAGE, SEC_VOLTAGE_13)); // must explicitly turn on LNB power
+@@ -806,7 +806,7 @@
+ 
+   SETCMD(DTV_DELIVERY_SYSTEM, frontendType);
+   if (frontendType == SYS_DVBS || frontendType == SYS_DVBS2) {
+-     unsigned int frequency = channel.Frequency();
++     int frequency = channel.Frequency();
+      if (Setup.DiSEqC) {
+         if (const cDiseqc *diseqc = Diseqcs.Get(device->CardIndex() + 1, channel.Source(), frequency, dtp.Polarization(), &scr)) {
+            frequency -= diseqc->Lof();
+@@ -829,7 +829,7 @@
+         }
+      else {
+         int tone = SEC_TONE_OFF;
+-        if (frequency < (unsigned int)Setup.LnbSLOF) {
++        if (frequency < Setup.LnbSLOF) {
+            frequency -= Setup.LnbFrequLo;
+            tone = SEC_TONE_OFF;
+            }
+diff -Naur vdr-2.2.0.orig/remux.c vdr-2.2.0/remux.c
+--- vdr-2.2.0.orig/remux.c	2018-07-15 15:59:17.000000000 +0200
++++ vdr-2.2.0/remux.c	2018-07-15 16:02:11.000000000 +0200
+@@ -1654,7 +1654,7 @@
+                           Div += parser->IFrameTemporalReferenceOffset();
+                        if (Div <= 0)
+                           Div = 1;
+-                       uint32_t Delta = ptsValues[0] / Div;
++                       int Delta = ptsValues[0] / Div;
+                        // determine frame info:
+                        if (isVideo) {
+                           if (abs(Delta - 3600) <= 1)
+diff -Naur vdr-2.2.0.orig/remux.c.orig vdr-2.2.0/remux.c.orig

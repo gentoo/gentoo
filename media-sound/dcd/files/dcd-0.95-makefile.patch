@@ -1,7 +1,5 @@
-Index: dcd-0.95/Makefile
-===================================================================
---- dcd-0.95.orig/Makefile
-+++ dcd-0.95/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -114,7 +114,7 @@ all: ${PROGS}
  	$(CC) -c $(CFLAGS) ${EXTRA_CFLAGS} $< -o $@
   

@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="bookmarks">Add dependency on bookmark package.</flag>
+		<flag name="activities">Enable kactivities support</flag>
+		<flag name="speech">Build text-to-speech plugin</flag>
 	</use>
 </pkgmetadata>

@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 DESCRIPTION="Generic interface for reading configuration data from a variety of sources"
 HOMEPAGE="http://commons.apache.org/configuration/"
@@ -62,7 +61,7 @@ RESTRICT="test"
 
 src_install() {
 	java-pkg_newjar target/${P}.jar
-	dodoc RELEASE-NOTES.txt || die
+	dodoc RELEASE-NOTES.txt
 	use doc && java-pkg_dohtml -r dist/docs/api
 	use source && java-pkg_dosrc src/java/*
 }

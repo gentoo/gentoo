@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit gnustep-2
@@ -8,7 +7,7 @@ inherit gnustep-2
 MY_P=${P/c/C}
 DESCRIPTION="Free software and romantic music player for GNUstep"
 HOMEPAGE="http://gap.nongnu.org/cynthiune/"
-SRC_URI="http://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"

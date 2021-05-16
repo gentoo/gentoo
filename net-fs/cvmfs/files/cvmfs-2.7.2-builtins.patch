@@ -1,0 +1,95 @@
+From 966d98be2d2d6169a29c22eb5565f34fad1c0fb9 Mon Sep 17 00:00:00 2001
+From: Guilherme Amadio <guilherme@amadio.org>
+Date: Mon, 6 Apr 2020 17:19:19 +0200
+Subject: [PATCH 2/3] Build some externals as part of the regular build
+
+---
+ CMakeLists.txt                     |  9 ++++++---
+ externals/sha2/src/CMakeLists.txt  |  8 ++++++++
+ externals/sha3/src/CMakeLists.txt  | 14 ++++++++++++++
+ externals/vjson/src/CMakeLists.txt |  8 ++++++++
+ 4 files changed, 36 insertions(+), 3 deletions(-)
+ create mode 100644 externals/sha2/src/CMakeLists.txt
+ create mode 100644 externals/sha3/src/CMakeLists.txt
+ create mode 100644 externals/vjson/src/CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a50b603fe..3403ae67b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -320,7 +320,8 @@ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GTEST_INCLUDE_DIRS})
+ find_package (GMock REQUIRED)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${GMOCK_INCLUDE_DIRS})
+ 
+-find_package (VJSON REQUIRED)
++#find_package (VJSON REQUIRED)
++add_subdirectory(externals/vjson/src)
+ set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${VJSON_INCLUDE_DIRS})
+ 
+ find_package (LibArchive REQUIRED)
+@@ -333,10 +334,12 @@ if (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
+   find_package (ZLIB REQUIRED)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${ZLIB_INCLUDE_DIRS})
+ 
+-  find_package (SHA2 REQUIRED)
++  #find_package (SHA2 REQUIRED)
++  add_subdirectory(externals/sha2/src)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${SHA2_INCLUDE_DIRS})
+ 
+-  find_package (SHA3 REQUIRED)
++  # find_package (SHA3 REQUIRED)
++  add_subdirectory(externals/sha3/src)
+   set (INCLUDE_DIRECTORIES ${INCLUDE_DIRECTORIES} ${SHA3_INCLUDE_DIRS})
+ endif (BUILD_CVMFS OR BUILD_LIBCVMFS OR BUILD_SERVER OR BUILD_SERVER_DEBUG OR
+        BUILD_UNITTESTS OR BUILD_UNITTESTS_DEBUG OR BUILD_PRELOADER OR
+diff --git a/externals/sha2/src/CMakeLists.txt b/externals/sha2/src/CMakeLists.txt
+new file mode 100644
+index 000000000..091e1ed6b
+--- /dev/null
++++ b/externals/sha2/src/CMakeLists.txt
+@@ -0,0 +1,8 @@
++project(SHA2)
++
++add_library(cvmfs_sha2 STATIC sha2.c)
++set_property(TARGET cvmfs_sha2 PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++target_include_directories(cvmfs_sha2 INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
++
++set(SHA2_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
++set(SHA2_LIBRARIES cvmfs_sha2 PARENT_SCOPE)
+diff --git a/externals/sha3/src/CMakeLists.txt b/externals/sha3/src/CMakeLists.txt
+new file mode 100644
+index 000000000..15db012d4
+--- /dev/null
++++ b/externals/sha3/src/CMakeLists.txt
+@@ -0,0 +1,14 @@
++project(SHA3)
++
++add_library(cvmfs_sha3 STATIC #GLOBAL
++  64opt/KeccakF-1600-opt64.c
++  KeccakHash.c
++  KeccakSponge.c
++  SnP-FBWL-default.c
++  )
++
++set_property(TARGET cvmfs_sha3 PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++target_include_directories(cvmfs_sha3 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/64opt)
++
++set(SHA3_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/64opt PARENT_SCOPE)
++set(SHA3_LIBRARIES cvmfs_sha3 PARENT_SCOPE)
+diff --git a/externals/vjson/src/CMakeLists.txt b/externals/vjson/src/CMakeLists.txt
+new file mode 100644
+index 000000000..316ab7617
+--- /dev/null
++++ b/externals/vjson/src/CMakeLists.txt
+@@ -0,0 +1,8 @@
++project(VJSON)
++
++add_library(cvmfs_vjson STATIC block_allocator.cpp json.cpp)
++set_property(TARGET cvmfs_vjson PROPERTY POSITION_INDEPENDENT_CODE TRUE)
++target_include_directories(cvmfs_vjson INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
++
++set(VJSON_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
++set(VJSON_LIBRARIES cvmfs_vjson PARENT_SCOPE)
+-- 
+2.26.0
+

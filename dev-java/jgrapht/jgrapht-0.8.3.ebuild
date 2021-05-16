@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -43,7 +42,7 @@ src_test() {
 src_install() {
 	java-pkg_newjar ${PN}*.jar || die
 
-	dohtml README.html || die
+	dohtml README.html
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/org
 }

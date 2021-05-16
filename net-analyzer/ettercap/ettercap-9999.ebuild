@@ -1,12 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-CMAKE_MIN_VERSION=2.8
-
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A suite for man in the middle attacks"
 HOMEPAGE="https://github.com/Ettercap/ettercap"
@@ -18,18 +15,20 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Ettercap/${PN}.git"
 else
-	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz" #mirror does not work
-	KEYWORDS="~alpha ~amd64 ~arm ~sparc ~x86 ~x86-fbsd"
+	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 fi
-#IUSE="doc gtk ipv6 ncurses +plugins test"
-IUSE="doc gtk ipv6 ncurses +plugins"
+
+IUSE="doc geoip gtk ipv6 ncurses +plugins test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libpcre
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
 	sys-libs/zlib
+	geoip? ( dev-libs/geoip )
 	gtk? (
 		>=dev-libs/atk-1.2.4
 		>=dev-libs/glib-2.2.2:2
@@ -39,35 +38,36 @@ RDEPEND="dev-libs/libbsd
 		>=x11-libs/gtk+-2.2.2:2
 		>=x11-libs/pango-1.2.3
 	)
-	ncurses? ( >=sys-libs/ncurses-5.3 )
+	ncurses? ( >=sys-libs/ncurses-5.3:= )
 	plugins? ( >=net-misc/curl-7.26.0 )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/ghostscript-gpl
 		sys-apps/groff )
+	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable ncurses CURSES)
-		$(cmake-utils_use_enable gtk)
-		$(cmake-utils_use_enable plugins)
-		$(cmake-utils_use_enable ipv6)
-		$(cmake-utils_use_enable doc PDF_DOCS)
+		-DENABLE_CURSES="$(usex ncurses)"
+		-DENABLE_GTK="$(usex gtk)"
+		-DENABLE_PLUGINS="$(usex plugins)"
+		-DENABLE_IPV6="$(usex ipv6)"
+		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_PDF_DOCS="$(usex doc)"
+		-DENABLE_GEOIP="$(usex geoip)"
 		-DBUNDLED_LIBS=OFF
 		-DSYSTEM_LIBS=ON
-		-DINSTALL_SYSCONFDIR="${EROOT}"etc
+		-DINSTALL_SYSCONFDIR="${EPREFIX}"/etc
 	)
+
+	! use gtk && mycmakeargs+=(-DINSTALL_DESKTOP=OFF)
 		#right now we only support gtk2, but ettercap also supports gtk3
 		#do we care? do we want to support both?
-
-		#we want to enable testing but it fails right now
-		#we want to disable the bundled crap, but we are missing at least "libcheck"
-		#if we want to enable tests, we need to fix it, and either package libcheck or allow bundled version
-		#$(cmake-utils_use_enable test TESTS)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -1,7 +1,6 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 if ! source /lib/gentoo/functions.sh ; then
 	echo "Missing functions.sh.  Please install sys-apps/gentoo-functions!" 1>&2
@@ -18,11 +17,11 @@ inherit() {
 			local eclass=${path}/${e}.eclass
 			if [[ -e "${eclass}" ]] ; then
 				source "${eclass}"
-				return 0
+				continue 2
 			fi
 		done
+		die "could not find ${e}.eclass"
 	done
-	die "could not find ${eclass}"
 }
 EXPORT_FUNCTIONS() { :; }
 
@@ -62,48 +61,10 @@ die() {
 }
 
 has_version() {
+	while [[ $1 == -* ]]; do
+		shift
+	done
 	portageq has_version / "$@"
-}
-
-KV_major() {
-	[[ -z $1 ]] && return 1
-
-	local KV=$@
-	echo "${KV%%.*}"
-}
-
-KV_minor() {
-	[[ -z $1 ]] && return 1
-
-	local KV=$@
-	KV=${KV#*.}
-	echo "${KV%%.*}"
-}
-
-KV_micro() {
-	[[ -z $1 ]] && return 1
-
-	local KV=$@
-	KV=${KV#*.*.}
-	echo "${KV%%[^[:digit:]]*}"
-}
-
-KV_to_int() {
-	[[ -z $1 ]] && return 1
-
-	local KV_MAJOR=$(KV_major "$1")
-	local KV_MINOR=$(KV_minor "$1")
-	local KV_MICRO=$(KV_micro "$1")
-	local KV_int=$(( KV_MAJOR * 65536 + KV_MINOR * 256 + KV_MICRO ))
-
-	# We make version 2.2.0 the minimum version we will handle as
-	# a sanity check ... if its less, we fail ...
-	if [[ ${KV_int} -ge 131584 ]] ; then
-		echo "${KV_int}"
-		return 0
-	fi
-
-	return 1
 }
 
 tret=0
@@ -145,3 +106,5 @@ PV="0"
 P="${PN}-${PV}"
 PF=${P}
 SLOT=0
+
+addwrite() { :; }

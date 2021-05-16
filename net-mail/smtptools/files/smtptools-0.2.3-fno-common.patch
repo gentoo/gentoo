@@ -1,0 +1,11 @@
+--- a/uostr.h
++++ b/uostr.h
+@@ -14,7 +14,7 @@
+ uostr_t *uostr_alloc P__((void)); /* mallocs a uostr_t and inits with 0 */
+ void uostr_free P__((uostr_t *)); /* free(uostr_t), after free(uostr_t->data) */
+ void uostr_freedata P__((uostr_t *)); /* free(uostr_t->data) */
+-void (*uostr_xallocfn) P__((const char *)); /* called by x-functions in case of oom */
++extern void (*uostr_xallocfn) P__((const char *)); /* called by x-functions in case of oom */
+ void uostr_xallocerr P__((const char *fn)) UO_ATTRIB_NORET; /* internal function, leave alone */
+ 
+ /* be careful - if u->data is NULL then u->len and u->size need not to contain any information */

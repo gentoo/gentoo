@@ -1,0 +1,35 @@
+This patch is by Michael Mair-Keimberger, as part of bug 338786. It
+teaches the Makefile to support the user's LDFLAGS.
+
+Gentoo-Bug: 338786
+
+--- a/Makefile	2004-01-05 07:34:36.000000000 +0100
++++ b/Makefile	2013-03-15 22:11:58.105227982 +0100
+@@ -5,18 +5,16 @@
+ GKRELLM_INCLUDE = -I$(PREFIX)/include
+ GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+ GTK_LIB = `$(GTK_CONFIG) --libs`
+-FLAGS = -Wall -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+-CFLAGS ?= -O -g
+-CFLAGS += $(FLAGS)
++FLAGS = -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
+-CC ?= gcc
++CC = $(CC)
+ INSTALL = install -c
+ INSTALL_PROGRAM = $(INSTALL) -s
+ PIX = caps_off.xpm caps_on.xpm num_off.xpm num_on.xpm
+ 
+ xkb.so: main.o
+-	$(CC) $(FLAGS) main.o -o xkb.so $(LIBS) $(LFLAGS)
++	$(CC) $(CFLAGS) $(FLAGS) $(LDFLAGS) main.o -o xkb.so $(LIBS) $(LFLAGS)
+ 
+ clean:
+ 	rm -f *.o core *.so* *.bak *~
+@@ -25,4 +23,4 @@
+ 	$(INSTALL_PROGRAM) xkb.so $(PLUGIN_DIR)	
+ 	
+ main.o: main.c $(PIX)
+-	$(CC) $(FLAGS) -c main.c
++	$(CC) $(CFLAGS) $(FLAGS) $(LDFLAGS) -c main.c

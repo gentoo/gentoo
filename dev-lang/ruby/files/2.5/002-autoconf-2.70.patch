@@ -1,0 +1,65 @@
+From 6160ea5e22ee7353a0814159c94bd3cf890a52ce Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Mon, 16 Nov 2020 08:42:15 +0000
+Subject: [PATCH] configure.ac: fix for upcoming autoconf-2.70
+
+The failure initially noticed on `autoconf-2.69d` (soon to become 2.70):
+
+```
+$ ./configure
+./configure: line 8720: syntax error near unexpected token `fi'
+./configure: line 8720: `fi'
+```
+
+Before the change generated `./configure ` snippet looked like:
+
+```
+    if ! $CC -E -xc - <<SRC >/dev/null
+then :
+
+	#if defined __APPLE_CC__ && defined __clang_major__ && __clang_major__ < 3
+	#error premature clang
+	#endif
+SRC
+	as_fn_error $? "clang version 3.0 or later is required" "$LINENO" 5
+fi
+```
+
+Note the newline that breaks here-document syntax.
+
+After the change the snippet does not use here-document.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ configure.ac | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a5e3dc76f6..4e4a52f066 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -271,13 +271,14 @@ AS_CASE(["$host_os:$build_os"],
+     # clang version 1.0 (http://llvm.org/svn/llvm-project/cfe/tags/Apple/clang-23 exported)
+     # Apple clang version 2.0 (tags/Apple/clang-137) (based on LLVM 2.9svn)
+     # Apple clang version 2.1 (tags/Apple/clang-163.7.1) (based on LLVM 3.0svn)
+-    AS_IF([! $CC -E -xc - <<SRC >/dev/null], [
+-	@%:@if defined __APPLE_CC__ && defined __clang_major__ && __clang_major__ < 3
+-	@%:@error premature clang
+-	@%:@endif
+-SRC
+-	AC_MSG_ERROR([clang version 3.0 or later is required])
+-    ])
++    AC_PREPROC_IFELSE(
++	[AC_LANG_PROGRAM([
++	    @%:@if defined __APPLE_CC__ && defined __clang_major__ && __clang_major__ < 3
++	    @%:@error premature clang
++	    @%:@endif
++	])],
++	[],
++	[AC_MSG_ERROR([clang version 3.0 or later is required])])
+ ])
+ 
+ AS_CASE(["$target_os"],
+-- 
+2.29.2
+

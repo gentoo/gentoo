@@ -1,33 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_OPTIONAL=1
 
-inherit toolchain-funcs distutils-r1 flag-o-matic
+inherit toolchain-funcs distutils-r1 flag-o-matic autotools
 
 DESCRIPTION="WLAN tools for breaking 802.11 WEP/WPA keys"
 HOMEPAGE="http://www.aircrack-ng.org"
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit subversion
-	ESVN_REPO_URI="http://svn.aircrack-ng.org/trunk"
-	KEYWORDS=""
-	S="${WORKDIR}/${PN}"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/aircrack-ng/aircrack-ng.git"
 else
-	#inherit versionator
-	#MY_P=${P/\_/-}
-	#MY_PV="$(replace_version_separator 2 '-')"
-	#SRC_URI="http://download.aircrack-ng.org/${PN}-${MY_PV}.tar.gz"
-	#KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-	#S="${WORKDIR}/${MY_P}"
 	MY_PV=${PV/_/-}
-	SRC_URI="http://download.${PN}.org/${PN}-${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}-${MY_PV}"
+	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -36,6 +26,7 @@ SLOT="0"
 IUSE="+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
+	sys-apps/hwloc:0=
 	dev-libs/openssl:0=
 	netlink? ( dev-libs/libnl:3 )
 	pcre? ( dev-libs/libpcre )
@@ -43,8 +34,8 @@ DEPEND="net-libs/libpcap
 	airgraph-ng? ( ${PYTHON_DEPS} )
 	experimental? ( sys-libs/zlib )
 	sqlite? ( >=dev-db/sqlite-3.4 )"
-RDEPEND="${DEPEND}
-	kernel_linux? (
+RDEPEND="${DEPEND}"
+PDEPEND="kernel_linux? (
 		net-wireless/iw
 		net-wireless/wireless-tools
 		sys-apps/ethtool
@@ -53,8 +44,26 @@ RDEPEND="${DEPEND}
 	sys-apps/hwids
 	airdrop-ng? ( net-wireless/lorcon[python,${PYTHON_USEDEP}] )"
 
-REQUIRED_USE="airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
-		airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	airdrop-ng? ( ${PYTHON_REQUIRED_USE} )
+	airgraph-ng? ( ${PYTHON_REQUIRED_USE} )"
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_configure() {
+	econf \
+		STATIC_LIBDIR_NAME="$(get_libdir)" \
+		--disable-asan \
+		--enable-shared \
+		--disable-static \
+		--without-opt \
+		$(use_enable netlink libnl) \
+		$(use_with experimental) \
+		$(use_with sqlite sqlite3)
+}
 
 src_compile() {
 	if [[ $($(tc-getCC) --version) == clang* ]] ; then
@@ -62,21 +71,7 @@ src_compile() {
 		filter-flags -frecord-gcc-switches
 	fi
 
-	if [[ ${PV} == "9999" ]] ; then
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	fi
-
-	emake \
-	CC="$(tc-getCC)" \
-	CXX="$(tc-getCXX)" \
-	AR="$(tc-getAR)" \
-	LD="$(tc-getLD)" \
-	RANLIB="$(tc-getRANLIB)" \
-	libnl=$(usex netlink true false) \
-	pcre=$(usex pcre true false) \
-	sqlite=$(usex sqlite true false) \
-	experimental=$(usex experimental true false) \
-	${liveflags}
+	default
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
@@ -86,36 +81,10 @@ src_compile() {
 		cd "${S}/scripts/airdrop-ng"
 		distutils-r1_src_compile
 	fi
-}
-
-src_test() {
-	if [[ ${PV} == "9999" ]] ; then
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	fi
-
-	emake check \
-		libnl=$(usex netlink true false) \
-		pcre=$(usex pcre true false) \
-		sqlite=$(usex sqlite true false) \
-		experimental=$(usex experimental true false) \
-		${liveflags}
 }
 
 src_install() {
-	if [[ ${PV} == "9999" ]] ; then
-		liveflags=REVFLAGS=-D_REVISION="${ESVN_WC_REVISION}"
-	fi
-
-	emake \
-		prefix="${ED}/usr" \
-		libnl=$(usex netlink true false) \
-		pcre=$(usex pcre true false) \
-		sqlite=$(usex sqlite true false) \
-		experimental=$(usex experimental true false) \
-		${liveflags} \
-		install
-
-	dodoc AUTHORS ChangeLog INSTALLING README
+	default
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
@@ -126,8 +95,9 @@ src_install() {
 		distutils-r1_src_install
 	fi
 
-	#we don't need aircrack-ng's oui updater, we have our own
+	# we don't need aircrack-ng's oui updater, we have our own
 	rm "${ED}"/usr/sbin/airodump-ng-oui-update
+	find "${D}" -xtype f -name '*.la' -delete || die
 }
 
 pkg_postinst() {

@@ -12,6 +12,7 @@
   <longdescription lang="en">
     The Oslo context library has helpers to maintain useful information about a request context. The request context is usually populated in the WSGI pipeline and used by various modules such as logging
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">oslo.context</remote-id>
   </upstream>

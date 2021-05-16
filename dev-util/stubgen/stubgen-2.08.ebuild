@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
+
 inherit toolchain-funcs
 
-DESCRIPTION="a member function stub generator for C++"
+DESCRIPTION="A member function stub generator for C++"
 HOMEPAGE="http://www.radwin.org/michael/projects/stubgen/"
 SRC_URI="http://www.radwin.org/michael/projects/${PN}/dist/${P}.tar.gz"
 
@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 src_compile() {
-	make CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LFLAGS="${LDFLAGS}"
 }
 
 src_install() {

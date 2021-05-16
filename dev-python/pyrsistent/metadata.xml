@@ -11,5 +11,6 @@
       <email>tobias.l.gustafsson@gmail.com</email>
       <name>Tobias Gustafsson</name>
     </maintainer>
+    <remote-id type="github">tobgu/pyrsistent</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,26 +1,33 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="7"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="An easy to use text editor. A subset of aee"
-HOMEPAGE="http://mahon.cwx.net/"
-SRC_URI="http://mahon.cwx.net/sources/${P}.src.tgz"
+#HOMEPAGE="http://mahon.cwx.net/ http://www.users.uswest.net/~hmahon/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.src.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 RDEPEND="!app-editors/ersatz-emacs"
+BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}/easyedit-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-*.diff
+PATCHES=(
+	"${FILESDIR}"/${PN}-init-location.patch
+	"${FILESDIR}"/${PN}-signal.patch
+	"${FILESDIR}"/${PN}-Wformat-security.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
+)
+DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
+src_prepare() {
 	sed -i \
 		-e "s/make -/\$(MAKE) -/g" \
 		-e "/^buildee/s/$/ localmake/" \
@@ -30,7 +37,10 @@ src_prepare() {
 		-e "s/\tcc /\t\\\\\$(CC) /" \
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ *-s//" \
+		-e "s/-lcurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
 		create.make
+
+	default
 }
 
 src_compile() {
@@ -38,8 +48,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin ee
-	doman ee.1
-	dodoc Changes README.ee ee.i18n.guide ee.msg
+	dobin ${PN}
+	doman ${PN}.1
+	einstalldocs
 	keepdir /usr/share/${PN}
 }

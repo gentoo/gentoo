@@ -5,7 +5,9 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		Neutron shared routines and utilities
-	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">openstack/neutron-lib</remote-id>
+		<remote-id type="pypi">neutron-lib</remote-id>
+	</upstream>
 </pkgmetadata>

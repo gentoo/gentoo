@@ -1,34 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit font
 
 DESCRIPTION="FGDC Emergency Response Symbology Prototype"
 HOMEPAGE="http://www.fgdc.gov/HSWG/"
 SRC_URI="http://www.fgdc.gov/HSWG/symbol_downloads/ers_v${PV//./}.zip"
-LICENSE="public-domain"
 
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/ersSymbolsVersion0202"
-
+FONT_S="${S}"
 FONT_SUFFIX="ttf"
 
-DOCS="readme.txt"
+DOCS=( readme.txt )
 
-FONT_S="${S}"
-
-src_install(){
-
-	cd "${FONT_S}"
-	cp ersV2sym/*.ttf .
-	cp ersV2txt/*.ttf .
-
+src_install() {
+	cp ersV2{sym,txt}/*.ttf . || die
 	font_src_install
 }

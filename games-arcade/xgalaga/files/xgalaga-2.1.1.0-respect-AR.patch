@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -14,6 +14,7 @@ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ AC_ARG_WITH(xpm-lib,[  --with-xpm-lib          Directory containing libXpm (may be autodetected)],xpm_lib=$withval)
+ AC_ARG_WITH(sound,  [  --with-sound            Type of sound to use (native or nas)],sound_type=$withval)

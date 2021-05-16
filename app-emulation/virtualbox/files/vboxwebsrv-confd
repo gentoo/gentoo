@@ -1,6 +1,5 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # The host to bind to (defaults to "localhost").
 VBOXWEBSRV_HOST="localhost"

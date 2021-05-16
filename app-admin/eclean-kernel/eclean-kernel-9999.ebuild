@@ -1,29 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+EAPI=7
 
-inherit distutils-r1
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} )
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-inherit git-r3
-#endif
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Remove outdated built kernels"
-HOMEPAGE="https://bitbucket.org/mgorny/eclean-kernel/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/eclean-kernel/"
+EGIT_REPO_URI="https://github.com/mgorny/eclean-kernel.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~x86-fbsd"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="kernel_linux? ( dev-python/pymountboot[${PYTHON_USEDEP}] )"
-#if LIVE
 
-KEYWORDS=
-SRC_URI=
-#endif
+distutils_enable_tests pytest

@@ -1,0 +1,40 @@
+From 6e75bb9550bd8b4c6249fcfc0cd488224336060e Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Wed, 31 Mar 2021 17:55:03 +0200
+Subject: [PATCH] Fix font location
+
+https://bugs.gentoo.org/704508
+---
+ SourceS/paths.cpp          | 2 +-
+ SourceX/DiabloUI/fonts.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/SourceS/paths.cpp b/SourceS/paths.cpp
+index dd60fcb5..1c4f9d69 100644
+--- a/SourceS/paths.cpp
++++ b/SourceS/paths.cpp
+@@ -11,7 +11,7 @@
+ #endif
+ 
+ #ifndef TTF_FONT_NAME
+-#define TTF_FONT_NAME "CharisSILB.ttf"
++#define TTF_FONT_NAME "sil-charis/CharisSIL-B.ttf"
+ #endif
+ 
+ namespace dvl {
+diff --git a/SourceX/DiabloUI/fonts.cpp b/SourceX/DiabloUI/fonts.cpp
+index 178dcbe9..5f825886 100644
+--- a/SourceX/DiabloUI/fonts.cpp
++++ b/SourceX/DiabloUI/fonts.cpp
+@@ -66,7 +66,7 @@ void LoadTtfFont()
+ 	std::string ttf_font_path = GetTtfPath() + GetTtfName();
+ #ifdef __linux__
+ 	if (!FileExists(ttf_font_path.c_str())) {
+-		ttf_font_path = "/usr/share/fonts/truetype/" + GetTtfName();
++		ttf_font_path = "/usr/share/fonts/" + GetTtfName();
+ 	}
+ #endif
+ 	font = TTF_OpenFont(ttf_font_path.c_str(), 17);
+-- 
+2.31.1
+

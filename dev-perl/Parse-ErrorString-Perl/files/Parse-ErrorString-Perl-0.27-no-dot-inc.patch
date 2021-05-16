@@ -1,0 +1,25 @@
+From ef3a6362d55a02572b55d8f56cccb1beaa873097 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20K=2E=20H=C3=BCttel?= <dilfridge@gentoo.org>
+Date: Tue, 4 Jul 2017 09:17:29 +1200
+Subject: Add build fixx for Perl 5.26
+
+Bug: https://bugs.gentoo.org/623086
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 86e91c4..091130b 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -1,6 +1,6 @@
+ use strict;
+ use warnings;
+-use inc::Module::Install;
++use lib q[.]; use inc::Module::Install;
+ 
+ name           'Parse-ErrorString-Perl';
+ license        'perl';
+-- 
+2.15.1
+

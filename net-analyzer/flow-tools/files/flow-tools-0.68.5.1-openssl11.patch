@@ -1,0 +1,46 @@
+--- a/lib/ftxlate.c
++++ b/lib/ftxlate.c
+@@ -34,6 +34,14 @@
+ #include <openssl/ssl.h>
+ #include <openssl/evp.h>
+ #undef free_func
++
++/* fixup LibreSSL OpenSSL version numbering */
++#include <openssl/opensslv.h>
++#if (defined LIBRESSL_VERSION_NUMBER && OPENSSL_VERSION_NUMBER == 0x20000000L)
++#undef OPENSSL_VERSION_NUMBER
++#define OPENSSL_VERSION_NUMBER 0x1000107fL
++#endif
++
+ #endif /* HAVE_OPENSSL */
+ 
+ #include <sys/time.h>
+@@ -2040,11 +2048,13 @@
+ 
+ 
+   /* init crypto */
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+   if (!(cp->cipher_ctx = (EVP_CIPHER_CTX*) malloc(sizeof(EVP_CIPHER_CTX)))) {
+     return -1;
+   }
+ 
+   EVP_CIPHER_CTX_init(cp->cipher_ctx);
++#endif
+ 
+   /* disable padding */
+   if (!(EVP_CIPHER_CTX_set_padding(cp->cipher_ctx, 0))) {
+@@ -2083,10 +2093,14 @@
+ {
+ 
+ #ifdef HAVE_OPENSSL
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+   EVP_CIPHER_CTX_cleanup(cp->cipher_ctx);
+ 
+   if (cp->cipher_ctx)
+     free (cp->cipher_ctx);
++#else
++  EVP_CIPHER_CTX_free(cp->cipher_ctx);
++#endif
+ #endif /* HAVE_OPENSSL */
+ 
+   return 0;

@@ -1,0 +1,44 @@
+From f61a4c09977097b0d456ce9e480c2630b90cdc30 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 8 Apr 2020 19:16:07 +0200
+Subject: [PATCH 3/4] Change installation include dir to a more specific one.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt | 6 +++---
+ lib3MF.pc.in   | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index df87806..3101c65 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -148,9 +148,9 @@ install(TARGETS ${PROJECT_NAME}
+ 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+ 	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+ 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-install(DIRECTORY Include/Model DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+-install(DIRECTORY Include/Common DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
++install(DIRECTORY Include/Model DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/lib3mf")
++install(DIRECTORY Include/Common DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/lib3mf")
++install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/lib3mf")
+ 
+ #########################################################
+ configure_file(lib3MF.pc.in lib3MF.pc @ONLY)
+diff --git a/lib3MF.pc.in b/lib3MF.pc.in
+index 9afb6ee..cf8cafb 100644
+--- a/lib3MF.pc.in
++++ b/lib3MF.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+ libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
++includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@/lib3mf
+ 
+ Name: @PROJECT_NAME@
+ Description: @PROJECT_DESCRIPTION@
+-- 
+2.26.0
+

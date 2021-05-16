@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,8 +11,10 @@ SRC_URI="https://arthurdejong.org/rl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~mips ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ~mips ppc ~s390 sparc x86"
 IUSE="debug"
+
+DOCS=( AUTHORS ChangeLog INSTALL NEWS README TODO )
 
 multilib_src_configure() {
 	local myeconfargs=()
@@ -27,5 +28,4 @@ src_compile() {
 
 src_install() {
 	multilib-minimal_src_install
-	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
 }

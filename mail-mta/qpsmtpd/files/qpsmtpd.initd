@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 pidfile=/var/run/qpsmtpd/qpsmtpd.pid
 

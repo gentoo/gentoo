@@ -1,20 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 MY_PN="postgresql-jdbc"
 MY_PV="${PV/_p/-}"
 MY_P="${MY_PN}-${MY_PV}.src"
 
 DESCRIPTION="JDBC Driver for PostgreSQL"
-SRC_URI="http://jdbc.postgresql.org/download/${MY_P}.tar.gz"
-HOMEPAGE="http://jdbc.postgresql.org/"
+SRC_URI="https://jdbc.postgresql.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://jdbc.postgresql.org/"
 
 LICENSE="POSTGRESQL"
 SLOT="0"

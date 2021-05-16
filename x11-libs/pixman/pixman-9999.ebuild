@@ -1,33 +1,59 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-XORG_MULTILIB=yes
-inherit xorg-2
+EAPI=7
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/git/pixman"
-DESCRIPTION="Low-level pixel manipulation routines"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/pixman/pixman.git"
 
-if [[ $PV = 9999* ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+if [[ ${PV} = 9999* ]]; then
+	GIT_ECLASS="git-r3"
 fi
 
-IUSE="altivec iwmmxt loongson2f cpu_flags_x86_mmxext neon cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
+inherit ${GIT_ECLASS} meson multilib-minimal multiprocessing toolchain-funcs
 
-src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
-		$(use_enable cpu_flags_x86_mmxext mmx)
-		$(use_enable cpu_flags_x86_sse2 sse2)
-		$(use_enable cpu_flags_x86_ssse3 ssse3)
-		$(use_enable altivec vmx)
-		$(use_enable neon arm-neon)
-		$(use_enable iwmmxt arm-iwmmxt)
-		$(use_enable loongson2f loongson-mmi)
-		--disable-gtk
-		--disable-libpng
+DESCRIPTION="Low-level pixel manipulation routines"
+HOMEPAGE="http://www.pixman.org/ https://gitlab.freedesktop.org/pixman/pixman/"
+if [[ ${PV} = 9999* ]]; then
+	SRC_URI=""
+else
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	SRC_URI="https://www.x.org/releases/individual/lib/${P}.tar.xz"
+fi
+
+LICENSE="MIT"
+SLOT="0"
+IUSE="cpu_flags_ppc_altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs"
+
+multilib_src_configure() {
+	local openmp=disabled
+	tc-has-openmp && openmp=enabled
+
+	local emesonargs=(
+		$(meson_feature cpu_flags_arm_iwmmxt iwmmxt)
+		$(meson_use     cpu_flags_arm_iwmmxt2 iwmmxt2)
+		$(meson_feature cpu_flags_x86_mmxext mmx)
+		$(meson_feature cpu_flags_x86_sse2 sse2)
+		$(meson_feature cpu_flags_x86_ssse3 ssse3)
+		$(meson_feature cpu_flags_ppc_altivec vmx)
+		$(meson_feature cpu_flags_arm_neon neon)
+		$(meson_feature loongson2f loongson-mmi)
+		-Ddefault_library=$(usex static-libs both shared)
+		-Dgtk=disabled
+		-Dlibpng=disabled
+		-Dopenmp=$openmp # only used in unit tests
 	)
-	xorg-2_src_configure
+	meson_src_configure
+}
+
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	export OMP_NUM_THREADS=$(makeopts_jobs)
+	meson test -v -C "${BUILD_DIR}" -t 100 || die "tests failed"
+}
+
+multilib_src_install() {
+	meson_src_install
 }

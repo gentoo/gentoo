@@ -6,6 +6,7 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name="lxpanel">Build the applet for <pkg>lxde-base/lxpanel</pkg>, you can set XFCE_PLUGINS="" if you don't want the Xfce dependencies.</flag>
+    <flag name="panel-plugin">Build the power management plugin for
+      the XFCE panel</flag>
   </use>
 </pkgmetadata>

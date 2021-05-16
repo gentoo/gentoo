@@ -1,0 +1,82 @@
+From: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Date: Sat, 15 Aug 2020 08:56:03 +0200
+Subject: ignore-gtk-and-pango
+
+===================================================================
+---
+ examples-gtk/dune   |  8 --------
+ examples-pango/dune |  8 --------
+ gtk/dune            | 13 -------------
+ pango/dune          | 13 -------------
+ 4 files changed, 42 deletions(-)
+ delete mode 100644 examples-gtk/dune
+ delete mode 100644 examples-pango/dune
+ delete mode 100644 gtk/dune
+ delete mode 100644 pango/dune
+
+diff --git a/examples-gtk/dune b/examples-gtk/dune
+deleted file mode 100644
+index 10d8fcb..0000000
+--- a/examples-gtk/dune
++++ /dev/null
+@@ -1,8 +0,0 @@
+-
+-(executables
+- (names    gtk_demo)
+-(libraries cairo2-gtk))
+-
+-(alias
+- (name examples)
+- (deps gtk_demo.exe))
+diff --git a/examples-pango/dune b/examples-pango/dune
+deleted file mode 100644
+index c8ae49e..0000000
+--- a/examples-pango/dune
++++ /dev/null
+@@ -1,8 +0,0 @@
+-
+-(executables
+- (names    pango_demo rendering)
+- (libraries cairo2-pango))
+-
+-(alias
+- (name examples)
+- (deps pango_demo.exe rendering.exe))
+diff --git a/gtk/dune b/gtk/dune
+deleted file mode 100644
+index 6ef367e..0000000
+--- a/gtk/dune
++++ /dev/null
+@@ -1,13 +0,0 @@
+-
+-(library
+- (name        cairo_gtk)
+- (public_name cairo2-gtk)
+- (c_names     cairo_gtk_stubs)
+- (c_flags     :standard (:include c_flags.sexp))
+- (c_library_flags :standard (:include c_library_flags.sexp))
+- (libraries  threads lablgtk2 cairo2)
+- (synopsis "Rendering Cairo on Gtk canvas"))
+-
+-(rule
+- (targets c_flags.sexp c_library_flags.sexp)
+- (action  (run ../config/discover.exe --gtk)))
+diff --git a/pango/dune b/pango/dune
+deleted file mode 100644
+index 816cc49..0000000
+--- a/pango/dune
++++ /dev/null
+@@ -1,13 +0,0 @@
+-
+-(library
+- (name        cairo_pango)
+- (public_name cairo2-pango)
+- (c_names     cairo_pango_stubs)
+- (c_flags     :standard (:include c_flags.sexp))
+- (c_library_flags :standard (:include c_library_flags.sexp))
+- (libraries  threads lablgtk2 cairo2)
+- (synopsis "Interface between Cairo and Pango"))
+-
+-(rule
+- (targets c_flags.sexp c_library_flags.sexp)
+- (action  (run ../config/discover.exe --gtk)))

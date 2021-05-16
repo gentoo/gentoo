@@ -4,11 +4,6 @@
 <maintainer type="person">
   <email>robbat2@gentoo.org</email>
   <name>Robin H. Johnson</name>
-  <description>Primary Maintainer</description>
-</maintainer>
-<maintainer type="project">
-  <email>net-mail@gentoo.org</email>
-  <name>Net-Mail</name>
 </maintainer>
 <longdescription>It repairs or generates a qmail queue structure. You can use
     this to help move your queue location, or if you regenerate the file system

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -10,13 +9,13 @@ MODULE_VERSION=1.6.901
 inherit perl-module
 
 SUBPROJECTS="+db +network +run"
-MIN_PV=$PV
+MIN_PV=${PV}
 
 DESCRIPTION="Perl tools for bioinformatics - Core modules"
 HOMEPAGE="http://www.bioperl.org/"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="-minimal graphviz sqlite ${SUBPROJECTS}"
+IUSE="minimal graphviz sqlite ${SUBPROJECTS}"
 
 REQUIRED_USE="minimal? ( !graphviz )"
 

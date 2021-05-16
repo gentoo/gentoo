@@ -5,8 +5,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">futurist</remote-id>
 	</upstream>

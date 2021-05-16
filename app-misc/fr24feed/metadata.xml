@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Flightradar24 operates the world's largest network of ADS-B/Mode S receivers.
+		This network, together with government air traffic control and other data sources,
+		is how Flightradar24 is able to track aircraft around the globe.
+
+		You can help us increase the flight tracking coverage in your area
+		by uploading data from your ADS-B receiver.
+
+		By sharing ADS-B data with Flightradar24, not only will you help make real-time
+		flight data available to millions of aviation enthusiasts around the world,
+		but as a thank you, you will also receive a free Flightradar24 Business Plan subscription.
+	</longdescription>
+</pkgmetadata>

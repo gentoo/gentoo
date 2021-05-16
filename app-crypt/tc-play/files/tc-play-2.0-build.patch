@@ -1,0 +1,27 @@
+From 3f9235841ba4494962b3c7dafcd16fd3ff5f6575 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 8 Apr 2017 20:27:17 +0300
+Subject: [PATCH] build: include sys/sysmacros.h for recent glibc
+
+https://sourceware.org/ml/libc-alpha/2015-11/msg00253.html
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ tcplay.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tcplay.c b/tcplay.c
+index cd882cf..a6d4655 100644
+--- a/tcplay.c
++++ b/tcplay.c
+@@ -47,6 +47,7 @@
+ #if defined(__linux__)
+ #include <libdevmapper.h>
+ #include <uuid/uuid.h>
++#include <sys/sysmacros.h>
+ #elif defined(__DragonFly__)
+ #include <libdm.h>
+ #include <uuid.h>
+-- 
+2.10.2
+

@@ -1,7 +1,6 @@
 #
 # rc-addon-script for plugin osdteletext
 #
-# $Id$
 
 plugin_pre_vdr_start() {
 	: ${GRAPHLCD_DIR:=/etc/vdr/plugins/graphlcd/graphlcd.conf}

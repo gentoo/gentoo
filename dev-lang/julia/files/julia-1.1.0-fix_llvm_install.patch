@@ -1,0 +1,15 @@
+--- a/deps/llvm.mk	2019-02-09 10:09:30.102927517 +0300
++++ b/deps/llvm.mk	2019-02-09 10:10:51.479924878 +0300
+@@ -464,10 +464,11 @@
+ 
+ $(build_prefix)/manifest/llvm: | $(llvm_python_workaround)
+ 
++# unset DESTDIR to fix https://github.com/JuliaLang/julia/issues/23462
+ LLVM_INSTALL = \
+ 	cd $1 && mkdir -p $2$$(build_depsbindir) && \
+     cp -r $$(LLVM_SRC_DIR)/utils/lit $2$$(build_depsbindir)/ && \
+-    $$(CMAKE) -DCMAKE_INSTALL_PREFIX="$2$$(build_prefix)" -P cmake_install.cmake
++    DESTDIR="" $$(CMAKE) -DCMAKE_INSTALL_PREFIX="$2$$(build_prefix)" -P cmake_install.cmake
+ ifeq ($(OS), WINNT)
+ LLVM_INSTALL += && cp $2$$(build_shlibdir)/LLVM.dll $2$$(build_depsbindir)
+ endif

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		ARandR is designed to provide a simple visual front end for XRandR.
+		Relative monitor positions are shown graphically and can be changed in a drag-and-drop way.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">arandr/arandr</remote-id>
+	</upstream>
 </pkgmetadata>

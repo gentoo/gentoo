@@ -14,11 +14,11 @@
 		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
-    Testresources extends unittest with a clean and simple api to provide test
+		Testresources extends unittest with a clean and simple api to provide test
 	optimisation where expensive common resources are needed for test cases
 	for example sample working trees for VCS systems, reference databases for
 	enterprise applications, or web servers ... let imagination run wild.
-  </longdescription>
+	</longdescription>
 	<upstream>
 		<remote-id type="pypi">testresources</remote-id>
 		<remote-id type="launchpad">testresources</remote-id>

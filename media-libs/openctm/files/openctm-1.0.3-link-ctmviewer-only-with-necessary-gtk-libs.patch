@@ -1,0 +1,13 @@
+--- a/tools/Makefile.linux
++++ b/tools/Makefile.linux
+@@ -46,7 +46,9 @@
+ 	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
+
+ ctmviewer: $(CTMVIEWEROBJS)
+-	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `${PKG_CONFIG} --libs gtk+-2.0`
++	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm \
++	-ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW \
++	-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0
+
+ ctmbench: $(CTMBENCHOBJS)
+ 	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMBENCHOBJS) -lopenctm

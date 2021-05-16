@@ -1,14 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 MY_P=${P/-}
 
 DESCRIPTION="A small conversion and check utility for ADIF files"
-HOMEPAGE="http://jaakko.home.cern.ch/jaakko/Soft/"
-SRC_URI="http://jaakko.home.cern.ch/jaakko/Soft/${MY_P}.tgz"
+HOMEPAGE="https://github.com/oh7bf/adifmerg"
+SRC_URI="http://www.saunalahti.fi/~jaakoive/Soft/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

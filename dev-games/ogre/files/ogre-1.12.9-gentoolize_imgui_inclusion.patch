@@ -1,0 +1,27 @@
+--- a/Components/Overlay/CMakeLists.txt	2020-09-20 16:13:41.280993468 +0200
++++ b/Components/Overlay/CMakeLists.txt	2020-09-20 16:14:52.468997571 +0200
+@@ -19,14 +19,14 @@
+ file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+ 
+ if(OGRE_BUILD_COMPONENT_OVERLAY_IMGUI)
+-  set(IMGUI_DIR "${PROJECT_BINARY_DIR}/imgui-1.77" CACHE PATH "")
++  set(IMGUI_DIR "${PROJECT_SOURCE_DIR}/imgui-1.77" CACHE PATH "")
+   if(NOT EXISTS ${IMGUI_DIR})
+     message(STATUS "Dowloading imgui")
+     file(DOWNLOAD
+         https://github.com/ocornut/imgui/archive/v1.77.tar.gz
+-        ${PROJECT_BINARY_DIR}/imgui.tar.gz)
++        ${PROJECT_SOURCE_DIR}/imgui.tar.gz)
+     execute_process(COMMAND ${CMAKE_COMMAND}
+-        -E tar xf imgui.tar.gz WORKING_DIRECTORY ${PROJECT_BINARY_DIR})
++        -E tar xf imgui.tar.gz WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+   endif()
+   list(APPEND SOURCE_FILES
+     ${IMGUI_DIR}/imgui.cpp
+@@ -80,4 +80,4 @@
+ )
+ install(FILES "${PROJECT_SOURCE_DIR}/Media/packs/profiler.zip"
+   DESTINATION "${OGRE_MEDIA_PATH}/packs/"
+-)
+\ Kein Zeilenumbruch am Dateiende.
++)

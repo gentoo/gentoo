@@ -10,6 +10,9 @@
   leverage multi-core processor performance without having to be a
   threading expert. It represents a higher-level, task-based
   parallelism that abstracts platform details and threading mechanism
-  for performance and scalability. 
-</longdescription>
+  for performance and scalability.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">intel/tbb</remote-id>
+  </upstream>
 </pkgmetadata>

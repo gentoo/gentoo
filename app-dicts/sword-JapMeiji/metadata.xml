@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="ja">
+		文語訳(明治元訳)舊約聖書の初版は1887年ですが、本サイトでは1953年版を底本としています。
+	</longdescription>
+</pkgmetadata>

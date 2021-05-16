@@ -1,13 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="simple tuning app for DVB cards"
-HOMEPAGE="http://sourceforge.net/projects/dvbtools"
+HOMEPAGE="https://sourceforge.net/projects/dvbtools"
 SRC_URI="mirror://sourceforge/dvbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,6 +20,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PF}-gentoo.diff
+	epatch "${FILESDIR}"/${PN}-0.5-stdint.patch
 }
 
 src_compile() {

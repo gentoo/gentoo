@@ -1,0 +1,28 @@
+From 231643d6865c89f304990bb7f5dc9066f3daeb95 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 13 May 2020 08:50:29 +0200
+Subject: [PATCH] Install via distutils to break cyclic dep with setuptools
+
+---
+ setup.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 7c582f6..fdb8005 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,10 +1,7 @@
+ #!/usr/bin/env python
+ import os
+ # appdirs is a dependency of setuptools, so allow installing without it.
+-try:
+-    from setuptools import setup
+-except ImportError:
+-    from distutils.core import setup
++from distutils.core import setup
+ import ast
+ 
+ 
+-- 
+2.26.2
+

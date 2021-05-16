@@ -6,14 +6,16 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
+		<flag name="bluetooth">Build bindings for the QtBluetooth module</flag>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
 		<flag name="declarative">Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
-		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="gui">Build bindings for the QtGui module</flag>
 		<flag name="help">Build bindings for the QtHelp module</flag>
+		<flag name="location">Build bindings for the QtLocation module</flag>
 		<flag name="multimedia">Build bindings for the QtMultimedia module</flag>
 		<flag name="network">Build bindings for the QtNetwork module</flag>
+		<flag name="networkauth">Build bindings for the QtNetworkAuth module</flag>
 		<flag name="opengl">Build bindings for the QtOpenGL module</flag>
 		<flag name="positioning">Build bindings for the QtPositioning module</flag>
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
@@ -34,9 +36,8 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
+		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt5/</doc>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
-		<doc>http://pyqt.sourceforge.net/Docs/PyQt5/</doc>
 		<remote-id type="pypi">PyQt5</remote-id>
-		<remote-id type="sourceforge">pyqt</remote-id>
 	</upstream>
 </pkgmetadata>

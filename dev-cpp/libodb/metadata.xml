@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gienah@gentoo.org</email>
+		<name>Mark Wright</name>
+	</maintainer>
+	<longdescription lang="en">
+		ODB is an open-source, cross-platform, and cross-database
+		object-relational mapping (ORM) system for C++. It allows you
+		to persist C++ objects to a relational database without having
+		to deal with tables, columns, or SQL and without manually
+		writing any mapping code. ODB supports MySQL, SQLite,
+		PostgreSQL, Oracle, and Microsoft SQL Server relational
+		databases as well as C++98/03 and C++11 language standards. It
+		also comes with optional profiles for Boost and Qt which allow
+		you to seamlessly use value types, containers, and smart
+		pointers from these libraries in your persistent C++ classes.
+	</longdescription>
+</pkgmetadata>

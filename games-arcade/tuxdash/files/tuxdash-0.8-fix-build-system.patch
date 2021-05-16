@@ -1,0 +1,11 @@
+Fix build system to honour all user variables.
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,4 +1,4 @@
+ all:
+-	g++ main.cpp -Wall `/usr/bin/sdl-config --libs --cflags` -lSDL_ttf  -o ../TuxDash
++	$(CXX) main.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) `/usr/bin/sdl-config --libs --cflags` -lSDL_ttf  -o ../tuxdash
+ static:
+-	g++ -static main.cpp -Wall `/usr/bin/sdl-config --cflags --static-libs` -lSDL_ttf -lfreetype -lz -o ../TuxDash
++	$(CXX) -static main.cpp $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) `/usr/bin/sdl-config --cflags --static-libs` -lSDL_ttf -lfreetype -lz -o ../tuxdash

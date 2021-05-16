@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -26,8 +25,9 @@ COMMON_DEP="dev-java/jdom:0"
 
 RDEPEND=">=virtual/jre-1.6
 	${COMMON_DEP}"
-
-DEPEND=">=virtual/jdk-1.6
+DEPEND="
+	app-arch/unzip
+	>=virtual/jdk-1.6
 	${COMMON_DEP}"
 
 S="${WORKDIR}/${MY_P}"

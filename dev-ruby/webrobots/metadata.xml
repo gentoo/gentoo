@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="rubygems">webrobots</remote-id>
+		<remote-id type="github">knu/webrobots</remote-id>
 	</upstream>
 </pkgmetadata>

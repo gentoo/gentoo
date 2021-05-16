@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: portability.eclass
 # @MAINTAINER:
@@ -14,7 +13,6 @@ _PORTABILITY_ECLASS=1
 
 # @FUNCTION: treecopy
 # @USAGE: <orig1> [orig2 orig3 ....] <dest>
-# @RETURN:
 # @DESCRIPTION:
 # mimic cp --parents copy, but working on BSD userland as well
 treecopy() {
@@ -68,8 +66,8 @@ seq() {
 
 	# Screw it, do the output ourselves
 	while :; do
-		[[ $max < $min && $step > 0 ]] && break
-		[[ $min < $max && $step < 0 ]] && break
+		[[ $max -lt $min && $step -gt 0 ]] && break
+		[[ $min -lt $max && $step -gt 0 ]] && break
 		echo $min
 		: $(( min += step ))
 	done
@@ -119,7 +117,6 @@ get_bmake() {
 # @FUNCTION: get_mounts
 # @USAGE:
 # @RETURN: table of mounts in form "point node fs opts"
-# @MAINTAINER:
 # @DESCRIPTION:
 # Portable method of getting mount names and points.
 # Returns as "point node fs options"

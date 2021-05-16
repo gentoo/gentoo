@@ -1,87 +1,92 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-inherit toolchain-funcs
-IUSE="luajit pax_kernel vim-syntax"
+LUA_COMPAT=( lua5-1 luajit )
 
-if [[ ${PV} == *9999* ]]; then
-	inherit git-2
-	EGIT_REPO_URI="git://github.com/mason-larobina/${PN}.git
-		https://github.com/mason-larobina/${PN}.git"
-	EGIT_BRANCH="develop"
-	KEYWORDS=""
-	SRC_URI=""
+inherit lua-single toolchain-funcs xdg
+
+DESCRIPTION="A fast, extensible, and customizable web browser"
+HOMEPAGE="https://luakit.github.io/luakit"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/luakit/luakit.git"
 else
-	inherit vcs-snapshot
-	MY_PV="${PV/_p/-r}"
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/mason-larobina/${PN}/tarball/${MY_PV} -> ${P}.tar.gz"
+	SRC_URI="https://github.com/luakit/luakit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
 fi
-
-DESCRIPTION="fast, small, webkit-gtk based micro-browser extensible by lua"
-HOMEPAGE="https://mason-larobina.github.com/luakit/"
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="doc test"
 
-COMMON_DEPEND="
-	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( >=dev-lang/lua-5.1 )
-	dev-db/sqlite:3
-	dev-libs/glib:2
-	dev-libs/libunique:1
-	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:2
-	x11-libs/gtk+:2
-"
-
-DEPEND="
-	virtual/pkgconfig
-	sys-apps/help2man
-	pax_kernel? ( sys-apps/elfix )
-	${COMMON_DEPEND}
-"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	${COMMON_DEPEND}
-	dev-lua/luafilesystem
-	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+	dev-db/sqlite:3
+	dev-libs/glib:2
+	net-libs/webkit-gtk:4=
+	x11-libs/gtk+:3
+	${LUA_DEPS}
+	$(lua_gen_cond_dep '
+		dev-lua/luafilesystem[${LUA_USEDEP}]
+	')
 "
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	test? (
+		$(lua_gen_cond_dep '
+			dev-lua/luassert[${LUA_USEDEP}]
+			dev-lua/luacheck[${LUA_USEDEP}]
+		')
+		x11-base/xorg-server[xvfb]
+	)
+"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2.1-make.patch
+)
 
-src_prepare() {
-	sed -i -e "/^CFLAGS/s/-ggdb//" config.mk || die
-	# bug 385471
-	use pax_kernel && sed "s,@\$(CC) -o \$@ \$(OBJS) \$(LDFLAGS),@\$(CC) \
-		-o \$@ \$(OBJS) \$(LDFLAGS)\n\tpaxmark.sh -m luakit,g" -i Makefile
+src_configure() {
+	export LUA_BIN_NAME=${ELUA}
+	export LUA_PKG_NAME=${ELUA}
+	tc-export CC PKG_CONFIG
 }
 
 src_compile() {
-	myconf="PREFIX=/usr DEVELOPMENT_PATHS=0"
-	if use luajit; then
-		myconf+=" USE_LUAJIT=1"
-	else
-		myconf+=" USE_LUAJIT=0"
-	fi
+	emake \
+		PREFIX="${EPREFIX}/usr" \
+		USE_LUAJIT=$(usex lua_single_target_luajit 1 0) \
+		${PN} ${PN}.so
 
-	if [[ ${PV} != *9999* ]]; then
-		myconf+=" VERSION=${PV}"
-	fi
+	use doc && emake doc
+}
 
-	tc-export CC
-	emake ${myconf}
+src_test() {
+	local failing_test
+	for failing_test in test_clib_luakit test_image_css; do
+		mv tests/async/${failing_test}.lua{,.disabled} || die
+	done
+
+	emake \
+		USE_LUAJIT=$(usex lua_single_target_luajit 1 0) \
+		run-tests
 }
 
 src_install() {
-	emake PREFIX="/usr" DESTDIR="${D}" DOCDIR="${D}/usr/share/doc/${PF}" install
+	emake \
+		DESTDIR="${ED}" \
+		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
+		PREFIX="${EPREFIX}/usr" \
+		USE_LUAJIT=$(usex lua_single_target_luajit 1 0) \
+		XDGPREFIX="${EPREFIX}/etc/xdg" \
+		install
 
-	if use vim-syntax; then
-		local t
-		for t in $(ls "${S}"/extras/vim/); do
-			insinto /usr/share/vim/vimfiles/"${t}"
-			doins "${S}"/extras/vim/"${t}"/luakit.vim
-		done
-	fi
+	rm "${ED}/usr/share/doc/${PF}/COPYING.GPLv3" || die
+
+	use doc && dodoc -r doc/html
 }

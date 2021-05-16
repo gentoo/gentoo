@@ -1,13 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-WANT_ANT_TASKS="ant-nodeps"
 JAVA_PKG_IUSE="doc source test"
-
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2 toolchain-funcs
 
 MY_PN="wrapper"
 MY_P="${MY_PN}_${PV}_src"
@@ -18,14 +15,13 @@ SRC_URI="http://${MY_PN}.tanukisoftware.org/download/${PV}/${MY_P}.tar.gz"
 LICENSE="tanuki-community"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	>=virtual/jre-1.4"
 DEPEND="
 	>=virtual/jdk-1.4
 	test? (
-		dev-java/ant-junit
+		dev-java/ant-junit:0
 	)"
 
 S="${WORKDIR}/${MY_P}"
@@ -56,7 +52,7 @@ src_compile() {
 }
 
 src_test() {
-	ANT_TASKS="ant-junit ant-nodeps" eant -Dbits="${BITS}" test
+	ANT_TASKS="ant-junit" eant -Dbits="${BITS}" test
 }
 
 src_install() {
@@ -64,8 +60,8 @@ src_install() {
 	java-pkg_doso lib/libwrapper.so
 
 	dobin bin/wrapper
-	dodoc README*.txt || die
-	dodoc doc/revisions.txt || die
+	dodoc README*.txt
+	dodoc doc/revisions.txt
 
 	use doc && java-pkg_dojavadoc api
 	use source && java-pkg_dosrc src/java/*

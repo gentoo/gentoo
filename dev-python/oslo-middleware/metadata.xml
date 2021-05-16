@@ -12,6 +12,7 @@
   <longdescription lang="en">
     Oslo middleware library includes components that can be injected into wsgi pipelines to intercept request/response flows. The base class can be enhanced with functionality like add/delete/modification of http headers and support for limiting size/connection etc
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">oslo.middleware</remote-id>
   </upstream>

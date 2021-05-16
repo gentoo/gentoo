@@ -1,0 +1,6 @@
+[Unit]
+Description=Perform system-wide prelinking
+
+[Service]
+Type=oneshot
+ExecStart=/etc/cron.daily/prelink

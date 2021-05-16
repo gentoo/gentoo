@@ -1,0 +1,13 @@
+* The 'Icon=' property should not have a suffix
+
+--- a/jpilot.desktop
++++ b/jpilot.desktop
+@@ -2,7 +2,7 @@
+ Name=J-Pilot
+ Comment=Desktop organizer application for the Palm Pilot
+ Exec=jpilot
+-Icon=jpilot.xpm
++Icon=jpilot
+ Terminal=false
+ Type=Application
+ Categories=Office;PDA;

@@ -1,27 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-EAPI=5
 
-inherit eutils autotools
+EAPI=7
+
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Popular filesystem benchmark"
-SRC_URI="ftp://ftp.samba.org/pub/tridge/dbench/${P}.tar.gz"
-HOMEPAGE="http://samba.org/ftp/tridge/dbench/"
-SLOT="0"
+SRC_URI="https://www.samba.org/ftp/pub/tridge/dbench/${P}.tar.gz"
+HOMEPAGE="https://www.samba.org/ftp/tridge/dbench/"
+
 LICENSE="GPL-2"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
-IUSE=""
+SLOT="0"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86"
 
 DEPEND="dev-libs/popt"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	eautoheader
-	eautoconf
-	sed -i -e \
-		"s:\$(CC) -o:\$(CC) \$(LDFLAGS) -o:" \
-		Makefile.in || die
+	default
+
+	sed -i -e "s:\$(CC) -o:\$(CC) \$(LDFLAGS) -o:" Makefile.in || die
+	mv configure.{in,ac} || die
+
 	eautoreconf
 }
 
@@ -38,5 +38,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "You can find the client.txt file in ${ROOT}usr/share/dbench."
+	elog "You can find the client.txt file in ${EROOT}/usr/share/dbench."
 }

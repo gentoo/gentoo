@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
 	<use>
-		<flag name="gdm">Enables smooth transition to GDM</flag>
 		<flag name="libkms">Provides abstraction to the DRM drivers (intel,
 			nouveau and vmwgfx at this moment)</flag>
 		<flag name="pango">Adds support for printing text on splash screen and
 			text prompts, e.g. for password</flag>
+		<flag name="split-usr">Enable this if /bin and /usr/bin are separate
+			directories</flag>
 	</use>
 	<longdescription lang="en">
 		Plymouth is an application that runs very early in the boot process

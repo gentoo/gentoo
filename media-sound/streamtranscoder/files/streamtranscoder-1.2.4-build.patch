@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -83,22 +83,29 @@
  
  dnl -- configure options --
@@ -36,8 +36,8 @@
  AC_SUBST(LIBTOOL_DEPS)
  AC_SUBST(OPT)
  AC_SUBST(LIBS)
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -17,5 +17,6 @@
   
  INCLUDES = -I$(srcdir)/liboddcast -I$(srcdir)/libtranscoder
@@ -47,8 +47,8 @@
 +install-data-hook:
 +	$(INSTALL) -d $(DESTDIR)$(sysconfdir)
 +	$(INSTALL) -m644 transcoder.cfg $(DESTDIR)$(sysconfdir)/transcoder.cfg
---- src/libtranscoder/transcurl.cpp
-+++ src/libtranscoder/transcurl.cpp
+--- a/src/libtranscoder/transcurl.cpp
++++ b/src/libtranscoder/transcurl.cpp
 @@ -18,7 +18,6 @@
  #include <winsock2.h>
  #endif

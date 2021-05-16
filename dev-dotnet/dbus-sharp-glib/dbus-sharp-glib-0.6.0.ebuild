@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit autotools mono-env
@@ -11,7 +10,7 @@ SRC_URI="https://github.com/mono/${PN}/releases/download/v${PV%.*}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="2.0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-lang/mono

@@ -7,4 +7,7 @@
 	<upstream>
 		<remote-id type="sourceforge">guvcview</remote-id>
 	</upstream>
+	<use>
+		<flag name="qt5">Build with Qt5 interface instead Gtk+</flag>
+	</use>
 </pkgmetadata>

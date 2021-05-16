@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<stabilize-allarches/>
+	<longdescription lang="en">
+		MediaFile is a simple interface to the metadata tags for many audio
+		file formats. It wraps Mutagen, a high-quality library for low-level
+		tag manipulation, with a high-level, format-independent interface for
+		a common set of tags.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">beetbox/mediafile</remote-id>
+		<remote-id type="pypi">mediafile</remote-id>
+	</upstream>
+</pkgmetadata>

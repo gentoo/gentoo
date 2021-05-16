@@ -1,7 +1,0 @@
-# Set the port mserv listens on.  By default, this is 4444, but
-# Maya's document server uses this port also.
-#
-# If you change it here, make sure you change it in:
-# /var/www/localhost/cgi-bin/mserv/mserv.cgi as well.
-
-PORT=4444

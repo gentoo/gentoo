@@ -1,0 +1,10 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,6 +28,7 @@
+ AC_LIBTOOL_WIN32_DLL
+ AC_PROG_LIBTOOL
+ AC_PROG_INSTALL
++PKG_PROG_PKG_CONFIG
+ 
+ dnl #########################################################################
+ dnl Configure

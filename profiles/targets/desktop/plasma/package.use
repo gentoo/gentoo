@@ -1,103 +1,52 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# Avoid circular dependency when installing from scratch
-dev-util/cmake -qt4 -qt5
+# Required by kde-apps/okular[pdf]
+app-text/poppler nss
 
-# Not required, but makes life easier with Qt; bug 457934
-app-arch/unzip natspec
+# Required by sys-apps/fwupd, a dependency of kde-plasma/discover
+dev-libs/libjcat gpg pkcs7
 
-# Required by app-office/akonadi-server
-dev-qt/qtsql mysql
+# Required by sys-apps/flatpak, a dependency of kde-plasma/discover
+dev-util/ostree curl
 
-# Required by dev-qt/qtcore
-dev-libs/libpcre pcre16
+# Required by app-editors/okteta
+dev-qt/qtscript:5 scripttools
 
-# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
-media-libs/gd fontconfig
+# Required by kde-apps/akonadi
+dev-qt/qtsql:5 mysql
 
 # Required by kde-apps/ktp-text-ui
 kde-apps/ktp-common-internals otr
 
+# Enable by default, requires kde-frameworks/kwayland
+kde-apps/yakuake absolute-position
+
 # Required by kde-apps/libkexiv2
 media-gfx/exiv2 xmp
-
-# Required by kde-apps/okteta
-dev-qt/qtscript scripttools
-
-# Required by kde-base/pykde4
-dev-python/PyQt4 script sql webkit
-
-# Required by kde-frameworks/kactivities
-sys-libs/zlib minizip
 
 # Required by kde-frameworks/kapidox
 media-gfx/graphviz python
 
-# Required by kde-frameworks/kcoreaddons
-dev-qt/qtcore icu
+# Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
+media-libs/gd fontconfig
 
 # Required by kde-plasma/kwin
 media-libs/mesa egl wayland
-
-# Required by net-libs/signon-ui
-net-libs/libproxy -kde
+# Not required, but makes sense in return
+x11-apps/mesa-progs egl
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 kdenlive melt -kde -qt4
+media-libs/mlt ffmpeg frei0r rubberband
 
-# Allow certain KDE 4 components to be coinstalled with Plasma 5
-<dev-util/kdevelop-4.8.0 -gdbui
-kde-apps/kcontrol -handbook
-kde-apps/kde-meta:4 -kdepim minimal
-kde-apps/kde-wallpapers minimal
-kde-apps/kde4-l10n minimal
-kde-apps/kdeartwork-meta minimal
-kde-apps/kdebase-kioslaves minimal
-kde-apps/kdebase-meta:4 minimal
-kde-apps/kdebase-runtime-meta:4 -crash-reporter minimal
-kde-apps/kdesu -handbook
-kde-apps/knetattach -handbook
-kde-apps/kwalletmanager:4 minimal
-kde-apps/libkipi:4 minimal
-kde-apps/libksane:4 minimal
-kde-apps/solid-runtime -bluetooth
-kde-base/baloo minimal
-kde-base/kactivities minimal
-kde-base/systemsettings -handbook
-net-libs/libkpeople:4 minimal
-net-p2p/ktorrent:4 -plasma
-sys-auth/polkit-kde-agent minimal
+# Required by media-gfx/digikam
+media-libs/opencv contrib contribdnn
 
-# Required by app-office/libreoffice
-media-libs/phonon designer
+# Required by kde-plasma/plasma-firewall
+# Required by net-firewall/firewalld[iptables] (default enabled)
+net-firewall/iptables ipv6
+# Required by net-firewall/firewalld[nftables] (default enabled)
+net-firewall/nftables json python xtables
 
-# Fix REQUIRED_USE conflicts: qt5? ( !qt4 )
->=app-crypt/pinentry-0.9.6-r5 -qt4
-app-office/akonadi-server -qt5
->=app-office/texmaker-4.4.1 -qt4
->=app-office/texstudio-2.9.4 -qt4
-app-text/qpdfview -qt4
-dev-db/sqlitebrowser -qt4
->=dev-games/openscenegraph-3.2.1-r1 -qt4
->=dev-libs/qcustomplot-1.3.0 -qt4
->=dev-libs/quazip-0.7.1 -qt4
->=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
->=media-libs/opencv-3.0.0 -qt4
-media-video/makemkv -qt4
->=media-video/smplayer-14.9.0.6690 -qt4
-media-video/vlc -qt4
-net-analyzer/wireshark -qt4
-net-misc/owncloud-client -qt4
-net-news/rssguard -qt4
->=net-news/quiterss-0.17.7 -qt4
-net-p2p/bitcoin-qt -qt4
->=net-p2p/qbittorrent-3.2.0 -qt4
-net-p2p/transmission -qt4
->=net-wireless/wpa_supplicant-2.5 -qt4
->=sci-geosciences/qlandkartegt-1.8.0 -qt4
-sci-visualization/kst -qt4
-www-client/qupzilla -kde -qt4
->=x11-libs/qtermwidget-0.6.0 -qt4
->=x11-terms/qterminal-0.6.0 -qt4
+# Required by dev-qt/qtwebengine:5
+sys-libs/zlib minizip

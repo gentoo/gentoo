@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>jer@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <use>
 <flag name="imlib2">Enable image support through <pkg>media-libs/imlib2</pkg></flag>
 </use>

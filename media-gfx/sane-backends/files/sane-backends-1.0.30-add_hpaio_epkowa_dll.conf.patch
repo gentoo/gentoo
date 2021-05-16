@@ -1,0 +1,11 @@
+diff -Naur backends-1.0.30/backend/dll.conf.in backends-1.0.30-r1/backend/dll.conf.in
+--- backends-1.0.30/backend/dll.conf.in	2020-05-17 14:16:28.000000000 +0300
++++ backends-1.0.30-r1/backend/dll.conf.in	2020-06-27 08:24:18.378856341 +0300
+@@ -98,3 +98,7 @@
+ #umax_pp
+ v4l
+ xerox_mfp
++# Add support for the HP-specific backend.  Needs net-print/hplip installed.
++hpaio
++# Add support for the Epson-specific backend.  Needs media-gfx/iscan installed.
++epkowa

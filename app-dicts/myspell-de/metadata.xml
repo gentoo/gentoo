@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
+	<stabilize-allarches/>
+	<longdescription lang="en">
+		German "frami" standard dictionary with spell check, hyphenation patterns and
+		thesaurus. It includes the complete word list of Björn Jacke's igerman98 and
+		additional numerous supplements by Franz Michael Baumann according to the
+		reform of 2006. Includes localizations for Austria, Switzerland and Germany.
+	</longdescription>
 </pkgmetadata>

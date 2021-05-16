@@ -1,0 +1,78 @@
+From eb8a7a96351b6e1cfd9dc34f1e854333a8f4a4e0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C4=90o=C3=A0n=20Tr=E1=BA=A7n=20C=C3=B4ng=20Danh?=
+ <congdanhqx@gmail.com>
+Date: Fri, 6 Mar 2020 08:46:36 +0700
+Subject: [PATCH] Makefile: merge main-version and git-version earlier
+
+With GNU Make 4.3 on both ArchLinux, and VoidLinux,
+GITVERION is always empty because of bad substitution.
+Change '\#' to simply '#' can fix it,
+but we don't need that complation.
+
+We can merge DRACUT_MAIN_VERSION and GITVERSION into DRACUT_FULL_VERSION.
+Because, GITVERSION will be attached back to DRACUT_MAIN_VERSION in all
+situation.
+
+While we're at it, detect if we're in git worktree by:
+limiting GIT_CEILING_DIRECTORIES to parent directory of
+dracut's top level directory; instead of checking for .git directory,
+in order to support git-worktree, in such case, .git will be a file, see
+gitrepository-layout(5)
+---
+ Makefile | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 22b584f1..c69e2dfc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,9 @@
+ -include dracut-version.sh
+ 
+-DRACUT_MAIN_VERSION ?= $(shell [ -d .git ] && git describe --abbrev=0 --tags --always 2>/dev/null || :)
++DRACUT_MAIN_VERSION ?= $(shell env GIT_CEILING_DIRECTORIES=$(CWD)/.. git describe --abbrev=0 --tags --always 2>/dev/null || :)
+ DRACUT_MAIN_VERSION ?= $(DRACUT_VERSION)
+-GITVERSION ?= $(shell [ -d .git ] && { v=$$(git describe --tags --always 2>/dev/null); [ -n "$$v" ] && [ $${v\#*-} != $$v ] && echo -$${v\#*-}; } )
++DRACUT_FULL_VERSION ?= $(shell env GIT_CEILING_DIRECTORIES=$(CWD)/.. git describe --tags --always 2>/dev/null || :)
++DRACUT_FULL_VERSION ?= $(DRACUT_VERSION)
+ 
+ -include Makefile.inc
+ 
+@@ -92,14 +93,14 @@ endif
+ 
+ %.xml: %.asc
+ 	@rm -f -- "$@"
+-	asciidoc -a "version=$(DRACUT_MAIN_VERSION)$(GITVERSION)" -d manpage -b docbook -o "$@" $<
++	asciidoc -a "version=$(DRACUT_FULL_VERSION)" -d manpage -b docbook -o "$@" $<
+ 
+ dracut.8: dracut.usage.asc dracut.8.asc
+ 
+ dracut.html: dracut.asc $(manpages) dracut.css dracut.usage.asc
+ 	@rm -f -- dracut.xml
+ 	asciidoc -a "mainversion=$(DRACUT_MAIN_VERSION)" \
+-		-a "version=$(DRACUT_MAIN_VERSION)$(GITVERSION)" \
++		-a "version=$(DRACUT_FULL_VERSION)" \
+ 		-a numbered \
+ 		-d book -b docbook -o dracut.xml dracut.asc
+ 	@rm -f -- dracut.html
+@@ -112,7 +113,7 @@ dracut.html: dracut.asc $(manpages) dracut.css dracut.usage.asc
+ dracut.pc: Makefile.inc Makefile
+ 	@echo "Name: dracut" > dracut.pc
+ 	@echo "Description: dracut" >> dracut.pc
+-	@echo "Version: $(DRACUT_MAIN_VERSION)$(GITVERSION)" >> dracut.pc
++	@echo "Version: $(DRACUT_FULL_VERSION)" >> dracut.pc
+ 	@echo "dracutdir=$(pkglibdir)" >> dracut.pc
+ 	@echo "dracutmodulesdir=$(pkglibdir)/modules.d" >> dracut.pc
+ 	@echo "dracutconfdir=$(pkglibdir)/dracut.conf.d" >> dracut.pc
+@@ -182,7 +183,7 @@ endif
+ 
+ dracut-version.sh:
+ 	@rm -f dracut-version.sh
+-	@echo "DRACUT_VERSION=$(DRACUT_MAIN_VERSION)$(GITVERSION)" > dracut-version.sh
++	@echo "DRACUT_VERSION=$(DRACUT_FULL_VERSION)" > dracut-version.sh
+ 
+ clean:
+ 	$(RM) *~
+-- 
+2.24.1
+

@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/671594
+
+--- a/game/audio.cc
++++ b/game/audio.cc
+@@ -77,7 +77,7 @@
+ 	static ptime getTime() { return microsec_clock::universal_time(); }
+ 	// Conversion helpers
+ 	static double getSeconds(time_duration t) { return 1e-6 * t.total_microseconds(); }
+-	static time_duration getDuration(double seconds) { return microseconds(1e6 * seconds); }
++	static time_duration getDuration(double seconds) { return microseconds(static_cast<long long>(1e6 * seconds)); }
+ 
+ 	mutable boost::mutex m_mutex;
+ 	ptime m_baseTime; ///< A reference time (corresponds to m_basePos)
+@@ -149,7 +149,7 @@
+ 	int64_t m_pos; ///< Current sample position
+ 	bool m_preview;
+ 	AudioClock m_clock;
+-	time_duration durationOf(int64_t samples) const { return microseconds(1e6 * samples / srate / 2.0); }
++	time_duration durationOf(int64_t samples) const { return microseconds(static_cast<long long>(1e6 * samples / srate / 2.0)); }
+ public:
+ 	bool suppressCenterChannel;
+ 	double fadeLevel;
+--- a/game/backgrounds.hh
++++ b/game/backgrounds.hh
+@@ -7,6 +7,7 @@
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/thread/mutex.hpp>
+ #include <boost/thread/thread.hpp>
++#include <boost/noncopyable.hpp>
+ #include <vector>
+ 
+ /// songs class for songs screen
+--- a/game/songs.hh
++++ b/game/songs.hh
+@@ -6,6 +6,7 @@
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/thread/mutex.hpp>
+ #include <boost/thread/thread.hpp>
++#include <boost/noncopyable.hpp>
+ #include <set>
+ #include <sstream>
+ #include <vector>
+--- a/game/svg.cc
++++ b/game/svg.cc
+@@ -4,6 +4,7 @@
+ #include "configuration.hh"
+ #include "../common/image.hh"
+ 
++#include <boost/smart_ptr/shared_ptr.hpp>
+ #include <librsvg/rsvg.h>
+ #include <iostream>
+ 

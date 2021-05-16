@@ -1,0 +1,18 @@
+Do not build inventory/ subdirectory.
+Bug: https://bugs.gentoo.org/692972
+Upstream report: https://www.spinics.net/lists/linux-xfs/msg36884.html
+
+
+Do not build debian/ subdirectory.
+
+--- a/Makefile
++++ b/Makefile
+@@ -42,7 +42,7 @@ LDIRT += $(SRCTAR)
+ endif
+ 
+ LIB_SUBDIRS = librmt
+-TOOL_SUBDIRS = common inventory invutil dump restore m4 man doc po debian
++TOOL_SUBDIRS = common invutil dump restore m4 man doc po
+ 
+ SUBDIRS = include $(LIB_SUBDIRS) $(TOOL_SUBDIRS)
+ 

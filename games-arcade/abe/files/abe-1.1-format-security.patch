@@ -1,0 +1,87 @@
+--- ./src/Game.c.orig	2005-03-05 09:20:04.000000000 -0700
++++ ./src/Game.c	2013-11-20 12:30:00.000000000 -0700
+@@ -6,21 +6,14 @@ Game game;
+ 
+ // path_sprintf should not be used by other .c files, as it does not fit for them.
+ static void
+-path_sprintf(char *path, char *formatted_name, int version)
++path_sprintf(char *path, const char *name, int version)
+ {
+-
+-  int len;
+-
+-  printf("path_sprintf (%p, %s, %d)\n", path, formatted_name, version);
+-
+-  strcpy(path, getSaveGameDir());
+-
+-  len = strlen(path);
+-
+   if(1 == version) {
+-    sprintf(path + len, formatted_name);
++    printf("path_sprintf (%p, %s.dat, %d)\n", path, name, version);
++    sprintf(path, "%s%s.dat", getSaveGameDir(), name);
+   } else {
+-    sprintf(path + len, formatted_name, version);
++    printf("path_sprintf (%p, %s%d.dat, %d)\n", path, name, version, version);
++    sprintf(path, "%s%s%d.dat", getSaveGameDir(), name, version);
+   }
+ 
+ }
+@@ -30,14 +23,14 @@ deleteSavedGame()
+ {
+   char path[PATH_SIZE];
+   // version 2
+-  path_sprintf(path, "save%d.dat", GAME_VERSION);
++  path_sprintf(path, "save", GAME_VERSION);
+   remove(path);
+-  path_sprintf(path, "savedmap%d.dat", GAME_VERSION);
++  path_sprintf(path, "savedmap", GAME_VERSION);
+   remove(path);
+   // version 1
+-  path_sprintf(path, "save.dat", 1);
++  path_sprintf(path, "save", 1);
+   remove(path);
+-  path_sprintf(path, "savedmap.dat", 1);
++  path_sprintf(path, "savedmap", 1);
+   remove(path);
+ }
+ 
+@@ -51,7 +44,7 @@ saveGame()
+ 
+   mkshuae();
+ 
+-  path_sprintf(path, "save%d.dat", GAME_VERSION);
++  path_sprintf(path, "save", GAME_VERSION);
+ 
+   if(!(fp = fopen(path, "wb"))) {
+     err = strerror(errno);
+@@ -79,7 +72,7 @@ saveGame()
+   SDL_RWclose(rwop);
+ 
+   // save the map
+-  path_sprintf(path, "savedmap%d.dat", GAME_VERSION);
++  path_sprintf(path, "savedmap", GAME_VERSION);
+   saveMapPath(path);
+ }
+ 
+@@ -96,7 +89,7 @@ loadGame()
+   version = (int) GAME_VERSION;
+ 
+   // load the map
+-  path_sprintf(path, "savedmap%d.dat", GAME_VERSION);
++  path_sprintf(path, "savedmap", GAME_VERSION);
+   if(!loadMapPath(path, 0)) {
+     // if can't find saved map load static map
+     fprintf(stderr,
+@@ -112,9 +105,9 @@ loadGame()
+   // try to find a saved game of any version
+   while(version > 0) {
+     if(version > 1) {
+-      path_sprintf(path, "save%d.dat", version);
++      path_sprintf(path, "save", version);
+     } else {                    // By Pedro: version==1
+-      path_sprintf(path, "save.dat", version);
++      path_sprintf(path, "save", version);
+     }
+     fprintf(stderr, "Trying to load saved game: %s\n", path);
+     fflush(stderr);

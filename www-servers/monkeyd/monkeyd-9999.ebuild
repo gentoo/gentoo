@@ -1,18 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs multilib
+inherit epatch flag-o-matic toolchain-funcs user multilib
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
 MY_P="${PN/d}-${PV}"
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/monkey/monkey.git"
-	inherit git-2
-	KEYWORDS=""
+	inherit git-r3
 else
 	SRC_URI="http://monkey-project.com/releases/${PV:0:3}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
@@ -46,6 +44,11 @@ S="${WORKDIR}/${MY_P}"
 
 WEBROOT="/var/www/localhost"
 
+pkg_preinst() {
+	enewgroup monkeyd
+	enewuser monkeyd -1 -1 /var/tmp/monkeyd monkeyd
+}
+
 pkg_setup() {
 	if use debug; then
 		ewarn
@@ -59,6 +62,7 @@ pkg_setup() {
 src_prepare() {
 	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
+	epatch "${FILESDIR}"/${PN}-1.6.9-fix-pidfile.patch
 	epatch "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
 }
 
@@ -106,13 +110,13 @@ src_configure() {
 	./configure \
 		--pthread-tls \
 		--prefix=/usr \
+		--default-user=monkeyd \
 		--sbindir=/usr/sbin \
 		--webroot=${WEBROOT}/htdocs \
-		--logdir=/var/log/${PN} \
+		--logdir=/var/log/monkeyd \
 		--mandir=/usr/share/man \
 		--libdir=/usr/$(get_libdir) \
-		--pidfile=/run/monkey.pid \
-		--sysconfdir=/etc/${PN} \
+		--sysconfdir=/etc/monkeyd \
 		${myconf} \
 		|| die
 }
@@ -133,9 +137,15 @@ src_install() {
 		"${D}"/usr/share/doc/"${PF}"/htdocs.dist || die
 
 	keepdir \
+		/var/tmp/monkeyd \
 		/var/log/monkeyd \
 		${WEBROOT}/htdocs
 
 	# This needs to be created at runtime
 	rm -rf "${D}"/run
+}
+
+pkg_postinst() {
+	chown monkeyd:monkeyd /var/{log,tmp}/monkeyd
+	chmod 770 /var/{log,tmp}/monkeyd
 }

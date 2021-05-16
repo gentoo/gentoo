@@ -1,0 +1,115 @@
+#!/sbin/openrc-run
+
+# make sure /etc/conf.d/ceph gets loaded for ceph-mon etc
+_CONFD_FILE="${RC_SERVICE%/*}/../conf.d/${RC_SVCNAME%-*}"
+if [ -r "${_CONFD_FILE}" ]; then
+	. "${_CONFD_FILE}" || exit 1
+fi
+
+: "${ceph_conf:=/etc/ceph/ceph.conf}"
+daemon_type="${RC_SVCNAME#ceph-}"
+daemon_type="${daemon_type%%.*}"
+daemon_id="${RC_SVCNAME#ceph-*.}"
+daemon_id="${daemon_id:-0}"
+: "${rundir:=/run/ceph}"
+: "${user:=ceph}"
+: "${group:=ceph}"
+: "${rc_ulimit:=-n 1048576 -u 1048576}"
+
+pidfile="${rundir}/supervisor-${daemon_type}.${daemon_id}.pid"
+daemon_pidfile="${rundir}/${daemon_type}.${daemon_id}.pid"
+
+command="/usr/bin/${RC_SVCNAME%%.*}"
+command_args="-i ${daemon_id} --pid-file ${daemon_pidfile} -c ${ceph_conf}"
+extra_commands="${extra_commands} reload"
+command_args_foreground="--foreground"
+
+retry="${CEPH_TERMTIMEOUT:-TERM/120/KILL/5}"
+start_stop_daemon_args="--user ${user} --group ${group}"
+supervise_daemon_args="--user ${user} --group ${group}"
+
+: "${supervisor:=supervise-daemon}"
+: "${stdout:=/var/log/ceph/ceph}"
+: "${stderr:=/var/log/ceph/ceph}"
+: "${respawn_delay:=10}"
+: "${respawn_max:=5}"
+: "${respawn_period:=1800}"
+
+: "${osd_respawn_delay:=15}"
+: "{osd_respawn_max:=10}"
+
+: "{radosgw_respawn_max:=5}"
+: "${radosgw_respawn_period:=30}"
+
+depend() {
+	use dns logger
+	after net ntpd ntp-client chronyd
+	before netmount
+}
+
+is_type_valid() {
+	case ${daemon_type} in
+		mon|mds|osd|mgr|radosgw) return 0;;
+		*) return 1;;
+	esac
+}
+
+start_pre() {
+	local log_dir
+	export CEPH_CONF="${ceph_conf}"
+
+	checkpath -d -q -o "${user}:${group}" "${rundir}"
+
+	if ! is_type_valid ;then
+		eerror "Please give valid Ceph Server Type: mds, mon, osd"
+		return 1
+
+	elif pgrep -f "[c]eph-${daemon_type} -i ${daemon_id} "; then
+		eerror "${daemon_type}.${daemon_id} is still running, refusing to start"
+		return 1
+	fi
+
+	if [ -n "${bluestore_osd_fsid}" ]; then
+		einfo "Mounting Bluestore"
+		ceph-volume lvm activate "${daemon_id}" "${bluestore_osd_fsid}" --no-systemd
+	fi
+
+	if [ "${daemon_type}" = radosgw ] && [ "${RADOSGW_WANT_NAME_PARAM}" = y ]; then
+		command_args="${command_args} --name client.${daemon_id}"
+	fi
+
+	local arg_name arg_val repl_arg_name
+	for arg_name in stdout stderr respawn_delay respawn_max respawn_period; do
+		eval arg_val="\${${daemon_type}_${arg_name}}"
+
+		if [ -z "${arg_val}" ]; then
+			eval arg_val="\${${arg_name}}"
+		else
+			eval "${arg_name}=\"${arg_val}\""
+		fi
+
+		if [ "${arg_name}" = "stderr" ] || [ "${arg_name}" = "stdout" ]; then
+			local log_file log_postfix
+			log_postfix=".${daemon_id}-${arg_name}.log"
+			log_file="${arg_val}"
+
+			if [ "${log_file}" != /dev/null ]; then
+				log_file="${log_file}${log_postfix}"
+
+				log_dir="$(dirname "${log_file}")"
+				checkpath -m 0755 -o "${user}:${group}" -d "${log_dir}"
+			fi
+
+			repl_arg_name="$(printf -- "%s\n" "${arg_name}" | tr _ -)"
+			supervise_daemon_args="${supervise_daemon_args} --${repl_arg_name}=${log_file}"
+		fi
+	done
+}
+
+reload() {
+	ebegin "Reloading Ceph ${daemon_type}.${daemon_id}"
+	start-stop-daemon --signal 1 "${start_stop_daemon_args}"
+	eend ${?}
+}
+
+# vim:ft=gentoo-init-d:ts=4:sts=4:sw=4:noet:

@@ -1,5 +1,5 @@
---- mp32ogg.orig	2005-01-01 15:32:32.138906448 +0000
-+++ mp32ogg	2005-01-01 15:52:33.061338488 +0000
+--- a/mp32ogg
++++ b/mp32ogg
 @@ -9,6 +9,8 @@
  # 0.11-gentoo
  #     * Jeremy Huddleston <eradicator@gentoo.org>:

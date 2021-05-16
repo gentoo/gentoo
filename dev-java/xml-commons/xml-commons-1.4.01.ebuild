@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -27,4 +26,4 @@ DEPEND="
 	>=virtual/jdk-1.6
 	source? ( app-arch/zip )"
 
-JAVA_SRC_DIR="org javax"
+JAVA_SRC_DIR=( "org" "javax" )

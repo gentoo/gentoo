@@ -1,0 +1,62 @@
+From d1c1116924ca537c1f061ed5422dd9a5207d989a Mon Sep 17 00:00:00 2001
+From: "Matias N. Goldberg" <dark_sylinc@yahoo.com.ar>
+Date: Mon, 24 Feb 2020 17:23:25 -0300
+Subject: [PATCH] Bugfix: Bone::_getDerivedTransform using uninitialized values
+ causing asserts to trigger Also prefer using Mathlib::LAST_AFFINE_COLUMN in
+ ArrayMatrixAf4x3::store
+
+---
+ .../include/Math/Array/NEON/Single/OgreArrayMatrixAf4x3.h   | 6 +-----
+ .../include/Math/Array/SSE2/Single/OgreArrayMatrixAf4x3.h   | 6 +-----
+ OgreMain/src/Animation/OgreBone.cpp                         | 4 ++--
+ 3 files changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/OgreMain/include/Math/Array/NEON/Single/OgreArrayMatrixAf4x3.h b/OgreMain/include/Math/Array/NEON/Single/OgreArrayMatrixAf4x3.h
+index 137b7cb5b2..2e2468149d 100644
+--- a/OgreMain/include/Math/Array/NEON/Single/OgreArrayMatrixAf4x3.h
++++ b/OgreMain/include/Math/Array/NEON/Single/OgreArrayMatrixAf4x3.h
+@@ -217,11 +217,7 @@ namespace Ogre
+             vst1q_f32( dstPtr, mChunkBase[0] );
+             vst1q_f32( dstPtr + 4, mChunkBase[1] );
+             vst1q_f32( dstPtr + 8, mChunkBase[2] );
+-            dstPtr += 12;
+-            *dstPtr++ = 0;
+-            *dstPtr++ = 0;
+-            *dstPtr++ = 0;
+-            *dstPtr++ = 1;
++            vst1q_f32( dstPtr + 12, MathlibNEON::LAST_AFFINE_COLUMN );
+         }
+ 
+         /// Assumes dst is aligned
+diff --git a/OgreMain/include/Math/Array/SSE2/Single/OgreArrayMatrixAf4x3.h b/OgreMain/include/Math/Array/SSE2/Single/OgreArrayMatrixAf4x3.h
+index 01b75b2730..a96d9a11e0 100644
+--- a/OgreMain/include/Math/Array/SSE2/Single/OgreArrayMatrixAf4x3.h
++++ b/OgreMain/include/Math/Array/SSE2/Single/OgreArrayMatrixAf4x3.h
+@@ -217,11 +217,7 @@ namespace Ogre
+             _mm_store_ps( dstPtr, mChunkBase[0] );
+             _mm_store_ps( dstPtr + 4, mChunkBase[1] );
+             _mm_store_ps( dstPtr + 8, mChunkBase[2] );
+-            dstPtr += 12;
+-            *dstPtr++ = 0;
+-            *dstPtr++ = 0;
+-            *dstPtr++ = 0;
+-            *dstPtr++ = 1;
++            _mm_store_ps( dstPtr + 12, MathlibSSE2::LAST_AFFINE_COLUMN );
+         }
+ 
+         /// Assumes dst is aligned
+diff --git a/OgreMain/src/Animation/OgreBone.cpp b/OgreMain/src/Animation/OgreBone.cpp
+index 588c6cb442..8735ed2a2f 100644
+--- a/OgreMain/src/Animation/OgreBone.cpp
++++ b/OgreMain/src/Animation/OgreBone.cpp
+@@ -257,8 +257,8 @@ namespace Ogre {
+         OGRE_ALIGNED_DECL( Matrix4, localSpaceBone, OGRE_SIMD_ALIGNMENT );
+         OGRE_ALIGNED_DECL( Matrix4, parentNodeTransform, OGRE_SIMD_ALIGNMENT );
+ 
+-        mTransform.mDerivedTransform[mTransform.mIndex].store4x3( &localSpaceBone );
+-        mTransform.mParentNodeTransform[mTransform.mIndex]->store4x3( &parentNodeTransform );
++        mTransform.mDerivedTransform[mTransform.mIndex].store( &localSpaceBone );
++        mTransform.mParentNodeTransform[mTransform.mIndex]->store( &parentNodeTransform );
+ 
+         parentNodeTransform.concatenateAffine( localSpaceBone );
+ 

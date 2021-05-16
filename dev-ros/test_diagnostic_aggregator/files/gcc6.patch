@@ -1,0 +1,13 @@
+Index: test_diagnostic_aggregator/CMakeLists.txt
+===================================================================
+--- test_diagnostic_aggregator.orig/CMakeLists.txt
++++ test_diagnostic_aggregator/CMakeLists.txt
+@@ -9,7 +9,7 @@ catkin_package(DEPENDS diagnostic_aggreg
+                LIBRARIES ${PROJECT_NAME}
+ )
+ 
+-include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
++include_directories(${catkin_INCLUDE_DIRS})
+ include_directories(include)
+ 
+ add_library(test_diagnostic_aggregator

@@ -1,27 +1,28 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
-inherit eutils
+inherit toolchain-funcs
 
-DESCRIPTION="command-line utility for filesystem quotas"
+DESCRIPTION="Command-line utility for filesystem quotas"
 HOMEPAGE="http://quotatool.ekenberg.se/"
 SRC_URI="http://quotatool.ekenberg.se/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="sys-fs/quota"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4.13-ldflags.patch
+PATCHES=( "${FILESDIR}"/${PN}-1.4.13-fix-buildsystem.patch )
+
+src_configure() {
+	tc-export CC
+	default
 }
 
-src_install () {
+src_install() {
 	dodir /usr/sbin /usr/share/man/man8
 	default
 }

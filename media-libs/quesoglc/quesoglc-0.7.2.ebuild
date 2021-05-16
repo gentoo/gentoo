@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils
+inherit ltprune
 
 DESCRIPTION="A free implementation of the OpenGL Character Renderer (GLC)"
 HOMEPAGE="http://quesoglc.sourceforge.net/"

@@ -1,3 +1,0 @@
-Now edit ${VHOST_CGIBINDIR}/drraw.conf
-You may want to edit the CGI executable in ${VHOST_CGIBINDIR}
-to set the path to the config file.

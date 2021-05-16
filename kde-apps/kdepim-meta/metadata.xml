@@ -5,4 +5,9 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="bogofilter">Install <pkg>mail-filter/bogofilter</pkg> for spam filter support in <pkg>kde-apps/kmail</pkg></flag>
+		<flag name="clamav">Install <pkg>app-antivirus/clamav</pkg> for virus detection support in <pkg>kde-apps/kmail</pkg></flag>
+		<flag name="spamassassin">Install <pkg>mail-filter/spamassassin</pkg> for spam filter support in <pkg>kde-apps/kmail</pkg></flag>
+	</use>
 </pkgmetadata>

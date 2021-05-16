@@ -1,0 +1,36 @@
+From ba702b6034444c2e30b0990d06e28bb2dea8ecb7 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 4 Mar 2017 01:36:23 +0200
+Subject: [PATCH] ssl: support gnutls-3.4
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/ssl.cpp | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/ssl.cpp b/src/ssl.cpp
+index 5bf526d..38ef0a7 100644
+--- a/src/ssl.cpp
++++ b/src/ssl.cpp
+@@ -344,9 +344,6 @@ ssize_t SSLStream::readData(void *target, size_t size, char separator, timeout_t
+ #ifdef  CCXX_GNUTLS
+ bool SSLStream::getSession(void)
+ {
+-        const int cert_priority[3] =
+-        {GNUTLS_CRT_X509, GNUTLS_CRT_OPENPGP, 0};
+-
+     if(ssl)
+         return true;
+ 
+@@ -362,7 +359,7 @@ bool SSLStream::getSession(void)
+ 
+     gnutls_set_default_priority(ssl->session);
+     gnutls_certificate_allocate_credentials(&ssl->xcred);
+-    gnutls_certificate_type_set_priority(ssl->session, cert_priority);
++    gnutls_priority_set_direct(ssl->session, "NORMAL:+CTYPE-OPENPGP", NULL);
+     gnutls_credentials_set(ssl->session, GNUTLS_CRD_CERTIFICATE, ssl->xcred);
+     gnutls_transport_set_ptr(ssl->session, (gnutls_transport_ptr)so);
+     if(gnutls_handshake(ssl->session)) {
+-- 
+2.10.2
+

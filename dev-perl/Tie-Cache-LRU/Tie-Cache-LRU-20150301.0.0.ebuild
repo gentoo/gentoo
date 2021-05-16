@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,6 +12,7 @@ DESCRIPTION="A Least-Recently Used cache"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/enum
 	dev-perl/Carp-Assert

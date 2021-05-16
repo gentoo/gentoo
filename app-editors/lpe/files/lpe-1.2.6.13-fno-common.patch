@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/707188
+--- a/src/cfg.c
++++ b/src/cfg.c
+@@ -22,6 +22,7 @@
+ #include <string.h>
+ #endif
+ 
++extern char *LPE_CONFIG_FILE;
+ int cfg_errno;
+ 
+ void
+--- a/src/lpe.c
++++ b/src/lpe.c
+@@ -25,6 +25,7 @@
+ #include "strfuncs.h"
+ #include "exports.h"
+ 
++char *LPE_CONFIG_FILE;
+ /* A flag indicating a desire to quit the editor.  This is set whenever a
+  * command should cause an exit.
+  */
+--- a/src/options.h
++++ b/src/options.h
+@@ -38,6 +38,6 @@
+ /*
+  * Other things that are used in some places...
+  */
+-char *LPE_CONFIG_FILE;
++extern char *LPE_CONFIG_FILE;
+ 
+ #endif /* LPE_OPTIONS_H */

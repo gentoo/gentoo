@@ -1,7 +1,6 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 VARNISHD_PID=${VARNISHD_PID:-/run/${SVCNAME}.pid}
 CONFIGFILES="${CONFIGFILE:-/etc/varnish/default.vcl}"

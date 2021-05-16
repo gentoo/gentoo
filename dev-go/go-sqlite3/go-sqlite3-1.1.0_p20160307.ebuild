@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit golang-build golang-vcs-snapshot
@@ -11,7 +10,7 @@ ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Go sqlite3 driver using database/sql"
-HOMEPAGE="https://${EGO_PN%/*}"
+HOMEPAGE="https://github.com/mattn/go-sqlite3"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="MIT"
 SLOT="0/${PVR}"
@@ -27,9 +26,9 @@ src_install() {
 }
 
 golang_install_pkgs() {
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")
+	insinto $(dirname "$(get_golibdir)/src/${EGO_PN%/*}")
 	rm -rf "${S}"/src/${EGO_PN%/*}/.git*
 	doins -r "${S}"/src/${EGO_PN%/*}
-	insinto $(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
+	insinto $(dirname "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
 	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}{,.a}
 }

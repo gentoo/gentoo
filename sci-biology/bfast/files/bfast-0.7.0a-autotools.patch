@@ -1,0 +1,41 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -8,7 +8,7 @@
+ AC_INIT([bfast],[0.7.0a],[bfast-help@lists.sourceforge.net],[bfast])
+ AC_COPYRIGHT([See LICENSE for copyright information.])
+ AC_CONFIG_AUX_DIR(config)
+-AM_INIT_AUTOMAKE([dist-bzip2 subdir-objects])
++AM_INIT_AUTOMAKE([dist-bzip2 subdir-objects serial-tests])
+ AC_CONFIG_SRCDIR([config.h.in])
+ AC_CONFIG_HEADERS([config.h])
+ 
+@@ -21,10 +21,10 @@
+ 
+ AC_PROG_INSTALL
+ AC_GNU_SOURCE
++AC_SYS_LARGEFILE
+ 
+ # set CFLAGS and CXXFLAGS
+-default_CFLAGS="-Wall -g -O2 -pthread";
+-extended_CFLAGS="";# "-m64 -D_FILE_OFFSET_BITS=64";
++default_CFLAGS="-Wall -pthread"
+ 
+ # Define some variables
+ GITREV="Revision: undefined$";
+@@ -42,7 +42,7 @@
+ 					AC_DEFINE(HAVE_LIBBZ2, 1, [Define to 1 if you have the <bzlib.h> header file.])], 
+ 					AC_MSG_ERROR("could not find the bzlib library.  Please use --disable-bzlib if you wish to disable bzlib support."))])
+ 
+-CFLAGS="${default_CFLAGS} ${extended_CFLAGS}";
++CFLAGS="${CFLAGS} ${default_CFLAGS} ${extended_CFLAGS}";
+ 
+ # Enable large file support; disable with --disable-largefile
+ AC_SYS_LARGEFILE
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,5 +16,4 @@
+ 
+ SUBDIRS = bfast butil scripts tests
+ 
+-docdir = ${datadir}/doc/${PACKAGE}
+ dist_doc_DATA = LICENSE manual/bfast-book.pdf

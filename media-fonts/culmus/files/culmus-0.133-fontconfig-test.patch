@@ -1,0 +1,191 @@
+  Description: Fix incorrect syntax for disjunction in fontconfig .conf file.
+  Author: Benjamin Drung <bdrung@ubuntu.com>
+  Bug-Ubuntu: https://launchpad.net/bugs/1034928
+
+--- a/culmus-0.133/culmus.conf
++++ b/culmus-0.133/culmus.conf
+@@ -8,6 +8,16 @@
+ 	<match target="pattern" >
+ 		<test name="family" >
+ 			<string>Guttman Adii</string>
++		</test>
++		<edit mode="append" binding="same" name="family" >
++			<string>David CLM</string>
++		</edit>
++		<edit mode="assign" binding="same" name="slant" >
++			<const>italic</const>
++		</edit>
++	</match>
++	<match target="pattern" >
++		<test name="family" >
+ 			<string>Guttman Adii-Light</string>
+ 		</test>
+ 		<edit mode="append" binding="same" name="family" >
+@@ -30,6 +40,13 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>Guttman Stam</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Stam Ashkenaz CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman Stam1</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -40,6 +57,13 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>Guttman Hodes</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Hadasim CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Monotype Hadassah</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -50,7 +74,21 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>Aharoni</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Aharoni CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman Aharoni</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Aharoni CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman-Aharoni</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -61,7 +99,21 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>FrankRuehl</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Frank Ruehl CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman Frank</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Frank Ruehl CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman Frnew</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -72,7 +124,21 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>David</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>David CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>David Transparent</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>David CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman David</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -83,8 +149,29 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>Fixed Miriam Transparent</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Miriam Mono CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman Myamfix</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Miriam Mono CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman-CourMir</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Miriam Mono CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Miriam Fixed</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -95,8 +182,29 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>Guttman Miryam</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Miriam CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Levenim MT</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Miriam CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Miriam</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Miriam CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Miriam Transparent</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >
+@@ -107,6 +215,13 @@
+         <match target="pattern" >
+                 <test name="family" >
+                         <string>Guttman Drogolin</string>
++                </test>
++                <edit mode="append" binding="same" name="family" >
++                        <string>Drugulin CLM</string>
++                </edit>
++        </match>
++        <match target="pattern" >
++                <test name="family" >
+                         <string>Guttman Vilna</string>
+                 </test>
+                 <edit mode="append" binding="same" name="family" >

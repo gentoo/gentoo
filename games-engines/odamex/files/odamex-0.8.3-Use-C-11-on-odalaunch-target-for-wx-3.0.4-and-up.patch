@@ -1,0 +1,29 @@
+From 9e3ae8538475e6f15757ce51e214f5cd29f223e7 Mon Sep 17 00:00:00 2001
+From: Michael Wood <mwoodj@huntsvegas.org>
+Date: Tue, 25 Aug 2020 02:34:37 -0500
+Subject: [PATCH] Use C++11 on odalaunch target for wx 3.0.4 and up
+
+This addresses bug #1311. wxWidgets 3.0.4 requires C++11 support.
+---
+ odalaunch/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/odalaunch/CMakeLists.txt b/odalaunch/CMakeLists.txt
+index f68a4d4d..4abbe0d8 100644
+--- a/odalaunch/CMakeLists.txt
++++ b/odalaunch/CMakeLists.txt
+@@ -32,6 +32,11 @@ endif()
+ 
+ # Odalaunch target
+ if(wxWidgets_FOUND)
++  # wxWidgets 3.0.4 requires C++11
++  if(wxWidgets_VERSION_STRING VERSION_GREATER 3.0.3)
++    set(CMAKE_CXX_STANDARD 11)
++  endif()
++
+   add_custom_command(
+     OUTPUT ${XRCRES_HEADER}
+     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/res
+-- 
+2.28.0
+

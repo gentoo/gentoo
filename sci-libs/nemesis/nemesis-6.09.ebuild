@@ -1,46 +1,41 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils multilib
-
-MY_PN="exodus"
-MY_P="${MY_PN}-${PV}"
+MY_P="exodus-${PV}"
+inherit cmake
 
 DESCRIPTION="Enhancement to the EXODUSII finite element database model"
-HOMEPAGE="http://sourceforge.net/projects/exodusii/"
-SRC_URI="mirror://sourceforge/project/${MY_PN}ii/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/certik/exodus"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}/${PN}
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="static-libs test"
+IUSE="static-libs"
 
 DEPEND="
 	sci-libs/exodusii
-	sci-libs/netcdf"
+	sci-libs/netcdf
+"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}"/${MY_P}/${PN}
 
 PATCHES=( "${FILESDIR}"/${P}-multilib.patch )
 
 src_prepare() {
-	find ../exodus -delete || die
-	cmake-utils_src_prepare
+	rm -r ../exodus || die
+	cmake_src_prepare
 }
 
 src_configure() {
-	mycmakeargs=(
-		-DLIB_INSTALL_DIR=$(get_libdir)
-		-DNETCDF_DIR="${EPREFIX}/usr/"
-		-DEXODUS_DIR="${EPREFIX}/usr/"
-		$(cmake-utils_use !static-libs BUILD_SHARED_LIBS)
-		$(cmake-utils_use test BUILD_TESTING)
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 	)
-	cmake-utils_src_configure
+	export NETCDF_DIR="${EPREFIX}/usr/"
+	export EXODUS_DIR="${EPREFIX}/usr/"
+	cmake_src_configure
 }
 
 src_test() {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+The Trilinos Project is an effort to develop algorithms and enabling
+technologies within an object-oriented software framework for the solution
+of large-scale, complex multi-physics engineering and scientific problems.
+</longdescription>
+	<use>
+		<flag name="adolc">Add support for adolc (<pkg>sci-libs/adolc</pkg>)</flag>
+		<flag name="arprec">Add support for arprec (<pkg>sci-libs/arprec</pkg>)</flag>
+		<flag name="boost">Add support for boost (<pkg>dev-libs/boost</pkg>)</flag>
+		<flag name="clp">Add support for clp (<pkg>sci-libs/coinor-clp</pkg>)</flag>
+		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>
+		<flag name="eigen">Add support for eigen (<pkg>dev-cpp/eigen</pkg>)</flag>
+		<flag name="glpk">Add support for glpk (<pkg>sci-mathematics/glpk</pkg>)</flag>
+		<flag name="gtest">Add support for gtest (<pkg>dev-cpp/gtest</pkg>)</flag>
+		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
+		<flag name="hdf5">Add support for hdf5 (<pkg>sci-libs/hdf5</pkg>)</flag>
+		<flag name="hypre">Add support for hypre (<pkg>sci-libs/hypre</pkg>)</flag>
+		<flag name="matio">Add support for matio (<pkg>sci-libs/matio</pkg>)</flag>
+		<flag name="metis">
+Add support for metis (<pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>)
+</flag>
+		<flag name="mkl">Add support for mkl (<pkg>sci-libs/mkl</pkg>)</flag>
+		<flag name="mumps">Add support for mumps (<pkg>sci-libs/mumps</pkg>)</flag>
+		<flag name="netcdf">Add support for netcdf (<pkg>sci-libs/netcdf</pkg>)</flag>
+		<flag name="petsc">Add support for petsc (<pkg>sci-mathematics/petsc</pkg>)</flag>
+		<flag name="qd">Add support for qd (<pkg>sci-libs/qd</pkg>)</flag>
+		<flag name="scalapack">Add support for scalapack (<pkg>sci-libs/scalapack</pkg>)</flag>
+		<flag name="scotch">Add support for scotch (<pkg>sci-libs/scotch</pkg>)</flag>
+		<flag name="sparse">Add support for sparse matrix solvers (<pkg>sci-libs/umfpack</pkg>)</flag>
+		<flag name="superlu">Add support for superlu (<pkg>sci-libs/superlu</pkg>)</flag>
+		<flag name="taucs">Add support for taucs (<pkg>sci-libs/taucs</pkg>)</flag>
+		<flag name="tbb">Add support for threading building blocks library (<pkg>dev-cpp/tbb</pkg>)</flag>
+		<flag name="tvmet">Add support for tvmet (<pkg>dev-libs/tvmet</pkg>)</flag>
+		<flag name="yaml">Add support for yaml (<pkg>dev-cpp/yaml-cpp</pkg>)</flag>
+	</use>
+</pkgmetadata>

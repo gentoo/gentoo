@@ -9,5 +9,7 @@
 		<flag name="orc">Disable some PaX memory protections to allow plugins
 			that use <pkg>dev-lang/orc</pkg> for runtime optimization to be
 			used on hardened PaX systems</flag>
+		<flag name="unwind">Enable <pkg>sys-libs/libunwind</pkg> usage for better
+			backtrace support in leaks tracer module</flag>
 	</use>
 </pkgmetadata>

@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="a simple yet powerful command line cd player"
 HOMEPAGE="http://libcdaudio.sourceforge.net"
@@ -11,7 +10,7 @@ SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ~ppc ppc64 sparc x86"
 
 RDEPEND="
 	>=sys-libs/readline-4.2

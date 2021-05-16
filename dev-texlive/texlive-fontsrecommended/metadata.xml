@@ -5,13 +5,13 @@
 		<email>aballier@gentoo.org</email>
 		<name>Alexis Ballier</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
-<longdescription lang="en">
-Recommended fonts, including the base 35 PostScript fonts,
-Latin Modern, TeX Gyre, and T1 and other encoding support for
-Computer Modern, in outline form.
-</longdescription>
+	<longdescription lang="en">
+		Recommended fonts, including the base 35 PostScript fonts,
+		Latin Modern, TeX Gyre, and T1 and other encoding support for
+		Computer Modern, in outline form.
+	</longdescription>
 </pkgmetadata>

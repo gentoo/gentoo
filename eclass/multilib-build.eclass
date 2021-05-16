@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2013-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: multilib-build.eclass
 # @MAINTAINER:
 # gx86-multilib team <multilib@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
@@ -21,7 +21,7 @@ if [[ ! ${_MULTILIB_BUILD} ]]; then
 
 # EAPI=4 is required for meaningful MULTILIB_USEDEP.
 case ${EAPI:-0} in
-	4|5|6) ;;
+	4|5|6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -45,8 +45,8 @@ _MULTILIB_FLAGS=(
 	abi_mips_n32:n32
 	abi_mips_n64:n64
 	abi_mips_o32:o32
-	abi_ppc_32:ppc,ppc_aix,ppc_macos
-	abi_ppc_64:ppc64
+#	abi_ppc_32:ppc,ppc_aix,ppc_macos
+#	abi_ppc_64:ppc64
 	abi_s390_32:s390
 	abi_s390_64:s390x
 )
@@ -77,6 +77,7 @@ readonly _MULTILIB_FLAGS
 # @CODE
 
 # @ECLASS-VARIABLE: MULTILIB_USEDEP
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The USE-dependency to be used on dependencies (libraries) needing
 # to support multilib as well.
@@ -88,7 +89,7 @@ readonly _MULTILIB_FLAGS
 # @CODE
 
 # @ECLASS-VARIABLE: MULTILIB_ABI_FLAG
-# @DEFAULT_UNSET
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
 # The complete ABI name. Resembles the USE flag name.
 #
@@ -270,8 +271,8 @@ multilib_check_headers() {
 	_multilib_header_cksum() {
 		set -o pipefail
 
-		if [[ -d ${ED}usr/include ]]; then
-			find "${ED}"usr/include -type f \
+		if [[ -d ${ED%/}/usr/include ]]; then
+			find "${ED%/}"/usr/include -type f \
 				-exec cksum {} + | sort -k2
 		fi
 	}
@@ -318,6 +319,7 @@ multilib_copy_sources() {
 }
 
 # @ECLASS-VARIABLE: MULTILIB_WRAPPED_HEADERS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of headers to wrap for multilib support. The listed headers
 # will be moved to a non-standard location and replaced with a file
@@ -340,6 +342,7 @@ multilib_copy_sources() {
 # @CODE
 
 # @ECLASS-VARIABLE: MULTILIB_CHOST_TOOLS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A list of tool executables to preserve for each multilib ABI.
 # The listed executables will be renamed to ${CHOST}-${basename},
@@ -367,8 +370,8 @@ multilib_copy_sources() {
 # MULTILIB_CHOST_TOOLS=(
 #	/usr/bin/foo-config
 # )
-
 # @CODE
+
 # @FUNCTION: multilib_prepare_wrappers
 # @USAGE: [<install-root>]
 # @DESCRIPTION:
@@ -391,7 +394,7 @@ multilib_prepare_wrappers() {
 
 	[[ ${#} -le 1 ]] || die "${FUNCNAME}: too many arguments"
 
-	local root=${1:-${ED}}
+	local root=${1:-${ED%/}}
 	local f
 
 	if [[ ${COMPLETE_MULTILIB} == yes ]]; then
@@ -459,9 +462,9 @@ multilib_prepare_wrappers() {
 
 				# Some ABIs may have install less files than others.
 				if [[ -f ${root}/usr/include${f} ]]; then
-					local wrapper=${ED}/tmp/multilib-include${f}
+					local wrapper=${ED%/}/tmp/multilib-include${f}
 
-					if [[ ! -f ${ED}/tmp/multilib-include${f} ]]; then
+					if [[ ! -f ${ED%/}/tmp/multilib-include${f} ]]; then
 						dodir "/tmp/multilib-include${dir}"
 						# a generic template
 						cat > "${wrapper}" <<_EOF_ || die
@@ -479,30 +482,30 @@ multilib_prepare_wrappers() {
 #elif defined(__i386__) /* plain x86 */
 #	error "abi_x86_32 not supported by the package."
 #elif defined(__mips__)
-#   if(_MIPS_SIM == _ABIN32) /* n32 */
-#       error "abi_mips_n32 not supported by the package."
-#   elif(_MIPS_SIM == _ABI64) /* n64 */
-#       error "abi_mips_n64 not supported by the package."
-#   elif(_MIPS_SIM == _ABIO32) /* o32 */
-#       error "abi_mips_o32 not supported by the package."
-#   endif
+#	if(_MIPS_SIM == _ABIN32) /* n32 */
+#		error "abi_mips_n32 not supported by the package."
+#	elif(_MIPS_SIM == _ABI64) /* n64 */
+#		error "abi_mips_n64 not supported by the package."
+#	elif(_MIPS_SIM == _ABIO32) /* o32 */
+#		error "abi_mips_o32 not supported by the package."
+#	endif
 #elif defined(__sparc__)
 #	if defined(__arch64__)
-#       error "abi_sparc_64 not supported by the package."
+#		error "abi_sparc_64 not supported by the package."
 #	else
-#       error "abi_sparc_32 not supported by the package."
+#		error "abi_sparc_32 not supported by the package."
 #	endif
 #elif defined(__s390__)
 #	if defined(__s390x__)
-#       error "abi_s390_64 not supported by the package."
+#		error "abi_s390_64 not supported by the package."
 #	else
-#       error "abi_s390_32 not supported by the package."
+#		error "abi_s390_32 not supported by the package."
 #	endif
-#elif defined(__powerpc__)
-#	if defined(__powerpc64__)
-#       error "abi_ppc_64 not supported by the package."
+#elif defined(__powerpc__) || defined(__ppc__)
+#	if defined(__powerpc64__) || defined(__ppc64__)
+#		error "abi_ppc_64 not supported by the package."
 #	else
-#       error "abi_ppc_32 not supported by the package."
+#		error "abi_ppc_32 not supported by the package."
 #	endif
 #elif defined(SWIG) /* https://sourceforge.net/p/swig/bugs/799/ */
 #	error "Native ABI not supported by the package."
@@ -519,7 +522,7 @@ _EOF_
 
 					# $CHOST shall be set by multilib_toolchain_setup
 					dodir "/tmp/multilib-include/${CHOST}${dir}"
-					mv "${root}/usr/include${f}" "${ED}/tmp/multilib-include/${CHOST}${dir}/" || die
+					mv "${root}/usr/include${f}" "${ED%/}/tmp/multilib-include/${CHOST}${dir}/" || die
 
 					# Note: match a space afterwards to avoid collision potential.
 					sed -e "/${MULTILIB_ABI_FLAG} /s&error.*&include <${CHOST}${f}>&" \
@@ -559,11 +562,11 @@ multilib_install_wrappers() {
 
 	local root=${1:-${ED}}
 
-	if [[ -d "${ED}"/tmp/multilib-include ]]; then
+	if [[ -d ${ED%/}/tmp/multilib-include ]]; then
 		multibuild_merge_root \
-			"${ED}"/tmp/multilib-include "${root}"/usr/include
+			"${ED%/}"/tmp/multilib-include "${root}"/usr/include
 		# it can fail if something else uses /tmp
-		rmdir "${ED}"/tmp &>/dev/null
+		rmdir "${ED%/}"/tmp &>/dev/null
 	fi
 }
 
@@ -660,7 +663,6 @@ multilib_native_with() {
 # of <false1> (or 'no' if unspecified) and <false2>. Arguments
 # are the same as for usex in the EAPI.
 #
-# Note: in EAPI 4 you need to inherit eutils to use this function.
 multilib_native_usex() {
 	if multilib_is_native_abi; then
 		usex "${@}"

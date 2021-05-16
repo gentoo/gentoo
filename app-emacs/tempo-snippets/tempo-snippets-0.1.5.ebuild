@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Visual insertion of tempo templates"
-HOMEPAGE="http://nschum.de/src/emacs/tempo-snippets/
-	http://www.emacswiki.org/emacs/TempoSnippets"
+HOMEPAGE="https://nschum.de/src/emacs/tempo-snippets/
+	https://www.emacswiki.org/emacs/TempoSnippets"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 
 LICENSE="GPL-2+"

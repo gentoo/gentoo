@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 CMAKE_REMOVE_MODULES="yes"
@@ -17,7 +16,8 @@ SRC_URI="https://github.com/MyGUI/mygui/archive/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug doc +ogre -opengl plugins samples static-libs test tools linguas_ru"
+IUSE="debug doc +ogre -opengl plugins samples static-libs test tools l10n_ru"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="ogre? ( !opengl )
 	opengl? ( !ogre )"
 
@@ -37,17 +37,18 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/mygui-${MY_P}
 STATIC_BUILD=${WORKDIR}/${P}_build_static
 
+PATCHES=(
+	"${FILESDIR}"/${P}-underlinking.patch
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-FHS.patch
+	"${FILESDIR}"/${P}-c++17.patch
+)
+
 pkg_setup() {
 	if use samples && use !ogre ; then
 		ewarn "Samples disabled, because they only work with ogre!"
 		ewarn "Enable ogre USE flag if you want to use samples."
 	fi
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-underlinking.patch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-FHS.patch
 }
 
 src_configure() {
@@ -120,7 +121,7 @@ src_install() {
 	if use doc ; then
 		dohtml -r "${CMAKE_BUILD_DIR}"/Docs/html/*
 
-		if use linguas_ru ; then
+		if use l10n_ru ; then
 			docompress -x /usr/share/doc/${PF}/Papers
 			dodoc -r Docs/Papers
 		fi
@@ -130,14 +131,14 @@ src_install() {
 	fperms o+w /etc/MYGUI
 
 	# test media not needed at runtime
-	rm -rf "${D}"/usr/share/MYGUI/Media/UnitTests
+	rm -rf "${ED%/}"/usr/share/MYGUI/Media/UnitTests || die
 	# wrapper not available for linux, remove related media
-	rm -rf "${D}"/usr/share/MYGUI/Media/Wrapper
+	rm -rf "${ED%/}"/usr/share/MYGUI/Media/Wrapper || die
 }
 
 pkg_postinst() {
-	einfo
+	elog
 	elog "ogre.cfg and Ogre.log are created as"
-	elog "/etc/MYGUI/mygui-ogre.cfg and /etc/MYGUI/mygui-Ogre.log"
-	einfo
+	elog "${EROOT%/}/etc/MYGUI/mygui-ogre.cfg and /etc/MYGUI/mygui-Ogre.log"
+	elog
 }

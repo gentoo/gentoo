@@ -14,5 +14,8 @@
   vectors for the desired k-dimensional eigen-space is computed which is
   numerically orthogonal to working precision. Numerically accurate
   eigenvectors are available on request.
-</longdescription>
+  </longdescription>
+  <upstream>
+    <remote-id type="github">opencollab/arpack-ng</remote-id>
+  </upstream>
 </pkgmetadata>

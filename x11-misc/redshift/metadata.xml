@@ -4,12 +4,11 @@
   <maintainer type="person">
     <email>sping@gentoo.org</email>
   </maintainer>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
+  <maintainer type="person">
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
   </maintainer>
   <use>
-    <flag name="appindicator">Enable usage of <pkg>dev-libs/libappindicator</pkg> to export menu options in to unity and KDE 5</flag>
     <flag name="geoclue">Control dependency on <pkg>app-misc/geoclue</pkg></flag>
   </use>
   <upstream>

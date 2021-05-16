@@ -6,6 +6,7 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
+		<flag name="logger">Build the logger program</flag>
 		<flag name="logrotate">use app-admin/logrotate for rotating logs rather than custom cron scripts</flag>
 	</use>
 </pkgmetadata>

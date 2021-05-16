@@ -1,8 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -10,31 +9,30 @@ MY_PN="WiRouter_KeyRec"
 MY_P="${MY_PN}_${PV}"
 
 DESCRIPTION="Recovery tool for wpa passphrase"
-HOMEPAGE="http://www.salvatorefresta.net"
-SRC_URI="http://tools.salvatorefresta.net/${MY_P}.zip -> ${P}.zip"
+HOMEPAGE="https://www.salvatorefresta.net"
+SRC_URI="https://tools.salvatorefresta.net/${MY_P}.zip -> ${P}.zip"
+S="${WORKDIR}"/${MY_P}
 
-KEYWORDS="amd64 ppc x86"
-IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ppc x86"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
-S=${WORKDIR}/${MY_P}
+src_prepare() {
+	default
 
-src_prepare () {
 	sed -i "s:wirouterkeyrec:${PN}:" src/*.h || die
 }
 
-src_compile () {
+src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	newbin build/wirouterkeyrec ${PN}
 	insinto /etc/${PN}
 	doins config/agpf_config.lst config/teletu_config.lst

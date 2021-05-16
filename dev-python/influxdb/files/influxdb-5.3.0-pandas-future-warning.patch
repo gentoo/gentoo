@@ -1,0 +1,15 @@
+https://github.com/influxdata/influxdb-python/pull/845
+
+diff --git a/influxdb/_dataframe_client.py b/influxdb/_dataframe_client.py
+index 600bc1ec1f47..7f2b4ee2989f 100644
+--- a/influxdb/_dataframe_client.py
++++ b/influxdb/_dataframe_client.py
+@@ -294,7 +294,7 @@ class DataFrameClient(InfluxDBClient):
+              'time': np.int64(ts.value / precision_factor)}
+             for ts, tag, (_, rec) in zip(
+                 dataframe.index,
+-                dataframe[tag_columns].to_dict('record'),
++                dataframe[tag_columns].to_dict('records'),
+                 dataframe[field_columns].iterrows()
+             )
+         ]

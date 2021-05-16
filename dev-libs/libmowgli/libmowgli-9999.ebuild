@@ -1,25 +1,28 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=6
 
-inherit git-2
+inherit git-r3
 
 DESCRIPTION="Useful set of performance and usability-oriented extensions to C"
-HOMEPAGE="http://www.atheme.org/project/mowgli"
-EGIT_REPO_URI="git://github.com/atheme/libmowgli-2.git"
-IUSE="ssl"
+HOMEPAGE="https://github.com/atheme/libmowgli-2"
+EGIT_REPO_URI="https://github.com/atheme/libmowgli-2.git"
 
 LICENSE="BSD-2"
 SLOT="2"
 KEYWORDS=""
-RDEPEND="ssl? ( dev-libs/openssl )"
+IUSE="ssl"
+
+RDEPEND="
+	ssl? (
+		dev-libs/openssl:0=
+	)"
 DEPEND="${RDEPEND}"
-DOCS="AUTHORS README doc/BOOST doc/design-concepts.txt"
+
+DOCS=( AUTHORS README doc/BOOST doc/design-concepts.txt )
 
 src_configure() {
-	    # disabling SSL is "broken" in 2.0.0 so we have to use this hack till 2.0.1
-		use !ssl && myconf="--with-openssl=/dev/null"
-		econf ${myconf}
+	econf \
+		$(use_with ssl openssl)
 }

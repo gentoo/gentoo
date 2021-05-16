@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -9,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -18,310 +17,390 @@
 
 #--- END OF EXAMPLES ---
 
-# Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
-# git useflag requires dev-libs/libgit2 which few arches support
-dev-util/geany-plugins -git
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# Unmask TPM on supported archs.
+sys-apps/systemd -tpm
 
-# Brian Evans <grknight@gentoo.org (14 Sep 2015)
+# Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
+# Unmask the use of 64-bit dev-lisp/clozurecl on 64-bit arches.
+# Only maxima makes a distinction between the 32-bit and 64-bit
+# USE flags.
+sci-mathematics/fricas -clozurecl
+<sci-mathematics/maxima-5.44.0-r5 -clozurecl
+sci-mathematics/maxima -clozurecl64
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
+dev-lang/php -jit
+
+# Jaco Kroon <jaco@uls.co.za> (2021-01-08)
+# blocksruntime (clang -fblocks requirement) for asterisk is available on this
+# architecture.
+net-misc/asterisk -blocks
+
+# Michał Górny <mgorny@gentoo.org> (2020-12-21)
+# Sanitizers supported on this architecture.
+sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
+sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
+sys-libs/compiler-rt-sanitizers -gwp-asan
+sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -profile -xray
+
+# Sam James <sam@gentoo.org> (2020-10-24)
+# asm redc is only available on amd64,
+# ppc64. bug #750974.
+sci-mathematics/gmp-ecm -custom-tune
+
+# Sam James <sam@gentoo.org> (2020-10-05)
+# Guile only supports JIT on some arches
+# (See 9.3.8 in the Guile manual)
+dev-scheme/guile -jit
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
+# dev-util/nvidia-cuda-toolkit is keyworded on amd64
+app-metrics/collectd -collectd_plugins_gpu_nvidia
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
+# Columnstore engine is supported on amd64
+dev-db/mariadb -columnstore
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
+# media-video/pipewire:0/0.3 is available for amd64
+www-client/firefox -screencast
+
+# Sam James <sam@gentoo.org> (2020-07-03)
+# Rust is available here
+# Bug #728558
+media-video/ffmpeg -rav1e
+
+# Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
+# Mask io-uring & zbc pending keywording
+sys-block/fio -io-uring -zbc
+
+# Marek Szuba <marecki@gentoo.org> (2020-06-17)
+# Unmask globally-masked flashrom drivers and tools which do work on amd64
+sys-apps/flashrom -atahpt -atapromise -internal -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv -tools
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-06-08)
+# clisp is keyworded on amd64
+app-text/texlive-core -xindy
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-04-30)
+# sys-cluster/slurm is keyworded on amd64
+app-metrics/collectd -collectd_plugins_slurm
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-04-26)
+# static-pie works on amd64, #719444
+sys-libs/glibc -static-pie
+
+# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
+# media-libs/cudnn is keyworded on amd64
+sci-physics/root -cudnn
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can be disabled on amd64
+mail-client/thunderbird -eme-free
+www-client/firefox -eme-free
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# dev-util/sysprof-capture is keyworded on amd64
+x11-wm/mutter -sysprof
+dev-libs/gjs -sysprof
+dev-libs/glib -sysprof
+gnome-extra/cjs -sysprof
+x11-libs/gtk+ -sysprof
+net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan is available on amd64.
+dev-qt/qt3d -vulkan
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+media-video/pipewire -vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2019-12-10)
+# The JIT feature only works on amd64 and x86.
+app-emulation/aranym -jit
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
+# dev-python/pandas is keyworded for amd64
+sys-block/fio -python -gnuplot
+
+# Craig Andrews <candrews@gentoo.org> (2019-10-08)
+# net-misc/quiche is available on this arch
+net-misc/curl -quiche
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on amd64
+sys-firmware/seabios -debug
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
+# upstream provides docs only for tier-1 arches
+dev-lang/rust-bin -doc
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
+# Early microcode loading is supported on amd64
+sys-kernel/linux-firmware -initramfs
+
+# Lars Wendler <polynomial-c@gentoo.org> (2019-07-26)
+# dev-libs/gumbo is keyworded on amd64
+mail-client/claws-mail -litehtml
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
+# openjfx is keyworded on amd64
+dev-java/openjdk:8 -javafx
+dev-java/openjdk:11 -javafx
+
+# Matt Turner <mattst88@gentoo.org> (2019-06-20)
+# dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
+# build on amd64.
+>=dev-lang/spidermonkey-60 -jit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-09)
+# media-libs/libplacebo is keyworded on amd64
+media-video/vlc -libplacebo
+
+# Denis Lisov <dennis.lissov@gmail.com> (2019-05-09)
+# Overlay can only be built on amd64 and x86
+x11-apps/igt-gpu-tools -overlay
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-03-05)
+# freeipmi is supported on amd64
+app-admin/conserver -freeipmi
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-06)
+# - aesni plugin is supported on amd64
+# - rdrand plugin is supported on amd64
+net-vpn/strongswan -strongswan_plugins_aesni -strongswan_plugins_rdrand
+
+# James Le Cuirot <chewi@gentoo.org> (2018-11-02)
+# Vulkan is only available on amd64 at present.
+media-libs/libsdl2 -vulkan
+
+# Michael Palimaka <kensington@gentoo.org> (2018-10-12)
+# Unmask arch-specific USE flags available on amd64
+net-analyzer/testssl -bundled-openssl -kerberos
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
+# Unmask libheif support where media-libs/libheif is keyworded
+media-gfx/imagemagick -heif
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
+# Dependency sys-cluster/ceph is keyworded for amd64
+net-fs/samba -ceph
+
+# Rick Farina <zerochaos@gentoo.org> (2018-06-27)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+media-video/mpv -vulkan
+
+# Nick Sarnie <sarnex@gentoo.org> (2018-04-29)
+# media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
+app-emulation/wine-staging -vkd3d -vulkan
+app-emulation/wine-vanilla -vkd3d -vulkan
+
+# Richard Yao <ryao@gentoo.org> (2018-04-16)
+# sys-fs/zfs is keyworded on amd64
+sys-cluster/ceph -zfs
+sys-boot/grub -libzfs
+
+# Amy Liffey <amynka@gentoo.org> (2017-09-19)
+# [cuda] is unmasked in this profiles.
+media-libs/opencv -contribxfeatures2d
+
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-22)
+# -imhttp: www-servers/civetweb is keyworded on amd64
+# -mdblookup: dev-libs/libmaxminddb is keyworded on amd64
+app-admin/rsyslog -imhttp -mdblookup
+
+# Alexis Ballier <aballier@gentoo.org> (2017-02-21)
+# spacetime works on amd64
+# https://caml.inria.fr/pub/docs/manual-ocaml/spacetime.html
+dev-lang/ocaml -spacetime
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
+# Assembly optimisations are supported on amd64 for all versions
+dev-libs/libsecp256k1 -asm
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2016-12-31)
+# on behalf of Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-14)
+# Fails to build with newly unmasked ffmpeg-3, so mask this useflag
+# Workaround; leaving a real fix to the maintainers... bug 580630
+media-libs/mlt vdpau
+
+# Ettore Di Giacinto <mudler@gentoo.org> (2016-10-18)
+# Enable gambit and scm only on supported architectures
+>=dev-scheme/slib-3.2.5 -gambit -scm
+
+# Thomas Deutschmann <whissi@gentoo.org> (2016-09-22)
+# Enable MQTT support on supported architectures
+app-metrics/collectd -collectd_plugins_mqtt
+
+# Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
+# Enable numa support on supported architectures
+dev-db/mysql -numa
+dev-db/percona-server -numa
+
+# Brian Evans <grknight@gentoo.org> (2016-08-23)
+# It's only supported on amd64
+dev-db/percona-server -tokudb -tokudb-backup-plugin
+
+# Brian Evans <grknight@gentoo.org> (2016-08-18)
+# Allow jdbc on this arch
+dev-db/mariadb -jdbc
+
+# Andrew Savchenko <bircoph@gentoo.org> (2016-08-11)
+# PGO is fixed on amd64
+>=www-client/firefox-48 -pgo
+
+# James Le Cuirot <chewi@gentoo.org> (2016-07-26)
+# Only available on some architectures.
+dev-java/icedtea -shenandoah
+
+# Mike Gilbert <floppym@gentoo.org> (2016-06-23)
+# This flag only has meaning on amd64
+sys-boot/grub:2 -grub_platforms_xen-32
+
+# Brian Evans <grknight@gentoo.org (2015-09-14)
 # Unmask new USE flags for mariadb on supported arches
 >=dev-db/mariadb-10.1.0 -mroonga -sst-xtrabackup -galera
 
-# Mike Gilbert <floppym@gentoo.org> (05 Sep 2015)
+# Mike Gilbert <floppym@gentoo.org> (2015-09-05)
 # sys-boot/gnu-efi is not supported on all archs.
 sys-apps/systemd -gnuefi
 
-# James Le Cuirot <chewi@gentoo.org> (28 Jul 2015)
-# JavaFX and the browser plugin are included on x64 Linux.
-dev-java/oracle-jdk-bin -javafx -nsplugin
-dev-java/oracle-jre-bin -javafx -nsplugin
-
-# Michael Sterrett <mr_bones_@gentoo.org> (21 Apr 2015)
-# None of the fusionsound deps support multilib currently, maybe later.
-# Hiding the use flag fixes bug #545662 for now.
-media-libs/libsdl2 fusionsound
-
-# Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
+# Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
-# pidgin-opensteamworks is only available for amd64, ppc32 and x86
-net-im/telepathy-connection-managers -steam
-
-# Andrey Grozin <grozin@gentoo.org> (23 Feb 2015)
-# Does not compile with this flag
-=dev-lisp/ecls-15.2.21 cpu_flags_x86_sse
-
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Unmask skype support for unstable keywords
-net-im/bitlbee -skype
-
-# Mike Frysinger <vapier@gentoo.org> (04 Aug 2014)
-# Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
-
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Apr 2014)
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2014-04-24)
 # It's only supported on amd64
 dev-db/mariadb -tokudb
 
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa -openmax
-
-# Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
+# Samuli Suominen <ssuominen@gentoo.org> (2014-02-16)
 # Still considered experimental by upstream:
-# http://sourceforge.net/p/mikmod/bugs/16/#17ea
-media-libs/libmikmod sse2
+# https://sourceforge.net/p/mikmod/bugs/16/#17ea
 media-libs/libmikmod cpu_flags_x86_sse2
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (4 Jan 2014)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # While globally masked, the needed amd64 keywords are already present
-dev-vcs/git -mediawiki
+dev-vcs/git -mediawiki -mediawiki-experimental
 
-# Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
+# Sergey Popov <pinkbyte@gentoo.org> (2013-12-27)
 # Boost.Context can be built on amd64
 dev-libs/boost	-context
 
-# Michał Górny <mgorny@gentoo.org> (15 Dec 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-12-15)
 # mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
 # only.
 games-emulation/mupen64plus-core new-dynarec
 
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. (masked in base)
->=media-plugins/audacious-plugins-3.4 -sid
-
-# Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
+# Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for amd64 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
-app-editors/vim -luajit -racket
-app-editors/gvim -luajit -racket
+app-editors/vim -racket
+app-editors/gvim -racket
 
-# Kacper Kowalik <xarthisius@gentoo.org> (09 Aug 2013)
+# Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on amd64
-sys-apps/hwloc -cuda -gl -opencl
+sys-apps/hwloc -gl -nvml
 
-# Michał Górny <mgorny@gentoo.org> (22 Jul 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-07-22)
 # Meaningless on amd64 (it controls the 32-bit x86 JIT).
-dev-python/pypy cpu_flags_x86_sse2
-dev-python/pypy-bin cpu_flags_x86_sse2
-dev-python/pypy3 cpu_flags_x86_sse2
-dev-python/pypy3-bin cpu_flags_x86_sse2
+dev-python/pypy-exe cpu_flags_x86_sse2
+dev-python/pypy3-exe cpu_flags_x86_sse2
 
-# Jeroen Roovers <jer@gentoo.org> (11 Jun 2013)
-# The debug version of www-plugins/adobe-flash is 32-bit only
-www-plugins/adobe-flash debug
-
-# Justin Lecher <jlec@gentoo.org> (21 Feb 2013)
-# cuda only works on x86 and amd64
-sci-libs/cholmod -cuda
-sci-libs/flann -cuda
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# sys-apps/biosdevname, systemd work on this arch (masked in base)
-sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (30 Dec 2012)
-# chromium, mono work on this arch (masked in base)
-gnome-extra/zeitgeist-datasources -chromium -tomboy
-
-# Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
-# cuda works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -cuda -mkl
-
-# Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
 
-# Johannes Huber <johu@gentoo.org> (15 Sep 2012)
-# Masked for stabilization as the use flag pulls a dep tree of hell.
-media-libs/phonon zeitgeist
-
-# Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
-# dependency keyworded here, masked in base
-media-libs/freetype -infinality
-
-# James Le Cuirot <chewi@gentoo.org> (20 May 2015)
-# Masked in base like the above.
-dev-java/icedtea -infinality
-
-# Rick Farina <zerochaos@gentoo.org> (05 July 2012)
-# masked in base, unmask x86/amd64 only
-app-crypt/johntheripper -cuda
-
-# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
-# sys-fs/zfs is not available everywhere.
-sys-boot/grub -libzfs
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
 
-# Michał Górny <mgorny@gentoo.org> (11 Apr 2012)
-# JIT compilation in libzpaq generates code for x86/amd64.
-app-arch/libzpaq -jit
+# Michał Górny <mgorny@gentoo.org> (2012-04-11)
+# JIT compilation in zpaq generates code for x86/amd64.
+app-arch/zpaq -jit
 
-# Arun Raghavan <ford_prefect@gentoo.org> (29 Mar 2012)
+# Arun Raghavan <ford_prefect@gentoo.org> (2012-03-29)
 # webrtc-audio-processing is only supported on x86/amd64. Possibly arm can be
 # added.
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
-# Mask xen USE flag by default, unmask on x86/amd64 where it is supported.
-media-sound/pulseaudio -webrtc-aec -xen
+media-sound/pulseaudio -webrtc-aec
 
-# Bernard Cafarelli <voyageur@gentoo.org> (27 Feb 2012)
+# Bernard Cafarelli <voyageur@gentoo.org> (2012-02-27)
 # Masked in base profile, supported on this arch
 gnustep-base/gnustep-make -libobjc2
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked in base profile and unmasked here (bug #396313).
-net-libs/webkit-gtk -jit
-www-client/epiphany -jit
-www-client/midori -jit
-
-# Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
+# Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
 # so the flag is masked in the base profile and unmasked here.
 dev-qt/qtdeclarative -jit
 dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
-# Samuli Suominen <ssuominen@gentoo.org> (16 Oct 2011)
-# Masked in base, unmask per arch
-gnome-base/gvfs -bluray
-
-# Nirbheek Chauhan <nirbheek@gentoo.org> (17 Sep 2011)
-# Systemtap is masked in base/package.use.mask
-# Temporarily unmask in amd64/x86, bug 384647
-dev-libs/glib -systemtap
-
-# Kacper Kowalik <xarthisius@gentoo.org> (29 Jul 2011)
-# mask assembler as it currently doesn't work
-dev-lang/path64 assembler
-
-# Robin H. Johnson <robbat2@gentoo.org> (10 Jul 2011)
-# PPS should work on all arches, but only keyworded on amd64/x86
+# Robin H. Johnson <robbat2@gentoo.org> (2011-07-10), updated 2019-12-06
+# PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
-# Use mask infiniband for stable corosync and glusterfs
-=sys-cluster/glusterfs-3.1.2 infiniband
-=sys-cluster/corosync-1.3.0 infiniband
-
-# Luca Barbato <lu_zero@gentoo.org> (28 Feb 2011)
-# Masked in base, unmask for amd64/x86
-media-video/mplayer2 -bluray
-
-# Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
+# Tim Harder <radhermit@gentoo.org> (2011-02-13)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
 
-# doomsday doesn't work on amd64 so mask off things that pull it in.
-games-fps/doom-data doomsday
-
-# Markos Chandras <hwoarang@gentoo.org> (19 Jan 2011)
-# Masking md5sum on mail-mta/ssmtp since it is broken on
-# earlier versions
-mail-mta/ssmtp md5sum
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2010-11-28)
 # sys-devel/llvm is keyworded on amd64
 media-libs/mesa -llvm
 
-# Nirbheek Chauhna <nirbheek@gentoo.org> (26 Jun 2010)
-# Inter-process communication doesn't work on anything except x86/amd64/arm
-# due to lack of atomic ops, bug 325185
-www-client/firefox -ipc
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (4 Apr 2010)
-# x86 platforms works
-sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
-# Mounir Lamouri <volkmar@gentoo.org> (07 Nov 2009)
-# Masked in base, unmak for amd64/x86. Bug 267264
-media-gfx/k3d -cuda
-
-# Jean-Noël Rivasseau <elvanor@gentoo.org> (23 Sep 2009)
+# Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
 
-# Bernard Cafarelli <voyageur@gentoo.org> (20 Mar 2009)
+# Bernard Cafarelli <voyageur@gentoo.org> (2009-03-20)
 # Depends on packages not yet keyworded for amd64, cf bug #22042
 app-backup/backup-manager s3
 
-# Jeremy Olexa <darkside@gentoo.org> (07 Feb 2009)
+# Jeremy Olexa <darkside@gentoo.org> (2009-02-07)
 # USE=mmx on imlib2 causes issues with other apps. See bug 218382 (comments
 # 11-12)
-media-libs/imlib2 mmx
 media-libs/imlib2 cpu_flags_x86_mmx
 
-# Jeremy Olexa <darkside@gentoo.org> (27 Dec 2008)
+# Jeremy Olexa <darkside@gentoo.org> (2008-12-27)
 # Mask static USE flag because it just doesn't work on amd64. See bug 236591
 >=app-arch/p7zip-4.58 static
 
-# Jeremy Olexa <darkside@gentoo.org> (24 Dec 2008)
+# Jeremy Olexa <darkside@gentoo.org> (2008-12-24)
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
-media-video/mplayer -cpudetection -custom-cpuopts -bindist
-
-# Tomas Chvatal <scarabeus@gentoo.org> (31 Jan 2009)
-# masked in base, unmask for x86/amd64
-sci-misc/boinc -cuda
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
+media-video/mplayer -cpudetection
 
 # assembler-section
 
-# Oct 23th 2006; blubb@gentoo.org
-# the asm is 64bit save, but it doesn't compile anyway
-games-emulation/visualboyadvance mmx
-games-emulation/visualboyadvance cpu_flags_x86_mmx
-
-# Oct 23th 2006; blubb@gentoo.org
+# blubb@gentoo.org (2006-10-23)
 # upstream forces sse2 for amd64; mmx flag does nothing
-app-crypt/johntheripper mmx
 app-crypt/johntheripper cpu_flags_x86_mmx
 
-# Oct 23th 2006; blubb@gentoo.org
+# blubb@gentoo.org (2006-10-23)
 # x86 asm only:
-games-emulation/xmess mmx
-media-gfx/inkscape mmx
-media-libs/allegro mmx sse
-media-libs/libfame mmx
-media-libs/sdl-gfx mmx
-media-libs/smpeg mmx
-net-misc/asterisk mmx
-x11-terms/eterm mmx
-media-tv/xawtv mmx
-games-emulation/xmess cpu_flags_x86_mmx
-media-gfx/inkscape cpu_flags_x86_mmx
-media-libs/allegro cpu_flags_x86_mmx cpu_flags_x86_sse
 media-libs/libfame cpu_flags_x86_mmx
 media-libs/sdl-gfx cpu_flags_x86_mmx
 media-libs/smpeg cpu_flags_x86_mmx
-net-misc/asterisk cpu_flags_x86_mmx
-x11-terms/eterm cpu_flags_x86_mmx
-media-tv/xawtv cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
-media-sound/mpg123 mmx 3dnow 3dnowext
 media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 
-# 8 May 2007: Alistair Bush <ali_bush@gentoo.org>
+# Alistair Bush <ali_bush@gentoo.org> (2007-05-08)
 # Mask doc flag for fop as nearly impossible to
 # run javadoc target.  see #177585
 >=dev-java/fop-0.93 doc
 
-# 8 Aug 2008: Alexis Ballier <aballier@gentoo.org>
+# Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # x86 asm only, it won't be built on amd64 if mmx useflag is enabled but that
 # saves people from needlessly installing nasm
 # Refs bug #93279
-media-sound/lame mmx
 media-sound/lame cpu_flags_x86_mmx
-
-# Robert Buchholz <rbu@gentoo.org> (16 Aug 2008)
-# masked in base, unmask for x86/amd64
-dev-python/kaa-base -tls

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+	<longdescription>
+		slop (Select Operation) is an application that queries for a selection
+		from the user and prints the region to stdout. It grabs the mouse and
+		turns it into a crosshair, lets the user click and drag to make a
+		selection (or click on a window) while drawing a pretty box around it,
+		then finally prints the selection's dimensions to stdout.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">naelstrof/slop</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,5 +1,5 @@
---- a/devil-1.7.8/test/Makefile.am
-+++ b/devil-1.7.8/test/Makefile.am
+--- a/test/Makefile.am
++++ b/test/Makefile.am
 @@ -12,5 +12,6 @@ else
  testil_LDADD += ../lib/libIL.la
  endif

@@ -1,0 +1,35 @@
+From 94d25e4845e46b27d0e425dc923480abc81a95ae Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sun, 25 Oct 2020 16:21:56 -0700
+Subject: [PATCH] respect libdir
+
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 52c674a..ffcd666 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,6 +30,7 @@ OD ?= od
+ OPT ?= -O3
+ 
+ PREFIX ?= /usr/local
++LIBDIR ?= lib
+ 
+ CXXFLAGS += -Wall -Wextra -Woverloaded-virtual -pedantic -std=c++0x -fPIC
+ CXXFLAGS += -Iinclude -Ithird_party/md5 -Ithird_party/json
+@@ -128,8 +129,8 @@ default: jsonnet jsonnetfmt
+ install: bins libs
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	cp $(BINS) $(DESTDIR)$(PREFIX)/bin/
+-	mkdir -p $(DESTDIR)$(PREFIX)/lib
+-	cp $(LIBS) $(DESTDIR)$(PREFIX)/lib/
++	mkdir -p $(DESTDIR)$(PREFIX)/$(LIBDIR)
++	cp $(LIBS) $(DESTDIR)$(PREFIX)/$(LIBDIR)/
+ 	mkdir -p $(DESTDIR)$(PREFIX)/include
+ 	cp $(INCS) $(DESTDIR)$(PREFIX)/include/
+ 
+-- 
+2.29.1
+

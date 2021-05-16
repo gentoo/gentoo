@@ -1,5 +1,5 @@
---- xlockmore-5.46/configure.ac
-+++ xlockmore-5.46/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -1912,7 +1912,7 @@
  AC_DEFUN([AC_PATH_FREETYPE_DIRECT],
  [test -z "$freetype_direct_test_library" && freetype_direct_test_library=freetype

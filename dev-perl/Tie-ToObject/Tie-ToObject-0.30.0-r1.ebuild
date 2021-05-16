@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,8 +12,9 @@ DESCRIPTION="Tie to an existing object"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
-DEPEND="test? ( || ( >=virtual/perl-Test-Simple-1.1.10 dev-perl/Test-use-ok ) )"
+DEPEND="test? ( >=virtual/perl-Test-Simple-1.1.10 )"
 
 SRC_TEST=do

@@ -6,7 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">libgxim</remote-id>
 		<remote-id type="bitbucket">tagoh/libgxim</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>qt@gentoo.org</email>
-    <name>Gentoo Qt Project</name>
-  </maintainer>
-  <use>
-    <flag name="fitz">
-      Use experimental fitz rendering, provided by <pkg>app-text/mupdf</pkg>,
-      instead of poppler
-    </flag>
-    <flag name="synctex">Add support for searching TeX sources</flag>
-  </use>
-  <upstream>
-    <remote-id type="launchpad">qpdfview</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="fitz">
+			Use experimental fitz rendering, provided by <pkg>app-text/mupdf</pkg>,
+			instead of poppler
+		</flag>
+		<flag name="synctex">Add support for searching TeX sources</flag>
+	</use>
+	<upstream>
+		<remote-id type="launchpad">qpdfview</remote-id>
+	</upstream>
 </pkgmetadata>

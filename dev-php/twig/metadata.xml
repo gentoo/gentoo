@@ -9,4 +9,7 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
-  </pkgmetadata>
+  <upstream>
+    <remote-id type="github">twigphp/Twig</remote-id>
+  </upstream>
+</pkgmetadata>

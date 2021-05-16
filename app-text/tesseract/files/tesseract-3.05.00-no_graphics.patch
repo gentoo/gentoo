@@ -1,0 +1,74 @@
+From 4141de7f8ddb5ac3c39fd9c1fc77ed911c768c3d Mon Sep 17 00:00:00 2001
+From: Bernard Cafarelli <bernard.cafarelli@gmail.com>
+Date: Fri, 27 Jan 2017 12:02:54 +0100
+Subject: [PATCH] Provide SVSync::StartThread() with GRAPHICS_DISABLED
+
+---
+ viewer/svutil.cpp | 44 +++++++++++++++++++++-----------------------
+ 1 file changed, 21 insertions(+), 23 deletions(-)
+
+diff --git a/viewer/svutil.cpp b/viewer/svutil.cpp
+index 34a2286..84a4b94 100644
+--- a/viewer/svutil.cpp
++++ b/viewer/svutil.cpp
+@@ -83,6 +83,27 @@ void SVMutex::Unlock() {
+ #endif
+ }
+ 
++// Create new thread.
++void SVSync::StartThread(void *(*func)(void*), void* arg) {
++#ifdef _WIN32
++  LPTHREAD_START_ROUTINE f = (LPTHREAD_START_ROUTINE) func;
++  DWORD threadid;
++  HANDLE newthread = CreateThread(
++  NULL,          // default security attributes
++  0,             // use default stack size
++  f,             // thread function
++  arg,           // argument to thread function
++  0,             // use default creation flags
++  &threadid);    // returns the thread identifier
++#else
++  pthread_t helper;
++  pthread_attr_t attr;
++  pthread_attr_init(&attr);
++  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
++  pthread_create(&helper, &attr, func, arg);
++#endif
++}
++
+ #ifndef GRAPHICS_DISABLED
+ 
+ const int kMaxMsgSize = 4096;
+@@ -186,29 +207,6 @@ void SVSemaphore::Wait() {
+ #endif
+ }
+ 
+-
+-// Create new thread.
+-
+-void SVSync::StartThread(void *(*func)(void*), void* arg) {
+-#ifdef _WIN32
+-  LPTHREAD_START_ROUTINE f = (LPTHREAD_START_ROUTINE) func;
+-  DWORD threadid;
+-  HANDLE newthread = CreateThread(
+-  NULL,          // default security attributes
+-  0,             // use default stack size
+-  f,             // thread function
+-  arg,           // argument to thread function
+-  0,             // use default creation flags
+-  &threadid);    // returns the thread identifier
+-#else
+-  pthread_t helper;
+-  pthread_attr_t attr;
+-  pthread_attr_init(&attr);
+-  pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+-  pthread_create(&helper, &attr, func, arg);
+-#endif
+-}
+-
+ // Place a message in the message buffer (and flush it).
+ void SVNetwork::Send(const char* msg) {
+   mutex_send_->Lock();
+-- 
+2.12.0
+

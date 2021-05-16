@@ -1,0 +1,74 @@
+From 692e6f75056d93f0e9a024e3638259d5ba0fe398 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 21 Aug 2014 17:55:27 +0200
+Subject: [PATCH 4/5] clean up calling maildrop
+
+-add const for arguments
+-do not prepend "| " to call for preline, run_command() will then just skip
+ over this anyway
+-put the buffer for the maildrop command in the most local scope
+---
+ vdelivermail.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/vpopmail-5.4.33/vdelivermail.c b/vpopmail-5.4.33/vdelivermail.c
+index be83a2a..2ad2e12 100644
+--- a/vdelivermail.c
++++ b/vdelivermail.c
+@@ -94,7 +94,7 @@ ssize_t get_message_size();
+ void deliver_mail(char *address, char *quota);
+ int check_forward_deliver(char *dir);
+ int is_looping( char *address );
+-void run_command(char *prog);
++static void run_command(const char *prog);
+ void checkuser(void);
+ void usernotfound(void);
+ int is_loop_match( const char *dt, const char *address);
+@@ -360,9 +360,6 @@ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t
+   long unsigned pid;
+   int  pim[2];
+ #endif
+-#ifdef MAILDROP
+-  char maildrop_command[256];
+-#endif
+ 
+     /* write the Return-Path: and Delivered-To: headers */
+     if (headerlen > 0) {
+@@ -409,7 +406,8 @@ static int fdcopy (int write_fd, int read_fd, const char *extra_headers, size_t
+ #ifdef MAILDROP
+       if ( limits.disable_maildrop==0 && vpw!=NULL &&
+            !(vpw->pw_gid & NO_MAILDROP) ) {
+-	sprintf(maildrop_command, "| preline %s", MAILDROP_PROG);
++	char maildrop_command[256];
++	sprintf(maildrop_command, "preline %s", MAILDROP_PROG);
+ 	run_command(maildrop_command);
+ 	DeleteMail = 1;
+ 	return(0);
+@@ -896,13 +894,13 @@ void (*f)();
+ /* open a pipe to a command 
+  * return the pid or -1 if error
+  */
+-void run_command(char *prog)
++void run_command(const char *prog)
+ {
+ 
+ #define MAX_ENV_BUFF 100
+ 
+  int child;
+- char *(args[4]);
++ const char *(args[4]);
+  int wstat;
+ 
+  while ((*prog == ' ') || (*prog == '|')) ++prog;
+@@ -915,7 +913,7 @@ void run_command(char *prog)
+    case 0:
+      
+      putenv("SHELL=/bin/sh");
+-     args[0] = "/bin/sh"; args[1] = "-c"; args[2] = prog; args[3] = 0;
++     args[0] = "/bin/sh"; args[1] = "-c"; args[2] = prog; args[3] = NULL;
+      sig_catch(SIGPIPE,SIG_DFL);
+      execv(*args,args);
+      printf("Unable to run /bin/sh: %d.", errno);
+-- 
+1.8.4.5
+

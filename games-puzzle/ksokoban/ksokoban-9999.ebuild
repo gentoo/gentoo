@@ -1,40 +1,30 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-if [[ ${PV} == "9999" ]]; then
-	inherit mercurial
-	EHG_REPO_URI="http://hg.code.sf.net/p/ksokoban/code"
-else
-	SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
-fi
+ECM_HANDBOOK="optional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
-inherit cmake-utils
-DESCRIPTION="The japanese warehouse keeper game"
-HOMEPAGE="https://sourceforge.net/projects/ksokoban/"
+DESCRIPTION="The Japanese warehouse keeper game"
+HOMEPAGE="https://invent.kde.org/games/ksokoban"
+
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS=""
 
-DEPEND="kde-base/kdelibs:4"
-RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}"
-
-CMAKE_IN_SOURCE_BUILD="yes"
-
-src_prepare() {
-	sed -i 's/%m//' "data/${PN}.desktop" || die "sed for desktop file failed"
-}
-
-# source lacks install target
-src_install() {
-	dobin ksokoban
-	dodoc AUTHORS NEWS TODO
-	domenu "data/${PN}.desktop"
-	for i in 16 22 32 48 64 128; do
-		doicon -s "${i}" "data/hi${i}-app-${PN}.png"
-	done
-}
+RDEPEND="
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
+"
+DEPEND="${RDEPEND}
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
+"

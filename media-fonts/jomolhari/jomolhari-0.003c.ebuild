@@ -1,19 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
+
 inherit font
 
-DESCRIPTION="Bhutanese style dbu-can font for Tibetan and Dzongkha text named after Mt Jomolhari"
-HOMEPAGE="http://chris.fynn.googlepages.com/jomolhari"
-SRC_URI="http://download.savannah.nongnu.org/releases/free-tibetan/${PN}/${PN}-alpha${PV:(-2)}.tar.gz"
+DESCRIPTION="Bhutanese style dbu-can font for Tibetan/Dzongkha text named after Mt Jomolhari"
+HOMEPAGE="http://www.library.gov.bt/IT/fonts.html"
+SRC_URI="mirror://nongnu/free-tibetan/${PN}/${PN}-alpha${PV:(-2)}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="OFL"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-S="${WORKDIR}"
-FONT_S="${S}"
 FONT_SUFFIX="ttf"

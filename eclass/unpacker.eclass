@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
@@ -18,7 +17,10 @@
 if [[ -z ${_UNPACKER_ECLASS} ]]; then
 _UNPACKER_ECLASS=1
 
+inherit toolchain-funcs
+
 # @ECLASS-VARIABLE: UNPACKER_BZ2
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress bzip2 files.  Will dynamically pick between
@@ -26,6 +28,7 @@ _UNPACKER_ECLASS=1
 # Note: this is meant for users to set, not ebuilds.
 
 # @ECLASS-VARIABLE: UNPACKER_LZIP
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress lzip files.  Will dynamically pick between
@@ -203,7 +206,7 @@ unpack_makeself() {
 				skip=`grep -a ^offset= "${src}" | awk '{print $3}'`
 				(( skip++ ))
 				;;
-			2.1.4|2.1.5|2.1.6|2.2.0)
+			2.1.4|2.1.5|2.1.6|2.2.0|2.4.0)
 				skip=$(grep -a offset=.*head.*wc "${src}" | awk '{print $3}' | head -n 1)
 				skip=$(head -n ${skip} "${src}" | wc -c)
 				exe="dd"
@@ -219,30 +222,30 @@ unpack_makeself() {
 		debug-print "Detected Makeself version ${ver} ... using ${skip} as offset"
 	fi
 	case ${exe} in
-		tail)	exe="tail -n +${skip} '${src}'";;
-		dd)		exe="dd ibs=${skip} skip=1 if='${src}'";;
+		tail)	exe=( tail -n +${skip} "${src}" );;
+		dd)		exe=( dd ibs=${skip} skip=1 if="${src}" );;
 		*)		die "makeself cant handle exe '${exe}'"
 	esac
 
 	# lets grab the first few bytes of the file to figure out what kind of archive it is
 	local filetype tmpfile="${T}/${FUNCNAME}"
-	eval ${exe} 2>/dev/null | head -c 512 > "${tmpfile}"
+	"${exe[@]}" 2>/dev/null | head -c 512 > "${tmpfile}"
 	filetype=$(file -b "${tmpfile}") || die
 	case ${filetype} in
 		*tar\ archive*)
-			eval ${exe} | tar --no-same-owner -xf -
+			"${exe[@]}" | tar --no-same-owner -xf -
 			;;
 		bzip2*)
-			eval ${exe} | bzip2 -dc | tar --no-same-owner -xf -
+			"${exe[@]}" | bzip2 -dc | tar --no-same-owner -xf -
 			;;
 		gzip*)
-			eval ${exe} | tar --no-same-owner -xzf -
+			"${exe[@]}" | tar --no-same-owner -xzf -
 			;;
 		compress*)
-			eval ${exe} | gunzip | tar --no-same-owner -xf -
+			"${exe[@]}" | gunzip | tar --no-same-owner -xf -
 			;;
 		XZ*)
-			eval ${exe} | unxz | tar --no-same-owner -xf -
+			"${exe[@]}" | unxz | tar --no-same-owner -xf -
 			;;
 		*)
 			eerror "Unknown filetype \"${filetype}\" ?"
@@ -280,7 +283,7 @@ unpack_deb() {
 			done
 		} < "${deb}"
 	else
-		ar x "${deb}"
+		$(tc-getBUILD_AR) x "${deb}" || die
 	fi
 
 	unpacker ./data.tar*
@@ -340,6 +343,7 @@ _unpacker() {
 	a=$(find_unpackable_file "${a}")
 
 	# first figure out the decompression method
+	local comp=""
 	case ${m} in
 	*.bz2|*.tbz|*.tbz2)
 		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(type -P pbzip2 || type -P bzip2)}
@@ -354,11 +358,12 @@ _unpacker() {
 	*.lz)
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		comp="${UNPACKER_LZIP} -dc" ;;
-	*)	comp="" ;;
+	*.zst)
+		comp="zstd -dfc" ;;
 	esac
 
 	# then figure out if there are any archiving aspects
-	arch=""
+	local arch=""
 	case ${m} in
 	*.tgz|*.tbz|*.tbz2|*.txz|*.tar.*|*.tar)
 		arch="tar --no-same-owner -xof" ;;
@@ -434,7 +439,12 @@ unpacker_src_unpack() {
 unpacker_src_uri_depends() {
 	local uri deps d
 
-	[[ $# -eq 0 ]] && set -- ${SRC_URI}
+	if [[ $# -eq 0 ]] ; then
+		# Disable path expansion for USE conditionals. #654960
+		set -f
+		set -- ${SRC_URI}
+		set +f
+	fi
 
 	for uri in "$@" ; do
 		case ${uri} in
@@ -453,6 +463,8 @@ unpacker_src_uri_depends() {
 			d="app-arch/unzip" ;;
 		*.lz)
 			d="|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip )" ;;
+		*.zst)
+			d="app-arch/zstd" ;;
 		esac
 		deps+=" ${d}"
 	done

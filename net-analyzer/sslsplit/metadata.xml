@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		SSLsplit is a tool for man-in-the-middle attacks against SSL/TLS
+		encrypted network connections. It is intended to be useful for network
+		forensics, application security analysis and penetration testing.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>daniel@roe.ch</email>
+			<name>Daniel Roethlisberger</name>
+		</maintainer>
+		<bugs-to>https://github.com/droe/sslsplit/issues</bugs-to>
+		<remote-id type="github">droe/sslsplit</remote-id>
+	</upstream>
+</pkgmetadata>

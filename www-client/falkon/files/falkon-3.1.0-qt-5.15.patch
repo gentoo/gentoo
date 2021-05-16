@@ -1,0 +1,26 @@
+From 2ca83509dbc72dfdfa9cc7103c2b29db31e07f3a Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Sun, 29 Mar 2020 12:53:00 +0200
+Subject: Fix build with Qt 5.15
+
+QPainterPath is no longer included via qtransform.h (since
+5.15.0-beta2, 50d2acdc93b4de2ba56eb67787e2bdcb21dd4bea in qtbase.git).
+---
+ src/lib/tools/qztools.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/tools/qztools.cpp b/src/lib/tools/qztools.cpp
+index 499b225..04f19b7 100644
+--- a/src/lib/tools/qztools.cpp
++++ b/src/lib/tools/qztools.cpp
+@@ -25,6 +25,7 @@
+ #include <QByteArray>
+ #include <QPixmap>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QBuffer>
+ #include <QFile>
+ #include <QDir>
+-- 
+cgit v1.1
+

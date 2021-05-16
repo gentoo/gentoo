@@ -1,0 +1,37 @@
+Respect CFLAGS, no -Werror, allow override of destinations for e.g. Prefix,
+and call pkg-config while respecting ${PKG_CONFIG} (to find ncurses libs for
+e.g. tinfo).
+--- a/Makefile
++++ b/Makefile
+@@ -2,21 +2,20 @@
+ # Note on my Mobile Pentium II, -march=pentium2 delivers twice the performance of i386
+ #OptDbg=-O3
+ #OptDbg=-O3 -march=pentium2
+-OptDbg=-ggdb
+ ifndef CWFLAGS
+-CWFLAGS=-Wall -Werror -Wstrict-prototypes -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
++CWFLAGS=-Wall -Wstrict-prototypes -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+ endif
+-CFLAGS=$(OptDbg) -I. $(CWFLAGS)
++CFLAGS+= -I. $(CWFLAGS)
+ 
+-PREFIX  = /usr
++PREFIX  ?= /usr
+ # STRIP = -s
+-INSTALL = /usr/bin/install
+-DESTDIR =
+-BINDIR  = $(PREFIX)/bin
+-MANDIR  = $(PREFIX)/share/man
+-MAN1DIR = $(MANDIR)/man1
+-MAN5DIR = $(MANDIR)/man5
+-LDLIBS = -lncurses
++INSTALL ?= /usr/bin/install
++DESTDIR ?=
++BINDIR  ?= $(PREFIX)/bin
++MANDIR  ?= $(PREFIX)/share/man
++MAN1DIR ?= $(MANDIR)/man1
++MAN5DIR ?= $(MANDIR)/man5
++LDLIBS = $(shell $${PKG_CONFIG:-pkg-config} --libs ncurses)
+ 
+ all: wiggle wiggle.man test
+ 

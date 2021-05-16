@@ -6,16 +6,13 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<use>
-		<flag name="exceptions">Add support for exceptions - like catching them
-			inside the event loop (recommended by upstream)</flag>
-		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> eventloop support</flag>
-		<flag name="qt3support">Enable the Qt3Support libraries for Qt4. Note that
-			this does not mean you can compile pure Qt3 programs with Qt4.</flag>
+		<flag name="old-kernel" restrict="&lt;dev-qt/qtcore-5.15.0">Disable syscalls not available on Linux kernels older than 3.17</flag>
+		<flag name="old-kernel" restrict="&gt;=dev-qt/qtcore-5.15.0">Disable syscalls not available on Linux kernels older than 4.11</flag>
 		<flag name="systemd">Enable native journald logging support</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
-		<doc>http://doc.qt.io/</doc>
+		<doc>https://doc.qt.io/</doc>
 	</upstream>
 	<slots>
 		<subslots>

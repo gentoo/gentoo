@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>xmw@gentoo.org</email>
-		<name>Michael Weber</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 The rencode module is similar to bencode from the BitTorrent project. For
 complex, heterogeneous data structures with many small elements, r-encodings
@@ -14,5 +11,6 @@ pure Python module written by Petru Paler, Connelly Barnes et al.
 </longdescription>
 	<upstream>
 		<remote-id type="github">aresch/rencode</remote-id>
+		<remote-id type="pypi">rencode</remote-id>
 	</upstream>
 </pkgmetadata>

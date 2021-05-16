@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    Pure Python port of jgm’s commonmark.js, a Markdown parser and
+    renderer for the CommonMark specification, using only native
+    modules. Once both this project and the CommonMark specification
+    are stable we will release the first 1.0 version and attempt to
+    keep up to date with changes in commonmark.js.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">CommonMark</remote-id>
+    <remote-id type="github">readthedocs/commonmark.py</remote-id>
+  </upstream>
+</pkgmetadata>

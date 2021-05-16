@@ -1,37 +1,50 @@
-# Copyright 1999-2015 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Id$
+# Copyright 2007-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ant-tasks.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
 # Vlastimil Babka <caster@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for building dev-java/ant-* packages
 # @DESCRIPTION:
 # This eclass provides functionality and default ebuild variables for building
 # dev-java/ant-* packages easily.
 
+case "${EAPI:-0}" in
+	0|1|2|3|4|5)
+		die "ant-tasks.eclass: EAPI ${EAPI} is too old."
+		;;
+	6|7)
+		;;
+	*)
+		die "ant-tasks.eclass: EAPI ${EAPI} is not supported yet."
+		;;
+esac
 
 # we set ant-core dep ourselves, restricted
 JAVA_ANT_DISABLE_ANT_CORE_DEP=true
 # rewriting build.xml for are the testcases has no reason atm
 JAVA_PKG_BSFIX_ALL=no
-inherit versionator java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
+[[ ${EAPI:-0} -eq 6 ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
 # @ECLASS-VARIABLE: ANT_TASK_JDKVER
+# @PRE_INHERIT
 # @DESCRIPTION:
-# Affects the >=virtual/jdk version set in DEPEND string. Defaults to 1.5, can
-# be overriden from ebuild BEFORE inheriting this eclass.
-ANT_TASK_JDKVER=${ANT_TASK_JDKVER-1.5}
+# Affects the >=virtual/jdk version set in DEPEND string. Defaults to 1.8, can
+# be overridden from ebuild BEFORE inheriting this eclass.
+ANT_TASK_JDKVER=${ANT_TASK_JDKVER-1.8}
 
 # @ECLASS-VARIABLE: ANT_TASK_JREVER
+# @PRE_INHERIT
 # @DESCRIPTION:
-# Affects the >=virtual/jre version set in DEPEND string. Defaults to 1.5, can
-# be overriden from ebuild BEFORE inheriting this eclass.
-ANT_TASK_JREVER=${ANT_TASK_JREVER-1.5}
+# Affects the >=virtual/jre version set in DEPEND string. Defaults to 1.8, can
+# be overridden from ebuild BEFORE inheriting this eclass.
+ANT_TASK_JREVER=${ANT_TASK_JREVER-1.8}
 
 # @ECLASS-VARIABLE: ANT_TASK_NAME
 # @DESCRIPTION:
@@ -40,56 +53,39 @@ ANT_TASK_JREVER=${ANT_TASK_JREVER-1.5}
 ANT_TASK_NAME="${PN#ant-}"
 
 # @ECLASS-VARIABLE: ANT_TASK_DEPNAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Specifies JAVA_PKG_NAME (PN{-SLOT} used with java-pkg_jar-from) of the package
 # that this one depends on. Defaults to the name of ant task, ebuild can
-# override it before inheriting this eclass.
+# override it before inheriting this eclass. In case there is more than one
+# dependency, the variable can be specified as bash array with multiple strings,
+# one for each dependency.
 ANT_TASK_DEPNAME=${ANT_TASK_DEPNAME-${ANT_TASK_NAME}}
 
 # @ECLASS-VARIABLE: ANT_TASK_DISABLE_VM_DEPS
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, no JDK/JRE deps are added.
 
 # @VARIABLE: ANT_TASK_PV
 # @INTERNAL
+# @DESCRIPTION:
 # Version of ant-core this task is intended to register and thus load with.
 ANT_TASK_PV="${PV}"
 
-# special care for beta/RC releases
-if [[ ${PV} == *beta2* ]]; then
-	MY_PV=${PV/_beta2/beta}
-	UPSTREAM_PREFIX="http://people.apache.org/dist/ant/v1.7.1beta2/src"
-	GENTOO_PREFIX="https://dev.gentoo.org/~caster/distfiles"
-	ANT_TASK_PV=$(get_version_component_range 1-3)
-elif [[ ${PV} == *_rc* ]]; then
-	MY_PV=${PV/_rc/RC}
-	UPSTREAM_PREFIX="https://dev.gentoo.org/~caster/distfiles"
-	GENTOO_PREFIX="https://dev.gentoo.org/~caster/distfiles"
-	ANT_TASK_PV=$(get_version_component_range 1-3)
-else
-	# default for final releases
-	MY_PV=${PV}
-	UPSTREAM_PREFIX="mirror://apache/ant/source"
-	case ${PV} in
-	1.9.*)
-		GENTOO_PREFIX="https://dev.gentoo.org/~tomwij/files/dist"
-		;;
-	1.8.4)
-		GENTOO_PREFIX="https://dev.gentoo.org/~sera/distfiles"
-		;;
-	*)
-		GENTOO_PREFIX="https://dev.gentoo.org/~caster/distfiles"
-		;;
-	esac
-fi
+# default for final releases
+MY_PV=${PV}
+
+UPSTREAM_PREFIX="mirror://apache/ant/source"
+GENTOO_PREFIX="https://dev.gentoo.org/~fordfrog/distfiles"
 
 # source/workdir name
 MY_P="apache-ant-${MY_PV}"
 
-# Default values for standard ebuild variables, can be overriden from ebuild.
+# Default values for standard ebuild variables, can be overridden from ebuild.
 DESCRIPTION="Apache Ant's optional tasks depending on ${ANT_TASK_DEPNAME}"
-HOMEPAGE="http://ant.apache.org/"
+HOMEPAGE="https://ant.apache.org/"
 SRC_URI="${UPSTREAM_PREFIX}/${MY_P}-src.tar.bz2
 	${GENTOO_PREFIX}/ant-${PV}-gentoo.tar.bz2"
 LICENSE="Apache-2.0"
@@ -101,11 +97,6 @@ DEPEND="${RDEPEND}"
 if [[ -z "${ANT_TASK_DISABLE_VM_DEPS}" ]]; then
 	RDEPEND+=" >=virtual/jre-${ANT_TASK_JREVER}"
 	DEPEND+=" >=virtual/jdk-${ANT_TASK_JDKVER}"
-fi
-
-# we need direct blockers with old ant-tasks for file collisions - bug #252324
-if version_is_at_least 1.7.1 ; then
-	DEPEND+=" !dev-java/ant-tasks"
 fi
 
 # Would run the full ant test suite for every ant task
@@ -121,7 +112,7 @@ S="${WORKDIR}/${MY_P}"
 # base: performs the unpack, build.xml replacement and symlinks ant.jar from
 #	ant-core
 #
-# jar-dep: symlinks the jar file(s) from dependency package
+# jar-dep: symlinks the jar file(s) from dependency package(s)
 ant-tasks_src_unpack() {
 	[[ -z "${1}" ]] && ant-tasks_src_unpack all
 
@@ -132,7 +123,11 @@ ant-tasks_src_unpack() {
 				cd "${S}"
 
 				# replace build.xml with our modified for split building
-				mv -f "${WORKDIR}"/build.xml .
+				if [ -e "${WORKDIR}"/${PV}-build.patch ] ; then
+					eapply "${WORKDIR}"/${PV}-build.patch
+				else
+					mv -f "${WORKDIR}"/build.xml .
+				fi
 
 				cd lib
 				# remove bundled xerces
@@ -141,9 +136,11 @@ ant-tasks_src_unpack() {
 				# ant.jar to build against
 				java-pkg_jar-from --build-only ant-core ant.jar;;
 			jar-dep)
-				# get jar from the dependency package
+				# get jar from the dependency package(s)
 				if [[ -n "${ANT_TASK_DEPNAME}" ]]; then
-					java-pkg_jar-from ${ANT_TASK_DEPNAME}
+					for depname in "${ANT_TASK_DEPNAME[@]}"; do
+						java-pkg_jar-from ${depname}
+					done
 				fi;;
 			all)
 				ant-tasks_src_unpack base jar-dep;;
@@ -170,8 +167,6 @@ ant-tasks_src_install() {
 	java-pkg_register-ant-task --version "${ANT_TASK_PV}"
 
 	# create the compatibility symlink
-	if version_is_at_least 1.7.1_beta2; then
-		dodir /usr/share/ant/lib
-		dosym /usr/share/${PN}/lib/${PN}.jar /usr/share/ant/lib/${PN}.jar
-	fi
+	dodir /usr/share/ant/lib
+	dosym /usr/share/${PN}/lib/${PN}.jar /usr/share/ant/lib/${PN}.jar
 }

@@ -1,0 +1,22 @@
+--- a/spec/std/file_spec.cr
++++ b/spec/std/file_spec.cr
+@@ -1164,3 +1164,4 @@ describe "File" do
+     # TODO: there is no file which is reliably unwritable on windows
+-    pending_win32 "raises if file cannot be accessed" do
++    # On linux(or sandbox?) it's "Permission denied", not "Operation not permitted"
++    pending "raises if file cannot be accessed" do
+       expect_raises Errno, "Operation not permitted" do
+--- a/spec/std/process_spec.cr
++++ b/spec/std/process_spec.cr
+@@ -135,3 +135,4 @@ describe Process do
+   describe "environ" do
+-    it "clears the environment" do
++    #gentoo's sandbox keeps sandbox environment
++    pending "clears the environment" do
+       value = Process.run("env", clear_env: true) do |proc|
+@@ -142,3 +143,4 @@ describe Process do
+ 
+-    it "sets an environment variable" do
++    #gentoo's sandbox keeps sandbox environment
++    pending "sets an environment variable" do
+       env = {"FOO" => "bar"}

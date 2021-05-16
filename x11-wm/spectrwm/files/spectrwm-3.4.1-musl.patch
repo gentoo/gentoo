@@ -1,0 +1,9 @@
+diff -ur a/linux/linux.c b/linux/linux.c
+--- a/linux/linux.c	2020-09-03 07:25:24.937163198 -0500
++++ b/linux/linux.c	2020-09-03 07:25:35.470882700 -0500
+@@ -1,5 +1,4 @@
+ #include <sys/types.h>
+-#include <sys/cdefs.h>
+ 
+ #include <errno.h>
+ #include <errno.h>

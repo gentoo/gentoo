@@ -1,12 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: Syntax highlighting for GLib, Gtk+, Xlib, Gimp, Gnome, and more"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1000"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1000"
 LICENSE="vim"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"

@@ -1,46 +1,47 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam systemd toolchain-funcs
 
-inherit autotools fdo-mime gnome2-utils flag-o-matic linux-info \
-	multilib multilib-minimal pam python-single-r1 user versionator \
-	java-pkg-opt-2 systemd toolchain-funcs
-
-MY_P=${P/_rc/rc}
-MY_P=${MY_P/_beta/b}
-MY_PV=${PV/_rc/rc}
-MY_PV=${MY_PV/_beta/b}
+MY_PV="${PV/_beta/b}"
+MY_PV="${MY_PV/_rc/rc}"
+MY_PV="${MY_PV/_p/op}"
+MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="http://www.cups.org/cups.git"
-	if [[ ${PV} != 9999 ]]; then
-		EGIT_BRANCH=branch-${PV/.9999}
-	fi
+#	EGIT_REPO_URI="https://github.com/apple/cups.git"
+	EGIT_REPO_URI="https://github.com/OpenPrinting/cups.git"
+	[[ ${PV} != 9999 ]] && EGIT_BRANCH=branch-${PV/.9999}
 else
-	SRC_URI="http://www.cups.org/software/${MY_PV}/${MY_P}-source.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
+#	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
+	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
+	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	fi
 fi
 
 DESCRIPTION="The Common Unix Printing System"
-HOMEPAGE="http://www.cups.org/"
+HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
 
-LICENSE="GPL-2"
+LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug java kerberos lprng-compat pam
-	python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
-LANGS="ca cs de es fr it ja ru"
-for X in ${LANGS} ; do
-	IUSE="${IUSE} +linguas_${X}"
-done
+REQUIRED_USE="usb? ( threads )"
+# upstream includes an interactive test which is a nono for gentoo
+RESTRICT="test"
 
-CDEPEND="
+BDEPEND="
+	acct-group/lp
+	acct-group/lpadmin
+	virtual/pkgconfig
+"
+DEPEND="
 	app-text/libpaper
+	sys-libs/zlib
 	acl? (
 		kernel_linux? (
 			sys-apps/acl
@@ -48,67 +49,38 @@ CDEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
-	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	!lprng-compat? ( !net-print/lprng )
-	pam? ( virtual/pam )
-	python? ( ${PYTHON_DEPS} )
-	ssl? (
-		>=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}]
-		>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
-	)
+	pam? ( sys-libs/pam )
+	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
 	X? ( x11-misc/xdg-utils )
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
 "
-
-DEPEND="${CDEPEND}
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
-"
-
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
+	acct-group/lp
+	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
-
 PDEPEND=">=net-print/cups-filters-1.0.43"
 
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-	usb? ( threads )
-"
-
-# upstream includes an interactive test which is a nono for gentoo
-RESTRICT="test"
-
-S="${WORKDIR}/${MY_P}"
-
-# systemd-socket.patch from Fedora
 PATCHES=(
-	"${FILESDIR}/${PN}-1.6.0-dont-compress-manpages.patch"
-	"${FILESDIR}/${PN}-1.6.0-fix-install-perms.patch"
+	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
-	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
-	"${FILESDIR}/${PN}-2.1.2-systemd-socket.patch"
-	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
-	"${FILESDIR}/${PN}-2.0.3-cross-compile.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/cups-config
 )
 
-pkg_setup() {
-	enewgroup lp
-	enewuser lp -1 -1 -1 lp
-	enewgroup lpadmin 106
+S="${WORKDIR}/${MY_P}"
 
-	use python && python-single-r1_pkg_setup
+pkg_setup() {
+	#enewgroup lp -> acct-group/lp
+	# user lp already provided by baselayout
+	#enewuser lp -1 -1 -1 lp
+	#enewgroup lpadmin 106
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
@@ -116,18 +88,13 @@ pkg_setup() {
 			ewarn "Can't check the linux kernel configuration."
 			ewarn "You might have some incompatible options enabled."
 		else
-			# recheck that we don't have usblp to collide with libusb
+			# recheck that we don't have usblp to collide with libusb; this should now work in most cases (bug 501122)
 			if use usb; then
 				if linux_chkconfig_present USB_PRINTER; then
-					eerror "Your usb printers will be managed via libusb. In this case, "
-					eerror "${P} requires the USB_PRINTER support disabled."
-					eerror "Please disable it:"
-					eerror "    CONFIG_USB_PRINTER=n"
-					eerror "in /usr/src/linux/.config or"
-					eerror "    Device Drivers --->"
-					eerror "        USB support  --->"
-					eerror "            [ ] USB Printer support"
-					eerror "Alternatively, just disable the usb useflag for cups (your printer will still work)."
+					elog "Your USB printers will be managed via libusb. In case you run into problems, "
+					elog "please try disabling USB_PRINTER support in your kernel or blacklisting the"
+					elog "usblp kernel module."
+					elog "Alternatively, just disable the usb useflag for cups (your printer will still work)."
 				fi
 			else
 				#here we should warn user that he should enable it so he can print
@@ -148,15 +115,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch ${PATCHES[@]}
-
-	epatch_user
+	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
-	sed 's#^.SILENT:##g' -i "${S}"/Makedefs.in || die "sed failed"
+	sed 's#^.SILENT:##g' -i Makedefs.in || die
 
 	# Fix install-sh, posix sh does not have 'function'.
-	sed 's#function gzipcp#gzipcp()#g' -i "${S}/install-sh"
+	sed 's#function gzipcp#gzipcp()#g' -i install-sh || die
+
+	# Do not add -Werror even for live ebuilds
+	sed '/WARNING_OPTIONS/s@-Werror@@' \
+		-i config-scripts/cups-compiler.m4 || die
 
 	AT_M4DIR=config-scripts eaclocal
 	eautoconf
@@ -168,60 +137,64 @@ src_prepare() {
 multilib_src_configure() {
 	export DSOFLAGS="${LDFLAGS}"
 
-	einfo LANGS=\"${LANGS}\"
 	einfo LINGUAS=\"${LINGUAS}\"
-
-	local myconf=()
-
-	if tc-is-static-only; then
-		myconf+=(
-			--disable-shared
-		)
-	fi
 
 	# explicitly specify compiler wrt bug 524340
 	#
 	# need to override KRB5CONFIG for proper flags
-	# https://www.cups.org/str.php?L4423
-	econf \
-		CC="$(tc-getCC)" \
-		CXX="$(tc-getCXX)" \
-		KRB5CONFIG="${EPREFIX}"/usr/bin/${CHOST}-krb5-config \
-		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--localstatedir="${EPREFIX}"/var \
-		--with-rundir="${EPREFIX}"/run/cups \
-		--with-cups-user=lp \
-		--with-cups-group=lp \
-		--with-docdir="${EPREFIX}"/usr/share/cups/html \
-		--with-languages="${LINGUAS}" \
-		--with-system-groups=lpadmin \
-		--with-xinetd=/etc/xinetd.d \
-		$(multilib_native_use_enable acl) \
-		$(use_enable dbus) \
-		$(use_enable debug) \
-		$(use_enable debug debug-guards) \
-		$(use_enable debug debug-printfs) \
-		$(multilib_native_use_with java) \
-		$(use_enable kerberos gssapi) \
-		$(multilib_native_use_enable pam) \
-		$(multilib_native_use_with python python "${PYTHON}") \
-		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		$(use_enable ssl gnutls) \
-		$(use_enable systemd) \
-		$(multilib_native_use_enable usb libusb) \
-		$(use_enable zeroconf avahi) \
-		--disable-dnssd \
-		--without-perl \
-		--without-php \
-		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper) \
-		"${myconf[@]}"
+	# https://github.com/apple/cups/issues/4423
+	local myeconfargs=(
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		KRB5CONFIG="${EPREFIX}"/usr/bin/${CHOST}-krb5-config
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--localstatedir="${EPREFIX}"/var
+		--with-exe-file-perm=755
+		--with-rundir="${EPREFIX}"/run/cups
+		--with-cups-user=lp
+		--with-cups-group=lp
+		--with-docdir="${EPREFIX}"/usr/share/cups/html
+		--with-languages="${LINGUAS}"
+		--with-system-groups=lpadmin
+		--with-xinetd="${EPREFIX}"/etc/xinetd.d
+		$(multilib_native_use_enable acl)
+		$(use_enable dbus)
+		$(use_enable debug)
+		$(use_enable debug debug-guards)
+		$(use_enable debug debug-printfs)
+		$(use_enable kerberos gssapi)
+		$(multilib_native_use_enable pam)
+		$(use_enable static-libs static)
+		$(use_enable threads)
+		$(use_enable ssl gnutls)
+		$(use_enable systemd)
+		$(multilib_native_use_enable usb libusb)
+		$(use_enable zeroconf avahi)
+		--disable-dnssd
+		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
+	)
+
+	if tc-is-static-only; then
+		myeconfargs+=(
+			--disable-shared
+		)
+	fi
+
+	econf "${myeconfargs[@]}"
 
 	# install in /usr/libexec always, instead of using /usr/lib/cups, as that
 	# makes more sense when facing multilib support.
 	sed -i -e "s:SERVERBIN.*:SERVERBIN = \"\$\(BUILDROOT\)${EPREFIX}/usr/libexec/cups\":" Makedefs || die
 	sed -i -e "s:#define CUPS_SERVERBIN.*:#define CUPS_SERVERBIN \"${EPREFIX}/usr/libexec/cups\":" config.h || die
 	sed -i -e "s:cups_serverbin=.*:cups_serverbin=\"${EPREFIX}/usr/libexec/cups\":" cups-config || die
+
+	# additional path corrections needed for prefix, see bug 597728
+	sed \
+		-e "s:ICONDIR.*:ICONDIR = ${EPREFIX}/usr/share/icons:" \
+		-e "s:INITDIR.*:INITDIR = ${EPREFIX}/etc:" \
+		-e "s:DBUSDIR.*:DBUSDIR = ${EPREFIX}/etc/dbus-1:" \
+		-e "s:MENUDIR.*:MENUDIR = ${EPREFIX}/usr/share/applications:" \
+		-i Makedefs || die
 }
 
 multilib_src_compile() {
@@ -246,51 +219,52 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	dodoc {CHANGES,CREDITS,README}.txt
+	dodoc {CHANGES,CREDITS,README}.md
 
 	# move the default config file to docs
 	dodoc "${ED}"/etc/cups/cupsd.conf.default
-	rm -f "${ED}"/etc/cups/cupsd.conf.default
+	rm "${ED}"/etc/cups/cupsd.conf.default || die
 
 	# clean out cups init scripts
-	rm -rf "${ED}"/etc/{init.d/cups,rc*,pam.d/cups}
+	rm -r "${ED}"/etc/{init.d/cups,rc*,pam.d/cups} || die
 
 	# install our init script
-	local neededservices
-	use zeroconf && neededservices+=" avahi-daemon"
-	use dbus && neededservices+=" dbus"
-	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
-	cp "${FILESDIR}"/cupsd.init.d-r1 "${T}"/cupsd || die
-	sed -i \
-		-e "s/@neededservices@/$neededservices/" \
-		"${T}"/cupsd || die
+	local neededservices=(
+		$(usex zeroconf avahi-daemon '')
+		$(usex dbus dbus '')
+	)
+	[[ -n ${neededservices[@]} ]] && neededservices="need ${neededservices[@]}"
+	cp "${FILESDIR}"/cupsd.init.d-r3 "${T}"/cupsd || die
+	sed -i -e "s/@neededservices@/${neededservices}/" "${T}"/cupsd || die
 	doinitd "${T}"/cupsd
 
-	# install our pam script
-	pamd_mimic_system cups auth account
+	if use pam; then
+		pamd_mimic_system cups auth account
+	fi
 
 	if use xinetd ; then
 		# correct path
-		sed -i \
-			-e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
+		sed -i -e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
 			"${ED}"/etc/xinetd.d/cups-lpd || die
 		# it is safer to disable this by default, bug #137130
 		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
 			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
 		# write permission for file owner (root), bug #296221
-		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
+		fperms u+w /etc/xinetd.d/cups-lpd
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604
-		rm -rf "${ED}"/etc/xinetd.d
+		rm -r "${ED}"/etc/xinetd.d || die
 	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
-		/var/log/cups /var/spool/cups/tmp
+		/var/cache/cups /var/log/cups /var/spool/cups/tmp
 
-	keepdir /etc/cups/{ppd,ssl}
+	keepdir /etc/cups/{interfaces,ppd,ssl}
 
-	use X || rm -r "${ED}"/usr/share/applications
+	if ! use X ; then
+		rm -r "${ED}"/usr/share/applications || die
+	fi
 
 	# create /etc/cups/client.conf, bug #196967 and #266678
 	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED}"/etc/cups/client.conf
@@ -301,56 +275,36 @@ multilib_src_install_all() {
 	# the following are created by the init script
 	rm -r "${ED}"/var/cache/cups || die
 	rm -r "${ED}"/run || die
-
-	# for the special case of running lprng and cups together, bug 467226
-	if use lprng-compat ; then
-		rm -fv "${ED}"/usr/bin/{lp*,cancel}
-		rm -fv "${ED}"/usr/sbin/lp*
-		rm -fv "${ED}"/usr/share/man/man1/{lp*,cancel*}
-		rm -fv "${ED}"/usr/share/man/man8/lp*
-		ewarn "Not installing lp... binaries, since the lprng-compat useflag is set."
-		ewarn "Unless you plan to install an exotic server setup, you most likely"
-		ewarn "do not want this. Disable the useflag then and all will be fine."
-	fi
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
 	# Update desktop file database and gtk icon cache (bug 370059)
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_pkg_postinst
 
-	# not slotted - at most one value
-	if ! [[ "${REPLACING_VERSIONS}" ]]; then
-		echo
+	local v
+
+	for v in ${REPLACING_VERSIONS}; do
+		if ! ver_test ${v} -ge 2.2.2-r2 ; then
+			ewarn "The cupsd init script switched to using pidfiles. Shutting down"
+			ewarn "cupsd will fail the next time. To fix this, please run once as root"
+			ewarn "   killall cupsd ; /etc/init.d/cupsd zap ; /etc/init.d/cupsd start"
+			break
+		fi
+	done
+
+	for v in ${REPLACING_VERSIONS}; do
+		elog
 		elog "For information about installing a printer and general cups setup"
 		elog "take a look at: https://wiki.gentoo.org/wiki/Printing"
-		echo
-	fi
-
-	if [[ "${REPLACING_VERSIONS}" ]] && [[ "${REPLACING_VERSIONS}" < "1.6" ]]; then
-		echo
-		elog "CUPS-1.6 no longer supports automatic remote printers or implicit classes"
-		elog "via the CUPS, LDAP, or SLP protocols, i.e. \"network browsing\"."
-		elog "You will have to find printers using zeroconf/avahi instead, enter"
-		elog "the location manually, or run cups-browsed from net-print/cups-filters"
-		elog "which re-adds that functionality as a separate daemon."
-		echo
-	fi
-
-	if [[ "${REPLACING_VERSIONS}" == "1.6.2-r4" ]]; then
-		ewarn
-		ewarn "You are upgrading from the broken version net-print/cups-1.6.2-r4."
-		ewarn "Please rebuild net-print/cups-filters now to make sure everything is OK."
-		ewarn
-	fi
+		break
+	done
 }
 
 pkg_postrm() {
 	# Update desktop file database and gtk icon cache (bug 370059)
-	gnome2_icon_cache_update
-	fdo-mime_desktop_database_update
+	xdg_pkg_postrm
 }

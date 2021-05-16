@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 MINISSDPD="/usr/sbin/minissdpd"
 PIDFILE="/var/run/minissdpd.pid"

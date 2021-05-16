@@ -1,5 +1,5 @@
---- src/libfreepv/pngReader.cpp
-+++ src/libfreepv/pngReader.cpp
+--- freepv-0.3.0.orig/src/libfreepv/pngReader.cpp
++++ freepv-0.3.0/src/libfreepv/pngReader.cpp
 @@ -135,7 +135,7 @@
      //Transfor grayscale images with less
      //than 8 bits to 8 bits

@@ -2,10 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>cardoe@gentoo.org</email>
-<name>Doug Goldstein</name>
+	<email>tamiko@gentoo.org</email>
+	<name>Matthias Maier</name>
+</maintainer>
+<maintainer type="project">
+	<email>virtualization@gentoo.org</email>
+	<name>Gentoo Virtualization Project</name>
 </maintainer>
 <use>
+	<flag name="binary">Use pre-built binaries</flag>
+	<flag name="efi">Build an EFI program for using PXE</flag>
 	<flag name="iso">Build a bootable ISO for using PXE</flag>
 	<flag name="lkrn">Build a linux kernel bootable file for using with grub/etc...</flag>
 	<flag name="usb">Build a bootable USB image for using PXE</flag>

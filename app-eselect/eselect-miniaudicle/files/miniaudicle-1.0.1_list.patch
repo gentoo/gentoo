@@ -1,5 +1,5 @@
---- miniaudicle.eselect-1.0.1.orig	2010-07-14 23:21:11.000000000 -0400
-+++ miniaudicle.eselect-1.0.1	2010-07-14 23:22:22.000000000 -0400
+--- a/miniaudicle.eselect-1.0.1.orig	2010-07-14 23:21:11.000000000 -0400
++++ b/miniaudicle.eselect-1.0.1	2010-07-14 23:22:22.000000000 -0400
 @@ -73,7 +73,7 @@
  	targets=( $(find_targets ) )
  	write_list_start "Available miniAudicle audio engines:"

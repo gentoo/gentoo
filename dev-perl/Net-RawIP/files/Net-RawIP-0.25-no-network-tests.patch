@@ -1,0 +1,25 @@
+From ba688d50d538e571f124ebbfd8b8a8402c50fdfb Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Fri, 15 Dec 2017 20:36:58 +1300
+Subject: Disable world-wide DNS lookups when NO_NETWORK_TESTING
+
+---
+ t/iflist.t | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/t/iflist.t b/t/iflist.t
+index 0982c77..d8026cd 100644
+--- a/t/iflist.t
++++ b/t/iflist.t
+@@ -32,6 +32,8 @@ BEGIN { $tests += 4 } SKIP: {
+     like( $@, qr{host_to_ip: failed}, "rdev('ab cd') => undef" );
+ 
+     # this test will fail if there is not network connection
++    skip "NO_NETWORK_TESTING=1", 1
++        if 1 eq  ( $ENV{NO_NETWORK_TESTING} || '0' );
+     $r = rdev('cisco.com');
+     ok( $r, "rdev('cisco.com') => $r" );
+ }
+-- 
+2.15.1
+

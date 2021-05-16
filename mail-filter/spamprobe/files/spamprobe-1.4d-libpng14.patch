@@ -1,5 +1,5 @@
---- src/parser/PngParser.cc
-+++ src/parser/PngParser.cc
+--- a/src/parser/PngParser.cc
++++ b/src/parser/PngParser.cc
 @@ -53,9 +53,9 @@
  {
    if (m_initialized) {

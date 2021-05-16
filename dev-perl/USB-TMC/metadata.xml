@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>dilfridge@gentoo.org</email>
+    <name>Andreas K. Huettel</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">USB-TMC</remote-id>
+    <remote-id type="cpan-module">USB::TMC</remote-id>
+  </upstream>
+</pkgmetadata>

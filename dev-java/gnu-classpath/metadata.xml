@@ -12,8 +12,6 @@
 		<flag name="gmp">Build with GMP backend for java.math.BigInteger</flag>
 		<flag name="gjdoc">Build GJDoc, a documentation generator</flag>
 		<flag name="gtk">Build with Gtk+ AWT peers</flag>
-		<flag name="gstreamer">Build with GStreamer javax.sound.sampler provider</flag>
-		<flag name="qt4">Build with Qt4 AWT peers</flag>
 		<flag name="xml">Build with native XML backend</flag>
 	</use>
 </pkgmetadata>

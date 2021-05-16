@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils fortran-2 multilib prefix toolchain-funcs
+inherit epatch fortran-2 multilib prefix toolchain-funcs
 
 MY_P="RasMol_${PV}"
 VERS="13May11"
@@ -17,7 +16,7 @@ SRC_URI="mirror://sourceforge/open${PN}/RasMol/RasMol_2.7.5/${P}-${VERS}.tar.gz"
 
 LICENSE="|| ( GPL-2 RASLIC )"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
@@ -33,9 +32,8 @@ RDEPEND="
 	x11-libs/vte:0"
 DEPEND="${RDEPEND}
 	app-text/rman
-	x11-misc/imake
-	x11-proto/inputproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto
+	>=x11-misc/imake-1.0.8-r1"
 
 #S="${WORKDIR}/${PN}-2.7.5-${VERS}"
 S="${WORKDIR}/RasMol-${PV}"
@@ -80,7 +78,8 @@ src_prepare() {
 	mv vector.c v_ector.c || die
 	mv vector.h v_ector.h || die
 
-	xmkmf -DGTKWIN || die "xmkmf failed with ${myconf}"
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -DGTKWIN || die
 }
 
 src_compile() {
@@ -93,7 +92,7 @@ src_compile() {
 		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	libdir=$(get_libdir)
 	insinto /usr/${libdir}/${PN}
 	doins doc/rasmol.hlp

@@ -5,9 +5,6 @@
 		<email>pesa@gentoo.org</email>
 		<name>Davide Pesavento</name>
 	</maintainer>
-	<use>
-		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">Brewtarget/brewtarget</remote-id>
 	</upstream>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<use>
+		<flag name="chrome">Install plugin for chrome (which also includes opera)</flag>
+		<flag name="chromium">Install plugin for chromium</flag>
+		<flag name="firefox">Install plugin for firefox</flag>
+		<flag name="vivaldi">Install plugin for vivaldi</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">passff/passff-host</remote-id>
+	</upstream>
+</pkgmetadata>

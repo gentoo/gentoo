@@ -9,7 +9,7 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>vapier@gentoo.org</email>
-	</maintainer>
+	<use>
+		<flag name="libzip">Use dev-libs/libzip.</flag>
+	</use>
 </pkgmetadata>

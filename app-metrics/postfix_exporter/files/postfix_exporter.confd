@@ -1,0 +1,9 @@
+#  -postfix.logfile_path string
+#        Path where Postfix writes log entries. This file will be truncated by this exporter. (default "/var/log/postfix_exporter_input.log")
+#  -postfix.showq_path string
+#        Path at which Postfix places its showq socket. (default "/var/spool/postfix/public/showq")
+#  -web.listen-address string
+#        Address to listen on for web interface and telemetry. (default ":9154")
+#  -web.telemetry-path string
+#        Path under which to expose metrics. (default "/metrics")
+command_args=""

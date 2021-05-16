@@ -1,16 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils java-pkg-opt-2 multilib toolchain-funcs versionator
+inherit epatch java-pkg-opt-2 multilib toolchain-funcs versionator
 
 MY_DP="${PN}$(get_version_component_range 1)$(get_version_component_range 2)"
 MY_P="${MY_DP}_$(get_version_component_range 3)"
 
 DESCRIPTION="Common Data Format I/O library for multi-dimensional data sets"
-HOMEPAGE="http://cdf.gsfc.nasa.gov/"
+HOMEPAGE="https://cdf.gsfc.nasa.gov"
 SRC_BASE="http://cdaweb.gsfc.nasa.gov/pub/software/${PN}/dist/${MY_P}/unix/"
 
 SRC_URI="${SRC_BASE}/${MY_P}-dist-${PN}.tar.gz
@@ -26,14 +25,17 @@ SRC_URI="${SRC_BASE}/${MY_P}-dist-${PN}.tar.gz
 
 LICENSE="CDF"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples java ncurses static-libs"
 
 RDEPEND="
 	java? ( >=virtual/jre-1.5:= )
 	ncurses? ( sys-libs/ncurses:0= )
-	"
-DEPEND="${RDEPEND}"
+"
+DEPEND="
+	${RDEPEND}
+	ncurses? ( virtual/pkgconfig )
+"
 
 S="${WORKDIR}/${MY_P}-dist"
 
@@ -100,9 +102,8 @@ src_install() {
 	doenvd "${FILESDIR}"/50cdf
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins "${DISTDIR}"/${MY_DP}*.pdf
-		use java || rm "${D}"/usr/share/doc/${PF}/${MY_P}jrm.pdf
+		dodoc "${DISTDIR}"/${MY_DP}{0{crm,frm,prm,ug},ifd}.pdf
+		use java && dodoc "${DISTDIR}"/${MY_DP}jrm.pdf
 	fi
 
 	if use examples; then

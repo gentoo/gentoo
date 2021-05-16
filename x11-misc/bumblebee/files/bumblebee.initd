@@ -1,10 +1,10 @@
-#!/sbin/runscript
-# Copyright 1999-2012 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 depend() {
-	need xdm vgl
+	need xdm
+	want vgl
 }
 
 PIDFILE="${PIDFILE:-/var/run/bumblebee.pid}"

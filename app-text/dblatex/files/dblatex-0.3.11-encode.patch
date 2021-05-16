@@ -1,0 +1,19 @@
+diff -Naur dblatex-0.3.11py3-orig/lib/dbtexmf/dblatex/rawtex.py dblatex-0.3.11py3/lib/dbtexmf/dblatex/rawtex.py
+--- dblatex-0.3.11py3-orig/lib/dbtexmf/dblatex/rawtex.py	2020-01-29 13:48:34.000000000 -0800
++++ dblatex-0.3.11py3/lib/dbtexmf/dblatex/rawtex.py	2020-07-13 23:49:56.296767535 -0700
+@@ -101,10 +101,14 @@
+ 
+             # If something done, replace the figure in the tex file
+             if newfig != fig:
++                if isinstance(fig, str):
++                    fig = fig.encode("utf-8")
++                if isinstance(newfig, str):
++                    newfig = newfig.encode("utf-8")
+                 line = re.sub(br"{"+fig+br"}", br"{"+newfig+br"}", line)
+ 
+         return line
+-            
++
+ 
+ def main():
+     c = RawLatex()

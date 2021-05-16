@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>dan@danweeks.net</email>
 		<name>Dan Weeks</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -23,4 +26,7 @@
 		that, assuming you have a network connection, you can interact with any
 		of the equipment from home or wherever.
 	</longdescription>
+	<use>
+		<flag name="freeipmi">Compile in FreeIPMI support via sys-libs/freeipmi</flag>
+	</use>
 </pkgmetadata>

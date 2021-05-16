@@ -1,0 +1,45 @@
+diff --git a/classes/tdesktop.cc b/classes/tdesktop.cc
+index 38f1be4..f8f44f0 100644
+--- a/classes/tdesktop.cc
++++ b/classes/tdesktop.cc
+@@ -26,6 +26,10 @@ Modified cursor behavior while desktop locked by Salvador E. Tropea (SET)
+ #define Uses_TVCodePage
+ #include <tv.h>
+ 
++#include <cmath>
++
++using std::abs;
++
+ TDeskInit::TDeskInit( TBackground *(*cBackground)( TRect ) ) :
+     createBackground( cBackground )
+ {
+diff --git a/classes/tdisplay.cc b/classes/tdisplay.cc
+index 9225d48..ee5eca8 100644
+--- a/classes/tdisplay.cc
++++ b/classes/tdisplay.cc
+@@ -22,6 +22,10 @@ same used in original Turbo Vision for compatibility purposes.
+ #define Uses_TVCodePage
+ #include <tv.h>
+ 
++#include <cmath>
++
++using std::abs;
++
+ // Remove me please!
+ int TDisplay::dual_display=0;
+ 
+diff --git a/classes/x11/x11src.cc b/classes/x11/x11src.cc
+index 538457e..10f9911 100644
+--- a/classes/x11/x11src.cc
++++ b/classes/x11/x11src.cc
+@@ -98,6 +98,10 @@
+  #define TIMER_ALARM SIGALRM
+ #endif
+ 
++#include <cmath>
++
++using std::abs;
++
+ const unsigned foWmin=5, foHmin=7, foWmax=20, foHmax=32;
+ const int cursorDelay=300000;
+ 

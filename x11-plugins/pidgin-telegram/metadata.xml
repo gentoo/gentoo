@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This plugin adds support for the Telegram messenger protocol,
+		which can be used directly in net-im/pidgin.
+		Telegram is a cloud-based instant messaging and voice over IP service.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/majn/telegram-purple/issues</bugs-to>
+		<remote-id type="github">majn/telegram-purple</remote-id>
+	</upstream>
+	<use>
+		<flag name="gcrypt">Use dev-libs/libgcrypt instead of dev-libs/openssl.</flag>
+	</use>
+</pkgmetadata>

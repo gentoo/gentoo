@@ -1,0 +1,46 @@
+https://github.com/mdbtools/mdbtools/commit/686110d2241f02b3242d02d7c4ded9509aacd0df
+https://bugs.gentoo.org/697568
+
+From 686110d2241f02b3242d02d7c4ded9509aacd0df Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 27 Feb 2021 14:33:23 +0000
+Subject: [PATCH] configure.ac: Respect --libdir for unixODBC
+
+When searching for unixODBC, we want to use
+the libdir passed in to autotools (--libdir)
+to ensure that we find the library
+for the correct ABI.
+
+It is possible that we pick up the wrong
+copy from e.g. /usr/lib/ where a 32-bit
+unixODBC copy of the library exists
+when we're in the middle of a 64-bit build.
+
+Use ${libdir} to ensure we respect
+any preferences/information given and
+search for ODBC in the right place.
+
+Note that this previously affected
+us with iODBC but that's since been
+resolved by using their
+iodbc-config binary.
+
+Bug: https://bugs.gentoo.org/697568
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index c802843d..7a1f357b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -157,7 +157,7 @@ AC_ARG_WITH(unixodbc,
+ if test "$with_unixodbc"; then
+ 	HAVE_ODBC=true
+ 	ODBC_CFLAGS="-I$with_unixodbc/include"
+-	ODBC_LIBS="-L$with_unixodbc/lib"
++	ODBC_LIBS="-L$with_unixodbc/$libdir"
+ 	CFLAGS="$CFLAGS -DUNIXODBC"
+ 
+ 	dnl SIZEOF_LONG_INT and HAVE_LONG_LONG are required by some versions of unixODBC

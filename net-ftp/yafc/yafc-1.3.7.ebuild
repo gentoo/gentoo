@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="Console ftp client with a lot of nifty features"
 HOMEPAGE="http://www.yafc-ftp.com/"
@@ -13,22 +12,20 @@ SRC_URI="http://www.yafc-ftp.com/downloads/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
-IUSE="ipv6 readline kerberos socks5 ssh"
+IUSE="ipv6 kerberos readline socks5 ssh"
 
-DEPEND="dev-libs/openssl:0
+RDEPEND="
 	sys-libs/ncurses:*
 	dev-libs/libbsd
-	readline? ( >=sys-libs/readline-6 )
+	dev-libs/openssl:0=
 	kerberos? ( virtual/krb5 )
+	readline? ( >=sys-libs/readline-6:0= )
 	socks5? ( net-proxy/dante )
-	ssh? ( net-libs/libssh )"
-RDEPEND="${DEPEND}"
+	ssh? ( net-libs/libssh )
+"
+DEPEND="${RDEPEND}"
 
 DOCS=( BUGS NEWS README.md THANKS TODO )
-
-src_prepare() {
-	epatch_user
-}
 
 src_configure() {
 	export ac_cv_ipv6=$(usex ipv6)

@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
 EAPI="5"
 
-inherit eutils java-pkg-2 prefix
+inherit java-pkg-2 prefix
 
 DESCRIPTION="Plugins for javax.sound"
 HOMEPAGE="http://icedtea.classpath.org"
@@ -13,15 +13,17 @@ SRC_URI="http://icedtea.classpath.org/download/source/${P}.tar.xz"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 
 IUSE="+doc test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEP="
 	>=virtual/jdk-1.6.0
 	>=media-sound/pulseaudio-0.9.11:="
 RDEPEND="${COMMON_DEP}"
-DEPEND="${COMMON_DEP}"
+DEPEND="${COMMON_DEP}
+	app-arch/zip"
 
 pkg_setup() {
 	JAVA_PKG_WANT_SOURCE="1.6"

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>gnome@gentoo.org</email>
-		<name>Gentoo GNOME Desktop</name>
+	<maintainer type="person" proxied="yes">
+		<email>sparky@bluefang-logic.com</email>
+		<name>Matthew Turnbull</name>
 	</maintainer>
-	<use>
-		<flag name="colord">Support color management using
-			<pkg>x11-misc/colord</pkg></flag>
-	</use>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">linuxmint/cinnamon-control-center</remote-id>
 	</upstream>
+	<use>
+		<flag name="modemmanager">Enable support for mobile broadband devices
+			using <pkg>net-misc/modemmanager</pkg></flag>
+	</use>
 </pkgmetadata>

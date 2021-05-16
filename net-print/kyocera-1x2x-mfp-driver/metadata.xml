@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>firegurafiku@gmail.com</email>
+		<name>Pavel Kretov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+
+	<use>
+		<flag name="rastertokpsl-fix">
+			Use custom wrapper script to sanitize arguments before passing
+			to 'rastertokpsl' filter program
+		</flag>
+	</use>
+</pkgmetadata>

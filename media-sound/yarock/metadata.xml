@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>asturm@gentoo.org</email>
+		<name>Andreas Sturmlechner</name>
+	</maintainer>
+	<use>
+		<flag name="mpv">Enable <pkg>media-video/mpv</pkg> backend</flag>
+		<flag name="phonon">Enable <pkg>media-libs/phonon</pkg> backend</flag>
+		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
+	</use>
+</pkgmetadata>

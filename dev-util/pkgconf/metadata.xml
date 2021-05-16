@@ -2,22 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jdhore@gentoo.org</email>
-		<name>Jeff Horelick</name>
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>elizabeth@interlinked.me</email>
-		<name>Elizabeth Myers</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<slots>
+		<subslots>SONAME version of libpkgconf</subslots>
+	</slots>
 	<use>
 		<flag name="pkg-config">Install as a replacement for dev-util/pkgconfig</flag>
-		<flag name="strict">Adhere to POSIX pkg-config specification. Useful for finding uses of
-non-standard pkg-config invocations</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pkgconf/pkgconf</remote-id>

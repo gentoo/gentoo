@@ -1,0 +1,40 @@
+--- a/makefile	2019-06-29 08:02:02.519804948 +0200
++++ b/makefile	2019-06-29 08:03:43.125559643 +0200
+@@ -1,16 +1,15 @@
+ REDIS_BRANCH       ?= 5.0
+-TMP                := tmp
+ BUILD_DIR          := ${TMP}/cache/redis-${REDIS_BRANCH}
+ TARBALL            := ${TMP}/redis-${REDIS_BRANCH}.tar.gz
+-BINARY             := ${BUILD_DIR}/src/redis-server
+-REDIS_CLIENT       := ${BUILD_DIR}/src/redis-cli
++BINARY             := /usr/sbin/redis-server
++REDIS_CLIENT       := /usr/bin/redis-cli
+ REDIS_TRIB         := ${BUILD_DIR}/src/redis-trib.rb
+-PID_PATH           := ${BUILD_DIR}/redis.pid
+-SOCKET_PATH        := ${BUILD_DIR}/redis.sock
++PID_PATH           := ${TMP}/redis.pid
++SOCKET_PATH        := ${TMP}/redis.sock
+ PORT               := 6381
+ SLAVE_PORT         := 6382
+-SLAVE_PID_PATH     := ${BUILD_DIR}/redis_slave.pid
+-SLAVE_SOCKET_PATH  := ${BUILD_DIR}/redis_slave.sock
++SLAVE_PID_PATH     := ${TMP}/redis_slave.pid
++SLAVE_SOCKET_PATH  := ${TMP}/redis_slave.sock
+ SENTINEL_PORTS     := 6400 6401 6402
+ SENTINEL_PID_PATHS := $(addprefix ${TMP}/redis,$(addsuffix .pid,${SENTINEL_PORTS}))
+ CLUSTER_PORTS      := 7000 7001 7002 7003 7004 7005
+@@ -43,11 +43,11 @@
+ ${TMP}:
+ 	@mkdir -p $@
+ 
+-${BINARY}: ${TMP}
+-	@bin/build ${REDIS_BRANCH} $<
++#${BINARY}: ${TMP}
++#	@bin/build ${REDIS_BRANCH} $<
+ 
+ test: 
+-	@env SOCKET_PATH=${SOCKET_PATH} bundle exec rake test
++	@env SOCKET_PATH=${SOCKET_PATH} ${RUBY} -S rake test
+ 
+ stop:
+ 	@$(call kill-redis,${PID_PATH})

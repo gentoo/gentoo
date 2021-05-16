@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">GeoIP2</remote-id>
+    <remote-id type="cpan-module">GeoIP2</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Database::Reader</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Error::Generic</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Error::HTTP</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Error::IPAddressNotFound</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Error::Type</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Error::WebService</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::ASN</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::AnonymousIP</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::City</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::ConnectionType</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::Country</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::Domain</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::Enterprise</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::ISP</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Model::Insights</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::City</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::Continent</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::Country</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::Location</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::MaxMind</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::Postal</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::RepresentedCountry</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::Subdivision</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Record::Traits</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Error::HTTP</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::HasIPAddress</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::HasLocales</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Model</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Model::Flat</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Model::HasSubdivisions</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Model::Location</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Record::Country</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Role::Record::HasNames</remote-id>
+    <remote-id type="cpan-module">GeoIP2::Types</remote-id>
+    <remote-id type="cpan-module">GeoIP2::WebService::Client</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -15,7 +15,6 @@
 </longdescription>
 
 <use>
-	<flag name="gtk2">Adds support for GTK+2 in addition to GTK+3 controlled by the gtk useflag.</flag>
 	<flag name="gtkmm"> Adds support for <pkg>dev-cpp/gtkmm</pkg>: C++ interface for GTK+2</flag>
 </use>
 

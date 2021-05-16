@@ -1,0 +1,14 @@
+diff --git a/setup.py b/setup.py
+index bfad34a..cfb30c3 100644
+--- a/setup.py
++++ b/setup.py
+@@ -68,9 +68,6 @@ setup(name='jsonnet',
+       author='David Cunningham',
+       author_email='dcunnin@google.com',
+       version=get_version(),
+-      cmdclass={
+-          'build_ext': BuildJsonnetExt,
+-      },
+       ext_modules=[jsonnet_ext],
+       test_suite="python._jsonnet_test",
+ )

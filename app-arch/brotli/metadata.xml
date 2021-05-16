@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrews</name>
+  </maintainer>
+  <longdescription>
+    Brotli is a generic-purpose lossless compression algorithm that
+    compresses data using a combination of a modern variant of the
+    LZ77 algorithm, Huffman coding and 2nd order context modeling,
+    with a hight compression ratio. It is similar in speed with
+    deflate but offers denser compression.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">google/brotli</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -1,7 +1,7 @@
 Fix implicit functions declarations
 
---- xbatt.c
-+++ xbatt.c
+--- a/xbatt.c
++++ b/xbatt.c
 @@ -47,6 +47,9 @@
  #include <time.h>
  #include <sys/file.h>

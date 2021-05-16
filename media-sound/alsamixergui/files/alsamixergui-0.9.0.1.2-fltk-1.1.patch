@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -11,11 +11,11 @@
  AC_PROG_LN_S
  

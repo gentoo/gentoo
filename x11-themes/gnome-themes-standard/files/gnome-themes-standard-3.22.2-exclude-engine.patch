@@ -1,0 +1,63 @@
+From 58fd7206211e8e4d42ce6925718e56f84a1b4eb3 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Mon, 3 Oct 2016 00:38:57 +0200
+Subject: [PATCH] Control build of gtk+2 adwaita theme engine from configure
+
+Rather than whole gtk+-2 theme.
+
+This only makes sense in Gentoo as the theme engine has been split to
+a separate package to allow gtk+2 free systems.
+---
+ themes/Adwaita-dark/Makefile.am    | 6 +-----
+ themes/Adwaita/Makefile.am         | 6 +-----
+ themes/Adwaita/gtk-2.0/Makefile.am | 2 ++
+ 3 files changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/themes/Adwaita-dark/Makefile.am b/themes/Adwaita-dark/Makefile.am
+index 8a381b9..c5efcbf 100644
+--- a/themes/Adwaita-dark/Makefile.am
++++ b/themes/Adwaita-dark/Makefile.am
+@@ -1,8 +1,4 @@
+-SUBDIRS = gtk-3.0
+-
+-if GTK2_ENGINE
+-SUBDIRS += gtk-2.0
+-endif
++SUBDIRS = gtk-2.0 gtk-3.0
+ 
+ THEME_NAME=Adwaita-dark
+ THEME_IN_FILES=index.theme.in
+diff --git a/themes/Adwaita/Makefile.am b/themes/Adwaita/Makefile.am
+index 8583535..617b9a6 100644
+--- a/themes/Adwaita/Makefile.am
++++ b/themes/Adwaita/Makefile.am
+@@ -1,8 +1,4 @@
+-SUBDIRS = gtk-3.0
+-
+-if GTK2_ENGINE
+-SUBDIRS += gtk-2.0
+-endif
++SUBDIRS = gtk-2.0 gtk-3.0
+ 
+ THEME_NAME=Adwaita
+ THEME_IN_FILES=index.theme.in
+diff --git a/themes/Adwaita/gtk-2.0/Makefile.am b/themes/Adwaita/gtk-2.0/Makefile.am
+index 1e56f7f..9108cc4 100644
+--- a/themes/Adwaita/gtk-2.0/Makefile.am
++++ b/themes/Adwaita/gtk-2.0/Makefile.am
+@@ -1,3 +1,4 @@
++if GTK2_ENGINE
+ enginedir = $(libdir)/gtk-2.0/$(GTK2_VERSION)/engines
+ engine_LTLIBRARIES = libadwaita.la
+ 
+@@ -5,6 +6,7 @@ libadwaita_la_CFLAGS = $(GTK2_ENGINE_CFLAGS)
+ libadwaita_la_SOURCES = adwaita_engine.c
+ libadwaita_la_LDFLAGS = -module -avoid-version -no-undefined
+ libadwaita_la_LIBADD =  $(GTK2_ENGINE_LIBS)
++endif
+ 
+ themedir = $(datadir)/themes/Adwaita/gtk-2.0
+ theme_DATA = gtkrc main.rc apps.rc hacks.rc
+-- 
+2.10.1
+

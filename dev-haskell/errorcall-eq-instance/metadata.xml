@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Prior to @base-4.7.0.0@ there was no @Eq@ instance for
-		@ErrorCall@.  This package provides an orphan instance.
-	</longdescription>
 </pkgmetadata>

@@ -1,0 +1,23 @@
+From abc1d87631c71fb5bf3be4b81327c66292d852ca Mon Sep 17 00:00:00 2001
+From: Jonas Stein <news@jonasstein.de>
+Date: Sat, 6 Jun 2020 21:11:38 +0200
+Subject: [PATCH] extern packet_counter_max to compile with gcc-10
+
+Fixes: https://github.com/greatscottgadgets/ubertooth/issues/408
+---
+ host/libubertooth/src/ubertooth_callback.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libubertooth/src/ubertooth_callback.c b/libubertooth/src/ubertooth_callback.c
+index a36e3512..adb9934f 100644
+--- a/libubertooth/src/ubertooth_callback.c
++++ b/libubertooth/src/ubertooth_callback.c
+@@ -27,7 +27,7 @@
+ 
+ #include "ubertooth_callback.h"
+ 
+-unsigned int packet_counter_max;
++extern unsigned int packet_counter_max;
+ 
+ static int8_t cc2400_rssi_to_dbm( const int8_t rssi )
+ {

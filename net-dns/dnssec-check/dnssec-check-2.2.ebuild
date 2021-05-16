@@ -1,27 +1,28 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils qmake-utils
+inherit desktop qmake-utils
 
-DESCRIPTION="tests local resolver for support of DNSSEC validation"
-HOMEPAGE="http://www.dnssec-tools.org"
-SRC_URI="http://www.dnssec-tools.org/download/${P}.tar.gz"
+DESCRIPTION="Tests local resolver for support of DNSSEC validation"
+HOMEPAGE="https://www.dnssec-tools.org"
+SRC_URI="https://www.dnssec-tools.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="net-dns/dnssec-validator[threads]
-	dev-qt/qtdeclarative:5"
+RDEPEND="
+	dev-qt/qtdeclarative:5
+	net-dns/dnssec-validator[threads]
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	sed -e '/Exec=/s:/opt::' \
-		-i ${PN}.desktop || die
+	default
+	sed -e '/Exec=/s:/opt::' -i ${PN}.desktop || die
 }
 
 src_configure() {
@@ -29,7 +30,7 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}usr" install
+	emake INSTALL_ROOT="${D}/usr" install
 
 	doicon ${PN}.png
 	domenu ${PN}.desktop

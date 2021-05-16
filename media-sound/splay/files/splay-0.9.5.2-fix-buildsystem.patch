@@ -2,8 +2,19 @@
 * Fix ancient C++ includes using '.h' suffixes
 * Fix warnings caused by not using 'const char*'
 
---- splay-0.9.5.2/apps/Makefile.am
-+++ splay-0.9.5.2/apps/Makefile.am
+--- a/apps/common.cc
++++ b/apps/common.cc
+@@ -34,7 +34,7 @@
+ int splay_threadnum=50;
+ #endif
+ 
+-char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
++const char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
+ { "Failed to open sound device.",
+   "Sound device is busy.",
+   "Buffersize of sound device is wrong.",
+--- a/apps/Makefile.am
++++ b/apps/Makefile.am
 @@ -1,4 +1,4 @@
 -bin_PROGRAMS = splay @XSPLAY@
 +bin_PROGRAMS = splay
@@ -19,30 +30,8 @@
  EXTRA_DIST = $(man_MANS)
  
  
---- splay-0.9.5.2/configure.ac
-+++ splay-0.9.5.2/configure.ac
-@@ -15,7 +15,7 @@
- AC_CHECK_LIB(id3, ID3Tag_New)
- AC_CHECK_LIB(m, cos)
- AC_CHECK_LIB(pthread,main,INCLUDEPTHREAD=1)
--AC_CHECK_LIB(qt, main,XSPLAY=xsplay)
-+
- 
- if test "$INCLUDEPTHREAD" = 1; then
- 	LIBS="$LIBS -lpthread"
---- splay-0.9.5.2/apps/common.cc
-+++ splay-0.9.5.2/apps/common.cc
-@@ -34,7 +34,7 @@
- int splay_threadnum=50;
- #endif
- 
--char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
-+const char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
- { "Failed to open sound device.",
-   "Sound device is busy.",
-   "Buffersize of sound device is wrong.",
---- splay-0.9.5.2/apps/splay.cc
-+++ splay-0.9.5.2/apps/splay.cc
+--- a/apps/splay.cc
++++ b/apps/splay.cc
 @@ -16,20 +16,23 @@
  
  #include <sys/types.h>
@@ -70,8 +59,8 @@
  "\t-2 : playing with half frequency.\n"
  "\t-e : exit when playing is done. (only XSPLAY)\n"
  "\t-f : display frame and time info (played and remaining).\n"
---- splay-0.9.5.2/apps/splay.h
-+++ splay-0.9.5.2/apps/splay.h
+--- a/apps/splay.h
++++ b/apps/splay.h
 @@ -20,7 +20,7 @@
              splay_forcetomonoflag,
              splay_frameinfo;
@@ -81,8 +70,8 @@
  
  #ifdef PTHREADEDMPEG
  extern int  splay_threadnum;
---- splay-0.9.5.2/apps/xsplay.cc
-+++ splay-0.9.5.2/apps/xsplay.cc
+--- a/apps/xsplay.cc
++++ b/apps/xsplay.cc
 @@ -29,8 +29,8 @@
  #include <fcntl.h>
  #include <string.h>
@@ -94,8 +83,24 @@
  
  #include "mpegsound.h"
  #include "xsplay.h"
---- splay-0.9.5.2/libs/fileplayer.cc
-+++ splay-0.9.5.2/libs/fileplayer.cc
+--- a/configure.in
++++ b/configure.in
+@@ -10,12 +10,12 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl Checks for libraries.
+ AC_CHECK_LIB(id3, ID3Tag_New)
+ AC_CHECK_LIB(m, cos)
+ AC_CHECK_LIB(pthread,main,INCLUDEPTHREAD=1)
+-AC_CHECK_LIB(qt, main,XSPLAY=xsplay)
+ 
+ if test "$INCLUDEPTHREAD" = 1; then
+ 	LIBS="$LIBS -lpthread"
+--- a/libs/fileplayer.cc
++++ b/libs/fileplayer.cc
 @@ -10,7 +10,7 @@
  #endif
  
@@ -134,8 +139,8 @@
  
    fprintf(stderr,"\tMPEG-%d Layer %d, %s,\n\t%dHz%s, %dkbit/s, ",
  	  server->getversion()+1,
---- splay-0.9.5.2/libs/mpegsound.h
-+++ splay-0.9.5.2/libs/mpegsound.h
+--- a/libs/mpegsound.h
++++ b/libs/mpegsound.h
 @@ -230,7 +230,7 @@
    Soundplayer() {__errorcode=SOUND_ERROR_OK;};
    virtual ~Soundplayer();
@@ -190,8 +195,8 @@
    void setforcetomono(bool flag);
    void setdownfrequency(int value);
    bool playing(int verbose, bool frameinfo, int startframe);
---- splay-0.9.5.2/libs/mpegtoraw.cc
-+++ splay-0.9.5.2/libs/mpegtoraw.cc
+--- a/libs/mpegtoraw.cc
++++ b/libs/mpegtoraw.cc
 @@ -552,7 +552,7 @@
  #endif
  
@@ -201,8 +206,8 @@
  // Convert mpeg to raw
  bool Mpegtoraw::run(int frames)
  {
---- splay-0.9.5.2/libs/rawplayer.cc
-+++ splay-0.9.5.2/libs/rawplayer.cc
+--- a/libs/rawplayer.cc
++++ b/libs/rawplayer.cc
 @@ -24,7 +24,7 @@
  #define IOCTL(a,b,c)		(c = ioctl(a,b,c) )
  #endif
@@ -230,8 +235,8 @@
  
    return true;
  }
---- splay-0.9.5.2/libs/rawtofile.cc
-+++ splay-0.9.5.2/libs/rawtofile.cc
+--- a/libs/rawtofile.cc
++++ b/libs/rawtofile.cc
 @@ -20,7 +20,7 @@
    close(filehandle);
  }

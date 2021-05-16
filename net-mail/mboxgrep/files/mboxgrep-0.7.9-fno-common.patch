@@ -1,0 +1,20 @@
+--- a/src/mboxgrep.h
++++ b/src/mboxgrep.h
+@@ -129,6 +129,6 @@
+ }
+ option_t;
+ 
+-option_t config;
++extern option_t config;
+ 
+ #endif /* MBOXGREP_H */
+--- a/src/main.c
++++ b/src/main.c
+@@ -57,6 +57,7 @@
+ int count = 0;
+ void *tmpp;
+ checksum_t *cs;
++option_t config;
+ 
+ int
+ main (int argc, char **argv)

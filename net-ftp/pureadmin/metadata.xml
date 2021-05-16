@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription>Graphical tool used to make the management of PureFTPd a little easier.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">purify</remote-id>
 	</upstream>

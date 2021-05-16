@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="A library to support lingoteach-ui and for generic lesson development"
 HOMEPAGE="http://lingoteach.sourceforge.net"
@@ -19,13 +18,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	econf --disable-dependency-tracking \
+	econf \
+		--disable-static \
 		$(use_enable zlib compression) \
 		$(use_enable debug)
 }
 
 src_install() {
-	emake HTML_DIR="/usr/share/doc/${PF}" DOC_MODULE="" \
-		DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog HACKING NEWS README
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

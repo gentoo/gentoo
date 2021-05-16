@@ -1,5 +1,5 @@
---- xrootconsole.1.orig	2005-03-06 16:59:05.837673328 +0900
-+++ xrootconsole.1	2005-03-06 17:04:36.493406016 +0900
+--- a/xrootconsole.1.orig	2005-03-06 16:59:05.837673328 +0900
++++ b/xrootconsole.1	2005-03-06 17:04:36.493406016 +0900
 @@ -38,6 +38,9 @@
  .Ar number
  columns wide.  Text is written vertically down each column in the order in

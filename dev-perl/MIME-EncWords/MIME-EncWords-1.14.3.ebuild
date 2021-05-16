@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 DIST_AUTHOR=NEZUMI
@@ -10,8 +9,9 @@ inherit perl-module
 DESCRIPTION="Deal with RFC 2047 encoded words (improved)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 PERL_RM_FILES=("t/pod.t")
 RDEPEND="
 	>=virtual/perl-MIME-Base64-2.130.0

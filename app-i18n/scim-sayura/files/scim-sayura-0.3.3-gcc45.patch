@@ -2,8 +2,8 @@ Fixing build with gcc 4.5
 
 http://bugs.gentoo.org/show_bug.cgi?id=320879
 
---- src/scim_sinhala_imengine.cpp
-+++ src/scim_sinhala_imengine.cpp
+--- a/src/scim_sinhala_imengine.cpp
++++ b/src/scim_sinhala_imengine.cpp
 @@ -233,7 +233,7 @@
  
  void SinhalaInstance::backspace()

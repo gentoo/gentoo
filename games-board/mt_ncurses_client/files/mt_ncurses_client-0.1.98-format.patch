@@ -1,5 +1,5 @@
---- src/player_client.c.old	2015-10-21 14:21:04.317896103 +0200
-+++ src/player_client.c	2015-10-21 14:21:40.001225103 +0200
+--- a/src/player_client.c	2015-10-21 14:21:04.317896103 +0200
++++ b/src/player_client.c	2015-10-21 14:21:40.001225103 +0200
 @@ -38,7 +38,7 @@
  {
    player->nick[0] = g_string_new (config->player_name->str);

@@ -1,6 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 DESCRIPTION="a collection of Sound Icons for speech-dispatcher"
 HOMEPAGE="http://www.freebsoft.org"
@@ -13,7 +14,7 @@ IUSE=""
 
 RDEPEND="app-accessibility/speech-dispatcher"
 
-src_compile(){
+src_compile() {
 	einfo "Nothing to compile."
 }
 

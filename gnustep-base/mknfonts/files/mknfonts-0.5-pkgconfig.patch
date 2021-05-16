@@ -1,0 +1,13 @@
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -9,8 +9,8 @@
+ 
+ ADDITIONAL_OBJCFLAGS += -Wall -O2
+ 
+-ADDITIONAL_INCLUDE_DIRS += `freetype-config --cflags`
+-ADDITIONAL_LDFLAGS += `freetype-config --libs`
++ADDITIONAL_INCLUDE_DIRS += `${PKG_CONFIG} --cflags freetype2`
++ADDITIONAL_LDFLAGS += `${PKG_CONFIG} --libs freetype2`
+ 
+ mknfonts_OBJC_FILES = mknfonts.m
+ 

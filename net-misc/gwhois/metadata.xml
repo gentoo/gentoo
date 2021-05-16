@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>wschlich@gentoo.org</email>
-	<name>Wolfram Schlich</name>
-	<description>Primary maintainer</description>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>
 gwhois is a generic whois client which can be used as a commandline
 whois client or as a whois proxy service using (x)inetd

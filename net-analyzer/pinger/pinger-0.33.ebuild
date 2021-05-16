@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit autotools eutils flag-o-matic
+inherit autotools epatch flag-o-matic
 
 DESCRIPTION="Cyclic multi ping utility for selected adresses using GTK/ncurses"
 HOMEPAGE="http://aa.vslib.cz/silk/projekty/pinger/"
-SRC_URI="${HOMEPAGE}download/${P}.tar.gz"
+SRC_URI="http://aa.vslib.cz/silk/projekty/pinger/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

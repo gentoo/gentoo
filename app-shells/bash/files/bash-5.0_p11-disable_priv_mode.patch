@@ -1,0 +1,85 @@
+diff -urP ../bash-5.0.orig/config.h.in config.h.in
+--- ../bash-5.0.orig/config.h.in	2018-12-04 09:54:17.000000000 -0700
++++ config.h.in	2019-12-10 11:34:42.157926317 -0700
+@@ -1,6 +1,6 @@
+ /* config.h -- Configuration file for bash. */
+ 
+-/* Copyright (C) 1987-2009,2011-2012 Free Software Foundation, Inc.
++/* Copyright (C) 1987-2009,2011-2012,2013-2019 Free Software Foundation, Inc.
+ 
+    This file is part of GNU Bash, the Bourne Again SHell.
+ 
+@@ -807,6 +807,14 @@
+ #undef HAVE_SETREGID
+ #undef HAVE_DECL_SETREGID
+ 
++/* Define if you have the setregid function.  */
++#undef HAVE_SETRESGID
++#undef HAVE_DECL_SETRESGID
++
++/* Define if you have the setresuid function.  */
++#undef HAVE_SETRESUID
++#undef HAVE_DECL_SETRESUID
++
+ /* Define if you have the setvbuf function.  */
+ #undef HAVE_SETVBUF
+ 
+diff -urP ../bash-5.0.orig/configure configure
+--- ../bash-5.0.orig/configure	2019-01-02 07:43:31.000000000 -0700
++++ configure	2019-12-10 11:34:42.166926317 -0700
+@@ -10281,6 +10281,17 @@
+ #define HAVE_DECL_SETREGID $ac_have_decl
+ _ACEOF
+ 
++ac_fn_c_check_decl "$LINENO" "" "ac_cv_have_decl_" "$ac_includes_default"
++if test "x$ac_cv_have_decl_" = xyes; then :
++  ac_have_decl=1
++else
++  ac_have_decl=0
++fi
++
++cat >>confdefs.h <<_ACEOF
++#define HAVE_DECL_ $ac_have_decl
++_ACEOF
++(setresuid, setresgid)
+ ac_fn_c_check_decl "$LINENO" "strcpy" "ac_cv_have_decl_strcpy" "$ac_includes_default"
+ if test "x$ac_cv_have_decl_strcpy" = xyes; then :
+   ac_have_decl=1
+diff -urP ../bash-5.0.orig/configure.ac configure.ac
+--- ../bash-5.0.orig/configure.ac	2019-01-02 07:39:11.000000000 -0700
++++ configure.ac	2019-12-10 11:34:42.168926317 -0700
+@@ -810,6 +810,7 @@
+ AC_CHECK_DECLS([printf])
+ AC_CHECK_DECLS([sbrk])
+ AC_CHECK_DECLS([setregid])
++AC_CHECK_DECLS[(setresuid, setresgid])
+ AC_CHECK_DECLS([strcpy])
+ AC_CHECK_DECLS([strsignal])
+ 
+diff -urP ../bash-5.0.orig/shell.c shell.c
+--- ../bash-5.0.orig/shell.c	2018-12-06 09:28:21.000000000 -0700
++++ shell.c	2019-12-10 11:34:42.170926317 -0700
+@@ -1293,7 +1293,11 @@
+ {
+   int e;
+ 
++#if HAVE_DECL_SETRESUID
++  if (setresuid (current_user.uid, current_user.uid, current_user.uid) < 0)
++#else
+   if (setuid (current_user.uid) < 0)
++#endif
+     {
+       e = errno;
+       sys_error (_("cannot set uid to %d: effective uid %d"), current_user.uid, current_user.euid);
+@@ -1302,7 +1306,11 @@
+ 	exit (e);
+ #endif
+     }
++#if HAVE_DECL_SETRESGID
++  if (setresgid (current_user.gid, current_user.gid, current_user.gid) < 0)
++#else
+   if (setgid (current_user.gid) < 0)
++#endif
+     sys_error (_("cannot set gid to %d: effective gid %d"), current_user.gid, current_user.egid);
+ 
+   current_user.euid = current_user.uid;

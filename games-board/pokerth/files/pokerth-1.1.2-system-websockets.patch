@@ -1,0 +1,17 @@
+Description: force use of system websocketpp library
+Author: Gianfranco Costamagna <locutusofborg@debian.org>
+
+Index: pokerth-1.1.2/pokerth_lib.pro
+===================================================================
+--- pokerth-1.1.2.orig/pokerth_lib.pro
++++ pokerth-1.1.2/pokerth_lib.pro
+@@ -30,8 +30,7 @@
+ 		src/engine/local_engine \
+ 		src/engine/network_engine \
+ 		src/config \
+-		src/core \
+-		src/third_party/websocketpp
++		src/core
+ 
+ DEPENDPATH += . \
+ 		src \

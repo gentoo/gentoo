@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Implementation of JSR295"
 HOMEPAGE="https://java.net/projects/beansbinding/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}-src.zip -> ${P}.zip"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}-src.zip -> ${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

@@ -1,0 +1,7 @@
+# /etc/conf.d/elogind: config file for /etc/init.d/elogind
+
+# this is the elogind executable
+ELOGIND_EXEC="/@libdir@/elogind/elogind"
+
+# this is where elogind will store its pid file
+ELOGIND_PIDFILE="/run/elogind.pid"

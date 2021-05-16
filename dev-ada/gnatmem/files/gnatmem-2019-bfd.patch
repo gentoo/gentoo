@@ -1,0 +1,29 @@
+--- a/src/libaddr2line.c	2020-08-04 22:41:04.670046491 +0200
++++ b/src/libaddr2line.c	2020-08-04 22:44:55.560802332 +0200
+@@ -55,14 +55,26 @@
+   if (found)
+     return;
+ 
++#if defined(bfd_get_section_flags)
+   if ((bfd_get_section_flags (abfd, section) & SEC_ALLOC) == 0)
++#else
++  if ((bfd_section_flags (section) & SEC_ALLOC) == 0)
++#endif
+     return;
+ 
++#if defined(bfd_get_section_vma)
+   vma = bfd_get_section_vma (abfd, section);
++#else
++  vma = bfd_section_vma (section);
++#endif
+   if (pc < vma)
+     return;
+ 
++#if defined(bfd_get_section_size)
+   size = bfd_get_section_size (section);
++#else
++  size = bfd_section_size (section);
++#endif
+   if (pc >= vma + size)
+     return;
+ 

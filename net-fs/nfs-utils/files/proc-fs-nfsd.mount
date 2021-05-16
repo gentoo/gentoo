@@ -1,8 +1,0 @@
-[Unit]
-Description=NFS Configuration File System
-DefaultDependencies=no
-
-[Mount]
-What=sunrpc
-Where=/proc/fs/nfsd
-Type=nfsd

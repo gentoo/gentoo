@@ -1,0 +1,27 @@
+From 86b0bb9144186d51ea9b898905111bd8b143b552 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 30 Jun 2020 00:22:06 +0300
+Subject: [PATCH] Fix compilation with GCC10
+
+Fixed compilation when -fno-common enabled (in GCC10 by default). See
+https://bugs.gentoo.org/710330.
+---
+ ROX-Filer/src/session.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/session.h b/session.h
+index 7734996a..31341bc4 100644
+--- a/session.h
++++ b/session.h
+@@ -10,7 +10,7 @@
+ #include <gtk/gtk.h>
+ #include <X11/SM/SMlib.h>
+ 
+-gboolean session_auto_respawn;
++extern gboolean session_auto_respawn;
+ 
+ void session_init(const gchar *client_id);
+ 
+-- 
+2.26.2
+

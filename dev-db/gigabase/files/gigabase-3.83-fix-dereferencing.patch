@@ -1,7 +1,5 @@
-Index: session.cpp
-===================================================================
---- session.cpp	(revision 15)
-+++ session.cpp	(revision 16)
+--- a/session.cpp
++++ b/session.cpp
 @@ -131,7 +131,7 @@
          throw CursorException("Cursor is not opened");
      }
@@ -20,10 +18,8 @@ Index: session.cpp
          if (size <= SOCKET_BUFFER_SIZE) { 
              fillBuffer(size);
              if (record != NULL) { 
-Index: database.cpp
-===================================================================
---- database.cpp	(revision 15)
-+++ database.cpp	(revision 16)
+--- a/database.cpp
++++ b/database.cpp
 @@ -739,40 +739,55 @@
          return;
  
@@ -164,10 +160,8 @@ Index: database.cpp
        case dbvmInvokeSelfMethodReal8:
          expr->ref.field->method->invoke(iattr.record, &sattr.fvalue);
          return;
-Index: server.cpp
-===================================================================
---- server.cpp	(revision 15)
-+++ server.cpp	(revision 16)
+--- a/server.cpp
++++ b/server.cpp
 @@ -2097,7 +2097,7 @@
                  bufUsed = 0;
              }

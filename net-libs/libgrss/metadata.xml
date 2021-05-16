@@ -5,10 +5,6 @@
     <bugs-to>https://bugs.gnome.org</bugs-to>
     <changelog>https://git.gnome.org/browse/libgrss</changelog>
   </upstream>
-  <maintainer type="person">
-    <email>lxnay@gentoo.org</email>
-    <name>Fabio Erculiani</name>
-  </maintainer>
 <maintainer type="project">
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>

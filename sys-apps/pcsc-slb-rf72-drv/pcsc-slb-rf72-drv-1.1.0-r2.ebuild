@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="2"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P="slb_rf72"
 S=${WORKDIR}/${MY_P}
@@ -12,40 +11,46 @@ DESCRIPTION="Schlumberger Reflex 72 Serial Smartcard Reader"
 HOMEPAGE="http://www.linuxnet.com/sourcedrivers.html"
 LICENSE="all-rights-reserved BSD LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 SLOT="0"
-SRC_URI="http://www.linuxnet.com/drivers/readers/files/slb_rf72-drv-1.1.0.tar.gz"
-RESTRICT="mirror bindist"
+SRC_URI="mirror://gentoo/${MY_P}-drv-${PV}.tar.gz"
 
 RDEPEND="sys-apps/pcsc-lite
 	dev-libs/openct"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-build-new.patch"
-}
+DOCS=(
+	ERRATA
+	README
+)
+
+PATCHES=(
+	"${FILESDIR}/${P}-openct.patch"
+)
 
 src_compile() {
-	emake CC="$(tc-getCC)" LD="$(tc-getLD)" || die
+	tc-export PKG_CONFIG
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
 
-src_install () {
-	local pcscdir="$(pkg-config --variable=usbdropdir libpcsclite)"
+src_install() {
+	local pcscdir="$($(tc-getPKG_CONFIG) --variable=usbdropdir libpcsclite)"
 	local conf="/etc/reader.conf.d/${PN}.conf"
 
-	dodoc ERRATA README || die
+	einstalldocs
 
-	dodir "${pcscdir}/serial" || die
+	dodir "${pcscdir}/serial"
 	insinto "${pcscdir}/serial"
 	insopts -m755
-	doins libslb_rf72.so || die
+	doins libslb_rf72.so
 
-	dodir "$(dirname "${conf}")" || die
+	dodir "$(dirname "${conf}")"
 	insinto "$(dirname "${conf}")"
-	newins "${FILESDIR}/reader.conf" "$(basename "${conf}")" || die
-	sed -i "s#%PCSC_DRIVERS_DIR%#${pcscdir}#g" "${D}/${conf}" || die
+	newins "${FILESDIR}/reader.conf" "$(basename "${conf}")"
+	sed -i "s#%PCSC_DRIVERS_DIR%#${pcscdir}#g" "${D}/${conf}"
+}
 
+pkg_postinst() {
 	einfo "NOTICE:"
 	einfo "1. modify ${conf}"
 	einfo "2. run update-reader.conf, yes this is a command..."

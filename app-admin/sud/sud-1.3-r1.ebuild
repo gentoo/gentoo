@@ -1,12 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI=6
 
-inherit eutils flag-o-matic
+inherit autotools flag-o-matic
 
-DESCRIPTION="A daemon to execute processes with special (and customizable) privileges in a nosuid environment"
+DESCRIPTION="A daemon to execute processes with special privileges in a nosuid environment"
 HOMEPAGE="http://s0ftpj.org/projects/sud/index.htm"
 SRC_URI="http://s0ftpj.org/projects/sud/${P}.tar.gz"
 
@@ -15,32 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
+PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-build-system.patch )
+
 src_prepare() {
-	sed -i -e \
-		's/install-data-hook:$/& install-exec/' \
-		-e \
-		's:chmod 500 $(sbindir)/ilogin:chmod 500 $(DESTDIR)$(sbindir)/ilogin:' \
-		"${S}"/login/Makefile.in || die "sed failed."
-	sed -i -e \
-		's/install-data-hook:$/& install-exec/' \
-		-e \
-		's:chmod 555 $(bindir)/suz:chmod 500 $(DESTDIR)$(bindir)/suz:' \
-		"${S}"/su/Makefile.in || die "sed failed."
-	sed -i -e \
-		's/install-data-hook:$/& install-exec/' \
-		-e \
-		's:chmod 500 $(sbindir)/sud:chmod 500 $(DESTDIR)$(sbindir)/sud:' \
-		"${S}"/sud/Makefile.in || die "sed failed."
+	default
+	eautoreconf
 }
 
 src_configure() {
-	append-flags -D_GNU_SOURCE
-	default_src_configure
+	append-cppflags -D_GNU_SOURCE
+	default
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS ChangeLog* README NEWS TODO
+	default
+
 	doman ilogin.1 sud.1 suz.1
 	insinto /etc
 	doins miscs/sud.conf*

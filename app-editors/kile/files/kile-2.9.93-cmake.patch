@@ -1,0 +1,20 @@
+I know upstream wants to help us but it doesn't work...
+
+--- a/CMakeLists.txt	2019-10-19 14:23:41.000000000 +0200
++++ b/CMakeLists.txt	2019-10-20 15:50:52.606325681 +0200
+@@ -116,15 +116,6 @@
+ 		kile2.0-5_upd.pl
+ 	DESTINATION ${KDE_INSTALL_DATAROOTDIR}/kconf_update)
+ 
+-install(FILES
+-		AUTHORS
+-		ChangeLog
+-		README
+-		README.cwl
+-		kile-remote-control.txt
+-		README.MacOSX
+-	DESTINATION ${KDE_INSTALL_DATAROOTDIR}/doc/kile)
+-
+ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ find_package(KF5I18n CONFIG REQUIRED)
+ ki18n_install(po)

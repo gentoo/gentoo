@@ -10,6 +10,9 @@
     <name>Gentoo Haskell</name>
   </maintainer>
   <use>
-    <flag name='misc-haskell'>build abyss-samtobreak tool, pull in haskell toolchain</flag>
+    <flag name="misc-haskell">build abyss-samtobreak tool, pull in haskell toolchain</flag>
   </use>
+  <upstream>
+    <remote-id type="github">bcgsc/abyss</remote-id>
+  </upstream>
 </pkgmetadata>

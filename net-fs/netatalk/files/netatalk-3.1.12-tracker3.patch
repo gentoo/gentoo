@@ -1,0 +1,136 @@
+From a7ff155b4a907af0cb979863758137aa5f8dce3f Mon Sep 17 00:00:00 2001
+From: Andrew Bauer <zonexpertconsulting@outlook.com>
+Date: Sat, 13 Mar 2021 13:16:36 -0600
+Subject: [PATCH] add support for tracker3
+
+---
+ etc/afpd/spotlight.c          | 20 ++++++++++++++++++++
+ etc/spotlight/sparql_parser.c |  2 +-
+ etc/spotlight/sparql_parser.y |  2 +-
+ include/atalk/spotlight.h     |  2 ++
+ macros/netatalk.m4            | 10 +++++++++-
+ 5 files changed, 33 insertions(+), 3 deletions(-)
+
+diff --git a/etc/afpd/spotlight.c b/etc/afpd/spotlight.c
+index 9c8b4700..fa8f8083 100644
+--- a/etc/afpd/spotlight.c
++++ b/etc/afpd/spotlight.c
+@@ -581,6 +581,7 @@ static void slq_dump(void)
+  * Tracker async callbacks
+  ************************************************/
+ 
++#ifndef HAVE_TRACKER3
+ static void tracker_con_cb(GObject      *object,
+                            GAsyncResult *res,
+                            gpointer      user_data)
+@@ -600,6 +601,7 @@ static void tracker_con_cb(GObject      *object,
+ 
+     LOG(log_info, logtype_sl, "connected to Tracker");
+ }
++#endif
+ 
+ static void tracker_cursor_cb(GObject      *object,
+                               GAsyncResult *res,
+@@ -1312,6 +1314,9 @@ int spotlight_init(AFPObj *obj)
+     static bool initialized = false;
+     const char *attributes;
+     struct sl_ctx *sl_ctx;
++#ifdef HAVE_TRACKER3
++    GError *error = NULL;
++#endif
+ 
+     if (initialized) {
+         return 0;
+@@ -1342,8 +1347,23 @@ int spotlight_init(AFPObj *obj)
+     setenv("XDG_CACHE_HOME", _PATH_STATEDIR, 0);
+     setenv("TRACKER_USE_LOG_FILES", "1", 0);
+ 
++#ifdef HAVE_TRACKER3
++    sl_ctx->tracker_con = tracker_sparql_connection_bus_new ("org.freedesktop.Tracker3.Miner.Files",
++							     NULL, NULL, &error);
++
++    if (error) {
++        LOG(log_error, logtype_sl, "Could not connect to Tracker: %s",
++            error->message);
++        sl_ctx->tracker_con = NULL;
++        g_error_free(error);
++        return -1;
++    }
++
++    LOG(log_info, logtype_sl, "connected to Tracker3");
++#else
+     tracker_sparql_connection_get_async(sl_ctx->cancellable,
+                                         tracker_con_cb, sl_ctx);
++#endif
+ 
+     initialized = true;
+     return 0;
+diff --git a/etc/spotlight/sparql_parser.c b/etc/spotlight/sparql_parser.c
+index d6f5d3be..88b868ef 100644
+--- a/etc/spotlight/sparql_parser.c
++++ b/etc/spotlight/sparql_parser.c
+@@ -1455,7 +1455,7 @@ yyparse ()
+         result_limit = "";
+     ssp_result = talloc_asprintf(ssp_slq,
+                                  "SELECT ?url WHERE "
+-                                 "{ %s . ?obj nie:url ?url . FILTER(tracker:uri-is-descendant('file://%s/', ?url)) } %s",
++                                 "{ %s . ?obj nie:isStoredAs ?file . ?file nie:url ?url . FILTER(tracker:uri-is-descendant('file://%s/', ?url)) } %s",
+                                  (yyvsp[(1) - (1)].sval), ssp_slq->slq_scope, result_limit);
+     (yyval.sval) = ssp_result;
+ }
+diff --git a/etc/spotlight/sparql_parser.y b/etc/spotlight/sparql_parser.y
+index 9d609976..5201e3d3 100644
+--- a/etc/spotlight/sparql_parser.y
++++ b/etc/spotlight/sparql_parser.y
+@@ -78,7 +78,7 @@ expr                           {
+         result_limit = "";
+     ssp_result = talloc_asprintf(ssp_slq,
+                                  "SELECT ?url WHERE "
+-                                 "{ %s . ?obj nie:url ?url . FILTER(tracker:uri-is-descendant('file://%s/', ?url)) } %s",
++                                 "{ %s . ?obj nie:isStoredAs ?file . ?file nie:url ?url . FILTER(tracker:uri-is-descendant('file://%s/', ?url)) } %s",
+                                  $1, ssp_slq->slq_scope, result_limit);
+     $$ = ssp_result;
+ }
+diff --git a/include/atalk/spotlight.h b/include/atalk/spotlight.h
+index 0e64b860..19d71009 100644
+--- a/include/atalk/spotlight.h
++++ b/include/atalk/spotlight.h
+@@ -29,8 +29,10 @@
+ #ifdef HAVE_TRACKER
+ #include <gio/gio.h>
+ #include <tracker-sparql.h>
++#ifndef HAVE_TRACKER3
+ #include <libtracker-miner/tracker-miner.h>
+ #endif
++#endif
+ 
+ /******************************************************************************
+  * Spotlight RPC and marshalling stuff
+diff --git a/macros/netatalk.m4 b/macros/netatalk.m4
+index 3bd03ccb..33ba5575 100644
+--- a/macros/netatalk.m4
++++ b/macros/netatalk.m4
+@@ -184,14 +184,22 @@ AC_DEFUN([AC_NETATALK_SPOTLIGHT], [
+         AC_DEFINE(HAVE_TRACKER, 1, [Define if Tracker is available])
+         AC_DEFINE_UNQUOTED(TRACKER_PREFIX, ["$ac_cv_tracker_install_prefix"], [Path to Tracker])
+         AC_DEFINE_UNQUOTED([DBUS_DAEMON_PATH], ["$ac_cv_dbus_daemon"], [Path to dbus-daemon])
++
++        ac_cv_tracker_pkg_version_MAJOR=`echo $ac_cv_tracker_pkg_version | cut -d. -f1`
++        if test $ac_cv_tracker_pkg_version_MAJOR -ge 3 ; then
++          AC_DEFINE(HAVE_TRACKER3, 1, [Define if Tracker3 is used])
++        fi
+     fi
+ 
+     dnl Tracker Managing Command
+     if test x"$ac_cv_have_tracker" = x"yes" ; then
+-        AC_CHECK_PROGS(ac_cv_tracker_manage, tracker tracker-control, , ["$ac_cv_tracker_prefix"/bin])
++        AC_CHECK_PROGS(ac_cv_tracker_manage, tracker tracker3 tracker-control, , ["$ac_cv_tracker_prefix"/bin])
+         if test x"$ac_cv_tracker_manage" = x"tracker" ; then
+            TRACKER_MANAGING_COMMAND="tracker daemon"
+            AC_DEFINE(TRACKER_MANAGING_COMMAND, "tracker daemon", [tracker managing command])
++        elif test x"$ac_cv_tracker_manage" = x"tracker3" ; then
++           TRACKER_MANAGING_COMMAND="tracker3 daemon"
++           AC_DEFINE(TRACKER_MANAGING_COMMAND, "tracker3 daemon", [tracker managing command])
+         elif test x"$ac_cv_tracker_manage" = x"tracker-control" ; then
+            TRACKER_MANAGING_COMMAND="tracker-control"
+            AC_DEFINE(TRACKER_MANAGING_COMMAND, "tracker-control", [tracker managing command])

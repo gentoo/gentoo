@@ -1,30 +1,27 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils autotools toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Utility to control your cd/dvd drive"
 HOMEPAGE="http://cdctl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/cdctl/${P}.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
+KEYWORDS="amd64 ppc ppc64 x86"
 
-DEPEND=""
-
-S="${WORKDIR}/${PN}"
+PATCHES=( "${FILESDIR}"/${PN}-0.16-Makefile.in.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.16-Makefile.in.patch
-
+	default
 	eautoreconf
 }
 
-src_compile() {
-	emake CC="$(tc-getCC)"
+src_configure() {
+	tc-export CC
+	default
 }

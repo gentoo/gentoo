@@ -1,5 +1,5 @@
---- src/plugins/shoutcast/shoutcast.c.orig	2004-12-19 15:21:00.000000000 +0000
-+++ src/plugins/shoutcast/shoutcast.c	2008-03-16 10:39:24.000000000 +0000
+--- a/src/plugins/shoutcast/shoutcast.c.orig	2004-12-19 15:21:00.000000000 +0000
++++ b/src/plugins/shoutcast/shoutcast.c	2008-03-16 10:39:24.000000000 +0000
 @@ -94,6 +94,8 @@
  
    GNode			*parent_node;

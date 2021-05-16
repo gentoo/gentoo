@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,19 +11,19 @@ SRC_URI="http://www.zen35309.zen.co.uk/gps/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/dbus-glib
-	virtual/libgudev
+	dev-libs/libgudev
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	virtual/freedesktop-icon-theme
 	net-wireless/bluez
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 "

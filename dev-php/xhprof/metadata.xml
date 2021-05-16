@@ -5,7 +5,7 @@
 		<email>php-bugs@gentoo.org</email>
 		<name>PHP</name>
 	</maintainer>
-	<longdescription lang="en">
-XHProf is a function-level hierarchical profiler for PHP
-	</longdescription>
+	<upstream>
+		<remote-id type="github">phacility/xhprof</remote-id>
+	</upstream>
 </pkgmetadata>

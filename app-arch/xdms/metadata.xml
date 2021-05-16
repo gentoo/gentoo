@@ -9,4 +9,7 @@
 		Can extract the files contained inside the DMS archives, if the compressed disk is an AmigaDOS disk, using readdisk made by Bernd Schmidt.
 		Can process multiple files in batch with a single command, and also use stdin and stdout for input and output of data.
 	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">heikkiorsila/xdms</remote-id>
+	</upstream>
 </pkgmetadata>

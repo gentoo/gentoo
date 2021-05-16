@@ -1,36 +1,36 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-inherit eutils
+inherit edos2unix
 
-DESCRIPTION="This program helps manage the verification of checksums related to Shorten and FLAC files"
-HOMEPAGE="http://sourceforge.net/projects/shnflacverify/"
+DESCRIPTION="Manage the verification of checksums related to Shorten and FLAC files"
+HOMEPAGE="https://sourceforge.net/projects/shnflacverify/"
 SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.zip"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
+BDEPEND="app-arch/unzip"
+RDEPEND="
 	dev-lang/perl
-	app-arch/unzip
 	media-libs/flac
 	media-sound/shntool
-	sys-apps/coreutils"
-
-S="${WORKDIR}"
+	sys-apps/coreutils
+"
 
 src_prepare() {
-	local X
+	default
+
 	edos2unix *.txt
+
+	local X
 	for X in flac md5sum shntool metaflac; do
 		einfo "setting \$${X}_cmd to $(type -p ${X})"
-		sed -i -e "s|^\(\$${X}_cmd\s*=\s*'\)[^']*\('.*\)|\1$(type -p ${X})\2|g" shnflac*
+		sed -i -e "s|^\(\$${X}_cmd\s*=\s*'\)[^']*\('.*\)|\1$(type -p ${X})\2|g" shnflac* || die
 	done
 }
 

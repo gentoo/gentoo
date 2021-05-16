@@ -3,8 +3,8 @@ Removed obsolete virtual link cable.
 http://svn.tilp.info/cgi-bin/viewvc.cgi?view=rev&root=tiemu&revision=2820
 https://bugs.gentoo.org/show_bug.cgi?id=363383
 
---- src/gui/device.c
-+++ src/gui/device.c
+--- a/src/gui/device.c
++++ b/src/gui/device.c
 @@ -102,10 +102,6 @@
  		gtk_option_menu_set_history(GTK_OPTION_MENU(data), 7);
  	break;

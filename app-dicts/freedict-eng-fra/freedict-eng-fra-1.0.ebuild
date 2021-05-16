@@ -1,10 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-FORLANG="English"
-TOLANG="French"
+EAPI=7
+
 inherit freedict
 
-KEYWORDS="alpha ~amd64 ~hppa ~mips ppc sparc x86"
-IUSE=""
+DESCRIPTION="Freedict for language translation from English to French"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ppc sparc x86"

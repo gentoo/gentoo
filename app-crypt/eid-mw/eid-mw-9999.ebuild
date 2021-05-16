@@ -1,79 +1,104 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils autotools mozextension multilib
+inherit autotools desktop gnome2-utils xdg-utils git-r3
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/Fedict/${PN}.git
-		https://github.com/Fedict/${PN}.git"
-	inherit git-2
-	SRC_URI=""
-else
-	MY_P="${P}-v${PV}"
-	SRC_URI="https://downloads.services.belgium.be/eid/${MY_P}.tar.gz"
-	KEYWORDS="~x86 ~amd64 ~arm"
-	S="${WORKDIR}/${MY_P}"
-fi
-
-SLOT="0"
-LICENSE="LGPL-3"
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
+HOMEPAGE="https://eid.belgium.be"
+EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
 
-HOMEPAGE="http://eid.belgium.be"
+LICENSE="LGPL-3"
+SLOT="0"
+IUSE="+dialogs +gtk p11-kit"
 
-IUSE="+gtk +xpi +dialogs"
-
-REQUIRED_USE="
-	dialogs? ( gtk )"
-
-RDEPEND="gtk? ( x11-libs/gtk+:* )
-	>=sys-apps/pcsc-lite-1.2.9
-	xpi? ( || ( >=www-client/firefox-bin-3.6.24
-		>=www-client/firefox-3.6.20 ) )
-	!app-misc/beid-runtime"
+RDEPEND=">=sys-apps/pcsc-lite-1.2.9
+	gtk? (
+		x11-libs/gdk-pixbuf[jpeg]
+		x11-libs/gtk+:3
+		dev-libs/libxml2
+		net-misc/curl[ssl]
+		net-libs/libproxy
+		>=app-crypt/pinentry-1.1.0-r4[gtk]
+	)
+	p11-kit? ( app-crypt/p11-kit )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+REQUIRED_USE="dialogs? ( gtk )"
+
 src_prepare() {
-	use gtk || epatch "${FILESDIR}"/gtk_not_required_9999.patch
+	default
 
-	if [[ ${PV} == "9999" ]] ; then
-		# Only in current git. Hopefully, in next release.
-		sed -i -e 's:/beid/rsaref220:/rsaref220:' configure.ac
-		sed -i -e 's:/beid::' cardcomm/pkcs11/src/libbeidpkcs11.pc.in
-	fi
+	# xpi module : we don't want it anymore
+	sed -i -e '/SUBDIRS/ s:plugins_tools/xpi ::' Makefile.am || die
+	sed -i -e '/plugins_tools\/xpi/ d' configure.ac || die
 
-	if [[ ${PV} == "9999" ]] || ! use gtk ; then
-		eautoreconf
-	fi
+	# hardcoded lsb_info
+	sed -i \
+		-e "s:get_lsb_info('i'):strdup(_(\"Gentoo\")):" \
+		-e "s:get_lsb_info('r'):strdup(_(\"n/a\")):" \
+		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
+		plugins_tools/aboutmw/gtk/about-main.c || die
+
+	# Fix libdir for pkcs11_manifestdir
+	sed -i \
+		-e "/pkcs11_manifestdir/ s:prefix)/lib:libdir):" \
+		cardcomm/pkcs11/src/Makefile.am || die
+
+	# See bug #732994
+	sed -i \
+		-e '/LDFLAGS="/ s:$CPPFLAGS:$LDFLAGS:' \
+		configure.ac || die
+
+	# See bug #751472
+	eapply "${FILESDIR}/use-printf-in-Makefile.patch"
+
+	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable dialogs) --disable-static
+	econf \
+		$(use_enable dialogs) \
+		$(use_enable p11-kit p11kit) \
+		$(use_with gtk gtkvers 'detect') \
+		--with-gnu-ld \
+		--disable-static
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
+	rm -r "${ED}"/usr/$(get_libdir)/*.la || die
+	if use gtk; then
+		domenu plugins_tools/eid-viewer/eid-viewer.desktop
+		doicon plugins_tools/eid-viewer/gtk/eid-viewer.png
+	fi
+}
 
-	if [[ ${PV} != "9999" ]] ; then
-		# Automatically done in current git. Hopefully, in next release.
-		rm doc/sdk/include/rsaref220/win32.h
-		doheader -r doc/sdk/include/*
+pkg_postinst() {
+	if use gtk; then
+		gnome2_schemas_update
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+
+		local peimpl=$(eselect --brief --colour=no pinentry show)
+		case "${peimpl}" in
+		*gnome*|*qt*) ;;
+		*)	ewarn "The pinentry front-end currently selected is not supported by eid-mw."
+			ewarn "You may be prompted for your pin code in an inaccessible shell!!"
+			ewarn "Please select pinentry-gnome3 as default pinentry provider:"
+			ewarn " # eselect pinentry set pinentry-gnome3"
+		;;
+		esac
 	fi
-	if use xpi; then
-		declare MOZILLA_FIVE_HOME
-		if has_version '>=www-client/firefox-3.6.20'; then
-			MOZILLA_FIVE_HOME="/usr/$(get_libdir)/firefox"
-			xpi_install	"${D}/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be"
-		fi
-		if has_version '>=www-client/firefox-bin-3.6.24'; then
-			MOZILLA_FIVE_HOME="/opt/firefox"
-			xpi_install	"${D}/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/belgiumeid@eid.belgium.be"
-		fi
+}
+
+pkg_postrm() {
+	if use gtk; then
+		gnome2_schemas_update
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
-	rm -r "${D}/usr/share" "${D}"/usr/lib*/*.la
 }

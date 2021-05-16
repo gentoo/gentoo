@@ -6,6 +6,6 @@
 		<name>Gentoo ROS Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ros-visualization/rqt_common_plugins</remote-id>
+		<remote-id type="github">ros-visualization/rqt_reconfigure</remote-id>
 	</upstream>
 </pkgmetadata>

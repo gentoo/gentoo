@@ -1,0 +1,28 @@
+From 842e0ed5e3220a0e5ab19e7b0892c9c72c230ae7 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Fri, 30 Oct 2020 18:45:20 +0100
+Subject: [PATCH] Fix: build with icu-68.1
+
+icu-68.1 removed public macro definitions for TRUE and FALSE
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ src/gfx_layout.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gfx_layout.cpp b/src/gfx_layout.cpp
+index 584a71273..ebd1afaa8 100644
+--- a/src/gfx_layout.cpp
++++ b/src/gfx_layout.cpp
+@@ -116,7 +116,7 @@ void Font::getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const
+ 
+ le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const
+ {
+-	return FALSE;
++	return false;
+ }
+ 
+ /**
+-- 
+2.29.2
+

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>nimiux@gentoo.org</email>
-		<name>Chema Alonso</name>
-	</maintainer>
+		<maintainer type="project">
+			<email>base-system@gentoo.org</email>
+			<name>Gentoo Base System</name>
+		</maintainer>
 	<longdescription lang="en">
 		Logrotate allows for the automatic rotation compression, removal
 		and mailing of log files. Logrotate can be set to handle a log
@@ -23,4 +23,8 @@
 		<flag name="cron">Installs cron file</flag>
 		<flag name="selinux">Installs Security Enhanced Linux support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">logrotate/logrotate</remote-id>
+		<remote-id type="cpe">cpe:/a:logrotate_project:logrotate</remote-id>
+	</upstream>
 </pkgmetadata>

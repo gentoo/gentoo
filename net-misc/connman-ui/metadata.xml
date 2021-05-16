@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
 	</maintainer>
 	<longdescription lang="en">
 	A full-featured GTK based trayicon UI for ConnMan.

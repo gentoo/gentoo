@@ -1,11 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: ssl-cert.eclass
 # @MAINTAINER:
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
+# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
 # @BLURB: Eclass for SSL certificates
 # @DESCRIPTION:
 # This eclass implements a standard installation procedure for installing
@@ -18,7 +19,7 @@ case "${EAPI:-0}" in
 	0)
 		die "${ECLASS}.eclass: EAPI=0 is not supported.  Please upgrade to EAPI >= 1."
 		;;
-	1|2|3|4|5|6)
+	1|2|3|4|5|6|7)
 		;;
 	*)
 		die "${ECLASS}.eclass: EAPI=${EAPI} is not supported yet."
@@ -26,36 +27,50 @@ case "${EAPI:-0}" in
 esac
 
 # @ECLASS-VARIABLE: SSL_CERT_MANDATORY
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
 : ${SSL_CERT_MANDATORY:=0}
 
 # @ECLASS-VARIABLE: SSL_CERT_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Use flag to append dependency to.
 : ${SSL_CERT_USE:=ssl}
 
 # @ECLASS-VARIABLE: SSL_DEPS_SKIP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set to non zero to skip adding to DEPEND and IUSE.
 : ${SSL_DEPS_SKIP:=0}
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		DEPEND="${SSL_CERT_USE}? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )"
+		SSL_DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl:0 )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		DEPEND="|| ( dev-libs/openssl:0 dev-libs/libressl:0 )"
+		SSL_DEPEND="dev-libs/openssl:0"
 	fi
+
+	case "${EAPI}" in
+		1|2|3|4|5|6)
+			DEPEND="${SSL_DEPEND}"
+		;;
+		*)
+			BDEPEND="${SSL_DEPEND}"
+		;;
+	esac
+
+	unset SSL_DEPEND
 fi
 
 # @FUNCTION: gen_cnf
+# @INTERNAL
 # @USAGE:
 # @DESCRIPTION:
 # Initializes variables and generates the needed
 # OpenSSL configuration file and a CA serial file
 #
-# Access: private
 gen_cnf() {
 	# Location of the config file
 	SSL_CONF="${T}/${$}ssl.cnf"
@@ -67,7 +82,8 @@ gen_cnf() {
 
 	# These can be overridden in the ebuild
 	SSL_DAYS="${SSL_DAYS:-730}"
-	SSL_BITS="${SSL_BITS:-1024}"
+	SSL_BITS="${SSL_BITS:-4096}"
+	SSL_MD="${SSL_MD:-sha256}"
 	SSL_COUNTRY="${SSL_COUNTRY:-US}"
 	SSL_STATE="${SSL_STATE:-California}"
 	SSL_LOCALITY="${SSL_LOCALITY:-Santa Barbara}"
@@ -101,13 +117,13 @@ gen_cnf() {
 }
 
 # @FUNCTION: get_base
+# @INTERNAL
 # @USAGE: [if_ca]
 # @RETURN: <base path>
 # @DESCRIPTION:
 # Simple function to determine whether we're creating
 # a CA (which should only be done once) or final part
 #
-# Access: private
 get_base() {
 	if [ "${1}" ] ; then
 		echo "${T}/${$}ca"
@@ -117,32 +133,28 @@ get_base() {
 }
 
 # @FUNCTION: gen_key
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates an RSA key
 #
-# Access: private
 gen_key() {
 	local base=$(get_base "$1")
 	ebegin "Generating ${SSL_BITS} bit RSA key${1:+ for CA}"
-	if openssl version | grep -i libressl > /dev/null; then
-		openssl genrsa -out "${base}.key" "${SSL_BITS}" &> /dev/null
-	else
 		openssl genrsa -rand "${SSL_RANDOM}" \
 			-out "${base}.key" "${SSL_BITS}" &> /dev/null
-	fi
 	eend $?
 
 	return $?
 }
 
 # @FUNCTION: gen_csr
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates a certificate signing request using
 # the key made by gen_key()
 #
-# Access: private
 gen_csr() {
 	local base=$(get_base "$1")
 	ebegin "Generating Certificate Signing Request${1:+ for CA}"
@@ -154,6 +166,7 @@ gen_csr() {
 }
 
 # @FUNCTION: gen_crt
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates either a self-signed CA certificate using
@@ -161,12 +174,12 @@ gen_csr() {
 # a signed server certificate using the CA cert previously
 # created by gen_crt()
 #
-# Access: private
 gen_crt() {
 	local base=$(get_base "$1")
 	if [ "${1}" ] ; then
 		ebegin "Generating self-signed X.509 Certificate for CA"
 		openssl x509 -extfile "${SSL_CONF}" \
+			-${SSL_MD} \
 			-days ${SSL_DAYS} -req -signkey "${base}.key" \
 			-in "${base}.csr" -out "${base}.crt" &>/dev/null
 	else
@@ -174,7 +187,7 @@ gen_crt() {
 		ebegin "Generating authority-signed X.509 Certificate"
 		openssl x509 -extfile "${SSL_CONF}" \
 			-days ${SSL_DAYS} -req -CAserial "${SSL_SERIAL}" \
-			-CAkey "${ca}.key" -CA "${ca}.crt" \
+			-CAkey "${ca}.key" -CA "${ca}.crt" -${SSL_MD} \
 			-in "${base}.csr" -out "${base}.crt" &>/dev/null
 	fi
 	eend $?
@@ -183,12 +196,12 @@ gen_crt() {
 }
 
 # @FUNCTION: gen_pem
+# @INTERNAL
 # @USAGE: <base path>
 # @DESCRIPTION:
 # Generates a PEM file by concatinating the key
 # and cert file created by gen_key() and gen_cert()
 #
-# Access: private
 gen_pem() {
 	local base=$(get_base "$1")
 	ebegin "Generating PEM Certificate"
@@ -207,7 +220,6 @@ gen_pem() {
 #
 # Example: "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 #
-# Access: public
 install_cert() {
 	if [ $# -lt 1 ] ; then
 		eerror "At least one argument needed"

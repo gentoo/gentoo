@@ -1,49 +1,49 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
+LUA_COMPAT=( lua5-{1..2} luajit )
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit webapp eutils multilib user toolchain-funcs git-2
+inherit git-r3 lua-single toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
 DESCRIPTION="a fast web-interface for git repositories"
-HOMEPAGE="http://git.zx2c4.com/cgit/about"
+HOMEPAGE="https://git.zx2c4.com/cgit/about"
 SRC_URI=""
 EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight +lua +jit"
+IUSE="doc +highlight +lua test"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
+	acct-group/cgit
+	acct-user/cgit
 	dev-vcs/git
-	sys-libs/zlib
-	dev-libs/openssl:0
-	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua ) )
+	dev-libs/openssl:0=
+	lua? ( ${LUA_DEPS} )
+	sys-libs/zlib
+	virtual/httpd-cgi
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken
 DEPEND="${RDEPEND}
-	!<www-apps/cgit-0.8.3.3
 	doc? ( app-text/docbook-xsl-stylesheets
 		>=app-text/asciidoc-8.5.1 )
 "
 
 pkg_setup() {
 	webapp_pkg_setup
-	enewuser "${PN}"
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
-	git submodule init || die
-	git submodule update || die
-
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf
@@ -51,14 +51,12 @@ src_prepare() {
 	echo "CACHE_ROOT = ${CGIT_CACHEDIR}" >> cgit.conf
 	echo "DESTDIR = ${D}" >> cgit.conf
 	if use lua; then
-		if use jit; then
-			echo "LUA_PKGCONFIG = luajit" >> cgit.conf
-		else
-			echo "LUA_PKGCONFIG = lua" >> cgit.conf
-		fi
+		echo "LUA_PKGCONFIG = ${ELUA}" >> cgit.conf
 	else
 		echo "NO_LUA = 1" >> cgit.conf
 	fi
+
+	eapply_user
 }
 
 src_compile() {
@@ -83,6 +81,10 @@ src_install() {
 	keepdir "${CGIT_CACHEDIR}"
 	fowners ${PN}:${PN} "${CGIT_CACHEDIR}"
 	fperms 700 "${CGIT_CACHEDIR}"
+}
+
+src_test() {
+	emake V=1 AR="$(tc-getAR)" CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" test
 }
 
 pkg_postinst() {

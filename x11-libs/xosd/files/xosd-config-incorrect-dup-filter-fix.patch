@@ -3,8 +3,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=286632
 This patch disables reordering and duplicate removing for non-libs arguments, thus --param and alike gcc options may be used safe now.
 
 written by Andrew Savchenko
---- script/xosd-config.in.orig
-+++ script/xosd-config.in
+--- a/script/xosd-config.in
++++ b/script/xosd-config.in
 @@ -161,7 +161,6 @@
          fi;;
      *)

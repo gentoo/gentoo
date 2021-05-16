@@ -1,7 +1,6 @@
-#!/sbin/runscript
-# Copyright 1999-2011 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 depend() {
 	use net ypbind nis
@@ -27,6 +26,9 @@ start() {
 
 stop() {
 	ebegin "Stopping rtorrent"
+	# Because we've daemonized with screen, we need to replace the PID file with the real PID of rtorrent
+	pgrep -P $(cat /var/run/rtorrentd.pid) > /var/run/rtorrentd.pid
+
 	start-stop-daemon --stop --signal 15 \
 			--pidfile /var/run/rtorrentd.pid
 	eend $?

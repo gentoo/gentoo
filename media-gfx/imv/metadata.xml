@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>hilobakho@gmail.com</email>
-		<name>Mykyta Holubakha</name>
+	<maintainer type="person" proxied="yes">
+		<email>sudinave@gmail.com</email>
+		<name>Ionen Wolkens</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> for additional image support</flag>
+		<flag name="heif">Add HEIF/HEIC image support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">eXeC64/imv</remote-id>
 	</upstream>

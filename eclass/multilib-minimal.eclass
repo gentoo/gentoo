@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: multilib-minimal.eclass
 # @MAINTAINER:
-# Julian Ospald <hasufell@gentoo.org>
+# Multilib team <multilib@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
 #
@@ -25,7 +25,7 @@
 
 # EAPI=4 is required for meaningful MULTILIB_USEDEP.
 case ${EAPI:-0} in
-	4|5|6) ;;
+	4|5|6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 

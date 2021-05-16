@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	Powerstat measures the power consumption of a machine using the battery
+	stats or the Intel RAPL interface. The output is like vmstat but also
+	shows power consumption statistics. At the end of a run, powerstat will
+	calculate the average, standard deviation and min/max of the gathered data.
+	</longdescription>
+	<upstream>
+		<remote-id type="launchpad">powerstat</remote-id>
+		<remote-id type="github">ColinIanKing/powerstat</remote-id>
+	</upstream>
+</pkgmetadata>

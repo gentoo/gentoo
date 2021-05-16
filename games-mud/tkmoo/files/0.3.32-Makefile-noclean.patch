@@ -1,5 +1,5 @@
---- Makefile.orig	2003-07-12 03:04:24.000000000 -0400
-+++ Makefile	2003-07-12 03:04:32.000000000 -0400
+--- a/Makefile	2003-07-12 03:04:24.000000000 -0400
++++ b/Makefile	2003-07-12 03:04:32.000000000 -0400
 @@ -32,11 +32,8 @@
  
  # some shells are set 'noclobber', so force overwriting of the

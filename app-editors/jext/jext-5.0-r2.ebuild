@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -8,7 +7,7 @@ JAVA_PKG_IUSE="doc"
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A text editor written in Java"
-HOMEPAGE="http://sourceforge.net/projects/jext/"
+HOMEPAGE="https://sourceforge.net/projects/jext/"
 MY_PV="${PV/_}"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-sources-${MY_PV}.tar.gz"
 LICENSE="|| ( GPL-2 JPython )"
@@ -47,7 +46,7 @@ src_compile() {
 		-Dclasspath="$(java-pkg_getjars jython-2.7,jgoodies-looks-1.2,gnu-regexp-1)"
 }
 
-src_install () {
+src_install() {
 	java-pkg_newjar lib/${P}.jar
 	java-pkg_dojar lib/dawn*.jar
 

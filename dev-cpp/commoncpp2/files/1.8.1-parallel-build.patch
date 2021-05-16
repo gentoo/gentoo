@@ -1,5 +1,5 @@
---- src/Makefile.am
-+++ src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -47,6 +47,7 @@
  
  if EXTRAS

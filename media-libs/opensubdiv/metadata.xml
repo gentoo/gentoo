@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="cuda">
+			Enable NVIDIA CUDA Toolkit support through
+			<pkg>dev-util/nvidia-cuda-toolkit</pkg>
+		</flag>
+		<flag name="opencl">
+			Enable OpenCL support through
+			<pkg>virtual/opencl</pkg>
+		</flag>
+		<flag name="ptex">
+			Adds support for faster per-face texture mapping through
+			<pkg>media-libs/ptex</pkg>
+		</flag>
+		<flag name="tbb">
+			Enable multithreading with the Intel Threads Building Blocks through
+			<pkg>dev-cpp/tbb</pkg>
+		</flag>
+		<flag name="tutorials">
+			Install the tutorials
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">PixarAnimationStudios/OpenSubdiv</remote-id>
+	</upstream>
+</pkgmetadata>

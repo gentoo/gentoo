@@ -6,9 +6,9 @@
     <name>Gentoo Perl Project</name>
   </maintainer>
   <longdescription>This core perl package is being provided as an ebuild to
-	address recent security issues with Sys::Syslog. Perl 5.8.8 and above should
-	have 0.13 or greater bundled with them, but users of less than 5.8.8 may
-	benefit from the ebuild.</longdescription>
+  address recent security issues with Sys::Syslog. Perl 5.8.8 and above should
+  have 0.13 or greater bundled with them, but users of less than 5.8.8 may
+  benefit from the ebuild.</longdescription>
   <upstream>
     <remote-id type="cpan">Sys-Syslog</remote-id>
     <remote-id type="cpan-module">Sys::Syslog</remote-id>

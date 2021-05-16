@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -120,7 +120,6 @@
+ M17N_EXT_LIBS=
+ 
+ AC_CHECK_PROG(HAVE_PKG_CONFIG, pkg-config, yes)
+-AM_CONDITIONAL([HAVE_PKG_CONFIG], [test x$HAVE_PKG_CONFIG = xyes])
+ 
+ if test "x$no_x" != "xyes"; then
+   AC_DEFINE(HAVE_X11, 1, [Define to 1 if you have X11.])
+@@ -318,6 +317,8 @@
+ 
+ fi
+ 
++AM_CONDITIONAL([HAVE_PKG_CONFIG], [test x$HAVE_PKG_CONFIG = xyes])
++
+ dnl Check for libxml2 usability.
+ save_CPPFLAGS="$CPPFLAGS"
+ save_LIBS="$LIBS"

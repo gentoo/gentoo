@@ -5,6 +5,4 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
-	<longdescription>Helper tool to upgrade Gentoo GNUstep installations, after
-		the switch to FHS layout for example</longdescription>
 </pkgmetadata>

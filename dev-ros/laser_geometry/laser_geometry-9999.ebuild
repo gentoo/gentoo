@@ -1,11 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-perception/laser_geometry"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
@@ -15,16 +13,24 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-libs/boost:=[threads]
-	dev-ros/tf
-	dev-ros/tf2_ros[${PYTHON_USEDEP}]
-	dev-cpp/eigen:3
 	dev-ros/angles
+	dev-ros/roscpp
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/tf
+	dev-ros/tf2[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
+	dev-libs/boost:=[threads]
+	dev-cpp/eigen:3
 "
 DEPEND="${RDEPEND}
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	test? (
+		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-cpp/gtest
+	)"
+BDEPEND="
 	dev-ros/cmake_modules
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+"

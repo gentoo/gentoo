@@ -1,7 +1,0 @@
-#!/bin/sh
-
-[ -e $HOME/.config/ ] || mkdir $HOME/.config/
-
-cp -ru "%GAMES_DATADIR%/higan" $HOME/.config/
-
-exec ${0}.bin "$@"

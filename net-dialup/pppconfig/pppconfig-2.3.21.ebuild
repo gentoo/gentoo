@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils
+inherit l10n
 
 DESCRIPTION="A text menu based utility for configuring ppp"
-HOMEPAGE="http://packages.qa.debian.org/p/pppconfig.html"
+HOMEPAGE="https://packages.qa.debian.org/p/pppconfig.html"
 SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.gz"
 
 SLOT="0"
@@ -37,7 +36,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dodir /etc/chatscripts /etc/ppp/resolv
 	dosbin 0dns-down 0dns-up dns-clean
 	newsbin pppconfig pppconfig.real

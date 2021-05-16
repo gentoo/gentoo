@@ -4,11 +4,8 @@
 	<maintainer type="person">
 		<email>hanno@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">mailman</remote-id>
+		<remote-id type="pypi">mailman</remote-id>
+		<remote-id type="gitlab">mailman/mailman</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>dnovomesky@gmail.com</email>
+    <name>Daniel Novomesky</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="aom">Enable support for the AOM codec encoding and decoding</flag>
+    <flag name="dav1d">Enable support for the dav1d codec decoding</flag>
+    <flag name="extras">Build extra apps (avifenc, avifdec) and test files</flag>
+    <flag name="gdk-pixbuf">Build a gdk-pixbuf loader</flag>
+    <flag name="rav1e">Enable support for the rav1e codec encoding</flag>
+    <flag name="svt-av1">Enable support for the SVT-AV1 encoder</flag>
+  </use>
+</pkgmetadata>

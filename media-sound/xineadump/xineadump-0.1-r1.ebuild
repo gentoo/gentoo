@@ -1,12 +1,10 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Utility for Xine decoding support in transKode"
-HOMEPAGE="http://sourceforge.net/projects/transkode"
+HOMEPAGE="https://sourceforge.net/projects/transkode"
 SRC_URI="mirror://sourceforge/transkode/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -20,12 +18,7 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc-4.3.patch \
-		"${FILESDIR}"/${P}-gcc-4.4.patch
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS
-}
+PATCHES=(
+	"${FILESDIR}/${P}-gcc-4.3.patch"
+	"${FILESDIR}/${P}-gcc-4.4.patch"
+)

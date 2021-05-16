@@ -1,0 +1,24 @@
+From 32ce986d86695dd55d4c888c30fe62b910b99f17 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Thu, 21 Aug 2014 17:45:28 +0200
+Subject: [PATCH 3/5] remove unneeded forward declaration
+
+---
+ vchkpw.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/vpopmail-5.4.33/vchkpw.c b/vpopmail-5.4.33/vchkpw.c
+index b1c8a5d..d7d4351 100644
+--- a/vchkpw.c
++++ b/vchkpw.c
+@@ -91,7 +91,6 @@ void login_system_user();
+ void read_user_pass();
+ void vlog(int verror, char *TheUser, char *TheDomain, char *ThePass, char *TheName, char *IpAddr, char *LogLine);
+ void vchkpw_exit(int err);
+-void run_command(char *prog);
+ int authcram( char *response, char *challenge, char *password);
+ int authapop( char *password, char *timestamp, char *clearpass);
+ 
+-- 
+1.8.4.5
+

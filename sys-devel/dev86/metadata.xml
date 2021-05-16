@@ -2,7 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription>
-		Bruce's C compiler - Simple C compiler to generate 8086 code
-	</longdescription>
 </pkgmetadata>

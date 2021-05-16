@@ -1,0 +1,20 @@
+--- a/src/launcher.c
++++ b/src/launcher.c
+@@ -366,7 +366,7 @@
+                if(pos && (end = complete(&cache, tmpbuf)))
+                {
+                     strncpy(buf, tmpbuf, sizeof(buf));
+-                    strncat(buf, end, sizeof(buf));
++                    strncat(buf, end, sizeof(buf) - 1);
+                     found = true;
+                }
+ 
+@@ -387,7 +387,7 @@
+ 
+           default:
+                lastwastab = false;
+-               strncat(buf, tmp, sizeof(tmp));
++               strncat(buf, tmp, sizeof(buf) - 1);
+                ++pos;
+                break;
+           }

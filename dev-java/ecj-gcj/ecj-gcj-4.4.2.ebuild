@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -9,13 +8,13 @@ inherit java-pkg-2 prefix toolchain-funcs
 MY_PN="ecj"
 DMF="R-${PV}-201502041700"
 
-DESCRIPTION="A subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk"
+DESCRIPTION="Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk"
 HOMEPAGE="http://www.eclipse.org/"
 SRC_URI="http://download.eclipse.org/eclipse/downloads/drops4/${DMF}/${MY_PN}src-${PV}.jar"
 
 LICENSE="EPL-1.0"
 SLOT="4.4"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+native"
 
 RDEPEND="sys-devel/gcc:*[gcj]

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>crypto@gentoo.org</email>
-		<name>Crypto</name>
+	<maintainer type="person" proxied="yes">
+		<email>hlein@korelogic.com</email>
+		<name>Hank Leininger</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="asm">Enable assebly modules</flag>
+		<flag name="asm">Enable assembly modules</flag>
 		<flag name="cpu_flags_x86_padlock">Use VIA padlock instructions,
 		detected at run time, code still works on non-padlock processors</flag>
 	</use>

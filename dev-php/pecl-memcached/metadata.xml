@@ -12,4 +12,7 @@
 		<flag name="igbinary">Enable support for the igbinary serializer</flag>
 		<flag name="json">Enable support for json serialization</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">php-memcached-dev/php-memcached</remote-id>
+	</upstream>
 </pkgmetadata>

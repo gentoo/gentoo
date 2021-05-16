@@ -1,14 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Sort entries in Dired mode"
-HOMEPAGE="http://centaur.maths.qmw.ac.uk/Emacs/
-	http://www.emacswiki.org/emacs/DiredSortMenu"
+HOMEPAGE="https://www.emacswiki.org/emacs/DiredSortMenu"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"

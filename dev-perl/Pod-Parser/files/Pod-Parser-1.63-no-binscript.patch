@@ -1,0 +1,25 @@
+From c3049f6c575836f19ff234635cd9ac8cf23cc930 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 11 Aug 2020 10:13:39 +1200
+Subject: Don't compile podselect bin script
+
+---
+ Makefile.PL | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 258f51e..e6cac08 100755
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -31,7 +31,7 @@ $DISTMOD   = 'Pod::Parser';  ## The "title" module of this distribution
+              );
+ 
+ ## The executable scripts to be installed
+-@SCRIPTS   = qw( podselect
++@SCRIPTS   = qw(
+                );
+ sub script($) { File::Spec->catfile ('scripts', @_) }
+ my @EXE_FILES = ();
+-- 
+2.28.0
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>voyageur@gentoo.org</email>
+	<name>Bernard Cafarelli</name>
+</maintainer>
+<longdescription>
+wmcpuwatch aims to show the load of every logical CPU on the system.
+
+It is a fork of wmmon. wmmon shows the load of up to 10 CPUs. With a little tweaking it is possible to show 12 with wmmon, but when in 2017 Intel announced a 18 core CPU (and AMD was with their Ryzen even earlier), there was time for a new dockapp.
+
+wmcpuwatch now shows the load of all CPUs in the lower frame which allows 40 CPUs at max.
+</longdescription>
+</pkgmetadata>

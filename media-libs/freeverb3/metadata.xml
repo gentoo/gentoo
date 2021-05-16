@@ -10,7 +10,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="audacious">Build Audacious plugin</flag>
 		<flag name="forcefpu">Disable assembly code</flag>
 		<flag name="plugdouble">Build plugins in double precision mode
 			(default is float)</flag>

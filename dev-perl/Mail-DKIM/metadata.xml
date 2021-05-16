@@ -8,6 +8,10 @@
   <upstream>
     <remote-id type="cpan">Mail-DKIM</remote-id>
     <remote-id type="cpan-module">Mail::DKIM</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::ARC::MessageSignature</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::ARC::Seal</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::ARC::Signer</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::ARC::Verifier</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Algorithm::Base</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Algorithm::dk_rsa_sha1</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Algorithm::rsa_sha1</remote-id>
@@ -20,6 +24,7 @@
     <remote-id type="cpan-module">Mail::DKIM::Canonicalization::dk_simple</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Canonicalization::nowsp</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Canonicalization::relaxed</remote-id>
+    <remote-id type="cpan-module">Mail::DKIM::Canonicalization::seal</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Canonicalization::simple</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::Common</remote-id>
     <remote-id type="cpan-module">Mail::DKIM::DNS</remote-id>

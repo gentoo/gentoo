@@ -4,8 +4,6 @@ Date:   Fri Mar 26 20:10:54 2010 +0100
 
     Fixed the build if the --as-needed linker option is enabled.
 
-diff --git a/Makefile b/Makefile
-index dad3fcb..3331e30 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -35,7 +35,7 @@ install: $(BINARY)

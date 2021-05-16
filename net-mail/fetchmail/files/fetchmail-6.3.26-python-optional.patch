@@ -1,5 +1,5 @@
---- fetchmail-6.3.26/Makefile.am
-+++ fetchmail-6.3.26/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -16,9 +16,11 @@
  pys=			fetchmailconf.py
  pym=			fetchmailconf.man

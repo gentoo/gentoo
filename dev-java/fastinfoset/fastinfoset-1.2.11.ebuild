@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,13 +9,13 @@ inherit java-pkg-2 java-pkg-simple
 
 MY_PN="FastInfoset"
 
-DESCRIPTION="Fast Infoset specifies a standardized binary encoding for the XML Information Sets"
+DESCRIPTION="Specifies a standardized binary encoding for the XML Information Sets"
 HOMEPAGE="https://fi.java.net/"
 SRC_URI="http://search.maven.org/remotecontent?filepath=com/sun/xml/${PN}/${MY_PN}/${PV}/${MY_PN}-${PV}-sources.jar"
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.5"

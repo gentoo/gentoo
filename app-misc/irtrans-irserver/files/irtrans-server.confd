@@ -1,5 +1,4 @@
 # Config for irtrans-server
-# $Id$
 
 # Controls which information is logged. Standard is loglevel 1.
 # Possible values are 0-4. 0=Nothing is logged. 4=debug output.

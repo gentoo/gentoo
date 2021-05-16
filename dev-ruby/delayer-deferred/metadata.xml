@@ -10,5 +10,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="rubygems">delayer-deferred</remote-id>
+		<remote-id type="github">toshia/delayer-deferred</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,22 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 JAVA_PKG_IUSE="doc examples source test"
+MAVEN_ID="commons-digester:commons-digester:2.1"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 MY_P="${P}-src"
 
-DESCRIPTION="Reads XML configuration files to provide initialization of various Java objects within the system"
+DESCRIPTION="Reads XML configuration files to provide initialization of various Java objects"
 HOMEPAGE="http://commons.apache.org/digester/"
 SRC_URI="mirror://apache/commons/digester/source/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.1"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86"
 
 CDEPEND="dev-java/commons-beanutils:1.7
 	>=dev-java/commons-collections-2.1:0

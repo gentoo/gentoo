@@ -1,0 +1,106 @@
+diff -Naur a/config.d/80magicrescue_defs b/config.d/80magicrescue_defs
+--- a/config.d/80magicrescue_defs	2018-11-24 20:21:20.000000000 +0100
++++ b/config.d/80magicrescue_defs	2019-11-14 09:41:34.030848527 +0100
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ cat >> config.h << EOF
+-#define COMMAND_PATH "$prefix/share/magicrescue/tools"
++#define COMMAND_PATH "$prefix/bin"
+ #define RECIPE_PATH  "$prefix/share/magicrescue/recipes"
+ #include "largefile.h"
+ EOF
+diff -Naur a/doc/magicrescue.1 b/doc/magicrescue.1
+--- a/doc/magicrescue.1	2018-11-24 20:21:20.000000000 +0100
++++ b/doc/magicrescue.1	2019-11-14 09:41:34.030848527 +0100
+@@ -358,7 +358,7 @@
+ This means that you may have to write your own tool or wrap an existing program
+ in some scripts that make it behave better.  For example, this could be to
+ extract the first 10MB into a temporary file and let the program work on that.
+-Or perhaps you can use \fItools/safecat\fR if the file may be very large.
++Or perhaps you can use \fIsafecat\fR if the file may be very large.
+ .SS "Recipe format reference"
+ .IX Subsection "Recipe format reference"
+ Empty lines and lines starting with \f(CW\*(C`#\*(C'\fR will be skipped.  A recipe contains a
+@@ -424,7 +424,7 @@
+ should be set to 512.
+ .PP
+ To test whether your recipe actually works, either just run it on your hard
+-disk or use the \fItools/checkrecipe\fR script to pick out files that should match
++disk or use the \fIcheckrecipe\fR script to pick out files that should match
+ but don't.
+ .PP
+ If you have created a recipe that works, please mail it to me at jbj@knef.dk so
+diff -Naur a/doc/magicrescue.pod b/doc/magicrescue.pod
+--- a/doc/magicrescue.pod	2018-11-24 20:21:20.000000000 +0100
++++ b/doc/magicrescue.pod	2019-11-14 09:41:34.030848527 +0100
+@@ -239,7 +239,7 @@
+ This means that you may have to write your own tool or wrap an existing program
+ in some scripts that make it behave better.  For example, this could be to
+ extract the first 10MB into a temporary file and let the program work on that.
+-Or perhaps you can use F<tools/safecat> if the file may be very large.
++Or perhaps you can use F<safecat> if the file may be very large.
+ 
+ =head2 Recipe format reference
+ 
+@@ -322,7 +322,7 @@
+ =back
+ 
+ To test whether your recipe actually works, either just run it on your hard
+-disk or use the F<tools/checkrecipe> script to pick out files that should match
++disk or use the F<checkrecipe> script to pick out files that should match
+ but don't.
+ 
+ If you have created a recipe that works, please mail it to me at jbj@knef.dk so
+diff -Naur a/src/magicrescue.c b/src/magicrescue.c
+--- a/src/magicrescue.c	2018-11-24 20:21:20.000000000 +0100
++++ b/src/magicrescue.c	2019-11-14 09:41:34.030848527 +0100
+@@ -552,7 +552,7 @@
+ 
+     buf = malloc(bufsize);
+ 
+-    sprintf(buf, "PATH=%s%s%s:%s", "tools",
++    sprintf(buf, "PATH=%s%s%s:%s",
+ #ifdef COMMAND_PATH
+ 	":", COMMAND_PATH,
+ #else
+diff -Naur a/tools/checkrecipe b/tools/checkrecipe
+--- a/tools/checkrecipe	2018-11-24 20:21:20.000000000 +0100
++++ b/tools/checkrecipe	2019-11-14 09:41:34.030848527 +0100
+@@ -8,7 +8,7 @@
+ a recipe.
+ 
+ Usage:
+-./magicrescue -Mio OPTIONS FILES|tools/checkrecipe [OPTIONS]
++./magicrescue -Mio OPTIONS FILES|checkrecipe [OPTIONS]
+ 
+ Options:
+   -s VALUE  Size tolerance, in percent. Specifies when checkrecipe should
+@@ -18,13 +18,13 @@
+ 
+ find / -name \*.png -print0 \
+ |xargs -0 ./magicrescue -Mio -r png -d /tmp/test-output 2>/dev/null \
+-|tools/checkrecipe
++|checkrecipe
+ 
+   or
+ 
+ slocate \*.png|sed "s/['\"\\\\[:blank:]]/\\\\\\\\&/g" \
+ |xargs ./magicrescue -Mio -r png -d /tmp/test-output 2>/dev/null \
+-|tools/checkrecipe
++|checkrecipe
+ );
+     exit;
+ }
+diff -Naur a/tools/ole_rename.pl b/tools/ole_rename.pl
+--- a/tools/ole_rename.pl	2018-11-24 20:21:20.000000000 +0100
++++ b/tools/ole_rename.pl	2019-11-14 09:41:34.030848527 +0100
+@@ -32,7 +32,7 @@
+ my %extensions = @extensions; # for quick lookup
+ 
+ # When invoked by magicrescue, laola.pl should be in the PATH
+-push @INC, grep /tools/, split /:/, $ENV{PATH};
++push @INC, split /:/, $ENV{PATH};
+ require 'laola.pl';
+ 
+ my $file = $ARGV[0];

@@ -1,0 +1,18 @@
+diff -Naur tld-0.12.5.orig/src/tld/tests/test_core.py tld-0.12.5/src/tld/tests/test_core.py
+--- tld-0.12.5.orig/src/tld/tests/test_core.py	2021-01-11 22:28:08.000000000 +0100
++++ tld-0.12.5/src/tld/tests/test_core.py	2021-01-12 22:27:47.286114741 +0100
+@@ -710,14 +710,6 @@
+                 )
+             )
+ 
+-    @internet_available_only
+-    @log_info
+-    def test_19_update_tld_names_cli(self):
+-        """Test the return code of the CLI version of `update_tld_names`."""
+-        reset_tld_names()
+-        res = update_tld_names_cli()
+-        self.assertEqual(res, 0)
+-
+     @log_info
+     def test_20_parse_tld_custom_tld_names_good_patterns(self):
+         """Test `parse_tld` good URL patterns for custom tld names."""

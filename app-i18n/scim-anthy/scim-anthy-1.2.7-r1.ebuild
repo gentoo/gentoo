@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Japanese input method Anthy IMEngine for SCIM"
 HOMEPAGE="http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMAnthy"
 SRC_URI="mirror://sourceforge.jp/scim-imengine/37309/${P}.tar.gz
+	https://dev.gentoo.org/~juippis/distfiles/tmp/scim-anthy-1.2.7-gtk2_build.patch
 	gtk3?	( https://dev.gentoo.org/~heroxbd/${P}-patches.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ppc sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ppc sparc x86"
 IUSE="+gtk3 nls kasumi"
 
 DEPEND=">=app-i18n/scim-1.2[gtk3=]
@@ -27,8 +27,12 @@ DEPEND="${DEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	default
+
 	if use gtk3; then
-		EPATCH_SOURCE="${WORKDIR}/patches" EPATCH_SUFFIX="patch" epatch
+		eapply "${WORKDIR}"/patches/*.patch
+	else
+		eapply "${DISTDIR}"/${P}-gtk2_build.patch
 	fi
 
 	eautoreconf
@@ -37,8 +41,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		--disable-static \
-		--disable-dependency-tracking
+		--disable-static
 }
 
 src_install() {

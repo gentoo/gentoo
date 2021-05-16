@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Major mode for color moccur"
 HOMEPAGE="http://www.bookshelf.jp/
-	http://www.emacswiki.org/emacs/SearchBuffers"
+	https://www.emacswiki.org/emacs/SearchBuffers"
 # taken from http://www.bookshelf.jp/elc/color-moccur.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

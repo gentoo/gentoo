@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    A Jupyter/IPython kernel template which includes core magic
+    functions (including help, command and file path completion,
+    parallel and distributed processing, downloads, and much more).
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Calysto/metakernel</remote-id>
+    <remote-id type="pypi">metakernel</remote-id>
+  </upstream>
+</pkgmetadata>

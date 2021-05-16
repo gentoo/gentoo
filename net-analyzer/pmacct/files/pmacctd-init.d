@@ -1,7 +1,6 @@
-#!/sbin/runscript
-# Copyright 1999-2014 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 PMACCTDDIR=${PMACCTDDIR:-/etc/pmacctd}
 if [ ${SVCNAME} != "pmacctd" ]; then
@@ -28,7 +27,7 @@ start() {
 	start-stop-daemon --start \
 		--pidfile "${PMACCTDPID}" \
 		--exec /usr/sbin/"${SVCNAME}" \
-		-- -D -f "${PMACCTDCONF}" \ -F "${PMACCTDPID}" ${OPTS}
+		-- -D -f "${PMACCTDCONF}" -F "${PMACCTDPID}" ${OPTS}
 	eend $?
 }
 

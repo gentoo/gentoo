@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,7 +12,6 @@ fi
 inherit ${SCM} cmake-utils
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
@@ -22,16 +20,17 @@ fi
 
 DESCRIPTION="An Efficient Probabilistic 3D Mapping Framework Based on Octrees"
 HOMEPAGE="http://octomap.github.io/"
-IUSE="qt4 dynamicEDT3D doc"
-LICENSE="BSD qt4? ( GPL-2 )"
-SLOT="0"
+IUSE="qt5 dynamicEDT3D doc"
+LICENSE="BSD qt5? ( GPL-2 )"
+SLOT="0/19"
 
 RDEPEND="
-	qt4? (
+	qt5? (
 		virtual/opengl
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		x11-libs/libQGLViewer
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		x11-libs/libQGLViewer:=
 	)
 "
 DEPEND="${RDEPEND}
@@ -45,12 +44,15 @@ src_prepare() {
 	sed -e 's/DESTINATION lib/DESTINATION ${CMAKE_INSTALL_LIBDIR}/' \
 		-i */CMakeLists.txt \
 		-i */CMakeModules/InstallPkgConfigFile.cmake || die
+	sed -e 's/iewer-qt4/iewer-qt5/g' \
+		-i octovis/CMakeModules/FindQGLViewer.cmake || die
 	cmake-utils_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		"-DBUILD_OCTOVIS_SUBPROJECT=$(usex qt4 ON OFF)"
+		"-DBUILD_OCTOVIS_SUBPROJECT=$(usex qt5 ON OFF)"
+		"-DOCTOVIS_QT5=TRUE"
 		"-DBUILD_DYNAMICETD3D_SUBPROJECT=$(usex dynamicEDT3D ON OFF)"
 	)
 	cmake-utils_src_configure
@@ -77,5 +79,12 @@ src_install() {
 			insinto /usr/share/doc/${PF}/html/dynamicEDT3D
 			doins -r "${S}/dynamicEDT3D/doc/html/"*
 		fi
+	fi
+
+	insinto /usr/share/ros_packages/${PN}
+	doins "${ED}/usr/share/${PN}/package.xml"
+	if use qt5; then
+		insinto /usr/share/ros_packages/octovis
+		doins "${ED}/usr/share/octovis/package.xml"
 	fi
 }

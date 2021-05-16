@@ -1,0 +1,66 @@
+From f38b124f05a169acfd55a279b9f6c178b58e73fc Mon Sep 17 00:00:00 2001
+From: Firstyear <william@blackhats.net.au>
+Date: Wed, 3 Feb 2021 09:48:48 +1000
+Subject: [PATCH] Issue 4588 - BUG - unable to compile without xcrypt (#4589)
+
+Bug Description: If xcrypt is not available, especially on some
+distros with older libraries, 389 was unable to build.
+
+Fix Description: Detect if we have xcrypt, and if not, add
+stubs that always error instead.
+
+fixes: https://github.com/389ds/389-ds-base/issues/4588
+
+Author: William Brown <william@blackhats.net.au>
+
+Review by: @progier389, @jchapma, @droideck (Thanks!)
+---
+ .../plugins/pwdstorage/gost_yescrypt.c        | 29 +++++++++++++++++--
+ 1 file changed, 26 insertions(+), 3 deletions(-)
+
+diff --git a/ldap/servers/plugins/pwdstorage/gost_yescrypt.c b/ldap/servers/plugins/pwdstorage/gost_yescrypt.c
+index 2af1c2919..67b39395e 100644
+--- a/ldap/servers/plugins/pwdstorage/gost_yescrypt.c
++++ b/ldap/servers/plugins/pwdstorage/gost_yescrypt.c
+@@ -7,11 +7,12 @@
+ #include <config.h>
+ #endif
+ 
+-#include <crypt.h>
+-#include <errno.h>
+-
+ #include "pwdstorage.h"
+ 
++#include <crypt.h>
++
++#ifdef XCRYPT_VERSION_STR
++#include <errno.h>
+ int
+ gost_yescrypt_pw_cmp(const char *userpwd, const char *dbpwd)
+ {
+@@ -62,3 +63,25 @@ gost_yescrypt_pw_enc(const char *pwd)
+ 
+     return enc;
+ }
++
++#else
++
++/*
++ * We do not have xcrypt, so always fail all checks.
++ */
++int
++gost_yescrypt_pw_cmp(const char *userpwd __attribute__((unused)), const char *dbpwd __attribute__((unused)))
++{
++    slapi_log_err(SLAPI_LOG_ERR, GOST_YESCRYPT_SCHEME_NAME,
++                  "Unable to use gost_yescrypt_pw_cmp, xcrypt is not available.\n");
++    return 1;
++}
++
++char *
++gost_yescrypt_pw_enc(const char *pwd __attribute__((unused)))
++{
++    slapi_log_err(SLAPI_LOG_ERR, GOST_YESCRYPT_SCHEME_NAME,
++                  "Unable to use gost_yescrypt_pw_enc, xcrypt is not available.\n");
++    return NULL;
++}
++#endif

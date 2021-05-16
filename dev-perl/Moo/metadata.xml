@@ -11,7 +11,6 @@
 		<remote-id type="cpan-module">Method::Generate::BuildAll</remote-id>
 		<remote-id type="cpan-module">Method::Generate::Constructor</remote-id>
 		<remote-id type="cpan-module">Method::Generate::DemolishAll</remote-id>
-		<remote-id type="cpan-module">Method::Inliner</remote-id>
 		<remote-id type="cpan-module">Moo</remote-id>
 		<remote-id type="cpan-module">Moo::HandleMoose</remote-id>
 		<remote-id type="cpan-module">Moo::HandleMoose::FakeConstructor</remote-id>
@@ -21,8 +20,6 @@
 		<remote-id type="cpan-module">Moo::_Utils</remote-id>
 		<remote-id type="cpan-module">Moo::_mro</remote-id>
 		<remote-id type="cpan-module">Moo::sification</remote-id>
-		<remote-id type="cpan-module">Sub::Defer</remote-id>
-		<remote-id type="cpan-module">Sub::Quote</remote-id>
 		<remote-id type="cpan-module">oo</remote-id>
 	</upstream>
 </pkgmetadata>

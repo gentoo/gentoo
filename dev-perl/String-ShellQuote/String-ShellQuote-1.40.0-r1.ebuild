@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Quote strings for passing through the shell"
 
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~mips ppc ppc64 x86"
 IUSE=""
 
 SRC_TEST=do

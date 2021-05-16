@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This is a utility which reads libinput gestures from your touchpad
+	and maps them to gestures you configure in a configuration file.
+	Each gesture can be configured to activate a shell command which is
+	typically an xdotool command to action desktop/window/application
+	keyboard combinations and commands.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bulletmark/libinput-gestures</remote-id>
+	</upstream>
+</pkgmetadata>

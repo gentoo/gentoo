@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>hwoarang@gentoo.org</email>
-	<name>Markos Chandras</name>
-</maintainer>
-<use>
-	<flag name="dlna">Add DLNA (<pkg>media-libs/libdlna</pkg>) support</flag>
-</use>
+	<maintainer type="person">
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
+	</maintainer>
 </pkgmetadata>

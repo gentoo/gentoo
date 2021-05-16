@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>perfinion@gentoo.org</email>
+		<name>Jason Zaman</name>
+	</maintainer>
+	<longdescription lang="en">
+		Collection of Python library code for building Python applications. The
+		code is collected from Google's own Python code base.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">abseil/abseil-py</remote-id>
+		<remote-id type="pypi">absl-py</remote-id>
+	</upstream>
+</pkgmetadata>

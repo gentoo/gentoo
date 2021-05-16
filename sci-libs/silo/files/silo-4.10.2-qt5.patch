@@ -1,0 +1,44 @@
+--- tools/silex/SiloFile.h.orig	2018-01-24 11:01:23.354705068 +0100
++++ tools/silex/SiloFile.h	2018-01-24 11:01:34.843705761 +0100
+@@ -61,6 +61,8 @@
+ #include <vector>
+ using std::vector;
+ 
++#define toAscii toLatin1
++
+ // ****************************************************************************
+ //  Class:  SiloDir
+ //
+--- tools/silex/main.cpp.orig	2018-01-24 11:02:21.201708556 +0100
++++ tools/silex/main.cpp	2018-01-24 11:02:34.146709336 +0100
+@@ -58,7 +58,7 @@
+ #include <cstdlib>
+ 
+ #ifndef Q_WS_MACX
+-#include "qwindowsstyle.h"
++//#include "qwindowsstyle.h"
+ #endif
+ #include "qfiledialog.h"
+ #include "qstring.h"
+@@ -91,7 +91,7 @@
+     QApplication::setColorSpec(QApplication::ManyColor);
+     QApplication a(argc, argv);
+ #ifndef Q_WS_MACX
+-    a.setStyle(new QWindowsStyle);
++//    a.setStyle(new QWindowsStyle);
+ #endif
+     Explorer *w = 0;
+     if (argc > 1)
+--- tools/silex/SiloView.cpp.orig	2018-01-24 11:03:13.775711725 +0100
++++ tools/silex/SiloView.cpp	2018-01-24 11:03:30.032712706 +0100
+@@ -109,8 +109,8 @@
+         dirTreeView->OpenRootDir();
+         dirView->Set(silo->root);
+ 
+-        dirTreeView->header()->setResizeMode(QHeaderView::Interactive);
+-        dirView->header()->setResizeMode(QHeaderView::Interactive);
++        dirTreeView->header()->setSectionResizeMode(QHeaderView::Interactive);
++        dirView->header()->setSectionResizeMode(QHeaderView::Interactive);
+     }
+ }
+ 

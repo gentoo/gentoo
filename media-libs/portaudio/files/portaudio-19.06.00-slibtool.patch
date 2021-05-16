@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/777072
+https://github.com/PortAudio/portaudio/pull/451
+https://github.com/PortAudio/portaudio/pull/452
+
+From ef36b577c844d28e90ac276c59c0b4d0fbf853c7 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 20 Jan 2021 18:23:43 -0800
+Subject: [PATCH] autoconf build: add src dir src/hostapi/skeleton to fix out
+ of tree builds."
+
+---
+ Makefile.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.in b/Makefile.in
+index 5e1a7648..967bba38 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -146,6 +146,7 @@ SRC_DIRS = \
+ 	src/hostapi/dsound \
+ 	src/hostapi/jack \
+ 	src/hostapi/oss \
++	src/hostapi/skeleton \
+ 	src/hostapi/wasapi \
+ 	src/hostapi/wdmks \
+ 	src/hostapi/wmme \
+From c2dd992caa33b0927fb45228f0de0a2d51401f65 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Wed, 20 Jan 2021 21:46:12 -0800
+Subject: [PATCH] build: Fix builds with parallel make.
+
+---
+ Makefile.in | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 5e1a7648..10f8e8ed 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -220,16 +220,16 @@ clean:
+ distclean: clean
+ 	$(RM) config.log config.status Makefile libtool portaudio-2.0.pc
+ 
+-%.o: %.c $(MAKEFILE) $(PAINC)
++%.o: %.c $(MAKEFILE) $(PAINC) lib-stamp
+ 	$(CC) -c $(CFLAGS) $< -o $@
+ 
+-%.lo: %.c $(MAKEFILE) $(PAINC)
++%.lo: %.c $(MAKEFILE) $(PAINC) lib-stamp
+ 	$(LIBTOOL) --mode=compile $(CC) -c $(CFLAGS) $< -o $@
+ 
+-%.lo: %.cpp $(MAKEFILE) $(PAINC)
++%.lo: %.cpp $(MAKEFILE) $(PAINC) lib-stamp
+ 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) -c $(CXXFLAGS) $< -o $@
+ 
+-%.o: %.cpp $(MAKEFILE) $(PAINC)
++%.o: %.cpp $(MAKEFILE) $(PAINC) lib-stamp
+ 	$(CXX) -c $(CXXFLAGS) $< -o $@
+ 
+ %.o: %.asm

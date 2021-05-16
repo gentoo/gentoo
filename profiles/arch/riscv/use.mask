@@ -1,0 +1,81 @@
+# Copyright 2019-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-riscv
+
+# Unmask systemd
+-systemd
+
+# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
+# no fam providers keyworded yet
+fam
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
+# valgrind has no RISCV port.
+valgrind
+
+# Not tested yet
+bluetooth
+elogind
+emacs
+fuse
+gtk
+gtk2
+gtk3
+introspection
+java
+kerberos
+latex
+libedit
+lua
+motif
+opencl
+qt5
+rsh
+ruby
+slang
+sound
+systemtap
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependencies not keyworded.
+appindicator
+ayatana
+
+# not supported / tested cards
+
+video_cards_ast
+video_cards_dummy
+video_cards_fbdev
+video_cards_freedreno
+video_cards_geode
+video_cards_glint
+video_cards_i915
+video_cards_i965
+video_cards_intel
+video_cards_mga
+video_cards_nouveau
+video_cards_nv
+video_cards_omap
+video_cards_qxl
+video_cards_r128
+video_cards_radeonsi
+video_cards_siliconmotion
+video_cards_tegra
+video_cards_vc4
+video_cards_vesa
+video_cards_via
+video_cards_virtualbox
+video_cards_vmware
+video_cards_nvidia
+
+# input devices
+
+input_devices_elographics
+input_devices_evdev
+input_devices_joystick
+input_devices_vmmouse
+input_devices_void
+input_devices_synaptics
+input_devices_wacom

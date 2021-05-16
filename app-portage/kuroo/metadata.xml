@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>tools-portage@gentoo.org</email>
+		<name>Gentoo Portage tools team</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>galiven@users.sourceforge.net</email>
+		<name>Andrew Schenck</name>
+		<description>Upstream Maintainer (please CC on bugs)</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">kuroo</remote-id>
+	</upstream>
+</pkgmetadata>

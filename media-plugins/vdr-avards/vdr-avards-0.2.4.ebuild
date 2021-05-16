@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -10,7 +9,7 @@ DESCRIPTION="VDR Plugin:  Automatic Video Aspect Ratio Detection and Signaling"
 HOMEPAGE="http://firefly.vdr-developer.org/avards/"
 SRC_URI="http://firefly.vdr-developer.org/avards/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""

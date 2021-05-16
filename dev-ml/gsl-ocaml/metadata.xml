@@ -5,10 +5,8 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
-GSL interface for OCaml
-</longdescription>
   <upstream>
     <remote-id type="bitbucket">mmottl/gsl-ocaml</remote-id>
+    <remote-id type="github">mmottl/gsl-ocaml</remote-id>
   </upstream>
 </pkgmetadata>

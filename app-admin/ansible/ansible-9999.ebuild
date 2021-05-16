@@ -1,64 +1,61 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
-HOMEPAGE="http://ansible.com/"
-# the version here is special because upstream did a 2.0.0 release on accident one time...
-EGIT_REPO_URI="git://github.com/ansible/ansible.git"
-EGIT_BRANCH="devel"
+HOMEPAGE="https://ansible.com/"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
+	EGIT_BRANCH="devel"
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="keyczar test"
+IUSE="test"
+RESTRICT="test"
 
 RDEPEND="
-	keyczar? ( dev-python/keyczar[${PYTHON_USEDEP}] )
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/netaddr[${PYTHON_USEDEP}]
+	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
+	!app-admin/ansible-base
 "
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	!app-admin/ansible-base
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		<dev-python/mock-1.1[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
 
+python_compile() {
+	export ANSIBLE_SKIP_CONFLICT_CHECK=1
+	distutils-r1_python_compile
+}
+
 python_test() {
 	nosetests -d -w test/units -v --with-coverage --cover-package=ansible --cover-branches || die
-}
-
-python_compile_all() {
-	local _man
-	for _man in ansible{,-{galaxy,playbook,pull,vault}}; do
-		a2x -f manpage docs/man/man1/${_man}.1.asciidoc.in || die "Failed generating man page (${_man})"
-	done
-}
-
-python_install_all() {
-	EXAMPLES=( examples )
-	distutils-r1_python_install_all
-
-	doman docs/man/man1/*.1
 }

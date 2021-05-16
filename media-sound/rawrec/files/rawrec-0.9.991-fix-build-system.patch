@@ -1,0 +1,24 @@
+--- a/Makefile
++++ b/Makefile
+@@ -6,19 +6,15 @@
+ HEADERS = $(wildcard *.h)
+ OBJS = $(patsubst %.c,%.o,$(wildcard *.c))
+ 
+-CC = gcc
+ WARNFLAGS = -Wall -W -Wpointer-arith -Wstrict-prototypes -Wmissing-prototypes
+-DEBUGFLAGS = -O0 -g
+-OPTFLAGS = -O2
+ 
+ # Uncomment this to try to use untested priority ceiling/inheritance
+ # code (if system supports it).
+ #FANCY_THREAD_DEFINES = -DUSE_FANCY_PRIORITY_CODE
+ 
+ # FIXME: USEBUFFLOCK appears to be historic, and should probably go some day.
+-CFLAGS = $(WARNFLAGS) $(OPTFLAGS) $(DEBUGFLAGS) -DUSEBUFFLOCK \
+-         $(FANCY_THREAD_DEFINES) -D_REENTRANT -D_GNU_SOURCE \
+-         -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
++CFLAGS += $(WARNFLAGS)
++CPPFLAGS += -DUSEBUFFLOCK -D_REENTRANT -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
+ LIBS = -lm -lpthread
+ 
+ # The GNU way is just too painful.  I'm not writing three tiers of

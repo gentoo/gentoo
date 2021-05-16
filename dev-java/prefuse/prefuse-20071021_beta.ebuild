@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,12 +9,12 @@ inherit java-pkg-2 java-ant-2
 
 MY_PV=${PV/_beta/}
 MY_P=${PN}-beta-${MY_PV}
-DESCRIPTION="UI toolkit for building highly interactive visualizations of structured and unstructured data"
+DESCRIPTION="UI toolkit for building highly interactive visualizations of un-/structured data"
 SRC_URI="mirror://sourceforge/prefuse/${MY_P}.zip"
 HOMEPAGE="http://prefuse.org"
 LICENSE="BSD"
 SLOT="2006"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 
 COMMON_DEP="dev-java/lucene:1"
 
@@ -42,7 +41,7 @@ src_compile() {
 src_install() {
 	java-pkg_dojar build/${PN}.jar
 
-	dodoc readme.txt || die
+	dodoc readme.txt
 	use doc && java-pkg_dojavadoc doc/api
 	use source && java-pkg_dosrc src/*
 	use examples && java-pkg_doexamples demos/*

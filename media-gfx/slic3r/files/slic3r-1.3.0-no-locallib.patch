@@ -1,0 +1,609 @@
+commit 6f7e42a4707788d079d865800d9fdb65ed7d5f1f
+Author: Ian Stakenvicius <axs@gentoo.org>
+Date:   Wed Sep 27 12:22:14 2017 -0400
+
+    Revert "Use --local-lib when calling cpanm"
+    
+    This reverts commit e5412b5d69dc4d5415c92a7daaa47fb4860ca4ea and others
+    that add local::lib dependency
+
+diff --git a/Build.PL b/Build.PL
+index 2dd18435..18befbf8 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -109,16 +109,7 @@ EOF
+         if !$cpanm;
+     my @cpanm_args = ();
+     push @cpanm_args, "--sudo" if $sudo;
+-    
+-    # install local::lib without --local-lib otherwise it's not usable afterwards
+-    if (!eval "use local::lib qw(local-lib); 1") {
+-        my $res = system $cpanm, @cpanm_args, 'local::lib';
+-        warn "Warning: local::lib is required. You might need to run the `cpanm --sudo local::lib` command in order to install it.\n"
+-            if $res != 0;
+-    }
+-    
+-    push @cpanm_args, ('--local-lib', 'local-lib');
+-    
++
+     # make sure our cpanm is updated (old ones don't support the ~ syntax)
+     system $cpanm, @cpanm_args, 'App::cpanminus';
+     
+diff --git a/slic3r.pl b/slic3r.pl
+index 11dc2fad..76885c90 100755
+--- a/slic3r.pl
++++ b/slic3r.pl
+@@ -6,7 +6,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/lib";
+-    use local::lib '--no-create', "$FindBin::Bin/local-lib";
+ }
+ 
+ use File::Basename qw(basename);
+diff --git a/t/adaptive_slicing.t b/t/adaptive_slicing.t
+index 64c3769f..5ab631fe 100644
+--- a/t/adaptive_slicing.t
++++ b/t/adaptive_slicing.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first sum);
+diff --git a/t/adaptive_width.t b/t/adaptive_width.t
+index 7a0baa75..c200f844 100644
+--- a/t/adaptive_width.t
++++ b/t/adaptive_width.t
+@@ -7,7 +7,6 @@ plan tests => 32;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/angles.t b/t/angles.t
+index 2ae00b4e..1e1a6c9c 100644
+--- a/t/angles.t
++++ b/t/angles.t
+@@ -7,9 +7,6 @@ plan tests => 34;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use lib "$FindBin::Bin/../lib";
+-    use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/arcs.t b/t/arcs.t
+index ec85dfbc..65b83de4 100644
+--- a/t/arcs.t
++++ b/t/arcs.t
+@@ -7,7 +7,6 @@ plan tests => 24;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/avoid_crossing_perimeters.t b/t/avoid_crossing_perimeters.t
+index 7cd04e50..dd6c3e7b 100644
+--- a/t/avoid_crossing_perimeters.t
++++ b/t/avoid_crossing_perimeters.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first sum);
+diff --git a/t/bridges.t b/t/bridges.t
+index 677115b8..3dc6b84a 100644
+--- a/t/bridges.t
++++ b/t/bridges.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first sum);
+diff --git a/t/clean_polylines.t b/t/clean_polylines.t
+index 50c6f5bb..4526bd60 100644
+--- a/t/clean_polylines.t
++++ b/t/clean_polylines.t
+@@ -7,7 +7,6 @@ plan tests => 6;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/clipper.t b/t/clipper.t
+index 3c983814..a898a53f 100644
+--- a/t/clipper.t
++++ b/t/clipper.t
+@@ -7,7 +7,6 @@ plan tests => 6;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(sum);
+diff --git a/t/collinear.t b/t/collinear.t
+index b28a3602..9dee7770 100644
+--- a/t/collinear.t
++++ b/t/collinear.t
+@@ -7,7 +7,6 @@ plan tests => 11;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/combineinfill.t b/t/combineinfill.t
+index 66e461d4..6661cdd6 100644
+--- a/t/combineinfill.t
++++ b/t/combineinfill.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/config.t b/t/config.t
+index 829ef5f3..7f85dae8 100644
+--- a/t/config.t
++++ b/t/config.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/cooling.t b/t/cooling.t
+index 80819bdc..5b2d4b4c 100644
+--- a/t/cooling.t
++++ b/t/cooling.t
+@@ -7,7 +7,6 @@ plan tests => 13;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(none all);
+diff --git a/t/custom_gcode.t b/t/custom_gcode.t
+index 9b58344e..3ff7c35d 100644
+--- a/t/custom_gcode.t
++++ b/t/custom_gcode.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/fill.t b/t/fill.t
+index 765cfd47..d422d27a 100644
+--- a/t/fill.t
++++ b/t/fill.t
+@@ -7,7 +7,6 @@ plan tests => 95;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first sum max);
+diff --git a/t/flow.t b/t/flow.t
+index 37e9deaf..071d290c 100644
+--- a/t/flow.t
++++ b/t/flow.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first sum);
+diff --git a/t/gaps.t b/t/gaps.t
+index 01ec1b4e..16baa036 100644
+--- a/t/gaps.t
++++ b/t/gaps.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/gcode.t b/t/gcode.t
+index ec9b7bb2..525356df 100644
+--- a/t/gcode.t
++++ b/t/gcode.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/geometry.t b/t/geometry.t
+index 9c6eef55..4e6e7097 100644
+--- a/t/geometry.t
++++ b/t/geometry.t
+@@ -7,7 +7,6 @@ plan tests => 44;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/layers.t b/t/layers.t
+index a8599807..57fd2576 100644
+--- a/t/layers.t
++++ b/t/layers.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/loops.t b/t/loops.t
+index d2bf7717..725154c9 100644
+--- a/t/loops.t
++++ b/t/loops.t
+@@ -7,7 +7,6 @@ plan tests => 4;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/multi.t b/t/multi.t
+index fb8cad81..4d6f8193 100644
+--- a/t/multi.t
++++ b/t/multi.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/perimeters.t b/t/perimeters.t
+index 513c76ef..3ddde0b8 100644
+--- a/t/perimeters.t
++++ b/t/perimeters.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r::ExtrusionLoop ':roles';
+diff --git a/t/polyclip.t b/t/polyclip.t
+index 0808c7be..1292d321 100644
+--- a/t/polyclip.t
++++ b/t/polyclip.t
+@@ -7,7 +7,6 @@ plan tests => 18;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/pressure.t b/t/pressure.t
+index dde23695..6bbb81d8 100644
+--- a/t/pressure.t
++++ b/t/pressure.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw();
+diff --git a/t/print.t b/t/print.t
+index b78739e4..28cf1ee4 100644
+--- a/t/print.t
++++ b/t/print.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/retraction.t b/t/retraction.t
+index 237af3ab..37dcb64b 100644
+--- a/t/retraction.t
++++ b/t/retraction.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(any);
+diff --git a/t/shells.t b/t/shells.t
+index 2347ff36..d64eb28c 100644
+--- a/t/shells.t
++++ b/t/shells.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first sum);
+diff --git a/t/skirt_brim.t b/t/skirt_brim.t
+index d6181ba2..cfa0698e 100644
+--- a/t/skirt_brim.t
++++ b/t/skirt_brim.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/slice.t b/t/slice.t
+index 51b52163..301ae164 100644
+--- a/t/slice.t
++++ b/t/slice.t
+@@ -8,7 +8,6 @@ plan tests => 16;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ # temporarily disable compilation errors due to constant not being exported anymore
+diff --git a/t/speed.t b/t/speed.t
+index 5d9fb54c..3deab75b 100644
+--- a/t/speed.t
++++ b/t/speed.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(none);
+diff --git a/t/support.t b/t/support.t
+index 8d4655b3..b4f9ce04 100644
+--- a/t/support.t
++++ b/t/support.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/svg.t b/t/svg.t
+index 6092efe2..9299eeef 100644
+--- a/t/svg.t
++++ b/t/svg.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/thin.t b/t/thin.t
+index 2d256d28..51461480 100644
+--- a/t/thin.t
++++ b/t/thin.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/t/threads.t b/t/threads.t
+index 7fcd86f0..106a68af 100644
+--- a/t/threads.t
++++ b/t/threads.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use List::Util qw(first);
+diff --git a/t/vibrationlimit.t b/t/vibrationlimit.t
+index 1a5488a6..7bfa27ac 100644
+--- a/t/vibrationlimit.t
++++ b/t/vibrationlimit.t
+@@ -5,7 +5,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/utils/amf-to-stl.pl b/utils/amf-to-stl.pl
+index 56df2e23..7edc1460 100755
+--- a/utils/amf-to-stl.pl
++++ b/utils/amf-to-stl.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use File::Basename qw(basename);
+diff --git a/utils/config-bundle-to-config.pl b/utils/config-bundle-to-config.pl
+index e1d7f614..beecd666 100755
+--- a/utils/config-bundle-to-config.pl
++++ b/utils/config-bundle-to-config.pl
+@@ -9,7 +9,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Getopt::Long qw(:config no_auto_abbrev);
+diff --git a/utils/dump-stl.pl b/utils/dump-stl.pl
+index 6da275ab..4df94268 100644
+--- a/utils/dump-stl.pl
++++ b/utils/dump-stl.pl
+@@ -8,7 +8,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/utils/estimate-gcode-time.pl b/utils/estimate-gcode-time.pl
+index 43c558b6..eab4f6da 100755
+--- a/utils/estimate-gcode-time.pl
++++ b/utils/estimate-gcode-time.pl
+@@ -6,7 +6,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/utils/gcode_sectioncut.pl b/utils/gcode_sectioncut.pl
+index b94a2fc4..4d9619e4 100644
+--- a/utils/gcode_sectioncut.pl
++++ b/utils/gcode_sectioncut.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Getopt::Long qw(:config no_auto_abbrev);
+diff --git a/utils/pdf-slices.pl b/utils/pdf-slices.pl
+index 30c41ae4..fa7612bb 100755
+--- a/utils/pdf-slices.pl
++++ b/utils/pdf-slices.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Getopt::Long qw(:config no_auto_abbrev);
+diff --git a/utils/send-gcode.pl b/utils/send-gcode.pl
+index d87e6826..6f529b90 100644
+--- a/utils/send-gcode.pl
++++ b/utils/send-gcode.pl
+@@ -6,7 +6,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Slic3r;
+diff --git a/utils/split_stl.pl b/utils/split_stl.pl
+index eb659b9c..16cf5a9d 100755
+--- a/utils/split_stl.pl
++++ b/utils/split_stl.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use File::Basename qw(basename);
+diff --git a/utils/stl-to-amf.pl b/utils/stl-to-amf.pl
+index cb041893..81648b8e 100755
+--- a/utils/stl-to-amf.pl
++++ b/utils/stl-to-amf.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use File::Basename qw(basename);
+diff --git a/utils/view-mesh.pl b/utils/view-mesh.pl
+index 91cd20a2..b122faed 100644
+--- a/utils/view-mesh.pl
++++ b/utils/view-mesh.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Getopt::Long qw(:config no_auto_abbrev);
+diff --git a/utils/view-toolpaths.pl b/utils/view-toolpaths.pl
+index d4c47f07..4bbbaab4 100755
+--- a/utils/view-toolpaths.pl
++++ b/utils/view-toolpaths.pl
+@@ -7,7 +7,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Getopt::Long qw(:config no_auto_abbrev);
+diff --git a/utils/wireframe.pl b/utils/wireframe.pl
+index f49b66e5..053581de 100644
+--- a/utils/wireframe.pl
++++ b/utils/wireframe.pl
+@@ -8,7 +8,6 @@ use warnings;
+ BEGIN {
+     use FindBin;
+     use lib "$FindBin::Bin/../lib";
+-    use local::lib "$FindBin::Bin/../local-lib";
+ }
+ 
+ use Getopt::Long qw(:config no_auto_abbrev);

@@ -1,0 +1,15 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,9 +4,11 @@
+ 
+ PKGS=freetype2 dbus-1 libavcodec libavutil libavformat libswresample libswscale libpcre
+ 
+-LIBS+=-lrt -lpthread $(shell pkg-config --libs $(PKGS)) -L/opt/vc/lib
++PKG_CONFIG ?= pkg-config
+ 
+-INCLUDES+=$(shell pkg-config --cflags $(PKGS)) -I/opt/vc/include -I. -Ilinux
++LIBS+=-lrt -lpthread $(shell $(PKG_CONFIG) --libs $(PKGS)) -L${SYSROOT}/opt/vc/lib
++
++INCLUDES+=$(shell $(PKG_CONFIG) --cflags $(PKGS)) -I${SYSROOT}/opt/vc/include -I. -Ilinux
+ 
+ DIST ?= omxplayer-dist

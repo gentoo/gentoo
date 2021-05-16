@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="google-code">libnfc</remote-id>
+		<remote-id type="github">nfc-tools/libnfc</remote-id>
 	</upstream>
 </pkgmetadata>

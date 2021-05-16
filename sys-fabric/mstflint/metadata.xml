@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">Mellanox/mstflint</remote-id>
+	</upstream>
+	<use>
+		<flag name="adb-generic-tools">Enable compiling the following tools: mstreg and mstlink</flag>
+		<flag name="inband">Enable firmware updates for Mellanox SwitchX and ConnectIB devices</flag>
+	</use>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+</pkgmetadata>

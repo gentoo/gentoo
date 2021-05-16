@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 2016-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Flannel Network Fabric for Containers"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-root}
+group=${group:-root}
+
+command="/usr/bin/${RC_SVCNAME}"
+command_args="${command_args}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/flannel/flannel.log \
+	--stderr /var/log/flannel/flannel.log"
+
+depend() {
+	need net
+}

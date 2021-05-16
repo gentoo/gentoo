@@ -1,0 +1,15 @@
+fix compile when using clang as $CC:
+
+Based on patch from https://bugs.launchpad.net/hugin/+bug/1213585 (rebased)
+
+--- a/include/zthread/Guard.h
++++ b/include/zthread/Guard.h
+@@ -108,7 +108,7 @@
+   }
+ 
+   template <class LockType>
+-  static void createScope(LockHolder<LockType>& l, unsigned long ms) {
++  static bool createScope(LockHolder<LockType>& l, unsigned long ms) {
+ 
+     if(Scope1::createScope(l, ms))
+       if(!Scope2::createScope(l, ms)) {

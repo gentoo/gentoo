@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dastergon@gentoo.org</email>
-		<name>Pavlos Ratis</name>
-	</maintainer>
+	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 </pkgmetadata>

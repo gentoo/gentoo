@@ -1,8 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"${P}/fo_FO.aff"
@@ -19,13 +18,13 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Faroese dictionaries for myspell/hunspell"
-HOMEPAGE="http://fo.speling.org/"
+HOMEPAGE="https://fo.speling.org/"
 SRC_URI="
-	http://fo.speling.org/filer/${P}.tar.bz2
-	http://fo.speling.org/filer/hyph_fo_FO-20040420a.zip
+	https://fo.speling.org/filer/${P}.tar.bz2
+	https://fo.speling.org/filer/hyph_fo_FO-20040420a.zip
 "
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE=""

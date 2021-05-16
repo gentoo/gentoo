@@ -1,7 +1,7 @@
 Author: Barry deFreese <bdefreese@debian.org>
 Description: Build with portaudio19.
---- a/Transcend/game/SoundPlayer.h
-+++ b/Transcend/game/SoundPlayer.h
+--- a/game/SoundPlayer.h
++++ b/game/SoundPlayer.h
 @@ -204,7 +204,7 @@
          double mMusicLoudness;
          
@@ -11,8 +11,8 @@ Description: Build with portaudio19.
  
          // realtime sounds that should be mixed into the next to-speaker call
          SimpleVector<PlayableSound *> *mRealtimeSounds;
---- a/Transcend/game/SoundPlayer.cpp
-+++ b/Transcend/game/SoundPlayer.cpp
+--- a/game/SoundPlayer.cpp
++++ b/game/SoundPlayer.cpp
 @@ -47,9 +47,11 @@
  
  
@@ -52,8 +52,8 @@ Description: Build with portaudio19.
          
 Description: Link to dynamic portaudio instead of static.
 Author: Miriam Ruiz <miriam@debian.org>
---- a/Transcend/Makefile.GnuLinuxX86
-+++ b/Transcend/Makefile.GnuLinuxX86
+--- a/Makefile.GnuLinuxX86
++++ b/Makefile.GnuLinuxX86
 @@ -22,7 +22,7 @@
  
  # pthread library needed for linux
@@ -63,8 +63,8 @@ Author: Miriam Ruiz <miriam@debian.org>
  
  
  # All platforms but OSX support g++ and need no linker hacks
---- a/Transcend/game/SoundPlayer.h
-+++ b/Transcend/game/SoundPlayer.h
+--- a/game/SoundPlayer.h
++++ b/game/SoundPlayer.h
 @@ -46,8 +46,7 @@
  #include "SoundFilter.h"
  #include "PlayableSound.h"
@@ -75,8 +75,8 @@ Author: Miriam Ruiz <miriam@debian.org>
  
  
  #include "minorGems/util/SimpleVector.h"
---- a/Transcend/game/SoundPlayerActive.h
-+++ b/Transcend/game/SoundPlayerActive.h
+--- a/game/SoundPlayerActive.h
++++ b/game/SoundPlayerActive.h
 @@ -16,8 +16,7 @@
  
  #include "SoundSamples.h"

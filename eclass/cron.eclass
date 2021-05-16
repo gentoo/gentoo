@@ -1,10 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: cron.eclass
 # @MAINTAINER:
-# cron-bugs@gentoo.org
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
 # @BLURB: Some functions for cron
@@ -17,7 +16,6 @@
 # NOTE on defaults: the default settings in the below functions were
 # chosen based on the most common setting among cron ebuilds.
 #
-# Please assign any bugs regarding this eclass to cron-bugs@gentoo.org.
 
 inherit eutils flag-o-matic
 
@@ -156,6 +154,6 @@ cron_pkg_postinst() {
 
 	einfo "You may wish to read the Gentoo Linux Cron Guide, which can be"
 	einfo "found online at:"
-	einfo "    https://www.gentoo.org/doc/en/cron-guide.xml"
+	einfo "    https://wiki.gentoo.org/wiki/Cron"
 	echo
 }

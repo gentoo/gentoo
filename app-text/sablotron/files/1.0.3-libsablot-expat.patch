@@ -1,5 +1,3 @@
-diff --git a/src/engine/Makefile.am b/src/engine/Makefile.am
-index abd2041..1307b1c 100644
 --- a/src/engine/Makefile.am
 +++ b/src/engine/Makefile.am
 @@ -76,4 +76,5 @@ include_HEADERS = \

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 GCONF_DEBUG=no
@@ -35,7 +34,7 @@ COMMON_DEPEND="
 	mp3? ( media-sound/lame )
 	mp4? ( >=media-video/gpac-0.4.2 )
 	ogm? ( media-sound/ogmtools )
-	spell? ( >=app-text/enchant-1.1.0 )
+	spell? ( >=app-text/enchant-1.1.0:0 )
 	srt? ( ||
 		(
 			( >=app-text/tesseract-2 media-libs/tiff )

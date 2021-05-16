@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>floppym@gentoo.org</email>
-		<name>Mike Gilbert</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		The KornShell language was designed and developed by David G. Korn at
 		AT&amp;T Bell Laboratories. It is an interactive command language that
@@ -24,4 +21,7 @@
 		many thousands of people at AT&amp;T since 1982, and at many other
 		companies and universities. 
 	</longdescription>
+	<upstream>
+		<remote-id type="github">att/ast</remote-id>
+	</upstream>
 </pkgmetadata>

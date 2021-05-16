@@ -1,0 +1,11 @@
+--- a/echoping.c
++++ b/echoping.c
+@@ -981,8 +981,6 @@
+                     if (tls_result != 0)
+                         err_sys("Cannot create a new TLS session");
+                     gnutls_set_default_priority(session);
+-                    gnutls_certificate_type_set_priority(session,
+-                                                         cert_type_priority);
+                     gnutls_credentials_set(session, GNUTLS_CRD_CERTIFICATE, xcred);
+                     gnutls_transport_set_ptr(session, (gnutls_transport_ptr)
+                                              (long) sockfd);

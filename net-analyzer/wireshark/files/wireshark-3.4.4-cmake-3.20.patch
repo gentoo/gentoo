@@ -1,0 +1,30 @@
+https://gitlab.com/wireshark/wireshark/-/merge_requests/2532?commit_id=6ef6e8f607456e239e5f1a326803846930d34fa8.diff
+https://bugs.gentoo.org/775029
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1115,6 +1115,10 @@ ws_find_package(Systemd BUILD_sdjournal HAVE_SYSTEMD)
+ 
+ # Build the Qt GUI?
+ if(BUILD_wireshark)
++	set(CMAKE_AUTOMOC ON)
++	set(CMAKE_AUTOUIC ON)
++	set(CMAKE_AUTORCC ON)
++
+ 	# Untested, may not work if CMAKE_PREFIX_PATH gets overwritten
+ 	# somewhere. The if WIN32 in this place is annoying as well.
+ 	if(WIN32)
+diff --git a/ui/qt/CMakeLists.txt b/ui/qt/CMakeLists.txt
+index ff0efeae1614511fbe12ed00d5b82f2714fa55f5..cd36913f10d949a8a701060833b0878086798bf4 100644
+--- a/ui/qt/CMakeLists.txt
++++ b/ui/qt/CMakeLists.txt
+@@ -631,10 +631,6 @@ include_directories(
+ 	${CMAKE_CURRENT_SOURCE_DIR}
+ )
+ 
+-set(CMAKE_AUTOMOC TRUE)
+-set(CMAKE_AUTOUIC TRUE)
+-set(CMAKE_AUTORCC TRUE)
+-
+ if(NOT Qt5Widgets_VERSION VERSION_LESS "5.9")
+ 	# Drop the file modification time of source files from generated files
+ 	# to help with reproducible builds. We do not use QFileInfo.lastModified

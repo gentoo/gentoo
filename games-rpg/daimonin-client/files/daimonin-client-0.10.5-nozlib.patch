@@ -1,5 +1,5 @@
---- Makefile.am.old	2010-12-01 14:39:11.605648458 -0500
-+++ Makefile.am	2010-12-01 14:41:59.875915880 -0500
+--- a/Makefile.am	2010-12-01 14:39:11.605648458 -0500
++++ b/Makefile.am	2010-12-01 14:41:59.875915880 -0500
 @@ -2,23 +2,18 @@
  daimonin_PROGRAMS = daimonin daimonin-updater
  

@@ -2,14 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>Chiitoo@gentoo.org</email>
+		<email>chiitoo@gentoo.org</email>
 		<name>Jimi Huotari</name>
-		<description>Proxied maintainer; assign all bugs to him</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>NP-Hardass@gentoo.org</email>
-		<name>NP-Hardass</name>
-		<description>Proxy maintainer; CC on all bugs</description>
+		<email>np-hardass@gentoo.org</email>
+		<name>Adam Feldman</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>

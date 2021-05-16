@@ -1,0 +1,32 @@
+commit 1153f73f038205dc17303e6e6c455bbbb56191f7
+Author: ABC <abc@openwall.com>
+Date:   Wed Oct 14 15:35:57 2020 +0300
+
+    gen_compat_def: Check for vlan_dev_priv instead of version if
+
+diff --git a/gen_compat_def b/gen_compat_def
+index c0f20f6..3965e94 100755
+--- a/gen_compat_def
++++ b/gen_compat_def
+@@ -85,6 +85,8 @@ kbuild_test_struct proc_ops linux/proc_fs.h
+ kbuild_test_struct proc_ops linux/proc_fs.h
+ # No since v5.1, but present in CentOS-8's 4.18.0-227
+ kbuild_test_symbol synchronize_sched linux/rcupdate.h
++# Stumbled on 5.9
++kbuild_test_struct vlan_dev_priv linux/if_vlan.h
+ 
+ echo "// End of compat_def.h"
+ 
+diff --git a/ipt_NETFLOW.c b/ipt_NETFLOW.c
+index 01055df..6f95166 100644
+--- a/ipt_NETFLOW.c
++++ b/ipt_NETFLOW.c
+@@ -4874,7 +4874,7 @@ static void parse_l2_header(const struct sk_buff *skb, struct ipt_netflow_tuple
+ 		tuple->tag[tag_num++] = htons(vlan_tx_tag_get(skb));
+ 	else if (skb->dev && is_vlan_dev(skb->dev)) {
+ 		struct net_device *vlan_dev = skb->dev;
+-# if LINUX_VERSION_CODE >= KERNEL_VERSION(3,2,0)
++# ifdef HAVE_VLAN_DEV_PRIV
+ 		struct vlan_dev_priv *vlan = vlan_dev_priv(vlan_dev);
+ 
+ 		/* `if` condition is `#if`ed intentionally, and this is

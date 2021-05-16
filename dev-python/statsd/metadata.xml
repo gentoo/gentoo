@@ -11,5 +11,6 @@
       <email>james@mozilla.com</email>
       <name>James Socol</name>
     </maintainer>
+    <remote-id type="github">jsocol/pystatsd</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -151,6 +151,7 @@
+ 
+ AC_PROG_CPP
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl required since we use SUBDIRS in Makefile.am
+ AC_PROG_MAKE_SET

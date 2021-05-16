@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		In the presence of GADTs, sometimes a proof is
+		needed that two types are equal. This package
+		contains an equality type for this purpose, plus its
+		properties (reflexive, symmetric, transitive) and
+		some useful operations (substitution, congruence,
+		coercion/cast). It also contains a type class for
+		producing equality proofs, providing some form of
+		decidable equality on types.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/mk/lib.mk
++++ b/mk/lib.mk
+@@ -170,7 +170,7 @@ LD_solib= lib${LIB}_pic.a
+ .elif ${TARGET_OSNAME} == "Linux"
+ SHLIB_LD = ${CC}
+ # this is ambiguous of course
+-LD_shared=-shared -Wl,"-soname lib${LIB}.so.${SHLIB_MAJOR}"
++LD_shared=-shared -Wl,-soname,lib${LIB}.so.${SHLIB_MAJOR}
+ LD_solib= -Wl,--whole-archive lib${LIB}_pic.a -Wl,--no-whole-archive
+ .if ${COMPILER_TYPE} == "gcc"
+ # Linux uses GNU ld, which is a multi-pass linker

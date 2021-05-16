@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription lang="en">
+    A small python-gtk application, which helps the user to merge or split pdf documents
+    and rotate, crop and rearrange their pages using an interactive and intuitive graphical interface.
+    It is a frontend for pikepdf.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">jeromerobert/pdfarranger</remote-id>
+  </upstream>
+</pkgmetadata>

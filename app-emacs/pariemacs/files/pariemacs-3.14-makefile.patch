@@ -1,0 +1,51 @@
+diff -r -U2 pariemacs.orig/Makefile pariemacs/Makefile
+--- pariemacs.orig/Makefile	2017-12-05 18:54:54.000000000 +0700
++++ pariemacs/Makefile	2018-01-13 19:15:31.095946659 +0700
+@@ -5,19 +5,8 @@
+ 
+ # Path to pari.cfg file.
+-# Several possibilites:
+-PARI_CFG=/usr/local/lib/pari/pari.cfg
+-# For Debian (package "libpari-dev") install: 
+-#PARI_CFG=/usr/lib/pari/pari.cfg
+-# For some other install, the architecture is mentioned 
+-# (see https://wiki.ubuntu.com/MultiarchSpec):
+-#PARI_CFG=/usr/lib/i386-linux-gnu/pari/pari.cfg
+-#PARI_CFG=/usr/lib/x86_64-linux-gnu/pari/pari.cfg
+-
+-# In case, you cannot find it, you can use the following default file
+-# (but edit this file first): 
+-#PARI_CFG=./pari.cfg-default
++PARI_CFG=./pari.cfg
+ 
+ # Where to install ourselves ?
+-INSTALL=/usr/local/share/emacs/site-lisp/pari
++INSTALL=/usr/share/emacs/site-lisp/pari
+ 
+ # Path to 'emacs' binary
+@@ -34,8 +23,4 @@
+ TARFILE=$(DIR).tar
+ 
+-install: pari-conf.el elc
+-	mkdir -p $(INSTALL)
+-	cp *.elc *.el README CHANGES COPYING $(INSTALL)
+-
+ pari-conf.el: 
+ 	@if test ! -f $(PARI_CFG); then \
+@@ -52,16 +37,4 @@
+ 	   -f batch-byte-compile *.el
+ 
+-distrib: 
+-	@if test -d $(DIR); then \
+-	  echo "Remove $(DIR) before building a new release"; exit 1; \
+-	fi
+-	@tar cf $(TARFILE) $(FILES)
+-	@mkdir $(DIR) && mv $(TARFILE) $(DIR)
+-	@cd $(DIR) && tar xf $(TARFILE) && rm -f $(TARFILE)
+-	@tar cf $(TARFILE) $(DIR)
+-	@rm -rf $(DIR)
+-	@rm -f $(TARFILE).gz
+-	@gzip  $(TARFILE)
+-
+ clean:
+ 	rm -f *.elc pari-conf.el

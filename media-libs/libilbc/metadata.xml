@@ -5,7 +5,6 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
-	<longdescription lang="en">iLBC BSD implementation from WebRTC</longdescription>
 	<upstream>
 		<remote-id type="github">dekkers/libilbc</remote-id>
 	</upstream>

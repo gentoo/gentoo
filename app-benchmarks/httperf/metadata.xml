@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>gokturk@gentoo.org</email>
+		<name>Göktürk Yüksek</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>zekeby@fastmail.com</email>
+		<name>Taha Göktuğ Yüksek</name>
+	</maintainer>
 	<longdescription lang="en">Httperf is a tool for measuring web server
 		performance. It provides a flexible facility for generating various HTTP
 		workloads and for measuring server performance. The focus of httperf is
@@ -12,8 +19,10 @@
 		sustain server overload, support for the HTTP/1.1 and SSL protocols, and
 		its extensibility to new workload generators and performance
 		measurements.</longdescription>
+	<use>
+		<flag name="idleconn">Build with the idleconn program</flag>
+	</use>
 	<upstream>
-		<remote-id type="google-code">httperf</remote-id>
 		<remote-id type="github">httperf/httperf</remote-id>
 	</upstream>
 </pkgmetadata>

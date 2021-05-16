@@ -1,0 +1,40 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -44,11 +44,11 @@
+ install: install-files install-links
+ install-files:
+ 	mkdir -p $(DESTDIR)$(bindir)
+-	$(INSTALL) cdctrl $(DESTDIR)$(bindir) -o root
+-	$(INSTALL) cdloop $(DESTDIR)$(bindir) -o root
+-	$(INSTALL) cdadd $(DESTDIR)$(bindir) -o root
+-	$(INSTALL) cdown $(DESTDIR)$(bindir) -o root
+-	$(INSTALL) cdtool2cddb $(DESTDIR)$(bindir) -o root
++	$(INSTALL) cdctrl $(DESTDIR)$(bindir)
++	$(INSTALL) cdloop $(DESTDIR)$(bindir)
++	$(INSTALL) cdadd $(DESTDIR)$(bindir)
++	$(INSTALL) cdown $(DESTDIR)$(bindir)
++	$(INSTALL) cdtool2cddb $(DESTDIR)$(bindir)
+ 
+ 	mkdir -p $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) cdctrl.1 $(DESTDIR)$(mandir)/man1
+@@ -59,9 +59,9 @@
+ 	$(INSTALL) cdtool2cddb.1 $(DESTDIR)$(mandir)/man1
+ 
+ 	mkdir -p $(DESTDIR)$(libdir)/cdtool
+-	$(INSTALL) cdtool $(DESTDIR)$(libdir)/cdtool -o root
++	$(INSTALL) cdtool $(DESTDIR)$(libdir)/cdtool
+  
+-LINKTARGET = ../lib/cdtool/cdtool
++LINKTARGET = ../$(notdir $(libdir))/cdtool/cdtool
+ LINKS = cdplay cdpause cdstop cdclose cdeject cdir cdinfo cdreset \
+         cdvolume cdshuffle
+ 
+@@ -69,7 +69,7 @@
+ install-links-local: bindir = .
+ install-links-local: install-links
+ 
+-install-links:
++install-links: install-files
+ 	for command in $(LINKS); do \
+ 	  if ! test -h $(DESTDIR)$(bindir)/$$command; then \
+ 	    echo installing $$command; \

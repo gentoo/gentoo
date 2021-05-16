@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">spruce</remote-id>
 	</upstream>
+	<use>
+		<flag name="smime">Enable experimental S/MIME support</flag>
+	</use>
 </pkgmetadata>

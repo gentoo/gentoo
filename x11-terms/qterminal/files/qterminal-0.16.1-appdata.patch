@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2020-11-14 10:11:34.000000000 +0100
++++ b/CMakeLists.txt	2021-02-28 22:47:20.119110816 +0100
+@@ -215,7 +215,7 @@
+ 
+ install(FILES
+     qterminal.appdata.xml
+-    DESTINATION "${CMAKE_INSTALL_DATADIR}/appdata"
++    DESTINATION "${CMAKE_INSTALL_DATADIR}/metainfo"
+ )
+ 
+ if(NOT APPLEBUNDLE)

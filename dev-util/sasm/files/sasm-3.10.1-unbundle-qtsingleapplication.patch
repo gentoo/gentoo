@@ -1,0 +1,19 @@
+--- a/SASM.pro	2018-10-08 22:09:33.000000000 +0300
++++ b/SASM.pro	2019-08-17 10:39:31.695020549 +0300
+@@ -18,6 +18,8 @@
+ BINDIR = $$PREFIX/bin
+ DATADIR = $$PREFIX/share
+ 
++CONFIG += qtsingleapplication
++
+ bsd {
+     binfile.files += sasm
+     binfile.files += BSD/bin/*
+@@ -47,7 +49,6 @@
+ INSTALLS += shortcutfiles
+ INSTALLS += docfiles
+ 
+-include(singleapplication/qtsingleapplication.pri)
+ 
+ SOURCES += main.cpp\
+         mainwindow.cpp \

@@ -1,40 +1,46 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils multilib-minimal multilib multibuild flag-o-matic
+inherit cmake multilib-minimal multilib multibuild flag-o-matic
 
 if [[ ${PV} = 9999* ]]; then
-	inherit mercurial
-	EHG_REPO_URI="https://bitbucket.org/multicoreware/x265"
+	inherit git-r3
+	EGIT_REPO_URI="https://bitbucket.org/multicoreware/x265_git/"
+	S=${WORKDIR}/${P}/source
 else
-	SRC_URI="
-		https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz
-		http://ftp.videolan.org/pub/videolan/x265/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
-HOMEPAGE="http://x265.org/"
+HOMEPAGE="http://x265.org/ https://bitbucket.org/multicoreware/x265/wiki/Home"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/80"
-IUSE="+10bit +12bit numa pic test"
+SLOT="0/195"
+IUSE="+10bit +12bit cpu_flags_arm_neon cpu_flags_ppc_vsx2 numa pic test"
+RESTRICT="!test? ( test )"
 
-ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+ASM_DEPEND=">=dev-lang/nasm-2.13"
+BDEPEND="
 	abi_x86_32? ( ${ASM_DEPEND} )
 	abi_x86_64? ( ${ASM_DEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}/arm-r1.patch"
+	"${FILESDIR}/neon.patch"
+	"${FILESDIR}/x265-3.3-ppc64.patch"
+	"${FILESDIR}/tests.patch"
+	"${FILESDIR}/test-ns.patch"
+)
+
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
-		mercurial_src_unpack
-		# Can't set it at global scope due to mercurial.eclass limitations...
-		export S=${WORKDIR}/${P}/source
+		git-r3_src_unpack
 	else
 		unpack ${A}
 		export S="$(echo "${WORKDIR}/${PN}_"*"/source")"
@@ -66,6 +72,8 @@ x265_variant_src_configure() {
 	mkdir -p "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
 
+	einfo "Configuring variant: ${MULTIBUILD_VARIANT} for ABI: ${ABI}"
+
 	local mycmakeargs=( "${myabicmakeargs[@]}" )
 	case "${MULTIBUILD_VARIANT}" in
 		"main12")
@@ -79,6 +87,17 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
+			if [[ ${ABI} = arm* ]] ; then
+				# 589674
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
+			# disable altivec for 12bit build #607802#c5
+			if [[ ${ABI} = ppc* ]] ; then
+				mycmakeargs+=(
+					-DENABLE_ALTIVEC=OFF
+					-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+				)
+			fi
 			;;
 		"main10")
 			mycmakeargs+=(
@@ -90,12 +109,23 @@ x265_variant_src_configure() {
 			if [[ ${ABI} = x86 ]] ; then
 				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
 			fi
+			if [[ ${ABI} = arm* ]] ; then
+				# 589674
+				mycmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+			fi
+			# disable altivec for 10bit build #607802#c5
+			if [[ ${ABI} = ppc* ]] ; then
+				mycmakeargs+=(
+					-DENABLE_ALTIVEC=OFF
+					-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+				)
+			fi
 			;;
 		"main")
 			if (( "${#MULTIBUILD_VARIANTS[@]}" > 1 )) ; then
 				local myvariants=( "${MULTIBUILD_VARIANTS[@]}" )
 				unset myvariants[${#MULTIBUILD_VARIANTS[@]}-1]
-				local liblist=""
+				local liblist="" v=
 				for v in "${myvariants[@]}" ; do
 					ln -s "${BUILD_DIR%-*}-${v}/libx265.a" "libx265_${v}.a" ||	die
 					liblist+="libx265_${v}.a;"
@@ -106,21 +136,30 @@ x265_variant_src_configure() {
 					-DLINKED_10BIT=$(usex 10bit)
 					-DLINKED_12BIT=$(usex 12bit)
 				)
+				if [[ ${ABI} = ppc* ]] ; then
+					# upstream uses mix of altivec + power8 vectors
+					# it's impossible to enable altivec without CPU_POWER8
+					# and it does not work on ppc32
+					# so we toggle both variables together
+					mycmakeargs+=(
+						-DCPU_POWER8=$(usex cpu_flags_ppc_vsx2 ON OFF)
+						-DENABLE_ALTIVEC=$(usex cpu_flags_ppc_vsx2 ON OFF)
+					)
+				fi
 			fi
 			;;
 		*)
 			die "Unknown variant: ${MULTIBUILD_VARIANT}";;
 	esac
-	cmake-utils_src_configure
+	cmake_src_configure
 	popd >/dev/null || die
 }
 
 multilib_src_configure() {
-	append-cflags -fPIC
-	append-cxxflags -fPIC
 	local myabicmakeargs=(
-		$(cmake-utils_use_enable test TESTS)
+		-DENABLE_TESTS=$(usex test ON OFF)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
+		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA=$(usex numa ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
@@ -134,6 +173,9 @@ multilib_src_configure() {
 	elif [[ ${ABI} = x32 ]] ; then
 		# bug #510890
 		myabicmakeargs+=( -DENABLE_ASSEMBLY=OFF )
+	elif [[ ${ABI} = arm ]] ; then
+		myabicmakeargs+=( -DENABLE_ASSEMBLY=$(usex pic OFF $(usex cpu_flags_arm_neon ON OFF)) )
+		use cpu_flags_arm_neon && use pic && ewarn "PIC has been requested but arm neon asm is not PIC-safe, disabling it."
 	fi
 
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
@@ -142,7 +184,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	local MULTIBUILD_VARIANTS=( $(x265_get_variants) )
-	multibuild_foreach_variant cmake-utils_src_compile
+	multibuild_foreach_variant cmake_src_compile
 }
 
 x265_variant_src_test() {
@@ -163,9 +205,14 @@ multilib_src_test() {
 multilib_src_install() {
 	# Install only "main" variant since the others are already linked into it.
 	local MULTIBUILD_VARIANTS=( "main" )
-	multibuild_foreach_variant cmake-utils_src_install
+	multibuild_foreach_variant cmake_src_install
 }
 
 multilib_src_install_all() {
 	dodoc -r "${S}/../doc/"*
+
+	# we don't install *.a files for all variants,
+	# so just delete these files instead of pretending
+	# real USE=static-libs support
+	find "${ED}" -name "*.a" -delete || die
 }

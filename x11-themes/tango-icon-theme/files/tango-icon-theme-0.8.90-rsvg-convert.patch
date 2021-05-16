@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -6554,7 +6554,7 @@
+   enable_large_bitmaps=no
+ fi
+    if test "x$enable_large_bitmaps" = "xyes"; then
+-      svgconvert_prog="rsvg"
++      svgconvert_prog="rsvg-convert"
+    else
+       svgconvert_prog="ksvgtopng"
+    fi

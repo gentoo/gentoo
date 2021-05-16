@@ -1,0 +1,16 @@
+TS_SINGLE tab style has been deprecated in oxygen qt style,
+which should be replaced by TS_PLAIN.
+
+Gentoo-bug: 563802
+
+--- a/rc/oxygenrc	2014-01-17 14:47:36.000000000 +0100
++++ b/rc/oxygenrc	2017-06-24 15:49:36.607616582 +0200
+@@ -31,7 +31,7 @@
+ ScrollBarBevel=true
+ ProgressBarAnimated=true
+ MenuHighlightMode=MM_DARK
+-TabStyle=TS_SINGLE
++TabStyle=TS_PLAIN
+ 
+ WindowDragEnabled=true
+ WindowDragMode=WD_FULL

@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-DESCRIPTION="Shiki-Colors mixes the elegance of a dark theme with the usability of a light theme"
+DESCRIPTION="Mixes the elegance of a dark theme with the usability of a light theme"
 HOMEPAGE="https://code.google.com/p/gnome-colors/"
 
 SRC_URI="https://gnome-colors.googlecode.com/files/${P}.tar.gz
@@ -16,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	|| ( x11-wm/metacity x11-wm/muffin x11-wm/mutter xfce-base/xfwm4 )
+	|| ( x11-wm/muffin x11-wm/mutter xfce-base/xfwm4 )
 	x11-themes/gtk-engines:2
 "
 DEPEND=""

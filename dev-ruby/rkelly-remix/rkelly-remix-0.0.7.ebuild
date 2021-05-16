@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -18,8 +17,6 @@ KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 IUSE="doc"
 
-ruby_add_bdepend "doc? ( dev-ruby/hoe dev-ruby/rdoc )"
-
 each_ruby_test() {
-	${RUBY} -S testrb -Ilib:. test/test_*.rb test/*/test_*.rb || die
+	${RUBY} -S testrb-2 -Ilib:. test/test_*.rb test/*/test_*.rb || die
 }

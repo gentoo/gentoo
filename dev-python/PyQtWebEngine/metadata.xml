@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
+	<longdescription lang="en">
+		PyQtWebEngine is a set of Python bindings for The Qt Company's
+		Qt WebEngine libraries. The bindings sit on top of PyQt5 and
+		are implemented as a set of three modules. Prior to v5.12 these
+		bindings were part of PyQt5 itself.
+	</longdescription>
+	<upstream>
+		<maintainer status="active">
+			<email>phil@riverbankcomputing.com</email>
+			<name>Phil Thompson</name>
+		</maintainer>
+		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt5/</doc>
+		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<remote-id type="pypi">PyQtWebEngine</remote-id>
+	</upstream>
+</pkgmetadata>

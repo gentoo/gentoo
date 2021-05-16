@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -36,9 +36,9 @@ endif
+ 
+ TARGET = trayer
+ $(TARGET): $(OBJ) $(SYSTRAYOBJ)
+-	$(CC) $(LDFLAGS) $(LIBS) $(OBJ) $(SYSTRAYOBJ) -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(SYSTRAYOBJ) $(LIBS) -o $@
+ ifeq (,$(DEVEL))
+-	strip $@
++	true $@
+ endif
+ 
+ TARGETMAN = $(TARGET).1.gz

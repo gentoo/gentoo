@@ -1,19 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 GCONF_DEBUG="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit autotools eutils gnome2 multilib-minimal
+inherit autotools epatch gnome2 multilib-minimal
 
 DESCRIPTION="GNOME cups library"
 HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="
@@ -23,7 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.28
 	gnome-base/gnome-common
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 src_prepare() {

@@ -1,0 +1,135 @@
+* Fix parallel build
+* Respect AR
+* Respect DESTDIR
+* Respect LDFLAGS
+
+--- a/easel/Makefile.in
++++ b/easel/Makefile.in
+@@ -17,7 +17,6 @@
+ #
+ CC       = @CC@
+ CFLAGS   = @CFLAGS@
+-AR       = @AR@ rcv
+ LN       = ln
+ RANLIB   = @RANLIB@
+ LDFLAGS  = -static @LDFLAGS@
+@@ -132,13 +131,13 @@
+ 	esl_wuss.o
+ 
+ all: libeasel.a
+-	(cd miniapps; make)
++	$(MAKE) -C miniapps
+ 
+ .c.o: 
+ 	${CC} -I. ${CFLAGS} ${SIMDFLAGS} ${DEFS} -c $<		
+ 
+ libeasel.a: $(OBJS)
+-	$(AR) libeasel.a $(OBJS)
++	$(AR) rcv libeasel.a $(OBJS)
+ 	$(RANLIB) libeasel.a
+ 	chmod 644 libeasel.a
+ 
+--- a/easel/testsuite/Makefile.in
++++ b/easel/testsuite/Makefile.in
+@@ -15,7 +15,6 @@
+ LIBS     = @LIBGSL@ @LIBS@ -lm
+ MPILIBS  = @MPILIBS@
+ 
+-AR      = @AR@ rcv
+ RANLIB  = @RANLIB@
+ 
+ ESLDIR = ..
+--- a/iinfernal-1/Makefile.in
++++ b/iinfernal-1/Makefile.in
+@@ -20,7 +20,6 @@
+ #  only used for building the testsuite anyway... e.g. we
+ #  make a "libhmmer.a" library for building the testsuite.
+ #
+-AR     = @AR@ rcv 
+ RANLIB = @RANLIB@
+ 
+ MPILIBS   = @MPILIBS@
+@@ -63,7 +62,7 @@
+ module: libinfernal.a
+ 
+ libinfernal.a: $(OBJS) 
+-	$(AR) libinfernal.a $(OBJS) 
++	$(AR) rcv libinfernal.a $(OBJS) 
+ 	$(RANLIB) libinfernal.a
+ 	chmod 644 libinfernal.a
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -82,9 +82,10 @@
+ all: core 
+ 
+ core:
+-	(cd easel;     make CC="$(CC)" CFLAGS="$(CFLAGS)"; make)
+-	(cd src;       make CC="$(CC)" CFLAGS="$(CFLAGS)"; make module)
+-	(cd testsuite; make CC="$(CC)" CFLAGS="$(CFLAGS)")
++	$(MAKE) -C easel
++	$(MAKE) -C src 
++	$(MAKE) -C src module
++	$(MAKE) -C testsuite
+ 
+ #.PHONY: $(RIGFILTERS)
+ #$(RIGFILTERS): core
+@@ -202,9 +203,9 @@
+ # "make install" installs the programs in BINDIR
+ #
+ install:
+-	mkdir -p ${BINDIR}
++	mkdir -p $(DESTDIR)${BINDIR}
+ 	for file in $(PROGS); do\
+-		cp src/$$file $(BINDIR)/;\
++		cp src/$$file $(DESTDIR)$(BINDIR)/;\
+ 	done
+ #	if test -d $(RIGFILTERS); then\
+ #	   for file in $(RFPROGS); do\
+--- a/rigfilters/cfsqp/Makefile.in
++++ b/rigfilters/cfsqp/Makefile.in
+@@ -24,7 +24,6 @@
+ ## archiving command, and ranlib command.
+ # these are used to create the libcfsqp.a library, necessary for cm2hmm
+ #
+-AR     = @AR@ rcv 
+ RANLIB = @RANLIB@
+ 
+ OBJS  = cfsqp.o\
+@@ -41,7 +40,7 @@
+ all: libcfsqp.a
+ 
+ libcfsqp.a: $(OBJS) ${HDRS}
+-	$(AR) libcfsqp.a $(OBJS) 
++	$(AR) rcv libcfsqp.a $(OBJS)
+ 	$(RANLIB) libcfsqp.a
+ 	chmod 644 libcfsqp.a
+ 
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -27,7 +27,6 @@
+ #  only used for building the testsuite anyway... e.g. we
+ #  make a "libinfernal.a" library for building the testsuite.
+ #
+-AR     = @AR@ rcv 
+ RANLIB = @RANLIB@
+ 
+ # configuration for optional MPI functionality
+@@ -86,7 +85,7 @@
+ all: 	$(PROGS) 
+ 
+ $(PROGS): @EXEC_DEPENDENCY@ $(OBJS) ${HDRS}
+-	$(CC) $(CFLAGS) $(DEFS) $(MYLIBDIR) -o $@ $@.o $(OBJS) $(MYLIBS) $(LIBS) $(MPILIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(DEFS) $(MYLIBDIR) -o $@ $@.o $(OBJS) $(MYLIBS) $(LIBS) $(MPILIBS)
+ 
+ 
+ #################################################################
+@@ -95,7 +94,7 @@
+ module: libinfernal.a
+ 
+ libinfernal.a: $(OBJS) ${HDRS}
+-	$(AR) libinfernal.a $(OBJS) 
++	$(AR) rcv libinfernal.a $(OBJS)
+ 	$(RANLIB) libinfernal.a
+ 	chmod 644 libinfernal.a
+ 

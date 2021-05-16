@@ -1,5 +1,5 @@
---- java/Makefile.am
-+++ java/Makefile.am
+--- a/java/Makefile.am
++++ b/java/Makefile.am
 @@ -11,8 +12,7 @@
  
  CLEANFILES = ThePEG.jar thepeg.sh
@@ -19,8 +19,8 @@
              -e s:@bindir[@]:$(bindir):g \
              -e s:@java[@]:$(JAVA):g $(srcdir)/thepeg.install > thepeg.sh
  	chmod +x thepeg.sh
---- java/thepeg.install
-+++ java/thepeg.install
+--- a/java/thepeg.install
++++ b/java/thepeg.install
 @@ -1,6 +1,6 @@
  #!/bin/sh
  

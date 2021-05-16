@@ -1,6 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -10,18 +11,19 @@ SRC_URI="http://www.amberdata.demon.co.uk/bplay/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc sparc x86"
-IUSE=""
+KEYWORDS="amd64 ~hppa ~ppc sparc x86"
 
 src_compile() {
-	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" \
-		CFLAGS="${CFLAGS} -DUSEBUFFLOCK" bplay || die "emake failed"
+	emake \
+		LDFLAGS="${LDFLAGS}" \
+		CFLAGS="${CFLAGS} -DUSEBUFFLOCK" \
+		CC="$(tc-getCC)" bplay
 }
 
-src_install () {
-	newbin bplay bplay-bin || die "dobin failed"
-	dosym bplay-bin /usr/bin/brec || die "dosym failed"
+src_install() {
+	newbin bplay bplay-bin
+	dosym bplay-bin /usr/bin/brec
 	doman brec.1
 	newman bplay.1 bplay-bin.1
-	dodoc README
+	einstalldocs
 }

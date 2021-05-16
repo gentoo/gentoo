@@ -1,0 +1,198 @@
+diff --git a/confdb/aclocal_libs.m4 b/confdb/aclocal_libs.m4
+index c417204..5d98053 100644
+--- a/confdb/aclocal_libs.m4
++++ b/confdb/aclocal_libs.m4
+@@ -27,6 +27,14 @@ AC_DEFUN([PAC_SET_HEADER_LIB_PATH],[
+                          [AC_MSG_WARN([--with[out]-$1-lib=PATH expects a valid PATH])
+                           with_$1_lib=""])],
+                 [])
++	AC_ARG_WITH([common-libdir],
++            [AS_HELP_STRING([[--with-common-libdir[=DIR]]], [use the $1
++                            library installed in DIR, rather than the
++                            one included in the distribution.  Pass
++                            "embedded" to force usage of the included
++                            $1 source.])],
++            [],
++            [with_common_libdir=lib64])
+ 
+     # The args have been sanitized into empty/non-empty values above.
+     # Now append -I/-L args to CPPFLAGS/LDFLAGS, with more specific options
+@@ -42,9 +50,7 @@ AC_DEFUN([PAC_SET_HEADER_LIB_PATH],[
+           [AS_IF([test -n "${with_$1}"],
+                  dnl is adding lib64 by default really the right thing to do?  What if
+                  dnl we are on a 32-bit host that happens to have both lib dirs available?
+-                 [PAC_APPEND_FLAG([-L${with_$1}/lib],[LDFLAGS])
+-                  AS_IF([test -d "${with_$1}/lib64"],
+-		        [PAC_APPEND_FLAG([-L${with_$1}/lib64],[LDFLAGS])])
++                 [PAC_APPEND_FLAG([-L${with_$1}/${with_common_libdir}],[LDFLAGS])
+                  ])
+           ])
+ ])
+@@ -79,6 +85,14 @@ AC_DEFUN([PAC_CHECK_HEADER_LIB_FATAL],[
+ 
+ dnl PAC_CHECK_PREFIX(with_option,prefixvar)
+ AC_DEFUN([PAC_CHECK_PREFIX],[
++	AC_ARG_WITH([prefix-libdir],
++            [AS_HELP_STRING([[--with-$1-prefix[=DIR]]], [use the $1
++                            library installed in DIR, rather than the
++                            one included in the distribution.  Pass
++                            "embedded" to force usage of the included
++                            $1 source.])],
++            [],
++            [with_prefix_libdir=lib64])
+ 	AC_ARG_WITH([$1-prefix],
+             [AS_HELP_STRING([[--with-$1-prefix[=DIR]]], [use the $1
+                             library installed in DIR, rather than the
+@@ -93,10 +107,7 @@ AC_DEFUN([PAC_CHECK_PREFIX],[
+                  :
+              else
+                  PAC_APPEND_FLAG([-I${with_$1_prefix}/include],[CPPFLAGS])
+-                 if test -d "${with_$1_prefix}/lib64" ; then
+-                     PAC_APPEND_FLAG([-L${with_$1_prefix}/lib64],[LDFLAGS])
+-                 fi
+-                 PAC_APPEND_FLAG([-L${with_$1_prefix}/lib],[LDFLAGS])
++                 PAC_APPEND_FLAG([-L${with_$1_prefix}/${with_prefix_libdir}],[LDFLAGS])
+              fi
+              ],
+             [with_$1_prefix="embedded"])
+diff --git a/configure.ac b/configure.ac
+index 765aa9e..ef9c2e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1240,6 +1240,11 @@ OPA_fetch_and_incr_int(&i,5);
+ 
+ opasrcdir=""
+ AC_SUBST([opasrcdir])
++AC_ARG_WITH([opal-libdir],
++            [AS_HELP_STRING([[--with-opal-libdir[=DIR]]],
++                            [use the specified OPAL library path with DIR.])],
++            [],dnl action-if-given
++            [with_opal_libdir=lib64]) dnl action-if-not-given
+ opalibdir=""
+ AC_SUBST([opalibdir])
+ opalib=""
+@@ -1282,13 +1287,8 @@ else
+           [:],[AC_MSG_ERROR([the OpenPA installation in "${with_openpa_prefix}" appears broken])])
+     PAC_APPEND_FLAG([-I${with_openpa_prefix}/include],[CPPFLAGS])
+     PAC_PREPEND_FLAG([-l${OPALIBNAME}],[WRAPPER_LIBS])
+-    if test -d ${with_openpa_prefix}/lib64 ; then
+-        PAC_APPEND_FLAG([-L${with_openpa_prefix}/lib64],[WRAPPER_LDFLAGS])
+-        opalibdir="-L${with_openpa_prefix}/lib64"
+-    else
+-        opalibdir="-L${with_openpa_prefix}/lib"
+-    fi
+-    PAC_APPEND_FLAG([-L${with_openpa_prefix}/lib],[WRAPPER_LDFLAGS])
++    PAC_APPEND_FLAG([-L${with_openpa_prefix}/${with_opal_libdir}],[WRAPPER_LDFLAGS])
++    opallibdir="-L${with_openpa_prefix}/${with_opal_libdir}"
+ fi
+ 
+ # Izem
+@@ -1463,6 +1463,11 @@ AC_ARG_WITH([hwloc-prefix],
+             [with_hwloc_prefix=embedded]) dnl action-if-not-given
+ hwlocsrcdir=""
+ AC_SUBST([hwlocsrcdir])
++AC_ARG_WITH([hwloc-libdir],
++            [AS_HELP_STRING([[--with-hwloc-libdir[=DIR]]],
++                            [use the specified HWLOC library path with DIR.])],
++            [],dnl action-if-given
++            [with_hwloc_libdir=lib64]) dnl action-if-not-given
+ hwloclibdir=""
+ AC_SUBST([hwloclibdir])
+ hwloclib=""
+@@ -1502,12 +1507,8 @@ else
+ 
+    if test "$have_hwloc" = "yes" ; then
+       hwloclib="-lhwloc"
+-      if test -d ${with_hwloc_prefix}/lib64 ; then
+-         PAC_APPEND_FLAG([-L${with_hwloc_prefix}/lib64],[WRAPPER_LDFLAGS])
+-         hwloclibdir="-L${with_hwloc_prefix}/lib64"
+-      else
+-	 hwloclibdir="-L${with_hwloc_prefix}/lib"
+-      fi
++      PAC_APPEND_FLAG([-L${with_hwloc_prefix}/${with_hwloc_libdir}],[WRAPPER_LDFLAGS])
++      hwloclibdir="-L${with_hwloc_prefix}/${with_hwloc_libdir}"
+    fi
+ fi
+ 
+@@ -1526,7 +1527,11 @@ AC_ARG_WITH([netloc-prefix],
+             [AS_HELP_STRING([[--with-netloc-prefix[=DIR]]],
+                             [use the NETLOC library installed in DIR]) or system to use the system library], [],
+                             [with_netloc_prefix=no])
+-
++AC_ARG_WITH([netloc-libdir],
++            [AS_HELP_STRING([[--with-netloc-libdir[=DIR]]],
++                            [use the specified NETLOC library path with DIR.])],
++            [],dnl action-if-given
++            [with_netloc_libdir=lib64]) dnl action-if-not-given
+ netloclibdir=""
+ AC_SUBST([netloclibdir])
+ 
+@@ -1540,13 +1545,8 @@ if test "$have_hwloc" = "yes" ; then
+             PAC_APPEND_FLAG([-I${with_netloc_prefix}/include],[CPPFLAGS])
+             PAC_APPEND_FLAG([-I${with_netloc_prefix}/include],[CFLAGS])
+             PAC_PREPEND_FLAG([-lnetloc],[WRAPPER_LIBS])
+-            if test -d ${with_netloc_prefix}/lib64 ; then
+-                PAC_APPEND_FLAG([-L${with_netloc_prefix}/lib64],[WRAPPER_LDFLAGS])
+-                netloclibdir="-L${with_netloc_prefix}/lib64"
+-            else
+-                PAC_APPEND_FLAG([-L${with_netloc_prefix}/lib],[WRAPPER_LDFLAGS])
+-                netloclibdir="-L${with_netloc_prefix}/lib"
+-            fi
++            PAC_APPEND_FLAG([-L${with_netloc_prefix}/${with_netloc_libdir}],[WRAPPER_LDFLAGS])
++            netloclibdir="-L${with_netloc_prefix}/${with_netloc_libdir}"
+        else
+            AC_LINK_IFELSE([AC_LANG_PROGRAM([#include "netloc.h"
+                                    ],
+diff --git a/src/izem/configure.ac b/src/izem/configure.ac
+index b5417fd..fe6cf4a 100644
+--- a/src/izem/configure.ac
++++ b/src/izem/configure.ac
+@@ -344,9 +344,14 @@ esac
+ 
+ AC_SUBST(ZM_QUEUE_CONF)
+ 
++AC_ARG_WITH([izem-libdir],
++            [AS_HELP_STRING([--with-hwloc-libdir], [Set specific path to hwloc.])],
++            [],
++            [with_izem_libdir=lib64])
++
+ AC_ARG_WITH([hwloc],
+             [AS_HELP_STRING([--with-hwloc], [Set path to hwloc. Default: auto detect.])],
+-            [LIBS="$LIBS -L$with_hwloc/lib"
++            [LIBS="$LIBS -L$with_hwloc/$with_izem_libdir"
+              CFLAGS="$CFLAGS -I$with_hwloc/include"],
+             [])
+ 
+diff --git a/src/mpid/ch4/netmod/ofi/libfabric/config/fi_provider.m4 b/src/mpid/ch4/netmod/ofi/libfabric/config/fi_provider.m4
+index 901de77..6778da7 100644
+--- a/src/mpid/ch4/netmod/ofi/libfabric/config/fi_provider.m4
++++ b/src/mpid/ch4/netmod/ofi/libfabric/config/fi_provider.m4
+@@ -189,16 +189,19 @@ AC_DEFUN([FI_CHECK_PREFIX_DIR],[
+ 	        AC_MSG_ERROR([Cannot continue])
+ 	       ])
+ 
++	AC_ARG_WITH([fiprovider-libdir],
++            [AS_HELP_STRING([[--with-fiprovider-libdir[=DIR]]],
++                            [use the specified FI PROVIDER library path with DIR.])],
++            [],dnl action-if-given
++            [with_fiprovider_libdir=lib64]) dnl action-if-not-given
++
+ 	# Check that base/lib or base/lib64 exists
+-	 AS_IF([test -d "$1/lib64"],
+-	       [$2_LIBDIR="$1/lib64"],
+-	       [AS_IF([test -d "$1/lib"],
+-		      [$2_LIBDIR="$1/lib"],
+-		      [AC_MSG_WARN([could not find "lib" or "lib64" subdirectories in supplied "$1" directory"])
+-		       AC_MSG_ERROR([Cannot continue])
+-		      ])
+-	       ])
+-	])
++     [AS_IF([test -d "$1/${with_fiprovider_libdir}"],
++        [$2_LIBDIR="$1/${with_fiprovider_libdir}"],
++        [AC_MSG_WARN([could not find "lib" or "lib64" subdirectories in supplied "$1" directory"])
++         AC_MSG_ERROR([Cannot continue])
++        ])
++     ]])
+ 
+ dnl ------------------------------------------------------------------------
+ 

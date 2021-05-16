@@ -1,0 +1,10 @@
+Dash does not support 'echo -n' and breaks default config sourcing.
+diff --git a/default-configure b/default-configure
+index 9e4b78b..a749f63 100755
+--- a/default-configure
++++ b/default-configure
+@@ -30,3 +30,3 @@ done
+ CONF=`cat $CONF_FILE`
+-CONF=`echo -n "$CONF"| sed '/^config {/d' | sed '/^}/d' | tr '\n' ' ' `
++CONF=`printf "%s" "$CONF"| sed '/^config {/d' | sed '/^}/d' | tr '\n' ' ' `
+ 

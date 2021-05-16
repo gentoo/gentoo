@@ -1,0 +1,49 @@
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@
+ all:	$(PROGRAM)
+ 
+ $(PROGRAM) : $(OBJECTS)
+-	$(CXX) -o $(PROGRAM) $(OBJECTS) `fltk-config --ldflags` $(CXXFLAGS) $(LDFLAGS)
++	$(CXX) -o $(PROGRAM) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) `fltk-config --ldflags`
+ 
+ configure: configure.in
+ 	autoconf
+@@ -29,9 +29,9 @@
+ .SUFFIXES : .fl .do .C .c .H
+ 
+ .C.o :
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
++	$(CXX) $(CXXFLAGS) `fltk-config --cxxflags` -c $<
+ .C :
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
++	$(CXX) $(CXXFLAGS) `fltk-config --cxxflags` -c $<
+ .fl.C :
+ 	-fluid -c $<
+ .fl.H :
+@@ -42,7 +42,7 @@
+ 	@touch makedepend
+ 
+ depend:
+-	$(MAKEDEPEND) -I.. $(CPPFLAGS) $(CXXFILES) $(CFILES) > makedepend
++	$(MAKEDEPEND) -I.. $(CXXFLAGS) `fltk-config --cxxflags` $(CXXFILES) $(CFILES) > makedepend
+ makedepend:
+ 	touch makedepend
+ include makedepend
+@@ -73,13 +73,13 @@
+ OBJECTS_D = $(CXXFILES:.C=.do) $(CFILES:.c=.do)
+ 
+ .C.do :
+-	$(CXX) $(CPPFLAGS) $(CXXFLAGS_D) -c -o $@ $<
++	$(CXX) $(CXXFLAGS) `fltk-config --cxxflags` $(CXXFLAGS_D) -c -o $@ $<
+ .c.do :
+ 	$(CC) $(CFLAGS_D) -c -o $@ $<
+ 
+ $(PROGRAM_D) : $(OBJECTS_D)
+-	$(CXX) -o $(PROGRAM_D) $(OBJECTS_D) `fltk-config --ldflags` $(CXXFLAGS_D) $(LDFLAGS)
++	$(CXX) -o $(PROGRAM_D) $(CXXFLAGS_D) $(LDFLAGS) $(OBJECTS_D) `fltk-config --ldflags`
+ 
+ # Used to make the version that is gzipped and uploaded to web site
+ static : $(OBJECTS)
+-	$(CXX) -o $(PROGRAM) $(OBJECTS) `fltk-config --ldstaticflags` $(CXXFLAGS) $(LDFLAGS)
++	$(CXX) -o $(PROGRAM) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) `fltk-config --ldstaticflags`

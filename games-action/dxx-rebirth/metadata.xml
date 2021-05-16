@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription>
+		Descent 1 is a classic first-person shooter released in 1995
+		by Interplay and Parallax. Descent 2 released for the PC in
+		1996. It, along with its predecessor, was one of the first
+		games with true 3-dimensional graphics, 6 degrees of freedom
+		in movement, light sourcing, and the capability to join
+		multiplayer games on-the-fly. D1X-Rebirth and DXX-Rebirth are
+		modifications of the original Descent 1 and 2 sources that was
+		released by Parallax (and are based on the D1X and D2X
+		sources). It offering OpenGL graphics, advanced multiplayer,
+		new features, and cross-platform compatibility. Now code bases
+		of D1X-Rebirth and DXX-Rebirth merged and released as
+		DXX-Rebirth.
+	</longdescription>
+	<use>
+		<flag name="d1x">Install Descent 1 resources and executable</flag>
+		<flag name="d2x">Install Descent 2 resources and executable</flag>
+		<flag name="data">Ensure some game levels are present; if the full game's level data is not already installed then install the playable demo data (i.e. shareware levels)</flag>
+		<flag name="debug">Enable various debugging code paths and sanity checks, not just output. Some of these checks date back to the retail build, and choke on some custom levels because the game was never coded to sufficiently distrust inputs</flag>
+		<flag name="editor">Enable level editor support</flag>
+		<flag name="l10n_de">Provides German translations for the game's briefings, robot descriptions, and outro of the original campaign</flag>
+		<flag name="midi">Enforce that SDL-mixer is used and has midi support</flag>
+		<flag name="music">Enable music support</flag>
+		<flag name="opl3-musicpack">Include alternate version of the game's music, recorded with the Yamaha YMF262 OPL3 soundchip</flag>
+		<flag name="sc55-musicpack">Include alternate version of the game's music, recorded with the Roland Sound Canvas SC-55 MIDI module</flag>
+		<flag name="sdl2">Use libSDL2, SDL2-mixer instead of libSDL-1* and SDL-mixer-1*</flag>
+		<flag name="tracker">Enable support for the PHP-based multiplayer game tracker</flag>
+		<flag name="valgrind">Include a Valgrind header in build in order to support Memcheck client requests</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">dxx-rebirth/dxx-rebirth</remote-id>
+	</upstream>
+</pkgmetadata>

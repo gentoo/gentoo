@@ -1,40 +1,30 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="
-		git://github.com/rafaelmartins/squareball.git
-		https://github.com/rafaelmartins/squareball.git"
-	inherit git-r3 autotools
+	EGIT_REPO_URI="https://github.com/rafaelmartins/${PN}.git"
+	inherit autotools git-r3
 fi
-
-inherit eutils
 
 DESCRIPTION="A general-purpose library for C99"
 HOMEPAGE="https://github.com/rafaelmartins/squareball"
-
-SRC_URI="https://github.com/rafaelmartins/${PN}/releases/download/v${PV}/${P}.tar.xz"
-KEYWORDS="~amd64 ~x86"
-if [[ ${PV} = *9999* ]]; then
-	SRC_URI=""
-	KEYWORDS=""
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="https://github.com/rafaelmartins/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc test static-libs"
+RESTRICT="!test? ( test )"
 
-RDEPEND=""
-
-DEPEND="
+BDEPEND="
 	virtual/pkgconfig
-	test? (
-		dev-util/cmocka )
-	doc? (
-		app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
+DEPEND="test? ( dev-util/cmocka )"
 
 src_prepare() {
 	[[ ${PV} = *9999* ]] && eautoreconf
@@ -57,5 +47,6 @@ src_compile() {
 src_install() {
 	use doc && HTML_DOCS=( doc/build/html/* )
 	default
-	prune_libtool_files --all
+
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,40 +1,38 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-EGIT_REPO_URI="git://anongit.freedesktop.org/libreoffice/cppunit"
-[[ ${PV} = 9999 ]] && inherit git-r3 autotools
-inherit eutils flag-o-matic multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ port of the famous JUnit framework for unit testing"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/cppunit"
-[[ ${PV} = 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.gz"
-
+if [[ "${PV}" == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/cppunit.git"
+else
+	SRC_URI="https://dev-www.libreoffice.org/src/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+fi
 LICENSE="LGPL-2.1"
 SLOT="0"
-# Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ ${PV} = 9999 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples static-libs"
 
 RDEPEND=""
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? (
 		app-doc/doxygen[dot]
 		media-gfx/graphviz
-	)"
+	)
+"
 
 DOCS=( AUTHORS BUGS NEWS README THANKS TODO doc/FAQ )
-[[ ${PV} = 9999 ]] || DOCS+=( ChangeLog )
-
-MULTILIB_CHOST_TOOLS=(
-	/usr/bin/cppunit-config
-)
+[[ "${PV}" == 9999 ]] || DOCS+=( ChangeLog )
 
 src_prepare() {
-	[[ ${PV} = 9999 ]] && eautoreconf
+	default
+	[[ "${PV}" == 9999 ]] && eautoreconf
 }
 
 src_configure() {
@@ -45,19 +43,24 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		$(use_enable static-libs static) \
-		$(multilib_native_use_enable doc doxygen) \
-		$(multilib_native_use_enable doc dot) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		--disable-silent-rules
+	local myeconfargs=(
+		--disable-werror
+		$(multilib_native_use_enable doc dot)
+		$(multilib_native_use_enable doc doxygen)
+		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
+	if use doc ; then
+		mv "${ED}"/usr/share/${PN}/html "${ED}"/usr/share/doc/${PF} \
+			|| die
+		rm -r "${ED}"/usr/share/${PN} || die
+	fi
 	einstalldocs
-	prune_libtool_files --all
+
+	find "${ED}" -name '*.la' -delete || die
 
 	if use examples ; then
 		find examples -iname "*.o" -delete

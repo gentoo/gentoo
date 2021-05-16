@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Unstructured log data exporter for Prometheus"
+config_file="${config_file:-/etc/${RC_SVCNAME}/${RC_SVCNAME}.yml}"
+command=/usr/bin/grok_exporter
+command_background=yes
+command_user=${RC_SVCNAME}:${RC_SVCNAME}
+pidfile=/var/run/${RC_SVCNAME}.pid
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+output_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+required_files="${config_file}"
+command_args="-config \"${config_file}\""
+
+depend() {
+	after net
+}

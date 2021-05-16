@@ -1,5 +1,5 @@
---- mpeg_encode/parallel.c
-+++ mpeg_encode/parallel.c
+--- a/mpeg_encode/parallel.c
++++ b/mpeg_encode/parallel.c
 @@ -586,6 +586,8 @@
   * SIDE EFFECTS:    none
   *
@@ -40,8 +40,8 @@
      } else {
        Frame_AllocYCC(frame);
  
---- mpeg_encode/readframe.c
-+++ mpeg_encode/readframe.c
+--- a/mpeg_encode/readframe.c
++++ b/mpeg_encode/readframe.c
 @@ -227,14 +227,22 @@
   * SIDE EFFECTS:    none
   *

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>nativemad@gentoo.org</email>
+    <name>Andreas Schuerch</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">coturn/coturn</remote-id>
+  </upstream>
+  <use>
+    <flag name="mongodb">Enable support for the mongodb database</flag>
+    <flag name="redis">Enable support for the redis database</flag>
+  </use>
+</pkgmetadata>

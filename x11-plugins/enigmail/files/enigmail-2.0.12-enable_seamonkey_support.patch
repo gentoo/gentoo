@@ -1,0 +1,20 @@
+--- enigmail/package/install.rdf
++++ enigmail/package/install.rdf
+@@ -19,14 +19,14 @@
+         <em:maxVersion>60.*</em:maxVersion>
+       </Description>
+     </em:targetApplication>
+-    <!--em:targetApplication>
+-      < ! - - Seamonkey is no longer supported - - >
++    <em:targetApplication>
++      <!-- Seamonkey -->
+       <Description>
+         <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+         <em:minVersion>2.49</em:minVersion>
+         <em:maxVersion>2.57</em:maxVersion>
+       </Description>
+-    </em:targetApplication -->
++    </em:targetApplication>
+ 
+     <!-- Front End MetaData -->
+     <em:name>Enigmail</em:name>

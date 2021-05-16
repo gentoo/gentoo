@@ -1,33 +1,41 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 MY_P="${PN}_v${PV}"
 
-DESCRIPTION="a powerful perl script that summarizes snort logs"
+inherit edos2unix
+
+DESCRIPTION="A powerful perl script that summarizes snort logs"
 HOMEPAGE="http://jeremy.chartier.free.fr/snortalog/"
-SRC_URI="${HOMEPAGE}downloads/${PN}/${MY_P}.tar"
+SRC_URI="http://jeremy.chartier.free.fr/snortalog/downloads/${PN}/${MY_P}.tar"
+S="${WORKDIR}"
+
 LICENSE="GPL-2"
 SLOT="0"
-
 KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="tk"
 
 RDEPEND="
 	dev-lang/perl[ithreads]
+	dev-perl/GDGraph
 	dev-perl/HTML-HTMLDoc
 	virtual/perl-DB_File
 	virtual/perl-Getopt-Long
-	tk? ( dev-perl/Tk dev-perl/GDGraph )
+	tk? ( dev-perl/Tk )
 "
 
-S=${WORKDIR}
-
 src_prepare() {
-	edos2unix $(find conf/ modules/ -type f) ${PN}.* CHANGES
+	default
+
+	local convert=$(find conf/ modules/ -type f || die)
+	convert+=( ${PN}.* CHANGES )
+
+	local item
+	for item in ${convert[@]} ; do
+		edos2unix "${item}"
+	done
 
 	# fix paths, erroneous can access message
 	sed -i \
@@ -41,7 +49,7 @@ src_prepare() {
 		snortalog.pl || die
 }
 
-src_install () {
+src_install() {
 	dobin snortalog.pl
 
 	insinto /etc/snortalog

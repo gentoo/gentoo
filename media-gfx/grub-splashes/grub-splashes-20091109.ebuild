@@ -1,6 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=6
+
+inherit mount-boot
 
 DESCRIPTION="Collection of grub splashes"
 HOMEPAGE="https://dev.gentoo.org/~welp/grub-splashes.xml"
@@ -10,18 +13,10 @@ SRC_URI="mirror://gentoo/${PN}-0.1.tar.gz
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="|| ( sys-boot/grub sys-boot/grub-static )"
-RDEPEND="${DEPEND}"
-
 S="${WORKDIR}"
-
-pkg_setup() {
-	[[ -d ${ROOT}/boot/grub ]] || \
-		die "${ROOT}/boot/grub does not exist, please make sure you have /boot mounted"
-}
 
 src_unpack() {
 	unpack ${A}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>The Intel Graphics Compute Runtime for for oneAPI Level Zero and
+		OpenCL Driver, informally known as NEO, is an open source project providing
+		compute API support (Level Zero, OpenCL) for Intel graphics hardware
+		architectures (HD Graphics, Xe).
+		For OpenCL, NEO supports Intel Core processors with Gen8 graphics devices
+		(Broadwell architecture) and newer, as well as Intel Atom processors with Gen9
+		graphics devices (Apollo Lake, Gemini Lake).
+		Level Zero support is more limited and as of April 2020 still in early stages,
+		please consult upstream release notices for details.</longdescription>
+	<use>
+		<flag name="l0">Install the oneAPI Level Zero driver alongside the OpenCL one</flag>
+		<flag name="vaapi">Support the sharing of surfaces with Video Acceleration API
+			(OpenCL Extension #36)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">intel/compute-runtime</remote-id>
+	</upstream>
+</pkgmetadata>

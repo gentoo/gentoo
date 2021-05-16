@@ -1,0 +1,19 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -4,14 +4,6 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
+-AC_CHECK_LIB(ncurses, tgetnum,,
+-[
+-	echo "The required library ncurses not found - aborting."
+-	exit
+-],)
+-AC_CHECK_LIB(readline, tputs,,
+-[
+-	echo "The required library readline not found - aborting."
+-	exit
+-],)
++AC_SEARCH_LIBS([tgetnum], [ncurses tinfo], , AC_MSG_ERROR([need ncurses]), [])
++AC_CHECK_LIB(readline, tputs, , AC_MSG_ERROR([need readline]), [])
+ AC_OUTPUT(Makefile)

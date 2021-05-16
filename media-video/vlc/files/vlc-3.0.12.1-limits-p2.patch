@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/767796
+
+From: Robert-André Mauchin <zebob.m@gmail.com>
+Date: Mon, 14 Dec 2020 02:23:52 +0000 (+0100)
+Subject: adaptive: add missing <limits> include
+X-Git-Url: https://git.videolan.org/?p=vlc.git;a=commitdiff_plain;h=e3de1b709b258d2b0e316d927f5c828bdb1a738a
+
+adaptive: add missing <limits> include
+
+Compilation would fail with:
+
+> error: 'numeric_limits' is not a member of 'std'
+
+without this include because of some hardening build
+flags mandated on Fedora Linux, with GCC 11.
+
+Refs #25325
+
+Signed-off-by: Robert-André Mauchin <zebob.m@gmail.com>
+Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+---
+
+--- a/modules/demux/adaptive/playlist/Inheritables.cpp
++++ b/modules/demux/adaptive/playlist/Inheritables.cpp
+@@ -29,3 +29,4 @@
++#include <limits>
+ 
+ using namespace adaptive::playlist;
+ using namespace adaptive;
+--- a/modules/demux/adaptive/playlist/SegmentInformation.cpp
++++ b/modules/demux/adaptive/playlist/SegmentInformation.cpp
+@@ -34,6 +34,7 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <limits>
+ 
+ using namespace adaptive::playlist;
+ 
+--- a/modules/demux/adaptive/playlist/SegmentTimeline.cpp
++++ b/modules/demux/adaptive/playlist/SegmentTimeline.cpp
+@@ -29,5 +29,6 @@
+ 
+ #include <algorithm>
++#include <limits>
+ 
+ using namespace adaptive::playlist;
+ 

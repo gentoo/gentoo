@@ -1,54 +1,61 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
-PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
+EAPI=7
+LLVM_MAX_SLOT=10
+PLOCALES="cs da de fr ja pl ru sl uk zh-CN zh-TW"
 
-inherit eutils l10n qmake-utils virtualx
+inherit llvm qmake-utils virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
-HOMEPAGE="http://doc.qt.io/qtcreator/"
+HOMEPAGE="https://doc.qt.io/qtcreator/"
 LICENSE="GPL-3"
 SLOT="0"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI=(
-		"git://code.qt.io/${PN}/${PN}.git"
-		"https://code.qt.io/git/${PN}/${PN}.git"
-	)
+	EGIT_REPO_URI="https://code.qt.io/${PN}/${PN}.git"
 else
 	MY_PV=${PV/_/-}
 	MY_P=${PN}-opensource-src-${MY_PV}
 	[[ ${MY_PV} == ${PV} ]] && MY_REL=official || MY_REL=development
-	SRC_URI="http://download.qt.io/${MY_REL}_releases/${PN/-}/${PV%.*}/${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	SRC_URI="https://download.qt.io/${MY_REL}_releases/${PN/-}/$(ver_cut 1-2)/${MY_PV}/${MY_P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
 # TODO: unbundle sqlite
-#	allow disabling modeleditor plugin
-#	it should be possible to skip building some internal libs (clangbackendipc, glsl, modelinglib, sqlite) when the plugins that use them are disabled
 
-QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectmanager baremetal bazaar
-	clangcodemodel clangstaticanalyzer clearcase cmake:cmakeprojectmanager cvs git glsl:glsleditor
-	ios mercurial perforce python:pythoneditor qbs:qbsprojectmanager qnx subversion valgrind winrt)
-IUSE="doc systemd test webengine webkit ${QTC_PLUGINS[@]%:*}"
-
-REQUIRED_USE="?? ( webengine webkit )"
+QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
+	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager cppcheck
+	ctfvisualizer cvs +designer git glsl:glsleditor +help lsp:languageclient mcu:mcusupport mercurial
+	modeling:modeleditor nim perforce perfprofiler python qbs:qbsprojectmanager +qmldesigner
+	+qmljs:qmljseditor qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher
+	subversion valgrind webassembly)
+IUSE="doc systemd test webengine ${QTC_PLUGINS[@]%:*}"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="
+	boot2qt? ( remotelinux )
+	clang? ( test? ( qbs ) )
+	mcu? ( cmake )
+	python? ( lsp )
+	qmldesigner? ( qmljs )
+	qnx? ( remotelinux )
+"
 
 # minimum Qt version required
-QT_PV="5.5.0:5"
+QT_PV="5.14:5"
 
-RDEPEND="
-	=dev-libs/botan-1.10*[-bindist,threads]
-	>=dev-qt/designer-${QT_PV}
+BDEPEND="
+	>=dev-qt/linguist-tools-${QT_PV}
+	virtual/pkgconfig
+	doc? ( >=dev-qt/qdoc-${QT_PV} )
+"
+CDEPEND="
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtdeclarative-${QT_PV}[widgets]
 	>=dev-qt/qtgui-${QT_PV}
-	>=dev-qt/qthelp-${QT_PV}
 	>=dev-qt/qtnetwork-${QT_PV}[ssl]
 	>=dev-qt/qtprintsupport-${QT_PV}
 	>=dev-qt/qtquickcontrols-${QT_PV}
@@ -58,48 +65,67 @@ RDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	>=sys-devel/gdb-7.5[client,python]
-	clangcodemodel? ( >=sys-devel/clang-3.6.2:= )
-	qbs? ( >=dev-util/qbs-1.5.0 )
+	kde-frameworks/syntax-highlighting:5
+	clang? (
+		>=dev-cpp/yaml-cpp-0.6.2:=
+		|| (
+			( sys-devel/clang:10
+				dev-libs/libclangformat-ide:10 )
+			( sys-devel/clang:9
+				dev-libs/libclangformat-ide:9 )
+		)
+		<sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=
+	)
+	designer? ( >=dev-qt/designer-${QT_PV} )
+	help? (
+		>=dev-qt/qthelp-${QT_PV}
+		webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
+	)
+	perfprofiler? ( dev-libs/elfutils )
+	serialterminal? ( >=dev-qt/qtserialport-${QT_PV} )
 	systemd? ( sys-apps/systemd:= )
-	webengine? ( >=dev-qt/qtwebengine-5.6.0:5 )
-	webkit? ( >=dev-qt/qtwebkit-${QT_PV} )
 "
-DEPEND="${RDEPEND}
-	>=dev-qt/linguist-tools-${QT_PV}
-	virtual/pkgconfig
-	doc? ( >=dev-qt/qdoc-${QT_PV} )
-	test? ( >=dev-qt/qttest-${QT_PV} )
+DEPEND="${CDEPEND}
+	test? (
+		>=dev-qt/qtdeclarative-${QT_PV}[localstorage]
+		>=dev-qt/qtquickcontrols2-${QT_PV}
+		>=dev-qt/qttest-${QT_PV}
+		>=dev-qt/qtxmlpatterns-${QT_PV}[qml]
+	)
 "
-for x in ${PLOCALES}; do
-	# qt translations must be installed for qt-creator translations to work
-	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
-done
-unset x
-
-PDEPEND="
+RDEPEND="${CDEPEND}
+	sys-devel/gdb[python]
 	autotools? ( sys-devel/autoconf )
-	bazaar? ( dev-vcs/bzr )
-	clangstaticanalyzer? ( sys-devel/clang )
-	cmake? ( dev-util/cmake )
+	cmake? ( >=dev-util/cmake-3.14 )
+	cppcheck? ( dev-util/cppcheck )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
+	qbs? ( >=dev-util/qbs-1.15 )
+	qmldesigner? ( >=dev-qt/qtquicktimeline-${QT_PV} )
+	silversearcher? ( sys-apps/the_silver_searcher )
 	subversion? ( dev-vcs/subversion )
 	valgrind? ( dev-util/valgrind )
 "
+# qt translations must also be installed or qt-creator translations won't be loaded
+for x in ${PLOCALES}; do
+	IUSE+=" l10n_${x}"
+	RDEPEND+=" l10n_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
+done
+unset x
 
-src_unpack() {
-	if [[ $(gcc-major-version) -lt 4 ]] || [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; then
-		eerror "GCC version 4.7 or later is required to build Qt Creator ${PV}"
-		die "GCC >= 4.7 required"
-	fi
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.12.0-dylib-fix.patch
+	"${FILESDIR}"/${PN}-4.12.0-libclangformat-ide.patch
+)
 
-	if [[ ${PV} == *9999 ]]; then
-		git-r3_src_unpack
-	else
-		default
-	fi
+llvm_check_deps() {
+	has_version -d "sys-devel/clang:${LLVM_SLOT}" && \
+		has_version -d "dev-libs/libclangformat-ide:${LLVM_SLOT}"
+}
+
+pkg_setup() {
+	use clang && llvm_pkg_setup
 }
 
 src_prepare() {
@@ -109,46 +135,89 @@ src_prepare() {
 	for plugin in "${QTC_PLUGINS[@]#[+-]}"; do
 		if ! use ${plugin%:*}; then
 			einfo "Disabling ${plugin%:*} plugin"
-			sed -i -re "/(^\s+|SUBDIRS\s*\+=\s*)(${plugin#*:})\>/d" \
+			sed -i -re "s/(^\s+|\s*SUBDIRS\s*\+=.*)\<(${plugin#*:})\>(.*)/\1\3/" \
 				src/plugins/plugins.pro || die "failed to disable ${plugin%:*} plugin"
 		fi
 	done
+	sed -i -re '/\<(clangpchmanager|clangrefactoring|ios|updateinfo|winrt)\>/d' src/plugins/plugins.pro || die
+	sed -i -re '/clang(pchmanager|refactoring)backend/d' src/tools/tools.pro || die
 
-	# automagic dep on qtwebkit (bug 538236)
-	if ! use webkit; then
-		sed -i -e 's/isEmpty(QT\.webkitwidgets\.name)/true/' \
-			src/plugins/help/help.pro || die "failed to disable webkit"
+	# avoid building unused support libraries and tools
+	if ! use clang; then
+		sed -i -e '/clangsupport\|sqlite\|yaml-cpp/d' src/libs/libs.pro || die
+		sed -i -e '/clangbackend/d' src/tools/tools.pro || die
+	fi
+	if ! use glsl; then
+		sed -i -e '/glsl/d' src/libs/libs.pro || die
+	fi
+	if ! use lsp; then
+		sed -i -e '/languageserverprotocol/d' src/libs/libs.pro tests/auto/auto.pro || die
+	fi
+	if ! use modeling; then
+		sed -i -e '/modelinglib/d' src/libs/libs.pro || die
+	fi
+	if ! use perfprofiler; then
+		rm -r src/tools/perfparser || die
+		if ! use ctfvisualizer && ! use qmlprofiler; then
+			sed -i -e '/tracing/d' src/libs/libs.pro tests/auto/auto.pro || die
+		fi
+	fi
+	if ! use qmldesigner; then
+		sed -i -e '/advanceddockingsystem/d' src/libs/libs.pro || die
+		sed -i -e '/qml2puppet/d' src/tools/tools.pro || die
+		sed -i -e '/qmldesigner/d' tests/auto/qml/qml.pro || die
+	fi
+	if ! use qmljs; then
+		sed -i -e '/qmleditorwidgets/d' src/libs/libs.pro || die
+	fi
+	if ! use valgrind; then
+		sed -i -e '/valgrindfake/d' src/tools/tools.pro || die
+		sed -i -e '/valgrind/d' tests/auto/auto.pro || die
 	fi
 
 	# automagic dep on qtwebengine
 	if ! use webengine; then
-		sed -i -e 's/isEmpty(QT\.webenginewidgets\.name)/true/' \
-			src/plugins/help/help.pro || die "failed to disable webengine"
+		sed -i -e 's/isEmpty(QT\.webenginewidgets\.name)/true/' src/plugins/help/help.pro || die
 	fi
 
 	# disable broken or unreliable tests
-	sed -i -e '/SUBDIRS/ s/\<dumpers\>//' tests/auto/debugger/debugger.pro || die
-	sed -i -e '/CONFIG -=/ s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
-	sed -i -e '/SUBDIRS/ s/\<memcheck\>//' tests/auto/valgrind/valgrind.pro || die
+	sed -i -e 's/\(manual\|tools\|unit\)//g' tests/tests.pro || die
+	sed -i -e '/\(dumpers\|namedemangler\)\.pro/d' tests/auto/debugger/debugger.pro || die
+	sed -i -e '/CONFIG -=/s/$/ testcase/' tests/auto/extensionsystem/pluginmanager/correctplugins1/plugin?/plugin?.pro || die
+	sed -i -e 's/\<check\>//' tests/auto/qml/codemodel/codemodel.pro || die
+
+	# do not install test binaries
+	sed -i -e '/CONFIG +=/s/$/ no_testcase_installs/' tests/auto/{qttest.pri,json/json.pro} || die
+
+	# fix path to some clang headers
+	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
 
 	# fix translations
-	sed -i -e "/^LANGUAGES =/ s:=.*:= $(l10n_get_locales):" \
-		share/qtcreator/translations/translations.pro || die
+	local lang languages=
+	for lang in ${PLOCALES}; do
+		use l10n_${lang} && languages+=" ${lang/-/_}"
+	done
+	sed -i -e "/^LANGUAGES\s*=/s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
+
+	# remove bundled syntax-highlighting
+	rm -r src/libs/3rdparty/syntax-highlighting || die
+
+	# remove bundled yaml-cpp
+	rm -r src/libs/3rdparty/yaml-cpp || die
 
 	# remove bundled qbs
-	rm -rf src/shared/qbs || die
+	rm -r src/shared/qbs || die
 }
 
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
-		$(use clangcodemodel && echo LLVM_INSTALL_DIR="${EPREFIX}/usr") \
+		KSYNTAXHIGHLIGHTING_LIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
+		KSYNTAXHIGHLIGHTING_INCLUDE_DIR="${EPREFIX}/usr/include/KF5/KSyntaxHighlighting" \
+		$(use clang && echo LLVM_INSTALL_DIR="$(get_llvm_prefix ${LLVM_MAX_SLOT})") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
-		CONFIG+=qbs_disable_rpath \
-		CONFIG+=qbs_enable_project_file_updates \
 		$(use systemd && echo CONFIG+=journald) \
-		$(use test && echo BUILD_TESTS=1) \
-		USE_SYSTEM_BOTAN=1
+		$(use test && echo BUILD_TESTS=1)
 }
 
 src_test() {
@@ -156,7 +225,7 @@ src_test() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${ED}usr" install
+	emake INSTALL_ROOT="${ED}/usr" install
 
 	dodoc dist/{changes-*,known-issues}
 
@@ -168,7 +237,4 @@ src_install() {
 		doins share/doc/qtcreator/qtcreator{,-dev}.qch
 		docompress -x /usr/share/doc/qtcreator/qtcreator{,-dev}.qch
 	fi
-
-	# install desktop file
-	make_desktop_entry qtcreator 'Qt Creator' QtProject-qtcreator 'Qt;Development;IDE'
 }

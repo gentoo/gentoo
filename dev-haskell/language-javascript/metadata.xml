@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Parses Javascript into an Abstract Syntax Tree (AST).  Initially intended as frontend to hjsmin.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">alanz/language-javascript</remote-id>
 	</upstream>

@@ -1,47 +1,36 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI=7
 
-inherit autotools git-2
+inherit cmake git-r3
 
 DESCRIPTION="Practical Music Search: an open source ncurses client for mpd, written in C++"
-HOMEPAGE="http://pms.sourceforge.net/"
-SRC_URI=""
+HOMEPAGE="https://ambientsound.github.io/pms"
 
-EGIT_REPO_URI="git://pms.git.sourceforge.net/gitroot/pms/pms"
+EGIT_REPO_URI="https://github.com/ambientsound/pms.git"
+EGIT_BRANCH="0.42.x" # todo: package the golang version
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="regex"
+IUSE="+regex doc"
 
-RDEPEND="
-	sys-libs/ncurses
-	dev-libs/glib:2
-	regex? ( >=dev-libs/boost-1.36 )
-"
-DEPEND="
+BDEPEND="
 	virtual/pkgconfig
-	${RDEPEND}
+	doc? ( app-text/pandoc )
 "
-
-src_prepare() {
-	# bug #424717
-	sed -i "s:^CXXFLAGS +=:AM_CXXFLAGS =:g" Makefile.am || die "sed failed"
-
-	eautoreconf
-}
+RDEPEND="
+	sys-libs/ncurses:0=[unicode]
+	media-libs/libmpdclient
+"
+DEPEND="${RDEPEND}"
 
 src_configure() {
-	econf \
-		$(use_enable regex) ||
-			die "configure failed"
-}
+	local mycmakeargs=(
+		-DENABLE_DOC=$(usex doc)
+		-DENABLE_REGEX=$(usex regex)
+	)
 
-src_install() {
-	emake DESTDIR="${D}" install || die "installation failed"
-
-	dodoc AUTHORS README TODO
+	cmake_src_configure
 }

@@ -1,27 +1,27 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="2"
+EAPI=6
 
-inherit eutils
-
-DESCRIPTION="diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP"
+DESCRIPTION="A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP"
 #HOMEPAGE="http://research.iat.sfu.ca/custom-software/diradm/"
-#SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
+#SRC_URI="http://research.iat.sfu.ca/custom-software/diradm/${P}.tar.bz2"
 HOMEPAGE="http://orbis-terrarum.net/~robbat2/"
 SRC_URI="http://orbis-terrarum.net/~robbat2/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="samba irixpasswd automount test"
+IUSE="automount irixpasswd samba test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( automount irixpasswd samba )"
+
 RDEPEND=">=net-nds/openldap-2.3
 	sys-apps/gawk
 	sys-apps/coreutils
 	sys-apps/grep
 	dev-lang/perl
-	app-shells/bash
+	app-shells/bash:*
 	sys-apps/sed
 	virtual/perl-MIME-Base64
 	samba? (
@@ -37,27 +37,24 @@ DEPEND="
 		net-nds/openldap[-minimal]
 	)"
 
-pkg_setup() {
-	use test && elog "Warning, for test usage, diradm is built with all optional features!"
+src_configure() {
+	econf \
+		$(use_enable automount) \
+		$(use_enable irixpasswd) \
+		$(use_enable samba)
 }
 
-src_configure() {
-	local myconf
-	if use test; then
-		myconf="--enable-samba --enable-automount --enable-irixpasswd"
-	else
-		myconf="`use_enable samba` `use_enable automount` `use_enable irixpasswd`"
-	fi
-	econf ${myconf} || die "econf failed"
+src_test() {
+	emake -j1 check
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "emake install failed"
-	dodoc CHANGES* README AUTHORS ChangeLog NEWS README.prefork \
-		THANKS TODO KNOWN-BUGS || die
+	default
+	dodoc CHANGES.prefork KNOWN-BUGS
+
 	if use irixpasswd; then
 		insinto /etc/openldap/schema
-		doins irixpassword.schema || die "Failed irixpassword.schema"
+		doins irixpassword.schema
 	fi
 }
 
@@ -69,8 +66,4 @@ pkg_postinst() {
 	elog "and populates many default settings from the /etc/ldap.conf used by"
 	elog "those packages, with a further fallback to /etc/openldap/ldap.conf"
 	elog "for server connection settings only."
-}
-
-src_test() {
-	emake -j1 check
 }

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<use>
-<flag name="graph">Enable support for graphing functions</flag>
-<flag name="rados">Enable support for librados from <pkg>sys-cluster/ceph</pkg></flag>
-<flag name="rrdcgi">Build rrdcgi support</flag>
-</use>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<use>
+		<flag name="graph">Enable support for graphing functions</flag>
+		<flag name="rados">Enable support for librados from <pkg>sys-cluster/ceph</pkg></flag>
+		<flag name="rrdcgi">Build rrdcgi support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">oetiker/rrdtool-1.x</remote-id>
+	</upstream>
 </pkgmetadata>

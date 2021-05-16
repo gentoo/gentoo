@@ -1,0 +1,30 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# defaults file for hd-idle
+
+# hd-idle command line options
+# Options are:
+#  -a                      Set (partial) device name of disks for subsequent
+#                          idle-time parameters (-i). This parameter is optional
+#                          in the sense that there's a default entry for all
+#                          disks which are not named otherwise by using this
+#                          parameter.
+#  -i <idle_time>          Idle time in seconds.
+#  -l <logfile>            Name of logfile (written only after a disk has spun
+#                          up). Please note that this option might cause the
+#                          disk which holds the logfile to spin up just because
+#                          another disk had some activity. This option should
+#                          not be used on systems with more than one disk
+#                          except for tuning purposes. On single-disk systems,
+#                          this option should not cause any additional spinups.
+#
+# Options not exactly useful here:
+#  -t <disk>               Spin-down the specfified disk immediately and exit.
+#  -d                      Debug mode. This will prevent hd-idle from
+#                          becoming a daemon and print debugging info to
+#                          stdout/stderr
+#  -h                      Print usage information.
+
+#HD_IDLE_OPTS="-i 180 -l /var/log/hd-idle.log"
+

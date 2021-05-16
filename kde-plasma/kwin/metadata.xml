@@ -6,7 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="gles2">Use OpenGL ES 2 instead of full GL</flag>
 		<flag name="multimedia">Enable effect video button in desktop effects KCM</flag>
+		<flag name="screencast">Enable screencast portal using <pkg>media-video/pipewire</pkg></flag>
 	</use>
 </pkgmetadata>

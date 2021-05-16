@@ -6,6 +6,8 @@
  <name>Gentoo Base System</name>
  </maintainer>
 <use>
+ <flag name="cookie_check">Enable cookie checks via <pkg>net-libs/libpsl</pkg></flag>
+ <flag name="metalink">Enable support for <pkg>media-libs/libmetalink</pkg></flag>
  <flag name="ntlm">Enable support for NTLM (Windows-based) authorization</flag>
  <flag name="uuid">Generate UUIDs for the WARC (Web ARChive file format) using libuuid; otherwise use a simple RNG (random number generator)</flag>
 </use>

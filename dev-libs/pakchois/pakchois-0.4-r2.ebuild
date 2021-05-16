@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
 inherit multilib-minimal
 
@@ -12,14 +11,16 @@ SRC_URI="http://www.manyfish.co.uk/pakchois/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="nls"
 
-DEPEND=""
-RDEPEND=""
-
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		$(use_enable nls)
+	ECONF_SOURCE="${S}" econf \
+		$(use_enable nls) \
+		--disable-static
+}
+
+multilib_src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

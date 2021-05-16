@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+ZEROTIERONE_PIDFILE="/var/run/${SVCNAME}.pid"
+PN="zerotier-one"
+PN_PATH="/usr/sbin/${PN}"
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting ${PN}"
+    start-stop-daemon --start \
+        --exec "${PN_PATH}" --make-pidfile --pidfile "${ZEROTIERONE_PIDFILE}" --background
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${PN}"
+    start-stop-daemon --stop --quiet --pidfile "${ZEROTIERONE_PIDFILE}"
+    eend $?
+}

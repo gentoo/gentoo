@@ -1,0 +1,40 @@
+diff -ruN fasthenry-3.0wr.orig/src/fasthenry/Makefile fasthenry-3.0wr/src/fasthenry/Makefile
+--- fasthenry-3.0wr.orig/src/fasthenry/Makefile	2020-07-12 19:17:05.000000000 +0300
++++ fasthenry-3.0wr/src/fasthenry/Makefile	2020-10-24 18:27:20.624660092 +0300
+@@ -49,7 +49,7 @@
+ 	@if [ $(SOLVER) = SPARSE_SOLVER ]; then \
+ 	    cd ../sparse; make CC=$(CC); \
+ 	fi
+-	$(CC) -o fasthenry $(CFLAGS) $(OBJS) $(MOBJS) $(NONUNIOBJS) $(SOLVERLIB) -lm
++	$(CC) -o fasthenry $(LDFLAGS) $(CFLAGS) $(OBJS) $(MOBJS) $(NONUNIOBJS) $(SOLVERLIB) -lm
+ 	mv fasthenry $(BIN)/fasthenry
+ 
+ clean:
+diff -ruN fasthenry-3.0wr.orig/src/misc/Makefile fasthenry-3.0wr/src/misc/Makefile
+--- fasthenry-3.0wr.orig/src/misc/Makefile	2019-03-21 23:10:58.000000000 +0200
++++ fasthenry-3.0wr/src/misc/Makefile	2020-10-24 18:28:12.805126140 +0300
+@@ -1,10 +1,10 @@
+ all: MakeLcircuit ReadOutput
+ 
+ MakeLcircuit: MakeLcircuit.c
+-	$(CC) -O -o MakeLcircuit MakeLcircuit.c -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o MakeLcircuit MakeLcircuit.c -lm
+ 
+ ReadOutput: ReadOutput.c
+-	$(CC) -O -o ReadOutput ReadOutput.c -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o ReadOutput ReadOutput.c -lm
+ 
+ clean::
+ 	-@rm -f *.o MakeLcircuit ReadOutput
+diff -ruN fasthenry-3.0wr.orig/src/zbuf/Makefile fasthenry-3.0wr/src/zbuf/Makefile
+--- fasthenry-3.0wr.orig/src/zbuf/Makefile	2019-09-08 22:53:50.000000000 +0300
++++ fasthenry-3.0wr/src/zbuf/Makefile	2020-10-24 18:29:50.686000362 +0300
+@@ -41,7 +41,7 @@
+ LIBS = -lm
+ 
+ zbuf: $(OBJS)
+-	$(CC) -o zbuf $(CFLAGS) $(OBJS) $(LIBS)
++	$(CC) $(LDFLAGS) -o zbuf $(CFLAGS) $(OBJS) $(LIBS)
+ 	mv zbuf $(BIN)/zbuf
+ 
+ clean:

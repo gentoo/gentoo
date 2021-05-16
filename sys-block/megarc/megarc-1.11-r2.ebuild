@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -52,5 +51,5 @@ src_install() {
 	newdoc "${DISTDIR}"/README_FOR_${MY_P}-zip.txt README
 
 	exeinto /opt/bin
-	newexe megarc.bin megarc || die
+	newexe megarc.bin megarc
 }

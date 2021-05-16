@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Hack around people calling UNIVERSAL::can() as a function"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~ppc-aix"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/perl-Scalar-List-Utils"
 DEPEND="

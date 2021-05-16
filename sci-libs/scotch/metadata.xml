@@ -5,21 +5,13 @@
   <email>patrick@gentoo.org</email>
   <name>Patrick Lauer</name>
 </maintainer>
-<maintainer type="person">
-  <email>oli.borm@web.de</email>
-  <name>Oliver Borm</name>
-</maintainer>
 <maintainer type="project">
   <email>sci@gentoo.org</email>
   <name>Gentoo Science Project</name>
 </maintainer>
-<maintainer type="project">
-  <email>proxy-maint@gentoo.org</email>
-  <name>Proxy Maintainers</name>
-</maintainer>
 <use>
   <flag name="int64">Build the 64 bits integer library (needed for &gt; 2^31 vertices)</flag>
-  <flag name="tools">Build and install extra exec tools</flag>
+  <flag name="tools">Provides the graph, mesh, architecture, mapping/ordering, output handling programs (see Scotch User's Guide).</flag>
 </use>
 <longdescription lang="en">
   SCOTCH is a software package and libraries for graph, mesh and

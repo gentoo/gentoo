@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 DESCRIPTION="Serial To Network Proxy"
 SRC_URI="mirror://sourceforge/ser2net/${P}.tar.gz"
-HOMEPAGE="http://sourceforge.net/projects/ser2net"
+HOMEPAGE="https://sourceforge.net/projects/ser2net"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 LICENSE="GPL-2"
 
@@ -21,7 +20,7 @@ src_configure() {
 	econf $(use_with tcpd tcp-wrappers) --with-uucp-locking
 }
 
-src_install () {
+src_install() {
 	default
 
 	insinto /etc

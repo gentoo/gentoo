@@ -1,0 +1,25 @@
+From d741f95ed6c983919a7ed3080c15064f6fb44e61 Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Sat, 5 Oct 2019 10:39:59 +0200
+Subject: [PATCH 2/2] fix declaration of errno
+
+---
+ error.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/error.h b/error.h
+index 01bd3dc..5d98c6b 100644
+--- a/error.h
++++ b/error.h
+@@ -1,7 +1,7 @@
+ #ifndef ERROR_H
+ #define ERROR_H
+ 
+-extern int errno;
++#include <errno.h>
+ 
+ extern int error_intr;
+ extern int error_nomem;
+-- 
+2.16.4
+

@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/708118
+--- a/wmgeneral.c
++++ b/wmgeneral.c
+@@ -50,6 +50,7 @@ Window		iconwin, win;
+ GC			NormalGC;
+ XpmIcon		wmgen;
+ Pixmap		pixmask;
++Display		*display;
+ 
+   /*****************/
+  /* Mouse Regions */
+--- a/wmgeneral.h
++++ b/wmgeneral.h
+@@ -28,7 +28,7 @@ typedef struct {
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */

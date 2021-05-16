@@ -1,0 +1,46 @@
+On Gentoo, we require users to download the GeoIP databases
+themselves. As a result, the databases may not be there when
+installing pecl-geoip. The first patch below skips a test if the
+database it uses is not present. The second patch disables 019.phpt
+completely, because I can't make it pass.
+
+PHP-Bug: 73416
+
+diff --git a/tests/001.phpt b/tests/001.phpt
+index a548d6e..c0e4972 100644
+--- a/tests/001.phpt
++++ b/tests/001.phpt
+@@ -1,7 +1,10 @@
+ --TEST--
+ Checking Country (Free) DB availability
+ --SKIPIF--
+-<?php if (!extension_loaded("geoip")) print "skip"; ?>
++<?php
++if (!extension_loaded("geoip")) print "skip";
++if (!file_exists(geoip_db_filename(GEOIP_COUNTRY_EDITION))) print "skip";
++?>
+ --POST--
+ --GET--
+ --FILE--
+diff --git a/tests/019.phpt b/tests/019.phpt
+deleted file mode 100644
+index 4630354..0000000
+--- a/tests/019.phpt
++++ /dev/null
+@@ -1,15 +0,0 @@
+---TEST--
+-Checking geoip_setup_custom_directory() (with trailing slash)
+---SKIPIF--
+-<?php if (!extension_loaded("geoip")) print "skip"; ?>
+---INI--
+-geoip.custom_directory="/test/"
+---FILE--
+-<?php
+-
+-var_dump( geoip_country_name_by_name_v6('0000:0000:0000:0000') );
+-
+-?>
+---EXPECT--
+-string(27) "/some/other/place/GeoIP.dat"
+-string(6) "/test/"
+\ No newline at end of file

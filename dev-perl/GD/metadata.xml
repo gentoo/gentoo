@@ -7,11 +7,13 @@
   </maintainer>
   <use>
     <flag name="animgif">Enable animated gif support</flag>
+    <flag name="fcgi">Build for FastCGI compatibility via <pkg>dev-libs/fcgi</pkg> instead of using PerlIO</flag>
   </use>
   <upstream>
     <remote-id type="cpan">GD</remote-id>
     <remote-id type="cpan-module">GD</remote-id>
     <remote-id type="cpan-module">GD::Group</remote-id>
+    <remote-id type="cpan-module">GD::Image</remote-id>
     <remote-id type="cpan-module">GD::Polygon</remote-id>
     <remote-id type="cpan-module">GD::Polyline</remote-id>
     <remote-id type="cpan-module">GD::Simple</remote-id>

@@ -11,4 +11,7 @@
     <flag name="qmax">Build the pretty version (quake max)</flag>
     <flag name="textures">Install the enhanced textures (quake2-textures)</flag>
   </use>
+  <upstream>
+    <remote-id type="github">ZwS/qudos</remote-id>
+  </upstream>
 </pkgmetadata>

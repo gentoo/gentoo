@@ -1,0 +1,36 @@
+--- a/configure.ac.old	2020-03-20 23:32:05.866604992 +0100
++++ b/configure.ac	2020-03-20 23:32:30.866022834 +0100
+@@ -97,14 +97,12 @@
+ AC_PATH_PROG([CONVERT], [convert], [no])
+ AC_SUBST([CONVERT])
+ 
+-if test "x$enable_convert" != "xyes" -a "x$CONVERT" = "xno" ; then
+-	AC_ARG_VAR(
+-		[RSVG],
+-		[The 'rsvg' binary with path. Use it to define or override the location of 'rsvg'.]
+-	)
+-	AC_PATH_PROG([RSVG], [rsvg], [no])
+-	AC_SUBST([RSVG])
+-fi
++AC_ARG_VAR(
++	[RSVG],
++	[The 'rsvg' binary with path. Use it to define or override the location of 'rsvg'.]
++)
++AC_PATH_PROG([RSVG], [rsvg-convert], [no])
++AC_SUBST([RSVG])
+ 
+ if test "x$RSVG" = "xno" -a "x$CONVERT" = "xno" ; then
+ 	AC_MSG_ERROR([Cannot find rsvg (librsvg binary) or convert (imagemagick). Please install one of them.])
+--- a/icons/hicolor/Makefile.am.old	2020-03-20 23:32:54.292414381 +0100
++++ b/icons/hicolor/Makefile.am	2020-03-20 23:33:40.052179227 +0100
+@@ -23,8 +23,8 @@
+ .svg.svgz:
+ 	gzip $< -c > $@
+ 	for size in $(icon_sizes) ; do \
+-		if test "x$(RSVG)" != "x" ; then \
+-			$(RSVG) -w $${size} -h $${size} -f png $< $*_$${size}.png ; \
++		if test "x$(RSVG)" != "xno" ; then \
++			$(RSVG) -w $${size} -h $${size} -f png $< --output $*_$${size}.png ; \
+ 		else \
+ 			$(CONVERT) $< -resize $${size}x$${size} $*_$${size}.png ; \
+ 		fi \

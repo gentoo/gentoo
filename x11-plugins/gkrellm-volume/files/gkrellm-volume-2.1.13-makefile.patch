@@ -1,0 +1,57 @@
+--- a/Makefile	2004-08-19 22:07:27.000000000 +0200
++++ b/Makefile_new	2013-03-16 21:16:03.919755685 +0100
+@@ -3,7 +3,7 @@
+ PACKAGE ?= gkrellm-volume
+ LOCALEDIR ?= /usr/local/share/locale
+ 
+-FLAGS += -DPACKAGE="\"$(PACKAGE)\"" 
++CFLAGS += -DPACKAGE="\"$(PACKAGE)\"" 
+ export PACKAGE LOCALEDIR
+ 
+ GTK_CONFIG = pkg-config gtk+-2.0
+@@ -14,31 +14,32 @@
+ GTK_CFLAGS = `$(GTK_CONFIG) --cflags` 
+ GTK_LIB = `$(GTK_CONFIG) --libs`
+ 
+-FLAGS = -O2 -Wall -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
++CFLAGS := $(CFLAGS) -fPIC $(GTK_CFLAGS) $(GKRELLM_INCLUDE)
+ LIBS = $(GTK_LIB)
+ LFLAGS = -shared
++LFLAGS += $(LDFLAGS)
+ 
+ OBJS = volume.o mixer.o oss_mixer.o
+ 
+ ifeq ($(enable_alsa),1)
+-  FLAGS += -DALSA
++  CFLAGS += -DALSA
+   LIBS += -lasound
+   OBJS += alsa_mixer.o 
+ endif
+ 
+ ifeq ($(enable_nls),1)
+-    FLAGS += -DENABLE_NLS -DLOCALEDIR=\"$(LOCALEDIR)\"
++    CFLAGS += -DENABLE_NLS -DLOCALEDIR=\"$(LOCALEDIR)\"
+     export enable_nls
+ endif
+ 
+-CC = gcc $(CFLAGS) $(FLAGS)
++CC = $(CC)
+ 
+ INSTALL = install -c
+ INSTALL_PROGRAM = $(INSTALL) -s
+ 
+ all:	volume.so
+ 	(cd po && ${MAKE} all )
+-
++	
+ volume.so: $(OBJS)
+ 	$(CC) $(OBJS) -o volume.so $(LIBS) $(LFLAGS)
+ 
+@@ -50,5 +51,4 @@
+ 	(cd po && ${MAKE} install)
+ 	$(INSTALL_PROGRAM) volume.so $(PLUGIN_DIR)
+ 
+-%.c.o: %.c
+-
++%.c.o: %.c
+\ No newline at end of file

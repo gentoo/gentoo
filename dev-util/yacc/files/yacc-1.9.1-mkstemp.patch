@@ -1,0 +1,15 @@
+--- a/main.c.orig	2002-12-17 14:28:54.000000000 -0500
++++ b/main.c	2002-12-17 14:29:31.000000000 -0500
+@@ -264,9 +264,9 @@
+     text_file_name[len + 5] = 't';
+     union_file_name[len + 5] = 'u';
+ 
+-    mktemp(action_file_name);
+-    mktemp(text_file_name);
+-    mktemp(union_file_name);
++    mkstemp(action_file_name);
++    mkstemp(text_file_name);
++    mkstemp(union_file_name);
+ 
+     len = strlen(file_prefix);
+ 

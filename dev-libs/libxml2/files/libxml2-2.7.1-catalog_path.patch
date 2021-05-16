@@ -1,5 +1,5 @@
---- catalog.c
-+++ catalog.c
+--- a/catalog.c
++++ b/catalog.c
 @@ -68,10 +68,10 @@
  #define XML_URN_PUBID "urn:publicid:"
  #define XML_CATAL_BREAK ((xmlChar *) -1)
@@ -22,8 +22,8 @@
  #if defined(_WIN32_WCE)
  /* Windows CE don't have a A variant */
  #define GetModuleHandleA GetModuleHandle
---- xmlcatalog.c
-+++ xmlcatalog.c
+--- a/xmlcatalog.c
++++ b/xmlcatalog.c
 @@ -43,7 +43,7 @@
  
  
@@ -33,8 +33,8 @@
  #endif
  
  /************************************************************************
---- runtest.c
-+++ runtest.c
+--- a/runtest.c
++++ b/runtest.c
 @@ -2747,7 +2747,7 @@
   */
  static int
@@ -53,8 +53,8 @@
          return(NULL);
      /* Verify we received the escaped URL */
      if (strcmp(urip_rcvsURLs[urip_current], URI))
---- xmllint.c
-+++ xmllint.c
+--- a/xmllint.c
++++ b/xmllint.c
 @@ -103,7 +103,7 @@
  #endif
  

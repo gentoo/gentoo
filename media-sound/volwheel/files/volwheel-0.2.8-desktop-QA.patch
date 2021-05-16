@@ -1,0 +1,9 @@
+--- a/volwheel.desktop
++++ b/volwheel.desktop
+@@ -1,6 +1,5 @@
+ [Desktop Entry]
+ Version=1.0
+-Encoding=UTF-8
+ Name=VolWheel
+ GenericName=VolWheel
+ Comment=Easy sound volume adjustment

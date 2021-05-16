@@ -2,8 +2,5 @@
     missingok
     notifempty
     sharedscripts
-    postrotate
-        kill -0 $(</run/syncthing.pid) && \
-          /etc/init.d/syncthing restart > /dev/null 2>&1 || true
-    endscript
+    copytruncate
 }

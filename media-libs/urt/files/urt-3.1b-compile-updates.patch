@@ -1,13 +1,13 @@
---- get/getx11/XGetHClrs.c
-+++ get/getx11/XGetHClrs.c
+--- a/get/getx11/XGetHClrs.c
++++ b/get/getx11/XGetHClrs.c
 @@ -1,5 +1,4 @@
  #ifndef XLIBINT_H_NOT_AVAILABLE
 -#include <X11/copyright.h>
  
  /* $XConsortium: XGetHClrs.c,v 11.10 88/09/06 16:07:50 martin Exp $ */
  /* Copyright    Massachusetts Institute of Technology    1986	*/
---- tools/mallocNd.c
-+++ tools/mallocNd.c
+--- a/tools/mallocNd.c
++++ b/tools/mallocNd.c
 @@ -67,7 +67,7 @@
  
  /* Imports */
@@ -17,8 +17,8 @@
  
  /* Forward declarations */
  char *BuildIndirectionTable();
---- tools/into.c
-+++ tools/into.c
+--- a/tools/into.c
++++ b/tools/into.c
 @@ -40,8 +40,8 @@
  static char buf[MAXPATHLEN+1];
  short forceflg;				/* overwrite an unwritable file? */
@@ -39,8 +39,8 @@
  	unlink(buf);
  	exit(1);
      }
---- cnv/tex/dvirle2.c
-+++ cnv/tex/dvirle2.c
+--- a/cnv/tex/dvirle2.c
++++ b/cnv/tex/dvirle2.c
 @@ -55,7 +55,6 @@
  void DumpTopOfBand(), MoveDown(), WriteBuf(), WriteBlanks();
  
@@ -49,8 +49,8 @@
  extern char *optarg;
  extern int optind;
  
---- cnv/wasatchrle.c
-+++ cnv/wasatchrle.c
+--- a/cnv/wasatchrle.c
++++ b/cnv/wasatchrle.c
 @@ -32,7 +32,6 @@
  #include <errno.h>
  #include "rle.h"
@@ -59,8 +59,8 @@
  
  /* "short" in our world is 16 bits.  Beware of swyte-bopping. */
  
---- get/getx11/x11_stuff.c
-+++ get/getx11/x11_stuff.c
+--- a/get/getx11/x11_stuff.c
++++ b/get/getx11/x11_stuff.c
 @@ -155,7 +155,6 @@
  			IPC_CREAT|0777 );
  	    if ( img->shm_img.shmid < 0 )
@@ -77,8 +77,8 @@
  		if ( errno == ENOSPC )
  		{
  		    if ( !no_shared_space )
---- get/qcr/qcr.h
-+++ get/qcr/qcr.h
+--- a/get/qcr/qcr.h
++++ b/get/qcr/qcr.h
 @@ -6,8 +6,6 @@
  #define GREEN 1
  #define BLUE 2
@@ -88,8 +88,8 @@
  /* Command defs for QCR-Z Film Recorder */
  
  /* These are for 8 bit Look Up Tables */
---- get/gettaac.c
-+++ get/gettaac.c
+--- a/get/gettaac.c
++++ b/get/gettaac.c
 @@ -24,6 +24,7 @@
   * Send bug fixes and improvements to:  ksp@maxwell.nde.swri.edu
   */
@@ -106,8 +106,8 @@
       struct  direct     *nameEntry;
       DIR                *dirChan;
       struct  passwd     *pwdEntry;
---- tools/clock/rleClock.c
-+++ tools/clock/rleClock.c
+--- a/tools/clock/rleClock.c
++++ b/tools/clock/rleClock.c
 @@ -598,7 +598,7 @@
      { TRUE,  "-tf", STRING, "Text area format string", 	          (char *)&FormatString }, 
      { FALSE, "-Xm", BOOL,   "Output the alpha channel on RGB",    (char *)&DebugAlpha },
@@ -117,8 +117,8 @@
  };
  
  void
---- tools/to8.c
-+++ tools/to8.c
+--- a/tools/to8.c
++++ b/tools/to8.c
 @@ -175,7 +175,7 @@
  	 * Give it a background color of black, since the real background
  	 * will be dithered anyway.
@@ -128,8 +128,8 @@
  	{
  	    out_hdr.bg_color = (int *)malloc( sizeof( int ) );
  	    RLE_CHECK_ALLOC( cmd_name( argv ), out_hdr.bg_color, 0 );
---- cnv/rletoabA62/rletoabA62.c
-+++ cnv/rletoabA62/rletoabA62.c
+--- a/cnv/rletoabA62/rletoabA62.c
++++ b/cnv/rletoabA62/rletoabA62.c
 @@ -157,7 +157,7 @@
  	exit(1);
      }

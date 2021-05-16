@@ -1,17 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils rpm linux-info
+inherit epatch rpm linux-info
 DESCRIPTION="XenServer Virtual Machine Tools"
-HOMEPAGE="http://www.citrix.com/"
+HOMEPAGE="https://www.citrix.com/"
 PV_BASE=${PV/_*}
 PV_FULL=${PV/_p/-}
 SRC_URI="http://updates.vmd.citrix.com/XenServer/${PV_BASE}/rhel4x/SRPMS/xe-guest-utilities-${PV_FULL}.src.rpm"
 LICENSE="LGPL-3 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="xenstore"
 DEPEND="app-arch/rpm2targz"
 RDEPEND="

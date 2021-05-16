@@ -1,0 +1,74 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,8 @@
+ VERSION=$(shell date +%Y-%m-%d)
+ 
+-CFLAGS = -DVERSION="$(VERSION)"
++CFLAGS += -DVERSION="$(VERSION)"
+ 
+-CFLAGS += -Wall -W -g -O2 -D_FORTIFY_SOURCE=2 -I. -Iinclude
++CFLAGS += -Wall -W -I. -Iinclude
+ ifneq ($(SYSROOT),)
+ CFLAGS += --sysroot=$(SYSROOT)
+ endif
+@@ -18,7 +18,7 @@ CFLAGS += -Wstrict-prototypes -Wmissing-prototypes
+ CFLAGS += -Wswitch-enum
+ CFLAGS += -Wundef
+ CFLAGS += -Wwrite-strings
+-CFLAGS += $(shell pkg-config --cflags libpci)
++CFLAGS += $(shell $$PKG_CONFIG --cflags libpci)
+ 
+ # gcc specific
+ ifneq ($(shell $(CC) -v 2>&1 | grep -c "clang"), 1)
+@@ -33,20 +33,8 @@ endif
+ CPP_MAJOR := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f1)
+ CPP_MINOR := $(shell $(CPP) -dumpversion 2>&1 | cut -d'.' -f2)
+ DEVEL   := $(shell grep VERSION Makefile | head -n1 | grep pre | wc -l)
+-CFLAGS  += $(shell if [ $(CPP_MAJOR) -eq 6 -a $(CPP_MINOR) -ge 3 -a $(DEVEL) -eq 1 ] ; then echo "-Werror"; else echo ""; fi)
+ 
+-LDFLAGS = -Wl,-z,relro,-z,now
+-LDFLAGS += $(shell pkg-config --libs libpci)
+-
+-ifeq ($(CC),"")
+-CC = gcc
+-endif
+-
+-ifdef STATIC_LIBPCI
+-LIBPCI = -Wl,-Bstatic -lpci -Wl,-Bdynamic -lz
+-else
+-LIBPCI = -lpci
+-endif
++LIBS += $(shell $$PKG_CONFIG --libs libpci)
+ 
+ SHELL = /bin/sh
+ 
+@@ -68,15 +56,14 @@ X86INFO_OBJS = $(sort $(patsubst %.c,%.o,$(wildcard *.c))) \
+ 	$(sort $(patsubst %.c,%.o,$(wildcard vendors/*/*.c)))
+ 
+ x86info: $(X86INFO_OBJS) $(X86INFO_HEADERS)
+-	$(QUIET_CC)$(CC) $(CFLAGS) $(LDFLAGS) -o x86info $(X86INFO_OBJS) \
+-	    $(LIBPCI)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o x86info $(X86INFO_OBJS) $(LIBS)
+ 
+ DEPDIR= .deps
+ -include $(X86INFO_SRC:%.c=$(DEPDIR)/%.d)
+ df = $(DEPDIR)/$(*D)/$(*F)
+ 
+ %.o : %.c
+-	$(QUIET_CC)$(CC) $(CFLAGS) -o $@ -c $<
++	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
+ 	@mkdir -p $(DEPDIR)/$(*D)
+ 	@$(CC) -MM $(CFLAGS) $*.c > $(df).d
+ 	@mv -f $(df).d $(df).d.tmp
+--- a/lsmsr/Makefile
++++ b/lsmsr/Makefile
+@@ -40,7 +40,8 @@ LSMSR_TMP_HEADERS=AMD_k8.h \
+ 	generic_msr.h
+ 
+ %.h: %.regs createheader.py
+-	@python createheader.py $< `basename $< .regs` >$@
++	$(PYTHON) createheader.py $< `basename $< .regs` >$@.tmp ; \
++	mv $@.tmp $@
+ 
+ LSMSR_SRC = \
+ 	lsmsr.c \

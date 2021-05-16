@@ -1,53 +1,61 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="7"
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit linux-info
+inherit distutils-r1 linux-info
 
-PYTHON_COMPAT=( python3_4 )
+ISO="ISO-1.tar.gz"
 
-inherit distutils-r1
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/grss.git"
-	inherit git-2
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/grss.git"
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${ISO}"
+	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~blueness/${PN}/${ISO}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"
-HOMEPAGE="https://dev.gentoo.org/~blueness/${PN}"
+HOMEPAGE="https://dev.gentoo.org/~blueness/grs"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="server"
 
 DEPEND=""
 RDEPEND="
-	app-arch/tar[xattr]
-	app-crypt/md5deep
-	dev-libs/libcgroup
-	dev-vcs/git
-	net-misc/rsync
 	sys-apps/portage
-	sys-fs/squashfs-tools
-	virtual/cdrtools
-	|| (
-		sys-kernel/genkernel
-		sys-kernel/genkernel-next
+	server? (
+		app-arch/tar[xattr]
+		app-cdr/cdrtools
+		app-crypt/md5deep
+		dev-libs/libcgroup
+		dev-vcs/git
+		net-misc/rsync
+		sys-fs/squashfs-tools
+		|| (
+			sys-kernel/genkernel
+			sys-kernel/genkernel-next
+		)
 	)"
 
 pkg_setup() {
-	local CONFIG_CHECK="~CGROUPS"
-	local ERROR_CGROUPS="WARNING: grsrun requires CONFIG_CGROUPS enabled in the kernel."
-	linux-info_pkg_setup
+	if use server; then
+		local CONFIG_CHECK="~CGROUPS"
+		local ERROR_CGROUPS="WARNING: grsrun requires CONFIG_CGROUPS enabled in the kernel."
+		linux-info_pkg_setup
+	fi
 }
 
 src_install() {
 	distutils-r1_src_install
 	echo "CONFIG_PROTECT=\"/etc/grs/systems.conf\"" > "${T}"/20grs
 	doenvd "${T}"/20grs
+	if use server; then
+		mkdir "${D}"/usr/share/${PN}
+		cp "${DISTDIR}"/${ISO} "${D}"/usr/share/${PN}
+	fi
 }

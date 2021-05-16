@@ -1,0 +1,37 @@
+From 84f9fb47783e63757f27e5990ee606ff01e079a9 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 24 Aug 2017 07:09:28 -0400
+Subject: [PATCH 1/2] Fix unescaped left brace warning for "Config: {".
+
+New versions of Perl are starting to complain about unescaped braces
+in regular expressions, and supposedly the warning will become a fatal
+error in Perl 5.30. This particular warning is,
+
+  Unescaped left brace in regex is deprecated, passed through in regex;
+  marked by <-- HERE in m/^Config: { <-- HERE / at ./postfix-logwatch
+  line 1850.
+
+and it was fixed by going to line 1850 and putting a backslash before
+the left brace.
+
+Bug: https://sourceforge.net/p/logreporters/bugs/4/
+---
+ postfix-logwatch | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/postfix-logwatch b/postfix-logwatch
+index 3e4a673..1e58a95 100644
+--- a/postfix-logwatch
++++ b/postfix-logwatch
+@@ -1847,7 +1847,7 @@ sub postfix_policy_spf($) {
+         # KeyboardInterrupt 
+         $line =~ /^Read line: "/ or
+         $line =~ /^Found the end of entry$/ or
+-        $line =~ /^Config: {/ or
++        $line =~ /^Config: \{/ or
+         $line =~ /^spfcheck: pyspf result/ or
+         $line =~ /^Starting$/ or
+         $line =~ /^Normal exit$/ or
+-- 
+2.13.0
+

@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="A utility for designing Emacs color themes"
-HOMEPAGE="http://www.emacswiki.org/emacs/KahlilHodgson"
+HOMEPAGE="https://www.emacswiki.org/emacs/KahlilHodgson"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -17,5 +16,5 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 DEPEND="app-emacs/color-theme"
 RDEPEND="${DEPEND}"
 
-ELISP_PATCHES="${PV}-gentoo.patch"
+PATCHES=("${FILESDIR}"/${P}-gentoo.patch)
 SITEFILE="60${PN}-gentoo.el"

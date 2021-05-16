@@ -1,15 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 JAVA_PKG_IUSE="source doc examples"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 DESCRIPTION="Java implementation of the SSH protocol"
-HOMEPAGE="http://sourceforge.net/projects/sshtools/ http://www.sshtools.com/"
+HOMEPAGE="https://sourceforge.net/projects/sshtools/ http://www.sshtools.com/"
 SRC_URI="mirror://sourceforge/sshtools/${P}-src.tar.gz"
 
 LICENSE="GPL-2"

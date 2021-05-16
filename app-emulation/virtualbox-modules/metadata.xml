@@ -5,7 +5,7 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-<use>
-	<flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
-</use>
+  <use>
+    <flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
+  </use>
 </pkgmetadata>

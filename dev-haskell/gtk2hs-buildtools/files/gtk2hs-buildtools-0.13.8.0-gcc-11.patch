@@ -1,0 +1,32 @@
+Same fix as https://github.com/visq/language-c/issues/74
+
+"""
+Lexer: allow zeros as line numbers in preprocessed directives
+
+Starting from `gcc-11` initial line numbers not related to
+actual files are marked as zeros. See the "preprocessor:
+Better line info for <builtin> & <command-line>"
+https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=6bf2ff0d52a9
+
+language-c's grammar did not allow it (by accident)
+
+```
+Prelude> Language.C.parseC (Data.ByteString.Char8.pack "# 0 \"/dev/null\"\n") Language.C.nopos
+Left <no file>:: [ERROR]  >>> Syntax Error !
+  Lexical error !
+  The character '#' does not fit here.
+```
+
+The change allows '0' in line numbers as well.
+"""
+--- a/c2hs/c/CLexer.x
++++ b/c2hs/c/CLexer.x
+@@ -130,7 +130,7 @@ $white+					;
+ --  * allows further ints after the file name a la GCC; as the GCC CPP docu
+ --   doesn't say how many ints there can be, we allow an unbound number
+ --
+-\#$space*@int$space*(\"($infname|@charesc)*\"$space*)?(@int$space*)*$eol
++\#$space*@digits$space*(\"($infname|@charesc)*\"$space*)?(@int$space*)*$eol
+   { \pos len str -> setPos (adjustPos (take len str) pos) >> lexToken }
+ 
+ -- #pragma directive (K&R A12.8)

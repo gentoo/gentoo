@@ -1,19 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit font
 
-DESCRIPTION="Hunky Fonts are free TrueType fonts based on Bitstream's Vera fonts with additional letters"
-HOMEPAGE="http://sourceforge.net/projects/hunkyfonts/"
+DESCRIPTION="Free TrueType fonts based on Bitstream's Vera fonts with additional letters"
+HOMEPAGE="https://sourceforge.net/projects/hunkyfonts/"
 SRC_URI="mirror://sourceforge/hunkyfonts/${P}.tar.bz2"
 
 LICENSE="BitstreamVera public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd"
-IUSE=""
-
-FONT_S="${WORKDIR}/${P}/TTF"
-FONT_SUFFIX="ttf"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ~s390 sparc x86"
 
 DOCS="ChangeLog README"
+FONT_S="${S}/TTF"
+FONT_SUFFIX="ttf"

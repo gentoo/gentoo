@@ -1,0 +1,22 @@
+diff --git a/tests/testDailyRollingFileAppender.cpp b/tests/testDailyRollingFileAppender.cpp
+index 9958f41..158c08b 100644
+--- a/tests/testDailyRollingFileAppender.cpp
++++ b/tests/testDailyRollingFileAppender.cpp
+@@ -22,6 +22,7 @@
+ 
+ #ifndef WIN32    // only available on Win32
+ #include <dirent.h>
++#include <sys/time.h>
+ #else
+ #include <direct.h>  
+ #endif
+@@ -232,7 +233,8 @@ namespace OnlyManualTesting {
+ 
+ 		now += seconds;
+ 
+-		if (stime(&now) == -1) {
++		struct timeval tv = {.tv_sec = now, .tv_usec = 0};
++		if (settimeofday(&tv, NULL) < 0) {
+ 			std::cerr << "Can not set date. Need admin privileges?" << std::endl;
+ 			return -1;
+ 		}

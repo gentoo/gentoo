@@ -1,0 +1,25 @@
+--- a/libmilter/sm_gethost.c	2014-03-05 01:59:45.000000000 +0100
++++ b/libmilter/sm_gethost.c	2019-11-14 18:59:41.885353232 +0100
+@@ -51,18 +51,20 @@ sm_getipnodebyname(name, family, flags,
+ {
+ 	bool resv6 = true;
+ 	struct hostent *h;
+-
++#ifdef RES_USE_INET6
+ 	if (family == AF_INET6)
+ 	{
+ 		/* From RFC2133, section 6.1 */
+ 		resv6 = bitset(RES_USE_INET6, _res.options);
+ 		_res.options |= RES_USE_INET6;
+ 	}
++#endif
+ 	SM_SET_H_ERRNO(0);
+ 	h = gethostbyname(name);
++#ifdef RES_USE_INET6
+ 	if (family == AF_INET6 && !resv6)
+ 		_res.options &= ~RES_USE_INET6;
+-
++#endif
+ 	/* the function is supposed to return only the requested family */
+ 	if (h != NULL && h->h_addrtype != family)
+ 	{

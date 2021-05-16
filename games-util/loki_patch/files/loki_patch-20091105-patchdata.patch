@@ -1,5 +1,5 @@
---- loki_patch/load_patch.c
-+++ loki_patch/load_patch.c
+--- a/loki_patch/load_patch.c
++++ b/loki_patch/load_patch.c
 @@ -8,7 +8,7 @@
  #include "load_patch.h"
  #include "log_output.h"

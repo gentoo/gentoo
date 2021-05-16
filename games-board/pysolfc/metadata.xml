@@ -10,6 +10,7 @@
     <flag name="sound">Enable sound support using <pkg>dev-python/pygame</pkg></flag>
   </use>
   <upstream>
+    <remote-id type="github">shlomif/PySolFC</remote-id>
     <remote-id type="sourceforge">pysolfc</remote-id>
   </upstream>
 </pkgmetadata>

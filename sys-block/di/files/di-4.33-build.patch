@@ -9,8 +9,8 @@ Then there is a lot more errors after above.
 memcpy can't be detected normally due to:
 	http://gcc.gnu.org/PR55890
 
---- C/di.h
-+++ C/di.h
+--- a/C/di.h
++++ b/C/di.h
 @@ -9,6 +9,8 @@
  
  #include "config.h"

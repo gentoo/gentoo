@@ -1,0 +1,56 @@
+From 9de6e40f12e8878f524f8d429d85724c156a0517 Mon Sep 17 00:00:00 2001
+From: Benjamin Berg <bberg@redhat.com>
+Date: Thu, 3 Dec 2020 13:45:36 +0100
+Subject: [PATCH] data: Fix indirect conflict with exit.target via app.slice
+
+systemd v247 now puts services into app.slice by default. But app.slice
+will have a conflict with exit.target, which in turn means that we still
+get a conflict with exit.target indirectly.
+
+Fix it by adding the appropriate Slice=-.slice into
+gnome-session-restart-dbus.service. Also update the note in
+gnome-session-shutdown.service to point out the requirements.
+
+Closes: #74
+---
+ data/gnome-session-restart-dbus.service.in | 5 +++--
+ data/gnome-session-shutdown.target         | 5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/data/gnome-session-restart-dbus.service.in b/data/gnome-session-restart-dbus.service.in
+index e90f6bc8..6389c321 100644
+--- a/data/gnome-session-restart-dbus.service.in
++++ b/data/gnome-session-restart-dbus.service.in
+@@ -1,10 +1,11 @@
+ [Unit]
+ Description=Restart DBus after GNOME Session shutdown
+ 
+-# Allow exit.target to start even if this unit is started with replace-irreversibly
+-# Also put it into a slice that doesn't have such implicit dependencies
++# Allow exit.target to start even if this unit is started with replace-irreversibly.
++# For this to work, we also need to be in the root slice.
+ DefaultDependencies=no
+ 
+ [Service]
+ Type=notify
+ ExecStart=@libexecdir@/gnome-session-ctl --restart-dbus
++Slice=-.slice
+diff --git a/data/gnome-session-shutdown.target b/data/gnome-session-shutdown.target
+index 607dc6e7..2c3d1963 100644
+--- a/data/gnome-session-shutdown.target
++++ b/data/gnome-session-shutdown.target
+@@ -1,8 +1,9 @@
+ [Unit]
+ Description=Shutdown running GNOME Session
+ 
+-# Allow exit.target to start even if this unit is started with replace-irreversibly
+-# The same is needed for all (weak) dependencies
++# Allow exit.target to start even if this unit is started with replace-irreversibly.
++# All (weak) dependencies need to do the same. Services also need to ensure they
++# are in the root slice by setting Slice=-.slice.
+ DefaultDependencies=no
+ 
+ Conflicts=graphical-session.target graphical-session-pre.target
+-- 
+GitLab
+

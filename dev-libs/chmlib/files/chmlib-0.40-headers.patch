@@ -1,5 +1,5 @@
---- src/chm_http.c
-+++ src/chm_http.c
+--- a/src/chm_http.c
++++ b/src/chm_http.c
 @@ -34,6 +34,7 @@
  #include <stdio.h>
  #include <stdlib.h>

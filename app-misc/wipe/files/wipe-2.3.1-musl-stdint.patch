@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/713622
+--- a/rand.h
++++ b/rand.h
+@@ -20,15 +20,9 @@
+     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+ 
+-#ifdef HAVE_STDINT_H
+-# include "stdint.h"
+-#else
+-# ifndef LINUX
+-#  define u_int32_t uint32_t
+-# endif
+-#endif
++#include <stdint.h>
+ 
+-typedef u_int32_t u_rand_t;
++typedef uint32_t u_rand_t;
+ 
+ #ifndef UINT32_MAX
+ # define UINT32_MAX ULONG_MAX

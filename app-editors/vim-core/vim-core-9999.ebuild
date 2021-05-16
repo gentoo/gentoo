@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-VIM_VERSION="7.4"
-inherit eutils vim-doc flag-o-matic versionator bash-completion-r1 prefix
+EAPI=7
+VIM_VERSION="8.2"
+inherit estack vim-doc flag-o-matic bash-completion-r1 prefix desktop xdg-utils
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -12,18 +11,20 @@ if [[ ${PV} == 9999* ]] ; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://dev.gentoo.org/~radhermit/vim/vim-7.4.827-gentoo-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+		https://dev.gentoo.org/~radhermit/vim/vim-8.2.0210-gentoo-patches.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="vim and gvim shared files"
-HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
+HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
 IUSE="nls acl minimal"
 
 DEPEND="sys-devel/autoconf"
+# avoid icon file collision bug #673880
+RDEPEND="!!<app-editors/gvim-8.1.0648"
 PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 
 S=${WORKDIR}/vim-${PV}
@@ -34,22 +35,23 @@ pkg_setup() {
 	export LC_COLLATE="C"
 
 	# Gnome sandbox silliness. bug #114475.
-	mkdir -p "${T}"/home
+	mkdir -p "${T}"/home || die "mkdir -p failed"
 	export HOME="${T}"/home
 }
 
 src_prepare() {
 	if [[ ${PV} != 9999* ]] ; then
-		if [[ -d "${WORKDIR}"/patches/ ]]; then
-			# Gentoo patches to fix runtime issues, cross-compile errors, etc
-			EPATCH_SUFFIX="patch" EPATCH_FORCE="yes" \
-				epatch "${WORKDIR}"/patches/
-		fi
+		# Gentoo patches to fix runtime issues, cross-compile errors, etc
+		eapply "${WORKDIR}"/patches
 	fi
 
 	# Fixup a script to use awk instead of nawk
-	sed -i '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' "${S}"/runtime/tools/mve.awk \
-		|| die "mve.awk sed failed"
+	sed -i \
+		-e '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' \
+		"${S}"/runtime/tools/mve.awk || die "sed failed"
+
+	# See #77841. We remove this file after the tarball extraction.
+	rm -v "${S}"/runtime/tools/vimspell.sh || die "rm failed"
 
 	# Read vimrc and gvimrc from /etc/vim
 	echo '#define SYS_VIMRC_FILE "'${EPREFIX}'/etc/vim/vimrc"' >> "${S}"/src/feature.h
@@ -63,37 +65,36 @@ src_prepare() {
 		"${S}"/runtime/doc/tagsrch.txt \
 		"${S}"/runtime/doc/usr_29.txt \
 		"${S}"/runtime/menu.vim \
-		"${S}"/src/configure.in || die 'sed failed'
+		"${S}"/src/configure.ac || die 'sed failed'
 
 	# Don't be fooled by /usr/include/libc.h.  When found, vim thinks
 	# this is NeXT, but it's actually just a file in dev-libs/9libs
 	# This fixes bug 43885 (20 Mar 2004 agriffis)
-	sed -i 's/ libc\.h / /' "${S}"/src/configure.in || die 'sed failed'
+	sed -i 's/ libc\.h / /' "${S}"/src/configure.ac || die 'sed failed'
 
 	# gcc on sparc32 has this, uhm, interesting problem with detecting EOF
 	# correctly. To avoid some really entertaining error messages about stuff
 	# which isn't even in the source file being invalid, we'll do some trickery
 	# to make the error never occur. bug 66162 (02 October 2004 ciaranm)
-	find "${S}" -name '*.c' | while read c ; do echo >> "$c" ; done
+	find "${S}" -name '*.c' | while read c; do
+	    echo >> "$c" || die "echo failed"
+	done
 
 	# Try to avoid sandbox problems. Bug #114475.
-	if [[ -d "${S}"/src/po ]] ; then
+	if [[ -d "${S}"/src/po ]]; then
 		sed -i -e \
 			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
-			"${S}"/src/po/Makefile
+			"${S}"/src/po/Makefile || die "sed failed"
 	fi
 
-	if version_is_at_least 7.3.122 ; then
-		cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
-	fi
+	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
 
 	# Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
-	if version_is_at_least 7.3 ; then
-		sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
-			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-	fi
+	sed -i -e \
+		"s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:" \
+		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
@@ -109,18 +110,23 @@ src_configure() {
 	replace-flags -O3 -O2
 
 	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.in is newer than auto/configure
+	# (1) Notice configure.ac is newer than auto/configure
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm -f src/auto/configure
+
+	# Remove src/auto/configure file.
+	rm -v src/auto/configure || die "rm configure failed"
+
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug 24447). The hvc
 	# things are for ppc64, see bug 86433.
-	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc* ; do
-		[[ -e ${file} ]] && addwrite $file
+	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
+		if [[ -e "${file}" ]]; then
+			addwrite $file
+		fi
 	done
 
 	# Let Portage do the stripping. Some people like that.
@@ -145,9 +151,7 @@ src_configure() {
 }
 
 src_compile() {
-	# The following allows emake to be used
 	emake -j1 -C src auto/osdef.h objects
-
 	emake tools
 }
 
@@ -157,8 +161,7 @@ src_install() {
 	local vimfiles=/usr/share/vim/vim${VIM_VERSION/.}
 
 	dodir /usr/{bin,share/{man/man1,vim}}
-	cd src || die "cd src failed"
-	emake \
+	emake -C src \
 		installruntime \
 		installmanlinks \
 		installmacros \
@@ -166,7 +169,6 @@ src_install() {
 		installtutorbin \
 		installtools \
 		install-languages \
-		install-icons \
 		DESTDIR="${D}" \
 		BINDIR="${EPREFIX}"/usr/bin \
 		MANDIR="${EPREFIX}"/usr/share/man \
@@ -177,17 +179,17 @@ src_install() {
 	# default vimrc is installed by vim-core since it applies to
 	# both vim and gvim
 	insinto /etc/vim/
-	newins "${FILESDIR}"/vimrc-r4 vimrc
+	newins "${FILESDIR}"/vimrc-r5 vimrc
 	eprefixify "${ED}"/etc/vim/vimrc
 
-	if use minimal ; then
+	if use minimal; then
 		# To save space, install only a subset of the files.
 		# Helps minimalize the livecd, bug 65144.
 		eshopts_push -s extglob
 
-		rm -fr "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent}
-		rm -fr "${ED}${vimfiles}"/{macros,print,tools,tutor}
-		rm "${ED}"/usr/bin/vimtutor
+		rm -rv "${ED}${vimfiles}"/{compiler,doc,ftplugin,indent} || die "rm failed"
+		rm -rv "${ED}${vimfiles}"/{macros,print,tools,tutor} || die "rm failed"
+		rm -v "${ED}"/usr/bin/vimtutor || die "rm failed"
 
 		local keep_colors="default"
 		ignore=$(rm -fr "${ED}${vimfiles}"/colors/!(${keep_colors}).vim )
@@ -200,24 +202,24 @@ src_install() {
 		eshopts_pop
 	fi
 
-	# These files might have slight security issues, so we won't
-	# install them. See bug #77841. We don't mind if these don't
-	# exist.
-	rm "${ED}${vimfiles}"/tools/{vimspell.sh,tcltags} 2>/dev/null
-
 	newbashcomp "${FILESDIR}"/xxd-completion xxd
 
-	# We shouldn't be installing the ex or view man page symlinks, as they
-	# are managed by eselect-vi
-	rm -f "${ED}"/usr/share/man/man1/{ex,view}.1
+	# install gvim icon since both vim/gvim desktop files reference it
+	doicon -s scalable "${FILESDIR}"/gvim.svg
 }
 
 pkg_postinst() {
-	# Update documentation tags (from vim-doc.eclass)
+	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# update icon cache
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	# Update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# update icon cache
+	xdg_icon_cache_update
 }

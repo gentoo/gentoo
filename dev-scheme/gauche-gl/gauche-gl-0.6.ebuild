@@ -1,33 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils
-
-# Switch to ^g when we switch to EAPI=6.
-MY_P="G${P:1}"
+MY_P="${P^g}"
 
 DESCRIPTION="OpenGL binding for Gauche"
 HOMEPAGE="http://practical-scheme.net/gauche/"
-SRC_URI="mirror://sourceforge/gauche/${MY_P}.tgz"
+SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="cg examples"
 
 RDEPEND=">=dev-scheme/gauche-0.9.4
-	virtual/opengl
 	media-libs/freeglut
+	virtual/opengl
+	x11-libs/libXmu
 	cg? ( media-gfx/nvidia-cg-toolkit )"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-simple.viewer.diff
-}
+PATCHES=( "${FILESDIR}"/${P}-simple.viewer.patch )
 
 src_configure() {
 	econf $(usex cg --enable-cg "")

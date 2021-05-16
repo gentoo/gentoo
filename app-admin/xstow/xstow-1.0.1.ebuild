@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
-DESCRIPTION="replacement for GNU stow with extensions"
+DESCRIPTION="Replacement for GNU stow with extensions"
 HOMEPAGE="http://xstow.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xstow/${P}.tar.bz2"
 
@@ -15,11 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="ncurses"
 
-DEPEND="ncurses? ( sys-libs/ncurses )"
+DEPEND="ncurses? ( sys-libs/ncurses:0= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ncurses.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ncurses.patch
+	default
 	eautoreconf
 }
 
@@ -28,14 +31,14 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir="/usr/share/doc/${PF}/html" install
+	emake DESTDIR="${D}" docdir="${EPREFIX}/usr/share/doc/${PF}/html" install
 	dodoc AUTHORS ChangeLog NEWS README TODO
 
 	# create new STOWDIR
-	dodir /var/lib/xstow
+	keepdir /var/lib/xstow
 
 	# install env.d file to add STOWDIR to PATH and LDPATH
-	doenvd "${FILESDIR}/99xstow" || die "doenvd failed"
+	doenvd "${FILESDIR}/99xstow"
 }
 
 pkg_postinst() {

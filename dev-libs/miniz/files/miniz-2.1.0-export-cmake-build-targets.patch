@@ -1,0 +1,177 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,15 @@
+-PROJECT(miniz C)
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.12)
++
++project(miniz)
++
++include(GNUInstallDirs)
++
++set(MINIZ_API_VERSION 2)
++set(MINIZ_MINOR_VERSION 1)
++set(MINIZ_PATCH_VERSION 0)
++set(MINIZ_VERSION
++    ${MINIZ_API_VERSION}.${MINIZ_MINOR_VERSION}.${MINIZ_PATCH_VERSION})
++
+ if(CMAKE_BUILD_TYPE STREQUAL "")
+   # CMake defaults to leaving CMAKE_BUILD_TYPE empty. This screws up
+   # differentiation between debug and release builds.
+@@ -8,45 +18,120 @@
+ CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel." FORCE)
+ endif ()
+
+-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
++option(BUILD_EXAMPLES "Build examples" ON)
++option(BUILD_SHARED_LIBS "Build shared library instead of static" ON)
++
++set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
++include(GenerateExportHeader)
++
++set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+ set(miniz_SOURCE miniz.c miniz_zip.c miniz_tinfl.c miniz_tdef.c)
++add_library(${PROJECT_NAME} ${miniz_SOURCE})
++generate_export_header(${PROJECT_NAME})
++
++if(NOT BUILD_SHARED_LIBS)
++string(TOUPPER ${PROJECT_NAME} PROJECT_UPPER)
++set_target_properties(${PROJECT_NAME}
++	PROPERTIES INTERFACE_COMPILE_DEFINITIONS ${PROJECT_UPPER}_STATIC_DEFINE)
++endif()
++
++set_property(TARGET ${PROJECT_NAME} PROPERTY VERSION ${MINIZ_VERSION})
++set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION ${MINIZ_API_VERSION})
++
++file(GLOB INSTALL_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
++
++target_compile_definitions(${PROJECT_NAME}
++  PRIVATE $<$<C_COMPILER_ID:GNU>:_GNU_SOURCE>)
+
+-add_library(miniz ${miniz_SOURCE})
+-target_include_directories(miniz PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
++# pkg-config file
++configure_file(miniz.pc.in ${CMAKE_BINARY_DIR}/miniz.pc @ONLY)
+
+-set(EXAMPLE1_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example1.c")
+-set(EXAMPLE2_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example2.c")
+-set(EXAMPLE3_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example3.c")
+-set(EXAMPLE4_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example4.c")
+-set(EXAMPLE5_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example5.c")
+-set(EXAMPLE6_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example6.c")
+-set(MINIZ_TESTER_SRC_LIST
+-    "${CMAKE_CURRENT_SOURCE_DIR}/tests/miniz_tester.cpp"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/tests/timer.cpp")
++install(FILES
++  ${CMAKE_BINARY_DIR}/miniz.pc
++  DESTINATION ${CMAKE_INSTALL_DATADIR}/pkgconfig)
++
++
++set_property(TARGET ${PROJECT_NAME} PROPERTY
++  INTERFACE_${PROJECT_NAME}_MAJOR_VERSION ${MINIZ_API_VERSION})
++set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY
++  COMPATIBLE_INTERFACE_STRING ${PROJECT_NAME}_MAJOR_VERSION
++)
++
++install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
++  RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR}
++  ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  # users can use <miniz.h> or <miniz/miniz.h>
++  INCLUDES DESTINATION include ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
++)
++
++include(CMakePackageConfigHelpers)
++write_basic_package_version_file(
++  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
++  VERSION ${MINIZ_VERSION}
++  COMPATIBILITY AnyNewerVersion
++)
++
++export(EXPORT ${PROJECT_NAME}Targets
++  FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Targets.cmake"
++  NAMESPACE ${PROJECT_NAME}::
++)
++configure_file(Config.cmake.in
++  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
++  @ONLY
++)
++
++set(ConfigPackageLocation ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
++install(EXPORT ${PROJECT_NAME}Targets
++  FILE
++    ${PROJECT_NAME}Targets.cmake
++  NAMESPACE
++    ${PROJECT_NAME}::
++  DESTINATION
++    ${ConfigPackageLocation}
++)
++install(
++  FILES
++    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
++    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
++  DESTINATION
++    ${ConfigPackageLocation}
++  COMPONENT
++    Devel
++)
++
++if(BUILD_EXAMPLES)
++  set(EXAMPLE1_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example1.c")
++  set(EXAMPLE2_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example2.c")
++  set(EXAMPLE3_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example3.c")
++  set(EXAMPLE4_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example4.c")
++  set(EXAMPLE5_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example5.c")
++  set(EXAMPLE6_SRC_LIST "${CMAKE_CURRENT_SOURCE_DIR}/examples/example6.c")
++  set(MINIZ_TESTER_SRC_LIST
++      "${CMAKE_CURRENT_SOURCE_DIR}/tests/miniz_tester.cpp"
++      "${CMAKE_CURRENT_SOURCE_DIR}/tests/timer.cpp")
+
+-add_executable(example1 ${EXAMPLE1_SRC_LIST})
+-target_link_libraries(example1 miniz)
+-add_executable(example2 ${EXAMPLE2_SRC_LIST})
+-target_link_libraries(example2 miniz)
+-add_executable(example3 ${EXAMPLE3_SRC_LIST})
+-target_link_libraries(example3 miniz)
+-add_executable(example4 ${EXAMPLE4_SRC_LIST})
+-target_link_libraries(example4 miniz)
+-add_executable(example5 ${EXAMPLE5_SRC_LIST})
+-target_link_libraries(example5 miniz)
+-add_executable(example6 ${EXAMPLE6_SRC_LIST})
+-target_link_libraries(example6 miniz)
+-if(${UNIX})
+-    target_link_libraries(example6 m)
+-endif()
++  add_executable(example1 ${EXAMPLE1_SRC_LIST})
++  target_link_libraries(example1 miniz)
++  add_executable(example2 ${EXAMPLE2_SRC_LIST})
++  target_link_libraries(example2 miniz)
++  add_executable(example3 ${EXAMPLE3_SRC_LIST})
++  target_link_libraries(example3 miniz)
++  add_executable(example4 ${EXAMPLE4_SRC_LIST})
++  target_link_libraries(example4 miniz)
++  add_executable(example5 ${EXAMPLE5_SRC_LIST})
++  target_link_libraries(example5 miniz)
++  add_executable(example6 ${EXAMPLE6_SRC_LIST})
++  target_link_libraries(example6 miniz)
++  if(${UNIX})
++      target_link_libraries(example6 m)
++  endif()
+
+-# add_executable(miniz_tester ${MINIZ_TESTER_SRC_LIST})
+-# target_link_libraries(miniz_tester miniz)
++  # add_executable(miniz_tester ${MINIZ_TESTER_SRC_LIST})
++  # target_link_libraries(miniz_tester miniz)
++endif(BUILD_EXAMPLES)
+
+-install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
+-    ARCHIVE  DESTINATION lib
+-    LIBRARY DESTINATION lib
+-    )
+-file(GLOB INSTALL_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
+-install(FILES ${INSTALL_HEADERS} DESTINATION include/${PROJECT_NAME})
+\ No newline at end of file
++set(INCLUDE_INSTALL_DIR "include")
++
++install(FILES ${INSTALL_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})

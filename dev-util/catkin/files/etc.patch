@@ -1,0 +1,16 @@
+So that files like python_logging.conf ends up in $EPREFIX/etc.
+https://bugs.gentoo.org/show_bug.cgi?id=598537
+
+Index: catkin-0.7.4/cmake/all.cmake
+===================================================================
+--- catkin-0.7.4.orig/cmake/all.cmake
++++ catkin-0.7.4/cmake/all.cmake
+@@ -163,7 +163,7 @@ unset(_CATKIN_CURRENT_PACKAGE)
+ 
+ # set global install destinations
+ set(CATKIN_GLOBAL_BIN_DESTINATION bin)
+-set(CATKIN_GLOBAL_ETC_DESTINATION etc)
++set(CATKIN_GLOBAL_ETC_DESTINATION ../etc)
+ set(CATKIN_GLOBAL_INCLUDE_DESTINATION include)
+ set(CATKIN_GLOBAL_LIB_DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ set(CATKIN_GLOBAL_LIBEXEC_DESTINATION libexec)

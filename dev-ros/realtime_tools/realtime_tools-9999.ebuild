@@ -1,22 +1,28 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 ROS_REPO_URI="https://github.com/ros-controls/realtime_tools"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior"
+DESCRIPTION="Set of tools that can be used from a hard realtime thread"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/boost:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? (
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+		dev-cpp/gtest
+		dev-ros/actionlib
+	)
+"
+PATCHES=( "${FILESDIR}/atomic.patch" )

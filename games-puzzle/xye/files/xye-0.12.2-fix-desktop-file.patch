@@ -1,0 +1,18 @@
+Fix .desktop file to comply with FDO specifications.
+
+--- a/xye.desktop
++++ b/xye.desktop
+@@ -4,11 +4,11 @@
+ Encoding=UTF-8
+ Exec=xye
+ Type=Application
+-Categories=Application;Game;PuzzleGame
++Categories=Game
+ Name=Xye
+ GenericName=Xye
+ Comment=Solve puzzles and action challenges in order to get all the gems in the room.
+ Terminal=false
+ StartupNotify=false
+-Icon=xye.png
++Icon=xye
+ MimeType=application/xye-xml

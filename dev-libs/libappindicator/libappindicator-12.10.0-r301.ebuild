@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils multilib-minimal vala
+inherit autotools ltprune multilib-minimal vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -13,7 +12,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc64 x86"
 IUSE="+introspection"
 
 RDEPEND="
@@ -27,17 +26,23 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	introspection? ( $(vala_depend) )
 	dev-util/gtk-doc-am
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 PATCHES=(
 	"${FILESDIR}"/${P}-conditional-py-bindings.patch
 	# http://bazaar.launchpad.net/~indicator-applet-developers/libappindicator/trunk.12.10/revision/244
 	"${FILESDIR}"/${P}-vala-inherit.patch
+	# https://bugs.launchpad.net/archlinux/+source/libappindicator/+bug/1867996
+	"${FILESDIR}"/${P}-lp1867996-fix-g-signal-emit.patch
+	"${FILESDIR}"/${P}-lp1867996-fix-iterate-search-path.patch
 )
 
 src_prepare() {
 	default
+
+	xdg_environment_reset
+	export MAKEOPTS+=" -j1" #638782
 
 	# Don't use -Werror
 	sed -i -e 's/ -Werror//' {src,tests}/Makefile.{am,in} || die
@@ -54,7 +59,7 @@ multilib_src_configure() {
 		use introspection && vala_src_prepare && export VALA_API_GEN="${VAPIGEN}"
 	fi
 
-	ECONF_SOURCE=${S} \
+	ECONF_SOURCE="${S}" \
 	econf \
 		--disable-static \
 		--with-gtk=3 \

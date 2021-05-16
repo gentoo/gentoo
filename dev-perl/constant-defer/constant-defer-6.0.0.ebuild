@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -12,8 +11,9 @@ DESCRIPTION="constant subs with deferred value calculation"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="test examples"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/perl-Carp"
 DEPEND="virtual/perl-ExtUtils-MakeMaker

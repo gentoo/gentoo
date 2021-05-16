@@ -1,26 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 MY_PV=${PV/_beta/b}
 
 DESCRIPTION="Tool for extracting and creating optimised Xbox ISO images"
-HOMEPAGE="http://sourceforge.net/projects/extract-xiso"
+HOMEPAGE="https://sourceforge.net/projects/extract-xiso"
 SRC_URI="mirror://sourceforge/extract-xiso/${P}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="amd64 ppc x86"
 
-S=${WORKDIR}/${PN}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.7.1-headers.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.7.1-headers.patch
+	default
+
 	sed -i \
 		-e 's:__LINUX__:__linux__:' \
 		*.[ch] */*.[ch] || die

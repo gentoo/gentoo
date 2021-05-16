@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils autotools
+inherit epatch autotools
 
 DESCRIPTION="Cal3D is a skeletal based character animation library"
 HOMEPAGE="http://home.gna.org/cal3d"
@@ -11,7 +10,7 @@ SRC_URI="http://download.gna.org/cal3d/sources/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="16bit-indices debug doc"
 
 DEPEND="doc? (
@@ -24,7 +23,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-gcc43.patch \
 	    "${FILESDIR}"/${P}-tests.patch \
-	    "${FILESDIR}"/${P}-verbose.patch
+	    "${FILESDIR}"/${P}-verbose.patch \
+	    "${FILESDIR}"/${P}-gcc6.patch
 	sed -i \
 		-e "s:db2html:docbook2html:g" \
 		configure.in \

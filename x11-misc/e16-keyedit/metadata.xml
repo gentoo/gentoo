@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <use>
+    <flag name="gtk2">Build with <pkg>x11-libs/gtk+</pkg>:2 instead of <pkg>x11-libs/gtk+</pkg>:3</flag>
+  </use>
+  <upstream>
+    <remote-id type="sourceforge">enlightenment</remote-id>
+  </upstream>
+</pkgmetadata>

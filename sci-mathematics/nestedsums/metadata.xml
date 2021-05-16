@@ -9,7 +9,4 @@
   <email>sci-mathematics@gentoo.org</email>
   <name>Gentoo Mathematics Project</name>
 </maintainer>
-<longdescription lang="en">
-A GiNaC-based library for symbolic expansion of certain transcendental functions.
-</longdescription>
 </pkgmetadata>

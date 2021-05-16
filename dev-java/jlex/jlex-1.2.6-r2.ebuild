@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,7 +9,7 @@ inherit java-pkg-2
 
 DESCRIPTION="JLex: a lexical analyzer generator for Java"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
-HOMEPAGE="http://www.cs.princeton.edu/~appel/modern/java/JLex/"
+HOMEPAGE="https://www.cs.princeton.edu/~appel/modern/java/JLex/"
 
 KEYWORDS="amd64 x86"
 LICENSE="jlex"

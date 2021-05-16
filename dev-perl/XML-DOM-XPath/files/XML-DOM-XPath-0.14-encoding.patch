@@ -1,0 +1,27 @@
+From 1b247ffafb3362b5a1c727f993c63818e827aa12 Mon Sep 17 00:00:00 2001
+From: Father Chrysostomos <sprout@cpan.org>
+Date: Thu, 14 Jul 2016 22:05:56 -0700
+Subject: Fix removal of encoding.pm in 5.25.3+
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=115098
+Bug: https://bugs.gentoo.org/623188
+---
+ t/test_non_ascii.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/test_non_ascii.t b/t/test_non_ascii.t
+index d8686f8..7aea5ee 100644
+--- a/t/test_non_ascii.t
++++ b/t/test_non_ascii.t
+@@ -7,7 +7,7 @@ use strict;
+ use Test::More tests => 10;
+ use XML::DOM::XPath;
+ 
+-use encoding 'utf8';
++use utf8;
+ 
+ my $display_warning=0;
+ 
+-- 
+2.16.2
+

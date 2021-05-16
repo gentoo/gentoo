@@ -1,6 +1,5 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,8 +9,8 @@ OFFICE_EXTENSIONS=(
 inherit office-ext-r1
 
 DESCRIPTION="Extension for reading barcodes"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/barcode"
-SRC_URI="http://extensions.libreoffice.org/extension-center/${PN}/releases/${PV}/${PN}_${PV}.oxt"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/barcode"
+SRC_URI="https://extensions.libreoffice.org/extension-center/${PN}/releases/${PV}/${PN}_${PV}.oxt"
 
 LICENSE="LGPL-2"
 SLOT="0"

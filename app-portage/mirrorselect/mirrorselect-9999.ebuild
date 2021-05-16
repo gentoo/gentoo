@@ -1,39 +1,41 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit eutils distutils-r1 git-2 prefix
+inherit distutils-r1 git-r3 prefix
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
-EGIT_MASTER="master"
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Mirrorselect"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
 SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
-
 KEYWORDS=""
+IUSE=""
 
 RDEPEND="
 	dev-util/dialog
-	net-analyzer/netselect
-	=dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
-	"
+	>=net-analyzer/netselect-0.4[ipv6(+)]
+	~dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
+"
 
-python_prepare_all()  {
-	python_export_best
+python_prepare_all() {
+	python_setup
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
 	VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version || die "setup.py set_version failed"
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	esetup.py test || die "tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

@@ -1,12 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="2"
+EAPI=7
 
-inherit eutils toolchain-funcs flag-o-matic
-
-IUSE=""
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="concatenates any number of audio files to stdout"
 HOMEPAGE="http://panteltje.com/panteltje/dvd/"
@@ -16,17 +13,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}.diff" \
-		"${FILESDIR}"/${P}-overflow.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-version.patch
+	"${FILESDIR}"/${P}-overflow.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
-src_compile() {
-	append-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE	-D_LARGEFILE64_SOURCE
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed"
+src_configure() {
+	append-lfs-flags
+	tc-export CC
 }
 
 src_install() {
-	dobin pwavecat || die
-	dodoc CHANGES README
+	dobin pwavecat
+	einstalldocs
 }

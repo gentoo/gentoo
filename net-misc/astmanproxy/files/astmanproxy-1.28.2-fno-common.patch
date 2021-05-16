@@ -1,0 +1,11 @@
+--- a/src/include/astmanproxy.h
++++ b/src/include/astmanproxy.h
+@@ -154,7 +154,7 @@ struct message {
+ 	struct mansession *session;
+ };
+ 
+-struct proxyconfig pc;
++extern struct proxyconfig pc;
+ extern int debug;
+ 
+ /* Common Function Prototypes */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>thev00d00@gentoo.org</email>
+    <name>Ian Whyman</name>
+  </maintainer>
+  <longdescription>Gerbera is a UPnP media server which allows you to stream your digital media through your home network and consume it on a variety of UPnP compatible devices.</longdescription>
+  <use>
+    <flag name="curl">Support HTTP media sources (e.g. internet radio)</flag>
+    <flag name="exiv2">Use <pkg>media-gfx/exiv2</pkg> to extract EXIF information</flag>
+    <flag name="ffmpegthumbnailer">Enable video thumbnail support with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
+    <flag name="lastfm">Enable last.fm support</flag>
+    <flag name="mysql">Use <pkg>dev-db/mysql</pkg> as backend rather than SQLite3</flag>    
+    <flag name="taglib">Use <pkg>media-libs/taglib</pkg> for reading files' metadata</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">gerbera/gerbera</remote-id>
+  </upstream>
+</pkgmetadata>

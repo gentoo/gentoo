@@ -1,0 +1,16 @@
+[Unit]
+Description=AnyDesk
+Requires=network.target
+After=systemd-user-sessions.service
+
+[Service]
+Type=simple
+ExecStart=/opt/bin/anydesk --service
+PIDFile=/var/run/anydesk.pid
+KillMode=mixed
+TimeoutStopSec=30
+User=root
+LimitNOFILE=100000
+
+[Install]
+WantedBy=multi-user.target

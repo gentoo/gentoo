@@ -1,17 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit autotools eutils
+inherit autotools epatch ltprune
 
 DESCRIPTION="OpenEXR CTL libraries"
-HOMEPAGE="http://sourceforge.net/projects/ampasctl"
+HOMEPAGE="https://sourceforge.net/projects/ampasctl"
 SRC_URI="mirror://sourceforge/ampasctl/${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=media-libs/ilmbase-2.0.1:=

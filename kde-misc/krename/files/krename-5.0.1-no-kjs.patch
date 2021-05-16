@@ -1,0 +1,519 @@
+From 407b612a93128b9f935a686d5ff82c7ee06087f5 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 17 Dec 2020 13:19:56 +0100
+Subject: [PATCH 1/5] reduce nesting
+
+easier on the eyes
+---
+ src/scriptplugin.cpp | 63 +++++++++++++++++++++++---------------------
+ 1 file changed, 33 insertions(+), 30 deletions(-)
+
+diff --git a/src/scriptplugin.cpp b/src/scriptplugin.cpp
+index 0790fd4..8f4b11e 100644
+--- a/src/scriptplugin.cpp
++++ b/src/scriptplugin.cpp
+@@ -175,36 +175,39 @@ void ScriptPlugin::initKRenameVars(const KRenameFile &file, int index)
+             file.srcDirectory());
+ 
+     // User definitions, set them only on first file
+-    if (index == 0) {
+-        for (int i = 0; i < m_widget->listVariables->topLevelItemCount(); i++) {
+-            // TODO, we have to know the type of the variable!
+-            QTreeWidgetItem *item = m_widget->listVariables->topLevelItem(i);
+-            if (item) {
+-                EVarType eVarType = static_cast<EVarType>(item->data(1, Qt::UserRole).toInt());
+-                const QString &name  = item->text(0);
+-                const QString &value = item->text(1);
+-                switch (eVarType) {
+-                default:
+-                case eVarType_String:
+-                    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                            name, value.toUtf8().data());
+-                    break;
+-                case eVarType_Int:
+-                    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                            name, value.toInt());
+-                    break;
+-                case eVarType_Double:
+-                    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                            name, value.toDouble());
+-                    break;
+-                case eVarType_Bool:
+-                    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                            name,
+-                            (value.toLower() == "true" ? true : false));
+-                    break;
+-
+-                }
+-            }
++    if (index != 0) {
++        return;
++    }
++
++    for (int i = 0; i < m_widget->listVariables->topLevelItemCount(); i++) {
++        // TODO, we have to know the type of the variable!
++        QTreeWidgetItem *item = m_widget->listVariables->topLevelItem(i);
++        if (!item) {
++            continue;
++        }
++
++        EVarType eVarType = static_cast<EVarType>(item->data(1, Qt::UserRole).toInt());
++        const QString &name  = item->text(0);
++        const QString &value = item->text(1);
++        switch (eVarType) {
++        default:
++        case eVarType_String:
++            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
++                    name, value.toUtf8().data());
++            break;
++        case eVarType_Int:
++            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
++                    name, value.toInt());
++            break;
++        case eVarType_Double:
++            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
++                    name, value.toDouble());
++            break;
++        case eVarType_Bool:
++            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
++                    name,
++                    (value.toLower() == "true" ? true : false));
++            break;
+         }
+     }
+ }
+-- 
+2.29.2
+
+
+From f80de4b81846da45c4cc16c585a159872dcc2c29 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 17 Dec 2020 13:24:37 +0100
+Subject: [PATCH 2/5] don't needlessly use qpointer
+
+for one it has no value, scopedpointer might. we don't need a pointer
+at all though, simply put qdialog on the stack and let the compiler
+take care of it
+---
+ src/scriptplugin.cpp | 44 ++++++++++++++++++++++----------------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/src/scriptplugin.cpp b/src/scriptplugin.cpp
+index 8f4b11e..fec61e7 100644
+--- a/src/scriptplugin.cpp
++++ b/src/scriptplugin.cpp
+@@ -28,7 +28,6 @@
+ #include <QTemporaryFile>
+ #include <QFile>
+ #include <QMenu>
+-#include <QPointer>
+ #include <QTextStream>
+ #include <QVariant>
+ #include <QFileDialog>
+@@ -228,7 +227,7 @@ void ScriptPlugin::slotEnableControls()
+ 
+ void ScriptPlugin::slotAdd()
+ {
+-    QPointer<QDialog> dialog = new QDialog();
++    QDialog dialog;
+     Ui::ScriptPluginDialog dlg;
+ 
+     QStringList types;
+@@ -238,32 +237,33 @@ void ScriptPlugin::slotAdd()
+     types << i18n("Double");
+     types << i18n("Boolean");
+ 
+-    dlg.setupUi(dialog);
++    dlg.setupUi(&dialog);
+     dlg.comboType->addItems(types);
+ 
+-    if (dialog->exec() == QDialog::Accepted) {
+-        QString name  = dlg.lineName->text();
+-        QString value = dlg.lineValue->text();
++    if (dialog.exec() != QDialog::Accepted) {
++        return;
++    }
+ 
+-        // Build a Java script statement
+-        QString script = name + " = " + value + ';';
++    QString name  = dlg.lineName->text();
++    QString value = dlg.lineValue->text();
+ 
+-        KJSInterpreter interpreter;
+-        KJSResult result = m_interpreter->evaluate(script, nullptr);
+-        if (result.isException()) {
+-            KMessageBox::error(m_parent,
+-                               i18n("A JavaScript error has occurred: ") +
+-                               result.errorMessage(), this->name());
+-        } else {
+-            QTreeWidgetItem *item = new QTreeWidgetItem();
+-            item->setText(0, name);
+-            item->setText(1, value);
+-            item->setData(1, Qt::UserRole, QVariant(dlg.comboType->currentIndex()));
++    // Build a Java script statement
++    QString script = name + " = " + value + ';';
+ 
+-            m_widget->listVariables->addTopLevelItem(item);
+-        }
++    KJSInterpreter interpreter;
++    KJSResult result = m_interpreter->evaluate(script, nullptr);
++    if (result.isException()) {
++        KMessageBox::error(m_parent,
++                            i18n("A JavaScript error has occurred: ") +
++                            result.errorMessage(), this->name());
++    } else {
++        QTreeWidgetItem *item = new QTreeWidgetItem();
++        item->setText(0, name);
++        item->setText(1, value);
++        item->setData(1, Qt::UserRole, QVariant(dlg.comboType->currentIndex()));
++
++        m_widget->listVariables->addTopLevelItem(item);
+     }
+-    delete dialog;
+ }
+ 
+ void ScriptPlugin::slotRemove()
+-- 
+2.29.2
+
+
+From 5979b30da5b385008894ff5577da917dd888959e Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 17 Dec 2020 13:32:41 +0100
+Subject: [PATCH 3/5] fix dangerously implicit int->int->enum mapping
+
+the type order in the qstringlist was implicitly the int values of the
+type enum. incredibly scary. instead push the items into the combobox
+along with their enum value as Qt::UserRole and then pass that along.
+this ensures (kind of) that the int we cast back to enum in
+initKRenameVars will be an actual enum value
+---
+ src/scriptplugin.cpp | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/scriptplugin.cpp b/src/scriptplugin.cpp
+index fec61e7..1933bc6 100644
+--- a/src/scriptplugin.cpp
++++ b/src/scriptplugin.cpp
+@@ -4,6 +4,7 @@
+     begin                : Fri Nov 9 2007
+     copyright            : (C) 2007 by Dominik Seichter
+     email                : domseichter@web.de
++    copyright            : (C) 2020 by Harald Sitter <sitter@kde.org>
+  ***************************************************************************/
+ 
+ /***************************************************************************
+@@ -230,15 +231,11 @@ void ScriptPlugin::slotAdd()
+     QDialog dialog;
+     Ui::ScriptPluginDialog dlg;
+ 
+-    QStringList types;
+-
+-    types << i18n("String");
+-    types << i18n("Int");
+-    types << i18n("Double");
+-    types << i18n("Boolean");
+-
+     dlg.setupUi(&dialog);
+-    dlg.comboType->addItems(types);
++    dlg.comboType->addItem(i18n("String"), eVarType_String);
++    dlg.comboType->addItem(i18n("Int"), eVarType_Int);
++    dlg.comboType->addItem(i18n("Double"), eVarType_Double);
++    dlg.comboType->addItem(i18n("Boolean"), eVarType_Bool);
+ 
+     if (dialog.exec() != QDialog::Accepted) {
+         return;
+@@ -260,7 +257,7 @@ void ScriptPlugin::slotAdd()
+         QTreeWidgetItem *item = new QTreeWidgetItem();
+         item->setText(0, name);
+         item->setText(1, value);
+-        item->setData(1, Qt::UserRole, QVariant(dlg.comboType->currentIndex()));
++        item->setData(1, Qt::UserRole, dlg.comboType->currentData());
+ 
+         m_widget->listVariables->addTopLevelItem(item);
+     }
+-- 
+2.29.2
+
+
+From 82161c323b7b0d4b77602551923118f304c5c536 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 17 Dec 2020 15:05:49 +0100
+Subject: [PATCH 4/5] port away from stringy QMenu::addAction to functor based
+ API
+
+was introdcued in 5.6 so is fine to use and loads safer
+---
+ src/previewlist.cpp    |  8 ++++----
+ src/progressdialog.cpp |  8 ++++----
+ src/scriptplugin.cpp   | 10 +++++-----
+ 3 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/previewlist.cpp b/src/previewlist.cpp
+index df8097b..0d3ccb6 100644
+--- a/src/previewlist.cpp
++++ b/src/previewlist.cpp
+@@ -28,12 +28,12 @@ PreviewList::PreviewList(QWidget *parent)
+     : QTreeView(parent), m_model(nullptr)
+ {
+     m_menu = new QMenu("KRename", this);   // we need any text here so that we have a title
+-    m_menu->addAction(i18n("&Change filename manually..."), this, SLOT(slotManually()), QKeySequence("F2"));
++    m_menu->addAction(i18n("&Change filename manually..."), this, &PreviewList::slotManually, QKeySequence("F2"));
+     m_menu->addSeparator();
+-    m_menu->addAction(i18n("&Open"), this, SLOT(slotOpen()));
++    m_menu->addAction(i18n("&Open"), this, &PreviewList::slotOpen);
+     m_menu->addSeparator();
+-    m_menu->addAction(i18n("&Add..."), this, SIGNAL(addFiles()));
+-    m_menu->addAction(i18n("&Remove"), this, SLOT(slotRemove()));
++    m_menu->addAction(i18n("&Add..."), this, &PreviewList::addFiles);
++    m_menu->addAction(i18n("&Remove"), this, &PreviewList::slotRemove);
+ 
+     connect(this, &PreviewList::activated, this, &PreviewList::slotManually);
+ }
+diff --git a/src/progressdialog.cpp b/src/progressdialog.cpp
+index 4eaaf1a..d217614 100644
+--- a/src/progressdialog.cpp
++++ b/src/progressdialog.cpp
+@@ -49,11 +49,11 @@ ProgressDialog::ProgressDialog(ESplitMode eSplitMode, unsigned int dot, QWidget
+             qApp, &QApplication::quit, Qt::QueuedConnection);
+ 
+     QMenu *menu = new QMenu(this);
+-    menu->addAction(i18n("Restart &KRename..."), this, SLOT(slotRestartKRename()));
++    menu->addAction(i18n("Restart &KRename..."), this, &ProgressDialog::slotRestartKRename);
+     menu->addSeparator();
+-    m_actProcessed   = menu->addAction(i18n("Rename Processed Files &Again..."),    this, SLOT(slotRenameProcessedAgain()));
+-    m_actUnprocessed = menu->addAction(i18n("Rename &Unprocessed Files Again..."), this, SLOT(slotRenameUnprocessedAgain()));
+-    menu->addAction(i18n("&Rename All Files Again..."),          this, SLOT(slotRenameAllAgain()));
++    m_actProcessed = menu->addAction(i18n("Rename Processed Files &Again..."), this, &ProgressDialog::slotRenameProcessedAgain);
++    m_actUnprocessed = menu->addAction(i18n("Rename &Unprocessed Files Again..."), this, &ProgressDialog::slotRenameUnprocessedAgain);
++    menu->addAction(i18n("&Rename All Files Again..."), this, &ProgressDialog::slotRenameAllAgain);
+ 
+     m_buttonMore->setMenu(menu);
+ }
+diff --git a/src/scriptplugin.cpp b/src/scriptplugin.cpp
+index 1933bc6..46b27ca 100644
+--- a/src/scriptplugin.cpp
++++ b/src/scriptplugin.cpp
+@@ -68,11 +68,11 @@ ScriptPlugin::ScriptPlugin(PluginLoader *loader)
+ 
+     m_help.append("[js;4+5];;" + i18n("Insert a snippet of JavaScript code (4+5 in this case)"));
+ 
+-    m_menu->addAction(i18n("Index of the current file"),     this, SLOT(slotInsertIndex()));
+-    m_menu->addAction(i18n("URL of the current file"),       this, SLOT(slotInsertUrl()));
+-    m_menu->addAction(i18n("Filename of the current file"),  this, SLOT(slotInsertFilename()));
+-    m_menu->addAction(i18n("Extension of the current file"), this, SLOT(slotInsertExtension()));
+-    m_menu->addAction(i18n("Directory of the current file"), this, SLOT(slotInsertDirectory()));
++    m_menu->addAction(i18n("Index of the current file"), this, &ScriptPlugin::slotInsertIndex);
++    m_menu->addAction(i18n("URL of the current file"), this, &ScriptPlugin::slotInsertUrl);
++    m_menu->addAction(i18n("Filename of the current file"), this, &ScriptPlugin::slotInsertFilename);
++    m_menu->addAction(i18n("Extension of the current file"), this, &ScriptPlugin::slotInsertExtension);
++    m_menu->addAction(i18n("Directory of the current file"), this, &ScriptPlugin::slotInsertDirectory);
+ }
+ 
+ ScriptPlugin::~ScriptPlugin()
+-- 
+2.29.2
+
+
+From e0a93830d0ea0c71ab649b7e68af0238bd48eb10 Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Thu, 17 Dec 2020 13:45:07 +0100
+Subject: [PATCH 5/5] port from deprecated kjs to qjsengine
+
+for kf6 todo https://phabricator.kde.org/T11604
+
+kjs is deprecated and we want to move away from it. this ports to
+qjsengine which does what we need for krename just fine and is also
+supported in qt6 still
+
+all use cases of the js plugin still seem to work fine. variable
+definition, function definition and using either in the replacement.
+same for the implicit global variables.
+---
+ CMakeLists.txt       |  2 +-
+ src/CMakeLists.txt   |  2 +-
+ src/scriptplugin.cpp | 55 ++++++++++++++------------------------------
+ src/scriptplugin.h   |  6 +++--
+ 4 files changed, 23 insertions(+), 42 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b39e18..e1673e1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@ include(FeatureSummary)
+ include(KDECompilerSettings NO_POLICY_SCOPE)
+ include(FeatureSummary)
+ 
+-find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
++find_package(Qt5 REQUIRED COMPONENTS Core Qml Widgets)
+ find_package(KF5 REQUIRED COMPONENTS
+     Completion
+     Config
+@@ -27,7 +27,6 @@ find_package(KF5 REQUIRED COMPONENTS
+     IconThemes
+     ItemViews
+     JobWidgets
+-    JS
+     KIO
+     Service
+     WidgetsAddons
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3f262b3..bee7378 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -128,9 +128,9 @@ target_link_libraries(krename
+     KF5::KIOCore
+     KF5::KIOFileWidgets
+     KF5::I18n
+-    KF5::JSApi
+     KF5::IconThemes
+     Qt5::Widgets
++    Qt5::Qml
+ )
+ if(TAGLIB_FOUND)
+     target_link_libraries(krename
+diff --git a/src/scriptplugin.cpp b/src/scriptplugin.cpp
+index d7f7125..651e656 100644
+--- a/src/scriptplugin.cpp
++++ b/src/scriptplugin.cpp
+@@ -18,8 +18,7 @@
+ #include <QTextStream>
+ #include <QVariant>
+ #include <QFileDialog>
+-
+-#include <kjs/kjsinterpreter.h>
++#include <QDebug>
+ 
+ #include "ui_scriptplugindialog.h"
+ #include "ui_scriptpluginwidget.h"
+@@ -46,7 +45,6 @@ ScriptPlugin::ScriptPlugin(PluginLoader *loader)
+ {
+     m_name = i18n("JavaScript Plugin");
+     m_icon = "applications-development";
+-    m_interpreter = new KJSInterpreter();
+     m_menu   = new QMenu();
+     m_widget = new Ui::ScriptPluginWidget();
+ 
+@@ -65,7 +63,6 @@ ScriptPlugin::~ScriptPlugin()
+ {
+     delete m_widget;
+     delete m_menu;
+-    delete m_interpreter;
+ }
+ 
+ QString ScriptPlugin::processFile(BatchRenamer *b, int index,
+@@ -90,13 +87,13 @@ QString ScriptPlugin::processFile(BatchRenamer *b, int index,
+         // Make sure definitions are executed first
+         script = definitions + '\n' + script;
+ 
+-        KJSResult result = m_interpreter->evaluate(script, nullptr);
+-        if (result.isException()) {
+-            qDebug("JavaScript Error: %s", result.errorMessage().toUtf8().data());
++        const QJSValue result = m_engine.evaluate(script);
++        if (result.isError()) {
++            qDebug() << "JavaScript Error:" << result.toString();
+             return QString();
+         }
+ 
+-        return result.value().toString(m_interpreter->globalContext());
++        return result.toString();
+     }
+ 
+     return QString();
+@@ -144,21 +141,11 @@ void ScriptPlugin::createUI(QWidget *parent) const
+ void ScriptPlugin::initKRenameVars(const KRenameFile &file, int index)
+ {
+     // KRename definitions
+-    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-            ScriptPlugin::s_pszVarNameIndex,
+-            index);
+-    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-            ScriptPlugin::s_pszVarNameUrl,
+-            file.srcUrl().url());
+-    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-            ScriptPlugin::s_pszVarNameFilename,
+-            file.srcFilename());
+-    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-            ScriptPlugin::s_pszVarNameExtension,
+-            file.srcExtension());
+-    m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-            ScriptPlugin::s_pszVarNameDirectory,
+-            file.srcDirectory());
++    m_engine.globalObject().setProperty(ScriptPlugin::s_pszVarNameIndex, index);
++    m_engine.globalObject().setProperty(ScriptPlugin::s_pszVarNameUrl, file.srcUrl().url());
++    m_engine.globalObject().setProperty(ScriptPlugin::s_pszVarNameFilename, file.srcFilename());
++    m_engine.globalObject().setProperty(ScriptPlugin::s_pszVarNameExtension, file.srcExtension());
++    m_engine.globalObject().setProperty(ScriptPlugin::s_pszVarNameDirectory, file.srcDirectory());
+ 
+     // User definitions, set them only on first file
+     if (index != 0) {
+@@ -178,21 +165,16 @@ void ScriptPlugin::initKRenameVars(const KRenameFile &file, int index)
+         switch (eVarType) {
+         default:
+         case eVarType_String:
+-            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                    name, value.toUtf8().data());
++            m_engine.globalObject().setProperty(name, value);
+             break;
+         case eVarType_Int:
+-            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                    name, value.toInt());
++            m_engine.globalObject().setProperty(name, value.toInt());
+             break;
+         case eVarType_Double:
+-            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                    name, value.toDouble());
++            m_engine.globalObject().setProperty(name, value.toDouble());
+             break;
+         case eVarType_Bool:
+-            m_interpreter->globalObject().setProperty(m_interpreter->globalContext(),
+-                    name,
+-                    (value.toLower() == "true" ? true : false));
++            m_engine.globalObject().setProperty(name, (value.toLower() == "true" ? true : false));
+             break;
+         }
+     }
+@@ -233,12 +215,9 @@ void ScriptPlugin::slotAdd()
+     // Build a Java script statement
+     QString script = name + " = " + value + ';';
+ 
+-    KJSInterpreter interpreter;
+-    KJSResult result = m_interpreter->evaluate(script, nullptr);
+-    if (result.isException()) {
+-        KMessageBox::error(m_parent,
+-                            i18n("A JavaScript error has occurred: ") +
+-                            result.errorMessage(), this->name());
++    const QJSValue result = m_engine.evaluate(script);
++    if (result.isError()) {
++        KMessageBox::error(m_parent, i18n("A JavaScript error has occurred: ") + result.toString(), this->name());
+     } else {
+         QTreeWidgetItem *item = new QTreeWidgetItem();
+         item->setText(0, name);
+diff --git a/src/scriptplugin.h b/src/scriptplugin.h
+index 367310b..f91e79b 100644
+--- a/src/scriptplugin.h
++++ b/src/scriptplugin.h
+@@ -3,9 +3,10 @@
+ 
+ #include "plugin.h"
+ 
++#include <QJSEngine>
++
+ class QMenu;
+ 
+-class KJSInterpreter;
+ class KRenameFile;
+ 
+ namespace Ui
+@@ -171,7 +173,7 @@ private:
+ 
+     QStringList         m_keys;
+     QStringList         m_help;
+-    KJSInterpreter     *m_interpreter;
++    QJSEngine           m_engine;
+     QWidget            *m_parent;
+     QMenu              *m_menu;
+ 
+-- 
+2.29.2
+

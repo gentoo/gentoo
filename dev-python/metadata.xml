@@ -2,41 +2,44 @@
 <!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		The dev-python category contains libraries, utilities or
-		bindings written in or for the Python programming language. 
+		The dev-python category contains packages whose primary purpose
+		is to provide Python modules, extensions and bindings, as well
+		as tools and utilities useful for development in the Python
+		programming language.
 	</longdescription>
 	<longdescription lang="de">
-		Die Kategorie dev-python enthält Bibliotheken und Werkzeuge für die
-		Programmiersprache Python.
+		Die Kategorie dev-python enthält Pakete, die hauptsächlich
+		Module, Erweiterungen und Sprachbindungen für Python zur
+		Verfügung stellen, sowie Werkzeuge für die Entwicklung
+		in der Programmiersprache Python.
 	</longdescription>
-	<longdescription lang="es">
-		La categoría dev-python contiene librerias y utilidades referentes al
-		lenguaje de programación Python.
+	<longdescription lang="fr">
+		La catégorie dev-python contient principalement des paquets pour
+		les modules Python, des extensions et des bindings, ainsi que
+		des outils et utilitaires utiles dans le language
+		de programmation Python.
 	</longdescription>
-	<longdescription lang="ja">
-		dev-pythonカテゴリーにはPythonプログラミング言語で記述された/のために
-		記述されたライブラリーと>ユーティリティとバインディングが含まれます。
-	</longdescription>
-	<longdescription lang="nl">
-		De dev-python categorie bevat bibliotheken en hulpmiddelen voor het 
-		gebruik	van de programmeertaal Python.
-	</longdescription>
-	<longdescription lang="vi">
-		Nhóm dev-python chứa các thư viện và tiện ích liên quan
-		đến ngôn ngữ lập trình Python.
+	<longdescription lang="ko">
+		dev-python 카테고리는 Python 모듈, 확장 그리고 바인딩을 제공할
+		뿐만 아니라 Python 프로그래밍 언어 개발을 위해 유용한 도구와
+		유틸리티를 제공하는 것이 목적인 패키지들을 담고 있습니다.
 	</longdescription>
 	<longdescription lang="it">
-		La categoria dev-python contiene librerie ed utilità per il linguaggio
+		La categoria dev-python contiene pacchetti il cui scopo
+		principale è fornire moduli, estensioni e bindings per Python,
+		nonché strumenti e utilità per lo sviluppo nel linguaggio
 		di programmazione Python.
 	</longdescription>
-	<longdescription lang="pt">
-		A categoria dev-python contém bibliotecas, utilitários e
-		bindings escritos em ou para a linguagem de programação Python.
-	</longdescription>
 	<longdescription lang="pl">
-		Kategoria dev-python zawiera biblioteki, narzędzia i powiązania
-		(bindings) napisane w lub stworzone do pisania w języku programowania
-		Python.
+		Kategoria dev-python zawiera paczki dostarczające przede
+		wszystkim moduły, rozszerzenia i powiązania (bindings) Pythona,
+		jak również przydatne narzędzia dla wiary programującej
+		w Pythonie.
+	</longdescription>
+	<longdescription lang="pt">
+		A categoria dev-python contém pacotes cujo propósito principal
+		é fornecer módulos, extensões e bindings para Python, bem como
+		ferramentas e outros utilitários para desenvolvimento
+		de software em Python.
 	</longdescription>
 </catmetadata>
-

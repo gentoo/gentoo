@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@jonas-toth.eu</email>
+		<name>Jonas Toth</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="only-c-locale">Build only the C locale</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">HowardHinnant/date</remote-id>
+		<bugs-to>https://github.com/HowardHinnant/date/issues</bugs-to>
+		<changelog>https://github.com/HowardHinnant/date/releases</changelog>
+	</upstream>
+</pkgmetadata>

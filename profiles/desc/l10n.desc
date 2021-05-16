@@ -1,0 +1,243 @@
+# Copyright 2016-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file contains descriptions of L10N USE_EXPAND flags.
+
+# Keep it sorted. Entries must be valid IETF language tags (BCP 47):
+# https://www.iana.org/assignments/language-subtag-registry
+
+# The following are considered duplicates. Use the generic language
+# tag without region subtag instead.
+# fil-PH - Filipino (Philippines)
+# fy-NL - Western Frisian (Netherlands)
+# ga-IE - Irish (Ireland)
+# gu-IN - Gujarati (India)
+# hi-IN - Hindi (India)
+# hy-AM - Armenian (Armenia)
+# id-ID - Indonesian (Indonesia)
+# kn-IN - Kannada (India)
+# nb-NO - Norwegian Bokmål (Norway)
+# ne-NP - Nepali (Nepal)
+# nn-NO - Norwegian Nynorsk (Norway)
+# pa-IN - Punjabi (India)
+# sa-IN - Sanskrit (India)
+# sv-SE - Swedish (Sweden)
+
+ach - Acoli
+af - Afrikaans
+am - Amharic
+an - Aragonese
+ar - Arabic
+as - Assamese
+ast - Asturian
+az - Azerbaijani
+be - Belarusian
+bea - Beaver
+bg - Bulgarian
+bla - Siksika
+bn - Bengali
+bn-BD - Bengali (Bangladesh)
+bn-IN - Bengali (India)
+bo - Tibetan
+br - Breton
+brx - Bodo (India)
+bs - Bosnian
+ca - Catalan
+ca-valencia - Catalan (Valencian)
+cak - Kaqchikel
+ceb - Cebuano
+ch - Chamorro
+chr - Cherokee
+ckb - Central Kurdish
+cnr - Montenegrin
+cop - Coptic
+co - Corsican
+cs - Czech
+csb - Kashubian
+cu - Church Slavic
+cy - Welsh
+da - Danish
+de - German
+de-1901 - German (traditional orthography)
+de-CH - German (Switzerland)
+de-DE - German (Germany)
+dgo - Dogri (individual language)
+doi - Dogri (macrolanguage)
+dsb - Lower Sorbian
+dv - Dhivehi
+dz - Dzongkha
+el - Modern Greek
+en - English
+en-AU - English (Australia)
+en-CA - English (Canada)
+en-GB - English (United Kingdom)
+en-NZ - English (New Zealand)
+en-US - English (United States)
+en-ZA - English (South Africa)
+eo - Esperanto
+es - Spanish
+es-419 - Spanish (Latin America)
+es-AR - Spanish (Argentina)
+es-CL - Spanish (Chile)
+es-ES - Spanish (Spain)
+es-MX - Spanish (Mexico)
+es-PE - Spanish (Peru)
+et - Estonian
+eu - Basque
+fa - Persian
+ff - Fulah
+fi - Finnish
+fil - Filipino
+fo - Faroese
+fr - French
+fr-CA - French (Canada)
+fur - Friulian
+fy - Western Frisian
+ga - Irish
+gd - Scottish Gaelic
+gez - Geez
+gl - Galician
+gn - Guarani
+got - Gothic
+grc - Ancient Greek (to 1453)
+gu - Gujarati
+gug - Paraguayan Guarani
+gv - Manx
+he - Hebrew
+hi - Hindi
+hil - Hiligaynon
+hr - Croatian
+hsb - Upper Sorbian
+ht - Haitian
+hu - Hungarian
+hus - Huastec
+hy - Armenian
+ia - Interlingua
+id - Indonesian
+io - Ido
+is - Icelandic
+it - Italian
+iu - Inuktitut
+ja - Japanese
+jbo - Lojban
+jv - Javanese
+ka - Georgian
+kab - Kabyle
+kek - Kekchí
+kk - Kazakh
+km - Central Khmer
+kmr-Latn - Northern Kurdish (Latin script)
+kn - Kannada
+ko - Korean
+kok - Konkani (macrolanguage)
+kpg - Kapingamarangi
+ks - Kashmiri
+ktu - Kituba (Democratic Republic of Congo)
+ku - Kurdish
+ky - Kirghiz
+la - Latin
+lb - Luxembourgish
+lij - Ligurian
+ln - Lingala
+lo - Lao
+lt - Lithuanian
+lv - Latvian
+mai - Maithili
+mg - Malagasy
+mi - Maori
+mk - Macedonian
+ml - Malayalam
+mn - Mongolian
+mni - Manipuri
+mr - Marathi
+ms - Malay (macrolanguage)
+mt - Maltese
+my - Burmese
+nan - Min Nan Chinese
+nb - Norwegian Bokmål
+nd - North Ndebele
+nds - Low German
+ne - Nepali
+nl - Dutch
+nn - Norwegian Nynorsk
+no - Norwegian
+nr - South Ndebele
+nso - Northern Sotho
+ny - Chichewa
+oc - Occitan
+om - Oromo
+or - Oriya (macrolanguage)
+pa - Punjabi
+pl - Polish
+pon - Pohnpeian
+pot - Potawatomi
+ppk - Uma
+prs - Dari
+ps - Pushto
+pt - Portuguese
+pt-BR - Portuguese (Brazil)
+pt-PT - Portuguese (Portugal)
+qu - Quechua
+rm - Romansh
+rmq - Caló
+ro - Romanian
+ru - Russian
+rw - Kinyarwanda
+sa - Sanskrit
+sat - Santali
+sc - Sardinian
+sco - Scots
+sd - Sindhi
+si - Sinhala
+sid - Sidamo
+sk - Slovak
+sl - Slovenian
+sml - Central Sama
+sn - Shona
+so - Somali
+son - Songhai languages
+sq - Albanian
+sr - Serbian
+sr-Latn - Serbian (Latin script)
+ss - Swati
+st - Southern Sotho
+su - Sundanese
+sv - Swedish
+sw - Swahili (macrolanguage)
+sw-TZ - Swahili (Tanzania)
+syc - Classical Syriac
+syr - Syriac
+szl - Silesian
+ta - Tamil
+ta-LK - Tamil (Sri Lanka)
+te - Telugu
+tet - Tetum
+tg - Tajik
+th - Thai
+ti - Tigrinya
+tk - Turkmen
+tl - Tagalog
+tlh - Klingon
+tn - Tswana
+to - Tonga (Tonga Islands)
+tr - Turkish
+trs - Chicahuaxtla Triqui
+ts - Tsonga
+tsg - Tausug
+tt - Tatar
+ug - Uyghur
+uk - Ukrainian
+ur - Urdu
+uz - Uzbek
+ve - Venda
+vec - Venetian
+vi - Vietnamese
+vls - Vlaams
+wa - Walloon
+xh - Xhosa
+yi - Yiddish
+yo - Yoruba
+zh - Chinese
+zh-CN - Chinese (China)
+zh-TW - Chinese (Taiwan)
+zu - Zulu

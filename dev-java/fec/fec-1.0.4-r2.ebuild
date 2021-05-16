@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"
@@ -9,7 +8,7 @@ inherit flag-o-matic toolchain-funcs java-pkg-2 java-ant-2
 
 DESCRIPTION="Forward Error Correction library in Java"
 HOMEPAGE="https://bitbucket.org/onionnetworks/"
-SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -58,7 +57,7 @@ src_compile() {
 
 	cd "${S}"/src/csrc || die
 	append-flags -fPIC
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} $(java-pkg_get-jni-cflags)" || die
+	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} $(java-pkg_get-jni-cflags)"
 	einfo "Sucessfully compiled C files!"
 }
 
@@ -66,5 +65,5 @@ src_install() {
 	java-pkg_newjar "lib/onion-${PN}.jar" "${PN}.jar"
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/com
-	dolib.so src/csrc/libfec{8,16}.so || die
+	dolib.so src/csrc/libfec{8,16}.so
 }

@@ -1,46 +1,60 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit udev eutils
+EAPI=7
+
+inherit udev
 
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/gentoo/hwids"
-if [[ ${PV} == "99999999" ]]; then
-	EGIT_REPO_URI="${HOMEPAGE}.git"
-	inherit git-2
+if [[ ${PV} == 99999999 ]]; then
+	PYTHON_COMPAT=( python3_{6..9} )
+	inherit git-r3 python-any-r1
+	EGIT_REPO_URI="https://github.com/gentoo/hwids.git"
 else
-	SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux"
+	SRC_URI="https://github.com/gentoo/hwids/archive/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="|| ( GPL-2 BSD ) public-domain"
 SLOT="0"
 IUSE="+net +pci +udev +usb"
 
-DEPEND="udev? (
-	dev-lang/perl
-	>=virtual/udev-206
-)"
-[[ ${PV} == "99999999" ]] && DEPEND+=" udev? ( net-misc/curl )"
-RDEPEND="!<sys-apps/pciutils-3.1.9-r2
-	!<sys-apps/usbutils-005-r1"
+RDEPEND="
+	udev? ( virtual/udev )
+"
 
-S=${WORKDIR}/hwids-${P}
+if [[ ${PV} == 99999999 ]]; then
+	BDEPEND="
+		net-misc/curl
+		udev? ( $(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]') )
+	"
+	python_check_deps() {
+		if use udev; then
+			has_version -b "dev-python/pyparsing[${PYTHON_USEDEP}]"
+		fi
+	}
+else
+	S=${WORKDIR}/hwids-${P}
+fi
+
+pkg_setup() {
+	:
+}
+
+src_unpack() {
+	if [[ ${PV} == 99999999 ]]; then
+		git-r3_src_unpack
+		cd "${S}" || die
+		emake fetch
+	else
+		default
+	fi
+}
 
 src_prepare() {
-	[[ ${PV} == "99999999" ]] && emake fetch
-
+	default
 	sed -i -e '/udevadm hwdb/d' Makefile || die
-
-	# Create a rules file compatible with older udev.
-	sed -e 's/evdev:name/keyboard:name/' \
-		-e 's/evdev:atkbd:dmi/keyboard:dmi/' \
-		-e 's/evdev:input:b\([^v]*\)v\([^p]*\)p\([^e]*\)\(e.*\)\?/keyboard:usb:v\2p\3/' \
-		-e 's/keyboard:usb:v046DpC52D\*/keyboard:usb:v046DpC52Dd*dc*dsc*dp*ic*isc*ip*in00*/' \
-		-e 's/keyboard:usb:v0458p0708\*/keyboard:usb:v0458p0708d*dc*dsc*dp*ic*isc*ip*in01*/' \
-		udev/60-keyboard.hwdb > udev/61-oldkeyboard.hwdb || die
 }
 
 _emake() {
@@ -53,6 +67,10 @@ _emake() {
 }
 
 src_compile() {
+	if [[ ${PV} == 99999999 ]] && use udev; then
+		python_setup
+		_emake udev-hwdb
+	fi
 	_emake
 }
 
@@ -66,8 +84,6 @@ src_install() {
 
 pkg_postinst() {
 	if use udev; then
-		udevadm hwdb --update --root="${ROOT%/}"
-		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
-		[ "${ROOT:-/}" = "/" ] && udevadm control --reload
+		udevadm hwdb --update --root="${ROOT}"
 	fi
 }

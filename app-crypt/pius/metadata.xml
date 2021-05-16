@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tomk@gentoo.org</email>
-		<name>Tom Knight</name>
+	<maintainer type="person" proxied="yes">
+		<email>nickaristocrates@gmail.com</email>
+		<name>Nicholas Meyer</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>crypto@gentoo.org</email>
-		<name>Crypto</name>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		The PGP Individual UID Signer (PIUS) is a tool for individually

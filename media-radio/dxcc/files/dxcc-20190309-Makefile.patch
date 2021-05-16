@@ -1,0 +1,28 @@
+--- a/Makefile	2019-04-19 16:57:54.143313171 +0200
++++ b/Makefile	2019-04-19 17:00:33.507620050 +0200
+@@ -4,19 +4,22 @@
+ DESTDIR ?= /usr
+ 
+ all:
+-	@echo -e "dxcc - make [install|uninstall|clean|dist] \nCheck README for help."
+ 
+ install:
+-	install -d -v				$(DESTDIR)/share/man/man1/
+-	install -d -v				$(DESTDIR)/share/dxcc/
++	install -d 				$(DESTDIR)/share/man/man1/
++	install -d 				$(DESTDIR)/share/dxcc/
++	install -d                              $(DESTDIR)/share/pixmaps/
++	install -d                              $(DESTDIR)/bin/
+ 	install -m 0644 dxcc.1		$(DESTDIR)/share/man/man1/
+ 	install -m 0644 earth.gif	$(DESTDIR)/share/dxcc/
++	install -m 0644 dxcc.png	$(DESTDIR)/share/pixmaps
+ 	install -m 0755 dxcc		$(DESTDIR)/bin/
+ 	
+ uninstall:
+ 	rm -f $(DESTDIR)/bin/dxcc
+ 	rm -f $(DESTDIR)/share/man/man1/dxcc.1
+ 	rm -f $(DESTDIR)/share/dxcc/earth.gif
++	rm -r $(DESTDIR)/share/pixmaps/dxcc.png
+ 
+ clean:
+ 	rm -f *~

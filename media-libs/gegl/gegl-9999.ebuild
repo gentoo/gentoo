@@ -1,183 +1,147 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
-# vala and introspection support is broken, bug #468208
-VALA_MIN_API_VERSION=0.20
+PYTHON_COMPAT=( python3_{7..9} )
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools python-any-r1 vala
+inherit meson optfeature python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/gegl"
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 	SRC_URI=""
 else
-	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A graph based image processing framework"
-HOMEPAGE="http://www.gegl.org/"
+HOMEPAGE="https://gegl.org/"
 
-LICENSE="|| ( GPL-3 LGPL-3 )"
-SLOT="0.3"
+LICENSE="|| ( GPL-3+ LGPL-3 )"
+SLOT="0.4"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun libav openexr png raw sdl svg test tiff umfpack vala v4l webp"
-REQUIRED_IUSE="
+IUSE="cairo debug ffmpeg introspection lcms lensfun openexr pdf raw sdl svg test tiff umfpack vala v4l webp"
+REQUIRED_USE="
 	svg? ( cairo )
+	test? ( introspection )
 	vala? ( introspection )
 "
 
-RDEPEND="
-	>=dev-libs/glib-2.36:2
-	dev-libs/json-glib
-	>=media-libs/babl-0.1.14
-	sys-libs/zlib
-	>=x11-libs/gdk-pixbuf-2.18:2
-	x11-libs/pango
+RESTRICT="!test? ( test )"
 
-	cairo? ( x11-libs/cairo )
-	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
-	)
-	introspection? ( >=dev-libs/gobject-introspection-1.32 )
-	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( >=media-libs/jasper-1.900.1 )
-	lcms? ( >=media-libs/lcms-2.2:2 )
+# NOTE: Even current libav 11.4 does not have AV_CODEC_CAP_VARIABLE_FRAME_SIZE
+#       so there is no chance to support libav right now (Gentoo bug #567638)
+#       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
+RDEPEND="
+	>=dev-libs/glib-2.44:2
+	>=dev-libs/json-glib-1.2.6
+	>=media-libs/babl-0.1.84[introspection?,lcms?,vala?]
+	media-libs/libnsgif
+	>=media-libs/libpng-1.6.0:0=
+	>=sys-libs/zlib-1.2.0
+	virtual/jpeg:0=
+	>=x11-libs/gdk-pixbuf-2.32:2
+	>=x11-libs/pango-1.38.0
+	cairo? ( >=x11-libs/cairo-1.12.2 )
+	ffmpeg? ( media-video/ffmpeg:0= )
+	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
+	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
-	openexr? ( media-libs/openexr )
-	png? ( media-libs/libpng:0= )
-	raw? ( >=media-libs/libraw-0.15.4 )
-	sdl? ( media-libs/libsdl )
-	svg? ( >=gnome-base/librsvg-2.14:2 )
+	openexr? ( >=media-libs/openexr-1.6.1:= )
+	pdf? ( >=app-text/poppler-0.71.0[cairo] )
+	raw? ( >=media-libs/libraw-0.15.4:0= )
+	sdl? ( >=media-libs/libsdl-1.2.0 )
+	svg? ( >=gnome-base/librsvg-2.40.6:2 )
 	tiff? ( >=media-libs/tiff-4:0 )
 	umfpack? ( sci-libs/umfpack )
 	v4l? ( >=media-libs/libv4l-1.0.1 )
-	webp? ( media-libs/libwebp )
+	webp? ( >=media-libs/libwebp-0.5.0:= )
 "
-DEPEND="${RDEPEND}
-	>=dev-util/gtk-doc-am-1
-	>=dev-util/intltool-0.40.1
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-lang/perl
-	virtual/pkgconfig
+	>=dev-util/gtk-doc-am-1
+	>=sys-devel/gettext-0.19.8
 	>=sys-devel/libtool-2.2
-	test? ( introspection? (
-		$(python_gen_any_dep '>=dev-python/pygobject-3.2[${PYTHON_USEDEP}]') ) )
+	virtual/pkgconfig
+	test? ( $(python_gen_any_dep '>=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )
 "
 
-pkg_setup() {
-	use test && use introspection && python-any-r1_pkg_setup
+DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
+
+python_check_deps() {
+	use test || return 0
+	has_version -b ">=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]"
 }
 
 src_prepare() {
-	# FIXME: the following should be proper patch sent to upstream
-	# fix OSX loadable module filename extension
-	sed -i -e 's/\.dylib/.bundle/' configure.ac || die
+	default
+	# patch executables suffix
+	sed -i -e "s/'gegl'/'gegl-0.4'/" bin/meson.build || die
+	sed -i -e "s/'gegl-imgcmp'/'gegl-imgcmp-0.4'/" tools/meson.build || die
+	sed -i -e "s/gegl-imgcmp/gegl-imgcmp-0.4/" tests/simple/test-exp-combine.sh || die
+	# skip UNEXPECTED PASSED 'matting-levin' test
+	sed -i -e "s/composition_tests += 'matting-levin'//" \
+		-e "s/composition_tests_fail += 'matting-levin'//" tests/compositions/meson.build || die
+
 	# don't require Apple's OpenCL on versions of OSX that don't have it
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
 
-	#epatch "${FILESDIR}"/${P}-g_log_domain.patch
-
 	# commit 7c78497b : tests that use gegl.png are broken on non-amd64
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
-		-i tests/compositions/Makefile.am || die
-
-	epatch_user
-	eautoreconf
+		-i tests/compositions/meson.build || die
 
 	use vala && vala_src_prepare
 }
 
 src_configure() {
-	# never enable altering of CFLAGS via profile option
-	# libspiro: not in portage main tree
-	# disable documentation as the generating is bit automagic
-	#    if anyone wants to work on it just create bug with patch
-
-	# Also please note that:
-	#
-	#  - Some auto-detections are not patched away since the docs are
-	#    not built (--disable-docs, lack of --enable-gtk-doc) and these
-	#    tools affect re-generation of docs, only
-	#    (e.g. ruby, asciidoc, dot (of graphviz), enscript)
-	#
-	#  - Parameter --with-exiv2 compiles a noinst-app only, no use
-	#
-	#  - Parameter --disable-workshop disables any use of Lua, effectivly
-	#
-	#  - v4l support does not work with our media-libs/libv4l-0.8.9,
-	#    upstream bug at https://bugzilla.gnome.org/show_bug.cgi?id=654675
-	#
-	#  - There are two checks for dot, one controllable by --with(out)-graphviz
-	#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
-	#
-	#  - mrg is not in tree and gexiv2 support only has effect when mrg support
-	#    is enabled
-	#
-	# So that's why USE="exif graphviz lua v4l" got resolved.  More at:
-	# https://bugs.gentoo.org/show_bug.cgi?id=451136
-	#
-	econf \
-		--disable-docs \
-		--disable-profile \
-		--disable-silent-rules \
-		--disable-workshop \
-		--program-suffix=-${SLOT} \
-		--with-gdk-pixbuf \
-		--with-pango \
-		--without-libspiro \
-		$(use_enable cpu_flags_x86_mmx mmx) \
-		$(use_enable cpu_flags_x86_sse sse) \
-		$(use_enable debug) \
-		$(use_with cairo) \
-		$(use_with cairo pangocairo) \
-		--without-exiv2 \
-		$(use_with ffmpeg libavformat) \
-		--without-gexiv2 \
-		--without-graphviz \
-		$(use_with jpeg libjpeg) \
-		$(use_with jpeg2k jasper) \
-		$(use_with lcms) \
-		$(use_with lensfun) \
-		--without-lua \
-		--without-mrg \
-		$(use_with openexr) \
-		$(use_with png libpng) \
-		$(use_with raw libraw) \
-		$(use_with sdl) \
-		$(use_with svg librsvg) \
-		$(use_with tiff libtiff) \
-		$(use_with umfpack) \
-		$(use_with v4l libv4l) \
-		$(use_with v4l libv4l2) \
-		$(use_enable introspection) \
-		$(use_with vala) \
-		$(use_with webp)
+	local emesonargs=(
+		#  - Disable documentation as the generating is bit automagic
+		#    if anyone wants to work on it just create bug with patch
+		-Ddocs=false
+		-Dexiv2=disabled
+		-Dgdk-pixbuf=enabled
+		-Djasper=disabled
+		#  - libspiro: not in portage main tree
+		-Dlibspiro=disabled
+		-Dlua=disabled
+		-Dmrg=disabled
+		-Dpango=enabled
+		-Dsdl2=disabled
+		#  - Parameter -Dworkshop=false disables any use of Lua, effectivly
+		-Dworkshop=false
+		$(meson_feature cairo)
+		$(meson_feature cairo pangocairo)
+		$(meson_feature ffmpeg libav)
+		$(meson_feature lcms)
+		$(meson_feature lensfun)
+		$(meson_feature openexr)
+		$(meson_feature pdf poppler)
+		$(meson_feature raw libraw)
+		$(meson_feature sdl sdl1)
+		$(meson_feature svg librsvg)
+		$(meson_feature test pygobject)
+		$(meson_feature tiff libtiff)
+		$(meson_feature umfpack)
+		#  - v4l support does not work with our media-libs/libv4l-0.8.9,
+		#    upstream bug at https://bugzilla.gnome.org/show_bug.cgi?id=654675
+		$(meson_feature v4l libv4l)
+		$(meson_feature v4l libv4l2)
+		$(meson_feature vala vapigen)
+		$(meson_feature webp)
+		$(meson_use introspection)
+	)
+	meson_src_configure
 }
 
-src_test() {
-	gnome2_environment_reset  # sandbox issues
-	default
-}
-
-src_compile() {
-	gnome2_environment_reset  # sandbox issues (bug #396687)
-	default
-
-	[[ ${PV} == *9999* ]] && emake ./ChangeLog  # "./" prevents "Circular ChangeLog <- ChangeLog dependency dropped."
-}
-
-src_install() {
-	default
-	prune_libtool_files --all
+pkg_postinst() {
+	optfeature "'Show Image Graph' under GIMP[debug] menu 'File - Debug'" media-gfx/graphviz
 }

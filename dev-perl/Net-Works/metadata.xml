@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-Works</remote-id>
+    <remote-id type="cpan-module">Net::Works</remote-id>
+    <remote-id type="cpan-module">Net::Works::Address</remote-id>
+    <remote-id type="cpan-module">Net::Works::Network</remote-id>
+    <remote-id type="cpan-module">Net::Works::Role::IP</remote-id>
+    <remote-id type="cpan-module">Net::Works::Types</remote-id>
+    <remote-id type="cpan-module">Net::Works::Util</remote-id>
+  </upstream>
+</pkgmetadata>

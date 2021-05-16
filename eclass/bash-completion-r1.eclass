@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
@@ -26,7 +26,7 @@
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI ${EAPI} unsupported (yet)."
 esac
 
@@ -91,28 +91,30 @@ get_bashhelpersdir() {
 }
 
 # @FUNCTION: dobashcomp
-# @USAGE: file [...]
+# @USAGE: <file> [...]
 # @DESCRIPTION:
-# Install bash-completion files passed as args. Has EAPI-dependant failure
+# Install bash-completion files passed as args. Has EAPI-dependent failure
 # behavior (like doins).
 dobashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_bash-completion-r1_get_bashcompdir)"
 		doins "${@}"
 	)
 }
 
 # @FUNCTION: newbashcomp
-# @USAGE: file newname
+# @USAGE: <file> <newname>
 # @DESCRIPTION:
-# Install bash-completion file under a new name. Has EAPI-dependant failure
+# Install bash-completion file under a new name. Has EAPI-dependent failure
 # behavior (like newins).
 newbashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_bash-completion-r1_get_bashcompdir)"
 		newins "${@}"
 	)

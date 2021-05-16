@@ -1,0 +1,11 @@
+--- a/src/defines.h.in
++++ b/src/defines.h.in
+@@ -24,7 +24,7 @@
+ 
+ #define VERSION "@VERSION@"
+ #define BANNER \
+-"\nXprobe2 v."VERSION\
++"\nXprobe2 v." VERSION \
+ " Copyright (c) 2002-2005 fyodor@o0o.nu, ofir@sys-security.com, meder@o0o.nu"\
+ "\n"
+ 

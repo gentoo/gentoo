@@ -1,23 +1,21 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 PERL_EXPORT_PHASE_FUNCTIONS=no
-inherit eutils multilib user perl-module
+inherit multilib user perl-module
 
 DESCRIPTION="A streaming server for MP3, OGG vorbis and other streamable files"
 HOMEPAGE="https://www.gnu.org/software/gnump3d/"
-SRC_URI="http://savannah.gnu.org/download/${PN}/${P}.tar.bz2"
+SRC_URI="https://savannah.gnu.org/download/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ppc64 sparc x86"
 IUSE="sox"
 
 RDEPEND="sox? ( media-sound/sox )"
-DEPEND="sys-apps/sed"
 
 RESTRICT="test"
 

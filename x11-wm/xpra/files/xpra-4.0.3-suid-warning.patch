@@ -1,0 +1,12 @@
+diff -Nuar a/xpra/scripts/config.py b/xpra/scripts/config.py
+--- a/xpra/scripts/config.py	2020-05-10 19:00:55.000000000 +0200
++++ b/xpra/scripts/config.py	2020-06-07 18:35:49.361899872 +0200
+@@ -150,7 +150,7 @@
+             if (xorg_stat.st_mode & stat.S_ISUID)!=0:
+                 if (xorg_stat.st_mode & stat.S_IROTH)==0:
+                     if warn:
+-                        warn("%s is suid and not readable, Xdummy support unavailable" % xorg_bin)
++                        debug("%s is suid and not readable, Xdummy support unavailable" % xorg_bin)
+                     return get_Xvfb_command()
+                 debug("%s is suid and readable, using the xpra_Xdummy wrapper" % xorg_bin)
+                 use_wrapper = True

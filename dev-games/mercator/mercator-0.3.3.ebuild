@@ -1,23 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="WorldForge library primarily aimed at terrain"
-HOMEPAGE="http://www.worldforge.org/index.php/components/mercator/"
+HOMEPAGE="https://www.worldforge.org/index.php/components/mercator/"
 SRC_URI="mirror://sourceforge/worldforge/${P}.tar.gz"
 
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc"
-SLOT="0"
 
 RDEPEND=">=dev-games/wfmath-1"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig"
+"
 
 src_compile() {
 	default
@@ -26,6 +26,7 @@ src_compile() {
 
 src_install() {
 	default
-	use doc && dohtml -r doc/html/*
-	prune_libtool_files
+	use doc && dodoc -r doc/html
+
+	find "${ED}" -name '*.la' -delete || die
 }

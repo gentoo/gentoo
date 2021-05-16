@@ -1,0 +1,11 @@
+--- a/libs/soxwrap/configure.ac	2020-05-08 08:23:11.243813555 +0200
++++ b/libs/soxwrap/configure.ac	2020-05-08 08:23:26.255575196 +0200
+@@ -18,7 +18,7 @@
+ dnl Checks for programs.
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+-AC_PROG_RANLIB
++LT_INIT
+ AC_PROG_LN_S
+ AC_PROG_CC
+ 

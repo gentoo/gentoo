@@ -1,25 +1,18 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="Utilities for PKCS#11 token content dump"
-HOMEPAGE="https://sites.google.com/site/alonbarlev/pkcs11-utilities"
-SRC_URI="https://pkcs11-tools.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://github.com/alonbl/pkcs11-dump"
+SRC_URI="https://github.com/alonbl/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="~amd64"
 
-IUSE=""
-
-RDEPEND=">=dev-libs/openssl-0.9.7:0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF}
-}
+RDEPEND="
+	dev-libs/openssl:0="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"

@@ -1,0 +1,24 @@
+From 4f73ff02b3efd5e8728b18fcf1067eca166704ee Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Thu, 4 Jun 2020 16:00:38 +0200
+Subject: Fix build with Qt 5.15
+
+---
+ src/kcmodule/pressurecurvewidget.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/kcmodule/pressurecurvewidget.cpp b/src/kcmodule/pressurecurvewidget.cpp
+index 0c943b3..f047a6c 100644
+--- a/src/kcmodule/pressurecurvewidget.cpp
++++ b/src/kcmodule/pressurecurvewidget.cpp
+@@ -22,6 +22,7 @@
+ //Qt includes
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ #include <QResizeEvent>
+ #include <QTabletEvent>
+-- 
+cgit v1.1
+

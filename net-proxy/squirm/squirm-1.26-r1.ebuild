@@ -1,10 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A redirector for Squid"
 HOMEPAGE="http://squirm.foote.com.au"
@@ -13,13 +12,15 @@ SRC_URI="http://squirm.foote.com.au/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
-IUSE=""
 
 RDEPEND="net-proxy/squid"
+DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" LDOPTS="${LDFLAGS}"

@@ -5,7 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A new all Haskell "tagged" DFA regex engine, inspired by libtre
-	</longdescription>
+	<upstream>
+		<remote-id type="github">ChrisKuklewicz/regex-tdfa</remote-id>
+	</upstream>
 </pkgmetadata>

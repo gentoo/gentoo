@@ -1,0 +1,11 @@
+--- /perl/Makefile.PL
++++ /perl/Makefile.PL
+@@ -4,7 +4,7 @@
+     'CC'                => 'c++',
+     'LD'                => 'c++',
+     'INC'               => '',
+-    'LIBS'              => '-lzinnia',
++    'LIBS'              => '-L../.libs -lzinnia',
+ #    'VERSION'	        => '0.1',
+     'OBJECT'            => 'zinnia_wrap.o' 
+ );

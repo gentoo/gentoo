@@ -1,0 +1,150 @@
+From 4a031b8ce538af0c15857c37c1964bf144d5bc38 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 21 Aug 2020 22:22:48 +0100
+Subject: [PATCH] Add BARRIER_BUILD_TESTS CMake option to make tests optional
+
+---
+ CMakeLists.txt                             | 2 +-
+ src/CMakeLists.txt                         | 5 ++++-
+ src/lib/barrier/KeyMap.h                   | 4 ++++
+ src/test/unittests/barrier/KeyMapTests.cpp | 2 ++
+ 4 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6a377c04..4947d20f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,7 @@ project (barrier C CXX)
+ 
+ option (BARRIER_BUILD_GUI "Build the GUI" ON)
+ option (BARRIER_BUILD_INSTALLER "Build the installer" ON)
++option (BARRIER_BUILD_TESTS "Build the tests" ON)
+ 
+ set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
+ set (CMAKE_CXX_STANDARD 14)
+@@ -49,7 +50,6 @@ else()
+ endif()
+ 
+ set (libs)
+-include_directories (BEFORE SYSTEM ./ext/gtest/include)
+ 
+ if (UNIX)
+     if (NOT APPLE)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 55aad09d..c3dea51f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -19,7 +19,10 @@ include_directories (${CMAKE_CURRENT_BINARY_DIR}/lib)
+ 
+ add_subdirectory(lib)
+ add_subdirectory(cmd)
+-add_subdirectory(test)
++
++if (BARRIER_BUILD_TESTS)
++    add_subdirectory(test)
++endif()
+ 
+ if (BARRIER_BUILD_GUI)
+     add_subdirectory(gui)
+diff --git a/src/lib/barrier/KeyMap.h b/src/lib/barrier/KeyMap.h
+index b6eb8658..812b4d26 100644
+--- a/src/lib/barrier/KeyMap.h
++++ b/src/lib/barrier/KeyMap.h
+@@ -24,7 +24,9 @@
+ #include "common/stdset.h"
+ #include "common/stdvector.h"
+ 
++#ifdef TEST_ENV
+ #include <gtest/gtest_prod.h>
++#endif
+ 
+ namespace barrier {
+ 
+@@ -327,6 +329,7 @@ public:
+     //@}
+ 
+ private:
++#ifdef TEST_ENV
+     FRIEND_TEST(KeyMapTests,
+                 findBestKey_requiredDown_matchExactFirstItem);
+     FRIEND_TEST(KeyMapTests,
+@@ -340,6 +343,7 @@ private:
+     FRIEND_TEST(KeyMapTests,
+                 findBestKey_onlyOneRequiredDown_matchTwoRequiredChangesItem);
+     FRIEND_TEST(KeyMapTests, findBestKey_noRequiredDown_cannotMatch);
++#endif
+ 
+ private:
+     //! Ways to synthesize a key
+diff --git a/src/test/unittests/barrier/KeyMapTests.cpp b/src/test/unittests/barrier/KeyMapTests.cpp
+index 59806339..c0832199 100644
+--- a/src/test/unittests/barrier/KeyMapTests.cpp
++++ b/src/test/unittests/barrier/KeyMapTests.cpp
+@@ -15,6 +15,8 @@
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#define TEST_ENV
++
+ #include "barrier/KeyMap.h"
+ 
+ #include "test/global/gtest.h"
+-- 
+2.26.2
+
+From 19e020080cb3f54befb504abc48cf304ab42f23e Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 22 Aug 2020 11:46:25 +0100
+Subject: [PATCH] Respect DISPLAY environment variable in XWindows tests
+
+XWindowsScreenTests was failing under Gentoo's package manager. I have
+also addressed this in XWindowsScreenSaverTests, which is currently
+unused.
+---
+ src/test/integtests/platform/XWindowsScreenSaverTests.cpp | 7 ++++++-
+ src/test/integtests/platform/XWindowsScreenTests.cpp      | 7 ++++++-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/src/test/integtests/platform/XWindowsScreenSaverTests.cpp b/src/test/integtests/platform/XWindowsScreenSaverTests.cpp
+index c6a2710c..1ee273ed 100644
+--- a/src/test/integtests/platform/XWindowsScreenSaverTests.cpp
++++ b/src/test/integtests/platform/XWindowsScreenSaverTests.cpp
+@@ -30,7 +30,12 @@ using ::testing::_;
+ // TODO: not working on build machine for some reason
+ TEST(CXWindowsScreenSaverTests, activate_defaultScreen_todo)
+ {
+-    Display* display = XOpenDisplay(":0.0");
++    const char* displayName = getenv("DISPLAY");
++    if (displayName == NULL) {
++        displayName = ":0.0";
++    }
++
++    Display* display = XOpenDisplay(displayName);
+     Window window = DefaultRootWindow(display);
+     MockEventQueue eventQueue;
+     EXPECT_CALL(eventQueue, removeHandler(_, _)).Times(1);
+diff --git a/src/test/integtests/platform/XWindowsScreenTests.cpp b/src/test/integtests/platform/XWindowsScreenTests.cpp
+index d8f75e15..97358197 100644
+--- a/src/test/integtests/platform/XWindowsScreenTests.cpp
++++ b/src/test/integtests/platform/XWindowsScreenTests.cpp
+@@ -25,11 +25,16 @@ using ::testing::_;
+ 
+ TEST(CXWindowsScreenTests, fakeMouseMove_nonPrimary_getCursorPosValuesCorrect)
+ {
++    const char* displayName = getenv("DISPLAY");
++    if (displayName == NULL) {
++        displayName = ":0.0";
++    }
++
+     MockEventQueue eventQueue;
+     EXPECT_CALL(eventQueue, adoptHandler(_, _, _)).Times(2);
+     EXPECT_CALL(eventQueue, adoptBuffer(_)).Times(2);
+     EXPECT_CALL(eventQueue, removeHandler(_, _)).Times(2);
+-    XWindowsScreen screen(new XWindowsImpl(), ":0.0", false, false, 0, &eventQueue);
++    XWindowsScreen screen(new XWindowsImpl(), displayName, false, false, 0, &eventQueue);
+ 
+     screen.fakeMouseMove(10, 20);
+ 
+-- 
+2.26.2
+

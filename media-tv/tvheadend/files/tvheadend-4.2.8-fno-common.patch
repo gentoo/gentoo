@@ -1,0 +1,55 @@
+From 1f2a0a59e3acaef88509d3ac899b905c73b7b8f8 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 15 May 2020 17:45:30 +0100
+Subject: [PATCH] Fix building with -fno-common (default from GCC 10)
+
+---
+ src/input.h        | 4 ++--
+ src/input/mpegts.c | 2 ++
+ src/input/mpegts.h | 2 +-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/input.h b/src/input.h
+index a9c96df04..3dce355c6 100644
+--- a/src/input.h
++++ b/src/input.h
+@@ -133,8 +133,8 @@ void tvh_hardware_delete ( tvh_hardware_t *th );
+ extern const idclass_t tvh_input_class;
+ extern const idclass_t tvh_input_instance_class;
+ 
+-tvh_input_list_t    tvh_inputs;
+-tvh_hardware_list_t tvh_hardware;
++extern tvh_input_list_t    tvh_inputs;
++extern tvh_hardware_list_t tvh_hardware;
+ 
+ #define TVH_INPUT_FOREACH(x) LIST_FOREACH(x, &tvh_inputs, ti_link)
+ #define TVH_HARDWARE_FOREACH(x) LIST_FOREACH(x, &tvh_hardware, th_link)
+diff --git a/src/input/mpegts.c b/src/input/mpegts.c
+index e02d491f1..fca4f3429 100644
+--- a/src/input/mpegts.c
++++ b/src/input/mpegts.c
+@@ -20,6 +20,8 @@
+ #include "mpegts/fastscan.h"
+ #include "memoryinfo.h"
+ 
++struct mpegts_listeners mpegts_listeners;
++
+ extern memoryinfo_t mpegts_input_queue_memoryinfo;
+ extern memoryinfo_t mpegts_input_table_memoryinfo;
+ 
+diff --git a/src/input/mpegts.h b/src/input/mpegts.h
+index 9dda3baca..9c4c57b73 100644
+--- a/src/input/mpegts.h
++++ b/src/input/mpegts.h
+@@ -1149,7 +1149,7 @@ typedef struct mpegts_listener
+   void (*ml_mux_delete) (mpegts_mux_t *mm, void *p);
+ } mpegts_listener_t;
+ 
+-LIST_HEAD(,mpegts_listener) mpegts_listeners;
++extern LIST_HEAD(mpegts_listeners, mpegts_listener) mpegts_listeners;
+ 
+ #define mpegts_add_listener(ml)\
+   LIST_INSERT_HEAD(&mpegts_listeners, ml, ml_link)
+-- 
+2.26.2
+

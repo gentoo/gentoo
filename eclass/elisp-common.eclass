@@ -1,7 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-#
+
 # @ECLASS: elisp-common.eclass
 # @MAINTAINER:
 # Gentoo GNU Emacs project <gnu-emacs@gentoo.org>
@@ -11,6 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -24,29 +24,27 @@
 # When relying on the emacs USE flag, you need to add
 #
 # @CODE
-# 	emacs? ( virtual/emacs )
+# 	emacs? ( >=app-editors/emacs-23.1:* )
 # @CODE
 #
 # to your DEPEND/RDEPEND line and use the functions provided here to
 # bring the files to the correct locations.
 #
-# If your package requires a minimum Emacs version, e.g. Emacs 24, then
-# the dependency should be on >=virtual/emacs-24 instead.  Because the
-# user can select the Emacs executable with eselect, you should also
-# make sure that the active Emacs version is sufficient.  This can be
-# tested with function elisp-need-emacs(), which would typically be
-# called from pkg_setup(), as in the following example:
+# If your package requires a minimum Emacs version, e.g. Emacs 26.1,
+# then the dependency should be on >=app-editors/emacs-26.1:* instead.
+# Because the user can select the Emacs executable with eselect, you
+# should also make sure that the active Emacs version is sufficient.
+# The eclass will automatically ensure this if you assign variable
+# NEED_EMACS with the Emacs version, as in the following example:
 #
 # @CODE
-# 	elisp-need-emacs 24 || die "Emacs version too low"
+# 	NEED_EMACS=26.1
 # @CODE
 #
-# Please note that such tests should be limited to packages that are
-# known to fail with lower Emacs versions; the standard case is to
-# depend on virtual/emacs without version.
+# Please note that this should be done only for packages that are known
+# to fail with lower Emacs versions.
 #
-# @ROFF .SS
-# src_compile() usage:
+# @SUBSECTION src_compile() usage:
 #
 # An elisp file is compiled by the elisp-compile() function defined
 # here and simply takes the source files as arguments.  The case of
@@ -66,8 +64,7 @@
 # comments.  See the Emacs Lisp Reference Manual (node "Autoload") for
 # a detailed explanation.
 #
-# @ROFF .SS
-# src_install() usage:
+# @SUBSECTION src_install() usage:
 #
 # The resulting compiled files (.elc) should be put in a subdirectory of
 # /usr/share/emacs/site-lisp/ which is named after the first argument
@@ -134,8 +131,23 @@
 # "50${PN}-gentoo.el".  If your subdirectory is not named ${PN}, give
 # the differing name as second argument.
 #
-# @ROFF .SS
-# pkg_postinst() / pkg_postrm() usage:
+# @SUBSECTION pkg_setup() usage:
+#
+# If your ebuild uses the elisp-compile eclass function to compile
+# its elisp files (see above), then you don't need a pkg_setup phase,
+# because elisp-compile and elisp-make-autoload-file do their own sanity
+# checks.  On the other hand, if the elisp files are compiled by the
+# package's build system, then there is often no check for the Emacs
+# version.  In this case, you can add an explicit check in pkg_setup:
+#
+# @CODE
+# 	elisp-check-emacs-version
+# @CODE
+#
+# When having optional Emacs support, you should prepend "use emacs &&"
+# to above call of elisp-check-emacs-version().
+#
+# @SUBSECTION pkg_postinst() / pkg_postrm() usage:
 #
 # After that you need to recreate the start-up file of Emacs after
 # emerging and unmerging by using
@@ -150,12 +162,14 @@
 # 	}
 # @CODE
 #
-# When having optional Emacs support, you should prepend "use emacs &&"
+# Again, with optional Emacs support, you should prepend "use emacs &&"
 # to above calls of elisp-site-regen().
-# Don't use "has_version virtual/emacs"!  When unmerging the state of
-# the emacs USE flag is taken from the package database and not from the
-# environment, so it is no problem when you unset USE=emacs between
-# merge and unmerge of a package.
+
+case ${EAPI:-0} in
+	5|6) inherit eapi7-ver ;;
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 # @ECLASS-VARIABLE: SITELISP
 # @DESCRIPTION:
@@ -166,6 +180,12 @@ SITELISP=/usr/share/emacs/site-lisp
 # @DESCRIPTION:
 # Directory where packages install miscellaneous (not Lisp) files.
 SITEETC=/usr/share/emacs/etc
+
+# @ECLASS-VARIABLE: EMACSMODULES
+# @DESCRIPTION:
+# Directory where packages install dynamically loaded modules.
+# May contain a @libdir@ token which will be replaced by $(get_libdir).
+EMACSMODULES=/usr/@libdir@/emacs/modules
 
 # @ECLASS-VARIABLE: EMACS
 # @DESCRIPTION:
@@ -183,13 +203,26 @@ EMACSFLAGS="-batch -q --no-site-file"
 # Emacs flags used for byte-compilation in elisp-compile().
 BYTECOMPFLAGS="-L ."
 
+# @ECLASS-VARIABLE: NEED_EMACS
+# @DESCRIPTION:
+# The minimum Emacs version required for the package.
+: ${NEED_EMACS:=23.1}
+
+# @ECLASS-VARIABLE: _ELISP_EMACS_VERSION
+# @INTERNAL
+# @DESCRIPTION:
+# Cached value of Emacs version detected in elisp-check-emacs-version().
+_ELISP_EMACS_VERSION=""
+
 # @FUNCTION: elisp-emacs-version
 # @RETURN: exit status of Emacs
 # @DESCRIPTION:
 # Output version of currently active Emacs.
 
 elisp-emacs-version() {
-	local version ret
+	local version ret tmout="timeout -k 5 55"
+	# Run without timeout if the command is not available
+	${tmout} true &>/dev/null || tmout=""
 	# The following will work for at least versions 18-24.
 	echo "(princ emacs-version)" >"${T}"/emacs-version.el
 	version=$(
@@ -198,12 +231,14 @@ elisp-emacs-version() {
 		# Redirecting stdin and unsetting TERM and DISPLAY will cause
 		# most of them to exit with an error.
 		unset TERM DISPLAY
-		${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
+		${tmout} ${EMACS} ${EMACSFLAGS} -l "${T}"/emacs-version.el </dev/null
 	)
 	ret=$?
 	rm -f "${T}"/emacs-version.el
 	if [[ ${ret} -ne 0 ]]; then
 		eerror "elisp-emacs-version: Failed to run ${EMACS}"
+		[[ $(realpath ${EMACS} 2>/dev/null) == */emacs* ]] \
+			|| eerror "This package needs GNU Emacs"
 		return ${ret}
 	fi
 	if [[ -z ${version} ]]; then
@@ -213,27 +248,33 @@ elisp-emacs-version() {
 	echo "${version}"
 }
 
-# @FUNCTION: elisp-need-emacs
-# @USAGE: <version>
-# @RETURN: 0 if true, 1 if false, 2 if trouble
+# @FUNCTION: elisp-check-emacs-version
+# @USAGE: [version]
 # @DESCRIPTION:
-# Test if the eselected Emacs version is at least the major version
-# of GNU Emacs specified as argument.
+# Test if the eselected Emacs version is at least the version of
+# GNU Emacs specified in the NEED_EMACS variable, or die otherwise.
 
-elisp-need-emacs() {
-	local need_emacs=$1 have_emacs
-	have_emacs=$(elisp-emacs-version) || return 2
-	einfo "Emacs version: ${have_emacs}"
-	if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
-		eerror "This package needs GNU Emacs."
-		return 1
+elisp-check-emacs-version() {
+	if [[ -z ${_ELISP_EMACS_VERSION} ]]; then
+		local have_emacs
+		have_emacs=$(elisp-emacs-version) \
+			|| die "Could not determine Emacs version"
+		einfo "Emacs version: ${have_emacs}"
+		if [[ ${have_emacs} =~ XEmacs|Lucid ]]; then
+			die "XEmacs detected. This package needs GNU Emacs."
+		fi
+		# GNU Emacs versions have only numeric components.
+		if ! [[ ${have_emacs} =~ ^[0-9]+(\.[0-9]+)*$ ]]; then
+			die "Malformed version string: ${have_emacs}"
+		fi
+		_ELISP_EMACS_VERSION=${have_emacs}
 	fi
-	if ! [[ ${have_emacs%%.*} -ge ${need_emacs%%.*} ]]; then
-		eerror "This package needs at least Emacs ${need_emacs%%.*}."
+
+	if ! ver_test "${_ELISP_EMACS_VERSION}" -ge "${NEED_EMACS}"; then
+		eerror "This package needs at least Emacs ${NEED_EMACS}."
 		eerror "Use \"eselect emacs\" to select the active version."
-		return 1
+		die "Emacs version too low"
 	fi
-	return 0
 }
 
 # @FUNCTION: elisp-compile
@@ -250,6 +291,8 @@ elisp-need-emacs() {
 # in case they require or load one another.
 
 elisp-compile() {
+	elisp-check-emacs-version
+
 	ebegin "Compiling GNU Emacs Elisp files"
 	${EMACS} ${EMACSFLAGS} ${BYTECOMPFLAGS} -f batch-byte-compile "$@"
 	eend $? "elisp-compile: batch-byte-compile failed" || die
@@ -263,6 +306,8 @@ elisp-compile() {
 elisp-make-autoload-file() {
 	local f="${1:-${PN}-autoloads.el}" null="" page=$'\f'
 	shift
+	elisp-check-emacs-version
+
 	ebegin "Generating autoload file for GNU Emacs"
 
 	cat >"${f}" <<-EOF
@@ -307,17 +352,37 @@ elisp-install() {
 	eend $? "elisp-install: doins failed" || die
 }
 
+# @FUNCTION: elisp-modules-install
+# @USAGE: <subdirectory> <list of files>
+# @DESCRIPTION:
+# Install dynamic modules in EMACSMODULES directory.
+
+elisp-modules-install() {
+	local subdir="$1"
+	shift
+	# Don't bother inheriting multilib.eclass for get_libdir(), but
+	# error out in old EAPIs that don't support it natively.
+	[[ ${EAPI} == 5 ]] \
+		&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
+	ebegin "Installing dynamic modules for GNU Emacs support"
+	( # subshell to avoid pollution of calling environment
+		exeinto "${EMACSMODULES//@libdir@/$(get_libdir)}/${subdir}"
+		doexe "$@"
+	)
+	eend $? "elisp-modules-install: doins failed" || die
+}
+
 # @FUNCTION: elisp-site-file-install
 # @USAGE: <site-init file> [subdirectory]
 # @DESCRIPTION:
 # Install Emacs site-init file in SITELISP directory.  Automatically
-# inserts a standard comment header with the name of the package (unless
-# it is already present).  Tokens @SITELISP@ and @SITEETC@ are replaced
-# by the path to the package's subdirectory in SITELISP and SITEETC,
-# respectively.
+# inserts a standard comment header with the name of the package
+# (unless it is already present).  Tokens @SITELISP@, @SITEETC@,
+# and @EMACSMODULES@ are replaced by the path to the package's
+# subdirectory in SITELISP, SITEETC, and EMACSMODULES, respectively.
 
 elisp-site-file-install() {
-	local sf="${1##*/}" my_pn="${2:-${PN}}" ret
+	local sf="${1##*/}" my_pn="${2:-${PN}}" modules ret
 	local header=";;; ${PN} site-lisp configuration"
 
 	[[ ${sf} == [0-9][0-9]*-gentoo*.el ]] \
@@ -325,10 +390,17 @@ elisp-site-file-install() {
 	[[ ${sf%-gentoo*.el} != "${sf}" ]] && sf="${sf%-gentoo*.el}-gentoo.el"
 	sf="${T}/${sf}"
 	ebegin "Installing site initialisation file for GNU Emacs"
-	[[ $1 = "${sf}" ]] || cp "$1" "${sf}"
+	[[ $1 == "${sf}" ]] || cp "$1" "${sf}"
+	if [[ ${EAPI} == 5 ]]; then
+		grep -q "@EMACSMODULES@" "${sf}" \
+			&& die "${ECLASS}: Dynamic modules not supported in EAPI ${EAPI}"
+	else
+		modules=${EMACSMODULES//@libdir@/$(get_libdir)}
+	fi
 	sed -i -e "1{:x;/^\$/{n;bx;};/^;.*${PN}/I!s:^:${header}\n\n:;1s:^:\n:;}" \
 		-e "s:@SITELISP@:${EPREFIX}${SITELISP}/${my_pn}:g" \
-		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g;\$q" "${sf}"
+		-e "s:@SITEETC@:${EPREFIX}${SITEETC}/${my_pn}:g" \
+		-e "s:@EMACSMODULES@:${EPREFIX}${modules}/${my_pn}:g;\$q" "${sf}"
 	( # subshell to avoid pollution of calling environment
 		insinto "${SITELISP}/site-gentoo.d"
 		doins "${sf}"
@@ -345,11 +417,11 @@ elisp-site-file-install() {
 # directory.
 
 elisp-site-regen() {
-	local sitelisp=${ROOT}${EPREFIX}${SITELISP}
+	local sitelisp=${ROOT%/}${EPREFIX}${SITELISP}
 	local sf i ret=0 null="" page=$'\f'
 	local -a sflist
 
-	if [[ ${EBUILD_PHASE} = *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
+	if [[ ${EBUILD_PHASE} == *rm && ! -e ${sitelisp}/site-gentoo.el ]]; then
 		ewarn "Refusing to create site-gentoo.el in ${EBUILD_PHASE} phase."
 		return 0
 	fi
@@ -398,13 +470,13 @@ elisp-site-regen() {
 		# was actually no change.
 		# A case is a remerge where we have doubled output.
 		rm -f "${T}"/site-gentoo.el
-		eend
+		eend 0
 		einfo "... no changes."
 	else
 		mv "${T}"/site-gentoo.el "${sitelisp}"/site-gentoo.el
 		eend $? "elisp-site-regen: Replacing site-gentoo.el failed" || die
 		case ${#sflist[@]} in
-			0) [[ ${PN} = emacs-common-gentoo ]] \
+			0) [[ ${PN} == emacs-common ]] \
 				|| ewarn "... Huh? No site initialisation files found." ;;
 			1) einfo "... ${#sflist[@]} site initialisation file included." ;;
 			*) einfo "... ${#sflist[@]} site initialisation files included." ;;

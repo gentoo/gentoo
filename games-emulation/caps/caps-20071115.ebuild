@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils multilib
 
-DESCRIPTION="Support library that allows third party applications access and use C.A.P.S. images"
+inherit multilib
+
+DESCRIPTION="Support library for accessing and using C.A.P.S. images"
 HOMEPAGE="http://www.softpres.org/"
 SRC_URI="mirror://gentoo/ipfdevlib_linux-20060612.tgz
 	amd64? ( mirror://gentoo/ipflib_linux-amd64-${PV}.tgz )
@@ -14,12 +14,11 @@ SRC_URI="mirror://gentoo/ipfdevlib_linux-20060612.tgz
 
 LICENSE="CAPS"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 RESTRICT="strip"
 
 DEPEND="app-arch/unzip"
-RDEPEND=""
 
 S=${WORKDIR}
 

@@ -1,74 +1,91 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
+PYTHON_COMPAT=( pypy3 python3_{7..9} )
 
-# pypy: bug #458558 (wrong linker options due to not respecting CC)
-PYTHON_COMPAT=( python2_7 )
-DISTUTILS_IN_SOURCE_BUILD=1
-
-inherit distutils-r1 git-2 multilib
+inherit distutils-r1
 
 DESCRIPTION="Various LDAP-related Python modules"
-HOMEPAGE="http://www.python-ldap.org https://pypi.python.org/pypi/python-ldap"
-EGIT_REPO_URI="https://github.com/xmw/python-ldap.git"
+HOMEPAGE="https://www.python-ldap.org/en/latest/
+	https://pypi.org/project/python-ldap/
+	https://github.com/python-ldap/python-ldap"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/python-ldap/python-ldap.git"
+	inherit git-r3
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-solaris"
+fi
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc examples sasl ssl"
+IUSE="examples sasl ssl"
 
-# If you need support for openldap-2.3.x, please use python-ldap-2.3.9.
-# python team: Please do not remove python-ldap-2.3.9 from the tree.
-RDEPEND=">=net-nds/openldap-2.4
-	dev-python/pyasn1[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	sasl? ( >=dev-libs/cyrus-sasl-2.1 )"
-DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/pyasn1-modules[${PYTHON_USEDEP}] )"
-RDEPEND+=" !dev-python/pyldap"
+# We do not need OpenSSL, it is never directly used:
+# https://github.com/python-ldap/python-ldap/issues/224
+RDEPEND="
+	!dev-python/pyldap
+	>=dev-python/pyasn1-0.3.7[${PYTHON_USEDEP}]
+	>=dev-python/pyasn1-modules-0.1.5[${PYTHON_USEDEP}]
+	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+"
+# We do not link against cyrus-sasl but we use some
+# of its headers during the build.
+BDEPEND="
+	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
+	sasl? ( >=dev-libs/cyrus-sasl-2.1 )
+"
+
+distutils_enable_tests pytest
+distutils_enable_sphinx Doc
 
 python_prepare_all() {
-	sed -e "s:^library_dirs =.*:library_dirs = /usr/$(get_libdir) /usr/$(get_libdir)/sasl2:" \
-		-e "s:^include_dirs =.*:include_dirs = ${EPREFIX}/usr/include ${EPREFIX}/usr/include/sasl:" \
-		-i setup.cfg || die "error fixing setup.cfg"
-
-	local mylibs="ldap"
-	if use sasl; then
-		use ssl && mylibs="ldap_r"
-		mylibs="${mylibs} sasl2"
-	else
-		sed -e 's/HAVE_SASL//g' -i setup.cfg || die
+	# The live ebuild won't compile if setuptools_scm < 1.16.2 is installed
+	# https://github.com/pypa/setuptools_scm/issues/228
+	if [[ ${PV} == *9999* ]]; then
+		rm -r .git || die
 	fi
-	use ssl && mylibs="${mylibs} ssl crypto"
-	use elibc_glibc && mylibs="${mylibs} resolv"
 
-	sed -e "s:^libs = .*:libs = lber ${mylibs}:" \
-		-i setup.cfg || die "error setting up libs in setup.cfg"
-
-	# set test expected to fail to expectedFailure
-	sed -e "s:^    def test_bad_urls:    @unittest.expectedFailure\n    def test_bad_urls:" \
-		-i Tests/t_ldapurl.py || die
+	if ! use sasl; then
+		sed -i 's/HAVE_SASL//g' setup.cfg || die
+	fi
+	if ! use ssl; then
+		sed -i 's/HAVE_TLS//g' setup.cfg || die
+	fi
 
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && emake -C Doc html
+python_test() {
+	# Run all tests which don't require slapd
+	local ignored_tests=(
+		t_bind.py
+		t_cext.py
+		t_edit.py
+		t_ldapobject.py
+		t_ldap_options.py
+		t_ldap_sasl.py
+		t_ldap_schema_subentry.py
+		t_ldap_syncrepl.py
+		t_slapdobject.py
+	)
+	pushd Tests >/dev/null || die
+	pytest -vv ${ignored_tests[@]/#/--ignore } \
+		|| die "tests failed with ${EPYTHON}"
+	popd > /dev/null || die
 }
 
-python_test() {
-	# XXX: the tests supposedly can start local slapd
-	# but it requires some manual config, it seems.
-
-	"${PYTHON}" Tests/t_ldapurl.py || die "Tests fail with ${EPYTHON}"
+python_install() {
+	distutils-r1_python_install
+	python_optimize
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( Demo/. )
-	use doc && local HTML_DOCS=( Doc/.build/html/. )
-
+	if use examples; then
+		docinto examples
+		dodoc -r Demo/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 	distutils-r1_python_install_all
 }

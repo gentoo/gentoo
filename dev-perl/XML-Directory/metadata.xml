@@ -7,5 +7,9 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">XML-Directory</remote-id>
+    <remote-id type="cpan-module">XML::Directory</remote-id>
+    <remote-id type="cpan-module">XML::Directory::Apache</remote-id>
+    <remote-id type="cpan-module">XML::Directory::SAX</remote-id>
+    <remote-id type="cpan-module">XML::Directory::String</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,31 +1,31 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit toolchain-funcs multilib versionator eutils
+inherit epatch toolchain-funcs multilib versionator
 
 MY_PV=$(replace_version_separator 5 '.' "$(replace_version_separator 4 '-' )")
-RESTRICT="installsources"
 DESCRIPTION="Make replacement"
 HOMEPAGE="http://omake.metaprl.org/"
 SRC_URI="http://omake.metaprl.org/downloads/${PN}-${MY_PV}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
 IUSE="doc fam ncurses +ocamlopt readline"
+RESTRICT="installsources !ocamlopt? ( strip )"
+
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	ncurses? ( >=sys-libs/ncurses-5.3 )
+	ncurses? ( >=sys-libs/ncurses-5.3:0= )
 	fam? ( virtual/fam )
-	readline? ( >=sys-libs/readline-4.3 )"
+	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-${MY_PV%-*}
 
 use_boolean() {
-	if use $1; then
+	if use ${1}; then
 		echo "true"
 	else
 		echo "false"
@@ -78,5 +78,4 @@ src_install() {
 		dodoc doc/ps/omake-doc.{pdf,ps} doc/txt/omake-doc.txt
 		dohtml -r doc/html/*
 	fi
-	use ocamlopt || export STRIP_MASK="*/bin/*"
 }

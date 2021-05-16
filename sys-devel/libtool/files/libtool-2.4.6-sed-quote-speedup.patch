@@ -20,18 +20,10 @@ of '$SED $sed_quote_subst'.
 (func_mode_link): Likewise.
 * NEWS: Document.
 * bootstrap: Sync with funclib.sh.
----
- NEWS                    |  3 +++
- bootstrap               | 61 +++++++++++++++++++++++++++++++++++++++++++------
- build-aux/ltmain.in     | 10 ++++----
- gl/build-aux/funclib.sh | 61 +++++++++++++++++++++++++++++++++++++++++++------
- 4 files changed, 117 insertions(+), 18 deletions(-)
 
-diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
-index 0c40da0..24acefd 100644
 --- a/build-aux/ltmain.in
 +++ b/build-aux/ltmain.in
-@@ -3346,7 +3346,8 @@ else
+@@ -3346,7 +3346,8 @@
    if test \"\$libtool_execute_magic\" != \"$magic\"; then
      file=\"\$0\""
  
@@ -41,7 +33,7 @@ index 0c40da0..24acefd 100644
      $ECHO "\
  
  # A function that is used when there is no print builtin or printf.
-@@ -8596,8 +8597,8 @@ EOF
+@@ -8598,8 +8599,8 @@
  	    relink_command="$var=$func_quote_for_eval_result; export $var; $relink_command"
  	  fi
  	done
@@ -52,7 +44,7 @@ index 0c40da0..24acefd 100644
        fi
  
        # Only actually do things if not in dry run mode.
-@@ -8843,7 +8844,8 @@ EOF
+@@ -8845,7 +8846,8 @@
        done
        # Quote the link command for shipping.
        relink_command="(cd `pwd`; $SHELL \"$progpath\" $preserve_args --mode=relink $libtool_args @inst_prefix_dir@)"
@@ -62,8 +54,6 @@ index 0c40da0..24acefd 100644
        if test yes = "$hardcode_automatic"; then
  	relink_command=
        fi
-diff --git a/gl/build-aux/funclib.sh b/gl/build-aux/funclib.sh
-index 39d972e..47d8b95 100644
 --- a/build-aux/funclib.sh
 +++ b/build-aux/funclib.sh
 @@ -1,5 +1,5 @@
@@ -73,7 +63,7 @@ index 39d972e..47d8b95 100644
  
  # General shell script boiler plate, and helper functions.
  # Written by Gary V. Vaughan, 2004
-@@ -1026,6 +1026,57 @@ func_relative_path ()
+@@ -1026,6 +1026,57 @@
  }
  
  
@@ -131,7 +121,7 @@ index 39d972e..47d8b95 100644
  # func_quote_for_eval ARG...
  # --------------------------
  # Aesthetically quote ARGs to be evaled later.
-@@ -1042,12 +1093,8 @@ func_quote_for_eval ()
+@@ -1042,12 +1093,8 @@
      func_quote_for_eval_unquoted_result=
      func_quote_for_eval_result=
      while test 0 -lt $#; do
@@ -146,20 +136,18 @@ index 39d972e..47d8b95 100644
        if test -n "$func_quote_for_eval_unquoted_result"; then
  	func_append func_quote_for_eval_unquoted_result " $_G_unquoted_arg"
        else
-
-patch the generated file too to keep help2man from generating man pages
-https://bugs.gentoo.org/556512
-
 --- a/build-aux/ltmain.sh
 +++ b/build-aux/ltmain.sh
-@@ -1,5 +1,5 @@
+@@ -64,7 +64,7 @@
+ # libraries, which are installed to $pkgauxdir.
+ 
  # Set a version string for this script.
 -scriptversion=2015-01-20.17; # UTC
 +scriptversion=2015-10-04.22; # UTC
  
  # General shell script boiler plate, and helper functions.
  # Written by Gary V. Vaughan, 2004
-@@ -1026,6 +1026,57 @@ func_relative_path ()
+@@ -1091,6 +1091,57 @@
  }
  
  
@@ -217,7 +205,7 @@ https://bugs.gentoo.org/556512
  # func_quote_for_eval ARG...
  # --------------------------
  # Aesthetically quote ARGs to be evaled later.
-@@ -1042,12 +1093,8 @@ func_quote_for_eval ()
+@@ -1107,12 +1158,8 @@
      func_quote_for_eval_unquoted_result=
      func_quote_for_eval_result=
      while test 0 -lt $#; do
@@ -232,7 +220,7 @@ https://bugs.gentoo.org/556512
        if test -n "$func_quote_for_eval_unquoted_result"; then
  	func_append func_quote_for_eval_unquoted_result " $_G_unquoted_arg"
        else
-@@ -3346,7 +3346,8 @@ else
+@@ -5258,7 +5305,8 @@
    if test \"\$libtool_execute_magic\" != \"$magic\"; then
      file=\"\$0\""
  
@@ -242,7 +230,7 @@ https://bugs.gentoo.org/556512
      $ECHO "\
  
  # A function that is used when there is no print builtin or printf.
-@@ -8596,8 +8597,8 @@ EOF
+@@ -10510,8 +10558,8 @@
  	    relink_command="$var=$func_quote_for_eval_result; export $var; $relink_command"
  	  fi
  	done
@@ -253,7 +241,7 @@ https://bugs.gentoo.org/556512
        fi
  
        # Only actually do things if not in dry run mode.
-@@ -8843,7 +8844,8 @@ EOF
+@@ -10757,7 +10805,8 @@
        done
        # Quote the link command for shipping.
        relink_command="(cd `pwd`; $SHELL \"$progpath\" $preserve_args --mode=relink $libtool_args @inst_prefix_dir@)"
@@ -263,6 +251,3 @@ https://bugs.gentoo.org/556512
        if test yes = "$hardcode_automatic"; then
  	relink_command=
        fi
--- 
-2.6.2
-

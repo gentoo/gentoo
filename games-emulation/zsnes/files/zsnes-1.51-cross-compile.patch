@@ -1,5 +1,5 @@
---- a/src/acinclude.m4
-+++ b/src/acinclude.m4
+--- src/acinclude.m4
++++ src/acinclude.m4
 @@ -107,7 +107,7 @@ int main (int argc, char *argv[])
    with_zlib=yes,
    with_zlib=no,
@@ -18,8 +18,8 @@
    ZLIB_CFLAGS=""
    ZLIB_LIBS=""
    ZLIB_VERSION=""
---- a/src/Makefile.in
-+++ b/src/Makefile.in
+--- src/Makefile.in
++++ src/Makefile.in
 @@ -103,8 +103,10 @@ main: makefile.dep $(Z_OBJS)
  	@ZC@ -o @ZSNESEXE@ $(Z_OBJS) @ZCFLAGS@ @LDFLAGS@
  	rm -f version.o

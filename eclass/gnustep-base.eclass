@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Internal handling of GNUstep pacakges
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
@@ -63,7 +63,7 @@ gnustep-base_src_prepare() {
 		eend $?
 	fi
 
-	has ${EAPI:-0} 6 && default
+	! has ${EAPI:-0} 0 1 2 3 4 5 && default
 }
 
 gnustep-base_src_configure() {
@@ -159,8 +159,7 @@ egnustep_env() {
 			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
 			|| GS_ENV=( "${GS_ENV[@]}" "debug=no" )
 
-		# About 20 gnustep packages still use EAPI 0
-		if built_with_use --missing false gnustep-base/gnustep-make libobjc2;
+		if has_version "gnustep-base/gnustep-make[libobjc2]";
 		then
 			# Set clang for packages that do not respect gnustep-make
 			# settings (gnustep-base's configure for example)

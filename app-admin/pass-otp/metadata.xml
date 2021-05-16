@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <name>Haelwenn (lanodan) Monnier</name>
+    <email>contact@hacktivis.me</email>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+  <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <use>
+    <flag name="qrcode">Add support for qrcodes using <pkg>media-gfx/qrencode</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="github">tadfisher/pass-otp</remote-id>
+  </upstream>
+</pkgmetadata>

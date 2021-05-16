@@ -1,10 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="3"
+EAPI=6
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="Chemical quantum mechanics and molecular mechanics"
 HOMEPAGE="http://bioinformatics.org/ghemical/"
@@ -20,12 +19,15 @@ RDEPEND="
 	mpqc? (
 		>=sci-chemistry/mpqc-2.3.1-r1
 		virtual/blas
-		virtual/lapack )"
+		virtual/lapack
+	)"
 DEPEND="${RDEPEND}
-		virtual/pkgconfig"
+	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.98-gl.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.98-gl.patch
+	default
 	eautoreconf
 }
 
@@ -35,8 +37,4 @@ src_configure() {
 		$(use_enable mopac7) \
 		$(use_enable mpqc) \
 		$(use_enable static-libs static)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
 }

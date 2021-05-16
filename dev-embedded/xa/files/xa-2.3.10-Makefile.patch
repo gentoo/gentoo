@@ -1,0 +1,77 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,7 @@
+ # Unix gcc or DOS go32 cross-compiling gcc
+ #
+-CC = gcc
+-LD = gcc
+ # for testing. not to be used; build failures in misc/.
+ #CFLAGS = -O2 -W -Wall -pedantic -ansi
+-CFLAGS = -O2
+-LDFLAGS = -lc
+ 
+ # for DOS?
+ # CC = gcc-go32
+@@ -32,13 +28,13 @@
+ 	rm -f xa
+ 
+ xa:
+-	(cd src && LD=${LD} CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd src && ${MAKE})
+ 
+ load:	
+-	(cd loader && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd loader && ${MAKE})
+ 
+ uncpk:
+-	(cd misc && CC="${CC} ${CFLAGS}" ${MAKE})
++	(cd misc && ${MAKE})
+ 
+ dos: clean
+ 	(cd src && LD=gcc-go32 CC=gcc-go32 CFLAGS="-W -Wall -pedantic" ${MAKE})
+--- a/misc/Makefile
++++ b/misc/Makefile
+@@ -2,7 +2,6 @@
+ XCBMLIB = ..
+ 
+ # -Wall -ansi et al. cause compile problems.
+-CFLAGS =  -O2
+ 
+ LIBS = #-lncurses -ltermcap -lm
+ 
+@@ -10,19 +9,19 @@
+ all: ../mkrom.sh ../uncpk ../printcbm ../file65 ../reloc65 ../ldo65
+ 
+ ../uncpk: uncpk.c
+-	${CC} ${CFLAGS} uncpk.c -o $(XCBMLIB)/uncpk
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} uncpk.c -o $(XCBMLIB)/uncpk
+ 
+ ../printcbm: printcbm.c
+-	${CC} ${CFLAGS} printcbm.c -o $(XCBMLIB)/printcbm
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} printcbm.c -o $(XCBMLIB)/printcbm
+ 
+ ../file65: file65.c
+-	${CC} ${CFLAGS} file65.c -o $(XCBMLIB)/file65
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} file65.c -o $(XCBMLIB)/file65
+ 
+ ../ldo65: ldo65.c
+-	${CC} ${CFLAGS} ldo65.c -o $(XCBMLIB)/ldo65
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} ldo65.c -o $(XCBMLIB)/ldo65
+ 
+ ../reloc65: reloc65.c
+-	${CC} ${CFLAGS} reloc65.c -o $(XCBMLIB)/reloc65
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} reloc65.c -o $(XCBMLIB)/reloc65
+ 
+ ../mkrom.sh: mkrom.sh
+ 	cp mkrom.sh ../mkrom.sh
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -8,7 +8,7 @@
+ all: xa
+ 
+ xa: ${OBJ}
+-	${LD} -o ../xa ${OBJ} ${LDFLAGS}
++	${CC} ${CFLAGS} ${LDFLAGS} -o ../xa ${OBJ}
+ 
+ clean: 
+ 	rm -f *.o *.o65

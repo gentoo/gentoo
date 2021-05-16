@@ -1,0 +1,33 @@
+Description: take care of some deprecated functions and format issue
+Author: Thorsten Alteholz <debian@alteholz.de>
+Index: apcupsd-3.14.14/src/gapcmon/gapcmon.c
+===================================================================
+--- apcupsd-3.14.14.orig/src/gapcmon/gapcmon.c	2016-07-16 03:04:22.000000000 +0200
++++ apcupsd-3.14.14/src/gapcmon/gapcmon.c	2017-10-06 09:26:40.412004149 +0200
+@@ -1580,7 +1580,7 @@
+          scaled = gdk_pixbuf_scale_simple(pixbuf, size, size, GDK_INTERP_BILINEAR);
+          gtk_image_set_from_pixbuf(GTK_IMAGE(pm->tray_image), scaled);
+          gtk_widget_show(pm->tray_image);
+-         gdk_pixbuf_unref(scaled);
++         g_object_unref(scaled);
+       }
+ 
+       if (pm->window != NULL)
+@@ -2889,7 +2889,7 @@
+ 
+    pch = g_strdup_printf("%s(%s) emsg=%s", pch_func, pch_topic, pch_emsg);
+ 
+-   g_message(pch);
++   g_message("%s",pch);
+ 
+    g_free(pch);
+ 
+@@ -4474,7 +4474,7 @@
+    gtk_image_set_from_pixbuf(GTK_IMAGE(image), scaled);
+    gtk_box_pack_start(GTK_BOX(hbox), image, TRUE, TRUE, 0);
+    gtk_widget_show(image);
+-   gdk_pixbuf_unref(scaled);
++   g_object_unref(scaled);
+ 
+    label = gtk_label_new(about_text);
+    gtk_label_set_use_markup(GTK_LABEL(label), TRUE);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sound@gentoo.org</email>
-    <name>Gentoo Sound project</name>
-  </maintainer>
-  <longdescription lang="en">
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<longdescription lang="en">
 		Herrie is a minimalistic music player that uses the command
 		line. It is written to support a variety of operating systems,
 		audio subsystems and file formats, including playlists.
@@ -20,8 +20,8 @@
 		for AudioScrobbler and the ability to chroot() itself
 		into a directory.
 	</longdescription>
-  <use>
-    <flag name="http">Enable http streaming</flag>
-    <flag name="xspf">Enable support for reading and saving XSPF playlists</flag>
-  </use>
+	<use>
+		<flag name="http">Enable http streaming</flag>
+		<flag name="xspf">Enable support for reading and saving XSPF playlists</flag>
+	</use>
 </pkgmetadata>

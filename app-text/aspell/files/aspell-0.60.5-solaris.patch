@@ -1,8 +1,8 @@
 * grobian@gentoo.org: on Solaris 10 _XOPEN_SOURCE_EXTENDED may not be
   defined when including wchar.h with g++
 
---- prog/check_funs.cpp
-+++ prog/check_funs.cpp
+--- a/prog/check_funs.cpp
++++ b/prog/check_funs.cpp
 @@ -18,10 +18,6 @@
  
  #include "settings.h"

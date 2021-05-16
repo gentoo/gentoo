@@ -1,0 +1,22 @@
+From 212847f0efaeffee8422059b8e202d844174aaf3 Mon Sep 17 00:00:00 2001
+From: Joachim Wilke <github.com@joachim-wilke.de>
+Date: Thu, 28 Jun 2018 12:56:54 +0200
+Subject: [PATCH] Add compatibility with boost 1.67
+
+Refers to https://github.com/jowi24/vdr-fritz/issues/1
+---
+ TcpClient.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/TcpClient.cpp b/TcpClient.cpp
+index b9b38e9..c6cc08e 100644
+--- a/libnet++/TcpClient.cpp
++++ b/libnet++/TcpClient.cpp
+@@ -19,6 +19,7 @@
+  *
+  */
+ 
++#define BOOST_ASIO_USE_BOOST_DATE_TIME_FOR_SOCKET_IOSTREAM
+ #include "TcpClient.h"
+ 
+ #include <liblog++/Log.h>

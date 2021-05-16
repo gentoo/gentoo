@@ -1,12 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-inherit base
-
-DESCRIPTION="Data recovery tool to fault-tolerantly extract data from damaged (io-errors) devices or files"
+DESCRIPTION="Tool for fault-tolerant data recovery from damaged (io-errors) devices or files"
 HOMEPAGE="http://safecopy.sourceforge.net"
 SRC_URI="mirror://sourceforge/safecopy/${P}.tar.gz"
 
@@ -14,35 +11,22 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
-
-RDEPEND=""
-DEPEND=""
+RESTRICT="!test? ( test )"
 
 DOCS=( README )
 
-src_prepare() {
-	base_src_prepare
-	sed -e 's:bin/sh:bin/bash:' \
-		-i "${S}"/test/test.sh || die
-}
-
 src_configure() {
 	econf
-	if use test; then
-		cd "${S}"/simulator
-		econf
-	fi
+	cd simulator || die
+	use test && econf
 }
 
 src_compile() {
 	emake
-	if use test; then
-		cd "${S}"/simulator
-		emake
-	fi
+	use test && emake -C simulator
 }
 
 src_test() {
-	cd "${S}"/test
+	cd test || die
 	./test.sh || die
 }

@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=3
+EAPI=5
 
 DESCRIPTION="Darwin Csu (crt1.o) - Mac OS X 10.6.6 to 10.9.5 versions"
 HOMEPAGE="http://www.opensource.apple.com/"
@@ -11,7 +10,7 @@ SRC_URI="http://www.opensource.apple.com/tarballs/Csu/Csu-${PV}.tar.gz"
 LICENSE="APSL-2"
 
 SLOT="0"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 IUSE=""
 S=${WORKDIR}/Csu-${PV}
 
@@ -33,7 +32,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake USRLIBDIR="${EPREFIX}"/lib || die
+	emake USRLIBDIR="${EPREFIX}"/lib
 }
 
 src_install() {
@@ -41,5 +40,5 @@ src_install() {
 		USRLIBDIR="${EPREFIX}"/lib \
 		LOCLIBDIR="${EPREFIX}"/lib \
 		DSTROOT="${D}" \
-		install || die
+		install
 }

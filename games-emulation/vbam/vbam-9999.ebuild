@@ -1,119 +1,103 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-WX_GTK_VER="3.0"
-inherit cmake-utils wxwidgets gnome2-utils fdo-mime games
+EAPI=7
+
+WX_GTK_VER="3.0-gtk3"
+inherit wxwidgets xdg cmake
 
 if [[ ${PV} == 9999 ]]; then
-	ESVN_REPO_URI="https://svn.code.sf.net/p/vbam/code/trunk"
-	inherit subversion
+	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
+	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
+	SRC_URI="https://github.com/visualboyadvance-m/visualboyadvance-m/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/visualboyadvance-m-${PV}"
 fi
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
-HOMEPAGE="http://sourceforge.net/projects/vbam/"
+HOMEPAGE="https://github.com/visualboyadvance-m/visualboyadvance-m"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cairo ffmpeg gtk link lirc nls openal +sdl wxwidgets"
-REQUIRED_USE="|| ( sdl gtk wxwidgets )"
+IUSE="ffmpeg link lirc nls openal +sdl wxwidgets"
 
-RDEPEND=">=media-libs/libpng-1.4:0=
-	media-libs/libsdl[joystick]
-	link? ( >=media-libs/libsfml-2.0 )
-	sys-libs/zlib
+REQUIRED_USE="
+	ffmpeg? ( wxwidgets )
+	openal? ( wxwidgets )
+	|| ( sdl wxwidgets )
+"
+
+RDEPEND="
+	>=media-libs/libpng-1.4:0=
+	media-libs/libsdl2[joystick]
+	link? ( >=media-libs/libsfml-2.0:= )
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
-	ffmpeg? ( virtual/ffmpeg[-libav] )
-	gtk? ( >=dev-cpp/glibmm-2.4.0:2
-		>=dev-cpp/gtkmm-2.4.0:2.4
-		>=dev-cpp/gtkglextmm-1.2.0 )
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (
-		cairo? ( x11-libs/cairo )
+		ffmpeg? ( media-video/ffmpeg:= )
 		openal? ( media-libs/openal )
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	)"
-DEPEND="${RDEPEND}
-	wxwidgets? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) )
+	)
+"
+DEPEND="
+	${RDEPEND}
+"
+BDEPEND="
+	app-arch/zip
+	wxwidgets? ( virtual/imagemagick-tools )
 	x86? ( || ( dev-lang/nasm dev-lang/yasm ) )
 	nls? ( sys-devel/gettext )
-	virtual/pkgconfig"
-
-src_prepare() {
-	[[ ${PV} == 9999 ]] && subversion_src_prepare
-
-	# fix issue with zlib-1.2.5.1 macros (bug #383179)
-	sed -i '1i#define OF(x) x' src/common/memgzio.c || die
-
-	sed -i "s:\(DESTINATION\) bin:\1 ${GAMES_BINDIR}:" \
-		CMakeLists.txt src/wx/CMakeLists.txt || die
-
-	# fix desktop file QA warnings
-	edos2unix src/gtk/gvbam.desktop src/wx/wxvbam.desktop
-}
+	virtual/pkgconfig
+"
 
 src_configure() {
+	use wxwidgets && setup-wxwidgets
 	local mycmakeargs=(
-		$(cmake-utils_use_enable cairo CAIRO)
-		$(cmake-utils_use_enable ffmpeg FFMPEG)
-		$(cmake-utils_use_enable gtk GTK)
-		$(cmake-utils_use_enable link LINK)
-		$(cmake-utils_use_enable lirc LIRC)
-		$(cmake-utils_use_enable nls NLS)
-		$(cmake-utils_use_enable openal OPENAL)
-		$(cmake-utils_use_enable sdl SDL)
-		$(cmake-utils_use_enable wxwidgets WX)
-		$(cmake-utils_use_enable x86 ASM_CORE)
-		$(cmake-utils_use_enable x86 ASM_SCALERS)
+		-DENABLE_FFMPEG=$(usex ffmpeg)
+		-DENABLE_LINK=$(usex link)
+		-DENABLE_LIRC=$(usex lirc)
+		-DENABLE_NLS=$(usex nls)
+		-DENABLE_SDL=$(usex sdl)
+		-DENABLE_WX=$(usex wxwidgets)
+		-DENABLE_ASM_CORE=$(usex x86)
+		-DENABLE_ASM_SCALERS=$(usex x86)
 		-DCMAKE_SKIP_RPATH=ON
-		-DDATA_INSTALL_DIR=share/games/${PN}
+		-DENABLE_LTO=OFF
 	)
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
+	if use wxwidgets; then
+		mycmakeargs+=( -DENABLE_OPENAL=$(usex openal) )
+	fi
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use sdl ; then
 		dodoc doc/ReadMe.SDL.txt
-		doman src/debian/vbam.1
+		doman src/debian/vbam.6
 	fi
-	use wxwidgets && doman src/debian/wxvbam.1
-	use gtk && doman src/debian/gvbam.1
-
-	prepgamesdirs
+	use wxwidgets && doman src/debian/visualboyadvance-m.6
 }
 
 pkg_preinst() {
-	[[ ${PV} == 9999 ]] && subversion_pkg_preinst
-
-	games_pkg_preinst
-	if use gtk || use wxwidgets ; then
-		gnome2_icon_savelist
+	if use wxwidgets ; then
+		xdg_pkg_preinst
 	fi
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-	if use gtk || use wxwidgets ; then
-		gnome2_icon_cache_update
+	if use wxwidgets ; then
+		xdg_pkg_postinst
 	fi
-	use gtk && fdo-mime_desktop_database_update
 }
 
 pkg_postrm() {
-	if use gtk || use wxwidgets ; then
-		gnome2_icon_cache_update
+	if use wxwidgets ; then
+		xdg_pkg_postrm
 	fi
-	use gtk && fdo-mime_desktop_database_update
 }

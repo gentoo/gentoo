@@ -1,7 +1,7 @@
 Adds an aditional symbol to allow dynamic linking.
 
---- src/libapparmor.map
-+++ src/libapparmor.map
+--- a/src/libapparmor.map
++++ b/src/libapparmor.map
 @@ -94,6 +94,7 @@
  		_aa_autoclose;
  		_aa_autofclose;

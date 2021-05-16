@@ -1,48 +1,103 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit mercurial qmake-utils gnome2-utils fdo-mime
+inherit qmake-utils xdg git-r3
 
 DESCRIPTION="Cloth patternmaking software"
-HOMEPAGE="http://valentinaproject.bitbucket.org/"
-SRC_URI=""
-EHG_REPO_URI="https://bitbucket.org/dismine/valentina"
-EHG_REVISION="develop"
+HOMEPAGE="https://gitlab.com/smart-pattern/valentina"
+EGIT_REPO_URI="https://gitlab.com/smart-pattern/valentina.git"
+EGIT_BRANCH="develop"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="gnome"
+IUSE=""
 
-# en_IN not supported in Gentoo so not added here
-LANGS="cs_CZ de_DE en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL ro_RO ru_RU uk_UA zh_CN"
+LANGS="cs de el en en es fi fr he id it nl pt-BR ro ru uk zh-CN"
 
 for LANG in ${LANGS}; do
-	IUSE="${IUSE} linguas_${LANG}"
+	IUSE="${IUSE} l10n_${LANG}"
 done
 
-CDEPEND="
+RDEPEND="
 	app-text/poppler
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
-RDEPEND="${CDEPEND}"
-DEPEND="${CDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-qt/qttest:5
+"
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 
 src_configure() {
 	local locales=""
 
 	for LANG in ${LANGS}; do
-		if use linguas_${LANG}; then
-			locales="${locales} ${LANG}"
+		if use l10n_${LANG}; then
+			case ${LANG} in
+			"cs")
+				locale="cs_CZ"
+				;;
+			"de")
+				locale="de_DE"
+				;;
+			"el")
+				locale="el_GR"
+				;;
+			"en")
+				locale="en_CA en_IN en_US"
+				;;
+			"es")
+				locale="es_ES"
+				;;
+			"fi")
+				locale="fi_FI"
+				;;
+			"fr")
+				locale="fr_FR"
+				;;
+			"he")
+				locale="he_IL"
+				;;
+			"id")
+				locale="id_ID"
+				;;
+			"it")
+				locale="it_IT"
+				;;
+			"nl")
+				locale="nl_NL"
+				;;
+			"pt-BR")
+				locale="pt_BR"
+				;;
+			"ro")
+				locale="ro_RO"
+				;;
+			"ru")
+				locale="ru_RU"
+				;;
+			"uk")
+				locale="uk_UA"
+				;;
+			"zh-CN")
+				locale="zh_CN"
+				;;
+			esac
+
+			locales="${locales} ${locale}"
 		fi
 	done
 
@@ -52,7 +107,7 @@ src_configure() {
 src_install() {
 	emake install INSTALL_ROOT="${D}"
 
-	dodoc LICENSE_GPL.txt ChangeLog.txt README.txt
+	dodoc AUTHORS.txt ChangeLog.txt README.txt
 
 	doman dist/debian/${PN}.1
 	doman dist/debian/tape.1
@@ -60,12 +115,4 @@ src_install() {
 	cp dist/debian/valentina.sharedmimeinfo dist/debian/${PN}.xml || die
 	insinto /usr/share/mime/packages
 	doins dist/debian/${PN}.xml
-}
-
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-
-	if use gnome ; then
-		gnome2_icon_cache_update
-	fi
 }

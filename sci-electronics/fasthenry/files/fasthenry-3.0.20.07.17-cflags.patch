@@ -1,0 +1,48 @@
+diff -ruN fasthenry-3.0wr.orig/src/fasthenry/mk_syscfg.inc fasthenry-3.0wr/src/fasthenry/mk_syscfg.inc
+--- fasthenry-3.0wr.orig/src/fasthenry/mk_syscfg.inc	2020-07-23 01:18:06.000000000 +0300
++++ fasthenry-3.0wr/src/fasthenry/mk_syscfg.inc	2020-10-18 23:01:19.019207947 +0300
+@@ -2,7 +2,7 @@
+ # except for MinGW.
+ 
+ #CFLAGS = -O -g -DFOUR
+-CFLAGS = -O3 -DFOUR
++CFLAGS += -DFOUR
+ 
+ # For MinGW, there is no getrusage, and we'll skip a gethostname call
+ # to avoid having to link with winsock.
+@@ -12,4 +12,4 @@
+ 
+ # We're going to assume gcc, you'll need to comment this if a
+ # non-compatible compiler is used.
+-CC := gcc
++#CC := gcc
+diff -ruN fasthenry-3.0wr.orig/src/sparse/Makefile fasthenry-3.0wr/src/sparse/Makefile
+--- fasthenry-3.0wr.orig/src/sparse/Makefile	2019-09-02 21:41:53.000000000 +0300
++++ fasthenry-3.0wr/src/sparse/Makefile	2020-10-18 23:01:49.339387549 +0300
+@@ -4,7 +4,7 @@
+ #  UC Berkeley
+ #
+ #CFLAGS = -O -g
+-CFLAGS = -O3
++#CFLAGS = -O3
+ LINTFLAGS = -lc -lm
+ SHELL = /bin/sh
+ #CC = cc
+diff -ruN fasthenry-3.0wr.orig/src/zbuf/mk_syscfg.inc fasthenry-3.0wr/src/zbuf/mk_syscfg.inc
+--- fasthenry-3.0wr.orig/src/zbuf/mk_syscfg.inc	2020-07-23 01:18:23.000000000 +0300
++++ fasthenry-3.0wr/src/zbuf/mk_syscfg.inc	2020-10-18 23:01:19.019207947 +0300
+@@ -2,7 +2,7 @@
+ # except for MinGW.
+ 
+ #CFLAGS = -O -g -DFOUR
+-CFLAGS = -O3 -DFOUR
++CFLAGS += -DFOUR
+ 
+ # For MinGW, there is no getrusage, and we'll skip a gethostname call
+ # to avoid having to link with winsock.
+@@ -12,4 +12,4 @@
+ 
+ # We're going to assume gcc, you'll need to comment this if a
+ # non-compatible compiler is used.
+-CC := gcc
++#CC := gcc

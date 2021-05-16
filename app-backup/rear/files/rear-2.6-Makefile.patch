@@ -1,0 +1,34 @@
+--- rear-2.6/Makefile.orig	2020-09-09 20:04:39.357666685 +0200
++++ rear-2.6/Makefile	2020-09-09 20:06:12.537313922 +0200
+@@ -84,7 +84,7 @@
+ clean:
+ 	rm -Rf dist build
+ 	rm -f build-stamp
+-	make -C doc clean
++	$(MAKE) -C doc clean
+ 
+ ### You can call 'make validate' directly from your .git/hooks/pre-commit script
+ validate:
+@@ -107,11 +107,11 @@
+ 
+ man:
+ 	@echo -e "\033[1m== Prepare manual ==\033[0;0m"
+-	make -C doc man
++	$(MAKE) -C doc man
+ 
+ doc:
+ 	@echo -e "\033[1m== Prepare documentation ==\033[0;0m"
+-	make -C doc docs
++	$(MAKE) -C doc docs
+ 
+ install-config:
+ 	@echo -e "\033[1m== Installing configuration ==\033[0;0m"
+@@ -144,7 +144,7 @@
+ 
+ install-doc:
+ 	@echo -e "\033[1m== Installing documentation ==\033[0;0m"
+-	make -C doc install
++	$(MAKE) -C doc install
+ 	sed -i -e 's,/etc,$(sysconfdir),' \
+ 		-e 's,/usr/sbin,$(sbindir),' \
+ 		-e 's,/usr/share,$(datadir),' \

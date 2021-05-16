@@ -1,0 +1,2 @@
+# Required by matplotlib which is a dep of @system
+dev-python/pillow jpeg

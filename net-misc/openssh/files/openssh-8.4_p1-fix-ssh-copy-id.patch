@@ -1,0 +1,30 @@
+From d9e727dcc04a52caaac87543ea1d230e9e6b5604 Mon Sep 17 00:00:00 2001
+From: Oleg <Fallmay@users.noreply.github.com>
+Date: Thu, 1 Oct 2020 12:09:08 +0300
+Subject: [PATCH] Fix `EOF: command not found` error in ssh-copy-id
+
+---
+ contrib/ssh-copy-id | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/ssh-copy-id b/contrib/ssh-copy-id
+index 392f64f94..a76907717 100644
+--- a/contrib/ssh-copy-id
++++ b/contrib/ssh-copy-id
+@@ -247,7 +247,7 @@ installkeys_sh() {
+   #    the -z `tail ...` checks for a trailing newline. The echo adds one if was missing
+   #    the cat adds the keys we're getting via STDIN
+   #    and if available restorecon is used to restore the SELinux context
+-  INSTALLKEYS_SH=$(tr '\t\n' ' ' <<-EOF)
++  INSTALLKEYS_SH=$(tr '\t\n' ' ' <<-EOF
+ 	cd;
+ 	umask 077;
+ 	mkdir -p $(dirname "${AUTH_KEY_FILE}") &&
+@@ -258,6 +258,7 @@ installkeys_sh() {
+ 	  restorecon -F .ssh ${AUTH_KEY_FILE};
+ 	fi
+ EOF
++  )
+ 
+   # to defend against quirky remote shells: use 'exec sh -c' to get POSIX;
+   printf "exec sh -c '%s'" "${INSTALLKEYS_SH}"

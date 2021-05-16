@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"
@@ -8,12 +7,12 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs"
-HOMEPAGE="https://git.gnome.org/browse/libzapojit"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libzapojit"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="+introspection"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2

@@ -1,0 +1,130 @@
+From b1d6f58033be92661f91b221b878e333eb02fd7f Mon Sep 17 00:00:00 2001
+From: Jason Zaman <jason@perfinion.com>
+Date: Fri, 7 Sep 2018 22:35:24 +0800
+Subject: [PATCH 2/2] cmake: set library soversions
+
+Set library soversions so CMake sets the symlinks and soversions
+properly. Install the cmake files in the correct dir.
+
+Signed-off-by: Jason Zaman <jason@perfinion.com>
+---
+ google/cloud/CMakeLists.txt           |  7 +++++++
+ google/cloud/bigtable/CMakeLists.txt  | 14 ++++++++++++++
+ google/cloud/firestore/CMakeLists.txt | 12 ++++++++++--
+ google/cloud/storage/CMakeLists.txt   |  9 ++++++++-
+ 4 files changed, 39 insertions(+), 3 deletions(-)
+
+diff --git a/google/cloud/CMakeLists.txt b/google/cloud/CMakeLists.txt
+index 3f3f8742..442f4e17 100644
+--- a/google/cloud/CMakeLists.txt
++++ b/google/cloud/CMakeLists.txt
+@@ -98,6 +98,13 @@ target_include_directories(google_cloud_cpp_common
+                                   $<INSTALL_INTERFACE:include>)
+ target_compile_options(google_cloud_cpp_common
+                        PUBLIC ${GOOGLE_CLOUD_CPP_EXCEPTIONS_FLAG})
++set_target_properties(
++    google_cloud_cpp_common
++    PROPERTIES
++        VERSION
++        ${GOOGLE_CLOUD_CPP_VERSION_MAJOR}.${GOOGLE_CLOUD_CPP_VERSION_MINOR}.${GOOGLE_CLOUD_CPP_VERSION_PATCH}
++        SOVERSION
++        ${GOOGLE_CLOUD_CPP_VERSION_MAJOR})
+ 
+ include(CreateBazelConfig)
+ create_bazel_config(google_cloud_cpp_common)
+diff --git a/google/cloud/bigtable/CMakeLists.txt b/google/cloud/bigtable/CMakeLists.txt
+index 9ed778eb..fd9c8797 100644
+--- a/google/cloud/bigtable/CMakeLists.txt
++++ b/google/cloud/bigtable/CMakeLists.txt
+@@ -102,6 +102,13 @@ target_include_directories(bigtable_protos
+                                   $<INSTALL_INTERFACE:include>)
+ target_compile_options(bigtable_protos
+                        PUBLIC ${GOOGLE_CLOUD_CPP_EXCEPTIONS_FLAG})
++set_target_properties(
++    bigtable_protos
++    PROPERTIES
++        VERSION
++        ${BIGTABLE_CLIENT_VERSION_MAJOR}.${BIGTABLE_CLIENT_VERSION_MINOR}.${BIGTABLE_CLIENT_VERSION_PATCH}
++        SOVERSION
++        ${BIGTABLE_CLIENT_VERSION_MAJOR})
+ add_library(bigtable::protos ALIAS bigtable_protos)
+ 
+ # Enable unit tests
+@@ -206,6 +213,13 @@ target_include_directories(bigtable_client
+                                   $<INSTALL_INTERFACE:include>)
+ target_compile_options(bigtable_client
+                        PUBLIC ${GOOGLE_CLOUD_CPP_EXCEPTIONS_FLAG})
++set_target_properties(
++    bigtable_client
++    PROPERTIES
++        VERSION
++        ${BIGTABLE_CLIENT_VERSION_MAJOR}.${BIGTABLE_CLIENT_VERSION_MINOR}.${BIGTABLE_CLIENT_VERSION_PATCH}
++        SOVERSION
++        ${BIGTABLE_CLIENT_VERSION_MAJOR})
+ add_library(bigtable::client ALIAS bigtable_client)
+ 
+ include(CreateBazelConfig)
+diff --git a/google/cloud/firestore/CMakeLists.txt b/google/cloud/firestore/CMakeLists.txt
+index 88c5ad6d..c69e48fd 100644
+--- a/google/cloud/firestore/CMakeLists.txt
++++ b/google/cloud/firestore/CMakeLists.txt
+@@ -62,6 +62,13 @@ target_include_directories(firestore_client
+                                   $<INSTALL_INTERFACE:include>)
+ target_compile_options(firestore_client
+                        PUBLIC ${GOOGLE_CLOUD_CPP_EXCEPTIONS_FLAG})
++set_target_properties(
++    firestore_client
++    PROPERTIES
++        VERSION
++        ${FIRESTORE_CLIENT_VERSION_MAJOR}.${FIRESTORE_CLIENT_VERSION_MINOR}.${FIRESTORE_CLIENT_VERSION_PATCH}
++        SOVERSION
++        ${FIRESTORE_CLIENT_VERSION_MAJOR})
+ add_library(firestore::client ALIAS firestore_client)
+ 
+ include(CreateBazelConfig)
+@@ -104,7 +111,8 @@ install(TARGETS
+ 
+ # The exports can only be installed if all the dependencies are installed. CMake
+ # needs to know where the submodules will be installed from,
+-install(EXPORT firestore-targets DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cmake)
++install(EXPORT firestore-targets
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/firestore_client")
+ 
+ install(TARGETS firestore_client
+         EXPORT firestore-targets
+@@ -142,4 +150,4 @@ install(
+     FILES "${CMAKE_CURRENT_BINARY_DIR}/firestore_client-config.cmake"
+           "${CMAKE_CURRENT_BINARY_DIR}/firestore_client-config-version.cmake"
+           DESTINATION
+-          ${CMAKE_INSTALL_DATAROOTDIR}/cmake)
++          "${CMAKE_INSTALL_LIBDIR}/cmake/firestore_client")
+diff --git a/google/cloud/storage/CMakeLists.txt b/google/cloud/storage/CMakeLists.txt
+index cef3954b..912391cc 100644
+--- a/google/cloud/storage/CMakeLists.txt
++++ b/google/cloud/storage/CMakeLists.txt
+@@ -205,6 +205,13 @@ target_include_directories(storage_client
+                                   $<INSTALL_INTERFACE:include>)
+ target_compile_options(storage_client
+                        PUBLIC ${GOOGLE_CLOUD_CPP_EXCEPTIONS_FLAG})
++set_target_properties(
++    storage_client
++    PROPERTIES
++        VERSION
++        ${STORAGE_CLIENT_VERSION_MAJOR}.${STORAGE_CLIENT_VERSION_MINOR}.${STORAGE_CLIENT_VERSION_PATCH}
++        SOVERSION
++        ${STORAGE_CLIENT_VERSION_MAJOR})
+ 
+ add_library(storage_client_testing
+             testing/canonical_errors.h
+@@ -315,7 +322,7 @@ install(TARGETS storage_client
+         RUNTIME DESTINATION bin
+         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-install(DIRECTORY . DESTINATION include/storage/client
++install(DIRECTORY . DESTINATION include/google/cloud/storage/client
+         FILES_MATCHING
+         PATTERN "*.h"
+         PATTERN "testing/*"
+-- 
+2.16.4
+

@@ -1,0 +1,27 @@
+From c82aa1e76e3faeaec605df618c87223513efb3b9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 29 Jun 2019 10:27:24 +0200
+Subject: [PATCH] Fix build with exiv2-0.27.1
+
+Use catchall header as recommended by exiv2 upstream.
+---
+ exif-gps.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/exif-gps.cpp b/exif-gps.cpp
+index fb9f2cb..61b4736 100644
+--- a/exif-gps.cpp
++++ b/exif-gps.cpp
+@@ -41,8 +41,7 @@
+ #include <unistd.h>
+ 
+ 
+-#include "exiv2/image.hpp"
+-#include "exiv2/exif.hpp"
++#include "exiv2/exiv2.hpp"
+ 
+ #include "gpsstructure.h"
+ #include "exif-gps.h"
+-- 
+2.22.0
+

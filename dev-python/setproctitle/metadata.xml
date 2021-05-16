@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">setproctitle</remote-id>
+		<remote-id type="github">dvarrazzo/py-setproctitle</remote-id>
 	</upstream>
 </pkgmetadata>

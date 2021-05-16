@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription>
+    distro (for: Linux Distribution) provides information about the
+    Linux distribution it runs on, such as a reliable machine-readable
+    ID, or version information. It is a renewed alternative
+    implementation for Python's original platform.linux_distribution
+    function, but it also provides much more functionality which isn't
+    necessarily Python bound like a command-line interface.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">distro</remote-id>
+    <remote-id type="github">nir0s/distro</remote-id>
+  </upstream>
+</pkgmetadata>

@@ -6,7 +6,6 @@
 		<name>Radio</name>
 	</maintainer>
 	<use>
-		<flag name="sctp">Enable SCTP sockets</flag>
 		<flag name="dahdi">Enable Dahdi driver</flag>
 		<flag name="zaptel">Enable Zaptel driver</flag>
 		<flag name="wpcard">Enable Wanpipe card driver</flag>
@@ -22,6 +21,5 @@
 		<flag name="speex">use Speex codec</flag>
 		<flag name="amrnb">use AMR-NB</flag>
 		<flag name="spandsp">use spandsp library</flag>
-		<flag name="h323">use OpenH323</flag>
 	</use>
 </pkgmetadata>

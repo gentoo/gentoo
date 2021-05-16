@@ -1,5 +1,5 @@
---- bubblemon.c
-+++ bubblemon.c
+--- a/bubblemon.c
++++ b/bubblemon.c
 @@ -58,6 +58,7 @@
  #include <gdk/gdk.h>
  #include <gdk/gdkx.h>
@@ -33,15 +33,15 @@
  #ifdef KDE_DOCKAPP
      /* makes the dockapp visible inside KDE wm */
      gdk_window_show(bm.iconwin);
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -11,30 +11,49 @@
  
  # no user serviceable parts below
  EXTRA += $(WMAN)
 +# gtk cflags and gtk lib flags
-+GTK2_CFLAGS = $(shell pkg-config gtk+-2.0 --cflags)
-+GTK2_LIBS = $(shell pkg-config gtk+-2.0 --libs)
++GTK2_CFLAGS = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK2_LIBS = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
 +
 +
  # optimization cflags

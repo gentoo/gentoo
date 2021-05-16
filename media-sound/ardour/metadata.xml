@@ -5,10 +5,10 @@
     <email>proaudio@gentoo.org</email>
     <name>Gentoo ProAudio Project</name>
   </maintainer>
-  <use>
-    <flag name="lv2">Add support for Ladspa V2</flag>
-  </use>
   <upstream>
     <remote-id type="github">Ardour/ardour</remote-id>
   </upstream>
+  <use>
+    <flag name="phonehome">contact ardour.org at startup for new announcements</flag>
+  </use>
 </pkgmetadata>

@@ -1,38 +1,40 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic autotools git-2
+inherit autotools flag-o-matic git-r3
 
-DESCRIPTION="A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)"
-HOMEPAGE="http://spice-space.org/page/UsbRedir"
+DESCRIPTION="TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)"
+HOMEPAGE="https://www.spice-space.org/usbredir.html"
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/usbredir.git"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="static-libs"
 
 RDEPEND="virtual/libusb:1"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS="ChangeLog README* TODO *.txt"
+DOCS="README* TODO *.txt"
 
-EGIT_BOOTSTRAP="eautoreconf"
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	# https://bugs.freedesktop.org/show_bug.cgi?id=54643
 	append-cflags -Wno-error
+
 	econf $(use_enable static-libs static)
 }
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 
 	# noinst_PROGRAMS
-	dobin usbredirtestclient/usbredirtestclient
+	dobin usbredirtestclient/.libs/usbredirtestclient
 }

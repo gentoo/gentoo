@@ -1,9 +1,8 @@
-#!/sbin/runscript
-# Copyright 1999-2010 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-PIDFILE="/var/run/ldap-agent.pid"
+PIDFILE="/run/ldap-agent.pid"
 CONFIGFILE="/etc/dirsrv/config/ldap-agent.conf"
 
 # instance support in progress
@@ -35,7 +34,6 @@ stop() {
 	ebegin "Stopping 389 Directory Server ldap-snmp agent"
 	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
 	eend ${?}
-	
 }
 
 restart() {

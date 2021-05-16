@@ -5,9 +5,6 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<use>
-		<flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for packet capturing</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">simsong/tcpflow</remote-id>
 	</upstream>

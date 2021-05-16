@@ -5,9 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides haskell bindings to the ALSA simple mixer API.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">ttuegel/alsa-mixer</remote-id>
 	</upstream>

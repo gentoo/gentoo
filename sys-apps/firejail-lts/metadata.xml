@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hlein@korelogic.com</email>
+		<name>Hank Leininger</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Firejail is a SUID program that reduces the risk of security breaches by restricting the running environment of
+		untrusted applications using Linux namespaces and seccomp-bpf. It allows a process and all its descendants to
+		have their own private view of the globally shared kernel resources, such as the network stack, process table,
+		mount table.
+
+		This is long term support branch of firejail. For the regular version see sys-apps/firejail. 
+		The code base is approximately 40% smaller than the regular version,
+		providing a smaller attack surface for the SUID executable.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">netblue30/firejail</remote-id>
+	</upstream>
+	<use>
+		<flag name="apparmor">Enable support for custom AppArmor profiles</flag>
+		<flag name="globalcfg">Enable global config file</flag>
+		<flag name="network">Enable networking features</flag>
+		<flag name="seccomp">Enable system call filtering</flag>
+		<flag name="userns">Enable attaching a new user namespace to a sandbox (--noroot option)</flag>
+		<flag name="whitelist">Enable file and directory whitelisting</flag>
+	</use>
+</pkgmetadata>

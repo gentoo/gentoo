@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -17,7 +16,8 @@ IUSE=""
 
 DEPEND="
 	>=dev-lang/tcl-8.3.3:0
-	>=dev-lang/perl-5.6.0"
+	>=dev-lang/perl-5.6.0
+	sys-libs/binutils-libs"
 RDEPEND="${DEPEND}"
 
 src_compile() {

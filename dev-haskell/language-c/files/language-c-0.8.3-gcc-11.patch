@@ -1,0 +1,41 @@
+From 8133e1526750ab74ca4d5180fb140a7e172d473f Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sat, 8 Aug 2020 23:43:12 +0100
+Subject: [PATCH] Lexer: allow zeros as line numbers in preprocessed directives
+
+Starting from `gcc-11` initial line numbers not related to
+actual files are marked as zeros. See the "preprocessor:
+Better line info for <builtin> & <command-line>"
+https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=6bf2ff0d52a9
+
+language-c's grammar did not allow it (by accident)
+
+```
+Prelude> Language.C.parseC (Data.ByteString.Char8.pack "# 0 \"/dev/null\"\n") Language.C.nopos
+Left <no file>:: [ERROR]  >>> Syntax Error !
+  Lexical error !
+  The character '#' does not fit here.
+```
+
+The change allows '0' in line numbers as well.
+
+Closes: https://github.com/visq/language-c/issues/74
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/Language/C/Parser/Lexer.x | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/Language/C/Parser/Lexer.x
++++ b/src/Language/C/Parser/Lexer.x
+@@ -147,7 +147,7 @@ $white+         ;
+ --
+ -- * see https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html
+ --
+-\#$space*@int$space*(\"($infname|@charesc)*\"$space*)?(@int$space*)*\r?$eol
++\#$space*@digits$space*(\"($infname|@charesc)*\"$space*)?(@int$space*)*\r?$eol
+   { \pos len str -> setPos (adjustLineDirective len (takeChars len str) pos) >> lexToken' False }
+ 
+ -- #pragma directive (K&R A12.8)
+-- 
+2.28.0
+

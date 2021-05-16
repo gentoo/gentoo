@@ -1,0 +1,3 @@
+/var/log/fp-multiuser/*.log {
+	copytruncate
+}

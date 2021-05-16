@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
+	<longdescription lang="en">
+		This library allows reading and writing gzip-compressed JSON catalog files,
+		which can be used to store GPG, PKCS-7 and SHA-256 checksums for each file.
+
+		This provides equivalent functionality to the catalog files supported
+		in Microsoft Windows.
+	</longdescription>
+	<use>
+		<flag name="gpg">Enable GPG verification support via <pkg>app-crypt/gpgme</pkg></flag>
+		<flag name="pkcs7">Enable PKCS7 verification support via <pkg>net-libs/gnutls</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hughsie/libjcat</remote-id>
+	</upstream>
+</pkgmetadata>

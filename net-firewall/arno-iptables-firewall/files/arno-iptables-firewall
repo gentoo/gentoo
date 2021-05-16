@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 command=/usr/sbin/arno-iptables-firewall
 description="Single- & multi-homed firewall script with DSL/ADSL support"
 

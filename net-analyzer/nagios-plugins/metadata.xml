@@ -2,27 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-      <email>andrew@ahamilto.net</email>
-      <name>Andrew Hamilton</name>
-      <description>Maintainer. Assign bugs to him.</description>
-  </maintainer>
-  <maintainer type="person">
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <description>Proxy maintainer. CC him on bugs.</description>
-  </maintainer>
-  <maintainer type="person">
-      <email>mjo@gentoo.org</email>
-      <name>Michael Orlitzky</name>
-      <description>Maintainer. CC him on bugs.</description>
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
   </maintainer>
   <maintainer type="project">
-      <email>proxy-maint@gentoo.org</email>
-      <name>Proxy Maintainers</name>
-  </maintainer>
-  <maintainer type="project">
-      <email>sysadmin@gentoo.org</email>
-      <name>Gentoo Sysadmin Project</name>
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
   </maintainer>
   <use>
     <flag name="nagios-dns">
@@ -46,4 +31,7 @@
       SNMP values. Disabling the flag does not remove any plugin file.
     </flag>
   </use>
+  <upstream>
+    <remote-id type="github">nagios-plugins/nagios-plugins</remote-id>
+  </upstream>
 </pkgmetadata>

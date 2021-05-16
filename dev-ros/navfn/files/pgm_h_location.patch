@@ -1,7 +1,7 @@
 Index: navigation-1.13.0/navfn/src/navtest.cpp
 ===================================================================
---- navigation-1.13.0.orig/navfn/src/navtest.cpp
-+++ navigation-1.13.0/navfn/src/navtest.cpp
+--- navfn/src/navtest.cpp
++++ navfn/src/navtest.cpp
 @@ -21,7 +21,7 @@ using namespace navfn;
  extern "C" {
  #include <stdio.h>
@@ -13,8 +13,8 @@ Index: navigation-1.13.0/navfn/src/navtest.cpp
  }
 Index: navigation-1.13.0/navfn/src/read_pgm_costmap.cpp
 ===================================================================
---- navigation-1.13.0.orig/navfn/src/read_pgm_costmap.cpp
-+++ navigation-1.13.0/navfn/src/read_pgm_costmap.cpp
+--- navfn/src/read_pgm_costmap.cpp
++++ navfn/src/read_pgm_costmap.cpp
 @@ -37,7 +37,7 @@
  extern "C" {
  #include <stdio.h>

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit golang-build golang-vcs-snapshot
@@ -11,7 +10,7 @@ ARCHIVE_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
 DESCRIPTION="Go sqlite3 driver using database/sql"
-HOMEPAGE="https://${EGO_PN%/*}"
+HOMEPAGE="https://github.com/mattn/go-sqlite3"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="MIT"
 SLOT="0/${PVR}"

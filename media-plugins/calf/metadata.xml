@@ -6,6 +6,7 @@
     <name>Gentoo ProAudio Project</name>
   </maintainer>
   <use>
+    <flag name="experimental">Enable experimental features/plugins</flag>
     <flag name="lv2">Add support for Ladspa V2</flag>
   </use>
   <upstream>

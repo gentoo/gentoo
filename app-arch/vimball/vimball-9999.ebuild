@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{3_3,3_4} )
+EAPI=7
+
+PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -19,12 +20,5 @@ HOMEPAGE="https://github.com/radhermit/vimball"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests pytest

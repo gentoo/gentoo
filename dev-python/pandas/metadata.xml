@@ -5,6 +5,9 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <longdescription lang="en">
   Pandas is a Python package providing fast, flexible, and expressive
   data structures designed to make working with "relational" or
@@ -14,12 +17,9 @@
 </longdescription>
   <use>
     <flag name="full-support">Pull all packages to give pandas full support</flag>
-    <flag name="excel">Pull a few Python packages for Microsoft Excel i/o</flag>
-    <flag name="html">Enable HTML i/o via <pkg>dev-python/beautifulsoup</pkg></flag>
-    <flag name="R">Enable support for R via <pkg>dev-python/rpy</pkg></flag>
   </use>
   <upstream>
     <remote-id type="pypi">pandas</remote-id>
-    <remote-id type="github">pydata/pandas</remote-id>
+    <remote-id type="github">pandas-dev/pandas</remote-id>
   </upstream>
 </pkgmetadata>

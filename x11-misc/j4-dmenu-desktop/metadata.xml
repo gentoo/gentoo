@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		j4-dmenu-desktop is a replacement for i3-dmenu-desktop.
+		The purpose is to find .desktop files,
+		but shell commands can also be executed.
+	</longdescription>
+	<use>
+		<flag name="dmenu">Use <pkg>x11-misc/dmenu</pkg> as default. Disable to use a different implementation.</flag>
+	</use>	
+	<upstream>
+		<bugs-to>https://github.com/enkore/j4-dmenu-desktop/issues</bugs-to>
+		<remote-id type="github">enkore/j4-dmenu-desktop</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-06-05 00:21:43.509980270 +0200
++++ b/CMakeLists.txt	2020-06-05 00:22:08.679979968 +0200
+@@ -36,6 +36,7 @@
+   ${LLVM_INCLUDE_DIRS}
+   ${SOURCE_ROOT}/src/include
+   )
++target_link_directories(c2ffi PUBLIC ${LLVM_LIBRARY_DIRS})
+ target_link_libraries(c2ffi PUBLIC clang-cpp LLVM)
+ 
+ set(APP_BIN_DIR "${CMAKE_BINARY_DIR}/bin")

@@ -1,0 +1,152 @@
+From 9f1ef23f34a7ceca1063606cfc749e4d32bef81c Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 19 Apr 2021 16:56:54 -0400
+Subject: [PATCH 1/1] CMake/FindGMP.cmake: compile a test program to check the
+ gmp version.
+
+The existing GMP version check consists of grepping the contents of
+the gmp.h header to parse out a few constants. This test fails, at
+least, on Gentoo, where the usual header file is a wrapper that
+includes the true header (to allow for simultaneous 32/64-bit
+support).
+
+This commit updates the FindGMP check to compile a test program
+against gmp.h that compares the version bounds within C, and reports
+success or failure as the return value from main().
+---
+ CMake/FindGMP.cmake | 97 +++++++++++++++++++++++++--------------------
+ 1 file changed, 53 insertions(+), 44 deletions(-)
+
+diff --git a/CMake/FindGMP.cmake b/CMake/FindGMP.cmake
+index ce4df70f5..bd2871ca3 100644
+--- a/CMake/FindGMP.cmake
++++ b/CMake/FindGMP.cmake
+@@ -2,28 +2,23 @@
+ # https://gmplib.org/
+ #
+ # This module supports requiring a minimum version, e.g. you can do
+-#   find_package(GMP 6.0.0)
+-# to require version 6.0.0 to newer of GMP.
++#   find_package(GMP 6.2.1)
++# to require version 6.2.1 to newer of GMP.
+ #
+ # Once done this will define
+ #
+ #  GMP_FOUND - system has GMP lib with correct version
+ #  GMP_INCLUDE_DIRS - the GMP include directory
+ #  GMP_LIBRARIES - the GMP library
+-#  GMP_VERSION - GMP version
+ #
+-# Copyright (c) 2016 Jack Poulson, <jack.poulson@gmail.com>
+-# Redistribution and use is allowed according to the terms of the BSD license.
+ 
+-find_path(GMP_INCLUDE_DIRS NAMES gmp.h PATHS $ENV{GMPDIR} ${INCLUDE_INSTALL_DIR})
+-
+-# Set GMP_FIND_VERSION to 5.1.0 if no minimum version is specified
++# Set GMP_FIND_VERSION to 6.0.0 if no minimum version is specified
+ if(NOT GMP_FIND_VERSION)
+   if(NOT GMP_FIND_VERSION_MAJOR)
+-    set(GMP_FIND_VERSION_MAJOR 5)
++    set(GMP_FIND_VERSION_MAJOR 6)
+   endif()
+   if(NOT GMP_FIND_VERSION_MINOR)
+-    set(GMP_FIND_VERSION_MINOR 1)
++    set(GMP_FIND_VERSION_MINOR 0)
+   endif()
+   if(NOT GMP_FIND_VERSION_PATCH)
+     set(GMP_FIND_VERSION_PATCH 0)
+@@ -32,43 +27,57 @@ if(NOT GMP_FIND_VERSION)
+     "${GMP_FIND_VERSION_MAJOR}.${GMP_FIND_VERSION_MINOR}.${GMP_FIND_VERSION_PATCH}")
+ endif()
+ 
+-if(GMP_INCLUDE_DIRS)
+-  # Since the GMP version macros may be in a file included by gmp.h of the form
+-  # gmp-.*[_]?.*.h (e.g., gmp-x86_64.h), we search each of them.
+-  file(GLOB GMP_HEADERS "${GMP_INCLUDE_DIRS}/gmp.h" "${GMP_INCLUDE_DIRS}/gmp-*.h"
+-	  "${GMP_INCLUDE_DIRS}/x86*/gmp.h")
+-  foreach(gmp_header_filename ${GMP_HEADERS})
+-    file(READ "${gmp_header_filename}" _gmp_version_header)
+-    string(REGEX MATCH
+-      "define[ \t]+__GNU_MP_VERSION[ \t]+([0-9]+)" _gmp_major_version_match
+-      "${_gmp_version_header}")
+-    if(_gmp_major_version_match)
+-      set(GMP_MAJOR_VERSION "${CMAKE_MATCH_1}")
+-      string(REGEX MATCH "define[ \t]+__GNU_MP_VERSION_MINOR[ \t]+([0-9]+)"
+-        _gmp_minor_version_match "${_gmp_version_header}")
+-      set(GMP_MINOR_VERSION "${CMAKE_MATCH_1}")
+-      string(REGEX MATCH "define[ \t]+__GNU_MP_VERSION_PATCHLEVEL[ \t]+([0-9]+)"
+-        _gmp_patchlevel_version_match "${_gmp_version_header}")
+-      set(GMP_PATCHLEVEL_VERSION "${CMAKE_MATCH_1}")
+-      set(GMP_VERSION
+-        ${GMP_MAJOR_VERSION}.${GMP_MINOR_VERSION}.${GMP_PATCHLEVEL_VERSION})
+-    endif()
+-  endforeach()
++find_path(GMP_INCLUDE_DIRS
++          NAMES gmp.h
++          PATHS $ENV{GMPDIR} ${INCLUDE_INSTALL_DIR})
+ 
+-  # Check whether found version exists and exceeds the minimum requirement
+-  if(NOT GMP_VERSION)
+-    set(GMP_VERSION_OK FALSE)
+-    message(STATUS "GMP version was not detected")
+-  elseif(${GMP_VERSION} VERSION_LESS ${GMP_FIND_VERSION})
+-    set(GMP_VERSION_OK FALSE)
+-    message(STATUS "GMP version ${GMP_VERSION} found in ${GMP_INCLUDE_DIRS}, "
+-                   "but at least version ${GMP_FIND_VERSION} is required")
+-  else()
+-    set(GMP_VERSION_OK TRUE)
+-  endif()
++find_library(GMP_LIBRARIES
++             gmp
++             PATHS $ENV{GMPDIR} ${LIB_INSTALL_DIR})
++
++if(GMP_INCLUDE_DIRS AND GMP_LIBRARIES)
++
++  # Return "1" if the version is OK, or "0" otherwise.  This is
++  # opposite the usual C program conventions, but makes the purpose of
++  # the result variable semantically clear. We create an integer using
++  # a few basic GMP functions to ensure that we can actually link against
++  # the GMP library.
++  file(WRITE ${PROJECT_BINARY_DIR}/gmp-version-check.c ""
++  "#include <gmp.h>\n"
++  "\n"
++  "int main(int argc, char **argv) {\n"
++  "  mpz_t x;\n"
++  "  mpz_init_set_str(x, \"7612058254738945\", 10);\n"
++  "  mpz_clear(x);\n"
++  "  if (__GNU_MP_VERSION < ${GMP_FIND_VERSION_MAJOR}) {\n"
++  "    return 0;\n"
++  "  }\n"
++  "  else {\n"
++  "    if (__GNU_MP_VERSION_MINOR < ${GMP_FIND_VERSION_MINOR}) {\n"
++  "      return 0;\n"
++  "    }\n"
++  "    else {\n"
++  "      if (__GNU_MP_VERSION_PATCHLEVEL < ${GMP_FIND_VERSION_PATCH}) {\n"
++  "        return 0;\n"
++  "      }\n"
++  "    }\n"
++  "  }\n"
++  "  return 1;\n"
++  "}\n")
++
++  # Try to run the test program above with the appropriate version
++  # strings substituted in.
++  try_run(GMP_VERSION_OK
++          GMP_VERSION_COMPILE_OK
++          "${PROJECT_BINARY_DIR}"
++          "${PROJECT_BINARY_DIR}/gmp-version-check.c"
++          CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${GMP_INCLUDE_DIRS}"
++          LINK_LIBRARIES "${GMP_LIBRARIES}")
+ endif()
+ 
+-find_library(GMP_LIBRARIES gmp PATHS $ENV{GMPDIR} ${LIB_INSTALL_DIR})
++if(NOT GMP_VERSION_OK)
++  message(STATUS "No sufficient GMP version detected")
++endif()
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(GMP DEFAULT_MSG
+-- 
+2.26.3
+

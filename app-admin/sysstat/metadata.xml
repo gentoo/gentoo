@@ -2,11 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jer@gentoo.org</email>
-		<name>Jeroen Roovers</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
-		<flag name="cron">Install /etc/cron.d script to periodically run sar</flag>
-		<flag name="isag">Install isag, the Interactive System Activity Graph tool</flag>
+		<flag name="dcron">Adjust cronjobs to work properly under <pkg>sys-process/dcron</pkg></flag>
 	</use>
 </pkgmetadata>

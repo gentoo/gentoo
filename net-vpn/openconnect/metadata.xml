@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<use>
+		<flag name="gssapi">Build GSSAPI support</flag>
+		<flag name="libproxy">Enable proxy support</flag>
+		<flag name="stoken">Enable stoken support</flag>
+	</use>
+</pkgmetadata>

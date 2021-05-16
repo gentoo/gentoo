@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libonigmo.so.</subslots>
+	</slots>
+	<use>
+		<flag name="combination-explosion-check">
+			enable combination explosion check
+		</flag>
+		<flag name="crnl-as-line-terminator">
+			enable CR+NL as line terminator
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">k-takata/Onigmo</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,34 +1,39 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils virtualx
+EAPI=7
+
+inherit desktop virtualx
 
 DESCRIPTION="ROX-Filer a drag and drop spatial file manager"
-HOMEPAGE="http://rox.sourceforge.net/desktop"
-SRC_URI="mirror://sourceforge/rox/${P}.tar.bz2"
+HOMEPAGE="http://rox.sourceforge.net/desktop/ROX-Filer.html"
+SRC_URI="https://download.sourceforge.net/rox/${P}.tar.bz2"
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 COMMON_DEPEND="dev-lang/perl
 	dev-libs/libxml2:2
 	gnome-base/libglade:2.0
-	x11-libs/gtk+:2"
+	x11-libs/gtk+:2
+	x11-libs/libSM"
 RDEPEND="${COMMON_DEPEND}
 	x11-misc/shared-mime-info"
 DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
-	sys-devel/gettext
-	virtual/pkgconfig"
+	sys-devel/gettext"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${P}"/ROX-Filer/src
+S="${WORKDIR}/${P}/ROX-Filer/src"
+
+PATCHES=(
+	"${FILESDIR}/${P}-in-source-build.patch"
+	"${FILESDIR}/${P}-gcc10.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-in-source-build.patch"
+	default
 
 	sed -i -e 's:g_strdup(getenv("APP_DIR")):"/usr/share/rox":' \
 		main.c || die "sed failed"
@@ -50,22 +55,21 @@ src_install() {
 
 	newbin ROX-Filer rox
 
-	dosym /usr/share/rox/ROX/MIME/text-x-{diff,patch}.png
-	dosym /usr/share/rox/ROX/MIME/application-x-font-{afm,type1}.png
-	dosym /usr/share/rox/ROX/MIME/application-xml{,-dtd}.png
-	dosym /usr/share/rox/ROX/MIME/application-xml{,-external-parsed-entity}.png
-	dosym /usr/share/rox/ROX/MIME/application-{,rdf+}xml.png
-	dosym /usr/share/rox/ROX/MIME/application-x{ml,-xbel}.png
-	dosym /usr/share/rox/ROX/MIME/application-{x-shell,java}script.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip,xz}-compressed-tar.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip,lzma}-compressed-tar.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip-compressed-tar,lzo}.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{bzip,xz}.png
-	dosym /usr/share/rox/ROX/MIME/application-x-{gzip,lzma}.png
-	dosym /usr/share/rox/ROX/MIME/application-{msword,rtf}.png
+	dosym text-x-diff.png /usr/share/rox/ROX/MIME/text-x-patch.png
+	dosym application-x-font-afm.png /usr/share/rox/ROX/MIME/application-x-font-type1.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-xml-dtd.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-xml-external-parsed-entity.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-rdf+xml.png
+	dosym application-xml.png /usr/share/rox/ROX/MIME/application-x-xbel.png
+	dosym application-x-shellscript.png /usr/share/rox/ROX/MIME/application-javascript.png
+	dosym application-x-bzip-compressed-tar.png /usr/share/rox/ROX/MIME/application-x-xz-compressed-tar.png
+	dosym application-x-bzip-compressed-tar.png /usr/share/rox/ROX/MIME/application-x-lzma-compressed-tar.png
+	dosym application-x-bzip-compressed-tar.png /usr/share/rox/ROX/MIME/application-x-lzo.png
+	dosym application-x-bzip.png /usr/share/rox/ROX/MIME/application-x-xz.png
+	dosym application-x-gzip.png /usr/share/rox/ROX/MIME/application-x-lzma.png
+	dosym application-msword.png /usr/share/rox/ROX/MIME/application-rtf.png
 
-	dosym /usr/share/rox/.DirIcon /usr/share/pixmaps/rox.png
+	dosym ../rox/.DirIcon /usr/share/pixmaps/rox.png
 
-	insinto /usr/share/applications
-	doins   "${FILESDIR}"/rox.desktop
+	domenu "${FILESDIR}"/rox.desktop
 }

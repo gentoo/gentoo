@@ -1,0 +1,36 @@
+From 8b5ba5f9c8d239328ecbc862aba203d44819e2f5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dani=C3=ABl=20van=20Eeden?= <git@myname.nl>
+Date: Tue, 5 Mar 2019 16:24:17 +0100
+Subject: [PATCH] Fix for MariaDB 10.3.13 with zerofil
+
+Issue: #304
+
+Bug: https://github.com/perl5-dbi/DBD-mysql/issues/304
+Bug-Debian: https://bugs.debian.org/923541
+
+---
+ dbdimp.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/dbdimp.c b/dbdimp.c
+index a9c37cf..82c96d2 100644
+--- a/dbdimp.c
++++ b/dbdimp.c
+@@ -4055,9 +4055,13 @@ int dbd_describe(SV* sth, imp_sth_t* imp_sth)
+         break;
+ 
+       default:
+-#if MYSQL_VERSION_ID > 100300
++#if (MYSQL_VERSION_ID > 100300) && (MYSQL_VERSION_ID < 100313)
+         // https://jira.mariadb.org/browse/MDEV-18143
+         buffer->buffer_length= fields[i].max_length ? fields[i].max_length : 2;
++#elif MYSQL_VERSION_ID > 100312
++        // https://jira.mariadb.org/browse/MDEV-18823
++        buffer->buffer_length= fields[i].max_length ? fields[i].max_length + 1 : 2;
++        buffer->buffer_length= fields[i].length > fields[i].max_length ? fields[i].length + 1 : 2;
+ #else
+         buffer->buffer_length= fields[i].max_length ? fields[i].max_length : 1;
+ #endif
+-- 
+2.20.1
+

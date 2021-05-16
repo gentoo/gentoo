@@ -1,0 +1,15 @@
+Description: Fixes the compatibility with the version of glibc in Debian
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: https://bugs.openjdk.java.net/browse/JDK-8211399
+--- a/modules/javafx.web/src/main/native/Source/ThirdParty/libxslt/src/libxslt/xsltlocale.h
++++ b/modules/javafx.web/src/main/native/Source/ThirdParty/libxslt/src/libxslt/xsltlocale.h
+@@ -25,9 +25,6 @@
+ #ifdef HAVE_LOCALE_H
+ #include <locale.h>
+ #endif
+-#ifdef HAVE_XLOCALE_H
+-#include <xlocale.h>
+-#endif
+ 
+ typedef locale_t xsltLocale;
+ typedef xmlChar xsltLocaleChar;

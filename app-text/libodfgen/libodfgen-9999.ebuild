@@ -1,49 +1,45 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="git://git.code.sf.net/p/libwpd/libodfgen"
-inherit eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://git.code.sf.net/p/libwpd/libodfgen"
+	inherit autotools git-r3
+else
+	SRC_URI="mirror://sourceforge/libwpd/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+fi
 
 DESCRIPTION="Library to generate ODF documents from libwpd and libwpg"
-HOMEPAGE="http://libwpd.sf.net"
-[[ ${PV} == 9999 ]] || SRC_URI="mirror://sourceforge/libwpd/${P}.tar.xz"
+HOMEPAGE="http://libwpd.sourceforge.net/"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-
 IUSE="doc"
 
 RDEPEND="
 	dev-libs/librevenge
+	dev-libs/libxml2:2
 "
-DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
 src_prepare() {
-	eapply_user
+	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
 	econf \
 		--disable-static \
-		--disable-werror \
-		--with-sharedptr=boost \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_with doc docs)
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }

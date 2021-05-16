@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/779406
+
+commit e55f6880d6bb649b2f1bd55c31bd4ba6265ccae0
+Author: orbea <orbea@riseup.net>
+Date:   Tue Mar 30 11:54:33 2021 -0700
+
+    build: Fix undefined references for libm.
+
+diff --git a/Makefile.am b/Makefile.am
+index 16d29ea..09a51bb 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,4 +22,4 @@ libaurora_la_SOURCES =		\
+ 	./src/config.h
+ 
+ libaurora_la_LDFLAGS = -module -avoid-version -no-undefined
+-libaurora_la_LIBADD =  $(GTK_LIBS)
++libaurora_la_LIBADD = $(GTK_LIBS) $(LIBM)
+diff --git a/configure.ac b/configure.ac
+index b1c35e9..9b446c3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -20,6 +20,9 @@ AC_ARG_ENABLE(animation, 	[  --enable-animation      compile aurora with animati
+ 
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.10.0,,AC_MSG_ERROR([GTK+-2.10 is required to compile aurora]))
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 

@@ -1,0 +1,28 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This profile is designed for use as Stacked Prefix, set up using
+# prefix-stack-setup (app-portage/prefix-toolkit) from with a Cygwin
+# Prefix (Guest only), having sys-devel/parity installed (wraps MSVC).
+#
+# CHOST is left unset on purpose.  It is set by prefix-stack-setup
+# using some --chost=x86_64-msvc16-winnt argument, selecting the
+# Visual Studio version and runtime variant (static|debug) to use.
+#
+# Sample CHOST values for the runtime variant using x64 Visual Studio 2019,
+# as provided by parity-2.0.0 (multithreaded only):
+# x86_64-msvc16-winnt    dynamic runtime       (cl.exe /MD  for MSVCRT.DLL)
+# x86_64-msvcd16-winnt   dynamic debug runtime (cl.exe /MDd for MSVCRTD.DLL)
+# x86_64-libcmt16-winnt  static runtime        (cl.exe /MT  for LIBCMT.LIB)
+# x86_64-libcmtd16-winnt static debug runtime  (cl.exe /MTd for LIBCMTD.LIB)
+#
+
+ARCH="x64-winnt"
+ACCEPT_KEYWORDS="~x64-winnt"
+
+# multilib build stuff, single ABI (no multilib)
+MULTILIB_ABIS="amd64"
+DEFAULT_ABI="amd64"
+ABI="amd64"
+IUSE_IMPLICIT="abi_x86_64"
+LIBDIR_amd64="lib"

@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -14,19 +13,26 @@ SLOT="0"
 SRC_URI="http://ludovic.rousseau.free.fr/softwares/ifd-GemPC/${P}.tar.gz"
 IUSE=""
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9_beta7
-	=virtual/libusb-0*"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/libusb:0"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+DOCS=(
+	README
+	README.410
+	README.430
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
-src_install () {
-	local pcscdir="$(pkg-config --variable=usbdropdir libpcsclite)"
-	local conf="/etc/reader.conf.d/${PN}.conf"
+src_install() {
 	emake CC="$(tc-getCC)" DESTDIR="${D}" install
-	dodoc README*
+	einstalldocs
+
+	local pcscdir="$($(tc-getPKG_CONFIG) --variable=usbdropdir libpcsclite)"
+	local conf="/etc/reader.conf.d/${PN}.conf"
 	dodir "$(dirname "${conf}")"
 	insinto "$(dirname "${conf}")"
 	newins "${FILESDIR}/reader.conf" "$(basename "${conf}")"

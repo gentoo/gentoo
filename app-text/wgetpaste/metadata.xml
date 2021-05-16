@@ -2,14 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>wired@gentoo.org</email>
-		<name>Alex Alexander</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>maksbotan@gentoo.org</email>
-		<name>Maxim Koltsov</name>
-	</maintainer>
-	<use>
-		<flag name="lodgeit-default">Set one of lodgeit-like (ex http://paste.pocoo.org) services as default</flag>
-	</use>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">zlin/wgetpaste</remote-id>
+		<bugs-to>https://github.com/zlin/wgetpaste/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

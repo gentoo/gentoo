@@ -5,7 +5,9 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
-	<longdescription>
-		Web based Subversion repository browser written in PHP
-	</longdescription>
+	<stabilize-allarches/>
+	<use>
+		<flag name="enscript">Add enscript support to colorize code
+			stored in the repository</flag>
+	</use>
 </pkgmetadata>

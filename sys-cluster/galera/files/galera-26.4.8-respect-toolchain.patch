@@ -1,0 +1,53 @@
+--- a/SConscript
++++ b/SConscript
+@@ -47,13 +47,15 @@ def check_executable_exists(command):
+     return retval
+ 
+ def check_dynamic_symbols(target, source, env):
++    objdump = env['OBJDUMP']
++
+     # Check if objdump exists
+-    if check_executable_exists(['objdump', '--version']):
++    if check_executable_exists([objdump, '--version']):
+         print('Skipping dynamic symbols check.')
+         return 0
+ 
+     # Check that DSO doesn't contain asio-related dynamic symbols
+-    if env.Execute(Action(['! objdump -T ' + target[0].abspath + ' | grep asio'], None)):
++    if env.Execute(Action(['! ' + objdump + ' -T ' + target[0].abspath + ' | grep asio'], None)):
+         return 1
+     return 0
+ 
+--- a/SConstruct
++++ b/SConstruct
+@@ -5,6 +5,7 @@
+ # SCons build script to build galera libraries
+ #
+ # How to control the build with environment variables:
++# Set AR       to specify archive utility
+ # Set CC       to specify C compiler
+ # Set CXX      to specify C++ compiler
+ # Set CPPFLAGS to add non-standard include paths and preprocessor macros
+@@ -13,6 +14,7 @@
+ # Set CXXFLAGS to supply C++ compiler options
+ # Set LDFLAGS  to *override* linking flags
+ # Set LIBPATH  to add non-standard linker paths
++# Set OBJDUMP  to specify objdump utility
+ # Set RPATH    to add rpaths
+ #
+ # Some useful CPPFLAGS:
+@@ -183,6 +185,13 @@ if cxx != 'default':
+ link = os.getenv('LINK', 'default')
+ if link != 'default':
+     env.Replace(LINK = link)
++ar = os.getenv('AR', 'default')
++if ar != 'default':
++    env.Replace(AR = ar)
++objdump = os.getenv('OBJDUMP', 'default')
++if objdump != 'default':
++    env.Replace(OBJDUMP = objdump)
++
+ 
+ # Get compiler name/version, CXX may be set to "c++" which may be clang or gcc
+ cc_version = str(read_first_line(env['CC'].split() + ['--version']))
+ 

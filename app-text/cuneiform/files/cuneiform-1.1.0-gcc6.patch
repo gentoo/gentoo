@@ -1,0 +1,176 @@
+Description: fix FTBFS with GCC 6
+Author: Andreas Beckmann <anbe@debian.org>
+--- a/cuneiform_src/Kern/rimage/sources/main/cricontrol.cpp
++++ b/cuneiform_src/Kern/rimage/sources/main/cricontrol.cpp
+@@ -594,8 +594,8 @@ Bool32 CRIControl::CreateDestinatonDIB(u
+ 		return FALSE;
+ 	}
+ 
+-	wNewHeight = (mbMarginsFlag ? abs(mrMargins.rmBottomMarg - mrMargins.rmTopMarg) : mpSourceDIB->GetLinesNumber());
+-	wNewWidth = (mbMarginsFlag ? abs(mrMargins.rmLeftMarg - mrMargins.rmRightMarg) : mpSourceDIB->GetLineWidth());
++	wNewHeight = (mbMarginsFlag ? std::abs(int32_t(mrMargins.rmBottomMarg) - int32_t(mrMargins.rmTopMarg)) : mpSourceDIB->GetLinesNumber());
++	wNewWidth = (mbMarginsFlag ? std::abs(int32_t(mrMargins.rmLeftMarg) - int32_t(mrMargins.rmRightMarg)) : mpSourceDIB->GetLineWidth());
+ 	mpSourceDIB->GetResolutionDPM( &wXResolution, &wYResolution);
+ 
+ 	if ( !mpDestinationDIB->CreateDIBBegin( wNewWidth, wNewHeight, BitCount) )
+--- a/cuneiform_src/Kern/include/minmax.h
++++ b/cuneiform_src/Kern/include/minmax.h
+@@ -67,6 +67,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ #define MAX(a,b) (((a)>(b))?(a):(b))
+ #endif
+ 
++#ifndef __cplusplus
++
+ #ifndef min
+ #define min(a,b) (((a)>(b))?(b):(a))
+ #endif
+@@ -75,3 +77,5 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ #endif
+ 
+ #endif
++
++#endif
+--- a/cuneiform_src/Kern/rcutp/sources/main/rcutp_func.cpp
++++ b/cuneiform_src/Kern/rcutp/sources/main/rcutp_func.cpp
+@@ -902,8 +902,8 @@ int16_t   i,ver_byte,interval,l1,r1,minl
+    if(l1<0 || r1<0) return -1;
+    if(i>0)
+     {
+-     minl=MIN(minl,l1); minr=min(minr,r1);
+-     maxl=MAX(maxl,l1); maxr=max(maxr,r1);
++     minl=MIN(minl,l1); minr=MIN(minr,r1);
++     maxl=MAX(maxl,l1); maxr=MAX(maxr,r1);
+     }
+    else
+     {
+--- a/cuneiform_src/Kern/lns32/src/xydim.h
++++ b/cuneiform_src/Kern/lns32/src/xydim.h
+@@ -86,8 +86,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 					);
+ 			};
+          void expandX( int l, int r ){
+-				left = min( left, l );
+-				right = max( right, r);
++				left = MIN( left, l );
++				right = MAX( right, r);
+ 			};
+ 
+ 	};
+@@ -115,8 +115,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 				);
+ 			};
+          void expandY( int b, int t ){
+-				bottom = min( bottom, b );
+-				top = max( top, t );
++				bottom = MIN( bottom, b );
++				top = MAX( top, t );
+ 			};
+ 
+ 	};
+@@ -145,10 +145,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 						 );
+ 			};
+          void restrictXY( int x1, int x2, int y1, int y2 ){
+-				left 		= 	max( left, x1 );
+-				right		=  min( right, x2 );
+-				bottom	= 	max(bottom, y1);
+-				top    	=  min(top, y2);
++				left 		= 	MAX( left, x1 );
++				right		=  MIN( right, x2 );
++				bottom	= 	MAX(bottom, y1);
++				top    	=  MIN(top, y2);
+ 			};
+          void expandXY( TXYDim* brother ){
+ 				expandX( brother->left, brother->right );
+--- a/cuneiform_src/Kern/rcorrkegl/src/cpp/cor_kegl.cpp
++++ b/cuneiform_src/Kern/rcorrkegl/src/cpp/cor_kegl.cpp
+@@ -75,6 +75,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ #include "cor_kegl.h"
+ #include "garbage.h"
+ #include "ligas.h"
++#include "minmax.h"
+ 
+ #ifndef MAXINT32
+ #define  MAXINT32  0x7FFFFFFF
+@@ -1563,7 +1564,7 @@ static int32_t rect_dist(Rect32 *main, R
+   int32_t y2=test->top-main->bottom;
+   if (x1>0 || x2>0 || y1>0 || y2>0)   //не пересекаютс
+   {
+-    x=MAX(x1,x2);  y=max(y1,y2);
++    x=MAX(x1,x2);  y=MAX(y1,y2);
+     if (x<0)  return y;
+     if (y<0)  return x;
+     return MIN(x,y);
+@@ -1574,7 +1575,7 @@ static int32_t rect_dist(Rect32 *main, R
+   x2=test->right-main->right;
+   y1=main->top-test->top;
+   y2=test->bottom-main->bottom;
+-  x=MAX(x1,x2);  y=max(y1,y2);
++  x=MAX(x1,x2);  y=MAX(y1,y2);
+   x=MAX(x,y);
+   return (x>0) ? x : 0;
+ }
+--- a/cuneiform_src/Kern/rcutp/sources/main/rcutp_mainfunc.cpp
++++ b/cuneiform_src/Kern/rcutp/sources/main/rcutp_mainfunc.cpp
+@@ -73,13 +73,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 
+ extern  int16_t      minrow,bbs1,bbs2,bbs3,bbs4,Nb1,Nb2,Nb3;
+ extern  uchar      language;
+-#ifndef max
+-#define MAX(a,b)            (((a) > (b)) ? (a) : (b))
+-#endif
+-
+-#ifndef min
+-#define MIN(a,b)            (((a) < (b)) ? (a) : (b))
+-#endif
+ 
+ extern int16_t   up_position,dw_position;
+ uchar MemForCutPoints[65536];
+--- a/cuneiform_src/Kern/hhh/lst3_win.h
++++ b/cuneiform_src/Kern/hhh/lst3_win.h
+@@ -845,7 +845,7 @@ int WidthPRS,MaxShtrih;
+   dist+=par.kv*dv; \
+ }
+ 
+-#define DIST_V(u1,d1,u2,d2) (min(d1,d2)-max(u1,u2))
++#define DIST_V(u1,d1,u2,d2) (MIN(d1,d2)-MAX(u1,u2))
+ 
+ #define DV_FRM(a,b) DIST_V(a->up,a->down,b->up,b->down)
+ 
+--- a/cuneiform_src/Kern/lns32/src/lns.cpp
++++ b/cuneiform_src/Kern/lns32/src/lns.cpp
+@@ -190,8 +190,8 @@ void  __RejectNearBound(LinesTotalInfo*
+          break;   // keep lines, if lack
+       if (li.Flags & LI_NOISE)
+          continue;
+-      Point32 Mn; Mn.x = MIN(li.A.x,li.B.x);   Mn.y = min(li.A.y,li.B.y);
+-      Point32 Mx; Mx.x = MAX(li.A.x,li.B.x);   Mx.y = max(li.A.y,li.B.y);
++      Point32 Mn; Mn.x = MIN(li.A.x,li.B.x);   Mn.y = MIN(li.A.y,li.B.y);
++      Point32 Mx; Mx.x = MAX(li.A.x,li.B.x);   Mx.y = MAX(li.A.y,li.B.y);
+       if ((Mn.y < imgrect.top + 50) || (Mx.y > imgrect.bottom - 50))
+       {
+          if (!__HasCorners(li, plti, TRUE))
+@@ -213,8 +213,8 @@ void  __RejectNearBound(LinesTotalInfo*
+          continue;
+       if (vcnt < 5)
+          break;   // keep lines, if lack
+-      Point32 Mn; Mn.x = MIN(li.A.x,li.B.x);   Mn.y = min(li.A.y,li.B.y);
+-      Point32 Mx; Mx.x = MAX(li.A.x,li.B.x);   Mx.y = max(li.A.y,li.B.y);
++      Point32 Mn; Mn.x = MIN(li.A.x,li.B.x);   Mn.y = MIN(li.A.y,li.B.y);
++      Point32 Mx; Mx.x = MAX(li.A.x,li.B.x);   Mx.y = MAX(li.A.y,li.B.y);
+       if ((Mn.x < imgrect.left + 50) || (Mx.x > imgrect.right - 50))
+       {
+          if (!__HasCorners(li, plti, FALSE))
+--- a/cuneiform_src/Kern/lns32/src/lnscheck.cpp
++++ b/cuneiform_src/Kern/lns32/src/lnscheck.cpp
+@@ -66,8 +66,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ #include "decl.h"
+ 
+ typedef Point16 XPoint16;
+-#define maxi max
+-#define mini min
++#define maxi MAX
++#define mini MIN
+ #define PPSArray TArray
+ 
+ #define CONSOLE /* This can also be printf. */

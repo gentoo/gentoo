@@ -1,0 +1,60 @@
+* Remove hardcoded variable
+* Respect user variables
+
+--- a/Makefile
++++ b/Makefile
+@@ -19,10 +19,6 @@
+ VER_SUFFIX ?=
+ 
+ #
+-#      The following forces the compiler to be GCC.  If you have trouble
+-#      with your default compiler, and you want to force GCC, uncomment it.
+-CC=gcc
+-#
+ #     What version is this software (PLEASE don't change this just
+ #     to mess with my brain. - wsy)
+ #
+@@ -82,7 +78,7 @@
+ #
+ #     Build our basic CFLAGS chunk
+ #
+-CFLAGS += -DVERSION='"$(VERSION)"'
++MY_CPPFLAGS += -DVERSION='"$(VERSION)"'
+ #
+ #  Known Neighbord On, only for debugging
+ # CFLAGS += -DKNN_ON
+@@ -104,7 +100,7 @@
+ #  certain functions to be inline (I added that to force gcc to inline functions
+ #  under high optimization but not under low so that debugging is possible - 
+ #  that's why DO_INLINES is defined at O3 but not O0 - JB):
+-CFLAGS += -O3 -Wall -DDO_INLINES
++MY_CPPFLAGS += -DDO_INLINES
+ #     turn this one on for no optimization, but debugging
+ #CFLAGS += -g -O0 -Wall
+ #
+@@ -119,7 +115,6 @@
+ #    BSD users - do NOT use -static-libgcc!!!
+ #    Also note that this keeps valgrind from running correctly so comment
+ #    it out for debugging.
+-LDFLAGS += -static -static-libgcc
+ #    use this one if you want program profiling.
+ #LDFLAGS += -static -static-libgcc -pg
+ #LDFLAGS += -pg
+@@ -306,7 +301,7 @@
+         #                               of with your mods built in.
+ 
+ crm114: $(OFILES)
+-	$(CC) $(LDFLAGS) $(LIBS) $(OFILES) \
++	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBS) $(OFILES) \
+ 	  -ltre -lm \
+ 	  -o crm114
+ 	#
+@@ -315,7 +310,7 @@
+ 
+ *.o: $(HFILES)
+ .c.o:
+-	$(CC)  $(CFLAGS) -c $*.c
++	$(CC) $(CFLAGS) $(MY_CPPFLAGS) $(CPPFLAGS) -c $*.c
+ 
+ cssutil: cssutil.o crm_css_maintenance.o crm_util_errorhandlers.o crm_str_funcs.o $(HFILES)
+ 	$(CC)  $(CFLAGS) $(LDFLAGS) cssutil.o \

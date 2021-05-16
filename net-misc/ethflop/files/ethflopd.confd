@@ -1,0 +1,8 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Network interface, which should be used for serving floppy images
+INTERFACE="lo"
+
+# Storage directory, from where floppy images are being served
+STORAGEDIR="/tmp"

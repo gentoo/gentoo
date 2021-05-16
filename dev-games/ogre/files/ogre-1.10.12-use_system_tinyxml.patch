@@ -1,0 +1,42 @@
+--- a/CMake/Dependencies.cmake	2018-09-04 07:50:49.091120793 +0200
++++ b/CMake/Dependencies.cmake	2018-09-04 07:51:55.429118519 +0200
+@@ -383,6 +383,10 @@
+ find_package(Softimage)
+ macro_log_feature(Softimage_FOUND "Softimage" "Softimage SDK needed for building XSIExporter" FALSE "6.0" "")
+ 
++# Find TinyXML
++find_package(TinyXML)
++macro_log_feature(TINYXML_FOUND "TinyXML" "TinyXML needed for building OgreXMLConverter" FALSE "" "")
++
+ #######################################################################
+ # Tests
+ #######################################################################
+--- /dev/null	2018-09-03 08:18:52.571907158 +0200
++++ b/CMake/Packages/FindTinyXML.cmake	2018-09-04 19:15:06.392129319 +0200
+@@ -0,0 +1,26 @@
++# - Find TinyXML
++# Find the native TinyXML includes and library
++#
++#   TINYXML_FOUND       - True if TinyXML found.
++#   TINYXML_INCLUDE_DIR - where to find tinyxml.h, etc.
++#   TINYXML_LIBRARIES   - List of libraries when using TinyXML.
++#
++
++IF( TINYXML_INCLUDE_DIR )
++    # Already in cache, be silent
++    SET( TinyXML_FIND_QUIETLY TRUE )
++ENDIF( TINYXML_INCLUDE_DIR )
++
++FIND_PATH( TINYXML_INCLUDE_DIR "tinyxml.h"
++           PATH_SUFFIXES "tinyxml" )
++
++FIND_LIBRARY( TINYXML_LIBRARIES
++              NAMES "tinyxml"
++              PATH_SUFFIXES "tinyxml" )
++
++# handle the QUIETLY and REQUIRED arguments and set TINYXML_FOUND to TRUE if
++# all listed variables are TRUE
++INCLUDE( "FindPackageHandleStandardArgs" )
++FIND_PACKAGE_HANDLE_STANDARD_ARGS( "TinyXML" DEFAULT_MSG TINYXML_INCLUDE_DIR TINYXML_LIBRARIES )
++
++MARK_AS_ADVANCED( TINYXML_INCLUDE_DIR TINYXML_LIBRARIES )

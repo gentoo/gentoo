@@ -19,8 +19,8 @@ image, not cause part of it to miss.
 Gentoo-bug: http://bugs.gentoo.org/id=214142
 Reported-by: Reimar Döffinger
 Fixed-by: Reimar Döffinger
---- src/aarender.c.orig	2008-03-18 23:55:32.000000000 +0100
-+++ src/aarender.c	2008-03-18 23:55:50.000000000 +0100
+--- a/src/aarender.c.orig	2008-03-18 23:55:32.000000000 +0100
++++ b/src/aarender.c	2008-03-18 23:55:50.000000000 +0100
 @@ -94,8 +94,8 @@
  	gamma = randomval / 2;
      mval = (c->parameters[c->filltable[255]].p[4]);

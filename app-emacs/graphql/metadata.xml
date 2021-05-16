@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+GraphQL.el provides a generally-applicable domain-specific language
+for creating and executing GraphQL queries against your favorite
+web services.
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="github">vermiculus/graphql.el</remote-id>
+</upstream>
+</pkgmetadata>

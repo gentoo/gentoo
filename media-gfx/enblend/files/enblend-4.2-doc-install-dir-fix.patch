@@ -1,0 +1,66 @@
+* Remove the CMAKE_BUILD_TYPE conditional code, in order to build using CMAKE_BUILD_TYPE=Gentoo
+* Install html files in html subdir of doc dir
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,9 +11,6 @@
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+ 
+ project(enblend)
+-IF(NOT MSVC)
+-  SET(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel" FORCE)
+-ENDIF(NOT MSVC)
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/
+ # is checked
+ # For now, reuse the hugin modules directory
+@@ -130,7 +127,6 @@
+ ENDIF()
+ 
+ IF(CMAKE_COMPILER_IS_GNUCXX)
+-  SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -ffast-math -DNDEBUG -Wall")
+   IF(APPLE AND CMAKE_MAJOR_VERSION EQUAL 2 AND CMAKE_MINOR_VERSION LESS 5)
+     ## Add needed Compiler and Linker flags for OSX
+     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flat_namespace -undefined suppress")
+@@ -154,20 +150,6 @@
+       SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+     ENDIF(CMAKE_CL_64)
+ 
+-    # compile everything for the static C runtime
+-    FOREACH(TYPE C CXX)
+-      # makefiles use blank configuration
+-      FOREACH(CFG "_DEBUG" "_MINSIZEREL" "_RELEASE" "_RELWITHDEBINFO")
+-        #MESSAGE("Replacing CMAKE_${TYPE}_FLAGS${CFG}: ${CMAKE_${TYPE}_FLAGS${CFG}}")
+-        SET(NEW_FLAGS "${CMAKE_${TYPE}_FLAGS${CFG}}")
+-        # fix up static libc flags
+-        STRING(REPLACE "/MD" "/MT" NEW_FLAGS "${NEW_FLAGS}")
+-        # *FORCE* to override whats already placed into the cache
+-        SET(CMAKE_${TYPE}_FLAGS${CFG} "${NEW_FLAGS}" CACHE STRING
+-          "CMAKE_${TYPE}_FLAGS${CFG} (overwritten to ensure static build)" FORCE)
+-        #MESSAGE("New       CMAKE_${TYPE}_FLAGS${CFG}: ${CMAKE_${TYPE}_FLAGS${CFG}}")
+-      ENDFOREACH(CFG)
+-    ENDFOREACH(TYPE)
+     # link only with the static C runtime !! THIS IS A MUST !!
+     SET(NEW_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+     # ensure that the flags are not duplicated on subsequent runs
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -406,7 +406,7 @@
+         "${CMAKE_BINARY_DIR}/doc/enfuse.html"
+         ${ENBLEND_PNGFILES}
+         ${ENFUSE_PNGFILES}
+-    DESTINATION ${DocumentsDirectory}
++    DESTINATION ${DocumentsDirectory}/html
+ )
+ endif()
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -102,7 +102,7 @@
+ endif(OpenMP_CXX_FLAGS AND NOT MSVC)
+ target_link_libraries(enblend ${common_libs} ${additional_libs})
+ target_link_libraries(enfuse ${common_libs} ${additional_libs})
+-install(TARGETS enblend enfuse DESTINATION bin CONFIGURATIONS Release RelWithDebInfo MinSizeRel)
++install(TARGETS enblend enfuse DESTINATION bin)
+ 
+ if(NOT WIN32)
+     # create enblend.1 and enfuse.1

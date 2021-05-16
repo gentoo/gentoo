@@ -1,0 +1,122 @@
+#!/sbin/openrc-run
+
+DESC="RBD Mapping:"
+RBDMAPFILE="/etc/ceph/rbdmap"
+
+extra_started_commands="reload"
+
+depend() {
+	need localmount net
+	before netmount
+}
+
+start() {
+
+	if [ ! -f "${RBDMAPFILE}" ]; then
+		ewarn "$DESC : No ${RBDMAPFILE} found."
+		exit 0
+	fi
+
+	RET=0
+	# Read /etc/ceph/rbdmap to create non-existant mapping
+	while read DEV PARAMS; do
+		case "$DEV" in
+			""|\#*)
+			continue
+			;;
+			*/*)
+			;;
+			*)
+			DEV=rbd/$DEV
+			;;
+		esac
+		ebegin "${DESC} '${DEV}'"
+		newrbd=""
+		MAP_RV=""
+		RET_OP=0
+		OIFS=$IFS
+		IFS=','
+		for PARAM in ${PARAMS}; do
+			CMDPARAMS="${CMDPARAMS} --$(printf '%s\n' "${PARAM}" | tr '=' ' ')"
+		done
+		IFS=$OIFS
+		if [ ! -b /dev/rbd/${DEV} ]; then
+			MAP_RV=$(rbd map ${DEV} ${CMDPARAMS} 2>&1)
+			if [ $? -eq 0 ]; then
+				newrbd="yes"
+			else
+				RET=$((${RET}+$?))
+				RET_OP=1
+			fi
+		fi
+		eend ${RET_OP} "${MAP_RV}"
+
+		if [ "$newrbd" ]; then
+			## Mount new rbd
+			MNT_RV=""
+			mount --fake /dev/rbd/${DEV} >>/dev/null 2>&1 \
+			&& MNT_RV=$(mount -vn /dev/rbd/${DEV} 2>&1)
+			[ -n "${MNT_RV}" ] && einfo "mount: ${MNT_RV}"
+
+			## post-mapping
+			if [ -x "/etc/ceph/rbd.d/${DEV}" ]; then
+				einfo "RBD Running post-map hook '/etc/ceph/rbd.d/${DEV}'"
+				/etc/ceph/rbd.d/${DEV} map "/dev/rbd/${DEV}"
+			fi
+		fi
+	done < ${RBDMAPFILE}
+	eend ${RET}
+}
+
+stop() {
+
+	RET=0
+	## Unmount and unmap all rbd devices
+	if ls /dev/rbd[0-9]* >/dev/null 2>&1; then
+		for DEV in /dev/rbd[0-9]*; do
+			## pre-unmapping
+			for L in $(find /dev/rbd -type l); do
+				LL="${L##/dev/rbd/}"
+				if [ "$(readlink -f $L)" = "${DEV}" ] \
+				&& [ -x "/etc/ceph/rbd.d/${LL}" ]; then
+					einfo "RBD pre-unmap:  '${DEV}' hook '/etc/ceph/rbd.d/${LL}'"
+					/etc/ceph/rbd.d/${LL} unmap "$L"
+					break
+				fi
+			done
+
+			ebegin "Unmapping RBD device: '${DEV}'"
+			UMNT_RV=""
+			UMAP_RV=""
+			RET_OP=0
+			MNT=$(findmnt --mtab --source ${DEV} --noheadings | awk '{print $1'})
+			if [ -n "${MNT}" ]; then
+				einfo "un-mounting '${MNT}'"
+				UMNT_RV=$(umount "${MNT}" 2>&1)
+			fi
+			if mountpoint -q "${MNT}"; then
+				## Un-mounting failed.
+				RET_OP=1
+				RET=$((${RET}+1))
+			else
+				## Un-mapping.
+				UMAP_RV=$(rbd unmap $DEV 2>&1)
+				if [ $? -ne 0 ]; then
+					RET=$((${RET}+$?))
+					RET_OP=1
+				fi
+			fi
+			eend ${RET_OP} "${UMAP_RV}"
+			[ -n "${UMNT_RV}" ] && einfo "${UMNT_RV}"
+		done
+	fi
+	eend ${RET}
+}
+
+reload() {
+	start
+}
+
+status() {
+	rbd showmapped
+}

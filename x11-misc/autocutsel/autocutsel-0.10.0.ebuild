@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=6
 
 DESCRIPTION="Synchronise the two copy/paste buffers mainly used by X applications"
 HOMEPAGE="http://www.nongnu.org/autocutsel/ https://github.com/sigmike/autocutsel"
@@ -10,7 +9,7 @@ SRC_URI="https://github.com/sigmike/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 RDEPEND="
 	x11-libs/libX11
@@ -21,7 +20,5 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
-
-DOCS=( AUTHORS ChangeLog NEWS README TODO )

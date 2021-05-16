@@ -5,6 +5,7 @@
     <email>xemacs@gentoo.org</email>
     <name>Gentoo XEmacs project</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <maintainer status="active">
       <email>emacs@gentoo.org</email>

@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,12 +11,12 @@ SRC_URI="https://github.com/TingPing/hexchat-javascript/archive/${PV}.tar.gz -> 
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples"
 
 RDEPEND="
 	dev-lang/spidermonkey:0
-	>=net-irc/hexchat-2.9.6[plugins]"
+	>=net-irc/hexchat-2.9.6[plugins(+)]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

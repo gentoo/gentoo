@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="Handle all sorts of compressed and encrypted files"
-HOMEPAGE="http://www.emacswiki.org/emacs/CryptPlusPlus"
+HOMEPAGE="https://www.emacswiki.org/emacs/CryptPlusPlus"
 # snapshot from http://cvs.xemacs.org/viewcvs.cgi/XEmacs/packages/xemacs-packages/os-utils/crypt.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.bz2"
 

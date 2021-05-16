@@ -1,5 +1,5 @@
---- build.sh	2005-01-01 19:18:44.290385166 +0000
-+++ build.sh	2005-01-01 19:22:45.846161383 +0000
+--- a/build.sh
++++ b/build.sh
 @@ -44,8 +44,8 @@
  #
  # Try to find wish8.3, tclsh8.3 and openssl

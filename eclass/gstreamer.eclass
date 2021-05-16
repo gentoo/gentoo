@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: gstreamer.eclass
 # @MAINTAINER:
@@ -11,6 +10,7 @@
 # Saleem Abdulrasool <compnerd@gentoo.org>
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Helps building core & split gstreamer plugins.
 # @DESCRIPTION:
 # Eclass to make external gst-plugins emergable on a per-plugin basis
@@ -23,10 +23,10 @@
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
 
-inherit eutils multilib multilib-minimal toolchain-funcs versionator xdg-utils
+inherit eutils ltprune multilib multilib-minimal toolchain-funcs versionator xdg-utils
 
 case "${EAPI:-0}" in
-	5)
+	5|6)
 		;;
 	0|1|2|3|4)
 		die "EAPI=\"${EAPI:-0}\" is not supported anymore"
@@ -95,7 +95,7 @@ RDEPEND="
 "
 DEPEND="
 	>=sys-apps/sed-4
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 "
 
 # Export common multilib phases.
@@ -114,13 +114,6 @@ if [[ ${PN} != ${GST_ORG_MODULE} ]]; then
 else
 	IUSE="nls"
 	DEPEND="${DEPEND} nls? ( >=sys-devel/gettext-0.17 )"
-fi
-
-if [[ ${SLOT} == "0.10" ]]; then
-	RDEPEND="${RDEPEND}
-		abi_x86_32? (
-			!app-emulation/emul-linux-x86-gstplugins[-abi_x86_32(-)]
-		)"
 fi
 
 DEPEND="${DEPEND} ${RDEPEND}"
@@ -146,7 +139,7 @@ gstreamer_get_plugins() {
 }
 
 # @FUNCTION: gstreamer_get_plugin_dir
-# @USAGE: gstreamer_get_plugin_dir [<build_dir>]
+# @USAGE: [build_dir]
 # @INTERNAL
 # @DESCRIPTION:
 # Finds plugin build directory and output it.
@@ -168,10 +161,10 @@ gstreamer_get_plugin_dir() {
 }
 
 # @FUNCTION: gstreamer_system_link
-# @USAGE: gstreamer_system_link gst-libs/gst/audio:gstreamer-audio [...]
+# @USAGE: <gst-libs/gst/audio:gstreamer-audio> [...]
 # @DESCRIPTION:
 # Walks through makefiles in order to make sure build will link against system
-# librairies.
+# libraries.
 # Takes a list of path fragments and corresponding pkgconfig libraries
 # separated by colon (:). Will replace the path fragment by the output of
 # pkgconfig.

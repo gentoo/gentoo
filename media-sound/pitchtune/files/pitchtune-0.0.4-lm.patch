@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -17,6 +17,7 @@
+ PKG_CHECK_MODULES(GTK, [$pkg_modules])
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
++AC_SEARCH_LIBS(ceil, m)
+ 
+ 
+ dnl From glade-2 generated configure.in

@@ -1,0 +1,13 @@
+diff --git a/shl/shl.c b/shl/shl.c
+index 6f5c2df..30d296c 100644
+--- a/shl/shl.c
++++ b/shl/shl.c
+@@ -86,7 +86,7 @@ extern int	sysv3;
+ #include	<libgen.h>
+ #include	<limits.h>
+ #include	<stdarg.h>
+-#if !defined (__dietlibc__) && !defined (__UCLIBC__)
++#if !defined (__dietlibc__) && !defined (__UCLIBC__) && !defined(__linux__)
+ #include	<stropts.h>
+ #endif
+ #include	<poll.h>

@@ -1,0 +1,12 @@
+diff --git a/configure.ac b/configure.ac
+index 8dc1878..3967624 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -25,6 +25,7 @@ AM_PROG_CC_C_O
+ AC_PROG_CXX
+ AC_PROG_RANLIB
+ gl_INIT
++AM_PROG_AR
+ 
+ dnl Does the system have a working <getopt.h> include and
+ dnl getopt_long() function?

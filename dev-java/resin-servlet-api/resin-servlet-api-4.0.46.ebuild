@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -14,7 +13,7 @@ SRC_URI="http://www.caucho.com/download/resin-${PV}-src.zip"
 
 LICENSE="GPL-2"
 SLOT="3.1"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 IUSE=""
 

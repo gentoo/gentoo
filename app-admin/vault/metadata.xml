@@ -5,6 +5,9 @@
     <email>zmedico@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">mitchellh/iochan</remote-id>
+    <remote-id type="github">hashicorp/vault</remote-id>
   </upstream>
+  <use>
+    <flag name="webui">Enable the Web UI</flag>
+  </use>
 </pkgmetadata>

@@ -1,24 +1,26 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 CHOST="avr"
 CTARGET="avr"
 
-inherit flag-o-matic eutils
+inherit flag-o-matic epatch
 
 DESCRIPTION="C library for Atmel AVR microcontrollers"
 HOMEPAGE="http://www.nongnu.org/avr-libc/"
-SRC_URI="http://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
-	http://savannah.nongnu.org/download/avr-libc/${PN}-manpages-${PV}.tar.bz2
-	doc? ( http://savannah.nongnu.org/download/avr-libc/${PN}-user-manual-${PV}.tar.bz2 )"
+SRC_URI="https://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
+	https://savannah.nongnu.org/download/avr-libc/${PN}-manpages-${PV}.tar.bz2
+	doc? ( https://savannah.nongnu.org/download/avr-libc/${PN}-user-manual-${PV}.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="doc crosscompile_opts_headers-only"
+# 'amd64' is a blessed placeholder for crossdev. It could
+# be any other arch. See bug #620316#c5
+# Don't add more arches to KEYWORDS.
+KEYWORDS="amd64"
+IUSE="doc headers-only"
 
 DEPEND=">=sys-devel/crossdev-0.9.1"
 [[ ${CATEGORY/cross-} != ${CATEGORY} ]] \

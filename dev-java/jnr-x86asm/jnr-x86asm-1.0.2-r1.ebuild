@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="com.github.jnr:jnr-x86asm:1.0.2"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.6"

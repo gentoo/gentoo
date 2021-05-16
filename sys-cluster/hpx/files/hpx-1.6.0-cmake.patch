@@ -1,0 +1,32 @@
+From 240f55e4bc57215e26fc0b0ae0ac0eca2eb93d65 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Sat, 19 Sep 2020 13:19:42 +0200
+Subject: [PATCH 2/3] tests: Remove unused cmake options
+
+This fixes the following warnings:
+
+| * One or more CMake variables were not used by the project:
+| *   BOOST_ROOT
+| *   SETUP_TYPE
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ tests/unit/build/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/unit/build/CMakeLists.txt b/tests/unit/build/CMakeLists.txt
+index 3798549da0a8..7d3bfea1044e 100644
+--- a/tests/unit/build/CMakeLists.txt
++++ b/tests/unit/build/CMakeLists.txt
+@@ -54,7 +54,7 @@ function(create_cmake_test name using_install_dir hpx_dir setup_type test_dir)
+     ${name}.make_configure
+     COMMAND
+       "${CMAKE_COMMAND}" -E chdir "${build_dir}" "${CMAKE_COMMAND}" ${test_dir}
+-      -DHPX_DIR=${hpx_dir} -DBOOST_ROOT=${BOOST_ROOT}
++      -DHPX_DIR=${hpx_dir}
+       ${ADDITIONAL_CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS_SAFE}
+       -DCMAKE_BUILD_TYPE=$<CONFIGURATION>
+     VERBATIM
+-- 
+2.30.1
+

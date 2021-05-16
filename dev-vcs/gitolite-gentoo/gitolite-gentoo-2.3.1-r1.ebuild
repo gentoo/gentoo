@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils perl-module user
+inherit perl-module user
 
 DESCRIPTION="Highly flexible server for git directory version tracker, Gentoo fork"
 HOMEPAGE="https://cgit.gentoo.org/proj/gitolite-gentoo.git"
@@ -40,7 +39,7 @@ src_install() {
 	local gl_bin="${D}/usr/bin"
 	gl_bin=${gl_bin/\/\//\/}
 
-	dodir /usr/share/gitolite/{conf,hooks} /usr/bin || die
+	dodir /usr/share/gitolite/{conf,hooks} /usr/bin
 
 	export PATH="${gl_bin}:${PATH}"
 	./src/gl-system-install ${gl_bin} \
@@ -50,13 +49,13 @@ src_install() {
 
 	rm "${D}"/usr/bin/*.pm
 	insinto "${VENDOR_LIB}"
-	doins src/*.pm || die
+	doins src/*.pm
 
 	dodoc README.mkd doc/*
 
 	if use contrib; then
 		insinto /usr/share/doc/${PF}
-		doins -r contrib/ || die
+		doins -r contrib/
 	fi
 
 	keepdir /var/lib/gitolite

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>igor@itesten.com</email>
     <name>Igor Testen</name>
   </maintainer>
@@ -10,17 +10,13 @@
     <name>Aaron W. Swenson</name>
   </maintainer>
   <maintainer type="person">
-    <email>brendan@horan.hk</email>
-    <name>Brendan Horan</name>
-    <description>Proxy maintainer, assign bugs</description>
+    <email>rich0@gentoo.org</email>
+    <name>Rich Freeman</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
-  <longdescription>
-    Command line client for Amazon S3.
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">s3tools</remote-id>
   </upstream>

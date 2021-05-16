@@ -1,41 +1,42 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
-inherit cmake-utils git-r3
+EAPI=7
+
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt-based multitab terminal emulator"
-HOMEPAGE="https://github.com/lxde/qterminal"
-EGIT_REPO_URI="https://github.com/lxde/qterminal.git"
+HOMEPAGE="https://lxqt.github.io/"
 
-LICENSE="GPL-2+"
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
+else
+	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+fi
+
+LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE="qt5"
 
-RDEPEND="
-	!qt5? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		x11-libs/libqxt
-		~x11-libs/qtermwidget-${PV}[qt4]
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		~x11-libs/qtermwidget-${PV}[qt5]
-	)
+BDEPEND=">=dev-util/lxqt-build-tools-0.9.0"
+DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
+	x11-libs/libX11
+	~x11-libs/qtermwidget-${PV}
 "
-DEPEND="${RDEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )
-"
+RDEPEND="${DEPEND}"
 
-src_configure() {
-	local mycmakeargs=(
-		-DUSE_QT5=$(usex qt5)
-		-DUSE_SYSTEM_QXT=$(usex !qt5)
-	)
-	cmake-utils_src_configure
+PATCHES=( "${FILESDIR}/${PN}-0.16.1-appdata.patch" )
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

@@ -1,0 +1,63 @@
+Fix compilation with -fno-common (default for GCC 10)
+
+Signed-off-by: Marek Behún kabel@blackhole.sk>
+---
+diff --git a/lib/sstrlib/sstr_private.h b/lib/sstrlib/sstr_private.h
+--- a/lib/sstrlib/sstr_private.h
++++ b/lib/sstrlib/sstr_private.h
+@@ -32,6 +32,6 @@ struct _sstr {
+ };
+ 
+ int sstr_alloc_space(sstr * p, int len);
+-void (*on_error) (void);
++extern void (*on_error) (void);
+ 
+ #endif /*SSTR_PRIVATE_H */
+diff --git a/src/common.h b/src/common.h
+--- a/src/common.h
++++ b/src/common.h
+@@ -184,7 +184,7 @@ typedef struct _session_info {
+ /*******************
+ **Global Variables**
+ ********************/
+-session_info *info;
++extern session_info *info;
+ extern pid_t cmgrpid, tdatapid;
+ 
+ #endif /* COMMON_H */
+diff --git a/src/ftp-cmds.c b/src/ftp-cmds.c
+--- a/src/ftp-cmds.c
++++ b/src/ftp-cmds.c
+@@ -38,6 +38,8 @@ void xfer_command(sstr * cmd, sstr * arg
+ void cwd_command(sstr * cmd, sstr * arg);
+ void pasv_reply(sstr * msg);
+ 
++struct cmd_struct *ftp_cmds;
++
+ void ftpcmds_init()
+ {
+ 	static struct cmd_struct list[] = {	/*Pinched in part SUSE */
+diff --git a/src/ftp-cmds.h b/src/ftp-cmds.h
+--- a/src/ftp-cmds.h
++++ b/src/ftp-cmds.h
+@@ -33,7 +33,7 @@ struct cmd_struct {
+ 	void (*cmd) (sstr * cmd, sstr * arg);
+ };
+ 
+-struct cmd_struct *ftp_cmds;
++extern struct cmd_struct *ftp_cmds;
+ void user_munge(sstr * cmd, sstr * arg);
+ 
+ 
+diff --git a/src/main.c b/src/main.c
+--- a/src/main.c
++++ b/src/main.c
+@@ -62,6 +62,8 @@ static struct client_info {
+ void add_client(pid_t, struct sockaddr_in client);
+ void rm_client(pid_t pid);
+ 
++session_info *info;
++
+ #ifdef ENABLE_CHANGEPROC
+ int main(int argc, char *argv[], char *envp[])
+ #else

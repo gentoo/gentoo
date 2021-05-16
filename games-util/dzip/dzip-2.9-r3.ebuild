@@ -1,31 +1,38 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="compressor/uncompressor for demo recordings from id's Quake"
 HOMEPAGE="http://speeddemosarchive.com/dzip/"
 SRC_URI="http://speeddemosarchive.com/dzip/dz${PV/./}src.zip"
+S="${WORKDIR}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
-DEPEND="app-arch/unzip"
-RDEPEND=""
+KEYWORDS="~amd64 ~x86"
 
-S="${WORKDIR}"
+BDEPEND="app-arch/unzip"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-system-zlib-r2.patch
+	"${FILESDIR}"/${P}-scrub-names.patch #93079
+	"${FILESDIR}"/dzip-amd64.diff
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-system-zlib-r2.patch
-	epatch "${FILESDIR}"/${P}-scrub-names.patch #93079
-	epatch "${FILESDIR}/dzip-amd64.diff"
-	mv -f Makefile{.linux,}
+	default
+
+	mv -f Makefile{.linux,} || die
 }
 
-src_install () {
+src_configure() {
+	tc-export CC
+}
+
+src_install() {
 	dobin dzip
 	dodoc Readme
 }

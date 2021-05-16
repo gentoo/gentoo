@@ -1,16 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 DESCRIPTION="Manages various PaX related program header flags for Elf32, Elf64, binaries"
-SRC_URI="http://pax.grsecurity.net/${P}.tar.gz"
-HOMEPAGE="http://pax.grsecurity.net"
+HOMEPAGE="https://pax.grsecurity.net"
+SRC_URI="https://pax.grsecurity.net/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
@@ -32,7 +31,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${ED}" install
 	dodoc README ChangeLog
 }

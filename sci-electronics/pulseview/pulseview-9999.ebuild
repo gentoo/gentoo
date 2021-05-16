@@ -1,58 +1,74 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=( python3_{3,4} )
-inherit eutils cmake-utils python-single-r1
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-if [[ ${PV} == "9999" ]]; then
+inherit cmake python-single-r1 xdg-utils
+
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3
 else
-	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
+	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Qt based logic analyzer GUI for sigrok"
-HOMEPAGE="http://sigrok.org/wiki/PulseView"
+HOMEPAGE="https://sigrok.org/wiki/PulseView"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+decode qt4 qt5 static"
-REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} ) ^^ ( qt4 qt5 )"
+IUSE="+decode static"
+REQUIRED_USE="decode? ( ${PYTHON_REQUIRED_USE} )"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 RDEPEND="
-	dev-libs/boost:0=
-	dev-libs/glib:2
-	>=sci-libs/libsigrok-0.4.0[cxx]
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtsvg:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtsvg:5
-	)
+	>=dev-cpp/glibmm-2.28.0:2
+	>=dev-libs/boost-1.55:=
+	>=dev-libs/glib-2.28.0:2
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	>=sci-libs/libsigrok-0.6.0:=[cxx]
 	decode? (
-		>=sci-libs/libsigrokdecode-0.4.0
 		${PYTHON_DEPS}
-	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+		>=sci-libs/libsigrokdecode-0.6.0:=[${PYTHON_SINGLE_USEDEP}]
+	)
+"
+DEPEND="${RDEPEND}"
 
 DOCS=( HACKING NEWS README )
+
+pkg_setup() {
+	use decode && python_setup
+}
+
+src_prepare() {
+	cmake_src_prepare
+	cmake_comment_add_subdirectory manual
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_WERROR=TRUE
-		$(cmake-utils_use_enable decode DECODE)
-		$(cmake-utils_use_enable static STATIC_PKGDEPS_LIBS)
-		$(cmake-utils_use qt4 FORCE_QT4)
+		-DENABLE_DECODE=$(usex decode)
+		-DSTATIC_PKGDEPS_LIBS=$(usex static)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
 }

@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/247067
 
---- m4/ACX_PTHREAD.m4
-+++ m4/ACX_PTHREAD.m4
+--- a/m4/ACX_PTHREAD.m4
++++ b/m4/ACX_PTHREAD.m4
 @@ -266,6 +266,117 @@
          else
            PTHREAD_CC=$CC

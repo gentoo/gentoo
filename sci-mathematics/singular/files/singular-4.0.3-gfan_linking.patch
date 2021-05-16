@@ -1,0 +1,13 @@
+diff --git a/gfanlib/Makefile.am b/gfanlib/Makefile.am
+index 2039af0..a1b7dce 100644
+--- a/gfanlib/Makefile.am
++++ b/gfanlib/Makefile.am
+@@ -20,6 +20,8 @@ libgfan_la_SOURCES = $(SOURCES)
+ libgfan_includedir =$(includedir)/gfanlib
+ libgfan_include_HEADERS = config.h gfanlib_mixedvolume.h gfanlib_polymakefile.h gfanlib_symmetry.h gfanlib_vector.h gfanlib_z.h _config.h  gfanlib.h gfanlib_paralleltraverser.h gfanlib_q.h  gfanlib_traversal.h gfanlib_zcone.h gfanlib_circuittableint.h gfanlib_matrix.h gfanlib_polyhedralfan.h gfanlib_symmetriccomplex.h gfanlib_tropicalhomotopy.h gfanlib_zfan.h
+ 
++libgfan_la_LIBADD = $(CDDGMPLDFLAGS)
++
+ DISTCLEANFILES =  config.h
+ 
+ moduledir = $(libexecdir)/singular/MOD

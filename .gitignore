@@ -1,5 +1,6 @@
 /.ebuild.x
 /distfiles/
+/eclass/*.5
 /local/
 /packages/
 /profiles/use.local.desc

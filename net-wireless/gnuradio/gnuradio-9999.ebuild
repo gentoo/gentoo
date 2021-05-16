@@ -1,100 +1,111 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils fdo-mime gnome2-utils python-single-r1 eutils
+inherit cmake python-single-r1 virtualx xdg-utils desktop
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
-HOMEPAGE="http://gnuradio.org/"
+HOMEPAGE="https://www.gnuradio.org/"
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="http://gnuradio.org/git/gnuradio.git"
+if [[ ${PV} =~ "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/gnuradio/gnuradio.git"
+	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
-	KEYWORDS=""
 else
-	SRC_URI="http://gnuradio.org/releases/gnuradio/${P}.tar.gz"
+	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
-IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt4 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
+IUSE="+audio +alsa +analog +digital channels doc dtv examples fec +filter grc jack modtool oss performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet zeromq"
+
+#RESTRICT="!test? ( test )"
+#Tests are known broken right now
+RESTRICT="test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-		audio? ( || ( alsa oss jack portaudio ) )
-		alsa? ( audio )
-		oss? ( audio )
-		jack? ( audio )
-		portaudio? ( audio )
-		analog? ( filter )
-		digital? ( filter analog )
-		dtv? ( fec )
-		pager? ( filter analog )
-		qt4? ( filter )
-		uhd? ( filter analog )
-		fcd? ( || ( alsa oss ) )
-		wavelet? ( analog )
-		wxwidgets? ( filter analog )"
+	audio? ( || ( alsa oss jack portaudio ) )
+	alsa? ( audio )
+	jack? ( audio )
+	oss? ( audio )
+	portaudio? ( audio )
+	analog? ( filter )
+	channels? ( filter analog qt5 )
+	digital? ( filter analog )
+	dtv? ( filter analog fec )
+	modtool? ( utils )
+	qt5? ( filter )
+	trellis? ( analog digital )
+	uhd? ( filter analog )
+	vocoder? ( filter analog )
+	wavelet? ( analog )
+"
 
-# bug #348206
-# comedi? ( >=sci-electronics/comedilib-0.8 )
-# boost-1.52.0 is blacklisted, bug #461578, upstream #513, boost #7669
 RDEPEND="${PYTHON_DEPS}
-	>=dev-lang/orc-0.4.12
-	dev-libs/boost:0=[${PYTHON_USEDEP}]
-	!<=dev-libs/boost-1.52.0-r6:0/1.52
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-libs/boost:0=[python,${PYTHON_USEDEP}]')
+	dev-libs/log4cpp
+	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	sci-libs/fftw:3.0=
-	alsa? (
-		media-libs/alsa-lib[${PYTHON_USEDEP}]
+	sci-libs/mpir
+	sci-libs/volk
+	alsa? ( media-libs/alsa-lib:= )
+	fec? (
+		sci-libs/gsl
+		dev-python/scipy
 	)
-	fcd? ( virtual/libusb:1 )
-	filter? ( sci-libs/scipy )
+	filter? ( dev-python/scipy )
 	grc? (
-		dev-python/cheetah[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/mako[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]')
+		x11-libs/gtk+:3[introspection]
+		x11-libs/pango[introspection]
 	)
-	jack? (
-		media-sound/jack-audio-connection-kit
-	)
-	log? ( dev-libs/log4cpp )
-	portaudio? (
-		>=media-libs/portaudio-19_pre
-	)
-	qt4? (
-		>=dev-python/PyQt4-4.4[X,opengl,${PYTHON_USEDEP}]
-		>=dev-python/pyqwt-5.2:5[${PYTHON_USEDEP}]
-		>=dev-qt/qtcore-4.4:4
-		>=dev-qt/qtgui-4.4:4
-		x11-libs/qwt:6
+	jack? ( virtual/jack )
+	portaudio? ( >=media-libs/portaudio-19_pre )
+	qt5? (
+		$(python_gen_cond_dep 'dev-python/PyQt5[opengl,${PYTHON_USEDEP}]')
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		x11-libs/qwt:6[qt5(+)]
+		dev-qt/qtwidgets:5
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
-	uhd? ( >=net-wireless/uhd-3.4.3-r1:=[${PYTHON_USEDEP}] )
-	utils? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	vocoder? ( media-sound/gsm )
-	wavelet? (
-		>=sci-libs/gsl-1.10
+	trellis? ( dev-python/scipy )
+	uhd? (
+		$(python_gen_cond_dep '>=net-wireless/uhd-3.9.6:=[${PYTHON_SINGLE_USEDEP}]')
 	)
-	wxwidgets? (
-		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/wxpython:2.8[${PYTHON_USEDEP}]
+	utils? (
+		$(python_gen_cond_dep 'dev-python/click[${PYTHON_USEDEP}]
+		dev-python/click-plugins[${PYTHON_USEDEP}]
+		dev-python/mako[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]')
 	)
+	vocoder? (
+		media-sound/gsm
+		>=media-libs/codec2-0.8.1
+	)
+	wavelet? ( sci-libs/gsl
+			dev-libs/gmp
+			sci-libs/lapack
+			)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
-	"
+"
 
+#That's right, it can't build if gnuradio 3.7 is installed
+#Both due to build failure, and then file collision due to bundled volk
 DEPEND="${RDEPEND}
+	!<net-wireless/gnuradio-3.8
+	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
-	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
-		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	grc? ( x11-misc/xdg-utils )
 	oss? ( virtual/os-headers )
@@ -103,65 +114,55 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	gnome2_environment_reset #534582
+	xdg_environment_reset #534582
 
-	# Useless UI element would require qt3support, bug #365019
-	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
-	epatch_user
+	use !alsa && sed -i 's#version.h#version-nonexistent.h#' cmake/Modules/FindALSA.cmake
+	use !jack && sed -i 's#jack.h#jack-nonexistent.h#' cmake/Modules/FindJACK.cmake
+	use !oss && sed -i 's#soundcard.h#oss-nonexistent.h#g' cmake/Modules/FindOSS.cmake
+	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistent.h#g' cmake/Modules/FindPORTAUDIO.cmake
+
+	cmake_src_prepare
 }
 
 src_configure() {
-	# SYSCONFDIR/GR_PREFSDIR default to install below CMAKE_INSTALL_PREFIX
-	#audio provider is still automagic
-	#zeromq missing deps isn't fatal
 	mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
+		-DENABLE_VOLK=OFF
+		-DENABLE_INTERNAL_VOLK=OFF
 		-DENABLE_GNURADIO_RUNTIME=ON
-		-DENABLE_VOLK=ON
 		-DENABLE_PYTHON=ON
 		-DENABLE_GR_BLOCKS=ON
 		-DENABLE_GR_FFT=ON
 		-DENABLE_GR_AUDIO=ON
-		$(cmake-utils_use_enable alsa GR_AUDIO_ALSA) \
-		$(cmake-utils_use_enable analog GR_ANALOG) \
-		$(cmake-utils_use_enable atsc GR_ATSC) \
-		$(cmake-utils_use_enable channels GR_CHANNELS) \
-		$(cmake-utils_use_enable digital GR_DIGITAL) \
-		$(cmake-utils_use_enable doc DOXYGEN) \
-		$(cmake-utils_use_enable doc SPHINX) \
-		$(cmake-utils_use_enable dtv GR_DTV) \
-		$(cmake-utils_use_enable fcd GR_FCD) \
-		$(cmake-utils_use_enable fec GR_FEC) \
-		$(cmake-utils_use_enable filter GR_FILTER) \
-		$(cmake-utils_use_enable grc GRC) \
-		$(cmake-utils_use_enable jack GR_AUDIO_JACK) \
-		$(cmake-utils_use_enable log GR_LOG) \
-		$(cmake-utils_use_enable noaa GR_NOAA) \
-		$(cmake-utils_use_enable oss GR_AUDIO_OSS) \
-		$(cmake-utils_use_enable pager GR_PAGER) \
-		$(cmake-utils_use_enable performance-counters ENABLE_PERFORMANCE_COUNTERS) \
-		$(cmake-utils_use_enable portaudio GR_AUDIO_PORTAUDIO) \
-		$(cmake-utils_use_enable test TESTING) \
-		$(cmake-utils_use_enable trellis GR_TRELLIS) \
-		$(cmake-utils_use_enable uhd GR_UHD) \
-		$(cmake-utils_use_enable utils GR_UTILS) \
-		$(cmake-utils_use_enable vocoder GR_VOCODER) \
-		$(cmake-utils_use_enable wavelet GR_WAVELET) \
-		$(cmake-utils_use_enable wxwidgets GR_WXGUI) \
-		$(cmake-utils_use_enable qt4 GR_QTGUI) \
-		$(cmake-utils_use_enable sdl GR_VIDEO_SDL) \
-		$(cmake-utils_use_enable zeromq GR_ZEROMQ) \
-		-DENABLE_GR_CORE=ON \
-		-DSYSCONFDIR="${EPREFIX}"/etc \
+		-DENABLE_GR_ANALOG="$(usex analog)"
+		-DENABLE_GR_CHANNELS="$(usex channels)"
+		-DENABLE_GR_DIGITAL="$(usex digital)"
+		-DENABLE_DOXYGEN="$(usex doc)"
+		-DENABLE_GR_DTV="$(usex dtv)"
+		-DENABLE_GR_FEC="$(usex fec)"
+		-DENABLE_GR_FILTER="$(usex filter)"
+		-DENABLE_GRC="$(usex grc)"
+		-DENABLE_GR_MODTOOL="$(usex modtool)"
+		-DENABLE_PERFORMANCE_COUNTERS="$(usex performance-counters)"
+		-DENABLE_TESTING="$(usex test)"
+		-DENABLE_GR_TRELLIS="$(usex trellis)"
+		-DENABLE_GR_UHD="$(usex uhd)"
+		-DENABLE_GR_UTILS="$(usex utils)"
+		-DENABLE_GR_VOCODER="$(usex vocoder)"
+		-DENABLE_GR_WAVELET="$(usex wavelet)"
+		-DENABLE_GR_QTGUI="$(usex qt5)"
+		-DENABLE_GR_VIDEO_SDL="$(usex sdl)"
+		-DENABLE_GR_ZEROMQ="$(usex zeromq)"
+		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DGR_PYTHON_DIR="$(python_get_sitedir)"
 		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
-	use vocoder && mycmakeargs+=( -DGR_USE_SYSTEM_LIBGSM=TRUE )
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples ; then
 		dodir /usr/share/doc/${PF}/
@@ -177,13 +178,13 @@ src_install() {
 		rm -rf "${ED}"/usr/share/doc/${PF}/xml || die
 	fi
 
-	# We install the mimetypes to the correct locations from the ebuild
+	# Remove duplicated icons, MIME and desktop files and installation script
 	rm -rf "${ED}"/usr/share/${PN}/grc/freedesktop || die
 	rm -f "${ED}"/usr/libexec/${PN}/grc_setup_freedesktop || die
 
 	# Install icons, menu items and mime-types for GRC
 	if use grc ; then
-		local fd_path="${S}/grc/freedesktop"
+		local fd_path="${S}/grc/scripts/freedesktop"
 		insinto /usr/share/mime/packages
 		doins "${fd_path}/${PN}-grc.xml"
 
@@ -192,46 +193,27 @@ src_install() {
 	fi
 
 	python_fix_shebang "${ED}"
+	# Remove incorrectly byte-compiled Python files and replace
+	find "${ED}"/usr/lib -name "*.py[co]" -exec rm {} \; || die
+	python_optimize
 }
 
-src_test()
-{
-	ctest -E qtgui
+src_test() {
+	virtx cmake_src_test
 }
 
-pkg_postinst()
-{
-	local GRC_ICON_SIZES="32 48 64 128 256"
-
+pkg_postinst() {
 	if use grc ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
-		for size in ${GRC_ICON_SIZES} ; do
-			xdg-icon-resource install --noupdate --context mimetypes --size ${size} \
-				"${EROOT}/usr/share/pixmaps/grc-icon-${size}.png" application-gnuradio-grc \
-				|| die "icon resource installation failed"
-			xdg-icon-resource install --noupdate --context apps --size ${size} \
-				"${EROOT}/usr/share/pixmaps/grc-icon-${size}.png" gnuradio-grc \
-				|| die "icon resource installation failed"
-		done
-		xdg-icon-resource forceupdate
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+		xdg_mimeinfo_database_update
 	fi
 }
 
-pkg_postrm()
-{
-	local GRC_ICON_SIZES="32 48 64 128 256"
-
+pkg_postrm() {
 	if use grc ; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
-		for size in ${GRC_ICON_SIZES} ; do
-			xdg-icon-resource uninstall --noupdate --context mimetypes --size ${size} \
-				application-gnuradio-grc || ewarn "icon uninstall failed"
-			xdg-icon-resource uninstall --noupdate --context apps --size ${size} \
-				gnuradio-grc || ewarn "icon uninstall failed"
-
-		done
-		xdg-icon-resource forceupdate
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+		xdg_mimeinfo_database_update
 	fi
 }

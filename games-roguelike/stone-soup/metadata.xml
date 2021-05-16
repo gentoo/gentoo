@@ -2,21 +2,19 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
+		<email>stasibear@gentoo.org</email>
+		<name>Erik Mackdanz</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<doc lang="en">http://crawl.develz.org/wordpress/documentation</doc>
-		<bugs-to>https://crawl.develz.org/mantis/main_page.php</bugs-to>
+		<doc lang="en">https://crawl.develz.org</doc>
+		<bugs-to>https://crawl.develz.org/mantis</bugs-to>
 		<remote-id type="sourceforge">crawl-ref</remote-id>
 	</upstream>
 	<use>
-		<flag name="luajit">Use <pkg>dev-lang/luajit</pkg> as
-			scripting backend instead of <pkg>dev-lang/lua</pkg>.</flag>
 		<flag name="tiles">Enable for graphical (tiled) build.
 			(can be enabled on top of ncurses)
 		</flag>

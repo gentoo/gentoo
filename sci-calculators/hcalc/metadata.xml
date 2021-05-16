@@ -5,9 +5,6 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription>
-  Small X hexadecimal calculator
-</longdescription>
   <upstream>
     <remote-id type="github">jlec/hcalc</remote-id>
   </upstream>

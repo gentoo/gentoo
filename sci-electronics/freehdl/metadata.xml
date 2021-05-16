@@ -18,4 +18,7 @@
    * Works with Linux. If others want to port it to other platforms they may,
      but it is not the goal of this project.
   </longdescription>
+  <upstream>
+    <remote-id type="sourceforge">qucs</remote-id>
+  </upstream>
 </pkgmetadata>

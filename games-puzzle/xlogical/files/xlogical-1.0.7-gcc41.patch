@@ -1,5 +1,5 @@
---- properties.h.old	2007-01-11 17:33:45.000000000 +0100
-+++ properties.h	2007-01-11 17:34:32.000000000 +0100
+--- a/properties.h
++++ b/properties.h
 @@ -33,9 +33,7 @@
  #include <map>
  #include <string>
@@ -10,8 +10,8 @@
  
  #include "defs.h"
  
---- anim.h.old	2007-01-11 17:36:20.000000000 +0100
-+++ anim.h	2007-01-11 17:36:37.000000000 +0100
+--- a/anim.h
++++ b/anim.h
 @@ -27,9 +27,7 @@
  // Language Includes
  #include <list>
@@ -22,8 +22,8 @@
  
  // Application Includes
  #include "graph.h"
---- exception.h.old	2007-01-11 17:37:37.000000000 +0100
-+++ exception.h	2007-01-11 17:38:21.000000000 +0100
+--- a/exception.h
++++ b/exception.h
 @@ -27,10 +27,9 @@
  
  // Language Includes
@@ -36,8 +36,8 @@
  
  #define CatchEx(aEx)		catch( CXLException aEx )
  #define ThrowEx(aError)		throw CXLException(aError,__FILE__,__LINE__)
---- gamelogic.cpp.old	2007-01-11 17:38:52.000000000 +0100
-+++ gamelogic.cpp	2007-01-11 17:39:12.000000000 +0100
+--- a/gamelogic.cpp
++++ b/gamelogic.cpp
 @@ -154,7 +154,7 @@
  		levelFile = NULL;
  	}

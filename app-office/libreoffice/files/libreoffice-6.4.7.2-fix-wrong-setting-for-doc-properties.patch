@@ -1,0 +1,75 @@
+From 188ddcd482150b5fdeb44d97e57831e3e27b3f5b Mon Sep 17 00:00:00 2001
+From: Justin Luth <justin_luth@sil.org>
+Date: Mon, 28 Sep 2020 20:21:52 +0300
+Subject: tdf#136983 partial revert NFC ww8 cleanup: remove unused variables
+
+This is a partial revert of LO 6.2
+commit 2ec0cf500222aef55d02df80154b47fbb92970c9
+
+I can't think of any excuse for how I possibly missed that
+xDocProps was being defined/used outside of this clause.
+Just plain stupid and blind.
+
+The good news is that the create and modified date still
+seem to be getting saved somehow/somewhere. So it isn't
+the disaster that it looks like it could have been.
+
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/103565
+Tested-by: Jenkins
+Reviewed-by: Justin Luth <justin_luth@sil.org>
+(cherry picked from commit 1086654d6e8cc22f1f99195668db3f305437e570)
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/104495
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+(cherry picked from commit 19b8ded3ae18dd4070a3e21d7b980782a27e5547)
+
+Change-Id: I72ef56fa50b9e92e4ce687b132b1919cfae6c1f6
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/104497
+Tested-by: Jenkins
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+---
+ sw/qa/extras/ww8export/ww8export3.cxx | 5 +++++
+ sw/source/filter/ww8/wrtww8.cxx       | 6 +++++-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/sw/qa/extras/ww8export/ww8export3.cxx b/sw/qa/extras/ww8export/ww8export3.cxx
+index 764ae66a20fa..9c83b6f62fa9 100644
+--- a/sw/qa/extras/ww8export/ww8export3.cxx
++++ b/sw/qa/extras/ww8export/ww8export3.cxx
+@@ -14,6 +14,7 @@
+ #include <com/sun/star/container/XIndexAccess.hpp>
+ #include <com/sun/star/drawing/FillStyle.hpp>
+ #include <com/sun/star/drawing/LineDash.hpp>
++#include <com/sun/star/document/XDocumentPropertiesSupplier.hpp>
+ #include <com/sun/star/graphic/XGraphic.hpp>
+ #include <com/sun/star/text/XFormField.hpp>
+ #include <com/sun/star/text/XTextTable.hpp>
+@@ -49,6 +50,10 @@ DECLARE_WW8EXPORT_TEST(testTdf37778_readonlySection, "tdf37778_readonlySection.d
+     // tdf#127862: page fill color (in this case white) was lost
+     uno::Reference<beans::XPropertySet> xStyle(getStyles("PageStyles")->getByName("Standard"), uno::UNO_QUERY);
+     CPPUNIT_ASSERT(drawing::FillStyle_NONE != getProperty<drawing::FillStyle>(xStyle, "FillStyle"));
++
++    // tdf#136983
++    uno::Reference<document::XDocumentPropertiesSupplier> xDPS(mxComponent, uno::UNO_QUERY);
++    CPPUNIT_ASSERT_EQUAL_MESSAGE("Last printed date", sal_Int16(2009), xDPS->getDocumentProperties()->getPrintDate().Year);
+ }
+ 
+ DECLARE_WW8EXPORT_TEST(testTdf122429_header, "tdf122429_header.doc")
+diff --git a/sw/source/filter/ww8/wrtww8.cxx b/sw/source/filter/ww8/wrtww8.cxx
+index e908cab35162..8d4add7b34bf 100644
+--- a/sw/source/filter/ww8/wrtww8.cxx
++++ b/sw/source/filter/ww8/wrtww8.cxx
+@@ -501,7 +501,11 @@ static void WriteDop( WW8Export& rWrt )
+     uno::Reference<beans::XPropertySet> xProps;
+     if ( pDocShell )
+     {
+-        xProps.set(pDocShell->GetModel(), uno::UNO_QUERY);
++        uno::Reference<lang::XComponent> xModelComp(pDocShell->GetModel(), uno::UNO_QUERY);
++        xProps.set(xModelComp, uno::UNO_QUERY);
++        uno::Reference<document::XDocumentPropertiesSupplier> xDPS(xModelComp, uno::UNO_QUERY_THROW);
++        xDocProps = xDPS->getDocumentProperties();
++        OSL_ENSURE(xDocProps.is(), "DocumentProperties is null");
+ 
+         rDop.lKeyProtDoc = pDocShell->GetModifyPasswordHash();
+     }
+-- 
+cgit v1.2.1

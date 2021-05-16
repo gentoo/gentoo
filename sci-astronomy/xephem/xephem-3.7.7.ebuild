@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Interactive tool for astronomical ephemeris and sky simulation"
-HOMEPAGE="http://www.clearskyinstitute.com/xephem"
+HOMEPAGE="https://www.clearskyinstitute.com/xephem"
 SRC_URI="http://97.74.56.125/free/${P}.tar.gz"
 
 LICENSE="XEphem"
 SLOT=0
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=x11-libs/motif-2.3:0
@@ -24,6 +23,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-respect_env_vars.patch"
 	"${FILESDIR}/${P}-implicits.patch"
+	"${FILESDIR}/${P}-no_xprint.patch"
 )
 
 src_prepare() {

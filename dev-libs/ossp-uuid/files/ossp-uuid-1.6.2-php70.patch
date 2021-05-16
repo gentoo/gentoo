@@ -1,0 +1,337 @@
+--- uuid/php/uuid.c	2016-12-18 01:23:26.000000000 -0500
++++ uuid/php/uuid.c	2016-12-18 01:23:43.564329483 -0500
+@@ -41,7 +41,13 @@
+ } ctx_t;
+ 
+ /* context implicit destruction */
++#if PHP_VERSION_ID >= 70000
++static void ctx_destructor(zend_resource *rsrc)
++#else
++typedef long zend_long;
++
+ static void ctx_destructor(zend_rsrc_list_entry *rsrc TSRMLS_DC)
++#endif
+ {
+     ctx_t *ctx = (ctx_t *)rsrc->ptr;
+ 
+@@ -120,16 +126,23 @@
+     zval *z_ctx;
+     ctx_t *ctx;
+     uuid_rc_t rc;
++#if PHP_VERSION_ID >= 70000
++    char *param_types = "z/";
++#else
++    char *param_types = "z";
++#endif
+
+     /* parse parameters */
+-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &z_ctx) == FAILURE)
++    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, param_types, &z_ctx) == FAILURE)
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID < 70000
+     if (!PZVAL_IS_REF(z_ctx)) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_create: parameter wasn't passed by reference");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#endif
+ 
+     /* perform operation */
+     if ((ctx = (ctx_t *)malloc(sizeof(ctx_t))) == NULL)
+@@ -138,7 +151,12 @@
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_create: %s", uuid_error(rc));
+         RETURN_LONG((long)rc);
+     }
++#if PHP_VERSION_ID >= 70000
++    zval_dtor(z_ctx);
++    ZVAL_RES(z_ctx, zend_register_resource(ctx, ctx_id));
++#else
+     ZEND_REGISTER_RESOURCE(z_ctx, ctx, ctx_id);
++#endif
+ 
+     RETURN_LONG((long)rc);
+ }
+@@ -158,7 +177,11 @@
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_destroy: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+@@ -185,21 +208,32 @@
+     zval *z_clone;
+     ctx_t *clone;
+     uuid_rc_t rc;
++#if PHP_VERSION_ID >= 70000
++    char *param_types = "rz/";
++#else
++    char *param_types = "rz";
++#endif
+ 
+     /* parse parameters */
+-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rz", &z_ctx, &z_clone) == FAILURE)
++    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, param_types, &z_ctx, &z_clone) == FAILURE)
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_clone: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#if PHP_VERSION_ID < 70000
+     if (!PZVAL_IS_REF(z_clone)) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_clone: clone parameter wasn't passed by reference");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#endif
+ 
+     /* perform operation */
+     if ((clone = (ctx_t *)malloc(sizeof(ctx_t))) == NULL)
+@@ -208,7 +243,12 @@
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_clone: %s", uuid_error(rc));
+         RETURN_LONG((long)rc);
+     }
++#if PHP_VERSION_ID >= 70000
++    zval_dtor(z_clone);
++    ZVAL_RES(z_clone, zend_register_resource(clone, ctx_id));
++#else
+     ZEND_REGISTER_RESOURCE(z_clone, clone, ctx_id);
++#endif
+ 
+     RETURN_LONG((long)rc);
+ }
+@@ -230,7 +271,11 @@
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_load: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+@@ -254,7 +299,7 @@
+     zval *z_ctx;
+     ctx_t *ctx;
+     uuid_rc_t rc;
+-    long z_mode;
++    zend_long z_mode;
+     unsigned long mode;
+     zval *z_ctx_ns;
+     ctx_t *ctx_ns;
+@@ -266,7 +311,11 @@
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_make: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+@@ -281,7 +330,11 @@
+         }
+     }
+     else if (ZEND_NUM_ARGS() == 4 && ((mode & UUID_MAKE_V3) || (mode & UUID_MAKE_V5))) {
++#if PHP_VERSION_ID >= 70000
++        ctx_ns = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx_ns), ctx_name, ctx_id);
++#else
+         ZEND_FETCH_RESOURCE(ctx_ns, ctx_t *, &z_ctx_ns, -1, ctx_name, ctx_id);
++#endif
+         if (ctx_ns == NULL) {
+             php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_make: invalid namespace context");
+             RETURN_LONG((long)UUID_RC_ARG);
+@@ -314,21 +367,33 @@
+     uuid_rc_t rc;
+     zval *z_result;
+     int result;
++#if PHP_VERSION_ID >= 70000
++    char *param_types = "rz/";
++#else
++    char *param_types = "rz";
++#endif
+ 
+     /* parse parameters */
+-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rz", &z_ctx, &z_result) == FAILURE)
++    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, param_types, &z_ctx, &z_result) == FAILURE)
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    zval_dtor(z_result);
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_isnil: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#if PHP_VERSION_ID < 70000
+     if (!PZVAL_IS_REF(z_result)) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_isnil: result parameter wasn't passed by reference");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#endif
+ 
+     /* perform operation */
+     if ((rc = uuid_isnil(ctx->uuid, &result)) != UUID_RC_OK) {
+@@ -353,26 +418,42 @@
+     uuid_rc_t rc;
+     zval *z_result;
+     int result;
++#if PHP_VERSION_ID >= 70000
++    char *param_types = "rrz/";
++#else
++    char *param_types = "rrz";
++#endif
+ 
+     /* parse parameters */
+-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rrz", &z_ctx, &z_ctx2, &z_result) == FAILURE)
++    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, param_types, &z_ctx, &z_ctx2, &z_result) == FAILURE)
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    zval_dtor(z_result);
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_compare: invalid context");
++        php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_compare: invalid context from first parameter");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#if PHP_VERSION_ID >= 70000
++    ctx2 = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx2), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx2, ctx_t *, &z_ctx2, -1, ctx_name, ctx_id);
++#endif
+-    if (ctx2 == NULL || ctx2->uuid) {
+-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_compare: invalid context");
++    if (ctx2 == NULL || ctx2->uuid == NULL) {
++        php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_compare: invalid context from second parameter");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#if PHP_VERSION_ID < 70000
+     if (!PZVAL_IS_REF(z_result)) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_compare: result parameter wasn't passed by reference");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#endif
+ 
+     /* perform operation */
+     if ((rc = uuid_compare(ctx->uuid, ctx2->uuid, &result)) != UUID_RC_OK) {
+@@ -392,7 +473,7 @@
+ {
+     zval *z_ctx;
+     ctx_t *ctx;
+-    long z_fmt;
++    zend_long z_fmt;
+     unsigned long fmt;
+     zval *z_data;
+     uuid_rc_t rc;
+@@ -404,7 +485,11 @@
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_import: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+@@ -428,28 +513,40 @@
+ {
+     zval *z_ctx;
+     ctx_t *ctx;
+-    long z_fmt;
++    zend_long z_fmt;
+     unsigned long fmt;
+     zval *z_data;
+     uuid_rc_t rc;
+     void *data_ptr;
+     size_t data_len;
++#if PHP_VERSION_ID >= 70000
++    char *param_types = "rlz/";
++#else
++    char *param_types = "rlz";
++#endif
+ 
+     /* parse parameters */
+-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rlz", &z_ctx, &z_fmt, &z_data) == FAILURE)
++    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, param_types, &z_ctx, &z_fmt, &z_data) == FAILURE)
+         RETURN_LONG((long)UUID_RC_ARG);
+ 
+     /* post-process and sanity check parameters */
++#if PHP_VERSION_ID >= 70000
++    zval_dtor(z_data);
++    ctx = (ctx_t *)zend_fetch_resource(Z_RES_P(z_ctx), ctx_name, ctx_id);
++#else
+     ZEND_FETCH_RESOURCE(ctx, ctx_t *, &z_ctx, -1, ctx_name, ctx_id);
++#endif
+     if (ctx == NULL || ctx->uuid == NULL) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_export: invalid context");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
+     fmt = (unsigned long)z_fmt;
++#if PHP_VERSION_ID < 70000
+     if (!PZVAL_IS_REF(z_data)) {
+         php_error_docref(NULL TSRMLS_CC, E_WARNING, "uuid_export: data parameter wasn't passed by reference");
+         RETURN_LONG((long)UUID_RC_ARG);
+     }
++#endif
+ 
+     /* perform operation */
+     data_ptr = NULL;
+@@ -462,7 +559,11 @@
+         data_len = strlen((char *)data_ptr);
+     else if (fmt == UUID_FMT_STR || fmt == UUID_FMT_TXT)
+         data_len--; /* PHP doesn't wish NUL-termination on strings */
++#if PHP_VERSION_ID >= 70000
++    ZVAL_STRINGL(z_data, data_ptr, data_len);
++#else
+     ZVAL_STRINGL(z_data, data_ptr, data_len, 1);
++#endif
+     free(data_ptr);
+ 
+     RETURN_LONG((long)rc);
+@@ -474,7 +575,7 @@
+    return error string corresponding to error return code */
+ ZEND_FUNCTION(uuid_error)
+ {
+-    int z_rc;
++    zend_long z_rc;
+     uuid_rc_t rc;
+     char *error;
+ 
+@@ -483,7 +584,11 @@
+     rc = (uuid_rc_t)z_rc;
+     if ((error = uuid_error(rc)) == NULL)
+         RETURN_NULL();
++#if PHP_VERSION_ID >= 70000
++    RETURN_STRING(error);
++#else
+     RETURN_STRING(error, 1);
++#endif
+ }
+ 
+ /* API FUNCTION:

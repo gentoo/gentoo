@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit versionator
@@ -17,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
+RESTRICT="mirror"
+
 RDEPEND="
 	dev-lang/perl
 	dev-perl/IO-Socket-SSL
@@ -29,7 +30,7 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-src_install () {
+src_install() {
 	dodoc sqlninja-howto.html ChangeLog README
 
 	if use doc; then

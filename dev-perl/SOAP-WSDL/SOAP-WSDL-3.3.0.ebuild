@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -13,6 +12,7 @@ DESCRIPTION="SOAP with WSDL support"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test examples"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Class-Load-0.200.0
@@ -35,6 +35,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
+		dev-perl/CGI
 		virtual/perl-Test-Simple
 		virtual/perl-Getopt-Long
 		virtual/perl-Storable

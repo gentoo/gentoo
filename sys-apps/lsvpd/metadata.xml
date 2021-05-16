@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>ppc@gentoo.org</email>
+		<name>Gentoo Linux PowerPC Development</name>
+	</maintainer>
+	<longdescription>
+		The lsvpd package contains all of the lsvpd, lscfg and lsmcode commands.
+		These commands, along with a scanning program called vpdupdate, constitute
+		a hardware inventory system. The lsvpd command provides Vital Product Data
+		(VPD) about hardware components to higher-level serviceability tools. The
+		lscfg command provides a more human-readable format of the VPD, as well as
+		some system-specific information. lsmcode lists microcode and firmware
+		levels. lsvio lists virtual devices.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">power-ras/lsvpd</remote-id>
+	</upstream>
+</pkgmetadata>

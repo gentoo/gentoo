@@ -1,14 +1,14 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="3"
+EAPI=7
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="small secure replacement for syslogd with automatic log rotation"
+DESCRIPTION="Small secure replacement for syslogd with automatic log rotation"
 HOMEPAGE="http://smarden.org/socklog/"
 SRC_URI="http://smarden.org/socklog/${P}.tar.gz"
+S="${WORKDIR}/admin/${P}/src"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,21 +17,26 @@ IUSE="static"
 
 RDEPEND=">=sys-process/runit-1.4.0"
 
-S=${WORKDIR}/admin/${P}/src
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1.0-headers.patch
+	"${FILESDIR}"/${PN}-2.1.0-respect-ar-ranlib.patch
+)
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.1.0-headers.patch
+src_configure() {
 	use static && append-ldflags -static
-	echo "$(tc-getCC) ${CFLAGS} ${CPPFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${CFLAGS} ${LDFLAGS}" > conf-ld
+	echo "$(tc-getCC) ${CFLAGS} ${CPPFLAGS}" > conf-cc || die
+	echo "$(tc-getCC) ${CFLAGS} ${LDFLAGS}" > conf-ld || die
+	tc-export AR RANLIB
 }
 
 src_install() {
-	dobin tryto uncat socklog-check || die
-	dosbin socklog socklog-conf || die
+	dobin tryto uncat socklog-check
+	dosbin socklog socklog-conf
 
-	cd ..
+	cd .. || die
 	dodoc package/CHANGES
-	dohtml doc/*.html
+	docinto html
+	dodoc doc/*.html
+
 	doman man/*
 }

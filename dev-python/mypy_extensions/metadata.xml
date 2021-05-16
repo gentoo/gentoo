@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ikelos@gentoo.org</email>
+		<name>Mike Auty</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">python/mypy_extensions</remote-id>
+		<remote-id type="pypi">mypy-extensions</remote-id>
+	</upstream>
+</pkgmetadata>

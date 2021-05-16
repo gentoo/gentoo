@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
+
 inherit vim-plugin
 
 if [[ ${PV} != 9999* ]] ; then
@@ -17,11 +17,13 @@ else
 fi
 
 DESCRIPTION="vim plugin: lean & mean statusline for vim that's light as air"
-HOMEPAGE="https://github.com/vim-airline/vim-airline/ http://www.vim.org/scripts/script.php?script_id=4661"
+HOMEPAGE="https://github.com/vim-airline/vim-airline/ https://www.vim.org/scripts/script.php?script_id=4661"
 LICENSE="MIT"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 src_prepare() {
+	default
+
 	# remove unwanted files
-	rm -r t Gemfile Rakefile LICENSE README* || die
+	rm -r t Gemfile Rakefile LICENSE README* .travis.yml .gitignore || die
 }

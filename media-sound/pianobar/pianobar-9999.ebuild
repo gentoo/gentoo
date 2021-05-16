@@ -1,50 +1,46 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
-inherit toolchain-funcs flag-o-matic multilib
+EAPI=7
+
+inherit toolchain-funcs flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/PromyLOPh/pianobar.git"
+	EGIT_REPO_URI="https://github.com/PromyLOPh/pianobar.git"
 else
-	SRC_URI="http://6xq.net/projects/${PN}/${P}.tar.bz2"
+	SRC_URI="https://6xq.net/${PN}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="A console-based replacement for Pandora's flash player"
-HOMEPAGE="http://6xq.net/projects/pianobar/"
+HOMEPAGE="https://6xq.net/pianobar/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="static-libs"
+IUSE=""
 
-RDEPEND="media-libs/libao
-	net-misc/curl
+BDEPEND="virtual/pkgconfig"
+RDEPEND="
+	dev-libs/json-c:=
 	dev-libs/libgcrypt:0=
-	dev-libs/json-c
-	>=virtual/ffmpeg-9"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-src_prepare() {
-	sed -e '/@echo /d' \
-		-e 's/@${CC}/${CC}/' \
-		-i Makefile || die
-}
+	media-libs/libao
+	>=media-video/ffmpeg-3.3:0=
+	net-misc/curl
+"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	append-cflags -std=c99
-	tc-export CC
-	emake DYNLINK=1
+	tc-export AR CC
+	emake V=1 DYNLINK=1
 }
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr LIBDIR=/usr/$(get_libdir) DYNLINK=1 install
 	dodoc ChangeLog README.md
 
-	use static-libs || { rm "${D}"/usr/lib*/*.a || die; }
+	rm "${D}"/usr/lib*/*.a || die
 
 	docinto contrib
 	dodoc -r contrib/{config-example,*.sh,eventcmd-examples}

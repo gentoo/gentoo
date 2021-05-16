@@ -1,0 +1,18 @@
+--- salt-3001.6-python3_7/tests/unit/modules/test_cmdmod.py	2021-02-26 16:13:26.386553301 -0800
++++ salt-3001.6/tests/unit/modules/test_cmdmod.py	2021-02-26 16:14:25.858150910 -0800
+@@ -437,6 +437,7 @@
+         else:
+             raise RuntimeError
+ 
++    @skipIf(True, "does not work with sandbox")
+     @skipIf(salt.utils.platform.is_windows(), "Do not run on Windows")
+     @skipIf(salt.utils.platform.is_darwin(), "Do not run on MacOS")
+     def test_run_cwd_in_combination_with_runas(self):
+@@ -560,6 +561,7 @@
+ 
+         self.assertEqual(ret["stdout"], salt.utils.stringutils.to_unicode(stdout))
+ 
++    @skipIf(True, "does not work with sandbox")
+     def test_run_all_output_loglevel_debug(self):
+         """
+         Test that specifying debug for loglevel

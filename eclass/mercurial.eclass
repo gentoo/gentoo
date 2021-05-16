@@ -1,11 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: mercurial.eclass
 # @MAINTAINER:
-# Christoph Junghans <ottxor@gentoo.org>
-# Dirkjan Ochtman <djc@gentoo.org>
+# Christoph Junghans <junghans@gentoo.org>
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
@@ -19,6 +17,8 @@
 inherit eutils
 
 EXPORT_FUNCTIONS src_unpack
+
+PROPERTIES+=" live"
 
 DEPEND="dev-vcs/mercurial"
 
@@ -35,6 +35,7 @@ DEPEND="dev-vcs/mercurial"
 : ${EHG_REVISION:="default"}
 
 # @ECLASS-VARIABLE: EHG_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Mercurial sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z "${EHG_STORE_DIR}" ]] && EHG_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/hg-src"
@@ -59,15 +60,19 @@ DEPEND="dev-vcs/mercurial"
 : ${EHG_QUIET:="OFF"}
 [[ "${EHG_QUIET}" == "ON" ]] && EHG_QUIET_CMD_OPT="--quiet"
 
+# @ECLASS-VARIABLE: EHG_CONFIG
+# @DESCRIPTION:
+# Extra config option to hand to hg clone/pull
+
 # @ECLASS-VARIABLE: EHG_CLONE_CMD
 # @DESCRIPTION:
 # Command used to perform initial repository clone.
-[[ -z "${EHG_CLONE_CMD}" ]] && EHG_CLONE_CMD="hg clone ${EHG_QUIET_CMD_OPT} --pull --noupdate"
+[[ -z "${EHG_CLONE_CMD}" ]] && EHG_CLONE_CMD="hg clone ${EHG_CONFIG:+--config ${EHG_CONFIG}} ${EHG_QUIET_CMD_OPT} --pull --noupdate"
 
 # @ECLASS-VARIABLE: EHG_PULL_CMD
 # @DESCRIPTION:
 # Command used to update repository.
-[[ -z "${EHG_PULL_CMD}" ]] && EHG_PULL_CMD="hg pull ${EHG_QUIET_CMD_OPT}"
+[[ -z "${EHG_PULL_CMD}" ]] && EHG_PULL_CMD="hg pull ${EHG_CONFIG:+--config ${EHG_CONFIG}} ${EHG_QUIET_CMD_OPT}"
 
 # @ECLASS-VARIABLE: EHG_OFFLINE
 # @DESCRIPTION:
@@ -82,7 +87,7 @@ EHG_OFFLINE="${EHG_OFFLINE:-${EVCS_OFFLINE}}"
 # Clone or update repository.
 #
 # If repository URI is not passed it defaults to EHG_REPO_URI, if module is
-# empty it defaults to basename of EHG_REPO_URI, sourcedir defaults to 
+# empty it defaults to basename of EHG_REPO_URI, sourcedir defaults to
 # EHG_CHECKOUT_DIR, which defaults to S.
 
 mercurial_fetch() {
@@ -136,6 +141,7 @@ mercurial_fetch() {
 	hg clone \
 		${EHG_QUIET_CMD_OPT} \
 		--updaterev="${EHG_REVISION}" \
+		${EHG_CONFIG:+--config ${EHG_CONFIG}} \
 		"${EHG_STORE_DIR}/${EHG_PROJECT}/${module}" \
 		"${sourcedir}" || die "hg clone failed"
 	# An exact revision helps a lot for testing purposes, so have some output...

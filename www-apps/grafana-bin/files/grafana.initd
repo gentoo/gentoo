@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+GRAFANA_USER="${GRAFANA_USER:-"grafana"}"
+GRAFANA_GROUP="${GRAFANA_GROUP:-"grafana"}"
+GRAFANA_CONFIGFILE="${GRAFANA_CONFIGFILE:-"/etc/grafana/${RC_SVCNAME}.ini"}"
+GRAFANA_DATADIR="${GRAFANA_DATADIR:-"/var/lib/grafana"}"
+GRAFANA_LOGDIR="${GRAFANA_LOGDIR:-"/var/log/grafana"}"
+GRAFANA_PIDFILE="${GRAFANA_PIDFILE:-"/run/${RC_SVCNAME}.pid"}"
+GRAFANA_SSDARGS=${GRAFANA_SSDARGS:-"--wait 1000"}
+GRAFANA_TERMTIMEOUT=${GRFANA_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+command="/usr/bin/grafana-server"
+command_args="-homepath=/usr/share/grafana"
+command_args="${command_args} -config=\"${GRAFANA_CONFIGFILE}\""
+command_args="${command_args} cfg:default.paths.data=\"${GRAFANA_DATADIR}\""
+command_args="${command_args} cfg:default.paths.logs=\"${GRAFANA_LOGDIR}\""
+command_background="yes"
+pidfile="${GRAFANA_PIDFILE}"
+retry="${GRAFANA_TERMTIMEOUT}"
+start_stop_daemon_args="--user ${GRAFANA_USER}:${GRAFANA_GROUP} ${GRAFANA_SSDARGS}"
+
+description="Grafana server, feature rich metrics dashboard and graph editor."
+
+required_files="${GRAFANA_CONFIGFILE}"
+
+depend() {
+	need localmount
+}
+
+start_pre() {
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}" || return 1
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}/dashboards" || return 1
+	checkpath -d -o "${GRAFANA_USER}:${GRAFANA_GROUP}" -m750 "${GRAFANA_DATADIR}/plugins" || return 1
+}

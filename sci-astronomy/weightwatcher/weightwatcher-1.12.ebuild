@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Combine weight maps and polygon for astronomical images weighting"
 HOMEPAGE="http://www.astromatic.net/software/weightwatcher/"
@@ -13,10 +14,17 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="doc"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${P}-AR.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
-src_install () {
+src_prepare() {
+	default
+	eautoreconf
+}
+
+src_install() {
 	default
 	use doc && dodoc doc/*
 }

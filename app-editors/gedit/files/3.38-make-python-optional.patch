@@ -1,0 +1,86 @@
+From 9ed333a94ea15f74c420cbb2766909953aa6acb6 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 16 Aug 2020 23:34:42 +0300
+Subject: [PATCH 2/2] build: Make python optional
+
+---
+ gedit/meson.build   | 2 ++
+ meson.build         | 2 ++
+ meson_options.txt   | 4 ++++
+ plugins/meson.build | 9 ++++++---
+ 4 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/gedit/meson.build b/gedit/meson.build
+index 9fc81468e..5e808a2d8 100644
+--- a/gedit/meson.build
++++ b/gedit/meson.build
+@@ -197,10 +197,12 @@ libgedit_gir = gnome.generate_gir(
+   install_dir_typelib: get_option('libdir') / 'gedit/girepository-1.0',
+ )
+ 
++if get_option('python')
+ python3.install_sources(
+   'Gedit.py',
+   subdir: 'gi/overrides',
+ )
++endif
+ 
+ # Vala API
+ libgedit_vapi = gnome.generate_vapi(
+diff --git a/meson.build b/meson.build
+index 2c5dccb82..5e1e9340a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -55,7 +55,9 @@ deps_basic_list = [
+ ]
+ 
+ gspell_dep = dependency('gspell-1', version: '>= 1.0', required: get_option('spell'))
++if get_option('python')
+ python3 = python.find_installation('python3')
++endif
+ 
+ # Configurations
+ config_h = configuration_data()
+diff --git a/meson_options.txt b/meson_options.txt
+index bb3923dd1..962b82934 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -14,6 +14,10 @@ option(
+   description: 'Require that all tests can be run, even those that depend on third party programs'
+ )
+ 
++option('python',
++       type: 'boolean', value: true,
++       description: 'Install GIR python overrides and python plugins')
++
+ option('spell',
+        type: 'feature', value: 'enabled',
+        description: 'Build spell checking plugin')
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 50bc5d393..63bb7c094 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -18,14 +18,17 @@ msgfmt_plugin_cmd = [
+ subdir('docinfo')
+ subdir('filebrowser')
+ subdir('modelines')
+-subdir('pythonconsole')
+ subdir('quickhighlight')
+-subdir('quickopen')
+-subdir('snippets')
+ subdir('sort')
+ subdir('spell')
+ subdir('time')
+ 
++if get_option('python')
+ if get_option('plugin_externaltools')
+   subdir('externaltools')
+ endif
++
++  subdir('pythonconsole')
++  subdir('quickopen')
++  subdir('snippets')
++endif
+-- 
+2.26.2
+

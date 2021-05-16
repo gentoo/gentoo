@@ -1,6 +1,0 @@
-#!/bin/bash
-
-userdir="${HOME}/.doomsday/GAME"
-mkdir -p "${userdir}"
-cd "${userdir}"
-exec doomsday -game GAME -userdir "${userdir}" "$@"

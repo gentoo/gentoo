@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils flag-o-matic
+inherit epatch flag-o-matic
 
-DESCRIPTION="C++ class library that provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC"
+DESCRIPTION="Provides a subset of the well-known JDBC 2.0(tm) and runs on top of ODBC"
 SRC_URI="mirror://sourceforge/libodbcxx/${P}.tar.bz2"
 HOMEPAGE="http://libodbcxx.sourceforge.net/"
 
@@ -75,8 +74,7 @@ src_configure() {
 		#--without-qt \
 		econf \
 			${commonconf} \
-			${commonconf2} \
-			|| die "econf failed"
+			${commonconf2}
 	done
 }
 
@@ -92,7 +90,7 @@ src_compile() {
 	[ -n "${failures}" ] && die "Failures: ${failures}"
 }
 
-src_install () {
+src_install() {
 	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 
 	buildlist="${SB} ${SB_MT}"

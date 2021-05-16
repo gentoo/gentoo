@@ -4,15 +4,11 @@
   <maintainer type="person">
     <email>mpagano@gentoo.org</email>
     <name>Mike Pagano</name>
-    <description>Actively maintained</description>
   </maintainer>
   <maintainer type="project">
     <email>kernel@gentoo.org</email>
     <name>Gentoo Kernel Project</name>
   </maintainer>
-  <longdescription>
-    -git sources sources, for people who like to have the absolute latest kernel available
-  </longdescription>
   <upstream>
     <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
   </upstream>

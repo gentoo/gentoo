@@ -1,22 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI="4"
-inherit eutils flag-o-matic savedconfig toolchain-funcs multilib
+EAPI=7
+
+inherit flag-o-matic savedconfig toolchain-funcs
 
 DESCRIPTION="Utilities for rescue and embedded systems"
 HOMEPAGE="https://www.busybox.net/"
 if [[ ${PV} == "9999" ]] ; then
-	MY_P=${PN}
-	EGIT_REPO_URI="git://busybox.net/busybox.git"
-	inherit git-2
+	MY_P=${P}
+	EGIT_REPO_URI="https://git.busybox.net/busybox"
+	inherit git-r3
 else
 	MY_P=${PN}-${PV/_/-}
 	SRC_URI="https://www.busybox.net/downloads/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2" # GPL-2 only
@@ -25,29 +25,34 @@ IUSE="debug ipv6 livecd make-symlinks math mdev pam selinux sep-usr static syslo
 REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
+# TODO: Could make pkgconfig conditional on selinux? bug #782829
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
 	pam? ( sys-libs/pam )"
 DEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig
 	static? ( selinux? ( sys-libs/libselinux[static-libs(+)] ) )
 	>=sys-kernel/linux-headers-2.6.39"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
 	mdev? ( !<sys-apps/openrc-0.13 )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 busybox_config_option() {
 	local flag=$1 ; shift
-	if [[ ${flag} != [yn] ]] ; then
+	if [[ ${flag} != [yn] && ${flag} != \"* ]] ; then
 		busybox_config_option $(usex ${flag} y n) "$@"
 		return
 	fi
+	local expr
 	while [[ $# -gt 0 ]] ; do
-		if [[ ${flag} == "y" ]] ; then
-			sed -i -e "s:.*\<CONFIG_$1\>.*set:CONFIG_$1=y:g" .config
-		else
-			sed -i -e "s:CONFIG_$1=y:# CONFIG_$1 is not set:g" .config
-		fi
-		einfo $(grep "CONFIG_$1[= ]" .config || echo Could not find CONFIG_$1 ...)
+		case ${flag} in
+		y) expr="s:.*\<CONFIG_$1\>.*set:CONFIG_$1=y:g" ;;
+		n) expr="s:CONFIG_$1=y:# CONFIG_$1 is not set:g" ;;
+		*) expr="s:.*\<CONFIG_$1\>.*:CONFIG_$1=${flag}:g" ;;
+		esac
+		sed -i -e "${expr}" .config || die
+		einfo "$(grep "CONFIG_$1[= ]" .config || echo "Could not find CONFIG_$1 ...")"
 		shift
 	done
 }
@@ -61,14 +66,18 @@ busybox_config_enabled() {
 	esac
 }
 
+# patches go here!
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.26.2-bb.patch
+	# "${FILESDIR}"/${P}-*.patch
+)
+
 src_prepare() {
+	default
 	unset KBUILD_OUTPUT #88088
 	append-flags -fno-strict-aliasing #310413
 	use ppc64 && append-flags -mminimal-toc #130943
 
-	# patches go here!
-	epatch "${FILESDIR}"/${PN}-1.19.0-bb.patch
-#	epatch "${FILESDIR}"/${P}-*.patch
 	cp "${FILESDIR}"/ginit.c init/ || die
 
 	# flag cleanup
@@ -111,6 +120,7 @@ src_configure() {
 
 	# now turn off stuff we really don't want
 	busybox_config_option n DMALLOC
+	busybox_config_option n FEATURE_2_4_MODULES #607548
 	busybox_config_option n FEATURE_SUID_CONFIG
 	busybox_config_option n BUILD_AT_ONCE
 	busybox_config_option n BUILD_LIBBUSYBOX
@@ -118,11 +128,25 @@ src_configure() {
 	busybox_config_option n MONOTONIC_SYSCALL
 	busybox_config_option n USE_PORTABLE_CODE
 	busybox_config_option n WERROR
+	# triming the BSS size may be dangerous
+	busybox_config_option n FEATURE_USE_BSS_TAIL
+
+	# These cause trouble with musl.
+	if use elibc_musl; then
+		busybox_config_option n FEATURE_UTMP
+		busybox_config_option n EXTRA_COMPAT
+		busybox_config_option n FEATURE_VI_REGEX_SEARCH
+	fi
 
 	# If these are not set and we are using a uclibc/busybox setup
 	# all calls to system() will fail.
 	busybox_config_option y ASH
+	busybox_config_option y SH_IS_ASH
 	busybox_config_option n HUSH
+	busybox_config_option n SH_IS_HUSH
+
+	busybox_config_option '"/run"' PID_FILE_PATH
+	busybox_config_option '"/run/ifstate"' IFUPDOWN_IFSTATE_PATH
 
 	# disable ipv6 applets
 	if ! use ipv6; then
@@ -132,13 +156,20 @@ src_configure() {
 		busybox_config_option n UDHCPC6
 	fi
 
-	busybox_config_option $(usex static n pam) PAM
+	busybox_config_option pam PAM
 	busybox_config_option static STATIC
 	busybox_config_option syslog {K,SYS}LOGD LOGGER
 	busybox_config_option systemd FEATURE_SYSTEMD
 	busybox_config_option math FEATURE_AWK_LIBM
 
+	# disable features that uClibc doesn't (yet?) provide.
+	if use elibc_uclibc; then
+		busybox_config_option n FEATURE_SYNC_FANCY #567598
+		busybox_config_option n NSENTER
+	fi
+
 	# all the debug options are compiler related, so punt them
+	busybox_config_option n DEBUG_SANITIZE
 	busybox_config_option n DEBUG
 	busybox_config_option y NO_DEBUG_LIB
 	busybox_config_option n DMALLOC
@@ -149,6 +180,10 @@ src_configure() {
 
 	# this opt only controls mounting with <linux-2.6.23
 	busybox_config_option n FEATURE_MOUNT_NFS
+
+	# glibc-2.26 and later does not ship RPC implientation
+	busybox_config_option n FEATURE_HAVE_RPC
+	busybox_config_option n FEATURE_INETD_RPC
 
 	# default a bunch of uncommon options to off
 	local opt
@@ -257,7 +292,8 @@ src_install() {
 	dodoc *.txt
 	docinto pod
 	dodoc *.pod
-	dohtml *.html
+	docinto html
+	dodoc *.html
 
 	cd ../examples
 	docinto examples
@@ -265,7 +301,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ ${ROOT} == "/" ]] ; then
+	if use make-symlinks && [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ -z "${ROOT}" ]] ; then
 		ewarn "setting USE=make-symlinks and emerging to / is very dangerous."
 		ewarn "it WILL overwrite lots of system programs like: ls bash awk grep (bug 60805 for full list)."
 		ewarn "If you are creating a binary only and not merging this is probably ok."

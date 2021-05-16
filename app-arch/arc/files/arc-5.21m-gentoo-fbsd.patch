@@ -1,5 +1,5 @@
---- tmclock.c	2005-09-21 18:39:57 +0200
-+++ tmclock.c.new	2007-06-16 15:58:26 +0200
+--- a/tmclock.c
++++ b/tmclock.c
 @@ -18,8 +18,10 @@
  #include <sys/time.h>
  #else

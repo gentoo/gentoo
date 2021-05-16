@@ -1,20 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit bash-completion-r1 eutils multilib python-r1
+inherit autotools bash-completion-r1 multilib python-r1
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/utils/kernel/${PN}/${PN}.git"
-	inherit autotools git-2
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/${PN}/${PN}.git"
+	inherit git-r3
 else
-	SRC_URI="mirror://kernel/linux/utils/kernel/kmod/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-	inherit libtool
+	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kmod/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	#inherit libtool
 fi
 
 DESCRIPTION="library and tools for managing linux kernel modules"
@@ -22,7 +21,7 @@ HOMEPAGE="https://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug doc lzma python static-libs +tools zlib"
+IUSE="debug doc +lzma pkcs7 python static-libs +tools +zlib zstd"
 
 # Upstream does not support running the test suite with custom configure flags.
 # I was also told that the test suite is intended for kmod developers.
@@ -30,6 +29,7 @@ IUSE="debug doc lzma python static-libs +tools zlib"
 # See bug #408915.
 RESTRICT="test"
 
+# >=zlib-1.2.6 required because of bug #427130
 # Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
 RDEPEND="!sys-apps/module-init-tools
 	!sys-apps/modutils
@@ -37,27 +37,37 @@ RDEPEND="!sys-apps/module-init-tools
 	!<sys-apps/systemd-216-r3
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
 	python? ( ${PYTHON_DEPS} )
-	zlib? ( >=sys-libs/zlib-1.2.6 )" #427130
-DEPEND="${RDEPEND}
-	doc? ( dev-util/gtk-doc )
+	pkcs7? ( >=dev-libs/openssl-1.1.0:0= )
+	zlib? ( >=sys-libs/zlib-1.2.6 )
+	zstd? ( >=app-arch/zstd-1.4.4 )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? (
+		dev-util/gtk-doc
+		dev-util/gtk-doc-am
+	)
 	lzma? ( virtual/pkgconfig )
 	python? (
 		dev-python/cython[${PYTHON_USEDEP}]
 		virtual/pkgconfig
 		)
-	zlib? ( virtual/pkgconfig )"
+	zlib? ( virtual/pkgconfig )
+"
 if [[ ${PV} == 9999* ]]; then
-	DEPEND="${DEPEND}
+	BDEPEND="${BDEPEND}
 		dev-libs/libxslt"
 fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DOCS="NEWS README TODO"
+DOCS=( NEWS README TODO )
 
 src_prepare() {
-	if [ ! -e configure ]; then
+	default
+
+	if [[ ! -e configure ]] || use doc ; then
 		if use doc; then
+			cp "${BROOT}"/usr/share/aclocal/gtk-doc.m4 m4 || die
 			gtkdocize --copy --docdir libkmod/docs || die
 		else
 			touch libkmod/docs/gtk-doc.make
@@ -76,15 +86,17 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}/bin"
-		--with-rootlibdir="${EPREFIX}/$(get_libdir)"
 		--enable-shared
+		--with-bashcompletiondir="$(get_bashcompdir)"
+		--with-rootlibdir="${EPREFIX}/$(get_libdir)"
+		$(use_enable debug)
+		$(usex doc '--enable-gtk-doc' '')
 		$(use_enable static-libs static)
 		$(use_enable tools)
-		$(use_enable debug)
-		$(use_enable doc gtk-doc)
 		$(use_with lzma xz)
+		$(use_with pkcs7 openssl)
 		$(use_with zlib)
-		--with-bashcompletiondir="$(get_bashcompdir)"
+		$(use_with zstd)
 	)
 
 	local ECONF_SOURCE="${S}"
@@ -132,22 +144,23 @@ src_install() {
 				VPATH="${native_builddir}:${S}" \
 				install-pkgpyexecLTLIBRARIES \
 				install-dist_pkgpyexecPYTHON
+			python_optimize
 		}
 
 		python_foreach_impl python_install
 	fi
 
-	prune_libtool_files --modules
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	if use tools; then
-		local bincmd sbincmd
-		for sbincmd in depmod insmod lsmod modinfo modprobe rmmod; do
-			dosym /bin/kmod /sbin/${sbincmd}
+		local cmd
+		for cmd in depmod insmod modprobe rmmod; do
+			dosym ../bin/kmod /sbin/${cmd}
 		done
 
 		# These are also usable as normal user
-		for bincmd in lsmod modinfo; do
-			dosym kmod /bin/${bincmd}
+		for cmd in lsmod modinfo; do
+			dosym kmod /bin/${cmd}
 		done
 	fi
 
@@ -163,23 +176,23 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ -L ${EROOT%/}/etc/runlevels/boot/static-nodes ]]; then
+	if [[ -L ${EROOT}/etc/runlevels/boot/static-nodes ]]; then
 		ewarn "Removing old conflicting static-nodes init script from the boot runlevel"
-		rm -f "${EROOT%/}"/etc/runlevels/boot/static-nodes
+		rm -f "${EROOT}"/etc/runlevels/boot/static-nodes
 	fi
 
 	# Add kmod to the runlevel automatically if this is the first install of this package.
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		if [[ ! -d ${EROOT%/}/etc/runlevels/sysinit ]]; then
-			mkdir -p "${EROOT%/}"/etc/runlevels/sysinit
+		if [[ ! -d ${EROOT}/etc/runlevels/sysinit ]]; then
+			mkdir -p "${EROOT}"/etc/runlevels/sysinit
 		fi
-		if [[ -x ${EROOT%/}/etc/init.d/kmod-static-nodes ]]; then
-			ln -s /etc/init.d/kmod-static-nodes "${EROOT%/}"/etc/runlevels/sysinit/kmod-static-nodes
+		if [[ -x ${EROOT}/etc/init.d/kmod-static-nodes ]]; then
+			ln -s /etc/init.d/kmod-static-nodes "${EROOT}"/etc/runlevels/sysinit/kmod-static-nodes
 		fi
 	fi
 
-	if [[ -e ${EROOT%/}/etc/runlevels/sysinit ]]; then
-		if [[ ! -e ${EROOT%/}/etc/runlevels/sysinit/kmod-static-nodes ]]; then
+	if [[ -e ${EROOT}/etc/runlevels/sysinit ]]; then
+		if ! has_version sys-apps/systemd && [[ ! -e ${EROOT}/etc/runlevels/sysinit/kmod-static-nodes ]]; then
 			ewarn
 			ewarn "You need to add kmod-static-nodes to the sysinit runlevel for"
 			ewarn "kernel modules to have required static nodes!"

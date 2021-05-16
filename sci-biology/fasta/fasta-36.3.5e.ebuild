@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 DESCRIPTION="FASTA is a DNA and Protein sequence alignment software package"
-HOMEPAGE="http://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml"
+HOMEPAGE="https://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml"
 SRC_URI="http://faculty.virginia.edu/wrpearson/${PN}/${PN}36/${P}.tar.gz"
 
 LICENSE="fasta"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="debug cpu_flags_x86_sse2 test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( app-shells/tcsh )"
 RDEPEND=""
@@ -67,7 +67,7 @@ src_install() {
 
 	pushd bin > /dev/null || die
 	for bin in *36; do
-		dosym ${bin} /usr/bin/${bin%36} || die
+		dosym ${bin} /usr/bin/${bin%36}
 	done
 	popd
 

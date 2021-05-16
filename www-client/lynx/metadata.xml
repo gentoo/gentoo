@@ -2,11 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
 	</maintainer>
 	<use>
 		<flag name="ssl">Enable HTTPS support.</flag>
 		<flag name="gnutls">Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).</flag>
 	</use>
+	<upstream>
+		<changelog>https://lynx.invisible-island.net/current/CHANGES.html</changelog>
+	</upstream>
 </pkgmetadata>

@@ -1,0 +1,374 @@
+--- a/p_ac3.cpp
++++ b/p_ac3.cpp
+@@ -30,7 +30,7 @@
+ ac3_packetizer_c::ac3_packetizer_c(unsigned long nsamples_per_sec,
+                                    int nchannels, int nbitrate,
+                                    audio_sync_t *nasync, range_t *nrange,
+-                                   char **ncomments) throw (error_c) : q_c() {
++                                   char **ncomments) : q_c() {
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+   packetno = 0;
+--- a/p_ac3.h
++++ b/p_ac3.h
+@@ -40,7 +40,7 @@
+   public:
+     ac3_packetizer_c(unsigned long nsamples_per_sec, int nchannels,
+                      int nbitrate, audio_sync_t *nasync,
+-                     range_t *nrange, char **ncomments) throw (error_c);
++                     range_t *nrange, char **ncomments);
+     virtual ~ac3_packetizer_c();
+     
+     virtual int     process(char *buf, int size, int last_frame);
+--- a/p_index.cpp
++++ b/p_index.cpp
+@@ -28,7 +28,7 @@
+ #include "p_index.h"
+ #include "vorbis_header_utils.h"
+ 
+-index_packetizer_c::index_packetizer_c(int nserial) throw (error_c) : q_c() {
++index_packetizer_c::index_packetizer_c(int nserial) : q_c() {
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+   granulepos = 0;
+--- a/p_index.h
++++ b/p_index.h
+@@ -33,7 +33,7 @@
+     ogg_int64_t granulepos, packetno;
+     int         serial;
+   public:
+-    index_packetizer_c(int nserial) throw (error_c);
++    index_packetizer_c(int nserial);
+     virtual ~index_packetizer_c();
+     
+     virtual int     process(idx_entry *entries, int num);
+--- a/p_mp3.cpp
++++ b/p_mp3.cpp
+@@ -30,7 +30,7 @@
+ mp3_packetizer_c::mp3_packetizer_c(unsigned long nsamples_per_sec,
+                                    int nchannels, int nmp3rate,
+                                    audio_sync_t *nasync, range_t *nrange,
+-                                   char **ncomments) throw (error_c) : q_c() {
++                                   char **ncomments) : q_c() {
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+   packetno = 0;
+--- a/p_mp3.h
++++ b/p_mp3.h
+@@ -40,7 +40,7 @@
+   public:
+     mp3_packetizer_c(unsigned long nsamples_per_sec, int nchannels,
+                      int nmp3rate, audio_sync_t *nasync,
+-                     range_t *nrange, char **ncomments) throw (error_c);
++                     range_t *nrange, char **ncomments);
+     virtual ~mp3_packetizer_c();
+     
+     virtual int     process(char *buf, int size, int last_frame);
+--- a/p_pcm.cpp
++++ b/p_pcm.cpp
+@@ -29,7 +29,7 @@
+ pcm_packetizer_c::pcm_packetizer_c(unsigned long nsamples_per_sec,
+                                    int nchannels, int nbits_per_sample,
+                                    audio_sync_t *nasync, range_t *nrange,
+-                                   char **ncomments) throw (error_c) : q_c() {
++                                   char **ncomments) : q_c() {
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+   packetno = 0;
+--- a/p_pcm.h
++++ b/p_pcm.h
+@@ -37,7 +37,7 @@
+   public:
+     pcm_packetizer_c(unsigned long nsamples_per_sec, int nchannels,
+                      int nbits_per_sample, audio_sync_t *nasync,
+-                     range_t *nrange, char **ncomments) throw (error_c);
++                     range_t *nrange, char **ncomments);
+     virtual ~pcm_packetizer_c();
+     
+     virtual int     process(char *buf, int size, int last_frame);
+--- a/p_textsubs.cpp
++++ b/p_textsubs.cpp
+@@ -29,7 +29,7 @@
+ 
+ textsubs_packetizer_c::textsubs_packetizer_c(audio_sync_t *nasync,
+                                              range_t *nrange, char **ncomments)
+-                                             throw (error_c) : q_c() {
++                                             : q_c() {
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+   packetno = 0;
+--- a/p_textsubs.h
++++ b/p_textsubs.h
+@@ -30,7 +30,7 @@
+ 
+   public:
+     textsubs_packetizer_c(audio_sync_t *nasync, range_t *nrange,
+-                          char **ncomments) throw (error_c);
++                          char **ncomments);
+     virtual ~textsubs_packetizer_c();
+     
+     virtual int     process(ogg_int64_t start, ogg_int64_t end, char *_subs,
+--- a/p_video.cpp
++++ b/p_video.cpp
+@@ -31,7 +31,7 @@
+                                        int nheight, int nbpp,
+                                        int nmax_frame_size, audio_sync_t *as,
+                                        range_t *nrange, char **ncomments)
+-                                       throw (error_c) : q_c() {
++                                       : q_c() {
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+   packetno = 0;
+--- a/p_video.h
++++ b/p_video.h
+@@ -35,7 +35,7 @@
+     range_t         range;
+   public:
+     video_packetizer_c(char *, double, int, int, int, int, audio_sync_t *,
+-                       range_t *nrange, char **ncomments) throw (error_c);
++                       range_t *nrange, char **ncomments);
+     virtual ~video_packetizer_c();
+     
+     virtual int            process(char *buf, int size, int num_frames, int key,
+--- a/p_vobsub.cpp
++++ b/p_vobsub.cpp
+@@ -34,7 +34,7 @@
+                                          char *nid, int nindex,
+                                          audio_sync_t *nasync,
+                                          range_t *nrange, char **ncomments)
+-                                         throw (error_c) : q_c() {
++                                         : q_c() {
+   char buffer[50];
+   serialno = create_unique_serial();
+   ogg_stream_init(&os, serialno);
+--- a/p_vobsub.h
++++ b/p_vobsub.h
+@@ -43,7 +43,7 @@
+     vobsub_packetizer_c(int nwidth, int nheight, char *npalette,
+                         int nlangidx, char *nid, int nindex,
+                         audio_sync_t *nasync, range_t *nrange,
+-                        char **ncomments) throw (error_c);
++                        char **ncomments);
+     virtual ~vobsub_packetizer_c();
+     
+     virtual int     process(ogg_int64_t start, ogg_int64_t end, char *subs,
+--- a/p_vorbis.cpp
++++ b/p_vorbis.cpp
+@@ -30,7 +30,7 @@
+ #include "vorbis_header_utils.h"
+ 
+ vorbis_packetizer_c::vorbis_packetizer_c(audio_sync_t *nasync, range_t *nrange,
+-                                         char **ncomments) throw (error_c)
++                                         char **ncomments)
+                                          : q_c() {
+   packetno = 0;
+   old_granulepos = 0;
+--- a/p_vorbis.h
++++ b/p_vorbis.h
+@@ -37,7 +37,7 @@
+ 
+   public:
+     vorbis_packetizer_c(audio_sync_t *nasync, range_t *nrange, char **ncomments)
+-                        throw (error_c);
++                       ;
+     virtual ~vorbis_packetizer_c();
+     
+     virtual int     process(ogg_packet *op, ogg_int64_t gran);
+--- a/queue.cpp
++++ b/queue.cpp
+@@ -21,7 +21,7 @@
+ #include "ogmmerge.h"
+ #include "queue.h"
+ 
+-q_c::q_c() throw (error_c) : generic_packetizer_c() {
++q_c::q_c() : generic_packetizer_c() {
+   first = NULL;
+   current = NULL;
+   next_is_key = -1;
+--- a/queue.h
++++ b/queue.h
+@@ -36,7 +36,7 @@
+     ogg_stream_state  os;
+     
+   public:
+-    q_c() throw (error_c);
++    q_c();
+     virtual ~q_c();
+     
+     virtual int              add_ogg_page(ogg_page *, int header_page,
+--- a/r_ac3.cpp
++++ b/r_ac3.cpp
+@@ -55,7 +55,7 @@
+ }
+ 
+ ac3_reader_c::ac3_reader_c(char *fname, audio_sync_t *nasync,
+-                           range_t *nrange, char **ncomments) throw (error_c) {
++                           range_t *nrange, char **ncomments) {
+   int          pos;
+   ac3_header_t ac3header;
+   
+--- a/r_ac3.h
++++ b/r_ac3.h
+@@ -36,7 +36,7 @@
+      
+   public:
+     ac3_reader_c(char *fname, audio_sync_t *nasync, range_t *nrange,
+-                 char **ncomments) throw (error_c);
++                 char **ncomments);
+     virtual ~ac3_reader_c();
+ 
+     virtual int              read();
+--- a/r_avi.cpp
++++ b/r_avi.cpp
+@@ -55,7 +55,7 @@
+ avi_reader_c::avi_reader_c(char *fname, unsigned char *astreams,
+                            unsigned char *vstreams, audio_sync_t *nasync,
+                            range_t *nrange, char **ncomments, char *nfourcc,
+-                           char* nav_seek) throw (error_c) {
++                           char* nav_seek) {
+   int            fsize, i;
+   off_t          size;
+   FILE          *f;
+--- a/r_avi.h
++++ b/r_avi.h
+@@ -67,7 +67,7 @@
+     avi_reader_c(char *fname, unsigned char *astreams,
+                  unsigned char *vstreams, audio_sync_t *nasync,
+                  range_t *nrange, char **ncomments, char *nfourcc,
+-                 char* nav_seek) throw (error_c);
++                 char* nav_seek);
+     virtual ~avi_reader_c();
+ 
+     virtual int              read();
+--- a/r_microdvd.cpp
++++ b/r_microdvd.cpp
+@@ -56,7 +56,7 @@
+ 
+ microdvd_reader_c::microdvd_reader_c(char *fname, audio_sync_t *nasync,
+                                      range_t *nrange, char **ncomments)
+-                                     throw (error_c) {
++                                     {
+   if ((file = fopen(fname, "r")) == NULL)
+     throw error_c("microdvd_reader: Could not open source file.");
+   if (!microdvd_reader_c::probe_file(file, 0))
+--- a/r_microdvd.h
++++ b/r_microdvd.h
+@@ -35,7 +35,7 @@
+      
+   public:
+     microdvd_reader_c(char *fname, audio_sync_t *nasync, range_t *nrange,
+-                      char **ncomments) throw (error_c);
++                      char **ncomments);
+     virtual ~microdvd_reader_c();
+ 
+     virtual int              read();
+--- a/r_mp3.cpp
++++ b/r_mp3.cpp
+@@ -60,7 +60,7 @@
+ }
+ 
+ mp3_reader_c::mp3_reader_c(char *fname, audio_sync_t *nasync,
+-                           range_t *nrange, char **ncomments) throw (error_c) {
++                           range_t *nrange, char **ncomments) {
+   int           pos;
+   unsigned long header;
+   mp3_header_t  mp3header;
+--- a/r_mp3.h
++++ b/r_mp3.h
+@@ -40,7 +40,7 @@
+      
+   public:
+     mp3_reader_c(char *fname, audio_sync_t *nasync, range_t *nrange,
+-                 char **ncomments) throw (error_c);
++                 char **ncomments);
+     virtual ~mp3_reader_c();
+ 
+     virtual int              read();
+--- a/r_ogm.cpp
++++ b/r_ogm.cpp
+@@ -60,7 +60,7 @@
+ ogm_reader_c::ogm_reader_c(char *fname, unsigned char *astreams,
+                            unsigned char *vstreams, unsigned char *tstreams,
+                            audio_sync_t *nasync, range_t *nrange,
+-                           char **ncomments, char *nfourcc) throw (error_c) {
++                           char **ncomments, char *nfourcc) {
+   off_t size;
+   
+   if ((file = fopen(fname, "r")) == NULL)
+--- a/r_ogm.h
++++ b/r_ogm.h
+@@ -62,7 +62,7 @@
+     ogm_reader_c(char *fname, unsigned char *astreams,
+                  unsigned char *vstreams, unsigned char *tstreams,
+                  audio_sync_t *nasync, range_t *nrange, char **ncomments,
+-                 char *nfourcc) throw (error_c);
++                 char *nfourcc);
+     virtual ~ogm_reader_c();
+ 
+     virtual int                   read();
+--- a/r_srt.cpp
++++ b/r_srt.cpp
+@@ -62,7 +62,7 @@
+ }
+ 
+ srt_reader_c::srt_reader_c(char *fname, audio_sync_t *nasync,
+-                           range_t *nrange, char **ncomments) throw (error_c) {
++                           range_t *nrange, char **ncomments) {
+   if ((file = fopen(fname, "r")) == NULL)
+     throw error_c("srt_reader: Could not open source file.");
+   if (!srt_reader_c::probe_file(file, 0))
+--- a/r_srt.h
++++ b/r_srt.h
+@@ -35,7 +35,7 @@
+      
+   public:
+     srt_reader_c(char *fname, audio_sync_t *nasync, range_t *nrange,
+-                 char **ncomments) throw (error_c);
++                 char **ncomments);
+     virtual ~srt_reader_c();
+ 
+     virtual int              read();
+--- a/r_vobsub.cpp
++++ b/r_vobsub.cpp
+@@ -72,7 +72,7 @@
+ 
+ vobsub_reader_c::vobsub_reader_c(char *fname, audio_sync_t *nasync,
+                                  range_t *nrange, char **ncomments)
+-                                 throw (error_c) {
++                                 {
+   char *name;
+   
+   if ((file = fopen(fname, "r")) == NULL)
+--- a/r_vobsub.h
++++ b/r_vobsub.h
+@@ -42,7 +42,7 @@
+      
+   public:
+     vobsub_reader_c(char *fname, audio_sync_t *nasync, range_t *nrange,
+-                    char **ncomments) throw (error_c);
++                    char **ncomments);
+     virtual ~vobsub_reader_c();
+ 
+     virtual int              read();
+--- a/r_wav.cpp
++++ b/r_wav.cpp
+@@ -50,7 +50,7 @@
+ }
+ 
+ wav_reader_c::wav_reader_c(char *fname, audio_sync_t *nasync,
+-                           range_t *nrange, char **ncomments) throw (error_c) {
++                           range_t *nrange, char **ncomments) {
+   uint64_t size;
+   uint32_t samplerate;
+   uint16_t channels, bitdepth;
+--- a/r_wav.h
++++ b/r_wav.h
+@@ -41,7 +41,7 @@
+      
+   public:
+     wav_reader_c(char *fname, audio_sync_t *nasync, range_t *nrange,
+-                 char **ncomments) throw (error_c);
++                 char **ncomments);
+     virtual ~wav_reader_c();
+ 
+     virtual int              read();

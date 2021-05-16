@@ -7,8 +7,8 @@ Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
 For uint64_t to be available, <stdint.h> must be included:
 http://www.opengroup.org/onlinepubs/009695399/basedefs/stdint.h.html
 
---- include/sg_cmds_basic.h	2008/06/26 23:27:40	1.1
-+++ include/sg_cmds_basic.h	2008/06/26 23:28:06
+--- a/include/sg_cmds_basic.h
++++ b/include/sg_cmds_basic.h
 @@ -30,6 +30,8 @@
   *
   */
@@ -18,8 +18,8 @@ http://www.opengroup.org/onlinepubs/009695399/basedefs/stdint.h.html
  #ifdef __cplusplus
  extern "C" {
  #endif
---- include/sg_cmds_extra.h	2008/06/26 23:27:40	1.1
-+++ include/sg_cmds_extra.h	2008/06/26 23:29:02
+--- a/include/sg_cmds_extra.h
++++ b/include/sg_cmds_extra.h
 @@ -30,6 +30,8 @@
   *
   */

@@ -1,0 +1,33 @@
+From f3f634a7e3eb76c8206739a362d3926e8a5ff1d7 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Wed, 30 Nov 2016 10:12:31 -0700
+Subject: [PATCH] FindLibcurl.cmake: add path suffix
+
+Most linux distros put curl.h in a subdir curl
+---
+ cmake/FindLibcurl.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/FindLibcurl.cmake b/cmake/FindLibcurl.cmake
+index c3dcce1..ad0ac5b 100644
+--- a/cmake/FindLibcurl.cmake
++++ b/cmake/FindLibcurl.cmake
+@@ -1,7 +1,7 @@
+ #
+ # - Find libcurl
+ #
+-# LIBCURL_INCLUDE_DIR - Path to libcurl.h
++# LIBCURL_INCLUDE_DIR - Path to curl.h
+ # LIBCURL_LIBRARY     - List of libraries for using libcurl
+ # LIBCURL_FOUND       - True if libcurl was found
+ 
+@@ -9,8 +9,8 @@ if(LIBCURL_INCLUDE_DIR)
+   set(LIBCURL_FIND_QUIETLY true)
+ endif()
+ 
+-find_path(LIBCURL_INCLUDE_DIR curl.h)
+ find_library(LIBCURL_LIBRARY curl)
++find_path(LIBCURL_INCLUDE_DIR curl.h PATH_SUFFIXES curl)
+ 
+ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(Libcurl DEFAULT_MSG LIBCURL_LIBRARY LIBCURL_INCLUDE_DIR)

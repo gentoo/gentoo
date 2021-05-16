@@ -1,0 +1,28 @@
+From 16048ed60bef16d4bf1e361a59e7899845b9426a Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Sun, 20 Dec 2020 21:47:33 +0100
+Subject: [PATCH 10/10] Fix building against >=ICU-68
+
+Link: https://github.com/unicode-org/icu/commit/a18df7ba2834afc2b577a1d5a7d906868ade6fa9
+Bug: https://bugs.gentoo.org/759070
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ sql/mysqld.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sql/mysqld.cc b/sql/mysqld.cc
+index c400e5584..5d2ebfaea 100644
+--- a/sql/mysqld.cc
++++ b/sql/mysqld.cc
+@@ -7323,7 +7323,7 @@ int mysqld_main(int argc, char **argv)
+   if (opt_keyring_migration_source || opt_keyring_migration_destination ||
+       migrate_connect_options) {
+     Migrate_keyring mk;
+-    my_getopt_skip_unknown = TRUE;
++    my_getopt_skip_unknown = true;
+     if (mk.init(remaining_argc, remaining_argv, opt_keyring_migration_source,
+                 opt_keyring_migration_destination, opt_keyring_migration_user,
+                 opt_keyring_migration_host, opt_keyring_migration_password,
+-- 
+2.29.2
+

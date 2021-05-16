@@ -6,7 +6,6 @@
 		<name>James Le Cuirot</name>
 	</maintainer>
 	<use>
-		<flag name="webp">Adds support for the WebP image format</flag>
 		<flag name="utils">Install command-line utilities</flag>
 	</use>
 	<longdescription>

@@ -1,29 +1,32 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="6"
 
-inherit autotools eutils
+inherit autotools
 
-MY_P="${P/g/G}"
+MY_P="${P^g}"
 
 DESCRIPTION="CDB binding for Gauche"
 HOMEPAGE="http://sourceforge.jp/projects/gauche/"
-SRC_URI="mirror://sourceforge.jp/gauche/8407/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge.jp/${PN%-*}/8407/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="ia64 x86"
+KEYWORDS="amd64 ~ia64 x86"
 IUSE=""
 
-RDEPEND="dev-scheme/gauche
+RDEPEND="dev-scheme/gauche:=
 	dev-db/tinycdb"
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-gauche-package.patch
+	"${FILESDIR}"/${PN}-undefined-reference.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gauche-package.diff
-	epatch "${FILESDIR}"/${P}-undefined-reference.diff
+	default
 	eautoreconf
 }

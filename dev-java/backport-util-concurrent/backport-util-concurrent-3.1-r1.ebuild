@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 JAVA_PKG_IUSE="doc source test"
@@ -11,12 +10,12 @@ SF_PN="backport-jsr166"
 MY_P="${PN}-Java60-${PV}"
 
 DESCRIPTION="A portability wrapper for java.util.concurrent API (jsr166) 6.0"
-HOMEPAGE="http://${SF_PN}.sourceforge.net/"
+HOMEPAGE="http://backport-jsr166.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${SF_PN}/${PV}/${MY_P}-src.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.6
@@ -48,7 +47,7 @@ EANT_TEST_TARGET="test"
 
 src_install() {
 	java-pkg_dojar ${PN}.jar
-	dohtml README.html || die
+	dohtml README.html
 
 	use doc && java-pkg_dojavadoc doc/api
 	use source && java-pkg_dosrc src/*

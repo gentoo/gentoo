@@ -1,19 +1,54 @@
-# Copyright 1999-2015 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-# $Id$
-
-# Tobias Klausmann <klausman@gentoo.org> (05 Feb 2016)
-# Newer versions of libgadu depend on protobuf-c, which doesn't
-# compile on alpha as of slot:0.
-gadu
-
-# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
-# no LibreSSL support yet
-curl_ssl_libressl
-libressl
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
+# media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
+jack
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
+# net-libs/webkit-gtk has no alpha keywords
+webkit
+# net-libs/gnome-online-accounts depends on net-libs/webkit-gtk
+gnome-online-accounts
+
+# Matt Turner <mattst88@gentoo.org> (2020-07-01)
+# Unlikely.
+vulkan
+
+# James Le Cuirot <chewi@gentoo.org> (2020-05-10)
+# media-libs/allegro is not keyworded.
+allegro
+
+# Matt Turner <mattst88@gentoo.org> (2020-03-16)
+# Drop support for ghc and darcs
+darcs
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
+
+# Matt Turner <mattst88@gentoo.org> (2018-12-22)
+# net-libs/zeromq is not keyworded
+zeromq
+
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-06-13)
+# No ACPI support on alpha. Bug #657332
+acpi
+
+# Tobias Klausmann <klausman@gentoo.org> (2017-03-03)
+# There is no luajit support on alpha. Bugs #554376, #608322.
+lua_single_target_luajit
+lua_targets_luajit
+luajit
+luajittex
+
+# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
+# We currently do not have the resources to AT qt5 packages.
+# This may change when/if qt4 goes away.
+qt5
 
 # This file masks out USE flags that are simply NOT allowed in the default
 # profile for any architecture.  This works, for example, if a non-default
@@ -25,55 +60,41 @@ libressl
 apcupsd
 bluetooth
 bluray
-chipcard
 dvb
-gnokii
 gps
 hbci
 ios
 ipod
-ivtv
 mtp
-mythtv
-nvtv
 lirc
 openct
 pcmcia
 pda
 sms
 upnp
-ups
 wifi
 
 # Hardware not available on alpha
 apm
 battery
-cpufreq
-dell
 dmi
-laptop
-pm-utils
 
 # Stuff that doesn't work on alpha, or not tested
-avi
 clang
 djbfft
 emboss
-freetts
-gnustep
 hardened
-howl
 mecab
-mzscheme
 netbeans
-pike
 timidity
 valgrind
 vaapi
 librtmp
 rtmp
+v4l
 vpx
 kde
+kwallet
 quvi
 metalink
 tremor
@@ -83,15 +104,12 @@ fdk
 emf
 mono
 ocamlopt
-webm
 openexr
 
 # Stuff we don't want
 afs
-schroedinger
 ots
 frei0r
-libev
 prelude
 libtar
 aacplus
@@ -100,81 +118,33 @@ gts
 
 # Other
 
-# Raúl Porcel <armin76@gentoo.org> (23 Apr 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-04-23)
 # Needs to be tested
 video_cards_nouveau
 
-# Ben de Groot <yngwin@gentoo.org> (11 Feb 2009)
+# Ben de Groot <yngwin@gentoo.org> (2009-02-11)
 # Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
 phonon
 
-# 14 May 2007 Raúl Porcel <armin76@gentoo.org>
+# Raúl Porcel <armin76@gentoo.org> (2007-05-14)
 # Alpha doesn't have wpa_supplicant keyworded, bug 175714
 networkmanager
 
 
 # alpha doesn't have java support
 java
-java-internal
-java-external
 pdfannotextractor
 
 # Mask vpopmail until net-mail/vpopmail goes out of package.mask
 vpopmail
 
-# Mask pyste until gccxml / elementtree work on alpha
-pyste
-
-# RDEPEND on mono
-beagle
-
-# apache segfaults when using mpm-peruser (bug 105778)
-mpm-peruser
-
 # We don't have any virtual/mpi (bug 111807)
 mpi
 
-# masks required for asterisk
-bri
-pri
-zaptel
-
-# Modular X: mask non-alpha cards
-video_cards_apm
-video_cards_ark
-video_cards_ast
-video_cards_chips
-video_cards_cyrix
-video_cards_i128
-video_cards_i740
-video_cards_intel
-video_cards_neomagic
-video_cards_newport
-video_cards_nsc
-video_cards_siliconmotion
-video_cards_sis
-video_cards_trident
-video_cards_tseng
-video_cards_vesa
-
 # Matt Turner <mattst88@gentoo.org>
-# Mask more VIDEO_CARDs added with mesa-8.0
-video_cards_i915
-video_cards_i965
-video_cards_ilo
-# vmware wasn't added with mesa-8.0, but it should still be masked
-video_cards_vmware
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi
-
-# dspam and dspam-web use this one
-# We've never supported cyrus-imapd because nobody asked for
-cyrus
-
-# disable until tested
-# # bug 148402
-pcsc-lite
 
 # conky dependencies missing keywords related (dragonheart -20061112)
 # media-sound/mpd
@@ -183,70 +153,45 @@ mpd
 # USE=d seems to break gcc-4.1.2 (#178896)
 d
 
-# This works
--x264
-
 # uses gnat/ada which is too big to support currently
 topal
 
-# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # We don't have sys-devel/llvm
 llvm
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask d3d since we don't have wine
-d3d
-
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
-# Matt Turner <mattst88@gentoo.org (27 May 2012)
+# Matt Turner <mattst88@gentoo.org (2012-05-27)
 # net-misc/connman is not keyworded
 connman
 
-# Matt Turner <mattst88@gentoo.org (27 May 2012)
-# sys-apps/entropy is not keyworded
-entropy
+# Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
+# Pulls in net-libs/axtls which is not keyworded for arch
+curl_ssl_axtls
 
-# Matt Turner <mattst88@gentoo.org (29 May 2012)
-# net-libs/libsocialweb is not keyworded
-socialweb
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # media-libs/xine-lib is not keyworded
 xine
 
-# Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
-# libdlm and cman are not keyworded
-cman
-clvm
-
--zeitgeist
-template_haskell
+template-haskell
 
 # nvidia cg toolkit for binary drivers
 cg
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
 # Unmask once sys-libs/libunwind gets ported & keyworded.
 unwind
 
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Tobias Klausmann <klausman@gentoo.org> (20 Jul 2014)
+# Tobias Klausmann <klausman@gentoo.org> (2014-07-20)
 # Mask redis USE flag everywhere since redis depends on google-perftools,
 # which are not supported on Alpha at all (assembly).
 redis
 
 # sys-libs/libseccomp has not been ported to this arch yet #524148
 seccomp
-
-# Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
-# please remove when keyworded
-qt5

@@ -1,5 +1,5 @@
---- cimg.cc
-+++ cimg.cc
+--- a/cimg.cc
++++ b/cimg.cc
 @@ -94,11 +95,11 @@
        ct == PNG_COLOR_TYPE_GRAY_ALPHA)
      png_set_gray_to_rgb(pngp);

@@ -1,0 +1,40 @@
+--- a/CommonSource/ExternalReadFormats/BamWriter.cpp
++++ b/CommonSource/ExternalReadFormats/BamWriter.cpp
+@@ -496,7 +496,7 @@
+ 	buffer[6] = 0xffffffff;  // mate_pos
+ 	buffer[7] = 0;           // ins_size
+ 
+-	const char* startChar = '\0';
++	const char* startChar = NULL;
+ 	
+ 	// write the block size
+ 	const unsigned int dataBlockSize = nameLen + packedCigarLen + encodedQueryLen + queryLen;
+@@ -652,7 +652,7 @@
+ 	unsigned int zaTagLen = 0;
+ 	string zaTag;
+ 	char* pZaTag;
+-	if ((zaString != 0) && (zaString != (char)0)) {
++	if ((zaString != 0) && (zaString[0] != '\0')) {
+ 		zaTagLen = 3 + strlen( zaString ) + 1;
+ 		zaTag.resize( zaTagLen );
+ 		pZaTag = (char*)zaTag.data();
+@@ -776,7 +776,7 @@
+ 	BgzfWrite(mdTag.data(), mdTagLen);
+ 
+ 	// write the ZA tag
+-	if ( zaString != 0 && (zaString != (char)0))
++	if ( zaString != 0 && (zaString[0] != '\0'))
+ 		BgzfWrite(zaTag.data(), zaTagLen);
+ 	
+ 	// write the ZN tag
+--- a/MosaikAligner/AlignmentThread.cpp
++++ b/MosaikAligner/AlignmentThread.cpp
+@@ -591,7 +591,7 @@
+ 	buffer.al              = al;
+ 	buffer.noCigarMdNm     = noCigarMdNm;
+ 	buffer.notShowRnamePos = notShowRnamePos;
+-	if ( zaString == (char)0 ) 
++	if ( zaString == NULL ) 
+ 		buffer.zaString.clear();
+ 	else
+ 		buffer.zaString = zaString;

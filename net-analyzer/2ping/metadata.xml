@@ -5,9 +5,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<longdescription>
-		A bi-directional ping utility
-	</longdescription>
 	<use>
 		<flag name="server">Install the server init scripts.</flag>
 	</use>

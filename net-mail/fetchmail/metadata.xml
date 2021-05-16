@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>net-mail@gentoo.org</email>
-    <name>Net-Mail</name>
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
   </maintainer>
   <use>
-    <flag name="hesiod">Enable support for hesiod</flag>
     <flag name="tk">Enable support for Tk GUI toolkit, in particular it installs fetchmailconf</flag>
     <flag name="socks">Enable support for socks proxy</flag>
   </use>

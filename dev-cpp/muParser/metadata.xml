@@ -6,11 +6,12 @@
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
 	<longdescription lang="en">
-  muParser is a C++ library for mathematical expression parsing.
-  It is based on transforming an expression into a bytecode and
-  precalculating constant parts of it.
-</longdescription>
+		muParser is a C++ library for mathematical expression parsing.
+		It is based on transforming an expression into a bytecode and
+		precalculating constant parts of it.
+	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">muparser</remote-id>
+		<remote-id type="github">beltoforion/muparser</remote-id>
 	</upstream>
 </pkgmetadata>

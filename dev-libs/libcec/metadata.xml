@@ -10,6 +10,9 @@
     <flag name="exynos">Enable support for Exynos chipsets</flag>
     <flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
     <flag name="xrandr">Enable detection of active HDMI using xrandr extensions</flag>
+    <flag name="kernel-cec">Enable support for Linux kernel CEC framework</flag>
+    <flag name="tools">Enable build of cec-client and other test and demo executable tools</flag>
+    <flag name="udev">Enable detection of USB-CEC port by udev</flag>
   </use>
   <upstream>
     <remote-id type="github">Pulse-Eight/libcec</remote-id>

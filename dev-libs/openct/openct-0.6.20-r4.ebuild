@@ -1,53 +1,52 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils flag-o-matic multilib udev user
+inherit autotools flag-o-matic udev user
 
 DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="https://github.com/OpenSC/openct/wiki"
 
 SRC_URI="mirror://sourceforge/opensc/${PN}/${P}.tar.gz"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc pcsc-lite usb debug +udev"
+IUSE="doc debug pcsc-lite usb"
 
-# Drop the libtool dep once libltdl goes stable.
-RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1 )
+RDEPEND="pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= )
 	usb? ( virtual/libusb:0 )
-	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )"
+	dev-libs/libltdl:0="
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
-
-# udev is not required at all at build-time as it's only a matter of
-# installing the rules; add openrc for the checkpath used in the new
-# init script
-RDEPEND="${RDEPEND}
-	udev? ( virtual/udev )
-	sys-apps/openrc"
+PATCHES=(
+	"${FILESDIR}"/${P}-automake.patch
+	"${FILESDIR}"/${P}-slibtool.patch
+)
 
 pkg_setup() {
 	enewgroup openct
 	enewuser openctd
 }
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	use debug && append-cppflags -DDEBUG_IFDH
 
 	econf \
-		--docdir="/usr/share/doc/${PF}" \
-		--htmldir="/usr/share/doc/${PF}/html" \
 		--localstatedir=/var \
 		--with-udev="$(get_udevdir)" \
 		--enable-non-privileged \
 		--with-daemon-user=openctd \
 		--with-daemon-groups=usb \
-		--enable-shared --disable-static \
+		--enable-shared \
+		--disable-static \
 		$(use_enable doc) \
 		$(use_enable doc api-doc) \
 		$(use_enable pcsc-lite pcsc) \
@@ -56,13 +55,14 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	prune_libtool_files --all
-	rm "${D}"/usr/$(get_libdir)/openct-ifd.*
+	default
 
-	use udev && udev_newrules etc/openct.udev 70-openct.rules
+	find "${ED}" -name '*.la' -delete || die
+	rm -f "${ED}"/usr/$(get_libdir)/openct-ifd.* || die
 
-	newinitd "${FILESDIR}"/openct.rc.2 openct
+	udev_newrules etc/openct.udev 70-openct.rules
+
+	newinitd "${FILESDIR}"/openct.initd openct
 }
 
 pkg_postinst() {

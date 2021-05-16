@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>slis@gentoo.org</email>
+    <email>tomjbe@gentoo.org</email>
+    <name>Thomas Beierlein</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">pyshp</remote-id>

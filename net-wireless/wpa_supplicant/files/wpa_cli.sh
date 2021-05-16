@@ -3,7 +3,6 @@
 # Written by Roy Marples <uberlord@gentoo.org>
 # Distributed under the terms of the GNU General Public License v2
 # Alternatively, this file may be distributed under the terms of the BSD License
-# $Id$
 
 if [ -z "$1" -o -z "$2" ]; then
 	logger -t wpa_cli "Insufficient parameters"

@@ -1,20 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.2-patches/
-PLEVEL=${PV##*_p}
-MY_PV=${PV/_p*}
-MY_PV=${MY_PV/_/-}
-MY_P=${PN}-${MY_PV}
+PLEVEL="${PV##*_p}"
+MY_PV="${PV/_p*}"
+MY_PV="${MY_PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 [[ ${PV} != *_p* ]] && PLEVEL=0
 patches() {
-	local opt=$1 plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
+	local opt=${1} plevel=${2:-${PLEVEL}} pn=${3:-${PN}} pv=${4:-${MY_PV}}
 	[[ ${plevel} -eq 0 ]] && return 1
 	eval set -- {1..${plevel}}
 	set -- $(printf "${pn}${pv/\.}-%03d " "$@")
@@ -34,22 +33,31 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="afs mem-scramble +net nls +readline static"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
 	nls? ( virtual/libintl )
 	readline? ( >=sys-libs/readline-6.2[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
-# we only need yacc when the .y files get patched (bash42-005)
 DEPEND="${RDEPEND}
-	virtual/yacc
 	static? ( ${LIB_DEPEND} )"
+# We only need yacc when the .y files get patched (bash42-005)
+BDEPEND="virtual/yacc"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2-execute-job-control.patch # bug #383237
+	"${FILESDIR}"/${PN}-4.2-parallel-build.patch
+	"${FILESDIR}"/${PN}-4.2-no-readline.patch
+	"${FILESDIR}"/${PN}-4.2-read-retry.patch # bug #447810
+	"${FILESDIR}"/${PN}-4.2-speed-up-read-N.patch
+)
 
 pkg_setup() {
-	if is-flag -malign-double ; then #7332
+	# bug #7332
+	if is-flag -malign-double ; then
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
@@ -62,28 +70,39 @@ src_unpack() {
 
 src_prepare() {
 	# Include official patches
-	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
+	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
 
 	# Clean out local libs so we know we use system ones
-	rm -rf lib/{readline,termcap}/*
-	touch lib/{readline,termcap}/Makefile.in # for config.status
-	sed -ri -e 's:\$[(](RL|HIST)_LIBSRC[)]/[[:alpha:]]*.h::g' Makefile.in || die
+	rm -rf lib/{readline,termcap}/* || die
+	touch lib/{readline,termcap}/Makefile.in || die # for config.status
+	sed -ri -e 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in || die
 
 	# Avoid regenerating docs after patches #407985
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
-	touch -r . doc/*
+	touch -r . doc/* || die
 
-	epatch "${FILESDIR}"/${PN}-4.2-execute-job-control.patch #383237
-	epatch "${FILESDIR}"/${PN}-4.2-parallel-build.patch
-	epatch "${FILESDIR}"/${PN}-4.2-no-readline.patch
-	epatch "${FILESDIR}"/${PN}-4.2-read-retry.patch #447810
-	epatch "${FILESDIR}"/${PN}-4.2-speed-up-read-N.patch
-
-	epatch_user
+	default
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--with-installed-readline=.
+
+		# Force linking with system curses ... the bundled termcap lib
+		# sucks bad compared to ncurses.  For the most part, ncurses
+		# is here because readline needs it.  But bash itself calls
+		# ncurses in one or two small places :(.
+		--with-curses
+
+		$(use_with afs)
+		$(use_enable net net-redirections)
+		--disable-profiling
+		$(use_enable mem-scramble)
+		$(use_with mem-scramble bash-malloc)
+		$(use_enable readline)
+		$(use_enable readline history)
+		$(use_enable readline bang-history)
+	)
 
 	# For descriptions of these, see config-top.h
 	# bashrc/#26952 bash_logout/#90488 ssh/#24762 mktemp/#574426
@@ -108,24 +127,10 @@ src_configure() {
 	# is at least what's in the DEPEND up above.
 	export ac_cv_rl_version=6.2
 
-	# Force linking with system curses ... the bundled termcap lib
-	# sucks bad compared to ncurses.  For the most part, ncurses
-	# is here because readline needs it.  But bash itself calls
-	# ncurses in one or two small places :(.
+	# bug #444070
+	tc-export AR
 
-	tc-export AR #444070
-	econf \
-		--with-installed-readline=. \
-		--with-curses \
-		$(use_with afs) \
-		$(use_enable net net-redirections) \
-		--disable-profiling \
-		$(use_enable mem-scramble) \
-		$(use_with mem-scramble bash-malloc) \
-		$(use_enable readline) \
-		$(use_enable readline history) \
-		$(use_enable readline bang-history) \
-		"${myconf[@]}"
+	econf "${myconf[@]}"
 }
 
 src_install() {

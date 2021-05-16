@@ -2,14 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
+    <email>base-system@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="crywrap" restrict="&gt;=net-libs/gnutls-3.2.10">
-      Build the crywrap TLS proxy service
-    </flag>
-    <flag name="dane" restrict="&gt;=net-libs/gnutls-3.1.3">
+    <flag name="dane">
       Build libgnutls-dane, implementing DNS-based Authentication of
       Named Entities. Requires <pkg>net-dns/unbound</pkg>
     </flag>
@@ -22,8 +18,26 @@
     <flag name="tools">
       Build extra tools
     </flag>
+    <flag name="tls-heartbeat">
+      Enable the Heartbeat Extension in TLS and DTLS
+    </flag>
+    <flag name="sslv2">
+      Support for the old/insecure SSLv2 protocol
+    </flag>
+    <flag name="sslv3">
+      Support for the old/insecure SSLv3 protocol
+    </flag>
+    <flag name="test-full">
+      Enable full test mode
+    </flag>
+    <flag name="valgrind">
+      Enable usage of <pkg>dev-util/valgrind</pkg> in debug
+    </flag>
   </use>
   <slots>
    <subslots>Reflect ABI compatibility of libgnutls.so</subslots>
   </slots>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:gnutls</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,0 +1,11 @@
+--- a/muttprint
++++ b/muttprint
+@@ -1635,7 +1635,7 @@
+ 	open (AUX, "$auxfile") or fatalError "Could not open $auxfile:\n$!";
+ 	
+ 	while (<AUX>) {
+-		($numberOfPages) = /\\newlabel{LastPage}{{}{(\d+)}}/;
++		($numberOfPages) = /\\newlabel\{LastPage}\{\{}\{(\d+)}}/;
+ 	}
+ 	
+ 	close AUX or fatalError "Could not close $auxfile:\n$!";

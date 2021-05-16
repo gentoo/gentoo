@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grknight@gentoo.org</email>
+		<name>Brian Evans</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">Robpol86/terminaltables</remote-id>
+		<remote-id type="pypi">terminaltables</remote-id>
+	</upstream>
+</pkgmetadata>

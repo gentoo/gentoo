@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils
+
+inherit epatch
 
 DESCRIPTION="iplog is a TCP/IP traffic logger"
 HOMEPAGE="http://ojnk.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 FDL-1.1 )"
 SLOT="0"
-KEYWORDS="alpha ~mips ppc sparc x86 ~amd64"
+KEYWORDS="~alpha ~amd64 ~mips ppc sparc x86"
 
 DEPEND="net-libs/libpcap"
 RDEPEND="${DEPEND}"

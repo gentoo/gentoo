@@ -1,0 +1,36 @@
+diff -Naur Src.orig/wmFrog.c Src/wmFrog.c
+--- Src.orig/wmFrog.c	2010-12-01 19:48:50.000000000 +0100
++++ Src/wmFrog.c	2020-03-01 15:54:30.428083446 +0100
+@@ -77,6 +77,12 @@
+ char* folder;
+ int needsUpdate = 1;
+ 
++Display		*display;
++Window          Root;
++Window          iconwin, win;
++int             screen; 
++int             DisplayDepth;
++
+ /*
+  *   main
+  */
+diff -Naur Src.orig/xutils.h Src/xutils.h
+--- Src.orig/xutils.h	2010-08-04 20:28:46.000000000 +0200
++++ Src/xutils.h	2020-03-01 15:54:37.027084834 +0100
+@@ -18,11 +18,11 @@
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen; 
+-int             DisplayDepth;
++extern Display		*display;
++extern Window          Root;
++extern Window          iconwin, win;
++extern int             screen; 
++extern int             DisplayDepth;
+ 
+ 
+ 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		minicoredumper is a program that handles the creation of core dump files on Linux.
+		It can produce much smaller core dump files by making use of sparse files, compression,
+		and allowing the user to configure what parts of the process memory image should be dumped. 
+	</longdescription>
+	<upstream>
+		<remote-id type="github">diamon/minicoredumper</remote-id>
+	</upstream>
+</pkgmetadata>

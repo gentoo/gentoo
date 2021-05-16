@@ -5,7 +5,6 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
-  <longdescription>LWP::Online is a Perl Module for testing the state of internet accessibility</longdescription>
   <upstream>
     <remote-id type="cpan">LWP-Online</remote-id>
     <remote-id type="cpan-module">LWP::Online</remote-id>

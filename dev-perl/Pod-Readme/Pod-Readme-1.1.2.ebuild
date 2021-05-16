@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Intelligently generate a README file from POD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="minimal test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!minimal? (
@@ -53,3 +53,9 @@ DEPEND="${RDEPEND}
 		virtual/perl-Test-Simple
 	)
 "
+
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install/use lib q[.]; use inc::Module::Install/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}

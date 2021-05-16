@@ -1,47 +1,56 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="simple Mode S decoder for RTLSDR devices"
-HOMEPAGE="https://github.com/antirez/dump1090"
+HOMEPAGE="https://github.com/flightaware/dump1090"
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="git://github.com/antirez/dump1090.git"
-	KEYWORDS=""
+	EGIT_REPO_URI="https://github.com/flightaware/${PN}.git"
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
-	S="${WORKDIR}/${PN}"
+	SRC_URI="https://github.com/flightaware/dump1090/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+IUSE="bladerf +rtlsdr"
 
-RDEPEND="net-wireless/rtl-sdr"
-DEPEND="${RDEPEND}"
+DEPEND="
+	sys-libs/ncurses:=[tinfo]
+	virtual/libusb:1
+	bladerf? ( net-wireless/bladerf:= )
+	rtlsdr? ( net-wireless/rtl-sdr:= )"
+RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	epatch "${FILESDIR}"/gmap_usr_share_mv.patch
+	default
+	sed -i -e 's#-O2 -g -Wall -Werror -W##' Makefile || die
+	sed -i -e "s#-lncurses#$($(tc-getPKG_CONFIG) --libs ncurses)#" Makefile || die
 }
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		CFLAGS="$(pkg-config --cflags librtlsdr)" \
-		LIBS="${LDFLAGS} $(pkg-config --libs librtlsdr) -lm -lpthread" \
-		all
+		BLADERF=$(usex bladerf) \
+		RTLSDR=$(usex rtlsdr)
 }
 
 src_install() {
 	dobin ${PN}
-	dodoc TODO README.md
+	dobin view1090
+	dodoc README.md
+
+	insinto /usr/share/${PN}/html
+	doins -r public_html/*
 
 	insinto /usr/share/${PN}
-	doins gmap.html
-	doins tools/debug.html
+	doins -r tools
+
+	insinto /usr/share/${PN}
+	newins debian/lighttpd/89-dump1090-fa.conf lighttpd.conf
 }

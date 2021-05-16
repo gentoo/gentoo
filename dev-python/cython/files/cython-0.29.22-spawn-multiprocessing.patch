@@ -1,0 +1,27 @@
+Needed to prevent a loop while calling cythonize on macOS - or any platform
+defaulting to the 'spawn' method, as Python 3.8 does on Darwin.
+
+https://github.com/cython/cython/pull/3263
+
+[Rebased on 0.29.22]
+
+From 15ae78bb74a856836dd64828326f4f0812d36520 Mon Sep 17 00:00:00 2001
+From: Marcel Bargull <marcel.bargull@udo.edu>
+Date: Fri, 6 Dec 2019 18:21:19 +0100
+Subject: [PATCH] Disable parallel cythonization for "spawn" start method.
+
+---
+--- a/Cython/Build/Dependencies.py
++++ b/Cython/Build/Dependencies.py
+@@ -1071,6 +1071,11 @@ def cythonize(module_list, exclude=None, nthreads=0, aliases=None, quiet=False,
+
+     if N <= 1:
+         nthreads = 0
++    if nthreads:
++        import multiprocessing
++        if multiprocessing.get_start_method() == 'spawn':
++            print('Disabling parallel cythonization for "spawn" process start method.')
++            nthreads = 0
+     if nthreads:
+         # Requires multiprocessing (or Python >= 2.6)
+         try:

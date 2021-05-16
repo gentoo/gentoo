@@ -1,52 +1,38 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
-ESVN_PROJECT=g15tools/trunk
-ESVN_REPO_URI="https://g15tools.svn.sourceforge.net/svnroot/${ESVN_PROJECT}/${PN}"
+EAPI=7
 
-inherit subversion base eutils autotools
+if [[ ${PV} == *9999 ]]; then
+	inherit autotools subversion
+	ESVN_PROJECT=g15tools/trunk
+	ESVN_REPO_URI="https://svn.code.sf.net/p/g15tools/code/trunk/${PN}"
+else
+	KEYWORDS="amd64 ppc ppc64 x86"
+	SRC_URI="mirror://sourceforge/g15tools/${P}.tar.bz2"
+fi
 
 DESCRIPTION="The libg15 library gives low-level access to the Logitech G15 keyboard"
-HOMEPAGE="http://g15tools.sourceforge.net/"
-[[ $PV = *9999* ]] || SRC_URI="mirror://sourceforge/g15tools/${P}.tar.bz2"
+HOMEPAGE="https://sourceforge.net/projects/g15tools/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-DEPEND="=virtual/libusb-0*"
-RDEPEND=${DEPEND}
-
-DOCS=( AUTHORS README ChangeLog )
-
-PATCHES=( "${FILESDIR}"/g15tools.patch )
-
-src_unpack() {
-	if [[ ${PV} = *9999* ]]; then
-		subversion_src_unpack
-	fi
-}
+RDEPEND="virtual/libusb:0"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
-	if [[ ${PV} = *9999* ]]; then
-		subversion_wc_info
-	fi
-	base_src_prepare
-	if [[ ${PV} = *9999* ]]; then
-		eautoreconf
-	fi
+	default
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-static
+	econf --disable-static
 }
 
 src_install() {
 	default
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	# no static archives
+	find "${ED}" -type f -name '*.la' -delete || die
 }

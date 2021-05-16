@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Oz Tiram</name>
+		<email>oz.tiram@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		libuEv is a simple event loop in the style of the more established
+		libevent, libev and the venerable Xt(3) event loop. The u (micro) in the
+		name refers to both the small feature set and the small size overhead
+		impact of the library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">troglobit/libuev</remote-id>
+	</upstream>
+</pkgmetadata>

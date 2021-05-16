@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<maintainer>
+			<email>eeaston@gmail.com</email>
+			<name>Edward Easton</name>
+		</maintainer>
+		<remote-id type="pypi">pytest-shutil</remote-id>
+		<remote-id type="github">man-group/pytest-plugins</remote-id>
+	</upstream>
+	<longdescription>
+		This library is a goodie-bag of Unix shell and environment management
+		tools for automated tests.  A summary of the available functions is
+		below, look at the source for the full listing.
+	</longdescription>
+</pkgmetadata>

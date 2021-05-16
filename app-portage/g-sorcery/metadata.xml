@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>jauhien@gentoo.org</email>
-    <name>Jauhien Piatlicki</name>
-  </maintainer>
-  <use>
-    <flag name="bson">Support BSON file format for package DB</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">jauhien/g-sorcery</remote-id>
-  </upstream>
+	<use>
+		<flag name="bson">Support BSON file format for package DB</flag>
+	</use>
+	<maintainer type="project">
+		<email>layman@gentoo.org</email>
+		<name>Gentoo Layman team</name>
+	</maintainer>
 </pkgmetadata>

@@ -1,22 +1,16 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="a cpp directive indenter"
-HOMEPAGE="http://savannah.gnu.org/projects/cppi"
+HOMEPAGE="https://savannah.gnu.org/projects/cppi"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls"
-
-CPPI_LINGUAS="de eo fi fr hr it ja pl sr sv uk vi"
-for  lingua in ${CPPI_LINGUAS}; do
-	IUSE+=" linguas_${lingua}"
-done
 
 DEPEND="
 	app-arch/xz-utils

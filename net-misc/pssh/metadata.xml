@@ -5,7 +5,10 @@
 		<email>cluster@gentoo.org</email>
 		<name>Gentoo Cluster Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
 	<upstream>
-		<remote-id type="google-code">parallel-ssh</remote-id>
+		<remote-id type="github">lilydjwg/pssh</remote-id>
 	</upstream>
 </pkgmetadata>

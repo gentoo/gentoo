@@ -1,0 +1,57 @@
+From bc94cc08e1d3ea733946861d90a21681d58665ab Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Fri, 5 Feb 2021 16:39:11 +0100
+Subject: [PATCH] openssl 1.1.1i made verification of empty messages always
+ succeed
+
+BUGS: 432519
+---
+ unittest/cms/cms.cpp | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/unittest/cms/cms.cpp b/unittest/cms/cms.cpp
+index 37e188d0..4901221e 100644
+--- a/unittest/cms/cms.cpp
++++ b/unittest/cms/cms.cpp
+@@ -30,6 +30,8 @@
+ #include "import_plugins.h"
+ #endif
+ 
++#include <openssl/opensslv.h>
++
+ class CMSut : public QObject
+ {
+     Q_OBJECT
+@@ -252,7 +254,9 @@ void CMSut::signverify()
+             msg.waitForFinished(-1);
+             QVERIFY(msg.wasSigned());
+             QVERIFY(msg.success());
++#if OPENSSL_VERSION_NUMBER < 0x1010109fL
+             QEXPECT_FAIL("empty", "We don't seem to be able to verify signature of a zero length message", Continue);
++#endif
+             QVERIFY(msg.verifySuccess());
+ 
+             msg.reset();
+@@ -264,7 +268,9 @@ void CMSut::signverify()
+             msg.waitForFinished(-1);
+             QVERIFY(msg.wasSigned());
+             QVERIFY(msg.success());
++#if OPENSSL_VERSION_NUMBER < 0x1010109fL
+             QEXPECT_FAIL("empty", "We don't seem to be able to verify signature of a zero length message", Continue);
++#endif
+             QVERIFY(msg.verifySuccess());
+ 
+             msg.reset();
+@@ -277,6 +283,9 @@ void CMSut::signverify()
+             msg.waitForFinished(-1);
+             QVERIFY(msg.wasSigned());
+             QVERIFY(msg.success());
++#if OPENSSL_VERSION_NUMBER >= 0x1010109fL
++            QEXPECT_FAIL("empty", "On newer openssl verifaction of zero length message always succeeds", Continue);
++#endif
+             QCOMPARE(msg.verifySuccess(), false);
+ 
+             msg.reset();
+-- 
+GitLab
+

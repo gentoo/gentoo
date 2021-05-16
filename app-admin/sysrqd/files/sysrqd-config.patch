@@ -1,5 +1,5 @@
---- sysrqd.c.orig	2009-11-05 14:58:21.644471772 +0100
-+++ sysrqd.c	2009-11-05 14:58:43.276472005 +0100
+--- a/sysrqd.c
++++ b/sysrqd.c
 @@ -40,8 +40,8 @@
  #define BIND_MAX_LEN 16
  #define PROMPT "sysrq> "

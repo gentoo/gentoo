@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DESCRIPTION="DVB/MPEG stream analyzer program"
 SRC_URI="mirror://sourceforge/dvbsnoop/${P}.tar.gz"
@@ -17,12 +16,12 @@ RDEPEND=""
 SLOT="0"
 IUSE=""
 
-src_prepare () {
+src_prepare() {
 	epatch "${FILESDIR}/${P}-crc32.patch"
 }
 
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
+src_install() {
+	emake DESTDIR="${D}" install
 
 	dodoc AUTHORS ChangeLog README
 }

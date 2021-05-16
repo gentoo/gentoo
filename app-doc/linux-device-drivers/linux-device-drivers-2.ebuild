@@ -1,6 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=6
 
 DESCRIPTION="howto write linux device drivers (updated for Linux 2.4)"
 HOMEPAGE="http://www.oreilly.com/catalog/linuxdrive2/"
@@ -9,7 +10,7 @@ SRC_URI="http://www.xml.com/ldd/chapter/book/pdf/ldd_book_pdf.zip
 
 LICENSE="FDL-1.1"
 SLOT="2"
-KEYWORDS="amd64 arm hppa ia64 ppc s390 x86"
+KEYWORDS="amd64 arm hppa ~ia64 ppc ~s390 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
@@ -19,7 +20,7 @@ S=${WORKDIR}
 
 src_install() {
 	insinto /usr/share/doc/${PF}
-	doins *.pdf || die "pdfs"
+	doins *.pdf
 	insinto /usr/share/doc/${PF}/samples
-	doins -r ldd2-samples-*/* || die "samples"
+	doins -r ldd2-samples-*/*
 }

@@ -1,0 +1,11 @@
+--- twelf-orig/Makefile	2018-03-06 23:30:35.055598250 +1100
++++ twelf/Makefile	2018-03-06 23:24:44.403762472 +1100
+@@ -11,7 +11,7 @@
+ polyml = poly
+ smlnj = sml
+ oldnj = sml
+-mlton = mlton -default-ann 'nonexhaustiveMatch ignore'
++mlton = mlton -disable-ann nonexhaustiveMatch
+ make = make
+ 
+ twelfdir = `pwd`

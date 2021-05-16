@@ -5,7 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A cross-platform library for retrieving information about disk space usage.
-	</longdescription>
+	<upstream>
+		<remote-id type="github">redneb/disk-free-space</remote-id>
+	</upstream>
 </pkgmetadata>

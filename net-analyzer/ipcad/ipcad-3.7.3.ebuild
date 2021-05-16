@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit autotools eutils
+
+inherit autotools epatch
 
 DESCRIPTION="IP Cisco Accounting Daemon"
-HOMEPAGE="http://sourceforge.net/projects/ipcad/ http://lionet.info/ipcad/"
+HOMEPAGE="https://sourceforge.net/projects/ipcad/ http://lionet.info/ipcad/"
 SRC_URI="mirror://sourceforge/ipcad/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"

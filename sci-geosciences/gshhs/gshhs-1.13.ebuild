@@ -1,13 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit toolchain-funcs
 
 DESCRIPTION="Global Self-consistent, Hierarchical, High-resolution Shoreline programs"
-HOMEPAGE="http://www.ngdc.noaa.gov/mgg/shorelines/gshhs.html"
+HOMEPAGE="https://www.ngdc.noaa.gov/mgg/shorelines/gshhs.html"
 SRC_URI="ftp://ftp.soest.hawaii.edu/pwessel/gshhs/gshhs_1.13_src.zip"
 
 LICENSE="GPL-2"

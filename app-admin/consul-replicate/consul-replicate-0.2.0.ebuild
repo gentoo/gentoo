@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -9,10 +8,11 @@ inherit golang-base
 KEYWORDS="~amd64"
 DESCRIPTION="Consul cross-DC KV replication daemon"
 EGO_PN="github.com/hashicorp/${PN}/..."
-HOMEPAGE="http://${EGO_PN%/*}"
-LICENSE="MPL-2.0"
+HOMEPAGE="https://github.com/hashicorp/consul-replicate"
+LICENSE="MPL-2.0 Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT+=" !test? ( test )"
 
 DEPEND=">=dev-lang/go-1.4:="
 RDEPEND=""
@@ -30,7 +30,6 @@ SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/hashicorp/serf/archive/64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz -> serf-64d10e9428bd70dbcd831ad087573b66731c014b.tar.gz
 	https://github.com/mitchellh/mapstructure/archive/281073eb9eb092240d33ef253c404f1cca550309.tar.gz -> mapstructure-281073eb9eb092240d33ef253c404f1cca550309.tar.gz"
 
-STRIP_MASK="*.a"
 S="${WORKDIR}/src/${EGO_PN%/*}"
 
 get_archive_go_package() {
@@ -75,6 +74,11 @@ src_prepare() {
 	done < <(find "${WORKDIR}/src" -maxdepth 3 -mindepth 3 -type d -print0)
 
 	sed -e 's:TestParseConfig_parseFileError(:_\0:' -i config_test.go || die
+
+	sed -e 's|t.Errorf("expected %q to be %q", config.Prefixes, expected)|t.Errorf("expected %v to be %v", config.Prefixes, expected)|' \
+		-e 's|t.Errorf("expected %q to be %q", config.Prefixes\[0\], expected)|t.Errorf("expected %v to be %v", config.Prefixes[0], expected)|' \
+		-e 's|t.Errorf("expected %q to be %q", value.Data, data)|t.Errorf("expected %v to be %v", value.Data, data)|' \
+		-i cli_test.go runner_test.go || die
 }
 
 src_compile() {

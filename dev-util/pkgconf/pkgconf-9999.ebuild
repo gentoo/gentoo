@@ -1,56 +1,83 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 2012-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
+
+inherit multilib multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://github.com/pkgconf/pkgconf.git"
-	inherit autotools git-2 multilib-minimal
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://git.sr.ht/~kaniini/pkgconf"
 else
-	inherit autotools multilib-minimal vcs-snapshot
-	SRC_URI="https://github.com/pkgconf/pkgconf/tarball/${P} -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
+	SRC_URI="http://distfiles.dereferenced.org/${PN}/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
-HOMEPAGE="https://github.com/pkgconf/pkgconf"
+HOMEPAGE="https://git.sr.ht/~kaniini/pkgconf"
 
-LICENSE="BSD-1"
-SLOT="0"
-IUSE="+pkg-config strict"
+LICENSE="ISC"
+SLOT="0/3"
+IUSE="+pkg-config test"
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	pkg-config? (
-		!dev-util/pkgconfig
-		!dev-util/pkg-config-lite
-		!dev-util/pkgconfig-openbsd[pkg-config]
-	)"
+# tests require 'kyua'
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? (
+		dev-libs/atf
+		dev-util/kyua
+	)
+"
+RDEPEND="
+	pkg-config? ( !dev-util/pkgconfig )
+"
 
 MULTILIB_CHOST_TOOLS=(
-	/usr/bin/pkgconf
+	/usr/bin/pkgconf$(get_exeext)
 )
 
 src_prepare() {
-	[[ -e configure ]] || eautoreconf
+	default
 
+	[[ ${PV} == "9999" ]] && eautoreconf
 	if use pkg-config; then
 		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/pkg-config
+			/usr/bin/pkg-config$(get_exeext)
 		)
 	fi
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf $(use_enable strict)
+	local ECONF_SOURCE="${S}"
+	local args=(
+		--disable-static
+		--with-system-includedir="${EPREFIX}/usr/include"
+		--with-system-libdir="${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)"
+	)
+	econf "${args[@]}"
+}
+
+multilib_src_test() {
+	unset PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
+	default
 }
 
 multilib_src_install() {
 	default
-	use pkg-config \
-		&& dosym pkgconf /usr/bin/pkg-config \
-		|| rm "${ED}"/usr/share/aclocal/pkg.m4 \
-		|| die
+
+	if use pkg-config; then
+		dosym pkgconf$(get_exeext) /usr/bin/pkg-config$(get_exeext)
+		dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
+	else
+		rm "${ED}"/usr/share/aclocal/pkg.m4 || die
+		rmdir "${ED}"/usr/share/aclocal || die
+		rm "${ED}"/usr/share/man/man7/pkg.m4.7 || die
+		rmdir "${ED}"/usr/share/man/man7 || die
+	fi
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	find "${ED}" -type f -name '*.la' -delete || die
 }

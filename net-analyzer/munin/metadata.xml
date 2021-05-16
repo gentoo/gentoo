@@ -5,6 +5,10 @@
     <email>sysadmin@gentoo.org</email>
     <name>Gentoo Sysadmin Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>graaff@gentoo.org</email>
+    <name>Hans de Graaff</name>
+  </maintainer>
   <longdescription lang="en">
     Munin the tool surveys all your computers and remembers what it saw. It
     presents all the information in in graphs through a web interface. Its
@@ -66,11 +70,6 @@
       Install the CGI-compatible scripts for on-the-fly generation of
       web pages and graphs. This is only meaningful if the minimal USE
       flag is disabled.
-    </flag>
-    <flag name="apache">
-      Set up the configuration of the CGI generation of HTML and
-      graphs to work with Apache. This also install an include-able
-      configuration file.
     </flag>
     <flag name="ipv6">
       Add support for IPv6 in munin-node. IPv6 support for the master

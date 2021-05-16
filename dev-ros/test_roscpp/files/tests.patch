@@ -1,0 +1,12 @@
+Index: test_roscpp/test/src/CMakeLists.txt
+===================================================================
+--- test_roscpp.orig/test/src/CMakeLists.txt
++++ test_roscpp/test/src/CMakeLists.txt
+@@ -290,6 +290,7 @@ if(TARGET tests)
+     ${PROJECT_NAME}-left_right
+     ${PROJECT_NAME}-string_msg_expect
+     ${PROJECT_NAME}-publisher
++    ${PROJECT_NAME}-publisher_rate
+     ${PROJECT_NAME}-subscriber
+     ${PROJECT_NAME}-stamped_topic_statistics_empty_timestamp
+     ${PROJECT_NAME}-topic_statistic_frequency

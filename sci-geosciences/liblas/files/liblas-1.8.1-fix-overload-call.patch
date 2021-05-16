@@ -1,0 +1,15 @@
+--- a/src/gt_citation.cpp	2018-08-03 12:16:16.007831564 +0100
++++ b/src/gt_citation.cpp	2018-08-03 12:16:45.224830335 +0100
+@@ -387,10 +387,10 @@
+         osCitation += primemName;
+         bRewriteGeogCitation = TRUE;
+ 
+-        double primemValue = poSRS->GetPrimeMeridian(NULL);
++        double primemValue = poSRS->GetPrimeMeridian();
+         if(angUnitName && !EQUAL(angUnitName, "Degree"))
+         {
+-            double aUnit = poSRS->GetAngularUnits(NULL);
++            double aUnit = poSRS->GetAngularUnits();
+             primemValue *= aUnit;
+         }
+         GTIFKeySet( psGTIF, GeogPrimeMeridianLongGeoKey, TYPE_DOUBLE, 1, 

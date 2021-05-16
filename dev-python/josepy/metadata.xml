@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		JOSE protocol implementation in Python using cryptography
+		Originally developed as part of the ACME protocol implementation.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">josepy</remote-id>
+		<remote-id type="github">certbot/josepy</remote-id>
+		<bugs-to>https://github.com/certbot/josepy/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,11 @@
+--- qemu-2.11.1/include/disas/capstone.h	2018-02-14 22:53:22.000000000 +0100
++++ qemu-2.11.1/include/disas/capstone.h	2018-02-17 20:12:12.754703951 +0100
+@@ -3,7 +3,7 @@
+ 
+ #ifdef CONFIG_CAPSTONE
+ 
+-#include <capstone.h>
++#include <capstone/capstone.h>
+ 
+ #else
+ 

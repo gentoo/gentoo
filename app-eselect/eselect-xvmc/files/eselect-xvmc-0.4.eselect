@@ -1,9 +1,9 @@
 # -*-eselect-*-  vim: ft=eselect
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 DESCRIPTION="Manage the XvMC implementation used by your system"
-MAINTAINER="{cardoe,ottxor}@gentoo.org"
+MAINTAINER="{cardoe,junghans}@gentoo.org"
 VERSION="0.4"
 
 init_XVMC_vars() {

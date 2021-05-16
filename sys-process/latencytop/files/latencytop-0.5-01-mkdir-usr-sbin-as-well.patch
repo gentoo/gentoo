@@ -7,8 +7,8 @@ Subject: [PATCH] mkdir /usr/sbin as well
 
 diff --git a/src/Makefile b/src/Makefile
 index fdf1616..de24551 100644
---- a/src/Makefile
-+++ b/src/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -30,6 +30,7 @@
  
  install: latencytop

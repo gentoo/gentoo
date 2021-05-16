@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: vala.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
 # @AUTHOR:
 # Alexandre Rostovtsev <tetromino@gentoo.org>
+# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
 # @BLURB: Sets up the environment for using a specific version of vala.
 # @DESCRIPTION:
 # This eclass sets up commonly used environment variables for using a specific
@@ -26,13 +26,13 @@ esac
 
 # @ECLASS-VARIABLE: VALA_MIN_API_VERSION
 # @DESCRIPTION:
-# Minimum vala API version (e.g. 0.22).
-VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.22}
+# Minimum vala API version (e.g. 0.36).
+VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.36}
 
 # @ECLASS-VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
-# Maximum vala API version (e.g. 0.30).
-VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.30}
+# Maximum vala API version (e.g. 0.36).
+VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.52}
 
 # @ECLASS-VARIABLE: VALA_USE_DEPEND
 # @DEFAULT_UNSET
@@ -50,13 +50,32 @@ vala_api_versions() {
 	local minimal_supported_minor_version minor_version
 
 	# Dependency atoms are not generated for Vala versions older than 0.${minimal_supported_minor_version}.
-	minimal_supported_minor_version="22"
+	minimal_supported_minor_version="36"
 
 	for ((minor_version = ${VALA_MAX_API_VERSION#*.}; minor_version >= ${VALA_MIN_API_VERSION#*.}; minor_version = minor_version - 2)); do
-		if ((minor_version >= minimal_supported_minor_version)); then
+		# 0.38 was never in main tree; remove the special case once minimal_supported_minor_version >= 40
+		# 0.42 is EOL and removed from tree; remove special case once minimal_support_minor_version >= 44
+		if ((minor_version >= minimal_supported_minor_version)) && ((minor_version != 38)) && ((minor_version != 42)); then
 			echo "0.${minor_version}"
 		fi
 	done
+}
+
+# Outputs VALA_USE_DEPEND as a a USE-dependency string
+_vala_use_depend() {
+	local u="" vala_use
+
+	if [[ -n ${VALA_USE_DEPEND} ]]; then
+		for vala_use in ${VALA_USE_DEPEND}; do
+			case ${vala_use} in
+				vapigen) u="${u},${vala_use}(+)" ;;
+				valadoc) u="${u},${vala_use}(-)" ;;
+			esac
+		done
+		u="[${u#,}]"
+	fi
+
+	echo -n "${u}"
 }
 
 # @FUNCTION: vala_depend
@@ -64,11 +83,11 @@ vala_api_versions() {
 # Outputs a ||-dependency string on vala from VALA_MAX_API_VERSION down to
 # VALA_MIN_API_VERSION
 vala_depend() {
-	local u v versions=$(vala_api_versions)
-	[[ ${VALA_USE_DEPEND} ]] && u="[${VALA_USE_DEPEND}(+)]"
+	local u v
+	u=$(_vala_use_depend)
 
 	echo -n "|| ("
-	for v in ${versions}; do
+	for v in $(vala_api_versions); do
 		echo -n " dev-lang/vala:${v}${u}"
 	done
 	echo " )"
@@ -80,9 +99,10 @@ vala_depend() {
 # VALA_MAX_API_VERSION, VALA_MIN_API_VERSION, and VALA_USE_DEPEND.
 vala_best_api_version() {
 	local u v
-	[[ ${VALA_USE_DEPEND} ]] && u="[${VALA_USE_DEPEND}(+)]"
+	u=$(_vala_use_depend)
+
 	for v in $(vala_api_versions); do
-		has_version "dev-lang/vala:${v}${u}" && echo "${v}" && return
+		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${v}${u}" && echo "${v}" && return
 	done
 }
 
@@ -116,7 +136,7 @@ vala_src_prepare() {
 	fi
 
 	if [[ ${version} ]]; then
-		has_version "dev-lang/vala:${version}" || die "No installed vala:${version}"
+		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${version}" || die "No installed vala:${version}"
 	else
 		version=$(vala_best_api_version)
 		[[ ${version} ]] || die "No installed vala in $(vala_depend)"
@@ -129,6 +149,9 @@ vala_src_prepare() {
 
 	valafoo=$(type -P vapigen-${version})
 	[[ ${valafoo} ]] && export VAPIGEN="${valafoo}"
+
+	valafoo=$(type -P valadoc-${version})
+	[[ ${valafoo} ]] && has valadoc ${VALA_USE_DEPEND} && export VALADOC="${valafoo}"
 
 	valafoo="${EPREFIX}/usr/share/vala/Makefile.vapigen"
 	[[ -e ${valafoo} ]] && export VAPIGEN_MAKEFILE="${valafoo}"

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		From author's description:
+		Spent some time looking around the net to find a font that mimics
+		DEC VT220 terminal glyph appearance. There is none. There are some
+		old bitmapped fonts from X11 and probably early MacOS distributions
+		that claim to be DEC fonts, they are functional but their visual quality
+		is lacking and nostalgic value is absent. What I wanted was a font that
+		fills my virtual terminal window with the magic hacking glow.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/svofski/glasstty/issues</bugs-to>
+		<remote-id type="github">svofski/glasstty</remote-id>
+	</upstream>
+</pkgmetadata>

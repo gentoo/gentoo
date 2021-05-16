@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jdhore@gentoo.org</email>
-		<name>Jeff Horelick</name>
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
 	</maintainer>
 	<longdescription lang="en">
 		SL is an extremely sophisticated type remediation program at which you
@@ -11,4 +11,7 @@
 		modifications and enhancements so that one can never think of better
 		software than SL.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">mtoyoda/sl</remote-id>
+	</upstream>
 </pkgmetadata>

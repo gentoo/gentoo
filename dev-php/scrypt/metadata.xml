@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A PHP library providing a wrapper to Colin Percival's scrypt
+	implementation. Scrypt is a key derivation function designed
+	to be far more secure against hardware brute-force attacks
+	than alternative functions such as PBKDF2 or bcrypt.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">DomBlack/php-scrypt</remote-id>
+		<remote-id type="pecl">scrypt</remote-id>
+	</upstream>
+</pkgmetadata>

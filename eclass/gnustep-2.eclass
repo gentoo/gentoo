@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: gnustep-2.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: eclass for GNUstep Apps, Frameworks, and Bundles build
 # @DESCRIPTION:
 # This eclass sets up GNUstep environment to properly install
@@ -14,8 +14,7 @@ inherit gnustep-base
 
 DEPEND=">=gnustep-base/gnustep-make-2.0
 	virtual/gnustep-back"
-RDEPEND="${DEPEND}
-	debug? ( !<sys-devel/gdb-6.0 )"
+RDEPEND="${DEPEND}"
 
 # The following gnustep-based EXPORT_FUNCTIONS are available:
 # * gnustep-base_pkg_setup

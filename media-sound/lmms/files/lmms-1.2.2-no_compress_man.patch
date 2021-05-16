@@ -1,0 +1,37 @@
+--- lmms/CMakeLists.txt
++++ lmms/CMakeLists.txt
+@@ -575,15 +575,6 @@
+ # post-install tasks
+ ADD_SUBDIRECTORY(cmake/postinstall)
+ 
+-ADD_CUSTOM_COMMAND(OUTPUT "${CMAKE_BINARY_DIR}/lmms.1.gz"
+-				COMMAND gzip -c ${CMAKE_SOURCE_DIR}/doc/lmms.1 > ${CMAKE_BINARY_DIR}/lmms.1.gz
+-				DEPENDS "${CMAKE_SOURCE_DIR}/doc/lmms.1"
+-				COMMENT "Generating lmms.1.gz"
+-				VERBATIM)
+-
+-
+-ADD_CUSTOM_TARGET(manpage ALL
+-				DEPENDS "${CMAKE_BINARY_DIR}/lmms.1.gz")
+ 
+ # install headers
+ 
+--- lmms/src/CMakeLists.txt
++++ lmms/src/CMakeLists.txt
+@@ -113,7 +113,7 @@
+ 	)
+ ENDIF()
+ 
+-SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${LMMS_ER_H} ${LMMS_UI_OUT} lmmsconfig.h lmms.1.gz")
++SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${LMMS_ER_H} ${LMMS_UI_OUT} lmmsconfig.h lmms.1")
+ 
+ IF(LMMS_BUILD_WIN32)
+ 	SET(EXTRA_LIBRARIES "-lwinmm")
+@@ -258,6 +258,6 @@
+ 	ENDIF(NOT LMMS_BUILD_APPLE)
+ 
+ 	INSTALL(TARGETS lmms RUNTIME DESTINATION "${BIN_DIR}")
+-	INSTALL(FILES "${CMAKE_BINARY_DIR}/lmms.1.gz" DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man1/" PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
++	INSTALL(FILES "${CMAKE_SOURCE_DIR}/doc/lmms.1" DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man1/" PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+ 
+ ENDIF(LMMS_BUILD_WIN32)

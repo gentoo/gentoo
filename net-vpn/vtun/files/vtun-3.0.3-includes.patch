@@ -1,0 +1,62 @@
+--- a/lfd_encrypt.c
++++ b/lfd_encrypt.c
+@@ -44,6 +44,7 @@
+ #include <strings.h>
+ #include <string.h>
+ #include <time.h>
++#include <arpa/inet.h> /* htonl() */
+ 
+ #include "vtun.h"
+ #include "linkfd.h"
+--- a/lib.c
++++ b/lib.c
+@@ -34,6 +34,7 @@
+ #include <sys/wait.h>
+ #include <syslog.h>
+ #include <errno.h>
++#include <time.h> /* nanosleep() */
+ 
+ #include "vtun.h"
+ #include "linkfd.h"
+--- a/lib.h
++++ b/lib.h
+@@ -26,6 +26,7 @@
+ #include <sys/types.h>
+ #include <signal.h>
+ #include <errno.h>
++#include <unistd.h> /* read(), write() */
+ 
+ #ifdef HAVE_LIBUTIL_H
+ #include <libutil.h>
+--- a/vtun.h
++++ b/vtun.h
+@@ -232,5 +232,9 @@
+ int  read_config(char *file);
+ struct vtun_host * find_host(char *host);
+ inline void clear_nat_hack_flags(int svr);
++int send_msg(int len, char *in, char **out);
++int send_ib_mesg(int *len, char **in);
++int recv_msg(int len, char *in, char **out);
++int recv_ib_mesg(int *len, char **in);
+ 
+ #endif
+--- a/lock.c
++++ b/lock.c
+@@ -32,6 +32,7 @@
+ #include <sys/types.h>
+ #include <signal.h>
+ #include <errno.h>
++#include <time.h> /* nanosleep() */
+ 
+ #include "vtun.h"
+ #include "linkfd.h"
+--- a/lfd_shaper.c
++++ b/lfd_shaper.c
+@@ -27,6 +27,7 @@
+ #include <stdlib.h>
+ #include <sys/time.h>
+ #include <syslog.h>
++#include <time.h> /* nanosleep() */
+ 
+ #include "vtun.h"
+ #include "linkfd.h"

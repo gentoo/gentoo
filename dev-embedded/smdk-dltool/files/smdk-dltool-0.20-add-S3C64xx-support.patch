@@ -6,13 +6,13 @@ Subject: [PATCH] Add S3C64xx support
 Author: unknown
 URL: http://dev.odroid.com/frs/download.php/22/Linux-dltool.tar.gz
 ---
- dltool/dltool.c |   19 ++++++++++++++-----
+ dltool.c |   19 ++++++++++++++-----
  1 files changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/dltool/dltool.c b/dltool/dltool.c
+diff --git a/dltool.c b/dltool.c
 index 4e2d238..e76e607 100644
---- a/dltool/dltool.c
-+++ b/dltool/dltool.c
+--- a/dltool.c
++++ b/dltool.c
 @@ -26,6 +26,8 @@ char *dl_file = "download.dat";
  char *dl_udev = NULL;
  char *dl_ubus = NULL;

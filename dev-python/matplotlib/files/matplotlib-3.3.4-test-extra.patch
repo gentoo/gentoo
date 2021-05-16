@@ -1,0 +1,12 @@
+diff -dupr a/lib/mpl_toolkits/tests/test_mplot3d.py b/lib/mpl_toolkits/tests/test_mplot3d.py
+--- a/lib/mpl_toolkits/tests/test_mplot3d.py	2021-01-29 10:43:01.196582153 +0100
++++ b/lib/mpl_toolkits/tests/test_mplot3d.py	2021-01-29 10:44:36.084875177 +0100
+@@ -150,7 +150,7 @@ def test_contourf3d_fill():
+     ax.set_zlim(-1, 1)
+ 
+ 
+-@mpl3d_image_comparison(['tricontour.png'])
++@mpl3d_image_comparison(['tricontour.png'], tol=0.02)
+ def test_tricontour():
+     fig = plt.figure()
+ 

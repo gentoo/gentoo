@@ -5,7 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		HTTP multipart split out of the cgi package
-	</longdescription>
+	<upstream>
+		<remote-id type="github">silkapp/multipart</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -28,5 +27,5 @@ src_install() {
 	java-pkg_newjar ${MY_PN}-${PV}.jar
 	java-pkg_dolauncher ${MY_PN}
 
-	dodoc README.txt RELEASE-NOTES.txt || die
+	dodoc README.txt RELEASE-NOTES.txt
 }

@@ -1,0 +1,43 @@
+* Respect user CXXFLAGS
+* Build out-of-source
+
+--- a/src/bind/CMakeLists.txt
++++ b/src/bind/CMakeLists.txt
+@@ -1,16 +1,25 @@
+-ADD_CUSTOM_TARGET(
+-     swig
+-     ${SWIG_EXECUTABLE} -lua -c++ -o ${JVGS_BINARY_DIR}/src/bind/jvgslua.cpp ${JVGS_BINARY_DIR}/src/bind/jvgslua.i
++ADD_CUSTOM_COMMAND(
++    OUTPUT
++        ${CMAKE_CURRENT_BINARY_DIR}/jvgslua.cpp
++    COMMAND
++        ${SWIG_EXECUTABLE} -lua -c++ -o ${CMAKE_CURRENT_BINARY_DIR}/jvgslua.cpp ${CMAKE_CURRENT_SOURCE_DIR}/jvgslua.i
++    VERBATIM
+ )
+ 
+ ADD_LIBRARY(
+     bind STATIC
+-    jvgslua.cpp
++    ${CMAKE_CURRENT_BINARY_DIR}/jvgslua.cpp
+     ScriptManager.cpp
+ )
+ 
+ ADD_DEPENDENCIES( bind swig )
+ 
++TARGET_INCLUDE_DIRECTORIES(
++    bind
++    PRIVATE
++    ${CMAKE_CURRENT_SOURCE_DIR}
++)
++
+ TARGET_LINK_LIBRARIES(
+     bind
+     ${LUA_LIBRARIES}
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-SET( CMAKE_CXX_FLAGS "-DTIXML_USE_STL -ggdb" )
++SET( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DTIXML_USE_STL" )
+ 
+ INCLUDE_DIRECTORIES(
+     ${SDL_INCLUDE_DIR}

@@ -1,12 +1,11 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="2"
+EAPI=7
 
 inherit autotools
 
-DESCRIPTION="A Pidgin now playing plugin to publicise the songs you are listening to in your status message"
+DESCRIPTION="A Pidgin now playing plugin to publicise the songs you are listening"
 HOMEPAGE="https://code.google.com/p/pidgin-musictracker/"
 SRC_URI="https://pidgin-musictracker.googlecode.com/files/${P}.tar.bz2"
 
@@ -15,14 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
-DEPEND=">=net-im/pidgin-2.0.0[gtk]
-	>=dev-libs/dbus-glib-0.73
+DEPEND="
+	dev-libs/dbus-glib
 	dev-libs/libpcre
-	>=sys-devel/gettext-0.17"
+	net-im/pidgin[gtk]"
 RDEPEND="${DEPEND}"
+BDEPEND="sys-devel/gettext"
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
-	sed -i -e "s/DOMAIN/PACKAGE/g" po/Makefile.in.in || die "sed failed"
+	default
+	sed -i -e "s/DOMAIN/PACKAGE/g" po/Makefile.in.in || die
 	eautoreconf
 }
 
@@ -33,7 +36,6 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "make install failure"
-	dodoc AUTHORS ChangeLog INSTALL README THANKS || die "dodoc failed"
-	find "${D}" -name "*.la" -delete || die "error cleaning la file."
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

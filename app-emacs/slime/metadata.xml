@@ -34,6 +34,7 @@
 
     * Inspector: Interactive object-inspector in an Emacs buffer.
 </longdescription>
+<stabilize-allarches/>
 <use>
   <flag name="xref">Install xref.lisp cross-referencing tool</flag>
 </use>

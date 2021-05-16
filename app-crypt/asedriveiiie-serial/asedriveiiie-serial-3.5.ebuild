@@ -1,26 +1,25 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 DESCRIPTION="ASEDriveIIIe Serial Card Reader"
-HOMEPAGE="http://www.athena-scs.com"
+HOMEPAGE="https://www.athena-scs.com"
 SRC_URI="http://www.athena-scs.com/downloads/${P}.tar.bz2"
+
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86"
+
 RDEPEND=">=sys-apps/pcsc-lite-1.3.0"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_install() {
+	default
+
 	local conf="/etc/reader.conf.d/${PN}.conf"
 
-	emake DESTDIR="${D}" install || die "emake install failed"
-
-	dodoc ChangeLog README
-
-	dodir "$(dirname "${conf}")"
 	insinto "$(dirname "${conf}")"
 	newins "etc/reader.conf" "$(basename "${conf}")"
 }

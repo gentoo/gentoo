@@ -1,0 +1,13 @@
+Index: laser_cb_detector/CMakeLists.txt
+===================================================================
+--- laser_cb_detector.orig/CMakeLists.txt
++++ laser_cb_detector/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 2.8.3)
+ project(laser_cb_detector)
+ 
+-find_package(Boost REQUIRED signals thread)
++find_package(Boost REQUIRED thread)
+ find_package(catkin REQUIRED actionlib actionlib_msgs cv_bridge image_cb_detector message_filters roscpp settlerlib std_msgs)
+ 
+ add_action_files(DIRECTORY action FILES Config.action)

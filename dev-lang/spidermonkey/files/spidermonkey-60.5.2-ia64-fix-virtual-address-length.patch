@@ -1,0 +1,59 @@
+From 8099213b51180254b322332ecd573239da4212c4 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 23 Jan 2020 22:57:53 +0000
+Subject: [PATCH] ProcessExecutableMemory.cpp: fix virtual address length on
+ ia64
+
+ia64's usable virtual address space is page dependent. For 16K
+pages with 3 levels of page tables de can address only 44 bits
+of virtual memory, not default 47.
+
+The change makes page size detection dynamic and adapts to
+addressable bits. On ia64 it is '4 * log2(page_size/8)'.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ js/src/jit/ProcessExecutableMemory.cpp | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/js/src/jit/ProcessExecutableMemory.cpp b/js/src/jit/ProcessExecutableMemory.cpp
+index 9e55c262..8581c150 100644
+--- a/js/src/jit/ProcessExecutableMemory.cpp
++++ b/js/src/jit/ProcessExecutableMemory.cpp
+
+@@ -248,7 +248,32 @@ static void* ComputeRandomAllocationAddress() {
+   // x64 CPUs have a 48-bit address space and on some platforms the OS will
+   // give us access to 47 bits, so to be safe we right shift by 18 to leave
+   // 46 bits.
++# ifdef __ia64__
++  // On ia64 virtual address space looks like one of:
++  //   virt_addr_64 = [ <63..61> | <unimplemented> | L3 | L2 | L1 | offset ]
++  //   virt_addr_64 = [ <63..61> | <unimplemented> | L4 | L3 | L2 | L1 | offset ]
++  // where L{1..L4} are page tables. Each page table (except top-level L3 or L4)
++  // is itself a page-size entry and can store PageSize / 8 entries. Top-level
++  // entry is 1/8 of of L1/L2 (as 3 upper bits are part of <63..61> address part).
++  // Note: that makes addressable size directly depend on page size.
++  //
++  // We conservatively assume 3 levels of page tables here. This makes the
++  // following formula:
++  //   L3     = log2(PAGE / 8 / 8) = log2(PAGE / 8) - 3
++  //   L2                          = log2(PAGE / 8)
++  //   L1                          = log2(PAGE / 8)
++  //   offset = log2(PAGE)         = log2(PAGE / 8) + 3
++  // thus
++  //  L3 + L2 + L1 + offset = 4 * log2(PAGE / 8)
++  // For more details see http://www.ia64-linux.org/doc/IA64linuxkernel.PDF
++  // (slide 19: "user regions").
++  static uint64_t ia64_virt_bits = std::min<uint64_t>(
++      4 * (mozilla::FloorLog2(gc::SystemPageSize() / 8)),
++      46);
++  rand >>= (64 - ia64_virt_bits);
++# else
+   rand >>= 18;
++# endif
+ #else
+   // On 32-bit, right shift by 34 to leave 30 bits, range [0, 1GiB). Then add
+   // 512MiB to get range [512MiB, 1.5GiB), or [0x20000000, 0x60000000). This
+-- 
+2.25.0
+

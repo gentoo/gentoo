@@ -10,7 +10,4 @@
 		Eclipse platform in an operating system independent manner.  It is analogous to
 		AWT/Swing in Java with a difference - SWT uses a rich set of native widgets.
 	</longdescription>
-	<use>
-		<flag name="webkit">Embedded browser support via net-libs/webkit-gtk:2, replacing former xulrunner-based browser.</flag>
-	</use>
 </pkgmetadata>

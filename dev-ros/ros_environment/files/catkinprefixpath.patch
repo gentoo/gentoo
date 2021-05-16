@@ -1,0 +1,20 @@
+Support CATKIN_PREFIX_PATH; let CMAKE_PREFIX_PATH come first, so that standard ROS methods still work even if we do not
+use them.
+
+Index: ros_environment-1.2.0/env-hooks/1.ros_package_path.sh.em
+===================================================================
+--- ros_environment-1.2.0.orig/env-hooks/1.ros_package_path.sh.em
++++ ros_environment-1.2.0/env-hooks/1.ros_package_path.sh.em
+@@ -4,8 +4,10 @@
+ PYTHON_CODE_BUILD_ROS_PACKAGE_PATH=$(cat <<EOF
+ from __future__ import print_function
+ import os
+-env_name = 'CMAKE_PREFIX_PATH'
+-paths = [path for path in os.environ[env_name].split(os.pathsep)] if env_name in os.environ and os.environ[env_name] != '' else []
++env_names = [ 'CMAKE_PREFIX_PATH', 'CATKIN_PREFIX_PATH' ]
++paths = []
++for env_name in env_names:
++    paths += [path for path in os.environ[env_name].split(os.pathsep)] if env_name in os.environ and os.environ[env_name] != '' else []
+ workspaces = [path for path in paths if os.path.exists(os.path.join(path, '.catkin'))]
+ paths = []
+ for workspace in workspaces:

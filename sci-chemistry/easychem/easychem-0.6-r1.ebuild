@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
 DESCRIPTION="Chemical structure drawing program - focused on presentation"
 HOMEPAGE="http://easychem.sourceforge.net/"
@@ -34,7 +33,7 @@ src_compile() {
 		C_FLAGS="${CFLAGS}" emake -e
 }
 
-src_install () {
+src_install() {
 	dobin easychem
 	dodoc TODO
 }

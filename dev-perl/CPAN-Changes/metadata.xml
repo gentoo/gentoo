@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pinkbyte@gentoo.org</email>
-		<name>Sergey Popov</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
@@ -12,6 +8,7 @@
 	<upstream>
 		<remote-id type="cpan">CPAN-Changes</remote-id>
 		<remote-id type="cpan-module">CPAN::Changes</remote-id>
+		<remote-id type="cpan-module">CPAN::Changes::Group</remote-id>
 		<remote-id type="cpan-module">CPAN::Changes::Release</remote-id>
 		<remote-id type="cpan-module">Test::CPAN::Changes</remote-id>
 	</upstream>

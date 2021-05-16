@@ -1,11 +1,10 @@
-#!/sbin/runscript
-# Copyright 1999-2013 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 extra_started_commands="reload graceful"
 
-LIGHTTPD_PID="$($(which lighttpd) -pf ${LIGHTTPD_CONF} | grep pid | cut -d '=' -f 2 | tr -d \\\" | tr -d [:space:])"
+LIGHTTPD_PID="$(grep pid ${LIGHTTPD_CONF} | cut -d '=' -f 2 | tr -d \\\" | tr -d [:space:])"
 
 depend() {
 	need net
@@ -31,7 +30,11 @@ checkconfig() {
 
 start() {
 	checkconfig || return 1
-	checkpath -d -q -m 0750 -o lighttpd:lighttpd /run/lighttpd/
+	# Glean lighttpd's credentials from the configuration file
+	# Fixes bug 454366
+	LIGHTTPD_USER="$(awk '/^server.username/{s=$3};{sub("\"","",s)};END{print s}' ${LIGHTTPD_CONF})"
+	LIGHTTPD_GROUP="$(awk '/^server.groupname/{s=$3};{sub("\"","",s)};END{print s}' ${LIGHTTPD_CONF})"
+	checkpath -d -q -m 0750 -o "${LIGHTTPD_USER}":"${LIGHTTPD_GROUP}" /run/lighttpd/
 
 	ebegin "Starting lighttpd"
 	start-stop-daemon --start --quiet --exec /usr/sbin/lighttpd \

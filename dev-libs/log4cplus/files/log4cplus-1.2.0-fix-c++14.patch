@@ -1,0 +1,31 @@
+Make dtors noexcept(false) when compiling in C++11 and above. This avoids
+silent breakage due to the semantic changes between C++98 and C++11.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=595424
+
+--- a/include/log4cplus/hierarchylocker.h
++++ b/include/log4cplus/hierarchylocker.h
+@@ -48,7 +48,11 @@
+     public:
+       // ctor & dtor
+         HierarchyLocker(Hierarchy& h);
+-        ~HierarchyLocker();
++        ~HierarchyLocker()
++#if __cplusplus >= 201103L
++        noexcept(false)
++#endif
++        ;
+         
+         /**
+          * Calls the <code>resetConfiguration()</code> method on the locked Hierarchy.
+--- a/src/hierarchylocker.cxx
++++ b/src/hierarchylocker.cxx
+@@ -62,6 +62,9 @@
+  
+ 
+ HierarchyLocker::~HierarchyLocker()
++#if __cplusplus >= 201103L
++    noexcept(false)
++#endif
+ {
+     try {
+         for(LoggerList::iterator it=loggerList.begin(); it!=loggerList.end(); ++it) {

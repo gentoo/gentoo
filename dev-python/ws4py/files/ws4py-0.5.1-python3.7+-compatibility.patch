@@ -1,0 +1,93 @@
+From: Matthias Klose <doko@ubuntu.com>
+Date: Sun, 29 Jul 2018 09:01:36 +0200
+Subject: Fix compatibility with Python 3.7.
+Origin: http://launchpadlibrarian.net/380629852/python-ws4py_0.4.2+dfsg1-2_0.4.2+dfsg1-2ubuntu1.diff.gz
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=903529
+
+---
+ test/autobahn_test_servers.py | 4 ++--
+ ws4py/async_websocket.py      | 9 +++++++--
+ ws4py/server/tulipserver.py   | 7 ++++++-
+ 3 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/test/autobahn_test_servers.py b/test/autobahn_test_servers.py
+index 3e33f82..8b77954 100644
+--- a/test/autobahn_test_servers.py
++++ b/test/autobahn_test_servers.py
+@@ -142,7 +142,7 @@ def run_python_wsgi(host="127.0.0.1", port=9002):
+     """
+     run_python_wsgi_async(host, port, False)
+ 
+-def run_python_wsgi_async(host="127.0.0.1", port=9010, async=True):
++def run_python_wsgi_async(host="127.0.0.1", port=9010, async_=True):
+     """
+     Runs wsgi server on python 2.x with async middleware"
+     """
+@@ -153,7 +153,7 @@ def run_python_wsgi_async(host="127.0.0.1", port=9010, async=True):
+     from ws4py.server.wsgiutils import WebSocketWSGIApplication
+ 
+     app = WebSocketWSGIApplication(handler_cls=EchoWebSocket)
+-    if async:
++    if async_:
+         def middleware(app):
+             def later(environ, start_response):
+                 for part in app(environ, start_response):
+diff --git a/ws4py/async_websocket.py b/ws4py/async_websocket.py
+index 9e2a4c7..096763d 100644
+--- a/ws4py/async_websocket.py
++++ b/ws4py/async_websocket.py
+@@ -18,6 +18,11 @@ delegated_generator_websocket_on_top_of_asyncio.py
+ import asyncio
+ import types
+ 
++try:                                                     # pragma: no cover
++    asyncio_ensure_future = asyncio.ensure_future        # Python >= 3.5
++except AttributeError:                                   # pragma: no cover
++    asyncio_ensure_future = getattr(asyncio, 'async')    # Python < 3.5
++
+ from ws4py.websocket import WebSocket as _WebSocket
+ from ws4py.messaging import Message
+ 
+@@ -84,7 +89,7 @@ class WebSocket(_WebSocket):
+         def closeit():
+             yield from self.proto.writer.drain()
+             self.proto.writer.close()
+-        asyncio.async(closeit())
++        asyncio.asyncio_ensure_future(closeit())
+ 
+     def _write(self, data):
+         """
+@@ -94,7 +99,7 @@ class WebSocket(_WebSocket):
+         def sendit(data):
+             self.proto.writer.write(data)
+             yield from self.proto.writer.drain()
+-        asyncio.async(sendit(data))
++        asyncio.asyncio_ensure_future(sendit(data))
+ 
+     @asyncio.coroutine
+     def run(self):
+diff --git a/ws4py/server/tulipserver.py b/ws4py/server/tulipserver.py
+index 2786c16..ce2e9fb 100644
+--- a/ws4py/server/tulipserver.py
++++ b/ws4py/server/tulipserver.py
+@@ -6,6 +6,11 @@ import io
+ 
+ import asyncio
+ 
++try:                                                     # pragma: no cover
++    asyncio_ensure_future = asyncio.ensure_future        # Python >= 3.5
++except AttributeError:                                   # pragma: no cover
++    asyncio_ensure_future = getattr(asyncio, 'async')    # Python < 3.5
++
+ from ws4py import WS_KEY, WS_VERSION
+ from ws4py.exc import HandshakeError
+ from ws4py.websocket import WebSocket
+@@ -40,7 +45,7 @@ class WebSocketProtocol(asyncio.StreamReaderProtocol):
+         #self.stream.set_transport(transport)
+         asyncio.StreamReaderProtocol.connection_made(self, transport)
+         # Let make it concurrent for others to tag along
+-        f = asyncio.async(self.handle_initial_handshake())
++        f = asyncio.asyncio_ensure_future(self.handle_initial_handshake())
+         f.add_done_callback(self.terminated)
+ 
+     @property

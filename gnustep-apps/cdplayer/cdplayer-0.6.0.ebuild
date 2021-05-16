@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit gnustep-2
@@ -18,8 +17,7 @@ DEPEND="dev-libs/libcdio
 	dev-libs/libcdio-paranoia
 	gnustep-apps/cynthiune
 	dbus? ( gnustep-libs/dbuskit )"
-RDEPEND="${DEPEND}
-	!gnustep-libs/cddb"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -e "s#cdda.h#paranoia/cdda.h#" \

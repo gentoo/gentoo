@@ -1,0 +1,4 @@
+If you are upgrading from a previous version of davical, don't forget to
+upgrade the database structure with
+	cd /usr/share/webapps/davical/${PVR}/sqlscripts/
+	./update-davical-database -dbuser xxxxxxx -appuser xxxxxx

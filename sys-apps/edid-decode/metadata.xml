@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Decodes EDID monitor description data in human-readable format.
+		If invoked with no arguments it reads from standard input and writes to standard output.
+		With one argument, the file named by the argument is read instead.
+		With two arguments, normal output is suppressed, and the binary EDID blob is
+		written to the file named by the second argument.
+	</longdescription>
+</pkgmetadata>

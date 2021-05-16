@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<longdescription lang="en">
+		s6-dns is a suite of DNS client programs and libraries for Unix systems,
+		as an alternative to the BIND, djbdns or other DNS clients.
+	</longdescription>
+</pkgmetadata>

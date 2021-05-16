@@ -5,8 +5,11 @@
 		<email>desktop-misc@gentoo.org</email>
 		<name>Gentoo Desktop Miscellaneous Project</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">stolowski/QComicBook</remote-id>
+	</upstream>
 </pkgmetadata>

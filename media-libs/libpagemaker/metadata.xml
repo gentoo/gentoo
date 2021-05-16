@@ -6,6 +6,6 @@
 		<name>Gentoo Office project</name>
 	</maintainer>
 	<use>
-		<flag name="tools">Build build tools</flag>
+		<flag name="tools">Build command line file format conversion tools</flag>
 	</use>
 </pkgmetadata>

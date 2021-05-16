@@ -1,25 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python3_3 python3_4 python3_5 )
+EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="readline(+)"
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://github.com/williamh/pybugz.git
-		https://github.com/williamh/pybugz.git"
+	EGIT_REPO_URI="https://github.com/williamh/pybugz.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/williamh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
-	inherit vcs-snapshot
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
 inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Command line interface to (Gentoo) Bugzilla"
-HOMEPAGE="https://www.github.com/williamh/pybugz"
+HOMEPAGE="https://github.com/williamh/pybugz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="zsh-completion"

@@ -1,5 +1,5 @@
---- id3lib-3.8.3/examples/test_io.cpp.orig	2004-09-21 23:40:48.398826320 +0200
-+++ id3lib-3.8.3/examples/test_io.cpp	2004-09-21 23:40:55.408760648 +0200
+--- a/examples/test_io.cpp	2004-09-21 23:40:48.398826320 +0200
++++ b/examples/test_io.cpp	2004-09-21 23:40:55.408760648 +0200
 @@ -16,6 +16,7 @@
  using std::cerr;
  

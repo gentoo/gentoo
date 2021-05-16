@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+	<email>sir.suriv@gmail.com</email>
+	<name>Diogo Pereira</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<stabilize-allarches/>
+<upstream>
+	<maintainer status="active">
+		<email>mlombard@redhat.com</email>
+		<name>Maurizio Lombardi</name>
+	</maintainer>
+	<maintainer>
+		<email>agrover@redhat.com</email>
+		<name>Andy Grover</name>
+	</maintainer>
+	<remote-id type="github">open-iscsi/targetcli-fb</remote-id>
+	<bugs-to>https://github.com/open-iscsi/targetcli-fb</bugs-to>
+</upstream>
+</pkgmetadata>

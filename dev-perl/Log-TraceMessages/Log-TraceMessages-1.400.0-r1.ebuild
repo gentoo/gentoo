@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,10 +10,10 @@ inherit perl-module
 DESCRIPTION="Logging/debugging aid"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-perl/HTML-FromText-1.004"
 DEPEND="${RDEPEND}"
-
+PATCHES=("${FILESDIR}/${P}-posix-tmpnam.patch")
 SRC_TEST="do"

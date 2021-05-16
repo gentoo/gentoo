@@ -1,0 +1,150 @@
+--- a/common/incdebug.m4
++++ b/common/incdebug.m4
+@@ -15,54 +15,6 @@
+ cflags_g="`echo $CFLAGS | grep -c '\-g'`"
+ cflags_O="`echo $CFLAGS | grep -c '\-O'`"
+ 
+-if test "$with_debug" = yes; then
+-   DEBUG="-DDEBUG"
+-   DEBUGGING="-g"
+-   if test "$cflags_g" = "0"; then
+-      CFLAGS="${CFLAGS} -g"
+-   fi
+-   if test "$cflags_O" != "0"; then
+-      CFLAGS="`echo ${CFLAGS} | sed -e s/-O.//`"
+-   fi
+-else
+-   DEBUG="-DNDEBUG"
+-   if test "$cflags_O" = "0"; then
+-      CFLAGS="${CFLAGS} -O"
+-   fi
+-   if test "$cflags_g" = "0"; then
+-      CFLAGS="${CFLAGS} -g"
+-   fi
+-fi
+-if test "$ac_cv_prog_CC" = "gcc" -o "$ac_cv_prog_CC" = "g++" -o "$ac_cv_prog_CC" = "clang"; then
+-   if test "$with_debug" = yes; then
+-      CFLAGS="${CFLAGS} -Wall"
+-   else
+-#      CFLAGS="${CFLAGS} -O3 -Wall -fomit-frame-pointer -fno-strict-aliasing -Wno-char-subscripts"
+-      CFLAGS="${CFLAGS} -O3 -Wall"
+-   fi
+-fi
+-if test "$on_qnx4" = yes; then
+-   if test "$ac_cv_prog_CC" = "gcc"; then
+-      QNX4_CFLAGS=""
+-   else
+-      QNX4_CFLAGS="-Wc,-r -b -j -Wc,-ei -N4096000 -mf -DNO_REGEX -DQNX -DQNX4 -D__QNX__ -DSTRINGS_ALIGNED -Q"
+-   fi
+-   if test "$with_debug" = yes; then
+-      CFLAGS="-g $QNX4_CFLAGS"
+-   else
+-      CFLAGS="-Otax $QNX4_CFLAGS"
+-   fi
+-fi
+-if test "$on_beos" = yes; then
+-   if test "$with_debug" = yes; then
+-      CFLAGS="${CFLAGS} -Wall"
+-   else
+-      CFLAGS="${CFLAGS} -O2 -Wall"
+-   fi
+-   if test "$datadir" = "\${prefix}/share"; then
+-      datadir="/boot/home/config/add-ons"
+-   fi
+-fi
+ AC_SUBST(DEBUG)
+ AC_SUBST(DEBUGGING)
+ 
+--- a/configure.in
++++ b/configure.in
+@@ -25,7 +25,7 @@
+ 
+ dnl ---------------------- check for C compiler -----------------
+ dnl Checks for one of the C compilers below - change if yours not there.
+-MH_PROG_CC
++AC_PROG_CC
+ 
+ AC_CONFIG_HEADER(config.h)
+ AC_ISC_POSIX
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -308,7 +308,7 @@
+ #
+ .SUFFIXES:
+ 
+-all : rexx$(binarybitprefix)$(EXE) $(STATICLIB) execiser$(binarybitprefix)$(EXE) $(SHL_TARGETS) $(THREADSAFE_TARGET) rxstack$(binarybitprefix)$(EXE) rxqueue$(binarybitprefix)$(EXE) $(MTBFILES)
++all : rexx$(binarybitprefix)$(EXE) execiser$(binarybitprefix)$(EXE) $(SHL_TARGETS) $(THREADSAFE_TARGET) rxstack$(binarybitprefix)$(EXE) rxqueue$(binarybitprefix)$(EXE) $(MTBFILES)
+ 
+ $(srcdir)/rexx.h : $(srcdir)/extern.h $(srcdir)/strings.h $(srcdir)/defs.h $(srcdir)/regina_t.h $(srcdir)/mt.h
+ 
+@@ -1031,20 +1031,14 @@
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(sharedir)
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(examplesdir)
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(mandir)/man1
+-	$(INSTALL) -s -m 755 -c ./rexx$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rexx$(binarybitprefix)$(EXE)
+-	$(INSTALL) -s -m 755 -c ./rxqueue$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rxqueue$(binarybitprefix)$(EXE)
+-	$(INSTALL) -s -m 755 -c ./rxstack$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rxstack$(binarybitprefix)$(EXE)
++	$(INSTALL) -m 755 -c ./rexx$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rexx$(binarybitprefix)$(EXE)
++	$(INSTALL) -m 755 -c ./rxqueue$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rxqueue$(binarybitprefix)$(EXE)
++	$(INSTALL) -m 755 -c ./rxstack$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/rxstack$(binarybitprefix)$(EXE)
+ 	$(INSTALL) -m 755 -c ./regina-config $(DESTDIR)$(bindir)/regina-config
+-	-$(INSTALL) -m 644 -c ./$(LIBPRE)$(LIBFILE)$(LIBPST) $(DESTDIR)$(libdir)/$(LIBPRE)$(LIBFILE)$(LIBPST)
+-	-$(RANLIB) $(DESTDIR)$(libdir)/$(LIBPRE)$(LIBFILE)$(LIBPST)
+ 	$(INSTALL) -m 644 -c $(srcdir)/regina.1 $(DESTDIR)$(mandir)/man1/regina.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/regina-config.1 $(DESTDIR)$(mandir)/man1/regina-config.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rxstack.1 $(DESTDIR)$(mandir)/man1/rxstack.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rxqueue.1 $(DESTDIR)$(mandir)/man1/rxqueue.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/regina.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/regina-config.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rxstack.1
+-	gzip -f $(DESTDIR)$(mandir)/man1/rxqueue.1
+ 	$(INSTALL) -m 644 -c $(srcdir)/rexxsaa.h $(DESTDIR)$(includedir)/rexxsaa.h
+ 	$(INSTALL) -m 644 -c ./en.mtb $(DESTDIR)$(sharedir)/en.mtb
+ 	$(INSTALL) -m 644 -c ./pt.mtb $(DESTDIR)$(sharedir)/pt.mtb
+@@ -1068,33 +1062,33 @@
+ 	-chmod 755 $(DESTDIR)$(examplesdir)/newstr.rexx
+ 
+ installregina:
+-	$(INSTALL) -s -m 755 -c ./regina$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/regina$(binarybitprefix)$(EXE)
++	$(INSTALL) -m 755 -c ./regina$(binarybitprefix)$(EXE) $(DESTDIR)$(bindir)/regina$(binarybitprefix)$(EXE)
+ 	$(DESTDIR)$(bindir)/rexx$(binarybitprefix)$(EXE) $(srcdir)/preinst.rexx $(bindir)/regina$(binarybitprefix)$(EXE) $(srcdir)/demo/dynfunc.rexx  $(DESTDIR)$(examplesdir)/dynfunc.rexx
+ 	-chmod 755 $(DESTDIR)$(examplesdir)/dynfunc.rexx
+ 	$(DESTDIR)$(bindir)/rexx$(binarybitprefix)$(EXE) $(srcdir)/preinst.rexx $(bindir)/regina$(binarybitprefix)$(EXE) $(srcdir)/regutil/regutil.rexx  $(DESTDIR)$(examplesdir)/regutil.rexx
+ 	-chmod 755 $(DESTDIR)$(examplesdir)/regutil.rexx
+ 
+ installlib: installregina
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)$(SHLFILE)$(SHLPST) $(DESTDIR)$(libdir)/$(SHLPRE)$(SHLFILE)$(SHLPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)regutil$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest1$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest2$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)$(SHLFILE)$(SHLPST) $(DESTDIR)$(libdir)/$(SHLPRE)$(SHLFILE)$(SHLPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)regutil$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest1$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest2$(MODPST)
+ 
+ installabilib: installregina
+-	-$(INSTALL) -s -m 755 -c ./$(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI) $(DESTDIR)$(libdir)/$(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI)
++	-$(INSTALL) -m 755 -c ./$(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI) $(DESTDIR)$(libdir)/$(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI)
+ 	-rm -f $(DESTDIR)$(libdir)/$(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI_MAJOR)
+ 	-(cd $(DESTDIR)$(libdir);$(LN_S) $(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI) $(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI_MAJOR) )
+ 	-rm -f $(DESTDIR)$(libdir)/$(SHLPRE)$(SHLFILE)$(SHLPST)
+ 	-(cd $(DESTDIR)$(libdir);$(LN_S) $(SHLPRE)$(SHLFILE)$(SHLPST).$(ABI_MAJOR) $(SHLPRE)$(SHLFILE)$(SHLPST) )
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)regutil$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest1$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest2$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)regutil$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest1$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/$(SHLPRE)rxtest2$(MODPST)
+ 
+ installcyglib:
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)$(SHLFILE)$(SHLPST) $(DESTDIR)$(bindir)/$(SHLPRE)$(SHLFILE)$(SHLPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/regutil$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/rxtest1$(MODPST)
+-	$(INSTALL) -s -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/rxtest2$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)$(SHLFILE)$(SHLPST) $(DESTDIR)$(bindir)/$(SHLPRE)$(SHLFILE)$(SHLPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)regutil$(MODPST) $(DESTDIR)$(addonsdir)/regutil$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)rxtest1$(MODPST) $(DESTDIR)$(addonsdir)/rxtest1$(MODPST)
++	$(INSTALL) -m 755 -c ./$(SHLPRE)rxtest2$(MODPST) $(DESTDIR)$(addonsdir)/rxtest2$(MODPST)
+ 
+ #
+ # Can't strip .dylib on OSX

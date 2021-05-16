@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -17,9 +16,5 @@ fi
 DESCRIPTION="simple command-line tool to talk to serial devices"
 HOMEPAGE="https://github.com/BGO-OD/serialtalk"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-
-src_install() {
-	cmake-utils_src_install
-}

@@ -1,6 +1,5 @@
-# Copyright 2004-2015 Gentoo Foundation
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: java-utils-2.eclass
 # @MAINTAINER:
@@ -16,20 +15,20 @@
 # you should inherit java-pkg-2 for Java packages or java-pkg-opt-2 for packages
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
-inherit eutils versionator multilib
+
+# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
+# Keep versionator inheritance in case consumers are using it implicitly.
+[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver eutils multilib versionator
 
 IUSE="elibc_FreeBSD"
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
 
-# @VARIABLE: JAVA_PKG_PORTAGE_DEP
-# @INTERNAL
-# @DESCRIPTION:
-# The version of portage we need to function properly. Previously it was
-# portage with phase hooks support but now we use a version with proper env
-# saving. For EAPI 2 we have new enough stuff so let's have cleaner deps.
-has "${EAPI}" 0 1 && JAVA_PKG_PORTAGE_DEP=">=sys-apps/portage-2.1.2.7"
+# Prefix variables are only available for EAPI>=3
+has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
+
+has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 
 # @VARIABLE: JAVA_PKG_E_DEPEND
 # @INTERNAL
@@ -37,7 +36,7 @@ has "${EAPI}" 0 1 && JAVA_PKG_PORTAGE_DEP=">=sys-apps/portage-2.1.2.7"
 # This is a convience variable to be used from the other java eclasses. This is
 # the version of java-config we want to use. Usually the latest stable version
 # so that ebuilds can use new features without depending on specific versions.
-JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3 ${JAVA_PKG_PORTAGE_DEP}"
+JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
 has source ${JAVA_PKG_IUSE} && JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} source? ( app-arch/zip )"
 
 # @ECLASS-VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
@@ -267,7 +266,7 @@ java-pkg_addres() {
 }
 
 # @FUNCTION: java-pkg_rm_files
-# @USAGE: java-pkg_rm_files File1.java File2.java ...
+# @USAGE: <File1.java> [File2.java] ...
 # @DESCRIPTION:
 # Remove unneeded files in ${S}.
 #
@@ -275,7 +274,7 @@ java-pkg_addres() {
 # be it a unit test or a regular java class.
 #
 # You can use this function by either:
-# - calling it yourself in java_prepare() and feeding java-pkg_rm_files with
+# - calling it yourself in src_prepare() and feeding java-pkg_rm_files with
 # the list of files you wish to remove.
 # - defining an array in the ebuild named JAVA_RM_FILES with the list of files
 # you wish to remove.
@@ -338,7 +337,7 @@ java-pkg_dojar() {
 		if [[ -e "${jar}" ]] ; then
 			# Don't overwrite if jar has already been installed with the same
 			# name
-			local dest="${D}${JAVA_PKG_JARDEST}/${jar_basename}"
+			local dest="${ED}${JAVA_PKG_JARDEST}/${jar_basename}"
 			if [[ -e "${dest}" ]]; then
 				ewarn "Overwriting ${dest}"
 			fi
@@ -352,13 +351,13 @@ java-pkg_dojar() {
 					insinto "${JAVA_PKG_JARDEST}"
 					doins "${jar}"
 				) || die "failed to install ${jar}"
-				java-pkg_append_ JAVA_PKG_CLASSPATH "${JAVA_PKG_JARDEST}/${jar_basename}"
-				debug-print "installed ${jar} to ${D}${JAVA_PKG_JARDEST}"
+				java-pkg_append_ JAVA_PKG_CLASSPATH "${EPREFIX}/${JAVA_PKG_JARDEST}/${jar_basename}"
+				debug-print "installed ${jar} to ${ED}${JAVA_PKG_JARDEST}"
 			# make a symlink to the original jar if it's symlink
 			else
 				# TODO use dosym, once we find something that could use it
 				# -nichoj
-				ln -s "$(readlink "${jar}")" "${D}${JAVA_PKG_JARDEST}/${jar_basename}"
+				ln -s "$(readlink "${jar}")" "${ED}${JAVA_PKG_JARDEST}/${jar_basename}"
 				debug-print "${jar} is a symlink, linking accordingly"
 			fi
 		else
@@ -587,13 +586,13 @@ java-pkg_sointo() {
 java-pkg_dohtml() {
 	debug-print-function ${FUNCNAME} $*
 
-	[[ ${#} -lt 1 ]] &&  die "At least one argument required for ${FUNCNAME}"
+	[[ ${#} -lt 1 ]] && die "At least one argument required for ${FUNCNAME}"
 
-	# from /usr/lib/portage/bin/dohtml -h
-	#  -f   Set list of allowed extensionless file names.
-	dohtml -f package-list "$@"
+	# Do away with dohtml and rely on dodoc instead to do the deed.
+	docinto html
+	dodoc "$@"
 
-	# this probably shouldn't be here but it provides
+	# This probably shouldn't be here but it provides
 	# a reasonable way to catch # docs for all of the
 	# old ebuilds.
 	java-pkg_recordjavadoc
@@ -828,7 +827,7 @@ java-pkg_dolauncher() {
 	echo "gjl_package=${JAVA_PKG_NAME}" >> "${target}"
 	cat "${var_tmp}" >> "${target}"
 	rm -f "${var_tmp}"
-	echo "source /usr/share/java-config-2/launcher/launcher.bash" >> "${target}"
+	echo "source ${EPREFIX}/usr/share/java-config-2/launcher/launcher.bash" >> "${target}"
 
 	if [[ -n "${target_dir}" ]]; then
 		(
@@ -1478,14 +1477,13 @@ java-pkg_ensure-vm-version-sufficient() {
 	if ! java-pkg_is-vm-version-sufficient; then
 		debug-print "VM is not suffient"
 		eerror "Current Java VM cannot build this package"
-		einfo "Please use java-config -S to set the correct one"
+		einfo "Please use \"eselect java-vm set system\" to set the correct one"
 		die "Active Java VM cannot build this package"
 	fi
 }
 
 # @FUNCTION: java-pkg_is-vm-version-sufficient
 # @INTERNAL
-# @DESCRIPTION:
 # @RETURN: zero - VM is sufficient; non-zero - VM is not sufficient
 java-pkg_is-vm-version-sufficient() {
 	debug-print-function ${FUNCNAME} $*
@@ -1506,7 +1504,7 @@ java-pkg_ensure-vm-version-eq() {
 	if ! java-pkg_is-vm-version-eq $@ ; then
 		debug-print "VM is not suffient"
 		eerror "This package requires a Java VM version = $@"
-		einfo "Please use java-config -S to set the correct one"
+		einfo "Please use \"eselect java-vm set system\" to set the correct one"
 		die "Active Java VM too old"
 	fi
 }
@@ -1524,8 +1522,8 @@ java-pkg_is-vm-version-eq() {
 
 	local vm_version="$(java-pkg_get-vm-version)"
 
-	vm_version="$(get_version_component_range 1-2 "${vm_version}")"
-	needed_version="$(get_version_component_range 1-2 "${needed_version}")"
+	vm_version="$(ver_cut 1-2 "${vm_version}")"
+	needed_version="$(ver_cut 1-2 "${needed_version}")"
 
 	if [[ -z "${vm_version}" ]]; then
 		debug-print "Could not get JDK version from DEPEND"
@@ -1553,7 +1551,7 @@ java-pkg_ensure-vm-version-ge() {
 	if ! java-pkg_is-vm-version-ge "$@" ; then
 		debug-print "vm is not suffient"
 		eerror "This package requires a Java VM version >= $@"
-		einfo "Please use java-config -S to set the correct one"
+		einfo "Please use \"eselect java-vm set system\" to set the correct one"
 		die "Active Java VM too old"
 	fi
 }
@@ -1576,7 +1574,7 @@ java-pkg_is-vm-version-ge() {
 		debug-print "Could not get JDK version from DEPEND"
 		return 1
 	else
-		if version_is_at_least "${needed_version}" "${vm_version}"; then
+		if ver_test "${vm_version}" -ge "${needed_version}"; then
 			debug-print "Detected a JDK(${vm_version}) >= ${needed_version}"
 			return 0
 		else
@@ -1745,7 +1743,7 @@ java-pkg_register-ant-task() {
 	local TASK_NAME="${1:-${JAVA_PKG_NAME}}"
 
 	dodir /usr/share/ant/${TASKS_DIR}
-	touch "${D}/usr/share/ant/${TASKS_DIR}/${TASK_NAME}"
+	touch "${ED}/usr/share/ant/${TASKS_DIR}/${TASK_NAME}"
 }
 
 # @FUNCTION: java-pkg_ant-tasks-depend
@@ -1862,12 +1860,57 @@ ejunit4() {
 	ejunit_ "junit-4" "${@}"
 }
 
+# @FUNCTION: etestng
+# @USAGE: etestng_ [-cp $classpath] <test classes>
+# @INTERNAL
+# @DESCRIPTION:
+# Testng wrapper function. Makes it easier to run the tests.
+# Launches the tests using org.testng.TestNG.
+#
+# @CODE
+# $1 - -cp or -classpath
+# $2 - the classpath passed to it
+# $@ - test classes for testng to run.
+# @CODE
+etestng() {
+	debug-print-function ${FUNCNAME} $*
+
+	local runner=org.testng.TestNG
+	local cp=$(java-pkg_getjars --with-dependencies testng)
+	local tests
+
+	if [[ ${1} = -cp || ${1} = -classpath ]]; then
+		cp="${cp}:${2}"
+		shift 2
+	else
+		cp="${cp}:."
+	fi
+
+	for test in ${@}; do
+		tests+="${test},"
+	done
+
+	debug-print "java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\""\
+		"-Djava.awt.headless=true ${runner}"\
+		"-usedefaultlisteners false -testclass ${tests}"
+	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true\
+		${runner} -usedefaultlisteners false -testclass ${tests}\
+		|| die "Running TestNG failed."
+}
+
 # @FUNCTION: java-utils-2_src_prepare
 # @DESCRIPTION:
 # src_prepare Searches for bundled jars
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
-	java-pkg_func-exists java_prepare && java_prepare
+	case ${EAPI:-0} in
+		[0-5])
+			java-pkg_func-exists java_prepare && java_prepare ;;
+		*)
+			java-pkg_func-exists java_prepare &&
+				eqawarn "java_prepare is no longer called, define src_prepare instead."
+			eapply_user ;;
+	esac
 
 	# Check for files in JAVA_RM_FILES array.
 	if [[ ${JAVA_RM_FILES[@]} ]]; then
@@ -2028,7 +2071,9 @@ eant() {
 
 	if [[ ${cp#:} ]]; then
 		# It seems ant does not like single quotes around ${cp}
-		antflags="${antflags} -Dgentoo.classpath=\"${cp#:}\""
+		# And ant 1.9.13+ also does not like double quotes around ${cp}
+		# https://bz.apache.org/bugzilla/show_bug.cgi?id=58898
+		antflags="${antflags} -Dgentoo.classpath=${cp#:}"
 	fi
 
 	[[ -n ${JAVA_PKG_DEBUG} ]] && echo ant ${antflags} "${@}"
@@ -2182,10 +2227,6 @@ java-pkg_init() {
 		I_WANT_GLOBAL_JAVA_OPTIONS="true"
 	fi
 
-	if java-pkg_func-exists ant_src_unpack; then
-		java-pkg_announce-qa-violation "Using old ant_src_unpack. Should be src_unpack"
-	fi
-
 	java-pkg_switch-vm
 	PATH=${JAVA_HOME}/bin:${PATH}
 
@@ -2336,9 +2377,9 @@ java-pkg_init_paths_() {
 
 	JAVA_PKG_SHAREPATH="/usr/share/${JAVA_PKG_NAME}"
 	JAVA_PKG_SOURCESPATH="${JAVA_PKG_SHAREPATH}/sources/"
-	JAVA_PKG_ENV="${D}${JAVA_PKG_SHAREPATH}/package.env"
+	JAVA_PKG_ENV="${ED}${JAVA_PKG_SHAREPATH}/package.env"
 	JAVA_PKG_VIRTUALS_PATH="/usr/share/java-config-2/virtuals"
-	JAVA_PKG_VIRTUAL_PROVIDER="${D}/${JAVA_PKG_VIRTUALS_PATH}/${JAVA_PKG_NAME}"
+	JAVA_PKG_VIRTUAL_PROVIDER="${ED}${JAVA_PKG_VIRTUALS_PATH}/${JAVA_PKG_NAME}"
 
 	[[ -z "${JAVA_PKG_JARDEST}" ]] && JAVA_PKG_JARDEST="${JAVA_PKG_SHAREPATH}/lib"
 	[[ -z "${JAVA_PKG_LIBDEST}" ]] && JAVA_PKG_LIBDEST="/usr/$(get_libdir)/${JAVA_PKG_NAME}"
@@ -2550,14 +2591,14 @@ java-pkg_needs-vm() {
 
 # @FUNCTION: java-pkg_get-current-vm
 # @INTERNAL
-# @RETURN - The current VM being used
+# @RETURN: The current VM being used
 java-pkg_get-current-vm() {
 	java-config -f
 }
 
 # @FUNCTION: java-pkg_get-vm-vendor
 # @INTERNAL
-# @RETURN - The vendor of the current VM
+# @RETURN: The vendor of the current VM
 java-pkg_get-vm-vendor() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2568,7 +2609,7 @@ java-pkg_get-vm-vendor() {
 
 # @FUNCTION: java-pkg_get-vm-version
 # @INTERNAL
-# @RETURN - The version of the current VM
+# @RETURN: The version of the current VM
 java-pkg_get-vm-version() {
 	debug-print-function ${FUNCNAME} $*
 
@@ -2577,12 +2618,12 @@ java-pkg_get-vm-version() {
 
 # @FUNCTION: java-pkg_build-vm-from-handle
 # @INTERNAL
+# @RETURN: VM handle of an available JDK
 # @DESCRIPTION:
 # Selects a build vm from a list of vm handles. First checks for the system-vm
 # beeing usable, then steps through the listed handles till a suitable vm is
 # found.
 #
-# @RETURN - VM handle of an available JDK
 java-pkg_build-vm-from-handle() {
 	debug-print-function ${FUNCNAME} "$*"
 
@@ -2727,10 +2768,13 @@ java-pkg_jar-list() {
 java-pkg_verify-classes() {
 	#$(find ${D} -type f -name '*.jar' -o -name '*.class')
 
-	local version_verify="/usr/bin/class-version-verify.py"
+	local version_verify_1="${EPREFIX}/usr/$(get_libdir)/javatoolkit/bin/class-version-verify.py"
+	local version_verify_2="${EPREFIX}/usr/libexec/javatoolkit/class-version-verify.py"
 
-	if [[ ! -x "${version_verify}" ]]; then
-		version_verify="/usr/$(get_libdir)/javatoolkit/bin/class-version-verify.py"
+	if [[ -x "${version_verify_1}" ]]; then
+		local version_verify=${version_verify_1}
+	else
+		local version_verify=${version_verify_2}
 	fi
 
 	if [[ ! -x "${version_verify}" ]]; then
@@ -2885,4 +2929,30 @@ java-pkg_clean() {
 	if [[ -z "${JAVA_PKG_NO_CLEAN}" ]]; then
 		find "${@}" '(' -name '*.class' -o -name '*.jar' ')' -type f -delete -print || die
 	fi
+}
+
+# @FUNCTION: java-pkg_gen-cp
+# @INTERNAL
+# @DESCRIPTION:
+# Java package generate classpath will create a classpath based on
+# special variable CP_DEPEND in the ebuild.
+#
+# @CODE
+# Parameters:
+# $1 - classpath variable either EANT_GENTOO_CLASSPATH or JAVA_GENTOO_CLASSPATH
+# @CODE
+java-pkg_gen-cp() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local atom
+	for atom in ${CP_DEPEND}; do
+		if [[ ${atom} =~ /(([[:alnum:]+_-]+)-[0-9]+(\.[0-9]+)*[a-z]?(_[[:alnum:]]+)*(-r[0-9]*)?|[[:alnum:]+_-]+):([[:alnum:]+_.-]+) ]]; then
+			atom=${BASH_REMATCH[2]:-${BASH_REMATCH[1]}}
+			[[ ${BASH_REMATCH[6]} != 0 ]] && atom+=-${BASH_REMATCH[6]}
+			local regex="(^|\s|,)${atom}($|\s|,)"
+			[[ ${!1} =~ ${regex} ]] || declare -g ${1}+=${!1:+,}${atom}
+		else
+			die "Invalid CP_DEPEND atom ${atom}, ensure a SLOT is included"
+		fi
+	done
 }

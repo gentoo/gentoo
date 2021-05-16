@@ -1,0 +1,16 @@
+commit a3972330f49f81b3bea64af0970d22f42ae56ec3
+Author: Martin Liska <mliska@suse.cz>
+Date:   Fri Jun 7 07:36:52 2019 +0200
+
+    Fix a missing include of <string>
+    
+--- a/gold/errors.h
++++ b/gold/errors.h
+@@ -24,6 +24,7 @@
+ #define GOLD_ERRORS_H
+ 
+ #include <cstdarg>
++#include <string>
+ 
+ #include "gold-threads.h"
+ 

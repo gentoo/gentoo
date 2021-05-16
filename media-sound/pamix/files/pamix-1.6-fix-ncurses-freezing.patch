@@ -1,0 +1,23 @@
+From 1e45f226ef35b649cb2889e23ad90ad39d0db947 Mon Sep 17 00:00:00 2001
+From: Joshua Jensch <jenschjoshua@gmail.com>
+Date: Sat, 14 Mar 2020 03:11:58 +0100
+Subject: [PATCH] Use 25ms as escdelay
+
+By default ncurses will use 1000ms, which will cause freezing.
+Fixes #44
+---
+ src/pamix.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/pamix.cpp b/src/pamix.cpp
+index d5f7ead..368639d 100644
+--- a/src/pamix.cpp
++++ b/src/pamix.cpp
+@@ -206,6 +206,7 @@ int main(int argc, char **argv) {
+ 	initscr();
+ 	init_colors();
+ 	nodelay(stdscr, true);
++  set_escdelay(25);
+ 	curs_set(0);
+ 	keypad(stdscr, true);
+ 	meta(stdscr, true);

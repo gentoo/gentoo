@@ -1,0 +1,90 @@
+From: Courtney Bane <debian-bugs-4450@cbane.org>
+Date: Mon, 23 Jan 2017 20:30:59 -0600
+Subject: Fix compatibility problems with Unix domain sockets in newer
+ versions of luasocket.
+
+---
+ host/control.lua | 14 ++++++++------
+ host/ekeydctl.in |  7 ++++---
+ 2 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/host/control.lua b/host/control.lua
+index 7b9b1b8..22d700f 100644
+--- a/host/control.lua
++++ b/host/control.lua
+@@ -38,11 +38,11 @@ local PROTOCOL_VERSION = "1"
+ local dos_callcount = 0
+ 
+ -- Libraries we need
+-require "socket"
++socket = require "socket"
+ 
+ local have_unix_domain_sockets = false
+ function tryload_unix()
+-   require "socket.unix"
++   socket.unix = require "socket.unix"
+    have_unix_domain_sockets = true
+ end
+ 
+@@ -521,14 +521,15 @@ end
+ 
+ if have_unix_domain_sockets then
+    function UnixControlSocket(sockname)
++      local sock = socket.unix.stream or socket.unix.tcp or socket.unix
+       -- Add a UDS control socket to the set of control sockets available
+       -- First, try and connect, so we can abort if it's present.
+-      if socket.unix():connect(sockname) then
++      if sock():connect(sockname) then
+ 	 error("Control socket " .. sockname .. " already present. Is ekeyd already running?")
+       end
+       -- Okay, clean up (ignoring errors) and create a fresh socket
+       unlink(sockname)
+-      local u = socket.unix()
++      local u = sock()
+       assert(u:bind(sockname))
+       assert(u:listen())
+       addctlsocket(u, "U:" .. sockname)
+@@ -554,12 +555,13 @@ end _ "TCPControlSocket"
+ if have_unix_domain_sockets then
+    function EGDUnixSocket(sockname, modestr, user, group)
+       SetFoldedOutput()
+-      if socket.unix():connect(sockname) then
++      local sock = socket.unix.stream or socket.unix.tcp or socket.unix
++      if sock():connect(sockname) then
+ 	 error("EGD socket " .. sockname .. " already present. Is ekeyd/EGD already running?")
+       end
+       -- Add a UDS control socket to the set of control sockets available
+       unlink(sockname)
+-      local u = socket.unix()
++      local u = sock()
+       assert(u:bind(sockname))
+       assert(u:listen())
+       addctlsocket(u, "U:" .. sockname, false, egd_ctlread)
+diff --git a/host/ekeydctl.in b/host/ekeydctl.in
+index 9292ac6..802cf38 100755
+--- a/host/ekeydctl.in
++++ b/host/ekeydctl.in
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env lua@LUA_V@
+ -- -*- Lua -*-
+ 
+-require "socket"
++local socket = require "socket"
+ 
+ -- Try to load the UNIX domain sockets support
+ pcall(function()
+-	 require "socket.unix"
++	 socket.unix = require "socket.unix"
+       end)
+ 
+ 
+@@ -98,7 +98,8 @@ end
+ 
+ function connect_to_daemon()
+    if __unixcontrolpath then
+-      __socket = socket.unix()
++      local sock = socket.unix.stream or socket.unix.tcp or socket.unix
++      __socket = sock()
+       local result, msg = __socket:connect(__unixcontrolpath)
+       if not result then
+ 	 error("Unable to connect to ekeyd at " .. __unixcontrolpath .. " (" .. msg .. ") Is ekeyd running?")

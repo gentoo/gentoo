@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>np-hardass@gentoo.org</email>
+		<name>Adam Feldman</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@eroen.eu</email>
+		<name>eroen</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="bitbucket">np-hardass/eselect-wine</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/721676
+
+From 9ae36d7d5f7420eaacd9644451933512fa13d716 Mon Sep 17 00:00:00 2001
+From: sekrit-twc <sekrit-twc@users.noreply.github.com>
+Date: Wed, 4 Dec 2019 12:01:26 -0800
+Subject: [PATCH] Update matrix3.cpp
+
+---
+ src/zimg/colorspace/matrix3.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/zimg/colorspace/matrix3.cpp
++++ b/src/zimg/colorspace/matrix3.cpp
+@@ -1,3 +1,4 @@
++#include <cstddef>
+ #include "matrix3.h"
+ 
+ namespace zimg {

@@ -1,12 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
-DESCRIPTION="Authentication and accounting server for terminal servers that speak the RADIUS protocol"
+DESCRIPTION="Authentication and accounting server for terminal servers using RADIUS"
 HOMEPAGE="http://www.radius.cistron.nl/"
 SRC_URI="ftp://ftp.radius.cistron.nl/pub/radius/radiusd-cistron-${PV}.tar.gz"
 

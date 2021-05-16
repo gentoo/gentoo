@@ -1,15 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
+WANT_ANT_TASKS="ant-junit4"
 
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="The class loader framework of the Plexus project"
-HOMEPAGE="http://plexus.codehaus.org/"
+HOMEPAGE="https://github.com/codehaus"
 SRC_URI="https://dev.gentoo.org/~ercpe/distfiles/${CATEGORY}/${PN}/${P}.tar.bz2"
 
 LICENSE="codehaus-classworlds"
@@ -18,16 +18,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.6
-		test? ( dev-java/junit:4 )"
-RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.8"
+RDEPEND=">=virtual/jre-1.8"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
-EANT_TEST_GENTOO_CLASSPATH="junit-4"
-EANT_TEST_ANT_TASKS="ant-junit"
 
-java_prepare() {
+src_prepare() {
 	cp "${FILESDIR}"/${PV}-build.xml "${S}"/build.xml || die
+
+	default
 }
 
 src_install() {

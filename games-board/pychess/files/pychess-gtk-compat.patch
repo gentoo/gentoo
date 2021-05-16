@@ -1,0 +1,46 @@
+From 6c840c9981f2077d0fa4436b30a2f2f6650e55fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micka=C3=ABl=20Schoentgen?= <contact@tiger-222.fr>
+Date: Mon, 13 Apr 2020 14:48:40 +0200
+Subject: [PATCH] Fix missing TreeModelFilter.sort_new_with_model() on some Gtk
+ versions
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is due to API changes, but let's keep compatibility with older versions.
+That should fix #1811.
+
+Signed-off-by: Mickaël Schoentgen <contact@tiger-222.fr>
+---
+ lib/pychess/perspectives/fics/__init__.py | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/lib/pychess/perspectives/fics/__init__.py b/lib/pychess/perspectives/fics/__init__.py
+index 4f956b695..1518c21e0 100644
+--- a/lib/pychess/perspectives/fics/__init__.py
++++ b/lib/pychess/perspectives/fics/__init__.py
+@@ -27,6 +27,24 @@
+ from pychess.perspectives import Perspective, perspective_manager, panel_name
+ 
+ 
++if not hasattr(Gtk.TreeModelFilter, "new_with_model"):
++    # Fix #1811: TreeModelFilter.sort_new_with_model() is missing on some Gtk versions
++    # due to API changes. Let's keep compatibility with older versions.
++
++    def sort_new_with_model(self):
++        super_object = super(Gtk.TreeModel, self)
++        if hasattr(super_object, "sort_new_with_model"):
++            return super_object.sort_new_with_model()
++        return Gtk.TreeModelSort.new_with_model(self)
++
++    @classmethod
++    def new_with_model(self, child_model):
++        return Gtk.TreeModel.sort_new_with_model(child_model)
++
++    Gtk.TreeModel.sort_new_with_model = sort_new_with_model
++    Gtk.TreeModelFilter.new_with_model = new_with_model
++
++
+ class PlayerNotificationMessage(InfoBarMessage):
+ 
+     def __init__(self, message_type, content, callback, player, text):

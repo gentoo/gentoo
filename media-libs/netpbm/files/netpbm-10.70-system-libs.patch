@@ -1,7 +1,7 @@
 when we disable the bundled libs, make sure we don't try to run install in them
 
---- converter/other/jbig/Makefile
-+++ converter/other/jbig/Makefile
+--- a/converter/other/jbig/Makefile
++++ b/converter/other/jbig/Makefile
 @@ -5,7 +5,7 @@ endif
  SUBDIR = converter/other/jbig
  VPATH=.:$(SRCDIR)/$(SUBDIR)
@@ -19,8 +19,8 @@ when we disable the bundled libs, make sure we don't try to run install in them
  else
    # It's not our internal version; user's on his own to make sure it's built
  endif
---- converter/other/jpeg2000/Makefile
-+++ converter/other/jpeg2000/Makefile
+--- a/converter/other/jpeg2000/Makefile
++++ b/converter/other/jpeg2000/Makefile
 @@ -5,7 +5,7 @@ endif
  SUBDIR = converter/other/jpeg2000
  VPATH=.:$(SRCDIR)/$(SUBDIR)

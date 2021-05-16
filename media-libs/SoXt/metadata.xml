@@ -12,6 +12,6 @@
   from SGI or TGS.
   </longdescription>
   <upstream>
-    <remote-id type="bitbucket">Coin3D/coin</remote-id>
+    <remote-id type="github">coin3d/soxt</remote-id>
   </upstream>
 </pkgmetadata>

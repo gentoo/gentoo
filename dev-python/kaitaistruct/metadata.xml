@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<stabilize-allarches/>
+	<maintainer type="person" proxied="yes">
+		<email>matt@offtopica.uk</email>
+		<name>Matt Smith</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Kaitai Struct is a declarative language used for
+		describe various binary data structures, laid out in
+		files or in memory: i.e. binary file formats, network
+		stream packet formats, etc.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">kaitai-io/kaitai_struct_python_runtime</remote-id>
+		<remote-id type="pypi">kaitaistruct</remote-id>
+	</upstream>
+</pkgmetadata>

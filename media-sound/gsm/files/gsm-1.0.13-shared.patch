@@ -1,16 +1,24 @@
-diff -ur gsm-1.0-pl13.orig/Makefile gsm-1.0-pl13/Makefile
---- gsm-1.0-pl13.orig/Makefile	2006-04-26 22:14:26.000000000 +0300
-+++ gsm-1.0-pl13/Makefile	2009-09-08 14:50:02.000000000 +0300
-@@ -96,7 +96,7 @@
+--- a/Makefile
++++ b/Makefile
+@@ -96,16 +96,14 @@
  #  Other tools
  
  SHELL		= /bin/sh
 -LN		= ln
 +LN		= ln -s
  BASENAME 	= basename
- AR		= ar
+-AR		= ar
  ARFLAGS		= cr
-@@ -140,6 +140,7 @@
+ RMFLAGS		=
+ FIND		= find
+ COMPRESS 	= compress
+ COMPRESSFLAGS 	= 
+ # RANLIB 	= true
+-RANLIB	 	= ranlib
+ 
+ #
+ #    You shouldn't have to configure below this line if you're porting.
+@@ -140,6 +138,7 @@
  # Targets
  
  LIBGSM	= $(LIB)/libgsm.a
@@ -18,7 +26,7 @@ diff -ur gsm-1.0-pl13.orig/Makefile gsm-1.0-pl13/Makefile
  
  TOAST	= $(BIN)/toast
  UNTOAST	= $(BIN)/untoast
-@@ -203,24 +204,43 @@
+@@ -203,24 +202,43 @@
  
  # Object files
  
@@ -80,7 +88,7 @@ diff -ur gsm-1.0-pl13.orig/Makefile gsm-1.0-pl13/Makefile
  
  TOAST_OBJECTS =	$(SRC)/toast.o 		\
  		$(SRC)/toast_lin.o	\
-@@ -228,7 +248,7 @@
+@@ -228,7 +246,7 @@
  		$(SRC)/toast_alaw.o	\
  		$(SRC)/toast_audio.o
  
@@ -89,7 +97,7 @@ diff -ur gsm-1.0-pl13.orig/Makefile gsm-1.0-pl13/Makefile
  
  # Manuals
  
-@@ -277,9 +297,12 @@
+@@ -277,9 +295,12 @@
  		$(CC) $(CFLAGS) $?
  		@-mv `$(BASENAME) $@` $@ > /dev/null 2>&1
  
@@ -103,7 +111,7 @@ diff -ur gsm-1.0-pl13.orig/Makefile gsm-1.0-pl13/Makefile
  		@-echo $(ROOT): Done.
  
  tst:		$(TST)/lin2cod $(TST)/cod2lin $(TOAST) $(TST)/test-result
-@@ -299,24 +322,29 @@
+@@ -299,24 +320,29 @@
  
  # The basic API: libgsm
  
@@ -138,7 +146,7 @@ diff -ur gsm-1.0-pl13.orig/Makefile gsm-1.0-pl13/Makefile
  
  
  # The local bin and lib directories
-@@ -426,7 +454,9 @@
+@@ -426,7 +452,9 @@
  
  clean:	semi-clean
  		-rm $(RMFLAGS) $(LIBGSM) $(ADDTST)/add		\

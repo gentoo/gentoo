@@ -1,5 +1,5 @@
---- work/convert/eyuvtojpeg.c
-+++ work/convert/eyuvtojpeg.c
+--- a/convert/eyuvtojpeg.c
++++ b/convert/eyuvtojpeg.c
 @@ -22,6 +22,7 @@
  /*==============*
   * HEADER FILES *
@@ -25,8 +25,8 @@
  }
  
  
---- work/convert/eyuvtoppm.c
-+++ work/convert/eyuvtoppm.c
+--- a/convert/eyuvtoppm.c
++++ b/convert/eyuvtoppm.c
 @@ -22,6 +22,7 @@
  /*==============*
   * HEADER FILES *
@@ -53,8 +53,8 @@
  }
  
  void Usage(void)
---- work/convert/mtv/archdep.h
-+++ work/convert/mtv/archdep.h
+--- a/convert/mtv/archdep.h
++++ b/convert/mtv/archdep.h
 @@ -45,16 +45,46 @@
  			    ((char *)(to))[5] = ((char *)(from))[2];	\
  			    ((char *)(to))[6] = ((char *)(from))[1];	\
@@ -104,8 +104,8 @@
  /* Define types of specific length */
  typedef char		i_8;
  typedef short		i_16;
---- work/convert/mtv/movieToVid.c
-+++ work/convert/mtv/movieToVid.c
+--- a/convert/mtv/movieToVid.c
++++ b/convert/mtv/movieToVid.c
 @@ -295,7 +295,7 @@
      exit (0);
  }
@@ -121,8 +121,8 @@
      fprintf (stderr, "done\n");
 +    return 0;
  }
---- work/convert/ppmtoeyuv.c
-+++ work/convert/ppmtoeyuv.c
+--- a/convert/ppmtoeyuv.c
++++ b/convert/ppmtoeyuv.c
 @@ -39,6 +39,11 @@
   * HEADER FILES *
   *==============*/
@@ -152,8 +152,8 @@
  }
  
  
---- work/mpeg_encode/bitio.c
-+++ work/mpeg_encode/bitio.c
+--- a/mpeg_encode/bitio.c
++++ b/mpeg_encode/bitio.c
 @@ -79,6 +79,8 @@
   * HEADER FILES *
   *==============*/
@@ -163,8 +163,8 @@
  #include <assert.h>
  #include "all.h"
  #include "byteorder.h"
---- work/mpeg_encode/jpeg.c
-+++ work/mpeg_encode/jpeg.c
+--- a/mpeg_encode/jpeg.c
++++ b/mpeg_encode/jpeg.c
 @@ -65,6 +65,8 @@
   *==============*/
  
@@ -174,8 +174,8 @@
  #include "all.h"
  #include "mtypes.h"
  #include "frames.h"
---- work/mpeg_encode/headers/libpnmrw.h
-+++ work/mpeg_encode/headers/libpnmrw.h
+--- a/mpeg_encode/headers/libpnmrw.h
++++ b/mpeg_encode/headers/libpnmrw.h
 @@ -20,9 +20,6 @@
  ** that point here, feel free to tweak or remove these declarations.
  */
@@ -186,8 +186,8 @@
  /* End of configurable definitions. */
  
  
---- work/mpeg_encode/libpnmrw.c
-+++ work/mpeg_encode/libpnmrw.c
+--- a/mpeg_encode/libpnmrw.c
++++ b/mpeg_encode/libpnmrw.c
 @@ -27,6 +27,9 @@
  /* #define MSDOS */
  #endif
@@ -220,8 +220,8 @@
    register bit* bP;
  
    switch ( format )
---- work/mpeg_encode/opts.c
-+++ work/mpeg_encode/opts.c
+--- a/mpeg_encode/opts.c
++++ b/mpeg_encode/opts.c
 @@ -35,6 +35,7 @@
   * HEADER FILES *
   *==============*/
@@ -230,8 +230,8 @@
  #include <stdio.h>
  #include <string.h>
  #include "opts.h"
---- work/mpeg_encode/iframe.c
-+++ work/mpeg_encode/iframe.c
+--- a/mpeg_encode/iframe.c
++++ b/mpeg_encode/iframe.c
 @@ -235,6 +235,8 @@
  int SetFCodeHelper _ANSI_ARGS_((int sr));
  void CalcDistortion _ANSI_ARGS_((MpegFrame *current, int y, int x));
@@ -241,8 +241,8 @@
  int
    SetFCodeHelper(SR)
  int SR;
---- work/convert/jmovie2jpeg.c
-+++ work/convert/jmovie2jpeg.c
+--- a/convert/jmovie2jpeg.c
++++ b/convert/jmovie2jpeg.c
 @@ -33,6 +33,9 @@
  ************************************************************************/
  

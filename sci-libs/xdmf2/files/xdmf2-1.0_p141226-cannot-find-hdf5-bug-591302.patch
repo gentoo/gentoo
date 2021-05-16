@@ -1,0 +1,41 @@
+Too much automagic trying to find the correct prefix
+of HDF5. Remove all the pointless heuristics.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=591302
+
+* CMake Error at /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:148 (message):
+*   Could NOT find HDF5 (missing: HDF5_LIBRARIES HDF5_INCLUDE_DIRS
+*   HDF5_HL_LIBRARIES)
+
+--- xdmf2-1.0_p141226/core/CMakeLists.txt
++++ xdmf2-1.0_p141226/core/CMakeLists.txt
+@@ -35,19 +35,7 @@
+   mark_as_advanced(FORCE Boost_INCLUDE_DIR)
+ endif(Boost_FOUND)
+ 
+-# Find HDF5_ROOT if not set
+-if ("$ENV{HDF5_ROOT}" STREQUAL "")
+-  find_file (HDF5_LIB libhdf5.so HINTS ENV LD_LIBRARY_PATH)
+-  if (NOT "${HDF5_LIB}" STREQUAL "")
+-    get_filename_component(HDF5_LIBRARY_DIR "${HDF5_LIB}" PATH)
+-    get_filename_component(HDF5_ROOT "${HDF5_LIBRARY_DIR}/../" ABSOLUTE)
+-    set(ENV{HDF5_ROOT} ${HDF5_ROOT})
+-  endif (NOT "${HDF5_LIB}" STREQUAL "")
+-endif ("$ENV{HDF5_ROOT}" STREQUAL "")
+-
+-mark_as_advanced(CLEAR HDF5_C_INCLUDE_DIR)
+-mark_as_advanced(CLEAR HDF5_hdf5_LIBRARY_DEBUG)
+-mark_as_advanced(CLEAR HDF5_hdf5_LIBRARY_RELEASE)
++# Find HDF5
+ find_package(HDF5 REQUIRED)
+ if(HDF5_FOUND)
+   mark_as_advanced(FORCE HDF5_C_INCLUDE_DIR)
+@@ -73,9 +61,6 @@
+   endif(HDF5_IS_PARALLEL)
+   get_filename_component(HDF5_ROOT "${HDF5_INCLUDE_DIR}/../" REALPATH)
+   set(HDF5_BINARY_DIRS ${HDF5_ROOT}/bin ${HDF5_ROOT}/dll)
+-  if (NOT HDF5_LIBRARIES)
+-    find_library (HDF5_LIBRARIES hdf5 HINTS ${HDF5_ROOT} ENV LD_LIBRARY_PATH)
+-  endif (NOT HDF5_LIBRARIES)
+   set(XDMF_LIBRARIES ${XDMF_LIBRARIES} ${HDF5_LIBRARIES})
+   set(XDMF_HDF5_BINARY_DIRS ${HDF5_BINARY_DIRS} PARENT_SCOPE)
+   set(XDMF_BINARIES ${XDMF_BINARIES} ${HDF5_BINARY_DIRS})

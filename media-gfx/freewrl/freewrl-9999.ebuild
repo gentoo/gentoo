@@ -1,17 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit autotools nsplugins eutils flag-o-matic java-pkg-opt-2 multilib
+inherit autotools nsplugins epatch java-pkg-opt-2 multilib toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.code.sf.net/p/freewrl/git"
+	EGIT_REPO_URI="https://git.code.sf.net/p/freewrl/git"
+	EGIT_BRANCH="develop"
 	S="${WORKDIR}/${P}/freex3d"
-	SRC_URI=
-	KEYWORDS=
 else
 	SRC_URI="mirror://sourceforge/freewrl/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
@@ -21,7 +19,7 @@ DESCRIPTION="VRML97 and X3D compliant browser, library, and web-browser plugin"
 HOMEPAGE="http://freewrl.sourceforge.net/"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="curl debug java libeai motif +nsplugin opencl osc +sox static-libs"
+IUSE="curl debug java libeai motif +nsplugin opencl osc rbp +sox static-libs"
 
 COMMONDEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -44,6 +42,7 @@ COMMONDEPEND="x11-libs/libICE
 	curl? ( net-misc/curl )
 	osc? ( media-libs/liblo )
 	opencl? ( virtual/opencl )
+	rbp? ( dev-games/ode:0=[double-precision] )
 	dev-lang/spidermonkey:0="
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig
@@ -51,9 +50,8 @@ DEPEND="${COMMONDEPEND}
 	nsplugin? ( net-misc/npapi-sdk )"
 RDEPEND="${COMMONDEPEND}
 	media-fonts/dejavu
-	|| ( media-gfx/imagemagick
-		media-gfx/graphicsmagick[imagemagick] )
 	app-arch/unzip
+	virtual/imagemagick-tools
 	java? ( >=virtual/jre-1.4 )
 	sox? ( media-sound/sox )"
 
@@ -64,7 +62,7 @@ src_prepare() {
 
 src_configure() {
 	# list of js libs without .pc support, to disable ./configure auto-checking
-	local spidermonkeys=( mozilla-js xulrunner-js firefox-js firefox2-js seamonkey-js )
+	local spidermonkeys=( mozilla-js )
 	# list of .pc supported spidermonkeys, to disable ./configure auto-checking
 	local spidermonkeys_pc=( mozjs187 mozjs185 )
 
@@ -73,10 +71,10 @@ src_configure() {
 		--with-x
 		--with-imageconvert=/usr/bin/convert
 		--with-unzip=/usr/bin/unzip
-		--disable-mozjs-17.0
+		--with-javascript=spidermonkey
 		${spidermonkeys[@]/#/ --disable-}"
 
-	if has_version "<dev-lang/spidermonkey-1.8.5" ; then
+	if has_version "<dev-lang/spidermonkey-1.8.5:0" ; then
 		# spidermonkey pre-1.8.5 has no pkg-config, so override ./configure
 		myconf+="${spidermonkeys_pc[@]/#/ --disable-}"
 		JAVASCRIPT_ENGINE_CFLAGS="-I/usr/include/js -DXP_UNIX"
@@ -87,8 +85,8 @@ src_configure() {
 			JAVASCRIPT_ENGINE_LIBS="-ljs"
 		fi
 		if has_version "dev-lang/spidermonkey:0[threadsafe]" ; then
-			JAVASCRIPT_ENGINE_CFLAGS+=" -DJS_THREADSAFE $(pkg-config --cflags nspr)"
-			JAVASCRIPT_ENGINE_LIBS="$(pkg-config --libs nspr) ${JAVASCRIPT_ENGINE_LIBS}"
+			JAVASCRIPT_ENGINE_CFLAGS+=" -DJS_THREADSAFE $($(tc-getPKG_CONFIG) --cflags nspr)"
+			JAVASCRIPT_ENGINE_LIBS="$($(tc-getPKG_CONFIG) --libs nspr) ${JAVASCRIPT_ENGINE_LIBS}"
 		fi
 		export JAVASCRIPT_ENGINE_CFLAGS
 		export JAVASCRIPT_ENGINE_LIBS
@@ -105,6 +103,7 @@ src_configure() {
 		$(use_enable java) \
 		$(use_enable nsplugin plugin) \
 		$(use_enable osc) \
+		$(use_enable rbp) \
 		$(use_enable static-libs static) \
 		$(use_enable sox sound) \
 		$(usex sox "--with-soundconv=/usr/bin/sox") \
@@ -137,9 +136,9 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-	elog "By default, FreeWRL expects to find the 'firefox' binary in your include"
-	elog "path.  If you do not have firefox installed or you wish to use a different"
-	elog "web browser to open links that are within VRML / X3D files, please be sure to"
-	elog "specify the command via your BROWSER environment variable."
+		elog "By default, FreeWRL expects to find the 'firefox' binary in your include"
+		elog "path.  If you do not have firefox installed or you wish to use a different"
+		elog "web browser to open links that are within VRML / X3D files, please be sure to"
+		elog "specify the command via your BROWSER environment variable."
 	fi
 }

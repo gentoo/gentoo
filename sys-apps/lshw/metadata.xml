@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
+<maintainer type="person">
+	<email>bkohler@gentoo.org</email>
+	<name>Ben Kohler</name>
 </maintainer>
+<upstream>
+	<doc>https://ezix.org/src/pkg/lshw/wiki</doc>
+	<bugs-to>https://ezix.org/project/newticket?component=lshw</bugs-to>
+	<changelog>https://www.ezix.org/project/wiki/HardwareLiSter#Changes</changelog>
+</upstream>
 </pkgmetadata>

@@ -1,0 +1,13 @@
+Don't try to rebuild sxiv during install.
+
+--- sxiv-25/Makefile
++++ sxiv-25/Makefile
+@@ -62,7 +62,7 @@
+ clean:
+ 	rm -f *.o sxiv
+ 
+-install: all
++install:
+ 	@echo "INSTALL bin/sxiv"
+ 	mkdir -p $(DESTDIR)$(PREFIX)/bin
+ 	cp sxiv $(DESTDIR)$(PREFIX)/bin/

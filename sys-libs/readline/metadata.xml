@@ -8,4 +8,7 @@
 <use>
 	<flag name="utils">Install rlfe (ReadLine Front-End) helper tool -- a wrapper program for making any stdin use readline</flag>
 </use>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gnu:readline</remote-id>
+</upstream>
 </pkgmetadata>

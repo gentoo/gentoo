@@ -1,0 +1,10 @@
+--- rotix-0.83.orig/rotix.c
++++ rotix-0.83/rotix.c
+@@ -38,6 +38,7 @@
+ /* I18N */
+ #ifdef I18N
+ #include <libintl.h>
++#include <locale.h>
+ #define _(String) gettext (String)
+ #else
+ #define _(String) String

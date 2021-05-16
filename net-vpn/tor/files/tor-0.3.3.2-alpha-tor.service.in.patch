@@ -1,0 +1,12 @@
+--- a/contrib/dist/tor.service.in	2017-11-11 13:40:46.000000000 -0500
++++ b/contrib/dist/tor.service.in	2018-02-24 19:06:12.307506884 -0500
+@@ -21,6 +21,9 @@
+ LimitNOFILE=32768
+ 
+ # Hardening
++Group=tor
++RuntimeDirectory=tor
++RuntimeDirectoryMode=0770
+ PrivateTmp=yes
+ PrivateDevices=yes
+ ProtectHome=yes

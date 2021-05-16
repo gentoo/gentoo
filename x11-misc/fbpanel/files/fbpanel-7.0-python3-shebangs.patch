@@ -1,0 +1,120 @@
+--- a/.config/help
++++ b/.config/help
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import re, os, sys, textwrap
+ # Formats help message
+--- a/.config/repl.py
++++ b/.config/repl.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import re, sys
+ 
+--- a/.config/tar.py
++++ b/.config/tar.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import subprocess as sp
+ import re, tempfile
+--- a/configure
++++ b/configure
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python3
+ 
+ import sys
+ if sys.version_info < (2, 7):
+--- a/exec/make_profile.in
++++ b/exec/make_profile.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ umask 0077
+ # new profile directory
+--- a/exec/xlogout
++++ b/exec/xlogout
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ # xlogout - logs user out of its X session
+ # Linux specific since uses /proc
+--- a/scripts/endianess.sh
++++ b/scripts/endianess.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ # When cross compiling, you may put cross compiler directory 
+ # in PATH before native gcc (aka spoofing), or you may set CC 
+--- a/scripts/install_locale.sh
++++ b/scripts/install_locale.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ dir=/tmp/lo-$$
+ mkdir $dir
+--- a/scripts/install_locale.sh.in
++++ b/scripts/install_locale.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ dir=/tmp/lo-$$
+ mkdir $dir
+--- a/scripts/install.sh
++++ b/scripts/install.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ usage () 
+ {
+--- a/scripts/mk_tar
++++ b/scripts/mk_tar
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ 
+ function info()
+--- a/scripts/rfs-pkg-config
++++ b/scripts/rfs-pkg-config
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ # Tt runs pkg-config in a way that everything is searched under RFS
+ # but reported including full path. Suitable for cross-compiling
+--- a/scripts/update-proj.sh
++++ b/scripts/update-proj.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ function usage () 
+ {
+--- a/www/plugins/mk_gallery
++++ b/www/plugins/mk_gallery
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env sh
+ 
+ echo > "$1"
+ #echo '<table cellpadding="0" cellspacing="0" border="0" align="left" bgcolor="#ffffff">' >> "$1"
+--- a/www/shots/mk_gallery
++++ b/www/shots/mk_gallery
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env sh
+ 
+ function help ()
+ {

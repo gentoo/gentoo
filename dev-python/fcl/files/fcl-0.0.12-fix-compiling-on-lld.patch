@@ -1,0 +1,12 @@
+--- a/setup.py
++++ b/setup.py
+@@ -21,8 +21,7 @@
+         include_dirs = ['/usr/include',
+                         '/usr/local/include',
+                         '/usr/include/eigen3']
+-        lib_dirs = ['/usr/lib',
+-                    '/usr/local/lib']
++        lib_dirs = ['/usr/local/lib']
+         
+         if 'CPATH' in os.environ:
+             include_dirs += os.environ['CPATH'].split(':')

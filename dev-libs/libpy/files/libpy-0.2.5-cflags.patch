@@ -1,0 +1,24 @@
+diff --git a/Makefile b/Makefile
+index 09e6e39..9addb5d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -46,9 +46,8 @@ CLANG_WARNINGS := \
+ 	-Wno-self-assign-overloaded
+ WARNINGS := $(BASE_WARNINGS) $($(COMPILER)_WARNINGS)
+ 
+-BASE_CXXFLAGS = -std=gnu++17 -g -O$(OPTLEVEL) \
++BASE_CXXFLAGS = -std=gnu++17 -g \
+ 	-fwrapv -fno-strict-aliasing -pipe \
+-	-march=x86-64 -mtune=generic \
+ 	-fvisibility=hidden \
+ 	$(WARNINGS) \
+ 	-DPY_MAJOR_VERSION=$(PY_MAJOR_VERSION) \
+@@ -58,7 +57,7 @@ BASE_CXXFLAGS = -std=gnu++17 -g -O$(OPTLEVEL) \
+ 	-DLIBPY_MICRO_VERSION=$(MICRO_VERSION)
+ GCC_FLAGS = -fmax-errors=$(MAX_ERRORS)
+ CLANG_FLAGS = -ferror-limit=$(MAX_ERRORS)
+-CXXFLAGS = $(BASE_CXXFLAGS) $($(COMPILER)_FLAGS)
++CXXFLAGS += $(BASE_CXXFLAGS) $($(COMPILER)_FLAGS)
+ 
+ # https://github.com/quantopian/libpy/pull/86/files#r309288697
+ INCLUDE_DIRS := include/ \

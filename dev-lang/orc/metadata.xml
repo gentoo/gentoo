@@ -5,7 +5,4 @@
   <email>gstreamer@gentoo.org</email>
   <name>GStreamer package maintainers</name>
 </maintainer>
-<use>
-  <flag name="pax_kernel">Apply patch needed for pax enabled kernels.</flag>
-</use>
 </pkgmetadata>

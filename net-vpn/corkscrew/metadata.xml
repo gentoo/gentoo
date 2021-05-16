@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sysadmin@gentoo.org</email>
+	<name>Gentoo Sysadmin Project</name>
+</maintainer>
+<longdescription lang="ja">
+Corkscrew は HTTP プロクシ経由の SSH トンネルを構築するツールです。
+</longdescription>
+</pkgmetadata>

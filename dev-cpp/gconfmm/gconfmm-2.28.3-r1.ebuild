@@ -1,41 +1,32 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-GNOME2_LA_PUNT="yes"
+EAPI=7
 GNOME_TARBALL_SUFFIX="bz2"
 
 inherit flag-o-matic gnome2
 
 DESCRIPTION="C++ bindings for GConf"
-HOMEPAGE="http://www.gtkmm.org"
+HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
-IUSE="doc"
+KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 sparc x86"
 
-RDEPEND="
+DEPEND="
 	>=gnome-base/gconf-2.4:2
-	>=dev-cpp/glibmm-2.12:2[doc?]
+	>=dev-cpp/glibmm-2.12:2
 	>=dev-cpp/gtkmm-2.4:2.4
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-no-extern-c-glib-includes.patch
+)
 
 src_configure() {
 	append-cxxflags -std=c++11 #568580
 	gnome2_src_configure \
-		$(use_enable doc documentation)
-}
-
-src_install() {
-	gnome2_src_install
-
-	if use doc ; then
-		dohtml -r docs/reference/html/*
-	fi
+		--disable-documentation
 }

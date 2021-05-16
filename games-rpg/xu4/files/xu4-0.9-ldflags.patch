@@ -1,5 +1,5 @@
---- src/Makefile.common.old
-+++ src/Makefile.common
+--- a/src/Makefile.common
++++ b/src/Makefile.common
 @@ -68,25 +68,25 @@
  mkutils::  dumpsavegame$(EXEEXT) lzwenc$(EXEEXT) lzwdec$(EXEEXT) rleenc$(EXEEXT) rledec$(EXEEXT) tlkconv$(EXEEXT)
  

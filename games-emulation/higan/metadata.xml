@@ -6,12 +6,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="profile_accuracy">
-			Compile a binary optimized for accuracy</flag>
-		<flag name="profile_balanced">
-			Compile a binary with balanced optimization</flag>
-		<flag name="profile_performance">
-			Compile a binary optimized for performance</flag>
-		<flag name="udev">Enable udev based input</flag>
+		<flag name="gtk">Use GTK3 (Qt5 if disabled) user interface backend</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://github.com/higan-emu/higan/issues</bugs-to>
+		<remote-id type="github">higan-emu/higan</remote-id>
+	</upstream>
 </pkgmetadata>

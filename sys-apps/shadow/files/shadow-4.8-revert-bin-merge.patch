@@ -1,0 +1,15 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 97839741..ff153d92 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -2,8 +2,8 @@
+ EXTRA_DIST = \
+ 	.indent.pro
+ 
+-ubindir = ${bindir}
+-usbindir = ${sbindir}
++ubindir = ${prefix}/bin
++usbindir = ${prefix}/sbin
+ suidperms = 4755
+ sgidperms = 2755
+ 

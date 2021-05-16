@@ -1,0 +1,115 @@
+https://bugs.gentoo.org/707666
+--- a/src/draw.c
++++ b/src/draw.c
+@@ -126,6 +126,8 @@
+ #include "include/figurine.h"
+ #include "include/extern.h"
+ 
++extern GC whitegc;
++
+ /* redraws a section of a view */  
+ /* this should really take a number of disjoint regions */  
+ void
+--- a/src/include/extern.h
++++ b/src/include/extern.h
+@@ -285,7 +285,7 @@ extern Pixmap bfills[];
+ extern Pixmap nofill; 
+ extern char *filltags[]; 
+ extern char *fontnames[40][2]; 
+-int numfontnames; 
++extern int numfontnames;
+ extern List afonts; 
+ 
+ extern uint justificationicon_number;
+--- a/src/include/stk_extern.h
++++ b/src/include/stk_extern.h
+@@ -71,8 +71,8 @@ extern GC fontgc;
+ extern GC sfontgc; 
+ extern GC colgc; 
+ extern Cursor stk_arrow_cursor; 
+-XFontStruct *stk_font;
+-XFontStruct *stk_sfont; 
++extern XFontStruct *stk_font;
++extern XFontStruct *stk_sfont;
+ extern List stk_window_list; 
+ extern stkInternalMenuBar stk_menu_bar; 
+ extern stkInternalIconPanel stk_icon_panel; 
+--- a/src/init.c
++++ b/src/init.c
+@@ -151,6 +151,8 @@
+ /* xbm's for fillstyle */ 
+ #include "pixmaps/fillstyles.h" 
+ 	
++extern int numfontnames;
++extern GC whitegc;
+ 
+ static Colormap colourmap;
+ static Visual *visual; 
+--- a/src/stk_dialog.c
++++ b/src/stk_dialog.c
+@@ -74,6 +74,9 @@
+ 
+ static int dial_ticket=0; 
+ 
++extern XFontStruct *stk_sfont;
++extern GC whitegc;
++
+ void free_list(void *); 
+ void set_window_cursor(Window, int); 
+  
+--- a/src/stk_globals.c
++++ b/src/stk_globals.c
+@@ -52,7 +52,7 @@
+ #include "include/stk.h" 
+ 
+ GC topleftgc; /* top & left decoration  */ 
+-GC whitegc;  /* white  */ 
++extern GC whitegc;  /* white  */ 
+ GC bottomrightgc; /* bottom and right decoration  */  
+ GC backgroundgc; /* standard GC for STK widget  */  
+ GC fontgc; /* for drawing the font  */  
+--- a/src/stk_init.c
++++ b/src/stk_init.c
+@@ -60,6 +60,9 @@
+ extern int screen; 
+ extern WindowStruct bar_window; 
+ 
++extern XFontStruct *stk_sfont;
++extern GC whitegc;
++
+ void free_list(void *);
+ 
+ void 
+--- a/src/stk_keyboard.c
++++ b/src/stk_keyboard.c
+@@ -59,6 +59,8 @@
+  
+ int str_print(char *str);
+ 
++extern XFontStruct *stk_font;
++
+ int str_print(char *str)
+ {
+ 	while (*str!='\0')
+--- a/src/stk_menu.c
++++ b/src/stk_menu.c
+@@ -85,6 +85,8 @@
+ 
+ void free_list(void *); 
+ 
++extern XFontStruct *stk_font;
++
+ /* create top-level menu bar  */  
+ int 
+ stk_create_menu_bar(WindowStruct window, stkMenuBar *menu)
+--- a/src/stk_util.c
++++ b/src/stk_util.c
+@@ -70,6 +70,8 @@
+ 
+ extern Atom windelete;
+ 
++extern XFontStruct *stk_font;
++
+ /* client-side toggle tooltips  */  
+ void
+ stk_tooltips(Boolean on)

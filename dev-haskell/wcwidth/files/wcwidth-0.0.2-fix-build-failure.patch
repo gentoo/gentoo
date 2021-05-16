@@ -1,0 +1,32 @@
+From 4fc1333ecfa19129debbac1dcdc1f444d69cbcd4 Mon Sep 17 00:00:00 2001
+From: Jack Todaro <jackmtodaro@gmail.com>
+Date: Sat, 22 Sep 2018 15:49:21 +1000
+Subject: [PATCH] Fix build for newer versions of base
+
+---
+ WCWidthTableaux.hs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/WCWidthTableaux.hs b/WCWidthTableaux.hs
+index 576fbb6..4a4d8f4 100755
+--- a/WCWidthTableaux.hs
++++ b/WCWidthTableaux.hs
+@@ -5,13 +5,13 @@
+ 
+ import Data.Char
+ import Data.List
+-import System.Environment.UTF8
++import System.Environment
+ import System.IO
+ import System.Exit
+ import Text.Printf
+ 
+ import System.Locale.SetLocale
+-import qualified System.IO.UTF8 as UTF8
++-- import qualified System.IO.UTF8 as UTF8
+ 
+ import Data.Char.WCWidth
+ 
+-- 
+2.19.0
+

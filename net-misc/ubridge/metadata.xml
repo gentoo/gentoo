@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mmk@levelnine.at</email>
+		<name>Michael Mair-Keimberger</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>g.djavadyan@gmail.com</email>
+		<name>Garri Djavadyan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		uBridge is a simple application to create user-land bridges between
+		various technologies. Currently bridging between UDP tunnels, Ethernet
+		and TAP interfaces is supported. Packet capture is also supported.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This benchmark application is designed to benchmark interactivity in Linux.
+		It is designed to measure the effect of changes in Linux kernel design or system
+		configuration changes such as CPU, I/O scheduler and filesystem changes and options.
+		With careful benchmarking, different hardware can be compared.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/ckolivas/interbench/issues</bugs-to>
+		<remote-id type="github">ckolivas/interbench</remote-id>
+	</upstream>
+</pkgmetadata>

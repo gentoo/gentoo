@@ -1,43 +1,42 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils multilib
+inherit autotools multilib
 
 if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="git://github.com/losalamos/MPI-Bash.git https://github.com/losalamos/MPI-Bash.git"
+	EGIT_REPO_URI="https://github.com/lanl/MPI-Bash.git"
 	inherit git-r3
-	KEYWORDS=""
-	AUTOTOOLS_AUTORECONF=1
 else
-	SRC_URI="https://github.com/losalamos/MPI-Bash/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/lanl/MPI-Bash/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Parallel scripting right from the Bourne-Again Shell (Bash)"
-HOMEPAGE="https://github.com/losalamos/MPI-Bash"
+HOMEPAGE="https://github.com/lanl/MPI-Bash"
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="examples"
 
 DEPEND="virtual/mpi
-	>=app-shells/bash-4.2[plugins]
+	>=app-shells/bash-4.2:0[plugins]
 	sys-cluster/libcircle"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	default
+	[[ ${PV} != 9999 ]] || eautoreconf
+}
+
 src_configure() {
-	local myeconfargs=(
+	econf --with-plugindir="${EPREFIX}"/usr/$(get_libdir)/bash \
 		--with-bashdir="${EPREFIX}"/usr/include/bash-plugins
-		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/bash
-	)
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 	sed -i '/^export LD_LIBRARY_PATH/d' "${ED}/usr/bin/${PN}" || die
 	use examples || rm -r "${ED}/usr/share/doc/${PF}/examples" || die
 }

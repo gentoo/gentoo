@@ -1,0 +1,22 @@
+From 72325037151893f1ac17e0babae8826cd1382388 Mon Sep 17 00:00:00 2001
+From: Daniel Clarke <u8sand@gmail.com>
+Date: Mon, 2 Jan 2017 15:38:39 -0500
+Subject: [PATCH] Replaced length with duration Fixes #239
+
+---
+ src/mpvhandler.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/mpvhandler.cpp b/src/mpvhandler.cpp
+index 77b40408..5a900983 100644
+--- a/src/mpvhandler.cpp
++++ b/src/mpvhandler.cpp
+@@ -679,7 +680,7 @@ void MpvHandler::LoadFileInfo()
+     fileInfo.media_title = mpv_get_property_string(mpv, "media-title");
+     // get length
+     double len;
+-    mpv_get_property(mpv, "length", MPV_FORMAT_DOUBLE, &len);
++    mpv_get_property(mpv, "duration", MPV_FORMAT_DOUBLE, &len);
+     fileInfo.length                  = (int)len;
+ 
+     LoadTracks();

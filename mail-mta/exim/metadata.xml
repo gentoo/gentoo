@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<longdescription>
 		Exim is a message transfer agent (MTA) developed at the University of
 		Cambridge for use on Unix systems connected to the Internet. It is
@@ -19,6 +15,8 @@
 		quite different to that of sendmail.
 	</longdescription>
 	<use>
+		<flag name="arc">Adds support for Authenticated Receive Chain
+			(ARC)</flag>
 		<flag name="dcc">Adds support for Distributed Checksum Clearinghouse
 			(DCC)</flag>
 		<flag name="dane">Adds support for DNS-based Authentication of Named Entities</flag>
@@ -39,6 +37,10 @@
 		<flag name="mbx">Adds support for UW's mbx format</flag>
 		<flag name="spf">Adds support for Sender Policy Framework</flag>
 		<flag name="srs">Adds support for Sender Rewriting Scheme</flag>
+		<flag name="srs-alt">Use <pkg>mail-filter/libsrs_alt</pkg> to
+			implement SRS support</flag>
+		<flag name="srs-native">Use Exim's built-in SRS support to
+			implement SRS support</flag>
 		<flag name="proxy">Add support for being behind a proxy, such as HAProxy</flag>
 		<flag name="pkcs11">Require pkcs11 support in <pkg>net-libs/gnutls</pkg> with USE=gnutls</flag>
 		<flag name="redis">Adds support for querying <pkg>dev-db/redis</pkg></flag>

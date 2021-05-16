@@ -1,0 +1,146 @@
+From b3a21a4a6d7af3dc14417c89ec2ef2732a24939b Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Sat, 26 Oct 2019 18:14:13 +0200
+Subject: [PATCH 1/2] check crypt() return value for NULL
+
+Passing NULL to strcmp() would lead to a crash otherwise.
+---
+ vcdb.c    |  7 ++++++-
+ vchkpw.c  | 11 +++++++++--
+ vldap.c   |  8 +++++++-
+ vmysql.c  |  8 +++++++-
+ vpgsql.c  |  8 +++++++-
+ vsybase.c |  8 +++++++-
+ 6 files changed, 43 insertions(+), 7 deletions(-)
+
+diff --git a/vcdb.c b/vcdb.c
+index 55c1cb5..1bf9cd8 100644
+--- a/vcdb.c
++++ b/vcdb.c
+@@ -1160,7 +1160,12 @@ void vcdb_strip_char( char *instr )
+ 
+ int vauth_crypt(char *user,char *domain,char *clear_pass,struct vqpasswd *vpw)
+ {
++  const char *c;
+   if ( vpw == NULL ) return(-1);
+ 
+-  return(strcmp(crypt(clear_pass,vpw->pw_passwd),vpw->pw_passwd));
++  c = crypt(clear_pass,vpw->pw_passwd);
++
++  if ( c == NULL ) return(-1);
++
++  return(strcmp(c,vpw->pw_passwd));
+ }
+diff --git a/vchkpw.c b/vchkpw.c
+index d7d4351..a7c4b9e 100644
+--- a/vchkpw.c
++++ b/vchkpw.c
+@@ -607,6 +607,7 @@ void login_system_user()
+  struct spwd *spw;
+ #endif
+  struct passwd *pw;
++ const char *c;
+ 
+   if ((pw=getpwnam(TheUser)) == NULL ) {
+     snprintf(LogLine, sizeof(LogLine), "%s: system user not found %s:%s", 
+@@ -626,9 +627,15 @@ void login_system_user()
+     vchkpw_exit(22);
+   }
+ 
+-  if ( strcmp(crypt(ThePass,spw->sp_pwdp),spw->sp_pwdp) != 0 ) {
++  c = crypt(ThePass,spw->sp_pwdp);
++
++  if ( c == NULL ) vchkpw_exit(24);
++  if ( strcmp(c,spw->sp_pwdp) != 0 ) {
+ #else
+-  if ( strcmp(crypt(ThePass,pw->pw_passwd),pw->pw_passwd) != 0 ) {
++  c = crypt(ThePass,pw->pw_passwd);
++
++  if ( c == NULL ) vchkpw_exit(24);
++  if ( strcmp(c,pw->pw_passwd) != 0 ) {
+ #endif
+     if (ENABLE_LOGGING==1||ENABLE_LOGGING==2) {
+       snprintf(LogLine, sizeof(LogLine), "%s: system password fail %s:%s", 
+diff --git a/vldap.c b/vldap.c
+index 75329ef..5fcce99 100644
+--- a/vldap.c
++++ b/vldap.c
+@@ -1495,10 +1495,16 @@ void *safe_malloc (size_t siz) {
+ /***************************************************************************/
+ 
+ int vauth_crypt(char *user,char *domain,char *clear_pass,struct vqpasswd *vpw) {
++    const char *c;
++
+     if ( vpw == NULL )
+         return(-1);
+ 
+-    return(strcmp(crypt(clear_pass,vpw->pw_passwd),vpw->pw_passwd));
++    c = crypt(clear_pass,vpw->pw_passwd);
++
++    if ( c == NULL ) return(-1);
++
++    return(strcmp(c,vpw->pw_passwd));
+ }
+ 
+ /***************************************************************************/
+diff --git a/vmysql.c b/vmysql.c
+index 4215a39..c5173d9 100644
+--- a/vmysql.c
++++ b/vmysql.c
+@@ -1862,7 +1862,13 @@ int vdel_limits(const char *domain)
+ /************************************************************************/
+ int vauth_crypt(char *user,char *domain,char *clear_pass,struct vqpasswd *vpw)
+ {
++  const char *c;
++
+   if ( vpw == NULL ) return(-1);
+ 
+-  return(strcmp(crypt(clear_pass,vpw->pw_passwd),vpw->pw_passwd));
++  c = crypt(clear_pass,vpw->pw_passwd);
++
++  if ( c == NULL ) return(-1);
++
++  return(strcmp(c,vpw->pw_passwd));
+ }
+diff --git a/vpgsql.c b/vpgsql.c
+index c55b9e2..b5dd40b 100644
+--- a/vpgsql.c
++++ b/vpgsql.c
+@@ -1667,8 +1667,14 @@ void vcreate_vlog_table()
+ 
+ int vauth_crypt(char *user,char *domain,char *clear_pass,struct vqpasswd *vpw)
+ {
++	const char *c;
++
+ 	  if ( vpw == NULL ) return(-1);
+ 
+-	    return(strcmp(crypt(clear_pass,vpw->pw_passwd),vpw->pw_passwd));
++	c = crypt(clear_pass,vpw->pw_passwd);
++
++	if ( c == NULL ) return(-1);
++
++	    return(strcmp(c,vpw->pw_passwd));
+ }
+ 
+diff --git a/vsybase.c b/vsybase.c
+index c6d7234..26f7447 100644
+--- a/vsybase.c
++++ b/vsybase.c
+@@ -640,7 +640,13 @@ int vshow_ip_map( int first, char *ip, char *domain);
+ 
+ int vauth_crypt(char *user,char *domain,char *clear_pass,struct vqpasswd *vpw)
+ {
++  const char *c;
++
+   if ( vpw == NULL ) return(-1);
+ 
+-  return(strcmp(crypt(clear_pass,vpw->pw_passwd),vpw->pw_passwd));
++  c = crypt(clear_pass,vpw->pw_passwd);
++
++  if ( c == NULL ) return(-1);
++
++  return(strcmp(c,vpw->pw_passwd));
+ }
+-- 
+2.16.4
+

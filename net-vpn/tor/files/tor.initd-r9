@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/tor
+pidfile=/run/tor/tor.pid
+command_args="--hush --runasdaemon 1 --pidfile \"${pidfile}\""
+retry=${GRACEFUL_TIMEOUT:-60}
+stopsig=INT
+command_progress=yes
+
+extra_commands="checkconfig"
+extra_started_commands="reload"
+description="Anonymizing overlay network for TCP"
+description_checkconfig="Check for valid config file"
+description_reload="Reload the configuration"
+
+checkconfig() {
+	${command} --verify-config --hush > /dev/null 2>&1
+	if [ $? -ne 0 ] ; then
+		eerror "Tor configuration (/etc/tor/torrc) is not valid."
+		eerror "Example is in /etc/tor/torrc.sample"
+		return 1
+	fi
+}
+
+start_pre() {
+	checkconfig || return 1
+	checkpath -d -m 0755 -o tor:tor /run/tor
+}
+
+reload() {
+	checkconfig || return 1
+	ebegin "Reloading Tor configuration"
+	start-stop-daemon -s HUP --pidfile ${pidfile}
+	eend $?
+}

@@ -1,0 +1,11 @@
+--- dhcp-4.3.6/client/scripts/linux
++++ dhcp-4.3.6/client/scripts/linux
+@@ -30,7 +30,7 @@
+ # 'ip' just looks too weird. Also, we now have unit-tests! Those unit-tests
+ # overwirte this line to use a fake ip-echo tool. It's also convenient
+ # if your system holds ip tool in a non-standard location.
+-ip=/sbin/ip
++ip=ip
+ 
+ # update /etc/resolv.conf based on received values
+ # This updated version mostly follows Debian script by Andrew Pollock et al.

@@ -1,22 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils toolchain-funcs
 
-DESCRIPTION="RF Signal Propagation, Loss, And Terrain analysis tool for the spectrum between 20 MHz and 20 GHz"
-HOMEPAGE="http://www.qsl.net/kd2bd/splat.html"
-SRC_URI="http://www.qsl.net/kd2bd/${P}.tar.bz2"
+inherit epatch toolchain-funcs
+
+DESCRIPTION="RF Signal Propagation, Loss, And Terrain analysis tool"
+HOMEPAGE="https://www.qsl.net/kd2bd/splat.html"
+SRC_URI="https://www.qsl.net/kd2bd/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc hires linguas_es"
+IUSE="doc hires l10n_es"
 
 DEPEND="sys-libs/zlib
 	app-arch/bzip2"
-
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -43,7 +42,6 @@ src_configure() {
 }
 
 src_compile() {
-
 	local CC=$(tc-getCC) CXX=$(tc-getCXX)
 
 	${CXX} -Wall ${CXXFLAGS} ${LDFLAGS} itwom3.0.cpp splat.cpp -o rfsplat -lm -lbz2 || die
@@ -62,7 +60,7 @@ src_compile() {
 
 src_install() {
 	local SPLAT_LANG="english"
-	use linguas_es && SPLAT_LANG="spanish"
+	use l10n_es && SPLAT_LANG="spanish"
 	# splat binary
 	dobin rfsplat
 	if use hires; then

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Merges arbitrarily deep hashes into a single hash"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~ppc-aix ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~ppc-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND="dev-perl/Clone"

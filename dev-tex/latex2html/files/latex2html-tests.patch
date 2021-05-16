@@ -1,0 +1,26 @@
+Index: latex2html-2017.2/styles/frames.perl
+===================================================================
+--- latex2html-2017.2.orig/styles/frames.perl
++++ latex2html-2017.2/styles/frames.perl
+@@ -295,7 +295,7 @@ sub check_frame_colorset {
+     elsif ($reverse == 1) {$colorset="${which}_colorset_star"}
+     elsif ($reverse == 2) {$colorset="${which}_colorset_star_star"}
+     else {$colorset="${which}_colorset"}
+-    if (!(defined  @$colorset))
++    if (!(@$colorset))
+ 	{ print STDERR "\nframes for $which are not supported\n"; return($rest);}	
+     local($frame_tmp)=$frame_data;
+     local($key, @values);
+Index: latex2html-2017.2/styles/natbib.perl
+===================================================================
+--- latex2html-2017.2.orig/styles/natbib.perl
++++ latex2html-2017.2/styles/natbib.perl
+@@ -1451,7 +1451,7 @@ sub do_cmd_citestyle {
+     local($_) = @_;
+     s/$next_pair_pr_rx//o;
+     local($style)="citestyle_$2";
+-    if (defined @$style) {
++    if (@$style) {
+ 	($CITE_OPEN_DELIM,
+ 	 $CITE_CLOSE_DELIM,
+ 	 $CITE_ENUM,

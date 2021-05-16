@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="project">
-	<email>bsd@gentoo.org</email>
-	<name>BSD Project</name>
+	<email>prefix@gentoo.org</email>
+	<name>Prefix Project</name>
 </maintainer>
 <longdescription lang="en">
 libiconv is a standalone package which implements the iconv() related

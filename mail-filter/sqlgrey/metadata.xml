@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo_bugs_peep@parallaxshift.com</email>
+		<name>Philippe Chaintreuil</name>
 	</maintainer>
-	<longdescription>SQLgrey is a postfix policy service implementing a grey-listing
-policy.</longdescription>
+
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">sqlgrey</remote-id>
 	</upstream>

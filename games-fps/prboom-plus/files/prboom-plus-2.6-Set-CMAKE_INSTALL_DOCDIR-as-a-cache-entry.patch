@@ -1,0 +1,29 @@
+From 9f56505b7c41337cab3a6ce3f882cf8df6bf29a9 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Mon, 22 Feb 2021 18:27:24 +0900
+Subject: [PATCH] Set CMAKE_INSTALL_DOCDIR as a cache entry
+
+CMAKE_INSTALL_DOCDIR is being unconditionally set which prevents users
+from supplying their own docdir preference. This changes the behavior to
+set CMAKE_INSTALL_DOCDIR as a cache entry so that users can override the
+default install location if they so wish.
+---
+ prboom2/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/prboom2/CMakeLists.txt b/prboom2/CMakeLists.txt
+index 9c2c1fde..3110d7f3 100644
+--- a/prboom2/CMakeLists.txt
++++ b/prboom2/CMakeLists.txt
+@@ -38,7 +38,7 @@ set(PACKAGE_TARNAME "prboom-plus")
+ set(PACKAGE_VERSION "${PROJECT_VERSION}um")
+ set(PACKAGE_HOMEPAGE "${PROJECT_HOMEPAGE_URL}")
+ set(PACKAGE_STRING "${PROJECT_NAME} ${PROJECT_VERSION}")
+-set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PACKAGE_TARNAME}")
++set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PACKAGE_TARNAME}" CACHE PATH "")
+ 
+ include(CheckSymbolExists)
+ 
+-- 
+2.30.1
+

@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -9,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -18,38 +17,81 @@
 
 #--- END OF EXAMPLES ---
 
-# Mikle Kolyada <zlogene@gentoo.org> (14 Jun 2015)
-# app-emulation/lxc has no stable versions
-app-emulation/docker lxc
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
+# openjfx:8 will never be stabilized
+# openjfx:11 probably will neither
+dev-java/openjdk:8 javafx
+dev-java/openjdk:11 javafx
 
-# Yixun Lan <dlan@gentoo.org> (02 Apr 2015)
-# sys-fs/zfs is not stable.
-sys-cluster/ceph zfs
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
+# REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
+app-office/libreoffice base
 
-# Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
-# mayavi is broken, bug #500104
-dev-python/apptools test
+# Thomas Deutschmann <whissi@gentoo.org> (2020-10-02)
+# media-video/pipewire not yet stabilized and without
+# sys-apps/xdg-desktop-portal-gtk not useable at all
+www-client/firefox screencast
 
-# Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
-# Masked since skype isn't stable
-net-im/bitlbee skype
+# Thomas Deutschmann <whissi@gentoo.org> (2020-09-07)
+# sys-cluster/slurm has no stable keywords
+# dev-util/nvidia-cuda-toolkit has no stable keywords
+app-metrics/collectd collectd_plugins_slurm collectd_plugins_gpu_nvidia
 
-# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# Joonas Niilola <juippis@gentoo.org> (2020-06-21)
+# sys-apps/apparmor doesn't have stable keywords.
+app-emulation/lxc apparmor
+app-emulation/lxd apparmor
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
+# net-libs/quiche is an early HTTP/3 implementation
+# not yet ready for everyone.
+net-misc/curl quiche
+
+# Amy Liffey <amynka@gentoo.org> (2019-01-15)
+# Mask experimental contrib repo
+# (except what's needed by digikam, dilfridge)
+media-libs/opencv contribcvv contribhdf contribsfm contribxfeatures2d gflags glog tesseract
+<media-libs/opencv-4.4.0 contrib contribdnn
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
+# unmask sssd for sudo
+app-admin/sudo -sssd
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
+net-analyzer/wireshark -doc
+
+# Thomas Beierlein <tomjbe@gentoo.org> (2018-04-20)
+# Needs asciidoctor which pulls a lot unstable ruby deps
+media-radio/wsjtx doc
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-03-18)
+# Pulls too much unstable ruby deps (some are not even keyworded)
+net-misc/chrony html
+
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
+# patchset variants are not stable
+virtual/wine staging
+
+# Tim Harder <radhermit@gentoo.org> (2017-09-11)
+# Pulls in dev-ruby/asciidoctor which has too large of a ruby testing
+# dep tree to be stabilized at this time.
+>=net-irc/weechat-1.7 doc
+
+# Christoph Junghans <junghans@gentoo.org> (2017-02-26)
+# Stable mask some fabrics (bug #525534)
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+
+# Brian Evans <grknight@gentoo.org> (2017-01-17)
+# Stable mask groonga on mariadb as I don't know how stable
+# the dependencies really are
+dev-db/mariadb mroonga
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2017-01-09)
+# Requires more testing
+# and additional unstable dependencies
+gnustep-base/gnustep-make libobjc2
+
+# Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy
-dev-lang/python-exec -python_single_target_pypy
 dev-lang/python-exec -python_targets_pypy3
-dev-lang/python-exec -python_single_target_pypy3
-
-# Mike Gilbert <floppym@gentoo.org> (22 Mar 2014)
-# sys-fs/zfs is not stable.
-sys-boot/grub libzfs
-
-# Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
-# [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
-www-apps/cgit jit
-
-# Ben de Groot <yngwin@gentoo.org (19 Apr 2015)
-# >=opus-1.0.3 is still not stable (bug 500868)
-media-video/vlc opus

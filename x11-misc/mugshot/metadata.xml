@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Mugshot is a lightweight user configuration utility.
+		Mugshot allows you to easily set profile image
+		and user details for your user profile and any supported applications.
+	</longdescription>
+	<use>
+		<flag name="gnome">Add support for <pkg>gnome-base/gnome-control-center</pkg></flag>
+		<flag name="libreoffice">Add support for <pkg>app-office/libreoffice</pkg> and <pkg>app-office/libreoffice-bin</pkg></flag>
+		<flag name="webcam">Add support for setting a profile photo in <pkg>media-video/cheese</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/bluesabre/mugshot/issues</bugs-to>
+		<remote-id type="github">bluesabre/mugshot</remote-id>
+	</upstream>
+</pkgmetadata>

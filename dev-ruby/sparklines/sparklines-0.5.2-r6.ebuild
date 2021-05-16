@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -16,10 +15,12 @@ HOMEPAGE="http://sparklines.rubyforge.org/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-macos"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-ruby/rmagick"
+DEPEND+="test? ( media-gfx/imagemagick[png] )"
+
+ruby_add_rdepend "dev-ruby/rmagick:*"
 
 ruby_add_bdepend test "dev-ruby/tidy_table dev-ruby/dust"
 

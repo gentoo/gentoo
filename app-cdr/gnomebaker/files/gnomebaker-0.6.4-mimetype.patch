@@ -1,8 +1,0 @@
---- a/gnomebaker.desktop.in
-+++ b/gnomebaker.desktop.in
-@@ -17,4 +17,4 @@ X-MultipleArgs=false
- Type=Application
- Categories=AudioVideo;DiscBurning;
- StartupNotify=true
--
-+MimeType=application/x-cd-image;application/x-cdrdao-toc;application/x-toc;application/x-cue;x-content/blank-cd;x-content/blank-dvd;x-content/blank-bd;x-content/blank-hddvd;

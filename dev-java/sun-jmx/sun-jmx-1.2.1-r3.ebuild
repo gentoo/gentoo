@@ -1,27 +1,26 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
 JAVA_PKG_IUSE="doc examples"
 
 inherit java-pkg-2
 
 MY_P=jmx-${PV//./_}
-DESCRIPTION="Java Management Extensions for managing and monitoring devices, applications, and services"
+DESCRIPTION="Java Management Extensions for managing and monitoring"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html"
 SRC_URI="${MY_P}-ri.zip"
 
 LICENSE="Oracle-BCLA-JavaSE"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE=""
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux"
 
+BDEPEND="app-arch/unzip"
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip"
 RDEPEND=">=virtual/jre-1.4"
-RESTRICT="fetch"
+RESTRICT="bindist fetch"
 
 S="${WORKDIR}/${MY_P}-bin"
 
@@ -36,16 +35,18 @@ pkg_nofetch() {
 	einfo
 	einfo " 1. Visit ${DOWNLOADSITE} and follow instructions"
 	einfo " 2. Download ${SRC_URI}"
-	einfo " 3. Move file to ${DISTDIR}"
+	einfo " 3. Move file to your DISTDIR directory"
 	einfo " 4. Run emerge on this package again to complete"
 	einfo
 }
 
 src_install() {
 	java-pkg_dojar lib/*.jar
+
 	if use doc; then
 		java-pkg_dojavadoc doc/api
 		java-pkg_dohtml -r doc/doc doc/index.html
 	fi
+
 	use examples && java-pkg_doexamples examples
 }

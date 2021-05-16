@@ -1,0 +1,22 @@
+diff -ru a/src/third-party/Qt-Color-Widgets/src/color_wheel.cpp b/src/third-party/Qt-Color-Widgets/src/color_wheel.cpp
+--- a/src/third-party/Qt-Color-Widgets/src/color_wheel.cpp	2020-05-29 22:47:56.183333313 +0300
++++ b/src/third-party/Qt-Color-Widgets/src/color_wheel.cpp	2020-05-29 22:52:19.147998709 +0300
+@@ -24,6 +24,7 @@
+ #include <cmath>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QLineF>
+ #include <QDragEnterEvent>
+ #include <QMimeData>
+diff -ru a/src/tools/arrow/arrowtool.h b/src/tools/arrow/arrowtool.h
+--- a/src/tools/arrow/arrowtool.h	2020-05-29 22:47:56.184333329 +0300
++++ b/src/tools/arrow/arrowtool.h	2020-05-29 22:48:25.688787364 +0300
+@@ -19,6 +19,7 @@
+ 
+ #include "src/tools/abstracttwopointtool.h"
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ class ArrowTool : public AbstractTwoPointTool {
+     Q_OBJECT

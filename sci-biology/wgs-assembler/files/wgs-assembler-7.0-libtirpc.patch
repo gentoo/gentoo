@@ -1,0 +1,16 @@
+diff -ruN wgs-7.0.orig/src/c_make.as wgs-7.0/src/c_make.as
+--- wgs-7.0.orig/src/c_make.as	2018-04-29 23:00:02.200181987 +0200
++++ wgs-7.0/src/c_make.as	2018-04-29 23:17:33.612700507 +0200
+@@ -196,6 +196,12 @@
+ CXXFLAGS        += $(ARCH_CXXFLAGS)
+ LDFLAGS         += $(ARCH_LDFLAGS)
+ 
++# libtirpc
++
++CFLAGS += -I/usr/include/tirpc
++CXXFLAGS += -I/usr/include/tirpc
++LINK_LIBS += -ltirpc
++
+ INC_IMPORT_DIRS += $(LOCAL_WORK)/src $(patsubst %, $(LOCAL_WORK)/src/%, $(strip $(SUBDIRS)))
+ INC_IMPORT_DIRS += $(ARCH_INC)
+ 

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<use>
-<flag name="tfo">Enable support for TCP Fast Open</flag>
-</use>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<use>
+		<flag name="tfo">Enable support for TCP Fast Open</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">flok99/httping</remote-id>
+	</upstream>
 </pkgmetadata>

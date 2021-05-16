@@ -1,6 +1,6 @@
-diff -ru wmacpiload-0.2.0/src/lib_acpi.c wmacpiload-0.2.0.new//src/lib_acpi.c
---- wmacpiload-0.2.0/src/lib_acpi.c	2005-07-21 21:41:31.000000000 -0400
-+++ wmacpiload-0.2.0.new//src/lib_acpi.c	2011-06-28 23:37:50.148092904 -0400
+diff -ru a/src/lib_acpi.c b/src/lib_acpi.c
+--- a/src/lib_acpi.c	2005-07-21 21:41:31.000000000 -0400
++++ b/src/lib_acpi.c	2011-06-28 23:37:50.148092904 -0400
 @@ -83,7 +83,7 @@
          if (!k->ac)
              fprintf(stderr, "%s : no AC adapter detected\n", PACKAGE);
@@ -23,9 +23,9 @@ diff -ru wmacpiload-0.2.0/src/lib_acpi.c wmacpiload-0.2.0.new//src/lib_acpi.c
                  char *src;
                  char *end;
                  size_t len;
-diff -ru wmacpiload-0.2.0/src/thermal.c wmacpiload-0.2.0.new//src/thermal.c
---- wmacpiload-0.2.0/src/thermal.c	2005-09-29 19:32:46.000000000 -0400
-+++ wmacpiload-0.2.0.new//src/thermal.c	2011-06-29 00:18:24.851904854 -0400
+diff -ru a/src/thermal.c b/src/thermal.c
+--- a/src/thermal.c	2005-09-29 19:32:46.000000000 -0400
++++ b/src/thermal.c	2011-06-29 00:18:24.851904854 -0400
 @@ -30,12 +30,17 @@
  #endif
  

@@ -1,0 +1,41 @@
+From f136702d2adc8643ea12f1b6e3bf97925f1b33f0 Mon Sep 17 00:00:00 2001
+From: Kwon-Young Choi <kwon-young.choi@hotmail.fr>
+Date: Fri, 19 Mar 2021 17:10:31 +0100
+Subject: [PATCH] BackingFile property should be use with StorageVolume instead
+ of StorageAccess
+
+BUG: 434617
+
+When mounting an iso with `udisksctl`, first a loop device is created
+`/dev/loop0` then a second device `/dev/loop0p1` is used to mount it on
+a filesystem location.
+
+Querying for StorageAccess devices sometimes only returns the `/dev/loop0p1`
+device without the `/dev/loop0` device and the BackingFile property does not
+work on `/dev/loop0p1`.
+
+Solution: query for StorageVolume instead which returns all loop devices:
+`/dev/loop0` and `/dev/loop1`.
+
+Warning: Because StorageVolume returns more devices, the function
+`getDeviceFromBackingFile` could be a little bit slower.
+---
+ mountiso/mountisoaction.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mountiso/mountisoaction.cpp b/mountiso/mountisoaction.cpp
+index e5575ae..d198a89 100644
+--- a/mountiso/mountisoaction.cpp
++++ b/mountiso/mountisoaction.cpp
+@@ -78,7 +78,7 @@ MountIsoAction::MountIsoAction(QObject *parent, const QVariantList &)
+ const Solid::Device getDeviceFromBackingFile(const QString &backingFile)
+ {
+     const QList<Solid::Device> blockDevices =
+-        Solid::Device::listFromQuery("[ IS StorageAccess AND IS GenericInterface ]");
++        Solid::Device::listFromQuery("[ IS StorageVolume AND IS GenericInterface ]");
+ 
+     for (const Solid::Device &device : blockDevices) {
+         auto genericDevice = device.as<Solid::GenericInterface>();
+-- 
+GitLab
+

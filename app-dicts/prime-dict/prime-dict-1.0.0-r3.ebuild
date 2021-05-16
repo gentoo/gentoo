@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 inherit ruby-ng
 
@@ -13,11 +12,11 @@ SRC_URI="http://prime.sourceforge.jp/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE=""
 
 each_ruby_configure() {
-	econf --with-rubydir="$(ruby_rbconfig_value 'sitelibdir')" || die
+	econf --with-rubydir="$(ruby_rbconfig_value 'sitelibdir')"
 }
 
 each_ruby_compile() {

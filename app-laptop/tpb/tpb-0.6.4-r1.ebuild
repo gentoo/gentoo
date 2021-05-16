@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit linux-info eutils
+EAPI=7
+
+inherit linux-info
 
 DESCRIPTION="IBM ThinkPad buttons utility"
-HOMEPAGE="http://savannah.nongnu.org/projects/tpb/"
-SRC_URI="http://savannah.nongnu.org/download/tpb/${P}.tar.gz"
+HOMEPAGE="https://savannah.nongnu.org/projects/tpb/"
+SRC_URI="https://savannah.nongnu.org/download/tpb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,10 +22,10 @@ DEPEND="${RDEPEND}"
 CONFIG_CHECK="~NVRAM"
 ERROR_NVRAM="${P} requires /dev/nvram support (CONFIG_NVRAM)"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-configure-fix.diff
-	epatch "${FILESDIR}"/${P}-nvram.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-configure-fix.diff
+	"${FILESDIR}"/${P}-nvram.patch
+)
 
 src_configure() {
 	econf \

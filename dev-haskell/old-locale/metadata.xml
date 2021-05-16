@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		This package provides the ability to adapt to
-		locale conventions such as date and time formats.
-	</longdescription>
 </pkgmetadata>

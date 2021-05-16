@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<longdescription lang="en">
+		This project is now known as "libostree", though it is
+		still appropriate to use the previous name: "OSTree" (or
+		"ostree"). The focus is on projects which use libostree's
+		shared library, rather than users directly invoking the command
+		line tools (except for build systems). However, in most of
+		the rest of the documentation, we will use the term "OSTree",
+		since it's slightly shorter, and changing all documentation
+		at once is impractical. We expect to transition to the new
+		name over time.
+
+		As implied above, libostree is both a shared library and suite
+		of command line tools that combines a "git-like" model for
+		committing and downloading bootable filesystem trees, along
+		with a layer for deploying them and managing the bootloader
+		configuration.
+
+		The core OSTree model is like git in that it checksums
+		individual files and has a content-addressed-object
+		store. It's unlike git in that it "checks out" the files
+		via hardlinks, and they thus need to be immutable to prevent
+		corruption. Therefore, another way to think of OSTree is that
+		it's just a more polished version of Linux VServer hardlinks.
+	</longdescription>
+	<use>
+		<flag name="archive">Use libarchive</flag>
+		<flag name="dracut">Install dracut module</flag>
+		<flag name="gpg">Enable GPG support</flag>
+		<flag name="grub">Enable grub configuration generator</flag>
+		<flag name="http2">Use http2</flag>
+		<flag name="httpd">Enable ostree trivial-httpd entrypoint</flag>
+		<flag name="libmount">Use libmount</flag>
+		<flag name="sodium">Use libsodium for ed25519</flag>
+		<flag name="soup">Use libsoup for networking</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">ostreedev/ostree</remote-id>
+	</upstream>
+</pkgmetadata>

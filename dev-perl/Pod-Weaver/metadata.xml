@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Pod-Weaver</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Config</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Config::Assembler</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Config::Finder</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Plugin::EnsurePod5</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Plugin::H1Nester</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Plugin::SingleEncoding</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Plugin::Transformer</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::PluginBundle::CorePrep</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::PluginBundle::Default</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::Dialect</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::Finalizer</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::Plugin</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::Preparer</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::Section</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::StringFromComment</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Role::Transformer</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Authors</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Bugs</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Collect</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Generic</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Leftovers</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Legal</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Name</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Region</remote-id>
+    <remote-id type="cpan-module">Pod::Weaver::Section::Version</remote-id>
+  </upstream>
+</pkgmetadata>

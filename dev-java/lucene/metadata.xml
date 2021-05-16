@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>robbat2@gentoo.org</email>
-  <description>Maintainer for actual Lucene issues.</description>
-</maintainer>
 <maintainer type="project">
   <email>java@gentoo.org</email>
   <name>Java</name>

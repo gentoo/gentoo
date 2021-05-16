@@ -1,0 +1,8 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# usage of FSF GCC, disabling Clang
+*sys-devel/gcc
+*sys-devel/gcc-config
+-*sys-devel/clang
+-*sys-devel/gcc-apple

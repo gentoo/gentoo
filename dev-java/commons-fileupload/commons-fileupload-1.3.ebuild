@@ -1,20 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 JAVA_PKG_IUSE="doc source test"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
-DESCRIPTION="Add robust, high-performance, file upload capability to your servlets and web applications"
+DESCRIPTION="High-performance file upload capability to your servlets and web applications"
 HOMEPAGE="http://commons.apache.org/fileupload/"
 SRC_URI="mirror://apache/commons/fileupload/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEP="

@@ -1,5 +1,0 @@
-# Config file for /etc/init.d/nfsuserd
-# Options for nfsuserd (see man nfsuserd)
-# Example: set domain example.com:
-#nfsuserdopts="-domain example.com"
-

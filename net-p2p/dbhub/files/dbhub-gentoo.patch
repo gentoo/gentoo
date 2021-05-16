@@ -1,5 +1,5 @@
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -115,7 +115,7 @@
  		AC_MSG_CHECKING([Perl LD Objs])
  		AC_MSG_RESULT([$perl_ldd])

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hattya@gentoo.org</email>
+		<name>Akinori Hattori</name>
+	</maintainer>
+	<longdescription lang="en">
+		Yash, yet another shell, is a POSIX-compliant command line shell
+		written in C99 (ISO/IEC 9899:1999). Yash is intended to be the most
+		POSIX-compliant shell in the world while supporting features for daily
+		interactive and scripting use. Notable features are:
+
+		* Global aliases
+		* Arrays
+		* Socket redirection, pipeline redirection, and process redirection
+		* Brace expansion and extended globbing
+		* Fractional numbers in arithmetic expansion
+		* Prompt command and command-not-found handler
+		* Command line completion with predefined completion scripts for more than 100 commands
+		* Command line prediction based on command history
+	</longdescription>
+	<upstream>
+		<remote-id type="github">magicant/yash</remote-id>
+		<remote-id type="sourceforge-jp">yash</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,6 +1,5 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,7 +12,7 @@ DESCRIPTION="A liberal object-oriented parser for RSS feeds"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="amd64 ia64 sparc x86"
+KEYWORDS="amd64 ~ia64 sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Class-ErrorHandler

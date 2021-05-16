@@ -1,0 +1,74 @@
+From bada194851e0a6839f78e811bfc63c2d5e8877dc Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Thu, 5 Oct 2017 22:02:38 +1300
+Subject: Make EV/Event not auto-compiled, but rely on configuration
+
+---
+ Makefile.PL | 51 ++++++++++-----------------------------------------
+ 1 file changed, 10 insertions(+), 41 deletions(-)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index e58e210..25243ff 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -17,47 +17,16 @@ EOF
+ 
+ print "*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***\n\n";
+ 
+-if (eval { require Event }) {
+-   if ($Event::VERSION < 0.86 or $Event::VERSION == 0.88) {
+-      print <<EOF
+-
+-***
+-*** WARNING: Event version $Event::VERSION found, NOT building Event support.
+-***
+-*** This version of Event is broken. The only currently known non-broken
+-*** versions of Event are 0.87 and 0.89+. Please install one of those
+-*** versions.
+-***
+-
+-EOF
+-   } else {
+-      $EVENT = 1;
+-      $DEFINE .= " -DHAVE_EVENT=1";
+-      print "\nEvent version $Event::VERSION found, building Event support.\n\n";
+-   }
+-} else {
+-   print "\n*** Event not found, not building Event support.\n\n";
+-}
+-
+-if (eval { require EV }) {
+-   if ($EV::VERSION < 4.0) {
+-      print <<EOF
+-
+-***
+-*** WARNING: EV version $EV::VERSION found, NOT building EV support.
+-***
+-*** This version is ABI-incompatible with Coro, please upgrade to at least 4.0.
+-***
+-
+-EOF
+-   } else {
+-      $EV = 1;
+-      $DEFINE .= " -DHAVE_EV=1";
+-      print "\nEV version $EV::VERSION found, building EV support.\n\n";
+-   }
+-} else {
+-   print "\n*** EV not found, not building EV support.\n\n";
+-}
++$EVENT = ( $ENV{GENTOO_OPTS} =~ /\bEvent\b/ );
++$EV    = ( $ENV{GENTOO_OPTS} =~ /\bEV\b/ );
++$EVENT and do {
++  require Event;
++  Event->VERSION(0.89);
++};
++$EV and do {
++  require EV;
++  EV->VERSION(4.0);
++};
+ 
+ WriteMakefile(
+     dist         => {
+-- 
+2.14.1
+

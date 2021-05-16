@@ -1,0 +1,65 @@
+# HG changeset patch
+# User Stefan Strogin <stefan.strogin@gmail.com>
+# Date 1544083567 -7200
+#      Thu Dec 06 10:06:07 2018 +0200
+# Branch make
+# Node ID 938b9b0dc4fb7b22f8d110e9259899602fe7c1ba
+# Parent  cccf2f62d439fc3dd6248014d171efc811f89f2b
+Compile source files separately. Fixes issue #192
+
+diff -r cccf2f62d439 -r 938b9b0dc4fb Makefile
+--- a/Makefile	Sun Dec 02 22:34:01 2018 +1300
++++ b/Makefile	Thu Dec 06 10:06:07 2018 +0200
+@@ -57,11 +57,13 @@
+       HANGOUTS_DEST =
+ 	  HANGOUTS_ICONS_DEST =
+     else
++      CFLAGS := $(CFLAGS) -fPIC $(INCLUDES) -Ipurple2compat $(PROTOBUF_OPTS) `$(PKG_CONFIG) purple glib-2.0 json-glib-1.0 zlib --libs --cflags`
+       HANGOUTS_TARGET = libhangouts.so
+       HANGOUTS_DEST = $(DESTDIR)`$(PKG_CONFIG) --variable=plugindir purple`
+ 	  HANGOUTS_ICONS_DEST = $(DESTDIR)`$(PKG_CONFIG) --variable=datadir purple`/pixmaps/pidgin/protocols
+     endif
+   else
++    CFLAGS := $(CFLAGS) -fPIC $(INCLUDES) $(PROTOBUF_OPTS) `$(PKG_CONFIG) purple-3 glib-2.0 json-glib-1.0 zlib --libs --cflags`
+     HANGOUTS_TARGET = libhangouts3.so
+     HANGOUTS_DEST = $(DESTDIR)`$(PKG_CONFIG) --variable=plugindir purple-3`
+ 	HANGOUTS_ICONS_DEST = $(DESTDIR)`$(PKG_CONFIG) --variable=datadir purple-3`/pixmaps/pidgin/protocols
+@@ -75,12 +77,10 @@
+ WIN32_PIDGIN2_LDFLAGS = -L$(PIDGIN_TREE_TOP)/libpurple $(WIN32_LDFLAGS)
+ WIN32_PIDGIN3_LDFLAGS = -L$(PIDGIN3_TREE_TOP)/libpurple -L$(WIN32_DEV_TOP)/gplugin-dev/gplugin $(WIN32_LDFLAGS) -lgplugin
+ 
+-C_FILES := hangouts.pb-c.c hangout_media.pb-c.c gmail.pb-c.c hangouts_json.c hangouts_pblite.c hangouts_connection.c hangouts_auth.c hangouts_events.c hangouts_conversation.c hangouts_media.c
+-PURPLE_COMPAT_FILES := purple2compat/http.c purple2compat/purple-socket.c
+-PURPLE_C_FILES := libhangouts.c $(C_FILES)
+-TEST_C_FILES := hangouts_test.c $(C_FILES)
+-
+-
++OBJ := hangouts.pb-c.o hangout_media.pb-c.o gmail.pb-c.o hangouts_json.o hangouts_pblite.o hangouts_connection.o hangouts_auth.o hangouts_events.o hangouts_conversation.o hangouts_media.o
++PURPLE_COMPAT_FILES := purple2compat/http.o purple2compat/purple-socket.o
++PURPLE_C_FILES := libhangouts.c $(OBJ)
++TEST_C_FILES := hangouts_test.c $(OBJ)
+ 
+ .PHONY:	all install FAILNOPURPLE clean
+ 
+@@ -96,10 +96,10 @@
+ 	$(PROTOC_C) --c_out=. gmail.proto
+ 
+ libhangouts.so: $(PURPLE_C_FILES) $(PURPLE_COMPAT_FILES)
+-	$(CC) -fPIC $(CFLAGS) -shared -o $@ $^ $(LDFLAGS) $(PROTOBUF_OPTS) `$(PKG_CONFIG) purple glib-2.0 json-glib-1.0 zlib --libs --cflags` -ldl $(INCLUDES) -Ipurple2compat -g -ggdb
++	$(CC) $(CFLAGS) -shared -o $@ $^ $(LDFLAGS) -ggdb -ldl
+ 
+ libhangouts3.so: $(PURPLE_C_FILES)
+-	$(CC) -fPIC $(CFLAGS) -shared -o $@ $^ $(LDFLAGS) $(PROTOBUF_OPTS) `$(PKG_CONFIG) purple-3 glib-2.0 json-glib-1.0 zlib --libs --cflags` -ldl $(INCLUDES) -g -ggdb
++	$(CC) $(CFLAGS) -shared -o $@ $^ $(LDFLAGS) -ggdb -ldl
+ 
+ libhangouts.dll: $(PURPLE_C_FILES) $(PURPLE_COMPAT_FILES)
+ 	$(WIN32_CC) -shared -o $@ $^ $(WIN32_PIDGIN2_CFLAGS) $(WIN32_PIDGIN2_LDFLAGS) -Ipurple2compat
+@@ -126,7 +126,7 @@
+ 	echo "You need libpurple development headers installed to be able to compile this plugin"
+ 
+ clean:
+-	rm -f $(HANGOUTS_TARGET) hangouts.pb-c.h hangouts.pb-c.c hangout_media.pb-c.h hangout_media.pb-c.c
++	rm -f $(HANGOUTS_TARGET) $(OBJ) $(PURPLE_COMPAT_FILES) hangouts.pb-c.h hangouts.pb-c.c hangout_media.pb-c.h hangout_media.pb-c.c
+ 
+ 
+ installer: purple-hangouts.nsi libhangouts.dll

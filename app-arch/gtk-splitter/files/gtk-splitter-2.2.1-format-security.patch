@@ -1,0 +1,44 @@
+--- a/src/dostextfile.c
++++ b/src/dostextfile.c
+@@ -30,14 +30,14 @@
+ /* Write a string to the file pointed to by b without the eoln. */
+ void write_dostextfile(FILE *b, char *data)
+ {
+-   fprintf( b, data );
++   fprintf( b, "%s", data );
+    fflush( b );
+ }
+ 
+ /* Write a string to the file pointed to by b with the eoln. */
+ void writeln_dostextfile(FILE *b, char *data)
+ {
+-   fprintf( b, data );
++   fprintf( b, "%s", data );
+    fputc( 0x0d, b );
+    fputc( 0x0a, b );
+    fflush( b );
+--- a/src/interface.c
++++ b/src/interface.c
+@@ -216,6 +216,7 @@
+                                     GTK_DIALOG_MODAL,
+                                     GTK_MESSAGE_ERROR,
+                                     GTK_BUTTONS_CLOSE,
++                                    "%s", 
+                                     error );
+                                     
+    /* Display the error dialog. */  
+@@ -233,12 +234,14 @@
+                                        GTK_DIALOG_MODAL,
+                                        GTK_MESSAGE_INFO,
+                                        GTK_BUTTONS_CLOSE,
++                                       "%s",
+                                        "File verification successful" );
+    else
+       dialog = gtk_message_dialog_new( NULL,
+                                        GTK_DIALOG_MODAL,
+                                        GTK_MESSAGE_WARNING,
+                                        GTK_BUTTONS_CLOSE,
++				       "%s",
+                                        "File verification unsuccessful" );
+                                     
+    /* Display the error dialog. */  

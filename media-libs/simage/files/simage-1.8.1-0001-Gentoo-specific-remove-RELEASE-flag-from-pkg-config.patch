@@ -1,0 +1,28 @@
+From 8c4fda363a940a365571ae0985e742f7df1f9620 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 13 Jan 2021 22:03:46 +0100
+Subject: [PATCH] [Gentoo-specific] remove RELEASE flag from pkg-config
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d869715..a980571 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -794,8 +794,8 @@ if(UNIX OR MINGW)
+   set(PKG_CONFIG_REQUIRES "$<$<BOOL:${PKG_CONFIG_REQUIRES}>:$<JOIN:${PKG_CONFIG_REQUIRES}, >>")
+   set(PKG_CONFIG_REQUIRES_PRIVATE "$<$<BOOL:${PKG_CONFIG_REQUIRES_PRIVATE}>:$<JOIN:${PKG_CONFIG_REQUIRES_PRIVATE}, >>")
+ 
+-  set(PKG_CONFIG_CFLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_RELEASE} ${PKG_CONFIG_CFLAGS}")
+-  set(PKG_CONFIG_CXXFLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} ${PKG_CONFIG_CXXFLAGS}")
++  set(PKG_CONFIG_CFLAGS "${CMAKE_C_FLAGS} ${PKG_CONFIG_CFLAGS}")
++  set(PKG_CONFIG_CXXFLAGS "${CMAKE_CXX_FLAGS} ${PKG_CONFIG_CXXFLAGS}")
+ 
+   # PKG-CONFIG settings
+   # according to https://www.gnu.org/prep/standards/html_node/Directory-Variables.html
+-- 
+2.30.0
+

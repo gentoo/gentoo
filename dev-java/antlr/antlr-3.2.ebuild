@@ -1,19 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit epatch java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A parser generator for many languages"
-HOMEPAGE="http://www.antlr3.org/"
-SRC_URI="http://www.antlr3.org/download/${P}.tar.gz
-	http://www.antlr3.org/download/${P}.jar" # Prebuilt version needed.
+HOMEPAGE="https://www.antlr3.org/"
+SRC_URI="https://www.antlr3.org/download/${P}.tar.gz
+	https://www.antlr3.org/download/${P}.jar" # Prebuilt version needed.
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="amd64 ~arm ppc64 x86 ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-java/antlr-2.7.7-r7:0
 	dev-java/stringtemplate:0"

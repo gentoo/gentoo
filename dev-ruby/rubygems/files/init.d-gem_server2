@@ -1,5 +1,5 @@
-#!/sbin/runscript
-# Copyright 1999-2008 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 PID=/var/run/gem_server.pid
@@ -10,8 +10,9 @@ depend() {
 
 start() {
 	ebegin "Starting gem_server"
-	start-stop-daemon --start --chuid nobody --quiet --background --make-pidfile \
-		 --pidfile ${PID} --exec /usr/bin/ruby -- /usr/bin/gem server ${GEM_SERVER_OPTS}
+	start-stop-daemon --start --user nobody --quiet --background \
+		--make-pidfile --pidfile ${PID} --exec /usr/bin/ruby -- \
+		/usr/bin/gem server ${GEM_SERVER_OPTS}
 	eend ${?}
 }
 

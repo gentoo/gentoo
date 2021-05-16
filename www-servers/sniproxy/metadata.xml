@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>nemunaire@nemunai.re</email>
+		<name>Pierre-Olivier Mercier</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="dns">
+			Enable DNS resolver via net-libs/udns
+		</flag>
+		<flag name="largefile">
+			Enable large file support (so we can log more than 2GB)
+		</flag>
+		<flag name="rfc3339">
+			Use RFC3339 timestamp format in log.
+		</flag>
+	</use>
+</pkgmetadata>

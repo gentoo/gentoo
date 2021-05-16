@@ -1,14 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
-RUBY_FAKEGEM_TASK_TEST="test:units"
+RUBY_FAKEGEM_TASK_TEST="MOCHA_NO_DOCS=true test:units"
 
-RUBY_FAKEGEM_TASK_DOC="yardoc"
-RUBY_FAKEGEM_DOCDIR="doc"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md RELEASE.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="init.rb"
@@ -20,12 +18,11 @@ HOMEPAGE="http://gofreerange.com/mocha/docs/"
 
 LICENSE="MIT"
 SLOT="0.14"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE=""
 
 ruby_add_bdepend "
-	doc? ( dev-ruby/yard )
-	test? ( dev-ruby/yard >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
+	test? ( >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
 
 ruby_add_rdepend "dev-ruby/metaclass" #metaclass ~> 0.0.1
 

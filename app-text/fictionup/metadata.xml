@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>grozin@gentoo.org</email>
+    <name>Andrey Grozin</name>
+  </maintainer>
+  <longdescription lang="en">
+    fictionup is a command-line markdown to fb2 convertor. Metadata can be
+    included in the input file as a yaml block or given by a command-line
+    argument.
+  </longdescription>
+</pkgmetadata>

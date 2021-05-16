@@ -1,69 +1,85 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils flag-o-matic git-r3 toolchain-funcs user
+EAPI=7
 
-DESCRIPTION="A Tool for network monitoring and data acquisition"
-HOMEPAGE="http://www.tcpdump.org/"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+inherit autotools
+
+DESCRIPTION="A tool for network monitoring and data acquisition"
+HOMEPAGE="https://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpdump"
+
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
+else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/tcpdump.asc
+	inherit verify-sig
+
+	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz"
+	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig )"
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE="+drop-root libressl smi ssl ipv6 samba suid test"
+IUSE="+drop-root +smi +ssl +samba suid test"
+REQUIRED_USE="test? ( samba )"
+
+# Assorted failures: bug #768498
+RESTRICT="test"
 
 RDEPEND="
-	drop-root? ( sys-libs/libcap-ng )
 	net-libs/libpcap
+	drop-root? (
+		acct-group/pcap
+		acct-user/pcap
+		sys-libs/libcap-ng
+	)
 	smi? ( net-libs/libsmi )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6m:0 )
-		libressl? ( dev-libs/libressl )
+		>=dev-libs/openssl-0.9.6m:0=
+	)
+	suid? (
+		acct-group/pcap
+		acct-user/pcap
 	)
 "
 DEPEND="
 	${RDEPEND}
-	drop-root? ( virtual/pkgconfig )
 	test? (
-		|| ( app-arch/sharutils sys-freebsd/freebsd-ubin )
+		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
 	)
 "
+BDEPEND="drop-root? ( virtual/pkgconfig )"
 
-pkg_setup() {
-	if use drop-root || use suid; then
-		enewgroup tcpdump
-		enewuser tcpdump -1 -1 -1 tcpdump
-	fi
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-tcpdump )"
+fi
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-libdir.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
-	# tcpdump needs some optimization. see bug #108391
-	# but do not replace -Os
-	filter-flags -O[0-9]
-	has -O? ${CFLAGS} || append-cflags -O2
-
-	filter-flags -finline-functions
-
-	if use drop-root; then
-		append-cppflags -DHAVE_CAP_NG_H
-		export LIBS=$( $(tc-getPKG_CONFIG) --libs libcap-ng )
-	fi
-
 	econf \
-		$(use_enable ipv6) \
 		$(use_enable samba smb) \
+		$(use_with drop-root cap-ng) \
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \
-		$(use_with ssl crypto "${EPREFIX}/usr") \
-		$(usex drop-root "--with-user=tcpdump" "")
+		$(use_with ssl crypto "${ESYSROOT}/usr") \
+		$(usex drop-root "--with-user=pcap" "")
 }
 
 src_test() {
-	if [[ ${EUID} -ne 0 ]] || ! use drop-root; then
-		sed -i -e '/^\(espudp1\|eapon1\)/d;' tests/TESTLIST || die
+	if [[ ${EUID} -ne 0 ]] || ! use drop-root ; then
 		emake check
 	else
 		ewarn "If you want to run the test suite, make sure you either"
@@ -77,19 +93,12 @@ src_install() {
 	dodoc *.awk
 	dodoc CHANGES CREDITS README.md
 
-	if use suid; then
-		fowners root:tcpdump /usr/sbin/tcpdump
+	if use suid ; then
+		fowners root:pcap /usr/sbin/tcpdump
 		fperms 4110 /usr/sbin/tcpdump
 	fi
 }
 
-pkg_preinst() {
-	if use drop-root || use suid; then
-		enewgroup tcpdump
-		enewuser tcpdump -1 -1 -1 tcpdump
-	fi
-}
-
 pkg_postinst() {
-	use suid && elog "To let normal users run tcpdump add them into tcpdump group."
+	use suid && elog "To let normal users run tcpdump, add them to the pcap group."
 }

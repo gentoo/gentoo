@@ -1,38 +1,27 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.openezx.org/dfu-util.git"
-	inherit autotools git-2
-	SRC_URI=""
-	#KEYWORDS=""
+	EGIT_REPO_URI="git://git.code.sf.net/p/dfu-util/dfu-util"
+	inherit autotools git-r3
 else
-	SRC_URI="http://dfu-util.gnumonks.org/releases/${P}.tar.gz"
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="implements the Host (PC) side of the USB DFU (Device Firmware Upgrade) protocol"
-HOMEPAGE="http://wiki.openmoko.org/wiki/Dfu-util"
+HOMEPAGE="http://dfu-util.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND="virtual/libusb:1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	if [[ ${PV} == "9999" ]] ; then
-		eautoreconf
-	fi
-	sed -i '/^bin_PROGRAMS/s:dfu-util_static[^ ]*::' src/Makefile.in
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc ChangeLog README TODO
+	default
+	[[ ${PV} == "9999" ]] && eautoreconf
 }

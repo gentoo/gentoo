@@ -20,5 +20,6 @@
     <remote-id type="cpan-module">Devel::NYTProf::SubCallInfo</remote-id>
     <remote-id type="cpan-module">Devel::NYTProf::SubInfo</remote-id>
     <remote-id type="cpan-module">Devel::NYTProf::Util</remote-id>
+    <remote-id type="cpan-module">SVG</remote-id>
   </upstream>
 </pkgmetadata>

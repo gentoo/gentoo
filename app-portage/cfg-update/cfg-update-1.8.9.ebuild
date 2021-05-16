@@ -1,18 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit eutils
 
-DESCRIPTION="Easy to use GUI & CLI alternative for etc-update with safe automatic updating functionality"
+DESCRIPTION="Easy to use GUI & CLI alternative for etc-update"
 HOMEPAGE="https://github.com/rich0/cfg-update"
 SRC_URI="https://github.com/rich0/cfg-update/tarball/${PV} -> ${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE="X"
 
 RDEPEND="

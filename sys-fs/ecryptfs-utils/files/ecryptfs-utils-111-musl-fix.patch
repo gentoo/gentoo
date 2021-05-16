@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/715508
+https://git.alpinelinux.org/aports/tree/community/ecryptfs-utils/fix-build.patch?id=9e57b1f1197ee99b9f998472371042c42bffdc49
+--- a/src/utils/mount.ecryptfs_private.c	2016-01-22 18:04:52.000000000 +0200
++++ b/src/utils/mount.ecryptfs_private.c	2017-01-20 08:39:31.877975729 +0200
+@@ -235,7 +235,7 @@
+ 	 * deceive other programs with a crafted /proc/self/*. See
+ 	 * https://launchpad.net/bugs/1530566 for more details.
+ 	 */
+-	__SWORD_TYPE f_type_whitelist[] = {
++	static const uint32_t f_type_whitelist[] = {
+ 		0x61756673 /* AUFS_SUPER_MAGIC */,
+ 		0x9123683E /* BTRFS_SUPER_MAGIC */,
+ 		0x00C36400 /* CEPH_SUPER_MAGIC */,

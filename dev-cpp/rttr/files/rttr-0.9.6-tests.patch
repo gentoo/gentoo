@@ -1,0 +1,30 @@
+Avoid running a custom testsuite unconditionally.
+
+--- a/src/unit_tests/CMakeLists.txt
++++ b/src/unit_tests/CMakeLists.txt
+@@ -54,17 +54,17 @@
+ endif()
+                                             
+ # run tests
+-add_custom_target(run_tests ALL
+-                  COMMAND "$<TARGET_FILE:unit_tests>"
+-                  DEPENDS unit_tests
+-                  COMMENT "Running unit_tests")
++#add_custom_target(run_tests ALL
++#                  COMMAND "$<TARGET_FILE:unit_tests>"
++#                  DEPENDS unit_tests
++#                  COMMENT "Running unit_tests")
+                   
+-set_target_properties(run_tests PROPERTIES 
+-                                FOLDER "Testing")
++#set_target_properties(run_tests PROPERTIES 
++#                                FOLDER "Testing")
+ 
+ add_subdirectory(plugin)
+ 
+ add_dependencies(unit_tests unit_test_plugin)
+ 
+ message(STATUS "Scanning " ${PROJECT_NAME} " module finished!")
+-message(STATUS "")
+\ No newline at end of file
++message(STATUS "")

@@ -14,6 +14,8 @@
   <use>
     <flag name="dane">Enable DNS-based Authentication of Named Entities (DANE) support</flag>
     <flag name="ecdsa">Enable ECDSA support</flag>
+    <flag name="ed25519">Enable ED25519 support</flag>
+    <flag name="ed448">Enable ED448 support</flag>
     <flag name="gost">Enable GOST support</flag>
   </use>
 </pkgmetadata>

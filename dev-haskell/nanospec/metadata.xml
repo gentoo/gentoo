@@ -5,8 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A lightweight implementation of a subset of Hspec's API with
-		minimal dependencies.
-	</longdescription>
 </pkgmetadata>

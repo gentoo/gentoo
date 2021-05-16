@@ -1,12 +1,11 @@
-# Copyright 2007-2015 Gentoo Foundation
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: java-osgi.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
-# Java maintainers (java@gentoo.org)
+# Java maintainers <java@gentoo.org>
 # @BLURB: Java OSGi eclass
 # @DESCRIPTION:
 # This eclass provides functionality which is used by packages that need to be
@@ -244,7 +243,7 @@ java-osgi_newjar-fromfile() {
 	fi
 }
 
-# @FUNCTION: java-osgi_dojar-fromfile()
+# @FUNCTION: java-osgi_dojar-fromfile
 # @USAGE: <jar to repackage with OSGi> <Manifest file> <bundle name>
 # @DESCRIPTION:
 # This function produces an OSGi compliant jar from a given manifestfile.

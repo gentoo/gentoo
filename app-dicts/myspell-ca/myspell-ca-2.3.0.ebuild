@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"ca_ES.aff"
@@ -23,10 +22,11 @@ SRC_URI="http://www.softcatala.org/diccionaris/actualitzacions/OOo/catalan.oxt -
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 IUSE=""
 
 src_prepare() {
+	default
 	# rename to conform the common naming scheme
 	mv catalan.aff ca_ES.aff || die
 	mv catalan.dic ca_ES.dic || die

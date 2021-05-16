@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"fr-moderne.aff"
@@ -27,20 +26,21 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="French dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.libreoffice.org/extension-center/dictionnaires-francais"
+HOMEPAGE="https://extensions.libreoffice.org/extension-center/dictionnaires-francais"
 SRC_URI="
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-moderne-v${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-v${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-reforme1990-v${PV}.oxt
-	http://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-reforme1990-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-moderne-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-classique-reforme1990-v${PV}.oxt
+	https://extensions.libreoffice.org/extension-center/dictionnaires-francais/releases/${PV}/ooo-dictionnaire-fr-reforme1990-v${PV}.oxt
 "
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~x86-linux"
 IUSE=""
 
 src_prepare() {
+	default
 	# the default should be classique+reforme1990
 	# renaming to fr_FR
 	mv fr-classique+reforme1990.aff fr_FR.aff || die

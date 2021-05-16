@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,10 +9,9 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/occipital/openni2"
 fi
 
-inherit ${SCM} toolchain-funcs eutils multilib java-pkg-opt-2 flag-o-matic
+inherit ${SCM} toolchain-funcs epatch multilib java-pkg-opt-2 flag-o-matic
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm"
@@ -22,7 +20,7 @@ else
 fi
 
 DESCRIPTION="OpenNI2 SDK"
-HOMEPAGE="http://structure.io/openni"
+HOMEPAGE="https://structure.io/openni"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc java neon opengl static-libs"
@@ -32,12 +30,11 @@ RDEPEND="
 	virtual/libudev
 	virtual/jpeg:0
 	opengl? ( media-libs/freeglut )
-	java? ( >=virtual/jre-1.5 )
+	java? ( >=virtual/jre-1.5:* )
 "
 DEPEND="${RDEPEND}
-	dev-lang/python
 	doc? ( app-doc/doxygen )
-	java? ( >=virtual/jdk-1.5 )"
+	java? ( >=virtual/jdk-1.5:* )"
 
 src_prepare() {
 	epatch \

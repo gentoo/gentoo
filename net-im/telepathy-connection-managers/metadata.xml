@@ -7,8 +7,10 @@
 </maintainer>
 <use>
   <flag name="gadu">Enable Gadu Gadu protocol support.</flag>
+  <flag name="icq">Enable ICQ IM protocol support.</flag>
   <flag name="irc">Enable Internet Relay Chat (IRC) support.</flag>
   <flag name="meanwhile">Enable meanwhile support for Sametime protocol.</flag>
+  <flag name="msn">Enable MSN Messenger IM protocol support.</flag>
   <flag name="sip">Enable SIP/SIMPLE messaging and calling.</flag>
   <flag name="sipe">Enable Sip Exchange Protocol.</flag>
   <flag name="steam">Enable Steam Chat support.</flag>

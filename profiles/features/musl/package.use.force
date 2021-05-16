@@ -1,0 +1,9 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+# Force system-libevent use flag on mozilla packages, since the building of
+# bundled libevent cannot accomodate a system without sysctl.h
+# See bug 574830 for more info.
+>=www-client/firefox-45.0 system-libevent
+>=www-client/seamonkey-2.40 system-libevent
+>=mail-client/thunderbird-45.0 system-libevent

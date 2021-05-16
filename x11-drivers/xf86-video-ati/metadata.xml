@@ -5,7 +5,4 @@
 	<email>x11@gentoo.org</email>
 	<name>X11</name>
 </maintainer>
-<use>
-	<flag name="glamor">Enable Glamor OpenGL 2D acceleration</flag>
-</use>
 </pkgmetadata>

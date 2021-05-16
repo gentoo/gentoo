@@ -1,0 +1,99 @@
+Index: b/src/googletest.h
+===================================================================
+--- a/src/googletest.h
++++ b/src/googletest.h
+@@ -437,6 +437,18 @@ static inline void StringReplace(string*
+   }
+ }
+ 
++static inline void IntReplace(string* str,
++                          const string& oldsub,
++                          int newsub) {
++  size_t pos = str->find(oldsub);
++  if (pos != string::npos) {
++    std::ostringstream ss;
++    ss << newsub;
++    const std::string x = ss.str();
++    str->replace(pos, oldsub.size(), x.c_str());
++  }
++}
++
+ static inline string Munge(const string& filename) {
+   FILE* fp = fopen(filename.c_str(), "rb");
+   CHECK(fp != NULL) << filename << ": couldn't open";
+@@ -452,9 +464,13 @@ static inline string Munge(const string&
+ 
+     StringReplace(&line, "__SUCCESS__", StrError(0));
+     StringReplace(&line, "__ENOENT__", StrError(ENOENT));
++    IntReplace(&line, "__ENOENT_NUM__", ENOENT);
+     StringReplace(&line, "__EINTR__", StrError(EINTR));
++    IntReplace(&line, "__EINTR_NUM__", EINTR);
+     StringReplace(&line, "__ENXIO__", StrError(ENXIO));
++    IntReplace(&line, "__ENXIO_NUM__", ENXIO);
+     StringReplace(&line, "__ENOEXEC__", StrError(ENOEXEC));
++    IntReplace(&line, "__ENOEXEC_NUM__", ENOEXEC);
+     result += line + "\n";
+   }
+   fclose(fp);
+Index: b/src/logging_unittest.cc
+===================================================================
+--- a/src/logging_unittest.cc
++++ b/src/logging_unittest.cc
+@@ -238,6 +238,17 @@ int main(int argc, char **argv) {
+   return 0;
+ }
+ 
++static int errnoForIteration(int i) {
++  switch (i) {
++    case 0: return 0;
++    case 2: return ENOENT;
++    case 4: return EINTR;
++    case 6: return ENXIO;
++    case 8: return ENOEXEC;
++  }
++  return -1;
++}
++
+ void TestLogging(bool check_counts) {
+   int64 base_num_infos   = LogMessage::num_messages(GLOG_INFO);
+   int64 base_num_warning = LogMessage::num_messages(GLOG_WARNING);
+@@ -246,7 +257,7 @@ void TestLogging(bool check_counts) {
+   LOG(INFO) << string("foo ") << "bar " << 10 << ' ' << 3.4;
+   for ( int i = 0; i < 10; ++i ) {
+     int old_errno = errno;
+-    errno = i;
++    errno = errnoForIteration(i);
+     PLOG_EVERY_N(ERROR, 2) << "Plog every 2, iteration " << COUNTER;
+     errno = old_errno;
+ 
+Index: b/src/logging_unittest.err
+===================================================================
+--- a/src/logging_unittest.err
++++ b/src/logging_unittest.err
+@@ -51,21 +51,21 @@ WDATE TIME__ THREADID logging_unittest.c
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 1
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log if less than 3 every 2, iteration 1
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 2
+-EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 3: __ENOENT__ [2]
++EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 3: __ENOENT__ [__ENOENT_NUM__]
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 3
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log if less than 3 every 2, iteration 3
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log every 3, iteration 4
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 4
+-EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 5: __EINTR__ [4]
++EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 5: __EINTR__ [__EINTR_NUM__]
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log every 4, iteration 5
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 5
+ WDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 5, iteration 6
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 6
+-EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 7: __ENXIO__ [6]
++EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 7: __ENXIO__ [__ENXIO_NUM__]
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log every 3, iteration 7
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 7
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 8
+-EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 9: __ENOEXEC__ [8]
++EDATE TIME__ THREADID logging_unittest.cc:LINE] Plog every 2, iteration 9: __ENOEXEC__ [__ENOEXEC_NUM__]
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log every 4, iteration 9
+ IDATE TIME__ THREADID logging_unittest.cc:LINE] Log if every 1, iteration 9
+ EDATE TIME__ THREADID logging_unittest.cc:LINE] Log every 3, iteration 10
+

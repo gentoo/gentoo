@@ -1,14 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils git-r3
+EAPI=7
+inherit autotools desktop git-r3
 
 DESCRIPTION="The fast and light GNUstep window manager"
-HOMEPAGE="http://www.windowmaker.org/"
-SRC_URI="http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
-EGIT_REPO_URI="git://repo.or.cz/wmaker-crm.git"
+HOMEPAGE="https://www.windowmaker.org/"
+SRC_URI="https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
+EGIT_REPO_URI="https://repo.or.cz/wmaker-crm.git"
 EGIT_BRANCH="next"
 
 SLOT="0"
@@ -23,16 +22,19 @@ DEPEND="media-libs/fontconfig
 	x11-libs/libXt
 	x11-libs/libXv
 	gif? ( >=media-libs/giflib-4.1.0-r3 )
-	imagemagick? ( media-gfx/imagemagick )
+	imagemagick? ( >=media-gfx/imagemagick-7:0= )
 	jpeg? ( virtual/jpeg:0= )
+	nls? ( virtual/libintl )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
 	webp? ( media-libs/libwebp )
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )"
-RDEPEND="${DEPEND}
-	nls? ( >=sys-devel/gettext-0.10.39 )
-	!app-i18n/scim-anthy[gtk3]"
+RDEPEND="${DEPEND}"
+BDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )"
+
+DOCS=( AUTHORS BUGFORM BUGS ChangeLog INSTALL-WMAKER FAQ
+	NEWS README README.definable-cursor README.i18n TODO )
 
 src_unpack() {
 	# wm-extras
@@ -45,38 +47,51 @@ src_prepare() {
 	# Fix some paths
 	for file in WindowMaker/*menu* util/wmgenmenu.c; do
 		if [[ -r $file ]] ; then
-			sed -i -e "s:/usr/local/GNUstep/Applications/WPrefs.app:${EPREFIX}/usr/bin/:g;" "$file" || die
-			sed -i -e "s:/usr/local/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
-			sed -i -e "s:/opt/share/WindowMaker:${EPREFIX}/usr/share/WindowMaker:g;" "$file" || die
-		fi;
-	done;
+			sed -i -e "s|/usr/local/GNUstep/Applications/WPrefs.app|${EPREFIX}/usr/bin/|g;" "$file" || die
+			sed -i -e "s|/usr/local/share/WindowMaker|${EPREFIX}/usr/share/WindowMaker|g;" "$file" || die
+			sed -i -e "s|/opt/share/WindowMaker|${EPREFIX}/usr/share/WindowMaker|g;" "$file" || die
+		fi
+	done
+
+	default
+	eautoreconf
 }
 
 src_configure() {
-	local myconf
+	local -a myeconfargs=(
+		# image format types
+		$(use_enable gif)
+		$(use_enable imagemagick magick)
+		$(use_enable jpeg)
+		$(use_enable png)
+		$(use_enable tiff)
+		$(use_enable webp)
+		$(use_enable xpm)
 
-	# image format types
-	myconf="$(use_enable imagemagick magick) $(use_enable jpeg) $(use_enable gif) $(use_enable png) $(use_enable tiff) $(use_enable webp) $(use_enable xpm)"
+		# optional X capabilities
+		$(use_enable modelock)
+		$(use_enable xinerama)
+		$(use_enable xrandr randr)
+	)
 
-	# non required X capabilities
-	myconf="${myconf} $(use_enable modelock) $(use_enable xrandr randr) $(use_enable xinerama)"
-
+	# NLS depends on whether LINGUAS is empty
 	if use nls; then
-		[[ -z $LINGUAS ]] && export LINGUAS="$(ls po/*.po | sed 's:po/\(.*\)\.po$:\1:' | xargs)"
+		myeconfargs+=( LINGUAS="${LINGUAS:-$(cd po; x=(*.po); echo ${x[*]%.po})}" )
 	else
-		myconf="${myconf} --disable-locale"
+		myeconfargs+=( LINGUAS= )
 	fi
 
-	# default settings with $myconf appended
 	econf \
-		--sysconfdir="${EPREFIX}"/etc/X11 \
-		--with-x \
-		--enable-usermenu \
-		--with-pixmapdir="${EPREFIX}"/usr/share/pixmaps \
 		--localedir="${EPREFIX}"/usr/share/locale \
-		${myconf}
+		--sysconfdir="${EPREFIX}"/etc/X11 \
+		--disable-static \
+		--enable-usermenu \
+		--with-{incs,libs}-from= \
+		--with-pixmapdir="${EPREFIX}"/usr/share/pixmaps \
+		--with-x \
+		"${myeconfargs[@]}"
 
-	cd ../WindowMaker-extra-0.1
+	pushd ../WindowMaker-extra-0.1 &>/dev/null || die
 	econf
 }
 
@@ -84,21 +99,15 @@ src_compile() {
 	emake
 
 	# WindowMaker Extra Package (themes and icons)
-	cd ../WindowMaker-extra-0.1
-	emake
+	emake -C ../WindowMaker-extra-0.1
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
-	dodoc AUTHORS BUGFORM BUGS ChangeLog INSTALL* FAQ* \
-		  README* NEWS TODO
+	default
 
 	# WindowMaker Extra
-	cd ../WindowMaker-extra-0.1
-	emake DESTDIR="${D}" install
-
-	newdoc README README.extra
+	emake -C ../WindowMaker-extra-0.1 DESTDIR="${D}" install
+	newdoc ../WindowMaker-extra-0.1/README README.extra
 
 	# create wmaker session shell script
 	echo "#!/usr/bin/env bash" > wmaker
@@ -109,4 +118,6 @@ src_install() {
 	insinto /usr/share/xsessions
 	doins "${FILESDIR}"/wmaker.desktop
 	make_desktop_entry /usr/bin/wmaker
+
+	find "${ED}" -type f -name '*.la' -delete || die
 }

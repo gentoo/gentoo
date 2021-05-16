@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/768285
+https://midnight-commander.org/ticket/4192
+
+From 6394547dbffbad44ea50c64c282de4b610ca07bf Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Wed, 3 Feb 2021 09:47:13 +0300
+Subject: [PATCH] Ticket #4192: fix crash if shadow is out of screen.
+
+(tty_clip): add extra tests for area boundaries.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ lib/tty/tty-ncurses.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/lib/tty/tty-ncurses.c b/lib/tty/tty-ncurses.c
+index 03235cd5b..5cddf5059 100644
+--- a/lib/tty/tty-ncurses.c
++++ b/lib/tty/tty-ncurses.c
+@@ -152,9 +152,16 @@ tty_clip (int *y, int *x, int *rows, int *cols)
+ 
+     if (*y + *rows > LINES)
+         *rows = LINES - *y;
++
++    if (*rows <= 0)
++        return FALSE;
++
+     if (*x + *cols > COLS)
+         *cols = COLS - *x;
+ 
++    if (*cols <= 0)
++        return FALSE;
++
+     return TRUE;
+ }
+ 
+-- 
+2.30.0
+

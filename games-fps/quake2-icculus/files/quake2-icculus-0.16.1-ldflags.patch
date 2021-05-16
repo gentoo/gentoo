@@ -1,5 +1,5 @@
---- Makefile.old
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -169,18 +169,18 @@
  DEBUG_CFLAGS=$(BASE_CFLAGS) -g
  

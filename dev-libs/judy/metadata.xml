@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>qnikst@gentoo.org</email>
-		<name>Alexander Vershilov</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>grknight@gentoo.org</email>
+		<name>Brian Evans</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">judy</remote-id>

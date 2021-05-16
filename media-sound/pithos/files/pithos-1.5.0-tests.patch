@@ -1,0 +1,23 @@
+diff --git a/data/meson.build b/data/meson.build
+index efac217..d08796a 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -41,12 +41,12 @@ pithos_appstream = i18n.merge_file(
+ 
+ pithos_settings = gnome.compile_schemas()
+ 
+-appstream_util = find_program('appstream-util', required: false)
+-if appstream_util.found()
+-  test('Validate appstream file', appstream_util,
+-    args: ['validate', pithos_appstream]
+-  )
+-endif
++#appstream_util = find_program('appstream-util', required: false)
++#if appstream_util.found()
++#  test('Validate appstream file', appstream_util,
++#    args: ['validate', pithos_appstream]
++#  )
++#endif
+ 
+ desktop_utils = find_program('desktop-file-validate', required: false)
+ if desktop_utils.found()

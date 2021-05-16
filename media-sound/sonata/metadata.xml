@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>angelos@gentoo.org</email>
-    <name>Christoph Mende</name>
-  </maintainer>
   <maintainer type="project">
     <email>sound@gentoo.org</email>
     <name>Gentoo Sound project</name>
@@ -14,8 +10,4 @@
     (MPD). It aims to be efficient (no toolbar, main menu, or statusbar),
     user-friendly, and clean.
   </longdescription>
-  <use>
-    <flag name="lyrics">Support for lyrics fetching</flag>
-    <flag name="trayicon">Enable support for trayicon</flag>
-  </use>
 </pkgmetadata>

@@ -5,4 +5,42 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Type-Tiny</remote-id>
+    <remote-id type="cpan-module">Devel::TypeTiny::Perl56Compat</remote-id>
+    <remote-id type="cpan-module">Devel::TypeTiny::Perl58Compat</remote-id>
+    <remote-id type="cpan-module">Error::TypeTiny</remote-id>
+    <remote-id type="cpan-module">Error::TypeTiny::Assertion</remote-id>
+    <remote-id type="cpan-module">Error::TypeTiny::Compilation</remote-id>
+    <remote-id type="cpan-module">Error::TypeTiny::WrongNumberOfParameters</remote-id>
+    <remote-id type="cpan-module">Eval::TypeTiny</remote-id>
+    <remote-id type="cpan-module">Reply::Plugin::TypeTiny</remote-id>
+    <remote-id type="cpan-module">Test::TypeTiny</remote-id>
+    <remote-id type="cpan-module">Type::Coercion</remote-id>
+    <remote-id type="cpan-module">Type::Coercion::FromMoose</remote-id>
+    <remote-id type="cpan-module">Type::Coercion::Union</remote-id>
+    <remote-id type="cpan-module">Type::Library</remote-id>
+    <remote-id type="cpan-module">Type::Params</remote-id>
+    <remote-id type="cpan-module">Type::Parser</remote-id>
+    <remote-id type="cpan-module">Type::Registry</remote-id>
+    <remote-id type="cpan-module">Type::Tiny</remote-id>
+    <remote-id type="cpan-module">Type::Tiny::Class</remote-id>
+    <remote-id type="cpan-module">Type::Tiny::Duck</remote-id>
+    <remote-id type="cpan-module">Type::Tiny::Enum</remote-id>
+    <remote-id type="cpan-module">Type::Tiny::Intersection</remote-id>
+    <remote-id type="cpan-module">Type::Tiny::Role</remote-id>
+    <remote-id type="cpan-module">Type::Tiny::Union</remote-id>
+    <remote-id type="cpan-module">Type::Utils</remote-id>
+    <remote-id type="cpan-module">Types::Common::Numeric</remote-id>
+    <remote-id type="cpan-module">Types::Common::String</remote-id>
+    <remote-id type="cpan-module">Types::Standard</remote-id>
+    <remote-id type="cpan-module">Types::Standard::ArrayRef</remote-id>
+    <remote-id type="cpan-module">Types::Standard::CycleTuple</remote-id>
+    <remote-id type="cpan-module">Types::Standard::Dict</remote-id>
+    <remote-id type="cpan-module">Types::Standard::HashRef</remote-id>
+    <remote-id type="cpan-module">Types::Standard::Map</remote-id>
+    <remote-id type="cpan-module">Types::Standard::ScalarRef</remote-id>
+    <remote-id type="cpan-module">Types::Standard::Tuple</remote-id>
+    <remote-id type="cpan-module">Types::TypeTiny</remote-id>
+  </upstream>
 </pkgmetadata>

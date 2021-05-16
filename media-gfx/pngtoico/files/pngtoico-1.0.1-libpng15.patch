@@ -1,5 +1,5 @@
---- pngtoico.c
-+++ pngtoico.c
+--- a/pngtoico.c
++++ b/pngtoico.c
 @@ -188,7 +188,7 @@
      goto perrexit;
    }

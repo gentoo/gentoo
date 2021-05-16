@@ -28,5 +28,6 @@
     <remote-id type="cpan-module">Mail::Mailer::testfile::pipe</remote-id>
     <remote-id type="cpan-module">Mail::Send</remote-id>
     <remote-id type="cpan-module">Mail::Util</remote-id>
+    <remote-id type="cpan-module">MailTools</remote-id>
   </upstream>
 </pkgmetadata>

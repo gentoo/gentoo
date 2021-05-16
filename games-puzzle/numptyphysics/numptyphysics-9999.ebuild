@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils gnome2-utils flag-o-matic git-r3 games
+EAPI=7
 
-DESCRIPTION="A drawing puzzle game in the spirit of Crayon Physics using the same excellent Box2D engine"
-HOMEPAGE="http://thp.io/2015/numptyphysics/"
+inherit git-r3 gnome2-utils toolchain-funcs
 
+DESCRIPTION="Crayon Physics-like drawing puzzle game using the same excellent Box2D engine"
+HOMEPAGE="https://github.com/thp/numptyphysics"
+EGIT_REPO_URI="https://github.com/thp/numptyphysics"
 # This is only the SRC_URI for the user levels. The code is in git repo.
 SRC_URI="user-levels? (
 	http://numptyphysics.garage.maemo.org/levels/butelo/butelo.npz
@@ -33,58 +33,34 @@ SRC_URI="user-levels? (
 	http://numptyphysics.garage.maemo.org/levels/zeez/zeez.npz
 )"
 
-EGIT_REPO_URI="https://github.com/thp/numptyphysics"
-
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
 IUSE="+user-levels"
 
-RDEPEND="media-libs/libsdl2[opengl,video]
+RDEPEND="
+	dev-libs/glib:2
+	media-libs/libsdl2[opengl,video]
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-ttf
 	virtual/opengl
-	dev-libs/glib:2"
-DEPEND="${DEPEND}
-	virtual/pkgconfig"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-src_unpack() {
-	git-r3_src_unpack
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.5-gentoo.patch
+)
 
-src_prepare() {
-	append-cxxflags -std=c++11 -Isrc
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	sed -i \
-		-e "s^@GENTOO_DATADIR@^${GAMES_DATADIR}/${PN}/data^" \
-		src/Os.cpp || die
-}
-
-src_install() {
-	dogamesbin ${PN}
-	insinto "${GAMES_DATADIR}/${PN}"
-	doins -r data
-
-	if use user-levels ; then
-		local f
-
-		for f in ${A} ; do
-			[[ ${f} = ${f/.tar.gz/} ]] && doins "${DISTDIR}"/${f}
-		done
-	fi
-	make_desktop_entry ${PN} 'Numpty Physics'
-	doicon -s 256 platform/freedesktop/numptyphysics.png
-	doman platform/freedesktop/numptyphysics.6
-	prepgamesdirs
+src_compile() {
+	tc-export CC CXX
+	emake
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 }
 

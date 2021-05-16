@@ -1,5 +1,5 @@
---- src/bomns.cpp.old	2015-01-03 18:44:59.947689613 +0100
-+++ src/bomns.cpp	2015-01-03 18:47:29.854777276 +0100
+--- a/src/bomns.cpp
++++ b/src/bomns.cpp
 @@ -432,7 +432,10 @@
        if(g_bShowFps)
        {

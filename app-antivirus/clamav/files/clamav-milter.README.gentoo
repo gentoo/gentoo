@@ -19,7 +19,10 @@ Step 2 - Tell the init script to start clamd as well as freshclam and the
 	START_FRESHCLAM=yes
 	START_MILTER=yes
 
-Step 3 - Edit sendmail.mc
+Step 3 - Inform your MTA about the new milter.
+
+            SENDMAIL
+        Step 3.a.1 - Edit sendmail.mc
 
 	Add these lines to sendmail.mc before any any other 
 	INPUT_MAIL_FILTER lines and before MAILER(local)
@@ -30,15 +33,53 @@ Step 3 - Edit sendmail.mc
 	INPUT_MAIL_FILTER(`clmilter',`S=local:/var/run/clamav/clmilter.sock, F=, T=S:4m;R:4m')dnl
 	define(`confINPUT_MAIL_FILTERS', `clmilter')dnl
 
-Step 4 - Rebuild sendmail.cf
+	Step 3.a.2 - Rebuild sendmail.cf
 
 	cd /etc/mail
 	m4 sendmail.mc > sendmail.cf
 
-Step 5 - Start clamad
+
+	
+	    POSTFIX
+	Step 3.b - Edit main.cf.
+
+	Add unix:/var/run/clamav/clamav-milter.sock to your 
+	smtpd_milters line.  If the line doesn't exist, just
+	stick it at the bottom of main.cf on a new line.
+	
+	If you're appending, this is a space separated list.
+	If virus scanning is your most intensive test, you 
+	may wish to put it on the end of the list so earlier,
+	easiser tests may punt the message before you go through the
+	trouble of virus scanning it.
+
+	Only one milter example:
+
+	# milters to run on network received mail.
+	smtpd_milters=unix:/var/run/clamav/clamav-milter.suck
+
+	Multiple milters example:
+
+	# milters to run on network received mail.
+	smtpd_milters=unix:/var/run/dkim-filter/dkim-filter.sock unix:/var/run/clamav/clamav-milter.sock
+
+
+Step 5 - Adjust permissions for clamav-milter socket
+
+	Edit /etc/clamav-milter.conf and check/change MilterSocketGroup and MilterSocketMode
+	e.g. for postfix it would be this (sendmail,.. should be similar):
+	MiltersocketGroup postfix
+	MilterSocketMode 660
+
+Step 6 - Start clamad
 
 	/etc/init.d/clamd start
 
-Step 6 - Restart sendmail
+Step 7 - Restart your MTA
 
+	    SENDMAIL
 	/etc/init.d/sendmail restart
+
+	    POSTFIX
+	/etc/init.d/postfix restart
+

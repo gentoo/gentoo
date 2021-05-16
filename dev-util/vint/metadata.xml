@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>lucianposton@pm.me</email>
+		<name>Lucian Poston</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/Kuniwak/vint/releases</changelog>
+		<remote-id type="github">Kuniwak/vint</remote-id>
+		<remote-id type="pypi">vim-vint</remote-id>
+	</upstream>
+</pkgmetadata>

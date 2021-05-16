@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		ClamTk is a frontend for ClamAV (Clam Antivirus).
+		It is intended to be an easy to use, light-weight,
+		on-demand scanner for Linux systems.
+	</longdescription>
+	<use>
+		<flag name="kde">Install the Dolphin plugin.</flag>
+		<flag name="nautilus">Install the Nautilus plugin.</flag>
+		<flag name="nemo">Install the Nemo plugin.</flag>
+		<flag name="thunar">Install the Thunar plugin.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://gitlab.com/dave_m/clamtk/issues</bugs-to>
+		<remote-id type="gitlab">dave_m/clamtk</remote-id>
+	</upstream>
+</pkgmetadata>

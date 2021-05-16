@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		DataStax Cassandra C/C++ driver for Apache Cassandra or Scilla. 
+		This driver works exclusively with the Cassandra Query Language v3 
+		(CQL3) and Cassandra's native protocol.
+	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>geaaru@gmail.com</email>
+		<name>Daniele Rondina</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">datastax/cpp-driver</remote-id>
+	</upstream>
+</pkgmetadata>

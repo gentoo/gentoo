@@ -9,6 +9,9 @@
 		<email>office@gentoo.org</email>
 		<name>Gentoo Office project</name>
 	</maintainer>
+	<use>
+		<flag name="tools">Build file conversion tools</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">libwps</remote-id>
 	</upstream>

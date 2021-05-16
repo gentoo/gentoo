@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+SD_USER=stdiscosrv
+SD_GROUP=stdiscosrv
+SD_HOMEDIR=/var/lib/stdiscosrv
+SD_LOGFILE=/var/log/syncthing/stdiscosrv.log
+
+
+description="Discovery service for syncthing"
+command="/usr/libexec/syncthing/stdiscosrv"
+command_args="${SD_OPTS}"
+pidfile="/run/stdiscosrv.pid"
+start_stop_daemon_args="--background
+  --user ${SD_USER}
+  --group ${SD_GROUP}
+  --chdir \"${SD_HOMEDIR}\"
+  --make-pidfile
+  --stdout \"${SD_LOGFILE}\"
+  --stderr \"${SD_LOGFILE}\"
+  "
+
+depend() {
+  need net
+}
+
+start_pre() {
+  checkpath -q -d -o ${SD_USER}:${SD_GROUP} ${SD_HOMEDIR}
+  checkpath -q -f -o ${SD_USER}:${SD_GROUP} ${SD_LOGFILE}
+}

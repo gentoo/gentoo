@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}.java/archive/${PN}-complete-${PV}.zip ->
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 CDEPEND="dev-java/swt:3.8"
@@ -30,7 +29,7 @@ DEPEND="
 
 S="${WORKDIR}/${PN}.java-${PN}-complete-${PV}"
 JAVA_GENTOO_CLASSPATH="swt-3.8"
-JAVA_SRC_DIR="core extras swt"
+JAVA_SRC_DIR=( "core" "extras" "swt" )
 
 java_prepare() {
 	rm -rf core/src/test extras/src/test swt/src/test || die

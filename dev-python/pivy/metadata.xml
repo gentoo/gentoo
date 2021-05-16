@@ -2,7 +2,22 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>xmw@gentoo.org</email>
-<name>Michael Weber</name>
+	<email>fordfrog@gentoo.org</email>
+	<name>Miroslav Šulc</name>
 </maintainer>
+<maintainer type="person" proxied="yes">
+	<email>waebbl-gentoo@posteo.net</email>
+	<name>Bernd Waibel</name>
+</maintainer>
+<use>
+	<flag name="quarter">
+		Use <pkg>media-libs/quarter</pkg> for GUI bindings
+	</flag>
+	<flag name="soqt">
+		Use <pkg>media-libs/SoQt</pkg> for GUI bindings
+	</flag>
+</use>
+<upstream>
+	<remote-id type="github">coin3d/pivy</remote-id>
+</upstream>
 </pkgmetadata>

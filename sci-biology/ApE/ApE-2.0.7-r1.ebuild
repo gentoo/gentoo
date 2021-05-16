@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -20,7 +19,7 @@ RDEPEND="
 	dev-lang/tcl:0
 	dev-lang/tk:0"
 
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}/ApE Linux/"
 

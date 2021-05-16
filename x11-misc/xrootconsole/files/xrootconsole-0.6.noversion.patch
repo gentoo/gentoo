@@ -1,5 +1,5 @@
---- main.c.orig	2004-02-21 07:31:53.000000000 +0900
-+++ main.c	2005-03-06 16:34:27.949346504 +0900
+--- a/main.c.orig	2004-02-21 07:31:53.000000000 +0900
++++ b/main.c	2005-03-06 16:34:27.949346504 +0900
 @@ -68,6 +68,7 @@
  "  --solid          make background a solid color, not shaded-transparent\n" \
  "  --topdown        insert lines at the top and scroll the rest down\n" \

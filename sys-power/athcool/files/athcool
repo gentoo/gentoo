@@ -1,5 +1,4 @@
-#!/sbin/runscript
-# $Id$
+#!/sbin/openrc-run
 
 start() {
 	ebegin "Starting ${SVCNAME}"

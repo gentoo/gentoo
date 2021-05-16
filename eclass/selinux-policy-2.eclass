@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Eclass for installing SELinux policy, and optionally
 # reloading the reference-policy based modules.
@@ -8,6 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -63,7 +63,7 @@
 # using a single variable, rather than having to set the packagename_LIVE_REPO
 # variable for each and every SELinux policy module package they want to install.
 # The default value is Gentoo's hardened-refpolicy repository.
-: ${SELINUX_GIT_REPO:="git://anongit.gentoo.org/proj/hardened-refpolicy.git https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
+: ${SELINUX_GIT_REPO:="https://anongit.gentoo.org/git/proj/hardened-refpolicy.git"};
 
 # @ECLASS-VARIABLE: SELINUX_GIT_BRANCH
 # @DESCRIPTION:
@@ -74,26 +74,27 @@
 # The default value is the 'master' branch.
 : ${SELINUX_GIT_BRANCH:="master"};
 
-extra_eclass=""
+case "${EAPI:-0}" in
+	0|1|2|3|4|5) die "EAPI<6 is not supported";;
+	6|7) : ;;
+	*) die "unknown EAPI" ;;
+esac
+
 case ${BASEPOL} in
-	9999)	extra_eclass="git-r3";
+	9999)	inherit git-r3
 			EGIT_REPO_URI="${SELINUX_GIT_REPO}";
 			EGIT_BRANCH="${SELINUX_GIT_BRANCH}";
 			EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy";;
 esac
 
-inherit eutils ${extra_eclass}
-
 IUSE=""
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
-if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]];
-then
-	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
-		https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
-elif [[ "${BASEPOL}" != "9999" ]];
-then
-	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2"
+if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
+		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
+elif [[ "${BASEPOL}" != "9999" ]]; then
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2"
 else
 	SRC_URI=""
 fi
@@ -105,22 +106,22 @@ PATCHBUNDLE="${DISTDIR}/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
 
 # Modules should always depend on at least the first release of the
 # selinux-base-policy for which they are generated.
-if [[ -n ${BASEPOL} ]];
-then
+if [[ -n ${BASEPOL} ]]; then
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${BASEPOL}"
 else
 	RDEPEND=">=sys-apps/policycoreutils-2.0.82
 		>=sec-policy/selinux-base-policy-${PV}"
 fi
-DEPEND="${RDEPEND}
-	sys-devel/m4
-	>=sys-apps/checkpolicy-2.0.21"
-
-case "${EAPI:-0}" in
-	0|1|2|3|4) die "EAPI<5 is not supported";;
-	*) : ;;
-esac
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND="${RDEPEND}
+		sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+else
+	DEPEND="${RDEPEND}"
+	BDEPEND="sys-devel/m4
+		>=sys-apps/checkpolicy-2.0.21"
+fi
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm
 
@@ -128,8 +129,7 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install pkg_postinst pkg
 # @DESCRIPTION:
 # Unpack the policy sources as offered by upstream (refpolicy).
 selinux-policy-2_src_unpack() {
-	if [[ "${BASEPOL}" != "9999" ]];
-	then
+	if [[ "${BASEPOL}" != "9999" ]]; then
 		unpack ${A}
 	else
 		git-r3_src_unpack
@@ -156,24 +156,19 @@ selinux-policy-2_src_prepare() {
 	cd "${S}/refpolicy/policy/modules" && mkdir 3rd_party;
 
 	# Patch the sources with the base patchbundle
-	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]];
-	then
+	if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
 		cd "${S}"
-		EPATCH_MULTI_MSG="Applying SELinux policy updates ... " \
-		EPATCH_SUFFIX="patch" \
-		EPATCH_SOURCE="${WORKDIR}" \
-		EPATCH_FORCE="yes" \
-		epatch
+		einfo "Applying SELinux policy updates ... "
+		eapply -p0 "${WORKDIR}/0001-full-patch-against-stable-release.patch"
 	fi
 
-	# Call in epatch_user. We do this early on as we start moving
+	# Call in eapply_user. We do this early on as we start moving
 	# files left and right hereafter.
-	epatch_user
+	eapply_user
 
 	# Copy additional files to the 3rd_party/ location
 	if [[ "$(declare -p POLICY_FILES 2>/dev/null 2>&1)" == "declare -a"* ]] ||
-	   [[ -n ${POLICY_FILES} ]];
-	then
+	   [[ -n ${POLICY_FILES} ]]; then
 	    add_interfaces=1;
 		cd "${S}/refpolicy/policy/modules"
 		for POLFILE in ${POLICY_FILES[@]};
@@ -184,14 +179,10 @@ selinux-policy-2_src_prepare() {
 
 	# Apply the additional patches refered to by the module ebuild.
 	# But first some magic to differentiate between bash arrays and strings
-	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]] ||
-	   [[ -n ${POLICY_PATCH} ]];
-	then
-		cd "${S}/refpolicy/policy/modules"
-		for POLPATCH in ${POLICY_PATCH[@]};
-		do
-			epatch "${POLPATCH}"
-		done
+	if [[ "$(declare -p POLICY_PATCH 2>/dev/null 2>&1)" == "declare -a"* ]]; then
+		[[ -n ${POLICY_PATCH[*]} ]] && eapply -d "${S}/refpolicy/policy/modules" "${POLICY_PATCH[@]}"
+	else
+		[[ -n ${POLICY_PATCH} ]] && eapply -d "${S}/refpolicy/policy/modules" ${POLICY_PATCH}
 	fi
 
 	# Collect only those files needed for this particular module
@@ -199,8 +190,7 @@ selinux-policy-2_src_prepare() {
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.te) $modfiles"
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.fc) $modfiles"
 		modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.cil) $modfiles"
-		if [ ${add_interfaces} -eq 1 ];
-		then
+		if [[ ${add_interfaces} -eq 1 ]]; then
 			modfiles="$(find ${S}/refpolicy/policy/modules -iname $i.if) $modfiles"
 		fi
 	done
@@ -229,7 +219,7 @@ selinux-policy-2_src_compile() {
 	for i in ${POLICY_TYPES}; do
 		# Support USE flags in builds
 		export M4PARAM="${makeuse}"
-		emake NAME=$i -C "${S}"/${i} || die "${i} compile failed"
+		emake NAME=$i SHAREDIR="${ROOT%/}"/usr/share/selinux -C "${S}"/${i} || die "${i} compile failed"
 	done
 }
 
@@ -244,14 +234,13 @@ selinux-policy-2_src_install() {
 		for j in ${MODS}; do
 			einfo "Installing ${i} ${j} policy package"
 			insinto ${BASEDIR}/${i}
-			if [ -f "${S}/${i}/${j}.pp" ] ; then
+			if [[ -f "${S}/${i}/${j}.pp" ]] ; then
 			  doins "${S}"/${i}/${j}.pp || die "Failed to add ${j}.pp to ${i}"
-			elif [ -f "${S}/${i}/${j}.cil" ] ; then
+			elif [[ -f "${S}/${i}/${j}.cil" ]] ; then
 			  doins "${S}"/${i}/${j}.cil || die "Failed to add ${j}.cil to ${i}"
 			fi
 
-			if [[ "${POLICY_FILES[@]}" == *"${j}.if"* ]];
-			then
+			if [[ "${POLICY_FILES[@]}" == *"${j}.if"* ]]; then
 				insinto ${BASEDIR}/${i}/include/3rd_party
 				doins "${S}"/${i}/${j}.if || die "Failed to add ${j}.if to ${i}"
 			fi
@@ -264,37 +253,45 @@ selinux-policy-2_src_install() {
 # Install the built .pp (or copied .cil) files in the SELinux policy stores, effectively
 # activating the policy on the system.
 selinux-policy-2_pkg_postinst() {
+	# Set root path and don't load policy into the kernel when cross compiling
+	local root_opts=""
+	if [[ "${ROOT%/}" != "" ]]; then
+		root_opts="-p ${ROOT%/} -n"
+	fi
+
 	# build up the command in the case of multiple modules
 	local COMMAND
 
 	for i in ${POLICY_TYPES}; do
-		if [ "${i}" == "strict" ] && [ "${MODS}" = "unconfined" ];
-		then
+		if [[ "${i}" == "strict" ]] && [[ "${MODS}" = "unconfined" ]]; then
 			einfo "Ignoring loading of unconfined module in strict module store.";
 			continue;
 		fi
 		einfo "Inserting the following modules into the $i module store: ${MODS}"
 
-		cd /usr/share/selinux/${i} || die "Could not enter /usr/share/selinux/${i}"
+		cd "${ROOT%/}/usr/share/selinux/${i}" || die "Could not enter /usr/share/selinux/${i}"
 		for j in ${MODS} ; do
-			if [ -f "${j}.pp" ] ; then
+			if [[ -f "${j}.pp" ]] ; then
 				COMMAND="${j}.pp ${COMMAND}"
-			elif [ -f "${j}.cil" ] ; then
+			elif [[ -f "${j}.cil" ]] ; then
 				COMMAND="${j}.cil ${COMMAND}"
 			fi
 		done
-		semodule -s ${i} -i ${COMMAND}
-		if [ $? -ne 0 ];
-		then
+
+		semodule ${root_opts} -s ${i} -i ${COMMAND}
+		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload...";
-			if [ "${i}" == "targeted" ];
-			then
-				semodule -s ${i} -b base.pp -i $(ls *.pp | grep -v base.pp);
-			else
-				semodule -s ${i} -b base.pp -i $(ls *.pp | grep -v base.pp | grep -v unconfined.pp);
+			local COMMAND_base="-i base.pp"
+			if has_version "<sys-apps/policycoreutils-2.5"; then
+				COMMAND_base="-b base.pp"
 			fi
-			if [ $? -ne 0 ];
-			then
+
+			if [[ "${i}" == "targeted" ]]; then
+				semodule ${root_opts} -s ${i} ${COMMAND_base} -i $(ls *.pp | grep -v base.pp);
+			else
+				semodule ${root_opts} -s ${i} ${COMMAND_base} -i $(ls *.pp | grep -v base.pp | grep -v unconfined.pp);
+			fi
+			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
 				ewarn ""
 				ewarn "If this is *not* the last SELinux module package being installed,"
@@ -307,9 +304,9 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "command finished succesfully."
 				ewarn ""
 				ewarn "To reload, run the following command from within /usr/share/selinux/${i}:"
-				ewarn "  semodule -b base.pp -i \$(ls *.pp | grep -v base.pp)"
+				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp)"
 				ewarn "or"
-				ewarn "  semodule -b base.pp -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
+				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
 				ewarn "depending on if you need the unconfined domain loaded as well or not."
 			else
 				einfo "SELinux modules reloaded succesfully."
@@ -320,15 +317,18 @@ selinux-policy-2_pkg_postinst() {
 		COMMAND="";
 	done
 
-	# Relabel depending packages
-	PKGSET="";
-	if [ -x /usr/bin/qdepends ] ; then
-	  PKGSET=$(/usr/bin/qdepends -Cq -r -Q ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-");
-	elif [ -x /usr/bin/equery ] ; then
-	  PKGSET=$(/usr/bin/equery -Cq depends ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-");
-	fi
-    if [ -n "${PKGSET}" ] ; then
-	  rlpkg ${PKGSET};
+	# Don't relabel when cross compiling
+	if [[ "${ROOT%/}" == "" ]]; then
+		# Relabel depending packages
+		local PKGSET="";
+		if [[ -x /usr/bin/qdepends ]] ; then
+			PKGSET=$(/usr/bin/qdepends -Cq -r -Q ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-");
+		elif [[ -x /usr/bin/equery ]] ; then
+			PKGSET=$(/usr/bin/equery -Cq depends ${CATEGORY}/${PN} | grep -v "sec-policy/selinux-");
+		fi
+		if [[ -n "${PKGSET}" ]] ; then
+			rlpkg ${PKGSET};
+		fi
 	fi
 }
 
@@ -338,8 +338,13 @@ selinux-policy-2_pkg_postinst() {
 # deactivating the policy on the system.
 selinux-policy-2_pkg_postrm() {
 	# Only if we are not upgrading
-	if [[ -z "${REPLACED_BY_VERSION}" ]];
-	then
+	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
+		# Set root path and don't load policy into the kernel when cross compiling
+		local root_opts=""
+		if [[ "${ROOT%/}" != "" ]]; then
+			root_opts="-p ${ROOT%/} -n"
+		fi
+
 		# build up the command in the case of multiple modules
 		local COMMAND
 		for i in ${MODS}; do
@@ -349,9 +354,8 @@ selinux-policy-2_pkg_postrm() {
 		for i in ${POLICY_TYPES}; do
 			einfo "Removing the following modules from the $i module store: ${MODS}"
 
-			semodule -s ${i} ${COMMAND}
-			if [ $? -ne 0 ];
-			then
+			semodule ${root_opts} -s ${i} ${COMMAND}
+			if [[ $? -ne 0 ]]; then
 				ewarn "SELinux module unload failed.";
 			else
 				einfo "SELinux modules unloaded succesfully."

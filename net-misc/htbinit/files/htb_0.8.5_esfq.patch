@@ -1,0 +1,53 @@
+--- a/htb.init
++++ b/htb.init
+@@ -226,7 +226,7 @@
+ #	priority. Also, classes with higher priority are offered excess
+ #	bandwidth first.
+ #
+-# LEAF=none|sfq|pfifo|bfifo			optional, default "none"
++# LEAF=none|sfq|esfq|pfifo|bfifo		optional, default "none"
+ #
+ #	Tells the script to attach specified leaf queueing discipline to HTB
+ #	class. By default, no leaf qdisc is used.
+@@ -261,6 +261,15 @@
+ #	will never take place which is what you probably don't want. The
+ #	default value of 10 seconds is probably a good value.
+ #
++### ESFQ qdisc parameters
++#
++# Same as SFQ and ...
++#
++# HASH=classic|src|dst
++#
++#     src mean is fair per source IP
++#     dsr mean is fair per destination IP
++#
+ ### PFIFO/BFIFO qdisc parameters
+ #
+ # Those are simple FIFO queueing disciplines. They only have one parameter
+@@ -427,14 +445,14 @@
+ 
+ ### Modules to probe for. Uncomment the last HTB_PROBE
+ ### line if you have QoS support compiled into kernel
+-HTB_PROBE="sch_htb sch_sfq cls_fw cls_u32 cls_route"
++HTB_PROBE="sch_htb sch_sfq sch_esfq cls_fw cls_u32 cls_route"
+ #HTB_PROBE=""
+ 
+ ### Config keywords
+ HTB_QDISC="DEFAULT\|DCACHE\|R2Q"
+ HTB_CLASS="RATE\|CEIL\|BURST\|CBURST\|PRIO\|LEAF\|MTU"
+ HTB_CLASS="$HTB_CLASS\|PRIO_RULE\|PRIO_MARK\|PRIO_REALM"
+-HTB_CLASS="$HTB_CLASS\|LIMIT\|QUANTUM\|PERTURB"
++HTB_CLASS="$HTB_CLASS\|LIMIT\|QUANTUM\|PERTURB\|HASH"
+ HTB_CLASS="$HTB_CLASS\|TOS"
+ 
+ 
+@@ -801,6 +819,8 @@
+ 			LEAFPARM="${PERTURB:+perturb $PERTURB} ${QUANTUM:+quantum $QUANTUM}"
+ 		elif [ "$LEAF" = "pfifo" -o "$LEAF" = "bfifo" ]; then
+ 			LEAFPARM="${LIMIT:+limit $LIMIT}"
++		elif [ "$LEAF" = "esfq" ]; then
++			LEAFPARM="${PERTURB:+perturb $PERTURB} ${QUANTUM:+quantum $QUANTUM} ${HASH:+hash $HASH}"
+ 		else
+ 			htb_fail_off "unknown leaf qdisc ($LEAF) in $classfile!"
+ 		fi

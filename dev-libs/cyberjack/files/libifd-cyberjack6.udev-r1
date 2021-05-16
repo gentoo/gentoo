@@ -1,0 +1,27 @@
+# If not adding the device, go away
+ACTION!="add", GOTO="cyberjack_rules_end"
+SUBSYSTEM!="usb", GOTO="cyberjack_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="cyberjack_rules_end"
+
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0100", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0300", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0400", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0401", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0412", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0485", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0500", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0501", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0502", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0503", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0504", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0505", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0506", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0507", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0525", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0580", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="2000", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0551", ENV{PCSCD}="1"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="2002", ENV{PCSCD}="1"
+
+# All done
+LABEL="cyberjack_rules_end"

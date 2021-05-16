@@ -1,24 +1,31 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit autotools eutils git-r3 libtool multilib-minimal
+EAPI=7
+inherit autotools git-r3 multilib-minimal
 
-DESCRIPTION="A library to execute a function when a specific event occurs on a file descriptor"
-HOMEPAGE="http://libevent.org/"
+DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 EGIT_REPO_URI="https://github.com/libevent/libevent"
+HOMEPAGE="
+	https://libevent.org/
+	https://github.com/libevent/libevent
+"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug libressl +ssl static-libs test +threads"
+IUSE="
+	+clock-gettime debug malloc-replacement mbedtls +ssl static-libs
+	test +threads verbose-debug
+"
+RESTRICT="test"
 
 DEPEND="
+	mbedtls? ( net-libs/mbedtls )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
-	)"
+		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
+	)
+"
 RDEPEND="
 	${DEPEND}
 	!<=dev-libs/9libs-1.0
@@ -27,8 +34,12 @@ RDEPEND="
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
+DOCS=(
+	ChangeLog{,-1.4,-2.0}
+)
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
@@ -38,25 +49,19 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" \
 	econf \
-		--disable-samples \
+		$(use_enable clock-gettime) \
 		$(use_enable debug debug-mode) \
-		$(use_enable debug malloc-replacement) \
+		$(use_enable malloc-replacement malloc-replacement) \
+		$(use_enable mbedtls) \
 		$(use_enable ssl openssl) \
 		$(use_enable static-libs static) \
 		$(use_enable test libevent-regress) \
-		$(use_enable threads thread-support)
+		$(use_enable threads thread-support) \
+		$(use_enable verbose-debug) \
+		--disable-samples
 }
-
-src_test() {
-	# The test suite doesn't quite work (see bug #406801 for the latest
-	# installment in a riveting series of reports).
-	:
-	# emake -C test check | tee "${T}"/tests
-}
-
-DOCS=( ChangeLog{,-1.4,-2.0} )
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

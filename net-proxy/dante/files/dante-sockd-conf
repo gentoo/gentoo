@@ -1,6 +1,5 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Number of processes to fork off
 # 1 is plenty for most users

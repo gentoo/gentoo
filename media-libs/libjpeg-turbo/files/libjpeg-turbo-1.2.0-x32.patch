@@ -2,8 +2,8 @@ https://bugs.gentoo.org/420239
 
 https://sourceforge.net/tracker/?func=detail&aid=3533795&group_id=303195&atid=1278160
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -33,7 +33,11 @@ case "$host_os" in
    linux*)
      case "$host_cpu" in
@@ -25,8 +25,8 @@ https://sourceforge.net/tracker/?func=detail&aid=3533795&group_id=303195&atid=12
    ELF64)      NAFLAGS='-felf64 -DELF -D__x86_64__';;
    RDF)        NAFLAGS='-frdf -DRDF';;
    Mach-O)     NAFLAGS='-fmacho -DMACHO';;
---- simd/nasm_lt.sh
-+++ simd/nasm_lt.sh
+--- a/simd/nasm_lt.sh
++++ b/simd/nasm_lt.sh
 @@ -11,7 +11,7 @@ while [ $# -gt 0 ]; do
                  pic=yes
              fi

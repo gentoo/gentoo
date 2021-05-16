@@ -5,9 +5,4 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Djinn uses an theorem prover for intuitionistic propositional logic
-		to generate a Haskell expression when given a type.
-		This is the bridge from djinn-lib to GHC API.
-	</longdescription>
 </pkgmetadata>

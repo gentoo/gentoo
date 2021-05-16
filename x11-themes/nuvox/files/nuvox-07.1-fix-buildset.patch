@@ -1,0 +1,23 @@
+--- a/buildset
++++ b/buildset
+@@ -157,7 +157,6 @@
+ 
+ 
+ # Move/Remove the created directories so the user can rebuild if needed.
+-rm -fr 32x32/apps 32x32/devices 32x32/mimetypes 32x32/filesystems
+ for size in $SIZES
+ do
+ 	if [ "$size" != "32x32" ]; then # Already did the 32x32 size above
+@@ -169,12 +168,10 @@
+ echo -ne "Tarring and compressing.\n"
+ if test -f $COMPRESSOR
+ 	then
+-		tar cf $PACKAGENAME.tar $PACKAGENAME && $COMPRESSOR $PACKAGENAME.tar
+ 		echo -ne "\nThe $PACKAGENAME icon set has been built.  Use kcontrol to install the icon set.\n"
+ 		echo && ls -sh $PACKAGENAME.tar* && echo
+ fi
+ echo -ne "Removing all temporary directories...\n"
+-rm -fr $PACKAGENAME
+ 
+ echo -ne "\nAll done. ;)\n"
+ 

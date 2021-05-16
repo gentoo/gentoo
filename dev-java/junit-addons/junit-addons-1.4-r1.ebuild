@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -14,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.zip"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~x86-linux"
 
 COMMON_DEP="
 	dev-java/junit:0
@@ -59,7 +58,7 @@ src_compile() {
 
 src_install() {
 	java-pkg_newjar dist/${P}.jar
-	dodoc README WHATSNEW || die
+	dodoc README WHATSNEW
 	use doc && java-pkg_dojavadoc api
 	if use source; then
 		insinto "${JAVA_PKG_SOURCESPATH}"

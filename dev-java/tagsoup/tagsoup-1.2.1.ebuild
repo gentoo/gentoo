@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -14,15 +13,14 @@ SRC_URI="http://mercury.ccil.org/~cowan/XML/tagsoup/${P}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE=""
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=virtual/jre-1.4"
 DEPEND="
-	>=virtual/jdk-1.4
 	dev-java/saxon:9
-	app-arch/unzip"
+	>=virtual/jdk-1.4"
 
 EANT_BUILD_TARGET="dist"
 EANT_DOC_TARGET="docs-api"
@@ -35,8 +33,8 @@ src_install() {
 	java-pkg_newjar dist/lib/${PN}-1.2.jar ${PN}.jar
 	java-pkg_dolauncher
 
-	doman ${PN}.1 || die
-	dodoc CHANGES README TODO || die
+	doman ${PN}.1
+	dodoc CHANGES README TODO
 
 	use doc && java-pkg_dojavadoc docs/api
 	use source && java-pkg_dosrc src/{java,templates}/*

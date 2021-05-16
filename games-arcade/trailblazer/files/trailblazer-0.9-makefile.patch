@@ -1,0 +1,19 @@
+--- a/Makefile
++++ b/Makefile
+@@ -3,13 +3,13 @@
+ #
+ 
+ sources = game.c main.c road.c map.c gfx.c
+-libs = `sdl-config --libs`
+-cflags = -O2 -Wall `sdl-config --cflags`
++libs = `sdl-config --libs` -lm
++cflags = $(CFLAGS) $(CPPFLAGS) -Wall `sdl-config --cflags`
+ version = 0.9
+ bdir = /tmp/trailblazer-$(version)
+ 
+ all:
+-	$(CC) $(sources) -o trailblazer $(cflags) $(libs) 
++	$(CC) $(LDFLAGS) $(sources) -o trailblazer $(cflags) $(libs)
+ 
+ install:
+ 	cp trailblazer /usr/bin

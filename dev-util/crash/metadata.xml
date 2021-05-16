@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>cardoe@gentoo.org</email>
-		<name>Doug Goldstein</name>
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
 	</maintainer>
 	<longdescription lang="en">
 		The Red Hat crash analysis utility is loosely based on the SVR4 UNIX

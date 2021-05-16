@@ -1,0 +1,412 @@
+--- a/include/uniconf.h
++++ b/include/uniconf.h
+@@ -434,7 +434,7 @@
+  */
+ class UniConf::Iter : public UniConf::IterBase
+ {
+-    UniConfGen::Iter *it;
++    IUniConfGen::Iter *it;
+     
+ public:
+     /** Creates an iterator over the direct children of a branch. */
+@@ -465,7 +465,7 @@
+  */
+ class UniConf::RecursiveIter : public UniConf::IterBase
+ {
+-    UniConfGen::Iter *it;
++    IUniConfGen::Iter *it;
+ 
+ public:
+     /** Creates a recursive iterator over a branch. */
+--- a/include/uniconfgen.h
++++ b/include/uniconfgen.h
+@@ -153,8 +153,50 @@
+      */
+     virtual bool haschildren(const UniConfKey &key) = 0;
+ 
+-    /** The abstract iterator type (see below) */
+-    class Iter;
++    /**
++     * An abstract iterator over keys and values in a generator.
++     *
++     * Unlike other WvStreams iterators, this one declares virtual methods so
++     * that UniConfGen implementations can supply the right behaviour
++     * through a common interface that does not depend on static typing.
++     *
++     * The precise traversal sequence is defined by the iterator implementation.
++     *
++     * The iterator need not support concurrent modifications of the underlying
++     * data structures.
++     * 
++     * TODO: Consider changing this rule depending on observed usage patterns.
++     */
++    class Iter
++    {
++    public:
++        /** Destroys the iterator. */
++        virtual ~Iter() { }
++
++        /**
++         * Rewinds the iterator.
++         * Must be called prior to the first invocation of next().
++         */
++        virtual void rewind() = 0;
++
++        /**
++         * Seeks to the next element in the sequence.
++         * Returns true if that element exists.
++         * Must be called prior to the first invocation of key().
++         */
++        virtual bool next() = 0;
++
++        /** Returns the current key. */
++        virtual UniConfKey key() const = 0;
++        
++        /** 
++         * Returns the value of the current key.  You could just do a get(),
++         * but maybe your generator has a more efficient way.
++         */
++        virtual WvString value() const = 0;
++    };
++
++
+ 
+     /** A concrete null iterator type (see below) */
+     class NullIter;
+@@ -214,7 +256,7 @@
+ public:
+     /** Destroys the UniConfGen and may discard uncommitted data. */
+     virtual ~UniConfGen();
+-
++    
+     /***** Notification API *****/
+     
+     /**
+@@ -300,70 +342,28 @@
+ protected:
+     // A naive implementation of setv() that uses only set().
+     void setv_naive(const UniConfPairList &pairs);
+-};
+-
+-DeclareWvList(IUniConfGen);
+-DeclareWvList2(UniConfGenList, IUniConfGen);
+-
+ 
+-/**
+- * An abstract iterator over keys and values in a generator.
+- *
+- * Unlike other WvStreams iterators, this one declares virtual methods so
+- * that UniConfGen implementations can supply the right behaviour
+- * through a common interface that does not depend on static typing.
+- *
+- * The precise traversal sequence is defined by the iterator implementation.
+- *
+- * The iterator need not support concurrent modifications of the underlying
+- * data structures.
+- * 
+- * TODO: Consider changing this rule depending on observed usage patterns.
+- */
+-class UniConfGen::Iter
+-{
+ public:
+-    /** Destroys the iterator. */
+-    virtual ~Iter() { }
+-
+-    /**
+-     * Rewinds the iterator.
+-     * Must be called prior to the first invocation of next().
+-     */
+-    virtual void rewind() = 0;
+-
+     /**
+-     * Seeks to the next element in the sequence.
+-     * Returns true if that element exists.
+-     * Must be called prior to the first invocation of key().
+-     */
+-    virtual bool next() = 0;
+-
+-    /** Returns the current key. */
+-    virtual UniConfKey key() const = 0;
+-    
+-    /** 
+-     * Returns the value of the current key.  You could just do a get(),
+-     * but maybe your generator has a more efficient way.
++     * An iterator that's always empty.
++     * This is handy if you don't have anything good to iterate over.
+      */
+-    virtual WvString value() const = 0;
++    class NullIter : public UniConfGen::Iter
++    {
++    public:
++        /***** Overridden members *****/
++        
++        virtual void rewind() { }
++        virtual bool next() { return false; }
++        virtual UniConfKey key() const { return UniConfKey::EMPTY; }
++        virtual WvString value() const { return WvString(); }
++    };
+ };
+ 
++DeclareWvList(IUniConfGen);
++DeclareWvList2(UniConfGenList, IUniConfGen);
++
+ 
+-/**
+- * An iterator that's always empty.
+- * This is handy if you don't have anything good to iterate over.
+- */
+-class UniConfGen::NullIter : public UniConfGen::Iter
+-{
+-public:
+-    /***** Overridden members *****/
+-    
+-    virtual void rewind() { }
+-    virtual bool next() { return false; }
+-    virtual UniConfKey key() const { return UniConfKey::EMPTY; }
+-    virtual WvString value() const { return WvString(); }
+-};
+ 
+ 
+ #endif // __UNICONFGEN_H
+--- a/include/unifastregetgen.h
++++ b/include/unifastregetgen.h
+@@ -42,7 +42,6 @@
+     virtual bool haschildren(const UniConfKey &key);
+ 
+ private:
+-    IUniConfGen *inner;
+     UniConfValueTree *tree;
+     
+ protected:
+--- a/include/unifiltergen.h
++++ b/include/unifiltergen.h
+@@ -68,8 +68,8 @@
+     virtual bool exists(const UniConfKey &key);
+     virtual bool haschildren(const UniConfKey &key);
+     virtual bool isok();
+-    virtual Iter *iterator(const UniConfKey &key);
+-    virtual Iter *recursiveiterator(const UniConfKey &key);
++    virtual IUniConfGen::Iter *iterator(const UniConfKey &key);
++    virtual IUniConfGen::Iter *recursiveiterator(const UniConfKey &key);
+ 
+ protected:
+     /**
+--- a/include/unihashtree.h
++++ b/include/unihashtree.h
+@@ -62,10 +62,11 @@
+     UniHashTreeBase *xparent; /*!< the parent of this subtree */
+     Container *xchildren; /*!< the hash table of children */
+ 
+-private:
+     void _setparent(UniHashTreeBase *parent);
+     UniHashTreeBase *_root() const;
+ 
++private:
++
+     /** Called by a child to link itself to this node. */
+     void link(UniHashTreeBase *node);
+ 
+--- a/include/unimountgen.h
++++ b/include/unimountgen.h
+@@ -103,8 +103,8 @@
+     virtual void commit();
+     virtual bool refresh();
+     virtual void flush_buffers() { }
+-    virtual Iter *iterator(const UniConfKey &key);
+-    virtual Iter *recursiveiterator(const UniConfKey &key);
++    virtual IUniConfGen::Iter *iterator(const UniConfKey &key);
++    virtual IUniConfGen::Iter *recursiveiterator(const UniConfKey &key);
+ 
+ private:
+     /** Find the active generator for a given key. */
+--- a/include/wvmoniker.h
++++ b/include/wvmoniker.h
+@@ -72,7 +72,7 @@
+ 	// from IObject, which is very important. The 'for' avoids a
+ 	// warning.
+ 	for(IObject *silly = (T *)NULL; silly; )
+-            ;
++            silly = (T *)NULL;
+     };
+ };
+ 
+--- a/include/wvpushdir.h
++++ b/include/wvpushdir.h
+@@ -27,12 +27,11 @@
+ 
+     WvPushDir(WvStringParm new_dir)
+     {
+-#ifdef MACOS
+-       old_dir = static_cast<char *>(calloc(PATH_MAX, sizeof(char *)));
+-       getcwd(old_dir, PATH_MAX);;
+-#else
+-       old_dir = get_current_dir_name();
+-#endif
++        old_dir = new char[2048];
++        if (!getcwd(old_dir, 2048)) {
++            errnum = errno;
++            return;
++        }
+        dir_handle = opendir(old_dir);
+        if (chdir(new_dir) == -1)
+           errnum = errno;
+--- a/include/wvscatterhash.h
++++ b/include/wvscatterhash.h
+@@ -183,7 +183,7 @@
+         Iter(WvScatterHash &_table) : IterBase(_table) { }
+         Iter(const Iter &other) : IterBase(other) { }
+ 
+-        unsigned char *getstatus() { return &xstatus[index-1]; }
++        unsigned char *getstatus() { return &this->xstatus[index-1]; }
+ 
+         T *ptr() const
+             { return (T *)(get()); }
+--- a/include/wvserialize.h
++++ b/include/wvserialize.h
+@@ -60,6 +60,7 @@
+     return htons(i);
+ }
+ 
++#ifndef ntohll
+ /**
+  * Helper functions to convert 64 bit ints to and from host byteorder
+  */
+@@ -80,6 +81,7 @@
+     return (((uint64_t)htonl(n)) << 32) | htonl(n >> 32);
+ #endif
+ }
++#endif
+ 
+ /**
+  * A helper function that serializes different types of integers.  Since
+--- a/include/wvtask.h
++++ b/include/wvtask.h
+@@ -24,6 +24,7 @@
+ #include "wvstreamsdebugger.h"
+ #include "wvstringlist.h"
+ #include "setjmp.h"
++#define _XOPEN_SOURCE
+ #include <ucontext.h>
+ 
+ #define WVTASK_MAGIC 0x123678
+--- a/uniconf/unicachegen.cc
++++ b/uniconf/unicachegen.cc
+@@ -69,7 +69,7 @@
+ 
+ void UniCacheGen::loadtree(const UniConfKey &key)
+ {
+-    UniConfGen::Iter *i = inner->recursiveiterator(key);
++    IUniConfGen::Iter *i = inner->recursiveiterator(key);
+     if (!i) return;
+ 
+     //assert(false);
+--- a/uniconf/uniconfgen.cc
++++ b/uniconf/uniconfgen.cc
+@@ -104,7 +104,7 @@
+     
+     hold_delta();
+     
+-    Iter *it = iterator(key);
++    IUniConfGen::Iter *it = iterator(key);
+     if (it)
+     {
+ 	it->rewind();
+@@ -257,7 +257,7 @@
+ };
+ 
+ 
+-UniConfGen::Iter *UniConfGen::recursiveiterator(const UniConfKey &key)
++IUniConfGen::Iter *UniConfGen::recursiveiterator(const UniConfKey &key)
+ {
+     return new _UniConfGenRecursiveIter(this, key);
+ }
+--- a/uniconf/unifiltergen.cc
++++ b/uniconf/unifiltergen.cc
+@@ -134,7 +134,7 @@
+ }
+ 
+ 
+-UniConfGen::Iter *UniFilterGen::iterator(const UniConfKey &key)
++IUniConfGen::Iter *UniFilterGen::iterator(const UniConfKey &key)
+ {
+     UniConfKey mapped_key;
+     if (xinner && keymap(key, mapped_key))
+@@ -144,7 +144,7 @@
+ }
+ 
+ 
+-UniConfGen::Iter *UniFilterGen::recursiveiterator(const UniConfKey &key)
++IUniConfGen::Iter *UniFilterGen::recursiveiterator(const UniConfKey &key)
+ {
+     UniConfKey mapped_key;
+     if (xinner && keymap(key, mapped_key))
+--- a/uniconf/unifstreegen.cc
++++ b/uniconf/unifstreegen.cc
+@@ -62,7 +62,7 @@
+ 	log("Key '%s' not found.\n", key);
+     }
+     
+-    virtual Iter *recursiveiterator(const UniConfKey &key)
++    virtual IUniConfGen::Iter *recursiveiterator(const UniConfKey &key)
+     {
+ 	// don't try to optimize this like UniMountGen does, because we're
+ 	// going to mount things *as* we iterate through them, not sooner.
+--- a/uniconf/unimountgen.cc
++++ b/uniconf/unimountgen.cc
+@@ -305,7 +305,7 @@
+     return strcmp(*l, *r);
+ }
+ 
+-UniMountGen::Iter *UniMountGen::iterator(const UniConfKey &key)
++IUniConfGen::Iter *UniMountGen::iterator(const UniConfKey &key)
+ {
+     UniGenMount *found = findmount(key);
+     if (found)
+@@ -345,7 +345,7 @@
+ // FIXME: this function will be rather slow if you try to iterate over multiple
+ // generators and the latency level is high (as is the case with e.g.: the tcp generator). 
+ // the fast path will only kick in if you iterate over a single generator.
+-UniMountGen::Iter *UniMountGen::recursiveiterator(const UniConfKey &key)
++IUniConfGen::Iter *UniMountGen::recursiveiterator(const UniConfKey &key)
+ {
+     UniGenMount *found = findmountunder(key);
+     if (found)
+--- a/utils/t/wvpushdir.t.cc
++++ b/utils/t/wvpushdir.t.cc
+@@ -15,14 +15,9 @@
+ 
+     WVPASS(newpushdir.isok());
+ 
+-#ifdef MACOS
+-    char *pwd = static_cast<char *>(calloc(PATH_MAX,sizeof(char *)));
+-    getcwd(pwd,PATH_MAX);
+-#else
+-    char *pwd =  get_current_dir_name();
+-#endif
++    char pwd[1024] = "";
++    getcwd(pwd, sizeof(pwd));
+     WVPASSEQ(pwd, dir);
+-    free(pwd);
+ 
+     unlink(dir);
+ }
+--- a/utils/wvpam.cc
++++ b/utils/wvpam.cc
+@@ -5,6 +5,7 @@
+  * A WvStream that authenticates with PAM before allowing any reading or
+  * writing.  See wvpam.h.
+  */
++#include <pwd.h>
+ #include "wvlog.h"
+ #include "wvpam.h"
+ #include "wvautoconf.h"
+--- a/xplc/modulemgr.cc
++++ b/xplc/modulemgr.cc
+@@ -23,6 +23,7 @@
+ #include <assert.h>
+ #include "modulemgr.h"
+ #include <xplc/IModuleLoader.h>
++#include <unistd.h>
+ 
+ #include "config.h"
+ 

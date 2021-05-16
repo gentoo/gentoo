@@ -1,7 +1,6 @@
 #!/bin/bash
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Based on the am-wrapper.sh script (sys-devel/automake-wrapper-1-r1)
 #

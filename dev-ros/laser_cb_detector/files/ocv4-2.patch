@@ -1,0 +1,34 @@
+Index: laser_cb_detector/test/laser_cb_detector_unittest.cpp
+===================================================================
+--- laser_cb_detector.orig/test/laser_cb_detector_unittest.cpp
++++ laser_cb_detector/test/laser_cb_detector_unittest.cpp
+@@ -37,7 +37,7 @@
+ 
+ #include <laser_cb_detector/ConfigGoal.h>
+ #include <laser_cb_detector/laser_cb_detector.h>
+-#include <opencv/highgui.h>
++#include <opencv2/highgui.hpp>
+ 
+ using namespace laser_cb_detector;
+ using namespace std;
+@@ -55,8 +55,9 @@ static const string test_path = xstr(TES
+ 
+ calibration_msgs::DenseLaserSnapshot getSnapshot(const string& filename)
+ {
+-  IplImage* image;
+-  image = cvLoadImage(filename.c_str(), 0);         // 0 -> Force image to grayscale
++  cv::Mat mat = cv::imread(filename.c_str(), 0);
++  IplImage  image_v = cvIplImage(mat);
++  IplImage* image = &image_v;
+   EXPECT_TRUE(image) << "could not open image file [" << filename << "]" << endl;
+ 
+ 
+@@ -92,7 +93,7 @@ calibration_msgs::DenseLaserSnapshot get
+   }
+ 
+   cvReleaseImage(&float_image);
+-  cvReleaseImage(&image);
++  //cvReleaseImage(&image);
+ 
+   return snapshot;
+ }

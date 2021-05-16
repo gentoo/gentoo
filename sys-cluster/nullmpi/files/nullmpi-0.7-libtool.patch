@@ -1,0 +1,53 @@
+diff -Naur nullmpi-0.7.orig/configure.ac nullmpi-0.7/configure.ac
+--- nullmpi-0.7.orig/configure.ac	2011-01-23 17:20:35.000000000 +0100
++++ nullmpi-0.7/configure.ac	2011-01-23 17:21:21.000000000 +0100
+@@ -18,6 +18,7 @@
+ AC_PROG_RANLIB
+ AC_PROG_LN_S
+ AC_PROG_MAKE_SET
++LT_INIT
+ 
+ # Checks for header files.
+ AC_HEADER_STDC
+diff -Naur nullmpi-0.7.orig/pmpi/Makefile.am nullmpi-0.7/pmpi/Makefile.am
+--- nullmpi-0.7.orig/pmpi/Makefile.am	2011-01-23 17:20:35.000000000 +0100
++++ nullmpi-0.7/pmpi/Makefile.am	2011-01-23 17:41:58.000000000 +0100
+@@ -1,7 +1,7 @@
+ ## process this file with automake to produce Makefile.in
+ 
+-lib_LIBRARIES = libnullpmpi.a
+-libnullpmpi_a_SOURCES = \
++lib_LTLIBRARIES = libnullpmpi.la
++libnullpmpi_la_SOURCES = \
+ 	abort.c \
+ 	allgather.c \
+ 	allgatherv.c \
+@@ -115,4 +115,6 @@
+ 	waitsome.c \
+ 	pmpi_wrap.h
+ 
++libnullpmpi_la_LIBADD = ../src/libnullmpi.la
++
+ AM_CPPFLAGS = -I$(srcdir)/../src -DPROFILELIB
+diff -Naur nullmpi-0.7.orig/pmpi/out.c nullmpi-0.7/pmpi/out.c
+--- nullmpi-0.7.orig/pmpi/out.c	2011-01-23 17:20:35.000000000 +0100
++++ nullmpi-0.7/pmpi/out.c	2011-01-23 17:47:38.000000000 +0100
+@@ -1,3 +1,3 @@
+ #include "pmpi_wrap.h"
+ 
+-PMPI_WRAP2(MPI_Abort, MPI_Comm, int)
++/*PMPI_WRAP2(MPI_Abort, MPI_Comm, int)*/
+diff -Naur nullmpi-0.7.orig/src/Makefile.am nullmpi-0.7/src/Makefile.am
+--- nullmpi-0.7.orig/src/Makefile.am	2011-01-23 17:20:35.000000000 +0100
++++ nullmpi-0.7/src/Makefile.am	2011-01-23 17:22:11.000000000 +0100
+@@ -1,8 +1,8 @@
+ ## process this file with automake to produce Makefile.in
+ 
+ include_HEADERS = $(PUBLICHEADERS)
+-lib_LIBRARIES = libnullmpi.a
+-libnullmpi_a_SOURCES = $(PUBLICHEADERS) $(PRIVATEHEADERS) $(PRIVATESOURCES)
++lib_LTLIBRARIES = libnullmpi.la
++libnullmpi_la_SOURCES = $(PUBLICHEADERS) $(PRIVATEHEADERS) $(PRIVATESOURCES)
+ 
+ PUBLICHEADERS = \
+ 	mpi.h \

@@ -1,36 +1,36 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='threads(+)'
-#EPYTHON='python2.7'
-inherit eutils toolchain-funcs flag-o-matic python-any-r1 waf-utils
+PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
+inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
-HOMEPAGE="http://ardour.org/"
+HOMEPAGE="https://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="http://git.ardour.org/ardour/ardour.git"
+	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/Ardour/ardour/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/Ardour-${PV}.0.tar.bz2"
+	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
-SLOT="4"
-IUSE="altivec doc jack lv2 cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+SLOT="6"
+IUSE="altivec doc jack nls phonehome pulseaudio cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
-	>=dev-cpp/glibmm-2.32.0
-	>=dev-cpp/gtkmm-2.16:2.4
-	>=dev-cpp/libgnomecanvasmm-2.26:2.6
+	dev-cpp/glibmm:2
+	dev-cpp/gtkmm:2.4
+	dev-cpp/libgnomecanvasmm:2.6
 	dev-libs/boost:=
-	>=dev-libs/glib-2.10.1:2
+	dev-libs/glib:2
 	dev-libs/libsigc++:2
-	>=dev-libs/libxml2-2.6:2
+	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=gnome-base/libgnomecanvas-2
 	media-libs/alsa-lib
@@ -39,36 +39,42 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/libart_lgpl
 	media-libs/liblo
-	>=media-libs/liblrdf-0.4.0-r20
-	>=media-libs/libsamplerate-0.1
-	>=media-libs/libsndfile-1.0.18
-	>=media-libs/libsoundtouch-1.6.0
+	media-libs/liblrdf
+	media-libs/libsamplerate
+	media-libs/libsndfile
+	media-libs/libsoundtouch
 	media-libs/raptor:2
-	>=media-libs/rubberband-1.6.0
-	>=media-libs/taglib-1.7
+	media-libs/rubberband
+	media-libs/taglib
 	media-libs/vamp-plugin-sdk
 	net-misc/curl
-	sci-libs/fftw:3.0
-	virtual/libusb:0
+	sys-libs/readline:0=
+	sci-libs/fftw:3.0[threads]
+	virtual/libusb:1
 	x11-libs/cairo
-	>=x11-libs/gtk+-2.8.1:2
+	x11-libs/gtk+:2
 	x11-libs/pango
-	jack? ( >=media-sound/jack-audio-connection-kit-0.120 )
-	lv2? (
-		>=media-libs/slv2-0.6.1
-		media-libs/lilv
-		media-libs/sratom
-		dev-libs/sord
-		>=media-libs/suil-0.6.10
-		>=media-libs/lv2-1.4.0
-	)"
+	jack? ( virtual/jack )
+	pulseaudio? ( media-sound/pulseaudio )
+	media-libs/lilv
+	media-libs/sratom
+	dev-libs/sord
+	media-libs/suil
+	media-libs/lv2"
+#	!bundled-libs? ( media-sound/fluidsynth ) at least libltc is missing to be able to unbundle...
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	jack? ( >=media-sound/jack-audio-connection-kit-0.120 )
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+	jack? ( virtual/jack )"
+
+pkg_pretend() {
+	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
+		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
+}
 
 pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
@@ -77,12 +83,10 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
-src_prepare(){
-	if ! [[ ${PV} == *9999* ]]; then
-		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
-		touch "${S}/libs/ardour/revision.cc"
-	fi
-	use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch
+src_prepare() {
+	default
+	xdg_src_prepare
+
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
@@ -108,32 +112,69 @@ src_prepare(){
 	append-flags "-lboost_system"
 	python_fix_shebang "${S}"/wscript
 	python_fix_shebang "${S}"/waf
+	my_lcmsg() {
+		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
+	}
+	l10n_for_each_disabled_locale_do my_lcmsg
 }
 
 src_configure() {
+	local backends="alsa,dummy"
+	use jack && backends+=",jack"
+	use pulseaudio && backends+=",pulseaudio"
+
 	tc-export CC CXX
 	mkdir -p "${D}"
-	waf-utils_src_configure \
-		--destdir="${D}" \
-		--prefix=/usr \
-		--configdir=/etc \
-		--nls \
-		--optimize \
-		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
-		$(usex lv2 "--lv2" "--no-lv2") \
-		$(usex doc "--docs" '') \
+	local myconf=(
+		--configdir=/etc
+		--freedesktop
+		--noconfirm
+		--optimize
+		--with-backends=${backends}
 		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
+		$(usex doc "--docs" '')
+		$(usex nls "--nls" "--no-nls")
+		$(usex phonehome "--phone-home" "--no-phone-home")
+		# not possible right now  --use-external-libs
+	)
+
+	waf-utils_src_configure "${myconf[@]}"
+}
+
+src_compile() {
+	waf-utils_src_compile
+	use nls && waf-utils_src_compile i18n
 }
 
 src_install() {
+	local s
+
 	waf-utils_src_install
-	mv ${PN}.1 ${PN}${SLOT}.1
+
+	mv ${PN}.1 ${PN}${SLOT}.1 || die
 	doman ${PN}${SLOT}.1
-	newicon icons/icon/ardour_icon_tango_48px_red.png ${PN}${SLOT}.png
-	make_desktop_entry ardour4 ardour4 ardour4 AudioVideo
+
+	for s in 16 22 32 48 256 512; do
+		newicon -s ${s} gtk2_ardour/resources/Ardour-icon_${s}px.png ardour${SLOT}.png
+	done
+
+	sed -i \
+		-e "s/\(^Name=\).*/\1Ardour ${SLOT}/" \
+		-e 's/;AudioEditing;/;X-AudioEditing;/' \
+		build/gtk2_ardour/ardour${SLOT}.desktop || die
+	domenu build/gtk2_ardour/ardour${SLOT}.desktop
+
+	insinto /usr/share/mime/packages
+	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
+
+	insinto /usr/share/metainfo
+	doins build/gtk2_ardour/ardour${SLOT}.appdata.xml
 }
 
 pkg_postinst() {
-	elog "If you are using Ardour and want to keep its development alive"
-	elog "then please consider to make a donation upstream at ${HOMEPAGE}"
+	xdg_pkg_postinst
+
+	elog "Please do _not_ report problems with the package to ${PN} upstream."
+	elog "If you think you've found a bug, check the upstream binary package"
+	elog "before you report anything to upstream."
 }

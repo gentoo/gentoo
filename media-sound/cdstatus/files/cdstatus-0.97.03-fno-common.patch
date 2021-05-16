@@ -1,0 +1,73 @@
+--- a/src/cdstatus_cddb.c
++++ b/src/cdstatus_cddb.c
+@@ -31,6 +31,12 @@
+ #define DIE_CLEAN if(buffer) { free(buffer); } if(scratchbuffer) { free(scratchbuffer); } exit(EXIT_FAILURE);
+ #endif
+ 
++char album_name[256];
++int album_year;
++char artist_name[256];
++char album_genre[128];
++track_listing trackinfo[100];
++unsigned int cddb_tracks;
+ 
+ /** The system-provided error return code for system calls */
+ extern int errno;
+--- a/src/cdstatus_cddb.h
++++ b/src/cdstatus_cddb.h
+@@ -24,21 +24,21 @@
+ 
+ /* Exported Globals (I hate globals, need to find another way to do this... */
+ /** Holds album name for cd */
+-char album_name[256];
++extern char album_name[256];
+ 
+ /** Holds album year for cd */
+-int album_year;
++extern int album_year;
+ 
+ /** Holds artist name for cd */
+-char artist_name[256];
++extern char artist_name[256];
+ 
+ /** Holds album genre for cd */
+-char album_genre[128];
++extern char album_genre[128];
+ 
+ /** Holds cddb info for each track */
+-track_listing trackinfo[100];
++extern track_listing trackinfo[100];
+ 
+ /** Number of tracks for which we have info */
+-unsigned int cddb_tracks;
++extern unsigned int cddb_tracks;
+ 
+ #endif
+--- a/src/cdstatus_output.c
++++ b/src/cdstatus_output.c
+@@ -4,6 +4,10 @@
+ 
+ #include "cdstatus_output.h"
+ 
++enum OUTPUT_PRIORITY current_priority;
++
++char output_buffer[OUTPUT_BUFFSIZE];
++
+ void conditional_puts(enum OUTPUT_PRIORITY pri, const char * message)
+ {
+ 	if(pri >= current_priority)
+--- a/src/cdstatus_output.h
++++ b/src/cdstatus_output.h
+@@ -3,10 +3,10 @@
+ #define CDSTATUS_OUTPUT_H
+ 
+ enum OUTPUT_PRIORITY { VERBOSE_DEBUG, DEBUG, NORMAL, WARNING, CRITICAL };
+-enum OUTPUT_PRIORITY current_priority;
++extern enum OUTPUT_PRIORITY current_priority;
+ 
+ #define OUTPUT_BUFFSIZE 512
+-char output_buffer[OUTPUT_BUFFSIZE];
++extern char output_buffer[OUTPUT_BUFFSIZE];
+ 
+ void conditional_puts(enum OUTPUT_PRIORITY, const char *);
+ void conditional_perror(enum OUTPUT_PRIORITY, const char *);

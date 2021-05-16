@@ -1,6 +1,5 @@
-diff -urN libf2c.orig/makefile.u libf2c/makefile.u
---- libf2c.orig/makefile.u	2006-05-13 15:41:29.000000000 -0700
-+++ libf2c/makefile.u	2006-05-13 15:42:04.000000000 -0700
+--- a/makefile.u
++++ b/makefile.u
 @@ -69,7 +69,9 @@
  OFILES = $(MISC) $(POW) $(CX) $(DCX) $(REAL) $(DBL) $(INT) \
  	$(HALF) $(CMP) $(EFL) $(CHAR) $(I77) $(TIME)

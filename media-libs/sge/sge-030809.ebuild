@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils multilib toolchain-funcs
+EAPI=6
+
+inherit toolchain-funcs
 
 MY_P="sge${PV}"
 DESCRIPTION="Graphics extensions library for SDL"
@@ -12,27 +12,34 @@ SRC_URI="http://www.etek.chalmers.se/~e8cal1/sge/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="doc examples image truetype"
 
-DEPEND="media-libs/libsdl
+RDEPEND="media-libs/libsdl
 	image? ( media-libs/sdl-image )
 	truetype? ( >=media-libs/freetype-2 )"
 
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
+
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-freetype.patch
+	"${FILESDIR}"/${P}-cmap.patch
+	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-build.patch \
-		"${FILESDIR}"/${P}-freetype.patch \
-		"${FILESDIR}"/${P}-cmap.patch
+	default
 	sed -i "s:\$(PREFIX)/lib:\$(PREFIX)/$(get_libdir):" Makefile || die
 	sed -i \
 		-e '/^CC=/d' \
 		-e '/^CXX=/d' \
 		-e '/^AR=/d' \
 		Makefile.conf || die
-	tc-export CC CXX AR
+	tc-export CC CXX AR PKG_CONFIG
 	# make sure the header gets regenerated everytime
 	rm -f sge_config.h
 }
@@ -44,10 +51,13 @@ src_compile() {
 }
 
 src_install() {
-	DOCS="README Todo WhatsNew" \
-		default
+	local DOCS=( README Todo WhatsNew )
+	default
 
-	use doc && dohtml docs/*
+	if use doc ; then
+		docinto html
+		dodoc docs/*
+	fi
 
 	if use examples ; then
 		insinto /usr/share/doc/${PF}

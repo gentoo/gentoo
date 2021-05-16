@@ -1,20 +1,19 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit eutils
+inherit epatch
 
 MY_P=${PN}_5.5-20060227
 
 DESCRIPTION="utilities for configuring and debugging the Linux floppy driver"
-HOMEPAGE="http://fdutils.linux.lu/"
+HOMEPAGE="https://fdutils.linux.lu"
 SRC_URI="mirror://debian/pool/main/f/${PN}/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/f/${PN}/${MY_P}-6.debian.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc"
 
 RDEPEND=">=sys-fs/mtools-4"
@@ -26,6 +25,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-5.5-20060227
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-gcc10.patch"
+
 	local d="${WORKDIR}"/debian/patches
 	EPATCH_SOURCE="${d}" epatch $(<"${d}"/series)
 	sed -i -e 's:{LDFLAFS}:(LDFLAGS):' src/Makefile.in || die #337721

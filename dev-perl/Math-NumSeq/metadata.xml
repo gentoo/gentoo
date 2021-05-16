@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tomboy64@sina.cn</email>
-		<name>Proxy-Maintainer; please assign him to bugs.</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="cpan">Math-NumSeq</remote-id>
@@ -55,6 +47,7 @@
 		<remote-id type="cpan-module">Math::NumSeq::ErdosSelfridgeClass</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Even</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Expression</remote-id>
+		<remote-id type="cpan-module">Math::NumSeq::Expression::LanguageExpr</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Factorials</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Fibbinary</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::FibbinaryBitCount</remote-id>
@@ -86,7 +79,6 @@
 		<remote-id type="cpan-module">Math::NumSeq::MoranNumbers</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Multiples</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::NumAronson</remote-id>
-		<remote-id type="cpan-module">Math::NumSeq::Odd</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::OEIS</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::OEIS::Catalogue</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::OEIS::Catalogue::Plugin</remote-id>
@@ -94,6 +86,7 @@
 		<remote-id type="cpan-module">Math::NumSeq::OEIS::Catalogue::Plugin::FractionDigits</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::OEIS::Catalogue::Plugin::ZZ_Files</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::OEIS::File</remote-id>
+		<remote-id type="cpan-module">Math::NumSeq::Odd</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Palindromes</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Pell</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Perrin</remote-id>
@@ -102,8 +95,8 @@
 		<remote-id type="cpan-module">Math::NumSeq::PolignacObstinate</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Polygonal</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::PowerFlip</remote-id>
-		<remote-id type="cpan-module">Math::NumSeq::Powerful</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::PowerPart</remote-id>
+		<remote-id type="cpan-module">Math::NumSeq::Powerful</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::PrimeFactorCount</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::PrimeIndexOrder</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::PrimeIndexPrimes</remote-id>
@@ -114,11 +107,11 @@
 		<remote-id type="cpan-module">Math::NumSeq::PythagoreanHypots</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::RadixConversion</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::RadixWithoutDigit</remote-id>
+		<remote-id type="cpan-module">Math::NumSeq::ReReplace</remote-id>
+		<remote-id type="cpan-module">Math::NumSeq::ReRound</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::RepdigitAny</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::RepdigitRadix</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Repdigits</remote-id>
-		<remote-id type="cpan-module">Math::NumSeq::ReReplace</remote-id>
-		<remote-id type="cpan-module">Math::NumSeq::ReRound</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::ReverseAdd</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::ReverseAddSteps</remote-id>
 		<remote-id type="cpan-module">Math::NumSeq::Runs</remote-id>

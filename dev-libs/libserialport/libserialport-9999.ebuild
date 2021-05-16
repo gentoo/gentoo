@@ -1,41 +1,37 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
-
-inherit eutils
+EAPI=7
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-r3 autotools
+	inherit autotools git-r3
 else
-	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
+	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Cross platform serial port access library"
-HOMEPAGE="http://sigrok.org/wiki/Libserialport"
+HOMEPAGE="https://sigrok.org/wiki/Libserialport"
 
-LICENSE="GPL-3"
+LICENSE="LGPL-3"
 SLOT="0"
-IUSE="static-libs udev"
+IUSE="static-libs"
 
-RDEPEND="udev? ( virtual/libudev )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	default
+
 	[[ ${PV} == "9999" ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		$(use_with udev libudev)
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
 	default
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -type f -delete || die
 }

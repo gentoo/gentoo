@@ -1,0 +1,25 @@
+* Fix AM_CONDITIONAL to always be invoked
+* Install html files in proper --htmldir
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -437,8 +437,8 @@
+ 	fi
+ 	
+ 	if test "$enable_clanSound" = "auto"; then enable_clanSound=yes; fi
+-	AM_CONDITIONAL(ALSA, test x$have_alsa = xyes)
+ fi
++AM_CONDITIONAL(ALSA, test x$have_alsa = xyes)
+ 
+ if test "$enable_clanNetwork" != "no"; then
+ 	echo "Checking for clanNetwork stuff"
+--- a/Documentation/Makefile.am
++++ b/Documentation/Makefile.am
+@@ -1,6 +1,6 @@
+ EXTRA_DIST = $(wildcart images/*.png)
+ 
+-HTML_PREFIX = $(datadir)/doc/@PACKAGE@-@LT_RELEASE@
++HTML_PREFIX = $(htmldir)
+ 
+ all-local:
+ 

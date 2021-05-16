@@ -6,6 +6,6 @@
     <name>Python</name>
   </maintainer>
   <upstream>
-    <remote-id type="google-code">python-progressbar</remote-id>
+    <remote-id type="pypi">progressbar</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,5 +1,5 @@
---- gi_sdl.c
-+++ gi_sdl.c
+--- a/gi_sdl.c
++++ b/gi_sdl.c
 @@ -606,6 +606,7 @@
  {
    int i,found;
@@ -19,8 +19,8 @@
        case SDLK_F1:
  	game_restart(g);
 
---- output.c
-+++ output.c
+--- a/output.c
++++ b/output.c
 @@ -215,7 +215,8 @@
  
  void output_screenshot()

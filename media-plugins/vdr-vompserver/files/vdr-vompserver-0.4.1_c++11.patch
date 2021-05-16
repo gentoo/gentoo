@@ -1,0 +1,15 @@
+compile fix gcc-6
+https://bugs.gentoo.org/show_bug.cgi?id=593854
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (2016/Oct/16)
+diff -Naur vompserver-0.4.1.orig/Makefile vompserver-0.4.1/Makefile
+--- vompserver-0.4.1.orig/Makefile	2016-10-16 23:48:36.100111158 +0200
++++ vompserver-0.4.1/Makefile	2016-10-16 23:49:05.226111158 +0200
+@@ -53,7 +53,7 @@
+ 
+ INCLUDES +=
+ 
+-DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"'
++DEFINES += -DPLUGIN_NAME_I18N='"$(PLUGIN)"' -D__STL_CONFIG_H
+ 
+ # VOMP-INSERT
+ DEFINES += -DVOMPSERVER

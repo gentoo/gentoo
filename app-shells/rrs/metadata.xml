@@ -5,7 +5,6 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
-	<longdescription/>
 	<upstream>
 		<remote-id type="freecode">rrs</remote-id>
 	</upstream>

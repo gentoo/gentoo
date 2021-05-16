@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -10,7 +9,7 @@ SRC_URI="http://www.reportmagic.org/rmagic-${PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="truetype"
 
 DEPEND="sys-libs/zlib
@@ -29,16 +28,11 @@ DEPEND="sys-libs/zlib
 
 S="${WORKDIR}/rmagic-${PV}"
 
-src_unpack() {
-	unpack ${A} ; cd "${S}"
-
+src_install() {
 	sed -i \
-		-e "s:^\$DEST.*:\$DEST='${D}/usr/share/reportmagic';:g" \
-		-e "s:^\$DOC.*:\$DOC='${D}/usr/share/doc/${PF}';:g" \
+		-e "s:^\$DEST.*:\$DEST='${ED}/usr/share/reportmagic';:g" \
+		-e "s:^\$DOC.*:\$DOC='${ED}/usr/share/doc/${PF}';:g" \
 		Install.PL \
 		|| die "sed failed"
-}
-
-src_install() {
 	perl Install.PL -no_modules
 }

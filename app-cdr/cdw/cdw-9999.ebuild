@@ -1,37 +1,40 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
+
 ECVS_SERVER="cdw.cvs.sourceforge.net:/cvsroot/cdw"
 ECVS_MODULE="cdw"
 ECVS_TOPDIR="${DISTDIR}/cvs-src/${ECVS_MODULE}"
+inherit autotools cvs toolchain-funcs
 
-inherit autotools eutils cvs
-
-MY_P=${PN}_${PV}
 DESCRIPTION="An ncurses based console frontend for cdrtools and dvd+rw-tools"
 HOMEPAGE="http://cdw.sourceforge.net"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-DEPEND="virtual/cdrtools
+RDEPEND="
+	app-cdr/cdrtools
 	app-cdr/dvd+rw-tools
 	dev-libs/libburn
-	dev-libs/libcdio[-minimal]
-	sys-libs/ncurses[unicode]"
-RDEPEND=${DEPEND}
+	dev-libs/libcdio:=[-minimal]
+	sys-libs/ncurses:0=[unicode]
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/${ECVS_MODULE}
 
+PATCHES=( "${FILESDIR}/${PN}-0.8.1-fix-ar-call.patch" )
+
+DOCS=( AUTHORS ChangeLog NEWS README THANKS cdw.conf )
+
 src_prepare() {
+	default
 	eautoreconf
 }
 
-src_install() {
-	DOCS="AUTHORS ChangeLog NEWS README THANKS cdw.conf" \
-		default
+src_configure() {
+	econf LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )"
 }

@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -20,6 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-java/tomcat-jstl-spec:0
@@ -32,6 +32,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
+	app-arch/unzip
 	test? (
 		dev-java/ant-junit:0
 		dev-java/easymock:3.2

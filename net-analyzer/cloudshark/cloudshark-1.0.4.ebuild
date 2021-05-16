@@ -1,13 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib
+inherit multilib
 
 DESCRIPTION="Easily upload your wireshark captures to CloudShark"
-HOMEPAGE="http://appliance.cloudshark.org/plug-ins-wireshark.html"
+HOMEPAGE="https://cloudshark.io/articles/wireshark-plugin/ https://github.com/cloudshark/wireshark-plugin"
 SRC_URI="https://github.com/${PN}/wireshark-plugin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -28,12 +27,13 @@ get_PV() {
 
 src_prepare() {
 	#cloudshark isn't meant to be installed systemwide, we fix that
-	epatch "${FILESDIR}"/cs_log_dir.patch
+	eapply "${FILESDIR}"/cs_log_dir.patch
 
 	sed -i "s#%s/cloudshark_init.lua#/usr/$(get_libdir)/wireshark/plugins/$(get_PV net-analyzer/wireshark)/cloudshark_init.lua#" cloudshark.lua
 
 	#this enables cloudshark by DEFAULT on tshark, not desired
 	#sed -i 's#CLOUDSHARK_TSHARK = "n"#CLOUDSHARK_TSHARK = "y"#' cloudshark_init.default
+	default
 }
 
 src_install() {

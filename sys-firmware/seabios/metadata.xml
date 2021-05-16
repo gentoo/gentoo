@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>cardoe@gentoo.org</email>
-		<name>Doug Goldstein</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>qemu@gentoo.org</email>
-		<name>Gentoo QEMU Project</name>
+		<email>tamiko@gentoo.org</email>
+		<name>Matthias Maier</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>

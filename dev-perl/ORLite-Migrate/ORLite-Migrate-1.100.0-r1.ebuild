@@ -1,11 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ADAMK
-MODULE_VERSION=1.10
+DIST_AUTHOR=ADAMK
+DIST_VERSION=1.10
 inherit perl-module
 
 DESCRIPTION="Extremely light weight SQLite-specific schema migration"
@@ -28,5 +27,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 "
-
-SRC_TEST=do
+PATCHES=("${FILESDIR}/${PN}-1.10-dot-in-inc.patch")
+DIST_TEST="do" # Parallel tests broken, concurrent DB access

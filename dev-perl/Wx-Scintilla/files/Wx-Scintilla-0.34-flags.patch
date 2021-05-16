@@ -1,0 +1,19 @@
+--- a/inc/Module/Build/Scintilla/GTK.pm
++++ b/inc/Module/Build/Scintilla/GTK.pm
+@@ -48,7 +48,6 @@
+ 		$self->stc_defines,
+ 		'-c -fPIC',
+ 		'-o ' . $object_name,
+-		'-O2',
+ 		'-Wall',
+ 		$object_name !~ /((Plat|Scintilla)WX|scintilla)\.o/
+ 		? '-Wno-missing-braces -Wno-char-subscripts'
+@@ -143,7 +142,7 @@
+ 		Alien::wxWidgets->link_flags,
+ 		$Config{lddlflags},
+ 		'-fPIC -L.',
+-		'-s -o ' . $dll,
++		'-o ' . $dll,
+ 		'Scintilla.o',
+ 		'-Lblib/arch/auto/Wx/Scintilla ' . $self->stc_scintilla_link,
+ 		Alien::wxWidgets->libraries(qw(core base)),

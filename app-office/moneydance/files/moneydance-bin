@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Options
+JAVA_OPTS="-client -Dawt.useSystemAAFontSettings=gasp -Dawt.useSystemAAFontSettings=on -Xmx2048m"
+MONEYDANCE_LIBS="/usr/share/moneydance/lib"
+
+# Choose JAVA
+set -- /opt/openjdk-bin-11.* /usr/lib*/openjdk-11
+while ! [ -d "${1}" ]; do
+	if [ ${#} -eq 1 ]; then
+		echo "Error: No JAVA 11 runtime found!"
+		exit 1
+	fi
+
+	shift
+done
+JAVA_HOME="${1}"
+
+# Set CLASSPATH
+for MONEYDANCE_JAR in ${MONEYDANCE_LIBS}/*.jar; do
+	CLASSPATH=${CLASSPATH}:${MONEYDANCE_JAR}
+done
+
+# Launch Moneydance
+"${JAVA_HOME}"/bin/java -cp "${CLASSPATH}" ${JAVA_OPTS} Moneydance

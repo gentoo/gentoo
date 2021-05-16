@@ -12,5 +12,6 @@
   <upstream>
     <remote-id type="google-code">pypcap</remote-id>
     <remote-id type="pypi">pypcap</remote-id>
+    <remote-id type="github">pynetwork/pypcap</remote-id>
   </upstream>
 </pkgmetadata>

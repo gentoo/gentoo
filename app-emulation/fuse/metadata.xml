@@ -2,20 +2,18 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jmfo1982@yahoo.es</email>
-		<description>Proxied Maintainer. Please assign on bugs.</description>
-		<name>José Manuel Ferrer Ortiz</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>neurogeek@gentoo.org</email>
-		<name>Jesus Rivero</name>
-		<description>Proxy Maintainer. Please CC on bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers Project</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">fuse-emulator</remote-id>
 	</upstream>
+	<use>
+		<flag name="backend-fbcon">Use framebuffer rendering backend</flag>
+		<flag name="backend-gtk3">Use Gtk+ rendering backend</flag>
+		<flag name="backend-sdl">Use SDL rendering backend</flag>
+		<flag name="backend-svga">Use svgalib rendering backend</flag>
+		<flag name="backend-X">Use X11 rendering backend</flag>
+		<flag name="memlimit">Add compile-time memory usage limiting</flag>
+	</use>
 </pkgmetadata>

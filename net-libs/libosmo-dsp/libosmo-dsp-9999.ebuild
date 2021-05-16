@@ -1,17 +1,16 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit autotools multilib
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="A library with SDR DSP primitives"
 HOMEPAGE="http://git.osmocom.org/libosmo-dsp/"
 
 if [[ ${PV} == 9999* ]]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="git://git.osmocom.org/${PN}"
-	KEYWORDS=""
 else
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
@@ -21,12 +20,15 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="doc static-libs"
 
-RDEPEND="sci-libs/fftw"
-DEPEND="${RDEPEND}
+RDEPEND="sci-libs/fftw:3.0"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 src_prepare() {
+	default
 	eautoreconf
 }
 

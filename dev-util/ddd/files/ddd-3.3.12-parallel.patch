@@ -1,0 +1,15 @@
+diff -ruN -x strclass.h ddd-3.3.12/ddd/Makefile.am my/ddd/Makefile.am
+--- ddd-3.3.12/ddd/Makefile.am	2009-02-11 18:25:07.000000000 +0100
++++ my/ddd/Makefile.am	2019-11-22 22:49:26.212765331 +0100
+@@ -580,9 +580,8 @@
+ 
+ # Make sure needed headers are built before trying to compile these files
+ # (Assume ddd.C is the first source file to be built.)
+-ddd.o: version.h host.h root.h
+-resources.o: Ddd.ad.h
+-show.o: build.h
++# MM: AND WHY WOULD YOU ASSUME THAT??
++BUILT_SOURCES = version.h host.h root.h Ddd.ad.h build.h
+ 
+ # -----------------------------------------------------------------------------
+ # Local Libraries.

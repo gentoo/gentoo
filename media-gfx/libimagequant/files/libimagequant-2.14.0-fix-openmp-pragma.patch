@@ -1,0 +1,18 @@
+From 44525d34b738f733a81037286ece603ca0fdcf10 Mon Sep 17 00:00:00 2001
+From: Kornel <kornel@geekhood.net>
+Date: Wed, 27 Jan 2021 17:36:33 +0000
+Subject: [PATCH] Update OMP pragma
+--- a/libimagequant.c
++++ b/libimagequant.c
+@@ -1279,10 +1279,7 @@ LIQ_NONNULL static float remap_to_palette(liq_image *const input_image, unsigned
+ 
+ #if __GNUC__ >= 9 || __clang__
+     #pragma omp parallel for if (rows*cols > 3000) \
+-        schedule(static) default(none) shared(acolormap,average_color,cols,input_image,map,n,output_pixels,rows,transparent_index) reduction(+:remapping_error)
+-#else
+-    #pragma omp parallel for if (rows*cols > 3000) \
+-        schedule(static) default(none) shared(acolormap) shared(average_color) reduction(+:remapping_error)
++        schedule(static) default(none) shared(background,acolormap,average_color,cols,input_image,map,n,output_pixels,rows,transparent_index) reduction(+:remapping_error)
+ #endif
+     for(int row = 0; row < rows; ++row) {
+         const f_pixel *const row_pixels = liq_image_get_row_f(input_image, row);

@@ -1,0 +1,32 @@
+patch from upstream:
+https://ezix.org/src/pkg/lshw/commit/5e5744732b2dcdf83845919256388b3842033183
+
+From 5e5744732b2dcdf83845919256388b3842033183 Mon Sep 17 00:00:00 2001
+From: Wenkai Du <wenkai.du@intel.com>
+Date: Fri, 22 Dec 2017 09:57:57 -0800
+Subject: [PATCH] lshw: fix segmentation fault when /dev/sgx is present
+
+When Intel SGX is enabled in kernel, /dev/sgx is created and is
+picked up by "/dev/sg*" glob matching.
+
+Signed-off-by: Wenkai Du <wenkai.du@intel.com>
+---
+ src/core/scsi.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/scsi.cc b/src/core/scsi.cc
+index b38dda2cd8a8..75061c0fb195 100644
+--- a/src/core/scsi.cc
++++ b/src/core/scsi.cc
+@@ -30,7 +30,7 @@
+ 
+ __ID("@(#) $Id$");
+ 
+-#define SG_X "/dev/sg*"
++#define SG_X "/dev/sg[0-9]*"
+ #define SG_MAJOR 21
+ 
+ #ifndef SCSI_IOCTL_GET_PCI
+-- 
+2.15.1
+

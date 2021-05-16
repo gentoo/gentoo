@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Cryptmount was written to make it as easy for ordinary users
+		to access encrypted filesystems on-demand using the newer devmapper
+		mechansism as it was to use the older, now deprecated, cryptoloop methods.
+		This offers the following advantages:
+
+		Access to improved functionality in the kernel
+		Transparent support for filesystems stored on either raw disk partitions or loopback files
+		Separate encryption of filesystem access keys, allowing access passwords to be changed without re-encrypting the entire filesystem
+		Storing multiple encrypted filesystems within a single disk partition, using a designated subset of blocks for each
+		Rarely used filesystems do not need to be mounted at system startup
+		Un-mounting of each filesystem is locked so that this can only be performed by the user that mounted it, or the superuser
+		Encrypted filesystems compatible with cryptsetup
+		Encrypted access-keys can be chosen to be compatible with openssl, or managed via libgcrypt, or (for 2.0 release-series) built-in SHA1/Blowfish ciphers
+		Support for encrypted swap partitions (superuser only)
+		Support for setting up encrypted filesystems or crypto-swap at system boot-up
+	</longdescription>
+	<use>
+		<flag name="argv0switch">Default action given by progname.</flag>
+		<flag name="cswap">Enable support for encrypted swap.</flag>
+		<flag name="fsck">Check filesystems before mounting.</flag>
+		<flag name="gcrypt">Support libgcrypt-encryption of keys.</flag>
+		<flag name="largefile">Enable support for large files.</flag>
+		<flag name="mount">Use systemd mount/umount for operations.</flag>
+		<flag name="luks">Enable key management via LUKS</flag>
+		<flag name="openssl">Support openssl-encryption of keys.</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/cryptmount/bugs/</bugs-to>
+		<remote-id type="sourceforge">cryptmount</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,52 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -144,6 +144,7 @@
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ # Checks for libraries.
+ # FIXME: Replace `main' with a function in `-lm':
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -9,7 +9,6 @@
+ ## http://www.w3.org/People/Raggett/tidy/ , by Dave Raggett <dsr@w3.org>
+ TIDY = tidy
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)
+ 
+ # mclfamily.html mclfamily.ps
+ 
+--- a/graphs/Makefile.am
++++ b/graphs/Makefile.am
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ ## $Id: Makefile.am,v 1.7 2007-01-29 11:35:37 flux Exp $
+ 
+-exampledir = $(datadir)/doc/$(PACKAGE)/examples
++exampledir = $(docdir)/examples
+ 
+ example_DATA = falkner.mci falkner2.mci falkner.coords make-falkner.pl \
+    proteins.mci matula.mci lattice.mci honey.mci seven.mci infinity.mci \
+--- a/img/Makefile.am
++++ b/img/Makefile.am
+@@ -1,7 +1,7 @@
+ ## Process this file with automake to produce Makefile.in
+ ## $Id: Makefile.am,v 1.7 2007-01-29 11:35:37 flux Exp $
+ 
+-exampledir = $(datadir)/doc/$(PACKAGE)/examples
++exampledir = $(docdir)/examples
+ 
+ example_DATA = fa_1024.png fa_400.png fa_600.png fa_large.png fa.ps falkner-bidi.ps falkner.ps small.ps small.png
+ 
+--- a/src/alien/oxygen/doc/Makefile.am
++++ b/src/alien/oxygen/doc/Makefile.am
+@@ -17,7 +17,6 @@
+ ## http://www.w3.org/People/Raggett/tidy/ , by Dave Raggett <dsr@w3.org>
+ TIDY = tidy
+ 
+-docdir = $(datadir)/doc/$(PACKAGE)
+ 
+ ## zoemtut.html is "on hold": do not install; zoem is not yet ready
+ ## for prime time

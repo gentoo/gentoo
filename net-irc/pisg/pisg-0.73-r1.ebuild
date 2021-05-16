@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 inherit perl-module
 
@@ -12,28 +11,23 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
-
-IUSE=""
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="dev-perl/Text-Iconv"
-DEPEND=">=sys-apps/sed-4"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's!lang\.txt!/usr/share/pisg/lang.txt!' \
 		-e 's!layout/!/usr/share/pisg/layout/!' \
 		modules/Pisg.pm || die "sed failed"
 }
 
-src_compile() {
-	einfo "Nothing to compile"
-}
-
 src_install() {
 	perl_set_version
 
-	dobin pisg || die "dobin failed"
+	dobin pisg
 
 	insinto "${VENDOR_LIB}"
 	doins -r modules/.
@@ -44,7 +38,9 @@ src_install() {
 	dodoc docs/{FORMATS,pisg-doc.txt} \
 		docs/dev/API pisg.cfg README
 	doman docs/pisg.1
-	dohtml docs/pisg-doc.html
+
+	docinto html
+	dodoc docs/pisg-doc.html
 }
 
 pkg_postinst() {

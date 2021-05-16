@@ -4,7 +4,17 @@
   <maintainer type="person">
     <email>naota@gentoo.org</email>
   </maintainer>
+  <maintainer type="person">
+    <email>dlan@gentoo.org</email>
+    <name>Yixun Lan</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>amadio@gentoo.org</email>
+    <name>Guilherme Amadio</name>
+  </maintainer>
   <use>
+    <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
+    <flag name="clang">Enable builtin clang and LLVM support</flag>
     <flag name="demangle">
       Enable C++ symbol name demangling, using libbfd from
       <pkg>sys-devel/binutils</pkg>. When this flag is enabled, the
@@ -18,9 +28,13 @@
       documentation handling tools that are not always welcome on user
       systems.
     </flag>
-	<flag name="numa">Enable NUMA support</flag>
+    <flag name="libpfm">Enable <pkg>dev-libs/libpfm</pkg> support</flag>
+    <flag name="numa">Enable NUMA support</flag>
     <flag name="perl">
       Add support for Perl as a scripting language for perf tools.
+    </flag>
+    <flag name="systemtap">
+      Add support to define SDT event in perf tools.
     </flag>
     <flag name="unwind">
       Use sys-libs/libunwind for frame unwinding support.

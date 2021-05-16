@@ -1,35 +1,46 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: subversion.eclass
 # @MAINTAINER:
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @BLURB: The subversion eclass is written to fetch software sources from subversion repositories
+# @SUPPORTED_EAPIS: 4 5 6 7
+# @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
 # The subversion eclass provides functions to fetch, patch and bootstrap
 # software sources from subversion repositories.
 
-inherit eutils
-
 ESVN="${ECLASS}"
 
-case "${EAPI:-0}" in
-	0|1)
+case ${EAPI:-0} in
+	4|5)
+		inherit eutils
+		EXPORT_FUNCTIONS src_unpack src_prepare pkg_preinst
+		;;
+	6|7)
+		inherit estack
 		EXPORT_FUNCTIONS src_unpack pkg_preinst
-		DEPEND="dev-vcs/subversion"
 		;;
 	*)
-		EXPORT_FUNCTIONS src_unpack src_prepare pkg_preinst
-		DEPEND="|| ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] )"
+		die "${ESVN}: EAPI ${EAPI:-0} is not supported"
 		;;
 esac
 
-DEPEND+=" net-misc/rsync"
+PROPERTIES+=" live"
+
+DEPEND="
+	dev-vcs/subversion[http(+)]
+	net-misc/rsync"
+
+case ${EAPI} in
+	4|5|6) ;;
+	*) BDEPEND="${DEPEND}"; DEPEND="" ;;
+esac
 
 # @ECLASS-VARIABLE: ESVN_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # subversion sources store directory. Users may override this in /etc/portage/make.conf
 [[ -z ${ESVN_STORE_DIR} ]] && ESVN_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}/svn-src"
@@ -59,7 +70,7 @@ ESVN_OPTIONS="${ESVN_OPTIONS:-}"
 # @DESCRIPTION:
 # repository uri
 #
-# e.g. http://foo/trunk, svn://bar/trunk, svn://bar/branch/foo@1234
+# e.g. http://example.org/trunk, svn://example.org/branch/foo@1234
 #
 # supported URI schemes:
 #   http://
@@ -116,7 +127,8 @@ ESVN_PROJECT="${ESVN_PROJECT:-${PN/-svn}}"
 
 # @ECLASS-VARIABLE: ESVN_BOOTSTRAP
 # @DESCRIPTION:
-# bootstrap script or command like autogen.sh or etc..
+# Bootstrap script or command like autogen.sh or etc..
+# Removed in EAPI 6 and later.
 ESVN_BOOTSTRAP="${ESVN_BOOTSTRAP:-}"
 
 # @ECLASS-VARIABLE: ESVN_PATCHES
@@ -127,6 +139,8 @@ ESVN_BOOTSTRAP="${ESVN_BOOTSTRAP:-}"
 #
 # Patches are searched both in ${PWD} and ${FILESDIR}, if not found in either
 # location, the installation dies.
+#
+# Removed in EAPI 6 and later, use PATCHES instead.
 ESVN_PATCHES="${ESVN_PATCHES:-}"
 
 # @ECLASS-VARIABLE: ESVN_RESTRICT
@@ -138,6 +152,8 @@ ESVN_PATCHES="${ESVN_PATCHES:-}"
 ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 
 # @ECLASS-VARIABLE: ESVN_OFFLINE
+# @USER_VARIABLE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set this variable to a non-empty value to disable the automatic updating of
 # an svn source tree. This is intended to be set outside the subversion source
@@ -145,6 +161,7 @@ ESVN_RESTRICT="${ESVN_RESTRICT:-}"
 ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 
 # @ECLASS-VARIABLE: ESVN_UMASK
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set this variable to a custom umask. This is intended to be set by users.
 # By setting this to something like 002, it can make life easier for people
@@ -155,6 +172,7 @@ ESVN_OFFLINE="${ESVN_OFFLINE:-${EVCS_OFFLINE}}"
 ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 
 # @ECLASS-VARIABLE: ESVN_UP_FREQ
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Set the minimum number of hours between svn up'ing in any given svn module. This is particularly
 # useful for split KDE ebuilds where we want to ensure that all submodules are compiled for the same
@@ -162,6 +180,7 @@ ESVN_UMASK="${ESVN_UMASK:-${EVCS_UMASK}}"
 ESVN_UP_FREQ="${ESVN_UP_FREQ:=}"
 
 # @ECLASS-VARIABLE: ESCM_LOGDIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User configuration variable. If set to a path such as e.g. /var/log/scm any
 # package inheriting from subversion.eclass will record svn revision to
@@ -355,7 +374,10 @@ subversion_fetch() {
 # @FUNCTION: subversion_bootstrap
 # @DESCRIPTION:
 # Apply patches in ${ESVN_PATCHES} and run ${ESVN_BOOTSTRAP} if specified.
+# Removed in EAPI 6 and later.
 subversion_bootstrap() {
+	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
+
 	if has "export" ${ESVN_RESTRICT}; then
 		return
 	fi
@@ -421,18 +443,17 @@ subversion_wc_info() {
 
 # @FUNCTION: subversion_src_unpack
 # @DESCRIPTION:
-# Default src_unpack. Fetch and, in older EAPIs, bootstrap.
+# Default src_unpack. Fetch.
 subversion_src_unpack() {
 	subversion_fetch || die "${ESVN}: unknown problem occurred in subversion_fetch."
-	if has "${EAPI:-0}" 0 1; then
-		subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
-	fi
 }
 
 # @FUNCTION: subversion_src_prepare
 # @DESCRIPTION:
 # Default src_prepare. Bootstrap.
+# Removed in EAPI 6 and later.
 subversion_src_prepare() {
+	[[ ${EAPI} == [012345] ]] || die "${FUNCNAME} is removed from subversion.eclass in EAPI 6 and later"
 	subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
 }
 
@@ -443,10 +464,9 @@ subversion_src_prepare() {
 # want the logs to stick around if packages are uninstalled without messing with
 # config protection.
 subversion_pkg_preinst() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local pkgdate=$(date "+%Y%m%d %H:%M:%S")
 	if [[ -n ${ESCM_LOGDIR} ]]; then
-		local dir="${EROOT}/${ESCM_LOGDIR}/${CATEGORY}"
+		local dir="${EROOT%/}${ESCM_LOGDIR}/${CATEGORY}"
 		if [[ ! -d ${dir} ]]; then
 			mkdir -p "${dir}" || eerror "Failed to create '${dir}' for logging svn revision"
 		fi

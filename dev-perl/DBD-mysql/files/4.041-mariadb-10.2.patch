@@ -1,0 +1,35 @@
+From 509fd6a054de9408ce9032e93fff61f6bdbc568a Mon Sep 17 00:00:00 2001
+From: Brian Evans <grknight@gentoo.org>
+Date: Fri, 13 Oct 2017 15:03:50 -0400
+Subject: Fix building/linking against MariaDB 10.2
+
+Bug: https://bugs.gentoo.org/634192
+---
+ mysql.xs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/mysql.xs b/mysql.xs
+index 13c6a57..6de3c8e 100644
+--- a/mysql.xs
++++ b/mysql.xs
+@@ -790,7 +790,7 @@ dbd_mysql_get_info(dbh, sql_info_type)
+     D_imp_dbh(dbh);
+     IV type = 0;
+     SV* retsv=NULL;
+-#if !defined(MARIADB_BASE_VERSION) && MYSQL_VERSION_ID >= 50709
++#if ( !defined(MARIADB_BASE_VERSION) && MYSQL_VERSION_ID >= 50709 ) || MYSQL_VERSION_ID >= 100202
+ /* MariaDB 10 is not MySQL source level compatible so this only applies to MySQL*/
+     IV buffer_len;
+ #endif 
+@@ -822,7 +822,7 @@ dbd_mysql_get_info(dbh, sql_info_type)
+ 	    retsv = newSVpvn("`", 1);
+ 	    break;
+ 	case SQL_MAXIMUM_STATEMENT_LENGTH:
+-#if !defined(MARIADB_BASE_VERSION) && MYSQL_VERSION_ID >= 50709
++#if ( !defined(MARIADB_BASE_VERSION) && MYSQL_VERSION_ID >= 50709 ) || MYSQL_VERSION_ID >= 100202
+         /* MariaDB 10 is not MySQL source level compatible so this
+            only applies to MySQL*/
+ 	    /* mysql_get_option() was added in mysql 5.7.3 */
+-- 
+2.14.2
+

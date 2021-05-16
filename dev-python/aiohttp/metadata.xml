@@ -2,15 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>bman@gentoo.org</email>
-    <name>Aaron Bauman</name>
+    <email>zmedico@gentoo.org</email>
+    <name>Zac Medico</name>
   </maintainer>
-  <maintainer type="person">
-    <email>alunduil@gentoo.org</email>
-    <name>Alex Brandt</name>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
   </maintainer>
   <upstream>
     <remote-id type="pypi">aiohttp</remote-id>
-    <remote-id type="github">KeepSafe/aiohttp</remote-id>
+    <remote-id type="github">aio-libs/aiohttp</remote-id>
   </upstream>
 </pkgmetadata>

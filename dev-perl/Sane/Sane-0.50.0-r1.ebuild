@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -11,13 +10,14 @@ inherit perl-module
 DESCRIPTION="The Sane module allows you to access SANE-compatible scanners in a Perl"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=media-gfx/sane-backends-1.0.19"
 DEPEND="${RDEPEND}
 	dev-perl/ExtUtils-Depends
-	dev-perl/extutils-pkgconfig
+	dev-perl/ExtUtils-PkgConfig
 	test? ( dev-perl/Test-Pod )"
 
 SRC_TEST="do"

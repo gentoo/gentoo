@@ -1,34 +1,28 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils autotools
-DESCRIPTION="Simple RFC-complient TELNET implementation as a C library"
-HOMEPAGE="https://github.com/seanmiddleditch/libtelnet"
+EAPI=7
 
-if [ ${PV} = 9999 ]; then
-	KEYWORDS=""
-	EGIT_REPO_URI="https://github.com/seanmiddleditch/${PN}.git"
-	inherit git-2
-	DEPEND="dev-vcs/git"
-	S="${WORKDIR}/${PN}-master"
+inherit cmake
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/seanmiddleditch/libtelnet.git"
 else
-	KEYWORDS="~x86 ~amd64"
-	SRC_URI="https://github.com/seanmiddleditch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/seanmiddleditch/libtelnet/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
-WANT_AUTOMAKE=1.11
-DEPEND="${DEPEND} sys-devel/automake:${WANT_AUTOMAKE}"
+DESCRIPTION="Simple RFC-compliant TELNET implementation as a C library"
+HOMEPAGE="https://github.com/seanmiddleditch/libtelnet"
+
 LICENSE="public-domain"
 SLOT="0"
-IUSE=""
-RDEPEND=""
 
-src_prepare() {
-	_elibtoolize
-	eaclocal
-	eautoconf
-	eautoheader
-	eautomake
-}
+# needed unconditionally for man pages
+BDEPEND="app-doc/doxygen"
+
+PATCHES=(
+	# https://bugs.gentoo.org/737886
+	"${FILESDIR}/${P}-doc.patch"
+)

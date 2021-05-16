@@ -5,13 +5,16 @@
 		<email>swegener@gentoo.org</email>
 		<name>Sven Wegener</name>
 	</maintainer>
-	<longdescription>A command-line based binary newsgrabber supporting .nzb files.</longdescription>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
 	<use>
 		<flag name="parcheck">Enable support for checking PAR archives</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">nzbget</remote-id>
 		<remote-id type="github">nzbget/nzbget</remote-id>
 		<bugs-to>https://github.com/nzbget/nzbget/issues</bugs-to>
+		<remote-id type="sourceforge">nzbget</remote-id>
 	</upstream>
 </pkgmetadata>

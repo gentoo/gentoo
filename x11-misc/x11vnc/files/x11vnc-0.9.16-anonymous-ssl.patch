@@ -1,0 +1,26 @@
+From b9cf79fd3d61a7586fe6b24b3141e406cdf334eb Mon Sep 17 00:00:00 2001
+From: Jim Broadus <jbroadus@xevo.com>
+Date: Wed, 2 Jan 2019 17:37:40 -0800
+Subject: [PATCH] Fix anonymous SSL. In version 1.1.0, openssl introduced a
+ security level concept. Only level 0 allows the use of unauthenticated cipher
+ suites such as ADH.
+
+---
+ src/sslhelper.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/sslhelper.c b/src/sslhelper.c
+index 1a3e7474..04c2e273 100644
+--- a/src/sslhelper.c
++++ b/src/sslhelper.c
+@@ -1596,6 +1596,10 @@ static int switch_to_anon_dh(void) {
+ 	if (ssl_client_mode) {
+ 		return 1;
+ 	}
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++	/* Security level must be set to 0 for unauthenticated suites. */
++	SSL_CTX_set_security_level(ctx, 0);
++#endif
+ 	if (!SSL_CTX_set_cipher_list(ctx, "ADH:@STRENGTH")) {
+ 		return 0;
+ 	}

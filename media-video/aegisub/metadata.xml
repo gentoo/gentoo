@@ -2,20 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>itumaykin+gentoo@gmail.com</email>
-		<name>Coacher</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
-	</maintainer>
-	<maintainer type="person">
-		<email>maksbotan@gentoo.org</email>
-		<name>Maxim Koltsov</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>sarnex@gentoo.org</email>
+		<name>Nick Sarnie</name>
 	</maintainer>
 	<use>
-		<flag name="uchardet">Enable charset discovery via <pkg>dev-libs/uchardet</pkg></flag>
+		<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>http://devel.aegisub.org/wiki/NewTicket</bugs-to>

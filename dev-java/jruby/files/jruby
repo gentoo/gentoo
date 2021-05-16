@@ -1,4 +1,0 @@
-#!/bin/sh
-
-export JRUBY_CP=`java-config -d -p jruby`
-exec bash /usr/share/jruby/bin/jruby "${@}"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>pgsql-bugs@gentoo.org</email>
+  </maintainer>
+  <longdescription>
+    An extension for postgresql databases to allow direct usage of
+    <pkg>dev-lang/R</pkg> in SQL queries and database functions
+  </longdescription>
+</pkgmetadata>

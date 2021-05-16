@@ -1,23 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit eutils git-2 savedconfig toolchain-funcs
+EAPI=7
+inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
-HOMEPAGE="http://surf.suckless.org/"
-EGIT_REPO_URI="git://git.suckless.org/surf"
+HOMEPAGE="https://surf.suckless.org/"
+EGIT_REPO_URI="https://git.suckless.org/surf"
+EGIT_BRANCH="surf-webkit2"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
+IUSE="tabbed"
 
 COMMON_DEPEND="
+	app-crypt/gcr[gtk]
 	dev-libs/glib:2
-	net-libs/libsoup
-	net-libs/webkit-gtk:2
-	x11-libs/gtk+:2
+	net-libs/webkit-gtk:4
+	x11-libs/gtk+:3
 	x11-libs/libX11
 "
 DEPEND="
@@ -27,13 +28,17 @@ DEPEND="
 RDEPEND="
 	!sci-chemistry/surf
 	${COMMON_DEPEND}
-	x11-apps/xprop
-	x11-misc/dmenu
 	!savedconfig? (
+		>=x11-misc/dmenu-4.7
 		net-misc/curl
+		x11-apps/xprop
 		x11-terms/st
 	)
+	tabbed? ( x11-misc/tabbed )
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-gentoo.patch
+)
 
 pkg_setup() {
 	if ! use savedconfig; then
@@ -49,13 +54,19 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch_user
+	default
+
 	restore_config config.h
+
 	tc-export CC PKG_CONFIG
 }
 
 src_install() {
 	default
+
+	if use tabbed; then
+		dobin surf-open.sh
+	fi
+
 	save_config config.h
 }

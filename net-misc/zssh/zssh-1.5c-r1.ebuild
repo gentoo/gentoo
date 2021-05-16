@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit epatch toolchain-funcs
 
 DESCRIPTION="An ssh wrapper enabling zmodem up/download in ssh"
 HOMEPAGE="http://zssh.sourceforge.net/"
@@ -16,7 +15,7 @@ KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="nls readline"
 
 DEPEND="readline? (
-		sys-libs/ncurses
+		sys-libs/ncurses:0
 		sys-libs/readline:0
 	)"
 RDEPEND="${DEPEND}
@@ -35,8 +34,8 @@ src_prepare() {
 src_configure() {
 	tc-export AR CC RANLIB
 	econf \
-                $(use_enable nls) \
-	        $(use_enable readline)
+		$(use_enable nls) \
+		$(use_enable readline)
 }
 
 src_install() {

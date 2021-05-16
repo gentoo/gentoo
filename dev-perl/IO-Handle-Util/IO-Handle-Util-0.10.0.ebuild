@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -10,8 +9,9 @@ inherit perl-module
 
 DESCRIPTION="Functions for working with IO::Handle like objects"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/IO-String
@@ -23,10 +23,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		>=virtual/perl-Test-Simple-0.880.0
-		|| (
-			>=virtual/perl-Test-Simple-1.1.10
-			( <virtual/perl-Test-Simple-1.1.10 dev-perl/Test-use-ok )
-		)
+		>=virtual/perl-Test-Simple-1.1.10
 	)
 "

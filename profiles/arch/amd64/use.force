@@ -1,6 +1,6 @@
 # Force the flag which corresponds to ARCH.
 amd64
 
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
 # Force the flag corresponding to the default ABI.
 abi_x86_64

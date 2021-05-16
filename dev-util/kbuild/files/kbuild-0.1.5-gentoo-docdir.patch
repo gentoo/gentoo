@@ -1,5 +1,5 @@
---- Config.kmk
-+++ Config.kmk
+--- a/Config.kmk
++++ b/Config.kmk
 @@ -147,7 +147,7 @@
    MY_INST_DATA := $(MY_INST_ROOT)share/kBuild/
   endif

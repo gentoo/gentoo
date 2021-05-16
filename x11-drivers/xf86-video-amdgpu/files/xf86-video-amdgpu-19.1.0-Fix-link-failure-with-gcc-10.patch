@@ -1,0 +1,28 @@
+From edcbe5f52ddfceee3d66d69bbcebbceac06b6d0d Mon Sep 17 00:00:00 2001
+From: Adam Jackson <ajax@redhat.com>
+Date: Tue, 4 Feb 2020 16:38:06 -0500
+Subject: [PATCH] Fix link failure with gcc 10
+
+Without the 'extern' this looks like a definition not just a
+declaration, in every file that includes the header. gcc 10 is stricter
+about this kind of multiple definition.
+---
+ src/drmmode_display.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/drmmode_display.h b/src/drmmode_display.h
+index 803ac3c..9c0f25a 100644
+--- a/src/drmmode_display.h
++++ b/src/drmmode_display.h
+@@ -289,7 +289,7 @@ Bool drmmode_wait_vblank(xf86CrtcPtr crtc, drmVBlankSeqType type,
+ 			 uint64_t *ust, uint32_t *result_seq);
+ 
+ 
+-miPointerSpriteFuncRec drmmode_sprite_funcs;
++extern miPointerSpriteFuncRec drmmode_sprite_funcs;
+ 
+ 
+ #endif
+-- 
+2.26.2
+

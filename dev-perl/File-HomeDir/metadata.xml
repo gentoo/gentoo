@@ -14,12 +14,11 @@
     <remote-id type="cpan-module">File::HomeDir::Driver</remote-id>
     <remote-id type="cpan-module">File::HomeDir::FreeDesktop</remote-id>
     <remote-id type="cpan-module">File::HomeDir::MacOS9</remote-id>
-    <remote-id type="cpan-module">File::HomeDir::TIE</remote-id>
     <remote-id type="cpan-module">File::HomeDir::Test</remote-id>
     <remote-id type="cpan-module">File::HomeDir::Unix</remote-id>
     <remote-id type="cpan-module">File::HomeDir::Windows</remote-id>
   </upstream>
   <use>
-  	<flag name="xdg">Ensure XDG Semantics for returned paths via x11-misc/xdg-user-dirs</flag>
+    <flag name="xdg">Ensure XDG Semantics for returned paths via x11-misc/xdg-user-dirs</flag>
   </use>
 </pkgmetadata>

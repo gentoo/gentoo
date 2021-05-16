@@ -1,6 +1,6 @@
-diff -ru libspectre-0.2.0.orig/libspectre/spectre-utils.c libspectre-0.2.0/libspectre/spectre-utils.c
---- libspectre-0.2.0.orig/libspectre/spectre-utils.c	2008-05-06 08:35:07 +0200
-+++ libspectre-0.2.0/libspectre/spectre-utils.c	2008-05-06 08:49:51 +0200
+diff -ru libspectre/spectre-utils.c libspectre/spectre-utils.c
+--- a/libspectre/spectre-utils.c	2008-05-06 08:35:07 +0200
++++ b/libspectre/spectre-utils.c	2008-05-06 08:49:51 +0200
 @@ -148,6 +148,17 @@
  spectre_strdup_vprintf (const char *format,
  			va_list     args)

@@ -1,0 +1,191 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# When you add an entry to the top of this file, add your name, the date, and
+# an explanation of why something is getting masked. Please be extremely
+# careful not to commit atoms that are not valid, as it can cause large-scale
+# breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
+## # Masking foo USE flag until we can get the
+## # foo stuff to work properly again (bug 12345)
+## =media-video/mplayer-0.90_pre5 foo
+## =media-video/mplayer-0.90_pre5-r1 foo
+#
+
+#--- END OF EXAMPLES ---
+
+# Sam James <sam@gentoo.org> (2021-02-18)
+# Requires dev-lang/vala to be stable
+gnome-base/librsvg vala
+
+# Rolf Eike Beer <eike@sf-mail.de> (2021-01-26)
+# The following packages have no stable keywords on hppa:
+#       openntpd: net-misc/openntpd
+#   parse-clocks: net-misc/pps-tools
+#           snmp: net-analyzer/net-snmp
+net-misc/ntp openntpd parse-clocks snmp
+
+# Sam James <sam@gentoo.org> (2021-01-21)
+# media-gfx/transfig ends up pulling in Xorg
+# bug #766051
+dev-util/ragel doc
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-31)
+# The following packages have no stable keywords on hppa:
+#           amqp: net-libs/rabbitmq
+#            dbi: dev-db/libdbi
+#         geoip2: dev-libs/libmaxminddb
+#          kafka: dev-libs/librdkafka
+#        mongodb: dev-libs/mongo-c-driver
+#          redis: dev-db/redis
+#           smtp: net-libs/libesmtp
+#           snmp: net-analyzer/net-snmp
+#   spoof-source: net-libs/libnet
+app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis smtp snmp spoof-source
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# dev-libs/libfido2 is not stable on hppa
+net-misc/openssh security-key
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-30)
+# app-text/aspell is not stable on hppa
+app-misc/mc spell
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# app-crypt/heimdal is not stable on hppa
+net-nds/openldap smbkrb5passwd
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-python/subunit is not stable on hppa
+dev-libs/check subunit
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# dev-libs/xapian is not stable on hppa
+app-doc/doxygen doxysearch
+
+# Matt Turner <mattst88@gentoo.org> (2020-12-23)
+# x11-base/xorg-server not stable.
+# Mask USE=test for packages using virtualx.eclass.
+dev-lang/tk test
+dev-python/cmd2 test
+dev-python/fonttools test
+dev-python/pillow test
+dev-python/pygobject test
+dev-python/pyperclip test
+dev-python/twisted test
+dev-tcltk/bwidget test
+dev-tcltk/snack test
+dev-tcltk/tcllib test
+dev-util/cmake test
+sys-apps/dbus test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-12-14)
+# noone actually tests it on real hardware anymore
+x11-base/xorg-server xorg
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-12-11)
+# not all needed sphinx modules are stable on hppa.
+dev-python/aiohttp doc
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-14)
+# sys-apps/systemd has no stable keywords on hppa.
+sys-apps/ipmitool openbmc
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
+# app-i18n/fcitx:4 not stable.
+media-libs/libsdl2 fcitx4
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-06-10)
+# not stable dev-vcs/mercurial because of broken dependencies: bug #727390
+app-portage/layman mercurial
+dev-python/setuptools_scm test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
+# dependencies not stable yet
+dev-python/pytest-cov test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# no stable app-editors/{,g}vim
+sys-fs/dosfstools test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
+# no stable libsdl
+media-libs/libtheora examples
+
+# Matt Turner <mattst88@gentoo.org> (2020-04-01)
+# net-libs/mbedtls has no stable keywords
+net-misc/curl curl_ssl_mbedtls mbedtls
+dev-libs/libzip mbedtls
+net-libs/libssh mbedtls
+net-libs/libssh2 mbedtls
+net-vpn/openvpn mbedtls
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-12)
+# No stable media-fonts/cantarell on hppa.
+x11-libs/pango test
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-09)
+# No stable gnome-base/dconf on hppa.
+dev-libs/glib dbus
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# No stable x11-libs/gtk+ on hppa.
+gnome-base/librsvg tools
+dev-libs/appstream-glib fonts
+dev-python/pygobject test
+app-mobilephone/gnokii X
+media-libs/lv2 plugins
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# app-text/enchant stable timeout, bug #662484
+dev-lang/php enchant
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
+# sys-auth/polkit stable timeout, bug #661470
+sys-apps/pcsc-lite policykit
+x11-misc/colord policykit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
+# net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
+sys-libs/freeipmi nagios
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
+# media-libs/libraw is not stable
+media-gfx/imagemagick raw
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
+# media-libs/{libdc1394,x264} is not stable.
+# media-libs/game-music-emu is not stable.
+media-video/ffmpeg gme ieee1394 x264
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-06)
+# sci-visualization/gnuplot is not stable.
+sci-mathematics/octave gnuplot
+sci-libs/libqalculate gnuplot
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-02-12)
+# dev-libs/libical stabilisation timeout, bug #621724
+app-mobilephone/gnokii ical
+net-mail/cyrus-imapd calalarm http
+net-wireless/bluez obex
+
+# Hans de Graaff <graaff@gentoo.org> (2017-11-26)
+# Several packages no longer have stable keywords due
+# to bug 626682
+dev-ruby/bundler doc
+dev-ruby/rspec-core highlight test
+sys-block/thin-provisioning-tools test
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-09-30)
+# Mask pdf support so net-print/cups-filters stabilisation
+# can go ahead (bug 627392)
+net-print/cups-filters pdf
+
+# David Seifert <soap@gentoo.org> (2017-09-23)
+#  >=virtual/mpi-2.0-r4 does not have stable keywords on hppa
+# Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
+sci-libs/fftw mpi
+dev-libs/boost mpi

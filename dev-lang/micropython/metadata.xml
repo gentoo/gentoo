@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">micropython/micropython</remote-id>
+	</upstream>
+	<longdescription lang="en">
+The MicroPython project aims to put an implementation of Python 3.x on
+microcontrollers and small embedded systems.
+MicroPython implements the entire Python 3.4 syntax (including exceptions,
+with, yield from, etc., and additionally async/await keywords from Python 3.5).
+The following core datatypes are provided: str (including basic Unicode
+support), bytes, bytearray, tuple, list, dict, set, frozenset, array.array,
+collections.namedtuple, classes and instances. Builtin modules include sys,
+time, and struct, etc. Select ports have support for _thread module
+(multithreading). Note that only a subset of Python 3 functionality is
+implemented for the data types and modules.
+MicroPython can execute scripts in textual source form or from precompiled
+bytecode, in both cases either from an on-device filesystem or "frozen" into
+the MicroPython executable.
+	</longdescription>
+</pkgmetadata>

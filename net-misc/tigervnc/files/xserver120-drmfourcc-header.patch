@@ -1,0 +1,36 @@
+diff -urpN xorg-server-1.20.0.orig/dri3/dri3.c xorg-server-1.20.0/dri3/dri3.c
+--- xorg-server-1.20.0.orig/dri3/dri3.c	2018-05-10 09:32:34.000000000 -0700
++++ xorg-server-1.20.0/dri3/dri3.c	2018-06-13 19:32:52.131915519 -0700
+@@ -26,7 +26,7 @@
+ 
+ #include "dri3_priv.h"
+ 
+-#include <drm_fourcc.h>
++#include <libdrm/drm_fourcc.h>
+ 
+ static int dri3_request;
+ DevPrivateKeyRec dri3_screen_private_key;
+diff -urpN xorg-server-1.20.0.orig/dri3/dri3_request.c xorg-server-1.20.0/dri3/dri3_request.c
+--- xorg-server-1.20.0.orig/dri3/dri3_request.c	2018-05-10 09:32:34.000000000 -0700
++++ xorg-server-1.20.0/dri3/dri3_request.c	2018-06-13 19:33:46.164444267 -0700
+@@ -30,7 +30,7 @@
+ #include <xace.h>
+ #include "../Xext/syncsdk.h"
+ #include <protocol-versions.h>
+-#include <drm_fourcc.h>
++#include <libdrm/drm_fourcc.h>
+ 
+ static Bool
+ dri3_screen_can_one_point_two(ScreenPtr screen)
+diff -urpN xorg-server-1.20.0.orig/dri3/dri3_screen.c xorg-server-1.20.0/dri3/dri3_screen.c
+--- xorg-server-1.20.0.orig/dri3/dri3_screen.c	2018-05-10 09:32:34.000000000 -0700
++++ xorg-server-1.20.0/dri3/dri3_screen.c	2018-06-13 19:33:13.885725528 -0700
+@@ -29,7 +29,7 @@
+ #include <misync.h>
+ #include <misyncshm.h>
+ #include <randrstr.h>
+-#include <drm_fourcc.h>
++#include <libdrm/drm_fourcc.h>
+ #include <unistd.h>
+ 
+ int

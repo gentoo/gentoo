@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>sven.eden@prydeworx.com</email>
+		<name>Sven Eden</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+This is a module for the AWS SDK for C. It handles all IO and TLS work for application protocols.
+
+aws-c-io is an event driven framework for implementing application protocols. It is built on top of cross-platform
+abstractions that allow you as a developer to think only about the state machine and API for your protocols. A typical
+use-case would be to write something like Http on top of asynchronous-io with TLS already baked in. All of the platform
+and security concerns are already handled for you.
+
+It is designed to be light-weight, fast, portable, and flexible for multiple domain use-cases such as: embedded,
+server, client, and mobile.
+	</longdescription>
+</pkgmetadata>

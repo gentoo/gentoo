@@ -1,5 +1,5 @@
---- paps-0.6.8/configure.in
-+++ paps-0.6.8/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -18,4 +18,6 @@
  
  DX_INIT_DOXYGEN(libpaps, doxygen.cfg, doxygen-doc)
@@ -7,8 +7,8 @@
 +PKG_CHECK_MODULES([PANGO], [pangoft2])
 +
  AC_OUTPUT(Makefile src/Makefile)
---- paps-0.6.8/src/Makefile.am
-+++ paps-0.6.8/src/Makefile.am
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -7,21 +7,19 @@
  bin_PROGRAMS = paps
  paps_CFLAGS  = -Wall 

@@ -1,21 +1,20 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 WANT_AUTOMAKE=1.13
 
-inherit autotools eutils multilib
+inherit autotools epatch multilib
 RESTRICT="test" # https://bugs.gentoo.org/show_bug.cgi?id=498250 https://bugs.launchpad.net/gentoo/+bug/1278023
 
 DESCRIPTION="a C client library to the memcached server"
-HOMEPAGE="http://libmemcached.org/libMemcached.html"
+HOMEPAGE="https://libmemcached.org/libMemcached.html"
 SRC_URI="https://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~sparc-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug hsieh +libevent sasl static-libs"
 
 DEPEND="net-misc/memcached
@@ -26,6 +25,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	epatch "${FILESDIR}/debug-disable-enable-1.0.18.patch"
 	epatch "${FILESDIR}/continuum-1.0.18.patch"
+	epatch "${FILESDIR}"/${P}-gcc7.patch
 	sed -i '6i CFLAGS = @CFLAGS@' Makefile.am
 	sed -e "/_APPEND_COMPILE_FLAGS_ERROR(\[-fmudflapth\?\])/d" -i m4/ax_harden_compiler_flags.m4
 	eautoreconf

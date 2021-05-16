@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: linux-mod.eclass
 # @MAINTAINER:
@@ -19,9 +18,17 @@
 # These are as follows:
 
 # @ECLASS-VARIABLE: MODULES_OPTIONAL_USE
+# @PRE_INHERIT
 # @DESCRIPTION:
 # A string containing the USE flag to use for making this eclass optional
 # The recommended non-empty value is 'modules'
+
+# @ECLASS-VARIABLE: MODULES_OPTIONAL_USE_IUSE_DEFAULT
+# @PRE_INHERIT
+# @DESCRIPTION:
+# A boolean to control the IUSE default state for the MODULES_OPTIONAL_USE USE
+# flag. Default value is unset (false). True represented by 1 or 'on', other
+# values including unset treated as false.
 
 # @ECLASS-VARIABLE: KERNEL_DIR
 # @DESCRIPTION:
@@ -127,16 +134,32 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
-inherit eutils linux-info multilib
+inherit eutils linux-info multilib toolchain-funcs
 EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
 
-IUSE="kernel_linux ${MODULES_OPTIONAL_USE}"
+case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
+  [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
+  *) _modules_optional_use_iuse_default='+' ;;
+esac
+
+[[ -n "${_modules_optional_use_iuse_default}" ]] && case ${EAPI:-0} in
+	0) die "EAPI=${EAPI} is not supported with MODULES_OPTIONAL_USE_IUSE_DEFAULT due to lack of IUSE defaults" ;;
+esac
+
+IUSE="kernel_linux dist-kernel
+	${MODULES_OPTIONAL_USE:+${_modules_optional_use_iuse_default}}${MODULES_OPTIONAL_USE}"
 SLOT="0"
-RDEPEND="${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (} kernel_linux? ( virtual/modutils ) ${MODULES_OPTIONAL_USE:+)}"
+RDEPEND="
+	${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
+		kernel_linux? (
+			sys-apps/kmod[tools]
+			dist-kernel? ( virtual/dist-kernel:= )
+		)
+	${MODULES_OPTIONAL_USE:+)}"
 DEPEND="${RDEPEND}
-    ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (} 
+    ${MODULES_OPTIONAL_USE}${MODULES_OPTIONAL_USE:+? (}
 	sys-apps/sed
-	kernel_linux? ( virtual/linux-sources )
+	kernel_linux? ( virtual/linux-sources virtual/libelf )
 	${MODULES_OPTIONAL_USE:+)}"
 
 # eclass utilities
@@ -194,13 +217,13 @@ use_m() {
 
 	# if the kernel version is greater than 2.6.6 then we should use
 	# M= instead of SUBDIRS=
-	[ ${KV_MAJOR} -eq 3 ] && return 0
+	[ ${KV_MAJOR} -ge 3 ] && return 0
 	[ ${KV_MAJOR} -eq 2 -a ${KV_MINOR} -gt 5 -a ${KV_PATCH} -gt 5 ] && \
 		return 0 || return 1
 }
 
 # @FUNCTION: convert_to_m
-# @USAGE: /path/to/the/file
+# @USAGE: </path/to/the/file>
 # @DESCRIPTION:
 # It converts a file (e.g. a makefile) to use M= instead of SUBDIRS=
 convert_to_m() {
@@ -230,7 +253,7 @@ update_depmod() {
 	ebegin "Updating module dependencies for ${KV_FULL}"
 	if [ -r "${KV_OUT_DIR}"/System.map ]
 	then
-		depmod -ae -F "${KV_OUT_DIR}"/System.map -b "${ROOT}" ${KV_FULL}
+		depmod -ae -F "${KV_OUT_DIR}"/System.map -b "${ROOT:-/}" ${KV_FULL}
 		eend $?
 	else
 		ewarn
@@ -249,8 +272,8 @@ update_depmod() {
 move_old_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local OLDDIR="${ROOT}"/usr/share/module-rebuild/
-	local NEWDIR="${ROOT}"/var/lib/module-rebuild/
+	local OLDDIR="${ROOT%/}"/usr/share/module-rebuild
+	local NEWDIR="${ROOT%/}"/var/lib/module-rebuild
 
 	if [[ -f "${OLDDIR}"/moduledb ]]; then
 		[[ ! -d "${NEWDIR}" ]] && mkdir -p "${NEWDIR}"
@@ -269,7 +292,7 @@ move_old_moduledb() {
 update_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local MODULEDB_DIR="${ROOT}"/var/lib/module-rebuild/
+	local MODULEDB_DIR="${ROOT%/}"/var/lib/module-rebuild
 	move_old_moduledb
 
 	if [[ ! -f "${MODULEDB_DIR}"/moduledb ]]; then
@@ -292,7 +315,7 @@ update_moduledb() {
 remove_moduledb() {
 	debug-print-function ${FUNCNAME} $*
 
-	local MODULEDB_DIR="${ROOT}"/var/lib/module-rebuild/
+	local MODULEDB_DIR="${ROOT%/}"/var/lib/module-rebuild
 	move_old_moduledb
 
 	if grep -qs ${CATEGORY}/${PN}-${PVR} "${MODULEDB_DIR}"/moduledb ; then
@@ -566,6 +589,9 @@ linux-mod_pkg_setup() {
 		return
 	fi
 
+	# External modules use kernel symbols (bug #591832)
+	CONFIG_CHECK+=" !TRIM_UNUSED_KSYMS"
+
 	linux-info_pkg_setup;
 	require_configured_kernel
 	check_kernel_built;
@@ -592,7 +618,7 @@ linux-mod_pkg_setup_binary() {
 		[[ ${config:0:1} == "~" ]] && optional=''
 		new_CONFIG_CHECK="${new_CONFIG_CHECK} ${optional}${config}"
 	done
-	export CONFIG_CHECK="${new_CONFIG_CHECK}"
+	CONFIG_CHECK="${new_CONFIG_CHECK}"
 	linux-info_pkg_setup;
 }
 
@@ -620,6 +646,8 @@ linux-mod_src_compile() {
 	local modulename libdir srcdir objdir i n myABI="${ABI}"
 	set_arch_to_kernel
 	ABI="${KERNEL_ABI}"
+
+	[[ -n ${KERNEL_DIR} ]] && addpredict "${KERNEL_DIR}/null.dwo"
 
 	BUILD_TARGETS=${BUILD_TARGETS:-clean module}
 	strip_modulenames;
@@ -685,6 +713,8 @@ linux-mod_src_install() {
 
 	local modulename libdir srcdir objdir i n
 
+	[[ -n ${KERNEL_DIR} ]] && addpredict "${KERNEL_DIR}/null.dwo"
+
 	strip_modulenames;
 	for i in ${MODULE_NAMES}
 	do
@@ -714,8 +744,8 @@ linux-mod_pkg_preinst() {
 	debug-print-function ${FUNCNAME} $*
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 
-	[ -d "${D}lib/modules" ] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
-	[ -d "${D}lib/modules" ] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
+	[ -d "${D%/}/lib/modules" ] && UPDATE_DEPMOD=true || UPDATE_DEPMOD=false
+	[ -d "${D%/}/lib/modules" ] && UPDATE_MODULEDB=true || UPDATE_MODULEDB=false
 }
 
 # @FUNCTION: linux-mod_pkg_postinst

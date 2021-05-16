@@ -1,0 +1,38 @@
+- Don't install libnetpbm.a and libnetpbm.so into a sep link dir
+- Try to fix parallel building
+
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -249,7 +249,7 @@
+ .PHONY: install.staticlib
+ install.staticlib: $(PKGDIR)/link
+ 	$(INSTALL) -c -m $(INSTALL_PERM_LIBS) libnetpbm.$(STATICLIBSUFFIX) \
+-	  $(PKGDIR)/link
++	  $(PKGDIR)/lib
+ 
+ # Install a shared library stub -- the ".so" file used at link time to
+ # prepare a program for dynamically linking a library at run time 
+@@ -257,9 +257,9 @@
+ install.sharedlibstub: $(PKGDIR)/link
+ ifeq ($(NETPBMLIBTYPE),unixshared)
+ # install the link-time (.so) links to the runtime libraries
+-	cd $(PKGDIR)/link ; \
++	cd $(PKGDIR)/lib ; \
+           rm -f libnetpbm.$(NETPBMLIBSUFFIX); \
+-          $(SYMLINK) ../lib/libnetpbm.$(NETPBMLIBSUFFIX).$(MAJ) \
++          $(SYMLINK) libnetpbm.$(NETPBMLIBSUFFIX).$(MAJ) \
+             libnetpbm.$(NETPBMLIBSUFFIX)
+ endif
+ ifeq ($(NETPBMLIBTYPE),dll)
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -87,6 +87,9 @@
+ 
+ .PHONY: nonmerge
+ nonmerge: $(PRODUCT_SUBDIRS:%=%/all)
++
++$(PRODUCT_SUBDIRS:%=%/all): buildtools/all
++converter/all analyzer/all editor/all generator/all other/all: lib/all
+ 
+ # Parallel make (make --jobs) is not smart enough to coordinate builds
+ # between submakes, so a naive parallel make would cause certain

@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=2
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Extracts and records individual MP3 file tracks from shoutcast streams"
 HOMEPAGE="http://streamripper.sourceforge.net"
@@ -10,25 +11,32 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="vorbis"
 
-RDEPEND="media-libs/libmad
+RDEPEND="
+	media-libs/libmad
 	media-libs/faad2
 	>=dev-libs/glib-2.16
 	vorbis? ( media-libs/libvorbis )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-fix-autotools.patch )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--without-included-libmad \
 		--without-included-argv \
 		$(use_with vorbis ogg)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc CHANGES parse_rules.txt README THANKS
+	default
+	dodoc parse_rules.txt
 }

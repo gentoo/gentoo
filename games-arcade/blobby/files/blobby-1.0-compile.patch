@@ -1,0 +1,29 @@
+From eaa17d2ad90de2024fc3a7a59575597d1dc0b171 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sat, 21 Jan 2017 18:01:14 +0100
+Subject: [PATCH] Fix compilation
+
+---
+ src/NetworkMessage.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/NetworkMessage.cpp b/src/NetworkMessage.cpp
+index 9178e74..0c3163b 100644
+--- a/src/NetworkMessage.cpp
++++ b/src/NetworkMessage.cpp
+@@ -109,6 +109,11 @@ bool operator == (const ServerInfo& lval, const ServerInfo& rval)
+ 
+ std::ostream& operator<<(std::ostream& stream, const ServerInfo& val)
+ {
+-	return stream << val.name << " (" << val.hostname << ":" << val.port << ")";
++	return stream
++                    << std::string(val.name)
++                    << std::string(" (")
++                    << std::string(val.hostname)
++                    << std::string(":") << std::to_string(val.port)
++                    << std::string(")");
+ }
+ 
+-- 
+2.11.0
+

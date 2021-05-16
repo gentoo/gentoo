@@ -1,0 +1,17 @@
+# Copyright 1999-2020 Gentoo Authors.
+# Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (2017-01-28)
+# No JAVA in uclibc
+java
+
+nls
+pam
+
+-uclibc
+
+-elibc_uclibc
+elibc_glibc
+elibc_musl
+
+systemd

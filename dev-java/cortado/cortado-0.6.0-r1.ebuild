@@ -1,14 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Multimedia framework for Java written by Fluendo"
-HOMEPAGE="http://www.theora.org/cortado/"
-SRC_URI="http://downloads.xiph.org/releases/cortado/${P}.tar.gz"
+HOMEPAGE="https://www.theora.org/cortado/"
+SRC_URI="https://downloads.xiph.org/releases/cortado/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
@@ -27,6 +26,5 @@ src_prepare() {
 
 src_install() {
 	java-pkg_newjar "output/dist/applet/${PN}-ovt-stripped-${PV}.jar"
-	dodoc ChangeLog HACKING NEWS README RELEASE TODO \
-		|| die "dodoc failed"
+	dodoc ChangeLog HACKING NEWS README RELEASE TODO
 }

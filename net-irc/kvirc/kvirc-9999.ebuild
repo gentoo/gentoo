@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2009-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
-PYTHON_DEPEND="python? 2"
+EAPI="7"
+CMAKE_MAKEFILE_GENERATOR="emake"
+PYTHON_COMPAT=(python{3_7,3_8,3_9})
 
-inherit cmake-utils flag-o-matic multilib python
+inherit cmake flag-o-matic python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -14,27 +14,32 @@ if [[ "${PV}" == "9999" ]]; then
 	KVIRC_GIT_REVISION=""
 	KVIRC_GIT_SOURCES_DATE=""
 else
-	inherit vcs-snapshot
-
 	KVIRC_GIT_REVISION=""
 	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
-	KVIRC_GIT_SOURCES_DATE="$(printf "%04u-%02u-%02u" ${KVIRC_GIT_SOURCES_DATE:0:4} ${KVIRC_GIT_SOURCES_DATE:4:2} ${KVIRC_GIT_SOURCES_DATE:6:2})"
+	KVIRC_GIT_SOURCES_DATE="${KVIRC_GIT_SOURCES_DATE:0:4}-${KVIRC_GIT_SOURCES_DATE:4:2}-${KVIRC_GIT_SOURCES_DATE:6:2}"
 fi
 
 DESCRIPTION="Advanced IRC Client"
-HOMEPAGE="http://www.kvirc.net/ https://github.com/kvirc/KVIrc"
+HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
 if [[ "${PV}" == "9999" ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/kvirc/KVIrc/archive/${KVIRC_GIT_REVISION}.tar.gz -> ${P}.tar.gz"
 fi
 
-LICENSE="kvirc"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
+IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-qt/qtcore:5
+BDEPEND="dev-lang/perl:0
+	>=dev-util/cmake-3.16
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	kde? ( kde-frameworks/extra-cmake-modules:5 )
+	nls? ( sys-devel/gettext )"
+DEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -45,6 +50,7 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtxml:5
 	sys-libs/zlib:0=
 	x11-libs/libX11
+	x11-libs/libXScrnSaver
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtdbus:5 )
 	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
@@ -57,8 +63,9 @@ RDEPEND="dev-qt/qtcore:5
 		kde-frameworks/kxmlgui:5
 	)
 	perl? ( dev-lang/perl:0= )
-	phonon? ( media-libs/phonon:0[qt5] )
-	spell? ( app-text/enchant )
+	phonon? ( media-libs/phonon[qt5(+)] )
+	python? ( ${PYTHON_DEPS} )
+	spell? ( app-text/enchant:0= )
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
@@ -66,27 +73,23 @@ RDEPEND="dev-qt/qtcore:5
 		media-libs/libvorbis
 	)
 	webkit? ( dev-qt/qtwebkit:5 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	x11-proto/scrnsaverproto
-	doc? ( app-doc/doxygen )
-	kde? ( kde-frameworks/extra-cmake-modules:5 )
-	nls? ( sys-devel/gettext )"
-RDEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
-REQUIRED_USE="audiofile? ( oss )"
 
-DOCS=(ChangeLog doc/FAQ)
+if [[ "${PV}" != "9999" ]]; then
+	S="${WORKDIR}/KVIrc-${KVIRC_GIT_REVISION}"
+fi
+
+DOCS=()
 
 pkg_setup() {
 	if use python; then
-		python_set_active_version 2
-		python_pkg_setup
+		python-single-r1_pkg_setup
 	fi
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if [[ "${PV}" == "9999" ]]; then
 		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
@@ -104,35 +107,71 @@ src_configure() {
 		-DLIB_SUFFIX=${libdir#lib}
 		-DMANUAL_REVISION=${KVIRC_GIT_REVISION}
 		-DMANUAL_SOURCES_DATE=${KVIRC_GIT_SOURCES_DATE//-/}
-		-DWANT_CRYPT=yes
-		-DWANT_ENV_FLAGS=yes
-		-DWANT_VERBOSE=yes
+		-DWANT_ENV_FLAGS=ON
+		-DWANT_VERBOSE=ON
 
-		-DWANT_AUDIOFILE=$(usex audiofile)
-		-DWANT_DCC_VIDEO=$(usex dcc_video)
-		-DWANT_DCC_VOICE=$(usex dcc_voice)
-		-DWANT_DEBUG=$(usex debug)
-		-DWANT_DOXYGEN=$(usex doc)
-		-DWANT_GETTEXT=$(usex nls)
-		-DWANT_GSM=$(usex gsm)
-		-DWANT_IPC=$(usex ipc)
-		-DWANT_IPV6=$(usex ipv6)
-		-DWANT_KDE=$(usex kde)
-		-DWANT_MEMORY_PROFILE=$(usex profile)
-		-DWANT_OGG_THEORA=$(usex theora)
-		-DWANT_OPENSSL=$(usex ssl)
-		-DWANT_OSS=$(usex oss)
-		-DWANT_PERL=$(usex perl)
-		-DWANT_PHONON=$(usex phonon)
-		-DWANT_PYTHON=$(usex python)
-		-DWANT_QTDBUS=$(usex dbus)
-		-DWANT_QTWEBKIT=$(usex webkit)
-		-DWANT_SPELLCHECKER=$(usex spell)
-		-DWANT_TRANSPARENCY=$(usex transparency)
+		-DWANT_CRYPT=ON
+		-DWANT_DCC_VOICE=ON
+		-DWANT_IPC=ON
+		-DWANT_IPV6=ON
+		-DWANT_TRANSPARENCY=ON
+
+		-DWANT_AUDIOFILE=$(usex audiofile ON OFF)
+		-DWANT_DCC_VIDEO=$(usex dcc_video ON OFF)
+		-DWANT_DEBUG=$(usex debug ON OFF)
+		-DWANT_DOXYGEN=$(usex doc ON OFF)
+		-DWANT_GETTEXT=$(usex nls ON OFF)
+		-DWANT_GSM=$(usex gsm ON OFF)
+		-DWANT_KDE=$(usex kde ON OFF)
+		-DWANT_MEMORY_PROFILE=$(usex profile ON OFF)
+		-DWANT_OGG_THEORA=$(usex theora ON OFF)
+		-DWANT_OPENSSL=$(usex ssl ON OFF)
+		-DWANT_OSS=$(usex oss ON OFF)
+		-DWANT_PERL=$(usex perl ON OFF)
+		-DWANT_PHONON=$(usex phonon ON OFF)
+		-DWANT_PYTHON=$(usex python ON OFF)
+		-DWANT_QTDBUS=$(usex dbus ON OFF)
+		-DWANT_QTWEBKIT=$(usex webkit ON OFF)
+		-DWANT_SPELLCHECKER=$(usex spell ON OFF)
 
 		# COMPILE_SVG_SUPPORT not used in source code.
-		-DWANT_QTSVG=no
+		-DWANT_QTSVG=OFF
 	)
+	if use python; then
+		mycmakeargs+=(
+			-DPython3_INCLUDE_DIR="$(python_get_includedir)"
+			-DPython3_LIBRARY="$(python_get_library_path)"
+		)
+	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+
+	if use doc; then
+		cmake_src_compile devdocs
+	fi
+}
+
+src_install() {
+	cmake_src_install
+
+	if use doc; then
+		(
+			docinto html
+			dodoc -r "${BUILD_DIR}/doc/api/html/"*
+		)
+	fi
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

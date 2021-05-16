@@ -1,6 +1,5 @@
-diff -urN gpscorrelate-1.6.1.old/Makefile gpscorrelate-1.6.1/Makefile
---- gpscorrelate-1.6.1.old/Makefile	2011-06-08 13:51:06.000000000 +0200
-+++ gpscorrelate-1.6.1/Makefile	2011-06-08 14:13:18.000000000 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -4,11 +4,15 @@
  
  COBJS    = main-command.o unixtime.o gpx-read.o correlate.o exif-gps.o
@@ -10,13 +9,13 @@ diff -urN gpscorrelate-1.6.1.old/Makefile gpscorrelate-1.6.1/Makefile
 -OFLAGS   = -Wall
 -override OFLAGS += $(shell pkg-config --libs libxml-2.0 gtk+-2.0) -lm -lexiv2
 -prefix   = /usr/local
-+CFLAGS += $(shell pkg-config --cflags libxml-2.0) -I/usr/include/exiv2
-+CXXFLAGS += $(shell pkg-config --cflags libxml-2.0) -I/usr/include/exiv2
-+CLIBS = $(shell pkg-config --libs libxml-2.0) -lm -lexiv2 -lstdc++
++CFLAGS += $(shell ${PKG_CONFIG} --cflags libxml-2.0) -I/usr/include/exiv2
++CXXFLAGS += $(shell ${PKG_CONFIG} --cflags libxml-2.0) -I/usr/include/exiv2
++CLIBS = $(shell ${PKG_CONFIG} --libs libxml-2.0) -lm -lexiv2 -lstdc++
 +ifdef BUILD_GUI
-+CXXFLAGS += $(shell pkg-config --cflags gtk+-2.0)
-+CFLAGS += $(shell pkg-config --cflags gtk+-2.0)
-+CLIBS += $(shell pkg-config --libs gtk+-2.0)
++CXXFLAGS += $(shell ${PKG_CONFIG} --cflags gtk+-2.0)
++CFLAGS += $(shell ${PKG_CONFIG} --cflags gtk+-2.0)
++CLIBS += $(shell ${PKG_CONFIG} --libs gtk+-2.0)
 +endif
 +prefix   ?= /usr/local
  bindir   = $(prefix)/bin

@@ -1,0 +1,7 @@
+diff -r -U1 python-xmp-toolkit-2.0.1.orig/test/test_exempi.py python-xmp-toolkit-2.0.1/test/test_exempi.py
+--- python-xmp-toolkit-2.0.1.orig/test/test_exempi.py	2014-03-09 19:42:07.000000000 +0700
++++ python-xmp-toolkit-2.0.1/test/test_exempi.py	2020-01-21 18:16:13.470778818 +0700
+@@ -539,2 +539,3 @@
+ 
++    @unittest.skip("Issue x1")
+     def test_single_namespace_single_path_leaf_names(self):

@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/779127
+
+commit 7f1fc516fbfb185e77b0acaab84a25b666a55e21
+Author: orbea <orbea@riseup.net>
+Date:   Mon Mar 29 11:50:45 2021 -0700
+
+    build: Fix undefined libm reference.
+
+diff --git a/configure.in b/configure.in
+index bd01480..63eb587 100644
+--- a/configure.in
++++ b/configure.in
+@@ -23,6 +23,9 @@ GNOME_COMPILE_WARNINGS(error)
+ DEPRECATED_FLAGS="-DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED"
+ AC_SUBST(DEPRECATED_FLAGS)
+ 
++AC_CHECK_LIBM
++AC_SUBST([LIBM])
++
+ PKG_CHECK_MODULES(DEP,
+     gtk+-2.0 >= 2.6.0)
+ AC_SUBST(DEP_CFLAGS)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 57c9f42..375dc44 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -41,7 +41,7 @@ libgtkimageview_la_SOURCES =        \
+ 	$(BUILT_SOURCES)	    \
+ 	$(libgtkimageview_headers)
+ 
+-libgtkimageview_la_LIBADD = $(DEP_LIBS)
++libgtkimageview_la_LIBADD = $(DEP_LIBS) $(LIBM)
+ libgtkimageview_la_LDFLAGS = -no-undefined
+ 
+ libgtkimageview_includedir = $(includedir)/gtkimageview

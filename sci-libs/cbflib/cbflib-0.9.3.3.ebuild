@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake-utils eutils flag-o-matic fortran-2 toolchain-funcs
+inherit cmake-utils flag-o-matic fortran-2 toolchain-funcs
 
 MY_P1="CBFlib-${PV}"
 #MY_P2="CBFlib_${PV}"
@@ -37,7 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-unbundle.patch
 )
 
-src_prepare(){
+src_prepare() {
 	rm -rf Py* drel* dRel* ply* || die
 
 	append-fflags -fno-range-check

@@ -1,12 +1,11 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-# Michael Haubenwallner <haubi@gentoo.org> (19 Apr 2016)
+# Michael Haubenwallner <haubi@gentoo.org> (2016-04-19)
 # We can not use xattrs by default in Prefix.
 USE="-xattr"
 
-# Jeremy Olexa <darkside@gentoo.org> (30 Jun 2009)
+# Jeremy Olexa <darkside@gentoo.org> (2009-06-30)
 # As of now, there does not exist a reliable working sandbox implementation on
 # any Gentoo Prefix platform. Lately, sandbox has caused *many* issues that
 # the Gentoo Prefix team has no time to fix and/or troubleshoot. see: bug 271424
@@ -17,7 +16,11 @@ USE="-xattr"
 #
 # If in the future, there does exist a working sandbox implementation then it
 # should be enabled on a per-profile basis only.
-FEATURES="${FEATURES} -sandbox"
+FEATURES="${FEATURES} -sandbox -usersandbox"
+
+# Prefix does not have user management and the security model does not apply.
+# Disable user* features by default.
+FEATURES="${FEATURES} -userpriv -userfetch -usersync"
 
 # this probably already is like this, but we assure that in prefix we
 # have a GNU userland

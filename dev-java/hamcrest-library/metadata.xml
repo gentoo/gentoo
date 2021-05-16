@@ -6,7 +6,6 @@
 		<name>Java</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">hamcrest</remote-id>
 		<remote-id type="github">hamcrest/</remote-id>
 	</upstream>
 </pkgmetadata>

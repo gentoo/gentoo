@@ -1,0 +1,50 @@
+--- ice-3.6.3/cpp/config/Make.rules.Linux~	2015-06-27 16:56:56.000000000 +0200
++++ ice-3.6.3/cpp/config/Make.rules.Linux	2015-06-27 17:23:45.810591931 +0200
+@@ -79,19 +79,6 @@
+         CXXARCHFLAGS	+= -mtune=v8 -pipe -Wno-deprecated -DICE_USE_MUTEX_SHARED
+     endif
+ 
+-    #
+-    # Only use multilib -m32/-m64 options for amd64 arch, x32 arch can also run
+-    # in amd64 macines but doesn't use multilib, in this case MACHINE_TYPE will
+-    # be x86_64 and HOST_ARCH x32.
+-    #
+-    ifeq ($(HOST_ARCH),amd64)
+-        ifeq ($(LP64),yes)
+-            CXXARCHFLAGS	+= -m64
+-        else
+-            CXXARCHFLAGS	+= -m32
+-        endif
+-    endif
+-
+     CXXFLAGS		+= $(CXXARCHFLAGS) -fvisibility=hidden -Wall -Werror -pthread
+ 
+     # If MAXWARN is set then enable extra warnings
+--- ice-3.6.3/config/Make.common.rules~	2015-06-23 17:30:20.000000000 +0200
++++ ice-3.6.3/config/Make.common.rules	2015-06-28 01:53:57.149666595 +0200
+@@ -101,25 +101,7 @@
+       ifeq ($(LP64),)
+           LP64      	= yes
+       endif
+-
+-      #
+-      # x86 binaries build on x86_64 machine use 32 binsuffix
+-      #
+-      ifneq ($(STATICLIBS),yes)
+-          ifneq ($(LP64),yes)
+-              binsuffix	= 32
+-          endif
+-      endif
+    endif
+-
+-   #
+-   # x86 builds uses 32 binsuffix
+-   #
+-   ifneq ($(STATICLIBS),yes)
+-	ifeq ($(findstring $(MACHINE_TYPE),i386 i486 i586 i686),$(MACHINE_TYPE))
+-	    binsuffix     = 32
+-	endif
+-    endif
+ endif
+ 
+ ifeq ($(CPP11),yes)

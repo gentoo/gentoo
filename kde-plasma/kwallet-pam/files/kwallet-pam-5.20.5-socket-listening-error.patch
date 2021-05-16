@@ -1,0 +1,44 @@
+From 06cd94634feb70dfa7e2f8695b97317cb2ebe44c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefano=20Alo=C3=A9?= <stefano.aloe2@gmail.com>
+Date: Sun, 17 Jan 2021 23:16:57 +0100
+Subject: [PATCH] Avoid socket listening error
+
+Closing all file descriptor above 3 is causing problem to socket() and listen(). Setting FD_CLOEXEC on them solves the problem and should have exactly the same behavior.
+
+BUG: 400929
+(cherry picked from commit 8f899902e6a3be8ad4948eb1ebdf679186aa20a7)
+---
+ pam_kwallet.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pam_kwallet.c b/pam_kwallet.c
+index 2585a68..a099872 100644
+--- a/pam_kwallet.c
++++ b/pam_kwallet.c
+@@ -21,6 +21,7 @@
+ #include <stdio.h>
+ #include <signal.h>
+ #include <unistd.h>
++#include <fcntl.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <errno.h>
+@@ -355,12 +356,13 @@ static int drop_privileges(struct passwd *userInfo)
+ static void execute_kwallet(pam_handle_t *pamh, struct passwd *userInfo, int toWalletPipe[2], char *fullSocket)
+ {
+     //In the child pam_syslog does not work, using syslog directly
++
+     //keep stderr open so socket doesn't returns us that fd
+     int x = 3;
+-    //Close fd that are not of interest of kwallet
++    //Set FD_CLOEXEC on fd that are not of interest of kwallet
+     for (; x < 64; ++x) {
+         if (x != toWalletPipe[0]) {
+-            close (x);
++            fcntl(x, F_SETFD, FD_CLOEXEC);
+         }
+     }
+ 
+-- 
+GitLab
+

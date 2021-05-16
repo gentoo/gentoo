@@ -4,7 +4,6 @@
 <maintainer type="person">
 	<email>swegener@gentoo.org</email>
 	<name>Sven Wegener</name>
-	<description>Primary Maintainer</description>
 </maintainer>
 <longdescription>
 With a small codebase, the PowerDNS Recursor is an advanced recursor currently
@@ -15,4 +14,9 @@ caches server performance and timeouts, making it both network and user friendly
 It also has built-in hooks for making graphs with rrdtool, providing insight into
 nameserver performance.
 </longdescription>
+<use>
+	<flag name="dnstap">Enable support for dnstap</flag>
+	<flag name="protobuf">Enable support for <pkg>dev-libs/protobuf</pkg>.</flag>
+	<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
+</use>
 </pkgmetadata>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>honza.breuer@gmail.com</email>
 		<name>Jan Breuer</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -19,6 +19,6 @@
 		<flag name="slave-only">Enable slave only operation (remove master mode functionality)</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">ptpd</remote-id>
+		<remote-id type="github">ptpd/ptpd</remote-id>
 	</upstream>
 </pkgmetadata>

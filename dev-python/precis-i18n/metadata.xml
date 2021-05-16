@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		PRECIS-i18n: Internationalized Usernames and Passwords
+
+		This module implements the PRECIS Framework as described in:
+
+		PRECIS Framework: Preparation, Enforcement, and Comparison of Internationalized Strings in Application Protocols (RFC 8264)
+		Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords (RFC 8265)
+		Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames (RFC 8266)
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/byllyfish/precis_i18n/issues</bugs-to>
+		<remote-id type="github">byllyfish/precis_i18n</remote-id>
+		<remote-id type="pypi">precis-i18n</remote-id>
+	</upstream>
+</pkgmetadata>

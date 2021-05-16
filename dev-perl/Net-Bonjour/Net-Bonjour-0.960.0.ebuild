@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -11,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Module for DNS service discovery (Apple's Bonjour)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="test examples"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Net-DNS-0.500.0

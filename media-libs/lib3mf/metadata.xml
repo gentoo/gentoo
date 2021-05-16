@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+	<email>waebbl-gentoo@posteo.net</email>
+	<name>Bernd Waibel</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+	Implementation of the 3MF manufacturing file standard from the 3MF
+	consortium.
+	It provides reading and writing capabilities for 3MF files, as well
+	as conversion and validation tools for input and output data.
+</longdescription>
+<use>
+	<flag name="system-act">
+		Use system-provided <pkg>dev-go/act</pkg> as code generator
+		instead of package provided binaries. This flag will be removed
+		after some time used for testing!
+	</flag>
+</use>
+<upstream>
+	<remote-id type="github">3MFConsortium/lib3mf</remote-id>
+</upstream>
+</pkgmetadata>

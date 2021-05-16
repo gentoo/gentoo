@@ -1,0 +1,17 @@
+diff -ur gmpy2-2.0.8.orig/src/gmpy.h gmpy2-2.0.8/src/gmpy.h
+--- gmpy2-2.0.8.orig/src/gmpy.h	2018-04-03 22:44:35.494621951 -0700
++++ gmpy2-2.0.8/src/gmpy.h	2018-04-03 22:45:33.580835296 -0700
+@@ -129,8 +129,13 @@
+ #ifndef BITS_PER_UI
+ /* Assume we are NOT using MPIR > 2.5. */
+ #define BITS_PER_UI         BITS_PER_ULONG
++#if defined(__mips__) && (_MIPS_SIM == _ABIN32)
++typedef unsigned long long  mpir_ui;
++typedef long long           mpir_si;
++#else
+ typedef unsigned long       mpir_ui;
+ typedef long                mpir_si;
++#endif
+ #define mpz_fits_si_p       mpz_fits_slong_p
+ #define mpz_fits_ui_p       mpz_fits_ulong_p
+ #endif

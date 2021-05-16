@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription>
+    This package facilitates the creation and rendering of graph
+    descriptions in the DOT language of the Graphviz graph drawing
+    software (repo) from Python.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">graphviz</remote-id>
+  </upstream>
+</pkgmetadata>

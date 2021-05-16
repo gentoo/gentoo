@@ -5,9 +5,6 @@
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
   </maintainer>
-  <longdescription lang="en">
-The Linux version of the popular german cardgame "Doppelkopf"
-</longdescription>
   <use>
     <flag name="kdecards">Install the KDE card set</flag>
     <flag name="net">Enable network game support</flag>

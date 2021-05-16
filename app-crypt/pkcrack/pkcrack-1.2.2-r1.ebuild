@@ -1,59 +1,55 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="PkZip cipher breaker"
-HOMEPAGE="http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html"
-SRC_URI="http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/${P}.tar.gz"
+HOMEPAGE="https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html"
+SRC_URI="https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/${P}.tar.gz"
 
 LICENSE="pkcrack"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="test? ( app-arch/zip[crypt] )"
 RDEPEND="!<app-text/html-xml-utils-5.3"
+BDEPEND="test? ( app-arch/zip[crypt] )"
 
-src_prepare() {
-	cd "${S}/src"
-	sed -i -e "s/^CC=.*/CC=$(tc-getCC)/" \
-		-e "/^CFLAGS=.*/d" \
-		-e "s/CFLAGS/LDFLAGS/" \
-		Makefile
-	sed -i -e "s:void main:int main:" *.c
-}
+DOCS=(
+	doc/KNOWN_BUGS
+	doc/appnote.iz.txt
+	doc/README.W32
+	doc/pkzip.ps.gz
+	doc/CHANGES
+	doc/LIESMICH
+	doc/README.html
+	doc/README
+)
+
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
 
 src_compile() {
-	cd "${S}/src"
-	emake
+	cd src
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" all
 }
 
 src_test() {
-	cd "${S}/test"
-	make CC="$(tc-getCC)" all
+	cd test
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${LDFLAGS}" all
 }
 
 src_install() {
-	cd "${S}/src"
+	einstalldocs
+	cd src
 	dobin pkcrack zipdecrypt findkey makekey
-	newbin extract "$PN-extract"
-	dodoc "${S}/doc/"*
+	newbin extract "${PN}-extract"
 }
 
 pkg_postinst() {
-	elog "Author DEMANDS :-) a postcard be sent to:"
-	elog
-	elog "    Peter Conrad"
-	elog "    Am Heckenberg 1"
-	elog "    56727 Mayen"
-	elog "    Germany"
-	elog
-	elog "See: http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-readme.html"
-
-	ewarn
-	ewarn "Due to file collision, extract utility was renamed to $PN-extract,"
+	ewarn "Due to file collision, extract utility was renamed to ${PN}-extract,"
 	ewarn "see bug#247394"
 }

@@ -1,0 +1,27 @@
+#!/sbin/openrc-run
+# Copyright 2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="serf agent"
+extra_started_commands="reload"
+group=${group:-${RC_SVCNAME}}
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+
+command="/usr/bin/${RC_SVCNAME}"
+command_args="agent ${command_args:-config-dir=/etc/serf.d}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
+	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+stopsig="SIGINT"
+
+depend() {
+	need net
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	${command} reload
+	eend $?
+}

@@ -1,0 +1,33 @@
+From 983f0451ed25c755da670a682703ae8f7795782b Mon Sep 17 00:00:00 2001
+From: John Vandenberg <jayvdb@gmail.com>
+Date: Wed, 4 Dec 2019 10:44:14 +0700
+Subject: [PATCH] Update tests for test-server 0.0.31
+
+Closes https://github.com/Anorov/PySocks/issues/117
+---
+ requirements_dev.txt | 2 +-
+ test/test_pysocks.py | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/test_pysocks.py b/test/test_pysocks.py
+index 49893b2..03d2649 100644
+--- a/test/test_pysocks.py
++++ b/test/test_pysocks.py
+@@ -79,8 +79,7 @@ def setUpClass(cls):
+         from test_server import TestServer
+ 
+         cls.test_server = TestServer(address=TEST_SERVER_HOST,
+-                                     port=TEST_SERVER_PORT,
+-                                     engine='subprocess')
++                                     port=TEST_SERVER_PORT)
+         cls.test_server.start()
+ 
+     @classmethod
+@@ -112,6 +111,7 @@ def assert_proxy_response(self, resp_data, content, address,
+                          self.test_server.request['headers']['user-agent'])
+         self.assertEqual('%s:%d' % address,
+                          self.test_server.request['headers']['host'])
++        content = b'3\r\n' + content + b'\r\n0'
+         self.assertEqual(content, resp_body)
+         self.assertEqual(client_ip or PROXY_HOST_IP,
+                          self.test_server.request['client_ip'])

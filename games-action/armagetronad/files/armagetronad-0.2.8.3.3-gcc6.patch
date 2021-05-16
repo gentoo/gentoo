@@ -1,0 +1,222 @@
+Bug: https://bugs.gentoo.org/show_bug.cgi?id=617768
+Commit: https://sourceforge.net/p/armagetronad/code/10845/
+
+--- a/src/engine/eNetGameObject.cpp
++++ b/src/engine/eNetGameObject.cpp
+@@ -85,7 +85,7 @@
+ eNetGameObject::eNetGameObject(eGrid *grid, const eCoord &pos,const eCoord &dir,
+                                ePlayerNetID* p,bool autodelete)
+         :eGameObject(grid, pos,dir,NULL,autodelete),
+-nNetObject(p->Owner()),player(p){
++         nNetObject(Owner(p)),player(p){
+     lastClientsideAction=0;
+     if (sn_GetNetState()!=nCLIENT)
+         RequestSync();
+@@ -205,7 +205,7 @@
+ 
+ void eNetGameObject::SetPlayer(ePlayerNetID* a_player)
+ {
+-    tASSERT( !a_player || Owner() == player->Owner() );
++    tASSERT( !a_player || Owner() == Owner(player) );
+     player  = a_player;
+     if ( laggometerSmooth == 0 && sn_GetNetState() != nCLIENT )
+         laggometerSmooth = laggometer = se_GetPing( player );
+--- a/src/engine/ePlayer.cpp
++++ b/src/engine/ePlayer.cpp
+@@ -56,6 +56,7 @@
+ #include "nConfig.h"
+ #include "nNetwork.h"
+ #include <time.h>
++#include <climits>
+ 
+ int se_lastSaidMaxEntries = 8;
+ 
+@@ -1689,9 +1690,9 @@
+         // foo (Red Team) --> Blue Team: some message here
+         eTeam *senderTeam = sender->CurrentTeam();
+         console << tColoredString::ColorString(1,1,.5) << " (";
+-        console << *senderTeam;
++        console << senderTeam;
+         console << tColoredString::ColorString(1,1,.5) << ") --> ";
+-        console << *team;
++        console << team;
+     }
+ 
+     console << tColoredString::ColorString(1,1,.5) << ": ";
+@@ -1923,7 +1924,7 @@
+         else {
+             eTeam *senderTeam = sender->CurrentTeam();
+             say << tColoredString::ColorString(1,1,.5) << " (";
+-            say << *team;
++            say << team;
+             say << tColoredString::ColorString(1,1,.5) << " ) --> ";
+             say << senderTeam;
+         }
+@@ -3941,7 +3942,7 @@
+     sg_ClampPingCharity( ::pingCharity );
+ }
+ 
+-static int IMPOSSIBLY_LOW_SCORE=(-1 << 31);
++static int IMPOSSIBLY_LOW_SCORE=INT_MIN;
+ 
+ static nSpamProtectionSettings se_chatSpamSettings( 1.0f, "SPAM_PROTECTION_CHAT", tOutput("$spam_protection") );
+ 
+--- a/src/engine/eTeam.cpp
++++ b/src/engine/eTeam.cpp
+@@ -31,20 +31,21 @@
+ #include "nConfig.h"
+ 
+ #include <set>
++#include <climits>
+ 
+-tString & operator << ( tString &s, const eTeam & team)
++tString & operator << ( tString &s, const eTeam * team)
+ {
+-    if ( !(&team) )
++    if ( !team )
+         return s << tOutput("$player_spectator_message");
+     else
+-        return s << team.GetColoredName();
++        return s << team->GetColoredName();
+ }
+-std::ostream & operator << ( std::ostream &s, const eTeam & team)
++std::ostream & operator << ( std::ostream &s, const eTeam * team)
+ {
+-    if ( !(&team) )
++    if ( !team )
+         return s << tOutput("$player_spectator_message");
+     else
+-        return s << team.GetColoredName();
++        return s << team->GetColoredName();
+ }
+ 
+ #define TEAMCOLORS 8
+@@ -75,7 +76,7 @@
+ // static tList<eTeam> se_ColoredTeams;
+ static eTeam * se_ColoredTeams[TEAMCOLORS]={0,0,0,0,0,0,0,0};
+ 
+-static int IMPOSSIBLY_LOW_SCORE=(-1 << 31);
++static int IMPOSSIBLY_LOW_SCORE=INT_MIN;
+ 
+ // class that creates config items for one team
+ // TEAM_(NAME|RED|GREEN|BLUE)_X
+--- a/src/engine/eTeam.h
++++ b/src/engine/eTeam.h
+@@ -32,8 +32,8 @@
+ #include "nNetObject.h"
+ #include "tList.h"
+ 
+-tString & operator << ( tString&, const eTeam&);
+-std::ostream & operator << ( std::ostream&, const eTeam&);
++tString & operator << ( tString&, const eTeam*);
++std::ostream & operator << ( std::ostream&, const eTeam*);
+ 
+ template<class T> class nConfItem;
+ 
+--- a/src/network/nNetObject.h
++++ b/src/network/nNetObject.h
+@@ -128,7 +128,16 @@
+ 
+     virtual void Dump( tConsole& con ); // dumps object stats
+ 
++    static unsigned short ID(nNetObject const *pThis)
++    {
++        if (pThis)
++            return pThis->id;
++        else
++            return 0;
++    }
++
+     unsigned short ID() const{
++        tASSERT(this);
+         if (this)
+             return id;
+         else
+@@ -135,7 +144,16 @@
+             return 0;
+     }
+ 
++    static unsigned short Owner(nNetObject const *pThis)
++    {
++        if (pThis)
++            return pThis->owner;
++        else
++            return ::sn_myNetID;
++    }
++
+     unsigned short Owner() const{
++        tASSERT(this);
+         if (this)
+             return owner;
+         else
+--- a/src/tools/tLocale.cpp
++++ b/src/tools/tLocale.cpp
+@@ -731,6 +731,13 @@
+ 
+ // and a special implementation for the locales and strings:
+ tOutput& operator << (tOutput &o, const char *locale){
++    return o.AddString(locale);
++}
++
++tOutput & tOutput::AddString(char const * locale)
++{
++    tOutput & o = *this;
++
+     int len = strlen(locale);
+     if (len == 0)
+         return o;
+--- a/src/tools/tLocale.h
++++ b/src/tools/tLocale.h
+@@ -81,7 +81,7 @@
+ 
+     tOutputItemBase *anchor;
+ 
+-    tOutput& operator << (const tOutput &o);
++    // tOutput& operator << (const tOutput &o);
+ public:
+     tOutput();
+     ~tOutput();
+@@ -91,6 +91,7 @@
+     void AddLiteral(const char *);       // adds a language independent string
+     void AddLocale(const char *);        // adds a language dependant string
+     void AddSpace();                     // adds a simple space
++    tOutput & AddString(char const * pString); // checks the string, delegates to correct Add...()-Function
+ 
+     // set a template parameter at this position of the output string
+     tOutput & SetTemplateParameter(int num, const char *parameter);
+@@ -113,7 +114,7 @@
+ 
+         SetTemplateParameter(1, template1);
+ 
+-        *this << identifier;
++        AddString(identifier);
+     }
+ 
+     template< class T1, class T2 >
+@@ -125,7 +126,7 @@
+         SetTemplateParameter(1, template1);
+         SetTemplateParameter(2, template2);
+ 
+-        *this << identifier;
++        AddString(identifier);
+     }
+ 
+     template< class T1, class T2, class T3 >
+@@ -138,7 +139,7 @@
+         SetTemplateParameter(2, template2);
+         SetTemplateParameter(3, template3);
+ 
+-        *this << identifier;
++        AddString(identifier);
+     }
+ 
+     template< class T1, class T2, class T3, class T4 >
+@@ -152,7 +153,7 @@
+         SetTemplateParameter(3, template3);
+         SetTemplateParameter(4, template4);
+ 
+-        *this << identifier;
++        AddString(identifier);
+     }
+ 
+     tOutput(const tOutput &o); // copy constructor

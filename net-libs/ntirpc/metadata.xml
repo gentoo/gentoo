@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+</maintainer>
+<use>
+	<flag name="gssapi">Include support for RPCSEC GSS</flag>
+	<flag name="rdma">Include support for RDMA RPC</flag>
+</use>
+<upstream>
+	<remote-id type="github">nfs-ganesha/ntirpc</remote-id>
+</upstream>
+</pkgmetadata>

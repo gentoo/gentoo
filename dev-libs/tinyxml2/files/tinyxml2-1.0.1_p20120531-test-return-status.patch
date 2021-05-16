@@ -1,9 +1,0 @@
---- tinyxml2-1.0.1_p20120531/xmltest.cpp
-+++ tinyxml2-1.0.1_p20120531/xmltest.cpp
-@@ -895,5 +895,5 @@
- 	#endif
- 
- 	printf ("\nPass %d, Fail %d\n", gPass, gFail);
--	return 0;
-+	return gFail;
- }

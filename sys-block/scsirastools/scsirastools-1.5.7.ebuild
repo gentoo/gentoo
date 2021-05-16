@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit autotools eutils
+inherit autotools epatch
 
 DESCRIPTION="Serviceability for SCSI Disks and Arrays"
 HOMEPAGE="http://scsirastools.sourceforge.net/"

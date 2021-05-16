@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-inherit toolchain-funcs flag-o-matic eutils multilib
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Run-time filter design and execution library"
 HOMEPAGE="http://uazu.net/fidlib/"
@@ -12,7 +11,11 @@ SRC_URI="http://uazu.net/fidlib/${P}.tgz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-extern.patch
+)
 
 doecho() {
 	echo "$@"
@@ -20,7 +23,7 @@ doecho() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-extern.patch
+	default
 
 	# Avoid ICE under gcc-4.6, fixed in 4.6.3
 	if [[ $(gcc-version) == "4.6" && $(gcc-micro-version) -le 2 ]] ; then

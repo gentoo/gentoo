@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit autotools ltprune
 
 DESCRIPTION="A collection of powerful tools for manipulating EPROM load files"
 HOMEPAGE="http://srecord.sourceforge.net/"
@@ -14,6 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libgcrypt:0"
 DEPEND="${RDEPEND}
@@ -21,16 +21,17 @@ DEPEND="${RDEPEND}
 	sys-apps/groff
 	test? ( app-arch/sharutils )"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.57-libtool.patch )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.57-libtool.patch
+	default
 
 	cp etc/configure.ac "${S}"
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
 src_install() {

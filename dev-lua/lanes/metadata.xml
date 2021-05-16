@@ -5,9 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<longdescription lang="en">
-		lightweight, native, lazy evaluating multithreading library for Lua-5.1 or 5.2.
-	</longdescription>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">LuaLanes/lanes</remote-id>
 	</upstream>

@@ -1,0 +1,30 @@
+Fix building with C++14, which errors out due to collisions with internal abs() function.
+See also: https://bugs.gentoo.org/show_bug.cgi?id=594372
+ 
+--- a/libGenome/gnDefs.h
++++ b/libGenome/gnDefs.h
+@@ -175,13 +175,6 @@
+ 
+ #define CONTIG_SECTION_SIZE 3
+ 
+-// some compilers don't have abs() for 64 bit ints
+-#if (defined(__GNUG__) && ( __GNUC__ <= 2 )) || defined(__INTEL_COMPILER) || (defined _MSC_VER && defined __cplusplus)
+-
+-int64 abs( int64 a );
+-
+-#endif
+-
+ #ifdef __cplusplus
+ namespace genome {
+ #endif
+--- a/libGenome/Makefile.am
++++ b/libGenome/Makefile.am
+@@ -29,7 +29,7 @@
+ gnGenomeSpec.cpp  gnLocation.cpp  \
+ gnRAWSource.cpp gnBaseFeature.cpp gnSEQSource.cpp gnSequence.cpp \
+ gnContigSpec.cpp gnSourceHeader.cpp gnException.cpp \
+-gnFastTranslator.cpp gnPosSpecificTranslator.cpp gnDefs.cpp
++gnFastTranslator.cpp gnPosSpecificTranslator.cpp
+ 
+ library_includedir=$(includedir)/$(GENERIC_LIBRARY_NAME)-$(GENERIC_API_VERSION)/$(GENERIC_LIBRARY_NAME)
+ 

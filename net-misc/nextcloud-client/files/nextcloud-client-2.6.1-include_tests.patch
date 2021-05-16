@@ -1,0 +1,22 @@
+From f9c6449c050cad673cf37971d9815a35e6ffb5dd Mon Sep 17 00:00:00 2001
+From: tuxmaster5000 <837503+tuxmaster5000@users.noreply.github.com>
+Date: Fri, 12 Oct 2018 15:56:26 +0200
+Subject: [PATCH] Fix include file
+
+---
+ test/testnextcloudpropagator.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/testnextcloudpropagator.cpp b/test/testnextcloudpropagator.cpp
+index 6ad1a6b37..dc2e476ad 100644
+--- a/test/testnextcloudpropagator.cpp
++++ b/test/testnextcloudpropagator.cpp
+@@ -8,7 +8,7 @@
+ #include <QDebug>
+ 
+ #include "propagatedownload.h"
+-#include "nextcloudpropagator_p.h"
++#include "owncloudpropagator_p.h"
+ 
+ using namespace OCC;
+ namespace OCC {

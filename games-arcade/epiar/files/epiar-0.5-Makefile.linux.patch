@@ -1,5 +1,5 @@
---- Makefile.linux.old	2007-04-05 16:42:30 +0000
-+++ Makefile.linux	2007-04-05 16:42:47 +0000
+--- a/Makefile.linux
++++ b/Makefile.linux
 @@ -24,7 +24,7 @@
  	@echo Building Epiar 0.5.0 ...
  	@$(CC) $(CFLAGS) -I/usr/X11R6/lib/ $(OBJS) -o epiar $(LIBS)

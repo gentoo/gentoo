@@ -1,33 +1,37 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
 
-DESCRIPTION="drop-in replacement for cdialog using GTK"
+inherit autotools
+
+DESCRIPTION="Drop-in replacement for cdialog using GTK"
 HOMEPAGE="http://xdialog.free.fr/"
 SRC_URI="http://${PN}.free.fr/Xdialog-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ppc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc x86"
 IUSE="doc examples nls"
 
 RDEPEND="
 	dev-libs/glib:2
 	>=x11-libs/gtk+-2.2:2
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 
-S=${WORKDIR}/${P/x/X}
+S="${WORKDIR}/${P/x/X}"
+
+DOCS=( AUTHORS BUGS ChangeLog README )
+
+PATCHES=( "${FILESDIR}"/${P}-{no-strip,install}.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-{no-strip,install}.patch
+	default
 	eautoreconf
 }
 
@@ -39,14 +43,13 @@ src_configure() {
 
 src_install() {
 	default
-	rm -rf "${D}"/usr/share/doc
 
-	dodoc AUTHORS BUGS ChangeLog README
-
-	use doc && dohtml -r doc/
+	rm -r "${D}"/usr/share/doc || die
+	use doc && local HTML_DOCS=( doc/. )
+	einstalldocs
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
+		insinto "/usr/share/doc/${PF}/examples"
 		doins samples/*
 	fi
 }

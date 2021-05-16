@@ -1,0 +1,28 @@
+libdb: link against libintl
+
+necessary since gettext is used for translations
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+
+--- a/libdb/Makefile.am
++++ b/libdb/Makefile.am
+@@ -43,7 +43,7 @@
+ 	db_xdbm.h \
+ 	mydbm.h
+ 
+-libmandb_la_LIBADD = ../lib/libman.la $(DBLIBS)
++libmandb_la_LIBADD = ../lib/libman.la $(DBLIBS) $(LIBINTL)
+ 
+ libmandb_la_LDFLAGS = \
+ 	-avoid-version -release $(VERSION) -rpath $(pkglibdir) -no-undefined
+--- a/libdb/Makefile.in
++++ b/libdb/Makefile.in
+@@ -1541,7 +1541,7 @@
+ 	db_xdbm.h \
+ 	mydbm.h
+ 
+-libmandb_la_LIBADD = ../lib/libman.la $(DBLIBS)
++libmandb_la_LIBADD = ../lib/libman.la $(DBLIBS) $(LIBINTL)
+ libmandb_la_LDFLAGS = \
+ 	-avoid-version -release $(VERSION) -rpath $(pkglibdir) -no-undefined
+ 

@@ -1,0 +1,12 @@
+. {
+    loop
+
+    bind 127.0.0.1 ::1
+
+    health 127.0.0.1:8092
+    log
+    errors
+    cache 600
+
+    #forward . tls://9.9.9.9
+}

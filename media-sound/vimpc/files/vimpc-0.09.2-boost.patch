@@ -1,0 +1,217 @@
+From 300fe8890c8f93e01c445e4df6c3b1414a6115ba Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Fri, 26 Jul 2019 03:26:22 +0300
+Subject: [PATCH] Fix building with boost (#87)
+
+Upstream-Status: Submitted
+[https://github.com/boysetsfrog/vimpc/pull/88]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ configure.ac             |   3 +-
+ m4/m4_ax_boost_chrono.m4 | 118 +++++++++++++++++++++++++++++++++++++++
+ src/clientstate.cpp      |   4 +-
+ src/clientstate.hpp      |   2 +-
+ src/compiler.hpp         |   4 ++
+ 5 files changed, 127 insertions(+), 4 deletions(-)
+ create mode 100644 m4/m4_ax_boost_chrono.m4
+
+diff --git a/configure.ac b/configure.ac
+index c53c555..5e0b618 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -57,6 +57,7 @@ if test "x$enable_boost" = "xyes"; then
+ AC_DEFINE_UNQUOTED(BOOST_SUPPORT, "1", "Define to 1 if boost support enabled")
+ 
+ AX_BOOST_BASE([], [], [AC_MSG_ERROR(vimpc requires boost library)])
++AX_BOOST_CHRONO([], [], [AC_MSG_ERROR(vimpc requires boost chrono library)])
+ AX_BOOST_SYSTEM([], [], [AC_MSG_ERROR(vimpc requires boost system library)])
+ AX_BOOST_THREAD([], [], [AC_MSG_ERROR(vimpc requires boost thread library)])
+ 
+@@ -73,7 +74,7 @@ AC_CHECK_HEADER(boost/function.hpp,
+                 [AC_MSG_ERROR(boost-dev library is required)])
+ 
+ CPPFLAGS="$CPPFLAGS -DUSE_BOOST_THREAD -DUSE_BOOST_FUNCTIONAL -DUSE_BOOST_FOREACH"
+-LIBS="$LIBS $BOOST_SYSTEM_LIB $BOOST_THREAD_LIB"
++LIBS="$LIBS $BOOST_CHRONO_LIB $BOOST_SYSTEM_LIB $BOOST_THREAD_LIB"
+ 
+ AC_MSG_CHECKING([whether compiler supports lambda functions])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <boost/function.hpp>]], [[int a = 5; boost::function<int(int)> f = [&a](int b) { return a + b; }; f(8);]])],
+diff --git a/m4/m4_ax_boost_chrono.m4 b/m4/m4_ax_boost_chrono.m4
+new file mode 100644
+index 0000000..6ea77b9
+--- /dev/null
++++ b/m4/m4_ax_boost_chrono.m4
+@@ -0,0 +1,118 @@
++# ===========================================================================
++#     https://www.gnu.org/software/autoconf-archive/ax_boost_chrono.html
++# ===========================================================================
++#
++# SYNOPSIS
++#
++#   AX_BOOST_CHRONO
++#
++# DESCRIPTION
++#
++#   Test for Chrono library from the Boost C++ libraries. The macro requires
++#   a preceding call to AX_BOOST_BASE. Further documentation is available at
++#   <http://randspringer.de/boost/index.html>.
++#
++#   This macro calls:
++#
++#     AC_SUBST(BOOST_CHRONO_LIB)
++#
++#   And sets:
++#
++#     HAVE_BOOST_CHRONO
++#
++# LICENSE
++#
++#   Copyright (c) 2012 Xiyue Deng <manphiz@gmail.com>
++#
++#   Copying and distribution of this file, with or without modification, are
++#   permitted in any medium without royalty provided the copyright notice
++#   and this notice are preserved. This file is offered as-is, without any
++#   warranty.
++
++#serial 4
++
++AC_DEFUN([AX_BOOST_CHRONO],
++[
++	AC_ARG_WITH([boost-chrono],
++	AS_HELP_STRING([--with-boost-chrono@<:@=special-lib@:>@],
++                   [use the Chrono library from boost - it is possible to specify a certain library for the linker
++                        e.g. --with-boost-chrono=boost_chrono-gcc-mt ]),
++        [
++        if test "$withval" = "no"; then
++			want_boost="no"
++        elif test "$withval" = "yes"; then
++            want_boost="yes"
++            ax_boost_user_chrono_lib=""
++        else
++		    want_boost="yes"
++		ax_boost_user_chrono_lib="$withval"
++		fi
++        ],
++        [want_boost="yes"]
++	)
++
++	if test "x$want_boost" = "xyes"; then
++        AC_REQUIRE([AC_PROG_CC])
++        AC_REQUIRE([AC_CANONICAL_BUILD])
++		CPPFLAGS_SAVED="$CPPFLAGS"
++		CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
++		export CPPFLAGS
++
++		LDFLAGS_SAVED="$LDFLAGS"
++		LDFLAGS="$LDFLAGS $BOOST_LDFLAGS"
++		export LDFLAGS
++
++        AC_CACHE_CHECK(whether the Boost::Chrono library is available,
++					   ax_cv_boost_chrono,
++        [AC_LANG_PUSH([C++])
++			 CXXFLAGS_SAVE=$CXXFLAGS
++
++			 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[@%:@include <boost/chrono.hpp>]],
++                                   [[boost::chrono::system_clock::time_point* time = new boost::chrono::system_clock::time_point; delete time;]])],
++                   ax_cv_boost_chrono=yes, ax_cv_boost_chrono=no)
++			 CXXFLAGS=$CXXFLAGS_SAVE
++             AC_LANG_POP([C++])
++		])
++		if test "x$ax_cv_boost_chrono" = "xyes"; then
++			AC_SUBST(BOOST_CPPFLAGS)
++
++			AC_DEFINE(HAVE_BOOST_CHRONO,,[define if the Boost::Chrono library is available])
++            BOOSTLIBDIR=`echo $BOOST_LDFLAGS | sed -e 's/@<:@^\/@:>@*//'`
++
++			LDFLAGS_SAVE=$LDFLAGS
++            if test "x$ax_boost_user_chrono_lib" = "x"; then
++                for libextension in `ls $BOOSTLIBDIR/libboost_chrono*.so* $BOOSTLIBDIR/libboost_chrono*.dylib* $BOOSTLIBDIR/libboost_chrono*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^lib\(boost_chrono.*\)\.so.*$;\1;' -e 's;^lib\(boost_chrono.*\)\.dylib.*$;\1;' -e 's;^lib\(boost_chrono.*\)\.a.*$;\1;'` ; do
++                     ax_lib=${libextension}
++				    AC_CHECK_LIB($ax_lib, exit,
++                                 [BOOST_CHRONO_LIB="-l$ax_lib"; AC_SUBST(BOOST_CHRONO_LIB) link_chrono="yes"; break],
++                                 [link_chrono="no"])
++				done
++                if test "x$link_chrono" != "xyes"; then
++                for libextension in `ls $BOOSTLIBDIR/boost_chrono*.dll* $BOOSTLIBDIR/boost_chrono*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^\(boost_chrono.*\)\.dll.*$;\1;' -e 's;^\(boost_chrono.*\)\.a.*$;\1;'` ; do
++                     ax_lib=${libextension}
++				    AC_CHECK_LIB($ax_lib, exit,
++                                 [BOOST_CHRONO_LIB="-l$ax_lib"; AC_SUBST(BOOST_CHRONO_LIB) link_chrono="yes"; break],
++                                 [link_chrono="no"])
++				done
++                fi
++
++            else
++               for ax_lib in $ax_boost_user_chrono_lib boost_chrono-$ax_boost_user_chrono_lib; do
++				      AC_CHECK_LIB($ax_lib, exit,
++                                   [BOOST_CHRONO_LIB="-l$ax_lib"; AC_SUBST(BOOST_CHRONO_LIB) link_chrono="yes"; break],
++                                   [link_chrono="no"])
++                  done
++
++            fi
++            if test "x$ax_lib" = "x"; then
++                AC_MSG_ERROR(Could not find a version of the library!)
++            fi
++			if test "x$link_chrono" = "xno"; then
++				AC_MSG_ERROR(Could not link against $ax_lib !)
++			fi
++		fi
++
++		CPPFLAGS="$CPPFLAGS_SAVED"
++	LDFLAGS="$LDFLAGS_SAVED"
++	fi
++])
+diff --git a/src/clientstate.cpp b/src/clientstate.cpp
+index 357dd6b..d00c981 100644
+--- a/src/clientstate.cpp
++++ b/src/clientstate.cpp
+@@ -223,10 +223,10 @@ ClientState::ClientState(Main::Vimpc * vimpc, Main::Settings & settings, Ui::Scr
+       Main::Vimpc::CreateEvent(Event::StatusUpdate, EData);
+    });
+ 
+-   updateThread_ = std::thread([this]() {
++   updateThread_ = Thread([this]() {
+       while (this->running_)
+       {
+-         std::this_thread::sleep_for(std::chrono::milliseconds(this->waitTime_));
++         ThisThread::sleep_for(Chrono::milliseconds(this->waitTime_));
+ 
+          if (this->newSong_)
+          {
+diff --git a/src/clientstate.hpp b/src/clientstate.hpp
+index 0bcbd5b..1983372 100644
+--- a/src/clientstate.hpp
++++ b/src/clientstate.hpp
+@@ -122,7 +122,7 @@ namespace Mpc
+       std::string             currentSongURI_;
+       std::string             currentState_;
+       std::string             lastTitleStr_;
+-      std::thread             updateThread_; 
++      Thread                  updateThread_;
+    };
+ }
+ 
+diff --git a/src/compiler.hpp b/src/compiler.hpp
+index 8a38c20..09472f8 100644
+--- a/src/compiler.hpp
++++ b/src/compiler.hpp
+@@ -47,6 +47,8 @@ typedef boost::mutex              Mutex;
+ typedef boost::recursive_mutex    RecursiveMutex;
+ typedef boost::condition_variable ConditionVariable;
+ #define Atomic(X) X
++#define Chrono boost::chrono
++#define ThisThread boost::this_thread
+ #define UniqueLock boost::unique_lock
+ 
+ template <typename T>
+@@ -60,6 +62,8 @@ typedef std::mutex                Mutex;
+ typedef std::recursive_mutex      RecursiveMutex;
+ typedef std::condition_variable   ConditionVariable;
+ #define Atomic(X) std::atomic<X>
++#define Chrono std::chrono
++#define ThisThread std::this_thread
+ #define UniqueLock std::unique_lock
+ 
+ template <typename T>
+-- 
+2.22.0
+

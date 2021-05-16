@@ -1,25 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit eutils autotools flag-o-matic
+inherit autotools epatch
 
 MY_PV="${PV//_beta/b}"
 MY_PV="${MY_PV/_p/p}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="An automated suite of programs for configuring and maintaining
-Unix-like computers"
+DESCRIPTION="An automated suite of programs for configuring and maintaining Unix-like computers"
 HOMEPAGE="http://www.cfengine.org/"
-SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="http://cfengine.package-repos.s3.amazonaws.com/tarballs/${MY_P}.tar.gz
+	masterfiles? ( http://cfengine.package-repos.s3.amazonaws.com/tarballs/masterfiles-${MY_PV}.tar.gz -> ${PN}-masterfiles-${MY_PV}.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="3"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="acl examples libvirt mysql postgres +qdbm selinux tokyocabinet vim-syntax xml"
+IUSE="acl examples libvirt mysql masterfiles postgres +qdbm selinux tokyocabinet vim-syntax xml"
 
 DEPEND="acl? ( virtual/acl )
 	mysql? ( virtual/mysql )
@@ -30,21 +29,27 @@ DEPEND="acl? ( virtual/acl )
 	libvirt? ( app-emulation/libvirt )
 	xml? ( dev-libs/libxml2:2  ) \
 	dev-libs/openssl
-	dev-libs/libpcre"
+	dev-libs/libpcre
+	net-libs/libnsl"
 RDEPEND="${DEPEND}"
 PDEPEND="vim-syntax? ( app-vim/cfengine-syntax )"
 
-REQUIRED_USE="qdbm? ( !tokyocabinet )
-	tokyocabinet? ( !qdbm )
-	!tokyocabinet? ( qdbm )
-	!qdbm? ( tokyocabinet )"
+REQUIRED_USE="^^ ( qdbm tokyocabinet )"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
 	epatch "${FILESDIR}/${P}-ifconfig.patch"
+	epatch "${FILESDIR}/${P}-sysmacros.patch"
 	eautoreconf
+}
+
+src_unpack() {
+	unpack ${MY_P}.tar.gz
+	if use masterfiles; then
+		unpack ${PN}-masterfiles-${MY_PV}.tar.gz
+	fi
 }
 
 src_configure() {
@@ -71,11 +76,11 @@ src_configure() {
 }
 
 src_install() {
-	newinitd "${FILESDIR}"/cf-serverd.rc6 cf-serverd || die
-	newinitd "${FILESDIR}"/cf-monitord.rc6 cf-monitord || die
-	newinitd "${FILESDIR}"/cf-execd.rc6 cf-execd || die
+	newinitd "${FILESDIR}"/cf-serverd.rc6 cf-serverd
+	newinitd "${FILESDIR}"/cf-monitord.rc6 cf-monitord
+	newinitd "${FILESDIR}"/cf-execd.rc6 cf-execd
 
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# fix ifconfig path in provided promises
 	find "${D}"/usr/share -name "*.cf" | xargs sed -i "s,/sbin/ifconfig,$(which ifconfig),g"
@@ -98,8 +103,16 @@ src_install() {
 	# binaries here. This is the default search location for the
 	# binaries.
 	for bin in promises agent monitord serverd execd runagent key; do
-		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin || die
+		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
 	done
+
+	if use masterfiles; then
+		insinto /var/cfengine
+		doins -r "${WORKDIR}/masterfiles"
+	fi
+
+	dodir /etc/env.d
+	echo 'CONFIG_PROTECT=/var/cfengine/masterfiles' >"${ED}/etc/env.d/99${PN}" || die
 }
 
 pkg_postinst() {

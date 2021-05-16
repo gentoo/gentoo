@@ -1,8 +1,9 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit edos2unix toolchain-funcs
 
 DESCRIPTION="A program to split non-css dvd vobs into individual chapters"
 HOMEPAGE="http://www.maven.de/code"
@@ -11,27 +12,25 @@ SRC_URI="http://files.digital-digest.com/downloads/files/encode/vStrip_${PV/./}.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-gentoo.patch
 	edos2unix *.c *.h
 
-	for file in *.c *.h ; do
-		echo >>$file
+	local f
+	for f in *.c *.h ; do
+		echo >> "${f}" || die
 	done
+
+	default
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -D__UNIX__" CC="$(tc-getCC)" || die "emake failed."
+	emake CFLAGS="${CFLAGS} -D__UNIX__" CC="$(tc-getCC)"
 }
 
 src_install() {

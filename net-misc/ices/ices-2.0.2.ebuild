@@ -1,18 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="Icecast OGG streaming client, supports on the fly re-encoding"
-HOMEPAGE="http://www.icecast.org/ices.php"
+HOMEPAGE="https://icecast.org/ices/"
 SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="dev-libs/libxml2

@@ -1,0 +1,20 @@
+From: "Matteo F. Vescovi" <mfv@debian.org>
+Date: Thu, 5 Nov 2015 15:26:00 +0100
+Subject: Fix_mp4tags_corruption
+
+---
+ util/mp4tags.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/util/mp4tags.cpp b/util/mp4tags.cpp
+index 1b9e866..80e89d4 100644
+--- a/util/mp4tags.cpp
++++ b/util/mp4tags.cpp
+@@ -539,6 +539,7 @@ extern "C" int
+                         else {
+                             fprintf( stderr, "Art file %s not found\n", tags[i] );
+                         }
++                        break;
+                     }
+                     case OPT_ALBUM_ARTIST:
+                         MP4TagsSetAlbumArtist( mdata, tags[i] );

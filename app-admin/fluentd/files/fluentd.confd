@@ -1,0 +1,2 @@
+# If  you need to pass any extra options to fluentd, set them here.
+#fluentd_opts=""

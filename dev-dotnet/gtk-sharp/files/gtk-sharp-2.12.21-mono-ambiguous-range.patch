@@ -1,0 +1,15 @@
+https://github.com/mono/gtk-sharp/commit/a00552ad68ae349e89e440dca21b86dbd6bccd30
+https://bugs.gentoo.org/697108
+--- a/sample/test/TestRange.cs	2012-09-25 14:19:02.000000000 -0700
++++ b/sample/test/TestRange.cs	2020-07-05 09:07:25.112932811 -0700
+@@ -10,6 +10,10 @@
+ 
+ using Gtk;
+ 
++// disambiguate, Gtk.Range vs System.Range
++using Range=Gtk.Range;
++
++
+ namespace WidgetViewer {
+ 
+ 	public class TestRange

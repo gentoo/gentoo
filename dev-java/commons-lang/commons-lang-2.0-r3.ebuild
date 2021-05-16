@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source test"
@@ -15,7 +14,7 @@ DEPEND=">=virtual/jdk-1.4
 RDEPEND=">=virtual/jre-1.4"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 S="${WORKDIR}/${P}-src"
@@ -27,7 +26,7 @@ java_prepare() {
 src_install() {
 	java-pkg_newjar dist/${P}.jar ${PN}.jar
 
-	dodoc RELEASE-NOTES.txt || die
+	dodoc RELEASE-NOTES.txt
 	java-pkg_dohtml DEVELOPERS-GUIDE.html PROPOSAL.html STATUS.html
 	use doc && java-pkg_dojavadoc dist/docs/api
 	use source && java-pkg_dosrc src/java/*

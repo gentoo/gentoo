@@ -1,22 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PLOCALES="ar ca cs de el en es fa fr he hu it ja ko nb nl pl pt_BR pt ru sr sv tr zh_CN zh_TW"
+PLOCALES="ar ca cs da de el en es fa fr hr hu it ja ko ms nb nl pl pt pt_BR ro ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
-WX_GTK_VER="3.0"
 
-inherit cmake-utils eutils l10n pax-utils toolchain-funcs versionator wxwidgets
+inherit cmake desktop xdg-utils l10n pax-utils
 
-if [[ ${PV} == 9999* ]]
+if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
+	EGIT_SUBMODULES=()
 	inherit git-r3
-	KEYWORDS=""
 else
-	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
+	inherit vcs-snapshot
+	commit=0dbe8fb2eaa608a6540df3d269648a596c29cf4b
+	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${commit}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -25,36 +25,33 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa ao bluetooth doc egl +evdev ffmpeg llvm log lto openal +pch portaudio profile pulseaudio qt5 sdl upnp +wxwidgets"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan"
 
-RDEPEND=">=media-libs/libsfml-2.1
-	>net-libs/enet-1.3.7
-	>=net-libs/mbedtls-2.1.1
-	dev-libs/lzo
-	media-libs/libpng:=
-	sys-libs/glibc
-	sys-libs/readline:=
-	sys-libs/zlib
+RDEPEND="
+	dev-libs/hidapi:0=
+	>=dev-libs/libfmt-7.1:0=
+	dev-libs/lzo:2=
+	dev-libs/pugixml:0=
+	media-libs/libpng:0=
+	media-libs/libsfml
+	media-libs/mesa[egl]
+	net-libs/enet:1.3
+	net-libs/mbedtls:0=
+	net-misc/curl:0=
+	sys-libs/readline:0=
+	sys-libs/zlib:0=
 	x11-libs/libXext
 	x11-libs/libXi
 	x11-libs/libXrandr
 	virtual/libusb:1
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
-	ao? ( media-libs/libao )
 	bluetooth? ( net-wireless/bluez )
-	egl? ( media-libs/mesa[egl] )
 	evdev? (
-			dev-libs/libevdev
-			virtual/udev
+		dev-libs/libevdev
+		virtual/udev
 	)
-	ffmpeg? ( virtual/ffmpeg )
-	llvm? ( sys-devel/llvm )
-	openal? (
-			media-libs/openal
-			media-libs/libsoundtouch
-	)
-	portaudio? ( media-libs/portaudio )
+	ffmpeg? ( media-video/ffmpeg:= )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
@@ -62,76 +59,66 @@ RDEPEND=">=media-libs/libsfml-2.1
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	sdl? ( media-libs/libsdl2[haptic,joystick] )
-	upnp? ( >=net-libs/miniupnpc-1.7 )
-	wxwidgets? (
-				dev-libs/glib:2
-				x11-libs/gtk+:2
-				x11-libs/wxGTK:${WX_GTK_VER}[opengl,X]
-	)
-	"
-DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.8.8
-	>=sys-devel/gcc-4.9.0
-	app-arch/zip
-	media-libs/freetype
+	systemd? ( sys-apps/systemd:0= )
+	upnp? ( net-libs/miniupnpc )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
-	virtual/pkgconfig
-	"
+	virtual/pkgconfig"
 
-pkg_pretend() {
-
-	local ver=4.9.0
-	local msg="${PN} needs at least GCC ${ver} set to compile."
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if ! version_is_at_least ${ver} $(gcc-fullversion); then
-			eerror ${msg}
-			die ${msg}
-		fi
-	fi
-
-}
+# vulkan-loader required for vulkan backend which can be selected
+# at runtime.
+RDEPEND="${RDEPEND}
+	vulkan? ( media-libs/vulkan-loader )"
 
 src_prepare() {
+	cmake_src_prepare
 
-	# Remove automatic dependencies to prevent building without flags enabled.
-	if use !alsa; then
-		sed -i -e '/include(FindALSA/d' CMakeLists.txt || die
-	fi
-	if use !ao; then
-		sed -i -e '/check_lib(AO/d' CMakeLists.txt || die
-	fi
-	if use !bluetooth; then
-		sed -i -e '/check_lib(BLUEZ/d' CMakeLists.txt || die
-	fi
-	if use !llvm; then
-		sed -i -e '/include(FindLLVM/d' CMakeLists.txt || die
-	fi
-	if use !openal; then
-		sed -i -e '/include(FindOpenAL/d' CMakeLists.txt || die
-	fi
-	if use !portaudio; then
-		sed -i -e '/CMAKE_REQUIRED_LIBRARIES portaudio/d' CMakeLists.txt || die
-	fi
-	if use !pulseaudio; then
-		sed -i -e '/check_lib(PULSEAUDIO/d' CMakeLists.txt || die
-	fi
+	# Remove all the bundled libraries that support system-installed
+	# preference. See CMakeLists.txt for conditional 'add_subdirectory' calls.
+	local KEEP_SOURCES=(
+		Bochs_disasm
+		FreeSurround
 
-	# Remove ALL the bundled libraries, aside from:
-	# - SOIL: The sources are not public.
-	# - Bochs-disasm: Don't know what it is.
-	# - gtest: Their build set up solely relies on the build in gtest.
-	# - xxhash: Not on the tree.
-	mv Externals/SOIL . || die
-	mv Externals/Bochs_disasm . || die
-	mv Externals/gtest . || die
-	mv Externals/xxhash . || die
+		# vulkan's API is not backwards-compatible:
+		# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
+		# but dolphin still relies on it, bug #729832
+		Vulkan
+
+		cpp-optparse
+		# no support for for using system library
+		glslang
+		imgui
+
+		# not packaged, tiny header library
+		rangeset
+
+		# FIXME: xxhash can't be found by cmake
+		xxhash
+		# no support for for using system library
+		minizip
+		# soundtouch uses shorts, not floats
+		soundtouch
+		cubeb
+		discord-rpc
+		# Their build set up solely relies on the build in gtest.
+		gtest
+		# gentoo's version requires exception support.
+		# dolphin disables exceptions and fails the build.
+		picojson
+		# No code to detect shared library.
+		zstd
+	)
+	local s
+	for s in "${KEEP_SOURCES[@]}"; do
+		mv -v "Externals/${s}" . || die
+	done
+	einfo "removing sources: $(echo Externals/*)"
 	rm -r Externals/* || die "Failed to delete Externals dir."
-	mv Bochs_disasm Externals || die
-	mv SOIL Externals || die
-	mv gtest Externals || die
-	mv xxhash Externals || die
+	for s in "${KEEP_SOURCES[@]}"; do
+		mv -v "${s}" "Externals/" || die
+	done
 
 	remove_locale() {
 		# Ensure preservation of the backup locale when no valid LINGUA is set
@@ -144,39 +131,49 @@ src_prepare() {
 
 	l10n_find_plocales_changes "Languages/po/" "" '.po'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	# About 50% compile-time speedup
+	use vulkan || sed -i -e '/Externals\/glslang/d' CMakeLists.txt
+
+	# Remove dirty suffix: needed for netplay
+	sed -i -e 's/--dirty/&=""/' CMakeLists.txt
 }
 
 src_configure() {
-
-	if use wxwidgets; then
-		need-wxwidgets unicode
-	fi
-
 	local mycmakeargs=(
-		"-DUSE_SHARED_ENET=ON"
-		$( cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS )
-		$( cmake-utils_use log FASTLOG )
-		$( cmake-utils_use profile OPROFILING )
-		$( cmake-utils_use_disable wxwidgets WX )
-		$( cmake-utils_use_enable evdev EVDEV )
-		$( cmake-utils_use_enable lto LTO )
-		$( cmake-utils_use_enable pch PCH )
-		$( cmake-utils_use_enable qt5 QT )
-		$( cmake-utils_use_enable sdl SDL )
-		$( cmake-utils_use_use egl EGL )
-		$( cmake-utils_use_use upnp UPNP )
+		# Use ccache only when user did set FEATURES=ccache (or similar)
+		# not when ccache binary is present in system (automagic).
+		-DCCACHE_BIN=CCACHE_BIN-NOTFOUND
+		-DENABLE_ALSA=$(usex alsa)
+		-DENABLE_BLUEZ=$(usex bluetooth)
+		-DENABLE_EVDEV=$(usex evdev)
+		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
+		-DENABLE_LLVM=OFF
+		-DENABLE_LTO=$(usex lto)
+		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
+		-DENABLE_QT=$(usex qt5)
+		-DENABLE_SDL=OFF # not supported: #666558
+		-DENABLE_VULKAN=$(usex vulkan)
+		-DFASTLOG=$(usex log)
+		-DOPROFILING=$(usex profile)
+		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
+		-DUSE_SHARED_ENET=ON
+		-DUSE_UPNP=$(usex upnp)
+
+		# Undo cmake.eclass's defaults.
+		# All dolphin's libraries are private
+		# and rely on circular dependency resolution.
+		-DBUILD_SHARED_LIBS=OFF
+
+		# Avoid warning spam around unset variables.
+		-Wno-dev
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
-src_compile() {
-
-	cmake-utils_src_compile
-}
 src_install() {
-
-	cmake-utils_src_install
+	cmake_src_install
 
 	dodoc Readme.md
 	if use doc; then
@@ -191,9 +188,9 @@ src_install() {
 pkg_postinst() {
 	# Add pax markings for hardened systems
 	pax-mark -m "${EPREFIX}"/usr/games/bin/"${PN}"-emu
+	xdg_icon_cache_update
+}
 
-	if ! use portaudio; then
-		ewarn "If you want microphone capabilities in dolphin-emu, rebuild with"
-		ewarn "USE=\"portaudio\""
-	fi
+pkg_postrm() {
+	xdg_icon_cache_update
 }

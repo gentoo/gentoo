@@ -4,8 +4,8 @@ glx renderer by default.
 
 http://bugs.gentoo.org/show_bug.cgi?id=86552
 
---- src/linux/vid_so.c
-+++ src/linux/vid_so.c
+--- a/src/linux/vid_so.c
++++ b/src/linux/vid_so.c
 @@ -435,6 +440,9 @@ VID_Init
  */
  void VID_Init (void)

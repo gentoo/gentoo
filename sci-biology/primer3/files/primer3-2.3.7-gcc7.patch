@@ -1,0 +1,17 @@
+--- a/src/thal.c
++++ b/src/thal.c
+@@ -426,12 +426,12 @@
+ 	       "Illegal type");
+    o->align_end_1 = -1;
+    o->align_end_2 = -1;
+-   if ('\0' == oligo_f) {
++   if ('\0' == oligo_f[0]) {
+       strcpy(o->msg, "Empty first sequence");
+       o->temp = 0.0;
+       return;
+    }
+-   if ('\0' == oligo_r) {
++   if ('\0' == oligo_r[0]) {
+       strcpy(o->msg, "Empty second sequence");
+       o->temp = 0.0;
+       return;

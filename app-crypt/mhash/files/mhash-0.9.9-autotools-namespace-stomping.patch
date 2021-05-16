@@ -7,9 +7,8 @@ Gentoo-Bug-URL: http://bugs.gentoo.org/show_bug.cgi?id=221093
 Patch-URL: http://bugs.gentoo.org/attachment.cgi?id=152625&action=view
 Signed-off-by: Peter Alfredson <loki_val@gentoo.org>
 
-diff -NrU5 mhash-0.9.9.orig/configure.in mhash-0.9.9/configure.in
---- mhash-0.9.9.orig/configure.in	2008-05-09 16:17:52.000000000 +0200
-+++ mhash-0.9.9/configure.in	2008-05-09 16:18:20.000000000 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -4,10 +4,11 @@
  AC_CANONICAL_TARGET
  AC_CONFIG_SRCDIR([lib/mhash.c])
@@ -22,9 +21,8 @@ diff -NrU5 mhash-0.9.9.orig/configure.in mhash-0.9.9/configure.in
  
  dnl Check system.
  
-diff -NrU5 mhash-0.9.9.orig/include/mutils/config.h.in mhash-0.9.9/include/mutils/config.h.in
---- mhash-0.9.9.orig/include/mutils/config.h.in	1970-01-01 01:00:00.000000000 +0100
-+++ mhash-0.9.9/include/mutils/config.h.in	2008-05-09 16:18:20.000000000 +0200
+--- a/include/mutils/config.h.in
++++ b/include/mutils/config.h.in
 @@ -0,0 +1,22 @@
 +/* Name of package */
 +#undef PACKAGE
@@ -48,9 +46,8 @@ diff -NrU5 mhash-0.9.9.orig/include/mutils/config.h.in mhash-0.9.9/include/mutil
 +#undef VERSION
 +
 +
-diff -NrU5 mhash-0.9.9.orig/include/mutils/mhash_config.h.in mhash-0.9.9/include/mutils/mhash_config.h.in
---- mhash-0.9.9.orig/include/mutils/mhash_config.h.in	2008-05-09 16:17:52.000000000 +0200
-+++ mhash-0.9.9/include/mutils/mhash_config.h.in	2008-05-09 16:19:17.000000000 +0200
+--- a/include/mutils/mhash_config.h.in
++++ b/include/mutils/mhash_config.h.in
 @@ -179,28 +179,10 @@
  #undef MHASH_VERSION
  

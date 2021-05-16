@@ -1,0 +1,63 @@
+From bc6346175db9f89777141b6d17b52143b3caafeb Mon Sep 17 00:00:00 2001
+From: Alexander Sokolov <sokoloff.a@gmail.com>
+Date: Mon, 21 Oct 2019 22:08:18 +0300
+Subject: [PATCH] Fixed issue #104. Correct CMake policy CMP0058 warnings.
+
+---
+ CMakeLists.txt                     | 10 +++++++++-
+ translations/translatorsinfo.cmake | 10 ++--------
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1fbbca2..95f25cd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -244,7 +244,15 @@ include(FindPkgConfig)
+ pkg_search_module(UCHARDET REQUIRED uchardet)
+ 
+ include(translations/translatorsinfo.cmake)
+-create_translatorsinfo_qrc(TRANSLATORS_INFO_QRC translations)
++add_custom_target("translators")
++add_custom_command(
++    TARGET "translators"
++    PRE_BUILD
++    BYPRODUCTS ${TRANSLATORS_INFO_FILE}
++    COMMAND create_translatorsinfo_qrc(TRANSLATORS_INFO_QRC translations)
++)
++
++
+ set(LIBRARIES ${LIBRARIES} ${UCHARDET_LIBRARIES})
+ include_directories(${UCHARDET_INCLUDE_DIRS})
+ link_directories(${UCHARDET_LIBRARY_DIRS})
+diff --git a/translations/translatorsinfo.cmake b/translations/translatorsinfo.cmake
+index b439a05..650174b 100644
+--- a/translations/translatorsinfo.cmake
++++ b/translations/translatorsinfo.cmake
+@@ -23,13 +23,11 @@
+  #
+  # END_COMMON_COPYRIGHT_HEADER
+ 
++set(TRANSLATORS_INFO_FILE ${CMAKE_CURRENT_BINARY_DIR}/translators.info)
+ 
+ FUNCTION(create_translatorsinfo_qrc _qrcFile _DIR)
+     get_filename_component(srcDir ${_DIR}/ ABSOLUTE)
+ 
+-
+-    set(TRANSLATORS_INFO_FILE ${CMAKE_CURRENT_BINARY_DIR}/translators.info)
+-
+     file(GLOB IN_FILES ${srcDir}/translators_*.info)
+     file(WRITE ${TRANSLATORS_INFO_FILE} "")
+ 
+@@ -42,11 +40,7 @@ FUNCTION(create_translatorsinfo_qrc _qrcFile _DIR)
+ 
+     configure_file(${srcDir}/translatorsinfo.qrc.in ${CMAKE_CURRENT_BINARY_DIR}/translatorsinfo.qrc)
+ 
+-    if(USE_QT4)
+-        qt4_add_resources(__qrcFile ${CMAKE_CURRENT_BINARY_DIR}/translatorsinfo.qrc)
+-    else()
+-        qt5_add_resources(__qrcFile ${CMAKE_CURRENT_BINARY_DIR}/translatorsinfo.qrc)
+-    endif()
++    qt5_add_resources(__qrcFile ${CMAKE_CURRENT_BINARY_DIR}/translatorsinfo.qrc)
+ 
+     set(${_qrcFile} ${__qrcFile} PARENT_SCOPE)
+ ENDFUNCTION()

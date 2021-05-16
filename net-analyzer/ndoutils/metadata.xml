@@ -5,7 +5,10 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mjo@gentoo.org</email>
+	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">nagios</remote-id>
+		<remote-id type="github">NagiosEnterprises/ndoutils</remote-id>
 	</upstream>
 </pkgmetadata>

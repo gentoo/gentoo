@@ -1,7 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 2002-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
-#
+
 # @ECLASS: elisp.eclass
 # @MAINTAINER:
 # Gentoo GNU Emacs project <gnu-emacs@gentoo.org>
@@ -10,6 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #
@@ -27,18 +27,20 @@
 # ${PN}.el in src_unpack().
 
 # @ECLASS-VARIABLE: NEED_EMACS
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If you need anything different from Emacs 23, use the NEED_EMACS
-# variable before inheriting elisp.eclass.  Set it to the major version
-# your package uses and the dependency will be adjusted.
+# variable before inheriting elisp.eclass.  Set it to the version your
+# package uses and the dependency will be adjusted.
 
 # @ECLASS-VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Space separated list of patches to apply after unpacking the sources.
 # Patch files are searched for in the current working dir, WORKDIR, and
-# FILESDIR.
+# FILESDIR.  This variable is semi-deprecated, preferably use the
+# PATCHES array instead.
 
 # @ECLASS-VARIABLE: ELISP_REMOVE
 # @DEFAULT_UNSET
@@ -59,64 +61,43 @@
 # Space separated list of Texinfo sources.  Respective GNU Info files
 # will be generated in src_compile() and installed in src_install().
 
-# @ECLASS-VARIABLE: DOCS
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# DOCS="blah.txt ChangeLog" is automatically used to install the given
-# files by dodoc in src_install().
-
 inherit elisp-common
 
 case ${EAPI:-0} in
-	0|1)
-		inherit eutils
-		EXPORT_FUNCTIONS src_{unpack,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-	2|3|4|5)
-		inherit eutils
-		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-	6)
-		EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+	6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-DEPEND=">=virtual/emacs-${NEED_EMACS:-23}"
-RDEPEND="${DEPEND}"
+EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+	pkg_{setup,postinst,postrm}
+
+RDEPEND=">=app-editors/emacs-${NEED_EMACS}:*"
+case ${EAPI} in
+	6) DEPEND="${RDEPEND}" ;;
+	*) BDEPEND="${RDEPEND}" ;;
+esac
 
 # @FUNCTION: elisp_pkg_setup
 # @DESCRIPTION:
-# Test if the eselected Emacs version is sufficient to fulfil the major
+# Test if the eselected Emacs version is sufficient to fulfil the
 # version requirement of the NEED_EMACS variable.
 
 elisp_pkg_setup() {
-	elisp-need-emacs "${NEED_EMACS:-23}"
-	case $? in
-		0) ;;
-		1) die "Emacs version too low" ;;
-		*) die "Could not determine Emacs version" ;;
-	esac
+	elisp-check-emacs-version
 }
 
 # @FUNCTION: elisp_src_unpack
 # @DESCRIPTION:
 # Unpack the sources; also handle the case of a single *.el file in
-# WORKDIR for packages distributed that way.  For EAPIs without
-# src_prepare, call elisp_src_prepare.
+# WORKDIR for packages distributed that way.
 
 elisp_src_unpack() {
-	[[ -n ${A} ]] && unpack ${A}
+	default
 	if [[ -f ${P}.el ]]; then
 		# the "simple elisp" case with a single *.el file in WORKDIR
 		mv ${P}.el ${PN}.el || die
 		[[ -d ${S} ]] || S=${WORKDIR}
 	fi
-
-	case ${EAPI:-0} in
-		0|1) [[ -d ${S} ]] && cd "${S}"
-			elisp_src_prepare ;;
-	esac
 }
 
 # @FUNCTION: elisp_src_prepare
@@ -136,17 +117,11 @@ elisp_src_prepare() {
 		else
 			die "Cannot find ${patch}"
 		fi
-		case ${EAPI:-0} in
-			0|1|2|3|4|5) epatch "${file}" ;;
-			6) eapply "${file}" ;;
-		esac
+		eapply "${file}"
 	done
 
-	# apply any user patches
-	case ${EAPI:-0} in
-		0|1|2|3|4|5) epatch_user ;;
-		6) eapply_user ;;
-	esac
+	# apply PATCHES and any user patches
+	default
 
 	if [[ -n ${ELISP_REMOVE} ]]; then
 		rm ${ELISP_REMOVE} || die
@@ -187,11 +162,10 @@ elisp_src_install() {
 	if [[ -n ${ELISP_TEXINFO} ]]; then
 		set -- ${ELISP_TEXINFO}
 		set -- ${@##*/}
-		doinfo ${@/%.*/.info*} || die
+		doinfo ${@/%.*/.info*}
 	fi
-	if [[ -n ${DOCS} ]]; then
-		dodoc ${DOCS} || die
-	fi
+	# install documentation only when explicitly requested
+	[[ $(declare -p DOCS 2>/dev/null) == *=* ]] && einstalldocs
 	if declare -f readme.gentoo_create_doc >/dev/null; then
 		readme.gentoo_create_doc
 	fi

@@ -5,4 +5,8 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="fonts">Enable fonts support for appstream-builder.</flag>
+	<flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
+</use>
 </pkgmetadata>

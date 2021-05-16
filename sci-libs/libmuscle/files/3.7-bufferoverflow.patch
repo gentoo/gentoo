@@ -1,5 +1,5 @@
---- libMUSCLE/globalslinux.cpp.old	2010-03-14 19:03:14.000000000 +1300
-+++ libMUSCLE/globalslinux.cpp	2010-03-14 19:11:09.000000000 +1300
+--- a/libMUSCLE/globalslinux.cpp
++++ b/libMUSCLE/globalslinux.cpp
 @@ -159,7 +159,7 @@
  			}
  		return DEFAULT_RAM;
@@ -9,8 +9,8 @@
  	return ((double) Bytes)/1e6;
  	}
  
---- libMUSCLE/progress.cpp.old	2010-03-14 19:50:27.000000000 +1300
-+++ libMUSCLE/progress.cpp	2010-03-14 19:51:07.000000000 +1300
+--- a/libMUSCLE/progress.cpp
++++ b/libMUSCLE/progress.cpp
 @@ -48,7 +48,7 @@
  	if (MB < 0)
  		return "";

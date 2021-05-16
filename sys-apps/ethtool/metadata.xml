@@ -5,6 +5,9 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<use>
+	<flag name="netlink">Enable netlink interface via <pkg>net-libs/libmnl</pkg></flag>
+</use>
 <longdescription lang="en">
 	ethtool is a Linux utility for controlling network drivers and hardware,
 	particularly for wired Ethernet devices. It can be used to:
@@ -16,4 +19,7 @@
 		* Control receive queue selection for multiqueue devices
 		* Upgrade firmware in flash memory
 </longdescription>
+<upstream>
+	<remote-id type="cpe">cpe:/a:kernel:ethtool</remote-id>
+</upstream>
 </pkgmetadata>

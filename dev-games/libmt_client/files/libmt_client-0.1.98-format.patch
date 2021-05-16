@@ -1,5 +1,5 @@
---- src/mt_client_game.c.old	2015-12-22 08:51:19.858561807 +0100
-+++ src/mt_client_game.c	2015-12-22 08:52:48.934904973 +0100
+--- a/src/mt_client_game.c
++++ b/src/mt_client_game.c
 @@ -56,7 +56,7 @@
  	}
        else

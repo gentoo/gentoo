@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,7 +210,7 @@
+ # Clone the patsolve repository with the appropriate branch.
+ SET (pats_dir "patsolve")
+ 
+-IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${pats_dir}")
++IF (0)
+     EXECUTE_PROCESS(
+         COMMAND "git" "clone" "https://github.com/shlomif/patsolve.git" "${pats_dir}"
+         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+@@ -219,7 +219,7 @@
+ 
+ # Clone the rinutils repository with the appropriate tag.
+ SET (rinutils_dir "rinutils")
+-IF (NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${rinutils_dir}")
++IF (0)
+     EXECUTE_PROCESS(
+         COMMAND "git" "clone" "-b" "0.6.0" "https://github.com/shlomif/rinutils.git" "${rinutils_dir}"
+         WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"

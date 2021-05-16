@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci-biology@gentoo.org</email>
+		<name>Gentoo Biology Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>perl@gentoo.org</email>
+		<name>Gentoo Perl Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Ensembl/Bio-DB-HTS</remote-id>
+		<remote-id type="cpan">Bio-DB-HTS</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::AlignWrapper</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Alignment</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Constants</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Fai</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Faidx</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::FetchIterator</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Kseq</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Kseq::Record</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Pileup</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::PileupWrapper</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Query</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::ReadIterator</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Segment</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Segment::Iterator</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::SplitAlignmentPart</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Tabix</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Tabix::Iterator</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::Target</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF::Header</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF::HeaderPtr</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF::Iterator</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF::Row</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF::RowPtr</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTS::VCF::Sweep</remote-id>
+		<remote-id type="cpan-module">Bio::DB::HTSfile</remote-id>
+		<remote-id type="cpan-module">Bio::SeqFeature::HTSCoverage</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,402 @@
+diff --git a/src/addagent/main.c b/src/addagent/main.c
+index 587a8a3d8..ab12f0326 100644
+--- a/src/addagent/main.c
++++ b/src/addagent/main.c
+@@ -17,6 +17,7 @@ static void print_banner(void);
+ static void manage_shutdown(int sig) __attribute__((noreturn));
+ #endif
+ 
++int willchroot;
+ 
+ #if defined(__MINGW32__)
+ static int setenv(const char *name, const char *val, __attribute__((unused)) int overwrite)
+diff --git a/src/addagent/manage_agents.c b/src/addagent/manage_agents.c
+index ac39c1e66..4f9c266ff 100644
+--- a/src/addagent/manage_agents.c
++++ b/src/addagent/manage_agents.c
+@@ -85,6 +85,8 @@ int add_agent(int json_output)
+ 
+     char authfile[257];
+ 
++    extern int willchroot;
++
+     if(willchroot > 0) {
+         snprintf(authfile, 256, "%s", AUTH_FILE);	//XXX
+     } else {
+diff --git a/src/addagent/manage_agents.h b/src/addagent/manage_agents.h
+index 4812dba43..f2962e80b 100644
+--- a/src/addagent/manage_agents.h
++++ b/src/addagent/manage_agents.h
+@@ -147,4 +147,4 @@ extern fpos_t fp_pos;
+ #define GMF_UNKN_ERROR  ARGV0 ": Could not run GetModuleFileName which returned (%ld).\n"
+ 
+ 
+-int willchroot;
++//int willchroot;
+diff --git a/src/addagent/manage_keys.c b/src/addagent/manage_keys.c
+index 146b48326..ffb9a1f21 100644
+--- a/src/addagent/manage_keys.c
++++ b/src/addagent/manage_keys.c
+@@ -336,6 +336,8 @@ int k_bulkload(const char *cmdbulk)
+     char delims[] = ",";
+     char *token = NULL;
+ 
++    extern int willchroot;
++
+     /* Check if we can open the input file */
+     printf("Opening: [%s]\n", cmdbulk);
+     infp = fopen(cmdbulk, "r");
+diff --git a/src/analysisd/analysisd.c b/src/analysisd/analysisd.c
+index a220f4421..0a81971de 100644
+--- a/src/analysisd/analysisd.c
++++ b/src/analysisd/analysisd.c
+@@ -42,7 +42,12 @@
+ #endif
+ 
+ #ifdef SQLITE_ENABLED
+-#include "syscheck-sqlite.h"
++#include <sqlite3.h>
++sqlite3 *conn;
++#endif
++
++#ifdef LIBGEOIP_ENABLED
++GeoIP *geoipdb;
+ #endif
+ 
+ /** Prototypes **/
+diff --git a/src/analysisd/config.h b/src/analysisd/config.h
+index 8d74c756e..976d1942e 100644
+--- a/src/analysisd/config.h
++++ b/src/analysisd/config.h
+@@ -12,6 +12,7 @@
+ 
+ #include "config/config.h"
+ #include "config/global-config.h"
++
+ #ifdef LIBGEOIP_ENABLED
+ #include "GeoIP.h"
+ #endif
+@@ -20,9 +21,11 @@
+ extern long int __crt_ftell; /* Global ftell pointer */
+ extern _Config Config;       /* Global Config structure */
+ 
++/*
+ #ifdef LIBGEOIP_ENABLED
+ GeoIP *geoipdb;
+ #endif
++*/
+ 
+ int GlobalConf(const char *cfgfile);
+ 
+diff --git a/src/analysisd/decoders/geoip.c b/src/analysisd/decoders/geoip.c
+index 464e4bb71..9816b4c81 100644
+--- a/src/analysisd/decoders/geoip.c
++++ b/src/analysisd/decoders/geoip.c
+@@ -30,6 +30,7 @@ char *GetGeoInfobyIP(char *ip_addr)
+     GeoIPRecord *geoiprecord;
+     char *geodata = NULL;
+     char geobuffer[256 +1];
++    extern GeoIP *geoipdb;
+ 
+     if(!geoipdb)
+     {
+diff --git a/src/analysisd/decoders/syscheck.c b/src/analysisd/decoders/syscheck.c
+index a6d675892..30339a00d 100644
+--- a/src/analysisd/decoders/syscheck.c
++++ b/src/analysisd/decoders/syscheck.c
+@@ -16,7 +16,7 @@
+ #include "decoder.h"
+ 
+ #ifdef SQLITE_ENABLED
+-#include "syscheck-sqlite.h"
++#include <sqlite3.h>
+ #endif
+ 
+ typedef struct __sdb {
+diff --git a/src/analysisd/makelists.c b/src/analysisd/makelists.c
+index 06c90db70..dfbe6a4a3 100644
+--- a/src/analysisd/makelists.c
++++ b/src/analysisd/makelists.c
+@@ -32,6 +32,10 @@ time_t c_time;
+ char __shost[512];
+ OSDecoderInfo *NULL_Decoder;
+ 
++#ifdef LIBGEOIP_ENABLED
++GeoIP *geoipdb;
++#endif
++
+ /* print help statement */
+ __attribute__((noreturn))
+ static void help_makelists(void)
+diff --git a/src/analysisd/syscheck-sqlite.h b/src/analysisd/syscheck-sqlite.h
+deleted file mode 100644
+index 526cab26e..000000000
+--- a/src/analysisd/syscheck-sqlite.h
++++ /dev/null
+@@ -1,5 +0,0 @@
+-#ifdef SQLITE_ENABLED
+-#include <sqlite3.h>
+-
+-sqlite3 *conn;
+-#endif
+diff --git a/src/analysisd/testrule.c b/src/analysisd/testrule.c
+index c08fb4885..b1aa928f7 100644
+--- a/src/analysisd/testrule.c
++++ b/src/analysisd/testrule.c
+@@ -83,6 +83,7 @@ int main(int argc, char **argv)
+     memset(prev_month, '\0', 4);
+ 
+ #ifdef LIBGEOIP_ENABLED
++    extern GeoIP *geoipdb;
+     geoipdb = NULL;
+ #endif
+ 
+diff --git a/src/client-agent/agentd.c b/src/client-agent/agentd.c
+index c09cf87d3..67828e79c 100644
+--- a/src/client-agent/agentd.c
++++ b/src/client-agent/agentd.c
+@@ -23,6 +23,8 @@ void AgentdStart(const char *dir, int uid, int gid, const char *user, const char
+     fd_set fdset;
+     struct timeval fdtimeout;
+ 
++    extern agent *agt;
++
+     available_server = 0;
+ 
+     /* Initial random numbers must happen before chroot */
+diff --git a/src/client-agent/agentd.h b/src/client-agent/agentd.h
+index 0246a5457..a362ff9a3 100644
+--- a/src/client-agent/agentd.h
++++ b/src/client-agent/agentd.h
+@@ -81,9 +81,9 @@ void os_agent_cb(int fd, short ev, void *arg);
+ extern time_t available_server;
+ extern int run_foreground;
+ extern keystore keys;
+-extern agent *agt;
++//extern agent *agt;
+ #ifndef WIN32
+-struct imsgbuf server_ibuf;
++//struct imsgbuf server_ibuf;
+ #endif //WIN32
+ 
+ #endif /* __AGENTD_H */
+diff --git a/src/client-agent/event-forward.c b/src/client-agent/event-forward.c
+index 2e81f0c90..22ed0beb9 100644
+--- a/src/client-agent/event-forward.c
++++ b/src/client-agent/event-forward.c
+@@ -19,6 +19,9 @@
+ /* Receive a message locally on the agent and forward it to the manager */
+ void *EventForward(void)
+ {
++
++    extern agent *agt;
++
+     ssize_t recv_b;
+     char msg[OS_MAXSTR + 1];
+ 
+diff --git a/src/client-agent/main.c b/src/client-agent/main.c
+index 5f85cfb73..01c18970c 100644
+--- a/src/client-agent/main.c
++++ b/src/client-agent/main.c
+@@ -16,7 +16,8 @@
+ #define ARGV0 "ossec-agentd"
+ #endif
+ 
+-extern struct imsgbuf server_ibuf;
++//extern struct imsgbuf server_ibuf;
++struct imsgbuf server_ibuf;
+ 
+ 
+ /* Prototypes */
+@@ -112,6 +113,8 @@ int main(int argc, char **argv)
+ 
+     debug1(STARTED_MSG, ARGV0);
+ 
++    extern agent *agt;
++
+     agt = (agent *)calloc(1, sizeof(agent));
+     if (!agt) {
+         ErrorExit(MEM_ERROR, ARGV0, errno, strerror(errno));
+diff --git a/src/client-agent/notify.c b/src/client-agent/notify.c
+index 1b239f26c..93fec325c 100644
+--- a/src/client-agent/notify.c
++++ b/src/client-agent/notify.c
+@@ -68,6 +68,8 @@ void run_notify()
+     os_md5 md5sum;
+     time_t curr_time;
+ 
++    extern agent *agt;
++
+     keep_alive_random[0] = '\0';
+     curr_time = time(0);
+ 
+diff --git a/src/client-agent/receiver-win.c b/src/client-agent/receiver-win.c
+index 859bdf7f9..4ab62ee77 100644
+--- a/src/client-agent/receiver-win.c
++++ b/src/client-agent/receiver-win.c
+@@ -19,6 +19,7 @@
+ /* Receive events from the server */
+ void *receiver_thread(__attribute__((unused)) void *none)
+ {
++    extern agent *agt;
+     int recv_b;
+ 
+     char file[OS_SIZE_1024 + 1];
+diff --git a/src/client-agent/receiver.c b/src/client-agent/receiver.c
+index fde64c282..5286e60dc 100644
+--- a/src/client-agent/receiver.c
++++ b/src/client-agent/receiver.c
+@@ -29,6 +29,8 @@ void *receive_msg()
+     char cleartext[OS_MAXSTR + 1];
+     char *tmp_msg;
+ 
++    extern agent *agt;
++
+     memset(cleartext, '\0', OS_MAXSTR + 1);
+     memset(buffer, '\0', OS_MAXSTR + 1);
+ 
+diff --git a/src/client-agent/sendmsg.c b/src/client-agent/sendmsg.c
+index 454c2e714..3076dfcf9 100644
+--- a/src/client-agent/sendmsg.c
++++ b/src/client-agent/sendmsg.c
+@@ -15,6 +15,9 @@
+ /* Send a message to the server */
+ int send_msg(int agentid, const char *msg)
+ {
++
++    extern agent *agt;
++
+     size_t msg_size;
+     char crypt_msg[OS_MAXSTR + 1];
+ 
+diff --git a/src/client-agent/start_agent.c b/src/client-agent/start_agent.c
+index 51670cee5..f1df43715 100644
+--- a/src/client-agent/start_agent.c
++++ b/src/client-agent/start_agent.c
+@@ -24,6 +24,9 @@ int connect_server(int initial_id)
+ #ifdef WIN32
+     unsigned int attempts = 2;
+ #endif //WIN32
++
++    extern agent *agt;
++
+     int rc = initial_id;
+ 
+     /* Checking if the initial is zero, meaning we have to
+@@ -139,6 +142,8 @@ void start_agent(int is_startup)
+     char cleartext[OS_MAXSTR + 1];
+     char fmsg[OS_MAXSTR + 1];
+ 
++    extern agent *agt;
++
+     memset(msg, '\0', OS_MAXSTR + 2);
+     memset(buffer, '\0', OS_MAXSTR + 1);
+     memset(cleartext, '\0', OS_MAXSTR + 1);
+@@ -241,6 +246,8 @@ void os_agent_cb(int fd, short ev, void *arg) {
+     struct imsg imsg;
+     struct imsgbuf *ibuf = (struct imsgbuf *)arg;
+ 
++    extern agent *agt;
++
+     if (ev & EV_READ) {
+         if ((n = imsg_read(ibuf) == -1 && errno != EAGAIN)) {
+             ErrorExit("%s: ERROR: imsg_read() failed: %s", ARGV0, strerror(errno));
+diff --git a/src/os_net/os_net.c b/src/os_net/os_net.c
+index f18e3be77..756e9fac8 100644
+--- a/src/os_net/os_net.c
++++ b/src/os_net/os_net.c
+@@ -14,7 +14,7 @@
+ #include <errno.h>
+ #include "shared.h"
+ #include "os_net.h"
+-agent *agt;
++agent *os_net_agt;
+ 
+ /* Prototypes */
+ static OSNetInfo *OS_Bindport(char *_port, unsigned int _proto, const char *_ip);
+@@ -346,11 +346,11 @@ int OS_Connect(char *_port, unsigned int protocol, const char *_ip)
+         return(OS_INVALID);
+     }
+ 
+-    if (agt) {
+-        if (agt->lip) {
++    if (os_net_agt) {
++        if (os_net_agt->lip) {
+             memset(&hints, 0, sizeof(struct addrinfo));
+             hints.ai_flags = AI_NUMERICHOST;
+-            s = getaddrinfo(agt->lip, NULL, &hints, &result);
++            s = getaddrinfo(os_net_agt->lip, NULL, &hints, &result);
+             if (s != 0) {
+                 verbose("getaddrinfo: %s", gai_strerror(s));
+             }
+@@ -363,8 +363,8 @@ int OS_Connect(char *_port, unsigned int protocol, const char *_ip)
+     memset(&hints, 0, sizeof(struct addrinfo));
+     /* Allow IPv4 or IPv6 if local_ip isn't specified */
+     hints.ai_family = AF_UNSPEC;
+-    if (agt) {
+-        if (agt->lip) {
++    if (os_net_agt) {
++        if (os_net_agt->lip) {
+             hints.ai_family = local_ai->ai_family;
+         }
+     }
+@@ -398,13 +398,13 @@ int OS_Connect(char *_port, unsigned int protocol, const char *_ip)
+             continue;
+         }
+ 
+-        if (agt) {
+-            if (agt->lip) {
++        if (os_net_agt) {
++            if (os_net_agt->lip) {
+                 if (bind(ossock, local_ai->ai_addr, local_ai->ai_addrlen)) {
+                     verbose("Unable to bind to local address %s.  Ignoring. (%s)",
+-                            agt->lip, strerror(errno));
++                            os_net_agt->lip, strerror(errno));
+                 }
+-                else verbose("Connecting from local address %s", agt->lip);
++                else verbose("Connecting from local address %s", os_net_agt->lip);
+             }
+         }
+ 
+diff --git a/src/os_net/os_net.h b/src/os_net/os_net.h
+index 9b7250928..3aaf00429 100644
+--- a/src/os_net/os_net.h
++++ b/src/os_net/os_net.h
+@@ -13,7 +13,7 @@
+ 
+ #include "headers/shared.h"
+ #include "config/client-config.h"
+-extern agent *agt;
++extern agent *os_net_agt;
+ #ifdef WIN32
+ #ifndef AI_ADDRCONFIG
+ #define AI_ADDRCONFIG   0x0400
+diff --git a/src/win32/win_agent.c b/src/win32/win_agent.c
+index 40a37e621..a2ec784f2 100644
+--- a/src/win32/win_agent.c
++++ b/src/win32/win_agent.c
+@@ -124,6 +124,7 @@ int local_start()
+     WSADATA wsaData;
+     DWORD  threadID;
+     DWORD  threadID2;
++    extern agent *agt;
+ 
+     /* Start agent */
+     agt = (agent *)calloc(1, sizeof(agent));
+@@ -271,6 +272,7 @@ int SendMSG(__attribute__((unused)) int queue, const char *message, const char *
+     char tmpstr[OS_MAXSTR + 2];
+     char crypt_msg[OS_MAXSTR + 2];
+     DWORD dwWaitResult;
++    extern agent *agt;
+ 
+     tmpstr[OS_MAXSTR + 1] = '\0';
+     crypt_msg[OS_MAXSTR + 1] = '\0';
+@@ -468,6 +470,8 @@ void send_win32_info(time_t curr_time)
+     tmp_msg[OS_MAXSTR + 1] = '\0';
+     crypt_msg[OS_MAXSTR + 1] = '\0';
+ 
++    extern agent *agt;
++
+     debug1("%s: DEBUG: Sending keep alive message.", ARGV0);
+ 
+     /* Fix time */

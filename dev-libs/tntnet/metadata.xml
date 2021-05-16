@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">                                                                                         
-		<email>hd_brummy@gentoo.org</email>                                                                        
-		<name>Joerg Bornkessel</name>                                                                      
+	<maintainer type="person">
+		<name>Joerg Bornkessel</name>
+		<email>hd_brummy@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="server">Enable tntnet server daemon</flag>

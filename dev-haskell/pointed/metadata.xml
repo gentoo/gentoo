@@ -5,9 +5,17 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Haskell 98 pointed and copointed data
-	</longdescription>
+	<use>
+		<flag name="comonad">optional instances</flag>
+		<flag name="containers">optional instances</flag>
+		<flag name="kan-extensions">optional instances</flag>
+		<flag name="semigroupoids">optional instances</flag>
+		<flag name="semigroups">optional instances</flag>
+		<flag name="stm">optional instances</flag>
+		<flag name="tagged">optional instances</flag>
+		<flag name="transformers">optional instances</flag>
+		<flag name="unordered-containers">optional instances</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">ekmett/pointed</remote-id>
 	</upstream>

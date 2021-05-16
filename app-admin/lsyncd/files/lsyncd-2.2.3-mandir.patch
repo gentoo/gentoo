@@ -1,0 +1,9 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,5 +107,5 @@ add_executable( lsyncd ${LSYNCD_SRC} )
+ target_link_libraries( lsyncd ${LUA_LIBRARIES} )
+ 
+ install( TARGETS lsyncd RUNTIME DESTINATION bin )
+-install( FILES doc/manpage/lsyncd.1 DESTINATION man )
++install( FILES doc/manpage/lsyncd.1 DESTINATION share/man/man1 )
+ 

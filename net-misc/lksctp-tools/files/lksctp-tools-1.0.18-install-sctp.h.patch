@@ -1,0 +1,11 @@
+https://github.com/sctp/lksctp-tools/commit/378560050a8f93786c590cc99a55461666205b61
+
+--- a/src/include/netinet/Makefile.am
++++ b/src/include/netinet/Makefile.am
+@@ -11,5 +11,4 @@ libcnetinetdir = $(includedir)/netinet
+ # API.
+ include_HEADERS =
+ 
+-libcnetinet_HEADERS = sctp.h.in
+-BUILT_SOURCES = sctp.h
++libcnetinet_HEADERS = sctp.h

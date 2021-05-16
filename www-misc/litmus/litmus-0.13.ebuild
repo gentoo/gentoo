@@ -1,18 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit autotools eutils
+inherit autotools epatch
 
 # TODO: FAIL (connection refused by '...' port 80: Connection refused)
 # We can't run tests that connect with the internet.
 RESTRICT="test"
 
 DESCRIPTION="WebDAV server protocol compliance test suite"
-HOMEPAGE="http://www.webdav.org/neon/litmus"
-SRC_URI="http://www.webdav.org/neon/${PN}/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

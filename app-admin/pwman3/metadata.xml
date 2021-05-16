@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Oz Tiram</name>
+		<email>oz.tiram@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	A lightweight command line password manager, which can use different
+	databases to store your passwords (currently, SQLite, MySQL, Postgresql
+	and MongoDB are supported). Pwman3 can also copy passwords to the
+	clipboard without exposing them. Besides managing and storing passwords,
+	Pwman3 can also generate passwords using different algorithms.
+	Per default pwman3 uses a strong AES encryption algorithm to store the
+	data.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pwman3/pwman3</remote-id>
+	</upstream>
+</pkgmetadata>

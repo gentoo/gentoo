@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		This packages provides a library which exports the functions crypt(3),
+		encrypt(3), and setkey(3).  The created passwords are 56 bit DES
+		encrypted and are 100% identical to those created by the Linux crypt(3).
+	</longdescription>
+</pkgmetadata>

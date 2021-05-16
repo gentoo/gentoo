@@ -1,32 +1,29 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="3"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Tools for configuring ISA PnP devices"
-HOMEPAGE="http://www.roestock.demon.co.uk/isapnptools/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="ftp://metalab.unc.edu/pub/Linux/system/hardware/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-include.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-include.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodir /sbin
-	mv "${D}"/usr/sbin/isapnp "${D}"/sbin/ || die
+	default
 
-	dodoc AUTHORS ChangeLog README NEWS
+	dodir /sbin
+	mv "${ED}"/{usr/sbin/isapnp,sbin/} || die
+
 	docinto txt
-	dodoc doc/README*  doc/*.txt test/*.txt
+	dodoc doc/{README*,*.txt} test/*.txt
 	dodoc etc/isapnp.*
 
 	newinitd "${FILESDIR}"/isapnp.rc isapnp

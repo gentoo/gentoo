@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>alexey+gentoo@asokolov.org</email>
+    <name>Alexey Sokolov</name>
+  </maintainer>
+  <maintainer type="person" proxied="proxy">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <use>
+    <flag name="free">Install fonts for the "free" preset</flag>
+    <flag name="latin">Install additional latin fonts</flag>
+    <flag name="ms">Install (free) fonts for the "ms" preset</flag>
+  </use>
+</pkgmetadata>

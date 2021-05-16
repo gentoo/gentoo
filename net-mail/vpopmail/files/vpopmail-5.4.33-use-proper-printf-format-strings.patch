@@ -1,0 +1,217 @@
+From 8ebcfc44379708521c41193057bb1549a3c1a2eb Mon Sep 17 00:00:00 2001
+From: Rolf Eike Beer <eike@sf-mail.de>
+Date: Sat, 26 Oct 2019 18:25:12 +0200
+Subject: [PATCH 2/2] use proper printf format strings
+
+---
+ maildirquota.c  |  4 ++--
+ vlimits.c       |  8 ++++----
+ vlistlib.c      |  2 +-
+ vmoddomlimits.c |  8 ++++----
+ vpopmail.c      | 17 +++++++++--------
+ vpopmaild.c     | 20 ++++++++++----------
+ vusagec.c       |  2 +-
+ 7 files changed, 31 insertions(+), 30 deletions(-)
+
+diff --git a/maildirquota.c b/maildirquota.c
+index 1c3dd44..11a0ce3 100644
+--- a/maildirquota.c
++++ b/maildirquota.c
+@@ -400,7 +400,7 @@ static int maildirsize_read(const char *filename,	/* The filename */
+ 			first=0;
+ 			continue;
+ 		}
+-		sscanf(q, "%llu %llu", &n, &c);
++		sscanf(q, "%" PRIu64 " %" PRIu64 "", &n, &c);
+ 		*sizeptr += n;
+ 		*cntptr += c;
+ 		++ *nlines;
+@@ -806,7 +806,7 @@ int	n;
+ 		niov=2;
+ 	}
+ 
+-	sprintf(u.buf, "%llu %llu\n", maildirsize_size, maildirsize_cnt);
++	sprintf(u.buf, "%" PRIu64 " %" PRIu64 "\n", maildirsize_size, maildirsize_cnt);
+ 	iov[niov].iov_base=u.buf;
+ 	iov[niov].iov_len=strlen(u.buf);
+ 
+diff --git a/vlimits.c b/vlimits.c
+index af336d2..c4d76ba 100644
+--- a/vlimits.c
++++ b/vlimits.c
+@@ -480,10 +480,10 @@ int vlimits_write_limits_file(const char *dir, const struct vlimits *limits)
+         fprintf(fs, "maxforwards: %d\n", limits->maxforwards);
+         fprintf(fs, "maxautoresponders: %d\n", limits->maxautoresponders);
+         fprintf(fs, "maxmailinglists: %d\n", limits->maxmailinglists);
+-        fprintf(fs, "quota: %llu\n", limits->diskquota);
+-        fprintf(fs, "maxmsgcount: %llu\n", limits->maxmsgcount);
+-        fprintf(fs, "default_quota: %llu\n", limits->defaultquota);
+-        fprintf(fs, "default_maxmsgcount: %llu\n", limits->defaultmaxmsgcount);
++        fprintf(fs, "quota: %" PRIu64 "\n", limits->diskquota);
++        fprintf(fs, "maxmsgcount: %" PRIu64 "\n", limits->maxmsgcount);
++        fprintf(fs, "default_quota: %" PRIu64 "\n", limits->defaultquota);
++        fprintf(fs, "default_maxmsgcount: %" PRIu64 "\n", limits->defaultmaxmsgcount);
+         if (limits->disable_pop) fprintf(fs, "disable_pop\n");
+         if (limits->disable_imap) fprintf(fs, "disable_imap\n");
+         if (limits->disable_dialup) fprintf(fs, "disable_dialup\n");
+diff --git a/vlistlib.c b/vlistlib.c
+index 110a93e..cbb8242 100644
+--- a/vlistlib.c
++++ b/vlistlib.c
+@@ -488,7 +488,7 @@ void ezmlm_decode( listInfoType *LI ) {
+         if( (fs=fopen(TmpBuf, "r")) !=NULL ) {
+             if(fgets(TmpBuf2, sizeof(TmpBuf2), fs)) {
+                 Tmp = strtok( TmpBuf2, ":" );
+-                printf( "    First Token: %s Len: %d\n", Tmp, strlen( Tmp ));
++                printf( "    First Token: %s Len: %zu\n", Tmp, strlen( Tmp ));
+                 if( NULL != Tmp ) { 
+                    for(i=0; i<strlen(Tmp); i++) LI->SQLHost[i] = Tmp[i];
+                    LI->SQLHost[i] = (char) 0;
+diff --git a/vmoddomlimits.c b/vmoddomlimits.c
+index cff906a..7a9c8b8 100644
+--- a/vmoddomlimits.c
++++ b/vmoddomlimits.c
+@@ -207,10 +207,10 @@ int main(int argc, char *argv[])
+             printf ((limits.perm_defaultquota & VLIMIT_DISABLE_DELETE ? "DENY_DELETE  " :"ALLOW_DELETE ") );
+             
+             printf("\n");
+-            printf("Domain Quota: %llu MB\n", limits.diskquota);
+-            printf("Default User Quota: %llu bytes\n", limits.defaultquota);
+-            printf("Max Domain Messages: %llu\n", limits.maxmsgcount);
+-            printf("Default Max Messages per User: %llu\n", limits.defaultmaxmsgcount);
++            printf("Domain Quota: %" PRIu64 " MB\n", limits.diskquota);
++            printf("Default User Quota: %" PRIu64 " bytes\n", limits.defaultquota);
++            printf("Max Domain Messages: %" PRIu64 "\n", limits.maxmsgcount);
++            printf("Default Max Messages per User: %" PRIu64 "\n", limits.defaultmaxmsgcount);
+             return(vexit(0));
+         }
+                 
+diff --git a/vpopmail.c b/vpopmail.c
+index 3b6a3e5..c389c7c 100644
+--- a/vpopmail.c
++++ b/vpopmail.c
+@@ -31,6 +31,7 @@
+ #include <fcntl.h>
+ #include <time.h>
+ #include <dirent.h>
++#include <inttypes.h>
+ #include <pwd.h>
+ #include "config.h"
+ #ifdef HAVE_ERR_H
+@@ -737,13 +738,13 @@ int vadduser( char *username, char *domain, char *password, char *gecos,
+ 
+   if (limits.defaultquota > 0) {
+     if (limits.defaultmaxmsgcount > 0)
+-      snprintf (quota, sizeof(quota), "%lluS,%lluC", limits.defaultquota,
++      snprintf (quota, sizeof(quota), "%" PRIu64 "S,%" PRIu64 "C", limits.defaultquota,
+         limits.defaultmaxmsgcount);
+     else
+-      snprintf (quota, sizeof(quota), "%lluS", limits.defaultquota);
++      snprintf (quota, sizeof(quota), "%" PRIu64 "S", limits.defaultquota);
+   } else {
+     if (limits.defaultmaxmsgcount > 0)
+-      snprintf (quota, sizeof(quota), "%lluC", limits.defaultmaxmsgcount);
++      snprintf (quota, sizeof(quota), "%" PRIu64 "C", limits.defaultmaxmsgcount);
+     else
+       strcpy (quota, "NOQUOTA");
+   }
+@@ -3822,11 +3823,11 @@ static char    tempquota[128];
+ 
+     if (quota_count == 0)
+       if (quota_size == 0) strcpy (tempquota, ""); /* invalid quota */
+-      else sprintf (tempquota, "%lluS", quota_size);
++      else sprintf (tempquota, "%" PRIu64 "S", quota_size);
+     else if (quota_size == 0)
+-      sprintf (tempquota, "%lluC", quota_count);
++      sprintf (tempquota, "%" PRIu64 "C", quota_count);
+     else
+-      sprintf (tempquota, "%lluS,%lluC", quota_size, quota_count);
++      sprintf (tempquota, "%" PRIu64 "S,%" PRIu64 "C", quota_size, quota_count);
+ 
+     return tempquota;
+ }
+@@ -4050,8 +4051,8 @@ int qnprintf (char *buffer, size_t size, const char *format, ...)
+ 					snprintf (n, sizeof(n), "%u", va_arg (ap, unsigned int));
+ 					break;
+ 
+-			    case 'S':
+-					snprintf(n, sizeof(n), "%llu", va_arg(ap, storage_t));
++				case 'S':
++					snprintf(n, sizeof(n), "%" PRIu64, va_arg(ap, storage_t));
+ 					break;
+ 					
+ 				case 'l':
+diff --git a/vpopmaild.c b/vpopmaild.c
+index f257a52..9cf2981 100644
+--- a/vpopmaild.c
++++ b/vpopmaild.c
+@@ -2280,13 +2280,13 @@ int get_limits()
+     mylimits.maxautoresponders); wait_write();
+   snprintf(WriteBuf,sizeof(WriteBuf), "max_mailinglists %d" RET_CRLF, 
+     mylimits.maxmailinglists); wait_write();
+-  snprintf(WriteBuf,sizeof(WriteBuf), "disk_quota %llu" RET_CRLF, 
++  snprintf(WriteBuf,sizeof(WriteBuf), "disk_quota %" PRIu64 RET_CRLF,
+     mylimits.diskquota); wait_write();
+-  snprintf(WriteBuf,sizeof(WriteBuf), "max_msgcount %llu" RET_CRLF, 
++  snprintf(WriteBuf,sizeof(WriteBuf), "max_msgcount %" PRIu64 RET_CRLF,
+     mylimits.maxmsgcount); wait_write();
+-  snprintf(WriteBuf,sizeof(WriteBuf), "default_quota %llu" RET_CRLF, 
++  snprintf(WriteBuf,sizeof(WriteBuf), "default_quota %" PRIu64 RET_CRLF,
+     mylimits.defaultquota); wait_write();
+-  snprintf(WriteBuf,sizeof(WriteBuf), "default_maxmsgcount %llu" RET_CRLF, 
++  snprintf(WriteBuf,sizeof(WriteBuf), "default_maxmsgcount %" PRIu64 RET_CRLF,
+     mylimits.defaultmaxmsgcount); wait_write();
+ 
+   if (mylimits.disable_pop) 
+@@ -2625,9 +2625,9 @@ int get_user_size()
+ 
+   snprintf(WriteBuf, sizeof(WriteBuf), "%s", RET_OK_MORE);
+   wait_write();
+-  snprintf(WriteBuf, sizeof(WriteBuf), "size %llu" RET_CRLF, bytes);
++  snprintf(WriteBuf, sizeof(WriteBuf), "size %" PRIu64 RET_CRLF, bytes);
+   wait_write();
+-  snprintf(WriteBuf, sizeof(WriteBuf), "count %llu" RET_CRLF, cnt);
++  snprintf(WriteBuf, sizeof(WriteBuf), "count %" PRIu64 RET_CRLF, cnt);
+   wait_write();
+   snprintf(WriteBuf, sizeof(WriteBuf), "%s", "." RET_CRLF);
+ 
+@@ -2680,9 +2680,9 @@ int get_domain_size()
+     } else {
+       snprintf(WriteBuf, sizeof(WriteBuf), "user %s@%s" RET_CRLF, tmpvpw->pw_name, domain);
+       wait_write();
+-      snprintf(WriteBuf, sizeof(WriteBuf), "size %llu" RET_CRLF, bytes);
++      snprintf(WriteBuf, sizeof(WriteBuf), "size %" PRIu64 RET_CRLF, bytes);
+       wait_write();
+-      snprintf(WriteBuf, sizeof(WriteBuf), "count %llu" RET_CRLF, cnt);
++      snprintf(WriteBuf, sizeof(WriteBuf), "count %" PRIu64 RET_CRLF, cnt);
+       wait_write();
+       totalbytes += (unsigned long)bytes;
+       totalcnt += (unsigned int)cnt;
+@@ -2691,9 +2691,9 @@ int get_domain_size()
+ 
+   snprintf(WriteBuf, sizeof(WriteBuf), "domain %s" RET_CRLF, domain);
+   wait_write();
+-  snprintf(WriteBuf, sizeof(WriteBuf), "size %llu" RET_CRLF, totalbytes);
++  snprintf(WriteBuf, sizeof(WriteBuf), "size %" PRIu64 RET_CRLF, totalbytes);
+   wait_write();
+-  snprintf(WriteBuf, sizeof(WriteBuf), "count %llu" RET_CRLF, totalcnt);
++  snprintf(WriteBuf, sizeof(WriteBuf), "count %" PRIu64 RET_CRLF, totalcnt);
+   wait_write();
+   snprintf(WriteBuf, sizeof(WriteBuf), "%s", "." RET_CRLF);
+ 
+diff --git a/vusagec.c b/vusagec.c
+index c32c2fe..5cc6dda 100644
+--- a/vusagec.c
++++ b/vusagec.c
+@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
+ 	  if (uusage == -1)
+ 		 printf("%s: No data available\n", argv[i]);
+ 	  else
+-		 printf("%s: %llu byte(s) in %llu file(s)\n", *(argv[i]) == '@' ? (argv[i] + 1) : argv[i], uusage, musage);
++		 printf("%s: %" PRIu64 " byte(s) in %" PRIu64 " file(s)\n", *(argv[i]) == '@' ? (argv[i] + 1) : argv[i], uusage, musage);
+    }
+ 
+    client_close(handle);
+-- 
+2.16.4
+

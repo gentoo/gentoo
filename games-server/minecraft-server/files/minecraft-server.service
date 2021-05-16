@@ -1,0 +1,16 @@
+[Unit]
+Description=Minecraft Server (World: %I)
+After=network.target
+
+[Service]
+User=minecraft
+Group=minecraft
+WorkingDirectory=-/var/lib/minecraft-server/%I
+PIDFile=/run/minecraft-server.%I.pid
+ExecStartPre=!/bin/mkdir -p /var/lib/minecraft-server/%I
+ExecStartPre=!/bin/chown -R minecraft:minecraft /var/lib/minecraft-server/%I
+ExecStartPre=/bin/sh -c 'echo "eula=true" > /var/lib/minecraft-server/%I/eula.txt'
+ExecStart=/bin/sh -c '/usr/bin/dtach -N $(mktemp -u) /usr/bin/minecraft-server'
+
+[Install]
+WantedBy=multi-user.target

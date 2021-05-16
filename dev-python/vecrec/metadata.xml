@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="project">
+        <email>3dprint@gentoo.org</email>
+        <name>Gentoo 3D Printer Project</name>
+    </maintainer>
+    <longdescription>
+        Python-FCL is an (unofficial) Python interface for the Flexible Collision Library (FCL), an excellent C++
+        library for performing proximity and collision queries on pairs of geometric models.
+    </longdescription>
+    <upstream>
+        <bugs-to>https://github.com/kxgames/vecrec/issues</bugs-to>
+        <remote-id type="github">kxgames/vecrec</remote-id>
+        <remote-id type="pypi">vecrec</remote-id>
+    </upstream>
+</pkgmetadata>

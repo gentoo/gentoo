@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -36,7 +35,7 @@ src_prepare() {
 	ARCHFLAGS = -rvs
 	RANLIB = $(tc-getRANLIB)
 	LOCALLIBDIR = "${EPREFIX}/usr/$(get_libdir)
-	SYSLIBS = $(pkg-config --libs gsl) -lpthread
+	SYSLIBS = $($(tc-getPKG_CONFIG) --libs gsl) -lpthread
 	LIBS = -ldistfit -lmsa -ldssplite -ldltmath -lDLTutils -ltheseus
 	LIBDIR = -L./lib
 	INSTALLDIR = "${ED}"/usr/bin
@@ -58,7 +57,7 @@ src_prepare() {
 		-i theseus_align || die
 }
 
-src_compile () {
+src_compile() {
 	emake ltheseus
 	default
 }

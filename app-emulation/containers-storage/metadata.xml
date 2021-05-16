@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<use>
+		<flag name="btrfs">
+			Enables dependencies for the "btrfs" graph driver, including
+			necessary kernel flags.
+		</flag>
+		<flag name="device-mapper">
+			Enables dependencies for the "devicemapper" graph driver, including
+			necessary kernel flags.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">containers/storage</remote-id>
+	</upstream>
+</pkgmetadata>

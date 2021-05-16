@@ -5,7 +5,4 @@
 	<email>common-lisp@gentoo.org</email>
 	<name>Gentoo Common Lisp Project</name>
 </maintainer>
-<longdescription>
-Clozure Common Lisp (formerly OpenMCL) is a Common Lisp implementation.
-</longdescription>
 </pkgmetadata>

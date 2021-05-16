@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs
+inherit epatch multilib toolchain-funcs
 
 MY_P="${P/_p/-}"
 DESCRIPTION="TOMOYO Linux tools"
@@ -50,7 +49,7 @@ src_install() {
 
 	# Fix out-of-place readme and license
 	rm "${D}"/usr/$(get_libdir)/tomoyo/{COPYING.tomoyo,README.tomoyo} || die
-	dodoc README.tomoyo || die
+	dodoc README.tomoyo
 }
 
 pkg_postinst() {

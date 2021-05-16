@@ -1,0 +1,16 @@
+Build failure triggers on CXXFLAGS=-Werror=terminate
+
+  cmdline.cpp: In destructor ‘virtual XxCmdline::~XxCmdline()’:
+  ./defs.h:121:43: error: throw will always call terminate() [-Werror=terminate]
+      { throw XxInternalError( XX_EXC_PARAMS ); }                                           ^
+  cmdline.cpp:369:7: note: in expansion of macro ‘XX_ASSERT’
+
+https://bugs.gentoo.org/601018
+diff --git a/src/cmdline.cpp b/src/cmdline.cpp
+index 8cb0ac9..174b9a4 100644
+--- a/src/cmdline.cpp
++++ b/src/cmdline.cpp
+@@ -368,3 +368,2 @@ XxCmdline::~XxCmdline()
+    for ( int ii = 0; ii < _nbQtOptions; ++ii ) {
+-      XX_ASSERT( _qtOptions[ii] != 0 );
+ #ifndef WINDOWS

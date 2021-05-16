@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,6 +12,7 @@ DESCRIPTION="XS for C++"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Digest-MD5-2.0.0
@@ -25,5 +25,5 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-Base
 	)
 "
-
+PATCHES=( "${FILESDIR}/${P}-no-dot-inc.patch" )
 SRC_TEST="do parallel"

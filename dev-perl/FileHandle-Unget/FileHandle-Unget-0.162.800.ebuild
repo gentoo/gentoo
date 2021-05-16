@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,8 +11,9 @@ DESCRIPTION="A FileHandle which supports ungetting of multiple bytes"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ia64 ppc sparc x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/perl-Scalar-List-Utils-1.140.0"
 DEPEND="${RDEPEND}
@@ -24,3 +24,9 @@ DEPEND="${RDEPEND}
 "
 
 SRC_TEST="do parallel"
+
+src_prepare() {
+	sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL ||
+		die "Can't patch Makefile.PL for 5.26 dot-in-inc"
+	perl-module_src_prepare
+}

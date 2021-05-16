@@ -1,0 +1,128 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# shellcheck disable=SC2034
+
+: "${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE:=}"
+: "${NOTIFY_PUSH_PIDFILE:=/run/${SVCNAME}.pid}"
+: "${NOTIFY_PUSH_SSDARGS:=--wait 1000}"
+: "${NOTIFY_PUSH_TERMTIMEOUT:=TERM/30/KILL/5}"
+: "${NOTIFY_PUSH_USER:=nobody}"
+: "${NOTIFY_PUSH_GROUP:=nobody}"
+
+command="/usr/bin/nextcloud-notify_push"
+command_args="${NOTIFY_PUSH_OPTS}"
+command_background="yes"
+command_user="${NOTIFY_PUSH_USER}:${NOTIFY_PUSH_GROUP}"
+pidfile="${NOTIFY_PUSH_PIDFILE}"
+retry="${NOTIFY_PUSH_TERMTIMEOUT}"
+start_stop_daemon_args="${NOTIFY_PUSH_SSDARGS}"
+
+description="Push daemon for Nextcloud clients"
+
+depend() {
+	use dns
+}
+
+start_pre() {
+	local has_errors=
+
+	if [ -n "${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}" ] ; then
+		if ! su -s /bin/sh -c "test -r \"${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}\"" ${NOTIFY_PUSH_USER} 1>/dev/null 2>&1 ; then
+			eerror "Config file \"${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}\" does not exist or is not accessible for user \"${NOTIFY_PUSH_USER}\"!"
+			return 1
+		fi
+
+		command_args="${command_args} \"${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}\""
+	fi
+
+	# Required options when no config file was specified
+	if [ -n "${DATABASE_URL}" ] ; then
+		export DATABASE_URL
+	elif [ -z "${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}" ] && [ -z "${DATABASE_URL}" ] ; then
+		has_errors=yes
+		eerror "DATABASE_URL not set!"
+	fi
+
+	if [ -n "${DATABASE_PREFIX}" ] ; then
+		export DATABASE_PREFIX
+	elif [ -z "${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}" ] && [ -z "${DATABASE_PREFIX}" ] ; then
+		has_errors=yes
+		eerror "DATABASE_PREFIX not set!"
+	fi
+
+	if [ -n "${REDIS_URL}" ] ; then
+		export REDIS_URL
+	elif [ -z "${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}" ] && [ -z "${REDIS_URL}" ] ; then
+		has_errors=yes
+		eerror "REDIS_URL not set!"
+	fi
+
+	if [ -z "${NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE}" ] && [ -z "${SOCKET_PATH}" ] && [ -z "${PORT}" ] ; then
+		has_errors=yes
+		eerror "Neither SOCKET_PATH nor PORT is set!"
+	elif [ -n "${SOCKET_PATH}" ] ; then
+		checkpath -q -d -o ${NOTIFY_PUSH_USER}:${NOTIFY_PUSH_GROUP} -m 0770 "$(dirname "${SOCKET_PATH}")"
+		service_set_value SOCKET_PATH "${SOCKET_PATH}"
+		export SOCKET_PATH
+	elif [ -n "${PORT}" ] ; then
+		export PORT
+	fi
+
+	# Optional options
+	if [ -n "${ALLOW_SELF_SIGNED}" ] ; then
+		export ALLOW_SELF_SIGNED
+	fi
+
+	if [ -n "${BIND}" ] ; then
+		export BIND
+	fi
+
+	if [ -n "${LOG}" ] ; then
+		export LOG
+	fi
+
+	# shellcheck disable=SC2154
+	if [ -n "${LOGFILE}" ] ; then
+		checkpath -q -f -o ${NOTIFY_PUSH_USER}:adm -m 0644 "${LOGFILE}"
+		output_log="${LOGFILE}"
+		error_log="${LOGFILE}"
+	fi
+
+	if [ -n "${METRICS_PORT}" ] ; then
+		export METRICS_PORT
+	fi
+
+	if [ -n "${METRICS_SOCKET_PATH}" ] ; then
+		checkpath -q -d -o ${NOTIFY_PUSH_USER}:${NOTIFY_PUSH_GROUP} -m 0770 "$(dirname "${METRICS_SOCKET_PATH}")"
+		service_set_value METRICS_SOCKET_PATH "${METRICS_SOCKET_PATH}"
+		export METRICS_SOCKET_PATH
+	fi
+
+	if [ -n "${SOCKET_PERMISSIONS}" ] ; then
+		export SOCKET_PERMISSIONS
+	fi
+
+	if [ -n "${has_errors}" ] ; then
+		eerror ""
+		eerror "Either set the variable above or specify NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE"
+		eerror "in /etc/conf.d/${SVCNAME}!"
+		return 1
+	fi
+}
+
+stop_post() {
+	local old_socket=
+	for old_socket in SOCKET_PATH METRICS_SOCKET_PATH ; do
+		old_socket=$(service_get_value ${old_socket})
+		[ -n "${old_socket}" ] || continue
+		[ -e "${old_socket}" ] || continue
+
+		ebegin "Cleaning up stale socket \"${old_socket}\""
+		rm "${old_socket}"
+		eend $?
+	done
+
+	return 0
+}

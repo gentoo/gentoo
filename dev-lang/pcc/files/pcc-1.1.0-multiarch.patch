@@ -1,5 +1,5 @@
---- cc/cc/cc.c	2014-12-06 09:52:55.000000000 +0000
-+++ cc/cc/cc.c.new	2015-03-09 09:22:25.569376330 +0000
+--- a/cc/cc/cc.c
++++ b/cc/cc/cc.c
 @@ -206,7 +206,7 @@
  #define PCCLIBDIR	NULL
  #endif

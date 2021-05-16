@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -8,14 +7,14 @@ JAVA_PKG_IUSE="source"
 JAVA_PKG_WANT_BOOTCLASSPATH="1.5"
 WANT_ANT_TASKS="ant-contrib"
 
-inherit eutils java-pkg-2 java-ant-2
+inherit epatch java-pkg-2 java-ant-2
 
 MY_PN="mysql-connector-java"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="MySQL JDBC driver"
-HOMEPAGE="http://www.mysql.com/products/connector/j/"
-SRC_URI="mirror://mysql/Downloads/Connector-J/${MY_P}.tar.gz"
+HOMEPAGE="https://www.mysql.com/products/connector/j/"
+SRC_URI="https://dev.mysql.com/get/Downloads/Connector-J/${MY_P}.tar.gz"
 
 LICENSE="GPL-2-with-MySQL-FLOSS-exception"
 SLOT="0"

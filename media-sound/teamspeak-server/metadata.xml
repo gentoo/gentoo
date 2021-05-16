@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		TeamSpeak is a proprietary voice-over-Internet Protocol (VoIP) application
+		for audio communication between users on a chat channel, much like a telephone conference call.
+		Users typically use headphones with a microphone.
+		The server software allows users to connect and join chat channels.
+	</longdescription>
+	<use>
+		<flag name="tsdns">Install TeamSpeaks own DNS service for handling multiple virtual servers.</flag>
+	</use>
+</pkgmetadata>

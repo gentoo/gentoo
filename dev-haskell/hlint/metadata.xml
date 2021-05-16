@@ -2,13 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-  <email>haskell@gentoo.org</email>
-  <name>Gentoo Haskell</name>
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		HLint gives suggestions on how to improve your source code.
-	</longdescription>
-<use>
-  <flag name="gpl">Use GPL libraries, specifically hscolour.</flag>
-</use>
+	<use>
+		<flag name="gpl">Use GPL libraries, specifically hscolour</flag>
+		<flag name="hsyaml">Use HsYAML instead of yaml</flag>
+		<flag name="threaded">Build with support for multithreaded execution</flag>
+	</use>
 </pkgmetadata>

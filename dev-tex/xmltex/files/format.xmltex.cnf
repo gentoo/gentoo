@@ -1,2 +1,0 @@
-xmltex          pdftex	language.dat	&latex xmltex.ini
-pdfxmltex       pdftex	language.dat	&pdflatex pdfxmltex.ini

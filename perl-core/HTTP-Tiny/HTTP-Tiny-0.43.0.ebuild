@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 MODULE_AUTHOR=DAGOLDEN
@@ -8,10 +7,11 @@ MODULE_VERSION=0.043
 inherit perl-module
 
 DESCRIPTION='A small, simple, correct HTTP/1.1 client'
-LICENSE=" || ( Artistic GPL-2 )"
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.30

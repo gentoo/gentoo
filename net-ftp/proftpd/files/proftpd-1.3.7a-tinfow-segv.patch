@@ -1,0 +1,197 @@
+https://github.com/proftpd/proftpd/commit/ff413723328da726d1042c7d2067d088765eca57
+https://bugs.gentoo.org/777432
+
+From ff413723328da726d1042c7d2067d088765eca57 Mon Sep 17 00:00:00 2001
+From: TJ Saunders <tj@castaglia.org>
+Date: Sun, 14 Mar 2021 10:08:02 -0700
+Subject: [PATCH] Issue #1174: Check for the libtinfow library when ncursesw is
+ being used.
+
+On some systems, such as Gentoo, linking against libtinfo with libncursesw,
+rather than libtinfow, leads to segfaults.
+---
+ config.h.in  |  3 ++
+ configure    | 98 +++++++++++++++++++++++++++++++++++++++++++++++++---
+ configure.in | 24 +++++++++----
+ 3 files changed, 114 insertions(+), 11 deletions(-)
+
+diff --git a/config.h.in b/config.h.in
+index 1ba33caf9..775b7a294 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -966,6 +966,9 @@
+ /* Define if you have the libtinfo library (-ltinfo).  */
+ #undef HAVE_LIBTINFO
+ 
++/* Define if you have the libtinfow library (-ltinfow).  */
++#undef HAVE_LIBTINFOW
++
+ /* Define if you have the addrinfo struct.  */
+ #undef HAVE_STRUCT_ADDRINFO
+ 
+diff --git a/configure b/configure
+index 64080483f..86cf1360e 100755
+--- a/configure
++++ b/configure
+@@ -23169,18 +23169,106 @@ $as_echo "#define PR_USE_CURSES 1" >>confdefs.h
+ fi
+ 
+ if test x"$enable_ncurses" != xno ; then
++
+   if test x"$pr_have_ncursesw" = xyes ; then
+ 
+ $as_echo "#define PR_USE_NCURSESW 1" >>confdefs.h
+ 
+-  else
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for halfdelay in -ltinfow" >&5
++$as_echo_n "checking for halfdelay in -ltinfow... " >&6; }
++if ${ac_cv_lib_tinfow_halfdelay+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-ltinfow  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
+ 
+-$as_echo "#define PR_USE_NCURSES 1" >>confdefs.h
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char halfdelay ();
++int
++main ()
++{
++return halfdelay ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  ac_cv_lib_tinfow_halfdelay=yes
++else
++  ac_cv_lib_tinfow_halfdelay=no
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_tinfow_halfdelay" >&5
++$as_echo "$ac_cv_lib_tinfow_halfdelay" >&6; }
++if test "x$ac_cv_lib_tinfow_halfdelay" = xyes; then :
++   UTILS_LIBS="$UTILS_LIBS -ltinfow"
+ 
+-  fi
++$as_echo "#define HAVE_LIBTINFOW 1" >>confdefs.h
++
++
++else
++   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for halfdelay in -ltinfo" >&5
++$as_echo_n "checking for halfdelay in -ltinfo... " >&6; }
++if ${ac_cv_lib_tinfo_halfdelay+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-ltinfo  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char halfdelay ();
++int
++main ()
++{
++return halfdelay ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  ac_cv_lib_tinfo_halfdelay=yes
++else
++  ac_cv_lib_tinfo_halfdelay=no
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
+ fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_tinfo_halfdelay" >&5
++$as_echo "$ac_cv_lib_tinfo_halfdelay" >&6; }
++if test "x$ac_cv_lib_tinfo_halfdelay" = xyes; then :
++   UTILS_LIBS="$UTILS_LIBS -ltinfo"
++
++$as_echo "#define HAVE_LIBTINFO 1" >>confdefs.h
+ 
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for halfdelay in -ltinfo" >&5
++
++fi
++
++
++fi
++
++  else
++
++$as_echo "#define PR_USE_NCURSES 1" >>confdefs.h
++
++    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for halfdelay in -ltinfo" >&5
+ $as_echo_n "checking for halfdelay in -ltinfo... " >&6; }
+ if ${ac_cv_lib_tinfo_halfdelay+:} false; then :
+   $as_echo_n "(cached) " >&6
+@@ -23224,6 +23312,8 @@ $as_echo "#define HAVE_LIBTINFO 1" >>confdefs.h
+ 
+ fi
+ 
++  fi
++fi
+ 
+ if test x"$enable_nonblocking_log_open" != xno; then
+ 
+diff --git a/configure.in b/configure.in
+index 59793a00c..4bd0f7c19 100644
+--- a/configure.in
++++ b/configure.in
+@@ -2789,20 +2789,30 @@ if test x"$enable_curses" != xno ; then
+ fi
+ 
+ if test x"$enable_ncurses" != xno ; then
++  dnl Check for the libtinfo library, which contains the halfdelay() curses
++  dnl function on some systems (e.g. OpenSuSE); see Bug#3718.  Note that on
++  dnl some systems, this may need to be libtinfow instead; see Issue #1174.
++
+   if test x"$pr_have_ncursesw" = xyes ; then
+     AC_DEFINE(PR_USE_NCURSESW, 1, [Define if using ncursesw support])
++    AC_CHECK_LIB(tinfow, halfdelay,
++      [ UTILS_LIBS="$UTILS_LIBS -ltinfow"
++        AC_DEFINE(HAVE_LIBTINFOW, 1, [Define if you have libtinfow])
++      ],
++      [ AC_CHECK_LIB(tinfo, halfdelay,
++        [ UTILS_LIBS="$UTILS_LIBS -ltinfo"
++          AC_DEFINE(HAVE_LIBTINFO, 1, [Define if you have libtinfo])
++        ])
++      ])
+   else
+     AC_DEFINE(PR_USE_NCURSES, 1, [Define if using ncurses support])
++    AC_CHECK_LIB(tinfo, halfdelay,
++      [ UTILS_LIBS="$UTILS_LIBS -ltinfo"
++        AC_DEFINE(HAVE_LIBTINFO, 1, [Define if you have libtinfo])
++      ])
+   fi
+ fi
+ 
+-dnl Check for the libtinfo library, which contains the halfdelay() curses
+-dnl function on some systems (e.g. OpenSuSE); see Bug#3718.
+-AC_CHECK_LIB(tinfo, halfdelay,
+-  [ UTILS_LIBS="$UTILS_LIBS -ltinfo"
+-    AC_DEFINE(HAVE_LIBTINFO, 1, [Define if you have libtinfo])
+-  ])
+-
+ if test x"$enable_nonblocking_log_open" != xno; then
+   AC_DEFINE(PR_USE_NONBLOCKING_LOG_OPEN, 1, [Define if using nonblocking open of log files])
+ fi

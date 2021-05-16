@@ -1,8 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Matt Turner <mattst88@gentoo.org> (19 Sep 2012)
-# multilib requires 32-bit libGL provided by emul-linux-x86-opengl
-# but also collides with 32-bit libGLU installed by emul-linux-x86-opengl
-media-libs/glu multilib

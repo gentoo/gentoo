@@ -2,8 +2,8 @@ Aspell dictionaries should be named LANGUAGE[_REGION][-VARIETY][-SIZE],
 therefore this patch adds de-1901 and de_DE-1901 as such alias names.
 See also: http://www.iana.org/assignments/language-subtag-registry
 
---- Makefile.pre
-+++ Makefile.pre
+--- a/Makefile.pre
++++ b/Makefile.pre
 @@ -7,7 +7,8 @@
  data_files = de-alt.dat de-alt_phonet.dat de-alt_affix.dat
  doc_files = README COPYING Copyright
@@ -14,8 +14,8 @@ See also: http://www.iana.org/assignments/language-subtag-registry
  rws_files = de-alt.rws
  
  distdir=aspell6-${lang}-${version}
---- README
-+++ README
+--- a/README
++++ b/README
 @@ -1,4 +1,4 @@
 -GNU Aspell 0.60 German - Old Spelling (Deutsch - Alter Spelling) Dictionary Package
 +GNU Aspell 0.60 German - Old Spelling (Deutsch - alte Rechtschreibung) Dictionary Package
@@ -31,16 +31,16 @@ See also: http://www.iana.org/assignments/language-subtag-registry
  Whereas the names in parentheses are alternate names for the
  dictionary preceding the parentheses.
  
---- de-1901.alias
-+++ de-1901.alias
+--- a/de-1901.alias
++++ b/de-1901.alias
 @@ -0,0 +1 @@
 +add de-alt.multi
---- de_DE-1901.alias
-+++ de_DE-1901.alias
+--- a/de_DE-1901.alias
++++ b/de_DE-1901.alias
 @@ -0,0 +1 @@
 +add de-alt.multi
---- info
-+++ info
+--- a/info
++++ b/info
 @@ -1,5 +1,5 @@
  name_english German - Old Spelling
 -name_ascii Deutsch - Alter Spelling

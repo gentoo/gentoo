@@ -1,7 +1,0 @@
-# Configuration file for /etc/init.d/bootpd
-
-# Name of the configuration file for bootpd
-# bootptab_file="/etc/bootptab"
-
-# Options to pass to bootpd. See bootpd(8).
-# bootpd_opts=""

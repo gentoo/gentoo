@@ -1,7 +1,0 @@
-/var/lib/bitcoin/.bitcoin/debug.log {
-	weekly
-	sharedscripts
-	postrotate
-		killall -HUP bitcoind
-	endscript
-}

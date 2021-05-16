@@ -1,5 +1,5 @@
---- epos-2.5.37.orig/src/nnet/neural.cc
-+++ epos-2.5.37/src/nnet/neural.cc
+--- a/src/nnet/neural.cc
++++ b/src/nnet/neural.cc
 @@ -38,7 +38,7 @@
  #include <string.h>
  #include <ctype.h>
@@ -9,8 +9,8 @@
  #include <time.h>
  
  /*
---- epos-2.5.37.orig/arch/win/service/install.cpp
-+++ epos-2.5.37/arch/win/service/install.cpp
+--- a/arch/win/service/install.cpp
++++ b/arch/win/service/install.cpp
 @@ -23,7 +23,7 @@
  #include <winsvc.h>
  #include "service.h"

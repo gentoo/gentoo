@@ -1,0 +1,9 @@
+prefix=@PREFIX@
+exec_prefix=${prefix}
+includedir=${prefix}/include/mkl
+
+Name: mkl-sdl-ilp64
+Version: Gentoo
+Description: Intel(R) Math Kernel Library
+Libs: -lmkl_rt -lpthread -lm -ldl
+Cflags: -I${includedir} -DMKL_ILP64 -m64

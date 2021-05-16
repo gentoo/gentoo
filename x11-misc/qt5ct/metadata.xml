@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<longdescription>
+		This program allows users to configure Qt5 settings (theme, font,
+		icons, etc.) under DE/WM without Qt5 integration.
+	</longdescription>
+	<use>
+		<flag name="dbus">Enable system tray and global menu support</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">qt5ct</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -5,7 +5,4 @@
     <email>sci-chemistry@gentoo.org</email>
     <name>Gentoo Chemistry Project</name>
   </maintainer>
-  <longdescription>
-Program v1.03 implementing IUPAC (Standard) InChI/InChIKey version 1.
-</longdescription>
 </pkgmetadata>

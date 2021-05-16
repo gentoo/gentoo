@@ -1,0 +1,32 @@
+https://github.com/fcitx/fcitx/issues/475
+
+--- /cmake/FindEnchant.cmake
++++ /cmake/FindEnchant.cmake
+@@ -16,15 +16,15 @@
+ endif(ENCHANT_INCLUDE_DIR AND ENCHANT_LIBRARIES)
+ 
+ find_package(PkgConfig)
+-pkg_check_modules(PC_ENCHANT enchant)
++pkg_check_modules(PC_ENCHANT enchant-2 enchant)
+ 
+ find_path(ENCHANT_INCLUDE_DIR
+   NAMES enchant.h
+   HINTS ${PC_ENCHANT_INCLUDE_DIRS}
+-  PATH_SUFFIXES "enchant")
++  PATH_SUFFIXES enchant-2 enchant)
+ 
+ find_library(ENCHANT_LIBRARIES
+-  NAMES enchant
++  NAMES enchant-2 enchant
+   HINTS ${PC_ENCHANT_LIBRARY_DIRS})
+ 
+ if(ENCHANT_INCLUDE_DIR AND ENCHANT_LIBRARIES)
+@@ -39,7 +39,7 @@
+   #include <stdlib.h>
+   #include <stddef.h>
+   #include <string.h>
+-  #include <enchant/enchant.h>
++  #include <enchant.h>
+ 
+   EnchantBroker *enchant_broker_init();
+   char **enchant_dict_suggest(EnchantDict *dict, const char *str,

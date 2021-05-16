@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -22,7 +21,7 @@ IUSE=""
 
 RUBY_S="${PN}-version-${PV}"
 
-ruby_add_rdepend "=dev-ruby/rubypants-0.2*:0"
+ruby_add_rdepend ">=dev-ruby/rubypants-0.2:0"
 ruby_add_bdepend "test? ( dev-ruby/tilt )"
 
 all_ruby_prepare() {

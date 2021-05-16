@@ -1,0 +1,37 @@
+--- a/net-snmp-config.in
++++ b/net-snmp-config.in
+@@ -193,10 +193,10 @@
+     #################################################### client lib
+     --libs)
+       # use this one == --netsnmp-libs + --external-libs
+-      echo $NSC_LIBDIR $NSC_SNMPLIBS $NSC_LIBS
++      echo $NSC_SNMPLIBS $NSC_LIBS
+       ;;
+     --netsnmp-libs)
+-      echo $NSC_LIBDIR $NSC_BASE_SNMP_LIBS
++      echo $NSC_BASE_SNMP_LIBS
+       ;;
+     --external-libs)
+       echo $NSC_LNETSNMPLIBS $NSC_LIBS @PERLLDOPTS_FOR_APPS@
+@@ -210,10 +210,10 @@
+       ;;
+     --agent-libs)
+       # use this one == --netsnmp-agent-libs + --external-libs
+-      echo $NSC_LIBDIR $NSC_AGENTLIBS $NSC_LIBS
++      echo $NSC_AGENTLIBS $NSC_LIBS
+       ;;
+     --netsnmp-agent-libs)
+-      echo $NSC_LIBDIR $NSC_BASE_AGENT_LIBS
++      echo $NSC_BASE_AGENT_LIBS
+       ;;
+     --external-agent-libs)
+       echo $NSC_LMIBLIBS $NSC_LAGENTLIBS $NSC_LNETSNMPLIBS $NSC_LIBS
+@@ -660,7 +660,7 @@
+         echo "Ack.  Can't create $tmpfile."
+ 	exit 1
+       fi
+-      cmd="@CC@ $cflags @CFLAGS@ @DEVFLAGS@ -I. -I${NSC_INCLUDEDIR} -o $outname $tmpfile $cfiles $NSC_LDFLAGS $NSC_LIBDIR $NSC_BASE_AGENT_LIBS $NSC_AGENTLIBS $ldflags"
++      cmd="@CC@ $cflags @CFLAGS@ @DEVFLAGS@ -I. -I${NSC_INCLUDEDIR} -o $outname $tmpfile $cfiles $ldflags $NSC_LDFLAGS $NSC_BASE_AGENT_LIBS $NSC_AGENTLIBS"
+       echo "running: $cmd"
+       echo `$cmd`
+       result=$?

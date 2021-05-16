@@ -1,0 +1,92 @@
+--- a/src/client.c
++++ b/src/client.c
+@@ -12,6 +12,7 @@
+ #include "draw.h"
+ #include "screen.h"
+ #include "mouse.h"
++#include "wmfs.h"
+ 
+ #define CLIENT_RESIZE_DIR(D)                                    \
+      void uicb_client_resize_##D(Uicb cmd)                      \
+--- a/src/event.c
++++ b/src/event.c
+@@ -21,6 +21,9 @@
+           if(!m->use_area || (m->use_area && INAREA(ev->x, ev->y, m->area))) \
+                if(m->func)                                                   \
+                     m->func(m->cmd);
++
++void (*event_handle[MAX_EV])(XEvent*);
++
+ static void
+ event_buttonpress(XEvent *e)
+ {
+--- a/src/event.h
++++ b/src/event.h
+@@ -17,6 +17,6 @@
+ 
+ void event_init(void);
+ 
+-void (*event_handle[MAX_EV])(XEvent*);
++extern void (*event_handle[MAX_EV])(XEvent*);
+ 
+ #endif /* EVENT_H */
+--- a/src/ewmh.c
++++ b/src/ewmh.c
+@@ -7,6 +7,7 @@
+ #include "util.h"
+ #include "screen.h"
+ #include "client.h"
++#include "wmfs.h"
+ 
+ /* Taken From standards.freedesktop.org */
+ #define _NET_WM_STATE_REMOVE 0 /* remove/unset property */
+--- a/src/mouse.c
++++ b/src/mouse.c
+@@ -9,6 +9,7 @@
+ #include "client.h"
+ #include "layout.h"
+ #include "draw.h"
++#include "wmfs.h"
+ 
+ #define _REV_SBORDER(c) draw_reversed_rect(W->root, c, false);
+ 
+--- a/src/status.c
++++ b/src/status.c
+@@ -9,6 +9,7 @@
+ #include "infobar.h"
+ #include "util.h"
+ #include "draw.h"
++#include "wmfs.h"
+ 
+ #include <string.h>
+ 
+--- a/src/wmfs.c
++++ b/src/wmfs.c
+@@ -25,6 +25,8 @@
+ #include "layout.h"
+ #include "systray.h"
+ 
++struct wmfs *W;
++
+ int
+ wmfs_error_handler(Display *d, XErrorEvent *event)
+ {
+@@ -617,8 +619,6 @@ main(int argc, char **argv)
+           }
+      }
+ 
+-     W = (struct wmfs*)xcalloc(1, sizeof(struct wmfs));
+-
+      /* Default path ~/.config/wmfs/wmfsrc */
+      W->confpath = path;
+ 
+--- a/src/wmfs.h
++++ b/src/wmfs.h
+@@ -444,6 +444,6 @@ void uicb_reload(Uicb cmd);
+ void uicb_quit(Uicb cmd);
+ 
+ /* Single global variable */
+-struct wmfs *W;
++extern struct wmfs *W;
+ 
+ #endif /* WMFS_H */

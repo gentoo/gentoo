@@ -6,6 +6,6 @@
 		<name>PHP</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">sabreamf</remote-id>
+		<remote-id type="github">evert/SabreAMF</remote-id>
 	</upstream>
 </pkgmetadata>

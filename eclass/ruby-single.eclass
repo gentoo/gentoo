@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: ruby-single.eclass
 # @MAINTAINER:
@@ -8,6 +7,7 @@
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
 # Based on python-single-r1 by: Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: An eclass for Ruby packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An eclass for packages which don't support being installed for
@@ -26,7 +26,7 @@ case "${EAPI:-0}" in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	4|5|6)
+	4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -39,6 +39,7 @@ inherit ruby-utils
 
 # @ECLASS-VARIABLE: USE_RUBY
 # @DEFAULT_UNSET
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # This variable contains a space separated list of targets (see above) a package
@@ -47,6 +48,7 @@ inherit ruby-utils
 
 
 # @ECLASS-VARIABLE: RUBY_DEPS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 #
 # This is an eclass-generated Ruby dependency string for all

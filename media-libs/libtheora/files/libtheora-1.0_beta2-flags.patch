@@ -1,6 +1,6 @@
 diff -ur libtheora-1.0beta2.orig/configure.ac libtheora-1.0beta2/configure.ac
---- libtheora-1.0beta2.orig/configure.ac	2007-10-13 00:01:38.000000000 +0300
-+++ libtheora-1.0beta2/configure.ac	2007-11-25 22:44:49.000000000 +0200
+--- a/configure.ac	2007-10-13 00:01:38.000000000 +0300
++++ b/configure.ac	2007-11-25 22:44:49.000000000 +0200
 @@ -102,8 +102,8 @@
          case $host in 
          *)

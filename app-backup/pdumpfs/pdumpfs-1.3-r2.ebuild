@@ -1,19 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
-DESCRIPTION="a daily backup system similar to Plan9's dumpfs"
+DESCRIPTION="A daily backup system similar to Plan9's dumpfs"
 HOMEPAGE="http://0xcc.net/pdumpfs/"
 SRC_URI="http://0xcc.net/pdumpfs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="linguas_ja"
+IUSE="l10n_ja"
 
 DEPEND=">=dev-lang/ruby-2.0.0_p598"
 
@@ -39,7 +38,7 @@ src_install() {
 	doman man/man8/pdumpfs.8
 	dohtml -r doc/*
 
-	if use linguas_ja; then
+	if use l10n_ja; then
 		insinto /usr/share/man/ja/man8
 		doins man/ja/man8/pdumpfs.8
 	fi

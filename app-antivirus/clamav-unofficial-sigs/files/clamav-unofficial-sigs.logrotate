@@ -1,4 +1,0 @@
-/var/log/clamav-unofficial-sigs/clamav-unofficial-sigs.log {
-     create 0640 clamav clamav
-     missingok
-}

@@ -1,6 +1,5 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # Location of logfile that all (!) mail software (MTA, spamfilter etc.) logs to.
 # mailgraph defaults to /var/log/syslog if unspecified

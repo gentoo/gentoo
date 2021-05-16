@@ -1,0 +1,54 @@
+From 7c85ac40660861e7507c43d043323c3f1b83921b Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Wed, 20 Jun 2018 21:57:50 +0300
+Subject: [PATCH] Fix test suite for GnuPG >= 2.2.6 compatibility
+
+GnuPG 2.2.6 (commit 1a5d95e7319e7e6f) started marking signatures
+with an expired key with '?', as seen with for instance
+
+ GNUPGHOME=./test/gnupghome/ gpg --list-sigs 0xF950DA9C
+
+Adapt the test suite accordingly.
+
+See https://dev.gnupg.org/rG1a5d95e7319e7e6f0dd11064a26cbbc371b05214
+
+Bug-Debian: https://bugs.debian.org/900051
+---
+ t/get_public_keys.t | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/t/get_public_keys.t b/t/get_public_keys.t
+index 7893625..ede080a 100644
+--- a/t/get_public_keys.t
++++ b/t/get_public_keys.t
+@@ -13,8 +13,12 @@ use MyTestSpecific;
+ use GnuPG::PrimaryKey;
+ use GnuPG::SubKey;
+ 
++use version;
++
+ my ( $given_key, $handmade_key );
+ 
++my $gnupg_version = version->parse($gnupg->version);
++
+ TEST
+ {
+     reset_handles();
+@@ -74,7 +78,7 @@ TEST
+                             date_string => '2000-03-16',
+                             hex_id => '56FFD10A260C4FA3',
+                             sig_class => 0x10,
+-                            validity => '!'),
++                            validity => $gnupg_version < version->parse('2.2.6') ? '!' : '?'),
+       GnuPG::Signature->new(
+                             date => 949813093,
+                             algo_num => 17,
+@@ -115,7 +119,7 @@ TEST
+                             date_string => '2000-03-16',
+                             hex_id => '56FFD10A260C4FA3',
+                             sig_class => 0x10,
+-                            validity => '!'),
++                            validity => $gnupg_version < version->parse('2.2.6') ? '!' : '?'),
+       GnuPG::Signature->new(
+                             date => 953179891,
+                             algo_num => 17,

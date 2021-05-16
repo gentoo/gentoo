@@ -1,0 +1,41 @@
+From 93b5ace42268160ebbfff4c61818fb15fa2d9b99 Mon Sep 17 00:00:00 2001
+From: Sebastian Woelke <Sebastian.Woelke@posteo.de>
+Date: Thu, 24 Aug 2017 14:41:50 +0200
+Subject: [PATCH] Fix checksum calculation
+
+---
+ mcproxy/src/utils/mroute_socket.cpp | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/mcproxy/src/utils/mroute_socket.cpp b/mcproxy/src/utils/mroute_socket.cpp
+index 61289dd..3a55359 100644
+--- a/src/utils/mroute_socket.cpp
++++ b/src/utils/mroute_socket.cpp
+@@ -157,17 +157,23 @@ u_int16_t mroute_socket::calc_checksum(const unsigned char* buf, int buf_size) c
+ 
+     u_int16_t* b = (u_int16_t*)buf;
+     int sum = 0;
++    int csum;
+ 
+     for (int i = 0; i < buf_size / 2; i++) {
+-        ADD_SIGNED_NUM_U16(sum, b[i]);
+-        //sum +=b[i];
++        sum +=b[i];
+     }
+ 
+     if (buf_size % 2 == 1) {
+-        //sum += buf[buf_size-1];
+-        ADD_SIGNED_NUM_U16(sum, buf[buf_size - 1]);
++        sum += buf[buf_size-1];
+     }
+ 
++    // fold checksum 
++    csum = sum & 0xFFFF;
++    sum = sum >> 16;
++    sum += csum;
++    // fold again in case of overflow.
++    sum += sum >> 16;
++
+     return ~sum;
+ }
+ 

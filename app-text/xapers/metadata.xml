@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>william@ewpettersson.se</email>
+    <name>William Pettersson</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy maintainers</name>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <name>Jameson Graef Rollins</name>
+      <email>jrollins@finestructure.net</email>
+    </maintainer>
+  </upstream>
+</pkgmetadata>

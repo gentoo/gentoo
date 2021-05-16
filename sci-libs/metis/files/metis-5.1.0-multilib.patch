@@ -1,5 +1,5 @@
---- libmetis/CMakeLists.orig.txt	2011-06-22 19:47:13.000000000 +0200
-+++ libmetis/CMakeLists.txt	2013-03-15 17:13:19.948911972 +0100
+--- a/libmetis/CMakeLists.txt
++++ b/libmetis/CMakeLists.txt
 @@ -4,13 +4,14 @@
  file(GLOB metis_sources *.c)
  # Build libmetis.

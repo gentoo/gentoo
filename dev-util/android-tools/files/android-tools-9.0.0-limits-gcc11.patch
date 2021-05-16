@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/764071
+--- a/core/fastboot/protocol.cpp	2018-06-21 02:58:42.000000000 +0200
++++ b/core/fastboot/protocol.cpp	2021-01-06 10:11:52.806586912 +0100
+@@ -37,6 +37,7 @@
+ 
+ #include <algorithm>
+ #include <vector>
++#include <limits>
+ 
+ #include <android-base/file.h>
+ #include <android-base/stringprintf.h>

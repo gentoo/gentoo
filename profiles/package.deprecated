@@ -1,0 +1,67 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file specifies packages that are considered deprecated (but not
+# masked yet).  This will cause QA tools to report dependencies on those
+# packages as requiring replacement.
+#
+# When you add an entry to the top of this file, add your name, the date
+# in the UTC timezone, and an explanation of why something is getting
+# deprecated.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # This is no longer supported upstream, please switch to dev-foo/bar.
+## dev-foo/foo
+
+#--- END OF EXAMPLES ---
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
+# version older than 3 don't compile with java 1.5+ and will be removed
+# slot 3.1 (versions < 3.6) are 99% compatible with slot 3.6 and should
+# not be used, use slot 3.6 or newer
+# see: https://bugs.gentoo.org/779472
+#      https://bugs.gentoo.org/784023
+<dev-java/commons-lang-3.6
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
+# because of unmasking java 11, which does not support bytecode older
+# than 1.6, those are deprecated in the ebuild. also, as the lowest
+# java version we support is 1.8, the restriction is lifted even more.
+<virtual/jdk-1.8
+<virtual/jre-1.8
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
+# dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
+dev-qt/qtwebkit
+
+# Mart Raudsepp <leio@gentoo.org> (2020-07-04)
+# Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
+x11-libs/wxGTK:3.0
+
+# Kent Fredric <kentnl@gentoo.org> (2020-04-15)
+# Functionality now provided by Net::SMTP 3.25+
+# available with >=virtual/perl-libnet-1.28
+# provided by >=dev-lang/perl-5.20.0
+# Try patching/removing dependent code to utilize this.
+# Bug #650320
+dev-perl/Net-SMTP-SSL
+
+# Matt Turner <mattst88@gentoo.org> (2020-03-17)
+# Deprecated GNOME 2 era packages, bug #751001
+gnome-base/gnome-vfs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
+# x11-libs/gtkglext is in the process of being removed, tracker bug #698950
+x11-libs/gtkglext
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
+# virtual/libffi has only one dev-libs/libffi provider. Use that instead.
+# bug #699796.
+virtual/libffi
+
+# Zac Medico <zmedico@gentoo.org> (2019-12-06)
+# These golang libraries should be vendored either by upstream or via
+# the EGO_VENDOR variable.
+dev-go/go-sqlite3

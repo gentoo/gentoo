@@ -6,13 +6,13 @@
 		<name>Java</name>
 	</maintainer>
 	<longdescription>
-	  metadata-extractor is a straightforward Java library for reading metadata from image files.
+		metadata-extractor is a straightforward Java library for reading metadata from image files.
 
-	  Metadata metadata = ImageMetadataReader.readMetadata(imagePath);
+		Metadata metadata = ImageMetadataReader.readMetadata(imagePath);
 
-	  With that metadata object, you can iterate or query the various tag values that were read from the image.
+		With that metadata object, you can iterate or query the various tag values that were read from the image.
 
-	  The library understands several formats of metadata, many of which may be present in a single image.
+		The library understands several formats of metadata, many of which may be present in a single image.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">drewnoakes/metadata-extractor</remote-id>

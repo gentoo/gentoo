@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>games@gentoo.org</email>
-    <name>Gentoo Games Project</name>
-  </maintainer>
-  <use>
-    <flag name="doomsday">Add wrapper to run it within doomsday</flag>
-  </use>
+	<longdescription lang="en">
+		DOOM1.WAD is the IWAD used by the shareware version of Doom. It is a cut-down version of DOOM.WAD which contains only the first episode. Later on, "Doom 1" became a retronym for Doom after the release of Doom II.
+	</longdescription>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 </pkgmetadata>

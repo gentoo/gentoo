@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		IPMIView is a GUI-based software application that allows administrators
+		to manage multiple target systems through BMC. IPMIView supports Supermicros
+		BMCs that adheres to either IPMI v1.5 or v2.0. IPMIView monitors and reports
+		on the status of a SuperBlade system, including the blade server, power supply,
+		gigabit switch, InfiniBand and CMM modules. IPMIView also supports remote KVM and Virtual Media.
+	</longdescription>
+</pkgmetadata>

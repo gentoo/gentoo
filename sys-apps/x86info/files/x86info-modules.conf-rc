@@ -1,4 +1,3 @@
-# $Id$
 #
 # Aliases needed for x86info to probe data
 # these are so the modules auto-load as needed

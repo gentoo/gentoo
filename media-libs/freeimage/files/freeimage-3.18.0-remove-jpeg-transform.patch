@@ -1,0 +1,82 @@
+From cb27fc742dd0b569f9ffe91a99ebeb5f077971da Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <xytovl@laposte.net>
+Date: Tue, 13 Nov 2018 20:27:59 +0100
+Subject: [PATCH 2/4] remove jpeg transform
+
+---
+ Makefile.srcs      | 7 -------
+ Source/FreeImage.h | 2 ++
+ fipMakefile.srcs   | 8 --------
+ 3 files changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/Makefile.srcs b/Makefile.srcs
+index cb41903..a306aae 100644
+--- a/Makefile.srcs
++++ b/Makefile.srcs
+@@ -141,17 +141,10 @@ SRCS-yes += \
+ 	Source/FreeImageToolkit/CopyPaste.cpp \
+ 	Source/FreeImageToolkit/Display.cpp \
+ 	Source/FreeImageToolkit/Flip.cpp \
+-
+-SRCS-$(USE_JPEG) += \
+-	Source/FreeImageToolkit/JPEGTransform.cpp \
+-
+-SRCS-yes += \
+ 	Source/FreeImageToolkit/MultigridPoissonSolver.cpp \
+ 	Source/FreeImageToolkit/Rescale.cpp \
+ 	Source/FreeImageToolkit/Resize.cpp \
+ 
+-SRCS-$(USE_JPEG) += \
+-	Source/transupp.c
+ SRCS = $(SRCS-yes)
+ 
+ INCLS = Dist/FreeImage.h \
+diff --git a/Source/FreeImage.h b/Source/FreeImage.h
+index 12182cd..ac4e6a0 100644
+--- a/Source/FreeImage.h
++++ b/Source/FreeImage.h
+@@ -1089,6 +1089,7 @@ DLL_API const char* DLL_CALLCONV FreeImage_TagToString(FREE_IMAGE_MDMODEL model,
+ // JPEG lossless transformation routines
+ // --------------------------------------------------------------------------
+ 
++#if 0 // not supported on Gentoo
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransform(const char *src_file, const char *dst_file, FREE_IMAGE_JPEG_OPERATION operation, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformU(const wchar_t *src_file, const wchar_t *dst_file, FREE_IMAGE_JPEG_OPERATION operation, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGCrop(const char *src_file, const char *dst_file, int left, int top, int right, int bottom);
+@@ -1097,6 +1098,7 @@ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformFromHandle(FreeImageIO* src_io,
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombined(const char *src_file, const char *dst_file, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedU(const wchar_t *src_file, const wchar_t *dst_file, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedFromMemory(FIMEMORY* src_stream, FIMEMORY* dst_stream, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
++#endif
+ 
+ 
+ // --------------------------------------------------------------------------
+diff --git a/fipMakefile.srcs b/fipMakefile.srcs
+index e58f046..74c9ec0 100644
+--- a/fipMakefile.srcs
++++ b/fipMakefile.srcs
+@@ -141,11 +141,6 @@ SRCS-yes += \
+ 	Source/FreeImageToolkit/CopyPaste.cpp \
+ 	Source/FreeImageToolkit/Display.cpp \
+ 	Source/FreeImageToolkit/Flip.cpp \
+-
+-SRCS-$(USE_JPEG) += \
+-	Source/FreeImageToolkit/JPEGTransform.cpp \
+-
+-SRCS-yes += \
+ 	Source/FreeImageToolkit/MultigridPoissonSolver.cpp \
+ 	Source/FreeImageToolkit/Rescale.cpp \
+ 	Source/FreeImageToolkit/Resize.cpp \
+@@ -157,9 +152,6 @@ SRCS-yes += \
+ 	Wrapper/FreeImagePlus/src/fipWinImage.cpp \
+ 	Wrapper/FreeImagePlus/src/FreeImagePlus.cpp 
+ 
+-SRCS-$(USE_JPEG) += \
+-	Source/transupp.c
+-
+ SRCS = $(SRCS-yes)
+ INCLUDE = -I. \
+ 	-ISource \
+-- 
+2.19.1
+

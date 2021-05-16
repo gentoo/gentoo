@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 MY_PN="eselect"
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/eselect.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/eselect.git"
 EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_PN}"
 
 inherit elisp git-r3

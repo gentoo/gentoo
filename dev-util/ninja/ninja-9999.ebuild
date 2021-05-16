@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2012-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
@@ -13,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ninja-build/ninja.git"
 else
 	SRC_URI="https://github.com/ninja-build/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A small build system similar to make"
@@ -22,9 +21,10 @@ HOMEPAGE="https://ninja-build.org/"
 LICENSE="Apache-2.0"
 SLOT="0"
 
-IUSE="doc emacs test vim-syntax zsh-completion"
+IUSE="doc emacs test vim-syntax"
+RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/re2c
 	doc? (
@@ -35,37 +35,42 @@ DEPEND="
 	test? ( dev-cpp/gtest )
 "
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? (
 		|| (
 			app-editors/vim
 			app-editors/gvim
 		)
 	)
-	zsh-completion? ( app-shells/zsh )
-	!<net-irc/ninja-1.5.9_pre14-r1" #436804
+"
+
+PATCHES=(
+	"${FILESDIR}"/ninja-cflags.patch
+)
 
 run_for_build() {
 	if tc-is-cross-compiler; then
 		local -x AR=$(tc-getBUILD_AR)
 		local -x CXX=$(tc-getBUILD_CXX)
-		local -x CFLAGS=${BUILD_CXXFLAGS}
+		local -x CFLAGS=
+		local -x CXXFLAGS=${BUILD_CXXFLAGS}
 		local -x LDFLAGS=${BUILD_LDFLAGS}
 	fi
+	echo "$@" >&2
 	"$@"
 }
 
 src_compile() {
 	tc-export AR CXX
 
-	# configure.py uses CFLAGS instead of CXXFLAGS
-	export CFLAGS=${CXXFLAGS}
+	# configure.py appends CFLAGS to CXXFLAGS
+	unset CFLAGS
 
-	run_for_build "${PYTHON}" configure.py --bootstrap --verbose || die
+	run_for_build ${EPYTHON} configure.py --bootstrap --verbose || die
 
 	if tc-is-cross-compiler; then
 		mv ninja ninja-build || die
-		"${PYTHON}" configure.py || die
+		${EPYTHON} configure.py || die
 		./ninja-build -v ninja || die
 	else
 		ln ninja ninja-build || die
@@ -84,16 +89,17 @@ src_test() {
 	if ! tc-is-cross-compiler; then
 		# Bug 485772
 		ulimit -n 2048
-		./ninja-build -v ninja_test || die
+		./ninja -v ninja_test || die
 		./ninja_test || die
 	fi
 }
 
 src_install() {
-	dodoc README HACKING.md
+	dodoc README.md CONTRIBUTING.md
 	if use doc; then
-		dohtml -r doc/doxygen/html/*
-		dohtml doc/manual.html
+		docinto html
+		dodoc -r doc/doxygen/html/.
+		dodoc doc/manual.html
 	fi
 	dobin ninja
 
@@ -101,21 +107,19 @@ src_install() {
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax/
-		doins misc/"${PN}".vim
+		doins misc/ninja.vim
 
-		echo 'au BufNewFile,BufRead *.ninja set ft=ninja' > "${T}/${PN}.vim"
+		echo 'au BufNewFile,BufRead *.ninja set ft=ninja' > "${T}/ninja.vim"
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${T}/${PN}.vim"
+		doins "${T}/ninja.vim"
 	fi
 
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		newins misc/zsh-completion _ninja
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins misc/zsh-completion _ninja
 
 	if use emacs; then
 		cd misc || die
-		elisp-install ${PN} ninja-mode.el* || die
+		elisp-install ninja ninja-mode.el* || die
 	fi
 }
 

@@ -1,5 +1,5 @@
---- Makefile.bak	2009-11-30 14:31:07.000000000 -0500
-+++ Makefile	2009-11-30 14:31:34.000000000 -0500
+--- a/Makefile
++++ b/Makefile
 @@ -1,6 +1,2 @@
 -
 -
@@ -7,4 +7,4 @@
 -	gcc -Wall -O2 -o $@ $< && strip $@
 -
 -    
-+	${CC} -Wall ${CFLAGS} -o $@ $<
++	${CC} -Wall $(CFLAGS) $(LDFLAGS) -o $@ $<

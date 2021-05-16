@@ -1,0 +1,116 @@
+diff --git a/salt/cloud/clouds/ec2.py b/salt/cloud/clouds/ec2.py
+index 68f752cb2d..fa2b96499d 100644
+--- a/salt/cloud/clouds/ec2.py
++++ b/salt/cloud/clouds/ec2.py
+@@ -4901,7 +4901,7 @@ def get_password_data(
+ 
+     if not HAS_M2 and not HAS_PYCRYPTO:
+         if 'key' in kwargs or 'key_file' in kwargs:
+-            log.warn("No crypto library is installed, can not decrypt password")
++            log.warning("No crypto library is installed, can not decrypt password")
+         return ret
+ 
+     if 'key' not in kwargs:
+diff --git a/salt/modules/gpg.py b/salt/modules/gpg.py
+index 9dd1007c1b..47c82a7141 100644
+--- a/salt/modules/gpg.py
++++ b/salt/modules/gpg.py
+@@ -1083,7 +1083,7 @@ def verify(text=None,
+ 
+     if trustmodel and trustmodel not in trustmodels:
+         msg = 'Invalid trustmodel defined: {}. Use one of: {}'.format(trustmodel, ', '.join(trustmodels))
+-        log.warn(msg)
++        log.warning(msg)
+         return {'res': False, 'message': msg}
+ 
+     extra_args = []
+diff --git a/salt/modules/network.py b/salt/modules/network.py
+index 38e2bc326e..f3a8a714cd 100644
+--- a/salt/modules/network.py
++++ b/salt/modules/network.py
+@@ -958,7 +958,7 @@ def traceroute(host):
+ 
+         ret.append(result)
+         if not result:
+-            log.warn('Cannot parse traceroute output line: %s', line)
++            log.warning('Cannot parse traceroute output line: %s', line)
+     return ret
+ 
+ 
+diff --git a/salt/modules/saltutil.py b/salt/modules/saltutil.py
+index 138a0fcf51..5f026b0f36 100644
+--- a/salt/modules/saltutil.py
++++ b/salt/modules/saltutil.py
+@@ -1096,7 +1096,7 @@ def refresh_pillar(wait=False, timeout=30):
+             tag='/salt/minion/minion_pillar_refresh_complete',
+             wait=timeout)
+         if not event_ret or event_ret['complete'] is False:
+-            log.warn("Pillar refresh did not complete within timeout %s", timeout)
++            log.warning("Pillar refresh did not complete within timeout %s", timeout)
+     return ret
+ 
+ 
+diff --git a/salt/transport/tcp.py b/salt/transport/tcp.py
+index 12ef24e86f..e83d1c927f 100644
+--- a/salt/transport/tcp.py
++++ b/salt/transport/tcp.py
+@@ -1073,7 +1073,7 @@ class SaltMessageClient(object):
+                 self._connecting_future.set_result(True)
+                 break
+             except Exception as exc:  # pylint: disable=broad-except
+-                log.warn('TCP Message Client encountered an exception %r', exc)
++                log.warning('TCP Message Client encountered an exception %r', exc)
+                 yield salt.ext.tornado.gen.sleep(1)  # TODO: backoff
+                 #self._connecting_future.set_exception(e)
+ 
+diff --git a/salt/utils/process.py b/salt/utils/process.py
+index 9626ac0cb2..18697ccf7c 100644
+--- a/salt/utils/process.py
++++ b/salt/utils/process.py
+@@ -124,7 +124,7 @@ def dup2(file1, file2):
+         try:
+             fno1 = file1.fileno()
+         except io.UnsupportedOperation:
+-            log.warn('Unsupported operation on file: %r', file1)
++            log.warning('Unsupported operation on file: %r', file1)
+             return
+     if isinstance(file2, int):
+         fno2 = file2
+@@ -132,7 +132,7 @@ def dup2(file1, file2):
+         try:
+             fno2 = file2.fileno()
+         except io.UnsupportedOperation:
+-            log.warn('Unsupported operation on file: %r', file2)
++            log.warning('Unsupported operation on file: %r', file2)
+             return
+     os.dup2(fno1, fno2)
+ 
+@@ -829,13 +829,13 @@ class SignalHandlingProcess(Process):
+                             if child.is_running():
+                                 child.terminate()
+                         except psutil.NoSuchProcess:
+-                            log.warn(
++                            log.warning(
+                                 'Unable to kill child of process %d, it does '
+                                 'not exist. My pid is %d',
+                                 self.pid, os.getpid()
+                             )
+             except psutil.NoSuchProcess:
+-                log.warn(
++                log.warning(
+                     'Unable to kill children of process %d, it does not exist.'
+                     'My pid is %d',
+                     self.pid, os.getpid()
+diff --git a/tests/integration/modules/test_state.py b/tests/integration/modules/test_state.py
+index 81b3b677b9..2f3bcaa613 100644
+--- a/tests/integration/modules/test_state.py
++++ b/tests/integration/modules/test_state.py
+@@ -2282,7 +2282,7 @@ class StateModuleTest(ModuleCase, SaltReturnAssertsMixin):
+                 try:
+                     os.remove(path)
+                 except OSError:
+-                    log.warn("Path not found: %s", path)
++                    log.warning("Path not found: %s", path)
+ 
+         with salt.utils.files.fopen(module_path, 'w') as fp:
+             fp.write('raise ImportError("No module named pip")')

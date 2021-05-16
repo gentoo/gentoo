@@ -1,0 +1,87 @@
+diff -ur a/filters/output/OutputGenerator.cpp b/filters/output/OutputGenerator.cpp
+--- a/filters/output/OutputGenerator.cpp	2018-07-17 04:04:23.000000000 +0200
++++ b/filters/output/OutputGenerator.cpp	2020-05-29 12:15:28.759822806 +0200
+@@ -25,6 +25,7 @@
+ #include <imageproc/ImageCombination.h>
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QtCore/QSettings>
+ #include <boost/bind.hpp>
+ #include "DebugImages.h"
+@@ -2666,4 +2667,4 @@
+                  posterizationOptions.isForceBlackAndWhite(), 0, qRound(background_color.lightnessF() * 255))
+       .getImage();
+ }
+-}  // namespace output
+\ Chybí znak konce řádku na konci souboru
++}  // namespace output
+diff -ur a/filters/page_layout/ImageView.cpp b/filters/page_layout/ImageView.cpp
+--- a/filters/page_layout/ImageView.cpp	2018-07-17 04:04:23.000000000 +0200
++++ b/filters/page_layout/ImageView.cpp	2020-05-29 12:14:09.691546103 +0200
+@@ -27,6 +27,7 @@
+ #include <imageproc/Transform.h>
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <boost/bind.hpp>
+ #include <boost/lambda/lambda.hpp>
+ #include "ImagePresentation.h"
+@@ -1160,4 +1161,4 @@
+ bool ImageView::isShowingMiddleRectEnabled() const {
+   return (!m_nullContentRect && m_settings->isShowingMiddleRectEnabled()) || m_alignment.isNull();
+ }
+-}  // namespace page_layout
+\ Chybí znak konce řádku na konci souboru
++}  // namespace page_layout
+diff -ur a/filters/select_content/ContentBoxFinder.cpp b/filters/select_content/ContentBoxFinder.cpp
+--- a/filters/select_content/ContentBoxFinder.cpp	2018-07-17 04:04:23.000000000 +0200
++++ b/filters/select_content/ContentBoxFinder.cpp	2020-05-29 12:12:39.023619751 +0200
+@@ -19,6 +19,7 @@
+ #include "ContentBoxFinder.h"
+ #include <QDebug>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <cmath>
+ #include <queue>
+ #include "DebugImages.h"
+@@ -1353,4 +1354,4 @@
+ 
+   return m_sedm;
+ }
+-}  // namespace select_content
+\ Chybí znak konce řádku na konci souboru
++}  // namespace select_content
+diff -ur a/ImageViewBase.cpp b/ImageViewBase.cpp
+--- a/ImageViewBase.cpp	2018-07-17 04:04:23.000000000 +0200
++++ b/ImageViewBase.cpp	2020-05-29 11:58:54.720220475 +0200
+@@ -24,6 +24,7 @@
+ #include <QPointer>
+ #include <QScrollBar>
+ #include <QSettings>
++#include <QPainterPath>
+ #include <QtWidgets/QMainWindow>
+ #include <QtWidgets/QStatusBar>
+ #include "BackgroundExecutor.h"
+diff -ur a/zones/ZoneContextMenuInteraction.cpp b/zones/ZoneContextMenuInteraction.cpp
+--- a/zones/ZoneContextMenuInteraction.cpp	2018-07-17 04:04:23.000000000 +0200
++++ b/zones/ZoneContextMenuInteraction.cpp	2020-05-29 12:10:53.079190198 +0200
+@@ -21,6 +21,7 @@
+ #include <QMenu>
+ #include <QMessageBox>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QSignalMapper>
+ #include <boost/bind.hpp>
+ #include "ImageViewBase.h"
+diff -ur a/zones/ZoneDefaultInteraction.cpp b/zones/ZoneDefaultInteraction.cpp
+--- a/zones/ZoneDefaultInteraction.cpp	2018-07-17 04:04:23.000000000 +0200
++++ b/zones/ZoneDefaultInteraction.cpp	2020-05-29 12:09:24.276172092 +0200
+@@ -19,6 +19,7 @@
+ #include "ZoneDefaultInteraction.h"
+ #include <QMouseEvent>
+ #include <QPainter>
++#include <QPainterPath>
+ #include "ImageViewBase.h"
+ #include "SerializableSpline.h"
+ #include "ZoneInteractionContext.h"

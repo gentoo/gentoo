@@ -9,4 +9,7 @@
 		This package provides an orphan instance that allows you to
 		use HUnit assertions as QuickCheck properties.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">hspec/quickcheck-io</remote-id>
+	</upstream>
 </pkgmetadata>

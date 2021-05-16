@@ -6,6 +6,6 @@
 		<name>Sergey Popov</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">color-lines</remote-id>
+		<remote-id type="github">OpenA/color-lines-sdl</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MaxMind-DB-Reader</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Data::Container</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Data::EndMarker</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Decoder</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::PP</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Role::HasDecoder</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Role::HasMetadata</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Role::NodeReader</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Role::Reader</remote-id>
+    <remote-id type="cpan-module">MaxMind::DB::Reader::Role::Sysreader</remote-id>
+  </upstream>
+</pkgmetadata>

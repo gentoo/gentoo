@@ -6,6 +6,7 @@
     <name>XFCE Team</name>
   </maintainer>
   <use>
+    <flag name="epub">Enable support for .epub thumbnailer using <pkg>app-text/libgepub</pkg></flag>
     <flag name="odf">Enable support for .odf thumbnailers by using <pkg>gnome-extra/libgsf</pkg></flag>
   </use>
 </pkgmetadata>

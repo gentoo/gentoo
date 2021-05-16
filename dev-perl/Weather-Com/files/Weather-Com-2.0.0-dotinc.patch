@@ -1,0 +1,68 @@
+From 8093cbf66931ef66aadf6e68d8132066c49a792f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 21 Mar 2018 14:46:49 +1300
+Subject: Fix tests for '.' in @INC removal
+
+Bug: https://bugs.gentoo.org/623148
+---
+ t/Base.t        | 2 +-
+ t/Cached.t      | 2 +-
+ t/OOInterface.t | 2 +-
+ t/Simple.t      | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/t/Base.t b/t/Base.t
+index 4085b6e..9669bc3 100644
+--- a/t/Base.t
++++ b/t/Base.t
+@@ -16,7 +16,7 @@
+ #
+ no warnings;
+ use Test::More tests => 6;
+-require 't/TestData.pm';
++require './t/TestData.pm';
+ 
+ BEGIN {
+ 	use_ok('Weather::Com::Base');
+diff --git a/t/Cached.t b/t/Cached.t
+index 33aff23..7257374 100644
+--- a/t/Cached.t
++++ b/t/Cached.t
+@@ -16,7 +16,7 @@
+ #
+ no warnings;
+ use Test::More tests => 10;
+-require 't/TestData.pm';
++require './t/TestData.pm';
+ 
+ BEGIN {
+ 	use_ok('Weather::Com::Cached');
+diff --git a/t/OOInterface.t b/t/OOInterface.t
+index 33d75a2..b20535e 100644
+--- a/t/OOInterface.t
++++ b/t/OOInterface.t
+@@ -15,7 +15,7 @@
+ #
+ no warnings;
+ use Test::More tests => 62;
+-require 't/TestData.pm';
++require './t/TestData.pm';
+ 
+ BEGIN {
+ 	use_ok('Weather::Com::Finder');
+diff --git a/t/Simple.t b/t/Simple.t
+index b29c5bd..227383d 100644
+--- a/t/Simple.t
++++ b/t/Simple.t
+@@ -16,7 +16,7 @@
+ no warnings;
+ use Data::Dumper;
+ use Test::More tests => 2;
+-require 't/TestData.pm';
++require './t/TestData.pm';
+ 
+ BEGIN {
+ 	use_ok('Weather::Com::Simple');
+-- 
+2.16.2
+

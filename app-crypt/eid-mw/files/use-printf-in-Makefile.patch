@@ -1,0 +1,21 @@
+diff -ur a/plugins_tools/eid-viewer/Makefile.am b/plugins_tools/eid-viewer/Makefile.am
+--- a/plugins_tools/eid-viewer/Makefile.am	2020-08-19 15:32:50.000000000 +0200
++++ b/plugins_tools/eid-viewer/Makefile.am	2020-12-21 23:07:49.980421703 +0200
+@@ -125,13 +125,13 @@
+ SUBDIRS = . gtk/po test uml
+ 
+ resources/%.c: resources/%.png
+-	echo -e "#include <gdk-pixbuf/gdk-pixdata.h>\n#if __GNUC__ >= 4\n#pragma GCC diagnostic push\n#pragma GCC diagnostic ignored \"-Wpointer-sign\"\n#endif\n" > $@
++	printf '%s\n' '#include <gdk-pixbuf/gdk-pixdata.h>' '#if __GNUC__ >= 4' '#pragma GCC diagnostic push' '#pragma GCC diagnostic ignored "-Wpointer-sign"' '#endif' > $@
+ 	gdk-pixbuf-csource --struct --extern --name `basename $^ .png` $^ >> $@
+-	echo -e "#pragma GCC diagnostic pop\n" >> $@
++	printf '%s\n' '#pragma GCC diagnostic pop' >> $@
+ resources/%.c: resources/%.jpg
+-	echo -e "#include <gdk-pixbuf/gdk-pixdata.h>\n#if __GNUC__ >= 4\n#pragma GCC diagnostic push\n#pragma GCC diagnostic ignored \"-Wpointer-sign\"\n#endif\n" > $@
++	printf '%s\n' '#include <gdk-pixbuf/gdk-pixdata.h>' '#if __GNUC__ >= 4' '#pragma GCC diagnostic push' '#pragma GCC diagnostic ignored "-Wpointer-sign"' '#endif' > $@
+ 	gdk-pixbuf-csource --struct --extern --name `basename $^ .jpg` $^ >> $@
+-	echo -e "#pragma GCC diagnostic pop\n" >> $@
++	printf '%s\n' '#pragma GCC diagnostic pop' >> $@
+ 
+ BUILT_SOURCES = gtk/viewer_glade.h \
+ 		resources/coat_of_arms_nl.c \

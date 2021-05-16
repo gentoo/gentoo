@@ -6,4 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<longdescription>Set of utilities and widgets to simplify interaction of Swing based GUIs with the web applications of any kind.</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">bt747</remote-id>
+	</upstream>
 </pkgmetadata>

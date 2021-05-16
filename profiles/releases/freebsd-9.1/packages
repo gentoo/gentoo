@@ -1,6 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-# $Id$
-
-*>=sys-apps/baselayout-2.0.0
-*>=sys-apps/openrc-0.2.5

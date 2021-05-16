@@ -1,8 +1,0 @@
-phpsyslogng is installed. You will need to
-configure it by editing the config file:
-
-${MY_INSTALLDIR}/config/config.php
-
-Please read /usr/share/doc/${PN}-${PVR}/README.gz for
-more information relating to how to set
-phpsyslogng up on your system.

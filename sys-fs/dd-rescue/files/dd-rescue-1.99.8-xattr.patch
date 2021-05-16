@@ -1,0 +1,300 @@
+--- dd_rescue-1.99.8/configure.in
++++ dd_rescue-1.99.8/configure.in
+@@ -6,7 +6,7 @@
+ AC_HEADER_STDC
+ #AC_PROG_INSTALL
+ #CFLAGS="$CFLAGS -DHAVE_CONFIG_H"
+-AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h attr/xattr.h sys/acl.h sys/ioctl.h sys/reg.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h malloc.h sched.h sys/statvfs.h])
++AC_CHECK_HEADERS([fallocate.h dlfcn.h unistd.h sys/xattr.h sys/acl.h sys/ioctl.h sys/reg.h endian.h linux/fs.h linux/fiemap.h stdint.h lzo/lzo1x.h openssl/evp.h linux/random.h malloc.h sched.h sys/statvfs.h])
+ AC_CHECK_FUNCS([ffs ffsl basename fallocate64 splice getopt_long open64 pread pread64 lseek64 stat64 posix_fadvise posix_fadvise64 __builtin_prefetch htobe64 feof_unlocked getline getentropy getrandom posix_memalign valloc sched_yield fstatvfs __builtin_cpu_supports])
+ AC_CHECK_LIB(dl,dlsym)
+ AC_CHECK_LIB(fallocate,linux_fallocate64)
+--- dd_rescue-1.99.8/dd_rescue.c
++++ dd_rescue-1.99.8/dd_rescue.c
+@@ -161,8 +161,8 @@
+ #endif
+ 
+ /* xattrs */
+-#ifdef HAVE_ATTR_XATTR_H
+-# include <attr/xattr.h>
++#ifdef HAVE_SYS_XATTR_H
++# include <sys/xattr.h>
+ #else
+ /* TODO: Could provide the prototypes for the syscalls ourselves ... */
+ # warning No support for copying extended attributes / ACLs
+@@ -1276,7 +1276,7 @@
+ 
+ /** Copy xattrs */
+ int copyxattr(const char* inm, const char* onm)
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ {
+ 	char *attrs = NULL;
+ 	ssize_t aln = listxattr(inm, NULL, 0);
+@@ -2486,7 +2486,7 @@
+ #ifdef FITRIM
+ 	fprintf(stderr, "fitrim ");
+ #endif
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 	fprintf(stderr, "xattr ");
+ #endif
+ #if (defined(__x86_64__) || defined(__i386__)) && !defined(NO_RDRND)
+--- dd_rescue-1.99.8/libddr_crypt.c
++++ dd_rescue-1.99.8/libddr_crypt.c
+@@ -47,8 +47,8 @@
+ #include <endian.h>
+ #include <signal.h>
+ 
+-#ifdef HAVE_ATTR_XATTR_H
+-#include <attr/xattr.h>
++#ifdef HAVE_SYS_XATTR_H
++#include <sys/xattr.h>
+ #endif
+ 
+ #if __WORDSIZE == 64
+@@ -90,7 +90,7 @@
+ 	size_t saltlen;
+ 	loff_t lastpos;
+ 	loff_t processed;
+-#if 1 //def HAVE_ATTR_XATTR_H
++#if 1 //def HAVE_SYS_XATTR_H
+ 	char* salt_xattr_name;
+ 	char sxattr, sxfallback;
+ 	char* key_xattr_name;
+@@ -113,13 +113,13 @@
+ 		" Parameters: [alg[o[rithm]]=]ALG:enc[rypt]:dec[rypt]:engine=STR:pad=STR\n"
+ 		"\t:keyhex=HEX:keyfd=[x]INT[@INT@INT]:keyfile=NAME[@INT@INT]:keygen:keysfile\n"
+ 		"\t:ivhex=HEX:ivfd=[x]INT[@INT@INT]:ivfile=NAME[@INT@INT]:ivgen:ivsfile\n"
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		"\t:keyxattr[=xattr_name]:kxfallback:ivxattr[=xattr_name]:ixfallback\n"
+ #endif
+ 		"\t:pass=STR:passfd=[x]INT[@INT@INT]:passfile=NAME[@INT@INT]\n"
+ 		"\t:salt=STR:salthex=HEX:saltfd=[x]INT[@INT@INT]:saltfile=NAME[@INT@INT]\n"
+ 		"\t:saltlen=INT:saltgen:saltsfile"
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		":saltxattr[=xattr_name]:sxfallback"
+ #endif
+ 		"\n\t:pbkdf2[=INT]:opbkdf[11]:debug:bench[mark]:skiphole:weakrnd:outkeyiv:ctrbug198\n"
+@@ -346,7 +346,7 @@
+ 			state->saltlen = ATOL(param+8);
+ 		else if (!strcmp(param, "saltgen"))
+ 			state->sgen = 1;
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		else if (!strcmp(param, "saltxattr"))
+ 			err += set_flag(&state->sxattr, "saltxattr");
+ 		else if (!memcmp(param, "saltxattr=", 10)) {
+@@ -709,7 +709,7 @@
+ 	return err;
+ }
+ 
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ int get_xattr(crypt_state *state, const char* atrnm,
+ 		unsigned char* data, int dlen,
+ 		char fb, char* fbf, char* flag)
+@@ -883,7 +883,7 @@
+ 	sprintf(ivsnm, "IVS.%s", state->alg->name);
+ 	sprintf(keynm, "KEYS.%s", state->alg->name);
+ 	sprintf(saltnm, "SALT.%s", state->alg->name);
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 	if (state->sxattr && !state->salt_xattr_name) {
+ 		state->salt_xattr_name = malloc(32);
+ 		snprintf(state->salt_xattr_name, 32, "user.salt.%s", state->alg->name);
+@@ -958,7 +958,7 @@
+ 		}
+ 
+ 		/* 5c */
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		/* Try getting salt from xattr */
+ 		if (!state->sset && state->sxattr && !get_salt_xattr(state) && !state->enc)
+ 			state->sxattr = 0;
+@@ -999,7 +999,7 @@
+ 			if (write_file(state->sec->salt, state->sfnm, 8, 0640))
+ 				return -1;
+ 		}
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		/* Write salt to xattr */
+ 		if (state->sxattr && state->enc && set_salt_xattr(state)) {
+ 			if (!state->sxfallback)
+@@ -1028,7 +1028,7 @@
+ 			if (!state->keyf && !state->kxattr)
+ 				FPLOG(WARN, "Generated key not written anywhere?\n", NULL);
+ 			else {
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 				/* Write key to xattr, failure is fatal */
+ 				if (state->kxattr && state->enc && set_key_xattr(state) && !state->kxfallback)
+ 					return -1;
+@@ -1066,7 +1066,7 @@
+ 				FPLOG(FATAL, "Key generation with pass+salt failed!\n", NULL);
+ 				return -1;
+ 			}
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 			/* Write key to xattr, failure is fatal */
+ 			if (state->kxattr && state->enc && set_key_xattr(state) && !state->kxfallback)
+ 				return -1;
+@@ -1077,7 +1077,7 @@
+ 					return -1;
+ 
+ 		} else {
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 			if (state->kxattr)
+ 				get_key_xattr(state);
+ #endif
+@@ -1100,7 +1100,7 @@
+ 			}
+ 		}
+ 	} else {
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		if (state->kxattr && set_key_xattr(state) && !state->kxfallback) {
+ 			FPLOG(FATAL, "Can't save key in xattr");
+ 			return -1;
+@@ -1123,7 +1123,7 @@
+ 			if (!state->ivf && !state->ixattr)
+ 				FPLOG(WARN, "Generated IV not saved?\n", NULL);
+ 			else {
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 				/* Write IV to xattr, failure w/o fb is fatal */
+ 				if (state->ixattr && state->enc && set_iv_xattr(state) && !state->ixfallback)
+ 					return -1;
+@@ -1149,7 +1149,7 @@
+ 					return -1;
+ 				}
+ 			}
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 			/* Write IV to xattr, failure w/o fb is fatal */
+ 			if (state->ixattr && state->enc && set_iv_xattr(state) && !state->ixfallback)
+ 				return -1;
+@@ -1159,7 +1159,7 @@
+ 				if (write_keyfile(state, ivsnm, encnm, state->sec->nonce1, BLKSZ, 0640, 1, 0))
+ 					return -1;
+ 		} else { 
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 			if (state->ixattr)
+ 				get_iv_xattr(state);
+ #endif
+@@ -1180,7 +1180,7 @@
+ 			}
+ 		 }
+ 	} else if (state->alg->stream->needs_iv) {
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		if (state->ixattr && set_iv_xattr(state) && !state->ixfallback) {
+ 			FPLOG(FATAL, "Can't save IV in xattr");
+ 			return -1;
+@@ -1454,7 +1454,7 @@
+ 		FPLOG(INFO, "%.2fs CPU time, %.1fMiB/s\n",
+ 			(double)state->cpu/CLOCKS_PER_SEC, 
+ 			state->processed/1024 / (state->cpu/(CLOCKS_PER_SEC/1024.0)));
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 	if (state->salt_xattr_name)
+ 		free(state->salt_xattr_name);
+ 	if (state->key_xattr_name)
+--- dd_rescue-1.99.8/libddr_hash.c
++++ dd_rescue-1.99.8/libddr_hash.c
+@@ -36,8 +36,8 @@
+ #include <netinet/in.h>	/* For ntohl/htonl */
+ #include <endian.h>
+ 
+-#ifdef HAVE_ATTR_XATTR_H
+-#include <attr/xattr.h>
++#ifdef HAVE_SYS_XATTR_H
++#include <sys/xattr.h>
+ #endif
+ // TODO: pass at runtime rather than compile time
+ #define HASH_DEBUG(x) if (state->debug) x
+@@ -75,7 +75,7 @@
+ #endif
+ 	int hmacpln;
+ 	char xfallback;
+-#if 1 //def HAVE_ATTR_XATTR_H
++#if 1 //def HAVE_SYS_XATTR_H
+ 	char chk_xattr, set_xattr, xnmalloc;
+ 	char* xattr_name;
+ #endif
+@@ -90,7 +90,7 @@
+ 		":multipart=size"
+ #endif
+ 		"\n"
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		"\t:chk_xattr[=xattr_name]:set_xattr[=xattr_name]:fallb[ack][=FILE]\n"
+ #endif
+ 		" Use algorithm=help to get a list of supported hash algorithms\n";
+@@ -167,7 +167,7 @@
+ 			state->append = param+7;
+ 		else if (!memcmp(param, "prepend=", 8))
+ 			state->prepend = param+8;
+-#if 1 //def HAVE_ATTR_XATTR_H
++#if 1 //def HAVE_SYS_XATTR_H
+ 		else if (!memcmp(param, "chk_xattr=", 10)) {
+ 			state->chk_xattr = 1; state->xattr_name = param+10; }
+ 		else if (!strcmp(param, "chk_xattr"))
+@@ -258,7 +258,7 @@
+ 		FPLOG(FATAL, "No hash algorithm specified\n");
+ 		return --err;
+ 	}
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 	if ((state->chk_xattr || state->set_xattr) && !state->xattr_name) {
+ 		state->xattr_name = (char*)malloc(32);
+ 		state->xnmalloc = 1;
+@@ -269,7 +269,7 @@
+ 	}
+ #endif
+ 	if ((!state->chkfnm || !*state->chkfnm) && (state->chkf || state->outf
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 				|| state->xfallback
+ #endif
+ 			     				)) {
+@@ -301,7 +301,7 @@
+ 	if (!stat || !(*stat))
+ 		return -1;
+ 	hash_state *state = (hash_state*)*stat;
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 	if (state->xnmalloc)
+ 		free((void*)state->xattr_name);
+ #endif
+@@ -351,7 +351,7 @@
+ 		strcat(nnm, "->");
+ 		strcat(nnm, opt->oname);
+ 		state->fname = nnm;
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 		if (state->chk_xattr || state->set_xattr) {
+ 			--err;
+ 			FPLOG(WARN, "Can't access xattr in the middle of a plugin chain!");
+@@ -607,7 +607,7 @@
+ 	return err;
+ }
+ 
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ int check_xattr(hash_state* state, const char* res)
+ {
+ 	char xatstr[144];
+@@ -734,7 +734,7 @@
+ 		err += check_chkf(state, res);
+ 	if (state->outf)
+ 		err += write_chkf(state, res);
+-#ifdef HAVE_ATTR_XATTR_H
++#ifdef HAVE_SYS_XATTR_H
+ 	if (state->chk_xattr)
+ 		err += check_xattr(state, res);
+ 	if (state->set_xattr)

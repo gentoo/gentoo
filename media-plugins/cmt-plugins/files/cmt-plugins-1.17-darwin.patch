@@ -1,0 +1,13 @@
+diff --git a/src/Makefile b/src/Makefile
+index ec6a524..700ff75 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -67,7 +67,7 @@ targets:	$(PLUGIN_LIB)
+ 
+ $(PLUGIN_LIB):	$(PLUGIN_OBJECTS) gcc_exports.map
+ 	$(CXX)	$(LDFLAGS)						\
+-		-shared							\
++		-dynamiclib -ldl							\
+ 		$(CFLAGS)						\
+ 		-fvisibility=hidden					\
+ 		-fvisibility-inlines-hidden				\

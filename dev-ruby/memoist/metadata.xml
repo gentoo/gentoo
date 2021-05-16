@@ -10,5 +10,6 @@
   </maintainer>
   <upstream>
     <remote-id type="rubygems">memoist</remote-id>
+    <remote-id type="github">matthewrudy/memoist</remote-id>
   </upstream>
 </pkgmetadata>

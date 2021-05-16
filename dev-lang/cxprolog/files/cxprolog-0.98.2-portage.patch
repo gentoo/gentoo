@@ -1,0 +1,109 @@
+--- cxprolog-0.98.2.orig/Makefile	2016-09-17 20:33:35.000000000 +0200
++++ cxprolog-0.98.2/Makefile	2020-07-22 09:01:24.785919309 +0200
+@@ -20,9 +20,9 @@
+     ######################################################################
+ 
+ ##############################################################################
+-# To disable READLINE SUPPORT, uncomment the following line:
++# For READLINE SUPPORT, uncomment the following line:
+ #
+-#	READLINE := n
++#	READLINE := y
+ #
+ # Nothing more is required.
+ # This functionality is active by default.
+@@ -83,6 +83,7 @@
+ EXT_OBJ_DIR := src/ext
+ EXT_CFLAGS :=
+ EXT_DEFINES :=
++EXT_LDFLAGS :=
+ EXT_LIBS :=
+ EXT_NAMES :=
+ 
+@@ -91,6 +92,7 @@
+ #	EXT_OBJ_DIR := src/obj/ext
+ #	EXT_CFLAGS := -I/usr/include
+ #	EXT_DEFINES := -DUSE_X=2 -DCOMPASS=1
++#	EXT_LDFLAGS := -Wl,--as-needed
+ #	EXT_LIBS := -L/usr/lib -lcrypt
+ #	EXT_NAMES := ext/file1 ext/file2
+ ##############################################################################
+@@ -121,6 +123,7 @@
+ CFLAGS := -Wall -Wextra -O1
+ ONLYCFLAGS := # -Wmissing-prototypes
+ DEFINES :=
++LDFLAGS :=
+ LIBS := -lm
+ OBJ_DIR := src/obj
+ TMP_DIR := /var/tmp/$(APP)
+@@ -157,16 +160,16 @@
+ 
+ ifeq ($(VERBOSE),y)
+ 	CFLAGS := -v $(CFLAGS)
+-	LIBS := -v $(LIBS)
++	LDFLAGS := -v $(LDFLAGS)
+ endif
+ 
+ ZFLAGS := $(DEBUG) $(EXT_CFLAGS)
+ ZDEFINES := $(EXTRA) $(ZPREFIX) -DOS=$(OS) $(DEFINES) $(EXT_DEFINES)
++ZLDFLAGS := $(DEBUG) $(LDFLAGS) $(EXT_LDFLAGS)
+ ZLIBS := $(EXTRA) $(LIBS) $(EXT_LIBS)
+ ZPRE :=
+ 
+-ifeq ($(READLINE),n)
+-else
++ifeq ($(READLINE),y)
+   ifneq ($(OS),MINGW32)
+ 	ifeq ($(shell if test -e "/usr/local/opt/readline"; then echo "y" ; fi),y)
+ 		ZDEFINES += -DUSE_READLINE=4 -I/usr/local/opt/readline/include
+@@ -294,7 +297,7 @@
+ ##############################################################################
+ 
+ $(APP): $(OBJS)
+-	$(CPP) -o $(TMP_DIR)/$(APP) $(OBJS) $(ZLIBS)
++	$(CPP) $(ZLDFLAGS) -o $(TMP_DIR)/$(APP) $(OBJS) $(ZLIBS)
+ 	ln -sf $(TMP_DIR)/$(APP) $(APP)
+ 	@$(ZPOST)
+ 
+@@ -319,32 +322,32 @@
+ 
+ ifeq ($(OS),MINGW32)
+   libcxprolog.a cxprolog.dll: $(OBJ_DIR) $(OBJS)
+-	$(CPP) -shared -o cxprolog.dll $(OBJS) -Wl,--out-implib,libcxprolog.a $(ZLIBS)
++	$(CPP) $(ZLDFLAGS) -shared -o cxprolog.dll $(OBJS) -Wl,--out-implib,libcxprolog.a $(ZLIBS)
+ 	
+   cxprolog_shared.exe: libcxprolog.a cxprolog.dll
+   ifeq ($(WXWIDGETS),y)
+-	$(CPP) -o cxprolog_shared.exe -lmingw32 -L./ -lcxprolog
++	$(CPP) $(ZLDFLAGS) -o cxprolog_shared.exe -lmingw32 -L./ -lcxprolog
+   else
+-	$(CPP) -o cxprolog_shared.exe -L./ -lcxprolog
++	$(CPP) $(ZLDFLAGS) -o cxprolog_shared.exe -L./ -lcxprolog
+   endif
+ 	
+   cxprolog_testlib.exe: libcxprolog.a cxprolog.dll
+-	gcc -DTESTLIB=1 -o src/TestLib.o -c src/TestLib.c
+-	$(CPP) -enable-auto-import -o cxprolog_testlib src/TestLib.o -L./ -lcxprolog
++	$(CC) $(ZFLAGS) -DTESTLIB=1 -o src/TestLib.o -c src/TestLib.c
++	$(CPP) $(ZLDFLAGS) -enable-auto-import -o cxprolog_testlib src/TestLib.o -L./ -lcxprolog
+ 	rm src/TestLib.o
+ 	
+ lib: libcxprolog.a cxprolog_shared.exe cxprolog_testlib.exe
+ 
+ else # Assume Unix
+   libcxprolog.so: $(OBJ_DIR) $(OBJS)
+-	$(CPP) -shared -o libcxprolog.so $(OBJS) -lc $(ZLIBS)
++	$(CPP) $(ZLDFLAGS) -shared -Wl,-soname,libcxprolog.so -o libcxprolog.so $(filter-out src/obj/CxProlog.o,$(OBJS)) -lc $(ZLIBS)
+ 
+   cxprolog_shared: libcxprolog.so
+-	$(CPP) $(ZDEFINES) -o cxprolog_shared -L./ -lcxprolog
++	$(CPP) $(ZLDFLAGS) -o cxprolog_shared src/obj/CxProlog.o -L./ -lcxprolog $(ZLIBS)
+ 
+   cxprolog_testlib: libcxprolog.so
+-	gcc $(ZDEFINES) -DTESTLIB=1 -o src/TestLib.o -c src/TestLib.c
+-	$(CPP) $(ZDEFINES) -o cxprolog_testlib src/TestLib.o -L./ -lcxprolog
++	$(CC) $(ZFLAGS) $(ZDEFINES) -DTESTLIB=1 -o src/TestLib.o -c src/TestLib.c
++	$(CPP) $(ZLDFLAGS) -o cxprolog_testlib src/TestLib.o -L./ -lcxprolog $(ZLIBS)
+ 	rm src/TestLib.o
+ 
+ lib: libcxprolog.so cxprolog_shared cxprolog_testlib

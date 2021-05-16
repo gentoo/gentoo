@@ -1,0 +1,58 @@
+--- a/src/gens/gens_core/sound/ym2612.c
++++ b/src/gens/gens_core/sound/ym2612.c
+@@ -241,7 +241,7 @@
+  ***********************************************/
+ 
+ 
+-INLINE void
++void
+ CALC_FINC_SL (slot_ * SL, int finc, int kc)
+ {
+   int ksr;
+@@ -284,7 +284,7 @@
+ }
+ 
+ 
+-INLINE void
++void
+ CALC_FINC_CH (channel_ * CH)
+ {
+   int finc, kc;
+@@ -305,7 +305,7 @@
+  ***********************************************/
+ 
+ 
+-INLINE void
++void
+ KEY_ON (channel_ * CH, int nsl)
+ {
+   slot_ *SL = &(CH->SLOT[nsl]);	// on recupère le bon pointeur de slot
+@@ -331,7 +331,7 @@
+ }
+ 
+ 
+-INLINE void
++void
+ KEY_OFF (channel_ * CH, int nsl)
+ {
+   slot_ *SL = &(CH->SLOT[nsl]);	// on recupère le bon pointeur de slot
+@@ -351,7 +351,7 @@
+ }
+ 
+ 
+-INLINE void
++void
+ CSM_Key_Control ()
+ {
+   KEY_ON (&YM2612.CHANNEL[2], 0);
+--- a/src/gens/segacd/cd_aspi.c
++++ b/src/gens/segacd/cd_aspi.c
+@@ -55,7 +55,7 @@
+ DWORD (*Get_ASPI_Version) (void);
+ DWORD (*Send_ASPI_Command) (LPSRB);
+ int ASPI_Command_Running;
+-int CDROM_SPEED;
++extern int CDROM_SPEED;
+ int Num_CD_Drive;
+ int CUR_DEV; // a che serve?
+ int DEV_PAR[8][3];

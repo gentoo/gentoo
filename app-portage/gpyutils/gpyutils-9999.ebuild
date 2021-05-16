@@ -1,32 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+EAPI=7
 
-inherit distutils-r1
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{8..9} )
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-inherit git-r3
-#endif
+EGIT_REPO_URI="https://github.com/mgorny/gpyutils.git"
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Utitilies for maintaining Python packages"
-HOMEPAGE="https://bitbucket.org/mgorny/gpyutils/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/gpyutils/"
+SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
-RDEPEND=">=app-portage/gentoopm-0.2.9[${PYTHON_USEDEP}]"
-#if LIVE
-
-KEYWORDS=
-SRC_URI=
-#endif
+RDEPEND=">=app-portage/gentoopm-0.3.2[${PYTHON_USEDEP}]"
 
 python_test() {
 	esetup.py test

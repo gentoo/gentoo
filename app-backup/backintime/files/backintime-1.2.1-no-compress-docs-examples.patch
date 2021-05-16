@@ -1,0 +1,142 @@
+From 897f81aefa1dfcfb8c645375e0c4baeadd39c9c0 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 31 Dec 2019 22:13:23 +0100
+Subject: [PATCH] No compress, no DOCS install, no examples install, fix
+ docbook path
+
+---
+ common/configure | 36 ++++--------------------------------
+ qt/configure     | 30 ++++++------------------------
+ 2 files changed, 10 insertions(+), 56 deletions(-)
+
+diff --git a/common/configure b/common/configure
+index 87cdc48..c1dd1af 100755
+--- a/common/configure
++++ b/common/configure
+@@ -166,7 +166,7 @@ printf "DEST=\$(DESTDIR)\$(PREFIX)\n\n" >> ${MAKEFILE}
+ 
+ printf "all:\tbuild\n\n" >> ${MAKEFILE}
+ 
+-printf "build:\ttranslate compress\n\n" >> ${MAKEFILE}
++printf "build:\ttranslate\n\n" >> ${MAKEFILE}
+ 
+ printf "clean:\n" >> ${MAKEFILE}
+ printf "\trm -f po/*.mo\n" >> ${MAKEFILE}
+@@ -191,30 +191,11 @@ addInstallFiles "plugins/*.py" "/share/backintime/plugins"
+ addUninstallDir                "/share/backintime"
+ addNewline
+ 
+-addComment "documentation"
+-addInstallDir                        "/share/doc/backintime-common"
+-addInstallFile "../debian/copyright" "/share/doc/backintime-common"
+-addInstallFile "../AUTHORS"          "/share/doc/backintime-common"
+-addInstallFile "../LICENSE"          "/share/doc/backintime-common"
+-addInstallFile "../README.md"        "/share/doc/backintime-common"
+-addInstallFile "../TRANSLATIONS"     "/share/doc/backintime-common"
+-addInstallFile "../VERSION"          "/share/doc/backintime-common"
+-addInstallFile "../CHANGES"          "/share/doc/backintime-common"
+-addNewline
+-
+-addComment "config-examples"
+-addInstallDir                            "/share/doc/backintime-common/examples"
+-addInstallFile "config-example-local.gz" "/share/doc/backintime-common/examples"
+-addInstallFile "config-example-ssh.gz"   "/share/doc/backintime-common/examples"
+-addUninstallDir                          "/share/doc/backintime-common"
+-addUninstallDir                          "/share/doc"
+-addNewline
+-
+ addComment "man"
+ addInstallDir                                  "/share/man/man1"
+-addInstallFile "man/C/backintime.1.gz"         "/share/man/man1"
+-addInstallFile "man/C/backintime-askpass.1.gz" "/share/man/man1"
+-addInstallFile "man/C/backintime-config.1.gz"  "/share/man/man1"
++addInstallFile "man/C/backintime.1"            "/share/man/man1"
++addInstallFile "man/C/backintime-askpass.1"    "/share/man/man1"
++addInstallFile "man/C/backintime-config.1"     "/share/man/man1"
+ addUninstallDir                                "/share/man"
+ addNewline
+ 
+@@ -238,15 +219,6 @@ addSymlink      "backintime"        "/share/bash-completion/completions/backinti
+ addUninstallDir                     "/share/bash-completion"
+ addNewline
+ 
+-#compress
+-printf "compress:\n" >> ${MAKEFILE}
+-printf "\t#man pages\n" >> ${MAKEFILE}
+-printf "\tfor i in \$\$(ls -1 man/C/); do case \$\$i in *.gz|*~) continue;; *) gzip -n --best -c man/C/\$\$i > man/C/\$\${i}.gz;; esac; done\n\n" >> ${MAKEFILE}
+-
+-printf "\t#config-examples\n" >> ${MAKEFILE}
+-printf "\tgzip -n --best -c config-example-local > config-example-local.gz\n" >> ${MAKEFILE}
+-printf "\tgzip -n --best -c config-example-ssh > config-example-ssh.gz\n\n" >> ${MAKEFILE}
+-
+ #translate
+ printf "translate:\t$mos\n\n" >> ${MAKEFILE}
+ 
+diff --git a/qt/configure b/qt/configure
+index 4b56b70..8bbdfcb 100755
+--- a/qt/configure
++++ b/qt/configure
+@@ -126,7 +126,7 @@ printf "DEST=\$(DESTDIR)\$(PREFIX)\n\n" >> ${MAKEFILE}
+ 
+ printf "all:\tbuild\n\n" >> ${MAKEFILE}
+ 
+-printf "build:\tcompress\n\n" >> ${MAKEFILE}
++printf "build:\t\n\n" >> ${MAKEFILE}
+ 
+ printf "clean:\n" >> ${MAKEFILE}
+ printf "\trm -f po/*.mo\n" >> ${MAKEFILE}
+@@ -174,34 +174,21 @@ addInstallFiles "net.launchpad.backintime*.policy" "/share/polkit-1/actions"
+ addUninstallDir                                    "/share/polkit-1"
+ addNewline
+ 
+-addComment "documentation"
+-addInstallDir                        "/share/doc/backintime-qt"
+-addInstallFile "../debian/copyright" "/share/doc/backintime-qt"
+-addInstallFile "../AUTHORS"          "/share/doc/backintime-qt"
+-addInstallFile "../LICENSE"          "/share/doc/backintime-qt"
+-addInstallFile "../README.md"        "/share/doc/backintime-qt"
+-addInstallFile "../TRANSLATIONS"     "/share/doc/backintime-qt"
+-addInstallFile "../VERSION"          "/share/doc/backintime-qt"
+-addInstallFile "../CHANGES"          "/share/doc/backintime-qt"
+-addNewline
+-
+ addComment ".desktop"
+ addInstallDir               "/share/applications"
+ addInstallFiles "*.desktop" "/share/applications"
+ addNewline
+ 
+ addComment "docbook"
+-addInstallDir                          "/share/doc/qt/HTML/en/backintime"
+-addInstallFiles "docbook/en/*.docbook" "/share/doc/qt/HTML/en/backintime"
+-addUninstallDir                        "/share/doc/qt/HTML/en"
+-addUninstallDir                        "/share/doc/qt/HTML"
+-addUninstallDir                        "/share/doc/qt"
+-addUninstallDir                        "/share/doc"
++addInstallDir                          "/share/help/en/backintime"
++addInstallFiles "docbook/en/*.docbook" "/share/help/en/backintime"
++addUninstallDir                        "/share/help/en"
++addUninstallDir                        "/share/help"
+ addNewline
+ 
+ addComment "man"
+ addInstallDir    "/share/man/man1"
+-addInstallFile   "man/C/backintime-qt.1.gz" "/share/man/man1"
++addInstallFile   "man/C/backintime-qt.1"    "/share/man/man1"
+ addUninstallDir  "/share/man"
+ addNewline
+ 
+@@ -216,11 +203,6 @@ addUninstallDir                                             "/share/icons"
+ addUninstallDir                                             "/share"
+ addNewline
+ 
+-#compress
+-printf "compress:\n" >> ${MAKEFILE}
+-printf "\t#man pages\n" >> ${MAKEFILE}
+-printf "\tfor i in \$\$(ls -1 man/C/); do case \$\$i in *.gz|*~) continue;; *) gzip -n --best -c man/C/\$\$i > man/C/\$\${i}.gz;; esac; done\n\n" >> ${MAKEFILE}
+-
+ #uninstall
+ printf "uninstall: uninstall_files uninstall_dirs\n\n" >> ${MAKEFILE}
+ printf "uninstall_files:\n" >> ${MAKEFILE}
+-- 
+2.24.1
+

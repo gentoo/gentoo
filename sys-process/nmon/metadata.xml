@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>dev.rindeal+bugs.gentoo.org@gmail.com</email>
-		<name>Jan Chren (rindeal)</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
+	<maintainer type="person" proxied="yes">
+		<email>nelo@wallus.de</email>
+		<name>Nelo-Thara Wallus</name>
 	</maintainer>
-<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">nmon</remote-id>

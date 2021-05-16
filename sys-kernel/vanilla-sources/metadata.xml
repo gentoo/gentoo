@@ -10,9 +10,6 @@
 		<name>Agostino Sarubbo</name>
 		<description>CC/Assign to me the version bump request</description>
 	</maintainer>
-	<longdescription>
-		Vanilla prepatch/rc sources, for people who like to have the latest kernel available
-	</longdescription>
 	<upstream>
 		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
 	</upstream>

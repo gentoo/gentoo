@@ -1,0 +1,27 @@
+This is a forward port of erlang-20.3.2-dont-ignore-LDFLAGS.patch
+Anthony G. Basile <blueness@gentoo.org>
+
+diff -Naur otp-OTP-22.0.orig/lib/megaco/src/flex/Makefile.in otp-OTP-22.0/lib/megaco/src/flex/Makefile.in
+--- otp-OTP-22.0.orig/lib/megaco/src/flex/Makefile.in	2019-05-10 12:42:49.000000000 +0000
++++ otp-OTP-22.0/lib/megaco/src/flex/Makefile.in	2019-06-04 15:53:37.899372564 +0000
+@@ -47,7 +47,7 @@
+ CC      = @DED_CC@
+ CFLAGS_MT = $(CFLAGS) @DED_THR_DEFS@
+ LD      = @DED_LD@
+-LDFLAGS = @DED_LDFLAGS@
++LDFLAGS += @DED_LDFLAGS@
+ LEX     = @LEX@
+ LEXLIB  = @LEXLIB@
+ PERL    = @PERL@
+diff -Naur otp-OTP-22.0.orig/lib/odbc/c_src/Makefile.in otp-OTP-22.0/lib/odbc/c_src/Makefile.in
+--- otp-OTP-22.0.orig/lib/odbc/c_src/Makefile.in	2019-05-10 12:42:49.000000000 +0000
++++ otp-OTP-22.0/lib/odbc/c_src/Makefile.in	2019-06-04 15:53:37.900372572 +0000
+@@ -82,7 +82,7 @@
+ CFLAGS = $(TYPEFLAGS) @CFLAGS@ @THR_DEFS@ @DEFS@
+ EI_LDFLAGS = -L$(EI_ROOT)/obj$(TYPEMARKER)/$(TARGET)
+ LD = @LD@
+-LDFLAGS =  $(ODBC_LIB) $(EI_LDFLAGS)
++LDFLAGS += $(ODBC_LIB) $(EI_LDFLAGS)
+ LIBS = @LIBS@ @THR_LIBS@ $(EI_LIB)
+ INCLUDES = -I. $(ODBC_INCLUDE) $(EI_INCLUDE)
+ TARGET_FLAGS =  @TARGET_FLAGS@

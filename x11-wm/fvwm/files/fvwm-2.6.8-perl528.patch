@@ -1,0 +1,15 @@
+--- modules/FvwmPerl/FvwmPerl.in	2018-04-28 07:46:28.000000000 -0400
++++ modules/FvwmPerl/FvwmPerl.in	2019-01-06 20:44:59.035950968 -0500
+@@ -319,11 +319,11 @@
+ 		$FVWM_DATADIR = $FVWM_DATADIR || $module->site_data_dir;
+ 		$FVWM_USERDIR = $FVWM_USERDIR || $module->user_data_dir;
+ 	}
+ 
+ 	# perl code substitution first
+-	$$text_ref =~ s/\Q$quote1\E { ( .*? ) } \Q$quote2\E/
++	$$text_ref =~ s/\Q$quote1\E \{ ( .*? ) \} \Q$quote2\E/
+ 		my $result = eval "
+ 			no strict;
+ 			package PreprocessNamespace;
+ 			$1
+ 		";

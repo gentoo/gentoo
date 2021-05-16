@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="pear">XML_Util</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

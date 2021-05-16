@@ -1,0 +1,12 @@
+diff -ruN simgear-2020.1.2/CMakeLists.txt simgear-my/CMakeLists.txt
+--- simgear-2020.1.2/CMakeLists.txt	2020-05-24 17:13:35.000000000 +0200
++++ simgear-my/CMakeLists.txt	2020-10-17 15:48:58.375116913 +0200
+@@ -442,8 +442,6 @@
+     set(WARNING_FLAGS_CXX "-Wall -fPIC -Wno-overloaded-virtual -Wno-redeclared-class-member")
+     set(WARNING_FLAGS_C   "-Wall -fPIC")
+     set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
+-    # fix Boost compilation :(
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+ 
+     # override CMake default RelWithDebInfo flags.
+     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g -DNDEBUG")

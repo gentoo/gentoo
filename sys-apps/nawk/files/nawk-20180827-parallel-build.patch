@@ -1,0 +1,35 @@
+From fa4a9fd729a57a314f0aa10897216ce3b60ec653 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <ottxor@gentoo.org>
+Date: Mon, 10 Feb 2014 22:38:22 -0700
+Subject: [PATCH] fixed parallel build
+
+---
+ makefile | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/makefile b/makefile
+index ae80e4d..b3c8f9d 100644
+--- a/makefile
++++ b/makefile
+@@ -54,10 +54,15 @@ a.out:	ytab.o $(OFILES)
+ 
+ $(OFILES):	awk.h ytab.h proto.h
+ 
+-ytab.c:	awk.h proto.h awkgram.y
++#Clear dependency for parallel build: (make -j)
++#YACC generated y.tab.c and y.tab.h at the same time
++#this needs to be a static pattern rules otherwise multiple target
++#are mapped onto multiple executions of yacc, which overwrite 
++#each others outputs.
++y%.c y%.h:	awk.h proto.h awkgram.y
+ 	$(YACC) $(YFLAGS) awkgram.y
+-	mv y.tab.c ytab.c
+-	mv y.tab.h ytab.h
++	mv y.$*.c y$*.c
++	mv y.$*.h y$*.h
+ 
+ ytab.h:	ytab.c
+ 
+-- 
+2.19.2
+

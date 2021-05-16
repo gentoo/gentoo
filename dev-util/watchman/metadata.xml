@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>adrian@planetcoding.net</email>
+		<name>Adrian Moennich</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">facebook/watchman</remote-id>
+	</upstream>
+	<use>
+		<flag name="python">Install pywatchman bindings and the watchman-{wait,make} utils</flag>
+	</use>
+</pkgmetadata>

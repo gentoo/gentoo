@@ -1,0 +1,32 @@
+diff --color -Naur a/tools/cross-wine32.in b/tools/cross-wine32.in
+--- a/tools/cross-wine32.in	2021-04-24 11:27:05.044134837 +0100
++++ b/tools/cross-wine32.in	2021-04-24 11:28:55.880227178 +0100
+@@ -5,9 +5,10 @@
+ pkgconfig = '@PKG_CONFIG@'
+ 
+ [properties]
+-c_args = ['-m32']
+-c_link_args = ['-m32', '-mwindows', '-L@WINE32_LIBDIR@']
++c_args = @CFLAGS@ + ['-m32']
++c_link_args = @LDFLAGS@ + ['-m32', '-mwindows', '-L@WINE32_LIBDIR@']
+ needs_exe_wrapper = true
++pkg_config_libdir = '@PKG_CONFIG_LIBDIR@'
+ 
+ [host_machine]
+ system = 'linux'
+diff --color -Naur a/tools/cross-wine64.in b/tools/cross-wine64.in
+--- a/tools/cross-wine64.in	2021-04-24 11:27:05.044134837 +0100
++++ b/tools/cross-wine64.in	2021-04-24 11:29:14.999766636 +0100
+@@ -5,9 +5,10 @@
+ pkgconfig = '@PKG_CONFIG@'
+ 
+ [properties]
+-c_args = ['-m64']
+-c_link_args = ['-m64', '-mwindows', '-L@WINE64_LIBDIR@']
++c_args = @CFLAGS@ + ['-m64']
++c_link_args = @LDFLAGS@ + ['-m64', '-mwindows', '-L@WINE64_LIBDIR@']
+ needs_exe_wrapper = true
++pkg_config_libdir = '@PKG_CONFIG_LIBDIR@'
+ 
+ [host_machine]
+ system = 'linux'

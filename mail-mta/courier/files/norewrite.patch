@@ -1,5 +1,5 @@
---- courier/module.esmtp/esmtp.c.orig	2004-02-03 01:08:15.679486558 -0700
-+++ courier/module.esmtp/esmtp.c	2004-02-03 01:07:41.262697092 -0700
+--- a/courier/module.esmtp/esmtp.c	2004-02-03 01:08:15.679486558 -0700
++++ b/courier/module.esmtp/esmtp.c	2004-02-03 01:07:41.262697092 -0700
 @@ -255,6 +255,10 @@ const char *me;
  struct rfc822t	*tp;
  struct rfc822token at;

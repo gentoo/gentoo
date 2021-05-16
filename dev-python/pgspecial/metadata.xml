@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<longdescription>
+		PGSpecial provides an API to execute meta-commands
+		(AKA "special", or "backslash commands") on PostgreSQL.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">dbcli/pgspecial</remote-id>
+		<remote-id type="pypi">pgspecial</remote-id>
+	</upstream>
+</pkgmetadata>

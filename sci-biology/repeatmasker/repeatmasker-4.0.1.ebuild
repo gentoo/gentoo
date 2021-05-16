@@ -1,6 +1,5 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -43,16 +42,16 @@ Y
 src_install() {
 	exeinto /usr/share/${PN}
 	for i in DateRepeats ProcessRepeats RepeatMasker DupMasker RepeatProteinMask; do
-		doexe $i || die
-		dosym /usr/share/${PN}/$i /usr/bin/$i || die
+		doexe $i
+		dosym /usr/share/${PN}/$i /usr/bin/$i
 	done
 
 	dodir /usr/share/${PN}/lib
 	insinto /usr/share/${PN}/lib
-	doins "${S}"/*.pm || die
+	doins "${S}"/*.pm
 
 	insinto /usr/share/${PN}
-	doins -r util Matrices Libraries taxonomy.dat *.help || die
+	doins -r util Matrices Libraries taxonomy.dat *.help
 	keepdir /usr/share/${PN}/Libraries
 
 	dodoc README INSTALL *.help

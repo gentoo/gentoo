@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -13,10 +12,9 @@ fi
 inherit ${SCM} cmake-utils
 
 DESCRIPTION="C library to create simple HTTP servers and Web Applications"
-HOMEPAGE="http://www.coralbits.com/libonion/ https://github.com/davidmoreno/onion"
+HOMEPAGE="https://www.coralbits.com/libonion/ https://github.com/davidmoreno/onion"
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
@@ -30,10 +28,11 @@ IUSE="
 	test examples cxx -libev -libevent
 	redis
 "
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	png? ( media-libs/libpng:0= x11-libs/cairo )
 	jpeg? ( virtual/jpeg:0 )
 	xml? ( dev-libs/libxml2:2 sys-libs/zlib )
@@ -48,6 +47,8 @@ DEPEND="${RDEPEND}
 	test? ( net-misc/curl )
 "
 REQUIRED_USE="test? ( examples )"
+
+PATCHES=( "${FILESDIR}/protos.patch" )
 
 src_configure() {
 	use test || echo '' > tests/CMakeLists.txt

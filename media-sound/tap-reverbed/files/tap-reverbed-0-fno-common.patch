@@ -1,0 +1,65 @@
+--- a/src/ports.c
++++ b/src/ports.c
+@@ -37,6 +37,16 @@
+ #define LIST_WIDTH 200
+ #define LIST_HEIGHT 100
+ 
++extern unsigned long sample_rate;
++extern jack_client_t * client;
++extern const char ** ports_in;
++extern const char ** ports_out;
++
++extern jack_port_t * in_L_port;
++extern jack_port_t * in_R_port;
++extern jack_port_t * out_L_port;
++extern jack_port_t * out_R_port;
++
+ 
+ extern GtkWidget * ports_button;
+ 
+--- a/src/sound.c
++++ b/src/sound.c
+@@ -44,6 +44,16 @@
+  */
+ /* #define REVERBED_CALC_FLOAT */
+ 
++unsigned long sample_rate;
++jack_client_t * client;
++const char ** ports_in;
++const char ** ports_out;
++
++jack_port_t * in_L_port;
++jack_port_t * in_R_port;
++jack_port_t * out_L_port;
++jack_port_t * out_R_port;
++
+ 
+ extern int client_running;
+ extern REVTYPE * curr;
+--- a/src/sound.h
++++ b/src/sound.h
+@@ -24,15 +24,15 @@
+ 
+ 
+ 
+-unsigned long sample_rate;
+-jack_client_t * client;
+-const char ** ports_in;
+-const char ** ports_out;
+-
+-jack_port_t * in_L_port;
+-jack_port_t * in_R_port;
+-jack_port_t * out_L_port;
+-jack_port_t * out_R_port;
++extern unsigned long sample_rate;
++extern jack_client_t * client;
++extern const char ** ports_in;
++extern const char ** ports_out;
++
++extern jack_port_t * in_L_port;
++extern jack_port_t * in_R_port;
++extern jack_port_t * out_L_port;
++extern jack_port_t * out_R_port;
+ 
+ void comp_coeffs(void);
+ void load_revtype_data(void);

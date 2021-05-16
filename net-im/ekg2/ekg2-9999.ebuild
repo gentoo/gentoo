@@ -1,38 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="git://github.com/leafnode/${PN}.git
-	https://github.com/leafnode/${PN}.git"
-
-inherit git-r3
-#endif
-
-PYTHON_COMPAT=( python2_7 )
-inherit autotools-utils python-single-r1
+inherit autotools git-r3
 
 DESCRIPTION="Text-based, multi-protocol instant messenger"
-HOMEPAGE="http://www.ekg2.org"
-SRC_URI="http://pl.ekg2.org/${P}.tar.gz"
+HOMEPAGE="https://github.com/ekg2/ekg2/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/ekg2/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="gadu gpm gpg gtk minimal ncurses nls nntp openssl
-	perl python readline rss spell sqlite ssl xmpp unicode zlib"
+	perl readline rss spell sqlite ssl xmpp unicode zlib"
 
-RDEPEND="dev-libs/glib:2=
+RDEPEND="dev-libs/glib:2
 	gadu? ( <net-libs/libgadu-1.12:0= )
 	gpg? ( app-crypt/gpgme:1= )
-	gtk? ( x11-libs/gtk+:2= )
+	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl:0= )
 	openssl? ( dev-libs/openssl:0= )
 	perl? ( dev-lang/perl:0= )
-	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	rss? ( dev-libs/expat:0= )
 	ssl? ( net-libs/gnutls:0= )
@@ -54,11 +44,6 @@ DOCS=(
 	docs/ui-ncurses.txt docs/ui-ncurses-en.txt
 )
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
-
 pkg_pretend() {
 	if ! use gtk && ! use ncurses && ! use readline; then
 		ewarn 'ekg2 is being compiled without any frontend. You should consider'
@@ -67,8 +52,13 @@ pkg_pretend() {
 	fi
 }
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		# direct plugin references
 		$(use_enable gadu gg)
 		$(use_enable gpg)
@@ -77,7 +67,7 @@ src_configure() {
 		$(use_enable nntp)
 		$(use_enable openssl sim)
 		$(use_enable perl)
-		$(use_enable python)
+		--disable-python
 		$(use_enable readline)
 		$(use_enable rss)
 		$(use_enable sqlite logsqlite)
@@ -105,5 +95,10 @@ src_configure() {
 		--with-perl-module-build-flags='INSTALLDIRS=vendor'
 		--enable-fast-configure
 	)
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }

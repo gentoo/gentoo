@@ -1,14 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 inherit vim-plugin
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://github.com/airblade/vim-gitgutter.git"
+	EGIT_REPO_URI="https://github.com/airblade/vim-gitgutter.git"
 	inherit git-r3
 else
+	inherit vcs-snapshot
+	COMMIT_HASH="37bdd03d176c5e182c7e8dbdc79c3f71d2a04898"
+	SRC_URI="https://github.com/airblade/vim-gitgutter/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -17,7 +19,11 @@ HOMEPAGE="https://github.com/airblade/vim-gitgutter/"
 LICENSE="MIT"
 VIM_PLUGIN_HELPFILES="${PN}.txt"
 
+RDEPEND="dev-vcs/git"
+
 src_prepare() {
-	rm README* screenshot.png || die
-	rm -rf test || die
+	default
+
+	# remove unwanted files
+	rm -rv LICENCE README* screenshot.png test || die
 }

@@ -1,0 +1,16 @@
+[Unit]
+Description=NHRP daemon
+Documentation=man:nhrpd(8) man:zebra(8)
+BindsTo=zebra.service
+After=network.target zebra.service
+ConditionPathExists=/etc/quagga/nhrpd.conf
+
+[Service]
+Type=forking
+PIDFile=/run/quagga/nhrpd.pid
+ExecStart=/usr/sbin/nhrpd -d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

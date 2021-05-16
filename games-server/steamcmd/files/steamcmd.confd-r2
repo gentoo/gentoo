@@ -1,0 +1,20 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Dtach options, which will used, when the `attach` extra command is called.
+# By default, CTRL+D is used, and no signal is send,
+# when you want to detach from the attached console.
+DTACH_OPTS="-e '^D' -r none"
+
+# Specifies, which server binary is used.
+# This could be 'hlds_run' or 'srcds_run', depending on your game.
+# STEAMCMD_BINARY="hlds_run"
+
+# Path to the files of your started server.
+# It's recommended to use:
+# '/opt/steamcmd/hlds' for older HL1 based mods.
+# '/opt/steamcmd/srcds' for newer HL2 based mods.
+# STEAMCMD_PATH="/opt/steamcmd/hlds"
+
+# Options for your server binary.
+# STEAMCMD_OPTS="-game valve +ip 127.0.0.1 +maxplayers 32 +map crossfire -pingboost 3"

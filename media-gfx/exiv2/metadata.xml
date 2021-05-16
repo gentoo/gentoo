@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>graphics@gentoo.org</email>
-		<name>Gentoo Graphics Project</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
@@ -14,7 +10,6 @@
 		write EXIF, IPTC and XMP image metadata.
 	</longdescription>
 	<use>
-		<flag name="contrib">Build additional contrib components</flag>
 		<flag name="webready">Support reading metadata over the internet</flag>
 	</use>
 </pkgmetadata>

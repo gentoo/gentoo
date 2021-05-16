@@ -1,6 +1,5 @@
-diff -Nru uucp-1.07.orig/Makefile.am uucp-1.07/Makefile.am
---- uucp-1.07.orig/Makefile.am	2003-05-30 00:10:23.000000000 +0000
-+++ uucp-1.07/Makefile.am	2009-03-06 18:41:48.000000000 +0000
+--- a/Makefile.am	2003-05-30 00:10:23.000000000 +0000
++++ b/Makefile.am	2009-03-06 18:41:48.000000000 +0000
 @@ -78,12 +78,12 @@
  
  install-exec-hook:
@@ -18,9 +17,8 @@ diff -Nru uucp-1.07.orig/Makefile.am uucp-1.07/Makefile.am
  	done
  if HAVE_MKDIR
  else
-diff -Nru uucp-1.07.orig/policy.h uucp-1.07/policy.h
---- uucp-1.07.orig/policy.h	2003-05-29 06:08:45.000000000 +0000
-+++ uucp-1.07/policy.h	2009-03-06 18:41:48.000000000 +0000
+--- a/policy.h	2003-05-29 06:08:45.000000000 +0000
++++ b/policy.h	2009-03-06 18:41:48.000000000 +0000
 @@ -302,8 +302,7 @@
  /* #define LOCKDIR "/usr/spool/locks" */
  /* #define LOCKDIR "/usr/spool/uucp/LCK" */

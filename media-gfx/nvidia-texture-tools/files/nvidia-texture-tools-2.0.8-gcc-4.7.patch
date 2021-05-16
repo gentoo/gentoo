@@ -4,8 +4,8 @@ Subject: fix compilation on gcc 4.7
 
 https://bugs.gentoo.org/show_bug.cgi?id=423965
 
---- src/nvcore/nvcore.h
-+++ src/nvcore/nvcore.h
+--- a/src/nvcore/nvcore.h
++++ b/src/nvcore/nvcore.h
 @@ -158,6 +158,7 @@
  #elif NV_CC_GNUC
  #	if NV_OS_LINUX

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hanno@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		This is a python wrapper for the curve25519 library with ed25519 signatures.
+		The C code was pulled from libaxolotl-android.
+		At the moment this wrapper is meant for use by <pkg>dev-python/python-axolotl</pkg>.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/tgalal/python-axolotl-curve25519/issues</bugs-to>
+		<remote-id type="github">tgalal/python-axolotl-curve25519</remote-id>
+		<remote-id type="pypi">python-axolotl-curve25519</remote-id>
+	</upstream>
+</pkgmetadata>

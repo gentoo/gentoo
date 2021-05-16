@@ -1,0 +1,39 @@
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/pull/18
+
+From 345025de5c6c470e36505ff70978b168c05a1a71 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 31 Jul 2019 11:18:56 -0400
+Subject: [PATCH] Install to standard locations using GNUInstallDirs
+
+Some distributions require 64 bit libraries to be installed to lib64, for example.
+Using GNUInstallDirs ensures that files are installed to the expected locations.
+---
+ CMakeLists.txt | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0f524e6..009bab7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,8 @@ if (NOT UNIX)
+     message(FATAL_ERROR "No Windows support due to lack of signals")
+ endif()
+ 
++include(GNUInstallDirs)
++
+ find_path(HSA_HEADER hsa/hsa.h PATHS /opt/rocm/include)
+ if (NOT EXISTS ${HSA_HEADER})
+     message(FATAL_ERROR "Cannot find HSA headers. Please check the CMAKE_PREFIX_PATH")
+@@ -34,9 +36,9 @@ target_compile_options(amd_hostcall
+ target_compile_definitions(amd_hostcall
+   PRIVATE "${AMD_HOSTCALL_PRIVATE_COMPILE_DEFINITIONS}")
+ 
+-set(INCLUDE_INSTALL_DIR include)
+-set(LIB_INSTALL_DIR lib)
+-set(SHARE_INSTALL_DIR share)
++set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR})
++set(LIB_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
++set(SHARE_INSTALL_DIR ${CMAKE_INSTALL_DATADIR})
+ set(CONFIG_INSTALL_DIR ${LIB_INSTALL_DIR}/cmake/amd_hostcall)
+ 
+ install(TARGETS amd_hostcall

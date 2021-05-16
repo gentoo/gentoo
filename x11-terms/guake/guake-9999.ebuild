@@ -1,60 +1,69 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
-GCONF_DEBUG=no
-GNOME2_LA_PUNT=yes
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{7..9} )
+DISTUTILS_SINGLE_IMPL=1
 
-inherit autotools git-r3 gnome2 python-single-r1
+inherit distutils-r1 gnome2-utils xdg-utils
 
-DESCRIPTION="Drop-down terminal for GTK+ desktops"
-HOMEPAGE="https://github.com/Guake/guake"
-# override gnome.org.eclass SRC_URI
-SRC_URI=''
-EGIT_REPO_URI="https://github.com/Guake/guake.git"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/Guake/guake.git"
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
+
+DESCRIPTION="Drop-down terminal for GNOME"
+HOMEPAGE="
+	https://github.com/Guake/guake/
+	https://pypi.org/project/guake/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+IUSE="utempter"
 
 RDEPEND="
-	dev-python/dbus-python
-	dev-python/gconf-python
-	dev-python/notify-python
-	dev-python/pygtk
-	dev-python/pyxdg
-	x11-libs/gtk+:2
-	x11-libs/libX11
-	x11-libs/vte:0[python]
-"
-DEPEND="
-	${RDEPEND}
-	dev-util/intltool
-	virtual/pkgconfig
-"
+	dev-libs/glib
+	dev-libs/keybinder:3[introspection]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pbr[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
+	x11-libs/libnotify[introspection]
+	x11-libs/libwnck:3[introspection]
+	x11-libs/vte:2.91[introspection]
+	utempter? ( sys-libs/libutempter )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	gnome-base/gsettings-desktop-schemas
+	sys-devel/gettext"
 
-DOCS=( AUTHORS ChangeLog NEWS README.rst )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3.2-paths.patch
+)
 
-src_unpack() {
-	# override gnome2_src_unpack()
-	git-r3_src_unpack
+python_compile_all() {
+	emake prepare-install PREFIX=/usr
+	emake generate-paths PREFIX=/usr DATA_DIR='$(datadir)/guake' DEV_SCHEMA_DIR='$(gsettingsschemadir)'
+	default
 }
 
-src_prepare() {
-	eautoreconf
-
-	gnome2_src_prepare
-
-	G2CONF="--disable-static"
+python_install_all() {
+	emake install-schemas install-locale PREFIX=/usr DESTDIR="${D}"
+	distutils-r1_python_install_all
 }
 
 pkg_postinst() {
-	gnome2_pkg_postinst
+	gnome2_schemas_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_pkg_postrm
+	gnome2_schemas_update
+	xdg_desktop_database_update
 }

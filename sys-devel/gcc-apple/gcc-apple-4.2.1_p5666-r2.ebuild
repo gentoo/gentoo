@@ -1,47 +1,30 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="3"
+EAPI="5"
 
-inherit eutils toolchain flag-o-matic autotools prefix
+inherit eutils toolchain flag-o-matic autotools prefix toolchain-funcs
 
 GCC_VERS=${PV/_p*/}
 APPLE_VERS="${PV/*_p/}.3"
 DESCRIPTION="Apple branch of the GNU Compiler Collection, Developer Tools 4.0"
 HOMEPAGE="https://gcc.gnu.org"
 SRC_URI="http://www.opensource.apple.com/darwinsource/tarballs/other/gcc-${APPLE_VERS}.tar.gz
-		http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-16.tar.gz
 		http://www.opensource.apple.com/darwinsource/tarballs/other/libstdcxx-39.tar.gz
-		fortran? ( mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2 )"
+		fortran? (
+			mirror://gnu/gcc/gcc-4.2.4/gcc-fortran-4.2.4.tar.bz2
+			https://dev.gentoo.org/~grobian/distfiles/${PN}-4.2.1_p5646-gfortran.patch
+		)"
 LICENSE="GPL-2 GPL-3"
 
-case ${CHOST} in
-	*-darwin1*|i?86-*-darwin9|powerpc-*-darwin9)
-		LIBSTDCXX_APPLE_VERSION=39
-	;;
-	*)
-		# pre Leopard has no dtrace, which is required by 37.11 and above
-		# Leopard only has 32-bits version of dtrace
-		LIBSTDCXX_APPLE_VERSION=16
-	;;
-esac
-
-if is_crosscompile; then
-	SLOT="${CTARGET}-42"
-else
-	SLOT="42"
-fi
-
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-
-IUSE="fortran nls +openmp objc objc++ +cxx"
+SLOT="42"
+KEYWORDS="~ppc-macos ~x64-macos"
+IUSE="bootstrap fortran nls +openmp objc objc++ +cxx"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
 	>=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
 	>=sys-devel/gcc-config-1.8-r1
-	sys-libs/csu
 	!<sys-apps/portage-2.2.14
 	fortran? (
 		>=dev-libs/gmp-4.2.1
@@ -52,19 +35,12 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	${CATEGORY}/binutils-apple
 	>=dev-libs/mpfr-2.2.0_p10"
+PDEPEND="sys-libs/csu"
 
 S=${WORKDIR}/gcc-${APPLE_VERS}
 
 # TPREFIX is the prefix of the CTARGET installation
 export TPREFIX=${TPREFIX:-${EPREFIX}}
-
-LIBPATH=${EPREFIX}/usr/lib/gcc/${CTARGET}/${GCC_VERS}
-if is_crosscompile ; then
-	BINPATH=${EPREFIX}/usr/${CHOST}/${CTARGET}/gcc-bin/${GCC_VERS}
-else
-	BINPATH=${EPREFIX}/usr/${CTARGET}/gcc-bin/${GCC_VERS}
-fi
-STDCXX_INCDIR=${LIBPATH}/include/g++-v${GCC_VERS/\.*/}
 
 do_bootstrap() {
 	is_crosscompile && return 1
@@ -84,17 +60,17 @@ src_prepare() {
 		mv "${WORKDIR}"/gcc-4.2.4/gcc/fortran gcc/ || die
 		mv "${WORKDIR}"/gcc-4.2.4/libgfortran . || die
 		# from: substracted from http://r.research.att.com/tools/
-		epatch "${FILESDIR}"/${PN}-4.2.1_p5646-gfortran.patch
+		epatch "${DISTDIR}"/${PN}-4.2.1_p5646-gfortran.patch
 	fi
 
-	# move in libstdc++
-	mv "${WORKDIR}"/libstdcxx-${LIBSTDCXX_APPLE_VERSION}/libstdcxx/libstdc++-v3 .
-	if [[ ${LIBSTDCXX_APPLE_VERSION} == 16 ]] ; then
-		epatch "${FILESDIR}"/libstdc++-${LIBSTDCXX_APPLE_VERSION}.patch # does it apply on 37?
-		sed -i -e 's/__block\([^_]\)/__blk\1/g' \
-			libstdc++-v3/include/ext/mt_allocator.h \
-			libstdc++-v3/src/mt_allocator.cc || die "conflict fix failed"
-	fi
+	mv "${WORKDIR}"/libstdcxx-39/libstdcxx/libstdc++-v3 .
+
+	# pre Leopard has no dtrace, which is required by 37.11 and above
+	# Leopard only has 32-bits version of dtrace
+	# So back out dtrace support on those platforms using patch
+	# thoughtfully provided by Apple.
+	[[ ${CHOST} == x86_64-apple-darwin9 || ${CHOST##*-darwin} -le 8 ]] && \
+		patch -R -p0 < "${WORKDIR}"/libstdcxx-39/patches-4.2.1/dtrace.patch
 
 	# we use our libtool
 	sed -i -e "s:/usr/bin/libtool:${EPREFIX}/usr/bin/${CTARGET}-libtool:" \
@@ -117,13 +93,13 @@ src_prepare() {
 
 	# dsymutil stuff breaks on 10.4/x86, revert it
 	[[ ${CHOST} == *86*-apple-darwin8 ]] && \
-		epatch "${FILESDIR}"/${PN}-${GCC_VERS}-dsymutil.patch
+		epatch "${FILESDIR}"/${P}-dsymutil.patch
 
 	# support OS X 10.10
 	epatch "${FILESDIR}"/${P}-darwin14.patch
 
 	# bootstrapping might fail with host provided gcc on 10.4/x86
-	if ! is_crosscompile && ! echo "int main(){return 0;}" | gcc -o "${T}"/foo \
+	if ! is_crosscompile && ! echo "int main(){return 0;}" | $(tc-getCC) -o "${T}"/foo \
 		-mdynamic-no-pic -x c - >/dev/null 2>&1;
 	then
 		einfo "-mdynamic-no-pic doesn't work - disabling..."
@@ -134,7 +110,16 @@ src_prepare() {
 			|| die "Failed to rewrite $XD"
 	fi
 
+	if [[ ${CHOST} == powerpc*-darwin* ]] && \
+		! echo "int main(){return 0;}" | \
+			$(tc-getCC) -o "${T}"/foo -no-cpp-precomp -x c - >/dev/null 2>&1;
+	then
+		einfo "-no-cpp-precomp not supported by compiler - disabling ..."
+		sed -i -e 's/-no-cpp-precomp//' configure.in configure || die
+	fi
+
 	epatch "${FILESDIR}"/${P}-perl-5.18.patch
+	epatch "${FILESDIR}"/${P}-darwin8.patch
 
 	epatch "${FILESDIR}"/${PN}-4.2.1-prefix-search-dirs-r1.patch
 	eprefixify "${S}"/gcc/gcc.c
@@ -151,6 +136,7 @@ src_prepare() {
 
 	local BRANDING_GCC_PKGVERSION="$(sed -n -e '/^#define VERSUFFIX/s/^[^"]*"\([^"]\+\)".*$/\1/p' "${S}"/gcc/version.c)"
 	BRANDING_GCC_PKGVERSION=${BRANDING_GCC_PKGVERSION/(/(Gentoo ${PVR}, }
+	# ) ) } # <- to help Vim highlight this correctly
 	einfo "patching gcc version: ${GCC_VERS}${BRANDING_GCC_PKGVERSION}"
 
 	sed -i -e "s~VERSUFFIX \"[^\"]*~VERSUFFIX \"${BRANDING_GCC_PKGVERSION}~" \
@@ -172,6 +158,14 @@ src_configure() {
 	use objc && langs="${langs},objc"
 	use objc++ && langs="${langs/,objc/},objc,obj-c++" # need objc with objc++
 	use fortran && langs="${langs},fortran"
+
+	LIBPATH=${EPREFIX}/usr/lib/gcc/${CTARGET}/${GCC_VERS}
+	if is_crosscompile ; then
+		BINPATH=${EPREFIX}/usr/${CHOST}/${CTARGET}/gcc-bin/${GCC_VERS}
+	else
+		BINPATH=${EPREFIX}/usr/${CTARGET}/gcc-bin/${GCC_VERS}
+	fi
+	STDCXX_INCDIR=${LIBPATH}/include/g++-v${GCC_VERS/\.*/}
 
 	local myconf="${myconf} \
 		--prefix=${EPREFIX}/usr \
@@ -264,13 +258,13 @@ src_compile() {
 	else
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap}
 	fi
-	emake ${GCC_MAKE_TARGET} || die "emake failed"
+	emake ${GCC_MAKE_TARGET}
 }
 
 src_install() {
 	cd "${WORKDIR}"/build
 	# -jX doesn't work
-	emake -j1 DESTDIR="${D}" install || die
+	emake -j1 DESTDIR="${D}" install
 
 	# Punt some tools which are really only useful while building gcc
 	find "${ED}" -name install-tools -prune -type d -exec rm -rf "{}" \;
@@ -319,9 +313,9 @@ src_install() {
 			ln -sf ${CTARGET}-${x} ${x}
 
 			# Create version-ed symlinks
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+			dosym ../${BINPATH#${EPREFIX}/usr/}/${CTARGET}-${x} \
 				/usr/bin/${CTARGET}-${x}-${GCC_VERS}
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+			dosym ../${BINPATH#${EPREFIX}/usr/}/${CTARGET}-${x} \
 				/usr/bin/${x}-${GCC_VERS}
 		fi
 
@@ -342,13 +336,6 @@ src_install() {
 		rm -r "${D}"${LIBPATH}/include/libffi || die
 	fi
 
-	# Now do the fun stripping stuff
-	env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${BINPATH}"
-	env RESTRICT="" CHOST=${CTARGET} prepstrip "${D}${LIBPATH}"
-	# gcc used to install helper binaries in lib/ but then moved to libexec/
-	[[ -d ${ED}/usr/libexec/gcc ]] && \
-		env RESTRICT="" CHOST=${CHOST} prepstrip "${ED}/usr/libexec/gcc/${CTARGET}/${GCC_VERS}"
-
 	# prune empty dirs left behind
 	find "${ED}" -type d | xargs rmdir >& /dev/null
 
@@ -363,8 +350,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	# beware this also switches when it's on another branch version of GCC
-	gcc-config ${CTARGET}-${GCC_VERS}
+	# only activate this compiler if nothing else is activated
+	gcc-config -c >& /dev/null || gcc-config ${CTARGET}-${GCC_VERS}
 }
 
 pkg_postrm() {

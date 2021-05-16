@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
@@ -39,7 +38,7 @@ src_install() {
 	perl-module_src_install
 	webapp_src_preinst
 
-	dodoc Changes INSTALL README TODO UPGRADE || die
+	dodoc Changes INSTALL README TODO UPGRADE
 
 	insinto "${MY_ICONSDIR}"/gallery
 	doins htdocs/*.png

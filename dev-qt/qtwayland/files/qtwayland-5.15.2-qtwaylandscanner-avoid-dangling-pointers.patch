@@ -1,0 +1,35 @@
+From 735164b5c2a2637a8d53a8803a2401e4ef477ff0 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Fri, 30 Oct 2020 16:55:30 +0200
+Subject: [PATCH] Scanner: Avoid accessing dangling pointers in destroy_func()
+
+Usually, the object associated with the resource gets destroyed in the
+destroy_resource() function.
+
+Therefore, we need to double-check that the object is still alive before
+trying to reset its m_resource.
+
+Pick-to: 5.15
+Change-Id: I26408228f58919db17eb29584a1cbd4a9427d25c
+Reviewed-by: Eskil Abrahamsen Blomfeldt <eskil.abrahamsen-blomfeldt@qt.io>
+---
+ src/qtwaylandscanner/qtwaylandscanner.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/qtwaylandscanner/qtwaylandscanner.cpp b/src/qtwaylandscanner/qtwaylandscanner.cpp
+index 1a1f8bf16..450ef519d 100644
+--- a/src/qtwaylandscanner/qtwaylandscanner.cpp
++++ b/src/qtwaylandscanner/qtwaylandscanner.cpp
+@@ -814,7 +814,9 @@ bool Scanner::process()
+             printf("        if (Q_LIKELY(that)) {\n");
+             printf("            that->m_resource_map.remove(resource->client(), resource);\n");
+             printf("            that->%s_destroy_resource(resource);\n", interfaceNameStripped);
+-            printf("            if (that->m_resource == resource)\n");
++            printf("\n");
++            printf("            that = resource->%s_object;\n", interfaceNameStripped);
++            printf("            if (that && that->m_resource == resource)\n");
+             printf("                that->m_resource = nullptr;\n");
+             printf("        }\n");
+             printf("        delete resource;\n");
+-- 
+2.16.3

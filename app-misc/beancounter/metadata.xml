@@ -2,8 +2,4 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		Finance performance calculation engine with data acquisition (Yahoo! Finance)
-		and SQL backend support.
-	</longdescription>
 </pkgmetadata>

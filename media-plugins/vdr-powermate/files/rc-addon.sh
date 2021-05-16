@@ -1,5 +1,4 @@
 # plugin-startup-skript for powermate-plugin
-# $Id$
 
 # try to autodetect device for powermate
 

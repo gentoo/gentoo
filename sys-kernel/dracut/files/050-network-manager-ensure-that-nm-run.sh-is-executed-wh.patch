@@ -1,0 +1,48 @@
+From 3dcaa97ca4dcfa8092252a22df62c60941e59ce3 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Wed, 11 Mar 2020 09:40:50 +0100
+Subject: [PATCH] network-manager: ensure that nm-run.sh is executed when
+ needed
+
+The network-manager command line hook must install a
+initqueue/finished hook to ensure that nm-run.sh is executed when
+there are network connections to activate.
+
+Fixes: #694
+---
+ modules.d/35network-manager/nm-config.sh | 11 +++++++++++
+ modules.d/35network-manager/nm-run.sh    |  2 ++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/modules.d/35network-manager/nm-config.sh b/modules.d/35network-manager/nm-config.sh
+index 1efa737c..39a1c8bd 100755
+--- a/modules.d/35network-manager/nm-config.sh
++++ b/modules.d/35network-manager/nm-config.sh
+@@ -5,3 +5,14 @@ if [ -n "$netroot" ] || [ -e /tmp/net.ifaces ]; then
+ fi
+ 
+ /usr/libexec/nm-initrd-generator -- $(getcmdline)
++
++if getargbool 0 rd.neednet; then
++  for i in /usr/lib/NetworkManager/system-connections/* \
++           /run/NetworkManager/system-connections/* \
++           /etc/NetworkManager/system-connections/* \
++           /etc/sysconfig/network-scripts/ifcfg-*; do
++    [ -f "$i" ] || continue
++    echo '[ -f /tmp/nm.done ]' >$hookdir/initqueue/finished/nm.sh
++    break
++  done
++fi
+diff --git a/modules.d/35network-manager/nm-run.sh b/modules.d/35network-manager/nm-run.sh
+index 4079b735..fc5280a1 100755
+--- a/modules.d/35network-manager/nm-run.sh
++++ b/modules.d/35network-manager/nm-run.sh
+@@ -22,3 +22,5 @@ do
+     source_hook initqueue/online $ifname
+     /sbin/netroot $ifname
+ done
++
++> /tmp/nm.done
+-- 
+2.26.2
+

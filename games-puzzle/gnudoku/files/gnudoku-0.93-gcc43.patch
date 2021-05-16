@@ -1,5 +1,5 @@
---- GNUDoku.C
-+++ GNUDoku.C
+--- a/GNUDoku.C
++++ b/GNUDoku.C
 @@ -25,6 +25,7 @@
  #include <cstdlib>
  #include <cstdio>
@@ -8,8 +8,8 @@
  
  #include <vector>
  #include <cassert>
---- sudoku.C
-+++ sudoku.C
+--- a/sudoku.C
++++ b/sudoku.C
 @@ -10,6 +10,7 @@
  #include <cstdio>
  #include <cstdlib>

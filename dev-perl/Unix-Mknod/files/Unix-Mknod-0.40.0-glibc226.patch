@@ -1,0 +1,12 @@
+diff -ruN Unix-Mknod-0.04.orig/Mknod.xs Unix-Mknod-0.04/Mknod.xs
+--- Unix-Mknod-0.04.orig/Mknod.xs	2005-07-08 21:04:23.000000000 +0200
++++ Unix-Mknod-0.04/Mknod.xs	2019-10-17 06:06:22.073130897 +0200
+@@ -10,6 +10,8 @@
+ 
+ #ifdef HAS_SYSMKDEV
+ #include <sys/mkdev.h>
++#else
++#include <sys/sysmacros.h>
+ #endif
+ 
+ #ifdef __cplusplus

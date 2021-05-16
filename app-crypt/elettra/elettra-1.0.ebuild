@@ -1,14 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 inherit toolchain-funcs
 
 MY_P="${PN}-src-${PV}"
 
 DESCRIPTION="Plausible deniable file cryptography"
-HOMEPAGE="http://www.winstonsmith.info/julia/elettra/"
-SRC_URI="http://www.winstonsmith.info/julia/elettra/${MY_P}.tar.gz"
+HOMEPAGE="https://www.winstonsmith.info/julia/elettra/"
+SRC_URI="https://www.winstonsmith.info/julia/elettra/${MY_P}.tar.gz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
@@ -16,8 +17,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="sys-libs/zlib
-		 app-crypt/mhash
-		 dev-libs/libmcrypt"
+	app-crypt/mhash
+	dev-libs/libmcrypt"
 
 DEPEND="${RDEPEND}"
 
@@ -30,6 +31,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin elettra || die "dobin failed"
-	dodoc README || die "dodoc failed"
+	dobin elettra
+	dodoc README
 }

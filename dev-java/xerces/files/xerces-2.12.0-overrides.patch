@@ -1,0 +1,66 @@
+--- a/org/apache/html/dom/HTMLIFrameElementImpl.java	2019-04-17 18:08:03.187783332 +0000
++++ b/org/apache/html/dom/HTMLIFrameElementImpl.java	2019-04-17 18:09:38.640274335 +0000
+@@ -17,6 +17,7 @@
+ package org.apache.html.dom;
+ 
+ import org.w3c.dom.html.HTMLIFrameElement;
++import org.w3c.dom.Document;
+ 
+ /**
+  * @xerces.internal
+@@ -161,6 +162,11 @@
+         super( owner, name );
+     }
+ 
++    @Override
++    public Document getContentDocument()
++    {
++        return null;
++    }
+ 
+ }
+ 
+--- a/org/apache/html/dom/HTMLFrameElementImpl.java	2019-04-17 19:14:06.833172177 +0000
++++ b/org/apache/html/dom/HTMLFrameElementImpl.java	2019-04-17 19:14:56.755428976 +0000
+@@ -17,6 +17,7 @@
+ package org.apache.html.dom;
+ 
+ import org.w3c.dom.html.HTMLFrameElement;
++import org.w3c.dom.Document;
+ 
+ /**
+  * @xerces.internal
+@@ -138,6 +139,11 @@
+         super( owner, name );
+     }
+   
++    @Override
++    public Document getContentDocument()
++    {
++        return null;
++    }
+ 
+ }
+ 
+--- a/org/apache/html/dom/HTMLObjectElementImpl.java	2019-04-17 19:17:26.624199895 +0000
++++ b/org/apache/html/dom/HTMLObjectElementImpl.java	2019-04-17 19:19:23.691802087 +0000
+@@ -17,6 +17,7 @@
+ package org.apache.html.dom;
+ 
+ import org.w3c.dom.html.HTMLObjectElement;
++import org.w3c.dom.Document;
+ 
+ /**
+  * @xerces.internal
+@@ -251,6 +252,11 @@
+         super( owner, name );
+     }
+ 
++    @Override
++    public Document getContentDocument()
++    {
++        return null;
++    }
+ 
+ }
+ 

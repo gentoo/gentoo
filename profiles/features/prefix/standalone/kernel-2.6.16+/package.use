@@ -1,0 +1,5 @@
+# Benda Xu <heroxbd@gentoo.org> (2019-07-17)
+# We are on an old kernel and without root privilege, the suid mode of
+# glibc should enabled everywhere to avoid extra assumptions of the
+# environment we do not control.
+sys-libs/glibc suid

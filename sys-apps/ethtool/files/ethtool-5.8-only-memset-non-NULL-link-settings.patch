@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/740114
+https://git.kernel.org/pub/scm/network/ethtool/ethtool.git/commit/?id=cf12872ebe7d8fac2088e7d2cd5e2a0a5f03499d
+
+--- a/ethtool.c
++++ b/ethtool.c
+@@ -3048,10 +3048,11 @@ static int do_sset(struct cmd_context *ctx)
+ 		struct ethtool_link_usettings *link_usettings;
+ 
+ 		link_usettings = do_ioctl_glinksettings(ctx);
+-		memset(&link_usettings->deprecated, 0,
+-		       sizeof(link_usettings->deprecated));
+ 		if (link_usettings == NULL)
+ 			link_usettings = do_ioctl_gset(ctx);
++		else
++			memset(&link_usettings->deprecated, 0,
++			       sizeof(link_usettings->deprecated));
+ 		if (link_usettings == NULL) {
+ 			perror("Cannot get current device settings");
+ 			err = -1;
+ 

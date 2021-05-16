@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="gnupg-pkcs11-scd proxy."
+
+GNUPG_PKCS11_GROUP="${GNUPG_PKCS11_GROUP:-gnupg-pkcs11}"
+
+command="/usr/bin/gnupg-pkcs11-scd-proxy-server"
+command_args="--scd-config='${SCD_CONFIG}' --socket-group=${GNUPG_PKCS11_GROUP} ${EXTRA_OPTS}"
+pidfile=${PIDFILE:-/run/${SVCNAME}.pid}
+user=${USER:-gnupg-pkcs11-scd-proxy}
+group=${GROUP:-gnupg-pkcs11-scd-proxy}
+start_stop_daemon_args="--user ${user} --group ${group} --background --make-pidfile"
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+start_pre() {
+	checkpath -o ${user}:${GNUPG_PKCS11_GROUP} -m 0750 -d /run/gnupg-pkcs11-scd-proxy
+}

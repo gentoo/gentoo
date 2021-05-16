@@ -6,7 +6,6 @@
 		<name>Patrick McLean</name>
 	</maintainer>
 	<use>
-		<flag name="appindicator">Enable usage of appindicator to export menu options in to unity</flag>
 		<flag name="keybinder">Use keybinder to enable global key bindings</flag>
 	</use>
 	<upstream>

@@ -1,36 +1,25 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-inherit multilib rpm toolchain-funcs
+inherit rpm toolchain-funcs
 
 DESCRIPTION="A library for emulating x86"
-HOMEPAGE="http://www.opensuse.org/"
-SRC_URI="http://download.opensuse.org/source/factory/repo/oss/suse/src/${P}-9.8.src.rpm"
+HOMEPAGE="https://www.opensuse.org/"
+SRC_URI="https://download.opensuse.org/source/factory/repo/oss/suse/src/${P}-9.8.src.rpm"
 
 LICENSE="HPND"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
-src_prepare() {
-	sed -i \
-		-e 's:$(CC) -shared:& $(LDFLAGS):' \
-		Makefile || die
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-fix-makefile.patch
+	"${FILESDIR}"/${PN}-1.1-gcc10-fno-common.patch
+)
 
-src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -fPIC -Wall"
-}
-
-src_test() {
-	ln -sf libx86emu.so.1.1 libx86emu.so || die
-	ln -sf libx86emu.so.1.1 libx86emu.so.1 || die
-	emake \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS} ${LDFLAGS} -Wl,-rpath,${S} -fPIC -Wall -I../include/ -L../" test
+src_configure() {
+	tc-export CC
 }
 
 src_install() {

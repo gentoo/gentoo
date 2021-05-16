@@ -1,6 +1,5 @@
-diff -Naur ttf2pt1-3.4.4-orig/ft.c ttf2pt1-3.4.4/ft.c
---- ttf2pt1-3.4.4-orig/ft.c	2007-07-15 20:23:43.000000000 -0600
-+++ ttf2pt1-3.4.4/ft.c	2007-07-15 20:24:02.000000000 -0600
+--- a/ft.c
++++ b/ft.c
 @@ -12,6 +12,7 @@
  #include <stdlib.h>
  #include <ctype.h>

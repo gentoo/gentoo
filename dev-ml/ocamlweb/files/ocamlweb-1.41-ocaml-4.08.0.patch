@@ -1,0 +1,53 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Fri, 6 Sep 2019 09:53:22 +0200
+Subject: Fix compilation with OCaml 4.08.0
+
+---
+ web.ml | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/web.ml b/web.ml
+index 7dc1470..6f9ca51 100644
+--- a/web.ml
++++ b/web.ml
+@@ -247,14 +247,16 @@ let norm_string s =
+ 
+ let alpha_string s1 s2 =
+   match what_is_first_char s1, what_is_first_char s2 with
+-    | Symbol, Symbol -> s1 < s2
+-    | Symbol, _ -> true
+-    | _, Symbol -> false
+-    | _,_ -> norm_string s1 < norm_string s2
++    | Symbol, Symbol -> compare s1 s2
++    | Symbol, _ -> -1
++    | _, Symbol -> 1
++    | _,_ -> compare (norm_string s1) (norm_string s2)
++
++let ( ++ ) c1 c2 =
++  if c1 = 0 then c2 else c1
+ 
+ let order_entry e1 e2 =
+-  (alpha_string e1.e_name e2.e_name) ||
+-  (e1.e_name = e2.e_name && e1.e_type < e2.e_type)
++  alpha_string e1.e_name e2.e_name ++ compare e1.e_type e2.e_type
+ 
+ (*s The following function collects all the index entries and sort them
+     using [alpha_string], returning a list. *)
+@@ -264,7 +266,7 @@ module Idset = Set.Make(struct type t = index_entry let compare = compare end)
+ let all_entries () =
+   let s = Idmap.fold (fun x _ s -> Idset.add x s) !used Idset.empty in
+   let s = Idmap.fold (fun x _ s -> Idset.add x s) !defined s in
+-  Sort.list order_entry (Idset.elements s)
++  List.sort order_entry (Idset.elements s)
+ 
+ 
+ (*s When we are in \LaTeX\ style, an index entry only consists in two lists
+@@ -324,7 +326,7 @@ let list_in_table id t =
+   try
+     let l = Whereset.elements (Idmap.find id t) in
+     let l = map_succeed_nf find_where l in
+-    let l = Sort.list (fun x x' -> snd x < snd x') l in
++    let l = List.sort (fun x x' -> compare (snd x) (snd x')) l in
+     uniquize l
+   with Not_found ->
+     []

@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
+
 inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Interactively examine a C program"
-HOMEPAGE="http://sourceforge.net/projects/kscope/"
+HOMEPAGE="https://sourceforge.net/projects/kscope/"
 SRC_URI="mirror://sourceforge/kscope/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -16,11 +16,17 @@ IUSE="debug"
 
 S=${WORKDIR}/${PN}
 
-DOCS="AUTHORS README* TODO"
+DOCS=( AUTHORS README{,.cscope} TODO )
+
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch" #678886
+)
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	echo 'INSTALL(TARGETS min-cscope RUNTIME DESTINATION bin)' \
-		>> src/CMakeLists.txt
+		>> src/CMakeLists.txt || die
 }
 
 src_configure() {

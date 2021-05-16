@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic prefix toolchain-funcs
+inherit epatch flag-o-matic prefix toolchain-funcs
 
-DESCRIPTION="Development toolkit and applications for computational biology, including NCBI BLAST"
-HOMEPAGE="http://www.ncbi.nlm.nih.gov/"
+DESCRIPTION="Development toolkit and applications for computational biology, including BLAST"
+HOMEPAGE="https://www.ncbi.nlm.nih.gov/"
 SRC_URI="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/${PV}/ncbi.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -28,7 +27,10 @@ RDEPEND="
 		x11-libs/libXmu
 		x11-libs/libXt
 		)"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/ncbi"
 
@@ -115,7 +117,7 @@ src_install() {
 	dobin "${S}"/bin/*
 
 	for i in ${EXTRA_VIB}; do
-		dobin "${S}"/build/${i} || die "Failed to install binaries."
+		dobin "${S}"/build/${i}
 	done
 	use static-libs && dolib.a "${S}"/lib/*.a
 	mkdir -p "${ED}"/usr/include/ncbi

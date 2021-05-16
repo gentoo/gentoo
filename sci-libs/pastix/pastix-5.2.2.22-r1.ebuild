@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -29,7 +28,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${PN}_${PV}.tar.bz2"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc int64 mpi +smp starpu static-libs"
 
 RDEPEND="
@@ -53,14 +52,11 @@ src_prepare() {
 		-e "s:^\(CCPROG\s*=\).*:\1 $(tc-getCC):" \
 		-e "s:^\(CFPROG\s*=\).*:\1 $(tc-getFC):" \
 		-e "s:^\(CF90PROG\s*=\).*:\1 $(tc-getFC):" \
-		-e "s:^\(MPCCPROG\s*=\).*:\1 mpicc -cc=$(tc-getCC):" \
-		-e "s:^\(MPCXXPROG\s*=\).*:\1 mpic++ -cxx=$(tc-getCXX):" \
-		-e "s:^\(MCFPROG\s*=\).*:\1 mpif90 -f90=$(tc-getFC):" \
 		-e "s:^\(ARPROG\s*=\).*:\1 $(tc-getAR):" \
 		-e "s:^\(CCFOPT\s*=\).*:\1 ${FFLAGS}:" \
 		-e "s:^\(CCFDEB\s*=\).*:\1 ${FFLAGS}:" \
 		-e 's:^\(EXTRALIB\s*=\).*:\1 -lm -lrt:' \
-		-e "s:^#\s*\(ROOT\s*=\).*:\1 \$(DESTDIR)${EPREFIX%/}/usr:" \
+		-e "s:^#\s*\(ROOT\s*=\).*:\1 \$(DESTDIR)${EPREFIX}/usr:" \
 		-e 's:^#\s*\(INCLUDEDIR\s*=\).*:\1 $(ROOT)/include:' \
 		-e 's:^#\s*\(BINDIR\s*=\).*:\1 $(ROOT)/bin:' \
 		-e "s:^#\s*\(LIBDIR\s*=\).*:\1 \$(ROOT)/$(get_libdir):" \

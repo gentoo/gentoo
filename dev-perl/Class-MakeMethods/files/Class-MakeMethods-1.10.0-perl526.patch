@@ -1,0 +1,27 @@
+From e9ca634f9d11894aec3236a8166b48b5bd25e582 Mon Sep 17 00:00:00 2001
+From: Slaven Rezic <slaven@rezic.de>
+Date: Wed, 8 Jun 2016 22:47:42 +0200
+Subject: fix for "Unescaped left brace in regex is deprecated" (RT #115108)
+
+Bug: https://rt.cpan.org/Ticket/Display.html?id=115108
+Bug: https://bugs.gentoo.org/615120
+---
+ tests/xemulator/class_methodmaker/Test.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/xemulator/class_methodmaker/Test.pm b/tests/xemulator/class_methodmaker/Test.pm
+index fc37552..4ab84ad 100644
+--- a/tests/xemulator/class_methodmaker/Test.pm
++++ b/tests/xemulator/class_methodmaker/Test.pm
+@@ -48,7 +48,7 @@ sub COUNT_TESTS {
+   open(IN, $file) or die "Can't open $file: $!";
+   while (<IN>) {
+     /^\s*#/ and next;
+-    $c += s/(TEST\s{)/$1/g;
++    $c += s/(TEST\s\{)/$1/g;
+   }
+   $c;
+ }
+-- 
+2.14.1
+

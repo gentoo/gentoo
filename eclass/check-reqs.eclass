@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: check-reqs.eclass
 # @MAINTAINER:
@@ -8,6 +7,7 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
@@ -40,8 +40,6 @@
 
 if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 
-inherit eutils
-
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -62,29 +60,18 @@ inherit eutils
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
 
-EXPORT_FUNCTIONS pkg_setup
-case "${EAPI:-0}" in
-	0|1|2|3) ;;
-	4|5|6) EXPORT_FUNCTIONS pkg_pretend ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI:-0} in
+	4|5|6|7) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-# @FUNCTION: check_reqs
-# @DESCRIPTION:
+EXPORT_FUNCTIONS pkg_pretend pkg_setup
+
 # Obsolete function executing all the checks and printing out results
 check_reqs() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	[[ ${EAPI:-0} == [012345] ]] || die "${FUNCNAME} is banned in EAPI > 5"
-
-	echo
-	eqawarn "Package calling old ${FUNCNAME} function."
-	eqawarn "Please file a bug against the package."
-	eqawarn "It should call check-reqs_pkg_pretend and check-reqs_pkg_setup"
-	eqawarn "and possibly use EAPI=4 or later."
-	echo
-
-	check-reqs_pkg_setup "$@"
+	eerror "Package calling old ${FUNCNAME} function."
+	eerror "It should call check-reqs_pkg_pretend and check-reqs_pkg_setup."
+	die "${FUNCNAME} is banned"
 }
 
 # @FUNCTION: check-reqs_pkg_setup
@@ -122,7 +109,7 @@ check-reqs_prepare() {
 			-z ${CHECKREQS_DISK_VAR} ]]; then
 		eerror "Set some check-reqs eclass variables if you want to use it."
 		eerror "If you are user and see this message file a bug against the package."
-		die "${FUNCNAME}: check-reqs eclass called but not actualy used!"
+		die "${FUNCNAME}: check-reqs eclass called but not actually used!"
 	fi
 }
 
@@ -136,9 +123,6 @@ check-reqs_run() {
 	# some people are *censored*
 	unset CHECKREQS_FAILED
 
-	[[ ${EAPI:-0} == [0123] ]] && local MERGE_TYPE=""
-
-	# use != in test, because MERGE_TYPE only exists in EAPI 4 and later
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -n ${CHECKREQS_MEMORY} ]] && \
 			check-reqs_memory \
@@ -153,12 +137,12 @@ check-reqs_run() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		[[ -n ${CHECKREQS_DISK_USR} ]] && \
 			check-reqs_disk \
-				"${EROOT}/usr" \
+				"${EROOT%/}/usr" \
 				"${CHECKREQS_DISK_USR}"
 
 		[[ -n ${CHECKREQS_DISK_VAR} ]] && \
 			check-reqs_disk \
-				"${EROOT}/var" \
+				"${EROOT%/}/var" \
 				"${CHECKREQS_DISK_VAR}"
 	fi
 }
@@ -177,10 +161,9 @@ check-reqs_get_kibibytes() {
 	local size=${1%[GMT]}
 
 	case ${unit} in
-		G) echo $((1024 * 1024 * size)) ;;
 		M) echo $((1024 * size)) ;;
+		G) echo $((1024 * 1024 * size)) ;;
 		T) echo $((1024 * 1024 * 1024 * size)) ;;
-		[0-9]) echo $((1024 * size)) ;;
 		*)
 			die "${FUNCNAME}: Unknown unit: ${unit}"
 		;;
@@ -197,17 +180,8 @@ check-reqs_get_number() {
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
 
-	local unit=${1:(-1)}
 	local size=${1%[GMT]}
-	local msg=eerror
-	[[ ${EAPI:-0} == [012345] ]] && msg=eqawarn
-
-	# Check for unset units and warn about them.
-	# Backcompat.
-	if [[ ${size} == ${1} ]]; then
-		${msg} "Package does not specify unit for the size check"
-		${msg} "File bug against the package. It should specify the unit."
-	fi
+	[[ ${size} == ${1} ]] && die "${FUNCNAME}: Missing unit: ${1}"
 
 	echo ${size}
 }
@@ -215,7 +189,7 @@ check-reqs_get_number() {
 # @FUNCTION: check-reqs_get_unit
 # @INTERNAL
 # @DESCRIPTION:
-# Internal function that return the unit without the numerical value.
+# Internal function that returns the unit without the numerical value.
 # Returns "GiB" for "1G" or "TiB" for "150T".
 check-reqs_get_unit() {
 	debug-print-function ${FUNCNAME} "$@"
@@ -225,8 +199,8 @@ check-reqs_get_unit() {
 	local unit=${1:(-1)}
 
 	case ${unit} in
+		M) echo "MiB" ;;
 		G) echo "GiB" ;;
-		[M0-9]) echo "MiB" ;;
 		T) echo "TiB" ;;
 		*)
 			die "${FUNCNAME}: Unknown unit: ${unit}"
@@ -268,6 +242,7 @@ check-reqs_memory() {
 
 	local size=${1}
 	local actual_memory
+	local actual_swap
 
 	check-reqs_start_phase \
 		${size} \
@@ -275,19 +250,29 @@ check-reqs_memory() {
 
 	if [[ -r /proc/meminfo ]] ; then
 		actual_memory=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
+		actual_swap=$(awk '/SwapTotal/ { print $2 }' /proc/meminfo)
 	else
-		actual_memory=$(sysctl hw.physmem 2>/dev/null )
-		[[ "$?" == "0" ]] &&
-			actual_memory=$(echo $actual_memory | sed -e 's/^[^:=]*[:=]//' )
+		actual_memory=$(sysctl hw.physmem 2>/dev/null)
+		[[ $? -eq 0 ]] && actual_memory=$(echo "${actual_memory}" \
+			| sed -e 's/^[^:=]*[:=][[:space:]]*//')
+		actual_swap=$(sysctl vm.swap_total 2>/dev/null)
+		[[ $? -eq 0 ]] && actual_swap=$(echo "${actual_swap}" \
+			| sed -e 's/^[^:=]*[:=][[:space:]]*//')
 	fi
 	if [[ -n ${actual_memory} ]] ; then
-		if [[ ${actual_memory} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
+		if [[ ${actual_memory} -ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+			eend 0
+		elif [[ -n ${actual_swap} && $((${actual_memory} + ${actual_swap})) \
+				-ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+			ewarn "Amount of main memory is insufficient, but amount"
+			ewarn "of main memory combined with swap is sufficient."
+			ewarn "Build process may make computer very slow!"
+			eend 0
+		else
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
 				"RAM"
-		else
-			eend 0
 		fi
 	else
 		eend 1
@@ -365,8 +350,8 @@ check-reqs_unsatisfied() {
 	${msg} "There is NOT at least ${sizeunit} ${location}"
 
 	# @ECLASS-VARIABLE: CHECKREQS_FAILED
-	# @DESCRIPTION:
 	# @INTERNAL
+	# @DESCRIPTION:
 	# If set the checks failed and eclass should abort the build.
 	# Internal, do not set yourself.
 	CHECKREQS_FAILED="true"

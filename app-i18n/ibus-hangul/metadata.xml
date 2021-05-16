@@ -5,9 +5,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
-	<longdescription lang="en">The Hangul engine for IBus platform. It provides Korean input method from libhangul.</longdescription>
 	<upstream>
-		<remote-id type="google-code">ibus</remote-id>
-		<remote-id type="github">ibus/ibus</remote-id>
+		<remote-id type="github">libhangul/ibus-hangul</remote-id>
 	</upstream>
 </pkgmetadata>

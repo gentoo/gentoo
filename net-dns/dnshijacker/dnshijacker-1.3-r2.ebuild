@@ -1,30 +1,28 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="a libnet/libpcap based packet sniffer and spoofer"
-HOMEPAGE="http://pedram.redhive.com/projects.php"
+HOMEPAGE="http://pedram.redhive.com/code/dns_hijacker/"
 SRC_URI="http://pedram.redhive.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
-IUSE=""
 
-DEPEND="net-libs/libpcap
-	>=net-libs/libnet-1.0.2a-r3:1.0"
+DEPEND="
+	>=net-libs/libnet-1.0.2a-r3:1.0
+	net-libs/libpcap
+"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
-src_compile() {
-	emake CC=$(tc-getCC)
+src_configure() {
+	tc-export CC
 }
 
 src_install() {
@@ -33,5 +31,5 @@ src_install() {
 	insinto /etc/dnshijacker
 	doins ftable
 
-	dodoc README
+	einstalldocs
 }

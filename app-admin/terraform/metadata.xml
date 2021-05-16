@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
+	<longdescription lang="en">
+		Terraform is a tool for building, changing, and versioning infrastructure
+		safely and efficiently. Terraform can manage existing and popular service
+		providers as well as custom in-house solutions.
+
+		Terraform files describe the components needed to run a single application
+		or your entire datacenter. Terraform generates an execution plan describing
+		what it will do to reach the desired state, and then executes it to build
+		the described infrastructure. As the configuration changes, Terraform is
+		able to determine what changed and create incremental execution plans which
+		can be applied.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/hashicorp/terraform/blob/master/CHANGELOG.md</changelog>
+		<remote-id type="github">hashicorp/terraform</remote-id>
+	</upstream>
+</pkgmetadata>

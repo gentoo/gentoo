@@ -1,0 +1,110 @@
+From: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+Date: Fri, 26 May 2017 09:51:40 -0400
+Subject: Use a short temporary homedir during the test suite
+
+This avoids problems with the length of the path to the homedir as
+compared to the size limits of sockaddr_un.sun_path, particularly on
+systems where /run/user/$(id -u) is not present or available (such as
+many minimalist build environments).
+---
+ t/000_setup.t        |  9 +++++----
+ t/MyTestSpecific.pm  | 18 +++++++++++++++++-
+ t/list_secret_keys.t |  3 ++-
+ t/zzz_cleanup.t      |  6 ++++--
+ 4 files changed, 28 insertions(+), 8 deletions(-)
+
+diff --git a/t/000_setup.t b/t/000_setup.t
+index 4dc4329..82d7005 100644
+--- a/t/000_setup.t
++++ b/t/000_setup.t
+@@ -12,13 +12,14 @@ use File::Copy;
+ 
+ TEST
+ {
+-    make_path('test/gnupghome', { mode => 0700 });
+-    my $agentconf = IO::File->new( "> test/gnupghome/gpg-agent.conf" );
++    my $homedir = $gnupg->options->homedir();
++    make_path($homedir, { mode => 0700 });
++    my $agentconf = IO::File->new( "> " . $homedir . "/gpg-agent.conf" );
+     $agentconf->write("pinentry-program " . getcwd() . "/test/fake-pinentry.pl\n");
+     $agentconf->close();
+-    copy('test/gpg.conf', 'test/gnupghome/gpg.conf');
++    copy('test/gpg.conf', $homedir . '/gpg.conf');
+     # reset the state of any long-lived gpg-agent, ignoring errors:
+-    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
++    system('gpgconf', '--homedir', $homedir, '--quiet', '--kill', 'gpg-agent');
+ 
+     reset_handles();
+ 
+diff --git a/t/MyTestSpecific.pm b/t/MyTestSpecific.pm
+index e513c25..809d55c 100644
+--- a/t/MyTestSpecific.pm
++++ b/t/MyTestSpecific.pm
+@@ -22,6 +22,7 @@ use IO::Seekable;
+ use File::Compare;
+ use Exporter;
+ use Class::Struct;
++use File::Temp qw (tempdir);
+ 
+ use GnuPG::Interface;
+ use GnuPG::Handles;
+@@ -40,10 +41,25 @@ use vars qw( @ISA           @EXPORT
+ 
+ $gnupg = GnuPG::Interface->new( passphrase => 'test' );
+ 
++
++my $homedir;
++if (-f "test/gnupghome") {
++  my $record = IO::File->new( "< test/gnupghome" );
++  $homedir = <$record>;
++  $record->close();
++} else {
++  $homedir = tempdir( DIR => '/tmp');
++  my $record = IO::File->new( "> test/gnupghome" );
++  $record->write($homedir);
++  $record->close();
++}
++
+ my @version = split('\.', $gnupg->version());
+ $gpg_is_modern = ($version[0] > 2 || ($version[0] == 2 && $version[1] >= 1));
+ 
+-$gnupg->options->hash_init( homedir              => 'test/gnupghome',
++
++
++$gnupg->options->hash_init( homedir              => $homedir,
+                             armor                => 1,
+                             meta_interactive     => 0,
+                             meta_signing_key_id  => '0x93AFC4B1B0288A104996B44253AE596EF950DA9C',
+diff --git a/t/list_secret_keys.t b/t/list_secret_keys.t
+index 7040c38..d1e3f30 100644
+--- a/t/list_secret_keys.t
++++ b/t/list_secret_keys.t
+@@ -23,8 +23,9 @@ TEST
+     $outfile = 'test/secret-keys/1.out';
+     my $out = IO::File->new( "> $outfile" )
+       or die "cannot open $outfile for writing: $ERRNO";
++    my $modern_pubring_line = $gnupg->options->homedir() . "/pubring.kbx\n";
+     while (<$stdout>) {
+-      if ($gpg_is_modern && /^\/.*\/test\/gnupghome\/pubring.kbx$/) {
++      if ($gpg_is_modern && ($_ eq $modern_pubring_line)) {
+         $out->print("test/gnupghome/pubring.kbx\n");
+       } elsif ($gpg_is_modern && /^--*$/) {
+         $out->print("--------------------------\n");
+diff --git a/t/zzz_cleanup.t b/t/zzz_cleanup.t
+index eea3a48..c3ec16f 100644
+--- a/t/zzz_cleanup.t
++++ b/t/zzz_cleanup.t
+@@ -11,9 +11,11 @@ use File::Path qw (remove_tree);
+ # this is actually no test, just cleanup.
+ TEST
+ {
++    my $homedir = $gnupg->options->homedir();
+     my $err = [];
+     # kill off any long-lived gpg-agent, ignoring errors:
+-    system('gpgconf', '--homedir=test/gnupghome', '--quiet', '--kill', 'gpg-agent');
+-    remove_tree('test/gnupghome', {error => \$err});
++    system('gpgconf', '--homedir', $homedir, '--quiet', '--kill', 'gpg-agent');
++    remove_tree($homedir, {error => \$err});
++    unlink('test/gnupghome');
+     return ! @$err;
+ };

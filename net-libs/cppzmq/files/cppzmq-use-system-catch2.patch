@@ -1,0 +1,27 @@
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -9,9 +9,10 @@
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
+ 
++find_package(Catch2 REQUIRED)
+ include(CTest)
+-include(cmake/catch.cmake)
+-include(${CATCH_MODULE_PATH}/Catch.cmake)
++include(Catch)
++find_path(CATCH_INCLUDE_DIR "catch.hpp" HINT /usr/include/catch/)
+ 
+ find_package(Threads)
+ 
+@@ -31,9 +32,9 @@
+     utilities.cpp
+ )
+ 
+-add_dependencies(unit_tests catch)
++add_dependencies(unit_tests Catch2::Catch2)
+ 
+-target_include_directories(unit_tests PUBLIC ${CATCH_MODULE_PATH})
++target_include_directories(unit_tests PUBLIC ${CATCH_INCLUDE_DIR})
+ target_link_libraries(
+     unit_tests
+     PRIVATE cppzmq

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Utilities to assist running batch processing jobs.
 
@@ -13,7 +10,6 @@
 		* runstat: Export statistics about a process's execution.
 	</longdescription>
 	<upstream>
-		<remote-id type="google-code">cronutils</remote-id>
 		<remote-id type="github">google/cronutils</remote-id>
 	</upstream>
 </pkgmetadata>

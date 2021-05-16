@@ -1,0 +1,20 @@
+From 8191b84648efc4dd583fbbfc4350a9cc9bfd58fb Mon Sep 17 00:00:00 2001
+From: Tomas Mraz <tmraz@fedoraproject.org>
+Date: Mon, 2 Nov 2020 11:05:26 +0100
+Subject: [PATCH] configure.ac: Drop the bug report e-mail from AC_INIT()
+
+Fixes #70
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 34ff51e..5b746ff 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,4 +1,4 @@
+-AC_INIT([cronie],[1.5.5],[mmaslano@redhat.com,tmraz@fedoraproject.org])
++AC_INIT([cronie],[1.5.5])
+ AC_CONFIG_HEADER([config.h])
+ AC_PREREQ(2.60)
+ 

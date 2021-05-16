@@ -1,0 +1,11 @@
+--- a/spotify-dbus.py	2021-04-12 11:11:00.710360694 +0200
++++ b/spotify-dbus.py	2021-04-12 11:53:06.208197383 +0200
+@@ -632,7 +636,7 @@
+ 			self.action_trigger('play')
+ 		
+ 		# Play/pause (0.6)
+-		elif '--playpause' or 'playpause' in sys.argv:
++		elif '--playpause' in sys.argv or 'playpause' in sys.argv:
+ 			self.action_trigger('playpause')
+ 		
+ 		# Stop

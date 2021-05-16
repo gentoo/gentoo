@@ -7,5 +7,11 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">exult</remote-id>
+		<remote-id type="github">exult/exult</remote-id>
 	</upstream>
+	<use>
+		<flag name="fluidsynth">Compile with support for FluidSynth</flag>
+		<flag name="sdl2">Use libsdl2 instead of libsdl</flag>
+		<flag name="tools">Enable tools</flag>
+	</use>
 </pkgmetadata>

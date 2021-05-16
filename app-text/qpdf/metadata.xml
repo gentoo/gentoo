@@ -6,6 +6,8 @@
 		<name>Gentoo Printing Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:qpdf_project:qpdf</remote-id>
+		<remote-id type="github">qpdf/qpdf</remote-id>
 		<remote-id type="sourceforge">qpdf</remote-id>
 	</upstream>
 </pkgmetadata>

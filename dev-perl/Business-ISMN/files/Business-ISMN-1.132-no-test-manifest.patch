@@ -1,0 +1,28 @@
+From 8d431b272441604ce3b3b8b5983142d1318a79f0 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 19 Sep 2017 20:14:29 +1200
+Subject: Remove use of Test::Manifest
+
+---
+ MANIFEST        | 1 -
+ Makefile.PL     | 2 --
+ t/test_manifest | 4 ----
+ 3 files changed, 7 deletions(-)
+ delete mode 100644 t/test_manifest
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 97946d6..87b735d 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -98,8 +98,6 @@ sub do_it {
+ 			||
+ 		"$MM 6.64";
+ 	eval "use $MM_version; 1" or die "Could not load $MM_version: $@";
+-	eval "use Test::Manifest 1.21"
+-		if -e File::Spec->catfile( qw(t test_manifest) );
+ 
+ 	my $arguments = arguments();
+ 	my $minimum_perl = $arguments->{MIN_PERL_VERSION} || '5.008';
+-- 
+2.18.0
+

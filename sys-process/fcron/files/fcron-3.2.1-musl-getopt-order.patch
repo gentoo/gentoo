@@ -1,0 +1,24 @@
+diff -Naur fcron-3.2.1.orig/script/check_system_crontabs.bash fcron-3.2.1/script/check_system_crontabs.bash
+--- fcron-3.2.1.orig/script/check_system_crontabs.bash	2015-03-28 04:45:42.000000000 -0400
++++ fcron-3.2.1/script/check_system_crontabs.bash	2018-02-05 17:47:04.735425134 -0500
+@@ -256,7 +256,7 @@
+   sed -i -e "s/@yearly/0 0 1 1 */g" -e "s/@annually/0 0 1 1 */g" -e "s/@monthly/0 0 1 * */g" -e "s/@weekly/0 0 * * 0/g" -e "s/@daily/0 0 * * */g" -e "s/@midnight/0 0 * * */g" -e "s/@hourly/0 * * * */g" $FCRONTAB_FILE_TMP
+ 
+   # notify fcron about the updated file
+-  $FCRONTAB_PROG $FCRONTAB_FILE_TMP -u systab
++  $FCRONTAB_PROG -u systab $FCRONTAB_FILE_TMP
+ }
+ 
+ NEED_REBUILD=0
+diff -Naur fcron-3.2.1.orig/script/check_system_crontabs.sh fcron-3.2.1/script/check_system_crontabs.sh
+--- fcron-3.2.1.orig/script/check_system_crontabs.sh	2015-03-28 04:45:42.000000000 -0400
++++ fcron-3.2.1/script/check_system_crontabs.sh	2018-02-05 17:45:48.673612299 -0500
+@@ -265,7 +265,7 @@
+   sed -i -e "s/@yearly/0 0 1 1 */g" -e "s/@annually/0 0 1 1 */g" -e "s/@monthly/0 0 1 * */g" -e "s/@weekly/0 0 * * 0/g" -e "s/@daily/0 0 * * */g" -e "s/@midnight/0 0 * * */g" -e "s/@hourly/0 * * * */g" "$FCRONTAB_FILE_TMP"
+ 
+   # notify fcron about the updated file
+-  "$FCRONTAB_PROG" -c "$FCRON_CONFIG_FILE" "$FCRONTAB_FILE_TMP" -u systab
++  "$FCRONTAB_PROG" -c "$FCRON_CONFIG_FILE" -u systab "$FCRONTAB_FILE_TMP"
+ }
+ 
+ NEED_REBUILD=0

@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 description='Start/stop the preload daemon'
 extra_started_commands='dump reload'

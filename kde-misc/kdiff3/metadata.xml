@@ -9,7 +9,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="sourceforge">kdiff3</remote-id>
-	</upstream>
 </pkgmetadata>

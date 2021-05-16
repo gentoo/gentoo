@@ -14,8 +14,8 @@ Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=255131
 Patch-URL: http://bugs.gentoo.org/attachment.cgi?id=178667&action=view
 Signed-off-by: Thomas Harning <harningt@gmail.com>
 
---- mhash-0.9.9/lib/whirlpool.c	2006-01-08 03:14:47.000000000 -0500
-+++ mhash-0.9.9-new/lib/whirlpool.c	2009-01-16 00:17:34.000000000 -0500
+--- a/lib/whirlpool.c
++++ b/lib/whirlpool.c
 @@ -970,6 +970,8 @@
                      mutils_word8 * digest)
  {

@@ -1,0 +1,14 @@
+--- a/src/end.S
++++ b/src/end.S
+@@ -39,6 +39,10 @@
+ 	 * to the register_size boundary but to 16 boundary.
+   	 * Also as gcc's man say, that 16 is maximum alignment. So, i use it.
+ 	 */
+-	.org . + ((16 - (. % 16 )) % 16)
++#if defined(__clang__)
++# define E(BASE, X)
++#else
++# define E(BASE, X)	.org . + ((16 - (. % 16 )) % 16)
++#endif
+ data:
+ 

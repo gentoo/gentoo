@@ -1,14 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 
 ROS_REPO_URI="https://github.com/ros-visualization/rviz"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python2_7 )
+CATKIN_HAS_MESSAGES=yes
 
-inherit ros-catkin
+CMAKE_MAKEFILE_GENERATOR=emake
+
+inherit ros-catkin virtualx
 
 DESCRIPTION="3D visualization tool for ROS"
 LICENSE="BSD"
@@ -18,13 +19,15 @@ IUSE=""
 RDEPEND="
 	dev-libs/boost:=[threads]
 	media-libs/assimp
-	dev-games/ogre
+	<dev-games/ogre-1.10:=[-double-precision]
 	virtual/opengl
 	dev-qt/qtwidgets:5
 	dev-qt/qtcore:5
 	dev-qt/qtopengl:5
 	dev-cpp/eigen:3
-	dev-cpp/yaml-cpp
+	dev-cpp/yaml-cpp:=
+	dev-libs/urdfdom:=
+	dev-libs/tinyxml2:=
 
 	dev-ros/angles
 	dev-ros/image_geometry
@@ -33,33 +36,39 @@ RDEPEND="
 	dev-ros/laser_geometry
 	dev-ros/message_filters
 	dev-ros/pluginlib
-	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/resource_retriever
-	dev-ros/rosbag[${PYTHON_USEDEP}]
+	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
+	dev-libs/console_bridge:=
 	dev-ros/roscpp
-	dev-ros/roslib[${PYTHON_USEDEP}]
-	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
+	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf
 	dev-ros/urdf
+	dev-ros/media_export
 
-	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}
 	dev-ros/map_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP},${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-"
-DEPEND="${RDEPEND}
-	dev-ros/cmake_modules
-	virtual/pkgconfig
+	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)"
+BDEPEND="
+	dev-ros/cmake_modules
+	virtual/pkgconfig
+"
 
-src_configure() {
-	local mycatkincmakeargs=( "-DUseQt5=ON" )
-	ros-catkin_src_configure
+src_test() {
+	virtx ros-catkin_src_test
 }

@@ -1,0 +1,40 @@
+Fake demo_xe.mk found in Oracle eXpress Edition,
+known by CPAN DBD::Oracle (bug#165834).
+This provides absolute paths for headers and libraries.
+--- instantclient_18_3/sdk/demo/demo.mk
++++ instantclient_18_3/sdk/demo/demo.mk
+@@ -28,13 +28,18 @@
+ CC=/opt/SunProd/SUNWspro6.1/bin/CC
+ cc=/opt/SunProd/SUNWspro6.1/bin/cc
+ 
+-ICINCHOME=../
+-ICLIBHOME=../../
++ifeq ($(BUILD32),T)
++LIBDIR=lib32
++else
++LIBDIR=lib
++endif
++ICINCHOME=$(ORACLE_HOME)/include
++ICLIBHOME=$(ORACLE_HOME)/$(LIBDIR)
+ ICLIBPATH=-L$(ICLIBHOME)
+ THREADLIBS=-lthread
+ CCLIB=$(ICLIBPATH) -locci -lclntsh $(THREADLIBS)
+ 
+-CCINCLUDES = -I$(ICINCHOME)include
++CCINCLUDES = -I$(ICINCHOME)
+ 
+ CCFLAGS=$(CCINCLUDES) -D_REENTRANT -g -xs 
+ LDFLAGS=
+@@ -55,10 +60,10 @@
+ OCCIOTTPWD=tiger
+ 
+ .cpp.o:
+-	$(CC) -c -I$(ICINCHOME)include $(CCFLAGS) $<
++	$(CC) -c -I$(ICINCHOME) $(CCFLAGS) $<
+ 
+ .c.o:
+-	$(cc) -c -I$(ICINCHOME)include $(CCFLAGS) $<
++	$(cc) -c -I$(ICINCHOME) $(CCFLAGS) $<
+ 
+ all: clean buildoci $(OCCIDEMO) $(OCCIOBJDEMO)
+ 

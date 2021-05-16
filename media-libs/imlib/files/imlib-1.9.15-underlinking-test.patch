@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/show_bug.cgi?id=367645
+by Greg Turner
+diff -urpN imlib-1.9.15.orig/Imlib/Makefile.am imlib-1.9.15/Imlib/Makefile.am
+--- imlib-1.9.15.orig/Imlib/Makefile.am	2004-09-20 17:22:59.000000000 -0700
++++ imlib-1.9.15/Imlib/Makefile.am	2013-10-08 02:48:53.772197627 -0700
+@@ -44,3 +44,3 @@ INCLUDES = -I. -I$(srcdir) -I.. -I$(srcd
+ check_PROGRAMS = t-load
+ 
+-t_load_LDADD = libImlib.la
++t_load_LDADD = libImlib.la $(X_PRE_LIBS) $(X_LIBS) -lX11 $(X_EXTRA_LIBS)

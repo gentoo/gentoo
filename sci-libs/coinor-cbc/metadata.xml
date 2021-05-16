@@ -6,9 +6,13 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-  COIN-OR Branch-and-Cut is a Mixed integer linear programming
-  solver. It uses many of the COIN-OR components and is designed to be
-  used with COIN-OR CLP or COIN-OR Dylp. It is available as a library and as a
-  standalone solver.
-</longdescription>
+    COIN-OR Branch-and-Cut is a Mixed integer linear programming
+    solver. It uses many of the COIN-OR components and is designed to be
+    used with COIN-OR CLP or COIN-OR Dylp. It is available as a library and as a
+    standalone solver.
+  </longdescription>
+
+  <upstream>
+    <remote-id type="github">coin-or/Cbc</remote-id>
+  </upstream>
 </pkgmetadata>

@@ -1,54 +1,46 @@
-#!/sbin/runscript
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
 
-opts="save clear deactivated"
-        
-STARTUP_MODE='save';
+STARTUP_MODE="${STARTUP_MODE:-save}";
 
+extra_started_commands="clear save deactivated"
+description="TPM emulator"
+command="/usr/bin/tpmd"
+my_command_args="-f"
+command_background=1
+command_user="tss:tss"
+pidfile="/var/run/${RC_SVCNAME}.pid"
 
 depend() {
 	use logger
 	after coldplug
 }
 
-checkconfig() {
-	lsmod | grep -q "^tpmd_dev\b" \
-		|| modprobe tpmd_dev &>/dev/null \
-		|| eerror "Failed to load module tpmd_dev";
-
-	if [ ! -c /dev/tpm ] && [ ! -c /dev/tpm0 ] ; then
-		eerror "No TPM device found!"
-		return 1
-	fi
-	return 0
+start_pre() {
+	checkpath -d -m 0775 -o tss /var/run/tpm
+	service_set_value STARTUP_MODE "${STARTUP_MODE}"
 }
 
 start() {
-	ebegin "Starting tpm-emulator daemon with mode '$STARTUP_MODE' (tpmd)"
-	checkconfig || eend $?
-	start-stop-daemon --start --chuid tss --exec /usr/sbin/tpmd $STARTUP_MODE > /dev/null
-	eend $?
+	command_args="${my_command_args} $(service_get_value STARTUP_MODE)"
+	default_start
 }
 
-save() {
-	STARTUP_MODE='save';
-	svc_restart 
+_doit() {
+	service_set_value STARTUP_MODE "$1"
+	stop
+	start
 }
 
 clear() {
-	STARTUP_MODE='clear';
-	svc_restart 
+	_doit clear
+}
+
+save() {
+	_doit save
 }
 
 deactivated() {
-	STARTUP_MODE='deactivated';
-	svc_restart 
-}
-
-stop() {
-	ebegin "Stopping tpm-emulator daemon (tpmd)"
-	start-stop-daemon --stop --exec /usr/sbin/tpmd --user tss > /dev/null
-	eend $?
+	_doit deactivated
 }

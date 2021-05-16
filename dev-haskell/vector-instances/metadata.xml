@@ -5,9 +5,9 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Orphan Instances for 'Data.Vector'
-	</longdescription>
+	<use>
+		<flag name="hashable">use <pkg>dev-haskell/hashable</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">ekmett/vector-instances</remote-id>
 	</upstream>

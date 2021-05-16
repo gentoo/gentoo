@@ -1,0 +1,21 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -37,6 +37,7 @@
+ AC_CANONICAL_HOST
+ 
+ # Checks for libraries.
++PKG_CHECK_MODULES(ncurses,ncurses)
+ 
+ # Checks for header files.
+ AC_CHECK_HEADER(curses.h,[],[ AC_MSG_ERROR(curses.h not found or too old.) ], [])
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -24,7 +24,7 @@
+ cbm_SOURCES = cbm.cpp \
+ 	      ErrnoError.hpp \
+ 	      statistics.cpp statistics.hpp
+-cbm_LDADD = -lncurses widgets/libwidgets.la
++cbm_LDADD = $(ncurses_LIBS) widgets/libwidgets.la
+ 
+ distclean-local:
+ 	-rm -f *~ \

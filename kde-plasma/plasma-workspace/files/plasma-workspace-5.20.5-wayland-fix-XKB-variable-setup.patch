@@ -1,0 +1,35 @@
+From 2a6718ff53aa70d3a6c0d9a78a7aaa491907b130 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Mon, 18 Jan 2021 12:56:00 +0000
+Subject: [PATCH] startplasma-wayland: Fix XKB variable setup
+
+When this was ported to C++, it missed the actual variable assignments.
+
+
+(cherry picked from commit 76088e21ea2ec09d13bd462d61c4b8ffc7bc4729)
+---
+ startkde/startplasma-wayland.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/startkde/startplasma-wayland.cpp b/startkde/startplasma-wayland.cpp
+index 500435853..38e325843 100644
+--- a/startkde/startplasma-wayland.cpp
++++ b/startkde/startplasma-wayland.cpp
+@@ -61,10 +61,10 @@ int main(int argc, char** argv)
+                     qputenv(var, r.toUtf8());
+             };
+ 
+-            queryAndSet("X11MODEL", QStringLiteral("X11Model"));
+-            queryAndSet("X11LAYOUT", QStringLiteral("X11Layout"));
+-            queryAndSet("X11VARIANT", QStringLiteral("X11Variant"));
+-            queryAndSet("X11OPTIONS", QStringLiteral("X11Options"));
++            queryAndSet("XKB_DEFAULT_MODEL", QStringLiteral("X11Model"));
++            queryAndSet("XKB_DEFAULT_LAYOUT", QStringLiteral("X11Layout"));
++            queryAndSet("XKB_DEFAULT_VARIANT", QStringLiteral("X11Variant"));
++            queryAndSet("XKB_DEFAULT_OPTIONS", QStringLiteral("X11Options"));
+         } else {
+             qWarning() << "not a reply org.freedesktop.locale1" << resultMessage;
+         }
+-- 
+GitLab
+

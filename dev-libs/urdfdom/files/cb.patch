@@ -1,0 +1,23 @@
+From 6faba176d41cf39114785a3e029013f941ed5a0e Mon Sep 17 00:00:00 2001
+From: Steven Peters <scpeters@openrobotics.org>
+Date: Thu, 28 May 2020 09:22:29 -0700
+Subject: [PATCH] Find console_bridge without explicit version (#141)
+
+Signed-off-by: Steve Peters <scpeters@openrobotics.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 92762f1..f0d115d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,7 +41,7 @@ if (NOT MSVC)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ endif()
+ 
+-find_package(console_bridge 0.3 REQUIRED)
++find_package(console_bridge REQUIRED)
+ include_directories(SYSTEM ${console_bridge_INCLUDE_DIRS})
+ link_directories(${console_bridge_LIBRARY_DIRS})
+ 

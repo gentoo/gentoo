@@ -1,0 +1,9 @@
+--- a/pureadmin.desktop.in
++++ b/pureadmin.desktop.in
+@@ -9,5 +9,5 @@
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+-Categories=GTK;Application;System;
++Categories=GTK;System;
+ 

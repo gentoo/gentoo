@@ -1,5 +1,5 @@
---- rename/rename.c
-+++ rename/rename.c
+--- a/rename.c
++++ b/rename.c
 @@ -594,7 +594,7 @@
      } else {
  	rs = rename(oldp, new);
@@ -20,8 +20,8 @@
  Rename SOURCE to DEST, or substitute characters match the specified pattern\n\
  in the filename.\n\
  \n\
---- rename/rename.1
-+++ rename/rename.1
+--- a/rename.1
++++ b/rename.1
 @@ -1,16 +1,16 @@
  .TH NAME SECTION
  .SH Name

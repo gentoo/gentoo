@@ -1,0 +1,32 @@
+From 7353efd2f326b3f855db52ba8643ac4e793d5ffc Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sun, 21 Mar 2021 18:31:22 -0400
+Subject: [PATCH] Disable anonymous-file test
+
+It attempts to open /proc/self/fd/* (an fd created by memfd_create),
+which sandbox disallows.
+---
+ src/tests/meson.build | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index 8ee409e20..50c930c2a 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -285,13 +285,6 @@ test('stage-view', stage_view_tests,
+   timeout: 60,
+ )
+ 
+-test('anonymous-file', anonymous_file_test,
+-  suite: ['core', 'mutter/unit'],
+-  env: test_env,
+-  is_parallel: false,
+-  timeout: 60,
+-)
+-
+ if have_native_tests
+   test('native-headless', native_headless_tests,
+     suite: ['core', 'mutter/native/headless'],
+-- 
+2.26.2
+

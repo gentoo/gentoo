@@ -1,5 +1,4 @@
-#!/sbin/runscript
-# $Id$
+#!/sbin/openrc-run
 
 NAME="gearmand"
 BINARY="/usr/bin/gearmand"

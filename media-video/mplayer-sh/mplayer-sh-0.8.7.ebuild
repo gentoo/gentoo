@@ -1,10 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
-inherit eutils
+inherit epatch
 
 RESTRICT="mirror bindist"
 
@@ -12,7 +11,7 @@ DESCRIPTION="Video Disk Recorder Mplayer API Script"
 HOMEPAGE="http://batleth.sapienti-sat.org/projects/VDR/"
 SRC_URI="http://batleth.sapienti-sat.org/projects/VDR/versions/mplayer.sh-${PV}.tar.gz"
 
-KEYWORDS="x86 ~amd64"
+KEYWORDS="~amd64 x86"
 SLOT="0"
 LICENSE="all-rights-reserved"
 IUSE=""

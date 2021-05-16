@@ -1,5 +1,5 @@
---- ed2k_hash-0.4.0/work/ed2k_hash-0.4.0/ed2k_hash/md4.h	2002-09-04 18:24:37.000000000 +0100
-+++ ed2k_hash-0.4.0_orig/work/ed2k_hash-0.4.0/ed2k_hash/md4.h	2004-09-02 21:13:49.900613616 +0100
+--- a/ed2k_hash/md4.h	2002-09-04 18:24:37.000000000 +0100
++++ b/ed2k_hash/md4.h	2004-09-02 21:13:49.900613616 +0100
 @@ -66,7 +66,8 @@
  typedef unsigned short int UINT2;
  

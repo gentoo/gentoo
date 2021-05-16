@@ -1,0 +1,122 @@
+Fix build system, in order to honour user variables
+
+--- a/makefile
++++ b/makefile
+@@ -1,7 +1,4 @@
+-
+-CC = g++ -Wall -ggdb
+-CC = g++ -pg
+-CC = g++
++CXX ?= g++
+ 
+ # without OpenMP
+ 
+@@ -9,35 +6,19 @@
+ # in command line: 
+ # make openmp=yes
+ ifeq ($(openmp),no)
+-  CCFLAGS = -DNO_OPENMP
+-else
+-  CCFLAGS = -fopenmp
+-endif
+-
+-# support debugging
+-# in command line:
+-# make debug=yes
+-# make openmp=yes debug=yes
+-ifeq ($(debug),yes)
+-CCFLAGS += -ggdb
++  my_CPPFLAGS = -DNO_OPENMP
+ else
+-CCFLAGS += -O2
++  my_CXXFLAGS = -fopenmp
+ endif
+ 
+ ifdef MAX_SEQ
+-CCFLAGS += -DMAX_SEQ=$(MAX_SEQ)
++my_CPPFLAGS += -DMAX_SEQ=$(MAX_SEQ)
+ endif
+ 
+-#LDFLAGS = -static -o
+-LDFLAGS += -o
+-
+ PROGS = cd-hit cd-hit-est cd-hit-2d cd-hit-est-2d cd-hit-div cd-hit-454
+ 
+-# Propagate hardening flags
+-CCFLAGS := $(CPPFLAGS) $(CCFLAGS) $(CXXFLAGS)
+-
+ .c++.o:
+-	$(CC) $(CCFLAGS) -c $<
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) -c $<
+ 
+ all: $(PROGS)
+ 
+@@ -47,52 +28,52 @@
+ # programs
+ 
+ cd-hit: cdhit-common.o cdhit-utility.o cdhit.o
+-	$(CC) $(CCFLAGS) cdhit.o cdhit-common.o cdhit-utility.o $(LDFLAGS) cd-hit
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) cdhit.o cdhit-common.o cdhit-utility.o -o cd-hit
+ 
+ cd-hit-2d: cdhit-common.o cdhit-utility.o cdhit-2d.o
+-	$(CC) $(CCFLAGS) cdhit-2d.o cdhit-common.o cdhit-utility.o $(LDFLAGS) cd-hit-2d
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) cdhit-2d.o cdhit-common.o cdhit-utility.o -o cd-hit-2d
+ 
+ cd-hit-est: cdhit-common.o cdhit-utility.o cdhit-est.o
+-	$(CC) $(CCFLAGS) cdhit-est.o cdhit-common.o cdhit-utility.o $(LDFLAGS) cd-hit-est
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) cdhit-est.o cdhit-common.o cdhit-utility.o -o cd-hit-est
+ 
+ cd-hit-est-2d: cdhit-common.o cdhit-utility.o cdhit-est-2d.o
+-	$(CC) $(CCFLAGS) cdhit-est-2d.o cdhit-common.o cdhit-utility.o $(LDFLAGS) cd-hit-est-2d
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) cdhit-est-2d.o cdhit-common.o cdhit-utility.o -o cd-hit-est-2d
+ 
+ cd-hit-div: cdhit-common.o cdhit-utility.o cdhit-div.o
+-	$(CC) $(CCFLAGS) cdhit-div.o cdhit-common.o cdhit-utility.o $(LDFLAGS) cd-hit-div
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) cdhit-div.o cdhit-common.o cdhit-utility.o -o cd-hit-div
+ 
+ cd-hit-454: cdhit-common.o cdhit-utility.o cdhit-454.o
+-	$(CC) $(CCFLAGS) cdhit-454.o cdhit-common.o cdhit-utility.o $(LDFLAGS) cd-hit-454
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(LDFLAGS) cdhit-454.o cdhit-common.o cdhit-utility.o -o cd-hit-454
+ 
+ # objects
+ cdhit-common.o: cdhit-common.c++ cdhit-common.h
+-	$(CC) $(CCFLAGS) cdhit-common.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-common.c++ -c
+ 
+ cdhit-utility.o: cdhit-utility.c++ cdhit-utility.h
+-	$(CC) $(CCFLAGS) cdhit-utility.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-utility.c++ -c
+ 
+ cdhit.o: cdhit.c++ cdhit-utility.h
+-	$(CC) $(CCFLAGS) cdhit.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit.c++ -c
+ 
+ cdhit-2d.o: cdhit-2d.c++ cdhit-utility.h
+-	$(CC) $(CCFLAGS) cdhit-2d.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-2d.c++ -c
+ 
+ cdhit-est.o: cdhit-est.c++ cdhit-utility.h
+-	$(CC) $(CCFLAGS) cdhit-est.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-est.c++ -c
+ 
+ cdhit-est-2d.o: cdhit-est-2d.c++ cdhit-utility.h
+-	$(CC) $(CCFLAGS) cdhit-est-2d.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-est-2d.c++ -c
+ 
+ cdhit-div.o: cdhit-div.c++ cdhit-common.h
+-	$(CC) $(CCFLAGS) cdhit-div.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-div.c++ -c
+ 
+ cdhit-454.o: cdhit-454.c++ cdhit-common.h
+-	$(CC) $(CCFLAGS) cdhit-454.c++ -c
++	$(CXX) $(my_CXXFLAGS) $(CXXFLAGS) $(my_CPPFLAGS) $(CPPFLAGS) cdhit-454.c++ -c
+ 
+ PREFIX ?= /usr/local/bin
+ 
+ install:
+ 	for prog in $(PROGS); do \
+-		install -m 0755 $$prog $(PREFIX); \
++		install -m 0755 $$prog $(DESTDIR)$(PREFIX); \
+ 	done
+-	install -m 0755 *.pl $(PREFIX);
++	install -m 0755 *.pl $(DESTDIR)$(PREFIX);

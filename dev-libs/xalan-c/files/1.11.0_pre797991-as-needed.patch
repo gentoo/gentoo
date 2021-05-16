@@ -1,6 +1,5 @@
-diff -Naur xml-xalan.orig/c/src/xalanc/Makefile.in xml-xalan/c/src/xalanc/Makefile.in
---- xml-xalan.orig/c/src/xalanc/Makefile.in	2009-07-27 00:23:08.411122528 +0200
-+++ xml-xalan/c/src/xalanc/Makefile.in	2009-07-27 00:45:09.514777553 +0200
+--- a/src/xalanc/Makefile.in
++++ b/src/xalanc/Makefile.in
 @@ -174,7 +174,7 @@
  
  "//'$(LOADSAMP)(${BATCH_XALAN_UTIL_NAME})'": ${XSL_OBJ_DIR}/XalanExe.o
@@ -64,9 +63,8 @@ diff -Naur xml-xalan.orig/c/src/xalanc/Makefile.in xml-xalan/c/src/xalanc/Makefi
  ifeq ($(PLATFORM), OS390)
  	mv *.x  ${XSL_LIB_DIR}        
  else
-diff -Naur xml-xalan.orig/c/src/xalanc/Utils/MsgCreator/Makefile.in xml-xalan/c/src/xalanc/Utils/MsgCreator/Makefile.in
---- xml-xalan.orig/c/src/xalanc/Utils/MsgCreator/Makefile.in	2009-07-27 00:23:08.431122558 +0200
-+++ xml-xalan/c/src/xalanc/Utils/MsgCreator/Makefile.in	2009-07-27 00:43:47.674693543 +0200
+--- a/src/xalanc/Utils/MsgCreator/Makefile.in
++++ b/src/xalanc/Utils/MsgCreator/Makefile.in
 @@ -29,7 +29,7 @@
  
  $(XSL_BIN_DIR)/MsgCreator : $(MSG_CREATOR_OBJECTS)
@@ -76,9 +74,8 @@ diff -Naur xml-xalan.orig/c/src/xalanc/Utils/MsgCreator/Makefile.in xml-xalan/c/
  	
  $(XSL_OBJ_DIR)/%.o : $(MSG_CREATOR_SRC)/%.cpp    
  	$(CC1) $(XSL_BUILD_OPTIONS) -c $(XSL_INCL) $(EXTRA_COMPILE_OPTIONS) -o $@ $<
-diff -Naur xml-xalan.orig/c/Tests/Makefile.in xml-xalan/c/Tests/Makefile.in
---- xml-xalan.orig/c/Tests/Makefile.in	2009-07-27 00:23:08.514445103 +0200
-+++ xml-xalan/c/Tests/Makefile.in	2009-07-27 00:45:50.541094978 +0200
+--- a/Tests/Makefile.in
++++ b/Tests/Makefile.in
 @@ -62,7 +62,7 @@
  
  $(XSL_BIN_DIR)/ThreadTest: ${XSL_OBJ_DIR}/ThreadTest.o 

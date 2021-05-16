@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+command="/usr/sbin/irqbalance"
+command_args="${IRQBALANCE_OPTS}"
+
+start_pre() {
+	if grep -q MSI /proc/interrupts 2>/dev/null && \
+	test -z "$(find /sys/devices -type d -name msi_irqs 2>/dev/null)"; then
+		eerror "MSI interrupts found in /proc/interrupts but none found in sysfs."
+		eerror "You need to update your kernel."
+		return 1
+	fi
+
+	checkpath -q -d /run/${SVCNAME}
+}

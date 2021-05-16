@@ -2,9 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>alonbl@gentoo.org</email>
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
 	</maintainer>
-	<longdescription lang="en">
-		A framework for managing DNS information
-	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>

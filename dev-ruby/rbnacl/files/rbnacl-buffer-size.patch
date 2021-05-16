@@ -1,0 +1,24 @@
+Patches based on upstream patch below but reworked to apply to 5.0.0
+
+From 299e0ddbb8fcafc99214c26d6002da145cc84a0c Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 18 Mar 2018 21:13:09 +0000
+Subject: [PATCH] rbnacl: fix byffer size type in randombytes_buf binding
+
+---
+ lib/rbnacl/random.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/rbnacl/random.rb b/lib/rbnacl/random.rb
+index 9742186..db85d6d 100644
+--- a/lib/rbnacl/random.rb
++++ b/lib/rbnacl/random.rb
+@@ -13,7 +13,7 @@ module Random
+ 
+     sodium_function :c_random_bytes,
+                     :randombytes_buf,
+-                    [:pointer, :ulong_long]
++                    %i[pointer size_t]
+ 
+     # Returns a string of random bytes
+     #

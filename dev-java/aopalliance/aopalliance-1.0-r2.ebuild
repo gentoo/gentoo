@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -19,12 +18,12 @@ HOMEPAGE="http://aopalliance.sourceforge.net/"
 LICENSE="public-domain"
 SLOT="1"
 
-KEYWORDS="amd64 ppc64 x86"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux"
 
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.4"
-RDEPEND=">=virtual/jre-1.4"
+DEPEND=">=virtual/jdk-1.6"
+RDEPEND=">=virtual/jre-1.6"
 
 S="${WORKDIR}/${P}"
 

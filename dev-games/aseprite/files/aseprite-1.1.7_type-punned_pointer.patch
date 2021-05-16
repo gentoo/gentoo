@@ -1,0 +1,28 @@
+diff --git a/src/allegro/src/x/xkeyboard.c b/src/allegro/src/x/xkeyboard.c
+index f121e62..86fa4f7 100644
+--- a/src/allegro/src/x/xkeyboard.c
++++ b/src/allegro/src/x/xkeyboard.c
+@@ -356,6 +356,14 @@ static int find_unknown_key_assignment (int i)
+    return _xwin.keycode_to_scancode[i];
+ }
+
++/* unicode_getc:
++ * Reads a character from a Unicode string.
++ */
++static int unicode_getc(AL_CONST char *s)
++{
++   return *((unsigned short *)s);
++}
++
+
+
+ /* _xwin_keyboard_handler:
+@@ -412,7 +420,7 @@ void _xwin_keyboard_handler(XKeyEvent *event, int dga2_hack)
+       }
+       buffer[len] = '\0';
+       uconvert(buffer, U_UTF8, buffer2, U_UNICODE, sizeof buffer2);
+-      unicode = *(unsigned short *)buffer2;
++      unicode = unicode_getc(buffer2);
+
+ #ifdef ALLEGRO_XWINDOWS_WITH_XIM
+       r = XFilterEvent((XEvent *)event, _xwin.window);

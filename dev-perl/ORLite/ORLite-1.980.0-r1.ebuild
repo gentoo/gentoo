@@ -1,18 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ADAMK
-MODULE_VERSION=1.98
+DIST_AUTHOR=ADAMK
+DIST_VERSION=1.98
 inherit perl-module
 
 DESCRIPTION="Extremely light weight SQLite-specific ORM"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=virtual/perl-File-Path-2.08
@@ -31,5 +31,9 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 "
+PATCHES=(
+	"${FILESDIR}/${PN}-1.98-dot-in-inc.patch"
+	"${FILESDIR}/${PN}-1.98-vacuum.patch"
+)
 
-SRC_TEST=do
+DIST_TEST="do" # Parallel tests broken

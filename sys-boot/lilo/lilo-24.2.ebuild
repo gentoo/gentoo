@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -20,16 +19,21 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="BSD GPL-2"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 DEPEND=">=sys-devel/bin86-0.15.5"
 RDEPEND="device-mapper? ( >=sys-fs/lvm2-2.02.45 )"
 
 src_prepare() {
+	default
+
 	# this patch is needed when booting PXE and the device you're using
 	# emulates vga console via serial console.
 	# IE..  B.B.o.o.o.o.t.t.i.i.n.n.g.g....l.l.i.i.n.n.u.u.x.x and stair stepping.
-	use pxeserial && epatch "${FILESDIR}/${PN}-24.1-novga.patch"
+	use pxeserial && eapply "${FILESDIR}/${PN}-24.1-novga.patch"
+
+	eapply "${FILESDIR}/${PN}-24.2-add-nvme-support.patch"
+	eapply "${FILESDIR}/${PN}-24.x-fix-gcc-10.patch"
 
 	# Do not strip and have parallel make
 	# FIXME: images/Makefile does weird stuff
@@ -50,10 +54,6 @@ src_compile() {
 	# lilo needs this. bug #140209
 	export LC_ALL=C
 
-	# hardened automatic PIC plus PIE building should be suppressed
-	# because of assembler instructions that cannot be compiled PIC
-	HARDENED_CFLAGS=$(test-flags-CC -fno-pic -nopie)
-
 	# we explicitly prevent the custom CFLAGS for stability reasons
 	if use static; then
 		local target=alles
@@ -61,24 +61,24 @@ src_compile() {
 		local target=all
 	fi
 
-	emake CC="$(tc-getCC) ${LDFLAGS} ${HARDENED_CFLAGS}" ${target} || die
+	emake CC="$(tc-getCC) ${LDFLAGS}" ${target}
 }
 
 src_install() {
 	keepdir /boot
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	if use !minimal; then
 		into /
-		dosbin "${WORKDIR}"/dolilo/dolilo || die
+		dosbin "${WORKDIR}"/dolilo/dolilo
 
 		into /usr
-		dosbin keytab-lilo.pl || die
+		dosbin keytab-lilo.pl
 
 		insinto /etc
-		newins "${FILESDIR}"/lilo.conf lilo.conf.example || die
+		newins "${FILESDIR}"/lilo.conf lilo.conf.example
 
-		newconfd "${WORKDIR}"/dolilo/dolilo.conf.d dolilo.example || die
+		newconfd "${WORKDIR}"/dolilo/dolilo.conf.d dolilo.example
 
 		dodoc CHANGELOG* readme/README.* readme/INCOMPAT README
 		docinto samples ; dodoc sample/*

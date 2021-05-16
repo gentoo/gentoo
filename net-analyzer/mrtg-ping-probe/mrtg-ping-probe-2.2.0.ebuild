@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -27,7 +26,7 @@ src_prepare() {
 		|| die
 }
 
-src_install () {
+src_install() {
 	dodoc ChangeLog NEWS README TODO mrtg.cfg-ping
 	doman mrtg-ping-probe.1
 	dobin check-ping-fmt mrtg-ping-probe "${FILESDIR}"/mrtg-ping-cfg

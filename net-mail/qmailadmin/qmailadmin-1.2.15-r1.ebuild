@@ -1,12 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-inherit qmail eutils webapp autotools
+EAPI=7
 
-# the RESTRICT is because the vpopmail lib directory is locked down
-# and non-root can't access them.
-RESTRICT="userpriv"
+WEBAPP_MANUAL_SLOT="yes"
+inherit autotools qmail webapp
 
 MY_P=${P/_rc/-rc}
 
@@ -16,27 +14,30 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 arm ~hppa ia64 ppc s390 sh sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ~s390 sparc x86"
 IUSE="maildrop"
+# the RESTRICT is because the vpopmail lib directory is locked down
+# and non-root can't access them.
+RESTRICT="userpriv"
 
-DEPEND="virtual/qmail
-	>=net-mail/vpopmail-5.4.33
+RDEPEND="
 	net-mail/autorespond
+	>=net-mail/vpopmail-5.4.33
+	virtual/qmail
 	maildrop? ( >=mail-filter/maildrop-2.0.1 )"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-1.2.9-maildir.patch
-	epatch "${FILESDIR}"/${PN}-1.2.12-quota-overflow.patch
-	epatch "${FILESDIR}"/${PN}-1.2.15-quota-security.patch
+src_prepare() {
+	eapply "${FILESDIR}"/${PN}-1.2.9-maildir.patch
+	eapply "${FILESDIR}"/${PN}-1.2.12-quota-overflow.patch
+	eapply "${FILESDIR}"/${PN}-1.2.15-quota-security.patch
+	eapply_user
 	eautoreconf
 }
 
-src_compile() {
+src_configure() {
 	# Pass spam stuff through $@ so we get the quoting right
 	if use maildrop ; then
 		set -- --enable-modify-spam \
@@ -67,19 +68,17 @@ src_compile() {
 		--enable-maxaliasesperpage=50 \
 		--enable-vpopuser=vpopmail \
 		--enable-vpopgroup=vpopmail \
-		"$@" \
-		|| die "econf failed"
-
-	emake || die "make failed"
+		"$@"
 }
 
 src_install() {
 	webapp_src_preinst
 
-	make DESTDIR="${D}" install || die "make install failed"
-
-	dodoc AUTHORS INSTALL README.hooks BUGS TODO ChangeLog \
-		TRANSLATORS NEWS FAQ README contrib/*
+	local DOCS=(
+		AUTHORS INSTALL README.hooks BUGS TODO ChangeLog TRANSLATORS
+		NEWS FAQ README contrib/*
+	)
+	default
 
 	webapp_src_install
 }

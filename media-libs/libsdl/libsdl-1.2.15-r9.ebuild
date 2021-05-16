@@ -1,27 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
-inherit autotools flag-o-matic multilib toolchain-funcs eutils multilib-minimal
+
+inherit autotools flag-o-matic ltprune multilib toolchain-funcs epatch multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer"
-HOMEPAGE="http://www.libsdl.org/"
-SRC_URI="http://www.libsdl.org/release/SDL-${PV}.tar.gz"
+HOMEPAGE="https://libsdl.org/"
+SRC_URI="https://libsdl.org/release/SDL-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 # WARNING:
 # If you turn on the custom-cflags use flag in USE and something breaks,
 # you pick up the pieces.  Be prepared for bug reports to be marked INVALID.
 IUSE="oss alsa nas X dga xv xinerama fbcon tslib aalib opengl libcaca +sound +video +joystick custom-cflags pulseaudio static-libs"
 
 RDEPEND="
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-sdl-20140406
-	)
 	sound? ( >=media-libs/audiofile-0.3.5[${MULTILIB_USEDEP}] )
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	nas? (
@@ -44,14 +40,8 @@ RDEPEND="
 	tslib? ( >=x11-libs/tslib-1.0-r3[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	nas? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	)
-	X? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	)
+	nas? ( x11-base/xorg-proto )
+	X? ( x11-base/xorg-proto )
 	x86? ( || ( >=dev-lang/yasm-0.6.0 >=dev-lang/nasm-0.98.39-r3 ) )"
 
 S=${WORKDIR}/SDL-${PV}
@@ -74,12 +64,12 @@ src_prepare() {
 		"${FILESDIR}"/${P}-const-xdata32.patch \
 		"${FILESDIR}"/${P}-caca.patch \
 		"${FILESDIR}"/${P}-SDL_EnableUNICODE.patch
-	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
+	AT_M4DIR="${EPREFIX}/usr/share/aclocal acinclude" eautoreconf
 }
 
 multilib_src_configure() {
 	local myconf=
-	if use !x86 ; then
+	if use !x86 && use !x86-linux ; then
 		myconf="${myconf} --disable-nasm"
 	else
 		myconf="${myconf} --enable-nasm"
@@ -92,7 +82,7 @@ multilib_src_configure() {
 	use joystick || myconf="${myconf} --disable-joystick"
 
 	ECONF_SOURCE="${S}" econf \
-		--disable-rpath \
+		$(use_enable prefix rpath) \
 		--disable-arts \
 		--disable-esd \
 		--enable-events \

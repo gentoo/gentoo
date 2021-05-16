@@ -1,8 +1,0 @@
-# Copyright 1999-2009 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Id$
-
-# Markus Duft <mduft@gentoo.org> (7 Jul 2009)
-# Unmask the globally masked i6fork USE flag to allow
-# interix 6 fork to be fixed by linking libi6fork.
--i6fork

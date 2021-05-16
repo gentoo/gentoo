@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -12,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Parse, manipulate and lookup IP network blocks"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ~ppc64 x86"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"

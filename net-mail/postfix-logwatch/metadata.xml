@@ -4,11 +4,6 @@
   <maintainer type="person">
     <email>mjo@gentoo.org</email>
   </maintainer>
-  <use>
-    <flag name="logwatch">
-    Install filters for use with <pkg>sys-apps/logwatch</pkg>.
-  </flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">logreporters</remote-id>
   </upstream>

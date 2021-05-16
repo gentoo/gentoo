@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="3"
+EAPI="6"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -10,87 +9,60 @@ RESTRICT="test" # the test suite will test what's installed.
 
 LD64=ld64-97.17
 CCTOOLS=cctools-795
-# http://lists.apple.com/archives/Darwin-dev/2009/Sep/msg00025.html
-UNWIND=binutils-apple-3.2-unwind-patches-5
+LIBUNWIND=libunwind-30
+DYLD=dyld-132.13
 
-DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools ${PV}"
-HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
-SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
-	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
-	https://www.gentoo.org/~grobian/distfiles/${UNWIND}.tar.xz"
+DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools 3.2.6"
+HOMEPAGE="http://www.opensource.apple.com/"
+SRC_URI="https://opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
+	https://opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
+	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz
+	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-3.2.6-r0.tar.bz2"
 
 LICENSE="APSL-2"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-IUSE="lto test"
-SLOT="0"
+KEYWORDS="~ppc-macos ~x64-macos"
+IUSE="test"
 
-RDEPEND="sys-devel/binutils-config
-	lto? ( sys-devel/llvm )"
+RDEPEND="sys-devel/binutils-config"
 DEPEND="${RDEPEND}
-	test? ( >=dev-lang/perl-5.8.8 )
-	>=sys-devel/gcc-apple-4.2.1"
+	test? ( >=dev-lang/perl-5.8.8 )"
 
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY} == cross-* ]] ; then
-		export CTARGET=${CATEGORY#cross-}
-	fi
-fi
-is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
-
-if is_cross ; then
-	SLOT="${CTARGET}"
-else
-	SLOT="0"
-fi
-
-LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
-INCPATH=${LIBPATH}/include
-DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
-if is_cross ; then
-	BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${PV}
-else
-	BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
-fi
+SLOT="3"
 
 S=${WORKDIR}
 
-src_prepare() {
-	cd "${S}"/${CCTOOLS}
-	epatch "${FILESDIR}"/${PN}-3.2.2-as.patch
-	epatch "${FILESDIR}"/${PN}-4.0-as-dir.patch
-	epatch "${FILESDIR}"/${PN}-3.2.3-ranlib.patch
-	epatch "${FILESDIR}"/${PN}-3.1.1-libtool-ranlib.patch
-	epatch "${FILESDIR}"/${PN}-3.1.1-nmedit.patch
-	epatch "${FILESDIR}"/${PN}-3.1.1-no-headers.patch
-	epatch "${FILESDIR}"/${PN}-3.1.1-no-oss-dir.patch
+is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
+prepare_ld64() {
 	cd "${S}"/${LD64}/src
-	cp "${FILESDIR}"/ld64-95.2.12-Makefile Makefile
+	cp "${WORKDIR}"/Makefile Makefile || die
 
-	ln -s ../../${CCTOOLS}/include
-	cp "${WORKDIR}"/ld64-unwind/compact_unwind_encoding.h include/mach-o/
-	cp other/prune_trie.h include/mach-o/ || die
-	# use our own copy of lto.h, which doesn't require llvm build-env
-	mkdir -p include/llvm-c || die
-	cp "${WORKDIR}"/ld64-unwind/ld64-97.14-llvm-lto.h include/llvm-c/lto.h || die
+	# provide missing headers from libunwind and dyld
+	mkdir -p include/{mach,mach-o/arm} || die
+	# never present because it's private
+	cp ../../${DYLD}/include/mach-o/dyld_priv.h include/mach-o || die
+	# missing on <= 10.5
+	cp ../../${LIBUNWIND}/include/libunwind.h include/ || die
+	ln -s ../../../${LIBUNWIND}/src include/libunwind || die
+	cp ../../${LIBUNWIND}/include/mach-o/compact_unwind_encoding.h include/mach-o || die
+	# missing on <= 10.4
+	cp ../../${DYLD}/include/mach-o/dyld_images.h include/mach-o || die
+	cp ../../${CCTOOLS}/include/mach-o/loader.h include/mach-o || die
+	# use copies from cctools because they're otherwise hidden in some SDK
+	cp ../../${CCTOOLS}/include/mach-o/arm/reloc.h include/mach-o/arm || die
+	# provide all required CPU_TYPEs on all platforms
+	cp ../../${CCTOOLS}/include/mach/machine.h include/mach/machine.h
 
-	echo '' > configure.h
-	echo '' > linker_opts
 	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
+	sed -i \
+		-e '/^#define LTO_SUPPORT 1/s:1:0:' \
+		other/ObjectDump.cpp || die
+	echo '#undef LTO_SUPPORT' > include/configure.h
+	echo '' > linker_opts
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
 
-	epatch "${WORKDIR}"/ld64-unwind/ld64-97.14-unlibunwind.patch
-	[[ ${CHOST} == powerpc*-darwin* ]] && \
-		epatch "${FILESDIR}"/ld64-95.2.12-darwin8-no-mlong-branch-warning.patch
-	if use !lto ; then
-		sed -i -e '/#define LTO_SUPPORT 1/d' other/ObjectDump.cpp || die
-	fi
-
 	# clean up test suite
-	cd "${S}"/${LD64}
-	epatch "${FILESDIR}"/${PN}-3.1.1-testsuite.patch
-
 	cd "${S}"/${LD64}/unit-tests/test-cases
 	local c
 
@@ -114,7 +86,31 @@ src_prepare() {
 	# TODO no idea what goes wrong here
 	((++c)); rm -rf dwarf-debug-notes;
 
-	einfo "Deleted $c tests that were bound to fail"
+	elog "Deleted $c tests that were bound to fail"
+}
+
+src_prepare() {
+	prepare_ld64
+
+	cd "${S}"/${CCTOOLS}
+	epatch "${WORKDIR}"/${PN}-3.2.6-as-dir.patch
+	epatch "${WORKDIR}"/${PN}-3.1.1-libtool-ranlib.patch
+	epatch "${WORKDIR}"/${PN}-3.1.1-nmedit.patch
+	epatch "${WORKDIR}"/${PN}-3.1.1-no-headers.patch
+	epatch "${WORKDIR}"/${PN}-3.1.1-no-oss-dir.patch
+
+	# drop as targets which are not suported by anything
+	sed -i \
+		-e '/^all:/,/^$/s/\(a68\|a88\|a860\|ahppa\|asparc\)_build//g' \
+		-e '/^macos_install:/s/common_install//' \
+		-e '/^xcommon_install:/,/^$/{' \
+			-e '/\(m68k\|a68\|sparc\)/d' \
+		-e '}' \
+		as/Makefile || die
+
+	cd "${S}"/${LD64}
+	epatch "${WORKDIR}"/${PN}-3.1.1-testsuite.patch
+	epatch "${WORKDIR}"/${PN}-3.2.6-lto.patch
 
 	cd "${S}"
 	ebegin "cleaning Makefiles from unwanted CFLAGS"
@@ -127,58 +123,71 @@ src_prepare() {
 
 	# -pg is used and the two are incompatible
 	filter-flags -fomit-frame-pointer
+
+	eapply_user
 }
 
 src_configure() {
-	tc-export CC CXX AR
-	if use lto ; then
-		append-flags -DLTO_SUPPORT
-		append-ldflags -L"${EPREFIX}"/usr/$(get_libdir)/llvm
-		append-libs LTO
+	export CTARGET=${CTARGET:-${CHOST}}
+	if [[ ${CTARGET} == ${CHOST} ]] ; then
+		if [[ ${CATEGORY} == cross-* ]] ; then
+			export CTARGET=${CATEGORY#cross-}
+		fi
+	fi
+
+	LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${PV}
+	INCPATH=${LIBPATH}/include
+	DATAPATH=/usr/share/binutils-data/${CTARGET}/${PV}
+	if is_cross ; then
+		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${PV}
 	else
-		append-flags -ULTO_SUPPORT
+		BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
+	fi
+
+	if tc-is-gcc && [[ $(gcc-fullversion) != 4.2.1 ]] ; then
+		# force gcc-apple
+		CC=${CTARGET}-gcc-4.2.1
+		CXX=${CTARGET}-g++-4.2.1
 	fi
 }
 
 compile_ld64() {
 	cd "${S}"/${LD64}/src
-	# remove antiquated copy that's available on any OSX system and
-	# breaks ld64 compilation
-	mv include/mach-o/dyld.h{,.disable}
-	emake \
-		CFLAGS="${CFLAGS}" \
-		CXXFLAGS="${CXXFLAGS}" \
-		LDFLAGS="${LDFLAGS} ${LIBS}" \
-		|| die "emake failed for ld64"
+	# 'struct linkedit_data_command' is defined in mach-o/loader.h on leopard,
+	# but not on tiger.
+	[[ ${CHOST} == *-apple-darwin8 ]] && \
+		append-flags -isystem "${S}"/${CCTOOLS}/include/
+	local myincs="-Iinclude -Iabstraction -Ild"
+	emake CFLAGS="${CFLAGS} ${myincs}" CXXFLAGS="${CXXFLAGS} ${myincs}"
+
 	use test && emake build_test
-	# restore, it's necessary for cctools' install
-	mv include/mach-o/dyld.h{.disable,}
 }
 
 compile_cctools() {
 	cd "${S}"/${CCTOOLS}
 	emake \
-		LIB_PRUNETRIE="-L../../${LD64}/src -lprunetrie" \
-		EFITOOLS= LTO= \
+		LTO= \
+		TRIE= \
+		EFITOOLS= \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
 		SUBDIRS_32= \
-		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}" \
-		|| die "emake failed for the cctools"
+		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}"
+
 	cd "${S}"/${CCTOOLS}/as
 	emake \
 		BUILD_OBSOLETE_ARCH= \
-		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}" \
-		|| die "emake failed for as"
+		RC_CFLAGS="-DASLIBEXECDIR=\"\\\"${EPREFIX}${LIBPATH}/\\\"\" ${CFLAGS}"
 }
 
 src_compile() {
+	tc-export CC CXX
 	compile_ld64
 	compile_cctools
 }
 
 install_ld64() {
 	exeinto ${BINPATH}
-	doexe "${S}"/${LD64}/src/{ld64,rebase,dyldinfo,unwinddump,ObjectDump}
+	doexe "${S}"/${LD64}/src/{ld64,rebase}
 	dosym ld64 ${BINPATH}/ld
 	insinto ${DATAPATH}/man/man1
 	doins "${S}"/${LD64}/doc/man/man1/{ld,ld64,rebase}.1
@@ -187,7 +196,7 @@ install_ld64() {
 install_cctools() {
 	cd "${S}"/${CCTOOLS}
 	emake install_all_but_headers \
-		EFITOOLS= LTO= \
+		EFITOOLS= \
 		COMMON_SUBDIRS='ar misc otool' \
 		SUBDIRS_32= \
 		RC_CFLAGS="${CFLAGS}" OFLAG="${CFLAGS}" \
@@ -202,7 +211,8 @@ install_cctools() {
 		BUILD_OBSOLETE_ARCH= \
 		DSTROOT=\"${D}\" \
 		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
-		LIBDIR=\"${EPREFIX}\"${LIBPATH}
+		LIBDIR=\"${EPREFIX}\"${LIBPATH} \
+		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH}
 
 	cd "${ED}"${BINPATH}
 	insinto ${DATAPATH}/man/man1

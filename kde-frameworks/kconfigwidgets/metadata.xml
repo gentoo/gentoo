@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="man">Build and install man pages</flag>
+		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
 	</use>
 </pkgmetadata>

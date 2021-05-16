@@ -1,14 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
+
+EAPI=7
 
 DESCRIPTION="Virtual Package installing the Header files for DVB"
-HOMEPAGE=""
-SRC_URI=""
 
-LICENSE=""
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 x86"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=">=sys-kernel/linux-headers-3.7"

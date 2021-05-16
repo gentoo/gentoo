@@ -1,0 +1,27 @@
+Description: Add patch to build with GCC-10
+Bug-Debian: https://bugs.debian.org/957415
+Author: Nilesh Patra <npatra974@gmail.com>
+Date:   Fri Apr 17 21:13:21 2020 +0530
+
+--- a/src/fchaos.c
++++ b/src/fchaos.c
+@@ -29,7 +29,7 @@
+   int offset;
+ } match;
+ 
+-extern int indeces[256];
++int indeces[256];
+ 
+ 
+ void remElem(LList* tbf, int i);
+--- a/src/thrtrie.h
++++ b/src/thrtrie.h
+@@ -2,7 +2,7 @@
+ #define MAX_DEGEN 2
+ 
+ 
+-int indeces[256];
++extern int indeces[256];
+ 
+ typedef struct PrevHits {
+   int* inds1;

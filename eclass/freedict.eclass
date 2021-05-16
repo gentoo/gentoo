@@ -1,50 +1,47 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: freedict.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
 # @AUTHOR:
-# Original author: Seemant Kulleen
+# Original author: Seemant Kulleen <seemant@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Ease the installation of freedict translation dictionaries
 # @DESCRIPTION:
 # This eclass exists to ease the installation of freedict translation
-# dictionaries.  The only variables which need to be defined in the actual
-# ebuilds are FORLANG and TOLANG for the source and target languages,
-# respectively.
+# dictionaries.
 
-# @ECLASS-VARIABLE: FORLANG
+# @ECLASS-VARIABLE: FREEDICT_P
 # @DESCRIPTION:
-# Please see above for a description.
+# Strips PN of 'freedict' prefix, to be used in SRC_URI and doins
+FREEDICT_P=${PN/freedict-/}
 
-# @ECLASS-VARIABLE: TOLANG
-# @DESCRIPTION:
-# Please see above for a description.
+case ${EAPI:-0} in
+	7) ;;
+	*) die "${ECLASS}.eclass is banned in EAPI=${EAPI}" ;;
+esac
 
-inherit eutils multilib
+[[ ${FORLANG} ]] && die "FORLANG is banned, set DESCRIPTION instead"
+[[ ${TOLANG} ]] && die "TOLANG is banned, set DESCRIPTION instead"
 
-IUSE=""
+HOMEPAGE="http://freedict.sourceforge.net/en/"
+SRC_URI="http://freedict.sourceforge.net/download/linux/${FREEDICT_P}.tar.gz"
 
-MY_P=${PN/freedict-/}
+LICENSE="GPL-2+"
+SLOT="0"
+
+RDEPEND="app-text/dictd"
 
 S="${WORKDIR}"
-DESCRIPTION="Freedict for language translation from ${FORLANG} to ${TOLANG}"
-HOMEPAGE="http://www.freedict.de"
-SRC_URI="http://freedict.sourceforge.net/download/linux/${MY_P}.tar.gz"
-
-SLOT="0"
-LICENSE="GPL-2"
-
-DEPEND="app-text/dictd"
 
 # @FUNCTION: freedict_src_install
 # @DESCRIPTION:
-# The freedict src_install function, which is exported
+# Installs translation-specific dict.dz and index files.
 freedict_src_install() {
 	insinto /usr/$(get_libdir)/dict
-	doins ${MY_P}.dict.dz
-	doins ${MY_P}.index
+	doins ${FREEDICT_P}.dict.dz
+	doins ${FREEDICT_P}.index
 }
 
 EXPORT_FUNCTIONS src_install

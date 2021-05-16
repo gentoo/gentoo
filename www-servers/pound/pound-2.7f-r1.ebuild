@@ -1,6 +1,5 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils
@@ -12,12 +11,11 @@ SRC_URI="http://www.apsis.ch/pound/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
-IUSE="libressl"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~sparc x86"
 
 DEPEND="dev-libs/libpcre
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )"
+	dev-libs/openssl:0
+"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}

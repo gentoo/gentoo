@@ -1,0 +1,11 @@
+--- kbuild-0.1.9998.3407/src/kmk/Makefile.kmk
++++ kbuild-0.1.9998.3407/src/kmk/Makefile.kmk
+@@ -60,7 +60,7 @@
+ ifneq ($(KBUILD_TARGET),os2)
+  TEMPLATE_BIN-KMK_INCS += glob
+ endif
+-TEMPLATE_BIN-KMK_LIBS = $(LIB_KUTIL) $(TEMPLATE_BIN-THREADED_LIBS) $(kmkmissing_1_TARGET) $(LIB_KUTIL)
++TEMPLATE_BIN-KMK_LIBS = $(LIB_KUTIL) $(TEMPLATE_BIN-THREADED_LIBS) $(kmkmissing_1_TARGET) $(LIB_KUTIL) pthread
+ ifdef ELECTRIC_HEAP # for electric heap (see electric.c).
+ ifeq ($(KBUILD_TARGET),win)
+  TEMPLATE_BIN-KMK_CFLAGS = $(TEMPLATE_BIN-THREADED_CFLAGS) /FI$(kmk_DEFPATH)/electric.h -DELECTRIC_HEAP=1

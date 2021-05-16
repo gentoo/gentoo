@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 # @ECLASS: golang-vcs.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass for fetching and unpacking go repositories.
 # @DESCRIPTION:
 # This eclass is written to ease the maintenance of live ebuilds
 # of software written in the Go programming language.
 
-inherit eutils golang-base
+inherit estack eutils golang-base
 
 case "${EAPI:-0}" in
-	5|6)
+	5|6|7)
 		;;
 	*)
 		die "${ECLASS}: Unsupported eapi (EAPI=${EAPI})"
@@ -25,6 +25,8 @@ EXPORT_FUNCTIONS src_unpack
 if [[ -z ${_GOLANG_VCS} ]]; then
 
 _GOLANG_VCS=1
+
+PROPERTIES+=" live"
 
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED
@@ -39,6 +41,7 @@ _GOLANG_VCS=1
 # @CODE
 
 # @ECLASS-VARIABLE: EGO_STORE_DIR
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Storage directory for Go sources.
 #

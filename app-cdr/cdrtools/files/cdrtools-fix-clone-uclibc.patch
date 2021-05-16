@@ -1,6 +1,5 @@
-diff -Naur cdrtools-3.02.orig/readcd/readcd.c cdrtools-3.02/readcd/readcd.c
---- cdrtools-3.02.orig/readcd/readcd.c	2016-01-24 11:15:19.000000000 -0500
-+++ cdrtools-3.02/readcd/readcd.c	2016-04-09 12:29:54.727635502 -0400
+--- a/readcd/readcd.c
++++ b/readcd/readcd.c
 @@ -257,7 +257,7 @@
  BOOL	pifscan;
  BOOL	plot;

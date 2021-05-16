@@ -7,10 +7,10 @@
 	</maintainer>
 	<use>
 		<flag name="aacplus">AAC+ encoding via media-libs/libaacplus</flag>
-		<flag name="opus">Enable Opus audio codec support</flag>
 		<flag name="twolame">Build with twolame support</flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">darkice</remote-id>
+		<remote-id type="sourceforge">darkice</remote-id>
 	</upstream>
 </pkgmetadata>

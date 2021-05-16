@@ -1,0 +1,221 @@
+--- a/ginclude.h
++++ b/ginclude.h
+@@ -22,8 +22,8 @@ struct FLAGS
+      urg:1,
+      ece:1,
+      cwr:1;
+-}
+-f;
++};
++extern struct FLAGS f;
+ 
+ struct CHECKS
+ {
+@@ -31,33 +31,33 @@ struct CHECKS
+      data:1,		/* include payload */
+      linkl:1,		/* work with datalink */
+      debug:1;		/* enable debug mode */
+-}
+-ck;
++};
++extern struct CHECKS ck;
+ 
+ struct MULTI
+ {
+    u_long number;
+    u_long delay;
+-}
+-m;
++};
++extern struct MULTI m;
+ 
+ struct ECN
+ {
+    u_int dscp:8;
+    u_int ecn_ct:2;
+    u_int ecn_ce:1;
+-}
+-ipv4_tos;
++};
++extern struct ECN ipv4_tos;
+ 
+-u_long shost;
+-u_long dhost;
+-u_long seq;
+-u_long ack;
+-u_short id;
+-u_short urgp;
+-u_short tos;
++extern u_long shost;
++extern u_long dhost;
++extern u_long seq;
++extern u_long ack;
++extern u_short id;
++extern u_short urgp;
++extern u_short tos;
+ 
+-char device[10];
+-char data[128];
++extern char device[10];
++extern char data[128];
+ 
+-u_char ebuf[LIBNET_ERRBUF_SIZE];
++extern u_char ebuf[LIBNET_ERRBUF_SIZE];
+--- a/interface.h
++++ b/interface.h
+@@ -20,47 +20,47 @@ GtkWidget* create_ECNWin (void);
+ /* Define common Widget */
+ 
+ /* MainWin */
+-GtkWidget *iface_entry;
+-GtkWidget *srcmac_entry;
+-GtkWidget *dstmac_entry;
+-GtkWidget *ethtype_combo;
+-GtkWidget *ethtype_combo_entry;
+-GtkWidget *DatalinkFrame;
++extern GtkWidget *iface_entry;
++extern GtkWidget *srcmac_entry;
++extern GtkWidget *dstmac_entry;
++extern GtkWidget *ethtype_combo;
++extern GtkWidget *ethtype_combo_entry;
++extern GtkWidget *DatalinkFrame;
+ 
+-GtkWidget *srcaddr_entry;
+-GtkWidget *dstaddr_entry;
+-GtkWidget *ttl_entry;
+-GtkWidget *id_entry;
+-GtkWidget *tos_entry;
++extern GtkWidget *srcaddr_entry;
++extern GtkWidget *dstaddr_entry;
++extern GtkWidget *ttl_entry;
++extern GtkWidget *id_entry;
++extern GtkWidget *tos_entry;
+ 
+-GtkWidget *srcport_entry;
+-GtkWidget *dstport_entry;
+-GtkWidget *flags_table;
+-GtkWidget *syn_checkbutton;
+-GtkWidget *fin_checkbutton;
+-GtkWidget *push_checkbutton;
+-GtkWidget *ack_checkbutton;
+-GtkWidget *rst_checkbutton;
+-GtkWidget *urg_checkbutton;
+-GtkWidget *ece_checkbutton;
+-GtkWidget *cwr_checkbutton;
+-GtkWidget *seq_entry;
+-GtkWidget *ack_entry;
+-GtkWidget *win_entry;
+-GtkWidget *urg_entry;
++extern GtkWidget *srcport_entry;
++extern GtkWidget *dstport_entry;
++extern GtkWidget *flags_table;
++extern GtkWidget *syn_checkbutton;
++extern GtkWidget *fin_checkbutton;
++extern GtkWidget *push_checkbutton;
++extern GtkWidget *ack_checkbutton;
++extern GtkWidget *rst_checkbutton;
++extern GtkWidget *urg_checkbutton;
++extern GtkWidget *ece_checkbutton;
++extern GtkWidget *cwr_checkbutton;
++extern GtkWidget *seq_entry;
++extern GtkWidget *ack_entry;
++extern GtkWidget *win_entry;
++extern GtkWidget *urg_entry;
+ 
+ /* Info TextView */
+-GtkWidget *TextView;
+-GtkTextBuffer *TextBuffer;
+-GtkWidget *VerticalScroll;
++extern GtkWidget *TextView;
++extern GtkTextBuffer *TextBuffer;
++extern GtkWidget *VerticalScroll;
+ 
+ /* DataWin */
+-GtkWidget *DataEntry;
++extern GtkWidget *DataEntry;
+ 
+ /* Multi */
+-GtkWidget *table2;
+-GtkWidget *NumberEntryMulti;
+-GtkWidget *DelayEntryMulty;
++extern GtkWidget *table2;
++extern GtkWidget *NumberEntryMulti;
++extern GtkWidget *DelayEntryMulty;
+ 
+ /* ECN */
+-GtkWidget *dscpEntry;
++extern GtkWidget *dscpEntry;
+--- a/gfuncts.c
++++ b/gfuncts.c
+@@ -19,9 +19,12 @@
+ 
+ #include "interface.h"
+ 
++struct FLAGS f;
++struct CHECKS ck;
++struct MULTI m;
++
+ /* private functions */
+ int CheckValues();
+-u_short datalen; /* data (tcp payload) lenght */
+ 
+ int Initialize()
+ {
+@@ -139,6 +142,7 @@ int SendPacket()
+    /* BEGIN of variables ' declaration */
+    libnet_t *l;
+    char *dataptr;
++   u_short datalen; /* data (tcp payload) lenght */
+ 
+    u_short sport, dport;
+    u_short flag=0x00;
+--- a/interface.c
++++ b/interface.c
+@@ -27,6 +27,47 @@
+ #include "ginclude.h" /* define payload and multi options */
+ #include "common.h"
+ 
++GtkWidget *iface_entry;
++GtkWidget *srcmac_entry;
++GtkWidget *dstmac_entry;
++GtkWidget *ethtype_combo;
++GtkWidget *ethtype_combo_entry;
++GtkWidget *DatalinkFrame;
++
++GtkWidget *srcaddr_entry;
++GtkWidget *dstaddr_entry;
++GtkWidget *ttl_entry;
++GtkWidget *id_entry;
++GtkWidget *tos_entry;
++
++GtkWidget *srcport_entry;
++GtkWidget *dstport_entry;
++GtkWidget *flags_table;
++GtkWidget *syn_checkbutton;
++GtkWidget *fin_checkbutton;
++GtkWidget *push_checkbutton;
++GtkWidget *ack_checkbutton;
++GtkWidget *rst_checkbutton;
++GtkWidget *urg_checkbutton;
++GtkWidget *ece_checkbutton;
++GtkWidget *cwr_checkbutton;
++GtkWidget *seq_entry;
++GtkWidget *ack_entry;
++GtkWidget *win_entry;
++GtkWidget *urg_entry;
++
++GtkWidget *TextView;
++GtkTextBuffer *TextBuffer;
++GtkWidget *VerticalScroll;
++
++GtkWidget *DataEntry;
++
++GtkWidget *table2;
++GtkWidget *NumberEntryMulti;
++GtkWidget *DelayEntryMulty;
++
++GtkWidget *dscpEntry;
++
+ #define GLADE_HOOKUP_OBJECT(component,widget,name) \
+   g_object_set_data_full (G_OBJECT (component), name, \
+     gtk_widget_ref (widget), (GDestroyNotify) gtk_widget_unref)

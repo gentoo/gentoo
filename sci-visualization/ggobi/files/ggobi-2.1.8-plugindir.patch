@@ -1,5 +1,5 @@
---- plugins/Makefile.plugin.orig	2009-12-14 22:15:01.000000000 +0000
-+++ plugins/Makefile.plugin	2009-12-14 22:15:16.000000000 +0000
+--- a/plugins/Makefile.plugin
++++ b/plugins/Makefile.plugin
 @@ -2,7 +2,7 @@
  
  # Every plugin provides a single library to GGobi, define it here.

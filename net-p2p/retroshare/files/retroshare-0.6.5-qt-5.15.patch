@@ -1,0 +1,99 @@
+From bbaad838572b5fba6109bc7d3b5c55c2c68e6cdc Mon Sep 17 00:00:00 2001
+From: Phenom <retrosharephenom@gmail.com>
+Date: Mon, 1 Jun 2020 13:44:43 +0200
+Subject: [PATCH] Fix build with Qt 5.15+
+
+---
+ retroshare-gui/src/gui/elastic/elnode.h        |  8 +++++---
+ .../src/gui/gxs/GxsCommentTreeWidget.cpp       | 16 +++++++++-------
+ retroshare-gui/src/gui/gxs/GxsIdDetails.cpp    | 18 ++++++++++--------
+ 3 files changed, 24 insertions(+), 18 deletions(-)
+
+diff --git a/retroshare-gui/src/gui/elastic/elnode.h b/retroshare-gui/src/gui/elastic/elnode.h
+index 1e0edd1a87..33043ddab3 100644
+--- a/retroshare-gui/src/gui/elastic/elnode.h
++++ b/retroshare-gui/src/gui/elastic/elnode.h
+@@ -26,6 +26,10 @@
+ #ifndef ELNODE_H
+ #define ELNODE_H
+ 
++#include "graphwidget.h"
++
++#include <retroshare/rstypes.h>
++
+ #include <QApplication>
+ #if QT_VERSION >= 0x040600
+ #include <QGraphicsObject>
+@@ -36,9 +40,7 @@
+ #include <QGraphicsItem>
+ #endif
+ #include <QList>
+-
+-#include <retroshare/rstypes.h>
+-#include "graphwidget.h"
++#include <QPainterPath>
+ 
+ class Edge;
+ QT_BEGIN_NAMESPACE
+--- a/retroshare-gui/src/gui/gxs/GxsCommentTreeWidget.cpp
++++ b/retroshare-gui/src/gui/gxs/GxsCommentTreeWidget.cpp
+@@ -18,6 +18,12 @@
+  *                                                                             *
+  *******************************************************************************/
+ 
++#include "GxsCommentTreeWidget.h"
++
++#include "gui/common/RSElidedItemDelegate.h"
++#include "gui/gxs/GxsCreateCommentDialog.h"
++#include "gui/gxs/GxsIdTreeWidgetItem.h"
++
+ #include <QAbstractTextDocumentLayout>
+ #include <QApplication>
+ #include <QClipboard>
+@@ -25,13 +31,9 @@
+ #include <QMenu>
+ #include <QMimeData>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QTextDocument>
+ 
+-#include "gui/common/RSElidedItemDelegate.h"
+-#include "gui/gxs/GxsCommentTreeWidget.h"
+-#include "gui/gxs/GxsCreateCommentDialog.h"
+-#include "gui/gxs/GxsIdTreeWidgetItem.h"
+-
+ #include <iostream>
+ 
+ #define PCITEM_COLUMN_COMMENT		0
+diff --git a/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp b/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp
+--- a/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp
++++ b/retroshare-gui/src/gui/gxs/GxsIdDetails.cpp
+@@ -18,19 +18,21 @@
+  *                                                                             *
+  *******************************************************************************/
+ 
+-#include <QApplication>
+-#include <QThread>
+-#include <QTimerEvent>
+-#include <QMutexLocker>
++#include "GxsIdDetails.h"
+ 
+-#include <math.h>
+-#include "GxsIdDetails.h"
+ #include "retroshare-gui/RsAutoUpdatePage.h"
+ 
+ #include <retroshare/rspeers.h>
+ 
+-#include <iostream>
++#include <QApplication>
++#include <QMutexLocker>
+ #include <QPainter>
++#include <QPainterPath>
++#include <QThread>
++#include <QTimerEvent>
++
++#include <iostream>
++#include <cmath>
+ 
+ /* Images for tag icons */
+ #define IMAGE_LOADING     ":/images/folder-draft.png"

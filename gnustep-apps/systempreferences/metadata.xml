@@ -4,8 +4,5 @@
 	<maintainer type="project">
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
-	</maintainer> 
-	<longdescription>
-		TODO
-	</longdescription>
+	</maintainer>
 </pkgmetadata>

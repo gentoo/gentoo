@@ -1,28 +1,29 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=7
 XORG_DRI="always"
-inherit xorg-2
+inherit xorg-3
 
 if [[ ${PV} == 9999* ]]; then
-	XORG_EAUTORECONF=yes
 	SRC_URI=""
-	KEYWORDS=""
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Accelerated Open Source driver for AMDGPU cards"
 
-IUSE="glamor"
+IUSE="udev"
 
-RDEPEND="x11-libs/libdrm[video_cards_amdgpu]
-	x11-base/xorg-server[glamor(-)?]"
+RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_amdgpu]
+	x11-base/xorg-server[-minimal]
+	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	XORG_CONFIGURE_OPTIONS="$(use_enable glamor)"
-	xorg-2_src_configure
+	local XORG_CONFIGURE_OPTIONS=(
+		--enable-glamor
+		$(use_enable udev)
+	)
+	xorg-3_src_configure
 }

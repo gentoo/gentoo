@@ -1,20 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
-inherit autotools eutils flag-o-matic multilib
+inherit autotools epatch flag-o-matic multilib
 
 DESCRIPTION="A lexical database for the English language"
-HOMEPAGE="http://wordnet.princeton.edu/"
+HOMEPAGE="https://wordnet.princeton.edu/"
 SRC_URI="
 	ftp://ftp.cogsci.princeton.edu/pub/wordnet/${PV}/WordNet-${PV}.tar.gz
 	mirror://gentoo/${P}-patchset-1.tar.bz2"
 LICENSE="Princeton"
 
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 
 # In contrast to what the configure script seems to imply, Tcl/Tk is NOT optional.
@@ -40,8 +39,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-src_stubs_c.patch
 )
+
 src_prepare() {
-	epatch ${PATCHES[@]}
+	epatch "${PATCHES[@]}"
 	# Don't install all the extra docs (html, pdf, ps) without doc USE flag.
 	if ! use doc; then
 		sed -i -e "s:SUBDIRS =.*:SUBDIRS = man:" doc/Makefile.am || die

@@ -1,0 +1,18 @@
+Gentoo's sandbox does not whitelist this path by default yet.
+TODO: bug link.
+
+Until we have a sandbox whitelisting the path let's rely on ccache's default.
+--- a/src/Config.cpp
++++ b/src/Config.cpp
+@@ -885,11 +885,5 @@ Config::check_key_tables_consistency()
+ std::string
+ Config::default_temporary_dir(const std::string& cache_dir)
+ {
+-#ifdef HAVE_GETEUID
+-  std::string user_tmp_dir = FMT("/run/user/{}", geteuid());
+-  if (Stat::stat(user_tmp_dir).is_directory()) {
+-    return user_tmp_dir + "/ccache-tmp";
+-  }
+-#endif
+   return cache_dir + "/tmp";
+ }

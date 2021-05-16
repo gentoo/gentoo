@@ -1,25 +1,32 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="7"
 
-inherit eutils fixheadtails
+inherit fixheadtails
 
 DESCRIPTION="a mail filter written in Scheme"
 HOMEPAGE="http://0xcc.net/scmail/"
-SRC_URI="http://0xcc.net/scmail/${P}.tar.gz"
+SRC_URI="http://0xcc.net/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ia64 ~ppc x86"
 IUSE=""
 
-RDEPEND="dev-scheme/gauche"
+RDEPEND="dev-scheme/gauche:="
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-doc-encoding.patch
+	"${FILESDIR}"/${PN}-gauche-0.9.patch
+	"${FILESDIR}"/${PN}-undefined-reference.patch
+)
+HTML_DOCS=( doc/{${PN},scbayes}{,-ja}.html )
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-*.diff
+	default
+
 	ht_fix_file tests/scmail-commands
 	# replace make -> $(MAKE)
 	sed -i "s/make\( \|$\)/\$(MAKE)\1/g" Makefile
@@ -31,5 +38,9 @@ src_install() {
 		SITELIBDIR="${ED}$(gauche-config --sitelibdir)" \
 		DATADIR="${ED}/usr/share/doc/${P}" \
 		install
-	dohtml doc/*.html
+	einstalldocs
+}
+
+src_test() {
+	emake -j1 -s check
 }

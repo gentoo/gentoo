@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
 JAVA_PKG_IUSE="examples doc source"
+MAVEN_ID="org.apache.velocity:velocity:1.7"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/${PN}/engine/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 CDEPEND="
@@ -58,7 +58,7 @@ S="${WORKDIR}/${P}"
 
 java_prepare() {
 	java-pkg_clean
-	rm -rf test src/test || die
+	rm -rv test src/test || die
 }
 
 src_install() {

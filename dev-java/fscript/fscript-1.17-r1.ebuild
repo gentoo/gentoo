@@ -1,6 +1,5 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -33,7 +32,7 @@ src_test() {
 src_install() {
 	java-pkg_dojar *.jar
 
-	dodoc CREDITS README VERSION || die
+	dodoc CREDITS README VERSION
 	# docs/* contains not only javadoc:
 	use doc && java-pkg_dohtml -r docs/*
 	use examples && java-pkg_doexamples examples/

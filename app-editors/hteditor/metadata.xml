@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
+    <email>slyfox@gentoo.org</email>
+    <name>Sergei Trofimovich</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">hte</remote-id>
-    <bugs-to>http://sourceforge.net/tracker/?group_id=1066</bugs-to>
+    <bugs-to>https://github.com/sebastianbiallas/ht/issues</bugs-to>
     <remote-id type="github">sebastianbiallas/ht</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription lang="de">
+		Die Zürcher Bibel 1931 als selbstkompiliertes SWORD-Modul. Anmerkungen und Parallelstellen hängen leider direkt am Versende an, anstatt in Fußnoten formatiert zu sein.
+	</longdescription>
+	<stabilize-allarches/>
+</pkgmetadata>

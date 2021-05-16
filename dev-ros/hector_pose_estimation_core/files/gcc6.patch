@@ -1,0 +1,35 @@
+Index: hector_pose_estimation_core/include/hector_pose_estimation/input.h
+===================================================================
+--- hector_pose_estimation_core.orig/include/hector_pose_estimation/input.h
++++ hector_pose_estimation_core/include/hector_pose_estimation/input.h
+@@ -79,7 +79,7 @@ public:
+     return *variance_;
+   }
+ 
+-  virtual bool hasVariance() const { return variance_; }
++  virtual bool hasVariance() const { return variance_ != NULL; }
+   virtual Variance const &getVariance() { if (!variance_) variance_.reset(new Variance); return *variance_; }
+   virtual Variance const &getVariance() const { return *variance_; }
+   virtual Variance& variance() { if (!variance_) variance_.reset(new Variance); return *variance_; }
+Index: hector_pose_estimation_core/src/system/imu_model.cpp
+===================================================================
+--- hector_pose_estimation_core.orig/src/system/imu_model.cpp
++++ hector_pose_estimation_core/src/system/imu_model.cpp
+@@ -51,7 +51,7 @@ GyroModel::~GyroModel()
+ bool GyroModel::init(PoseEstimation& estimator, System &system, State& state)
+ {
+   bias_ = state.addSubState<3,3>(this, system.getName() + "_bias");
+-  return bias_;
++  return bias_ != NULL;
+ }
+ 
+ void GyroModel::getPrior(State &state)
+@@ -113,7 +113,7 @@ AccelerometerModel::~AccelerometerModel(
+ bool AccelerometerModel::init(PoseEstimation& estimator, System &system, State& state)
+ {
+   bias_ = state.addSubState<3,3>(this, system.getName() + "_bias");
+-  return bias_;
++  return bias_ != NULL;
+ }
+ 
+ void AccelerometerModel::getPrior(State &state)

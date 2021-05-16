@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -17,11 +16,11 @@ IUSE=""
 RDEPEND="dev-perl/Log-Log4perl
 	>=dev-lang/spidermonkey-1.5:0"
 DEPEND="${RDEPEND}
-	dev-perl/extutils-pkgconfig"
+	dev-perl/ExtUtils-PkgConfig"
 
-src_prepare() {
-	epatch "${FILESDIR}"/mozjs185.patch
-	perl-module_src_prepare
-}
+PATCHES=(
+	"${FILESDIR}/mozjs185.patch"
+	"${FILESDIR}/${P}-no-dot-inc.patch"
+)
 
 SRC_TEST=do
