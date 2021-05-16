@@ -22,6 +22,8 @@ fi
 IUSE=""
 
 DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/cython[${PYTHON_USEDEP}]
-		>=sci-libs/fftw-3.3:3.0="
-RDEPEND="${DEPEND}"
+		>=sci-libs/fftw-3.3:3.0=[threads]"
+RDEPEND="${DEPEND}
+	${PYTHON_DEPS}"
+BDEPEND="${PYTHON_DEPS}
+	dev-python/cython[${PYTHON_USEDEP}]"
