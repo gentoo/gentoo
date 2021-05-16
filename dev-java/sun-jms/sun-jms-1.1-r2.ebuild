@@ -14,7 +14,7 @@ SRC_URI="${At}"
 
 LICENSE="sun-bcla-jms"
 SLOT=0
-KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 
 RDEPEND=">=virtual/jre-1.3"
