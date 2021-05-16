@@ -11,7 +11,7 @@ OFED_SUFFIX="1"
 inherit autotools openib
 
 DESCRIPTION="IB CM pre-connection service application"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 
 RDEPEND="
 	sys-fabric/libibumad:${SLOT}
