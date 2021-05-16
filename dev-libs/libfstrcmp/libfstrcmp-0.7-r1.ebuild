@@ -14,7 +14,7 @@ SLOT="0"
 
 SRC_URI="http://fstrcmp.sourceforge.net/fstrcmp-0.7.D001.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/fstrcmp-0.7.D001"
-KEYWORDS="~amd64 ~arm arm64 ~x86"
+KEYWORDS="~amd64 ~arm arm64 x86"
 
 DEPEND="
 	sys-apps/groff
