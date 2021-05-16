@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2021-05-16)
+# Obsoleted by go modules. Masked for removal in 30 days. Bug #790470.
+dev-go/godep
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-16)
 # no consumer, does not compile, not with jdk-11
 # and not even with openjdk:8
