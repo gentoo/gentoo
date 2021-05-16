@@ -91,7 +91,6 @@ BDEPEND="app-eselect/eselect-emacs
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}
 	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="emacs-${SLOT}"
