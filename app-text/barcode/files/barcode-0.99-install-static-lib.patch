@@ -1,0 +1,13 @@
+--- barcode-0.99_orig/Makefile.am	2020-12-06 15:39:43.270943391 +0100
++++ barcode-0.99/Makefile.am	2020-12-06 15:40:26.723942515 +0100
+@@ -25,7 +25,9 @@
+ 
+ bin_PROGRAMS = barcode sample
+ 
+-noinst_LTLIBRARIES = libbarcode.la
++lib_LTLIBRARIES = libbarcode.la
++
++include_HEADERS = barcode.h lib/gettext.h
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
