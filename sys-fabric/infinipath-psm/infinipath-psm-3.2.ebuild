@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ OFED_SRC_SNAPSHOT="1"
 inherit epatch openib udev
 
 DESCRIPTION="OpenIB userspace driver for the PathScale InfiniBand HCAs"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 
 RDEPEND="sys-fabric/libibverbs:${SLOT}"
 DEPEND="${RDEPEND}
