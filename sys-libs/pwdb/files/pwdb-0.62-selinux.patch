@@ -1,5 +1,5 @@
---- pwdb-0.62/examples/Makefile.pwdbselinux	1998-10-06 19:57:04.000000000 -0400
-+++ pwdb-0.62/examples/Makefile	2003-07-09 14:45:54.702663000 -0400
+--- a/examples/Makefile
++++ b/examples/Makefile
 @@ -4,6 +4,8 @@ PROGS	= posix gentest tpwdb radtest grou
  SRCS = $(addsuffix .c,$(PROGS))
  OBJS = $(addsuffix .o,$(PROGS))
@@ -36,8 +36,8 @@
  
  clean:
  	rm -f ${PROGS} *.o *~
---- pwdb-0.62/libpwdb/shadow/shadowio.c.pwdbselinux	1998-10-06 16:58:43.000000000 -0400
-+++ pwdb-0.62/libpwdb/shadow/shadowio.c	2003-07-09 14:45:54.705662544 -0400
+--- a/libpwdb/shadow/shadowio.c
++++ b/libpwdb/shadow/shadowio.c
 @@ -16,6 +16,12 @@
  
  #include "../_pwdb_internal.h"
@@ -133,8 +133,8 @@
  }
  
  int __pwdb_spw_update (const struct __pwdb_spwd *spwd)
---- pwdb-0.62/libpwdb/shadow/sgroupio.c.pwdbselinux	1998-10-06 16:58:43.000000000 -0400
-+++ pwdb-0.62/libpwdb/shadow/sgroupio.c	2003-07-09 14:45:54.704662696 -0400
+--- a/libpwdb/shadow/sgroupio.c
++++ b/libpwdb/shadow/sgroupio.c
 @@ -16,6 +16,12 @@
  
  #include "../_pwdb_internal.h"
@@ -230,8 +230,8 @@
  }
  
  int __pwdb_sgr_update (const struct __pwdb_sgrp *sgrent)
---- pwdb-0.62/libpwdb/unix/pwio.c.pwdbselinux	1998-10-06 16:58:43.000000000 -0400
-+++ pwdb-0.62/libpwdb/unix/pwio.c	2003-07-09 14:45:54.707662240 -0400
+--- a/libpwdb/unix/pwio.c
++++ b/libpwdb/unix/pwio.c
 @@ -16,6 +16,11 @@
  
  #include "../_pwdb_internal.h"
@@ -326,8 +326,8 @@
  }
  
  /*
---- pwdb-0.62/libpwdb/unix/groupio.c.pwdbselinux	1998-10-06 16:58:43.000000000 -0400
-+++ pwdb-0.62/libpwdb/unix/groupio.c	2003-07-09 14:45:54.708662088 -0400
+--- a/libpwdb/unix/groupio.c
++++ b/libpwdb/unix/groupio.c
 @@ -11,6 +11,12 @@
  #include "../_pwdb_internal.h"
  
@@ -422,8 +422,8 @@
  }
  
  /* update an entry */
---- pwdb-0.62/libpwdb/Makefile.pwdbselinux	1999-04-10 05:31:20.000000000 -0400
-+++ pwdb-0.62/libpwdb/Makefile	2003-07-09 14:45:54.709661936 -0400
+--- a/libpwdb/Makefile
++++ b/libpwdb/Makefile
 @@ -22,7 +22,7 @@ HEADERS	= pwdb/pwdb_public.h pwdb/pwdb_c
  
  # needed for generic interface compilation
