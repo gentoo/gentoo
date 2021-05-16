@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 optfeature verify-sig
@@ -50,6 +50,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-bashcomp.patch
+	# From https://github.com/django/django/pull/14228
+	"${FILESDIR}"/${P}-py310-repr.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
@@ -65,6 +67,13 @@ src_unpack() {
 	fi
 
 	default
+}
+
+python_prepare_all() {
+	# Fails because of warnings
+	sed -i 's/test_dumpdata_proxy_with_concrete/_&/' tests/fixtures/tests.py
+
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
