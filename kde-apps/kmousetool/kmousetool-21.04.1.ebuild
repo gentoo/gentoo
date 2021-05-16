@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE program that clicks the mouse for you"
-HOMEPAGE="https://apps.kde.org/en/kmousetool"
+HOMEPAGE="https://apps.kde.org/kmousetool/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

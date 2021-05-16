@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Paint Program by KDE"
-HOMEPAGE="https://apps.kde.org/en/kolourpaint"
+HOMEPAGE="https://apps.kde.org/kolourpaint/"
 
 LICENSE="BSD-2 LGPL-2 LGPL-2+ || ( LGPL-2.1 LGPL-3 ) GPL-2 handbook? ( FDL-1.2 )"
 SLOT="5"

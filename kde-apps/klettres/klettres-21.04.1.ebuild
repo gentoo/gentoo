@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Alphabet learning application"
-HOMEPAGE="https://apps.kde.org/en/klettres https://edu.kde.org/klettres/"
+HOMEPAGE="https://apps.kde.org/klettres/ https://edu.kde.org/klettres/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

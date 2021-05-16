@@ -12,8 +12,8 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="KDE version of the popular NetWalk game for system administrators"
-HOMEPAGE="https://apps.kde.org/en/knetwalk
-https://games.kde.org/games/knetwalk"
+HOMEPAGE="https://apps.kde.org/knetwalk/
+https://games.kde.org/games/knetwalk/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

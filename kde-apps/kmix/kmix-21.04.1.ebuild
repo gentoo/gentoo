@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Volume control gui based on KDE Frameworks"
-HOMEPAGE="https://apps.kde.org/en/kmix"
+HOMEPAGE="https://apps.kde.org/kmix/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

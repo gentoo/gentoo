@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="CVS frontend by KDE"
-HOMEPAGE="https://apps.kde.org/en/cervisia"
+HOMEPAGE="https://apps.kde.org/cervisia/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

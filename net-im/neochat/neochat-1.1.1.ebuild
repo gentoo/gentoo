@@ -8,7 +8,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Client for Matrix, the decentralized communication protocol"
-HOMEPAGE="https://apps.kde.org/en/neochat"
+HOMEPAGE="https://apps.kde.org/neochat/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"

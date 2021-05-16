@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE Japanese dictionary and reference"
-HOMEPAGE="https://apps.kde.org/en/kiten https://edu.kde.org/kiten/"
+HOMEPAGE="https://apps.kde.org/kiten/ https://edu.kde.org/kiten/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

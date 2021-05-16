@@ -9,7 +9,7 @@ QTMIN=5.15.1
 inherit ecm kde.org optfeature
 
 DESCRIPTION="Desktop Planetarium"
-HOMEPAGE="https://apps.kde.org/en/kstars https://edu.kde.org/kstars/"
+HOMEPAGE="https://apps.kde.org/kstars/ https://edu.kde.org/kstars/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"

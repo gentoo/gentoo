@@ -11,7 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Frontend for GnuPG, a powerful encryption utility by KDE"
-HOMEPAGE="https://apps.kde.org/en/kgpg https://utils.kde.org/projects/kgpg/"
+HOMEPAGE="https://apps.kde.org/kgpg/ https://utils.kde.org/projects/kgpg/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

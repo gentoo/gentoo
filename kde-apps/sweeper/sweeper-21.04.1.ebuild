@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Privacy settings widget to clean unwanted traces on the system"
-HOMEPAGE="https://apps.kde.org/en/sweeper
+HOMEPAGE="https://apps.kde.org/sweeper/
 https://utils.kde.org/projects/sweeper/"
 
 LICENSE="GPL-2" # TODO: CHECK
