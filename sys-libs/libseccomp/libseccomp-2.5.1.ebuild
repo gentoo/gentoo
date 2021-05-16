@@ -30,16 +30,12 @@ REQUIRED_USE="
 		${PYTHON_REQUIRED_USE}
 	)"
 
-BDEPEND="
-	dev-util/gperf
-	python? (
-		${PYTHON_DEPS}
-		dev-python/cython[${PYTHON_USEDEP}]
-	)
-"
-DEPEND="${BDEPEND}"
+DEPEND="python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}"
-
+BDEPEND="${DEPEND}
+	dev-util/gperf
+	python? ( dev-python/cython[${PYTHON_USEDEP}] )
+"
 # We need newer kernel headers; we don't keep strict control of the exact
 # version here, just be safe and pull in the latest stable ones. #551248
 DEPEND="${DEPEND} >=sys-kernel/linux-headers-4.3"
