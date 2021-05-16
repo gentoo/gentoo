@@ -5,7 +5,7 @@
 # openjfx:8 will never be stabilized
 # openjfx:11 probably will neither
 dev-java/openjdk:8 javafx
-dev-java/openjdk:11 javaf
+dev-java/openjdk:11 javafx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-27)
 # vulkan tested and works on ppc64le, but not stabilized yet
