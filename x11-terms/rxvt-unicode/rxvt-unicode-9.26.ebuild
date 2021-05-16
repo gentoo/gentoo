@@ -19,6 +19,7 @@ RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 	media-libs/fontconfig
 	x11-libs/libX11
 	x11-libs/libXrender
+	x11-libs/libXt
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	perl? ( dev-lang/perl:= )
