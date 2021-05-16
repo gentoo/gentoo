@@ -12,7 +12,7 @@ else
 	EGIT_COMMIT="096b61ad14c90169f438e690d096e3fcf87e504e"
 	SRC_URI="https://github.com/juhovh/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
-	KEYWORDS="~amd64 ~arm arm64 ~x86"
+	KEYWORDS="~amd64 ~arm arm64 x86"
 fi
 
 DESCRIPTION="Apple airplay and raop protocol server"
