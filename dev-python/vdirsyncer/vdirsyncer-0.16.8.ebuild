@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -19,17 +19,17 @@ SLOT="0"
 
 PATCHES=( "${FILESDIR}/${P}-click-7-compat.patch" )
 
-RDEPEND=">=dev-python/click-5.0[${PYTHON_USEDEP}]
+RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.3.0[${PYTHON_USEDEP}]
 	<dev-python/click-log-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/click-threading-0.2[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-toolbelt-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/atomicwrites-0.1.7[${PYTHON_USEDEP}]"
+	dev-python/click-threading[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+	dev-python/atomicwrites[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/hypothesis-5.0.0[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
 		dev-python/pytest-subtesthack[${PYTHON_USEDEP}]
 	)"
