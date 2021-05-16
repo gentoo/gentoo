@@ -38,7 +38,7 @@ src_prepare() {
 
 	sed -i \
 		-e "s/^DIRS = .*/DIRS = libpwdb/" \
-		-e "s:EXTRAS += :EXTRAS += ${CFLAGS} :" \
+		-e "s;EXTRAS += ;EXTRAS += ${CFLAGS} ;" \
 		Makefile || die
 	sed -i \
 		-e "s:=gcc:=$(tc-getCC):g" \
