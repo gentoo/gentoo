@@ -63,6 +63,9 @@ src_prepare() {
 	# bug 618772
 	append-cxxflags -std=c++14
 
+	# bug 790359
+	filter-flags -fexceptions -fthreadsafe-statics
+
 	# bug 762415
 	local pyscript
 	for pyscript in $(find -type f -name "*.py") ; do
