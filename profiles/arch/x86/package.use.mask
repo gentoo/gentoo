@@ -200,10 +200,6 @@ media-gfx/imagemagick -heif
 # Requires dev-db/mongodb which has dropped x86 support
 dev-python/pymongo test
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2018-09-27)
-# media-libs/qtav not keyworded
-media-video/orion qtav
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader
