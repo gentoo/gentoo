@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-05-17)
+# Deps not yet tested/keyworded.
+# bug #708344
+sys-devel/llvm gold
+
 # Marek Szuba <marecki@gentoo.org> (2021-05-07)
 # Legacy interface that depends on kernel headers not available on this arch
 # as well as currently-unkeyworded dev-libs/libx86
