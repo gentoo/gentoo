@@ -43,7 +43,7 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DKISSFFT_OPENMP=$(usex openmp)
+		-DKISSFFT_OPENMP=$(usex openmp 1 0)
 		-DKISSFFT_TEST=$(usex test)
 		-DKISSFFT_TOOLS=$(usex tools)
 		-DKISSFFT_USE_ALLOCA=$(usex alloca)
