@@ -658,14 +658,6 @@ net-nntp/pan
 # Removal on 2021-07-01.  Bug #784221.
 x11-apps/amlc
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
-# our version is outdated with security issues, new version
-# uses gradle to build which we don't support atm,
-# also being a web framework deployable to application servers,
-# we have no usage for it, and nothing depends on it
-# removal in 30 days
-dev-java/tapestry
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
