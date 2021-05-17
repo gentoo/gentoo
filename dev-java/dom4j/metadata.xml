@@ -5,6 +5,9 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<use>
+		<flag name="jaxen">Includes org.jaxen.dom4j package</flag>
+	</use>
 	<longdescription>
 		Easy to use, open source library for working with XML, XPath and
 		XSLT on the Java platform using the Java Collections Framework
