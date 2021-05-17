@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="xpp3:xpp3:1.1.4c"
 
 inherit java-pkg-2 java-pkg-simple
 
