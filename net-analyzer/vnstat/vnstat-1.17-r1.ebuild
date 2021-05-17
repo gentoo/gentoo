@@ -4,7 +4,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/teemutoivola.asc
-inherit toolchain-funcs verify-sig
+inherit flag-o-matic toolchain-funcs verify-sig
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
@@ -41,6 +41,15 @@ src_prepare() {
 	sed -i \
 		-e '/PIDFILE/s|/var/run|/run|' \
 		src/common.h || die
+}
+
+src_configure() {
+	tc-export CC
+
+	# Fails to build with GCC 10
+	append-flags -fcommon
+
+	default
 }
 
 src_compile() {
