@@ -19,7 +19,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-install-static-lib.patch
 )
 
-
 src_prepare() {
 	sed -i -e '/^LDFLAGS =/s:=:+=:' \
 		-e "/^aLIBDIR/s:lib:$(get_libdir):" \
