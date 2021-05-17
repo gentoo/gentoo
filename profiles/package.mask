@@ -697,12 +697,6 @@ dev-python/pep8
 # Removal on 2021-05-17.  Bug #783366.
 dev-python/pytest-pep8
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2021-04-15)
-# Abandoned upstream, does not work with current API,
-# does not compile with current mpv
-# Removal on 2021-05-15, bug #782601
-media-video/orion
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-15)
 # dev-java/jcodings-1.0.55 depends on masked >=virtual/{jdk,jre}-11
 # dev-java/joni-2.1.41 depends on masked >=virtual/{jdk,jre}-11
