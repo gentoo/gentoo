@@ -77,7 +77,6 @@ media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
-media-video/orion
 >=media-video/openshot-2.5.1_p20210103
 net-analyzer/nmapsi
 net-libs/signon-ui
