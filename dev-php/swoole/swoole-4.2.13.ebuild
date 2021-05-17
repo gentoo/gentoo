@@ -44,7 +44,7 @@ IUSE="debug http2 mysql sockets ssl"
 
 src_configure() {
 	# PostgreSQL disabled due to Gentoo's slot system
-	# JEMalloc not included as it refuses to find a ${EROOT}/usr/includes/jemalloc subdirectory
+	# JEMalloc not included as it refuses to find a ${ESYSROOT}/usr/includes/jemalloc subdirectory
 	local PHP_EXT_ECONF_ARGS=(
 		--enable-swoole
 		--disable-coroutine-postgresql
@@ -52,7 +52,7 @@ src_configure() {
 		$(use_enable http2)
 		$(use_enable mysql mysqlnd)
 		$(use_enable ssl openssl)
-		$(use_with ssl openssl-dir "${EROOT}/usr")
+		$(use_with ssl openssl-dir "${ESYSROOT}/usr")
 		$(use_enable sockets)
 	)
 
