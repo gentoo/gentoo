@@ -53,7 +53,15 @@ RDEPEND="
 	x11-libs/pango
 "
 
-QA_PREBUILT="/opt/vscode/*"
+QA_PREBUILT="
+	/opt/vscode/libEGL.so
+	/opt/vscode/libffmpeg.so
+	/opt/vscode/libGLESv2.so
+	/opt/vscode/libvulkan.so
+	/opt/vscode/libvk_swiftshader.so
+	/opt/vscode/swiftshader/libEGL.so
+	/opt/vscode/swiftshader/libGLESv2.so
+"
 
 pkg_setup() {
 	if use amd64; then
