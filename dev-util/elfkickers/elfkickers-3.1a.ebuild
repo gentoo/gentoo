@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-create-destdir-path.patch
 	"${FILESDIR}"/add-freebsd-elf-defs.patch
 	"${FILESDIR}"/${PN}-3.1-AR.patch
+	"${FILESDIR}"/${PN}-3.1-CC.patch
 )
 
 src_prepare() {
