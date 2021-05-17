@@ -4,7 +4,7 @@
 EAPI=7
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/teemutoivola.asc
-inherit toolchain-funcs user verify-sig
+inherit toolchain-funcs verify-sig
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
@@ -22,13 +22,10 @@ DEPEND="
 	${RDEPEND}
 	test? ( dev-libs/check )
 "
-RDEPEND+=" selinux? ( sec-policy/selinux-vnstatd )"
+RDEPEND+=" acct-group/vnstat
+	acct-user/vnstat
+	selinux? ( sec-policy/selinux-vnstatd )"
 BDEPEND="verify-sig? ( app-crypt/openpgp-keys-teemutoivola )"
-
-pkg_setup() {
-	enewgroup vnstat
-	enewuser vnstat -1 -1 /dev/null vnstat
-}
 
 src_prepare() {
 	default

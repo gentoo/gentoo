@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd user tmpfiles
+inherit systemd tmpfiles
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
@@ -36,18 +36,15 @@ DEPEND="
 	${RDEPEND}
 	test? ( dev-libs/check )
 "
-RDEPEND+=" selinux? ( sec-policy/selinux-vnstatd )"
+RDEPEND+=" acct-group/vnstat
+	acct-user/vnstat
+	selinux? ( sec-policy/selinux-vnstatd )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2-conf.patch
 	"${FILESDIR}"/${PN}-2.2-drop-root.patch
 	"${FILESDIR}"/${PN}-2.2-run.patch
 )
-
-pkg_setup() {
-	enewgroup vnstat
-	enewuser vnstat -1 -1 /var/lib/vnstat vnstat
-}
 
 src_compile() {
 	emake ${PN} ${PN}d $(usex gd ${PN}i '')
