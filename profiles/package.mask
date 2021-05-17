@@ -672,11 +672,6 @@ dev-java/tapestry
 # see: https://github.com/findbugsproject/findbugs
 dev-util/findbugs
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
-# obsolete deps, not used by any package
-# removal in 30 days
-dev-java/ical4j
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
