@@ -675,7 +675,6 @@ dev-util/findbugs
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
 # obsolete deps, not used by any package
 # removal in 30 days
-dev-java/commons-jelly
 dev-java/ezmorph
 dev-java/ical4j
 
