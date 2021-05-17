@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools git-r3
+inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
 HOMEPAGE="https://ncmpcpp.rybczak.net/ https://github.com/ncmpcpp/ncmpcpp"
