@@ -11,7 +11,7 @@ SRC_URI="https://rybczak.net/ncmpcpp/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE="clock lto outputs taglib visualizer"
 
 RDEPEND="
