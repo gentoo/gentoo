@@ -162,7 +162,6 @@ dev-db/mariadb columnstore
 # They are generally fixable by adding py3 support and using
 # distutils_enable_sphinx to build docs.
 <=dev-python/lockfile-0.12.2-r2 doc
-<dev-python/pep8-1.7.1-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # Requires Python 2 support in xapian-bindings which in turn require
