@@ -741,12 +741,6 @@ x11-misc/xstroke
 #   https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=aba75f6d4a9c875a9d5d90a07c6b3678db66a4bf
 sys-devel/autoconf:2.71
 
-# Göktürk Yüksek <gokturk@gentoo.org> (2021-03-14)
-# Dead upstream. No revdeps.
-# Removal in 60 days to allow people extra time
-# for transitioning out. Bug #776262.
-app-admin/lastpass-cli
-
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Doesn't seem to sync clock correctly
 # in some cases.
