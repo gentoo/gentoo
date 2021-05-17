@@ -242,14 +242,6 @@
  # raw memory, MSR or PCI port I/O access
  if need_raw_access
    srcs += 'hwaccess.c'
-@@ -335,6 +381,7 @@ if need_serial
-   srcs += 'serial.c'
- endif
- 
-+
- prefix = get_option('prefix')
- sbindir = join_paths(prefix, get_option('sbindir'))
- libdir = join_paths(prefix, get_option('libdir'))
 --- a/meson_options.txt
 +++ b/meson_options.txt
 @@ -1,5 +1,6 @@
