@@ -9,7 +9,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 
 RDEPEND="
 	|| ( =dev-lang/perl-5.34* ~perl-core/${PN#perl-}-${PV} )
-	|| ( =dev-lang/perl-5.32* =dev-lang/perl-5.30* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
