@@ -108,6 +108,7 @@ dev-perl/gtk2-spell
 =dev-lang/perl-5.34*
 ~virtual/perl-Archive-Tar-2.380.0
 ~virtual/perl-autodie-2.340.0
+~virtual/perl-Carp-1.520.0
 
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
