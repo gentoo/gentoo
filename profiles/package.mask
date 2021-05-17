@@ -691,12 +691,6 @@ dev-java/ical4j
 # Removal on 2021-05-17.  Bug #783369.
 dev-python/pep8
 
-# Michał Górny <mgorny@gentoo.org> (2021-04-17)
-# Dead.  Upstream repo gone.  Requires obsolete dev-python/pep8.
-# No revdeps.
-# Removal on 2021-05-17.  Bug #783366.
-dev-python/pytest-pep8
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-15)
 # dev-java/jcodings-1.0.55 depends on masked >=virtual/{jdk,jre}-11
 # dev-java/joni-2.1.41 depends on masked >=virtual/{jdk,jre}-11
