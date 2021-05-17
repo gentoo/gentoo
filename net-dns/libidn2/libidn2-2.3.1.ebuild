@@ -2,13 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal toolchain-funcs
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libidn.asc
+inherit multilib-minimal toolchain-funcs verify-sig
 
 DESCRIPTION="An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)"
 HOMEPAGE="https://www.gnu.org/software/libidn/#libidn2 https://gitlab.com/libidn/libidn2"
 SRC_URI="
 	mirror://gnu/libidn/${P}.tar.gz
+	verify-sig? ( mirror://gnu/libidn/${P}.tar.gz.sig )
 "
+S="${WORKDIR}"/${P/a/}
 
 LICENSE="GPL-2+ LGPL-3+"
 SLOT="0/2"
@@ -22,8 +26,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
 	sys-apps/help2man
+	verify-sig? ( app-crypt/openpgp-keys-libidn )
 "
-S=${WORKDIR}/${P/a/}
 
 src_prepare() {
 	default
@@ -50,5 +54,5 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
