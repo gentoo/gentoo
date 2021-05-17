@@ -80,6 +80,13 @@ src_prepare() {
 
 	sed -e 's/\/lib\$/\/'$(get_libdir)'\$/' \
 		-i adm/templates/OpenCASCADEConfig.cmake.in || die
+
+	# There is an OCCT_UPDATE_TARGET_FILE cmake macro that fails due to some
+	# assumptions it makes about installation paths. Rather than fixing it, just
+	# get rid of the mechanism altogether - its purpose is to allow a
+	# side-by-side installation of release and debug libraries.
+	sed -e 's|\\${OCCT_INSTALL_BIN_LETTER}||' \
+		-i "adm/cmake/occt_toolkit.cmake"
 }
 
 src_configure() {
