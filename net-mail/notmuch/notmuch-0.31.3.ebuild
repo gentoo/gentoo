@@ -35,10 +35,12 @@ BDEPEND="
 		dev-lang/perl
 	)
 	doc? (
-		<dev-python/sphinx-4
+		dev-python/sphinx
 		sys-apps/texinfo
 	)
-	python? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	python? (
+		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	)
 "
 
 COMMON_DEPEND="
@@ -115,6 +117,9 @@ src_prepare() {
 
 	# Non-autoconf configure
 	[[ ${CHOST} == *-solaris* ]] &&	append-ldflags '-lnsl' '-lsocket'
+
+	# sphinx-4 broke everything. https://bugs.gentoo.org/789492
+	echo 'man_make_section_directory = False' >> doc/conf.py || die
 }
 
 src_configure() {
