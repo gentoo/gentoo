@@ -6,7 +6,7 @@ EAPI=7
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd
 
