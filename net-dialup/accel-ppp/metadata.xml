@@ -7,10 +7,12 @@
 	</maintainer>
 	<use>
 		<flag name="ipoe">Build IPoE kernel module</flag>
+		<flag name="libtomcrypt">Support crypto algorithms through <pkg>dev-libs/libtomcrypt</pkg> instead of <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="shaper">Support for traffic shaping</flag>
 		<flag name="valgrind">Compile in valgrind hints</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">xebd/accel-ppp</remote-id>
 		<remote-id type="sourceforge">accel-ppp</remote-id>
 	</upstream>
 </pkgmetadata>
