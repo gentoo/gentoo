@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]' python3_{6,7})
+	$(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]' python3_{6,7} pypy3)
 	dev-python/zipp[${PYTHON_USEDEP}]
 "
 BDEPEND="
