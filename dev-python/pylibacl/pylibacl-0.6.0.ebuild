@@ -23,6 +23,7 @@ KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 sparc x86"
 RDEPEND="sys-apps/acl"
 DEPEND=${RDEPEND}
 
+distutils_enable_sphinx doc
 distutils_enable_tests pytest
 
 python_test() {
