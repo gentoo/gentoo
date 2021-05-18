@@ -65,7 +65,7 @@ FREE @FREE-SOFTWARE @FREE-DOCUMENTS
 # - IF (and only if) there is an explicit inclusion requirement,
 #   USE=bindist MUST cause a copy of the license to be installed
 #   in a file location compliant with the license
-BINARY-REDISTRIBUTABLE @FREE Amazon Atmel AVASYS bh-luxi bonnie Broadcom freedist intel-ucode ipw2100-fw ipw2200-fw ipw3945 ISSL JSON linux-fw-redistributable LSI-tw_cli Mellanox-AS-IS MicroChip-SDCC no-source-code NVIDIA-r1 qlogic-fibre-channel-firmware shmux SmartLabs sun-jlfgr unRAR
+BINARY-REDISTRIBUTABLE @FREE Amazon Atmel AVASYS bh-luxi bonnie Broadcom freedist intel-ucode ipw2100-fw ipw2200-fw ipw3945 ISSL JSON linux-fw-redistributable LSI-tw_cli Mellanox-AS-IS MicroChip-SDCC no-source-code NVIDIA-r1 NVIDIA-r2 qlogic-fibre-channel-firmware shmux SmartLabs sun-jlfgr unRAR
 
 ######################################################################
 
