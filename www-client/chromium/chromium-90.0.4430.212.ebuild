@@ -15,13 +15,16 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 PATCHSET="7"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
+# ppc64le patchet origin: https://github.com/void-linux/void-packages/tree/master/srcpkgs/chromium/patches
+PPC64LE_COMMIT="3f575325dcc3bdfc419824518bac6d4c38241859"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
-	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
+	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
+	ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-ppc64le-${PPC64LE_COMMIT}.tar.xz )"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-icu +tcmalloc vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
@@ -245,6 +248,8 @@ src_prepare() {
 			"${FILESDIR}/chromium-glibc-2.33.patch"
 		)
 	fi
+
+	use ppc64 && eapply -p0 "${WORKDIR}/${PN}-ppc64le-${PPC64LE_COMMIT}"
 
 	default
 
