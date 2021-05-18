@@ -41,7 +41,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
 )
 
 pkg_setup() {
