@@ -13,7 +13,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 WANT_AUTOCONF="2.1"
 
-inherit autotools check-reqs flag-o-matic llvm multiprocessing python-any-r1 toolchain-funcs
+inherit autotools check-reqs flag-o-matic llvm multiprocessing prefix python-any-r1 toolchain-funcs
 
 MY_PN="mozjs"
 MY_PV="${PV/_pre*}" # Handle Gentoo pre-releases
@@ -229,6 +229,9 @@ src_prepare() {
 		-e "s/objdump/${CHOST}-objdump/" \
 		python/mozbuild/mozbuild/configure/check_debug_ranges.py \
 		|| die "sed failed to set toolchain prefix"
+
+	# use prefix shell in wrapper linker scripts, bug #789660
+	hprefixify "${S}"/../../build/cargo-{,host-}linker
 
 	einfo "Removing pre-built binaries ..."
 	find third_party -type f \( -name '*.so' -o -name '*.o' \) -print -delete || die
