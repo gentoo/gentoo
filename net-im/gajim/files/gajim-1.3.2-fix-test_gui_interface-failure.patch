@@ -1,0 +1,31 @@
+From b976aeb5b18e365340c05e40fee5d74bebb64068 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Sat, 15 May 2021 20:25:58 +0000
+Subject: [PATCH 2/2] Test: Fix test_gui_interface failure
+
+Partially fixes #10478 about the following error:
+
+ERROR: test_gui_interface (unittest.loader._FailedTest)
+...
+ModuleNotFoundError: No module named 'gajim.gui.emoji_data'
+---
+ test/unit/test_gui_interface.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/test/unit/test_gui_interface.py b/test/unit/test_gui_interface.py
+index 41274dfd4..6ad2d734b 100644
+--- a/test/unit/test_gui_interface.py
++++ b/test/unit/test_gui_interface.py
+@@ -3,6 +3,9 @@
+ '''
+ import unittest
+ 
++import gajim.gui
++gajim.gui.init('gtk')
++
+ from test import lib
+ lib.setup_env()
+ 
+-- 
+2.26.3
+

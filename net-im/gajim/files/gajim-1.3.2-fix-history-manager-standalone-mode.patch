@@ -1,0 +1,45 @@
+From 266b5bd981825b281c8c17bf9caa891658ae01a8 Mon Sep 17 00:00:00 2001
+From: Matthew White <mehw.is.me@inventati.org>
+Date: Sat, 15 May 2021 17:04:09 +0000
+Subject: [PATCH 1/2] HistoryManager: Allow it to start in standalone mode
+
+Fixes the following error when starting gajim-history-manager:
+
+ModuleNotFoundError: No module named 'gajim.gui.emoji_data'
+---
+ gajim/history_manager.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gajim/history_manager.py b/gajim/history_manager.py
+index 1598ea46b..3e7678402 100644
+--- a/gajim/history_manager.py
++++ b/gajim/history_manager.py
+@@ -55,7 +55,6 @@
+ from gajim.common.const import JIDConstant
+ from gajim.common.const import KindConstant
+ from gajim.common.const import ShowConstant
+-from gajim.common.settings import Settings
+ 
+ 
+ def is_standalone():
+@@ -76,6 +75,8 @@ def init_gtk():
+ if is_standalone():
+     init_gtk()
+ 
++    from gajim.common.settings import Settings
++
+     try:
+         shortargs = 'hvsc:l:p:'
+         longargs = 'help verbose separate config-path= loglevel= profile='
+@@ -100,6 +101,8 @@ def init_gtk():
+     app.settings = Settings()
+     app.settings.init()
+     app.load_css_config()
++else:
++    from gajim.common.settings import Settings
+ 
+ from gajim.common import helpers
+ from gajim.gui.dialogs import ErrorDialog
+-- 
+2.26.3
+

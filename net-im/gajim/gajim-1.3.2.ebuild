@@ -75,6 +75,11 @@ RDEPEND="${COMMON_DEPEND}
 		webp? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	')"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-history-manager-standalone-mode.patch"
+	"${FILESDIR}/${P}-fix-test_gui_interface-failure.patch"
+)
+
 src_install() {
 	distutils-r1_src_install
 
