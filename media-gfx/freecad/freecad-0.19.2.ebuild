@@ -141,11 +141,20 @@ src_prepare() {
 	rm "${S}/cMake/FindCoin3D.cmake" || die
 
 	# Fix OpenCASCADE lookup
-	# TODO: check this for opencascade-7.5.1 locations, which have
-	# changed since 7.4.0 after that package has merged
-	sed -e 's|/usr/include/opencascade|${CASROOT}/include/opencascade|' \
-		-e 's|/usr/lib|${CASROOT}/'$(get_libdir)' NO_DEFAULT_PATH|' \
-		-i cMake/FindOpenCasCade.cmake || die
+	local OCC_P=$(best_version sci-libs/opencascade[vtk])
+	OCC_P=${OCC_P#sci-libs/}
+	local OCC_PV=${OCC_P#opencascade-}
+	OCC_PV=$(ver_cut 1-2 ${OCC_PV})
+	# check for CASROOT needed to ensure occ-7.5 is eselected and profile resourced
+	if [[ ${OCC_PV} = 7.5 && ${CASROOT} = "/usr" ]]; then
+		sed -e 's|/usr/include/opencascade|'${CASROOT}'/include/'${OCC_P}'|' \
+			-e 's|/usr/lib|'${CASROOT}'/'$(get_libdir)'/'${OCC_P}' NO_DEFAULT_PATH|' \
+			-i cMake/FindOpenCasCade.cmake || die
+	else
+		sed -e 's|/usr/include/opencascade|${CASROOT}/include/opencascade|' \
+			-e 's|/usr/lib|${CASROOT}/'$(get_libdir)' NO_DEFAULT_PATH|' \
+			-i cMake/FindOpenCasCade.cmake || die
+	fi
 
 	# Fix desktop file
 	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecadweb.FreeCAD.desktop || die
@@ -227,14 +236,16 @@ src_configure() {
 
 	if has_version ">=sci-libs/opencascade-7.5"; then
 		# bug https://bugs.gentoo.org/788274
+		local OCC_P=$(best_version sci-libs/opencascade[vtk])
+		OCC_P=${OCC_P#sci-libs/}
 		mycmakeargs+=(
-			-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.1
-			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.1
+			-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
+			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
 		)
 	else
 		# <occ-7.5 uses different layout
 		mycmakeargs+=(
-			-DOCC_INCLUDEDIR="${CASROOT}"/include/opencascade
+			-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
 		)
 	fi
