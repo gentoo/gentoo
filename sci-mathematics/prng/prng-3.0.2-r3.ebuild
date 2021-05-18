@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools
 
 DESCRIPTION="Pseudo-Random Number Generator library"
 HOMEPAGE="http://statmath.wu.ac.at/prng/"
@@ -25,8 +25,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug 705318
-	append-cflags -fvisibility-inlines-hidden
 	econf $(use_enable static-libs static)
 }
 
