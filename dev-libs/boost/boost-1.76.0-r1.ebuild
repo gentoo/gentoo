@@ -171,10 +171,6 @@ src_configure() {
 		--without-stacktrace
 		--boost-build="${BROOT}"/usr/share/boost-build/src
 		--layout=system
-		# CMake has issues working with multiple python impls,
-		# disable cmake config generation for the time being
-		# https://github.com/boostorg/python/issues/262#issuecomment-483069294
-		--no-cmake-config
 		# building with threading=single is currently not possible
 		# https://svn.boost.org/trac/boost/ticket/7105
 		threading=multi
