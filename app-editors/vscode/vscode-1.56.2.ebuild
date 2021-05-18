@@ -54,13 +54,17 @@ RDEPEND="
 "
 
 QA_PREBUILT="
+	/opt/vscode/code
 	/opt/vscode/libEGL.so
 	/opt/vscode/libffmpeg.so
 	/opt/vscode/libGLESv2.so
-	/opt/vscode/libvulkan.so
+	/opt/vscode/libvulkan.so*
+	/opt/vscode/chrome-sandbox
 	/opt/vscode/libvk_swiftshader.so
 	/opt/vscode/swiftshader/libEGL.so
 	/opt/vscode/swiftshader/libGLESv2.so
+	/opt/vscode/resources/app/extensions/*
+	/opt/vscode/resources/app/node_modules.asar.unpacked/*
 "
 
 pkg_setup() {
