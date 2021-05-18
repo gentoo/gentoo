@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 optfeature
 
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="!dev-python/python-jwt"
-DEPEND="
+BDEPEND="
 	test? (
 		>=dev-python/cryptography-3.3.1[${PYTHON_USEDEP}]
 	)"
