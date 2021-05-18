@@ -6,6 +6,7 @@ EAPI=7
 XORG_MULTILIB=no
 inherit xorg-3
 
+# Note: please bump this with x11-libs/libX11
 DESCRIPTION="X.Org Compose Key tables from libX11"
 # xorg-3.eclass would attempt to fetch a tarball with a matching name to this package
 SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/lib/libX11-${PV}.tar.${XORG_TARBALL_SUFFIX}"
