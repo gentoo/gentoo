@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/x42/libltc.git"
 else
 	SRC_URI="https://github.com/x42/libltc/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 LICENSE="LGPL-3"
 SLOT="0"
