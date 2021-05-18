@@ -21,6 +21,7 @@ RDEPEND="
 	media-libs/libglvnd[X]
 	x11-libs/libXmu
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
