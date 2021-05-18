@@ -3,7 +3,6 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
@@ -29,8 +28,6 @@ BDEPEND="
 	)"
 
 DOCS=( CHANGES.rst README.rst )
-
-PATCHES=( "${FILESDIR}"/${P}-py38.patch )
 
 distutils_enable_tests unittest
 distutils_enable_sphinx doc dev-python/sphinxcontrib-programoutput
