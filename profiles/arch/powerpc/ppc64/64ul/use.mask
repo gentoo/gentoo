@@ -19,14 +19,9 @@ luajittex
 # virtual/opencl requires media-libs/mesa[opencl] (bug #549096)
 opencl
 
-# Agostino Sarubbo <ago@gentoo.org> (2012-12-22)
-# mask kde since is not anymore keyworded for ppc64
-kde
-
 pda
 prelude
 mono
-networkmanager
 
 # not tested on ppc64
 xmms2
