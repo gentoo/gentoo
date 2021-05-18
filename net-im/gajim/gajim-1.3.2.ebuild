@@ -55,6 +55,7 @@ RDEPEND="${COMMON_DEPEND}
 			media-libs/gstreamer:1.0[introspection]
 			media-libs/gst-plugins-base:1.0[introspection]
 			media-libs/gst-plugins-ugly:1.0
+			media-plugins/gst-plugins-gtk:1.0
 		)
 		remote? (
 			>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
