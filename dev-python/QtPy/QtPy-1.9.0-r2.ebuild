@@ -29,6 +29,7 @@ RDEPEND="
 # is available and all tests are run.
 BDEPEND="
 	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},bluetooth,dbus,declarative,designer,gui,help,location,multimedia,network,networkauth,opengl,positioning,printsupport,sensors,serialport,sql,ssl,svg,testlib,webchannel,webkit,websockets,widgets,x11extras,xml(+),xmlpatterns]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	)"
