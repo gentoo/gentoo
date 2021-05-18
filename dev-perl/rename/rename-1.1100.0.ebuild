@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="A filename renaming utility based on perl regular expression"
 
-HOMEPAGE="https://metacpan.org/source/PEDERST/rename-${DIST_VERSION}"
+HOMEPAGE="https://metacpan.org/source/PEDERST/rename-1.11"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
