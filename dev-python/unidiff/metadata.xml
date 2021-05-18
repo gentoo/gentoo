@@ -5,6 +5,7 @@
 		<email>dolsen@gentoo.org</email>
 		<name>Brian Dolbec</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<maintainer>
 			<email>mbordese@gmail.com</email>
