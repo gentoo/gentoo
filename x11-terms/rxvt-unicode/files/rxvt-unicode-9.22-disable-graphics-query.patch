@@ -1,0 +1,23 @@
+diff -ur rxvt-unicode-9.22-orig/src/command.C rxvt-unicode-9.22/src/command.C
+--- rxvt-unicode-9.22-orig/src/command.C	2016-01-18 20:35:08.000000000 +0100
++++ rxvt-unicode-9.22/src/command.C	2021-05-17 21:22:29.068263084 +0200
+@@ -2722,12 +2722,13 @@
+         }
+         break;
+ 
+-        /* kidnapped escape sequence: Should be 8.3.48 */
+-      case C1_ESA:		/* ESC G */
+-        // used by original rxvt for rob nations own graphics mode
+-        if (cmd_getc () == 'Q')
+-          tt_printf ("\033G0\012");	/* query graphics - no graphics */
+-        break;
++// disabled because embedded newlines can make exploits easier
++//        /* kidnapped escape sequence: Should be 8.3.48 */
++//      case C1_ESA:		/* ESC G */
++//        // used by original rxvt for rob nations own graphics mode
++//        if (cmd_getc () == 'Q')
++//          tt_printf ("\033G0\012");	/* query graphics - no graphics */
++//        break;
+ 
+         /* 8.3.63: CHARACTER TABULATION SET */
+       case C1_HTS:		/* ESC H */
