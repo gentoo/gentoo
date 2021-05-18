@@ -201,7 +201,6 @@ src_configure() {
 		$(use_enable batch-insert) \
 		$(use_enable !readline conio) \
 		$(use_enable readline) \
-		$(use_with readline readline /usr) \
 		$(use_with ssl openssl) \
 		$(use_enable ipv6) \
 		$(use_enable acl) \
