@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -16,7 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ia64 x86"
 
-DEPEND="
+BDEPEND="
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
