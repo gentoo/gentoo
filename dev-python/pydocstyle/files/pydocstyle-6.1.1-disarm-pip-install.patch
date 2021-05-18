@@ -1,0 +1,31 @@
+From 46947c9dca95caeb7b1f4348994d1aa2b8db93ec Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 18 May 2021 10:02:16 +0200
+Subject: [PATCH] Disarm install_package fixture
+
+---
+ src/tests/test_integration.py | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/tests/test_integration.py b/src/tests/test_integration.py
+index eb4994f..4242476 100644
+--- a/src/tests/test_integration.py
++++ b/src/tests/test_integration.py
+@@ -128,14 +128,7 @@ def install_package(request):
+     This is so we can run the integration tests on the installed console
+     script.
+     """
+-    cwd = os.path.join(os.path.dirname(__file__), '..', '..')
+-    subprocess.check_call(
+-        [sys.executable, "-m", "pip", "install", "-e", "."], cwd=cwd
+-    )
+     yield
+-    subprocess.check_call(
+-        [sys.executable, "-m", "pip", "uninstall", "-y", "pydocstyle"], cwd=cwd
+-    )
+ 
+ 
+ @pytest.yield_fixture(scope="function", params=['ini', 'toml'])
+-- 
+2.31.1
+
