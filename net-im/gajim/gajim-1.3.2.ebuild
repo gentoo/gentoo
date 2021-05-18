@@ -17,7 +17,7 @@ SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${PN}-${PV/_p/-}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+crypt geolocation jingle remote rst +spell upnp +webp"
+IUSE="+crypt geolocation jingle omemo remote rst +spell upnp +webp"
 S="${WORKDIR}/${PN}-${PV/_p2/}"
 
 COMMON_DEPEND="
@@ -56,6 +56,11 @@ RDEPEND="${COMMON_DEPEND}
 			media-libs/gst-plugins-base:1.0[introspection]
 			media-libs/gst-plugins-ugly:1.0
 			media-plugins/gst-plugins-gtk:1.0
+		)
+		omemo? (
+			dev-python/python-axolotl[${PYTHON_USEDEP}]
+			dev-python/qrcode[${PYTHON_USEDEP}]
+			dev-python/cryptography[${PYTHON_USEDEP}]
 		)
 		remote? (
 			>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
