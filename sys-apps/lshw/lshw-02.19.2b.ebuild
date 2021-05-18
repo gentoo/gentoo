@@ -7,11 +7,11 @@ PLOCALES='fr'
 
 inherit desktop flag-o-matic toolchain-funcs l10n
 
-MY_P=${PN}-$(ver_cut 3 PV/b/B).$(ver_cut 1-3)
+MY_PV=$(ver_cut 3 PV/b/B).$(ver_cut 1-3)
 
 DESCRIPTION="Hardware Lister"
 HOMEPAGE="https://www.ezix.org/project/wiki/HardwareLiSter"
-SRC_URI="https://www.ezix.org/software/files/${MY_P}.tar.gz"
+SRC_URI="https://www.ezix.org/software/files/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,7 +27,7 @@ RDEPEND="sys-apps/hwids
 BDEPEND="gtk? ( virtual/pkgconfig )
 	sqlite? ( virtual/pkgconfig )"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 DOCS=( COPYING README.md docs/{Changelog,TODO,IODC.txt,lshw.xsd,proc_usb_info.txt} )
 
@@ -65,12 +65,12 @@ src_compile() {
 
 	# Need two sep make statements to avoid parallel build issues. #588174
 	local sqlite=$(usex sqlite 1 0)
-	emake SQLITE=${sqlite} all
+	emake VERSION=${MY_PV} SQLITE=${sqlite} all
 	use gtk && emake SQLITE=${sqlite} gui
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install $(usex gtk 'install-gui' '')
+	emake VERSION=${MY_PV} DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install $(usex gtk 'install-gui' '')
 	if use gtk ; then
 		newicon -s scalable src/gui/artwork/logo.svg gtk-lshw.svg
 		make_desktop_entry \
