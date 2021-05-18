@@ -51,10 +51,6 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-multilib_src_compile() {
-	emake OBJC="$(tc-getCC)"
-}
-
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 	multilib_is_native_abi && newbin .libs/showimage$(get_exeext) showimage2$(get_exeext)
