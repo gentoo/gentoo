@@ -1,0 +1,25 @@
+commit a4f66fb42bb5203e9d1897a6cf554aa702ce0380
+Author:     Thomas Deutschmann <whissi@gentoo.org>
+AuthorDate: Tue May 18 19:55:47 2021 +0200
+Commit:     Thomas Deutschmann <whissi@gentoo.org>
+CommitDate: Tue May 18 19:55:47 2021 +0200
+
+    tests: use getenv() to access environment variable
+    
+    Fixes
+    
+      Warning: Undefined array key "PATH" in pecl-http-4.1.0/work/php8.0/tests/skipif.inc on line 56
+
+diff --git a/tests/skipif.inc b/tests/skipif.inc
+index 51272fb..76c3bd7 100644
+--- a/tests/skipif.inc
++++ b/tests/skipif.inc
+@@ -53,7 +53,7 @@ function skip_http2_test($message = "skip need http2 support") {
+ 	if (!(http\Client\Curl\FEATURES & http\Client\Curl\Features\HTTP2)) {
+ 		die("$message (FEATURES & HTTP2)\n");
+ 	}
+-	foreach (explode(":", $_ENV["PATH"]) as $path) {
++	foreach (explode(":", getenv("PATH")) as $path) {
+ 		if (is_executable($path . "/nghttpd")) {
+ 			return;
+ 		}
