@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{6..10} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 MY_PN="${PN}.py"
@@ -26,6 +26,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
 distutils_enable_sphinx docs
+distutils_enable_tests setup.py
