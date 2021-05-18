@@ -42,6 +42,9 @@ src_prepare() {
 	else
 		default_src_prepare
 	fi
+
+	# Respect LDFLAGS, bug 727134
+	export EXTRA_LDFLAGS="${LDFLAGS}"
 }
 
 src_test() {
