@@ -40,7 +40,6 @@ DEPEND="
 	ssl? (
 		dev-libs/openssl:0=[zlib?]
 	)
-	slz? ( dev-libs/libslz:= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
 	lua? ( dev-lang/lua:5.3 )
