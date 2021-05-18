@@ -77,9 +77,7 @@ pkg_setup() {
 
 src_install() {
 	# Cleanup
-	rm "${S}/resources/app/LICENSES.chromium.html"
-	rm "${S}/resources/app/LICENSE.rtf"
-	rm -r "${S}/resources/app/licenses"
+	rm -r "${S}/resources/app/LICENSES.chromium.html" "${S}/resources/app/LICENSE.rtf" "${S}/resources/app/licenses" || die
 
 	# Install
 	pax-mark m code
