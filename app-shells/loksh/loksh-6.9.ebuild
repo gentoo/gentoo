@@ -20,8 +20,6 @@ RDEPEND="
 	!app-shells/ksh
 "
 
-S="${WORKDIR}/${PN}"
-
 src_prepare() {
 	default
 	sed -i "/install_dir/s@loksh@${PF}@" meson.build || die
