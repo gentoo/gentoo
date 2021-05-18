@@ -35,12 +35,16 @@ S="${WORKDIR}"
 JAVA_ANT_REWRITE_CLASSPATH="true"
 EANT_BUILD_TARGET="timestamp init clean compile.module.trident jar"
 EANT_GENTOO_CLASSPATH="swt-4.10"
-EANT_EXTRA_ARGS="-Djdk.home=${JAVA_HOME}"
 
 src_prepare() {
 	default
 	mkdir build/classes -p || die
 	rm -r src/org/pushingpixels/trident/android/ || die
+}
+
+src_compile() {
+	EANT_EXTRA_ARGS="-Djdk.home=$(java-config -O)"
+	java-pkg-2_src_compile
 }
 
 src_install() {
