@@ -578,22 +578,6 @@ kernel_is() {
 	[ ${test} ${operator} ${value} ]
 }
 
-# @FUNCTION: kernel_is_2_4
-# @USAGE:
-# @DESCRIPTION:
-# return true if kernel is version 2.4
-kernel_is_2_4() {
-	kernel_is 2 4
-}
-
-# @FUNCTION: kernel_is_2_6
-# @USAGE:
-# @DESCRIPTION:
-# return true if kernel is version 2.6
-kernel_is_2_6() {
-	kernel_is 2 6 || kernel_is 2 5
-}
-
 # Capture the sources type and set DEPENDs
 if [[ ${ETYPE} == sources ]]; then
 	[[ ${EAPI} == 6 ]] && DEPEND="!build? ( sys-apps/sed )" ||
