@@ -33,6 +33,8 @@ BDEPEND="
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	)"
 
+distutils_enable_tests pytest
+
 src_prepare() {
 	default
 
