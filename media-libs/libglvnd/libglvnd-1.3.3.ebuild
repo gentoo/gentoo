@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	sed -i -e "/^PLATFORM_SYMBOLS/a \    '__gentoo_check_ldflags__'," \
+	sed -i -e "/^PLATFORM_SYMBOLS/a '__gentoo_check_ldflags__'," \
 		bin/symbols-check.py || die
 }
 
