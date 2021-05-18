@@ -11,7 +11,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 
 src_compile() {
 	einfo "Recompiling regulatory.bin from db.txt would break CRDA verify. Installing unmodified binary version."
