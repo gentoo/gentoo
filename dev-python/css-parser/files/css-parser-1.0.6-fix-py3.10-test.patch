@@ -1,0 +1,141 @@
+diff --git a/css_parser_tests/basetest.py b/css_parser_tests/basetest.py
+index 2b26906..115053f 100644
+--- a/css_parser_tests/basetest.py
++++ b/css_parser_tests/basetest.py
+@@ -149,21 +149,7 @@ class BaseTestCase(unittest.TestCase):
+         else:
+             self.fail("%s did not raise %s" % (callsig, exception))
+ 
+-    def assertRaisesMsg(self, excClass, msg, callableObj, *args, **kwargs):
+-        """
+-        Just like unittest.TestCase.assertRaises,
+-        but checks that the message is right too.
+-
+-        Usage::
+-
+-            self.assertRaisesMsg(
+-                MyException, "Exception message",
+-                my_function, (arg1, arg2)
+-                )
+-
+-        from
+-        http://www.nedbatchelder.com/blog/200609.html#e20060905T064418
+-        """
++    def _assertRaisesMsgSubstring(self, excClass, msg, substring_match, callableObj, *args, **kwargs):
+         try:
+             callableObj(*args, **kwargs)
+         except excClass as exc:
+@@ -171,7 +157,7 @@ class BaseTestCase(unittest.TestCase):
+             if not msg:
+                 # No message provided: any message is fine.
+                 return
+-            elif excMsg == msg:
++            elif (msg in excMsg if substring_match else msg == excMsg):
+                 # Message provided, and we got the right message: passes.
+                 return
+             else:
+@@ -189,6 +175,29 @@ class BaseTestCase(unittest.TestCase):
+                 excName
+             )
+ 
++    def assertRaisesMsg(self, excClass, msg, callableObj, *args, **kwargs):
++        """
++        Just like unittest.TestCase.assertRaises,
++        but checks that the message is right too.
++
++        Usage::
++
++            self.assertRaisesMsg(
++                MyException, "Exception message",
++                my_function, arg1, arg2,
++                kwarg1=val, kwarg2=val)
++
++        from
++        http://www.nedbatchelder.com/blog/200609.html#e20060905T064418
++        """
++        return self._assertRaisesMsgSubstring(excClass, msg, False, callableObj, *args, **kwargs)
++
++    def assertRaisesMsgSubstring(self, excClass, msg, callableObj, *args, **kwargs):
++        """
++        Just like assertRaisesMsg, but looks for substring in the message.
++        """
++        return self._assertRaisesMsgSubstring(excClass, msg, True, callableObj, *args, **kwargs)
++
+     def do_equal_p(self, tests, att='cssText', debug=False, raising=True):
+         """
+         if raising self.p is used for parsing, else self.pf
+diff --git a/css_parser_tests/test_property.py b/css_parser_tests/test_property.py
+index ae6ab2a..561a5eb 100644
+--- a/css_parser_tests/test_property.py
++++ b/css_parser_tests/test_property.py
+@@ -162,8 +162,8 @@ class PropertyTestCase(basetest.BaseTestCase):
+         "Property.literalname"
+         p = css_parser.css.property.Property(r'c\olor', 'red')
+         self.assertEqual(r'c\olor', p.literalname)
+-        self.assertRaisesMsg(AttributeError, "can't set attribute", p.__setattr__,
+-                             'literalname', 'color')
++        self.assertRaisesMsgSubstring(AttributeError, "can't set attribute", p.__setattr__,
++                                      'literalname', 'color')
+ 
+     def test_validate(self):
+         "Property.valid"
+diff --git a/css_parser_tests/test_selector.py b/css_parser_tests/test_selector.py
+index c0c769e..f2746d8 100644
+--- a/css_parser_tests/test_selector.py
++++ b/css_parser_tests/test_selector.py
+@@ -412,7 +412,7 @@ class SelectorTestCase(basetest.BaseTestCase):
+ 
+         # readonly
+         def _set(): selector.specificity = 1
+-        self.assertRaisesMsg(AttributeError, "can't set attribute", _set)
++        self.assertRaisesMsgSubstring(AttributeError, "can't set attribute", _set)
+ 
+         tests = {
+             '*': (0, 0, 0, 0),
+diff --git a/css_parser_tests/test_selectorlist.py b/css_parser_tests/test_selectorlist.py
+index 7028fe7..54c945a 100644
+--- a/css_parser_tests/test_selectorlist.py
++++ b/css_parser_tests/test_selectorlist.py
+@@ -11,6 +11,7 @@ from css_parser.css.selectorlist import SelectorList
+ class SelectorListTestCase(basetest.BaseTestCase):
+ 
+     def setUp(self):
++        basetest.BaseTestCase.setUp(self)
+         self.r = SelectorList()
+ 
+     def test_init(self):
+diff --git a/run_tests.py b/run_tests.py
+index 554c752..6507434 100755
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -1,10 +1,12 @@
+ #!/usr/bin/env python
+ # vim:fileencoding=utf-8
+-# License: Apache 2.0 Copyright: 2017, Kovid Goyal <kovid at kovidgoyal.net>
++# License: LGPLv3 Copyright: 2017, Kovid Goyal <kovid at kovidgoyal.net>
+ 
+-from __future__ import absolute_import, division, print_function, unicode_literals
++from __future__ import (absolute_import, division, print_function,
++                        unicode_literals)
+ 
+ import importlib
++import logging
+ import os
+ import sys
+ import unittest
+@@ -72,6 +74,7 @@ def find_tests():
+ 
+ def run_tests(test_names=()):
+     sys.path = [base, os.path.join(base, 'src')] + sys.path
++    import css_parser
+     tests = find_tests()
+     suites = []
+     for name in test_names:
+@@ -85,6 +88,7 @@ def run_tests(test_names=()):
+     tests = unittest.TestSuite(suites) if suites else tests
+ 
+     r = unittest.TextTestRunner
++    css_parser.log.setLevel(logging.CRITICAL)
+     result = r().run(tests)
+ 
+     if not result.wasSuccessful():
