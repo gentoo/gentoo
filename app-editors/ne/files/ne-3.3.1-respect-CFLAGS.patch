@@ -1,0 +1,14 @@
+diff --git a/src/makefile b/src/makefile
+index ae358fe..76bfe1d 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -96,8 +96,7 @@ endif
+ 
+ # Test for GCC
+ ifneq (,$(findstring gcc,$(shell $(CC) 2>&1)))
+-GCCFLAGS=-std=c99 -Wall -Wno-parentheses -fno-strict-aliasing -flto=auto -ffat-lto-objects -Wp,-D_FORTIFY_SOURCE=2
+-LDFLAGS=-flto=auto
++GCCFLAGS=-std=c99 -Wall -Wno-parentheses -fno-strict-aliasing -Wp,-D_FORTIFY_SOURCE=2
+ endif
+ 
+ CFLAGS=$(GCCFLAGS) \
