@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Visual Studio Code
-Comment=Code Editing. Redefined.
-GenericName=Text Editor
+Comment=Editing evolved
+GenericName=Code Editor
 Exec=/usr/bin/vscode --unity-launch %F
 Icon=vscode
 Type=Application
@@ -15,4 +15,4 @@ Keywords=vscode;
 [Desktop Action new-empty-window]
 Name=New Empty Window
 Exec=/usr/bin/vscode --new-window %F
-Icon=com.visualstudio.code
+Icon=vscode
