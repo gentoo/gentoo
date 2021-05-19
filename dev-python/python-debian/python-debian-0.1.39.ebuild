@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -22,7 +22,6 @@ RDEPEND="
 "
 
 BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( app-arch/dpkg )
 "
 
