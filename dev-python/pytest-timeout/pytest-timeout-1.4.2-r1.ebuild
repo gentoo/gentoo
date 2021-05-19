@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -22,17 +22,11 @@ BDEPEND="
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		!hppa? ( $(python_gen_cond_dep '
 			dev-python/pytest-cov[${PYTHON_USEDEP}]
-		' -3) )
+		' python3_{7..9}) )
 	)"
 
-distutils_enable_tests pytest
+distutils_enable_tests --install pytest
 
 PATCHES=(
 	"${FILESDIR}"/pytest-timeout-1.4.2-optional-cov.patch
 )
-
-python_test() {
-	distutils_install_for_testing
-
-	pytest -vv || die "Tests fail with ${EPYTHON}"
-}
