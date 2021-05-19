@@ -5,6 +5,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/fmoo/python-editor/issues</bugs-to>
 		<remote-id type="github">fmoo/python-editor</remote-id>
