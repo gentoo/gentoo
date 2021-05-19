@@ -4,6 +4,7 @@
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Dependencies not keyworded, not tested
 dev-libs/gobject-introspection doctool test
+dev-python/markdown test
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
