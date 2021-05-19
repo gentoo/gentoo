@@ -33,6 +33,7 @@ src_configure() {
 	use cgal && \
 		has_version 'sci-mathematics/cgal[gmp]' && append-libs -lgmp
 
+	CONFIG_SHELL="${EPREFIX}/bin/bash" \
 	econf \
 		--disable-static \
 		$(use_enable cgal) \
