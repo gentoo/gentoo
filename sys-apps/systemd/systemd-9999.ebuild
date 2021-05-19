@@ -150,10 +150,12 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 
 python_check_deps() {
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
