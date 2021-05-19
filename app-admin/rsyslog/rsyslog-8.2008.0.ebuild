@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{3_7,3_8} )
 
-inherit autotools linux-info ltprune python-any-r1 systemd
+inherit autotools linux-info python-any-r1 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="https://www.rsyslog.com/"
@@ -325,7 +325,7 @@ src_install() {
 		doins plugins/ompgsql/createDB.sql
 	fi
 
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
