@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune
+inherit autotools
 
 MY_P="${PN}5-${PV}"
 
@@ -41,5 +41,5 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
