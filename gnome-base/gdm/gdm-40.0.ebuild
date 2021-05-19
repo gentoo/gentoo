@@ -117,6 +117,8 @@ PATCHES=(
 
 	# Support pam_elogind.so in gdm-launch-environment.pam
 	"${FILESDIR}/pam-elogind.patch"
+
+	"${FILESDIR}"/${P}-meson-Fix-libwrap-detection.patch
 )
 
 src_prepare() {
