@@ -1,0 +1,23 @@
+--- libAfterImage-1.20.orig/configure.in	2011-01-15 08:52:22.000000000 +0300
++++ libAfterImage-1.20/configure.in	2021-05-19 23:40:50.359764859 +0300
+@@ -561,9 +561,9 @@
+ else
+   if test "x$ttf_includes" = "xno"; then
+     AC_MSG_CHECKING(headers required by TTF support)
+-    if freetype-config --cflags >/dev/null  ;then
++    if pkg-config freetype2 --cflags >/dev/null  ;then
+ 	  present_incs="$CCFLAGS $x_includes";
+-	  for l in `freetype-config --cflags` ;	do
++	  for l in `pkg-config freetype2 --cflags` ;	do
+ 	    inc_found=no
+ 	    for p in `echo "$present_incs"` ; do
+ 		if test "x$l" = "x$p" ; then
+@@ -636,7 +636,7 @@
+     have_ttf=yes
+   fi
+   if test "$have_ttf" = yes; then
+-	  AFTERIMAGE_LIBS="`freetype-config --libs` $AFTERIMAGE_LIBS"
++	  AFTERIMAGE_LIBS="`pkg-config freetype2 --libs` $AFTERIMAGE_LIBS"
+   fi
+ fi;
+ AC_SUBST(TTF_INCLUDES)
