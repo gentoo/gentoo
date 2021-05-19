@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/python-language-server[${PYTHON_USEDEP}]
-	dev-python/black[${PYTHON_USEDEP}]
+	<dev-python/black-21[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests --install pytest
