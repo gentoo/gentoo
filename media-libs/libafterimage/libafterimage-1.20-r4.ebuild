@@ -26,8 +26,7 @@ RDEPEND="
 	tiff?	( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype )"
 DEPEND="${RDEPEND}
-	X?		( x11-base/xorg-proto )
-	!!x11-wm/afterstep"
+	X?		( x11-base/xorg-proto )"
 BDEPEND="
 	virtual/pkgconfig"
 REQUIRED_USE="
@@ -49,7 +48,7 @@ src_prepare() {
 	eapply -p0 "${FILESDIR}"/${PN}-libpng15.patch
 	# add giflib-5 API support, bug 571654
 	eapply "${FILESDIR}"/${PN}-giflib5-v2.patch
-	# fix ar: respect $(AR), bug 731044 and drop 'l' flag, bug 784182 
+	# fix ar: respect $(AR), bug 731044 and drop 'l' flag, bug 784182
 	eapply "${FILESDIR}"/${PN}-ar.patch
 	# detect freetype properly, bug 783375
 	eapply "${FILESDIR}"/${PN}-freetype.patch
@@ -104,7 +103,7 @@ src_install() {
 		doman ascompose.1
 		emake clean
 		rm Makefile* ascompose.1 || die
-		insinto /usr/share/doc/${PF}/examples
-		doins *
+		docinto examples
+		dodoc *
 	fi
 }
