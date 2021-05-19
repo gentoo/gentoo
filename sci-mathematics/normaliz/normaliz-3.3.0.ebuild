@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools toolchain-funcs ltprune
+inherit autotools toolchain-funcs
 
 MYP="Normaliz-${PV}"
 
@@ -49,7 +49,11 @@ src_test() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
+
 	use doc && dodoc doc/Normaliz.pdf
 	if use extras; then
 		newdoc Singular/normaliz.pdf singular-normaliz.pdf
