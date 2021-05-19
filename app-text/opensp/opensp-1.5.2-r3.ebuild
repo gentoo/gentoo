@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit epatch flag-o-matic ltprune
+inherit epatch flag-o-matic
 
 MY_P=${P/opensp/OpenSP}
 
@@ -73,7 +73,7 @@ src_install() {
 		pkgdocdir="${EPREFIX}"/usr/share/doc/${PF} \
 		install
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	dodoc AUTHORS BUGS ChangeLog NEWS README
 }
