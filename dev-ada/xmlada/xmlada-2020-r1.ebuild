@@ -28,16 +28,8 @@ S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${PN}-2019-gentoo.patch )
 
-src_configure() {
-	econf --prefix="${D}"/usr
-}
-
 src_compile() {
 	build () {
-		echo gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
-			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
-			-largs ${LDFLAGS} \
-			-cargs ${ADAFLAGS}
 		gprbuild -j$(makeopts_jobs) -m -p -v -XLIBRARY_TYPE=$1 \
 			-XBUILD=Production -XPROCESSORS=$(makeopts_jobs) xmlada.gpr \
 			-largs ${LDFLAGS} \
