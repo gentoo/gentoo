@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit ltprune
-
 DESCRIPTION="Positional Astronomy Library"
 HOMEPAGE="https://github.com/Starlink/pal"
 SRC_URI="https://github.com/Starlink/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -25,8 +23,12 @@ src_configure() {
 
 src_install() {
 	default
+
 	# remove cruft from non-fhs compliant
 	rm -r "${ED}"usr/share/pal || die
 	rm -r "${ED}"usr/{docs,manifests,news} || die
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }
