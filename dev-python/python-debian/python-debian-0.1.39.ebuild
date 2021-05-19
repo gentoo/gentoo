@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -13,18 +13,17 @@ SRC_URI="mirror://debian/pool/main/${P:0:1}/${PN}/${PN}_${PV}.tar.xz"
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
-BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? ( app-arch/dpkg )
 "
+
+distutils_enable_tests unittest
 
 PATCHES=( "${FILESDIR}/0.1.39-disable-apt-pkg.patch" )
 
@@ -33,5 +32,5 @@ python_compile_all() {
 }
 
 python_test() {
-	${EPYTHON} -m unittest discover --verbose lib || die "Testing failed with ${EPYTHON}"
+	eunittest lib
 }
