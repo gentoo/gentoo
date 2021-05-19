@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="A collection of powerful tools for manipulating EPROM load files"
 HOMEPAGE="http://srecord.sourceforge.net/"
@@ -36,5 +36,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
