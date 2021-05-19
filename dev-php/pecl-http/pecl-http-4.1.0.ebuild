@@ -9,9 +9,11 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 PHP_INI_NAME="50-http"
 
-USE_PHP="php8-0"
+USE_PHP="php7-3 php7-4 php8-0"
 
 inherit php-ext-pecl-r3
+
+USE_PHP="php8-0"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -28,9 +30,11 @@ COMMON_DEPEND="app-arch/brotli:=
 	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls(-)=,curl_ssl_nss(-)=,curl_ssl_openssl(-)=] )
 	!ssl? ( net-misc/curl[-ssl] )
 "
-DEPEND="${COMMON_DEPEND}
-	php_targets_php8-0? ( dev-lang/php:8.0[session(-),iconv(-)] )"
-RDEPEND="${DEPEND}"
+DEPEND="
+	php_targets_php8-0? ( ${COMMON_DEPEND} dev-lang/php:8.0[session(-),iconv(-)] )"
+RDEPEND="${DEPEND}
+	php_targets_php7-3? ( dev-php/pecl-http:7[php_targets_php7-3(-)] )
+	php_targets_php7-4? ( dev-php/pecl-http:7[php_targets_php7-4(-)] )"
 
 PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps --without-http-libidn-dir )
 
