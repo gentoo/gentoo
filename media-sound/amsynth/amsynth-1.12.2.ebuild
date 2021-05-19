@@ -28,7 +28,10 @@ RDEPEND="
 		media-libs/dssi:=
 		media-libs/liblo:=
 	)
-	gtk? ( x11-libs/gtk+:2 )
+	gtk? (
+		x11-libs/gtk+:2
+		x11-libs/libX11
+	)
 	jack? ( virtual/jack )
 	lash? ( media-sound/lash )
 	lv2? ( media-libs/lv2 )
@@ -40,6 +43,11 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-metadata.patch"
 )
+
+src_prepare() {
+	default
+	! use gtk && eapply "${FILESDIR}/${P}-x11.patch"
+}
 
 src_configure() {
 	econf \
