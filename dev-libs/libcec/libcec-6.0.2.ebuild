@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
