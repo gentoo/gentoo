@@ -7,6 +7,14 @@
 # Unmask systemd
 -systemd
 
+# Yixun Lan <dlan@gentoo.org> (2021-05-19)
+# Unmask for more testing
+-elogind
+-gtk
+-gtk2
+-gtk3
+-introspection
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-20)
 # Unresolved keywordreqs are getting in the way.
 # https://bugs.gentoo.org/773451
@@ -24,13 +32,8 @@ valgrind
 
 # Not tested yet
 bluetooth
-elogind
 emacs
 fuse
-gtk
-gtk2
-gtk3
-introspection
 java
 kerberos
 latex
