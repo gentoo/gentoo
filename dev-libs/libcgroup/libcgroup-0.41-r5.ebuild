@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic linux-info ltprune pam
+inherit autotools flag-o-matic linux-info pam
 
 DESCRIPTION="Tools and libraries to configure and manage kernel control groups"
 HOMEPAGE="http://libcg.sourceforge.net/"
@@ -85,7 +85,7 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 
 	insinto /etc/cgroup
 	doins samples/*.conf
