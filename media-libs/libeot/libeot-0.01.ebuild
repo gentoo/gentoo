@@ -4,7 +4,7 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/umanwizard/libeot.git"
-inherit autotools ltprune
+inherit autotools
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')"
@@ -27,5 +27,5 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
