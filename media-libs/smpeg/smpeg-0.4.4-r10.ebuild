@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools epatch flag-o-matic ltprune multilib-minimal
+inherit autotools epatch flag-o-matic multilib-minimal
 
 DESCRIPTION="SDL MPEG Player Library"
 HOMEPAGE="https://icculus.org/smpeg/"
@@ -69,5 +69,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }
