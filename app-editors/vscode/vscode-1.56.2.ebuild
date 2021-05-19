@@ -29,7 +29,7 @@ LICENSE="
 	MPL-2.0
 	openssl
 	PYTHON
-	Textmate-bundle
+	TextMate-bundle
 	Unlicense
 	UoI-NCSA
 	W3C
