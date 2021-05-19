@@ -4,7 +4,7 @@
 EAPI=6
 
 SSL_CERT_MANDATORY=1
-inherit autotools flag-o-matic ltprune multilib pam ssl-cert
+inherit autotools flag-o-matic multilib pam ssl-cert
 
 DESCRIPTION="An enterprise grade authenticating firewall based on netfilter"
 HOMEPAGE="http://www.nufw.org/"
@@ -80,7 +80,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/nufw-init.d nufw
 	newconfd "${FILESDIR}"/nufw-conf.d nufw
