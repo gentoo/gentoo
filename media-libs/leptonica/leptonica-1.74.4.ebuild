@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
@@ -59,5 +59,5 @@ multilib_src_configure() {
 
 src_install() {
 	multilib-minimal_src_install
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
