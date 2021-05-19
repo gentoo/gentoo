@@ -187,6 +187,8 @@ ppc64		default/linux/ppc64/17.0/musl				exp
 ppc64		default/linux/ppc64/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/17.0				stable
 ppc64		default/linux/ppc64le/17.0/desktop			stable
+ppc64		default/linux/ppc64le/17.0/desktop/gnome		dev
+ppc64		default/linux/ppc64le/17.0/desktop/gnome/systemd	dev
 ppc64		default/linux/ppc64le/17.0/desktop/plasma		dev
 ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd	dev
 ppc64		default/linux/ppc64le/17.0/systemd			stable
