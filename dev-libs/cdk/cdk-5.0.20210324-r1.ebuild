@@ -17,8 +17,7 @@ IUSE="examples unicode"
 
 DEPEND=">=sys-libs/ncurses-5.2:0=[unicode?]"
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/libtool
-	virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}"/${PN}-5.0.20120323-parallel-make.patch )
 
@@ -27,9 +26,10 @@ src_configure() {
 		export ac_cv_prog_LIBTOOL=glibtool
 	fi
 
+	# --with-libtool dropped for now because of broken Makefile
+	# bug #790773
 	econf \
 		--disable-rpath-hack \
-		--with-libtool \
 		--with-shared \
 		--with-pkg-config \
 		--with-ncurses$(usex unicode "w" "")
@@ -39,7 +39,8 @@ src_install() {
 	# parallel make installs duplicate libs
 	emake -j1 \
 		DESTDIR="${D}" \
-		DOCUMENT_DIR="${ED}/usr/share/doc/${PF}" install
+		DOCUMENT_DIR="${ED}/usr/share/doc/${PF}" \
+		install
 
 	if use examples ; then
 		local x
