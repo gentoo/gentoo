@@ -1,0 +1,33 @@
+From 4a94fad803f5041b44477f0a2933cb447d81d82f Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Wed, 14 Apr 2021 02:15:40 +0000
+Subject: [PATCH] previewer: Fix build regression when gtk_unix_print is
+ disabled
+
+Restore guard around ev_previewer_window_print because
+that function requires GTKUNIXPRINT_ENABLED, without the
+guard, makes the gtk_unix_print unusable.
+
+In the commit 65bfd21c ("previewer: Use GtkHeaderBar in print preview"), the GTKUNIXPRINT_ENABLED preprocessor guard around
+the usage of ev_previewer_window_print was lost.
+---
+ previewer/ev-previewer-window.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/previewer/ev-previewer-window.c b/previewer/ev-previewer-window.c
+index 6678aa75..7d3bd394 100644
+--- a/previewer/ev-previewer-window.c
++++ b/previewer/ev-previewer-window.c
+@@ -263,7 +263,9 @@ ev_previewer_window_print (GSimpleAction *action,
+ #endif
+ 
+ static const GActionEntry actions[] = {
++#if GTKUNIXPRINT_ENABLED
+ 	{ "print", ev_previewer_window_print },
++#endif
+ 	{ "go-previous-page", ev_previewer_window_previous_page },
+ 	{ "go-next-page", ev_previewer_window_next_page },
+ 	{ "select-page", ev_previewer_window_focus_page_selector },
+-- 
+2.26.3
+
