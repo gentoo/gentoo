@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils ltprune
+inherit autotools eutils
 
 DESCRIPTION="A documentation metadata library"
 HOMEPAGE="https://rarian.freedesktop.org/"
@@ -61,5 +61,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
