@@ -5,7 +5,7 @@ EAPI=5
 
 RUBY_OPTIONAL=yes
 #USE_RUBY=ruby20
-inherit autotools ruby-ng epatch eutils flag-o-matic ltprune mono-env multilib java-pkg-opt-2 multilib-minimal
+inherit autotools ruby-ng epatch eutils flag-o-matic mono-env multilib java-pkg-opt-2 multilib-minimal
 
 MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
@@ -145,5 +145,5 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 	rm -rf "${D}"/usr/share/java
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }
