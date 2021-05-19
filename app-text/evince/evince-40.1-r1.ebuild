@@ -66,6 +66,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PV}-build-Fix-t1lib-detection.patch
+	"${FILESDIR}"/${PV}-previewer-Fix-build-regression-when-gtk_unix_print-i.patch
 	"${FILESDIR}"/40.0-internal-synctex.patch
 )
 
@@ -75,9 +77,6 @@ src_prepare() {
 	# Do not depend on adwaita-icon-theme, bug #326855, #391859
 	# https://gitlab.freedesktop.org/xdg/default-icon-theme/issues/7
 	sed -i '/adwaita_icon_theme_dep/d' meson.build shell/meson.build || die
-
-	# https://gitlab.gnome.org/GNOME/evince/-/merge_requests/336
-	sed -i -e 's:T1_initLib:T1_InitLib:' meson.build || die
 }
 
 src_configure() {
@@ -85,7 +84,7 @@ src_configure() {
 		-Dplatform=gnome
 
 		-Dviewer=true
-		-Dpreviewer=false
+		-Dpreviewer=true
 		-Dthumbnailer=true
 		$(meson_use nsplugin browser_plugin)
 		$(meson_use nautilus)
