@@ -5,8 +5,8 @@
 		<email>lssndrbarbieri@gmail.com</email>
 		<name>Alessandro Barbieri</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>andrewammerlaan@riseup.net</email>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">

@@ -818,7 +818,7 @@ dev-lang/spark
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
 
-# Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2020-01-26)
 # v3.6.4 uses huge amounts of memory: Bug #705682
 # v3.6.1 is the latest version without this issue
 >=dev-libs/libsass-3.6.2
