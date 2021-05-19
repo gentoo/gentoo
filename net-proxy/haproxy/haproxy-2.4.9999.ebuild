@@ -90,9 +90,6 @@ src_compile() {
 	args+=( $(haproxy_use systemd SYSTEMD) )
 	args+=( $(haproxy_use prometheus-exporter PROMEX) )
 
-	# For now, until the strict-aliasing breakage will be fixed
-	append-cflags -fno-strict-aliasing
-
 	# Bug #668002
 	if use ppc || use arm || use hppa; then
 		TARGET_LDFLAGS=-latomic
