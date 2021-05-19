@@ -27,6 +27,7 @@ LICENSE="
 	Microsoft-vscode
 	MIT
 	MPL-2.0
+	openssl
 	PYTHON
 	Textmate-bundle
 	Unlicense
