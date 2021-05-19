@@ -6,6 +6,8 @@
 dev-libs/gobject-introspection doctool test
 dev-python/markdown test
 x11-libs/gtk+ cups
+# Request sys-auth/polkit, dev-lang/spidermonkey
+sys-auth/elogind policykit
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
