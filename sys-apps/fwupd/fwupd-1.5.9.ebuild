@@ -149,10 +149,7 @@ src_install() {
 	meson_src_install
 
 	if ! use minimal ; then
-		sed "s@%SEAT_MANAGER%@elogind@" \
-			"${FILESDIR}"/${PN}-r2 \
-			> "${T}"/${PN} || die
-		doinitd "${T}"/${PN}
+		doinitd "${FILESDIR}"/${PN}-r2
 
 		if ! use systemd ; then
 			# Don't timeout when fwupd is running (#673140)
