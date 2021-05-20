@@ -5,7 +5,7 @@
 # Dependencies not keyworded, not tested
 dev-libs/gobject-introspection doctool test
 dev-python/markdown test
-x11-libs/gtk+ cups
+x11-libs/gtk+ cups test colord
 net-libs/libsoup samba gssapi test
 net-libs/libproxy mono spidermonkey webkit kde networkmanager
 # Request sys-auth/polkit, dev-lang/spidermonkey
