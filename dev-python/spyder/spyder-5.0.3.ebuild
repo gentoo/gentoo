@@ -64,7 +64,7 @@ RDEPEND="
 	>=dev-python/qstylizer-0.1.10[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-1.0.2[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.1.0[${PYTHON_USEDEP}]
-	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},svg,webengine]
+	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},pyqt5(+),svg,webengine]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-2.0.3[${PYTHON_USEDEP}]
 	<dev-python/spyder-kernels-2.1.0[${PYTHON_USEDEP}]
@@ -88,12 +88,6 @@ RDEPEND+="
 	>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
 	dev-python/yapf[${PYTHON_USEDEP}]
-"
-
-# currently does not work with pyside2
-RDEPEND+="
-	dev-python/PyQt5[${PYTHON_USEDEP}]
-	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
@@ -197,7 +191,4 @@ pkg_postinst() {
 	optfeature "System terminal inside spyder" dev-python/spyder-terminal
 	# spyder-reports not yet updated to >=spyder-4.0.0
 	# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
-	elog
-	elog "Spyder currently only works with PyQt5 as QtPy backend, PySide2 is not supported."
-	elog "Please ensure that 'eselect qtpy' is set to PyQt5."
 }
