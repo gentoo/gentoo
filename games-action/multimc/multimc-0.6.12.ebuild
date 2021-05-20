@@ -49,7 +49,7 @@ PATCHES=( "${FILESDIR}"/multimc-0.6.12-gcc11.patch )
 
 src_unpack() {
 	default
-	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip"
+	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip" || die
 	mv "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}" "${S}/libraries/libnbtplusplus" || die
 	mv "${WORKDIR}/quazip-${QUAZIP_VER}" "${S}/libraries/quazip" || die
 }
