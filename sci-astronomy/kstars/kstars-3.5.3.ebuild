@@ -74,6 +74,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 "
 
+PATCHES=( "${FILESDIR}/${P}-fits-w-o-libraw.patch" ) # bug 790638
+
 src_configure() {
 	local mycmakeargs=(
 		-DFETCH_TRANSLATIONS=OFF
