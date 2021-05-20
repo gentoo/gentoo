@@ -38,6 +38,11 @@ src_prepare() {
 			Makefile || die
 	fi
 
+	# Let it build with clang.
+	if tc-is-clang; then
+		sed -i -e 's/-fno-toplevel-reorder//g' Make.rules || die
+	fi
+
 	# Respect users CFLAGS
 	sed -i -e 's/CFLAGS.*= -O2 -g/CFLAGS += /' Make.rules || die
 
