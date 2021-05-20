@@ -18,7 +18,7 @@ inherit meson multilib-minimal ${GIT_ECLASS} python-any-r1 virtualx
 DESCRIPTION="keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
 LICENSE="MIT"
-IUSE="X doc static-libs test"
+IUSE="doc static-libs test wayland X"
 RESTRICT="!test? ( test )"
 SLOT="0"
 
@@ -26,14 +26,18 @@ BDEPEND="
 	sys-devel/bison
 	doc? ( app-doc/doxygen )
 	test? ( ${PYTHON_DEPS} )
+	wayland? ( dev-util/wayland-scanner )
 "
 RDEPEND="
 	X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP},xkb] )
+	wayland? ( >=dev-libs/wayland-1.2.0 )
 	dev-libs/libxml2[${MULTILIB_USEDEP}]
 	x11-misc/compose-tables
 "
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	X? ( x11-base/xorg-proto )
+	wayland? ( >=dev-libs/wayland-protocols-1.12 )
+"
 
 pkg_setup() {
 	if use test; then
@@ -45,7 +49,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Ddefault_library="$(usex static-libs both shared)"
 		-Dxkb-config-root="${EPREFIX}/usr/share/X11/xkb"
-		-Denable-wayland=false # Demo applications
+		$(meson_use wayland enable-wayland)
 		$(meson_use X enable-x11)
 		$(meson_use doc enable-docs)
 	)
