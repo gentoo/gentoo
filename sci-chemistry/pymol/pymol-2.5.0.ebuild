@@ -66,12 +66,14 @@ python_install() {
 	distutils-r1_python_install \
 		--pymol-path="${EPREFIX}/usr/share/pymol"
 
-	sed \
-		-e '1d' \
-		-e "/APBS_BINARY_LOCATION/s:None:\"${EPREFIX}/usr/bin/apbs\":g" \
-		-e "/APBS_PSIZE_LOCATION/s:None:\"$(python_get_sitedir)/pdb2pqr/src/\":g" \
-		-e "/APBS_PDB2PQR_LOCATION/s:None:\"$(python_get_sitedir)/pdb2pqr/\":g" \
-		-i "${D}/$(python_get_sitedir)"/pmg_tk/startup/apbs_tools.py || die
+# File is not created as apbs was dropped from the tree
+# https://bugs.gentoo.org/790629
+#	sed \
+#		-e '1d' \
+#		-e "/APBS_BINARY_LOCATION/s:None:\"${EPREFIX}/usr/bin/apbs\":g" \
+#		-e "/APBS_PSIZE_LOCATION/s:None:\"$(python_get_sitedir)/pdb2pqr/src/\":g" \
+#		-e "/APBS_PDB2PQR_LOCATION/s:None:\"$(python_get_sitedir)/pdb2pqr/\":g" \
+#		-i "${D}/$(python_get_sitedir)"/pmg_tk/startup/apbs_tools.py || die
 }
 
 python_install_all() {
@@ -105,7 +107,7 @@ python_install_all() {
 	rm -f "${ED}"/usr/share/${PN}/LICENSE || die
 }
 
-pkg_postinst() {
-	xdg_pkg_postinst
-	optfeature "Electrostatic calculations" sci-chemistry/apbs sci-chemistry/pdb2pqr
-}
+#pkg_postinst() {
+#	xdg_pkg_postinst
+#	optfeature "Electrostatic calculations" sci-chemistry/apbs sci-chemistry/pdb2pqr
+#}
