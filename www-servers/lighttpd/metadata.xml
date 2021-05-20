@@ -29,5 +29,6 @@
 		<flag name="rrdtool">Enable rrdtool support via mod_rrdtool</flag>
 		<flag name="webdav">Enable webdav properties</flag>
 		<flag name="zlib">Enable output compression via gzip or deflate algorithms</flag>
+		<flag name="zstd">Enable output compression via Zstandard algorithm</flag>
 	</use>
 </pkgmetadata>
