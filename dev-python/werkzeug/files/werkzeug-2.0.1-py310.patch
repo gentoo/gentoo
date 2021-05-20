@@ -1,0 +1,103 @@
+From 584f3cff7d5cb8a588189ae1137b814cf5c47e05 Mon Sep 17 00:00:00 2001
+From: David Lord <davidism@gmail.com>
+Date: Wed, 19 May 2021 20:01:58 -0700
+Subject: [PATCH] address deprecation warnings from Python 3.10b1
+
+---
+ tests/conftest.py   |  5 ++++-
+ tests/test_local.py | 34 +++++++++++++++++++++++++---------
+ 2 files changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 3b5cbd71c..4ad1ff23e 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -66,7 +66,10 @@ def connect(self, **kwargs):
+ 
+         if protocol == "https":
+             if "context" not in kwargs:
+-                kwargs["context"] = ssl.SSLContext()
++                context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
++                context.check_hostname = False
++                context.verify_mode = ssl.CERT_NONE
++                kwargs["context"] = context
+ 
+             return http.client.HTTPSConnection(self.addr, **kwargs)
+ 
+diff --git a/tests/test_local.py b/tests/test_local.py
+index 537fc32fb..b5c392890 100644
+--- a/tests/test_local.py
++++ b/tests/test_local.py
+@@ -12,6 +12,18 @@
+ from werkzeug import local
+ 
+ 
++if sys.version_info < (3, 7):
++
++    def run_async(coro):
++        return asyncio.get_event_loop().run_until_complete(coro)
++
++
++else:
++
++    def run_async(coro):
++        return asyncio.run(coro)
++
++
+ def test_basic_local():
+     ns = local.Local()
+     ns.foo = 0
+@@ -55,9 +67,11 @@ async def value_setter(idx):
+         await asyncio.sleep(0.02)
+         values.append(ns.foo)
+ 
+-    loop = asyncio.get_event_loop()
+-    futures = [asyncio.ensure_future(value_setter(idx)) for idx in [1, 2, 3]]
+-    loop.run_until_complete(asyncio.gather(*futures))
++    async def main():
++        futures = [asyncio.ensure_future(value_setter(i)) for i in [1, 2, 3]]
++        await asyncio.gather(*futures)
++
++    run_async(main())
+     assert sorted(values) == [1, 2, 3]
+ 
+     def delfoo():
+@@ -118,9 +132,11 @@ async def task():
+         ls.push(1)
+         assert len(ls._local.stack) == 2
+ 
+-    loop = asyncio.get_event_loop()
+-    futures = [asyncio.ensure_future(task()) for _ in range(3)]
+-    loop.run_until_complete(asyncio.gather(*futures))
++    async def main():
++        futures = [asyncio.ensure_future(task()) for _ in range(3)]
++        await asyncio.gather(*futures)
++
++    run_async(main())
+ 
+ 
+ @pytest.mark.skipif(
+@@ -571,7 +587,7 @@ async def get():
+     async def main():
+         return await p
+ 
+-    out = asyncio.get_event_loop().run_until_complete(main())
++    out = run_async(main())
+     assert out == 1
+ 
+ 
+@@ -599,7 +615,7 @@ async def main():
+ 
+         return out
+ 
+-    out = asyncio.get_event_loop().run_until_complete(main())
++    out = run_async(main())
+     assert out == [2, 1, 0]
+ 
+ 
+@@ -623,4 +639,4 @@ async def main():
+         assert p.value == 2
+         return True
+ 
+-    assert asyncio.get_event_loop().run_until_complete(main())
++    assert run_async(main())
