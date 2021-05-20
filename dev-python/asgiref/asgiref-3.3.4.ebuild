@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="ASGI utilities (successor to WSGI)"
@@ -23,5 +23,10 @@ RDEPEND="
 	' python3_7 pypy3)"
 BDEPEND="
 	test? ( dev-python/pytest-asyncio[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	# Provided to upstream: https://github.com/django/asgiref/pull/262
+	"${FILESDIR}/${P}-py310-warnings.patch"
+)
 
 distutils_enable_tests pytest
