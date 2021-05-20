@@ -1,0 +1,28 @@
+From f28289fb06ab461ea082b4be56d6d1504c0c31c2 Mon Sep 17 00:00:00 2001
+From: Damiano Galassi <damiog@gmail.com>
+Date: Sat, 10 Apr 2021 13:18:02 +0200
+Subject: [PATCH] libhb: fix audio encoders when linking to FFmpeg 4.4.
+
+---
+ libhb/encavcodecaudio.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/libhb/encavcodecaudio.c b/libhb/encavcodecaudio.c
+index 52fc4565d..e6cf42414 100644
+--- a/libhb/encavcodecaudio.c
++++ b/libhb/encavcodecaudio.c
+@@ -410,7 +410,10 @@ static void Encode(hb_work_object_t *w, hb_buffer_list_t *list)
+ 
+         // Prepare input frame
+         int     out_size;
+-        AVFrame frame = { .nb_samples = pv->samples_per_frame, };
++        AVFrame frame = { .nb_samples = pv->samples_per_frame,
++                          .format = pv->context->sample_fmt,
++                          .channels = pv->context->channels
++        };
+ 
+         out_size = av_samples_get_buffer_size(NULL,
+                                               pv->context->channels,
+-- 
+2.26.3
+
