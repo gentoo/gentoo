@@ -131,6 +131,10 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
 		-Dbuild="$(usex minimal standalone all)"
+		-Dconsolekit="false"
+		-Dcurl="true"
+		-Defi_binary="false"
+		-Dsupported_build="true"
 		$(meson_use agent)
 		$(meson_use archive libarchive)
 		$(meson_use bluetooth bluez)
@@ -144,9 +148,6 @@ src_configure() {
 		$(meson_use policykit polkit)
 		$(meson_use systemd)
 		$(meson_use test tests)
-		$(meson_use uefi efi_binary)
-		-Dconsolekit="false"
-		-Dcurl="true"
 
 		${plugins[@]}
 	)
