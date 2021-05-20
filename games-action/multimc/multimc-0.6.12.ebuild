@@ -22,7 +22,7 @@ SRC_URI="
 "
 
 KEYWORDS="~amd64"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 LGPL-2.1-with-linking-exception LGPL-3"
 SLOT="0"
 
 COMMON_DEPEND="
@@ -49,7 +49,7 @@ PATCHES=( "${FILESDIR}"/multimc-0.6.12-gcc11.patch )
 
 src_unpack() {
 	default
-	rm -rf "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip" || die
+	rm -r "${S}/libraries/libnbtplusplus" "${S}/libraries/quazip" || die
 	mv "${WORKDIR}/libnbtplusplus-${LIBNBTPLUSPLUS_VER}" "${S}/libraries/libnbtplusplus" || die
 	mv "${WORKDIR}/quazip-${QUAZIP_VER}" "${S}/libraries/quazip" || die
 }
