@@ -144,6 +144,21 @@ dev-perl/gtk2-spell
 ~virtual/perl-libnet-3.130.0
 ~virtual/perl-Math-Complex-1.590.200
 ~virtual/perl-MIME-Base64-3.160.0
+~virtual/perl-Module-Load-Conditional-0.740.0
+~virtual/perl-Net-Ping-2.740.0
+~virtual/perl-Pod-Simple-3.420.0
+~virtual/perl-Safe-2.430.0
+~virtual/perl-Socket-2.31.0
+~virtual/perl-Storable-3.230.0
+~virtual/perl-Test-Harness-3.430.0
+~virtual/perl-Test-Simple-1.302.183
+~virtual/perl-Text-Balanced-2.40.0
+~virtual/perl-threads-2.260.0
+~virtual/perl-threads-shared-1.620.0
+~virtual/perl-Tie-RefHash-1.400.0
+~virtual/perl-Time-HiRes-1.976.700
+~virtual/perl-Time-Local-1.300.0
+~virtual/perl-Unicode-Normalize-1.280.0
 
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
