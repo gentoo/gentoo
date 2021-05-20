@@ -21,6 +21,7 @@ IUSE="tk"
 
 RDEPEND="
 	net-dialup/ppp:=
+	sys-apps/iproute2
 	tk? ( dev-lang/tk:= )
 "
 DEPEND=">=sys-kernel/linux-headers-2.6.25
