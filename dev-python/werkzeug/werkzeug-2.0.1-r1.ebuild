@@ -31,7 +31,6 @@ BDEPEND="
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/pytest-xprocess[${PYTHON_USEDEP}]
 		dev-python/watchdog[${PYTHON_USEDEP}]
-		~dev-python/werkzeug-${PV}[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
@@ -40,7 +39,19 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py310.patch
 )
 
+src_prepare() {
+	distutils-r1_src_prepare
+	# prevent esetup.py install from zipping the egg
+	sed -i -e '/\[options\]/azip_safe = False' setup.cfg || die
+}
+
 python_test() {
+	"${EPYTHON}" -m venv --system-site-packages --without-pip \
+		"${BUILD_DIR}"/venv || die
+	local -x PATH=${BUILD_DIR}/venv/bin:${PATH}
+	unset PYTHONPATH
+	esetup.py install
+
 	# the default portage tempdir is too long for AF_UNIX sockets
 	local -x TMPDIR=/tmp
 	epytest -p no:httpbin tests
