@@ -31,9 +31,7 @@ RDEPEND="
 	>=dev-python/werkzeug-2.0[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
-		' python3_{7..9} pypy3)
+		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_sphinx docs

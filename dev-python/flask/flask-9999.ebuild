@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
-
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
@@ -16,33 +15,33 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="examples test"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
-RDEPEND="dev-python/click[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/click-7.1.2[${PYTHON_USEDEP}]
 	dev-python/blinker[${PYTHON_USEDEP}]
-	dev-python/itsdangerous[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.10[${PYTHON_USEDEP}]
-	>=dev-python/werkzeug-0.15[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	>=dev-python/itsdangerous-2.0[${PYTHON_USEDEP}]
+	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
+	>=dev-python/werkzeug-2.0[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_sphinx docs
+distutils_enable_tests pytest
 
 python_test() {
-	PYTHONPATH=${S}/examples/flaskr:${S}/examples/minitwit${PYTHONPATH:+:${PYTHONPATH}} \
-		pytest -vv -p no:httpbin || die "Testing failed with ${EPYTHON}"
+	epytest -p no:httpbin
 }
 
 python_install_all() {
 	use examples && dodoc -r examples
-
 	distutils-r1_python_install_all
 }
