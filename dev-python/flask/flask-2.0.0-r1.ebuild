@@ -24,12 +24,15 @@ SLOT="0"
 IUSE="examples"
 
 RDEPEND="
-	>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
 	>=dev-python/click-7.1.2[${PYTHON_USEDEP}]
 	dev-python/blinker[${PYTHON_USEDEP}]
 	>=dev-python/itsdangerous-2.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-3.0[${PYTHON_USEDEP}]
 	>=dev-python/werkzeug-2.0[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
