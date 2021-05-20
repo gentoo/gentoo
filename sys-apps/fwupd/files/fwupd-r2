@@ -8,6 +8,6 @@ command="/usr/libexec/fwupd/fwupd"
 command_background="true"
 
 depend() {
-	need %SEAT_MANAGER% dbus
+	need elogind dbus
 	before display-manager
 }
