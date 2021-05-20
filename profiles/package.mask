@@ -644,11 +644,6 @@ dev-python/idna-ssl
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
 
-# Matt Turner <mattst88@gentoo.org> (2021-04-18)
-# Pretty dead. Needs GTK+3 port. Doesn't build with glib-2.68.
-# Removal on 2021-05-19.  Bug #784266.
-net-nntp/pan
-
 # Jonas Stein <jstein@gentoo.org> (2021-04-19)
 # Bad SRC_URI, missing license files
 # Removal on 2021-07-01.  Bug #784221.
