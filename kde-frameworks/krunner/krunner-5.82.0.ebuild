@@ -9,6 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Framework for providing different actions given a string query"
+
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="activities"
@@ -38,9 +39,9 @@ src_configure() {
 }
 
 src_test() {
-	# requires virtual dbus #630672
+	# requires virtual dbus, otherwise hangs; bugs #630672, #789351
 	local myctestargs=(
-		-E "(dbusrunnertest)"
+		-E "(dbusrunnertest|runnermanagersinglerunnermodetest)"
 	)
 	ecm_src_test
 }
