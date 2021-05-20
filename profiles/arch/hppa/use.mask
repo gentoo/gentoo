@@ -7,6 +7,12 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michał Górny <mgorny@gentoo.org> (2021-05-20)
+# Unresolved keywordreqs are getting in the way.
+# https://bugs.gentoo.org/789606
+python_targets_python3_10
+python_single_target_python3_10
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/llvm-libunwind not supported on HPPA.
 llvm-libunwind
