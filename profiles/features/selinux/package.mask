@@ -49,6 +49,7 @@ gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen
 gnome-extra/gnome-shell-extension-dash-to-panel
 gnome-extra/gnome-shell-extension-desktop-icons
+gnome-extra/gnome-shell-extension-desktop-icons-ng
 gnome-extra/gnome-shell-extension-gsconnect
 gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
