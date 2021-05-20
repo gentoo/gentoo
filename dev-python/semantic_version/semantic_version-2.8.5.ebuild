@@ -18,3 +18,7 @@ KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~sparc x86"
 distutils_enable_sphinx docs \
 	dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
+
+python_test() {
+	epytest -p no:django
+}
