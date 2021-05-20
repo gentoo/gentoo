@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-05-20)
+# Need to ditch Meson or investigate consumers.
+# https://bugs.gentoo.org/791163
+=dev-libs/tinyxml2-8.1.0
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-19)
 # no consumer, removal in 30 days
 # see bug: https://bugs.gentoo.org/784065
