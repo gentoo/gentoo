@@ -83,7 +83,7 @@ RDEPEND="
 	<dev-python/qdarkstyle-3.0[${PYTHON_USEDEP}]
 	>=dev-python/qtawesome-0.5.7[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.0.3[${PYTHON_USEDEP}]
-	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},svg,webengine]
+	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},pyqt5(+),svg,webengine]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-1.10.2[${PYTHON_USEDEP}]
 	<dev-python/spyder-kernels-1.11.0[${PYTHON_USEDEP}]
@@ -91,9 +91,6 @@ RDEPEND="
 	>=dev-python/three-merge-0.1.1[${PYTHON_USEDEP}]
 	>=dev-python/watchdog-0.10.3[${PYTHON_USEDEP}]
 	<dev-python/watchdog-2.0.0[${PYTHON_USEDEP}]
-
-	dev-python/PyQt5[${PYTHON_USEDEP}]
-	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 "
 
 BDEPEND="test? (
@@ -244,7 +241,4 @@ pkg_postinst() {
 	optfeature "System terminal inside spyder" dev-python/spyder-terminal
 	# spyder-reports not yet updated to >=spyder-4.0.0
 	# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
-	elog
-	elog "Spyder currently only works with PyQt5 as QtPy backend, PySide2 is not supported."
-	elog "Please ensure that 'eselect qtpy' is set to PyQt5."
 }
