@@ -159,6 +159,7 @@ dev-perl/gtk2-spell
 ~virtual/perl-Time-HiRes-1.976.700
 ~virtual/perl-Time-Local-1.300.0
 ~virtual/perl-Unicode-Normalize-1.280.0
+~virtual/perl-version-0.992.800
 
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
