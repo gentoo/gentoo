@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@gentoo.org</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <longdescription lang="en">
+Have a CLI Python application?
+
+Want to automate testing of the actual console input &amp; output of your user-facing components?
+
+stdio Manager can help.
+
+While some functionality here is more or less duplicative of redirect_stdout and redirect_stderr in contextlib within the standard library, it provides (i) a much more concise way to mock both stdout and stderr at the same time, and (ii) a mechanism for mocking stdin, which is not available in contextlib.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">bskinn/stdio-mgr</remote-id>
+    <remote-id type="pypi">stdio-mgr</remote-id>
+  </upstream>
+</pkgmetadata>
