@@ -54,6 +54,8 @@ python_test() {
 		tests/test_requests.py::TestRequests::test_https_warnings
 		tests/test_requests.py::TestTimeout::test_connect_timeout
 		tests/test_requests.py::TestTimeout::test_total_timeout_connect
+		# TODO: openssl?
+		tests/test_requests.py::TestRequests::test_pyopenssl_redirect
 	)
 
 	epytest ${deselect[@]/#/--deselect }
