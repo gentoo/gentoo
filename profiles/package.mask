@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-20)
+# no non-masked consumer, removal in 30 days
+# see bug: https://bugs.gentoo.org/786828
+dev-java/squareness-jlf
+
 # Sam James <sam@gentoo.org> (2021-05-20)
 # Need to ditch Meson or investigate consumers.
 # https://bugs.gentoo.org/791163
