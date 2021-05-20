@@ -5,6 +5,8 @@ EAPI=7
 
 # Note: Please bump in sync with dev-libs/libxslt
 
+PATCHSET_VERSION="2.9.12-r1-patchset"
+
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielveillard.asc
@@ -20,6 +22,7 @@ DESCRIPTION="XML C parser and toolkit"
 HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxml2"
 SRC_URI="
 	ftp://xmlsoft.org/${PN}/${PN}-${PV/_rc/-rc}.tar.gz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${PATCHSET_VERSION}.tar.bz2
 	test? (
 		${XSTS_HOME}/${XSTS_NAME_1}/${XSTS_TARBALL_1}
 		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
@@ -59,24 +62,24 @@ DOCS=( AUTHORS ChangeLog NEWS README TODO TODO_SCHEMAS )
 PATCHES=(
 	## Gentoo
 	# Patches needed for prefix support
-	"${FILESDIR}"/${PN}-2.7.1-catalog_path.patch
+	"${WORKDIR}"/${PN}-2.7.1-catalog_path.patch
 
 	# Fix python detection, bug #567066
 	# https://bugzilla.gnome.org/show_bug.cgi?id=760458
-	"${FILESDIR}"/${PN}-2.9.2-python-ABIFLAG.patch
+	"${WORKDIR}"/${PN}-2.9.2-python-ABIFLAG.patch
 
 	# Fix python tests when building out of tree #565576
-	"${FILESDIR}"/${PN}-2.9.8-out-of-tree-test.patch
+	"${WORKDIR}"/${PN}-2.9.8-out-of-tree-test.patch
 
 	# bug #745162
-	"${FILESDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
+	"${WORKDIR}"/${PN}-2.9.8-python3-unicode-errors.patch
 
 	# Avoid failure on missing fuzz.h when running tests
-	"${FILESDIR}"/${PN}-2.9.11-disable-fuzz-tests.patch
+	"${WORKDIR}"/${PN}-2.9.11-disable-fuzz-tests.patch
 
 	## Upstream
 	# Fix lxml compatibility
-	"${FILESDIR}"/${PN}-2.9.12-fix-lxml-compatibility.patch
+	"${WORKDIR}"/${PN}-2.9.12-fix-lxml-compatibility.patch
 )
 
 src_unpack() {
@@ -88,7 +91,8 @@ src_unpack() {
 
 	# ${A} isn't used to avoid unpacking of test tarballs into ${WORKDIR},
 	# as they are needed as tarballs in ${S}/xstc instead and not unpacked
-	unpack ${tarname}
+	unpack ${tarname} ${PN}-${PATCHSET_VERSION}.tar.bz2
+
 	cd "${S}" || die
 
 	if use test ; then
