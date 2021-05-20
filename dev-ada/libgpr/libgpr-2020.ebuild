@@ -29,7 +29,7 @@ S="${WORKDIR}"/${MYP}
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_configure() {
-	emake prefix="${D}"/usr setup
+	emake setup
 }
 
 src_compile() {
@@ -51,11 +51,11 @@ src_compile() {
 
 src_install() {
 	if use static-libs; then
-		emake DESTDIR="${D}" libgpr.install.static
+		emake prefix="${D}"/usr libgpr.install.static
 	fi
 	for kind in shared static-pic; do
 		if use ${kind}; then
-			emake DESTDIR="${D}" libgpr.install.${kind}
+			emake prefix="${D}"/usr libgpr.install.${kind}
 		fi
 	done
 	rm -r "${D}"/usr/share/gpr/manifests || die
