@@ -151,7 +151,6 @@ dev-perl/gtk2-spell
 ~virtual/perl-Socket-2.31.0
 ~virtual/perl-Storable-3.230.0
 ~virtual/perl-Test-Harness-3.430.0
-~virtual/perl-Test-Simple-1.302.183
 ~virtual/perl-Text-Balanced-2.40.0
 ~virtual/perl-threads-2.260.0
 ~virtual/perl-threads-shared-1.620.0
