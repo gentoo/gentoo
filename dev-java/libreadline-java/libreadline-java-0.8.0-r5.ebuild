@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -19,11 +19,11 @@ IUSE="elibc_FreeBSD"
 CDEPEND="sys-libs/ncurses:0="
 
 RDEPEND="
-	>=virtual/jre-1.6
+	>=virtual/jre-1.8:*
 	${CDEPEND}"
 
 DEPEND="
-	>=virtual/jdk-1.6
+	virtual/jdk:1.8
 	${CDEPEND}"
 
 RESTRICT="test"
