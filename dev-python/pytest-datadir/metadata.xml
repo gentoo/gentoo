@@ -5,6 +5,7 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">pytest-datadir</remote-id>
 	</upstream>
