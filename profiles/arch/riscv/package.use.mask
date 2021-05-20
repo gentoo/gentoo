@@ -7,6 +7,7 @@ dev-libs/gobject-introspection doctool test
 dev-python/markdown test
 x11-libs/gtk+ cups
 net-libs/libsoup samba gssapi test
+net-libs/libproxy mono spidermonkey webkit kde networkmanager
 # Request sys-auth/polkit, dev-lang/spidermonkey
 sys-auth/elogind policykit
 
