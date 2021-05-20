@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammmerlaan <andrewammerlaan@gentoo.org> (2021-05-20)
+# dev-python/QtPy-1.9.0-r4 now uses USE flags to control if it uses
+# PySide2 or PyQt5. With the removal of -r3, this eselect module does
+# not do anything and will only lead to confusion and possibly breakage.
+# See also: https://bugs.gentoo.org/790764
+# Removal in 30 days.
+app-eselect/eselect-QtPy
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-20)
 # no non-masked consumer, removal in 30 days
 # see bug: https://bugs.gentoo.org/786852
