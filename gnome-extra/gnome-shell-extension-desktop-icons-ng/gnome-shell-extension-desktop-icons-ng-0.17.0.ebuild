@@ -7,7 +7,7 @@ inherit gnome2-utils meson
 MY_PN="ding"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="A fork from the official desktop icons project, with several enhancements like Drag'n'Drop"
+DESCRIPTION="Fork from the desktop-icons project, with several enhancements like Drag'n'Drop"
 HOMEPAGE="https://gitlab.com/rastersoft/desktop-icons-ng"
 SRC_URI="https://gitlab.com/rastersoft/desktop-icons-ng/uploads/a434978b57ec46ad0e35352b27d525c6/${MY_P}.tar.xz"
 
