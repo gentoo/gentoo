@@ -71,6 +71,8 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-apache )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-nspr-header.patch )
+
 # update certain parts of lighttpd.conf based on conditionals
 update_config() {
 	local config="${D}/etc/lighttpd/lighttpd.conf"
