@@ -167,6 +167,7 @@ dev-perl/gtk2-spell
 ~virtual/perl-libnet-3.130.0
 ~virtual/perl-Math-Complex-1.590.200
 ~virtual/perl-MIME-Base64-3.160.0
+~virtual/perl-Module-CoreList-5.202.105.200
 ~virtual/perl-Module-Load-Conditional-0.740.0
 ~virtual/perl-Net-Ping-2.740.0
 ~virtual/perl-Pod-Simple-3.420.0
