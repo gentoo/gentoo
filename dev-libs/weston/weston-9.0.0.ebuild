@@ -92,6 +92,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-pipewire-0.3.patch
+)
+
 src_configure() {
 	local emesonargs=(
 		$(meson_use drm backend-drm)
