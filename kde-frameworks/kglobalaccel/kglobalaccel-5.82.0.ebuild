@@ -9,13 +9,11 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Framework to handle global shortcuts"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+
 LICENSE="LGPL-2+"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="nls"
 
-BDEPEND="
-	nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )
-"
 DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -30,3 +28,8 @@ DEPEND="
 	x11-libs/xcb-util-keysyms
 "
 RDEPEND="${DEPEND}"
+BDEPEND="nls? ( >=dev-qt/linguist-tools-${QTMIN}:5 )"
+
+src_test() {
+	XDG_CURRENT_DESKTOP="KDE" ecm_src_test # bug 789342
+}
