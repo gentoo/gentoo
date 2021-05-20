@@ -19,6 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
 	minimal? ( !introspection )
+	synaptics? ( gnutls )
 	uefi? ( gnutls )
 "
 RESTRICT="!test? ( test )"
