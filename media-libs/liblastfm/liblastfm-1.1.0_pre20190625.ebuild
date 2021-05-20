@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 COMMIT=f867df52757c569d97d9755c911ac9dec146f365
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Collection of libraries to integrate Last.fm services"
 HOMEPAGE="https://github.com/lastfm/liblastfm"
@@ -35,6 +35,11 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=( "${FILESDIR}/${P}-missing-dep.patch" )
+
+src_prepare() {
+	append-cxxflags -std=c++14 # bug 787128
+	cmake_src_prepare
+}
 
 src_configure() {
 	# demos not working
