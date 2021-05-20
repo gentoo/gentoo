@@ -14,6 +14,7 @@
     <flag name="gusb">Enable <pkg>dev-libs/libgusb</pkg> support</flag>
     <flag name="nvme">Build and install NVMe plugin</flag>
     <flag name="redfish">Install redfish plugin</flag>
+    <flag name="spi">Install Intel-SPI plugin</flag>
     <flag name="synaptics">Install synaptics plugin</flag>
     <flag name="thunderbolt">Install Thunderbolt plugin</flag>
     <flag name="tpm">Install Trusted Platform Module plugin</flag>
