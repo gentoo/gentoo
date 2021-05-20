@@ -135,6 +135,15 @@ dev-perl/gtk2-spell
 ~virtual/perl-File-Temp-0.231.100
 ~virtual/perl-Getopt-Long-2.520.0
 ~virtual/perl-I18N-LangTags-0.450.0
+~virtual/perl-if-0.60.900
+~virtual/perl-IO-1.460.0
+~virtual/perl-IO-Compress-2.102.0
+~virtual/perl-IO-Socket-IP-0.410.0
+~virtual/perl-IO-Zlib-1.110.0
+~virtual/perl-JSON-PP-4.60.0
+~virtual/perl-libnet-3.130.0
+~virtual/perl-Math-Complex-1.590.200
+~virtual/perl-MIME-Base64-3.160.0
 
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
