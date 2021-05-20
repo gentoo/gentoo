@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-IUSE="doc fax +hpcups hpijs kde libnotify -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
+IUSE="doc fax +hpcups hpijs kde libnotify libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
 COMMON_DEPEND="
 	net-print/cups
