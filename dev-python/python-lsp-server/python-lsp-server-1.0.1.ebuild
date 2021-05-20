@@ -45,7 +45,6 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/pyls-fix-test_folding.patch"
 	"${FILESDIR}/pyls-fix-test-with-pylint28.patch"
 )
 
