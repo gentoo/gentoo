@@ -8,7 +8,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
-	~perl-core/${PN#perl-}-${PV}
+	|| ( =dev-lang/perl-5.34* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<dev-perl/Test-Tester-0.114.0
 	!<dev-perl/Test-use-ok-0.160.0
