@@ -386,7 +386,7 @@ src_test() {
 	touch "${T}/disabled.def"
 
 	local -a disabled_tests
-	disabled_tests+=( "auth_sec.atomic_rename_user;0;Depends on user running test" )
+	disabled_tests+=( "auth_sec.atomic_rename_user;103512;Depends on user running test" )
 	disabled_tests+=( "auth_sec.keyring_file_data_qa;0;Won't work with user privileges" )
 	disabled_tests+=( "gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)" )
 	disabled_tests+=( "gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)" )
