@@ -800,6 +800,7 @@ dev-lang/spark
 # v3.6.4 uses huge amounts of memory: Bug #705682
 # v3.6.1 is the latest version without this issue
 >=dev-libs/libsass-3.6.2
+>=dev-python/libsass-0.21.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
