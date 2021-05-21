@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joshua Kinard <kumba@gentoo.org> (2021-05-20)
+# mask USE 'test' on MIPS for setuptools due to
+# the very deep dependency chain it enables.
+dev-python/setuptools test
+
 # Sam James <sam@gentoo.org> (2021-02-06)
 # media-sound/sndio is not yet keyworded here
 # bug #769098, bug #769122
