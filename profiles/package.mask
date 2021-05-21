@@ -656,11 +656,6 @@ dev-java/ant-owanttask
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-21)
-# java library, no consumers
-# see: https://bugs.gentoo.org/784812
-dev-java/ini4j
-
 # Matt Turner <mattst88@gentoo.org> (2021-04-18)
 # Pretty dead. Needs GTK+3 port. Doesn't build with glib-2.68.
 # Removal on 2021-05-19.  Bug #784266.
