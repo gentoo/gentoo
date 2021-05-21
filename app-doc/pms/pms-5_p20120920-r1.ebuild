@@ -25,8 +25,8 @@ RDEPEND="!app-doc/pms-bin"
 
 S="${WORKDIR}/${MY_P}"
 PATCHES=(
-	"${FILESDIR}/${PN}-${PV%%_*}-Makefile.patch"
-	"${FILESDIR}/${PN}-${PV%%_*}-parskip.patch"
+	"${FILESDIR}/${PN}-5-Makefile.patch"
+	"${FILESDIR}/${PN}-5-parskip.patch"
 )
 
 src_compile() {
