@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -21,9 +21,10 @@ SLOT="0"
 RDEPEND="app-crypt/gnupg"
 DEPEND="${RDEPEND}"
 
+distutils_enable_tests unittest
+
 python_test() {
 	# NO_EXTERNAL_TESTS must be enabled,
 	# to disable all tests, which need internet access.
-	NO_EXTERNAL_TESTS=1 "${EPYTHON}" -m unittest discover -v ||
-		die "Tests failed with ${EPYTHON}"
+	NO_EXTERNAL_TESTS=1 eunittest
 }
