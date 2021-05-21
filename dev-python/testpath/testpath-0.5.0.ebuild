@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -16,13 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
 
-BDEPEND="
-	>=dev-python/pyproject2setuppy-15
-	test? (
-		dev-python/pathlib2[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
+BDEPEND=">=dev-python/pyproject2setuppy-15"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx doc
