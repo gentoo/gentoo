@@ -27,8 +27,8 @@ BDEPEND="dev-texlive/texlive-bibtexextra
 RDEPEND="!app-doc/pms-bin"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-${PV%%_*}-Makefile.patch"
-	"${FILESDIR}/${PN}-${PV%%_*}-parskip.patch"
+	"${FILESDIR}/${PN}-7-Makefile.patch"
+	"${FILESDIR}/${PN}-7-parskip.patch"
 )
 
 src_compile() {
