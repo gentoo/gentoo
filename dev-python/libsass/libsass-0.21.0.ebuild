@@ -6,13 +6,13 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
-MY_P=libsass-python-${PV}
+MY_P="libsass-python-${PV}"
 DESCRIPTION="A straightforward binding of libsass for Python"
 HOMEPAGE="https://github.com/sass/libsass-python/"
 SRC_URI="
 	https://github.com/sass/libsass-python/archive/${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -43,6 +43,10 @@ python_test() {
 	local deselect=(
 		# probably broken by removal of sassc
 		sasstests.py::SasscTestCase::test_sassc_stdout
+		# skip the pip tests because they need an internet connection
+		# not relevant for gentoo anyway
+		sasstests.py::DistutilsTestCase::test_build_sass
+		sasstests.py::DistutilsTestCase::test_output_style
 	)
 
 	epytest sasstests.py ${deselect[@]/#/--deselect }
