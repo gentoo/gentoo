@@ -24,7 +24,10 @@ BDEPEND="dev-texlive/texlive-bibtexextra
 RDEPEND="!app-doc/pms-bin"
 
 S="${WORKDIR}/${MY_P}"
-PATCHES=("${FILESDIR}/${PN}-5-Makefile.patch")
+PATCHES=(
+	"${FILESDIR}/${PN}-${PV%%_*}-Makefile.patch"
+	"${FILESDIR}/${PN}-${PV%%_*}-parskip.patch"
+)
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts
