@@ -640,12 +640,6 @@ dev-dotnet/notify-sharp
 # Removal on 2021-05-22.  Bug #784983.
 dev-python/idna-ssl
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-21)
-# no consumers, last commit 2017
-# see: https://bugs.gentoo.org/784836
-# removal in 30 days
-dev-java/apt-mirror
-
 # Ulrich Müller <ulm@gentoo.org> (2021-04-20)
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
