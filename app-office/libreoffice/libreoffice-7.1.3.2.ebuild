@@ -292,6 +292,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.3.4.2-kioclient5.patch"
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-7.0.3.1-qt5detect.patch"
+
+	# master branch
+	"${FILESDIR}/${P}-bashism.patch" # bug 780432
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
