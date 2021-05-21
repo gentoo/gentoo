@@ -7,7 +7,7 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="3"				# Tarball revision for patches
+GENPATCHREV="4"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}"
@@ -23,7 +23,7 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2 epatch eapi7-ver
+inherit kernel-2 eapi7-ver
 detect_version
 
 # Version Data
@@ -336,7 +336,7 @@ src_prepare() {
 
 	# Now go into the kernel source and patch it.
 	cd "${S}"
-	epatch -p1 "${WORKDIR}/${psym}"/*.patch
+	eapply "${WORKDIR}/${psym}"/
 
 	eapply_user
 }
