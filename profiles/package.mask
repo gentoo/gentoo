@@ -131,59 +131,6 @@ dev-python/sphinxcontrib-httpexample
 app-misc/gcstar
 dev-perl/gtk2-spell
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-09)
-# Work in progress, do not use yet
-=dev-lang/perl-5.34*
-~perl-core/File-Temp-0.231.100
-~virtual/perl-Archive-Tar-2.380.0
-~virtual/perl-autodie-2.340.0
-~virtual/perl-Carp-1.520.0
-~virtual/perl-Compress-Raw-Bzip2-2.101.0
-~virtual/perl-Compress-Raw-Zlib-2.101.0
-~virtual/perl-CPAN-2.280.0
-~virtual/perl-Data-Dumper-2.179.0
-~virtual/perl-DB_File-1.855.0
-~virtual/perl-Devel-PPPort-3.620.0
-~virtual/perl-Digest-1.190.0
-~virtual/perl-Digest-MD5-2.580.0
-~virtual/perl-Encode-3.80.0
-~virtual/perl-Exporter-5.760.0
-~virtual/perl-ExtUtils-CBuilder-0.280.236
-~virtual/perl-ExtUtils-Install-2.200.0
-~virtual/perl-ExtUtils-MakeMaker-7.620.0
-~virtual/perl-ExtUtils-Manifest-1.730.0
-~virtual/perl-ExtUtils-ParseXS-3.430.0
-~virtual/perl-File-Path-2.180.0
-~virtual/perl-File-Spec-3.800.0
-~virtual/perl-File-Temp-0.231.100
-~virtual/perl-Getopt-Long-2.520.0
-~virtual/perl-I18N-LangTags-0.450.0
-~virtual/perl-if-0.60.900
-~virtual/perl-IO-1.460.0
-~virtual/perl-IO-Compress-2.102.0
-~virtual/perl-IO-Socket-IP-0.410.0
-~virtual/perl-IO-Zlib-1.110.0
-~virtual/perl-JSON-PP-4.60.0
-~virtual/perl-libnet-3.130.0
-~virtual/perl-Math-Complex-1.590.200
-~virtual/perl-MIME-Base64-3.160.0
-~virtual/perl-Module-CoreList-5.202.105.200
-~virtual/perl-Module-Load-Conditional-0.740.0
-~virtual/perl-Net-Ping-2.740.0
-~virtual/perl-Pod-Simple-3.420.0
-~virtual/perl-Safe-2.430.0
-~virtual/perl-Socket-2.31.0
-~virtual/perl-Storable-3.230.0
-~virtual/perl-Test-Harness-3.430.0
-~virtual/perl-Text-Balanced-2.40.0
-~virtual/perl-threads-2.260.0
-~virtual/perl-threads-shared-1.620.0
-~virtual/perl-Tie-RefHash-1.400.0
-~virtual/perl-Time-HiRes-1.976.700
-~virtual/perl-Time-Local-1.300.0
-~virtual/perl-Unicode-Normalize-1.280.0
-~virtual/perl-version-0.992.800
-
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
 # Bug #772815, removal in 30 days.
