@@ -796,12 +796,6 @@ dev-lang/spark
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
 
-# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2020-01-26)
-# v3.6.4 uses huge amounts of memory: Bug #705682
-# v3.6.1 is the latest version without this issue
->=dev-libs/libsass-3.6.2
->=dev-python/libsass-0.21.0
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
 # when being called with --no-absolute-filenames
