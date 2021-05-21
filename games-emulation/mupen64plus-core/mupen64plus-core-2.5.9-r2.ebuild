@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,8 @@ src_prepare() {
 
 	# avoid implicitly appending CPU flags
 	sed -i -e 's:-mmmx::g' -e 's:-msse::g' projects/unix/Makefile || die
+	# fix building against opencv-4
+	sed -i -e '/PKG_CONFIG/s:opencv:&4:' projects/unix/Makefile || die
 }
 
 src_compile() {
