@@ -24,7 +24,7 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="X acl cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
+IUSE="X acl cscope debug gpm lua ipv6 minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -225,6 +225,12 @@ src_configure() {
 				--enable-luainterp
 				$(use_with lua_single_target_luajit luajit)
 				--with-lua-prefix="${EPREFIX}/usr"
+			)
+		fi
+
+		if ! use ipv6; then
+			myconf+=(
+				vim_cv_ipv6_networking=no
 			)
 		fi
 
