@@ -1,17 +1,31 @@
+From 7f6d9d6432d912cd90763c64f7c92270b3e6c182 Mon Sep 17 00:00:00 2001
+From: gocha <gochaism@gmail.com>
+Date: Sun, 19 Jan 2020 12:48:06 +0900
+Subject: [PATCH] win32: fix compilation error in vs2019
+
+---
+ conffile.cpp | 2 +-
+ conffile.h   | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/conffile.cpp b/conffile.cpp
+index 817afae7f..fa7de3fa2 100644
 --- a/conffile.cpp
 +++ b/conffile.cpp
-@@ -452,7 +452,7 @@
+@@ -452,7 +452,7 @@ void ConfigFile::ClearLines()
      }
  }
  
 -bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) {
-+bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) const {
++bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) const{
  	if(curConfigFile && a.section!=b.section){
  		const int sva = curConfigFile->GetSectionSize(a.section);
  		const int svb = curConfigFile->GetSectionSize(b.section);
+diff --git a/conffile.h b/conffile.h
+index ba69812df..d92128cba 100644
 --- a/conffile.h
 +++ b/conffile.h
-@@ -90,7 +90,7 @@
+@@ -90,7 +90,7 @@ class ConfigFile {
  		mutable bool used;
  
          struct section_then_key_less {
@@ -20,12 +34,14 @@
          };
  
          struct key_less {
-@@ -101,7 +101,7 @@
+@@ -101,8 +101,8 @@ class ConfigFile {
          };
  
          struct line_less {
 -            bool operator()(const ConfigEntry &a, const ConfigEntry &b){
-+            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const {
- 				if(a.line==b.line) return (b.val.empty() && !a.val.empty()) || a.key<b.key;
+-				if(a.line==b.line) return (b.val.empty() && !a.val.empty()) || a.key<b.key;
++            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const{
++                if(a.line==b.line) return (b.val.empty() && !a.val.empty()) || a.key<b.key;
                  if(b.line<0) return true;
                  if(a.line<0) return false;
+                 return a.line<b.line;
