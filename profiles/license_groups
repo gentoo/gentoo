@@ -74,6 +74,7 @@ BINARY-REDISTRIBUTABLE @FREE Amazon Atmel AVASYS bh-luxi bonnie Broadcom freedis
 EULA 2dboy-EULA AMD-GPU-PRO-EULA AnyDesk-TOS Aseprite-EULA baudline BCS bestcrypt CAPYBARA-EULA Coherent-Graphics ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Google-TOS Intel-SDP Introversion LOKI-EULA MakeMKV-EULA Microsemi Mojang microsoft-edge ms-teams-pre MTA-0.5 NVIDIA-CODEC-SDK NVIDIA-CUDA OPERA-2018 Oracle-BCLA-JavaSE PAPERS-PLEASE Primate-Plunge PUEL Q3AEULA-20000111 QUAKE4 Quartus-prime-megacore RAR Sourcetrail SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
 
 # Deprecated license labels, used by repoman
+# Use Free-Art-1.2 or Free-Art-1.3 instead
 DEPRECATED FreeArt
 
 # Local Variables:
