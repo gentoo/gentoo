@@ -23,7 +23,10 @@ _IUSE_QT_MODULES="
 IUSE="+pyqt5 pyside2 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
 
-REQUIRED_USE="|| ( pyqt5 pyside2 )"
+REQUIRED_USE="
+	|| ( pyqt5 pyside2 )
+	test? ( pyqt5 pyside2 )
+"
 
 # These flags are currently *not* common to both the PySide2 and PyQt5 ebuild
 # Disable them for now, please check periodically if this is still up to date.
@@ -89,7 +92,7 @@ BDEPEND="
 		dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
 		dev-python/PyQt5[multimedia,network,networkauth,opengl,positioning]
 		dev-python/PyQt5[printsupport,sensors,serialport,sql,svg,testlib]
-		dev-python/PyQt5[webchannel,webkit,websockets,widgets,x11extras,xml(+)]
+		dev-python/PyQt5[webchannel,websockets,widgets,x11extras,xml(+)]
 		dev-python/PyQt5[xmlpatterns]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 		dev-python/pyside2[${PYTHON_USEDEP}]
