@@ -38,6 +38,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-glibc.patch"
+	"${FILESDIR}/${P}-musl.patch"
 	"${FILESDIR}/${P}-pid.patch"
 )
 
