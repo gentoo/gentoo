@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="allegro">Add support for Allegro</flag>
-		<flag name="aplaymidi">Enables midi music in game, using aplaymidi as an external player</flag>
 		<flag name="fluidsynth">Compile with support for FluidSynth</flag>
 		<flag name="openmedia">Enables the free open media sets: OpenGFX, OpenSFX, OpenMSX, removing the requirement for proprietary TTD assets to play OpenTTD.</flag>
 		<flag name="lzo">Enables LZO compression for savegames. This is only needed to load extremely old savegames. (versions before 0.2)</flag>
