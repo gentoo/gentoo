@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<use>
+    <flag name="dbo">Build Wt::Dbo</flag>
+    <flag name="graphicsmagick">Enable WRasterImage server-side rendering using media-gfx/graphicsmagick</flag>
+    <flag name="haru">Enable Haru Free PDF Library, which is used to provide support for painting to PDF (WPdfImage)</flag>
+    <flag name="mariadb">Build mariadb backend for Wt::Dbo</flag>
+    <flag name="pango">Enable Pango Library, which is used for improved font support (WPdfImage and WRasterImage)</flag>
+</use>
+</pkgmetadata>
