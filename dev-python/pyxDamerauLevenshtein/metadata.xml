@@ -9,4 +9,5 @@
 		<remote-id type="pypi">pyxDamerauLevenshtein</remote-id>
 		<remote-id type="github">gfairchild/pyxDamerauLevenshtein</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
