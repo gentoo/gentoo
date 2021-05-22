@@ -18,8 +18,8 @@ inherit distutils-r1 docs
 
 DESCRIPTION="Bash style brace expansion for Python"
 HOMEPAGE="
-	https://github.com/facelessuser/bracex
-	https://pypi.org/project/bracex
+	https://github.com/facelessuser/bracex/
+	https://pypi.org/project/bracex/
 "
 SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
