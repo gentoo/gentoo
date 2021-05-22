@@ -18,10 +18,11 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0/3"
 KEYWORDS=""
 
-IUSE="aalib alsa aqua doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
+IUSE="X aalib alsa aqua doc gnome heif javascript jpeg2k lua mng openexr postscript python udev unwind vala vector-icons webp wmf xpm cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	?? ( aqua X )
 "
 
 RESTRICT="!test? ( test )"
@@ -54,7 +55,6 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.16.0
 	>=x11-libs/gdk-pixbuf-2.40.0:2
 	>=x11-libs/gtk+-3.24.16:3
-	x11-libs/libXcursor
 	>=x11-libs/pango-1.44.7
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
@@ -82,6 +82,7 @@ COMMON_DEPEND="
 	webp? ( >=media-libs/libwebp-0.6.0:= )
 	wmf? ( >=media-libs/libwmf-0.2.8 )
 	xpm? ( x11-libs/libXpm )
+	X? ( x11-libs/libXcursor )
 "
 
 RDEPEND="
@@ -184,7 +185,8 @@ src_configure() {
 		$(use_enable vector-icons)
 		$(use_with aalib aa)
 		$(use_with alsa)
-		$(use_with !aqua x)
+		$(use_with X x)
+		$(use_with X xmc)
 		$(use_with heif libheif)
 		$(use_with javascript)
 		$(use_with jpeg2k jpeg2000)
