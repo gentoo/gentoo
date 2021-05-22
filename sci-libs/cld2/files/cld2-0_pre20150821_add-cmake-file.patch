@@ -1,0 +1,189 @@
+From 9cfac02c2ac7802ab7079560b38a474473c45f51 Mon Sep 17 00:00:00 2001
+From: tastytea <tastytea@tastytea.de>
+Date: Sat, 22 May 2021 07:54:59 +0200
+Subject: [PATCH] Add a cmake file to properly handle the source files.
+
+Changes from to the original patch:
+  - Set the standard to C++98
+  - Use correct installation directory for libraries
+
+The last recorded SVN revision in the git log is 196, Debian uses
+0.0.197 as version for their 2015-08-06 snapshot. The only change since
+then was a typo in the readme, so I'm keeping the version.
+
+Author: Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+Forwarded: https://github.com/CLD2Owners/cld2/issues/29
+Forwarded: https://sources.debian.org/src/cld2/0.0.0-git20150806-9/debian/patches/add-cmake-file.patch/
+Closes: https://github.com/CLD2Owners/cld2/issues/29
+---
+ CMakeLists.txt | 158 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 158 insertions(+)
+ create mode 100644 CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..d853904
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,158 @@
++cmake_minimum_required(VERSION 3.0)
++project (cld2)
++enable_language(CXX)
++set(CMAKE_CXX_STANDARD 98)
++set (VERSION "0.0.197")
++
++include(GNUInstallDirs)
++
++set (common_SOURCE_FILES
++    internal/cldutil.cc
++    internal/cldutil_shared.cc
++    internal/compact_lang_det.cc
++    internal/compact_lang_det_hint_code.cc
++    internal/compact_lang_det_impl.cc
++    internal/debug.cc
++    internal/fixunicodevalue.cc
++    internal/generated_entities.cc
++    internal/generated_language.cc
++    internal/generated_ulscript.cc
++    internal/getonescriptspan.cc
++    internal/lang_script.cc
++    internal/offsetmap.cc
++    internal/scoreonescriptspan.cc
++    internal/tote.cc
++    internal/utf8statetable.cc
++    )
++
++set (cld2_SOURCE_FILES
++    internal/generated_distinct_bi_0.cc
++    internal/cld_generated_cjk_uni_prop_80.cc
++    internal/cld2_generated_cjk_compatible.cc
++    internal/cld_generated_cjk_delta_bi_4.cc
++    internal/cld2_generated_quadchrome_2.cc
++    internal/cld2_generated_deltaoctachrome.cc
++    internal/cld2_generated_distinctoctachrome.cc
++    internal/cld_generated_score_quad_octa_2.cc
++    )
++
++set (cld2_full_SOURCE_FILES
++    internal/generated_distinct_bi_0.cc
++    internal/cld_generated_cjk_uni_prop_80.cc
++    internal/cld2_generated_cjk_compatible.cc
++    internal/cld_generated_cjk_delta_bi_32.cc
++    internal/cld2_generated_quad0122.cc
++    internal/cld2_generated_deltaocta0122.cc
++    internal/cld2_generated_distinctocta0122.cc
++    internal/cld_generated_score_quad_octa_0122.cc
++    )
++
++set (cld2_dynamic_SOURCE_FILES
++    internal/cld2_dynamic_data.cc
++    internal/cld2_dynamic_data_loader.cc
++    )
++
++add_library(cld2 SHARED ${common_SOURCE_FILES} ${cld2_SOURCE_FILES})
++set_target_properties(cld2 PROPERTIES
++  ENABLE_EXPORTS On
++  OUTPUT_NAME cld2
++  VERSION ${VERSION}
++  SOVERSION 0
++  )
++add_library(cld2_full SHARED ${cld2_full_SOURCE_FILES})
++set_target_properties(cld2_full PROPERTIES
++  ENABLE_EXPORTS On
++  OUTPUT_NAME cld2_full
++  VERSION ${VERSION}
++  SOVERSION 0
++  )
++
++add_library(cld2_dynamic SHARED ${cld2_dynamic_SOURCE_FILES})
++set_target_properties(cld2_dynamic PROPERTIES
++  ENABLE_EXPORTS On
++  OUTPUT_NAME cld2_dynamic
++  VERSION ${VERSION}
++  SOVERSION 0
++  COMPILE_FLAGS "-DCLD2_DYNAMIC_MODE"
++  )
++install(TARGETS cld2 LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++install(TARGETS cld2_full LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++install(TARGETS cld2_dynamic LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++
++set (cld2_internal_HEADERS
++    internal/cld2_dynamic_compat.h
++    internal/cld2_dynamic_data_extractor.h
++    internal/cld2_dynamic_data.h
++    internal/cld2_dynamic_data_loader.h
++    internal/cld2tablesummary.h
++    internal/cldutil.h
++    internal/cldutil_offline.h
++    internal/cldutil_shared.h
++    internal/compact_lang_det_hint_code.h
++    internal/compact_lang_det_impl.h
++    internal/debug.h
++    internal/fixunicodevalue.h
++    internal/generated_language.h
++    internal/generated_ulscript.h
++    internal/getonescriptspan.h
++    internal/integral_types.h
++    internal/lang_script.h
++    internal/langspan.h
++    internal/offsetmap.h
++    internal/port.h
++    internal/scoreonescriptspan.h
++    internal/stringpiece.h
++    internal/tote.h
++    internal/unittest_data.h
++    internal/utf8acceptinterchange.h
++    internal/utf8prop_lettermarkscriptnum.h
++    internal/utf8repl_lettermarklower.h
++    internal/utf8scannot_lettermarkspecial.h
++    internal/utf8statetable.h
++    )
++
++install(FILES ${cld2_internal_HEADERS} DESTINATION include/cld2/internal)
++set (cld2_public_HEADERS
++    public/compact_lang_det.h
++    public/encodings.h
++    )
++install(FILES ${cld2_public_HEADERS} DESTINATION include/cld2/public)
++
++set (full_SOURCE_FILES
++    internal/cld_generated_cjk_uni_prop_80.cc
++    internal/cld2_generated_cjk_compatible.cc
++    internal/cld_generated_cjk_delta_bi_32.cc
++    internal/generated_distinct_bi_0.cc
++    internal/cld2_generated_quad0122.cc
++    internal/cld2_generated_deltaocta0122.cc
++    internal/cld2_generated_distinctocta0122.cc
++    internal/cld_generated_score_quad_octa_0122.cc
++    )
++
++add_executable(compact_lang_det_test_full ${full_SOURCE_FILES} internal/compact_lang_det_test.cc)
++add_executable(cld2_unittest_full         ${full_SOURCE_FILES} internal/cld2_unittest_full.cc)
++add_executable(cld2_unittest_full_avoid   ${full_SOURCE_FILES} internal/cld2_unittest_full.cc)
++set_target_properties(cld2_unittest_full_avoid PROPERTIES COMPILE_FLAGS "-Davoid_utf8_string_constants")
++
++add_executable(cld2_dynamic_data_tool               internal/cld2_dynamic_data_extractor.cc internal/cld2_dynamic_data_tool.cc)
++add_executable(compact_lang_det_dynamic_test_chrome ${common_SOURCE_FILES} internal/cld2_dynamic_data_extractor.cc internal/compact_lang_det_test.cc)
++add_executable(cld2_dynamic_unittest                ${common_SOURCE_FILES} internal/cld2_unittest.cc)
++set_target_properties(compact_lang_det_dynamic_test_chrome PROPERTIES COMPILE_FLAGS "-DCLD2_DYNAMIC_MODE")
++set_target_properties(cld2_dynamic_unittest PROPERTIES COMPILE_FLAGS "-DCLD2_DYNAMIC_MODE")
++
++add_executable(compact_lang_det_test_chrome_2  internal/compact_lang_det_test.cc)
++add_executable(compact_lang_det_test_chrome_16 internal/compact_lang_det_test.cc)
++add_executable(cld2_unittest_chrome_2          internal/cld2_unittest.cc)
++add_executable(cld2_unittest_avoid_chrome_2    internal/cld2_unittest.cc)
++set_target_properties(cld2_unittest_avoid_chrome_2 PROPERTIES COMPILE_FLAGS "-Davoid_utf8_string_constants")
++
++target_link_libraries(compact_lang_det_test_full cld2)
++target_link_libraries(cld2_unittest_full cld2)
++target_link_libraries(cld2_unittest_full_avoid cld2)
++target_link_libraries(cld2_dynamic_data_tool cld2 cld2_dynamic)
++target_link_libraries(compact_lang_det_dynamic_test_chrome cld2_dynamic)
++target_link_libraries(cld2_dynamic_unittest cld2_dynamic)
++target_link_libraries(compact_lang_det_test_chrome_2 cld2)
++target_link_libraries(compact_lang_det_test_chrome_16 cld2)
++target_link_libraries(cld2_unittest_chrome_2 cld2)
++target_link_libraries(cld2_unittest_avoid_chrome_2 cld2)
+-- 
+2.26.3
+
