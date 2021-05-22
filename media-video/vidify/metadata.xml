@@ -20,4 +20,5 @@
 		<remote-id type="github">vidify/vidify</remote-id>
 		<bugs-to>https://github.com/vidify/vidify/issues</bugs-to>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
