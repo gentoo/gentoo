@@ -19,4 +19,5 @@ While some functionality here is more or less duplicative of redirect_stdout and
     <remote-id type="github">bskinn/stdio-mgr</remote-id>
     <remote-id type="pypi">stdio-mgr</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>
