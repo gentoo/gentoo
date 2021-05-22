@@ -25,6 +25,7 @@ RDEPEND="
 "
 
 BDEPEND="test? (
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/httpretty[${PYTHON_USEDEP}]
 )"
 
