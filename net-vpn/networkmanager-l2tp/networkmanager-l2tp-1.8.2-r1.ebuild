@@ -20,7 +20,7 @@ IUSE="gnome static-libs"
 RDEPEND="
 	>=net-misc/networkmanager-1.2[ppp]
 	dev-libs/dbus-glib
-	net-dialup/ppp[eap-tls]
+	net-dialup/ppp:=[eap-tls]
 	net-dialup/xl2tpd
 	>=dev-libs/glib-2.32
 	|| (
@@ -32,8 +32,8 @@ RDEPEND="
 		app-crypt/libsecret
 		gnome-extra/nm-applet
 	)"
-
-BDEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	dev-util/intltool
 	virtual/pkgconfig"
@@ -46,8 +46,13 @@ src_prepare() {
 }
 
 src_configure() {
+	local PPPD_VER=$(best_version net-dialup/ppp)
+	PPPD_VER=${PPPD_VER#*/*-} # reduce it to ${PV}-${PR}
+	PPPD_VER=${PPPD_VER%%[_-]*} # main version without beta/pre/patch/revision
+
 	local myeconfargs=(
 		--localstatedir=/var
+		--with-pppd-plugin-dir=/usr/$(get_libdir)/pppd/${PPPD_VER}
 		$(use_with gnome)
 		$(use_enable static-libs static)
 	)
