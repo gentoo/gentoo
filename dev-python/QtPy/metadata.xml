@@ -44,4 +44,5 @@
 		<remote-id type="github">spyder-ide/qtpy</remote-id>
 		<remote-id type="pypi">QtPy</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
