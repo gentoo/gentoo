@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="pypi">pytest-faulthandler</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
