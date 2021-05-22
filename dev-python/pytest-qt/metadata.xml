@@ -9,4 +9,5 @@
 		<remote-id type="pypi">pytest-qt</remote-id>
 		<remote-id type="github">pytest-dev/pytest-qt</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
