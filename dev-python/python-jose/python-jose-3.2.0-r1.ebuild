@@ -25,12 +25,14 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+distutils_enable_sphinx docs
 
 python_prepare_all() {
 	sed -e '/pytest-runner/d' \
 		-e '/ecdsa/s:<0.15::' \
 		-i setup.py || die
 	sed -e '/addopts/d' -i setup.cfg || die
+	sed -e 's/sphinxcontrib.napoleon/sphinx.ext.napoleon/' -i docs/conf.py || die
 	distutils-r1_python_prepare_all
 }
 
