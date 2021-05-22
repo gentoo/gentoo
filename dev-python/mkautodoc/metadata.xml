@@ -13,4 +13,5 @@
 		<remote-id type="github">tomchristie/mkautodoc</remote-id>
 		<remote-id type="pypi">mkautodoc</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
