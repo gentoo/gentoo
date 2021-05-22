@@ -31,7 +31,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.0.8-context-leak.patch
 
 	# Fix usage of check framework, bug #296849, from master
-	epatch "${FILESDIR}"/${PN}-2.0.8-check-usage-update.patch
+	# Disable this patch, bug 698654
+	# epatch "${FILESDIR}"/${PN}-2.0.8-check-usage-update.patch
 
 	# ifdef around network tests code, refs. bug #320759
 	epatch "${FILESDIR}"/${PN}-2.0.8-network-tests.patch
