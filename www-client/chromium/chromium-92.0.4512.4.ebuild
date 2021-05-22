@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="4"
+PATCHSET="5"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
@@ -227,7 +227,7 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
-		"${FILESDIR}/chromium-89-EnumTable-crash.patch"
+		"${FILESDIR}/chromium-92-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
@@ -322,7 +322,6 @@ src_prepare() {
 		third_party/devtools-frontend/src/front_end/third_party/chromium
 		third_party/devtools-frontend/src/front_end/third_party/codemirror
 		third_party/devtools-frontend/src/front_end/third_party/diff
-		third_party/devtools-frontend/src/front_end/third_party/fabricjs
 		third_party/devtools-frontend/src/front_end/third_party/i18n
 		third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
 		third_party/devtools-frontend/src/front_end/third_party/lighthouse
