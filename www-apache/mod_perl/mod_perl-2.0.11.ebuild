@@ -62,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}"-2.0.10_rc1-bundled-Apache-Test.patch # 352724
 	"${FILESDIR}/${PN}"-2.0.10_rc1-Gentoo-not-Unix.patch
 	"${FILESDIR}/${PN}"-2.0.11-ranlib.patch       # 728554
+	"${FILESDIR}/${PN}"-2.0.11-perl534.patch      # 791403
 )
 
 src_prepare() {
