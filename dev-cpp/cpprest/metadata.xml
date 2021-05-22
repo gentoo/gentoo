@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@tastytea.de</email>
+		<name>Ronny Gutbrod</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/microsoft/cpprestsdk/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="websockets">Support the WebSocket protocol</flag>
+		<flag name="brotli">Enable brotli compression/decompression support</flag>
+	</use>
+</pkgmetadata>
