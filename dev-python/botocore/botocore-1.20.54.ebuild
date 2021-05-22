@@ -34,6 +34,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/1.8.6-tests-pass-all-env-vars-to-cmd-runner.patch"
+	"${FILESDIR}/botocore-1.20.64-bpo43882.patch"
 )
 
 distutils_enable_sphinx docs/source \
