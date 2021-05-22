@@ -8,4 +8,5 @@
 	<upstream>
 		<remote-id type="pypi">Pweave</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
