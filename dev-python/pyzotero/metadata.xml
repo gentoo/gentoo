@@ -9,4 +9,5 @@
 		<remote-id type="github">urschrei/pyzotero</remote-id>
 		<remote-id type="pypi">Pyzotero</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
