@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sass/sassc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux"
 
 RDEPEND=">=dev-libs/libsass-3.6.5:="
 DEPEND="${RDEPEND}"
