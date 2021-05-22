@@ -12,6 +12,10 @@
     <email>amadio@gentoo.org</email>
     <name>Guilherme Amadio</name>
   </maintainer>
+  <maintainer type="person">
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+  </maintainer>
   <use>
     <flag name="babeltrace">Enable <pkg>dev-util/babeltrace</pkg> support</flag>
     <flag name="clang">Enable builtin clang and LLVM support</flag>
