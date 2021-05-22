@@ -40,6 +40,10 @@ BDEPEND="
 
 S="${WORKDIR}/aws-cli-${PV}"
 
+PATCHES=(
+	"${FILESDIR}"/awscli-1.19.47-py39.patch
+)
+
 python_test() {
 	nosetests -vv || die
 }
