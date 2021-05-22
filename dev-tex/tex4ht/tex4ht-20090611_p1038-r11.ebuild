@@ -22,7 +22,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="java"
 
-RDEPEND="app-text/ghostscript-gpl
+RDEPEND="!>=dev-texlive/texlive-latex-2021
+	app-text/ghostscript-gpl
 	media-gfx/imagemagick
 	dev-libs/kpathsea
 	java? ( >=virtual/jre-1.8:* )"
