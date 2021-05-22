@@ -14,20 +14,16 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="acl +cron selinux"
 
-COMMON_DEPEND="
+DEPEND="
 	>=dev-libs/popt-1.5
 	selinux? ( sys-libs/libselinux )
 	acl? ( virtual/acl )"
-
-DEPEND="${COMMON_DEPEND}
-	>=sys-apps/sed-4"
-
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-logrotate )
 	cron? ( virtual/cron )"
 
-STATEFILE="/var/lib/misc/logrotate.status"
-OLDSTATEFILE="/var/lib/logrotate.status"
+STATEFILE="${EPREFIX}/var/lib/misc/logrotate.status"
+OLDSTATEFILE="${EPREFIX}/var/lib/logrotate.status"
 
 move_old_state_file() {
 	elog "logrotate state file is now located at ${STATEFILE}"
@@ -48,15 +44,15 @@ PATCHES=(
 )
 
 src_prepare() {
-	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' "${S}"/examples/logrotate.{cron,service} || die
+	sed -i -e 's#/usr/sbin/logrotate#/usr/bin/logrotate#' examples/logrotate.{cron,service} || die
 	default
 }
 
 src_configure() {
 	econf \
-	$(use_with acl) \
-	$(use_with selinux) \
-	--with-state-file-path="${STATEFILE}"
+		$(use_with acl) \
+		$(use_with selinux) \
+		--with-state-file-path="${STATEFILE}"
 }
 
 src_test() {
@@ -64,7 +60,6 @@ src_test() {
 }
 
 src_install() {
-	insinto /usr
 	dobin logrotate
 	doman logrotate.8
 	dodoc ChangeLog.md
@@ -75,7 +70,7 @@ src_install() {
 	use cron && install_cron_file
 
 	systemd_dounit examples/logrotate.{service,timer}
-	newtmpfiles "${FILESDIR}/${PN}.tmpfiles" "${PN}".conf
+	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 
 	keepdir /etc/logrotate.d
 }
@@ -85,11 +80,14 @@ pkg_postinst() {
 	elog "The ${PN} binary is now installed under /usr/bin. Please"
 	elog "update your links"
 	elog
+
 	move_old_state_file
+
 	elog "If you are running systemd you might need to run:"
 	elog "systemd-tmpfiles --create /usr/lib/tmpfiles.d/logrotate.conf"
 	elog "in order to create the new location of the logrotate state file"
 	elog
+
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "If you wish to have logrotate e-mail you updates, please"
 		elog "emerge virtual/mailx and configure logrotate in"
