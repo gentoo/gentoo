@@ -28,7 +28,8 @@ REQUIRED_USE="gtalk? ( xmpp )
 "
 
 PATCHES=(
-	"${FILESDIR}/asterisk-16.16.2-no-var-run-install.patch"
+	"${FILESDIR}/${PN}-16.16.2-no-var-run-install.patch"
+	"${FILESDIR}/${PN}-16.18.0-r1-func_lock-fix-races.patch"
 )
 
 DEPEND="acct-user/asterisk
