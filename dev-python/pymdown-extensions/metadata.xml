@@ -13,4 +13,5 @@
 		<remote-id type="github">facelessuser/pymdown-extensions</remote-id>
 		<remote-id type="pypi">pymdown-extensions</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
