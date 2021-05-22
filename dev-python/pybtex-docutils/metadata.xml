@@ -9,4 +9,5 @@
 		<remote-id type="pypi">pybtex-docutils</remote-id>
 		<remote-id type="github">mcmtroffaes/pybtex-docutils</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
