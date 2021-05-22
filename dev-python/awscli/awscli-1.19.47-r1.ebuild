@@ -11,14 +11,11 @@ DESCRIPTION="Universal Command Line Environment for AWS"
 HOMEPAGE="https://pypi.org/project/awscli/"
 #SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 SRC_URI="https://github.com/aws/aws-cli/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/aws-cli-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="test"
-
-# requires network access
-RESTRICT="test"
 
 RDEPEND="
 	=dev-python/botocore-1.20*[${PYTHON_USEDEP}]
@@ -28,24 +25,23 @@ RDEPEND="
 	>=dev-python/s3transfer-0.3.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
-
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
 	)
 "
 
-S="${WORKDIR}/aws-cli-${PV}"
+distutils_enable_tests --install nose
 
 PATCHES=(
 	"${FILESDIR}"/awscli-1.19.47-py39.patch
 )
 
 python_test() {
-	nosetests -vv || die
+	distutils_install_for_testing
+	# integration tests require AWS credentials and Internet access
+	nosetests -v tests/{functional,unit} ||
+		die "Tests failed for ${EPYTHON}"
 }
 
 python_install_all() {
