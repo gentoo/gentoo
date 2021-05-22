@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-ADA_COMPAT=( gnat_201{6,7,8,9} )
+ADA_COMPAT=( gnat_201{6,7,8,9} gnat_2020 )
 inherit ada multiprocessing
 
 MYP=${P}-20200429-19B7C
@@ -14,7 +14,7 @@ SRC_URI="https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="
