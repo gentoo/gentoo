@@ -1,0 +1,8 @@
+diff -U2 -r bpython-0.21.orig/doc/sphinx/source/conf.py bpython-0.21/doc/sphinx/source/conf.py
+--- bpython-0.21.orig/doc/sphinx/source/conf.py	2020-03-30 01:44:23.000000000 +0700
++++ bpython-0.21/doc/sphinx/source/conf.py	2021-05-22 21:06:51.161746459 +0700
+@@ -215,3 +215,3 @@
+ # If true, show URL addresses after external links.
+ #man_show_urls = False
+-
++man_make_section_directory = False

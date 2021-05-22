@@ -34,5 +34,7 @@ BDEPEND="
 
 DOCS=( AUTHORS.rst CHANGELOG.rst )
 
+PATCHES=( "${FILESDIR}"/${PN}-sphinx-4.patch )
+
 distutils_enable_sphinx doc/sphinx/source --no-autodoc
 distutils_enable_tests unittest
