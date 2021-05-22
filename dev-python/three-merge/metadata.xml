@@ -9,4 +9,5 @@
     <email>andrewammerlaan@gentoo.org</email>
     <name>Andrew Ammerlaan</name>
   </maintainer>
+  <stabilize-allarches/>
 </pkgmetadata>
