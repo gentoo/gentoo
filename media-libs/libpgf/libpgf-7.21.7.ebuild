@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/libpgf/libpgf/${PV}/libpgf.zi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="doc"
 
 BDEPEND="
