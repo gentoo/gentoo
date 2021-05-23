@@ -11,7 +11,7 @@ SRC_URI="http://www.memtest.org/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="+boot floppy iso serial"
 
 BOOTDIR="/boot/memtest86plus"
