@@ -133,10 +133,6 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 # caution!
 dev-libs/efl efl-one
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# The respective dependencies are masked for removal.
-net-nntp/pan gnome-keyring
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
 media-plugins/mythplugins mythnetvision
