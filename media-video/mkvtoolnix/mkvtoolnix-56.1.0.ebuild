@@ -64,7 +64,8 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/mkvtoolnix-49.0.0-qt5dbus.patch )
+PATCHES=( "${FILESDIR}"/mkvtoolnix-49.0.0-qt5dbus.patch
+	"${FILESDIR}"/mkvtoolnix-56.1.0-optlevel.patch )
 
 src_prepare() {
 	xdg_src_prepare
