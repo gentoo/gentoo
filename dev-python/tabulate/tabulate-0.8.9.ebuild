@@ -25,8 +25,18 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}/tabulate-0.8.6-avoid-pandas-dep.patch"
-)
-
 distutils_enable_tests pytest
+
+python_test() {
+	local deselect=(
+		# avoid pandas dependency
+		test/test_input.py::test_pandas
+		test/test_input.py::test_pandas_firstrow
+		test/test_input.py::test_pandas_keys
+		test/test_output.py::test_pandas_with_index
+		test/test_output.py::test_pandas_without_index
+		test/test_output.py::test_pandas_rst_with_index
+		test/test_output.py::test_pandas_rst_with_named_index
+	)
+	epytest ${deselect[@]/#/--deselect }
+}
