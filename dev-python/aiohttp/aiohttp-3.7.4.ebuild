@@ -21,9 +21,6 @@ RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/multidict-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/yarl-1.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/idna-ssl[${PYTHON_USEDEP}]
-	' python3_6)
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 BDEPEND="
