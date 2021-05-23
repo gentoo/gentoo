@@ -592,11 +592,6 @@ dev-java/cdegroot-db
 # see bug: https://bugs.gentoo.org/785415
 dev-java/codemodel
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-25)
-# seems to be obsolete, nothing uses it
-# removal in 30 days
-dev-java/istack-commons-buildtools
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
