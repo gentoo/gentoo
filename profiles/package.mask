@@ -597,12 +597,6 @@ dev-java/codemodel
 # removal in 30 days
 dev-java/istack-commons-buildtools
 
-# David Seifert <soap@gentoo.org> (2021-04-24)
-# Doesn't build, live ebuild broken too, blocks wxwidgets.eclass
-# modernization, unmaintained, requires unreleased changes in
-# net-libs/liquid-dsp. Bug #777720, removal in 30 days.
-net-wireless/cubicsdr
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
