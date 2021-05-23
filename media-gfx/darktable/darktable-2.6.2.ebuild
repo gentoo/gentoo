@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,12 +59,7 @@ COMMON_DEPEND="
 	openexr? ( media-libs/openexr:0= )
 	webp? ( media-libs/libwebp:0= )
 "
-DEPEND="${COMMON_DEPEND}
-	opencl? (
-		>=sys-devel/clang-4
-		>=sys-devel/llvm-4
-	)
-"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
 "
@@ -93,6 +88,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_PRINT=$(usex cups)
 		-DCUSTOM_CFLAGS=ON
+		-DTESTBUILD_OPENCL_PROGRAMS=OFF
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)
 		-DUSE_FLICKR=$(usex flickr)
