@@ -19,3 +19,4 @@ RDEPEND="dev-python/appdirs[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/py[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+distutils_enable_sphinx docs
