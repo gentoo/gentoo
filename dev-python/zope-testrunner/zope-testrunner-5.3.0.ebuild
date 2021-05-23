@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -20,13 +20,17 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
-BDEPEND="
-	test? ( dev-python/zope-testing[${PYTHON_USEDEP}] )"
 RDEPEND="
 	dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/zope-exceptions[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? ( dev-python/zope-testing[${PYTHON_USEDEP}] )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test-py3.10.patch"
+)
 
 distutils_enable_tests setup.py
 
