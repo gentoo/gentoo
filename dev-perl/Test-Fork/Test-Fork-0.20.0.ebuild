@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="test code which forks"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc"
+KEYWORDS="~amd64 ~hppa ~mips ~sparc"
 IUSE="test"
 RESTRICT="!test? ( test )"
