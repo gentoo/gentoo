@@ -626,7 +626,6 @@ dev-util/bless
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
 # Unmaintained, depends on dev-dotnet/gtk-sharp which is dead upstream.
 # Removal on 2021-05-24; bugs #769050, #769059
-dev-dotnet/gkeyfile-sharp
 dev-dotnet/notify-sharp
 
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
