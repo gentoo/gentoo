@@ -16,7 +16,7 @@ JerryScript-DCO-1.0-Signed-off-by: Zac Medico <zmedico@gmail.com>
  2 files changed, 31 insertions(+), 9 deletions(-)
 
 diff --git a/jerry-debugger/jerry_client_main.py b/jerry-debugger/jerry_client_main.py
-index e65d0e14..b877a159 100644
+index e65d0e14..e3176c86 100644
 --- a/jerry-debugger/jerry_client_main.py
 +++ b/jerry-debugger/jerry_client_main.py
 @@ -151,2 +151,12 @@ def arguments_parse():
@@ -32,7 +32,16 @@ index e65d0e14..b877a159 100644
 +
 +
  class JerryBreakpoint(object):
-@@ -866,5 +876,5 @@ class JerryDebugger(object):
+@@ -563,2 +573,3 @@ class JerryDebugger(object):
+     def _send_string(self, args, message_type, index=0):
++        args = args.encode("utf8")
+ 
+@@ -810,3 +821,3 @@ class JerryDebugger(object):
+             elif buffer_type in [JERRY_DEBUGGER_SCOPE_VARIABLES, JERRY_DEBUGGER_SCOPE_VARIABLES_END]:
+-                self.scope_vars += "".join(data[1:])
++                self.scope_vars += "".join(data[1:].decode("utf8"))
+ 
+@@ -866,5 +877,5 @@ class JerryDebugger(object):
      def _parse_source(self, data):
 -        source_code = ""
 -        source_code_name = ""
@@ -41,7 +50,7 @@ index e65d0e14..b877a159 100644
 +        source_code_name = b""
 +        function_name = b""
          stack = [{"line": 1,
-@@ -905,7 +915,7 @@ class JerryDebugger(object):
+@@ -905,7 +916,7 @@ class JerryDebugger(object):
  
 -                stack.append({"source": source_code,
 -                              "source_name": source_code_name,
@@ -52,13 +61,38 @@ index e65d0e14..b877a159 100644
 -                              "name": function_name,
 +                              "name": function_name.decode("utf8"),
                                "lines": [],
-@@ -939,4 +949,4 @@ class JerryDebugger(object):
+@@ -939,4 +950,4 @@ class JerryDebugger(object):
                  if not stack:
 -                    func_desc["source"] = source_code
 -                    func_desc["source_name"] = source_code_name
 +                    func_desc["source"] = source_code.decode("utf8")
 +                    func_desc["source_name"] = source_code_name.decode("utf8")
  
+@@ -1153,3 +1164,3 @@ class JerryDebugger(object):
+                 message = self.current_out + message
+-                lines = message.split("\n")
++                lines = message.decode("utf8").split("\n")
+                 self.current_out = lines.pop()
+@@ -1162,3 +1173,3 @@ class JerryDebugger(object):
+                 message = self.current_log + message
+-                lines = message.split("\n")
++                lines = message.decode("utf8").split("\n")
+                 self.current_log = lines.pop()
+@@ -1171,7 +1182,7 @@ class JerryDebugger(object):
+             if subtype == JERRY_DEBUGGER_OUTPUT_WARNING:
+-                return "%swarning: %s%s" % (self.yellow, self.nocolor, message)
++                return "%swarning: %s%s" % (self.yellow, self.nocolor, message.decode("utf8"))
+             elif subtype == JERRY_DEBUGGER_OUTPUT_ERROR:
+-                return "%serr: %s%s" % (self.red, self.nocolor, message)
++                return "%serr: %s%s" % (self.red, self.nocolor, message.decode("utf8"))
+             elif subtype == JERRY_DEBUGGER_OUTPUT_TRACE:
+-                return "%strace: %s%s" % (self.blue, self.nocolor, message)
++                return "%strace: %s%s" % (self.blue, self.nocolor, message.decode("utf8"))
+ 
+@@ -1180,2 +1191,3 @@ class JerryDebugger(object):
+ 
++        message = message.decode("utf8")
+         if not message.endswith("\n"):
 diff --git a/jerry-debugger/jerry_client_websocket.py b/jerry-debugger/jerry_client_websocket.py
 index fe2c761a..07c75e53 100644
 --- a/jerry-debugger/jerry_client_websocket.py
