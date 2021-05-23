@@ -10,7 +10,7 @@ else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
-inherit meson multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="Wayland protocol libraries"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
@@ -35,38 +35,14 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-meson_multilib() {
-	if multilib_is_native_abi; then
-		echo true
-	else
-		echo false
-	fi
-}
-
-meson_multilib_native_use() {
-	if multilib_is_native_abi && use "$1"; then
-		echo true
-	else
-		echo false
-	fi
-}
-
 multilib_src_configure() {
 	local emesonargs=(
-		-Ddocumentation=$(meson_multilib_native_use doc)
-		-Ddtd_validation=$(meson_multilib)
+		$(meson_native_use_bool doc documentation)
+		$(meson_native_true dtd_validation)
 		-Dlibraries=true
 		-Dscanner=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
 }
 
 src_test() {
@@ -78,8 +54,4 @@ src_test() {
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
 	multilib-minimal_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
