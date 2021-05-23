@@ -38,7 +38,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	cat >> ${PN}.pro <<-EOF
+	cat >> ${PN}.pro <<-EOF || die
 		target.path = "${EPREFIX}/usr/$(get_libdir)"
 		headers.path = "${EPREFIX}/usr/include/${PN}"
 		headers.files = \$\$HEADERS
