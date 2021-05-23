@@ -23,13 +23,20 @@ BDEPEND="
 "
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-unbundle.patch
+)
+
 src_prepare() {
 	# benchmarks aren't run
 	sed -i -e 's:pytest-benchmark::' setup.cfg || die
 	# force regen
-#	rm simdjson/csimdjson.cpp || die
+	rm simdjson/csimdjson.cpp || die
+	# bundled lib :-(
+	rm simdjson/simdjson.{cpp,h} || die
 
 	distutils-r1_src_prepare
 
 	export BUILD_WITH_CYTHON=1
+	export BUILD_WITH_SYSTEM_LIB=1
 }
