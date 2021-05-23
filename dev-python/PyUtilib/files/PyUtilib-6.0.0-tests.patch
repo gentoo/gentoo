@@ -1,0 +1,12 @@
+diff --git a/pyutilib/component/loader/tests/test_egg.py b/pyutilib/component/loader/tests/test_egg.py
+index c8674d0..7126e5c 100644
+--- a/pyutilib/component/loader/tests/test_egg.py
++++ b/pyutilib/component/loader/tests/test_egg.py
+@@ -23,6 +23,7 @@ except ImportError:
+ 
+ 
+ @unittest.skipIf(not pkg_resources_avail, "Cannot import 'pkg_resources'")
++@unittest.skipIf(sys.hexversion >= 0x03090000, "Example eggs not generated for python >= 3.9")
+ class Test(pyutilib.th.TestCase):
+ 
+     def test_egg1(self):
