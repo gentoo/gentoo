@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit desktop python-single-r1 scons-utils toolchain-funcs udev multilib-minimal
 
