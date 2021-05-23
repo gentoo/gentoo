@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
-inherit distutils-r1 xdg-utils
+PYTHON_COMPAT=( python3_{7..9} )
+inherit distutils-r1 xdg
 
 DESCRIPTION="A LilyPond sheet music text editor"
 HOMEPAGE="https://www.frescobaldi.org/"
@@ -28,14 +28,4 @@ RDEPEND="${DEPEND}
 python_prepare_all() {
 	rm -r frescobaldi_app/icons/Tango || die "failed to remove tango icon theme"
 	distutils-r1_python_prepare_all
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }
