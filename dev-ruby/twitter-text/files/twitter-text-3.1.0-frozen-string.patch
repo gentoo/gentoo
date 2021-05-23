@@ -1,0 +1,69 @@
+# https://github.com/twitter/twitter-text/pull/337
+diff --git a/lib/twitter-text/deprecation.rb b/lib/twitter-text/deprecation.rb
+index b377abf9..bc66d60f 100644
+--- a/lib/twitter-text/deprecation.rb
++++ b/lib/twitter-text/deprecation.rb
+@@ -8,7 +8,7 @@ module Deprecation
+       def deprecate(method, new_method = nil)
+         deprecated_method = :"deprecated_#{method}"
+         message = "Deprecation: `#{method}` is deprecated."
+-        message << " Please use `#{new_method}` instead." if new_method
++        message += " Please use `#{new_method}` instead." if new_method
+ 
+         alias_method(deprecated_method, method)
+         define_method method do |*args, &block|
+
+diff --git a/lib/twitter-text/autolink.rb b/lib/twitter-text/autolink.rb
+index 82f35302..9b243ec6 100644
+--- a/lib/twitter-text/autolink.rb
++++ b/lib/twitter-text/autolink.rb
+@@ -325,10 +326,10 @@ def link_url_with_entity(entity, options)
+           #   <span style='font-size:0'>&nbsp;</span>
+           #   …
+           # </span>
+-          %(<span class="tco-ellipsis">#{preceding_ellipsis}<span #{invisible_tag_attrs}>&nbsp;</span></span>) <<
+-            %(<span #{invisible_tag_attrs}>#{html_escape(before_display_url)}</span>) <<
+-            %(<span class="js-display-url">#{html_escape(display_url_sans_ellipses)}</span>) <<
+-            %(<span #{invisible_tag_attrs}>#{html_escape(after_display_url)}</span>) <<
++          %(<span class="tco-ellipsis">#{preceding_ellipsis}<span #{invisible_tag_attrs}>&nbsp;</span></span>) +
++            %(<span #{invisible_tag_attrs}>#{html_escape(before_display_url)}</span>) +
++            %(<span class="js-display-url">#{html_escape(display_url_sans_ellipses)}</span>) +
++            %(<span #{invisible_tag_attrs}>#{html_escape(after_display_url)}</span>) +
+             %(<span class="tco-ellipsis"><span #{invisible_tag_attrs}>&nbsp;</span>#{following_ellipsis}</span>)
+         else
+           html_escape(display_url)
+@@ -444,7 +445,7 @@ def tag_attrs(attributes)
+                     else
+                       value
+                     end
+-            attrs << %( #{html_escape(key)}="#{html_escape(value)}")
++            attrs = attrs + %( #{html_escape(key)}="#{html_escape(value)}")
+           end
+ 
+           attrs
+diff --git a/lib/twitter-text/deprecation.rb b/lib/twitter-text/deprecation.rb
+index bc66d60f..cfc4858c 100644
+--- a/lib/twitter-text/deprecation.rb
++++ b/lib/twitter-text/deprecation.rb
+@@ -8,7 +9,7 @@ module Deprecation
+       def deprecate(method, new_method = nil)
+         deprecated_method = :"deprecated_#{method}"
+         message = "Deprecation: `#{method}` is deprecated."
+-        message += " Please use `#{new_method}` instead." if new_method
++        message = "#{message} Please use `#{new_method}` instead." if new_method
+ 
+         alias_method(deprecated_method, method)
+         define_method method do |*args, &block|
+diff --git a/lib/twitter-text/extractor.rb b/lib/twitter-text/extractor.rb
+index a2fd7db7..c96ec200 100644
+--- a/lib/twitter-text/extractor.rb
++++ b/lib/twitter-text/extractor.rb
+@@ -19,7 +20,7 @@ def codepoint_length
+ 
+   # Helper function to convert this string into an array of unicode code points.
+   def to_codepoint_a
+-    @to_codepoint_a ||= if chars.kind_of?(Enumerable)
++    if chars.kind_of?(Enumerable)
+       chars.to_a
+     else
+       codepoint_array = []
