@@ -10,7 +10,7 @@ DESCRIPTION="Configuration manager in your pocket"
 HOMEPAGE="https://github.com/emre/kaptan"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="kaptan"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
