@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Alien package for the GNU Multiple Precision library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
