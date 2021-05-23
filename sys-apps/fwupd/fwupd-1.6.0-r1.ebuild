@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
@@ -13,12 +13,13 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
-IUSE="agent amt archive bluetooth dell gnutls gtk-doc gusb elogind flashrom minimal introspection +man nvme policykit synaptics systemd test thunderbolt tpm uefi"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+IUSE="agent amt archive bluetooth dell gnutls gtk-doc gusb elogind flashrom lzma minimal introspection +man nvme policykit spi synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
 	minimal? ( !introspection )
+	spi? ( lzma )
 	synaptics? ( gnutls )
 	uefi? ( gnutls )
 "
@@ -61,17 +62,15 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( net-libs/gnutls )
 	gusb? ( >=dev-libs/libgusb-0.3.5[introspection?] )
+	lzma? ( app-arch/xz-utils )
 	policykit? ( >=sys-auth/polkit-0.103 )
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
-		media-libs/fontconfig
-		media-libs/freetype
 		sys-boot/gnu-efi
 		sys-boot/efibootmgr
 		sys-fs/udisks
 		sys-libs/efivar
-		x11-libs/cairo
 	)
 "
 # Block sci-chemistry/chemical-mime-data for bug #701900
@@ -88,6 +87,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.5.7-logind_plugin.patch"
+	"${FILESDIR}/${PN}-1.6.0-gusb_deps.patch"
 )
 
 pkg_setup() {
@@ -108,38 +108,49 @@ src_prepare() {
 }
 
 src_configure() {
-	local emesonargs=(
-		--localstatedir "${EPREFIX}"/var
-		-Dbuild="$(usex minimal standalone all)"
-		$(meson_use agent)
+	local plugins=(
 		$(meson_use amt plugin_amt)
-		$(meson_use archive libarchive)
-		$(meson_use bluetooth bluez)
 		$(meson_use dell plugin_dell)
-		$(meson_use elogind)
 		$(meson_use flashrom plugin_flashrom)
-		$(meson_use gnutls)
-		$(meson_use gtk-doc gtkdoc)
-		$(meson_use gusb)
 		$(meson_use gusb plugin_altos)
-		$(meson_use man)
 		$(meson_use nvme plugin_nvme)
-		$(meson_use introspection)
-		$(meson_use policykit polkit)
+		$(meson_use spi plugin_intel_spi)
 		$(meson_use synaptics plugin_synaptics_mst)
 		$(meson_use synaptics plugin_synaptics_rmi)
-		$(meson_use systemd)
-		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
 		$(meson_use tpm plugin_tpm)
 		$(meson_use uefi plugin_uefi_capsule)
+		$(meson_use uefi plugin_uefi_capsule_splash)
 		$(meson_use uefi plugin_uefi_pk)
-		-Dconsolekit="false"
-		-Dcurl="true"
+
 		# Dependencies are not available (yet?)
 		-Dplugin_modem_manager="false"
 	)
-	use ppc64 && emesonargs+=( -Dplugin_msr="false" )
+	use ppc64 && plugins+=( -Dplugin_msr="false" )
+
+	local emesonargs=(
+		--localstatedir "${EPREFIX}"/var
+		-Dbuild="$(usex minimal standalone all)"
+		-Dconsolekit="false"
+		-Dcurl="true"
+		-Defi_binary="false"
+		-Dsupported_build="true"
+		$(meson_use agent)
+		$(meson_use archive libarchive)
+		$(meson_use bluetooth bluez)
+		$(meson_use elogind)
+		$(meson_use gnutls)
+		$(meson_use gtk-doc gtkdoc)
+		$(meson_use gusb)
+		$(meson_use lzma)
+		$(meson_use man)
+		$(meson_use introspection)
+		$(meson_use policykit polkit)
+		$(meson_use systemd)
+		$(meson_use test tests)
+
+		${plugins[@]}
+	)
 	use uefi && emesonargs+=( -Defi_os_dir="gentoo" )
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
@@ -149,7 +160,7 @@ src_install() {
 	meson_src_install
 
 	if ! use minimal ; then
-		doinitd "${FILESDIR}"/${PN}-r2
+		newinitd "${FILESDIR}"/${PN}-r2 ${PN}
 
 		if ! use systemd ; then
 			# Don't timeout when fwupd is running (#673140)
@@ -157,12 +168,4 @@ src_install() {
 				-i "${ED}"/etc/${PN}/daemon.conf || die
 		fi
 	fi
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	elog "In case you are using openrc as init system"
-	elog "and you're upgrading from <fwupd-1.1.0, you"
-	elog "need to start the fwupd daemon via the openrc"
-	elog "init script that comes with this package."
 }
