@@ -1,0 +1,30 @@
+--- cuneiform-linux-1.1.0/cuneiform_src/Kern/hh/internal.h.orig	2021-05-23 10:45:12.714043888 +0300
++++ cuneiform-linux-1.1.0/cuneiform_src/Kern/hh/internal.h	2021-05-23 10:45:47.233178549 +0300
+@@ -84,6 +84,7 @@
+    #endif
+ 
+    #if !defined(__MATH_H) && !defined(_INC_MATH)
++      #undef _GLIBCXX_USE_STD_SPEC_FUNCS
+       #include <math.h>
+    #endif
+ 
+--- cuneiform-linux-1.1.0/cuneiform_src/Kern/ced/sources/main/ced_func_rtf.cpp.orig	2021-05-23 10:51:00.757379453 +0300
++++ cuneiform-linux-1.1.0/cuneiform_src/Kern/ced/sources/main/ced_func_rtf.cpp	2021-05-23 10:51:22.445461911 +0300
+@@ -212,7 +212,7 @@
+     }
+ */
+     // write the text lines
+-	for (;sect>0;sect=sect->next)
++	for (;sect;sect=sect->next)
+ 	{
+ 		if (!WriteRtfSection(rtf,sect)) goto WRITE_END; //write section properties
+ 		//	int sectNum=0;
+@@ -897,7 +897,7 @@
+ //    if (curChar->fontNum>=rtf->page->fontsUsed || (prevChar&&prevChar->fontNum>=rtf->page->fontsUsed)) return TRUE;
+ 
+     // extract value for comparison
+-    if (prevChar>0) {
++    if (prevChar) {
+ //       lstrcpy(PrevTypeFace,TerFont[PrevFont].TypeFace);
+        PrevFamily=rtf->table[rtf->page->GetFontByNum(prevChar->fontNum)];
+        PrevStyle=prevChar->fontAttribs;
