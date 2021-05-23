@@ -25,3 +25,4 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+distutils_enable_sphinx doc
