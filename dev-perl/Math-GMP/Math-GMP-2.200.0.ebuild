@@ -11,7 +11,7 @@ DESCRIPTION="High speed arbitrary size integer math"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
