@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit desktop python-r1
 
 DESCRIPTION="A little puzzle game, similar to the famous Bejeweled or Zookeeper"
