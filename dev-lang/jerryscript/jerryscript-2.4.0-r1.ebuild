@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake
+PYTHON_COMPAT=(python3_{7,8,9})
+inherit cmake python-any-r1
 
 DESCRIPTION="Ultra-lightweight JavaScript engine for the Internet of Things"
 HOMEPAGE="https://github.com/jerryscript-project/jerryscript"
@@ -12,12 +13,21 @@ SRC_URI="https://github.com/jerryscript-project/${PN}/archive/refs/tags/v${PV}.t
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="debugger"
+RDEPEND="debugger? ( ${PYTHON_DEPS} )"
+BDEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/jerryscript-2.4.0-python3.patch"
+)
 
 src_prepare() {
 	find . -name CMakeLists.txt -print0 | xargs -0 sed -i \
 		-e "s:lib/pkgconfig:$(get_libdir)/pkgconfig:" \
 		-e "s:DESTINATION lib):DESTINATION $(get_libdir)):" \
+		|| die
+	find . -name '*.pc.in' -print0 | xargs -0 sed -i \
+		-e "s|/lib\$|/$(get_libdir)|" \
 		|| die
 	cmake_src_prepare
 }
@@ -40,5 +50,21 @@ src_configure() {
 }
 
 src_install() {
+	local jerry_debugger_dir
 	cmake_src_install
+
+	if use debugger; then
+		jerry_debugger_dir=/usr/$(get_libdir)/jerryscript/jerry-debugger
+		insinto "${jerry_debugger_dir}"
+		doins jerry-debugger/*.py
+		python_optimize "${ED}${jerry_debugger_dir}"
+
+		cat <<-EOF > "${T}/jerry-debugger"
+		#!/bin/sh
+		export PYTHONPATH=${EPREFIX}${jerry_debugger_dir}
+		exec python "${jerry_debugger_dir}/jerry_client.py" "\$@"
+		EOF
+
+		dobin "${T}"/jerry-debugger
+	fi
 }

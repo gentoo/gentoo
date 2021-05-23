@@ -9,4 +9,7 @@
 		<bugs-to>https://github.com/jerryscript-project/jerryscript/issues</bugs-to>
 		<remote-id type="github">jerryscript-project/jerryscript</remote-id>
 	</upstream>
+	<use>
+		<flag name="debugger">Install jerry-debugger</flag>
+	</use>
 </pkgmetadata>
