@@ -635,11 +635,6 @@ dev-dotnet/notify-sharp
 # and accept a more unstable release.
 >=www-client/chromium-92
 
-# Michał Górny <mgorny@gentoo.org> (2021-04-22)
-# py3.7 backport with no revdeps left.
-# Removal on 2021-05-22.  Bug #784983.
-dev-python/idna-ssl
-
 # Ulrich Müller <ulm@gentoo.org> (2021-04-20)
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
