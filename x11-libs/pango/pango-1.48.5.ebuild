@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	dev-util/glib-utils
+	sys-apps/help2man
 	virtual/pkgconfig
 	gtk-doc? (
 		dev-util/gi-docgen
