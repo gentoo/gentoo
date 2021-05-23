@@ -603,14 +603,6 @@ dev-java/istack-commons-buildtools
 # net-libs/liquid-dsp. Bug #777720, removal in 30 days.
 net-wireless/cubicsdr
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
-# dev-dotnet/gtk-sharp is effectively unmaintained. Last upstream release
-# in 2016, version packaged in Gentoo from 2013. gtk-sharp-3 never made it
-# out of beta state. An actively developed fork that targets GTK3 exists:
-# https://github.com/GtkSharp/GtkSharp
-# Removal on 2021-05-24. Tracker bug #769041
-dev-dotnet/gtk-sharp
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
