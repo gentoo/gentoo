@@ -77,6 +77,12 @@ src_configure() {
 	append-cppflags -D_PATH_USRBIN="'"'"${EPREFIX}/usr/bin"'"'"
 	append-cppflags -D_PATH_BIN="'"'"${EPREFIX}/bin"'"'"
 
+	# musl's utmp is non-functional
+	if use elibc_musl ; then
+		export ac_cv_header_utmp_h=no
+		export ac_cv_header_utmpx_h=no
+	fi
+
 	econf \
 		--prefix="${EPREFIX:-}" \
 		--datarootdir='${prefix}/usr/share' \
