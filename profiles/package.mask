@@ -561,10 +561,6 @@ dev-java/commons-fileupload
 # see bug: https://bugs.gentoo.org/785796
 dev-java/commons-el
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-25)
-# Broken, bug 616986; removal in 30 days
-dev-perl/HTTPD-User-Manage
-
 # Jonas Stein <jstein@gentoo.org> (2021-04-25)
 # Bad SRC_URI, dead upstream.
 # Removal on 2021-06-01.  Bug #785736.
