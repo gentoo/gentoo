@@ -23,7 +23,6 @@ DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
 # baselayout-java is added as a dep till it can be added to eclass.
 RDEPEND="
-	!dev-java/java-config-wrapper
 	sys-apps/baselayout-java
 	sys-apps/portage[${PYTHON_USEDEP}]"
 
