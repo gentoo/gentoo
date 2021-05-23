@@ -73,7 +73,7 @@ COMMON_DEPEND="
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lua? ( ${LUA_DEPS} )
 	opencl? ( virtual/opencl )
-	openexr? ( media-libs/openexr:0= )
+	openexr? ( <media-libs/openexr-3.0.0:0= )
 	webp? ( media-libs/libwebp:0= )
 "
 DEPEND="${COMMON_DEPEND}
