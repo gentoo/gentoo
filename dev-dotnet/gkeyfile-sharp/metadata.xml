@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">mono/gkeyfile-sharp</remote-id>
-		<remote-id type="launchpad">gkeyfile-sharp</remote-id>
-	</upstream>
-</pkgmetadata>
