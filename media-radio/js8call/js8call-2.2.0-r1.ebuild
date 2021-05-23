@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/widefido/js8call/get/v${PV}-ga.tar.bz2 -> ${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 RDEPEND="dev-qt/qtcore:5
