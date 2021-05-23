@@ -611,11 +611,6 @@ net-wireless/cubicsdr
 # Removal on 2021-05-24. Tracker bug #769041
 dev-dotnet/gtk-sharp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
-# Depends on deprecated dev-dotnet/gtk-sharp, bug #769077
-# Removal on 2021-05-24
-app-misc/gnutu
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
