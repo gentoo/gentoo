@@ -48,6 +48,10 @@ all_ruby_prepare() {
 
 	# Avoid test that requires unpackaged fixture
 	sed -i -e '/sub_test_case..FreeTypeFontFace/,/^  end/ s:^:#:' test/test_font_face.rb || die
+
+	# Bug 790131
+	sed -i -e '/^install-headers:/s!$! $(TIMESTAMP_DIR)/.sitearchdir.time!' \
+		ext/cairo/depend || die
 }
 
 each_ruby_test() {
