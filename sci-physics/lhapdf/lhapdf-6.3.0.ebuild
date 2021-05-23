@@ -37,6 +37,7 @@ BDEPEND="
 S="${WORKDIR}/${MY_PF}"
 
 src_configure() {
+	CONFIG_SHELL="${EPREFIX}/bin/bash" \
 	econf \
 		--disable-static \
 		$(use_enable python)
