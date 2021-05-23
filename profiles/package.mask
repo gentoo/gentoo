@@ -574,12 +574,6 @@ dev-perl/Text-Unaccent
 # Removal on 2021-06-01.  Bug #785736.
 app-misc/logitech-applet
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-25)
-# obsolete package, nothing depends on it
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/785508
-dev-java/velocity-dvsl
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
