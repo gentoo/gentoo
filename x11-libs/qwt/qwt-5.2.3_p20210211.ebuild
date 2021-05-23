@@ -33,7 +33,7 @@ src_prepare() {
 	default
 	sed -e "/QwtVersion/s:5.2.2.:${PV/_*}:g" -i ${PN}.prf || die
 
-	cat > qwtconfig.pri <<-EOF
+	cat > qwtconfig.pri <<-EOF || die
 		target.path = "${EPREFIX}/usr/$(get_libdir)"
 		headers.path = "${EPREFIX}/usr/include/qwt5"
 		doc.path = "${EPREFIX}/usr/share/doc/${PF}"
@@ -46,7 +46,7 @@ src_prepare() {
 	# Fails to compile with MathML enabled
 	#use mathml && echo "CONFIG += QwtMathML" >> qwtconfig.pri
 
-	cat >> qwtconfig.pri <<-EOF
+	cat >> qwtconfig.pri <<-EOF || die
 		QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt5_get_plugindir)/designer"
 		QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt5_get_mkspecsdir)/features"
 	EOF
@@ -68,7 +68,7 @@ src_install () {
 
 	if use examples; then
 		# don't build examples - fix the qt files to build once installed
-		cat > examples/examples.pri <<-EOF
+		cat > examples/examples.pri <<-EOF || die
 			include( qwtconfig.pri )
 			TEMPLATE     = app
 			MOC_DIR      = moc

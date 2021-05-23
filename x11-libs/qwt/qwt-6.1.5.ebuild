@@ -39,7 +39,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	cat > qwtconfig.pri <<-EOF
+	cat > qwtconfig.pri <<-EOF || die
 		QWT_INSTALL_LIBS = "${EPREFIX}/usr/$(get_libdir)"
 		QWT_INSTALL_HEADERS = "${EPREFIX}/usr/include/qwt6"
 		QWT_INSTALL_DOCS = "${EPREFIX}/usr/share/doc/${PF}"
@@ -53,13 +53,13 @@ src_prepare() {
 	use opengl && echo "QWT_CONFIG += QwtOpenGL" >> qwtconfig.pri
 	use svg && echo "QWT_CONFIG += QwtSvg" >> qwtconfig.pri
 
-	cat > qwtbuild.pri <<-EOF
+	cat > qwtbuild.pri <<-EOF || die
 		QWT_CONFIG += qt warn_on thread release no_keywords
 	EOF
 
 	echo "QWT_CONFIG += QwtDll" >> qwtconfig.pri
 
-	cat >> qwtconfig.pri <<-EOF
+	cat >> qwtconfig.pri <<-EOF || die
 		QWT_INSTALL_PLUGINS   = "${EPREFIX}$(qt5_get_plugindir)/designer"
 		QWT_INSTALL_FEATURES  = "${EPREFIX}$(qt5_get_mkspecsdir)/features"
 	EOF
@@ -113,7 +113,7 @@ src_install() {
 
 	if use examples; then
 		# don't build examples - fix the qt files to build once installed
-		cat > examples/examples.pri <<-EOF
+		cat > examples/examples.pri <<-EOF || die
 			include( qwtconfig.pri )
 			TEMPLATE     = app
 			MOC_DIR      = moc
