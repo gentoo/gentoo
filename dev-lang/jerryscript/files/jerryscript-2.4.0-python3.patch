@@ -1,0 +1,88 @@
+From 3f725c9a6e62048dcc7e1d0dd0f9c3e8d2e092f6 Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gmail.com>
+Date: Sun, 23 May 2021 13:46:30 -0700
+Subject: [PATCH] Python debugger support for Python 3 (in addition to Python 2)
+
+https://github.com/jerryscript-project/jerryscript/pull/4678
+
+- Added ord builtin compatibility to pass through int arguments
+- Fixed JerryDebugger _parse_source method to decode bytes as utf8 strings
+- Fixed WebSocket send_message method to use packed_data[0:1] bytes slice
+
+JerryScript-DCO-1.0-Signed-off-by: Zac Medico <zmedico@gmail.com>
+---
+ jerry-debugger/jerry_client_main.py      | 26 ++++++++++++++++--------
+ jerry-debugger/jerry_client_websocket.py | 14 ++++++++++++-
+ 2 files changed, 31 insertions(+), 9 deletions(-)
+
+diff --git a/jerry-debugger/jerry_client_main.py b/jerry-debugger/jerry_client_main.py
+index e65d0e14..b877a159 100644
+--- a/jerry-debugger/jerry_client_main.py
++++ b/jerry-debugger/jerry_client_main.py
+@@ -151,2 +151,12 @@ def arguments_parse():
+ 
++if sys.version_info.major >= 3:
++    _ord_orig = ord
++    def _ord_compat(c):
++        if isinstance(c, int):
++            return c
++        return _ord_orig(c)
++    # pylint: disable=redefined-builtin
++    ord = _ord_compat
++
++
+ class JerryBreakpoint(object):
+@@ -866,5 +876,5 @@ class JerryDebugger(object):
+     def _parse_source(self, data):
+-        source_code = ""
+-        source_code_name = ""
+-        function_name = ""
++        source_code = b""
++        source_code_name = b""
++        function_name = b""
+         stack = [{"line": 1,
+@@ -905,7 +915,7 @@ class JerryDebugger(object):
+ 
+-                stack.append({"source": source_code,
+-                              "source_name": source_code_name,
++                stack.append({"source": source_code.decode("utf8"),
++                              "source_name": source_code_name.decode("utf8"),
+                               "line": position[0],
+                               "column": position[1],
+-                              "name": function_name,
++                              "name": function_name.decode("utf8"),
+                               "lines": [],
+@@ -939,4 +949,4 @@ class JerryDebugger(object):
+                 if not stack:
+-                    func_desc["source"] = source_code
+-                    func_desc["source_name"] = source_code_name
++                    func_desc["source"] = source_code.decode("utf8")
++                    func_desc["source_name"] = source_code_name.decode("utf8")
+ 
+diff --git a/jerry-debugger/jerry_client_websocket.py b/jerry-debugger/jerry_client_websocket.py
+index fe2c761a..07c75e53 100644
+--- a/jerry-debugger/jerry_client_websocket.py
++++ b/jerry-debugger/jerry_client_websocket.py
+@@ -17,2 +17,3 @@
+ import struct
++import sys
+ 
+@@ -22,2 +23,13 @@ WEBSOCKET_FIN_BIT = 0x80
+ 
++
++if sys.version_info.major >= 3:
++    _ord_orig = ord
++    def _ord_compat(c):
++        if isinstance(c, int):
++            return c
++        return _ord_orig(c)
++    # pylint: disable=redefined-builtin
++    ord = _ord_compat
++
++
+ class WebSocket(object):
+@@ -94,3 +106,3 @@ class WebSocket(object):
+                               WEBSOCKET_BINARY_FRAME | WEBSOCKET_FIN_BIT,
+-                              WEBSOCKET_FIN_BIT + struct.unpack(byte_order + "B", packed_data[0])[0],
++                              WEBSOCKET_FIN_BIT + struct.unpack(byte_order + "B", packed_data[0:1])[0],
+                               0) + packed_data[1:]
