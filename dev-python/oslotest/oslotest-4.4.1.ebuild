@@ -19,4 +19,7 @@ RDEPEND="
 	>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/subunit-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]"
+	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest
