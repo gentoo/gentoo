@@ -71,7 +71,7 @@ src_prepare() {
 	sed -i -r 's:\<(O[FN])\>:_Z_\1:g' 3rdparty/minigzip/minigzip.c || die
 
 	# fix paths
-	cat >> config.pri <<-EOF
+	cat >> config.pri <<-EOF || die
 		# install docs to ${PF} instead of ${PN}
 		documentation.path = "\$\$INSTALLBASE/share/doc/${PF}"
 
