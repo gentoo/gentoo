@@ -616,13 +616,6 @@ dev-dotnet/gtk-sharp
 # Removal on 2021-05-24
 app-misc/gnutu
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-24)
-# Depends on deprecated dev-dotnet/gtk-sharp, bug #769083
-# Alternatives (all in app-editors category): curses-hexedit, dhex, ghex,
-# hexcurse, okteta, qhexedit2, shed, wxhexeditor
-# Removal on 2021-05-24
-dev-util/bless
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
