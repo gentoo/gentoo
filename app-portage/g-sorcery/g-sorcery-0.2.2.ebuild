@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1 prefix
@@ -19,10 +19,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bson git test"
 RESTRICT="!test? ( test )"
 
-DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
+BDEPEND="
+	bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	git? ( dev-vcs/git )
 	sys-apps/portage[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="${BDEPEND}"
 PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
 
 src_prepare() {
@@ -31,7 +32,7 @@ src_prepare() {
 }
 
 python_test() {
-	PYTHONPATH="." "${PYTHON}" scripts/run_tests.py
+	PYTHONPATH="." "${PYTHON}" scripts/run_tests.py || die
 }
 
 python_install_all() {
