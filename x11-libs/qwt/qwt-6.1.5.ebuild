@@ -6,7 +6,7 @@ EAPI=7
 inherit qmake-utils
 
 DESCRIPTION="2D plotting library for Qt5"
-HOMEPAGE="https://qwt.sourceforge.net/"
+HOMEPAGE="https://qwt.sourceforge.io/"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="qwt mathml? ( LGPL-2.1 Nokia-Qt-LGPL-Exception-1.1 )"
