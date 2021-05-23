@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${P}-typos.patch
+	"${FILESDIR}"/${P}-gcc11.patch
 )
 
 src_prepare() {
