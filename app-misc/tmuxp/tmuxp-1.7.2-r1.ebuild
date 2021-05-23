@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="tmux session manager. built on libtmux"
@@ -14,7 +13,6 @@ SRC_URI="https://github.com/tmux-python/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="test"
 
 RDEPEND="
 	>=app-misc/tmux-3.0a
@@ -24,9 +22,8 @@ RDEPEND="
 	>=dev-python/click-7.0[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.9[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
 	test? (
-		>=dev-python/pytest-4.1.1[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-rerunfailures-4.2[${PYTHON_USEDEP}]
 		!dev-python/flaky
@@ -39,8 +36,8 @@ PATCHES=(
 	"${FILESDIR}/tmuxp-1.7.2-relax-click-dep.patch"
 )
 
-distutils_enable_tests --install pytest
+distutils_enable_tests pytest
 
 python_test() {
-	SHELL="/bin/bash" pytest -vv || die "Tests fail with ${EPYTHON}"
+	SHELL="/bin/bash" epytest
 }
