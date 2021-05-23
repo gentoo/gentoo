@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit desktop gnome2-utils python-single-r1 wrapper xdg
 
 DESCRIPTION="A side scrolling shooter game starring a steamboat on the sea"
