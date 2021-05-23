@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -11,7 +11,9 @@ MY_PV=${PV%.0}
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="An implementation of lxml.xmlfile for the standard library"
-HOMEPAGE="https://pypi.org/project/et-xmlfile/"
+HOMEPAGE="
+	https://pypi.org/project/et-xmlfile/
+	https://foss.heptapod.net/openpyxl/et_xmlfile/"
 SRC_URI="
 	https://foss.heptapod.net/openpyxl/et_xmlfile/-/archive/${MY_PV}/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
