@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit desktop python-single-r1
+inherit desktop python-single-r1 toolchain-funcs
 
 DESCRIPTION="An enriched clone of the game 'Logical' by Rainbow Arts"
 HOMEPAGE="http://pathological.sourceforge.net/"
@@ -70,6 +70,8 @@ src_prepare() {
 		${PN}.py || die
 
 	python_fix_shebang ${PN}.py
+
+	tc-export CC
 }
 
 src_install() {
