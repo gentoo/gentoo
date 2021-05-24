@@ -37,7 +37,7 @@ RDEPEND="
 	dev-cpp/gtkmm:3.0
 	dev-cpp/gtksourceviewmm:3.0
 	dev-cpp/libxmlpp:2.6
-	dev-cpp/pangomm
+	dev-cpp/pangomm:1.4
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	dev-libs/libfmt
