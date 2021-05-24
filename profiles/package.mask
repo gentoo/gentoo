@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2021-05-24)
+# Hack on hack no longer sustainable
+# - seemingly dead upstream
+# - no (official) Python 3 support
+# removal in 30 days, bug: https://bugs.gentoo.org/791613
+app-admin/diamond
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-24)
 # it's just a demo project, not a real app, see disclaimer
 # at https://github.com/romainguy/jext
