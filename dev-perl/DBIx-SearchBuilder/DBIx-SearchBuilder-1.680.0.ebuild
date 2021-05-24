@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encapsulate SQL queries and rows in simple Perl objects"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
