@@ -24,7 +24,8 @@ BDEPEND="
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}"/${P}-unbundle.patch
+	"${FILESDIR}"/pysimdjson-4.0.0-unbundle.patch
+	"${FILESDIR}"/pysimdjson-4.0.0-error-types.patch
 )
 
 src_prepare() {
