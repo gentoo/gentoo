@@ -45,7 +45,7 @@ if [[ ${PV} == "9999" ]]; then
 	REQUIRED_USE+=" html"
 	BDEPEND+=" virtual/w3m"
 else
-	BDEPEND+=" verify-sig? ( app-crypt/openpgp-keys-mlichvar )"
+	BDEPEND+=" verify-sig? ( <=app-crypt/openpgp-keys-mlichvar-20210416 )"
 fi
 
 DEPEND="
