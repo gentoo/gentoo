@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-05-24)
+# New version is a complete rewrite of the library,
+# masking until all revdeps are ported to version 2
+>=net-libs/libyang-2.0.0
+
 # Andrey Grozin <grozin@gentoo.org> (2021-05-25)
 # DEPENDs on sci-libs/proj-8
 # Unmask after unmasking proj-8
