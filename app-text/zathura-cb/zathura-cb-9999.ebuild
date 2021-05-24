@@ -19,11 +19,13 @@ HOMEPAGE="https://pwmt.org/projects/zathura-cb/"
 
 LICENSE="ZLIB"
 SLOT="0"
+IUSE="jpeg"
 
 DEPEND=">=app-text/zathura-0.3.9
 	dev-libs/girara
 	dev-libs/glib:2
-	x11-libs/cairo"
+	x11-libs/cairo
+	jpeg? ( x11-libs/gdk-pixbuf:=[jpeg] )"
 
 RDEPEND="${DEPEND}"
 
