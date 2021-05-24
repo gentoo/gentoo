@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
 
-inherit cmake python-any-r1 xdg-utils
+inherit cmake python-any-r1 xdg
 
 DESCRIPTION="A hierarchical note taking application (C++ version)"
 HOMEPAGE="https://www.giuspen.com/cherrytree https://github.com/giuspen/cherrytree"
@@ -86,16 +86,4 @@ src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
