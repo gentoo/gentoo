@@ -14,6 +14,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-lin
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# https://bugs.gentoo.org/721206
+# https://rt.cpan.org/Public/Bug/Display.html?id=132442
+LICENSE="Artistic"
+
 RDEPEND="
 	>=dev-perl/File-HomeDir-0.57
 "
