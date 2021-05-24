@@ -27,9 +27,9 @@ KEYWORDS=""
 IUSE=""
 
 BDEPEND="~dev-libs/protobuf-${PV}
-	>=virtual/jdk-1.7"
-DEPEND=">=virtual/jdk-1.7"
-RDEPEND=">=virtual/jre-1.7
+	>=virtual/jdk-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*
 	!<dev-libs/protobuf-3[java(-)]"
 
 S="${WORKDIR}/protobuf-${PV}/java"
