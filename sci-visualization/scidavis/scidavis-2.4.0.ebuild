@@ -50,7 +50,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	dev-qt/qtchooser
+	dev-qt/linguist-tools:5
 	test? (
 		dev-libs/unittest++
 		dev-cpp/gtest
