@@ -24,6 +24,9 @@ BDEPEND="
 	test? ( dev-python/PyUtilib[${PYTHON_USEDEP}] )
 "
 
+# tests fail on gcc newer than 5.8
+RESTRICT="test"
+
 distutils_enable_tests pytest
 
 python_test() {
