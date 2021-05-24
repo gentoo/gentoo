@@ -5,7 +5,7 @@ EAPI=7
 
 MY_P=YAP-${PV}
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake flag-o-matic python-r1
 
