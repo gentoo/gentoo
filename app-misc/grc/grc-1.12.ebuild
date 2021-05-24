@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
-
+PYTHON_COMPAT=( python3_{3..10} )
 inherit python-r1
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
