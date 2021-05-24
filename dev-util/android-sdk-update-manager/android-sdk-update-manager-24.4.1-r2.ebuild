@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop user udev
+inherit desktop udev
 
 ANDROID_SDK_DIR="/opt/android-sdk-update-manager"
 MY_P="android-sdk_r${PV}-linux"
