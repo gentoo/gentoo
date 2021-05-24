@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
@@ -15,22 +15,14 @@ SRC_URI="https://github.com/gcovr/gcovr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
 
 RDEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		dev-python/PyUtilib[${PYTHON_USEDEP}]
-	)
+BDEPEND="
+	test? ( dev-python/PyUtilib[${PYTHON_USEDEP}] )
 "
-
-# tests fail on gcc newer than 5.8
-# https://github.com/gcovr/gcovr/issues/206
-RESTRICT="test"
 
 distutils_enable_tests pytest
 
@@ -40,5 +32,11 @@ python_test() {
 	local -x PATH="${TEST_DIR}/scripts:${PATH}" \
 		PYTHONPATH="${TEST_DIR}/lib"
 
-	pytest -vv gcovr || die "Tests fail with ${EPYTHON}"
+	local deselect=(
+		# those tests fail on gcc newer than 5.8
+		# https://github.com/gcovr/gcovr/issues/206
+		gcovr/tests/test_gcovr.py
+	)
+
+	epytest gcovr ${deselect[@]/#/--deselect }
 }
