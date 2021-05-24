@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="DateTime::Set extension for create basic recurrence sets"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
