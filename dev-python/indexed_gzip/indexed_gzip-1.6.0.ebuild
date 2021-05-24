@@ -39,9 +39,9 @@ src_compile() {
 python_test() {
 	local ignore=(
 		# requires nibabel
-		indexed_gzip/tests/test_nibabel_integration.py
+		test_nibabel_integration.py
 	)
 
-	cd "${BUILD_DIR}"/lib || die
+	cd "${BUILD_DIR}"/lib/indexed_gzip/tests || die
 	epytest ${ignore[@]/#/--ignore }
 }
