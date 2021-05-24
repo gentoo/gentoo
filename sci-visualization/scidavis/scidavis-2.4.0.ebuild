@@ -29,9 +29,11 @@ RDEPEND="
 	dev-cpp/muParser
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	sci-libs/gsl
 	sys-libs/zlib[minizip]
 	x11-libs/qwt:5
