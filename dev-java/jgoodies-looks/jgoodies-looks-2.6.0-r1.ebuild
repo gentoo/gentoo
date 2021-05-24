@@ -33,7 +33,6 @@ DEPEND="
 BDEPEND="
 	app-arch/unzip"
 
-
 S="${WORKDIR}"/${P}
 
 JAVA_SRC_DIR="src"
