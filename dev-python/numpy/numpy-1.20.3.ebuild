@@ -46,6 +46,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/numpy-1.20.1-no-hardcode-blasv2.patch
 	"${FILESDIR}"/numpy-1.20.2-fix-ccompiler-tests.patch
+	"${FILESDIR}"/numpy-1.20.2-fix-popcnt-detection.patch
 	"${FILESDIR}"/numpy-1.20.3-float-hashing-py310.patch
 )
 
