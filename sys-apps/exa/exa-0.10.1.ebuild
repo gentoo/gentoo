@@ -87,7 +87,7 @@ IUSE="+git"
 DEPEND="git? ( dev-libs/libgit2:= )"
 RDEPEND="${DEPEND}"
 
-# some tests fail on tmpfs/zfs/btrfs
+#some tests fail on tmpfs/zfs/btrfs
 RESTRICT="test"
 
 QA_FLAGS_IGNORED="/usr/bin/exa"
