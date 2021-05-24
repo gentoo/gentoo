@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Self-contained crypto toolkit"
 LICENSE="|| ( Artistic GPL-1+ ) public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ia64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc64 x86"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 
