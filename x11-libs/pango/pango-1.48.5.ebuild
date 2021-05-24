@@ -84,10 +84,11 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	if use gtk-doc; then
-		mv "${ED}"/usr/share/doc/{${PN},${P}} || die
-	fi
 	einstalldocs
+	if use gtk-doc; then
+		mv "${ED}"/usr/share/doc/{${PN}/reference/,${PF}/html/} || die
+		rmdir "${ED}"/usr/share/doc/${PN} || die
+	fi
 }
 
 pkg_postinst() {
