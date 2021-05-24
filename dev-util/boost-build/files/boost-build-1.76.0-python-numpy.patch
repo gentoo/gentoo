@@ -1,0 +1,24 @@
+From 61adb508853be1fa2c01a0c3a0c55fbd16cb9a52 Mon Sep 17 00:00:00 2001
+From: Peter Dimov <pdimov@gmail.com>
+Date: Mon, 24 May 2021 22:11:23 +0300
+Subject: [PATCH] Declare the /python//numpy target to hold the include path
+ (fixes #725)
+
+---
+ tools/python.jam | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tools/python.jam b/tools/python.jam
+index 00706932d2..0dfc750a22 100644
+--- a/tools/python.jam
++++ b/tools/python.jam
+@@ -1052,6 +1052,9 @@ local rule configure ( version ? : cmd-or-prefix ? : includes * : libraries ? :
+             ;
+     }
+ 
++    # Declare the numpy target, which contains the NumPy include directory
++
++    alias numpy : : $(target-requirements) : : <include>$(.numpy-include) ;
+ }
+ 
+ # Conditional rule specification that will prevent building of a target
