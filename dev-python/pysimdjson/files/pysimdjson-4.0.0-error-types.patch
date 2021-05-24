@@ -1,0 +1,53 @@
+commit 1145be6cac70ed065f2053977d470f3f771ac6a0
+Author: Tyler Kennedy <tk@tkte.ch>
+Date:   Sun May 23 15:55:28 2021 -0400
+
+    Empty buffers now raise identical error to empty bytes. Closes #81.
+
+diff --git a/simdjson/csimdjson.pyx b/simdjson/csimdjson.pyx
+index 095a183..c278e08 100644
+--- a/simdjson/csimdjson.pyx
++++ b/simdjson/csimdjson.pyx
+@@ -478,6 +478,13 @@ cdef class Parser:
+             # type-specific APIs, but gives much greater compatibility.
+             data = src
+ 
++            if data.size == 0:
++                # If we were given a completely empty buffer, trying to access
++                # a stride in the next step will cause a (potentially
++                # confusing) IndexError. This isn't a very good error message,
++                # but it's identical to the one simdjson would have raised.
++                raise ValueError('Empty: no JSON found')
++
+             return element_to_primitive(
+                 self,
+                 dereference(self.c_parser).parse(
+diff --git a/tests/test_parser.py b/tests/test_parser.py
+index 88e7207..d3a28c7 100644
+--- a/tests/test_parser.py
++++ b/tests/test_parser.py
+@@ -1,3 +1,4 @@
++import io
+ import pathlib
+ 
+ import pytest
+@@ -32,6 +33,19 @@ def test_parse_str(parser):
+     assert doc.as_dict() == {'hello': 'world'}
+ 
+ 
++def test_parse_empty_buffer(parser):
++    """Ensure trying to parse an empty buffer returns an error consistent
++    with attempting to parse an empty bytestring."""
++    # Issue #81
++    with pytest.raises(ValueError) as bytes_exc:
++        parser.parse(b'')
++
++    with pytest.raises(ValueError) as buffer_exc:
++        parser.parse(io.BytesIO(b'').getbuffer())
++
++    assert str(bytes_exc.value) == str(buffer_exc.value)
++
++
+ def test_unicode_decode_error(parser):
+     """Ensure the parser raises encoding issues."""
+     with pytest.raises(UnicodeDecodeError):
