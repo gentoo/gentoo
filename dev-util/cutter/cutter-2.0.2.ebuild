@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 TRANS_COMMIT="974298653ba71b958e1b6c83f6011f5fefff6236"
 
 inherit cmake toolchain-funcs xdg-utils python-single-r1
