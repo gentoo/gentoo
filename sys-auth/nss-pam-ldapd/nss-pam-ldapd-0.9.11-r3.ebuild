@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7..8})
+PYTHON_COMPAT=(python3_{7..9})
 inherit prefix python-r1 autotools multilib multilib-minimal systemd s6 tmpfiles
 
 DESCRIPTION="NSS module for name lookups using LDAP"
@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}/nss-pam-ldapd-0.9.11-use-mkstemp.patch"
 	"${FILESDIR}/nss-pam-ldapd-0.9.11-relative-imports.patch"
 	"${FILESDIR}/nss-pam-ldapd-0.9.11-tests.patch"
+	"${FILESDIR}/nss-pam-ldapd-0.9.11-tests-py39.patch"
 )
 
 src_prepare() {
@@ -100,7 +101,8 @@ multilib_src_test() {
 }
 
 python_test() {
-	emake check
+	cp -l "${S}"/pynslcd/*.py pynslcd/ || die "Could not copy python files for tests"
+	nonfatal emake check || die "tests failed with ${EPYTHON}"
 }
 
 multilib_src_install_all() {
