@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Datetime sets and set math"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
