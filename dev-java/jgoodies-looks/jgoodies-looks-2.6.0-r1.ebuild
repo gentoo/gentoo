@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 JAVA_PKG_IUSE="doc source"
 
@@ -24,19 +24,23 @@ CDEPEND="dev-java/jgoodies-common:1.8"
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jre-1.6"
+	virtual/jre:1.8"
 
 DEPEND="
 	${CDEPEND}
-	app-arch/unzip
-	>=virtual/jdk-1.6"
+	virtual/jdk:1.8"
+
+BDEPEND="
+	app-arch/unzip"
+
 
 S="${WORKDIR}"/${P}
 
 JAVA_SRC_DIR="src"
 JAVA_GENTOO_CLASSPATH="jgoodies-common-1.8"
 
-java_prepare() {
+src_prepare() {
+	default
 	mkdir src || die
 	unzip ${P}-sources.jar -d src || die
 	rm "${S}"/pom.xml "${S}"/*.jar || die
