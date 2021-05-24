@@ -48,6 +48,10 @@ multilib_src_configure() {
 		--enable-xv
 }
 
+multilib_src_compile() {
+	emake OBJC="$(tc-getCC)"
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 	dobin .libs/showimage
