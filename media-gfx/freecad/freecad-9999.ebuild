@@ -277,6 +277,7 @@ pkg_postinst() {
 	optfeature "dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
 	optfeature "FEM mesh generator" sci-libs/gmsh
+	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
 }
 
 pkg_postrm() {
