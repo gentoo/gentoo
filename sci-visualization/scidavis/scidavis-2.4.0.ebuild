@@ -12,7 +12,7 @@ inherit python-single-r1 docs qmake-utils xdg
 
 DESCRIPTION="Application for Scientific Data Analysis and Visualization"
 HOMEPAGE="http://scidavis.sourceforge.net/ https://github.com/SciDAVis/scidavis/"
-SRC_URI="https://github.com/SciDAVis/scidavis/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SciDAVis/scidavis/archive/refs/tags/${PV}.tar.gz -> ${P}-gh.tar.gz"
 
 LICENSE="GPL-2+ ZLIB"
 KEYWORDS="~amd64"
