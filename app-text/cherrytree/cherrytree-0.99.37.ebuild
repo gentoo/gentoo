@@ -27,7 +27,8 @@ LICENSE="GPL-3 LGPL-2.1 MIT"
 SLOT="0"
 IUSE="nls test"
 
-RESTRICT="!test? ( test )"
+# Has deps that aren't available in ::gentoo repo
+RESTRICT="test"
 
 RDEPEND="
 	app-i18n/uchardet
