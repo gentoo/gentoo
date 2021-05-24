@@ -49,10 +49,13 @@ RDEPEND="
 		')
 	)
 "
-BDEPEND="test? (
-	dev-libs/unittest++
-	dev-cpp/gtest
-)"
+BDEPEND="
+	dev-qt/qtchooser
+	test? (
+		dev-libs/unittest++
+		dev-cpp/gtest
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-build.patch"
