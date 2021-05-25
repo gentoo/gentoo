@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://code.videolan.org/videolan/libudfread/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Library for reading UDF from raw devices and image files"
