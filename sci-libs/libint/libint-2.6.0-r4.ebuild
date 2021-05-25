@@ -25,6 +25,9 @@ DEPEND="
 src_prepare() {
 	default
 	eautoreconf
+
+	# bug 725454
+	sed -i -e '/RANLIB/d' src/bin/libint/Makefile || die
 }
 
 src_configure() {
