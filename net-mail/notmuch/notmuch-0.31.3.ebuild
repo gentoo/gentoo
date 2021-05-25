@@ -4,6 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_SETUPTOOLS=manual
 NEED_EMACS="24.1"
 PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 
@@ -39,6 +40,7 @@ BDEPEND="
 		sys-apps/texinfo
 	)
 	python? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
 		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 	)
 "
