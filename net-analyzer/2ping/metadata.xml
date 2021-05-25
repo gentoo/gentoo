@@ -8,6 +8,7 @@
 	<use>
 		<flag name="server">Install the server init scripts.</flag>
 	</use>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">rfinnie/2ping</remote-id>
 	</upstream>
