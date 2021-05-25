@@ -1,0 +1,48 @@
+https://sources.debian.org/data/main/r/rapidxml/1.13-3/debian/patches/fix-iterators.patch
+https://bugs.gentoo.org/791328
+--- a/rapidxml_iterators.hpp
++++ b/rapidxml_iterators.hpp
+@@ -18,9 +18,9 @@
+     
+     public:
+ 
+-        typedef typename xml_node<Ch> value_type;
+-        typedef typename xml_node<Ch> &reference;
+-        typedef typename xml_node<Ch> *pointer;
++        typedef typename rapidxml::xml_node<Ch> value_type;
++        typedef typename rapidxml::xml_node<Ch> &reference;
++        typedef typename rapidxml::xml_node<Ch> *pointer;
+         typedef std::ptrdiff_t difference_type;
+         typedef std::bidirectional_iterator_tag iterator_category;
+         
+@@ -56,7 +56,7 @@
+         node_iterator operator++(int)
+         {
+             node_iterator tmp = *this;
+-            ++this;
++            ++(*this);
+             return tmp;
+         }
+ 
+@@ -70,7 +70,7 @@
+         node_iterator operator--(int)
+         {
+             node_iterator tmp = *this;
+-            ++this;
++            ++(*this);
+             return tmp;
+         }
+ 
+@@ -97,9 +97,9 @@
+     
+     public:
+ 
+-        typedef typename xml_attribute<Ch> value_type;
+-        typedef typename xml_attribute<Ch> &reference;
+-        typedef typename xml_attribute<Ch> *pointer;
++        typedef typename rapidxml::xml_attribute<Ch> value_type;
++        typedef typename rapidxml::xml_attribute<Ch> &reference;
++        typedef typename rapidxml::xml_attribute<Ch> *pointer;
+         typedef std::ptrdiff_t difference_type;
+         typedef std::bidirectional_iterator_tag iterator_category;
+         
