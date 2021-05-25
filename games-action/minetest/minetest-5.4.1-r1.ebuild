@@ -20,8 +20,8 @@ REQUIRED_USE="
 	|| ( client server )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	${LUA_DEPS}
+RDEPEND="${LUA_DEPS}
+	$(lua_gen_impl_dep 'deprecated' lua5-1)
 	dev-db/sqlite:3
 	dev-libs/gmp:0=
 	dev-libs/jsoncpp:=
