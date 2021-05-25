@@ -76,7 +76,11 @@ distutils_use_setuptools_check() {
 
 				eqawarn "DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
 				eqawarn "  have:     DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}${def}"
-				eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected[0]}"
+				if [[ ${expected[0]} == bdepend ]]; then
+					eqawarn "  expected: (unset)"
+				else
+					eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected[0]}"
+				fi
 		fi
 	fi
 }
