@@ -1,6 +1,12 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
+#
+
+# Yixun Lan <dlan@gentoo.org> (2021-05-24)
+# sys-libs/libunwind do not support riscv
+media-libs/libsdl nas
+
 # Yixun Lan <dlan@gentoo.org> (2021-05-21)
 # sys-libs/libunwind do not support riscv
 media-libs/gstreamer unwind
