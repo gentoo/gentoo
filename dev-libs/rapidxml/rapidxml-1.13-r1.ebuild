@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="app-arch/unzip"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-iterators.patch
 	"${FILESDIR}"/${P}-clang.patch
 )
 
