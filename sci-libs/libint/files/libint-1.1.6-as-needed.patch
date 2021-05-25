@@ -1,12 +1,3 @@
- configure.ac                      | 3 +--
- src/bin/MakeRules.in              | 2 +-
- src/lib/libderiv/Makefile.library | 2 +-
- src/lib/libint/Makefile.library   | 2 +-
- src/lib/libr12/Makefile.library   | 2 +-
- 5 files changed, 5 insertions(+), 6 deletions(-)
-
-diff --git a/configure.ac b/configure.ac
-index dc86e88..8cc3aac 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -317,12 +317,11 @@ LIBS=$withval
@@ -23,8 +14,6 @@ index dc86e88..8cc3aac 100644
  echo Using extra library directories: $withval
  )
  
-diff --git a/src/bin/MakeRules.in b/src/bin/MakeRules.in
-index 5b90607..8ea5005 100644
 --- a/src/bin/MakeRules.in
 +++ b/src/bin/MakeRules.in
 @@ -3,7 +3,7 @@ HAVE_MAKERULES = yes
@@ -36,8 +25,6 @@ index 5b90607..8ea5005 100644
  
  .PHONY: install install_inc install_target uninstall clean oclean distclean targetclean realclean
  install::
-diff --git a/src/lib/libderiv/Makefile.library b/src/lib/libderiv/Makefile.library
-index ee152ef..8debfe8 100644
 --- a/src/lib/libderiv/Makefile.library
 +++ b/src/lib/libderiv/Makefile.library
 @@ -23,7 +23,7 @@ $(TOPDIR)/lib/$(NAME).a: $(LIBOBJ)
@@ -49,8 +36,6 @@ index ee152ef..8debfe8 100644
  
  $(TOPDIR)/include/$(NAME)/$(NAME).h: $(NAME).h
  	$(INSTALL) $(INSTALLDIROPT) $(TOPDIR)/include/$(NAME)
-diff --git a/src/lib/libint/Makefile.library b/src/lib/libint/Makefile.library
-index 23e2918..01c4225 100644
 --- a/src/lib/libint/Makefile.library
 +++ b/src/lib/libint/Makefile.library
 @@ -41,7 +41,7 @@ $(TOPDIR)/lib/$(NAME).a: $(LIBOBJ)
@@ -62,8 +47,6 @@ index 23e2918..01c4225 100644
  
  $(TOPDIR)/include/$(NAME)/$(NAME).h: $(NAME).h
  	$(INSTALL) $(INSTALLDIROPT) $(TOPDIR)/include/$(NAME)
-diff --git a/src/lib/libr12/Makefile.library b/src/lib/libr12/Makefile.library
-index 1510807..26d47a4 100644
 --- a/src/lib/libr12/Makefile.library
 +++ b/src/lib/libr12/Makefile.library
 @@ -47,7 +47,7 @@ $(TOPDIR)/lib/$(NAME).a: $(LIBOBJ)
