@@ -119,7 +119,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if egrep -qis '^[[:space:]]use chroot[[:space:]]*=[[:space:]]*(no|0|false)' \
+	if grep -Eqis '^[[:space:]]use chroot[[:space:]]*=[[:space:]]*(no|0|false)' \
 		"${EROOT}"/etc/rsyncd.conf "${EROOT}"/etc/rsync/rsyncd.conf ; then
 		ewarn "You have disabled chroot support in your rsyncd.conf.  This"
 		ewarn "is a security risk which you should fix.  Please check your"
