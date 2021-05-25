@@ -80,6 +80,9 @@ PATCHES=(
 	## Upstream
 	# Fix lxml compatibility
 	"${WORKDIR}"/${PN}-2.9.12-fix-lxml-compatibility.patch
+
+	# and a regression that lxml fix introduced
+	"${FILESDIR}"/${PN}-2.9.12-Fix-regression-in-xmlNodeDumpOutputInternal.patch
 )
 
 src_unpack() {

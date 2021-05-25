@@ -1,0 +1,49 @@
+From 13ad8736d294536da4cbcd70a96b0a2fbf47070c Mon Sep 17 00:00:00 2001
+Message-Id: <13ad8736d294536da4cbcd70a96b0a2fbf47070c.1621946158.git.mprivozn@redhat.com>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Tue, 25 May 2021 10:55:25 +0200
+Subject: [PATCH] Fix regression in xmlNodeDumpOutputInternal
+
+Commit 85b1792e could cause additional whitespace if xmlNodeDump was
+called with a non-zero starting level.
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ xmlsave.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/xmlsave.c b/xmlsave.c
+index aedbd5e7..489505f4 100644
+--- a/xmlsave.c
++++ b/xmlsave.c
+@@ -890,6 +890,13 @@ xmlNodeDumpOutputInternal(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
+             break;
+ 
+         case XML_ELEMENT_NODE:
++	    if ((cur != root) && (ctxt->format == 1) &&
++                (xmlIndentTreeOutput))
++		xmlOutputBufferWrite(buf, ctxt->indent_size *
++				     (ctxt->level > ctxt->indent_nr ?
++				      ctxt->indent_nr : ctxt->level),
++				     ctxt->indent);
++
+             /*
+              * Some users like lxml are known to pass nodes with a corrupted
+              * tree structure. Fall back to a recursive call to handle this
+@@ -900,13 +907,6 @@ xmlNodeDumpOutputInternal(xmlSaveCtxtPtr ctxt, xmlNodePtr cur) {
+                 break;
+             }
+ 
+-	    if ((ctxt->level > 0) && (ctxt->format == 1) &&
+-                (xmlIndentTreeOutput))
+-		xmlOutputBufferWrite(buf, ctxt->indent_size *
+-				     (ctxt->level > ctxt->indent_nr ?
+-				      ctxt->indent_nr : ctxt->level),
+-				     ctxt->indent);
+-
+             xmlOutputBufferWrite(buf, 1, "<");
+             if ((cur->ns != NULL) && (cur->ns->prefix != NULL)) {
+                 xmlOutputBufferWriteString(buf, (const char *)cur->ns->prefix);
+-- 
+2.26.3
+
