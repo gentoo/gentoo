@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2018-20540-fixup.patch # bug 698846
 	"${FILESDIR}"/${P}-fix-debug.patch # bug 668778
 	"${FILESDIR}"/${P}-boost-1.73.patch # bug 722878
+	"${FILESDIR}"/${P}-gcc11.patch # bug 789732
 )
 
 src_prepare() {
