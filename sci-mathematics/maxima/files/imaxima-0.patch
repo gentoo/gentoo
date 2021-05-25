@@ -1,0 +1,10 @@
+diff -r -U2 maxima-5.45.0.orig/interfaces/emacs/imaxima/setup-imaxima-imath.el maxima-5.45.0/interfaces/emacs/imaxima/setup-imaxima-imath.el
+--- maxima-5.45.0.orig/interfaces/emacs/imaxima/setup-imaxima-imath.el	2021-05-16 06:20:53.000000000 +0700
++++ maxima-5.45.0/interfaces/emacs/imaxima/setup-imaxima-imath.el	2021-05-25 18:31:38.005882847 +0700
+@@ -133,5 +133,5 @@
+ ;;; imaxima-maxima-options should be "" instead of "(user::run)"
+ ;;; assigned in the imaxima.el
+-(setq imaxima-maxima-options "")
++;(setq imaxima-maxima-options "")
+ 
+ (autoload 'maxima "maxima" "Maxima CAS mode" t nil)
