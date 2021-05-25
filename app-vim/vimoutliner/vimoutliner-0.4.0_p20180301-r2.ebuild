@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit python-single-r1 vim-plugin vcs-snapshot
 
@@ -27,8 +27,7 @@ RDEPEND="
 	$(python_gen_cond_dep 'dev-python/autopep8[${PYTHON_MULTI_USEDEP}]')
 "
 
-DEPEND="
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
 
 DOCS=( README CHANGELOG TODO.otl )
 
