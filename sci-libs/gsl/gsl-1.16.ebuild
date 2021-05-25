@@ -15,9 +15,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="cblas-external static-libs"
 
-RDEPEND="cblas-external? ( virtual/cblas )"
+RDEPEND="
+	cblas-external? ( virtual/cblas )
+	app-eselect/eselect-cblas"
 DEPEND="${RDEPEND}
-	app-eselect/eselect-cblas
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO )
