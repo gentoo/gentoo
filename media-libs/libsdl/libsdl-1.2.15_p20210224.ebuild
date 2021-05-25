@@ -12,7 +12,7 @@ SRC_URI="https://github.com/libsdl-org/SDL-1.2/archive/${MY_COMMIT}.tar.gz -> SD
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 # WARNING:
 # If you turn on the custom-cflags use flag in USE and something breaks,
 # you pick up the pieces.  Be prepared for bug reports to be marked INVALID.
