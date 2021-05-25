@@ -104,11 +104,6 @@ sys-block/tgt rbd
 # dev-lua/busted is not keyworded yet
 dev-lua/mpack test
 
-# Sam James <sam@gentoo.org> (2020-07-09)
-# mariadb[rocksdb] fails to build on arm64
-# bug #731998
-dev-db/mariadb rocksdb
-
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
 # bug #728558
