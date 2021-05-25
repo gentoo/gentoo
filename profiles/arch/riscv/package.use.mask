@@ -5,7 +5,7 @@
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # sys-libs/libunwind do not support riscv
-media-libs/libsdl nas
+media-libs/libsdl nas pulseaudio
 media-libs/libcaca doc imlib
 x11-libs/tslib sdl
 
