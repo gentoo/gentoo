@@ -27,6 +27,7 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
+		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 	)"
 
