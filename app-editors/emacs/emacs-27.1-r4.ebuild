@@ -150,7 +150,7 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
-	eapply_user
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die

@@ -145,7 +145,7 @@ src_prepare() {
 	# for live ebuilds FULL_VERSION doesn't exist in global scope
 	use jit && QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
 
-	eapply_user
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die

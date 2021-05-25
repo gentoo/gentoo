@@ -100,10 +100,10 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 # operations later on
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
+PATCHES=("${WORKDIR}/patch")
 
 src_prepare() {
-	eapply ../patch
-	eapply_user
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
