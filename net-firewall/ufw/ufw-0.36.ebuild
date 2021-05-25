@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_IN_SOURCE_BUILD=1
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -17,8 +17,6 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ppc ppc64 sparc x86"
 IUSE="examples ipv6"
-
-DEPEND=""
 
 RDEPEND=">=net-firewall/iptables-1.4[ipv6?]
 	!<kde-misc/kcm-ufw-0.4.2
