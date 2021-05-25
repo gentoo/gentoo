@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Matoking/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+gui"
 
 RDEPEND="app-emulation/winetricks
