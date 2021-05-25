@@ -21,7 +21,7 @@ fi
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 linux-info meson-multilib pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -237,26 +237,6 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
-sd_use() {
-	usex "$1" true false
-}
-
-sd_native() {
-	if multilib_is_native_abi; then
-		echo true
-	else
-		echo false
-	fi
-}
-
-sd_native_use() {
-	if multilib_is_native_abi && use "$1"; then
-		echo true
-	else
-		echo false
-	fi
-}
-
 multilib_src_configure() {
 	local myconf=(
 		--localstatedir="${EPREFIX}/var"
@@ -265,7 +245,7 @@ multilib_src_configure() {
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in PATH
-		-Dsplit-usr=$(usex split-usr true false)
+		$(meson_use split-usr)
 		-Dsplit-bin=true
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
@@ -275,87 +255,79 @@ multilib_src_configure() {
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Optional components/dependencies
-		-Dacl=$(sd_native_use acl)
-		-Dapparmor=$(sd_native_use apparmor)
-		-Daudit=$(sd_native_use audit)
-		-Dlibcryptsetup=$(sd_native_use cryptsetup)
-		-Dlibcurl=$(sd_native_use curl)
-		-Ddns-over-tls=$(sd_native_use dns-over-tls)
-		-Delfutils=$(sd_native_use elfutils)
-		-Dgcrypt=$(sd_use gcrypt)
-		-Dgnu-efi=$(sd_native_use gnuefi)
+		$(meson_native_use_bool acl)
+		$(meson_native_use_bool apparmor)
+		$(meson_native_use_bool audit)
+		$(meson_native_use_bool cryptsetup libcryptsetup)
+		$(meson_native_use_bool curl libcurl)
+		$(meson_native_use_bool dns-over-tls dns-over-tls)
+		$(meson_native_use_bool elfutils)
+		$(meson_use gcrypt)
+		$(meson_native_use_bool gnuefi gnu-efi)
 		-Defi-includedir="${ESYSROOT}/usr/include/efi"
 		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
-		-Dhomed=$(sd_native_use homed)
-		-Dhwdb=$(sd_native_use hwdb)
-		-Dmicrohttpd=$(sd_native_use http)
-		-Didn=$(sd_native_use idn)
-		-Dimportd=$(sd_native_use importd)
-		-Dbzip2=$(sd_native_use importd)
-		-Dzlib=$(sd_native_use importd)
-		-Dkmod=$(sd_native_use kmod)
-		-Dlz4=$(sd_use lz4)
-		-Dxz=$(sd_use lzma)
-		-Dzstd=$(sd_use zstd)
-		-Dlibiptc=$(sd_native_use nat)
-		-Dpam=$(sd_use pam)
-		-Dp11kit=$(sd_native_use pkcs11)
-		-Dpcre2=$(sd_native_use pcre)
-		-Dpolkit=$(sd_native_use policykit)
-		-Dpwquality=$(sd_native_use pwquality)
-		-Dqrencode=$(sd_native_use qrcode)
-		-Drepart=$(sd_native_use repart)
-		-Dseccomp=$(sd_native_use seccomp)
-		-Dselinux=$(sd_native_use selinux)
-		-Dtpm2=$(sd_native_use tpm)
-		-Ddbus=$(sd_native_use test)
-		-Dxkbcommon=$(sd_native_use xkb)
+		$(meson_native_use_bool homed)
+		$(meson_native_use_bool hwdb)
+		$(meson_native_use_bool http microhttpd)
+		$(meson_native_use_bool idn)
+		$(meson_native_use_bool importd)
+		$(meson_native_use_bool importd bzip2)
+		$(meson_native_use_bool importd zlib)
+		$(meson_native_use_bool kmod)
+		$(meson_use lz4)
+		$(meson_use lzma xz)
+		$(meson_use zstd)
+		$(meson_native_use_bool nat libiptc)
+		$(meson_use pam)
+		$(meson_native_use_bool pkcs11 p11kit)
+		$(meson_native_use_bool pcre pcre2)
+		$(meson_native_use_bool policykit polkit)
+		$(meson_native_use_bool pwquality)
+		$(meson_native_use_bool qrcode qrencode)
+		$(meson_native_use_bool repart)
+		$(meson_native_use_bool seccomp)
+		$(meson_native_use_bool selinux)
+		$(meson_native_use_bool tpm tpm2)
+		$(meson_native_use_bool test dbus)
+		$(meson_native_use_bool xkb xkbcommon)
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
 		-Dcreate-log-dirs=false
 
 		# multilib options
-		-Dbacklight=$(sd_native)
-		-Dbinfmt=$(sd_native)
-		-Dcoredump=$(sd_native)
-		-Denvironment-d=$(sd_native)
-		-Dfirstboot=$(sd_native)
-		-Dhibernate=$(sd_native)
-		-Dhostnamed=$(sd_native)
-		-Dldconfig=$(sd_native)
-		-Dlocaled=$(sd_native)
-		-Dman=$(sd_native)
-		-Dnetworkd=$(sd_native)
-		-Dquotacheck=$(sd_native)
-		-Drandomseed=$(sd_native)
-		-Drfkill=$(sd_native)
-		-Dsysusers=$(sd_native)
-		-Dtimedated=$(sd_native)
-		-Dtimesyncd=$(sd_native)
-		-Dtmpfiles=$(sd_native)
-		-Dvconsole=$(sd_native)
+		$(meson_native_true backlight)
+		$(meson_native_true binfmt)
+		$(meson_native_true coredump)
+		$(meson_native_true environment-d)
+		$(meson_native_true firstboot)
+		$(meson_native_true hibernate)
+		$(meson_native_true hostnamed)
+		$(meson_native_true ldconfig)
+		$(meson_native_true localed)
+		$(meson_native_true man)
+		$(meson_native_true networkd)
+		$(meson_native_true quotacheck)
+		$(meson_native_true randomseed)
+		$(meson_native_true rfkill)
+		$(meson_native_true sysusers)
+		$(meson_native_true timedated)
+		$(meson_native_true timesyncd)
+		$(meson_native_true tmpfiles)
+		$(meson_native_true vconsole)
 
 		# static-libs
-		-Dstatic-libsystemd=$(usex static-libs true false)
-		-Dstatic-libudev=$(usex static-libs true false)
+		$(meson_use static-libs static-libsystemd)
+		$(meson_use static-libs static-libudev)
 	)
 
 	meson_src_configure "${myconf[@]}"
 }
 
-multilib_src_compile() {
-	eninja
-}
-
 multilib_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
 	meson_src_test
-}
-
-multilib_src_install() {
-	DESTDIR="${D}" eninja install
 }
 
 multilib_src_install_all() {
