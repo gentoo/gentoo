@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 # Uses pkg_resources
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -16,5 +16,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10-tests.patch"
+)
 
 distutils_enable_tests unittest
