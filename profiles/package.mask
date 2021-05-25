@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-05-25)
+# dev-java/jakarta-activation-api-2.0.1 depends on masked >=virtual/{jdk,jre}-11
+>=dev-java/jakarta-activation-api-2.0.1
+
 # Fabian Groffen <grobian@gentoo.org> (2021-05-24)
 # Hack on hack no longer sustainable
 # - seemingly dead upstream
