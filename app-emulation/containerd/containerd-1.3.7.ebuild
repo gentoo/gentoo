@@ -66,7 +66,8 @@ src_compile() {
 
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
 	export GOFLAGS="-v -x -mod=vendor"
-	emake "${myemakeargs[@]}" all man
+	emake "${myemakeargs[@]}" man -j1 #nowarn https://bugs.gentoo.org/765100
+	emake "${myemakeargs[@]}" all
 }
 
 src_install() {
