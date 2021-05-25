@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Audio metadata tag reader and writer implemented in pure Python"
@@ -14,15 +13,11 @@ SRC_URI="https://github.com/quodlibet/mutagen/releases/download/release-${PV}/${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
+IUSE="test"
 
 # TODO: Missing support for >=dev-python/eyeD3-0.7 API
 # test? ( >=dev-python/eyeD3-0.7 )
 BDEPEND="
-	doc? (
-		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
-	)
 	test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
@@ -32,16 +27,11 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-python_compile_all() {
-	use doc && emake -C docs
-}
+DOCS=( NEWS README.rst )
+
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
 
 python_test() {
 	esetup.py test --no-quality
-}
-
-python_install_all() {
-	local DOCS=( NEWS README.rst )
-	use doc && local HTML_DOCS=( docs/_build/. )
-	distutils-r1_python_install_all
 }
