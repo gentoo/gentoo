@@ -16,7 +16,11 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse4_2 garbd test"
-RESTRICT="!test? ( test )"
+
+# Tests are currently broken, see
+#   - https://github.com/codership/galera/issues/595
+#   - https://github.com/codership/galera/issues/596
+RESTRICT="test"
 
 CDEPEND="
 	dev-libs/openssl:0=
