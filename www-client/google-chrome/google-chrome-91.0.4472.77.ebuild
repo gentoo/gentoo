@@ -41,6 +41,7 @@ RDEPEND="
 	media-fonts/liberation-fonts
 	media-libs/alsa-lib
 	media-libs/mesa[gbm]
+	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/libcap
