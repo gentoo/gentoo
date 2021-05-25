@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs virtualx
 
 DESCRIPTION="DVI to Grace translator"
 HOMEPAGE="https://plasma-gate.weizmann.ac.il/Grace/"
@@ -12,10 +12,17 @@ SRC_URI="ftp://plasma-gate.weizmann.ac.il/pub/grace/src/devel/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples"
+
+IUSE="examples test"
+#RESTRICT="!test? ( test )"
+# Still missing some fontpackage, but which?
+RESTRICT="test"
 
 DEPEND="media-libs/t1lib"
 RDEPEND="${DEPEND}"
+BDEPEND="test? (
+	sci-visualization/grace
+)"
 
 src_prepare() {
 	tc-export CC
@@ -30,12 +37,16 @@ src_prepare() {
 src_install() {
 	dobin ${PN}
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins *.ti runtest.sh
+		docinto /usr/share/doc/${PF}/examples
+		dodoc *.ti runtest.sh
 	fi
 
 	insinto /usr/share/${PN}
 	doins -r fonts
+}
+
+src_test() {
+	virtx default
 }
 
 pkg_postinst() {
