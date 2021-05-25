@@ -32,8 +32,8 @@ else
 	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
 	RDEPEND="
 		>=dev-python/snakeoil-0.9.6[${PYTHON_USEDEP}]
-		>=dev-util/pkgcheck-0.9.1[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.11.7[${PYTHON_USEDEP}]
+		>=dev-util/pkgcheck-0.10.0[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.0[${PYTHON_USEDEP}]
 	"
 fi
 
