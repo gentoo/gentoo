@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrey Grozin <grozin@gentoo.org> (2021-05-25)
+# DEPENDs on sci-libs/proj-8
+# Unmask after unmasking proj-8
+>=sci-geosciences/qmapshack-1.16
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-05-25)
 # dev-java/jakarta-activation-api-2.0.1 depends on masked >=virtual/{jdk,jre}-11
 >=dev-java/jakarta-activation-api-2.0.1
