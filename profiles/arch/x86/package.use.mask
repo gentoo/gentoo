@@ -51,10 +51,6 @@ sys-libs/compiler-rt-sanitizers -profile
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# Columnstore engine is supported on x86
-dev-db/mariadb -columnstore
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is available for x86
 www-client/firefox -screencast

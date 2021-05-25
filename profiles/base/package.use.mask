@@ -150,7 +150,7 @@ app-metrics/collectd collectd_plugins_onewire
 sci-geosciences/qgis grass
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# CMake checks will only allow on amd64 & x86
+# Only supported on 64bit systems, see storage/columnstore/CMakeLists.txt
 dev-db/mariadb columnstore
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
