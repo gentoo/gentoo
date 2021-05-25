@@ -10,6 +10,8 @@ HOMEPAGE="https://github.com/VcDevel/Vc"
 SRC_URI="https://github.com/VcDevel/Vc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/Vc-${PV}
 
+PATCHES=( "${FILESDIR}"/${P}-missing-include.patch )
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux ~x64-macos"
