@@ -19,6 +19,7 @@
 	for managing netfilter, as well as an easy to use command-line interface for
 	manipulating the firewall.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="launchpad">ufw</remote-id>
 	</upstream>
