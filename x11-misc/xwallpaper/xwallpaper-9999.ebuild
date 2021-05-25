@@ -37,6 +37,7 @@ src_prepare() {
 	default
 	eautoreconf
 }
+
 src_configure() {
 	local myconf=(
 		$(use_with jpeg)
