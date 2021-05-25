@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="github">9fans/plan9port</remote-id>
 	</upstream>
+	<use>
+		<flag name="freefonts">Don't install BigelowHolmes fonts</flag>
+	</use>
 </pkgmetadata>

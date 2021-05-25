@@ -1,18 +1,25 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multiprocessing toolchain-funcs git-r3 readme.gentoo-r1
+inherit multiprocessing toolchain-funcs readme.gentoo-r1
+
+MY_HASH="88a87fadae6629932d9c160f53ad5d79775f8f94"
+MY_P="${PN}-${MY_HASH}"
 
 DESCRIPTION="Port of many Plan 9 programs and libraries"
 HOMEPAGE="https://9fans.github.io/plan9port/
 	https://github.com/9fans/plan9port"
-EGIT_REPO_URI="https://github.com/9fans/${PN}.git"
-
-LICENSE="9base BSD-4 MIT LGPL-2.1 BigelowHolmes"
+SRC_URI="https://github.com/9fans/${PN}/archive/${MY_HASH}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
+LICENSE="
+	MIT RSA Apache-2.0 public-domain BitstreamVera BZIP2
+	!freefonts? ( BigelowHolmes )
+"
 SLOT="0"
-IUSE="X aqua truetype"
+KEYWORDS="~amd64 ~x86"
+IUSE="X aqua freefonts truetype"
 REQUIRED_USE="?? ( X aqua )"
 
 DEPEND="
@@ -50,10 +57,19 @@ DISABLE_AUTOFORMATTING="yes"
 src_prepare() {
 	default
 
+	if use freefonts; then
+		pushd font || die
+		rm -r big5 fixed jis luc{,m,sans} misc naga10 pelm shinonome || die
+		popd || die
+		rm -r postscript/font/luxi || die
+	fi
+
 	case "${CHOST}" in
-		*apple*)
-			sed -i 's/--noexecstack/-noexecstack/' src/mkhdr ||
-				die "Failed to sed AFLAGS" ;;
+	*apple*)
+		sed -i 's/--noexecstack/-noexecstack/' src/mkhdr ||
+			die "Failed to sed AFLAGS" ;;
+	*)
+		rm -rf mac || die
 	esac
 
 	# don't hardcode /bin and /usr/bin in PATH
@@ -107,6 +123,8 @@ src_compile() {
 
 src_install() {
 	readme.gentoo_create_doc
+
+	rm -rf src || die
 
 	# do* plays with the executable bit, and we should not modify them
 	dodir "${PLAN9}"
