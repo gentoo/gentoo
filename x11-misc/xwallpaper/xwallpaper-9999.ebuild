@@ -27,11 +27,11 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:0= )
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
-	xpm? ( x11-libs/libXpm )"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	xpm? ( x11-libs/libXpm )
 "
+
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
