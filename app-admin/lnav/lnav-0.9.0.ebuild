@@ -29,6 +29,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.4-disable-tests.patch
 	# bug 723242
 	"${FILESDIR}"/${PN}-0.9.0-bug639332-tinfow.patch
+	# bug 713600
+	"${FILESDIR}"/${PN}-0.9.0-bug713600_0.patch
+	"${FILESDIR}"/${PN}-0.9.0-bug713600_1.patch
 )
 
 src_prepare() {
