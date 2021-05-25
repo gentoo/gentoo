@@ -8,10 +8,12 @@ DIST_VERSION=0.06
 inherit perl-module
 
 DESCRIPTION="Perl version of Nilsimsa code"
+
 # Bug: https://rt.cpan.org/Ticket/Display.html?id=133085
 LICENSE="GPL-2+ LGPL-2"
+
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 src_compile() {
 	mymake=(
