@@ -5,14 +5,6 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>vpayno+gentoo@gmail.com</email>
-		<name>Victor Payno</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<longdescription lang="en">
 		A tool for linting and static analysis of Lua code.
