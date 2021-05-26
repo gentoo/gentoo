@@ -498,7 +498,6 @@ dev-java/jcmdline
 # no consumers
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786408
-dev-java/jboss-logmanager
 dev-java/jboss-logging
 
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
