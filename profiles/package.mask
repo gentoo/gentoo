@@ -574,12 +574,6 @@ dev-java/httpcomponents-core
 # see bug: https://bugs.gentoo.org/785877
 dev-java/dtdparser
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-26)
-# no consumer
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/785847
-dev-java/commons-fileupload
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
