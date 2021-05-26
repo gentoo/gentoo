@@ -274,7 +274,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-cleaner-werror.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-5.2.0-dce-locks.patch
-	"${FILESDIR}"/${PN}-6.0.0-sphinx-4.patch
 )
 
 QA_PREBUILT="
