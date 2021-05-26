@@ -365,7 +365,6 @@ dev-java/picocontainer
 dev-java/msv
 dev-java/relaxngcc
 dev-java/wstx
-dev-java/jettison
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-29)
 # The most recent release is still broken with current
