@@ -294,7 +294,6 @@ dev-java/zeus-jscl
 # see bug: https://bugs.gentoo.org/786864
 dev-java/sun-jmx
 java-virtuals/jmx
-dev-util/jconfig
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-29)
 # The most recent release is still broken with current
