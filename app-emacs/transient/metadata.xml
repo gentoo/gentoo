@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Taking inspiration from prefix keys and prefix arguments, Transient
+  implements a similar abstraction involving a prefix command, infix
+  arguments and suffix commands.  We could call this abstraction a
+  "transient command", but because it always involves at least two
+  commands (a prefix and a suffix) we prefer to call it just a
+  "transient".
+  
+  When the user calls a transient prefix command, then a transient
+  (temporary) keymap is activated, which binds the transient's infix
+  and suffix commands, and functions that control the transient state
+  are added to `pre-command-hook' and `post-command-hook'.  The
+  available suffix and infix commands and their state are shown in
+  the echo area until the transient is exited by invoking a suffix
+  command.
+  
+  Calling an infix command causes its value to be changed, possibly
+  by reading a new value in the minibuffer.
+  
+  Calling a suffix command usually causes the transient to be exited
+  but suffix commands can also be configured to not exit the
+  transient state.
+</longdescription>
+<stabilize-allarches/>
+<upstream>
+  <remote-id type="github">magit/transient</remote-id>
+</upstream>
+</pkgmetadata>
