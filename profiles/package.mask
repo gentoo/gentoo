@@ -586,11 +586,6 @@ dev-java/commons-fileupload
 # see bug: https://bugs.gentoo.org/785796
 dev-java/commons-el
 
-# Jonas Stein <jstein@gentoo.org> (2021-04-25)
-# Bad SRC_URI, dead upstream.
-# Removal on 2021-06-01.  Bug #785736.
-app-misc/logitech-applet
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
