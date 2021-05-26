@@ -328,12 +328,6 @@ dev-java/boilerpipe
 # see bug: https://bugs.gentoo.org/786786
 dev-java/spymemcached
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786783
-dev-java/skinlf
-
 # Michał Górny <mgorny@gentoo.org> (2021-04-29)
 # The most recent release is still broken with current
 # dev-python/coverage.  Inactive downstream maintainer.  No revdeps.
