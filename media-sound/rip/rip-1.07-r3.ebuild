@@ -18,7 +18,6 @@ RDEPEND=">=dev-perl/CDDB_get-2.10
 	sys-apps/util-linux
 	|| (
 		media-libs/flac
-		media-sound/bladeenc
 		media-sound/lame
 		media-sound/vorbis-tools
 	)"
