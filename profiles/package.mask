@@ -415,12 +415,6 @@ dev-java/netty-handler
 # see bug: https://bugs.gentoo.org/786513
 dev-java/jvmstat
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786510
-dev-java/junrar
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
