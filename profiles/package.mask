@@ -409,12 +409,6 @@ dev-java/netty-codec
 dev-java/netty-codec-http
 dev-java/netty-handler
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
-# obsolete, use dev-util/visualvm
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786513
-dev-java/jvmstat
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
