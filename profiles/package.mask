@@ -622,11 +622,6 @@ x11-apps/amlc
 # Removal on 2021-06-01.  Bug #782904.
 x11-themes/gtk-engines-aurora
 
-# Jonas Stein <jstein@gentoo.org> (2021-04-14)
-# Open bugs, dead upstream.
-# Removal on 2021-06-01.  Bug #782730.
-x11-misc/superswitcher
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
