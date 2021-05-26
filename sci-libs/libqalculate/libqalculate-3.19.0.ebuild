@@ -51,6 +51,9 @@ src_configure() {
 	export CXX_FOR_BUILD="$(tc-getBUILD_CXX)"
 	export CXXCPP_FOR_BUILD="$(tc-getBUILD_CXX) -E"
 
+	# bug #792027
+	tc-export CC
+
 	econf \
 		--disable-static \
 		$(use_with curl libcurl) \
