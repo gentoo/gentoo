@@ -23,10 +23,11 @@ RDEPEND="
 	<dev-python/httpx-0.18[${PYTHON_USEDEP}]
 "
 
-BDEPEND="test? (
-	>=dev-python/pytest-asyncio-0.11[${PYTHON_USEDEP}]
-	<dev-python/pytest-asyncio-0.15[${PYTHON_USEDEP}]
-)"
+BDEPEND="
+	test? (
+		>=dev-python/pytest-asyncio-0.11[${PYTHON_USEDEP}]
+	)
+"
 
 DOCS="readme.rst"
 
