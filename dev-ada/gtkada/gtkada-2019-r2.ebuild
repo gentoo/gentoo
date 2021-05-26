@@ -1,21 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6,7} )
+ADA_COMPAT=( gnat_201{6..9} gnat_2020 )
 inherit ada autotools multiprocessing
 
-MYP=${PN}-gpl-${PV}
+MYP=${P}-20190424-19D98
 
 DESCRIPTION="A complete Ada graphical toolkit"
 HOMEPAGE="http://libre.adacore.com//tools/gtkada/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/591ae7a8c7a4473fcbb154c9
+SRC_URI="http://mirrors.cdn.adacore.com/art/5ce7f58931e87adb2d312c53
 	-> ${MYP}-src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs"
 
 RDEPEND="${ADA_DEPS}
@@ -34,7 +34,10 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}-src
 
-PATCHES=( "${FILESDIR}"/${P}-r1-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+)
 
 src_prepare() {
 	default
@@ -44,7 +47,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--prefix="${D}/usr" \
 		$(use_enable static-libs static) \
 		$(use_enable shared) \
 		--without-GL
@@ -55,6 +57,6 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 install
+	emake -j1 DESTDIR="${D}"
 	einstalldocs
 }

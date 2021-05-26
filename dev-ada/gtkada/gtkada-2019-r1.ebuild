@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,7 +47,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--prefix="${D}/usr" \
 		$(use_enable static-libs static) \
 		$(use_enable shared) \
 		--without-GL
@@ -58,6 +57,6 @@ src_compile() {
 }
 
 src_install() {
-	emake -j1 install
+	emake -j1 DESTDIR="${D}"
 	einstalldocs
 }
