@@ -482,12 +482,6 @@ dev-java/jebl
 # see bug: https://bugs.gentoo.org/786420
 dev-java/jdbm
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786417
-dev-java/jdbc2-stdext
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
