@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib-minimal
+inherit toolchain-funcs multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
 MY_COMMIT="5d792dde2f764daf15dc48521774a3354330db69"
