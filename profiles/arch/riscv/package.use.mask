@@ -21,8 +21,6 @@ dev-python/markdown test
 x11-libs/gtk+ cups test colord
 net-libs/libsoup samba gssapi test
 net-libs/libproxy mono spidermonkey webkit kde networkmanager
-# Request sys-auth/polkit, dev-lang/spidermonkey
-sys-auth/elogind policykit
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
@@ -163,7 +161,6 @@ net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage apidoc
 sys-apps/rng-tools nistbeacon pkcs11
-sys-apps/systemd policykit
 sys-auth/pambase gnome-keyring pam_krb5 pam_ssh  mktemp
 sys-block/thin-provisioning-tools test
 sys-devel/automake test
