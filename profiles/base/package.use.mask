@@ -548,11 +548,6 @@ sys-devel/gcc sanitize
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
 
-# Tom Wijsman <TomWij@gentoo.org> (2014-05-14)
-# Documentation generation needs APIviz which is not in the Portage tree yet.
-# Tracked in Gentoo bug #509602.
-dev-java/jboss-logging doc
-
 # Mike Frysinger <vapier@gentoo.org> (2014-02-03)
 # Upstream says to not use this for now.
 dev-libs/elfutils threads
