@@ -131,7 +131,6 @@ src_configure() {
 		--disable-static \
 		--enable-shared \
 		--with-default-snmp-version="3" \
-		--with-install-prefix="${D}" \
 		--with-ldflags="${LDFLAGS}" \
 		--with-logfile="/var/log/net-snmpd.log" \
 		--with-mib-modules="${mibs}" \
