@@ -21,7 +21,7 @@ amd64? (
 )"
 
 LICENSE="Digium"
-SLOT="0"
+SLOT="0/${AST_PV}"
 KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
@@ -32,7 +32,8 @@ S="${WORKDIR}"
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
-	QA_PREBUILT="/usr/sbin/asthostid
+	QA_PREBUILT="${QA_FLAGS_IGNORED}
+		/usr/sbin/asthostid
 		/usr/sbin/astregister"
 }
 
@@ -52,8 +53,6 @@ src_install() {
 		binsuffix=x86_32
 	elif use amd64; then
 		binsuffix=x86_64
-	else
-		die "Ebuild only functions for x86 and amd64."
 	fi
 
 	newsbin astregister-${binsuffix} astregister
