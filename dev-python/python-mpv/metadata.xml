@@ -6,5 +6,9 @@
 		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">python-mpv</remote-id>
+		<remote-id type="github">jaseg/python-mpv</remote-id>
+	</upstream>
 	<stabilize-allarches/>
 </pkgmetadata>
