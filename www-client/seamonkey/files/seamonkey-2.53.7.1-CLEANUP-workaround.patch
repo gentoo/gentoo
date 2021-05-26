@@ -1,0 +1,219 @@
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/ActorsParent.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/ActorsParent.cpp
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/ActorsParent.cpp	2020-08-10 13:30:33.000000000 +0200
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/ActorsParent.cpp	2021-05-19 19:34:09.717778077 +0200
+@@ -11381,7 +11381,7 @@ AutoSavepoint::~AutoSavepoint()
+     MOZ_ASSERT(mDEBUGTransaction->GetMode() == IDBTransaction::READ_WRITE ||
+                mDEBUGTransaction->GetMode() ==
+                  IDBTransaction::READ_WRITE_FLUSH ||
+-               mDEBUGTransaction->GetMode() == IDBTransaction::CLEANUP ||
++               mDEBUGTransaction->GetMode() == IDBTransaction::CLEAN_UP ||
+                mDEBUGTransaction->GetMode() == IDBTransaction::VERSION_CHANGE);
+ 
+     if (NS_FAILED(mConnection->RollbackSavepoint())) {
+@@ -11397,7 +11397,7 @@ AutoSavepoint::Start(const TransactionBa
+   MOZ_ASSERT(aTransaction);
+   MOZ_ASSERT(aTransaction->GetMode() == IDBTransaction::READ_WRITE ||
+              aTransaction->GetMode() == IDBTransaction::READ_WRITE_FLUSH ||
+-             aTransaction->GetMode() == IDBTransaction::CLEANUP ||
++             aTransaction->GetMode() == IDBTransaction::CLEAN_UP ||
+              aTransaction->GetMode() == IDBTransaction::VERSION_CHANGE);
+ 
+   DatabaseConnection* connection = aTransaction->GetDatabase()->GetConnection();
+@@ -14540,7 +14540,7 @@ Database::AllocPBackgroundIDBTransaction
+   if (NS_WARN_IF(aMode != IDBTransaction::READ_ONLY &&
+                  aMode != IDBTransaction::READ_WRITE &&
+                  aMode != IDBTransaction::READ_WRITE_FLUSH &&
+-                 aMode != IDBTransaction::CLEANUP)) {
++                 aMode != IDBTransaction::CLEAN_UP)) {
+     ASSERT_UNLESS_FUZZING();
+     return nullptr;
+   }
+@@ -14549,7 +14549,7 @@ Database::AllocPBackgroundIDBTransaction
+   // has write access.
+   if (NS_WARN_IF((aMode == IDBTransaction::READ_WRITE ||
+                   aMode == IDBTransaction::READ_WRITE_FLUSH ||
+-                  aMode == IDBTransaction::CLEANUP) &&
++                  aMode == IDBTransaction::CLEAN_UP) &&
+                  mPrincipalInfo.type() == PrincipalInfo::TSystemPrincipalInfo &&
+                  !mChromeWriteAccessAllowed)) {
+     return nullptr;
+@@ -14615,7 +14615,7 @@ Database::RecvPBackgroundIDBTransactionC
+   MOZ_ASSERT(aMode == IDBTransaction::READ_ONLY ||
+              aMode == IDBTransaction::READ_WRITE ||
+              aMode == IDBTransaction::READ_WRITE_FLUSH ||
+-             aMode == IDBTransaction::CLEANUP);
++             aMode == IDBTransaction::CLEAN_UP);
+   MOZ_ASSERT(!mClosed);
+ 
+   if (IsInvalidated()) {
+@@ -14778,7 +14778,7 @@ StartTransactionOp::DoDatabaseWork(Datab
+ 
+   Transaction()->SetActiveOnConnectionThread();
+ 
+-  if (Transaction()->GetMode() == IDBTransaction::CLEANUP) {
++  if (Transaction()->GetMode() == IDBTransaction::CLEAN_UP) {
+     nsresult rv = aConnection->DisableQuotaChecks();
+     if (NS_WARN_IF(NS_FAILED(rv))) {
+       return rv;
+@@ -15097,7 +15097,7 @@ TransactionBase::VerifyRequestParams(con
+     case RequestParams::TObjectStoreDeleteParams: {
+       if (NS_WARN_IF(mMode != IDBTransaction::READ_WRITE &&
+                      mMode != IDBTransaction::READ_WRITE_FLUSH &&
+-                     mMode != IDBTransaction::CLEANUP &&
++                     mMode != IDBTransaction::CLEAN_UP &&
+                      mMode != IDBTransaction::VERSION_CHANGE)) {
+         ASSERT_UNLESS_FUZZING();
+         return false;
+@@ -15121,7 +15121,7 @@ TransactionBase::VerifyRequestParams(con
+     case RequestParams::TObjectStoreClearParams: {
+       if (NS_WARN_IF(mMode != IDBTransaction::READ_WRITE &&
+                      mMode != IDBTransaction::READ_WRITE_FLUSH &&
+-                     mMode != IDBTransaction::CLEANUP &&
++                     mMode != IDBTransaction::CLEAN_UP &&
+                      mMode != IDBTransaction::VERSION_CHANGE)) {
+         ASSERT_UNLESS_FUZZING();
+         return false;
+@@ -23880,7 +23880,7 @@ CommitOp::WriteAutoIncrementCounts()
+   mTransaction->AssertIsOnConnectionThread();
+   MOZ_ASSERT(mTransaction->GetMode() == IDBTransaction::READ_WRITE ||
+              mTransaction->GetMode() == IDBTransaction::READ_WRITE_FLUSH ||
+-             mTransaction->GetMode() == IDBTransaction::CLEANUP ||
++             mTransaction->GetMode() == IDBTransaction::CLEAN_UP ||
+              mTransaction->GetMode() == IDBTransaction::VERSION_CHANGE);
+ 
+   const nsTArray<RefPtr<FullObjectStoreMetadata>>& metadataArray =
+@@ -23948,7 +23948,7 @@ CommitOp::CommitOrRollbackAutoIncrementC
+   mTransaction->AssertIsOnConnectionThread();
+   MOZ_ASSERT(mTransaction->GetMode() == IDBTransaction::READ_WRITE ||
+              mTransaction->GetMode() == IDBTransaction::READ_WRITE_FLUSH ||
+-             mTransaction->GetMode() == IDBTransaction::CLEANUP ||
++             mTransaction->GetMode() == IDBTransaction::CLEAN_UP ||
+              mTransaction->GetMode() == IDBTransaction::VERSION_CHANGE);
+ 
+   nsTArray<RefPtr<FullObjectStoreMetadata>>& metadataArray =
+@@ -24080,7 +24080,7 @@ CommitOp::Run()
+ 
+       connection->FinishWriteTransaction();
+ 
+-      if (mTransaction->GetMode() == IDBTransaction::CLEANUP) {
++      if (mTransaction->GetMode() == IDBTransaction::CLEAN_UP) {
+         connection->DoIdleProcessing(/* aNeedsCheckpoint */ true);
+ 
+         connection->EnableQuotaChecks();
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBCursor.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBCursor.cpp
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBCursor.cpp	2020-08-10 13:30:33.000000000 +0200
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBCursor.cpp	2021-05-19 19:34:21.313733906 +0200
+@@ -686,7 +686,7 @@ IDBCursor::Update(JSContext* aCx, JS::Ha
+     return nullptr;
+   }
+ 
+-  if (mTransaction->GetMode() == IDBTransaction::CLEANUP ||
++  if (mTransaction->GetMode() == IDBTransaction::CLEAN_UP ||
+       IsSourceDeleted() ||
+       !mHaveValue ||
+       mType == Type_ObjectStoreKey ||
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBDatabase.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBDatabase.cpp
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBDatabase.cpp	2020-04-01 13:01:50.000000000 +0200
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBDatabase.cpp	2021-05-19 19:34:54.769606469 +0200
+@@ -673,7 +673,7 @@ IDBDatabase::Transaction(JSContext* aCx,
+       break;
+     case IDBTransactionMode::Readwrite:
+       if (mQuotaExceeded) {
+-        mode = IDBTransaction::CLEANUP;
++        mode = IDBTransaction::CLEAN_UP;
+         mQuotaExceeded = false;
+       } else {
+         mode = IDBTransaction::READ_WRITE;
+@@ -683,7 +683,7 @@ IDBDatabase::Transaction(JSContext* aCx,
+       mode = IDBTransaction::READ_WRITE_FLUSH;
+       break;
+     case IDBTransactionMode::Cleanup:
+-      mode = IDBTransaction::CLEANUP;
++      mode = IDBTransaction::CLEAN_UP;
+       mQuotaExceeded = false;
+       break;
+     case IDBTransactionMode::Versionchange:
+@@ -717,7 +717,7 @@ IDBDatabase::Transaction(JSContext* aCx,
+ 
+   transaction->SetBackgroundActor(actor);
+ 
+-  if (mode == IDBTransaction::CLEANUP) {
++  if (mode == IDBTransaction::CLEAN_UP) {
+     ExpireFileActors(/* aExpireAll */ true);
+   }
+ 
+@@ -870,7 +870,7 @@ IDBDatabase::AbortTransactions(bool aSho
+             // We warn for any transactions that could have written data.
+             case IDBTransaction::READ_WRITE:
+             case IDBTransaction::READ_WRITE_FLUSH:
+-            case IDBTransaction::CLEANUP:
++            case IDBTransaction::CLEAN_UP:
+             case IDBTransaction::VERSION_CHANGE:
+               transactionsThatNeedWarning.AppendElement(transaction);
+               break;
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBObjectStore.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBObjectStore.cpp
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBObjectStore.cpp	2020-08-10 13:30:33.000000000 +0200
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBObjectStore.cpp	2021-05-19 19:35:22.341501444 +0200
+@@ -1546,7 +1546,7 @@ IDBObjectStore::AddOrPut(JSContext* aCx,
+   MOZ_ASSERT(aCx);
+   MOZ_ASSERT_IF(aFromCursor, aOverwrite);
+ 
+-  if (mTransaction->GetMode() == IDBTransaction::CLEANUP ||
++  if (mTransaction->GetMode() == IDBTransaction::CLEAN_UP ||
+       mDeletedSpec) {
+     aRv.Throw(NS_ERROR_DOM_INDEXEDDB_NOT_ALLOWED_ERR);
+     return nullptr;
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.cpp
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.cpp	2020-02-18 00:37:49.000000000 +0100
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.cpp	2021-05-19 19:35:36.725446648 +0200
+@@ -221,7 +221,7 @@ IDBTransaction::Create(JSContext* aCx, I
+   MOZ_ASSERT(aMode == READ_ONLY ||
+              aMode == READ_WRITE ||
+              aMode == READ_WRITE_FLUSH ||
+-             aMode == CLEANUP);
++             aMode == CLEAN_UP);
+ 
+   RefPtr<IDBTransaction> transaction =
+     new IDBTransaction(aDatabase, aObjectStoreNames, aMode);
+@@ -913,7 +913,7 @@ IDBTransaction::GetMode(ErrorResult& aRv
+     case READ_WRITE_FLUSH:
+       return IDBTransactionMode::Readwriteflush;
+ 
+-    case CLEANUP:
++    case CLEAN_UP:
+       return IDBTransactionMode::Cleanup;
+ 
+     case VERSION_CHANGE:
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.h seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.h
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.h	2020-02-18 00:37:49.000000000 +0100
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.h	2021-05-19 19:35:48.609401384 +0200
+@@ -59,7 +59,7 @@ public:
+     READ_ONLY = 0,
+     READ_WRITE,
+     READ_WRITE_FLUSH,
+-    CLEANUP,
++    CLEAN_UP,
+     VERSION_CHANGE,
+ 
+     // Only needed for IPC serialization helper, should never be used in code.
+@@ -194,7 +194,7 @@ public:
+     AssertIsOnOwningThread();
+     return mMode == READ_WRITE ||
+            mMode == READ_WRITE_FLUSH ||
+-           mMode == CLEANUP ||
++           mMode == CLEAN_UP ||
+            mMode == VERSION_CHANGE;
+   }
+ 
+diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/ProfilerHelpers.h seamonkey-2.53.7.1-dwok/dom/indexedDB/ProfilerHelpers.h
+--- seamonkey-2.53.7.1-orig/dom/indexedDB/ProfilerHelpers.h	2020-02-18 00:37:49.000000000 +0100
++++ seamonkey-2.53.7.1-dwok/dom/indexedDB/ProfilerHelpers.h	2021-05-19 19:35:57.029369312 +0200
+@@ -130,7 +130,7 @@ public:
+       case IDBTransaction::READ_WRITE_FLUSH:
+         AppendLiteral("\"readwriteflush\"");
+         break;
+-      case IDBTransaction::CLEANUP:
++      case IDBTransaction::CLEAN_UP:
+         AppendLiteral("\"cleanup\"");
+         break;
+       case IDBTransaction::VERSION_CHANGE:

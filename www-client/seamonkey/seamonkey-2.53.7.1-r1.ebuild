@@ -196,6 +196,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.53.7.1-cpu_hog_fix.patch"
 
 	eapply "${FILESDIR}/${PN}-2.53.7.1-rust-1.52.patch" #789981
+	eapply "${FILESDIR}/${PN}-2.53.7.1-CLEANUP-workaround.patch" #790794
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
