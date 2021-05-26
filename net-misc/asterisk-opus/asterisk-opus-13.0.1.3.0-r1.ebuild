@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -17,7 +17,7 @@ x86? (
 )"
 
 LICENSE="Digium"
-SLOT="0"
+SLOT="0/${AST_PV}"
 KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="=net-misc/asterisk-${PV%%.*}*"
@@ -28,6 +28,7 @@ S="${WORKDIR}"
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_opus.so"
+	QA_PREBUILT="${QA_FLAGS_IGNORED}"
 }
 
 src_install() {
