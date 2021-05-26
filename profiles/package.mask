@@ -627,11 +627,6 @@ x11-themes/gtk-engines-aurora
 # Removal on 2021-06-01.  Bug #782730.
 x11-misc/superswitcher
 
-# Jonas Stein <jstein@gentoo.org> (2021-04-14)
-# dead upstream, no valid SRC_URI
-# Removal on 2021-06-01.  Bug #782727.
-x11-misc/xstroke
-
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
 >=app-crypt/gnupg-2.3.0
