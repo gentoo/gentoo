@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">antlr/antlr3</remote-id>
+		<bugs-to>https://github.com/antlr/antlr3/issues</bugs-to>
+		<doc>https://theantlrguy.atlassian.net/wiki/display/ANTLR3/ANTLR+v3+documentation</doc>
+	</upstream>
+</pkgmetadata>
