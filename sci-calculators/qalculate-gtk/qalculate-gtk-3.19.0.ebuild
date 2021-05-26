@@ -23,6 +23,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-text/rarian
+	dev-util/gdbus-codegen
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
