@@ -76,7 +76,7 @@ src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DCMAKE_INSTALL_LOCALSTATEDIR="${EPREFIX}/var"
 		-DSCHROOT_MOUNT_DIR="${EPREFIX}/run/${PN}/mount"
-		-DBoost_NO_BOOST_CMAKE=ON
+		-DBoost_NO_BOOST_CMAKE=ON # https://bugs.gentoo.org/791712 and https://bugs.gentoo.org/752120
 	)
 	if ! use nls; then
 		mycmakeargs+=(-DPO4A_EXECUTABLE=NOTFOUND)
