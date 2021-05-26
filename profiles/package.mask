@@ -565,7 +565,6 @@ dev-java/easymock-classextension
 # libraries with no consumer
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/785883
-dev-java/httpcomponents-client
 dev-java/httpcomponents-core
 
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
