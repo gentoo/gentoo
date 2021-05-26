@@ -405,7 +405,6 @@ media-sound/bladeenc
 # no consumers
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786522
-dev-java/netty-codec-http
 dev-java/netty-handler
 
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
