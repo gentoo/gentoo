@@ -26,8 +26,10 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
 "
 DEPEND="${RDEPEND}"
+# dev-util/gtk-doc needed for eautoreconf
 BDEPEND="
 	introspection? ( $(vala_depend) )
+	>=dev-util/gtk-doc-1.14
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 	test? ( dev-util/dbus-test-runner )
