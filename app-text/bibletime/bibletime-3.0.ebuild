@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 VIRTUALX_REQUIRED=test
 
-inherit cmake virtualx
+inherit cmake virtualx xdg-utils
 
 DESCRIPTION="Qt Bible-study application using the SWORD library"
 HOMEPAGE="http://bibletime.info/"
@@ -65,4 +65,12 @@ src_configure() {
 
 src_test() {
 	virtx cmake_src_test || die "Test run has failed"
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
