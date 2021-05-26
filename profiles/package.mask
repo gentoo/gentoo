@@ -494,12 +494,6 @@ dev-java/jdbc2-stdext
 # see bug: https://bugs.gentoo.org/786414
 dev-java/jcmdline
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786408
-dev-java/jboss-logging
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
