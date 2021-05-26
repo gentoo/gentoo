@@ -239,6 +239,47 @@ go-module_set_globals() {
 	_GO_MODULE_SET_GLOBALS_CALLED=1
 }
 
+# @FUNCTION: go-module_setup_proxy
+# @DESCRIPTION:
+# If your ebuild redefines src_unpack and uses EGO_SUM you need to call
+# this function in src_unpack.
+# It sets up the go module proxy in the appropriate location.
+go-module_setup_proxy() {
+	# shellcheck disable=SC2120
+	debug-print-function "${FUNCNAME}" "$@"
+
+	if [[ ! ${_GO_MODULE_SET_GLOBALS_CALLED} ]]; then
+		die "go-module_set_globals must be called in global scope"
+	fi
+
+	local goproxy_dir="${GOPROXY/file:\/\//}"
+	mkdir -p "${goproxy_dir}" || die
+
+	# For each Golang module distfile, look up where it's supposed to go and
+	# symlink it into place.
+	local f
+	local goproxy_mod_dir
+	for f in ${A}; do
+		goproxy_mod_path="${_GOMODULE_GOSUM_REVERSE_MAP["${f}"]}"
+		if [[ -n "${goproxy_mod_path}" ]]; then
+			debug-print-function "Populating go proxy for ${goproxy_mod_path}"
+			# Build symlink hierarchy
+			goproxy_mod_dir=$( dirname "${goproxy_dir}"/"${goproxy_mod_path}" )
+			mkdir -p "${goproxy_mod_dir}" || die
+			ln -sf "${DISTDIR}"/"${f}" "${goproxy_dir}/${goproxy_mod_path}" ||
+				die "Failed to ln"
+			local v=${goproxy_mod_path}
+			v="${v%.mod}"
+			v="${v%.zip}"
+			v="${v//*\/}"
+			_go-module_gosum_synthesize_files "${goproxy_mod_dir}" "${v}"
+		fi
+	done
+
+	# Validate the gosum now
+	_go-module_src_unpack_verify_gosum
+}
+
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
 # If EGO_SUM is set, unpack the base tarball(s) and set up the
