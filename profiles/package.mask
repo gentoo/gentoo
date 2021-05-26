@@ -427,12 +427,6 @@ dev-java/junrar
 # see bug: https://bugs.gentoo.org/786507
 dev-java/junit-addons
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-28)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786486
-dev-java/jstun
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
