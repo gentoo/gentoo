@@ -9,6 +9,8 @@ dev-libs/libdbusmenu test
 media-libs/libsdl nas pulseaudio
 media-libs/libcaca doc imlib
 x11-libs/tslib sdl
+# KDE not tested, so mask
+sys-auth/polkit kde
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-21)
 # sys-libs/libunwind do not support riscv
