@@ -519,12 +519,6 @@ dev-java/jarbundler
 # see bug: https://bugs.gentoo.org/786234
 dev-java/j2ssh
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-27)
-# library with no consumer
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/786117
-dev-java/helpgui
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
