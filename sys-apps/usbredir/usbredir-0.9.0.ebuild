@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.freedesktop.org/spice/${PN}/-/archive/${P}/${PN}-${P}.ta
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE="static-libs"
 
 RDEPEND="virtual/libusb:1"
