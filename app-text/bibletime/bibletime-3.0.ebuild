@@ -15,8 +15,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-# Some tests fail due to being unable to find an icon directory relative
-# to ${WORKDIR}, some others segfault. Needs work.
+# As of 3.0.0 most tests fail unless Bibletime has previously been installed,
+# and one fails for unknown reasons even then. See:
+#  https://github.com/bibletime/bibletime/issues/320
+#  https://github.com/bibletime/bibletime/issues/321
 RESTRICT="test"
 
 RDEPEND=">=app-text/sword-1.8.1
