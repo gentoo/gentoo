@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/t/${PN}/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="=dev-python/tvdb_api-3*[${PYTHON_USEDEP}]"
