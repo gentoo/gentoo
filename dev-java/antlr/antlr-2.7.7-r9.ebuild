@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="antlr:antlr:2.7.7"
 
 inherit java-pkg-2 java-pkg-simple
 
