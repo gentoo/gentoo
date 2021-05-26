@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -76,6 +76,7 @@ src_configure() {
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DCMAKE_INSTALL_LOCALSTATEDIR="${EPREFIX}/var"
 		-DSCHROOT_MOUNT_DIR="${EPREFIX}/run/${PN}/mount"
+		-DBoost_NO_BOOST_CMAKE=ON # https://bugs.gentoo.org/791712 and https://bugs.gentoo.org/752120
 	)
 	if ! use nls; then
 		mycmakeargs+=(-DPO4A_EXECUTABLE=NOTFOUND)
