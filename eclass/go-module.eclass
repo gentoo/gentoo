@@ -232,6 +232,9 @@ go-module_set_globals() {
 	readonly EGO_SUM_SRC_URI
 	readonly _GOMODULE_GOSUM_REVERSE_MAP
 
+	# export the GOPROXY setting
+	export GOPROXY="file://${T}/go-proxy"
+
 	# Set the guard that we are safe
 	_GO_MODULE_SET_GLOBALS_CALLED=1
 }
@@ -268,7 +271,7 @@ _go-module_src_unpack_gosum() {
 		die "go-module_set_globals must be called in global scope"
 	fi
 
-	local goproxy_dir="${T}/go-proxy"
+	local goproxy_dir="${GOPROXY/file:\/\//}"
 	mkdir -p "${goproxy_dir}" || die
 
 	# For each Golang module distfile, look up where it's supposed to go, and
@@ -293,7 +296,6 @@ _go-module_src_unpack_gosum() {
 			unpack "$f"
 		fi
 	done
-	export GOPROXY="file://${goproxy_dir}"
 
 	# Validate the gosum now
 	_go-module_src_unpack_verify_gosum
