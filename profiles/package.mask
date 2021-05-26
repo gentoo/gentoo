@@ -307,7 +307,6 @@ dev-java/sun-httpserver-bin
 # removal in 30 days
 # see bug: https://bugs.gentoo.org/786840
 dev-java/stax-ex
-dev-java/xmlstreambuffer
 
 # Michał Górny <mgorny@gentoo.org> (2021-04-29)
 # The most recent release is still broken with current
