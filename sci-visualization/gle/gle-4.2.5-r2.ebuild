@@ -1,39 +1,34 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-inherit autotools elisp-common flag-o-matic
-
-MY_P=${PN}-graphics-${PV}
+EAPI=6
+inherit elisp-common flag-o-matic autotools
 
 DESCRIPTION="Graphics Layout Engine"
 HOMEPAGE="http://glx.sourceforge.net/"
+MY_P=${PN}-graphics-${PV}
+MAN_V=4.2.2
 SRC_URI="mirror://sourceforge/glx/${MY_P}f-src.tar.gz"
-S="${WORKDIR}/${MY_P}"
-
-LICENSE="BSD-2 emacs? ( GPL-2 )"
 SLOT="0"
+LICENSE="BSD-2 emacs? ( GPL-2 )"
+IUSE="X jpeg png tiff doc emacs vim-syntax"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc emacs jpeg png tiff vim-syntax X"
 
 DEPEND="
-	sys-libs/ncurses:=
-	emacs? ( >=app-editors/emacs-23.1:* )
+	sys-libs/ncurses:0=
+	X? ( x11-libs/libX11 )
 	jpeg? ( virtual/jpeg:0 )
-	png? ( media-libs/libpng:= )
-	tiff? ( media-libs/tiff:= )
-	X? ( x11-libs/libX11 )"
+	png? ( media-libs/libpng:0= )
+	tiff? ( media-libs/tiff:0 )
+	doc? ( dev-texlive/texlive-latexextra )
+	emacs? ( >=app-editors/emacs-23.1:* )"
+
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
 	virtual/latex-base
-	vim-syntax? (
-		|| (
-			app-editors/vim
-			app-editors/gvim
-		)
-	)"
-BDEPEND="doc? ( dev-texlive/texlive-latexextra )"
+	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
+
+S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel.patch
@@ -63,32 +58,35 @@ src_configure() {
 
 src_compile() {
 	emake
-	use doc && emake -j1 doc
-
+	if use doc; then
+		emake -j1 doc
+	fi
 	if use emacs; then
-		cd contrib/editors/highlighting || die
-		mv ${PN}-emacs.el ${PN}-mode.el || die
-		elisp-compile ${PN}-mode.el
+		cd contrib/editors/highlighting
+		mv ${PN}-emacs.el ${PN}-mode.el
+		elisp-compile ${PN}-mode.el || die
 	fi
 }
 
 src_install() {
 	# -jN failed to install some data files
 	emake -j1 DESTDIR="${D}" install
-	rm -rf "${ED}"/usr/share/doc/gle-graphics || die
+	rm -rf "${ED}"/usr/share/doc/gle-graphics
 	dodoc README.txt
 
-	use doc && dodoc build/doc/gle-manual.pdf
+	if use doc; then
+		dodoc build/doc/gle-manual.pdf
+	fi
 
 	if use emacs; then
-		elisp-install ${PN} contrib/editors/highlighting/gle-mode.{el,elc}
-		elisp-site-file-install "${FILESDIR}"/64gle-gentoo.el
+		elisp-install ${PN} contrib/editors/highlighting/gle-mode.{el,elc} || die
+		elisp-site-file-install "${FILESDIR}"/64gle-gentoo.el || die
 	fi
 
 	if use vim-syntax ; then
 		dodir /usr/share/vim/vimfiles/{ftplugins,indent,syntax}
 		cd contrib/editors/highlighting/vim || die
-		chmod 644 ftplugin/* indent/* syntax/* || die
+		chmod 644 ftplugin/* indent/* syntax/*
 		insinto /usr/share/vim/vimfiles
 		doins -r ftplugin indent syntax
 	fi
