@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/project/rankwidth/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE=""
 
 # We have a file collision (librw.so) with xpaint, bug 560210.
