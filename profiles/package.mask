@@ -580,12 +580,6 @@ dev-java/dtdparser
 # see bug: https://bugs.gentoo.org/785847
 dev-java/commons-fileupload
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-26)
-# does not compile with java 1.8, no consumer
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/785796
-dev-java/commons-el
-
 # Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
