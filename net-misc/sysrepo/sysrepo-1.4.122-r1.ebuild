@@ -15,7 +15,10 @@ KEYWORDS="~amd64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=net-libs/libyang-1.0.225:="
+RDEPEND="
+	>=net-libs/libyang-1.0.225:=
+	<net-libs/libyang-2.0.0:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
 
