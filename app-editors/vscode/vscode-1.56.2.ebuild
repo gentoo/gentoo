@@ -12,6 +12,7 @@ SRC_URI="
 	arm? ( https://update.code.visualstudio.com/${PV}/linux-armhf/stable -> ${P}-arm.tar.gz )
 	arm64? ( https://update.code.visualstudio.com/${PV}/linux-arm64/stable -> ${P}-arm64.tar.gz )
 "
+S="${WORKDIR}"
 
 RESTRICT="mirror strip bindist"
 
@@ -36,7 +37,6 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm ~arm64"
-IUSE=""
 
 RDEPEND="
 	app-accessibility/at-spi2-atk
@@ -68,21 +68,19 @@ QA_PREBUILT="
 	/opt/vscode/resources/app/node_modules.asar.unpacked/*
 "
 
-pkg_setup() {
+src_install() {
 	if use amd64; then
-		S="${WORKDIR}/VSCode-linux-x64"
+		cd "${WORKDIR}/VSCode-linux-x64" || die
 	elif use arm; then
-		S="${WORKDIR}/VSCode-linux-armhf"
+		cd "${WORKDIR}/VSCode-linux-armhf" || die
 	elif use arm64; then
-		S="${WORKDIR}/VSCode-linux-arm64"
+		cd "${WORKDIR}/VSCode-linux-arm64" || die
 	else
 		die "Visual Studio Code only supports amd64, arm and arm64"
 	fi
-}
 
-src_install() {
 	# Cleanup
-	rm -r "${S}/resources/app/LICENSES.chromium.html" "${S}/resources/app/LICENSE.rtf" "${S}/resources/app/licenses" || die
+	rm -r ./resources/app/LICENSES.chromium.html ./resources/app/LICENSE.rtf ./resources/app/licenses || die
 
 	# Install
 	pax-mark m code
