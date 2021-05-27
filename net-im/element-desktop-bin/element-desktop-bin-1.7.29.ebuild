@@ -54,6 +54,7 @@ QA_PREBUILT="
 	/opt/Element/libGLESv2.so
 	/opt/Element/libffmpeg.so
 	/opt/Element/libvk_swiftshader.so
+	/opt/Element/libvulkan.so.1
 	/opt/Element/swiftshader/libEGL.so
 	/opt/Element/swiftshader/libGLESv2.so"
 
