@@ -1,0 +1,20 @@
+diff --git a/Makefile.am b/Makefile.am
+index 98be02ca26c8..848bc6c8269b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -44,6 +44,7 @@ lib_LTLIBRARIES += libuninameslist.la
+ 
+ include_HEADERS = uninameslist.h
+ libuninameslist_la_LIBADD =
++EXTRA_libuninameslist_la_DEPENDENCIES =
+ man_MANS = libuninameslist.3
+ noinst_HEADERS = nameslist-dll.h
+ 
+@@ -53,6 +54,7 @@ libuninameslist_fr_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(FR_VERSION)
+ libuninameslist_fr_la_SOURCES = nameslist-fr.c
+ libuninameslist_fr_la.$(OBJEXT): uninameslist-fr.h nameslist-dll.h
+ libuninameslist_la_LIBADD += -luninameslist-fr
++EXTRA_libuninameslist_la_DEPENDENCIES += libuninameslist-fr.la
+ man_MANS += libuninameslist-fr.3
+ else
+ EXTRA_DIST += nameslist-fr.c uninameslist-fr.h libuninameslist-fr.3
