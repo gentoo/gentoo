@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://www.alsa-project.org/files/pub/firmware/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ppc64 ~x86"
 
 ECHOAUDIO_CARDS="alsa_cards_darla20 alsa_cards_gina20 alsa_cards_layla20
 alsa_cards_darla24 alsa_cards_gina24 alsa_cards_layla24 alsa_cards_mona
