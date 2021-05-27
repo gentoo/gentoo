@@ -10,6 +10,7 @@ media-libs/libsdl nas pulseaudio
 media-libs/libcaca doc imlib
 x11-libs/tslib sdl
 dev-libs/libbytesize test
+sys-libs/libblockdev dmraid escrow
 # KDE not tested, so mask
 sys-auth/polkit kde
 
