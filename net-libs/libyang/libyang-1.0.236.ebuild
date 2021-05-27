@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="doc test"
 
 RDEPEND="dev-libs/libpcre[${MULTILIB_USEDEP}]"
