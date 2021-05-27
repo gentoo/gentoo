@@ -16,6 +16,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 distutils_enable_tests pytest
 
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+
 python_prepare_all() {
 	# remove pytest-cov dep
 	sed -e "s/pytest-cov//" \
