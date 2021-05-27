@@ -11,6 +11,7 @@ media-libs/libcaca doc imlib
 x11-libs/tslib sdl
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
+app-text/docbook-xsl-ns-stylesheets ruby
 # KDE not tested, so mask
 sys-auth/polkit kde
 
