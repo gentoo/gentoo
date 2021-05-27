@@ -70,6 +70,5 @@ src_test() {
 
 src_install() {
 	java-pkg-simple_src_install
-	java-pkg_register-dependency antlr-3.5 antlr-runtime.jar
 	dodoc {CHANGES,contributors,README}.txt
 }
