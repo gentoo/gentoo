@@ -286,6 +286,8 @@ src_install() {
 
 	rm -r "${ED}"/usr/share/doc/mpd || die
 
+	fowners mpd:audio -R /var/lib/mpd
+
 }
 
 pkg_postinst() {
