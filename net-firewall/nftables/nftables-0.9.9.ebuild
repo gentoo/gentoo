@@ -52,6 +52,10 @@ REQUIRED_USE="
 	libedit? ( !readline )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+)
+
 python_make() {
 	emake \
 		-C py \
