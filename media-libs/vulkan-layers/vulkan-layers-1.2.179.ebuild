@@ -27,8 +27,8 @@ IUSE="wayland X"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
 DEPEND="${PYTHON_DEPS}
+	dev-cpp/robin-hood-hashing
 	>=dev-util/glslang-11.4.0:=[${MULTILIB_USEDEP}]
-	dev-util/robin-hood-hashing
 	>=dev-util/spirv-tools-2021.0_pre20210526:=[${MULTILIB_USEDEP}]
 	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )

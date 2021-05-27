@@ -1,3 +1,4 @@
 move dev-python/PyICU dev-python/pyicu
 move dev-python/python-fastimport dev-python/fastimport
 move dev-python/ebuildtester dev-util/ebuildtester
+move dev-util/robin-hood-hashing dev-cpp/robin-hood-hashing
