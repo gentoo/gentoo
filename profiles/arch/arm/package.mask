@@ -1,6 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joonas Niilola <juippis@gentoo.org> (2021-05-27)
+# Not keyworded by the arch team, but has conditions in the ebuild 
+# that needs to be pre-written.
+app-editors/vscode
+
 # Joonas Niilola <juippis@gentoo.org> (2020-09-26)
 # Depends on media-video/rav1e that's listed below. #744637
 media-libs/libavif
