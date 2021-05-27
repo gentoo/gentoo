@@ -17,9 +17,13 @@ RDEPEND="
 	dev-libs/openssl:=
 	net-misc/curl:=
 	>=net-misc/sysrepo-1.4.122:=
+	<net-misc/sysrepo-2.0.0:=
 	>=net-libs/libnetconf2-1.1.43:=
+	<net-libs/libnetconf2-2.0.0:=
 	net-libs/libssh:=
-	>=net-libs/libyang-1.0.225:="
+	>=net-libs/libyang-1.0.225:=
+	<net-libs/libyang-2.0.0:=
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
