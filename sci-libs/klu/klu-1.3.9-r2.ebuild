@@ -12,9 +12,10 @@ SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc static-libs"
+IUSE="doc"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( virtual/latex-base )"
 DEPEND="
 	>=sci-libs/amd-2.4
@@ -32,7 +33,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
+		--disable-static \
 		$(use_with doc)
 }
 
