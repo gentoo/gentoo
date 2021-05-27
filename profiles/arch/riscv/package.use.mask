@@ -13,6 +13,7 @@ x11-libs/tslib sdl
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-text/docbook-xsl-ns-stylesheets ruby
+app-misc/geoclue modemmanager zeroconf
 # KDE not tested, so mask
 sys-auth/polkit kde
 
