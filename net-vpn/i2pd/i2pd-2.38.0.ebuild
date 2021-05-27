@@ -75,7 +75,7 @@ src_install() {
 	# openrc and systemd daemon routines
 	newconfd "${FILESDIR}/i2pd-2.6.0-r3.confd" i2pd
 	newinitd "${FILESDIR}/i2pd-2.6.0-r3.initd" i2pd
-	systemd_newunit "${FILESDIR}/i2pd-2.6.0-r3.service" i2pd.service
+	systemd_newunit "${FILESDIR}/i2pd-2.38.0.service" i2pd.service
 
 	# logrotate
 	insinto /etc/logrotate.d
