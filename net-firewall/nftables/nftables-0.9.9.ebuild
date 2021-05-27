@@ -29,7 +29,7 @@ IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xt
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	>=net-libs/libnftnl-1.1.9:0=
+	>=net-libs/libnftnl-1.2.0:0=
 	gmp? ( dev-libs/gmp:0= )
 	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
