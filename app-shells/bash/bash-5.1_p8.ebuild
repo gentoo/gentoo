@@ -262,7 +262,7 @@ pkg_preinst() {
 		local target=$(readlink "${EROOT}"/bin/sh)
 		local tmp="${T}"/sh
 		ln -sf "${target}" "${tmp}"
-		mv -f "${tmp}" "${EROOT}"/bin/sh
+		mv -fZ "${tmp}" "${EROOT}"/bin/sh
 	fi
 }
 
