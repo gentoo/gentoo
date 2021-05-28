@@ -90,7 +90,7 @@ src_compile() {
 }
 
 src_test() {
-	if [[ $EUID -ne 0 ]]; then
+	if [[ ${EUID} -ne 0 ]]; then
 		ewarn "Disabling tests because you are not root"
 		return 0
 	fi
@@ -103,7 +103,7 @@ src_install() {
 
 	keepdir /var/lib/schroot/{session,unpack,union/{overlay,underlay}}
 
-	docinto /usr/share/doc/${PF}/contrib/setup.d
+	docinto contrib/setup.d
 	dodoc contrib/setup.d/05customdir contrib/setup.d/09fsck contrib/setup.d/10mount-ssh
 
 	newdoc debian/schroot.NEWS NEWS.debian
