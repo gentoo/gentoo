@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils meson multilib-minimal
+inherit gnome2-utils meson-multilib
 
 DESCRIPTION="WebP GDK Pixbuf Loader library"
 HOMEPAGE="https://github.com/aruiz/webp-pixbuf-loader"
@@ -24,22 +24,6 @@ src_prepare() {
 	default
 	# Drop handling of pixbuf cache update by upstream
 	sed -e '/query_loaders/d' -i meson.build || die
-}
-
-multilib_src_configure() {
-	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
 
 pkg_preinst() {
