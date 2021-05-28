@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,21 @@ MY_P="${PN}_${MY_PV}"
 
 DESCRIPTION="GPS waypoints, tracks and routes converter"
 HOMEPAGE="https://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
-SRC_URI="
-	https://github.com/${PN}/${PN}/archive/${MY_P}.tar.gz
-	doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
+if [[ ${PV} == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/gpsbabel/gpsbabel.git"
+	SRC_URI="doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
+else
+	SRC_URI="
+		https://github.com/gpsbabel/gpsbabel/archive/gpsbabel_${MY_PV}.tar.gz
+		doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
+	"
+	KEYWORDS="~amd64 ~ppc ~x86"
+	S="${WORKDIR}/gpsbabel-gpsbabel_${MY_PV}"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc"
 
 DEPEND="
@@ -37,8 +45,8 @@ BDEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-xmldoc.patch
-	"${FILESDIR}"/${P}-use_system_shapelib.patch
+	"${FILESDIR}"/${PN}-1.7.0-xmldoc.patch
+	"${FILESDIR}"/${PN}-1.7.0-use_system_shapelib.patch
 )
 
 S="${WORKDIR}/${PN}-${MY_P}"
