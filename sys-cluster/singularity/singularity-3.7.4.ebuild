@@ -11,7 +11,7 @@ SRC_URI="https://github.com/hpcng/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="examples +network +suid"
 
 # Do not complain about CFLAGS etc. since go projects do not use them.
