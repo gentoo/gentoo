@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit meson multilib-minimal python-any-r1
+inherit meson-multilib python-any-r1
 
 DESCRIPTION="Handler library for evdev events"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libevdev/ https://gitlab.freedesktop.org/libevdev/libevdev"
@@ -38,16 +38,8 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
-	meson test -v -C "${BUILD_DIR}" -t 100 || die "tests failed"
-}
-
-multilib_src_install() {
-	meson_src_install
+	meson_src_test -t 100
 }
 
 multilib_src_install_all() {
