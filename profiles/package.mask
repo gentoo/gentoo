@@ -33,7 +33,7 @@
 #--- END OF EXAMPLES ---
 
 # Matthew Thode <prometheanfire@gentoo.org> (2021-05-27)
-# remove some stuff to make mgorny happy
+# remove some stuff to make redacted happy
 app-admin/glance
 dev-python/aodhclient
 dev-python/automaton
