@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="gdbm"
-inherit autotools flag-o-matic multilib-minimal mono-env python-r1 systemd
+inherit autotools flag-o-matic multilib-minimal mono-env python-single-r1 systemd
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"
@@ -18,6 +18,7 @@ IUSE="autoipd bookmarks +dbus doc gdbm gtk howl-compat +introspection ipv6 kerne
 
 REQUIRED_USE="
 	python? ( dbus gdbm ${PYTHON_REQUIRED_USE} )
+	bookmarks? ( python )
 	mono? ( dbus )
 	howl-compat? ( dbus )
 	mdnsresponder-compat? ( dbus )
@@ -40,12 +41,11 @@ DEPEND="
 	mono? ( dev-lang/mono )
 	python? (
 		${PYTHON_DEPS}
-		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
-		introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
-	)
-	bookmarks? (
-		${PYTHON_DEPS}
-		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			bookmarks? ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}] )
+			dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
+			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
+		')
 	)
 "
 RDEPEND="
@@ -83,7 +83,7 @@ PATCHES=(
 
 pkg_setup() {
 	use mono && mono-env_pkg_setup
-	use python || use bookmarks && python_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -166,8 +166,10 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake install DESTDIR="${D}"
-	use bookmarks && use python && use dbus || \
-		rm -f "${ED}"/usr/bin/avahi-bookmarks
+
+	if ! use bookmarks || ! use python || ! use dbus; then
+		rm -f "${ED}"/usr/bin/avahi-bookmarks || die
+	fi
 
 	# https://github.com/lathiat/avahi/issues/28
 	use howl-compat && dosym avahi-compat-howl.pc /usr/$(get_libdir)/pkgconfig/howl.pc
@@ -185,6 +187,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	use python && python_optimize
+
 	if use autoipd; then
 		insinto /lib/rcscripts/net
 		doins "${FILESDIR}"/autoipd.sh
