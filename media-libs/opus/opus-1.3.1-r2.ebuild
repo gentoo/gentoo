@@ -11,7 +11,7 @@ SRC_URI="https://archive.mozilla.org/pub/opus/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
@@ -27,9 +27,13 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 	)
 
-	for i in ${INTRINSIC_FLAGS} ; do
-		use ${i} && myeconfargs+=( --enable-intrinsics )
-	done
+	local i
+	# We want to disable intrinsics if no flags are enabled
+	# (This is a fun Bash construct to do that!)
+	# bug #752069
+	for i in "${INTRINSIC_FLAGS}" ; do
+		use ${i} && myeconfargs+=( --enable-intrinsics ) && break
+	done ||  myeconfargs+=( --disable-intrinsics )
 
 	if is-flagq -ffast-math || is-flagq -Ofast; then
 		myeconfargs+=( "--enable-float-approx" )
