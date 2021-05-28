@@ -23,6 +23,10 @@ BDEPEND="
 # libfsm moved from ragel -> colm, bug #766108
 RDEPEND="!<dev-util/ragel-7.0.3"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.7-drop-julia-check.patch
+)
+
 src_prepare() {
 	default
 
