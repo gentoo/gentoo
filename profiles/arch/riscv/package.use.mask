@@ -3,6 +3,11 @@
 #
 #
 
+# Marek Szuba <marecki@gentoo.org> (2021-05-28)
+# net-dns/avahi, net-libs/libgssglue and sys-apps/xinetd
+# not keyworded here
+sys-devel/distcc gssapi xinetd zeroconf
+
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # sys-libs/libunwind do not support riscv
 dev-libs/libdbusmenu test
