@@ -40,13 +40,13 @@ src_install() {
 	fi
 
 	if use examples ; then
-		docinto /usr/share/doc/${PF}/examples
+		docinto examples
 		dodoc src/examples/*.{c,tcl}
 
-		docinto /usr/share/doc/${PF}/examples/java_api
+		docinto examples/java_api
 		dodoc src/java_api/*.java
 
-		docinto /usr/share/doc/${PF}/examples/python_api
+		docinto examples/python_api
 		dodoc src/python_api/*.py
 	fi
 }
