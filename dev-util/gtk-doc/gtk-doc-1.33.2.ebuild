@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/DocumentationProject/GtkDoc"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris"
 
 IUSE="emacs test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
