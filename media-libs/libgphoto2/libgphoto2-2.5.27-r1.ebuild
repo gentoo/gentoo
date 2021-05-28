@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples exif gd jpeg nls serial"
 
 # By default, drivers for all supported cameras will be compiled.
@@ -160,7 +160,7 @@ multilib_src_install_all() {
 	dodoc TESTERS MAINTAINERS
 
 	if use examples; then
-		docinto /usr/share/doc/${PF}/examples
+		docinto examples
 		dodoc examples/README examples/*.c examples/*.h
 	fi
 
@@ -174,7 +174,7 @@ multilib_src_install_all() {
 	udev_rules="$(get_udevdir)/rules.d/70-libgphoto2.rules"
 	cam_list="/usr/$(get_libdir)/libgphoto2/print-camera-list"
 
-	if [ -x "${ED}"${cam_list} ]; then
+	if [ -x "${ED}"/${cam_list} ]; then
 		# Let print-camera-list find libgphoto2.so
 		export LD_LIBRARY_PATH="${ED}/usr/$(get_libdir)"
 		# Let libgphoto2 find its camera-modules
