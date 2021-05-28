@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit flag-o-matic gnome.org gnome2-utils linux-info meson multilib multilib-minimal python-any-r1 toolchain-funcs xdg
+inherit flag-o-matic gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
@@ -166,19 +166,15 @@ multilib_src_configure() {
 		$(meson_use systemtap dtrace)
 		$(meson_use systemtap)
 		$(meson_feature sysprof)
-		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
+		$(meson_native_use_bool gtk-doc gtk_doc)
 		$(meson_use fam)
 		$(meson_use test tests)
 		-Dinstalled_tests=false
 		-Dnls=enabled
 		-Doss_fuzz=disabled
-		-Dlibelf=$(multilib_native_usex elf enabled disabled)
+		$(meson_native_use_feature elf libelf)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
 }
 
 multilib_src_test() {
@@ -202,8 +198,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
-
 	# These are installed by dev-util/glib-utils
 	# TODO: With patching we might be able to get rid of the python-any deps and removals, and test depend on glib-utils instead; revisit now with meson
 	rm "${ED}/usr/bin/glib-genmarshal" || die
