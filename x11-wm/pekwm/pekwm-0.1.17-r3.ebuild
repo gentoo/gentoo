@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,7 @@ src_install() {
 
 	# Install contributor scripts into doc folder
 	if use contrib ; then
-		docinto /usr/share/doc/${PF}/contrib
+		docinto contrib
 		dodoc contrib/lobo/{check.png,pekwm_autoprop.pl,pekwm_menu_config.pl} \
 			contrib/lobo/{pekwm_menu_config.pl.vars,README,uncheck.png}
 	fi
