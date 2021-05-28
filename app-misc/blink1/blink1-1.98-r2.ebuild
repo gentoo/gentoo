@@ -79,6 +79,14 @@ src_install() {
 		dodoc docs/README.md
 	fi
 
+	if use server; then
+		if use doc; then
+			dodoc docs/{app-url-api.md,app-url-api-examples.md}
+		fi
+
+		dobin commandline/blink1-tiny-server
+	fi
+
 	if use tool; then
 		if use doc; then
 			dodoc docs/{blink1-tool.md,blink1-tool-tips.md,blink1-hid-commands.md,blink1-mk2-tricks.md}
@@ -94,13 +102,5 @@ src_install() {
 
 	if use mini-tool; then
 		dobin commandline/blink1-mini-tool/blink1-mini-tool
-	fi
-
-	if use server; then
-		if use doc; then
-			dodoc docs/{app-url-api.md,app-url-api-examples.md}
-		fi
-
-		dobin commandline/blink1-tiny-server
 	fi
 }
