@@ -27,6 +27,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 	)
 
+	local i
 	for i in ${INTRINSIC_FLAGS} ; do
 		use ${i} && myeconfargs+=( --enable-intrinsics )
 	done
@@ -39,6 +40,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	default
+	einstalldocs
 	find "${ED}" -name "*.la" -delete || die
 }
