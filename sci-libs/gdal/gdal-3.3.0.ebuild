@@ -151,7 +151,6 @@ src_configure() {
 		--without-charls
 		--without-dods-root
 		--without-ecw
-		--without-epsilon
 		--without-fgdb
 		--without-fme
 		--without-gta
