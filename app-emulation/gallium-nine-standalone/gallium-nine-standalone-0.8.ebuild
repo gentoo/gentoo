@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib-minimal toolchain-funcs
+inherit meson-multilib toolchain-funcs
 
 MY_PN="wine-nine-standalone"
 DESCRIPTION="A standalone version of the WINE parts of Gallium Nine"
@@ -84,27 +84,4 @@ multilib_src_configure() {
 		-Ddri2=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
-pkg_postinst() {
-	local bits=$(bits)
-
-	einfo "Don't remove the Z: drive from your WINEPREFIX as this relies on it."
-	einfo
-	einfo "To set up the ${bits}-bit library, launch your preferred Wine as follows:"
-	einfo "  wine${bits/32} ${EPREFIX}/usr/$(get_libdir)/ninewinecfg.exe.so"
-
-	if use abi_x86_64 && use abi_x86_32; then
-		einfo
-		einfo "To set up the 32-bit library, launch your preferred Wine as follows:"
-		einfo "  wine ${EPREFIX}/usr/$(ABI=x86 get_libdir)/ninewinecfg.exe.so"
-	fi
 }
