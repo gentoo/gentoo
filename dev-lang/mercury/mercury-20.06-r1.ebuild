@@ -181,7 +181,7 @@ src_install() {
 	fi
 
 	if use examples; then
-		docinto /usr/share/doc/${PF}/samples
+		docinto samples
 		dodoc samples/{*.m,README,Mmakefile}
 		dodoc -r samples/c_interface \
 			samples/diff \
