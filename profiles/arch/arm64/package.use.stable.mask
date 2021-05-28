@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-05-28)
+# media-gfx/inkscape is not yet stable on arm64
+# bug #785685
+app-text/dblatex inkscape
+
 # Sam James <sam@gentoo.org> (2021-02-25)
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
 # Dependencies not yet stable, migrated from p.u.m.
