@@ -4,7 +4,7 @@
 EAPI=7
 GNOME_ORG_MODULE="sysprof"
 
-inherit gnome.org meson multilib-minimal systemd
+inherit gnome.org meson-multilib systemd
 
 DESCRIPTION="Static library for sysprof capture data generation"
 HOMEPAGE="http://sysprof.com/"
@@ -36,16 +36,4 @@ multilib_src_configure() {
 		-Denable_examples=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
