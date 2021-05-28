@@ -25,7 +25,8 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" #652422
+	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
+	"${FILESDIR}/${PN}-1.2.4-musl.patch" # bug #792570
 )
 
 pkg_setup() {
