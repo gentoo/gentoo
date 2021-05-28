@@ -23,8 +23,8 @@ python_install_all() {
 	distutils-r1_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r demo/.
+		docinto examples
+		dodoc -r demo/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
