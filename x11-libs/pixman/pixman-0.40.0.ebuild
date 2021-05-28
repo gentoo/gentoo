@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson multilib-minimal multiprocessing toolchain-funcs
+inherit ${GIT_ECLASS} meson-multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Low-level pixel manipulation routines"
 HOMEPAGE="http://www.pixman.org/ https://gitlab.freedesktop.org/pixman/pixman/"
@@ -45,15 +45,7 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	export OMP_NUM_THREADS=$(makeopts_jobs)
-	meson test -v -C "${BUILD_DIR}" -t 100 || die "tests failed"
-}
-
-multilib_src_install() {
-	meson_src_install
+	meson_src_test -t 100
 }
