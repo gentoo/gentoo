@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org meson multilib-minimal virtualx xdg
+inherit gnome.org meson-multilib virtualx xdg
 
 DESCRIPTION="Gtk module for bridging AT-SPI to Atk"
 HOMEPAGE="https://wiki.gnome.org/Accessibility"
@@ -33,14 +33,6 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	virtx dbus-run-session meson test -C "${BUILD_DIR}"
-}
-
-multilib_src_install() {
-	meson_src_install
 }
