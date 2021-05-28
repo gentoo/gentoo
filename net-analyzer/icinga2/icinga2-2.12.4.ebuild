@@ -48,7 +48,6 @@ REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
 PATCHES=(
 	# https://github.com/Icinga/icinga2/issues/8185#issuecomment-680875875
-	"${FILESDIR}/${PN}-2.12.1-boost-1.74.0.patch"
 )
 
 src_configure() {
