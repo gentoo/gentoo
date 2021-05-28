@@ -4,7 +4,7 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org meson multilib-minimal vala xdg
+inherit gnome.org meson-multilib vala xdg
 
 DESCRIPTION="HTTP client/server library for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
@@ -80,24 +80,12 @@ multilib_src_configure() {
 		-Dntlm_auth="${EPREFIX}/usr/bin/ntlm_auth"
 		-Dtls_check=false # disables check, we still rdep on glib-networking
 		-Dgnome=false
-		-Dintrospection=$(multilib_native_usex introspection enabled disabled)
-		-Dvapi=$(multilib_native_usex vala enabled disabled)
-		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
+		$(meson_native_use_feature introspection)
+		$(meson_native_use_feature vala vapi)
+		$(meson_native_use_bool gtk-doc gtk_doc)
 		$(meson_use test tests)
 		-Dinstalled_tests=false
 		$(meson_feature sysprof)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
