@@ -24,7 +24,7 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg kiosk +launch lcms pipewire rdp remoting +resize-optimization screen-sharing seatd +suid systemd test wayland-compositor webp +X xwayland"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -70,6 +70,7 @@ RDEPEND="
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
+	seatd? ( sys-auth/seatd:= )
 	systemd? (
 		sys-auth/pambase[systemd]
 		>=sys-apps/dbus-1.6
@@ -106,6 +107,7 @@ src_configure() {
 		$(meson_use gles2 renderer-gl)
 		$(meson_use launch weston-launch)
 		$(meson_use xwayland)
+		$(meson_use seatd launcher-libseat)
 		$(meson_use systemd)
 		$(meson_use remoting)
 		$(meson_use pipewire)
