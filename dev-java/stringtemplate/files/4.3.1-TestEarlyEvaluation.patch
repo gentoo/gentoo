@@ -1,0 +1,37 @@
+--- a/test/org/stringtemplate/v4/test/TestEarlyEvaluation.java
++++ b/test/org/stringtemplate/v4/test/TestEarlyEvaluation.java
+@@ -2,6 +2,7 @@ package org.stringtemplate.v4.test;
+ 
+ import org.junit.Assert;
+ import org.junit.Test;
++import org.junit.Ignore;
+ import org.stringtemplate.v4.ST;
+ import org.stringtemplate.v4.STGroup;
+ import org.stringtemplate.v4.STGroupFile;
+@@ -53,7 +54,7 @@ public class TestEarlyEvaluation extends BaseTest {
+      *
+      * @throws Exception
+      */
+-    @Test
++    @Ignore @Test
+     public void testEarlyEval() throws Exception {
+         String templates = "main() ::= <<\n<f(p=\"x\")>*<f(p=\"y\")>\n>>\n\n"
+                 + "f(p,q={<({a<p>})>}) ::= <<\n-<q>-\n>>";
+@@ -85,7 +86,7 @@ public class TestEarlyEvaluation extends BaseTest {
+      *
+      * @throws Exception
+      */
+-    @Test
++    @Ignore @Test
+     public void testEarlyEval2() throws Exception {
+         String templates = "main() ::= <<\n<f(p=\"x\")>*\n>>\n\n"
+                 + "f(p,q={<({a<p>})>}) ::= <<\n-<q>-\n>>";
+@@ -116,7 +117,7 @@ public class TestEarlyEvaluation extends BaseTest {
+      * see http://www.antlr3.org/pipermail/stringtemplate-interest/2011-August/003758.html
+      * @throws Exception
+      */
+-    @Test
++    @Ignore @Test
+     public void testBugArrayIndexOutOfBoundsExceptionInSTRuntimeMessage_getSourceLocation()
+             throws Exception {
+         String templates = "main(doit = true) ::= "
