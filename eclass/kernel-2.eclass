@@ -851,8 +851,8 @@ compile_headers_tweak_config() {
 # Fix permissions in tarball
 
 install_universal() {
-	chown -R 0:0 "${WORKDIR}"/* &>/dev/null || die
-	chmod -R a+r-w+X,u+w "${WORKDIR}"/* || die
+	chown -R 0:0 "${WORKDIR}"/* &>/dev/null
+	chmod -R a+r-w+X,u+w "${WORKDIR}"/*
 }
 
 # @FUNCTION: install_headers
