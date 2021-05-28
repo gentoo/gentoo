@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml2/ https://github.com/leethomason/tinyxml2/"
@@ -20,25 +20,9 @@ PATCHES=(
 )
 
 multilib_src_configure() {
-	local mymesonargs=()
+	local emesonargs=(
+		$(meson_native_use_bool test tests)
+	)
 
-	if multilib_is_native_abi ; then
-		mymesonargs+=(
-			$(meson_use test tests)
-		)
-	fi
-
-	meson_src_configure "${mymesonargs[@]}"
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
+	meson_src_configure
 }
