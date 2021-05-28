@@ -138,10 +138,12 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
 	dodoc README.md
 	use doc && dodoc *pdf *html
+
 	if use examples; then
-		docinto /usr/share/doc/${PF}/examples
+		docinto examples
 		dodoc -r examples/*
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
