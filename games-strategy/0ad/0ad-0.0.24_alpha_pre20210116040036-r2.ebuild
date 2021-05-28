@@ -4,7 +4,8 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit desktop toolchain-funcs wxwidgets xdg
+PYTHON_COMPAT=( python3_{7..9} )
+inherit desktop toolchain-funcs python-any-r1 wxwidgets xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -36,9 +37,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
-BDEPEND="virtual/pkgconfig
-	test? ( dev-lang/perl )"
-
+# virtual/rust is for bundled SpiderMonkey
+# Build-time Python dependency is for SM too
+# TODO: Unbundle premake5
+# See bug #773472 which may help (bump for it)
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+	virtual/rust
+	test? ( dev-lang/perl )
+"
 # remove dependency on nvtt
 # as we use the bundled one
 # bug #768930
