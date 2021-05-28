@@ -40,7 +40,6 @@ RDEPEND="${CDEPEND}
 # get rid of old style virtual - bug 350792
 RDEPEND="${RDEPEND}
 	!mail-mta/courier
-	!net-mail/bincimap
 	!net-mail/cyrus-imapd
 "
 
