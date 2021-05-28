@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org gnome2-utils meson multilib multilib-minimal xdg
+inherit gnome.org gnome2-utils meson-multilib multilib xdg
 
 DESCRIPTION="Image loading library for GTK+"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gdk-pixbuf"
@@ -70,37 +70,15 @@ multilib_src_configure() {
 		#native_windows_loaders
 		-Dinstalled_tests=false
 		-Dgio_sniffing=true
+		$(meson_native_use_bool gtk-doc gtk_doc)
+		$(meson_native_use_feature introspection)
+		$(meson_native_true man)
 	)
-	if multilib_is_native_abi; then
-		emesonargs+=(
-			$(meson_use gtk-doc gtk_doc)
-			$(meson_feature introspection)
-			-Dman=true
-		)
-	else
-		emesonargs+=(
-			-Dgtk_doc=false
-			-Dintrospection=disabled
-			-Dman=false
-		)
-	fi
+
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
 multilib_src_install_all() {
-	einstalldocs
 	if use gtk-doc; then
 		mkdir "${ED}"/usr/share/doc/${PF}/html || die
 		mv "${ED}"/usr/share/doc/{${PN}/,${PF}/html/} || die
