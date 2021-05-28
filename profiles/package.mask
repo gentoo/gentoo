@@ -218,6 +218,7 @@ media-gfx/gimageview
 # w/ sphinx-4 but with Python 3.7 being removed in half a month, bumping
 # makes little sense.  No reverse dependencies.
 # Removal on 2021-06-14.  Bug #743889.
+dev-python/sphinxcontrib-httpdomain
 dev-python/sphinxcontrib-httpexample
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
