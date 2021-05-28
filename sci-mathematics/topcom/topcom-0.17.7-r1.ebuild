@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ src_install() {
 
 	use examples && dodoc -r "${S}"/examples
 
-	docinto /usr/share/doc/${PF}/html
+	docinto html
 	use doc && dodoc "${DISTDIR}"/TOPCOM-manual.html
 
 	mv "${ED}"/usr/bin/cube "${ED}"/usr/bin/topcom_cube || die
