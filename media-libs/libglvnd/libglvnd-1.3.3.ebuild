@@ -12,7 +12,7 @@ fi
 PYTHON_COMPAT=( python3_{7..9} )
 VIRTUALX_REQUIRED=manual
 
-inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1 virtualx
+inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
 HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
@@ -56,18 +56,10 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	if use X; then
 		virtx meson_src_test
 	else
 		meson_src_test
 	fi
-}
-
-multilib_src_install() {
-	meson_src_install
 }
