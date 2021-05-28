@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,7 @@ all_ruby_install() {
 	all_fakegem_install
 
 	for dir in examples ; do
-		docinto "$dir"
-		dodoc -r "$dir"/*
+		docinto "${dir}"
+		dodoc -r "${dir}"/.
 	done
 }
