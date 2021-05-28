@@ -19,6 +19,7 @@ dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-text/docbook-xsl-ns-stylesheets ruby
 app-misc/geoclue modemmanager zeroconf
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zeroconf
 # KDE not tested, so mask
 sys-auth/polkit kde
 
