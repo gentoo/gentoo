@@ -12,7 +12,7 @@ S="${WORKDIR}"/cpp
 
 LICENSE="GPL-2+"
 SLOT="0/3.8"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
