@@ -7,8 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="cacert">
-			Include root certificates from CAcert (http://www.cacert.org/) and Software
-			in the Public Interest (http://www.spi-inc.org/)
+			Include root/class3 certs from CAcert (https://www.cacert.org/)
 		</flag>
 	</use>
 </pkgmetadata>
