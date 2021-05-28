@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 # Note: lib{xml2,xslt} are used as C libraries, not Python modules.
 RDEPEND="
-	>=dev-libs/libxml2-2.9.12-r1
+	>=dev-libs/libxml2-2.9.12-r2
 	>=dev-libs/libxslt-1.1.28"
 DEPEND="${RDEPEND}"
 BDEPEND="
