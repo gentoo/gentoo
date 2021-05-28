@@ -4,7 +4,7 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit bash-completion-r1 meson multilib-minimal systemd udev vala
+inherit bash-completion-r1 meson-multilib systemd udev vala
 
 DESCRIPTION="System service to accurately color manage input and output devices"
 HOMEPAGE="https://www.freedesktop.org/software/colord/"
@@ -83,18 +83,18 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Ddaemon=$(multilib_is_native_abi && echo true || echo false)
+		$(meson_native_true daemon)
 		-Dexamples=false
 		-Dbash_completion=false
 		$(meson_use udev udev_rules)
-		-Dsystemd=$(multilib_native_usex systemd true false)
+		$(meson_native_use_bool systemd)
 		-Dlibcolordcompat=true
-		-Dargyllcms_sensor=$(multilib_native_usex argyllcms true false)
+		$(meson_native_use_bool argyllcms argyllcms_sensor)
 		-Dreverse=false
-		-Dsane=$(multilib_native_usex scanner true false)
-		-Dintrospection=$(multilib_native_usex introspection true false)
-		-Dvapi=$(multilib_native_usex vala true false)
-		-Dprint_profiles=$(multilib_native_usex extra-print-profiles true false)
+		$(meson_native_use_bool scanner sane)
+		$(meson_native_use_bool introspection)
+		$(meson_native_use_bool vala vapi)
+		$(meson_native_use_bool extra-print-profiles print_profiles)
 		$(meson_use test tests)
 		-Dinstalled_tests=false
 		-Ddaemon_user=colord
@@ -103,18 +103,6 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}"/var
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
 
 multilib_src_install_all() {
