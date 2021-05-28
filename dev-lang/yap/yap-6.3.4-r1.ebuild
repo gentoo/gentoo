@@ -112,17 +112,20 @@ src_install() {
 	dodoc changes*.html README
 
 	if use examples ; then
-		docinto /usr/share/doc/${PF}/examples/chr
+		docinto examples/chr
 		dodoc packages/chr/Examples/*
+
 		if use java ; then
-			docinto /usr/share/doc/${PF}/examples/jpl/prolog
+			docinto examples/jpl/prolog
 			dodoc packages/jpl/jpl/examples/prolog/*
-			docinto /usr/share/doc/${PF}/examples/jpl/java
+
+			docinto examples/jpl/java
 			dodoc packages/jpl/jpl/examples/java/README
 			dodoc -r packages/jpl/jpl/examples/java/*/*.{java,pl}
 		fi
+
 		if use mpi ; then
-			docinto /usr/share/doc/${PF}/examples/mpi
+			docinto examples/mpi
 			dodoc library/mpi/examples/*.pl
 		fi
 	fi
