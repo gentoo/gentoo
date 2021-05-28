@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org flag-o-matic meson multilib-minimal
+inherit gnome.org flag-o-matic meson-multilib
 
 DESCRIPTION="Typesafe callback system for standard C++"
 HOMEPAGE="https://libsigcplusplus.github.io/libsigcplusplus/
@@ -35,27 +35,13 @@ multilib_src_configure() {
 
 	local emesonargs=(
 		-Dbuild-examples=false
-		-Dbuild-documentation=$(multilib_native_usex doc true false)
+		$(meson_native_use_bool doc build-documentation)
 	)
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
 multilib_src_install_all() {
-	einstalldocs
-
 	# Note: html docs are installed into /usr/share/doc/libsigc++-3.0
 	# We can't use /usr/share/doc/${PF} because of links from glibmm etc. docs
 	use examples && dodoc -r examples
-}
-
-multilib_src_test() {
-	meson_src_test
 }
