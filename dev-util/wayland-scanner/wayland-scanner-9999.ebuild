@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	S="${WORKDIR}/wayland-${PV}"
 fi
-inherit meson multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="wayland-scanner tool"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
@@ -34,16 +34,4 @@ multilib_src_configure() {
 		-Dscanner=true
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
