@@ -15,10 +15,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 INTRINSIC_FLAGS="cpu_flags_x86_sse cpu_flags_arm_neon"
 IUSE="custom-modes doc static-libs ${INTRINSIC_FLAGS}"
 
-BDEPEND="doc? (
+BDEPEND="
+	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.1-libdir-macro.patch
@@ -40,13 +42,13 @@ multilib_src_configure() {
 	done || myeconfargs+=( --disable-intrinsics )
 
 	if is-flagq -ffast-math || is-flagq -Ofast; then
-		myeconfargs+=( "--enable-float-approx" )
+		myeconfargs+=( --enable-float-approx )
 	fi
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
-	default
+	einstalldocs
 	find "${ED}" -name "*.la" -delete || die
 }
