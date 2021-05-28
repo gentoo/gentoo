@@ -20,6 +20,10 @@ BDEPEND="doc? (
 		media-gfx/graphviz
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.1-libdir-macro.patch
+)
+
 multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable custom-modes)
@@ -33,7 +37,7 @@ multilib_src_configure() {
 	# bug #752069
 	for i in "${INTRINSIC_FLAGS}" ; do
 		use ${i} && myeconfargs+=( --enable-intrinsics ) && break
-	done ||  myeconfargs+=( --disable-intrinsics )
+	done || myeconfargs+=( --disable-intrinsics )
 
 	if is-flagq -ffast-math || is-flagq -Ofast; then
 		myeconfargs+=( "--enable-float-approx" )
