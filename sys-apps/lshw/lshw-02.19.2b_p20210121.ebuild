@@ -16,7 +16,7 @@ SRC_URI="https://ezix.org/src/pkg/lshw/archive/${MY_COMMIT}.tar.gz -> ${P}-${MY_
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="gtk sqlite static"
 
 REQUIRED_USE="static? ( !gtk !sqlite )"
