@@ -9,7 +9,7 @@
 sys-devel/distcc gssapi xinetd zeroconf
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
-# sys-libs/libunwind do not support riscv
+# Dependencies not keyworded, not tested
 dev-libs/libdbusmenu test
 virtual/notification-daemon gnome kde
 media-libs/libsdl nas pulseaudio
@@ -21,6 +21,7 @@ app-text/docbook-xsl-ns-stylesheets ruby
 app-misc/geoclue modemmanager zeroconf
 gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zeroconf
 sys-power/upower ios
+xfce-base/xfce4-settings colord libcanberra
 # KDE not tested, so mask
 sys-auth/polkit kde
 
