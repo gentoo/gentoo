@@ -37,7 +37,7 @@ COMMON_DEPEND="
 		snmp? (
 			dev-libs/openssl:0=
 			net-analyzer/net-snmp:=
-			$(python_gen_cond_dep 'net-dns/avahi[dbus,${PYTHON_MULTI_USEDEP}]')
+			net-dns/avahi[dbus,python,${PYTHON_SINGLE_USEDEP}]
 		)
 	)
 "
