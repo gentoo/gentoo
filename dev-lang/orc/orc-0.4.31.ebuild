@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="The Oil Runtime Compiler, a just-in-time compiler for array operations"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -32,21 +32,9 @@ multilib_src_configure() {
 		-Dorc-test=enabled # FIXME: always installs static library, bug 645232
 		-Dbenchmarks=disabled
 		-Dexamples=disabled
-		$(meson_feature gtk-doc gtk_doc)
+		$(meson_native_use_feature gtk-doc gtk_doc)
 		$(meson_feature test tests)
 		-Dtools=enabled # requires orc-test
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }
