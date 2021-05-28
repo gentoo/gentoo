@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit multilib-minimal
 
 DESCRIPTION="the Ogg media file format library"
@@ -14,6 +15,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~a
 IUSE="static-libs"
 
 DOCS=( AUTHORS CHANGES )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.4-libdir-m4.patch
+)
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/ogg/config_types.h
