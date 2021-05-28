@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org gnome2-utils meson multilib-minimal xdg
+inherit gnome.org gnome2-utils meson-multilib xdg
 
 DESCRIPTION="Network-related giomodules for glib"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -53,14 +53,6 @@ multilib_src_configure() {
 		-Dstatic_modules=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
 }
 
 multilib_src_test() {
