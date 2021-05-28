@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit flag-o-matic gnome.org gnome2-utils linux-info meson multilib multilib-minimal python-any-r1 toolchain-funcs xdg
+inherit flag-o-matic gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
@@ -170,17 +170,13 @@ multilib_src_configure() {
 		$(meson_use systemtap dtrace)
 		$(meson_use systemtap)
 		$(meson_feature sysprof)
-		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
+		$(meson_native_use_bool gtk-doc gtk_doc)
 		$(meson_use fam)
 		-Dinstalled_tests=false
 		-Dnls=enabled
 		-Doss_fuzz=disabled
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
 }
 
 multilib_src_test() {
