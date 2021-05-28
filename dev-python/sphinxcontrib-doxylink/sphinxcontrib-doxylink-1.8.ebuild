@@ -25,6 +25,7 @@ RDEPEND="
 BDEPEND="test? ( app-doc/doxygen )"
 
 distutils_enable_tests pytest
+distutils_enable_sphinx doc
 
 python_install_all() {
 	distutils-r1_python_install_all
