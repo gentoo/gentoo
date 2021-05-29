@@ -9,6 +9,10 @@
 		<email>sudinave@gmail.com</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
+	<use>
+		<flag name="tools">Enable installation of various tools in addition to the library</flag>
+		<flag name="vulkan">Enable vulkan compute support</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Tencent/ncnn</remote-id>
 	</upstream>
