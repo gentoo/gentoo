@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/sidplay-residfp/${PN}/$(ver_cut 1-2)/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/6"
 KEYWORDS="~amd64 ~hppa ~x86"
-IUSE="cpu_flags_x86_mmx static-libs"
+IUSE="static-libs"
 
 src_prepare() {
 	default
@@ -22,8 +22,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
-		$(use_enable cpu_flags_x86_mmx mmx)
+		$(use_enable static-libs static)
 }
 
 src_install() {
