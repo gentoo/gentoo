@@ -60,13 +60,14 @@ src_prepare() {
 src_compile() {
 	tc-export CC CXX AR
 
+	# Use bundled unrar for now, bug #792720
 	emake \
 		SHARED=1 \
 		PRODUCTION=1 \
 		ENABLE_BRAIN=$(usex brain 1 0) \
 		USE_SYSTEM_LZMA=0 \
 		USE_SYSTEM_OPENCL=1 \
-		USE_SYSTEM_UNRAR=1 \
+		USE_SYSTEM_UNRAR=0 \
 		USE_SYSTEM_ZLIB=1 \
 		USE_SYSTEM_XXHASH=1 \
 		VERSION_PURE="${PV}"
