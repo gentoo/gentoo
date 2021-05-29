@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -38,6 +38,8 @@ src_prepare() {
 
 	# use system pypiserver instead of broken bundled one
 	eapply "${FILESDIR}"/distlib-0.3.2-system-pypiserver.py || die
+	# fix tests for py310
+	eapply "${FILESDIR}"/${P}-py310.patch
 
 	# doesn't work with our patched pip
 	sed -e '/PIP_AVAIL/s:True:False:' \
