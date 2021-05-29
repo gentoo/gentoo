@@ -6,8 +6,8 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Pedro is a subscription/notification communications system"
-HOMEPAGE="http://www.itee.uq.edu.au/~pjr/HomePages/PedroHome.html"
-SRC_URI="http://www.itee.uq.edu.au/~pjr/HomePages/PedroFiles/${P}.tgz
+HOMEPAGE="https://staff.itee.uq.edu.au/pjr/HomePages/PedroHome.html"
+SRC_URI="https://staff.itee.uq.edu.au/pjr/HomePages/PedroFiles/${P}.tgz
 	doc? ( mirror://gentoo/${PN}-manual-${PV}.tar.gz )"
 S="${WORKDIR}"/${P}
 
