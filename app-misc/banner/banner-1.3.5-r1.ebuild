@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 S="${WORKDIR}/${PN}-${PN^^}_V${PV}"
 
-RDEPEND="!games-misc/bsd-games"
+RDEPEND="!<=games-misc/bsd-games-3"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.3-ctype.h.patch
 )
