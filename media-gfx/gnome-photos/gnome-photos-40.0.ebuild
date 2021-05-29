@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Photos"
 
 LICENSE="GPL-3+ LGPL-2+ CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="flickr test upnp-av"
 RESTRICT="!test? ( test )"
 
