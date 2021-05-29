@@ -14,9 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	app-text/asciidoc"
+BDEPEND="app-text/asciidoc"
 
 RESTRICT=test # upstream does not ship some tests in tarball
 
