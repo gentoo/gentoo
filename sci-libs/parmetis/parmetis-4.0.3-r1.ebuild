@@ -28,12 +28,7 @@ RDEPEND="${DEPEND}
 	!<sci-libs/metis-5"
 
 pkg_setup() {
-	if use openmp; then
-		if [[ $(tc-getCC)$ == *gcc* ]] && ! tc-has-openmp; then
-			ewarn "You are using gcc but openmp is not available"
-			die "Need an OpenMP capable compiler"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {
