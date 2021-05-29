@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeOnlineAccounts"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
 
 IUSE="debug gnome +introspection kerberos +vala"
 REQUIRED_USE="vala? ( introspection )"
