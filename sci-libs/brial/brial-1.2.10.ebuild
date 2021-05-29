@@ -20,11 +20,9 @@ DEPEND="dev-libs/boost
 	sci-libs/m4ri[png=]"
 RDEPEND="${DEPEND}"
 
-pkg_setup() {
-	tc-export PKG_CONFIG
-}
-
 src_configure() {
+	tc-export PKG_CONFIG
+
 	# with-boost-libdir added to deal with some rather quirky setups
 	# see https://github.com/cschwan/sage-on-gentoo/issues/551
 	econf \
