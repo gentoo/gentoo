@@ -21,12 +21,15 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-4.0.3-r6:0=[${MULTILIB_USEDEP}] )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	elibtoolize  # for Prefix/Solaris
+
+	# for Prefix/Solaris
+	elibtoolize
 }
 
 multilib_src_configure() {
@@ -37,6 +40,7 @@ multilib_src_configure() {
 		$(use_with tiff)
 		$(use_with zlib)
 	)
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
