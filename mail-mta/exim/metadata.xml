@@ -45,6 +45,8 @@
 		<flag name="pkcs11">Require pkcs11 support in <pkg>net-libs/gnutls</pkg> with USE=gnutls</flag>
 		<flag name="redis">Adds support for querying <pkg>dev-db/redis</pkg></flag>
 		<flag name="prdr">Adds support for Per-Recipient Data Response</flag>
+		<flag name="tdb">Use <pkg>sys-libs/tdb</pkg> for internal database
+			storage (such as hints database)</flag>
 		<flag name="tpda">Adds support for Transport Post-Delivery Actions</flag>
 	</use>
 	<upstream>
