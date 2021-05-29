@@ -16,6 +16,7 @@ IUSE="audiofile gcrypt jpeg png zlib"
 
 RDEPEND=">=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?]
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
+	gcrypt? ( dev-libs/libgcrypt )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0 )
 	zlib? ( sys-libs/zlib )"
