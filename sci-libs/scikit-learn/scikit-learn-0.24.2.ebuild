@@ -1,10 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
@@ -32,6 +31,17 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+# For some reason this wants to use urllib to fetch things from the internet
+# distutils_enable_sphinx doc \
+# 	dev-python/matplotlib \
+# 	dev-python/memory_profiler \
+# 	dev-python/numpydoc \
+# 	dev-python/pandas \
+# 	dev-python/pillow \
+# 	dev-python/seaborn \
+# 	dev-python/sphinx-gallery \
+# 	dev-python/sphinx-prompt \
+# 	sci-libs/scikit-image
 
 PATCHES=( "${FILESDIR}"/${P}-no-O3.patch )
 
@@ -46,7 +56,7 @@ python_test() {
 		      "${tfile}" =~ "test_pipeline.py" ]]; then
 			continue
 		fi
-		elog "Testing: ${tfile}"
+		einfo "Testing: ${tfile}"
 		${EPYTHON} "${tfile}" || die "tests failed for ${tfile} with ${EPYTHON}"
 	done
 }
