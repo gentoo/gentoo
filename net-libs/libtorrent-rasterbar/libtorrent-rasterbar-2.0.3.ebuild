@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_8,3_9} )
-PYTHON_REQ_USE="threads(+)"
 
 inherit cmake python-any-r1
 
@@ -17,9 +16,9 @@ SLOT="0/2.0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+dht debug gnutls python ssl test"
 
-RESTRICT="!test? ( test ) test"
-DEPEND="dev-libs/boost:=[threads]"
-RDEPEND="
+RESTRICT="!test? ( test ) test" # not yet fixed
+RDEPEND="dev-libs/boost:=[threads]"
+DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '
