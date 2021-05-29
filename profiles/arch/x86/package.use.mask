@@ -5,6 +5,8 @@
 # Depends on either unkeyworded dev-java/openjdk:11
 # or unavailable >=dev-java/icedtea-4, bug #785640
 >=app-office/libreoffice-7 base java
+>=app-office/libreoffice-bin-7 java
+>=app-office/libreoffice-bin-debug-7 java
 
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
