@@ -3,12 +3,12 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="gdbm"
 inherit autotools flag-o-matic multilib-minimal mono-env python-single-r1 systemd
 
 DESCRIPTION="System which facilitates service discovery on a local network"
-HOMEPAGE="http://avahi.org/"
+HOMEPAGE="https://avahi.org/"
 SRC_URI="https://github.com/lathiat/avahi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
