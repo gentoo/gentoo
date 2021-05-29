@@ -14,6 +14,8 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="sys-libs/zlib"
+DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 
 PATCHES=(
