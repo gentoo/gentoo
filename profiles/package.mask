@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-05-29)
+# Old version masked for removal on 2021-07-01
+# bug #788013
+<net-mail/courier-imap-5
+
 # Matthew Thode <prometheanfire@gentoo.org> (2021-05-27)
 # remove some stuff to make redacted happy
 app-admin/glance
