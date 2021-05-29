@@ -17,8 +17,10 @@ SLOT="5"
 KEYWORDS="~amd64 ~x86"
 IUSE="multilib nls"
 
-DEPEND="sys-devel/bison"
-RDEPEND=""
+RDEPEND="sys-libs/zlib"
+DEPEND="
+	${RDEPEND}
+	sys-devel/bison"
 
 transform_known_flags() {
 	declare setting
