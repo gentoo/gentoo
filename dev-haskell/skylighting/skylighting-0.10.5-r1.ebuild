@@ -20,6 +20,7 @@ IUSE="executable"
 
 RDEPEND="~dev-haskell/skylighting-core-0.10.5:=[profile?]
 	>=dev-lang/ghc-8.4.3:=
+	dev-libs/libpcre:=
 	executable? ( >=dev-haskell/blaze-html-0.5:=[profile?]
 			dev-haskell/pretty-show:=[profile?]
 			dev-haskell/text:=[profile?] )
