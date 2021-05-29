@@ -11,7 +11,7 @@ SRC_URI="https://github.com/phako/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="LGPL-2.1"
 SLOT="1.0/5" # soname of libdleyna-core-1.0.so
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
