@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Moserial https://gitlab.gnome.org/GNOME/mo
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.16:2[dbus]
