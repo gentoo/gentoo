@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Robots https://gitlab.gnome.org/GNOME/gnom
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 IUSE=""
 
 RDEPEND="
