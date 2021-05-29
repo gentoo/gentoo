@@ -42,7 +42,6 @@ BDEPEND="virtual/pkgconfig
 		$(python_gen_any_dep 'dev-python/mako[${PYTHON_USEDEP}]')
 	)"
 
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.72.0-fix-vulkan-undeclared.patch
 )
