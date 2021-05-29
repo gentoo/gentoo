@@ -30,7 +30,11 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/PyQt5[${PYTHON_USEDEP},bluetooth,dbus,declarative,designer,gui,help,location,multimedia,network,networkauth,opengl,positioning,printsupport,sensors,serialport,sql,ssl,svg,testlib,webchannel,webkit,websockets,widgets,x11extras,xml(+),xmlpatterns]
+		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
+		dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
+		dev-python/PyQt5[sensors,serialport,sql,svg,testlib,webchannel]
+		dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	)"
 
@@ -40,6 +44,7 @@ src_prepare() {
 	default
 
 	sed -i -e "s/from PyQt4.Qt import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PyQt4.QtCore import/raise ImportError #/" qtpy/__init__.py || die
 	sed -i -e "s/from PySide import/raise ImportError #/" qtpy/__init__.py || die
 	sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
 }

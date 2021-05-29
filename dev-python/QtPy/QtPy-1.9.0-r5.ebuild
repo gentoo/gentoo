@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 virtualx
 
@@ -23,17 +23,19 @@ _IUSE_QT_MODULES="
 IUSE="+pyqt5 pyside2 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
 
+# PySide2 does not support python3_10, nor is it likely that it will in the
+# future since upstream appears to be focussing on PySide6 for Qt6 instead
+# (which is compatible with python3_10). So if we want to use python3_10
+# we have to force disable pyside2.
 REQUIRED_USE="
 	|| ( pyqt5 pyside2 )
-	test? ( pyqt5 pyside2 )
+	python_targets_python3_10? ( pyqt5 !pyside2 )
 "
 
 # These flags are currently *not* common to both the PySide2 and PyQt5 ebuild
 # Disable them for now, please check periodically if this is still up to date.
 # 	bluetooth? ( pyqt5 )
 # 	dbus? ( pyqt5 )
-# 	networkauth? ( pyqt5 )
-# 	webkit? ( pyqt5 )
 #
 # 	3d? ( pyside2 )
 # 	charts? ( pyside2 )
@@ -72,13 +74,15 @@ RDEPEND="
 		webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
 	)
 	pyside2? (
-		dev-python/pyside2[${PYTHON_USEDEP}]
-		dev-python/pyside2[designer?,gui?,help?,location?,multimedia?]
-		dev-python/pyside2[network?,opengl(+)?,positioning?,printsupport?]
-		dev-python/pyside2[sensors?,serialport(+)?,sql?,svg?,testlib?]
-		dev-python/pyside2[webchannel?,webengine?,websockets?,widgets?]
-		dev-python/pyside2[x11extras?,xml?,xmlpatterns?]
-		declarative? ( dev-python/pyside2[qml,quick] )
+		$(python_gen_cond_dep '
+			dev-python/pyside2[${PYTHON_USEDEP}]
+			dev-python/pyside2[designer?,gui?,help?,location?,multimedia?]
+			dev-python/pyside2[network?,opengl(+)?,positioning?,printsupport?]
+			dev-python/pyside2[sensors?,serialport(+)?,sql?,svg?,testlib?]
+			dev-python/pyside2[webchannel?,webengine?,websockets?,widgets?]
+			dev-python/pyside2[x11extras?,xml?,xmlpatterns?]
+			declarative? ( dev-python/pyside2[qml,quick] )
+			' python3_{7..9} )
 	)
 "
 
@@ -90,21 +94,28 @@ BDEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP}]
 		dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
-		dev-python/PyQt5[multimedia,network,networkauth,opengl,positioning]
-		dev-python/PyQt5[printsupport,sensors,serialport,sql,svg,testlib]
-		dev-python/PyQt5[webchannel,websockets,widgets,x11extras,xml(+)]
-		dev-python/PyQt5[xmlpatterns]
+		dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
+		dev-python/PyQt5[sensors,serialport,sql,svg,testlib,webchannel]
+		dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		dev-python/pyside2[${PYTHON_USEDEP}]
-		dev-python/pyside2[3d,charts,concurrent,datavis,designer,gui,help]
-		dev-python/pyside2[location,multimedia,network,opengl(+),positioning]
-		dev-python/pyside2[printsupport,qml,quick,script,scripttools,scxml]
-		dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
-		dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
-		dev-python/pyside2[xml,xmlpatterns]
-)"
+		$(python_gen_cond_dep '
+			dev-python/pyside2[${PYTHON_USEDEP}]
+			dev-python/pyside2[3d,charts,concurrent,datavis,designer,gui,help]
+			dev-python/pyside2[location,multimedia,network,opengl(+),positioning]
+			dev-python/pyside2[printsupport,qml,quick,script,scripttools,scxml]
+			dev-python/pyside2[sensors,serialport(+),speech,sql,svg,testlib]
+			dev-python/pyside2[webchannel,webengine,websockets,widgets,x11extras]
+			dev-python/pyside2[xml,xmlpatterns]
+			' python3_{7..9} )
+	)
+"
 
 distutils_enable_tests pytest
+
+# https://github.com/spyder-ide/qtpy/issues/238
+PATCHES=(
+	"${FILESDIR}/${P}-python3_9.patch"
+)
 
 src_prepare() {
 	default
@@ -113,12 +124,14 @@ src_prepare() {
 	fi
 	if ! use pyside2; then
 		sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
+		sed -i -e "s/from PySide2.QtCore import/raise ImportError #/" qtpy/__init__.py || die
 	fi
 
 	# Disable outdated PyQt4 and PySide
 	sed -i -e "s/from PyQt4.Qt import/raise ImportError #/" qtpy/__init__.py || die
 	sed -i -e "s/from PyQt4.QtCore import/raise ImportError #/" qtpy/__init__.py || die
 	sed -i -e "s/from PySide import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PySide.QtCore import/raise ImportError #/" qtpy/__init__.py || die
 }
 
 src_test() {
@@ -126,10 +139,16 @@ src_test() {
 }
 
 python_test() {
-	local -x QT_API
-	for QT_API in pyqt5 pyside2; do
-		epytest
-	done
+	if use pyqt5; then
+		QT_API="pyqt5" epytest
+	fi
+	if use pyside2; then
+		if [[ "${EPYTHON}" == "python3.10" ]]; then
+			return
+		else
+			QT_API="pyside2" epytest
+		fi
+	fi
 }
 
 pkg_postinst() {
