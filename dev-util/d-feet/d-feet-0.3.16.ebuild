@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/DFeet"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 IUSE="test +X"
 RESTRICT="!test? ( test )"
