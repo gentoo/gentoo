@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit linux-info python-any-r1 systemd toolchain-funcs
+inherit linux-info python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="OPAL firmware utilities"
 HOMEPAGE="https://github.com/open-power/skiboot"
@@ -16,14 +16,14 @@ SLOT="0"
 KEYWORDS="~ppc64"
 IUSE="doc"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 DEPEND=""
 RDEPEND="${DEPEND} ${PYTHON_DEPS}"
 
-BDEPEND="doc? (
-	$(python_gen_any_dep '
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/recommonmark[${PYTHON_USEDEP}]
-	')
+BDEPEND="doc? ( $(python_gen_cond_dep '
+	dev-python/sphinx[${PYTHON_USEDEP}]
+	dev-python/recommonmark[${PYTHON_USEDEP}]')
 )"
 
 CONFIG_CHECK="~MTD_POWERNV_FLASH ~OPAL_PRD ~PPC_DT_CPU_FTRS ~SCOM_DEBUGFS"
