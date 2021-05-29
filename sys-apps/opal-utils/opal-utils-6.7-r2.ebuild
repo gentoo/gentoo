@@ -37,15 +37,9 @@ PATCHES=(
 	"${FILESDIR}/flags.patch"
 )
 
-python_check_deps() {
-	use doc || return 0
-	has_version "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
-	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
 pkg_setup() {
 	linux-info_pkg_setup
-	python-any-r1_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_configure() {
