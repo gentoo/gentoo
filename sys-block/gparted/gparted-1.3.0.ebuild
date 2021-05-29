@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="kde policykit wayland"
 
 DEPEND="
