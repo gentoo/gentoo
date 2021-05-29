@@ -1,0 +1,41 @@
+--- a/gcc-10-2021-20210519-19A74-src/gcc/ada/osint.adb	2017-03-10 21:58:02.600710156 +0100
++++ b/gcc-10-2021-20210519-19A74-src/gcc/ada/osint.adb	2017-03-10 21:59:38.033983293 +0100
+@@ -2229,14 +2229,11 @@
+       for J in Start_Of_Prefix .. Name_Len - Prog'Length + 1 loop
+          if Name_Buffer (J .. J + Prog'Length - 1) = Prog then
+             End_Of_Prefix := J - 1;
++            Start_Of_Suffix := J + Prog'Length;
+             exit;
+          end if;
+       end loop;
+ 
+-      if End_Of_Prefix > 1 then
+-         Start_Of_Suffix := End_Of_Prefix + Prog'Length + 1;
+-      end if;
+-
+       --  Create the new program name
+ 
+       return new String'
+--- a/patch/04_all_nossp-on-nostdlib.patch	2021-05-10 21:37:05.733985417 +0200
++++ b/patch/04_all_nossp-on-nostdlib.patch	2021-05-10 21:38:02.925029050 +0200
+@@ -4,7 +4,7 @@
+ --- a/gcc/gcc.c	2017-07-04 09:15:57.740793000 +0200
+ +++ b/gcc/gcc.c	2018-03-02 13:58:44.387741114 +0100
+ @@ -857,6 +857,12 @@ proper position among the other output f
+- #define LINK_GCC_C_SEQUENCE_SPEC "%G %L %G"
++ #define LINK_GCC_C_SEQUENCE_SPEC "%G %{!nolibc:%L %G}"
+  #endif
+  
+ +#ifdef ENABLE_DEFAULT_SSP
+@@ -19,9 +19,9 @@
+ @@ -1131,7 +1148,7 @@ static const char *cc1_options =
+   %{-version:--version}\
+   %{-help=*:--help=%*}\
+-  %{!fsyntax-only:%{S:%W{o*}%{!o*:-o %b.s}}}\
++  %{!fsyntax-only:%{S:%W{o*}%{!o*:-o %w%b.s}}}\
+ - %{fsyntax-only:-o %j} %{-param*}\
+ + %{fsyntax-only:-o %j} %{-param*} " NO_SSP_SPEC "\
+   %{coverage:-fprofile-arcs -ftest-coverage}\
++  %{fdump-scos:-fpreserve-decisions-generic}\
+   %{fprofile-arcs|fprofile-generate*|coverage:\
+-    %{!fprofile-update=singel:\
