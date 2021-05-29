@@ -10,7 +10,7 @@ https://download.linuxsampler.org/packages/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc"
 
 BDEPEND="doc? ( app-doc/doxygen )"
