@@ -1,36 +1,37 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch java-pkg-opt-2 multilib toolchain-funcs versionator
+inherit java-pkg-opt-2 multilib toolchain-funcs
 
-MY_DP="${PN}$(get_version_component_range 1)$(get_version_component_range 2)"
-MY_P="${MY_DP}_$(get_version_component_range 3)"
+MY_DP="${PN}$(ver_cut 1)$(ver_cut 2)"
+MY_P="${MY_DP}_$(ver_cut 3)"
 
 DESCRIPTION="Common Data Format I/O library for multi-dimensional data sets"
 HOMEPAGE="https://cdf.gsfc.nasa.gov"
-SRC_BASE="http://cdaweb.gsfc.nasa.gov/pub/software/${PN}/dist/${MY_P}/unix/"
+SRC_BASE="https://spdf.gsfc.nasa.gov/pub/software/${PN}/dist/${MY_P}/unix/"
 
 SRC_URI="${SRC_BASE}/${MY_P}-dist-${PN}.tar.gz
 	java? ( ${SRC_BASE}/${MY_P}-dist-java.tar.gz )
 	doc? (
-		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0crm.pdf
-		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0frm.pdf
 		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}ifd.pdf
+		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0crm.pdf
+		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0csrm.pdf
+		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0frm.pdf
 		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0prm.pdf
 		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0ug.pdf
-		java? ( ${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0jrm.pdf )
+		${SRC_BASE}/${MY_DP}_documentation/${MY_DP}0vbrm.pdf
 	)"
 
 LICENSE="CDF"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples java ncurses static-libs"
 RESTRICT="bindist"
 
 RDEPEND="
-	java? ( >=virtual/jre-1.5:= )
+	java? ( >=virtual/jre-1.8:= )
 	ncurses? ( sys-libs/ncurses:0= )
 "
 DEPEND="
@@ -40,11 +41,14 @@ DEPEND="
 
 S="${WORKDIR}/${MY_P}-dist"
 
+# respect cflags, ldflags, soname
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-flags.patch
+)
+
 src_prepare() {
-	# respect cflags, remove useless scripts
-	epatch \
-		"${FILESDIR}"/${P}-Makefile.patch \
-		"${FILESDIR}"/${PN}-3.2-soname.patch
+	default
+
 	# use proper lib dir
 	sed -i \
 		-e "s:\$(INSTALLDIR)/lib:\$(INSTALLDIR)/$(get_libdir):g" \
@@ -103,13 +107,12 @@ src_install() {
 	doenvd "${FILESDIR}"/50cdf
 
 	if use doc; then
-		dodoc "${DISTDIR}"/${MY_DP}{0{crm,frm,prm,ug},ifd}.pdf
-		use java && dodoc "${DISTDIR}"/${MY_DP}jrm.pdf
+		dodoc "${DISTDIR}"/${MY_DP}{0{crm,csrm,frm,prm,ug,vbrm},ifd}.pdf
 	fi
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins samples/*
+		docinto /usr/share/doc/${PF}/examples
+		dodoc samples/*
 	fi
 
 	if use java; then
@@ -119,8 +122,12 @@ src_install() {
 			/usr/$(get_libdir)/libcdfNativeLibrary.so
 		java-pkg_dojar */*.jar
 		if use examples; then
-			insinto /usr/share/doc/${PF}/examples/java
-			doins examples/*
+			docinto /usr/share/doc/${PF}/examples/java
+			dodoc examples/*
 		fi
 	fi
+
+	# move this to a better location
+	dodir "/usr/share/${PF}"
+	mv "${ED}/usr/CDFLeapSeconds.txt" "${ED}/usr/share/${PF}/" || die
 }
