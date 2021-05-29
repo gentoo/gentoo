@@ -144,7 +144,7 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
+	"${FILESDIR}/${P}-split-libkworkspace.patch" # downstream patch
 	"${FILESDIR}/${P}-revert-activate-krunner.patch" # bug 767478
 	"${FILESDIR}/${P}-transparency.patch" # KDE-bug 434202
 	"${FILESDIR}/${P}-transparency-panelConfig.patch" # KDE-bug 434285
