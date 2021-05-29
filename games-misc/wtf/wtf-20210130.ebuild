@@ -13,8 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
-DEPEND="!games-misc/bsd-games"
-RDEPEND="${DEPEND}"
+RDEPEND="!<=games-misc/bsd-games-3"
 
 src_prepare() {
 	default
