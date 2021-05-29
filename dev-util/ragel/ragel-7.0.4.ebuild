@@ -33,7 +33,7 @@ DEPEND="~dev-util/colm-0.14.7"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	#"${FILESDIR}"/${PN}-7.0.4-drop-julia-check.patch
+	"${FILESDIR}"/${PN}-7.0.4-drop-julia-check.patch
 )
 
 src_prepare() {
