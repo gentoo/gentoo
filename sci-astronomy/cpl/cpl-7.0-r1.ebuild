@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc gasgano static-libs threads"
 
 RDEPEND="
+	dev-libs/libltdl
 	sci-astronomy/wcslib:0=
 	sci-libs/cfitsio:0=
 	sci-libs/fftw:3.0=
