@@ -37,6 +37,10 @@ distutils_enable_tests pytest
 # the C library installs the same docs
 DOCS=()
 
+PATCHES=(
+	"${FILESDIR}"/${P}-metadata.patch
+)
+
 src_prepare() {
 	default
 
