@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,9 +11,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86"
 IUSE="ipv6"
-
-RDEPEND=""
-DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf --datadir=/usr/share/muh $(use_enable ipv6)
