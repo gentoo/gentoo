@@ -27,3 +27,7 @@ BDEPEND="
 
 distutils_enable_sphinx doc
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/openpyxl-3.0.7-metadata.patch
+)
