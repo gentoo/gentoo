@@ -1,0 +1,32 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# QA check: ensure that tests are run if present
+# Maintainer: Python project <python@gentoo.org>
+
+python_test_check() {
+	# only distutils-r1 is covered for the time being
+	has distutils-r1 ${INHERITED} || return
+	# skip packages that define tests
+	declare -p -f python_test &>/dev/null && return
+	# skip packages that explicitly restrict tests
+	has test ${RESTRICT} && return
+
+	# do we have any files looking like tests?
+	local any=$(find "${WORKDIR}" -name 'test_*.py' -print -quit)
+	[[ -n ${any} ]] || return
+
+	eqawarn
+	eqawarn 'QA Notice: this package seems to contain tests but they are not enabled.'
+	eqawarn 'Please either run tests (via distutils_enable_tests or declaring'
+	eqawarn 'python_test yourself), or add RESTRICT="test" along with an explanatory'
+	eqawarn 'comment if tests cannot be run.'
+	eqawarn
+	eqatag -v python-tests.missing
+}
+
+python_test_check
+
+: # guarantee successful exit
+
+# vim:ft=ebuild
