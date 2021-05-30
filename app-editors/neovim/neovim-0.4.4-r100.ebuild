@@ -87,6 +87,7 @@ src_configure() {
 		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${ELUA}"
+		-DMIN_LOG_LEVEL=3
 	)
 	cmake_src_configure
 }
