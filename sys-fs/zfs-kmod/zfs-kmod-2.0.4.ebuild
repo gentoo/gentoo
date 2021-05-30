@@ -127,9 +127,9 @@ src_install() {
 	set_arch_to_kernel
 
 	myemakeargs+=(
-		DEPMOD="/bin/true"
+		DEPMOD=:
 		DESTDIR="${D}"
-		INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
+		INSTALL_MOD_PATH="${EPREFIX:-/}" # lib/modules/<kver> added by KBUILD
 	)
 
 	emake "${myemakeargs[@]}" install
