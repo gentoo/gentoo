@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}1-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 ~sparc x86"
 IUSE="doc gcrypt gnutls nss +openssl static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
