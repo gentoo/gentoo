@@ -6,8 +6,6 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="packagekit">Enable support for the distro-neutral package
-			manager GUI PackageKit</flag>
 		<flag name="nautilus">Build the <pkg>gnome-base/nautilus</pkg>
 			extension</flag>
 		<flag name="libburn">Enable <pkg>dev-libs/libburn</pkg> backend</flag>
