@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit db-use toolchain-funcs multilib pam systemd
 
-IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
+IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn elibc_glibc exiscan-acl gdbm gnutls idn ipv6 ldap lmtp maildir mbx
 mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
 socks5 spf sqlite srs +srs-alt srs-native +ssl syslog tdb tcpd +tpda X"
@@ -21,6 +21,7 @@ REQUIRED_USE="
 		exiscan-acl
 		^^ ( srs-alt srs-native )
 	)
+	|| ( berkdb gdbm tdb )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
 # for x86 and amd64 only, due to this, repoman won't allow depending on
@@ -29,8 +30,8 @@ REQUIRED_USE="
 # have left is to a) ignore the dependency (but that results in bug
 # #661164) or b) mask the usage of USE=dane with USE=gnutls.  Both are
 # incorrect, but b) is the only "correct" view from repoman.
-# We cannot express a required use for berkdb/gdbm/tdb because berkdb
-# and gdbm are both enabled in base profile
+# We cannot express a required use for berkdb/gdbm/tdb correctly because
+# berkdb and gdbm are both enabled in base profile
 
 SDIR=$([[ ${PV} == *_rc* ]]   && echo /test
 	 [[ ${PV} == *.*.*.* ]] && echo /fixes)
@@ -49,8 +50,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-sol
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	dev-libs/libpcre:=
 	tdb? ( sys-libs/tdb:= )
-	!tdb? ( gdbm? ( sys-libs/gdbm:= ) )
-	!tdb? ( !gdbm? ( >=sys-libs/db-3.2:= <sys-libs/db-6:= ) )
+	!tdb? ( berkdb? ( >=sys-libs/db-3.2:= <sys-libs/db-6:= ) )
+	!tdb? ( !berkdb? ( sys-libs/gdbm:= ) )
 	idn? ( net-dns/libidn:= net-dns/libidn2:= )
 	perl? ( dev-lang/perl:= )
 	pam? ( sys-libs/pam )
@@ -190,14 +191,7 @@ src_configure() {
 		EOC
 		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
 		sed -i -e 's:^USE_GDBM=yes:# USE_GDBM=yes:' Makefile || die
-	elif use gdbm ; then
-		cat >> Makefile <<- EOC
-			USE_GDBM=yes
-			DBMLIB = -lgdbm
-		EOC
-		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
-		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
-	else
+	elif use berkdb ; then
 		# use the "native" interfaces to the DBM and CDB libraries, support
 		# passwd and directory lookups by default
 		local DB_VERS="5.3 5.1 4.8 4.7 4.6 4.5 4.4 4.3 4.2 3.2"
@@ -208,6 +202,13 @@ src_configure() {
 			DBMLIB = -l$(db_libname ${DB_VERS})
 		EOC
 		sed -i -e 's:^USE_GDBM=yes:# USE_GDBM=yes:' Makefile || die
+		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
+	else # must be gdbm via required_use
+		cat >> Makefile <<- EOC
+			USE_GDBM=yes
+			DBMLIB = -lgdbm
+		EOC
+		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
 		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
 	fi
 
