@@ -12,10 +12,6 @@ sys-devel/clang default-compiler-rt default-libcxx default-lld
 sys-devel/clang-runtime compiler-rt libcxx
 sys-devel/llvm gold z3
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
-# sys-devel/clang not keyworded on SPARC.
-sys-libs/llvm-libunwind test
-
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
 # for accurate stack overflow handling. dev-libs/libsigsegv
