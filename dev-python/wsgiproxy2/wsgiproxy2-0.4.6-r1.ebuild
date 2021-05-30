@@ -3,15 +3,15 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
 MY_PN="WSGIProxy2"
-
 DESCRIPTION="HTTP proxying tools for WSGI apps"
 HOMEPAGE="https://pypi.org/project/WSGIProxy2/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,15 +23,12 @@ RDEPEND="
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/webob[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="
 	test? (
 		>=dev-python/webtest-2.0.17[${PYTHON_USEDEP}]
 		dev-python/socketpool[${PYTHON_USEDEP}]
 	)"
 # Testing also revealed the suite needs latest webtest
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
 	"${FILESDIR}/wsgiproxy2-0.4.6-tests.patch"
