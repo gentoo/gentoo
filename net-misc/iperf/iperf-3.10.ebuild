@@ -25,7 +25,7 @@ DOCS=( README.md RELNOTES.md )
 
 src_configure() {
 	econf \
-		--disable-static
+		--disable-static \
 		$(use_with sctp)
 }
 
