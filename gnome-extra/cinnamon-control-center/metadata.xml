@@ -13,7 +13,7 @@
 		<remote-id type="github">linuxmint/cinnamon-control-center</remote-id>
 	</upstream>
 	<use>
-		<flag name="modemmanager">Enable support for mobile broadband devices
-			using <pkg>net-misc/modemmanager</pkg></flag>
+		<flag name="gnome-online-accounts">Enable configuration panel for <pkg>net-libs/gnome-online-accounts</pkg> accounts</flag>
+		<flag name="modemmanager">Enable support for mobile broadband devices using <pkg>net-misc/modemmanager</pkg></flag>
 	</use>
 </pkgmetadata>
