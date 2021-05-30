@@ -71,7 +71,7 @@ S="${WORKDIR}"
 
 src_install() {
 	# Cleanup
-	rm -r "${S}/resources/app/LICENSE.txt" || die
+	rm "${S}/resources/app/LICENSE.txt" || die
 
 	# Install
 	pax-mark m codium
