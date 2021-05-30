@@ -198,27 +198,35 @@ ada_export() {
 	debug-print "${FUNCNAME}: implementation: ${impl}"
 
 	local gcc_pv
+	local slot
 	case "${impl}" in
 		gnat_2016)
 			gcc_pv=4.9.4
+			slot=4.9.4
 			;;
 		gnat_2017)
 			gcc_pv=6.3.0
+			slot=6.3.0
 			;;
 		gnat_2018)
 			gcc_pv=7.3.1
+			slot=7.3.1
 			;;
 		gnat_2019)
 			gcc_pv=8.3.1
+			slot=8.3.1
 			;;
 		gnat_2020)
 			gcc_pv=9.3.1
+			slot=9.3.1
 			;;
 		gnat_2021)
 			gcc_pv=10.3.1
+			slot=10
 			;;
 		*)
 			gcc_pv="9.9.9"
+			slot=9.9.9
 			;;
 	esac
 
@@ -261,7 +269,7 @@ ada_export() {
 				debug-print "${FUNCNAME}: GNATCHOP = ${GNATCHOP}"
 				;;
 			ADA_PKG_DEP)
-				ADA_PKG_DEP="dev-lang/gnat-gpl:${gcc_pv}"
+				ADA_PKG_DEP="dev-lang/gnat-gpl:${slot}"
 
 				# use-dep
 				if [[ ${ADA_REQ_USE} ]]; then
