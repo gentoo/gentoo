@@ -43,6 +43,7 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/libpng:0/16
+	net-print/cups
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/libnotify
