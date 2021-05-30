@@ -17,12 +17,15 @@ autocfg-1.0.1
 bitflags-1.2.1
 bitmaps-2.1.0
 byteorder-1.3.4
+bytes-cast-0.1.0
+bytes-cast-derive-0.1.0
 cc-1.0.66
 cfg-if-0.1.10
 cfg-if-1.0.0
+chrono-0.4.19
 clap-2.33.3
 const_fn-0.4.4
-cpython-0.4.1
+cpython-0.5.2
 crc32fast-1.2.1
 crossbeam-channel-0.4.4
 crossbeam-channel-0.5.0
@@ -31,18 +34,19 @@ crossbeam-epoch-0.9.1
 crossbeam-utils-0.7.2
 crossbeam-utils-0.8.1
 ctor-0.1.16
+derive_more-0.99.11
 difference-2.0.0
 either-1.6.1
 env_logger-0.7.1
 flate2-1.0.19
-format-bytes-0.1.3
-format-bytes-macros-0.1.2
+format-bytes-0.2.2
+format-bytes-macros-0.3.0
 fuchsia-cprng-0.1.1
 gcc-0.3.55
 getrandom-0.1.15
 glob-0.3.0
 hermit-abi-0.1.17
-hex-0.4.2
+home-0.5.3
 humantime-1.3.0
 im-rc-15.0.0
 itertools-0.9.0
@@ -58,16 +62,19 @@ memoffset-0.6.1
 micro-timer-0.3.1
 micro-timer-macros-0.3.1
 miniz_oxide-0.4.3
+num-integer-0.1.44
 num-traits-0.2.14
 num_cpus-1.13.0
 output_vt100-0.1.2
+paste-0.1.18
+paste-impl-0.1.18
 pkg-config-0.3.19
 ppv-lite86-0.2.10
 pretty_assertions-0.6.1
 proc-macro-hack-0.5.19
 proc-macro2-1.0.24
-python27-sys-0.4.1
-python3-sys-0.4.1
+python27-sys-0.5.2
+python3-sys-0.5.2
 quick-error-1.2.3
 quote-1.0.7
 rand-0.3.23
@@ -105,6 +112,7 @@ twox-hash-1.6.0
 typenum-1.12.0
 unicode-width-0.1.8
 unicode-xid-0.2.1
+users-0.11.0
 vcpkg-0.2.11
 vec_map-0.8.2
 version_check-0.9.2
@@ -130,15 +138,14 @@ LICENSE="GPL-2+
 	rust? ( BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 ISC MIT PSF-2 Unlicense )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+chg emacs gpg test tk rust zsh-completion"
+IUSE="+chg emacs gpg test tk rust"
 
 BDEPEND="rust? ( ${RUST_DEPEND} )"
 RDEPEND="
 	app-misc/ca-certificates
 	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
-	tk? ( dev-lang/tk )
-	zsh-completion? ( app-shells/zsh )"
+	tk? ( dev-lang/tk )"
 
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	test? (
@@ -217,10 +224,8 @@ python_install_all() {
 
 	newbashcomp contrib/bash_completion hg
 
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		newins contrib/zsh_completion _hg
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins contrib/zsh_completion _hg
 
 	dobin hgeditor
 	if use tk; then
