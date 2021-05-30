@@ -32,6 +32,90 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-05-30)
+# GStreamer 1.18.x! Masked for testing.
+# This is a large suite of packages, so please
+# be patient and report bugs if you choose to
+# unmask.
+# bug #756298, bug #690468.
+=media-libs/gst-plugins-bad-1.18.4
+=media-libs/gst-plugins-base-1.18.4
+=media-libs/gst-plugins-good-1.18.4
+=media-libs/gst-plugins-ugly-1.18.4
+=media-libs/gstreamer-1.18.4
+=media-libs/gst-rtsp-server-1.18.4
+=media-plugins/gst-plugins-a52dec-1.18.4
+=media-plugins/gst-plugins-amr-1.18.4
+=media-plugins/gst-plugins-assrender-1.18.4
+=media-plugins/gst-plugins-bluez-1.18.4
+=media-plugins/gst-plugins-bs2b-1.18.4
+=media-plugins/gst-plugins-cairo-1.18.4
+=media-plugins/gst-plugins-cdio-1.18.4
+=media-plugins/gst-plugins-cdparanoia-1.18.4
+=media-plugins/gst-plugins-chromaprint-1.18.4
+=media-plugins/gst-plugins-colormanagement-1.18.4
+=media-plugins/gst-plugins-dash-1.18.4
+=media-plugins/gst-plugins-dtls-1.18.4
+=media-plugins/gst-plugins-dts-1.18.4
+=media-plugins/gst-plugins-dv-1.18.4
+=media-plugins/gst-plugins-dvb-1.18.4
+=media-plugins/gst-plugins-dvdread-1.18.4
+=media-plugins/gst-plugins-faac-1.18.4
+=media-plugins/gst-plugins-faad-1.18.4
+=media-plugins/gst-plugins-flac-1.18.4
+=media-plugins/gst-plugins-gdkpixbuf-1.18.4
+=media-plugins/gst-plugins-gtk-1.18.4
+=media-plugins/gst-plugins-hls-1.18.4
+=media-plugins/gst-plugins-jack-1.18.4
+=media-plugins/gst-plugins-jpeg-1.18.4
+=media-plugins/gst-plugins-kate-1.18.4
+=media-plugins/gst-plugins-ladspa-1.18.4
+=media-plugins/gst-plugins-lame-1.18.4
+=media-plugins/gst-plugins-libav-1.18.4
+=media-plugins/gst-plugins-libde265-1.18.4
+=media-plugins/gst-plugins-libmms-1.18.4
+=media-plugins/gst-plugins-libpng-1.18.4
+=media-plugins/gst-plugins-libvisual-1.18.4
+=media-plugins/gst-plugins-lv2-1.18.4
+=media-plugins/gst-plugins-meta-1.18.4
+=media-plugins/gst-plugins-modplug-1.18.4
+=media-plugins/gst-plugins-mpeg2dec-1.18.4
+=media-plugins/gst-plugins-mpeg2enc-1.18.4
+=media-plugins/gst-plugins-mpg123-1.18.4
+=media-plugins/gst-plugins-mplex-1.18.4
+=media-plugins/gst-plugins-neon-1.18.4
+=media-plugins/gst-plugins-ofa-1.18.4
+=media-plugins/gst-plugins-opencv-1.18.4
+=media-plugins/gst-plugins-openh264-1.18.4
+=media-plugins/gst-plugins-opus-1.18.4
+=media-plugins/gst-plugins-oss-1.18.4
+=media-plugins/gst-plugins-pulse-1.18.4
+=media-plugins/gst-plugins-raw1394-1.18.4
+=media-plugins/gst-plugins-resindvd-1.18.4
+=media-plugins/gst-plugins-rtmp-1.18.4
+=media-plugins/gst-plugins-shout2-1.18.4
+=media-plugins/gst-plugins-sidplay-1.18.4
+=media-plugins/gst-plugins-smoothstreaming-1.18.4
+=media-plugins/gst-plugins-soundtouch-1.18.4
+=media-plugins/gst-plugins-soup-1.18.4
+=media-plugins/gst-plugins-speex-1.18.4
+=media-plugins/gst-plugins-srt-1.18.4
+=media-plugins/gst-plugins-srtp-1.18.4
+=media-plugins/gst-plugins-taglib-1.18.4
+=media-plugins/gst-plugins-twolame-1.18.4
+=media-plugins/gst-plugins-uvch264-1.18.4
+=media-plugins/gst-plugins-v4l2-1.18.4
+=media-plugins/gst-plugins-vaapi-1.18.4
+=media-plugins/gst-plugins-voaacenc-1.18.4
+=media-plugins/gst-plugins-voamrwbenc-1.18.4
+=media-plugins/gst-plugins-vpx-1.18.4
+=media-plugins/gst-plugins-wavpack-1.18.4
+=media-plugins/gst-plugins-webrtc-1.18.4
+=media-plugins/gst-plugins-x264-1.18.4
+=media-plugins/gst-plugins-x265-1.18.4
+=media-plugins/gst-plugins-ximagesrc-1.18.4
+=media-plugins/gst-plugins-zbar-1.18.4
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-05-29)
 # Old version masked for removal on 2021-07-01
 # bug #788013
