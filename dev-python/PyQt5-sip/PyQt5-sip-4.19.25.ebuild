@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Private sip module for PyQt5"
