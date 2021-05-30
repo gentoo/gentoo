@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="History.rdoc README.rdoc RI.rdoc TODO.rdoc"
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_BINDIR="exe"
 
-inherit ruby-fakegem eutils
+inherit prefix ruby-fakegem eutils
 
 DESCRIPTION="An extended version of the RDoc library from Ruby 1.8"
 HOMEPAGE="https://github.com/ruby/rdoc/"
@@ -82,6 +82,7 @@ all_ruby_install() {
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
 				sed -i -e "1s/env ruby/ruby${version}/" \
 					"${ED}/usr/bin/${bin}${version}" || die
+				if use prefix; then hprefixify ${ED}/usr/bin/${bin}${version}; fi
 			fi
 		done
 	done
