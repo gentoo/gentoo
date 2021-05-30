@@ -11,10 +11,6 @@ sys-devel/llvm gold
 # as well as currently-unkeyworded dev-libs/libx86
 x11-misc/read-edid vbe-mode
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
-# sys-devel/clang not keyworded on PPC32.
-sys-libs/llvm-libunwind test
-
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
