@@ -401,11 +401,6 @@ sci-physics/jaxodraw
 # see bug: https://bugs.gentoo.org/785400
 dev-java/cldc-api
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-01)
-# nsplugin is dead, bug #771801
-# Removal on 2021-05-31
-www-plugins/google-talkplugin
-
 # Michał Górny <mgorny@gentoo.org> (2021-05-01)
 # The following packages have not been ported to Python 3.8, and are
 # therefore going to be removed when support for Python 3.7 target is
