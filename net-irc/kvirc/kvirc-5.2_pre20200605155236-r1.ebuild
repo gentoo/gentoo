@@ -97,6 +97,10 @@ src_prepare() {
 	fi
 	einfo "Setting of revision number to ${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE}"
 	sed -e "/#define KVI_DEFAULT_FRAME_CAPTION/s/KVI_VERSION/& \" (${KVIRC_GIT_REVISION} ${KVIRC_GIT_SOURCES_DATE})\"/" -i src/kvirc/ui/KviMainWindow.cpp || die "Setting of revision number failed"
+
+	# https://github.com/kvirc/KVIrc/issues/2504
+	# https://github.com/kvirc/KVIrc/commit/fa2b4a9f98e2820432e3a7561b3ca914982a4454
+	sed -e "s/KWindowInfo wi = KWindowSystem::windowInfo(activeId, NET::WMState);/KWindowInfo wi = KWindowInfo(activeId, NET::WMState);/" -i src/modules/notifier/NotifierWindow.cpp || die
 }
 
 src_configure() {
