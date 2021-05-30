@@ -238,6 +238,16 @@ kernel-install_test() {
 
 	local qemu_arch=$(kernel-install_get_qemu_arch)
 
+	# some modules may complicate or even fail the test boot
+	local omit_mods=(
+		crypt dm dmraid lvm mdraid multipath nbd # no need for blockdev tools
+		network network-manager # no need for network
+		btrfs cifs nfs zfs zfsexpandknowledge # we don't need it
+		plymouth # hangs, or sometimes steals output
+		rngd # hangs or segfaults sometimes
+		i18n # copies all the fonts from /usr/share/consolefonts
+	)
+
 	# NB: if you pass a path that does not exist or is not a regular
 	# file/directory, dracut will silently ignore it and use the default
 	# https://github.com/dracutdevs/dracut/issues/1136
@@ -249,6 +259,10 @@ kernel-install_test() {
 		--confdir "${T}"/empty-directory \
 		--no-hostonly \
 		--kmoddir "${modules}" \
+		--force-add "qemu" \
+		--omit "${omit_mods[*]}" \
+		--nostrip \
+		--no-early-microcode \
 		"${T}/initrd" "${version}" || die
 
 	kernel-install_create_qemu_image "${T}/fs.img"
