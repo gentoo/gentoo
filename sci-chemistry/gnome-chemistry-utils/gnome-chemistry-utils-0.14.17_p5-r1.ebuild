@@ -28,6 +28,7 @@ RDEPEND="
 	>=x11-libs/goffice-0.10.12
 	x11-libs/gtk+:3
 	>=x11-libs/libX11-1.0.0
+	virtual/glu
 	gnumeric? ( >=app-office/gnumeric-1.12.42:= )
 "
 DEPEND="${RDEPEND}"
