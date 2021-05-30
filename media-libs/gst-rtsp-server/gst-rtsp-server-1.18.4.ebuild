@@ -39,7 +39,7 @@ multilib_src_install_all() {
 	einstalldocs
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins "${S}"/examples/*.c
+		docinto examples
+		dodoc "${S}"/examples/*.c
 	fi
 }
