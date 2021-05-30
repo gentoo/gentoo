@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -184,7 +184,7 @@ src_configure() {
 	if use doc; then
 		local jdk_doc
 		if has_version --host-root dev-java/openjdk:${SLOT}[doc]; then
-			jdk_doc="${EROOT%/}/usr/share/doc/openjdk-${SLOT}/html/api"
+			jdk_doc="${EPREFIX}/usr/share/doc/openjdk-${SLOT}/html/api"
 		fi
 		[[ -r ${jdk_doc}/element-list ]] || die "JDK Docs not found, terminating build early"
 	fi
