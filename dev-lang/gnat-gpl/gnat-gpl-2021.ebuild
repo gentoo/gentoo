@@ -12,25 +12,26 @@ REL=10
 MYP=gcc-${REL}-${PV}-20210519-19A74-src
 GNATDIR=gnat-${PV}-20210519-19A70-src
 INTFDIR=gcc-interface-${REL}-${PV}-20210519-19A75-src
+
 BTSTRP_X86=gnat-gpl-2014-x86-linux-bin
 BTSTRP_AMD64=gnat-gpl-2014-x86_64-linux-bin
-
+BASE_URI=https://community.download.adacore.com/v1
 # we provide own tarball below
 GCC_TARBALL_SRC_URI="
-	https://community.download.adacore.com/v1/005d2b2eff627177986d2517eb31e1959bec6f3a?filename=${GNATDIR}.tar.gz
+	${BASE_URI}/005d2b2eff627177986d2517eb31e1959bec6f3a?filename=${GNATDIR}.tar.gz
 		-> ${GNATDIR}.tar.gz
-	https://community.download.adacore.com/v1/44cd393be0b468cc253bf2cf9cf7804c993e7b5b?filename=${MYP}.tar.gz
+	${BASE_URI}/44cd393be0b468cc253bf2cf9cf7804c993e7b5b?filename=${MYP}.tar.gz
 		-> ${MYP}.tar.gz
-	https://community.download.adacore.com/v1/8ace7d06e469d36d726cc8badb0ed78411e727f3?filename=${INTFDIR}.tar.gz
+	${BASE_URI}/8ace7d06e469d36d726cc8badb0ed78411e727f3?filename=${INTFDIR}.tar.gz
 		-> ${INTFDIR}.tar.gz
 	bootstrap? (
 		amd64? (
-			http://mirrors.cdn.adacore.com/art/564b3ebec8e196b040fbe66c ->
-			${BTSTRP_AMD64}.tar.gz
+			${BASE_URI}/6eb6eef6bb897e4c743a519bfebe0b1d6fc409c6?filename=${BTSTRP_AMD64}.tar.gz&rand=1193
+			-> ${BTSTRP_AMD64}.tar.gz
 		)
 		x86? (
-			http://mirrors.cdn.adacore.com/art/564b3e9dc8e196b040fbe248 ->
-			${BTSTRP_X86}.tar.gz
+			${BASE_URI}/c5e9e6fdff5cb77ed90cf8c62536653e27c0bed6?filename=${BTSTRP_X86}.tar.gz&rand=436
+			-> ${BTSTRP_X86}.tar.gz
 		)
 	)"
 
@@ -44,7 +45,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+ada +bootstrap"
 RESTRICT="test"
 
-RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
+RDEPEND="!~sys-devel/gcc-${TOOLCHAIN_GCC_PV}"
 BDEPEND=sys-devel/binutils
 
 S="${WORKDIR}"/${MYP}
