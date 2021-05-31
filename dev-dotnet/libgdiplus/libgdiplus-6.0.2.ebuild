@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit dotnet ltprune
+inherit dotnet
 
 DESCRIPTION="Library for using System.Drawing with Mono"
 HOMEPAGE="https://www.mono-project.com"
@@ -46,5 +46,5 @@ src_install() {
 		[[ -e "${docfile}" ]] && dodoc "${docfile}"
 	done
 	[[ "${DOCS[@]}" ]] && dodoc "${DOCS[@]}"
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
