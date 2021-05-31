@@ -127,10 +127,10 @@ BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3
 
 # Mike Gilbert <floppym@gentoo.org> (2012-05-15)
 # Default target(s) for python-r1.eclass
-# Mikle Kolyada <zlogene@gentoo.org> (2020-12-02)
-# Updated to python3_8
-PYTHON_TARGETS="python3_8"
-PYTHON_SINGLE_TARGET="python3_8"
+# Michał Górny <mgorny@gentoo.org> (2021-06-01)
+# Updated to python3.9
+PYTHON_TARGETS="python3_9"
+PYTHON_SINGLE_TARGET="python3_9"
 
 # Michał Górny <mgorny@gentoo.org> (2013-08-10)
 # Moved from portage's make.globals.
