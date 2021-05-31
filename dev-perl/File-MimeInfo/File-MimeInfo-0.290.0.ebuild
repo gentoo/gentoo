@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Determine file type"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
