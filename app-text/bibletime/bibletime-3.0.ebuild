@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake xdg-utils
 
 DESCRIPTION="Qt Bible-study application using the SWORD library"
-HOMEPAGE="http://bibletime.info/"
+HOMEPAGE="https://bibletime.info/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
