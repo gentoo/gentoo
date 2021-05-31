@@ -1,7 +1,9 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
-#
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-31)
+# dev-python/networkx not keyworded here
+app-portage/nattka depgraph-order
 
 # Marek Szuba <marecki@gentoo.org> (2021-05-28)
 # net-dns/avahi, net-libs/libgssglue and sys-apps/xinetd
@@ -9,7 +11,7 @@
 sys-devel/distcc gssapi xinetd zeroconf
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
-# sys-libs/libunwind do not support riscv
+# Dependencies not keyworded, not tested
 dev-libs/libdbusmenu test
 virtual/notification-daemon gnome kde
 media-libs/libsdl nas pulseaudio
@@ -19,9 +21,11 @@ dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-text/docbook-xsl-ns-stylesheets ruby
 app-misc/geoclue modemmanager zeroconf
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zeroconf
+sys-power/upower ios
+xfce-base/xfce4-settings colord libcanberra
 # KDE not tested, so mask
 sys-auth/polkit kde
-
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-21)
 # sys-libs/libunwind do not support riscv

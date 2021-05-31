@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune
 
 DESCRIPTION="A simulator for the Microchip PIC microcontrollers"
 HOMEPAGE="http://gpsim.sourceforge.net"
@@ -34,5 +33,5 @@ src_configure() {
 src_install() {
 	default
 	use doc && dodoc doc/gpsim.pdf
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

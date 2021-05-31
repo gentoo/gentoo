@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+inherit autotools xdg
 
 DESCRIPTION="AppIndicator/KStatusNotifierItem plugin for Pidgin"
 HOMEPAGE="https://github.com/philipl/pidgin-indicator"
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/philipl/pidgin-indicator/releases/download/${PV}/${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 # No direct gtk3 until pidgin migrates:
@@ -34,7 +34,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	eautoreconf
 }
 

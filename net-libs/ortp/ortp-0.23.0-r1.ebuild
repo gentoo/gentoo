@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="http://www.linphone.org/"
@@ -67,7 +66,7 @@ src_install() {
 
 	einstalldocs
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples

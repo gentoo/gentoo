@@ -4,7 +4,7 @@
 EAPI=5
 
 GENTOO_DEPEND_ON_PERL="no"
-inherit perl-module epatch versionator autotools ltprune multilib-minimal
+inherit perl-module epatch versionator autotools multilib-minimal
 
 MAJOR=$(get_major_version)
 MY_PV=$(get_version_component_range 1-3)
@@ -22,7 +22,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="perl"
 
 PATCHES=(
@@ -92,7 +92,7 @@ multilib_src_install_all() {
 	dodoc AUTHORS ChangeLog* debian/NEWS README.debug
 	newdoc debian/changelog changelog.debian
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {

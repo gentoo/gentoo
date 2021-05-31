@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit epatch ltprune perl-module
+inherit epatch perl-module
 
 DESCRIPTION="Japanese Morphological Analysis System, ChaSen"
 HOMEPAGE="http://chasen-legacy.sourceforge.jp/"
@@ -56,5 +56,5 @@ src_install() {
 		newdoc README README.perl
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="Groonga plugin that provides MySQL compatible normalizers"
 HOMEPAGE="https://groonga.org/"
@@ -31,6 +31,6 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 	rm -r "${D}usr/share/doc/${PN}" || die
 }

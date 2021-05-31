@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic ltprune
+inherit flag-o-matic
 
 MY_PV="libffcall-${PV}"
 
@@ -56,5 +56,5 @@ src_install() {
 	dodoc NEWS README
 	dodir /usr/share/man
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit ltprune
-
 DESCRIPTION="Toolkit for Internationalized Domain Names (IDN)"
 HOMEPAGE="https://jprs.co.jp/idn/"
 SRC_URI="https://jprs.co.jp/idn/${P}.tar.bz2"
@@ -31,5 +29,5 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

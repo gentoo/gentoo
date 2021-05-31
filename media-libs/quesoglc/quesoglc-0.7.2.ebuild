@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit ltprune
 
 DESCRIPTION="A free implementation of the OpenGL Character Renderer (GLC)"
 HOMEPAGE="http://quesoglc.sourceforge.net/"
@@ -52,5 +51,5 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins examples/*.c
 	fi
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

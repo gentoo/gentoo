@@ -13,15 +13,18 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="5"
+PATCHSET="6"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
+PPC64LE_PATCHSET="5"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
-	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz"
+	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
+	arm64? ( https://github.com/google/highway/archive/refs/tags/0.12.1.tar.gz -> highway-0.12.1.tar.gz )
+	ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-$(ver_cut 1)-ppc64le-${PPC64LE_PATCHSET}.tar.xz )"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-icu vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
@@ -242,10 +245,18 @@ src_prepare() {
 		)
 	fi
 
+	use ppc64 && eapply -p0 "${WORKDIR}/${PN}"-ppc64le
+
 	default
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
 	ln -s "${EPREFIX}"/usr/bin/node third_party/node/linux/node-linux-x64/bin/node || die
+
+	# bundled highway library does not support arm64 with GCC
+	if use arm64; then
+		rm -r third_party/highway/src || die
+		ln -s "${WORKDIR}/highway-0.12.1" third_party/highway/src || die
+	fi
 
 	local keeplibs=(
 		base/third_party/cityhash
@@ -729,6 +740,14 @@ src_configure() {
 	# Chromium relies on this, but was disabled in >=clang-10, crbug.com/1042470
 	append-cxxflags $(test-flags-CXX -flax-vector-conversions=all)
 
+	# highway/libjxl relies on this with arm64
+	if use arm64 && tc-is-gcc; then
+		append-cxxflags -flax-vector-conversions
+	fi
+
+	# highway/libjxl fail on ppc64 without extra patches, disable for now.
+	use ppc64 && myconf_gn+=" enable_jxl_decoder=false"
+
 	# Disable unknown warning message from clang.
 	tc-is-clang && append-flags -Wno-unknown-warning-option
 
@@ -912,10 +931,9 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	if use vaapi; then
-		elog "VA-API is disabled by default at runtime. Either enable it"
-		elog "by navigating to chrome://flags/#enable-accelerated-video-decode"
-		elog "inside Chromium or add --enable-accelerated-video-decode"
-		elog "to CHROMIUM_FLAGS in /etc/chromium/default."
+		elog "VA-API is disabled by default at runtime. You have to enable it"
+		elog "by adding --enable-features=VaapiVideoDecoder to CHROMIUM_FLAGS"
+		elog "in /etc/chromium/default."
 	fi
 	if use screencast; then
 		elog "Screencast is disabled by default at runtime. Either enable it"

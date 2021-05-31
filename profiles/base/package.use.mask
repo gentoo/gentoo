@@ -507,8 +507,10 @@ dev-java/icedtea cacao jamvm
 
 # Justin Lecher <jlec@gentoo.org> (2015-09-22)
 # Downloads files during installation
-# bug #533876
->=sci-libs/vtk-6.1.0 examples
+# https://bugs.gentoo.org/show_bug.cgi?id=533876
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-03-26)
+# Fixed in vtk-9
+<sci-libs/vtk-9 examples
 
 # James Le Cuirot <chewi@gentoo.org> (2015-08-18)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by

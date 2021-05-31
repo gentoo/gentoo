@@ -1,0 +1,39 @@
+--- pedro-1.12.orig/configure.ac	2021-01-06 21:02:47.000000000 -0000
++++ pedro-1.12/configure.ac	2021-05-30 08:00:05.377373355 -0000
+@@ -9,25 +9,25 @@
+ PKG_CHECK_MODULES([GLIB],[glib-2.0 >= 2.12])
+ AM_CONFIG_HEADER(config.h)
+ AC_CONFIG_MACRO_DIR([m4])
+-CPPFLAGS="-DNDEBUG -O2 -g `pkg-config --cflags glib-2.0`"
++CPPFLAGS="`${PKG_CONFIG} --cflags glib-2.0`"
+ case "${host}" in
+-        *i686*)
++        *-mingw32*)
+                 WIN32="yes"
+-		LDFLAGS=""
+-		#LIBS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm"
+-                LIBS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm -lwsock32 -lws2_32 -lwinmm"
++		#LDFLAGS=""
++		#LIBS="-L../lib -lpedro `${PKG_CONFIG} --libs glib-2.0` -lm"
++                LIBS="-L../lib -lpedro `${PKG_CONFIG} --libs glib-2.0` -lm -lwsock32 -lws2_32 -lwinmm"
+                 ;;
+         *x86*)
+                 WIN32="no"
+-		LDFLAGS=""
+-		#LIBS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm"
+-                LIBS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm -lwsock32 -lws2_32 -lwinmm"
++		#LDFLAGS=""
++		LIBS="-L../lib -lpedro `${PKG_CONFIG} --libs glib-2.0` -lm"
++                #LIBS="-L../lib -lpedro `${PKG_CONFIG} --libs glib-2.0` -lm -lwsock32 -lws2_32 -lwinmm"
+                 ;;
+         *)
+                 WIN32="no"
+-                #LDFLAGS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm"
+-		LDFLAGS=""
+-		LIBS="-L../lib -lpedro `pkg-config --libs glib-2.0` -lm"
++                #LDFLAGS="-L../lib -lpedro `${PKG_CONFIG} --libs glib-2.0` -lm"
++		#LDFLAGS=""
++		LIBS="-L../lib -lpedro `${PKG_CONFIG} --libs glib-2.0` -lm"
+                 ;;
+ esac
+ AC_OUTPUT(Makefile src/Makefile src/server/Makefile src/lib/Makefile src/examples/Makefile doc/Makefile)

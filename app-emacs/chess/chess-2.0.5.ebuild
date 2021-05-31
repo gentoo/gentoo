@@ -16,7 +16,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Free alternatives first, otherwise follow the ordering in the upstream
 # chess-default-engine (in chess.el). Rearrange chess-default-engine in

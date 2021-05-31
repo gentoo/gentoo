@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune
 
 DESCRIPTION="Japanese input method Tomoe IMEngine for SCIM"
 HOMEPAGE="http://tomoe.sourceforge.net/"
@@ -31,5 +30,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }

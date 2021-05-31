@@ -18,7 +18,7 @@ SRC_URI="https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="${PYTHON_DEPS}
