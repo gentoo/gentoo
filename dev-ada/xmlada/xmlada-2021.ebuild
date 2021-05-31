@@ -6,11 +6,11 @@ EAPI=7
 ADA_COMPAT=( gnat_201{6..9} gnat_202{0..1} )
 inherit ada multiprocessing
 
-MYP=${P}-20200429-19A99-src
+MYP=${P}-${PV}0518-19D50-src
 
 DESCRIPTION="Set of modules that provide a simple manipulation of XML streams"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="https://community.download.adacore.com/v1/c799502295baf074ad17b48c50f621879c392c57?filename=${MYP}.tar.gz
+SRC_URI="https://community.download.adacore.com/v1/6a2cf72f308cc787926b12ddc20993fcf2b8ea79?filename=${MYP}.tar.gz
 	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
