@@ -13,5 +13,4 @@
 		<remote-id type="pypi">setuptools_rust</remote-id>
 		<remote-id type="github">PyO3/setuptools-rust</remote-id>
 	</upstream>
-	<stabilize-allarches/>
 </pkgmetadata>
