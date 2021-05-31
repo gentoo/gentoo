@@ -16,9 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-		dev-python/pyparsing[${PYTHON_USEDEP}]
-		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/pyparsing[${PYTHON_USEDEP}]
+	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 "
 BDEPEND="${RDEPEND}
 	test? (
