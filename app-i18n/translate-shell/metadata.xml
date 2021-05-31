@@ -5,10 +5,6 @@
 		<email>erkiferenc@gmail.com</email>
 		<name>Ferenc Erki</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>patrick@gentoo.org</email>
-		<name>Patrick Lauer</name>
-	</maintainer>
 	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
