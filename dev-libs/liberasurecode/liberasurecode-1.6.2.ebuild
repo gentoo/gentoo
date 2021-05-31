@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="Erasure Code API library written in C with pluggable Erasure Code backends."
 HOMEPAGE="https://bitbucket.org/tsg-/liberasurecode/overview"
@@ -31,5 +31,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
