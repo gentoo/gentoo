@@ -3,9 +3,7 @@
 
 EAPI=7
 
-VIRTUALX_REQUIRED=test
-
-inherit cmake virtualx xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt Bible-study application using the SWORD library"
 HOMEPAGE="http://bibletime.info/"
@@ -15,10 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-# As of 3.0.0 most tests fail unless Bibletime has previously been installed,
-# and one fails for unknown reasons even then. See:
-#  https://github.com/bibletime/bibletime/issues/320
-#  https://github.com/bibletime/bibletime/issues/321
+# Known to fail and will all be gone come next release (see upstream commit
+# d05797db79074c526987329dff78d89eef8c501c)
 RESTRICT="test"
 
 RDEPEND=">=app-text/sword-1.8.1
@@ -38,13 +34,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 	net-misc/curl
 	sys-libs/zlib"
-#BDEPEND="test? (
-#	app-dicts/sword-Josephus
-#	app-dicts/sword-KJV
-#	app-dicts/sword-KJVA
-#	app-dicts/sword-Scofield
-#	app-dicts/sword-StrongsGreek
-#)"
 
 DOCS=( ChangeLog README.md )
 
@@ -63,10 +52,6 @@ src_configure() {
 		-DBUILD_HOWTO_PDF=no
 	)
 	cmake_src_configure
-}
-
-src_test() {
-	virtx cmake_src_test || die "Test run has failed"
 }
 
 pkg_postinst() {
