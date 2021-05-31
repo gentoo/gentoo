@@ -3,18 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-DISTUTILS_IN_SOURCE_BUILD=1
-
 CARGO_OPTIONAL=yes
+DISTUTILS_IN_SOURCE_BUILD=1
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1 cargo
 
-MY_PN="${PN/_/-}"
-MY_P="${MY_PN}-${PV}"
-
-TEST_CRATES="
+CRATES="
 bitflags-1.2.1
 byteorder-1.3.4
 cfg-if-0.1.10
@@ -93,10 +89,13 @@ winapi-i686-pc-windows-gnu-0.4.0
 winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
+MY_PN="${PN/_/-}"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="a plugin for setuptools to build Rust Python extensions"
 HOMEPAGE="https://github.com/PyO3/setuptools-rust"
 SRC_URI="mirror://pypi/${PN::1}/${MY_PN}/${MY_P}.tar.gz
-	test? ( $(cargo_crate_uris ${TEST_CRATES}) )"
+	test? ( $(cargo_crate_uris ${CRATES}) )"
 
 LICENSE="MIT"
 SLOT="0"
@@ -106,15 +105,15 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=virtual/rust-1.41.0
+	virtual/rust
 	dev-python/semantic_version[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	${RDEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
@@ -129,9 +128,14 @@ src_unpack() {
 }
 
 python_test() {
+	# we really really want this test.
+	[[ ${PV} == 0.12.1 ]] || die "${FUNCNAME}: check if rust_with_cffi test can be enabled"
+
 	distutils_install_for_testing
 
-	# rust_with_cffi - needs a different version of pyo3
+	# rust_with_cffi - needs a git version of pyo3 for this version
+	# but next version should be ok to enable rust_with_cffi test
+	# https://github.com/PyO3/setuptools-rust/commit/21fc0105dc7ba9b3bfdce1530a80190c01dff560#diff-a3f14f562689def4c1df269f3e37bafcf6036a58798d825b8a58438cb479600e
 	local examples=(html-py-ever tomlgen namespace_package)
 	for example_dir in ${examples[@]}; do
 		pushd examples/${example_dir} || die
