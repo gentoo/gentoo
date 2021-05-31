@@ -65,7 +65,7 @@
        <grep regexp="[^\r\n]+"></grep>
      </target>
    </compiler_description>
-@@ -185,9 +185,9 @@
+@@ -185,14 +185,14 @@
     -->
    <compiler_description>
      <name>GNAT</name>
@@ -77,6 +77,12 @@
        <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
      </version>
      <languages>Ada</languages>
+     <variable name="gcc_version">
+-      <external>${PREFIX}gcc -v</external>
++      <external>${PREFIX}gcc-@VER@ -v</external>
+       <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+     </variable>
+     <runtimes default="default,kernel,native">
 @@ -202,68 +202,11 @@
         <directory group="1" >\.\./$TARGET/lib/gnat/(.*)/adalib/</directory>
      </runtimes>
