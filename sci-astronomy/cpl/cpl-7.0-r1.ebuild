@@ -5,7 +5,7 @@ EAPI=6
 
 JAVA_PKG_OPT_USE=gasgano
 
-inherit autotools java-pkg-opt-2 ltprune
+inherit autotools java-pkg-opt-2
 
 DESCRIPTION="ESO common pipeline library for astronomical data reduction"
 HOMEPAGE="http://www.eso.org/sci/software/cpl/"
@@ -72,6 +72,6 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 	use doc && emake install-html
 }
