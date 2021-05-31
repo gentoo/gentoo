@@ -17,13 +17,12 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="LGPL-3+"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="mpir"
 
 RDEPEND="
 	>=dev-libs/mpc-1.0.2:=
 	>=dev-libs/mpfr-3.1.2:=
-	!mpir? ( dev-libs/gmp:0= )
-	mpir? ( sci-libs/mpir:= )"
+	dev-libs/gmp:0=
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -39,13 +38,6 @@ PATCHES=(
 )
 
 distutils_enable_sphinx docs
-
-python_configure_all() {
-	mydistutilsargs=(
-		# GMP is the default, add mpir if the USE flag is set
-		$(usex mpir --mpir "")
-	)
-}
 
 python_test() {
 	cd test || die
