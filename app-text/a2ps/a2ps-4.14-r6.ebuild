@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools elisp-common flag-o-matic ltprune
+inherit autotools elisp-common flag-o-matic
 
 DESCRIPTION="Any to PostScript filter"
 HOMEPAGE="https://www.gnu.org/software/a2ps/"
@@ -126,7 +126,7 @@ src_install() {
 
 	rm -f "${ED}"/usr/share/{a2ps,a2ps/ppd,ogonkify}/README || die
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE} || die
