@@ -4,7 +4,7 @@
 EAPI="5"
 GNOME_ORG_MODULE="murrine"
 
-inherit eutils gnome.org ltprune multilib-minimal
+inherit eutils gnome.org multilib-minimal
 
 DESCRIPTION="Murrine GTK+2 Cairo Engine"
 
@@ -44,5 +44,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
