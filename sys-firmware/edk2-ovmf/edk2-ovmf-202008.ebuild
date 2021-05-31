@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit python-any-r1 readme.gentoo-r1
 
