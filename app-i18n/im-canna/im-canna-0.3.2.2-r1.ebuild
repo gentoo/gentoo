@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools gnome2-utils ltprune
+inherit autotools gnome2-utils
 
 DESCRIPTION="Japanese Canna input method module for GTK+2"
 HOMEPAGE="http://bonobo.gnome.gr.jp/~nakai/immodule/"
@@ -30,7 +30,7 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
