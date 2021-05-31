@@ -5,10 +5,6 @@
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>patrick@gentoo.org</email>
-		<name>Patrick Lauer</name>
-	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="gitlab">esr/irker</remote-id>
