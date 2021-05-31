@@ -8,28 +8,29 @@ inherit libtool multilib-minimal
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
 SRC_URI="https://github.com/DanBloomberg/${PN}/releases/download/${PV}/${P}.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="0/5"
 KEYWORDS="~alpha amd64 arm arm64 ~mips ppc ppc64 ~sparc x86 ~ppc-macos"
 IUSE="gif jpeg jpeg2k png static-libs test tiff utils webp zlib"
-RESTRICT="!test? ( test )"
-
 # N.B. Tests need some features enabled:
 REQUIRED_USE="test? ( jpeg png tiff zlib )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
+RDEPEND="
+	gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
-	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}]
-		sys-libs/zlib:=[${MULTILIB_USEDEP}] )
+	png? (
+		media-libs/libpng:0=[${MULTILIB_USEDEP}]
+		sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	)
 	tiff? ( media-libs/tiff:0=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
-
 DEPEND="${RDEPEND}
 	test? ( media-libs/tiff:0[zlib] )"
 
-ECONF_SOURCE="${S}"
 DOCS=( README version-notes )
 
 src_prepare() {
@@ -46,7 +47,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	econf \
+	ECONF_SOURCE="${S}" econf \
 		--enable-shared \
 		$(use_with gif giflib) \
 		$(use_with jpeg) \
@@ -69,6 +70,8 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
-	# libtool archives covered by pkg-config.
-	find "${D}" -name "*.la" -delete || die
+	einstalldocs
+
+	# libtool archives covered by pkg-config
+	find "${ED}" -name '*.la' -delete || die
 }
