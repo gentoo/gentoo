@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit ltprune
-
 DESCRIPTION="Userspace helper for Linux kernel EDAC drivers"
 HOMEPAGE="https://github.com/grondo/edac-utils"
 SRC_URI="https://github.com/grondo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -38,7 +36,7 @@ src_install() {
 	# The rest is done via the udev-rule
 	rm -rf "${D}/etc/init.d"
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
