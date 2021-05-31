@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools gnome2-utils ltprune multilib readme.gentoo-r1
+inherit autotools gnome2-utils multilib readme.gentoo-r1
 
 DESCRIPTION="Yet another IM-client of SCIM"
 HOMEPAGE="http://www.scim-im.org/projects/scim_bridge"
@@ -72,7 +72,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 	readme.gentoo_create_doc
 }
 
