@@ -11,7 +11,7 @@ fi
 
 MINKV="3.11"
 PYTHON_COMPAT=( python3_{8..10} )
-inherit meson python-any-r1
+inherit flag-o-matic meson python-any-r1
 
 DESCRIPTION="Creates, deletes and cleans up volatile and temporary files and directories"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
