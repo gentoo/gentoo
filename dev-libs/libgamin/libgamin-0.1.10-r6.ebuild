@@ -6,7 +6,7 @@ EAPI="6"
 GNOME_ORG_MODULE="gamin"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit autotools epatch ltprune gnome.org multilib-minimal
+inherit autotools epatch gnome.org multilib-minimal
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
 HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
@@ -93,5 +93,5 @@ multilib_src_install_all() {
 	HTML_DOCS=( doc/*.{html,gif} )
 	einstalldocs
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
