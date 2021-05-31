@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools epatch ltprune
+inherit autotools epatch
 
 DESCRIPTION="OpenEXR CTL libraries"
 HOMEPAGE="https://sourceforge.net/projects/ampasctl"
@@ -36,5 +36,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
