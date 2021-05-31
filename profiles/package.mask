@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-05-31)
+# Requires removed media-libs/opencv version.
+<media-plugins/gst-plugins-opencv-1.18
+
 # Sam James <sam@gentoo.org> (2021-05-30)
 # GStreamer 1.18.x! Masked for testing.
 # This is a large suite of packages, so please
