@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit ltprune
-
 MY_P=${P/_p/-r}
 DESCRIPTION="Calculate speeds, equilibrium arguments, node factors of tidal constituents"
 HOMEPAGE="http://www.flaterco.com/xtide/files.html"
@@ -29,5 +27,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }
