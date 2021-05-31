@@ -425,9 +425,11 @@ pkg_setup() {
 			fi
 		fi
 
-		if ! use clang && [[ $(gcc-major-version) -eq 11 ]] ; then
-			# https://bugzilla.mozilla.org/1713302
-			die "Using GCC 11 to compile firefox is currently known to be broken. Set USE=clang or select <gcc-11 to continue."
+		if ! use clang && [[ $(gcc-major-version) -eq 11 ]] \
+			&& ! has_version -b ">sys-devel/gcc-11.1.0:11" ; then
+			# bug 792705
+			eerror "Using GCC 11 to compile firefox is currently known to be broken (see bug #792705)."
+			die "Set USE=clang or select <gcc-11 to build ${CATEGORY}/${P}."
 		fi
 
 		python-any-r1_pkg_setup
