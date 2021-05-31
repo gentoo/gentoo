@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils ltprune multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="Open Source video codec"
 HOMEPAGE="http://dirac.sourceforge.net/"
@@ -51,6 +51,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 	einstalldocs
 }
