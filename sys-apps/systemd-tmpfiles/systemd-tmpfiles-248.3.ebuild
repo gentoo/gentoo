@@ -77,6 +77,7 @@ src_prepare() {
 
 	# https://bugs.gentoo.org/767403
 	python_fix_shebang src/test/*.py
+	python_fix_shebang test/*.py
 	python_fix_shebang tools/*.py
 }
 
