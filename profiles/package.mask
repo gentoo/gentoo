@@ -401,16 +401,6 @@ sci-physics/jaxodraw
 # see bug: https://bugs.gentoo.org/785400
 dev-java/cldc-api
 
-# Michał Górny <mgorny@gentoo.org> (2021-05-01)
-# The following packages have not been ported to Python 3.8, and are
-# therefore going to be removed when support for Python 3.7 target is
-# removed.  Please do not unmask them unless you port them both to
-# Python 3.8 *and* Python 3.9 (that is becoming the default
-# on 2021-06-01).
-#
-# Removal on 2021-05-31.  Relevant bugs found on tracker #701178.
-gnome-extra/gnome-dvb-daemon
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
 # Superceded by dev-perl/Image-Sane. Tests hang, bug 626594
 # Removal in 30 days.
