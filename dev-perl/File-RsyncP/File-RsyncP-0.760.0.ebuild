@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="http://perlrsync.sourceforge.net/ https://metacpan.org/release/File-Rs
 # Bundled files make for some weirdness
 LICENSE="GPL-3+ GPL-2+ RSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 sparc ~x86"
 
 RDEPEND="
 	>=virtual/perl-Getopt-Long-2.240.0
