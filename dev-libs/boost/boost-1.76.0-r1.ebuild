@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.73-boost-mpi-python-PEP-328.patch
 	"${FILESDIR}"/${PN}-1.74-CVE-2012-2677.patch
 	"${FILESDIR}"/${PN}-1.76-boost-numpy.patch
+	"${FILESDIR}"/${PN}-1.76-sparc-define.patch
 )
 
 python_bindings_needed() {
