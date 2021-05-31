@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="C library for the Flickr API"
 HOMEPAGE="http://librdf.org/flickcurl/"
@@ -40,5 +40,5 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" TARGET_DIR=/usr/share/doc/${PF}/html install
 	dodoc AUTHORS ChangeLog NEWS README
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
