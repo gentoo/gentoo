@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( luajit )
 
-inherit bash-completion-r1 lua-single
+inherit bash-completion-r1 lua-single toolchain-funcs
 
 DESCRIPTION="Function (graph) tracer for user-space"
 HOMEPAGE="https://github.com/namhyung/uftrace"
@@ -48,7 +48,7 @@ src_configure() {
 			--without-libluajit
 		)
 	fi
-	econf "${myconf[@]}"
+	CC=$(tc-getCC) LD=$(tc-getLD) econf "${myconf[@]}"
 }
 
 src_compile() {
