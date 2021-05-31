@@ -411,7 +411,6 @@ dev-java/cldc-api
 # Removal on 2021-05-31.  Relevant bugs found on tracker #701178.
 gnome-extra/gnome-dvb-daemon
 sci-chemistry/gmxapi
-www-apps/netbox
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
 # Superceded by dev-perl/Image-Sane. Tests hang, bug 626594
