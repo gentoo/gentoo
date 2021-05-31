@@ -35,11 +35,11 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	dev-libs/expat
 	acl? ( virtual/acl )
 	ncurses? ( sys-libs/ncurses:0= )
-	java? ( >=virtual/jdk-1.4:= )"
+	java? ( >=virtual/jdk-1.8:= )"
 RDEPEND="${DEPEND}
 	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
-	java? ( >=virtual/jre-1.4 )"
+	java? ( >=virtual/jre-1.8 )"
 BDEPEND="
 	git? ( dev-vcs/git )
 "
