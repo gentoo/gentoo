@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>chainsaw@gentoo.org</email>
-    <name>Tony Vroon</name>
-  </maintainer>
   <maintainer type="person" proxied="yes">
     <email>james.ausmus@gmail.com</email>
     <name>James Ausmus</name>
