@@ -12,15 +12,15 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	MY_P="HandBrake-${PV}"
-	SRC_URI="https://download2.handbrake.fr/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Open-source, GPL-licensed, multiplatform, multithreaded video transcoder"
 HOMEPAGE="http://handbrake.fr/"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 IUSE="+fdk gstreamer gtk libav-aac numa nvenc x265"
 
@@ -46,7 +46,7 @@ RDEPEND="
 	media-libs/x264:=
 	media-sound/lame
 	sys-libs/zlib
-	>=media-video/ffmpeg-4.2.1:0=[fdk?]
+	>=media-video/ffmpeg-4.2.1:0=[postproc,fdk?]
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -74,9 +74,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	dev-lang/yasm
-	dev-util/intltool
-	sys-devel/automake"
+	dev-lang/nasm
+	dev-util/intltool"
 
 PATCHES=(
 	# Remove libdvdnav duplication and call it on the original instead.
@@ -88,6 +87,9 @@ PATCHES=(
 
 	# Use whichever python is set by portage
 	"${FILESDIR}/${PN}-1.3.0-dont-search-for-python.patch"
+
+	# Fix x265 linkage... again again #730034
+	"${FILESDIR}/${PN}-1.3.3-x265-link.patch"
 )
 
 src_prepare() {
@@ -152,15 +154,11 @@ pkg_postinst() {
 		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
 	fi
 
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
