@@ -5,7 +5,7 @@ EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2 toolchain-funcs autotools flag-o-matic ltprune
+inherit fortran-2 toolchain-funcs autotools flag-o-matic
 
 MYP=${P/_p/-patch}
 
@@ -61,8 +61,13 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
+
 	dodoc release_notes/{RELEASE,HISTORY,bugs_fixed,misc_docs}.txt
+
 	cd "${ED}"usr
 	if use examples; then
 		mv  share/hdf4_examples share/doc/${PF}/examples || die
@@ -70,6 +75,7 @@ src_install() {
 	else
 		rm -r share/hdf4_examples || die
 	fi
+
 	mv bin/ncgen{,-hdf} || die
 	mv bin/ncdump{,-hdf} || die
 	mv share/man/man1/ncgen{,-hdf}.1 || die
