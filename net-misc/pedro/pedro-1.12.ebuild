@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Pedro is a subscription/notification communications system"
 HOMEPAGE="https://staff.itee.uq.edu.au/pjr/HomePages/PedroHome.html"
@@ -25,6 +25,12 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-portage.patch
 )
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_configure() {
 	tc-export PKG_CONFIG
