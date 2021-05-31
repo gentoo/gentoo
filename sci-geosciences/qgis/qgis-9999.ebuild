@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE="sqlite"
 QT_MIN_VER="5.9.4"
 
@@ -22,7 +22,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python saga qml webkit pdal"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml webkit"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
@@ -69,7 +69,6 @@ COMMON_DEPEND="
 		dev-db/oracle-instantclient:=
 		sci-libs/gdal:=[oracle]
 	)
-	pdal? ( sci-geosciences/pdal )
 	polar? ( >=x11-libs/qwtpolar-1.1.1-r1[qt5(+)] )
 	postgres? ( dev-db/postgresql:= )
 	python? (
@@ -95,8 +94,7 @@ COMMON_DEPEND="
 		')
 	)
 	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
-	saga? ( >=sci-geosciences/saga-gis-7.3 )
-	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
+	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20200309-r1:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qttest-${QT_MIN_VER}:5
@@ -145,7 +143,6 @@ src_configure() {
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
 		-DWITH_QUICK=$(usex qml)
-		-DWITH_PDAL=$(usex pdal)
 		-DWITH_QTWEBKIT=$(usex webkit)
 	)
 
