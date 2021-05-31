@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="PHAT is a collection of GTK+ widgets geared toward pro-audio apps"
 HOMEPAGE="https://sourceforge.net/projects/phat.berlios/"
@@ -38,5 +38,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
