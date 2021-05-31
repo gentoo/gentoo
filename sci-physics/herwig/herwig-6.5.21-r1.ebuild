@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools fortran-2 ltprune versionator
+inherit autotools fortran-2 versionator
 
 PV1=$(get_version_component_range 1 ${PV})
 PV2=$(get_version_component_range 2 ${PV})
@@ -65,6 +65,6 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 	use doc && dodoc "${DISTDIR}"/hw65_manual.pdf
 }
