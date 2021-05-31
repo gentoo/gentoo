@@ -1,0 +1,84 @@
+From c7d6a8d81367a4ed92163c059aa3181386eabc24 Mon Sep 17 00:00:00 2001
+From: Ben Boeckel <ben.boeckel@kitware.com>
+Date: Mon, 3 May 2021 11:55:27 -0400
+Subject: [PATCH] vtkDataArrayPrivate: include <limits> for std::numeric_limits
+
+See: #18194
+---
+ Common/Core/vtkDataArrayPrivate.txx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Common/Core/vtkDataArrayPrivate.txx b/Common/Core/vtkDataArrayPrivate.txx
+index eb366f1c6d0..6709f7f3ac1 100644
+--- a/Common/Core/vtkDataArrayPrivate.txx
++++ b/Common/Core/vtkDataArrayPrivate.txx
+@@ -24,6 +24,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cassert> // for assert()
++#include <limits>
+ #include <vector>
+ 
+ namespace vtkDataArrayPrivate
+-- 
+GitLab
+diff --git a/Common/Core/vtkGenericDataArrayLookupHelper.h b/Common/Core/vtkGenericDataArrayLookupHelper.h
+index f278e27..de6d842 100644
+--- a/Common/Core/vtkGenericDataArrayLookupHelper.h
++++ b/Common/Core/vtkGenericDataArrayLookupHelper.h
+@@ -25,6 +25,7 @@
+ #include "vtkIdList.h"
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <unordered_map>
+ #include <vector>
+ 
+diff --git a/Common/DataModel/vtkPiecewiseFunction.cxx b/Common/DataModel/vtkPiecewiseFunction.cxx
+index c75935fd..9459ce90 100644
+--- a/Common/DataModel/vtkPiecewiseFunction.cxx
++++ b/Common/DataModel/vtkPiecewiseFunction.cxx
+@@ -22,6 +22,7 @@
+ #include <cassert>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
+diff --git a/Rendering/Core/vtkColorTransferFunction.cxx b/Rendering/Core/vtkColorTransferFunction.cxx
+index 40504e5..125597b 100644
+--- a/Rendering/Core/vtkColorTransferFunction.cxx
++++ b/Rendering/Core/vtkColorTransferFunction.cxx
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
+diff --git a/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx b/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+index 9944db6..01a1517 100644
+--- a/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
++++ b/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+@@ -28,6 +28,7 @@
+ #include "vtkHyperTreeGridNonOrientedCursor.h"
+ 
+ #include <cmath>
++#include <limits>
+ 
+ vtkStandardNewMacro(vtkHyperTreeGridThreshold);
+ 
+diff --git a/Common/DataModel/Testing/Cxx/UnitTestLine.cxx b/Common/DataModel/Testing/Cxx/UnitTestLine.cxx
+index 7823d61..02f627d 100644
+--- a/Common/DataModel/Testing/Cxx/UnitTestLine.cxx
++++ b/Common/DataModel/Testing/Cxx/UnitTestLine.cxx
+@@ -14,6 +14,7 @@
+ =========================================================================*/
+ 
+ #include <cmath>
++#include <limits>
+ 
+ #include "vtkLine.h"
+ #include "vtkMath.h"

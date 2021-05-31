@@ -132,6 +132,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-0001-fix-kepler-compute_arch-if-CUDA-toolkit-11-is-used.patch
 	"${FILESDIR}"/${PN}-8.2.0-freetype-2.10.3-provide-FT_CALLBACK_DEF.patch
+	"${FILESDIR}"/${PN}-9.0.1-limits-include-gcc11.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
