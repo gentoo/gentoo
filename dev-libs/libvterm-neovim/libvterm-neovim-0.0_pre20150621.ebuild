@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit flag-o-matic ltprune multilib
+inherit flag-o-matic multilib
 
 DESCRIPTION="An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator"
 HOMEPAGE="http://www.leonerd.org.uk/code/libvterm/"
@@ -24,7 +24,7 @@ src_compile() {
 src_install() {
 	emake PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		DESTDIR="${D}" install
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	dodoc doc/*
 }
