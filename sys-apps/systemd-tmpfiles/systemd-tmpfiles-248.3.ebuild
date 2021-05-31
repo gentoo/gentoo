@@ -59,7 +59,20 @@ pkg_setup() {
 src_prepare() {
 	# musl patchset from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
-	use elibc_musl && eapply "${WORKDIR}/${P}-musl"
+	# check SRC_URI_MUSL in systemd_${PV}.bb file for exact list of musl patches
+	if use elibc_musl; then
+		einfo "applying musl patches and workarounds"
+		eapply "${WORKDIR}/${P}-musl"
+
+		# avoids re-definition of struct ethhdr, also 0006-Include-netinet-if_ether.h.patch
+		append-cflags '-D__UAPI_DEF_ETHHDR=0'
+
+		# src/basic/rlimit-util.c:46:19: error: format ‘%lu’ expects argument of type ‘long unsigned int’,
+		# but argument 9 has type ‘rlim_t’ {aka ‘long long unsigned int’}
+		# not a nice workaround, but it comes from debug messages and we don't really use this component.
+		append-cflags '-Wno-error=format'
+	fi
+
 	default
 
 	# https://bugs.gentoo.org/767403
@@ -168,7 +181,7 @@ src_configure() {
 }
 
 src_compile() {
-	# tmpfiles and sysusers can be built as standalone, link systemd-shared in statically.
+	# tmpfiles and sysusers can be built as standalone and link systemd-shared in statically.
 	# https://github.com/systemd/systemd/pull/16061 original implementation
 	# we just need to pass -Dstandalone-binaries=true and
 	# use <name>.standalone target below.
@@ -206,7 +219,7 @@ src_test() {
 		"${BUILD_DIR}"/systemd-tmpfiles.standalone || die "${FUNCNAME} failed"
 }
 
-# adapted from opentmpfiles ebuild
+# stolen from opentmpfiles ebuild
 add_service() {
 	local initd=$1
 	local runlevel=$2
