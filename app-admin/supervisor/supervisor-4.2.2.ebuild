@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 # xml.etree.ElementTree module required.
 PYTHON_REQ_USE="xml(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
