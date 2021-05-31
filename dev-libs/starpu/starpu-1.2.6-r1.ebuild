@@ -4,7 +4,7 @@
 EAPI=6
 FORTRAN_STANDARD=90
 FORTRAN_NEEDED="fortran"
-inherit autotools cuda fortran-2 ltprune toolchain-funcs
+inherit autotools cuda fortran-2 toolchain-funcs
 
 DESCRIPTION="Unified runtime system for heterogeneous multicore architectures"
 HOMEPAGE="http://starpu.gforge.inria.fr/"
@@ -85,5 +85,5 @@ src_install() {
 		insinto /usr/share/doc/${PF}/examples
 		doins -r examples/*
 	fi
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }
