@@ -420,7 +420,10 @@ meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install "$@"
+
+	pushd "${S}" > /dev/null || die
 	einstalldocs
+	popd > /dev/null || die
 }
 
 fi
