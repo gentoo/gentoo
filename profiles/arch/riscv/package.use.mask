@@ -23,6 +23,7 @@ app-text/docbook-xsl-ns-stylesheets ruby
 app-misc/geoclue modemmanager zeroconf
 gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zeroconf
 sys-power/upower ios
+net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings colord libcanberra
 # KDE not tested, so mask
 sys-auth/polkit kde
