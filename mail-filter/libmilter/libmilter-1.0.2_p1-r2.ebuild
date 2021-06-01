@@ -3,6 +3,8 @@
 
 EAPI=7
 
+# Note: please bump this together with mail-mta/sendmail
+
 inherit toolchain-funcs
 
 # This library is part of sendmail, but it does not share the version number with it.
@@ -18,6 +20,7 @@ S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 LICENSE="Sendmail"
 SLOT="0/${PV}"
+# TODO: restore keywords soon for bug 730890 after testing
 #KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ipv6 poll"
 
@@ -25,53 +28,55 @@ RDEPEND="!<mail-mta/sendmail-8.16.1"
 
 # build system patch copied from sendmail ebuild
 PATCHES=(
-	"${FILESDIR}/sendmail-8.16.1-build-system.patch"
-	"${FILESDIR}/${PN}-sharedlib.patch"
+	"${FILESDIR}"/sendmail-8.16.1-build-system.patch
+	"${FILESDIR}"/${PN}-sharedlib.patch
 )
 
 src_prepare() {
 	default
 
-	local CC="$(tc-getCC)"
 	local ENVDEF="-DNETUNIX -DNETINET -DHAS_GETHOSTBYNAME2=1"
 
-	use ipv6 && ENVDEF="${ENVDEF} -DNETINET6"
-	use poll && ENVDEF="${ENVDEF} -DSM_CONF_POLL=1"
+	use ipv6 && ENVDEF+=" -DNETINET6"
+	use poll && ENVDEF+=" -DSM_CONF_POLL=1"
 
 	if use elibc_musl; then
-		use ipv6 && ENVDEF="${ENVDEF} -DNEEDSGETIPNODE"
+		use ipv6 && ENVDEF+=" -DNEEDSGETIPNODE"
 
-		eapply "${FILESDIR}/${PN}-musl-stack-size.patch"
-		eapply "${FILESDIR}/${PN}-musl-disable-cdefs.patch"
+		eapply "${FILESDIR}"/${PN}-musl-stack-size.patch
+		eapply "${FILESDIR}"/${PN}-musl-disable-cdefs.patch
 	fi
 
-	sed -e "s|@@CFLAGS@@|${CFLAGS}|" \
-		-e "s|@@LDFLAGS@@|${LDFLAGS}|" \
-		-e "s|@@CC@@|${CC}|" \
+	sed -e "s|@@CC@@|$(tc-getCC)|" \
+		-e "s|@@CFLAGS@@|${CFLAGS}|" \
 		-e "s|@@ENVDEF@@|${ENVDEF}|" \
-		"${FILESDIR}/gentoo.config.m4" > "${S}/devtools/Site/site.config.m4" \
+		-e "s|@@LDFLAGS@@|${LDFLAGS}|" \
+		"${FILESDIR}"/gentoo.config.m4 > devtools/Site/site.config.m4 \
 		|| die "failed to generate site.config.m4"
 }
 
 src_compile() {
-	pushd libmilter
-	emake -j1 AR="$(tc-getAR)" MILTER_SOVER=${PV}
-	popd
+	emake -j1 -C libmilter AR="$(tc-getAR)" MILTER_SOVER=${PV}
 }
 
 src_install() {
-	local MY_LIBDIR=/usr/$(get_libdir)
-	dodir "${MY_LIBDIR}"
-	emake DESTDIR="${D}" LIBDIR="${MY_LIBDIR}" MANROOT=/usr/share/man/man \
-		SBINOWN=root SBINGRP=0 UBINOWN=root UBINGRP=0 \
-		LIBOWN=root LIBGRP=0 GBINOWN=root GBINGRP=0 \
-		MANOWN=root MANGRP=0 INCOWN=root INCGRP=0 \
-		MSPQOWN=root CFOWN=root CFGRP=0 \
-		MILTER_SOVER=${PV} \
-		install -C obj.*/libmilter
+	dodir /usr/$(get_libdir)
+
+	local emakeargs=(
+		DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)"
+		MANROOT=/usr/share/man/man
+		SBINOWN=root SBINGRP=0 UBINOWN=root UBINGRP=0
+		LIBOWN=root LIBGRP=0 GBINOWN=root GBINGRP=0
+		MANOWN=root MANGRP=0 INCOWN=root INCGRP=0
+		MSPQOWN=root CFOWN=root CFGRP=0
+		MILTER_SOVER=${PV}
+	)
+	emake -C obj.*/libmilter "${emakeargs[@]}" install
 
 	dodoc libmilter/README
-	dodoc libmilter/docs/*
+
+	docinto html
+	dodoc -r libmilter/docs/.
 
 	find "${ED}" -name '*.a' -delete || die
 }
