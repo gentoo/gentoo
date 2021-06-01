@@ -37,6 +37,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/Criterion-${CRITERION_COMMIT}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4_pre20200110-gcc11.patch
+)
+
 python_check_deps() {
 	has_version "dev-util/cram[${PYTHON_USEDEP}]"
 }
