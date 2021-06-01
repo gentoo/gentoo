@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 	>=net-libs/glib-networking-2.38.2[ssl?,${MULTILIB_USEDEP}]
 "
 BDEPEND="
+	dev-libs/glib
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.20
 		app-text/docbook-xml-dtd:4.1.2 )
