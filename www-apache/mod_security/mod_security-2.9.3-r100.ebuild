@@ -55,7 +55,7 @@ need_apache2
 pkg_setup() {
 	_init_apache2
 	_init_apache2_late
-	lua-single_pkg_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {
