@@ -5,8 +5,8 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>sudinave@gmail.com</email>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<upstream>
