@@ -91,7 +91,7 @@ BDEPEND="${PYTHON_DEPS}
 	)
 	system-bootstrap? ( ${BOOTSTRAP_DEPEND} )
 	!system-llvm? (
-		dev-util/cmake
+		>=dev-util/cmake-3.13.4
 		dev-util/ninja
 	)
 	test? ( sys-devel/gdb )
