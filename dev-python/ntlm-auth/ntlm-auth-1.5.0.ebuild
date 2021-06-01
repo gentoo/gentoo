@@ -11,11 +11,12 @@ DESCRIPTION="Calculates NTLM Authentication codes"
 HOMEPAGE="https://github.com/jborean93/ntlm-auth"
 SRC_URI="https://github.com/jborean93/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+distutils_enable_tests pytest
