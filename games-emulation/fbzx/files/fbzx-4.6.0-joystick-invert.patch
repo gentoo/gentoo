@@ -1,0 +1,32 @@
+Fixed in 4.7.0 but, while marked as released for some time,
+it hasn't been tagged nor given a tarball (yet), so backport
+fix to this troublesome issue for now.
+
+https://gitlab.com/rastersoft/fbzx/-/commit/7bd47e2
+From: Sergio Costas <raster@rastersoft.com>
+Date: Sat, 17 Apr 2021 14:15:32 +0200
+Subject: [PATCH] Fixed the SINCLAIR joystick emulation
+
+The horizontal movements were inverted.
+--- a/src/keyboard.cpp
++++ b/src/keyboard.cpp
+@@ -386,3 +386,3 @@
+ 		case 2: // sinclair 1
+-			temporal_io = SDLK_1;
++			temporal_io = SDLK_2;
+ 			break;
+@@ -390,3 +390,3 @@
+ 		case 3: // sinclair 2
+-			temporal_io = SDLK_6;
++			temporal_io = SDLK_7;
+ 			break;
+@@ -406,3 +406,3 @@
+ 		case 2: // sinclair 1
+-			temporal_io = SDLK_2;
++			temporal_io = SDLK_1;
+ 			break;
+@@ -410,3 +410,3 @@
+ 		case 3: // sinclair 2
+-			temporal_io = SDLK_7;
++			temporal_io = SDLK_6;
+ 			break;
