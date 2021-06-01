@@ -61,6 +61,7 @@ src_configure() {
 multilib_src_install() {
 	dolib.so libtermcap.so.${PV}
 	dosym libtermcap.so.${PV} /usr/$(get_libdir)/libtermcap.so.2
+	dosym libtermcap.so.${PV} /usr/$(get_libdir)/libtermcap.so
 }
 
 multilib_src_install_all() {
