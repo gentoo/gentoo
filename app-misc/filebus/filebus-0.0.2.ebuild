@@ -14,12 +14,12 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64"
 SLOT="0"
 IUSE="+inotify test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/filelock[${PYTHON_USEDEP}]
 	inotify? ( dev-python/watchdog[${PYTHON_USEDEP}] )"
 BDEPEND="${RDEPEND}"
 
 python_test() {
-	esetup.py test || die "tests failed for ${EPYTHON}"
+	python test/test_filebus.py || die "tests failed for ${EPYTHON}"
 }
