@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x8
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.24.1:3
-	>=gui-libs/libhandy-1.0.0:1=
+	>=gui-libs/libhandy-1.0.0:1=[vala]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
