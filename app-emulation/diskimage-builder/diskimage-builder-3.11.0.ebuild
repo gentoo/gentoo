@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://opendev.org/openstack/diskimage-builder.git"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="Apache-2.0"
