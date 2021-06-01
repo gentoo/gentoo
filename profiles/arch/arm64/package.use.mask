@@ -114,7 +114,7 @@ media-video/ffmpeg -rav1e
 sys-block/fio -io-uring
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
