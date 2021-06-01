@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">TASVideos/desmume</remote-id>
 		<remote-id type="sourceforge">desmume</remote-id>
 	</upstream>
 </pkgmetadata>
