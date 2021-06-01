@@ -13,8 +13,7 @@ LICENSE="LGPL-2+ FTL"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 sparc x86"
 
-# X USE flag is simply a stub until all revdeps have been adjusted to use X(+)
-IUSE="gtk-doc +introspection sysprof test +X"
+IUSE="gtk-doc +introspection sysprof test X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
