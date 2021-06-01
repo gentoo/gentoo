@@ -3,19 +3,19 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6,7,8,9} )
+ADA_COMPAT=( gnat_201{6..9} gnat_202{0..1} )
 inherit ada multiprocessing
 
-MYP=${P}-20200429-19B6C-src
+MYP=${P}-${PV}0518-19DC5-src
 
 DESCRIPTION="Ada unit testing framework"
 HOMEPAGE="http://libre.adacore.com/tools/aunit/"
-SRC_URI="https://community.download.adacore.com/v1/6c8702d4a3c4a39f5da077716e44bef980377ba8?filename=${MYP}.tar.gz
+SRC_URI="https://community.download.adacore.com/v1/c8eadafc40c016859e127cd0e82411fcd8f3e749?filename=${MYP}.tar.gz
 	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="${ADA_DEPS}"
