@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="ftp://sourceware.org/pub/valgrind/${P}.tar.bz2"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+	KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 fi
 
 DEPEND="mpi? ( virtual/mpi )"
