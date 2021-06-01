@@ -45,7 +45,7 @@ REQUIRED_USE="arm? ( savedconfig )"
 RDEPEND="
 	!sys-kernel/gentoo-kernel-bin:${SLOT}"
 BDEPEND="
-	debug? ( dev-util/dwarves )"
+	debug? ( dev-util/pahole )"
 PDEPEND="
 	>=virtual/dist-kernel-${PV}"
 

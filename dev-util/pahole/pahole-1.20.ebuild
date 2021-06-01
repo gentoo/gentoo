@@ -20,8 +20,11 @@ RDEPEND="${PYTHON_DEPS}
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
+MY_PN=dwarves
+MY_P=${MY_PN}-${PV}
+S=${WORKDIR}/${MY_P}
 if [[ ${PV//_p} == ${PV} ]]; then
-	SRC_URI="http://fedorapeople.org/~acme/dwarves/${P}.tar.xz"
+	SRC_URI="http://fedorapeople.org/~acme/${MY_PN}/${MY_P}.tar.xz"
 else
 	SRC_URI="https://dev.gentoo.org/~zzam/${PN}/${P}.tar.xz"
 fi
