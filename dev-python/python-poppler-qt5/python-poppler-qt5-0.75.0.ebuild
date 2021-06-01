@@ -19,6 +19,7 @@ RDEPEND="
 	app-text/poppler[qt5]
 	dev-python/PyQt5[${PYTHON_USEDEP}]
 	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
+	<dev-python/sip-5:=[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
