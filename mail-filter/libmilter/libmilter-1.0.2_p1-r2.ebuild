@@ -55,7 +55,7 @@ src_prepare() {
 
 src_compile() {
 	pushd libmilter
-	emake -j1 MILTER_SOVER=${PV}
+	emake -j1 AR="$(tc-getAR)" MILTER_SOVER=${PV}
 	popd
 }
 
