@@ -10,17 +10,23 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mhinz/${PN}.git"
 else
-	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/mhinz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm"
 fi
 
 DESCRIPTION="A tool that helps control neovim processes"
 HOMEPAGE="https://github.com/mhinz/neovim-remote"
+
 LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
 	dev-python/pynvim[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/psutil[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests pytest
+
+BDEPEND+="
+	test? ( app-editors/neovim )
+"
