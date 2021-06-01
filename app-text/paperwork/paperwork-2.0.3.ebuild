@@ -36,6 +36,10 @@ PATCHES=( "${FILESDIR}"/${P}-desktop_file.patch )
 python_install_all() {
 	distutils-r1_python_install_all
 
+	# This queries tesseract languages and will fail sandbox with
+	# USE=opencl, bug #793446
+	addpredict /dev/nvidiactl
+
 	PYTHONPATH="src" "${EPYTHON}" src/paperwork_gtk/main.py install \
 		--icon_base_dir="${ED}"/usr/share/icons \
 		--data_base_dir="${ED}"/usr/share
