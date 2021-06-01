@@ -1,0 +1,91 @@
+Fix unusable command line options since GTK+:3 migration.
+
+https://github.com/TASVideos/desmume/pull/416
+From: Ingo Saitz <Ingo.Saitz@stud.uni-hannover.de>
+Date: Sun, 3 Jan 2021 16:00:38 +0100
+--- a/desmume/src/commandline.cpp
++++ b/desmume/src/commandline.cpp
+@@ -41,7 +41,8 @@
+ , _load_to_memory(-1)
+-, _play_movie_file(0)
+-, _record_movie_file(0)
+-, _cflash_image(0)
+-, _cflash_path(0)
+-, _gbaslot_rom(0)
++, nds_file("")
++, play_movie_file("")
++, record_movie_file("")
++, cflash_image("")
++, cflash_path("")
++, gbaslot_rom("")
+ , _bios_arm9(NULL)
+@@ -60,4 +61,4 @@
+ , _texture_smooth(-1)
+-, _slot1(NULL)
+-, _slot1_fat_dir(NULL)
++, slot1("")
++, slot1_fat_dir("")
+ , _slot1_fat_dir_type(false)
+@@ -68,3 +69,3 @@
+ #endif
+-, _console_type(NULL)
++, console_type("")
+ , _advanscene_import(NULL)
+@@ -360,4 +361,4 @@
+ 		case OPT_SLOT2_CFLASH_IMAGE: cflash_image = optarg; break;
+-		case OPT_SLOT2_CFLASH_DIR: _cflash_path = optarg; break;
+-		case OPT_SLOT2_GBAGAME: _gbaslot_rom = optarg; break;
++		case OPT_SLOT2_CFLASH_DIR: cflash_path = optarg; break;
++		case OPT_SLOT2_GBAGAME: gbaslot_rom = optarg; break;
+ 
+@@ -520,4 +521,5 @@
+ 
+-	if((_cflash_image && _gbaslot_rom) || (_cflash_path && _gbaslot_rom)) {
++	if((cflash_image != "" && gbaslot_rom != "") || (cflash_path != "" && gbaslot_rom != "")) {
+ 		printerror("Cannot specify both cflash and gbaslot rom (both occupy SLOT-2)\n");
++		return false;
+ 	}
+--- a/desmume/src/commandline.h
++++ b/desmume/src/commandline.h
+@@ -88,7 +88,2 @@
+ private:
+-	char* _play_movie_file;
+-	char* _record_movie_file;
+-	char* _cflash_image;
+-	char* _cflash_path;
+-	char* _gbaslot_rom;
+ 	char* _bios_arm9, *_bios_arm7;
+@@ -109,5 +104,2 @@
+ #endif
+-	char* _slot1;
+-	char *_slot1_fat_dir;
+-	char* _console_type;
+ 	char* _advanscene_import;
+--- a/desmume/src/frontend/posix/gtk/main.cpp
++++ b/desmume/src/frontend/posix/gtk/main.cpp
+@@ -3555,12 +3555,9 @@
+ 
+-static void
+-handle_open(GApplication *application,
+-            GFile **files,
+-            gint n_files,
+-            const gchar *hint,
++static gint
++ignore_command_line(GApplication *application,
++            GApplicationCommandLine *command_line,
+             gpointer user_data)
+ {
+-    configured_features *my_config = static_cast<configured_features*>(user_data);
+-    my_config->nds_file = g_file_get_path(files[0]);
+     common_gtk_main(application, user_data);
++    return 0;
+ }
+@@ -3584,6 +3581,5 @@
+ 
+-  // TODO: pass G_APPLICATION_HANDLES_COMMAND_LINE instead.
+-  GtkApplication *app = gtk_application_new("org.desmume.DeSmuME", G_APPLICATION_HANDLES_OPEN);
++  GtkApplication *app = gtk_application_new("org.desmume.DeSmuME", G_APPLICATION_HANDLES_COMMAND_LINE);
+   g_signal_connect (app, "activate", G_CALLBACK(common_gtk_main), &my_config);
+-  g_signal_connect (app, "open", G_CALLBACK(handle_open), &my_config);
++  g_signal_connect (app, "command-line", G_CALLBACK(ignore_command_line), &my_config);
+   g_action_map_add_action_entries(G_ACTION_MAP(app),
