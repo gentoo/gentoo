@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Interface to Thomas Boutell's gd library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~sparc"
 IUSE="animgif fcgi gif jpeg png test truetype xpm"
 
 RDEPEND="
