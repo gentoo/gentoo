@@ -57,6 +57,7 @@ src_configure() {
 		--enable-libfac \
 		--enable-IntegerProgramming \
 		--disable-polymake \
+		--disable-optimizationflags \
 		$(use_enable static-libs static) \
 		$(use_enable emacs) \
 		$(use_with readline)
