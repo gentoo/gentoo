@@ -564,11 +564,6 @@ kde-apps/kdebase-meta:5
 # Masked to allow py2.7 removal
 dev-lang/spark
 
-# Mart Raudsepp <leio@gentoo.org> (2020-06-06)
-# Meson port does not handle multilib yet and has issues
-# regarding runstatedir (not using /run).
-=net-misc/networkmanager-1.22*
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
 # www-servers/tomcat >= 9 depends on masked dev-java/eclipse-ecj
