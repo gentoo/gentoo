@@ -27,7 +27,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	gtk-doc? ( >=dev-util/gtk-doc-1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	$(vala_depend)"
+	vala? ( $(vala_depend) )"
 
 DEPEND="=app-i18n/unicode-data-${UNICODE_VERSION}*
 	>=dev-libs/glib-2.32:2
