@@ -16,18 +16,17 @@ IUSE="ipv6 ldap mbox nis sasl sockets ssl tcpd"
 
 BDEPEND="sys-devel/m4"
 DEPEND="net-mail/mailbase
+	nis? ( net-libs/libnsl:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
 		dev-libs/openssl:0=
 	)
 	ldap? ( net-nds/openldap )
-	>=sys-libs/db-3.2:=
-	!net-mail/vacation"
+	>=sys-libs/db-3.2:="
 RDEPEND="${DEPEND}
 	acct-group/smmsp
-	acct-user/smmsp
-	>=net-mail/mailbase-0.00
+	>=acct-user/smmsp-0-r2
 	>=mail-filter/libmilter-1.0.2_p1-r1
 	!mail-mta/courier
 	!mail-mta/esmtp
@@ -39,7 +38,8 @@ RDEPEND="${DEPEND}
 	!mail-mta/postfix
 	!mail-mta/opensmtpd
 	!mail-mta/qmail-ldap
-	!>=mail-mta/ssmtp-2.64-r2[mta]"
+	!>=mail-mta/ssmtp-2.64-r2[mta]
+	!net-mail/vacation"
 
 PDEPEND="!mbox? ( mail-filter/procmail )"
 
