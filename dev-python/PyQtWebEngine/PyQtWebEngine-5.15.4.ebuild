@@ -15,7 +15,7 @@ if [[ ${PV} == *_pre* ]]; then
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,7 +28,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-${PV}[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.15[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-sip-4.19.22:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtwebengine:5[widgets]
