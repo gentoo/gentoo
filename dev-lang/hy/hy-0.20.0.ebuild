@@ -19,13 +19,9 @@ IUSE="test doc"
 RDEPEND=">=dev-python/astor-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
 	>=dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
-	>=dev-python/rply-0.7.6[${PYTHON_USEDEP}]
-	"
+	>=dev-python/rply-0.7.6[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.0-do-not-install-get_version.py.patch
