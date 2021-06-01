@@ -11,7 +11,7 @@ HOMEPAGE="https://docs.stevelosh.com/splice.vim/ https://github.com/sjl/splice.v
 SRC_URI="https://github.com/sjl/splice.vim/archive/v${PV}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
