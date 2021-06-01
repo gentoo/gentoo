@@ -1,21 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6,7,8,9} )
+ADA_COMPAT=( gnat_201{6..9} gnat_202{0..1} )
 inherit ada multiprocessing
 
-MYP=${P}-20190429-18B77-src
+MYP=${P}-20200429-19B6C-src
 
 DESCRIPTION="Ada unit testing framework"
 HOMEPAGE="http://libre.adacore.com/tools/aunit/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf859431e87aa2cdf16b18
+SRC_URI="https://community.download.adacore.com/v1/6c8702d4a3c4a39f5da077716e44bef980377ba8?filename=${MYP}.tar.gz
 	-> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="${ADA_DEPS}"
