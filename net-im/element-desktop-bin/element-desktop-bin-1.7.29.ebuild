@@ -47,6 +47,8 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	emoji? ( media-fonts/noto-emoji )"
 DEPEND="${RDEPEND}"
 
+RESTRICT="splitdebug"
+
 QA_PREBUILT="
 	/opt/Element/chrome-sandbox
 	/opt/Element/element-desktop
