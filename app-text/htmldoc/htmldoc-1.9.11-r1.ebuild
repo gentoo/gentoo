@@ -9,8 +9,8 @@ DESCRIPTION="Convert HTML pages into a PDF document"
 HOMEPAGE="https://www.msweet.org/htmldoc/"
 SRC_URI="https://github.com/michaelrsweet/${PN}/releases/download/v${PV}/${P}-source.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86"
 IUSE="fltk ssl"
 
@@ -50,7 +50,7 @@ src_configure() {
 		--disable-localzlib
 	)
 
-	CC="$(tc-getCC)" CXX="$(tc-getCXX)" DSTROOT="${ED}" econf "${myeconfargs[@]}"
+	CC="$(tc-getCC)" CXX="$(tc-getCXX)" econf "${myeconfargs[@]}"
 }
 
 src_install() {
