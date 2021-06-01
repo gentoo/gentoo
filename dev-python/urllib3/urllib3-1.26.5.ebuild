@@ -36,7 +36,7 @@ BDEPEND="
 			dev-python/pytest-freezegun[\${PYTHON_USEDEP}]
 			>=dev-python/trustme-0.5.3[\${PYTHON_USEDEP}]
 			>=www-servers/tornado-4.2.1[\${PYTHON_USEDEP}]
-		" python3_{6,7,8,9})
+		" python3_{6..10})
 	)
 "
 
@@ -53,9 +53,8 @@ python_prepare_all() {
 python_test() {
 	local -x CI=1
 	# FIXME: get tornado ported
-	[[ ${EPYTHON} == python3* ]] || continue
-	# tests skipped for now
-	[[ ${EPYTHON} == python3.10 ]] && continue
+	# please keep in sync with BDEPEND!
+	has "${EPYTHON}" python3.{6..10} || continue
 
 	local deselect=(
 		# TODO?
