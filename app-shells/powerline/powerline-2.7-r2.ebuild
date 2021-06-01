@@ -20,8 +20,6 @@ S="${WORKDIR}/${PN}-status-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/2.7-ldflags.patch
