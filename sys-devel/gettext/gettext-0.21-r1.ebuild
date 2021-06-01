@@ -20,7 +20,7 @@ fi
 # so put that license behind USE=cxx.
 LICENSE="GPL-3+ cxx? ( LGPL-2.1+ )"
 SLOT="0"
-IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs"
+IUSE="acl cvs +cxx doc emacs git java ncurses nls openmp static-libs"
 
 # only runtime goes multilib
 # Note: The version of libxml2 corresponds to the version bundled via gnulib.
