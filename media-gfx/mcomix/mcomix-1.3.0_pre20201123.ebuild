@@ -15,7 +15,7 @@ SRC_URI="https://github.com/multiSnow/mcomix3/archive/${GIT_PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"
