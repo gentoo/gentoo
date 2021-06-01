@@ -13,6 +13,9 @@ LICENSE="trio"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-no-inline.patch
+)
 HTML_DOCS=( html/. )
 
 src_prepare() {
