@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 KEYWORDS="~amd64"
 SLOT="0"
 IUSE="+inotify test"
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/filelock[${PYTHON_USEDEP}]
 	inotify? ( dev-python/watchdog[${PYTHON_USEDEP}] )"
