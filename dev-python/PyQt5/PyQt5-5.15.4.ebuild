@@ -15,16 +15,16 @@ if [[ ${PV} == *_pre* ]]; then
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-# TODO: QtNfc, QtQuick3D, QtRemoteObjects, QtTextToSpeech
+# TODO: QtNfc, QtRemoteObjects, QtTextToSpeech
 IUSE="bluetooth dbus debug declarative designer examples gles2-only gui help location
-	multimedia network opengl positioning printsupport sensors serialport
-	sql +ssl svg testlib webchannel websockets widgets x11extras xmlpatterns"
+	multimedia network opengl positioning printsupport sensors serialport sql
+	+ssl svg testlib webchannel websockets widgets x11extras xmlpatterns"
 
 # The requirements below were extracted from configure.py
 # and from the output of 'grep -r "%Import " "${S}"/sip'
@@ -51,10 +51,10 @@ REQUIRED_USE="
 "
 
 # Minimal supported version of Qt.
-QT_PV="$(ver_cut 1-2):5"
+QT_PV="5.15:5"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/PyQt5-sip-4.19.23:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.25:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
@@ -84,7 +84,7 @@ RDEPEND="${PYTHON_DEPS}
 	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.23[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.25[${PYTHON_USEDEP}]
 	dbus? ( virtual/pkgconfig )
 "
 
@@ -103,12 +103,12 @@ src_configure() {
 	configuration() {
 		local myconf=(
 			"${EPYTHON}"
-			"${S}/configure.py"
+			"${S}"/configure.py
 			$(usex debug '--debug --qml-debug --trace' '')
 			--verbose
 			--confirm-license
-			--qmake="$(qt5_get_bindir)/qmake"
-			--bindir="${EPREFIX}/usr/bin"
+			--qmake="$(qt5_get_bindir)"/qmake
+			--bindir="${EPREFIX}"/usr/bin
 			--qsci-api
 			--enable=QtCore
 			--enable=QtXml
