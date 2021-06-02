@@ -15,7 +15,7 @@ SRC_URI="https://www.kernel.org/pub/software/utils/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="perl python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
