@@ -17,8 +17,8 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 _IUSE_QT_MODULES="
 	declarative designer gui help location multimedia network opengl
-	positioning printsupport sensors serialport sql svg testlib webchannel
-	webengine websockets widgets x11extras xml xmlpatterns
+	positioning printsupport sensors serialport speech sql svg testlib
+	webchannel webengine websockets widgets x11extras xml xmlpatterns
 "
 IUSE="+pyqt5 pyside2 ${_IUSE_QT_MODULES}"
 unset _IUSE_QT_MODULES
@@ -44,7 +44,6 @@ REQUIRED_USE="
 # 	scxml? ( pyside2 )
 # 	script? ( pyside2 )
 # 	scripttools? ( pyside2 )
-# 	speech? ( pyside2 )
 
 # WARNING: the obvious solution of using || for PyQt5/pyside2 is not going
 # to work.  The package only checks whether PyQt5/pyside2 is installed, it does
@@ -68,7 +67,7 @@ RDEPEND="
 		dev-python/PyQt5[${PYTHON_USEDEP}]
 		dev-python/PyQt5[declarative?,designer?,gui?,help?,location?]
 		dev-python/PyQt5[multimedia?,network?,opengl?,positioning?]
-		dev-python/PyQt5[printsupport?,sensors?,serialport?,sql?,svg?]
+		dev-python/PyQt5[printsupport?,sensors?,serialport?,speech?,sql?,svg?]
 		dev-python/PyQt5[testlib?,webchannel?,websockets?,widgets?]
 		dev-python/PyQt5[x11extras?,xml(+)?,xmlpatterns?]
 		webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
@@ -78,9 +77,9 @@ RDEPEND="
 			dev-python/pyside2[${PYTHON_USEDEP}]
 			dev-python/pyside2[designer?,gui?,help?,location?,multimedia?]
 			dev-python/pyside2[network?,opengl(+)?,positioning?,printsupport?]
-			dev-python/pyside2[sensors?,serialport(+)?,sql?,svg?,testlib?]
-			dev-python/pyside2[webchannel?,webengine?,websockets?,widgets?]
-			dev-python/pyside2[x11extras?,xml?,xmlpatterns?]
+			dev-python/pyside2[sensors?,serialport(+)?,speech?,sql?,svg?]
+			dev-python/pyside2[testlib?,webchannel?,webengine?,websockets?]
+			dev-python/pyside2[widgets?,x11extras?,xml?,xmlpatterns?]
 			declarative? ( dev-python/pyside2[qml,quick] )
 			' python3_{7..9} )
 	)
@@ -96,7 +95,7 @@ BDEPEND="
 			dev-python/PyQt5[${PYTHON_USEDEP}]
 			dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
 			dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
-			dev-python/PyQt5[sensors,serialport,sql,svg,testlib,webchannel]
+			dev-python/PyQt5[sensors,serialport,speech,sql,svg,testlib,webchannel]
 			dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 		)
