@@ -26,6 +26,7 @@ sys-power/upower ios
 net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings colord libcanberra
 xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
+xfce-extra/xfce4-power-manager networkmanager
 # KDE not tested, so mask
 sys-auth/polkit kde
 
