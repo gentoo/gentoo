@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libgfbgraph/"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.2"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="+introspection"
 
 DEPEND="
