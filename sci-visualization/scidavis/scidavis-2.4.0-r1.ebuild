@@ -34,7 +34,7 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sci-libs/gsl
+	sci-libs/gsl:=
 	sys-libs/zlib[minizip]
 	x11-libs/qwt:5
 	x11-libs/qwtplot3d
@@ -49,6 +49,7 @@ RDEPEND="
 		')
 	)
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-qt/linguist-tools:5
 	test? (
