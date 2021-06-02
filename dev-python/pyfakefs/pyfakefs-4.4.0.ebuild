@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
@@ -17,6 +17,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py310.patch
+)
 
 python_test() {
 	"${EPYTHON}" -m pyfakefs.tests.all_tests -v || die "tests failed under ${EPYTHON}"
