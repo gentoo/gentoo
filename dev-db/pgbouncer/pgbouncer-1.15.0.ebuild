@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://www.pgbouncer.org/downloads/files/${PV}/pgbouncer-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+c-ares debug doc pam ssl systemd -udns"
+IUSE="+c-ares debug doc pam ssl systemd udns"
 
 # At-most-one-of, one can be enabled but not both
 REQUIRED_USE="?? ( c-ares udns )"
