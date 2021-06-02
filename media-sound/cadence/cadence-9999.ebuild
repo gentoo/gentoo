@@ -21,7 +21,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="a2jmidid -pulseaudio opengl"
+IUSE="a2jmidid pulseaudio opengl"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
