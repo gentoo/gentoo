@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit desktop python-single-r1 toolchain-funcs
 
@@ -20,9 +20,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# Note: locks up at start with >=pygame-2 (debian uses pygame-1, fix needed)
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/pygame-1.5.5[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygame-1.5.5[${PYTHON_USEDEP}]
+		<dev-python/pygame-2[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"
