@@ -7,14 +7,13 @@ PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
 
-MY_PN=sip
-MY_P=${MY_PN}-${PV/_pre/.dev}
+MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 fi
 
 # Sub-slot based on ${S}/sipbuild/module/source
@@ -26,6 +25,5 @@ RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}"
 
 distutils_enable_sphinx doc --no-autodoc

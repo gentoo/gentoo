@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..10} )
 inherit python-r1 toolchain-funcs
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
 
 MY_PN=sip
 MY_P=${MY_PN}-${PV/_pre/.dev}
