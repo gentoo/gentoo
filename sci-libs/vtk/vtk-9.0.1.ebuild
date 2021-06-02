@@ -515,6 +515,11 @@ src_install() {
 	doenvd "${T}"/40${PN}
 
 	use web && webapp_src_install
+
+	# Temporary!
+	# Avoid collision with paraview.
+	# bug #793221
+	rm -rf "${ED}"/usr/share/vtkm-1.5/VTKm{LICENSE.txt,README.md} || die
 }
 
 # webapp.eclass exports these but we want it optional #534036
