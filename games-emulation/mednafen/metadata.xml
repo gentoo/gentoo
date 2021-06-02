@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="debugger">Build with internal debugger</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">mednafen</remote-id>
 	</upstream>
