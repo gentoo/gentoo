@@ -88,6 +88,8 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	# https://github.com/karelzak/util-linux/pull/1329
+	"${FILESDIR}/${P}-ppc-nortas.patch"
 )
 
 rm_man() {
