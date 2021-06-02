@@ -20,8 +20,10 @@ DEPEND="
 	dev-libs/protobuf:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
 	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	>=net-libs/libpcap-1.8.1-r2
 "
 RDEPEND="${DEPEND}"
