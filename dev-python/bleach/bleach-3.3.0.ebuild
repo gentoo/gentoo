@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
 
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="an easy whitelist-based HTML-sanitizing tool"
