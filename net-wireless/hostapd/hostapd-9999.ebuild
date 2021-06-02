@@ -204,7 +204,7 @@ src_configure() {
 src_compile() {
 	emake V=1
 
-	if  use internal-tls; then
+	if ! use internal-tls; then
 		emake V=1 nt_password_hash
 		emake V=1 hlr_auc_gw
 	fi
