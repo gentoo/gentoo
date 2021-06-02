@@ -40,12 +40,9 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		dev-python/csv23[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/scripttest[${PYTHON_USEDEP}]
 		<dev-python/virtualenv-20[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
