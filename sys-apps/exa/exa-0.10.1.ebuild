@@ -81,16 +81,26 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="+git"
+KEYWORDS="~amd64 ~x86"
+IUSE="+git man"
 
 DEPEND="git? ( dev-libs/libgit2:= )"
 RDEPEND="${DEPEND}"
-
-#some tests fail on tmpfs/zfs/btrfs
-RESTRICT="test"
+BDEPEND+="man? ( >=app-text/pandoc-2.11.3 )"
 
 QA_FLAGS_IGNORED="/usr/bin/exa"
+
+src_prepare() {
+	default
+	if use man
+	then
+		mkdir -p contrib/man && \
+		pandoc --standalone -f markdown -t man man/exa_colors.5.md \
+		-o contrib/man/exa_colors.1 && \
+		pandoc --standalone -f markdown -t man man/exa.1.md -o contrib/man/exa.1 && \
+		rm -rf man || die "failed to creat directory"
+	fi
+}
 
 src_compile() {
 	export LIBGIT2_SYS_USE_PKG_CONFIG=1
@@ -98,16 +108,23 @@ src_compile() {
 	cargo_src_compile $(usex git "" --no-default-features)
 }
 
+src_test() {
+	cargo_src_test
+}
+
 src_install() {
 	cargo_src_install $(usex git "" --no-default-features)
 
-	newbashcomp contrib/completions.bash exa
+	newbashcomp completions/completions.bash exa
 
 	insinto /usr/share/zsh/site-functions
-	newins contrib/completions.zsh _exa
+	newins completions/completions.zsh _exa
 
 	insinto /usr/share/fish/vendor_completions.d
-	newins contrib/completions.fish exa.fish
+	newins completions/completions.fish exa.fish
 
-	doman contrib/man/*
+	if use man
+	then
+		doman contrib/man/*
+	fi
 }
