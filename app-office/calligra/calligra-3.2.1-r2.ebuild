@@ -76,7 +76,7 @@ COMMON_DEPEND="
 	crypt? ( >=app-crypt/qca-2.3.0:2 )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( >=dev-qt/qtdeclarative-${QTMIN}:5[widgets] )
-	gsl? ( sci-libs/gsl )
+	gsl? ( sci-libs/gsl:= )
 	import-filter? (
 		app-text/libetonyek
 		app-text/libodfgen
