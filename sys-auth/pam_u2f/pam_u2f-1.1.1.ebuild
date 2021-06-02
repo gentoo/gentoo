@@ -21,6 +21,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.1.1-fix-Makefile.patch )
+
 src_prepare() {
 	default
 	eautoreconf
@@ -29,11 +31,4 @@ src_prepare() {
 src_configure() {
 	use debug || append-cppflags -UDEBUG_PAM -UPAM_DEBUG
 	econf --with-pam-dir=$(getpam_mod_dir)
-}
-
-src_install() {
-	default
-
-	# plugin only
-	find "${ED}" -name '*.la' -delete || die
 }
