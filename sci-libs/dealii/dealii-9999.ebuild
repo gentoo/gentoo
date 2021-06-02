@@ -56,7 +56,7 @@ RDEPEND="dev-libs/boost
 	cuda? ( dev-util/nvidia-cuda-sdk )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
-	gsl? ( sci-libs/gsl )
+	gsl? ( sci-libs/gsl:= )
 	hdf5? ( sci-libs/hdf5[mpi=] )
 	lapack? ( virtual/lapack )
 	metis? ( >=sci-libs/parmetis-4 )
