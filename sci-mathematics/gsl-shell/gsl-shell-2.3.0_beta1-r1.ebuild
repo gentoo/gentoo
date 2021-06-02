@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc fox"
 
 RDEPEND="
-	>=sci-libs/gsl-1.14
+	>=sci-libs/gsl-1.14:=
 	virtual/blas
 	>=x11-libs/agg-2.5
 	>=media-libs/freetype-2.4.10
