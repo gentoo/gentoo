@@ -6,12 +6,13 @@ EAPI=7
 ADA_COMPAT=( gnat_201{6..9} gnat_202{0..1} )
 inherit ada multiprocessing autotools
 
-MYP=${P}-20200429-19911-src
+MYP=${P}-${PV}0518-19F7B-src
+ID=3ddb98c0c8854dc7631bebd673ac7bc53038d4b7
+ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Monitors dynamic allocation and deallocation activity in a program"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="https://community.download.adacore.com/v1/77354fedca0441f882e17b6a73ac5631bff26237?filename=${MYP}.tar.gz
-	-> ${MYP}.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -38,7 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
-	gprbuild -v -Pgnatmem.gpr -j$(makeopts_jobs) \
+	gprbuild -v -p -Pgnatmem.gpr -j$(makeopts_jobs) \
 		-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
 		-largs ${LDFLAGS} \
 		|| die
