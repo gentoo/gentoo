@@ -1,0 +1,34 @@
+From 78fb97105f38dc286353bbc331a243b6e753fe3c Mon Sep 17 00:00:00 2001
+From: Petr Viktorin <encukou@gmail.com>
+Date: Wed, 6 Jan 2021 13:33:33 +0100
+Subject: [PATCH] Make code.FormattedExcinfo.get_source more defensive
+
+When line_index was a large negative number, get_source failed
+on `source.lines[line_index]`.
+Use the same dummy Source as with a large positive line_index.
+---
+ src/_pytest/_code/code.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/_pytest/_code/code.py b/src/_pytest/_code/code.py
+index b85217560..af3bdf056 100644
+--- a/src/_pytest/_code/code.py
++++ b/src/_pytest/_code/code.py
+@@ -721,11 +721,11 @@ class FormattedExcinfo:
+     ) -> List[str]:
+         """Return formatted and marked up source lines."""
+         lines = []
+-        if source is None or line_index >= len(source.lines):
++        if source is not None and line_index < 0:
++            line_index += len(source.lines)
++        if source is None or line_index >= len(source.lines) or line_index < 0:
+             source = Source("???")
+             line_index = 0
+-        if line_index < 0:
+-            line_index += len(source)
+         space_prefix = "    "
+         if short:
+             lines.append(space_prefix + source.lines[line_index].strip())
+-- 
+2.31.1
+

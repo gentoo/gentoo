@@ -43,6 +43,10 @@ BDEPEND="
 		' python3_{7..9} pypy3)
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-py310.patch
+)
+
 src_test() {
 	# workaround new readline defaults
 	echo "set enable-bracketed-paste off" > "${T}"/inputrc || die
