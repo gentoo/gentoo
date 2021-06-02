@@ -8,15 +8,16 @@ ADA_COMPAT=( gnat_202{0..1} )
 inherit ada toolchain-funcs multiprocessing
 
 MYP=${P}-${PV}0519-19A34-src
+ID=23a77a37247ff811609e23a0a271f445c299fc8f
 XMLADA=xmlada-${PV}-${PV}0518-19D50-src
+XMLADAID=6a2cf72f308cc787926b12ddc20993fcf2b8ea79
+ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Multi-Language Management"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="
-	https://community.download.adacore.com/v1/23a77a37247ff811609e23a0a271f445c299fc8f?filename=${MYP}.tar.gz
-		-> ${MYP}.tar.gz
-	https://community.download.adacore.com/v1/6a2cf72f308cc787926b12ddc20993fcf2b8ea79?filename=${XMLADA}.tar.gz
-		-> ${XMLADA}.tar.gz"
+	${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz
+	${ADAMIRROR}/${XMLADAID}?filename=${XMLADA}.tar.gz -> ${XMLADA}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
