@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	gnome-base/libglade:2.0
-	sci-libs/gsl
+	sci-libs/gsl:=
 	x11-libs/gtk+:2
 "
 RDEPEND="
