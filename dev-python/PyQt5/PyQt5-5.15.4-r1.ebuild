@@ -21,13 +21,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-# TODO: QtNfc, QtRemoteObjects, QtTextToSpeech
+# TODO: QtNfc, QtQuick3D, QtRemoteObjects
 IUSE="bluetooth dbus debug declarative designer examples gles2-only gui help location
-	multimedia network opengl positioning printsupport sensors serialport sql
-	+ssl svg testlib webchannel websockets widgets x11extras xmlpatterns"
+	multimedia network opengl positioning printsupport sensors serialport speech
+	sql +ssl svg testlib webchannel websockets widgets x11extras xmlpatterns"
 
 # The requirements below were extracted from configure.py
-# and from the output of 'grep -r "%Import " "${S}"/sip'
+# and from the output of 'grep -r "%Import " ${S}/sip'
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bluetooth? ( gui )
@@ -74,6 +74,7 @@ RDEPEND="${PYTHON_DEPS}
 	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
 	sensors? ( >=dev-qt/qtsensors-${QT_PV} )
 	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
+	speech? ( >=dev-qt/qtspeech-${QT_PV} )
 	sql? ( >=dev-qt/qtsql-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
 	testlib? ( >=dev-qt/qttest-${QT_PV} )
@@ -131,6 +132,7 @@ src_configure() {
 			$(pyqt_use_enable printsupport QtPrintSupport)
 			$(pyqt_use_enable sensors)
 			$(pyqt_use_enable serialport QtSerialPort)
+			$(pyqt_use_enable speech QtTextToSpeech)
 			$(pyqt_use_enable sql)
 			$(usex ssl '' '--disable-feature=PyQt_SSL')
 			$(pyqt_use_enable svg)
