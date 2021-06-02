@@ -15,7 +15,7 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="-mplayer themes"
+IUSE="mplayer themes"
 
 RDEPEND=">=media-video/vdr-1.2.6
 	media-video/vdr2jpeg
