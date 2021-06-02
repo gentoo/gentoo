@@ -10,7 +10,6 @@
 	<flag name="bladerf">Build with Nuand BladeRF support</flag>
 	<flag name="hackrf">Build with Great Scott Gadgets HackRF support</flag>
 	<flag name="iqbalance">Enable support for I/Q balancing using gr-iqbal</flag>
-	<flag name="mirisdr">Build with Mirics MSi2500 + MSi001 SDR support</flag>
 	<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
 	<flag name="sdrplay">Enable support for SDRplay devices through <pkg>net-wireless/sdrplay</pkg></flag>
 	<flag name="soapy">Build with SoapySDR support</flag>
