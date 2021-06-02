@@ -11,8 +11,6 @@ ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Translates addresses into filename, line number, and function names"
 HOMEPAGE="http://libre.adacore.com/"
-SRC_URI="http://mirrors.cdn.adacore.com/art/5cc7d5e431e87a23952f18c4 ->
-	${MYP}.tar.gz"
 SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
