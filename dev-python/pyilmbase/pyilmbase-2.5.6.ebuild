@@ -13,7 +13,7 @@ S="${WORKDIR}/openexr-${PV}/PyIlmBase"
 
 LICENSE="BSD"
 SLOT="0/25"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="exceptions +numpy test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
