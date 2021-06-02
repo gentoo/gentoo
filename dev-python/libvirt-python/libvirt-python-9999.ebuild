@@ -35,7 +35,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 	verify-sig? ( app-crypt/openpgp-keys-libvirt )
 "
