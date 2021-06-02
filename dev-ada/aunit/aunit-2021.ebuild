@@ -7,11 +7,12 @@ ADA_COMPAT=( gnat_201{6..9} gnat_202{0..1} )
 inherit ada multiprocessing
 
 MYP=${P}-${PV}0518-19DC5-src
+ID=c8eadafc40c016859e127cd0e82411fcd8f3e749
+ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Ada unit testing framework"
 HOMEPAGE="http://libre.adacore.com/tools/aunit/"
-SRC_URI="https://community.download.adacore.com/v1/c8eadafc40c016859e127cd0e82411fcd8f3e749?filename=${MYP}.tar.gz
-	-> ${MYP}.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
