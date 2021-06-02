@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.bioperl.org/"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="-minimal test"
+IUSE="minimal test"
 #SRC_TEST="do"
 
 RESTRICT="test"
