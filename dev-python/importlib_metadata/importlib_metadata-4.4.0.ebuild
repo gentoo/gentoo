@@ -5,7 +5,7 @@ EAPI=7
 
 # NB: this package extends beyond built-in importlib stuff in py3.8+
 # new entry_point API not yet included in cpython release
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Read metadata from Python packages"
