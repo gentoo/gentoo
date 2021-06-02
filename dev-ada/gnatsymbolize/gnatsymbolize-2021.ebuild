@@ -5,14 +5,15 @@ EAPI=7
 ADA_COMPAT=( gnat_201{8,9} gnat_202{0..1} )
 inherit ada multiprocessing autotools
 
-MYP=${P}-20200429-19987-src
+MYP=${P}-${PV}0518-19D3B-src
+ID=884f3b229457c995ddebb46a16a7cc50ed837c90
+ADAMIRROR=https://community.download.adacore.com/v1
 
 DESCRIPTION="Translates addresses into filename, line number, and function names"
 HOMEPAGE="http://libre.adacore.com/"
 SRC_URI="http://mirrors.cdn.adacore.com/art/5cc7d5e431e87a23952f18c4 ->
 	${MYP}.tar.gz"
-SRC_URI="https://community.download.adacore.com/v1/ebef002ce60066e3befdd1a4a0980f3ab8f1b551?filename=${MYP}.tar.gz
-	-> ${MYP}.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
