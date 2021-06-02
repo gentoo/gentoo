@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multilib
+inherit cmake multilib
 
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
@@ -30,8 +30,8 @@ SLOT="0"
 IUSE="
 	adolc assimp arpack cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 cuda +debug doc +examples ginkgo gmsh +gsl hdf5
-	+lapack metis mpi muparser nanoflann opencascade p4est petsc
-	scalapack slepc +sparse static-libs sundials symengine +tbb trilinos
+	+lapack metis mpi muparser opencascade p4est petsc
+	scalapack slepc +sparse static-libs sundials symengine trilinos
 "
 
 # TODO: add slepc use flag once slepc is packaged for gentoo-science
@@ -40,31 +40,35 @@ REQUIRED_USE="
 	slepc? ( petsc )
 	trilinos? ( mpi )"
 
+# FIXME: The opencascade-7.5.1 ebuild uses a new file system layout where
+# the names of the correct include and library directories are not easily
+# accessible. Just fix the version for the time being.
+CAS_VERSION=7.5.1
+
 RDEPEND="dev-libs/boost
 	app-arch/bzip2
 	sys-libs/zlib
+	dev-cpp/tbb
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
 	cuda? ( dev-util/nvidia-cuda-sdk )
 	ginkgo? ( sci-libs/ginkgo )
 	gmsh? ( sci-libs/gmsh )
-	gsl? ( sci-libs/gsl )
+	gsl? ( sci-libs/gsl:= )
 	hdf5? ( sci-libs/hdf5[mpi=] )
 	lapack? ( virtual/lapack )
 	metis? ( >=sci-libs/parmetis-4 )
 	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
-	nanoflann? ( sci-libs/nanoflann )
-	opencascade? ( sci-libs/opencascade:* )
+	opencascade? ( ~sci-libs/opencascade-${CAS_VERSION}:= )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
 	scalapack? ( sci-libs/scalapack )
 	slepc? ( sci-mathematics/slepc[mpi=] )
 	sparse? ( sci-libs/umfpack )
-	sundials? ( <sci-libs/sundials-4:= )
+	sundials? ( sci-libs/sundials:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
-	tbb? ( dev-cpp/tbb )
 	trilinos? ( sci-libs/trilinos )"
 
 DEPEND="${RDEPEND}
@@ -73,7 +77,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
-	"${FILESDIR}"/${PN}-9.2.0-fix-boost-include-file.patch
 )
 
 src_configure() {
@@ -84,7 +87,6 @@ src_configure() {
 		-DDEAL_II_PACKAGE_VERSION="${PV}"
 		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DDEAL_II_ALLOW_AUTODETECTION=OFF
-		-DDEAL_II_ALLOW_BUNDLED=OFF
 		-DDEAL_II_ALLOW_PLATFORM_INTROSPECTION=OFF
 		-DDEAL_II_COMPILE_EXAMPLES=OFF
 		-DDEAL_II_DOCHTML_RELDIR="share/doc/${P}/html"
@@ -108,7 +110,6 @@ src_configure() {
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
-		-DDEAL_II_WITH_NANOFLANN="$(usex nanoflann)"
 		-DDEAL_II_WITH_OPENCASCADE="$(usex opencascade)"
 		-DDEAL_II_WITH_P4EST="$(usex p4est)"
 		-DDEAL_II_WITH_PETSC="$(usex petsc)"
@@ -119,12 +120,15 @@ src_configure() {
 		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
 		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
-		-DDEAL_II_WITH_THREADS="$(usex tbb)"
+		-DDEAL_II_WITH_TBB=ON
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
 	# Do a little dance for purely cosmetic "QA" reasons.
-	use opencascade && mycmakeargs+=( -DOPENCASCADE_DIR="${CASROOT}" )
+	use opencascade && mycmakeargs+=(
+		-DOPENCASCADE_DIR="${CASROOT}/$(get_libdir)/opencascade-${CAS_VERSION}"
+		-DOPENCASCADE_INCLUDE_DIR="${CASROOT}/include/opencascade-${CAS_VERSION}"
+	)
 
 	# Do a little dance for purely cosmetic "QA" reasons. The build system
 	# does query for the highest instruction set first and skips the other
@@ -137,7 +141,7 @@ src_configure() {
 		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -150,7 +154,7 @@ src_install() {
 			's#"http://www.dealii.org/images/steps/developer/\(step-.*\)"#"images/\1"#g' \
 			"${BUILD_DIR}"/doc/doxygen/deal.II/step_*.html || die "sed failed"
 	fi
-	cmake-utils_src_install
+	cmake_src_install
 
 	# decompress the installed example sources:
 	use examples && docompress -x /usr/share/doc/${PF}/examples
