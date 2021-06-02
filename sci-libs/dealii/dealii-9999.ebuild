@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multilib
+inherit cmake multilib
 
 # deal.II uses its own FindLAPACK.cmake file that calls into the system
 # FindLAPACK.cmake module and does additional internal setup. Do not remove
@@ -40,10 +40,16 @@ REQUIRED_USE="
 	slepc? ( petsc )
 	trilinos? ( mpi )"
 
+# FIXME: The opencascade-7.5.1 ebuild uses a new file system layout where
+# the names of the correct include and library directories are not easily
+# accessible. Just fix the version for the time being.
+CAS_VERSION=7.5.1
+
 RDEPEND="dev-libs/boost
 	app-arch/bzip2
 	sys-libs/zlib
 	dev-cpp/cpp-taskflow
+	dev-cpp/tbb
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
 	assimp? ( media-libs/assimp )
@@ -56,7 +62,7 @@ RDEPEND="dev-libs/boost
 	metis? ( >=sci-libs/parmetis-4 )
 	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
-	opencascade? ( sci-libs/opencascade:* )
+	opencascade? ( ~sci-libs/opencascade-${CAS_VERSION}:= )
 	p4est? ( sci-libs/p4est[mpi] )
 	petsc? ( sci-mathematics/petsc[mpi=] )
 	scalapack? ( sci-libs/scalapack )
@@ -116,12 +122,16 @@ src_configure() {
 		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
 		-DBUILD_SHARED_LIBS="$(usex !static-libs)"
 		-DDEAL_II_PREFER_STATIC_LIBS="$(usex static-libs)"
+		-DDEAL_II_WITH_TBB=ON
 		-DDEAL_II_WITH_TASKFLOW=ON
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
 
 	# Do a little dance for purely cosmetic "QA" reasons.
-	use opencascade && mycmakeargs+=( -DOPENCASCADE_DIR="${CASROOT}" )
+	use opencascade && mycmakeargs+=(
+		-DOPENCASCADE_DIR="${CASROOT}/$(get_libdir)/opencascade-${CAS_VERSION}"
+		-DOPENCASCADE_INCLUDE_DIR="${CASROOT}/include/opencascade-${CAS_VERSION}"
+	)
 
 	# Do a little dance for purely cosmetic "QA" reasons. The build system
 	# does query for the highest instruction set first and skips the other
@@ -134,7 +144,7 @@ src_configure() {
 		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -147,7 +157,7 @@ src_install() {
 			's#"http://www.dealii.org/images/steps/developer/\(step-.*\)"#"images/\1"#g' \
 			"${BUILD_DIR}"/doc/doxygen/deal.II/step_*.html || die "sed failed"
 	fi
-	cmake-utils_src_install
+	cmake_src_install
 
 	# decompress the installed example sources:
 	use examples && docompress -x /usr/share/doc/${PF}/examples
