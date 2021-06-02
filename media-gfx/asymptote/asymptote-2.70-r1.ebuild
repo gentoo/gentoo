@@ -25,15 +25,15 @@ REQUIRED_USE="
 RDEPEND="
 	>=sys-libs/ncurses-5.4-r5:0=
 	>=sys-libs/readline-4.3-r5:0=
-	net-libs/libtirpc
+	net-libs/libtirpc:=
 	imagemagick? ( media-gfx/imagemagick[png] )
 	opengl? ( media-libs/mesa[X(+)] media-libs/freeglut media-libs/glew:0 media-libs/glm )
 	offscreen? ( media-libs/mesa[osmesa] )
 	svg? ( app-text/dvisvgm )
 	sigsegv? ( dev-libs/libsigsegv )
 	boehm-gc? ( >=dev-libs/boehm-gc-7.0[cxx,threads] )
-	fftw? ( >=sci-libs/fftw-3.0.1 )
-	gsl? ( sci-libs/gsl )
+	fftw? ( >=sci-libs/fftw-3.0.1:= )
+	gsl? ( sci-libs/gsl:= )
 	python? ( ${PYTHON_DEPS} )
 	curl? ( net-misc/curl )
 	X? (
@@ -42,11 +42,11 @@ RDEPEND="
 		dev-python/numpy
 		dev-python/pycson
 		>=gnome-base/librsvg-2.40
-		)
+	)
 	latex? (
 		virtual/latex-base
 		>=dev-texlive/texlive-latexextra-2013
-		)
+	)
 	context? ( dev-texlive/texlive-context )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )"
