@@ -45,8 +45,8 @@ RDEPEND="
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/pixman
 	chamelium? (
-		dev-libs/xmlrpc-c[curl]
-		sci-libs/gsl
+		dev-libs/xmlrpc-c:=[curl]
+		sci-libs/gsl:=
 		media-libs/alsa-lib:=
 	)
 	overlay? (
