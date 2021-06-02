@@ -6,7 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">samcv/brainworkshop</remote-id>
+		<remote-id type="github">brain-workshop/brainworkshop</remote-id>
 		<remote-id type="sourceforge">brainworkshop</remote-id>
 	</upstream>
 </pkgmetadata>
