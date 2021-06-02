@@ -25,7 +25,7 @@ gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zero
 sys-power/upower ios
 net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings colord libcanberra
-xfce-extra/tumbler epub
+xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
 # KDE not tested, so mask
 sys-auth/polkit kde
 
