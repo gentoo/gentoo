@@ -117,6 +117,7 @@ src_configure() {
 		-DBUILD_DOCS=$(usex doc)
 		-DINSTALL_DOCS=$(usex doc)
 		-DSTOP_ON_WARNING=OFF
+		-DUSE_CCACHE=OFF
 		-DUSE_DCMTK=$(usex dicom)
 		-DUSE_EXTERNAL_PUGIXML=ON
 		-DUSE_JPEGTURBO=ON
