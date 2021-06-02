@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-06-02)
+# This is Python 2/3 compatibility layer that was used shortly
+# by dev-python/pip.  No revdeps left.
+# Removal on 2021-07-02.  Bug #793902.
+dev-python/csv23
+
 # Sam James <sam@gentoo.org> (2021-06-01)
 # Possible issues with new ALSA release
 # See bug #793410
