@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit cmake desktop python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 MAIN_PV=$(ver_cut 0-1)
