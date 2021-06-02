@@ -21,6 +21,7 @@ BDEPEND="
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
+		sys-apps/dbus
 	)
 "
 
@@ -32,6 +33,10 @@ distutils_enable_sphinx docs \
 src_prepare() {
 	rm jeepney/io/tests/test_trio.py || die
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	dbus-run-session pytest -vv -ra -l || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {
