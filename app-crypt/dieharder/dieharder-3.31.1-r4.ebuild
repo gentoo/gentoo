@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc"
 RESTRICT="test" # Way too long
 
-RDEPEND="sci-libs/gsl"
+RDEPEND="sci-libs/gsl:="
 DEPEND="${RDEPEND}"
 BDEPEND=" doc? ( dev-tex/latex2html )"
 
