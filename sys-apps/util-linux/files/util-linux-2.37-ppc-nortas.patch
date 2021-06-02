@@ -1,0 +1,36 @@
+From 45cd3aa4ded6df54dde85e6939b48bb273c8b6c3 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Wed, 2 Jun 2021 13:59:26 -0700
+Subject: [PATCH] lscpu: fix build on powerpc
+
+fails with error: label at end of compound statement
+and fix typo as bonus.
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ sys-utils/lscpu-cputype.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sys-utils/lscpu-cputype.c b/sys-utils/lscpu-cputype.c
+index cf7af361c..d5ca8e1f1 100644
+--- a/sys-utils/lscpu-cputype.c
++++ b/sys-utils/lscpu-cputype.c
+@@ -724,7 +724,7 @@ int lscpu_read_archext(struct lscpu_cxt *cxt)
+ 	}
+ 
+ #if defined(HAVE_LIBRTAS)
+-	/* Get PowerPC speficic info */
++	/* Get PowerPC specific info */
+ 	if (!cxt->noalive) {
+ 		int rc, len, ntypes;
+ 
+@@ -745,8 +745,8 @@ int lscpu_read_archext(struct lscpu_cxt *cxt)
+ 		ct->physsockets = strbe16toh(buf, 4);
+ 		ct->physchips = strbe16toh(buf, 6);
+ 		ct->physcoresperchip = strbe16toh(buf, 8);
+-nortas:
+ 	}
++nortas:
+ #endif
+ 	return 0;
+ }
