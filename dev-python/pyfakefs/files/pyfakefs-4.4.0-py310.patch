@@ -1,0 +1,265 @@
+From a8a70bb7746ba24aa60c9915311e1ff5b402146c Mon Sep 17 00:00:00 2001
+From: Carl Montanari <8515611+carlmontanari@users.noreply.github.com>
+Date: Thu, 13 May 2021 22:44:45 -0700
+Subject: [PATCH] Add support for Python 3.10 beta1 (#594)
+
+- add Python 3.10-beta1 to CI
+- adapt fake pathlib, fix pathlib.Path methods link_to, getcwd, lchmod
+- handle dummy encoding "locale" introduced in Python 3.10
+- do not test extra dependencies with Python 3.10 (some are not available)
+---
+ pyfakefs/fake_filesystem.py         | 15 ++++---
+ pyfakefs/fake_pathlib.py            | 64 ++++++++++++++++++++++-------
+ pyfakefs/helpers.py                 |  9 ++++
+ pyfakefs/tests/fake_pathlib_test.py | 27 +++++++++---
+ 6 files changed, 109 insertions(+), 32 deletions(-)
+
+diff --git a/pyfakefs/fake_filesystem.py b/pyfakefs/fake_filesystem.py
+index 1e9bfc8..971dc93 100644
+--- a/pyfakefs/fake_filesystem.py
++++ b/pyfakefs/fake_filesystem.py
+@@ -114,7 +114,7 @@ from pyfakefs.fake_scandir import scandir, walk
+ from pyfakefs.helpers import (
+     FakeStatResult, BinaryBufferIO, TextBufferIO,
+     is_int_type, is_byte_string, is_unicode_string,
+-    make_string_path, IS_WIN, to_string, matching_string
++    make_string_path, IS_WIN, to_string, matching_string, real_encoding
+ )
+ from pyfakefs import __version__  # noqa: F401 for upwards compatibility
+ 
+@@ -293,7 +293,7 @@ class FakeFile:
+         if st_mode >> 12 == 0:
+             st_mode |= S_IFREG
+         self.stat_result.st_mode = st_mode
+-        self.encoding = encoding
++        self.encoding = real_encoding(encoding)
+         self.errors = errors or 'strict'
+         self._byte_contents = self._encode_contents(contents)
+         self.stat_result.st_size = (
+@@ -430,7 +430,7 @@ class FakeFile:
+           OSError: if `st_size` is not a non-negative integer,
+                    or if it exceeds the available file system space.
+         """
+-        self.encoding = encoding
++        self.encoding = real_encoding(encoding)
+         changed = self._set_initial_contents(contents)
+         if self._side_effect is not None:
+             self._side_effect(self)
+@@ -1177,9 +1177,12 @@ class FakeFilesystem:
+             OSError: if the filesystem object doesn't exist.
+         """
+         # stat should return the tuple representing return value of os.stat
+-        file_object = self.resolve(
+-            entry_path, follow_symlinks,
+-            allow_fd=True, check_read_perm=False)
++        try:
++            file_object = self.resolve(
++                entry_path, follow_symlinks,
++                allow_fd=True, check_read_perm=False)
++        except TypeError:
++            file_object = self.resolve(entry_path)
+         if not is_root():
+             # make sure stat raises if a parent dir is not readable
+             parent_dir = file_object.parent_dir
+diff --git a/pyfakefs/fake_pathlib.py b/pyfakefs/fake_pathlib.py
+index b43b178..09933fa 100644
+--- a/pyfakefs/fake_pathlib.py
++++ b/pyfakefs/fake_pathlib.py
+@@ -53,8 +53,8 @@ def init_module(filesystem):
+ 
+ def _wrap_strfunc(strfunc):
+     @functools.wraps(strfunc)
+-    def _wrapped(pathobj, *args):
+-        return strfunc(pathobj.filesystem, str(pathobj), *args)
++    def _wrapped(pathobj, *args, **kwargs):
++        return strfunc(pathobj.filesystem, str(pathobj), *args, **kwargs)
+ 
+     return staticmethod(_wrapped)
+ 
+@@ -94,19 +94,24 @@ class _FakeAccessor(accessor):
+ 
+     listdir = _wrap_strfunc(FakeFilesystem.listdir)
+ 
+-    chmod = _wrap_strfunc(FakeFilesystem.chmod)
+-
+     if use_scandir:
+         scandir = _wrap_strfunc(fake_scandir.scandir)
+ 
+     if hasattr(os, "lchmod"):
+         lchmod = _wrap_strfunc(lambda fs, path, mode: FakeFilesystem.chmod(
+             fs, path, mode, follow_symlinks=False))
++        chmod = _wrap_strfunc(FakeFilesystem.chmod)
+     else:
+-        def lchmod(self, pathobj, mode):
++        def lchmod(self, pathobj,  *args, **kwargs):
+             """Raises not implemented for Windows systems."""
+             raise NotImplementedError("lchmod() not available on this system")
+ 
++        def chmod(self, pathobj, *args, **kwargs):
++            if "follow_symlinks" in kwargs and not kwargs["follow_symlinks"]:
++                raise NotImplementedError(
++                    "lchmod() not available on this system")
++            return pathobj.filesystem.chmod(str(pathobj), *args, **kwargs)
++
+     mkdir = _wrap_strfunc(FakeFilesystem.makedir)
+ 
+     unlink = _wrap_strfunc(FakeFilesystem.remove)
+@@ -124,13 +129,21 @@ class _FakeAccessor(accessor):
+         FakeFilesystem.create_symlink(fs, file_path, link_target,
+                                       create_missing_dirs=False))
+ 
+-    if sys.version_info >= (3, 8):
++    if (3, 8) <= sys.version_info < (3, 10):
+         link_to = _wrap_binary_strfunc(
+             lambda fs, file_path, link_target:
+             FakeFilesystem.link(fs, file_path, link_target))
+ 
+-    if sys.version_info >= (3, 9):
+-        readlink = _wrap_strfunc(FakeFilesystem.readlink)
++    if sys.version_info >= (3, 10):
++        link = _wrap_binary_strfunc(
++            lambda fs, file_path, link_target:
++            FakeFilesystem.link(fs, file_path, link_target))
++
++        # this will use the fake filesystem because os is patched
++        def getcwd(self):
++            return os.getcwd()
++
++    readlink = _wrap_strfunc(FakeFilesystem.readlink)
+ 
+     utime = _wrap_strfunc(FakeFilesystem.utime)
+ 
+@@ -461,19 +474,42 @@ class FakePath(pathlib.Path):
+             cls = (FakePathlibModule.WindowsPath
+                    if cls.filesystem.is_windows_fs
+                    else FakePathlibModule.PosixPath)
+-        self = cls._from_parts(args, init=True)
++        self = cls._from_parts(args)
+         return self
+ 
+-    def _path(self):
+-        """Returns the underlying path string as used by the fake filesystem.
+-        """
+-        return str(self)
++    @classmethod
++    def _from_parts(cls, args, init=False):  # pylint: disable=unused-argument
++        # Overwritten to call _init to set the fake accessor,
++        # which is not done since Python 3.10
++        self = object.__new__(cls)
++        self._init()
++        drv, root, parts = self._parse_args(args)
++        self._drv = drv
++        self._root = root
++        self._parts = parts
++        return self
++
++    @classmethod
++    def _from_parsed_parts(cls, drv, root, parts):
++        # Overwritten to call _init to set the fake accessor,
++        # which is not done since Python 3.10
++        self = object.__new__(cls)
++        self._init()
++        self._drv = drv
++        self._root = root
++        self._parts = parts
++        return self
+ 
+     def _init(self, template=None):
+         """Initializer called from base class."""
+         self._accessor = _fake_accessor
+         self._closed = False
+ 
++    def _path(self):
++        """Returns the underlying path string as used by the fake filesystem.
++        """
++        return str(self)
++
+     @classmethod
+     def cwd(cls):
+         """Return a new path pointing to the current working directory
+@@ -722,7 +758,7 @@ class RealPath(pathlib.Path):
+         if cls is RealPathlibModule.Path:
+             cls = (RealPathlibModule.WindowsPath if os.name == 'nt'
+                    else RealPathlibModule.PosixPath)
+-        self = cls._from_parts(args, init=True)
++        self = cls._from_parts(args)
+         return self
+ 
+ 
+diff --git a/pyfakefs/helpers.py b/pyfakefs/helpers.py
+index aa3959d..08962fc 100644
+--- a/pyfakefs/helpers.py
++++ b/pyfakefs/helpers.py
+@@ -57,6 +57,15 @@ def to_string(path):
+     return path
+ 
+ 
++def real_encoding(encoding):
++    """Since Python 3.10, the new function ``io.text_encoding`` returns
++    "locale" as the encoding if None is defined. This will be handled
++    as no encoding in pyfakefs."""
++    if sys.version_info >= (3, 10):
++        return encoding if encoding != "locale" else None
++    return encoding
++
++
+ def matching_string(matched, string):
+     """Return the string as byte or unicode depending
+     on the type of matched, assuming string is an ASCII string.
+diff --git a/pyfakefs/tests/fake_pathlib_test.py b/pyfakefs/tests/fake_pathlib_test.py
+index 5dcc57f..efea509 100644
+--- a/pyfakefs/tests/fake_pathlib_test.py
++++ b/pyfakefs/tests/fake_pathlib_test.py
+@@ -378,10 +378,11 @@ class FakePathlibFileObjectPropertyTest(RealPathlibTestCase):
+         # we get stat.S_IFLNK | 0o755 under MacOs
+         self.assertEqual(link_stat.st_mode, stat.S_IFLNK | 0o777)
+ 
+-    @unittest.skipIf(sys.platform == 'darwin',
+-                     'Different behavior under MacOs')
+     def test_lchmod(self):
+         self.skip_if_symlink_not_supported()
++        if (sys.version_info >= (3, 10) and self.use_real_fs() and
++                'chmod' not in os.supports_follow_symlinks):
++            raise unittest.SkipTest('follow_symlinks not available for chmod')
+         file_stat = self.os.stat(self.file_path)
+         link_stat = self.os.lstat(self.file_link_path)
+         if not hasattr(os, "lchmod"):
+@@ -390,8 +391,9 @@ class FakePathlibFileObjectPropertyTest(RealPathlibTestCase):
+         else:
+             self.path(self.file_link_path).lchmod(0o444)
+             self.assertEqual(file_stat.st_mode, stat.S_IFREG | 0o666)
+-            # we get stat.S_IFLNK | 0o755 under MacOs
+-            self.assertEqual(link_stat.st_mode, stat.S_IFLNK | 0o444)
++            # the exact mode depends on OS and Python version
++            self.assertEqual(link_stat.st_mode & 0o777700,
++                             stat.S_IFLNK | 0o700)
+ 
+     def test_resolve(self):
+         self.create_dir(self.make_path('antoine', 'docs'))
+@@ -968,7 +970,22 @@ class FakePathlibUsageInOsFunctionsTest(RealPathlibTestCase):
+     def test_stat(self):
+         path = self.make_path('foo', 'bar', 'baz')
+         self.create_file(path, contents='1234567')
+-        self.assertEqual(self.os.stat(path), self.os.stat(self.path(path)))
++        self.assertEqual(self.os.stat(path), self.path(path).stat())
++
++    @unittest.skipIf(sys.version_info < (3, 10), "New in Python 3.10")
++    def test_stat_follow_symlinks(self):
++        self.check_posix_only()
++        directory = self.make_path('foo')
++        base_name = 'bar'
++        file_path = self.path(self.os.path.join(directory, base_name))
++        link_path = self.path(self.os.path.join(directory, 'link'))
++        contents = "contents"
++        self.create_file(file_path, contents=contents)
++        self.create_symlink(link_path, base_name)
++        self.assertEqual(len(contents),
++                         link_path.stat(follow_symlinks=True)[stat.ST_SIZE])
++        self.assertEqual(len(base_name),
++                         link_path.stat(follow_symlinks=False)[stat.ST_SIZE])
+ 
+     def test_utime(self):
+         path = self.make_path('some_file')
+-- 
+2.31.1
+
