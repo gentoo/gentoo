@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://fossil-scm.org/home/uv/fossil-src-${PV}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
-IUSE="debug fusefs json -miniz system-sqlite +ssl static tcl tcl-stubs
+IUSE="debug fusefs json miniz system-sqlite +ssl static tcl tcl-stubs
 	  tcl-private-stubs th1-docs th1-hooks"
 
 REQUIRED_USE="ssl? ( !miniz )"
