@@ -60,19 +60,9 @@ src_unpack() {
 src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
 	# i.e. anything outside ${S}/${PN}
-	pushd ../ >/dev/null || die
+	pushd ../ &>/dev/null || die
 	default
-
-	# CVE-2019-16275 bug #696032
-	eapply "${FILESDIR}/hostapd-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
-	# CVE-2020-12695 bug #727542
-	eapply "${FILESDIR}/${P}-0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch"
-	eapply "${FILESDIR}/${P}-0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch"
-	eapply "${FILESDIR}/${P}-0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch"
-	# CVE-2021-30004 bug #780135
-	eapply "${FILESDIR}/${P}-ASN-1-Validate-DigestAlgorithmIdentifier-parameters.patch"
-
-	popd >/dev/null || die
+	popd &>/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die
