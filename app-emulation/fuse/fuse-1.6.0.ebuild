@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-svga gpm joystick memlimit png -pulseaudio +xml +zlib"
+IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-svga gpm joystick memlimit png pulseaudio +xml +zlib"
 
 # TODO:
 # - allow using sdl audio driver without using for the UI
