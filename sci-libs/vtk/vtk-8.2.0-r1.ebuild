@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -216,7 +216,7 @@ src_configure() {
 		-DVTK_Group_Views=$(usex views)
 		-DVTK_Group_Web=$(usex web)
 		-DVTK_SMP_IMPLEMENTATION_TYPE="$(usex tbb TBB Sequential)"
-		-DVTK_WWW_DIR="${ED}/${MY_HTDOCSDIR}"
+		-DVTK_WWW_DIR="${EPREFIX}/${MY_HTDOCSDIR}"
 		-DVTK_WRAP_JAVA=$(usex java)
 		-DVTK_WRAP_PYTHON=$(usex python)
 		-DVTK_WRAP_PYTHON_SIP=$(usex python)
@@ -261,7 +261,7 @@ src_configure() {
 			-DSIP_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
-			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
+#			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
 			-DVTK_USE_SYSTEM_SIX=ON
 		)
 	fi
