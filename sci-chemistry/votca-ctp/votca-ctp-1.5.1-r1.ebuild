@@ -27,7 +27,7 @@ SLOT="0"
 RDEPEND="
 	~sci-libs/votca-tools-${PV}[sqlite]
 	>=dev-cpp/eigen-3.3
-	sci-libs/gsl
+	sci-libs/gsl:=
 	~sci-chemistry/votca-csg-${PV}"
 
 DEPEND="${RDEPEND}
