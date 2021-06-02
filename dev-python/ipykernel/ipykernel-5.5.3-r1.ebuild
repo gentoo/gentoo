@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/traitlets[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]"
 BDEPEND="
+	${RDEPEND}
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
