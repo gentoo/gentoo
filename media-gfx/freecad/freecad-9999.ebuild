@@ -41,7 +41,7 @@ for module in ${FREECAD_STABLE_MODULES}; do
 	IUSE="${IUSE} +${module}"
 done
 for module in ${FREECAD_EXPERIMENTAL_MODULES}; do
-	IUSE="${IUSE} -${module}"
+	IUSE="${IUSE} ${module}"
 done
 unset module
 
