@@ -29,8 +29,8 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DSNAPPY_BUILD_TESTS=$(usex test)
 		-DSNAPPY_BUILD_BENCHMARKS=OFF
-		# we do not want to run benchmarks, and those are only used
-		# for benchmarks
+
+		# Options below are related to benchmarking, that we disable.
 		-DHAVE_LIBZ=NO
 		-DHAVE_LIBLZO2=NO
 		-DHAVE_LIBLZ4=NO
