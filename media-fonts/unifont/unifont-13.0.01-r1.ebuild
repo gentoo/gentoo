@@ -1,4 +1,4 @@
-# Copyright 2003-2020 Gentoo Authors
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ BDEPEND="
 	fontforge? (
 		app-text/bdf2psf
 		dev-lang/perl
-		dev-perl/GD[png(-)]
+		dev-perl/GD[png(+)]
 		media-gfx/fontforge
 		x11-apps/bdftopcf
 	)
@@ -26,7 +26,7 @@ BDEPEND="
 RDEPEND="
 	utils? (
 		dev-lang/perl
-		dev-perl/GD[png(-)]
+		dev-perl/GD[png(+)]
 	)
 "
 
