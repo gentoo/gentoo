@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
