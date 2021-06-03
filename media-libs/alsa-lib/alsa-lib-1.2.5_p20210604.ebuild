@@ -6,9 +6,20 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools multilib-minimal python-single-r1
 
+# When COMMIT is defined, this ebuild turns from a release into a snapshot ebuild:
+COMMIT="abe805ed6c7f38e48002e575535afd1f673b9bcd"
+# Also set SNAPSHOT_PV to match the correct PV, so that the ebuild can detect a naive rename:
+SNAPSHOT_PV="1.2.5_p20210604"
+
 DESCRIPTION="Advanced Linux Sound Architecture Library"
 HOMEPAGE="https://alsa-project.org/"
-SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
+if [[ -n ${COMMIT} ]]; then
+	SRC_URI="https://git.alsa-project.org/?p=${PN}.git;a=snapshot;h=${COMMIT};sf=tgz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${PN}-${COMMIT:0:7}
+else
+	# TODO: Upstream does publish .sig files, so someone could implement verify-sig ;)
+	SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
+fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -27,6 +38,14 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.6-missing_files.patch" # bug #652422
 )
+
+pkg_pretend() {
+	if [[ -n ${COMMIT} && -z ${SNAPSHOT_PV} || -z ${COMMIT} && -n ${SNAPSHOT_PV} ]]; then
+		eerror "Please either set both COMMIT and SNAPSHOT_PV or neither!"
+	elif [[ -n ${SNAPSHOT_PV} && ${PV} != ${SNAPSHOT_PV} ]]; then
+		eerror "Rename of snapshot ebuild detected - please check COMMIT & SNAPSHOT_PV!"
+	fi
+}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
