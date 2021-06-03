@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -39,7 +39,7 @@ RDEPEND="dev-lang/perl
 	mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag )
 	spell? ( dev-perl/gtk2-spell )
 	stats? ( dev-perl/Date-Calc
-		dev-perl/GD[png,truetype] )
+		dev-perl/GD[png(+),truetype(+)] )
 	tellico? ( virtual/perl-Digest-MD5
 		virtual/perl-MIME-Base64 )
 	vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl )"
