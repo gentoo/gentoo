@@ -441,7 +441,6 @@ dev-perl/Sane
 # Outdated, not pulled in by any virtuals anymore, no
 # keywords. Removal in 30 days.
 perl-core/Devel-PPPort
-perl-core/Time-Local
 
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
