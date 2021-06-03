@@ -101,11 +101,6 @@ pkg_setup() {
 	Cannot be directly selected in the kernel's menuconfig, so enable
 	options such as CONFIG_DRM_FBDEV_EMULATION instead."
 
-	if kernel_is -lt 5 10; then
-		CONFIG_CHECK+=" PM" # needed since 460.67 (bug #778920)
-		local ERROR_PM="CONFIG_PM: is not set but needed with kernel version <5.10"
-	fi
-
 	BUILD_PARAMS='NV_VERBOSE=1 IGNORE_CC_MISMATCH=yes SYSSRC="${KV_DIR}" SYSOUT="${KV_OUT_DIR}"'
 	BUILD_TARGETS="modules" # defaults' clean sometimes deletes modules
 	MODULE_NAMES="
