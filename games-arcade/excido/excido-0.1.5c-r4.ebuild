@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit desktop toolchain-funcs
+
 DESCRIPTION="Fast paced action game"
 HOMEPAGE="https://icculus.org/excido/"
 SRC_URI="https://icculus.org/excido/${P}-src.tar.bz2"
@@ -11,13 +13,14 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-games/physfs
+DEPEND="
+	dev-games/physfs
+	media-libs/freealut
 	media-libs/libsdl[opengl]
-	media-libs/sdl-mixer
-	media-libs/sdl-ttf
-	media-libs/sdl-image[png]
 	media-libs/openal
-	media-libs/freealut"
+	media-libs/sdl-image[png]
+	media-libs/sdl-mixer
+	media-libs/sdl-ttf"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -26,13 +29,19 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export CXX
+
 	emake DATADIR=/usr/share/${PN}/
 }
 
 src_install() {
 	dobin ${PN}
+
 	insinto /usr/share/${PN}
-	doins data/*
+	doins -r data/.
+
 	dodoc BUGS CHANGELOG HACKING README TODO \
-		keyguide.txt data/CREDITS data/*.txt
+		data/{CREDITS,readme-jf-nebula_sky.txt} keyguide.txt
+
+	make_desktop_entry ${PN} Excido applications-games "Game;ArcadeGame"
 }
