@@ -450,12 +450,6 @@ perl-core/Unicode-Normalize
 # see bug: https://bugs.gentoo.org/787152
 dev-java/tagsoup
 
-# Michał Górny <mgorny@gentoo.org> (2021-04-29)
-# The most recent release is still broken with current
-# dev-python/coverage.  Inactive downstream maintainer.  No revdeps.
-# Removal on 2021-05-29.  Bug #786666.
-dev-python/pytest-testmon
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
