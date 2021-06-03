@@ -21,6 +21,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-return-type.patch
 )
 
 src_prepare() {
