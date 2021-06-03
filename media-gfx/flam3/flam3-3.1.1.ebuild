@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="Tools and a library for creating flame fractal images"
@@ -11,7 +12,6 @@ SRC_URI="https://github.com/scottdraves/flam3/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="static-libs"
 
 RDEPEND="dev-libs/libxml2
 	media-libs/libpng:=
@@ -31,13 +31,13 @@ src_prepare() {
 src_configure() {
 	econf \
 		--enable-shared \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 src_install() {
 	default
 
-	rm -f "${D}"usr/lib*/libflam3.la
+	find "${ED}" -name '*.la' -delete || die
 
 	docinto examples
 	dodoc *.flam3
