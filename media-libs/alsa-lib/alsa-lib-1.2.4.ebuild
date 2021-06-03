@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools multilib-minimal python-single-r1
 
 DESCRIPTION="Advanced Linux Sound Architecture Library"
-HOMEPAGE="https://alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
