@@ -20,6 +20,7 @@ RDEPEND=">=dev-python/python-dateutil-2.4.2[${PYTHON_USEDEP}]
 BDEPEND="
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},tiff]
 		dev-python/random2[${PYTHON_USEDEP}]
 		dev-python/validators[${PYTHON_USEDEP}]
 	)"
