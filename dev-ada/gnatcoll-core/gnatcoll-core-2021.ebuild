@@ -2,15 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-ADA_COMPAT=( gnat_201{6..9} gnat_2020 )
+ADA_COMPAT=( gnat_202{0..1} )
 inherit ada multiprocessing
 
-MYP=${P}-20200429-19B7C
+MYP=${P}-${PV}0518-19ADF
+ADAMIRROR=https://community.download.adacore.com/v1
+ID=425b044d5cb112f096c7ac5ebbafb0d8e5297913
 
 DESCRIPTION="GNAT Component Collection Core packages"
 HOMEPAGE="http://libre.adacore.com"
-SRC_URI="https://community.download.adacore.com/v1/c94f2ac914cb305f6bef174329fa0b5003d84935?filename=${MYP}-src.tar.gz
-	-> ${MYP}-src.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}-src.tar.gz -> ${MYP}-src.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -18,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+shared static-libs static-pic"
 
 RDEPEND="
-	>=dev-ada/libgpr-2020[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	>=dev-ada/libgpr-2021[${ADA_USEDEP},shared?,static-libs?,static-pic?]
 "
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
