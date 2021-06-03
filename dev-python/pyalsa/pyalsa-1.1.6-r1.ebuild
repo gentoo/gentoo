@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python bindings for ALSA library"
-HOMEPAGE="https://alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/pyalsa/${P}.tar.bz2"
 
 LICENSE="GPL-2"
