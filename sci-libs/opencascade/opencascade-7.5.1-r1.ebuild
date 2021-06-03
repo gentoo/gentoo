@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-0004-fix-installation-of-cmake-config-files.patch
 	"${FILESDIR}"/${P}-0005-fix-write-permissions-on-scripts.patch
 	"${FILESDIR}"/${P}-0006-fix-creation-of-custom.sh-script.patch
+	"${FILESDIR}"/${P}-fix-AllValues-name-collision-with-vtk-9.0.patch
 )
 
 src_prepare() {
