@@ -5,16 +5,18 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_SINGLE_IMPL=yes
-EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+MY_PV=$(ver_cut 1-3)
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 HOMEPAGE="https://www.mycli.net"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ssh"
 
 RDEPEND="
