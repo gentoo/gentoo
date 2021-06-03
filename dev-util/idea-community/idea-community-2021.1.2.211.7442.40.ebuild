@@ -12,7 +12,7 @@ MY_PN="idea"
 # ( jre 11.0.10 build 1304.4  )
 JRE11_BASE="11_0_10"
 JRE11_VER="1304.4"
-IDEA_VER="2.236075331.371301151.1620596360-682219170.1619910833"
+IDEA_VER="2.23517177.257203969.1622674002-682219170.1619910833"
 
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
