@@ -402,12 +402,6 @@ app-misc/jitac
 # see bug: https://bugs.gentoo.org/787332
 app-office/hourglass
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2005
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787368
-dev-util/jarwizard
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
