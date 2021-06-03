@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	barcode? (
 		dev-perl/GD-Barcode
-		dev-perl/GD[png]
+		dev-perl/GD[png(+)]
 	)
 	>=dev-perl/Business-ISBN-Data-20191107.0.0
 "
