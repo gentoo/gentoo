@@ -1,0 +1,67 @@
+From f4a3fec5a229fea59eba15b8644a06a9e16e91a0 Mon Sep 17 00:00:00 2001
+From: Jonathan Marten <jjm@keelhaul.me.uk>
+Date: Sun, 16 May 2021 14:07:56 +0000
+Subject: [PATCH] KonqCombo: Use new QComboBox signal and new-style connect
+
+(cherry picked from commit 1003724180b3a758f7f4f42b247261ac95234e1b)
+---
+ src/konqcombo.cpp | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/konqcombo.cpp b/src/konqcombo.cpp
+index f401aca3f..84daa8078 100644
+--- a/src/konqcombo.cpp
++++ b/src/konqcombo.cpp
+@@ -143,9 +143,7 @@ KonqCombo::KonqCombo(QWidget *parent)
+     edit->setCompletionBox(new KonqComboCompletionBox(edit));
+     setLineEdit(edit);
+     setItemDelegate(new KonqComboItemDelegate(this));
+-
+-    connect(edit, SIGNAL(textEdited(QString)),
+-            this, SLOT(slotTextEdited(QString)));
++    connect(edit, &QLineEdit::textEdited, this, &KonqCombo::slotTextEdited);
+ 
+     completionBox()->setTabHandling(true); // #167135
+     completionBox()->setItemDelegate(new KonqComboItemDelegate(this));
+@@ -156,16 +154,18 @@ KonqCombo::KonqCombo(QWidget *parent)
+     // Connect to the returnPressed signal when completionMode == CompletionNone. #314736
+     slotCompletionModeChanged(completionMode());
+ 
+-    connect(KonqHistoryManager::kself(), SIGNAL(cleared()), SLOT(slotCleared()));
+-    connect(this, &KonqCombo::cleared, this, &KonqCombo::slotCleared);
+-    connect(this, static_cast<void (KonqCombo::*)(int)>(&KonqCombo::highlighted), this, &KonqCombo::slotSetIcon);
++    connect(KonqHistoryManager::kself(), &KParts::HistoryProvider::cleared, this, &KonqCombo::slotCleared);
++    connect(this, &KHistoryComboBox::cleared, this, &KonqCombo::slotCleared);
++    // The overload resolution is still needed until QComboBox::highlight(QString)
++    // is either removed or hidden.
++    connect(this, QOverload<int>::of(&QComboBox::highlighted), this, &KonqCombo::slotSetIcon);
+ 
+-    // WARNING! has to be the old style connect below, otherwise location bar doesn't work!
+-    //connect(this, &KonqCombo::activated, this, &KonqCombo::slotActivated);
++#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
++    connect(this, &QComboBox::textActivated, this, &KonqCombo::slotActivated);
++#else
+     connect(this, SIGNAL(activated(QString)), this, SLOT(slotActivated(QString)));
+-
+-    connect(this, SIGNAL(completionModeChanged(KCompletion::CompletionMode)),
+-            this, SLOT(slotCompletionModeChanged(KCompletion::CompletionMode)));
++#endif
++    connect(this, &KComboBox::completionModeChanged, this, &KonqCombo::slotCompletionModeChanged);
+ }
+ 
+ KonqCombo::~KonqCombo()
+@@ -680,9 +680,9 @@ void KonqCombo::slotReturnPressed()
+ void KonqCombo::slotCompletionModeChanged(KCompletion::CompletionMode mode)
+ {
+     if (mode == KCompletion::CompletionNone) {
+-        connect(this, static_cast<void (KonqCombo::*)()>(&KonqCombo::returnPressed), this, &KonqCombo::slotReturnPressed);
++        connect(this, QOverload<const QString &>::of(&KComboBox::returnPressed), this, &KonqCombo::slotReturnPressed);
+     } else {
+-        disconnect(this, static_cast<void (KonqCombo::*)()>(&KonqCombo::returnPressed), this, &KonqCombo::slotReturnPressed);
++        disconnect(this, QOverload<const QString &>::of(&KComboBox::returnPressed), this, &KonqCombo::slotReturnPressed);
+     }
+ }
+ 
+-- 
+GitLab
+
