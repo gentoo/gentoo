@@ -1,20 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=TWH
-MODULE_VERSION=0.33
+DIST_AUTHOR=TWH
+DIST_VERSION=0.33
 inherit perl-module
 
 DESCRIPTION="Seamlessly enable SVG output from scripts written using GD"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-DEPEND="dev-perl/GD
+RDEPEND="dev-perl/GD
 	dev-perl/SVG"
-RDEPEND="${DEPEND}"
-
-SRC_TEST="do"
+BDEPEND="${RDEPEND}"
