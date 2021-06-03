@@ -1,0 +1,57 @@
+From 3aad9ec6004b7e3a82817f2f1e2840fc5f07c050 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Thu, 3 Jun 2021 13:13:38 +0200
+Subject: [PATCH] fix library installation dir for xdmf3
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt b/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt
+index 86d688f8..7d009dfe 100644
+--- a/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt
++++ b/ThirdParty/xdmf3/vtkxdmf3/core/CMakeLists.txt
+@@ -269,10 +269,10 @@ endif()
+ 
+ if(UNIX)
+     if (BUILD_SHARED_LIBS)
+-      set(XDMFCORE_LIBRARY ${CMAKE_INSTALL_PREFIX}/lib/libXdmfCore.so
++      set(XDMFCORE_LIBRARY ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/libXdmfCore.so
+           PARENT_SCOPE)
+     else()
+-      set(XDMFCORE_LIBRARY ${CMAKE_INSTALL_PREFIX}/lib/libXdmfCore.a
++      set(XDMFCORE_LIBRARY ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/libXdmfCore.a
+           PARENT_SCOPE)
+     endif()
+ endif()
+@@ -297,13 +297,13 @@ if (NOT XDMF_INSTALL_NO_DEVELOPMENT)
+ endif()
+ install(TARGETS XdmfCore
+   RUNTIME DESTINATION bin
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib)
++  LIBRARY DESTINATION lib${LIB_SUFFIX}
++  ARCHIVE DESTINATION lib${LIB_SUFFIX})
+ if (XDMF_STATIC_AND_SHARED AND BUILD_SHARED_LIBS)
+   install(TARGETS XdmfCore_Static
+     RUNTIME DESTINATION bin
+-    LIBRARY DESTINATION lib
+-    ARCHIVE DESTINATION lib)
++    LIBRARY DESTINATION lib${LIB_SUFFIX}
++    ARCHIVE DESTINATION lib${LIB_SUFFIX})
+ endif ()
+ 
+ if (Boost_FOUND)
+@@ -329,7 +329,7 @@ set(XdmfCore_INCLUDE_DIRS
+   CACHE INTERNAL "")
+ 
+ set(XDMF_INCLUDE_DIRS ${CMAKE_INSTALL_PREFIX}/include PARENT_SCOPE)
+-set(XDMF_LIBRARIES ${XDMF_LIBRARIES} ${CMAKE_INSTALL_PREFIX}/lib)
++set(XDMF_LIBRARIES ${XDMF_LIBRARIES} ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ set(XDMF_DIR ${CMAKE_INSTALL_PREFIX} PARENT_SCOPE)
+ set(XDMF_BINARIES ${XDMF_BINARIES} ${CMAKE_INSTALL_PREFIX}/bin)
+ 
+-- 
+2.31.1
+
