@@ -67,7 +67,7 @@ RDEPEND="
 		dev-python/PyQt5[${PYTHON_USEDEP}]
 		dev-python/PyQt5[declarative?,designer?,gui?,help?,location?]
 		dev-python/PyQt5[multimedia?,network?,opengl?,positioning?]
-		dev-python/PyQt5[printsupport?,sensors?,serialport?,speech?,sql?,svg?]
+		dev-python/PyQt5[printsupport?,sensors?,serialport?,speech(-)?,sql?,svg?]
 		dev-python/PyQt5[testlib?,webchannel?,websockets?,widgets?]
 		dev-python/PyQt5[x11extras?,xml(+)?,xmlpatterns?]
 		webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
@@ -95,7 +95,7 @@ BDEPEND="
 			dev-python/PyQt5[${PYTHON_USEDEP}]
 			dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
 			dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
-			dev-python/PyQt5[sensors,serialport,speech,sql,svg,testlib,webchannel]
+			dev-python/PyQt5[sensors,serialport,speech(-),sql,svg,testlib,webchannel]
 			dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
 			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 		)
