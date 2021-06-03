@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND="dev-perl/GD[png]"
+RDEPEND="dev-perl/GD[png(+)]"
 
 src_install() {
 	dobin apacheconv generate.cgi squid-graph timeconv
