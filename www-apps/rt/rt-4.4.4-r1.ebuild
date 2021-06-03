@@ -73,7 +73,7 @@ DEPEND="
 	dev-perl/File-Which
 	dev-perl/GDGraph
 	dev-perl/GDTextUtil
-	dev-perl/GD[png,gif]
+	dev-perl/GD[png(+),gif(+)]
 	dev-perl/GnuPG-Interface
 	dev-perl/GraphViz
 	dev-perl/HTML-Formatter
