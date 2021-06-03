@@ -5,7 +5,7 @@ EAPI=7
 inherit udev
 
 DESCRIPTION="Advanced Linux Sound Architecture firmware"
-HOMEPAGE="https://alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/firmware/${P}.tar.bz2"
 
 LICENSE="GPL-2"
