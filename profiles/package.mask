@@ -408,12 +408,6 @@ app-office/hourglass
 # see bug: https://bugs.gentoo.org/787368
 dev-util/jarwizard
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2008
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787428
-media-sound/entagged-tageditor
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
