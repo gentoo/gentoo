@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="ALSA extra plugins"
-HOMEPAGE="http://www.alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
