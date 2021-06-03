@@ -432,11 +432,6 @@ sci-physics/jaxodraw
 # see bug: https://bugs.gentoo.org/785400
 dev-java/cldc-api
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
-# Superceded by dev-perl/Image-Sane. Tests hang, bug 626594
-# Removal in 30 days.
-dev-perl/Sane
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
