@@ -1,19 +1,16 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=KWITKNR
-MODULE_VERSION=1.15
+DIST_AUTHOR=KWITKNR
+DIST_VERSION=1.15
 inherit perl-module
 
-DESCRIPTION="GD::Barcode - Create barcode image with GD"
+DESCRIPTION="Create barcode images with GD"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE=""
 
 RDEPEND="dev-perl/GD"
-DEPEND="${RDEPEND}"
-
-SRC_TEST="do"
+BDEPEND="${RDEPEND}"
