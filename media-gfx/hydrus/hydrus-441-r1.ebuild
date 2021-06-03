@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 inherit python-single-r1 desktop optfeature
 
 DESCRIPTION="A booru-like media organizer for the desktop"
-HOMEPAGE="http://hydrusnetwork.github.io/hydrus/ https://github.com/hydrusnetwork/hydrus"
+HOMEPAGE="https://hydrusnetwork.github.io/hydrus/ https://github.com/hydrusnetwork/hydrus"
 SRC_URI="https://github.com/hydrusnetwork/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # hydrus itself is WTFPL
@@ -39,7 +39,7 @@ RDEPEND="
 		dev-python/service_identity[${PYTHON_MULTI_USEDEP}]
 		dev-python/six[${PYTHON_MULTI_USEDEP}]
 		dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-		media-libs/opencv[python,${PYTHON_MULTI_USEDEP}]
+		media-libs/opencv[python,png,jpeg,${PYTHON_MULTI_USEDEP}]
 
 		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_MULTI_USEDEP}]
 		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
@@ -48,12 +48,12 @@ RDEPEND="
 		ffmpeg? ( media-video/ffmpeg )
 		lz4? ( dev-python/lz4[${PYTHON_MULTI_USEDEP}] )
 		mpv? (
-			 media-video/mpv[libmpv,${PYTHON_MULTI_USEDEP}]
-			 dev-python/python-mpv[${PYTHON_MULTI_USEDEP}]
+			media-video/mpv[libmpv,${PYTHON_MULTI_USEDEP}]
+			dev-python/python-mpv[${PYTHON_MULTI_USEDEP}]
 		)
 		socks? (
-				|| ( dev-python/requests[socks5,${PYTHON_MULTI_USEDEP}]
-					dev-python/PySocks[${PYTHON_MULTI_USEDEP}] )
+			|| ( dev-python/requests[socks5,${PYTHON_MULTI_USEDEP}]
+				dev-python/PySocks[${PYTHON_MULTI_USEDEP}] )
 		)
 	')
 "
@@ -70,25 +70,13 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/upnpc.patch"
 	"${FILESDIR}/userpath-in-local-share.patch"
+	"${FILESDIR}/test-exitcode.patch"
 )
-
-# Delete files only needed for testing
-delete_test_files() {
-	rm test.py || die
-	rm hydrus/hydrus_test.py || die
-	rm -r hydrus/test/ || die
-	rm -r static/testing/ || die
-}
 
 src_prepare() {
 	default
-
-	# If tests will run, leave the files until tests are run.
-	# They will be deleted before installing the package.
-	if ! use test; then
-		delete_test_files
-	fi
 
 	# Contains pre-built binaries for other systems and a broken swf renderer for linux
 	rm -r bin/ || die
@@ -107,47 +95,39 @@ src_compile() {
 src_test() {
 	# The tests use unittest, but are run with a custom runner script.
 	# QT_QPA_PLATFORM is required to make them run without X
-	export QT_QPA_PLATFORM=offscreen
+	local -x QT_QPA_PLATFORM=offscreen
 	"${EPYTHON}" "${S}/test.py" || die "Tests failed"
 }
 
 src_install() {
-	local DOC="${EPREFIX}/usr/share/doc/${PF}"
+	local doc="${EPREFIX}/usr/share/doc/${PF}"
 	elog "Hydrus includes an excellent manual, that can either be viewed at"
-	elog "${DOC}/html/help/index.html"
+	elog "${doc}/html/help/index.html"
 	elog "or accessed through the hydrus help menu."
 
 	mv "help my client will not boot.txt" "help_my_client_will_not_boot.txt" || die
 
-	DOCS=(COPYING README.md Readme.txt help_my_client_will_not_boot.txt db/)
-	HTML_DOCS=("${S}"/help/)
+	local DOCS=(COPYING README.md Readme.txt help_my_client_will_not_boot.txt db/)
+	local HTML_DOCS=("${S}"/help/)
 	einstalldocs
 
-	if use test; then
-		# Delete files only needed for tests now. No need to install them.
-		# If the tests didn't run, the files have been deleted already.
-		delete_test_files
-	fi
+	# Files only needed for testing
+	rm test.py hydrus/hydrus_test.py || die
+	rm -r hydrus/test/ static/testing/ || die
 
-	# These files are copied into DOC
-	rm COPYING README.md Readme.txt help_my_client_will_not_boot.txt || die
-	rm -r help/ db/ || die
-	# The program expects to find documentation here, so add a symlink to DOC
-	ln -s "${DOC}/html/help" help || die
+	# These files are copied into doc
+	rm -r "${DOCS[@]}" "${HTML_DOCS[@]}" || die
+	# The program expects to find documentation here, so add a symlink to doc
+	ln -s "${doc}/html/help" help || die
 
-	insopts -m0755
 	insinto /opt/hydrus
-	doins -r "${S}"/*
+	doins -r "${S}"/.
 
 	exeinto /usr/bin
+	python_newexe - hydrus-server < <(sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-server")
+	python_newexe - hydrus-client < <(sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-client")
 
-	sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-server" > "${T}/hydrus-server" || die
-	sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-client" > "${T}/hydrus-client" || die
-
-	python_doexe "${T}/hydrus-server"
-	python_doexe "${T}/hydrus-client"
-
-	make_desktop_entry "hydrus-client" "Hydrus Client" "/opt/hydrus/static/hydrus_non-transparent.png"\
+	make_desktop_entry "hydrus-client" "Hydrus Client" "/opt/hydrus/static/hydrus_non-transparent.png" \
 					   "AudioVideo;FileTools;Graphics;Network;"
 }
 
