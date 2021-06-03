@@ -12,7 +12,7 @@ COMMIT="abe805ed6c7f38e48002e575535afd1f673b9bcd"
 SNAPSHOT_PV="1.2.5_p20210604"
 
 DESCRIPTION="Advanced Linux Sound Architecture Library"
-HOMEPAGE="https://alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 if [[ -n ${COMMIT} ]]; then
 	SRC_URI="https://git.alsa-project.org/?p=${PN}.git;a=snapshot;h=${COMMIT};sf=tgz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT:0:7}
