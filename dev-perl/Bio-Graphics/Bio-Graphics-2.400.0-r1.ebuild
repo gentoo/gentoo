@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND="
 	dev-perl/CGI
-	>=dev-perl/GD-2.300.0[jpeg]
+	>=dev-perl/GD-2.300.0[jpeg(+)]
 	>=dev-perl/Statistics-Descriptive-2.600.0
 	<=sci-biology/bioperl-1.6.924
 	>=sci-biology/bioperl-1.5.9.1
