@@ -437,11 +437,6 @@ dev-java/cldc-api
 # Removal in 30 days.
 dev-perl/Sane
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
-# Outdated, not pulled in by any virtuals anymore, no
-# keywords. Removal in 30 days.
-perl-core/Devel-PPPort
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
