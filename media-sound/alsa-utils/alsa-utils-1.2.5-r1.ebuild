@@ -24,6 +24,8 @@ RDEPEND="${CDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.5-fix-the-nested-iteration.patch # bug #793410
+	"${FILESDIR}"/${PN}-1.2.5-fix-potential-null-pointer-from-strchr.patch # bug #793410
 	"${FILESDIR}"/${PN}-1.1.8-missing_header.patch
 )
 
