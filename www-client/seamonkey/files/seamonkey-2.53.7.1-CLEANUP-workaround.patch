@@ -1,6 +1,5 @@
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/ActorsParent.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/ActorsParent.cpp
---- seamonkey-2.53.7.1-orig/dom/indexedDB/ActorsParent.cpp	2020-08-10 13:30:33.000000000 +0200
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/ActorsParent.cpp	2021-05-19 19:34:09.717778077 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/ActorsParent.cpp
++++ seamonkey-2.53.7.1/dom/indexedDB/ActorsParent.cpp
 @@ -11381,7 +11381,7 @@ AutoSavepoint::~AutoSavepoint()
      MOZ_ASSERT(mDEBUGTransaction->GetMode() == IDBTransaction::READ_WRITE ||
                 mDEBUGTransaction->GetMode() ==
@@ -100,9 +99,8 @@ diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/ActorsParent.cpp seamonkey-2.53
          connection->DoIdleProcessing(/* aNeedsCheckpoint */ true);
  
          connection->EnableQuotaChecks();
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBCursor.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBCursor.cpp
---- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBCursor.cpp	2020-08-10 13:30:33.000000000 +0200
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBCursor.cpp	2021-05-19 19:34:21.313733906 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/IDBCursor.cpp
++++ seamonkey-2.53.7.1/dom/indexedDB/IDBCursor.cpp
 @@ -686,7 +686,7 @@ IDBCursor::Update(JSContext* aCx, JS::Ha
      return nullptr;
    }
@@ -112,9 +110,8 @@ diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBCursor.cpp seamonkey-2.53.7.
        IsSourceDeleted() ||
        !mHaveValue ||
        mType == Type_ObjectStoreKey ||
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBDatabase.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBDatabase.cpp
---- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBDatabase.cpp	2020-04-01 13:01:50.000000000 +0200
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBDatabase.cpp	2021-05-19 19:34:54.769606469 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/IDBDatabase.cpp
++++ seamonkey-2.53.7.1/dom/indexedDB/IDBDatabase.cpp
 @@ -673,7 +673,7 @@ IDBDatabase::Transaction(JSContext* aCx,
        break;
      case IDBTransactionMode::Readwrite:
@@ -151,9 +148,8 @@ diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBDatabase.cpp seamonkey-2.53.
              case IDBTransaction::VERSION_CHANGE:
                transactionsThatNeedWarning.AppendElement(transaction);
                break;
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBObjectStore.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBObjectStore.cpp
---- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBObjectStore.cpp	2020-08-10 13:30:33.000000000 +0200
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBObjectStore.cpp	2021-05-19 19:35:22.341501444 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/IDBObjectStore.cpp
++++ seamonkey-2.53.7.1/dom/indexedDB/IDBObjectStore.cpp
 @@ -1546,7 +1546,7 @@ IDBObjectStore::AddOrPut(JSContext* aCx,
    MOZ_ASSERT(aCx);
    MOZ_ASSERT_IF(aFromCursor, aOverwrite);
@@ -163,9 +159,8 @@ diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBObjectStore.cpp seamonkey-2.
        mDeletedSpec) {
      aRv.Throw(NS_ERROR_DOM_INDEXEDDB_NOT_ALLOWED_ERR);
      return nullptr;
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.cpp seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.cpp
---- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.cpp	2020-02-18 00:37:49.000000000 +0100
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.cpp	2021-05-19 19:35:36.725446648 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/IDBTransaction.cpp
++++ seamonkey-2.53.7.1/dom/indexedDB/IDBTransaction.cpp
 @@ -221,7 +221,7 @@ IDBTransaction::Create(JSContext* aCx, I
    MOZ_ASSERT(aMode == READ_ONLY ||
               aMode == READ_WRITE ||
@@ -184,9 +179,8 @@ diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.cpp seamonkey-2.
        return IDBTransactionMode::Cleanup;
  
      case VERSION_CHANGE:
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.h seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.h
---- seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.h	2020-02-18 00:37:49.000000000 +0100
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/IDBTransaction.h	2021-05-19 19:35:48.609401384 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/IDBTransaction.h
++++ seamonkey-2.53.7.1/dom/indexedDB/IDBTransaction.h
 @@ -59,7 +59,7 @@ public:
      READ_ONLY = 0,
      READ_WRITE,
@@ -205,9 +199,8 @@ diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/IDBTransaction.h seamonkey-2.53
             mMode == VERSION_CHANGE;
    }
  
-diff -urNp seamonkey-2.53.7.1-orig/dom/indexedDB/ProfilerHelpers.h seamonkey-2.53.7.1-dwok/dom/indexedDB/ProfilerHelpers.h
---- seamonkey-2.53.7.1-orig/dom/indexedDB/ProfilerHelpers.h	2020-02-18 00:37:49.000000000 +0100
-+++ seamonkey-2.53.7.1-dwok/dom/indexedDB/ProfilerHelpers.h	2021-05-19 19:35:57.029369312 +0200
+--- seamonkey-2.53.7.1/dom/indexedDB/ProfilerHelpers.h
++++ seamonkey-2.53.7.1/dom/indexedDB/ProfilerHelpers.h
 @@ -130,7 +130,7 @@ public:
        case IDBTransaction::READ_WRITE_FLUSH:
          AppendLiteral("\"readwriteflush\"");
