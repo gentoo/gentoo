@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,6 @@ RDEPEND="dev-perl/GD
 	dev-perl/GD-Graph3d
 	>=dev-perl/Template-Toolkit-2.15-r1"
 DEPEND="${RDEPEND}
-	test? ( dev-perl/GD[png] )"
+	test? ( dev-perl/GD[png(+)] )"
 
 SRC_TEST="do"
