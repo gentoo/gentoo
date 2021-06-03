@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -35,7 +35,7 @@ RDEPEND=">=media-video/vdr-1.2.6
 	dev-perl/Encode-Detect
 	dev-perl/Event
 	dev-perl/Font-TTF
-	dev-perl/GD[png,gif]
+	dev-perl/GD[png(+),gif(+)]
 	dev-perl/IO-Socket-INET6
 	dev-perl/JSON
 	dev-perl/JSON-XS
