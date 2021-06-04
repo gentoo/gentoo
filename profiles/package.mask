@@ -449,12 +449,6 @@ dev-python/pytest-testmon
 # Mask experimental software
 =mail-mta/postfix-3.7*
 
-# Stephan Hartmann <sultan@gentoo.org> (2021-04-24)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-92
-
 # Ulrich Müller <ulm@gentoo.org> (2021-04-20)
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
