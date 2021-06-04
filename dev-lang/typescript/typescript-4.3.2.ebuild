@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 DEPEND=""
 RDEPEND="net-libs/nodejs"
-BDEPEND="net-libs/nodejs[npm]"
+BDEPEND=">=net-libs/nodejs-16[npm]"
 
 S="${WORKDIR}/package"
 
