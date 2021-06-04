@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}
 	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
-	>=gnome-base/gsettings-desktop-schemas-3.33.0
+	>=gnome-base/gsettings-desktop-schemas-40.0
 	>=gnome-base/gnome-shell-3.24
 	x11-wm/mutter
 "
