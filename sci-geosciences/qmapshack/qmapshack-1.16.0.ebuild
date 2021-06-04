@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtwebengine:5[widgets]
 	>=sci-geosciences/routino-3.1.1
 	sci-libs/alglib
-	sci-libs/gdal
+	sci-libs/gdal:=
 	>=sci-libs/proj-8:=
 "
 DEPEND="${RDEPEND}"
