@@ -6,6 +6,7 @@
 		<name>Distribution Kernel Project</name>
 	</maintainer>
 	<use>
+		<flag name="hardened">Use some hardening options recommended by Kernel Self Protection Project</flag>
 		<flag name="initramfs">Build initramfs along with the kernel.</flag>
 	</use>
 </pkgmetadata>
