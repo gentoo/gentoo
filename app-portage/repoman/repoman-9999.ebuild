@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE='bzip2(+)'
 
 inherit distutils-r1
@@ -26,13 +26,14 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=sys-apps/portage-3.0.4[${PYTHON_USEDEP}]
+	>=sys-apps/portage-3.0.18[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
 python_test() {
+	unset REPOMAN_DEFAULT_OPTS
 	esetup.py test
 }
 
