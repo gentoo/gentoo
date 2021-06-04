@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug
 ffmpeg fftw frei0r gtk jack kernel_linux libsamplerate lua opencv opengl python
 qt5 rtaudio rubberband sdl vdpau vidstab xine xml"
