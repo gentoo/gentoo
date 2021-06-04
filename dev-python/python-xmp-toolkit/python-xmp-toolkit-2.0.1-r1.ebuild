@@ -23,9 +23,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/unittest2[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		media-libs/exempi )"
+	test? ( media-libs/exempi )"
 RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )
