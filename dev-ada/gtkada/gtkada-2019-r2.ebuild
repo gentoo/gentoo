@@ -3,7 +3,7 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6..9} gnat_2020 )
+ADA_COMPAT=( gnat_201{7..9} gnat_2020 )
 inherit ada autotools multiprocessing
 
 MYP=${P}-20190424-19D98
