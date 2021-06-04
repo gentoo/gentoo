@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
+# Alpha versions of fetchmail 7
+# Add support for OAUTH2 for those needing it
+=net-mail/fetchmail-7.0.0_alpha*
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-02)
 # This is Python 2/3 compatibility layer that was used shortly
 # by dev-python/pip.  No revdeps left.
