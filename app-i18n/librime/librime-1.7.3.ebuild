@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="dev-libs/capnproto:0"
 RDEPEND="app-i18n/opencc:0=
-	!sparc? ( >=dev-cpp/glog-0.3.5:0= )
+	>=dev-cpp/glog-0.3.5:0=
 	dev-cpp/yaml-cpp:0=
 	dev-libs/boost:0=[threads]
 	dev-libs/capnproto:0=
@@ -66,8 +66,6 @@ src_configure() {
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Gflags=ON
 		-DENABLE_EXTERNAL_PLUGINS=ON
-		# dev-cpp/glog is currently marked -sparc
-		-DENABLE_LOGGING=$(usex !sparc)
 		-DINSTALL_PRIVATE_HEADERS=ON
 	)
 
