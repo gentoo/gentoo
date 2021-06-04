@@ -6,9 +6,9 @@ EAPI=7
 ADA_COMPAT=( gnat_201{7..9} gnat_202{0..1} )
 inherit ada autotools multiprocessing
 
-MYP=${P}-${PV}0429-19B96-src
+MYP=${P}-${PV}0518-1A011-src
 ADAMIRROR=https://community.download.adacore.com/v1
-ID=96f85c875c161c36e7d0edb19aa4dbddf41ea671
+ID=8f1daefcb56e3ee7feaad67bac66deb0f7c37a82
 
 DESCRIPTION="A complete Ada graphical toolkit"
 HOMEPAGE="http://libre.adacore.com//tools/gtkada/"
