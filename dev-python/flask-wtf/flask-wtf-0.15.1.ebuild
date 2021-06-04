@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 MY_PN="Flask-WTF"
@@ -29,7 +29,6 @@ RDEPEND="
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	>=dev-python/wtforms-1.0.5[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
