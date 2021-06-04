@@ -1,0 +1,28 @@
+From 531a5ae9ef855761407d44fb49064ae6227868f5 Mon Sep 17 00:00:00 2001
+From: Takeshi KOMIYA <i.tkomiya@gmail.com>
+Date: Wed, 5 May 2021 22:11:41 +0900
+Subject: [PATCH] test: Adjust type annotataions in python 3.10.0b1
+
+---
+ tests/test_util_inspect.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/tests/test_util_inspect.py b/tests/test_util_inspect.py
+index 7b86c6ade..8df06a865 100644
+--- a/tests/test_util_inspect.py
++++ b/tests/test_util_inspect.py
+@@ -183,10 +183,7 @@ def test_signature_annotations():
+ 
+     # Instance annotations
+     sig = inspect.signature(f11)
+-    if sys.version_info < (3, 10):
+-        assert stringify_signature(sig) == '(x: CustomAnnotation, y: 123) -> None'
+-    else:
+-        assert stringify_signature(sig) == '(x: CustomAnnotation(), y: 123) -> None'
++    assert stringify_signature(sig) == '(x: CustomAnnotation, y: 123) -> None'
+ 
+     # tuple with more than two items
+     sig = inspect.signature(f12)
+-- 
+2.31.1
+
