@@ -64,9 +64,6 @@ pkg_pretend() {
 					# Bug #787158
 					die "LTO builds of ${PN} using gcc-11+ currently fail tests and produce runtime errors. Either switch to gcc-10 or unset USE=lto for this ebuild"
 				fi
-			else
-				# configure.py will abort on this later if we do not
-				die "${PN} only supports LTO for gcc"
 			fi
 		fi
 	fi
