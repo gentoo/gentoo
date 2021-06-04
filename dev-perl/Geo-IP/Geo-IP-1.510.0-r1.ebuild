@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=MAXMIND
-MODULE_VERSION=1.51
-inherit perl-module multilib
+DIST_AUTHOR=MAXMIND
+DIST_VERSION=1.51
+inherit perl-module
 
 DESCRIPTION="Look up country by IP Address"
 
@@ -15,8 +15,7 @@ IUSE=""
 
 DEPEND="dev-libs/geoip"
 RDEPEND="${DEPEND}"
-
-SRC_TEST=do
+BDEPEND="${DEPEND}"
 
 src_configure() {
 	myconf="LIBS=-L/usr/$(get_libdir)"
