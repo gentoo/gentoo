@@ -41,6 +41,7 @@ S="${WORKDIR}"
 
 src_unpack() {
 	unpack_deb ${A}
+	rm usr/lib/mozilla/plugins/lib/libcapi_engine_linux.so
 }
 
 src_install() {
