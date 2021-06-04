@@ -1,0 +1,78 @@
+From b552f84eedb5d2a113028d7859e82352699fb427 Mon Sep 17 00:00:00 2001
+From: JanAckermann <jackermann@owncloud.com>
+Date: Tue, 4 May 2021 11:51:29 +0200
+Subject: [PATCH 1/3] Throw generic exception to overcome, senstitive exception
+ data exposure
+
+---
+ .../lib/Controllers/ShareController.php       | 26 ++++++++++++-------
+ 1 file changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/apps/files_sharing/lib/Controllers/ShareController.php b/apps/files_sharing/lib/Controllers/ShareController.php
+index da9832e105b..02bd3553067 100644
+--- a/apps/files_sharing/lib/Controllers/ShareController.php
++++ b/apps/files_sharing/lib/Controllers/ShareController.php
+@@ -400,6 +400,7 @@ public function showShare($token, $path = '') {
+ 	 * @param string $path
+ 	 * @param string $downloadStartSecret
+ 	 * @return NotFoundResponse|RedirectResponse|void
++	 * @throws \Exception
+ 	 */
+ 	public function downloadShare($token, $files = null, $path = '', $downloadStartSecret = '') {
+ 		\OC_User::setIncognitoMode(true);
+@@ -530,16 +531,21 @@ public function downloadShare($token, $files = null, $path = '', $downloadStartS
+ 		}
+ 
+ 		// download selected files
+-		if ($files !== null && $files !== '') {
+-			// FIXME: The exit is required here because otherwise the AppFramework is trying to add headers as well
+-			// after dispatching the request which results in a "Cannot modify header information" notice.
+-			OC_Files::get($originalSharePath, $files_list, $server_params);
+-			exit();
+-		} else {
+-			// FIXME: The exit is required here because otherwise the AppFramework is trying to add headers as well
+-			// after dispatching the request which results in a "Cannot modify header information" notice.
+-			OC_Files::get(\dirname($originalSharePath), \basename($originalSharePath), $server_params);
+-			exit();
++
++		try {
++			if ($files !== null && $files !== '') {
++				// FIXME: The exit is required here because otherwise the AppFramework is trying to add headers as well
++				// after dispatching the request which results in a "Cannot modify header information" notice.
++				OC_Files::get($originalSharePath, $files_list, $server_params);
++				exit();
++			} else {
++				// FIXME: The exit is required here because otherwise the AppFramework is trying to add headers as well
++				// after dispatching the request which results in a "Cannot modify header information" notice.
++				OC_Files::get(\dirname($originalSharePath), \basename($originalSharePath), $server_params);
++				exit();
++			}
++		} catch (\Exception $e) {
++			throw new \Exception();
+ 		}
+ 	}
+ }
+
+From a94f67a4857447e36e205043c55f29737a0bc57d Mon Sep 17 00:00:00 2001
+From: JanAckermann <jackermann@owncloud.com>
+Date: Tue, 4 May 2021 12:01:17 +0200
+Subject: [PATCH 2/3] enhanche if statement
+
+---
+ lib/private/Files/Storage/Local.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/private/Files/Storage/Local.php b/lib/private/Files/Storage/Local.php
+index d5ae0e3794b..d499079da98 100644
+--- a/lib/private/Files/Storage/Local.php
++++ b/lib/private/Files/Storage/Local.php
+@@ -384,7 +384,7 @@ public function getSourcePath($path) {
+ 		}
+ 		$pathToResolve = $fullPath;
+ 		$realPath = \realpath($pathToResolve);
+-		while ($realPath === false) { // for non existing files check the parent directory
++		while (!\is_string($realPath)) { // for non existing files check the parent directory
+ 			$pathToResolve = \dirname($pathToResolve);
+ 			$realPath = \realpath($pathToResolve);
+ 		}
+
