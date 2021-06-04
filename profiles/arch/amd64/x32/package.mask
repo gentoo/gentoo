@@ -23,6 +23,7 @@ app-text/bibletime
 app-text/calibre
 app-text/cb2bib
 app-text/sigil
+dev-lang/typescript
 dev-python/spyder
 dev-python/spyder-line-profiler
 dev-python/spyder-memory-profiler
