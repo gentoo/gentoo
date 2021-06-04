@@ -10,7 +10,7 @@ GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 3 ))
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.10.12
 CONFIG_HASH=836165dd2dff34e4f2c47ca8f9c803002c1e6530
-GENTOO_CONFIG_VER=5.10.32
+GENTOO_CONFIG_VER=5.10.42
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
@@ -39,7 +39,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="debug"
+IUSE="debug hardened"
 REQUIRED_USE="arm? ( savedconfig )"
 
 RDEPEND="
@@ -79,12 +79,21 @@ src_prepare() {
 	esac
 
 	echo 'CONFIG_LOCALVERSION="-gentoo-dist"' > "${T}"/version.config || die
+	local dist_conf_path="${WORKDIR}/gentoo-kernel-config-${GENTOO_CONFIG_VER}"
+
 	local merge_configs=(
 		"${T}"/version.config
-		"${WORKDIR}/gentoo-kernel-config-${GENTOO_CONFIG_VER}"/base.config
+		"${dist_conf_path}"/base.config
 	)
 	use debug || merge_configs+=(
-		"${WORKDIR}/gentoo-kernel-config-${GENTOO_CONFIG_VER}"/no-debug.config
+		"${dist_conf_path}"/no-debug.config
 	)
+	if use hardened; then
+		merge_configs+=( "${dist_conf_path}"/hardened-base.config )
+		tc-is-gcc && merge_configs+=( "${dist_conf_path}"/hardened-gcc-plugins.config )
+		if [[ -f "${dist_conf_path}/hardened-${ARCH}.config" ]]; then
+			merge_configs+=( "${dist_conf_path}/hardened-${ARCH}.config" )
+		fi
+	fi
 	kernel-build_merge_configs "${merge_configs[@]}"
 }
