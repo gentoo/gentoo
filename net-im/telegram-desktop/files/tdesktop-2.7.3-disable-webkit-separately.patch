@@ -1,5 +1,3 @@
-Index: tdesktop-2.7.3-full/Telegram/lib_webview/CMakeLists.txt
-===================================================================
 --- tdesktop-2.7.3-full.orig/Telegram/lib_webview/CMakeLists.txt
 +++ tdesktop-2.7.3-full/Telegram/lib_webview/CMakeLists.txt
 @@ -116,7 +116,7 @@ if (WIN32)
@@ -11,8 +9,6 @@ Index: tdesktop-2.7.3-full/Telegram/lib_webview/CMakeLists.txt
          find_package(PkgConfig REQUIRED)
  
          if (DESKTOP_APP_USE_PACKAGED AND NOT DESKTOP_APP_USE_PACKAGED_LAZY)
-Index: tdesktop-2.7.3-full/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
-===================================================================
 --- tdesktop-2.7.3-full.orig/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
 +++ tdesktop-2.7.3-full/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
 @@ -11,14 +11,14 @@
@@ -48,8 +44,6 @@ Index: tdesktop-2.7.3-full/Telegram/lib_webview/webview/platform/linux/webview_l
  }
  
  } // namespace Webview
-Index: tdesktop-2.7.3-full/cmake/options.cmake
-===================================================================
 --- tdesktop-2.7.3-full.orig/cmake/options.cmake
 +++ tdesktop-2.7.3-full/cmake/options.cmake
 @@ -49,6 +49,13 @@ if (DESKTOP_APP_DISABLE_GTK_INTEGRATION)
@@ -66,8 +60,6 @@ Index: tdesktop-2.7.3-full/cmake/options.cmake
  if (DESKTOP_APP_USE_PACKAGED)
      target_compile_definitions(common_options
      INTERFACE
-Index: tdesktop-2.7.3-full/cmake/variables.cmake
-===================================================================
 --- tdesktop-2.7.3-full.orig/cmake/variables.cmake
 +++ tdesktop-2.7.3-full/cmake/variables.cmake
 @@ -32,6 +32,7 @@ option(DESKTOP_APP_DISABLE_DBUS_INTEGRAT

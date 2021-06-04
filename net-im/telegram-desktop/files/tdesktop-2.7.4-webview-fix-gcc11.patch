@@ -1,5 +1,3 @@
-Index: tdesktop-2.7.4-full/Telegram/lib_webview/webview/webview_embed.cpp
-===================================================================
 --- tdesktop-2.7.4-full.orig/Telegram/lib_webview/webview/webview_embed.cpp
 +++ tdesktop-2.7.4-full/Telegram/lib_webview/webview/webview_embed.cpp
 @@ -14,7 +14,6 @@
@@ -10,8 +8,6 @@ Index: tdesktop-2.7.4-full/Telegram/lib_webview/webview/webview_embed.cpp
  
  namespace Webview {
  namespace {
-Index: tdesktop-2.7.4-full/Telegram/lib_webview/webview/webview_embed.h
-===================================================================
 --- tdesktop-2.7.4-full.orig/Telegram/lib_webview/webview/webview_embed.h
 +++ tdesktop-2.7.4-full/Telegram/lib_webview/webview/webview_embed.h
 @@ -9,6 +9,8 @@
