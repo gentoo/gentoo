@@ -1,0 +1,89 @@
+From 6eced028dbbc2a44e32c4c0a76234ac2da9a365a Mon Sep 17 00:00:00 2001
+From: Rich Ercolani <214141+rincebrain@users.noreply.github.com>
+Date: Thu, 20 May 2021 19:02:36 -0400
+Subject: [PATCH] Update tmpfile() existence detection
+
+Linux changed the tmpfile() signature again in torvalds/linux@6521f89,
+which in turn broke our HAVE_TMPFILE detection in configure.
+
+Update that macro to include the new case, and change the signature of
+zpl_tmpfile as appropriate.
+
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Rich Ercolani <rincebrain@gmail.com>
+Closes: #12060
+Closes: #12087
+---
+ config/kernel-tmpfile.m4        | 28 ++++++++++++++++++++++++----
+ module/os/linux/zfs/zpl_inode.c |  5 +++++
+ 2 files changed, 29 insertions(+), 4 deletions(-)
+
+diff --git a/config/kernel-tmpfile.m4 b/config/kernel-tmpfile.m4
+index f510bfe6ba0..45c2e6ceea5 100644
+--- a/config/kernel-tmpfile.m4
++++ b/config/kernel-tmpfile.m4
+@@ -3,23 +3,43 @@ dnl # 3.11 API change
+ dnl # Add support for i_op->tmpfile
+ dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_SRC_TMPFILE], [
+-	ZFS_LINUX_TEST_SRC([inode_operations_tmpfile], [
++	dnl #
++	dnl # 5.11 API change
++	dnl # add support for userns parameter to tmpfile
++	dnl #
++	ZFS_LINUX_TEST_SRC([inode_operations_tmpfile_userns], [
+ 		#include <linux/fs.h>
+-		int tmpfile(struct inode *inode, struct dentry *dentry,
++		int tmpfile(struct user_namespace *userns,
++		    struct inode *inode, struct dentry *dentry,
+ 		    umode_t mode) { return 0; }
+ 		static struct inode_operations
+ 		    iops __attribute__ ((unused)) = {
+ 			.tmpfile = tmpfile,
+ 		};
+ 	],[])
++	ZFS_LINUX_TEST_SRC([inode_operations_tmpfile], [
++			#include <linux/fs.h>
++			int tmpfile(struct inode *inode, struct dentry *dentry,
++			    umode_t mode) { return 0; }
++			static struct inode_operations
++			    iops __attribute__ ((unused)) = {
++				.tmpfile = tmpfile,
++			};
++	],[])
+ ])
+ 
+ AC_DEFUN([ZFS_AC_KERNEL_TMPFILE], [
+ 	AC_MSG_CHECKING([whether i_op->tmpfile() exists])
+-	ZFS_LINUX_TEST_RESULT([inode_operations_tmpfile], [
++	ZFS_LINUX_TEST_RESULT([inode_operations_tmpfile_userns], [
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_TMPFILE, 1, [i_op->tmpfile() exists])
++		AC_DEFINE(HAVE_TMPFILE_USERNS, 1, [i_op->tmpfile() has userns])
+ 	],[
+-		AC_MSG_RESULT(no)
++		ZFS_LINUX_TEST_RESULT([inode_operations_tmpfile], [
++			AC_MSG_RESULT(yes)
++			AC_DEFINE(HAVE_TMPFILE, 1, [i_op->tmpfile() exists])
++		],[
++			AC_MSG_RESULT(no)
++		])
+ 	])
+ ])
+diff --git a/module/os/linux/zfs/zpl_inode.c b/module/os/linux/zfs/zpl_inode.c
+index 364b9fbef24..ab0373ef9ba 100644
+--- a/module/os/linux/zfs/zpl_inode.c
++++ b/module/os/linux/zfs/zpl_inode.c
+@@ -218,7 +218,12 @@ zpl_mknod(struct inode *dir, struct dentry *dentry, umode_t mode,
+ 
+ #ifdef HAVE_TMPFILE
+ static int
++#ifdef HAVE_TMPFILE_USERNS
++zpl_tmpfile(struct user_namespace *userns, struct inode *dir,
++    struct dentry *dentry, umode_t mode)
++#else
+ zpl_tmpfile(struct inode *dir, struct dentry *dentry, umode_t mode)
++#endif
+ {
+ 	cred_t *cr = CRED();
+ 	struct inode *ip;

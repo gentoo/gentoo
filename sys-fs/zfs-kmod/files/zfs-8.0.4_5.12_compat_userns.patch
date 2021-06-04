@@ -1,0 +1,173 @@
+From b3f8b103cb3a4bbb7ad41f6faf630be7baa4f585 Mon Sep 17 00:00:00 2001
+From: Rich Ercolani <214141+rincebrain@users.noreply.github.com>
+Date: Thu, 27 May 2021 11:55:49 -0400
+Subject: [PATCH] Bend zpl_set_acl to permit the new userns* parameter
+
+Just like #12087, the set_acl signature changed with all the bolted-on
+*userns parameters, which disabled set_acl usage, and caused #12076.
+
+Turn zpl_set_acl into zpl_set_acl and zpl_set_acl_impl, and add a
+new configure test for the new version.
+
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Rich Ercolani <rincebrain@gmail.com>
+Closes #12076
+Closes #12093
+---
+ config/kernel-acl.m4            | 25 +++++++++++++++++++++--
+ include/os/linux/zfs/sys/zpl.h  |  5 +++++
+ module/os/linux/zfs/zpl_xattr.c | 35 ++++++++++++++++++++++-----------
+ 3 files changed, 51 insertions(+), 14 deletions(-)
+
+diff --git a/config/kernel-acl.m4 b/config/kernel-acl.m4
+index e02ce665323..c6da4df24eb 100644
+--- a/config/kernel-acl.m4
++++ b/config/kernel-acl.m4
+@@ -189,7 +189,22 @@ dnl #
+ dnl # 3.14 API change,
+ dnl # Check if inode_operations contains the function set_acl
+ dnl #
++dnl # 5.12 API change,
++dnl # set_acl() added a user_namespace* parameter first
++dnl #
+ AC_DEFUN([ZFS_AC_KERNEL_SRC_INODE_OPERATIONS_SET_ACL], [
++	ZFS_LINUX_TEST_SRC([inode_operations_set_acl_userns], [
++		#include <linux/fs.h>
++
++		int set_acl_fn(struct user_namespace *userns,
++		    struct inode *inode, struct posix_acl *acl,
++		    int type) { return 0; }
++
++		static const struct inode_operations
++		    iops __attribute__ ((unused)) = {
++			.set_acl = set_acl_fn,
++		};
++	],[])
+ 	ZFS_LINUX_TEST_SRC([inode_operations_set_acl], [
+ 		#include <linux/fs.h>
+ 
+@@ -205,11 +220,17 @@ AC_DEFUN([ZFS_AC_KERNEL_SRC_INODE_OPERATIONS_SET_ACL], [
+ 
+ AC_DEFUN([ZFS_AC_KERNEL_INODE_OPERATIONS_SET_ACL], [
+ 	AC_MSG_CHECKING([whether iops->set_acl() exists])
+-	ZFS_LINUX_TEST_RESULT([inode_operations_set_acl], [
++	ZFS_LINUX_TEST_RESULT([inode_operations_set_acl_userns], [
+ 		AC_MSG_RESULT(yes)
+ 		AC_DEFINE(HAVE_SET_ACL, 1, [iops->set_acl() exists])
++		AC_DEFINE(HAVE_SET_ACL_USERNS, 1, [iops->set_acl() takes 4 args])
+ 	],[
+-		AC_MSG_RESULT(no)
++		ZFS_LINUX_TEST_RESULT([inode_operations_set_acl], [
++			AC_MSG_RESULT(yes)
++			AC_DEFINE(HAVE_SET_ACL, 1, [iops->set_acl() exists, takes 3 args])
++		],[
++			AC_MSG_RESULT(no)
++		])
+ 	])
+ ])
+ 
+diff --git a/include/os/linux/zfs/sys/zpl.h b/include/os/linux/zfs/sys/zpl.h
+index 21825d1f378..54f3fa0fdb0 100644
+--- a/include/os/linux/zfs/sys/zpl.h
++++ b/include/os/linux/zfs/sys/zpl.h
+@@ -63,7 +63,12 @@ extern int zpl_xattr_security_init(struct inode *ip, struct inode *dip,
+     const struct qstr *qstr);
+ #if defined(CONFIG_FS_POSIX_ACL)
+ #if defined(HAVE_SET_ACL)
++#if defined(HAVE_SET_ACL_USERNS)
++extern int zpl_set_acl(struct user_namespace *userns, struct inode *ip,
++    struct posix_acl *acl, int type);
++#else
+ extern int zpl_set_acl(struct inode *ip, struct posix_acl *acl, int type);
++#endif /* HAVE_SET_ACL_USERNS */
+ #endif /* HAVE_SET_ACL */
+ extern struct posix_acl *zpl_get_acl(struct inode *ip, int type);
+ extern int zpl_init_acl(struct inode *ip, struct inode *dir);
+diff --git a/module/os/linux/zfs/zpl_xattr.c b/module/os/linux/zfs/zpl_xattr.c
+index 5e35f90df85..89ba9de14f6 100644
+--- a/module/os/linux/zfs/zpl_xattr.c
++++ b/module/os/linux/zfs/zpl_xattr.c
+@@ -926,11 +926,8 @@ xattr_handler_t zpl_xattr_security_handler = {
+  * attribute implemented by filesystems in the kernel." - xattr(7)
+  */
+ #ifdef CONFIG_FS_POSIX_ACL
+-#ifndef HAVE_SET_ACL
+-static
+-#endif
+-int
+-zpl_set_acl(struct inode *ip, struct posix_acl *acl, int type)
++static int
++zpl_set_acl_impl(struct inode *ip, struct posix_acl *acl, int type)
+ {
+ 	char *name, *value = NULL;
+ 	int error = 0;
+@@ -1002,6 +999,19 @@ zpl_set_acl(struct inode *ip, struct posix_acl *acl, int type)
+ 	return (error);
+ }
+ 
++#ifdef HAVE_SET_ACL
++int
++#ifdef HAVE_SET_ACL_USERNS
++zpl_set_acl(struct user_namespace *userns, struct inode *ip,
++    struct posix_acl *acl, int type)
++#else
++zpl_set_acl(struct inode *ip, struct posix_acl *acl, int type)
++#endif /* HAVE_SET_ACL_USERNS */
++{
++	return (zpl_set_acl_impl(ip, acl, type));
++}
++#endif /* HAVE_SET_ACL */
++
+ struct posix_acl *
+ zpl_get_acl(struct inode *ip, int type)
+ {
+@@ -1083,7 +1093,7 @@ zpl_init_acl(struct inode *ip, struct inode *dir)
+ 		umode_t mode;
+ 
+ 		if (S_ISDIR(ip->i_mode)) {
+-			error = zpl_set_acl(ip, acl, ACL_TYPE_DEFAULT);
++			error = zpl_set_acl_impl(ip, acl, ACL_TYPE_DEFAULT);
+ 			if (error)
+ 				goto out;
+ 		}
+@@ -1093,8 +1103,10 @@ zpl_init_acl(struct inode *ip, struct inode *dir)
+ 		if (error >= 0) {
+ 			ip->i_mode = mode;
+ 			zfs_mark_inode_dirty(ip);
+-			if (error > 0)
+-				error = zpl_set_acl(ip, acl, ACL_TYPE_ACCESS);
++			if (error > 0) {
++				error = zpl_set_acl_impl(ip, acl,
++				    ACL_TYPE_ACCESS);
++			}
+ 		}
+ 	}
+ out:
+@@ -1121,7 +1133,7 @@ zpl_chmod_acl(struct inode *ip)
+ 
+ 	error = __posix_acl_chmod(&acl, GFP_KERNEL, ip->i_mode);
+ 	if (!error)
+-		error = zpl_set_acl(ip, acl, ACL_TYPE_ACCESS);
++		error = zpl_set_acl_impl(ip, acl, ACL_TYPE_ACCESS);
+ 
+ 	zpl_posix_acl_release(acl);
+ 
+@@ -1250,8 +1262,7 @@ __zpl_xattr_acl_set_access(struct inode *ip, const char *name,
+ 	} else {
+ 		acl = NULL;
+ 	}
+-
+-	error = zpl_set_acl(ip, acl, type);
++	error = zpl_set_acl_impl(ip, acl, type);
+ 	zpl_posix_acl_release(acl);
+ 
+ 	return (error);
+@@ -1291,7 +1302,7 @@ __zpl_xattr_acl_set_default(struct inode *ip, const char *name,
+ 		acl = NULL;
+ 	}
+ 
+-	error = zpl_set_acl(ip, acl, type);
++	error = zpl_set_acl_impl(ip, acl, type);
+ 	zpl_posix_acl_release(acl);
+ 
+ 	return (error);
