@@ -101,6 +101,24 @@ src_test() {
 src_install() {
 	cmake_src_install
 
+	# debian-stype PS1 for chroot
+	# checks for /etc/debian_chroot file, which is created by schroot
+	insinto /etc/bash/bashrc.d
+	doins "${FILESDIR}/schroot_prompt.sh"
+
+	# gentoo /var/tmp/portage handler
+	# e.g. portage.base.tmpdir=/var/tmp/portage in config file
+	# will use a subdirectory of hosts $PORTAGE_TMPDIR
+	exeinto /etc/schroot/setup.d
+	doexe "${FILESDIR}/11gentoo"
+
+	# support for zfs clone options.
+	# zfs.clone.options=com.sun:auto-snapshot=false
+	if use zfs; then
+		exeinto /etc/schroot/setup.d
+		doexe "${FILESDIR}/06zfscloneopts"
+	fi
+
 	keepdir /var/lib/schroot/{session,unpack,union/{overlay,underlay}}
 
 	docinto /usr/share/doc/${PF}/contrib/setup.d
