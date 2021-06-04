@@ -51,6 +51,7 @@ gnome-extra/gnome-shell-extension-dash-to-panel
 gnome-extra/gnome-shell-extension-desktop-icons
 gnome-extra/gnome-shell-extension-desktop-icons-ng
 gnome-extra/gnome-shell-extension-gsconnect
+gnome-extra/gnome-shell-extension-pop-shell
 gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
