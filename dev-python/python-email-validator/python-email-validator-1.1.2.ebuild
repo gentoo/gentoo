@@ -3,15 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A robust email syntax and deliverability validation library"
 HOMEPAGE="https://github.com/JoshData/python-email-validator"
 SRC_URI="https://github.com/JoshData/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${PV}"
 
 LICENSE="CC0-1.0"
 KEYWORDS="amd64 x86"
