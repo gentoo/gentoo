@@ -86,7 +86,7 @@ src_prepare() {
 	# get rid of the mechanism altogether - its purpose is to allow a
 	# side-by-side installation of release and debug libraries.
 	sed -e 's|\\${OCCT_INSTALL_BIN_LETTER}||' \
-		-i "adm/cmake/occt_toolkit.cmake"
+		-i "adm/cmake/occt_toolkit.cmake" || die
 }
 
 src_configure() {
