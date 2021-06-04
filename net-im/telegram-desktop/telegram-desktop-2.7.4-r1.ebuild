@@ -73,10 +73,11 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-2.7.3-webview-include-gdkx.patch"
 	# https://github.com/desktop-app/lib_webview/pull/3
 	"${FILESDIR}/tdesktop-2.7.4-webview-fix-gcc11.patch"
-
 	# https://github.com/telegramdesktop/tdesktop/issues/16217
 	"${FILESDIR}/tdesktop-2.7.4-voice-crash.patch"
 	"${FILESDIR}/tdesktop-2.7.4-voice-ffmpeg44.patch"
+	# https://github.com/telegramdesktop/tdesktop/commit/404538c98968d44d207671de3adde91b8df50721
+	"${FILESDIR}/tdesktop-2.7.4-fix-disable-dbus-integration.patch"
 )
 
 pkg_pretend() {
