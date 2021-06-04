@@ -36,6 +36,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
+PATCHES=("${FILESDIR}"/${PN}-0.2.1-no-rzpipe.patch)
+
 S="${WORKDIR}/${PN}-v${PV}"
 
 src_prepare() {
