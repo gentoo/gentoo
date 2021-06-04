@@ -23,3 +23,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+
+ruby_add_bdepend "test? ( dev-ruby/rspec-its )"
+
+all_ruby_prepare() {
+	sed -i -e 's/git ls-files/find */' ${RUBY_FAKEGEM_GEMSPEC} || die
+}
