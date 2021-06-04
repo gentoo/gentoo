@@ -1,0 +1,14 @@
+https://github.com/rizinorg/rizin/issues/1192
+--- a/test/unit/test_rzpipe.c
++++ b/test/unit/test_rzpipe.c
+@@ -30,7 +30,9 @@ static bool test_rzpipe_404(void) {
+ }
+ 
+ static int all_tests() {
+-	mu_run_test(test_rzpipe);
++	// Disabled in Genoo, relies on `rizin` binary in $PATH:
++	//   https://github.com/rizinorg/rizin/issues/1192
++	//mu_run_test(test_rzpipe);
+ 	mu_run_test(test_rzpipe_404);
+ 	return tests_passed != tests_run;
+ }
