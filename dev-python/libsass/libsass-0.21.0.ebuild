@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..10} )
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 MY_P="libsass-python-${PV}"
 DESCRIPTION="A straightforward binding of libsass for Python"
@@ -37,6 +37,10 @@ src_prepare() {
 	echo "${PV}" > .libsass-upstream-version || die
 	distutils-r1_src_prepare
 	export SYSTEM_SASS=1
+	# https://bugs.gentoo.org/730244
+	if tc-is-clang; then
+		sed -i -e 's/-std=gnu++0x//g' setup.py || die
+	fi
 }
 
 python_test() {
