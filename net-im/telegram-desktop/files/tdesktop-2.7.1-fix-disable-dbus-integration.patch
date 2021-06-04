@@ -1,5 +1,3 @@
-Index: tdesktop-2.7.1-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-===================================================================
 --- tdesktop-2.7.1-full.orig/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 +++ tdesktop-2.7.1-full/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 @@ -754,10 +754,12 @@ void InstallLauncher(bool force) {

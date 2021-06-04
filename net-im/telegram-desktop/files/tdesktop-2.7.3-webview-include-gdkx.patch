@@ -1,5 +1,3 @@
-Index: tdesktop-2.7.3-full/Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.h
-===================================================================
 --- tdesktop-2.7.3-full.orig/Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.h
 +++ tdesktop-2.7.3-full/Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.h
 @@ -12,6 +12,7 @@ extern "C" {
