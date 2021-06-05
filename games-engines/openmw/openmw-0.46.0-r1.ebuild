@@ -38,7 +38,7 @@ RDEPEND="
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=[-double-precision]
 	virtual/opengl
-	osg-fork? ( dev-games/openscenegraph-openmw:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	osg-fork? ( =dev-games/openscenegraph-openmw-3.4*:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	qt5? (
 		app-arch/unshield
