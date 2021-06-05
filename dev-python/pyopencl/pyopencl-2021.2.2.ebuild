@@ -26,7 +26,8 @@ RDEPEND="${COMMON}
 	>=dev-python/pytools-2017.6[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 DEPEND="${COMMON}
-	dev-python/pybind11[${PYTHON_USEDEP}]"
+	dev-python/pybind11[${PYTHON_USEDEP}]
+	opengl? ( media-libs/libglvnd )"
 
 # The test suite fails if there are no OpenCL platforms available, and
 # even if there is one (which requires the presence of both an OpenCL
