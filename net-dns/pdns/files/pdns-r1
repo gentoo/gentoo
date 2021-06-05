@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 PDNS_CONFIGDIR="${PDNS_CONFIGDIR:-/etc/powerdns}"
@@ -22,7 +22,7 @@ description_ping="Ping the PowerDNS instance"
 description_monitor="Starts in foreground with logging and console enabled"
 
 command="/usr/sbin/pdns_server"
-command_args="--config-dir=${PDNS_CONFIGDIR}${PDNS_INSTANCE:+ --config-name=${PDNS_INSTANCE}}"
+command_args="--config-dir=${PDNS_CONFIGDIR}${PDNS_INSTANCE:+ --config-name=${PDNS_INSTANCE}} --write-pid=yes"
 command_args_foreground="--daemon=no"
 command_args_background="--daemon=yes"
 yesno ${rc_verbose} || command_args_background="${command_args_background} >/dev/null 2>&1"
