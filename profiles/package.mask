@@ -357,13 +357,6 @@ sci-libs/fftw:2.1
 # ago, dead upstream. Bug #779421, removal in 30 days.
 media-sound/gramofile
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-09)
-# PortageXS saw its last release in 2016 and would need
-# a new upstream maintainer. Multiple bugs, e.g.,
-# 688238, 625536, 613114, 473394, 332611, 289524, 264680
-# Masked for removal in 30 days, including reverse deps.
-dev-perl/PortageXS
-
 # Sam James <sam@gentoo.org> (2021-05-09)
 # Not working properly with cmake.eclass port
 # bug #788448
@@ -614,10 +607,6 @@ app-admin/amazon-ec2-init
 =sys-libs/db-6.1*
 =sys-libs/db-6.2*
 =sys-libs/db-18.1*
-
-# Mikle Kolyada <zlogene@gentoo.org> (2014-06-27)
-# Masked for proper testing. (Major updates in the code).
-~dev-perl/PortageXS-0.2.12
 
 # Mike Gilbert <floppym@gentoo.org> (2014-03-04)
 # Dev channel releases are only for people who are developers or want more
