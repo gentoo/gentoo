@@ -241,6 +241,7 @@ src_configure() {
 		# bug https://bugs.gentoo.org/788274
 		local OCC_P=$(best_version sci-libs/opencascade[vtk])
 		OCC_P=${OCC_P#sci-libs/}
+		OCC_P=${OCC_P%-r*}
 		mycmakeargs+=(
 			-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
 			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
