@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}-$(ver_cut 1-2)/${P}.tar.gz"
 LICENSE="OFL-1.1 GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="a-like-o +center-tilde distinct-l otf +pcf +pcf-unicode-only +psf quote
+IUSE="a-like-o +center-tilde distinct-l +otf +pcf +pcf-unicode-only +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
 DEPEND="app-arch/gzip
