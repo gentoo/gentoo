@@ -10,7 +10,7 @@ inherit cmake kde.org python-any-r1 xdg-utils
 DESCRIPTION="Breeze SVG icon theme"
 
 LICENSE="LGPL-3"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="test"
 
 RESTRICT+=" !test? ( test )"
