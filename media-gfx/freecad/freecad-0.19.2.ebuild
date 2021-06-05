@@ -227,6 +227,9 @@ src_configure() {
 		-DFREECAD_USE_QT_FILEDIALOG=ON
 		-DFREECAD_USE_QTWEBMODULE:STRING="Qt WebEngine"
 
+		# Use the version of shiboken2 that matches the selected python version
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
+
 		# install python modules to site-packages' dir. True only for the main package,
 		# sub-packages will still be installed inside /usr/lib64/freecad
 		-DINSTALL_TO_SITEPACKAGES=ON
