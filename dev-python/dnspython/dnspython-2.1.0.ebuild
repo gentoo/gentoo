@@ -29,6 +29,10 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
+python_test() {
+	epytest -s
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 	if use examples; then
