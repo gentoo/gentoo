@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=CJM
-MODULE_VERSION=1.12
+DIST_AUTHOR=CJM
+DIST_VERSION=1.12
 inherit perl-module
 
 DESCRIPTION="Getopt::Mixed is used for parsing mixed options"
@@ -18,9 +18,7 @@ RDEPEND="
 	virtual/perl-Carp
 	virtual/perl-Exporter
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
 	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST=do
