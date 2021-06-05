@@ -214,6 +214,9 @@ src_configure() {
 		-DFREECAD_USE_QT_FILEDIALOG=ON
 		-DFREECAD_USE_QTWEBMODULE:STRING="Qt WebEngine"
 
+		# Use the version of shiboken2 that matches the selected python version
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
+
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
 		-DOCCT_CMAKE_FALLBACK=ON				# don't use occt-config which isn't included in opencascade for Gentoo
