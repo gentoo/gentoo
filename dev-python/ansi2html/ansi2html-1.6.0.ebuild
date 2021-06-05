@@ -1,11 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Convert text with ANSI color codes to HTML"
@@ -31,16 +29,11 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests pytest  # for BDEPEND
+distutils_enable_tests --install pytest
 
 python_install_all() {
 	use doc && doman man/${PN}.1
 	distutils-r1_python_install_all
-}
-
-python_test() {
-	distutils_install_for_testing
-	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
 
 src_compile() {
