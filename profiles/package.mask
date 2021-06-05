@@ -60,6 +60,7 @@ dev-python/csv23
 =media-libs/alsa-lib-1.2.5
 =media-libs/alsa-topology-conf-1.2.5
 =media-libs/alsa-ucm-conf-1.2.5
+=media-plugins/alsa-plugins-1.2.5
 =media-sound/alsa-utils-1.2.5
 =sys-firmware/alsa-firmware-1.2.5
 
