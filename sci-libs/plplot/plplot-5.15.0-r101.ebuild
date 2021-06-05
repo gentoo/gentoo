@@ -6,7 +6,7 @@ EAPI=7
 WX_GTK_VER=3.0-gtk3
 FORTRAN_NEEDED=fortran
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake flag-o-matic fortran-2 java-pkg-opt-2 lua-single python-single-r1 toolchain-funcs virtualx wxwidgets
 
@@ -289,6 +289,8 @@ src_install() {
 	else
 		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
+
+	use python & python_optimize
 
 	if use java; then
 		java-pkg_dojar "${BUILD_DIR}"/examples/java/${PN}.jar
