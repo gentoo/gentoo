@@ -3,19 +3,20 @@
 
 EAPI=7
 
-ADA_COMPAT=( gnat_2019 )
+ADA_COMPAT=( gnat_2019 gnat_202{0..1} )
 inherit ada multiprocessing
 
-MYP=${P}-20200429-19A9F-src
+MYP=${P}-${PV}0429-19A9F-src
+ADAMIRROR=https://community.download.adacore.com/v1
+ID=c1b0f6863d1a30acaee1df022a65ad11d5737a84
 
 DESCRIPTION="A complete Web development framework"
 HOMEPAGE="http://libre.adacore.com/tools/aws/"
-SRC_URI="https://community.download.adacore.com/v1/c1b0f6863d1a30acaee1df022a65ad11d5737a84?filename=${MYP}.tar.gz
-	-> ${MYP}.tar.gz"
+SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-ada/xmlada[${ADA_USEDEP},shared,static-libs]"
