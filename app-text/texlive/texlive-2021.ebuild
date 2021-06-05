@@ -8,7 +8,7 @@ HOMEPAGE="http://tug.org/texlive/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cjk context extra games graphics humanities luatex metapost music pdfannotextractor png pstricks publishers science tex4ht texi2html truetype xetex xml X"
 
 LANGS="af ar as bg bn br ca cs cy da de el en eo es et eu fa fi fr ga gl gu he
