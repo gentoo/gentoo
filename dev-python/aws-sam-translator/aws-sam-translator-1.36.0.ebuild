@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A library that transform SAM templates into AWS CloudFormation templates"
@@ -35,9 +35,6 @@ python_prepare_all() {
 	# remove pytest-cov dependency
 	sed -r -e 's:--cov(-[[:graph:]]+|)[[:space:]]+[[:graph:]]+::g' \
 		-i pytest.ini || die
-
-	# don't install tests
-	sed -e 's:"tests",:"tests", "tests.*",:' -i setup.py || die
 
 	# deps are installed by ebuild, don't try to reinstall them via pip
 	truncate --size=0 requirements/*.txt || die
