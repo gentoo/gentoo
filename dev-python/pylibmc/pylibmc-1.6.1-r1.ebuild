@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -20,8 +20,6 @@ SRC_URI="https://github.com/lericson/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ~ppc64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/libmemcached-0.32"
 # Older sphinx versions fail to compile the doc
@@ -30,7 +28,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
 		net-misc/memcached
-		dev-python/nose[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
@@ -38,6 +35,7 @@ PATCHES=(
 )
 
 distutils_enable_sphinx docs
+distutils_enable_tests --install nose
 
 python_prepare_all() {
 	sed -e "/with-info=1/d" -i setup.cfg || die
@@ -56,9 +54,4 @@ src_test() {
 		-P "${T}/m.pid" || die
 	distutils-r1_src_test
 	kill "$(<"${T}/m.pid")" || die
-}
-
-python_test() {
-	distutils_install_for_testing
-	nosetests -v || die "Tests failed with ${EPYTHON}"
 }
