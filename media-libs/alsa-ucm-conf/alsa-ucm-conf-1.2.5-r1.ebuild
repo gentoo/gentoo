@@ -17,6 +17,8 @@ DEPEND="${RDEPEND}"
 MY_P="${PN}-1.2.4.81.g4884e"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${PN}-1.2.5-hda-Intel-the-lookups-are-supported-from-syntax-4.patch" ) # bug #793410
+
 src_install() {
 	insinto /usr/share/alsa
 	doins -r ucm{,2}
