@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 PYTHON_REQ_USE="wide-unicode(+)"
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
