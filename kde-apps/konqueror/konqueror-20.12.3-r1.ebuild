@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/konqueror/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="activities speech X"
 
 # 4 of 4 tests fail. Last checked for 4.0.3
