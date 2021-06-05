@@ -130,12 +130,6 @@ pkg_postinst() {
 	elog "The name must be in the format pdns.<suffix> and PowerDNS will use the"
 	elog "/etc/powerdns/pdns-<suffix>.conf configuration file instead of the default."
 
-	if use ldap ; then
-		echo
-		ewarn "The official LDAP backend module is only compile-tested by upstream."
-		ewarn "Try net-dns/pdns-ldap-backend if you have problems with it."
-	fi
-
 	local old
 	for old in ${REPLACING_VERSIONS}; do
 		ver_test ${old} -lt 3.2 || continue
