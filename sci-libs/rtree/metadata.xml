@@ -5,6 +5,10 @@
         <email>3dprint@gentoo.org</email>
         <name>Gentoo 3D Printer Project</name>
     </maintainer>
+    <maintainer type="person">
+        <email>andrewammerlaan@gentoo.org</email>
+        <name>Andrew Ammerlaan</name>
+    </maintainer>
     <longdescription>
         Rtree is a ctypes Python wrapper of libspatialindex that provides a number of advanced spatial indexing
         features for the spatially curious Python user.
