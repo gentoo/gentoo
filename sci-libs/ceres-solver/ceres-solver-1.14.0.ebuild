@@ -23,8 +23,10 @@ RESTRICT="!test? ( test )"
 BDEPEND="${PYTHON_DEPS}
 	>=dev-cpp/eigen-3.3.4:3
 	doc? (
-		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
+		$(python_gen_any_dep '
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		')
 	)
 	lapack? ( virtual/pkgconfig )
 "
