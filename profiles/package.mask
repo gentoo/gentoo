@@ -377,14 +377,6 @@ app-portage/perl-info
 # bug #731266
 >=net-mail/cyrus-imapd-3.4.0
 
-# Joonas Niilola <juippis@gentoo.org> (2021-05-06)
-# sci-libs/cbflib: Doesn't compile with GCC-10 or GCC-11. Was never
-# ported to work with GCC-10+. sci-chemistry/rasmol depends on cbflib.
-# Both packages have updates ignored in Gentoo, and their ebuilds
-# pretty much untouched during git-era. Both had their latest upstream
-# version release in 2018. Removal in ~30 days. Bug #788508
-sci-libs/cbflib
-
 # David Seifert <soap@gentoo.org> (2021-05-05)
 # Causes unsolvable package conflicts, bug #788310
 >=media-libs/openexr-3
