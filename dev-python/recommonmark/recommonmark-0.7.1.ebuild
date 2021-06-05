@@ -3,9 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8,9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python docutils-compatibility bridge to CommonMark"
