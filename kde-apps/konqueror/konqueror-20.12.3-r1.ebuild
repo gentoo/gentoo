@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-KFMIN=5.80.0
+KFMIN=5.75.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit flag-o-matic ecm kde.org optfeature
@@ -62,7 +62,7 @@ RDEPEND="${COMMON_DEPEND}
 	kde-plasma/kde-cli-tools:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-20.12.3-use-new-QComboBox-signal.patch" ) # KDE-bug 437161
+PATCHES=( "${FILESDIR}/${P}-use-new-QComboBox-signal.patch" ) # KDE-bug 437161
 
 src_prepare() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lmalloc
