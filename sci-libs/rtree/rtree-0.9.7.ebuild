@@ -20,6 +20,7 @@ SLOT="0"
 
 S="${WORKDIR}/${MY_P}"
 
+BDEPEND="dev-python/wheel[${PYTHON_USEDEP}]"
 RDEPEND="sci-libs/libspatialindex"
 
 distutils_enable_sphinx docs/source
