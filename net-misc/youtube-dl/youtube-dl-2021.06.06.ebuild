@@ -8,9 +8,11 @@ inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://youtube-dl.org/ https://github.com/ytdl-org/youtube-dl/"
-EGIT_REPO_URI="https://github.com/ytdl-org/${PN}.git"
+SRC_URI="https://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
+S=${WORKDIR}/${PN}
 
 LICENSE="public-domain"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 SLOT="0"
 
 RDEPEND="
@@ -24,18 +26,12 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-src_compile() {
-	distutils-r1_src_compile
-
-	emake youtube-dl.{bash-completion,fish,zsh}
-}
-
 python_test() {
 	emake offlinetest
 }
 
 python_install_all() {
-	# no manpage because it requires pandoc to generate
+	doman youtube-dl.1
 
 	newbashcomp youtube-dl.bash-completion youtube-dl
 
