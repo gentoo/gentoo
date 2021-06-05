@@ -28,7 +28,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
-HOMEPAGE="http://www.musl-libc.org/"
+HOMEPAGE="https://musl.libc.org"
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
 IUSE="headers-only"
