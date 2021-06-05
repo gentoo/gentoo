@@ -65,7 +65,7 @@ RDEPEND="
 	>=dev-python/qtawesome-1.0.2[${PYTHON_USEDEP}]
 	>=dev-python/qtconsole-5.1.0[${PYTHON_USEDEP}]
 	>=dev-python/QtPy-1.5.0[${PYTHON_USEDEP},pyqt5(+),svg,webengine]
-	sci-libs/rtree[${PYTHON_USEDEP}]
+	>=sci-libs/rtree-0.9.7[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-0.6.6[${PYTHON_USEDEP}]
 	>=dev-python/spyder-kernels-2.0.3[${PYTHON_USEDEP}]
 	<dev-python/spyder-kernels-2.1.0[${PYTHON_USEDEP}]
@@ -149,10 +149,6 @@ python_prepare_all() {
 	# do not depend on pyqt5<13
 	sed -i -e '/pyqt5/d' \
 		-e '/pyqtwebengine/d' \
-			setup.py || die
-
-	# allow use of older rtree
-	sed -i -e 's/rtree>=0.9.7/rtree/g' \
 			setup.py || die
 
 	# do not check deps, fails because we removed pyqt5 dependency above
