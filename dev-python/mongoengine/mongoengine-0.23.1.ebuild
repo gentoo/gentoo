@@ -12,7 +12,7 @@ SRC_URI="https://github.com/MongoEngine/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="dev-python/blinker[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
