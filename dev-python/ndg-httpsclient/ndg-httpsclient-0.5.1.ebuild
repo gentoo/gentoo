@@ -3,9 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
-
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL"
@@ -24,7 +22,7 @@ RDEPEND="
 	dev-python/pyopenssl[${PYTHON_USEDEP}]"
 # we need to block the previous versions since incorrect namespace
 # install breaks tests
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		!!<dev-python/ndg-httpsclient-0.4.2-r1
 		dev-libs/openssl:0
