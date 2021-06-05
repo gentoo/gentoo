@@ -10,5 +10,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="github">apache/pdfbox</remote-id>
+		<bugs-to>https://issues.apache.org/jira/browse/PDFBOX</bugs-to>
 	</upstream>
 </pkgmetadata>
