@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -18,8 +18,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86"
-IUSE="examples test"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
 RDEPEND=">=dev-libs/geoip-1.4.8"
 DEPEND="${RDEPEND}"
