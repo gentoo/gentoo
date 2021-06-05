@@ -31,8 +31,7 @@ IUSE=""
 BDEPEND="~dev-libs/protobuf-${PV}
 	>=virtual/jdk-1.7"
 DEPEND=">=virtual/jdk-1.7"
-RDEPEND=">=virtual/jre-1.7
-	!<dev-libs/protobuf-3[java(-)]"
+RDEPEND=">=virtual/jre-1.7"
 
 S="${WORKDIR}/protobuf-${PV}/java"
 
