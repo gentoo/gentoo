@@ -33,8 +33,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
-RDEPEND="${BDEPEND}
-	!<dev-libs/protobuf-3[python(-)]"
+RDEPEND="${BDEPEND}"
 
 S="${WORKDIR}/protobuf-${PV}/python"
 
