@@ -13,7 +13,7 @@ DESCRIPTION="Plasma framework"
 SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-${PN}-transparency.patch.xz"
 
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="gles2-only wayland X"
 
 RESTRICT+=" test"
