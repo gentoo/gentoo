@@ -384,7 +384,6 @@ app-portage/perl-info
 # pretty much untouched during git-era. Both had their latest upstream
 # version release in 2018. Removal in ~30 days. Bug #788508
 sci-libs/cbflib
-sci-chemistry/rasmol
 
 # David Seifert <soap@gentoo.org> (2021-05-05)
 # Causes unsolvable package conflicts, bug #788310
