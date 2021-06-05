@@ -57,11 +57,11 @@ dev-python/csv23
 # Sam James <sam@gentoo.org> (2021-06-01)
 # Possible issues with new ALSA release
 # See bug #793410
-=media-libs/alsa-lib-1.2.5
+=media-libs/alsa-lib-1.2.5_p20210604
 =media-libs/alsa-topology-conf-1.2.5
-=media-libs/alsa-ucm-conf-1.2.5
+=media-libs/alsa-ucm-conf-1.2.5-r1
 =media-plugins/alsa-plugins-1.2.5
-=media-sound/alsa-utils-1.2.5
+=media-sound/alsa-utils-1.2.5-r1
 
 # Michał Górny <mgorny@gentoo.org> (2021-05-31)
 # Requires removed media-libs/opencv version.
