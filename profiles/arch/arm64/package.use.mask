@@ -364,10 +364,6 @@ app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
-# Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
-# Chromium uses an internal tcmalloc that doesn't support this arch yet.
-www-client/chromium tcmalloc
-
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724
 app-office/gnumeric libgda
