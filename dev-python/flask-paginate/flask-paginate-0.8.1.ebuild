@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Pagination support for flask"
@@ -19,5 +19,5 @@ RDEPEND="dev-python/flask[${PYTHON_USEDEP}]"
 distutils_enable_tests pytest
 
 python_test() {
-	pytest -vv tests/tests.py || die "tests failed with ${EPYTHON}"
+	epytest tests/tests.py
 }
