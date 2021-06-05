@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}"/fix-systemd-unit-path.patch
 )
 
