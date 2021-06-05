@@ -364,7 +364,6 @@ media-sound/gramofile
 # Masked for removal in 30 days, including reverse deps.
 dev-perl/PortageXS
 app-portage/demerge
-app-portage/perl-info
 
 # Sam James <sam@gentoo.org> (2021-05-09)
 # Not working properly with cmake.eclass port
