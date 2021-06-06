@@ -59,7 +59,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	sys-libs/zlib:0[minizip]
-	java? ( >=virtual/jre-1.5 )"
+	java? ( >=virtual/jre-1.8:* )"
 
 RESTRICT="minimal? ( test )
 	!test? ( test )"
