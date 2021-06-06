@@ -1,7 +1,6 @@
 slotmove net-irc/kvirc 4 0
 move x11-apps/xtitle x11-misc/xtitle
 move kde-base/kde-meta kde-apps/kde-meta
-move dev-perl/Unicode-Normalize perl-core/Unicode-Normalize
 move media-video/nvenc media-video/nvidia_video_sdk
 move dev-python/socksipy dev-python/PySocks
 slotmove <sci-libs/libint-2 0 1
