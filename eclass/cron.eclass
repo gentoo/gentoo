@@ -4,6 +4,7 @@
 # @ECLASS: cron.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @AUTHOR:
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
 # @BLURB: Some functions for cron
@@ -17,18 +18,35 @@
 # chosen based on the most common setting among cron ebuilds.
 #
 
-inherit eutils flag-o-matic
+case ${EAPI:-0} in
+	[0-5]) die "cron.eclass: EAPI ${EAPI} is too old." ;;
+	[67]) ;;
+	*) die "EAPI ${EAPI} is not supported by cron.eclass." ;;
+esac
 
 EXPORT_FUNCTIONS pkg_postinst
 
+if [[ -z ${_CRON_ECLASS} ]]; then
+_CRON_ECLASS=1
+
+[[ ${EAPI} == [67] ]] && inherit eutils flag-o-matic
+
 SLOT="0"
 
-DEPEND=">=sys-apps/sed-4.0.5"
-
-RDEPEND=">=sys-process/cronbase-0.3.2"
-for pn in vixie-cron bcron cronie dcron fcron; do
-	[[ ${pn} == "${PN}" ]] || RDEPEND="${RDEPEND} !sys-process/${pn}"
+# @ECLASS-VARIABLE: _CRON_PN
+# @INTERNAL
+# @DESCRIPTION:
+# Iterates through a list of known cron packages to set up RDEPEND blockers.
+for _CRON_PN in bcron cronie dcron fcron; do
+	[[ ${_CRON_PN} == ${PN} ]] || RDEPEND+=" !sys-process/${_CRON_PN}"
 done
+unset _CRON_PN
+
+# vixie-cron last-rites: 2019-10-11, 844c30aa; drop eventually
+RDEPEND+="
+	>=sys-process/cronbase-0.3.2
+	!sys-process/vixie-cron
+"
 
 # @FUNCTION: docrondir
 # @USAGE: [ dir ] [ perms ]
@@ -41,7 +59,6 @@ done
 # ex: docrondir /some/dir -m 0770 -o root -g cron
 #     docrondir /some/dir (uses default perms)
 #     docrondir -m0700 (uses default dir)
-
 docrondir() {
 	# defaults
 	local perms="-m0750 -o root -g cron" dir="/var/spool/cron/crontabs"
@@ -75,7 +92,6 @@ docrondir() {
 #
 # ex: docron -m 0700 -o root -g root ('exe' defaults to "cron")
 #     docron crond -m 0110
-
 docron() {
 	local cron="cron" perms="-m 0750 -o root -g wheel"
 
@@ -106,7 +122,6 @@ docron() {
 # Install crontab executable
 #
 #   Uses same semantics as docron.
-
 docrontab() {
 	local crontab="crontab" perms="-m 4750 -o root -g cron"
 
@@ -131,7 +146,7 @@ docrontab() {
 	exeopts -m0755
 
 	# users expect /usr/bin/crontab to exist...
-	if [[ "${crontab##*/}" != "crontab" ]] ; then
+	if [[ ${crontab##*/} != crontab ]] ; then
 		dosym ${crontab##*/} /usr/bin/crontab || \
 			die "failed to create /usr/bin/crontab symlink"
 	fi
@@ -142,9 +157,9 @@ docrontab() {
 # Outputs a message about system crontabs
 # daemons that have a true system crontab set CRON_SYSTEM_CRONTAB="yes"
 cron_pkg_postinst() {
-	echo
+	einfo
 	#  daemons that have a true system crontab set CRON_SYSTEM_CRONTAB="yes"
-	if [ "${CRON_SYSTEM_CRONTAB:-no}" != "yes" ] ; then
+	if [[ ${CRON_SYSTEM_CRONTAB:-no} != yes ]] ; then
 		einfo "To activate /etc/cron.{hourly|daily|weekly|monthly} please run:"
 		einfo " crontab /etc/crontab"
 		einfo
@@ -155,5 +170,7 @@ cron_pkg_postinst() {
 	einfo "You may wish to read the Gentoo Linux Cron Guide, which can be"
 	einfo "found online at:"
 	einfo "    https://wiki.gentoo.org/wiki/Cron"
-	echo
+	einfo
 }
+
+fi

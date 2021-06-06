@@ -1,13 +1,38 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
+# @ECLASS: toolchain.eclass
+# @MAINTAINER:
+# Toolchain Ninjas <toolchain@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Functions to build sys-devel/gcc
+# @DESCRIPTION:
+# Comprehensive helper and phase functions to build sys-devel/gcc and
+# adjacent packages, support for release and live ebuilds.
+#
+# This eclass's phase functions are not intended to be mixed and matched, so if
+# any phase functions are overridden, the toolchain.eclass version should also
+# be called.
+
+case ${EAPI:-0} in
+	0|1|2|3|4) die "Need to upgrade to at least EAPI=5" ;;
+	5|6|7) ;;
+	*) die "I don't speak EAPI ${EAPI}." ;;
+esac
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
+	src_compile src_test src_install pkg_postinst pkg_postrm
+
+if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
+_TOOLCHAIN_ECLASS=1
+
+inherit flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+
+[[ ${EAPI} == [56] ]] && inherit eapi7-ver eutils
+[[ ${EAPI} == 7 ]] && inherit eutils
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
-
-inherit eutils flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -26,16 +51,6 @@ if tc_is_live ; then
 fi
 
 FEATURES=${FEATURES/multilib-strict/}
-
-case ${EAPI:-0} in
-	0|1|2|3|4*) die "Need to upgrade to at least EAPI=5" ;;
-	5*|6) inherit eapi7-ver ;;
-	7) ;;
-	*) die "I don't speak EAPI ${EAPI}." ;;
-esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
-	src_compile src_test src_install pkg_postinst pkg_postrm
 
 #---->> globals <<----
 
@@ -525,7 +540,7 @@ toolchain_src_prepare() {
 			|| eerror "Please file a bug about this"
 		eend $?
 	done
-	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk #215828
+	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk || die #215828
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
 	if tc_version_is_at_least 4.1; then
@@ -639,17 +654,16 @@ make_gcc_hard() {
 	# than ALL_CFLAGS...
 	sed -e '/^ALL_CFLAGS/iHARD_CFLAGS = ' \
 		-e 's|^ALL_CFLAGS = |ALL_CFLAGS = $(HARD_CFLAGS) |' \
-		-i "${S}"/gcc/Makefile.in
+		-i "${S}"/gcc/Makefile.in || die
 	# Need to add HARD_CFLAGS to ALL_CXXFLAGS on >= 4.7
 	if tc_version_is_at_least 4.7 ; then
 		sed -e '/^ALL_CXXFLAGS/iHARD_CFLAGS = ' \
 			-e 's|^ALL_CXXFLAGS = |ALL_CXXFLAGS = $(HARD_CFLAGS) |' \
-			-i "${S}"/gcc/Makefile.in
+			-i "${S}"/gcc/Makefile.in || die
 	fi
 
-	sed -i \
-		-e "/^HARD_CFLAGS = /s|=|= ${gcc_hard_flags} |" \
-		"${S}"/gcc/Makefile.in || die
+	sed -e "/^HARD_CFLAGS = /s|=|= ${gcc_hard_flags} |" \
+		-i "${S}"/gcc/Makefile.in || die
 
 }
 
@@ -2435,3 +2449,5 @@ toolchain_death_notice() {
 # Thus safer way to enable/disable the feature is to rely on implicit
 # enabled-by-default state:
 #    econf $(usex foo '' --disable-foo)
+
+fi
