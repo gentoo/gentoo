@@ -53,7 +53,7 @@ RDEPEND="
 	freeimage? ( media-libs/freeimage )
 	json? ( dev-libs/rapidjson )
 	tbb? ( dev-cpp/tbb )
-	vtk? ( >=sci-libs/vtk-8.1.0[rendering] )
+	vtk? ( <sci-libs/vtk-9[rendering] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
