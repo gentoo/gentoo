@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DOLILO_V="0.6"
 IUSE="static minimal pxeserial device-mapper"
@@ -24,6 +24,10 @@ KEYWORDS="-* amd64 x86"
 DEPEND=">=sys-devel/bin86-0.15.5"
 RDEPEND="device-mapper? ( >=sys-fs/lvm2-2.02.45 )"
 
+# Bootloaders should not be using arbitrary CFLAGS without good reason.  A bootloader
+# is typically only executed once to boot the system, and it should work the first time.
+QA_FLAGS_IGNORED="/sbin/lilo"
+
 src_prepare() {
 	default
 
@@ -34,6 +38,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}/${PN}-24.2-add-nvme-support.patch"
 	eapply "${FILESDIR}/${PN}-24.x-fix-gcc-10.patch"
+	eapply "${FILESDIR}/${PN}-24.x-check-for-__GLIBC__.patch"
 
 	# Do not strip and have parallel make
 	# FIXME: images/Makefile does weird stuff
