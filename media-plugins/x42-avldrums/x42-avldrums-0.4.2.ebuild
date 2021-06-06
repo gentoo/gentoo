@@ -26,6 +26,7 @@ SLOT="0"
 RESTRICT="mirror"
 
 RDEPEND="dev-libs/glib
+	media-libs/lv2
 	virtual/opengl
 	x11-libs/cairo[X]
 	x11-libs/pango
