@@ -392,12 +392,6 @@ app-portage/perl-info
 # see bug: https://bugs.gentoo.org/787329
 app-misc/jitac
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# last release in 2009
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787332
-app-office/hourglass
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
