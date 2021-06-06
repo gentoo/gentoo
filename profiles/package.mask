@@ -386,12 +386,6 @@ app-portage/perl-info
 # Causes unsolvable package conflicts, bug #788310
 >=media-libs/openexr-3
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, dead homepage
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787329
-app-misc/jitac
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
