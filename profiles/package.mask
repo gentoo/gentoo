@@ -438,7 +438,6 @@ dev-perl/Sane
 # keywords. Removal in 30 days.
 perl-core/Devel-PPPort
 perl-core/Time-Local
-perl-core/Unicode-Normalize
 
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
