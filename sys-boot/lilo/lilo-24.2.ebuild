@@ -70,7 +70,6 @@ src_compile() {
 }
 
 src_install() {
-	keepdir /boot
 	emake DESTDIR="${D}" install
 
 	if use !minimal; then
