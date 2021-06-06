@@ -290,7 +290,7 @@ src_install() {
 		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
 
-	use python & python_optimize
+	use python && python_optimize
 
 	if use java; then
 		java-pkg_dojar "${BUILD_DIR}"/examples/java/${PN}.jar
