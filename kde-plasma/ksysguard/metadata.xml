@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="network">Enable per-process network statistic collection using <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="networkmanager">Enable improved backend for Network statistics using <pkg>kde-frameworks/networkmanager-qt</pkg></flag>
 	</use>
 </pkgmetadata>
