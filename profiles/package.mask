@@ -440,12 +440,6 @@ perl-core/Devel-PPPort
 perl-core/Time-Local
 perl-core/Unicode-Normalize
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-30)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787152
-dev-java/tagsoup
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
