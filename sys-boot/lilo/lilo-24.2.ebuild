@@ -8,12 +8,12 @@ inherit eutils flag-o-matic toolchain-funcs
 DOLILO_V="0.6"
 IUSE="static minimal pxeserial device-mapper"
 
-DESCRIPTION="Standard Linux boot loader"
-HOMEPAGE="https://alioth.debian.org/projects/lilo/"
+DESCRIPTION="LInux LOader, the original Linux bootloader"
+HOMEPAGE="https://www.joonet.de/lilo/"
 
 DOLILO_TAR="dolilo-${DOLILO_V}.tar.bz2"
 SRC_URI="
-	http://lilo.alioth.debian.org/ftp/sources/${P}.tar.gz
+	https://www.joonet.de/lilo/ftp/sources/${P}.tar.gz
 	mirror://gentoo/${DOLILO_TAR}
 "
 
