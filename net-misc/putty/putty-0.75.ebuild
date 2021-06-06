@@ -9,7 +9,7 @@ HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/putty/"
 LICENSE="MIT"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 SRC_URI="
 	https://dev.gentoo.org/~polynomial-c/${PN}-icons.tar.bz2
 	https://the.earth.li/~sgtatham/${PN}/${PV}/${P}.tar.gz
