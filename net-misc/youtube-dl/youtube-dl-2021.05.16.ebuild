@@ -15,7 +15,7 @@ SRC_URI="https://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
 S=${WORKDIR}/${PN}
 
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-solaris"
 SLOT="0"
 
 RDEPEND="
