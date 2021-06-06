@@ -10,8 +10,8 @@ inherit distutils-r1
 
 MY_PN=${PN/-/.}
 
-DESCRIPTION="Easily write objects that delegate behavior"
-HOMEPAGE="https://code.launchpad.net/lazr.delegates"
+DESCRIPTION="Create configuration schemas, and process and validate configurations."
+HOMEPAGE="https://code.launchpad.net/lazr.config"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
@@ -21,7 +21,4 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/zope-interface[${PYTHON_USEDEP}]
-	dev-python/nose[${PYTHON_USEDEP}]
-"
-
-distutils_enable_tests pytest
+	dev-python/lazr-delegates[${PYTHON_USEDEP}]"
