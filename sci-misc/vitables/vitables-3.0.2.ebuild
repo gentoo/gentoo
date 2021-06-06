@@ -29,8 +29,11 @@ RDEPEND="
 	')"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	$(python_gen_cond_dep '
-		<dev-python/sip-5[${PYTHON_USEDEP}]
-	')"
+	test? (
+		$(python_gen_cond_dep '
+			<dev-python/sip-5[${PYTHON_USEDEP}]
+	')
+	)
+"
 
 distutils_enable_tests pytest
