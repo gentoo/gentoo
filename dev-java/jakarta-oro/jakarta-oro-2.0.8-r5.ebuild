@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source examples"
+MAVEN_ID="oro:oro:2.0.8"
 
 inherit java-pkg-2 java-pkg-simple
 
