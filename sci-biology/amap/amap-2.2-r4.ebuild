@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit java-pkg-opt-2 java-ant-2 toolchain-funcs
 MY_P=${PN}.${PV}
 
 DESCRIPTION="Protein multiple-alignment-based sequence annealing"
-HOMEPAGE="http://bio.math.berkeley.edu/amap/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://baboon.math.berkeley.edu/${PN}/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="java"
 
-RDEPEND="java? ( >=virtual/jre-1.5 )"
-DEPEND="java? ( >=virtual/jdk-1.5 )"
+RDEPEND="java? ( >=virtual/jre-1.8:* )"
+DEPEND="java? ( >=virtual/jdk-1.8:* )"
 
 S=${WORKDIR}/${PN}-align
 
