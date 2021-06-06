@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.1-yaml-cpp-boost-check.patch"
 	"${FILESDIR}/${P}-fix-self-assign-clang.patch"
 	"${FILESDIR}/${P}-no-werror.patch"
+	"${FILESDIR}/${P}-Gentoo-specific-OCIOMacros.cmake-remove-LIB_SUFFIX.patch"
 )
 
 pkg_setup() {
@@ -89,6 +90,13 @@ src_configure() {
 		-DOCIO_USE_SSE=$(usex cpu_flags_x86_sse2)
 		-DOCIO_BUILD_TESTS=$(usex test)
 	)
+
+	if use python; then
+		mycmakeargs+=(
+			-DPYTHON=${PYTHON}
+			-DPYTHON_LIBRARY=$(python_get_library_path)
+		)
+	fi
 
 	use doc && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON ) # broken
 	cmake_src_configure
