@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
 	"${FILESDIR}"/${PN}-0.177-disable-large.patch
 	"${FILESDIR}"/${PN}-0.180-PaX-support.patch
+	"${FILESDIR}"/${PN}-0.185-static-inline.patch
 )
 
 src_prepare() {
