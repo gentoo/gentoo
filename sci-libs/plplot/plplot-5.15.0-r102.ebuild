@@ -38,7 +38,7 @@ RESTRICT="
 RDEPEND="
 	cairo? ( x11-libs/cairo:0=[svg?,X] )
 	gd? ( media-libs/gd:2=[jpeg?,png?] )
-	java? ( >=virtual/jre-1.5:* )
+	java? ( >=virtual/jre-1.8:* )
 	latex? (
 		app-text/ghostscript-gpl
 		virtual/latex-base
@@ -90,7 +90,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	java? (
-		>=virtual/jdk-1.5
+		>=virtual/jdk-1.8:*
 		dev-lang/swig
 	)
 	lua? ( dev-lang/swig )
