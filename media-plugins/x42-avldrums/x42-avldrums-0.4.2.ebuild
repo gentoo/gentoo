@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="AVLinux Drumkits"
-HOMEPAGE="https://github.com/x42/avldrums.lv2"
+HOMEPAGE="http://x42-plugins.com/x42/x42-avldrums https://github.com/x42/avldrums.lv2"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
