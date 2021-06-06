@@ -11,13 +11,13 @@ DESCRIPTION="Python binding for the xxHash library"
 HOMEPAGE="https://github.com/ifduyue/python-xxhash
 	https://pypi.org/project/xxhash/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-LICENSE="MIT"
 
-KEYWORDS="~amd64"
+LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-libs/xxhash-0.8.0"
-BDEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}"
 
 distutils_enable_tests unittest
 
