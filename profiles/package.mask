@@ -416,12 +416,6 @@ media-sound/entagged-tageditor
 # see bug: https://bugs.gentoo.org/787434
 media-sound/protux
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2011
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787656
-sci-physics/jaxodraw
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
