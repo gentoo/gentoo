@@ -16,7 +16,7 @@ HOMEPAGE="https://rubygems.org/gems/ice_nine https://github.com/dkubb/ice_nine"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~sparc"
 IUSE=""
 
 RESTRICT="test"
