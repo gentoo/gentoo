@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
-inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
+inherit bash-completion-r1 distutils-r1 readme.gentoo-r1 git-r3
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://youtube-dl.org/ https://github.com/ytdl-org/youtube-dl/"
