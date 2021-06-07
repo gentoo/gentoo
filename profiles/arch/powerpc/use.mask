@@ -4,6 +4,10 @@
 # PPC Specific use flags
 #
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
+# XEN does not support ppc/ppc64 yet
+xen
+
 # David Seifert <soap@gentoo.org (2020-05-17)
 # Mono is hopelessly broken on ppc32
 mono
