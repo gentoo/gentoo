@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
 
@@ -25,4 +24,4 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
