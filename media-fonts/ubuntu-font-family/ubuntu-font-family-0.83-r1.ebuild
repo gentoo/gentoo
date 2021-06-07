@@ -11,7 +11,7 @@ SRC_URI="https://assets.ubuntu.com/v1/fad7939b-${P}.zip -> ${P}.zip"
 
 LICENSE="UbuntuFontLicense-1.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE=""
 
 BDEPEND="app-arch/unzip"
