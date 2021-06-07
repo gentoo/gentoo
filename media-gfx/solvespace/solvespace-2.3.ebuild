@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 DXFRW_COMMIT="87ff1082f49b1286a033ac8f38fe8dde0975bb8b"
 DXFRW_PV="0.6.3"
 DXFRW_P="libdxfrw-${DXFRW_PV}-${DXFRW_COMMIT}"
@@ -30,6 +31,10 @@ DEPEND="${RDEPEND}
 
 # NOTE: please keep commit hash actually when version up
 GIT_COMMIT_HASH="4d1e1341d926ac356b295d5cc3d61c7a6cd7d07d"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3-gcc11-missing-limits-inc.patch
+)
 
 src_prepare() {
 	rm -r "extlib/libdxfrw" || die  "rm extlib/libdxfrw failed"
