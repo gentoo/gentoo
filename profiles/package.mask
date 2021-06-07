@@ -160,6 +160,7 @@ dev-python/csv23
 # remove some stuff to make redacted happy
 # bug #793800
 app-admin/glance
+app-emulation/spice-html5
 dev-python/aodhclient
 dev-python/automaton
 dev-python/castellan
