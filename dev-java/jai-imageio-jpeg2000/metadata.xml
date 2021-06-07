@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		JPEG2000 support for Java Advanced Imaging Image I/O Tools API core.
+		This module is licensed under the [JJ2000 license](LICENSE.txt) and
+		is therefore NOT compatible with the GPL 3 license. It should be
+		compatible with the LGPL 2.1 license.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jai-imageio/jai-imageio-jpeg2000</remote-id>
+		<bugs-to>https://github.com/jai-imageio/jai-imageio-jpeg2000/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
