@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Check what OS we're running on"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
