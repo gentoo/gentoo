@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit epatch toolchain-funcs
+inherit toolchain-funcs
 
 MY_PN="${PN/netkit/bsd}"
 MY_PN="${MY_PN/rd/r}"
@@ -18,10 +18,10 @@ IUSE=""
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-r2-gentoo.diff
-	epatch "${FILESDIR}"/${P}-name-check.patch #80286
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-r2-gentoo.diff
+	"${FILESDIR}"/${P}-name-check.patch #80286
+)
 
 src_configure() {
 	# We'll skip this stage as the configure script is crappy and not really
