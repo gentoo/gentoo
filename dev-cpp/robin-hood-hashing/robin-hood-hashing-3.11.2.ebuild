@@ -3,7 +3,7 @@
 
 EAPI=7
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64"
 SRC_URI="https://github.com/martinus/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20"
