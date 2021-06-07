@@ -26,6 +26,7 @@ SLOT="0"
 RESTRICT="mirror"
 
 RDEPEND="dev-libs/glib
+	media-libs/glu
 	media-libs/lv2
 	x11-libs/cairo[X]
 	media-libs/libglvnd[X]
