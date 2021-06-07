@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Java Image I/O plugin for reading JBIG2-compressed image data.
+		Formerly known as the levigo JBig2 ImageIO plugin (com.levigo.jbig2:levigo-jbig2-imageio).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">apache/pdfbox-jbig2</remote-id>
+	</upstream>
+</pkgmetadata>
