@@ -39,6 +39,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-autoconf_lua_version.patch
+	"${FILESDIR}"/${PN}-2.3-add_soname.patch
 )
 
 DOCS=( AUTHORS NEWS README )
