@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/roehling/postsrsd"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BDEPEND=">=dev-util/cmake-2.4"
