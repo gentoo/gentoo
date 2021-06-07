@@ -1,0 +1,222 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b72c2c8f6..9436bc66da 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -629,5 +629,6 @@ ELSE()
+ ENDIF()
+ 
++find_package(Qt5Compress REQUIRED)
+ 
+ ########### Set some global variables ###########
+ IF(UNIX AND NOT WIN32)
+diff --git a/plugins/Satellites/src/CMakeLists.txt b/plugins/Satellites/src/CMakeLists.txt
+index 8e3138adf2..b59049767d 100644
+--- a/plugins/Satellites/src/CMakeLists.txt
++++ b/plugins/Satellites/src/CMakeLists.txt
+@@ -55,7 +55,7 @@ IF(ENABLE_TESTING)
+ ENDIF(ENABLE_TESTING)
+ 
+ ADD_LIBRARY(Satellites-static STATIC ${Satellites_SRCS} ${Satellites_RES_CXX} ${SatellitesDialog_UIS_H})
+-TARGET_LINK_LIBRARIES(Satellites-static Qt5::Core Qt5::Network Qt5::Widgets)
++TARGET_LINK_LIBRARIES(Satellites-static Qt5::Core Qt5::Network Qt5::Widgets Qt5::Compress)
+ # The library target "Satellites-static" has a default OUTPUT_NAME of "Satellites-static", so change it.
+ SET_TARGET_PROPERTIES(Satellites-static PROPERTIES OUTPUT_NAME "Satellites")
+ IF(MSVC)
+diff --git a/plugins/Satellites/src/Satellites.cpp b/plugins/Satellites/src/Satellites.cpp
+index 7432f4316d..f4f4453661 100644
+--- a/plugins/Satellites/src/Satellites.cpp
++++ b/plugins/Satellites/src/Satellites.cpp
+@@ -43,7 +43,7 @@
+ #include "StelUtils.hpp"
+ #include "StelActionMgr.hpp"
+ 
+-#include "external/qtcompress/qzipreader.h"
++#include "qzipreader.h"
+ 
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
+@@ -1533,12 +1533,12 @@ void Satellites::saveDownloadedUpdate(QNetworkReply* reply)
+ 					QString archive = zip.fileName();
+ 					QByteArray data;
+ 
+-					Stel::QZipReader reader(archive);
+-					if (reader.status() != Stel::QZipReader::NoError)
++					QZipReader reader(archive);
++					if (reader.status() != QZipReader::NoError)
+ 						qWarning() << "[Satellites] Unable to open as a ZIP archive";
+ 					else
+ 					{
+-						QList<Stel::QZipReader::FileInfo> infoList = reader.fileInfoList();
++						QList<QZipReader::FileInfo> infoList = reader.fileInfoList();
+ 						for (const auto& info : qAsConst(infoList))
+ 						{
+ 							// qWarning() << "[Satellites] Processing:" << info.filePath;
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index bdd214729f..81631ce8ec 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -465,7 +465,7 @@ IF(ENABLE_SPOUT AND SPOUT_LIBRARY_DLL)
+      CONFIGURE_FILE(${SPOUT_LIBRARY_DLL} ${CMAKE_CURRENT_BINARY_DIR} COPYONLY)
+ ENDIF()
+ 
+-SET(STELMAIN_DEPS ${ZLIB_LIBRARIES} qtcompress_stel glues_stel qcustomplot_stel qxlsx_stel ${STELLARIUM_STATIC_PLUGINS_LIBRARIES} ${STELLARIUM_QT_LIBRARIES} ${SPOUT_LIBRARY})
++SET(STELMAIN_DEPS ${ZLIB_LIBRARIES} Qt5::Compress glues_stel qcustomplot_stel qxlsx_stel ${STELLARIUM_STATIC_PLUGINS_LIBRARIES} ${STELLARIUM_QT_LIBRARIES} ${SPOUT_LIBRARY})
+ IF(ENABLE_LIBGPS)
+      SET(STELMAIN_DEPS ${STELMAIN_DEPS} ${GPS_LIBRARY})
+ ENDIF()
+diff --git a/src/core/modules/LandscapeMgr.cpp b/src/core/modules/LandscapeMgr.cpp
+index 8da2070b26..9949252cee 100644
+--- a/src/core/modules/LandscapeMgr.cpp
++++ b/src/core/modules/LandscapeMgr.cpp
+@@ -1183,8 +1183,8 @@ QString LandscapeMgr::installLandscapeFromArchive(QString sourceFilePath, const
+ 	}
+ 	QDir destinationDir (parentDestinationDir.absoluteFilePath("landscapes"));
+ 
+-	Stel::QZipReader reader(sourceFilePath);
+-	if (reader.status() != Stel::QZipReader::NoError)
++	QZipReader reader(sourceFilePath);
++	if (reader.status() != QZipReader::NoError)
+ 	{
+ 		qWarning() << "LandscapeMgr: Unable to open as a ZIP archive:" << QDir::toNativeSeparators(sourceFilePath);
+ 		emit errorNotArchive();
+@@ -1193,7 +1193,7 @@ QString LandscapeMgr::installLandscapeFromArchive(QString sourceFilePath, const
+ 
+ 	//Detect top directory
+ 	QString topDir, iniPath;
+-	QList<Stel::QZipReader::FileInfo> infoList = reader.fileInfoList();
++	QList<QZipReader::FileInfo> infoList = reader.fileInfoList();
+ 	for (const auto& info : infoList)
+ 	{
+ 		QFileInfo fileInfo(info.filePath);
+diff --git a/src/external/CMakeLists.txt b/src/external/CMakeLists.txt
+index 1e0e7e2b32..834aff89cb 100644
+--- a/src/external/CMakeLists.txt
++++ b/src/external/CMakeLists.txt
+@@ -70,6 +70,7 @@ target_include_directories(zlib_stel PUBLIC zlib)
+ set_target_properties(zlib_stel PROPERTIES AUTOMOC 0)
+ SET_TARGET_PROPERTIES(zlib_stel PROPERTIES FOLDER "src/external")
+ 
++if(0)
+ set(qtcompress_SRCS
+     qtcompress/qzip.cpp
+     qtcompress/qzipreader.h
+@@ -82,6 +83,7 @@ target_link_libraries(qtcompress_stel ${ZLIB_LIBRARIES} Qt5::Core)
+ #turn off automoc, not needed here
+ set_target_properties(qtcompress_stel PROPERTIES AUTOMOC 0)
+ SET_TARGET_PROPERTIES(qtcompress_stel PROPERTIES FOLDER "src/external")
++endif()
+ 
+ set(qcustomplot_SRCS
+     qcustomplot/qcustomplot.cpp
+@@ -176,7 +176,7 @@
+     qxlsx/xlsxcelllocation.h
+     )
+ add_library(qxlsx_stel STATIC EXCLUDE_FROM_ALL ${qxlsx_SRCS})
+-target_link_libraries(qxlsx_stel Qt5::Core Qt5::Gui qtcompress_stel)
++target_link_libraries(qxlsx_stel Qt5::Core Qt5::Gui Qt5::Compress)
+ set_target_properties(qxlsx_stel PROPERTIES FOLDER "src/external")
+ 
+ ################################# INDI ################################
+diff -r 11536448457a xlsxzipreader.cpp
+--- a/src/external/qxlsx/xlsxzipreader.cpp	Thu Oct 08 21:41:22 2020 +0100
++++ b/src/external/qxlsx/xlsxzipreader.cpp	Thu Oct 08 21:42:03 2020 +0100
+@@ -28,13 +28,13 @@
+ namespace QXlsx {
+ 
+ ZipReader::ZipReader(const QString &filePath) :
+-    m_reader(new Stel::QZipReader(filePath))
++    m_reader(new QZipReader(filePath))
+ {
+     init();
+ }
+ 
+ ZipReader::ZipReader(QIODevice *device) :
+-    m_reader(new Stel::QZipReader(device))
++    m_reader(new QZipReader(device))
+ {
+     init();
+ }
+@@ -45,8 +45,8 @@
+ 
+ void ZipReader::init()
+ {
+-	QList<Stel::QZipReader::FileInfo> allFiles = m_reader->fileInfoList();
+-	foreach (const Stel::QZipReader::FileInfo &fi, allFiles)
++	QList<QZipReader::FileInfo> allFiles = m_reader->fileInfoList();
++	foreach (const QZipReader::FileInfo &fi, allFiles)
+ 	{
+ 		if (fi.isFile)
+ 			m_filePaths.append(fi.filePath);
+diff -r 2019bb0d2919 xlsxzipreader_p.h
+--- a/src/external/qxlsx/xlsxzipreader_p.h	Thu Oct 08 21:35:35 2020 +0100
++++ b/src/external/qxlsx/xlsxzipreader_p.h	Thu Oct 08 21:36:28 2020 +0100
+@@ -38,7 +38,7 @@
+ //
+ 
+ #include "xlsxglobal.h"
+-#include "external/qtcompress/qzipreader.h"
++#include "qzipreader.h"
+ #include <QScopedPointer>
+ #include <QStringList>
+ #include <QVector>
+@@ -60,7 +60,7 @@
+ private:
+     Q_DISABLE_COPY(ZipReader)
+     void init();
+-    QScopedPointer<Stel::QZipReader> m_reader;
++    QScopedPointer<QZipReader> m_reader;
+     QStringList m_filePaths;
+ };
+ 
+diff -r 11536448457a xlsxzipwriter.cpp
+--- a/src/external/qxlsx/xlsxzipwriter.cpp	Thu Oct 08 21:41:22 2020 +0100
++++ b/src/external/qxlsx/xlsxzipwriter.cpp	Thu Oct 08 21:42:03 2020 +0100
+@@ -29,14 +29,14 @@
+ 
+ ZipWriter::ZipWriter(const QString &filePath)
+ {
+-    m_writer = new Stel::QZipWriter(filePath, QIODevice::WriteOnly);
+-    m_writer->setCompressionPolicy(Stel::QZipWriter::AutoCompress);
++    m_writer = new QZipWriter(filePath, QIODevice::WriteOnly);
++    m_writer->setCompressionPolicy(QZipWriter::AutoCompress);
+ }
+ 
+ ZipWriter::ZipWriter(QIODevice *device)
+ {
+-    m_writer = new Stel::QZipWriter(device);
+-    m_writer->setCompressionPolicy(Stel::QZipWriter::AutoCompress);
++    m_writer = new QZipWriter(device);
++    m_writer->setCompressionPolicy(QZipWriter::AutoCompress);
+ }
+ 
+ ZipWriter::~ZipWriter()
+@@ -46,7 +46,7 @@
+ 
+ bool ZipWriter::error() const
+ {
+-    return m_writer->status() != Stel::QZipWriter::NoError;
++    return m_writer->status() != QZipWriter::NoError;
+ }
+ 
+ void ZipWriter::addFile(const QString &filePath, QIODevice *device)
+diff -r 2019bb0d2919 xlsxzipwriter_p.h
+--- a/src/external/qxlsx/xlsxzipwriter_p.h	Thu Oct 08 21:35:35 2020 +0100
++++ b/src/external/qxlsx/xlsxzipwriter_p.h	Thu Oct 08 21:36:28 2020 +0100
+@@ -37,7 +37,7 @@
+ //
+ 
+ #include <QString>
+-#include "external/qtcompress/qzipwriter.h"
++#include "qzipwriter.h"
+ 
+ class QIODevice;
+ class QZipWriter;
+@@ -57,7 +57,7 @@
+     void close();
+ 
+ private:
+-    Stel::QZipWriter *m_writer;
++    QZipWriter *m_writer;
+ };
+ 
+ } // namespace QXlsx
