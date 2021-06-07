@@ -12,6 +12,8 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/libesmtp/libESMTP.git"
 else
 	SRC_URI="https://github.com/libesmtp/libESMTP/archive/v${PV/_}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/libESMTP-${PV}"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -22,7 +24,7 @@ IUSE="ssl static-libs threads"
 RDEPEND="ssl? ( >=dev-libs/openssl-1.1.0:0= )"
 DEPEND="${RDEPEND}"
 
-DOCS=( AUTHORS docs/{bugreport,ChangeLog,faq}.md NEWS Notes README.md TODO )
+DOCS=( docs/{authors,bugreport,ChangeLog,faq,NEWS}.md README.md )
 
 src_configure() {
 	local emesonargs=(
