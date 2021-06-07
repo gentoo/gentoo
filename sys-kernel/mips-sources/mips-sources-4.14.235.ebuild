@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
-EAPI="6"
+EAPI="7"
 
 #//------------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2 eapi7-ver
+inherit kernel-2
 detect_version
 
 # Version Data
@@ -36,10 +36,6 @@ BASE_KV="$(ver_cut 1-2).0"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
-RDEPEND=""
-DEPEND="${RDEPEND}
-	>=sys-devel/gcc-4.7.0
-	>=sys-devel/patch-2.7.4"
 
 # Specify any patches or patch familes to NOT apply here.
 # Use only the 4-digit number followed by a '*'.

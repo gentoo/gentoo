@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # EAPI Version
-EAPI="6"
+EAPI="7"
 
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="4"				# Tarball revision for patches
+GENPATCHREV="3"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}"
@@ -18,27 +18,23 @@ K_SECURITY_UNSUPPORTED="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
-K_BASE_VER="5.3"
+K_BASE_VER="4.18"
 K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2 eapi7-ver
+inherit kernel-2
 detect_version
 
 # Version Data
 F_KV="${PVR}"
-BASE_KV="$(ver_cut 1-2)"
+BASE_KV="$(ver_cut 1-2).0"
 [[ "${EXTRAVERSION}" = -rc* ]] && KVE="${EXTRAVERSION}"
 
 # Portage Vars
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:MIPS"
 KEYWORDS="-* ~mips"
 IUSE="experimental ip27 ip28 ip30"
-RDEPEND=""
-DEPEND="${RDEPEND}
-	>=sys-devel/gcc-6.5.0
-	>=sys-devel/patch-2.7.6"
 
 # Specify any patches or patch familes to NOT apply here.
 # Use only the 4-digit number followed by a '*'.
@@ -47,14 +43,14 @@ P_EXCLUDE=""
 # Machine Support Control Variables
 DO_IP22="test"				# If "yes", enable IP22 support		(SGI Indy, Indigo2 R4x00)
 DO_IP27="yes"				# 		   IP27 support		(SGI Origin)
-DO_IP28="no"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
+DO_IP28="test"				# 		   IP28 support		(SGI Indigo2 Impact R10000)
 DO_IP30="yes"				# 		   IP30 support		(SGI Octane)
 DO_IP32="yes"				# 		   IP32 support		(SGI O2, R5000/RM5200 Only)
 
 # Machine Stable Version Variables
 SV_IP22=""				# If set && DO_IP22 == "no", indicates last "good" IP22 version
 SV_IP27=""				# 	    DO_IP27 == "no", 			   IP27
-SV_IP28="4.19.x"			# 	    DO_IP28 == "no", 			   IP28
+SV_IP28=""				# 	    DO_IP28 == "no", 			   IP28
 SV_IP30=""				# 	    DO_IP30 == "no", 			   IP30
 SV_IP32=""				# 	    DO_IP32 == "no", 			   IP32
 
