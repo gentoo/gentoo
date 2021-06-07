@@ -30,7 +30,6 @@ features, and improving the OpenGL renderer. And QuakeForge is still the
 most portable source tree based on the id Software code.
 </longdescription>
 	<use>
-		<flag name="xdg">enable XDG support</flag>
 		<flag name="client">Build Normal and QuakeWorld clients alongside the servers</flag>
 		<flag name="wildmidi">Use <pkg>media-sound/wildmidi</pkg> for midi support</flag>
 	</use>
