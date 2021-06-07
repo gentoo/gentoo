@@ -34,6 +34,7 @@ most portable source tree based on the id Software code.
 		<flag name="xdg">enable XDG support</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">quakeforge/quakeforge</remote-id>
 		<remote-id type="sourceforge">quake</remote-id>
 	</upstream>
 </pkgmetadata>
