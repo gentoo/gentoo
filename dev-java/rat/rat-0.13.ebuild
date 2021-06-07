@@ -10,7 +10,7 @@ HOMEPAGE="https://creadur.apache.org/rat/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	~dev-java/apache-rat-core-${PV}:0
