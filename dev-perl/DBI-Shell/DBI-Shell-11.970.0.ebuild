@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Interactive command shell for the DBI"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="minimal test"
 RESTRICT="!test? ( test )"
 
