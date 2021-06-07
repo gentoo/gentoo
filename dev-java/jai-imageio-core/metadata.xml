@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		Java Advanced Imaging Image I/O Tools API core, but without the classes involved 
+		with javax.media.jai dependencies, JPEG2000 or codecLibJIIO, meaning that this 
+		library can be distributed under the modified BSD license and should be GPL compatible.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jai-imageio/jai-imageio-core</remote-id>
+		<bugs-to>https://github.com/jai-imageio/jai-imageio-core/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
