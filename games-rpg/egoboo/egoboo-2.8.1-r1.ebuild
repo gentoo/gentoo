@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop edos2unix
+inherit desktop
 
 DESCRIPTION="A 3d dungeon crawling adventure in the spirit of NetHack"
 HOMEPAGE="http://egoboo.sourceforge.net/"
@@ -29,9 +29,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	edos2unix src/game/platform/file_linux.c \
-		src/game/network.c \
-		src/game/Makefile
 	default
 	sed -i \
 		-e "s:@GENTOO_CONFDIR@:/etc/${PN}:" \
