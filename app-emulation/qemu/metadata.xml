@@ -20,6 +20,7 @@
 		<flag name="capstone">Enable disassembly support with <pkg>dev-libs/capstone</pkg></flag>
 		<flag name="curl">Support ISOs / -cdrom directives via HTTP or HTTPS.</flag>
 		<flag name="fdt">Enables firmware device tree support</flag>
+		<flag name="fuse">Enables FUSE block device export</flag>
 		<flag name="glusterfs">Enables GlusterFS cluster fileystem via
 			<pkg>sys-cluster/glusterfs</pkg></flag>
 		<flag name="gnutls">Enable TLS support for the VNC console server.
@@ -64,6 +65,5 @@
 		<flag name="xen">Enables support for Xen backends</flag>
 		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
 		virtual disks.</flag>
-		<flag name="xkb">Depend on x11-libs/libxkbcommon to build qemu-keymap tool for converting xkb keymaps</flag>
 	</use>
 </pkgmetadata>

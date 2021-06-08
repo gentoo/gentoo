@@ -10,7 +10,7 @@ SRC_URI="https://github.com/gkdr/axc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"  # not GPL-3+
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="static-libs test"
 
 RDEPEND="

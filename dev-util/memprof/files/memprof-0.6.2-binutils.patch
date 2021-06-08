@@ -1,5 +1,5 @@
---- src/memprof.h
-+++ src/memprof.h
+--- a/src/memprof.h
++++ b/src/memprof.h
 @@ -24,6 +24,7 @@
  #include <gtk/gtkwidget.h>
  #include <stdio.h>

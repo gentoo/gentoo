@@ -5,7 +5,7 @@ EAPI=7
 
 USE_RUBY="ruby25 ruby26"
 
-inherit eutils desktop ruby-ng
+inherit desktop ruby-ng
 
 PLUGIN_HASH="30071c3008e4616e723cf4e734fc79254019af09"
 

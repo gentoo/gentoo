@@ -11,7 +11,7 @@ SRC_URI="https://lftp.tech/ftp/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file"
+IUSE="convert-mozilla-cookies +gnutls idn ipv6 nls socks5 +ssl verify-file"
 RESTRICT="test"
 
 RDEPEND="
@@ -27,10 +27,7 @@ RDEPEND="
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3:0= )
-		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+		!gnutls? ( dev-libs/openssl:0= )
 	)
 	verify-file? (
 		dev-perl/String-CRC32
@@ -59,7 +56,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.2-libdir-openssl.patch
 	"${FILESDIR}"/${PN}-4.8.2-libdir-zlib.patch
 	"${FILESDIR}"/${PN}-4.9.1-libdir-readline.patch
-	"${FILESDIR}"/${PN}-4.9.2-libressl.patch
 	"${FILESDIR}"/${PN}-4.9.2-ac-270.patch
 )
 

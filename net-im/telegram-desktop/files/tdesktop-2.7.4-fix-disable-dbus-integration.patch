@@ -1,0 +1,21 @@
+--- tdesktop-2.7.4-full.orig/Telegram/SourceFiles/platform/linux/notifications_manager_linux_dummy.cpp
++++ tdesktop-2.7.4-full/Telegram/SourceFiles/platform/linux/notifications_manager_linux_dummy.cpp
+@@ -13,15 +13,15 @@
+ namespace Platform {
+ namespace Notifications {
+ 
+-bool SkipAudio() {
++bool SkipAudioForCustom() {
+ 	return false;
+ }
+ 
+-bool SkipToast() {
++bool SkipToastForCustom() {
+ 	return false;
+ }
+ 
+-bool SkipFlashBounce() {
++bool SkipFlashBounceForCustom() {
+ 	return false;
+ }
+ 

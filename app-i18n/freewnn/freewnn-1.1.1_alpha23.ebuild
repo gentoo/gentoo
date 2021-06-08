@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+
+inherit toolchain-funcs
 
 MY_P="FreeWnn-${PV/_alpha/-a0}"
 
@@ -50,7 +52,7 @@ src_configure() {
 		--disable-cWnn \
 		--disable-kWnn \
 		--disable-traditional-layout \
-		--with-term-libs="$(pkg-config --libs ncurses)"
+		--with-term-libs="$($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_compile() {

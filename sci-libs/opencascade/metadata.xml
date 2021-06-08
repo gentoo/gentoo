@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
 	<email>waebbl-gentoo@posteo.net</email>
 	<name>Bernd Waibel</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
 <use>
 	<flag name="freeimage">
-		Enable support for image i/o via media-libs/freeimage
+		Enable support for image i/o via <pkg>media-libs/freeimage</pkg>
 	</flag>
 	<flag name="gles2">
 		Use OpenGL ES 2.0
@@ -19,15 +19,19 @@
 	<flag name="inspector">
 		Build the OCCT inspector tool for low-level data inspection
 	</flag>
+	<flag name="json">
+		Enable JSON support through <pkg>dev-libs/rapidjson</pkg>
+	</flag>
 	<flag name="optimize">
 		Don't clear allocated memory. Use optimized memory manager unless
 		tbb USE flag is set.
 	</flag>
 	<flag name="tbb">
-		Enable multithreading with the Intel Threads Building Block dev-cpp/tbb
+		Enable multithreading with the Intel Threads Building Block
+		<pkg>dev-cpp/tbb</pkg>
 	</flag>
 	<flag name="vtk">
-		Enable Visualization Toolkit
+		Enable Visualization Toolkit support via <pkg>sci-libs/vtk</pkg>
 	</flag>
 </use>
 </pkgmetadata>

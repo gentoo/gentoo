@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="High performance web server"
 HOMEPAGE="https://www.fefe.de/gatling/"
@@ -12,14 +12,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="libressl ssl diet"
+IUSE="ssl diet"
 REQUIRED_USE="ssl? ( !diet )"
 
 DEPEND=">=dev-libs/libowfat-0.32-r2[diet=]
 	diet? ( dev-libs/dietlibc )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		dev-libs/openssl:0
 	)"
 RDEPEND="${DEPEND}
 	acct-group/gatling
@@ -44,7 +43,7 @@ src_compile() {
 	use ssl && targets+=' tlsgatling'
 
 	emake DIET="${DIET}" CC="$(tc-getCC)" \
-			CFLAGS="${CFLAGS} -I${ROOT}/usr/include/libowfat" \
+			CFLAGS="${CFLAGS} -I${ESYSROOT}/usr/include/libowfat" \
 			LDFLAGS="${LDFLAGS}" prefix=/usr ${targets}
 }
 

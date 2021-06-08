@@ -9,7 +9,7 @@ inherit toolchain-funcs xorg-3
 
 DESCRIPTION="X.Org X11 library"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="ipv6 test"
 RESTRICT="!test? ( test )"
 
@@ -22,17 +22,18 @@ DEPEND="${RDEPEND}
 	x11-libs/xtrans"
 BDEPEND="test? ( dev-lang/perl )"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_with doc xmlto)
 		$(use_enable doc specs)
 		$(use_enable ipv6)
 		--without-fop
 		CPP="$(tc-getPROG CPP cpp)"
 	)
+	xorg-3_src_configure
 }
 
 src_install() {
 	xorg-3_src_install
-	rm -Rf "${ED}/usr/share/X11/locale"
+	rm -rf "${ED}"/usr/share/X11/locale || die
 }

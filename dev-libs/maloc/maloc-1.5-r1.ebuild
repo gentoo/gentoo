@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="doc mpi static-libs"
+IUSE="doc mpi"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
@@ -48,6 +48,7 @@ src_configure() {
 
 	myeconfargs+=(
 		--disable-triplet
+		--disable-static
 		$(use_enable mpi)
 	)
 

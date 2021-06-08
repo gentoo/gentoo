@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="
@@ -18,8 +18,8 @@ inherit distutils-r1 docs
 
 DESCRIPTION="Bash style brace expansion for Python"
 HOMEPAGE="
-	https://github.com/facelessuser/bracex
-	https://pypi.org/project/bracex
+	https://github.com/facelessuser/bracex/
+	https://pypi.org/project/bracex/
 "
 SRC_URI="https://github.com/facelessuser/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 

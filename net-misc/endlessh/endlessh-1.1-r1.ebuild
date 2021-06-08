@@ -8,7 +8,7 @@ inherit systemd toolchain-funcs
 DESCRIPTION="SSH tarpit that slowly sends and endless banner"
 HOMEPAGE="https://github.com/skeeto/endlessh"
 
-if [ ${PV} == "9999" ] ; then
+if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/skeeto/${PN}.git"
 else
@@ -18,11 +18,6 @@ fi
 
 LICENSE="Unlicense"
 SLOT="0"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
-BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1-syslog-help.patch
@@ -55,7 +50,7 @@ src_install() {
 
 	systemd_dounit util/endlessh.service
 
-	insinto /usr/share/"${PN}"
+	insinto /usr/share/${PN}
 	doins util/{pivot.py,schema.sql}
 }
 

@@ -12,7 +12,7 @@ S="${WORKDIR}/dune-${PV}"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ~ppc64 x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
@@ -103,6 +103,6 @@ src_prepare() {
 	rm -r ${bad_tests[@]} || die "Failed to remove broken/inappropriate tests"
 }
 
-src_configure(){
+src_configure() {
 	:
 }

@@ -186,7 +186,7 @@ set_java_env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym ${java_home#${EPREFIX}} ${JAVA_VM_DIR}/${VMHANDLE}
+	dosym "${java_home}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 
@@ -228,7 +228,7 @@ java-vm_install-env() {
 
 	# Make the symlink
 	dodir "${JAVA_VM_DIR}"
-	dosym "${java_home#${EPREFIX}}" "${JAVA_VM_DIR}/${VMHANDLE}"
+	dosym "${java_home}" "${JAVA_VM_DIR}/${VMHANDLE}"
 }
 
 

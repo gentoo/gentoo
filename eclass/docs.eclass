@@ -3,9 +3,9 @@
 
 # @ECLASS: docs.eclass
 # @MAINTAINER:
-# Andrew Ammerlaan <andrewammerlaan@riseup.net>
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # @AUTHOR:
-# Author: Andrew Ammerlaan <andrewammerlaan@riseup.net>
+# Author: Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # Based on the work of: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: A simple eclass to build documentation.
@@ -164,7 +164,7 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-# @FUNCTION: python_append_dep
+# @FUNCTION: python_append_deps
 # @INTERNAL
 # @DESCRIPTION:
 # Appends [\${PYTHON_USEDEP}] to all dependencies

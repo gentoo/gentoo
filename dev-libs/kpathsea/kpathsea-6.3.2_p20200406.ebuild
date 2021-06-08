@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit texlive-common libtool prefix
+inherit texlive-common libtool prefix tmpfiles
 
 TEXMFD_VERSION="10"
 
@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~zlogene/distfiles/texlive/texlive-${PV#*_p}-sou
 
 LICENSE="GPL-2"
 SLOT="0/${PV%_p*}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc source static-libs"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
@@ -68,8 +68,7 @@ src_install() {
 
 	# The default configuration expects it to be world writable, bug #266680
 	# People can still change it with texconfig though.
-	dodir /var/cache/fonts
-	fperms 1777 /var/cache/fonts
+	dotmpfiles "${FILESDIR}"/kpathsea.conf
 
 	# Take care of fmtutil.cnf and texmf.cnf
 	dodir /etc/texmf/{fmtutil.d,texmf.d}
@@ -98,6 +97,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process "${FILESDIR}"/kpathsea.conf
+
 	etexmf-update
 }
 

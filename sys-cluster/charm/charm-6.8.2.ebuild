@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 FORTRAN_STANDARD="90"
 
-inherit eutils flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs
+inherit epatch flag-o-matic fortran-2 multilib multiprocessing toolchain-funcs
 
 DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
@@ -20,7 +20,8 @@ RDEPEND="mpi? ( virtual/mpi )"
 DEPEND="
 	${RDEPEND}
 	net-libs/libtirpc
-	"
+	virtual/pkgconfig
+"
 
 REQUIRED_USE="
 	cmkopt? ( !charmdebug !charmtracing )
@@ -57,7 +58,7 @@ get_opts() {
 	fi
 
 	CHARM_OPTS+="$(usex numa ' --with-numa' '')"
-	echo $CHARM_OPTS
+	echo ${CHARM_OPTS}
 }
 
 src_prepare() {
@@ -154,7 +155,7 @@ src_install() {
 
 	# Install libs incl. charm objects
 	for i in lib*/*.{so,a}; do
-		[[ ${i} = *.a ]] && use !static-libs && continue
+		[[ ${i} = *.a ]] && ! use static-libs && continue
 		if [[ -L ${i} ]]; then
 			i=$(readlink -e "${i}") || die
 		fi

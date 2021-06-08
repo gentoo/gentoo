@@ -29,7 +29,9 @@ RDEPEND="
 	dev-libs/icu
 	dev-libs/libgee:0.8
 	net-libs/glib-networking
+	>=net-libs/libnice-0.1.15
 	net-libs/libsignal-protocol-c
+	net-libs/libsrtp:2
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

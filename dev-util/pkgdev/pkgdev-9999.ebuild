@@ -11,11 +11,11 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pkgcore/pkgdev.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc64 ~riscv ~x64-macos"
 fi
 
-DESCRIPTION="pkgcore-based git QA tool"
+DESCRIPTION="Collection of tools for Gentoo development"
 HOMEPAGE="https://github.com/pkgcore/pkgdev"
 
 LICENSE="BSD MIT"
@@ -26,15 +26,23 @@ if [[ ${PV} == *9999 ]] ; then
 	RDEPEND="
 		~dev-python/snakeoil-9999[${PYTHON_USEDEP}]
 		~dev-util/pkgcheck-9999[${PYTHON_USEDEP}]
-		dev-vcs/git
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]
+	"
+else
+	# https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
+	RDEPEND="
+		>=dev-python/snakeoil-0.9.4[${PYTHON_USEDEP}]
+		>=dev-util/pkgcheck-0.9.1[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.11.5[${PYTHON_USEDEP}]
 	"
 fi
 
-# Releases (in future): https://github.com/pkgcore/pkgdev/blob/main/requirements/install.txt
+# Uses pytest but we want to use the setup.py runner to get generated modules
+BDEPEND+="test? ( dev-python/pytest )"
+RDEPEND+="dev-vcs/git"
 
 distutils_enable_sphinx doc
-distutils_enable_tests pytest
+distutils_enable_tests setup.py
 
 python_install_all() {
 	# We'll generate man pages ourselves

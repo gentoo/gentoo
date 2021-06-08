@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 MY_P=${PN}-src-${PV}
 
@@ -13,7 +13,7 @@ SRC_URI="http://abcl.org/releases/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=virtual/jdk-1.8"
 RDEPEND=">=virtual/jre-1.8"

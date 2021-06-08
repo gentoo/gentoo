@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_PROJECT="${PN}.git"
 else
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
-	SRC_URI="https://github.com/tomszilagyi/tap-plugins/archive/v${PV}.tar.gz -> $P.tar.gz"
+	SRC_URI="https://github.com/tomszilagyi/tap-plugins/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 DESCRIPTION="Tom's audio processing (TAP) LADSPA plugins"

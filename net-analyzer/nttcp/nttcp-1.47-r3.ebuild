@@ -1,20 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs
+EAPI=7
 
-DESCRIPTION="tool to test TCP and UDP throughput"
+inherit toolchain-funcs
+
+DESCRIPTION="Tool to test TCP and UDP throughput"
 HOMEPAGE="http://www.leo.org/~elmar/nttcp/"
 SRC_URI="http://www.leo.org/~elmar/nttcp/${P}.tar.gz"
-LICENSE="public-domain"
 
+LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 ~mips ~ppc x86"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-format-security.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-format-security.patch
+)
 
 src_compile() {
 	emake \

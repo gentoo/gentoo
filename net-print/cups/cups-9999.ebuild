@@ -5,32 +5,41 @@ EAPI=7
 
 inherit autotools flag-o-matic linux-info xdg multilib-minimal pam systemd toolchain-funcs
 
-MY_PV="${PV/_rc/rc}"
-MY_PV="${MY_PV/_beta/b}"
+MY_PV="${PV/_beta/b}"
+MY_PV="${MY_PV/_rc/rc}"
+MY_PV="${MY_PV/_p/op}"
 MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/apple/cups.git"
-	if [[ ${PV} != 9999 ]]; then
-		EGIT_BRANCH=branch-${PV/.9999}
-	fi
+#	EGIT_REPO_URI="https://github.com/apple/cups.git"
+	EGIT_REPO_URI="https://github.com/OpenPrinting/cups.git"
+	[[ ${PV} != 9999 ]] && EGIT_BRANCH=branch-${PV/.9999}
 else
-	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
+#	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
+	SRC_URI="https://github.com/OpenPrinting/cups/releases/download/v${MY_PV}/cups-${MY_PV}-source.tar.gz"
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
 		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 	fi
 fi
 
 DESCRIPTION="The Common Unix Printing System"
-HOMEPAGE="https://www.cups.org/"
+HOMEPAGE="https://www.cups.org/ https://github.com/OpenPrinting/cups"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="acl dbus debug kerberos lprng-compat pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug kerberos pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
-CDEPEND="
+REQUIRED_USE="usb? ( threads )"
+# upstream includes an interactive test which is a nono for gentoo
+RESTRICT="test"
+
+BDEPEND="
+	acct-group/lp
+	acct-group/lpadmin
+	virtual/pkgconfig
+"
+DEPEND="
 	app-text/libpaper
 	sys-libs/zlib
 	acl? (
@@ -41,7 +50,6 @@ CDEPEND="
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	!lprng-compat? ( !net-print/lprng )
 	pam? ( sys-libs/pam )
 	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
@@ -50,35 +58,16 @@ CDEPEND="
 	xinetd? ( sys-apps/xinetd )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
-
-DEPEND="${CDEPEND}"
-BDEPEND="
-	acct-group/lp
-	acct-group/lpadmin
-	virtual/pkgconfig
-"
-
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	acct-group/lp
 	acct-group/lpadmin
 	selinux? ( sec-policy/selinux-cups )
 "
-
 PDEPEND=">=net-print/cups-filters-1.0.43"
 
-REQUIRED_USE="
-	usb? ( threads )
-"
-
-# upstream includes an interactive test which is a nono for gentoo
-RESTRICT="test"
-
-# systemd-socket.patch from Fedora
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
-	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
-	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -129,10 +118,10 @@ src_prepare() {
 	default
 
 	# Remove ".SILENT" rule for verbose output (bug 524338).
-	sed 's#^.SILENT:##g' -i "${S}"/Makedefs.in || die "sed failed"
+	sed 's#^.SILENT:##g' -i Makedefs.in || die
 
 	# Fix install-sh, posix sh does not have 'function'.
-	sed 's#function gzipcp#gzipcp()#g' -i "${S}/install-sh"
+	sed 's#function gzipcp#gzipcp()#g' -i install-sh || die
 
 	# Do not add -Werror even for live ebuilds
 	sed '/WARNING_OPTIONS/s@-Werror@@' \
@@ -234,10 +223,10 @@ multilib_src_install_all() {
 
 	# move the default config file to docs
 	dodoc "${ED}"/etc/cups/cupsd.conf.default
-	rm -f "${ED}"/etc/cups/cupsd.conf.default
+	rm "${ED}"/etc/cups/cupsd.conf.default || die
 
 	# clean out cups init scripts
-	rm -rf "${ED}"/etc/{init.d/cups,rc*,pam.d/cups}
+	rm -r "${ED}"/etc/{init.d/cups,rc*,pam.d/cups} || die
 
 	# install our init script
 	local neededservices=(
@@ -246,9 +235,7 @@ multilib_src_install_all() {
 	)
 	[[ -n ${neededservices[@]} ]] && neededservices="need ${neededservices[@]}"
 	cp "${FILESDIR}"/cupsd.init.d-r3 "${T}"/cupsd || die
-	sed -i \
-		-e "s/@neededservices@/${neededservices}/" \
-		"${T}"/cupsd || die
+	sed -i -e "s/@neededservices@/${neededservices}/" "${T}"/cupsd || die
 	doinitd "${T}"/cupsd
 
 	if use pam; then
@@ -257,8 +244,7 @@ multilib_src_install_all() {
 
 	if use xinetd ; then
 		# correct path
-		sed -i \
-			-e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
+		sed -i -e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
 			"${ED}"/etc/xinetd.d/cups-lpd || die
 		# it is safer to disable this by default, bug #137130
 		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
@@ -268,11 +254,11 @@ multilib_src_install_all() {
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604
-		rm -rf "${ED}"/etc/xinetd.d
+		rm -r "${ED}"/etc/xinetd.d || die
 	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
-		/var/log/cups /var/spool/cups/tmp
+		/var/cache/cups /var/log/cups /var/spool/cups/tmp
 
 	keepdir /etc/cups/{interfaces,ppd,ssl}
 
@@ -289,17 +275,6 @@ multilib_src_install_all() {
 	# the following are created by the init script
 	rm -r "${ED}"/var/cache/cups || die
 	rm -r "${ED}"/run || die
-
-	# for the special case of running lprng and cups together, bug 467226
-	if use lprng-compat ; then
-		rm -fv "${ED}"/usr/bin/{lp*,cancel}
-		rm -fv "${ED}"/usr/sbin/lp*
-		rm -fv "${ED}"/usr/share/man/man1/{lp*,cancel*}
-		rm -fv "${ED}"/usr/share/man/man8/lp*
-		ewarn "Not installing lp... binaries, since the lprng-compat useflag is set."
-		ewarn "Unless you plan to install an exotic server setup, you most likely"
-		ewarn "do not want this. Disable the useflag then and all will be fine."
-	fi
 }
 
 pkg_preinst() {
@@ -314,20 +289,17 @@ pkg_postinst() {
 
 	for v in ${REPLACING_VERSIONS}; do
 		if ! ver_test ${v} -ge 2.2.2-r2 ; then
-			echo
 			ewarn "The cupsd init script switched to using pidfiles. Shutting down"
 			ewarn "cupsd will fail the next time. To fix this, please run once as root"
 			ewarn "   killall cupsd ; /etc/init.d/cupsd zap ; /etc/init.d/cupsd start"
-			echo
 			break
 		fi
 	done
 
 	for v in ${REPLACING_VERSIONS}; do
-		echo
+		elog
 		elog "For information about installing a printer and general cups setup"
 		elog "take a look at: https://wiki.gentoo.org/wiki/Printing"
-		echo
 		break
 	done
 }

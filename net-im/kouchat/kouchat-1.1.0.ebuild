@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 JAVA_PKG_IUSE=""
 
-inherit eutils java-pkg-2 java-ant-2
+inherit desktop java-pkg-2 java-ant-2
 
 DESCRIPTION="KouChat is a simple serverless chat client for local area networks"
 HOMEPAGE="https://kouchat.googlecode.com/"

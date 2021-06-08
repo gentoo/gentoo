@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="doc dolphin libressl nautilus test"
+IUSE="doc dolphin nautilus test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-libs/qtkeychain[gnome-keyring,qt5(+)]
@@ -33,8 +33,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/kio:5
 	)
-	!libressl? ( >=dev-libs/openssl-1.1.0:0= )
-	libressl? ( >=dev-libs/libressl-3.1:0= )
+	>=dev-libs/openssl-1.1.0:0=
 	nautilus? ( dev-python/nautilus-python )"
 
 RDEPEND="${COMMON_DEPEND}"

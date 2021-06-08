@@ -1,6 +1,5 @@
-diff -NrU5 bashmark-0.6.2.orig/Benchmark.cpp bashmark-0.6.2/Benchmark.cpp
---- bashmark-0.6.2.orig/Benchmark.cpp	2008-06-29 11:53:07.000000000 +0200
-+++ bashmark-0.6.2/Benchmark.cpp	2008-06-29 11:54:02.000000000 +0200
+--- a/Benchmark.cpp
++++ b/Benchmark.cpp
 @@ -15,11 +15,11 @@
   *                                                                         *
   * You should have received a copy of the GNU General Public License       *
@@ -14,9 +13,8 @@ diff -NrU5 bashmark-0.6.2.orig/Benchmark.cpp bashmark-0.6.2/Benchmark.cpp
  #include "Main.hpp"
  
  
-diff -NrU5 bashmark-0.6.2.orig/main.cpp bashmark-0.6.2/main.cpp
---- bashmark-0.6.2.orig/main.cpp	2008-06-29 11:53:07.000000000 +0200
-+++ bashmark-0.6.2/main.cpp	2008-06-29 11:56:40.000000000 +0200
+--- a/main.cpp
++++ b/main.cpp
 @@ -17,10 +17,11 @@
   * along with this software; if not, write to the Free Software            *
   * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.               *
@@ -29,9 +27,8 @@ diff -NrU5 bashmark-0.6.2.orig/main.cpp bashmark-0.6.2/main.cpp
  
  #include "Output.hpp"
  #include "Sysinfo.hpp"
-diff -NrU5 bashmark-0.6.2.orig/Sysinfo.cpp bashmark-0.6.2/Sysinfo.cpp
---- bashmark-0.6.2.orig/Sysinfo.cpp	2008-06-29 11:53:07.000000000 +0200
-+++ bashmark-0.6.2/Sysinfo.cpp	2008-06-29 11:55:58.000000000 +0200
+--- a/Sysinfo.cpp
++++ b/Sysinfo.cpp
 @@ -15,11 +15,12 @@
   *                                                                         *
   * You should have received a copy of the GNU General Public License       *

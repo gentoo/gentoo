@@ -10,7 +10,7 @@ RUBY_FAKEGEM_RECIPE_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CONTRIBUTORS README.md"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="A fake filesystem. Use it in your tests"
 HOMEPAGE="https://github.com/defunkt/fakefs"

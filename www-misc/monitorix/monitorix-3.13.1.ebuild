@@ -77,7 +77,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional dependencies:"
 	optfeature "disk drive temperatures and health" app-admin/hddtemp
 	optfeature "email reports/statics" mail-mta/postfix mail-mta/sendmail
 	optfeature "lm-sensors and GPU temperatures" sys-apps/lm-sensors

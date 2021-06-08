@@ -61,6 +61,5 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "For additional features, you may wish to install"
-	optfeature "for djviewer or browser plugin" app-text/djview
+	optfeature "djviewer or browser plugin" app-text/djview
 }

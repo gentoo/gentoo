@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
 app-office/libreoffice base
@@ -29,10 +34,6 @@ www-client/firefox screencast
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-05)
 # sys-cluster/slurm has no stable keywords
 app-metrics/collectd collectd_plugins_slurm
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
-# net-libs/libktorrent:5 is not stable anymore, bug #696858
-<kde-apps/kget-20.12 bittorrent
 
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
@@ -55,7 +56,7 @@ media-gfx/digikam mediaplayer
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
 virtual/wine staging
 

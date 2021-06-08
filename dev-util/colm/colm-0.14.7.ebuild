@@ -11,7 +11,7 @@ SRC_URI="https://www.colm.net/files/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ~ppc64 s390 sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc"
 
 BDEPEND="
@@ -22,6 +22,10 @@ BDEPEND="
 "
 # libfsm moved from ragel -> colm, bug #766108
 RDEPEND="!<dev-util/ragel-7.0.3"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.7-drop-julia-check.patch
+)
 
 src_prepare() {
 	default

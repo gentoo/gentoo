@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake eutils flag-o-matic
+inherit cmake edos2unix flag-o-matic
 
 DESCRIPTION="Stream based read/write library for COLLADA files"
 HOMEPAGE="http://www.opencollada.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/KhronosGroup/OpenCOLLADA/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="static-libs"
 
 RDEPEND="

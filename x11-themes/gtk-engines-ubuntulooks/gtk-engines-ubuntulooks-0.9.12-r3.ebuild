@@ -34,6 +34,7 @@ PATCHES=(
 	"${S}"/debian/patches/02_fix-firefox-buttons.patch
 	# https://bugs.gentoo.org/419395
 	"${FILESDIR}"/${P}-glib-2.31.patch
+	"${FILESDIR}"/${P}-libm.patch
 )
 
 src_prepare() {

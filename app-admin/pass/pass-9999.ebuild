@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 	S="${WORKDIR}/password-store-${PV}"
 fi
 
@@ -19,13 +19,14 @@ HOMEPAGE="https://www.passwordstore.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
+IUSE="+git wayland X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
 
 RDEPEND="
 	app-crypt/gnupg
 	media-gfx/qrencode
 	>=app-text/tree-1.7.0
 	git? ( dev-vcs/git )
+	wayland? ( gui-apps/wl-clipboard )
 	X? ( x11-misc/xclip )
 	elibc_Darwin? ( app-misc/getopt )
 	zsh-completion? ( app-shells/gentoo-zsh-completions )

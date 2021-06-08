@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>ceamac.paragon@gmail.com</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 Backup directory tree and files.
 Full featured archiver with support for differential backups, slices,
@@ -9,12 +16,14 @@ compression, ATTR/ACL support. DAR also supports Pipes for remote
 operations, including with ssh.
 	</longdescription>
 	<use>
+		<flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
 		<flag name="dar32">Enables --enable-mode=32 option, which replace infinite
 		by 32 bit integers</flag>
 		<flag name="dar64">Enables --enable-mode=64 option, which replace infinite
 		by 64 bit integers</flag>
 		<flag name="gcrypt">Enables strong encryption support</flag>
-		<flag name="gpg">Enables usage of asymetric crypto algorithms</flag>
+		<flag name="gpg">Enables usage of asymmetric encryption algorithms</flag>
+		<flag name="rsync">Enables linking with <pkg>net-libs/librsync</pkg> for delta compression support</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">dar</remote-id>

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/harningt/luaevent/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="

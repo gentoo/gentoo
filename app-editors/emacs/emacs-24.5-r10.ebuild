@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux 
 IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
 RDEPEND="acct-group/mail
-	app-emacs/emacs-common-gentoo[games?,gui(-)?]
+	app-emacs/emacs-common[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
@@ -97,10 +97,10 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 # operations later on
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
+PATCHES=("${WORKDIR}/patch")
 
 src_prepare() {
-	eapply ../patch
-	eapply_user
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
@@ -244,15 +244,15 @@ src_install() {
 	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 
 	# avoid collision between slots, see bug #169033 e.g.
-	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{applications,icons}
-	rm -rf "${ED}"/var
+	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
+	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
-	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp || die
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
-	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
@@ -296,7 +296,7 @@ src_install() {
 
 	if use gui && use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 		mv nextstep/Emacs.app \
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
@@ -336,9 +336,6 @@ pkg_postinst() {
 		# force an update of the emacs symlink for the livecd/dvd,
 		# because some microemacs packages set it with USE=livecd
 		eselect emacs update
-	elif [[ $(readlink "${EROOT}"/usr/bin/emacs) = ${EMACS_SUFFIX} ]]; then
-		# refresh symlinks in case any installed files have changed
-		eselect emacs set ${EMACS_SUFFIX}
 	else
 		eselect emacs update ifunset
 	fi

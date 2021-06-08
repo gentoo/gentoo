@@ -1,4 +1,4 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -350,8 +350,8 @@ check-reqs_unsatisfied() {
 	${msg} "There is NOT at least ${sizeunit} ${location}"
 
 	# @ECLASS-VARIABLE: CHECKREQS_FAILED
-	# @DESCRIPTION:
 	# @INTERNAL
+	# @DESCRIPTION:
 	# If set the checks failed and eclass should abort the build.
 	# Internal, do not set yourself.
 	CHECKREQS_FAILED="true"

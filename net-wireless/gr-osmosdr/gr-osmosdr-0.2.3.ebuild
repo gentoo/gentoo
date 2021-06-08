@@ -23,6 +23,7 @@ IUSE="airspy bladerf hackrf iqbalance python rtlsdr sdrplay soapy uhd xtrx"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
+	dev-libs/log4cpp
 	=net-wireless/gnuradio-3.8*:0=[${PYTHON_SINGLE_USEDEP}]
 	sci-libs/volk:=
 	airspy? ( net-wireless/airspy )
@@ -35,7 +36,9 @@ RDEPEND="${PYTHON_DEPS}
 	uhd? ( net-wireless/uhd:=[${PYTHON_SINGLE_USEDEP}] )
 	xtrx? ( net-wireless/libxtrx )
 	"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-lang/swig
+	"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

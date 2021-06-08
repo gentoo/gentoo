@@ -1,14 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils linux-info toolchain-funcs
+EAPI=7
 
-DESCRIPTION="interface bandwidth monitor"
+inherit autotools linux-info toolchain-funcs
+
+DESCRIPTION="Interface bandwidth monitor"
 HOMEPAGE="http://www.infradead.org/~tgr/bmon/ https://github.com/tgraf/bmon/"
-SRC_URI="
-	https://codeload.github.com/tgraf/${PN}/tar.gz/v${PV} -> ${P}.tar.gz
-"
+SRC_URI="https://codeload.github.com/tgraf/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
@@ -19,10 +18,8 @@ RDEPEND="
 	dev-libs/confuse:=
 	dev-libs/libnl:3
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( ChangeLog )
 
@@ -32,12 +29,12 @@ ERROR_NET_SCHED="
 	Run ${PN} -i proc to use the deprecated proc interface instead.
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.6-docdir-examples.patch
+)
+
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-3.6-docdir-examples.patch
-
-	eapply_user
-
+	default
 	eautoreconf
 }
 

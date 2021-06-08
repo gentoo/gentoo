@@ -12,13 +12,11 @@ SRC_URI="http://www.tarsnap.com/${PN}/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
 MY_PN="${PN/d/}"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0="
 
 # Blocker added due to #548126
 RDEPEND="

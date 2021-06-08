@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit eutils
-
 DESCRIPTION="A high-throughput distributed messaging system"
 HOMEPAGE="https://kafka.apache.org/"
 

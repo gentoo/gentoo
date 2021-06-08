@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic prefix systemd
+inherit prefix systemd toolchain-funcs
 
 DESCRIPTION="File transfer program to keep remote files into sync"
 HOMEPAGE="https://rsync.samba.org/"
@@ -24,16 +24,11 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE_CPU_FLAGS_X86=" sse2"
-IUSE="acl examples iconv ipv6 libressl lz4 ssl stunnel system-zlib xattr xxhash zstd"
-IUSE+=" ${IUSE_CPU_FLAGS_X86// / cpu_flags_x86_}"
+IUSE="acl examples iconv ipv6 lz4 ssl stunnel system-zlib xattr xxhash zstd"
 
 RDEPEND="acl? ( virtual/acl )
 	lz4? ( app-arch/lz4 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	system-zlib? ( sys-libs/zlib )
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	xxhash? ( dev-libs/xxhash )
@@ -78,11 +73,8 @@ src_configure() {
 		$(use_enable zstd)
 	)
 
-	if use elibc_glibc && [[ "${ARCH}" == "amd64" ]] ; then
-		# SIMD is only available for x86_64 right now
-		# and only on glibc (#728868)
-		myeconfargs+=( $(use_enable cpu_flags_x86_sse2 simd) )
-	else
+	if tc-is-cross-compiler; then
+		# configure check is broken when cross-compiling.
 		myeconfargs+=( --disable-simd )
 	fi
 
@@ -120,11 +112,11 @@ src_install() {
 
 	eprefixify "${ED}"/etc/{,xinetd.d}/rsyncd*
 
-	systemd_dounit "${FILESDIR}/rsyncd.service"
+	systemd_newunit "packaging/systemd/rsync.service" "rsyncd.service"
 }
 
 pkg_postinst() {
-	if egrep -qis '^[[:space:]]use chroot[[:space:]]*=[[:space:]]*(no|0|false)' \
+	if grep -Eqis '^[[:space:]]use chroot[[:space:]]*=[[:space:]]*(no|0|false)' \
 		"${EROOT}"/etc/rsyncd.conf "${EROOT}"/etc/rsync/rsyncd.conf ; then
 		ewarn "You have disabled chroot support in your rsyncd.conf.  This"
 		ewarn "is a security risk which you should fix.  Please check your"

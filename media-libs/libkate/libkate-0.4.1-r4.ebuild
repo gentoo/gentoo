@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit multilib-minimal
 
@@ -19,15 +19,17 @@ RDEPEND="
 	media-libs/libogg:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	sys-devel/flex[${MULTILIB_USEDEP}]
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/bison
+	sys-devel/flex[${MULTILIB_USEDEP}]
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 "
 
 multilib_src_configure() {
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
+
 	econf \
 		--disable-static \
 		$(use_enable debug) \
@@ -37,5 +39,6 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
+
 	find "${D}" -name '*.la' -delete || die
 }

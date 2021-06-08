@@ -30,12 +30,8 @@
 		* Supports multiple languages, translated by the community.
 	</longdescription>
 	<maintainer type="person">
-		<email>vilhelm.gray@gmail.com</email>
-		<name>William Breathitt Gray</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
@@ -52,7 +48,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/minetest/minetest/issues</bugs-to>
-		<doc lang="en">http://wiki.minetest.net/Main_Page</doc>
+		<doc lang="en">https://wiki.minetest.net/Main_Page</doc>
 		<remote-id type="github">minetest/minetest</remote-id>
 	</upstream>
 </pkgmetadata>

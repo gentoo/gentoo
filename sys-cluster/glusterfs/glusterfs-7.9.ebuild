@@ -7,20 +7,15 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools elisp-common python-single-r1 systemd
 
-if [[ ${PV#9999} != ${PV} ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
-else
-	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-fi
+SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut 1)/${PV}/${P}.tar.gz"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
 HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
-IUSE="debug emacs +fuse +georeplication infiniband ipv6 libressl +libtirpc rsyslog static-libs +syslog test +xml"
+IUSE="debug emacs +fuse +georeplication infiniband ipv6 +libtirpc rsyslog static-libs +syslog test +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	ipv6? ( libtirpc )"
@@ -45,8 +40,7 @@ RDEPEND="
 	!elibc_glibc? ( sys-libs/argp-standalone )
 	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
-	!libressl? ( dev-libs/openssl:=[-bindist] )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:=[-bindist]
 "
 DEPEND="
 	${RDEPEND}

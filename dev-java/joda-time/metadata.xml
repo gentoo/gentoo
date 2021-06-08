@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>java@gentoo.org</email>
-    <name>Java</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">JodaOrg/joda-time</remote-id>
-    <remote-id type="sourceforge">joda-time</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">JodaOrg/joda-time</remote-id>
+		<remote-id type="sourceforge">joda-time</remote-id>
+		<bugs-to>https://github.com/JodaOrg/joda-time/issues</bugs-to>
+		<doc>https://www.joda.org/joda-time/userguide.html</doc>
+	</upstream>
 </pkgmetadata>

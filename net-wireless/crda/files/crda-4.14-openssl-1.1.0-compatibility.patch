@@ -23,8 +23,6 @@ Signed-off-by: Quentin Minster <quentin@minster.io>
  utils/key2pub.py | 107 ++++++-------------------------------------------------
  3 files changed, 49 insertions(+), 114 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index a3ead30..a4e7373 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -38,18 +38,16 @@ all: all_noverify verify
@@ -68,8 +66,6 @@ index a3ead30..a4e7373 100644
 -		*.o *~ *.pyc keys-*.c *.gz \
 +		*.o *~ *.pyc keys.c *.gz \
  	udev/$(UDEV_LEVEL)regulatory.rules udev/regulatory.rules.parsed
-diff --git a/reglib.c b/reglib.c
-index e00e9b8..00f7f56 100644
 --- a/reglib.c
 +++ b/reglib.c
 @@ -22,6 +22,7 @@
@@ -163,8 +159,6 @@ index e00e9b8..00f7f56 100644
  	return ok;
  }
  #endif /* USE_OPENSSL */
-diff --git a/utils/key2pub.py b/utils/key2pub.py
-index 9bb04cd..1919270 100755
 --- a/utils/key2pub.py
 +++ b/utils/key2pub.py
 @@ -9,84 +9,7 @@ except ImportError as e:

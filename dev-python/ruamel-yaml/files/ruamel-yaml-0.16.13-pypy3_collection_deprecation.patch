@@ -1,0 +1,19 @@
+This does not produce a deprecation warning under PyPy, even pypy3.7
+(last tested on 2021-03-12 using version 7.3.3-beta0).
+
+--- a/_test/test_deprecation.py
++++ b/_test/test_deprecation.py
+@@ -2,11 +2,12 @@
+ 
+ from __future__ import print_function
+ 
++import platform
+ import sys
+ import pytest  # NOQA
+ 
+ 
+-@pytest.mark.skipif(sys.version_info < (3, 7) or sys.version_info >= (3, 9),
++@pytest.mark.skipif(platform.python_implementation() == 'PyPy' or sys.version_info < (3, 7) or sys.version_info >= (3, 9),
+                     reason='collections not available?')
+ def test_collections_deprecation():
+     with pytest.warns(DeprecationWarning):

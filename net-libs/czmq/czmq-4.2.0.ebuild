@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-
-inherit autotools
 
 DESCRIPTION="High-level C Binding for ZeroMQ"
 HOMEPAGE="http://czmq.zeromq.org"
@@ -11,7 +9,7 @@ SRC_URI="https://github.com/zeromq/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0/4"
-KEYWORDS="amd64 arm ~arm64 ~hppa x86"
+KEYWORDS="amd64 arm arm64 ~hppa x86"
 IUSE="curl drafts http-client http-server lz4 static-libs systemd +uuid"
 
 BDEPEND="app-text/asciidoc

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,18 +18,15 @@ fi
 
 LICENSE="MIT"
 SLOT="0/4"
-IUSE="doc libressl test +ssl static-libs tools"
+IUSE="doc test +ssl static-libs tools"
 
 REQUIRED_USE="test? ( static-libs )"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="ssl? (
-		libressl? ( dev-libs/libressl:= )
-		!libressl? ( dev-libs/openssl:0= )
-	)
+RDEPEND="ssl? ( dev-libs/openssl:0= )
 	tools? ( dev-libs/popt )"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	tools? ( app-text/xmlto )"
 DOCS=( AUTHORS README.md THANKS TODO )

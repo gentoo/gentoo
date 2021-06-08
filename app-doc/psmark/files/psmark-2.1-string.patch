@@ -1,5 +1,5 @@
---- psmark.c.orig	2006-06-06 23:43:19.000000000 -0700
-+++ psmark.c	2006-06-06 23:44:27.000000000 -0700
+--- a/psmark.c
++++ b/psmark.c
 @@ -97,9 +97,9 @@
  	  progname);
    fprintf(stderr,"example:\n %s -i test.ps -o output.ps -b 0.4 -s 15 \"vertical label\""

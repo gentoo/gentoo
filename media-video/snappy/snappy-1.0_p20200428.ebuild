@@ -12,7 +12,7 @@ COMMIT_HASH="ebf8e3ed30013e6577fa8994db40743d2ec05e94"
 SRC_URI="https://gitlab.gnome.org/GNOME/snappy/-/archive/${COMMIT_HASH}/snappy-${COMMIT_HASH}.tar.bz2"
 S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

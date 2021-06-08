@@ -1,0 +1,28 @@
+From 1179f970e4b165ac6daf22d0e3b61df4879f3438 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Tue, 10 Dec 2013 23:33:51 +0100
+Subject: [PATCH 1/2] Alter list of default applications
+
+Signed-off-by: Gilles Dartiguelongue <eva@gentoo.org>
+[Updated to include desktop file renames to reverse DNS and 3.36 changes]
+Signed-off-by: Mart Raudsepp <leio@gentoo.org>
+---
+ data/org.gnome.shell.gschema.xml.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/org.gnome.shell.gschema.xml.in b/data/org.gnome.shell.gschema.xml.in
+index cd6a2356d..6200df11c 100644
+--- a/data/org.gnome.shell.gschema.xml.in
++++ b/data/org.gnome.shell.gschema.xml.in
+@@ -50,7 +50,7 @@
+       </description>
+     </key>
+     <key name="favorite-apps" type="as">
+-      <default>[ 'org.gnome.Epiphany.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Music.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop' ]</default>
++      <default>[ 'chromium-browser-chromium.desktop', 'firefox.desktop', 'firefox-bin.desktop', 'org.gnome.Evolution.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Music.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop' ]</default>
+       <summary>List of desktop file IDs for favorite applications</summary>
+       <description>
+         The applications corresponding to these identifiers
+-- 
+2.26.2
+

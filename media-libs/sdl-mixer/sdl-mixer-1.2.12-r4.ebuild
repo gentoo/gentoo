@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_P=${P/sdl-/SDL_}
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
 HOMEPAGE="https://www.libsdl.org/projects/SDL_mixer/"
@@ -56,11 +56,17 @@ PATCHES=(
 	"${FILESDIR}"/${P}-clang.patch
 	"${FILESDIR}"/${P}-Fix-compiling-against-libmodplug-0.8.8.5.patch
 	"${FILESDIR}"/${P}-mikmod-r58{7,8}.patch # bug 445980
+	"${FILESDIR}"/${P}-parallel-build-slibtool.patch
 )
 
 src_prepare() {
 	default
 	sed -e '/link.*play/s/-o/$(LDFLAGS) -o/' -i Makefile.in || die
+
+	# Hack to get eautoconf working
+	# eautoreconf dies with gettext mismatch errors for now
+	cat acinclude/* >aclocal.m4 || die
+	eautoconf
 }
 
 multilib_src_configure() {

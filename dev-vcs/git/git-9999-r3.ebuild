@@ -6,14 +6,14 @@ EAPI=7
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/git/git.git"
 	# Please ensure that all _four_ 9999 ebuilds get updated; they track the 4 upstream branches.
 	# See https://git-scm.com/docs/gitworkflows#_graduation
 	# In order of stability:
@@ -51,25 +51,23 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit perforce +perl +ppcsha1 subversion tk +threads +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre perforce +perl +ppcsha1 subversion tk +threads +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
-	gnome-keyring? ( app-crypt/libsecret )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
-	sys-libs/zlib
-	pcre? (
-		pcre-jit? ( dev-libs/libpcre2[jit(+)] )
-		!pcre-jit? ( dev-libs/libpcre )
+	gnome-keyring? (
+		app-crypt/libsecret
+		dev-libs/glib:2
 	)
+	dev-libs/openssl:0=
+	sys-libs/zlib
+	pcre? ( dev-libs/libpcre2 )
 	perl? ( dev-lang/perl:=[-build(-)] )
 	tk? ( dev-lang/tk:0= )
 	curl? (
 		net-misc/curl
 		webdav? ( dev-libs/expat )
 	)
-	emacs? ( >=app-editors/emacs-23.1:* )
 	iconv? ( virtual/libiconv )
 "
 
@@ -114,6 +112,8 @@ BDEPEND="
 		app-text/xmlto
 		sys-apps/texinfo
 	)
+	emacs? ( >=app-editors/emacs-23.1:* )
+	gnome-keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)
 "
@@ -132,7 +132,6 @@ REQUIRED_USE="
 	cvs? ( perl )
 	mediawiki? ( perl )
 	mediawiki-experimental? ( mediawiki )
-	pcre-jit? ( pcre )
 	perforce? ( ${PYTHON_REQUIRED_USE} )
 	subversion? ( perl )
 	webdav? ( curl )
@@ -206,23 +205,15 @@ exportmakeopts() {
 	sed -i -e '/\/usr\/local/s/BASIC_/#BASIC_/' Makefile || die
 
 	if use pcre; then
-		if use pcre-jit; then
-			myopts+=( USE_LIBPCRE2=YesPlease )
-			extlibs+=( -lpcre2-8 )
-		else
-			myopts+=(
-				USE_LIBPCRE1=YesPlease
-				NO_LIBPCRE1_JIT=YesPlease
-			)
-			extlibs+=( -lpcre )
-		fi
+		myopts+=( USE_LIBPCRE2=YesPlease )
+		extlibs+=( -lpcre2-8 )
 	fi
 	if [[ ${CHOST} == *-solaris* ]]; then
 		myopts+=(
 			NEEDS_LIBICONV=YesPlease
 			HAVE_CLOCK_MONOTONIC=1
 		)
-		if grep -q getdelim "${EROOT}"/usr/include/stdio.h ; then
+		if grep -Fq getdelim "${EROOT}"/usr/include/stdio.h ; then
 			myopts+=( HAVE_GETDELIM=1 )
 		fi
 	fi
@@ -243,7 +234,7 @@ exportmakeopts() {
 }
 
 src_unpack() {
-	if [[ ${PV} != *9999 ]]; then
+	if [[ ${PV} != *9999 ]] ; then
 		unpack ${MY_P}.tar.${SRC_URI_SUFFIX}
 		cd "${S}" || die
 		unpack ${PN}-manpages-${DOC_VER}.tar.${SRC_URI_SUFFIX}
@@ -271,6 +262,11 @@ src_prepare() {
 	fi
 
 	default
+
+	if use prefix ; then
+		# bug #757309
+		eapply "${FILESDIR}"/git-2.31.0-darwin-prefix-gettext.patch
+	fi
 
 	sed -i \
 		-e 's:^\(CFLAGS[[:space:]]*=\).*$:\1 $(OPTCFLAGS) -Wall:' \
@@ -320,9 +316,7 @@ src_compile() {
 	fi
 
 	if use perl && use cgi ; then
-		git_emake \
-			gitweb \
-			|| die "emake gitweb (cgi) failed"
+		git_emake gitweb || die "emake gitweb (cgi) failed"
 	fi
 
 	if [[ ${CHOST} == *-darwin* && ! tc-is-gcc ]]; then
@@ -334,39 +328,36 @@ src_compile() {
 
 	pushd Documentation &>/dev/null || die
 	if [[ ${PV} == *9999 ]] ; then
-		git_emake man \
-			|| die "emake man failed"
+		git_emake man || die "emake man failed"
 		if use doc ; then
-			git_emake info html \
-				|| die "emake info html failed"
+			git_emake info html || die "emake info html failed"
 		fi
 	else
 		if use doc ; then
-			git_emake info \
-				|| die "emake info html failed"
+			git_emake info || die "emake info html failed"
 		fi
 	fi
 	popd &>/dev/null || die
 
 	if use gnome-keyring ; then
 		pushd contrib/credential/libsecret &>/dev/null || die
-		git_emake || die "emake git-credential-libsecret failed"
+		git_emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		popd &>/dev/null || die
 	fi
 
 	pushd contrib/subtree &>/dev/null || die
-	git_emake git-subtree
+	git_emake git-subtree || die
 	# git-subtree.1 requires the full USE=doc dependency stack
 	use doc && git_emake git-subtree.html git-subtree.1
 	popd &>/dev/null || die
 
 	pushd contrib/diff-highlight &>/dev/null || die
-	git_emake
+	git_emake || die
 	popd &>/dev/null || die
 
 	if use mediawiki ; then
 		pushd contrib/mw-to-git &>/dev/null || die
-		git_emake
+		git_emake || die
 		popd &>/dev/null || die
 
 	fi
@@ -504,9 +495,8 @@ src_install() {
 		newdoc  "${S}"/gitweb/README README.gitweb
 
 		for d in "${ED}"/usr/lib{,64}/perl5/ ; do
-			if test -d "${d}" ; then find "${d}" \
-				-name .packlist \
-				-delete || die
+			if [[ -d "${d}" ]] ; then
+				find "${d}" -name .packlist -delete || die
 			fi
 		done
 	else
@@ -523,10 +513,11 @@ src_install() {
 		newins "${FILESDIR}"/git-daemon.xinetd git-daemon
 	fi
 
-	if use !prefix ; then
+	if ! use prefix ; then
 		newinitd "${FILESDIR}"/git-daemon-r1.initd git-daemon
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
-		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
+		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" \
+			"git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
 	fi
 
@@ -536,7 +527,7 @@ src_install() {
 	# we could remove sources in src_prepare, but install does not
 	# handle missing locale dir well
 	rm_loc() {
-		if [[ -e "${ED}/usr/share/locale/${1}" ]]; then
+		if [[ -e "${ED}/usr/share/locale/${1}" ]] ; then
 			rm -r "${ED}/usr/share/locale/${1}" || die
 		fi
 	}
@@ -586,8 +577,8 @@ src_test() {
 
 	local cvs=0
 	use cvs && let cvs=${cvs}+1
-	if [[ ${EUID} -eq 0 ]]; then
-		if [[ ${cvs} -eq 1 ]]; then
+	if [[ ${EUID} -eq 0 ]] ; then
+		if [[ ${cvs} -eq 1 ]] ; then
 			ewarn "Skipping CVS tests because CVS does not work as root!"
 			ewarn "You should retest with FEATURES=userpriv!"
 			disabled+=( ${tests_cvs[@]} )
@@ -601,7 +592,7 @@ src_test() {
 		[[ ${cvs} -gt 1 ]] && \
 			has_version "dev-vcs/cvs[server]" && \
 			let cvs=${cvs}+1
-		if [[ ${cvs} -lt 3 ]]; then
+		if [[ ${cvs} -lt 3 ]] ; then
 			einfo "Disabling CVS tests (needs dev-vcs/cvs[USE=server])"
 			disabled+=( ${tests_cvs[@]} )
 		fi
@@ -623,12 +614,13 @@ src_test() {
 	done
 	einfo "Disabled tests:"
 	for i in ${disabled[@]} ; do
-		[[ -f "${i}" ]] && mv -f "${i}" "${i}.DISABLED" && einfo "Disabled ${i}"
+		if [[ -f "${i}" ]] ; then
+			mv -f "${i}" "${i}.DISABLED" && einfo "Disabled ${i}"
+		fi
 	done
 
 	# Avoid the test system removing the results because we want them ourselves
-	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' \
-		-i Makefile || die
+	sed -e '/^[[:space:]]*$(MAKE) clean/s,^,#,g' -i Makefile || die
 
 	# Clean old results first, must always run
 	nonfatal git_emake clean

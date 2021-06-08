@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit versionator autotools
+inherit autotools epatch toolchain-funcs versionator
 
 DESCRIPTION="C-Client Library for Open Source Java Message Service (JMS)"
 HOMEPAGE="https://mq.java.net/"
@@ -14,7 +14,6 @@ MY_BUILDV="b7"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 if [[ $(x=( $(get_all_version_components) ); echo ${x[3]}) == '.' ]]; then
 	MY_PV=$(replace_version_separator 2 'u' $(get_version_component_range 1-3))
@@ -70,10 +69,16 @@ src_prepare() {
 		AC_OUTPUT(Makefile)
 	EOF
 
+	# bug #778329
+	sed -e 's/--no-undefined/-no-undefined/' \
+		-e "s/'\*Test\*' ')')/'\*Test\*' ')' | grep -v examples)/" \
+		-i "${S}"/Makefile.in || die
+
 	eautoreconf
 }
 
 src_configure() {
+	tc-export PKG_CONFIG
 	econf --disable-static
 }
 

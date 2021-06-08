@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2020-12-24)
@@ -31,11 +31,6 @@ dev-qt/qtwebkit:5 printsupport
 app-arch/unzip natspec
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Required by dev-qt/qtcore
-dev-libs/libpcre pcre16
-dev-libs/libpcre2 pcre16
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl libinput
 
@@ -61,7 +56,7 @@ dev-lang/php -exif -truetype
 # These outputs are for systems without a proper audio/video support.
 # NOTE: Needs syncing to negate profile defaults if we decide
 # to keep this up.
-media-video/mpv lua luajit -sdl
+media-video/mpv lua -sdl
 media-video/mpv -lua_single_target_lua5-1 -lua_single_target_lua5-2
 media-video/mpv lua_single_target_luajit
 

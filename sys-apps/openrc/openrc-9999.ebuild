@@ -18,15 +18,11 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils
-	unicode"
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils unicode"
 
 COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
-	pam? (
-		sys-auth/pambase
-		sys-libs/pam
-	)
+	pam? ( sys-libs/pam )
 	audit? ( sys-process/audit )
 	sys-process/psmisc
 	!<sys-process/procps-3.3.9-r2
@@ -68,10 +64,9 @@ src_prepare() {
 }
 
 src_compile() {
-	unset LIBDIR #266688
-
 	MAKE_ARGS="${MAKE_ARGS}
 		LIBNAME=$(get_libdir)
+		LIBDIR=${EPREFIX}/$(get_libdir)
 		LIBEXECDIR=${EPREFIX}/lib/rc
 		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
@@ -81,13 +76,11 @@ src_compile() {
 		MKPAM=$(usev pam)
 		MKSTATICLIBS=no
 		MKZSHCOMP=yes
+		OS=Linux
 		SH=$(usex bash /bin/bash /bin/sh)"
 
-	local brand="Unknown"
-	MAKE_ARGS="${MAKE_ARGS} OS=Linux"
-	brand="Linux"
-	export BRANDING="Gentoo ${brand}"
 	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
+export BRANDING="Gentoo Linux"
 	export DEBUG=$(usev debug)
 	export MKTERMCAP=$(usev ncurses)
 

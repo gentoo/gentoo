@@ -38,6 +38,7 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export PKG_CONFIG
 	emake CC="$(tc-getCC)" PREFIX="/usr" LANGUAGES="$(l10n_get_locales)"
 }
 

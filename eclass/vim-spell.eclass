@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vim-spell.eclass
@@ -62,8 +62,6 @@
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
-inherit eutils
-
 EXPORT_FUNCTIONS src_install pkg_postinst
 
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
@@ -121,9 +119,7 @@ vim-spell_src_install() {
 		fi
 	done
 
-	for f in README*; do
-		dodoc "${f}"
-	done
+	einstalldocs
 
 	[[ -z "${had_spell_file}" ]] && die "Didn't install any spell files?"
 }

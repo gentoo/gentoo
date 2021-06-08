@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 DIST_AUTHOR=BINGOS
 DIST_VERSION=7.24
-inherit eutils perl-module
+inherit edos2unix perl-module
 
 DESCRIPTION="Create a module Makefile"
 SLOT="0"

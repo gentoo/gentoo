@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 IUSE="+daemon elibc_musl pam static-libs test +tools"
 REQUIRED_USE="daemon? ( tools )"
 
@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-replace_INLCUDES.patch
 	"${FILESDIR}"/${P}-reorder-headers.patch
 	"${FILESDIR}"/${P}-remove-umask.patch
+	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 src_prepare() {

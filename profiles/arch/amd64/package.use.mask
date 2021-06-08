@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,18 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# Unmask TPM on supported archs.
+sys-apps/systemd -tpm
+
+# Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
+# Unmask the use of 64-bit dev-lisp/clozurecl on 64-bit arches.
+# Only maxima makes a distinction between the 32-bit and 64-bit
+# USE flags.
+sci-mathematics/fricas -clozurecl
+<sci-mathematics/maxima-5.44.0-r5 -clozurecl
+sci-mathematics/maxima -clozurecl64
 
 # Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
 # Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
@@ -96,6 +108,9 @@ dev-libs/gjs -sysprof
 dev-libs/glib -sysprof
 gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
+net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
@@ -135,6 +150,7 @@ mail-client/claws-mail -litehtml
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # openjfx is keyworded on amd64
+dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
@@ -288,8 +304,8 @@ games-emulation/mupen64plus-core new-dynarec
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for amd64 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
-app-editors/vim -luajit -racket
-app-editors/gvim -luajit -racket
+app-editors/vim -racket
+app-editors/gvim -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on amd64
@@ -303,10 +319,6 @@ dev-python/pypy3-exe cpu_flags_x86_sse2
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
-
-# Ben de Groot <yngwin@gentoo.org> (2012-07-30)
-# dependency keyworded here, masked in base
-media-libs/freetype -infinality
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-04-12)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for

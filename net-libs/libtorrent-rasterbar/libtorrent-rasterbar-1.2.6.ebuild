@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/archive/${MY_P}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0/10"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
-IUSE="debug +dht doc examples libressl python +ssl static-libs test"
+IUSE="debug +dht doc examples python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -35,8 +35,7 @@ RDEPEND="
 		dev-libs/boost:=[python,${PYTHON_USEDEP}]
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 "
 DEPEND="${RDEPEND}

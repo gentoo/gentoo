@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit meson multilib-minimal toolchain-funcs
+inherit meson-multilib toolchain-funcs
 
 MY_PN="wine-nine-standalone"
 DESCRIPTION="A standalone version of the WINE parts of Gallium Nine"
 HOMEPAGE="https://github.com/iXit/wine-nine-standalone"
 
-if [[ $PV = 9999* ]]; then
+if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/iXit/${MY_PN}.git"
 else
@@ -85,14 +85,6 @@ multilib_src_configure() {
 		-Ddri2=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ EAPI=7
 # changes its ABI then this package will be rebuilt needlessly. Hence, such a
 # package is free _not_ to := depend on FFmpeg but I would strongly encourage
 # doing so since such a case is unlikely.
-FFMPEG_SUBSLOT=56.58.58
+FFMPEG_SUBSLOT=57.59.59
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -21,7 +21,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 fi
 
-inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
+inherit flag-o-matic multilib multilib-minimal toolchain-funcs ${SCM}
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video. Includes libavcodec"
 HOMEPAGE="https://ffmpeg.org/"
@@ -68,7 +68,7 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
-		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
+		+gpl hardcoded-tables +iconv libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
 		# libavdevice options
@@ -185,7 +185,7 @@ RDEPEND="
 		kvazaar? ( >=media-libs/kvazaar-1.2.0[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
-		rav1e? ( media-video/rav1e:=[capi] )
+		rav1e? ( >=media-video/rav1e-0.4:=[capi] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]
@@ -270,17 +270,9 @@ RDEPEND="
 	postproc? ( !media-libs/libpostproc )
 "
 
-# Crypto & co provider magic
-# - libressl is a useflag meaning it should always favor libressl over openssl
-# - libressl and openssl provide more features to ffmpeg than gnutls
-#
-# The ordering is thus: libressl > openssl > gnutls
 RDEPEND="${RDEPEND}
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-	!libressl? (
 		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 		!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
-	)
 "
 
 DEPEND="${RDEPEND}
@@ -319,7 +311,7 @@ REQUIRED_USE="
 	${CPU_REQUIRED_USE}"
 RESTRICT="
 	!test? ( test )
-	gpl? ( openssl? ( bindist ) fdk? ( bindist ) libressl? ( bindist ) )
+	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
 S=${WORKDIR}/${P/_/-}
@@ -348,7 +340,7 @@ multilib_src_configure() {
 	local myconf=( )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
-	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
+	use openssl && myconf+=( --enable-nonfree )
 	use samba && myconf+=( --enable-version3 )
 
 	# Encoders
@@ -384,10 +376,7 @@ multilib_src_configure() {
 		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
 	done
 
-	# Incompatible features: openssl or libressl and gnutls
-	if use libressl ; then
-		myconf+=( --disable-gnutls --disable-openssl )
-	elif use openssl ; then
+	if use openssl ; then
 		myconf+=( --disable-gnutls )
 	fi
 
@@ -422,13 +411,13 @@ multilib_src_configure() {
 		break
 	done
 
-	# LTO support, bug #566282
+	# LTO support, bug #566282, bug #754654
 	is-flagq "-flto*" && myconf+=( "--enable-lto" )
+	filter-flags "-flto*"
 
 	# Mandatory configuration
 	myconf=(
 		--enable-avfilter
-		--enable-avresample
 		--disable-stripping
 		# This is only for hardcoded cflags; those are used in configure checks that may
 		# interfere with proper detections, bug #671746 and bug #645778
@@ -519,6 +508,11 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil" \
+		emake V=1 fate
+}
+
 multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install install-doc
 
@@ -549,9 +543,4 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-}
-
-multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
-		emake V=1 fate
 }

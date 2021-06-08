@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: myspell-r2.eclass
 # @MAINTAINER:
-# maintainer-needed@gentoo.org
+# Conrad Kostecki <conikost@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @BLURB: An eclass to ease the construction of ebuilds for myspell dicts
+# @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: An eclass to streamline the construction of ebuilds for new Myspell dictionaries.
 # @DESCRIPTION:
-
-EXPORT_FUNCTIONS src_unpack src_install
+# The myspell-r2 eclass is designed to streamline the construction of ebuilds for
+# the new Myspell dictionaries which support hunspell.
 
 # @ECLASS-VARIABLE: MYSPELL_DICT
 # @DEFAULT_UNSET
@@ -18,20 +19,39 @@ EXPORT_FUNCTIONS src_unpack src_install
 # MYSPELL_DICT=( "file.dic" "dir/file2.aff" )
 
 # @ECLASS-VARIABLE: MYSPELL_HYPH
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all hyphenation files.
 # MYSPELL_HYPH=( "file.dic" "dir/file2.dic" )
 
 # @ECLASS-VARIABLE: MYSPELL_THES
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Array variable containing list of all thesarus files.
 # MYSPELL_THES=( "file.dat" "dir/file2.idx" )
 
+case ${EAPI:-0} in
+	[0-4])
+		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
+		;;
+	[5-7])
+		;;
+	*)
+		die "Unknown EAPI ${EAPI:-0}"
+		;;
+esac
+
+EXPORT_FUNCTIONS src_unpack src_install
+
 # Basically no extra deps needed.
 # Unzip is required for .oxt libreoffice extensions
 # which are just fancy zip files.
-DEPEND="app-arch/unzip"
-RDEPEND=""
+if [[ ${EAPI:-0} == 7 ]]; then
+	BDEPEND="app-arch/unzip"
+else
+	DEPEND="app-arch/unzip"
+	RDEPEND=""
+fi
 
 # by default this stuff does not have any folder in the pack
 S="${WORKDIR}"

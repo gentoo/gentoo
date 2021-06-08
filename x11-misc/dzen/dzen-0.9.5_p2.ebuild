@@ -13,7 +13,7 @@ SRC_URI="https://github.com/robm/dzen/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.
 S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="2"
 IUSE="xinerama xpm"
 

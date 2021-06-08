@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Advanced network neighborhood browser"
-HOMEPAGE="https://apps.kde.org/en/smb4k
+HOMEPAGE="https://apps.kde.org/smb4k/
 https://sourceforge.net/p/smb4k/home/Home/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then

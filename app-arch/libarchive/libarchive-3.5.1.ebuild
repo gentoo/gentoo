@@ -10,8 +10,8 @@ SRC_URI="https://www.libarchive.org/downloads/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl blake2 +bzip2 +e2fsprogs expat +iconv kernel_linux libressl lz4 +lzma lzo nettle static-libs +threads xattr +zlib zstd"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="acl blake2 +bzip2 +e2fsprogs expat +iconv kernel_linux lz4 +lzma lzo nettle static-libs +threads xattr +zlib zstd"
 
 RDEPEND="
 	acl? ( virtual/acl[${MULTILIB_USEDEP}] )
@@ -23,8 +23,7 @@ RDEPEND="
 	kernel_linux? (
 		xattr? ( sys-apps/attr[${MULTILIB_USEDEP}] )
 	)
-	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( app-arch/xz-utils[threads=,${MULTILIB_USEDEP}] )
 	lzo? ( >=dev-libs/lzo-2[${MULTILIB_USEDEP}] )
@@ -38,7 +37,6 @@ DEPEND="${RDEPEND}
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.3.3-libressl.patch
 	"${FILESDIR}"/${PN}-3.5.0-darwin-strnlen.patch  # drop on next release
 )
 

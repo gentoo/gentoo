@@ -28,7 +28,7 @@ DEPEND="
 	>=dev-db/sqlite-3.24:3
 
 	app-text/enchant:2
-	>=dev-libs/folks-0.11:0
+	>=dev-libs/folks-0.11:0=
 	>=app-crypt/gcr-3.10.1:0=
 	>=dev-libs/libgee-0.8.5:0.8=
 	net-libs/gnome-online-accounts

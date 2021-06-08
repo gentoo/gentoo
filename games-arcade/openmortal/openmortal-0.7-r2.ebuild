@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="media-libs/libsdl[video]
 	>=media-libs/freetype-2.4.0:2
 	dev-lang/perl
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {

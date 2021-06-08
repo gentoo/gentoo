@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # uses webapp.eclass to create directories with right permissions
@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit versionator eutils webapp db-use
+inherit versionator epatch webapp db-use
 
 WEBAPP_MANUAL_SLOT="yes"
 XTENDED_VER="RB30"
@@ -53,6 +53,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.23.08-gcc-10.patch
 	if use xtended; then
 		epatch "${WORKDIR}"/${PN}-${MY_PV}-${XTENDED_VER}-patch
 	fi

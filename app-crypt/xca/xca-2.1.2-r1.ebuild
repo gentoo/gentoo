@@ -12,15 +12,14 @@ SRC_URI="https://github.com/chris2511/${PN}/releases/download/RELEASE.${PV}/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="bindist doc libressl"
+IUSE="bindist doc"
 
 RDEPEND="
 	dev-libs/libltdl:0=
 	dev-qt/qtgui:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	!libressl? ( dev-libs/openssl:0=[bindist=] )
-	libressl? ( >=dev-libs/libressl-2.7.0:0= )
+	dev-libs/openssl:0=[bindist=]
 	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"

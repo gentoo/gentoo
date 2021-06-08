@@ -1,0 +1,26 @@
+From 4368f7bab3a79b4322c1c19fdb99634e10f823ad Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 3 Apr 2021 11:36:06 +0200
+Subject: [PATCH] use Motif toolkit instead of GTK by default
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 08224f9..f6ced83 100644
+--- a/Makefile
++++ b/Makefile
+@@ -73,7 +73,7 @@
+ ####	P.S.	I admit that this makefile is more like a shell script.
+ ####
+ 
+-CONFIGURE_OPTIONS=--with-GTK
++CONFIGURE_OPTIONS=--with-MOTIF
+ 
+ compile:	tedlibs		\
+ 		Ted/Ted		\
+-- 
+2.31.1
+

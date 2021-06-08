@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit versionator multilib eutils readme.gentoo-r1 rpm systemd pax-utils
+inherit versionator readme.gentoo-r1 rpm systemd pax-utils
 
 DESCRIPTION="IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
 HOMEPAGE="https://www.ibm.com/us-en/marketplace/data-protection-and-recovery"
@@ -126,7 +126,7 @@ src_install() {
 	# We don't deal with SELinux compliance (yet), though.
 	local RPM_INSTALL_PREFIX CLIENTDIR i
 	RPM_INSTALL_PREFIX=/opt
-	CLIENTDIR=$RPM_INSTALL_PREFIX/tivoli/tsm/client
+	CLIENTDIR=${RPM_INSTALL_PREFIX}/tivoli/tsm/client
 
 	# Create links for messages; this is spread over several postin scripts.
 	#for i in $(cd "${D}"${CLIENTDIR}/lang; ls -1d ??_??); do
@@ -136,7 +136,7 @@ src_install() {
 
 	# Mimic TIVsm-API64 postinstall script
 	for i in libgpfs.so libdmapi.so; do
-		dosym ../..$CLIENTDIR/api/bin64/${i} /usr/lib64/${i}
+		dosym ../..${CLIENTDIR}/api/bin64/${i} /usr/lib64/${i}
 	done
 
 	# The TIVsm-BA postinstall script only does messages and ancient upgrades
@@ -217,10 +217,10 @@ src_install() {
 pkg_postinst() {
 	local i dirs
 	for i in /var/log/tsm/dsm{error,sched,j,webcl}.log; do
-		if [[ ! -e $i ]]; then
-			touch $i || die
-			chown :tsm $i || die
-			chmod 0660 $i || die
+		if [[ ! -e ${i} ]]; then
+			touch ${i} || die
+			chown :tsm ${i} || die
+			chmod 0660 ${i} || die
 		fi
 	done
 

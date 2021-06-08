@@ -10,8 +10,8 @@ SRC_URI="https://github.com/dinhviethoa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="berkdb gnutls ipv6 liblockfile libressl lmdb sasl ssl static-libs"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="berkdb gnutls ipv6 liblockfile lmdb sasl ssl static-libs"
 
 # BerkDB is only supported up to version 6.0
 DEPEND="sys-libs/zlib
@@ -20,8 +20,7 @@ DEPEND="sys-libs/zlib
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	sasl? ( dev-libs/cyrus-sasl:2 )

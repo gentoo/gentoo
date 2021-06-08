@@ -21,6 +21,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}/${P}-rotate-mask.patch"
+	"${FILESDIR}/${P}-autoconf-2.70.patch" #775113
 )
 
 src_prepare() {

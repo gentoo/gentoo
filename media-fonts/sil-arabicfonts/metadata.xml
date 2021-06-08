@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>fonts@gentoo.org</email>
-    <name>Fonts</name>
-  </maintainer>
-  <longdescription lang="en">
-    Scheherazade and Lateef are extended Arabic script fonts designed
-    by SIL International for modern Unicode-based systems using either
-    OpenType or AAT (Apple Advanced Typography) for complex-script
-    rendering. They support virtually all of the Unicode 4.1 Arabic
-    character repertoire (excluding the Arabic Presentation Forms
-    blocks, which are not recommended for normal use). Each typeface
-    is currently available in Regular weight only.
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
+		Scheherazade and Lateef are extended Arabic script fonts designed
+		by SIL International for modern Unicode-based systems using either
+		OpenType or AAT (Apple Advanced Typography) for complex-script
+		rendering. They support virtually all of the Unicode 4.1 Arabic
+		character repertoire (excluding the Arabic Presentation Forms
+		blocks, which are not recommended for normal use). Each typeface
+		is currently available in Regular weight only.
 
-    Scheherazade, named after the heroine of the classic Arabian
-    Nights tale, is designed in a similar style to traditional
-    typefaces such as Monotype Naskh, extended to cover the full
-    Unicode Arabic repertoire.
+		Scheherazade, named after the heroine of the classic Arabian
+		Nights tale, is designed in a similar style to traditional
+		typefaces such as Monotype Naskh, extended to cover the full
+		Unicode Arabic repertoire.
 
-    Lateef is named after Shah Abdul Lateef Bhitai, the famous Sindhi
-    mystic and poet. It is intended to be an appropriate style for use
-    in Sindhi and other languages of the South Asian region.
-  </longdescription>
+		Lateef is named after Shah Abdul Lateef Bhitai, the famous Sindhi
+		mystic and poet. It is intended to be an appropriate style for use
+		in Sindhi and other languages of the South Asian region.
+	</longdescription>
 </pkgmetadata>

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils ltprune multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="A library to play a wide range of module formats"
 HOMEPAGE="http://mikmod.sourceforge.net/"
@@ -70,5 +70,5 @@ multilib_src_install_all() {
 	dodoc AUTHORS NEWS README TODO
 	docinto html
 	dodoc docs/*.html
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

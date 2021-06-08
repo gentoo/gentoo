@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Pulse-Eight/${PN}/archive/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="cubox exynos python raspberry-pi kernel-cec tools +xrandr udev"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

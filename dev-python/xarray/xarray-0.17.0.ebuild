@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/numpy-1.17[${PYTHON_USEDEP}]
@@ -31,3 +31,12 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	local deselect=(
+		# warning-targeted tests are fragile and not important to end users
+		xarray/tests/test_backends.py::test_no_warning_from_dask_effective_get
+	)
+
+	epytest ${deselect[@]/#/--deselect }
+}

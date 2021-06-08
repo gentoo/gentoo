@@ -236,6 +236,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.11.1-srt-1.4.2.patch # bug 758062
+	"${FILESDIR}"/${PN}-3.0.12.1-limits-p{1,2}.patch # bug 767796
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -271,6 +272,9 @@ src_prepare() {
 	# Disable running of vlc-cache-gen, we do that in pkg_postinst
 	sed -e "/test.*build.*host/s/\$(host)/nothanks/" \
 		-i Makefile.am -i bin/Makefile.am || die "Failed to disable vlc-cache-gen"
+
+	# Fix gettext version mismatch errors.
+	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die
 
 	eautoreconf
 

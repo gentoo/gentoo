@@ -12,7 +12,7 @@ HOMEPAGE="https://www.dvratil.cz/2018/05/plasma-pass/ https://invent.kde.org/pla
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~ppc64"
+	KEYWORDS="amd64 ~ppc64"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -35,3 +35,5 @@ RDEPEND="${DEPEND}
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
+
+PATCHES=( "${FILESDIR}"/${P}-no-werror.patch ) # bug 785832

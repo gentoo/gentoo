@@ -1,0 +1,40 @@
+From 8e9447b32dae7e6c95bee3f878ee1877f9b628a4 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 22 Mar 2021 16:15:09 -0700
+Subject: [PATCH] [graph] Fix build with `slibtool`.
+
+* graph/rules.mk (GRAPH_LIB): Handle the case specially where
+`LIBTOOL` is defined.
+(COMPILE_GRAPH_LIB) <LIBTOOL>: Enable use of `dlopen`.
+---
+ rules.mk |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/graph/rules.mk b/graph/rules.mk
+index 4903a38..a3f0de1 100644
+--- a/graph/rules.mk
++++ b/graph/rules.mk
+@@ -12,7 +12,6 @@
+ 
+ 
+ GRAPH_INCLUDES := $(subst /,$(COMPILER_SEP),$(TOP_DIR_2)/graph)
+-GRAPH_LIB      := $(OBJ_DIR_2)/graph.$(SA)
+ 
+ GRAPH := $(TOP_DIR_2)/graph
+ 
+@@ -46,9 +45,11 @@ GRAPH_OBJS := $(OBJ_DIR_2)/gblblit.$(O)   \
+ # this value can be modified by the system-specific graphics drivers.
+ #
+ ifneq ($(LIBTOOL),)
+-  COMPILE_GRAPH_LIB = $(LIBTOOL) --mode=link $(CCraw) -static \
++  GRAPH_LIB        := $(OBJ_DIR_2)/graph.$(A)
++  COMPILE_GRAPH_LIB = $(LIBTOOL) --mode=link $(CCraw) -module -static \
+                                  -o $(subst /,$(COMPILER_SEP),$@ $(GRAPH_OBJS))
+ else
++  GRAPH_LIB        := $(OBJ_DIR_2)/graph.$(SA)
+   COMPILE_GRAPH_LIB = ar -r $(subst /,$(COMPILER_SEP),$@ $(GRAPH_OBJS))
+ endif
+ 
+-- 
+GitLab
+

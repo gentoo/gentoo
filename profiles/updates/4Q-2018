@@ -4,4 +4,3 @@ move dev-libs/mini-xml dev-libs/mxml
 move x11-misc/xembedsniproxy kde-plasma/xembed-sni-proxy
 move x11-apps/intel-gpu-tools x11-apps/igt-gpu-tools
 move games-board/knights kde-apps/knights
-move media-gfx/icc_examin media-gfx/icc-examin

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{6..10} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 MY_PN="${PN}.py"
@@ -20,12 +20,12 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/leohemsted/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
 distutils_enable_sphinx docs
+distutils_enable_tests setup.py

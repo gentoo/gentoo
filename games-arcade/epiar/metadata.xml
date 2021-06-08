@@ -6,16 +6,17 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription>
-Epiar is a space adventure/combat game written in C with SDL 
-(Simple DirectMedia Layer). It is absolutely free (released 
-under the General Public License v2).
-In Epiar, you begin as a shuttle pilot in a galaxy generally 
-ruled by anarchy, with few stable governments and numerous 
-rebel factions. You start your adventure off doing whatever 
-you want, but generally trying to save up money for a new 
-starship, and your adventure takes off from there ...
-</longdescription>
+	Epiar is a space adventure/combat game written in C with SDL
+	(Simple DirectMedia Layer). It is absolutely free (released
+	under the General Public License v2).
+	In Epiar, you begin as a shuttle pilot in a galaxy generally
+	ruled by anarchy, with few stable governments and numerous
+	rebel factions. You start your adventure off doing whatever
+	you want, but generally trying to save up money for a new
+	starship, and your adventure takes off from there ...
+	</longdescription>
 	<upstream>
+		<remote-id type="github">cthielen/Epiar</remote-id>
 		<remote-id type="sourceforge">epiar</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Universal currency converter and calculator"
-HOMEPAGE="https://apps.kde.org/en/keurocalc https://userbase.kde.org/KEuroCalc"
+HOMEPAGE="https://apps.kde.org/keurocalc/ https://userbase.kde.org/KEuroCalc"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+ FDL-1.2"

@@ -1,0 +1,151 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2020-02-15 12:44:55.065569980 +0100
++++ b/configure.ac	2020-02-15 14:08:21.905767776 +0100
+@@ -9,7 +9,9 @@
+ AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_CXX
+-AC_PROG_RANLIB
++LT_INIT
++AC_ENABLE_SHARED
++AC_DISABLE_STATIC
+ 
+ dnl Checks for libraries.
+ dnl Replace `main' with a function in -lg:
+@@ -18,10 +20,6 @@
+ dnl AC_CHECK_LIB(stdc, main)
+ dnl Replace `main' with a function in -lstdc++:
+ dnl AC_CHECK_LIB(stdc++, main)
+-dnl Make libgmp:
+-make -C external gmp
+-dnl Make libcddgmp:
+-make -C external cdd
+ dnl Check for soplex:
+ AC_CHECK_LIB(soplex, main, , csh -c 'echo soplex not found: --soplex will not work.')
+ 
+diff -ur a/lib-src/Makefile.am b/lib-src/Makefile.am
+--- a/lib-src/Makefile.am	2020-02-15 12:44:55.145570436 +0100
++++ b/lib-src/Makefile.am	2020-02-15 14:08:44.741903592 +0100
+@@ -1,6 +1,6 @@
+-lib_LIBRARIES       = libTOPCOM.a
++lib_LTLIBRARIES       = libTOPCOM.la
+ 
+-libTOPCOM_a_SOURCES = \
++libTOPCOM_la_SOURCES = \
+ Admissibles.cc \
+ CheckTriang.cc \
+ Circuits.cc \
+@@ -90,9 +90,9 @@
+ 
+ AM_CPPFLAGS     = -I../lib-src-reg
+ AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
+-AM_CPPFLAGS    += -I../external/include
++AM_CPPFLAGS    += $(CPPFLAGS)
+ AM_CPPFLAGS    += -I$(includedir)
+ 
+ AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-35
+ 
+-AM_CXXFLAGS     = -O2 -g
++AM_CXXFLAGS     = $(CXXFLAGS)
+diff -ur a/lib-src-reg/Makefile.am b/lib-src-reg/Makefile.am
+--- a/lib-src-reg/Makefile.am	2020-02-15 12:44:55.165570550 +0100
++++ b/lib-src-reg/Makefile.am	2020-02-15 14:08:22.921773817 +0100
+@@ -1,6 +1,6 @@
+-lib_LIBRARIES = libCHECKREG.a
++lib_LTLIBRARIES = libCHECKREG.la
+ 
+-libCHECKREG_a_SOURCES = \
++libCHECKREG_la_SOURCES = \
+ SPXinterface.cc \
+ LPinterface.cc \
+ RegularityCheck.cc
+@@ -12,9 +12,9 @@
+ 
+ AM_CPPFLAGS     = -I../lib-src 
+ AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
+-AM_CPPFLAGS    += -I../external/include
++AM_CPPFLAGS    += $(CPPFLAGS)
+ AM_CPPFLAGS    += -I$(includedir)
+ 
+ AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
+ 
+-AM_CXXFLAGS     = -O2
++AM_CXXFLAGS     = $(CXXFLAGS)
+diff -ur a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2020-02-15 12:44:55.065569980 +0100
++++ b/Makefile.am	2020-02-15 14:08:22.929773865 +0100
+@@ -1,6 +1 @@
+ SUBDIRS      = wrap-gmp-gmpxx lib-src-reg lib-src src-reg src examples
+-EXTRA_DIST   = external/Makefile
+-EXTRA_DIST  += external/gmp-6.1.1.tar.bz2
+-EXTRA_DIST  += external/cddlib-0.94f-TOPCOM.tar.gz
+-EXTRA_DIST  += external/gmpxx-patch
+-
+diff -ur a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2020-02-15 12:44:55.165570550 +0100
++++ b/src/Makefile.am	2020-02-15 14:08:22.933773888 +0100
+@@ -83,18 +83,14 @@
+ santos_dim4_triang_SOURCES         = santos_dim4_triang.cc
+ santos_22_triang_SOURCES           = santos_22_triang.cc
+ 
+-LDADD           = ../lib-src/libTOPCOM.a \
+-                  ../lib-src-reg/libCHECKREG.a \
+-                  ../external/lib/libcddgmp.a \
+-                  ../external/lib/libgmpxx.a \
+-                  ../external/lib/libgmp.a
+-
+ AM_CPPFLAGS     = -I../lib-src
+ AM_CPPFLAGS    += -I../lib-src-reg
++AM_CPPFLAGS    += -L../lib-src-reg
++AM_CPPFLAGS    += -L../lib-src
+ AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
+-AM_CPPFLAGS    += -I../external/include
++AM_CPPFLAGS    += $(CPPFLAGS)
+ AM_CPPFLAGS    += -I$(includedir)
+ 
+-AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
++AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
+ 
+-AM_CXXFLAGS     = -O2
++AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
+diff -ur a/src-reg/Makefile.am b/src-reg/Makefile.am
+--- a/src-reg/Makefile.am	2020-02-15 12:44:55.165570550 +0100
++++ b/src-reg/Makefile.am	2020-02-15 14:08:22.933773888 +0100
+@@ -2,20 +2,15 @@
+ 
+ checkregularity_SOURCES = checkregularity.cc
+ 
+-LDADD           = ../lib-src-reg/libCHECKREG.a \
+-                  ../lib-src/libTOPCOM.a \
+-                  ../external/lib/libcddgmp.a \
+-                  ../external/lib/libgmpxx.a \
+-                  ../external/lib/libgmp.a
+-
+ AM_CPPFLAGS     = -I../lib-src
+ AM_CPPFLAGS    += -I../lib-src-reg
++AM_CPPFLAGS    += -L../lib-src-reg
++AM_CPPFLAGS    += -L../lib-src
+ AM_CPPFLAGS    += -I../wrap-gmp-gmpxx
+-AM_CPPFLAGS    += -I../external/include
++AM_CPPFLAGS    += $(CPPFLAGS)
+ AM_CPPFLAGS    += -I$(includedir)
+ 
+ 
+-AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30
+-
+-AM_CXXFLAGS     = -O2
++AM_CPPFLAGS    += -DVERBOSE -DGMPRATIONAL -ftemplate-depth-30 -lTOPCOM -lCHECKREG
+ 
++AM_CXXFLAGS     = $(CXXFLAGS) -L../lib-src-reg -L../lib-src -lTOPCOM -lCHECKREG
+diff -ur a/wrap-gmp-gmpxx/Makefile.am b/wrap-gmp-gmpxx/Makefile.am
+--- a/wrap-gmp-gmpxx/Makefile.am	2020-02-15 12:44:55.165570550 +0100
++++ b/wrap-gmp-gmpxx/Makefile.am	2020-02-15 14:08:23.105774912 +0100
+@@ -3,6 +3,6 @@
+ Rational.h
+ 
+ AM_CPPFLAGS        = -I../external/include
+-AM_CPPFLAGS       += -I$(includedir)
++AM_CPPFLAGS       += -I$(includedir) $(CPPFLAGS)
+ 
+-AM_CXXFLAGS     = -O2
++AM_CXXFLAGS     = $(CXXFLAGS)

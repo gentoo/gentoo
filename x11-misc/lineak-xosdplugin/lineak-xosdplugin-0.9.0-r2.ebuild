@@ -1,14 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib
 
 MY_P=${P/.0/}
-
 DESCRIPTION="Xosd plugin for LINEAK"
 HOMEPAGE="http://lineak.sourceforge.net/"
 SRC_URI="mirror://sourceforge/lineak/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,11 +18,8 @@ DEPEND="
 	=x11-misc/lineakd-${PV}*
 	x11-libs/xosd
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc43.patch
 )
@@ -31,7 +27,7 @@ PATCHES=(
 src_configure() {
 	econf \
 		$(use_enable debug) \
-		--with-lineak-plugindir="${EROOT}/usr/$(get_libdir)/lineakd" \
+		--with-lineak-plugindir="${EPREFIX}/usr/$(get_libdir)/lineakd" \
 		--with-x
 }
 

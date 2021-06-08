@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit python-any-r1 systemd toolchain-funcs
 
@@ -21,14 +21,15 @@ HOMEPAGE="https://www.bitlbee.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE_PROTOCOLS="msn oscar purple twitter +xmpp"
-IUSE="debug +gnutls ipv6 libevent libressl nss otr +plugins selinux test xinetd
+IUSE="debug +gnutls ipv6 libevent nss otr +plugins selinux test xinetd
 	${IUSE_PROTOCOLS}"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	|| ( purple xmpp msn oscar )
-	xmpp? ( !nss )
+	purple? ( plugins )
 	test? ( plugins )
+	xmpp? ( !nss )
 "
 
 COMMON_DEPEND="
@@ -42,8 +43,7 @@ COMMON_DEPEND="
 	!gnutls? (
 		nss? ( dev-libs/nss )
 		!nss? (
-			libressl? ( dev-libs/libressl:= )
-			!libressl? ( dev-libs/openssl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 "

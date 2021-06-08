@@ -13,6 +13,7 @@ LUA_COMPAT=( lua5-{1..2} )
 # Only needed by certain features
 VIRTUALX_REQUIRED="manual"
 
+WX_GTK_VER="3.0-gtk3"
 inherit cmake desktop flag-o-matic lua-single virtualx wxwidgets xdg-utils
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
@@ -21,7 +22,7 @@ SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/m
 
 LICENSE="GPL-3 BitstreamVera"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 +streflop +tools +unicode wxuniversal +model-viewer videos"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
@@ -49,9 +50,9 @@ RDEPEND="
 	virtual/jpeg:0=
 	x11-libs/libX11
 	x11-libs/libXext
-	editor? ( x11-libs/wxGTK:3.0-gtk3[X,opengl] )
+	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 	fribidi? ( dev-libs/fribidi )
-	model-viewer? ( x11-libs/wxGTK:3.0-gtk3[X] )
+	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
 	videos? ( media-video/vlc )
 "
 DEPEND="${RDEPEND}"
@@ -69,7 +70,6 @@ src_prepare() {
 	cmake_src_prepare
 
 	if use editor || use model-viewer ; then
-		WX_GTK_VER="3.0"
 		setup-wxwidgets
 	fi
 }

@@ -1,0 +1,28 @@
+https://github.com/AOMediaCodec/libavif/pull/532
+
+From 4ce461df9109f0b05a05aa01e1e1538663b2bc9b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Thu, 4 Mar 2021 21:20:33 -0500
+Subject: [PATCH] libavif.pc: respect libdir setting
+
+Do not hardcode "lib" as that is often the wrong path with multilib.
+On an x86_64 system for example, it should actually be "lib64".
+---
+ libavif.pc.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libavif.pc.cmake b/libavif.pc.cmake
+index 006539b14782..4ef2c8a97b57 100644
+--- a/libavif.pc.cmake
++++ b/libavif.pc.cmake
+@@ -1,6 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}/bin
+-libdir=${prefix}/lib
++libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+ includedir=${prefix}/include
+ 
+ Name: @PROJECT_NAME@
+-- 
+2.30.0
+

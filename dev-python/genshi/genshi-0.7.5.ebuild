@@ -4,19 +4,21 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Python toolkit for stream-based generation of output for the web"
-HOMEPAGE="http://genshi.edgewall.org/ https://pypi.org/project/Genshi/"
+HOMEPAGE="https://genshi.edgewall.org/ https://pypi.org/project/Genshi/"
 SRC_URI="mirror://pypi/G/${PN^}/${P^}.tar.gz"
+S="${WORKDIR}/${P^}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="doc examples"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
-S="${WORKDIR}/${P^}"
+BDEPEND="
+	test? ( dev-python/six[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
 

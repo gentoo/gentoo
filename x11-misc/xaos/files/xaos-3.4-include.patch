@@ -1,5 +1,5 @@
---- src/util/thread.c.orig	2009-03-28 10:50:49.817619387 +0000
-+++ src/util/thread.c	2009-03-28 10:59:40.048185946 +0000
+--- a/src/util/thread.c
++++ b/src/util/thread.c
 @@ -1,3 +1,4 @@
 +#include <stdlib.h>
  #ifndef _plan9_

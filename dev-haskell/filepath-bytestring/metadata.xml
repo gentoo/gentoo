@@ -10,11 +10,11 @@
 		values. It can be used as a drop in replacement for the filepath library
 		to get the benefits of using ByteStrings. It provides three modules:
 		
-		* &quot;System.FilePath.Posix.ByteString&quot; manipulates POSIX\/Linux style @RawFilePath@ values (with @\/@ as the path separator).
+		* "System.FilePath.Posix.ByteString" manipulates POSIX\/Linux style @RawFilePath@ values (with @\/@ as the path separator).
 		
-		* &quot;System.FilePath.Windows.ByteString&quot; manipulates Windows style @RawFilePath@ values (with either @\\@ or @\/@ as the path separator, and deals with drives).
+		* "System.FilePath.Windows.ByteString" manipulates Windows style @RawFilePath@ values (with either @\\@ or @\/@ as the path separator, and deals with drives).
 		
-		* &quot;System.FilePath.ByteString&quot; is an alias for the module appropriate to your platform.
+		* "System.FilePath.ByteString" is an alias for the module appropriate to your platform.
 		
 		All three modules provide the same API, and the same documentation (calling out differences in the different variants).
 	</longdescription>

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd toolchain-funcs
+inherit flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd toolchain-funcs tmpfiles
 
 SASLAUTHD_CONF_VER="2.1.26"
 
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="authdaemond berkdb gdbm kerberos ldapdb libressl openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="authdaemond berkdb gdbm kerberos ldapdb openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
 
 CDEPEND="
 	net-mail/mailbase
@@ -30,8 +30,7 @@ CDEPEND="
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	)
 	java? ( >=virtual/jdk-1.6:= )"
 
@@ -57,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.1.27-doc_build_fix.patch"
 	"${FILESDIR}/${PN}-2.1.27-memmem.patch"
 	"${FILESDIR}/${PN}-2.1.27-CVE-2019-19906.patch"
+	"${FILESDIR}/${PN}-2.1.27-slibtool.patch"
 )
 
 pkg_setup() {
@@ -87,19 +87,22 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# getpassphrase is defined in /usr/include/stdlib.h
 		append-cppflags -DHAVE_GETPASSPHRASE
 	else
 		# this horrendously breaks things on Solaris
 		append-cppflags -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -D_BSD_SOURCE -DLDAP_DEPRECATED
+		# replaces BSD_SOURCE (bug #579218)
+		append-cppflags -D_DEFAULT_SOURCE
 	fi
 
 	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
-	# Java support.
+	# Java support
 	multilib_is_native_abi && use java && export JAVAC="${JAVAC} ${JAVACFLAGS}"
 
 	local myeconfargs=(
@@ -227,7 +230,7 @@ multilib_src_install_all() {
 	newinitd "${FILESDIR}/saslauthd2.rc7" saslauthd
 	newconfd "${FILESDIR}/saslauthd-${SASLAUTHD_CONF_VER}.conf" saslauthd
 	systemd_dounit "${FILESDIR}/saslauthd.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.conf"
+	dotmpfiles "${FILESDIR}/${PN}.conf"
 
 	# The get_modname bit is important: do not remove the .la files on
 	# platforms where the lib isn't called .so for cyrus searches the .la to

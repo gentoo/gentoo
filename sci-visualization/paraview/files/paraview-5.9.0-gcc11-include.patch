@@ -1,0 +1,20 @@
+--- a/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
++++ b/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
+@@ -25,6 +25,7 @@
+ #include "vtkIdList.h"
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <unordered_map>
+ #include <vector>
+ 
+--- a/VTK/Common/DataModel/vtkPiecewiseFunction.cxx
++++ b/VTK/Common/DataModel/vtkPiecewiseFunction.cxx
+@@ -22,6 +22,7 @@
+ #include <cassert>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 

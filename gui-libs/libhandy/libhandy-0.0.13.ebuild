@@ -39,6 +39,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-glade3.36-compat{1,2}.patch
+	"${FILESDIR}"/${PV}-glade3.37-compat.patch
 )
 
 src_prepare() {

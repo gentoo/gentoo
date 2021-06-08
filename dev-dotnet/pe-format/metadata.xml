@@ -5,10 +5,6 @@
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>
-  <maintainer type="project">
-    <email>dotnet@gentoo.org</email>
-    <name>Gentoo Dotnet Project</name>
-  </maintainer>
   <upstream>
     <maintainer status="active">
       <email>mgorny@gentoo.org</email>

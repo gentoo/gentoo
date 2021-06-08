@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
 PYTHON_REQ_USE="ncurses"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/nicolargo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="dev-python/future[${PYTHON_USEDEP}]

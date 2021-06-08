@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		German "frami" standard dictionary with spell check, hyphenation patterns and
 		thesaurus. It includes the complete word list of Björn Jacke's igerman98 and

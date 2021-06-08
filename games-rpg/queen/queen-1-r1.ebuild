@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+
+inherit desktop wrapper
 
 DESCRIPTION="Flight of the Amazon Queen - 2D point-and-click adventure game set in the 1940s"
 HOMEPAGE="http://scummvm.sourceforge.net/"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PV="${PV/_p/-}"
 
 inherit lua toolchain-funcs
@@ -15,8 +15,9 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="test"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="${LUA_DEPS}"
@@ -25,6 +26,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-lua/busted[${LUA_USEDEP}]
+		dev-lua/lua_cliargs[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "

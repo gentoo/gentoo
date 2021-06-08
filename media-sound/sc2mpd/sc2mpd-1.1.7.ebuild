@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit eutils
-
 DESCRIPTION="Implements the SongCast protocol for use by upmpdcli and mpd"
 HOMEPAGE="https://www.lesbonscomptes.com/upmpdcli/index.html"
 

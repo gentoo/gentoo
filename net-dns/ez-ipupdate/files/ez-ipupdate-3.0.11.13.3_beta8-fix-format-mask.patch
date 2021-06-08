@@ -1,0 +1,35 @@
+From fe3aa40dfc94640e4faedad68ac3e5fd57353111 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 27 Mar 2021 13:07:11 +0100
+Subject: [PATCH] Fix format mask issues
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ ez-ipupdate.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ez-ipupdate.c b/ez-ipupdate.c
+index ff093a9..8d206da 100644
+--- a/ez-ipupdate.c
++++ b/ez-ipupdate.c
+@@ -2483,7 +2483,7 @@ int DHS_update_entry(void)
+   p += strlen(p);
+   limit = BUFFER_SIZE - 1 - strlen(buf);
+ 
+-  snprintf(buf, BUFFER_SIZE, "Content-length: %d\015\012", strlen(putbuf));
++  snprintf(buf, BUFFER_SIZE, "Content-length: %d\015\012", (int)strlen(putbuf));
+   output(buf);
+   snprintf(buf, BUFFER_SIZE, "\015\012");
+   output(buf);
+@@ -2620,7 +2620,7 @@ int DHS_update_entry(void)
+     p += strlen(p);
+     limit = BUFFER_SIZE - 1 - strlen(buf);
+ 
+-    snprintf(buf, BUFFER_SIZE, "Content-length: %d\015\012", strlen(putbuf));
++    snprintf(buf, BUFFER_SIZE, "Content-length: %d\015\012", (int)strlen(putbuf));
+     output(buf);
+     snprintf(buf, BUFFER_SIZE, "\015\012");
+     output(buf);
+-- 
+2.31.0
+

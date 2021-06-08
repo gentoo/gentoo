@@ -20,10 +20,14 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+drm test wayland X"
+IUSE="+drm examples putsurface test test-va-api +vainfo wayland X"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="|| ( drm wayland X )"
+REQUIRED_USE="
+	|| ( drm wayland X )
+	putsurface? ( || ( wayland X ) )
+	|| ( examples putsurface test-va-api vainfo )
+"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -46,7 +50,21 @@ DOCS=( NEWS CONTRIBUTING.md README.md )
 
 src_prepare() {
 	default
+
 	sed -e 's/-Werror//' -i test/Makefile.am || die
+
+	if ! use examples ; then
+		sed -E -e '/^SUBDIRS \+?=/s!( decode\>| encode\>| videoprocess\>| vendor/intel\>| vendor/intel/sfcsample\>)!!g' -i Makefile.am || die
+	fi
+
+	if ! use putsurface ; then
+		sed -E -e '/^SUBDIRS \+?=/s! putsurface\>!!g' -i Makefile.am || die
+	fi
+
+	if ! use vainfo ; then
+		sed -E -e '/^SUBDIRS \+?=/s! vainfo\>!!g' -i Makefile.am || die
+	fi
+
 	eautoreconf
 }
 
@@ -57,5 +75,22 @@ src_configure() {
 		$(use_enable wayland)
 		$(use_enable X x11)
 	)
+
+	if use test || use test-va-api ; then
+		myeconfargs+=( --enable-tests )
+	else
+		myeconfargs+=( --disable-tests )
+	fi
+
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+
+	if ! use test-va-api ; then
+		if [[ -e "${ED}"/usr/bin/test_va_api ]] ; then
+			rm -f "${ED}"/usr/bin/test_va_api || die
+		fi
+	fi
 }

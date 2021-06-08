@@ -1,5 +1,5 @@
---- Makefile.am.orig	2005-08-12 13:36:39.000000000 +0200
-+++ Makefile.am	2005-08-12 13:36:57.000000000 +0200
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -1,4 +1,4 @@
 -SUBDIRS = src vformat test doc
 +SUBDIRS = src vformat 

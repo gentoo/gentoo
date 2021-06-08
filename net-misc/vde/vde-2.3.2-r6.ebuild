@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit flag-o-matic
 
 MY_P="${PN}2-${PV}"
 
@@ -14,13 +12,11 @@ HOMEPAGE="https://virtualsquare.org"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
-IUSE="pcap selinux ssl libressl static-libs"
+IUSE="pcap selinux ssl static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )
+	"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
 	acct-group/qemu

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils flag-o-matic
+inherit autotools epatch flag-o-matic
 
 DESCRIPTION=" AmyEdit is a LaTeX editor"
 HOMEPAGE="http://amyedit.sf.net"

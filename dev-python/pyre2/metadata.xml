@@ -10,6 +10,7 @@
 		<name>Zac Medico</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">pyre2</remote-id>
+		<remote-id type="pypi">fb-re2</remote-id>
+		<remote-id type="github">facebook/pyre2</remote-id>
 	</upstream>
 </pkgmetadata>

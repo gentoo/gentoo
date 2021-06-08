@@ -28,16 +28,10 @@ HOMEPAGE="https://virtualsquare.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-#IUSE="pcap selinux ssl libressl static-libs"
 # upstream switched to wolfssl
 IUSE="pcap selinux static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )"
-# upstream switched to wolfssl
-#	ssl? (
-#		!libressl? ( dev-libs/openssl:0= )
-#		libressl? ( dev-libs/libressl:0= )
-#	)"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
 	acct-group/qemu

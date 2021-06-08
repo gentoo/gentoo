@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C library for arbitrary-precision interval arithmetic"
 HOMEPAGE="https://fredrikj.net/arb/"
@@ -33,5 +33,5 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

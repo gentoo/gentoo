@@ -9,14 +9,15 @@
 # @AUTHOR:
 # Rafael Kitover <rkitover@gmail.com>
 # @SUPPORTED_EAPIS: 5 6 7
-# @BLURB: Provides functions for installing dune packages.
+# @BLURB: Provides functions for installing Dune packages.
 # @DESCRIPTION:
-# Provides dependencies on dune and ocaml and default src_compile, src_test and
-# src_install for dune-based packages.
+# Provides dependencies on dDne and OCaml and default src_compile, src_test and
+# src_install for Dune-based packages.
 
 # @ECLASS-VARIABLE: DUNE_PKG_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
-# Sets the actual dune package name, if different from gentoo package name.
+# Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
 
 case ${EAPI:-0} in
@@ -31,8 +32,13 @@ EXPORT_FUNCTIONS src_compile src_test src_install
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) DEPEND="${RDEPEND} dev-ml/dune";;
-	*) BDEPEND="dev-ml/dune dev-lang/ocaml"; DEPEND="${RDEPEND}" ;;
+	5|6)
+		DEPEND="${RDEPEND} dev-ml/dune"
+		;;
+	*)
+		BDEPEND="dev-ml/dune dev-lang/ocaml"
+		DEPEND="${RDEPEND}"
+		;;
 esac
 
 dune_src_compile() {

@@ -1,25 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils ltprune
+inherit autotools
 
 MY_P="ZThread-${PV}"
 
 DESCRIPTION="platform-independent multi-threading and synchronization library for C++"
 HOMEPAGE="http://zthread.sourceforge.net/"
 SRC_URI="mirror://sourceforge/zthread/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm64 ~hppa ~mips ppc ~sparc x86"
-IUSE="debug doc kernel_linux static-libs"
+IUSE="debug doc kernel_linux"
 
-DEPEND="doc? ( app-doc/doxygen )"
-RDEPEND=""
-
-S="${WORKDIR}/${MY_P}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-no-fpermissive-r1.diff
@@ -34,7 +32,8 @@ src_prepare() {
 
 	rm -f include/zthread/{.Barrier.h.swp,Barrier.h.orig} || die
 
-	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #467778
+	# bug #467778
+	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die
 
 	AT_M4DIR="share" eautoreconf
 }
@@ -43,7 +42,7 @@ src_configure() {
 	econf \
 		$(use_enable debug) \
 		$(use_enable kernel_linux atomic-linux) \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 src_compile() {
@@ -62,5 +61,5 @@ src_install() {
 
 	use doc && dodoc -r doc/html
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

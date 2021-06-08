@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for the RIPEMD-160 Hash function"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

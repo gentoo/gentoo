@@ -14,7 +14,7 @@ SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse gnutls libressl seccomp test"
+IUSE="fuse gnutls seccomp test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -26,14 +26,8 @@ COMMON_DEPEND="
 		dev-libs/libtasn1:=
 		>=net-libs/gnutls-3.1.0[tools]
 	)
-	!libressl? (
-		dev-libs/openssl:0=
-		dev-libs/libtpms[-libressl]
-	)
-	libressl? (
-		dev-libs/libressl:0=
-		dev-libs/libtpms[libressl]
-	)
+	dev-libs/openssl:0=
+	dev-libs/libtpms
 	seccomp? ( sys-libs/libseccomp )
 "
 

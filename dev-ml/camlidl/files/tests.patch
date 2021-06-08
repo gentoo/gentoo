@@ -1,7 +1,5 @@
-Index: camlidl-1.05/tests/unix.idl
-===================================================================
---- camlidl-1.05.orig/tests/unix.idl
-+++ camlidl-1.05/tests/unix.idl
+--- a/tests/unix.idl
++++ b/tests/unix.idl
 @@ -15,16 +15,16 @@ quote (C, "
  
    union process_status { int code; };

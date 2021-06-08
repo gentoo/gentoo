@@ -3,12 +3,13 @@
 
 EAPI=7
 
+WX_GTK_VER="3.0-gtk3"
 inherit cmake fcaps flag-o-matic git-r3 toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://pcsx2.net/"
 EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
-EGIT_SUBMODULES=()
+EGIT_SUBMODULES=( 3rdparty/libchdr/libchdr )
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,7 +23,7 @@ RDEPEND="
 	app-arch/xz-utils
 	dev-cpp/yaml-cpp:=
 	dev-libs/libaio
-	dev-libs/libfmt:=
+	>=dev-libs/libfmt-7.1.3:=
 	dev-libs/libxml2:2
 	media-libs/alsa-lib
 	media-libs/libpng:=
@@ -38,7 +39,7 @@ RDEPEND="
 	x11-libs/libICE
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/wxGTK:3.0-gtk3[X]
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-cpp/gtest )"
@@ -70,6 +71,7 @@ src_configure() {
 		-DDISABLE_BUILD_DATE=TRUE
 		-DDISABLE_PCSX2_WRAPPER=TRUE
 		-DDISABLE_SETCAP=TRUE
+		-DENABLE_TESTS="$(usex test)"
 		-DOPTIMIZATION_FLAG=
 		-DPACKAGE_MODE=TRUE
 		-DXDG_STD=TRUE
@@ -81,7 +83,7 @@ src_configure() {
 		-DUSE_VTUNE=FALSE
 	)
 
-	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
+	setup-wxwidgets
 	cmake_src_configure
 }
 

@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/778704
+https://github.com/phaag/nfdump/pull/282
+
+From 44b6854a7e67bec438659452993a517b9ec3e753 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 27 Mar 2021 07:23:12 -0700
+Subject: [PATCH] bin: Use the libtool archives to link.
+
+Signed-off-by: orbea <orbea@riseup.net>
+---
+ bin/Makefile.am | 40 ++++++++++++++--------------------------
+ 1 file changed, 14 insertions(+), 26 deletions(-)
+
+diff --git a/bin/Makefile.am b/bin/Makefile.am
+index 0f8e787..456cda4 100755
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -68,37 +68,31 @@ libnfdump_la_LDFLAGS = -release 1.6.22
+ 
+ nfdump_SOURCES = nfdump.c nfdump.h nfstat.c nfstat.h nfexport.c nfexport.h  \
+ 	$(nflowcache) $(nfprof)
+-nfdump_LDADD = -lnfdump
+-nfdump_DEPENDENCIES = libnfdump.la
++nfdump_LDADD = libnfdump.la
+ 
+ nfreplay_SOURCES = nfreplay.c $(nfprof) \
+ 	$(nfnet) $(collector) $(nfv1) $(nfv9) $(nfv5v7) $(ipfix)
+-nfreplay_LDADD = -lnfdump
+-nfreplay_DEPENDENCIES = libnfdump.la
++nfreplay_LDADD = libnfdump.la
+ 
+ nfprofile_SOURCES = nfprofile.c profile.c profile.h $(nfstatfile) 
+-nfprofile_LDADD = -lnfdump -lrrd
+-nfprofile_DEPENDENCIES = libnfdump.la
++nfprofile_LDADD = libnfdump.la -lrrd
+ 
+ nftrack_SOURCES = ../extra/nftrack/nftrack.c \
+ 	../extra/nftrack/nftrack_rrd.c ../extra/nftrack/nftrack_rrd.h \
+ 	../extra/nftrack/nftrack_stat.c ../extra/nftrack/nftrack_stat.h 
+ nftrack_CFLAGS = -I ../extra/nftrack
+-nftrack_LDADD = -lnfdump -lrrd
+-nftrack_DEPENDENCIES = libnfdump.la
++nftrack_LDADD = libnfdump.la -lrrd
+ 
+ nfcapd_SOURCES = nfcapd.c \
+ 	$(nfstatfile) $(launch) \
+ 	$(nfnet) $(collector) $(nfv1) $(nfv5v7) $(nfv9) $(ipfix) $(bookkeeper) $(expire)
+-nfcapd_LDADD = -lnfdump 
+-nfcapd_DEPENDENCIES = libnfdump.la
++nfcapd_LDADD = libnfdump.la
+ 
+ nfpcapd_SOURCES = nfpcapd.c \
+ 	$(pcaproc) $(netflow_pcap) \
+ 	$(nfstatfile) $(launch) \
+ 	$(nfnet) $(collector) $(bookkeeper) $(expire) $(content)
+-nfpcapd_LDADD = -lnfdump 
+-nfpcapd_DEPENDENCIES = libnfdump.la
++nfpcapd_LDADD = libnfdump.la
+ 
+ if READPCAP
+ nfcapd_CFLAGS = -DPCAP
+@@ -116,8 +110,7 @@ endif
+ sfcapd_SOURCES = sfcapd.c sflow_nfdump.c sflow_nfdump.h sflow.h sflow_v2v4.h sflow_process.c  sflow_process.h\
+ 	$(nfstatfile) $(launch) \
+ 	$(nfnet) $(collector) $(bookkeeper) $(expire)
+-sfcapd_LDADD = -lnfdump 
+-sfcapd_DEPENDENCIES = libnfdump.la
++sfcapd_LDADD = libnfdump.la
+ 
+ if READPCAP
+ sfcapd_CFLAGS = -DPCAP
+@@ -126,32 +119,27 @@ sfcapd_LDADD += -lpcap
+ endif
+ 
+ nfreader_SOURCES = nfreader.c 
+-nfreader_LDADD = -lnfdump 
+-nfreader_DEPENDENCIES = libnfdump.la
++nfreader_LDADD = libnfdump.la
+ 
+ nfanon_SOURCES = nfanon.c $(anon)
+-nfanon_LDADD = -lnfdump 
+-nfanon_DEPENDENCIES = libnfdump.la
++nfanon_LDADD = libnfdump.la
+ 
+ nfgen_SOURCES = nfgen.c 
+-nfgen_LDADD = -lnfdump 
+-nfgen_DEPENDENCIES = libnfdump.la
++nfgen_LDADD = libnfdump.la
+ 
+ nfexpire_SOURCES = nfexpire.c \
+ 	$(bookkeeper) $(expire) $(nfstatfile)
+-nfexpire_LDADD = -lnfdump @FTS_OBJ@
+-nfexpire_DEPENDENCIES = libnfdump.la
++nfexpire_LDADD = libnfdump.la @FTS_OBJ@
+ 
+ nftest_SOURCES = nftest.c 
+-nftest_LDADD = -lnfdump 
+-nftest_DEPENDENCIES = nfgen libnfdump.la
++nftest_LDADD = libnfdump.la
++nftest_DEPENDENCIES = nfgen
+ 
+ if FT2NFDUMP
+ ft2nfdump_SOURCES = ft2nfdump.c 
+ ft2nfdump_CFLAGS = @FT_INCLUDES@
+-ft2nfdump_LDADD = -lnfdump -lft -lz
++ft2nfdump_LDADD = libnfdump.la -lft -lz
+ ft2nfdump_LDADD += @FT_LDFLAGS@
+-ft2nfdump_DEPENDENCIES = libnfdump.la
+ endif
+ 
+ check_DIST = inline.c collector_inline.c nffile_inline.c nfdump_inline.c heapsort_inline.c applybits_inline.c 

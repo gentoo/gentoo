@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} )
 
-inherit autotools lua-single toolchain-funcs eutils
+inherit autotools lua-single toolchain-funcs
 
 DESCRIPTION="Support for parallel scientific applications"
 HOMEPAGE="http://www.p4est.org/"

@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils flag-o-matic systemd
+
+inherit autotools flag-o-matic systemd
 
 MY_PV="${PV/_rc/-rc}"
 MY_P="${PN}-${MY_PV}"
@@ -14,7 +15,7 @@ SRC_URI="https://www.memcached.org/files/${MY_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug sasl seccomp selinux slabs-reassign test" # hugetlbfs later
 
 RDEPEND=">=dev-libs/libevent-1.4:=
@@ -38,9 +39,13 @@ PATCHES=(
 )
 
 src_prepare() {
+	default
+
 	sed -i -e 's,-Werror,,g' configure.ac || die
 	sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,' configure.ac || die
+
 	eautoreconf
+
 	use slabs-reassign && append-flags -DALLOW_SLABS_REASSIGN
 
 	# Tweak upstream systemd unit to use Gentoo variables/envfile.
@@ -54,7 +59,6 @@ src_prepare() {
 		/EnvironmentFile=/{s,/sysconfig/,/conf.d/,g;};
 		' \
 		"${S}"/scripts/memcached.service
-	default
 }
 
 src_configure() {
@@ -71,8 +75,13 @@ src_compile() {
 	# the -debug version with -DNDEBUG _WILL_ fail.
 	append-flags -UNDEBUG -pthread
 	emake testapp memcached-debug CFLAGS="${CFLAGS}"
+
 	filter-flags -UNDEBUG
 	emake
+}
+
+src_test() {
+	emake -j1 test
 }
 
 src_install() {
@@ -92,8 +101,4 @@ pkg_postinst() {
 	elog "To enable this you should create a symlink in /etc/init.d/ for each instance"
 	elog "to /etc/init.d/memcached and create the matching conf files in /etc/conf.d/"
 	elog "Please see Gentoo bug #122246 for more info"
-}
-
-src_test() {
-	emake -j1 test
 }

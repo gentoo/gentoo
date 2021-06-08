@@ -1,13 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
 		<email>nerdboy@gentoo.org</email>
 		<name>Steve Arnold</name>
 	</maintainer>
-	<longdescription lang="en">
-		A tool to convert from SVG to reportlab graphics objects.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">sarnold/svg2rlg</remote-id>
 	</upstream>

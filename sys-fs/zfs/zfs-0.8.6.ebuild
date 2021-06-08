@@ -4,6 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
@@ -21,7 +22,7 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0/2" # just libzfs soname major for now. possible candidates: libuutil, libzpool, libnvpair
-IUSE="custom-cflags debug kernel-builtin libressl minimal nls python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin minimal nls python +rootfs test-suite static-libs"
 
 DEPEND="
 	net-libs/libtirpc[static-libs?]
@@ -29,8 +30,7 @@ DEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
 	virtual/libudev[static-libs(-)?]
-	libressl? ( dev-libs/libressl:0=[static-libs?] )
-	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	dev-libs/openssl:0=[static-libs?]
 	!minimal? ( ${PYTHON_DEPS} )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]

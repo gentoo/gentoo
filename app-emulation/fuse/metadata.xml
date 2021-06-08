@@ -2,18 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>0xe2.0x9a.0x9b@gmail.com</email>
-		<name>Jan Ziak</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">fuse-emulator</remote-id>
 	</upstream>
 	<use>
 		<flag name="backend-fbcon">Use framebuffer rendering backend</flag>
+		<flag name="backend-gtk3">Use Gtk+ rendering backend</flag>
 		<flag name="backend-sdl">Use SDL rendering backend</flag>
 		<flag name="backend-svga">Use svgalib rendering backend</flag>
 		<flag name="backend-X">Use X11 rendering backend</flag>

@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on IA64.
+llvm-libunwind
+
 # Matt Turner <mattst88@gentoo.org> (2020-07-01)
 # Unlikely.
 vulkan

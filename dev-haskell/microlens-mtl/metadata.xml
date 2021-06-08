@@ -6,7 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
-		This package contains functions (like &#39;view&#39; or &#39;+=&#39;) which work on &#39;MonadReader&#39;, &#39;MonadWriter&#39;, and &#39;MonadState&#39; from the mtl package.
+		This package contains functions (like 'view' or '+=') which work on 'MonadReader', 'MonadWriter', and 'MonadState' from the mtl package.
 		
 		This package is a part of the &lt;http://hackage.haskell.org/package/microlens microlens&gt; family; see the readme &lt;https://github.com/aelve/microlens#readme on Github&gt;.
 	</longdescription>

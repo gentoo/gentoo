@@ -10,6 +10,7 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:info-zip:unzip</remote-id>
+		<remote-id type="github">madler/unzip</remote-id>
 		<remote-id type="sourceforge">infozip</remote-id>
 	</upstream>
 </pkgmetadata>

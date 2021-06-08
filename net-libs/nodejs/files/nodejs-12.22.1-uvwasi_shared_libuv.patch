@@ -1,0 +1,12 @@
+--- a/deps/uvwasi/uvwasi.gyp
++++ b/deps/uvwasi/uvwasi.gyp
+@@ -18,9 +18,6 @@
+         'src/wasi_rights.c',
+         'src/wasi_serdes.c',
+       ],
+-      'dependencies': [
+-        '../uv/uv.gyp:libuv',
+-      ],
+       'direct_dependent_settings': {
+         'include_dirs': ['include']
+       },

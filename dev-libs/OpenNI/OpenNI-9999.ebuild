@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/OpenNI/OpenNI"
 fi
 
-inherit ${SCM} toolchain-funcs eutils multilib java-pkg-opt-2
+inherit ${SCM} toolchain-funcs epatch multilib java-pkg-opt-2
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""

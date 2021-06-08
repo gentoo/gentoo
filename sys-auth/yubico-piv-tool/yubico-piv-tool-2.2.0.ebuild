@@ -11,7 +11,7 @@ SRC_URI="https://github.com/Yubico/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/2"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 RESTRICT="!test? ( test )"

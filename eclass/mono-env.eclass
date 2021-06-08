@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mono-env.eclass
 # @MAINTAINER:
-# dotnet@gentoo.org
+# maintainer-needed@gentoo.org
 # @BLURB: Set environment variables commonly used by dotnet packages.
 # @DESCRIPTION:
 # Set environment variables commonly used by dotnet packages.

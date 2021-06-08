@@ -3,8 +3,7 @@
 
 EAPI=7
 
-# eutils: strip-linguas
-inherit eutils toolchain-funcs
+inherit l10n toolchain-funcs
 
 IUSE="nls dbus ssl +gtk"
 

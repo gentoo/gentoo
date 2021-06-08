@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/1-${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,8 @@ DEPEND="${RDEPEND}
 DOCS=(CHANGELOG.md README.md)
 
 src_prepare() {
+	eapply "${FILESDIR}/${PN}-1.6.0-boost-1.76.patch"
+
 	# Use headers of dev-libs/darts, dev-libs/utfcpp and x11-base/xorg-proto.
 	sed -e "/\${PROJECT_SOURCE_DIR}\/thirdparty/d" -i CMakeLists.txt || die
 	rm -r thirdparty || die

@@ -1,0 +1,16 @@
+--- a/src/commonfuncs.cxx
++++ b/src/commonfuncs.cxx
+@@ -41,7 +41,12 @@ bool find_full_path_for_file(char* name, char* ret_full_pathname, FMode mode)
+ 
+   do 
+   {    
+-    sprintf(ret_full_pathname,"%s/%s",GLOBAL_SEARCH,name); //First check in GLOBAL_SEARCH dir
++    sprintf(ret_full_pathname,"%s/%s","@GENTOO_PORTAGE_EPREFIX@/var/lib/xwelltris",name); // First check in /var/lib/xwelltris
++    fd=open(ret_full_pathname,fmode);
++    if(fd>0)
++      break;
++
++    sprintf(ret_full_pathname,"%s/%s",GLOBAL_SEARCH,name); // Then in GLOBAL_SEARCH dir
+     fd=open(ret_full_pathname,fmode);
+     if(fd>0)
+       break;

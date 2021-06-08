@@ -5,7 +5,7 @@ EAPI="6"
 ETYPE="sources"
 KEYWORDS="~amd64 ~arm64"
 
-HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
+HOMEPAGE="https://wiki.linuxfoundation.org/realtime/start"
 
 inherit eapi7-ver
 

@@ -6,6 +6,7 @@
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">gabgio/knocker</remote-id>
 		<remote-id type="sourceforge">knocker</remote-id>
 	</upstream>
 </pkgmetadata>

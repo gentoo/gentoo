@@ -1,10 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 PATCH_LEVEL="2.1"
-
 inherit toolchain-funcs
 
 DESCRIPTION="Intelligent Battery Monitor"
@@ -27,20 +26,17 @@ DEPEND="
 	${RDEPEND}
 	gkrellm? ( virtual/pkgconfig )"
 
-src_prepare() {
-	eapply \
-		"${FILESDIR}"/${P}-build.patch \
-		"${WORKDIR}"/${PN}_${PV}-${PATCH_LEVEL}.diff
-
-	eapply debian/patches/02*.dpatch
-	eapply debian/patches/03*.dpatch
-	eapply debian/patches/05*.dpatch
-
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${WORKDIR}"/${PN}_${PV}-${PATCH_LEVEL}.diff
+	"${S}"/debian/patches/02deviation.dpatch
+	"${S}"/debian/patches/03acpi-check.dpatch
+	"${S}"/debian/patches/05_sysfs_lenovo.dpatch
+)
 
 src_compile() {
-	tc-export CXX
+	tc-export CXX PKG_CONFIG
+
 	emake
 	use gkrellm && emake krell
 }

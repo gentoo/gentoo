@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P^}"
 
 pkg_postinst() {
-	elog "Optional uninstalled features:"
 	optfeature "matching icon theme" x11-themes/elementary-xfce-icon-theme
 	optfeature "matching cursor theme" x11-themes/vanilla-dmz-xcursors
 }

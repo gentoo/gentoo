@@ -12,7 +12,7 @@ SRC_URI="https://github.com/bcpierce00/unison/archive/${MY_COMMIT}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="debug doc gtk +ocamlopt threads"
 RESTRICT="!ocamlopt? ( strip )" # https://bugs.gentoo.org/685776#c0
 
@@ -21,8 +21,8 @@ BDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	doc? ( app-text/dvipsk
 		app-text/ghostscript-gpl
 		dev-texlive/texlive-latex )"
-DEPEND="gtk? ( dev-ml/lablgtk:2= )"
-RDEPEND="gtk? ( dev-ml/lablgtk:2=
+DEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?] )"
+RDEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?]
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
-	local myconf="all"
+	local myconf
 
 	if use threads; then
 		myconf="$myconf THREADS=true"
@@ -57,13 +57,12 @@ src_compile() {
 
 	use ocamlopt || myconf="$myconf NATIVE=false"
 
-	# Discard cflags as it will try to pass them to ocamlc...
-	emake $myconf CFLAGS=""
-
 	if use doc; then
-		myconf="$myconf docs HEVEA=false"
-		emake $myconf CFLAGS=""
+		VARTEXFONTS="${T}/fonts" emake $myconf CFLAGS="" HEVEA=false docs
 	fi
+
+	# Discard cflags as it will try to pass them to ocamlc...
+	emake $myconf CFLAGS="" src
 }
 
 src_test() {

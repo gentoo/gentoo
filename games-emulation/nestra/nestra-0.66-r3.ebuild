@@ -1,28 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit epatch toolchain-funcs flag-o-matic
+EAPI=7
+
+inherit toolchain-funcs flag-o-matic
 
 PATCH="${P/-/_}-10.diff"
 DESCRIPTION="NES emulation for Linux/x86"
 HOMEPAGE="http://nestra.linuxgames.com/"
 SRC_URI="http://nestra.linuxgames.com/${P}.tar.gz
 	mirror://debian/pool/contrib/n/nestra/${PATCH}.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="x11-libs/libX11[abi_x86_32(-)]"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}"
-
 src_prepare() {
 	default
-	epatch "${WORKDIR}"/${PATCH}
+
+	eapply "${WORKDIR}"/${PATCH}
 	eapply "${FILESDIR}"/${P}-exec-stack.patch
 	eapply "${FILESDIR}"/${P}-include.patch
 

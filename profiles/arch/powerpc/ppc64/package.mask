@@ -1,6 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-17)
+# chromium does not work on ppc64be
+www-client/chromium
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
+# only works on little-endian
+sci-mathematics/geogebra-bin
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
 # Fails to build with buildmode=pie assumptions, which
 # does not work on big-endian ppc64

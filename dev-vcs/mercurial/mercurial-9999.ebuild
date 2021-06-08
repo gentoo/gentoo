@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 CARGO_OPTIONAL=1
 
-inherit bash-completion-r1 cargo elisp-common eutils distutils-r1 mercurial flag-o-matic
+inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -17,7 +17,7 @@ EHG_REPO_URI="https://www.mercurial-scm.org/repo/hg"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="+chg emacs gpg test tk rust zsh-completion"
+IUSE="+chg emacs gpg test tk rust"
 
 BDEPEND="
 	dev-python/docutils[${PYTHON_USEDEP}]
@@ -28,8 +28,7 @@ RDEPEND="
 	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
 	tk? ( dev-lang/tk )
-	zsh-completion? ( app-shells/zsh )"
-
+"
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	test? ( app-arch/unzip
 		dev-python/pygments[${PYTHON_USEDEP}] )"
@@ -106,10 +105,8 @@ python_install_all() {
 
 	newbashcomp contrib/bash_completion hg
 
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		newins contrib/zsh_completion _hg
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins contrib/zsh_completion _hg
 
 	dobin hgeditor
 	if use tk; then

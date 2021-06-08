@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils ltprune multilib-minimal
+inherit autotools multilib-minimal
 
 # This file cannot be mirrored.
 # See the notes at http://tipok.org.ua/node/17
@@ -26,9 +26,11 @@ RESTRICT="bindist mirror"
 RDEPEND="
 	!media-sound/aacplusenc
 	fftw? ( >=sci-libs/fftw-3.3.3-r2:3.0[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/unzip
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-clang-inline-redefinition.patch"
@@ -36,11 +38,15 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	sed \
 		-e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' \
 		-i configure.ac || die
+
 	eautoreconf
+
 	cp "${DISTDIR}/${TGPPDIST}" src/ || die
+
 	multilib_copy_sources
 }
 
@@ -55,6 +61,6 @@ multilib_src_compile() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 	einstalldocs
 }

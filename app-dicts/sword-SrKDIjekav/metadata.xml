@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Serbian Bible: Vuk Stefanović Karadžić translated the New Testament in 1847, and Đuro Daničić finished his translation of the Old Testament in 1865. This Bible translation is a public domain. ,"Biblija Srpski prevod. Vuk Stefanović Karadžić Novi Zakon 1847, Đuro Daničić Stari Zakon 1865."
 	</longdescription>

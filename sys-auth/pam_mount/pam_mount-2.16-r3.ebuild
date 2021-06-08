@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,16 +11,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-IUSE="crypt libressl ssl selinux"
+IUSE="crypt ssl selinux"
 
 COMMON_DEPEND=">=sys-libs/pam-0.99
 	>=sys-libs/libhx-3.12.1:=
 	>=dev-libs/libxml2-2.6
 	crypt? ( >=sys-fs/cryptsetup-1.1.0:= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"

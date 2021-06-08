@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit flag-o-matic meson multilib-minimal python-any-r1 xdg-utils
+inherit flag-o-matic meson-multilib python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -34,10 +34,10 @@ RDEPEND="
 	truetype? ( >=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	>=dev-libs/gobject-introspection-common-1.34
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
 	introspection? ( dev-util/glib-utils )
@@ -63,6 +63,9 @@ src_prepare() {
 	# bug 618772
 	append-cxxflags -std=c++14
 
+	# bug 790359
+	filter-flags -fexceptions -fthreadsafe-statics
+
 	# bug 762415
 	local pyscript
 	for pyscript in $(find -type f -name "*.py") ; do
@@ -70,23 +73,15 @@ src_prepare() {
 	done
 }
 
-meson_multilib_native_feature() {
-	if multilib_is_native_abi && use "$1" ; then
-		echo "enabled"
-	else
-		echo "disabled"
-	fi
-}
-
 multilib_src_configure() {
 	# harfbuzz-gobject only used for instrospection, bug #535852
 	local emesonargs=(
-		-Dcairo="$(meson_multilib_native_feature cairo)"
+		$(meson_native_use_feature cairo)
 		-Dcoretext="disabled"
-		-Ddocs="$(meson_multilib_native_feature doc)"
+		$(meson_native_use_feature doc)
 		-Dfontconfig="disabled" #609300
-		-Dintrospection="$(meson_multilib_native_feature introspection)"
-		-Dstatic="$(usex static-libs true false)"
+		$(meson_native_use_feature introspection)
+		$(meson_use static-libs static)
 		$(meson_feature glib)
 		$(meson_feature graphite)
 		$(meson_feature icu)
@@ -95,16 +90,4 @@ multilib_src_configure() {
 		$(meson_feature truetype freetype)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
-multilib_src_install_all() {
-	einstalldocs
 }

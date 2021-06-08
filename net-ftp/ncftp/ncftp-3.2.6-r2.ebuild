@@ -21,6 +21,8 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.6-fno-common.patch
 )

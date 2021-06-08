@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,10 @@ DESCRIPTION="Movie creator from photos and video clips"
 HOMEPAGE="https://ffdiaporama.tuxfamily.org"
 SRC_URI="https://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_bin_${BIN_PV}.tar.gz
 	https://download.tuxfamily.org/${PN}/Packages/Devel/${PN}_rsc_${RSC_PV}.tar.gz
-	https://dev.gentoo.org/~jstein/dist/ffdiaporama-2.2-libav11.patch
-	https://dev.gentoo.org/~jstein/dist/ffdiaporama-2.2-ffmpeg-3.0.patch
-	https://dev.gentoo.org/~jstein/dist/ffdiaporama-2.2-ffmpeg-4.0.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-libav11.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-ffmpeg-3.0.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-ffmpeg-4.0.patch
+	https://raw.githubusercontent.com/laurantino/gentoo-dist/master/ffdiaporama-2.2-ffmpeg-4.4.patch
 	texturemate? ( https://download.tuxfamily.org/${PN}/Packages/Stable/${PN}_texturemate_${TMT_PV}.tar.gz )"
 
 LICENSE="GPL-2 texturemate? ( CC-BY-3.0 )"
@@ -40,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( authors.txt )
-PATCHES=( "${DISTDIR}"/${PN}-${MY_PV}-{ffmpeg-3.0,libav11,ffmpeg-4.0}.patch )
+PATCHES=( "${DISTDIR}"/${PN}-${MY_PV}-{ffmpeg-3.0,libav11,ffmpeg-4.0,ffmpeg-4.4}.patch )
 
 S="${WORKDIR}/ffDiaporama"
 

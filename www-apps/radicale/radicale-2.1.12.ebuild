@@ -4,16 +4,16 @@
 EAPI="7"
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit distutils-r1 eutils systemd
+inherit distutils-r1 systemd
 
 MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A simple CalDAV calendar server"
 HOMEPAGE="https://radicale.org/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/Kozea/Radicale/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

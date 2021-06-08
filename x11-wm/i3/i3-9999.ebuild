@@ -95,10 +95,8 @@ src_test() {
 }
 
 pkg_postinst() {
-	elog "There are several packages that you may find useful with i3 and"
-	elog "their usage is suggested by the upstream maintainers."
-	elog "Uninstalled optional dependencies:"
-	optfeature "Application launcher" x11-misc/dmenu
-	optfeature "Simple screen locker" x11-misc/i3lock
-	optfeature "Status bar generator" x11-misc/i3status
+	optfeature_header "There are several packages that may be useful with i3:"
+	optfeature "application launcher" x11-misc/dmenu
+	optfeature "simple screen locker" x11-misc/i3lock
+	optfeature "status bar generator" x11-misc/i3status
 }

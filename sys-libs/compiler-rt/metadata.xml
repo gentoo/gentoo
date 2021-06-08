@@ -5,7 +5,7 @@
 		<email>llvm@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='clang'>Force building using installed clang (rather
+		<flag name="clang">Force building using installed clang (rather
 			than the default CC/CXX).</flag>
 	</use>
 </pkgmetadata>

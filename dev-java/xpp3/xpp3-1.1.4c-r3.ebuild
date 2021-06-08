@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="An implementation of XMLPULL V1 API"
 HOMEPAGE="http://www.extreme.indiana.edu/xgws/xsoap/xpp/mxp1/index.html"
-SRC_URI="https://repo1.maven.org/maven2/${PN}/${PN}/${PV}/xpp3-1.1.4c-sources.jar -> ${P}.jar"
+SRC_URI="https://repo1.maven.org/maven2/${PN}/${PN}/${PV}/${P}-sources.jar -> ${P}.jar"
 
 LICENSE="Apache-1.1 IBM JDOM LGPL-2.1+"
 SLOT="0"

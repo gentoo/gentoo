@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: webapp.eclass
@@ -16,12 +16,14 @@
 WEBAPP_DEPEND=">=app-admin/webapp-config-1.50.15"
 
 # @ECLASS-VARIABLE: WEBAPP_NO_AUTO_INSTALL
+# @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' if an automatic installation and/or upgrade is
 # not possible. The ebuild should overwrite pkg_postinst() and explain the
 # reason for this BEFORE calling webapp_pkg_postinst().
 
 # @ECLASS-VARIABLE: WEBAPP_OPTIONAL
+# @PRE_INHERIT
 # @DESCRIPTION:
 # An ebuild sets this to `yes' to make webapp support optional, in which case
 # you also need to take care of USE-flags and dependencies.

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="GTK-2.0 Theme Switcher"
 HOMEPAGE="http://plasmasturm.org/programs/gtk-chtheme/"

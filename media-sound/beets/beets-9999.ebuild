@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -118,7 +118,6 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	newins "${WORKDIR}/${P}/extra/_beet" _beet
 
-	elog "Optional dependencies:"
 	optfeature "badfiles support" "media-libs/flac media-sound/mp3val"
 	optfeature "chromaprint support" "dev-python/pyacoustid media-libs/chromaprint[tools]"
 	optfeature "discogs support" dev-python/discogs-client

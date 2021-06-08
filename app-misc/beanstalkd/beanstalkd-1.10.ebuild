@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils systemd toolchain-funcs user
+inherit systemd toolchain-funcs user
 
 DESCRIPTION="A simple, fast work queue"
 HOMEPAGE="http://kr.github.io/beanstalkd/"

@@ -15,7 +15,7 @@
 		
 		* Cast projection functions to read-only lenses
 		
-		* Cast \&quot;toList\&quot; functions to read-only traversals
+		* Cast \"toList\" functions to read-only traversals
 		
 		* Cast semantic editor combinators to modify-only traversals.
 	</longdescription>

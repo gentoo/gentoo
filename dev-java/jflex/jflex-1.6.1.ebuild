@@ -5,7 +5,7 @@ EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit epatch java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JFlex is a lexical analyzer generator for Java"
 HOMEPAGE="https://www.jflex.de/"

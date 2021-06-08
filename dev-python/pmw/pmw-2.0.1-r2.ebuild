@@ -34,7 +34,7 @@ python_test() {
 	cp tests/{flagup.bmp,earthris.gif} . || die
 	for test in tests/*_test.py; do
 		echo "running test "$test
-		PYTHONPATH=tests:../../ virtualmake $test || die
+		PYTHONPATH=tests:../../ virtx emake -j1 $test || die
 	done
 }
 

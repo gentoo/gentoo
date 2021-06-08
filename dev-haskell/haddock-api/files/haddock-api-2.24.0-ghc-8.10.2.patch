@@ -1,0 +1,147 @@
+From e455bc18e15adf05a1f32bc7c4512eedb7ab889f Mon Sep 17 00:00:00 2001
+From: Alex Biehl <alexbiehl@gmail.com>
+Date: Tue, 8 Dec 2020 19:42:52 +0100
+Subject: [PATCH 1/2] Changes for GHC#17566
+
+See https://gitlab.haskell.org/ghc/ghc/merge_requests/2469
+---
+ haddock-api/src/Haddock/Backends/LaTeX.hs     |  2 +-
+ haddock-api/src/Haddock/Backends/Xhtml.hs     |  2 +-
+ .../src/Haddock/Backends/Xhtml/Decl.hs        |  4 ++-
+ haddock-api/src/Haddock/GhcUtils.hs           | 29 +++++++++++++++++--
+ haddock-api/src/Haddock/Types.hs              |  1 +
+ 5 files changed, 32 insertions(+), 6 deletions(-)
+
+diff --git a/haddock-api/src/Haddock/Backends/LaTeX.hs b/haddock-api/src/Haddock/Backends/LaTeX.hs
+index 647812f93..024a6c513 100644
+--- a/src/Haddock/Backends/LaTeX.hs
++++ b/src/Haddock/Backends/LaTeX.hs
+@@ -255,7 +255,7 @@ declNames :: LHsDecl DocNameI
+              , [DocName]       --   names being declared
+              )
+ declNames (L _ decl) = case decl of
+-  TyClD _ d  -> (empty, [tcdName d])
++  TyClD _ d  -> (empty, [tcdNameI d])
+   SigD _ (TypeSig _ lnames _ ) -> (empty, map unLoc lnames)
+   SigD _ (PatSynSig _ lnames _) -> (text "pattern", map unLoc lnames)
+   ForD _ (ForeignImport _ (L _ n) _ _) -> (empty, [n])
+diff --git a/haddock-api/src/Haddock/Backends/Xhtml.hs b/haddock-api/src/Haddock/Backends/Xhtml.hs
+index f80a9c05f..541f40c4f 100644
+--- a/src/Haddock/Backends/Xhtml.hs
++++ b/src/Haddock/Backends/Xhtml.hs
+@@ -407,7 +407,7 @@ ppJsonIndex odir maybe_source_url maybe_wiki_url unicode pkg qual_opt ifaces = d
+     exportSubs _ = []
+ 
+     exportName :: ExportItem DocNameI -> [IdP DocNameI]
+-    exportName ExportDecl { expItemDecl } = getMainDeclBinder (unLoc expItemDecl)
++    exportName ExportDecl { expItemDecl } = getMainDeclBinderI (unLoc expItemDecl)
+     exportName ExportNoDecl { expItemName } = [expItemName]
+     exportName _ = []
+ 
+diff --git a/haddock-api/src/Haddock/Backends/Xhtml/Decl.hs b/haddock-api/src/Haddock/Backends/Xhtml/Decl.hs
+index ef0ba1b67..30b8d43eb 100644
+--- a/src/Haddock/Backends/Xhtml/Decl.hs
++++ b/src/Haddock/Backends/Xhtml/Decl.hs
+@@ -536,6 +536,8 @@ ppClassDecl summary links instances fixities loc d subdocs
+     -- Only the fixity relevant to the class header
+     fixs = ppFixities [ f | f@(n,_) <- fixities, n == unLoc lname ] qual
+ 
++    nm   = tcdNameI decl
++
+     hdr = ppClassHdr summary lctxt (unLoc lname) ltyvars lfds
+ 
+     -- Associated types
+@@ -794,7 +796,7 @@ ppDataDecl summary links instances fixities subdocs loc doc dataDecl pats
+   | otherwise = header_ +++ docSection curname pkg qual doc +++ constrBit +++ patternBit +++ instancesBit
+ 
+   where
+-    docname   = tcdName dataDecl
++    docname   = tcdNameI dataDecl
+     curname   = Just $ getName docname
+     cons      = dd_cons (tcdDataDefn dataDecl)
+     isH98     = case unLoc (head cons) of
+diff --git a/haddock-api/src/Haddock/GhcUtils.hs b/haddock-api/src/Haddock/GhcUtils.hs
+index 0874e7b4d..43fe3e774 100644
+--- a/src/Haddock/GhcUtils.hs
++++ b/src/Haddock/GhcUtils.hs
+@@ -58,8 +58,7 @@ moduleString = moduleNameString . moduleName
+ isNameSym :: Name -> Bool
+ isNameSym = isSymOcc . nameOccName
+ 
+-getMainDeclBinder :: (SrcSpanLess (LPat p) ~ Pat p , HasSrcSpan (LPat p)) =>
+-                     HsDecl p -> [IdP p]
++getMainDeclBinder :: HsDecl (GhcPass p) -> [IdP (GhcPass p)]
+ getMainDeclBinder (TyClD _ d) = [tcdName d]
+ getMainDeclBinder (ValD _ d) =
+   case collectHsBindBinders d of
+@@ -221,6 +220,31 @@ getGADTConType (ConDeclH98 {}) = panic "getGADTConType"
+   -- Should only be called on ConDeclGADT
+ getGADTConType (XConDecl nec) = noExtCon nec
+ 
++getMainDeclBinderI :: HsDecl DocNameI -> [IdP DocNameI]
++getMainDeclBinderI (TyClD _ d) = [tcdNameI d]
++getMainDeclBinderI (ValD _ d) =
++  case collectHsBindBinders d of
++    []       -> []
++    (name:_) -> [name]
++getMainDeclBinderI (SigD _ d) = sigNameNoLoc d
++getMainDeclBinderI (ForD _ (ForeignImport _ name _ _)) = [unLoc name]
++getMainDeclBinderI (ForD _ (ForeignExport _ _ _ _)) = []
++getMainDeclBinderI _ = []
++
++familyDeclLNameI :: FamilyDecl DocNameI -> Located DocName
++familyDeclLNameI (FamilyDecl { fdLName = n }) = n
++familyDeclLNameI (XFamilyDecl nec) = noExtCon nec
++
++tyClDeclLNameI :: TyClDecl DocNameI -> Located DocName
++tyClDeclLNameI (FamDecl { tcdFam = fd })     = familyDeclLNameI fd
++tyClDeclLNameI (SynDecl { tcdLName = ln })   = ln
++tyClDeclLNameI (DataDecl { tcdLName = ln })  = ln
++tyClDeclLNameI (ClassDecl { tcdLName = ln }) = ln
++tyClDeclLNameI (XTyClDecl nec) = noExtCon nec
++
++tcdNameI :: TyClDecl DocNameI -> DocName
++tcdNameI = unLoc . tyClDeclLNameI
++
+ -- -------------------------------------
+ 
+ getGADTConTypeG :: ConDecl (GhcPass p) -> LHsType (GhcPass p)
+@@ -761,4 +785,3 @@ defaultRuntimeRepVars = go emptyVarEnv
+ 
+     go _ ty@(LitTy {}) = ty
+     go _ ty@(CoercionTy {}) = ty
+-
+diff --git a/haddock-api/src/Haddock/Types.hs b/haddock-api/src/Haddock/Types.hs
+index c2cf08bb2..853f4b1b2 100644
+--- a/src/Haddock/Types.hs
++++ b/src/Haddock/Types.hs
+@@ -789,6 +789,7 @@ type instance XDataDecl     DocNameI = NoExtField
+ type instance XSynDecl      DocNameI = NoExtField
+ type instance XFamDecl      DocNameI = NoExtField
+ type instance XXFamilyDecl  DocNameI = NoExtCon
++type instance XXTyClDecl    DocNameI = NoExtCon
+ 
+ type instance XHsIB             DocNameI _ = NoExtField
+ type instance XHsWC             DocNameI _ = NoExtField
+
+From e1fe49e9458a5d5161adc8b5b8bfea6437a9eedf Mon Sep 17 00:00:00 2001
+From: alexbiehl <alexbiehl@gmail.com>
+Date: Tue, 8 Dec 2020 20:03:49 +0100
+Subject: [PATCH 2/2] Import intercalate
+
+---
+ haddock-api/src/Haddock/Interface/Rename.hs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/haddock-api/src/Haddock/Interface/Rename.hs b/haddock-api/src/Haddock/Interface/Rename.hs
+index 78c585814..4d9eadac5 100644
+--- a/src/Haddock/Interface/Rename.hs
++++ b/src/Haddock/Interface/Rename.hs
+@@ -29,6 +29,7 @@ import TysWiredIn (eqTyCon_RDR)
+ import Control.Applicative
+ import Control.Arrow ( first )
+ import Control.Monad hiding (mapM)
++import Data.List (intercalate)
+ import qualified Data.Map as Map hiding ( Map )
+ import qualified Data.Set as Set
+ import Prelude hiding (mapM)

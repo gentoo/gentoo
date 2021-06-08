@@ -1,0 +1,36 @@
+https://gitlab.gnome.org/GNOME/gtk-vnc/-/merge_requests/14
+
+From bdab05584bab5c2ecdd508df49b03e80aedd19fc Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Wed, 28 Apr 2021 17:16:54 -0400
+Subject: [PATCH 2/3] meson: Fix configuration failure with
+ -Dwith-vala=disabled
+
+Otherwise with_vala is not defined, and meson setup results in
+
+    src/meson.build:169:5: ERROR: Unknown variable "with_vala".
+---
+ meson.build | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index e9829e6..777876c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -318,12 +318,11 @@ gir = find_program('g-ir-scanner', required: get_option('introspection'))
+ with_gir = gir.found()
+ 
+ vala_opt = get_option('with-vala')
++with_vala = false
+ if not vala_opt.disabled()
+   if not with_gir
+     if vala_opt.enabled()
+       error('Vala API requires GObject introspection (-Dintrospection=true)')
+-    else
+-      with_vala = false
+     endif
+   else
+     with_vala = add_languages('vala', required: vala_opt)
+-- 
+2.26.3
+

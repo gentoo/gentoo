@@ -1,0 +1,25 @@
+From a8807bc915f2439acc7c84f06d931d96d6ca602a Mon Sep 17 00:00:00 2001
+From: John Preston <johnprestonmail@gmail.com>
+Date: Thu, 13 May 2021 15:33:42 +0400
+Subject: [PATCH] Fix voice recoding with FFmpeg 4.4.
+
+Fixes #16217.
+---
+ Telegram/SourceFiles/media/audio/media_audio_capture.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Telegram/SourceFiles/media/audio/media_audio_capture.cpp b/Telegram/SourceFiles/media/audio/media_audio_capture.cpp
+index deb2474d789..d129168783d 100644
+--- a/Telegram/SourceFiles/media/audio/media_audio_capture.cpp
++++ b/Telegram/SourceFiles/media/audio/media_audio_capture.cpp
+@@ -679,6 +679,10 @@ bool Instance::Inner::processFrame(int32 offset, int32 framesize) {
+ 
+ 	AVFrame *frame = av_frame_alloc();
+ 
++	frame->format = d->codecContext->sample_fmt;
++	frame->channels = d->codecContext->channels;
++	frame->channel_layout = d->codecContext->channel_layout;
++	frame->sample_rate = d->codecContext->sample_rate;
+ 	frame->nb_samples = d->dstSamples;
+ 	frame->pts = av_rescale_q(d->fullSamples, AVRational { 1, d->codecContext->sample_rate }, d->codecContext->time_base);
+ 

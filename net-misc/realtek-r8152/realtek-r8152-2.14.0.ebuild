@@ -6,7 +6,7 @@ EAPI=7
 inherit linux-mod linux-info udev
 
 SRC_URI="https://github.com/slashbeast/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Out-of-tree driver for Realtek's 2.5 GbE USB NICs."
 HOMEPAGE="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-usb-3-0-software"

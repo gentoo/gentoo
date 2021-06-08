@@ -1,5 +1,5 @@
---- src/Makefile.am.old 2009-01-28 16:03:27.000000000 +0100
-+++ src/Makefile.am     2009-01-28 16:03:47.000000000 +0100
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -2,3 +2,4 @@
  libKXL_la_SOURCES = KXLmisc.c KXLsound.c KXLjoystick.c KXLvisual.c KXLimage.c
  include_HEADERS = KXL.h

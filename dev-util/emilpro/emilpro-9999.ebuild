@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit cmake-utils eutils
+inherit cmake-utils epatch
 
 DESCRIPTION="a graphical disassembler for a large number of instruction sets"
 HOMEPAGE="http://www.emilpro.com/"

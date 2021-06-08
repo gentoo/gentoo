@@ -1,12 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
-# @BLURB: support eclass for unpacking VCS snapshot tarballs for
-# software written in the Go programming language
+# @BLURB: eclass to unpack VCS snapshot tarballs for Go software
 # @DESCRIPTION:
 # This eclass provides a convenience src_unpack() which unpacks the
 # first tarball mentioned in SRC_URI to its appropriate location in

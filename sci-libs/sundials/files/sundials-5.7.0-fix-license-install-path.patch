@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 40a650e..2133476 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -231,10 +231,10 @@ endif()
+ 
+ # install license and notice files
+ install(FILES "${PROJECT_SOURCE_DIR}/LICENSE"
+-        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sundials"
++        DESTINATION share/doc/sundials-5.7.0
+ )
+ install(FILES "${PROJECT_SOURCE_DIR}/NOTICE"
+-        DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/sundials"
++        DESTINATION share/doc/sundials-5.7.0
+ )
+ 
+ # create package version file

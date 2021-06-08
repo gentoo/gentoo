@@ -1,5 +1,5 @@
---- lucidlife-0.9.2/configure.ac
-+++ lucidlife-0.9.2/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -23,7 +23,7 @@
  AC_SUBST(CFLAGS)
  AC_SUBST(LDFLAGS)
@@ -9,8 +9,8 @@
  PKG_CHECK_MODULES(GNOME, $GNOME_MODULES)
  AC_SUBST(GNOME_CFLAGS)
  AC_SUBST(GNOME_LIBS)
---- lucidlife-0.9.2/src/lucidlife.c
-+++ lucidlife-0.9.2/src/lucidlife.c
+--- a/src/lucidlife.c
++++ b/src/lucidlife.c
 @@ -35,8 +35,6 @@
  
  #include <gtk/gtk.h>
@@ -55,8 +55,8 @@
  	free(url);
  }
  
---- lucidlife-0.9.2/lucidlife.desktop.in
-+++ lucidlife-0.9.2/lucidlife.desktop.in
+--- a/lucidlife.desktop.in
++++ b/lucidlife.desktop.in
 @@ -2,8 +2,7 @@
  Name=LucidLife
  Comment=A user-friendly version of Conway's game of life

@@ -10,7 +10,7 @@ S="${WORKDIR}/dbm-${P}"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 arm ppc x86"
 
 DEPEND=">=sys-libs/gdbm-1.9.1-r2[berkdb]
 	>=dev-lang/ocaml-3.12:=[ocamlopt]"

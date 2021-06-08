@@ -7,17 +7,17 @@
 	</maintainer>
 	<longdescription>
 		A library which aims to reexport all the non-conflicting and
-		most general definitions from the \&quot;base\&quot; package.
+		most general definitions from the \"base\" package.
 		This includes APIs for applicatives, arrows, monoids, foldables, traversables,
 		exceptions, generics, ST, MVars and STM.
 		
-		This package will never have any dependencies other than \&quot;base\&quot;.
+		This package will never have any dependencies other than \"base\".
 		
 		/Versioning policy/
 		
 		The versioning policy of this package deviates from PVP in the sense
-		that its exports in part are transitively determined by the version of \&quot;base\&quot;.
-		Therefore it&#39;s recommended for the users of \&quot;base-prelude\&quot; to specify
-		the bounds of \&quot;base\&quot; as well.
+		that its exports in part are transitively determined by the version of \"base\".
+		Therefore it's recommended for the users of \"base-prelude\" to specify
+		the bounds of \"base\" as well.
 	</longdescription>
 </pkgmetadata>

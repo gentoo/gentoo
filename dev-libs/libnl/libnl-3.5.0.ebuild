@@ -12,13 +12,13 @@ LIBNL_DIR=${PV/_/}
 LIBNL_DIR=${LIBNL_DIR//./_}
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
-HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
+HOMEPAGE="https://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
 SRC_URI="https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz"
 S="${WORKDIR}/${LIBNL_P}"
 
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+debug static-libs python +threads utils"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"

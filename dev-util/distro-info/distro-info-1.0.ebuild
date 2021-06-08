@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_OPTIONAL=true
 
 inherit distutils-r1
@@ -25,6 +25,7 @@ COMMON_DEPEND="dev-lang/perl:=
 DEPEND="${COMMON_DEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 	test? (
+		dev-util/distro-info-data
 		dev-util/shunit2
 		dev-python/pylint[${PYTHON_USEDEP}]
 	)"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic xdg-utils
+inherit autotools flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 HOMEPAGE="https://www.cgsecurity.org/wiki/TestDisk"
@@ -53,6 +53,8 @@ RDEPEND="!static? ( ${COMMON_DEPEND} )"
 DOCS=()
 
 src_configure() {
+	export PATH="$(qt5_get_bindir):${PATH}"
+
 	local myconf=(
 		--enable-sudo
 		--without-ntfs

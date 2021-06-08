@@ -20,7 +20,7 @@ SRC_URI="https://cdn.mysql.com/Downloads/MySQLGUITools/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -30,7 +30,7 @@ CDEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		dev-cpp/antlr-cpp:4
 		dev-cpp/atkmm:*
-		dev-cpp/pangomm
+		dev-cpp/pangomm:1.4
 		>=dev-cpp/glibmm-2.14:2
 		dev-cpp/gtkmm:3.0
 		dev-libs/atk

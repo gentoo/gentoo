@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils ltprune
+inherit autotools
 
 DESCRIPTION="PHAT is a collection of GTK+ widgets geared toward pro-audio apps"
 HOMEPAGE="https://sourceforge.net/projects/phat.berlios/"
@@ -38,5 +38,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

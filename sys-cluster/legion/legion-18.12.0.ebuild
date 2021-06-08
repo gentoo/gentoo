@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
-if [[ $PV = 9999 ]]; then
+if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://StanfordLegion/${PN}.git https://github.com/StanfordLegion/${PN}.git"
 else

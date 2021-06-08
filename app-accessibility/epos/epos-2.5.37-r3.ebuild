@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE=""
 
+RESTRICT=test # needs running eposd
+
 DEPEND="dev-util/byacc"
 RDEPEND=""
 
@@ -23,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.37-gcc47.patch
 	"${FILESDIR}"/${PN}-2.5.37-disable-tests.patch
 	"${FILESDIR}"/${PN}-2.5.37-gcc7.patch
+	"${FILESDIR}"/${PN}-2.5.37-gcc-11.patch
 )
 
 src_prepare() {

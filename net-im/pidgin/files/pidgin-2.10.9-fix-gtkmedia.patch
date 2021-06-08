@@ -1,5 +1,5 @@
---- a/pidgin/Makefile.am	2014-02-02 22:29:20.000000000 +0100
-+++ b/pidgin/Makefile.am	2014-02-14 19:35:24.347547795 +0100
+--- a/pidgin/Makefile.am
++++ b/pidgin/Makefile.am
 @@ -154,6 +154,7 @@
  	$(GSTREAMER_LIBS) \
  	$(XSS_LIBS) \

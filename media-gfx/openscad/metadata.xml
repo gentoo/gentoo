@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
 	<email>waebbl-gentoo@posteo.net</email>
 	<name>Bernd Waibel</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
@@ -21,8 +21,15 @@
 	Mac OS X.
 </longdescription>
 <use>
-	<flag name="ccache">
-		Use <pkg>dev-util/ccache</pkg> to speed up rebuilds
+	<flag name="gamepad">
+		Add support for gamepads through <pkg>dev-qt/qtgamepad</pkg>
+	</flag>
+	<flag name="headless">
+		Build a binary without GUI
+	</flag>
+	<flag name="spacenav">
+		Add support for space navigator devices through
+		<pkg>dev-libs/libspnav</pkg>
 	</flag>
 </use>
 <upstream>

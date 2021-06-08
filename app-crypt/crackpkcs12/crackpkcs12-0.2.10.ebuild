@@ -1,17 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-DESCRIPTION="multithreaded program to crack PKCS#12 files"
+DESCRIPTION="Multithreaded program to crack PKCS#12 files"
 HOMEPAGE="http://crackpkcs12.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
-RDEPEND="!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}"

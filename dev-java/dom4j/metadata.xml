@@ -11,6 +11,8 @@
 		and with full support for DOM, SAX and JAXP.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">dom4j</remote-id>
+		<remote-id type="github">dom4j/dom4j</remote-id>
+		<doc>https://github.com/dom4j/dom4j/wiki</doc>
+		<bugs-to>https://github.com/dom4j/dom4j/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

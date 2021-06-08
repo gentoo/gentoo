@@ -2,20 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>games@gentoo.org</email>
-		<name>Gentoo Games Project</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		Goatee is a Go library and game editor, written in Haskell.  It provides a
-		GUI for recording, studying, and editing game records.  Underneath this is a
-		portable library for manipulating SGF files to build UIs and tools.  Goatee
-		aims to be full-featured by supporting all of the SGF spec and allowing for
-		full and easy customization of the game records you create.
-
-		This package is the shared library.
-	</longdescription>
 </pkgmetadata>

@@ -8,7 +8,7 @@ Fix install paths
  
 -CFLAGS = -O2 -Wall 
 -LIBS = -lgsl -lgslcblas -lpng -lm
-+LIBS = -lpng `pkg-config --libs gsl`
++LIBS = -lpng `${PKG_CONFIG} --libs gsl`
  DESTDIR =
 -TOPLEVEL_HOME = /usr
 +TOPLEVEL_HOME ?= /usr

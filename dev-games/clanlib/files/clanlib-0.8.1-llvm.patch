@@ -1,5 +1,3 @@
-diff --git a/Sources/Display/graphic_context.cpp b/Sources/Display/graphic_context.cpp
-index 42545ea..52220e2 100644
 --- a/Sources/Display/graphic_context.cpp
 +++ b/Sources/Display/graphic_context.cpp
 @@ -237,18 +237,18 @@ void CL_GraphicContext::fill_triangle(
@@ -33,8 +31,6 @@ index 42545ea..52220e2 100644
  
  	params.count = 1;
  	params.vertices = vertice_array;
-diff --git a/Sources/GL/graphic_context_opengl.cpp b/Sources/GL/graphic_context_opengl.cpp
-index 78bc87d..68da072 100644
 --- a/Sources/GL/graphic_context_opengl.cpp
 +++ b/Sources/GL/graphic_context_opengl.cpp
 @@ -355,8 +355,8 @@ void CL_GraphicContext_OpenGL::draw_quad(const CL_Quad &quad, const CL_Color &co
@@ -59,8 +55,6 @@ index 78bc87d..68da072 100644
  	int tx[4] = { quad.x1, quad.x2, quad.x3, quad.x4 };
  	int ty[4] = { quad.y1, quad.y2, quad.y3, quad.y4 };
  
-diff --git a/Sources/SDL/graphic_context_sdl.cpp b/Sources/SDL/graphic_context_sdl.cpp
-index 8093e03..c15b399 100644
 --- a/Sources/SDL/graphic_context_sdl.cpp
 +++ b/Sources/SDL/graphic_context_sdl.cpp
 @@ -410,7 +410,7 @@ void CL_GraphicContext_SDL::update_cliprect()
@@ -72,8 +66,6 @@ index 8093e03..c15b399 100644
                  SDL_SetClipRect(SDL_GetVideoSurface(),&crect);                
  	}
  }
-diff --git a/Sources/SDL/surface_sdl.cpp b/Sources/SDL/surface_sdl.cpp
-index ff6e36f..532db84 100644
 --- a/Sources/SDL/surface_sdl.cpp
 +++ b/Sources/SDL/surface_sdl.cpp
 @@ -259,13 +259,13 @@ void CL_Surface_SDL::draw(

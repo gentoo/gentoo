@@ -1,7 +1,0 @@
-# Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Marek Szuba <marecki@gentoo.org> (2021-02-09)
-# Lua has been dropped to ~s390
-net-mail/dovecot lua
-

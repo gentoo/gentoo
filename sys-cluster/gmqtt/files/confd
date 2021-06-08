@@ -1,0 +1,2 @@
+# GMQTTD_OPTS="-c /etc/gmqtt/gmqttd.yml start"
+# command_user="nobody:nobody"

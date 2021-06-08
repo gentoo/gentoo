@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/TACC/Lmod/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/Lmod-${PV}
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 fi
 
 LICENSE="MIT"
@@ -116,9 +116,6 @@ src_install() {
 	# not a real man page
 	rm -r "${ED}"/usr/share/Lmod/share/man || die
 	doenvd "${FILESDIR}"/99lmod
-	insinto /etc/profile.d
-	newins "${ED}"/usr/share/Lmod/init/profile lmod.sh
-	newins "${ED}"/usr/share/Lmod/init/profile.fish lmod.fish
 	keepdir /etc/modulefiles
 	keepdir /etc/lmod_cache
 }

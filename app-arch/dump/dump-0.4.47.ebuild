@@ -4,39 +4,40 @@
 EAPI=7
 
 MY_P="${PN}-$(ver_rs 2 b)"
-S=${WORKDIR}/${MY_P}
+
 DESCRIPTION="Dump/restore ext2fs backup utilities"
 HOMEPAGE="http://dump.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dump/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
 # We keep uuid USE flag default dsiabled for this version. Don't forget
 # to default enable it for later versions as this is the upstream default.
-IUSE="bzip2 debug ermt libressl lzo readline selinux sqlite ssl static test uuid zlib"
+IUSE="bzip2 debug ermt lzo readline selinux sqlite ssl static test uuid zlib"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	ermt? ( ssl )
 	ssl? ( zlib )
-	test? ( sqlite? ( uuid ) )
-"
+	test? ( sqlite? ( uuid ) )"
 
-RDEPEND=">=sys-fs/e2fsprogs-1.27:=
+RDEPEND="
+	>=sys-fs/e2fsprogs-1.27:=
 	>=sys-libs/e2fsprogs-libs-1.27:=
 	sys-apps/util-linux
-	bzip2? ( >=app-arch/bzip2-1.0.2:= )
+	bzip2? (
+		app-arch/bzip2:=
+		static? ( app-arch/bzip2[static-libs] )
+	)
 	zlib? ( >=sys-libs/zlib-1.1.4:= )
-	lzo? ( dev-libs/lzo:2= )
+	lzo? (
+		dev-libs/lzo:2=
+		static? ( dev-libs/lzo:2[static-libs] )
+	)
 	sqlite? ( dev-db/sqlite:3= )
-	ermt? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ermt? ( dev-libs/openssl:0= )
+	ssl? ( dev-libs/openssl:0= )
 	readline? (
 		sys-libs/readline:0=
 		sys-libs/ncurses:=
@@ -44,9 +45,7 @@ RDEPEND=">=sys-fs/e2fsprogs-1.27:=
 	)"
 DEPEND="${RDEPEND}
 	virtual/os-headers"
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local myeconfargs=(
@@ -70,6 +69,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	mv "${ED}"/usr/sbin/{,dump-}rmt || die
 	mv "${ED}"/usr/share/man/man8/{,dump-}rmt.8 || die
 	use ermt && newsbin rmt/ermt dump-ermt

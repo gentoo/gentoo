@@ -12,15 +12,14 @@ SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="2/1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos"
-IUSE="debug doc libressl nss openssl static-libs test"
+IUSE="debug doc nss openssl static-libs test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( nss openssl )"
 
 RDEPEND="
 	openssl? (
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	)
 	nss? ( >=dev-libs/nss-3.52[${MULTILIB_USEDEP}] )
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 USE_RUBY="ruby25 ruby26 ruby27"
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_SETUPTOOLS=no
 
 LUA_COMPAT=( lua5-{1..3} )
 

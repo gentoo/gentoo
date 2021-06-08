@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 GCONF_DEBUG="yes"
 
-inherit gnome2 eutils
+inherit gnome2 epatch
 
 DESCRIPTION="A widget toolkit using Clutter"
 HOMEPAGE="http://clutter-project.org/"

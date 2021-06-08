@@ -1,0 +1,24 @@
+From 413fbe27ee68881f60265f0f2dd670ce42ca220e Mon Sep 17 00:00:00 2001
+From: Matt Gajownik <matt@obsproject.com>
+Date: Tue, 25 Aug 2020 19:28:26 +1000
+Subject: [PATCH] libobs/util: Fix loading Python binary modules on *nix
+
+Fixes #2222
+---
+ libobs/util/platform-nix.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libobs/util/platform-nix.c b/libobs/util/platform-nix.c
+index 26800d52f7c..997b62db1a3 100644
+--- a/libobs/util/platform-nix.c
++++ b/libobs/util/platform-nix.c
+@@ -71,7 +71,8 @@ void *os_dlopen(const char *path)
+ #ifdef __APPLE__
+ 	void *res = dlopen(dylib_name.array, RTLD_LAZY | RTLD_FIRST);
+ #else
+-	void *res = dlopen(dylib_name.array, RTLD_LAZY);
++	void *res = dlopen(dylib_name.array,
++			   RTLD_LAZY | RTLD_DEEPBIND | RTLD_GLOBAL);
+ #endif
+ 	if (!res)
+ 		blog(LOG_ERROR, "os_dlopen(%s->%s): %s\n", path,

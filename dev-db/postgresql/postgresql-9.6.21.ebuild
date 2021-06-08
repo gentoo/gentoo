@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd
+inherit flag-o-matic linux-info multilib pam prefix python-single-r1 systemd tmpfiles
 
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
@@ -20,8 +20,8 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc kerberos kernel_linux ldap libressl nls pam perl
-	  -pg-legacytimestamp python +readline selinux +server systemd ssl
+IUSE="debug doc kerberos kernel_linux ldap nls pam perl
+	  pg-legacytimestamp python +readline selinux +server systemd ssl
 	  static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -38,10 +38,7 @@ pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
-ssl? (
-	!libressl? ( >=dev-libs/openssl-0.9.6-r1:0= )
-	libressl? ( dev-libs/libressl:= )
-)
+ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 server? ( systemd? ( sys-apps/systemd ) )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
@@ -251,7 +248,7 @@ src_install() {
 			sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 				"${FILESDIR}/${PN}.service-9.6-r1" | \
 				systemd_newunit - ${PN}-${SLOT}.service
-			systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
+			newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
 		fi
 
 		newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
@@ -300,7 +297,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use server && use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
+	use server && use systemd && tmpfiles_process ${PN}-${SLOT}.conf
 	postgresql-config update
 
 	elog "If you need a global psqlrc-file, you can place it in:"

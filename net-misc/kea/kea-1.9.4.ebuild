@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 MY_PV="${PV//_p/-P}"
 MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"

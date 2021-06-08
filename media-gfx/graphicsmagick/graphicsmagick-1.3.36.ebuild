@@ -24,7 +24,8 @@ IUSE="bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma
 	openmp perl png postscript q16 q32 static-libs svg threads tiff truetype
 	webp wmf X zlib"
 
-RDEPEND="dev-libs/libltdl:0
+RDEPEND="
+	dev-libs/libltdl:0
 	bzip2? ( app-arch/bzip2 )
 	fpx? ( media-libs/libfpx )
 	imagemagick? ( !media-gfx/imagemagick )
@@ -66,7 +67,7 @@ src_configure() {
 	use q32 && depth=32
 
 	local openmp=disable
-	if use openmp && tc-has-openmp; then
+	if use openmp && tc-has-openmp ; then
 		openmp=enable
 	fi
 
@@ -121,7 +122,7 @@ src_test() {
 src_install() {
 	default
 
-	if use perl; then
+	if use perl ; then
 		emake -C PerlMagick DESTDIR="${D}" install
 		find "${ED}" -type f -name perllocal.pod -exec rm -f {} + || die
 		find "${ED}" -depth -mindepth 1 -type d -empty -exec rm -rf {} + || die

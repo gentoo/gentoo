@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
+# openjfx:8 will never be stabilized
+# openjfx:11 probably will neither
+dev-java/openjdk:8 javafx
+dev-java/openjdk:11 javafx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
 app-office/libreoffice base
@@ -62,7 +68,7 @@ media-radio/wsjtx doc
 # Pulls too much unstable ruby deps (some are not even keyworded)
 net-misc/chrony html
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
 virtual/wine staging
 

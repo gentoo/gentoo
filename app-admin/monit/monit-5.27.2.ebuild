@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 pam systemd eutils
+inherit bash-completion-r1 pam systemd
 
 DESCRIPTION="Monitoring and managing daemons or similar programs running on a Unix system"
 HOMEPAGE="http://mmonit.com/monit/"
@@ -10,14 +10,11 @@ SRC_URI="http://mmonit.com/monit/dist/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="ipv6 libressl pam ssl"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux"
+IUSE="ipv6 pam ssl"
 
 RDEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}
 	pam? ( sys-libs/pam )"
 BDEPEND="

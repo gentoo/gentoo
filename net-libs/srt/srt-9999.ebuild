@@ -19,7 +19,7 @@ fi
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="gnutls libressl test"
+IUSE="gnutls test"
 
 RDEPEND="
 	gnutls? (
@@ -27,8 +27,7 @@ RDEPEND="
 		net-libs/gnutls:0=[${MULTILIB_USEDEP}]
 	)
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}

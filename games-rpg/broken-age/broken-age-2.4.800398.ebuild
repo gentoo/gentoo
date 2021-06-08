@@ -1,14 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop xdg
+inherit desktop wrapper xdg
 
 MY_PN="BrokenAge"
-DESCRIPTION="A point-and-click adventure from Tim Schafer's Double Fine Productions"
+DESCRIPTION="Point-and-click adventure from Tim Schafer's Double Fine Productions"
 HOMEPAGE="http://www.brokenagegame.com"
 SRC_URI="${MY_PN}_linux.tar.gz"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"

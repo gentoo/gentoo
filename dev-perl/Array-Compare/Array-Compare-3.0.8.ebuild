@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for comparing arrays"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -1,12 +1,9 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jason Zaman <perfinion@gentoo.org> (2019-12-01)
-# SELinux userspace 3.0 dropped python2_7 support
-# python2_7-only packages that depend on portage
-# cause unresolvable deps
-app-portage/distpatch
-app-portage/metagen
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-04-06)
+# depends on sys-apps/systemd
+kde-plasma/plasma-firewall
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2018-05-24)
 # Packages use systemd unconditionally for now
@@ -52,7 +49,9 @@ gnome-extra/gnome-shell-extension-bluetooth-quick-connect
 gnome-extra/gnome-shell-extension-control-blur-effect-on-lock-screen
 gnome-extra/gnome-shell-extension-dash-to-panel
 gnome-extra/gnome-shell-extension-desktop-icons
+gnome-extra/gnome-shell-extension-desktop-icons-ng
 gnome-extra/gnome-shell-extension-gsconnect
+gnome-extra/gnome-shell-extension-pop-shell
 gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
@@ -63,3 +62,4 @@ sys-apps/systemd-readahead
 sys-process/systemd-cron
 sys-apps/dbus-broker
 sys-kernel/installkernel-systemd-boot
+sys-power/switcheroo-control

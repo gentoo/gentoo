@@ -2,17 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sudinave@gmail.com</email>
+		<email>ionen@gentoo.org</email>
 		<name>Ionen Wolkens</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> for additional image support</flag>
 		<flag name="heif">Add HEIF/HEIC image support</flag>
-		<flag name="libnsgif">Add animated GIF support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">eXeC64/imv</remote-id>

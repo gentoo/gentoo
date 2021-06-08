@@ -1,5 +1,19 @@
+From 102cfe6848fe3e67c3d85cca8f3c02c1f316845b Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Thu, 25 Mar 2021 10:06:49 -0700
+Subject: [PATCH] respect flags
+
+---
+ buildSrc/linux.gradle                           |  4 ++++
+ .../gstreamer/projects/linux/avplugin/Makefile  | 16 ++++++----------
+ .../gstreamer/projects/linux/fxplugins/Makefile | 17 ++++++-----------
+ .../gstreamer/projects/linux/glib-lite/Makefile | 11 +++--------
+ .../projects/linux/gstreamer-lite/Makefile      | 16 ++++++----------
+ .../gstreamer/projects/linux/libffi/Makefile    |  6 ------
+ 6 files changed, 25 insertions(+), 45 deletions(-)
+
 diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
-index 022d073..8bccdd8 100644
+index a8886c16..e2397a54 100644
 --- a/buildSrc/linux.gradle
 +++ b/buildSrc/linux.gradle
 @@ -46,6 +46,9 @@ def commonFlags = [
@@ -18,5 +32,182 @@ index 022d073..8bccdd8 100644
  def defaultLinkFlags = linkFlags.flatten()
 +linkFlags.addAll(System.getenv('LDFLAGS').trim().split(" "))
  
- def gtk2CCFlags = [  ];
- def gtk3CCFlags = [ "-Wno-deprecated-declarations" ];
+ def toolchainDir
+ if (hasProperty('toolchainDir')) {
+diff --git a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
+index f82f0537..01e069b1 100644
+--- a/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
+@@ -22,7 +22,7 @@ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ OBJBASE_DIR = $(BUILD_DIR)/obj/plugins/avplugin
+ endif
+ 
+-CFLAGS = -fPIC                   \
++CFLAGS := -fPIC                  \
+          -Wformat                \
+          -Wextra                 \
+          -Wformat-security       \
+@@ -34,13 +34,8 @@ CFLAGS = -fPIC                   \
+          -DGST_DISABLE_LOADSAVE  \
+          -DGSTREAMER_LITE \
+          -DG_DISABLE_DEPRECATED \
+-         -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
++         -ffunction-sections -fdata-sections \
++	 ${CFLAGS}
+ 
+ INCLUDES= -I../../../plugins                          \
+           -I../../../plugins/av                       \
+@@ -50,11 +45,12 @@ INCLUDES= -I../../../plugins                          \
+           -I$(GLIB_DIR)/glib                          \
+           -I$(GLIB_DIR)/gmodule
+ 
+-LDFLAGS = -L$(BUILD_DIR)    \
++LDFLAGS := -L$(BUILD_DIR)    \
+           -z relro          \
+           -lgstreamer-lite  \
+           -lglib-lite  \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++	  ${LDFLAGS}
+ 
+ ifneq ($(strip $(LIBAV_DIR)),)
+ INCLUDES += -I$(LIBAV_DIR)/include
+diff --git a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
+index 3887ac6d..99c82718 100644
+--- a/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
+@@ -19,7 +19,7 @@ DIRLIST = progressbuffer       \
+ 
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ 
+-CFLAGS = -fPIC                   \
++CFLAGS := -fPIC                  \
+          -Wformat                \
+          -Wextra                 \
+          -Wformat-security       \
+@@ -35,14 +35,8 @@ CFLAGS = -fPIC                   \
+          -DGST_DISABLE_GST_DEBUG \
+          -DGSTREAMER_LITE \
+          -DG_DISABLE_DEPRECATED \
+-         -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
+-
++         -ffunction-sections -fdata-sections \
++	 ${CFLAGS}
+ 
+ INCLUDES = -I$(SRCBASE_DIR) \
+ 	   $(addprefix -I$(SRCBASE_DIR)/,$(DIRLIST)) \
+@@ -52,9 +46,10 @@ INCLUDES = -I$(SRCBASE_DIR) \
+            -I$(GLIB_DIR)/glib                        \
+            -I$(GLIB_DIR)/gmodule
+ 
+-LDFLAGS = -L$(BUILD_DIR) -lgstreamer-lite -lglib-lite \
++LDFLAGS := -L$(BUILD_DIR) -lgstreamer-lite -lglib-lite \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++	  ${LDFLAGS}
+ 
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+diff --git a/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile
+index c5b4b0a6..b0e6d6f9 100644
+--- a/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile
+@@ -40,20 +40,15 @@ CFLAGS += -fPIC \
+          -DMATCH_LIMIT=10000000 \
+          -DMATCH_LIMIT_RECURSION=10000000
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
+-
+ INCLUDES = -I$(SRCBASE_DIR) \
+ 	   -I$(SRCBASE_DIR)/glib \
+ 	   -I$(SRCBASE_DIR)/build/linux \
+ 	   -I$(LIBFFI_DIR)/include
+ 
+-LDFLAGS = -L$(BUILD_DIR) -lffi \
++LDFLAGS := -L$(BUILD_DIR) -lffi \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++	  ${LDFLAGS}
+ 
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+diff --git a/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
+index 8634b559..109375f5 100644
+--- a/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
+@@ -41,7 +41,7 @@ DIRLIST = gstreamer/gst \
+ 
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ 
+-CFLAGS =-fPIC                   \
++CFLAGS :=-fPIC                  \
+         -Wformat                \
+         -Wextra                 \
+         -Wformat-security       \
+@@ -56,13 +56,8 @@ CFLAGS =-fPIC                   \
+         -DGST_DISABLE_GST_DEBUG \
+         -DGST_DISABLE_LOADSAVE  \
+         -DG_DISABLE_DEPRECATED   \
+-        -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
++        -ffunction-sections -fdata-sections \
++	${CFLAGS}
+ 
+ INCLUDES = -I$(BASE_DIR)/plugins                          \
+ 	   -I$(SRCBASE_DIR)/projects/build/linux/common   \
+@@ -83,9 +78,10 @@ INCLUDES = -I$(BASE_DIR)/plugins                          \
+ PACKAGES_INCLUDES := $(shell pkg-config --cflags alsa)
+ PACKAGES_LIBS := $(shell pkg-config --libs alsa)
+ 
+-LDFLAGS = -L$(BUILD_DIR) -lm -lglib-lite $(PACKAGES_LIBS) \
++LDFLAGS := -L$(BUILD_DIR) -lm -lglib-lite $(PACKAGES_LIBS) \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++	  ${LDFLAGS}
+ 
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+diff --git a/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile b/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile
+index 62f1b802..54e0a63b 100644
+--- a/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile
++++ b/modules/media/src/main/native/gstreamer/projects/linux/libffi/Makefile
+@@ -20,12 +20,6 @@ CFLAGS += -c \
+          -DHAVE_AS_X86_PCREL \
+          -DGSTREAMER_LITE
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -O0 -g -Wall
+-endif
+-
+ INCLUDES = -I$(SRCBASE_DIR)/include
+ 
+ C_SOURCES = src/closures.c \
+-- 
+2.31.0
+

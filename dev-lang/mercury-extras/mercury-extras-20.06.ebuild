@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils multilib vcs-clean
+inherit multilib toolchain-funcs vcs-clean
 
 PATCHSET_VER="0"
 MY_P=mercury-srcdist-${PV}
@@ -98,9 +98,9 @@ mercury_pkg_setup() {
 		>> "${S}"/${mercury_pkg_dir}/Mercury.options
 
 	if test -n "$mercury_pkg_deps"; then
-		echo "EXTRA_CFLAGS += $(pkg-config --cflags ${mercury_pkg_deps/,/ })" \
+		echo "EXTRA_CFLAGS += $($(tc-getPKG_CONFIG) --cflags ${mercury_pkg_deps/,/ })" \
 			>> "${S}"/${mercury_pkg_dir}/Mercury.options
-		echo "EXTRA_LDFLAGS += $(pkg-config --libs ${mercury_pkg_deps/,/ })" \
+		echo "EXTRA_LDFLAGS += $($(tc-getPKG_CONFIG) --libs ${mercury_pkg_deps/,/ })" \
 			>> "${S}"/${mercury_pkg_dir}/Mercury.options
 	fi
 

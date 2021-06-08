@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+  </maintainer>
+
+  <maintainer type="person" proxied="yes">
+    <email>frp.bissey@gmail.com</email>
+    <name>Francois Bissey</name>
+  </maintainer>
+
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
+
+  <longdescription>
+    Giac is a free computer algebra system that can be used to perform
+    computer algebra, function graphs, interactive geometry (2-d and
+    3-d), spreadsheet and statistics, programmation. It may be used as
+    a replacement for high end graphic calculators for example on
+    netbooks (for about the same price as a calculator but with much
+    more performances).
+  </longdescription>
+
+  <use>
+    <flag name="glpk">Enable the use of <pkg>sci-mathematics/glpk</pkg></flag>
+    <flag name="ecm">Enable the use of <pkg>sci-mathematics/gmp-ecm</pkg></flag>
+    <flag name="gc">Enable garbage collection support via <pkg>dev-libs/boehm-gc</pkg></flag>
+  </use>
+
+</pkgmetadata>

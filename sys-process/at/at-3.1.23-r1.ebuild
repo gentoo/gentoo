@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic pam user systemd
+inherit autotools flag-o-matic pam user systemd
 
 DESCRIPTION="Queues jobs for later execution"
 HOMEPAGE="https://packages.qa.debian.org/a/at.html"

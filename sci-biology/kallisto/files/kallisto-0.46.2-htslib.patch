@@ -1,0 +1,52 @@
+--- a/src/KmerIndex.cpp
++++ b/src/KmerIndex.cpp
+@@ -4,7 +4,7 @@
+ #include <ctype.h>
+ #include <zlib.h>
+ #include <unordered_set>
+-#include "kseq.h"
++#include <htslib/kseq.h>
+ 
+ #ifndef KSEQ_INIT_READY
+ #define KSEQ_INIT_READY
+--- a/src/ProcessReads.cpp
++++ b/src/ProcessReads.cpp
+@@ -1,6 +1,6 @@
+ /*
+ #include <zlib.h>
+-#include "kseq.h"
++#include <htslib/kseq.h>
+ #include <string>
+ #include <vector>
+ #include <unordered_map>
+@@ -20,7 +20,7 @@
+ #include <iomanip>
+ 
+ #include "ProcessReads.h"
+-#include "kseq.h"
++#include <htslib/kseq.h>
+ #include "PseudoBam.h"
+ #include "Fusion.hpp"
+ #include "BUSData.h"
+--- a/src/ProcessReads.h
++++ b/src/ProcessReads.h
+@@ -2,7 +2,7 @@
+ #define KALLISTO_PROCESSREADS_H
+ 
+ #include <zlib.h>
+-#include "kseq.h"
++#include <htslib/kseq.h>
+ #include <string>
+ #include <vector>
+ #include <unordered_map>
+--- a/unit_tests/test_kmerhashtable.cpp
++++ b/unit_tests/test_kmerhashtable.cpp
+@@ -13,7 +13,7 @@
+ #include "KmerHashTable.h"
+ 
+ #include <zlib.h>
+-#include "kseq.h"
++#include <htslib/kseq.h>
+ 
+ #ifndef KSEQ_INIT_READY
+ #define KSEQ_INIT_READY

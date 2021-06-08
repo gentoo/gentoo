@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -872,7 +872,7 @@ src_test() {
 
 	local working_tests_re="$(
 		# get list of all test:
-		{ GOFLLAGS="-mod=readonly" go test -list . ./... ||
+		{ GOFLAGS="-mod=readonly" go test -list . ./... ||
 			die "Can't get list of tests"; } |
 		# skip "no tests" messages as well as know failures:
 		grep -v -E " |${known_fail_re}" |

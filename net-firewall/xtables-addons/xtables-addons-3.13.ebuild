@@ -5,7 +5,7 @@ EAPI="7"
 
 MODULES_OPTIONAL_USE=modules
 MODULES_OPTIONAL_USE_IUSE_DEFAULT=1
-inherit eutils linux-info linux-mod multilib toolchain-funcs
+inherit linux-info linux-mod multilib toolchain-funcs
 
 DESCRIPTION="iptables extensions not yet accepted in the main kernel"
 HOMEPAGE="https://inai.de/projects/xtables-addons/"

@@ -1,0 +1,27 @@
+From 54e66339b734639dc42b63b65a8a4b100f2549c3 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 3 Apr 2021 18:46:42 +0200
+Subject: [PATCH] add LIB_SUFFIX in pkg-config file
+
+Add the LIB_SUFFIX suffix to the libdir variable
+in the kdl.pc.in file.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ src/kdl.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/kdl.pc.in b/src/kdl.pc.in
+index 49e2ab9..1650e2e 100644
+--- a/src/kdl.pc.in
++++ b/src/kdl.pc.in
+@@ -1,5 +1,5 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=${prefix}/lib
++libdir=${prefix}/lib@LIB_SUFFIX@
+ includedir=${prefix}/include
+ 
+ Name: orocos-kdl
+-- 
+2.31.1
+

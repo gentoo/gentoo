@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -67,9 +67,18 @@ S="${WORKDIR}"/${MYP}
 
 FSFGCC=gcc-${TOOLCHAIN_GCC_PV}
 
-pkg_setup() {
-	toolchain_pkg_setup
+src_unpack() {
+	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
+		eerror "You need a gcc compiler that provides the Ada Compiler:"
+		eerror "1) use gcc-config to select the right compiler or"
+		eerror "2) set the bootstrap use flag"
+		die "ada compiler not available"
+	fi
 
+	toolchain_src_unpack
+}
+
+src_prepare() {
 	if use amd64; then
 		BTSTRP=${BTSTRP_AMD64}
 	else
@@ -91,23 +100,10 @@ pkg_setup() {
 		GNATBIND="${path}/${GNATBIND}"
 		CXX="${path}/${CXX}"
 	fi
-}
-
-src_unpack() {
-	if ! use bootstrap && [[ -z "$(type ${GNATMAKE} 2>/dev/null)" ]] ; then
-		eerror "You need a gcc compiler that provides the Ada Compiler:"
-		eerror "1) use gcc-config to select the right compiler or"
-		eerror "2) set the bootstrap use flag"
-		die "ada compiler not available"
-	fi
-
-	toolchain_src_unpack
 	if use bootstrap; then
-		rm ${BTSTRP}/libexec/gcc/*/4.7.4/ld || die
+		rm ../${BTSTRP}/libexec/gcc/*/4.7.4/ld || die
 	fi
-}
 
-src_prepare() {
 	cd ..
 
 	sed -i \

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="A simple console game, where you drive a car across the moon's surface"
 HOMEPAGE="https://www.seehuhn.de/pages/moon-buggy.html"
@@ -30,7 +30,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--sharedstatedir="/var/games" \
-		--with-curses-libs="$(pkg-config ncurses --libs)"
+		--with-curses-libs="$($(tc-getPKG_CONFIG) ncurses --libs)"
 }
 
 src_install() {

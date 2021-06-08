@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DIST_VERSION=2.017
 
 FORTRAN_NEEDED=fortran
 
-inherit perl-module eutils fortran-2
+inherit perl-module fortran-2
 
 DESCRIPTION="Perl Data Language for scientific computing"
 
@@ -26,7 +26,7 @@ RDEPEND="sys-libs/ncurses:0=
 	>=dev-perl/Inline-0.680.0
 	>=dev-perl/Inline-C-0.620.0
 	dev-perl/Module-Compile
-	dev-perl/OpenGL
+	>=dev-perl/OpenGL-0.670.200
 	dev-perl/TermReadKey
 	|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
 	>=virtual/perl-Data-Dumper-2.121.0

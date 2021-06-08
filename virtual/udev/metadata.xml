@@ -10,4 +10,5 @@
 	<maintainer type="project">
 		<email>systemd@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

@@ -10,15 +10,16 @@ inherit multiprocessing python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 	if [[ ${PV} == ${QTVER}_p* ]]; then
 		SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/${P}"
+		QT5_BUILD_DIR="${S}_build"
 	fi
 fi
 
 # patchset based on https://github.com/chromium-ppc64le releases
-SRC_URI+=" ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-5.15.2-ppc64.tar.xz )"
+SRC_URI+=" ppc64? ( https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-5.15.2-chromium87-ppc64le.tar.xz )"
 
 IUSE="alsa bindist designer geolocation +jumbo-build kerberos pulseaudio +system-ffmpeg +system-icu widgets"
 REQUIRED_USE="designer? ( widgets )"
@@ -85,11 +86,13 @@ DEPEND="${RDEPEND}
 	dev-util/re2c
 	net-libs/nodejs
 	sys-devel/bison
+	ppc64? ( >=dev-util/gn-0.1807 )
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.15.0-disable-fatal-warnings.patch" # bug 695446
-	"${FILESDIR}/${P}-chromium-87-v8-icu68.patch" # bug 757606
+	"${FILESDIR}/${P}-fix-crash-w-app-locales.patch" # bug 773919, QTBUG-91715
+	"${FILESDIR}/${P}-chromium-87-v8-icu68.patch" # downstream, bug 757606
 	"${FILESDIR}/${P}-disable-git.patch" # downstream snapshot fix
 )
 
@@ -142,7 +145,10 @@ src_prepare() {
 	# we need to generate ppc64 stuff because upstream does not ship it yet
 	if use ppc64; then
 		einfo "Patching for ppc64le and generating build files"
-		eapply "${WORKDIR}/${PN}-ppc64"
+		eapply "${FILESDIR}/qtwebengine-5.15.2-enable-ppc64.patch"
+		pushd src/3rdparty/chromium > /dev/null || die
+		eapply -p0 "${WORKDIR}/${PN}-ppc64le"
+		popd > /dev/null || die
 		pushd src/3rdparty/chromium/third_party/libvpx > /dev/null || die
 		mkdir -vp source/config/linux/ppc64 || die
 		mkdir -p source/libvpx/test || die

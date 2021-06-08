@@ -16,7 +16,7 @@ SRC_URI="http://www.hepforge.org/archive/lhapdf/${MY_PF}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -37,6 +37,7 @@ BDEPEND="
 S="${WORKDIR}/${MY_PF}"
 
 src_configure() {
+	CONFIG_SHELL="${EPREFIX}/bin/bash" \
 	econf \
 		--disable-static \
 		$(use_enable python)
@@ -66,7 +67,7 @@ src_install() {
 	use examples && doins examples/*.cc
 
 	if use python; then
-		cd "${S}"/wrappers/python || die 
+		cd "${S}"/wrappers/python || die
 		distutils-r1_src_install
 	fi
 

@@ -1,24 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit fixheadtails autotools eutils toolchain-funcs
+inherit autotools fixheadtails toolchain-funcs
 
 DESCRIPTION="A flexible and fast logfile colorizer"
 HOMEPAGE="https://github.com/madhouse/ccze/releases"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-RESTRICT="test"
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
-IUSE=""
+
+RESTRICT="test"
 
 DEPEND="dev-libs/libpcre
 	sys-libs/ncurses:0="
-
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog ChangeLog-0.1 NEWS THANKS README FAQ )

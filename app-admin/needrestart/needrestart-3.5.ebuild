@@ -9,7 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 else
 	SRC_URI="https://github.com/liske/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Restart daemons after library updates"
@@ -28,7 +28,8 @@ RDEPEND="
 	dev-perl/Sort-Naturally
 	dev-perl/TermReadKey
 	sys-apps/init-system-helpers
-	sys-apps/iucode_tool
+	amd64? ( sys-apps/iucode_tool )
+	x86? ( sys-apps/iucode_tool )
 "
 DEPEND="${RDEPEND}
 	sys-devel/gettext

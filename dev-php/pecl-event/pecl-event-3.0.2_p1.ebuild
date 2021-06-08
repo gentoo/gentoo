@@ -32,7 +32,7 @@ RDEPEND="
 	${DEPEND}
 	!dev-php/pecl-libevent"
 
-IUSE="debug examples +extra libressl +sockets +ssl threads"
+IUSE="debug examples +extra +sockets +ssl threads"
 #Unique to this release
 S="${WORKDIR}/${MY_P}"
 PHP_EXT_S="${S}"

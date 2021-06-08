@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Mac/PowerMac disk partitioning utility"
 HOMEPAGE="ftp://ftp.mklinux.apple.com/pub/Other_Tools/"
@@ -33,6 +33,7 @@ PATCHES=(
 )
 
 src_compile() {
+	use elibc_musl && append-cppflags -Dloff_t=off_t
 	emake CC="$(tc-getCC)"
 }
 

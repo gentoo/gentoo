@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Cookie string generator / parser"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="test +xs"
 RESTRICT="!test? ( test )"
 
@@ -18,9 +18,6 @@ RDEPEND="
 	virtual/perl-Exporter
 	dev-perl/URI
 	xs? ( >=dev-perl/Cookie-Baker-XS-0.110.0 )
-"
-DEPEND="
-	dev-perl/Module-Build-Tiny
 "
 BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.35.0

@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib toolchain-funcs
+
+inherit toolchain-funcs
 
 MY_P="sge${PV}"
 DESCRIPTION="Graphics extensions library for SDL"
@@ -38,7 +39,7 @@ src_prepare() {
 		-e '/^CXX=/d' \
 		-e '/^AR=/d' \
 		Makefile.conf || die
-	tc-export CC CXX AR
+	tc-export CC CXX AR PKG_CONFIG
 	# make sure the header gets regenerated everytime
 	rm -f sge_config.h
 }

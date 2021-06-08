@@ -12,4 +12,4 @@ SLOT="0"
 KEYWORDS="~ppc x86"
 
 RDEPEND=">=media-libs/libfame-0.9.0"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"

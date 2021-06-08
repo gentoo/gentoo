@@ -11,7 +11,7 @@ DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY VE )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC CSKY M68k VE )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
@@ -63,6 +63,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils/{lit,llvm-lit,unittest}
 	llvm/utils/{UpdateTestChecks,update_cc_test_checks.py}
 )
+LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
 # Multilib notes:
@@ -75,10 +76,6 @@ llvm.org_set_globals
 #
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-PATCHES=(
-	"${FILESDIR}"/9999/prefix-dirs.patch
-)
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
@@ -257,6 +254,9 @@ multilib_src_configure() {
 		# libgomp support fails to find headers without explicit -I
 		# furthermore, it provides only syntax checking
 		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
+
+		# disable using CUDA to autodetect GPU, just build for all
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
 
 		# override default stdlib and rtlib
 		-DCLANG_DEFAULT_CXX_STDLIB=$(usex default-libcxx libc++ "")

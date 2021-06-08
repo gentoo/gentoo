@@ -1,5 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-02)
+# altivec code is big-endian only, #773100
+media-libs/libdvbcsa cpu_flags_ppc_altivec
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Additional sanitizers supported on ppc64le.
@@ -15,6 +19,7 @@ app-emulation/crun -criu
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-19)
 # openjfx is keyworded on ppc64le
+dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>arfrever.fta@gmail.com</email>
 		<name>Arfrever Frehtes Taifersar Arahesis</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="proxy">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
-		<description>Proxy</description>
 	</maintainer>
 	<use>
 		<flag name="secure-delete">Enable overwriting of deleted content with zeros by default (http://sqlite.org/pragma.html#pragma_secure_delete), causing some performance penalty</flag>

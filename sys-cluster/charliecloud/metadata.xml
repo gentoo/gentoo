@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>o.freyermuth@googlemail.com</email>
     <name>Oliver Freyermuth</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -13,6 +13,6 @@
     <remote-id type="github">hpc/charliecloud</remote-id>
   </upstream>
   <use>
-    <flag name='ch-image'>Build the internal builder ch-image (previously named ch-grow)</flag>
+    <flag name="ch-image">Build the internal builder ch-image (previously named ch-grow)</flag>
   </use>
 </pkgmetadata>

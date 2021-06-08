@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="contrib">Install extra widgets, some for less common hardware, some contributed by Vicious users.</flag>
 	</use>

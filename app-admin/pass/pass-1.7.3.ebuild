@@ -11,7 +11,7 @@ SRC_URI="https://git.zx2c4.com/password-store/snapshot/password-store-${PV}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~x64-macos"
 IUSE="+git X zsh-completion fish-completion emacs dmenu importers elibc_Darwin"
 
 RDEPEND="

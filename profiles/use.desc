@@ -165,11 +165,11 @@ libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library
 libnotify - Enable desktop notification support
-libressl - Use dev-libs/libressl instead of dev-libs/openssl when applicable (see also the ssl useflag)
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
+llvm-libunwind - Use sys-libs/llvm-libunwind instead of sys-libs/libunwind
 lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
 luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)

@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 		https://dev.gentoo.org/~chutzpah/dist/salt/salt-3000.2-py38-misc.patch.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -43,7 +43,7 @@ RDEPEND="
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
 	libvirt? (
-		$(python_gen_cond_dep 'dev-python/libvirt-python[${PYTHON_USEDEP}]' python3_7)
+		$(python_gen_cond_dep 'dev-python/libvirt-python[${PYTHON_USEDEP}]' python3_8)
 	)
 	openssl? (
 		dev-libs/openssl:0=[-bindist]
@@ -62,10 +62,10 @@ RDEPEND="
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
 	nova? (
-		$(python_gen_cond_dep '>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]' python3_7)
+		$(python_gen_cond_dep '>=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}]' python3_8)
 	)
 	neutron? (
-		$(python_gen_cond_dep '>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]' python3_7)
+		$(python_gen_cond_dep '>=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}]' python3_8)
 	)
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
 	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
@@ -117,7 +117,6 @@ PATCHES=(
 	"${WORKDIR}/salt-3000.2-py38-misc.patch"
 	"${FILESDIR}/salt-3000.2-py38-logwarn.patch"
 	"${FILESDIR}/salt-2019.2.8-ansible-roster-fix.patch"
-	"${FILESDIR}/salt-3000.8-tests.patch"
 )
 
 python_prepare_all() {

@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 multilib toolchain-funcs
+
+inherit autotools git-r3 toolchain-funcs
 
 DESCRIPTION="A Debug Malloc Library"
 HOMEPAGE="https://dmalloc.com"
@@ -10,16 +11,17 @@ EGIT_REPO_URI="https://github.com/j256/dmalloc"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
-IUSE="static-libs threads"
+IUSE="threads"
 
 BDEPEND="
 	app-text/texi2html
 	sys-apps/texinfo
 "
+
 DOCS=(
 	ChangeLog.txt README.md TODO dmalloc.html
 )
+
 PATCHES=(
 	# - Build objects twice, once -fPIC for shared.
 	# - Use DESTDIR.
@@ -49,13 +51,16 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR
-	econf --enable-cxx --enable-shlib $(use_enable threads)
+	econf \
+		--enable-cxx \
+		--enable-shlib \
+		$(use_enable threads)
 }
 
 src_compile() {
 	default
 
-#	makeinfo dmalloc.texi || die
+	#makeinfo dmalloc.texi || die
 }
 
 src_test() {
@@ -77,7 +82,5 @@ src_install() {
 			/usr/$(get_libdir)/lib${PN}${lib}.so.5
 	done
 
-	if ! use static-libs; then
-		rm "${ED}"/usr/$(get_libdir)/lib${PN}*.a || die
-	fi
+	rm "${ED}"/usr/$(get_libdir)/lib${PN}*.a || die
 }

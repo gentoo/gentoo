@@ -1,14 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils desktop xdg
+inherit desktop wrapper xdg
 
 MY_PN="BffOrDie"
 DESCRIPTION="Time travelling alien couch co-op puzzle game for 1-4 players"
 HOMEPAGE="https://www.bffordie.com/"
 SRC_URI="${MY_PN}_Linux.zip"
+S="${WORKDIR}/${MY_PN}_Linux"
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
@@ -18,12 +20,9 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/opengl
 "
-
 BDEPEND="
 	app-arch/unzip
 "
-
-S="${WORKDIR}/${MY_PN}_Linux"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"

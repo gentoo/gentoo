@@ -41,8 +41,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "If you wish to use the webserver mode,"
-	einfo "you need to install a supported web server."
-	optfeature "using apache2 webserver mode." www-servers/apache
-	optfeature "using nginx webserver mode." www-servers/nginx
+	optfeature_header "For webserver mode, install a supported web server:"
+	optfeature "using apache2 webserver mode" www-servers/apache
+	optfeature "using nginx webserver mode" www-servers/nginx
 }

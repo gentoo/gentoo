@@ -6,6 +6,6 @@
 		<name>Sergei Trofimovich</name>
 	</maintainer>
 	<use>
-		<flag name='check'>Enable build-time sanity check.</flag>
+		<flag name="check">Enable build-time sanity check.</flag>
 	</use>
 </pkgmetadata>

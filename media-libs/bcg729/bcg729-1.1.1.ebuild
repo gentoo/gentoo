@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 TEST_SUFFIX="tests-20210101"
-DESCRIPTION="encoder and decoder of the ITU G729 Annex A/B speech codec"
+DESCRIPTION="Encoder and decoder of the ITU G729 Annex A/B speech codec"
 HOMEPAGE="https://github.com/BelledonneCommunications/bcg729"
 SRC_URI="https://github.com/BelledonneCommunications/${PN}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" test? ( http://www.belledonne-communications.com/bc-downloads/${PN}-patterns.zip -> ${PN}-${TEST_SUFFIX}.zip )"
@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 x86"
 IUSE="test"
+
 RESTRICT="test"
 # Not all passing yet
 # TODO: Report upstream

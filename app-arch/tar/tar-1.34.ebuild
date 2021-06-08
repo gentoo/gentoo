@@ -3,17 +3,15 @@
 
 EAPI=7
 
-inherit flag-o-matic
-
 DESCRIPTION="Use this to make tarballs :)"
 HOMEPAGE="https://www.gnu.org/software/tar/"
 SRC_URI="mirror://gnu/tar/${P}.tar.xz
-	mirror://gnu-alpha/tar/${P}.tar.xz"
+	https://alpha.gnu.org/gnu/tar/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 [[ -n "$(ver_cut 3)" ]] && [[ "$(ver_cut 3)" -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="acl elibc_glibc minimal nls selinux userland_GNU xattr"
 
 RDEPEND="

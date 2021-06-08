@@ -1,0 +1,42 @@
+From d35eba919c229cecf3c52a7dd034b9cd6b120ede Mon Sep 17 00:00:00 2001
+From: ponce <matteo.bernardini@gmail.com>
+Date: Mon, 5 Apr 2021 08:44:00 +0200
+Subject: [PATCH] fix building with binutils >= 2.36.
+
+The l option of ar in the newer binutils versions switched
+from being unused to being used to specify dependencies
+so here should be safely removed
+---
+ nx-X11/config/cf/Imake.tmpl | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/nx-X11/config/cf/Imake.tmpl b/nx-X11/config/cf/Imake.tmpl
+index 25d985d75f..de1fca937e 100644
+--- a/nx-X11/config/cf/Imake.tmpl
++++ b/nx-X11/config/cf/Imake.tmpl
+@@ -1015,25 +1015,13 @@ TCLIBDIR = TclLibDir
+ #define ArCmdBase ar
+ #endif
+ #ifndef ArCmd
+-#if HasLargeTmp || SystemV4
+ #define ArCmd ArCmdBase cq
+-#else
+-#define ArCmd ArCmdBase clq
+-#endif
+ #endif
+ #ifndef ArAddCmd
+-#if HasLargeTmp || SystemV4
+ #define ArAddCmd ArCmdBase ru
+-#else
+-#define ArAddCmd ArCmdBase rul
+-#endif
+ #endif
+ #ifndef ArExtCmd
+-#if HasLargeTmp || SystemV4
+ #define ArExtCmd ArCmdBase x
+-#else
+-#define ArExtCmd ArCmdBase xl
+-#endif
+ #endif
+ #ifndef BootstrapCFlags
+ #define BootstrapCFlags /**/

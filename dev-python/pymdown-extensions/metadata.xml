@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andrewammerlaan@riseup.net</email>
+		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
@@ -18,4 +13,5 @@
 		<remote-id type="github">facelessuser/pymdown-extensions</remote-id>
 		<remote-id type="pypi">pymdown-extensions</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>

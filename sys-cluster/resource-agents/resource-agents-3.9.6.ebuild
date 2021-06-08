@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_P="${P/resource-}"
-inherit autotools eutils multilib
+inherit autotools multilib
 
 DESCRIPTION="Resources pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Resource_Agents"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,6 @@ RDEPEND="
 src_prepare() {
 	default
 
-	# remove unwanted files
-	rm -r *.md media test || die
+	# remove unwanted dirs
+	rm -r media test || die
 }

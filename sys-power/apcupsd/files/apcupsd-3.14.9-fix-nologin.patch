@@ -1,0 +1,15 @@
+Description: only prohibit logins on shutdown if login is allowed at all
+Index: apcupsd-3.14.12/src/action.c
+===================================================================
+--- apcupsd-3.14.12.orig/src/action.c
++++ apcupsd-3.14.12/src/action.c
+@@ -208,7 +208,8 @@ static void do_shutdown(UPSINFO *ups, in
+    delete_lockfile(ups);
+    ups->set_fastpoll();
+    make_file(ups, ups->pwrfailpath);
+-   prohibit_logins(ups);
++   if (ups->nologin.type != NEVER)
++      prohibit_logins(ups);
+ 
+    if (!ups->is_slave()) {
+       /*

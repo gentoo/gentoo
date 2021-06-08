@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="vi">
 		Lời Chúa Cho Mọi Người, Bản dịch do Nhóm Phiên Dịch Các Giờ Kinh Phụng Vụ thực hiện. Dẫn nhập và chú thích : Bernard Hurault, Louis Hurault. Hà Nội: Nhà Xuất Bản Tôn Giáo, 2007.
 	</longdescription>

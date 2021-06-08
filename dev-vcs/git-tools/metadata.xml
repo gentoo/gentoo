@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">MestreLion/git-tools</remote-id>
 	</upstream>

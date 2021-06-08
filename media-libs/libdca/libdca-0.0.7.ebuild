@@ -19,6 +19,7 @@ DOCS=( AUTHORS ChangeLog NEWS README TODO doc/${PN}.txt )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0.5-cflags.patch
 	"${FILESDIR}"/${PN}-0.0.5-tests-optional.patch
+	"${FILESDIR}"/${PN}-0.0.7-slibtool.patch
 )
 
 src_prepare() {

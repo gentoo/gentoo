@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ else
 	KEYWORDS="amd64 arm arm64 ppc64 x86"
 	S="${WORKDIR}/${MY_P}"
 fi
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 USE_RUBY="ruby25 ruby26 ruby27"
 inherit check-reqs cmake flag-o-matic python-any-r1 qmake-utils ruby-single toolchain-funcs
 
@@ -86,6 +86,8 @@ CHECKREQS_DISK_BUILD="16G" # bug 417307
 PATCHES=(
 	"${FILESDIR}/${P}-bison-3.7.patch" # bug 736499
 	"${FILESDIR}/${P}-icu-68.patch" # bug 753260
+	"${FILESDIR}/${P}-python-3.9.patch" # bug 766303
+	"${FILESDIR}/${P}-glib-2.68.patch" # bug 777759
 )
 
 _check_reqs() {

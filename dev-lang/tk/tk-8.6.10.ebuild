@@ -28,7 +28,7 @@ RDEPEND="
 	~dev-lang/tcl-$(ver_cut 1-3):0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	!aqua? ( x11-base/xorg-proto )"
-
+BDEPEND="virtual/pkgconfig"
 # Not bumped to 8.6
 #RESTRICT=test
 

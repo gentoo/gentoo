@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
-	libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
+	lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 BDEPEND="virtual/pkgconfig"
@@ -33,8 +33,7 @@ RDEPEND="
 	samba? ( net-fs/samba )
 	ssl? (
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 		gnutls? ( net-libs/gnutls:= )
 	)

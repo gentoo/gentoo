@@ -1,5 +1,5 @@
---- xmalloc.c.orig	2004-12-15 23:44:16.880786468 +0100
-+++ xmalloc.c	2004-12-15 23:44:21.846546805 +0100
+--- a/xmalloc.c
++++ b/xmalloc.c
 @@ -68,12 +68,6 @@
     The caller may set it to some other value.  */
  int xmalloc_exit_failure = EXIT_FAILURE;

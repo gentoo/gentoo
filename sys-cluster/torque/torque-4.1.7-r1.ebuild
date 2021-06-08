@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit flag-o-matic eutils linux-info
+inherit epatch linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
@@ -14,13 +14,12 @@ SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=1690 -> ${P}.tar.gz"
 LICENSE="torque-2.5"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="cpusets +crypt doc drmaa kernel_linux libressl munge nvidia server +syslog tk"
+IUSE="cpusets +crypt doc drmaa kernel_linux munge nvidia server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib
 	sys-libs/readline:0=
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	cpusets? ( sys-apps/hwloc )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )

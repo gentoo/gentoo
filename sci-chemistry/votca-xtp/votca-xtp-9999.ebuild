@@ -19,19 +19,28 @@ HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-cpp/eigen-3.3
 	~sci-chemistry/votca-csg-${PV}
 	sci-libs/hdf5[cxx]
+	sci-libs/libecpint
 	sci-libs/libxc
 	~sci-libs/votca-tools-${PV}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( README.md NOTICE CHANGELOG.md )
+DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}
 
 pkg_postinst() {
 	einfo

@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop
+EAPI=7
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A rampart-like game set in space"
 HOMEPAGE="http://kombat.kajaani.net/"
@@ -23,16 +23,22 @@ DEPEND="media-libs/libsdl[sound,video]
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-makefile.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+)
+
 src_prepare() {
 	default
-	eapply "${FILESDIR}/${PV}-makefile.patch" \
-		"${FILESDIR}"/${P}-ldflags.patch
+
 	sed -i \
 		-e "s:GENTOODIR:/usr/share/${PN}/:" \
 		Makefile || die
 	sed -i \
 		-e 's/IMG_Load/img_load/' \
 		gui_screens.cpp || die
+
+	tc-export CXX
 }
 
 src_install() {

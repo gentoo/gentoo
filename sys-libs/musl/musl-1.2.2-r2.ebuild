@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
 else
 	SRC_URI="http://www.musl-libc.org/releases/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="-* amd64 arm arm64 ~mips ppc ppc64 x86"
 fi
 GETENT_COMMIT="93a08815f8598db442d8b766b463d0150ed8e2ab"
 GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
@@ -28,7 +28,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
-HOMEPAGE="http://www.musl-libc.org/"
+HOMEPAGE="https://musl.libc.org"
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
 IUSE="headers-only"

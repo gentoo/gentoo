@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit fcaps systemd user
+inherit fcaps systemd user tmpfiles
 
 DESCRIPTION="Modern asynchronous DNS API"
 HOMEPAGE="https://getdnsapi.net/"
@@ -69,7 +69,7 @@ src_install() {
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/stubby.logrotate stubby
 		systemd_dounit "${S}"/stubby/systemd/stubby.service
-		systemd_dotmpfilesd "${S}"/stubby/systemd/stubby.conf
+		dotmpfiles "${S}"/stubby/systemd/stubby.conf
 	fi
 }
 
@@ -78,12 +78,5 @@ pkg_postinst() {
 		enewgroup stubby
 		enewuser stubby -1 -1 -1 stubby
 		fcaps cap_net_bind_service=ei /usr/bin/stubby
-	fi
-
-	if has_version '<dev-libs/libressl-2.7.0'; then
-		ewarn "BEWARE: dev-libs/libressl prior to 2.7 does NOT check TLS certificates."
-		if use stubby; then
-			ewarn "You will NOT be able to use strict profile in Stubby."
-		fi
 	fi
 }

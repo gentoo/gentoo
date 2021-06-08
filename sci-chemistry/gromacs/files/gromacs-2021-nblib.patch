@@ -1,0 +1,53 @@
+From 5771842a06f483ad52781f4f2cdf5311ddb5cfa1 Mon Sep 17 00:00:00 2001
+From: Alexey Shvetsov <alexxyum@gmail.com>
+Date: Fri, 23 Apr 2021 13:15:10 +0300
+Subject: [PATCH 1/2] Allow to build and install nblib without GMX TESTS
+ enabled
+
+Without it you'll get error like this:
+
+  CMake Error at api/nblib/CMakeLists.txt:79 (add_dependencies):
+  Cannot add target-level dependencies to non-existent target "tests".
+
+  The add_dependencies works for top-level logical targets created by the
+  add_executable, add_library, or add_custom_target commands.  If you want to
+  add file-level dependencies see the DEPENDS option of the add_custom_target
+  and add_custom_command commands.
+
+Signed-off-by: Alexey Shvetsov <alexxyum@gmail.com>
+---
+ api/nblib/CMakeLists.txt | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/api/nblib/CMakeLists.txt b/api/nblib/CMakeLists.txt
+index a2ce06596e..51211c3d70 100644
+--- a/api/nblib/CMakeLists.txt
++++ b/api/nblib/CMakeLists.txt
+@@ -76,14 +76,16 @@ add_custom_target(nblib-tests
+         )
+ # Ensure that "make tests" builds all nblib tests so the top-level
+ # "make check" will work.
+-add_dependencies(tests nblib-tests)
+-
+-# this allows all nblib tests to be run with "make check-nblib"
+-add_custom_target(check-nblib
+-        COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure -R NbLib
+-        COMMENT "Running nblib tests"
+-        USES_TERMINAL VERBATIM)
+-add_dependencies(check-nblib nblib-tests)
++if (BUILD_TESTING)
++	add_dependencies(tests nblib-tests)
++
++	# this allows all nblib tests to be run with "make check-nblib"
++	add_custom_target(check-nblib
++		COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure -R NbLib
++		COMMENT "Running nblib tests"
++		USES_TERMINAL VERBATIM)
++	add_dependencies(check-nblib nblib-tests)
++endif()
+ 
+ set(NBLIB_MAJOR 0)
+ set(NBLIB_MINOR 1)
+-- 
+2.31.1
+

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 # The order is important here! Both, cmake and xdg define src_prepare.
 # We need the one from cmake
-inherit xdg cmake
+inherit bash-completion-r1 xdg cmake
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -70,6 +70,7 @@ DOCS=( README.md doc/AUTHORS )
 
 src_configure() {
 	local mycmakeargs+=(
+		-DBASHCOMP_PKG_PATH="$(get_bashcompdir)"
 		-DUSE_WERROR=FALSE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
@@ -91,16 +92,4 @@ src_configure() {
 		-DWANT_SF2=$(usex fluidsynth)
 	)
 	cmake_src_configure
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }

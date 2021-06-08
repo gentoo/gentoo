@@ -5,7 +5,7 @@
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>martin@mvath.de</email>
     <name>Martin Väth</name>
     <description>Upstream developer, CC on bugs, do not copy ebuilds

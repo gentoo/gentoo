@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,6 @@ BDEPEND+="
 "
 
 pkg_postinst() {
-	elog "Optional dependencies:"
 	optfeature "ARC support" dev-python/authres
 	optfeature "ed25519 capability" dev-python/pynacl
 	optfeature "asyncio support" dev-python/aiodns

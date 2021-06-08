@@ -8,8 +8,8 @@
 +	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMCONVOBJS) -lopenctm -ltinyxml
 
  ctmviewer: $(CTMVIEWEROBJS)
--	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -Wl,-rpath,. -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `pkg-config --libs gtk+-2.0`
-+	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `pkg-config --libs gtk+-2.0`
+-	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -Wl,-rpath,. -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `${PKG_CONFIG} --libs gtk+-2.0`
++	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMVIEWEROBJS) -lopenctm -ltinyxml -ljpeg -lpnglite -lz -lglut -lGLU -lGLEW `${PKG_CONFIG} --libs gtk+-2.0`
 
  ctmbench: $(CTMBENCHOBJS)
 -	$(CPP) -s -o $@ -L$(OPENCTMDIR) $(CTMBENCHOBJS) -Wl,-rpath,. -lopenctm

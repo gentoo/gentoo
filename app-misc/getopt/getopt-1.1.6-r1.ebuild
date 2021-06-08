@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="getopt(1) replacement supporting GNU-style long options"
 HOMEPAGE="http://frodo.looijaard.name/project/getopt/"

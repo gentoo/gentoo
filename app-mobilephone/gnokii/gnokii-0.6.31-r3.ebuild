@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools desktop eutils linux-info
 
 HOMEPAGE="https://www.gnokii.org/"
-if [[ $PV == *9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="
 		git://git.savannah.nongnu.org/${PN}.git
 		http://git.savannah.gnu.org/r/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://www.gnokii.org/download/${PN}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 DESCRIPTION="User space driver and tools for use with mobile phones"
 
@@ -55,15 +55,18 @@ PATCHES=(
 )
 
 src_prepare() {
-	[[ $PV == *9999 ]] && \
+	[[ ${PV} == *9999 ]] && \
 		PATCHES=(
 			"${FILESDIR}"/${P}-icon.patch
 			"${FILESDIR}"/${P}-translations.patch
 		)
 
+	default
+
 	sed -i -e "s:/usr/local:${EPREFIX}/usr:" Docs/sample/gnokiirc || die
 
-	default
+	# bug 775485
+	sed -i -e "s:my_bool:bool:" smsd/mysql.c || die
 
 	cp "${FILESDIR}"/${P}-codeset.m4 m4/codeset.m4 || die
 	mv configure.{in,ac} || die
@@ -133,7 +136,7 @@ pkg_postinst() {
 	elog "Make sure the user that runs gnokii has read/write access to the device"
 	elog "which your phone is connected to."
 	elog "The simple way of doing that is to add your user to the uucp group."
-	if [[ $PV == *9999 ]]; then
+	if [[ ${PV} == *9999 ]]; then
 		elog "This is the GIT version of ${PN}. It is experimental but may have important bug fixes."
 		elog "You can keep track of the most recent commits at:"
 		elog "    http://git.savannah.gnu.org/cgit/gnokii.git/"

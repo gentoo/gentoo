@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: netsurf.eclass
@@ -19,7 +19,7 @@ inherit toolchain-funcs
 # @FUNCTION: netsurf_define_makeconf
 # @USAGE:
 # @DESCRIPTION:
-# This function sets NETSURF_MAKECONF as needed by netsurf build system
+# This function sets NETSURF_MAKECONF as needed by the netsurf build system
 netsurf_define_makeconf() {
 	NETSURF_MAKECONF=(
 		PREFIX="${EPREFIX}/usr"

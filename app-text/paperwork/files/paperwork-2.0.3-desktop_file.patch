@@ -1,0 +1,12 @@
+diff -Naur paperwork-2.0.3.orig/src/paperwork_gtk/cmd/install.py paperwork-2.0.3/src/paperwork_gtk/cmd/install.py
+--- paperwork-2.0.3.orig/src/paperwork_gtk/cmd/install.py	2021-02-05 17:46:17.000000000 +0100
++++ paperwork-2.0.3/src/paperwork_gtk/cmd/install.py	2021-05-30 12:26:21.316348652 +0200
+@@ -122,8 +122,6 @@
+         # PDF and all image formats supported by pillow
+         entry.set("MimeType",
+                   "application/pdf;"
+-                  "image/png;"
+-                  "image/jpeg;"
+                   "image/bmp;"
+                   "image/gif;"
+                   "image/ico;"

@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-scheme/guile-2.0.0"
+RDEPEND=">=dev-scheme/guile-2.0.0:="
 DEPEND="${RDEPEND}"
 
 # guile generates ELF files without use of C or machine code

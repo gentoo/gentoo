@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file specifies packages that are considered deprecated (but not
@@ -16,6 +16,21 @@
 ## dev-foo/foo
 
 #--- END OF EXAMPLES ---
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
+# version older than 3 don't compile with java 1.5+ and will be removed
+# slot 3.1 (versions < 3.6) are 99% compatible with slot 3.6 and should
+# not be used, use slot 3.6 or newer
+# see: https://bugs.gentoo.org/779472
+#      https://bugs.gentoo.org/784023
+<dev-java/commons-lang-3.6
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
+# because of unmasking java 11, which does not support bytecode older
+# than 1.6, those are deprecated in the ebuild. also, as the lowest
+# java version we support is 1.8, the restriction is lifted even more.
+<virtual/jdk-1.8
+<virtual/jre-1.8
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-20)
 # dev-qt/qtwebkit is in the process of being removed, tracker bug #684580
@@ -45,12 +60,6 @@ x11-libs/gtkglext
 # virtual/libffi has only one dev-libs/libffi provider. Use that instead.
 # bug #699796.
 virtual/libffi
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-09)
-# Test coverage reporting is not useful for Gentoo ebuilds.  The deps
-# against coverage plugins are either entirely spurious, or the build
-# systems need to be fixed to work without them.
-dev-python/nosexcover
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via

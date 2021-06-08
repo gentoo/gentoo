@@ -32,10 +32,10 @@ CONFIG_CHECK="~NETFILTER_XT_TARGET_HL ~IP_NF_TARGET_REDIRECT ~IP_NF_MATCH_TTL ~N
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# don't run tests via setup.py pytest
+	# Don't run tests via setup.py pytest
 	sed -i "/setup_requires=/s/'pytest-runner'//" setup.py || die
 
-	# don't require pytest-cov when running tests
+	# Don't require pytest-cov when running tests
 	sed -i "s/^addopts =/#\0/" setup.cfg || die
 
 	distutils-r1_python_prepare_all
@@ -47,6 +47,8 @@ python_compile_all() {
 
 python_install_all() {
 	HTML_DOCS=( docs/_build/html/. )
+
 	doman docs/_build/man/*
+
 	distutils-r1_python_install_all
 }

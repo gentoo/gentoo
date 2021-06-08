@@ -11,7 +11,7 @@ SRC_URI="http://catb.org/~esr/${PN}/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND=">=media-libs/libpng-1.2:0=
 	sys-libs/zlib:="

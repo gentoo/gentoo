@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils unpacker
+EAPI=7
+
+inherit desktop unpacker wrapper
 
 MY_P=${PN}_linux-${PV}
 dir=/opt/${PN}
@@ -11,6 +12,7 @@ DESCRIPTION="Fast-paced first-person-shooter online multiplayer game, similar to
 HOMEPAGE="http://legendsthegame.net/"
 SRC_URI="http://legendsthegame.net/files/${MY_P}.run
 	mirror://gentoo/${PN}.png"
+S="${WORKDIR}"
 
 LICENSE="Legends LGPL-2.1+"
 SLOT="0"
@@ -21,7 +23,6 @@ RESTRICT="strip"
 QA_TEXTRELS="${dir:1}/libSDL-1.3.so.0"
 QA_FLAGS_IGNORED="${dir:1}/libSDL-1.3.so.0 ${dir:1}/LinLegends ${dir:1}/lindedicated"
 
-DEPEND=""
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
 	media-fonts/font-adobe-75dpi
@@ -32,11 +33,9 @@ RDEPEND="sys-libs/glibc
 	media-libs/libvorbis[abi_x86_32(-)]
 	media-libs/openal[abi_x86_32(-)]"
 
-S=${WORKDIR}
-
 src_unpack() {
 	unpack_makeself ${MY_P}.run
-	cd "${S}"
+	cd "${S}" || die
 
 	# keep libSDL-1.3.so because legends requires it as of 0.4.0, and
 	# 1.2.6 is highest in portage
@@ -48,7 +47,7 @@ src_install() {
 	insinto "${dir}"
 	doins -r *
 
-	rm "${D}/${dir}/"/{lindedicated,LinLegends,*.so.0}
+	rm "${ED}/${dir}/"/{lindedicated,LinLegends,*.so.0} || die
 	exeinto "${dir}"
 	doexe lindedicated LinLegends *.so.0
 

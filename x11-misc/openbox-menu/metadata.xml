@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>desktop-misc@gentoo.org</email>
-		<name>Gentoo Desktop Miscellaneous Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<maintainer status="active">
 			<email>fabrice.thiroux@free.fr</email>
 			<name>Fabrice Thiroux</name>
 		</maintainer>
-		<doc lang="en">https://bitbucket.org/fabriceT/openbox-menu</doc>
-		<remote-id type="bitbucket">fabriceT/openbox-menu</remote-id>
+		<remote-id type="github">fabriceT/openbox-menu</remote-id>
 	</upstream>
 	<use>
 		<flag name="icons">Enable support for icons in menus</flag>

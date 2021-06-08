@@ -1,0 +1,1 @@
+#BLUETOOTH_OPTS="-E"

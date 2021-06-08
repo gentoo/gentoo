@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib systemd toolchain-funcs xdg
+inherit systemd toolchain-funcs xdg
 
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://www.x2go.org"
@@ -41,7 +41,7 @@ RDEPEND="acct-user/x2gouser
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.1.0.0-Xresources.patch
 	"${FILESDIR}"/${PN}-4.1.0.0-skip_man2html.patch
-	)
+)
 
 src_prepare() {
 	default

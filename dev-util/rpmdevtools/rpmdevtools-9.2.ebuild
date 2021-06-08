@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python{3_7,3_8} )
 inherit python-single-r1
 
 DESCRIPTION="Collection of rpm packaging related utilities"
@@ -12,7 +12,7 @@ SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emacs"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

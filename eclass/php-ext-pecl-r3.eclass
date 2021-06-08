@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: php-ext-pecl-r3.eclass
@@ -11,6 +11,7 @@
 # see https://pecl.php.net/
 
 # @ECLASS-VARIABLE: PHP_EXT_PECL_PKG
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set in ebuild before inheriting this eclass if the tarball name
 # differs from ${PN/pecl-/} so that SRC_URI and HOMEPAGE get set
@@ -22,6 +23,7 @@
 [[ -z "${PHP_EXT_PECL_PKG}" ]] && PHP_EXT_PECL_PKG="${PN/pecl-/}"
 
 # @ECLASS-VARIABLE: PHP_EXT_PECL_FILENAME
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Set in ebuild before inheriting this eclass if the tarball name

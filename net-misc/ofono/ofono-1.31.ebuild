@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib systemd
+inherit systemd
 
 DESCRIPTION="Open Source mobile telephony (GSM/UMTS) daemon"
 HOMEPAGE="https://01.org/ofono"
@@ -23,8 +23,8 @@ RDEPEND=">=sys-apps/dbus-1.4
 	udev? ( virtual/udev )
 	examples? ( dev-python/dbus-python )
 	tools? ( virtual/libusb:1 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( ChangeLog AUTHORS )
 

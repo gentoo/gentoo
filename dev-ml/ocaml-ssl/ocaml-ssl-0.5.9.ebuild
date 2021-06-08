@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}"
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 
 src_install() {
 	dune_src_install

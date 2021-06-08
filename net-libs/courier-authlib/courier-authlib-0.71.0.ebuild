@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit flag-o-matic
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 DESCRIPTION="Courier authentication library"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/authlib/"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb crypt debug gdbm ldap libressl mysql pam postgres sqlite static-libs"
+IUSE="berkdb crypt debug gdbm ldap mysql pam postgres sqlite static-libs"
 
 RESTRICT="!berkdb? ( test )"
 
@@ -19,8 +19,7 @@ DEPEND="net-mail/mailbase
 		>=net-libs/courier-unicode-2.1
 		gdbm? ( sys-libs/gdbm )
 		!gdbm? ( sys-libs/db:= )
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 		ldap? ( >=net-nds/openldap-1.2.11 )
 		mysql? ( dev-db/mysql-connector-c )
 		pam? ( sys-libs/pam )

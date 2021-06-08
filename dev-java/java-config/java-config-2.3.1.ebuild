@@ -4,7 +4,7 @@
 EAPI=7
 
 # jython depends on java-config, so don't add it or things will break
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
@@ -23,7 +23,6 @@ DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
 # baselayout-java is added as a dep till it can be added to eclass.
 RDEPEND="
-	!dev-java/java-config-wrapper
 	sys-apps/baselayout-java
 	sys-apps/portage[${PYTHON_USEDEP}]"
 

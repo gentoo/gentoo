@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,21 +6,20 @@ PYTHON_COMPAT=( python3_{7..9} )
 USE_RUBY="ruby25 ruby26 ruby27"
 
 # No, I am not calling ruby-ng
-inherit multilib python-r1 toolchain-funcs multilib-minimal
+inherit python-r1 toolchain-funcs multilib-minimal
 
-MY_P="${P//_/-}"
-SEPOL_VER="${PV}"
-MY_RELEASEDATE="20200710"
+MY_PV="${PV//_/-}"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
 
-if [[ ${PV} == 9999 ]] ; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	S="${WORKDIR}/${MY_P}/${PN}"
+	S="${WORKDIR}/${P}/${PN}"
 else
-	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_RELEASEDATE}/${MY_P}.tar.gz"
+	SRC_URI="https://github.com/SELinuxProject/selinux/releases/download/${MY_PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -30,7 +29,7 @@ SLOT="0"
 IUSE="pcre2 python ruby static-libs ruby_targets_ruby25 ruby_targets_ruby26 ruby_targets_ruby27"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/libsepol-${PV}:=[${MULTILIB_USEDEP}]
 	!pcre2? ( >=dev-libs/libpcre-8.33-r1:=[static-libs?,${MULTILIB_USEDEP}] )
 	pcre2? ( dev-libs/libpcre2:=[static-libs?,${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
@@ -53,6 +52,8 @@ src_prepare() {
 
 multilib_src_compile() {
 	tc-export AR CC PKG_CONFIG RANLIB
+
+	local -x CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
 	emake \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \

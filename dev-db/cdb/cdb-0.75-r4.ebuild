@@ -1,34 +1,37 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib toolchain-funcs
+EAPI=7
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+inherit toolchain-funcs
 
 DESCRIPTION="Fast, reliable, simple package for creating and reading constant databases"
 HOMEPAGE="http://cr.yp.to/cdb.html"
 SRC_URI="http://cr.yp.to/cdb/${P}.tar.gz"
+
 LICENSE="public-domain"
 SLOT="0"
-IUSE=""
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-DEPEND=">=sys-apps/sed-4
-		!dev-db/tinycdb"
+DEPEND="!dev-db/tinycdb"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-errno.diff
+	"${FILESDIR}"/${P}-stdint.diff
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-errno.diff
-	epatch "${FILESDIR}"/${P}-stdint.diff
+	default
 
 	sed -i -e 's/head -1/head -n 1/g' Makefile \
 		|| die "sed Makefile failed"
 }
 
 src_configure() {
-	echo "$(tc-getCC) ${CFLAGS} -fPIC" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
-	echo "${EPREFIX}/usr" > conf-home
+	echo "$(tc-getCC) ${CFLAGS} -fPIC" > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
+	echo "${EPREFIX}/usr" > conf-home || die
 }
 
 src_install() {
@@ -36,7 +39,7 @@ src_install() {
 
 	# ok so ... first off, some automakes fail at finding
 	# cdb.a, so install that now
-	dolib *.a
+	dolib.a *.a
 
 	# then do this pretty little symlinking to solve the somewhat
 	# cosmetic library issue at hand

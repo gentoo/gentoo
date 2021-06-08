@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit autotools eutils flag-o-matic multilib xdg-utils desktop
+inherit autotools flag-o-matic xdg-utils desktop
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
@@ -16,7 +16,7 @@ SRC_URI="http://ftp.xemacs.org/xemacs-21.5/${P}.tar.gz
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="alsa debug eolconv gif gpm pop postgres ldap libressl xface nas dnd X jpeg tiff png mule motif freewnn canna xft xim athena neXt Xaw3d gdbm berkdb"
+IUSE="alsa debug eolconv gif gpm pop postgres ldap xface nas dnd X jpeg tiff png mule motif freewnn canna xft xim athena neXt Xaw3d gdbm berkdb"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
@@ -24,8 +24,7 @@ RDEPEND="
 	berkdb? ( >=sys-libs/db-4:= !!<sys-libs/db-4 )
 	gdbm? ( >=sys-libs/gdbm-1.8.3[berkdb(+)] )
 	>=sys-libs/zlib-1.1.4
-	!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-	libressl? ( dev-libs/libressl )
+	>=dev-libs/openssl-0.9.6:0
 	>=media-libs/audiofile-0.2.3
 	gpm? ( >=sys-libs/gpm-1.19.6 )
 	postgres? ( dev-db/postgresql:= )

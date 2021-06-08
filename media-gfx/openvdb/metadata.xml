@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>agrigo2001@yahoo.com.au</email>
 		<name>Adrian Grigo</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -17,12 +17,6 @@
 	<use>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
-		</flag>
-		<flag restrict="&lt;=media-gfx/openvdb-6.0.0" name="abi3-compat">
-			Disables newer features to maintain compatibility with ABI3.
-		</flag>
-		<flag restrict="&lt;=media-gfx/openvdb-7.0.0" name="abi4-compat">
-			Disables newer features to maintain compatibility with ABI4.
 		</flag>
 		<flag restrict="&lt;=media-gfx/openvdb-7.1.0" name="abi5-compat">
 			Disables newer features to maintain compatibility with ABI5.

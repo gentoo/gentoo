@@ -1,17 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>nerdboy@gentoo.org</email>
-	<name>Steve Arnold</name>
-</maintainer>
-<longdescription lang="en">
+	<maintainer type="person">
+		<email>nerdboy@gentoo.org</email>
+		<name>Steve Arnold</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
 	smartypants does transformations of plain old ASCII straight quotes,
 	plain dashes, and plain dots, into smart quotes, em-dashes, and
 	proper ellipses.
-</longdescription>
-<upstream>
-	<remote-id type="pypi">smartypants</remote-id>
-	<remote-id type="github">leohemsted/smartypants.py</remote-id>
-</upstream>
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">smartypants</remote-id>
+		<remote-id type="github">leohemsted/smartypants.py</remote-id>
+	</upstream>
 </pkgmetadata>

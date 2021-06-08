@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit edos2unix toolchain-funcs
 
 MY_PN=FreeImage
 MY_PV=${PV//.}

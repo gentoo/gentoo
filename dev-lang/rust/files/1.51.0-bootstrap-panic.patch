@@ -1,0 +1,43 @@
+From 31c93397bde772764cda3058e16f9cef61895090 Mon Sep 17 00:00:00 2001
+From: Joshua Nelson <jyn514@gmail.com>
+Date: Mon, 8 Feb 2021 22:51:21 -0500
+Subject: [PATCH] Use format string in bootstrap panic instead of a string
+ directly
+
+This fixes the following warning when compiling with nightly:
+
+```
+warning: panic message is not a string literal
+    --> src/bootstrap/builder.rs:1515:24
+     |
+1515 |                 panic!(out);
+     |                        ^^^
+     |
+     = note: `#[warn(non_fmt_panic)]` on by default
+     = note: this is no longer accepted in Rust 2021
+help: add a "{}" format string to Display the message
+     |
+1515 |                 panic!("{}", out);
+     |                        ^^^^^
+help: or use std::panic::panic_any instead
+     |
+1515 |                 std::panic::panic_any(out);
+     |                 ^^^^^^^^^^^^^^^^^^^^^^
+```
+---
+ src/bootstrap/builder.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bootstrap/builder.rs b/src/bootstrap/builder.rs
+index f1a160250dbe1..0f5fcb4af400d 100644
+--- a/src/bootstrap/builder.rs
++++ b/src/bootstrap/builder.rs
+@@ -1490,7 +1490,7 @@ impl<'a> Builder<'a> {
+                 for el in stack.iter().rev() {
+                     out += &format!("\t{:?}\n", el);
+                 }
+-                panic!(out);
++                panic!("{}", out);
+             }
+             if let Some(out) = self.cache.get(&step) {
+                 self.verbose(&format!("{}c {:?}", "  ".repeat(stack.len()), step));

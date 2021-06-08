@@ -1,0 +1,103 @@
+https://github.com/numpy/numpy/pull/19074
+https://bugs.gentoo.org/788184
+
+From 8dc768964b5578a8aa9db1ef2c55134a00731e10 Mon Sep 17 00:00:00 2001
+From: Carl Michal <michal@physics.ubc.ca>
+Date: Sat, 22 May 2021 20:43:10 -0700
+Subject: [PATCH 1/2] Fix compile-time test of POPCNT
+
+The compile-time test of POPCNT, cpu_popcnt.c produced code that would
+execute without error even if the machine didn't support the popcnt
+instruction. This patch attempts to use popcnt on random numbers so the
+compiler can't substitute the answer at compile time.
+---
+ numpy/distutils/checks/cpu_popcnt.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/numpy/distutils/checks/cpu_popcnt.c b/numpy/distutils/checks/cpu_popcnt.c
+index e6a80fb40be4..f6c785dd2a97 100644
+--- a/numpy/distutils/checks/cpu_popcnt.c
++++ b/numpy/distutils/checks/cpu_popcnt.c
+@@ -4,20 +4,26 @@
+     #include <popcntintrin.h>
+ #endif
+ 
++#include <stdlib.h>
++
+ int main(void)
+ {
+     long long a = 0;
+     int b;
++    
++    a = random();
++    b = random();
++      
+ #ifdef _MSC_VER
+     #ifdef _M_X64
+-    a = _mm_popcnt_u64(1);
++    a = _mm_popcnt_u64(a);
+     #endif
+-    b = _mm_popcnt_u32(1);
++    b = _mm_popcnt_u32(b);
+ #else
+     #ifdef __x86_64__
+-    a = __builtin_popcountll(1);
++    a = __builtin_popcountll(a);
+     #endif
+-    b = __builtin_popcount(1);
++    b = __builtin_popcount(b);
+ #endif
+     return (int)a + b;
+ }
+
+From 52d5fe1ede45083d0783c3e2bbaee5c44df9d553 Mon Sep 17 00:00:00 2001
+From: Carl Michal <michal@physics.ubc.ca>
+Date: Sun, 23 May 2021 08:24:52 -0700
+Subject: [PATCH 2/2] Change fix of cpu_popcnt.c to use
+ _mm_popcnt_u64/_mm_popcnt_u32 on GCC
+
+_builtin_popcount is always available, so the compile-time check always
+succeeds.
+---
+ numpy/distutils/checks/cpu_popcnt.c | 26 ++++++++------------------
+ 1 file changed, 8 insertions(+), 18 deletions(-)
+
+diff --git a/numpy/distutils/checks/cpu_popcnt.c b/numpy/distutils/checks/cpu_popcnt.c
+index f6c785dd2a97..540c98dab05d 100644
+--- a/numpy/distutils/checks/cpu_popcnt.c
++++ b/numpy/distutils/checks/cpu_popcnt.c
+@@ -4,26 +4,16 @@
+     #include <popcntintrin.h>
+ #endif
+ 
+-#include <stdlib.h>
+-
+-int main(void)
++int main(int argc, char **argv)
+ {
+-    long long a = 0;
+-    int b;
+-    
+-    a = random();
+-    b = random();
+-      
+-#ifdef _MSC_VER
+-    #ifdef _M_X64
++    // To make sure popcnt instructions are generated
++    // and been tested against the assembler
++    unsigned long long a = *((unsigned long long*)argv[argc-1]);
++    unsigned int b = *((unsigned int*)argv[argc-2]);
++
++#if defined(_M_X64) || defined(__x86_64__)    
+     a = _mm_popcnt_u64(a);
+-    #endif
+-    b = _mm_popcnt_u32(b);
+-#else
+-    #ifdef __x86_64__
+-    a = __builtin_popcountll(a);
+-    #endif
+-    b = __builtin_popcount(b);
+ #endif
++    b = _mm_popcnt_u32(b);
+     return (int)a + b;
+ }

@@ -254,7 +254,7 @@ src_configure() {
 
 	if use python; then
 		mycmakeargs+=(
-			-DVTK_INSTALL_PYTHON_MODULE_DIR="$(python_get_sitedir)"
+			-DVTK_INSTALL_PYTHON_MODULES_DIR="$(python_get_sitedir)"
 			-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DPYTHON_LIBRARY="$(python_get_library_path)"
 			-DSIP_PYQT_DIR="${EPREFIX}/usr/share/sip"

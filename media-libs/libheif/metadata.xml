@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>jakov.smolic@sartura.hr</email>
 		<name>Jakov Smolic</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 	<flag name="aom">Use <pkg>media-libs/libaom</pkg> for AVIF encoding/decoding</flag>
-	<flag name='gdk-pixbuf'>Enable <pkg>x11-libs/gdk-pixbuf</pkg> plugin</flag>
-	<flag name='go'>Enable building <pkg>dev-lang/go</pkg> code/examples</flag>
+	<flag name="gdk-pixbuf">Enable <pkg>x11-libs/gdk-pixbuf</pkg> plugin</flag>
+	<flag name="go">Enable building <pkg>dev-lang/go</pkg> code/examples</flag>
 	<flag name="libde265">Use <pkg>media-libs/libde265</pkg> for HEIF decoding</flag>
 	<flag name="rav1e">Use <pkg>media-video/rav1e</pkg> for AVIF encoding</flag>
 	<flag name="x265">Use <pkg> media-libs/x265</pkg> for HEIF encoding</flag>

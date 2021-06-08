@@ -3,28 +3,20 @@
 
 EAPI=7
 
-inherit eutils gnome2-utils xdg
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/squentin/${PN}.git"
-	inherit git-r3
-	SRC_URI=""
-else
-	GIT_COMMIT="4538a5af5fb6c11f07bd7a9c50d6fd73b18c840d"
-	SRC_URI="https://github.com/squentin/${PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
-fi
+inherit git-r3 gnome2-utils xdg
 
 DESCRIPTION="An open-source jukebox for large collections of mp3/ogg/flac files"
 HOMEPAGE="https://gmusicbrowser.org/"
+EGIT_REPO_URI="https://github.com/squentin/${PN}.git"
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="dbus doc extras gstreamer libnotify mplayer"
 
+BDEPEND="sys-devel/gettext
+	doc? ( dev-perl/Text-Markdown )"
 RDEPEND="dev-lang/perl
-	dev-perl/Gtk2
+	dev-perl/Gtk3
 	virtual/perl-MIME-Base64
 	|| ( net-misc/wget dev-perl/AnyEvent-HTTP )
 	dbus? ( dev-perl/Net-DBus )
@@ -39,11 +31,16 @@ RDEPEND="dev-lang/perl
 	)
 	extras? ( dev-perl/gnome2-wnck )
 	libnotify? ( dev-perl/Gtk2-Notify )"
-DEPEND="sys-devel/gettext
-	doc? ( dev-perl/Text-Markdown )"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	emake MARKDOWN=$(usex doc "Markdown.pl" "echo")
+}
+
+src_prepare() {
+	default
+	# silence QA warnings
+	sed -i '/^OnlyShowIn/d' gmusicbrowser.desktop || die
 }
 
 src_install() {

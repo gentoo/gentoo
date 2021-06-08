@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit epatch
 
 DEB_PR="14"
 

@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Display NAT connections"
 HOMEPAGE="http://tweegy.nl/projects/netstat-nat/index.html"
@@ -12,7 +13,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc sparc x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-install.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-install.patch
+	default
+
+	mv configure.{in,ac} || die
+
 	eautoreconf
 }

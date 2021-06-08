@@ -1,0 +1,32 @@
+diff --git a/icm_bootstrap b/icm_bootstrap
+index 9a80252..78ece4f 100755
+--- a/icm_bootstrap
++++ b/icm_bootstrap
+@@ -45,11 +45,11 @@ cd doc
+ 
+ echo man-pages to tmp/${MANDIR}/man1 and .../man7
+ for x in *.1 ; do
+-    gzip -9cn $x > ../tmp/${MANDIR}/man1/$x.gz || exit 1
++    cp $x ../tmp/${MANDIR}/man1/$x || exit 1
+ done
+ 
+ for x in *.7 ; do
+-    gzip -9cn $x > ../tmp/${MANDIR}/man7/$x.gz  || exit 1
++    cp $x ../tmp/${MANDIR}/man7/$x || exit 1
+ done
+ 
+ echo documentation to tmp/${DOCDIR} and tmp/${DOCDOCDIR}
+@@ -58,11 +58,11 @@ echo documentation to tmp/${DOCDIR} and tmp/${DOCDOCDIR}
+ #    gzip -9cn $x > ../tmp/${DOCDOCDIR}/$x.gz  || exit 1
+ #done
+ 
+-gzip -9cn icmake.ps > ../tmp/${DOCDOCDIR}/icmake.ps.gz  || exit 1
++cp icmake.ps ../tmp/${DOCDOCDIR}/icmake.ps || exit 1
+ 
+ cd ..
+ 
+-gzip -9cn changelog > tmp/${DOCDIR}/changelog.gz || exit 1
++cp changelog tmp/${DOCDIR}/changelog || exit 1
+ 
+ try cp -r examples tmp/${DOCDOCDIR}
+ 

@@ -94,7 +94,7 @@ pkg_setup() {
 
 src_configure() {
 	if use examples && use wxwidgets; then
-		need-wxwidgets unicode
+		setup-wxwidgets unicode
 	fi
 
 	# Needed by FFmpeg

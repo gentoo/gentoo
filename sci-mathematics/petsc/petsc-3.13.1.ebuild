@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -101,6 +101,10 @@ src_configure() {
 	# configureMPITypes with openmpi-2* insists on accessing the scaling
 	# governor rw.
 	addpredict /sys/devices/system/cpu/
+
+	# bug 771711
+	# configureMPIEXEC and  configureMPITypes access /dev/nvidiactl
+	addpredict /dev/nvidiactl
 
 	local mylang
 	local myopt

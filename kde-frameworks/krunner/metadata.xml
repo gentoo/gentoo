@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="activities">Enable search runner for KDE Activities history</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>adel.ks@zegrapher.com</email>
+		<name>Adel KARA SLIMANE</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Visual Studio Code is a lightweight but powerful source code editor which
+		runs on your desktop and is available for Windows, macOS and Linux. It
+		comes with built-in support for JavaScript, TypeScript and Node.js and has
+		a rich ecosystem of extensions for other languages (such as C++, C#, Java,
+		Python, PHP, Go) and runtimes (such as .NET and Unity).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">microsoft/vscode</remote-id>
+		<bugs-to>https://github.com/microsoft/vscode/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

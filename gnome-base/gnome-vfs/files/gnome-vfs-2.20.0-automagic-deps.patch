@@ -1,7 +1,7 @@
 Index: configure.in
 ===================================================================
---- configure.in	(révision 5413)
-+++ configure.in	(copie de travail)
+--- a/configure.in
++++ b/configure.in
 @@ -448,9 +448,13 @@
  dnl GSSAPI
  dnl Check for Kerberos installation

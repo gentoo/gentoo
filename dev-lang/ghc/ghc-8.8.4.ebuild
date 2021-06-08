@@ -13,6 +13,8 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 	fi
 fi
 
+PYTHON_COMPAT=( python3_{7..9} )
+inherit python-any-r1
 inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib multiprocessing pax-utils toolchain-funcs prefix
 inherit check-reqs
@@ -104,13 +106,23 @@ PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
 
 RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		dev-python/sphinx
 		>=dev-libs/libxslt-1.1.2 )
-	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )
+	test? ( ${PYTHON_DEPS} )
+"
+
+needs_python() {
+	# test driver is written in python
+	use test && return 0
+	return 1
+}
 
 # we build binaries without profiling support
 REQUIRED_USE="
@@ -388,6 +400,10 @@ pkg_setup() {
 			die "No binary available for '${ARCH}' arch yet, USE=ghcbootstrap"
 		fi
 	fi
+
+	if needs_python; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -435,6 +451,7 @@ src_prepare() {
 				pushd "${WORKDIR}"/ghc-bin-installer > /dev/null || die
 				use sparc-solaris && unpack ghc-6.10.4-sparc-sun-solaris2.tar.bz2
 				use x86-solaris && unpack ghc-7.0.3-i386-unknown-solaris2.tar.bz2
+				use x86-macos && unpack ghc-7.4.1-i386-apple-darwin.tar.bz2
 				use x64-macos && unpack ghc-7.4.1-x86_64-apple-darwin.tar.bz2
 				popd > /dev/null
 
@@ -639,7 +656,7 @@ src_configure() {
 			# using ${GTARGET}'s libffi is not supported yet:
 			# GHC embeds full path for ffi includes without /usr/${CTARGET} account.
 			econf_args+=(--with-system-libffi)
-			econf_args+=(--with-ffi-includes=$($(tc-getPKG_CONFIG) libffi --cflags-only-I | sed -e 's@^-I@@'))
+			econf_args+=(--with-ffi-includes=$(pkg-config libffi --cflags-only-I | sed -e 's@^-I@@'))
 		fi
 
 		einfo "Final mk/build.mk:"

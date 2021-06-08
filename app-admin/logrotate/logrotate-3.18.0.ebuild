@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="Rotates, compresses, and mails system logs"
 HOMEPAGE="https://github.com/logrotate/logrotate"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="acl +cron selinux"
 
 COMMON_DEPEND="
@@ -75,7 +75,7 @@ src_install() {
 	use cron && install_cron_file
 
 	systemd_dounit examples/logrotate.{service,timer}
-	systemd_newtmpfilesd "${FILESDIR}/${PN}.tmpfiles" "${PN}".conf
+	newtmpfiles "${FILESDIR}/${PN}.tmpfiles" "${PN}".conf
 
 	keepdir /etc/logrotate.d
 }

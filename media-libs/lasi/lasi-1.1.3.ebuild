@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PN=libLASi
 MY_P=${MY_PN}-${PV}
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/2"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm64 hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
@@ -49,6 +49,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# 788766
+	append-cxxflags -std=gnu++14
 	# doesn't like CMAKE_BUILD_TYPE = Gentoo
 	CMAKE_BUILD_TYPE=None
 	local mycmakeargs=(

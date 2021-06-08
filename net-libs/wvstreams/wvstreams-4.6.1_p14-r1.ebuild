@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
-IUSE="boost +dbus debug doc libressl pam"
+IUSE="boost +dbus debug doc pam"
 
 #Tests fail if openssl is not compiled with -DPURIFY. Gentoo's isn't. FAIL!
 RESTRICT="test"
@@ -27,8 +27,7 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/zlib
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	!libressl? ( >=dev-libs/openssl-1.1:0= )
-	libressl? ( dev-libs/libressl:0= )
+	>=dev-libs/openssl-1.1:0=
 	pam? ( sys-libs/pam )
 "
 DEPEND="
@@ -52,7 +51,6 @@ src_prepare() {
 	default
 
 	eapply $(awk '{ print "'"${WORKDIR}"'/debian/patches/" $0; }' < "${WORKDIR}"/debian/patches/series)
-	eapply "${FILESDIR}"/${P}-libressl.patch # bug 687096
 
 	eautoreconf
 }

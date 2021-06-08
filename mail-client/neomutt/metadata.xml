@@ -6,6 +6,7 @@
 		<name>Nicolas Bock</name>
 	</maintainer>
 	<use>
+		<flag name="autocrypt">Enable autocrypt.org support</flag>
 		<flag name="berkdb">Enable BDB (Berkley DB) backend for header
 			caching</flag>
 		<flag name="gdbm">Enable GDBM (GNU dbm) backend for header

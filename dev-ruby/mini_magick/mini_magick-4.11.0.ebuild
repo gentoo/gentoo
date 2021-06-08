@@ -12,7 +12,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 RUBY_FAKEGEM_BINWRAP=""
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Manipulate images with minimal use of memory"
 HOMEPAGE="https://github.com/minimagick/minimagick"

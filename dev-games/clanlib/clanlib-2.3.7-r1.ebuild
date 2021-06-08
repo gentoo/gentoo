@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic
+inherit autotools toolchain-funcs
 
 MY_P=ClanLib-${PV}
-DESCRIPTION="multi-platform game development library"
+DESCRIPTION="Multi-platform game development library"
 HOMEPAGE="http://www.clanlib.org/"
 SRC_URI="http://clanlib.org/download/releases-2.0/${MY_P}.tgz"
 S="${WORKDIR}"/${MY_P}
@@ -14,7 +14,7 @@ S="${WORKDIR}"/${MY_P}
 LICENSE="ZLIB"
 SLOT="2.3"
 # Not big endian safe! #82779
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc ipv6 mikmod opengl sound sqlite cpu_flags_x86_sse2 static-libs vorbis X"
 REQUIRED_USE="opengl? ( X )"
 
@@ -82,6 +82,8 @@ src_configure() {
 		|| use vorbis \
 		|| use mikmod \
 		|| myeconfargs+=( --disable-clanSound )
+
+	tc-export PKG_CONFIG
 
 	econf "${myeconfargs[@]}"
 }

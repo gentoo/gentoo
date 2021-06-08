@@ -16,7 +16,7 @@ LICENSE="supermicro"
 SLOT="0"
 IUSE="iso usb"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist fetch mirror"
 

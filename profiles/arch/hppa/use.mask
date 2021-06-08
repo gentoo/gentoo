@@ -7,6 +7,16 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Michał Górny <mgorny@gentoo.org> (2021-05-20)
+# Unresolved keywordreqs are getting in the way.
+# https://bugs.gentoo.org/789606
+python_targets_python3_10
+python_single_target_python3_10
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on HPPA.
+llvm-libunwind
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
 # media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
 jack
@@ -195,7 +205,7 @@ networkmanager
 gcj
 
 # Samuli Suominen <drac@gentoo.org> (2007-03-02)
-# See https://bugs.gentoo.org/show_bug.cgi?id=157881#c3
+# See bug #157881#c3
 battery
 
 # Saleem Abdulrasool <compnerd@gentoo.org> (2006-08-18)

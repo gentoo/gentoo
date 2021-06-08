@@ -30,7 +30,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "For icon (-i) functionality, install:"
+	optfeature_header "For icon (-i) functionality, install:"
 	optfeature "support via gtk+:2 (default)" dev-perl/Gtk2
 	optfeature "support via gtk+:3 (enabled via config)" dev-perl/Gtk3
 }

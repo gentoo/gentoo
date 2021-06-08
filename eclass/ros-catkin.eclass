@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ros-catkin.eclass
@@ -46,7 +46,7 @@ fi
 # ROS only really works with one global python version and the target
 # version depends on the release. Noetic targets 3.7 and 3.8.
 # py3.9 or later are ok to add there as long as dev-ros/* have their deps satisfied.
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit ${SCM} python-single-r1 cmake flag-o-matic
 
@@ -61,11 +61,13 @@ DEPEND="${RDEPEND}
 "
 
 # @ECLASS-VARIABLE: CATKIN_HAS_MESSAGES
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Set it to a non-empty value before inherit to tell the eclass the package has messages to build.
 # Messages will be built based on ROS_MESSAGES USE_EXPANDed variable.
 
 # @ECLASS-VARIABLE: CATKIN_MESSAGES_TRANSITIVE_DEPS
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Some messages have dependencies on other messages.
 # In that case, CATKIN_MESSAGES_TRANSITIVE_DEPS should contain a space-separated list of atoms
@@ -175,7 +177,7 @@ ros-catkin_src_configure() {
 	local mycmakeargs=(
 		"-DCATKIN_ENABLE_TESTING=$(usex test)"
 		"-DCATKIN_BUILD_BINARY_PACKAGE=ON"
-		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EROOT}}/usr"
+		"-DCATKIN_PREFIX_PATH=${SYSROOT:-${EPREFIX}}/usr"
 		"${mycatkincmakeargs[@]}"
 	)
 

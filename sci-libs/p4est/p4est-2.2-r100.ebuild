@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1..2} )
 # The build system currently fails with everything newer than 1.11.
 WANT_AUTOMAKE=1.11
 
-inherit autotools lua-single toolchain-funcs eutils
+inherit autotools lua-single toolchain-funcs
 
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"

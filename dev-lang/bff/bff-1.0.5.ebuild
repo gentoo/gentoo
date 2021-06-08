@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/apankrat/bff"
 SRC_URI="https://github.com/apankrat/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~ia64 ~m68k ppc ppc64 s390 x86"
+KEYWORDS="amd64 arm ~ia64 ~m68k ppc ppc64 ~s390 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

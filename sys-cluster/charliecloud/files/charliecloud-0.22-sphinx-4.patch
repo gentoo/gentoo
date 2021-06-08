@@ -1,0 +1,25 @@
+From f424c4078eab817b4af712b85184c4f07e2289c6 Mon Sep 17 00:00:00 2001
+From: Reid Priedhorsky <1682574+reidpr@users.noreply.github.com>
+Date: Wed, 12 May 2021 15:18:15 -0600
+Subject: [PATCH] PR #1062: configure Sphinx 4.x behavior to match 3.x (closes
+ #1060)
+
+---
+ doc/conf.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/doc/conf.py b/doc/conf.py
+index 53a187bbb..417c91629 100644
+--- a/doc/conf.py
++++ b/doc/conf.py
+@@ -238,6 +238,10 @@
+ 
+ # -- Options for manual page output --------------------------------------------
+ 
++# Put all man pages in one directory regardless of section. Default changes to
++# True in Sphinx 4.0, which broke our builds (#1060).
++man_make_section_directory = False
++
+ # One entry per manual page. List of tuples
+ # (source start file, name, description, authors, manual section).
+ man_pages = [

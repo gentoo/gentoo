@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit epatch flag-o-matic toolchain-funcs
 
 DESCRIPTION="FASTA is a DNA and Protein sequence alignment software package"
 HOMEPAGE="https://fasta.bioch.virginia.edu/fasta_www2/fasta_down.shtml"

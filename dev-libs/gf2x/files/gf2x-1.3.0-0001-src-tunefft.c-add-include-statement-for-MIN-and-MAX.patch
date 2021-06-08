@@ -1,0 +1,29 @@
+From 292b5784d907f420886e50d5683517b8fe1abe3c Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 5 Jun 2021 18:29:08 +0200
+Subject: [PATCH] src/tunefft.c: add include statement for MIN and MAX
+
+Add #include <sys/param.h> to have MIN and MAX available
+for next_step function.
+
+Bug: https://bugs.gentoo.org/719982
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ src/tunefft.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/tunefft.c b/src/tunefft.c
+index a08d82a..f5abc82 100644
+--- a/src/tunefft.c
++++ b/src/tunefft.c
+@@ -65,6 +65,7 @@
+ #include <float.h>		/* for DBL_MAX */
+ #include <time.h>
+ #include <sys/utsname.h>	/* for uname */
++#include <sys/param.h>		/* for MIN, MAX */
+ #include "gf2x.h"
+ #include "gf2x/gf2x-impl.h"
+ #include "timing.h"
+-- 
+2.31.1
+

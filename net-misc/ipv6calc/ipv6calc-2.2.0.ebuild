@@ -9,13 +9,12 @@ SRC_URI="https://github.com/pbiering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="geoip libressl test"
+KEYWORDS="~alpha amd64 ~hppa ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="geoip test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:=
 	geoip? ( >=dev-libs/geoip-1.4.7 )
 "
 DEPEND="${RDEPEND}

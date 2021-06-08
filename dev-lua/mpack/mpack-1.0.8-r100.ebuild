@@ -3,7 +3,7 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit lua toolchain-funcs
 
@@ -16,8 +16,9 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="test"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -29,6 +30,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		dev-lua/busted[${LUA_USEDEP}]
+		dev-lua/lua_cliargs[${LUA_USEDEP}]
 		${RDEPEND}
 	)
 "
@@ -60,6 +62,8 @@ src_compile() {
 }
 
 lua_src_test() {
+	pushd "${BUILD_DIR}" || die
+
 	# "[  FAILED  ] test.lua @ 279: mpack should not leak memory"
 	# It doesn't seem upstream actually support LuaJIT so were this up to me
 	# I would drop it from LUA_COMPAT, unfortunately there are packages in the
@@ -70,6 +74,8 @@ lua_src_test() {
 	fi
 
 	busted --lua="${ELUA}" test.lua || die
+
+	popd
 }
 
 src_test() {
@@ -79,9 +85,10 @@ src_test() {
 lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
+	local installdir="$(lua_get_cmod_dir)"
 	local myemakeargs=(
 		"DESTDIR=${ED}"
-		"LUA_CMOD_INSTALLDIR=$(lua_get_cmod_dir)"
+		"LUA_CMOD_INSTALLDIR=${installdir#$EPREFIX}"
 		"USE_SYSTEM_MPACK=yes"
 		"USE_SYSTEM_LUA=yes"
 	)

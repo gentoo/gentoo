@@ -13,14 +13,10 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="libressl ssl readline ipv6 tcpd"
+IUSE="ipv6 readline ssl tcpd"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
@@ -39,12 +35,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
 	"${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
 	"${FILESDIR}"/${PN}-1.7.3.4-fno-common.patch
-	"${FILESDIR}"/${PN}-2.0.0_beta9-libressl.patch
 )
 
 pkg_setup() {
 	# bug #587740
-	if use readline && use ssl; then
+	if use readline && use ssl ; then
 		elog "You are enabling both readline and openssl USE flags, the licenses"
 		elog "for these packages conflict. You may not be able to legally"
 		elog "redistribute the resulting binary."
@@ -60,7 +55,8 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-flags -Wall '-Wno-error*' #293324
+	# bug #293324
+	filter-flags -Wall '-Wno-error*'
 	tc-export AR
 
 	econf \

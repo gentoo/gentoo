@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit elisp-common multilib eutils flag-o-matic
+
+inherit elisp-common epatch flag-o-matic
 
 DESCRIPTION="Scheme48 is an implementation of the Scheme Programming Language"
 HOMEPAGE="http://www.s48.org/"
@@ -15,6 +16,7 @@ IUSE="doc emacs"
 
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
+
 SITEFILE=50scheme48-gentoo.el
 
 src_prepare() {
@@ -23,7 +25,7 @@ src_prepare() {
 
 src_configure() {
 	append-cflags -fno-strict-aliasing
-	econf --docdir=/usr/share/doc/${P}
+	econf --docdir=/usr/share/doc/${PF}
 }
 
 src_compile() {

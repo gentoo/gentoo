@@ -6,12 +6,12 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="System tray utility including support for KDE system tray icons"
-HOMEPAGE="https://stalonetray.github.io/"
+HOMEPAGE="https://kolbusa.github.io/stalonetray/"
 SRC_URI="https://github.com/kolbusa/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug +graceful-exit"
 
 RDEPEND="x11-libs/libICE

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/svenfuchs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/concurrent-ruby:1"
@@ -36,7 +36,7 @@ all_ruby_prepare() {
 	sed -i -e '/oj/ s:^:#:' gemfiles/* || die
 
 	# Update old test dependencies
-	sed -i -e '/rake/ s/~>/>=/' -e 's/1.7.0/1.7/' gemfiles/* || die
+	sed -i -e '/rake/ s/~>/>=/' -e 's/1.7.0/1.7/' -e '3igem "json"' gemfiles/* || die
 }
 
 each_ruby_test() {

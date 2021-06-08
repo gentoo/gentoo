@@ -6,9 +6,11 @@
 >=media-libs/libheif-1.10.0 -rav1e
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # Dependency keyworded on this arm profile.
 dev-libs/efl -avif
 kde-frameworks/kimageformats -avif
+media-libs/gd -avif
 
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches

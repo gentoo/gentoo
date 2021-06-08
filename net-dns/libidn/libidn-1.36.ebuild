@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal libtool
+inherit elisp-common java-pkg-opt-2 libtool mono-env multilib-minimal
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
 HOMEPAGE="https://www.gnu.org/software/libidn/"
@@ -10,23 +10,25 @@ SRC_URI="mirror://gnu/libidn/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3 LGPL-3 java? ( Apache-2.0 )"
 SLOT="0/12"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc emacs java mono nls"
 
 DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS TODO )
 COMMON_DEPEND="
-	emacs? ( >=app-editors/emacs-23.1:* )
 	mono? ( >=dev-lang/mono-0.95 )
+	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${COMMON_DEPEND}
 	java? ( >=virtual/jdk-1.5 )
-	nls? ( >=sys-devel/gettext-0.17 )
 "
 RDEPEND="
 	${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.5 )
-	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
+"
+BDEPEND="
+	emacs? ( >=app-editors/emacs-23.1:* )
+	nls? ( >=sys-devel/gettext-0.17 )
 "
 
 pkg_setup() {

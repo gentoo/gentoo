@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools eutils python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="a package for multitrack audio processing"
 HOMEPAGE="https://ecasound.seul.org/ecasound/"

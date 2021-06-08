@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/lavv17/lftp"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file"
+IUSE="convert-mozilla-cookies +gnutls idn ipv6 nls socks5 +ssl verify-file"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:=
@@ -26,10 +26,7 @@ RDEPEND="
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3:0= )
-		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
+		!gnutls? ( dev-libs/openssl:0= )
 	)
 	verify-file? (
 		dev-perl/String-CRC32

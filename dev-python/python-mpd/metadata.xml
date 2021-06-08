@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">python-mpd</remote-id>
+		<remote-id type="pypi">python-mpd2</remote-id>
 		<remote-id type="github">Mic92/python-mpd2</remote-id>
 	</upstream>
 	<use>

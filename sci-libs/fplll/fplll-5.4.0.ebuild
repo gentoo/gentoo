@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,8 @@ DEPEND="dev-libs/gmp:0
 	dev-libs/mpfr:0
 	qd? ( sci-libs/qd )"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-5.4.0-gcc11.patch" )
 
 src_configure() {
 	econf \

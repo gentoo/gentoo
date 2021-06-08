@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop flag-o-matic
+
+inherit autotools desktop
 
 DESCRIPTION="3D tank combat simulator game"
 HOMEPAGE="https://www.bzflag.org/"
@@ -35,6 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.12-sdl2-cppflags.patch
 )
 
+DOCS=( AUTHORS ChangeLog DEVINFO PORTING README README.Linux )
+
 src_prepare() {
 	default
 	eautoreconf
@@ -59,13 +62,12 @@ src_configure() {
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog DEVINFO PORTING README README.Linux" \
-		default
+	default
 
 	if ! use dedicated ; then
 		newicon data/bzflag-48x48.png ${PN}.png
 		make_desktop_entry ${PN} "BZFlag"
 	fi
 
-	find "${D}"/ -name \*.la -delete
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-1 lua5-2 )
 
-PLOCALES="be bg cs de el en es eu fr hu it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
+PLOCALES="be bg cs da de el en es eu fr hu ie it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
 inherit cmake l10n lua-single xdg-utils toolchain-funcs
 [[ ${PV} = *9999* ]] && inherit git-r3
@@ -32,7 +32,6 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	KEYWORDS=""
 fi
 
 RDEPEND="
@@ -92,12 +91,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog.txt )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.2.10-cmake_lua_version.patch"
-	"${FILESDIR}/${P}-fix_upnp_compilation.patch"
-)
+CMAKE_REMOVE_MODULES_LIST="FindASPELL FindLua"
 
-CMAKE_REMOVE_MODULES_LIST="FindLua"
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
 
 src_prepare() {
 	cmake_src_prepare

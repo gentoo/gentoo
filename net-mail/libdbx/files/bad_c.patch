@@ -1,6 +1,5 @@
-diff -ru libdbx_1.0.3/libdbx.c libdbx_1.0.3-new/libdbx.c
---- libdbx_1.0.3/libdbx.c	2002-10-05 15:07:36.000000000 +0200
-+++ libdbx_1.0.3-new/libdbx.c	2006-09-20 08:53:46.000000000 +0200
+--- a/libdbx.c
++++ b/libdbx.c
 @@ -485,11 +485,11 @@
  	    switch (blockp.type) {
  	    case 0x01: //pointer to flag
@@ -24,11 +23,8 @@ diff -ru libdbx_1.0.3/libdbx.c libdbx_1.0.3-new/libdbx.c
  				readtype = W32FT_TYPE;
  				break;
  	    case 0x13: //recipient's name
-Only in libdbx_1.0.3-new: libdbx.o
-Only in libdbx_1.0.3-new: readdbx
-diff -ru libdbx_1.0.3/readdbx.c libdbx_1.0.3-new/readdbx.c
---- libdbx_1.0.3/readdbx.c	2002-10-05 15:20:25.000000000 +0200
-+++ libdbx_1.0.3-new/readdbx.c	2006-09-20 08:54:10.000000000 +0200
+--- a/readdbx.c
++++ b/readdbx.c
 @@ -19,6 +19,7 @@
  #include <getopt.h>
  #include <time.h>
@@ -37,5 +33,3 @@ diff -ru libdbx_1.0.3/readdbx.c libdbx_1.0.3-new/readdbx.c
  
  #include "libdbx.h"
  #include "common.h"
-Only in libdbx_1.0.3-new: readoe
-Files libdbx_1.0.3/timeconv.o and libdbx_1.0.3-new/timeconv.o differ

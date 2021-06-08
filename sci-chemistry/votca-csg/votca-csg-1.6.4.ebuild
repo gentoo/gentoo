@@ -13,7 +13,7 @@ else
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
 		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux"
 	S="${WORKDIR}/${P#votca-}"
 	PDEPEND="extras? ( ~sci-chemistry/${PN}apps-${PV} )"
 fi

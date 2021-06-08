@@ -13,22 +13,21 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # other possible flags:
 # db2: we lack the dep
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="debug doc geoip ldap libressl lua-records mydns mysql postgres protobuf remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap lua-records mydns mysql postgres protobuf remote sodium sqlite systemd tools tinydns test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	mydns? ( mysql )"
 
 DEPEND="${LUA_DEPS}
-	libressl? ( dev-libs/libressl:= )
-	!libressl? ( dev-libs/openssl:= )
+	dev-libs/openssl:=
 	>=dev-libs/boost-1.35:=
 	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c:= )
@@ -130,12 +129,6 @@ pkg_postinst() {
 	elog
 	elog "The name must be in the format pdns.<suffix> and PowerDNS will use the"
 	elog "/etc/powerdns/pdns-<suffix>.conf configuration file instead of the default."
-
-	if use ldap ; then
-		echo
-		ewarn "The official LDAP backend module is only compile-tested by upstream."
-		ewarn "Try net-dns/pdns-ldap-backend if you have problems with it."
-	fi
 
 	local old
 	for old in ${REPLACING_VERSIONS}; do

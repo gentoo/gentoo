@@ -11,7 +11,7 @@ SRC_URI="https://roy.marples.name/downloads/${PN%-ui}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug gtk libnotify ncurses qt5"
 
 REQUIRED_USE="libnotify? ( gtk )

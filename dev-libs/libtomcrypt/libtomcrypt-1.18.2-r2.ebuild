@@ -20,6 +20,10 @@ SLOT="0/1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
 IUSE="+gmp +libtommath tomsfastmath"
 
+# Enforce at least one math provider
+# bug #772935
+REQUIRED_USE="|| ( gmp libtommath tomsfastmath )"
+
 BDEPEND="
 	sys-devel/libtool
 	virtual/pkgconfig
@@ -30,6 +34,10 @@ DEPEND="
 	tomsfastmath? ( dev-libs/tomsfastmath:= )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
 
 mymake() {
 	# Standard boilerplate

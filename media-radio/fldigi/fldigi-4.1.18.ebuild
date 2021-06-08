@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="hamlib nls pulseaudio"
 IUSE_CPU_FLAGS=" sse sse2 sse3"
 IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
@@ -24,7 +24,7 @@ RDEPEND="x11-libs/fltk:1[threads,xft]
 		media-libs/portaudio[oss]
 		media-libs/portaudio[alsa]
 	)
-	hamlib? ( media-libs/hamlib )
+	hamlib? ( media-libs/hamlib:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	>=media-libs/libsndfile-1.0.10"
 DEPEND="${RDEPEND}
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "$FILESDIR"/$PN-c++11.patch )
+PATCHES=( "${FILESDIR}"/${PN}-c++11.patch )
 
 src_configure() {
 	local myconf=""

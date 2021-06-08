@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_REPO_URI="git://git.sv.gnu.org/quilt.git"
+EGIT_REPO_URI="https://git.savannah.gnu.org/git/quilt.git"
 
 [[ ${PV} == 9999 ]] && inherit git-r3
 

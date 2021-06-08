@@ -136,9 +136,9 @@ src_install() {
 	set_arch_to_kernel
 
 	myemakeargs+=(
-		DEPMOD="/bin/true"
+		DEPMOD=:
 		DESTDIR="${D}"
-		INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
+		INSTALL_MOD_PATH="${EPREFIX:-/}" # lib/modules/<kver> added by KBUILD
 	)
 
 	emake "${myemakeargs[@]}" install
@@ -159,6 +159,7 @@ pkg_postinst() {
 	fi
 
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
+		set_arch_to_portage
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 

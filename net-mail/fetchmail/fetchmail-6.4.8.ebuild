@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="tk"
 
-inherit python-single-r1 systemd toolchain-funcs autotools
+inherit python-single-r1 systemd toolchain-funcs autotools tmpfiles
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
 HOMEPAGE="https://www.fetchmail.info/"
@@ -14,19 +14,17 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="ssl nls kerberos tk socks libressl"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="ssl nls kerberos tk socks"
 REQUIRED_USE="tk? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="acct-user/fetchmail
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1.1:= )
-		libressl?  ( dev-libs/libressl:= )
+		>=dev-libs/openssl-1.1.1:=
 	)
 	kerberos? (
 		virtual/krb5
-		!libressl? ( >=dev-libs/openssl-1.0.2:= )
-		libressl?  ( dev-libs/libressl:= )
+		>=dev-libs/openssl-1.0.2:=
 	)
 	nls? ( virtual/libintl )
 	!elibc_glibc? ( sys-libs/e2fsprogs-libs )
@@ -88,7 +86,7 @@ src_install() {
 
 	systemd_dounit  "${FILESDIR}"/${PN}.service
 	systemd_newunit "${FILESDIR}"/${PN}_at.service "${PN}@.service"
-	systemd_dotmpfilesd "${FILESDIR}"/${PN}.conf
+	dotmpfiles "${FILESDIR}"/${PN}.conf
 
 	docinto contrib
 	local f

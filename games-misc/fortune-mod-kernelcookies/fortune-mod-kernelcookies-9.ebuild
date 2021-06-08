@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A collection of funny lines from the Linux kernel"
 HOMEPAGE="http://www.schwarzvogel.de/software-misc.shtml"
 SRC_URI="http://www.schwarzvogel.de/pkgs/kernelcookies-${PV}.tar.gz"
+S="${WORKDIR}"/kernelcookies-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,13 +16,13 @@ IUSE="offensive"
 DEPEND="games-misc/fortune-mod"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/kernelcookies-${PV}
-
 src_prepare() {
+	default
+
 	# bug #64985
 	if ! use offensive ; then
-		rm -f *.dat
-		epatch "${FILESDIR}"/${PV}-offensive.patch
+		rm -f *.dat || die
+		eapply "${FILESDIR}"/${PV}-offensive.patch
 		strfile -s kernelcookies || die
 	fi
 }

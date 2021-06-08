@@ -15,8 +15,8 @@ SRC_URI="https://invisible-mirror.net/archives/lynx/tarballs/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode libressl"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode"
 
 RDEPEND="
 	sys-libs/ncurses:0=[unicode?]
@@ -24,8 +24,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 	ssl? (
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			dev-libs/openssl:0=
 		)
 		gnutls? (
 			dev-libs/libgcrypt:0=

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils autotools ltprune
+inherit autotools
 
 DESCRIPTION="GNU Astronomy Utilities"
 HOMEPAGE="https://www.gnu.org/software/gnuastro"
@@ -45,5 +45,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

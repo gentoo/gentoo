@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
   <email>vincent.hardy.be@gmail.com</email>
+  <name>Vincent Hardy</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
    <email>proxy-maint@gentoo.org</email>
    <name>Proxy Maintainers</name>
 </maintainer>
@@ -27,9 +28,6 @@ These three functions form the basis of the countless applications for your eID.
   </flag>
   <flag name="p11-kit">
     Support for app-crypt/p11-kit.
-  </flag>
-  <flag name="p11v220">
-    Enable PKCS#11 v2.20 features.
   </flag>
 </use>
 </pkgmetadata>

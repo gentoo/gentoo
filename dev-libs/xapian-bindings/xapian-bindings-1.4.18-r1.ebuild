@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php7-2 php7-3 php7-4"
@@ -17,7 +17,7 @@ PHP_EXT_OPTIONAL_USE="php"
 USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
-inherit java-pkg-opt-2 lua mono-env multibuild php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
+inherit java-pkg-opt-2 lua mono-env multibuild php-ext-source-r3 python-r1 ruby-ng
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="https://www.xapian.org/"
@@ -311,7 +311,7 @@ src_install() {
 		java-pkg_dojar java/built/xapian.jar
 		# TODO: make the build system not install this...
 		java-pkg_doso java/.libs/libxapian_jni.so
-		rm -rf "${D}var" || die "could not remove java cruft!"
+		rm -rf "${ED}/var" || die "could not remove java cruft!"
 	fi
 
 	if use lua; then
@@ -327,6 +327,7 @@ src_install() {
 
 	if use python; then
 		python_foreach_impl run_in_build_dir emake DESTDIR="${D}" install
+		python_foreach_impl python_optimize
 	fi
 
 	if use ruby; then
@@ -334,8 +335,8 @@ src_install() {
 	fi
 
 	# For some USE combinations this directory is not created
-	if [[ -d "${D}/usr/share/doc/xapian-bindings" ]]; then
-		mv "${D}/usr/share/doc/xapian-bindings" "${D}/usr/share/doc/${PF}" || die
+	if [[ -d "${ED}/usr/share/doc/xapian-bindings" ]]; then
+		mv "${ED}/usr/share/doc/xapian-bindings" "${ED}/usr/share/doc/${PF}" || die
 	fi
 
 	dodoc AUTHORS HACKING NEWS TODO README

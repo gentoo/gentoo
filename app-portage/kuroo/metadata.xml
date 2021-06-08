@@ -5,7 +5,7 @@
 		<email>tools-portage@gentoo.org</email>
 		<name>Gentoo Portage tools team</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -13,7 +13,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>galiven@users.sourceforge.net</email>
 		<name>Andrew Schenck</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>

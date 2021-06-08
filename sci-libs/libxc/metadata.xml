@@ -5,7 +5,7 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>Hloupy.Honza@centrum.cz</email>
 		<name>Honza Macháček</name>
 	</maintainer>

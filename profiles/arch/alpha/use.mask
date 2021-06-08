@@ -4,6 +4,13 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# Michał Górny <mgorny@gentoo.org> (2021-05-20)
+# Unresolved keywordreqs are getting in the way.
+# https://bugs.gentoo.org/773451
+# https://bugs.gentoo.org/789606
+python_targets_python3_10
+python_single_target_python3_10
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
 # media-sound/jack-audio-connection-kit re-keywording timeout, bug #736725
 jack

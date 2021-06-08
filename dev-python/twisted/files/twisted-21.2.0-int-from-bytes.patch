@@ -1,0 +1,14 @@
+diff --git a/src/twisted/conch/ssh/common.py b/src/twisted/conch/ssh/common.py
+index 3e4f8cdc7..ee3d63143 100644
+--- a/src/twisted/conch/ssh/common.py
++++ b/src/twisted/conch/ssh/common.py
+@@ -11,7 +11,8 @@ Maintainer: Paul Swartz
+ 
+ import struct
+ 
+-from cryptography.utils import int_from_bytes, int_to_bytes
++from cryptography.utils import int_to_bytes
++int_from_bytes = int.from_bytes
+ 
+ from twisted.python.deprecate import deprecated
+ from twisted.python.versions import Version

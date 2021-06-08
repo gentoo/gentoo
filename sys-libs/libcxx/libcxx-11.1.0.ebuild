@@ -12,7 +12,7 @@ HOMEPAGE="https://libcxx.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~riscv x86 ~x64-macos"
 IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind static-libs test"
 REQUIRED_USE="libunwind? ( libcxxabi )"
 RESTRICT="!test? ( test )"
@@ -35,6 +35,7 @@ BDEPEND="
 DOCS=( CREDITS.TXT )
 
 LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
+LLVM_PATCHSET=11.1.0-1
 llvm.org_set_globals
 
 python_check_deps() {
@@ -56,14 +57,6 @@ pkg_setup() {
 		eerror "and try again."
 		die
 	fi
-}
-
-src_prepare() {
-	# Add link flag "-Wl,-z,defs" to avoid underlinking; this is needed in a
-	# out-of-tree build.
-	eapply "${FILESDIR}/${PN}-3.9-cmake-link-flags.patch"
-
-	llvm.org_src_prepare
 }
 
 test_compiler() {

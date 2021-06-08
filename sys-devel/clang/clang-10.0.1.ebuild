@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,13 +9,13 @@ inherit cmake llvm llvm.org multilib-minimal pax-utils \
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
-SRC_URI+=" https://dev.gentoo.org/~juippis/distfiles/tmp/10.0.1-0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch"
 LLVM_COMPONENTS=( clang clang-tools-extra )
 LLVM_MANPAGES=pregenerated
 LLVM_TEST_COMPONENTS=(
 	llvm/lib/Testing/Support
 	llvm/utils/{lit,llvm-lit,unittest}
 )
+LLVM_PATCHSET=10.0.1-1
 llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
@@ -73,12 +73,6 @@ PDEPEND="
 #
 # Therefore: use sys-devel/clang[${MULTILIB_USEDEP}] only if you need
 # multilib clang* libraries (not runtime, not wrappers).
-
-PATCHES=(
-	# fix simultaneous linking to .a and dylib
-	"${DISTDIR}"/10.0.1-0003-clang-tools-extra-Prevent-linking-to-duplicate-.a-li.patch
-	"${FILESDIR}"/10.0.1/0004-clang-Avoid-linking-c-index-test-to-duplicate-librar.patch
-)
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup

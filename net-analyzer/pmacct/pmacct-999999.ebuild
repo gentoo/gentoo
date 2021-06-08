@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mysql ndpi nflog plabel
+	+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mysql ndpi nflog
 	postgres rabbitmq sqlite +st-bins +traffic-bins zmq
 "
 REQUIRED_USE="
@@ -22,24 +22,24 @@ REQUIRED_USE="
 	rabbitmq? ( jansson )
 "
 
-RDEPEND="
+RDEPEND="dev-libs/libcdada
 	net-libs/libpcap
 	geoip? ( dev-libs/geoip )
 	geoipv2? ( dev-libs/libmaxminddb )
 	jansson? ( dev-libs/jansson )
 	kafka? ( dev-libs/librdkafka )
-	mysql? ( dev-db/mysql-connector-c:0= )
+	mysql? (
+		dev-db/mysql-connector-c:0=
+		sys-process/numactl
+	)
 	ndpi? ( >=net-libs/nDPI-3.2:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
 	sqlite? ( =dev-db/sqlite-3* )
-	zmq? ( >=net-libs/zeromq-4.2.0:= )
-"
+	zmq? ( >=net-libs/zeromq-4.2.0:= )"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=(
 	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
@@ -67,13 +67,13 @@ src_configure() {
 		$(use_enable mysql) \
 		$(use_enable ndpi) \
 		$(use_enable nflog) \
-		$(use_enable plabel) \
 		$(use_enable postgres pgsql) \
 		$(use_enable rabbitmq) \
 		$(use_enable sqlite sqlite3) \
 		$(use_enable st-bins) \
 		$(use_enable traffic-bins) \
 		$(use_enable zmq) \
+		--without-external-deps \
 		--disable-debug \
 		--disable-mongodb
 }

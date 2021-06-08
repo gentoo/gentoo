@@ -1,0 +1,35 @@
+From 9a25a6e9ace15d5f6136a2e9dd77324bae119f46 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 4 May 2021 13:15:54 +0200
+Subject: [PATCH] Reject endpoint URLs containing LF, CR or HT to workaround
+ bpo43882 fix
+
+---
+ botocore/utils.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/botocore/utils.py b/botocore/utils.py
+index 378972248..b154469bc 100644
+--- a/botocore/utils.py
++++ b/botocore/utils.py
+@@ -977,6 +977,8 @@ class ArgumentGenerator(object):
+ 
+ 
+ def is_valid_ipv6_endpoint_url(endpoint_url):
++    if '\n' in endpoint_url or '\r' in endpoint_url or '\t' in endpoint_url:
++        return False
+     netloc = urlparse(endpoint_url).netloc
+     return IPV6_ADDRZ_RE.match(netloc) is not None
+ 
+@@ -990,6 +992,8 @@ def is_valid_endpoint_url(endpoint_url):
+     :return: True if the endpoint url is valid. False otherwise.
+ 
+     """
++    if '\n' in endpoint_url or '\r' in endpoint_url or '\t' in endpoint_url:
++        return False
+     parts = urlsplit(endpoint_url)
+     hostname = parts.hostname
+     if hostname is None:
+-- 
+2.31.1
+

@@ -23,6 +23,7 @@ app-text/bibletime
 app-text/calibre
 app-text/cb2bib
 app-text/sigil
+dev-lang/typescript
 dev-python/spyder
 dev-python/spyder-line-profiler
 dev-python/spyder-memory-profiler
@@ -33,6 +34,7 @@ dev-python/spyder-vim
 dev-util/kdevelop:5
 dev-util/kdevelop-php:5
 dev-util/kdevelop-python:5
+gnome-extra/gnome-shell-extension-pop-shell
 kde-apps/akonadi-calendar:5
 kde-apps/akonadi-import-wizard:5
 kde-apps/akonadiconsole:5
@@ -68,7 +70,6 @@ kde-apps/parley:5
 kde-apps/pim-data-exporter:5
 kde-apps/pim-sieve-editor:5
 kde-apps/plasma-telepathy-meta:5
-<kde-misc/kio-gdrive-20.12.0
 kde-misc/kmarkdownwebview:5
 kde-misc/tellico:5
 kde-misc/zanshin:5
@@ -78,8 +79,9 @@ media-gfx/digikam:5
 media-gfx/luminance-hdr
 media-sound/frescobaldi
 media-sound/teamspeak-client:3
-media-video/orion
 >=media-video/openshot-2.5.1_p20210103
+media-video/vidify
+media-video/vidify-audiosync
 net-analyzer/nmapsi
 net-libs/signon-ui
 net-misc/nextcloud-client

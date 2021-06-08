@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Herrie is a command line music player"
 HOMEPAGE="http://herrie.info/"
@@ -51,6 +51,8 @@ src_configure() {
 	use unicode || EXTRA_CONF="${EXTRA_CONF} ncurses"
 	use vorbis || EXTRA_CONF="${EXTRA_CONF} no_vorbis"
 	use xspf || EXTRA_CONF="${EXTRA_CONF} no_xspf"
+
+	tc-export PKG_CONFIG
 
 	einfo "./configure ${EXTRA_CONF}"
 	CC="$(tc-getCC)" PREFIX=/usr MANDIR=/usr/share/man \

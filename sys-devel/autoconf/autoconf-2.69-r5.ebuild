@@ -10,7 +10,7 @@ else
 	SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 		ftp://alpha.gnu.org/pub/gnu/${PN}/${P}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/dist/${P}-runstatedir_patches.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 inherit toolchain-autoconf

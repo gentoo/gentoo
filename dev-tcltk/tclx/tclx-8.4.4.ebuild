@@ -11,9 +11,9 @@ SRC_URI="https://github.com/flightaware/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="BSD"
-IUSE="threads"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+IUSE="threads"
 
 DEPEND="dev-lang/tcl:0="
 RDEPEND="${DEPEND}"
@@ -22,8 +22,8 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 PATCHES=(
-		"${FILESDIR}"/${PN}-8.4-varinit.patch
-		"${FILESDIR}"/${PN}-8.4-ldflags.patch
+	"${FILESDIR}"/${PN}-8.4-varinit.patch
+	"${FILESDIR}"/${PN}-8.4-ldflags.patch
 )
 
 src_prepare() {

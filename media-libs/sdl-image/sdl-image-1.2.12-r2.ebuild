@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils ltprune multilib-minimal
+inherit multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="image file loading library"
@@ -54,5 +54,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc CHANGES README
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

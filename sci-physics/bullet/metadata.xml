@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>rossbridger.cc@gmail.com</email>
     <name>Ross Charles Campbell</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -19,8 +19,9 @@
   for games and animation.
 </longdescription>
   <use>
-    <flag restrict="&lt;=sci-physics/bullet-2.89" name="double-precision">Build libraries in double precision</flag>
-    <flag restrict="=sci-physics/bullet-2.89" name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
+    <flag restrict="&lt;=sci-physics/bullet-3.17" name="extras">Build the extras</flag>
+    <flag name="double-precision">Build libraries in double precision</flag>
+    <flag name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
   </use>
   <upstream>
     <remote-id type="google-code">bullet</remote-id>

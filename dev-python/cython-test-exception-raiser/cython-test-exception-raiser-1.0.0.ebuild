@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="A trivial extension that just raises an exception (for testing)"
@@ -16,6 +16,6 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 
 BDEPEND="dev-python/cython[${PYTHON_USEDEP}]"

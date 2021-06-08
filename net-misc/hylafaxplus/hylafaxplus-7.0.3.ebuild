@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
 LICENSE="hylafaxplus"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="html jbig lcms ldap mgetty pam"
 
 DEPEND="

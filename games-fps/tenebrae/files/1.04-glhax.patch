@@ -1,5 +1,5 @@
---- tenebrae_0/glquake.h	2004-12-25 00:28:28.707288592 -0500
-+++ tenebrae_0/glquake.h	2004-12-25 00:27:35.000000000 -0500
+--- a/glquake.h
++++ b/glquake.h
 @@ -34,6 +34,7 @@
  #else
  #include <GL/gl.h>

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils ltprune
+inherit autotools eutils
 
 DESCRIPTION="A documentation metadata library"
 HOMEPAGE="https://rarian.freedesktop.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://${PN}.freedesktop.org/Releases/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
 RDEPEND="
@@ -61,5 +61,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

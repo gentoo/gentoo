@@ -2,21 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic multilib-minimal toolchain-funcs
+
+inherit autotools edos2unix flag-o-matic multilib-minimal toolchain-funcs
 
 FAM_PV="${PV/_p*/}"
 DEBIAN_PATCH="${PV#*_p}"
 DEBIAN_PATCH="${DEBIAN_PATCH/_p/.}"
 DESCRIPTION="FAM, the File Alteration Monitor"
-HOMEPAGE="http://oss.sgi.com/projects/fam/"
+HOMEPAGE="https://tracker.debian.org/pkg/fam"
 SRC_URI="
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${FAM_PV}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${FAM_PV}-${DEBIAN_PATCH}.diff.gz
 "
+S="${WORKDIR}"/${PN}-${FAM_PV}
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="static-libs"
 
 DEPEND="
@@ -27,8 +29,10 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="virtual/pkgconfig"
+
 DOCS=( AUTHORS ChangeLog INSTALL NEWS TODO README )
-S=${WORKDIR}/${PN}-${FAM_PV}
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-${FAM_PV}-AM_CONFIG_HEADER.patch
 	"${FILESDIR}"/${PN}-${FAM_PV}-bindresvport.patch #729120

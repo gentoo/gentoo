@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -58,7 +58,8 @@ pkg_postinst() {
 	optfeature "mounting as non-root user" sys-apps/udevil sys-apps/pmount sys-fs/udisks
 	optfeature "supporting ftp/nfs/smb/ssh URLs in the path bar" sys-apps/udevil
 	optfeature "performing as root" x11-misc/ktsuss kde-plasma/kde-cli-tools[kdesu]
-	optfeature "other optional dependencies" sys-apps/dbus sys-process/lsof virtual/eject
+	# sys-apps/util-linux is required for eject
+	optfeature "other optional dependencies" sys-apps/dbus sys-process/lsof sys-apps/util-linux
 
 	if ! has_version 'sys-fs/udisks' ; then
 		elog "When using SpaceFM without udisks, and without the udisks-daemon running,"

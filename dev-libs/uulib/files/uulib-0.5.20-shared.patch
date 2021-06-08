@@ -2,10 +2,8 @@ Source: PDL Linux
 https://raw.githubusercontent.com/pld-linux/uudeview/master/uudeview-shared.patch
 https://github.com/pld-linux/uudeview
 
-
-diff -ruN uudeview-0.5.20.orig/uulib/Makefile.in uudeview-0.5.20/uulib/Makefile.in
---- uudeview-0.5.20.orig/uulib/Makefile.in	2002-03-11 10:15:46.000000000 +0100
-+++ uudeview-0.5.20/uulib/Makefile.in	2014-10-11 20:20:04.280175737 +0200
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -40,9 +40,13 @@
  VDEF	=	-DVERSION=\"$(VERSION)\" -DPATCH=\"$(PATCH)\"
  #

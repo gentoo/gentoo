@@ -14,15 +14,14 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)7"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="ipv6 libressl mbedtls test"
+IUSE="ipv6 mbedtls test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/gdbm
 	mbedtls? ( net-libs/mbedtls:= )"
 DEPEND="${RDEPEND}
 	test? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl:0 )
+		dev-libs/openssl:0
 	)"
 S="${WORKDIR}/${MY_P}"
 

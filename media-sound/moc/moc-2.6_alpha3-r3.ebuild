@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit autotools
+
 MY_P=${PN}-${PV/_/-}
 DESCRIPTION="Music On Console - ncurses interface for playing audio files"
 HOMEPAGE="https://moc.daper.net"
@@ -10,7 +12,7 @@ SRC_URI="http://ftp.daper.net/pub/soft/moc/unstable/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 sparc x86"
 IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack
 	oss sid sndfile sndio speex timidity tremor +unicode vorbis wavpack"
 
@@ -58,7 +60,16 @@ DEPEND="${RDEPEND}
 "
 
 S=${WORKDIR}/${MY_P}
-PATCHES=( "${FILESDIR}/ffmpeg4.patch" )
+PATCHES=(
+	"${FILESDIR}/ffmpeg4.patch"
+	"${FILESDIR}/${P}-stdint_uint_types.patch"
+)
+
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=(

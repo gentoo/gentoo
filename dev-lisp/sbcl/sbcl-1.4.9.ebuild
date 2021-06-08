@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib eutils flag-o-matic pax-utils toolchain-funcs
+inherit multilib flag-o-matic pax-utils toolchain-funcs
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.4.3
@@ -102,6 +102,9 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
 	eapply "${FILESDIR}"/${PN}-1.4.0-verbose-build.patch
+
+	# bug #777582
+	eapply "${FILESDIR}"/${PN}-1.4.9-gcc-10.patch
 
 	eapply_user
 

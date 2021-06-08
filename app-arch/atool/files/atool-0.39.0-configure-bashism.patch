@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/775158
+--- a/configure.ac
++++ b/configure.ac
+@@ -11,7 +11,7 @@ AC_DEFINE_DIR(LOCALSTATEDIR, localstatedir)
+ dnl Perl stuff
+ AC_PATH_PROG([PERL], [perl])
+ eval `$PERL -V:startperl`
+-if test "${startperl:0:1}" = "#" ; then
++if test "$(printf %.1s "$startperl")" = "#" ; then
+   startperl="\\$startperl"
+ fi
+ AC_SUBST(PERL_SHEBANG, $startperl)

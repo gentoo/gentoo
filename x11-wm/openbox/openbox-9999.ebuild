@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools python-single-r1
 
-DESCRIPTION="A standards compliant, fast, light-weight, extensible window manager"
+DESCRIPTION="Standards compliant, fast, light-weight, extensible window manager"
 HOMEPAGE="http://openbox.org/wiki/Main_Page"
 
 if [[ ${PV} == *9999* ]]; then
@@ -21,7 +21,7 @@ SRC_URI+=" branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo
 
 LICENSE="GPL-2"
 SLOT="3"
-IUSE="branding debug imlib nls session startup-notification static-libs svg xdg"
+IUSE="branding debug imlib nls session startup-notification svg xdg"
 REQUIRED_USE="xdg? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
@@ -51,8 +51,7 @@ RDEPEND="
 		')
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 
@@ -61,6 +60,10 @@ PATCHES=(
 	# see https://github.com/danakj/openbox/pull/35
 	"${FILESDIR}/${PN}-3.6.1-py3-xdg.patch"
 )
+
+pkg_setup() {
+	use xdg && python-single-r1_pkg_setup
+}
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
@@ -71,25 +74,26 @@ src_unpack() {
 }
 
 src_prepare() {
-	use xdg && python-single-r1_pkg_setup
 	default
 	sed -i \
 		-e "s:-O0 -ggdb ::" \
 		-e 's/-fno-strict-aliasing//' \
-		"${S}"/m4/openbox.m4 || die
+		m4/openbox.m4 || die
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_enable static-libs static) \
-		$(use_enable nls) \
-		$(use_enable imlib imlib2) \
-		$(use_enable svg librsvg) \
-		$(use_enable startup-notification) \
-		$(use_enable session session-management) \
+	local myeconfargs=(
+		--disable-static
 		--with-x
+		$(use_enable debug)
+		$(use_enable imlib imlib2)
+		$(use_enable nls)
+		$(use_enable session session-management)
+		$(use_enable startup-notification)
+		$(use_enable svg librsvg)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -106,7 +110,7 @@ src_install() {
 			"${D}"/etc/xdg/openbox/rc.xml \
 			|| die "failed to set Surreal Gentoo as the default theme"
 	fi
-	use static-libs || find "${D}" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
 	if use xdg ; then
 		python_fix_shebang "${ED}"/usr/libexec/openbox-xdg-autostart
 	else

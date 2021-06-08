@@ -1,0 +1,27 @@
+--- a/src/matrixview.c
++++ b/src/matrixview.c
+@@ -537,7 +537,12 @@ void load_texture ()
+ {
+ 	long a;
+ 
++#ifdef HAVE_LIBBZ2
+ 	LOAD_TEXTURE (font, cfont, cfont_compressedsize, cfont_size)
++#else
++	font = (unsigned char*) malloc (cfont_size);
++	memcpy (font, cfont, cfont_size);
++#endif
+ 
+ 	for (a = 0; a < 131072; a++) {
+ 		if ((a >> 9) & 2)
+@@ -579,7 +584,11 @@ void ourBuildTextures ()
+ 		exit (-1);
+ 	}
+ 
++#ifdef HAVE_LIBBZ2
+ 	FREE_TEXTURE (font)
++#else
++	free (font);
++#endif
+ 
+ 	glBindTexture (GL_TEXTURE_2D, 3);
+ 

@@ -1,5 +1,5 @@
---- makefile.old	2011-06-18 17:35:38.947020335 +0200
-+++ makefile	2011-06-18 17:37:42.337811088 +0200
+--- a/makefile
++++ b/makefile
 @@ -48,7 +47,7 @@
  LDFLAGS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lGL -lGLU -pg
  else

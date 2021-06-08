@@ -1,5 +1,5 @@
---- configure.ac.orig	2012-06-26 05:46:07.000000000 +0100
-+++ configure.ac	2012-06-26 05:46:44.000000000 +0100
+--- a/configure.ac
++++ b/configure.ac
 @@ -178,6 +178,8 @@
   echo "Looking for gtk2"
  
@@ -10,8 +10,8 @@
  AC_SUBST(GTK_CFLAGS)
  AC_SUBST(GTK_LIBS)
 
---- src/Makefile.am.orig	2012-06-26 04:53:20.000000000 +0100
-+++ src/Makefile.am	2012-06-26 04:54:04.000000000 +0100
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -4,7 +4,6 @@
  libggobi_la_GOBHEADERS = $(libggobi_la_GOBS:%.gob=ggobi-%.h)
  libggobi_la_GOBOBJECTS = $(libggobi_la_GOBS:%.gob=ggobi-%.lo)
@@ -37,4 +37,25 @@
 +libggobi_la_LDFLAGS=-Wc,-s -no-undefined -export-symbols libggobi.def
  ggobi_LDFLAGS = -mwindows -s
  endif
+ 
+--- a/plugins/GraphLayout/configure.ac
++++ b/plugins/GraphLayout/configure.ac
+@@ -44,6 +44,7 @@
+ AC_MSG_RESULT(no)])
+ 
+ AC_MSG_CHECKING([whether Graphviz API is based on cgraph])
++save_CFLAGS="${CFLAGS}"
+ CFLAGS=$LIBGVC_CFLAGS
+ AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+    #include <gvc.h>
+@@ -53,8 +54,10 @@
+      return 0;
+    }
+ ])], graphviz_new_api=yes, graphviz_new_api=no)
++CFLAGS="${save_CFLAGS}"
+ AC_MSG_RESULT($graphviz_new_api)
+ if test "$graphviz_new_api" = "yes"; then
++  CFLAGS="${CFLAGS} ${LIBGVC_CFLAGS}"
+   AC_DEFINE(HAVE_CGRAPH,[1],[define for cgraph-based graphviz])
+ fi
  

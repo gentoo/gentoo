@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86 ~x64-macos"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -49,7 +49,9 @@ DEPEND="${LUA_DEPS}
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1.2
 	dev-libs/msgpack:0=
-	net-libs/libnsl
+	!kernel_Darwin? (
+		net-libs/libnsl
+	)
 	tui? (
 		dev-libs/libtermkey
 		>=dev-libs/unibilium-2.0.0:0=
@@ -63,6 +65,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.4-cmake_lua_version.patch"
 	"${FILESDIR}/${PN}-0.4.4-cmake-release-type.patch"
+	"${FILESDIR}/${PN}-0.4.4-cmake-darwin.patch"
 )
 
 src_prepare() {
@@ -84,6 +87,7 @@ src_configure() {
 		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${ELUA}"
+		-DMIN_LOG_LEVEL=3
 	)
 	cmake_src_configure
 }

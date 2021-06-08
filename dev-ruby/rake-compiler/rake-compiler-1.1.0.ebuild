@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 
 RUBY_FAKEGEM_GEMSPEC="rake-compiler.gemspec"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Provide a standard and simplified way to build and package Ruby extensions"
 HOMEPAGE="https://github.com/luislavena/rake-compiler"

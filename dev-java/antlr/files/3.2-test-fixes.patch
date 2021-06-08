@@ -1,5 +1,5 @@
---- tool/src/test/java/org/antlr/test/BaseTest.java.orig	2010-11-30 01:54:04.000000000 +0000
-+++ tool/src/test/java/org/antlr/test/BaseTest.java	2015-09-24 22:25:36.872191194 +0100
+--- a/tool/src/test/java/org/antlr/test/BaseTest.java.orig	2010-11-30 01:54:04.000000000 +0000
++++ b/tool/src/test/java/org/antlr/test/BaseTest.java	2015-09-24 22:25:36.872191194 +0100
 @@ -130,8 +130,8 @@
  		try {
  			Process process =
@@ -43,8 +43,8 @@
  					buf.append(line);
  					buf.append('\n');
  					line = in.readLine();
---- tool/src/test/java/org/antlr/test/TestTopologicalSort.java.orig	2009-09-23 19:36:14.000000000 +0100
-+++ tool/src/test/java/org/antlr/test/TestTopologicalSort.java	2010-11-30 01:54:04.000000000 +0000
+--- a/tool/src/test/java/org/antlr/test/TestTopologicalSort.java.orig	2009-09-23 19:36:14.000000000 +0100
++++ b/tool/src/test/java/org/antlr/test/TestTopologicalSort.java	2010-11-30 01:54:04.000000000 +0000
 @@ -49,7 +49,7 @@
          g.addEdge("F", "H");
          g.addEdge("E", "F");
@@ -72,8 +72,8 @@
          List nodes = g.sort();
          String result = nodes.toString();
          assertEquals(expecting, result);
---- tool/src/test/java/org/antlr/test/TestSemanticPredicates.java.orig	2009-09-23 19:36:12.000000000 +0100
-+++ tool/src/test/java/org/antlr/test/TestSemanticPredicates.java	2015-12-05 13:52:05.923411552 +0000
+--- a/tool/src/test/java/org/antlr/test/TestSemanticPredicates.java.orig	2009-09-23 19:36:12.000000000 +0100
++++ b/tool/src/test/java/org/antlr/test/TestSemanticPredicates.java	2015-12-05 13:52:05.923411552 +0000
 @@ -731,19 +731,23 @@
  			"c : a\n" +
  			"  | b\n" +
@@ -111,8 +111,8 @@
  	}
  
      @Test
---- tool/src/test/java/org/antlr/test/TestAttributes.java.orig	2015-12-05 13:55:55.392843185 +0000
-+++ tool/src/test/java/org/antlr/test/TestAttributes.java	2015-12-05 14:04:38.120599871 +0000
+--- a/tool/src/test/java/org/antlr/test/TestAttributes.java.orig	2015-12-05 13:55:55.392843185 +0000
++++ b/tool/src/test/java/org/antlr/test/TestAttributes.java	2015-12-05 14:04:38.120599871 +0000
 @@ -439,20 +439,15 @@
  		ErrorManager.setErrorListener(equeue);
  		Grammar g = new Grammar(

@@ -22,4 +22,11 @@ RDEPEND="dev-ml/ppx_deriving:=
 	dev-ml/re:=
 	dev-ml/menhir:="
 DEPEND="${RDEPEND}
-	test? ( dev-ml/ounit )"
+	test? ( dev-ml/ounit2 )"
+
+src_prepare() {
+	default
+
+	# Port to dev-ml/ounit2
+	sed -i -e 's/oUnit/ounit2/' tests/dune.in || die
+}

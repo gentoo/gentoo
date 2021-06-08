@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 # Override version: 2.4.0 > 2.21.0 so we name it 2.40.0
 MY_P="${P/0[.]/.}"
@@ -9,6 +9,7 @@ MY_P="${P/0[.]/.}"
 DESCRIPTION="HTML template files expander"
 HOMEPAGE="http://htmlc.inria.fr/"
 SRC_URI="http://htmlc.inria.fr/${MY_P}.tgz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="htmlc"
 SLOT="0"
@@ -20,11 +21,9 @@ IUSE="+ocamlopt"
 DEPEND=">=dev-lang/ocaml-3.11.2:=[ocamlopt?]"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-
 src_configure() {
 	./configure \
-		--install-root-dir "${ED}usr" \
+		--install-root-dir "${ED}/usr" \
 		|| die
 }
 
@@ -42,6 +41,7 @@ src_install() {
 	else
 		emake installbyt
 	fi
+
 	emake MANDIR='$(PREFIXINSTALLDIR)/share/man/man$(MANEXT)' installman
 	dodoc README Announce* CHANGES
 }

@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils xdg
+inherit desktop wrapper xdg
 
 MY_PN="WorldOfGooDemo"
 
-DESCRIPTION="A puzzle game with a strong emphasis on physics (demo version)"
+DESCRIPTION="Puzzle game with a strong emphasis on physics (demo version)"
 HOMEPAGE="https://2dboy.com/"
 SRC_URI="mirror://sourceforge/slackbuildsdirectlinks/worldofgoo/${MY_PN}.${PV}.tar.gz"
 

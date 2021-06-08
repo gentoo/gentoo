@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit python-r1 toolchain-funcs
 
-DESCRIPTION="Python extension module generator for C and C++ libraries"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
+DESCRIPTION="Python bindings generator for C/C++ libraries"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
 
 MY_PN=sip
 MY_P=${MY_PN}-${PV/_pre/.dev}
@@ -20,7 +20,7 @@ fi
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

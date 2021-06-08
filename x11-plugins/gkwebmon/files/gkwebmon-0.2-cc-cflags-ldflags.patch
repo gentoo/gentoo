@@ -18,8 +18,8 @@ index b422e79..d89977f 100644
  
 -GTK_INCLUDE = `pkg-config gtk+-2.0 --cflags`
 -GTK_LIB = `pkg-config gtk+-2.0 --libs`
-+GTK_INCLUDE = $(shell pkg-config gtk+-2.0 --cflags)
-+GTK_LIB = $(shell pkg-config gtk+-2.0 --libs)
++GTK_INCLUDE = $(shell ${PKG_CONFIG} gtk+-2.0 --cflags)
++GTK_LIB = $(shell ${PKG_CONFIG} gtk+-2.0 --libs)
  
  
 -#FLAGS = -O2 -Wall -fPIC -std=c99 -pedantic $(GTK_INCLUDE)

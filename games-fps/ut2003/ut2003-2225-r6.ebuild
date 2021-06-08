@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils
+inherit desktop wrapper
 
 DESCRIPTION="Sequel to the 1999 Game of the Year multi-player first-person shooter"
 HOMEPAGE="https://en.wikipedia.org/wiki/Unreal_Tournament_2003"

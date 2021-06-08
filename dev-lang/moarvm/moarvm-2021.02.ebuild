@@ -9,7 +9,6 @@ MY_PN="MoarVM"
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	inherit git-r3
-	KEYWORDS=""
 	S="${WORKDIR}/${P}"
 else
 	SRC_URI="http://moarvm.org/releases/${MY_PN}-${PV}.tar.gz"

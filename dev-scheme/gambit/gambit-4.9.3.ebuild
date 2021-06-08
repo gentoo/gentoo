@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils elisp-common
+inherit elisp-common
 
 MY_PV="${PV//./_}"
 MY_P="${PN}-v${MY_PV}"
@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 DEPEND="
 	${RDEPEND}
@@ -29,7 +28,7 @@ SITEFILE="50gambit-gentoo.el"
 
 S="${WORKDIR}/${MY_P}" #-devel
 
-IUSE="emacs libressl ssl static"
+IUSE="emacs ssl static"
 
 src_configure() {
 	econf \

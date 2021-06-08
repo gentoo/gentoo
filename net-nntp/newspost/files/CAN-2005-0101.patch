@@ -1,5 +1,5 @@
---- base/socket.c.orig  Tue Jan 18 11:08:02 2005
-+++ base/socket.c       Tue Jan 18 11:10:08 2005
+--- a/base/socket.c
++++ b/base/socket.c
 @@ -126,7 +126,7 @@
  
  	i = 0;

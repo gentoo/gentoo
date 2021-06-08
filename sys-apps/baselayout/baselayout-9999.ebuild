@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit multilib versionator prefix
+inherit multilib prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -29,10 +29,9 @@ multilib_layout() {
 	local prefix prefix_lst
 	def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
 	libdirs=$(get_all_libdirs)
-	: ${libdirs:=lib}	# it isn't that we don't trust multilib.eclass...
 
 	if [[ -z "${SYMLINK_LIB}" || ${SYMLINK_LIB} = no ]] ; then
-		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
+		prefix_lst=( "${EROOT}"/{,usr/,usr/local/} )
 		for prefix in "${prefix_lst[@]}"; do
 			for libdir in ${libdirs}; do
 				dir="${prefix}${libdir}"
@@ -41,10 +40,12 @@ multilib_layout() {
 						die "${dir} exists but is not a directory"
 					continue
 				fi
-				if ! use split-usr && [[ ${prefix} = ${EROOT} ]]; then
+				if ! use split-usr && [[ ${prefix} = ${EROOT}/ ]]; then
+					libdir="${libdir%%/*}"
+					dir="${prefix}${libdir}"
 					einfo "symlinking ${dir} to usr/${libdir}"
 					ln -s usr/${libdir} ${dir} ||
-						die " Unable to make ${dir} symlink"
+						die "Unable to make ${dir} symlink"
 				else
 					einfo "creating directory ${dir}"
 					mkdir -p "${dir}" ||
@@ -88,9 +89,9 @@ multilib_layout() {
 	# setup symlinks and dirs where we expect them to be; do not migrate
 	# data ... just fall over in that case.
 	if use split-usr ; then
-		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
+		prefix_lst=( "${EROOT}"/{,usr/,usr/local/} )
 	else
-		prefix_lst=( "${EROOT}"{usr/,usr/local/} )
+		prefix_lst=( "${EROOT}"/{usr/,usr/local/} )
 	fi
 	for prefix in "${prefix_lst[@]}"; do
 		if [ "${SYMLINK_LIB}" = yes ] ; then
@@ -101,7 +102,7 @@ multilib_layout() {
 			elif [ -d "${prefix}lib" ] ; then
 				# "lib" is a dir, so need to convert to a symlink
 				ewarn "Converting ${prefix}lib from a dir to a symlink"
-				rm -f "${prefix}lib"/.keep
+				rm -f "${prefix}lib"/.keep || die
 				if rmdir "${prefix}lib" 2>/dev/null ; then
 					ln -s ${def_libdir} "${prefix}lib" || die
 				else
@@ -113,7 +114,7 @@ multilib_layout() {
 				mkdir -p "${prefix}" || die
 				rm -f "${prefix}lib" || die
 				ln -s ${def_libdir} "${prefix}lib" || die
-				mkdir -p "${prefix}${def_libdir}" #423571
+				mkdir -p "${prefix}${def_libdir}" || die #423571
 			fi
 		else
 			# we need to make sure "lib" is a dir
@@ -135,7 +136,7 @@ multilib_layout() {
 				*-gentoo-freebsd*) ;; # We want it the other way on fbsd.
 				i?86*|x86_64*|powerpc*|sparc*|s390*)
 					if [[ -d ${prefix}lib32 && ! -h ${prefix}lib32 ]] ; then
-						rm -f "${prefix}lib32"/.keep
+						rm -f "${prefix}lib32"/.keep || die
 						if ! rmdir "${prefix}lib32" 2>/dev/null ; then
 							ewarn "You need to merge ${prefix}lib32 into ${prefix}lib"
 							die "non-empty dir found where there should be none: ${prefix}lib32"
@@ -154,7 +155,7 @@ multilib_layout() {
 		for libdir in ${libdirs}; do
 			if [[ ! -e "${EROOT}${libdir}" ]]; then
 				ln -s usr/"${libdir}" "${EROOT}${libdir}" ||
-					die " Unable to make ${EROOT}${libdir} symlink"
+					die "Unable to make ${EROOT}${libdir} symlink"
 			fi
 		done
 	fi
@@ -164,7 +165,7 @@ pkg_preinst() {
 	# This is written in src_install (so it's in CONTENTS), but punt all
 	# pending updates to avoid user having to do etc-update (and make the
 	# pkg_postinst logic simpler).
-	rm -f "${EROOT}"/etc/._cfg????_gentoo-release
+	rm -f "${EROOT}"/etc/._cfg????_gentoo-release || die
 
 	# We need to install directories and maybe some dev nodes when building
 	# stages, but they cannot be in CONTENTS.
@@ -177,7 +178,7 @@ pkg_preinst() {
 			emake -C "${ED}/usr/share/${PN}" DESTDIR="${EROOT}" layout-usrmerge
 		fi
 	fi
-	rm -f "${ED}"/usr/share/${PN}/Makefile
+	rm -f "${ED}"/usr/share/${PN}/Makefile || die
 }
 
 src_prepare() {
@@ -223,11 +224,16 @@ src_install() {
 		DESTDIR="${ED}" \
 		install
 	dodoc ChangeLog
-	rm "${ED}"/etc/sysctl.d/README
+	rm "${ED}"/etc/sysctl.d/README || die
 
 	# need the makefile in pkg_preinst
 	insinto /usr/share/${PN}
 	doins Makefile
+
+	# This is needed for https://bugs.gentoo.org/732142
+	dodir /usr/lib
+	mv "${ED}"/etc/os-release "${ED}"/usr/lib || die
+	dosym ../usr/lib/os-release /etc/os-release
 }
 
 pkg_postinst() {
@@ -239,23 +245,25 @@ pkg_postinst() {
 	# (3) accidentally packaging up personal files with quickpkg
 	# If they don't exist then we install them
 	for x in master.passwd passwd shadow group fstab ; do
-		[ -e "${EROOT}etc/${x}" ] && continue
-		[ -e "${EROOT}usr/share/baselayout/${x}" ] || continue
-		cp -p "${EROOT}usr/share/baselayout/${x}" "${EROOT}"etc
+		[ -e "${EROOT}/etc/${x}" ] && continue
+		[ -e "${EROOT}/usr/share/baselayout/${x}" ] || continue
+		cp -p "${EROOT}/usr/share/baselayout/${x}" "${EROOT}"/etc || die
 	done
 
 	# Force shadow permissions to not be world-readable #260993
 	for x in shadow ; do
-		[ -e "${EROOT}etc/${x}" ] && chmod o-rwx "${EROOT}etc/${x}"
+		if [ -e "${EROOT}/etc/${x}" ] ; then
+			chmod o-rwx "${EROOT}/etc/${x}" || die
+		fi
 	done
 
 	# Take care of the etc-update for the user
-	if [ -e "${EROOT}"etc/._cfg0000_gentoo-release ] ; then
-		mv "${EROOT}"etc/._cfg0000_gentoo-release "${EROOT}"etc/gentoo-release
+	if [ -e "${EROOT}"/etc/._cfg0000_gentoo-release ] ; then
+		mv "${EROOT}"/etc/._cfg0000_gentoo-release "${EROOT}"/etc/gentoo-release || die
 	fi
 
 	# whine about users that lack passwords #193541
-	if [[ -e "${EROOT}"etc/shadow ]] ; then
+	if [[ -e "${EROOT}"/etc/shadow ]] ; then
 		local bad_users=$(sed -n '/^[^:]*::/s|^\([^:]*\)::.*|\1|p' "${EROOT}"/etc/shadow)
 		if [[ -n ${bad_users} ]] ; then
 			echo
@@ -265,8 +273,8 @@ pkg_postinst() {
 	fi
 
 	# whine about users with invalid shells #215698
-	if [[ -e "${EROOT}"etc/passwd ]] ; then
-		local bad_shells=$(awk -F: 'system("test -e " $7) { print $1 " - " $7}' "${EROOT}"etc/passwd | sort)
+	if [[ -e "${EROOT}"/etc/passwd ]] ; then
+		local bad_shells=$(awk -F: 'system("test -e ${ROOT}" $7) { print $1 " - " $7}' "${EROOT}"/etc/passwd | sort)
 		if [[ -n ${bad_shells} ]] ; then
 			echo
 			ewarn "The following users have non-existent shells!"
@@ -274,37 +282,25 @@ pkg_postinst() {
 		fi
 	fi
 
-	# https://bugs.gentoo.org/361349
-	if use kernel_linux; then
-		mkdir -p "${EROOT}"run
-
-		local found fstype mountpoint
-		while read -r _ mountpoint fstype _; do
-		[[ ${mountpoint} = /run ]] && [[ ${fstype} = tmpfs ]] && found=1
-		done < "${ROOT}"proc/mounts
-		[[ -z ${found} ]] &&
-			ewarn "You should reboot now to get /run mounted with tmpfs!"
-	fi
-
 	for x in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.4 ${x}; then
-			ewarn "After updating ${EROOT}etc/profile, please run"
+		if ver_test 2.4 -lt ${x}; then
+			ewarn "After updating ${EROOT}/etc/profile, please run"
 			ewarn "env-update && . /etc/profile"
 		fi
 
-		if ! version_is_at_least 2.6 ${x}; then
+		if ver_test 2.6 -lt ${x}; then
 			ewarn "Please run env-update then log out and back in to"
 			ewarn "update your path."
 		fi
 		# clean up after 2.5 typos
 		# https://bugs.gentoo.org/show_bug.cgi?id=656380
 		if [[ ${x} == 2.5 ]]; then
-			rm -fr "${EROOT}{,usr"
+			rm -fr "${EROOT}/{,usr" || die
 		fi
 	done
 
-	if [[ -e "${EROOT}"etc/env.d/00basic ]]; then
-		ewarn "${EROOT}etc/env.d/00basic is now ${EROOT}etc/env.d/50baselayout"
+	if [[ -e "${EROOT}"/etc/env.d/00basic ]]; then
+		ewarn "${EROOT}/etc/env.d/00basic is now ${EROOT}/etc/env.d/50baselayout"
 		ewarn "Please migrate your changes."
 	fi
 }

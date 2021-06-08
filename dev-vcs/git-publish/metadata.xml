@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		git-publish prepares patches and stores them as git tags for future reference.
+		It works with individual patches as well as patch series. Revision numbering
+		is handled automatically.
+	</longdescription>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">stefanha/git-publish</remote-id>
+	</upstream>
+</pkgmetadata>

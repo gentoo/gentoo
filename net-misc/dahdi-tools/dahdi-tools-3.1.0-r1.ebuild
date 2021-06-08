@@ -11,7 +11,7 @@ SRC_URI="https://downloads.asterisk.org/pub/telephony/${PN}/releases/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="ppp"
 PATCHES=(
 	"${FILESDIR}/dahdi-nondigium-blacklist.patch"
@@ -60,5 +60,7 @@ src_install() {
 	bashcomp_alias dahdi $(sed -nre 's/^complete -F .* //p' "${ED}${bashcompdir}/dahdi" ||
 		die "Error parsing dahdi bash completion file for commands")
 
-	rm "${ED}"/usr/$(get_libdir)/libtonezone.{la,a} || die "Unable to remove static libs from install."
+	rm "${ED}"/usr/$(get_libdir)/libtonezone.a || die "Unable to remove static libs from install."
+	# Delete *if* the libtool file exists, bug #778380
+	find "${ED}" -name '*.la' -delete || die
 }

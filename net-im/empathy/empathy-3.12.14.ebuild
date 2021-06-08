@@ -3,12 +3,12 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit gnome2 python-any-r1 virtualx
 
 DESCRIPTION="Telepathy instant messaging and video/audio call client for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Empathy"
+HOMEPAGE="https://wiki.gnome.org/Attic/Empathy"
 
 LICENSE="GPL-2 CC-BY-SA-3.0 FDL-1.3 LGPL-2.1"
 SLOT="0"

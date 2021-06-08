@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="https://alioth-archive.debian.org/releases/minicom/Source/${PV}/${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls"
 
 COMMON_DEPEND="sys-libs/ncurses:="
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-gentoo-runscript.patch
 	"${FILESDIR}"/${PN}-2.7-lockdir.patch
 	"${FILESDIR}"/${PN}-2.7.1-gcc-10.patch
+	"${FILESDIR}"/${PN}-2.7.1-musl.patch
 )
 
 src_prepare() {

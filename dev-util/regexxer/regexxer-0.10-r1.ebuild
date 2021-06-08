@@ -4,7 +4,7 @@
 EAPI=5
 GCONF_DEBUG=no
 
-inherit autotools eutils flag-o-matic gnome2
+inherit autotools epatch flag-o-matic gnome2
 
 DESCRIPTION="An interactive tool for performing search and replace operations"
 HOMEPAGE="http://regexxer.sourceforge.net/"

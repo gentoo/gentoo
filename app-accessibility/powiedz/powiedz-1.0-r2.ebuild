@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Polish speech synthesizer based on rsynth"
 HOMEPAGE="http://kadu.net/index.php?page=download&lang=en"
@@ -13,7 +13,6 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-dsp-handle-fix.patch

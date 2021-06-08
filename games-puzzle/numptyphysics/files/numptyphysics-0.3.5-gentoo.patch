@@ -1,0 +1,13 @@
+diff --git a/makefile b/makefile
+index 8125a48..0ee4942 100644
+--- a/makefile
++++ b/makefile
+@@ -37,7 +37,7 @@ $(OBJECTS): $(GENERATED_HEADERS)
+ 
+ $(TARGET): $(OBJECTS) $(LOCAL_LIBS)
+ 	$(SILENTMSG) "\tLD\t$@\n"
+-	$(SILENTCMD) $(CXX) -o $@ $^ $(LIBS)
++	$(SILENTCMD) $(CXX) -o $@ $^ $(LDFLAGS) $(LIBS)
+ 
+ clean: $(ADDITIONAL_CLEAN_TARGETS)
+ 	$(SILENTMSG) "\tCLEAN\n"

@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit epatch desktop versionator
+EAPI=7
 
-MY_PV="$(delete_all_version_separators)"
+inherit desktop
+
+MY_PV="$(ver_rs 1- '')"
 MY_P="stransball2-v${MY_PV}"
 FILE="${MY_P}-linux"
 
@@ -12,12 +13,13 @@ DESCRIPTION="Thrust clone"
 HOMEPAGE="http://www.braingames.getput.com/stransball2/"
 SRC_URI="http://braingames.bugreport.nl/stransball2/${FILE}.zip
 	mirror://debian/pool/main/s/${PN}/${PN}_${PV}-8.debian.tar.xz"
+S="${WORKDIR}/${P}/sources"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
+BDEPEND="app-arch/unzip"
 RDEPEND="
 	media-libs/libsdl[sound,video]
 	media-libs/sdl-image
@@ -25,24 +27,21 @@ RDEPEND="
 	media-libs/sdl-sound
 	media-libs/sge
 "
-DEPEND="${RDEPEND}
-	app-arch/unzip
-"
-
-S="${WORKDIR}/${P}/sources"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	mv -f "${FILE}" ${P}
+	mv -f "${FILE}" ${P} || die
 }
 
 src_prepare() {
 	default
+
 	sed -i \
 		-e "s:/usr/share/games:/usr/share:" \
 		"${WORKDIR}"/debian/patches/0001-Fix-unix-paths-and-Makefile.patch || die
 
-	epatch "${WORKDIR}"/debian/patches/*.patch
+	eapply -p2 "${WORKDIR}"/debian/patches/*.patch
 
 	sed -i \
 		-e "s: -I/usr/local/include/SDL::" \
@@ -52,7 +51,7 @@ src_prepare() {
 }
 
 src_install() {
-	cd ..
+	cd .. || die
 	dobin ${PN}
 
 	doicon ../debian/${PN}.png

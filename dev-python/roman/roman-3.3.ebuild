@@ -3,10 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 DESCRIPTION="An Integer to Roman numerals converter"
 HOMEPAGE="https://pypi.org/project/roman/"

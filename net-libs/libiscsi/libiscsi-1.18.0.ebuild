@@ -22,7 +22,11 @@ LICENSE="GPL-2 LGPL-2"
 RDEPEND="dev-libs/libgcrypt:0="
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-fno-common.patch
+	"${FILESDIR}"/${P}-fno-common-2.patch
+	"${FILESDIR}"/${P}-fno-common-3.patch
+)
 
 src_prepare() {
 	default

@@ -4,6 +4,14 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-30)
+# dev-perl/Net-Netmask-2.0.100 needs ... and ... which ends
+# up pulling in a Test-Simple version newer than 5.32.
+# Not something we want to add to all stable users' Perl.
+# Stable-masking the test useflag until Perl 5.34 goes stable too.
+# Bug 779163
+dev-perl/Net-Netmask test
+
 # Mart Raudsepp <leio@gentoo.org> (2021-02-21)
 # Enabling sysprof causes consumers to include sysprof-capture-4
 # headers, but we still have stable consumers that themselves want
@@ -31,12 +39,6 @@ sci-libs/openblas relapack
 # temporarily block tests so that bugs can be resolved
 dev-php/theseer-Autoload test
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-12-25)
-# Packages needing stable slotted Lua.
->=app-i18n/fcitx-4.2.9.8:4 lua
->=app-i18n/ibus-libpinyin-1.11.92 lua
-app-i18n/ibus-pinyin lua
-
 # James Le Cuirot <sam@gentoo.org> (2020-11-23)
 # Cinnamon is not stable on any architecture.
 x11-themes/arc-theme cinnamon
@@ -46,10 +48,6 @@ x11-themes/arc-theme cinnamon
 # bug #733830, bug #746740, bug #753566
 media-gfx/openvdb python numpy
 media-libs/openimageio python
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# openjfx:8 will never be stabilized
-dev-java/openjdk:8 javafx
 
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
@@ -92,7 +90,6 @@ dev-perl/DBD-mysql mariadb
 app-misc/gcstar stats
 app-misc/g15daemon perl
 dev-lang/php coverage
-dev-util/lcov png
 dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
@@ -110,8 +107,8 @@ media-video/vdrsync dvdr
 media-plugins/grilo-plugins chromaprint
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# net-libs/libmediawiki, net-libs/libkvkontakte not stable anywhere.
-kde-apps/kipi-plugins mediawiki vkontakte
+# net-libs/libmediawiki not stable anywhere.
+kde-apps/kipi-plugins mediawiki
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86

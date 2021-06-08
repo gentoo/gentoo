@@ -3,20 +3,19 @@
 
 EAPI=7
 
-# Bug: https://github.com/ngircd/ngircd/issues/261
-WANT_AUTOMAKE=1.11.6
-inherit autotools
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexbarton.asc
+inherit verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
 HOMEPAGE="https://ngircd.barton.de/"
 SRC_URI="https://arthur.barton.de/pub/${PN}/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( https://arthur.barton.de/pub/${PN}/${P}.tar.gz.sig )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86 ~x64-macos"
-IUSE="debug gnutls ident irc-plus +ipv6 libressl pam +ssl strict-rfc tcpd test zlib"
+IUSE="debug gnutls ident irc-plus +ipv6 pam +ssl strict-rfc tcpd test zlib"
 
-#RESTRICT="!test? ( test )"
 # Flaky test needs investigation (bug 719256)
 RESTRICT="test"
 
@@ -29,42 +28,40 @@ RDEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
 	zlib? ( sys-libs/zlib )
 "
-
-BDEPEND="sys-devel/automake:1.11"
-
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/automake:1.11
 	test? (
 		dev-tcltk/expect
 		net-misc/netkit-telnetd
 	)
+	verify-sig? ( app-crypt/openpgp-keys-alexbarton )
 "
 
 src_prepare() {
 	default
 
-	if ! use prefix; then
+	if ! use prefix ; then
 		sed -i \
 			-e "s:;ServerUID = 65534:ServerUID = ngircd:" \
 			-e "s:;ServerGID = 65534:ServerGID = ngircd:" \
 			doc/sample-ngircd.conf.tmpl || die
 	fi
 
-	# Once https://github.com/ngircd/ngircd/pull/270 is in a release (ngircd 26), we can remove
-	# the eautomake/autotools machinery.
-	eautomake
+	# Note that if we need to use automake, we need a certain version (for now):
+	# https://github.com/ngircd/ngircd/issues/261
+	# eautomake
 }
 
 src_configure() {
-	local myconf=(
-		--sysconfdir="${EPREFIX}"/etc/"${PN}"
+	local myeconf=(
+		--sysconfdir="${EPREFIX}"/etc/${PN}
 		$(use_enable debug sniffer)
 		$(use_enable debug)
 		$(use_enable irc-plus ircplus)
@@ -77,8 +74,8 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	if use ssl; then
-		if use gnutls; then
+	if use ssl ; then
+		if use gnutls ; then
 			myconf+=(
 				$( use_with gnutls )
 			)
@@ -89,16 +86,17 @@ src_configure() {
 		fi
 	fi
 
-	econf "${myconf[@]}"
+	econf "${myeconf[@]}"
 }
 
 src_install() {
 	default
+
 	newinitd "${FILESDIR}"/ngircd.init-r1.d ngircd
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]] && use pam; then
+	if [[ -z ${REPLACING_VERSIONS} ]] && use pam ; then
 		elog "ngircd will use PAMIsOptionalPAM by default, please change this option."
 		elog "You may not be able to login until you change this."
 	fi

@@ -1,5 +1,5 @@
---- a/configure	2009-02-03 14:46:21.000000000 +0100
-+++ b/configure	2009-02-03 14:48:13.000000000 +0100
+--- a/configure
++++ b/configure
 @@ -638,7 +638,7 @@
  
  print CONFIGMAKE "CXX       = $cxx\n";

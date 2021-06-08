@@ -44,6 +44,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Optional uninstalled features:"
 	optfeature "JSON-style output" app-misc/jq
 }

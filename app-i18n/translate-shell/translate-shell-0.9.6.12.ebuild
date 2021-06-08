@@ -31,10 +31,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "You may need to install the following optional packages for full functionality:"
-	optfeature "Support all built-in translators (e.g. Apertium, Yandex)" net-misc/curl[ssl]
-	optfeature "Display text in right-to-left scripts" dev-libs/fribidi
-	optfeature "Text-to-speech functionality" media-sound/mpg123 app-accessibility/espeak media-video/mpv media-video/mplayer
-	optfeature "Interactive translation (REPL)" app-editors/emacs app-misc/rlwrap
-	optfeature "Spell checking" app-text/aspell app-text/hunspell
+	optfeature "all built-in translators (e.g. Apertium, Yandex)" net-misc/curl[ssl]
+	optfeature "display text in right-to-left scripts" dev-libs/fribidi
+	optfeature "text-to-speech functionality" media-sound/mpg123 app-accessibility/espeak media-video/mpv media-video/mplayer
+	optfeature "interactive translation (REPL)" app-editors/emacs app-misc/rlwrap
+	optfeature "spell checking" app-text/aspell app-text/hunspell
 }

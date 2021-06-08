@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 69c68375..5bc000c0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,6 +37,8 @@ endif (NOT CMAKE_BUILD_TYPE)
+ 
+ OPTION (ENABLE_COVERAGE "Enable support for coverage analysis" OFF)
+ 
++set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
++
+ ## Retrieve git revision (at configure time)
+ include (GetGit)
+ 
+

@@ -10,7 +10,7 @@ inherit ecm
 if [[ ${PV} != *9999* ]]; then
 	COMMIT=dcefb65c88e76f1f9eda8b0318006e93d15a0e1e
 	SRC_URI="https://gitlab.com/caspermeijn/${PN}/repository/${COMMIT}/archive.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 	S="${WORKDIR}/${PN}-${COMMIT}-${COMMIT}"
 else
 	EGIT_REPO_URI="https://gitlab.com/caspermeijn/${PN}.git"

@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools desktop
 
 DESCRIPTION="Bomberman-like multiplayer game"
 HOMEPAGE="https://savannah.nongnu.org/projects/clanbomber/"
-SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
+SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

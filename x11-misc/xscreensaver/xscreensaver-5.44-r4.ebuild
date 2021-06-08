@@ -2,17 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop eutils flag-o-matic multilib pam
 
-DESCRIPTION="A modular screen saver and locker for the X Window System"
+inherit autotools flag-o-matic l10n multilib pam
+
+DESCRIPTION="modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
-SRC_URI="
-	https://www.jwz.org/xscreensaver/${P}.tar.gz
-"
+SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="caps +gdk-pixbuf gdm +gtk jpeg +locking new-login offensive opengl pam +perl selinux suid xinerama"
 REQUIRED_USE="
 	gdk-pixbuf? ( gtk )

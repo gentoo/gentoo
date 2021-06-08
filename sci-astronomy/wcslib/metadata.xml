@@ -5,7 +5,7 @@
     <email>sci-astronomy@gentoo.org</email>
     <name>Gentoo Astronomy Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>davidroman96@gmail.com</email>
     <name>David Roman</name>
   </maintainer>

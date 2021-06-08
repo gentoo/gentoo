@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="String processing utility functions"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

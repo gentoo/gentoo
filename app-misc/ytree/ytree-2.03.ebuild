@@ -22,8 +22,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES README THANKS ytree.conf )
 
-pkg_setup() {
-	tc-export CC
+src_configure() {
+	tc-export CC PKG_CONFIG
+
+	default
 }
 
 src_install() {

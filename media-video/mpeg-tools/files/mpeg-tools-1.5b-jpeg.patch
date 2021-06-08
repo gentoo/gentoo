@@ -1,5 +1,5 @@
---- jpeg.c
-+++ jpeg.c
+--- a/mpeg_encode/jpeg.c
++++ b/mpeg_encode/jpeg.c
 @@ -77,13 +77,10 @@
  
  /* make it happier.... */
@@ -30,8 +30,8 @@
    
    for(cp=0,compptr = cinfo.comp_info;cp<cinfo.num_components;
        cp++,compptr++) {
---- Makefile
-+++ Makefile
+--- a/mpeg_encode/Makefile
++++ b/mpeg_encode/Makefile
 @@ -36,9 +36,9 @@
  ##############
  # JPEG STUFF #

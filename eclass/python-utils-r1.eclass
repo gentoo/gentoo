@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Utility functions for packages with Python parts.
 # @DESCRIPTION:
 # A utility eclass providing functions to query Python implementations,
@@ -19,9 +19,12 @@
 # For more information, please see the Python Guide:
 # https://dev.gentoo.org/~mgorny/python-guide/
 
+# NOTE: When dropping support for EAPIs here, we need to update
+# metadata/install-qa-check.d/60python-pyc
+# See bug #704286, bug #781878
 case "${EAPI:-0}" in
-	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	[5-7]) ;;
+	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[6-7]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
@@ -31,7 +34,6 @@ fi
 
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
-[[ ${EAPI} == 5 ]] && inherit eutils multilib
 inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
@@ -40,7 +42,7 @@ inherit toolchain-funcs
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
 	pypy3
-	python3_7 python3_8 python3_9
+	python3_{8..10}
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -52,7 +54,7 @@ _PYTHON_HISTORICAL_IMPLS=(
 	jython2_7
 	pypy pypy1_{8,9} pypy2_0
 	python2_{5..7}
-	python3_{1..6}
+	python3_{1..7}
 )
 readonly _PYTHON_HISTORICAL_IMPLS
 
@@ -123,7 +125,7 @@ _python_set_impls() {
 			# please keep them in sync with _PYTHON_ALL_IMPLS
 			# and _PYTHON_HISTORICAL_IMPLS
 			case ${i} in
-				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9])
+				jython2_7|pypy|pypy1_[89]|pypy2_0|pypy3|python2_[5-7]|python3_[1-9]|python3_10)
 					;;
 				*)
 					if has "${i}" "${_PYTHON_ALL_IMPLS[@]}" \
@@ -316,16 +318,13 @@ _python_export() {
 				;;
 			PYTHON_SITEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				# sysconfig can't be used because:
-				# 1) pypy doesn't give site-packages but stdlib
-				# 2) jython gives paths with wrong case
-				PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
+				PYTHON_SITEDIR=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_path("purelib"))') || die
 				export PYTHON_SITEDIR
 				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
+				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_path("platinclude"))') || die
 				export PYTHON_INCLUDEDIR
 				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
 
@@ -907,8 +906,6 @@ _python_wrapper_setup() {
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON specified."
 
 	if [[ ! -x ${workdir}/bin/python ]]; then
-		_python_check_dead_variables
-
 		mkdir -p "${workdir}"/{bin,pkgconfig} || die
 
 		# Clean up, in case we were supposed to do a cheap update.
@@ -1015,16 +1012,8 @@ python_is_python3() {
 python_is_installed() {
 	local impl=${1:-${EPYTHON}}
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON"
-	local hasv_args=()
-
-	case ${EAPI} in
-		5|6)
-			hasv_args+=( --host-root )
-			;;
-		*)
-			hasv_args+=( -b )
-			;;
-	esac
+	local hasv_args=( -b )
+	[[ ${EAPI} == 6 ]] && hasv_args=( --host-root )
 
 	local PYTHON_PKG_DEP
 	_python_export "${impl}" PYTHON_PKG_DEP
@@ -1171,17 +1160,14 @@ python_fix_shebang() {
 		done < <(find -H "${path}" -type f -print0 || die)
 
 		if [[ ! ${any_fixed} ]]; then
-			local cmd=eerror
-			[[ ${EAPI} == 5 ]] && cmd=eqawarn
-
-			"${cmd}" "QA warning: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
+			eerror "QA error: ${FUNCNAME}, ${path#${D%/}} did not match any fixable files."
 			if [[ ${any_correct} ]]; then
-				"${cmd}" "All files have ${EPYTHON} shebang already."
+				eerror "All files have ${EPYTHON} shebang already."
 			else
-				"${cmd}" "There are no Python files in specified directory."
+				eerror "There are no Python files in specified directory."
 			fi
 
-			[[ ${cmd} == eerror ]] && die "${FUNCNAME} did not match any fixable files (QA warning fatal in EAPI ${EAPI})"
+			die "${FUNCNAME} did not match any fixable files"
 		fi
 	done
 }
@@ -1278,172 +1264,51 @@ build_sphinx() {
 	HTML_DOCS+=( "${dir}/_build/html/." )
 }
 
-# -- python.eclass functions --
+# @FUNCTION: epytest
+# @USAGE: [<args>...]
+# @DESCRIPTION:
+# Run pytest, passing the standard set of pytest options, followed
+# by user-specified options.
+#
+# This command dies on failure and respects nonfatal.
+epytest() {
+	debug-print-function ${FUNCNAME} "${@}"
 
-_python_check_dead_variables() {
-	local v
+	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
 
-	for v in PYTHON_DEPEND PYTHON_USE_WITH{,_OR,_OPT} {RESTRICT,SUPPORT}_PYTHON_ABIS
-	do
-		if [[ ${!v} ]]; then
-			die "${v} is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#Ebuild_head"
-		fi
-	done
+	local args=(
+		# verbose progress reporting and tracebacks
+		-vv
+		# list all non-passed tests in the summary for convenience
+		# (includes failures, skips, xfails...)
+		-ra
+		# print local variables in tracebacks, useful for debugging
+		-l
+	)
+	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}"
 
-	for v in PYTHON_{CPPFLAGS,CFLAGS,CXXFLAGS,LDFLAGS}
-	do
-		if [[ ${!v} ]]; then
-			die "${v} is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#PYTHON_CFLAGS"
-		fi
-	done
-
-	for v in PYTHON_TESTS_RESTRICTED_ABIS PYTHON_EXPORT_PHASE_FUNCTIONS \
-		PYTHON_VERSIONED_{SCRIPTS,EXECUTABLES} PYTHON_NONVERSIONED_EXECUTABLES
-	do
-		if [[ ${!v} ]]; then
-			die "${v} is invalid for python-r1 suite"
-		fi
-	done
-
-	for v in DISTUTILS_USE_SEPARATE_SOURCE_DIRECTORIES DISTUTILS_SETUP_FILES \
-		DISTUTILS_GLOBAL_OPTIONS DISTUTILS_SRC_TEST PYTHON_MODNAME
-	do
-		if [[ ${!v} ]]; then
-			die "${v} is invalid for distutils-r1, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#${v}"
-		fi
-	done
-
-	if [[ ${DISTUTILS_DISABLE_TEST_DEPENDENCY} ]]; then
-		die "${v} is invalid for distutils-r1, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#DISTUTILS_SRC_TEST"
-	fi
-
-	# python.eclass::progress
-	for v in PYTHON_BDEPEND PYTHON_MULTIPLE_ABIS PYTHON_ABI_TYPE \
-		PYTHON_RESTRICTED_ABIS PYTHON_TESTS_FAILURES_TOLERANT_ABIS \
-		PYTHON_CFFI_MODULES_GENERATION_COMMANDS
-	do
-		if [[ ${!v} ]]; then
-			die "${v} is invalid for python-r1 suite"
-		fi
-	done
+	echo "${@}" >&2
+	"${@}" || die -n "pytest failed with ${EPYTHON}"
+	return ${?}
 }
 
-python_pkg_setup() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#pkg_setup"
-}
+# @FUNCTION: eunittest
+# @USAGE: [<args>...]
+# @DESCRIPTION:
+# Run unit tests using dev-python/unittest-or-fail, passing the standard
+# set of options, followed by user-specified options.
+#
+# This command dies on failure and respects nonfatal.
+eunittest() {
+	debug-print-function ${FUNCNAME} "${@}"
 
-python_convert_shebangs() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#python_convert_shebangs"
-}
+	[[ -n ${EPYTHON} ]] || die "EPYTHON unset, invalid call context"
 
-python_clean_py-compile_files() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
+	set -- "${EPYTHON}" -m unittest_or_fail discover -v "${@}"
 
-python_clean_installation_image() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_execute_function() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#python_execute_function"
-}
-
-python_generate_wrapper_scripts() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_merge_intermediate_installation_images() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_set_active_version() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#pkg_setup"
-}
-
-python_need_rebuild() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-PYTHON() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#.24.28PYTHON.29.2C_.24.7BEPYTHON.7D"
-}
-
-python_get_implementation() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_get_implementational_package() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_get_libdir() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_get_library() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_get_version() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_get_implementation_and_version() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_execute_nosetests() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_execute_py.test() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_execute_trial() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_enable_pyc() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_disable_pyc() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_mod_optimize() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#Python_byte-code_compilation"
-}
-
-python_mod_cleanup() {
-	die "${FUNCNAME}() is invalid for python-r1 suite, please take a look @ https://wiki.gentoo.org/wiki/Project:Python/Python.eclass_conversion#Python_byte-code_compilation"
-}
-
-# python.eclass::progress
-
-python_abi_depend() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_install_executables() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_get_extension_module_suffix() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_byte-compile_modules() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_clean_byte-compiled_modules() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
-}
-
-python_generate_cffi_modules() {
-	die "${FUNCNAME}() is invalid for python-r1 suite"
+	echo "${@}" >&2
+	"${@}" || die -n "Tests failed with ${EPYTHON}"
+	return ${?}
 }
 
 _PYTHON_UTILS_R1=1

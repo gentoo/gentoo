@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -27,14 +27,11 @@ fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="crypt test"
+IUSE="crypt"
 
 BDEPEND="dev-python/pillow[${PYTHON_USEDEP}]
 	crypt? ( dev-python/pycryptodome[${PYTHON_USEDEP}] )
-	test? ( dev-python/reportlab[${PYTHON_USEDEP}]
-		>=dev-python/pytest-3.0.3[${PYTHON_USEDEP}] )"
-
-RESTRICT="!test? ( test )"
+	test? ( dev-python/reportlab[${PYTHON_USEDEP}] )"
 
 # unittest would be sufficient but its output is unreadable
 distutils_enable_tests pytest

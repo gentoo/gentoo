@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils
 
 DESCRIPTION="Genealogy software program with a Web interface"
 HOMEPAGE="https://github.com/geneweb/geneweb"
@@ -25,9 +24,15 @@ RDEPEND="dev-lang/ocaml[ocamlopt?]
 	dev-ml/calendars:="
 DEPEND="${RDEPEND}
 	dev-ml/cppo
-	test? ( dev-ml/ounit )"
+	test? ( dev-ml/ounit2 )"
 
 QA_FLAGS_IGNORED='.*'
+
+src_prepare() {
+	default
+
+	sed -i -e "s/oUnit/ounit2/" test/dune.in || die
+}
 
 src_configure() {
 	ocaml ./configure.ml

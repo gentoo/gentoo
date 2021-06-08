@@ -8,11 +8,11 @@ if [[ "${PV}" == "9999" ]]; then
 	SCM="git-r3"
 	EGIT_REPO_URI="https://code.videolan.org/videolan/dav1d"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~sparc x86"
 	SRC_URI="https://code.videolan.org/videolan/dav1d/-/archive/${PV}/${P}.tar.bz2"
 fi
 
-inherit ${SCM} meson ninja-utils multilib-minimal
+inherit ${SCM} meson-multilib
 
 DESCRIPTION="dav1d is an AV1 Decoder :)"
 HOMEPAGE="https://code.videolan.org/videolan/dav1d"
@@ -48,16 +48,8 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	eninja
-}
-
 multilib_src_test() {
 	if multilib_is_native_abi ; then
 		meson_src_test
 	fi
-}
-
-multilib_src_install() {
-	DESTDIR="${D}" eninja install
 }

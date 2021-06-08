@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils meson
+inherit meson
 
 DESCRIPTION="i3-compatible Wayland window manager"
 HOMEPAGE="https://swaywm.org"

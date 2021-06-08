@@ -14,7 +14,8 @@
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libpng:libpng</remote-id>
-		<remote-id type="sourceforge">apng</remote-id>
+		<remote-id type="github">glennrp/libpng</remote-id>
+		<remote-id type="sourceforge">libpng</remote-id>
 	</upstream>
 	<slots>
 		<slot name="0">For building against. This is the only slot

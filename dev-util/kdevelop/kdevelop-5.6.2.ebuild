@@ -16,7 +16,7 @@ DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and mu
 HOMEPAGE="https://kdevelop.org/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="GPL-2 LGPL-2"
@@ -121,7 +121,6 @@ src_configure() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
 		optfeature "konsole view" kde-apps/konsole
 		optfeature "static C++ Qt code analysis" dev-util/clazy
 		optfeature "static C/C++ code analysis" dev-util/cppcheck

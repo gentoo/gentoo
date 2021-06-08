@@ -20,7 +20,8 @@ HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc examples extras +gromacs hdf5"
+IUSE="examples extras +gromacs hdf5 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-shells/bash:*
@@ -32,7 +33,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=app-text/txt2tags-2.5
 	virtual/pkgconfig
 "
 
@@ -54,10 +54,10 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_GMX=$(usex gromacs)
+		-DCMAKE_DISABLE_FIND_PACKAGE_GROMACS=$(usex !gromacs)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
-		-DWITH_RC_FILES=OFF
-		-DBUILD_CSGAPPS=ON
+		-DBUILD_CSGAPPS=$(usex extras)
+		-DENABLE_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }

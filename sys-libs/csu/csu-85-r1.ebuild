@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit toolchain-funcs
-
 DESCRIPTION="Darwin Csu (crt1.o) - Mac OS X 10.10 version"
 HOMEPAGE="http://www.opensource.apple.com/"
 SRC_URI="http://www.opensource.apple.com/tarballs/Csu/Csu-${PV}.tar.gz"
@@ -13,7 +11,6 @@ LICENSE="APSL-2"
 
 SLOT="0"
 KEYWORDS="~ppc-macos ~x64-macos"
-IUSE=""
 S=${WORKDIR}/Csu-${PV}
 
 # for now it seems FSF GCC can't compile this thing, so we need

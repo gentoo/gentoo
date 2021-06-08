@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils linux-info
+EAPI=7
+
+inherit desktop linux-info
 
 DESCRIPTION="Display the topology of devices on the USB bus"
 HOMEPAGE="http://www.kroah.com/linux-usb/"
@@ -17,10 +18,8 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog README TODO )
 

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/777768
+
+--- quvi-0.9.5/configure.ac
++++ quvi-0.9.5/configure.ac
+@@ -6,7 +6,7 @@
+ AC_INIT([quvi], m4_esyscmd([./gen-ver.sh -c | tr -d '\n']),
+         [http://quvi.sf.net/bugs/],[],[http://quvi.sf.net/])
+ 
+-AC_DEFINE_UNQUOTED([BUILD_OPTS], "$@",
++AC_DEFINE_UNQUOTED([BUILD_OPTS], "$*",
+   [Define to configure invocation command line options])
+ 
+ AC_CONFIG_SRCDIR([src/main.c])

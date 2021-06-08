@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils fortran-2 flag-o-matic toolchain-funcs
+inherit fortran-2 flag-o-matic toolchain-funcs
 
 MY_P="${PN}${PV//.}"
 

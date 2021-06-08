@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dbmail/dbmail/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="ldap libressl sieve ssl"
+IUSE="ldap sieve ssl"
 
 RDEPEND="
 	acct-group/dbmail
@@ -28,8 +28,7 @@ RDEPEND="
 	ldap? ( >=net-nds/openldap-2.3.33 )
 	sieve? ( >=mail-filter/libsieve-2.2.1 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

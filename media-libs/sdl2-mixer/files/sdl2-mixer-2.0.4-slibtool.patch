@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/777420
+
+commit 174dfd47e6da498dbaf057579a15235c077b71d0
+Author: orbea <orbea@riseup.net>
+Date:   Wed Mar 24 15:56:27 2021 -0700
+
+    fix build failure with slibtool and parallel make (#bug 5494)
+
+diff --git a/Makefile.in b/Makefile.in
+index 2ff24b2..6774663 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -46,7 +46,7 @@ LT_RELEASE  = @LT_RELEASE@
+ LT_REVISION = @LT_REVISION@
+ LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+ 
+-all: $(srcdir)/configure Makefile $(objects) $(objects)/$(TARGET) $(objects)/playwave$(EXE) $(objects)/playmus$(EXE)
++all: $(srcdir)/configure Makefile $(objects)/$(TARGET) $(objects)/playwave$(EXE) $(objects)/playmus$(EXE)
+ 
+ $(srcdir)/configure: $(srcdir)/configure.in
+ 	@echo "Warning, configure.in is out of date"
+@@ -56,8 +56,9 @@ $(srcdir)/configure: $(srcdir)/configure.in
+ Makefile: $(srcdir)/Makefile.in
+ 	$(SHELL) config.status $@
+ 
+-$(objects):
+-	$(SHELL) $(auxdir)/mkinstalldirs $@
++$(objects)/.created:
++	$(SHELL) $(auxdir)/mkinstalldirs $(objects)
++	touch $@
+ 
+ .PHONY: all install install-hdrs install-lib install-bin uninstall uninstall-hdrs uninstall-lib uninstall-bin clean distclean dist
+ 
+diff --git a/configure.in b/configure.in
+index 240a322..557f640 100644
+--- a/configure.in
++++ b/configure.in
+@@ -695,14 +695,14 @@ OBJECTS=`echo $SOURCES`
+ DEPENDS=`echo $SOURCES`
+ OBJECTS=`echo "$OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
+ DEPENDS=`echo "$DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
+-$(objects)/\2.lo: \1/\2.c\\
++$(objects)/\2.lo: \1/\2.c\\ \$(objects)/.created\\
+ 	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+ 
+ OBJECTS_CXX=`echo $SOURCES_CXX`
+ DEPENDS_CXX=`echo $SOURCES_CXX`
+ OBJECTS_CXX=`echo "$OBJECTS_CXX" | sed 's,[[^ ]]*/\([[^ ]]*\)\.cpp,$(objects)/\1.lo,g'`
+ DEPENDS_CXX=`echo "$DEPENDS_CXX" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.cpp,\\
+-$(objects)/\2.lo: \1/\2.cpp\\
++$(objects)/\2.lo: \1/\2.cpp\\ \$(objects)/.created\\
+ 	\$(LIBTOOL) --mode=compile \$(CXX) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+ OBJECTS="$OBJECTS $OBJECTS_CXX"
+ DEPENDS="$DEPENDS $DEPENDS_CXX"
+@@ -712,7 +712,7 @@ VERSION_OBJECTS=`echo $VERSION_SOURCES`
+ VERSION_DEPENDS=`echo $VERSION_SOURCES`
+ VERSION_OBJECTS=`echo "$VERSION_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.rc,$(objects)/\1.o,g'`
+ VERSION_DEPENDS=`echo "$VERSION_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.rc,\\
+-$(objects)/\2.o: \1/\2.rc\\
++$(objects)/\2.o: \1/\2.rc\\ \$(objects)/.created\\
+ 	\$(WINDRES) \$< \$@,g'`
+ VERSION_DEPENDS=`echo "$VERSION_DEPENDS" | sed 's,\\$,\\\\$,g'`
+ 
+@@ -721,7 +721,7 @@ PLAYWAVE_OBJECTS=`echo $PLAYWAVE_SOURCES`
+ PLAYWAVE_DEPENDS=`echo $PLAYWAVE_SOURCES`
+ PLAYWAVE_OBJECTS=`echo "$PLAYWAVE_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
+ PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
+-$(objects)/\2.lo: \1/\2.c\\
++$(objects)/\2.lo: \1/\2.c\\ \$(objects)/.created\\
+ 	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+ PLAYWAVE_DEPENDS=`echo "$PLAYWAVE_DEPENDS" | sed 's,\\$,\\\\$,g'`
+ 
+@@ -730,7 +730,7 @@ PLAYMUS_OBJECTS=`echo $PLAYMUS_SOURCES`
+ PLAYMUS_DEPENDS=`echo $PLAYMUS_SOURCES`
+ PLAYMUS_OBJECTS=`echo "$PLAYMUS_OBJECTS" | sed 's,[[^ ]]*/\([[^ ]]*\)\.c,$(objects)/\1.lo,g'`
+ PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\([[^ ]]*\)/\([[^ ]]*\)\.c,\\
+-$(objects)/\2.lo: \1/\2.c\\
++$(objects)/\2.lo: \1/\2.c\\ \$(objects)/.created\\
+ 	\$(LIBTOOL) --mode=compile \$(CC) \$(CFLAGS) \$(EXTRA_CFLAGS) '"$DEPENDENCY_TRACKING_OPTIONS"' -c \$< -o \$@,g'`
+ PLAYMUS_DEPENDS=`echo "$PLAYMUS_DEPENDS" | sed 's,\\$,\\\\$,g'`
+ 

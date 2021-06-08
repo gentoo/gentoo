@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit golang-vcs-snapshot systemd user
+inherit golang-vcs-snapshot systemd user tmpfiles
 
 KEYWORDS="~amd64 ~arm64"
 DESCRIPTION="An etcd backed network fabric for containers"
@@ -45,7 +45,7 @@ src_install() {
 	keepdir /var/log/${PN}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/flanneld.logrotated flanneld
-	systemd_newtmpfilesd "${FILESDIR}/flannel.tmpfilesd" flannel.conf
+	newtmpfiles "${FILESDIR}/flannel.tmpfilesd" flannel.conf
 	systemd_dounit "${FILESDIR}/flanneld.service"
 	dodoc README.md
 }

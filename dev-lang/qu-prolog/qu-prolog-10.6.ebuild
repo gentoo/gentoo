@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools eutils multilib qmake-utils
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit autotools multilib python-any-r1 qmake-utils
 
 MY_P=qp${PV}
 
@@ -26,15 +28,19 @@ RDEPEND="
 	pedro? ( net-misc/pedro )
 	readline? ( app-misc/rlwrap )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-lang/perl"
 
 S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.x-qt5.patch
+	eapply "${FILESDIR}"/${PN}-10.x-compiler-flags.patch
 	eapply_user
 
 	eautoconf
+
+	python_fix_shebang "${S}"/bin/qc.in
 }
 
 src_configure() {

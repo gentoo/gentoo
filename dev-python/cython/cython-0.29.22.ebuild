@@ -16,7 +16,7 @@ SRC_URI="https://github.com/cython/cython/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="emacs test"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +30,8 @@ BDEPEND="${RDEPEND}
 	)"
 
 PATCHES=(
-	"${FILESDIR}/cython-0.29.14-sphinx-update.patch"
+	"${FILESDIR}/${PN}-0.29.14-sphinx-update.patch"
+	"${FILESDIR}/${PN}-0.29.22-spawn-multiprocessing.patch"
 )
 
 SITEFILE=50cython-gentoo.el

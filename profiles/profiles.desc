@@ -1,3 +1,6 @@
+# Copyright 2003-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 #############################################
 # This is a list of valid profiles for each architecture.  This file is used by
 # repoman when doing a repoman scan or repoman full.
@@ -161,8 +164,8 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop			stable
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome		stable
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/desktop/gnome/systemd	stable
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		stable
-ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	stable
+#ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		stable
+#ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	stable
 
 # PPC/PPC64 flat Profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
@@ -184,6 +187,8 @@ ppc64		default/linux/ppc64/17.0/musl				exp
 ppc64		default/linux/ppc64/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/17.0				stable
 ppc64		default/linux/ppc64le/17.0/desktop			stable
+ppc64		default/linux/ppc64le/17.0/desktop/gnome		dev
+ppc64		default/linux/ppc64le/17.0/desktop/gnome/systemd	dev
 ppc64		default/linux/ppc64le/17.0/desktop/plasma		dev
 ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd	dev
 ppc64		default/linux/ppc64le/17.0/systemd			stable
@@ -319,3 +324,9 @@ x64-winnt		prefix/windows/winnt/x64			exp
 x64-cygwin		prefix/windows/cygwin/x64			exp
 
 # vim: set ts=8 noet ft=conf:
+
+# Local Variables:
+# mode: conf-space
+# tab-width: 8
+# indent-tabs-mode: t
+# End:

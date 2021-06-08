@@ -9,7 +9,7 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vpayno+gentoo@gmail.com</email>
 		<name>Victor Payno</name>
 	</maintainer>

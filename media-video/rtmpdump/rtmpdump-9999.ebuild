@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,17 +11,14 @@ HOMEPAGE="https://rtmpdump.mplayerhq.hu/"
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="LGPL-2.1 tools? ( GPL-2 )"
 SLOT="0"
-IUSE="gnutls ssl static-libs +tools libressl"
-
-REQUIRED_USE="?? ( gnutls libressl )"
+IUSE="gnutls ssl static-libs +tools"
 
 DEPEND="ssl? (
 		gnutls? (
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 		)
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-		!gnutls? ( !libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] ) )
+		!gnutls? (  dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
@@ -47,10 +44,6 @@ pkg_setup() {
 			ewarn "USE='gnutls' is ignored without USE='ssl'."
 			ewarn "Please review the local USE flags for this package."
 		fi
-		if use libressl; then
-			ewarn "USE='libressl' is ignored without USE='ssl'."
-			ewarn "Please review the local USE flags for this package."
-		fi
 	fi
 }
 
@@ -64,7 +57,7 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
-	use ssl && use !gnutls && use !libressl && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
+	use ssl && use !gnutls  && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
 	default
 	multilib_copy_sources
 }

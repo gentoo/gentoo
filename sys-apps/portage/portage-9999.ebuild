@@ -3,9 +3,10 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
+TMPFILES_OPTIONAL=1
 
 inherit distutils-r1 git-r3 linux-info tmpfiles prefix
 
@@ -128,13 +129,17 @@ python_prepare_all() {
 			-w "/_BINARY/" lib/portage/const.py
 
 		einfo "Prefixing shebangs ..."
+		> "${T}/shebangs" || die
 		while read -r -d $'\0' ; do
 			local shebang=$(head -n1 "$REPLY")
 			if [[ ${shebang} == "#!"* && ! ${shebang} == "#!${EPREFIX}/"* ]] ; then
-				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
-					die "sed failed"
+				echo "${REPLY}" >> "${T}/shebangs" || die
 			fi
-		done < <(find . -type f ! -name etc-update -print0)
+		done < <(find . -type f -executable ! -name etc-update -print0)
+
+		if [[ -s ${T}/shebangs ]]; then
+			xargs sed -i -e "1s:^#!:#!${EPREFIX}:" < "${T}/shebangs" || die "sed failed"
+		fi
 
 		einfo "Adjusting make.globals, repos.conf and etc-update ..."
 		hprefixify cnf/{make.globals,repos.conf} bin/etc-update

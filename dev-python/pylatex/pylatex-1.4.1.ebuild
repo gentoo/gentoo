@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	elog "Optional dependencies:"
 	optfeature "compiling generated files" "app-text/texlive dev-texlive/texlive-latexextra dev-texlive/texlive-mathscience"
 	optfeature "matplotlib support" dev-python/matplotlib
 	optfeature "numpy support" dev-python/numpy

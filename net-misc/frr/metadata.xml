@@ -5,24 +5,16 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>jakov.smolic@sartura.hr</email>
+		<name>Jakov Smolic</name>
+	</maintainer>
 	<use>
-		<flag name="grpc">
-			Enable gRPC plugin
-		</flag>
-		<flag name="nhrp">
-			Build Next Hop Resolution Protocol daemon
-		</flag>
-		<flag name="fpm">
-			Enable Forwarding Plane Manager support
-		</flag>
-		<flag name="rpki">
-			Enable RPKI
-		</flag>
-		<flag name="pam">
-			Add support for PAM (via <pkg>sys-libs/pam</pkg>) to the Virtual Terminal Interface Shell (vtysh);
-		</flag>
-		<flag name="ospfapi">
-			Build OSPFAPI support
-		</flag>
+		<flag name="grpc">Enable gRPC plugin</flag>
+		<flag name="nhrp">Build Next Hop Resolution Protocol daemon</flag>
+		<flag name="fpm">Enable Forwarding Plane Manager support</flag>
+		<flag name="rpki">Enable RPKI</flag>
+		<flag name="pam">Add support for PAM (via <pkg>sys-libs/pam</pkg>) to the Virtual Terminal Interface Shell (vtysh)</flag>
+		<flag name="ospfapi">Build OSPFAPI support</flag>
 	</use>
 </pkgmetadata>

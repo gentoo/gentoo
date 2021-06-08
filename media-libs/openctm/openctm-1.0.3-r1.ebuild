@@ -7,7 +7,7 @@ inherit edos2unix flag-o-matic toolchain-funcs
 
 MY_P=OpenCTM-${PV}
 
-DESCRIPTION="OpenCTM - the Open Compressed Triangle Mesh."
+DESCRIPTION="OpenCTM - the Open Compressed Triangle Mesh"
 HOMEPAGE="http://openctm.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/project/openctm/${MY_P}/${MY_P}-src.tar.bz2 -> ${P}-src.tar.bz2"
 S="${WORKDIR}/${MY_P}"
@@ -16,7 +16,6 @@ LICENSE="GPL-2"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
 DEPEND="
 	dev-libs/tinyxml
 	media-libs/freeglut
@@ -28,6 +27,7 @@ DEPEND="
 	x11-libs/gtk+:2
 "
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-escape-hyphens-in-ctmconv-man-page.patch"
@@ -49,6 +49,8 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake CC=$(tc-getCC) CXX="$(tc-getCXX)" -f Makefile.linux
 }
 

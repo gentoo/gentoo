@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="Desktop Input Method configuration tool"
 HOMEPAGE="https://pagure.io/im-chooser"
@@ -40,5 +40,5 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

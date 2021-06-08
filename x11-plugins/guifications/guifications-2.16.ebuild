@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ IUSE="debug nls"
 RDEPEND="net-im/pidgin[gtk]
 	x11-libs/gtk+:2"
 
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {

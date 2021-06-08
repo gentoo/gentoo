@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 
 SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/xapp-${PV}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 SLOT="0"
 IUSE="gtk-doc introspection static-libs"

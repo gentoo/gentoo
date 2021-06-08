@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -27,6 +27,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-docdir.patch
 	"${FILESDIR}"/${P}-python3.patch
+	"${FILESDIR}"/${P}-uninitialized-variable.patch
 )
 
 src_prepare() {

@@ -1,0 +1,29 @@
+From 6fc0e3e321cdf0bf7e047234561fe8a8084a93f9 Mon Sep 17 00:00:00 2001
+From: Xi Ruoyao <xry111@mengyan1223.wang>
+Date: Wed, 14 Apr 2021 23:18:06 +0800
+Subject: [PATCH] Fix segfault when built with ldap disabled
+
+Fixes #321.
+---
+ pgp/seahorse-pgp-backend.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/pgp/seahorse-pgp-backend.c b/pgp/seahorse-pgp-backend.c
+index 25febf31..8c10e7e3 100644
+--- a/pgp/seahorse-pgp-backend.c
++++ b/pgp/seahorse-pgp-backend.c
+@@ -445,7 +445,10 @@ seahorse_pgp_backend_add_remote (SeahorsePgpBackend   *self,
+         /* Don't persist, so just immediately create a ServerSource */
+         g_autoptr(SeahorseServerSource) ssrc = NULL;
+         ssrc = seahorse_server_category_create_server (uri);
+-        g_list_store_append (G_LIST_STORE (self->remotes), ssrc);
++        /* If the scheme of the uri is ldap, but ldap support is disabled
++         * in the build, ssrc will be NULL. */
++        if (ssrc)
++            g_list_store_append (G_LIST_STORE (self->remotes), ssrc);
+     }
+ }
+ 
+-- 
+GitLab
+

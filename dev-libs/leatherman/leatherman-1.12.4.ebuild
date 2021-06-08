@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multilib
+inherit cmake-utils
 
 DESCRIPTION="A C++ toolkit"
 HOMEPAGE="https://github.com/puppetlabs/leatherman"

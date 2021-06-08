@@ -13,6 +13,8 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 	fi
 fi
 
+PYTHON_COMPAT=( python3_{7..9} )
+inherit python-any-r1
 inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib multiprocessing pax-utils toolchain-funcs prefix
 inherit check-reqs
@@ -75,8 +77,7 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-# no binaries yet
-#KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
@@ -106,13 +107,23 @@ PREBUILT_BINARY_RDEPENDS="${PREBUILT_BINARY_DEPENDS}
 
 RDEPEND+="binary? ( ${PREBUILT_BINARY_RDEPENDS} )"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-stylesheets
 		dev-python/sphinx
 		>=dev-libs/libxslt-1.1.2 )
-	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )"
+	!ghcbootstrap? ( ${PREBUILT_BINARY_DEPENDS} )
+	test? ( ${PYTHON_DEPS} )
+"
+
+needs_python() {
+	# test driver is written in python
+	use test && return 0
+	return 1
+}
 
 # we build binaries without profiling support
 REQUIRED_USE="
@@ -380,6 +391,10 @@ pkg_setup() {
 			die "No binary available for '${ARCH}' arch yet, USE=ghcbootstrap"
 		fi
 	fi
+
+	if needs_python; then
+		python-any-r1_pkg_setup
+	fi
 }
 
 src_unpack() {
@@ -487,6 +502,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-8.8.1-revert-CPP.patch
 		eapply "${FILESDIR}"/${PN}-8.10.1-allow-cross-bootstrap.patch
 		eapply "${FILESDIR}"/${PN}-8.10.3-C99-typo-ac270.patch
+		eapply "${FILESDIR}"/${PN}-8.10.4-sphinx-quote.patch
 
 		# a bunch of crosscompiler patches
 		# needs newer version:

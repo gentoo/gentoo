@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+CMAKE_MAKEFILE_GENERATOR=emake
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit cmake python-any-r1
 
-inherit python-any-r1 cmake-utils
-
-DESCRIPTION="automatic theorem prover for satisfiability modulo theories (SMT) problems"
-HOMEPAGE="http://cvc4.cs.stanford.edu/web/"
+DESCRIPTION="Automatic theorem prover for satisfiability modulo theories (SMT) problems"
+HOMEPAGE="https://cvc4.github.io/"
 SRC_URI="https://github.com/CVC4/CVC4/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -25,12 +25,11 @@ RDEPEND="dev-libs/antlr-c
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
-S="${WORKDIR}"/CVC4-${PV}
+S="${WORKDIR}"/${P^^}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_configure() {
-	CMAKE_MAKEFILE_GENERATOR=emake
 	local mycmakeargs=(
 		-DANTLR_BINARY=/usr/bin/antlr3
 		-DENABLE_GPL=ON
@@ -41,7 +40,7 @@ src_configure() {
 		-DENABLE_PROOFS="$(usex proofs ON OFF)"
 		-DENABLE_REPLAY="$(usex replay ON OFF)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -54,10 +53,10 @@ src_test() {
 		smt2_compliance \
 		two_smt_engines \
 		statistics
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	mv "${D}"/usr/{lib,$(get_libdir)}
 }

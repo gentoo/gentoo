@@ -15,7 +15,7 @@
 	</longdescription>
 	<longdescription lang="ja">
 		dev-erlangカテゴリーにはErlangプログラミング言語で記述された/のために
-		記述されたライブラリーと>ユーティリティとバインディングが含まれます。
+		記述されたライブラリーと&gt;ユーティリティとバインディングが含まれます。
 	</longdescription>
 	<longdescription lang="nl">
 		De dev-erlang categorie bevat bibliotheken en hulpmiddelen voor het
@@ -39,4 +39,3 @@
 		Erlang.
 	</longdescription>
 </catmetadata>
-

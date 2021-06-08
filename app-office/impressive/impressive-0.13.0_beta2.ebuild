@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "The experience with ${PN^} can be enhanced by folowing packages:"
 	optfeature "starting web or e-mail hyperlinks from PDF documents" x11-misc/xdg-utils
 	optfeature "sound and video playback" media-video/ffmpeg
 	optfeature "sound and video playback" media-video/mplayer

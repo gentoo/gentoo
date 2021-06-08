@@ -15,4 +15,3 @@
   <flag name="vboxwebsrv">Build and install the VirtualBox webservice</flag>
 </use>
 </pkgmetadata>
-

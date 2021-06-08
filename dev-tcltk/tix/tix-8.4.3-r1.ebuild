@@ -3,17 +3,16 @@
 
 EAPI=5
 
-inherit eutils multilib
+inherit epatch multilib
 
 MY_P="Tix${PV}"
 DESCRIPTION="A widget library for Tcl/Tk"
 HOMEPAGE="http://tix.sourceforge.net/"
 SRC_URI="mirror://sourceforge/tix/${MY_P}-src.tar.gz"
 
-IUSE=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RESTRICT="test"
 
@@ -28,9 +27,11 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	[[ ${CHOST} == *-darwin* ]] || epatch "${FILESDIR}"/${P}-link.patch
+
 	sed \
 		-e 's:-Os::g' \
 		-i configure tclconfig/tcl.m4 || die
+
 	epatch \
 		"${FILESDIR}"/${P}-tcl8.5.patch \
 		"${FILESDIR}"/${P}-tcl8.6.patch
@@ -45,11 +46,12 @@ src_configure() {
 src_install() {
 	default
 
-	# Bug 168897
+	# Bug #168897
 	doheader generic/tix.h
-	# Bug 201138
+
+	# Bug #201138
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		mv "${ED}"/usr/$(get_libdir)/${MY_P}/libTix{,.}${PV}.dylib
+		mv "${ED}"/usr/$(get_libdir)/${MY_P}/libTix{,.}${PV}.dylib || die
 		dosym ${MY_P}/libTix.${PV}.dylib /usr/$(get_libdir)/libTix.${PV}.dylib
 	else
 		dosym ${MY_P}/lib${MY_P}.so /usr/$(get_libdir)/lib${MY_P}.so

@@ -6,12 +6,12 @@ EAPI=7
 XORG_MULTILIB=no
 inherit xorg-3
 
+DESCRIPTION="X.Org Compose Key tables from libX11"
 # xorg-3.eclass would attempt to fetch a tarball with a matching name to this package
 SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/lib/libX11-${PV}.tar.${XORG_TARBALL_SUFFIX}"
 S="${WORKDIR}/libX11-${PV}/"
 
-DESCRIPTION="X.Org Compose Key tables from libX11"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 # Only needed by configure
 DEPEND="
@@ -31,10 +31,10 @@ src_compile() {
 	emake -C nls
 }
 
-src_install() {
-	emake DESTDIR="${D}" -C nls install
-}
-
 src_test() {
 	:;
+}
+
+src_install() {
+	emake DESTDIR="${D}" -C nls install
 }

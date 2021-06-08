@@ -1,19 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="no"
-GNOME2_LA_PUNT="yes"
+EAPI=7
+
 GNOME_TARBALL_SUFFIX="bz2"
+inherit gnome2 virtualx
 
-inherit eutils gnome2 virtualx
-
-DESCRIPTION="A text widget implementing syntax highlighting and other features"
+DESCRIPTION="Text widget implementing syntax highlighting and other features"
 HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND="
@@ -21,7 +19,8 @@ RDEPEND="
 	>=dev-libs/libxml2-2.5:2
 	>=dev-libs/glib-2.14:2
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.40
@@ -29,19 +28,19 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+DOCS=( AUTHORS ChangeLog HACKING MAINTAINERS NEWS README )
+
+# Patch from 3.x for bug #394925
+PATCHES=( "${FILESDIR}/${P}-G_CONST_RETURN.patch" )
+
 src_prepare() {
-	DOCS="AUTHORS ChangeLog HACKING MAINTAINERS NEWS README"
+	gnome2_src_prepare
 
 	# Skip broken test until upstream bug #621383 is solved
 	sed -i -e "/guess-language/d" tests/test-languagemanager.c || die
 
 	# The same for another broken test, upstream bug #631214
 	sed -i -e "/get-language/d" tests/test-languagemanager.c || die
-
-	# Patch from 3.x for bug #394925
-	epatch "${FILESDIR}/${P}-G_CONST_RETURN.patch"
-
-	gnome2_src_prepare
 }
 
 src_configure() {
@@ -49,7 +48,7 @@ src_configure() {
 }
 
 src_test() {
-	Xemake check
+	virtx emake check
 }
 
 src_install() {

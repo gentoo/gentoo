@@ -1,5 +1,5 @@
---- calc-2.12.5.3/Makefile
-+++ calc-2.12.5.3/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1136,14 +1136,14 @@
  BLD_TYPE= calc-dynamic-only
  #

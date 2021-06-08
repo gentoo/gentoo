@@ -1,22 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="A special version of RepBase used by RepeatMasker"
 HOMEPAGE="http://repeatmasker.org/"
 SRC_URI="repeatmaskerlibraries-${PV}.tar.gz"
+S="${WORKDIR}/Libraries"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
-
-S="${WORKDIR}/Libraries"
-
 RESTRICT="fetch"
 
 pkg_nofetch() {
@@ -27,8 +21,9 @@ pkg_nofetch() {
 }
 
 src_install() {
+	HTML_DOCS=( README.html )
+	einstalldocs
+
 	insinto /usr/share/repeatmasker/Libraries
-	doins "${S}"/RepeatMaskerLib.embl
-	dodoc README
-	dohtml README.html
+	doins RepeatMaskerLib.embl
 }

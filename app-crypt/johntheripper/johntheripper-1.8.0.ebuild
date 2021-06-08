@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cuda eutils flag-o-matic toolchain-funcs multilib
+inherit cuda flag-o-matic toolchain-funcs
 
 MY_PN="john"
 MY_P="${MY_PN}-${PV}"

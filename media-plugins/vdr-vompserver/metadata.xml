@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
+<maintainer type="person" proxied="yes">
   <email>pfrank@gmx.de</email>
   <name>Petric Frank</name>
 </maintainer>
@@ -10,7 +10,7 @@
   <email>vdr@gentoo.org</email>
   <name>Gentoo VDR Project</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
   <email>proxy-maint@gentoo.org</email>
   <name>Proxy Maintainers</name>
 </maintainer>

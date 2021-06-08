@@ -46,3 +46,9 @@ python_check_deps() {
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
+
+src_install() {
+	meson_src_install
+
+	mv "${ED}"/usr/share/doc/{xorgproto,${P}} || die
+}

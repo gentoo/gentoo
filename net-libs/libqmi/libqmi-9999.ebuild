@@ -3,7 +3,6 @@
 
 EAPI=7
 
-inherit multilib
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi.git"
@@ -34,11 +33,14 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-Werror \
-		--disable-static \
-		$(use_enable mbim mbim-qmux) \
+	local myconf=(
+		--disable-Werror
+		--disable-static
+		--disable-qrtr # libqrtr-glib not packaged
+		$(use_enable mbim mbim-qmux)
 		$(use_enable {,gtk-}doc)
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {

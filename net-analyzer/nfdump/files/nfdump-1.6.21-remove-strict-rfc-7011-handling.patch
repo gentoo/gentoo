@@ -1,0 +1,49 @@
+From f5ae2b821c22ebe0c96f3516d4e90f4255633828 Mon Sep 17 00:00:00 2001
+From: Peter Haag <peter@people.ops-trust.net>
+Date: Sat, 8 Aug 2020 16:46:04 +0200
+Subject: [PATCH] Re-address issue #231 - remove strict rule rfc 7011
+
+---
+ ChangeLog   | 3 +++
+ bin/ipfix.c | 3 ---
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index a0b2b67..8b92e58 100755
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,6 @@
++2020-08-02
++- Re-address issue #231 - remove strict rule rfc 7011
++
+ 2020-08-02
+ - Release 1.6.21
+ - Address issue #159. Implement rfc 7011 and include sender UDP port into unique template identification
+diff --git a/bin/ipfix.c b/bin/ipfix.c
+index a730a8b..19c9d63 100644
+--- a/bin/ipfix.c
++++ b/bin/ipfix.c
+@@ -158,7 +158,6 @@ typedef struct exporterDomain_s {
+ 
+ 	// exporter information
+ 	exporter_info_record_t info;
+-	in_port_t	port;				// follow rfc 7011 - matching src port
+ 
+ 	uint64_t	packets;			// number of packets sent by this exporter
+ 	uint64_t	flows;				// number of flow records sent by this exporter
+@@ -383,7 +382,6 @@ uint32_t ObservationDomain = ntohl(ipfix_header->ObservationDomain);
+ 
+ 	while ( *e ) {
+ 		if ( (*e)->info.id == ObservationDomain && (*e)->info.version == 10 && 
+-			 (*e)->port == fs->port &&
+ 			 (*e)->info.ip.V6[0] == fs->ip.V6[0] && (*e)->info.ip.V6[1] == fs->ip.V6[1]) 
+ 			return *e;
+ 		e = &((*e)->next);
+@@ -412,7 +410,6 @@ uint32_t ObservationDomain = ntohl(ipfix_header->ObservationDomain);
+ 	(*e)->info.header.size  = sizeof(exporter_info_record_t);
+ 	(*e)->info.id 			= ObservationDomain;
+ 	(*e)->info.ip			= fs->ip;
+-	(*e)->port				= fs->port;
+ 	(*e)->info.sa_family	= fs->sa_family;
+ 	(*e)->info.version 		= 10;
+ 	(*e)->info.sysid	 	= 0;

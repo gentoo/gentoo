@@ -1,0 +1,12 @@
+diff --git a/test/gtest/CMakeLists.txt b/test/gtest/CMakeLists.txt
+--- a/test/gtest/CMakeLists.txt	(revision 5a08124d541319d39886710afc1d61dfff5575a1)
++++ b/test/gtest/CMakeLists.txt	(date 1615011059253)
+@@ -1,8 +1,5 @@
+ set (GOOGLETEST_VERSION "1.10.0")
+
+-add_subdirectory(gtest-1.10.0)
+-include_directories(./gtest-1.10.0/include)
+-
+ set (SOURCES
+     test.h
+     sidx_api_test.h

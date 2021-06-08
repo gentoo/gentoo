@@ -1,6 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joshua Kinard <kumba@gentoo.org> (2021-05-20)
+# mask USE 'test' on MIPS for setuptools  and jaraco-path due to
+# the very deep dependency chain that is enabled.  Will unmask
+# on a future date.
+# Bug #774216
+dev-python/jaraco-path test
+dev-python/setuptools test
+
 # Sam James <sam@gentoo.org> (2021-02-06)
 # media-sound/sndio is not yet keyworded here
 # bug #769098, bug #769122
@@ -156,10 +164,6 @@ net-fs/samba ads cluster
 # Matt Turner <mattst88@gentoo.org> (2010-12-06)
 # dev-db/tokyocabinet not keyworded
 mail-client/mutt tokyocabinet
-
-# Matt Turner <mattst88@gentoo.org> (2010-12-26)
-# dev-lang/spidermonkey not keyworded
-www-client/elinks javascript
 
 # Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # media-gfx/ufraw not keyworded

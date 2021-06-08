@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit font
 
@@ -13,10 +13,8 @@ LICENSE="MIT OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
 RESTRICT="binchecks strip"
 
-DEPEND=""
-RDEPEND=""
-
 FONT_SUFFIX="ttf"
-DOCS="Readme.md"
+DOCS=( Readme.md )

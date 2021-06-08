@@ -13,7 +13,7 @@ SRC_URI="https://downloads.mariadb.org/interstitial/connector-odbc-${PV}/${P}-ga
 
 LICENSE="LGPL-2.1"
 SLOT="0/3.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="ssl"
 
 S="${S}-ga-src"

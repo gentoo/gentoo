@@ -6,7 +6,7 @@ EAPI=7
 DUNE_PKG_NAME="sqlite3"
 inherit dune
 
-DESCRIPTION="A package for ocaml that provides access to SQLite databases"
+DESCRIPTION="SQLite3 bindings for OCaml"
 HOMEPAGE="http://mmottl.github.io/sqlite3-ocaml/"
 SRC_URI="https://github.com/mmottl/sqlite3-ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/sqlite3-ocaml-${PV}"
@@ -19,12 +19,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-db/sqlite-3.3.3"
 BDEPEND="
-	>=dev-lang/ocaml-4.05
+	>=dev-lang/ocaml-4.06
 	dev-ml/dune-configurator
 "
 DEPEND="${RDEPEND}
-	dev-ml/base:=
-	dev-ml/stdio:=
-	dev-ml/configurator:=
-	test? ( dev-ml/ppx_inline_test )
+	test? (
+		dev-ml/ppx_inline_test
+	)
 "

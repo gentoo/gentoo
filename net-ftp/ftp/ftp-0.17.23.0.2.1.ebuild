@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils toolchain-funcs flag-o-matic versionator
+inherit epatch toolchain-funcs flag-o-matic versionator
 
 PATCH_VER="2"
 MY_PN="netkit-ftp"
@@ -19,15 +19,15 @@ SRC_URI="ftp://sunsite.unc.edu/pub/Linux/system/network/netkit/${MY_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
-IUSE="ipv6 libressl readline ssl"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+IUSE="ipv6 readline ssl"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.2:=
 	readline? ( sys-libs/readline:0= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= ) )
+		dev-libs/openssl:0=
+	)
 "
 DEPEND="${RDEPEND}"
 

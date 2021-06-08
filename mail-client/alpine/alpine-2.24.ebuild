@@ -14,16 +14,13 @@ SRC_URI="http://alpine.x10host.com/alpine/release/src/${P}.tar.xz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
-IUSE="+chappa doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
+IUSE="+chappa doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND="sys-libs/ncurses
 	kerberos? ( app-crypt/mit-krb5 )
 	ldap? ( net-nds/openldap )
 	spell? ( app-text/aspell )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="${DEPEND}
 	app-misc/mime-types

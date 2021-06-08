@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils
+inherit toolchain-funcs
 
 if [[ ${PV} =~ 99999999$ ]]; then
 	inherit git-r3
@@ -21,9 +21,11 @@ HOMEPAGE="https://neomutt.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet libressl
+IUSE="autocrypt berkdb doc gdbm gnutls gpgme idn kerberos kyotocabinet
 	lmdb nls notmuch pgp-classic qdbm sasl selinux slang smime-classic
 	ssl tokyocabinet test"
+REQUIRED_USE="
+	autocrypt? ( gpgme )"
 
 CDEPEND="
 	app-misc/mime-types
@@ -43,16 +45,14 @@ CDEPEND="
 	tokyocabinet? ( dev-db/tokyocabinet )
 	gnutls? ( >=net-libs/gnutls-1.0.17:= )
 	gpgme? ( >=app-crypt/gpgme-1.13.1:= )
+	autocrypt? ( >=dev-db/sqlite-3 )
 	idn? ( net-dns/libidn:= )
 	kerberos? ( virtual/krb5 )
 	notmuch? ( net-mail/notmuch:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	!slang? ( sys-libs/ncurses:0= )
 	slang? ( sys-libs/slang )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2u:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.0.2u:0= )
 "
 DEPEND="${CDEPEND}
 	dev-lang/tcl:=
@@ -80,6 +80,7 @@ src_configure() {
 		"$(use_enable nls)"
 		"$(use_enable notmuch)"
 
+		"$(use_enable autocrypt)"
 		"$(use_enable gpgme)"
 		"$(use_enable pgp-classic pgp)"
 		"$(use_enable smime-classic smime)"
@@ -103,7 +104,7 @@ src_configure() {
 		"$(usex test --testing --disable-testing)"
 	)
 
-	econf CCACHE=none "${myconf[@]}"
+	econf CCACHE=none CC_FOR_BUILD=$(tc-getCC) "${myconf[@]}"
 }
 
 src_test() {
@@ -144,5 +145,10 @@ pkg_postinst() {
 		ewarn "  support.  You can probably remove pgp-classic (old crypt)"
 		ewarn "  and smime-classic (old smime) from your USE-flags and"
 		ewarn "  only enable gpgme."
+	fi
+
+	if use autocrypt && ! use idn; then
+		ewarn "  It is highly recommended that NeoMutt be also configured"
+		ewarn "  with idn when autocrypt is enabled."
 	fi
 }

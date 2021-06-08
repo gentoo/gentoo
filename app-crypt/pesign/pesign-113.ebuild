@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Tools for manipulating signed PE-COFF binaries"
 HOMEPAGE="https://github.com/rhboot/pesign"
@@ -12,24 +12,31 @@ SRC_URI="https://github.com/rhboot/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
 RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
+	dev-libs/openssl:0=
 	dev-libs/popt
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux
 	sys-libs/efivar
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/help2man
 	sys-boot/gnu-efi
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-113-nss.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-113-nss.patch
+	"${FILESDIR}"/${PN}-113-enum-conversion.patch
+)
+
+src_configure() {
+	append-cflags -O1 #721934
+	default
+}
 
 src_compile() {
 	emake AR="$(tc-getAR)" \
@@ -47,6 +54,5 @@ src_install() {
 	einstalldocs
 
 	# remove some files that don't make sense for Gentoo installs
-	rm -rf "${ED%/}/etc/" "${ED%/}/var/" \
-		"${ED%/}/usr/share/doc/${PF}/COPYING" || die
+	rm -rf "${ED}/etc" "${ED}/var" "${ED}/usr/share/doc/${PF}/COPYING" || die
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{7,8} )
+EAPI=7
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1
 
@@ -17,7 +17,8 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-mobilephone/gammu-1.34.0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	test? (
 		$(python_gen_impl_dep sqlite)

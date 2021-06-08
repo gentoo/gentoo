@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,10 +7,10 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake toolchain-funcs python-any-r1 llvm
 
-LLVM_MAX_SLOT=10
+LLVM_MAX_SLOT=12
 
 DESCRIPTION="Intel SPMD Program Compiler"
-HOMEPAGE="https://ispc.github.com/"
+HOMEPAGE="https://ispc.github.io/"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
@@ -24,7 +24,7 @@ LICENSE="BSD BSD-2 UoI-NCSA"
 SLOT="0"
 IUSE="examples"
 
-RDEPEND="<sys-devel/clang-11:="
+RDEPEND="<sys-devel/clang-13:="
 DEPEND="
 	${RDEPEND}
 	${PYTHON_DEPS}
@@ -36,9 +36,11 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.13.0-cmake-gentoo-release.patch"
-	"${FILESDIR}/${PN}-1.14.0-llvm-10.patch"
-	"${FILESDIR}/${PN}-1.13.0-werror.patch"
+	"${FILESDIR}/${PN}-9999-llvm.patch"
+	"${FILESDIR}/${PN}-9999-werror.patch"
 )
+
+CMAKE_BUILD_TYPE="RelWithDebInfo"
 
 llvm_check_deps() {
 	has_version -d "sys-devel/clang:${LLVM_SLOT}"
@@ -60,6 +62,7 @@ src_configure() {
 	local mycmakeargs=(
 		"-DARM_ENABLED=$(usex arm)"
 		"-DCMAKE_SKIP_RPATH=ON"
+		"-DISPC_NO_DUMPS=ON"
 	)
 	cmake_src_configure
 }
@@ -71,11 +74,11 @@ src_install() {
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
 		docompress -x "/usr/share/doc/${PF}/examples"
-		doins -r "${BUILD_DIR}"/examples/*
+		doins -r "${S}"/examples/*
 	fi
 }
 
 src_test() {
 	# Inject path to prevent using system ispc
-	PATH="${BUILD_DIR}/bin:${PATH}" ${EPYTHON} run_tests.py || die "Testing failed under ${EPYTHON}"
+	PATH="${BUILD_DIR}/bin:${PATH}" ${EPYTHON} ./run_tests.py || die "Testing failed under ${EPYTHON}"
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.musl-libc.org/musl"
 	inherit git-r3
@@ -28,7 +28,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
-HOMEPAGE="http://www.musl-libc.org/"
+HOMEPAGE="https://musl.libc.org"
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
 IUSE="headers-only"

@@ -1,0 +1,29 @@
+From cdaef312247a3ed18c9fdcea084058e5f25a7f3e Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@gentoo.org>
+Date: Sat, 27 Mar 2021 17:07:21 +0100
+Subject: defaults/modules_load: Add support for Lenovo / Thinkpad devices
+
+Support for IBM/Lenovo devices that are not fully compliant with HID standard.
+
+Reported-by: Patrick Lauer <patrick@gentoo.org>
+Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
+---
+ defaults/modules_load | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/defaults/modules_load b/defaults/modules_load
+index 1cc1478..cee5f4d 100644
+--- a/defaults/modules_load
++++ b/defaults/modules_load
+@@ -24,7 +24,7 @@ MODULES_ISCSI="scsi_transport_iscsi libiscsi iscsi_tcp"
+ # Hardware (Pluggable)
+ MODULES_FIREWIRE="ieee1394 ohci1394 sbp2"
+ MODULES_PCMCIA="pcmcia pcmcia_core yenta_socket pd6729 i82092 i82365 tcic ds ide-cs firmware_class"
+-MODULES_USB="ehci-pci ehci-hcd xhci-hcd xhci-pci xhci-plat xhci-plat-hcd uhci usb-ohci hid usb-storage uas uhci-hcd ohci-hcd usbhid hid-generic sl811-hcd hid-a4tech hid-apple hid-belkin hid-cherry hid-chicony hid-cypress hid-dummy hid-ezkey hid-gyration hid-logitech hid-logitech-dj hid-microsoft hid-monterey hid-petalynx hid-pl hid-samsung hid-sony hid-sunplus"
++MODULES_USB="ehci-pci ehci-hcd xhci-hcd xhci-pci xhci-plat xhci-plat-hcd uhci usb-ohci hid usb-storage uas uhci-hcd ohci-hcd usbhid hid-generic sl811-hcd hid-a4tech hid-apple hid-belkin hid-cherry hid-chicony hid-cypress hid-dummy hid-ezkey hid-gyration hid-lenovo hid-logitech hid-logitech-dj hid-microsoft hid-monterey hid-petalynx hid-pl hid-samsung hid-sony hid-sunplus"
+ 
+ # Filesystems
+ MODULES_FS="ext2 ext3 ext4 btrfs reiserfs jfs nfs xfs zfs f2fs fuse virtiofs loop squashfs aufs overlay cramfs configfs fscrypto msdos"
+-- 
+cgit v1.2.3
+

@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -219,7 +219,10 @@
+ 
+ if test "x$UUCPLOCK" != x
+ then
+-	if test -d $UUCPLOCK
++	dnl If a lock directory was manually specified, do not test it actually,
++	dnl as that might not be true during a chroot build, and the
++	dnl packager is responsible for making sure it exists at runtime.
++	if true
+ 	then
+ 		AC_MSG_RESULT($UUCPLOCK)
+ 		AC_DEFINE_UNQUOTED(UUCPLOCK, "$UUCPLOCK", [Lock directory])

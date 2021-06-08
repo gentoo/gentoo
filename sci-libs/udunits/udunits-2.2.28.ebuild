@@ -25,8 +25,9 @@ src_install() {
 
 	local i
 	for i in udunits2 udunits2-{accepted,base,common,derived,prefixes}; do
-		dosym ../../udunits/"${i}".xml usr/share/doc/${PF}/"${i}".xml
+		dosym ../../../udunits/"${i}".xml usr/share/doc/${PF}/html/"${i}".xml
 	done
+	rm "${ED}/usr/share/doc/${PF}/html/*.xml" || die
 
 	# no static archives
 	find "${ED}" -name '*.la' -delete || die

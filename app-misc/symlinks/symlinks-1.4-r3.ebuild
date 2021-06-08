@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic eutils toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Scans for and fixes broken or messy symlinks"
 HOMEPAGE="http://www.ibiblio.org/pub/linux/utils/file/"

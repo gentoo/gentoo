@@ -10,19 +10,18 @@
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
 
-# Do not complain about CFLAGS etc since ml projects do not use them.
+# Do not complain about CFLAGS etc since ML projects do not use them.
 QA_FLAGS_IGNORED='.*'
 
-# From this findlib version there is proper stublibs support.
+# From this findlib version, there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
 [[ ${FINDLIB_USE} ]] && DEPEND="${FINDLIB_USE}? ( ${DEPEND} )"
 
 check_ocamlfind() {
-	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ]
-	then
-		eerror "In findlib.eclass: could not find the ocamlfind executable"
-		eerror "Please report this bug on gentoo's bugzilla, assigning to ml@gentoo.org"
-		die "ocamlfind executabled not found"
+	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ] ; then
+		eerror "In ${ECLASS}: could not find the ocamlfind executable"
+		eerror "Please report this bug on Gentoo's Bugzilla, assigning to ml@gentoo.org"
+		die "ocamlfind executable not found"
 	fi
 }
 

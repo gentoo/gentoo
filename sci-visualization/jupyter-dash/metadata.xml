@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		This library makes it easy to develop Plotly Dash apps interactively
+		from within Jupyter environments (e.g. classic Notebook, JupyterLab,
+		Visual Studio Code notebooks, nteract, PyCharm notebooks, etc.).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">plotly/jupyter-dash</remote-id>
+	</upstream>
+</pkgmetadata>

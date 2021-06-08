@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -19,11 +19,6 @@
     <flag name="translator">
     Add dependency over <pkg>dev-ruby/mechanize</pkg>, which is needed
     to enable the "translator" plugin for rbot. If the USE flag is
-    disabled the plugin is also disabled by default.
-  </flag>
-    <flag name="shorturl">
-    Add dependency over <pkg>dev-ruby/shorturl</pkg>, which is needed
-    to enable the "shortenurl" plugin for rbot. If the USE flag is
     disabled the plugin is also disabled by default.
   </flag>
     <flag name="nls">

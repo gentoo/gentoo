@@ -26,6 +26,10 @@ BDEPEND="app-arch/xz-utils
 
 DOCS=( ChangeLog README.markdown )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.1-slibtool.patch
+)
+
 src_prepare() {
 	default
 

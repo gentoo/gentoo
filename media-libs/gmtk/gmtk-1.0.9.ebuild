@@ -1,8 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils ltprune
 
 DESCRIPTION="GTK+ widget and function libraries for gnome-mplayer"
 HOMEPAGE="https://code.google.com/p/gmtk/"
@@ -43,5 +42,5 @@ src_install() {
 	default
 
 	rm -rf "${ED}"/usr/share/doc/${PN}
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

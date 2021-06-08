@@ -22,14 +22,20 @@ esac
 QA_FLAGS_IGNORED='.*'
 
 # @ECLASS-VARIABLE: OPAM_INSTALLER_DEP
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Override dependency for OPAM_INSTALLER
 : ${OPAM_INSTALLER_DEP:="dev-ml/opam-installer"}
 
 RDEPEND=">=dev-lang/ocaml-4:="
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) DEPEND="${RDEPEND} ${OPAM_INSTALLER_DEP}";;
-	*) BDEPEND="${OPAM_INSTALLER_DEP} dev-lang/ocaml"; DEPEND="${RDEPEND}" ;;
+	5|6)
+		DEPEND="${RDEPEND} ${OPAM_INSTALLER_DEP}"
+		;;
+	*)
+		BDEPEND="${OPAM_INSTALLER_DEP} dev-lang/ocaml"
+		DEPEND="${RDEPEND}"
+		;;
 esac
 
 # @ECLASS-VARIABLE: OPAM_INSTALLER

@@ -9,6 +9,7 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Adds a framework that allows registering new assertions
 		without compromising builtin assertion functionality.

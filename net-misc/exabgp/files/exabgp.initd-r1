@@ -7,8 +7,8 @@
 
 command="capsh"
 command_args="
-	--uid=${EXABGP_USER:=exabgp}
-	--gid=${EXABGP_GROUP:=exabgp}
+	--groups=${EXABGP_GROUP:=exabgp}
+	--user=${EXABGP_USER:=exabgp}
 	--caps='cap_net_admin+epi cap_setuid+ep-i cap_setgid+ep-i'
 	-- -c \"/usr/bin/exabgp ${EXABGP_ARGS}\""
 

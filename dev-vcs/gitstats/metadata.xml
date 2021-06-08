@@ -10,8 +10,8 @@
 		<name>Guilherme Amadio</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>NP-Hardass@gentoo.org</email>
-		<name>NP-Hardass</name>
+		<email>np-hardass@gentoo.org</email>
+		<name>Adam Feldman</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">gitstats</remote-id>

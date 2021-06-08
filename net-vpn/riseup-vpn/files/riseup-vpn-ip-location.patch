@@ -1,0 +1,13 @@
+diff --git a/helpers/bitmask-root b/helpers/bitmask-root
+index 13ba407..7c08b21 100644
+--- a/helpers/bitmask-root
++++ b/helpers/bitmask-root
+@@ -106,7 +106,7 @@ def swhich(binary):
+ 
+     :rtype: str
+     """
+-    for folder in ["/sbin", "/usr/sbin", "/usr/local/sbin"]:
++    for folder in ["/bin", "/sbin", "/usr/sbin", "/usr/local/sbin"]:
+         path = os.path.join(folder, binary)
+         if os.path.isfile(path):
+             return path

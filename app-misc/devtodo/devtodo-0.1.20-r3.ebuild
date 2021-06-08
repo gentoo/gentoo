@@ -39,7 +39,7 @@ src_prepare() {
 	mv util/{,DT}Regex.h || die
 
 	sed \
-		-e "/^LIBS/s:$: $($(tc-getPKG_CONFIG) --libs ncursesw):g" \
+		-e "/^LIBS/s:$: $($(tc-getPKG_CONFIG) --libs ncurses):g" \
 		-i src/Makefile.am  || die
 
 	eautoreconf

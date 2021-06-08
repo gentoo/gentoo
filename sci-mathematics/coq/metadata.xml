@@ -20,9 +20,6 @@
 	Constructions" extended by a modular development system for
 	theories.
 	</longdescription>
-	<use>
-		<flag name="camlp5">Build using camlp5. This is required for some plugins like Ssreflect.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">coq/coq</remote-id>
 	</upstream>

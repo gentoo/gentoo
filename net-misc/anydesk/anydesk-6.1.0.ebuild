@@ -97,10 +97,7 @@ pkg_postinst() {
 		elog
 	fi
 
-	elog "For querying information about the host PC AnyDesk calls"
-	elog "the following commands. Feel free to install them, but it"
-	elog "should run without as well."
-	elog
+	optfeature_header "AnyDesk uses additional tools to query information about the host:"
 	optfeature "lsb_release" sys-apps/lsb-release
 	optfeature "lspci" sys-apps/pciutils
 	optfeature "lsusb" sys-apps/usbutils

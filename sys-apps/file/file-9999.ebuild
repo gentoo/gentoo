@@ -43,7 +43,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	if [[ ${PV} == 9999 ]]; then
+	if [[ ${PV} == 9999 ]] ; then
 		eautoreconf
 	fi
 
@@ -85,9 +85,9 @@ need_build_file() {
 }
 
 src_configure() {
-	local ECONF_SOURCE=${S}
+	local ECONF_SOURCE="${S}"
 
-	if need_build_file; then
+	if need_build_file ; then
 		mkdir -p "${WORKDIR}"/build || die
 		cd "${WORKDIR}"/build || die
 		build_src_configure
@@ -107,7 +107,7 @@ multilib_src_compile() {
 }
 
 src_compile() {
-	if need_build_file; then
+	if need_build_file ; then
 		emake -C "${WORKDIR}"/build/src magic.h #586444
 		emake -C "${WORKDIR}"/build/src file
 		local -x PATH="${WORKDIR}/build/src:${PATH}"
@@ -132,7 +132,6 @@ multilib_src_install_all() {
 	dodoc ChangeLog MAINT README
 
 	# Required for `file -C`
-	dodir /usr/share/misc/magic
 	insinto /usr/share/misc/magic
 	doins -r magic/Magdir/*
 

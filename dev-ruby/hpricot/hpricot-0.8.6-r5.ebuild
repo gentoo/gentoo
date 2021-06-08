@@ -8,7 +8,7 @@ USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG README.md"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem epatch
 
 DESCRIPTION="A fast and liberal HTML parser for Ruby"
 HOMEPAGE="https://wiki.github.com/hpricot/hpricot"

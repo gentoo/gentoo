@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="afs mem-scramble +net nls +readline static"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
@@ -46,18 +46,19 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.0-configure.patch #304901
+	"${FILESDIR}"/${PN}-4.0-configure.patch # bug #304901
 	"${FILESDIR}"/${PN}-4.x-deferred-heredocs.patch
 
-	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch #41002
-	"${FILESDIR}"/${PN}-4.0-ldflags-for-build.patch #211947
+	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch # bug #41002
+	"${FILESDIR}"/${PN}-4.0-ldflags-for-build.patch # bug #211947
 	"${FILESDIR}"/${PN}-4.0-negative-return.patch
-	"${FILESDIR}"/${PN}-4.0-parallel-build.patch #267613
+	"${FILESDIR}"/${PN}-4.0-parallel-build.patch # bug #267613
 	"${FILESDIR}"/${PN}-4.2-dev-fd-buffer-overflow.patch #431850
 )
 
 pkg_setup() {
-	if is-flag -malign-double ; then #7332
+	# bug #7332
+	if is-flag -malign-double ; then
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
@@ -80,13 +81,19 @@ src_prepare() {
 	default
 
 	sed -i '1i#define NEED_FPURGE_DECL' execute_cmd.c || die # needs fpurge() decl
-	sed -i '/\.o: .*shell\.h/s:$: pathnames.h:' Makefile.in || die #267613
+	sed -i '/\.o: .*shell\.h/s:$: pathnames.h:' Makefile.in || die # bug #267613
 }
 
 src_configure() {
 	local myconf=(
 		--with-installed-readline=.
+
+		# Force linking with system curses ... the bundled termcap lib
+		# sucks bad compared to ncurses.  For the most part, ncurses
+		# is here because readline needs it.  But bash itself calls
+		# ncurses in one or two small places :(.
 		--with-curses
+
 		$(use_with afs)
 		$(use_enable net net-redirections)
 		--disable-profiling
@@ -120,12 +127,9 @@ src_configure() {
 	# is at least what's in the DEPEND up above.
 	export ac_cv_rl_version=6.2
 
-	# Force linking with system curses ... the bundled termcap lib
-	# sucks bad compared to ncurses.  For the most part, ncurses
-	# is here because readline needs it.  But bash itself calls
-	# ncurses in one or two small places :(.
+	# bug #444070
+	tc-export AR
 
-	tc-export AR #444070
 	econf "${myconf[@]}"
 }
 

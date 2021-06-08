@@ -22,16 +22,8 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 # dev-python/nbformat-5.1.{0..2} did not install package data
 BDEPEND="
 	test? (
-		|| (
-			>=dev-python/nbformat-5.1.2-r1[${PYTHON_USEDEP}]
-			<dev-python/nbformat-5.1[${PYTHON_USEDEP}]
-		)
+		>=dev-python/nbformat-5.1.2-r1[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests pytest
+distutils_enable_tests --install pytest
 distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
-
-python_test() {
-	local -x PYTHONPATH=.
-	pytest -vv || die "Test fail with ${EPYTHON}"
-}

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info multilib pam toolchain-funcs
+inherit linux-info pam toolchain-funcs
 
 PATCH_TARBALL_NAME="${PN}-2.4.9-patches-02"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
@@ -14,19 +14,19 @@ SRC_URI="https://github.com/paulusmack/ppp/archive/${P}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="activefilter atm dhcp +eap-tls gtk ipv6 libressl pam radius"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="activefilter atm dhcp +eap-tls gtk ipv6 pam radius"
 
 DEPEND="
 	activefilter? ( net-libs/libpcap )
 	atm? ( net-dialup/linux-atm )
 	pam? ( sys-libs/pam )
 	gtk? ( x11-libs/gtk+:2 )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}
 	!<net-misc/netifrc-0.7.1-r2"
+BDEPEND="virtual/pkgconfig"
 PDEPEND="net-dialup/ppp-scripts"
 
 S="${WORKDIR}/${PN}-${P}"
@@ -82,11 +82,11 @@ src_prepare() {
 		pppd/{pathnames.h,pppd.8} || die
 
 	if use radius ; then
-		#set the right paths in radiusclient.conf
+		# Set the right paths in radiusclient.conf
 		sed -e "s:/usr/local/etc:/etc:" \
 			-e "s:/usr/local/sbin:/usr/sbin:" \
 			-i pppd/plugins/radius/etc/radiusclient.conf || die
-		#set config dir to /etc/ppp/radius
+		# Set config dir to /etc/ppp/radius
 		sed -i -e "s:/etc/radiusclient:/etc/ppp/radius:g" \
 			pppd/plugins/radius/{*.8,*.c,*.h} \
 			pppd/plugins/radius/etc/* || die

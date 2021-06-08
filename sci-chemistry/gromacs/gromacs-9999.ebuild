@@ -9,14 +9,14 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 cmake cuda distutils-r1 eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake cuda distutils-r1 flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
-if [[ $PV = *9999* ]]; then
+if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="
 		https://gitlab.com/gromacs/gromacs.git
 		https://github.com/gromacs/gromacs.git
 		git://git.gromacs.org/gromacs.git"
-	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
+	[[ ${PV} = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 else
 	SRC_URI="
@@ -35,7 +35,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +custom-cflags +doc -double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +custom-cflags +doc double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -84,8 +84,6 @@ RESTRICT="!test? ( test )"
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
 fi
-
-PATCHES=( "${FILESDIR}/${PN}-2020_beta1-pytest.patch" )
 
 pkg_pretend() {
 	[[ $(gcc-version) == "4.1" ]] && die "gcc 4.1 is not supported by gromacs"
@@ -300,7 +298,7 @@ src_compile() {
 src_test() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake_src_make check
+			cmake_src_compile check
 	done
 }
 

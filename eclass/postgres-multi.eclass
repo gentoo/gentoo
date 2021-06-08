@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 inherit multibuild postgres
@@ -8,7 +8,8 @@ EXPORT_FUNCTIONS pkg_setup src_prepare src_compile src_install src_test
 # @ECLASS: postgres-multi.eclass
 # @MAINTAINER:
 # PostgreSQL <pgsql-bugs@gentoo.org>
-# @AUTHOR: Aaron W. Swenson <titanofold@gentoo.org>
+# @AUTHOR:
+# Aaron W. Swenson <titanofold@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass to build PostgreSQL-related packages against multiple slots
 # @DESCRIPTION:
@@ -24,6 +25,7 @@ esac
 
 
 # @ECLASS-VARIABLE: POSTGRES_COMPAT
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # A Bash array containing a list of compatible PostgreSQL slots as

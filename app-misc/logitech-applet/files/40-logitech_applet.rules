@@ -1,6 +1,0 @@
-ACTION!="add", GOTO="logitech_applet_rules_end"
-SUBSYSTEM!="usb*", GOTO="logitech_applet_rules_end"
-
-ATTRS{manufacturer}=="Logitech", ATTRS{product}=="USB-PS/2 Optical Mouse", RUN+="/usr/sbin/logitech_applet -s 800"
-
-LABEL="logitech_applet_rules_end"

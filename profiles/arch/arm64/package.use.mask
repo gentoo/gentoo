@@ -1,13 +1,25 @@
-
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-04-14)
+# Supports 64-bit NEON
+# Note: libpng-compat 1.5.30 does NOT seem to.
+media-libs/libpng -cpu_flags_arm_neon
+
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# Unmask TPM on supported archs.
+sys-apps/systemd -tpm
+
+# Sam James <sam@gentoo.org> (2021-03-20)
+# Supports both 'neon32' and 'neon64'
+sys-libs/zlib-ng -cpu_flags_arm_neon
 
 # Patrick McLean <chutzpah@gentoo.org> (2021-02-25)
 # Requires unkeyworded dev-libs/pmdk, mask until keyworded
 sys-cluster/ceph pmdk rbd-rwl
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-24)
-# Invert the theme-manager mask as it bouilds and tests here 
+# Invert the theme-manager mask as it bouilds and tests here
 # Originaly set by Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # but it's in base now.
 net-irc/hexchat -theme-manager
@@ -63,14 +75,6 @@ sys-block/gparted xfs
 # dev-util/kdevelop-php is not keyworded, bug #751337
 >=kde-apps/umbrello-20.08.3 php
 
-# Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/digikam has no arm64 keyword yet. Bug #753362.
-media-gfx/gmic digikam
-
-# Marek Szuba <marecki@gentoo.org> (2020-11-06)
-# media-gfx/gmic has no arm64 keyword yet. Bug #753356.
-media-gfx/darktable gmic
-
 # Sam James <sam@gentoo.org> (2020-10-03)
 # Builds & tests pass on arm64.
 # Available on: amd64, x86, arm{,64}.
@@ -100,15 +104,6 @@ sys-block/tgt rbd
 # dev-lua/busted is not keyworded yet
 dev-lua/mpack test
 
-# Felix Janda <felix.janda@posteo.de> (2020-08-01)
-# Requires unkeyworded dev-lang/spidermonkey:17
->=www-client/elinks-0.13.3 javascript
-
-# Sam James <sam@gentoo.org> (2020-07-09)
-# mariadb[rocksdb] fails to build on arm64
-# bug #731998
-dev-db/mariadb rocksdb
-
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
 # bug #728558
@@ -119,7 +114,7 @@ media-video/ffmpeg -rav1e
 sys-block/fio -io-uring
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
@@ -196,10 +191,6 @@ sys-apps/flashrom jlink-spi
 # Aaron Bauman <bman@gentoo.org> (2019-08-05)
 # dep not keyworded here
 media-gfx/gnome-photos upnp-av
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
-# not yet keyworded
-dev-java/openjdk javafx
 
 # Aaron Bauman <bman@gentoo.org> (2019-04-08)
 # app-text/dblatex not keyword yet
@@ -282,10 +273,6 @@ www-client/chromium widevine
 www-client/vivaldi widevine
 www-client/vivaldi-snapshot widevine
 
-# Matthew Thode <prometheanfire@gentoo.org> (2018-02-23)
-# net-proxy/haproxy isn't keyworded for arm64
-sys-cluster/neutron haproxy
-
 # Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
@@ -325,10 +312,6 @@ app-emulation/libvirt xen
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
 
-# Michał Górny <mgorny@gentoo.org> (2018-01-12)
-# Those require USE=doc that is masked in this profile.
-dev-python/python-neutronclient test
-
 # Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
 # missing keywords media-libs/lastfmlib
 net-misc/gerbera lastfm
@@ -367,10 +350,6 @@ app-crypt/heimdal afs
 # Only available on some architectures.
 dev-java/icedtea -shenandoah
 
-# Markus Meier <maekke@gentoo.org> (2017-03-24)
-# unkeyworded deps, bug #552330
-app-portage/g-sorcery bson
-
 # Thomas Deutschmann <whissi@gentoo.org> (2017-03-01)
 # Unkeyworded dependencies
 app-admin/rsyslog mongodb
@@ -384,10 +363,6 @@ net-libs/libpcap bluetooth
 app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
-
-# Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
-# Chromium uses an internal tcmalloc that doesn't support this arch yet.
-www-client/chromium tcmalloc
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724

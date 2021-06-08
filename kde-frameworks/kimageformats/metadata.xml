@@ -8,5 +8,6 @@
 	<use>
 		<flag name="avif">Support the AVIF image file format</flag>
 		<flag name="eps">Support the EPS graphics file format</flag>
+		<flag name="heif">Support for HEIF/HEIC images</flag>
 	</use>
 </pkgmetadata>

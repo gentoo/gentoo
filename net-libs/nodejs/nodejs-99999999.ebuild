@@ -1,52 +1,69 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
-inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-any-r1 toolchain-funcs xdg-utils
+
+inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-EGIT_REPO_URI="https://github.com/nodejs/node"
-
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
-SLOT="0"
-KEYWORDS=""
-IUSE="cpu_flags_x86_sse2 debug doc +icu inspector +npm pax_kernel +snapshot +ssl +system-ssl systemtap test"
-RESTRICT="!test? ( test )"
-REQUIRED_USE="
-	inspector? ( icu ssl )
-	npm? ( ssl )
-	system-ssl? ( ssl )
-"
 
-RDEPEND="
-	>=app-arch/brotli-1.0.9
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/nodejs/node"
+	SLOT="0"
+else
+	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
+	SLOT="0/$(ver_cut 1)"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+	S="${WORKDIR}/node-v${PV}"
+fi
+
+IUSE="cpu_flags_x86_sse2 debug doc +icu inspector lto +npm pax_kernel +snapshot +ssl system-icu +system-ssl systemtap test"
+REQUIRED_USE="inspector? ( icu ssl )
+	npm? ( ssl )
+	system-icu? ( icu )
+	system-ssl? ( ssl )"
+
+RESTRICT="!test? ( test )"
+
+RDEPEND=">=app-arch/brotli-1.0.9
 	>=dev-libs/libuv-1.40.0:=
-	>=net-dns/c-ares-1.16.1
+	>=net-dns/c-ares-1.17.0
 	>=net-libs/nghttp2-1.41.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-67.1:= )
-	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
-"
-BDEPEND="
-	${PYTHON_DEPS}
+	system-icu? ( >=dev-libs/icu-67:= )
+	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )"
+BDEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
+	virtual/pkgconfig
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
-	pax_kernel? ( sys-apps/elfix )
-"
-DEPEND="
-	${RDEPEND}
-"
+	pax_kernel? ( sys-apps/elfix )"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-12.22.1-jinja_collections_abc.patch  # still needed as of 2021-06-04
+)
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
 
-	( [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11 ) && \
-		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
+	if [[ ${MERGE_TYPE} != "binary" ]]; then
+		if use lto; then
+			if tc-is-gcc; then
+				if [[ $(gcc-major-version) -ge 11 ]]; then
+					# Bug #787158
+					die "LTO builds of ${PN} using gcc-11+ currently fail tests and produce runtime errors. Either switch to gcc-10 or unset USE=lto for this ebuild"
+				fi
+			fi
+		fi
+	fi
 }
 
 src_prepare() {
@@ -71,13 +88,6 @@ src_prepare() {
 
 	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
 
-	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
-	# seem sandbox related either (invoking it from a sandbox works fine).
-	# The issue is that no stdin handle is openened when asked for one.
-	# It doesn't really belong upstream , so it'll just be removed until someone
-	# with more gentoo-knowledge than me (jbergstroem) figures it out.
-	rm test/parallel/test-stdout-close-unref.js || die
-
 	# debug builds. change install path, remove optimisations and override buildtype
 	if use debug; then
 		sed -i -e "s|out/Release/|out/Debug/|g" tools/install.py || die
@@ -85,13 +95,23 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.2.0-paxmarking.patch )
+	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.8.0-paxmarking.patch )
+
+	# All this test does is check if the npm CLI produces warnings of any sort,
+	# failing if it does. Overkill, much? Especially given one possible warning
+	# is that there is a newer version of npm available upstream (yes, it does
+	# use the network if available), thus making it a real possibility for this
+	# test to begin failing one day even though it was fine before.
+	rm -f test/parallel/test-release-npm.js
 
 	default
 }
 
 src_configure() {
 	xdg_environment_reset
+
+	# LTO compiler flags are handled by configure.py itself
+	filter-flags '-flto*'
 
 	local myconf=(
 		--shared-brotli
@@ -101,7 +121,14 @@ src_configure() {
 		--shared-zlib
 	)
 	use debug && myconf+=( --debug )
-	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
+	use lto && myconf+=( --enable-lto )
+	if use system-icu; then
+		myconf+=( --with-intl=system-icu )
+	elif use icu; then
+		myconf+=( --with-intl=full-icu )
+	else
+		myconf+=( --with-intl=none )
+	fi
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
@@ -155,24 +182,19 @@ src_install() {
 	fi
 
 	if use npm; then
-		dodir /etc/npm
+		keepdir /etc/npm
 
 		# Install bash completion for `npm`
-		# We need to temporarily replace default config path since
-		# npm otherwise tries to write outside of the sandbox
-		local npm_config="usr/$(get_libdir)/node_modules/npm/lib/config/core.js"
-		sed -i -e "s|'/etc'|'${ED}/etc'|g" "${ED}/${npm_config}" || die
 		local tmp_npm_completion_file="$(TMPDIR="${T}" mktemp -t npm.XXXXXXXXXX)"
 		"${ED}/usr/bin/npm" completion > "${tmp_npm_completion_file}"
 		newbashcomp "${tmp_npm_completion_file}" npm
-		sed -i -e "s|'${ED}/etc'|'/etc'|g" "${ED}/${npm_config}" || die
 
 		# Move man pages
 		doman "${LIBDIR}"/node_modules/npm/man/man{1,5,7}/*
 
 		# Clean up
-		rm "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile} || die
-		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man} || die
+		rm -f "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile}
+		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man}
 
 		local find_exp="-or -name"
 		local find_name=()
@@ -195,6 +217,12 @@ src_install() {
 }
 
 src_test() {
+	# parallel/test-fs-mkdir is known to fail with FEATURES=usersandbox
+	if has usersandbox ${FEATURES}; then
+		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
+			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	fi
+
 	out/${BUILDTYPE}/cctest || die
-	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
 }

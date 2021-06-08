@@ -14,13 +14,10 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="bindist libressl ssl readline ipv6 tcpd"
+IUSE="bindist ipv6 readline ssl tcpd"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	readline? ( sys-libs/readline:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
@@ -37,7 +34,7 @@ DOCS=( BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ FILES PORTING README SECURITY
 
 pkg_setup() {
 	# bug #587740
-	if use readline && use ssl; then
+	if use readline && use ssl ; then
 		elog "You are enabling both readline and openssl USE flags, the licenses"
 		elog "for these packages conflict. You may not be able to legally"
 		elog "redistribute the resulting binary."
@@ -45,7 +42,8 @@ pkg_setup() {
 }
 
 src_configure() {
-	filter-flags '-Wno-error*' #293324
+	# bug #293324
+	filter-flags '-Wno-error*'
 	tc-export AR
 
 	econf \

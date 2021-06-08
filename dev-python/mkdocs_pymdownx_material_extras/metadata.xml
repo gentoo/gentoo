@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>lssndrbarbieri@gmail.com</email>
 		<name>Alessandro Barbieri</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>andrewammerlaan@riseup.net</email>
+		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -24,4 +23,5 @@ Adds additional resources that are used in the PyMdown Extensions documentation,
 While this is not specifically meant for outside consumption, and was originally written for @facelessuser projects, it can be freely used if desired.
 Files are copied from the pymdown-extensions project.
 	</longdescription>
+	<stabilize-allarches/>
 </pkgmetadata>

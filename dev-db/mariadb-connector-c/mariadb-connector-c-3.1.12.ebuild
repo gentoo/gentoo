@@ -11,7 +11,7 @@ else
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.org/f/${MY_PN}-${PV%_beta}/${PN}-${MY_PV}-src.tar.gz?serve -> ${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 ~s390 sparc x86"
 fi
 
 CMAKE_ECLASS=cmake
@@ -28,7 +28,7 @@ HOMEPAGE="https://mariadb.org/"
 LICENSE="LGPL-2.1"
 
 SLOT="0/3"
-IUSE="+curl gnutls kerberos libressl +ssl static-libs test"
+IUSE="+curl gnutls kerberos +ssl static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -40,8 +40,7 @@ DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-3.3.24:0=[${MULTILIB_USEDEP}] )
 		!gnutls? (
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+			dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 		)
 	)
 	"

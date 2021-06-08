@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://jp-andre.pagesperso-orange.fr/${MY_P}.tgz"
 LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
 SLOT="0/885"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="acl debug ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="

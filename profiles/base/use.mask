@@ -4,11 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (2021-02-01)
-# dev-libs/libressl is masked for removal.
-libressl
-curl_ssl_libressl
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
@@ -19,7 +14,7 @@ php7-2
 # Nothing depends on those ROS messages. dev-ros/geneus
 # is half broken in our setup where it looks for packages
 # on the filesystem and causes build failures.
-# See e.g. https://bugs.gentoo.org/741076
+# See e.g. bug #741076
 ros_messages_eus
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
@@ -120,11 +115,3 @@ prelude
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # netlink is a Linux-specific interface
 netlink
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-18)
-# mask removed ABI_RISCV flags so they do not trigger rebuild
-# in emerge
-abi_riscv_lp64
-abi_riscv_lp64d
-abi_riscv_ilp32
-abi_riscv_ilp32d

@@ -14,12 +14,12 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/jonaski/strawberry/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cdda +dbus debug +gstreamer ipod mtp pulseaudio +udisks vlc"
+IUSE="cdda debug +gstreamer ipod mtp pulseaudio +udisks vlc"
 
 REQUIRED_USE="
 	udisks? ( dbus )
@@ -38,6 +38,7 @@ COMMON_DEPEND="
 	dev-libs/protobuf:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5[sqlite]
@@ -50,7 +51,6 @@ COMMON_DEPEND="
 	virtual/glu
 	x11-libs/libX11
 	cdda? ( dev-libs/libcdio:= )
-	dbus? ( dev-qt/qtdbus:5 )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -74,6 +74,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-cpp/gtest-1.8.0
 	dev-libs/boost
 	dev-qt/qtopengl:5
+	dev-qt/qttest:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 "
@@ -87,7 +88,6 @@ REQUIRED_USE="
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	rm -r 3rdparty/taglib || die
 	cmake_src_prepare
 }
 
@@ -100,14 +100,12 @@ src_configure() {
 		-DENABLE_GIO=ON
 		-DLINGUAS="$(l10n_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5DBus=$(usex !dbus)
 		-DENABLE_GSTREAMER="$(usex gstreamer)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
 		-DENABLE_LIBMTP="$(usex mtp)"
 		-DENABLE_LIBPULSE="$(usex pulseaudio)"
 		-DENABLE_UDISKS2="$(usex udisks)"
 		-DENABLE_VLC="$(usex vlc)"
-		-DUSE_SYSTEM_TAGLIB=ON
 		-DWITH_QT6=OFF
 	)
 

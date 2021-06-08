@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,3 +33,8 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)"
+
+src_test() {
+	export ROS_PACKAGE_PATH="${S}:${ROS_PACKAGE_PATH}"
+	ros-catkin_src_test
+}

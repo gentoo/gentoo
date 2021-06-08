@@ -1,5 +1,5 @@
---- yaz-3.0.47/configure.ac.orig	2009-07-08 04:58:43.000000000 -0700
-+++ yaz-3.0.47/configure.ac	2009-07-31 01:46:21.764545198 -0700
+--- a/configure.ac
++++ b/configure.ac
 @@ -367,14 +367,14 @@
  
  dnl

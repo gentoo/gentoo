@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 GNOME2_EAUTORECONF=yes
 VALA_MIN_API_VERSION="0.40"
 VALA_USE_DEPEND=vapigen
@@ -37,10 +37,10 @@ COMMON_DEPEND="
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.21:2
 	>=media-gfx/mypaint-brushes-2.0.2:=
-	>=media-libs/babl-0.1.84[introspection,lcms,vala?]
+	>=media-libs/babl-0.1.86[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
-	>=media-libs/gegl-0.4.28:0.4[cairo,introspection,lcms,vala?]
+	>=media-libs/gegl-0.4.30:0.4[cairo,introspection,lcms,vala?]
 	>=media-libs/gexiv2-0.10.10
 	>=media-libs/harfbuzz-2.6.5
 	>=media-libs/lcms-2.9:2
@@ -58,7 +58,7 @@ COMMON_DEPEND="
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	aqua? ( >=x11-libs/gtk-mac-integration-2.0.0 )
-	heif? ( >=media-libs/libheif-1.7.0:= )
+	heif? ( >=media-libs/libheif-1.9.1:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
 	lua? (
@@ -185,6 +185,7 @@ src_configure() {
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable doc gtk_doc)
+		$(use_enable debug)
 		$(use_enable vector-icons)
 		$(use_with aalib aa)
 		$(use_with alsa)

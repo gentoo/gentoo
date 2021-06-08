@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils java-utils-2 user
+inherit java-utils-2 user
 
 MY_P="apache-zookeeper"
 MY_PN=${MY_P}-${PV}-bin

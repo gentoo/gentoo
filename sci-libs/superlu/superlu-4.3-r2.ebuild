@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools fortran-2 toolchain-funcs
+inherit autotools fortran-2 multilib toolchain-funcs
 
 MY_PN=SuperLU
 
@@ -46,7 +46,9 @@ src_configure() {
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 	)
 
-	econf
+	tc-export PKG_CONFIG
+
+	econf "${myeconfargs[@]}"
 
 	rm EXAMPLE/*itersol1 || die
 }

@@ -5,9 +5,13 @@
 		<email>embedded@gentoo.org</email>
 		<name>Embedded Gentoo</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>fercerpav@gmail.com</email>
 		<name>Paul Fertser</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
 	</maintainer>
 	<use>
 		<flag name="capstone">Use <pkg>dev-libs/capstone</pkg> for disassembly support</flag>

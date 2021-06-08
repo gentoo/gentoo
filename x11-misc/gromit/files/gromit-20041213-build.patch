@@ -16,4 +16,4 @@ Fix underlinking for bug #369453.
  
  gromit: gromit.c Makefile
 -	gcc -DG_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DPANGO_DISABLE_DEPRECATED -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall `pkg-config --libs --cflags gtk+-2.0`
-+	$(CC) -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall $(CFLAGS) $(LDFLAGS) `pkg-config --libs --cflags gtk+-2.0` -lX11 -lm
++	$(CC) -DGDK_MULTIHEAD_SAFE -DGTK_MULTIHEAD_SAFE -o gromit gromit.c -Wall $(CFLAGS) $(LDFLAGS) `${PKG_CONFIG} --libs --cflags gtk+-2.0` -lX11 -lm

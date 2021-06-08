@@ -7,7 +7,7 @@ inherit cmake check-reqs java-pkg-opt-2
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://github.com/tpaviot/oce"
-SRC_URI="https://github.com/tpaviot/oce/archive/OCE-$PV.tar.gz"
+SRC_URI="https://github.com/tpaviot/oce/archive/OCE-${PV}.tar.gz"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="${PV}"

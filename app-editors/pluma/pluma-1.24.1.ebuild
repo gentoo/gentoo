@@ -77,5 +77,5 @@ src_test() {
 
 	unset DBUS_SESSION_BUS_ADDRESS
 
-	GSETTINGS_SCHEMA_DIR="${S}/data" Xemake check
+	GSETTINGS_SCHEMA_DIR="${S}/data" virtx emake check
 }

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Triple-DES EDE encryption/decryption"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
 RDEPEND="dev-perl/Crypt-DES"
 BDEPEND="${RDEPEND}"

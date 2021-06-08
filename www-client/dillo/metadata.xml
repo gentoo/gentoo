@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 <use>
-<flag name='xembed'>Enable X11 XEmbed support</flag>
+<flag name="xembed">Enable X11 XEmbed support</flag>
 </use>
 </pkgmetadata>

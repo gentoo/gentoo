@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		git-pw is a tool for integrating Git with Patchwork, the web-based patch
+		tracking system. It only supports Patchwork 2.0+ and REST API support
+		must be enabled on the server end. 
+	</longdescription>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">getpatchwork/git-pw</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,47 @@
+diff --git a/gsa/CMakeLists.txt b/gsa/CMakeLists.txt
+index db597d390..d30e33ec1 100644
+--- a/gsa/CMakeLists.txt
++++ b/gsa/CMakeLists.txt
+@@ -1176,29 +1176,17 @@ set (GSA_JS_SRC_FILES
+      ${GSA_SRC_DIR}/src/web/wizard/taskwizard.js
+      )
+ 
+-
+-
+-add_custom_command (OUTPUT node-modules.stamp
+-                    DEPENDS ${GSA_PKG_FILES}
+-                    COMMAND ${INSTALLER} "${INSTALLER_ARGS}" "install"
+-                    COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/node-modules.stamp
+-                    WORKING_DIRECTORY ${GSA_SRC_DIR}
+-                    COMMENT "Install gsa js dependencies")
+-
+-
+ add_custom_command (OUTPUT bundle.stamp
+-                    COMMAND ${CMAKE_COMMAND} -E env REACT_APP_VERSION=${PROJECT_VERSION_STRING} ${INSTALLER} "${INSTALLER_ARGS}" run build
++                    COMMAND ${CMAKE_COMMAND} -E env REACT_APP_VERSION=${PROJECT_VERSION_STRING} ${INSTALLER} --offline run build
+                     COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/bundle.stamp
+                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-                    DEPENDS  ${CMAKE_CURRENT_BINARY_DIR}/node-modules.stamp
+-                             ${GSA_PKG_FILES}
++                    DEPENDS  ${GSA_PKG_FILES}
+                              ${GSA_STATIC_SRC_FILES}
+                              ${GSA_JS_SRC_FILES}
+                     COMMENT "Build gsa install files")
+ 
+ add_custom_target (gsa ALL
+-                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/node-modules.stamp
+-                           ${CMAKE_CURRENT_BINARY_DIR}/bundle.stamp)
++                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/bundle.stamp)
+ 
+ set (GSA_STATIC_BUILD_FILES
+      ${GSA_BUILD_DIR}/index.html)
+@@ -1209,9 +1197,6 @@ install (FILES ${GSA_STATIC_BUILD_FILES}
+ install (FILES public/robots.txt
+          DESTINATION ${GSA_DEST_DIR})
+ 
+-# remove old generated files
+-install (CODE "file(REMOVE_RECURSE ${GSA_DEST_DIR}/static)")
+-
+ install (DIRECTORY
+          ${GSA_BUILD_DIR}/static
+          ${GSA_BUILD_DIR}/img

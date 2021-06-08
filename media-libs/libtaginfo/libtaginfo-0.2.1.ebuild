@@ -16,6 +16,6 @@ KEYWORDS="amd64 x86"
 BDEPEND="virtual/pkgconfig"
 RDEPEND="media-libs/taglib
 	!<media-sound/xnoise-0.2.16"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README TODO )

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit multilib eutils toolchain-funcs usr-ldscript
+inherit multilib toolchain-funcs usr-ldscript
 
 DESCRIPTION="reiser4progs: mkfs, fsck, etc..."
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"

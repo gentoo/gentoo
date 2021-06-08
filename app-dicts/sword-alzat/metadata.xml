@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="ar">
 		كتاب الذات للبابا شنودة لثالث 2005 - تم وضعه بهذه الصيغة بواسطة مركز الكمبيوتر بكنيسة السيدة العذراء بالزيتون (Bible@StMaryZtn.org)
 	</longdescription>

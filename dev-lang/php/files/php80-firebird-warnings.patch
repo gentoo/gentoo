@@ -1,0 +1,56 @@
+From c288b5294bb0e13ad2904a3ec79265f727baaea3 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <nikita.ppv@gmail.com>
+Date: Mon, 14 Dec 2020 10:36:36 +0100
+Subject: [PATCH] Fix compile warnings in PDO Firebird
+
+---
+ ext/pdo_firebird/firebird_driver.c      | 9 +++++----
+ ext/pdo_firebird/php_pdo_firebird_int.h | 3 +--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/ext/pdo_firebird/firebird_driver.c b/ext/pdo_firebird/firebird_driver.c
+index c299907f0fea1..390871cc200c8 100644
+--- a/ext/pdo_firebird/firebird_driver.c
++++ b/ext/pdo_firebird/firebird_driver.c
+@@ -171,10 +171,11 @@ static const char classes_array[] = {
+ 	/* 127     */ 0
+ };
+ 
+-inline char classes(char idx)
++static inline char classes(char idx)
+ {
+-	if (idx > 127) return 0;
+-	return classes_array[idx];
++	unsigned char uidx = (unsigned char) idx;
++	if (uidx > 127) return 0;
++	return classes_array[uidx];
+ }
+ 
+ typedef enum {
+@@ -1085,7 +1086,7 @@ static int pdo_firebird_handle_factory(pdo_dbh_t *dbh, zval *driver_options) /*
+ 		char errmsg[512];
+ 		const ISC_STATUS *s = H->isc_status;
+ 		fb_interpret(errmsg, sizeof(errmsg),&s);
+-		zend_throw_exception_ex(php_pdo_get_exception(), H->isc_status[1], "SQLSTATE[%s] [%d] %s",
++		zend_throw_exception_ex(php_pdo_get_exception(), H->isc_status[1], "SQLSTATE[%s] [%ld] %s",
+ 				"HY000", H->isc_status[1], errmsg);
+ 	}
+ 
+diff --git a/ext/pdo_firebird/php_pdo_firebird_int.h b/ext/pdo_firebird/php_pdo_firebird_int.h
+index 094767fa355d3..70a895b4b9f83 100644
+--- a/ext/pdo_firebird/php_pdo_firebird_int.h
++++ b/ext/pdo_firebird/php_pdo_firebird_int.h
+@@ -34,12 +34,11 @@
+ #define SHORT_MAX (1 << (8*sizeof(short)-1))
+ 
+ #if SIZEOF_ZEND_LONG == 8 && !defined(PHP_WIN32)
+-# define LL_MASK "l"
+ # define LL_LIT(lit) lit ## L
+ #else
+-# define LL_MASK "ll"
+ # define LL_LIT(lit) lit ## LL
+ #endif
++#define LL_MASK "ll"
+ 
+ /* Firebird API has a couple of missing const decls in its API */
+ #define const_cast(s) ((char*)(s))

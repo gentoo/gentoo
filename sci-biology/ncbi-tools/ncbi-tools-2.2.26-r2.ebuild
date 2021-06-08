@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils flag-o-matic prefix toolchain-funcs
+inherit epatch flag-o-matic prefix toolchain-funcs
 
 DESCRIPTION="Development toolkit and applications for computational biology, including BLAST"
 HOMEPAGE="https://www.ncbi.nlm.nih.gov/"
@@ -27,7 +27,10 @@ RDEPEND="
 		x11-libs/libXmu
 		x11-libs/libXt
 		)"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/ncbi"
 

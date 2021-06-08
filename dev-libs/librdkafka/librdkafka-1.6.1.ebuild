@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/edenhill/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 fi
 
 LICENSE="BSD-2"
@@ -78,6 +78,10 @@ src_configure() {
 }
 
 src_test() {
+	# Simulate CI so we do not fail when tests are running longer than expected,
+	# https://github.com/edenhill/librdkafka/blob/v1.6.1/tests/0062-stats_event.c#L101-L116
+	local -x CI=true
+
 	emake -C tests run_local
 }
 

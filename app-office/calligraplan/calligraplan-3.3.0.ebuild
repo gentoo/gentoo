@@ -14,7 +14,7 @@ HOMEPAGE="https://calligra.org/plan/"
 
 if [[ ${KDE_BUILD_TYPE} == release ]]; then
 	SRC_URI="mirror://kde/stable/calligra/${PV}/${PN}-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"

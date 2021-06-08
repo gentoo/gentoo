@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Powerful text-to-postscript converter"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
@@ -14,20 +14,26 @@ SLOT="0"
 LICENSE="GPL-3"
 IUSE="nls ruby"
 
-DEPEND="
+RDEPEND="nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	sys-devel/bison
 	nls? ( sys-devel/gettext )
 "
-RDEPEND="nls? ( virtual/libintl )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.4-ebuild.st.patch
+	"${FILESDIR}"/${PN}-1.6.5.2-php.st.patch
+	"${FILESDIR}"/${PN}-1.6.4-fsf-gcc-darwin.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/enscript-1.6.4-ebuild.st.patch
-	epatch "${FILESDIR}"/enscript-1.6.5.2-php.st.patch
-	epatch "${FILESDIR}"/enscript-1.6.4-fsf-gcc-darwin.patch
-	use ruby && epatch "${FILESDIR}"/enscript-1.6.2-ruby.patch
-	sed -i src/tests/passthrough.test -e 's|tail +2|tail -n +2|g' || die
 	default
+
+	use ruby && eapply "${FILESDIR}"/enscript-1.6.2-ruby.patch
+
+	sed -i src/tests/passthrough.test -e 's|tail +2|tail -n +2|g' || die
 }
 
 src_configure() {

@@ -1,0 +1,30 @@
+GEDCOM-import tests explicitly set the locale to en_US.UTF8 because they
+assume a US date and time format. That locale is not guaranteed to be
+present and checking that in ebuild is a hassle, therefore use C.UTF8
+instead - it's similar enough.
+
+--- a/data/tests/imp_sample.gramps
++++ b/data/tests/imp_sample.gramps
+@@ -1706,7 +1706,7 @@
+       </style>
+     </note>
+     <note handle="_000000f9000000f9" change="1591544255" id="N0036" type="General">
+-      <text>Objects referenced by this note were missing in a file imported on 12/25/1999 12:00:00 AM.</text>
++      <text>Objects referenced by this note were missing in a file imported on 12/25/99 00:00:00.</text>
+     </note>
+   </notes>
+ </database>
+--- a/gramps/plugins/test/imports_test.py
++++ b/gramps/plugins/test/imports_test.py
+@@ -51,10 +51,7 @@
+ # ------------------------------------------------------------------
+ 
+ # These tests assume a US date and time format.
+-try:
+-    locale.setlocale(locale.LC_ALL, 'en_US.utf8')
+-except locale.Error:     # seems to fail on Windows system for some reason
+-    locale.setlocale(locale.LC_ALL, 'English_United States')
++locale.setlocale(locale.LC_ALL, 'C.utf8')
+ 
+ 
+ def mock_time(*args):

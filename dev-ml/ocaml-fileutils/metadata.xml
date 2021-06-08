@@ -6,11 +6,11 @@
     GNU coreutils and filename manipulation functions
     for OCaml.
   </longdescription>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>rkitover@gmail.com</email>
     <name>Rafael Kitover</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

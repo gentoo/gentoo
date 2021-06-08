@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit readme.gentoo-r1
 
 DESCRIPTION="A Large Assortment of Beautiful Themed Icons, Created with FVWM in mind"
@@ -36,10 +37,10 @@ src_configure() {
 
 src_install() {
 	# strange makefile...
-	emake icondir="${ED%/}/usr/share/icons/wm-icons" DESTDIR="${D}" install
+	emake icondir="${ED}/usr/share/icons/wm-icons" DESTDIR="${D}" install
 
 	einfo "Setting default aliases..."
-	"${ED%/}/usr/bin/wm-icons-config" --force --user-dir="${ED%/}/usr/share/icons/wm-icons" --defaults || die
+	"${ED}/usr/bin/wm-icons-config" --force --user-dir="${ED}/usr/share/icons/wm-icons" --defaults || die
 
 	einstalldocs
 	readme.gentoo_create_doc

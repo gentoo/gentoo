@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# No EAPI=7 support in wxwidgets.eclass.
 EAPI=7
 
+WX_GTK_VER="3.0-gtk3"
 inherit autotools wxwidgets
 
 DESCRIPTION="A simple tool for visually comparing two PDF files"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}/${P}.tar.gz"
 # version 2.16.5 of GTK+, which is licensed LGPL-2+.
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 # The build system checks for "poppler-glib", which is provided only
@@ -29,7 +29,7 @@ IUSE=""
 DEPEND="app-text/poppler[cairo]
 	dev-libs/glib
 	x11-libs/cairo
-	x11-libs/wxGTK:3.0-gtk3[X]"
+	x11-libs/wxGTK:${WX_GTK_VER}[X]"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-no-poppler-cairo-check.patch" )
@@ -40,7 +40,6 @@ src_prepare() {
 }
 
 src_configure() {
-	WX_GTK_VER="3.0-gtk3"
 	setup-wxwidgets
 	default
 }

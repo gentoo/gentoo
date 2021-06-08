@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit autotools
-
 DESCRIPTION="C library/compiler for the Cap'n Proto serialization/RPC protocol"
 HOMEPAGE="https://github.com/opensourcerouting/c-capnproto"
 SRC_URI="https://github.com/opensourcerouting/c-capnproto/releases/download/${P}/${P}.tar.xz"

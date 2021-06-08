@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A threaded NNTP and spool based UseNet newsreader"
 HOMEPAGE="http://www.tin.org/"

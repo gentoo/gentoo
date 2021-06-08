@@ -1,0 +1,11 @@
+--- a/Makefile.in	2021-03-19 13:06:50.000000000 +0000
++++ b/Makefile.in	2021-03-30 23:28:42.720480399 +0100
+@@ -112,7 +112,7 @@
+ 
+ out/mmccextr.full: $(MMCCX_SRC) tmp/gen_buildinfo.h
+ 	mkdir -p out
+-	$(GCC) $(CFLAGS) $(MMCCEXTR_DEF) -DHAVE_BUILDINFO_H -Itmp -D_GNU_SOURCE -o$@ $(MMCCX_SRC) -lc \
++	$(GCC) $(CFLAGS) $(LDFLAGS) $(MMCCEXTR_DEF) -DHAVE_BUILDINFO_H -Itmp -D_GNU_SOURCE -o$@ $(MMCCX_SRC) -lc \
+ 	-ffunction-sections -Wl,--gc-sections -Wl,-z,defs
+ 
+ tmp/gen_buildinfo.h:

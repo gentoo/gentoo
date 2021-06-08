@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
@@ -33,9 +33,6 @@ RDEPEND+="
 
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
-	# Those tests are known-broken upstream
-	# https://github.com/blockdiag/sphinxcontrib-blockdiag/pull/11
-	rm tests/test_latex.py || die
 	distutils-r1_python_prepare_all
 }
 

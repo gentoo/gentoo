@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools libtool pam
+inherit autotools pam
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shadow-maint/shadow/releases/download/${PV}/${P}.tar
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="acl audit bcrypt cracklib nls pam selinux skey split-usr +su xattr"
 # Taken from the man/Makefile.am file.
 LANGS=( cs da de es fi fr hu id it ja ko pl pt_BR ru sv tr zh_CN zh_TW )
@@ -88,7 +88,7 @@ src_configure() {
 }
 
 set_login_opt() {
-	local comment="" opt=$1 val=$2
+	local comment="" opt=${1} val=${2}
 	if [[ -z ${val} ]]; then
 		comment="#"
 		sed -i \

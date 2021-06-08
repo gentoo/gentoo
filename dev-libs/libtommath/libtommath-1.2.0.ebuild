@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc examples static-libs"
 
 BDEPEND="sys-devel/libtool"
@@ -19,7 +19,7 @@ BDEPEND="sys-devel/libtool"
 src_prepare() {
 	default
 
-	# need libtool for cross compilation. Bug #376643
+	# need libtool for cross compilation, bug #376643
 	cat <<-EOF > configure.ac
 	AC_INIT(libtommath, 0)
 	AM_INIT_AUTOMAKE
@@ -28,9 +28,10 @@ src_prepare() {
 	AC_OUTPUT
 	EOF
 
-	touch NEWS README AUTHORS ChangeLog Makefile.am
+	touch NEWS README AUTHORS ChangeLog Makefile.am || die
 
 	eautoreconf
+
 	export LIBTOOL="${S}"/libtool
 }
 

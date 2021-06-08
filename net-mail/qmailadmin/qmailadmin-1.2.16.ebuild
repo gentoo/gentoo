@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ RDEPEND="virtual/qmail
 	>=net-mail/vpopmail-5.4.33
 	net-mail/autorespond
 	maildrop? ( >=mail-filter/maildrop-2.0.1 )"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
@@ -92,6 +92,6 @@ pkg_postinst() {
 	webapp_pkg_postinst
 	einfo "For complete webapp-config support:"
 	einfo "1. Add this for the Apache cgi-bin dir: Options +ExecCGI -MultiViews +FollowSymLinks"
-	einfo "2. Run: webapp-config -I -h localhost -d qmailadmin $PN $PV"
+	einfo "2. Run: webapp-config -I -h localhost -d qmailadmin ${PN} ${PV}"
 	einfo "3. Symlink: ln -s {/usr/share/webapps/${PN}/${PV}/hostroot,/var/www/localhost}/cgi-bin/${PN}"
 }

@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ IUSE=""
 
 src_unpack() {
 	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
+	[[ ${PV} = 9999* ]] && git-r3_src_unpack
 }
 
 src_install() {

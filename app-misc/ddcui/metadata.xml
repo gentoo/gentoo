@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">rockowitz/ddcui</remote-id>
+		<bugs-to>https://github.com/rockowitz/ddcui/issues</bugs-to>
+		<maintainer>
+			<email>rockowitz@minsoft.com</email>
+			<name>Sanford Rockowitz</name>
+		</maintainer>
+	</upstream>
+</pkgmetadata>

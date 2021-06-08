@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,12 +21,13 @@ RDEPEND="virtual/ssh
 	x11-libs/libXt"
 DEPEND="${RDEPEND}"
 BDEPEND="app-text/rman
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 
 src_configure() {
 	econf --libexecdir=/usr/"$(get_libdir)"/misc \
 		--disable-installing-app-defaults
-	xmkmf || die "xmkmf failed"
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf || die "xmkmf failed"
 }
 
 src_compile() {

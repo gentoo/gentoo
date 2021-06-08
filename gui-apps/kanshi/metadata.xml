@@ -5,7 +5,7 @@
 		<email>bman@gentoo.org</email>
 		<name>Aaron Bauman</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@aisha.cc</email>
 		<name>Aisha Tammy</name>
 	</maintainer>

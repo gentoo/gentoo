@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils webapp
+inherit webapp
 
 MY_PV=${PV/_/-}
 MY_PN="phpMyAdmin"

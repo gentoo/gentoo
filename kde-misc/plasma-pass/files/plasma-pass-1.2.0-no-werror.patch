@@ -1,0 +1,31 @@
+From 468db75d4a4f2620921c00ebd91fd7d12e7a2bce Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sat, 1 May 2021 21:58:56 +0200
+Subject: [PATCH] Remove -Werror, one can't predict what future compilers will
+ do
+
+I assume this was supposed to be set only temporarily.
+
+CCMAIL: dvratil@kde.org
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8131494..26cea6e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,8 +46,8 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
+ add_definitions(-DQT_NO_FOREACH)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic")
+-set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -pedantic")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
++set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
+ 
+ # plasmoid
+ plasma_install_package(package org.kde.plasma.pass)
+-- 
+GitLab
+

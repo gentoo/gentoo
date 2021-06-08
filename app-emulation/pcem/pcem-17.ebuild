@@ -3,9 +3,8 @@
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic wxwidgets
-
 WX_GTK_VER="3.0-gtk3"
+inherit autotools desktop flag-o-matic wxwidgets
 
 DESCRIPTION="A PC emulator that specializes in running old operating systems and software"
 HOMEPAGE="
@@ -27,9 +26,7 @@ RDEPEND="
 	media-libs/openal
 	x11-libs/wxGTK:${WX_GTK_VER}[tiff,X]
 "
-
-DEPEND="${DEPEND}"
-
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "TESTED.md" )
@@ -43,6 +40,8 @@ src_prepare() {
 }
 
 src_configure() {
+	setup-wxwidgets
+
 	# Does not compile with -fno-common.
 	# See https://pcem-emulator.co.uk/phpBB3/viewtopic.php?f=3&t=3443
 	append-cflags -fcommon
@@ -51,6 +50,7 @@ src_configure() {
 		--enable-release-build
 		$(use_enable alsa)
 		$(use_enable networking)
+		--with-wx-config="${WX_CONFIG}"
 	)
 
 	econf "${myeconfargs[@]}"

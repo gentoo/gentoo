@@ -18,14 +18,13 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="libressl"
 RESTRICT="test" # needs to communicate with the TPM and gtest is all broken
 
 DEPEND="app-crypt/tpm-tools[pkcs11]
 	dev-libs/opencryptoki[tpm]
 	app-crypt/trousers
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0=
+	"
 RDEPEND="${DEPEND}
 	net-misc/openssh[-X509]"
 

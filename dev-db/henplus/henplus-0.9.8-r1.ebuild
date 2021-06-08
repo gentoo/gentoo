@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 JAVA_PKG_IUSE="doc source"
 
-inherit java-pkg-2 eutils java-ant-2
+inherit java-pkg-2 epatch java-ant-2
 
 DESCRIPTION="Java-based multisession SQL shell for databases with JDBC support"
 HOMEPAGE="http://henplus.sf.net"

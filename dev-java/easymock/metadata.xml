@@ -7,5 +7,8 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">easymock</remote-id>
+		<remote-id type="github">easymock/easymock</remote-id>
+		<doc>https://easymock.org/user-guide.html</doc>
+		<bugs-to>https://github.com/easymock/easymock/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,51 @@
+From 7667fb3179e421d4af78821132db8e2557fa2dc6 Mon Sep 17 00:00:00 2001
+From: Hugo <hugovk@users.noreply.github.com>
+Date: Mon, 20 Jan 2020 18:14:46 +0200
+Subject: [PATCH] Fix imports for Python 3.9
+
+---
+ babelfish/converters/__init__.py | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/babelfish/converters/__init__.py b/babelfish/converters/__init__.py
+index feb687b..d27f849 100644
+--- a/babelfish/converters/__init__.py
++++ b/babelfish/converters/__init__.py
+@@ -2,17 +2,22 @@
+ # Use of this source code is governed by the 3-clause BSD license
+ # that can be found in the LICENSE file.
+ #
+-import collections
+ from pkg_resources import iter_entry_points, EntryPoint
+ from ..exceptions import LanguageConvertError, LanguageReverseError
+ 
++try:
++    # Python 3.3+
++    from collections.abc import Mapping, MutableMapping
++except ImportError:
++    from collections import Mapping, MutableMapping
++
+ 
+ # from https://github.com/kennethreitz/requests/blob/master/requests/structures.py
+-class CaseInsensitiveDict(collections.MutableMapping):
++class CaseInsensitiveDict(MutableMapping):
+     """A case-insensitive ``dict``-like object.
+ 
+     Implements all methods and operations of
+-    ``collections.MutableMapping`` as well as dict's ``copy``. Also
++    ``collections.abc.MutableMapping`` as well as dict's ``copy``. Also
+     provides ``lower_items``.
+ 
+     All keys are expected to be strings. The structure remembers the
+@@ -63,7 +68,7 @@ class CaseInsensitiveDict(collections.MutableMapping):
+         )
+ 
+     def __eq__(self, other):
+-        if isinstance(other, collections.Mapping):
++        if isinstance(other, Mapping):
+             other = CaseInsensitiveDict(other)
+         else:
+             return NotImplemented
+-- 
+2.31.1
+

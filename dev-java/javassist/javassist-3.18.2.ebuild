@@ -4,6 +4,7 @@
 EAPI=5
 
 JAVA_PKG_IUSE="doc source examples"
+MAVEN_ID="javassist:javassist:3.18.2"
 
 inherit java-pkg-2 java-ant-2
 

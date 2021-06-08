@@ -1,30 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="http protocol ping-like program"
-HOMEPAGE="http://www.vanheusden.com/httping/"
-SRC_URI="http://www.vanheusden.com/${PN}/${P}.tgz"
+HOMEPAGE="https://www.vanheusden.com/httping/"
+SRC_URI="https://www.vanheusden.com/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~mips ~ppc ppc64 ~sparc x86"
-IUSE="debug fftw libressl l10n_nl ncurses ssl +tfo"
+IUSE="debug fftw l10n_nl ncurses ssl +tfo"
 
 RDEPEND="
 	fftw? ( sci-libs/fftw:3.0 )
 	ncurses? ( sys-libs/ncurses:0= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
-DEPEND="
-	${RDEPEND}
-	ncurses? ( virtual/pkgconfig )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="ncurses? ( virtual/pkgconfig )"
 
 # This would bring in test? ( dev-util/cppcheck ) but unlike
 # upstream we should only care about compile/run time testing
@@ -43,13 +39,21 @@ src_prepare() {
 		mkdir nl || die
 		mv httping-nl.1 nl/httping.1 || die
 	fi
+
 }
 
 src_configure() {
 	# not an autotools script
 	echo > makefile.inc || die
 
-	use ncurses && LDFLAGS+=" $( $( tc-getPKG_CONFIG ) --libs ncurses )"
+	if use ncurses ; then
+		local ncurses_flags="$($(tc-getPKG_CONFIG) --libs ncurses)"
+
+		# Don't require ncurses with unicode support
+		# bug #731950
+		sed -i -e "s/-lncursesw/${ncurses_flags}/" Makefile || die
+		append-ldflags "${ncurses_flags}"
+	fi
 }
 
 src_compile() {

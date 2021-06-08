@@ -19,7 +19,7 @@ graceful-termination +image-blocking ipv6 lfs +mbedtls openssl
 png-images selinux ssl +stats +threads toggle tools whitelists
 +zlib"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 sparc x86"
 LICENSE="GPL-2+"
 
 DEPEND="

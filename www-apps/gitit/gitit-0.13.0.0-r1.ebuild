@@ -68,6 +68,8 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.0
 "
 
+PATCHES=( "${FILESDIR}"/${P}-pandoc-2.12.patch )
+
 src_prepare() {
 	default
 

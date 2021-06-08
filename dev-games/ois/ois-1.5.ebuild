@@ -12,7 +12,7 @@ S="${WORKDIR}/${P^^}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND="
 	x11-libs/libXaw
@@ -20,5 +20,5 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.5-libdir.patch"
+	"${FILESDIR}/${P}-libdir.patch"
 )

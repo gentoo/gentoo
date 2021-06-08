@@ -79,7 +79,7 @@ src_configure() {
 	)
 
 	if use python; then
-		mycmakeargs+=( -DNO_PYVERBS=OFF )
+		mycmakeargs+=( -DNO_PYVERBS=OFF -DPYTHON_EXECUTABLE="${PYTHON}" )
 	else
 		mycmakeargs+=( -DNO_PYVERBS=ON )
 	fi

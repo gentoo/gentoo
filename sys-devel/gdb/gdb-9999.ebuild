@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit eutils flag-o-matic python-single-r1 toolchain-funcs
 
@@ -79,6 +79,7 @@ BDEPEND="
 	sys-apps/texinfo
 	virtual/yacc
 	nls? ( sys-devel/gettext )
+	source-highlight? ( virtual/pkgconfig )
 	test? ( dev-util/dejagnu )
 "
 

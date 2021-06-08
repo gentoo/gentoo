@@ -13,15 +13,12 @@ SRC_URI="mirror://openbsd/OpenNTPD/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
-IUSE="constraints libressl selinux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="constraints selinux"
 
 DEPEND="
 	!net-misc/ntp[-openntpd]
-	constraints? (
-		libressl? ( dev-libs/libressl:= )
-		!libressl? ( dev-libs/libretls:= )
-	)"
+	constraints? ( dev-libs/libretls:= )"
 
 RDEPEND="
 	${DEPEND}

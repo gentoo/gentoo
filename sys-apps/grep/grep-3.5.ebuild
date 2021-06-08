@@ -15,7 +15,11 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls pcre static"
 
-LIB_DEPEND="pcre? ( >=dev-libs/libpcre-7.8-r1[static-libs(+)] )"
+# We lack dev-libs/libsigsegv[static-libs] for now
+REQUIRED_USE="static? ( !sparc )"
+
+LIB_DEPEND="pcre? ( >=dev-libs/libpcre-7.8-r1[static-libs(+)] )
+	sparc? ( dev-libs/libsigsegv )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	nls? ( virtual/libintl )
 	virtual/libiconv"
@@ -39,8 +43,13 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
-	# don't link against libsigsegv even when available
-	export ac_cv_libsigsegv=no
+
+	# We used to turn this off unconditionally (bug #673524) but we now
+	# allow it for cases where libsigsegv is better for userspace handling
+	# of stack overflows.
+	# In particular, it's necessary for sparc: bug #768135
+	export ac_cv_libsigsegv=$(usex sparc)
+
 	# Always use pkg-config to get lib info for pcre.
 	export ac_cv_search_pcre_compile=$(
 		usex pcre "$($(tc-getPKG_CONFIG) --libs $(usex static --static '') libpcre)" ''

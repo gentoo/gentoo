@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils flag-o-matic multilib
+
+inherit flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
 HOMEPAGE="https://www.courier-mta.org/"
@@ -10,8 +11,8 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 s390 sparc x86"
-IUSE="postgres ldap libressl mysql pam nls ipv6 spell fax crypt norewrite \
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 
 DEPEND="
@@ -20,8 +21,7 @@ DEPEND="
 	net-dns/libidn:=
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	>=sys-libs/gdbm-1.8.0
 	dev-libs/libpcre
@@ -65,7 +65,7 @@ PDEPEND="pam? ( net-mail/mailbase )
 	crypt? ( >=app-crypt/gnupg-1.0.4 )"
 
 src_prepare() {
-	use norewrite && epatch "${FILESDIR}/norewrite.patch"
+	use norewrite && eapply "${FILESDIR}/norewrite.patch"
 	default
 }
 

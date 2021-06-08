@@ -1,9 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrey Grozin <grozin@gentoo.org> (2021-05-06)
+# Upstream bug: all versions in the tree fail to compile
+# bug #782688
+media-gfx/asymptote offscreen
+
 # Peter Levine <plevine457@gmail.com> (2019-10-01)
 # Native inotify support is preferred on linux.
-# https://bugs.gentoo.org/697476
+# bug #697476
 net-fs/samba fam
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-09-17)

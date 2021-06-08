@@ -394,7 +394,7 @@ IUSE=""
 S="${WORKDIR}/dataplaneapi-${PV}"
 
 src_compile() {
-	GOBIN="${S}/bin" emake build || die
+	GOBIN="${S}/bin" emake build
 }
 
 src_install() {

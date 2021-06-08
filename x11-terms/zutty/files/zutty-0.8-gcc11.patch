@@ -1,0 +1,24 @@
+From 75bffab09e842bfff56a6cf111360421a5ee9e15 Mon Sep 17 00:00:00 2001
+From: Matt Smith <matt@offtopica.uk>
+Date: Thu, 29 Apr 2021 19:23:00 +0100
+Subject: [PATCH] Add missing include to fix GCC 11 build
+
+---
+ src/font.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/font.cc b/src/font.cc
+index 0dd2166..f8da582 100644
+--- a/src/font.cc
++++ b/src/font.cc
+@@ -15,6 +15,7 @@
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <limits>
+ #include <sstream>
+ #include <stdexcept>
+ #include <string>
+-- 
+2.31.1
+

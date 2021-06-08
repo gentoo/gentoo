@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools systemd
+inherit systemd
 
 DESCRIPTION="Desktop integration portal"
 HOMEPAGE="https://flatpak.org/ https://github.com/flatpak/xdg-desktop-portal"

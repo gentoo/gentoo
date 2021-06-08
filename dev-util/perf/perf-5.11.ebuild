@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8} )
-inherit bash-completion-r1 estack eutils llvm toolchain-funcs prefix python-r1 linux-info
+inherit bash-completion-r1 estack llvm toolchain-funcs prefix python-r1 linux-info
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
 HOMEPAGE="https://perf.wiki.kernel.org/"
@@ -34,18 +34,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit clang crypt debug +demangle +doc gtk java libpfm lzma numa perl python slang systemtap unwind zlib"
 # TODO babeltrace
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
 	sys-devel/bison
 	sys-devel/flex
+	virtual/pkgconfig
 	doc? (
 		app-text/asciidoc
 		app-text/sgml-common
 		app-text/xmlto
 		sys-process/time
-	)"
+	)
+	${PYTHON_DEPS}
+"
 
 RDEPEND="audit? ( sys-process/audit )
 	crypt? ( dev-libs/openssl:0= )
@@ -87,6 +90,9 @@ pkg_pretend() {
 
 pkg_setup() {
 	use clang && LLVM_MAX_SLOT=9 llvm_pkg_setup
+	# We enable python unconditionally as libbpf always generates
+	# API headers using python script
+	python_setup
 }
 
 src_unpack() {
@@ -198,6 +204,8 @@ perf_make() {
 		NO_ZLIB= \
 		WERROR=0 \
 		LIBDIR="/usr/libexec/perf-core" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins" \
 		"$@"
 }
 

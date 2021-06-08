@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-WX_GTK_VER=3.0
+EAPI=7
 
-inherit udev wxwidgets
+WX_GTK_VER="3.0"
+inherit toolchain-funcs udev wxwidgets
 
 DESCRIPTION="GUI tool for upgrading the firmware of a Truly Ergonomic Keyboard"
 HOMEPAGE="https://trulyergonomic.com/ https://github.com/m-ou-se/tek"
@@ -13,24 +13,20 @@ SRC_URI="https://github.com/m-ou-se/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="all-rights-reserved GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="mirror"
 
-RDEPEND="x11-libs/wxGTK:${WX_GTK_VER}=[X]
+RDEPEND="
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	virtual/libusb:1
 	virtual/udev"
-DEPEND="${RDEPEND}
-	app-editors/vim-core"
+DEPEND="${RDEPEND}"
+BDEPEND="app-editors/vim-core"
 
-src_prepare() {
-	default
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+
+src_configure() {
+	tc-export CXX
 	setup-wxwidgets
-	sed -r \
-		-e '/LIN_STRIP/d' \
-		-e 's/LIN_CXX/CXX/g' \
-		-e 's/CXX=/CXX\?=/' \
-		-e 's/CXXFLAGS=(.*)/CXXFLAGS:=\1 $(CXXFLAGS)/' \
-		-i "${S}"/Makefile || die
 }
 
 src_install() {

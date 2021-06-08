@@ -12,10 +12,10 @@ SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="media-libs/hamlib
+RDEPEND="media-libs/hamlib:=
 	dev-libs/glib:2
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}

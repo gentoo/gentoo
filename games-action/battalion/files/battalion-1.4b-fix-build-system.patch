@@ -13,8 +13,8 @@
  #GLIB = -lMesaGL -lMesaGLU
  # or
 -GLIB =  -lGL -lGLU
-+GLIB_CFLAGS = `pkg-config --cflags gl` `pkg-config --cflags glu`
-+GLIB_LIBS = `pkg-config --libs gl` `pkg-config --libs glu`
++GLIB_CFLAGS = `${PKG_CONFIG} --cflags gl` `${PKG_CONFIG} --cflags glu`
++GLIB_LIBS = `${PKG_CONFIG} --libs gl` `${PKG_CONFIG} --libs glu`
  
  
  # STEP 4: CHOOSE WHICH HARDWARE / OS YOU ARE RUNNING
@@ -37,8 +37,8 @@
  
  OBJ 	= battalion.o audio.o net.o gprim.o graphics.o objects.o text.o update.o tk.o font.o soundIt.o
 -LIBS    = -L./. -L/usr/X11R6/lib -lm -lX11 -lXext
-+my_CPPFLAGS = -lm `pkg-config --cflags x11` `pkg-config --cflags xext` -I./. $(AUDIODEF) $(OS)
-+my_LIBS = -lm `pkg-config --libs x11` `pkg-config --libs xext`
++my_CPPFLAGS = -lm `${PKG_CONFIG} --cflags x11` `${PKG_CONFIG} --cflags xext` -I./. $(AUDIODEF) $(OS)
++my_LIBS = -lm `${PKG_CONFIG} --libs x11` `${PKG_CONFIG} --libs xext`
  
  all:	$(TARGET)
  

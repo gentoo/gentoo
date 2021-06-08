@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>waebbl-gentoo@posteo.net</email>
 		<name>Bernd Waibel</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
-		<description>Gentoo Proxy Maintainers</description>
+		<name>Gentoo Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="addonmgr">
@@ -17,9 +17,6 @@
 		<flag name="arch">
 			Build the architecture workbench for working with architectural 
 			elements
-		</flag>
-		<flag name="ccache">
-			Use <pkg>dev-util/ccache</pkg> to build the package.
 		</flag>
 		<flag name="cloud">
 			Build the Cloud workbench, to access cloud providers (mostly

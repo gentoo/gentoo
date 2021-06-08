@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_7 python3_8 python3_9 )
 
-inherit autotools eutils linux-info linux-mod python-r1 systemd
+inherit autotools linux-info linux-mod python-r1 systemd tmpfiles
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"
@@ -24,8 +24,8 @@ RDEPEND="
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	debug? ( dev-lang/perl )"
 DEPEND="${RDEPEND}
-	sys-apps/util-linux[caps]
-	virtual/pkgconfig"
+	sys-apps/util-linux[caps]"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES="
 	"${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
@@ -95,14 +95,14 @@ src_install() {
 			sed -e '1s|^.*$|#!/usr/bin/python|' -i utilities/"${SCRIPT}"
 			python_foreach_impl python_doscript utilities/"${SCRIPT}"
 		done
-		rm -r "${ED%}"/usr/share/openvswitch/python || die
+		rm -r "${ED}"/usr/share/openvswitch/python || die
 	fi
 
 	keepdir /var/{lib,log}/openvswitch
 	keepdir /etc/ssl/openvswitch
 	fperms 0750 /etc/ssl/openvswitch
 
-	rm -rf "${ED%}"/var/run || die
+	rm -rf "${ED}"/var/run || die
 
 	newconfd "${FILESDIR}/ovsdb-server_conf2" ovsdb-server
 	newconfd "${FILESDIR}/ovs-vswitchd.confd-r2" ovs-vswitchd
@@ -112,7 +112,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}/ovsdb-server-r3.service" ovsdb-server.service
 	systemd_newunit "${FILESDIR}/ovs-vswitchd-r3.service" ovs-vswitchd.service
 	systemd_newunit rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service ovs-delete-transient-ports.service
-	systemd_newtmpfilesd "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
+	newtmpfiles "${FILESDIR}/openvswitch.tmpfiles" openvswitch.conf
 
 	insinto /etc/logrotate.d
 	newins rhel/etc_logrotate.d_openvswitch openvswitch
@@ -136,10 +136,10 @@ pkg_config() {
 		einfo "Database '${db}' already exists, doing schema migration..."
 		einfo "(if the migration fails, make sure that ovsdb-server is not running)"
 		ovsdb-tool convert "${db}" \
-			"${EROOT%}"/usr/share/openvswitch/vswitch.ovsschema || die "converting database failed"
+			"${EROOT}"/usr/share/openvswitch/vswitch.ovsschema || die "converting database failed"
 	else
 		einfo "Creating new database '${db}'..."
 		ovsdb-tool create "${db}" \
-			"${EROOT%}"/usr/share/openvswitch/vswitch.ovsschema || die "creating database failed"
+			"${EROOT}"/usr/share/openvswitch/vswitch.ovsschema || die "creating database failed"
 	fi
 }

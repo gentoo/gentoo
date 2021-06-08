@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="A free, cross-platform, open-source, audio I/O library"
@@ -29,6 +30,7 @@ DOCS=( README.txt )
 PATCHES=(
 	"${DISTDIR}/${PN}-19.06.00-audacity-portmixer.patch"
 	"${FILESDIR}"/${PN}-19.06.00-AR.patch # bug #720966, trigger reconf
+	"${FILESDIR}"/${PN}-19.06.00-slibtool.patch
 )
 
 src_prepare() {
@@ -66,7 +68,9 @@ src_compile() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	default
+
 	use doc && dodoc -r doc/html
+
 	find "${ED}" -name "*.la" -delete || die
 }

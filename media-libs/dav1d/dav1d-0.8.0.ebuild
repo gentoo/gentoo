@@ -12,7 +12,7 @@ else
 	SRC_URI="https://code.videolan.org/videolan/dav1d/-/archive/${PV}/${P}.tar.bz2"
 fi
 
-inherit ${SCM} meson ninja-utils multilib-minimal
+inherit ${SCM} meson-multilib
 
 DESCRIPTION="dav1d is an AV1 Decoder :)"
 HOMEPAGE="https://code.videolan.org/videolan/dav1d"
@@ -46,12 +46,4 @@ multilib_src_configure() {
 		-D enable_asm=${enable_asm}
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	eninja
-}
-
-multilib_src_install() {
-	DESTDIR="${D}" eninja install
 }

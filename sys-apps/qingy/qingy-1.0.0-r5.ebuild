@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools elisp-common eutils flag-o-matic pam systemd
+inherit autotools elisp-common epatch flag-o-matic pam systemd
 
 GENTOO_THEME_VERSION="2.1"
 

@@ -26,14 +26,18 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}/${PN}-2.3.2-blaslapack.patch" )
 
 pkg_pretend() {
-	[[ "${MERGE_TYPE}" != "binary" ]] && use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-pkg_setup(){
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
 	tc-export PKG_CONFIG
 }
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
@@ -56,7 +60,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,3 +1,6 @@
+# Copyright 2004-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 ##
 ## These ATOMS are printed with a standard 'emerge info' in
 ## portage as of 2.0.51-r5. Do not overcrowd the output please.
@@ -14,6 +17,8 @@ sys-devel/libtool
 sys-devel/make
 dev-lang/python
 dev-lang/perl
+dev-lang/rust
+dev-lang/rust-bin
 sys-apps/sandbox
 dev-util/ccache
 sys-devel/gcc

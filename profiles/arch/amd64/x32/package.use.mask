@@ -9,7 +9,7 @@ kde-apps/kde-apps-meta:5 pim
 kde-apps/kdenetwork-meta:5 bittorrent
 kde-apps/umbrello:5 php
 kde-misc/kio-gdrive kaccounts
-media-gfx/gmic digikam krita
+media-gfx/gmic krita
 net-irc/quassel urlpreview
 net-misc/fatrat bittorrent
 net-misc/seafile-client shibboleth
@@ -46,6 +46,7 @@ dev-ruby/tilt test
 net-analyzer/netdata nodejs
 www-apps/gitea build-client
 www-apps/jekyll test
+dev-python/QtPy test
 
 # Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32.

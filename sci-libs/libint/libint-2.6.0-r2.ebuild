@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils fortran-2 toolchain-funcs
+inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Matrix elements (integrals) evaluation over Cartesian Gaussian functions"
 HOMEPAGE="https://github.com/evaleev/libint"
@@ -42,6 +42,7 @@ src_configure() {
 		--with-g12-max-am=5 --with-g12-opt-am=3 \
 		--with-g12dkh-max-am=5 --with-g12dkh-opt-am=3 \
 		--enable-contracted-ints \
+		--enable-shared
 		$(use_enable static-libs static)
 }
 

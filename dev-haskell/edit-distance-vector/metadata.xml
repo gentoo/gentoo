@@ -10,7 +10,7 @@
 		find the optimal edit script and cost between two sequences.
 		
 		The implementation in this package is specialised to sequences represented
-		with &quot;Data.Vector&quot; but is otherwise agnostic to:
+		with "Data.Vector" but is otherwise agnostic to:
 		
 		* The type of values in the vectors;
 		

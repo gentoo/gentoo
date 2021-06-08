@@ -12,8 +12,8 @@
 		
 		This implementation is fully interoperable with the main C implementation.
 		
-		This is strictly only manipulating the git store (what&#39;s inside the .git directory),
-		and doesn&#39;t do anything with the index or your working directory files.
+		This is strictly only manipulating the git store (what's inside the .git directory),
+		and doesn't do anything with the index or your working directory files.
 		
 	</longdescription>
 </pkgmetadata>

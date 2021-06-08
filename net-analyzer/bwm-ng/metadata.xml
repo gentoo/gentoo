@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<use>
-<flag name="csv">Enable csv output</flag>
-<flag name="html">Enable html output</flag>
-</use>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<use>
+		<flag name="csv">Enable csv output</flag>
+		<flag name="html">Enable html output</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">vgropp/bwm-ng</remote-id>
+	</upstream>
 </pkgmetadata>

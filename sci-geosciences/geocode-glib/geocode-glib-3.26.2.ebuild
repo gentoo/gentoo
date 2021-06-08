@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit gnome.org meson xdg
 
 DESCRIPTION="GLib helper library for geocoding services"
-HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/geocode-glib"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="gtk-doc +introspection test"
 
 RDEPEND="

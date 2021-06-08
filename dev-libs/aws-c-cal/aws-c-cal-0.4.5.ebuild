@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,19 +16,14 @@ IUSE="static-libs test"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	|| (
-		>dev-util/cmake-3.19.1
-		<dev-util/cmake-3.19.0
-	)
-"
-
 DEPEND="
 	>=dev-libs/aws-c-common-0.4.62:=[static-libs=]
+	>=dev-libs/openssl-1.1.1:=[static-libs=]
 "
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake-prefix.patch
+	"${FILESDIR}"/${P}-add_libz_for_static.patch
 )
 
 src_configure() {

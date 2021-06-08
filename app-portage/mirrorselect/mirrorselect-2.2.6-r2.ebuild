@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit eutils distutils-r1 prefix
+inherit distutils-r1 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
@@ -17,7 +17,7 @@ SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="ipv6"
 
 RDEPEND="

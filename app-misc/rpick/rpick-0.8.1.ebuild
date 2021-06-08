@@ -129,7 +129,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 # use cargo-license for a more accurate license picture
 LICENSE="GPL-3 Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 Boost-1.0 CC0-1.0 MIT Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 # Rust packages ignore CFLAGS and LDFLAGS so let's silence the QA warnings
 QA_FLAGS_IGNORED="usr/bin/rpick"

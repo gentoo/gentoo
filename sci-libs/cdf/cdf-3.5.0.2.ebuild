@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils java-pkg-opt-2 multilib toolchain-funcs versionator
+inherit epatch java-pkg-opt-2 multilib toolchain-funcs versionator
 
 MY_DP="${PN}$(get_version_component_range 1)$(get_version_component_range 2)"
 MY_P="${MY_DP}_$(get_version_component_range 3)"
@@ -27,12 +27,16 @@ LICENSE="CDF"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples java ncurses static-libs"
+RESTRICT="bindist"
 
 RDEPEND="
 	java? ( >=virtual/jre-1.5:= )
 	ncurses? ( sys-libs/ncurses:0= )
-	"
-DEPEND="${RDEPEND}"
+"
+DEPEND="
+	${RDEPEND}
+	ncurses? ( virtual/pkgconfig )
+"
 
 S="${WORKDIR}/${MY_P}-dist"
 

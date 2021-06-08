@@ -76,6 +76,48 @@ BDEPEND="
 		x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] )
 	)"
 
+# @FUNCTION: kernel-install_can_update_symlink
+# @USAGE:
+# @DESCRIPTION:
+# Determine whether the symlink at <target> (full path) should be
+# updated.  Returns 0 if it should, 1 to leave as-is.
+kernel-install_can_update_symlink() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	[[ ${#} -eq 1 ]] || die "${FUNCNAME}: invalid arguments"
+	local target=${1}
+
+	# if the symlink does not exist or is broken, update
+	[[ ! -e ${target} ]] && return 0
+	# if the target does not seem to contain kernel sources
+	# (i.e. is probably a leftover directory), update
+	[[ ! -e ${target}/Makefile ]] && return 0
+
+	local symlink_target=$(readlink "${target}")
+	# the symlink target should start with the same basename as target
+	# (e.g. "linux-*")
+	[[ ${symlink_target} != ${target##*/}-* ]] && return 1
+
+	# try to establish the kernel version from symlink target
+	local symlink_ver=${symlink_target#${target##*/}-}
+	# strip KV_LOCALVERSION, we want to update the old kernels not using
+	# KV_LOCALVERSION suffix and the new kernels using it
+	symlink_ver=${symlink_ver%${KV_LOCALVERSION}}
+
+	# if ${symlink_ver} contains anything but numbers (e.g. an extra
+	# suffix), it's not our kernel, so leave it alone
+	[[ -n ${symlink_ver//[0-9.]/} ]] && return 1
+
+	local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
+	# if the current target is either being replaced, or still
+	# installed (probably depclean candidate), update the symlink
+	has "${symlink_ver}" ${REPLACING_VERSIONS} && return 0
+	has_version -r "~${symlink_pkg}" && return 0
+
+	# otherwise it could be another kernel package, so leave it alone
+	return 1
+}
+
 # @FUNCTION: kernel-install_update_symlink
 # @USAGE: <target> <version>
 # @DESCRIPTION:
@@ -89,34 +131,13 @@ kernel-install_update_symlink() {
 	local target=${1}
 	local version=${2}
 
-	if [[ ! -e ${target} ]]; then
-		ebegin "Creating ${target} symlink"
+	if kernel-install_can_update_symlink "${target}"; then
+		ebegin "Updating ${target} symlink"
 		ln -f -n -s "${target##*/}-${version}" "${target}"
 		eend ${?}
 	else
-		local symlink_target=$(readlink "${target}")
-		local symlink_ver=${symlink_target#${target##*/}-}
-		local updated=
-		if [[ ${symlink_target} == ${target##*/}-* && \
-				-z ${symlink_ver//[0-9.]/} ]]
-		then
-			local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
-			# if the current target is either being replaced, or still
-			# installed (probably depclean candidate), update the symlink
-			if has "${symlink_ver}" ${REPLACING_VERSIONS} ||
-					has_version -r "~${symlink_pkg}"
-			then
-				ebegin "Updating ${target} symlink"
-				ln -f -n -s "${target##*/}-${version}" "${target}"
-				eend ${?}
-				updated=1
-			fi
-		fi
-
-		if [[ ! ${updated} ]]; then
-			elog "${target} points at another kernel, leaving it as-is."
-			elog "Please use 'eselect kernel' to update it when desired."
-		fi
+		elog "${target} points at another kernel, leaving it as-is."
+		elog "Please use 'eselect kernel' to update it when desired."
 	fi
 }
 
@@ -217,6 +238,16 @@ kernel-install_test() {
 
 	local qemu_arch=$(kernel-install_get_qemu_arch)
 
+	# some modules may complicate or even fail the test boot
+	local omit_mods=(
+		crypt dm dmraid lvm mdraid multipath nbd # no need for blockdev tools
+		network network-manager # no need for network
+		btrfs cifs nfs zfs zfsexpandknowledge # we don't need it
+		plymouth # hangs, or sometimes steals output
+		rngd # hangs or segfaults sometimes
+		i18n # copies all the fonts from /usr/share/consolefonts
+	)
+
 	# NB: if you pass a path that does not exist or is not a regular
 	# file/directory, dracut will silently ignore it and use the default
 	# https://github.com/dracutdevs/dracut/issues/1136
@@ -228,6 +259,10 @@ kernel-install_test() {
 		--confdir "${T}"/empty-directory \
 		--no-hostonly \
 		--kmoddir "${modules}" \
+		--force-add "qemu" \
+		--omit "${omit_mods[*]}" \
+		--nostrip \
+		--no-early-microcode \
 		"${T}/initrd" "${version}" || die
 
 	kernel-install_create_qemu_image "${T}/fs.img"
@@ -275,27 +310,31 @@ kernel-install_test() {
 		spawn ./run.sh
 		expect {
 			"terminating on signal" {
-				send_error "\n* Qemu killed"
+				send_error "\n* Qemu killed\n"
 				exit 1
 			}
 			"OS terminated" {
-				send_error "\n* Qemu terminated OS"
+				send_error "\n* Qemu terminated OS\n"
 				exit 1
 			}
 			"Kernel panic" {
-				send_error "\n* Kernel panic"
+				send_error "\n* Kernel panic\n"
 				exit 1
 			}
 			"Entering emergency mode" {
-				send_error "\n* Initramfs failed to start the system"
+				send_error "\n* Initramfs failed to start the system\n"
 				exit 1
 			}
 			"Hello, World!" {
-				send_error "\n* Booted successfully"
+				send_error "\n* Booted successfully\n"
 				exit 0
 			}
 			timeout {
-				send_error "\n* Kernel boot timed out"
+				send_error "\n* Kernel boot timed out\n"
+				exit 2
+			}
+			eof {
+				send_error "\n* qemu terminated before booting the kernel\n"
 				exit 2
 			}
 		}

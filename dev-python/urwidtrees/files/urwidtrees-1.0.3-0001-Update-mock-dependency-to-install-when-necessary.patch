@@ -1,0 +1,30 @@
+From ed39dbc4fc67b0e0249bf108116a88cd18543aa9 Mon Sep 17 00:00:00 2001
+From: Louis Leseur <louis.leseur@gmail.com>
+Date: Wed, 26 Aug 2020 10:36:29 +0200
+Subject: [PATCH] Update mock dependency to install when necessary
+
+Closes: #48
+---
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 9f6e328..ab8ffdc 100755
+--- a/setup.py
++++ b/setup.py
+@@ -14,10 +14,10 @@ setup(
+     url="https://github.com/pazz/urwidtrees",
+     license="Licensed under the GNU GPL v3+.",
+     packages=['urwidtrees'],
+-    install_requires=['urwid>=1.1.0', 'mock'],
++    install_requires=['urwid>=1.1.0'],
+     extras_require={
+         'docs': [
+-            'mock',
++            'mock;python_version<"3.3"',
+         ],
+     },
+ )
+-- 
+2.26.3
+

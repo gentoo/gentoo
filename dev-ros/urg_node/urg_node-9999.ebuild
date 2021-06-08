@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +6,8 @@ ROS_REPO_URI="https://github.com/ros-drivers/urg_node"
 KEYWORDS="~amd64 ~arm"
 CATKIN_HAS_MESSAGES=yes
 
+# https://bugs.gentoo.org/735106
+CMAKE_MAKEFILE_GENERATOR=emake
 inherit ros-catkin
 
 DESCRIPTION="ROS wrapper for the Hokuyo urg_c library"
@@ -32,6 +34,3 @@ DEPEND="${RDEPEND}
 		dev-ros/roslaunch
 	)
 "
-
-# https://bugs.gentoo.org/735106
-CMAKE_MAKEFILE_GENERATOR=emake

@@ -1,4 +1,7 @@
 # -*- mode: shell-script; -*-
+# Copyright 2018-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # RAP specific patches pending upstream:
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
 # gcc: https://gcc.gnu.org/ml/gcc-patches/2014-12/msg00331.html
@@ -11,7 +14,11 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     einfo "Prefixifying dynamic linkers..."
     for h in gcc/config/*/*linux*.h; do
 	ebegin "  Updating $h"
-	sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
+	if [[ "${h}" == gcc/config/rs6000/linux*.h ]]; then
+	    sed -i -r "s,(DYNAMIC_LINKER_PREFIX\s+)\"\",\1\"${EPREFIX}\",g" $h
+	else
+	    sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
+	fi
 	eend $?
     done
 

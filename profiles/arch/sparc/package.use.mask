@@ -1,6 +1,41 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-06-03)
+# Mask tests on dev-cpp/eigen for now as they're rather large and
+# eigen itself is only being dragged in as a test dependency for now.
+# bug #760803
+dev-cpp/eigen test
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-07)
+# Legacy interface that depends on kernel headers not available on this arch
+# as well as currently-unkeyworded dev-libs/libx86
+x11-misc/read-edid vbe-mode
+
+# Sam James <sam@gentoo.org> (2021-04-27)
+# Deps not yet tested/keyworded.
+sys-devel/clang default-compiler-rt default-libcxx default-lld
+sys-devel/clang-runtime compiler-rt libcxx
+sys-devel/llvm gold z3
+
+# Sam James <sam@gentoo.org> (2021-03-19)
+# On sparc, we have to force sys-apps/grep[libsigsegv]
+# for accurate stack overflow handling. dev-libs/libsigsegv
+# lacks USE=static-libs, so for now, this means we can't
+# build a static grep on sparc.
+# No real pressing need to add it.
+# bug #768135
+sys-apps/grep static
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
+# Sam James <sam@gentoo.org> (2021-03-13)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+
 # Sam James <sam@gentoo.org> (2021-02-26)
 # dev-libs/efl not keyworded here
 # and is a desktop application mainly
@@ -125,10 +160,6 @@ media-video/ffmpeg srt
 # git useflag requires dev-libs/libgit2
 dev-util/geany-plugins git
 dev-util/geany-plugins workbench
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# uses slot 0 of dev-lang/spidermonkey that is broken on sparc
-www-client/elinks javascript
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # Required dependencies are not keyworded.
@@ -262,7 +293,7 @@ xfce-base/xfwm4 xpresent
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-sys-libs/libcxx libunwind libcxxrt
+sys-libs/libcxx libunwind
 sys-libs/libcxxabi libunwind
 
 # Pacho Ramos <pacho@gentoo.org> (2017-02-04)

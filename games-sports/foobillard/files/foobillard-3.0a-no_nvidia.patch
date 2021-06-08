@@ -1,5 +1,5 @@
---- a/src/ball.c.orig	2004-06-02 07:00:57.000000000 -0400
-+++ b/src/ball.c	2004-06-02 07:03:52.000000000 -0400
+--- a/src/ball.c
++++ b/src/ball.c
 @@ -1821,6 +1821,7 @@
              } else if( options_cuberef && cuberef_binds!=0 ){
                  glBindTexture(GL_TEXTURE_CUBE_MAP_ARB, cuberef_binds[i]);

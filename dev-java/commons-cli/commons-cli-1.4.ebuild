@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="commons-cli:commons-cli:1.4"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -12,7 +13,7 @@ HOMEPAGE="http://commons.apache.org/cli/"
 SRC_URI="mirror://apache/commons/cli/source/${P}-src.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

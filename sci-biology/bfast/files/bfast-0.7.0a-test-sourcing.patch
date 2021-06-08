@@ -1,0 +1,79 @@
+--- a/tests/test.cleanup.sh
++++ b/tests/test.cleanup.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ echo "      Cleaning up files.";
+ 
+--- a/tests/test.diff.sh
++++ b/tests/test.diff.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ #error()
+ #{
+--- a/tests/test.fasta2brg.sh
++++ b/tests/test.fasta2brg.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ TMP_DIR="tmp/";
+ 
+ echo "      Building a reference genome.";
+--- a/tests/test.index.sh
++++ b/tests/test.index.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ echo "      Building an index.";
+ 
+--- a/tests/test.initialize.sh
++++ b/tests/test.initialize.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ echo "      Initializing data for tests.";
+ 
+--- a/tests/test.localalign.sh
++++ b/tests/test.localalign.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ echo "      Running local alignment.";
+ 
+--- a/tests/test.match.sh
++++ b/tests/test.match.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ echo "      Finding matches.";
+ 
+--- a/tests/test.postprocess.sh
++++ b/tests/test.postprocess.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-. test.definitions.sh
++. ./test.definitions.sh
+ 
+ echo "      Running postprocessing.";
+ 

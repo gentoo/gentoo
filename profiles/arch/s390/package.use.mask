@@ -17,7 +17,7 @@ dev-python/cssselect doc
 app-portage/layman darcs mercurial
 dev-python/setuptools_scm test
 # no lua support for vim
-app-editors/vim luajit lua
+app-editors/vim lua
 # not keyworded yet
 media-gfx/imagemagick raw
 dev-db/mariadb numa

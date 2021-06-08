@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+),sqlite?"
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit eutils distutils-r1 linux-info prefix
+inherit distutils-r1 linux-info prefix
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/layman.git"

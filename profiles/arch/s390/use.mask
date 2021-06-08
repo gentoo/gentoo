@@ -1,8 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -s390
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on S390.
+llvm-libunwind
 
 # Sam James <sam@gentoo.org> (2021-02-05)
 # No luajit available for s390

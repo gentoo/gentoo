@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,8 +24,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		${PYTHON_DEPS}
-		dev-libs/libgudev:=[${MULTILIB_USEDEP}] )
+	)
 	app-arch/xz-utils
+	dev-libs/libgudev[${MULTILIB_USEDEP}]
 	>=dev-util/gtk-doc-am-1.14
 	virtual/pkgconfig
 "

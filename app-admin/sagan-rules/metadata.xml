@@ -5,4 +5,7 @@
 	<use>
 		<flag name="lognorm">Install normalize rules support with <pkg>dev-libs/liblognorm</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">quadrantsec/sagan-rules</remote-id>
+	</upstream>
 </pkgmetadata>

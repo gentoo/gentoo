@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>marioortizmanero@gmail.com</email>
+			<name>Mario Ortiz Manero</name>
+		</maintainer>
+		<remote-id type="github">vidify/old-audiosync</remote-id>
+		<bugs-to>https://github.com/vidify/old-audiosync/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools apache-module
 
 DESCRIPTION="A QOS module for the apache webserver"
@@ -11,16 +12,14 @@ SRC_URI="mirror://sourceforge/mod-qos/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
 RDEPEND="
 	dev-libs/libpcre:3
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	sys-libs/zlib:0=
 "
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 APXS2_S="${S}/apache2"
 APACHE2_MOD_CONF="10_${PN}"

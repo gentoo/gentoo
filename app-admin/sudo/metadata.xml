@@ -13,7 +13,6 @@
 	</longdescription>
 	<use>
 		<flag name="gcrypt">Use message digest functions from <pkg>dev-libs/libgcrypt</pkg> instead of sudo's</flag>
-		<flag name="libressl">Use message digest functions from <pkg>dev-libs/libressl</pkg> instead of sudo's</flag>
 		<flag name="offensive">Let sudo print insults when the user types the wrong password</flag>
 		<flag name="sendmail">Allow sudo to send emails with sendmail</flag>
 		<flag name="sssd">Add System Security Services Daemon support</flag>

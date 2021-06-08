@@ -14,7 +14,7 @@ HOMEPAGE="https://tellico-project.org/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="https://tellico-project.org/files/${P}.tar.xz
 		https://dev.gentoo.org/~asturm/distfiles/${PN}-3.3.4-no-khtml.patch.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"

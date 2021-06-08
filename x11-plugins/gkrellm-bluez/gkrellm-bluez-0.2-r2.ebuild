@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,12 +12,11 @@ HOMEPAGE="http://gkrellm-bluez.sourceforge.net"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	app-admin/gkrellm:2[X]
 	net-wireless/bluez"
-DEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-notheme.patch )
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		MD5 offers basic cryptographic facilities for Lua.
+		A hash (digest) function, a pair crypt/decrypt based on MD5 and CFB,
+		and a pair crypt/decrypt based on DES with 56-bit keys.
+	</longdescription>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">keplerproject/md5</remote-id>
+	</upstream>
+</pkgmetadata>

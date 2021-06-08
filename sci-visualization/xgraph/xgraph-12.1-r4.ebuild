@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="examples"
 RDEPEND="x11-libs/libSM
 	x11-libs/libX11"
-DEPEND="$RDEPEND"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${WORKDIR}"/debian/patches/debian-changes )
 

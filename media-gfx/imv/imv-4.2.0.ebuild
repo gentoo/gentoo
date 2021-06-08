@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit xdg meson
+
+inherit meson xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -39,15 +40,13 @@ RDEPEND="
 	svg? ( >=gnome-base/librsvg-2.44 )
 	tiff? ( media-libs/tiff )
 	wayland? ( dev-libs/wayland )
-	!sys-apps/renameutils
-"
+	!sys-apps/renameutils"
 DEPEND="
 	${RDEPEND}
-	test? ( dev-util/cmocka )
-"
+	test? ( dev-util/cmocka )"
 BDEPEND="
 	app-text/asciidoc
-"
+	wayland? ( dev-util/wayland-scanner )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-add-string-inc.patch"

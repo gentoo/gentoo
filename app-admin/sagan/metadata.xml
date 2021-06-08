@@ -5,8 +5,12 @@
 	<use>
 		<flag name="smtp">Build witch SMTP (E-Mail) support</flag>
 		<flag name="lognorm">Add support for log/rules normalizations via <pkg>dev-libs/liblognorm</pkg></flag>
+		<flag name="redis">Add support for the Redis database via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="pcap">Add support for network packet capture via <pkg>net-libs/libpcap</pkg></flag>
 		<flag name="libdnet">Add support for <pkg>dev-libs/libdnet</pkg></flag>
-		<flag name="snort">Add support to interact with Snort IDE using  <pkg>net-analyzer/snortsam</pkg>'</flag>
+		<flag name="snort">Add support to interact with Snort IDE using  <pkg>net-analyzer/snortsam</pkg></flag>
 	</use>
+	<upstream>
+		<remote-id type="github">quadrantsec/sagan</remote-id>
+	</upstream>
 </pkgmetadata>

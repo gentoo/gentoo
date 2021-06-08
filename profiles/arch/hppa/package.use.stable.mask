@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,14 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-02)
+# dev-util/gi-docgen does not have stable keywords on hppa
+x11-libs/gdk-pixbuf gtk-doc
+
+# Sam James <sam@gentoo.org> (2021-06-01)
+# sys-apps/systemd is not stable on hppa
+sys-auth/pambase homed
 
 # Sam James <sam@gentoo.org> (2021-02-18)
 # Requires dev-lang/vala to be stable
@@ -106,10 +114,6 @@ dev-python/setuptools_scm test
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-24)
 # dependencies not stable yet
 dev-python/pytest-cov test
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# No stable app-arch/rpm on hppa, bug #471456
-dev-util/patchutils test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # no stable app-editors/{,g}vim

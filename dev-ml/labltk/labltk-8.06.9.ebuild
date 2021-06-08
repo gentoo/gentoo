@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit findlib eutils
+inherit findlib
 
 DESCRIPTION="OCaml interface to the Tcl/Tk GUI framework"
 HOMEPAGE="https://garrigue.github.io/labltk/"
@@ -37,7 +37,7 @@ src_install() {
 	findlib_src_preinst
 	dodir /usr/bin
 	emake \
-		INSTALLDIR="${D}$(ocamlc -where)/labltk" \
+		INSTALLDIR="${D}/$(ocamlc -where)/labltk" \
 		INSTALLBINDIR="${ED}/usr/bin/" \
 		install
 	dodoc Changes README.mlTk

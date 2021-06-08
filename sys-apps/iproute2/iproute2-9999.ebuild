@@ -47,7 +47,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
-	"${FILESDIR}"/${PN}-5.11.0-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-5.12.0-configure-nomagic.patch # bug 643722
 	#"${FILESDIR}"/${PN}-5.1.0-portability.patch
 	"${FILESDIR}"/${PN}-5.7.0-mix-signal.h-include.patch
 )

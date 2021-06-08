@@ -24,6 +24,7 @@
 		</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">chaos/pdsh</remote-id>
 		<remote-id type="sourceforge">pdsh</remote-id>
 	</upstream>
 </pkgmetadata>

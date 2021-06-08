@@ -1,6 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
+# no stable virtual/jdk on this arch
+media-libs/rubberband jni
+
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# Unmask TPM on supported archs.
+sys-apps/systemd -tpm
+
 # Sam James <sam@gentoo.org> (2021-02-17)
 # Unmask dev-libs/libpcre2[jit] support on PHP
 # where available
@@ -42,9 +50,11 @@ net-wireless/gnuradio ctrlport
 media-libs/libsdl2 fcitx4
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # Dependency only keyworded on specific arm profiles.
 dev-libs/efl avif
 kde-frameworks/kimageformats avif
+media-libs/gd avif
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm
@@ -82,7 +92,7 @@ kde-plasma/kdeplasma-addons webengine
 dev-libs/rapidjson test
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
@@ -265,7 +275,7 @@ media-sound/rhythmbox upnp-av
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
 
-# Amy Winston <amynka@gentoo.org> (2016-06-12)
+# Amy Liffey <amynka@gentoo.org> (2016-06-12)
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit
 

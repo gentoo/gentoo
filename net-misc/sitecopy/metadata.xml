@@ -7,4 +7,3 @@
 		<flag name="webdav">Enable WebDav (Web-based Distributed Authoring and Versioning) support. This system allows users to collaborate on websites using a web based interface. See the ebuild for an FAQ page. Enables neon as well to handle webdav support.</flag>
 	</use>
 </pkgmetadata>
-

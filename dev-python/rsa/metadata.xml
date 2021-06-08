@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">rsa</remote-id>
+    <remote-id type="github">sybrenstuvel/python-rsa</remote-id>
   </upstream>
 </pkgmetadata>

@@ -6,19 +6,19 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
-		This package simplifies defining custom &quot;Prelude&quot;s without having
+		This package simplifies defining custom "Prelude"s without having
 		to use @-XNoImplicitPrelude@ by re-exporting the full module-hierarchy of
 		the [base-4.13.0.0](https://hackage.haskell.org/package/base-4.13.0.0)
-		package /except/ for the &quot;Prelude&quot; module.
+		package /except/ for the "Prelude" module.
 		
-		An usage example for such a &quot;Prelude&quot;-replacement is available with
+		An usage example for such a "Prelude"-replacement is available with
 		the [Prelude](http://hackage.haskell.org/package/Prelude) package.
 		
 		Starting with GHC 7.10 &amp; Cabal-1.22 this package makes use of the
 		package-level @reexported-modules@ feature.
 		
 		Each version of @base-noprelude@ depends on a specific
-		@base@-version and thus mirrors @base@&#39;s
+		@base@-version and thus mirrors @base@'s
 		versioning (with the exception that @base-noprelude@ needs to add an
 		/additional/ 5th version component in case of bug-fix releases).
 		

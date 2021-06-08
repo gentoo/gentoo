@@ -5,11 +5,11 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit desktop eutils python-any-r1 scons-utils toolchain-funcs xdg
-if [[ "$PV" = 9999 ]]; then
+inherit desktop python-any-r1 scons-utils toolchain-funcs xdg
+
+if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
-	PROPERTIES="live"
 else
 	# dxx-rebirth-0.61.0_pre20190720.ebuild
 	#MY_COMMIT='a17792c89fd49dd12fdf5981670dd7f64b42850f'
@@ -17,9 +17,9 @@ else
 	MY_COMMIT='0c2fcf691ffb2a586991350d67f3efd1cca2a1f3'
 	# dxx-rebirth-0.61.0_pre20200627.ebuild
 	#MY_COMMIT='aba40babb47d36a88011af01e4bc0fc00dca74ef'
-	S="$WORKDIR/$PN-$MY_COMMIT"
-	#SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/$MY_COMMIT.tar.gz -> $PN-$PVR.tar.gz"
-	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/$MY_COMMIT -> $PN-$PVR.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_COMMIT}"
+	#SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/${MY_COMMIT}.tar.gz -> ${PN}-${PVR}.tar.gz"
+	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
 	unset MY_COMMIT
 
 	# Games under Gentoo are marked as 'testing' by convention
@@ -227,7 +227,7 @@ src_compile() {
 src_install() {
 	# Use upstream install target to handle the various combinations of
 	# enabled/disabled engines and optional editor support.
-	dxx_scons register_compile_target=0 register_install_target=1 DESTDIR="$D" "$D"
+	dxx_scons register_compile_target=0 register_install_target=1 DESTDIR="${D}" "${D}"
 	local DV
 	for DV in 1 2; do
 		if ! use d${DV}x; then
@@ -244,7 +244,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	if ! use data; then
-		elog "$PN requires game data to play."
+		elog "${PN} requires game data to play."
 		elog "Game data is not included in this package.  To play the game,"
 		elog "emerge the packages required by USE=data or install the game"
 		elog "data by hand."

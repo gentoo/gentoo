@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ DESCRIPTION="Class to easily create a mail server"
 # Some files Artistic-2
 LICENSE="LGPL-2.1+ Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

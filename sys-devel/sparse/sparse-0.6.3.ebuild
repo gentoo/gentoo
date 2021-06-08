@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils llvm multilib toolchain-funcs
+inherit llvm multilib toolchain-funcs
 
 DESCRIPTION="C semantic parser"
 HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"

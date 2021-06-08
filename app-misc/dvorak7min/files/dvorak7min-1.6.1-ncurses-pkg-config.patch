@@ -2,8 +2,6 @@ https://bugs.gentoo.org/show_bug.cgi?id=722336
 https://bugs.gentoo.org/show_bug.cgi?id=689986
 https://bugs.gentoo.org/show_bug.cgi?id=698082
 https://bugs.gentoo.org/show_bug.cgi?id=702372
-diff --git a/Makefile b/Makefile
-index e0e7645..6aee6ab 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -15,12 +15,13 @@ LIMIT_LENGTH = -DLIMIT_LENGTH=1024
@@ -18,7 +16,7 @@ index e0e7645..6aee6ab 100644
  	$(LIMIT_LENGTH) $(PROF)
  LDFLAGS += $(PROF)
 -LIBS    = -lncurses
-+LIBS    = $(shell pkg-config --libs ncurses)
++LIBS    = $(shell ${PKG_CONFIG} --libs ncurses)
  
  OBJECTS = dvorak7min.o lessons.o
  HEADERS = lessons.h

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils java-pkg-2 java-ant-2 toolchain-funcs java-osgi
+inherit epatch java-pkg-2 java-ant-2 toolchain-funcs java-osgi
 
 MY_PV="${PV/_rc/RC}"
 MY_DMF="http://archive.eclipse.org/eclipse/downloads/drops/R-${MY_PV}-201301310800"

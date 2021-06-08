@@ -9,7 +9,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..3} )
 PYTHON_COMPAT=( python3_{7,8,9} )
 VIRTUALX_REQUIRED="manual"
-inherit desktop python-any-r1 eutils lua-single xdg-utils toolchain-funcs
+inherit desktop python-any-r1 lua-single xdg-utils toolchain-funcs
 
 MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
@@ -26,7 +26,7 @@ SRC_URI="
 # Public Domain|CC0: most of tiles
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug ncurses sound test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121

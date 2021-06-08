@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 DIST_AUTHOR=PHRED
 DIST_VERSION=1.26
 DIST_EXAMPLES=( "examples/*" )
-inherit perl-module eutils
+inherit perl-module
 
 DESCRIPTION="Lightweight interface to the SOAP protocol both on client and server side"
 

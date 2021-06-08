@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,8 +14,3 @@ LICENSE="vim.org"
 KEYWORDS="~amd64 ~x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
-
-src_prepare() {
-	default
-	rm *.gif *.png *.md || die
-}

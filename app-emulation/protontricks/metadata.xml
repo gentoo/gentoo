@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		A simple wrapper script that allows you to easily run Winetricks commands for Steam Play/Proton
 		games. This is often useful when a game requires closed-source runtime libraries that are not

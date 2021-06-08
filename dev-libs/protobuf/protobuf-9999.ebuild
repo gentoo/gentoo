@@ -1,4 +1,4 @@
-# Copyright 2008-2020 Gentoo Authors
+# Copyright 2008-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/25"
+SLOT="0/28"
 KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
@@ -33,9 +33,9 @@ RDEPEND="emacs? ( app-editors/emacs:* )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.13.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.13.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.14.0-protoc_input_output_files.patch"
+	"${FILESDIR}/${PN}-3.17.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.17.0-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.16.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)

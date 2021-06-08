@@ -19,7 +19,6 @@ RDEPEND="virtual/cblas
 	sys-libs/zlib
 	sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
-PDEPEND="dev-libs/rocr-runtime"
 
 S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 

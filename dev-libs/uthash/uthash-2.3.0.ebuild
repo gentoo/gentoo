@@ -11,7 +11,7 @@ SRC_URI="https://github.com/troydhanson/uthash/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="BSD-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -21,9 +21,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-cflags.patch
 )
 
+src_configure() {
+	tc-export CC
+}
+
 src_test() {
-	cd tests || die
-	emake CC="$(tc-getCC)"
+	emake -C tests
 }
 
 src_install() {

@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Utility to change the binutils version being used"
@@ -24,7 +24,7 @@ IUSE="+native-symlinks"
 RDEPEND="sys-apps/gentoo-functions"
 
 src_compile() {
-	emake DESTDIR="${D}" PV="${PV}" USE_NATIVE_LINKS="$(usex native-symlinks)"
+	emake PV="${PV}" USE_NATIVE_LINKS="$(usex native-symlinks)"
 }
 
 src_install() {

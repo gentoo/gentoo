@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,6 @@ SRC_URI="http://ieee.uow.edu.au/~daniel/software/spectromatic/dist/${MY_P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
 
 RDEPEND="
 	media-libs/libpng:0=
@@ -29,6 +28,6 @@ PATCHES=(
 )
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 	export TOPLEVEL_HOME="${EPREFIX}/usr"
 }

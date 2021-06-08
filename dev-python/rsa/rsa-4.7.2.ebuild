@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 MY_P=python-rsa-version-${PV}
@@ -20,7 +18,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	>=dev-python/pyasn1-0.1.3[${PYTHON_USEDEP}]

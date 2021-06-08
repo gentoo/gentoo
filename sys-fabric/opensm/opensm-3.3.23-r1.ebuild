@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools eutils
+inherit autotools
 
 HOMEPAGE="https://github.com/linux-rdma/opensm/"
 DESCRIPTION="OpenSM - InfiniBand Subnet Manager and Administration for OpenIB"
@@ -15,7 +15,7 @@ SLOT="0"
 LICENSE="|| ( GPL-2 BSD-2 )"
 
 DEPEND="sys-cluster/rdma-core"
-RDEPEND="$DEPEND
+RDEPEND="${DEPEND}
 	 tools? (
 		net-misc/iputils
 		net-misc/openssh

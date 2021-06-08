@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 inherit font python-any-r1
 
 DESCRIPTION="A clean fixed font for the console and X11"
@@ -12,8 +12,8 @@ SRC_URI="mirror://sourceforge/${PN}/${P}/${P}.tar.gz"
 
 LICENSE="OFL-1.1 GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="a-like-o +center-tilde distinct-l otf +pcf +pcf-unicode-only +psf quote
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="a-like-o +center-tilde distinct-l +otf +pcf +pcf-unicode-only +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
 DEPEND="app-arch/gzip

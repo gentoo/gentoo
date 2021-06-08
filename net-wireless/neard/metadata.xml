@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
- <flag name="tools">build and install extra helper utilities</flag>
-</use>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="tools">Build and install 'nfctool' for further NFC debugging</flag>
+	</use>
 </pkgmetadata>

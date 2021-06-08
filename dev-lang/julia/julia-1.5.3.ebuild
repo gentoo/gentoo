@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,9 +35,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="system-llvm"
 
+	# llvm:9 has been removed from the tree USE=-system-llvm force in
+	# profiles
+	#system-llvm? ( sys-devel/llvm:9=[llvm_targets_NVPTX(-)] )
 RDEPEND="
-	system-llvm? ( sys-devel/llvm:9=[llvm_targets_NVPTX(-)] )
-	!system-llvm? ( dev-util/cmake )
 "
 LLVM_MAX_SLOT=9
 
@@ -74,7 +75,8 @@ RDEPEND+="
 
 DEPEND="${RDEPEND}
 	dev-util/patchelf
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	!system-llvm? ( dev-util/cmake )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-fix_build_system.patch
@@ -182,7 +184,7 @@ src_compile() {
 	addpredict /proc/self/mem
 
 	emake \
-		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
+		prefix="${EPREFIX}/usr" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)" AR="$(tc-getAR)"
 	pax-mark m "$(file usr/bin/julia-* | awk -F : '/ELF/ {print $1}')"
 }

@@ -7,9 +7,8 @@ gimp		https://ftp.fau.de/gimp/gimp/ ftp://ftp.fau.de/gimp/gimp/ https://artfiles
 gmt		http://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.soest.hawaii.edu/gmt/ ftp://ftp.iris.washington.edu/pub/gmt/ ftp://ftp.star.nesdis.noaa.gov/pub/sod/lsa/gmt
 gnome		https://download.gnome.org/
 gnu		https://ftp.gnu.org/gnu/ https://artfiles.org/gnu.org/ https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/
-gnu-alpha	https://www.mirrorservice.org/sites/alpha.gnu.org/gnu/ https://gnualpha.uib.no/ https://mirrors.fe.up.pt/pub/gnu-alpha/ https://alpha.gnu.org/gnu/ https://www.nic.funet.fi/pub/gnu/alpha/gnu/ http://mirror.lihnidos.org/GNU/alpha/gnu/ http://mirrors.ibiblio.org/gnu/alpha/gnu/ ftp://ftp.funet.fi/pub/gnu/alpha/gnu/ ftp://gnualpha.uib.no/pub/gnualpha/ ftp://mirrors.fe.up.pt/pub/gnu-alpha/ ftp://alpha.gnu.org/gnu/
 gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://ftp.heanet.ie/mirrors/ftp.gnupg.org/gcrypt/ https://mirrors.dotsrc.org/gcrypt/ ftp://ftp.gnupg.org/gcrypt/
-goproxy https://proxy.golang.org/ https://goproxy.io/ https://gocenter.io/
+goproxy https://proxy.golang.org/ https://goproxy.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://www.imagemagick.org/download/releases/ https://mirror.checkdomain.de/imagemagick/releases/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/releases/ ftp://ftp.fifi.org/pub/ImageMagick/releases/
 kde		https://download.kde.org http://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde ftp://kde.mirror.anlx.net
@@ -17,7 +16,7 @@ lokigames	http://updates.lokigames.com
 mplayer		https://www1.mplayerhq.hu/MPlayer http://www2.mplayerhq.hu/MPlayer http://www7.mplayerhq.hu/MPlayer http://www8.mplayerhq.hu/MPlayer ftp://ftp1.mplayerhq.hu/MPlayer/ ftp://ftp6.mplayerhq.hu/MPlayer/ ftp://ftp7.mplayerhq.hu/MPlayer/ ftp://ftp8.mplayerhq.hu/MPlayer/
 nongnu		https://download.savannah.nongnu.org/releases/ https://ftp.cc.uoc.gr/mirrors/nongnu.org/ http://ftp.twaren.net/Unix/NonGNU/ https://mirror.csclub.uwaterloo.ca/nongnu/ ftp://mirror.csclub.uwaterloo.ca/nongnu/ https://mirrors.fe.up.pt/pub/nongnu/ ftp://mirrors.fe.up.pt/pub/nongnu/ https://nongnu.askapache.com/ https://nongnu.uib.no/ ftp://nongnu.uib.no/pub/nongnu/ http://savannah.c3sl.ufpr.br/ ftp://ftp.twaren.net/Unix/NonGNU/
 openbsd		https://cdn.openbsd.org/pub/OpenBSD https://fastly.cdn.openbsd.org/pub/OpenBSD
-openssl		https://artfiles.org/openssl.org/ https://www.mirrorservice.org/sites/ftp.openssl.org/ ftp://ftp.openssl.org
+openssl		https://www.openssl.org/ https://artfiles.org/openssl.org/ https://www.mirrorservice.org/sites/ftp.openssl.org/ ftp://ftp.openssl.org
 pypi		https://files.pythonhosted.org/packages/source
 qmail		https://qmail-mirror.jms1.net/ http://qmail.pandakc.com/ http://qmail.glasswings.com.au/ http://qmail.teraren.com/ http://qmail.mirror.cdnetworks.com/ https://qmail.mirror.choon.net/ http://qmail.cbox.biz/ http://qmail.cbox.biz/ http://qmail.mirrors.ovh.net/ftp.qmail.org/ http://qmail.rasjonell.net/ http://mirrors.ntua.gr/qmail/ http://qmail.cti.gr/ http://qmail.hypergrid.it/ http://qmail.omnis.ch/ http://qmail.cavsystems.net/ https://qmail.mivzakim.net/ http://qmail.mirror.rise.ph/
 samba		https://download.samba.org/pub/samba/

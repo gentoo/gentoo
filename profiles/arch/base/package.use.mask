@@ -1,6 +1,18 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# TPM only exists on some archs.
+sys-apps/systemd tpm
+
+# Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
+# The clozurecl and clozurecl64 flags are now arch-specific in maxima,
+# so we mask them both by default beginning with v5.44.0-r5 where
+# their meanings first diverged. You should unmask "clozurecl" on
+# 32-bit arches and unmask "clozurecl64" on 64-bit ones.
+# We don't list "clozurecl" here since it's already in use.mask.
+>=sci-mathematics/maxima-5.44.0-r5 clozurecl64
+
 # Sam James <sam@gentoo.org> (2021-03-02)
 # Java build is extremely sensitive to environment
 # Previously stable-masked but moved here
@@ -76,6 +88,9 @@ dev-libs/gjs sysprof
 dev-libs/glib sysprof
 gnome-extra/cjs sysprof
 x11-libs/gtk+ sysprof
+net-libs/libsoup sysprof
+x11-libs/pango sysprof
+gui-libs/gtk sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
@@ -92,7 +107,7 @@ sys-block/fio python gnuplot
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches
 # Track addition arch keywording of quiche at:
-# https://bugs.gentoo.org/694320
+# bug #694320
 net-misc/curl quiche
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
@@ -113,7 +128,8 @@ dev-lang/rust-bin doc
 media-tv/kodi raspberry-pi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
-# mask javafx until it's keyworded on other arches
+# mask here and unmask in profiles for specific arches
+dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
@@ -265,9 +281,9 @@ dev-vcs/git mediawiki mediawiki-experimental
 dev-libs/boost context
 
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
-# Related deps dev-lang/luajit and dev-scheme/racket are not keyworded by most arches.
-app-editors/vim luajit racket
-app-editors/gvim luajit racket
+# Related dep dev-scheme/racket is not keyworded by most arches.
+app-editors/vim racket
+app-editors/gvim racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Doesn't work on most profiles. Easier to mask here and

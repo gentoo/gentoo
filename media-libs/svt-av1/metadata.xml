@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>telans@posteo.de</email>
 		<name>Theo Anderson</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<name>Proxy Maintainers</name>
 		<email>proxy-maint@gentoo.org</email>
 	</maintainer>
@@ -13,6 +13,6 @@
 		<email>media-video@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">AOMediaCodec/SVT-AV1</remote-id>
+		<remote-id type="gitlab">AOMediaCodec/SVT-AV1</remote-id>
 	</upstream>
 </pkgmetadata>

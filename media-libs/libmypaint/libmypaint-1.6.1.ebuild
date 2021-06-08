@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools python-any-r1 toolchain-funcs
+inherit python-any-r1 toolchain-funcs
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}
@@ -44,6 +44,7 @@ RDEPEND="
 
 src_configure() {
 	tc-ld-disable-gold # bug 589266
+
 	econf \
 		--disable-debug \
 		--disable-docs \
@@ -57,5 +58,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -type f -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }

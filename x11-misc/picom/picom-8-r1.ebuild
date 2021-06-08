@@ -29,7 +29,6 @@ RDEPEND="
 	x11-libs/xcb-util-renderutil
 	config-file? (
 		dev-libs/libconfig:=
-		dev-libs/libxdg-basedir
 	)
 	dbus? ( sys-apps/dbus )
 	drm? ( x11-libs/libdrm )
@@ -42,6 +41,14 @@ BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )
 	test? ( $(python_gen_any_dep 'dev-python/xcffib[${PYTHON_USEDEP}]') )
 "
+
+python_check_deps() {
+	has_version -b "dev-python/xcffib[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local emesonargs=(

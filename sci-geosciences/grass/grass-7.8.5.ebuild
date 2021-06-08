@@ -20,7 +20,7 @@ SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/7.8.0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -82,6 +82,8 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	# bug 746590
 	"${FILESDIR}/${PN}-7.8-flock.patch"
+	# bug 792801
+	"${FILESDIR}/${PN}-7.8.5-bool.patch"
 )
 
 pkg_setup() {

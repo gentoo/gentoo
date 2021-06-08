@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -24,6 +24,7 @@
 # bash array.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_CONTENTS
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed. This variable will be expanded to
@@ -31,12 +32,14 @@
 # foo -> texlive-module-foo-${PV}.tar.xz
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_DOC_CONTENTS
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed if the doc useflag is enabled.
 # Expansion to SRC_URI is the same as for TEXLIVE_MODULE_CONTENTS.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_SRC_CONTENTS
+# @PRE_INHERIT
 # @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed if the source useflag is enabled.

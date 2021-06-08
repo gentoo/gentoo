@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>andreacerisara@gmail.com</email>
-		<name>Andrea Cerisara</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
 	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>

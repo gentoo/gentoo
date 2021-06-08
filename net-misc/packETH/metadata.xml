@@ -6,7 +6,7 @@
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <use>
-<flag name='cli'>Build and install packETHcli</flag>
+<flag name="cli">Build and install packETHcli</flag>
 </use>
 <upstream>
 <remote-id type="sourceforge">packeth</remote-id>

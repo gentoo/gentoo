@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit webapp
+inherit optfeature webapp
 
 DESCRIPTION="A CalDAV and CardDAV Server"
 HOMEPAGE="https://www.davical.org/"
@@ -11,13 +11,11 @@ SRC_URI="https://www.davical.org/downloads/${PN}_${PV}.orig.tar.xz -> ${P}.tar.x
 
 LICENSE="GPL-2 GPL-2+ GPL-3+ LGPL-2.1+ LGPL-3+"
 KEYWORDS="~amd64 ~x86"
-IUSE="ldap"
 
 BDEPEND="sys-devel/gettext"
 
-# >=dev-lang/php-8:curly braces string offset access was removed (Bug 764908)
 RDEPEND="app-admin/pwgen
-	dev-lang/php[calendar,curl,iconv,imap,ldap?,nls,pdo,postgres,xml]
+	dev-lang/php[calendar,curl,iconv,imap,nls,pdo,postgres,xml]
 	dev-perl/DBD-Pg
 	dev-perl/DBI
 	dev-perl/YAML
@@ -70,4 +68,7 @@ pkg_postinst() {
 	elog "       ./update-davical-database -dbuser xxxxxxx -appuser xxxxxx"
 
 	webapp_pkg_postinst
+
+	elog ""
+	optfeature "LDAP authentication" dev-lang/php[ldap]
 }

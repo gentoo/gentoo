@@ -6,7 +6,6 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="concheck">Enable connectivity checking support</flag>
 		<flag name="connection-sharing">Use <pkg>net-dns/dnsmasq</pkg> and
 			<pkg>net-firewall/iptables</pkg> for connection sharing</flag>
 		<flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for
@@ -15,10 +14,6 @@
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
 		<flag name="iwd">Use <pkg>net-wireless/iwd</pkg> instead of
 			<pkg>net-wireless/wpa_supplicant</pkg> for wifi support by default</flag>
-		<flag name="json">Enable JSON validation via <pkg>dev-libs/jansson</pkg>
-			in libnm.</flag>
-		<flag name="libpsl">Link against libpsl</flag>
-		<flag name="lto">Link-time optimization</flag>
 		<flag name="modemmanager">Enable support for mobile broadband devices
 			using <pkg>net-misc/modemmanager</pkg></flag>
 		<flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
@@ -32,7 +27,6 @@
 			systemd-resolved, disable this flag and create a symlink to
 			/run/systemd/resolve/stub-resolv.conf.</flag>
 		<flag name="teamd">Enable Teamd control support</flag>
-		<flag name="tools">Build cli tools such as nmcli, nmtui and nm_cloud_setup</flag>
 		<flag name="wifi">Enable support for wifi and 802.1x security</flag>
 		<flag name="wext">Enable support for the deprecated Wext (Wireless
 			Extensions) API; needed for some older drivers (e.g. ipw2200,

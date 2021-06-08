@@ -1,0 +1,41 @@
+From d46b5ed35017b089c30dd21305ac2147fcfc24f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C4=90o=C3=A0n=20Tr=E1=BA=A7n=20C=C3=B4ng=20Danh?=
+ <congdanhqx@gmail.com>
+Date: Fri, 16 Oct 2020 06:49:08 +0700
+Subject: [PATCH] b64,util: always include limits.h
+
+UCHAR_MAX and INT_MAX are defined within limits.h
+
+Current codebase failed to be built in Linux with musl libc due to
+missing this inclusion.
+
+Fix it.
+---
+ b64.c  | 1 +
+ util.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/b64.c b/b64.c
+index 0649c1e..7788089 100644
+--- a/b64.c
++++ b/b64.c
+@@ -4,6 +4,7 @@
+ 
+ #include <openssl/bio.h>
+ #include <openssl/evp.h>
++#include <limits.h>
+ #include <stdint.h>
+ #include <string.h>
+ 
+diff --git a/util.c b/util.c
+index fdae095..3ea1bd2 100644
+--- a/util.c
++++ b/util.c
+@@ -9,6 +9,7 @@
+ #include <openssl/ec.h>
+ #include <openssl/obj_mac.h>
+ 
++#include <limits.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>

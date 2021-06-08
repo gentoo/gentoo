@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,15 +22,14 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-IUSE="libressl +libzip minimal static"
+IUSE="+libzip minimal static"
 
 LIB_DEPEND="
 	dev-libs/libyaml:=[static-libs(+)]
 	app-arch/xz-utils:=[static-libs(+)]"
 LIB_DEPEND_MINIMAL="
 	elibc_musl? ( sys-libs/fts-standalone:=[static-libs(+)] )
-	!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-	libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+	dev-libs/openssl:0=[static-libs(+)]
 	libzip? ( dev-libs/libzip:=[static-libs(+)] )
 	sys-apps/util-linux:=[static-libs(+)]"
 RDEPEND="!static? (

@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		This is the Synodal translation of the Russian Bible in the edition by Licht im Osten. Licht im Osten has carefully digitialised this text, updated spelling and corrected a few glaring translation mistakes. We are grateful to Licht im Osten to allow us to publish this text. The Strong encoding is based on work originally done by Bob Jones university, using corrections and suggestions also from KJV2006 and from Victor R. Zhuromsky's Russian NT with Strongs. Copyright remains with LiO and BJU respectively. Many thanks to both these institutions.
 	</longdescription>

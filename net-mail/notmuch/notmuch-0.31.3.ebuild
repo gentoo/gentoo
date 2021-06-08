@@ -4,10 +4,11 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_SETUPTOOLS=manual
 NEED_EMACS="24.1"
 PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 
-inherit bash-completion-r1 desktop distutils-r1 elisp-common eutils flag-o-matic pax-utils toolchain-funcs xdg-utils
+inherit bash-completion-r1 desktop distutils-r1 elisp-common flag-o-matic pax-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Thread-based e-mail indexer, supporting quick search and tagging"
 HOMEPAGE="https://notmuchmail.org/"
@@ -18,7 +19,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y. Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc64 x86 ~x64-macos"
 REQUIRED_USE="
 	apidoc? ( doc )
 	nmbug? ( python )
@@ -38,7 +39,10 @@ BDEPEND="
 		dev-python/sphinx
 		sys-apps/texinfo
 	)
-	python? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	python? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	)
 "
 
 COMMON_DEPEND="
@@ -85,6 +89,10 @@ RDEPEND="${COMMON_DEPEND}
 
 SITEFILE="50${PN}-gentoo.el"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-glib-2.68.patch
+)
+
 pkg_setup() {
 	use emacs && elisp-check-emacs-version
 }
@@ -111,6 +119,9 @@ src_prepare() {
 
 	# Non-autoconf configure
 	[[ ${CHOST} == *-solaris* ]] &&	append-ldflags '-lnsl' '-lsocket'
+
+	# sphinx-4 broke everything. https://bugs.gentoo.org/789492
+	echo 'man_make_section_directory = False' >> doc/conf.py || die
 }
 
 src_configure() {

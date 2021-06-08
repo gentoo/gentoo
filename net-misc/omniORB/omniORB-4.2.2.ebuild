@@ -1,14 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# The build system picks one version of python and sticks with it. It
-# tries to guess your version (based on /usr/bin/python), but for
-# consistency we have to force it to use one that we specify. The
-# highest version the configure script will accept is python-3.3, but
-# that's on it's way out, so we prefer to stick with python-2.7 for now.
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit python-single-r1
 

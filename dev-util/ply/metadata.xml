@@ -4,15 +4,15 @@
   <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>jakov.smolic@sartura.hr</email>
     <name>Jakov Smolic</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>luka.perkov@sartura.hr</email>
     <name>Luka Perkov</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

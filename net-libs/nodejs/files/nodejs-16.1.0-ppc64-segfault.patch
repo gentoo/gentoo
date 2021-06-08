@@ -1,0 +1,119 @@
+From ca4bf75504d07db5e1e66ec5c867cd76c90268af Mon Sep 17 00:00:00 2001
+From: Junliang Yan <jyan@ca.ibm.ca>
+Date: Tue, 11 May 2021 08:57:03 -0400
+Subject: [PATCH] ppc: Prevent trampoline emission on deoptimization table generation
+
+The deoptimization table needs to be continuously, so we need to block
+trampoline pool emission during the whole process.
+
+bug: v8:11759
+Change-Id: Ie5e0ffe27dc8e6cdb18985dc2cf26bdadeff318f
+Reviewed-on: https://chromium-review.googlesource.com/c/v8/v8/+/2881918
+Commit-Queue: Junliang Yan <junyan@redhat.com>
+Reviewed-by: Jakob Gruber <jgruber@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#74506}
+X-Gentoo-bug: https://bugs.gentoo.org/785751
+Backported by gyakovlev@gentoo.org
+---
+
+diff --git a/src/codegen/ppc/assembler-ppc.h b/src/codegen/ppc/assembler-ppc.h
+index 794b917..ae04118 100644
+--- a/deps/v8/src/codegen/ppc/assembler-ppc.h
++++ b/deps/v8/src/codegen/ppc/assembler-ppc.h
+@@ -195,6 +195,12 @@
+ 
+   void MaybeEmitOutOfLineConstantPool() { EmitConstantPool(); }
+ 
++  inline void CheckTrampolinePoolQuick(int extra_space = 0) {
++    if (pc_offset() >= next_trampoline_check_ - extra_space) {
++      CheckTrampolinePool();
++    }
++  }
++
+   // Label operations & relative jumps (PPUM Appendix D)
+   //
+   // Takes a branch opcode (cc) and a label (L) and generates
+@@ -1334,12 +1340,6 @@
+   }
+ 
+   inline void UntrackBranch();
+-  void CheckTrampolinePoolQuick() {
+-    if (pc_offset() >= next_trampoline_check_) {
+-      CheckTrampolinePool();
+-    }
+-  }
+-
+   // Instruction generation
+   void a_form(Instr instr, DoubleRegister frt, DoubleRegister fra,
+               DoubleRegister frb, RCBit r);
+diff --git a/src/compiler/backend/code-generator.cc b/src/compiler/backend/code-generator.cc
+index 023e697..62e57fe 100644
+--- a/deps/v8/src/compiler/backend/code-generator.cc
++++ b/deps/v8/src/compiler/backend/code-generator.cc
+@@ -416,23 +416,29 @@
+     std::sort(deoptimization_exits_.begin(), deoptimization_exits_.end(), cmp);
+   }
+ 
+-  for (DeoptimizationExit* exit : deoptimization_exits_) {
+-    if (exit->emitted()) continue;
+-    if (Deoptimizer::kSupportsFixedDeoptExitSizes) {
+-      exit->set_deoptimization_id(next_deoptimization_id_++);
+-    }
+-    result_ = AssembleDeoptimizerCall(exit);
+-    if (result_ != kSuccess) return;
++  {
++#ifdef V8_TARGET_ARCH_PPC64
++    v8::internal::Assembler::BlockTrampolinePoolScope block_trampoline_pool(
++        tasm());
++#endif
++    for (DeoptimizationExit* exit : deoptimization_exits_) {
++      if (exit->emitted()) continue;
++      if (Deoptimizer::kSupportsFixedDeoptExitSizes) {
++        exit->set_deoptimization_id(next_deoptimization_id_++);
++      }
++      result_ = AssembleDeoptimizerCall(exit);
++      if (result_ != kSuccess) return;
+ 
+-    // UpdateDeoptimizationInfo expects lazy deopts to be visited in pc_offset
+-    // order, which is always the case since they are added to
+-    // deoptimization_exits_ in that order, and the optional sort operation
+-    // above preserves that order.
+-    if (exit->kind() == DeoptimizeKind::kLazy) {
+-      int trampoline_pc = exit->label()->pos();
+-      last_updated = safepoints()->UpdateDeoptimizationInfo(
+-          exit->pc_offset(), trampoline_pc, last_updated,
+-          exit->deoptimization_id());
++      // UpdateDeoptimizationInfo expects lazy deopts to be visited in pc_offset
++      // order, which is always the case since they are added to
++      // deoptimization_exits_ in that order, and the optional sort operation
++      // above preserves that order.
++      if (exit->kind() == DeoptimizeKind::kLazy) {
++        int trampoline_pc = exit->label()->pos();
++        last_updated = safepoints()->UpdateDeoptimizationInfo(
++            exit->pc_offset(), trampoline_pc, last_updated,
++            exit->deoptimization_id());
++      }
+     }
+   }
+ 
+diff --git a/src/compiler/backend/ppc/code-generator-ppc.cc b/src/compiler/backend/ppc/code-generator-ppc.cc
+index 3e4e94a..0281376 100644
+--- a/deps/v8/src/compiler/backend/ppc/code-generator-ppc.cc
++++ b/deps/v8/src/compiler/backend/ppc/code-generator-ppc.cc
+@@ -4296,7 +4296,15 @@
+ 
+ void CodeGenerator::PrepareForDeoptimizationExits(
+     ZoneDeque<DeoptimizationExit*>* exits) {
+-  // __ EmitConstantPool();
++  int total_size = 0;
++  for (DeoptimizationExit* exit : deoptimization_exits_) {
++    total_size += (exit->kind() == DeoptimizeKind::kLazy)
++                      ? Deoptimizer::kLazyDeoptExitSize
++                      : Deoptimizer::kNonLazyDeoptExitSize;
++  }
++
++  __ CheckTrampolinePoolQuick(total_size);
++  DCHECK(Deoptimizer::kSupportsFixedDeoptExitSizes);
+ }
+ 
+ void CodeGenerator::AssembleMove(InstructionOperand* source,

@@ -10,7 +10,7 @@
     solution of large systems of linear equations.
   </longdescription>
     <upstream>
-    <remote-id type="github">LLNL/hypre</remote-id>
+    <remote-id type="github">hypre-space/hypre</remote-id>
   </upstream>
   <use>
     <flag name="int64">Build the 64 bits integer library</flag>

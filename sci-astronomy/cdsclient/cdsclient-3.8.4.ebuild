@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils versionator
+inherit versionator
 
 # upstream versioning wrong: 3.71 is really 3.7.1
 MYP="${PN}-$(delete_version_separator 2)"

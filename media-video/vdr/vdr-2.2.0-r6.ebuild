@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic l10n toolchain-funcs
 
 # Switches supported by extensions-patch
 EXT_PATCH_FLAGS="alternatechannel graphtft naludump permashift pinplugin
@@ -78,8 +78,7 @@ enable_patch() {
 	done
 }
 
-extensions_add_make_conf()
-{
+extensions_add_make_conf() {
 	# copy all ifdef for extensions-patch to Make.config
 	sed -e '1,/need to touch the following:/d' \
 		-e '/need to touch the following/,/^$/d' \

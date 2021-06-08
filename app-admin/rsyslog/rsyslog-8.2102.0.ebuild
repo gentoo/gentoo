@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -28,7 +28,7 @@ LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
 
 IUSE="clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imhttp"
-IUSE+=" impcap jemalloc kafka kerberos kubernetes libressl mdblookup"
+IUSE+=" impcap jemalloc kafka kerberos kubernetes mdblookup"
 IUSE+=" mongodb mysql normalize omhttp omhttpfs omudpspoof +openssl"
 IUSE+=" postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp +ssl"
 IUSE+=" systemd test usertools +uuid xxhash zeromq"
@@ -78,15 +78,13 @@ RDEPEND="
 	relp? ( >=dev-libs/librelp-1.2.17:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
-		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.8y:0=
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23:0= )
 		openssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	systemd? ( >=sys-apps/systemd-234 )

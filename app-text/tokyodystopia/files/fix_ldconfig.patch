@@ -1,5 +1,3 @@
-diff --git a/Makefile.in b/Makefile.in
-index 60b1036..12f02b0 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -125,7 +125,6 @@ install :

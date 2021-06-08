@@ -13,7 +13,7 @@ LICENSE="HPND"
 SLOT="2"
 IUSE="ipv6 threads debug"
 
-DOCS=( "INSTALL" "README" )
+DOCS=( INSTALL README )
 
 src_configure() {
 	econf \
