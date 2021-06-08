@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-
 DEPEND=""
 RDEPEND="${DEPEND}
     >=virtual/rust-1.51
