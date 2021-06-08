@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit eutils flag-o-matic python-any-r1 qmake-utils readme.gentoo-r1 systemd user-info
 
-MY_COMMIT="f7de8cea580dfd215dfe6d3e83201edb85647b8d"
+MY_COMMIT="3162473370b31c749e8417b1b19fe6dc2186cb95"
 
 DESCRIPTION="Open Source DVR and media center hub"
 HOMEPAGE="https://www.mythtv.org https://github.com/MythTV/mythtv"
@@ -41,7 +41,7 @@ RDEPEND="
 	dev-libs/lzo
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[jpeg]
 	dev-qt/qtnetwork:5
 	dev-qt/qtscript:5
 	dev-qt/qtsql:5[mysql]
