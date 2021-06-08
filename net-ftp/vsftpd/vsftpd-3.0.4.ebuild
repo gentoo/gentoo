@@ -66,7 +66,7 @@ src_prepare() {
 	# Ensure that we don't link against libcap unless asked
 	if ! use caps ; then
 		sed -i '/^#define VSF_SYSDEP_HAVE_LIBCAP$/ d' sysdeputil.c || die
-		eapply "${FILESDIR}"/${PN}-2.2.0-dont-link-caps.patch
+		eapply "${FILESDIR}"/${PN}-3.0.4-dont-link-caps.patch
 	fi
 
 	# Let portage control stripping
