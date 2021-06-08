@@ -7,7 +7,7 @@ inherit go-module systemd
 
 DESCRIPTION="A modern IRC server written in Go"
 HOMEPAGE="https://oragono.io/ https://github.com/oragono/oragono"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/oragono/oragono/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0"
 SLOT="0"
