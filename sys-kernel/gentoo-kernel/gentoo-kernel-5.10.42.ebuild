@@ -80,7 +80,9 @@ src_prepare() {
 			;;
 	esac
 
-	echo 'CONFIG_LOCALVERSION="-gentoo-dist"' > "${T}"/version.config || die
+	local myversion="-gentoo-dist"
+	use hardened && myversion+="-hardened"
+	echo "CONFIG_LOCALVERSION=\"${myversion}\"" > "${T}"/version.config || die
 	local dist_conf_path="${WORKDIR}/gentoo-kernel-config-${GENTOO_CONFIG_VER}"
 
 	local merge_configs=(
