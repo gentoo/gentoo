@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools bash-completion-r1 distutils-r1 flag-o-matic linux-info pam systemd toolchain-funcs udev usr-ldscript
+inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info pam systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -34,7 +34,7 @@ LICENSE="BSD-2 CDDL MIT"
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
 SLOT="0/5"
-IUSE="custom-cflags debug kernel-builtin minimal nls pam python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite static-libs"
 
 DEPEND="
 	net-libs/libtirpc[static-libs?]
@@ -63,10 +63,11 @@ fi
 
 # awk is used for some scripts, completions, and the Dracut module
 RDEPEND="${DEPEND}
-	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:= )
+	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:=[dist-kernel?] )
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
 	virtual/awk
+	dist-kernel? ( virtual/dist-kernel:= )
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
@@ -90,6 +91,17 @@ REQUIRED_USE="
 "
 
 RESTRICT="test"
+
+pkg_pretend() {
+	use rootfs || return 0
+	use dist-kernel || return 0
+	if has_version virtual/dist-kernel; then
+		ewarn "You have virtual/dist-kernel installed, but"
+		ewarn "USE=\"dist-kernel\" is not enabled for ${CATEGORY}/${PN}"
+		ewarn "It's recommended to globally enable dist-kernel USE flag"
+		ewarn "to auto-trigger initrd rebuilds with kernel updates"
+	fi
+}
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
@@ -230,6 +242,15 @@ src_install() {
 }
 
 pkg_postinst() {
+	# we always need userspace utils in sync with zfs-kmod
+	# so force initrd update for userspace as well, to avoid
+	# situation when zfs-kmod trigger initrd rebuild before
+	# userspace component is rebuilt
+	# KV_* variables are provided by linux-info.eclass
+	if [[ -z ${ROOT} ]] && use dist-kernel; then
+		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+	fi
+
 	if use rootfs; then
 		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
 			elog "Root on zfs requires an initramfs to boot"
