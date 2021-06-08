@@ -3,9 +3,11 @@
 
 EAPI=7
 
+MY_P="aerospike-amc-enterprise-${PV}-linux"
+
 DESCRIPTION="Web UI based monitoring tool for Aerospike Community Edition Server"
-HOMEPAGE="http://www.aerospike.com"
-SRC_URI="http://www.aerospike.com/download/amc/${PV}/artifact/linux -> ${P}.tar.gz"
+HOMEPAGE="https://www.aerospike.com"
+SRC_URI="https://github.com/aerospike-community/amc/releases/download/${PV}/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -18,8 +20,10 @@ RDEPEND="
 
 S="${WORKDIR}"
 
+QA_PREBUILT="/opt/amc/amc"
+
 src_install() {
-	cp -r "${S}/"* "${ED}"
-	rm "${ED}/etc/init.d/*"
+	cp -r "${S}"/* "${ED}" || die
+	rm "${ED}"/etc/init.d/amc || die
 	newinitd "${FILESDIR}/amc.init.4" amc
 }
