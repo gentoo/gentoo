@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/munt-${MY_P}/mt32emu"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-docs.patch
+	"${FILESDIR}"/${PN}-2.4.2-docs.patch
 )
 
 src_configure() {
