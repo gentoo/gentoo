@@ -29,7 +29,6 @@ fully express their creativity.
 <use>
   <flag name="devtools">Compile the additional dev tools</flag>
   <flag name="profile">Enable the integration of the ingame real-time profiler</flag>
-  <flag name="sanitize">Compile with address sanitizer</flag>
 </use>
 <upstream>
   <remote-id type="gitlab">freedroid/freedroid-src</remote-id>
