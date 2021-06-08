@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/libbpf-0.3[static-libs(-)]
+	~dev-libs/libbpf-0.3:=[static-libs(-)]
 	>=sys-kernel/linux-headers-4.14
 	>=dev-libs/elfutils-0.166:=
 	<=sys-devel/clang-13:=
