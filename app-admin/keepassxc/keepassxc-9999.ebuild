@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="doc autotype browser ccache keeshare +network test yubikey"
+IUSE="autotype browser ccache doc keeshare +network test yubikey"
 
 RESTRICT="!test? ( test )"
 
@@ -61,8 +61,6 @@ BDEPEND="
 	ccache? ( dev-util/ccache )
 	doc? ( dev-ruby/asciidoctor )
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-2.6.4-quazip1.patch ) # pending upstream PR#5511
 
 src_prepare() {
 	 use test || \
