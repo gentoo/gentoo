@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Data structure and ops for directed graphs"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
