@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="doc test"
 
