@@ -62,7 +62,7 @@ all_ruby_prepare() {
 	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
 
 	# fix systemd path
-	eapply "${FILESDIR}/puppet-systemd.patch"
+	eapply -p0 "${FILESDIR}/puppet-systemd.patch"
 
 	# Avoid specs that can only run in the puppet.git repository. This
 	# should be narrowed down to the specific specs.
