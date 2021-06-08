@@ -9,6 +9,7 @@ TIMESTAMP="${PV:4:2}${PV:6:2}${PV:0:4}"
 DESCRIPTION="Minimal action game by Terry Cavanagh, with music by Chipzel"
 HOMEPAGE="https://superhexagon.com"
 SRC_URI="superhexagon-${TIMESTAMP}-bin"
+S="${WORKDIR}/data"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -18,8 +19,7 @@ RESTRICT="bindist fetch splitdebug"
 MYGAMEDIR="/opt/${PN}"
 QA_PREBUILT="${MYGAMEDIR#/}/superhexagon"
 
-DEPEND="app-arch/unzip"
-
+BDEPEND="app-arch/unzip"
 RDEPEND="media-libs/glew:1.6
 	media-libs/libsdl2[opengl,sound,video]
 	media-libs/libvorbis
@@ -27,7 +27,6 @@ RDEPEND="media-libs/glew:1.6
 	virtual/glu
 	virtual/opengl"
 
-S="${WORKDIR}/data"
 DOCS=( Linux.README )
 
 pkg_nofetch() {
