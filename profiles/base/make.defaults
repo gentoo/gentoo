@@ -122,8 +122,8 @@ PYTHONDONTWRITEBYTECODE="1"
 # Add in expanded PYTHON_TARGETS or stage1 builds break because of USE="-* ${BOOTSTRAP_USE}"
 # This MUST be kept in sync with the PYTHON_TARGETS below
 # Mike Gilbert <floppym@gentoo.org> (2018-05-23)
-# sys-apps/baslayout-2.5 needs split-usr enabled.
-BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_8"
+# sys-apps/baselayout-2.5 needs split-usr enabled.
+BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_9"
 
 # Mike Gilbert <floppym@gentoo.org> (2012-05-15)
 # Default target(s) for python-r1.eclass
