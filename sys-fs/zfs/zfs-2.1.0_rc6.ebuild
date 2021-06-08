@@ -63,7 +63,7 @@ fi
 
 # awk is used for some scripts, completions, and the Dracut module
 RDEPEND="${DEPEND}
-	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV} )
+	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:= )
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
 	virtual/awk
