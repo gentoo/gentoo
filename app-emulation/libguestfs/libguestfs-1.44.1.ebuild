@@ -46,6 +46,7 @@ COMMON_DEPEND="
 	>=app-admin/augeas-1.8.0
 	sys-fs/squashfs-tools:*
 	dev-libs/libconfig:=
+	dev-libs/jansson:=
 	sys-libs/readline:0=
 	>=sys-libs/db-4.6:*
 	app-arch/xz-utils
