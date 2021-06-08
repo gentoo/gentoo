@@ -1,13 +1,9 @@
-diff --git a/src/gpu.cpp b/src/gpu.cpp
-index ce1306c..468cd03 100644
+Needed to use system's glslang rather than bundled.
+https://github.com/Tencent/ncnn/issues/2622
 --- a/src/gpu.cpp
 +++ b/src/gpu.cpp
-@@ -21,7 +21,7 @@
- #include <vulkan/vulkan.h>
- 
+@@ -23,3 +23,3 @@
  #include "glslang/SPIRV/GlslangToSpv.h"
 -#include "glslang/glslang/Public/ShaderLang.h"
 +#include "glslang/Public/ShaderLang.h"
  
- #include "command.h"
- #include "layer.h"

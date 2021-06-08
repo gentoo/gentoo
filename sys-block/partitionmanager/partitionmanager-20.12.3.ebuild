@@ -11,7 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Utility for management of disks, partitions and file systems"
-HOMEPAGE="https://apps.kde.org/en/partitionmanager"
+HOMEPAGE="https://apps.kde.org/partitionmanager/"
 
 LICENSE="GPL-3"
 SLOT="5"

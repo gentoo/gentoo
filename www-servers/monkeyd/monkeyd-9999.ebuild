@@ -20,10 +20,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 # jemalloc is also off until we figure out how to work CMakeLists.txt magic.
-#IUSE="cgi -debug fastcgi jemalloc php static-plugins ${PLUGINS}"
+#IUSE="cgi debug fastcgi jemalloc php static-plugins ${PLUGINS}"
 
 PLUGINS="monkeyd_plugins_auth monkeyd_plugins_cheetah monkeyd_plugins_dirlisting +monkeyd_plugins_liana monkeyd_plugins_logger monkeyd_plugins_mandril monkeyd_plugins_tls"
-IUSE="cgi -debug fastcgi php static-plugins ${PLUGINS}"
+IUSE="cgi debug fastcgi php static-plugins ${PLUGINS}"
 
 # uclibc is often compiled without backtrace info so we should
 # force this off.  If someone complains, consider relaxing it.

@@ -46,9 +46,13 @@ python_check_deps() {
 
 pkg_setup() {
 	python-any-r1_pkg_setup
+	xorg-3_pkg_setup
+}
 
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable doc devel-docs)
 		$(use_enable selinux)
 	)
+	xorg-3_src_configure
 }

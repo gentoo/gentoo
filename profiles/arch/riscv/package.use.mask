@@ -1,6 +1,48 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-05-31)
+# dev-python/networkx not keyworded here
+app-portage/nattka depgraph-order
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-28)
+# net-dns/avahi, net-libs/libgssglue and sys-apps/xinetd
+# not keyworded here
+sys-devel/distcc gssapi xinetd zeroconf
+
+# Yixun Lan <dlan@gentoo.org> (2021-05-24)
+# Dependencies not keyworded, not tested
+dev-libs/libdbusmenu test
+virtual/notification-daemon gnome kde
+media-libs/libsdl nas pulseaudio
+media-libs/libcaca doc imlib
+x11-libs/tslib sdl
+dev-libs/libbytesize test
+sys-libs/libblockdev dmraid escrow
+app-text/docbook-xsl-ns-stylesheets ruby
+app-misc/geoclue modemmanager zeroconf
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zeroconf
+sys-power/upower ios
+net-libs/webkit-gtk gstreamer
+xfce-base/xfce4-settings colord libcanberra
+xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
+xfce-extra/xfce4-power-manager networkmanager
+xfce-base/xfce4-meta pulseaudio
+# KDE not tested, so mask
+sys-auth/polkit kde
+
+# Yixun Lan <dlan@gentoo.org> (2021-05-21)
+# sys-libs/libunwind do not support riscv
+media-libs/gstreamer unwind
+
+# Yixun Lan <dlan@gentoo.org> (2021-05-19)
+# Dependencies not keyworded, not tested
+dev-libs/gobject-introspection doctool test
+dev-python/markdown test
+x11-libs/gtk+ cups test colord
+net-libs/libsoup samba gssapi test
+net-libs/libproxy mono spidermonkey webkit kde networkmanager
+
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
@@ -134,13 +176,12 @@ net-irc/irssi socks5
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-libs/libpcap rdma
-net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss rtmp ssh nss mbedtls
+net-misc/curl brotli curl_ssl_mbedtls curl_ssl_nss rtmp ssh nss mbedtls
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage apidoc
 sys-apps/rng-tools nistbeacon pkcs11
-sys-apps/systemd policykit
 sys-auth/pambase gnome-keyring pam_krb5 pam_ssh  mktemp
 sys-block/thin-provisioning-tools test
 sys-devel/automake test

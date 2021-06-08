@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Organizational assistant, providing calendars and other similar functionality"
-HOMEPAGE="https://apps.kde.org/en/korganizer"
+HOMEPAGE="https://apps.kde.org/korganizer/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"

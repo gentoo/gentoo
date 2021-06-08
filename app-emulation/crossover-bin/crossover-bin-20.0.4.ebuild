@@ -47,6 +47,7 @@ S="${WORKDIR}"
 
 DEPEND=""
 BDEPEND="${PYTHON_DEPS}
+	app-arch/cpio
 	app-arch/unzip
 	dev-lang/perl
 	dev-util/bbe

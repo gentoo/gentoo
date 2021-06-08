@@ -1,0 +1,45 @@
+From e8e17c5ef8734fa56a78405e32277568e4e1095e Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Thu, 22 Apr 2021 08:38:18 -0600
+Subject: [PATCH] [ksmserver] Remove default shortcuts for "Without
+ Confirmation" actions
+
+These actions bypass the user setting for whether or not to show the
+logout screen and always log out/reboot/etc. immediately.  Because they
+have default keyboard shortcuts, they can be triggered by accident and
+cause unexpected logouts/reboots/etc.
+
+BUG: 435954
+FIXED-IN: 5.22
+---
+ ksmserver/server.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ksmserver/server.cpp b/ksmserver/server.cpp
+index ac9da9f09..6f3179fb9 100644
+--- a/ksmserver/server.cpp
++++ b/ksmserver/server.cpp
+@@ -880,17 +880,17 @@ void KSMServer::setupShortcuts()
+ 
+         a = actionCollection->addAction(QStringLiteral("Log Out Without Confirmation"));
+         a->setText(i18n("Log Out Without Confirmation"));
+-        KGlobalAccel::self()->setGlobalShortcut(a, QList<QKeySequence>() << Qt::ALT + Qt::CTRL + Qt::SHIFT + Qt::Key_Delete);
++        KGlobalAccel::self()->setGlobalShortcut(a, QKeySequence());
+         connect(a, &QAction::triggered, this, &KSMServer::logoutWithoutConfirmation);
+ 
+         a = actionCollection->addAction(QStringLiteral("Halt Without Confirmation"));
+         a->setText(i18n("Halt Without Confirmation"));
+-        KGlobalAccel::self()->setGlobalShortcut(a, QList<QKeySequence>() << Qt::ALT + Qt::CTRL + Qt::SHIFT + Qt::Key_PageDown);
++        KGlobalAccel::self()->setGlobalShortcut(a, QKeySequence());
+         connect(a, &QAction::triggered, this, &KSMServer::haltWithoutConfirmation);
+ 
+         a = actionCollection->addAction(QStringLiteral("Reboot Without Confirmation"));
+         a->setText(i18n("Reboot Without Confirmation"));
+-        KGlobalAccel::self()->setGlobalShortcut(a, QList<QKeySequence>() << Qt::ALT + Qt::CTRL + Qt::SHIFT + Qt::Key_PageUp);
++        KGlobalAccel::self()->setGlobalShortcut(a, QKeySequence());
+         connect(a, &QAction::triggered, this, &KSMServer::rebootWithoutConfirmation);
+     }
+ }
+-- 
+GitLab
+

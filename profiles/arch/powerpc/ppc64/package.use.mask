@@ -101,22 +101,9 @@ lxqt-base/lxqt-panel cpuload networkmonitor pulseaudio sysstat
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
 net-analyzer/snort open-appid
 
-# Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
-# missing keyword on dev-python/dbusmock, bug #620024
->=gnome-base/gnome-settings-daemon-3.24 test
-
-# Michał Górny <mgorny@gentoo.org> (2017-06-28)
-# app-misc/dtach is not keyworded, and tests are restricted anyway, so
-# no point in pursuing it right now.
-app-shells/bash-completion test
-
 # Jeroen Roovers <jer@gentoo.org> (2017-01-16)
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
-
-# Jeroen Roovers <jer@gentoo.org> (2017-02-05)
-# media-libs/libilbc has not been ported to PPC64
-media-video/ffmpeg libilbc
 
 # Robin H. Johnson <robbat2@gentoo.org> (2016-11-18)
 # dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
@@ -143,10 +130,6 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
-# sys-devel/clang is not keyworded
-app-doc/doxygen clang
-
 # Michael Sterrett <mr_bones_@gentoo.org (2013-11-12)
 # Mask openmedia use flag because the content generation tools
 # are missing keywords.
@@ -169,11 +152,6 @@ www-client/seamonkey ipc
 # Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
-
-# Brent Baude <ranger@gentoo.org> (2009-05-05)
-# Masking webkit from libproxy due to TOC failure on webkit
-# and stupid 64bit toolchain.
-net-libs/libproxy webkit
 
 # Joseph Jezak <josejx@gentoo.org> (2010-02-12)
 # Mask unstable pidgin deps until we can mark them stable (farsight2)

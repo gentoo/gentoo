@@ -10,14 +10,15 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/sahlberg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-remove-ld-iscsi.patch.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="iscsi client library and utilities"
 HOMEPAGE="https://github.com/sahlberg/libiscsi"
 
-SLOT="0"
 LICENSE="GPL-2 LGPL-2"
+SLOT="0"
 
 RDEPEND="dev-libs/libgcrypt:0="
 DEPEND="${RDEPEND}"
@@ -26,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.18.0-fno-common.patch
 	"${FILESDIR}"/${PN}-1.18.0-fno-common-2.patch
 	"${FILESDIR}"/${PN}-1.18.0-fno-common-3.patch
+	"${WORKDIR}"/${P}-remove-ld-iscsi.patch
 )
 
 src_prepare() {
@@ -43,5 +45,4 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
-	rm "${ED}"/usr/bin/ld_iscsi.so || die
 }

@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Application to manage alarms and other timer based alerts for the desktop"
-HOMEPAGE="https://apps.kde.org/en/kalarm https://userbase.kde.org/KAlarm"
+HOMEPAGE="https://apps.kde.org/kalarm/ https://userbase.kde.org/KAlarm"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"

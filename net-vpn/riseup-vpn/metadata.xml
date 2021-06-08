@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://0xacab.org/leap/bitmask-vpn/-/issues/new</bugs-to>
+	</upstream>
+	<longdescription>
+		Riseup offers Personal VPN service for censorship circumvention, location anonymization and traffic encryption. To make this possible, it sends all your internet traffic through an encrypted connection to riseup.net, where it then goes out onto the public internet.
+
+		Unlike most other VPN providers, Riseup does not log your IP address.
+
+		Riseup has a VPN client called RiseupVPN. This VPN client is super easy to use! You just install it and run it—no configuration, no account registration.
+
+		This is an experiment to see if we can create a VPN service that is easy enough for everyone to use and that people will donate enough to sustain.
+	</longdescription>
+</pkgmetadata>

@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Mathematical function plotter"
-HOMEPAGE="https://apps.kde.org/en/kmplot https://edu.kde.org/kmplot/"
+HOMEPAGE="https://apps.kde.org/kmplot/ https://edu.kde.org/kmplot/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

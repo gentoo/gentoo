@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>haubi@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Free, light-weight, and easily installed Oracle Database tools,
 		libraries and SDKs for building and connecting applications to

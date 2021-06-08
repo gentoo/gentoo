@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -15,12 +15,8 @@ LICENSE="BSD-2"
 # no functional changes since 0.8.16, so no point in upgrading
 KEYWORDS=""
 SLOT="0"
-IUSE="libressl"
 
-RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
-"
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests unittest

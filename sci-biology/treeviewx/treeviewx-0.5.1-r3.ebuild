@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-svg.patch
 	"${FILESDIR}"/${P}-treeview-xpm-not-xbm.patch
 	"${FILESDIR}"/${P}-wxstring-maxlen.patch
+	"${FILESDIR}"/${P}-AM_PROG_AR.patch
 )
 
 src_prepare() {

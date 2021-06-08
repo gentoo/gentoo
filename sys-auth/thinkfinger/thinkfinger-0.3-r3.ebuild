@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info pam
+inherit autotools linux-info pam
 
 DESCRIPTION="Support for the UPEK/SGS Thomson fingerprint reader, common in Thinkpads"
 HOMEPAGE="http://thinkfinger.sourceforge.net/"
@@ -28,6 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-send-sync-event.patch
 	"${FILESDIR}"/${PV}-tftoolgroup.patch
 	"${FILESDIR}"/${PV}-strip-strip.patch
+	"${FILESDIR}"/${PV}-autoreconf.patch
+	"${FILESDIR}"/${PV}-slibtool.patch
 )
 
 pkg_setup() {
@@ -36,6 +38,11 @@ pkg_setup() {
 		ERROR_CFG="Your kernel needs uinput for the pam module to work"
 		check_extra_config
 	fi
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {

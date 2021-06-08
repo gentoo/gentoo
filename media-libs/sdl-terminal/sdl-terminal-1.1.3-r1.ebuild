@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit epatch autotools ltprune
+inherit epatch autotools
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="library that provides a pseudo-ansi color terminal that can be used with any SDL application"
@@ -34,5 +34,5 @@ src_configure() {
 src_install() {
 	DOCS="AUTHORS ChangeLog README" \
 		default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

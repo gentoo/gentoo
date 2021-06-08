@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,8 @@ DEPEND="${RDEPEND}
 	>=dev-cpp/aixlog-1.2.1
 	>=dev-cpp/asio-1.12.1
 	>=dev-cpp/popl-1.2.0"
+
+PATCHES=( "${FILESDIR}"/${P}-gcc-11.patch )
 
 src_configure() {
 	local mycmakeargs=(

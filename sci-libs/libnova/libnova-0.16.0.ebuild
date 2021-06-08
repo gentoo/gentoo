@@ -16,6 +16,8 @@ IUSE="doc examples"
 
 BDEPEND="doc? ( app-doc/doxygen )"
 
+PATCHES=( "${FILESDIR}"/${P}-slibtool.patch )
+
 src_prepare() {
 	default
 	eautoreconf

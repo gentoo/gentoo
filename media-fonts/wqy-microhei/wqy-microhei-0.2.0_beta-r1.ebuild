@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="Apache-2.0 GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 x86"
 IUSE=""
 
 # Only installs fonts

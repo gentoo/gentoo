@@ -11,7 +11,7 @@ SRC_URI="http://www.arava.co.il/matan/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 IUSE="build +kernel-helper"
 
 MODULE_NAMES="svgalib_helper(misc:${S}/kernel/svgalib_helper)"
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.9.25-no-man-compression.patch
 	"${FILESDIR}"/${PN}-1.9.25-wrapdemo-buf-overflow.patch
 	"${FILESDIR}"/${PN}-1.9.25-ar.patch
+	"${FILESDIR}"/${PN}-1.9.25-gl-asm-width.patch
 )
 
 pkg_setup() {

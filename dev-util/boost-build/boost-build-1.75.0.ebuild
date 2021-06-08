@@ -9,7 +9,7 @@ MY_PV="$(ver_rs 1- _)"
 
 DESCRIPTION="A system for large project software construction, simple to use and powerful"
 HOMEPAGE="https://boostorg.github.io/build/"
-SRC_URI="https://dl.bintray.com/boostorg/release/${PV}/source/boost_${MY_PV}.tar.bz2"
+SRC_URI="https://boostorg.jfrog.io/artifactory/main/release/${PV}/source/boost_${MY_PV}.tar.bz2"
 
 LICENSE="Boost-1.0"
 SLOT="0"

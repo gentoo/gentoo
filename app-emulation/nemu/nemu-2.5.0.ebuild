@@ -13,7 +13,7 @@ SRC_URI="https://github.com/nemuTUI/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dbus network-map +ovf +savevm spice +vnc-client"
 
 RDEPEND="
@@ -33,7 +33,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
-S="${WORKDIR}/$PN-${MY_PV}/"
+S="${WORKDIR}/${PN}-${MY_PV}/"
 
 pkg_pretend() {
 	if use kernel_linux; then

@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Shell script to create the necessary framework to develop KDE applications"
-HOMEPAGE="https://apps.kde.org/en/kapptemplate"
+HOMEPAGE="https://apps.kde.org/kapptemplate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

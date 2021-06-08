@@ -11,7 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Multi-protocol IM client based on KDE Frameworks"
-HOMEPAGE="https://apps.kde.org/en/kopete"
+HOMEPAGE="https://apps.kde.org/kopete/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

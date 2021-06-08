@@ -16,7 +16,7 @@ SRC_URI="https://github.com/ColinDuquesnoy/${MY_PN}/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # TODO: Figure out how to get this to work
 # Please pass a palette class in order to create its qrc file

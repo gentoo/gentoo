@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>whissi@gentoo.org</email>
-  <name>Thomas Deutschmann</name>
-</maintainer>
-<maintainer type="project">
-  <email>base-system@gentoo.org</email>
-  <name>Gentoo Base System</name>
-</maintainer>
-<slots>
-  <subslots>Reflect ABI of libunrar.so.</subslots>
-</slots>
-<upstream>
-  <remote-id type="cpe">cpe:/a:rarlab:unrar</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<slots>
+		<subslots>Reflect ABI of libunrar.so.</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:rarlab:unrar</remote-id>
+	</upstream>
 </pkgmetadata>

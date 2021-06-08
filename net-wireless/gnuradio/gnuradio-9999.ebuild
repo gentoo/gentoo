@@ -47,14 +47,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-libs/boost:0=[python,${PYTHON_USEDEP}]')
-	dev-libs/log4cpp
+	dev-libs/log4cpp:=
 	$(python_gen_cond_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	sci-libs/fftw:3.0=
-	sci-libs/mpir
-	sci-libs/volk
+	sci-libs/mpir:=
+	sci-libs/volk:=
 	alsa? ( media-libs/alsa-lib:= )
 	fec? (
-		sci-libs/gsl
+		sci-libs/gsl:=
 		dev-python/scipy
 	)
 	filter? ( dev-python/scipy )
@@ -90,11 +90,12 @@ RDEPEND="${PYTHON_DEPS}
 		media-sound/gsm
 		>=media-libs/codec2-0.8.1
 	)
-	wavelet? ( sci-libs/gsl
-			dev-libs/gmp
-			sci-libs/lapack
-			)
-	zeromq? ( >=net-libs/zeromq-2.1.11 )
+	wavelet? (
+		sci-libs/gsl:=
+		dev-libs/gmp:=
+		sci-libs/lapack
+	)
+	zeromq? ( >=net-libs/zeromq-2.1.11:= )
 "
 
 #That's right, it can't build if gnuradio 3.7 is installed

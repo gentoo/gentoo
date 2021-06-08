@@ -1,0 +1,50 @@
+From 566c6e25f957ebdb0b6e8073ee291049118f47fb Mon Sep 17 00:00:00 2001
+From: Huacai Chen <chenhc@lemote.com>
+Date: Tue, 30 Mar 2021 23:33:33 +0800
+Subject: drm/amdgpu: Set a suitable dev_info.gart_page_size
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In Mesa, dev_info.gart_page_size is used for alignment and it was
+set to AMDGPU_GPU_PAGE_SIZE(4KB). However, the page table of AMDGPU
+driver requires an alignment on CPU pages.  So, for non-4KB page system,
+gart_page_size should be max_t(u32, PAGE_SIZE, AMDGPU_GPU_PAGE_SIZE).
+
+Signed-off-by: Rui Wang <wangr@lemote.com>
+Signed-off-by: Huacai Chen <chenhc@lemote.com>
+Link: https://github.com/loongson-community/linux-stable/commit/caa9c0a1
+[Xi: rebased for drm-next, use max_t for checkpatch,
+     and reworded commit message.]
+[gyakovlev@gentoo.org: backported to apply cleanly to 5.10.33]
+Signed-off-by: Xi Ruoyao <xry111@mengyan1223.wang>
+BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1549
+Tested-by: Dan Horák <dan@danny.cz>
+Reviewed-by: Christian König <christian.koenig@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: stable@vger.kernel.org
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+(limited to 'drivers/gpu/drm/amd/amdgpu')
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+index 64beb3399604..a4e2cf7cada1 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+@@ -766,9 +766,9 @@ int amdgpu_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
+ 			dev_info.high_va_offset = AMDGPU_GMC_HOLE_END;
+ 			dev_info.high_va_max = AMDGPU_GMC_HOLE_END | vm_size;
+ 		}
+-		dev_info.virtual_address_alignment = max((int)PAGE_SIZE, AMDGPU_GPU_PAGE_SIZE);
++		dev_info.virtual_address_alignment = max_t(u32, PAGE_SIZE, AMDGPU_GPU_PAGE_SIZE);
+ 		dev_info.pte_fragment_size = (1 << adev->vm_manager.fragment_size) * AMDGPU_GPU_PAGE_SIZE;
+-		dev_info.gart_page_size = AMDGPU_GPU_PAGE_SIZE;
++		dev_info.gart_page_size = max_t(u32, PAGE_SIZE, AMDGPU_GPU_PAGE_SIZE);
+ 		dev_info.cu_active_number = adev->gfx.cu_info.number;
+ 		dev_info.cu_ao_mask = adev->gfx.cu_info.ao_cu_mask;
+ 		dev_info.ce_ram_size = adev->gfx.ce_ram_size;
+-- 
+cgit v1.2.1
+

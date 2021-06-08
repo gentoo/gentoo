@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="System log viewer by KDE"
-HOMEPAGE="https://apps.kde.org/en/ksystemlog"
+HOMEPAGE="https://apps.kde.org/ksystemlog/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

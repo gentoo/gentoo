@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Usage"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2
@@ -20,11 +20,11 @@ RDEPEND="
 	>=dev-libs/libdazzle-3.30
 	>=gnome-base/libgtop-2.34.0:2
 	>=gui-libs/libhandy-1.0.0:1=
-	>=app-misc/tracker-3.0.3:=
+	>=app-misc/tracker-3.0.3:3=
 "
 
 DEPEND="${RDEPEND}
-	${vala_depend}
+	$(vala_depend)
 	>=sys-devel/gettext-0.19.8
 "
 

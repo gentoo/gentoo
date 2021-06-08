@@ -10,9 +10,9 @@ SRC_URI="http://pawsa.fedorapeople.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 
-IUSE="gnome +gnome-keyring kerberos ldap libressl rubrica sqlite webkit xface"
+IUSE="gnome +gnome-keyring kerberos ldap rubrica sqlite webkit xface"
 
 # TODO: internal spell checking via enchant-2 instead of gtkspell/gspell?
 DEPEND="
@@ -40,8 +40,7 @@ DEPEND="
 	net-mail/mailbase
 	x11-themes/hicolor-icon-theme
 	x11-themes/adwaita-icon-theme
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

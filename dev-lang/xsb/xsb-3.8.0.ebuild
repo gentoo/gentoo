@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PATCHSET_VER="4"
+PATCHSET_VER="5"
 
 inherit autotools java-pkg-opt-2
 
@@ -19,7 +19,7 @@ IUSE="curl debug iodbc java mysql odbc pcre threads xml"
 
 RDEPEND="curl? ( net-misc/curl )
 	iodbc? ( dev-db/libiodbc )
-	java? ( >=virtual/jdk-1.4:= )
+	java? ( >=virtual/jdk-1.8:* )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	pcre? ( dev-libs/libpcre )

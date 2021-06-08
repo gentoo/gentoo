@@ -1,0 +1,29 @@
+From c36b4aba0946b932f9da335e77295af2e31dff6d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 24 Apr 2021 18:44:04 +0200
+Subject: [PATCH] Add missing Qt5Concurrent to target_link_libraries
+
+This was working as long as it was implicitly provided by KIO.
+
+See also: https://invent.kde.org/frameworks/kio/-/merge_requests/426
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e30cfad6..f3413e6a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -162,6 +162,7 @@ if(NOT MSVC AND NOT ( WIN32 AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel" ) )
+ endif()
+ 
+ target_link_libraries(juk ${LIBMATH}
++    Qt5::Concurrent
+     Qt5::Gui
+     Qt5::Svg
+     Qt5::Widgets
+-- 
+2.31.1
+

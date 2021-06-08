@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gnu.org/software/octave/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot gui hdf5 java libressl opengl
+IUSE="curl doc fftw +glpk gnuplot gui hdf5 java opengl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse
 	ssl static-libs sundials X zlib"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
@@ -71,8 +71,7 @@ RDEPEND="
 		sci-libs/umfpack:0=
 	)
 	ssl? (
-		 !libressl? ( dev-libs/openssl:0= )
-		 libressl? ( dev-libs/libressl:0= )
+		 dev-libs/openssl:0=
 	)
 	sundials? ( >=sci-libs/sundials-4:0= )
 	X? ( x11-libs/libX11:0= )"

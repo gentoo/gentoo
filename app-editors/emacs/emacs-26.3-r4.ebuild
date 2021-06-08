@@ -110,8 +110,7 @@ FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	#eapply ../patch
-	eapply_user
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
@@ -262,16 +261,16 @@ src_install() {
 	fi
 
 	# avoid collision between slots, see bug #169033 e.g.
-	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
-	rm -rf "${ED}/usr/$(get_libdir)"
-	rm -rf "${ED}"/var
+	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
+	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}/usr/$(get_libdir)" || die
+	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
-	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp || die
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
-	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
 
 	if use systemd; then
 		insinto /usr/lib/systemd/user
@@ -324,7 +323,7 @@ src_install() {
 
 	if use gui && use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 		mv nextstep/Emacs.app \
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi

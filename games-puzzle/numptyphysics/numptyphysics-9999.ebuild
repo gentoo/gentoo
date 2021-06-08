@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit flag-o-matic git-r3 gnome2-utils toolchain-funcs
+inherit git-r3 gnome2-utils toolchain-funcs
 
 DESCRIPTION="Crayon Physics-like drawing puzzle game using the same excellent Box2D engine"
-HOMEPAGE="https://thp.io/2015/numptyphysics/"
+HOMEPAGE="https://github.com/thp/numptyphysics"
 EGIT_REPO_URI="https://github.com/thp/numptyphysics"
 # This is only the SRC_URI for the user levels. The code is in git repo.
 SRC_URI="user-levels? (
@@ -33,7 +33,7 @@ SRC_URI="user-levels? (
 	http://numptyphysics.garage.maemo.org/levels/zeez/zeez.npz
 )"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 IUSE="+user-levels"
 

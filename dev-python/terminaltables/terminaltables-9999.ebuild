@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 EGIT_REPO_URI="https://github.com/Robpol86/${PN}.git"
 inherit distutils-r1 git-r3
 
@@ -19,7 +19,6 @@ BDEPEND="
 	test? (
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/colorclass[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 	)"
 

@@ -9,6 +9,10 @@
 		<email>asturm@gentoo.org</email>
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>https://gitlab.freedesktop.org/pipewire/pipewire/-/issues</bugs-to>
 		<changelog>https://gitlab.freedesktop.org/pipewire/pipewire/-/releases</changelog>
@@ -21,6 +25,7 @@
 		<flag name="ffmpeg">Builds an unsupported SPA (file a Gentoo bug if you need this)</flag>
 		<flag name="jack">Enable SPA JACK plugin and emulation to be able to run JACK applications on top of PipeWire</flag>
 		<flag name="jack-client">Install a plugin for running PipeWire as a JACK client</flag>
+		<flag name="jack-sdk">Use PipeWire as JACK replacement</flag>
 		<flag name="ldac">LDAC over Bluetooth (primarily Sony headphones)</flag>
 		<flag name="pipewire-alsa">Replace PulseAudio's ALSA plugin with PipeWire's plugin</flag>
 		<flag name="vulkan">Uses Vulkan compute shaders to provide a CGI video source</flag>

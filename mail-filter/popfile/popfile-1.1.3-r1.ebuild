@@ -11,7 +11,7 @@ SRC_URI="http://getpopfile.org/downloads/${P}.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="cjk ipv6 libressl mysql ssl xmlrpc"
+IUSE="cjk ipv6 mysql ssl xmlrpc"
 
 RDEPEND="virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
@@ -25,8 +25,7 @@ RDEPEND="virtual/perl-Digest-MD5
 		dev-perl/Text-Kakasi )
 	mysql? ( dev-perl/DBD-mysql	)
 	ipv6? ( dev-perl/IO-Socket-INET6 )
-	ssl? ( !libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+	ssl? ( dev-libs/openssl:0
 		dev-perl/IO-Socket-SSL
 		dev-perl/Net-SSLeay )
 	xmlrpc? ( dev-perl/PlRPC )"

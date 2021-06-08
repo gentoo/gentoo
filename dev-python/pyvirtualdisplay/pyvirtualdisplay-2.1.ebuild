@@ -17,7 +17,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # pyvirtualdisplay.smartdisplay.DisplayTimeoutError: Timeout! elapsed time:60.3 timeout:60
 # tests hang in xvfb

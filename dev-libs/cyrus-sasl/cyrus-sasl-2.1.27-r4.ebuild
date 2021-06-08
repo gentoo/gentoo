@@ -15,7 +15,7 @@ SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="BSD-with-attribution"
 SLOT="2"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="authdaemond berkdb gdbm kerberos ldapdb libressl openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
+IUSE="authdaemond berkdb gdbm kerberos ldapdb openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
 
 CDEPEND="
 	net-mail/mailbase
@@ -30,8 +30,7 @@ CDEPEND="
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	)
 	java? ( >=virtual/jdk-1.6:= )"
 
@@ -88,19 +87,22 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# getpassphrase is defined in /usr/include/stdlib.h
 		append-cppflags -DHAVE_GETPASSPHRASE
 	else
 		# this horrendously breaks things on Solaris
 		append-cppflags -D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED -D_BSD_SOURCE -DLDAP_DEPRECATED
+		# replaces BSD_SOURCE (bug #579218)
+		append-cppflags -D_DEFAULT_SOURCE
 	fi
 
 	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
-	# Java support.
+	# Java support
 	multilib_is_native_abi && use java && export JAVAC="${JAVAC} ${JAVACFLAGS}"
 
 	local myeconfargs=(

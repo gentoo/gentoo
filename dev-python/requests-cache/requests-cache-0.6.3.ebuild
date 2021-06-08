@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/itsdangerous[${PYTHON_USEDEP}]
@@ -27,10 +27,10 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
+		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 python_test() {

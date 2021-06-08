@@ -1,0 +1,16 @@
+---
+ Vc/common/simdarray.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Vc/common/simdarray.h b/Vc/common/simdarray.h
+index adbe1b7d9..ba9daf27c 100644
+--- a/Vc/common/simdarray.h
++++ b/Vc/common/simdarray.h
+@@ -33,6 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ //#include "../IO"
+ 
+ #include <array>
++#include <limits>
+ 
+ #include "writemaskedvector.h"
+ #include "simdarrayhelper.h"

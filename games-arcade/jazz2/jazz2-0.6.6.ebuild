@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop dotnet eutils
+inherit desktop dotnet wrapper
 
 DESCRIPTION="Open source reimplementation of Jazz Jackrabbit 2"
 HOMEPAGE="http://deat.tk/jazz2/"

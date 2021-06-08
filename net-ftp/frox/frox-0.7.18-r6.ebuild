@@ -11,13 +11,13 @@ HOMEPAGE="http://frox.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="clamav libressl ssl transparent"
+IUSE="clamav ssl transparent"
 
 DEPEND="
 	clamav? ( >=app-antivirus/clamav-0.80 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl:0= ) )
+		dev-libs/openssl:0
+	)
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6 )
 "
 RDEPEND="${DEPEND}"

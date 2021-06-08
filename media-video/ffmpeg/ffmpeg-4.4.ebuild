@@ -59,7 +59,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -68,7 +68,7 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
-		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
+		+gpl hardcoded-tables +iconv libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
 		# libavdevice options
@@ -270,17 +270,9 @@ RDEPEND="
 	postproc? ( !media-libs/libpostproc )
 "
 
-# Crypto & co provider magic
-# - libressl is a useflag meaning it should always favor libressl over openssl
-# - libressl and openssl provide more features to ffmpeg than gnutls
-#
-# The ordering is thus: libressl > openssl > gnutls
 RDEPEND="${RDEPEND}
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-	!libressl? (
 		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 		!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
-	)
 "
 
 DEPEND="${RDEPEND}
@@ -319,7 +311,7 @@ REQUIRED_USE="
 	${CPU_REQUIRED_USE}"
 RESTRICT="
 	!test? ( test )
-	gpl? ( openssl? ( bindist ) fdk? ( bindist ) libressl? ( bindist ) )
+	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
 S=${WORKDIR}/${P/_/-}
@@ -348,7 +340,7 @@ multilib_src_configure() {
 	local myconf=( )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
-	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
+	use openssl && myconf+=( --enable-nonfree )
 	use samba && myconf+=( --enable-version3 )
 
 	# Encoders
@@ -384,10 +376,7 @@ multilib_src_configure() {
 		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
 	done
 
-	# Incompatible features: openssl or libressl and gnutls
-	if use libressl ; then
-		myconf+=( --disable-gnutls --disable-openssl )
-	elif use openssl ; then
+	if use openssl ; then
 		myconf+=( --disable-gnutls )
 	fi
 
@@ -462,6 +451,13 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 	)
 
+	local extra_libs
+	if use arm || use ppc ; then
+		# bug #782811
+		# bug #790590
+		extra_libs+="-latomic "
+	fi
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -476,6 +472,7 @@ multilib_src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--extra-libs="${extra_libs}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}" \
 		${EXTRA_FFMPEG_CONF}
@@ -520,6 +517,11 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
+		emake V=1 fate
+}
+
 multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install install-doc
 
@@ -550,9 +552,4 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-}
-
-multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
-		emake V=1 fate
 }

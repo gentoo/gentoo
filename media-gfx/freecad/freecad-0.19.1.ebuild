@@ -39,7 +39,7 @@ for module in ${FREECAD_STABLE_MODULES}; do
 	IUSE="${IUSE} +${module}"
 done
 for module in ${FREECAD_EXPERIMENTAL_MODULES}; do
-	IUSE="${IUSE} -${module}"
+	IUSE="${IUSE} ${module}"
 done
 unset module
 
@@ -214,6 +214,9 @@ src_configure() {
 		-DFREECAD_USE_QT_FILEDIALOG=ON
 		-DFREECAD_USE_QTWEBMODULE:STRING="Qt WebEngine"
 
+		# Use the version of shiboken2 that matches the selected python version
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
+
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
 		-DOCCT_CMAKE_FALLBACK=ON				# don't use occt-config which isn't included in opencascade for Gentoo
@@ -275,6 +278,7 @@ pkg_postinst() {
 	optfeature "dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
 	optfeature "FEM mesh generator" sci-libs/gmsh
+	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
 }
 
 pkg_postrm() {

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
 FIRMWARE_ABI_VERSION="5.2.0-r50"
@@ -33,7 +33,7 @@ LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug +doc
-	+fdt glusterfs gnutls gtk infiniband iscsi io-uring
+	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo multipath
 	ncurses nfs nls numa opengl +oss +pin-upstream-blobs
@@ -111,6 +111,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
 	vhost-user-fs? ( caps seccomp )
+	virgl? ( opengl )
 	virtfs? ( caps xattr )
 	vte? ( gtk )
 	multipath? ( udev )
@@ -148,6 +149,7 @@ SOFTMMU_TOOLS_DEPEND="
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
+	fuse? ( >=sys-fs/fuse-3.1:3[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -503,6 +505,7 @@ qemu_src_configure() {
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
 		$(conf_notuser fdt)
+		$(conf_notuser fuse)
 		$(conf_notuser glusterfs)
 		$(conf_notuser gnutls)
 		$(conf_notuser gnutls nettle)
@@ -846,7 +849,7 @@ src_install() {
 firmware_abi_change() {
 	local pv
 	for pv in ${REPLACING_VERSIONS}; do
-		if ver_test $pv -lt ${FIRMWARE_ABI_VERSION}; then
+		if ver_test ${pv} -lt ${FIRMWARE_ABI_VERSION}; then
 			return 0
 		fi
 	done

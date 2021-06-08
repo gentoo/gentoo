@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit udev multilib distutils-r1 scons-utils toolchain-funcs

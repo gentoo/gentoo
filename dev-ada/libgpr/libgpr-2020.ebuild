@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ADA_COMPAT=( gnat_201{6,7,8,9} )
+ADA_COMPAT=( gnat_201{7..9} )
 inherit ada toolchain-funcs multiprocessing
 
 MYP=gprbuild-${PV}-20200429-19BD2-src
@@ -21,14 +21,15 @@ RDEPEND="dev-ada/xmlada[shared?,static-libs?,static-pic?,${ADA_USEDEP}]
 	!net-libs/grpc"
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
-REQUIRED_USE="${ADA_REQUIRED_USE}"
+REQUIRED_USE="${ADA_REQUIRED_USE}
+	|| ( shared static-libs static-pic )"
 
 S="${WORKDIR}"/${MYP}
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_configure() {
-	emake prefix="${D}"/usr setup
+	emake setup
 }
 
 src_compile() {
@@ -50,11 +51,11 @@ src_compile() {
 
 src_install() {
 	if use static-libs; then
-		emake DESTDIR="${D}" libgpr.install.static
+		emake prefix="${D}"/usr libgpr.install.static
 	fi
 	for kind in shared static-pic; do
 		if use ${kind}; then
-			emake DESTDIR="${D}" libgpr.install.${kind}
+			emake prefix="${D}"/usr libgpr.install.${kind}
 		fi
 	done
 	rm -r "${D}"/usr/share/gpr/manifests || die

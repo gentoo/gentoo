@@ -14,7 +14,7 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/${RELEASE_COMMIT}.tar.gz -> ${P
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl shibboleth test"
+IUSE="shibboleth test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
@@ -25,8 +25,7 @@ RDEPEND="dev-db/sqlite:3
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
-	!libressl? ( dev-libs/openssl:= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:=
 	net-libs/libsearpc
 	~net-misc/seafile-${PV}
 	shibboleth? ( dev-qt/qtwebengine:5[widgets] )"
@@ -36,7 +35,6 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-select-qt5.patch"
-	"${FILESDIR}/${PN}-7.0.9-libressl.patch"
 	"${FILESDIR}/${PN}-7.0.9-qt-5.15.patch"
 	"${FILESDIR}/${PN}-8.0.1-glib-2.68.0.patch"
 )

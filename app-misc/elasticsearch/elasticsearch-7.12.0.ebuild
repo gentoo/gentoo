@@ -17,6 +17,9 @@ RDEPEND="acct-group/elasticsearch
 	virtual/jre"
 
 QA_PRESTRIPPED="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"
+QA_PREBUILT="
+	usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/.*
+	usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/lib/.*"
 
 src_prepare() {
 	default

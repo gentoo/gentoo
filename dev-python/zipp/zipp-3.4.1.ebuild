@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -36,5 +36,5 @@ python_prepare_all() {
 python_test() {
 	# Ignoring zipp.py from ${S} avoids ImportPathMismatchError with Python < 3.8
 	# by ensuring only zipp from ${BUILD_DIR} is loaded
-	pytest --ignore zipp.py -vv || die "Tests fail with ${EPYTHON}"
+	epytest --ignore zipp.py
 }

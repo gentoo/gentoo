@@ -17,7 +17,7 @@ DESCRIPTION="ISO/IEC 23008-12:2017 HEIF file format decoder and encoder"
 HOMEPAGE="https://github.com/strukturag/libheif"
 
 LICENSE="GPL-3"
-SLOT="0/1.11"
+SLOT="0/1.12"
 IUSE="+aom gdk-pixbuf go libde265 rav1e test +threads x265"
 REQUIRED_USE="test? ( go libde265 )"
 RESTRICT="!test? ( test )"

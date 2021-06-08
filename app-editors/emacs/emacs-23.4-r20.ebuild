@@ -90,10 +90,10 @@ SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
 # operations later on
 FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
+PATCHES=("${WORKDIR}/patch")
 
 src_prepare() {
-	eapply ../patch
-	eapply_user
+	default
 
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
 		|| die "unable to sed ctags.1"
@@ -255,15 +255,15 @@ src_install() {
 	fperms 2751 /usr/libexec/emacs/${FULL_VERSION}/${CHOST}/movemail
 
 	# avoid collision between slots, see bug #169033 e.g.
-	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{applications,icons}
-	rm -rf "${ED}"/var
+	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
+	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
-	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp || die
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
-	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
 
 	local cdir
 	if use source; then
@@ -273,8 +273,8 @@ src_install() {
 		# C source you might find via find-function
 		doins src/*.{c,h,m}
 		doins -r src/{m,s}
-		rm "${ED}"/usr/share/emacs/${FULL_VERSION}/src/Makefile.c
-		rm "${ED}"/usr/share/emacs/${FULL_VERSION}/src/{m,s}/README
+		rm "${ED}"/usr/share/emacs/${FULL_VERSION}/src/Makefile.c || die
+		rm "${ED}"/usr/share/emacs/${FULL_VERSION}/src/{m,s}/README || die
 	elif has installsources ${FEATURES}; then
 		cdir="/usr/src/debug/${CATEGORY}/${PF}/${S#"${WORKDIR}/"}/src"
 	fi
@@ -303,7 +303,7 @@ src_install() {
 
 	if use gui && use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 		mv nextstep/Emacs.app \
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi

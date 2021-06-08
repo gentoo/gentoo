@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune systemd user
+inherit autotools systemd user
 
 DESCRIPTION="A free socks4,5 and msproxy implementation"
 HOMEPAGE="https://www.inet.no/dante/"
@@ -94,7 +94,7 @@ src_install() {
 	docinto examples
 	dodoc example/*.conf
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

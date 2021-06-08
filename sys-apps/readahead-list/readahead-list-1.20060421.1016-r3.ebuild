@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,10 +11,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	virtual/os-headers
-"
+DEPEND="virtual/os-headers"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc-4.3.patch"

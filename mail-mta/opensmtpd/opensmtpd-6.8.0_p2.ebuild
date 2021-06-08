@@ -12,13 +12,12 @@ SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz"
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
-IUSE="libressl pam +mta berkdb"
+IUSE="pam +mta berkdb"
 
 DEPEND="
 	acct-user/smtpd
 	acct-user/smtpq
-	!libressl? ( >=dev-libs/openssl-1.1:0= )
-	libressl? ( dev-libs/libressl:0= )
+	>=dev-libs/openssl-1.1:0=
 	elibc_musl? ( sys-libs/fts-standalone )
 	sys-libs/zlib
 	pam? ( sys-libs/pam )

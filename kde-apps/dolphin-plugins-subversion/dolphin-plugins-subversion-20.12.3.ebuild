@@ -12,7 +12,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Dolphin plugin for Subversion integration"
-HOMEPAGE="https://apps.kde.org/en/dolphin_plugins"
+HOMEPAGE="https://apps.kde.org/dolphin_plugins/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

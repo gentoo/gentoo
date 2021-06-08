@@ -79,7 +79,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	if multilib_is_native_abi && use doc; then
-		cmake_src_make glslc_doc_README
+		cmake_src_compile glslc_doc_README
 	fi
 	cmake_src_compile
 }

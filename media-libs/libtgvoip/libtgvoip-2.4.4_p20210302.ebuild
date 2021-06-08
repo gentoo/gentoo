@@ -14,11 +14,10 @@ SRC_URI="https://github.com/telegramdesktop/libtgvoip/archive/${LIBTGVOIP_COMMIT
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64"
-IUSE="+dsp libressl pulseaudio"
+IUSE="+dsp pulseaudio"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	media-libs/opus:=
 	media-libs/alsa-lib
 	!pulseaudio? ( media-sound/apulse[sdk] )

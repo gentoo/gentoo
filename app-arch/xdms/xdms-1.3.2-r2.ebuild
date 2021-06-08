@@ -16,6 +16,7 @@ KEYWORDS="amd64 ~hppa ppc x86"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.2-respect-DESTDIR.patch
 	"${FILESDIR}"/${PN}-1.3.2-dont-compress-man-pages.patch
+	"${FILESDIR}"/${PN}-1.3.2-fix-build-with-gcc-10.patch
 )
 
 src_prepare() {

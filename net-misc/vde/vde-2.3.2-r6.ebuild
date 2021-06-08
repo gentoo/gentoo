@@ -12,13 +12,11 @@ HOMEPAGE="https://virtualsquare.org"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
-IUSE="pcap selinux ssl libressl static-libs"
+IUSE="pcap selinux ssl static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )
+	"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
 	acct-group/qemu

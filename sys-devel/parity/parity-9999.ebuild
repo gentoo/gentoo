@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git@github.com:haubi/parity.git https://github.com/haubi/parity.git"
+	EGIT_REPO_URI="git@github.com:ssi-schaefer/parity.git https://github.com/ssi-schaefer/parity.git"
 	BDEPEND="dev-util/confix"
 else
 	SRC_URI="https://github.com/mduft/${PN}/releases/download/${PV}/${P}.tar.bz2"

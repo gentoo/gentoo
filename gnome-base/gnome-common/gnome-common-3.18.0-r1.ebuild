@@ -5,11 +5,11 @@ EAPI=6
 inherit gnome2
 
 DESCRIPTION="Common files for development of Gnome packages"
-HOMEPAGE="https://git.gnome.org/browse/gnome-common"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-common"
 
 LICENSE="GPL-3"
 SLOT="3"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND=""
 DEPEND=""

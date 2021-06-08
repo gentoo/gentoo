@@ -17,6 +17,8 @@ RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"
 
 src_prepare() {
-	has_version '>=sys-libs/glibc-2.32-r1' && rm -v "${WORKDIR}/patch/23_all_disable-riscv32-ABIs.patch"
+	if has_version '>=sys-libs/glibc-2.32-r1'; then
+		rm -v "${WORKDIR}/patch/21_all_disable-riscv32-ABIs.patch" || die
+	fi
 	toolchain_src_prepare
 }

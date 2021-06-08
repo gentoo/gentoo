@@ -11,7 +11,7 @@ SRC_URI="https://ctwm.org/dist/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="jpeg rplay test xpm"
 RESTRICT="!test? ( test )"
 

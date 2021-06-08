@@ -12,7 +12,7 @@ EAPI=7
 # changes its ABI then this package will be rebuilt needlessly. Hence, such a
 # package is free _not_ to := depend on FFmpeg but I would strongly encourage
 # doing so since such a case is unlikely.
-FFMPEG_SUBSLOT=56.58.58
+FFMPEG_SUBSLOT=57.59.59
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -68,7 +68,7 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt +gnutls gmp
-		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
+		+gpl hardcoded-tables +iconv libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau vulkan
 		X:xlib X:libxcb X:libxcb-shm X:libxcb-xfixes +zlib
 		# libavdevice options
@@ -270,17 +270,9 @@ RDEPEND="
 	postproc? ( !media-libs/libpostproc )
 "
 
-# Crypto & co provider magic
-# - libressl is a useflag meaning it should always favor libressl over openssl
-# - libressl and openssl provide more features to ffmpeg than gnutls
-#
-# The ordering is thus: libressl > openssl > gnutls
 RDEPEND="${RDEPEND}
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-	!libressl? (
 		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 		!openssl? ( gnutls? ( >=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}] ) )
-	)
 "
 
 DEPEND="${RDEPEND}
@@ -319,7 +311,7 @@ REQUIRED_USE="
 	${CPU_REQUIRED_USE}"
 RESTRICT="
 	!test? ( test )
-	gpl? ( openssl? ( bindist ) fdk? ( bindist ) libressl? ( bindist ) )
+	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
 S=${WORKDIR}/${P/_/-}
@@ -348,7 +340,7 @@ multilib_src_configure() {
 	local myconf=( )
 
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
-	use openssl || use libressl && use gpl && myconf+=( --enable-nonfree )
+	use openssl && myconf+=( --enable-nonfree )
 	use samba && myconf+=( --enable-version3 )
 
 	# Encoders
@@ -384,10 +376,7 @@ multilib_src_configure() {
 		myconf+=( $(use_enable ${i%:*} ${i#*:}) )
 	done
 
-	# Incompatible features: openssl or libressl and gnutls
-	if use libressl ; then
-		myconf+=( --disable-gnutls --disable-openssl )
-	elif use openssl ; then
+	if use openssl ; then
 		myconf+=( --disable-gnutls )
 	fi
 
@@ -429,7 +418,6 @@ multilib_src_configure() {
 	# Mandatory configuration
 	myconf=(
 		--enable-avfilter
-		--enable-avresample
 		--disable-stripping
 		# This is only for hardcoded cflags; those are used in configure checks that may
 		# interfere with proper detections, bug #671746 and bug #645778
@@ -520,6 +508,11 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil" \
+		emake V=1 fate
+}
+
 multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install install-doc
 
@@ -550,9 +543,4 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-}
-
-multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
-		emake V=1 fate
 }

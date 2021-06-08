@@ -1,0 +1,52 @@
+http://www.wg9s.com/comm-253/patches/seamonkey-253-patches/mozilla-release/patches/1670538-87a1.patch
+https://bugs.gentoo.org/789981
+
+--- seamonkey-2.53.7.1/config/rules.mk
++++ seamonkey-2.53.7.1/config/rules.mk
+@@ -861,16 +861,27 @@
+ # Versions of rust >= 1.45 need -Cembed-bitcode=yes for all crates when
+ # using -Clto.
+ ifeq (,$(filter 1.37.% 1.38.% 1.39.% 1.40.% 1.41.% 1.42.% 1.43.% 1.44.%,$(RUSTC_VERSION)))
+ RUSTFLAGS += -Cembed-bitcode=yes
+ endif
+ endif
+ endif
+ 
++ifndef RUSTC_BOOTSTRAP
++ifeq (,$(filter 1.47.% 1.48.% 1.49.%,$(RUSTC_VERSION)))
++# RUSTC_BOOTSTRAP := gkrust_shared,qcms for later
++RUSTC_BOOTSTRAP := gkrust_shared
++ifdef MOZ_RUST_SIMD
++RUSTC_BOOTSTRAP := $(RUSTC_BOOTSTRAP),encoding_rs,packed_simd
++endif
++export RUSTC_BOOTSTRAP
++endif
++endif
++
+ rustflags_override = RUSTFLAGS='$(MOZ_RUST_DEFAULT_FLAGS) $(RUSTFLAGS)'
+ 
+ ifdef MOZ_MSVCBITS
+ # If we are building a MozillaBuild shell, we want to clear out the
+ # vcvars.bat environment variables for cargo builds. This is because
+ # a 32-bit MozillaBuild shell on a 64-bit machine will try to use
+ # the 32-bit compiler/linker for everything, while cargo/rustc wants
+ # to use the 64-bit linker for build.rs scripts. This conflict results
+--- seamonkey-2.53.7.1/toolkit/library/rust/shared/build.rs.1670538.later
++++ seamonkey-2.53.7.1/toolkit/library/rust/shared/build.rs.1670538.later
+@@ -0,0 +1,16 @@
++--- build.rs
+++++ build.rs
++@@ -17,12 +17,12 @@ fn main() {
++     } else if std::env::var("MOZ_AUTOMATION").is_ok() {
++         panic!("Builds on automation must use a version of rust for which we know how to hook OOM: want < {}, have {}",
++                max_oom_hook_version, ver);
++     }
++ 
++     // This is a rather awful thing to do, but we're only doing it on
++     // versions of rustc that are not going to change the unstable APIs
++     // we use from under us, all being already released or beta.
++-    if bootstrap {
+++    if bootstrap && ver < Version::parse("1.50.0").unwrap() {
++         println!("cargo:rustc-env=RUSTC_BOOTSTRAP=1");
++     }
++ }

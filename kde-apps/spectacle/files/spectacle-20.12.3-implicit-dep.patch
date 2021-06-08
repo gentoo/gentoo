@@ -1,0 +1,42 @@
+From a4450b62365d5e7c511e9855d31a68808c9bcfba Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 24 Apr 2021 18:22:10 +0200
+Subject: [PATCH] Add missing Qt5Concurrent
+
+Implicit use via KIO.
+
+See also: https://invent.kde.org/frameworks/kio/-/merge_requests/426
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 1 +
+ src/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c63dca..7aac0d2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,6 +40,7 @@ add_definitions(-DQT_NO_URL_CAST_FROM_STRING -DQT_NO_CAST_FROM_ASCII -DQT_NO_FOR
+ find_package(
+     Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
+         Core
++        Concurrent
+         Widgets
+         DBus
+         PrintSupport
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3cd737b..c715a29 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -69,6 +69,7 @@ ki18n_wrap_ui(spectacle Gui/SettingsDialog/GeneralOptions.ui Gui/SettingsDialog/
+ 
+ target_link_libraries(
+     spectacle
++        Qt5::Concurrent
+         Qt5::DBus
+         Qt5::PrintSupport
+         KF5::CoreAddons
+-- 
+2.31.1
+

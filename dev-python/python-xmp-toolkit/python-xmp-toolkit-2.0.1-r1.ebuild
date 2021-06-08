@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
@@ -23,9 +23,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/unittest2[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		media-libs/exempi )"
+	test? ( media-libs/exempi )"
 RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${P}-test.patch )

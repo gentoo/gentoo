@@ -3,6 +3,7 @@
 
 EAPI=7
 VALA_MIN_API_VERSION="0.44"
+VALA_MAX_API_VERSION="0.50"
 
 inherit gnome.org gnome2-utils meson vala xdg
 
@@ -11,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Reversi"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.0:2
@@ -31,6 +32,12 @@ BDEPEND="
 	media-libs/gsound[vala]
 	gnome-base/librsvg:2[vala]
 "
+
+PATCHES=(
+	# backport for https://gitlab.gnome.org/GNOME/gnome-nibbles/-/issues/52
+	"${FILESDIR}"/${P}-vala-0.50.4-GtkChild-1.patch
+	"${FILESDIR}"/${P}-vala-0.50.4-GtkChild-2.patch
+)
 
 src_prepare() {
 	xdg_src_prepare

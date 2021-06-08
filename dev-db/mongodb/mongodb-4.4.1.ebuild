@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-IUSE="debug kerberos libressl lto ssl test +tools"
+IUSE="debug kerberos lto ssl test +tools"
 RESTRICT="!test? ( test )"
 
 RDEPEND="acct-group/mongodb
@@ -36,8 +36,7 @@ RDEPEND="acct-group/mongodb
 	>=sys-libs/zlib-1.2.11:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1g:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.1g:0=
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}

@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Geography learning tool"
-HOMEPAGE="https://apps.kde.org/en/kgeography"
+HOMEPAGE="https://apps.kde.org/kgeography/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

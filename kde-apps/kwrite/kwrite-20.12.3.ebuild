@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Simple text editor based on KDE Frameworks"
-HOMEPAGE="https://apps.kde.org/en/kwrite"
+HOMEPAGE="https://apps.kde.org/kwrite/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

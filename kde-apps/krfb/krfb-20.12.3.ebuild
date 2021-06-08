@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="VNC-compatible server to share Plasma desktops"
-HOMEPAGE="https://apps.kde.org/en/krfb"
+HOMEPAGE="https://apps.kde.org/krfb/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

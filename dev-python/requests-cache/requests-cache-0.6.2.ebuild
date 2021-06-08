@@ -30,7 +30,6 @@ BDEPEND="
 		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 python_test() {

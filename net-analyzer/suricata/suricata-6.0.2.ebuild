@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools linux-info lua-single python-single-r1 systemd tmpfiles
 
@@ -55,6 +55,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
+	"${FILESDIR}/${PN}-5.0.6_configure-no-sphinx-pdflatex-automagic.patch"
 	"${FILESDIR}/${PN}-6.0.0_default-config.patch"
 )
 

@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/libssh2/libssh2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="gcrypt libressl mbedtls zlib"
+IUSE="gcrypt mbedtls zlib"
 REQUIRED_USE="?? ( gcrypt mbedtls )"
 RESTRICT="test"
 
@@ -21,8 +21,7 @@ RDEPEND="
 	!gcrypt? (
 		mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
 		!mbedtls? (
-			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+			>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 		)
 	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )

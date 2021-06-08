@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
 
 BDEPEND="
 	${PYTHON_DEPS}
@@ -30,8 +30,7 @@ RDEPEND="
 	dvbcsa? ( media-libs/libdvbcsa )
 	ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] )
 	hdhomerun? ( media-libs/libhdhomerun )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )
 	zeroconf? ( net-dns/avahi )
 	zlib? ( sys-libs/zlib )

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/qos-ch/slf4j/archive/refs/tags/v_${PV}.tar.gz -> slf
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 
 # slf4j-v_1.7.30/slf4j-log4j12/src/test/java/org/slf4j/impl/Log4j12MultithreadedInitializationTest.java:35: error: cannot find symbol
 # import org.slf4j.helpers.MultithreadedInitializationTest;

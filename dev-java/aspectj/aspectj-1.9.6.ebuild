@@ -12,7 +12,7 @@ SRC_URI="https://www.eclipse.org/downloads/download.php?file=/tools/${PN}/${P}-s
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="dev-java/asm:9
 	dev-java/commons-logging:0"

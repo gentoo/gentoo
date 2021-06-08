@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="BibTeX editor to edit bibliographies used with LaTeX"
-HOMEPAGE="https://apps.kde.org/en/kbibtex https://userbase.kde.org/KBibTeX"
+HOMEPAGE="https://apps.kde.org/kbibtex/ https://userbase.kde.org/KBibTeX"
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/KBibTeX/${PV}/${P}.tar.xz"

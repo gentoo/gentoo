@@ -7,12 +7,12 @@ PYTHON_COMPAT=(python3_{6..9})
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Collection of GSettings schemas for GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gsettings-desktop-schemas"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="+introspection"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x86-solaris"
 
 BDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )

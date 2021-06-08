@@ -18,7 +18,7 @@ SRC_URI="https://github.com/${PN}-xpath/${PN}/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="BSD-2"
 SLOT="1.2"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="dom4j jdom xom"
 
 # It seems that most tests depend on dom4j, jdom and xom which all depend back on jaxen
@@ -47,13 +47,13 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-S="${WORKDIR}"
+S="${WORKDIR}/${P}"
 
-DOCS=( "${P}"/{LICENSE.txt,README.md} )
+DOCS=( "${S}"/{LICENSE.txt,README.md} )
 
-JAVA_SRC_DIR="${P}/src/java/main"
+JAVA_SRC_DIR="src/java/main"
 
-JAVA_TEST_SRC_DIR="${P}/src/java/test"
+JAVA_TEST_SRC_DIR="src/java/test"
 JAVA_TEST_GENTOO_CLASSPATH="junit"
 
 src_prepare() {

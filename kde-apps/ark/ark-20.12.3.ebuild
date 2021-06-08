@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
 
 DESCRIPTION="File archiver by KDE"
-HOMEPAGE="https://apps.kde.org/en/ark https://utils.kde.org/projects/ark/"
+HOMEPAGE="https://apps.kde.org/ark/ https://utils.kde.org/projects/ark/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

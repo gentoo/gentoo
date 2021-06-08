@@ -12,7 +12,7 @@ SRC_URI="https://github.com/libsdl-org/SDL_image/archive/${MY_COMMIT}.tar.gz -> 
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ~ppc64 sparc x86"
 IUSE="gif jpeg png static-libs tiff webp"
 
 RDEPEND="
@@ -49,6 +49,10 @@ multilib_src_configure() {
 		--disable-webp-shared
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_compile() {
+	emake OBJC="$(tc-getCC)"
 }
 
 multilib_src_install() {

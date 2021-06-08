@@ -11,14 +11,16 @@ inherit check-reqs cmake desktop eapi8-dosym optfeature python-single-r1 xdg
 DESCRIPTION="QT based Computer Aided Design application"
 HOMEPAGE="https://www.freecadweb.org/ https://github.com/FreeCAD/FreeCAD"
 
+MY_PN=FreeCAD
+
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/FreeCAD/FreeCAD.git"
+	EGIT_REPO_URI="https://github.com/${MY_PN}/${MY_PN}.git"
 	S="${WORKDIR}/freecad-${PV}"
 else
 	MY_PV=$(ver_cut 1-2)
 	MY_PV=$(ver_rs 1 '_' ${MY_PV})
-	SRC_URI="https://github.com/FreeCAD/FreeCAD/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
@@ -31,15 +33,15 @@ IUSE="debug headless pcl test"
 RESTRICT="!test? ( test )"
 
 FREECAD_EXPERIMENTAL_MODULES="cloud plot ship"
-FREECAD_STABLE_MODULES="addonmgr arch drawing fem idf image
-	inspection material mesh openscad part-design path points
-	raytracing robot show spreadsheet surface techdraw tux"
+FREECAD_STABLE_MODULES="addonmgr fem idf image inspection material
+	openscad part-design path points raytracing robot show surface
+	techdraw tux"
 
 for module in ${FREECAD_STABLE_MODULES}; do
 	IUSE="${IUSE} +${module}"
 done
 for module in ${FREECAD_EXPERIMENTAL_MODULES}; do
-	IUSE="${IUSE} -${module}"
+	IUSE="${IUSE} ${module}"
 done
 unset module
 
@@ -48,7 +50,7 @@ RDEPEND="
 	>=dev-cpp/eigen-3.3.1:3
 	dev-libs/OpenNI2[opengl(+)]
 	dev-libs/libspnav[X]
-	dev-libs/xerces-c
+	dev-libs/xerces-c[icu]
 	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -65,6 +67,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/qhull
 	sci-libs/flann[openmp]
+	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1[python,${PYTHON_SINGLE_USEDEP}]
 	sci-libs/opencascade:=[vtk(+)]
 	sci-libs/orocos_kdl:=
@@ -77,7 +80,6 @@ RDEPEND="
 		net-misc/curl
 	)
 	fem? ( <sci-libs/vtk-9[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
-	mesh? ( sci-libs/hdf5:=[fortran,zlib] )
 	openscad? ( media-gfx/openscad )
 	pcl? ( >=sci-libs/pcl-1.8.1:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
@@ -85,10 +87,11 @@ RDEPEND="
 		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_MULTI_USEDEP}]
+		dev-python/pybind11[${PYTHON_MULTI_USEDEP}]
 		dev-python/pyside2[gui,svg,${PYTHON_MULTI_USEDEP}]
 		dev-python/shiboken2[${PYTHON_MULTI_USEDEP}]
 		addonmgr? ( dev-python/GitPython[${PYTHON_MULTI_USEDEP}] )
-		mesh? ( dev-python/pybind11[${PYTHON_MULTI_USEDEP}] )
+		fem? ( dev-python/ply[${PYTHON_MULTI_USEDEP}] )
 	')
 "
 DEPEND="${RDEPEND}"
@@ -97,35 +100,31 @@ BDEPEND="dev-lang/swig"
 # To get required dependencies:
 # 'grep REQUIRES_MODS cMake/FreeCAD_Helpers/CheckInterModuleDependencies.cmake'
 # We set the following requirements by default:
-# draft, import, part, qt5, sketcher, start, web.
+# arch, draft, drawing, import, mesh, part, qt5, sketcher, spreadsheet, start, web.
 #
-# Additionally if mesh is set, we auto-enable mesh_part, flat_mesh and smesh
+# Additionally, we auto-enable mesh_part, flat_mesh and smesh
 # Fem actually needs smesh, but as long as we don't have a smesh package, we enable
 # smesh through the mesh USE flag. Note however, the fem<-smesh dependency isn't
 # reflected by the REQUIRES_MODS macro, but at
 # cMake/FreeCAD_Helpers/InitializeFreeCADBuildOptions.cmake:187.
+#
+# The increase in auto-enabled workbenches is due to their need in parts of the
+# test suite when compiled with a minimal set of USE flags.
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	arch? ( mesh )
-	debug? ( mesh )
-	drawing? ( spreadsheet )
-	fem? ( mesh )
-	inspection? ( mesh points )
-	openscad? ( mesh )
-	path? ( mesh robot )
+	inspection? ( points )
+	path? ( robot )
 	ship? ( image plot )
-	techdraw? ( spreadsheet drawing )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.19_pre20201231-0001-FindCoin3DDoc.cmake-fix-patch-for-coin-docs.patch
 	"${FILESDIR}"/${PN}-0.19_pre20201231-0003-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.19.1-0001-Gentoo-specific-Remove-ccache-usage.patch
 )
 
 DOCS=( CODE_OF_CONDUCT.md ChangeLog.txt README.md )
 
-CHECKREQS_DISK_BUILD="3G"
+CHECKREQS_DISK_BUILD="2G"
 
 pkg_setup() {
 	check-reqs_pkg_setup
@@ -139,9 +138,20 @@ src_prepare() {
 	rm "${S}/cMake/FindCoin3D.cmake" || die
 
 	# Fix OpenCASCADE lookup
-	sed -e 's|/usr/include/opencascade|${CASROOT}/include/opencascade|' \
-		-e 's|/usr/lib|${CASROOT}/'$(get_libdir)' NO_DEFAULT_PATH|' \
-		-i cMake/FindOpenCasCade.cmake || die
+	local OCC_P=$(best_version sci-libs/opencascade[vtk])
+	OCC_P=${OCC_P#sci-libs/}
+	local OCC_PV=${OCC_P#opencascade-}
+	OCC_PV=$(ver_cut 1-2 ${OCC_PV})
+	# check for CASROOT needed to ensure occ-7.5 is eselected and profile resourced
+	if [[ ${OCC_PV} = 7.5 && ${CASROOT} = "/usr" ]]; then
+		sed -e 's|/usr/include/opencascade|'${CASROOT}'/include/'${OCC_P}'|' \
+			-e 's|/usr/lib|'${CASROOT}'/'$(get_libdir)'/'${OCC_P}' NO_DEFAULT_PATH|' \
+			-i cMake/FindOpenCasCade.cmake || die
+	else
+		sed -e 's|/usr/include/opencascade|${CASROOT}/include/opencascade|' \
+			-e 's|/usr/lib|${CASROOT}/'$(get_libdir)' NO_DEFAULT_PATH|' \
+			-i cMake/FindOpenCasCade.cmake || die
+	fi
 
 	# Fix desktop file
 	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecadweb.FreeCAD.desktop || die
@@ -152,16 +162,16 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_ADDONMGR=$(usex addonmgr)
-		-DBUILD_ARCH=$(usex arch)
-		-DBUILD_ASSEMBLY=OFF
+		-DBUILD_ARCH=ON
+		-DBUILD_ASSEMBLY=OFF					# deprecated
 		-DBUILD_CLOUD=$(usex cloud)
 		-DBUILD_COMPLETE=OFF					# deprecated
-		-DBUILD_DRAFT=ON						# basic workspace, enable it by default
-		-DBUILD_DRAWING=$(usex drawing)
+		-DBUILD_DRAFT=ON
+		-DBUILD_DRAWING=ON
 		-DBUILD_ENABLE_CXX_STD:STRING="C++14"	# needed for >=boost-1.75.0
 		-DBUILD_FEM=$(usex fem)
 		-DBUILD_FEM_NETGEN=OFF
-		-DBUILD_FLAT_MESH=$(usex mesh)
+		-DBUILD_FLAT_MESH=ON
 		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
 		-DBUILD_FREETYPE=ON						# automagic dep
 		-DBUILD_GUI=$(usex !headless)
@@ -171,10 +181,10 @@ src_configure() {
 		-DBUILD_INSPECTION=$(usex inspection)
 		-DBUILD_JTREADER=OFF					# code has been removed upstream, but option is still there
 		-DBUILD_MATERIAL=$(usex material)
-		-DBUILD_MESH=$(usex mesh)
-		-DBUILD_MESH_PART=$(usex mesh)
+		-DBUILD_MESH=ON
+		-DBUILD_MESH_PART=ON
 		-DBUILD_OPENSCAD=$(usex openscad)
-		-DBUILD_PART=ON							# basic workspace, enable it by default
+		-DBUILD_PART=ON
 		-DBUILD_PART_DESIGN=$(usex part-design)
 		-DBUILD_PATH=$(usex path)
 		-DBUILD_PLOT=$(usex plot)				# conflicts with possible external workbench
@@ -186,11 +196,12 @@ src_configure() {
 		-DBUILD_SHIP=$(usex ship)				# conflicts with possible external workbench
 		-DBUILD_SHOW=$(usex show)
 		-DBUILD_SKETCHER=ON						# needed by draft workspace
-		-DBUILD_SMESH=$(usex mesh)
-		-DBUILD_SPREADSHEET=$(usex spreadsheet)
-		-DBUILD_START=ON						# basic workspace, enable it by default
+		-DBUILD_SMESH=ON
+		-DBUILD_SPREADSHEET=ON
+		-DBUILD_START=ON
 		-DBUILD_SURFACE=$(usex surface)
 		-DBUILD_TECHDRAW=$(usex techdraw)
+		-DBUILD_TEST=ON							# always build test workbench for run-time testing
 		-DBUILD_TUX=$(usex tux)
 		-DBUILD_VR=OFF
 		-DBUILD_WEB=ON							# needed by start workspace
@@ -203,40 +214,76 @@ src_configure() {
 
 		-DFREECAD_BUILD_DEBIAN=OFF
 
-		-DFREECAD_USE_CCACHE=OFF
 		-DFREECAD_USE_EXTERNAL_KDL=ON
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
 		-DFREECAD_USE_EXTERNAL_ZIPIOS=OFF		# doesn't work yet, also no package in Gentoo tree
 		-DFREECAD_USE_FREETYPE=ON
 		-DFREECAD_USE_OCC_VARIANT:STRING="Official Version"
 		-DFREECAD_USE_PCL=$(usex pcl)
-		-DFREECAD_USE_PYBIND11=$(usex mesh)
+		-DFREECAD_USE_PYBIND11=ON
 		-DFREECAD_USE_QT_FILEDIALOG=ON
 		-DFREECAD_USE_QTWEBMODULE:STRING="Qt WebEngine"
 
-		-DPython3_EXECUTABLE=${PYTHON}
+		# Use the version of shiboken2 that matches the selected python version
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
 
-		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
-		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
+		# install python modules to site-packages' dir. True only for the main package,
+		# sub-packages will still be installed inside /usr/lib64/freecad
+		-DINSTALL_TO_SITEPACKAGES=ON
+
+		-DPython3_EXECUTABLE=${PYTHON}
 		-DOCCT_CMAKE_FALLBACK=ON				# don't use occt-config which isn't included in opencascade for Gentoo
 	)
 
-	if use debug; then
+	if has_version ">=sci-libs/opencascade-7.5"; then
+		# bug https://bugs.gentoo.org/788274
+		local OCC_P=$(best_version sci-libs/opencascade[vtk])
+		OCC_P=${OCC_P#sci-libs/}
+		OCC_P=${OCC_P%-r*}
 		mycmakeargs+=(
-			# sandbox needs mesh support
-			-DBUILD_SANDBOX=$(usex mesh)
+			-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
+			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}
+		)
+	else
+		# <occ-7.5 uses different layout
+		mycmakeargs+=(
+			-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
+			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)
+		)
+	fi
+
+	if use debug; then
+		# BUILD_SANDBOX currently broken, see
+		# https://forum.freecadweb.org/viewtopic.php?f=4&t=36071&start=30#p504595
+		mycmakeargs+=(
+			-DBUILD_SANDBOX=OFF
 			-DBUILD_TEMPLATE=ON
-			-DBUILD_TEST=ON
 		)
 	else
 		mycmakeargs+=(
 			-DBUILD_SANDBOX=OFF
 			-DBUILD_TEMPLATE=OFF
-			-DBUILD_TEST=OFF
 		)
 	fi
 
 	cmake_src_configure
+}
+
+# We use the FreeCADCmd binary instead of the FreeCAD binary here
+# for two reasons:
+# 1. It works out of the box with USE=headless as well, not needing a guard
+# 2. We don't need virtualx.eclass and it's dependencies
+# The exported environment variables are needed, so freecad does know
+# where to save it's temporary files, and where to look and write it's
+# configuration. Without those, there are sandbox violation, when it
+# tries to create /var/lib/portage/home/.FreeCAD directory.
+src_test() {
+	pushd "${BUILD_DIR}" > /dev/null || die
+	export FREECAD_USER_HOME="${HOME}"
+	export FREECAD_USER_DATA="${T}"
+	export FREECAD_USER_TEMP="${T}"
+	nonfatal ./bin/FreeCADCmd --run-test 0
+	popd > /dev/null || die
 }
 
 src_install() {
@@ -249,6 +296,10 @@ src_install() {
 	dosym8 -r /usr/$(get_libdir)/${PN}/bin/FreeCADCmd /usr/bin/freecadcmd
 
 	python_optimize "${ED}"/usr/share/${PN}/data/Mod/Start/StartPage "${ED}"/usr/$(get_libdir)/${PN}{/Ext,/Mod}/
+	# compile main package in python site-packages as well
+	python_optimize
+
+	doenvd "${FILESDIR}/99${PN}"
 }
 
 pkg_postinst() {
@@ -277,6 +328,7 @@ pkg_postinst() {
 	optfeature "dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
 	optfeature "FEM mesh generator" sci-libs/gmsh
+	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
 }
 
 pkg_postrm() {

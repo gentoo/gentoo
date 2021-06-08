@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -31,5 +31,5 @@ BDEPEND="
 
 python_test() {
 	distutils_install_for_testing
-	pytest -vv -p no:flaky || die "Tests failed under ${EPYTHON}"
+	epytest -p no:flaky
 }

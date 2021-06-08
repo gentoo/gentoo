@@ -13,7 +13,7 @@ SRC_URI="https://github.com/moby/moby/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~x86"
 IUSE="apparmor aufs btrfs +cli +container-init device-mapper hardened overlay seccomp"
 
 DEPEND="
@@ -49,8 +49,8 @@ BDEPEND="
 	dev-go/go-md2man
 	virtual/pkgconfig
 "
-
-RESTRICT="installsources strip"
+# tests require running dockerd as root and downloading containers
+RESTRICT="installsources strip test"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 

@@ -14,7 +14,7 @@ IUSE="doc source"
 
 RDEPEND=">=dev-libs/kpathsea-6.2.1:=
 	>=dev-libs/icu-4.4:="
-
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/bibtex-x

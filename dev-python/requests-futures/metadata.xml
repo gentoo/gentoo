@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mattst88@gentoo.org</email>
+    <name>Matt Turner</name>
+  </maintainer>
+  <longdescription lang="en">
+    Small add-on for the python requests http library. Makes use of python 3.2's
+    concurrent.futures or the backport for prior versions of python.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <remote-id type="pypi">requests-futures</remote-id>
+  </upstream>
+</pkgmetadata>

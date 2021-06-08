@@ -13,11 +13,11 @@ inherit ecm kde.org python-single-r1
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.gz
 		https://dev.gentoo.org/~asturm/distfiles/${PN}-4.2.9-patchset.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
-HOMEPAGE="https://apps.kde.org/en/krita https://krita.org/en/"
+HOMEPAGE="https://apps.kde.org/krita/ https://krita.org/en/"
 
 LICENSE="GPL-3"
 SLOT="5"

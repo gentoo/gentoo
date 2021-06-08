@@ -34,7 +34,7 @@ RDEPEND="
 BDEPEND="dev-util/patchelf"
 
 QA_FLAGS_IGNORED="
-	opt/vendetta-online-bin/install/drivers/*.so
+	opt/vendetta-online-bin/install/drivers/.*.so
 	opt/vendetta-online-bin/install/update.rlb
 	opt/vendetta-online-bin/install/vendetta
 	opt/vendetta-online-bin/vendetta

@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 libressl logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X"
+IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	!bacula-clientonly? (
@@ -40,8 +40,7 @@ DEPEND="
 		sys-libs/zlib[static-libs]
 		acl? ( virtual/acl[static-libs(+)] )
 		ssl? (
-			!libressl? ( dev-libs/openssl:0=[static-libs] )
-			libressl? ( dev-libs/libressl:0=[static-libs] )
+			dev-libs/openssl:0=[static-libs]
 		)
 	)
 	!static? (
@@ -50,8 +49,7 @@ DEPEND="
 		sys-libs/zlib
 		acl? ( virtual/acl )
 		ssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
@@ -156,15 +154,6 @@ src_prepare() {
 	touch src/qt-console/.libs/bat || die
 	chmod 755 src/qt-console/.libs/bat || die
 
-	# fix handling of libressl version
-	# needs separate handling for <libressl-2.7 and >=libressl2.7
-	# (see bug #655520)
-	if has_version "<dev-libs/libressl-2.7"; then
-		eapply -p0 "${FILESDIR}"/9.4.0/${PN}-9.4.0-libressl26.patch
-	else
-		eapply -p0 "${FILESDIR}"/9.4.0/${PN}-9.4.0-libressl27.patch
-	fi
-
 	# Don't let program install man pages directly
 	sed -i -e 's/ manpages//' Makefile.in || die
 
@@ -212,7 +201,6 @@ src_configure() {
 		$(use_enable batch-insert) \
 		$(use_enable !readline conio) \
 		$(use_enable readline) \
-		$(use_with readline readline /usr) \
 		$(use_with ssl openssl) \
 		$(use_enable ipv6) \
 		$(use_enable acl) \

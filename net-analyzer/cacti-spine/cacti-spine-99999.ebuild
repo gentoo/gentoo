@@ -14,12 +14,10 @@ EGIT_REPO_URI="https://github.com/Cacti/spine"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl"
 
 BDEPEND="sys-apps/help2man"
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	net-analyzer/net-snmp:=
 	dev-db/mysql-connector-c:0=
 "

@@ -5,7 +5,7 @@ EAPI=7
 inherit gnome.org meson xdg
 
 DESCRIPTION="GLib helper library for geocoding services"
-HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/geocode-glib"
 
 LICENSE="LGPL-2+"
 SLOT="0"

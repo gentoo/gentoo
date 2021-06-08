@@ -5,7 +5,4 @@
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
   </maintainer>
-  <use>
-    <flag name="boost">Compile against external boost headers (<pkg>dev-libs/boost</pkg>)</flag>
-  </use>
 </pkgmetadata>

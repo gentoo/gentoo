@@ -15,6 +15,7 @@
     <upstream>
         <bugs-to>https://github.com/slic3r/Slic3r/issues</bugs-to>
         <doc>https://manual.slic3r.org/</doc>
+        <remote-id type="cpe">cpe:/a:slic3r:libslic3r</remote-id>
         <remote-id type="github">slic3r/Slic3r</remote-id>
     </upstream>
 </pkgmetadata>

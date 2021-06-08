@@ -13,6 +13,7 @@
 		<email>x11@gentoo.org</email>
 		<name>X11</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://schlomp.space/tastytea/gentoo-xcursors/issues</bugs-to>
 	</upstream>

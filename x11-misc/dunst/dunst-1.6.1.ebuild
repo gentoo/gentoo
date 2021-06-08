@@ -5,14 +5,14 @@ EAPI=7
 inherit systemd toolchain-funcs
 
 DESCRIPTION="Customizable and lightweight notification-daemon"
-HOMEPAGE="https://dunst-project.org/"
+HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dunst-project/dunst"
 else
 	SRC_URI="https://github.com/dunst-project/dunst/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 LICENSE="BSD"
@@ -50,11 +50,11 @@ src_configure() {
 src_compile() {
 	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0
 	sed -e "s|##PREFIX##|${EPREFIX}/usr|" \
-	    -i dunst.systemd.service.in > dunst.service
+		dunst.systemd.service.in > dunst.service || die
 }
 
 src_install() {
 	emake WAYLAND=$(usex wayland 1 0) SYSTEMD=0 \
-	      DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
-	systemd_dounit dunst.service
+		DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	systemd_douserunit dunst.service
 }

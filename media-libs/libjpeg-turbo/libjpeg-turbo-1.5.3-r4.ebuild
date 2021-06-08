@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools libtool java-pkg-opt-2 toolchain-funcs multilib-minimal
+inherit autotools java-pkg-opt-2 toolchain-funcs multilib-minimal
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"

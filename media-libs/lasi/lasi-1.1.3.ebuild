@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake flag-o-matic
 
 MY_PN=libLASi
 MY_P=${MY_PN}-${PV}
@@ -49,6 +49,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# 788766
+	append-cxxflags -std=gnu++14
 	# doesn't like CMAKE_BUILD_TYPE = Gentoo
 	CMAKE_BUILD_TYPE=None
 	local mycmakeargs=(

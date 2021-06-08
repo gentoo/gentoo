@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">patool</remote-id>
+    <remote-id type="github">wummel/patool</remote-id>
   </upstream>
 </pkgmetadata>

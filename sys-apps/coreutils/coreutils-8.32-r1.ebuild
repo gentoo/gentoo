@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 
-inherit eutils flag-o-matic python-any-r1 toolchain-funcs
+inherit flag-o-matic python-any-r1 toolchain-funcs
 
 PATCH="${PN}-8.30-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
@@ -79,15 +79,16 @@ src_prepare() {
 	# Since we've patched many .c files, the make process will try to
 	# re-build the manpages by running `./bin --help`.  When doing a
 	# cross-compile, we can't do that since 'bin' isn't a native bin.
+	#
 	# Also, it's not like we changed the usage on any of these things,
 	# so let's just update the timestamps and skip the help2man step.
 	set -- man/*.x
-	touch ${@/%x/1}
+	touch ${@/%x/1} || die
 
-	# Avoid perl dep for compiled in dircolors default #348642
+	# Avoid perl dep for compiled in dircolors default (bug #348642)
 	if ! has_version dev-lang/perl ; then
-		touch src/dircolors.h
-		touch ${@/%x/1}
+		touch src/dircolors.h || die
+		touch ${@/%x/1} || die
 	fi
 }
 
@@ -96,6 +97,9 @@ src_configure() {
 		--with-packager="Gentoo"
 		--with-packager-version="${PVR} (p${PATCH_VER:-0})"
 		--with-packager-bug-reports="https://bugs.gentoo.org/"
+		# kill/uptime - procps
+		# groups/su   - shadow
+		# hostname    - net-tools
 		--enable-install-program="arch,$(usev hostname),$(usev kill)"
 		--enable-no-install-program="groups,$(usev !hostname),$(usev !kill),su,uptime"
 		--enable-largefile
@@ -106,17 +110,28 @@ src_configure() {
 		$(use_enable xattr)
 		$(use_with gmp)
 	)
+
 	if tc-is-cross-compiler && [[ ${CHOST} == *linux* ]] ; then
-		export fu_cv_sys_stat_statfs2_bsize=yes #311569
-		export gl_cv_func_realpath_works=yes #416629
+		# bug #311569
+		export fu_cv_sys_stat_statfs2_bsize=yes
+		# bug #416629
+		export gl_cv_func_realpath_works=yes
 	fi
 
-	export gl_cv_func_mknod_works=yes #409919
-	use static && append-ldflags -static && sed -i '/elf_sys=yes/s:yes:no:' configure #321821
-	use selinux || export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no #301782
-	# kill/uptime - procps
-	# groups/su   - shadow
-	# hostname    - net-tools
+	# bug #409919
+	export gl_cv_func_mknod_works=yes
+
+	if use static ; then
+		append-ldflags -static
+		# bug #321821
+		sed -i '/elf_sys=yes/s:yes:no:' configure || die
+	fi
+
+	if ! use selinux ; then
+		# bug #301782
+		export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no
+	fi
+
 	econf "${myconf[@]}"
 }
 
@@ -132,12 +147,13 @@ src_test() {
 
 	# Non-root tests will fail if the full path isn't
 	# accessible to non-root users
-	chmod -R go-w "${WORKDIR}"
-	chmod a+rx "${WORKDIR}"
+	chmod -R go-w "${WORKDIR}" || die
+	chmod a+rx "${WORKDIR}" || die
 
-	# coreutils tests like to do `mount` and such with temp dirs
-	# so make sure /etc/mtab is writable #265725
-	# make sure /dev/loop* can be mounted #269758
+	# coreutils tests like to do `mount` and such with temp dirs,
+	# so make sure:
+	# - /etc/mtab is writable (bug #265725)
+	# - /dev/loop* can be mounted (bug #269758)
 	mkdir -p "${T}"/mount-wrappers || die
 	mkwrap() {
 		local w ww
@@ -147,7 +163,7 @@ src_test() {
 				#!${EPREFIX}/bin/sh
 				exec env SANDBOX_WRITE="\${SANDBOX_WRITE}:/etc/mtab:/dev/loop" $(type -P ${w}) "\$@"
 			EOF
-			chmod a+rx "${ww}"
+			chmod a+rx "${ww}" || die
 		done
 	}
 	mkwrap mount umount
@@ -168,25 +184,30 @@ src_install() {
 	if use split-usr ; then
 		cd "${ED}"/usr/bin || die
 		dodir /bin
-		# move critical binaries into /bin (required by FHS)
+
+		# Move critical binaries into /bin (required by FHS)
 		local fhs="cat chgrp chmod chown cp date dd df echo false ln ls
 		           mkdir mknod mv pwd rm rmdir stty sync true uname"
-		mv ${fhs} ../../bin/ || die "could not move fhs bins"
-		if use hostname; then
+		mv ${fhs} ../../bin/ || die "Could not move FHS bins!"
+
+		if use hostname ; then
 			mv hostname ../../bin/ || die
 		fi
-		if use kill; then
+
+		if use kill ; then
 			mv kill ../../bin/ || die
 		fi
-		# move critical binaries into /bin (common scripts)
-		# Why are these required for booting?
+
+		# Move critical binaries into /bin (common scripts)
+		# (Why are these required for booting?)
 		local com="basename chroot cut dir dirname du env expr head mkfifo
 		           mktemp readlink seq sleep sort tail touch tr tty vdir wc yes"
-		mv ${com} ../../bin/ || die "could not move common bins"
-		# create a symlink for uname in /usr/bin/ since autotools require it
-		# Other than uname, we need to figure out why we are
+		mv ${com} ../../bin/ || die "Could not move common bins!"
+
+		# Create a symlink for uname in /usr/bin/ since autotools require it.
+		# (Other than uname, we need to figure out why we are
 		# creating symlinks for these in /usr/bin instead of leaving
-		# the files there in the first place.
+		# the files there in the first place...)
 		local x
 		for x in ${com} uname ; do
 			dosym ../../bin/${x} /usr/bin/${x}

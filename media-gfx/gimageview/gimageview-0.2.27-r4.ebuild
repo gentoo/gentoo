@@ -6,7 +6,7 @@
 
 EAPI=6
 
-inherit epatch libtool ltprune
+inherit epatch libtool
 
 DESCRIPTION="Powerful GTK+ based image & movie viewer"
 HOMEPAGE="http://gtkmmviewer.sourceforge.net/"
@@ -72,5 +72,5 @@ src_install() {
 		libdir="${ED}usr/$(get_libdir)" \
 		install
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -5,7 +5,7 @@ EAPI=7
 inherit gnome.org meson xdg
 
 DESCRIPTION="A quick previewer for Nautilus, the GNOME file manager"
-HOMEPAGE="https://git.gnome.org/browse/sushi"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/sushi"
 
 LICENSE="GPL-2+"
 SLOT="0"

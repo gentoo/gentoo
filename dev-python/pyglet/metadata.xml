@@ -3,6 +3,7 @@
 <pkgmetadata>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
   </maintainer>
   <maintainer type="project">
     <email>python@gentoo.org</email>

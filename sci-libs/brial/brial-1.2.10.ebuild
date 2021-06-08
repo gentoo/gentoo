@@ -20,11 +20,9 @@ DEPEND="dev-libs/boost
 	sci-libs/m4ri[png=]"
 RDEPEND="${DEPEND}"
 
-pkg_setup(){
+src_configure() {
 	tc-export PKG_CONFIG
-}
 
-src_configure(){
 	# with-boost-libdir added to deal with some rather quirky setups
 	# see https://github.com/cschwan/sage-on-gentoo/issues/551
 	econf \
@@ -33,7 +31,7 @@ src_configure(){
 		$(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

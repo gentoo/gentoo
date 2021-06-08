@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
+# openjfx:8 will never be stabilized
+# openjfx:11 probably will neither
+dev-java/openjdk:8 javafx
+dev-java/openjdk:11 javafx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # REQUIRED_USE="base? ( firebird )", dev-db/firebird is not stable
 app-office/libreoffice base

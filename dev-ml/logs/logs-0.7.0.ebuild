@@ -11,7 +11,7 @@ SRC_URI="https://erratique.ch/software/logs/releases/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+fmt cli +lwt test"
 RESTRICT="!test? ( test )"
 

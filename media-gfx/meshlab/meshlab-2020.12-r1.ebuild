@@ -14,7 +14,7 @@ SRC_URI="https://github.com/cnr-isti-vclab/meshlab/archive/Meshlab-${PV}.tar.gz 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="double-precision -minimal"
+IUSE="double-precision minimal"
 
 DEPEND="
 	dev-cpp/eigen:3

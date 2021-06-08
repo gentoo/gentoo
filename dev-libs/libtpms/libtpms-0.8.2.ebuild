@@ -11,10 +11,8 @@ SRC_URI="https://github.com/stefanberger/libtpms/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libressl"
 
-DEPEND=" !libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 
 PATCHES=(

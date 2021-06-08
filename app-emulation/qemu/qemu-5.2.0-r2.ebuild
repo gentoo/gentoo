@@ -804,7 +804,7 @@ src_install() {
 firmware_abi_change() {
 	local pv
 	for pv in ${REPLACING_VERSIONS}; do
-		if ver_test $pv -lt ${FIRMWARE_ABI_VERSION}; then
+		if ver_test ${pv} -lt ${FIRMWARE_ABI_VERSION}; then
 			return 0
 		fi
 	done

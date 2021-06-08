@@ -5,4 +5,5 @@
 		<email>common-lisp@gentoo.org</email>
 		<name>Gentoo Common Lisp Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

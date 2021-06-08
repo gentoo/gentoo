@@ -1,0 +1,11 @@
+diff -Naur MultiMC5-0.6.12.orig/libraries/systeminfo/src/sys_unix.cpp MultiMC5-0.6.12/libraries/systeminfo/src/sys_unix.cpp
+--- MultiMC5-0.6.12.orig/libraries/systeminfo/src/sys_unix.cpp	2021-03-22 04:45:06.000000000 +0900
++++ MultiMC5-0.6.12/libraries/systeminfo/src/sys_unix.cpp	2021-04-29 06:41:55.269952475 +0900
+@@ -4,6 +4,7 @@
+ 
+ #include <sys/utsname.h>
+ #include <fstream>
++#include <limits>
+ 
+ Sys::KernelInfo Sys::getKernelInfo()
+ {

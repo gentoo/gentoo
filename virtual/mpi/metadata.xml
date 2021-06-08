@@ -8,4 +8,5 @@
 	<use>
 		<flag name="romio">Enable romio, a high-performance portable MPI-IO</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>

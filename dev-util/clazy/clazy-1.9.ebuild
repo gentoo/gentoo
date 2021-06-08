@@ -20,6 +20,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-llvm{12,13}.patch ) # bug 786525
+
 src_prepare() {
 	cmake_src_prepare
 

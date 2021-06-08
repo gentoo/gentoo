@@ -4,6 +4,7 @@
 EAPI="5"
 
 JAVA_PKG_IUSE="doc examples source test"
+MAVEN_ID="commons-digester:commons-digester:2.1"
 
 inherit java-pkg-2 java-ant-2
 

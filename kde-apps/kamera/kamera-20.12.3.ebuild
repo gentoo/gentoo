@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Plasma integration for gphoto2 cameras"
-HOMEPAGE="https://apps.kde.org/en/kamera"
+HOMEPAGE="https://apps.kde.org/kamera/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"

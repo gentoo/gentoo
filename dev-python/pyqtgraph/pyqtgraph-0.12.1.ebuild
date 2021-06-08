@@ -20,7 +20,7 @@ S=${WORKDIR}/${PN}-${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples opengl svg"
 
 RDEPEND="

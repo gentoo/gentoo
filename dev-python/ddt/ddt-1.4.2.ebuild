@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -17,8 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
-IUSE="test"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc64 sparc x86"
 
 BDEPEND="
 	test? (

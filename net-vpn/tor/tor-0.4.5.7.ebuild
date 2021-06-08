@@ -3,28 +3,33 @@
 
 EAPI="7"
 
-inherit flag-o-matic readme.gentoo-r1 systemd
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit flag-o-matic python-any-r1 readme.gentoo-r1 systemd verify-sig
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
 DESCRIPTION="Anonymizing overlay network for TCP"
 HOMEPAGE="http://www.torproject.org/"
 SRC_URI="https://www.torproject.org/dist/${MY_PF}.tar.gz
-	https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz"
+	https://archive.torproject.org/tor-package-archive/${MY_PF}.tar.gz
+	verify-sig? ( https://dist.torproject.org/${MY_PF}.tar.gz.asc )"
 S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86 ~ppc-macos"
-IUSE="caps doc libressl lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
+if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
+	KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86 ~ppc-macos"
+fi
+IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/torproject.org.asc
 
+BDEPEND="verify-sig? ( app-crypt/openpgp-keys-tor )"
 DEPEND="
 	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	!libressl? ( dev-libs/openssl:0=[-bindist] )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=[-bindist]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
@@ -36,6 +41,13 @@ RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
+# bug #764260
+DEPEND+="
+	test? (
+		${DEPEND}
+		${PYTHON_DEPS}
+	)"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
 	"${FILESDIR}"/${PN}-0.4.5.5_rc1-LDFLAGS-typo.patch
@@ -44,6 +56,10 @@ PATCHES=(
 DOCS=()
 
 RESTRICT="!test? ( test )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )

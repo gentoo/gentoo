@@ -11,7 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="News feed aggregator"
-HOMEPAGE="https://apps.kde.org/en/akregator"
+HOMEPAGE="https://apps.kde.org/akregator/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="5"
@@ -54,6 +54,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/grantlee:5
 "
+
+PATCHES=( "${FILESDIR}/${PN}-21.04.0-fix-dependencies.patch" ) # bug 783921
 
 src_configure() {
 	local mycmakeargs=(

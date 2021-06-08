@@ -18,16 +18,15 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/73"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl ncurses sqlite tk"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 gdbm +jit ncurses sqlite tk"
 
 RDEPEND="
 	|| (
 		>=dev-python/pypy-exe-${PV}:${PYPY_PV}[bzip2?,ncurses?]
 		>=dev-python/pypy-exe-bin-${PV}:${PYPY_PV}
 	)
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (

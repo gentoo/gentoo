@@ -21,7 +21,7 @@ fi
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 linux-info meson-multilib pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -150,10 +150,12 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 
 python_check_deps() {
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
@@ -221,7 +223,7 @@ src_prepare() {
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync-r1.patch"
 			"${FILESDIR}/gentoo-journald-audit.patch"
-			"${FILESDIR}/gentoo-pam.patch"
+			"${FILESDIR}/gentoo-pam-r1.patch"
 		)
 	fi
 
@@ -237,26 +239,6 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
-meson_use() {
-	usex "$1" true false
-}
-
-meson_multilib() {
-	if multilib_is_native_abi; then
-		echo true
-	else
-		echo false
-	fi
-}
-
-meson_multilib_native_use() {
-	if multilib_is_native_abi && use "$1"; then
-		echo true
-	else
-		echo false
-	fi
-}
-
 multilib_src_configure() {
 	local myconf=(
 		--localstatedir="${EPREFIX}/var"
@@ -265,7 +247,7 @@ multilib_src_configure() {
 		# avoid bash-completion dep
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		# make sure we get /bin:/sbin in PATH
-		-Dsplit-usr=$(usex split-usr true false)
+		$(meson_use split-usr)
 		-Dsplit-bin=true
 		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
@@ -275,87 +257,79 @@ multilib_src_configure() {
 		-Dima=true
 		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Optional components/dependencies
-		-Dacl=$(meson_multilib_native_use acl)
-		-Dapparmor=$(meson_multilib_native_use apparmor)
-		-Daudit=$(meson_multilib_native_use audit)
-		-Dlibcryptsetup=$(meson_multilib_native_use cryptsetup)
-		-Dlibcurl=$(meson_multilib_native_use curl)
-		-Ddns-over-tls=$(meson_multilib_native_use dns-over-tls)
-		-Delfutils=$(meson_multilib_native_use elfutils)
-		-Dgcrypt=$(meson_use gcrypt)
-		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
+		$(meson_native_use_bool acl)
+		$(meson_native_use_bool apparmor)
+		$(meson_native_use_bool audit)
+		$(meson_native_use_bool cryptsetup libcryptsetup)
+		$(meson_native_use_bool curl libcurl)
+		$(meson_native_use_bool dns-over-tls dns-over-tls)
+		$(meson_native_use_bool elfutils)
+		$(meson_use gcrypt)
+		$(meson_native_use_bool gnuefi gnu-efi)
 		-Defi-includedir="${ESYSROOT}/usr/include/efi"
 		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
-		-Dhomed=$(meson_multilib_native_use homed)
-		-Dhwdb=$(meson_multilib_native_use hwdb)
-		-Dmicrohttpd=$(meson_multilib_native_use http)
-		-Didn=$(meson_multilib_native_use idn)
-		-Dimportd=$(meson_multilib_native_use importd)
-		-Dbzip2=$(meson_multilib_native_use importd)
-		-Dzlib=$(meson_multilib_native_use importd)
-		-Dkmod=$(meson_multilib_native_use kmod)
-		-Dlz4=$(meson_use lz4)
-		-Dxz=$(meson_use lzma)
-		-Dzstd=$(meson_use zstd)
-		-Dlibiptc=$(meson_multilib_native_use nat)
-		-Dpam=$(meson_use pam)
-		-Dp11kit=$(meson_multilib_native_use pkcs11)
-		-Dpcre2=$(meson_multilib_native_use pcre)
-		-Dpolkit=$(meson_multilib_native_use policykit)
-		-Dpwquality=$(meson_multilib_native_use pwquality)
-		-Dqrencode=$(meson_multilib_native_use qrcode)
-		-Drepart=$(meson_multilib_native_use repart)
-		-Dseccomp=$(meson_multilib_native_use seccomp)
-		-Dselinux=$(meson_multilib_native_use selinux)
-		-Dtpm2=$(meson_multilib_native_use tpm)
-		-Ddbus=$(meson_multilib_native_use test)
-		-Dxkbcommon=$(meson_multilib_native_use xkb)
+		$(meson_native_use_bool homed)
+		$(meson_native_use_bool hwdb)
+		$(meson_native_use_bool http microhttpd)
+		$(meson_native_use_bool idn)
+		$(meson_native_use_bool importd)
+		$(meson_native_use_bool importd bzip2)
+		$(meson_native_use_bool importd zlib)
+		$(meson_native_use_bool kmod)
+		$(meson_use lz4)
+		$(meson_use lzma xz)
+		$(meson_use zstd)
+		$(meson_native_use_bool nat libiptc)
+		$(meson_use pam)
+		$(meson_native_use_bool pkcs11 p11kit)
+		$(meson_native_use_bool pcre pcre2)
+		$(meson_native_use_bool policykit polkit)
+		$(meson_native_use_bool pwquality)
+		$(meson_native_use_bool qrcode qrencode)
+		$(meson_native_use_bool repart)
+		$(meson_native_use_bool seccomp)
+		$(meson_native_use_bool selinux)
+		$(meson_native_use_bool tpm tpm2)
+		$(meson_native_use_bool test dbus)
+		$(meson_native_use_bool xkb xkbcommon)
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
 		-Dcreate-log-dirs=false
 
 		# multilib options
-		-Dbacklight=$(meson_multilib)
-		-Dbinfmt=$(meson_multilib)
-		-Dcoredump=$(meson_multilib)
-		-Denvironment-d=$(meson_multilib)
-		-Dfirstboot=$(meson_multilib)
-		-Dhibernate=$(meson_multilib)
-		-Dhostnamed=$(meson_multilib)
-		-Dldconfig=$(meson_multilib)
-		-Dlocaled=$(meson_multilib)
-		-Dman=$(meson_multilib)
-		-Dnetworkd=$(meson_multilib)
-		-Dquotacheck=$(meson_multilib)
-		-Drandomseed=$(meson_multilib)
-		-Drfkill=$(meson_multilib)
-		-Dsysusers=$(meson_multilib)
-		-Dtimedated=$(meson_multilib)
-		-Dtimesyncd=$(meson_multilib)
-		-Dtmpfiles=$(meson_multilib)
-		-Dvconsole=$(meson_multilib)
+		$(meson_native_true backlight)
+		$(meson_native_true binfmt)
+		$(meson_native_true coredump)
+		$(meson_native_true environment-d)
+		$(meson_native_true firstboot)
+		$(meson_native_true hibernate)
+		$(meson_native_true hostnamed)
+		$(meson_native_true ldconfig)
+		$(meson_native_true localed)
+		$(meson_native_true man)
+		$(meson_native_true networkd)
+		$(meson_native_true quotacheck)
+		$(meson_native_true randomseed)
+		$(meson_native_true rfkill)
+		$(meson_native_true sysusers)
+		$(meson_native_true timedated)
+		$(meson_native_true timesyncd)
+		$(meson_native_true tmpfiles)
+		$(meson_native_true vconsole)
 
 		# static-libs
-		-Dstatic-libsystemd=$(usex static-libs true false)
-		-Dstatic-libudev=$(usex static-libs true false)
+		$(meson_use static-libs static-libsystemd)
+		$(meson_use static-libs static-libudev)
 	)
 
 	meson_src_configure "${myconf[@]}"
 }
 
-multilib_src_compile() {
-	eninja
-}
-
 multilib_src_test() {
 	unset DBUS_SESSION_BUS_ADDRESS XDG_RUNTIME_DIR
 	meson_src_test
-}
-
-multilib_src_install() {
-	DESTDIR="${D}" eninja install
 }
 
 multilib_src_install_all() {

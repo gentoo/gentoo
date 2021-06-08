@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2021-05-31)
+# Requires Python 3.7 and old SciPy.
+<sys-cluster/ceph-16 diskprediction
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
+# Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
+kde-plasma/plasma-meta firewall
+
 # Matt Turner <mattst88@gentoo.org> (2021-04-14)
 # Was masked since 2014. Unmasked starting with 0.3.13.
 <media-plugins/grilo-plugins-0.3.13 lua
@@ -26,10 +34,6 @@ net-analyzer/wireshark lto
 # Fails to build right now
 # bug #651740
 net-misc/openssh debug
-
-# Stephan Hartmann <sultan@gentoo.org> (2021-03-21)
-# Requires unreleased sys-devel/icu-69.1
->=www-client/chromium-91 system-icu
 
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
@@ -124,13 +128,6 @@ mail-mta/protonmail-bridge gui
 # libclangformat-ide is masked for removal.
 dev-qt/qt-creator clang
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
-# USE=doc broken on 1.47.0 and later
-# error: unresolved link to `crate::os::unix::ffi::OsStrExt`
-# miri seems to be not working on 1.48.0 and later
->=dev-lang/rust-1.47.0 doc
->=dev-lang/rust-1.48.0 doc miri
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
@@ -139,10 +136,6 @@ net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 # Highly experimental, may cause breakages when updating. Use with
 # caution!
 dev-libs/efl efl-one
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# The respective dependencies are masked for removal.
-net-nntp/pan gnome-keyring
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
@@ -161,7 +154,7 @@ app-metrics/collectd collectd_plugins_onewire
 sci-geosciences/qgis grass
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# CMake checks will only allow on amd64 & x86
+# Only supported on 64bit systems, see storage/columnstore/CMakeLists.txt
 dev-db/mariadb columnstore
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
@@ -169,7 +162,6 @@ dev-db/mariadb columnstore
 # They are generally fixable by adding py3 support and using
 # distutils_enable_sphinx to build docs.
 <=dev-python/lockfile-0.12.2-r2 doc
-<dev-python/pep8-1.7.1-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # Requires Python 2 support in xapian-bindings which in turn require
@@ -244,8 +236,8 @@ dev-python/zeep tornado
 sci-chemistry/gromacs python
 
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues Bug 703326
-# Associated packages are not ready for new versions tracked in bug 702110
+# PHP 7.1 is end of life and has security issues, bug #703326
+# Associated packages are not ready for new versions tracked in bug #702110
 dev-libs/ossp-uuid php
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
@@ -292,7 +284,7 @@ net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
 # Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
-# PGO not yet supported for comm-central, #693160
+# PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
@@ -409,7 +401,7 @@ dev-db/mariadb client-libs
 dev-db/mysql client-libs
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
-# This feature is not ready yet pre-2.29-r4, see bug 146882 comment 26
+# This feature is not ready yet pre-2.29-r4, see bug #146882 comment 26
 <sys-libs/glibc-2.29-r4 compile-locales
 
 # Mart Raudsepp <leio@gentoo.org> (2018-01-10)
@@ -435,11 +427,11 @@ dev-java/openjdk:11 gentoo-vm
 sys-libs/glibc vanilla
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-08-24)
-# This is a security risk if not used carefully, bug 628596.
+# This is a security risk if not used carefully, bug #628596.
 net-analyzer/nrpe command-args
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-04)
-# sys-kernel/openvz-sources is being treecleaned wrt #580516.
+# sys-kernel/openvz-sources is being treecleaned wrt bug #580516.
 app-emulation/libvirt openvz
 
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
@@ -475,7 +467,7 @@ net-fs/samba system-heimdal
 # Robin H. Johnson <robbat2@gentoo.org> (2016-12-04)
 # Additional HAProxy functionality waiting for related stuff to land in the
 # tree.
-# bug 541042 - lua 5.3
+# bug #541042 - lua 5.3
 net-proxy/haproxy lua
 # bug (none) - 51Degrees
 net-proxy/haproxy 51degrees
@@ -494,12 +486,11 @@ app-editors/emacs:25 cairo
 app-editors/emacs:26 cairo
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-06-02)
-# Acked-by: Amy Liffey <amynka@gentoo.org>
 # Currently broken upstream.
 >=dev-lang/rakudo-2016.05 java
 
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
-# Most targets do not support VTV #547040.
+# Most targets do not support VTV, bug #547040.
 sys-devel/gcc vtv
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-05-08)
@@ -520,8 +511,10 @@ dev-java/icedtea cacao jamvm
 
 # Justin Lecher <jlec@gentoo.org> (2015-09-22)
 # Downloads files during installation
-# bug #533876
->=sci-libs/vtk-6.1.0 examples
+# https://bugs.gentoo.org/show_bug.cgi?id=533876
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-03-26)
+# Fixed in vtk-9
+<sci-libs/vtk-9 examples
 
 # James Le Cuirot <chewi@gentoo.org> (2015-08-18)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
@@ -560,11 +553,6 @@ sys-devel/gcc sanitize
 # Rick Farina <zerochaos@gentoo.org> (2014-08-26)
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
-
-# Tom Wijsman <TomWij@gentoo.org> (2014-05-14)
-# Documentation generation needs APIviz which is not in the Portage tree yet.
-# Tracked in Gentoo bug #509602.
-dev-java/jboss-logging doc
 
 # Mike Frysinger <vapier@gentoo.org> (2014-02-03)
 # Upstream says to not use this for now.
@@ -606,11 +594,11 @@ media-libs/avidemux-core system-ffmpeg
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
 
-# Diego Elio Pettenò (2012-08-27)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp pci
 
-# Diego Elio Pettenò (2012-08-20)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-20)
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp prevent-removal
 
@@ -634,7 +622,6 @@ sys-devel/gcc libssp
 sci-libs/mathgl octave
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
-#
 # Mask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd urandom
 
@@ -646,7 +633,7 @@ net-dns/pdnsd urandom
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
 
-# Diego E. Pettenò <flameeyes@gmail.com> (2010-01-18)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2010-01-18)
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide

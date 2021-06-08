@@ -16,6 +16,7 @@ compression, ATTR/ACL support. DAR also supports Pipes for remote
 operations, including with ssh.
 	</longdescription>
 	<use>
+		<flag name="argon2">Enable password hashing algorithm from <pkg>app-crypt/argon2</pkg></flag>
 		<flag name="dar32">Enables --enable-mode=32 option, which replace infinite
 		by 32 bit integers</flag>
 		<flag name="dar64">Enables --enable-mode=64 option, which replace infinite

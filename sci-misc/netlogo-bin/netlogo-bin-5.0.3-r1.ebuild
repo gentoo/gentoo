@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,11 +8,11 @@ inherit eutils java-pkg-2
 MY_PN="netlogo"
 MY_P=${MY_PN}-${PV}
 
-DESCRIPTION="Cross-platform multi-agent programmable modeling environment"
-HOMEPAGE="http://ccl.northwestern.edu/netlogo/"
+DESCRIPTION="Programming language and IDE for agent-based modelling"
+HOMEPAGE="https://ccl.northwestern.edu/netlogo/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${PN/-bin}.gif.tar
-	http://ccl.northwestern.edu/netlogo/${PV}/${MY_P}.tar.gz"
+	https://ccl.northwestern.edu/netlogo/${PV}/${MY_P}.tar.gz"
 LICENSE="netlogo GPL-2 LGPL-2.1 LGPL-3 BSD Apache-2.0"
 SLOT="0"
 KEYWORDS="-* amd64 x86"

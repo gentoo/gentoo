@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils multilib autotools ltprune toolchain-funcs
+inherit eutils multilib autotools toolchain-funcs
 
 DESCRIPTION="Package maintenance system for Debian"
 HOMEPAGE="https://packages.qa.debian.org/dpkg"
@@ -87,5 +87,5 @@ src_install() {
 		/var/lib/dpkg/{alternatives,info,parts,updates}
 #		/usr/$(get_libdir)/db/{alternatives,info,parts,updates} \
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

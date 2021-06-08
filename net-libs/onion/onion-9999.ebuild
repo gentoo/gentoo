@@ -25,7 +25,7 @@ LICENSE="|| ( GPL-2+ Apache-2.0 ) AGPL-3"
 SLOT="0"
 IUSE="
 	gnutls pam png jpeg xml systemd sqlite boehm-gc
-	test examples cxx -libev -libevent
+	test examples cxx libev libevent
 	redis
 "
 RESTRICT="!test? ( test )"

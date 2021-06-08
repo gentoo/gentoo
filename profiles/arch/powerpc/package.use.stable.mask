@@ -51,6 +51,7 @@ app-editors/emacs xwidgets
 dev-python/matplotlib qt5 test
 media-sound/pulseaudio qt5
 net-print/hplip qt5
+dev-python/pyudev qt5
 
 # David Seifert <soap@gentoo.org> (2017-09-23)
 # MPI does not have stable keywords on ppc/ppc64

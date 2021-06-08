@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Portage-utils"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls static openmp +qmanifest +qtegrity libressl"
+IUSE="nls static openmp +qmanifest +qtegrity"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
@@ -28,15 +28,13 @@ RDEPEND="
 		)
 		static? (
 			app-crypt/libb2:=[static-libs]
-			!libressl? ( dev-libs/openssl:0=[static-libs] )
-			libressl? ( dev-libs/libressl:0=[static-libs] )
+			dev-libs/openssl:0=[static-libs]
 			sys-libs/zlib:=[static-libs]
 			app-crypt/gpgme:=[static-libs]
 		)
 		!static? (
 			app-crypt/libb2:=
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 			sys-libs/zlib:=
 			app-crypt/gpgme:=
 		)
@@ -49,12 +47,10 @@ RDEPEND="
 			)
 		)
 		static? (
-			!libressl? ( dev-libs/openssl:0=[static-libs] )
-			libressl? ( dev-libs/libressl:0=[static-libs] )
+			dev-libs/openssl:0=[static-libs]
 		)
 		!static? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)
 "

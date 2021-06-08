@@ -20,7 +20,12 @@ DESCRIPTION="MirBSD Korn Shell"
 # Host is TLSv1.0-only, keep to http for compatibility with modern browsers
 HOMEPAGE="http://mirbsd.de/mksh"
 
-LICENSE="BSD"
+# See http://www.mirbsd.org/TaC-mksh.txt or ${S}/www/files/TaC-mksh.txt
+# MirOS for most of it
+# BSD for when strlcpy(3) is absent, such as with glibc
+# unicode for some included Unicode data
+# ISC if the printf builtin is used, not currently the case
+LICENSE="MirOS BSD unicode"
 SLOT="0"
 IUSE="lksh static test"
 RESTRICT="!test? ( test )"
@@ -57,6 +62,18 @@ src_compile() {
 	sh FAQ2HTML.sh || die
 }
 
+src_test() {
+	einfo "Testing regular mksh."
+	./mksh test.sh -v || die
+
+	if use lksh; then
+		einfo "Testing lksh, POSIX long-bit mksh."
+		pushd "${S}"_lksh >/dev/null || die
+		./lksh test.sh -v || die
+		popd >/dev/null || die
+	fi
+}
+
 src_install() {
 	into /
 	dobin mksh
@@ -69,17 +86,5 @@ src_install() {
 		dobin "${S}"_lksh/lksh
 		dosym lksh /bin/rlksh
 		doman "${S}"_lksh/lksh.1
-	fi
-}
-
-src_test() {
-	einfo "Testing regular mksh."
-	./mksh test.sh -v || die
-
-	if use lksh; then
-		einfo "Testing lksh, POSIX long-bit mksh."
-		pushd "${S}"_lksh >/dev/null || die
-		./lksh test.sh -v || die
-		popd >/dev/null || die
 	fi
 }

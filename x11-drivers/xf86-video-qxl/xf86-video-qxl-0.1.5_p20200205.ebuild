@@ -30,6 +30,7 @@ BDEPEND="virtual/pkgconfig"
 
 pkg_setup() {
 	use xspice && python-single-r1_pkg_setup
+	xorg-3_pkg_setup
 }
 
 src_prepare() {

@@ -21,9 +21,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-cflags.patch
 )
 
+src_configure() {
+	tc-export CC
+}
+
 src_test() {
-	cd tests || die
-	emake CC="$(tc-getCC)"
+	emake -C tests
 }
 
 src_install() {

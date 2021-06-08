@@ -7,7 +7,7 @@ GCONF_DEBUG="yes"
 inherit gnome2
 
 DESCRIPTION="Graphical front-ends to various networking command-line"
-HOMEPAGE="https://git.gnome.org/browse/gnome-nettool/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nettool"
 
 LICENSE="GPL-2"
 SLOT="0"

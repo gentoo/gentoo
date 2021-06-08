@@ -12,7 +12,6 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="libressl"
 
 RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -23,14 +22,12 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	x11-libs/libX11
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )"
+	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 	dev-qt/qthelp:5
 	x11-base/xorg-proto"
 
-PATCHES=( "${FILESDIR}"/${PN}-libressl.patch )
 DOCS=( README.rst RELEASE_NOTES TODO doc/script.txt )
 
 src_prepare() {

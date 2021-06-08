@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Universal document viewer based on KDE Frameworks"
-HOMEPAGE="https://okular.kde.org https://apps.kde.org/en/okular"
+HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

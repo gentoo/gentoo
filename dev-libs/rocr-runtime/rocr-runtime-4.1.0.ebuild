@@ -26,7 +26,8 @@ SLOT="0/$(ver_cut 1-2)"
 IUSE="debug"
 
 COMMON_DEPEND="sys-process/numactl
-	dev-libs/elfutils:="
+	dev-libs/elfutils:=
+	>=sys-devel/llvm-roc-${PV}"
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}

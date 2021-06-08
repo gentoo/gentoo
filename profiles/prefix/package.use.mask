@@ -21,7 +21,7 @@ sys-devel/binutils cxx gold default-gold
 
 # Fabian Groffen <grobian@gentoo.org> (2018-12-27)
 # USE-dep fixing, bugs #665088, #667266, #671730, 
-dev-db/postgresql kerberos ldap llvm pam systemd libressl
+dev-db/postgresql kerberos ldap llvm pam systemd
 net-libs/libsoup gssapi samba vala
 net-libs/glib-networking gnome libproxy
 net-misc/wget cookie_check metalink uuid

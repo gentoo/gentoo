@@ -1,6 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-25)
+# Depends on either unkeyworded dev-java/openjdk:11
+# or unavailable >=dev-java/icedtea-4, bug #785640
+>=app-office/libreoffice-7 base java
+>=app-office/libreoffice-bin-7 java
+>=app-office/libreoffice-bin-debug-7 java
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
@@ -46,21 +53,9 @@ sys-libs/compiler-rt-sanitizers -profile
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# swt 4.10 not keyworded on x86
-dev-java/openjdk:8 javafx
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# Columnstore engine is supported on x86
-dev-db/mariadb -columnstore
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is available for x86
 www-client/firefox -screencast
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-11)
-# net-libs/libslirp is not yet keyworded on x86, bug #732144
-app-emulation/qemu slirp
 
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
@@ -117,6 +112,8 @@ dev-libs/glib -sysprof
 gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on x86.
@@ -200,10 +197,6 @@ media-gfx/imagemagick -heif
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-python/pymongo test
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2018-09-27)
-# media-libs/qtav not keyworded
-media-video/orion qtav
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch

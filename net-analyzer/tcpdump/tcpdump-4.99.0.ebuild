@@ -21,12 +21,12 @@ else
 	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz -> ${P}-upstream.tar.gz"
 	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig -> ${P}-upstream.tar.gz.sig )"
 
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+drop-root libressl +smi +ssl +samba suid test"
+IUSE="+drop-root +smi +ssl +samba suid test"
 REQUIRED_USE="test? ( samba )"
 
 # Assorted failures: bug #768498
@@ -41,8 +41,7 @@ RDEPEND="
 	)
 	smi? ( net-libs/libsmi )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.6m:0=
 	)
 	suid? (
 		acct-group/pcap

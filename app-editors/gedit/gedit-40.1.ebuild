@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="+python gtk-doc spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.64:2
@@ -43,7 +43,7 @@ RDEPEND="${DEPEND}
 	gnome-base/gvfs
 "
 BDEPEND="
-	${vala_depend}
+	$(vala_depend)
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1 )

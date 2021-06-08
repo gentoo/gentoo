@@ -4,7 +4,7 @@
 EAPI=7
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org meson multilib-minimal vala xdg
+inherit gnome.org meson-multilib vala xdg
 
 DESCRIPTION="HTTP client/server library for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
@@ -17,7 +17,7 @@ IUSE="brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 DEPEND="
 	>=dev-libs/glib-2.58:2[${MULTILIB_USEDEP}]
@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 	>=net-libs/glib-networking-2.38.2[ssl?,${MULTILIB_USEDEP}]
 "
 BDEPEND="
+	dev-libs/glib
 	dev-util/glib-utils
 	gtk-doc? ( >=dev-util/gtk-doc-1.20
 		app-text/docbook-xml-dtd:4.1.2 )
@@ -79,24 +80,12 @@ multilib_src_configure() {
 		-Dntlm_auth="${EPREFIX}/usr/bin/ntlm_auth"
 		-Dtls_check=false # disables check, we still rdep on glib-networking
 		-Dgnome=false
-		-Dintrospection=$(multilib_native_usex introspection enabled disabled)
-		-Dvapi=$(multilib_native_usex vala enabled disabled)
-		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
+		$(meson_native_use_feature introspection)
+		$(meson_native_use_feature vala vapi)
+		$(meson_native_use_bool gtk-doc gtk_doc)
 		$(meson_use test tests)
 		-Dinstalled_tests=false
 		$(meson_feature sysprof)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

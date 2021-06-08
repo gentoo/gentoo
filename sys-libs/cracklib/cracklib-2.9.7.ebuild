@@ -3,7 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+# Note: ideally bump with sys-apps/cracklib-words
+
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_OPTIONAL=1
 
 inherit distutils-r1 libtool multilib-minimal usr-ldscript
@@ -22,9 +24,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="python? ( ${PYTHON_DEPS} )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
+	nls? ( virtual/libintl )
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}/${MY_P}"
 

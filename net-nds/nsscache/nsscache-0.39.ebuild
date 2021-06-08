@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,13 +17,13 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="nsscache s3"
+IUSE="berkdb nsscache s3"
 RESTRICT="test" # requires network
 
 DEPEND="
 	dev-python/ldap3[${PYTHON_USEDEP}]
 	dev-python/pycurl[${PYTHON_USEDEP}]
-	dev-python/bsddb3[${PYTHON_USEDEP}]
+	berkdb? ( dev-python/bsddb3[${PYTHON_USEDEP}] )
 	s3? ( dev-python/boto3[${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}
 	nsscache? ( >=sys-auth/libnss-cache-0.10 )"

@@ -21,13 +21,13 @@ RESTRICT="bindist mirror"
 DEPEND=""
 RDEPEND="${DEPEND}
 	<sys-devel/gcc-8[cxx]
-	>=x11-drivers/nvidia-drivers-396.24[X,uvm(+)]
+	>=x11-drivers/nvidia-drivers-${DRIVER_PV}
 	debugger? (
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses-compat:5[tinfo]
 		)
-	eclipse? ( >=virtual/jre-1.6 )
-	profiler? ( >=virtual/jre-1.6 )"
+	eclipse? ( >=virtual/jre-1.8:* )
+	profiler? ( >=virtual/jre-1.8:* )"
 
 S="${WORKDIR}"
 

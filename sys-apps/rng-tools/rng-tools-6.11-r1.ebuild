@@ -11,12 +11,11 @@ SRC_URI="https://github.com/nhorman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~x86"
-IUSE="jitterentropy libressl nistbeacon pkcs11 selinux"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv x86"
+IUSE="jitterentropy nistbeacon pkcs11 selinux"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-fs/sysfsutils
 	jitterentropy? (
 		app-crypt/jitterentropy:=

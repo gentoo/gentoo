@@ -13,8 +13,8 @@ SRC_URI="https://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="libressl test"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="test"
 
@@ -22,8 +22,7 @@ RDEPEND="${LUA_DEPS}"
 
 DEPEND="
 	net-misc/curl
-	libressl? ( dev-libs/libressl:0 )
-	!libressl? ( dev-libs/openssl:0 )
+	dev-libs/openssl:0
 	${RDEPEND}
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,10 +12,9 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snaps
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="libressl static"
+IUSE="static"
 
-LIB_DEPEND="!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-	libressl? ( dev-libs/libressl:0=[static-libs(+)] )"
+LIB_DEPEND="dev-libs/openssl:0=[static-libs(+)]"
 
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	sys-apps/util-linux"
@@ -30,7 +29,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/1.7.0-Make.rules.patch"
-	"${FILESDIR}/${PN}-1.8.1-libressl-compatibility.patch"
 )
 
 src_prepare() {

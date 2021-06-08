@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/pre-commit/${PN}/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="dev-python/editdistance-s[${PYTHON_USEDEP}]"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac debug hcitop lame ldac man mpg123 ofono static-libs test unwind upower"
+IUSE="aac aptx debug hcitop lame ldac man mpg123 ofono static-libs test unwind upower"
 RESTRICT="!test? ( test )"
 
 # bluez-alsa does not directly link to upower but
@@ -30,6 +30,7 @@ RDEPEND="
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
 	aac? ( >=media-libs/fdk-aac-0.1.1:=[${MULTILIB_USEDEP}] )
+	aptx? ( media-libs/libopenaptx )
 	lame? ( media-sound/lame[${MULTILIB_USEDEP}] )
 	mpg123? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
 	hcitop? (
@@ -63,10 +64,12 @@ multilib_src_configure() {
 		$(use_enable mpg123)
 		$(use_enable static-libs static)
 		$(use_enable test)
+		$(multilib_native_use_enable aptx)
 		$(multilib_native_use_enable hcitop)
 		$(multilib_native_use_enable ldac)
 		$(multilib_native_use_enable ofono)
 		$(multilib_native_use_enable upower)
+		$(multilib_native_use_with aptx libopenaptx)
 		$(use_with unwind libunwind)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"

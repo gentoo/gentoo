@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools ltprune udev xdg
+inherit autotools udev xdg
 
 DESCRIPTION="Kino is a non-linear DV editor for GNU/Linux"
 HOMEPAGE="http://www.kinodv.org/"
@@ -99,5 +99,5 @@ src_install() {
 	default
 	mv "${ED}/$(get_udevdir)"/rules.d/{,99-}kino.rules
 	fowners root:root -R /usr/share/kino/help #177378
-	prune_libtool_files --all #385361
+	find "${ED}" -name '*.la' -delete || die #385361
 }

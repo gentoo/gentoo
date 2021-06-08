@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,16 +10,13 @@ inherit perl-module
 DESCRIPTION="OpenSSL ECDSA (Elliptic Curve Digital Signature Algorithm) Perl extension"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
 RDEPEND="
 	>=dev-perl/Crypt-OpenSSL-EC-0.50.0
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	dev-libs/openssl:0
 "
 DEPEND="
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	dev-libs/openssl:0
 "
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker

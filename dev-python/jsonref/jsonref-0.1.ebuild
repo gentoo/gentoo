@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -19,5 +19,5 @@ KEYWORDS="~amd64"
 distutils_enable_tests pytest
 
 python_test() {
-	pytest -vv tests.py || die
+	epytest tests.py
 }

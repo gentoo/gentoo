@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit elisp readme.gentoo-r1
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"
 
-DEPEND="app-text/texi2html
+BDEPEND="app-text/texi2html
 	virtual/latex-base"
 
 SITEFILE="50${PN}-gentoo.el"

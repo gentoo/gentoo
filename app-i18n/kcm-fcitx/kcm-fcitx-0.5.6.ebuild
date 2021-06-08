@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="4-plasma5"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 BDEPEND=">=app-i18n/fcitx-4.2.9:4

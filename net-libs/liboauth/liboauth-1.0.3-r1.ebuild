@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${P}.tar.gz"
 LICENSE="|| ( GPL-2 MIT )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~x64-macos"
-IUSE="bindist curl doc libressl +nss"
+IUSE="bindist curl doc +nss"
 
 REQUIRED_USE="bindist? ( nss )"
 
@@ -29,8 +29,7 @@ CDEPEND="
 		) )
 	)
 	!nss? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 		curl? ( || (
 			net-misc/curl[ssl,curl_ssl_openssl]
 			net-misc/curl[-ssl]

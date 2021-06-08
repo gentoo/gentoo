@@ -20,7 +20,7 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc icu kerberos kernel_linux ldap libressl llvm nls pam
+IUSE="debug doc icu kerberos kernel_linux ldap llvm nls pam
 	  perl python +readline selinux +server systemd ssl static-libs tcl
 	  threads uuid xml zlib"
 
@@ -44,10 +44,7 @@ perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
-ssl? (
-	!libressl? ( >=dev-libs/openssl-0.9.6-r1:0= )
-	libressl? ( dev-libs/libressl:= )
-)
+ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )

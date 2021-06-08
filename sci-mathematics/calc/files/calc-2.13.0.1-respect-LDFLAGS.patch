@@ -1,0 +1,267 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2541,11 +2541,11 @@ sample: ${SAMPLE_TARGETS}
+ 
+ sample_rand${EXT}: sample_rand.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ 	${CC} sample_rand.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+-	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
++	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o $@
+ 
+ sample_many${EXT}: sample_many.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ 	${CC} sample_many.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+-	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
++	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o $@
+ 
+ ###
+ #
+@@ -2554,15 +2554,15 @@ sample_many${EXT}: sample_many.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ ###
+ 
+ hist.o: hist.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${TERMCONTROL} ${USE_READLINE} ${READLINE_INCLUDE} \
++	${CC} ${CFLAGS} ${TERMCONTROL} ${USE_READLINE} ${READLINE_INCLUDE} ${LDFLAGS} \
+ 	    -c hist.c
+ 
+ seed.o: seed.c ${MAKE_FILE} ${LOC_MKF}
+ 	${CC} ${CFLAGS} ${WNO_IMPLICT} ${WNO_ERROR_LONG_LONG} \
+-	    ${WNO_LONG_LONG} -c seed.c
++	    ${WNO_LONG_LONG} ${LDFLAGS} -c seed.c
+ 
+ file.o: file.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${WNO_ERROR_LONG_LONG} ${WNO_LONG_LONG} -c file.c
++	${CC} ${CFLAGS} ${WNO_ERROR_LONG_LONG} ${WNO_LONG_LONG} ${LDFLAGS} -c file.c
+ 
+ ###
+ #
+@@ -4190,7 +4190,7 @@ depend: hsrc custom/Makefile
+ 	${Q} :> skel/makedep.out
+ 	${Q} cd skel; ${MAKEDEPEND} \
+ 	    -w 1 -f makedep.out -- \
+-	    ${CFLAGS} -- \
++	    ${CFLAGS} ${LDFLAGS} -- \
+ 	    ${C_SRC} ${BUILD_C_SRC} 2>/dev/null
+ 	-${Q} for i in ${C_SRC} ${BUILD_C_SRC} /dev/null; do \
+ 	    if [ X"$$i" != X"/dev/null" ]; then \
+--- a/Makefile.simple
++++ b/Makefile.simple
+@@ -1941,12 +1941,12 @@ calc.usage: calc.1 ${MAKE_FILE} ${LOC_MKF}
+ sample: ${SAMPLE_TARGETS}
+ 
+ sample_rand${EXT}: sample_rand.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+-	${CC} sample_rand.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+-	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
++	${CC} ${CFLAGS} sample_rand.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
++	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o $@
+ 
+ sample_many${EXT}: sample_many.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+-	${CC} sample_many.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+-	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
++	${CC} ${CFLAGS} sample_many.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
++	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o $@
+ 
+ ###
+ #
+@@ -1955,15 +1955,15 @@ sample_many${EXT}: sample_many.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ ###
+ 
+ hist.o: hist.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${TERMCONTROL} ${USE_READLINE} ${READLINE_INCLUDE} \
++	${CC} ${CFLAGS} ${TERMCONTROL} ${USE_READLINE} ${READLINE_INCLUDE} ${LDFLAGS} \
+ 	    -c hist.c
+ 
+ seed.o: seed.c ${MAKE_FILE} ${LOC_MKF}
+ 	${CC} ${CFLAGS} ${WNO_IMPLICT} ${WNO_ERROR_LONG_LONG} \
+-	    ${WNO_LONG_LONG} -c seed.c
++	    ${WNO_LONG_LONG} ${LDFLAGS} -c seed.c
+ 
+ file.o: file.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${WNO_ERROR_LONG_LONG} ${WNO_LONG_LONG} -c file.c
++	${CC} ${CFLAGS} ${WNO_ERROR_LONG_LONG} ${WNO_LONG_LONG} ${LDFLAGS} -c file.c
+ 
+ ###
+ #
+@@ -3557,7 +3557,7 @@ depend: hsrc custom/Makefile
+ 	${Q} :> skel/makedep.out
+ 	${Q} cd skel; ${MAKEDEPEND} \
+ 	    -w 1 -f makedep.out -- \
+-	    ${CFLAGS} -- \
++	    ${CFLAGS} ${LDFLAGS} -- \
+ 	    ${C_SRC} ${BUILD_C_SRC} 2>/dev/null
+ 	-${Q} for i in ${C_SRC} ${BUILD_C_SRC} /dev/null; do \
+ 	    if [ X"$$i" != X"/dev/null" ]; then \
+--- a/custom/Makefile
++++ b/custom/Makefile
+@@ -1280,7 +1280,7 @@ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+ ##
+ 
+ c_sysinfo.o: c_sysinfo.c ${MAKE_FILE}
+-	${CC} ${CFLAGS} c_sysinfo.c -c
++	${CC} ${CFLAGS} ${LDFLAGS} c_sysinfo.c -c
+ 
+ ##
+ #
+@@ -1407,7 +1407,7 @@ depend:
+ 	${Q} :> skel/custom/makedep.out
+ 	${Q} cd skel/custom; ${MAKEDEPEND} \
+ 	    -I../../.. -w 1 -f makedep.out -- \
+-	    ${CFLAGS} -- \
++	    ${CFLAGS} ${LDFLAGS} -- \
+ 	    ${C_SRC} 2>/dev/null
+ 	${Q} ${SED} -e 's|: ../../|: |' -E -i '' -l skel/custom/makedep.out
+ 	-${Q} for i in ${C_SRC} /dev/null; do \
+-- 
+2.31.1
+
+--- a/Makefile
++++ b/Makefile
+@@ -2487,12 +2487,12 @@ calc-static-only: ${STATIC_FIRST_TARGETS} ${EARLY_TARGETS} \
+ 
+ calc${EXT}: .hsrc ${CALCOBJS} ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ 	${RM} -f $@
+-	${CC} ${CALCOBJS} ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
++	${CC} ${CPPFLAGS} ${CALCOBJS} ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+ 	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
+ 
+ libcalc${LIB_EXT_VERSION}: ${LIBOBJS} ver_calc${EXT} ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${LIBCALC_SHLIB} ${LIBOBJS} \
+-	      ${READLINE_LIB} ${READLINE_EXTRAS} -o libcalc${LIB_EXT_VERSION}
++	${CC} ${CPPFLAGS} ${LIBCALC_SHLIB} ${LIBOBJS} \
++	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o libcalc${LIB_EXT_VERSION}
+ 
+ libcalc${LIB_EXT}: libcalc${LIB_EXT_VERSION}
+ 	${Q} ${RM} -f $@
+@@ -2540,11 +2540,11 @@ calc.usage: calc.1 ${MAKE_FILE} ${LOC_MKF}
+ sample: ${SAMPLE_TARGETS}
+ 
+ sample_rand${EXT}: sample_rand.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+-	${CC} sample_rand.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
++	${CC} ${CPPFLAGS} sample_rand.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+ 	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o $@
+ 
+ sample_many${EXT}: sample_many.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+-	${CC} sample_many.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
++	${CC} ${CPPFLAGS} sample_many.o ${LDFLAGS} ${LD_SHARE} ${CALC_DYNAMIC_LIBS} \
+ 	      ${READLINE_LIB} ${READLINE_EXTRAS} ${LDFLAGS} -o $@
+ 
+ ###
+@@ -2554,15 +2554,15 @@ sample_many${EXT}: sample_many.o ${CALC_DYNAMIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ ###
+ 
+ hist.o: hist.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${TERMCONTROL} ${USE_READLINE} ${READLINE_INCLUDE} ${LDFLAGS} \
++	${CC} ${CFLAGS} ${CPPFLAGS} ${TERMCONTROL} ${USE_READLINE} ${READLINE_INCLUDE} ${LDFLAGS} \
+ 	    -c hist.c
+ 
+ seed.o: seed.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${WNO_IMPLICT} ${WNO_ERROR_LONG_LONG} \
++	${CC} ${CFLAGS} ${CPPFLAGS} ${WNO_IMPLICT} ${WNO_ERROR_LONG_LONG} \
+ 	    ${WNO_LONG_LONG} ${LDFLAGS} -c seed.c
+ 
+ file.o: file.c ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${CFLAGS} ${WNO_ERROR_LONG_LONG} ${WNO_LONG_LONG} ${LDFLAGS} -c file.c
++	${CC} ${CFLAGS} ${CPPFLAGS} ${WNO_ERROR_LONG_LONG} ${WNO_LONG_LONG} ${LDFLAGS} -c file.c
+ 
+ ###
+ #
+@@ -4109,7 +4109,7 @@ endif
+ calc-static${EXT}: .hsrc ${CALCOBJS} \
+ 		   ${CALC_STATIC_LIBS} ${MAKE_FILE} ${LOC_MKF}
+ 	${RM} -f $@
+-	${CC} ${LDFLAGS} ${CALCOBJS} ${LD_STATIC} ${CALC_STATIC_LIBS} \
++	${CC} ${CPPFLAGS} ${LDFLAGS} ${CALCOBJS} ${LD_STATIC} ${CALC_STATIC_LIBS} \
+ 	      ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
+ 
+ libcustcalc.a: custom/libcustcalc.a
+@@ -4133,12 +4133,12 @@ endif
+ 
+ sample_rand-static${EXT}: sample_rand.o ${CALC_STATIC_LIBS} \
+ 			  ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${LDFLAGS} sample_rand.o ${LD_STATIC} \
++	${CC} ${CPPFLAGS} ${LDFLAGS} sample_rand.o ${LD_STATIC} \
+ 	      ${CALC_STATIC_LIBS} ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
+ 
+ sample_many-static${EXT}: sample_many.o ${CALC_STATIC_LIBS} \
+ 			  ${MAKE_FILE} ${LOC_MKF}
+-	${CC} ${LDFLAGS} sample_many.o ${LD_STATIC} \
++	${CC} ${CPPFLAGS} ${LDFLAGS} sample_many.o ${LD_STATIC} \
+ 	      ${CALC_STATIC_LIBS} ${READLINE_LIB} ${READLINE_EXTRAS} -o $@
+ 
+ ###
+@@ -4190,7 +4190,7 @@ depend: hsrc custom/Makefile
+ 	${Q} :> skel/makedep.out
+ 	${Q} cd skel; ${MAKEDEPEND} \
+ 	    -w 1 -f makedep.out -- \
+-	    ${CFLAGS} ${LDFLAGS} -- \
++	    ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -- \
+ 	    ${C_SRC} ${BUILD_C_SRC} 2>/dev/null
+ 	-${Q} for i in ${C_SRC} ${BUILD_C_SRC} /dev/null; do \
+ 	    if [ X"$$i" != X"/dev/null" ]; then \
+--- a/custom/Makefile
++++ b/custom/Makefile
+@@ -1271,7 +1271,7 @@ custom/libcustcalc${LIB_EXT_VERSION}: libcustcalc${LIB_EXT_VERSION} \
+ 	${CALC_STATIC_LIBCUSTCALC}
+ 
+ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+-	${CC} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ} -o $@
++	${CC} ${CPPFLAGS} ${LDFLAGS} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ} -o $@
+ 
+ ##
+ #
+@@ -1280,7 +1280,7 @@ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+ ##
+ 
+ c_sysinfo.o: c_sysinfo.c ${MAKE_FILE}
+-	${CC} ${CFLAGS} ${LDFLAGS} c_sysinfo.c -c
++	${CC} ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} c_sysinfo.c -c
+ 
+ ##
+ #
+@@ -1407,7 +1407,7 @@ depend:
+ 	${Q} :> skel/custom/makedep.out
+ 	${Q} cd skel/custom; ${MAKEDEPEND} \
+ 	    -I../../.. -w 1 -f makedep.out -- \
+-	    ${CFLAGS} ${LDFLAGS} -- \
++	    ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -- \
+ 	    ${C_SRC} 2>/dev/null
+ 	${Q} ${SED} -e 's|: ../../|: |' -E -i '' -l skel/custom/makedep.out
+ 	-${Q} for i in ${C_SRC} /dev/null; do \
+--- a/custom/Makefile.simple
++++ b/custom/Makefile.simple
+@@ -748,7 +748,7 @@ custom/libcustcalc${LIB_EXT_VERSION}: libcustcalc${LIB_EXT_VERSION} \
+ 	${CALC_STATIC_LIBCUSTCALC}
+ 
+ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+-	${CC} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ} -o $@
++	${CC} ${LDFLAGS} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ} -o $@
+ 
+ ##
+ #
+@@ -757,7 +757,7 @@ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+ ##
+ 
+ c_sysinfo.o: c_sysinfo.c ${MAKE_FILE}
+-	${CC} ${CFLAGS} c_sysinfo.c -c
++	${CC} ${CFLAGS} ${LDFLAGS} c_sysinfo.c -c
+ 
+ ##
+ #
+--- a/custom/Makefile.tail
++++ b/custom/Makefile.tail
+@@ -93,7 +93,7 @@ custom/libcustcalc${LIB_EXT_VERSION}: libcustcalc${LIB_EXT_VERSION} \
+ 	${CALC_STATIC_LIBCUSTCALC}
+ 
+ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+-	${CC} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ} -o $@
++	${CC} ${CPPFLAGS} ${LDFLAGS} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ} -o $@
+ 
+ ##
+ #
+@@ -102,7 +102,7 @@ libcustcalc${LIB_EXT_VERSION}: ${CUSTCALC_OBJ} ${MAKE_FILE}
+ ##
+ 
+ c_sysinfo.o: c_sysinfo.c ${MAKE_FILE}
+-	${CC} ${CFLAGS} c_sysinfo.c -c
++	${CC} ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} c_sysinfo.c -c
+ 
+ ##
+ #

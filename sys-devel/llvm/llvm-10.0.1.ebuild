@@ -11,7 +11,7 @@ DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=pregenerated
-LLVM_PATCHSET=10.0.1-1
+LLVM_PATCHSET=10.0.1-3
 llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention

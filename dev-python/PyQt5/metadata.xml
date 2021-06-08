@@ -8,7 +8,7 @@
 	<use>
 		<flag name="bluetooth">Build bindings for the QtBluetooth module</flag>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
-		<flag name="declarative">Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin</flag>
+		<flag name="declarative">Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin</flag>
 		<flag name="designer">Build bindings for the QtDesigner module and enable the designer plugin</flag>
 		<flag name="gui">Build bindings for the QtGui module</flag>
 		<flag name="help">Build bindings for the QtHelp module</flag>
@@ -21,6 +21,7 @@
 		<flag name="printsupport">Build bindings for the QtPrintSupport module</flag>
 		<flag name="sensors">Build bindings for the QtSensors module</flag>
 		<flag name="serialport">Build bindings for the QtSerialPort module</flag>
+		<flag name="speech">Build bindings for the QtTextToSpeech module</flag>
 		<flag name="sql">Build bindings for the QtSql module</flag>
 		<flag name="svg">Build bindings for the QtSvg module</flag>
 		<flag name="testlib">Build bindings for the QtTest module</flag>

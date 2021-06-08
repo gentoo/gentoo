@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Game based on anagrams of words"
-HOMEPAGE="https://apps.kde.org/en/kanagram https://edu.kde.org/kanagram/"
+HOMEPAGE="https://apps.kde.org/kanagram/ https://edu.kde.org/kanagram/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

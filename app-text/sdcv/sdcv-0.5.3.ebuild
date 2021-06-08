@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Dushistov/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="darkterm nls readline test"
 RESTRICT="!test? ( test )"
 

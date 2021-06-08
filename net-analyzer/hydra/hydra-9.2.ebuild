@@ -12,9 +12,9 @@ S="${WORKDIR}/thc-${P}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="
-	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncurses
+	debug firebird gcrypt gtk idn memcached mongodb mysql ncurses
 	oracle pcre postgres rdp libssh subversion zlib
 "
 
@@ -28,8 +28,7 @@ RDEPEND="
 	firebird? ( dev-db/firebird )
 	gcrypt? ( dev-libs/libgcrypt )
 	idn? ( net-dns/libidn:0= )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	memcached? ( dev-libs/libmemcached[sasl] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	mysql? ( dev-db/mysql-connector-c:0= )

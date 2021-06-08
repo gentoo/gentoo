@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib flag-o-matic toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="xfs dump/restore utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/"
@@ -26,7 +26,9 @@ DEPEND="${RDEPEND}
 	nls? (
 		sys-devel/gettext
 		elibc_uclibc? ( dev-libs/libintl )
-	)"
+	)
+"
+BDEPEND="ncurses? ( virtual/pkgconfig )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.9-prompt-overflow.patch #335115
@@ -41,6 +43,7 @@ src_prepare() {
 		-e "/^PKG_DOC_DIR/s:@pkg_name@:${PF}:" \
 		include/builddefs.in \
 		|| die
+
 	sed -i \
 		-e "s:enable_curses=[a-z]*:enable_curses=$(usex ncurses):" \
 		-e "s:libcurses=\"[^\"]*\":libcurses='$(use ncurses && $(tc-getPKG_CONFIG) --libs ncurses)':" \

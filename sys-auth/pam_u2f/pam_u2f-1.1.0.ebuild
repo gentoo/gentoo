@@ -11,13 +11,12 @@ SRC_URI="https://developers.yubico.com/${PN/_/-}/Releases/${P}.tar.gz"
 
 LICENSE="BSD ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug libressl"
+KEYWORDS="amd64 x86"
+IUSE="debug"
 
 DEPEND="
 	dev-libs/libfido2:0=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sys-libs/pam"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

@@ -19,7 +19,7 @@ DEPEND="!!app-emulation/wine:0"
 
 S="${WORKDIR}"
 
-src_install(){
+src_install() {
 	insinto /usr/share/wine/gecko
 	use abi_x86_32 && doins "${DISTDIR}/${PN}-${PV}-x86.msi"
 	use abi_x86_64 && doins "${DISTDIR}/${PN}-${PV}-x86_64.msi"

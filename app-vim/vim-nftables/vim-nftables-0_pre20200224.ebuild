@@ -14,10 +14,3 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
-
-src_prepare() {
-	default
-
-	# will install license file by default
-	rm LICENSE || die
-}

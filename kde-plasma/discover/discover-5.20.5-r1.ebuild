@@ -53,7 +53,10 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-CVE-2021-28117.patch" ) # bug 777777
+PATCHES=(
+	"${FILESDIR}/${P}-CVE-2021-28117.patch" # bug 777777
+	"${FILESDIR}/${PN}-5.21.4-missing-link.patch" # bug 785457
+)
 
 src_prepare() {
 	ecm_src_prepare

@@ -109,6 +109,8 @@ dev-libs/glib -sysprof
 gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
 net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on amd64.
@@ -148,6 +150,7 @@ mail-client/claws-mail -litehtml
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # openjfx is keyworded on amd64
+dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)

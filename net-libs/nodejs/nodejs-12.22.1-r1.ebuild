@@ -3,26 +3,34 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-SRC_URI="
-	https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz
-"
-
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
-SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/nodejs/node"
+	SLOT="0"
+else
+	SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
+	SLOT="0/$(ver_cut 1)"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+	S="${WORKDIR}/node-v${PV}"
+fi
+
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector lto +npm +snapshot +ssl +system-ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
 	system-ssl? ( ssl )
 "
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=app-arch/brotli-1.0.9
@@ -47,11 +55,11 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
 	"${FILESDIR}"/${PN}-12.20.1-fix_ppc64_crashes.patch
+	"${FILESDIR}"/${PN}-12.22.1-jinja_collections_abc.patch
+	"${FILESDIR}"/${PN}-12.22.1-uvwasi_shared_libuv.patch
 	"${FILESDIR}"/${PN}-12.22.1-v8_icu69.patch
 	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
-RESTRICT="test"
-S="${WORKDIR}/node-v${PV}"
 
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
@@ -59,7 +67,15 @@ pkg_pretend() {
 
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		if use lto; then
-			tc-is-gcc || die "${PN} only supports LTO for gcc"
+			if tc-is-gcc; then
+				if [[ $(gcc-major-version) -ge 11 ]]; then
+					# Bug #787158
+					die "LTO builds of ${PN} using gcc-11+ currently fail tests and produce runtime errors. Either switch to gcc-10 or unset USE=lto for this ebuild"
+				fi
+			else
+				# configure.py will abort on this later if we do not
+				die "${PN} only supports LTO for gcc"
+			fi
 		fi
 	fi
 }
@@ -86,12 +102,8 @@ src_prepare() {
 
 	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
 
-	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
-	# seem sandbox related either (invoking it from a sandbox works fine).
-	# The issue is that no stdin handle is openened when asked for one.
-	# It doesn't really belong upstream , so it'll just be removed until someone
-	# with more gentoo-knowledge than me (jbergstroem) figures it out.
-	rm test/parallel/test-stdout-close-unref.js || die
+	# Known-to-fail test of a deprecated, legacy HTTP parser. Just don't bother.
+	rm -f test/parallel/test-http-transfer-encoding-smuggling-legacy.js
 
 	# debug builds. change install path, remove optimisations and override buildtype
 	if use debug; then
@@ -104,6 +116,9 @@ src_prepare() {
 
 src_configure() {
 	xdg_environment_reset
+
+	# LTO compiler flags are handled by configure.py itself
+	filter-flags '-flto*'
 
 	local myconf=(
 		--shared-brotli
@@ -211,8 +226,14 @@ src_install() {
 }
 
 src_test() {
+	# parallel/test-fs-mkdir is known to fail with FEATURES=usersandbox
+	if has usersandbox ${FEATURES}; then
+		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
+			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+	fi
+
 	out/${BUILDTYPE}/cctest || die
-	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} --flaky-tests=dontcare -J message parallel sequential || die
 }
 
 pkg_postinst() {

@@ -1,0 +1,11 @@
+--- a/configure.in
++++ b/configure.in
+@@ -52,7 +52,7 @@
+ AC_HEADER_STDC
+ AC_PATH_XTRA 
+ 
+-if test "x${ac_cv_have_x:0:10}" != "xhave_x=yes"; then
++if test "x$have_x" != "xyes"; then
+ 	AC_MSG_ERROR([X11 is missing but required.])
+ fi
+ 

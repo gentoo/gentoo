@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="ncurses?"
 
 inherit desktop distutils-r1 xdg-utils
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cli ncurses qrcode +qt5"
 REQUIRED_USE="|| ( cli ncurses qt5 )"
 

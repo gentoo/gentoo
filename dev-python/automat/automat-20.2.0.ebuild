@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 MY_PN="A${PN:1}"
@@ -13,6 +12,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Self-service finite-state machines for the programmer on the go"
 HOMEPAGE="https://github.com/glyph/automat https://pypi.org/project/Automat/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -24,11 +24,8 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	${RDEPEND}
 	dev-python/m2r[${PYTHON_USEDEP}]
 "
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/automat-0.8.0-no-setup-py-m2r-import.patch"

@@ -22,17 +22,18 @@ DEPEND="${RDEPEND}
 	x11-libs/xtrans"
 BDEPEND="test? ( dev-lang/perl )"
 
-pkg_setup() {
-	XORG_CONFIGURE_OPTIONS=(
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_with doc xmlto)
 		$(use_enable doc specs)
 		$(use_enable ipv6)
 		--without-fop
 		CPP="$(tc-getPROG CPP cpp)"
 	)
+	xorg-3_src_configure
 }
 
 src_install() {
 	xorg-3_src_install
-	rm -Rf "${ED}/usr/share/X11/locale"
+	rm -rf "${ED}"/usr/share/X11/locale || die
 }

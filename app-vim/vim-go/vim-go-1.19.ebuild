@@ -16,6 +16,8 @@ VIM_PLUGIN_HELPFILES="${PN}"
 
 RESTRICT="test"
 
+DOCS=( README.md CHANGELOG.md )
+
 src_compile() {
 	# safely skip `make test` triggered by `make` as it runs `go get` commands
 	# TODO: see :GoInstallBinaries (https://github.com/fatih/vim-go/blob/master/doc/vim-go.txt)

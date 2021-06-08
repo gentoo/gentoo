@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
-HOMEPAGE="https://flashrom.org/"
+HOMEPAGE="https://flashrom.org/Flashrom"
 
 LICENSE="GPL-2"
 SLOT="0"

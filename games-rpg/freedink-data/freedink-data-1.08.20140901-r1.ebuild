@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,9 +10,9 @@ SRC_URI="mirror://gnu/freedink/${P}.tar.gz"
 LICENSE="ZLIB
 	CC-BY-SA-3.0
 	CC-BY-3.0
-	FreeArt
-	GPL-2
-	GPL-3
+	Free-Art-1.3
+	GPL-2+
+	GPL-3+
 	WTFPL-2
 	OAL-1.0.1
 	public-domain"

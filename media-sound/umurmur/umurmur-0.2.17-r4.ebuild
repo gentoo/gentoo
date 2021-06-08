@@ -16,9 +16,9 @@ else
 fi
 LICENSE="BSD"
 SLOT="0"
-IUSE="gnutls libressl mbedtls shm"
+IUSE="gnutls mbedtls shm"
 
-# ssl-provider precendence: gnutls, mbedtls, libressl
+# ssl-provider precendence: gnutls, mbedtls
 # and openssl if none specified
 DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=
 	dev-libs/libconfig:=
@@ -28,10 +28,7 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=
 	)
 	!gnutls? (
 		mbedtls? ( net-libs/mbedtls:= )
-		!mbedtls? (
-			libressl? ( dev-libs/libressl:0= )
-			!libressl? ( dev-libs/openssl:0= )
-		)
+		!mbedtls? ( dev-libs/openssl:0= )
 	)
 "
 
@@ -52,9 +49,8 @@ get_ssl_impl() {
 
 	use gnutls && ssl_provider+=( gnutls )
 	use mbedtls && ssl_provider+=( mbedtls )
-	use libressl && ssl_provider+=( libressl )
 
-	if ! use gnutls && ! use mbedtls && ! use libressl ; then
+	if ! use gnutls && ! use mbedtls; then
 		ssl_provider+=( openssl )
 	fi
 	echo ${ssl_provider[@]}
@@ -75,7 +71,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local ssl_provider=( $(sed 's@libressl@openssl@' <<< $(get_ssl_impl)) )
+	local ssl_provider=( $(get_ssl_impl) )
 
 	local myeconfargs=(
 		--with-ssl="${ssl_provider[@]}"

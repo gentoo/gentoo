@@ -50,7 +50,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-RESTRICT="installsources strip"
+RESTRICT="installsources strip test"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 

@@ -91,10 +91,6 @@ sys-firmware/seabios -debug
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
 app-misc/lcdproc freetype lcd_devices_glcd png
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
-# not yet keyworded
-dev-java/openjdk:11 javafx
-
 # Patrick McLean <chutzpah@gentoo.org> (2019-04-15)
 # deps not available on platform
 sys-cluster/ceph babeltrace lttng
@@ -196,7 +192,7 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (2016-07-28)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location networkauth
+dev-python/PyQt5 bluetooth location networkauth speech
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies

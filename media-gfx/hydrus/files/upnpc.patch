@@ -1,0 +1,40 @@
+diff --git a/hydrus/core/networking/HydrusNATPunch.py b/hydrus/core/networking/HydrusNATPunch.py
+index c959753..6792d89 100644
+--- a/hydrus/core/networking/HydrusNATPunch.py
++++ b/hydrus/core/networking/HydrusNATPunch.py
+@@ -3,6 +3,7 @@ import socket
+ import subprocess
+ import threading
+ import traceback
++import shutil
+ 
+ from hydrus.core import HydrusConstants as HC
+ from hydrus.core import HydrusData
+@@ -18,7 +19,7 @@ if HC.PLATFORM_WINDOWS:
+     
+ else:
+     
+-    possible_bin_filenames = [ 'upnpc-static', 'upnpc-shared', 'miniupnpc' ]
++    possible_bin_filenames = [ 'upnpc', 'upnpc-static', 'upnpc-shared', 'miniupnpc' ]
+     
+     if HC.PLATFORM_LINUX:
+         
+@@ -42,7 +43,17 @@ for filename in possible_bin_filenames:
+         
+         UPNPC_PATH = possible_path
+         
+-    
++        break
++
++    maybe_in_path = shutil.which( filename )
++
++    if maybe_in_path:
++        
++        UPNPC_PATH = maybe_in_path
++        
++        break
++
++
+ EXTERNAL_IP = {}
+ EXTERNAL_IP[ 'ip' ] = None
+ EXTERNAL_IP[ 'time' ] = 0

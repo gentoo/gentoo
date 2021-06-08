@@ -24,7 +24,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/26"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
@@ -33,8 +33,7 @@ BDEPEND="${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${PYTHON_DEPS}
 	~dev-libs/protobuf-${PV}"
-RDEPEND="${BDEPEND}
-	!<dev-libs/protobuf-3[python(-)]"
+RDEPEND="${BDEPEND}"
 
 S="${WORKDIR}/protobuf-${PV}/python"
 

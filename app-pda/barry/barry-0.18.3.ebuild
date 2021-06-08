@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit bash-completion-r1 desktop epatch flag-o-matic gnome2-utils ltprune udev
+inherit bash-completion-r1 desktop epatch flag-o-matic gnome2-utils udev
 
 DESCRIPTION="Sync, backup, program management, and charging for BlackBerry devices"
 HOMEPAGE="http://www.netdirect.ca/software/packages/barry/"
@@ -88,7 +88,7 @@ src_install() {
 	newicon -s scalable "${S}"/logo/${PN}_logo_icon.svg ${PN}.svg
 	use gui && domenu "${S}"/menu/barrybackup.desktop
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_preinst() {

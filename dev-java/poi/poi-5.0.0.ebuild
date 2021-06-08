@@ -16,7 +16,7 @@ HOMEPAGE="https://poi.apache.org/"
 SRC_URI="https://archive.apache.org/dist/${PN}/release/src/${PN}-src-${PV}-20210120.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 # Common dependencies
 # POM: ${P}/sonar/main/pom.xml

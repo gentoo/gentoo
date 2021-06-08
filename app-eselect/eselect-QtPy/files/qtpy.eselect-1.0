@@ -8,4 +8,4 @@ EDITOR_LIST="pyqt5:/usr/bin/pyrcc5 pyside2:/usr/include/PySide2/QtCore/pyside2_q
 inherit editor-variable
 
 DESCRIPTION="Manage the ${EDITOR_VAR} environment variable"
-MAINTAINER="andrewammerlaan@riseup.net"
+MAINTAINER="andrewammerlaan@gentoo.org"

@@ -11,7 +11,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Game of hide and seek played on a grid of boxes"
-HOMEPAGE="https://apps.kde.org/en/kblackbox"
+HOMEPAGE="https://apps.kde.org/kblackbox/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

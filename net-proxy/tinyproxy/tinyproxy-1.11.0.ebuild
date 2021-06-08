@@ -13,7 +13,7 @@ SRC_URI="https://github.com/tinyproxy/tinyproxy/releases/download/${MY_PV}/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~sparc x86"
 
 IUSE="test debug +filter-proxy reverse-proxy transparent-proxy
 +upstream-proxy +xtinyproxy-header"

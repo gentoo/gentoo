@@ -17,16 +17,17 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples opengl"
 
-COMMON="dev-python/numpy[${PYTHON_USEDEP}]"
+COMMON="dev-python/numpy[${PYTHON_USEDEP}]
+	>=virtual/opencl-2"
 RDEPEND="${COMMON}
 	>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/decorator-3.2.0[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	>=dev-python/pytools-2017.6[${PYTHON_USEDEP}]
-	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	>=virtual/opencl-2"
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 DEPEND="${COMMON}
-	dev-python/pybind11[${PYTHON_USEDEP}]"
+	dev-python/pybind11[${PYTHON_USEDEP}]
+	opengl? ( media-libs/libglvnd )"
 
 # The test suite fails if there are no OpenCL platforms available, and
 # even if there is one (which requires the presence of both an OpenCL

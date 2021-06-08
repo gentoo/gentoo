@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Screen ruler for Plasma"
-HOMEPAGE="https://apps.kde.org/en/kruler"
+HOMEPAGE="https://apps.kde.org/kruler/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="5"

@@ -12,15 +12,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="custom-cflags libressl selinux"
+IUSE="custom-cflags selinux"
 
 # requires patching the kernel src
 RESTRICT="test"
 
 DEPEND="app-crypt/trousers
 app-crypt/tpm-tools
-!libressl? ( dev-libs/openssl:0=[-bindist] )
-libressl? ( dev-libs/libressl:0= )"
+dev-libs/openssl:0=[-bindist]
+"
 
 RDEPEND="${DEPEND}
 sys-boot/grub:2

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="A cross-platform clipboard module for Python."
@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc64 sparc x86"
 
 RDEPEND="
 	|| (
@@ -44,7 +44,8 @@ src_prepare() {
 	find -type f -exec sed -i -e 's:\r$::' {} + || die
 	# klipper is hard to get working, and once we make it work,
 	# it breaks most of the other backends
-	sed -e 's:_executable_exists("klipper"):False:' \
+	# wl-copy requires wayland, not Xvfb
+	sed -e 's:_executable_exists("\(klipper\|wl-copy\)"):False:' \
 		-i tests/test_pyperclip.py || die
 	distutils-r1_src_prepare
 }

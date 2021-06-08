@@ -51,7 +51,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit perforce +perl +ppcsha1 subversion tk +threads +webdav xinetd cvs test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv mediawiki mediawiki-experimental +nls +pcre +pcre-jit perforce +perl +ppcsha1 subversion tk +threads +webdav xinetd cvs test"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -59,8 +59,7 @@ DEPEND="
 		app-crypt/libsecret
 		dev-libs/glib:2
 	)
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	sys-libs/zlib
 	pcre? (
 		pcre-jit? ( dev-libs/libpcre2[jit(+)] )

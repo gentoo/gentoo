@@ -13,7 +13,7 @@ SRC_URI="https://github.com/MarkusEh/vdr-plugin-live/archive/${MY_P}.tar.gz -> $
 
 LICENSE="Apache-2.0 GPL-2+ RSA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="pcre ssl"
 
 DEPEND="media-video/vdr

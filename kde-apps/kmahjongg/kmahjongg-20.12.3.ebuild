@@ -11,8 +11,8 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="A tile matching game for one or two players"
-HOMEPAGE="https://apps.kde.org/en/kmahjongg
-https://games.kde.org/games/kmahjongg"
+HOMEPAGE="https://apps.kde.org/kmahjongg/
+https://games.kde.org/games/kmahjongg/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

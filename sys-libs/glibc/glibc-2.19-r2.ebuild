@@ -1078,7 +1078,6 @@ glibc_do_src_install() {
 		n64     /lib64/ld.so.1
 		# powerpc
 		ppc     /lib/ld.so.1
-		ppc64   /lib64/ld64.so.1
 		# s390
 		s390    /lib/ld.so.1
 		s390x   /lib/ld64.so.1
@@ -1091,12 +1090,16 @@ glibc_do_src_install() {
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64.so.1
+			# ELFv2 (glibc does not support ELFv1 on LE)
+			ppc64   /lib64/ld64.so.2
 		)
 		;;
 	big)
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64_be.so.1
+			# ELFv1 (glibc does not support ELFv2 on BE)
+			ppc64   /lib64/ld64.so.1
 		)
 		;;
 	esac

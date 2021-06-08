@@ -15,12 +15,11 @@ S="${WORKDIR}/${PN}"
 LICENSE="CPL-0.5"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86"
-IUSE="debug libressl +tpm"
+IUSE="debug +tpm"
 
 DEPEND="
 	tpm? ( app-crypt/trousers )
-	!libressl? ( >=dev-libs/openssl-1.1.0:0= )
-	libressl? ( >=dev-libs/libressl-2.7.0:0= )
+	>=dev-libs/openssl-1.1.0:0=
 "
 RDEPEND="
 	${DEPEND}

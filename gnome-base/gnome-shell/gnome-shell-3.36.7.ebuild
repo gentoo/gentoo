@@ -106,7 +106,7 @@ RDEPEND="${DEPEND}
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
-	>=gnome-base/gdm-3.5[introspection]
+	>=gnome-base/gdm-3.5[introspection(+)]
 	>=gnome-base/gnome-control-center-3.26[bluetooth(+)?,networkmanager(+)?]
 	browser-extension? ( gnome-extra/chrome-gnome-shell )
 "

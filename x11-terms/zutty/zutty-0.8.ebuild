@@ -16,14 +16,17 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-COMMON_DEPEND="
+RDEPEND="
 	media-libs/freetype:2
 	media-libs/libglvnd[X]
-	x11-libs/libXmu"
-DEPEND="
-	${COMMON_DEPEND}
-	${PYTHON_DEPS}"
-RDEPEND="${COMMON_DEPEND}"
-BDEPEND="virtual/pkgconfig"
+	x11-libs/libXmu
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.8-gcc11.patch )
 
 DOCS=( doc/KEYS.org doc/USAGE.org )

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,6 @@ DESCRIPTION="Read SAM/BAM database files"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-LICENSE="|| ( Apache-2.0 Artistic-2 GPL-1+ )"
 
 RDEPEND="
 	>=sci-biology/bioperl-1.6.9

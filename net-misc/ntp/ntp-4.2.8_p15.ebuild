@@ -14,7 +14,7 @@ SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar
 LICENSE="HPND BSD ISC"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="caps debug ipv6 libressl openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
+IUSE="caps debug ipv6 openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
 
 COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
 	>=dev-libs/libevent-2.0.9:=[threads?]
@@ -22,8 +22,7 @@ COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	snmp? ( net-analyzer/net-snmp )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	parse-clocks? ( net-misc/pps-tools )"
 BDEPEND="virtual/pkgconfig
@@ -46,7 +45,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8-ipc-caps.patch #533966
 	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
 	"${FILESDIR}"/${PN}-4.2.8_p10-fix-build-wo-ssl-or-libressl.patch
-	"${FILESDIR}"/${PN}-4.2.8_p12-libressl-2.8.patch
 	"${FILESDIR}"/${PN}-4.2.8_p14-add_cap_ipc_lock.patch #711530
 	"${FILESDIR}"/${PN}-4.2.8_p15-gcc10.patch #759409
 )

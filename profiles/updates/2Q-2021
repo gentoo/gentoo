@@ -1,2 +1,7 @@
 move dev-python/PyICU dev-python/pyicu
 move dev-python/python-fastimport dev-python/fastimport
+move dev-python/ebuildtester dev-util/ebuildtester
+move dev-util/robin-hood-hashing dev-cpp/robin-hood-hashing
+move dev-python/awscli app-admin/awscli
+move dev-util/dwarves dev-util/pahole
+move net-irc/oragono net-irc/ergo

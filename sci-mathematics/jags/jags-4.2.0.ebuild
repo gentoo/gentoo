@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit ltprune toolchain-funcs
+inherit toolchain-funcs
 
 MYP="JAGS-${PV}"
 
@@ -41,5 +41,5 @@ src_compile() {
 src_install() {
 	default
 	use doc && dodoc doc/manual/*.pdf
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

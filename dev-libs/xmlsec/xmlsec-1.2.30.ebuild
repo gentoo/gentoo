@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 ~sparc x86"
-IUSE="doc gcrypt gnutls libressl nss +openssl static-libs test"
+IUSE="doc gcrypt gnutls nss +openssl static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
 	gnutls? ( gcrypt )"
@@ -24,8 +24,7 @@ RDEPEND=">=dev-libs/libxml2-2.7.4:=
 		>=dev-libs/nss-3.9:=
 	)
 	openssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig

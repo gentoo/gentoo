@@ -12,8 +12,15 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.foss21.org/slibtool"
 else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/midipix.asc
+	inherit verify-sig
+
 	SRC_URI="https://dl.midipix.org/slibtool/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+	SRC_URI+=" verify-sig? ( https://dl.midipix.org/slibtool/${P}.tar.xz.sig )"
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+
+	BDEPEND="verify-sig? ( app-crypt/openpgp-keys-midipix )"
 fi
 
 LICENSE="MIT"

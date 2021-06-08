@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">aio-libs/aiohttp-theme</remote-id>
 		<remote-id type="pypi">aiohttp-theme</remote-id>

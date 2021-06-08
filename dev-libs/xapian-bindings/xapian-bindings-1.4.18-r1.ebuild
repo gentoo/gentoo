@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php7-2 php7-3 php7-4"
@@ -327,6 +327,7 @@ src_install() {
 
 	if use python; then
 		python_foreach_impl run_in_build_dir emake DESTDIR="${D}" install
+		python_foreach_impl python_optimize
 	fi
 
 	if use ruby; then

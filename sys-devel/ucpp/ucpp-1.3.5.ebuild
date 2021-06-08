@@ -9,7 +9,7 @@ SRC_URI="https://gitlab.com/scarabeusiv/${PN}/uploads/79f08e39c676f15ed8a59335f6
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 x86 ~amd64-linux"
 
 src_configure() {
 	econf \

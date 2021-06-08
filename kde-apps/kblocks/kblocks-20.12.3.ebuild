@@ -10,7 +10,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Single-player Tetris-like KDE game"
-HOMEPAGE="https://apps.kde.org/en/kblocks"
+HOMEPAGE="https://apps.kde.org/kblocks/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

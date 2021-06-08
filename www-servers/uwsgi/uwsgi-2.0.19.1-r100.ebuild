@@ -55,7 +55,7 @@ LANG_SUPPORT_EXTENDED=( go lua php python python-asyncio python-gevent ruby )
 # *java*: TODO
 # v8: TODO
 # matheval: TODO
-IUSE="apache2 +caps debug +embedded expat jemalloc json libressl +pcre +routing selinux +ssl +xml yajl yaml zeromq"
+IUSE="apache2 +caps debug +embedded expat jemalloc json +pcre +routing selinux +ssl +xml yajl yaml zeromq"
 
 for plugin in ${UWSGI_PLUGINS_STD[@]}; do IUSE="${IUSE} +uwsgi_plugins_${plugin}"; done
 for plugin in ${UWSGI_PLUGINS_OPT[@]}; do IUSE="${IUSE} uwsgi_plugins_${plugin}"; done
@@ -88,10 +88,7 @@ CDEPEND="
 		yajl? ( dev-libs/yajl )
 	)
 	pcre? ( dev-libs/libpcre:3 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	xml? (
 		!expat? ( dev-libs/libxml2 )
 		expat? ( dev-libs/expat )

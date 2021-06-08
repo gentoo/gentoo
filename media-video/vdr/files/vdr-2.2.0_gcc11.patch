@@ -1,0 +1,29 @@
+Fix compile with gcc-11, officially from kls
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
+
+--- a/tools.h	2021-05-05 21:48:32.382919856 +0200
++++ b/tools.h	2021-05-05 21:53:10.184522278 +0200
+@@ -50,7 +50,10 @@
+ #define CHECK(s) { if ((s) < 0) LOG_ERROR; } // used for 'ioctl()' calls
+ #define FATALERRNO (errno && errno != EAGAIN && errno != EINTR)
+ 
+-#ifndef __STL_CONFIG_H // in case some plugin needs to use the STL
++// In case some plugin needs to use the STL and gets an error message regarding one
++// of these functions, you can #define DISABLE_TEMPLATES_COLLIDING_WITH_STL before
++// including any VDR header files.
++#if !defined(DISABLE_TEMPLATES_COLLIDING_WITH_STL)
+ template<class T> inline T min(T a, T b) { return a <= b ? a : b; }
+ template<class T> inline T max(T a, T b) { return a >= b ? a : b; }
+ template<class T> inline int sgn(T a) { return a < 0 ? -1 : a > 0 ? 1 : 0; }
+--- a/recording.c	2021-05-05 22:08:23.898974097 +0200
++++ b/recording.c	2021-05-05 22:08:39.323280274 +0200
+@@ -2949,7 +2949,7 @@
+            }
+         // found a non existing file suffix
+         }
+-     if (Open() >= 0) {
++     if (Open()) {
+         if (!record && Offset >= 0 && file && file->Seek(Offset, SEEK_SET) != Offset) {
+            LOG_ERROR_STR(fileName);
+            return NULL;

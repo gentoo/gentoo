@@ -4,7 +4,7 @@
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools ltprune multilib-minimal vala xdg-utils
+inherit autotools multilib-minimal vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -72,5 +72,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

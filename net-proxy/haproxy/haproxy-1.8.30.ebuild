@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
+IUSE="+crypt doc examples slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
 systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
@@ -38,8 +38,7 @@ DEPEND="
 		pcre2-jit? ( dev-libs/libpcre2[jit] )
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[zlib?] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=[zlib?]
 	)
 	slz? ( dev-libs/libslz:= )
 	systemd? ( sys-apps/systemd )

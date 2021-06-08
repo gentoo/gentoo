@@ -24,7 +24,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+drop-root libressl +smi +ssl +samba suid test"
+IUSE="+drop-root +smi +ssl +samba suid test"
 REQUIRED_USE="test? ( samba )"
 
 # Assorted failures: bug #768498
@@ -39,8 +39,7 @@ RDEPEND="
 	)
 	smi? ( net-libs/libsmi )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6m:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.6m:0=
 	)
 	suid? (
 		acct-group/pcap

@@ -481,7 +481,7 @@ esetup.py() {
 }
 
 # @FUNCTION: distutils_install_for_testing
-# @USAGE: [--via-root|--via-home] [<args>...]
+# @USAGE: [--via-root|--via-home|--via-venv] [<args>...]
 # @DESCRIPTION:
 # Install the package into a temporary location for running tests.
 # Update PYTHONPATH appropriately and set TEST_DIR to the test
@@ -493,31 +493,35 @@ esetup.py() {
 # PYTHONPATH) or tests rely on the results of install command.
 # For most of the packages, tests built in BUILD_DIR are good enough.
 #
-# The function supports two install modes.  The current default is
-# --via-root mode.  Previously, the function defaulted to --via-home
-# mode but it has been broken by new versions of setuptools (50.3.0+).
-# If you find that --via-root does not work but --via-home does, please
-# file a bug to let us know.  Please note that proper testing sometimes
-# requires unmerging the package first.
+# The function supports three install modes.  These are:
+#
+# --via-root (the default) that uses 'setup.py install --root=...'
+# combined with PYTHONPATH and is recommended for the majority
+# of packages.
+#
+# --via-venv that creates a (non-isolated) venv and installs the package
+# into it via 'setup.py install'.  This mode does not use PYTHONPATH
+# but requires python to be called via PATH.  It may solve a few corner
+# cases that --via-root do not support.
+#
+# --via-home that uses 'setup.py install --home=...'.  This is
+# a historical mode that was mostly broken by setuptools 50.3.0+.
+# If your package does not work with the other two modes but works with
+# this one, please report a bug.
+#
+# Please note that in order to test the solution properly you need
+# to unmerge the package first.
 distutils_install_for_testing() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	# A few notes:
-	# 1) because of namespaces, we can't use 'install --root'
-	#    (NB: this is probably no longer true with py3),
-	# 2) 'install --home' is terribly broken on pypy, so we need
+	# A few notes about --via-home mode:
+	# 1) 'install --home' is terribly broken on pypy, so we need
 	#    to override --install-lib and --install-scripts,
-	# 3) non-root 'install' complains about PYTHONPATH and missing dirs,
+	# 2) non-root 'install' complains about PYTHONPATH and missing dirs,
 	#    so we need to set it properly and mkdir them,
-	# 4) it runs a bunch of commands which write random files to cwd,
+	# 3) it runs a bunch of commands which write random files to cwd,
 	#    in order to avoid that, we add the necessary path overrides
 	#    in _distutils-r1_create_setup_cfg.
-
-	TEST_DIR=${BUILD_DIR}/test
-	local bindir=${TEST_DIR}/scripts
-	local libdir=${TEST_DIR}/lib
-	PATH=${bindir}:${PATH}
-	PYTHONPATH=${libdir}:${PYTHONPATH}
 
 	local install_method=root
 	case ${1} in
@@ -529,30 +533,50 @@ distutils_install_for_testing() {
 			install_method=root
 			shift
 			;;
+		--via-venv)
+			install_method=venv
+			shift
+			;;
 	esac
 
-	local -a add_args
-	case ${install_method} in
-		home)
-			add_args=(
-				install
+	TEST_DIR=${BUILD_DIR}/test
+	local add_args=()
+
+	if [[ ${install_method} == venv ]]; then
+		"${EPYTHON}" -m venv --system-site-packages --without-pip \
+			"${TEST_DIR}" || die
+
+		# we only do the minimal necessary subset of activate script
+		PATH=${TEST_DIR}/bin:${PATH}
+		# unset PYTHONPATH in order to prevent BUILD_DIR from overriding
+		# venv packages
+		unset PYTHONPATH
+	else
+		local bindir=${TEST_DIR}/scripts
+		local libdir=${TEST_DIR}/lib
+		PATH=${bindir}:${PATH}
+		PYTHONPATH=${libdir}:${PYTHONPATH}
+
+		case ${install_method} in
+			home)
+				add_args=(
 					--home="${TEST_DIR}"
 					--install-lib="${libdir}"
 					--install-scripts="${bindir}"
-			)
-			mkdir -p "${libdir}" || die
-			;;
-		root)
-			add_args=(
-				install
+				)
+				mkdir -p "${libdir}" || die
+				;;
+			root)
+				add_args=(
 					--root="${TEST_DIR}"
 					--install-lib=lib
 					--install-scripts=scripts
-			)
-			;;
-	esac
+				)
+				;;
+		esac
+	fi
 
-	esetup.py "${add_args[@]}" "${@}"
+	esetup.py install "${add_args[@]}" "${@}"
 }
 
 # @FUNCTION: _distutils-r1_disable_ez_setup
@@ -646,6 +670,10 @@ _distutils-r1_create_setup_cfg() {
 		# setuptools like to create .egg files for install --home.
 		[bdist_egg]
 		dist_dir = ${BUILD_DIR}/dist
+
+		# avoid packing up eggs in a zip as it often breaks test suites
+		[options]
+		zip_safe = False
 	_EOF_
 
 	# we can't refer to ${D} before src_install()
@@ -861,7 +889,10 @@ distutils-r1_python_install() {
 
 	esetup.py install --skip-build --root="${root}" "${args[@]}"
 
-	local forbidden_package_names=( examples test tests .pytest_cache )
+	local forbidden_package_names=(
+		examples test tests
+		.pytest_cache .hypothesis
+	)
 	local p
 	for p in "${forbidden_package_names[@]}"; do
 		if [[ -d ${root}$(python_get_sitedir)/${p} ]]; then

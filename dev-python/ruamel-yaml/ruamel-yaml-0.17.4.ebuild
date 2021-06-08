@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -20,7 +20,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-python/namespace-ruamel[${PYTHON_USEDEP}]

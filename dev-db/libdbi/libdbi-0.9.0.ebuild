@@ -6,19 +6,17 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A database-independent abstraction layer in C"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://libdbi.sourceforge.net/"
-LICENSE="LGPL-2.1"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-IUSE="doc static-libs"
+LICENSE="LGPL-2.1"
+SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
-SLOT=0
+IUSE="doc static-libs"
 
 DOCS=( AUTHORS ChangeLog README README.osx TODO )
 
-RDEPEND=""
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/openjade )
 "

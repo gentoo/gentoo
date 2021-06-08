@@ -12,7 +12,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org optfeature
 
 DESCRIPTION="Plasma filemanager focusing on usability"
-HOMEPAGE="https://apps.kde.org/en/dolphin https://userbase.kde.org/Dolphin"
+HOMEPAGE="https://apps.kde.org/dolphin/ https://userbase.kde.org/Dolphin"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-session-restore-w-o-tabs.patch" # KDE-bug 434911
+	# pending https://invent.kde.org/system/dolphin/-/merge_requests/208
+	"${FILESDIR}/${PN}-21.04.1-fix-no-semantic-desktop.patch" # KDE-bug 435586
 )
 
 src_configure() {

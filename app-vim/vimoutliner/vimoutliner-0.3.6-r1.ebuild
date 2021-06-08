@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,5 @@ src_prepare() {
 	default
 	sed -i -e '/^if exists/,/endif/d' ftdetect/vo_base.vim || die
 	sed -i -e 's/g:vo_modules2load/g:vo_modules_load/' vimoutliner/vimoutlinerrc || die
-	rm -v install.sh || die
 	find "${S}" -type f -exec chmod a+r {} \; || die
 }

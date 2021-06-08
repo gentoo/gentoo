@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -36,6 +36,8 @@ PATCHES=(
 
 	# disable tests that require internet access
 	"${FILESDIR}/requests-toolbelt-0.9.1-tests-internet.patch"
+
+	"${FILESDIR}/requests-toolbelt-0.9.1-py310.patch"
 )
 
 distutils_enable_tests pytest

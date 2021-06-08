@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit multiprocessing perl-functions python-single-r1 ruby-single toolchain-funcs
@@ -13,7 +13,7 @@ MY_P="${P%_p*}DrO_o-949-gca15e830"
 WAF_VER="2.0.19"
 
 DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
-HOMEPAGE="https://xmms2.org/wiki/Main_Page"
+HOMEPAGE="https://github.com/XMMS2"
 #SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2
 	https://waf.io/waf-${WAF_VER}.tar.bz2"

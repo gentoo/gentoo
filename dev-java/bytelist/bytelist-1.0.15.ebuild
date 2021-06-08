@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jruby/${PN}/archive/refs/tags/${P}.tar.gz -> ${P}-so
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Common dependencies
 # POM: pom.xml

@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-05-07)
+# Forced on for now as generated headers are now
+# included unconditionally.
+# (https://github.com/cyrusimap/cyrus-imapd/pull/3270)
+>=net-mail/cyrus-imapd-3.4.0 sieve
+
 # Sam James <sam@gentoo.org> (2021-03-08)
 # Broken without USE=unicode
 # Needs to link with libiconv, bug #774507
@@ -177,9 +183,9 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
-dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_python3_9
+dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

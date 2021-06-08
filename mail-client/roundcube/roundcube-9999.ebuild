@@ -71,7 +71,7 @@ src_unpack() {
 src_install() {
 	webapp_src_preinst
 
-	dodoc CHANGELOG INSTALL README.md UPGRADING
+	dodoc CHANGELOG.md INSTALL README.md UPGRADING
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r [[:lower:]]* SQL

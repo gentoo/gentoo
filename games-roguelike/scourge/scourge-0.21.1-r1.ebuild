@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
 	"${FILESDIR}"/${P}-Wc++11-narrowing.patch
 	"${FILESDIR}"/${PN}-0.21.1-respect-AR.patch
+	"${FILESDIR}"/${P}-gcc-11.patch
 )
 
 src_prepare() {

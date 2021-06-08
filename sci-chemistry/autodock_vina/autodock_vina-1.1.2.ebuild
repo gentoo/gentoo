@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,15 +33,14 @@ src_prepare() {
 }
 
 src_configure() {
-	use debug || c_options="-DNDEBUG"
-	append-cxxflags -DBOOST_FILESYSTEM_VERSION=3
+	append-cxxflags -DBOOST_FILESYSTEM_VERSION=3 -std=c++11
 }
 
 src_compile() {
 	emake \
 		BASE="${EPREFIX}"/usr/ \
 		GPP="$(tc-getCXX)" \
-		C_OPTIONS="${c_options}"
+		C_OPTIONS=$(usex debug '' -DNDEBUG)
 }
 
 src_install() {

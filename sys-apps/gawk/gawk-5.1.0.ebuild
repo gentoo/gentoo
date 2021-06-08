@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs
 
 DESCRIPTION="GNU awk pattern-matching language"
 HOMEPAGE="https://www.gnu.org/software/gawk/gawk.html"
@@ -29,13 +29,16 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# use symlinks rather than hardlinks, and disable version links
+	# Use symlinks rather than hardlinks, and disable version links
 	sed -i \
 		-e '/^LN =/s:=.*:= $(LN_S):' \
 		-e '/install-exec-hook:/s|$|\nfoo:|' \
 		Makefile.in doc/Makefile.in || die
-	sed -i '/^pty1:$/s|$|\n_pty1:|' test/Makefile.in || die #413327
-	# fix standards conflict on Solaris
+
+	# bug #413327
+	sed -i '/^pty1:$/s|$|\n_pty1:|' test/Makefile.in || die
+
+	# Fix standards conflict on Solaris
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		sed -i \
 			-e '/\<_XOPEN_SOURCE\>/s/1$/600/' \
@@ -46,17 +49,21 @@ src_prepare() {
 
 src_configure() {
 	export ac_cv_libsigsegv=no
+
 	local myeconfargs=(
 		--libexec='$(libdir)/misc'
 		$(use_with mpfr)
 		$(use_enable nls)
 		$(use_with readline)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	rm -rf README_d # automatic dodocs barfs
+	# Automatic dodocs barfs
+	rm -rf README_d || die
+
 	default
 
 	# Install headers
@@ -66,7 +73,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	# symlink creation here as the links do not belong to gawk, but to any awk
+	# Symlink creation here as the links do not belong to gawk, but to any awk
 	if has_version app-admin/eselect && has_version app-eselect/eselect-awk ; then
 		eselect awk update ifunset
 	else
@@ -76,6 +83,7 @@ pkg_postinst() {
 				ln -s "${l##*/}" "${l/gawk/awk}" || die
 			fi
 		done
+
 		if ! [[ -e ${EROOT}/bin/awk ]] ; then
 			ln -s "../usr/bin/gawk" "${EROOT}/bin/awk" || die
 		fi

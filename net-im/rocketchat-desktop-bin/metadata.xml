@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">RocketChat/Rocket.Chat.Electron</remote-id>
+		<bugs-to>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugs-to>
+	</upstream>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+</pkgmetadata>

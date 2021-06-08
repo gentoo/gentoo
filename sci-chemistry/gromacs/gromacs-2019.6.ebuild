@@ -23,7 +23,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +doc -double-precision +fftw +gmxapi +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +doc double-precision +fftw +gmxapi +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -211,7 +211,7 @@ src_compile() {
 src_test() {
 	for x in ${GMX_DIRS}; do
 		BUILD_DIR="${WORKDIR}/${P}_${x}"\
-			cmake_src_make check
+			cmake_src_compile check
 	done
 }
 

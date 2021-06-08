@@ -29,7 +29,7 @@ RDEPEND="
 	app-arch/lz4
 	dev-games/mygui
 	dev-games/recastnavigation
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads,zlib]
 	dev-libs/tinyxml[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
@@ -63,7 +63,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/openmw-0.47.0-mygui-license.patch
-	"${FILESDIR}"/openmw-0.47.0-bullet-debian.patch
 )
 
 src_prepare() {

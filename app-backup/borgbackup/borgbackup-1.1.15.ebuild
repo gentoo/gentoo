@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit distutils-r1
 
@@ -20,7 +20,6 @@ HOMEPAGE="https://borgbackup.readthedocs.io/"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="libressl"
 
 # Unfortunately we have a file conflict with app-office/borg, bug #580402
 RDEPEND="
@@ -28,8 +27,7 @@ RDEPEND="
 	app-arch/lz4
 	virtual/acl
 	dev-python/llfuse[${PYTHON_USEDEP}]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 
 DEPEND="

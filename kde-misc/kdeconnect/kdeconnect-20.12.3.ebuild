@@ -13,8 +13,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
-HOMEPAGE="https://kdeconnect.kde.org/
-https://apps.kde.org/en/kdeconnect.kcm"
+HOMEPAGE="https://kdeconnect.kde.org/ https://apps.kde.org/kdeconnect.kcm/"
 
 LICENSE="GPL-2+"
 SLOT="5"

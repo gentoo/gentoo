@@ -9,7 +9,7 @@ SRC_URI="https://github.com/inversepath/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	acct-group/tenshi

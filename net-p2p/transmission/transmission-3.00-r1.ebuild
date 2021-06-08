@@ -1,4 +1,4 @@
-# Copyright 2006-2020 Gentoo Authors
+# Copyright 2006-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ HOMEPAGE="https://transmissionbt.com/"
 # MIT is in several libtransmission/ headers
 LICENSE="|| ( GPL-2 GPL-3 Transmission-OpenSSL-exception ) GPL-2 MIT"
 SLOT="0"
-IUSE="appindicator gtk libressl lightweight nls mbedtls qt5 systemd test"
+IUSE="appindicator gtk lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
 ACCT_DEPEND="
@@ -42,10 +42,7 @@ BDEPEND="${ACCT_DEPEND}
 "
 COMMON_DEPEND="
 	>=dev-libs/libevent-2.0.10:=
-	!mbedtls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	!mbedtls? ( dev-libs/openssl:0= )
 	mbedtls? ( net-libs/mbedtls:0= )
 	net-libs/libnatpmp
 	>=net-libs/miniupnpc-1.7:=
@@ -118,8 +115,12 @@ src_install() {
 
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
-	systemd_dounit daemon/transmission-daemon.service
-	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+
+	if use systemd; then
+		# Service sets Type=notify
+		systemd_dounit daemon/transmission-daemon.service
+		systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
+	fi
 
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf

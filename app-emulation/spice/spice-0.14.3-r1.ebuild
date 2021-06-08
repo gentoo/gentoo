@@ -13,7 +13,7 @@ SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 x86"
-IUSE="libressl lz4 sasl smartcard static-libs gstreamer test"
+IUSE="lz4 sasl smartcard static-libs gstreamer test"
 
 RESTRICT="!test? ( test )"
 
@@ -25,8 +25,7 @@ RDEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/jpeg:0=[static-libs(+)?]
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
-	!libressl? ( dev-libs/openssl:0=[static-libs(+)?] )
-	libressl? ( dev-libs/libressl:0=[static-libs(+)?] )
+	dev-libs/openssl:0=[static-libs(+)?]
 	lz4? ( app-arch/lz4:0=[static-libs(+)?] )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )

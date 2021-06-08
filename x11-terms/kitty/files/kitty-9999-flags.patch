@@ -1,26 +1,28 @@
 diff --git a/setup.py b/setup.py
-index ce5309ee..9cb59461 100755
+index f751107f..69bf39d4 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -278,7 +278,7 @@ def init_env(
+@@ -293,7 +293,7 @@ def init_env(
          df += ' -Og'
          float_conversion = '-Wfloat-conversion'
-     fortify_source = '-D_FORTIFY_SOURCE=2'
+     fortify_source = '' if sanitize and is_macos else '-D_FORTIFY_SOURCE=2'
 -    optimize = df if debug or sanitize else '-O3'
 +    optimize = ''
      sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
      cppflags_ = os.environ.get(
          'OVERRIDE_CPPFLAGS', '-D{}DEBUG'.format('' if debug else 'N'),
-@@ -289,7 +289,7 @@ def init_env(
+@@ -308,8 +308,8 @@ def init_env(
      cflags_ = os.environ.get(
          'OVERRIDE_CFLAGS', (
-             '-Wextra {} -Wno-missing-field-initializers -Wall -Wstrict-prototypes {}'
--            ' -pedantic-errors -Werror {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden {}'
-+            ' -pedantic-errors {} {} -fwrapv {} {} {} -fvisibility=hidden {}'
-         ).format(
-             float_conversion,
-             '' if is_openbsd else '-std=c11',
-@@ -306,7 +306,7 @@ def init_env(
+             f'-Wextra {float_conversion} -Wno-missing-field-initializers -Wall -Wstrict-prototypes {std}'
+-            f' {werror} {optimize} {sanitize_flag} -fwrapv {stack_protector} {missing_braces}'
+-            f' -pipe {march} -fvisibility=hidden {fortify_source}'
++            f' -pedantic-errors {optimize} {sanitize_flag} -fwrapv {stack_protector} {missing_braces}'
++            f' {march} -fvisibility=hidden {fortify_source}'
+         )
+     )
+     cflags = shlex.split(cflags_) + shlex.split(
+@@ -317,7 +317,7 @@ def init_env(
      )
      ldflags_ = os.environ.get(
          'OVERRIDE_LDFLAGS',
@@ -29,16 +31,18 @@ index ce5309ee..9cb59461 100755
      )
      ldflags = shlex.split(ldflags_)
      ldflags.append('-shared')
-@@ -764,7 +764,7 @@ def safe_makedirs(path: str) -> None:
+@@ -789,9 +789,7 @@ def safe_makedirs(path: str) -> None:
  
  
  def build_launcher(args: Options, launcher_dir: str = '.', bundle_type: str = 'source') -> None:
 -    cflags = '-Wall -Werror -fpie'.split()
+-    if args.build_universal_binary:
+-        cflags += '-arch x86_64 -arch arm64'.split()
 +    cflags = '-Wall -fpie'.split()
      cppflags = []
      libs: List[str] = []
      if args.profile or args.sanitize:
-@@ -776,8 +776,6 @@ def build_launcher(args: Options, launcher_dir: str = '.', bundle_type: str = 's
+@@ -803,8 +801,6 @@ def build_launcher(args: Options, launcher_dir: str = '.', bundle_type: str = 's
              cflags.append('-g')
          if args.profile:
              libs.append('-lprofiler')

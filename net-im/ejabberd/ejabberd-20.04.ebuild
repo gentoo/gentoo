@@ -26,7 +26,7 @@ RESTRICT="test"
 # TODO: tools? (
 # TODO:		>=dev-erlang/luerl-0.3
 # TODO: )
-DEPEND=">=dev-lang/erlang-19.3[hipe?,odbc?,ssl]
+DEPEND=">=dev-lang/erlang-19.3[hipe(-)?,odbc?,ssl]
 	>=dev-erlang/cache_tab-1.0.22
 	>=dev-erlang/eimp-1.0.14
 	>=dev-erlang/fast_tls-1.1.5

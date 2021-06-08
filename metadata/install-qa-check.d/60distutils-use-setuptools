@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # QA check: verify correctness of DISTUTILS_USE_SETUPTOOLS
@@ -24,17 +24,16 @@ distutils_use_setuptools_check() {
 				if [[ -f ${egg} ]]; then
 					# if .egg-info is a file, it's plain distutils
 					new_expected=no
-				elif grep -q -s -F '[console_scripts]' \
-						"${egg}"/entry_points.txt
-				then
-					# entry_points == we need rdepend
-					new_expected=rdepend
 				elif [[ -f ${egg}/requires.txt ]] &&
 						grep -q -s '^setuptools' \
 						<(sed -e '/^\[/,$d' "${egg}"/requires.txt)
 				then
 					# explicit *unconditional* rdepend in package metadata
 					new_expected=rdepend
+				elif grep -q -s '\[\(console\|gui\)_scripts\]' \
+						"${egg}"/entry_points.txt
+				then
+					new_expected=entry-point
 				else
 					new_expected=bdepend
 				fi
@@ -46,26 +45,42 @@ distutils_use_setuptools_check() {
 		fi
 	done
 
-	# at this point, expected can contain: no bdepend rdepend
 	if [[ ${#expected[@]} -gt 1 ]] && has no "${expected[@]}"; then
 		# 'no' and '[rb]depend' are mutually exclusive
 		eerror "The package seems to have used distutils and setuptools simultaneously."
 		eerror "This could mean the package has bad conditions:"
 		eerror "https://dev.gentoo.org/~mgorny/python-guide/distutils.html#conditional-distutils-setuptools-use-in-packages"
 		eerror "Please report a bug about this and CC python@"
-	elif [[ ${#expected[@]} -gt 0 ]]; then
-		# bdepend+rdepend=rdepend
+	else
+		# if we did not find anything, also assume 'no' is desired,
+		# we do not want the setuptools dep
+		[[ ${#expected[@]} -eq 0 ]] && expected=( no )
+		# *+rdepend=rdepend
 		has rdepend "${expected[@]}" && expected=( rdepend )
-		# at this point, expected should have exactly one value
-		[[ ${#expected[@]} -eq 1 ]] || die "integrity error"
 
-		if [[ ${DISTUTILS_USE_SETUPTOOLS} != ${expected} ]]; then
+		if has entry-point "${expected[@]}"; then
+			if [[ ${DISTUTILS_STRICT_ENTRY_POINTS} ]]; then
+				# option for devs to future-proof their packages
+				# please don't let ago enable it
+				expected=( bdepend )
+			else
+				# accept either rdepend or bdepend for the time being
+				# but suggest bdepend as the future-proof option
+				expected=( bdepend rdepend )
+			fi
+		fi
+
+		if ! has ${DISTUTILS_USE_SETUPTOOLS} "${expected[@]}"; then
 				local def=
 				[[ ${DISTUTILS_USE_SETUPTOOLS} == bdepend ]] && def=' (or unset)'
 
 				eqawarn "DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
 				eqawarn "  have:     DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}${def}"
-				eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected}"
+				if [[ ${expected[0]} == bdepend ]]; then
+					eqawarn "  expected: (unset)"
+				else
+					eqawarn "  expected: DISTUTILS_USE_SETUPTOOLS=${expected[0]}"
+				fi
 		fi
 	fi
 }

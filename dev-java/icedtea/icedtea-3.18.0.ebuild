@@ -69,7 +69,7 @@ LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-linking-exception LGPL-2 M
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="+alsa cacao +cups doc examples +gtk headless-awt
-	jamvm +jbootstrap kerberos libressl pax_kernel +pch
+	jamvm +jbootstrap kerberos pax_kernel +pch
 	pulseaudio sctp selinux shenandoah smartcard +source +system-lcms test zero"
 
 RESTRICT="!test? ( test )"
@@ -147,8 +147,7 @@ DEPEND="${COMMON_DEP} ${ALSA_COMMON_DEP} ${CUPS_COMMON_DEP} ${X_COMMON_DEP} ${X_
 	app-arch/zip
 	app-misc/ca-certificates
 	dev-lang/perl
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl:0 )
+	dev-libs/openssl:0
 	sys-apps/attr
 	sys-apps/lsb-release
 	x11-libs/libXt

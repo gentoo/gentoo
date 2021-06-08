@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal python-any-r1 toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 linux-info meson-multilib ninja-utils python-any-r1 toolchain-funcs udev usr-ldscript
 
 if [[ ${PV} = 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -99,24 +99,16 @@ src_prepare() {
 	default
 }
 
-meson_multilib_native_use() {
-	if multilib_is_native_abi && use "$1" ; then
-		echo true
-	else
-		echo false
-	fi
-}
-
 multilib_src_configure() {
 	local emesonargs=(
-		-Dacl=$(meson_multilib_native_use acl)
+		$(meson_native_use_bool acl)
 		-Defi=false
-		-Dkmod=$(meson_multilib_native_use kmod)
-		-Dselinux=$(meson_multilib_native_use selinux)
+		$(meson_native_use_bool kmod)
+		$(meson_native_use_bool selinux)
 		-Dlink-udev-shared=false
 		-Dsplit-usr=true
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
-		-Dstatic-libudev=$(usex static-libs true false)
+		$(meson_use static-libs static-libudev)
 
 		# Prevent automagic deps
 		-Dgcrypt=false

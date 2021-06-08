@@ -16,7 +16,7 @@ else
 fi
 LICENSE="BSD"
 SLOT="0"
-IUSE="gnutls libressl mbedtls shm"
+IUSE="gnutls mbedtls shm"
 
 # ssl-provider precendence: gnutls, mbedtls and openssl if none specified
 DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=

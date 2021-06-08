@@ -25,7 +25,6 @@ DEPEND=">=virtual/jdk-1.6
 	test? (
 		dev-java/ant-junit:0
 		dev-java/junit:0
-		dev-java/commons-collections[test-framework]
 	)
 	${CDEPEND}"
 

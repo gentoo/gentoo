@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -85,7 +85,7 @@ COMMON_DEPEND="
 			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
 			>=dev-python/qscintilla-python-2.10.3[${PYTHON_MULTI_USEDEP}]
 			dev-python/requests[${PYTHON_MULTI_USEDEP}]
-			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+			<dev-python/sip-5:=[${PYTHON_MULTI_USEDEP}]
 			dev-python/six[${PYTHON_MULTI_USEDEP}]
 			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
@@ -154,7 +154,7 @@ src_configure() {
 
 	if use grass; then
 		mycmakeargs+=(
-			-DGRASS_PREFIX7=/usr/$(get_libdir)/grass70
+			-DGRASS_PREFIX7=/usr/$(get_libdir)/grass78
 		)
 	fi
 

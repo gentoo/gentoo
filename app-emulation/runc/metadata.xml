@@ -26,5 +26,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">opencontainers/runc</remote-id>
+		<remote-id type="cpe">cpe:/a:linuxfoundation:runc</remote-id>
 	</upstream>
 </pkgmetadata>

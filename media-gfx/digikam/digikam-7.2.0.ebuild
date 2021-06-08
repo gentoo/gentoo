@@ -15,7 +15,7 @@ if [[ ${KDE_BUILD_TYPE} != live ]]; then
 		SRC_URI="mirror://kde/stable/${PN}/${PV}/"
 	fi
 	SRC_URI+="${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -107,6 +107,8 @@ RDEPEND="${COMMON_DEPEND}
 	mysql? ( virtual/mysql[server(+)] )
 	panorama? ( media-gfx/hugin )
 "
+
+PATCHES=( "${FILESDIR}"/${P}-qt-5.15.2-after-f8ad329f.patch )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

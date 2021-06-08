@@ -32,8 +32,8 @@ BDEPEND="app-arch/unzip"
 MY_DIR=opt/etqw
 
 QA_PREBUILT="
-	${MY_DIR:1}/*.x86
-	${MY_DIR:1}/*.so*
+	${MY_DIR}/*.x86
+	${MY_DIR}/*.so*
 "
 
 src_unpack() {

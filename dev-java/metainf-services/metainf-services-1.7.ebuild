@@ -11,7 +11,7 @@ SRC_URI="https://github.com/kohsuke/${PN}/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6"

@@ -18,4 +18,5 @@ SLOT="0"
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
+	dodoc README.md
 }

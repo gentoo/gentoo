@@ -24,15 +24,14 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="MIT openssl PHP-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="libressl test"
+IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dev-lua/luaossl
 	!dev-lua/luasec
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0=[-bindist] )
+	dev-libs/openssl:0=[-bindist]
 	${LUA_DEPS}
 "
 DEPEND="${RDEPEND}"

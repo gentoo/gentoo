@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Library to deal with Apple Wallet pass files"
-HOMEPAGE="https://apps.kde.org/en/kontact"
+HOMEPAGE="https://apps.kde.org/kontact/"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"

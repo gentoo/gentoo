@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ssl libressl"
+IUSE="ssl"
 
 RDEPEND="
 	dev-libs/libzip
@@ -26,10 +26,7 @@ RDEPEND="
 	sys-apps/file
 	sys-libs/zlib
 	dev-libs/capstone:0=
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

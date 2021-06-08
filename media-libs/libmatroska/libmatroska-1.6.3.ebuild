@@ -12,9 +12,8 @@ SRC_URI="https://dl.matroska.org/downloads/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0/7" # subslot = soname major version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
-IUSE=""
 
-RDEPEND=">=dev-libs/libebml-1.4.0:="
+RDEPEND=">=dev-libs/libebml-1.4.2:="
 DEPEND="${RDEPEND}"
 
 src_configure() {

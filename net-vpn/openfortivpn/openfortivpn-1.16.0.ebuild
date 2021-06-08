@@ -12,12 +12,10 @@ SRC_URI="https://github.com/adrienverge/openfortivpn/archive/v${PV}.tar.gz -> ${
 LICENSE="GPL-3-with-openssl-exception openssl"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libressl"
 
 DEPEND="
 	net-dialup/ppp
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}"
 

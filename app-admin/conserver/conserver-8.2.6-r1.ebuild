@@ -11,8 +11,8 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD BSD-with-attribution"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug ipv6 freeipmi kerberos libressl pam ssl test tcpd"
+KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
+IUSE="debug ipv6 freeipmi kerberos pam ssl test tcpd"
 RESTRICT="!test? ( test )"
 
 DEPEND="debug? ( dev-libs/dmalloc:= )
@@ -21,10 +21,7 @@ DEPEND="debug? ( dev-libs/dmalloc:= )
 		virtual/krb5
 		net-libs/libgssglue
 	)
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 "

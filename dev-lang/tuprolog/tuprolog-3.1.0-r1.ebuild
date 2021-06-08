@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=virtual/jdk-1.8:=
 	 dev-java/javassist:3
-	 dev-java/commons-lang:3.1"
+	 dev-java/commons-lang:3.6"
 
 DEPEND="${RDEPEND}
 	dev-java/ant-core
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist:3,commons-lang-3.1"
+EANT_GENTOO_CLASSPATH="javassist:3,commons-lang-3.6"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-no-ikvm.patch

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/yshui/picom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE="+config-file dbus +doc +drm opengl pcre test"
 
 REQUIRED_USE="test? ( dbus )" # avoid "DBus support not compiled in!"
@@ -43,6 +43,14 @@ BDEPEND="virtual/pkgconfig
 "
 
 DOCS=( README.md picom.sample.conf )
+
+python_check_deps() {
+	has_version -b "dev-python/xcffib[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local emesonargs=(

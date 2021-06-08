@@ -3,10 +3,10 @@
 
 EAPI=7
 
-MY_PV=$(ver_cut 1-2)
+MY_PV=7.16
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools desktop linux-info systemd wxwidgets xdg-utils
+inherit autotools desktop flag-o-matic linux-info systemd wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="https://boinc.ssl.berkeley.edu/"
@@ -23,9 +23,9 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="X cuda curl_ssl_gnutls curl_ssl_libressl +curl_ssl_openssl"
+IUSE="X cuda curl_ssl_gnutls +curl_ssl_openssl"
 
-REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_libressl curl_ssl_openssl ) "
+REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 		>=dev-util/nvidia-cuda-toolkit-2.1
 		>=x11-drivers/nvidia-drivers-180.22
 	)
-	net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
+	net-misc/curl[curl_ssl_gnutls(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	X? (
@@ -67,8 +67,6 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
 	"${FILESDIR}"/${PN}-${MY_PV}-fix_webview.patch
-	# bug #732024
-	"${FILESDIR}"/${PN}-${MY_PV}-remove-usr_lib.patch
 )
 
 pkg_setup() {
@@ -107,8 +105,6 @@ src_prepare() {
 
 	eautoreconf
 
-	use X && setup-wxwidgets
-
 	# bug #732024
 	if test "x$(get_libdir)" = "xlib64"; then
 	    sed -i -e 's,/lib\([ /;:"]\),/lib64\1,g' configure || die
@@ -116,7 +112,10 @@ src_prepare() {
 }
 
 src_configure() {
-	LDFLAGS="-L${EPREFIX}/usr/$(get_libdir) -L${EPREFIX}/$(get_libdir) ${LDFLAGS}" \
+	use X && setup-wxwidgets
+
+	append-libs -L"${ESYSROOT}"/usr/$(get_libdir) -L"${ESYSROOT}"/$(get_libdir)
+
 	econf --disable-server \
 		--enable-client \
 		--enable-dynamic-client-linkage \
@@ -137,7 +136,11 @@ src_install() {
 		# Create new icons. bug 593362
 		local s SIZES=(16 22 24 32 36 48 64 72 96 128 192 256)
 		for s in "${SIZES[@]}"; do
-			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png || die
+			# The convert command is not checked, because it will issue warnings and exit with
+			# an error code if imagemagick is used and was merged with USE="-xml", although the
+			# conversion has worked. See #766093
+			# Instead, newicon will fail if the conversion did not produce the icon.
+			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png
 			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
 		done
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"

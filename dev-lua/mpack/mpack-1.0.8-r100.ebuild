@@ -85,9 +85,10 @@ src_test() {
 lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
+	local installdir="$(lua_get_cmod_dir)"
 	local myemakeargs=(
 		"DESTDIR=${ED}"
-		"LUA_CMOD_INSTALLDIR=$(lua_get_cmod_dir)"
+		"LUA_CMOD_INSTALLDIR=${installdir#$EPREFIX}"
 		"USE_SYSTEM_MPACK=yes"
 		"USE_SYSTEM_LUA=yes"
 	)

@@ -14,27 +14,8 @@
 	déplacer et copier différents systèmes de fichiers.
 	</longdescription>
 	<use>
-		<flag name="btrfs">Include Btrfs support (<pkg>sys-fs/btrfs-progs</pkg>)</flag>
-		<flag name="cryptsetup">Include LUKS volume support (<pkg>sys-fs/cryptsetup</pkg>)</flag>
-		<flag name="dmraid">Support for dmraid devices, also known as ATA-RAID, or
-		Fake RAID.</flag>
-		<flag name="f2fs">Include F2FS support (<pkg>sys-fs/f2fs-tools</pkg>)
-		</flag>
-		<flag name="fat">Include FAT16/FAT32 support (<pkg>sys-fs/dosfstools</pkg>)
-		</flag>
-		<flag name="hfs">Include HFS support (<pkg>sys-fs/hfsutils</pkg>)</flag>
-		<flag name="jfs">Include JFS support (<pkg>sys-fs/jfsutils</pkg>)</flag>
-		<flag name="mdadm">Support for Linux software RAID.</flag>
-		<flag name="ntfs">Include NTFS support (<pkg>sys-fs/ntfs3g</pkg>)</flag>
-		<flag name="reiser4">Include ReiserFS4 support
-		(<pkg>sys-fs/reiser4progs</pkg>)</flag>
-		<flag name="reiserfs">Include ReiserFS support
-		(<pkg>sys-fs/reiserfsprogs</pkg>)</flag>
-		<flag name="udf">Include UDF support (<pkg>sys-fs/udftools</pkg>)</flag>
 		<flag name="wayland">Enable interim workaround to allow running GParted under
 		Wayland by granting permission to the X11 display using <pkg>x11-apps/xhost</pkg>.</flag>
-		<flag name="xfs">Include XFS support
-		(<pkg>sys-fs/xfsprogs</pkg>, <pkg>sys-fs/xfsdump</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gparted</remote-id>

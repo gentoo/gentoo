@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/TresysTechnology/selint.git"
 else
 	SRC_URI="https://github.com/TresysTechnology/selint/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="Apache-2.0"

@@ -6,7 +6,7 @@ EAPI=7
 inherit gnome2
 
 DESCRIPTION="GNOME default icon theme"
-HOMEPAGE="https://git.gnome.org/browse/adwaita-icon-theme/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/adwaita-icon-theme"
 
 SRC_URI="${SRC_URI}
 	branding? ( https://www.mail-archive.com/tango-artists@lists.freedesktop.org/msg00043/tango-gentoo-v1.1.tar.gz )

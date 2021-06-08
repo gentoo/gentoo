@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>om@organizedmagnetism.com</email>
+		<name>Scott Martin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<changelog>http://forums.plex.tv/discussion/62832/plex-media-server#latest</changelog>
+		<doc>https://support.plex.tv/hc/en-us/categories/200007268-Getting-Started</doc>
+	</upstream>
+	<use>
+		<flag name="system-openssl">Use system copy of <pkg>dev-libs/openssl</pkg> instead of the bundled one. Unsupported upstream.</flag>
+	</use>
+</pkgmetadata>

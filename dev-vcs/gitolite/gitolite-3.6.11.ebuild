@@ -40,7 +40,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	echo $PF > src/VERSION || die
+	echo ${PF} > src/VERSION || die
 }
 
 src_install() {

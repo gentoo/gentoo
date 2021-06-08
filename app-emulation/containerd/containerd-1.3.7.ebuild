@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,13 +61,14 @@ src_compile() {
 
 	myemakeargs=(
 		BUILDTAGS="${options[*]}"
-		DESTDIR="${ED}"
 		LDFLAGS="$(usex hardened '-extldflags -fno-PIC' '')"
 	)
 
 	export GOPATH="${WORKDIR}/${P}" # ${PWD}/vendor
 	export GOFLAGS="-v -x -mod=vendor"
-	emake "${myemakeargs[@]}" all man
+	# race condition in man target https://bugs.gentoo.org/765100
+	emake "${myemakeargs[@]}" man -j1 #nowarn
+	emake "${myemakeargs[@]}" all
 }
 
 src_install() {

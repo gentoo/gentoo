@@ -26,9 +26,9 @@ SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse dso dynmasq exec ifsession ifversion ident ipv6
-	kerberos ldap libressl log-forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
+	kerberos ldap log-forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
 	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique-id vroot"
 # TODO: geoip
 REQUIRED_USE="ban? ( ctrls )
@@ -50,10 +50,7 @@ CDEPEND="acl? ( virtual/acl )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nls? ( virtual/libiconv )
 	ncurses? ( sys-libs/ncurses:0= )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	pam? ( sys-libs/pam )
 	pcre? ( dev-libs/libpcre )
 	postgres? ( dev-db/postgresql:= )
@@ -72,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
 	"${FILESDIR}"/${P}-tinfow-segv.patch
 	"${FILESDIR}"/${P}-no-ncurses.patch
+	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 RESTRICT=test # Some tests are ran in chroot. Confuse sandbox.

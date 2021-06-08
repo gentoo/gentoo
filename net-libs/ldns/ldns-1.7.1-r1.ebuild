@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{7,8} )
-inherit epatch ltprune multilib-minimal python-single-r1
+inherit epatch multilib-minimal python-single-r1
 
 DESCRIPTION="a library with the aim to simplify DNS programming in C"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/ldns/"
@@ -12,7 +12,7 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/3"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="+dane doc +ecdsa ed25519 ed448 gost libressl python static-libs vim-syntax"
+IUSE="+dane doc +ecdsa ed25519 ed448 gost python static-libs vim-syntax"
 
 # configure will die if ecdsa is enabled and ssl is not
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -20,16 +20,15 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	ecdsa? (
-		!libressl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist,${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.0.1e:0=[-bindist,${MULTILIB_USEDEP}]
 	)
 	ed25519? (
-		!libressl? ( >=dev-libs/openssl-1.1.0:0=[-bindist,${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.1.0:0=[-bindist,${MULTILIB_USEDEP}]
 	)
 	ed448? (
-		!libressl? ( >=dev-libs/openssl-1.1.1:0=[-bindist,${MULTILIB_USEDEP}] )
+		>=dev-libs/openssl-1.1.1:0=[-bindist,${MULTILIB_USEDEP}]
 	)
-	!libressl? ( >=dev-libs/openssl-1.0.1e:0=[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	>=dev-libs/openssl-1.0.1e:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
@@ -48,7 +47,7 @@ pkg_setup() {
 
 multilib_src_configure() {
 	# >=openssl-1.1.0 required for dane-ta
-	if has_version "<dev-libs/openssl-1.1.0" || use libressl; then
+	if has_version "<dev-libs/openssl-1.1.0"; then
 		local dane_ta_usage="--disable-dane-ta-usage"
 	else
 		local dane_ta_usage=""
@@ -98,7 +97,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README*
 
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 	use python && python_optimize
 
 	if use vim-syntax ; then

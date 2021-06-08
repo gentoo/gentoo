@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ MY_PN="${PN//-/.}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Ruamel enhancements to pathlib and pathlib2"
-HOMEPAGE="https://pypi.org/project/ruamel.std.pathlib/ https://sourceforge.net/p/ruamel-std-pathlib"
+HOMEPAGE="https://pypi.org/project/ruamel.std.pathlib/ https://sourceforge.net/p/ruamel-std-pathlib/"
 # PyPI tarballs do not include tests
 SRC_URI="mirror://sourceforge/ruamel-dl-tagged-releases/${MY_P}.tar.xz -> ${P}.tar.xz"
 

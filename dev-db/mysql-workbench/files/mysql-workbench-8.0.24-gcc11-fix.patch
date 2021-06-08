@@ -1,0 +1,55 @@
+https://bugs.gentoo.org/788199
+
+'volatile gsize' is not accepted by with gcc11 / clang12
+
+"While location has a volatile qualifier, this is a historical
+ artifact and the pointer passed to it should not be volatile"
+https://developer.gnome.org/glib/stable/glib-Threads.html#g-once-init-enter
+
+For Scintilla GTK, see also:
+https://sourceforge.net/p/scintilla/code/ci/790bfd4c0747eb5e0bc4d627a101298207a8421e/
+
+Also adds missing <memory> includes.
+
+Signed-off-by: Ionen Wolkens <sudinave@gmail.com>
+--- a/ext/scintilla/gtk/ScintillaGTKAccessible.cxx
++++ b/ext/scintilla/gtk/ScintillaGTKAccessible.cxx
+@@ -1011,5 +1011,5 @@
+ // @p parent_type is only required on GTK 3.2 to 3.6, and only on the first call
+ static GType scintilla_object_accessible_get_type(GType parent_type G_GNUC_UNUSED) {
+-	static volatile gsize type_id_result = 0;
++	static gsize type_id_result = 0;
+ 
+ 	if (g_once_init_enter(&type_id_result)) {
+@@ -1102,5 +1102,5 @@
+ 	*cache = scintilla_object_accessible_new(0, G_OBJECT(widget));
+ #elif HAVE_GTK_FACTORY // register in the factory and let GTK instantiate
+-	static volatile gsize registered = 0;
++	static gsize registered = 0;
+ 
+ 	if (g_once_init_enter(&registered)) {
+--- a/library/forms/gtk/src/mforms_acc.cpp
++++ b/library/forms/gtk/src/mforms_acc.cpp
+@@ -177,5 +177,5 @@
+     // @p parent_type is only required on GTK 3.2 to 3.6, and only on the first call
+     GType mforms_object_accessible_get_type(GType parent_type G_GNUC_UNUSED) {
+-      static volatile gsize typeIdResult = 0;
++      static gsize typeIdResult = 0;
+ 
+       if (g_once_init_enter(&typeIdResult)) {
+--- a/library/ssh/SSHCommon.h
++++ b/library/ssh/SSHCommon.h
+@@ -42,4 +42,5 @@
+ #include <thread>
+ #include <atomic>
++#include <memory>
+ #include <mutex>
+ 
+--- a/library/ssh/SSHTunnelHandler.h
++++ b/library/ssh/SSHTunnelHandler.h
+@@ -31,4 +31,5 @@
+ #include <thread>
+ #include <map>
++#include <memory>
+ #include <mutex>
+ #include <vector>

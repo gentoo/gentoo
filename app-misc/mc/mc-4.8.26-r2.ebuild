@@ -13,7 +13,7 @@ SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
@@ -112,6 +112,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use spell && ! has_version app-dicts/aspell-en ; then
+		elog "'spell' USE flag is enabled however app-dicts/aspell-en is not installed."
+		elog "You should manually set 'spell_language' in the Misc section of ~/.config/mc/ini"
+		elog "It has to be set to one of your installed aspell dictionaries or 'NONE'"
+		elog
+	fi
+
 	elog "To enable exiting to latest working directory,"
 	elog "put this into your ~/.bashrc:"
 	elog ". ${EPREFIX}/usr/libexec/mc/mc.sh"

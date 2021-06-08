@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake python-any-r1
+inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="Abseil Common Libraries (C++), LTS Branch"
 HOMEPAGE="https://abseil.io"
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/abseil/abseil-cpp/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV%%.*}"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -22,6 +22,10 @@ BDEPEND="${PYTHON_DEPS}"
 
 # requires source of gtest and other libs
 RESTRICT=test
+
+PATCHES=(
+	"${FILESDIR}/${PN}-20200923-arm_no_crypto.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
@@ -40,8 +44,16 @@ src_prepare() {
 }
 
 src_configure() {
+	if use arm || use arm64; then
+		# bug #778926
+		if [[ $($(tc-getCXX) ${CXXFLAGS} -E -P - <<<$'#if defined(__ARM_FEATURE_CRYPTO)\nHAVE_ARM_FEATURE_CRYPTO\n#endif') != *HAVE_ARM_FEATURE_CRYPTO* ]]; then
+			append-cxxflags -DABSL_ARCH_ARM_NO_CRYPTO
+		fi
+	fi
+
 	local mycmakeargs=(
 		-DABSL_ENABLE_INSTALL=TRUE
+		-DBUILD_SHARED_LIBS=TRUE
 	)
 	cmake_src_configure
 }

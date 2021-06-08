@@ -10,8 +10,8 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="An addictive and fun dice game"
-HOMEPAGE="https://apps.kde.org/en/kiriki
-https://games.kde.org/games/kiriki"
+HOMEPAGE="https://apps.kde.org/kiriki/
+https://games.kde.org/games/kiriki/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

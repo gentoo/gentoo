@@ -10,14 +10,14 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Jukebox and music manager by KDE"
-HOMEPAGE="https://apps.kde.org/en/juk"
+HOMEPAGE="https://apps.kde.org/juk/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
@@ -43,4 +43,8 @@ DEPEND="
 	>=media-libs/phonon-4.11.0
 	>=media-libs/taglib-1.6
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-qt/qtconcurrent-${QTMIN}:5
+"
+
+PATCHES=( "${FILESDIR}/${PN}-21.04.0-missing-link.patch" ) # bug 785418

@@ -25,7 +25,7 @@ else
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
 		doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
-	KEYWORDS="amd64 ~arm64 -x86"
+	KEYWORDS="amd64 arm64 -x86"
 	LANGS=" af cs de es fi fr he hu it pl pt-BR ru sk sl"
 fi
 
@@ -37,14 +37,11 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	dev-util/intltool
+BDEPEND="dev-util/intltool
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	test? ( >=dev-python/jsonschema-3.2.0 )
-"
-COMMON_DEPEND="
-	dev-db/sqlite:3
+	test? ( >=dev-python/jsonschema-3.2.0 )"
+DEPEND="dev-db/sqlite:3
 	dev-libs/json-glib
 	dev-libs/libxml2:2
 	>=dev-libs/pugixml-1.8:0=
@@ -73,21 +70,13 @@ COMMON_DEPEND="
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lua? ( ${LUA_DEPS} )
 	opencl? ( virtual/opencl )
-	openexr? ( media-libs/openexr:0= )
-	webp? ( media-libs/libwebp:0= )
-"
-DEPEND="${COMMON_DEPEND}
-	opencl? (
-		>=sys-devel/clang-4
-		>=sys-devel/llvm-4
-	)
-"
-RDEPEND="${COMMON_DEPEND}
-	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
-"
+	openexr? ( <media-libs/openexr-3.0.0:0= )
+	webp? ( media-libs/libwebp:0= )"
+RDEPEND="${DEPEND}
+	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
+	"${FILESDIR}"/${PN}-find-opencl-header.patch
 	"${FILESDIR}"/${PN}-3.0.2_cmake-march-autodetection.patch
 	"${FILESDIR}"/${PN}-3.4.0_jsonschema-automagic.patch
 )
@@ -128,6 +117,7 @@ src_configure() {
 		-DCUSTOM_CFLAGS=ON
 		-DDONT_USE_INTERNAL_LUA=ON
 		-DRAWSPEED_ENABLE_LTO=$(usex lto)
+		-DTESTBUILD_OPENCL_PROGRAMS=OFF
 		-DUSE_AVIF=$(usex avif)
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
 		-DUSE_COLORD=$(usex colord)

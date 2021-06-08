@@ -89,6 +89,8 @@ dev-libs/glib sysprof
 gnome-extra/cjs sysprof
 x11-libs/gtk+ sysprof
 net-libs/libsoup sysprof
+x11-libs/pango sysprof
+gui-libs/gtk sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
@@ -126,7 +128,8 @@ dev-lang/rust-bin doc
 media-tv/kodi raspberry-pi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
-# mask javafx until it's keyworded on other arches
+# mask here and unmask in profiles for specific arches
+dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)

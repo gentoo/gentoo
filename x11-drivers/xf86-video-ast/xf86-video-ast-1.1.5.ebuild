@@ -8,4 +8,4 @@ inherit xorg-3
 DESCRIPTION="X.Org driver for ASpeedTech cards"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"

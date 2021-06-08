@@ -20,6 +20,7 @@ RDEPEND="
 	app-emacs/company-mode
 	dev-ml/csexp:=
 	dev-ml/yojson:=
+	dev-ml/menhir:=
 	=dev-lang/ocaml-4.11*:=
 	emacs? (
 		>=app-editors/emacs-23.1:*

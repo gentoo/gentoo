@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 TMPFILES_OPTIONAL=1
 
 inherit python-any-r1 prefix toolchain-funcs flag-o-matic gnuconfig \
@@ -394,6 +394,10 @@ setup_flags() {
 	# glibc aborts if rpath is set by LDFLAGS
 	filter-ldflags '-Wl,-rpath=*'
 
+	# ld can't use -r & --relax at the same time, bug #788901
+	# https://sourceware.org/PR27837
+	filter-ldflags '-Wl,--relax'
+
 	# #492892
 	filter-flags -frecord-gcc-switches
 
@@ -644,21 +648,6 @@ sanity_prechecks() {
 		ewarn "You are using Xen but don't have -mno-tls-direct-seg-refs in your CFLAGS."
 		ewarn "This will result in a 50% performance penalty when running with a 32bit"
 		ewarn "hypervisor, which is probably not what you want."
-	fi
-
-	# Check for sanity of /etc/nsswitch.conf
-	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
-		local entry
-		for entry in passwd group shadow; do
-			if ! egrep -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
-				eerror "Your ${EROOT}/etc/nsswitch.conf is out of date."
-				eerror "Please make sure you have 'files' entries for"
-				eerror "'passwd:', 'group:' and 'shadow:' databases."
-				eerror "For more details see:"
-				eerror "  https://wiki.gentoo.org/wiki/Project:Toolchain/nsswitch.conf_in_glibc-2.26"
-				die "nsswitch.conf has no 'files' provider in '${entry}'."
-			fi
-		done
 	fi
 
 	# ABI-specific checks follow here. Hey, we have a lot more specific conditions that
@@ -1260,7 +1249,6 @@ glibc_do_src_install() {
 		n64     /lib64/ld.so.1
 		# powerpc
 		ppc     /lib/ld.so.1
-		ppc64   /lib64/ld64.so.1
 		# riscv
 		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
 		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
@@ -1278,12 +1266,16 @@ glibc_do_src_install() {
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64.so.1
+			# ELFv2 (glibc does not support ELFv1 on LE)
+			ppc64   /lib64/ld64.so.2
 		)
 		;;
 	big)
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64_be.so.1
+			# ELFv1 (glibc does not support ELFv2 on BE)
+			ppc64   /lib64/ld64.so.1
 		)
 		;;
 	esac

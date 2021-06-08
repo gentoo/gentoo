@@ -1,0 +1,59 @@
+From e540fbc34d6bbfe3e84f1d9c33deaacc2326c7c9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jakub=20Jank=C5=AF?= <jjanku@redhat.com>
+Date: Mon, 26 Apr 2021 17:38:13 +0200
+Subject: [PATCH 1/3] build: improve --with-coroutine=auto choice
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the required ucontext functions aren't found, switch to gthread
+coroutines instead of failing during the build.
+
+These functions are absent from the POSIX.1-2008.
+
+Fixes: https://gitlab.gnome.org/GNOME/gtk-vnc/-/issues/11
+
+Signed-off-by: Jakub Janků <jjanku@redhat.com>
+---
+ meson.build | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 8052d43..e9829e6 100644
+--- a/meson.build
++++ b/meson.build
+@@ -43,8 +43,20 @@ cc = meson.get_compiler('c')
+ 
+ coroutine = get_option('with-coroutine')
+ 
++uctx_args = []
++if host_machine.system() == 'darwin'
++  uctx_args += ['-D_XOPEN_SOURCE=600']
++endif
++has_ucontext = true
++foreach uctx_func : ['makecontext', 'swapcontext', 'getcontext']
++  if not cc.has_function(uctx_func, prefix: '#include <ucontext.h>', args: uctx_args)
++    has_ucontext = false
++    break
++  endif
++endforeach
++
+ if coroutine == 'auto'
+-  if host_machine.system() == 'windows'
++  if host_machine.system() == 'windows' or not has_ucontext
+     coroutine = 'gthread'
+   else
+     coroutine = 'ucontext'
+@@ -52,6 +64,9 @@ if coroutine == 'auto'
+ endif
+ 
+ if coroutine == 'ucontext'
++  if not has_ucontext
++    error('ucontext requested, but not available')
++  endif
+   conf_data.set('WITH_UCONTEXT', true)
+ elif coroutine != 'gthread'
+   error('Unknown coroutine backend')
+-- 
+2.26.3
+

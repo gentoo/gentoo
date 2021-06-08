@@ -8,7 +8,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Samba filesharing plugin for file properties"
-HOMEPAGE="https://apps.kde.org/en/kdenetwork_filesharing"
+HOMEPAGE="https://apps.kde.org/kdenetwork_filesharing/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

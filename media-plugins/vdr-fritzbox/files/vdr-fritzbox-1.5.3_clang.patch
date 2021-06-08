@@ -1,0 +1,17 @@
+compile fix llvm/clang
+
+https://bugs.gentoo.org/740290
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (14 May 2021)
+diff -Naur fritzbox-1.5.3.orig/notifyosd.cpp fritzbox-1.5.3/notifyosd.cpp
+--- fritzbox-1.5.3.orig/notifyosd.cpp	2021-05-14 14:20:08.973067369 +0200
++++ fritzbox-1.5.3/notifyosd.cpp	2021-05-14 14:21:17.945067369 +0200
+@@ -128,7 +128,7 @@
+ 		delete osd;
+ 	osd = cOsdProvider::NewOsd(left, top);
+ 	// defines drawing area and color depth
+-	tArea Area = { 0, 0, width-1, height-1, colorDepth };
++	tArea Area = { 0, 0, static_cast<int>(width-1), static_cast<int>(height-1), colorDepth };
+ 	osd->SetAreas(&Area, 1);
+ 	// draw osd frame, 2px thick
+ 	osd->DrawRectangle(0,             0,             width-1,               height-1,               clrBackground);

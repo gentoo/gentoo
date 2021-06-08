@@ -15,7 +15,7 @@ HOMEPAGE="https://www.gluster.org/ https://github.com/gluster/glusterfs/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0/${PV%%.*}"
-IUSE="debug emacs +fuse +georeplication ipv6 libressl +libtirpc rsyslog static-libs +syslog test +xml"
+IUSE="debug emacs +fuse +georeplication ipv6 +libtirpc rsyslog static-libs +syslog test +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} xml )
 	ipv6? ( libtirpc )"
@@ -40,8 +40,7 @@ RDEPEND="
 	!elibc_glibc? ( sys-libs/argp-standalone )
 	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
-	!libressl? ( dev-libs/openssl:=[-bindist] )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:=[-bindist]
 "
 DEPEND="
 	${RDEPEND}

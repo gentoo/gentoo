@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit autotools pam python-single-r1 systemd
 
 MY_P="${PN}-server-${PV}"
@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="
-	debug firebird iodbc kerberos ldap libressl memcached mysql mongodb odbc oracle pam
+	debug firebird iodbc kerberos ldap memcached mysql mongodb odbc oracle pam
 	pcap postgres python readline redis rest samba sqlite ssl systemd
 "
 RESTRICT="test firebird? ( bindist )"
@@ -56,8 +56,7 @@ RDEPEND="acct-group/radius
 	samba? ( net-fs/samba )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[-bindist] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=[-bindist]
 	)
 	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}"

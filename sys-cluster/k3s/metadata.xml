@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">k3s-io/k3s</remote-id>
+	</upstream>
+	<use>
+		<flag name="kubectl-symlink">
+			Install a kubectl symlink that points to k3s.
+		</flag>
+		<flag name="rootless">
+			Enables dependencies for running in rootless mode.
+		</flag>
+	</use>
+</pkgmetadata>

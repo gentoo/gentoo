@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit ltprune
-
 DESCRIPTION="Sudoku puzzle generator and solver"
 HOMEPAGE="https://qqwing.com"
 SRC_URI="https://qqwing.com/${P}.tar.gz"
@@ -15,5 +13,5 @@ KEYWORDS="amd64 arm ~arm64 x86"
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

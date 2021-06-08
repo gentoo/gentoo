@@ -1,0 +1,33 @@
+From e404e655eab9042bfc81ff5638dd54f4a5452ce0 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 19 May 2021 15:34:41 -0400
+Subject: [PATCH] pam: include system-auth for systemd --user
+
+---
+ src/login/systemd-user.in | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/login/systemd-user.in b/src/login/systemd-user.in
+index 343aec4a01..a18d7d43cf 100644
+--- a/src/login/systemd-user.in
++++ b/src/login/systemd-user.in
+@@ -5,7 +5,7 @@
+ {% if ENABLE_HOMED %}
+ -account sufficient pam_systemd_home.so
+ {% endif %}
+-account sufficient pam_unix.so
++account include system-auth
+ account required pam_permit.so
+ 
+ {% if HAVE_SELINUX %}
+@@ -13,6 +13,7 @@ session required pam_selinux.so close
+ session required pam_selinux.so nottys open
+ {% endif %}
+ session required pam_loginuid.so
++session include system-auth
+ session optional pam_keyinit.so force revoke
+ {% if ENABLE_HOMED %}
+ -session optional pam_systemd_home.so
+-- 
+2.31.1
+

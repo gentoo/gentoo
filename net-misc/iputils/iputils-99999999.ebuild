@@ -28,7 +28,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc ssl static tftpd tracepath traceroute6"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 nettle nls rarpd rdisc ssl static tftpd tracepath traceroute6"
 
 BDEPEND="virtual/pkgconfig"
 

@@ -9,6 +9,7 @@ MY_P=${PN}-${MY_PV}
 DESCRIPTION="System for writing extensible parsers for programming languages"
 HOMEPAGE="https://github.com/camlp4/camlp4"
 SRC_URI="https://github.com/camlp4/camlp4/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P/_p/-}"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
@@ -20,8 +21,12 @@ RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/ocamlbuild"
 
-S=${WORKDIR}/${P/_p/-}
-PATCHES=( "${FILESDIR}/reload.patch" "${FILESDIR}/oc409.patch" )
+QA_FLAGS_IGNORED='.*'
+
+PATCHES=(
+	"${FILESDIR}/reload.patch"
+	"${FILESDIR}/oc409.patch"
+)
 
 src_configure() {
 	./configure \

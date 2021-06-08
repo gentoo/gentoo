@@ -28,7 +28,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ipv6 libressl libssh2 ncat nping +nse ssl +system-lua"
+IUSE="ipv6 libssh2 ncat nping +nse ssl +system-lua"
 REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
@@ -40,10 +40,7 @@ RDEPEND="
 		sys-libs/zlib
 	)
 	nse? ( sys-libs/zlib )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"

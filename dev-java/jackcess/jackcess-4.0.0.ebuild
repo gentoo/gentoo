@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jahlborn/${PN}/archive/refs/tags/${P}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 # Common dependencies
 # POM: pom.xml

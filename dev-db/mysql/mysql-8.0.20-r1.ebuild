@@ -23,11 +23,10 @@ HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="8.0"
-IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
+IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling
 	router selinux +server tcmalloc test"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!test? ( test ) libressl? ( test )"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	cjk? ( server )
@@ -49,8 +48,7 @@ COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+	>=dev-libs/openssl-1.0.0:0=
 	server? (
 		dev-libs/icu:=
 		dev-libs/libevent:=

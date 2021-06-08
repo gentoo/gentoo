@@ -56,5 +56,5 @@ pkg_postinst() {
 	fi
 
 	optfeature "saving backups on smb/cifs servers" net-fs/cifs-utils
-	optfeature "encrypting backups" dev-libs/openssl dev-libs/libressl
+	optfeature "encrypting backups" dev-libs/openssl
 }

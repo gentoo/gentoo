@@ -1,3 +1,10 @@
+Don't assume all ARM CPUs have crypto extensions.
+
+Requires an accompanying change in the ebuild to disable crypto
+extensions (by passing -DABSL_ARCH_ARM_NO_CRYPTO). This could
+be done by the build system instead in future.
+
+https://bugs.gentoo.org/778926
 --- /absl/random/internal/randen_hwaes.cc
 +++ /absl/random/internal/randen_hwaes.cc
 @@ -50,8 +50,11 @@

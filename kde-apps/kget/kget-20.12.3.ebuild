@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Advanced download manager by KDE"
-HOMEPAGE="https://apps.kde.org/en/kget"
+HOMEPAGE="https://apps.kde.org/kget/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

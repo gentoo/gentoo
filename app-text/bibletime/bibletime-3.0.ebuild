@@ -1,22 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-VIRTUALX_REQUIRED=test
-
-inherit cmake virtualx
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt Bible-study application using the SWORD library"
-HOMEPAGE="http://bibletime.info/"
+HOMEPAGE="https://bibletime.info/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-# Some tests fail due to being unable to find an icon directory relative
-# to ${WORKDIR}, some others segfault. Needs work.
+# Known to fail and will all be gone come next release (see upstream commit
+# d05797db79074c526987329dff78d89eef8c501c)
 RESTRICT="test"
 
 RDEPEND=">=app-text/sword-1.8.1
@@ -36,13 +34,6 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 	net-misc/curl
 	sys-libs/zlib"
-#BDEPEND="test? (
-#	app-dicts/sword-Josephus
-#	app-dicts/sword-KJV
-#	app-dicts/sword-KJVA
-#	app-dicts/sword-Scofield
-#	app-dicts/sword-StrongsGreek
-#)"
 
 DOCS=( ChangeLog README.md )
 
@@ -63,6 +54,10 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_test() {
-	virtx cmake_src_test || die "Test run has failed"
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

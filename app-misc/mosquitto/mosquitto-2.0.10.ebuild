@@ -12,8 +12,8 @@ SRC_URI="https://mosquitto.org/files/source/${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="bridge examples libressl +persistence +srv ssl tcpd test websockets"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+IUSE="bridge examples +persistence +srv ssl tcpd test websockets"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( bridge )"
@@ -24,8 +24,7 @@ RDEPEND="
 	dev-libs/cJSON:=
 	srv? ( net-dns/c-ares:= )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	tcpd? ( sys-apps/tcp-wrappers )"
 

@@ -3,9 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
-
-inherit autotools eutils gnome2-utils python-any-r1 xdg-utils
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit autotools gnome2-utils python-any-r1 xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/HandBrake/HandBrake.git"
@@ -19,8 +18,8 @@ fi
 
 DESCRIPTION="Open-source, GPL-licensed, multiplatform, multithreaded video transcoder"
 HOMEPAGE="http://handbrake.fr/"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 IUSE="+fdk gstreamer gtk libav-aac numa nvenc x265"
 
@@ -69,16 +68,12 @@ RDEPEND="
 		x11-libs/pango
 	)
 	fdk? ( media-libs/fdk-aac )
-	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )
-	"
+	x265? ( >=media-libs/x265-3.2:0=[10bit,12bit,numa?] )"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	dev-lang/nasm
-	dev-util/cmake
-	dev-util/intltool
-	dev-util/meson
-	sys-devel/automake"
+	dev-util/intltool"
 
 PATCHES=(
 	# Remove libdvdnav duplication and call it on the original instead.

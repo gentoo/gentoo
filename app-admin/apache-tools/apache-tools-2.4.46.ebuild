@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc64-solaris ~x64-solaris"
-IUSE="libressl ssl"
+IUSE="ssl"
 RESTRICT="test"
 
 RDEPEND=">=dev-libs/apr-1.5.0:1=
@@ -19,13 +19,11 @@ RDEPEND=">=dev-libs/apr-1.5.0:1=
 	dev-libs/expat
 	dev-libs/libpcre
 	kernel_linux? ( sys-apps/util-linux )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/httpd-${PV}"
 

@@ -9,7 +9,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Robots https://gitlab.gnome.org/GNOME/gnom
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	${vala_depend}
+	$(vala_depend)
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8

@@ -3,19 +3,22 @@
 
 EAPI=7
 
-inherit libtool multilib-minimal
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielveillard.asc
+inherit libtool multilib-minimal verify-sig
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="http://www.xmlsoft.org/ https://gitlab.gnome.org/GNOME/libxslt"
 SRC_URI="ftp://xmlsoft.org/${PN}/${P}.tar.gz"
+SRC_URI+=" verify-sig? ( ftp://xmlsoft.org/${PN}/${P}.tar.gz.asc )"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="crypt debug examples static-libs elibc_Darwin"
 
-BDEPEND=">=virtual/pkgconfig-1"
+BDEPEND=">=virtual/pkgconfig-1
+	verify-sig? ( app-crypt/openpgp-keys-danielveillard )"
 RDEPEND="
 	>=dev-libs/libxml2-2.9.10:2[${MULTILIB_USEDEP}]
 	crypt? ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )

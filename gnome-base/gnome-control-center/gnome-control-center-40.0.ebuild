@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-control-center"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-40.0-patchset-2.tar.xz"
 
 LICENSE="GPL-2+"
@@ -18,7 +18,7 @@ REQUIRED_USE="
 	flickr? ( gnome-online-accounts )
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 x86"
 
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]

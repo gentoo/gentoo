@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>haubi@gentoo.org</email>
-		<name>Michael Haubenwallner</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">haubi/parity</remote-id>
+		<remote-id type="github">ssi-schaefer/parity</remote-id>
 	</upstream>
 	<use>
 		<flag name="vc8_0">Enable support for Visual Studio 2005</flag>

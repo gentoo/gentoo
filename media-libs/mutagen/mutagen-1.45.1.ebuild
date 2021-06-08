@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1
 
 DESCRIPTION="Audio metadata tag reader and writer implemented in pure Python"
@@ -14,34 +13,24 @@ SRC_URI="https://github.com/quodlibet/mutagen/releases/download/release-${PV}/${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
 
-# TODO: Missing support for >=dev-python/eyeD3-0.7 API
-# test? ( >=dev-python/eyeD3-0.7 )
 BDEPEND="
-	doc? (
-		dev-python/sphinx
-		dev-python/sphinx_rtd_theme
-	)
 	test? (
+		dev-python/eyeD3[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pyflakes[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
-RESTRICT="!test? ( test )"
+DOCS=( NEWS README.rst )
 
-python_compile_all() {
-	use doc && emake -C docs
-}
+distutils_enable_tests pytest
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
 
 python_test() {
-	esetup.py test --no-quality
-}
-
-python_install_all() {
-	local DOCS=( NEWS README.rst )
-	use doc && local HTML_DOCS=( docs/_build/. )
-	distutils-r1_python_install_all
+	local deselect=(
+		tests/quality/test_flake8.py
+	)
+	epytest ${deselect[@]/#/--deselect }
 }

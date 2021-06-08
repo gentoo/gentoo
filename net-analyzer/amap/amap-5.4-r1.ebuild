@@ -12,14 +12,11 @@ SRC_URI="https://www.thc.org/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="libressl ssl"
+IUSE="ssl"
 
 DEPEND="
 	dev-libs/libpcre
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="
 	${DEPEND}

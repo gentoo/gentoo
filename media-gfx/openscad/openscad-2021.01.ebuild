@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="emacs"
 # tests are not fully working and need cmake which isn't yet
 # officially supported.
@@ -69,9 +69,9 @@ src_prepare() {
 
 src_configure() {
 	if has ccache ${FEATURES}; then
-		eqmake5 "PREFIX = ${EROOT}/usr" "CONFIG += ccache" "${PN}.pro"
+		eqmake5 "PREFIX = ${ESYSROOT}/usr" "CONFIG += ccache" "${PN}.pro"
 	else
-		eqmake5 "PREFIX = ${EROOT}/usr" "${PN}.pro"
+		eqmake5 "PREFIX = ${ESYSROOT}/usr" "${PN}.pro"
 	fi
 }
 

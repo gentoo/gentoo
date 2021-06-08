@@ -18,11 +18,10 @@ SRC_URI="http://www.tinc-vpn.org/packages/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="libressl +lzo uml vde +zlib"
+IUSE="+lzo uml vde +zlib"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	lzo? ( dev-libs/lzo:2 )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}

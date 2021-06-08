@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit epatch ltprune
+inherit epatch
 
 DESCRIPTION="A control application for Video 4 Linux (based on C and GTK+)"
 HOMEPAGE="http://fedorahosted.org/gtk-v4l/"
@@ -33,5 +33,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

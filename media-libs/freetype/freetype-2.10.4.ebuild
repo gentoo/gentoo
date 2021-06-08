@@ -235,7 +235,4 @@ multilib_src_install_all() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name '*.a' -delete || die
-	fi
 }

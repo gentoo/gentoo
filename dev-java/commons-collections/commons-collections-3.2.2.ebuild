@@ -4,7 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="commons-collections:commons-collections:3.2.1"
+MAVEN_ID="commons-collections:commons-collections:3.2.2"
 
 inherit java-pkg-2 java-ant-2 java-utils-2
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/${PN/-//}/source/${P}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

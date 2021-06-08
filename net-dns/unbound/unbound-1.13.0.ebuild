@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -14,7 +14,7 @@ SRC_URI="https://nlnetlabs.nl/downloads/unbound/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0/8" # ABI version of libunbound.so
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86"
-IUSE="debug dnscrypt dnstap +ecdsa ecs gost +http2 libressl python redis selinux static-libs systemd test threads"
+IUSE="debug dnscrypt dnstap +ecdsa ecs gost +http2 python redis selinux static-libs systemd test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -27,15 +27,14 @@ CDEPEND="acct-group/unbound
 	acct-user/unbound
 	>=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=dev-libs/libevent-2.0.21:0=[${MULTILIB_USEDEP}]
-	libressl? ( >=dev-libs/libressl-2.2.4:0[${MULTILIB_USEDEP}] )
-	!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+	>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	dnscrypt? ( dev-libs/libsodium[${MULTILIB_USEDEP}] )
 	dnstap? (
 		dev-libs/fstrm[${MULTILIB_USEDEP}]
 		>=dev-libs/protobuf-c-1.0.2-r1[${MULTILIB_USEDEP}]
 	)
 	ecdsa? (
-		!libressl? ( dev-libs/openssl:0[-bindist] )
+		dev-libs/openssl:0[-bindist]
 	)
 	http2? ( net-libs/nghttp2[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )

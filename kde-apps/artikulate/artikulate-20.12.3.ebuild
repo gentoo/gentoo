@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Language learning application that helps improving pronunciation skills"
-HOMEPAGE="https://apps.kde.org/en/artikulate"
+HOMEPAGE="https://apps.kde.org/artikulate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

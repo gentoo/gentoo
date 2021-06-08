@@ -1,0 +1,235 @@
+From 0c9e989f18b99ea24a1fb3ea2c8a66fd295c2178 Mon Sep 17 00:00:00 2001
+From: Ekaterina Vaartis <vaartis@kotobank.ch>
+Date: Thu, 20 May 2021 19:44:15 +0300
+Subject: [PATCH] Fix deprecation warnings for python 3.10
+
+asyncio.get_event_loop was marked as deprecated, the documnetation
+now refers to asyncio.get_running_loop([1])
+
+asyncio.ensure_future issues a deprecation warning if there is no
+running event loop([2]), so use asyncio.run which creates and destroys the
+loop itself
+
+asyncio.gather issues a warning if run outside of event
+loop (i.e. there is no running event loop)([3]), so wrap it into an
+async def
+
+explicit passing of coroutine objects to asyncio.wait is deprecated
+since 3.8([4]), so wrap them in asyncio.create_task
+
+plus, add 3.10 to tox.ini
+
+[1]: https://docs.python.org/3.10/library/asyncio-eventloop.html#asyncio.get_event_loop
+[2]: https://docs.python.org/3.10/library/asyncio-future.html#asyncio.ensure_future
+[3]: https://docs.python.org/3.10/library/asyncio-task.html#asyncio.gather
+[4]: https://docs.python.org/3.10/library/asyncio-task.html#asyncio.wait
+---
+ asgiref/compatibility.py       | 14 ++++++++++++++
+ asgiref/server.py              |  8 ++++----
+ asgiref/sync.py                | 15 ++++++++++-----
+ tests/test_sync.py             | 19 ++++++++++++++-----
+ tests/test_sync_contextvars.py |  3 ++-
+ tox.ini                        |  2 +-
+ 6 files changed, 45 insertions(+), 16 deletions(-)
+
+diff --git a/asgiref/compatibility.py b/asgiref/compatibility.py
+index eccaee0..614b2e6 100644
+--- a/asgiref/compatibility.py
++++ b/asgiref/compatibility.py
+@@ -1,5 +1,6 @@
+ import asyncio
+ import inspect
++import sys
+ 
+ 
+ def is_double_callable(application):
+@@ -45,3 +46,16 @@ def guarantee_single_callable(application):
+     if is_double_callable(application):
+         application = double_to_single_callable(application)
+     return application
++
++
++if sys.version_info >= (3, 7):
++    # these were introduced in 3.7
++    get_running_loop = asyncio.get_running_loop
++    run_future = asyncio.run
++    create_task = asyncio.create_task
++else:
++    # marked as deprecated in 3.10, did not exist before 3.7
++    get_running_loop = asyncio.get_event_loop
++    run_future = asyncio.ensure_future
++    # does nothing, this is fine for <3.7
++    create_task = lambda task: task
+diff --git a/asgiref/server.py b/asgiref/server.py
+index f975f78..fb1c394 100644
+--- a/asgiref/server.py
++++ b/asgiref/server.py
+@@ -3,7 +3,7 @@ import logging
+ import time
+ import traceback
+ 
+-from .compatibility import guarantee_single_callable
++from .compatibility import get_running_loop, guarantee_single_callable, run_future
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -56,7 +56,7 @@ class StatelessServer:
+         """
+         Runs the asyncio event loop with our handler loop.
+         """
+-        event_loop = asyncio.get_event_loop()
++        event_loop = get_running_loop()
+         asyncio.ensure_future(self.application_checker())
+         try:
+             event_loop.run_until_complete(self.handle())
+@@ -88,12 +88,12 @@ class StatelessServer:
+         input_queue = asyncio.Queue()
+         application_instance = guarantee_single_callable(self.application)
+         # Run it, and stash the future for later checking
+-        future = asyncio.ensure_future(
++        future = run_future(
+             application_instance(
+                 scope=scope,
+                 receive=input_queue.get,
+                 send=lambda message: self.application_send(scope, message),
+-            )
++            ),
+         )
+         self.application_instances[scope_id] = {
+             "input_queue": input_queue,
+diff --git a/asgiref/sync.py b/asgiref/sync.py
+index 6b87c7e..9476e66 100644
+--- a/asgiref/sync.py
++++ b/asgiref/sync.py
+@@ -9,6 +9,7 @@ import weakref
+ from concurrent.futures import Future, ThreadPoolExecutor
+ from typing import Any, Callable, Dict, Optional, Union
+ 
++from .compatibility import get_running_loop
+ from .current_thread_executor import CurrentThreadExecutor
+ from .local import Local
+ 
+@@ -132,7 +133,7 @@ class AsyncToSync:
+             self.main_event_loop = None
+         else:
+             try:
+-                self.main_event_loop = asyncio.get_event_loop()
++                self.main_event_loop = get_running_loop()
+             except RuntimeError:
+                 # There's no event loop in this thread. Look for the threadlocal if
+                 # we're inside SyncToAsync
+@@ -151,7 +152,7 @@ class AsyncToSync:
+     def __call__(self, *args, **kwargs):
+         # You can't call AsyncToSync from a thread with a running event loop
+         try:
+-            event_loop = asyncio.get_event_loop()
++            event_loop = get_running_loop()
+         except RuntimeError:
+             pass
+         else:
+@@ -238,7 +239,11 @@ class AsyncToSync:
+                     tasks = asyncio.Task.all_tasks(loop)
+                 for task in tasks:
+                     task.cancel()
+-                loop.run_until_complete(asyncio.gather(*tasks, return_exceptions=True))
++
++                async def gather():
++                    await asyncio.gather(*tasks, return_exceptions=True)
++
++                loop.run_until_complete(gather())
+                 for task in tasks:
+                     if task.cancelled():
+                         continue
+@@ -320,7 +325,7 @@ class SyncToAsync:
+ 
+     # If they've set ASGI_THREADS, update the default asyncio executor for now
+     if "ASGI_THREADS" in os.environ:
+-        loop = asyncio.get_event_loop()
++        loop = get_running_loop()
+         loop.set_default_executor(
+             ThreadPoolExecutor(max_workers=int(os.environ["ASGI_THREADS"]))
+         )
+@@ -370,7 +375,7 @@ class SyncToAsync:
+             pass
+ 
+     async def __call__(self, *args, **kwargs):
+-        loop = asyncio.get_event_loop()
++        loop = get_running_loop()
+ 
+         # Work out what thread to run the code in
+         if self._thread_sensitive:
+diff --git a/tests/test_sync.py b/tests/test_sync.py
+index cf0e0c5..8ed76a7 100644
+--- a/tests/test_sync.py
++++ b/tests/test_sync.py
+@@ -9,6 +9,7 @@ from unittest import TestCase
+ 
+ import pytest
+ 
++from asgiref.compatibility import create_task, get_running_loop
+ from asgiref.sync import ThreadSensitiveContext, async_to_sync, sync_to_async
+ 
+ 
+@@ -33,12 +34,17 @@ async def test_sync_to_async():
+     assert result == 42
+     assert end - start >= 1
+     # Set workers to 1, call it twice and make sure that works right
+-    loop = asyncio.get_event_loop()
+-    old_executor = loop._default_executor
++    loop = get_running_loop()
++    old_executor = loop._default_executor or ThreadPoolExecutor()
+     loop.set_default_executor(ThreadPoolExecutor(max_workers=1))
+     try:
+         start = time.monotonic()
+-        await asyncio.wait([async_function(), async_function()])
++        await asyncio.wait(
++            [
++                create_task(async_function()),
++                create_task(async_function()),
++            ]
++        )
+         end = time.monotonic()
+         # It should take at least 2 seconds as there's only one worker.
+         assert end - start >= 2
+@@ -428,7 +434,7 @@ async def test_thread_sensitive_outside_async():
+         result["thread"] = threading.current_thread()
+ 
+     # Run it (in supposed parallel!)
+-    await asyncio.wait([outer(result_1), inner(result_2)])
++    await asyncio.wait([create_task(outer(result_1)), create_task(inner(result_2))])
+ 
+     # They should not have run in the main thread, but in the same thread
+     assert result_1["thread"] != threading.current_thread()
+@@ -449,7 +455,10 @@ async def test_thread_sensitive_with_context_matches():
+         async with ThreadSensitiveContext():
+             # Run it (in supposed parallel!)
+             await asyncio.wait(
+-                [store_thread_async(result_1), store_thread_async(result_2)]
++                [
++                    create_task(store_thread_async(result_1)),
++                    create_task(store_thread_async(result_2)),
++                ]
+             )
+ 
+     await fn()
+diff --git a/tests/test_sync_contextvars.py b/tests/test_sync_contextvars.py
+index b1027aa..9665bf9 100644
+--- a/tests/test_sync_contextvars.py
++++ b/tests/test_sync_contextvars.py
+@@ -4,6 +4,7 @@ import time
+ 
+ import pytest
+ 
++from asgiref.compatibility import create_task
+ from asgiref.sync import ThreadSensitiveContext, async_to_sync, sync_to_async
+ 
+ contextvars = pytest.importorskip("contextvars")
+@@ -25,7 +26,7 @@ async def test_thread_sensitive_with_context_different():
+             await store_thread(result)
+ 
+     # Run it (in true parallel!)
+-    await asyncio.wait([fn(result_1), fn(result_2)])
++    await asyncio.wait([create_task(fn(result_1)), create_task(fn(result_2))])
+ 
+     # They should not have run in the main thread, and on different threads
+     assert result_1["thread"] != threading.current_thread()

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 
-IUSE="anondel anonperm anonren anonres caps implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
+IUSE="anondel anonperm anonren anonres caps implicittls ldap mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd"
 
 REQUIRED_USE="implicittls? ( ssl )"
 
@@ -34,8 +34,7 @@ DEPEND="caps? ( sys-libs/libcap )
 	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.6g:0=[-bindist]
 	)
 	sysquota? ( sys-fs/quota[-rpc] )
 	xinetd? ( virtual/inetd )"

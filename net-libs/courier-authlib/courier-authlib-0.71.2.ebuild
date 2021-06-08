@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/authlib/"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb crypt debug gdbm ldap libressl mysql pam postgres sqlite static-libs"
+IUSE="berkdb crypt debug gdbm ldap mysql pam postgres sqlite static-libs"
 
 RESTRICT="!berkdb? ( test )"
 
@@ -19,8 +19,7 @@ DEPEND="net-mail/mailbase
 		>=net-libs/courier-unicode-2.2.3
 		gdbm? ( sys-libs/gdbm )
 		!gdbm? ( sys-libs/db:= )
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 		ldap? ( >=net-nds/openldap-1.2.11 )
 		mysql? ( dev-db/mysql-connector-c )
 		pam? ( sys-libs/pam )

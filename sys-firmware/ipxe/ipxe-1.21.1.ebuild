@@ -1,54 +1,55 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit toolchain-funcs savedconfig
+inherit savedconfig toolchain-funcs
 
 DESCRIPTION="Open source network boot (PXE) firmware"
 HOMEPAGE="https://ipxe.org/"
 SRC_URI="
 	!binary? ( https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz )
 	binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )"
+S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ppc64 x86"
 IUSE="+binary efi ipv6 iso lkrn +qemu undi usb vmware"
-
 REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
 
-SOURCE_DEPEND="app-arch/xz-utils
+SOURCE_DEPEND="
+	app-arch/xz-utils
 	dev-lang/perl
-	sys-libs/zlib
 	iso? (
 		app-cdr/cdrtools
 		sys-boot/syslinux
 	)"
-DEPEND="
+BDEPEND="
 	!binary? (
 		amd64? ( ${SOURCE_DEPEND} )
 		x86? ( ${SOURCE_DEPEND} )
 	)"
-RDEPEND=""
-
-S="${WORKDIR}/${P}/src"
 
 src_configure() {
 	use binary && return
 
-	cat <<-EOF > "${S}"/config/local/general.h
-#undef BANNER_TIMEOUT
-#define BANNER_TIMEOUT 0
-EOF
+	cat > config/local/general.h <<-EOF || die
+		#undef BANNER_TIMEOUT
+		#define BANNER_TIMEOUT 0
+	EOF
 
-	use ipv6 && echo "#define NET_PROTO_IPV6" >> "${S}"/config/local/general.h
+	if use ipv6; then
+		cat >> config/local/general.h <<-EOF || die
+			#define NET_PROTO_IPV6
+		EOF
+	fi
 
 	if use vmware; then
-		cat <<-EOF >> "${S}"/config/local/general.h
-#define VMWARE_SETTINGS
-#define CONSOLE_VMWARE
-EOF
+		cat >> config/local/general.h <<-EOF || die
+			#define VMWARE_SETTINGS
+			#define CONSOLE_VMWARE
+		EOF
 	fi
 
 	restore_config config/local/general.h

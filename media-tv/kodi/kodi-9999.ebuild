@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_REQ_USE="libressl?,sqlite,ssl"
+PYTHON_REQ_USE="sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.3.2"
-CODENAME="Matrix"
-FFMPEG_KODI_VERSION="19.1"
+FFMPEG_VERSION="4.4"
+CODENAME="N"
+FFMPEG_KODI_VERSION="Alpha1"
 PYTHON_COMPAT=( python3_{6,7,8,9} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
@@ -39,7 +39,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libressl libusb lirc mariadb mysql nfs +optical power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dav1d dbus eventclients gbm gles lcms libusb lirc mariadb mysql nfs +optical pipewire power-control pulseaudio raspberry-pi samba +system-ffmpeg test udf udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 IUSE="${IUSE} cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -102,13 +102,12 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	virtual/ttf-fonts
 	media-fonts/roboto
 	>=media-libs/freetype-2.10.1
-	>=media-libs/libass-0.13.4
+	>=media-libs/libass-0.15.1
 	!raspberry-pi? ( media-libs/mesa[egl] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d?,encode,postproc]
-		libressl? ( media-video/ffmpeg[libressl,-openssl] )
-		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
+		media-video/ffmpeg[openssl]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -119,11 +118,11 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.68.0[http2]
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	!gles? ( media-libs/glu )
-	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
-	libressl? ( dev-libs/libressl:0= )
+	>=dev-libs/openssl-1.1.0:0=
 	raspberry-pi? (
 		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl,gles2,video_cards_vc4] )
 	)
+	pipewire? ( media-video/pipewire )
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	>=sys-libs/zlib-1.2.11
@@ -287,6 +286,7 @@ src_configure() {
 		-DENABLE_OPENGL=$(usex !gles)
 		-DENABLE_OPTICAL=$(usex optical)
 		-DENABLE_PLIST=$(usex airplay)
+		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_SMBCLIENT=$(usex samba)
 		-DENABLE_SNDIO=OFF

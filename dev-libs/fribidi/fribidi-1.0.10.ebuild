@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
 HOMEPAGE="https://fribidi.org/"
@@ -20,6 +20,12 @@ BDEPEND="
 "
 
 DOCS=( AUTHORS NEWS ChangeLog THANKS ) # README points at README.md which wasn't disted with EAPI-7
+
+src_prepare() {
+	default
+
+	export CC_FOR_BUILD="$(tc-getBUILD_CC)"
+}
 
 multilib_src_configure() {
 	local myeconfargs=(

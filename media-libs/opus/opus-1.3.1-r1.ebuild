@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,9 +26,12 @@ multilib_src_configure() {
 		$(use_enable doc)
 		$(use_enable static-libs static)
 	)
+
+	local i
 	for i in ${INTRINSIC_FLAGS} ; do
 		use ${i} && myeconfargs+=( --enable-intrinsics )
 	done
+
 	if is-flagq -ffast-math || is-flagq -Ofast; then
 		myeconfargs+=( "--enable-float-approx" )
 	fi
@@ -37,6 +40,6 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	default
+	einstalldocs
 	find "${ED}" -name "*.la" -delete || die
 }

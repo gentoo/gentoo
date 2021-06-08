@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="GNU Astronomy Utilities"
 HOMEPAGE="https://www.gnu.org/software/gnuastro"
@@ -45,5 +45,8 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

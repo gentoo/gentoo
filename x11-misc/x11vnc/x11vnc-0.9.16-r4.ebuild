@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/LibVNC/x11vnc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="crypt fbcon libressl ssl +xcomposite +xdamage +xfixes xinerama +xrandr zeroconf"
+IUSE="crypt fbcon ssl +xcomposite +xdamage +xfixes xinerama +xrandr zeroconf"
 
 COMMON_DEPEND="
 	>=net-libs/libvncserver-0.9.8[ssl=]
@@ -20,10 +20,7 @@ COMMON_DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXext
 	>=x11-libs/libXtst-1.1.0
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	xcomposite? ( x11-libs/libXcomposite )
 	xdamage? ( x11-libs/libXdamage )
 	xfixes? ( x11-libs/libXfixes )
@@ -43,7 +40,6 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-crypto.patch # https://github.com/LibVNC/x11vnc/issues/86
 	"${FILESDIR}"/${P}-anonymous-ssl.patch # https://github.com/LibVNC/x11vnc/pull/85
-	"${FILESDIR}"/${P}-libressl.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-CVE-2020-29074.patch
 )

@@ -11,7 +11,7 @@ HOMEPAGE="http://www.jedit.org"
 SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}source.tar.bz2"
 
 LICENSE="BSD GPL-2"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 SLOT="0"
 
 CP_DEPEND="dev-java/jsr305:0"

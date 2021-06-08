@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+free +latin ms"
 
 LANGS="as bn bo brx doi dz gu hi ja km kn ko kok ks mai ml mr ne or pa

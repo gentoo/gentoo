@@ -44,7 +44,21 @@ src_configure() {
 
 	use mysql && append-cppflags -I/usr/include/mysql
 	use firebird && append-cppflags -I/opt/firebird/include
-	use oracle && append-ldflags -L"${ORACLE_HOME}"/lib
+
+	if use oracle ; then
+		# Traditionally, OCI header files are provided in:
+		append-cppflags -I"${ORACLE_HOME}"/rdbms/public
+		# But newer versions merged them with additional SDKs:
+		append-cppflags -I"${ORACLE_HOME}"/sdk/include
+		# Depending on the client package ORACLE_HOME refers to,
+		# we need to find the libraries in varying locations:
+		# - gentoo instantclient has multilib (dev-db/oracle-instantclient)
+		append-ldflags -L"${ORACLE_HOME}"/$(get_libdir)
+		# - vanilla full client lacks multilib (LINUX*_client{,_home}.zip)
+		append-ldflags -L"${ORACLE_HOME}"/lib
+		# - vanilla instantclient lacks libdir (instantclient-*.zip)
+		append-ldflags -L"${ORACLE_HOME}"
+	fi
 
 	econf --with-backends="${backends}"
 }

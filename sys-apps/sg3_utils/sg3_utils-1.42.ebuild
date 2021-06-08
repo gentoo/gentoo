@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit epatch multilib ltprune
+inherit epatch multilib
 
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="http://sg.danny.cz/sg/"
@@ -40,5 +40,5 @@ src_install() {
 		dosym "${lib}" "${path}/${lib/libsgutils2/libsgutils}"
 	done
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

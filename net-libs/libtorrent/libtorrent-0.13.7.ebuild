@@ -18,15 +18,14 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
-IUSE="debug libressl ssl test"
+IUSE="debug ssl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib
 	>=dev-libs/libsigc++-2.2.2:2
 	ssl? (
-	    !libressl? ( dev-libs/openssl:0= )
-	    libressl? ( dev-libs/libressl:= )
+	    dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

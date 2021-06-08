@@ -29,7 +29,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=sci-libs/orocos_kdl-1.4.0:=
-	dev-python/sip[${PYTHON_USEDEP}]"
+	<dev-python/sip-5[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 if [ "${PV#9999}" != "${PV}" ] ; then

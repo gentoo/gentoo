@@ -22,15 +22,14 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/26"
+SLOT="0/28"
 KEYWORDS=""
 IUSE=""
 
 BDEPEND="~dev-libs/protobuf-${PV}
-	>=virtual/jdk-1.7"
-DEPEND=">=virtual/jdk-1.7"
-RDEPEND=">=virtual/jre-1.7
-	!<dev-libs/protobuf-3[java(-)]"
+	>=virtual/jdk-1.8:*"
+DEPEND=">=virtual/jdk-1.8:*"
+RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}/protobuf-${PV}/java"
 

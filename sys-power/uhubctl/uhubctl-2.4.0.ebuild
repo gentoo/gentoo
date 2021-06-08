@@ -16,6 +16,7 @@ IUSE=""
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -24,6 +25,8 @@ src_prepare() {
 		-e "s/^GIT_VERSION/#&/" \
 		Makefile \
 		|| die
+
+	tc-export PKG_CONFIG
 }
 
 src_compile() {

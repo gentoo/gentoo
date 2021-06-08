@@ -16,7 +16,7 @@ SLOT="2/3-16-2" # subslot = 3-(libgweather-3 soname suffix) w/ temporary -2 suff
 IUSE="glade gtk-doc +introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2

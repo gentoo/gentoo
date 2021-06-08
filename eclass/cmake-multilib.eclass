@@ -3,7 +3,7 @@
 
 # @ECLASS: cmake-multilib.eclass
 # @MAINTAINER:
-# gx86-multilib team <multilib@gentoo.org>
+# Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 7

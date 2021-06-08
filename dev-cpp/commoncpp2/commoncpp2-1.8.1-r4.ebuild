@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="debug doc examples gnutls ipv6 libressl ssl static-libs"
+IUSE="debug doc examples gnutls ipv6 ssl static-libs"
 
 RDEPEND="
 	sys-libs/zlib:=
@@ -22,8 +22,7 @@ RDEPEND="
 			net-libs/gnutls:=
 		)
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
+			dev-libs/openssl:0=
 		)
 	)"
 DEPEND="${RDEPEND}
@@ -38,7 +37,6 @@ PATCHES=(
 	"${FILESDIR}/1.8.1-libgcrypt.patch"
 	"${FILESDIR}/1.8.1-fix-c++14.patch"
 	"${FILESDIR}/1.8.1-gnutls-3.4.patch"
-	"${FILESDIR}/1.8.1-libressl.patch" # bug 674416
 	"${FILESDIR}/1.8.1-fix-gcc9.patch" # bug 686012
 )
 

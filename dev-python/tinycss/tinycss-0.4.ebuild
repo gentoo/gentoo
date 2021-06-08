@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -30,5 +30,5 @@ python_prepare_all() {
 
 python_test() {
 	export TINYCSS_SKIP_SPEEDUPS_TESTS=1
-	pytest -vv ${PN}/tests/test_*.py || die
+	epytest ${PN}/tests/test_*.py
 }

@@ -10,8 +10,8 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Logic-based symbol placement puzzle by KDE"
-HOMEPAGE="https://apps.kde.org/en/ksudoku
-https://games.kde.org/games/ksudoku"
+HOMEPAGE="https://apps.kde.org/ksudoku/
+https://games.kde.org/games/ksudoku/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

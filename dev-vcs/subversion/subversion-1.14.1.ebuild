@@ -3,13 +3,13 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 USE_RUBY="ruby26 ruby25 ruby24"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool perl-module python-any-r1 ruby-single toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache flag-o-matic java-pkg-opt-2 libtool multilib perl-module python-any-r1 ruby-single toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0 BSD MIT BSD-2 FSFAP unicode"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="apache2 berkdb debug doc extras gnome-keyring java kwallet nls perl ruby sasl test"
 RESTRICT="!test? ( test )"
 

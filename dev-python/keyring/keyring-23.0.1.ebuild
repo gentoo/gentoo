@@ -3,9 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
-
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Provides access to the system keyring service"
@@ -14,7 +12,7 @@ SRC_URI="https://github.com/jaraco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="PSF-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 sparc x86 ~x64-macos"
 
 RDEPEND="
 	dev-python/secretstorage[${PYTHON_USEDEP}]
@@ -35,5 +33,10 @@ distutils_enable_sphinx docs \
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
-	epytest --ignore tests/backends/test_kwallet.py
+	local deselect=(
+		# this test fails if importlib-metadata returns more than one
+		# entry, i.e. when keyring is installed already
+		tests/test_packaging.py::test_entry_point
+	)
+	epytest --ignore tests/backends/test_kwallet.py ${deselect[@]/#/--deselect }
 }

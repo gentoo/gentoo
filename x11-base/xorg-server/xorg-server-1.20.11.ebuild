@@ -14,13 +14,12 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl minimal selinux suid systemd test +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind ipv6 minimal selinux suid systemd test +udev unwind xcsecurity"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
 	media-libs/libglvnd[X]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
@@ -133,13 +132,15 @@ pkg_setup() {
 		ewarn "Performance may be unacceptable without it."
 		ewarn "Build with USE=-minimal to enable glamor."
 	fi
+}
 
+src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	# NOTE: fop is used for doc generating; and I have no idea if Gentoo
 	#	package it somewhere
-	XORG_CONFIGURE_OPTIONS=(
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_enable debug)
 		$(use_enable dmx)
@@ -179,16 +180,27 @@ pkg_setup() {
 
 	if use systemd || use elogind; then
 		XORG_CONFIGURE_OPTIONS+=(
-			"--enable-systemd-logind"
-			"--disable-install-setuid"
-			"$(use_enable suid suid-wrapper)"
+			--enable-systemd-logind
+			--disable-install-setuid
+			$(use_enable suid suid-wrapper)
 		)
 	else
 		XORG_CONFIGURE_OPTIONS+=(
-			"--disable-systemd-logind"
-			"--disable-suid-wrapper"
-			"$(use_enable suid install-setuid)"
+			--disable-systemd-logind
+			--disable-suid-wrapper
+			$(use_enable suid install-setuid)
 		)
+	fi
+
+	xorg-3_src_configure
+}
+
+server_based_install() {
+	if ! use xorg; then
+		rm -f "${ED}"/usr/share/man/man1/Xserver.1x \
+			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
+			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
+			"${ED}"/usr/share/man/man1/Xserver.1x || die
 	fi
 }
 
@@ -213,14 +225,5 @@ pkg_postrm() {
 	# Get rid of module dir to ensure opengl-update works properly
 	if [[ -z ${REPLACED_BY_VERSION} && -e ${EROOT}/usr/$(get_libdir)/xorg/modules ]]; then
 		rm -rf "${EROOT}"/usr/$(get_libdir)/xorg/modules
-	fi
-}
-
-server_based_install() {
-	if ! use xorg; then
-		rm "${ED}"/usr/share/man/man1/Xserver.1x \
-			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
-			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
-			"${ED}"/usr/share/man/man1/Xserver.1x
 	fi
 }

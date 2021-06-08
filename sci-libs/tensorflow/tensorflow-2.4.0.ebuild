@@ -161,7 +161,7 @@ pkg_setup() {
 
 	local num_pythons_enabled
 	num_pythons_enabled=0
-	count_impls(){
+	count_impls() {
 		num_pythons_enabled=$((${num_pythons_enabled} + 1))
 	}
 	use python && python_foreach_impl count_impls

@@ -607,7 +607,7 @@ ruby-ng_src_install() {
 # @USAGE: rbconfig item
 # @RETURN: Returns the value of the given rbconfig item of the Ruby interpreter in ${RUBY}.
 ruby_rbconfig_value() {
-	echo $(${RUBY} -rrbconfig -e "puts RbConfig::CONFIG['$1']")
+	echo $(${RUBY} --disable=did_you_mean -rrbconfig -e "puts RbConfig::CONFIG['$1']" || die "Could not read ruby configuration for '${1}'")
 }
 
 # @FUNCTION: doruby

@@ -7,7 +7,7 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop linux-info linux-mod multilib-build optfeature \
 	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
-NV_KERNEL_MAX="5.11"
+NV_KERNEL_MAX="5.12"
 NV_BIN_URI="https://download.nvidia.com/XFree86/Linux-"
 NV_GIT_URI="https://github.com/NVIDIA/nvidia-"
 

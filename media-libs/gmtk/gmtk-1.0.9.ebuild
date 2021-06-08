@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit ltprune
 
 DESCRIPTION="GTK+ widget and function libraries for gnome-mplayer"
 HOMEPAGE="https://code.google.com/p/gmtk/"
@@ -43,5 +42,5 @@ src_install() {
 	default
 
 	rm -rf "${ED}"/usr/share/doc/${PN}
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -12,7 +12,7 @@ SRC_URI="https://getdnsapi.net/releases/${P//./-}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +getdns-query +getdns-server-mon +idn libev libevent libressl libuv static-libs stubby +threads +unbound"
+IUSE="doc +getdns-query +getdns-server-mon +idn libev libevent libuv static-libs stubby +threads +unbound"
 
 # https://bugs.gentoo.org/661760
 # https://github.com/getdnsapi/getdns/issues/407
@@ -22,8 +22,7 @@ DEPEND="
 	dev-libs/libbsd:=
 	dev-libs/libyaml:=
 	idn? ( net-dns/libidn2:= )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	libev? ( dev-libs/libev:= )
 	libevent? ( dev-libs/libevent:= )
 	libuv? ( dev-libs/libuv:= )
@@ -73,12 +72,5 @@ pkg_postinst() {
 		enewgroup stubby
 		enewuser stubby -1 -1 -1 stubby
 		fcaps cap_net_bind_service=ei /usr/bin/stubby
-	fi
-
-	if has_version '<dev-libs/libressl-2.7.0'; then
-		ewarn "BEWARE: dev-libs/libressl prior to 2.7 does NOT check TLS certificates."
-		if use stubby; then
-			ewarn "You will NOT be able to use strict profile in Stubby."
-		fi
 	fi
 }

@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.tar.xz"
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DOCS=( README-CourierPrime.txt README-CourierPrimeSans.txt README-CourierPrimeSource.txt )
 

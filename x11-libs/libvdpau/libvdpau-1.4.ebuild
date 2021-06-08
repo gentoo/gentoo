@@ -3,7 +3,7 @@
 
 EAPI=7
 VIRTUALX_REQUIRED="test"
-inherit flag-o-matic meson virtualx multilib-minimal
+inherit flag-o-matic meson-multilib virtualx
 
 DESCRIPTION="VDPAU wrapper and trace libraries"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU"
@@ -38,20 +38,12 @@ src_prepare() {
 multilib_src_configure() {
 	append-cppflags -D_GNU_SOURCE
 	local emesonargs=(
-		-Ddri2=$(usex dri true false)
-		-Ddocumentation=$(usex doc true false)
+		$(meson_use dri dri2)
+		$(meson_native_use_bool doc documentation)
 	)
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
 multilib_src_test() {
 	virtx meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
-	find "${ED}" -name '*.la' -delete || die
 }

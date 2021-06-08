@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.xz"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+gtk3 +introspection libressl lz4 mjpeg policykit sasl smartcard usbredir vala wayland webdav"
+IUSE="+gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala wayland webdav"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -35,8 +35,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
 	introspection? ( dev-libs/gobject-introspection )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	lz4? ( app-arch/lz4 )
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )

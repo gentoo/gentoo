@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit meson python-any-r1
 
@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/Criterion-${CRITERION_COMMIT}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4_pre20200110-gcc11.patch
+)
 
 python_check_deps() {
 	has_version "dev-util/cram[${PYTHON_USEDEP}]"

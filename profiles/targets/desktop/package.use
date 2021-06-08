@@ -31,11 +31,6 @@ dev-qt/qtwebkit:5 printsupport
 app-arch/unzip natspec
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Required by dev-qt/qtcore
-dev-libs/libpcre pcre16
-dev-libs/libpcre2 pcre16
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl libinput
 

@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
-DOCS=( "${FILESDIR}"/postinstall-en.txt INSTALL.html INSTALL.mkd )
+DOCS=( INSTALL.html INSTALL.mkd )
 
 src_install() {
 	default

@@ -10,5 +10,6 @@
 		device-dependent properties of a CD-ROM can use this library.</longdescription>
 	<upstream>
 		<remote-id type="pypi">pycdio</remote-id>
+		<remote-id type="github">rocky/pycdio</remote-id>
 	</upstream>
 </pkgmetadata>

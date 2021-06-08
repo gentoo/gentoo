@@ -11,7 +11,7 @@ else
 	KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
 	S="${WORKDIR}"/${PN}-v${PV}
 fi
-inherit meson multilib-minimal ${GIT_ECLASS}
+inherit meson-multilib ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
 HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
@@ -49,14 +49,10 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		-Dbuild-manpages=$(multilib_is_native_abi && echo true || echo false)
+		$(meson_native_true build-manpages)
 		-Dbuild-tests=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
 }
 
 multilib_src_install() {

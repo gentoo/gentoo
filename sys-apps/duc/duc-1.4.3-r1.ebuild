@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/zevv/duc"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cairo gui -leveldb ncurses -sqlite +tokyocabinet X"
+IUSE="cairo gui leveldb ncurses sqlite +tokyocabinet X"
 
 REQUIRED_USE="
 	^^ ( tokyocabinet leveldb sqlite )

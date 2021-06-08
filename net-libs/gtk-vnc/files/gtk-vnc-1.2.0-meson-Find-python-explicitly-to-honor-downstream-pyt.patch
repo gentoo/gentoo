@@ -1,0 +1,28 @@
+https://gitlab.gnome.org/GNOME/gtk-vnc/-/merge_requests/15
+
+From 4609ad35b6dc11f016ac3a50158eeef7f19d9889 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 5 Apr 2020 00:05:49 +0300
+Subject: [PATCH 3/3] meson: Find python explicitly to honor downstream python
+ choice
+
+---
+ src/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 5306fb9..247c597 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -319,7 +319,7 @@ gtk_vnc_sources = gtk_vnc_gir_sources + gvnc_marshal + [
+   'vncdisplaykeymap.c',
+ ]
+ 
+-python = import('python').find_installation()
++python = import('python').find_installation('python3')
+ keymaps = [
+   'xorgevdev',
+   'xorgkbd',
+-- 
+2.26.3
+

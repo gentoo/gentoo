@@ -1,9 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
-# sys-devel/clang not keyworded on PPC32.
-sys-libs/llvm-libunwind test
+# Sam James <sam@gentoo.org> (2021-05-17)
+# Deps not yet tested/keyworded.
+# bug #708344
+sys-devel/llvm gold
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-07)
+# Legacy interface that depends on kernel headers not available on this arch
+# as well as currently-unkeyworded dev-libs/libx86
+x11-misc/read-edid vbe-mode
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # media-libs/libheif isn't keyworded here

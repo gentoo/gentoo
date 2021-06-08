@@ -25,7 +25,9 @@
 	<flag name="client">Build client-side code</flag>
 	<flag name="clipboard">Enable clipboard support</flag>
 	<flag name="csc">Enable csc softscaler support</flag>
+	<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 	<flag name="pillow">Enable pillow support</flag>
+	<flag name="pinentry">Use <pkg>app-crypt/pinentry</pkg> for password entry</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>
 	<flag name="webcam">Enable webcam support via opencv</flag>

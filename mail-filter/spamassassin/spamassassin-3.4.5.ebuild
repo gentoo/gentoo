@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
+IUSE="berkdb cron ipv6 ldap mysql postgres qmail sqlite ssl test"
 RESTRICT="!test? ( test )"
 
 # The Makefile.PL script checks for dependencies, but only fails if a
@@ -31,8 +31,7 @@ REQDEPEND="acct-user/spamd
 	virtual/perl-IO-Zlib
 	virtual/perl-Time-HiRes
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		dev-libs/openssl:0=
 	)"
 
 # SpamAssassin doesn't use libwww-perl except as a fallback for when

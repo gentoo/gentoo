@@ -13,7 +13,7 @@ SRC_URI="https://www.unrealircd.org/downloads/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux"
-IUSE="class-nofakelag curl libressl +operoverride operoverride-verify +prefixaq showlistmodes"
+IUSE="class-nofakelag curl +operoverride operoverride-verify +prefixaq showlistmodes"
 
 RDEPEND="
 	acct-group/unrealircd
@@ -21,8 +21,7 @@ RDEPEND="
 	>=app-crypt/argon2-20171227-r1:=
 	dev-libs/libpcre2
 	>=net-dns/c-ares-1.7:=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	curl? ( net-misc/curl[adns] )
 "
 DEPEND="${RDEPEND}"

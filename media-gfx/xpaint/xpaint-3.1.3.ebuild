@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="pgf tiff"
 # jpeg2k disabled for blocking media-libs/openjpeg:0 security cleanup, bug 735592
 
@@ -95,8 +95,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

@@ -11,13 +11,13 @@ OFED_SUFFIX="1"
 inherit autotools epatch openib
 
 DESCRIPTION="OpenSM - InfiniBand Subnet Manager and Administration for OpenIB"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE="tools"
 
 DEPEND="
 	sys-fabric/libibmad:${SLOT}
 	sys-fabric/libibumad:${SLOT}"
-RDEPEND="$DEPEND
+RDEPEND="${DEPEND}
 	 tools? (
 		net-misc/iputils
 		net-misc/openssh

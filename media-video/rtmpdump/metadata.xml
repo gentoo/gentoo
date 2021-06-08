@@ -14,7 +14,6 @@
     <use>
        <flag name="ssl">Enable Cryptographic features</flag>
        <flag name="gnutls">Use GnuTLS instead of OpenSSL for Cryptography</flag>
-       <flag name="libressl">Use LibreSSL instead of OpenSSL for Cryptography</flag>
        <flag name="tools">Enable installation of various binary tools in addition to librtmp library</flag>
     </use>
 </pkgmetadata>

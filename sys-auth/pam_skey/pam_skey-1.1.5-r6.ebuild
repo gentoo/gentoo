@@ -19,7 +19,7 @@ RDEPEND="net-libs/libnsl:0=
 	>=sys-auth/skey-1.1.5-r4"
 DEPEND="${RDEPEND}"
 
-PATCHES="${WORKDIR}/patch"
+PATCHES=("${WORKDIR}/patch")
 DOCS="README INSTALL"
 
 src_prepare() {

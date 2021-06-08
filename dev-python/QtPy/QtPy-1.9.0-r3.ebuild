@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1 virtualx
 
@@ -13,95 +13,43 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
+IUSE="designer gui opengl printsupport svg testlib webengine"
 
-IUSE="
-	declarative designer gui help location multimedia network
-	opengl positioning printsupport qml quick sensors serialport
-	sql svg test testlib webchannel webengine websockets
-	widgets x11extras xml xmlpatterns
-"
-
-# Webengine is a special case, because PyQt5 provides this in a
-# separate package , while PySide2 ships it in the same package
-#
-# declarative/qml/quick is a special case, because PyQt5 bundles
-# the bindings for qml and quick in one flag: declarative,
-# PySide2 does not.
-#
-# The PyQt5 ebuild currently enables xml support unconditionally,
-# the flag is added anyway with a (+) to make it future proof
-# if the ebuild were to change this behaviour in the future.
-#
-# The PySide2 ebuild currently enables opengl and serialport
-# support unconditionally, the flag is added anyway with a (+)
-# to make it future proof if the ebuild were to change this
-# behaviour in the future.
-#
+# WARNING: the obvious solution of using || for PyQt5/pyside2 is not going
+# to work.  The package only checks whether PyQt5/pyside2 is installed, it does
+# not verify whether they have the necessary modules (i.e. satisfy the USE dep).
 RDEPEND="
-	app-eselect/eselect-QtPy
-	|| (
-		dev-python/PyQt5[${PYTHON_USEDEP},designer?,gui?,help?,location?,multimedia?,network?,opengl?,positioning?,printsupport?,sensors?,serialport?,sql?,svg?,testlib?,webchannel?,websockets?,widgets?,x11extras?,xml(+)?,xmlpatterns?]
-		dev-python/pyside2[${PYTHON_USEDEP},designer?,gui?,help?,location?,multimedia?,network?,opengl(+)?,positioning?,printsupport?,sensors?,serialport(+)?,sql?,svg?,testlib?,webchannel?,websockets?,widgets?,x11extras?,xml?,xmlpatterns?]
-	)
-
-	webengine? ( || (
-		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-		dev-python/pyside2[${PYTHON_USEDEP},webengine]
-	) )
-
-	qml? ( || (
-		dev-python/PyQt5[${PYTHON_USEDEP},declarative]
-		dev-python/pyside2[${PYTHON_USEDEP},qml]
-	) )
-
-	quick? ( || (
-		dev-python/PyQt5[${PYTHON_USEDEP},declarative]
-		dev-python/pyside2[${PYTHON_USEDEP},quick]
-	) )
-
-	declarative? ( || (
-		dev-python/PyQt5[${PYTHON_USEDEP},declarative]
-		dev-python/pyside2[${PYTHON_USEDEP},qml,quick]
-	) )
-"
-
-# These bindings are currently only provided by PyQt5 or PySide2
-# but not by both. Just DEPEND on these directly if they are
-# required.
-# Please check periodically if this list is still up to date
-#
-# 	bluetooth? ( dev-python/PyQt5[${PYTHON_USEDEP},bluetooth] )
-# 	dbus? ( dev-python/PyQt5[${PYTHON_USEDEP},dbus] )
-# 	examples? ( dev-python/PyQt5[${PYTHON_USEDEP},examples] )
-# 	networkauth? ( dev-python/PyQt5[${PYTHON_USEDEP},networkauth] )
-# 	ssl? ( dev-python/PyQt5[${PYTHON_USEDEP},ssl] )
-# 	webkit? ( dev-python/PyQt5[${PYTHON_USEDEP},webkit] )
-#
-# 	3d? ( dev-python/pyside2[${PYTHON_USEDEP},3d] )
-# 	charts? ( dev-python/pyside2[${PYTHON_USEDEP},charts] )
-# 	concurrent? ( dev-python/pyside2[${PYTHON_USEDEP},concurrent] )
-# 	datavis? ( dev-python/pyside2[${PYTHON_USEDEP},datavis] )
-# 	scxml? ( dev-python/pyside2[${PYTHON_USEDEP},scxml] )
-# 	script? ( dev-python/pyside2[${PYTHON_USEDEP},script] )
-# 	scripttools? ( dev-python/pyside2[${PYTHON_USEDEP},scripttools] )
-# 	speech? ( dev-python/pyside2[${PYTHON_USEDEP},speech] )
-
+	dev-python/PyQt5[${PYTHON_USEDEP},designer?,opengl?,printsupport?,svg?]
+	gui? ( dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets] )
+	testlib? ( dev-python/PyQt5[${PYTHON_USEDEP},testlib] )
+	webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )"
 # The QtPy testsuite skips tests for bindings that are
 # not installed, so here we ensure that everything
 # is available and all tests are run.
-BDEPEND="test? (
-	dev-python/PyQt5[${PYTHON_USEDEP},bluetooth,dbus,declarative,designer,gui,help,location,multimedia,network,networkauth,opengl,positioning,printsupport,sensors,serialport,sql,ssl,svg,testlib,webchannel,webkit,websockets,widgets,x11extras,xml(+),xmlpatterns]
-	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-	dev-python/pyside2[${PYTHON_USEDEP},3d,charts,concurrent,datavis,designer,gui,help,location,multimedia,network,opengl(+),positioning,printsupport,qml,quick,script,scripttools,scxml,sensors,serialport(+),speech,sql,svg,testlib,webchannel,webengine,websockets,widgets,x11extras,xml,xmlpatterns]
-)"
+BDEPEND="
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/PyQt5[bluetooth,dbus,declarative,designer,gui,help,location]
+		dev-python/PyQt5[multimedia,network,opengl,positioning,printsupport]
+		dev-python/PyQt5[sensors,serialport,sql,svg,testlib,webchannel]
+		dev-python/PyQt5[websockets,widgets,x11extras,xml(+),xmlpatterns]
+		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	default
+
+	sed -i -e "s/from PyQt4.Qt import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PyQt4.QtCore import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PySide import/raise ImportError #/" qtpy/__init__.py || die
+	sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
+}
+
 python_test() {
-	export QT_API="pyqt5"
+	local -x QT_API="pyqt5"
 	virtx pytest -vv
-	export QT_API="pyside2"
-	virtx pytest -vv
-	unset QT_API
 }

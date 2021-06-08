@@ -12,7 +12,7 @@ SRC_URI="https://www.monitoring-plugins.org/download/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 sparc x86"
-IUSE="gnutls ipv6 ldap libressl mysql dns fping game postgres radius samba snmp ssh +ssl"
+IUSE="gnutls ipv6 ldap mysql dns fping game postgres radius samba snmp ssh +ssl"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
 # get built if the binary it uses is installed. For example, check_snmp
@@ -29,8 +29,7 @@ REAL_DEPEND="dev-lang/perl
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			dev-libs/openssl:0=
 		)
 		gnutls? ( net-libs/gnutls )
 	)

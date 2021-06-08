@@ -5,4 +5,7 @@
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
 	</maintainer>
+	<upstream>
+		<changelog>https://invisible-island.net/vile/CHANGES.html</changelog>
+	</upstream>
 </pkgmetadata>

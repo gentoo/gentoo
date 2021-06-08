@@ -8,11 +8,9 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
 inherit distutils-r1 ${GIT_ECLASS}
 
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"

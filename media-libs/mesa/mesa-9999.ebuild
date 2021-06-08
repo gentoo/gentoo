@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit llvm meson multilib-minimal python-any-r1 linux-info
+inherit llvm meson-multilib python-any-r1 linux-info
 
 OPENGL_DIR="xorg-x11"
 
@@ -142,11 +142,11 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 10.
 # 3. Specify LLVM_MAX_SLOT, e.g. 9.
-LLVM_MAX_SLOT="11"
+LLVM_MAX_SLOT="12"
 LLVM_DEPSTR="
 	|| (
+		sys-devel/llvm:12[${MULTILIB_USEDEP}]
 		sys-devel/llvm:11[${MULTILIB_USEDEP}]
-		sys-devel/llvm:10[${MULTILIB_USEDEP}]
 	)
 	<sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${MULTILIB_USEDEP}]
 "
@@ -522,18 +522,6 @@ multilib_src_configure() {
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
-multilib_src_install_all() {
-	einstalldocs
 }
 
 multilib_src_test() {

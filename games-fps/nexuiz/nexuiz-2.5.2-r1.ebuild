@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit desktop toolchain-funcs
 
 MY_PN=Nexuiz
@@ -87,7 +88,13 @@ src_prepare() {
 }
 
 src_compile() {
+	# Unset STRIP because the build system by default will not strip
+	# If users express a preference, this triggers strip
+	# bug #739294
+	unset STRIP
+
 	tc-export CC
+
 	if use opengl || ! use dedicated ; then
 		emake cl-${PN}
 		if use sdl ; then

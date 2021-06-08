@@ -12,11 +12,11 @@ SRC_URI="mirror://sourceforge/wsjt/${MY_P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
-	dev-libs/boost:=[python]
+	dev-libs/boost:=[nls,python]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5

@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="doc autotype browser ccache keeshare +network test yubikey"
+IUSE="autotype browser ccache doc keeshare +network test yubikey"
 
 RESTRICT="!test? ( test )"
 
@@ -62,11 +62,13 @@ BDEPEND="
 	doc? ( dev-ruby/asciidoctor )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-2.6.4-quazip1.patch ) # pending upstream PR#5511
-
 src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
+
+	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != 9999 ]] && [[ ! -f .version ]] ; then
+		printf '%s' "${PV}" > .version || die
+	fi
 
 	 cmake_src_prepare
 }

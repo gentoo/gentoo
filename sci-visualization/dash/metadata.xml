@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tupone@gentoo.org</email>
+		<name>Tupone Alfredo</name>
+	</maintainer>
+	<longdescription lang="en">
+		Dash is a productive Python framework for building web analytic
+		applications.
+		Written on top of Flask, Plotly.js, and React.js, Dash is ideal for
+		building data visualization apps with highly custom user interfaces in
+		pure Python. It's particularly suited for anyone who works with data in
+		Python.
+		Through a couple of simple patterns, Dash abstracts away all of the
+		technologies and protocols that are required to build an interactive
+		web-based application. Dash is simple enough that you can bind a user
+		interface around your Python code in an afternoon.
+		Dash apps are rendered in the web browser. You can deploy your apps to
+		servers and then share them through URLs. Since Dash apps are viewed in
+		the web browser, Dash is inherently cross-platform and mobile ready.
+		Dash ships with supercharged components for interactive user
+		interfaces. A core set of components, written and maintained by the
+		Dash team, is available in the dash-core-components library.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">plotly/dash</remote-id>
+	</upstream>
+</pkgmetadata>

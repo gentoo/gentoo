@@ -12,11 +12,9 @@ SRC_URI="http://www.vanheusden.com/nagircbot/${P}.tgz"
 LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="libressl"
 
 CDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0="
 DEPEND="virtual/pkgconfig
 	${CDEPEND}"
 RDEPEND="net-analyzer/nagios-core

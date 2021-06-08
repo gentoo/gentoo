@@ -110,6 +110,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use spell && ! has_version app-dicts/aspell-en ; then
+		elog "'spell' USE flag is enabled however app-dicts/aspell-en is not installed."
+		elog "You should manually set 'spell_language' in the Misc section of ~/.config/mc/ini"
+		elog "It has to be set to one of your installed aspell dictionaries or 'NONE'"
+		elog
+	fi
 	elog "To enable exiting to latest working directory,"
 	elog "put this into your ~/.bashrc:"
 	elog ". ${EPREFIX}/usr/libexec/mc/mc.sh"

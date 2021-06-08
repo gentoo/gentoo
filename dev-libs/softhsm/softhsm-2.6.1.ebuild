@@ -10,14 +10,13 @@ SRC_URI="https://www.opendnssec.org/files/source/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
-IUSE="bindist gost libressl migration-tool test"
+IUSE="bindist gost migration-tool test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	migration-tool? ( dev-db/sqlite:3= )
-	!libressl? ( dev-libs/openssl:0=[bindist=] )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=[bindist=]
 	!~dev-libs/softhsm-2.0.0:0
 "
 DEPEND="${RDEPEND}"

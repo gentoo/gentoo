@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools fortran-2 toolchain-funcs
+inherit autotools fortran-2 multilib toolchain-funcs
 
 MY_PN=SuperLU
 

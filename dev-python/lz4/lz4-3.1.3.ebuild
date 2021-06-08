@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -24,5 +24,9 @@ BDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-310-readall.patch"
+)
 
 distutils_enable_tests pytest

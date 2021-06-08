@@ -86,6 +86,7 @@ DEPEND="${RDEPEND}
 	dev-util/re2c
 	net-libs/nodejs
 	sys-devel/bison
+	ppc64? ( >=dev-util/gn-0.1807 )
 "
 
 PATCHES=(

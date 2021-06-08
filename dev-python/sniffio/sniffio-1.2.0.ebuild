@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Sniff out which async library your code is running under"
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 distutils_enable_tests pytest
 
@@ -26,6 +26,5 @@ python_test() {
 		sniffio/_tests/test_sniffio.py::test_curio
 	)
 
-	pytest -vv ${deselect[@]/#/--deselect } ||
-		die "Tests failed with ${EPYTHON}"
+	epytest ${deselect[@]/#/--deselect }
 }

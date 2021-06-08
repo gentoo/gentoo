@@ -9,7 +9,7 @@ QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="KDE screen magnifier"
-HOMEPAGE="https://apps.kde.org/en/kmag"
+HOMEPAGE="https://apps.kde.org/kmag/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"

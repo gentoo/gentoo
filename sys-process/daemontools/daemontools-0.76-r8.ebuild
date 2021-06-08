@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic qmail
+inherit fixheadtails flag-o-matic qmail
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="http://cr.yp.to/daemontools.html"

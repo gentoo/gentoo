@@ -14,7 +14,7 @@ SLOT="0"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 DEPEND="${PYTHON_DEPS}"
 # See README.md for list of deps
@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}
 	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
-	>=gnome-base/gsettings-desktop-schemas-3.33.0
+	>=gnome-base/gsettings-desktop-schemas-40.0
 	>=gnome-base/gnome-shell-3.24
 	x11-wm/mutter
 "

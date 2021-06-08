@@ -113,8 +113,6 @@ src_install() {
 	mv -i "${ED}"/usr/share/openscad/locale "${ED}"/usr/share || die "failed to move locales"
 	ln -sf ../locale "${ED}"/usr/share/openscad/locale || die
 
-	rm -r "${ED}"/usr/share/openscad/libraries/MCAD/.{git,gitignore} || die
-
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 		elisp-install ${PN} contrib/*.el contrib/*.elc

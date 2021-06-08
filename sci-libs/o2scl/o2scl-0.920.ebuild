@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic ltprune toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Object-oriented Scientific Computing Library"
 HOMEPAGE="https://web.utk.edu/~asteine1/o2scl/"
@@ -55,7 +55,11 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
+
 	rm -r "${ED}"/usr/doc || die
 	if use doc; then
 		dodoc -r doc/o2scl/html

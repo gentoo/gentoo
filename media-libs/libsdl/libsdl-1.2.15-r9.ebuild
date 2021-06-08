@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools flag-o-matic ltprune multilib toolchain-funcs epatch multilib-minimal
+inherit autotools flag-o-matic multilib toolchain-funcs epatch multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer"
 HOMEPAGE="https://libsdl.org/"
@@ -127,7 +127,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 	dodoc BUGS CREDITS README README-SDL.txt README.HG TODO WhatsNew
 	dohtml -r ./
 }

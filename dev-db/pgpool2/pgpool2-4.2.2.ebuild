@@ -17,7 +17,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE="doc libressl memcached pam ssl static-libs"
+IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
@@ -25,8 +25,7 @@ RDEPEND="
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)
 "
 DEPEND="${RDEPEND}

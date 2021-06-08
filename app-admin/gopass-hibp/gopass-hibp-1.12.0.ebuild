@@ -228,7 +228,7 @@ RDEPEND="
 	dev-vcs/git
 	>=app-crypt/gnupg-2
 "
-src_install(){
+src_install() {
 	# Makefile is broken
 	# https://github.com/gopasspw/gopass-hibp/issues/2
 	dobin gopass-hibp

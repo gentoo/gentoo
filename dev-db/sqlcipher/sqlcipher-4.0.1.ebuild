@@ -13,13 +13,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="debug libedit readline libressl static-libs tcl test"
+IUSE="debug libedit readline static-libs tcl test"
 
 # Tcl is always needed by buildsystem
 RDEPEND="
 	libedit? ( dev-libs/libedit[${MULTILIB_USEDEP}] )
-	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	tcl? ( dev-lang/tcl:=[${MULTILIB_USEDEP}] )
 "

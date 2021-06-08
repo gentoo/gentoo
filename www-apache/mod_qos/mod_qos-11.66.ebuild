@@ -12,12 +12,10 @@ SRC_URI="mirror://sourceforge/mod-qos/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
 
 RDEPEND="
 	dev-libs/libpcre:3
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	sys-libs/zlib:0=
 "

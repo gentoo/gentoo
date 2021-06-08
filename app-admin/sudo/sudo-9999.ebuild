@@ -30,7 +30,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
+IUSE="gcrypt ldap nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
 
 DEPEND="
 	sys-libs/zlib:=
@@ -42,13 +42,11 @@ DEPEND="
 			net-nds/openldap[sasl]
 		)
 	)
+	nls? ( virtual/libintl )
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	sssd? ( sys-auth/sssd[sudo] )
 "
 RDEPEND="
@@ -63,6 +61,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/bison
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 S="${WORKDIR}/${MY_P}"

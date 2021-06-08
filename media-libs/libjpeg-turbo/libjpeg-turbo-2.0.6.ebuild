@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-inherit cmake-multilib java-pkg-opt-2 libtool toolchain-funcs
+inherit cmake-multilib java-pkg-opt-2
 
 DESCRIPTION="MMX, SSE, and SSE2 SIMD accelerated JPEG library"
 HOMEPAGE="https://libjpeg-turbo.org/ https://sourceforge.net/projects/libjpeg-turbo/"
@@ -13,8 +13,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 
 LICENSE="BSD IJG ZLIB"
 SLOT="0/0.2"
-[[ "$(ver_cut 3)" -ge 90 ]] || \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+if [[ "$(ver_cut 3)" -lt 90 ]] ; then
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
+fi
 IUSE="java static-libs"
 
 ASM_DEPEND="|| ( dev-lang/nasm dev-lang/yasm )"
@@ -84,7 +85,7 @@ multilib_src_configure() {
 	)
 
 	# bug #420239, bug #723800
-	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DWITH_SIMD=OFF ) #420239
+	[[ ${ABI} == "x32" ]] && mycmakeargs+=( -DWITH_SIMD=OFF )
 
 	# mostly for Prefix, ensure that we use our yasm if installed and
 	# not pick up host-provided nasm

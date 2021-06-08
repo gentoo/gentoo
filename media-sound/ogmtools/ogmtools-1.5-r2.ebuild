@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-vorbis_verbosity.patch
 	"${FILESDIR}"/${P}-summary_length.patch
 	"${FILESDIR}"/${P}-fix-autotools.patch
+	"${FILESDIR}"/${P}-gcc11.patch
 )
 
 src_prepare() {

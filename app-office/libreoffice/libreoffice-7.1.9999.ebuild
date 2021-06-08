@@ -214,7 +214,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/gobject-introspection
 		gnome-base/dconf
 		media-libs/mesa[egl]
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X]
 		x11-libs/pango
 	)
 	kde? (
@@ -307,10 +307,16 @@ _check_reqs() {
 }
 
 pkg_pretend() {
-	use base ||
-		ewarn "If you plan to use Base application you must enable USE base."
-	use java ||
-		ewarn "Without USE java, several wizards are not going to be available."
+	if use x86; then
+		elog "Unfortunately for packaging reasons on x86, various Java-based wizards,"
+		elog "most notably Report Builder in LibreOffice Base, will not be available."
+		elog "See also: https://bugs.gentoo.org/785640"
+	else
+		use base ||
+			ewarn "If you plan to use Base application you must enable USE base."
+		use java ||
+			ewarn "Without USE java, several wizards are not going to be available."
+	fi
 
 	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_pretend
 }

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>patrick@gentoo.org</email>
-		<name>Patrick Lauer</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		The Pound program is a reverse proxy, load balancer
 		and HTTPS front-end for Web server(s). Pound was developed to enable

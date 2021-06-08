@@ -21,8 +21,8 @@ BDEPEND="dev-lang/ocaml:=[ocamlopt?]
 	doc? ( app-text/dvipsk
 		app-text/ghostscript-gpl
 		dev-texlive/texlive-latex )"
-DEPEND="gtk? ( dev-ml/lablgtk:2= )"
-RDEPEND="gtk? ( dev-ml/lablgtk:2=
+DEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?] )"
+RDEPEND="gtk? ( dev-ml/lablgtk:2=[ocamlopt?]
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
