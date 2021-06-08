@@ -10,6 +10,16 @@
  $(P): $(OBJECTS)
 --- a/brightness/Makefile
 +++ b/brightness/Makefile
+@@ -1,6 +1,6 @@
+-CC=gcc
+-AS=as
+-LD=ld
++CC ?= gcc
++AS ?= as
++LD ?= ld
+ OBJDUMP=objdump
+ OBJCOPY=objcopy
+ SIZE=size
 @@ -16,14 +16,14 @@
  
  PRG = brightness
