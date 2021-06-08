@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit optfeature
+inherit optfeature toolchain-funcs
 
 DESCRIPTION="A set of scripts for i3blocks, contributed by the community"
 HOMEPAGE="https://github.com/vivien/i3blocks-contrib"
@@ -21,6 +21,11 @@ PATCHES=( "${FILESDIR}"/${P}-respect-CFLAGS.patch )
 
 src_prepare() {
 	sed -i -e '/^$(_BLOCKS):/ s/$/ installdirs/' Makefile
+	default
+}
+
+src_compile() {
+	tc-export AR CC LD
 	default
 }
 
