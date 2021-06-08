@@ -78,7 +78,7 @@ REQUIRED_USE="
 
 RESTRICT="test"
 
-PATCHES=( 
+PATCHES=(
 	"${FILESDIR}/bash-completion-sudo.patch"
 	"${FILESDIR}/2.0.4-scrub-timers.patch"
 )
