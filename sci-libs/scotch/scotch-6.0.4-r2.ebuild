@@ -64,10 +64,12 @@ src_prepare() {
 			-e 's/ -DSCOTCH_PTHREAD//' \
 			src/Make.inc/Makefile.inc.i686_pc_linux3 || die
 	fi
-	sed -e "s/gcc/$(tc-getCC)/" \
+
+	# Be careful with replacing here, bug #577272
+	sed -e "s/= gcc$/= $(tc-getCC)/" \
 		-e "s/-O3/${CFLAGS} -pthread/" \
-		-e "s/ ar/ $(tc-getAR)/" \
-		-e "s/ranlib/$(tc-getRANLIB)/" \
+		-e "s/= ar$/= $(tc-getAR)/" \
+		-e "s/= ranlib$/= $(tc-getRANLIB)/" \
 		-e "s/LDFLAGS/LIBS/" \
 		src/Make.inc/Makefile.inc.i686_pc_linux3 > src/Makefile.inc || die
 }
