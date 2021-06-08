@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}
-    >=virtual/rust-1.51
+	>=virtual/rust-1.51
 "
 BDEPEND=""
 
