@@ -139,6 +139,11 @@ src_configure() {
 	# bug #794877
 	tc-export AR
 
+	# Skip Bash test
+	# (See 13-test-suite.log in linked bug)
+	# bug #794874
+	export SKIP_TEST_COMPLETE_IN_SCRIPT_SH=1
+
 	# Disable feature test for kvm for more reason
 	# i.e: not loaded module in __build__ time,
 	# build server not supported kvm, etc. ...
