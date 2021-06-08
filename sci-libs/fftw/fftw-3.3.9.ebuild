@@ -147,13 +147,16 @@ src_install() {
 		rm -r "${ED}"/usr/share/doc/${PF}/html || die
 	fi
 
-	local x
-	for x in "${ED}"/usr/lib*/pkgconfig/*.pc; do
-		local u
-		for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
-			sed -e "s|-lfftw3[flq]\?|&_${u} &|" "$x" > "${x%.pc}_${u}.pc" || die
+	augment_pc_files() {
+		local x
+		for x in "${ED}"/usr/$(get_libdir)/pkgconfig/*.pc; do
+			local u
+			for u in $(usev mpi) $(usev threads) $(usex openmp omp ""); do
+				sed -e "s|-lfftw3[flq]\?|&_${u} &|" "${x}" > "${x%.pc}_${u}.pc" || die
+			done
 		done
-	done
+	}
+	multilib_foreach_abi augment_pc_files
 
 	# fftw uses pkg-config to record its private dependencies
 	find "${ED}" -name '*.la' -delete || die
