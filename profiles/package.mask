@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Tomáš Mózes <hydrapolic@gmail.com> (2021-06-10)
+# Based on unsupported grub-legacy, replaced by
+# pvgrub2.
+# Removal on 2021-07-08.  Bug #790668.
+app-emulation/xen-pvgrub
+
 # Sam James <sam@gentoo.org> (2021-06-10)
 # Fails to build with modern libetpan. Unmaintained.
 # See bug #699570, bug #448574.
