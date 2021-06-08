@@ -34,9 +34,24 @@ BDEPEND="
 	virtual/awk
 "
 
+# PDEPEND in this form is needed to trick portage suggest
+# enabling dist-kernel if only 1 package have it set
+PDEPEND="dist-kernel? ( ~sys-fs/zfs-${PV}[dist-kernel] )"
+
 RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
+
+pkg_pretend() {
+	use rootfs || return 0
+
+	if has_version virtual/dist-kernel && ! use dist-kernel; then
+		ewarn "You have virtual/dist-kernel installed, but"
+		ewarn "USE=\"dist-kernel\" is not enabled for ${CATEGORY}/${PN}"
+		ewarn "It's recommended to globally enable dist-kernel USE flag"
+		ewarn "to auto-trigger initrd rebuilds with kernel updates"
+	fi
+}
 
 PATCHES=(
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_idmapped_mounts.patch
