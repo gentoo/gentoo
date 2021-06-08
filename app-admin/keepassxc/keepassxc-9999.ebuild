@@ -66,6 +66,10 @@ src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
 
+	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != 9999 ]] && [[ ! -f .version ]] ; then
+		printf '%s' "${PV}" > .version || die
+	fi
+
 	 cmake_src_prepare
 }
 
