@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Tomáš Mózes <hydrapolic@gmail.com> (2021-06-08)
+# Based on unsupported grub-legacy, replaced by
+# pvgrub2.
+# Removal on 2021-07-08.  Bug #790668.
+app-emulation/xen-pvgrub
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-05)
 # A backport for 'older Python versions' with no revdeps.
 # Removal on 2021-07-05.  Bug #794268.
