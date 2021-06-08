@@ -18,7 +18,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="${MY_REPO_URI}.git"
 	inherit git-r3
 else
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 	SRC_URI="${MY_REPO_URI}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
