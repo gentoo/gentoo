@@ -49,6 +49,8 @@ BDEPEND="
 PDEPEND="
 	>=virtual/dist-kernel-${PV}"
 
+QA_FLAGS_IGNORED="usr/src/linux-.*/scripts/gcc-plugins/.*.so"
+
 src_prepare() {
 	local PATCHES=(
 		# meh, genpatches have no directory
