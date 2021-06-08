@@ -92,7 +92,9 @@ src_prepare() {
 	)
 	if use hardened; then
 		merge_configs+=( "${dist_conf_path}"/hardened-base.config )
+
 		tc-is-gcc && merge_configs+=( "${dist_conf_path}"/hardened-gcc-plugins.config )
+
 		if [[ -f "${dist_conf_path}/hardened-${ARCH}.config" ]]; then
 			merge_configs+=( "${dist_conf_path}/hardened-${ARCH}.config" )
 		fi
