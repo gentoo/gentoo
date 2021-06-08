@@ -18,6 +18,10 @@ IUSE="static-libs"
 
 CMAKE_USE_DIR=${S}/build/cmake
 
+PATCHES=(
+	"${FILESDIR}"/${P}-negative-memmove.patch
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
