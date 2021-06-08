@@ -95,7 +95,6 @@ src_configure() {
 		$(usex curl '' '--disable-http') \
 		$(usex glusterfs '' '--disable-gfapi') \
 		$(usex gtk '--enable-gfio' '') \
-		$(usex io-uring '--enable-libaio-uring' '') \
 		$(usex numa '' '--disable-numa') \
 		$(usex rbd '' '--disable-rbd') \
 		$(usex rdma '' '--disable-rdma') \
