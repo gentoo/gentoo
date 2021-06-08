@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zdanevich.vitaly@ya.ru</email>
+		<name>Vitaly Zdanevich</name>
+	</maintainer>
+	<longdescription lang="en">
+		Why Zola was created, according to the author:
+		"While Hugo has probably the most powerful template engine in the list (after Jinja2) it personally drives me insane, to the point of writing my own template engine and static site generator."
+	</longdescription>
+	<upstream>
+		<doc>https://www.getzola.org/documentation/getting-started/overview/</doc>
+		<remote-id type="github">getzola/zola</remote-id>
+	</upstream>
+</pkgmetadata>
