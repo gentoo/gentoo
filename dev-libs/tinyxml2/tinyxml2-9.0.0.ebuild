@@ -3,26 +3,20 @@
 
 EAPI=7
 
-inherit meson-multilib
+CMAKE_ECLASS=cmake
+inherit cmake-multilib
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml2/ https://github.com/leethomason/tinyxml2/"
 SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
-SLOT="0/8"
+SLOT="0/9"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-meson-typo.patch
-)
-
 multilib_src_configure() {
-	local emesonargs=(
-		$(meson_native_use_bool test tests)
-	)
-
-	meson_src_configure
+	local mycmakeargs=( -DBUILD_TESTING=$(usex test) )
+	cmake_src_configure
 }
