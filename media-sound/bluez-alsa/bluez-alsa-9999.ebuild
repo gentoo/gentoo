@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools multilib-minimal systemd
+inherit autotools bash-completion-r1 multilib-minimal systemd
 
 DESCRIPTION="Bluetooth Audio ALSA Backend"
 HOMEPAGE="https://github.com/Arkq/bluez-alsa"
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Arkq/${PN}"
 else
 	SRC_URI="https://github.com/Arkq/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -56,7 +56,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
+		--enable-cli
 		--enable-rfcomm
+		--with-bash-completion="$(get_bashcompdir)"
 		$(use_enable aac)
 		$(use_enable debug)
 		$(use_enable lame mp3lame)
