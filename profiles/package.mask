@@ -298,15 +298,6 @@ dev-java/freemarker
 # to a freshed gcc branch.
 <sys-devel/gcc-7
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-15)
-# Dead upstream, homepage missing, EAPI=5, no systemd units.
-# https://bugs.gentoo.org/790413 , #434900, #552760
-# Use any of or combination of the following instead:
-# sys-apps/rng-tools
-# sys-apps/haveged
-# app-crypt/jitterentropy-rngd
-sys-apps/timer_entropyd
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
 # Dead upstream, dead downstream, GTK+2 based.  Bug #770898
 # Removal on 2021-06-14.
