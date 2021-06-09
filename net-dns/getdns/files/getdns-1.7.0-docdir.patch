@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6928a02..e8a0cbb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1101,9 +1101,8 @@ endif ()
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/getdns DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/man3 DESTINATION share/man)
+ 
+-set(docdir share/doc/getdns)
+-install(FILES AUTHORS ChangeLog COPYING LICENSE NEWS README.md DESTINATION ${docdir})
+-install(FILES spec/index.html DESTINATION ${docdir}/spec)
++install(FILES AUTHORS ChangeLog COPYING LICENSE NEWS README.md DESTINATION ${CMAKE_INSTALL_DOCDIR})
++install(FILES spec/index.html DESTINATION ${CMAKE_INSTALL_DOCDIR}/spec)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/getdns.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+ install(CODE "message(\"\
