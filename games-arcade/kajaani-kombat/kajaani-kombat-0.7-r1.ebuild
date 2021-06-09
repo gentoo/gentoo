@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop toolchain-funcs
 
-DESCRIPTION="A rampart-like game set in space"
-HOMEPAGE="http://kombat.kajaani.net/"
-SRC_URI="http://kombat.kajaani.net/dl/${P}.tar.gz"
+inherit toolchain-funcs
+
+DESCRIPTION="Rampart-like game set in space"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	media-libs/sdl-net
@@ -34,9 +34,6 @@ src_prepare() {
 	sed -i \
 		-e "s:GENTOODIR:/usr/share/${PN}/:" \
 		Makefile || die
-	sed -i \
-		-e 's/IMG_Load/img_load/' \
-		gui_screens.cpp || die
 
 	tc-export CXX
 }
