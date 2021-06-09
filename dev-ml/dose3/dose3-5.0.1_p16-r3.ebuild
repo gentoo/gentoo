@@ -22,7 +22,7 @@ BDEPEND="
 "
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt=]
-	<=dev-lang/ocaml-4.09.0:=[ocamlopt=]
+	<dev-lang/ocaml-4.10.0:=[ocamlopt=]
 	dev-ml/cudf:=[ocamlopt=]
 	>=dev-ml/extlib-1.7.0:=[ocamlopt=]
 	>=dev-ml/ocamlgraph-1.8.6:=[ocamlopt=]
