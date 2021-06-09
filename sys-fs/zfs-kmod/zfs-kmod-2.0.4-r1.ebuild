@@ -13,7 +13,8 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	MY_PV="${PV/_rc/-rc}"
-	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
+	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz
+		https://github.com/openzfs/zfs/commit/f315d9a3ff3cc0b81c99dd9be5878a55d2e98d8e.patch -> zfs-8.0.4_5.12_compat_idmapped_mounts.patch"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
 	ZFS_KERNEL_COMPAT="5.12"
@@ -54,7 +55,7 @@ pkg_pretend() {
 }
 
 PATCHES=(
-	"${FILESDIR}"/zfs-8.0.4_5.12_compat_idmapped_mounts.patch
+	"${DISTDIR}"/zfs-8.0.4_5.12_compat_idmapped_mounts.patch
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_bio_max_segs.patch
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_tmpfile.patch
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_userns.patch
