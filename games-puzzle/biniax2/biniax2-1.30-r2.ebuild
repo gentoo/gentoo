@@ -31,7 +31,7 @@ src_prepare() {
 
 	rm data/Thumbs.db || die
 
-	sed -i "s|data/|/usr/share/${PN}/|" desktop/{gfx,snd}.c || die
+	sed -i "s|data/|${EPREFIX}/usr/share/${PN}/|" desktop/{gfx,snd}.c || die
 }
 
 src_compile() {
