@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="cups gimp gtk nls readline ppds static-libs"
+RESTRICT="test"
 REQUIRED_USE="gimp? ( gtk )"
 
 BDEPEND="
@@ -34,12 +35,12 @@ RDEPEND="
 	)
 	gtk? ( x11-libs/gtk+:2 )
 	readline? ( sys-libs/readline:0= )
-	nls? ( virtual/libintl )
 "
 
-DEPEND="${RDEPEND}"
-
-RESTRICT="test"
+BDEPEND="
+	${RDEPEND}
+	nls? ( virtual/libintl )
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README doc/gutenprint-users-manual.{pdf,odt} )
 
