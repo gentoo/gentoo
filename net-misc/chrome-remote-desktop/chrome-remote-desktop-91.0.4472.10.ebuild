@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Base URL: https://dl.google.com/linux/chrome-remote-desktop/deb/
@@ -77,7 +77,7 @@ S=${WORKDIR}
 QA_PREBUILT="/opt/google/chrome-remote-desktop/*"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-44.0.2403.44-always-sudo.patch #541708
+	"${FILESDIR}"/${PN}-91.0.4472.10-always-sudo.patch #541708
 )
 
 src_prepare() {
@@ -89,7 +89,8 @@ src_prepare() {
 	python_fix_shebang chrome-remote-desktop
 
 	cd remoting_locales
-	rm fake-bidi* || die
+	# These isn't always included.
+	rm -f fake-bidi* || die
 	PLOCALES=${PLOCALES//_/-} l10n_find_plocales_changes "${PWD}" '' '.pak'
 }
 
