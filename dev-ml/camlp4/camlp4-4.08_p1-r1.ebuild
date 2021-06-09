@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PV=${PV/_p/+}
 MY_P=${PN}-${MY_PV}
+
 DESCRIPTION="System for writing extensible parsers for programming languages"
 HOMEPAGE="https://github.com/camlp4/camlp4"
 SRC_URI="https://github.com/camlp4/camlp4/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -12,13 +13,20 @@ S="${WORKDIR}/${P/_p/-}"
 
 LICENSE="LGPL-2-with-linking-exception"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt"
 
-DEPEND="=dev-lang/ocaml-4.05*:=[ocamlopt?]"
+DEPEND="dev-lang/ocaml:0/4.08[ocamlopt?]"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/ocamlbuild"
+
+QA_FLAGS_IGNORED='.*'
+
+PATCHES=(
+	"${FILESDIR}/reload.patch"
+	"${FILESDIR}/oc409.patch"
+)
 
 src_configure() {
 	./configure \
