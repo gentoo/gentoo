@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic gnome2-utils
+EAPI=7
+
+inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="FreeDoko is a Doppelkopf-game"
 HOMEPAGE="http://free-doko.sourceforge.net"
@@ -25,12 +26,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+xskatcards +gnomecards +kdecards +openclipartcards +pysolcards +backgrounds"
 
-RDEPEND=">=dev-cpp/gtkmm-2.4:2.4"
-DEPEND="${RDEPEND}
-	app-arch/unzip
+RDEPEND="dev-cpp/gtkmm:3.0
+	media-libs/openal"
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip
 	virtual/pkgconfig"
 
-S=${WORKDIR}/FreeDoko_${PV}
+S="${WORKDIR}/FreeDoko_${PV}"
 
 src_unpack() {
 	local cards=0
@@ -60,40 +62,31 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.16-gentoo.patch
 )
 
-src_prepare() {
-	default
-	export VARTEXFONTS="${T}/fonts" #652028
-	append-cxxflags -std=c++14
-}
-
 src_compile() {
-	export CPPFLAGS="-DPUBLIC_DATA_DIRECTORY_VALUE='\"/usr/share/${PN}\"'"
-	export CPPFLAGS+=" -DMANUAL_DIRECTORY_VALUE='\"/usr/share/doc/${PF}/html\"'"
+	tc-export CXX
+	append-cxxflags -std=c++14
+	append-cppflags -DPUBLIC_DATA_DIRECTORY_VALUE="'\"${EPREFIX}/usr/share/${PN}\"'" \
+		-DMANUAL_DIRECTORY_VALUE="'\"${EPREFIX}/usr/share/doc/${PF}/html\"'"
+
+	export VARTEXFONTS="${T}/fonts" #652028
 	export OSTYPE=Linux
 	export USE_NETWORK=false
 	export USE_SOUND_ALUT=false # still marked experimental
+
 	emake Version
-	emake -C src FreeDoko
+	emake -C src FreeDoko LIBS="${LDFLAGS}"
 }
 
 src_install() {
 	newbin src/FreeDoko freedoko
+
 	insinto /usr/share/${PN}/
 	doins -r data/{backgrounds,cardsets,iconsets,rules,sounds,translations,*png}
-	find "${D}/usr/share/${PN}" -name Makefile -delete
-	dodoc AUTHORS README ChangeLog
+
 	newicon -s 32 src/FreeDoko.png ${PN}.png
 	make_desktop_entry ${PN} FreeDoko
-}
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
+	einstalldocs
 
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	find "${ED}/usr/share/${PN}" -name Makefile -delete || die
 }
