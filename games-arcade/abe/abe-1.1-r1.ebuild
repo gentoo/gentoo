@@ -1,26 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit desktop toolchain-funcs
 
-DESCRIPTION="A scrolling, platform-jumping, key-collecting, ancient pyramid exploring game"
+DESCRIPTION="Scrolling, platform-jumping, key-collecting, ancient pyramid exploring game"
 HOMEPAGE="http://abe.sourceforge.net/"
 SRC_URI="mirror://sourceforge/abe/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl[sound,video]
 	x11-libs/libXi
 	media-libs/sdl-mixer[vorbis]"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd "${S}" || die
 	unpack ./images/images.tar
 }
 
@@ -51,6 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC CXX
 	econf --with-data-dir=/usr/share/${PN}
 }
 
