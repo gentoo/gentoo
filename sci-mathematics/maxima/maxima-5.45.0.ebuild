@@ -47,7 +47,7 @@ BDEPEND="
 
 DEPEND="
 	${LISP_DEPEND}
-	emacs? ( >=app-editors/emacs-23.1:* )
+	emacs? ( >=app-editors/emacs-26:* )
 	gui? ( dev-lang/tk:0 )
 "
 
