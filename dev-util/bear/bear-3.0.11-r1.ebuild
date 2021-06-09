@@ -20,6 +20,7 @@ RDEPEND="
 	>=dev-cpp/nlohmann_json-3.7:=
 	>=dev-db/sqlite-3.14:=
 	>=dev-libs/libfmt-6.2
+	dev-libs/protobuf:=
 	>=dev-libs/spdlog-1.5
 	>=net-libs/grpc-1.26:=
 "
