@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,10 +15,12 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-4.10.0:=[ocamlopt?]"
+DEPEND="dev-lang/ocaml:0/4.11[ocamlopt?]"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	dev-ml/ocamlbuild"
+
+QA_FLAGS_IGNORED='.*'
 
 S=${WORKDIR}/${P/_p/-}
 PATCHES=( "${FILESDIR}/reload.patch" )
