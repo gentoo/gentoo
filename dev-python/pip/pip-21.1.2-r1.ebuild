@@ -68,9 +68,9 @@ python_prepare_all() {
 		cp "${DISTDIR}"/{${SETUPTOOLS_WHL},${WHEEL_WHL}} \
 			tests/data/common_wheels/ || die
 
-		pushd "${WORKDIR}/virtualenv-${VENV_PV}" 2>/dev/null || die
+		pushd "${WORKDIR}/virtualenv-${VENV_PV}" >/dev/null || die
 		eapply "${FILESDIR}/virtualenv-${VENV_PV}-py310.patch"
-		popd 2>/dev/null || die
+		popd >/dev/null || die
 	fi
 }
 
@@ -99,9 +99,9 @@ python_test() {
 	)
 
 	distutils_install_for_testing
-	pushd "${WORKDIR}/virtualenv-${VENV_PV}" 2>/dev/null || die
+	pushd "${WORKDIR}/virtualenv-${VENV_PV}" >/dev/null || die
 	distutils_install_for_testing
-	popd 2>/dev/null || die
+	popd >/dev/null || die
 
 	local -x GENTOO_PIP_TESTING=1 \
 		PATH="${TEST_DIR}/scripts:${PATH}" \
