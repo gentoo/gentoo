@@ -1,17 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils gnome2-utils
+EAPI=7
 
-DESCRIPTION="A traditional game of Brunei"
+inherit gnome2-utils toolchain-funcs
+
+DESCRIPTION="Traditional game of Brunei"
 HOMEPAGE="http://pasang-emas.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 	extras? ( mirror://sourceforge/${PN}/pasang-emas-themes-1.0.tar.bz2
 	          mirror://sourceforge/${PN}/pet-marble.tar.bz2
 	          mirror://sourceforge/${PN}/pet-fragrance.tar.bz2 )"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="extras nls"
@@ -20,8 +21,8 @@ RDEPEND="app-text/gnome-doc-utils
 	>=x11-libs/gtk+-2.18.2:2
 	virtual/libintl"
 DEPEND="${RDEPEND}
-	app-text/rarian
-	nls? ( sys-devel/gettext )"
+	app-text/rarian"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-build.patch
@@ -38,10 +39,14 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--localedir=/usr/share/locale \
-		--with-omf-dir=/usr/share/omf \
-		--with-help-dir=/usr/share/gnome/help \
+		--localedir="${EPREFIX}"/usr/share/locale \
+		--with-omf-dir="${EPREFIX}"/usr/share/omf \
+		--with-help-dir="${EPREFIX}"/usr/share/gnome/help \
 		$(use_enable nls)
+}
+
+src_compile(){
+	emake AR="$(tc-getAR)"
 }
 
 src_install() {
@@ -53,7 +58,6 @@ src_install() {
 			"${WORKDIR}"/pasang-emas-themes-1.0/{conteng,kaca} \
 			"${WORKDIR}"/fragrance
 	fi
-	use nls || rm -rf "${D}"usr/share/locale
 }
 
 pkg_preinst() {
