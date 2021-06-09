@@ -9,9 +9,9 @@ HOMEPAGE="https://ocaml.org/"
 SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Programming language supporting functional, imperative & object-oriented styles"
 
-LICENSE="QPL-1.0 LGPL-2"
-SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+LICENSE="LGPL-2.1"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="emacs flambda latex +ocamlopt spacetime xemacs"
 
 RDEPEND="sys-libs/binutils-libs:=
@@ -28,15 +28,17 @@ src_prepare() {
 	# We can't do anything about it, but disabling it means that tests
 	# for OCaml-based packages won't fail on unexpected output
 	# bug #773226
-	#if use arm || use ppc || use x86 ; then
+	if use arm || use ppc || use x86 ; then
 		append-ldflags "-Wl,-z,notext"
-	#fi
+	fi
 
 	# Upstream build ignores LDFLAGS in several places.
 	sed -i -e 's/\(^MKDLL=.*\)/\1 $(LDFLAGS)/' \
 		-e 's/\(^OC_CFLAGS=.*\)/\1 $(LDFLAGS)/' \
 		-e 's/\(^OC_LDFLAGS=.*\)/\1 $(LDFLAGS)/' \
 		Makefile.config.in || die "LDFLAGS fix failed"
+	# ${P} overrides upstream build's own P due to a wrong assignment operator.
+	sed -i -e 's/^P ?=/P =/' stdlib/StdlibModules || die "P fix failed"
 }
 
 src_configure() {
@@ -53,16 +55,16 @@ src_configure() {
 
 src_compile() {
 	if use ocamlopt ; then
-		env -u P emake world.opt
+		emake world.opt
 	else
-		env -u P emake world
+		emake world
 	fi
 }
 
 src_test() {
 	if use ocamlopt ; then
 		# OCaml tests only work when run sequentially
-		emake -j1 tests
+		emake -j1 -C testsuite all
 	else
 		ewarn "${PN} was built without 'ocamlopt' USE flag; skipping tests."
 	fi
@@ -71,14 +73,17 @@ src_test() {
 src_install() {
 	default
 	dodir /usr/include
+
 	# Create symlink for header files
 	dosym "../$(get_libdir)/ocaml/caml" /usr/include/caml
 	dodoc Changes README.adoc
+
 	# Create envd entry for latex input files
 	if use latex ; then
 		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc"
 		doenvd "${T}/99ocamldoc"
 	fi
+
 	# Install ocaml-rebuild portage set
 	insinto /usr/share/portage/config/sets
 	doins "${FILESDIR}/ocaml.conf"
