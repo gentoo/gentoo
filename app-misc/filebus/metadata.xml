@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<upstream>
-		<remote-id type="github">zmedico/filebus</remote-id>
+		<remote-id type="github">pipebus/filebus</remote-id>
 		<remote-id type="pypi">filebus</remote-id>
 	</upstream>
 	<maintainer type="person">
