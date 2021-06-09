@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-headers.patch
 	"${FILESDIR}"/${PN}-8.0-headers.patch
 	"${FILESDIR}"/${PN}-8.0-darwin-shlib-versioning.patch
+	"${FILESDIR}"/${PN}-8.1-windows-signals.patch
 )
 
 # Needed because we don't want the patches being unpacked
