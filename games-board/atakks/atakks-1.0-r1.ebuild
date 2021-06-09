@@ -1,11 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
 
-MY_P=${P/-/_}
-DESCRIPTION="A clone of Ataxx"
+inherit desktop toolchain-funcs
+
+MY_P="${P/-/_}"
+DESCRIPTION="Clone of Ataxx"
 HOMEPAGE="http://team.gcu-squad.org/~fab"
 # no version upstream
 #SRC_URI="http://team.gcu-squad.org/~fab/down/${PN}.tgz"
@@ -14,12 +15,11 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl:0"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-warnings.patch
@@ -36,6 +36,7 @@ src_prepare() {
 }
 
 src_compile() {
+	tc-export CC
 	emake E_CFLAGS="${CFLAGS}"
 }
 
