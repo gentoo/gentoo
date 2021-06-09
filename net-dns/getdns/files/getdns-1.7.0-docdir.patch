@@ -1,5 +1,4 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6928a02..e8a0cbb 100644
+https://github.com/getdnsapi/getdns/pull/509
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1101,9 +1101,8 @@ endif ()
