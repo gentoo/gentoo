@@ -15,4 +15,7 @@
 		protocols (like POP, IMAP, LDAP, etc) by having Stunnel provide the
 		encryption, requiring no changes to the daemon's code.
 	</longdescription>
+	<upstream>
+		<changelog>https://www.stunnel.org/NEWS.html</changelog>
+	</upstream>
 </pkgmetadata>
