@@ -20,5 +20,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">isodate</remote-id>
+    <remote-id type="github">gweis/isodate</remote-id>
   </upstream>
 </pkgmetadata>
