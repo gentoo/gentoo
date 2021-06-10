@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/705128
+--- a/ntpd/ntp_sandbox.c
++++ b/ntpd/ntp_sandbox.c
+@@ -463,6 +463,15 @@ int scmp_sc[] = {
+        SCMP_SYS(send),
+        SCMP_SYS(stat64),
+ #endif
++#if defined(__arm__)
++       SCMP_SYS(statx),
++#endif
++#if defined(__riscv32__)
++       SCMP_SYS(faccessat),
++#endif
++#if defined(__aarch64__)
++       SCMP_SYS(syscall);
++#endif
+ };
+        {
+                for (unsigned int i = 0; i < COUNTOF(scmp_sc); i++) {
