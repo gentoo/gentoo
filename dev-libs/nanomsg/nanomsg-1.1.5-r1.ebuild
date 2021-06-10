@@ -17,6 +17,14 @@ IUSE="doc"
 
 DEPEND="doc? ( dev-ruby/asciidoctor )"
 
+multilib_src_prepare() {
+	eapply_user
+	# Old CPUs like HPPA fails test because of timeout
+	sed -i -e 's/inproc_shutdown 5/inproc_shutdown 10/' CMakeLists.txt || die
+	sed -i -e 's/ws_async_shutdown 5/ws_async_shutdown 10/' CMakeLists.txt || die
+	sed -i -e 's/ipc_shutdown 30/ipc_shutdown 40/' CMakeLists.txt || die
+}
+
 multilib_src_configure() {
 	if multilib_is_native_abi; then
 		mycmakeargs+=( -DNN_ENABLE_DOC=$(usex doc ON OFF) )
