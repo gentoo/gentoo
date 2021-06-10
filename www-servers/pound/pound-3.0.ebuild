@@ -13,7 +13,7 @@ SRC_URI="https://www.apsis.ch/pound/${MY_P}.tgz"
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 
 DEPEND="
 	dev-libs/libpcre:=
