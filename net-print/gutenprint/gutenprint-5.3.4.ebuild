@@ -37,13 +37,7 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )
 "
 
-BDEPEND="
-	${RDEPEND}
-	nls? ( virtual/libintl )
-"
-
 DOCS=( AUTHORS ChangeLog NEWS README doc/gutenprint-users-manual.{pdf,odt} )
-
 PATCHES=( "${FILESDIR}"/${PN}-5.3.1-cflags.patch )
 
 src_configure() {
