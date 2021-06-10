@@ -20,7 +20,7 @@ BDEPEND="
 "
 RESTRICT="mirror"
 
-LICENSE="all-rights-reserved"
+LICENSE="BSD"
 SLOT="0"
 
 src_compile() {
