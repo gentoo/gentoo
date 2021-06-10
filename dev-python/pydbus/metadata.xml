@@ -7,4 +7,7 @@
 		<name>Andrew Ammerlaan</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">pydbus</remote-id>
+	</upstream>
 </pkgmetadata>
