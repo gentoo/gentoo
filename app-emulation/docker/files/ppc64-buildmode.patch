@@ -1,0 +1,30 @@
+From c4135e37e54a6480abfe18746f227f05cb9269ab Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Thu, 10 Jun 2021 16:19:22 -0700
+Subject: [PATCH] don't use buildmode=pie on ppc64
+
+It's already omitted for ppc64 in
+hack/dockerfile/install/install.sh
+not using wildcard, because GOARCH=ppc64le supports pie
+
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ hack/make/.binary | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hack/make/.binary b/hack/make/.binary
+index 5ea3e373f2..7a911de15a 100644
+--- a/hack/make/.binary
++++ b/hack/make/.binary
+@@ -70,7 +70,7 @@ hash_files() {
+ 
+ 	# -buildmode=pie is not supported on Windows and Linux on mips and riscv64.
+ 	case "$(go env GOOS)/$(go env GOARCH)" in
+-		windows/* | linux/mips* | linux/riscv*) ;;
++		windows/* | linux/mips* | linux/riscv* | linux/ppc64) ;;
+ 
+ 		*)
+ 			BUILDFLAGS+=("-buildmode=pie")
+-- 
+2.32.0
+
