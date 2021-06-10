@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="GPL-3+"
+LICENSE="Apache-2.0 GPL-3+ MIT"
 SLOT="0"
 IUSE="cpu_flags_x86_sse4_1 donate hwloc +ssl"
 
