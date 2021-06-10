@@ -1,0 +1,12 @@
+https://github.com/neilb/URI-Fetch/commit/20eba82783a5c08adc88ff1cdc7ee9433d63ae4f.patch
+https://bugs.gentoo.org/794676
+--- a/lib/URI/Fetch.pm
++++ b/lib/URI/Fetch.pm
+@@ -1,6 +1,6 @@
+ package URI::Fetch;
+ $URI::Fetch::VERSION = '0.13';
+-use 5.008_001;
++use 5.008001;
+ use strict;
+ use warnings;
+ 
