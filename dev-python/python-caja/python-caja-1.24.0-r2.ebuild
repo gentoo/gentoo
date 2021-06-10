@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python{3_7,3_8} )
 inherit mate python-single-r1
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 
 DESCRIPTION="Python bindings for the Caja file manager"
