@@ -19,12 +19,12 @@
     </flag>
     <flag name="daemon">Build the pulseaudio binary (not-needed for pipewire-pulse)</flag>
     <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for giving each session a PA client</flag>
+    <flag name="forget-missing">
+      Enables clearing of unavailable devices from database files which is recommended for GNOME.
+    </flag>
     <flag name="gconf">
       Ensure <pkg>gnome-base/gconf</pkg> is present for pulseaudio GConf
       to GSettings module automatic migration (keeping the user configuration)
-    </flag>
-    <flag name="gnome">
-      Enables clearing of unavailable devices from database files which is recommended for GNOME.
     </flag>
     <flag name="oss">
       Enable OSS sink/source (output/input). Deprecated, upstream does

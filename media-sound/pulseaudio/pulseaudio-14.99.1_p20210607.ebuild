@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson-multilib bash-completion-r1 flag-o-matic gnome2-utils linux-info optfeature systemd toolchain-funcs udev
+inherit meson-multilib bash-completion-r1 gnome2-utils optfeature systemd udev
 
 # When COMMIT is defined, this ebuild turns from a release into a snapshot ebuild:
 COMMIT="79cb1369fc4d22966cb65253e9da2ccda2f25b45"
@@ -37,11 +37,10 @@ SLOT="0"
 
 # +alsa-plugin as discussed in bug #519530
 # TODO: Deal with bluez5-gstreamer
-# NOTE: Add tdb IUSE?
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
-IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus +daemon doc elogind equalizer +gdbm gstreamer
-gnome +glib gtk ipv6 jack lirc native-headset ofono-headset +orc oss selinux sox ssl systemd
+IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus +daemon doc elogind equalizer forget-missing +gdbm
+gstreamer +glib gtk ipv6 jack lirc native-headset ofono-headset +orc oss selinux sox ssl systemd
 system-wide tcpd test +udev +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
@@ -124,7 +123,7 @@ RDEPEND="
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:=[${MULTILIB_USEDEP}] )
 	daemon? (
-		dev-libs/libltdl[${MULTILIB_USEDEP}]
+		dev-libs/libltdl
 		sys-kernel/linux-headers
 	)
 	selinux? ( sec-policy/selinux-pulseaudio )
@@ -132,22 +131,19 @@ RDEPEND="
 		media-libs/gst-plugins-base
 		>=media-libs/gstreamer-1.14
 	)
-" # Multilib libltdl is used during building but final binaries only link against native libltdl
+"
 
-# This is not a mistake, the build system needs multilib libltdl to function
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 	dev-libs/libatomic_ops
-	dev-libs/libltdl[${MULTILIB_USEDEP}]
 "
 # This is a PDEPEND to avoid a circular dep
-# TODO: Verify that alsa-plugins actually needs matching ${MULTILIB_USEDEP}
 PDEPEND="
 	alsa? ( alsa-plugin? ( >=media-plugins/alsa-plugins-1.0.27-r1[pulseaudio,${MULTILIB_USEDEP}] ) )
 "
 
 # alsa-utils dep is for the alsasound init.d script (see bug 155707); TODO: read it
-# NOTE: if (e)logind is now mandatory, then the act-group/audio is needed only with system-wide
+# NOTE: Only system-wide needs acct-group/audio unless elogind/systemd is not used
 RDEPEND="${RDEPEND}
 	system-wide? (
 		alsa? ( media-sound/alsa-utils )
@@ -177,25 +173,9 @@ pkg_pretend() {
 	elif [[ -n ${SNAPSHOT_PV} && ${PV} != ${SNAPSHOT_PV} ]]; then
 		die "Rename of snapshot ebuild detected - please check COMMIT & SNAPSHOT_PV!"
 	fi
-
-	if use daemon; then
-		CONFIG_CHECK="~HIGH_RES_TIMERS"
-		WARNING_HIGH_RES_TIMERS="CONFIG_HIGH_RES_TIMERS:\tis not set (required for enabling timer-based scheduling in pulseaudio)\n"
-		check_extra_config
-
-		if linux_config_exists; then
-			local snd_hda_prealloc_size=$(linux_chkconfig_string SND_HDA_PREALLOC_SIZE)
-			if [[ -n "${snd_hda_prealloc_size}" && "${snd_hda_prealloc_size}" -lt 2048 ]]; then
-				elog "For best experience with HDA devices set the pre-allocated"
-				elog "sound buffer to at least 2048 kB. The current value is:"
-				elog "\tCONFIG_SND_HDA_PREALLOC_SIZE=${snd_hda_prealloc_size}"
-			fi
-		fi
-	fi
 }
 
 pkg_setup() {
-	linux-info_pkg_setup
 	gnome2_environment_reset # bug 543364 # TODO: read it
 }
 
@@ -215,7 +195,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Dadrian-aec=false # Not packaged?
 		--localstatedir="${EPREFIX}"/var
-		-Dmodlibexecdir="${EPREFIX}/usr/$(get_libdir)/${P}"
+#		-Dmodlibexecdir="${EPREFIX}/usr/libexec/${PN}" # Used to be $(get_libdir)/${P}
 #		-Dsystemduserunitdir=$(systemd_get_userunitdir)
 		-Dudevrulesdir="$(get_udevdir)"/rules.d
 		-Dbashcompletiondir="$(get_bashcompdir)" # Alternatively DEPEND on app-shells/bash-completion for pkg-config to provide the value
@@ -240,9 +220,9 @@ multilib_src_configure() {
 		$(meson_native_use_feature zeroconf avahi)
 		$(meson_native_use_feature equalizer fftw)
 		$(meson_native_use_feature sox soxr)
-		-Ddatabase=$(multilib_native_usex gdbm gdbm simple) # TODO: tdb is also an option
-		$(meson_use gnome stream-restore-clear-old-devices) # TODO: Get ACK'ed on this
-		$(meson_native_use_feature glib)
+		-Ddatabase=$(multilib_native_usex gdbm gdbm simple) # tdb is also an option but no one cares about it
+		$(meson_use forget-missing stream-restore-clear-old-devices)
+		$(meson_feature glib) # WARNING: toggling this likely changes ABI
 		$(meson_feature asyncns)
 		#$(meson_use cpu_flags_arm_neon neon-opt)
 		$(meson_feature tcpd tcpwrap) # TODO: system-wide specific?
