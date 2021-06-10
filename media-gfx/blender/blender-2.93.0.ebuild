@@ -5,8 +5,6 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_9 )
 
-# TODO: restoring subversion later
-# https://github.com/gentoo/gentoo/pull/20565#issuecomment-857235672
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
