@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gorakhargosh/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 CDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
