@@ -30,7 +30,7 @@ pkg_pretend() {
 	fi
 
 	# We also want to not clobber newer devtmpfs setups.
-	if [[ ${ROOT} == "/" ]] && \
+	if [[ -z ${ROOT} ]] && \
 	   ! awk '$2 == "/dev" && $3 == "devtmpfs" { exit 1 }' /proc/mounts ; then
 		abort
 	fi
