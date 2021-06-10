@@ -15,7 +15,7 @@ SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-s
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="gles2-only ieee1394 +opengl +pci usb wayland"
 
 REQUIRED_USE="wayland? ( || ( opengl gles2-only ) )"
