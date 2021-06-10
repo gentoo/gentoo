@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-06-10)
+# Fails to build with modern libetpan. Unmaintained.
+# See bug #699570, bug #448574.
+# Removal on 2021-07-10.
+mail-client/etpan-ng
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-05)
 # A backport for 'older Python versions' with no revdeps.
 # Removal on 2021-07-05.  Bug #794268.
