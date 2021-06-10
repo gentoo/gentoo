@@ -15,7 +15,7 @@ DESCRIPTION="Plasma screen management library"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5/7"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 # requires running session
