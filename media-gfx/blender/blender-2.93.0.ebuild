@@ -5,8 +5,9 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_9 )
 
-inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 subversion \
-	toolchain-funcs xdg-utils
+# TODO: restoring subversion later
+# https://github.com/gentoo/gentoo/pull/20565#issuecomment-857235672
+inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
@@ -160,9 +161,9 @@ src_unpack() {
 		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
 	fi
 
-	if use test; then
-		subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-	fi
+	#if use test; then
+	#	subversion_fetch ${TESTS_SVN_URL} ../lib/tests
+	#fi
 }
 
 src_prepare() {
