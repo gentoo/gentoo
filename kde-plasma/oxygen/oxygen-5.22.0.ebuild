@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/plasma/oxygen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="wayland"
 
 COMMON_DEPEND="
