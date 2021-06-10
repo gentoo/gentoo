@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='threads(+)'
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.8-fix-missing-scmp_sys-on-aarch64.patch"
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.0-move-newfstatat.patch"
+	"${FILESDIR}/${PN}-1.2.0-seccomp.patch"
 )
 
 WAF_BINARY="${S}/waf"
