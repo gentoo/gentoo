@@ -30,6 +30,8 @@ RDEPEND="
 	sys-apps/msr-tools
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-6.12.2-nonotls.patch )
+
 src_prepare() {
 	if ! use donate ; then
 		sed -i 's/1;/0;/g' src/donate.h || die
