@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kde-gtk-config"
 
 LICENSE="GPL-3"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 BDEPEND="
