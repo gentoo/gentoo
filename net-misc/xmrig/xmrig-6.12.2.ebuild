@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake optfeature systemd
+inherit cmake systemd
 
 DESCRIPTION="RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner"
 HOMEPAGE="https://xmrig.com https://github.com/xmrig/xmrig"
