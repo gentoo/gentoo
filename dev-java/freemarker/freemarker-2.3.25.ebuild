@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,7 +54,7 @@ src_prepare() {
 	sed -i \
 		-e '/<ivy:cachepath/d' \
 		-e 's/"ivy\.dep[^"]*"/"gentoo.classpath"/g' \
-		-e "s:javacchome=\"[^\"]*\":javacchome=\"${EROOT}usr/share/javacc/lib\":g" \
+		-e "s:javacchome=\"[^\"]*\":javacchome=\"${EPREFIX%/}/usr/share/javacc/lib\":g" \
 		build.xml || die
 
 	java-pkg-2_src_prepare
