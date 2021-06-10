@@ -44,7 +44,7 @@ PATCHES=(
 )
 
 python_prepare() {
-	if ! use cli || ! has "${EPYTHON}" python3_{7..9}; then
+	if ! use cli || ! has "${EPYTHON}" python3.{7..9}; then
 		sed -i -e '/console_scripts/d' setup.py || die
 	fi
 }
