@@ -5,8 +5,6 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-# TODO: restore subversion later
-# https://github.com/gentoo/gentoo/pull/20565#issuecomment-857235672
 inherit check-reqs cmake flag-o-matic pax-utils python-single-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
@@ -17,6 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.83.1-tests.tar.bz2 )"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -93,7 +92,6 @@ RDEPEND="${PYTHON_DEPS}
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb )
-	test? ( dev-vcs/subversion )
 	tiff? ( media-libs/tiff )
 	valgrind? ( dev-util/valgrind )
 "
@@ -149,16 +147,15 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
-		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 		git-r3_src_unpack
 	else
 		default
-		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
 	fi
 
-	#if use test; then
-	#	subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-	#fi
+	if use test; then
+		mkdir -p lib/tests || die
+		mv "${WORKDIR}"/blender*tests* lib/tests || die
+	fi
 }
 
 src_prepare() {

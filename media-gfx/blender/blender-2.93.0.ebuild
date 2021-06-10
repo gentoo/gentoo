@@ -17,6 +17,7 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
+	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.93.0-tests.tar.bz2 )"
 	KEYWORDS="~amd64"
 fi
 
@@ -154,16 +155,15 @@ pkg_setup() {
 
 src_unpack() {
 	if [[ ${PV} = *9999* ]] ; then
-		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/trunk/lib/tests
 		git-r3_src_unpack
 	else
 		default
-		TESTS_SVN_URL=https://svn.blender.org/svnroot/bf-blender/tags/blender-${SLOT}-release/lib/tests
 	fi
 
-	#if use test; then
-	#	subversion_fetch ${TESTS_SVN_URL} ../lib/tests
-	#fi
+	if use test; then
+		mkdir -p lib/tests || die
+		mv "${WORKDIR}"/blender*tests* lib/tests || die
+	fi
 }
 
 src_prepare() {
