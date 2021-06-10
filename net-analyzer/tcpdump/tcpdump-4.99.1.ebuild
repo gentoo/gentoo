@@ -29,8 +29,9 @@ SLOT="0"
 IUSE="+drop-root +smi +ssl +samba suid test"
 REQUIRED_USE="test? ( samba )"
 
+RESTRICT="!test? ( test )"
 # Assorted failures: bug #768498
-RESTRICT="test"
+#RESTRICT="test"
 
 RDEPEND="
 	net-libs/libpcap
