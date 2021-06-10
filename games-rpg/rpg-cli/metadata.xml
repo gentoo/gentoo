@@ -5,6 +5,10 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>alexey+gentoo@asokolov.org</email>
+		<name>Alexey Sokolov</name>
+	</maintainer>
 	<longdescription lang="en">
 		rpg-cli is a bare-bones JRPG-inspired terminal game written in Rust.
 		It can work as an alternative to cd where you randomly encounter enemies as you change directories.
