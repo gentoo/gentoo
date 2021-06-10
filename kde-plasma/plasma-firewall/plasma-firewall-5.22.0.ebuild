@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/network/plasma-firewall"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="firewalld +ufw"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} || ( firewalld ufw )"
