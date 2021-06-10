@@ -26,6 +26,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-games-group.patch
 	"${FILESDIR}"/${P}-missing-text.patch
+	"${FILESDIR}"/${P}-t4kcommon.patch
 )
 
 src_prepare() {
