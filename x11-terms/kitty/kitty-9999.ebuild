@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit optfeature python-single-r1 toolchain-funcs xdg
 
@@ -58,7 +58,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
-	"${FILESDIR}"/kitty-0.20.1-remove-terminfo.patch
+	"${FILESDIR}"/${P}-remove-terminfo.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
