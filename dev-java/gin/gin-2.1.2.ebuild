@@ -27,13 +27,13 @@ CDEPEND="
 		dev-java/gwt:2.8
 		dev-java/validation-api:1.0
 "
-
 RDEPEND="
 		${CDEPEND}
 		>=virtual/jre-1.8:*"
 DEPEND="
 		${CDEPEND}
 		>=virtual/jdk-1.8:*"
+BDEPEND="app-arch/unzip"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_XML="build.xml"
