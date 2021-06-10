@@ -6,4 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">gpodder/gpodder</remote-id>
+	</upstream>
 </pkgmetadata>
