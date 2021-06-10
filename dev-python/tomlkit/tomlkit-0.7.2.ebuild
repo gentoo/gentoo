@@ -15,4 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND="test? ( dev-python/pyyaml[${PYTHON_USEDEP}] )"
+
 distutils_enable_tests pytest
