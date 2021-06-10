@@ -9,6 +9,10 @@
 # dev-qt/qtwebengine works on ppc64le
 -webengine
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-03)
+# clang is keyworded and works on ppc64
+-clang
+
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-21)
 # works on ppc64le
 -vaapi

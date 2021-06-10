@@ -5,6 +5,10 @@
 # altivec code is big-endian only, #773100
 media-libs/libdvbcsa cpu_flags_ppc_altivec
 
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+dev-util/perf clang
+
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Additional sanitizers supported on ppc64le.
 sys-libs/compiler-rt-sanitizers -xray
@@ -21,6 +25,11 @@ app-emulation/crun -criu
 # openjfx is keyworded on ppc64le
 dev-java/openjdk:8 -javafx
 dev-java/openjdk:11 -javafx
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-05-03)
+# Fails to build, needs more work
+www-client/firefox clang
+mail-client/thunderbird clang
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-02-26)
 # vulkan tested and works on ppc64le
