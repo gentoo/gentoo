@@ -195,7 +195,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Dadrian-aec=false # Not packaged?
 		--localstatedir="${EPREFIX}"/var
-#		-Dmodlibexecdir="${EPREFIX}/usr/libexec/${PN}" # Used to be $(get_libdir)/${P}
+		-Dmodlibexecdir="${EPREFIX}/usr/$(get_libdir)/${PN}/modules" # Was $(get_libdir)/${P}
 #		-Dsystemduserunitdir=$(systemd_get_userunitdir)
 		-Dudevrulesdir="$(get_udevdir)"/rules.d
 		-Dbashcompletiondir="$(get_bashcompdir)" # Alternatively DEPEND on app-shells/bash-completion for pkg-config to provide the value
