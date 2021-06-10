@@ -18,13 +18,22 @@ else
 fi
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/7"
+# 0/7 was a snapshot before 1.1.0
+# The SONAME was fixed just before the 1.1.0 release was made
+# ... but a patch was needed to get it exactly right too
+# so, we're on 0/8 now, even though ABI compatibility actually remained
+# in terms of symbols with the original <1.1.0.
+SLOT="0/8"
 IUSE="ssl static-libs threads"
 
 RDEPEND="ssl? ( >=dev-libs/openssl-1.1.0:0= )"
 DEPEND="${RDEPEND}"
 
 DOCS=( docs/{authors,bugreport,ChangeLog,faq,NEWS}.md README.md )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-soname.patch
+)
 
 src_configure() {
 	local emesonargs=(

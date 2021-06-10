@@ -1,0 +1,19 @@
+https://github.com/libesmtp/libESMTP/pull/7
+
+From 4543d5a6848a752d690150b6987ca9c556d793fc Mon Sep 17 00:00:00 2001
+From: "Jeremy T. Bouse" <Jeremy.Bouse@UnderGrid.net>
+Date: Mon, 7 Jun 2021 20:44:37 -0400
+Subject: [PATCH] Update to correct SONAME version
+
+Pass as version to allow Meson to manage SONAME version.
+--- a/meson.build
++++ b/meson.build
+@@ -208,7 +208,7 @@ vflag = '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), mapfil
+ 
+ lib = library('esmtp', sources,
+ 	      link_args : vflag, link_depends : mapfile,
+-	      soversion : libesmtp_so_version,
++	      version : libesmtp_so_version,
+ 	      dependencies : deps,
+ 	      install : true)
+ 
