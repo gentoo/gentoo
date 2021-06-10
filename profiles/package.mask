@@ -73,6 +73,7 @@ dev-python/csv23
 # be patient and report bugs if you choose to
 # unmask.
 # bug #756298, bug #690468.
+~dev-python/gst-python-1.18.4
 ~media-libs/gst-plugins-bad-1.18.4
 ~media-libs/gst-plugins-base-1.18.4
 ~media-libs/gst-plugins-good-1.18.4
