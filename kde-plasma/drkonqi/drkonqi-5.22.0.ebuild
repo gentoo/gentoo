@@ -12,7 +12,7 @@ DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 COMMON_DEPEND="
