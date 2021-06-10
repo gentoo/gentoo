@@ -134,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.7.0-doc-path.patch
 	"${FILESDIR}"/${PN}-6.7.0-fix-paths-for-apparmor.patch
 	"${FILESDIR}"/${PN}-7.3.0-vircgroup-Fix-virCgroupKillRecursive-wrt-nested-cont.patch
+	"${FILESDIR}"/${PN}-7.0.0-fix_virtproxyd_unit_file.patch
 )
 
 pkg_setup() {
