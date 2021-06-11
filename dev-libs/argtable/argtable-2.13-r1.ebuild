@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~ia64 ppc ppc64 sparc x86"
 IUSE="doc debug examples static-libs"
 
 S="${WORKDIR}/${MY_P}"

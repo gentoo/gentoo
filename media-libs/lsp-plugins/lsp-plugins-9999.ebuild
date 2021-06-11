@@ -1,7 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit xdg
 
 DESCRIPTION="Linux Studio Plugins"
 HOMEPAGE="https://lsp-plug.in"
@@ -12,8 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="https://github.com/sadko4u/lsp-plugins"
 	EGIT_BRANCH="devel"
 else
-	SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${P}.tar.gz"
-	S="${WORKDIR}/${PN}-${P}"
+	SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -25,7 +26,7 @@ REQUIRED_USE="|| ( jack ladspa lv2 )"
 DEPEND="
 	dev-libs/expat
 	media-libs/libsndfile
-	media-libs/libglvnd
+	media-libs/libglvnd[X]
 	doc? ( dev-lang/php:* )
 	jack? (
 		virtual/jack

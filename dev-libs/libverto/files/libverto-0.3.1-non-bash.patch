@@ -1,0 +1,133 @@
+Strips bashisms from configure.ac causing breakage in net-nds/gssproxy
+https://bugs.gentoo.org/762823
+--- a/configure.ac
++++ b/configure.ac
+@@ -91,22 +91,22 @@ AC_ARG_WITH([tevent],
+ 
+ # Ensure that if a builtin is chosen only one is built
+ BUILTIN_MODULE=
+-if test x$WITH_GLIB == xbuiltin; then
++if test x$WITH_GLIB = xbuiltin; then
+   BUILTIN_MODULE=glib
+   WITH_LIBEV=no
+   WITH_LIBEVENT=no
+   WITH_TEVENT=no
+-elif test x$WITH_LIBEV == xbuiltin; then
++elif test x$WITH_LIBEV = xbuiltin; then
+   BUILTIN_MODULE=libev
+   WITH_LIBGLIB=no
+   WITH_LIBEVENT=no
+   WITH_TEVENT=no
+-elif test x$WITH_LIBEVENT == xbuiltin; then
++elif test x$WITH_LIBEVENT = xbuiltin; then
+   BUILTIN_MODULE=libevent
+   WITH_LIBGLIB=no
+   WITH_LIBEV=no
+   WITH_TEVENT=no
+-elif test x$WITH_TEVENT == xbuiltin; then
++elif test x$WITH_TEVENT = xbuiltin; then
+   BUILTIN_MODULE=tevent
+   WITH_GLIB=no
+   WITH_LIBEV=no
+@@ -118,29 +118,29 @@ if test x$BUILTIN_MODULE != x; then
+ fi
+ 
+ # Ensure that there is only one default (convert duplicate default to yes)
+-if test x$WITH_GLIB == xdefault; then
++if test x$WITH_GLIB = xdefault; then
+   AC_DEFINE([DEFUALT_MODULE], [glib])
+-  test x$WITH_LIBEV    == xdefault && WITH_LIBEV=yes
+-  test x$WITH_LIBEVENT == xdefault && WITH_LIBEVENT=yes
+-  test x$WITH_TEVENT   == xdefault && WITH_TEVENT=yes
++  test x$WITH_LIBEV    = xdefault && WITH_LIBEV=yes
++  test x$WITH_LIBEVENT = xdefault && WITH_LIBEVENT=yes
++  test x$WITH_TEVENT   = xdefault && WITH_TEVENT=yes
+ fi
+-if test x$WITH_LIBEV == xdefault; then
++if test x$WITH_LIBEV = xdefault; then
+   AC_DEFINE([DEFUALT_MODULE], [libev])
+-  test x$WITH_LIBGLIB  == xdefault && WITH_GLIB=yes
+-  test x$WITH_LIBEVENT == xdefault && WITH_LIBEVENT=yes
+-  test x$WITH_TEVENT   == xdefault && WITH_TEVENT=yes
++  test x$WITH_LIBGLIB  = xdefault && WITH_GLIB=yes
++  test x$WITH_LIBEVENT = xdefault && WITH_LIBEVENT=yes
++  test x$WITH_TEVENT   = xdefault && WITH_TEVENT=yes
+ fi
+-if test x$WITH_LIBEVENT == xdefault; then
++if test x$WITH_LIBEVENT = xdefault; then
+   AC_DEFINE([DEFUALT_MODULE], [libevent])
+-  test x$WITH_GLIB     == xdefault && WITH_GLIB=yes
+-  test x$WITH_LIBEV    == xdefault && WITH_LIBEV=yes
+-  test x$WITH_TEVENT   == xdefault && WITH_TEVENT=yes
++  test x$WITH_GLIB     = xdefault && WITH_GLIB=yes
++  test x$WITH_LIBEV    = xdefault && WITH_LIBEV=yes
++  test x$WITH_TEVENT   = xdefault && WITH_TEVENT=yes
+ fi
+-if test x$WITH_TEVENT == xdefault; then
++if test x$WITH_TEVENT = xdefault; then
+   AC_DEFINE([DEFUALT_MODULE], [tevent])
+-  test x$WITH_GLIB     == xdefault && WITH_GLIB=yes
+-  test x$WITH_LIBEV    == xdefault && WITH_LIBEV=yes
+-  test x$WITH_LIBEVENT == xdefault && WITH_LIBEVENT=yes
++  test x$WITH_GLIB     = xdefault && WITH_GLIB=yes
++  test x$WITH_LIBEV    = xdefault && WITH_LIBEV=yes
++  test x$WITH_LIBEVENT = xdefault && WITH_LIBEVENT=yes
+ fi
+ 
+ BUILD_GLIB=no
+@@ -151,7 +151,7 @@ BUILD_TEVENT=no
+ if test x$WITH_GLIB != xno; then
+   PKG_CHECK_MODULES([glib], [glib-2.0], [BUILD_GLIB=$WITH_GLIB],
+                     [test x$WITH_GLIB != xauto && AC_MSG_ERROR("glib not found")])
+-  if test x$BUILD_GLIB == xauto; then
++  if test x$BUILD_GLIB = xauto; then
+     BUILD_GLIB=yes
+   fi
+ fi
+@@ -165,7 +165,7 @@ if test x$WITH_LIBEV != xno; then
+     ),
+     [test x$WITH_LIBEV != xauto && AC_MSG_ERROR("ev.h not found")]
+   )
+-  if test x$BUILD_LIBEV == xauto; then
++  if test x$BUILD_LIBEV = xauto; then
+     BUILD_LIBEV=yes
+   fi
+ fi
+@@ -173,7 +173,7 @@ fi
+ if test x$WITH_LIBEVENT != xno; then
+   PKG_CHECK_MODULES([libevent], [libevent >= 2.0], [BUILD_LIBEVENT=$WITH_LIBEVENT],
+                     [test x$WITH_LIBEVENT != xauto && AC_MSG_ERROR("libevent not found")])
+-  if test x$BUILD_LIBEVENT == xauto; then
++  if test x$BUILD_LIBEVENT = xauto; then
+     BUILD_LIBEVENT=yes
+   fi
+ fi
+@@ -181,19 +181,19 @@ fi
+ if test x$WITH_TEVENT != xno; then
+   PKG_CHECK_MODULES([tevent], [tevent], [BUILD_TEVENT=$WITH_TEVENT],
+                     [test x$WITH_TEVENT != xauto && AC_MSG_ERROR("tevent not found")])
+-  if test x$BUILD_TEVENT == xauto; then
++  if test x$BUILD_TEVENT = xauto; then
+     BUILD_TEVENT=yes
+   fi
+ fi
+ 
+-AM_CONDITIONAL([MODULE_GLIB],      [test x$BUILTIN_MODULE == x && test x$BUILD_GLIB     != xno])
+-AM_CONDITIONAL([MODULE_LIBEV],     [test x$BUILTIN_MODULE == x && test x$BUILD_LIBEV    != xno])
+-AM_CONDITIONAL([MODULE_LIBEVENT],  [test x$BUILTIN_MODULE == x && test x$BUILD_LIBEVENT != xno])
+-AM_CONDITIONAL([MODULE_TEVENT],    [test x$BUILTIN_MODULE == x && test x$BUILD_TEVENT   != xno])
+-AM_CONDITIONAL([BUILTIN_GLIB],     [test x$BUILTIN_MODULE == xglib])
+-AM_CONDITIONAL([BUILTIN_LIBEV],    [test x$BUILTIN_MODULE == xlibev])
+-AM_CONDITIONAL([BUILTIN_LIBEVENT], [test x$BUILTIN_MODULE == xlibevent])
+-AM_CONDITIONAL([BUILTIN_TEVENT],   [test x$BUILTIN_MODULE == xtevent])
++AM_CONDITIONAL([MODULE_GLIB],      [test x$BUILTIN_MODULE = x && test x$BUILD_GLIB     != xno])
++AM_CONDITIONAL([MODULE_LIBEV],     [test x$BUILTIN_MODULE = x && test x$BUILD_LIBEV    != xno])
++AM_CONDITIONAL([MODULE_LIBEVENT],  [test x$BUILTIN_MODULE = x && test x$BUILD_LIBEVENT != xno])
++AM_CONDITIONAL([MODULE_TEVENT],    [test x$BUILTIN_MODULE = x && test x$BUILD_TEVENT   != xno])
++AM_CONDITIONAL([BUILTIN_GLIB],     [test x$BUILTIN_MODULE = xglib])
++AM_CONDITIONAL([BUILTIN_LIBEV],    [test x$BUILTIN_MODULE = xlibev])
++AM_CONDITIONAL([BUILTIN_LIBEVENT], [test x$BUILTIN_MODULE = xlibevent])
++AM_CONDITIONAL([BUILTIN_TEVENT],   [test x$BUILTIN_MODULE = xtevent])
+ 
+ AC_MSG_NOTICE()
+ AC_MSG_NOTICE([BUILD CONFIGURATION])

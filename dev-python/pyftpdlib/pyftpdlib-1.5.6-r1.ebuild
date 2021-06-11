@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="examples ssl test"
 RESTRICT="!test? ( test )"
 
@@ -64,10 +64,17 @@ python_test() {
 		# https://bugs.gentoo.org/758686
 		pyftpdlib/test/test_functional.py::ThreadedFTPTests::test_idle_timeout
 		pyftpdlib/test/test_functional.py::ThreadedFTPTests::test_stou_max_tries
+		# https://github.com/giampaolo/pyftpdlib/issues/550
+		# https://bugs.gentoo.org/759040
+		pyftpdlib/test/test_functional.py::TestConfigurableOptions::test_masquerade_address
+		pyftpdlib/test/test_functional.py::TestConfigurableOptions::test_masquerade_address_map
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptions::test_masquerade_address
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptions::test_masquerade_address_map
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptionsTLSMixin::test_masquerade_address
+		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptionsTLSMixin::test_masquerade_address_map
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
-	TZ=UTC+1 pytest -vv ${skipped_tests[@]/#/--deselect } \
-			|| die "Tests failed with ${EPYTHON}"
+	TZ=UTC+1 epytest ${skipped_tests[@]/#/--deselect }
 }
 
 python_install_all() {

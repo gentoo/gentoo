@@ -1,6 +1,5 @@
-diff -urp cuneiform-1.1.0/cuneiform_src/Kern/hhh/tigerh/h/strings.h cuneiform-1.1.0-char/cuneiform_src/Kern/hhh/tigerh/h/strings.h
---- cuneiform-1.1.0/cuneiform_src/Kern/hhh/tigerh/h/strings.h	2017-11-30 11:25:24.409125695 +0700
-+++ cuneiform-1.1.0-char/cuneiform_src/Kern/hhh/tigerh/h/strings.h	2017-11-30 12:09:26.033501963 +0700
+--- a/cuneiform_src/Kern/hhh/tigerh/h/strings.h
++++ b/cuneiform_src/Kern/hhh/tigerh/h/strings.h
 @@ -80,6 +80,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  
  # include "ltconfig.h"
@@ -9,9 +8,8 @@ diff -urp cuneiform-1.1.0/cuneiform_src/Kern/hhh/tigerh/h/strings.h cuneiform-1.
  
  struct _String;
  typedef struct _String STRING;
-diff -urp cuneiform-1.1.0/cuneiform_src/Kern/include/utf8-tables.h cuneiform-1.1.0-char/cuneiform_src/Kern/include/utf8-tables.h
---- cuneiform-1.1.0/cuneiform_src/Kern/include/utf8-tables.h	2017-11-30 11:25:24.410125673 +0700
-+++ cuneiform-1.1.0-char/cuneiform_src/Kern/include/utf8-tables.h	2017-11-30 11:32:05.974413875 +0700
+--- a/cuneiform_src/Kern/include/utf8-tables.h
++++ b/cuneiform_src/Kern/include/utf8-tables.h
 @@ -68,7 +68,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  #endif
  
@@ -57,9 +55,8 @@ diff -urp cuneiform-1.1.0/cuneiform_src/Kern/include/utf8-tables.h cuneiform-1.1
    {0, 0, 0, 0},
    {1, 0, 0, 0},
    {2, 0, 0, 0},
-diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/codetables.cpp cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/codetables.cpp
---- cuneiform-1.1.0/cuneiform_src/Kern/rout/src/codetables.cpp	2017-11-30 11:25:24.411125651 +0700
-+++ cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/codetables.cpp	2017-11-30 11:47:51.856189912 +0700
+--- a/cuneiform_src/Kern/rout/src/codetables.cpp
++++ b/cuneiform_src/Kern/rout/src/codetables.cpp
 @@ -937,13 +937,13 @@ CP_TO_CP tab[] = {
   * codepage.
   */
@@ -76,9 +73,8 @@ diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/codetables.cpp cuneiform-1
 +  default : return (const unsigned char *) "?";
    }
  }
-diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/rout_own.h cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/rout_own.h
---- cuneiform-1.1.0/cuneiform_src/Kern/rout/src/rout_own.h	2017-11-30 11:25:24.411125651 +0700
-+++ cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/rout_own.h	2017-11-30 11:40:01.457220419 +0700
+--- a/cuneiform_src/Kern/rout/src/rout_own.h
++++ b/cuneiform_src/Kern/rout/src/rout_own.h
 @@ -458,7 +458,7 @@ Bool SetTableTextSeparators(char* s);
  void ResetCodeTables();
  Bool UpdateActiveCodeTable();
@@ -88,9 +84,8 @@ diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/rout_own.h cuneiform-1.1.0
  
  //*****************************************************************
  // Rout.cpp
-diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/text.cpp cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/text.cpp
---- cuneiform-1.1.0/cuneiform_src/Kern/rout/src/text.cpp	2017-11-30 11:25:24.411125651 +0700
-+++ cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/text.cpp	2017-11-30 11:40:43.571320319 +0700
+--- a/cuneiform_src/Kern/rout/src/text.cpp
++++ b/cuneiform_src/Kern/rout/src/text.cpp
 @@ -310,7 +310,7 @@ Bool OneChar(Handle charHandle)
  				*gMemCur++ = c2;
  		}

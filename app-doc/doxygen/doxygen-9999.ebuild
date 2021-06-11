@@ -1,19 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
 
-CMAKE_MAKEFILE_GENERATOR="emake"
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake-utils eutils flag-o-matic python-any-r1
+inherit cmake flag-o-matic llvm python-any-r1
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
-	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
@@ -22,7 +20,13 @@ HOMEPAGE="http://www.doxygen.org"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="clang debug doc dot doxysearch qt5 sqlite userland_GNU"
+# We need TeX for tests, bug #765472
+RESTRICT="!doc? ( test )"
 
+BDEPEND="sys-devel/bison
+	sys-devel/flex
+	${PYTHON_DEPS}
+"
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
@@ -38,6 +42,7 @@ RDEPEND="app-text/ghostscript-gpl
 		dev-texlive/texlive-fontutils
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
+		dev-texlive/texlive-plaingeneric
 	)
 	doxysearch? ( dev-libs/xapian:= )
 	qt5? (
@@ -46,28 +51,25 @@ RDEPEND="app-text/ghostscript-gpl
 		dev-qt/qtxml:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
-	"
-
-DEPEND="sys-devel/flex
-	sys-devel/bison
-	doc? ( ${PYTHON_DEPS} )
-	${RDEPEND}"
-
-# src_test() defaults to make -C testing but there is no such directory (bug #504448)
-RESTRICT="test"
+"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.8.9.1-empty-line-sigsegv.patch" #454348
+	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
 	"${FILESDIR}/${PN}-1.8.17-ensure_static_support_libraries.patch"
+	"${FILESDIR}/${PN}-1.9.1-ignore-bad-encoding.patch"
 )
+
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use clang && llvm_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Ensure we link to -liconv
 	if use elibc_FreeBSD && has_version dev-libs/libiconv || use elibc_uclibc; then
@@ -104,17 +106,16 @@ src_configure() {
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
 		-DGIT_EXECUTABLE="false"
-		)
+	)
+
 	use doc && mycmakeargs+=(
 		-DDOC_INSTALL_DIR="share/doc/${P}"
-		)
+	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-
 	if use doc; then
 		export VARTEXFONTS="${T}/fonts" # bug #564944
 
@@ -123,10 +124,13 @@ src_compile() {
 				{Doxyfile,doc/Doxyfile} \
 				|| die "disabling dot failed"
 		fi
-		cmake-utils_src_make -C "${BUILD_DIR}" docs
+
+		cmake_src_compile docs
 	fi
+
+	cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }

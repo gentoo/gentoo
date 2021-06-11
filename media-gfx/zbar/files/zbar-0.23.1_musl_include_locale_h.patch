@@ -1,0 +1,23 @@
+https://github.com/mchehab/zbar/pull/115
+--- a/zbarcam/zbarcam.c
++++ b/zbarcam/zbarcam.c
+@@ -37,6 +37,7 @@
+ #ifdef ENABLE_NLS
+ #include "../zbar/gettext.h"
+ # include <libintl.h>
++# include <locale.h>
+ # define _(string) gettext(string)
+ #else
+ # define _(string) string
+--- a/zbarimg/zbarimg.c
++++ b/zbarimg/zbarimg.c
+@@ -42,6 +42,7 @@
+ #ifdef ENABLE_NLS
+ #include "../zbar/gettext.h"
+ # include <libintl.h>
++# include <locale.h>
+ # define _(string) gettext(string)
+ #else
+ # define _(string) string
+-- 
+2.26.2

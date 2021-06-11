@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,7 @@ DEPEND="dev-lang/perl
 	x11-libs/libX11"
 RDEPEND="${DEPEND}
 	net-misc/wget
-	x11-apps/xmessage
-	!<=x11-plugins/gkrellweather-2.0.7-r1"
+	x11-apps/xmessage"
 
 PATCHES=( "${FILESDIR}"/${PN}-asneeded.patch )
 

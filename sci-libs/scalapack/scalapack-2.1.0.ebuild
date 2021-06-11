@@ -1,13 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils fortran-2 toolchain-funcs
+inherit cmake fortran-2 toolchain-funcs
+
+GCC10_PATCH_HASH="bc6cad585362aa58e05186bb85d4b619080c45a9"
 
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
 HOMEPAGE="https://www.netlib.org/scalapack/"
-SRC_URI="https://www.netlib.org/scalapack/${P}.tgz"
+SRC_URI="
+	https://www.netlib.org/scalapack/${P}.tgz
+	https://github.com/Reference-ScaLAPACK/scalapack/commit/${GCC10_PATCH_HASH}.patch -> ${P}-gcc10.patch
+	"
 
 LICENSE="BSD"
 SLOT="0"
@@ -15,17 +20,16 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	virtual/lapack
 	virtual/mpi"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
-PATCHES=(
-)
+PATCHES=( "${DISTDIR}/${P}-gcc10.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use static-libs; then
 		mkdir "${WORKDIR}/${PN}_static" || die
@@ -43,7 +47,7 @@ src_configure() {
 			-DBUILD_TESTING=$(usex test)
 			$@
 		)
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 
 	scalapack_configure -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
@@ -53,15 +57,15 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use static-libs && \
-		CMAKE_BUILD_DIR="${WORKDIR}/${PN}_static" cmake-utils_src_compile
+		CMAKE_BUILD_DIR="${WORKDIR}/${PN}_static" cmake_src_compile
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use static-libs && \
-		CMAKE_BUILD_DIR="${WORKDIR}/${PN}_static" cmake-utils_src_install
+		CMAKE_BUILD_DIR="${WORKDIR}/${PN}_static" cmake_src_install
 
 	insinto /usr/include/blacs
 	doins BLACS/SRC/*.h

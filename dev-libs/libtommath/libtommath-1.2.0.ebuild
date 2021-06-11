@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,13 +11,15 @@ SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="doc examples static-libs"
+
+BDEPEND="sys-devel/libtool"
 
 src_prepare() {
 	default
 
-	# need libtool for cross compilation. Bug #376643
+	# need libtool for cross compilation, bug #376643
 	cat <<-EOF > configure.ac
 	AC_INIT(libtommath, 0)
 	AM_INIT_AUTOMAKE
@@ -26,9 +28,10 @@ src_prepare() {
 	AC_OUTPUT
 	EOF
 
-	touch NEWS README AUTHORS ChangeLog Makefile.am
+	touch NEWS README AUTHORS ChangeLog Makefile.am || die
 
 	eautoreconf
+
 	export LIBTOOL="${S}"/libtool
 }
 
@@ -62,6 +65,11 @@ src_test() {
 
 src_install() {
 	_emake -f makefile.shared install
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local path="usr/$(get_libdir)/libtommath.${PV}.dylib"
+		install_name_tool -id "${EPREFIX}/${path}" "${ED}/${path}" || die "Failed to adjust install_name"
+	fi
 
 	# We only link against -lc, so drop the .la file.
 	find "${ED}" -name '*.la' -delete || die

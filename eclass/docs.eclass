@@ -1,29 +1,61 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: docs.eclass
 # @MAINTAINER:
-# Andrew Ammerlaan <andrewammerlaan@riseup.net>
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # @AUTHOR:
-# Author: Andrew Ammerlaan <andrewammerlaan@riseup.net>
+# Author: Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # Based on the work of: Michał Górny <mgorny@gentoo.org>
 # @SUPPORTED_EAPIS: 6 7
 # @BLURB: A simple eclass to build documentation.
 # @DESCRIPTION:
-# A simple eclass providing functions to build documentation.
+# A simple eclass providing basic functions and variables to build
+# documentation.
 #
-# Please note that docs sets RDEPEND and DEPEND unconditionally
-# for you.
+# Please note that this eclass appends to RDEPEND and DEPEND
+# unconditionally for you.
 #
 # This eclass also appends "doc" to IUSE, and sets HTML_DOCS
-# to the location of the compiled documentation
+# to the location of the compiled documentation automatically,
+# 'einstalldocs' will then automatically install the documentation
+# to the correct directory.
 #
 # The aim of this eclass is to make it easy to add additional
-# doc builders. To do this, add a <DOCS_BUILDER>-deps and
-# <DOCS_BUILDER>-build function for your doc builder.
+# doc builders. To do this, add a <DOCS_BUILDER>_deps and
+# <DOCS_BUILDER>_compile function for your doc builder.
 # For python based doc builders you can use the
 # python_append_deps function to append [${PYTHON_USEDEP}]
 # automatically to additional dependencies.
+#
+# Example use doxygen:
+# @CODE
+# DOCS_BUILDER="doxygen"
+# DOCS_DEPEND="media-gfx/imagemagick"
+# DOCS_DIR="docs"
+#
+# inherit docs
+#
+# ...
+#
+# src_compile() {
+# 	default
+# 	docs_compile
+# }
+# @CODE
+#
+# Example use mkdocs with distutils-r1:
+# @CODE
+# DOCS_BUILDER="mkdocs"
+# DOCS_DEPEND="dev-python/mkdocs-material"
+# DOCS_DIR="doc"
+#
+# PYTHON_COMPAT=( python3_{7,8,9} )
+#
+# inherit distutils-r1 docs
+#
+# ...
+# @CODE
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5)
@@ -50,10 +82,15 @@ esac
 # Path containing the doc builder config file(s).
 #
 # For sphinx this is the location of "conf.py"
-# For mkdocs this is the location of "mkdocs.yml"
 #
+# For mkdocs this is the location of "mkdocs.yml"
 # Note that mkdocs.yml often does not reside
 # in the same directory as the actual doc files
+#
+# For doxygen the default name is Doxyfile, but
+# package may use a non-standard name. If this
+# is the case one should set DOCS_CONFIG_NAME to
+# the correct name
 #
 # Defaults to ${S}
 
@@ -61,30 +98,38 @@ esac
 # @DEFAULT_UNSET
 # @PRE_INHERIT
 # @DESCRIPTION:
-# Sets additional dependencies to build docs.
+# Sets additional dependencies required to build the
+# documentation.
 # For sphinx and mkdocs these dependencies should
-# be specified without [${PYTHON_USEDEP}], this
+# be specified *without* [${PYTHON_USEDEP}], this
 # is added by the eclass. E.g. to depend on mkdocs-material:
 #
+# @CODE
 # DOCS_DEPEND="dev-python/mkdocs-material"
+# @CODE
 #
-# This eclass appends to this variable, so you can
-# call it later in your ebuild again if necessary.
+# This eclass appends to this variable, this makes it
+# possible to call it later in your ebuild again if
+# necessary.
 
 # @ECLASS-VARIABLE: DOCS_AUTODOC
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Sets whether to use sphinx.ext.autodoc/mkautodoc
-# Defaults to 1 (True) for sphinx, and 0 (False) for mkdocs
+# Defaults to 1 (True) for sphinx, and 0 (False) for mkdocs.
+# Not relevant for doxygen.
 
 # @ECLASS-VARIABLE: DOCS_OUTDIR
 # @DESCRIPTION:
-# Sets where the compiled files will be put.
-# There's no real reason to change this, but this
-# variable is useful if you want to overwrite the HTML_DOCS
-# added by this eclass. E.g.:
+# Sets the directory where the documentation should
+# be built into. There is no real reason to change this.
+# However, this variable is useful if the package should
+# also install other HTML files.
 #
+# Example use:
+# @CODE
 # HTML_DOCS=( "${yourdocs}" "${DOCS_OUTDIR}/." )
+# @CODE
 #
 # Defaults to ${S}/_build/html
 
@@ -93,18 +138,19 @@ esac
 # Name of the doc builder config file.
 #
 # Only relevant for doxygen, as it allows
-# config files with non-standard names
+# config files with non-standard names.
+# Does not do anything for mkdocs or sphinx.
 #
 # Defaults to Doxyfile for doxygen
 
 if [[ ! ${_DOCS} ]]; then
 
-# For the python based DOCS_BUILDERS we need to inherit python-any-r1
+# For the python based DOCS_BUILDERS we need to inherit any python eclass
 case ${DOCS_BUILDER} in
 	"sphinx"|"mkdocs")
 		# We need the python_gen_any_dep function
-		if [[ ! ${_PYTHON_R1} && ! ${_PYTHON_ANY_R1} ]]; then
-			die "python-r1 or python-any-r1 needs to be inherited as well to use python based documentation builders"
+		if [[ ! ${_PYTHON_R1} && ! ${_PYTHON_ANY_R1} && ! ${_PYTHON_SINGLE_R1} ]]; then
+			die "distutils-r1, python-r1, python-single-r1 or python-any-r1 needs to be inherited to use python based documentation builders"
 		fi
 		;;
 	"doxygen")
@@ -118,7 +164,8 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-# @FUNCTION: python_append_dep
+# @FUNCTION: python_append_deps
+# @INTERNAL
 # @DESCRIPTION:
 # Appends [\${PYTHON_USEDEP}] to all dependencies
 # for python based DOCS_BUILDERs such as mkdocs or
@@ -135,6 +182,7 @@ python_append_deps() {
 }
 
 # @FUNCTION: sphinx_deps
+# @INTERNAL
 # @DESCRIPTION:
 # Sets dependencies for sphinx
 sphinx_deps() {
@@ -142,28 +190,29 @@ sphinx_deps() {
 
 	: ${DOCS_AUTODOC:=1}
 
+	deps="dev-python/sphinx[\${PYTHON_USEDEP}]
+			${DOCS_DEPEND}"
 	if [[ ${DOCS_AUTODOC} == 0 ]]; then
 		if [[ -n "${DOCS_DEPEND}" ]]; then
 			die "${FUNCNAME}: do not set DOCS_AUTODOC to 0 if external plugins are used"
-		else
-			DOCS_DEPEND="$(python_gen_any_dep "
-			dev-python/sphinx[\${PYTHON_USEDEP}]")"
 		fi
-	elif [[ ${DOCS_AUTODOC} == 1 ]]; then
-		DOCS_DEPEND="$(python_gen_any_dep "
-			dev-python/sphinx[\${PYTHON_USEDEP}]
-			${DOCS_DEPEND}")"
-	else
+	elif [[ ${DOCS_AUTODOC} != 0 && ${DOCS_AUTODOC} != 1 ]]; then
 		die "${FUNCNAME}: DOCS_AUTODOC should be set to 0 or 1"
+	fi
+	if [[ ${_PYTHON_SINGLE_R1} ]]; then
+		DOCS_DEPEND="$(python_gen_cond_dep "${deps}")"
+	else
+		DOCS_DEPEND="$(python_gen_any_dep "${deps}")"
 	fi
 }
 
 # @FUNCTION: sphinx_compile
+# @INTERNAL
 # @DESCRIPTION:
 # Calls sphinx to build docs.
 #
-# If you overwrite src_compile or python_compile_all
-# do not call this function, call docs_compile instead
+# If you overwrite python_compile_all do not call
+# this function, call docs_compile instead
 sphinx_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
@@ -190,6 +239,7 @@ sphinx_compile() {
 }
 
 # @FUNCTION: mkdocs_deps
+# @INTERNAL
 # @DESCRIPTION:
 # Sets dependencies for mkdocs
 mkdocs_deps() {
@@ -197,26 +247,28 @@ mkdocs_deps() {
 
 	: ${DOCS_AUTODOC:=0}
 
+	deps="dev-python/mkdocs[\${PYTHON_USEDEP}]
+			${DOCS_DEPEND}"
 	if [[ ${DOCS_AUTODOC} == 1 ]]; then
-		DOCS_DEPEND="$(python_gen_any_dep "
-			dev-python/mkdocs[\${PYTHON_USEDEP}]
-			dev-python/mkautodoc[\${PYTHON_USEDEP}]
-		${DOCS_DEPEND}")"
-	elif [[ ${DOCS_AUTODOC} == 0 ]]; then
-		DOCS_DEPEND="$(python_gen_any_dep "
-			dev-python/mkdocs[\${PYTHON_USEDEP}]
-			${DOCS_DEPEND}")"
-	else
+		deps="dev-python/mkautodoc[\${PYTHON_USEDEP}]
+				${deps}"
+	elif [[ ${DOCS_AUTODOC} != 0 && ${DOCS_AUTODOC} != 1 ]]; then
 		die "${FUNCNAME}: DOCS_AUTODOC should be set to 0 or 1"
+	fi
+	if [[ ${_PYTHON_SINGLE_R1} ]]; then
+		DOCS_DEPEND="$(python_gen_cond_dep "${deps}")"
+	else
+		DOCS_DEPEND="$(python_gen_any_dep "${deps}")"
 	fi
 }
 
 # @FUNCTION: mkdocs_compile
+# @INTERNAL
 # @DESCRIPTION:
 # Calls mkdocs to build docs.
 #
-# If you overwrite src_compile or python_compile_all
-# do not call this function, call docs_compile instead
+# If you overwrite python_compile_all do not call
+# this function, call docs_compile instead
 mkdocs_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
@@ -236,6 +288,7 @@ mkdocs_compile() {
 }
 
 # @FUNCTION: doxygen_deps
+# @INTERNAL
 # @DESCRIPTION:
 # Sets dependencies for doxygen
 doxygen_deps() {
@@ -246,11 +299,9 @@ doxygen_deps() {
 }
 
 # @FUNCTION: doxygen_compile
+# @INTERNAL
 # @DESCRIPTION:
 # Calls doxygen to build docs.
-#
-# If you overwrite src_compile or python_compile_all
-# do not call this function, call docs_compile instead
 doxygen_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return
@@ -273,12 +324,21 @@ doxygen_compile() {
 # @DESCRIPTION:
 # Calls DOCS_BUILDER and sets HTML_DOCS
 #
-# This function must be called in global scope.  Take care not to
-# overwrite the variables set by it. Has support for distutils-r1
-# eclass, but only if this eclass is inherited *after*
-# distutils-r1. If you need to extend src_compile() or
-# python_compile_all(), you can call the original implementation
-# as docs_compile.
+# This function must be called in src_compile. Take care not to
+# overwrite the variables set by it. If distutils-r1 is inherited
+# *before* this eclass, than docs_compile will be automatically
+# added to python_compile_all() and there is no need to call
+# it manually. Note that this function checks if USE="doc" is
+# enabled, and if not automatically exits. Therefore, there is
+# no need to wrap this function in a if statement.
+#
+# Example use:
+# @CODE
+# src_compile() {
+# 	default
+# 	docs_compile
+# }
+# @CODE
 docs_compile() {
 	debug-print-function ${FUNCNAME}
 	use doc || return

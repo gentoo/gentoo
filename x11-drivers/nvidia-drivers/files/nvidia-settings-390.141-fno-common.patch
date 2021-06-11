@@ -1,0 +1,16 @@
+Fix compilation with -fno-common or gcc10
+https://bugs.gentoo.org/706742
+--- a/nvidia-settings/src/gtk+-2.x/ctkvdpau.c
++++ b/nvidia-settings/src/gtk+-2.x/ctkvdpau.c
+@@ -105,2 +105,4 @@
+ 
++struct VDPAUDeviceImpl VDPAUDeviceFunctions;
++
+ static int queryOutputSurface(CtkVDPAU *ctk_vdpau, VdpDevice device,
+--- a/nvidia-settings/src/gtk+-2.x/ctkvdpau.h
++++ b/nvidia-settings/src/gtk+-2.x/ctkvdpau.h
+@@ -48,3 +48,3 @@
+ 
+-struct VDPAUDeviceImpl {
++extern struct VDPAUDeviceImpl {
+ 

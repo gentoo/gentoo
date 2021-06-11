@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://ibiblio.org/pub/linux/apps/sound/mp3-utils/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="gtk"
 
 BDEPEND="
@@ -30,8 +30,12 @@ PATCHES=(
 )
 
 src_compile() {
-	tc-export PKG_CONFIG
-	emake mp3info $(usex gtk gmp3info '') CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	emake \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		mp3info \
+		$(usex gtk gmp3info '')
 }
 
 src_install() {

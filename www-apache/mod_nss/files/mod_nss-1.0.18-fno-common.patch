@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/707172
+--- a/mod_nss.h
++++ b/mod_nss.h
+@@ -376,8 +376,8 @@ typedef struct {
+  */
+ 
+ /* pool and hash to store ServerName and NSSNickname pairs for SNI */
+-apr_pool_t *mp;
+-apr_hash_t *ht;
++extern apr_pool_t *mp;
++extern apr_hash_t *ht;
+ 
+ /* Compatibility between Apache 2.0.x and 2.2.x. The numeric version of
+  * the version first appeared in Apache 2.0.56-dev. I picked 2.0.55 as it

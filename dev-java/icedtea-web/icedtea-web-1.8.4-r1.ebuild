@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 README_GENTOO_SUFFIX="-r2"
 CRATES="dunce-0.1.1"
 
-inherit autotools bash-completion-r1 cargo readme.gentoo-r1
+inherit autotools bash-completion-r1 cargo readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="FOSS Java browser plugin and Web Start implementation"
 HOMEPAGE="https://github.com/AdoptOpenJDK/IcedTea-Web"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdoptOpenJDK/${PN}/archive/${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 LICENSE="GPL-2 GPL-2-with-linking-exception LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 IUSE="doc"
 
 # tests require ton of java deps we don't have packaged/working
@@ -23,6 +23,7 @@ RESTRICT="test"
 
 BDEPEND="
 	app-arch/zip
+	sys-devel/bc
 	virtual/jdk:1.8
 	virtual/pkgconfig
 	virtual/rust
@@ -46,6 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset
 	# some functionality (tagsoup rhino) is disabled, because dev-java is
 	# unmaintained and a lot of things simply does not build anymore.
 	# native plugins also disabled, modern browsers no longer support it.

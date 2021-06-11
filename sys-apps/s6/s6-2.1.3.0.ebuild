@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,22 +23,20 @@ DEPEND=">=sys-devel/make-4.0
 		>=dev-lang/execline-2.1.1.0
 		>=dev-libs/skalibs-2.3.2.0
 	)
-	"
+"
 RDEPEND="
 	!static? (
 		>=dev-lang/execline-2.1.1.0
 		>=dev-libs/skalibs-2.3.2.0
 	)
-	"
+"
 
-src_prepare()
-{
+src_prepare() {
 	# Remove QA warning about LDFLAGS addition
 	sed -i "s~tryldflag LDFLAGS_AUTO -Wl,--hash-style=both~:~" "${S}/configure" || die
 }
 
-src_configure()
-{
+src_configure() {
 	econf \
 		$(use_enable !static shared) \
 		$(use_enable static allstatic) \
@@ -53,13 +51,11 @@ src_configure()
 		--with-sysdeps=/usr/$(get_libdir)/skalibs
 }
 
-src_compile()
-{
+src_compile() {
 	emake DESTDIR="${D}"
 }
 
-src_install()
-{
+src_install() {
 	default
 	dodoc -r examples
 	dohtml -r doc/*

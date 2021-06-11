@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Delta-Update - patch system for updating source-archives."
 HOMEPAGE="http://deltup.sourceforge.net"
@@ -15,13 +15,11 @@ S="${WORKDIR}/${MY_PN}-${PV}/src"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
-IUSE="libressl"
 
 DEPEND="
 	sys-libs/zlib
 	app-arch/bzip2
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}
 	|| ( dev-util/bdelta =dev-util/xdelta-1* )"

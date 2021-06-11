@@ -1,17 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
     <email>fordfrog@gentoo.org</email>
     <name>Miroslav Šulc</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>patrick@gentoo.org</email>
-    <name>Patrick Lauer</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>alicef@gentoo.org</email>
-    <name>Alice Ferrazzi</name>
   </maintainer>
   <longdescription>
 ZABBIX is software for monitoring of your applications, network and servers.
@@ -21,6 +13,7 @@ configure different types of notifications for pre-defined events.
   </longdescription>
   <use>
     <flag name="agent">Enable zabbix agent (for to-be-monitored machines)</flag>
+    <flag name="agent2">Enable go-based zabbix agent 2 (for to-be-monitored machines)</flag>
     <flag name="frontend">Enable zabbix web frontend</flag>
     <flag name="ipv6">Turn on support of IPv6</flag>
     <flag name="proxy">Enable proxy support</flag>

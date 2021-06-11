@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: An eclass for packages having build-time dependency on Python.
 # @DESCRIPTION:
 # A minimal eclass for packages which need any Python interpreter
@@ -38,8 +38,8 @@
 # https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
-	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	[5-7]) ;;
+	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	[6-7]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
@@ -116,8 +116,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example use:
 # @CODE
-# DEPEND="${RDEPEND}
-#	${PYTHON_DEPS}"
+# BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
 # Example value:
@@ -174,6 +173,7 @@ _python_any_set_globals() {
 	local usestr deps i PYTHON_PKG_DEP
 	[[ ${PYTHON_REQ_USE} ]] && usestr="[${PYTHON_REQ_USE}]"
 
+	_PYTHON_ALLOW_PY27=1 \
 	_python_set_impls
 
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
@@ -221,7 +221,7 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 #
 # Example use:
 # @CODE
-# DEPEND="$(python_gen_any_dep '
+# BDEPEND="$(python_gen_any_dep '
 #	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
 #	|| ( dev-python/bar[${PYTHON_USEDEP}]
 #		dev-python/baz[${PYTHON_USEDEP}] )')"

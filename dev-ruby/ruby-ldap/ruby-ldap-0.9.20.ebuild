@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ DESCRIPTION="A Ruby interface to some LDAP libraries"
 HOMEPAGE="https://github.com/bearded/ruby-ldap"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86 ~x86-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 ~sparc x86"
 IUSE="ssl"
 DEPEND=">=net-nds/openldap-2
 	dev-libs/cyrus-sasl

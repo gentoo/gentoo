@@ -1,0 +1,28 @@
+Fix build with QuaZip-1.0.
+
+--- a/phoenix.pro
++++ b/phoenix.pro
+@@ -194,8 +194,8 @@
+ include(pri/qtsysteminfo.pri)
+ 
+ contains(DEFINES, QUAZIP_INSTALLED) {
+-    INCLUDEPATH += /usr/include/quazip
+-    LIBS += -lquazip
++    CONFIG += link_pkgconfig
++    PKGCONFIG += quazip1-qt5
+ } else {
+     include(pri/quazip.pri)
+ }
+--- a/src/utils/folderutils.cpp
++++ b/src/utils/folderutils.cpp
+@@ -35,8 +35,8 @@
+ 
+ #include "../debugdialog.h"
+ #ifdef QUAZIP_INSTALLED
+-#include <quazip/quazip.h>
+-#include <quazip/quazipfile.h>
++#include <quazip.h>
++#include <quazipfile.h>
+ #else
+ #include "../lib/quazip/quazip.h"
+ #include "../lib/quazip/quazipfile.h"

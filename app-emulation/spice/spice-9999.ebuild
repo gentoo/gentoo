@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit git-r3 meson python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
@@ -14,7 +14,9 @@ EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice.git"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="gstreamer libressl lz4 opus sasl smartcard static-libs"
+IUSE="gstreamer lz4 opus sasl smartcard static-libs test"
+
+RESTRICT="!test? ( test )"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
@@ -23,8 +25,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0=
 	>=x11-libs/pixman-0.17.7
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	lz4? ( app-arch/lz4:0= )
 	opus? ( media-libs/opus )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
@@ -35,7 +36,8 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	~app-emulation/spice-protocol-9999
-	smartcard? ( app-emulation/qemu[smartcard] )"
+	smartcard? ( app-emulation/qemu[smartcard] )
+	test? ( net-libs/glib-networking )"
 BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(python_gen_any_dep '
@@ -73,6 +75,7 @@ src_configure() {
 		$(meson_use sasl)
 		$(meson_feature opus)
 		$(meson_feature smartcard)
+		$(meson_use test tests)
 		-Dmanual=false
 		-Dtests=false
 	)

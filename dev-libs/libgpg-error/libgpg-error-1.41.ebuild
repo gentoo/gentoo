@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools libtool multilib-minimal toolchain-funcs prefix
+inherit autotools multilib-minimal toolchain-funcs prefix
 
 DESCRIPTION="Contains error handling functions used by GnuPG software"
-HOMEPAGE="http://www.gnupg.org/related_software/libgpg-error"
+HOMEPAGE="https://www.gnupg.org/related_software/libgpg-error"
 SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="common-lisp nls"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="common-lisp nls static-libs"
 
 RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
@@ -43,15 +43,6 @@ src_prepare() {
 	# not a pure /bin/sh script, so it fails on some hosts
 	hprefixify -w 1 autogen.sh
 	eautoreconf
-
-	if use prefix ; then
-		# upstream seems not interested in trying to understand (#584330)
-		# https://lists.gnupg.org/pipermail/gnupg-devel/2017-March/032671.html
-		# again reported as https://dev.gnupg.org/T4474
-		einfo "Forcing -no-undefined libtool flag ..."
-		sed -i -e 's/\$(no_undefined)/-no-undefined/' src/Makefile.in
-		eend $? || die
-	fi
 }
 
 multilib_src_configure() {
@@ -59,7 +50,8 @@ multilib_src_configure() {
 		$(multilib_is_native_abi || echo --disable-languages)
 		$(use_enable common-lisp languages)
 		$(use_enable nls)
-		--disable-static
+		# required for sys-power/suspend[crypt], bug 751568
+		$(use_enable static-libs static)
 		--enable-threads
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')

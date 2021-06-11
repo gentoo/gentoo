@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools python-r1
 
@@ -12,11 +13,9 @@ SRC_URI="https://github.com/libimobiledevice/libimobiledevice/releases/download/
 
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 LICENSE="GPL-2+ LGPL-2.1+"
-
 SLOT="0/1.0-6" # based on SONAME of libimobiledevice-1.0.so
-
 KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
-IUSE="doc gnutls libressl python static-libs"
+IUSE="doc gnutls python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -25,19 +24,19 @@ RDEPEND="
 	gnutls? (
 		dev-libs/libgcrypt:0
 		>=dev-libs/libtasn1-1.1
-		>=net-libs/gnutls-2.2.0 )
+		>=net-libs/gnutls-2.2.0
+	)
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= ) )
+		dev-libs/openssl:0=
+	)
 	python? (
 		${PYTHON_DEPS}
-		app-pda/libplist[python(-),${PYTHON_USEDEP}] )
+		app-pda/libplist[python(-),${PYTHON_USEDEP}]
+	)
 "
-
 DEPEND="
 	${RDEPEND}
 "
-
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -46,7 +45,10 @@ BDEPEND="
 
 BUILD_DIR="${S}_build"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+PATCHES=(
+	"${FILESDIR}/${P}-slibtool.patch"
+	"${FILESDIR}/${P}-missing_libflags.patch" #787962
+)
 
 src_prepare() {
 	default

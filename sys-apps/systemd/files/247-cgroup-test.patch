@@ -1,0 +1,35 @@
+From ddfc6ad061ad47caeeff901d27cbc59af85e0db3 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 9 Mar 2021 17:57:37 -0500
+Subject: [PATCH] cg_unified_cached: return ENOMEDIUM if we cannot find a known
+ hierarchy
+
+When the test suite is being run in a foreign environment,
+/sys/fs/cgroup might not be set up in a way that we recognize.
+Returning ENOMEDIUM causes the tests to be skipped in this case.
+
+Bug: https://bugs.gentoo.org/771819
+---
+ src/basic/cgroup-util.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/basic/cgroup-util.c b/src/basic/cgroup-util.c
+index 527043a2b39..0b252eb28fb 100644
+--- a/src/basic/cgroup-util.c
++++ b/src/basic/cgroup-util.c
+@@ -2052,8 +2052,14 @@ int cg_unified_cached(bool flush) {
+                         unified_cache = CGROUP_UNIFIED_SYSTEMD;
+                         unified_systemd_v232 = false;
+                 } else {
+-                        if (statfs("/sys/fs/cgroup/systemd/", &fs) < 0)
++                        if (statfs("/sys/fs/cgroup/systemd/", &fs) < 0) {
++                                if (errno == ENOENT) {
++                                        /* Some other software may have set up /sys/fs/cgroup in a configuration we do not recognize. */
++                                        log_debug_errno(errno, "Unsupported cgroupsv1 setup detected: name=systemd hierarchy not found.");
++                                        return -ENOMEDIUM;
++                                }
+                                 return log_debug_errno(errno, "statfs(\"/sys/fs/cgroup/systemd\" failed: %m");
++                        }
+ 
+                         if (F_TYPE_EQUAL(fs.f_type, CGROUP2_SUPER_MAGIC)) {
+                                 log_debug("Found cgroup2 on /sys/fs/cgroup/systemd, unified hierarchy for systemd controller (v232 variant)");

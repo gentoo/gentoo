@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,11 +14,7 @@ SRC_URI="http://darwinsource.opendarwin.org/tarballs/apsl/diskdev_cmds-${MY_PV}.
 LICENSE="APSL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
-IUSE="libressl"
-DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
-"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -29,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-AR.patch
 	"${FILESDIR}"/${P}-no-sysctl.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 src_compile() {

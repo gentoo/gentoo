@@ -1,7 +1,7 @@
 http://pkgs.fedoraproject.org/gitweb/?p=libvisual.git;a=tree
 
---- libvisual/lv_cpu.c
-+++ libvisual/lv_cpu.c
+--- a/libvisual/lv_cpu.c
++++ b/libvisual/lv_cpu.c
 @@ -50,8 +50,19 @@
  #endif
  

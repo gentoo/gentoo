@@ -5,6 +5,7 @@
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 PyHoca-GUI is a client implementation for X2Go using the project's Python X2Go client API (a Python module). PyHoca-GUI uses wxPython for rendering graphical desktop elements (menus, dialog boxes etc.).
 

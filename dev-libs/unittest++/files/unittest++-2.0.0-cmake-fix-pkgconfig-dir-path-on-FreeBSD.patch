@@ -1,0 +1,28 @@
+From 85bade33f596a4dab33eb6d44f662d64fc20f510 Mon Sep 17 00:00:00 2001
+From: Iblis Lin <iblis@hs.ntnu.edu.tw>
+Date: Sat, 14 Jan 2017 23:00:24 +0800
+Subject: [PATCH] cmake: fix pkgconfig dir path on FreeBSD
+
+---
+ CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fb10f47..a0f5511 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,5 +106,10 @@ set(exec_prefix ${CMAKE_INSTALL_PREFIX}/bin)
+ set(libdir      ${CMAKE_INSTALL_PREFIX}/lib)
+ set(includedir  ${CMAKE_INSTALL_PREFIX}/include/UnitTest++)
+ configure_file("UnitTest++.pc.in" "UnitTest++.pc" @ONLY)
++if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
++    set(pkgconfdir  ${CMAKE_INSTALL_PREFIX}/libdata/pkgconfig)
++else()
++    set(pkgconfdir  ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
++endif()
+ install(FILES       "${CMAKE_CURRENT_BINARY_DIR}/UnitTest++.pc"
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig")
++        DESTINATION "${pkgconfdir}")
+-- 
+2.26.2
+

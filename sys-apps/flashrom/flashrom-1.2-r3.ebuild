@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,12 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-v${PV}"
 	SRC_URI="https://download.flashrom.org/releases/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
 DESCRIPTION="Utility for reading, writing, erasing and verifying flash ROM chips"
-HOMEPAGE="https://flashrom.org/"
+HOMEPAGE="https://flashrom.org/Flashrom"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -68,7 +68,7 @@ LIB_DEPEND="
 	developerbox-spi? ( virtual/libusb:1[static-libs(+)] )
 	digilent-spi? ( virtual/libusb:1[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
-	ft2232-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+	ft2232-spi? ( dev-embedded/libftdi:1=[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
 	internal? ( sys-apps/pciutils[static-libs(+)] )
 	it8212? ( sys-apps/pciutils[static-libs(+)] )
@@ -85,7 +85,7 @@ LIB_DEPEND="
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
 	stlinkv3-spi? ( virtual/libusb:1[static-libs(+)] )
-	usbblaster-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+	usbblaster-spi? ( dev-embedded/libftdi:1=[static-libs(+)] )
 "
 RDEPEND="${LIB_DEPEND//\[static-libs(+)]}"
 DEPEND="${RDEPEND}

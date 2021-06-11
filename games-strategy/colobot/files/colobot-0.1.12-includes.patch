@@ -21,3 +21,25 @@ index bc64dc232..dd4e02ff4 100644
  #include <string>
  #include <boost/optional.hpp>
  
+From fc2bd68876ac6302dbc8e91e8ffa33592db14b21 Mon Sep 17 00:00:00 2001
+From: suve <veg@svgames.pl>
+Date: Sun, 9 Feb 2020 00:36:05 +0100
+Subject: [PATCH] Fix missing std includes
+
+---
+ src/CBot/CBotInstr/CBotExprLitString.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/CBot/CBotInstr/CBotExprLitString.cpp b/src/CBot/CBotInstr/CBotExprLitString.cpp
+index fc2541624..69e42d607 100644
+--- a/src/CBot/CBotInstr/CBotExprLitString.cpp
++++ b/src/CBot/CBotInstr/CBotExprLitString.cpp
+@@ -24,6 +24,8 @@
+ 
+ #include "CBot/CBotVar/CBotVar.h"
+ 
++#include <stdexcept>
++
+ namespace CBot
+ {
+ 

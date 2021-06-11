@@ -1,23 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils multilib toolchain-funcs multilib-minimal
+inherit multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="data compression algorithm for bi-level high-resolution images"
 HOMEPAGE="http://www.cl.cam.ac.uk/~mgk25/jbigkit/"
 SRC_URI="http://www.cl.cam.ac.uk/~mgk25/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/2.1" # Since we install libjbig.so and libjbig85.so without version, use ${PV} like 2.1
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+SLOT="0/${PV}" # Since we install unversioned libraries, use ${PV} subslots.
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
 DOCS="ANNOUNCE CHANGES TODO libjbig/*.txt pbmtools/*.txt"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch
+	default
 	multilib_copy_sources
 	tc-export AR CC RANLIB
 }
@@ -27,9 +31,7 @@ multilib_src_compile() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		$(multilib_is_native_abi || echo lib)
 
-	if use static-libs; then
-		cd libjbig && emake static
-	fi
+	use static-libs && emake -C libjbig static
 }
 
 multilib_src_test() {
@@ -42,8 +44,7 @@ multilib_src_install() {
 		doman pbmtools/jbgtopbm.1 pbmtools/pbmtojbg.1
 	fi
 
-	insinto /usr/include
-	doins libjbig/*.h
-	dolib libjbig/libjbig{,85}$(get_libname)
-	use static-libs && dolib libjbig/libjbig{,85}.a
+	doheader libjbig/*.h
+	dolib.so libjbig/libjbig{,85}$(get_libname)
+	use static-libs && dolib.a libjbig/libjbig{,85}.a
 }

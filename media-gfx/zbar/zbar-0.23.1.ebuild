@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 virtualx
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mchehab/zbar/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 IUSE="dbus graphicsmagick gtk +imagemagick introspection java jpeg nls python qt5 static-libs test +threads v4l X xv"
 REQUIRED_USE="
@@ -83,8 +83,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}_fix_leftover_on_shell_compatibility.patch"
 	"${FILESDIR}/${P}_fix_unittest.patch"
-	"${FILESDIR}/zbar-0.23_fix_Qt5X11Extras_detect.patch"
-	"${FILESDIR}/zbar-0.23_fix_python_detect.patch"
+	"${FILESDIR}/${P}_musl_include_locale_h.patch"
+	"${FILESDIR}/${PN}-0.23_fix_Qt5X11Extras_detect.patch"
+	"${FILESDIR}/${PN}-0.23_fix_python_detect.patch"
+	"${FILESDIR}/${P}-autoconf-2.70.patch"
+	"${FILESDIR}/${PN}-0.23.1_python_tp_print.patch"
 )
 
 DOCS=( README.md NEWS.md TODO.md HACKING.md TODO.md ChangeLog )

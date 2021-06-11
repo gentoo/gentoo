@@ -1,0 +1,58 @@
+--- a/bin/antler-keyboard.in
++++ b/bin/antler-keyboard.in
+@@ -18,24 +18,4 @@
+ # along with this program; if not, write to the Free Software Foundation,
+ # Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+-script_dir="$(dirname "$(readlink -f ${0})")"
+-
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-datarootdir=@datarootdir@
+-
+-if [ $script_dir = "@libexecdir@" ]
+-then
+-  datadir="$(@PYTHON@ -c "from gi.repository import GLib; print(':'.join(GLib.get_system_data_dirs()))")"
+-  export PYTHONPATH="${prefix}/lib/python@PYTHON_VERSION@/site-packages:${prefix}/lib64/python@PYTHON_VERSION@/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+-  export GI_TYPELIB_PATH="@libdir@/girepository-1.0${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+-  export LD_LIBRARY_PATH="@libdir@${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+-  export XDG_DATA_DIRS="@datadir@${datadir:+:$datadir}"
+-else
+-  export PYTHONPATH="$(dirname $script_dir)${PYTHONPATH:+:$PYTHONPATH}"
+-  export GI_TYPELIB_PATH="$(dirname $script_dir)/libcaribou${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+-  export LD_LIBRARY_PATH="$(dirname $script_dir)/libcaribou/.libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+-  export ANTLER_THEME_PATH="$(dirname $script_dir)/data"
+-fi
+-
+-@PYTHON@ -m caribou.antler.main "$@"
++exec @PYTHON@ -m caribou.antler.main "$@"
+--- a/bin/caribou-preferences.in
++++ b/bin/caribou-preferences.in
+@@ -18,26 +18,7 @@
+ # along with this program; if not, write to the Free Software Foundation,
+ # Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+-script_dir="$(dirname "$(readlink -f ${0})")"
+-
+-prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-datarootdir=@datarootdir@
+-
+-if [ $script_dir = "@bindir@" ]
+-then
+-  datadir="$(@PYTHON@ -c "from gi.repository import GLib; print(':'.join(GLib.get_system_data_dirs()))")"
+-  export PYTHONPATH="@prefix@/lib/python@PYTHON_VERSION@/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+-  export GI_TYPELIB_PATH="@libdir@/girepository-1.0${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+-  export LD_LIBRARY_PATH="@libdir@${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+-  export XDG_DATA_DIRS="@datadir@${datadir:+:$datadir}"
+-else
+-  export PYTHONPATH="$(dirname $script_dir)${PYTHONPATH:+:$PYTHONPATH}"
+-  export GI_TYPELIB_PATH="$(dirname $script_dir)/libcaribou${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+-  export LD_LIBRARY_PATH="$(dirname $script_dir)/libcaribou/.lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+-fi
+-
+-@PYTHON@ -c "
++exec @PYTHON@ -c "
+ import signal
+ signal.signal(signal.SIGINT, signal.SIG_DFL)
+ 

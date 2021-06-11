@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake python-r1
 
@@ -53,5 +53,8 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	python_foreach_impl python_optimize
+
+	if use python; then
+		python_foreach_impl python_optimize
+	fi
 }

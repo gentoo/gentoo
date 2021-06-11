@@ -5,13 +5,17 @@
      <email>cedk@gentoo.org</email>
      <name>Cédric Krier</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>m.seifert@digitalernachschub.de</email>
     <name>Michael Seifert</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <!-- tight dependency of dev-python/stripe -->
+    <email>python@gentoo.org</email>
   </maintainer>
   <upstream>
     <remote-id type="github">stripe/stripe-mock</remote-id>

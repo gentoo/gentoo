@@ -1,11 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic xdg
 
 DESCRIPTION="An emulator for the Sega Dreamcast system"
-HOMEPAGE="http://www.lxdream.org/"
+HOMEPAGE="https://github.com/lxdream/lxdream"
 SRC_URI="http://www.lxdream.org/count.php?file=${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -16,24 +17,26 @@ IUSE="debug profile pulseaudio sdl" #lirc
 
 RDEPEND="
 	app-misc/lirc
-
 	media-libs/alsa-lib
 	media-libs/libpng:0=
-	pulseaudio? ( media-sound/pulseaudio )
-	sdl? ( media-libs/libsdl[sound] )
 	virtual/opengl
 	x11-libs/gtk+:2
-"
+	pulseaudio? ( media-sound/pulseaudio )
+	sdl? ( media-libs/libsdl[sound] )"
 DEPEND="${RDEPEND}
+	!!gnustep-base/gnustep-gui" #377635
+BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
-	virtual/os-headers
-	!!gnustep-base/gnustep-gui" #377635
+	virtual/os-headers"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-glib-single-include.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_prepare() {
 	default
-
-	eapply "${FILESDIR}/${PN}-0.9.1-glib-single-include.patch"
 
 	# Make .desktop file pass desktop-file-validate
 	sed -i \
@@ -54,7 +57,7 @@ src_configure() {
 	# lirc configure option is not recognized
 	# $(use_with lirc) \
 	econf \
-		--datadir="/usr/share" \
+		--datadir="${EPREFIX}/usr/share" \
 		$(use_enable debug trace) \
 		$(use_enable debug watch) \
 		$(use_enable profile profiled) \

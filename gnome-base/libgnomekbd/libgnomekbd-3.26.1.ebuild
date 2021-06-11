@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnome.org"
 
 LICENSE="LGPL-2+"
 SLOT="0/8"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="+introspection test"
 RESTRICT="!test? ( test )"
 
@@ -21,7 +21,8 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.4
 	virtual/pkgconfig

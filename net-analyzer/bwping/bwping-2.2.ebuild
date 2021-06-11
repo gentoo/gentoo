@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}-RELEASE_${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="amd64 ~sparc x86"
 
 src_test() {
 	[[ ${UID} = 0 ]] && default

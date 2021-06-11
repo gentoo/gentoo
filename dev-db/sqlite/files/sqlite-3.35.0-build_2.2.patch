@@ -1,0 +1,441 @@
+Move some code to libsqlite3.so to avoid duplication.
+Initialize some extensions in libsqlite3.so.
+Update test suite.
+
+SQLite revision: acd63062eb06748bfe9e4886639e4f2b54ea6a496a83f10716abbaba4115500b
+
+--- /ext/repair/sqlite3_checker.c.in
++++ /ext/repair/sqlite3_checker.c.in
+@@ -2,6 +2,7 @@
+ ** Read an SQLite database file and analyze its space utilization.  Generate
+ ** text on standard output.
+ */
++#define SQLITE_CORE 1
+ #define TCLSH_INIT_PROC sqlite3_checker_init_proc
+ #define SQLITE_ENABLE_DBPAGE_VTAB 1
+ #define SQLITE_ENABLE_JSON1 1
+@@ -14,7 +15,7 @@
+ #define SQLITE_OMIT_SHARED_CACHE 1
+ #define SQLITE_DEFAULT_MEMSTATUS 0
+ #define SQLITE_MAX_EXPR_DEPTH 0
+-INCLUDE sqlite3.c
++#include "sqlite3.h"
+ INCLUDE $ROOT/src/tclsqlite.c
+ INCLUDE $ROOT/ext/misc/btreeinfo.c
+ INCLUDE $ROOT/ext/repair/checkindex.c
+--- /src/main.c
++++ /src/main.c
+@@ -50,12 +50,36 @@
+ #ifdef SQLITE_ENABLE_FTS5
+ int sqlite3Fts5Init(sqlite3*);
+ #endif
++#if !defined(SQLITE_OMIT_VIRTUALTABLE) && defined(SQLITE_ENABLE_DBPAGE_VTAB)
++int sqlite3DbdataRegister(sqlite3*);
++#endif
+ #ifdef SQLITE_ENABLE_JSON1
+ int sqlite3Json1Init(sqlite3*);
+ #endif
+ #ifdef SQLITE_ENABLE_STMTVTAB
+ int sqlite3StmtVtabInit(sqlite3*);
+ #endif
++int sqlite3AmatchInit(sqlite3*);
++int sqlite3CarrayInit(sqlite3*);
++int sqlite3CompletionVtabInit(sqlite3*);
++int sqlite3CsvInit(sqlite3*);
++int sqlite3DecimalInit(sqlite3*);
++int sqlite3EvalInit(sqlite3*);
++int sqlite3FileioInit(sqlite3*);
++int sqlite3IeeeInit(sqlite3*);
++int sqlite3NextcharInit(sqlite3*);
++int sqlite3PercentileInit(sqlite3*);
++int sqlite3RegexpInit(sqlite3*);
++int sqlite3SeriesInit(sqlite3*);
++int sqlite3ShaInit(sqlite3*);
++int sqlite3ShathreeInit(sqlite3*);
++int sqlite3TotypeInit(sqlite3*);
++int sqlite3UintInit(sqlite3*);
++int sqlite3UuidInit(sqlite3*);
++#if !defined(SQLITE_OMIT_VIRTUALTABLE) && defined(SQLITE_HAVE_ZLIB)
++int sqlite3ZipfileInit(sqlite3*);
++int sqlite3SqlarInit(sqlite3*);
++#endif
+ 
+ /*
+ ** An array of pointers to extension initializer functions for
+@@ -83,6 +107,9 @@
+ #ifdef SQLITE_ENABLE_DBPAGE_VTAB
+   sqlite3DbpageRegister,
+ #endif
++#if !defined(SQLITE_OMIT_VIRTUALTABLE) && defined(SQLITE_ENABLE_DBPAGE_VTAB)
++  sqlite3DbdataRegister,
++#endif
+ #ifdef SQLITE_ENABLE_DBSTAT_VTAB
+   sqlite3DbstatRegister,
+ #endif
+@@ -96,6 +123,27 @@
+ #ifdef SQLITE_ENABLE_BYTECODE_VTAB
+   sqlite3VdbeBytecodeVtabInit,
+ #endif
++  sqlite3AmatchInit,
++  sqlite3CarrayInit,
++  sqlite3CompletionVtabInit,
++  sqlite3CsvInit,
++  sqlite3DecimalInit,
++  sqlite3EvalInit,
++  sqlite3FileioInit,
++  sqlite3IeeeInit,
++  sqlite3NextcharInit,
++  sqlite3PercentileInit,
++  sqlite3RegexpInit,
++  sqlite3SeriesInit,
++  sqlite3ShaInit,
++  sqlite3ShathreeInit,
++  sqlite3TotypeInit,
++  sqlite3UintInit,
++  sqlite3UuidInit,
++#if !defined(SQLITE_OMIT_VIRTUALTABLE) && defined(SQLITE_HAVE_ZLIB)
++  sqlite3ZipfileInit,
++  sqlite3SqlarInit,
++#endif
+ };
+ 
+ #ifndef SQLITE_AMALGAMATION
+--- /src/shell.c.in
++++ /src/shell.c.in
+@@ -69,6 +69,7 @@
+ #include <stdio.h>
+ #include <assert.h>
+ #include "sqlite3.h"
++#include "ext/expert/sqlite3expert.h"
+ typedef sqlite3_int64 i64;
+ typedef sqlite3_uint64 u64;
+ typedef unsigned char u8;
+@@ -135,6 +136,10 @@
+ # define SHELL_USE_LOCAL_GETLINE 1
+ #endif
+ 
++#ifdef SQLITE_HAVE_ZLIB
++#include <zlib.h>
++#endif
++
+ 
+ #if defined(_WIN32) || defined(WIN32)
+ # if SQLITE_OS_WINRT
+@@ -1018,25 +1023,7 @@
+ INCLUDE test_windirent.c
+ #define dirent DIRENT
+ #endif
+-INCLUDE ../ext/misc/shathree.c
+-INCLUDE ../ext/misc/fileio.c
+-INCLUDE ../ext/misc/completion.c
+-INCLUDE ../ext/misc/appendvfs.c
+ INCLUDE ../ext/misc/memtrace.c
+-INCLUDE ../ext/misc/uint.c
+-INCLUDE ../ext/misc/decimal.c
+-INCLUDE ../ext/misc/ieee754.c
+-INCLUDE ../ext/misc/series.c
+-#ifdef SQLITE_HAVE_ZLIB
+-INCLUDE ../ext/misc/zipfile.c
+-INCLUDE ../ext/misc/sqlar.c
+-#endif
+-INCLUDE ../ext/expert/sqlite3expert.h
+-INCLUDE ../ext/expert/sqlite3expert.c
+-
+-#if !defined(SQLITE_OMIT_VIRTUALTABLE) && defined(SQLITE_ENABLE_DBPAGE_VTAB)
+-INCLUDE ../ext/misc/dbdata.c
+-#endif
+ 
+ #if defined(SQLITE_ENABLE_SESSION)
+ /*
+@@ -4608,20 +4595,6 @@
+ #ifndef SQLITE_OMIT_LOAD_EXTENSION
+     sqlite3_enable_load_extension(p->db, 1);
+ #endif
+-    sqlite3_fileio_init(p->db, 0, 0);
+-    sqlite3_shathree_init(p->db, 0, 0);
+-    sqlite3_completion_init(p->db, 0, 0);
+-    sqlite3_uint_init(p->db, 0, 0);
+-    sqlite3_decimal_init(p->db, 0, 0);
+-    sqlite3_ieee_init(p->db, 0, 0);
+-    sqlite3_series_init(p->db, 0, 0);
+-#if !defined(SQLITE_OMIT_VIRTUALTABLE) && defined(SQLITE_ENABLE_DBPAGE_VTAB)
+-    sqlite3_dbdata_init(p->db, 0, 0);
+-#endif
+-#ifdef SQLITE_HAVE_ZLIB
+-    sqlite3_zipfile_init(p->db, 0, 0);
+-    sqlite3_sqlar_init(p->db, 0, 0);
+-#endif
+     sqlite3_create_function(p->db, "shell_add_schema", 3, SQLITE_UTF8, 0,
+                             shellAddSchemaName, 0, 0);
+     sqlite3_create_function(p->db, "shell_module_schema", 1, SQLITE_UTF8, 0,
+@@ -6644,8 +6617,6 @@
+         );
+         goto end_ar_command;
+       }
+-      sqlite3_fileio_init(cmd.db, 0, 0);
+-      sqlite3_sqlar_init(cmd.db, 0, 0);
+       sqlite3_create_function(cmd.db, "shell_putsnl", 1, SQLITE_UTF8, cmd.p,
+                               shellPutsFunc, 0, 0);
+ 
+@@ -11108,6 +11079,7 @@
+ #endif
+   }
+   data.out = stdout;
++  extern int sqlite3_appendvfs_init(sqlite3 *, char **, const sqlite3_api_routines *);
+   sqlite3_appendvfs_init(0,0,0);
+ 
+   /* Go ahead and open the database file if it already exists.  If the
+--- /src/test_config.c
++++ /src/test_config.c
+@@ -359,6 +359,8 @@
+   Tcl_SetVar2(interp, "sqlite_options", "datetime", "1", TCL_GLOBAL_ONLY);
+ #endif
+ 
++  Tcl_SetVar2(interp, "sqlite_options", "decimal", "1", TCL_GLOBAL_ONLY);
++
+ #ifdef SQLITE_OMIT_DECLTYPE
+   Tcl_SetVar2(interp, "sqlite_options", "decltype", "0", TCL_GLOBAL_ONLY);
+ #else
+@@ -546,6 +548,8 @@
+   Tcl_SetVar2(interp, "sqlite_options", "progress", "1", TCL_GLOBAL_ONLY);
+ #endif
+ 
++  Tcl_SetVar2(interp, "sqlite_options", "regexp", "1", TCL_GLOBAL_ONLY);
++
+ #ifdef SQLITE_OMIT_REINDEX
+   Tcl_SetVar2(interp, "sqlite_options", "reindex", "0", TCL_GLOBAL_ONLY);
+ #else
+@@ -668,6 +672,8 @@
+   Tcl_SetVar2(interp, "sqlite_options", "truncate_opt", "1", TCL_GLOBAL_ONLY);
+ #endif
+ 
++  Tcl_SetVar2(interp, "sqlite_options", "uint", "1", TCL_GLOBAL_ONLY);
++
+ #ifdef SQLITE_OMIT_UTF16
+   Tcl_SetVar2(interp, "sqlite_options", "utf16", "0", TCL_GLOBAL_ONLY);
+ #else
+--- /test/e_expr.test
++++ /test/e_expr.test
+@@ -1079,7 +1079,7 @@
+ #
+ #   There is a regexp function if ICU is enabled though.
+ #
+-ifcapable !icu {
++ifcapable !icu&&!regexp {
+   do_catchsql_test e_expr-18.1.1 { 
+     SELECT regexp('abc', 'def') 
+   } {1 {no such function: regexp}}
+--- /test/icu.test
++++ /test/icu.test
+@@ -41,7 +41,7 @@
+   #
+   test_expr icu-1.1 {i1='hello'} {i1 REGEXP 'hello'}  1
+   test_expr icu-1.2 {i1='hello'} {i1 REGEXP '.ello'}  1
+-  test_expr icu-1.3 {i1='hello'} {i1 REGEXP '.ell'}   0
++  test_expr icu-1.3 {i1='hello'} {i1 REGEXP '.ell$'}  0
+   test_expr icu-1.4 {i1='hello'} {i1 REGEXP '.ell.*'} 1
+   test_expr icu-1.5 {i1=NULL}    {i1 REGEXP '.ell.*'} {}
+ 
+--- /test/pragma.test
++++ /test/pragma.test
+@@ -1370,17 +1370,62 @@
+ } ;# ifcapable trigger
+ 
+ ifcapable schema_pragmas {
+-  do_test pragma-11.1 {
+-    execsql2 {
+-      pragma collation_list;
++  ifcapable decimal {
++    ifcapable uint {
++      do_test pragma-11.1 {
++        execsql2 {
++          pragma collation_list;
++        }
++      } {seq 0 name UINT seq 1 name decimal seq 2 name RTRIM seq 3 name NOCASE seq 4 name BINARY}
++      do_test pragma-11.2 {
++        db collate New_Collation blah...
++        execsql {
++          pragma collation_list;
++        }
++      } {0 New_Collation 1 UINT 2 decimal 3 RTRIM 4 NOCASE 5 BINARY}
+     }
+-  } {seq 0 name RTRIM seq 1 name NOCASE seq 2 name BINARY}
+-  do_test pragma-11.2 {
+-    db collate New_Collation blah...
+-    execsql {
+-      pragma collation_list;
++    ifcapable !uint {
++      do_test pragma-11.1 {
++        execsql2 {
++          pragma collation_list;
++        }
++      } {seq 0 name decimal seq 1 name RTRIM seq 2 name NOCASE seq 3 name BINARY}
++      do_test pragma-11.2 {
++        db collate New_Collation blah...
++        execsql {
++          pragma collation_list;
++        }
++      } {0 New_Collation 1 decimal 2 RTRIM 3 NOCASE 4 BINARY}
+     }
+-  } {0 New_Collation 1 RTRIM 2 NOCASE 3 BINARY}
++  }
++  ifcapable !decimal {
++    ifcapable uint {
++      do_test pragma-11.1 {
++        execsql2 {
++          pragma collation_list;
++        }
++      } {seq 0 name UINT seq 1 name RTRIM seq 2 name NOCASE seq 3 name BINARY}
++      do_test pragma-11.2 {
++        db collate New_Collation blah...
++        execsql {
++          pragma collation_list;
++        }
++      } {0 New_Collation 1 UINT 2 RTRIM 3 NOCASE 4 BINARY}
++    }
++    ifcapable !uint {
++      do_test pragma-11.1 {
++        execsql2 {
++          pragma collation_list;
++        }
++      } {seq 0 name RTRIM seq 1 name NOCASE seq 2 name BINARY}
++      do_test pragma-11.2 {
++        db collate New_Collation blah...
++        execsql {
++          pragma collation_list;
++        }
++      } {0 New_Collation 1 RTRIM 2 NOCASE 3 BINARY}
++    }
++  }
+ }
+ 
+ ifcapable schema_pragmas&&tempdb {
+--- /test/sessionfuzz.c
++++ /test/sessionfuzz.c
+@@ -698,49 +698,6 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <assert.h>
+-#ifndef OMIT_ZLIB
+-#include "zlib.h"
+-#endif
+-
+-/*
+-** Implementation of the "sqlar_uncompress(X,SZ)" SQL function
+-**
+-** Parameter SZ is interpreted as an integer. If it is less than or
+-** equal to zero, then this function returns a copy of X. Or, if
+-** SZ is equal to the size of X when interpreted as a blob, also
+-** return a copy of X. Otherwise, decompress blob X using zlib
+-** utility function uncompress() and return the results (another
+-** blob).
+-*/
+-static void sqlarUncompressFunc(
+-  sqlite3_context *context,
+-  int argc,
+-  sqlite3_value **argv
+-){
+-#ifdef OMIT_ZLIB
+-  sqlite3_result_value(context, argv[0]);
+-#else
+-  uLong nData;
+-  uLongf sz;
+-
+-  assert( argc==2 );
+-  sz = sqlite3_value_int(argv[1]);
+-
+-  if( sz<=0 || sz==(nData = sqlite3_value_bytes(argv[0])) ){
+-    sqlite3_result_value(context, argv[0]);
+-  }else{
+-    const Bytef *pData= sqlite3_value_blob(argv[0]);
+-    Bytef *pOut = sqlite3_malloc(sz);
+-    if( Z_OK!=uncompress(pOut, &sz, pData, nData) ){
+-      sqlite3_result_error(context, "error in uncompress()", -1);
+-    }else{
+-      sqlite3_result_blob(context, pOut, sz, SQLITE_TRANSIENT);
+-    }
+-    sqlite3_free(pOut);
+-  }
+-#endif
+-}
+-
+ 
+ /* Run a chunk of SQL.  If any errors happen, print an error message
+ ** and exit.
+--- /tool/mksqlite3c.tcl
++++ /tool/mksqlite3c.tcl
+@@ -129,6 +129,7 @@
+    rtree.h
+    sqlite3session.h
+    sqlite3.h
++   sqlite3expert.h
+    sqlite3ext.h
+    sqlite3rbu.h
+    sqliteicu.h
+@@ -416,6 +417,28 @@
+    sqlite3session.c
+    fts5.c
+    stmt.c
++   amatch.c
++   appendvfs.c
++   carray.c
++   completion.c
++   csv.c
++   dbdata.c
++   decimal.c
++   eval.c
++   fileio.c
++   ieee754.c
++   nextchar.c
++   percentile.c
++   regexp.c
++   series.c
++   sha1.c
++   shathree.c
++   sqlar.c
++   sqlite3expert.c
++   totype.c
++   uint.c
++   uuid.c
++   zipfile.c
+ } {
+   copy_file tsrc/$file
+ }
+--- /tool/sqlite3_analyzer.c.in
++++ /tool/sqlite3_analyzer.c.in
+@@ -14,9 +14,6 @@
+ #define SQLITE_DEFAULT_MEMSTATUS 0
+ #define SQLITE_MAX_EXPR_DEPTH 0
+ #define SQLITE_OMIT_LOAD_EXTENSION 1
+-#ifndef USE_EXTERNAL_SQLITE
+-INCLUDE sqlite3.c
+-#endif
+ INCLUDE $ROOT/src/tclsqlite.c
+ 
+ const char *sqlite3_analyzer_init_proc(Tcl_Interp *interp){
+--- /tool/sqltclsh.c.in
++++ /tool/sqltclsh.c.in
+@@ -27,21 +27,13 @@
+ #define SQLITE_OMIT_SHARED_CACHE 1
+ #define SQLITE_DEFAULT_MEMSTATUS 0
+ #define SQLITE_MAX_EXPR_DEPTH 0
+-INCLUDE sqlite3.c
+-INCLUDE $ROOT/ext/misc/appendvfs.c
+-#ifdef SQLITE_HAVE_ZLIB
+-INCLUDE $ROOT/ext/misc/zipfile.c
+-INCLUDE $ROOT/ext/misc/sqlar.c
+-#endif
++#include "sqlite3.h"
+ INCLUDE $ROOT/src/tclsqlite.c
+ 
+ const char *sqlite3_tclapp_init_proc(Tcl_Interp *interp){
+   (void)interp;
++  extern int sqlite3_appendvfs_init(sqlite3 *,char **, const sqlite3_api_routines *);
+   sqlite3_appendvfs_init(0,0,0);
+-#ifdef SQLITE_HAVE_ZLIB
+-  sqlite3_auto_extension((void(*)(void))sqlite3_sqlar_init);
+-  sqlite3_auto_extension((void(*)(void))sqlite3_zipfile_init);
+-#endif
+ 
+   return
+ BEGIN_STRING

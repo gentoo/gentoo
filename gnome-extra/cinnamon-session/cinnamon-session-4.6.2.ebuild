@@ -1,8 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit meson gnome2-utils xdg
+
+PYTHON_COMPAT=( python3_{7,8} )
+
+inherit meson gnome2-utils python-any-r1 xdg-utils
 
 DESCRIPTION="Cinnamon session manager"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/"
@@ -10,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc ipv6 systemd"
 
 COMMON_DEPEND="
@@ -39,12 +42,18 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-util/intltool-0.40.6
 	virtual/pkgconfig
 	doc? (
 		app-text/xmlto
 		dev-libs/libxslt )
 "
+
+src_prepare() {
+	default
+	python_fix_shebang data
+}
 
 src_configure() {
 	local emesonargs=(
@@ -56,11 +65,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	xdg_pkg_postinst
+	xdg_icon_cache_update
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
-	xdg_pkg_postrm
+	xdg_icon_cache_update
 	gnome2_schemas_update
 }

@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/754987
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -123,31 +123,31 @@
+ 	$(NULL)
+ 
+ $(hostnamed_built_sources) : data/org.freedesktop.hostname1.xml
+-	$(AM_V_GEN)( pushd "$(srcdir)/src" > /dev/null; \
++	$(AM_V_GEN)( cd "$(srcdir)/src" && \
+ 	$(GDBUS_CODEGEN) \
+ 	--interface-prefix org.freedesktop. \
+ 	--c-namespace OpenrcSettingsdHostnamed \
+ 	--generate-c-code hostname1-generated \
+ 	$(abs_srcdir)/data/org.freedesktop.hostname1.xml; \
+-	popd > /dev/null )
++	)
+ 
+ $(localed_built_sources) : data/org.freedesktop.locale1.xml
+-	$(AM_V_GEN)( pushd "$(srcdir)/src" > /dev/null; \
++	$(AM_V_GEN)( cd "$(srcdir)/src" && \
+ 	$(GDBUS_CODEGEN) \
+ 	--interface-prefix org.freedesktop. \
+ 	--c-namespace OpenrcSettingsdLocaled \
+ 	--generate-c-code locale1-generated \
+ 	$(abs_srcdir)/data/org.freedesktop.locale1.xml; \
+-	popd > /dev/null )
++	)
+ 
+ $(timedated_built_sources) : data/org.freedesktop.timedate1.xml
+-	$(AM_V_GEN)( pushd "$(srcdir)/src" > /dev/null; \
++	$(AM_V_GEN)( cd "$(srcdir)/src" && \
+ 	$(GDBUS_CODEGEN) \
+ 	--interface-prefix org.freedesktop. \
+ 	--c-namespace OpenrcSettingsdTimedated \
+ 	--generate-c-code timedate1-generated \
+ 	$(abs_srcdir)/data/org.freedesktop.timedate1.xml; \
+-	popd > /dev/null )
++	)
+ 
+ BUILT_SOURCES = \
+ 	$(hostnamed_built_sources) \
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1315,31 +1315,31 @@
+ 	$(do_subst) < $(srcdir)/$< > $(srcdir)/$@
+ 
+ $(hostnamed_built_sources) : data/org.freedesktop.hostname1.xml
+-	$(AM_V_GEN)( pushd "$(srcdir)/src" > /dev/null; \
++	$(AM_V_GEN)( cd "$(srcdir)/src" && \
+ 	$(GDBUS_CODEGEN) \
+ 	--interface-prefix org.freedesktop. \
+ 	--c-namespace OpenrcSettingsdHostnamed \
+ 	--generate-c-code hostname1-generated \
+ 	$(abs_srcdir)/data/org.freedesktop.hostname1.xml; \
+-	popd > /dev/null )
++	)
+ 
+ $(localed_built_sources) : data/org.freedesktop.locale1.xml
+-	$(AM_V_GEN)( pushd "$(srcdir)/src" > /dev/null; \
++	$(AM_V_GEN)( cd "$(srcdir)/src" && \
+ 	$(GDBUS_CODEGEN) \
+ 	--interface-prefix org.freedesktop. \
+ 	--c-namespace OpenrcSettingsdLocaled \
+ 	--generate-c-code locale1-generated \
+ 	$(abs_srcdir)/data/org.freedesktop.locale1.xml; \
+-	popd > /dev/null )
++	)
+ 
+ $(timedated_built_sources) : data/org.freedesktop.timedate1.xml
+-	$(AM_V_GEN)( pushd "$(srcdir)/src" > /dev/null; \
++	$(AM_V_GEN)( cd "$(srcdir)/src" && \
+ 	$(GDBUS_CODEGEN) \
+ 	--interface-prefix org.freedesktop. \
+ 	--c-namespace OpenrcSettingsdTimedated \
+ 	--generate-c-code timedate1-generated \
+ 	$(abs_srcdir)/data/org.freedesktop.timedate1.xml; \
+-	popd > /dev/null )
++	)
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

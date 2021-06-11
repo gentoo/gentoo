@@ -1,5 +1,5 @@
---- src/rogue/g_local.h.orig
-+++ src/rogue/g_local.h
+--- a/rogue/g_local.h
++++ b/rogue/g_local.h
 @@ -24,3 +24,3 @@
  #ifndef _WIN32
 -#include <nan.h>

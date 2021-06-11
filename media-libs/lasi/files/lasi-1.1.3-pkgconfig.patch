@@ -1,0 +1,20 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,6 +66,7 @@ ${CMAKE_CURRENT_BINARY_DIR}/config.h
+ configure_file(
+ ${CMAKE_CURRENT_SOURCE_DIR}/lasi.pc.in
+ ${CMAKE_CURRENT_BINARY_DIR}/lasi.pc
++@ONLY
+ )
+ 
+ install(FILES
+--- a/lasi.pc.in
++++ b/lasi.pc.in
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
++libdir=${exec_prefix}/@libdir@
+ includedir=@includedir@
+ 
+ Name: LASi

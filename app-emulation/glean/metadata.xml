@@ -5,6 +5,10 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>openstack@gentoo.org</email>
 		<name>Openstack</name>

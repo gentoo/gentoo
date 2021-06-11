@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit python-r1
 
 SRC_URI="https://dev.gentoo.org/~bircoph/distfiles/${P}.tar.xz"

@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="save panic"
@@ -10,10 +10,10 @@ ebtables_save=${EBTABLES_SAVE}
 
 depend() {
 	before net
-	use logger
 }
 
 ebtables_tables() {
+	local table
 	for table in filter nat broute; do
 		if ${ebtables_bin} -t ${table} -L > /dev/null 2>&1; then
 			printf '%s' "${table} "
@@ -80,8 +80,8 @@ reload() {
 
 save() {
 	ebegin "Saving ebtables state"
-	touch "${ebtables_save}"
-	chmod 0600 "${ebtables_save}"
+	checkpath -d -m 0755 "${ebtables_save%/*}"
+	checkpath -f -m 0600 "${ebtables_save}"
 	${ebtables_bin}-save $(ebtables_tables) ${SAVE_RESTORE_OPTIONS} > "${ebtables_save}"
 	eend $?
 }

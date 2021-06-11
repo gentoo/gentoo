@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils ltprune multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="Open Source video codec"
 HOMEPAGE="http://dirac.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug doc cpu_flags_x86_mmx static-libs"
 
 RDEPEND=""
@@ -51,6 +51,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 	einstalldocs
 }

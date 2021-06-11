@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic
+inherit autotools desktop flag-o-matic virtualx
 
 DESCRIPTION="Program suite to record, replay and distribute user actions"
 HOMEPAGE="https://xnee.wordpress.com/"

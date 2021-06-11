@@ -1,4 +1,4 @@
-# Copyright 2013-2020 Gentoo Authors
+# Copyright 2013-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://cdn.kernel.org/pub/linux/kernel/v${PV%%.*}.x/linux-${PV}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0/0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 IUSE="nls"
 
 # File collision w/ headers of the deprecated cpufrequtils

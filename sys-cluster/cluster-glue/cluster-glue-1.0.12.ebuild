@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MY_P="${P/cluster-}"
-inherit autotools eutils multilib user
+inherit autotools multilib user
 
 DESCRIPTION="Library pack for Heartbeat / Pacemaker"
 HOMEPAGE="http://www.linux-ha.org/wiki/Cluster_Glue"
@@ -24,8 +24,7 @@ RDEPEND="app-text/asciidoc
 	net-misc/curl
 	net-misc/iputils
 	|| ( net-misc/netkit-telnetd net-misc/telnet-bsd )
-	dev-libs/libxml2
-	!<sys-cluster/heartbeat-3.0"
+	dev-libs/libxml2"
 DEPEND="${RDEPEND}
 	doc? (
 		dev-libs/libxslt

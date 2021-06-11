@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: USE xine could be restored if support for xine-lib-1.2.x
@@ -6,7 +6,7 @@
 
 EAPI=6
 
-inherit eutils libtool ltprune
+inherit epatch libtool
 
 DESCRIPTION="Powerful GTK+ based image & movie viewer"
 HOMEPAGE="http://gtkmmviewer.sourceforge.net/"
@@ -72,5 +72,5 @@ src_install() {
 		libdir="${ED}usr/$(get_libdir)" \
 		install
 
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

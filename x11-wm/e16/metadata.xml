@@ -12,6 +12,7 @@
     <flag name="libhack">Build libhack window mode helper library</flag>
     <flag name="modules">Enable support for loadable modules</flag>
     <flag name="pango">Enable pango font rendering using <pkg>x11-libs/pango</pkg></flag>
+    <flag name="player">Enable audio using aplay from <pkg>media-sound/alsa-utils</pkg></flag>
     <flag name="themes">Install the official E16 themes using <pkg>x11-themes/e16-themes</pkg></flag>
     <flag name="xi2">Enable the experimental multipointer input XInput2. This incldues the MultiPointer X feature</flag>
     <flag name="xpresent">Enable support for the X Present extension via <pkg>x11-libs/libXpresent</pkg></flag>

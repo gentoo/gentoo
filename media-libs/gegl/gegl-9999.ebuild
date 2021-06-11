@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 VALA_USE_DEPEND=vapigen
 
-inherit meson gnome2-utils python-any-r1 vala
+inherit meson optfeature python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -62,6 +62,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-lang/perl
 	>=dev-util/gtk-doc-am-1
 	>=sys-devel/gettext-0.19.8
@@ -71,23 +72,22 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-DOCS=( AUTHORS docs/ChangeLog docs/NEWS.txt )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.18-drop-failing-tests.patch
-	"${FILESDIR}"/${PN}-0.4.18-program-suffix.patch
-)
+DOCS=( AUTHORS docs/ChangeLog docs/NEWS.adoc )
 
 python_check_deps() {
+	use test || return 0
 	has_version -b ">=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {
 	default
+	# patch executables suffix
+	sed -i -e "s/'gegl'/'gegl-0.4'/" bin/meson.build || die
+	sed -i -e "s/'gegl-imgcmp'/'gegl-imgcmp-0.4'/" tools/meson.build || die
+	sed -i -e "s/gegl-imgcmp/gegl-imgcmp-0.4/" tests/simple/test-exp-combine.sh || die
+	# skip UNEXPECTED PASSED 'matting-levin' test
+	sed -i -e "s/composition_tests += 'matting-levin'//" \
+		-e "s/composition_tests_fail += 'matting-levin'//" tests/compositions/meson.build || die
 
 	# don't require Apple's OpenCL on versions of OSX that don't have it
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
@@ -99,8 +99,6 @@ src_prepare() {
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/meson.build || die
 
-	gnome2_environment_reset
-
 	use vala && vala_src_prepare
 }
 
@@ -111,13 +109,7 @@ src_configure() {
 		-Ddocs=false
 		-Dexiv2=disabled
 		-Dgdk-pixbuf=enabled
-		-Dgexiv2=disabled
-		#  - There are two checks for dot, one controllable by --with(out)-graphviz
-		#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
-		-Dgraphviz=disabled
 		-Djasper=disabled
-		-Dlibjpeg=enabled
-		-Dlibpng=enabled
 		#  - libspiro: not in portage main tree
 		-Dlibspiro=disabled
 		-Dlua=disabled
@@ -148,4 +140,8 @@ src_configure() {
 		$(meson_use introspection)
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	optfeature "'Show Image Graph' under GIMP[debug] menu 'File - Debug'" media-gfx/graphviz
 }

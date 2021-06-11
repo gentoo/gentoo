@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils flag-o-matic
+inherit gnome2-utils flag-o-matic
 
 DESCRIPTION="Multiplication Puzzle emulates the multiplication game found in Emacs"
 HOMEPAGE="http://www.mterry.name/gmult/"

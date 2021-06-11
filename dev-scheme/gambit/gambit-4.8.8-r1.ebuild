@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils elisp-common
+inherit elisp-common
 
 MY_PV="${PV//./_}"
 MY_P="${PN}-v${MY_PV}"
@@ -14,7 +14,7 @@ SRC_URI="http://www-labs.iro.umontreal.ca/~gambit/download/gambit/v${PV%.*}/sour
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="ssl? ( dev-libs/openssl:0 )"
 DEPEND="

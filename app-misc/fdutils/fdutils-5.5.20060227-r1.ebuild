@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils
+inherit epatch
 
 MY_P=${PN}_5.5-20060227
 

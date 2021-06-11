@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop toolchain-funcs xdg
+inherit desktop optfeature toolchain-funcs xdg
 
 DESCRIPTION="Drawing program designed for young children"
 HOMEPAGE="http://www.tuxpaint.org/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	app-text/libpaper
@@ -66,8 +66,5 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	if ! has_version "media-gfx/tuxpaint-stamps"; then
-		elog "For additional graphic stamps, you can emerge the"
-		elog "media-gfx/tuxpaint-stamps package."
-	fi
+	optfeature "additional graphic stamps" media-gfx/tuxpaint-stamps
 }

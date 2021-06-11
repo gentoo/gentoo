@@ -11,6 +11,6 @@
 		object-oriented resource interface with RAII semantics.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">lmdbxx</remote-id>
+		<remote-id type="github">hoytech/lmdbxx</remote-id>
 	</upstream>
 </pkgmetadata>

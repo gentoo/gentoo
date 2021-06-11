@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,15 +20,14 @@ HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="5.7/18"
-IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
+IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 numa +perl profiling
 	selinux +server static static-libs systemtap tcmalloc test"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!test? ( test ) libressl? ( test )"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -41,14 +40,12 @@ COMMON_DEPEND="
 	sys-libs/ncurses:0=
 	client-libs? (
 		>=sys-libs/zlib-1.2.3:0=[${MULTILIB_USEDEP},static-libs?]
-		!libressl? ( >=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?] )
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP},static-libs?] )
+		>=dev-libs/openssl-1.0.0:0=[${MULTILIB_USEDEP},static-libs?]
 	)
 	!client-libs? (
 		dev-db/mysql-connector-c[${MULTILIB_USEDEP},static-libs?]
 		>=sys-libs/zlib-1.2.3:0=
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.0:0=
 	)
 	server? (
 		>=app-arch/lz4-0_p131:=
@@ -252,11 +249,6 @@ src_prepare() {
 		man/perror.1 \
 		man/zlib_decompress.1 \
 		|| die
-
-	if use libressl ; then
-		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
-			"${S}/cmake/ssl.cmake" || die
-	fi
 
 	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
 

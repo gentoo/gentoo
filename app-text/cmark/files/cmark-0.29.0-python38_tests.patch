@@ -1,0 +1,31 @@
+From 92697d564042d5b914048e087e4274c3c71e0055 Mon Sep 17 00:00:00 2001
+From: Christopher Fujino <christopherfujino@gmail.com>
+Date: Sun, 12 Jul 2020 16:11:42 -0700
+Subject: [PATCH] replace cgi.escape with html.escape (#656)
+
+---
+ test/normalize.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/normalize.py b/test/normalize.py
+index 6073bf01..f8ece18d 100644
+--- a/test/normalize.py
++++ b/test/normalize.py
+@@ -13,7 +13,7 @@ class HTMLParseError(Exception):
+ from html.entities import name2codepoint
+ import sys
+ import re
+-import cgi
++import html
+ 
+ # Normalization code, adapted from
+ # https://github.com/karlcow/markdown-testsuite/
+@@ -66,7 +66,7 @@ def handle_starttag(self, tag, attrs):
+                     self.output += ("=" + '"' +
+                             urllib.quote(urllib.unquote(v), safe='/') + '"')
+                 elif v != None:
+-                    self.output += ("=" + '"' + cgi.escape(v,quote=True) + '"')
++                    self.output += ("=" + '"' + html.escape(v,quote=True) + '"')
+         self.output += ">"
+         self.last_tag = tag
+         self.last = "starttag"

@@ -1,0 +1,8 @@
+--- a/pytest_verbose_parametrize.py
++++ b/pytest_verbose_parametrize.py
+@@ -1,4 +1,4 @@
+-from collections import Iterable
++from collections.abc import Iterable
+ from six import string_types, text_type
+ 
+ 

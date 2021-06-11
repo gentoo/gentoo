@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus exporter for exabgp instance %i
+Documentation=https://github.com/lusis/exabgp_exporter/blob/master/README.md
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+EnvironmentFile=-/etc/systemd/system/exabgp_exporter@%i.service.env
+Environment=command_args="standalone"
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+ExecStart=/usr/bin/exabgp_exporter $command_args

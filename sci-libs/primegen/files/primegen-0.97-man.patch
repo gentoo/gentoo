@@ -2,8 +2,8 @@ Fix incorrect man page and include mention of the possibility
 of linking to a static libary only.
 https://bugs.gentoo.org/show_bug.cgi?id=562570
 
---- primegen-0.97/primegen.3
-+++ primegen-0.97/primegen.3
+--- a/primegen.3
++++ b/primegen.3
 @@ -14,13 +14,16 @@
  .br
  void \fBprimegen_skipto\fP(&\fIpg\fR,\fIbound\fR);

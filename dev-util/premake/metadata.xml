@@ -13,6 +13,7 @@
 		engine to make build configuration tasks a breeze.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">premake/premake-core</remote-id>
 		<remote-id type="sourceforge">premake</remote-id>
 	</upstream>
 </pkgmetadata>

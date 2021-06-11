@@ -1,0 +1,26 @@
+clang compilefix
+
+wrt bug 740276
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> (13 May 2021)
+diff -Naur dvd-cvs-20090106.orig/player-dvd.c dvd-cvs-20090106/player-dvd.c
+--- dvd-cvs-20090106.orig/player-dvd.c	2021-05-13 18:51:00.823067369 +0200
++++ dvd-cvs-20090106/player-dvd.c	2021-05-13 18:53:17.136067369 +0200
+@@ -2707,7 +2707,7 @@
+     }
+ 
+     uint16_t audioStreamLanguageCode = GetAudioTrackLanguageCode(currentNavAudioTrack);
+-    char audioLanguageStr[3] = {audioStreamLanguageCode, audioStreamLanguageCode >> 8, 0};
++    char audioLanguageStr[3] = {static_cast<char>(audioStreamLanguageCode), static_cast<char>(audioStreamLanguageCode >> 8), 0};
+     if (GetAudioStreamNumbers() > 1)
+         sprintf(buffer,"%s %d/%d %s", audioStreamLanguageCode != 0xFFFF ? audioLanguageStr : "", GetCurrentNavAudioTrackIdx() + 1, GetAudioStreamNumbers() - 1, audioTypeDescr);
+     else
+@@ -2725,7 +2725,7 @@
+     }
+ 
+     int subtitleStreamLanguageCode = GetSubtitleLanguageCode(currentNavSubpStream);
+-    char subtitleLanguageStr[3] = {subtitleStreamLanguageCode, subtitleStreamLanguageCode >> 8, 0};
++    char subtitleLanguageStr[3] = {static_cast<char>(subtitleStreamLanguageCode), static_cast<char>(subtitleStreamLanguageCode >> 8), 0};
+ 
+     if(GetSubtitleStreamNumbers() > 2)
+         sprintf(buffer,"%s %d/%d", subtitleStreamLanguageCode !=0xFFFF ? subtitleLanguageStr : "", GetCurrentNavSubpStreamIdx(), GetSubtitleStreamNumbers() - 1);

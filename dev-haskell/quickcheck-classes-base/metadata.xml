@@ -26,7 +26,7 @@ configuration.</flag>
 		any new typeclasses that the user needs to learn.
 		
 		/Note:/ on GHC &lt; 8.5, this library uses the higher-kinded typeclasses
-		(&#39;Data.Functor.Classes.Show1&#39;, &#39;Data.Functor.Classes.Eq1&#39;, &#39;Data.Functor.Classes.Ord1&#39;, etc.),
+		('Data.Functor.Classes.Show1', 'Data.Functor.Classes.Eq1', 'Data.Functor.Classes.Ord1', etc.),
 		but on GHC &gt;= 8.5, it uses `-XQuantifiedConstraints` to express these
 		constraints more cleanly.
 	</longdescription>

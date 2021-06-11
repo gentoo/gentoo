@@ -1,5 +1,5 @@
---- a/Makefile.am	2019-10-20 22:46:55.603462157 +0200
-+++ b/Makefile.am	2019-10-20 22:47:29.893461028 +0200
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -29,14 +29,3 @@
  
  dist_sysconf_DATA = \

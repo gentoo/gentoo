@@ -1,0 +1,39 @@
+--- pretrace-0.4/Makefile.orig	2021-01-14 13:31:45.950615134 +0300
++++ pretrace-0.4/Makefile	2021-01-14 13:32:04.940676578 +0300
+@@ -2,14 +2,14 @@
+ # $Id: Makefile,v 1.1 2005/07/27 07:45:37 taviso Exp $
+ #
+ 
+-VERSION=0.4
++VERSION?=0.4
+ PREFIX=/usr/local
+ DOCDIR=$(PREFIX)/share/doc/pretrace-$(VERSION)
+ LIBDIR=$(PREFIX)/lib
+ BINDIR=$(PREFIX)/bin
+ MANDIR=$(PREFIX)/share/man
+ 
+-all: libpretrace.so ptgenmap doc
++all: libpretrace.so ptgenmap
+ 	@echo 'libpretrace.so has been built, please see README for instructions.'
+ 	@echo 'type `make install` to install to $(PREFIX)'
+ 
+@@ -26,7 +26,7 @@
+ 	$(CC) $(CFLAGS) -Wall -g -fPIC -c trie.c
+ 
+ libpretrace.so: libpretrace.o trie.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) -g -shared -o libpretrace.so libpretrace.o trie.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -g -shared -Wl,-soname,libpretrace.so -o libpretrace.so libpretrace.o trie.o
+ 
+ doc:
+ 	gzip -9c pretrace.3 > pretrace.3.gz
+@@ -38,8 +41,8 @@
+ 	install -m 0755 libpretrace.so $(LIBDIR)
+ 	install -m 0755 ptgenmap $(BINDIR)
+ 	install -m 0644 README pretrace.conf.example ChangeLog $(DOCDIR)
+-	install -m 0644 pretrace.3.gz $(MANDIR)/man3
+-	install -m 0644 ptgenmap.8.gz $(MANDIR)/man8
++	install -m 0644 pretrace.3 $(MANDIR)/man3
++	install -m 0644 ptgenmap.8 $(MANDIR)/man8
+ 
+ clean:
+ 	-rm -f libpretrace.so libpretrace.o trie.o ptgenmap.o ptgenmap *~

@@ -1,4 +1,4 @@
-# Copyright 2005-2020 Gentoo Authors
+# Copyright 2005-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ if [[ ${PV} == *9999* ]] ; then
 	SLOT="0/9999"
 else
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	SLOT="0/105"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	SLOT="0/110"   # CHECK THIS WHEN BUMPING!!! SUBSLOT IS libpoppler.so SOVERSION
 fi
 
 DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
@@ -57,8 +57,8 @@ RDEPEND="${DEPEND}
 DOCS=( AUTHORS NEWS README.md README-XPDF )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.60.1-qt5-dependencies.patch"
-	"${FILESDIR}/${PN}-20.12.0-respect-cflags.patch"
+	"${FILESDIR}/${PN}-20.12.1-qt5-deps.patch"
+	"${FILESDIR}/${PN}-21.04.0-respect-cflags.patch"
 	"${FILESDIR}/${PN}-0.57.0-disable-internal-jpx.patch"
 )
 
@@ -85,6 +85,7 @@ src_configure() {
 		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT5_TESTS=OFF
 		-DBUILD_CPP_TESTS=OFF
+		-DBUILD_MANUAL_TESTS=OFF
 		-DRUN_GPERF_IF_PRESENT=OFF
 		-DENABLE_SPLASH=ON
 		-DENABLE_ZLIB=ON

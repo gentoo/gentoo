@@ -1,18 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2-utils
 
-DESCRIPTION="A decoding library for RAW image formats"
-HOMEPAGE="https://libopenraw.freedesktop.org/wiki/"
+DESCRIPTION="RAW image formats decoding library"
+HOMEPAGE="https://libopenraw.freedesktop.org/"
 SRC_URI="https://${PN}.freedesktop.org/download/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0/7"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
-IUSE="gtk static-libs test"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+IUSE="gtk test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -25,16 +25,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.35
+"
+BDEPEND="
 	virtual/pkgconfig
 	test? ( net-misc/curl )
 "
 
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
-
 src_configure() {
 	econf \
 		--with-boost="${EPREFIX}"/usr \
-		$(use_enable static-libs static) \
+		--disable-static \
 		$(use_enable gtk gnome)
 }
 

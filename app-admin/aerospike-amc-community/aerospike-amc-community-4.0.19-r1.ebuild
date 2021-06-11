@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user
+inherit user
 
 DESCRIPTION="Web UI based monitoring tool for Aerospike Community Edition Server"
 HOMEPAGE="http://www.aerospike.com"
@@ -15,7 +15,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
-S=$WORKDIR
+S=${WORKDIR}
 
 src_install() {
 	cp -r "$S/"* "$D"

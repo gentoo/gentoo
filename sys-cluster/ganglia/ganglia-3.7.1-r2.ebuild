@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ganglia/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="minimal pcre examples"
 
 DEPEND="dev-libs/confuse

@@ -1,0 +1,46 @@
+From e6825658b7f59a3a933559def9aebf21ff0efb7f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 23 Apr 2021 20:10:31 +0200
+Subject: [PATCH] Drop find_dependency(Qt5Concurrent) from
+ KF5KIOConfig.cmake.in
+
+This was added in 2f83dde2c8e8a25f0fe3dd52012bb49cb69e1ea5 but as far as I can
+see it is only a KIO build time dependency with no Qt5Concurrent header being
+used in KIO headers.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ KF5KIOConfig.cmake.in   | 1 -
+ src/core/CMakeLists.txt | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/KF5KIOConfig.cmake.in b/KF5KIOConfig.cmake.in
+index 687ec512..749e9b9b 100644
+--- a/KF5KIOConfig.cmake.in
++++ b/KF5KIOConfig.cmake.in
+@@ -21,7 +21,6 @@ find_dependency(KF5WindowSystem "@KF_DEP_VERSION@")
+ endif()
+ 
+ find_dependency(Qt5Network "@REQUIRED_QT_VERSION@")
+-find_dependency(Qt5Concurrent "@REQUIRED_QT_VERSION@")
+ find_dependency(Qt5DBus "@REQUIRED_QT_VERSION@")
+ 
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5KIOTargets.cmake")
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 76c3061c..fe4be56b 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -188,9 +188,9 @@ PUBLIC
+  KF5::CoreAddons   # KJob
+  KF5::Service # TODO KF6 move to PRIVATE
+  Qt5::Network
+- Qt5::Concurrent            # QtConcurrentRun in hostinfo.cpp
+  Qt5::DBus
+ PRIVATE
++ Qt5::Concurrent            # QtConcurrentRun in hostinfo.cpp
+  Qt5::Xml                   # davjob.cpp uses QDom
+  KF5::ConfigCore
+  KF5::I18n
+-- 
+2.31.1
+

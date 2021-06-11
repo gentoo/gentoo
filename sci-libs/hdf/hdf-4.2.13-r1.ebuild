@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2 toolchain-funcs autotools flag-o-matic ltprune
+inherit fortran-2 toolchain-funcs autotools flag-o-matic
 
 MYP=${P/_p/-patch}
 
@@ -41,10 +41,14 @@ src_prepare() {
 	default
 	sed -i -e 's/-R/-L/g' config/commence.am || die #rpath
 	eautoreconf
-	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
 }
 
 src_configure() {
+	[[ $(tc-getFC) = *gfortran ]] && append-fflags -fno-range-check
+	# GCC 10 workaround
+	# bug #723014
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
+
 	econf \
 		--enable-shared \
 		--enable-production=gentoo \
@@ -57,8 +61,13 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files --all
+
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
+
 	dodoc release_notes/{RELEASE,HISTORY,bugs_fixed,misc_docs}.txt
+
 	cd "${ED}"usr
 	if use examples; then
 		mv  share/hdf4_examples share/doc/${PF}/examples || die
@@ -66,6 +75,7 @@ src_install() {
 	else
 		rm -r share/hdf4_examples || die
 	fi
+
 	mv bin/ncgen{,-hdf} || die
 	mv bin/ncdump{,-hdf} || die
 	mv share/man/man1/ncgen{,-hdf}.1 || die

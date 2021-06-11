@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6..9} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE='bzip2(+)'
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	S="${WORKDIR}/${P}/repoman"
 else
 	SRC_URI="https://dev.gentoo.org/~zmedico/portage/archives/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Repoman is a Quality Assurance tool for Gentoo ebuilds"
@@ -26,13 +26,14 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=sys-apps/portage-3.0.4[${PYTHON_USEDEP}]
+	>=sys-apps/portage-3.0.18[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
 python_test() {
+	unset REPOMAN_DEFAULT_OPTS
 	esetup.py test
 }
 

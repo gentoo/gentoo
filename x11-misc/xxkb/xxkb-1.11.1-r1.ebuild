@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib toolchain-funcs
+
+inherit toolchain-funcs
 
 DESCRIPTION="eXtended XKB - assign different keymaps to different windows"
 HOMEPAGE="https://sourceforge.net/projects/xxkb/"
@@ -13,10 +14,11 @@ SRC_URI="
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="svg"
 
 RDEPEND="
+	x11-libs/gdk-pixbuf-xlib
 	x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXt
@@ -26,11 +28,11 @@ RDEPEND="
 		x11-libs/gtk+:2
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/rman
+	>=x11-misc/imake-1.0.8-r1
 	svg? ( virtual/pkgconfig )
-	x11-misc/imake
 "
 
 src_prepare() {
@@ -46,7 +48,9 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf $(usex svg -DWITH_SVG_SUPPORT '') || die
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" \
+		xmkmf $(usex svg -DWITH_SVG_SUPPORT '') || die
 }
 
 src_compile() {

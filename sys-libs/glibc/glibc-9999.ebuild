@@ -1,12 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
+TMPFILES_OPTIONAL=1
 
-inherit python-any-r1 prefix eutils toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd multiprocessing
+inherit python-any-r1 prefix toolchain-funcs flag-o-matic gnuconfig \
+	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
@@ -393,6 +394,10 @@ setup_flags() {
 	# glibc aborts if rpath is set by LDFLAGS
 	filter-ldflags '-Wl,-rpath=*'
 
+	# ld can't use -r & --relax at the same time, bug #788901
+	# https://sourceware.org/PR27837
+	filter-ldflags '-Wl,--relax'
+
 	# #492892
 	filter-flags -frecord-gcc-switches
 
@@ -645,21 +650,6 @@ sanity_prechecks() {
 		ewarn "hypervisor, which is probably not what you want."
 	fi
 
-	# Check for sanity of /etc/nsswitch.conf
-	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
-		local entry
-		for entry in passwd group shadow; do
-			if ! egrep -q "^[ \t]*${entry}:.*files" "${EROOT}"/etc/nsswitch.conf; then
-				eerror "Your ${EROOT}/etc/nsswitch.conf is out of date."
-				eerror "Please make sure you have 'files' entries for"
-				eerror "'passwd:', 'group:' and 'shadow:' databases."
-				eerror "For more details see:"
-				eerror "  https://wiki.gentoo.org/wiki/Project:Toolchain/nsswitch.conf_in_glibc-2.26"
-				die "nsswitch.conf has no 'files' provider in '${entry}'."
-			fi
-		done
-	fi
-
 	# ABI-specific checks follow here. Hey, we have a lot more specific conditions that
 	# we test for...
 	if ! is_crosscompile ; then
@@ -775,7 +765,7 @@ src_prepare() {
 		else
 			patchsetname="${RELEASE_VER}-${PATCH_VER}"
 		fi
-		elog "Applying Gentoo Glibc Patchset ${patchsetname}"
+		einfo "Applying Gentoo Glibc Patchset ${patchsetname}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
 	fi
@@ -947,6 +937,10 @@ glibc_do_configure() {
 		# locale data is arch-independent
 		# https://bugs.gentoo.org/753740
 		libc_cv_complocaledir='${exec_prefix}/lib/locale'
+
+		# -march= option tricks build system to infer too
+		# high ISA level: https://sourceware.org/PR27318
+		libc_cv_include_x86_isa_level=no
 
 		${EXTRA_ECONF}
 	)
@@ -1255,7 +1249,6 @@ glibc_do_src_install() {
 		n64     /lib64/ld.so.1
 		# powerpc
 		ppc     /lib/ld.so.1
-		ppc64   /lib64/ld64.so.1
 		# riscv
 		ilp32d  /lib/ld-linux-riscv32-ilp32d.so.1
 		ilp32   /lib/ld-linux-riscv32-ilp32.so.1
@@ -1273,12 +1266,16 @@ glibc_do_src_install() {
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64.so.1
+			# ELFv2 (glibc does not support ELFv1 on LE)
+			ppc64   /lib64/ld64.so.2
 		)
 		;;
 	big)
 		ldso_abi_list+=(
 			# arm
 			arm64   /lib/ld-linux-aarch64_be.so.1
+			# ELFv1 (glibc does not support ELFv2 on BE)
+			ppc64   /lib64/ld64.so.1
 		)
 		;;
 	esac
@@ -1292,6 +1289,27 @@ glibc_do_src_install() {
 		ldso_name="$(alt_prefix)${ldso_abi_list[i+1]}"
 		if [[ ! -L ${ED}/${ldso_name} && ! -e ${ED}/${ldso_name} ]] ; then
 			dosym ../$(get_abi_LIBDIR ${ldso_abi})/${ldso_name##*/} ${ldso_name}
+		fi
+	done
+
+	# In the LSB 5.0 definition, someone had the excellent idea to "standardize"
+	# the runtime loader name, see also https://xkcd.com/927/
+	# Normally, in Gentoo one should never come across executables that require this.
+	# However, binary commercial packages are known to adhere to weird practices.
+	# https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-AMD64/LSB-Core-AMD64.html#BASELIB
+	local lsb_ldso_name native_ldso_name lsb_ldso_abi
+	local lsb_ldso_abi_list=(
+		# x86
+		amd64	ld-linux-x86-64.so.2	ld-lsb-x86-64.so.3
+	)
+	for (( i = 0; i < ${#lsb_ldso_abi_list[@]}; i += 3 )) ; do
+		lsb_ldso_abi=${lsb_ldso_abi_list[i]}
+		native_ldso_name=${lsb_ldso_abi_list[i+1]}
+		lsb_ldso_name=${lsb_ldso_abi_list[i+2]}
+		has ${lsb_ldso_abi} $(get_install_abis) || continue
+
+		if [[ ! -L ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} && ! -e ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} ]] ; then
+			dosym ${native_ldso_name} "/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
 		fi
 	done
 
@@ -1356,7 +1374,7 @@ glibc_do_src_install() {
 		sed -i "${nscd_args[@]}" "${ED}"/etc/init.d/nscd
 
 		systemd_dounit nscd/nscd.service
-		systemd_newtmpfilesd nscd/nscd.tmpfiles nscd.conf
+		newtmpfiles nscd/nscd.tmpfiles nscd.conf
 	fi
 
 	echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00glibc
@@ -1402,7 +1420,7 @@ src_install() {
 	foreach_abi glibc_do_src_install
 
 	if ! use static-libs ; then
-		elog "Not installing static glibc libraries"
+		einfo "Not installing static glibc libraries"
 		find "${ED}" -name "*.a" -and -not -name "*_nonshared.a" -delete
 	fi
 }

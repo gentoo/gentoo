@@ -1,0 +1,25 @@
+--- a/Doc/Makefile.am
++++ b/Doc/Makefile.am
+@@ -1,15 +1,14 @@
+ 
+ KLU_UserGuide.pdf:
+-	echo '\begin{verbatim}' > klu_h.tex
++	printf '\\begin{verbatim}\n' > klu_h.tex
+ 	expand -8 $(top_srcdir)/Include/klu.h >> klu_h.tex
+-	echo '\end{verbatim}' >> klu_h.tex
+-	echo '\begin{verbatim}' > btf_h.tex
+-	echo 'See your btf.h local install' >> btf_h.tex
+-	echo '\end{verbatim}' >> btf_h.tex
+-	echo '\begin{verbatim}' > klu_simple_c.tex
++	printf '\\end{verbatim}\n' >> klu_h.tex
++	printf '\\begin{verbatim}\n' > btf_h.tex
++	printf 'See your btf.h local install\n' >> btf_h.tex
++	printf '\\end{verbatim}\n' >> btf_h.tex
++	printf '\\begin{verbatim}\n' > klu_simple_c.tex
+ 	expand -8 $(top_srcdir)/Demo/klu_simple.c >> klu_simple_c.tex
+-	echo '\end{verbatim}' >> klu_simple_c.tex
+-	-ln -s $(srcdir)/*.{tex,bib} .
++	printf '\\end{verbatim}\n' >> klu_simple_c.tex
+ 	$(PDFLATEX) KLU_UserGuide
+ 	$(BIBTEX)  KLU_UserGuide
+ 	$(PDFLATEX) KLU_UserGuide

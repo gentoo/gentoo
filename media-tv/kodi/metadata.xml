@@ -8,20 +8,28 @@
 	<use>
 		<flag name="airplay">enable AirPlay support</flag>
 		<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
+		<flag name="bluetooth">Enable JSON-RPC over BT for remote control connected via bluetooth</flag>
+		<flag name="caps">Use <pkg>sys-libs/libcap</pkg> to bind to privileged ports as non-root</flag>
 		<flag name="cec">Enable support for HDMI-CEC devices via libcec</flag>
+		<flag name="eventclients">Install full set of Kodi python evenclients and evenclients examples</flag>
 		<flag name="gbm">Use the Graphics Buffer Manager for EGL on KMS.</flag>
-		<flag name="gles">Enable support for GLES</flag>
-		<flag name="lirc">Enable support for controlling Totem with a remote control using <pkg>app-misc/lirc</pkg></flag>
-		<flag name="mariadb">Add MariaDB support</flag>
+		<flag name="gles">Use simplified OpenGLES instead of full-scale OpenGL</flag>
+		<flag name="lirc">Enable support for IR remote controls using <pkg>app-misc/lirc</pkg></flag>
+		<flag name="mariadb">Enable support store of media library metadata on local or remote MariaDB</flag>
+		<flag name="mysql">Enable support store of media library metadata on local or remote MySQL</flag>
+		<flag name="dav1d">Enables AV1 decoding via <pkg>media-libs/dav1d</pkg></flag>
 		<flag name="nfs">Enable NFS client support</flag>
-		<flag name="dvd">Enable optical (CD/DVD drive) support</flag>
+		<flag name="optical">Enable Audio CD playback, optical disks detection and reading (CD-ROM, Video CD, and others), and ISO optical disk images direct reading. DVD disks may require additional 'udf' flag.</flag>
+		<flag name="pipewire">Enable pipewire support</flag>
+		<flag name="power-control">Enable control of shutdown, reboot, suspend, and hibernate</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
 		<flag name="libusb">Use <pkg>virtual/libusb</pkg> for usb device hotplug support. This flag should only be enabled if you're running a non-Linux kernel or you don't want to use <pkg>sys-fs/udev</pkg>.</flag>
 		<flag name="udf">Enable UDF support. Required for playing blurays.</flag>
 		<flag name="udev">Use <pkg>sys-fs/udev</pkg> rules to handle devices' permissions and hotplug support. Unless you know what you're doing do not disable this flag on Linux kernels. This is provided as an option for completeness.</flag>
+		<flag name="upower">Use <pkg>sys-power/upower</pkg> to get battery level and active power source</flag>
 		<flag name="webserver">Enable internal webserver</flag>
-		<flag name="xslt">Enable XSLT support using <pkg>dev-libs/libxslt</pkg></flag>
+		<flag name="xslt">Enable metadata XSLT scrapers support with <pkg>dev-libs/libxslt</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://trac.kodi.tv/</bugs-to>

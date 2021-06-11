@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,10 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="nls policykit +xscreensaver"
 
-DEPEND="x11-apps/iceauth
-	>=dev-libs/glib-2.50
+DEPEND=">=dev-libs/glib-2.50
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/libSM
 	x11-libs/libwnck:3
@@ -25,6 +24,7 @@ DEPEND="x11-apps/iceauth
 	>=xfce-base/xfconf-4.12:=
 	policykit? ( >=sys-auth/polkit-0.102 )"
 RDEPEND="${DEPEND}
+	x11-apps/iceauth
 	x11-apps/xrdb
 	nls? ( x11-misc/xdg-user-dirs )
 	xscreensaver? ( || (
@@ -50,6 +50,7 @@ src_configure() {
 	local myconf=(
 		$(use_enable policykit polkit)
 		--with-xsession-prefix="${EPREFIX}"/usr
+		ICEAUTH="${EPREFIX}"/usr/bin/iceauth
 	)
 
 	econf "${myconf[@]}"

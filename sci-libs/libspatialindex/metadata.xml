@@ -9,6 +9,7 @@
 		<subslots>Soname version number of libspatialindex</subslots>
 	</slots>
 	<upstream>
+		<bugs-to>https://github.com/libspatialindex/libspatialindex/issues</bugs-to>
 		<remote-id type="github">libspatialindex/libspatialindex</remote-id>
 	</upstream>
 </pkgmetadata>

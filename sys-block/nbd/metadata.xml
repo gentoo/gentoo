@@ -10,5 +10,6 @@
 </use>
 <upstream>
 	<remote-id type="sourceforge">nbd</remote-id>
+	<remote-id type="github">NetworkBlockDevice/nbd</remote-id>
 </upstream>
 </pkgmetadata>

@@ -1,7 +1,7 @@
 Index: libmodplug-0.8.4/src/load_pat.cpp
 ===================================================================
---- libmodplug-0.8.4.orig/src/load_pat.cpp
-+++ libmodplug-0.8.4/src/load_pat.cpp
+--- a/src/load_pat.cpp
++++ b/src/load_pat.cpp
 @@ -53,8 +53,8 @@ typedef UWORD WORD;
  #define PATHFORPAT	"C:\\TIMIDITY\\INSTRUMENTS"
  #else

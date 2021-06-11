@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cron.eclass
@@ -16,7 +16,6 @@
 # NOTE on defaults: the default settings in the below functions were
 # chosen based on the most common setting among cron ebuilds.
 #
-# Please assign any bugs regarding this eclass to cron-bugs@gentoo.org.
 
 inherit eutils flag-o-matic
 

@@ -5,4 +5,7 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<upstream>
+		<changelog>https://invisible-island.net/luit/luit.log.html</changelog>
+	</upstream>
 </pkgmetadata>

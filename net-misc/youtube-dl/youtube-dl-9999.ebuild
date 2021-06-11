@@ -1,12 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{6..9})
-
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
@@ -30,7 +27,7 @@ src_prepare() {
 src_compile() {
 	distutils-r1_src_compile
 
-	emake ${PN}.{bash-completion,fish,zsh}
+	emake youtube-dl.{bash-completion,fish,zsh}
 }
 
 python_test() {
@@ -40,13 +37,13 @@ python_test() {
 python_install_all() {
 	# no manpage because it requires pandoc to generate
 
-	newbashcomp ${PN}.bash-completion ${PN}
+	newbashcomp youtube-dl.bash-completion youtube-dl
 
 	insinto /usr/share/zsh/site-functions
-	newins ${PN}.zsh _${PN}
+	newins youtube-dl.zsh _youtube-dl
 
 	insinto /usr/share/fish/vendor_completions.d
-	doins ${PN}.fish
+	doins youtube-dl.fish
 
 	distutils-r1_python_install_all
 
@@ -55,13 +52,13 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	elog "${PN}(1) / https://bugs.gentoo.org/355661 /"
-	elog "https://github.com/rg3/${PN}/blob/master/README.md#faq :"
+	elog "youtube-dl(1) / https://bugs.gentoo.org/355661 /"
+	elog "https://github.com/rg3/youtube-dl/blob/master/README.md#faq :"
 	elog
-	elog "${PN} works fine on its own on most sites. However, if you want"
+	elog "youtube-dl works fine on its own on most sites. However, if you want"
 	elog "to convert video/audio, you'll need ffmpeg (media-video/ffmpeg)."
 	elog "On some sites - most notably YouTube - videos can be retrieved in"
-	elog "a higher quality format without sound. ${PN} will detect whether"
+	elog "a higher quality format without sound. youtube-dl will detect whether"
 	elog "ffmpeg is present and automatically pick the best option."
 	elog
 	elog "Videos or video formats streamed via RTMP protocol can only be"
@@ -70,6 +67,6 @@ pkg_postinst() {
 	elog "Downloading MMS and RTSP videos requires either mplayer"
 	elog "(media-video/mplayer) or mpv (media-video/mpv) to be installed."
 	elog
-	elog "If you want ${PN} to embed thumbnails from the metadata into the"
+	elog "If you want youtube-dl to embed thumbnails from the metadata into the"
 	elog "resulting MP4 files, consider installing media-video/atomicparsley"
 }

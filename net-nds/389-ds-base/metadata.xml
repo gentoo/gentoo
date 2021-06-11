@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>Dessa@gmake.de</email>
+		<name>Robert Förster</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>chris@christopherpritchard.co.uk</email>
+		<name>Chris Pritchard</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="accountpolicy">Enable account policy plugin - automatically lock
+			an account after a certain amount of time has elapsed</flag>
+		<flag name="bitwise">Enable bitwise plugin - supported data in raw/bitwise
+			format</flag>
+		<flag name="dna">Enable dna (distributed numeric assignment ) plugin - to
+			automatically assign unique uid numbers to new user entries as they
+			are created.</flag>
+		<flag name="pam-passthru">Enable pam-passthru plugin - for simple and
+			fast system services used in ldap</flag>
+		<flag name="autobind">Enable auto bind over unix domain socket (LDAPI)
+			support</flag>
+		<flag name="auto-dn-suffix">Enable auto bind with auto dn suffix over unix
+			domain socket (LDAPI) support</flag>
+		<flag name="ldapi">Enable LDAP over unix domain socket (LDAPI) support</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:fedoraproject:389_directory_server</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Tidy the layout and correct errors in HTML, HTML5 and XML documents"
-HOMEPAGE="http://www.html-tidy.org/"
+HOMEPAGE="https://www.html-tidy.org/"
 SRC_URI="https://github.com/htacg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,5 +21,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake python-single-r1 savedconfig
+inherit cmake cuda python-single-r1 savedconfig
 
 DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
 HOMEPAGE="http://espressomd.org"
@@ -15,10 +15,9 @@ if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"
 	EGIT_BRANCH="python"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/${PN}md/${PN}/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-3"

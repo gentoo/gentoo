@@ -1,4 +1,4 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video debug doc gsm kde libressl +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
@@ -66,10 +66,7 @@ DEPEND="dev-qt/qtcore:5
 	phonon? ( media-libs/phonon[qt5(+)] )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant:0= )
-	ssl? (
-		libressl? ( dev-libs/libressl:0= )
-		!libressl? ( dev-libs/openssl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
 		media-libs/libtheora

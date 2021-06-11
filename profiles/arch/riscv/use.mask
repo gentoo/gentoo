@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,11 +6,14 @@
 
 # Unmask systemd
 -systemd
-# Our Python has a lot of trouble with the two-level libdir.
-python_targets_python2_7
-python_targets_python3_6
-python_single_target_python2_7
-python_single_target_python3_6
+
+# Yixun Lan <dlan@gentoo.org> (2021-05-19)
+# Unmask for more testing
+-elogind
+-gtk
+-gtk2
+-gtk3
+-introspection
 
 # Ben Kohler <bkohler@gentoo.org> (2019-01-09)
 # no fam providers keyworded yet
@@ -22,18 +25,12 @@ valgrind
 
 # Not tested yet
 bluetooth
-elogind
 emacs
 fuse
-gtk
-gtk2
-gtk3
-introspection
 java
 kerberos
 latex
 libedit
-libressl
 lua
 motif
 opencl
@@ -43,6 +40,7 @@ ruby
 slang
 sound
 systemtap
+webkit
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependencies not keyworded.

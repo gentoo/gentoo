@@ -1,5 +1,5 @@
---- glquake.h.old	2011-04-29 12:36:53.000000000 +0200
-+++ glquake.h	2011-04-29 12:44:39.000000000 +0200
+--- a/glquake.h
++++ b/glquake.h
 @@ -977,6 +977,7 @@
  #define GL_MAP2_VERTEX_ATTRIB15_4_NV      0x867F
  

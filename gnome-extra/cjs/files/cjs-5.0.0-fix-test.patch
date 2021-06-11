@@ -1,0 +1,24 @@
+From ac2737f524b4d667a7700b8ff077cd603ee21c59 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Thu, 3 Jun 2021 05:21:51 -0400
+Subject: [PATCH] fix failing test checking for version number (#94)
+
+---
+ installed-tests/js/testSystem.js | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/installed-tests/js/testSystem.js b/installed-tests/js/testSystem.js
+index a4c098c0..8ae8c74a 100644
+--- a/installed-tests/js/testSystem.js
++++ b/installed-tests/js/testSystem.js
+@@ -11,8 +11,8 @@ describe('System.addressOf()', function () {
+ 
+ describe('System.version', function () {
+     it('gives a plausible number', function () {
+-        expect(System.version).not.toBeLessThan(14700);
+-        expect(System.version).toBeLessThan(50000);
++        expect(System.version).not.toBeLessThan(40802);
++        expect(System.version).toBeLessThan(60000);
+     });
+ });
+ 

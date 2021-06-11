@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://ess.r-project.org/downloads/ess/${P}.tgz"
 
 LICENSE="GPL-2+ GPL-3+ Texinfo-manual"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
 RESTRICT="test"
 
 BDEPEND="app-text/texi2html

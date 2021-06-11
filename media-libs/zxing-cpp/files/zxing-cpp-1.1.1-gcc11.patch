@@ -1,0 +1,22 @@
+From 427e814ebcfd2e55e1c18531b7e4aa9d6a1ca6fc Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 9 Feb 2021 09:28:23 +0100
+Subject: [PATCH] Fix build with GCC 11
+
+Starting with GCC 11, the  'limits' header is not included transitively anymore.
+---
+ core/src/Pattern.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/core/src/Pattern.h b/core/src/Pattern.h
+index 4bbe6d26..c4a3f7c5 100644
+--- a/core/src/Pattern.h
++++ b/core/src/Pattern.h
+@@ -22,6 +22,7 @@
+ #include <cmath>
+ #include <cstddef>
+ #include <cstdint>
++#include <limits>
+ #include <numeric>
+ #include <vector>
+ 

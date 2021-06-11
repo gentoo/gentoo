@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
-inherit eutils ruby-fakegem
+inherit ruby-fakegem
 
 DESCRIPTION="A linter for puppet DSL"
 HOMEPAGE="http://puppet-lint.com/"

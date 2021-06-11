@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="kaccounts">Use <pkg>kde-apps/kaccounts-integration</pkg> backend (default) instead of <pkg>dev-libs/qtkeychain</pkg></flag>
+		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>

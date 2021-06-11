@@ -5,6 +5,6 @@
   <email>ulm@gentoo.org</email>
 </maintainer>
 <use>
-  <flag name='6-pieces'>Install tablebases for 6 pieces (huge!)</flag>
+  <flag name="6-pieces">Install tablebases for 6 pieces (huge!)</flag>
 </use>
 </pkgmetadata>

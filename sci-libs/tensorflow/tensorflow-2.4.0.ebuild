@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
@@ -161,7 +161,7 @@ pkg_setup() {
 
 	local num_pythons_enabled
 	num_pythons_enabled=0
-	count_impls(){
+	count_impls() {
 		num_pythons_enabled=$((${num_pythons_enabled} + 1))
 	}
 	use python && python_foreach_impl count_impls
@@ -303,7 +303,7 @@ src_configure() {
 		echo 'build --config=noaws --config=nohdfs' >> .bazelrc || die
 		echo 'build --define tensorflow_mkldnn_contraction_kernel=0' >> .bazelrc || die
 
-		for cflag in $(pkg-config jsoncpp --cflags)
+		for cflag in $($(tc-getPKG_CONFIG) jsoncpp --cflags)
 		do
 			echo "build --copt=\"$cflag\"" >> .bazelrc || die
 			echo "build --host_copt=\"$cflag\"" >> .bazelrc || die
@@ -385,7 +385,7 @@ src_install() {
 	doins -r bazel-bin/tensorflow/include/*
 
 	einfo "Installing libs"
-	# Generate pkg-config file
+	# Generate $(tc-getPKG_CONFIG) file
 	${PN}/c/generate-pc.sh --prefix="${EPREFIX}"/usr --libdir=$(get_libdir) --version=${MY_PV} || die
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc ${PN}_cc.pc

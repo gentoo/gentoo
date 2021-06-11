@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="7"
 
-inherit flag-o-matic eutils toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Parallel bzip2 (de)compressor using libbz2"
 HOMEPAGE="http://compression.ca/pbzip2/ https://launchpad.net/pbzip2"
@@ -21,10 +21,17 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.10-makefile.patch
+)
+
 src_prepare() {
+	default
 	# https://bugs.launchpad.net/pbzip2/+bug/1746369
 	sed -i 's:"PRIuMAX":" PRIuMAX ":g' *.cpp || die
-	epatch "${FILESDIR}"/${PN}-1.1.10-makefile.patch
+}
+
+src_configure() {
 	tc-export CXX
 	use static && append-ldflags -static
 }

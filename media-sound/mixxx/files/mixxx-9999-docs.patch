@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0cc5b3a7ba..63f18bfda4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1142,15 +1142,6 @@ install(
+     "${MIXXX_INSTALL_LICENSEDIR}"
+ )
+ 
+-# Documentation
+-install(
+-  FILES
+-    "${CMAKE_CURRENT_SOURCE_DIR}/README"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/Mixxx-Manual.pdf"
+-  DESTINATION
+-    "${MIXXX_INSTALL_DOCDIR}"
+-)
+-
+ # Additional Linux-only files
+ if(UNIX AND NOT APPLE)
+   # .desktop file for KDE/GNOME menu

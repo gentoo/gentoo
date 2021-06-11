@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Nave's Topics were originaly produced by Orville J. Nave, A.M., D.D., LL.D.
 		while serving as a chaplain in the United States Army. He referred to this

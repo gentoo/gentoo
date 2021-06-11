@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 
 LICENSE="GPL-2"
 SLOT="${MY_PV}"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="afs +net nls +readline static"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
@@ -46,22 +46,25 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/autoconf-mktime-2.53.patch #220040
+	"${FILESDIR}"/autoconf-mktime-2.53.patch
 	"${FILESDIR}"/${PN}-3.0-protos.patch
-	"${FILESDIR}"/${PN}-3.0-rbash.patch #26854
-	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch #41002
-	"${FILESDIR}"/${PN}-3.0-darwin-conn.patch #79124
-	# read patch headers for more info ... many ripped from Fedora/Debian[17]/SuSe/upstream
+	"${FILESDIR}"/${PN}-3.0-rbash.patch # bug #26854
+	"${FILESDIR}"/${PN}-2.05b-parallel-build.patch # bug #41002
+	"${FILESDIR}"/${PN}-3.0-darwin-conn.patch # bug #79124
+
+	# Read patch headers for more info ... many ripped from Fedora/Debian[17]/SuSe/upstream
 	"${FILESDIR}"/${PN}-3.0-{afs,crash,jobs,manpage,pwd,ulimit,histtimeformat,locale,multibyteifs,subshell,volatile-command}.patch
-	"${FILESDIR}"/${PN}-3.0-read-builtin-pipe.patch #87093
+
+	"${FILESDIR}"/${PN}-3.0-read-builtin-pipe.patch # bug #87093
 	"${FILESDIR}"/${PN}-3.0-trap-fg-signals.patch
-	"${FILESDIR}"/${PN}-3.0-pgrp-pipe-fix.patch #92349
+	"${FILESDIR}"/${PN}-3.0-pgrp-pipe-fix.patch # bug #92349
 	"${FILESDIR}"/${PN}-3.0-strnlen.patch
-	"${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch #431850
+	"${FILESDIR}"/${PN}-3.1-dev-fd-buffer-overflow.patch # bug #431850
 )
 
 pkg_setup() {
-	if is-flag -malign-double ; then #7332
+	# bug #7332
+	if is-flag -malign-double ; then
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
 		eerror "as it breaks LFS (struct stat64) on x86."
 		die "remove -malign-double from your CFLAGS mr ricer"
@@ -87,7 +90,13 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--with-installed-readline=.
+
+		# Force linking with system curses ... the bundled termcap lib
+		# sucks bad compared to ncurses.  For the most part, ncurses
+		# is here because readline needs it.  But bash itself calls
+		# ncurses in one or two small places :(.
 		--with-curses
+
 		$(use_with afs)
 		$(use_enable net net-redirections)
 		--disable-profiling
@@ -124,12 +133,9 @@ src_configure() {
 	# is at least what's in the DEPEND up above.
 	export ac_cv_rl_version=6.2
 
-	# Force linking with system curses ... the bundled termcap lib
-	# sucks bad compared to ncurses.  For the most part, ncurses
-	# is here because readline needs it.  But bash itself calls
-	# ncurses in one or two small places :(.
+	# bug #444070
+	tc-export AR
 
-	tc-export AR #444070
 	econf "${myconf[@]}"
 }
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>java@gentoo.org</email>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">jruby/bytelist</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">jruby/bytelist</remote-id>
+		<bugs-to>https://github.com/jruby/bytelist/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

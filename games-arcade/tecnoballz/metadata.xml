@@ -12,4 +12,7 @@ attack weapons with an enormous power of fire that can be build by gaining
 bonuses. Numerous decors, musics and sounds complete this great game. This
 game was ported from the Commodore Amiga.
 </longdescription>
+<upstream>
+	<remote-id type="github">brunonymous/tecnoballz</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,0 +1,25 @@
+From 1adf58605d18ee24c68ca6762a94de75a09d738a Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Mon, 26 Apr 2021 12:53:19 +0200
+Subject: [PATCH] Fix build without BUILD_KSTARS_LITE and libraw
+
+---
+ kstars/fitsviewer/fitsdata.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kstars/fitsviewer/fitsdata.cpp b/kstars/fitsviewer/fitsdata.cpp
+index 8300e9687..ca59d808e 100644
+--- a/kstars/fitsviewer/fitsdata.cpp
++++ b/kstars/fitsviewer/fitsdata.cpp
+@@ -524,7 +524,7 @@ bool FITSData::loadRAWImage(const QByteArray &buffer, const QString &extension,
+     Q_UNUSED(extension);
+ 
+ #if !defined(KSTARS_LITE) && !defined(HAVE_LIBRAW)
+-    lastError = i18n("Unable to find dcraw and cjpeg. Please install the required tools to convert CR2/NEF to JPEG.");
++    m_LastError = i18n("Unable to find dcraw and cjpeg. Please install the required tools to convert CR2/NEF to JPEG.");
+     return false;
+ #else
+ 
+-- 
+GitLab
+

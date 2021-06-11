@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linbox-team/${PN}/releases/download/v${PV}/${P}.tar.
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="static-libs openmp cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_avx512f cpu_flags_x86_avx512dq cpu_flags_x86_avx512vl"
 
 # Our autotools patch hacks in PKG_CHECK_MODULES calls.
@@ -26,14 +26,18 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}/${PN}-2.3.2-blaslapack.patch" )
 
 pkg_pretend() {
-	[[ "${MERGE_TYPE}" != "binary" ]] && use openmp && tc-check-openmp
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
-pkg_setup(){
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
 	tc-export PKG_CONFIG
 }
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
@@ -56,7 +60,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

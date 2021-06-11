@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ SRC_URI="http://${PN}.sraoss.jp/${PN}/v${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86"
-IUSE="crypt ipv6 ldap libressl nls oniguruma spell ssl xface"
+IUSE="crypt ipv6 ldap nls oniguruma spell ssl xface"
 
 CDEPEND="net-libs/liblockfile
 	x11-libs/gtk+:2
@@ -25,8 +25,7 @@ CDEPEND="net-libs/liblockfile
 		dev-libs/dbus-glib
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		dev-libs/openssl:0
 	)"
 RDEPEND="${CDEPEND}
 	app-misc/mime-types

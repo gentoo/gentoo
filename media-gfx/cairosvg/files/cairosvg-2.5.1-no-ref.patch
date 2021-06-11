@@ -1,0 +1,30 @@
+From f79fce1d3703f2985c543575d5eb15ffb0eb7bb6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 7 Jan 2021 00:31:52 +0100
+Subject: [PATCH] Do not use reference_cairosvg
+
+---
+ test_non_regression/__init__.py | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/test_non_regression/__init__.py b/test_non_regression/__init__.py
+index 8876e11..4b2e29b 100644
+--- a/test_non_regression/__init__.py
++++ b/test_non_regression/__init__.py
+@@ -8,12 +8,7 @@ import os
+ 
+ import cairosvg
+ 
+-reference_cairosvg = imp.load_source(
+-    'cairosvg_reference', pathname=os.path.join(
+-        os.path.dirname(__file__), 'cairosvg_reference', 'cairosvg',
+-        '__init__.py'))
+-
+-cairosvg.features.LOCALE = reference_cairosvg.features.LOCALE = 'en_US'
++cairosvg.features.LOCALE = 'en_US'
+ 
+ TEST_FOLDER = os.path.join(os.path.dirname(__file__), 'svg')
+ 
+-- 
+2.30.0
+

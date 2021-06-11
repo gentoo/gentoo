@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# eutils required for strip-linguas
-inherit eutils xdg
+inherit l10n xdg
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko ku lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
@@ -17,7 +16,7 @@ if [[ "${PV}" = 9999* ]] ; then
 else
 	[[ "${PV}" == *_pre* ]] && inherit autotools
 	SRC_URI="https://download.geany.org/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 arm ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ DESCRIPTION="Rapid spam filtering system"
 HOMEPAGE="https://rspamd.com https://github.com/rspamd/rspamd"
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-1 BSD-2 CC0-1.0 LGPL-3 MIT public-domain unicode ZLIB"
 SLOT="0"
-IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit libressl pcre2"
+IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit pcre2"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	jit? ( lua_single_target_luajit )"
@@ -45,8 +45,7 @@ RDEPEND="${LUA_DEPS}
 	)
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc )
-	!libressl? ( dev-libs/openssl:0=[-bindist] )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=[-bindist]
 	pcre2? ( dev-libs/libpcre2[jit=] )
 	!pcre2? ( dev-libs/libpcre[jit=] )"
 DEPEND="${RDEPEND}"
@@ -56,9 +55,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-2.6-cmake-lua-version.patch"
+	"${FILESDIR}/rspamd-2.7-cmake-lua-version.patch"
 	"${FILESDIR}/rspamd-2.6-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-9999-unbundle-zstd.patch"
+	"${FILESDIR}/rspamd-2.7-unbundle-zstd.patch"
 	"${FILESDIR}/rspamd-2.5-unbundle-snowball.patch"
 )
 

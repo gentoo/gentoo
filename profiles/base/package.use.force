@@ -1,5 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2021-05-07)
+# Forced on for now as generated headers are now
+# included unconditionally.
+# (https://github.com/cyrusimap/cyrus-imapd/pull/3270)
+>=net-mail/cyrus-imapd-3.4.0 sieve
+
+# Sam James <sam@gentoo.org> (2021-03-08)
+# Broken without USE=unicode
+# Needs to link with libiconv, bug #774507
+app-text/vilistextum unicode
+
+# Sam James <sam@gentoo.org> (2021-03-03)
+# A large number of packages still need /usr/bin/python{,2,3}
+# including meson.eclass consumers.
+# This is largely a QA smoketesting flag, and as such, should
+# not be enabled by users.
+dev-lang/python-exec native-symlinks
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-12-31)
 # Force-enable unicode. We're in 2020 and this should really be available
@@ -110,10 +128,13 @@ gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 net-libs/webkit-gtk seccomp
 
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2018-11-19)
+# iasl is not keyworded on many platforms yet
+sys-firmware/seabios binary
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 dev-perl/Lab-VXI11 libtirpc
-net-analyzer/argus libtirpc
 net-analyzer/snort libtirpc
 net-firewall/conntrack-tools libtirpc
 net-fs/autofs libtirpc
@@ -121,7 +142,7 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-04-10)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-04-10)
 # Always force patch on appropriate variant
 app-emulation/wine-staging staging
 
@@ -162,11 +183,9 @@ app-shells/bash:0 readline
 # Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
-dev-lang/python-exec python_targets_python2_7
-dev-lang/python-exec python_targets_python3_6
-dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_python3_9
+dev-lang/python-exec python_targets_python3_10
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

@@ -13,4 +13,7 @@
 		the implementational effort. involved with implementing a branch and
 		bound framework from scratch.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">coin-or/Bcp</remote-id>
+	</upstream>
 </pkgmetadata>

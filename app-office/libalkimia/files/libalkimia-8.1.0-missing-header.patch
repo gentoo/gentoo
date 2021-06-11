@@ -1,0 +1,25 @@
+From 0e398425030bae0cfe7be70ce82d61e674160a97 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 5 Mar 2021 22:40:40 +0100
+Subject: [PATCH] Add missing QUrl include with -DBUILD_WITH_WEBENGINE=no
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ tools/onlinequoteseditor/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/onlinequoteseditor/mainwindow.cpp b/tools/onlinequoteseditor/mainwindow.cpp
+index fad7e85..d5a3026 100644
+--- a/tools/onlinequoteseditor/mainwindow.cpp
++++ b/tools/onlinequoteseditor/mainwindow.cpp
+@@ -28,6 +28,7 @@
+ #include <QComboBox>
+ #include <QDockWidget>
+ #include <QLineEdit>
++#include <QUrl>
+ 
+ class MainWindow::Private
+ {
+-- 
+2.30.1
+

@@ -1,0 +1,75 @@
+From 27ee073728e70e930118a36ffa4f8123ce363099 Mon Sep 17 00:00:00 2001
+From: Zac-HD <zac.hatfield.dodds@gmail.com>
+Date: Wed, 5 May 2021 13:01:21 +1000
+Subject: [PATCH] Test on 3.10-dev again
+
+now that pytest has been fixed
+---
+ tests/cover/test_annotations.py | 4 +---
+ tests/cover/test_lookup.py      | 7 +------
+ tests/cover/test_lookup_py38.py | 2 --
+ 4 files changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/tests/cover/test_annotations.py b/tests/cover/test_annotations.py
+index 564339d39..95ebea3c5 100644
+--- a/tests/cover/test_annotations.py
++++ b/tests/cover/test_annotations.py
+@@ -13,7 +13,6 @@
+ #
+ # END HEADER
+ 
+-import sys
+ from inspect import getfullargspec
+ 
+ import attr
+@@ -116,8 +115,7 @@ def test_composite_edits_annotations():
+ @pytest.mark.parametrize("nargs", [1, 2, 3])
+ def test_given_edits_annotations(nargs):
+     spec_given = getfullargspec(given(*(nargs * [st.none()]))(pointless_composite))
+-    expected = None if sys.version_info[:2] < (3, 10) else type(None)
+-    assert spec_given.annotations.pop("return") == expected
++    assert spec_given.annotations.pop("return") is None
+     assert len(spec_given.annotations) == 3 - nargs
+ 
+ 
+diff --git a/tests/cover/test_lookup.py b/tests/cover/test_lookup.py
+index b74eccc62..33cb78050 100644
+--- a/tests/cover/test_lookup.py
++++ b/tests/cover/test_lookup.py
+@@ -756,12 +756,7 @@ def test_compat_get_type_hints_aware_of_None_default():
+     find_any(strategy, lambda x: x.a is not None)
+ 
+     assert typing.get_type_hints(constructor)["a"] == typing.Optional[str]
+-    annotation = inspect.signature(constructor).parameters["a"].annotation
+-    assert annotation == str or (
+-        # See https://bugs.python.org/issue43006
+-        annotation == typing.Optional[str]
+-        and sys.version_info[:2] >= (3, 10)
+-    )
++    assert inspect.signature(constructor).parameters["a"].annotation == str
+ 
+ 
+ _ValueType = typing.TypeVar("_ValueType")
+diff --git a/tests/cover/test_lookup_py38.py b/tests/cover/test_lookup_py38.py
+index 6a68254a7..db11777fe 100644
+--- a/tests/cover/test_lookup_py38.py
++++ b/tests/cover/test_lookup_py38.py
+@@ -14,7 +14,6 @@
+ # END HEADER
+ 
+ import dataclasses
+-import sys
+ import typing
+ 
+ import pytest
+@@ -103,7 +102,6 @@ class NestedDict(typing.TypedDict):
+     inner: A
+ 
+ 
+-@pytest.mark.skipif(sys.version_info[:2] >= (3, 10), reason="see issue #2897")
+ @given(from_type(NestedDict))
+ def test_typeddict_with_nested_value(value):
+     assert type(value) == dict
+-- 
+2.31.1
+

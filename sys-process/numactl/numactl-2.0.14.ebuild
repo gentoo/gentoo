@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Utilities and libraries for NUMA systems"
 HOMEPAGE="https://github.com/numactl/numactl"
@@ -13,7 +13,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/numactl/numactl/releases/download/v${PV}/${P}.tar.gz"
 	# ARM lacks the __NR_migrate_pages syscall.
-	KEYWORDS="~alpha ~amd64 -arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 -arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2"

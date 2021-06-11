@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>tobias.leupold@gmx.de</email>
+<maintainer type="person" proxied="yes">
+	<email>tl@l3u.de</email>
 	<name>Tobias Leupold</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
@@ -16,7 +16,6 @@
 	"OpenV" project).
 </longdescription>
 <use>
-	<flag name="man">Build the manpages</flag>
 	<flag name="vclient">
 		Build the vclient helper program to talk to vcontrold
 	</flag>

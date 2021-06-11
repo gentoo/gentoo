@@ -1,8 +1,8 @@
 From: Julian Ospald <hasufell@gentoo.org>
 Date: Sat Jul 21 17:03:11 UTC 2012
 
---- picpuz-2.5/Makefile
-+++ picpuz-2.5/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -11,24 +11,26 @@
  
  # target install directories
@@ -18,7 +18,7 @@ Date: Sat Jul 21 17:03:11 UTC 2012
  MENUFILE = $(PREFIX)/share/applications/kornelix-$(PROGRAM).desktop
  
 -CFLAGS = $(CXXFLAGS) -c `pkg-config --cflags gtk+-3.0`
-+CXXFLAGS += -c `pkg-config --cflags gtk+-3.0`
++CXXFLAGS += -c `${PKG_CONFIG} --cflags gtk+-3.0`
  LIBS = `pkg-config --libs gtk+-3.0`
  
  $(PROGRAM): $(PROGRAM).o zfuncs.o
@@ -46,8 +46,8 @@ Date: Sat Jul 21 17:03:11 UTC 2012
  	rm -R -f  $(DESTDIR)$(DOCDIR)
  	rm -f  $(DESTDIR)$(MANDIR)/$(PROGRAM).1.gz
  	xdg-desktop-menu uninstall $(DESTDIR)$(MENUFILE)
---- picpuz-2.5/zfuncs.cc
-+++ picpuz-2.5/zfuncs.cc
+--- a/zfuncs.cc
++++ b/zfuncs.cc
 @@ -3111,7 +3111,6 @@
           /prefix/share/appname/locales/         translations: appname-de.po  etc.
           /home/user/.appname/                   parameters etc. are copied here

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,20 +20,19 @@ DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="10.4/${SUBSLOT:-0}"
 IUSE="+backup bindist cracklib debug extraengine galera innodb-lz4
-	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
+	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup static systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) libressl? ( test ) !test? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test )"
 
 REQUIRED_USE="jdbc? ( extraengine server !static )
 	server? ( tokudb? ( jemalloc !tcmalloc ) )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -55,8 +54,7 @@ COMMON_DEPEND="
 	kerberos? ( virtual/krb5 )
 	yassl? ( net-libs/gnutls:0= )
 	!yassl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.0:0=
 	)
 	sys-libs/ncurses:0=
 	!bindist? (

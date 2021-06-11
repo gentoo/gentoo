@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 DISTUTILS_SINGLE_IMPL="1"
 
@@ -36,13 +36,13 @@ BDEPEND="
 RDEPEND="
 	app-arch/cabextract
 	app-arch/p7zip
-	app-arch/unrar
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-evdev[${PYTHON_USEDEP}]
+		dev-python/python-magic[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')
@@ -54,7 +54,7 @@ RDEPEND="
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
-	x11-libs/libnotify
+	x11-libs/libnotify[introspection]
 "
 
 python_install_all() {

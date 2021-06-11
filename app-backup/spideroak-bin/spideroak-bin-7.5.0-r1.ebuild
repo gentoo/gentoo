@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils unpacker
+inherit desktop unpacker
 
 DESCRIPTION="Secure free online backup, storage, and sharing system"
 HOMEPAGE="https://spideroak.com"
@@ -46,47 +46,50 @@ src_prepare() {
 	# Set RPATH for preserve-libs handling (bug #400979).
 	cd "${S}/opt/SpiderOakONE/lib" || die
 	local x
-	for x in `find` ; do
+	for x in $(find) ; do
 		# Use \x7fELF header to separate ELF executables and libraries
 		[[ -f ${x} && $(od -t x1 -N 4 "${x}") == *"7f 45 4c 46"* ]] || continue
 		patchelf --set-rpath '$ORIGIN' "${x}" || \
 			die "patchelf failed on ${x}"
 	done
 
-	#Remove the libraries that break compatibility in modern systems
-	#SpiderOak will use the system libs instead
-	rm -f "${S}/opt/SpiderOakONE/lib/libstdc++.so.6"
-	rm -f "${S}/opt/SpiderOakONE/lib/libgcc_s.so.1"
-	rm -f "${S}/opt/SpiderOakONE/lib/libpng12.so.0"
-	rm -f "${S}/opt/SpiderOakONE/lib/libz.so.1"
+	# Remove the libraries that break compatibility in modern systems
+	# SpiderOak will use the system libs instead
+	rm -f "${S}/opt/SpiderOakONE/lib/libstdc++.so.6" || die
+	rm -f "${S}/opt/SpiderOakONE/lib/libgcc_s.so.1" || die
+	rm -f "${S}/opt/SpiderOakONE/lib/libpng12.so.0" || die
+	rm -f "${S}/opt/SpiderOakONE/lib/libz.so.1" || die
 
 	eapply_user
 }
 
 src_install() {
-	#install the wrapper script
+	# Install the wrapper script
 	exeinto /usr/bin
 	doexe usr/bin/SpiderOakONE
 
 	# inotify_dir_watcher needs to be marked executable, bug #453266
 	#chmod a+rx opt/SpiderOakONE/lib/inotify_dir_watcher
 
-	#install the executable
+	# Install the executable
 	exeinto /opt/SpiderOakONE/lib
 	doexe opt/SpiderOakONE/lib/SpiderOakONE
 	doexe opt/SpiderOakONE/lib/inotify_dir_watcher
-	rm -f opt/SpiderOakONE/lib/{SpiderOakONE,inotify_dir_watcher}
+	rm -f opt/SpiderOakONE/lib/{SpiderOakONE,inotify_dir_watcher} || die
 
-	#install the prebundled libraries
+	# Install the prebundled libraries
 	insinto /opt/SpiderOakONE
 	doins -r opt/SpiderOakONE/lib
 
-	#install the config files
-	use dbus || rm -rf etc/dbus-1
+	# Install the config files
+	if ! use dbus; then
+		rm -rf etc/dbus-1 || die
+	fi
+
 	insinto /
 	doins -r etc
 
-	#install the manpage
+	# Install the manpage
 	doman usr/share/man/man1/SpiderOakONE.1.gz
 
 	if use X; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="https://www.kernel.org/pub/linux/daemons/${PN}/v5/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc ~x86"
-IUSE="-dmalloc ldap +libtirpc mount-locking sasl systemd"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+IUSE="dmalloc ldap +libtirpc mount-locking sasl systemd"
 
 # currently, sasl code assumes the presence of kerberosV
 RDEPEND=">=sys-apps/util-linux-2.20
@@ -38,6 +38,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${P}-glibc.patch"
+	"${FILESDIR}/${P}-musl.patch"
 	"${FILESDIR}/${P}-pid.patch"
 )
 

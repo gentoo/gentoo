@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 inherit distutils-r1 toolchain-funcs cmake
 
 DESCRIPTION="Static analyzer of C/C++ code"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/danmar/cppcheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc64 sparc x86"
 IUSE="htmlreport pcre qt5 +z3"
 
 RDEPEND="
@@ -42,7 +42,7 @@ src_configure() {
 		-DBUILD_GUI="$(usex qt5)"
 		-DUSE_Z3="$(usex z3)"
 		-DFILESDIR="${EROOT}/usr/share/${PN}/"
-		-ENABLE_OSS_FUZZ=OFF
+		-DENABLE_OSS_FUZZ=OFF
 	)
 	cmake_src_configure
 }

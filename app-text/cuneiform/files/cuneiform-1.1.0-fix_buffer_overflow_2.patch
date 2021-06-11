@@ -1,10 +1,7 @@
-Description: Split original patch by Slawomir and update the same to apply
-neatly.
+Description: Split original patch by Slawomir and update the same to apply neatly.
 Author: Bhavani Shankar <bhavi@ubuntu.com>
-
-
---- cuneiform-1.1.0+dfsg.orig/cuneiform_src/Kern/rstr/src/acc_tabs.c
-+++ cuneiform-1.1.0+dfsg/cuneiform_src/Kern/rstr/src/acc_tabs.c
+--- a/cuneiform_src/Kern/rstr/src/acc_tabs.c
++++ b/cuneiform_src/Kern/rstr/src/acc_tabs.c
 @@ -2821,8 +2821,8 @@ if( CodePages[language]==CSTR_EASTEUROPE
      strcpy(decode_ASCII_to_[(uchar)liga_j      ],   "_j_");
      strcpy(decode_ASCII_to_[(uchar)liga_exm    ],   "_!_");

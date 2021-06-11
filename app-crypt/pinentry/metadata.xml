@@ -5,4 +5,7 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<use>
+		<flag name="efl">Build <pkg>dev-libs/efl</pkg> based pinentry</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/752051
+--- a/src/html.c
++++ b/src/html.c
+@@ -47,7 +47,7 @@ CHAR attr_name[DEF_STR_LEN], /* Attribut name of a HTML-Tag */
+ /* ------------------------------------------------ */
+ #if defined(MULTIBYTE) && !defined(HAVE_WCSCASECMP)
+ #include <wchar.h>
+-static int wcscasecmp(const wchar_t *s1, const wchar_t *s2)
++extern int wcscasecmp(const wchar_t *s1, const wchar_t *s2)
+ {
+ 	size_t i;
+ 	wint_t c1, c2;

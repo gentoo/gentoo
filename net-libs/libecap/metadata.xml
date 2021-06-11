@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person"><email>eras@gentoo.org</email></maintainer>
-<longdescription>eCAP is a software interface that allows a network application, such as an HTTP proxy or an ICAP server, to outsource content analysis and adaptation to a loadable module</longdescription>
+	<maintainer type="person">
+		<email>eras@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		eCAP is a software interface that allows a network application, such as an HTTP proxy or an ICAP server,
+		to outsource content analysis and adaptation to a loadable module.
+	</longdescription>
+	<upstream>
+		<changelog>https://www.e-cap.org/archive/libecap_change.log</changelog>
+	</upstream>
 </pkgmetadata>

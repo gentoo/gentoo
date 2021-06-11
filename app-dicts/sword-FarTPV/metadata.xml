@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Today's Persian Version. In Persian it is called "Mojdeh Baraye Asre Jadid" (Good News for A New Age). This new translation of the Bible into Persian (Farsi) has the aim to communicate the written Word of God in a way that will be easy for all people to understand. While being faithful to the original Hebrew and Greek texts of the Bible, the emphasis has been on clarity and simplicity. This translation follows the model of the wide accepted "Injil Sharif" translation of the New Testament and has been long-awaited and prayed for. May God bless all its readers richly.
 	</longdescription>

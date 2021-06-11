@@ -4,7 +4,6 @@
 EAPI=7
 
 XORG_MODULE=app/
-XORG_STATIC=no
 inherit xorg-3
 
 DESCRIPTION="X Compositing manager"

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="all-modules aqua boost doc examples ffmpeg gdal imaging java json mpi
 	odbc offscreen postgres python qt5 R rendering tbb tcl theora tk
 	video_cards_nvidia views web +X xdmf2"
@@ -216,7 +216,7 @@ src_configure() {
 		-DVTK_Group_Views=$(usex views)
 		-DVTK_Group_Web=$(usex web)
 		-DVTK_SMP_IMPLEMENTATION_TYPE="$(usex tbb TBB Sequential)"
-		-DVTK_WWW_DIR="${ED}/${MY_HTDOCSDIR}"
+		-DVTK_WWW_DIR="${EPREFIX}/${MY_HTDOCSDIR}"
 		-DVTK_WRAP_JAVA=$(usex java)
 		-DVTK_WRAP_PYTHON=$(usex python)
 		-DVTK_WRAP_PYTHON_SIP=$(usex python)
@@ -254,14 +254,14 @@ src_configure() {
 
 	if use python; then
 		mycmakeargs+=(
-			-DVTK_INSTALL_PYTHON_MODULE_DIR="$(python_get_sitedir)"
+			-DVTK_INSTALL_PYTHON_MODULES_DIR="$(python_get_sitedir)"
 			-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DPYTHON_LIBRARY="$(python_get_library_path)"
 			-DSIP_PYQT_DIR="${EPREFIX}/usr/share/sip"
 			-DSIP_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_INCLUDE_DIR="$(python_get_includedir)"
 			-DVTK_PYTHON_LIBRARY="$(python_get_library_path)"
-			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
+#			-DVTK_PYTHON_SETUP_ARGS:STRING="--prefix=${EPREFIX} --root=${D}"
 			-DVTK_USE_SYSTEM_SIX=ON
 		)
 	fi

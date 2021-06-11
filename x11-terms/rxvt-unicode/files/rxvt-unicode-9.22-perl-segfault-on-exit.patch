@@ -1,0 +1,36 @@
+Backported from the upstream CVS repository, see:
+http://cvs.schmorp.de/rxvt-unicode/src/rxvtperl.h?r1=1.28&r2=1.29
+http://cvs.schmorp.de/rxvt-unicode/src/rxvtperl.xs?r1=1.246&r2=1.247
+
+--- rxvt-unicode/src/rxvtperl.h	2012/06/12 10:45:53	1.28
++++ rxvt-unicode/src/rxvtperl.h	2020/06/30 07:31:24	1.29
+@@ -51,7 +51,9 @@
+ {
+   char **perl_environ;
+ 
++  #if 0 // see rxvtperl.xs
+   ~rxvt_perl_interp ();
++  #endif
+ 
+   void init ();
+   void init (rxvt_term *term);
+--- rxvt-unicode/src/rxvtperl.xs	2020/01/20 09:35:12	1.246
++++ rxvt-unicode/src/rxvtperl.xs	2020/06/30 07:31:24	1.247
+@@ -372,6 +372,9 @@
+ 
+ static PerlInterpreter *perl;
+ 
++#if 0 /* we are not a library anymore, so doing this is just not worth it */
++/*THINK/TODO: this has the side effect of, of course, not calling destructors. */
++/* but therse are not guaranteed anyway... */
+ rxvt_perl_interp::~rxvt_perl_interp ()
+ {
+   if (perl)
+@@ -381,6 +384,7 @@
+       PERL_SYS_TERM ();
+     }
+ }
++#endif
+ 
+ void
+ rxvt_perl_interp::init ()

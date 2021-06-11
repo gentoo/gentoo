@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+command=/usr/bin/oragono
+command_args="--conf ${ORAGONO_CONFIGFILE:-"/etc/oragono/ircd.yaml"}"
+pidfile=/var/run/oraogno.pid
+name="Oragono"
+description="Oragono IRC daemon"
+
+depend() {
+	use dns
+	provide ircd
+}

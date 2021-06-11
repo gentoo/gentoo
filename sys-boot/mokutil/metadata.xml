@@ -6,6 +6,6 @@
 		<name>Rick Farina</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">rapid7/metasploit-framework</remote-id>
+		<remote-id type="github">lcp/mokutil</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 WX_GTK_VER=3.0
-inherit eutils ltprune wxwidgets
+inherit wxwidgets
 
 DESCRIPTION="C++ library to create, manipulate and render SVG files"
 HOMEPAGE="http://wxsvg.sourceforge.net/"
@@ -12,7 +13,6 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="wxWinLL-3"
 SLOT="0/3" # based on SONAME of libwxsvg.so
 KEYWORDS="amd64 x86"
-IUSE="static-libs"
 
 RDEPEND=">=dev-libs/expat-2:=
 	media-libs/libexif:=
@@ -24,19 +24,19 @@ RDEPEND=">=dev-libs/expat-2:=
 	x11-libs/pango:=
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	>=media-video/ffmpeg-2.6:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-DOCS=( AUTHORS ChangeLog TODO )
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
-	need-wxwidgets base-unicode
+	setup-wxwidgets base-unicode
 	econf \
-		$(use_enable static-libs static) \
+		--disable-static \
 		--with-wx-config=${WX_CONFIG}
 }
 
 src_install() {
 	default
-	prune_libtool_files
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }

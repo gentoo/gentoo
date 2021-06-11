@@ -12,7 +12,7 @@
 		Please see the documentation at &lt;https://docs.haskellstack.org&gt;
 		for usage information.
 		
-		If building a &#39;stack&#39; executable for distribution, please download the
+		If building a 'stack' executable for distribution, please download the
 		source code from &lt;https://github.com/commercialhaskell/stack/releases&gt;
 		and build it using Stack itself in order to ensure identical behaviour
 		to official binaries.  This package on Hackage is provided for convenience

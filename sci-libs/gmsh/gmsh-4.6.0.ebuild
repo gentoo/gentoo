@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit cmake-utils flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
@@ -28,7 +28,7 @@ RDEPEND="
 	med? ( sci-libs/med[mpi] )
 	opencascade? ( sci-libs/opencascade:* )
 	png? ( media-libs/libpng:0 )
-	petsc? ( sci-mathematics/petsc )
+	petsc? ( sci-mathematics/petsc[mpi=] )
 	zlib? ( sys-libs/zlib )
 	mpi? ( virtual/mpi[cxx] )"
 

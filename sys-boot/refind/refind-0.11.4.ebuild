@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -99,9 +99,9 @@ src_compile() {
 		EFILIB="/usr/$(get_libdir)"
 		EFICRT0="/usr/$(get_libdir)"
 		EDK2BASE="${UDK_WORKSPACE}"
-		EDK2_DRIVER_BASENAMES="${fs_names[@]}"
-		FILESYSTEMS="${fs_names[@]}"
-		FILESYSTEMS_GNUEFI="${fs_names[@]}"
+		EDK2_DRIVER_BASENAMES="${fs_names[*]}"
+		FILESYSTEMS="${fs_names[*]}"
+		FILESYSTEMS_GNUEFI="${fs_names[*]}"
 	)
 	if use custom-cflags; then
 		make_flags=(CFLAGS="${CFLAGS}" "${make_flags[@]}")

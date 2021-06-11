@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,8 +9,8 @@ DESCRIPTION="Virtual for OpenCL API"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="|| ( dev-libs/ocl-icd[khronos-headers,${MULTILIB_USEDEP}]
-	dev-libs/opencl-icd-loader[${MULTILIB_USEDEP}] )"
+RDEPEND="|| ( dev-libs/opencl-icd-loader[${MULTILIB_USEDEP}]
+	dev-libs/ocl-icd[khronos-headers,${MULTILIB_USEDEP}] )"
 
 pkg_postinst() {
 	elog

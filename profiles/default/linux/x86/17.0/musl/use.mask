@@ -1,5 +1,5 @@
 # Copyright 1999-2020 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License, v2
 
-# ssp is broken on x86 musl: https://bugs.gentoo.org/706210
+# ssp is broken on x86 musl: bug #706210
 ssp

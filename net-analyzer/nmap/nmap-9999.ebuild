@@ -1,21 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
-
-inherit autotools flag-o-matic git-r3 lua-single toolchain-funcs
+inherit autotools lua-single toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
+if [[ ${PV} == *9999* ]] ; then
+	inherit git-r3
 
-EGIT_REPO_URI="https://github.com/nmap/nmap"
+	EGIT_REPO_URI="https://github.com/nmap/nmap"
 
-LICENSE="NPSL"
+	# Just in case for now as future seems undecided.
+	LICENSE="NPSL"
+else
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nmap.asc
+	inherit verify-sig
+
+	SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
+	SRC_URI+=" verify-sig? ( https://nmap.org/dist/sigs/${P}.tar.bz2.asc )"
+
+	LICENSE="|| ( NPSL GPL-2 )"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+fi
+
 SLOT="0"
-IUSE="ipv6 libressl libssh2 ncat nping +nse ssl +system-lua"
+IUSE="ipv6 libssh2 ncat nping +nse ssl +system-lua"
 REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
@@ -27,13 +40,14 @@ RDEPEND="
 		sys-libs/zlib
 	)
 	nse? ( sys-libs/zlib )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"
+
+if [[ ${PV} != *9999* ]] ; then
+	BDEPEND+="verify-sig? ( app-crypt/openpgp-keys-nmap )"
+fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.10_beta1-string.patch

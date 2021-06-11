@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cuda eutils flag-o-matic toolchain-funcs multilib
+inherit cuda flag-o-matic toolchain-funcs
 
 MY_PN="john"
 MY_P="${MY_PN}-${PV}"
@@ -56,12 +56,8 @@ get_target() {
 		fi
 	elif use ppc-macos; then
 		echo "macosx-ppc32-altivec"
-	elif use x86-macos; then
-		if use cpu_flags_x86_sse2; then
-			echo "macosx-x86-sse2"
-		else
-			echo "macosx-x86"
-		fi
+	elif use x64-macos; then
+		echo "macosx-x86-64"
 	elif use x86-solaris; then
 		echo "solaris-x86-any"
 	elif use x86-fbsd; then

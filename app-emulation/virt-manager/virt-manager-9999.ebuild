@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,8 @@ HOMEPAGE="http://virt-manager.org"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
+	EGIT_BRANCH="master"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
@@ -32,9 +32,10 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
 		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/libvirt-python-0.6.10[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/libvirt-python-6.10.0[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/tqdm[${PYTHON_MULTI_USEDEP}]
 	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (

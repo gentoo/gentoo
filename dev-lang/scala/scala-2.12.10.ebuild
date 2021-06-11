@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils check-reqs java-pkg-2
+inherit check-reqs java-pkg-2
 
 SV="$(ver_cut 1-2)"
 SBTV="0.13.18"
@@ -48,7 +48,7 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="${SV}/${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="binary emacs"
 

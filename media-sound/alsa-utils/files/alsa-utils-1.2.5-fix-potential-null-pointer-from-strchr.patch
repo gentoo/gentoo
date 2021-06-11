@@ -1,0 +1,49 @@
+From 3d7a6facd9e1f962eef6c4ba3aa4cdc22477a6ac Mon Sep 17 00:00:00 2001
+From: Chao Song <chao.song@linux.intel.com>
+Date: Mon, 31 May 2021 10:29:57 +0800
+Subject: [PATCH] topology: fix potential null pointer from strchr
+
+This patch adds check to the return pointer from strchr,
+because it may be null and cause segment fault, if component
+is not properly constructed.
+
+Fixes: https://github.com/alsa-project/alsa-utils/pull/91
+Signed-off-by: Chao Song <chao.song@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ topology/pre-process-dapm.c   | 5 +++++
+ topology/pre-process-object.c | 5 +++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/topology/pre-process-dapm.c b/topology/pre-process-dapm.c
+index 450ca717..dbaf2f11 100644
+--- a/topology/pre-process-dapm.c
++++ b/topology/pre-process-dapm.c
+@@ -146,6 +146,11 @@ static int tplg_pp_get_widget_name(struct tplg_pre_processor *tplg_pp,
+
+ 	/* get class name */
+ 	args = strchr(string, '.');
++	if (!args) {
++		SNDERR("Error getting class name for %s\n", string);
++		return -EINVAL;
++	}
++
+ 	class_name = calloc(1, strlen(string) - strlen(args) + 1);
+ 	if (!class_name)
+ 		return -ENOMEM;
+diff --git a/topology/pre-process-object.c b/topology/pre-process-object.c
+index 09aa3758..ac8caeca 100644
+--- a/topology/pre-process-object.c
++++ b/topology/pre-process-object.c
+@@ -492,6 +492,11 @@ static int tplg_pp_add_object_tuple_section(struct tplg_pre_processor *tplg_pp,
+ 	}
+
+ 	type = strchr(token_ref, '.');
++	if(!type) {
++		SNDERR("Error getting type for %s\n", token_ref);
++		return -EINVAL;
++	}
++
+ 	token = calloc(1, strlen(token_ref) - strlen(type) + 1);
+ 	if (!token)
+ 		return -ENOMEM;

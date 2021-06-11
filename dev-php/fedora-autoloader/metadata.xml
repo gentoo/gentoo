@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>guillaumeseren@gmail.com</email>
     <name>Guillaume Seren</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -16,6 +16,7 @@
     Static PSR-4, PSR-0, and classmap autoloader.
     Includes loader for required and optional dependencies.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">php-fedora/autoloader</remote-id>
   </upstream>

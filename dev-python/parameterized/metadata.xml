@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>amynka@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">parameterized</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-utils.eclass
@@ -11,6 +11,7 @@
 # Original author: Zephyrus (zephyrus@mirach.it)
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common ebuild functions for cmake-based packages
+# @DEPRECATED: cmake.eclass
 # @DESCRIPTION:
 # DEPRECATED: This no longer receives any changes. Everyone must port to cmake.eclass.
 # The cmake-utils eclass makes creating ebuilds for cmake-based packages much easier.
@@ -93,6 +94,7 @@ _CMAKE_UTILS_ECLASS=1
 # "no" to disable (default) or anything else to enable.
 
 # @ECLASS-VARIABLE: CMAKE_EXTRA_CACHE_FILE
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Specifies an extra cache file to pass to cmake. This is the analog of EXTRA_ECONF
@@ -100,6 +102,7 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 # @ECLASS-VARIABLE: CMAKE_UTILS_QA_SRC_DIR_READONLY
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # After running cmake-utils_src_prepare, sets ${S} to read-only. This is

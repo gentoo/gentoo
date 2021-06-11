@@ -8,5 +8,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">pytest-rerunfailures</remote-id>
+    <remote-id type="github">pytest-dev/pytest-rerunfailures</remote-id>
   </upstream>
 </pkgmetadata>

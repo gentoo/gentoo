@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit bash-completion-r1 eutils toolchain-funcs
+inherit bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="unix-like reverse engineering framework and commandline tools"
 HOMEPAGE="http://www.radare.org"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ssl libressl"
+IUSE="ssl"
 
 RDEPEND="
 	dev-libs/libzip
@@ -26,10 +26,7 @@ RDEPEND="
 	sys-apps/file
 	sys-libs/zlib
 	dev-libs/capstone:0=
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -67,8 +64,8 @@ src_install() {
 	# a workaround for unstable $(INSTALL) call, bug #574866
 	local d
 	for d in doc/*; do
-		if [[ -d $d ]]; then
-			rm -rfv "$d" || die "failed to delete '$d'"
+		if [[ -d ${d} ]]; then
+			rm -rfv "${d}" || die "failed to delete '${d}'"
 		fi
 	done
 

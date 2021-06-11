@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
 
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
@@ -69,7 +73,6 @@ sid
 mms
 mtp
 ieee1394
-pm-utils
 darcs
 ggi
 nut

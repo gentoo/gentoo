@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>hydrapolic@gmail.com</email>
 		<name>Tomáš Mózes</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -18,7 +18,6 @@
 		<flag name="flask">Enable the Flask XSM module from NSA</flag>
 		<flag name="hvm">Enable support for hardware based virtualization (VT-x,AMD-v)</flag>
 		<flag name="ipxe">Enable ipxe support</flag>
-		<flag name="ocaml">Enable support for the ocaml language</flag>
 		<flag name="ovmf">Enable support to boot UEFI guest vm, needed by hvm</flag>
 		<flag name="pygrub">Install the pygrub boot loader</flag>
 		<flag name="qemu">Enable IOEMU support via the use of qemu-dm</flag>

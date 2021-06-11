@@ -1,0 +1,27 @@
+From 13f974157b178efe4c6d617f23246dde2b100f0d Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Wed, 10 Feb 2021 18:49:14 +0100
+Subject: [PATCH] [Gentoo-specific] avoid pre-stripping library
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ CMakeLists.txt | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9c8b4ba..05d493f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -182,9 +182,6 @@ if (UNIX OR MINGW)
+   # Uncomment the following to put the version info into the .so-file.
+   set_target_properties(${PROJECT_NAME} PROPERTIES VERSION "${LIB3MF_VERSION_MAJOR}.${LIB3MF_VERSION_MINOR}.${LIB3MF_VERSION_MICRO}.${BUILD_NUMBER}")
+   set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION "${LIB3MF_VERSION_MAJOR}")
+-  if (NOT APPLE)
+-    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS -s)
+-  endif()
+ else()
+   # wd4996 masks the deprecated-warning
+   target_compile_options(${PROJECT_NAME} PUBLIC "$<$<CONFIG:DEBUG>:/Od;/Ob0;/sdl;/W3;/WX;/FC;/wd4996>")
+-- 
+2.30.1
+

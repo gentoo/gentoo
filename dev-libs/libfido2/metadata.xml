@@ -5,4 +5,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="nfc">Enable experimental NFC support</flag>
+	</use>
 </pkgmetadata>

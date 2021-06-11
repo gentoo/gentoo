@@ -1,0 +1,9 @@
+# Additional options that are passed to the Daemon.
+APT_CACHER_NG_ARGS="-c /etc/apt-cacher-ng"
+
+# Specify the network services that correspond to the "BindAddress"
+# setting in your apt-cacher-ng.conf. For example, if you bind to
+# 127.0.0.1, then this should be set to "net.lo" which provides the
+# loopback interface. The default BindAddress listens on all available
+# interfaces, for which it suffices to have only one (net.lo) up.
+rc_need="net.lo"

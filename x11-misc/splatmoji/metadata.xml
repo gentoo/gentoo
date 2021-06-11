@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>william@ewpettersson.se</email>
 		<name>William Pettersson</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy maintainers</name>
 	</maintainer>
@@ -13,9 +13,6 @@
 		Splatmoji is a tool that lets users quickly look up and input emoji,
 		emoticons and kaomoji via a pop-up menu.
 	</longdescription>
-	<use>
-		<flag name="json">Escape output in JSON style using <pkg>app-misc/jq</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">cspeterson/splatmoji</remote-id>
 	</upstream>

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils vcs-snapshot
+inherit vcs-snapshot
 
 DESCRIPTION="cron script to sync portage and send update mails to root"
 HOMEPAGE="https://github.com/gentoo/porticron"

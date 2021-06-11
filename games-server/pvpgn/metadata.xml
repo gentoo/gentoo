@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">pvpgn/pvpgn-server</remote-id>
 		<remote-id type="sourceforge">pvpgn.berlios</remote-id>
 	</upstream>
 </pkgmetadata>

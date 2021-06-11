@@ -1,0 +1,28 @@
+From 4100bb481dd1599be3deae8539ff9eac2d9b7104 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 8 Mar 2021 10:32:38 +0100
+Subject: [PATCH] FIX load libc correctly in test_reusable_executor
+
+Fix test_reusable_executor to load libc via "c" library rather than
+"libc".  The latter is incorrect, and does not work in the newest
+versions of Python anymore, see https://bugs.python.org/issue42580.
+---
+ tests/test_reusable_executor.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_reusable_executor.py b/tests/test_reusable_executor.py
+index 1ff5b8b..d24d2de 100644
+--- a/tests/test_reusable_executor.py
++++ b/tests/test_reusable_executor.py
+@@ -32,7 +32,7 @@ if sys.platform == "win32":
+ else:
+     from signal import SIGKILL
+     from ctypes.util import find_library
+-    libc = ctypes.CDLL(find_library("libc"))
++    libc = ctypes.CDLL(find_library("c"))
+ 
+ 
+ try:
+-- 
+2.30.1
+

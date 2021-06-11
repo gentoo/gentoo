@@ -10,7 +10,7 @@
 # This eclass handles apache-2.x ebuild functions such as LoadModule generation
 # and inter-module dependency checking.
 
-inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs eapi7-ver
+inherit autotools flag-o-matic multilib ssl-cert user toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -19,14 +19,19 @@ case ${EAPI:-0} in
 	0|1|2|3|4|5)
 		die "This eclass is banned for EAPI<6"
 	;;
+	6)
+		inherit eapi7-ver
+	;;
+	*)
+		LUA_COMPAT=( lua5-{1..4} )
+		inherit lua-single
+	;;
 esac
 
 # settings which are version specific go in here:
 case $(ver_cut 1-2) in
 	2.4)
 		DEFAULT_MPM_THREADED="event" #509922
-		CDEPEND=">=dev-libs/apr-1.5.1:=
-			!www-apache/mod_macro" #492578 #477702
 	;;
 	*)
 		die "Unknown MAJOR.MINOR apache version."
@@ -88,10 +93,18 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 # built-in modules
 
 IUSE_MPMS="${IUSE_MPMS_FORK} ${IUSE_MPMS_THREAD}"
-IUSE="${IUSE} debug doc gdbm ldap libressl selinux ssl static suexec threads"
+IUSE="${IUSE} debug doc gdbm ldap selinux ssl static suexec +suexec-caps suexec-syslog split-usr threads"
 
 for module in ${IUSE_MODULES} ; do
-	IUSE="${IUSE} apache2_modules_${module}"
+	case ${module} in
+		# Enable http2 by default (bug #563452)
+		http2)
+			IUSE+=" +apache2_modules_${module}"
+		;;
+		*)
+			IUSE+=" apache2_modules_${module}"
+		;;
+	esac
 done
 
 _apache2_set_mpms() {
@@ -121,22 +134,50 @@ _apache2_set_mpms() {
 _apache2_set_mpms
 unset -f _apache2_set_mpms
 
-DEPEND="${CDEPEND}
+# Dependencies
+RDEPEND="
 	dev-lang/perl
+	>=dev-libs/apr-1.5.1:=
 	=dev-libs/apr-util-1*:=[gdbm=,ldap?]
 	dev-libs/libpcre
+	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_deflate? ( sys-libs/zlib )
+	apache2_modules_http2? (
+		>=net-libs/nghttp2-1.2.1
+		kernel_linux? ( sys-apps/util-linux )
+	)
+	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
 	apache2_modules_mime? ( app-misc/mime-types )
+	apache2_modules_proxy_http2? (
+		>=net-libs/nghttp2-1.2.1
+		kernel_linux? ( sys-apps/util-linux )
+	)
+	apache2_modules_session_crypto? (
+		dev-libs/apr-util[openssl]
+	)
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
+	selinux? ( sec-policy/selinux-apache )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.2:0= )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.0.2:0=
+		kernel_linux? ( sys-apps/util-linux )
 	)
-	!=www-servers/apache-1*"
-RDEPEND+=" ${DEPEND}
-	selinux? ( sec-policy/selinux-apache )"
+"
+
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+	suexec? ( suexec-caps? ( sys-libs/libcap ) )
+"
+if [[ ${EAPI} == 6 ]] ; then
+	DEPEND+=" ${BDEPEND}"
+fi
 PDEPEND="~app-admin/apache-tools-${PV}"
+
+REQUIRED_USE+="
+	apache2_modules_http2? ( ssl )
+	apache2_modules_md? ( ssl )
+"
 
 S="${WORKDIR}/httpd-${PV}"
 
@@ -254,7 +295,10 @@ setup_modules() {
 	MY_MODS=()
 
 	if use ldap ; then
-		MY_CONF+=( --enable-authnz_ldap=${mod_type} --enable-ldap=${mod_type} )
+		MY_CONF+=(
+			--enable-authnz_ldap=${mod_type}
+			--enable-ldap=${mod_type}
+		)
 		MY_MODS+=( ldap authnz_ldap )
 	else
 		MY_CONF+=( --disable-authnz_ldap --disable-ldap )
@@ -413,6 +457,10 @@ apache-2_pkg_setup() {
 		fi
 		elog
 	fi
+
+	if [[ ${EAPI} != 6 ]] && use apache2_modules_lua ; then
+		lua-single_pkg_setup
+	fi
 }
 
 # @FUNCTION: apache-2_src_prepare
@@ -457,7 +505,7 @@ apache-2_src_prepare() {
 
 	# Don't rename configure.in _before_ any possible user patches!
 	if [[ -f "configure.in" ]] ; then
-		elog "Renaming configure.in to configure.ac"
+		einfo "Renaming configure.in to configure.ac"
 		mv configure.{in,ac} || die
 	fi
 

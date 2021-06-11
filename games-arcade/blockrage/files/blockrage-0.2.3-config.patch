@@ -1,5 +1,5 @@
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -40,7 +40,7 @@
  SOUND_OPT=
  
@@ -17,8 +17,8 @@
        fi;;
      
      --bindir=*) bindir="$cfg_optarg";;
---- src/Makefile.in
-+++ src/Makefile.in
+--- a/src/Makefile.in
++++ b/src/Makefile.in
 @@ -1,7 +1,7 @@
  OBJS    = main.o gfxout.o gfxlib.o menus.o keyboard.o bg.o sound.o global.o timer.o
  

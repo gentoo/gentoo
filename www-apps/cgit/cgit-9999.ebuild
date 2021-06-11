@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +highlight libressl +lua test"
+IUSE="doc +highlight +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -27,8 +27,7 @@ RDEPEND="
 	acct-user/cgit
 	dev-vcs/git
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	lua? ( ${LUA_DEPS} )
 	sys-libs/zlib
 	virtual/httpd-cgi

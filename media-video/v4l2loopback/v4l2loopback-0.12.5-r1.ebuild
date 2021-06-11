@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,6 @@ inherit linux-mod toolchain-funcs
 case ${PV} in
 9999)
 	inherit git-r3
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/umlaeute/v4l2loopback.git"
 	;;
 *)
@@ -17,7 +16,7 @@ case ${PV} in
 	;;
 esac
 
-DESCRIPTION="v4l2 loopback device which output is it's own input"
+DESCRIPTION="v4l2 loopback device whose output is its own input"
 HOMEPAGE="https://github.com/umlaeute/v4l2loopback"
 
 LICENSE="GPL-2"

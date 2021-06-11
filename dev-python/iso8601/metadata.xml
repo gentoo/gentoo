@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">iso8601</remote-id>
+		<remote-id type="github">micktwomey/pyiso8601</remote-id>
 	</upstream>
 </pkgmetadata>

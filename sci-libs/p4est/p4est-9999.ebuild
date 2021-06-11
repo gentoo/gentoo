@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1..3} )
 # The build system currently fails with everything newer than 1.11.
 WANT_AUTOMAKE=1.11
 
-inherit autotools lua-single toolchain-funcs eutils
+inherit autotools lua-single toolchain-funcs
 
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"
@@ -18,7 +18,6 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/cburstedde/${PN}.git"
 	EGIT_BRANCH="develop"
 	SRC_URI=""
-	KEYWORDS=""
 else
 	SRC_URI="
 		https://github.com/cburstedde/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz

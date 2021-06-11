@@ -1,0 +1,28 @@
+From ce976d98317535d17d8aabd67729918a94b24cea Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 12 Apr 2021 23:07:50 -0400
+Subject: [PATCH] build: always use internal synctex instead of automagically
+
+We don't have a separate synctex package and would have to pull in
+all of texlive-core; so instead of fixing the automagic use of it,
+just remove support for external synctex, as that's easier.
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index abee124d..63c5040c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -251,7 +251,7 @@ config_h.set('HAVE_DESKTOP_SCHEMAS', gsettings_desktop_schemas_dep.found())
+ 
+ # *** libsynctex ***
+ synctex_dep = dependency('synctex', version: '>= 1.19', required: false)
+-external_synctex = synctex_dep.found()
++external_synctex = false
+ 
+ # *** Mime types list ***
+ mime_types_list = {
+-- 
+2.26.3
+

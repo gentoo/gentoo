@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit epatch java-pkg-2 java-pkg-simple
 
 DESCRIPTION="JFlex is a lexical analyzer generator for Java"
 HOMEPAGE="https://www.jflex.de/"
 SRC_URI="https://${PN}.de/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86 ~ppc-macos ~x64-macos"
 IUSE="examples test vim-syntax"
 RESTRICT="!test? ( test )"
 

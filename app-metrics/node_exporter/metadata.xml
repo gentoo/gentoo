@@ -5,6 +5,10 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">prometheus/node_exporter</remote-id>
 	</upstream>

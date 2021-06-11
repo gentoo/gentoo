@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/brndnmtthws/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3 BSD LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 sparc x86"
 IUSE="apcupsd bundled-toluapp cmus curl doc hddtemp ical iconv imlib iostats
 	ipv6 irc lua-cairo lua-imlib lua-rsvg math moc mpd mysql nano-syntax
 	ncurses nvidia +portmon pulseaudio rss systemd thinkpad truetype
@@ -78,6 +78,7 @@ DOCS=( README.md AUTHORS )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fpermissive.patch
+	"${FILESDIR}"/${P}-ipv6.patch
 )
 
 DISABLE_AUTOFORMATTING="yes"

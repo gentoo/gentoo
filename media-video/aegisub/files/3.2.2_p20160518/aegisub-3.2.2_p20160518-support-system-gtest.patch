@@ -26,8 +26,8 @@ index 8c30c1d..c5bf049 100644
 +GTEST_CPPFLAGS := -I$(GTEST_ROOT) -I$(GTEST_ROOT)/include
 +GTEST_LIBS := $(LIBS_PTHREAD)
 +else
-+GTEST_CPPFLAGS := $(shell pkg-config --cflags-only-I gtest)
-+GTEST_LIBS := $(shell pkg-config --libs gtest)
++GTEST_CPPFLAGS := $(shell ${PKG_CONFIG} --cflags-only-I gtest)
++GTEST_LIBS := $(shell ${PKG_CONFIG} --libs gtest)
 +endif
 +
 +GTEST_CXXFLAGS := $(CFLAGS_PTHREAD)

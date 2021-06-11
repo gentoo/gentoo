@@ -1,44 +1,44 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
+inherit cmake
 
-inherit cmake eutils multilib
-
-if [ "${PV}" != "9999" ]; then
-	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
-	S="${WORKDIR}/${P#votca-}"
-else
-	inherit git-r3
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	KEYWORDS=""
+	inherit git-r3
+else
+	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	S="${WORKDIR}/${P#votca-}"
 fi
 
 DESCRIPTION="Votca tools library"
-HOMEPAGE="http://www.votca.org"
+HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=dev-cpp/eigen-3.3
 	dev-libs/boost:=
 	dev-libs/expat
-	>=dev-cpp/eigen-3.3
-	sci-libs/fftw:3.0"
+	sci-libs/fftw:3.0=
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
-DEPEND="${RDEPEND}
-	>=app-text/txt2tags-2.5
-	virtual/pkgconfig"
-
-DOCS=( NOTICE )
+DOCS=( NOTICE README.rst CHANGELOG.rst )
 
 src_configure() {
-	mycmakeargs=(
-		-DWITH_RC_FILES=OFF
+	local mycmakeargs=(
+		-DINSTALL_RC_FILES=OFF
+		-DENABLE_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }

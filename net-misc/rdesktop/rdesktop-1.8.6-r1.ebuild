@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils
+inherit autotools
 
 MY_PV=${PV/_/-}
 
@@ -13,13 +13,12 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="alsa ao debug ipv6 kerberos libressl libsamplerate oss pcsc-lite xrandr"
+IUSE="alsa ao debug ipv6 kerberos libsamplerate oss pcsc-lite xrandr"
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXau
@@ -32,13 +31,12 @@ RDEPEND="
 	xrandr? ( x11-libs/libXrandr )"
 DEPEND="${RDEPEND}
 	x11-libs/libXt"
-BDEPEND=virtual/pkgconfig
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.0-sound_configure.patch
 	"${FILESDIR}"/${PN}-1.8.3-no_strip.patch
 	"${FILESDIR}"/${PN}-1.8.3-xrandr_configure.patch
-	"${FILESDIR}"/${PN}-1.8.4-libressl.patch
 	"${FILESDIR}"/${PN}-1.8.5-use_standard_gssapi.patch
 	"${FILESDIR}"/${P}-sec_decrypt.patch
 )

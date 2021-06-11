@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
@@ -100,7 +100,7 @@ enewuser() {
 	# get the username
 	local euser=$1; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call enewuser without a username"
 	fi
 
@@ -122,7 +122,7 @@ enewuser() {
 				euid="next"
 			fi
 		else
-			eerror "Userid given but is not greater than 0 !"
+			eerror "Userid given but is not greater than 0!"
 			die "${euid} is not a valid UID"
 		fi
 	else
@@ -142,7 +142,7 @@ enewuser() {
 	local eshell=$1; shift
 	if [[ ! -z ${eshell} ]] && [[ ${eshell} != "-1" ]] ; then
 		if [[ ! -e ${ROOT}${eshell} ]] ; then
-			eerror "A shell was specified but it does not exist !"
+			eerror "A shell was specified but it does not exist!"
 			die "${eshell} does not exist in ${ROOT}"
 		fi
 		if [[ ${eshell} == */false || ${eshell} == */nologin ]] ; then
@@ -254,7 +254,7 @@ enewgroup() {
 	# get the group
 	local egroup=$1; shift
 	if [[ -z ${egroup} ]] ; then
-		eerror "No group specified !"
+		eerror "No group specified!"
 		die "Cannot call enewgroup without a group"
 	fi
 
@@ -273,7 +273,7 @@ enewgroup() {
 				egid="next available; requested gid taken"
 			fi
 		else
-			eerror "Groupid given but is not greater than 0 !"
+			eerror "Groupid given but is not greater than 0!"
 			die "${egid} is not a valid GID"
 		fi
 	else
@@ -339,7 +339,7 @@ esethome() {
 	# get the username
 	local euser=$1; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esethome without a username"
 	fi
 
@@ -352,7 +352,7 @@ esethome() {
 	# handle homedir
 	local ehome=$1; shift
 	if [[ -z ${ehome} ]] ; then
-		eerror "No home directory specified !"
+		eerror "No home directory specified!"
 		die "Cannot call esethome without a home directory or '-1'"
 	fi
 
@@ -408,7 +408,7 @@ esetshell() {
 	# get the username
 	local euser=$1; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esetshell without a username"
 	fi
 
@@ -421,7 +421,7 @@ esetshell() {
 	# handle shell
 	local eshell=$1; shift
 	if [[ -z ${eshell} ]] ; then
-		eerror "No shell specified !"
+		eerror "No shell specified!"
 		die "Cannot call esetshell without a shell or '-1'"
 	fi
 
@@ -468,7 +468,7 @@ esetcomment() {
 	# get the username
 	local euser=$1; shift
 	if [[ -z ${euser} ]] ; then
-		eerror "No username specified !"
+		eerror "No username specified!"
 		die "Cannot call esetcomment without a username"
 	fi
 
@@ -481,7 +481,7 @@ esetcomment() {
 	# handle comment
 	local ecomment=$1; shift
 	if [[ -z ${ecomment} ]] ; then
-		eerror "No comment specified !"
+		eerror "No comment specified!"
 		die "Cannot call esetcomment without a comment"
 	fi
 

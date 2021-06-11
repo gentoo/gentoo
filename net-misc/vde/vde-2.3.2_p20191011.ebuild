@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,6 @@ inherit flag-o-matic
 if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/virtualsqaure/MY_PN"
-	KEYWORDS=""
 elif [[ ${PV} = *_p* ]]; then
 	inherit autotools
 	MY_PN="vde-2"
@@ -29,16 +28,10 @@ HOMEPAGE="https://virtualsquare.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-#IUSE="pcap selinux ssl libressl static-libs"
 # upstream switched to wolfssl
 IUSE="pcap selinux static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )"
-# upstream switched to wolfssl
-#	ssl? (
-#		!libressl? ( dev-libs/openssl:0= )
-#		libressl? ( dev-libs/libressl:0= )
-#	)"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
 	acct-group/qemu

@@ -17,8 +17,6 @@ Date:   Sat Mar 3 20:24:21 2012 +0300
     
     Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
 
-diff --git a/Makefile b/Makefile
-index 7693bd2..4207cda 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -36,7 +36,7 @@ install: $(BINARY)

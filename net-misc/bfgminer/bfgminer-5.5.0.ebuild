@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit eutils
 
 DESCRIPTION="Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C"
 HOMEPAGE="https://bitcointalk.org/?topic=168174"
@@ -11,13 +9,13 @@ SRC_URI="http://luke.dashjr.org/programs/bitcoin/files/${PN}/${PV}/${P}.txz -> $
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 
 # TODO: knc (needs i2c-tools header)
 # TODO: kncasic & titan (need systemwide knc-asic install)
 # TODO: minergate (needs actual miner_gate)
 IUSE="adl alchemist avalon avalonmm bitmain bfsb bfx bifury bigpic bitforce bitfury cointerra cpumining drillbit dualminer examples gridseed hardened hashbuster hashbuster2 hashfast icarus jingtian keccak klondike +libusb littlefury lm-sensors metabank minion modminer nanofury ncurses opencl proxy proxy_getwork proxy_stratum rockminer screen scrypt +sha256d twinfury +udev udev-broad-rules unicode x6500 zeusminer ztex"
-REQUIRED_USE='
+REQUIRED_USE="
 	|| ( keccak scrypt sha256d )
 	|| ( alchemist avalon avalonmm bitmain bfsb bfx bifury bigpic bitforce bitfury cointerra cpumining drillbit dualminer gridseed hashbuster hashbuster2 hashfast icarus klondike littlefury metabank modminer nanofury opencl proxy twinfury x6500 zeusminer ztex )
 	adl? ( opencl )
@@ -59,9 +57,9 @@ REQUIRED_USE='
 	x6500? ( sha256d libusb )
 	zeusminer? ( scrypt icarus )
 	ztex? ( sha256d libusb )
-'
+"
 
-DEPEND='
+DEPEND="
 	net-misc/curl
 	ncurses? (
 		sys-libs/ncurses:=[unicode?]
@@ -97,7 +95,7 @@ DEPEND='
 			app-misc/realpath
 		)
 	)
-'
+"
 RDEPEND="${DEPEND}
 	opencl? (
 		|| (
@@ -120,6 +118,10 @@ DEPEND="${DEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.5.0-fno-common.patch"
+)
+
 src_configure() {
 	local CFLAGS="${CFLAGS}"
 	local with_curses
@@ -127,12 +129,12 @@ src_configure() {
 
 	if use ncurses; then
 		if use unicode; then
-			with_curses='--with-curses=ncursesw'
+			with_curses="--with-curses=ncursesw"
 		else
-			with_curses='--with-curses=ncurses'
+			with_curses="--with-curses=ncurses"
 		fi
 	else
-		with_curses='--without-curses'
+		with_curses="--without-curses"
 	fi
 
 	CFLAGS="${CFLAGS}" \
@@ -171,7 +173,7 @@ src_configure() {
 		$(use_enable sha256d) \
 		$(use_enable twinfury) \
 		--with-system-libblkmaker \
-		$with_curses \
+		${with_curses} \
 		$(use_with udev libudev) \
 		$(use_enable udev-broad-rules broad-udevrules) \
 		$(use_with lm-sensors sensors) \
@@ -183,11 +185,12 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="$D"
+	emake install DESTDIR="${D}"
+
 	if ! use examples; then
-		rm -r "${D}/usr/share/doc/${PF}/rpc-examples"
+		rm -r "${ED}/usr/share/doc/${PF}/rpc-examples"
 	fi
 	if ! use screen; then
-		rm "${D}/usr/bin/start-bfgminer.sh"
+		rm "${ED}/usr/bin/start-bfgminer.sh"
 	fi
 }

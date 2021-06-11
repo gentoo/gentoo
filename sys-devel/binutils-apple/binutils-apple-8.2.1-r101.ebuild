@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/grobian/darwin-xtools/archive/gentoo-${PVR}.tar.gz -
 
 LICENSE="APSL-2"
 SLOT="8"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 IUSE="tapi"
 
 # xtools uses c++11 features, not available in gcc-apple, hence gcc/clang dep

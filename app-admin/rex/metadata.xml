@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>erkiferenc@gmail.com</email>
 		<name>Ferenc Erki</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>kentnl@gentoo.org</email>
-		<name>Kent Fredric</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">RexOps/Rex</remote-id>

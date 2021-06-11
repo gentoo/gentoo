@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils multilib multilib-minimal prefix toolchain-funcs versionator virtualx
+inherit autotools multilib multilib-minimal prefix toolchain-funcs versionator virtualx
 
 MY_P="${PN}${PV/_beta/b}"
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/tcl/${MY_P}-src.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0/8.6"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug +threads truetype aqua xscreensaver"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +26,9 @@ RDEPEND="
 		xscreensaver? ( >=x11-libs/libXScrnSaver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	)
 	~dev-lang/tcl-${PV}:0=[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
 	!aqua? ( x11-base/xorg-proto )"
 
 # Not bumped to 8.6

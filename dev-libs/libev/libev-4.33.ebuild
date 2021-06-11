@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="A high-performance event loop/event model with lots of feature"
 HOMEPAGE="http://software.schmorp.de/pkg/libev.html"
@@ -12,7 +12,7 @@ SRC_URI="http://dist.schmorp.de/libev/${P}.tar.gz
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv s390 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="static-libs"
 
 DOCS=( Changes README )
@@ -36,7 +36,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	if ! use static-libs; then
-		find "${D}" -name '*.la' -type f -delete || die
+		find "${ED}" -name '*.la' -type f -delete || die
 	fi
+
 	einstalldocs
 }

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
 inherit distutils-r1
@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]"
@@ -37,6 +37,13 @@ python_prepare_all() {
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
+
+	if use prefix-guest ; then
+		# use correct repo name, bug #632223
+		sed -i \
+			-e "/load_profile_data/s/repo='gentoo'/repo='gentoo_prefix'/" \
+			pym/gentoolkit/profile.py || die
+	fi
 }
 
 pkg_preinst() {

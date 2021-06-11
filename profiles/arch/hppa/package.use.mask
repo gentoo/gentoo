@@ -1,8 +1,34 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Rolf Eike Beer <eike@sf-mail.de> (2021-03-14)
+# dependencies not yet keyworded
+dev-ruby/globalid test
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
+# Sam James <sam@gentoo.org> (2021-03-11)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-01-19)
+# uchardet not stable/keyworded yet on this arch
+# bug #750032
+sys-apps/groff uchardet
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
 
 # Matthias Maier <tamiko@gentoo.org> (2020-12-03)
 # Requires sci-mathematics/z3.
@@ -22,15 +48,11 @@ dev-vcs/mercurial rust
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
-dev-libs/efl avif
+dev-libs/efl avif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
 media-libs/mesa vulkan vulkan-overlay zink
-
-# Felix Janda <felix.janda@posteo.de> (2020-08-01)
-# Requires masked dev-lang/spidermonkey:17
->=www-client/elinks-0.13.3 javascript
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
@@ -170,7 +192,8 @@ net-libs/gnutls test-full
 # Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-dev-vcs/git pcre-jit
+# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
+<dev-vcs/git-2.31.0 pcre-jit
 
 # Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
@@ -211,10 +234,6 @@ net-analyzer/rrdtool rados
 # Contact us if you want or have an HPPA cluster with dev-db/mariadb
 # (bug #544378)
 dev-db/mariadb galera
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Jeroen Roovers <jer@gentoo.org> (2015-02-02)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to

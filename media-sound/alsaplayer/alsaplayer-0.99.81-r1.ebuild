@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,10 @@ src_prepare() {
 	sed -i \
 		-e 's:-O2 -funroll-loops -finline-functions -ffast-math::' \
 		configure.ac || die
+
+	sed -i \
+		-e "s:/usr/lib:/usr/$(get_libdir):" \
+		configure.ac config.rpath || die
 
 	eautoreconf
 }

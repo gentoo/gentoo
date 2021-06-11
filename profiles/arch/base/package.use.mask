@@ -1,12 +1,35 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# TPM only exists on some archs.
+sys-apps/systemd tpm
+
+# Michael Orlitzky <mjo@gentoo.org> (2021-03-27)
+# The clozurecl and clozurecl64 flags are now arch-specific in maxima,
+# so we mask them both by default beginning with v5.44.0-r5 where
+# their meanings first diverged. You should unmask "clozurecl" on
+# 32-bit arches and unmask "clozurecl64" on 64-bit ones.
+# We don't list "clozurecl" here since it's already in use.mask.
+>=sci-mathematics/maxima-5.44.0-r5 clozurecl64
+
+# Sam James <sam@gentoo.org> (2021-03-02)
+# Java build is extremely sensitive to environment
+# Previously stable-masked but moved here
+# Then: bug #483372, bug #508564
+# Now: bug #773913 (exposed by having a new ~arch ebuild)
+media-libs/libcaca java mono
+
+# Jaco Kroon <jaco@uls.co.za> (2021-01-08)
+# blocksruntime (clang -fblocks) isn't available on all arches.
+net-misc/asterisk blocks
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Mask all sanitizers by default, unmask on arches supporting them.
 sys-libs/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 sys-libs/compiler-rt-sanitizers ubsan safestack cfi scudo
 sys-libs/compiler-rt-sanitizers shadowcallstack gwp-asan
-sys-libs/compiler-rt-sanitizers libfuzzer profile xray
+sys-libs/compiler-rt-sanitizers libfuzzer memprof profile xray
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -17,12 +40,6 @@ sci-mathematics/gmp-ecm custom-tune
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile jit
-
-# Sam James <sam@gentoo.org> (2020-09-20)
-# (for Mikle Kolyada <zlogene@gentoo.org>)
-# libgcrypt et al no longer support static-libs
-# Need to determine whether crypt is possible dynamically?
-sys-power/suspend crypt
 
 # Sam James <sam@gentoo.org> (2020-09-20)
 # (for Mikle Kolyada <zlogene@gentoo.org>)
@@ -69,7 +86,11 @@ sys-libs/glibc static-pie
 x11-wm/mutter sysprof
 dev-libs/gjs sysprof
 dev-libs/glib sysprof
+gnome-extra/cjs sysprof
 x11-libs/gtk+ sysprof
+net-libs/libsoup sysprof
+x11-libs/pango sysprof
+gui-libs/gtk sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan support is only available on few selected arches atm.
@@ -86,7 +107,7 @@ sys-block/fio python gnuplot
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches
 # Track addition arch keywording of quiche at:
-# https://bugs.gentoo.org/694320
+# bug #694320
 net-misc/curl quiche
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
@@ -107,7 +128,8 @@ dev-lang/rust-bin doc
 media-tv/kodi raspberry-pi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
-# mask javafx until it's keyworded on other arches
+# mask here and unmask in profiles for specific arches
+dev-java/openjdk:8 javafx
 dev-java/openjdk:11 javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
@@ -259,9 +281,9 @@ dev-vcs/git mediawiki mediawiki-experimental
 dev-libs/boost context
 
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
-# Related deps dev-lang/luajit and dev-scheme/racket are not keyworded by most arches.
-app-editors/vim luajit racket
-app-editors/gvim luajit racket
+# Related dep dev-scheme/racket is not keyworded by most arches.
+app-editors/vim racket
+app-editors/gvim racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Doesn't work on most profiles. Easier to mask here and
@@ -312,10 +334,6 @@ www-client/links suid
 # Robin H. Johnson <robbat2@gentoo.org> (2011-07-10)
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 parse-clocks
-
-# Tomáš Chvátal <scarabeus@gentoo.org> (2010-04-04)
-# Masked because tools pulled in are not supported on most archs.
-sys-power/pm-utils video_cards_intel video_cards_radeon
 
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.

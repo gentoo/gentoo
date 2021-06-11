@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>henson@acm.org</email>
 		<name>Paul B. Henson</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -16,6 +16,6 @@
 		local clock.
 	</longdescription>
 	<use>
-		<flag name="libressl">Enable HTTPS TLS time constraint support using <pkg>dev-libs/libressl</pkg></flag>
+		<flag name="constraints">Enable HTTPS TLS time constraint support</flag>
 	</use>
 </pkgmetadata>

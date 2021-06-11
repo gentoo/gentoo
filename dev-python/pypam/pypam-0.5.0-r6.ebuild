@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python3_{6..9} )
+EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=no
+MY_P="PyPAM-${PV}"
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1 flag-o-matic
-
-MY_PN="PyPAM"
-MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python Bindings for PAM (Pluggable Authentication Modules)"
 HOMEPAGE="http://www.pangalactic.org/PyPAM"
 SRC_URI="http://www.pangalactic.org/PyPAM/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -20,8 +20,6 @@ IUSE=""
 
 DEPEND=">=sys-libs/pam-0.64"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 DOCS=( AUTHORS examples/pamtest.py )
 

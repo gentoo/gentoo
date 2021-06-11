@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: db.eclass
@@ -23,13 +23,15 @@ db_fix_so() {
 	cd "${LIB}" || die
 
 	# first clean up old symlinks
-	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*so' -delete || die
-	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*so.[23]' -delete || die
+	local soext=$(get_libname)
+	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*'"${soext#.}" -delete || die
+	soext=$(get_libname "[23]")
+	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*'"${soext#.}" -delete || die
 	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*a' -delete || die
 
 	# now rebuild all the correct ones
 	local ext
-	for ext in so a; do
+	for ext in so dylib a; do
 		for name in libdb libdb_{cxx,tcl,java,sql,stl}; do
 			target="$(find . -maxdepth 1 -type f -name "${name}-*.${ext}" |sort -V |tail -n 1)"
 			[[ -n "${target}" ]] && ln -sf ${target//.\//} ${name}.${ext}
@@ -37,17 +39,17 @@ db_fix_so() {
 	done;
 
 	# db[23] gets some extra-special stuff
-	if [[ -f libdb1.so.2 ]]; then
-		ln -sf libdb1.so.2 libdb.so.2
-		ln -sf libdb1.so.2 libdb1.so
-		ln -sf libdb1.so.2 libdb-1.so
+	if [[ -f libdb1$(get_libname 2) ]]; then
+		ln -sf libdb1$(get_libname 2) libdb$(get_libname 2)
+		ln -sf libdb1$(get_libname 2) libdb1$(get_libname)
+		ln -sf libdb1$(get_libname 2) libdb-1$(get_libname)
 	fi
 	# what do we do if we ever get 3.3 ?
 	local i
 	for i in libdb libdb_{cxx,tcl,java,sql,stl}; do
-		if [[ -f ${i}-3.2.so ]]; then
-			ln -sf ${i}-3.2.so ${i}-3.so
-			ln -sf ${i}-3.2.so ${i}.so.3
+		if [[ -f $i-3.2$(get_libname) ]]; then
+			ln -sf $i-3.2$(get_libname) $i-3$(get_libname)
+			ln -sf $i-3.2$(get_libname) $i$(get_libname 3)
 		fi
 	done
 
@@ -143,8 +145,10 @@ db_src_install_usrlibcleanup() {
 		mv "${LIB}/libdb_cxx.a" "${LIB}/libdb_cxx-${SLOT}.a" || die
 	fi
 
-	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*so' -delete || die
-	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*so.[23]' -delete || die
+	local soext=$(get_libname)
+	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*'"${soext#.}" -delete || die
+	soext=$(get_libname "[23]")
+	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*'"${soext#.}" -delete || die
 	einfo "removing unversioned static archives"
 	find "${LIB}" -maxdepth 1 -type l -name 'libdb[1._-]*a' -delete || die
 

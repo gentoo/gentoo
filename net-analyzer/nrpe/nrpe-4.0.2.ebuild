@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,15 +11,12 @@ SRC_URI="https://github.com/NagiosEnterprises/nrpe/releases/download/${P}/${P}.t
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="command-args libressl selinux ssl"
+IUSE="command-args selinux ssl"
 
 DEPEND="acct-group/nagios
 	acct-user/nagios
 	sys-apps/tcp-wrappers
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)"
+	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}
 	|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins )
 	selinux? ( sec-policy/selinux-nagios )"

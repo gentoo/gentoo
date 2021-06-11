@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools linux-info python-r1 systemd
 
@@ -20,18 +20,18 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	"
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0/1"
-IUSE="debug doc +gmp json +modern-kernel python +readline static-libs xtables"
+IUSE="debug doc +gmp json libedit +modern-kernel python +readline static-libs xtables"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.4:0=
-	>=net-libs/libnftnl-1.1.8:0=
+	>=net-libs/libnftnl-1.1.9:0=
 	gmp? ( dev-libs/gmp:0= )
-	json? ( dev-libs/jansson )
+	json? ( dev-libs/jansson:= )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	xtables? ( >=net-firewall/iptables-1.6.1 )
@@ -49,7 +49,12 @@ BDEPEND+="
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
+	libedit? ( !readline )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+)
 
 python_make() {
 	emake \
@@ -93,6 +98,7 @@ src_configure() {
 		$(use_enable doc man-doc)
 		$(use_with !gmp mini_gmp)
 		$(use_with json)
+		$(use_with libedit cli editline)
 		$(use_with readline cli readline)
 		$(use_enable static-libs static)
 		$(use_with xtables)

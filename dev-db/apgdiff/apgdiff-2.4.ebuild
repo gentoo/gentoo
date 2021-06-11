@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 JAVA_PKG_IUSE="doc source"
-inherit eutils java-pkg-2 java-ant-2
+inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A simple PostgreSQL diff tool that is useful for schema upgrades"
 HOMEPAGE="https://apgdiff.com"
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 DEPEND=">=virtual/jdk-1.6
 	>=dev-java/ant-core-1.7.0:0
 	>=dev-java/ant-junit-1.7.0:0
-	app-arch/zip:0
+	app-arch/unzip:0
 	test? (
 		dev-java/hamcrest-core:0
 		>=dev-java/junit-4.4:4

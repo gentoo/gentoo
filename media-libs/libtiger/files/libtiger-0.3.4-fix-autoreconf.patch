@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/778578
+
+From f3f463faa8cb73ffbdce172bddfa839eb65b2d0f Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Sat, 27 Mar 2021 07:44:14 -0700
+Subject: [PATCH 1/2] Build: Fix autoreconf.
+
+---
+ Makefile.am     | 2 +-
+ configure.ac    | 3 ++-
+ doc/Makefile.am | 2 +-
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index c5d6b6e..746d893 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -11,7 +11,7 @@ tigerinc_HEADERS=include/tiger/tiger.h include/tiger/tiger_config.h
+ tigerpc_DATA=misc/pkgconfig/tiger.pc
+ noinst_DATA=misc/pkgconfig/tiger-uninstalled.pc
+ 
+-LIBTOOLFLAGS=--silent
++AM_LIBTOOLFLAGS=--silent
+ 
+ AM_CPPFLAGS=-I $(top_srcdir)/src -I $(top_srcdir)/include
+ 
+diff --git a/configure.ac b/configure.ac
+index 2f63684..a1cf2ae 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -26,6 +26,8 @@ dnl     then set AGE to 0.
+ 
+ LIBTIGER_SHARED_VERSION="5:2:0"
+ 
++AM_PROG_AR
++
+ AC_PROG_CC_C_O
+ AC_PROG_LIBTOOL
+ AC_PROG_GREP
+@@ -35,7 +37,6 @@ AC_PROG_SED
+ AC_C_CONST
+ AC_C_INLINE
+ 
+-
+ # headers
+ 
+ AC_HEADER_STDC
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 70d48c5..01e95d3 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -1,4 +1,4 @@
+-LIBTOOLFLAGS=--silent
++AM_LIBTOOLFLAGS=--silent
+ 
+ # dependency to get doc to be built
+ noinst_DATA = .doc-dummy-target
+-- 
+2.26.3

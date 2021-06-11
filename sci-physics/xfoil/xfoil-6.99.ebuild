@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit fortran-2 toolchain-funcs
+inherit fortran-2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Design and analysis of subsonic isolated airfoils"
 HOMEPAGE="http://raphael.mit.edu/xfoil/"
@@ -27,6 +27,10 @@ src_prepare() {
 	# fix bug #147033
 	[[ $(tc-getFC) == *gfortran ]] && PATCHES+=( "${FILESDIR}"/${PN}-6.96-gfortran.patch )
 	default
+
+	# GCC 10 workaround
+	# bug #722194
+	append-fflags $(test-flags-FC -fallow-argument-mismatch)
 
 	sed \
 		-e '/^FC/d' \

@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE="opengl xim"
 
 RDEPEND="${GNUSTEP_CORE_DEPEND}

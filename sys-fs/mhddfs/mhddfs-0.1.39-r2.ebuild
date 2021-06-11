@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,7 @@ RDEPEND="
 	sys-fs/fuse:0
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( ChangeLog README )
 PATCHES=(
@@ -31,6 +32,8 @@ PATCHES=(
 )
 
 src_compile() {
+	tc-export PKG_CONFIG
+
 	emake CC="$(tc-getCC)"
 }
 

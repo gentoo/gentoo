@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd xdg
+inherit qmake-utils systemd xdg
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
 HOMEPAGE="https://roy.marples.name/projects/dhcpcd-ui/"
@@ -11,8 +11,8 @@ SRC_URI="https://roy.marples.name/downloads/${PN%-ui}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug gtk gtk2 libnotify ncurses qt5"
+KEYWORDS="amd64 x86"
+IUSE="debug gtk libnotify ncurses qt5"
 
 REQUIRED_USE="libnotify? ( gtk )
 	qt5? ( !libnotify )"
@@ -24,12 +24,7 @@ DEPEND="
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf:2
-		gtk2? (
-			x11-libs/gtk+:2
-		)
-		!gtk2? (
-			x11-libs/gtk+:3
-		)
+		x11-libs/gtk+:3
 	)
 	libnotify? ( x11-libs/libnotify )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -40,19 +35,20 @@ DEPEND="
 		media-libs/mesa
 	)
 "
-
 RDEPEND="${DEPEND}
-	>=net-misc/dhcpcd-6.4.4"
+	>=net-misc/dhcpcd-6.4.4
+"
 
 src_configure() {
 	local myeconfargs=(
 		--without-qt
 		$(use_enable debug)
 		$(use_enable libnotify notification)
-		$(use_with gtk gtk $(usex gtk2 'gtk+-2.0' 'gtk+-3.0'))
+		$(use_with gtk gtk 'gtk+-3.0')
 		$(use_with ncurses curses)
 		$(use_with qt5 qt)
 	)
+	QMAKE="$(qt5_get_bindir)/qmake" \
 	econf "${myeconfargs[@]}"
 }
 

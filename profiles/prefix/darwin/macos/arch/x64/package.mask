@@ -1,12 +1,3 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# The 32-bits profile is inherited by the 64-bits one!
-# All the Mac OS X profiles inherit from their matching arch profile here.
-
-# The Carbon interface has been removed in the 64-bits userland, only
-# tk-8.6 will come with Cocoa support.  If you must have tk, you'll have
-# to force USE=-aqua, but don't report bugs for incompatabilities you
-# might encounter.
-# NOTE: keep this mask synced with 10.7/x86
-<dev-lang/tk-8.6

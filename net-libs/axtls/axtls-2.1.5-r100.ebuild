@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua-single multilib multilib-minimal savedconfig toolchain-funcs user
+inherit lua-single multilib-minimal savedconfig toolchain-funcs user
 
 ################################################################################
 # axtls CONFIG MINI-HOWTO
@@ -42,13 +42,13 @@ S="${WORKDIR}/${PN}-code"
 
 LICENSE="BSD GPL-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
 
 IUSE="httpd cgi-lua cgi-php static static-libs doc"
 
 # TODO: add ipv6, and c#, java, lua, perl bindings
 # Currently these all have some issue
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
 RDEPEND="
 	httpd? (
 		cgi-lua? ( ${LUA_DEPS} )

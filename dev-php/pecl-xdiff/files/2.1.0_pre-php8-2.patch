@@ -1,0 +1,214 @@
+From 2afb71ae1d6bcebe66f2e52019222a117c607f66 Mon Sep 17 00:00:00 2001
+From: Rasmus Lerdorf <rasmus@lerdorf.com>
+Date: Thu, 14 Jan 2021 08:23:43 -0800
+Subject: [PATCH] Version 2.1.0 PHP 8 support Drop PHP 5 support
+
+diff --git a/xdiff.stub.php b/xdiff.stub.php
+new file mode 100644
+index 0000000..4597e7f
+--- /dev/null
++++ b/xdiff.stub.php
+@@ -0,0 +1,84 @@
++<?php
++/** @generate-function-entries */
++
++/**
++ * @param string $str1
++ * @param string $str2
++ * @param int $context
++ * @param bool $minimal
++ * @return string|false
++ */
++function xdiff_string_diff(string $str1, string $str2, int $context = 3, bool $minimal = false) {}
++
++function xdiff_file_diff(string $file1, string $file2, string $dest, int $context = 3, bool $minimal = false): bool {}
++
++/**
++ * @param string $str1
++ * @param string $str2
++ * @return string|false
++ * @alias xdiff_string_bdiff
++ */
++function xdiff_string_diff_binary(string $str1, string $str2) {}
++
++/** @alias xdiff_file_bdiff */
++function xdiff_file_diff_binary(string $file1, string $file2, string $dest): bool {}
++
++/**
++ * @param string $str1
++ * @param string $str2
++ * @return string|false
++ */
++function xdiff_string_rabdiff(string $str1, string $str2) {}
++
++function xdiff_file_rabdiff(string $file1, string $file2, string $dest): bool {}
++
++function xdiff_file_bdiff_size(string $file1, string $file2, string $dest): bool {}
++
++function xdiff_string_bdiff_size(string $file1, string $file2, string $dest): bool {}
++
++/**
++ * @param string $file
++ * @param string $patch
++ * @param string $dest
++ * @param int $flags
++ * @return string|bool
++ */
++function xdiff_file_patch(string $file, string $patch, string $dest, int $flags=XDIFF_PATCH_NORMAL) {}
++
++/**
++ * @param string $file
++ * @param string $patch
++ * @param int $flags
++ * @param string $error
++ * @return string|bool
++ */
++function xdiff_string_patch(string $file, string $patch, int $flags=XDIFF_PATCH_NORMAL, string &$error=null) {}
++
++/** @alias xdiff_file_bpatch */
++function xdiff_file_patch_binary(string $file, string $patch, string $dest): bool {}
++
++/**
++ * @param string $file
++ * @param string $patch
++ * @return string|false
++ * @alias xdiff_string_bpatch
++ */
++function xdiff_string_patch_binary(string $str, string $patch) {}
++
++/**
++ * @param string $file1
++ * @param string $file2
++ * @param string $file3
++ * @param string $dest
++ * @return string|bool
++ */
++function xdiff_file_merge3(string $file1, string $file2, string $file3, string $dest) {}
++
++/**
++ * @param string $str1
++ * @param string $str2
++ * @param string $str3
++ * @param string $error
++ * @return string|bool
++ */
++function xdiff_string_merge3(string $str1, string $str2, string $str3, string &$error=null) {}
+diff --git a/xdiff_arginfo.h b/xdiff_arginfo.h
+new file mode 100644
+index 0000000..2016f7e
+--- /dev/null
++++ b/xdiff_arginfo.h
+@@ -0,0 +1,110 @@
++/* This is a generated file, edit the .stub.php file instead.
++ * Stub hash: ec3a63aa4462f084433c3576ad532de87da7f867 */
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_string_diff, 0, 0, 2)
++	ZEND_ARG_TYPE_INFO(0, str1, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, str2, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_LONG, 0, "3")
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, minimal, _IS_BOOL, 0, "false")
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_xdiff_file_diff, 0, 3, _IS_BOOL, 0)
++	ZEND_ARG_TYPE_INFO(0, file1, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, file2, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, dest, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, context, IS_LONG, 0, "3")
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, minimal, _IS_BOOL, 0, "false")
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_string_diff_binary, 0, 0, 2)
++	ZEND_ARG_TYPE_INFO(0, str1, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, str2, IS_STRING, 0)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_xdiff_file_diff_binary, 0, 3, _IS_BOOL, 0)
++	ZEND_ARG_TYPE_INFO(0, file1, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, file2, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, dest, IS_STRING, 0)
++ZEND_END_ARG_INFO()
++
++#define arginfo_xdiff_string_rabdiff arginfo_xdiff_string_diff_binary
++
++#define arginfo_xdiff_file_rabdiff arginfo_xdiff_file_diff_binary
++
++#define arginfo_xdiff_file_bdiff_size arginfo_xdiff_file_diff_binary
++
++#define arginfo_xdiff_string_bdiff_size arginfo_xdiff_file_diff_binary
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_file_patch, 0, 0, 3)
++	ZEND_ARG_TYPE_INFO(0, file, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, patch, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, dest, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "XDIFF_PATCH_NORMAL")
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_string_patch, 0, 0, 2)
++	ZEND_ARG_TYPE_INFO(0, file, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, patch, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, flags, IS_LONG, 0, "XDIFF_PATCH_NORMAL")
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(1, error, IS_STRING, 0, "null")
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_xdiff_file_patch_binary, 0, 3, _IS_BOOL, 0)
++	ZEND_ARG_TYPE_INFO(0, file, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, patch, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, dest, IS_STRING, 0)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_string_patch_binary, 0, 0, 2)
++	ZEND_ARG_TYPE_INFO(0, str, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, patch, IS_STRING, 0)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_file_merge3, 0, 0, 4)
++	ZEND_ARG_TYPE_INFO(0, file1, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, file2, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, file3, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, dest, IS_STRING, 0)
++ZEND_END_ARG_INFO()
++
++ZEND_BEGIN_ARG_INFO_EX(arginfo_xdiff_string_merge3, 0, 0, 3)
++	ZEND_ARG_TYPE_INFO(0, str1, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, str2, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO(0, str3, IS_STRING, 0)
++	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(1, error, IS_STRING, 0, "null")
++ZEND_END_ARG_INFO()
++
++
++ZEND_FUNCTION(xdiff_string_diff);
++ZEND_FUNCTION(xdiff_file_diff);
++ZEND_FUNCTION(xdiff_string_bdiff);
++ZEND_FUNCTION(xdiff_file_bdiff);
++ZEND_FUNCTION(xdiff_string_rabdiff);
++ZEND_FUNCTION(xdiff_file_rabdiff);
++ZEND_FUNCTION(xdiff_file_bdiff_size);
++ZEND_FUNCTION(xdiff_string_bdiff_size);
++ZEND_FUNCTION(xdiff_file_patch);
++ZEND_FUNCTION(xdiff_string_patch);
++ZEND_FUNCTION(xdiff_file_bpatch);
++ZEND_FUNCTION(xdiff_string_bpatch);
++ZEND_FUNCTION(xdiff_file_merge3);
++ZEND_FUNCTION(xdiff_string_merge3);
++
++
++static const zend_function_entry ext_functions[] = {
++	ZEND_FE(xdiff_string_diff, arginfo_xdiff_string_diff)
++	ZEND_FE(xdiff_file_diff, arginfo_xdiff_file_diff)
++	ZEND_FALIAS(xdiff_string_diff_binary, xdiff_string_bdiff, arginfo_xdiff_string_diff_binary)
++	ZEND_FALIAS(xdiff_file_diff_binary, xdiff_file_bdiff, arginfo_xdiff_file_diff_binary)
++	ZEND_FE(xdiff_string_rabdiff, arginfo_xdiff_string_rabdiff)
++	ZEND_FE(xdiff_file_rabdiff, arginfo_xdiff_file_rabdiff)
++	ZEND_FE(xdiff_file_bdiff_size, arginfo_xdiff_file_bdiff_size)
++	ZEND_FE(xdiff_string_bdiff_size, arginfo_xdiff_string_bdiff_size)
++	ZEND_FE(xdiff_file_patch, arginfo_xdiff_file_patch)
++	ZEND_FE(xdiff_string_patch, arginfo_xdiff_string_patch)
++	ZEND_FALIAS(xdiff_file_patch_binary, xdiff_file_bpatch, arginfo_xdiff_file_patch_binary)
++	ZEND_FALIAS(xdiff_string_patch_binary, xdiff_string_bpatch, arginfo_xdiff_string_patch_binary)
++	ZEND_FE(xdiff_file_merge3, arginfo_xdiff_file_merge3)
++	ZEND_FE(xdiff_string_merge3, arginfo_xdiff_string_merge3)
++	ZEND_FE_END
++};
+-- 
+2.11.0
+

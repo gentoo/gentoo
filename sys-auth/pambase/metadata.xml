@@ -17,6 +17,10 @@
 			Use pam_systemd module to register user sessions in the systemd
 			control group hierarchy.
 		</flag>
+		<flag name="homed">
+			Use pam_systemd_home module to manage home directories with
+			the systemd-homed service
+		</flag>
 		<flag name="debug">
 			Enable debug information logging on syslog(3) for all the
 			modules supporting this in the system authentication and system

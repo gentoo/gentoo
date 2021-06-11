@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/axkibe/lsyncd/archive/release-${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -30,7 +30,7 @@ BDEPEND="${CDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.3-cmake_lua_version.patch
-	"${FILESDIR}"/${PN}-2.3.3-mandir.patch
+	"${FILESDIR}"/${PN}-2.2.3-mandir.patch
 )
 
 S=${WORKDIR}/${PN}-release-${PV}

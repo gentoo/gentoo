@@ -1,10 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..8} )
+
+PYTHON_COMPAT=( python3_{7..9} )
 GENTOO_DEPEND_ON_PERL=no
-inherit eutils multilib perl-module python-r1 toolchain-funcs
+inherit perl-module python-r1 toolchain-funcs
 
 DESCRIPTION="A library which implements a curses-based widget set for text terminals"
 HOMEPAGE="http://www.clifford.at/stfl/"
@@ -38,6 +39,7 @@ PATCHES=(
 
 src_prepare() {
 	default_src_prepare
+
 	sed -i \
 		-e 's/-Os -ggdb//' \
 		-e 's/^\(all:.*\) example/\1/' \

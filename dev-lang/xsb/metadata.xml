@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">xsb</remote-id>
 	</upstream>
+	<use>
+		<flag name="mariadb">Enable support for the mariadb database backend</flag>
+	</use>
 </pkgmetadata>

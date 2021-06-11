@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="library for Levenberg-Marquardt least-squares minimization and curve fitting"
-HOMEPAGE="http://apps.jcns.fz-juelich.de/doku/sc/lmfit"
+HOMEPAGE="https://jugit.fz-juelich.de/mlz/lmfit"
 SRC_URI="http://apps.jcns.fz-juelich.de/src/lmfit/${P}.tgz"
 
 LICENSE="BSD-2"
@@ -20,6 +20,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DINJECT_C_FLAGS=OFF
 	)
-
-	cmake-utils_src_configure
+	cmake_src_configure
 }

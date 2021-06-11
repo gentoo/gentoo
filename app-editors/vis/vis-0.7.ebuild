@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PTV=0.5
-LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
+LUA_COMPAT=( lua5-2 lua5-3 )
 
 inherit lua-single optfeature
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/${P}.tar.gz
 	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz )"
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="+ncurses +lua selinux test tre"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -26,6 +26,8 @@ DEPEND="dev-libs/libtermkey
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
+# https://github.com/martanne/vis-test/issues/28
+BDEPEND="test? ( $(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]') )"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup

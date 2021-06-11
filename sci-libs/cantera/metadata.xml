@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>torokhov-s-a@yandex.ru</email>
     <name>Sergey Torokhov</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -14,9 +14,9 @@
     for problems involving chemical kinetics, thermodynamics, and/or transport processes.
   </longdescription>
   <use>
-    <flag name="cti">Install CTI tools (ck2cti, ctml_writer) for conversion of Chemkin files to Cantera format</flag>
+    <flag name="cti">Install CTI tools (ck2cti, ck2yaml, ctml_writer) for conversion of Chemkin files to Cantera format</flag>
   </use>
   <upstream>
-    <remote-id type="github">cantera</remote-id>
+    <remote-id type="github">cantera/cantera</remote-id>
   </upstream>
 </pkgmetadata>

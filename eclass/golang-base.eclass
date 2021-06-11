@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-base.eclass
@@ -15,7 +15,7 @@ case "${EAPI:-0}" in
 	5|6|7)
 		;;
 	*)
-		die "${ECLASS}: Unsupported eapi (EAPI=${EAPI})"
+		die "${ECLASS}: Unsupported EAPI (EAPI=${EAPI})"
 		;;
 esac
 
@@ -35,6 +35,9 @@ QA_FLAGS_IGNORED='.*'
 
 # Upstream does not support stripping go packages
 RESTRICT="strip"
+
+# force GO111MODULE to be auto for bug https://bugs.gentoo.org/771129
+export GO111MODULE=auto
 
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED

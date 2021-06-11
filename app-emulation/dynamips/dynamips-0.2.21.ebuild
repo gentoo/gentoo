@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Cisco 7200/3600 Simulator"
 HOMEPAGE="https://github.com/GNS3/dynamips"
@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ipv6"
 
 BDEPEND="app-arch/unzip"
-RDEPEND="dev-libs/elfutils
+RDEPEND="
+	dev-libs/elfutils
 	net-libs/libpcap"
 DEPEND="${RDEPEND}"
 
@@ -28,7 +29,7 @@ src_prepare() {
 	# comment out DYNAMIPS_FLAGS to respect CFLAGS
 	sed -e "s:^set ( DYNAMIPS_FLAGS:#&:" -i cmake/dependencies.cmake || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -36,5 +37,5 @@ src_configure() {
 		-DANY_COMPILER=1
 		-DENABLE_IPV6="$(usex ipv6)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

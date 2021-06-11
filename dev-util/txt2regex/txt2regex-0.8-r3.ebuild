@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A Regular Expression wizard that converts human sentences to regexs"
 HOMEPAGE="http://txt2regex.sourceforge.net/"
@@ -17,18 +15,26 @@ IUSE="nls cjk"
 DEPEND="nls? ( sys-devel/gettext )"
 RDEPEND=">=app-shells/bash-2.04"
 
-src_prepare() {
+PATCHES=(
 	# bug #562856
-	epatch "${FILESDIR}"/"${P}-textdomaindir.patch"
+	"${FILESDIR}"/${P}-textdomaindir.patch
+)
+
+src_prepare() {
+	default
 
 	# bug #93568
-	use nls || epatch "${FILESDIR}"/"${P}-disable-nls.patch"
+	if ! use nls ; then
+		eapply "${FILESDIR}"/${P}-disable-nls.patch
+	fi
 
-	use cjk && sed -i -e 's/\xa4/:+:/g' "${S}"/${P}.sh
+	if use cjk ; then
+		sed -i -e 's/\xa4/:+:/g' "${S}"/${P}.sh || die
+	fi
 }
 
 src_install() {
-	emake install DESTDIR="${D}" MANDIR="${D}"/usr/share/man/man1 install
+	emake install DESTDIR="${ED}" MANDIR="${D}"/usr/share/man/man1 install
 	dodoc Changelog NEWS README README.japanese TODO
 	newman txt2regex.man txt2regex.6
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,16 +11,18 @@ SRC_URI="https://www.fehcom.de/ipnet/ucspi-ssl/${P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ppc ppc64 s390 sparc x86"
-IUSE="bindist perl libressl"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ppc ppc64 ~s390 sparc x86"
+IUSE="bindist perl"
 
-DEPEND="libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0=[bindist=] )
+DEPEND="
+	dev-libs/openssl:0=[bindist=]
 	perl? ( dev-lang/perl:= )"
 RDEPEND="${DEPEND}
 	sys-apps/ucspi-tcp"
 
 S="${WORKDIR}"/host/superscript.com/net/${P}
+
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 
 src_prepare() {
 	ht_fix_all
@@ -41,8 +43,7 @@ src_prepare() {
 	if use bindist; then
 		echo > conf-ecdh || die
 	fi
-
-	eapply_user
+	default
 }
 
 src_compile() {

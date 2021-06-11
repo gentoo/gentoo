@@ -1,8 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Michał Górny <mgorny@gentoo.org> (2021-05-04)
+# Python 3.10 is not yet stable (and will not be until it's out of beta,
+# around September.
+python_single_target_python3_10
+python_targets_python3_10
+
+# Rolf Eike Beer <eike@sf-mail.de> (2021-02-08)
+# dev-lang/lua:5.2 not stable on hppa
+lua_single_target_lua5-2
 
 # Matt Turner <mattst88@gentoo.org> (2020-12-23)
 # dev-db/postgresql is not stable on hppa
@@ -55,11 +65,6 @@ gstreamer
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-13)
 # No stable wayland components on hppa
 wayland
-
-# Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
-# No stable dev-libs/libressl on hppa, bug #704228
-curl_ssl_libressl
-libressl
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-11)
 # No stable media-libs/libsdl or media-libs/libsdl2 on hppa

@@ -1,0 +1,19 @@
+https://github.com/MapServer/MapServer/issues/6249
+
+From e56a020789c024f985c61e49d66f3eb92d350232 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Mon, 8 Mar 2021 15:19:50 +0100
+Subject: [PATCH] FindProj.cmake: allow finding PROJ 8 that has no longer
+ proj_api.h (fixes #6249)
+
+--- a/cmake/FindProj.cmake
++++ b/cmake/FindProj.cmake
+@@ -6,7 +6,7 @@
+ #    PROJ_LIBRARY
+ 
+ 
+-FIND_PATH(PROJ_INCLUDE_DIR proj_api.h)
++FIND_PATH(PROJ_INCLUDE_DIR NAMES proj.h proj_api.h)
+ 
+ FIND_LIBRARY(PROJ_LIBRARY NAMES proj proj_i)
+ 

@@ -1,0 +1,59 @@
+From b05285b3853493436f71eb4192365b818005b0af Mon Sep 17 00:00:00 2001
+From: loqs <loqs@users.noreply.github.com>
+Date: Tue, 25 May 2021 22:43:07 +0100
+Subject: [PATCH] Fix Boost 1.76.0 incompatibility
+
+Fixes EttusResearch/uhd/issues/437
+---
+ host/lib/usrp/cores/rx_dsp_core_3000.cpp      | 1 +
+ host/lib/usrp/cores/rx_frontend_core_3000.cpp | 1 +
+ host/lib/usrp/usrp2/usrp2_impl.cpp            | 5 ++---
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/lib/usrp/cores/rx_dsp_core_3000.cpp b/host/lib/usrp/cores/rx_dsp_core_3000.cpp
+index ff431fd41..53f3fee69 100644
+--- a/lib/usrp/cores/rx_dsp_core_3000.cpp
++++ b/lib/usrp/cores/rx_dsp_core_3000.cpp
+@@ -14,6 +14,7 @@
+ #include <uhdlib/usrp/cores/rx_dsp_core_3000.hpp>
+ #include <boost/assign/list_of.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ #include <algorithm>
+ #include <cmath>
+ #include <functional>
+diff --git a/lib/usrp/cores/rx_frontend_core_3000.cpp b/host/lib/usrp/cores/rx_frontend_core_3000.cpp
+index abbe64b13..d51fea2ca 100644
+--- a/lib/usrp/cores/rx_frontend_core_3000.cpp
++++ b/lib/usrp/cores/rx_frontend_core_3000.cpp
+@@ -12,6 +12,7 @@
+ #include <uhdlib/usrp/cores/rx_frontend_core_3000.hpp>
+ #include <boost/assign/list_of.hpp>
+ #include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ #include <functional>
+ 
+ using namespace uhd;
+diff --git a/lib/usrp/usrp2/usrp2_impl.cpp b/host/lib/usrp/usrp2/usrp2_impl.cpp
+index c2514ae02..28aa11083 100644
+--- a/lib/usrp/usrp2/usrp2_impl.cpp
++++ b/lib/usrp/usrp2/usrp2_impl.cpp
+@@ -17,6 +17,8 @@
+ #include <uhdlib/usrp/common/apply_corrections.hpp>
+ #include <boost/asio.hpp> //used for htonl and ntohl
+ #include <boost/asio/ip/address_v4.hpp>
++#include <boost/math/special_functions/round.hpp>
++#include <boost/math/special_functions/sign.hpp>
+ #include <boost/format.hpp>
+ #include <boost/thread.hpp>
+ #include <functional>
+@@ -948,9 +950,6 @@ meta_range_t usrp2_impl::get_tx_dsp_freq_range(const std::string& mb)
+     return meta_range_t(-dac_rate / 2, +dac_rate / 2, dsp_range_step);
+ }
+ 
+-#include <boost/math/special_functions/round.hpp>
+-#include <boost/math/special_functions/sign.hpp>
+-
+ void usrp2_impl::update_clock_source(const std::string& mb, const std::string& source)
+ {
+     // NOTICE: U2_REG_MISC_CTRL_CLOCK is on the wb clock, and cannot be set from fifo_ctrl

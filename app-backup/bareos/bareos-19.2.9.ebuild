@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_WARN_UNUSED_CLI=no
 #CMAKE_REMOVE_MODULES=yes
 
@@ -17,7 +17,7 @@ RESTRICT="mirror"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X acl ceph clientonly +director glusterfs ipv6 jansson lmdb libressl
+IUSE="X acl ceph clientonly +director glusterfs ipv6 jansson lmdb
 	logwatch mysql ndmp +postgres readline scsi-crypto
 	sqlite static +storage-daemon systemd tcpd vim-syntax xattr"
 
@@ -49,14 +49,12 @@ DEPEND="
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		!libressl? ( dev-libs/openssl:0=[static-libs] )
-		libressl? ( dev-libs/libressl:0=[static-libs] )
+		dev-libs/openssl:0=[static-libs]
 	)
 	!static? (
 		acl? ( virtual/acl )
 		dev-libs/lzo
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 		sys-libs/ncurses:=
 		sys-libs/zlib
 	)

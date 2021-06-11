@@ -11,15 +11,12 @@
 	</maintainer>
 	<use>
 		<flag name="acl"> Build and use the cifsidmap plugin</flag>
-		<flag name="autofs">Build helper to let <pkg>net-fs/autofs</pkg> use sssd provided information</flag>
 		<flag name="locator">Install sssd's Kerberos plugin</flag>
-		<flag name="man">Build man pages with <pkg>dev-libs/libxslt</pkg></flag>
-		<flag name="manpages">Build man pages with <pkg>dev-libs/libxslt</pkg></flag>
 		<flag name="netlink">Add support for netlink protocol via <pkg>dev-libs/libnl</pkg></flag>
 		<flag name="nfsv4">Add support for the nfsv4 idmapd plugin provided by <pkg>net-libs/libnfsidmap</pkg></flag>
 		<flag name="pac">Add Privileged Attribute Certificate Support for Kerberos</flag>
-		<flag name="ssh">Build helper to let <pkg>net-misc/openssh</pkg> use sssd provided information</flag>
 		<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
+		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="valgrind">Depend on <pkg>dev-util/valgrind</pkg> for test suite</flag>
 	</use>
 	<upstream>

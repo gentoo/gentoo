@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,11 +45,15 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RESTRICT="mirror test"
 
-BDEPEND=">=dev-lang/mono-4.2"
-
-DEPEND="${BDEPEND}
-	dev-dotnet/libgdiplus"
-
+MONO_DEP=">=dev-lang/mono-4.2"
+BDEPEND="
+	app-arch/unzip
+	${MONO_DEP}
+"
+DEPEND="
+	dev-dotnet/libgdiplus
+	${MONO_DEP}
+"
 RDEPEND="${DEPEND}
 	app-misc/ca-certificates
 	${LUA_DEPS}
@@ -169,6 +173,6 @@ pkg_config() {
 	if [[ -n ${ROOT} ]]; then
 		echo
 		ewarn "Mono's cert-sync cannot write to your ROOT system so you must manually"
-		ewarn "copy the certificates from ${BROOT}/usr/share/.mono to ${EROOT}/usr/share/.mono."
+		ewarn "copy the certificates from ${EPREFIX}/usr/share/.mono to ${EROOT}/usr/share/.mono."
 	fi
 }

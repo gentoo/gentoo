@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,21 +11,24 @@ LICENSE="MIT"
 
 SRC_URI="https://github.com/luke-jr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0/0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 x86"
 IUSE="test tools"
 RESTRICT="!test? ( test )"
 
 # NOTE: If not testing, we don't need non-native libgcrypt
 RDEPEND="tools? ( dev-libs/libgcrypt )"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/libgcrypt[${MULTILIB_USEDEP}] )
+	test? (
+		app-editors/vim-core
+		dev-libs/libgcrypt[${MULTILIB_USEDEP}]
+	)
 "
 
 src_prepare() {
 	eapply_user
 	eautoreconf
 
-	# NOTE: Needed because test suite uses srcdir instead of builddir to set PATH and for 
+	# NOTE: Needed because test suite uses srcdir instead of builddir to set PATH and for
 	# multilib support.
 	multilib_copy_sources
 }

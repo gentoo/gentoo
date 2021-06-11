@@ -5,6 +5,7 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		The plugin adds functionality to py.test to recognise and collect Jupyter notebooks.
 		The intended purpose of the tests is to determine whether execution of the stored

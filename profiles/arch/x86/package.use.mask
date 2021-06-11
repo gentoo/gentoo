@@ -1,5 +1,40 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-04-25)
+# Depends on either unkeyworded dev-java/openjdk:11
+# or unavailable >=dev-java/icedtea-4, bug #785640
+>=app-office/libreoffice-7 base java
+>=app-office/libreoffice-bin-7 java
+>=app-office/libreoffice-bin-debug-7 java
+
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# Unmask TPM on supported archs.
+sys-apps/systemd -tpm
+
+# Daniel Novomesky <dnovomesky@gmail.com> (2021-02-24)
+# Depends on media-libs/svt-av1, which is unavailable on x86
+media-libs/libavif svt-av1
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# Unmask PCRE JIT support where dev-libs/libpcre2[jit] is available
+dev-lang/php -jit
+
+# Jaco Kroon <jaco@uls.co.za> (2021-01-22)
+# blocksruntime (clang -fblocks requirement) for asterisk is available on this
+# architecture.
+net-misc/asterisk -blocks
+
+# Nils Freydank <holgersson@posteo.de> (2021-01-18)
+# Depends on media-plugins/gst-plugins-cairo, which isn't keyworded on x86.
+app-misc/pdfpc gstreamer
+
+# Sam James <sam@gentoo.org> (2021-01-14)
+# Needs libsdl2[vulkan]
+# Vulkan may be supported on x86, as per
+# Qt unmasking below, but not able to test
+# libsdl2 + Vulkan on x86 at the moment.
+games-strategy/warzone2100 vulkan
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
@@ -10,34 +45,17 @@ sys-libs/compiler-rt-sanitizers -profile
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-28)
 # dev-qt/linguist-tools-5.15.0 and 5.15.1 OOM with bad_alloc.
-# https://bugs.gentoo.org/751418
+# bug #751418
 >=sci-astronomy/stellarium-0.20.3 nls
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-10-07)
-# <app-admin/salt-3000 is Python 3.6 but last Python 3.6
-# compatible dev-python/libvirt-python version was removed
-<app-admin/salt-3000 libvirt
 
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
 dev-scheme/guile -jit
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-09-18)
-# swt 4.10 not keyworded on x86
-dev-java/openjdk:8 javafx
-
-# Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# Columnstore engine is supported on x86
-dev-db/mariadb -columnstore
-
 # Thomas Deutschmann <whissi@gentoo.org> (2020-07-27)
 # media-video/pipewire:0/0.3 is available for x86
 www-client/firefox -screencast
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-07-11)
-# net-libs/libslirp is not yet keyworded on x86, bug #732144
-app-emulation/qemu slirp
 
 # Sam James <sam@gentoo.org> (2020-07-03)
 # Rust is available here
@@ -91,7 +109,11 @@ www-client/firefox -eme-free
 x11-wm/mutter -sysprof
 dev-libs/gjs -sysprof
 dev-libs/glib -sysprof
+gnome-extra/cjs -sysprof
 x11-libs/gtk+ -sysprof
+net-libs/libsoup -sysprof
+x11-libs/pango -sysprof
+gui-libs/gtk -sysprof
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on x86.
@@ -175,10 +197,6 @@ media-gfx/imagemagick -heif
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-09-28)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-python/pymongo test
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2018-09-27)
-# media-libs/qtav not keyworded
-media-video/orion qtav
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
@@ -274,10 +292,6 @@ sys-apps/systemd -gnuefi
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Jeroen Roovers <jer@gentoo.org> (2015-01-31)
-# >x11-drivers/nvidia-drivers-346 on x86 has no UVM support (bug #534156)
->x11-drivers/nvidia-drivers-346 uvm
-
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86
 sys-cluster/ceph zfs
@@ -295,15 +309,11 @@ media-libs/libmikmod cpu_flags_x86_sse2
 # Boost.Context can be built on x86
 dev-libs/boost	-context
 
-# Christoph Junghans <junghans@gentoo.org> (2013-09-08)
-# restrict USE=quad for x86 as there are too less registers
-sci-libs/fftw quad
-
 # Tim Harder <radhermit@gentoo.org> (2013-08-13)
 # dev-lang/luajit keyworded for x86 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
-app-editors/vim -luajit -racket
-app-editors/gvim -luajit -racket
+app-editors/vim -racket
+app-editors/gvim -racket
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2013-08-09)
 # Works on x86
@@ -312,10 +322,6 @@ sys-apps/hwloc -gl -nvml
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-11-03)
 # Unmask here, as it's masked in base.
 net-libs/gnutls -dane
-
-# Ben de Groot <yngwin@gentoo.org> (2012-07-30)
-# dependency keyworded here, masked in base
-media-libs/freetype -infinality
 
 # Michał Górny <mgorny@gentoo.org> (2012-04-11)
 # JIT compilation in zpaq generates code for x86/amd64.
@@ -363,15 +369,9 @@ www-client/links -suid
 # sys-devel/llvm is keyworded on x86
 media-libs/mesa -llvm
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (2010-04-04)
-# x86 platforms works
-sys-power/pm-utils -video_cards_intel -video_cards_radeon
-
 # Jean-Noël Rivasseau <elvanor@gentoo.org> (2009-09-23)
 # X use flag only for amd64/x86, bug 285951.
 media-gfx/iscan -X
-
-x11-terms/eterm cpu_flags_x86_sse2
 
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection

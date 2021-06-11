@@ -1,15 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="SQL abstraction library for the Qt5 framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-${PV}-gcc11.patch.xz"
+
 SLOT=5/$(ver_cut 1-3) # bug 639140
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
 fi
 
 IUSE="freetds mysql oci8 odbc postgres +sqlite"
@@ -37,6 +40,8 @@ QT5_TARGET_SUBDIRS=(
 QT5_GENTOO_PRIVATE_CONFIG=(
 	:sql
 )
+
+PATCHES=( "${WORKDIR}/qtbase-${PV}-gcc11.patch" ) # bug 752012
 
 src_configure() {
 	local myconf=(

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit vim-plugin distutils-r1 optfeature
 
@@ -11,10 +11,10 @@ SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 DESCRIPTION="Pyclewn allows using vim as a front end to a debugger (pdb or gdb)"
 HOMEPAGE="http://pyclewn.sourceforge.net/"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 
+LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 CDEPEND="|| (
 	app-editors/vim
@@ -25,8 +25,7 @@ DEPEND="
 	${CDEPEND}
 	app-arch/vimball"
 
-RDEPEND="
-	${DEPEND}"
+RDEPEND="${DEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

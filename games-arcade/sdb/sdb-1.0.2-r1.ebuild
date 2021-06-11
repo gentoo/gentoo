@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop
+EAPI=7
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A 2D top-down action game; escape a facility full of walking death machines"
 HOMEPAGE="http://sdb.gamecreation.org/"
@@ -19,6 +19,13 @@ DEPEND="virtual/opengl
 	media-libs/sdl-mixer"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-endian.patch
+	"${FILESDIR}"/${P}-gcc43.patch
+	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-gcc-11.patch
+)
+
 src_prepare() {
 	default
 	sed -i \
@@ -27,16 +34,14 @@ src_prepare() {
 		-e "s:sprites/:/usr/share/${PN}/sprites/:" \
 		-e "s:levels/:/usr/share/${PN}/levels/:" \
 		src/sdb.h src/game.cpp || die "setting game paths"
-	eapply \
-		"${FILESDIR}"/${P}-endian.patch \
-		"${FILESDIR}"/${P}-gcc43.patch \
-		"${FILESDIR}"/${P}-ldflags.patch
 }
 
 src_compile() {
 	emake \
 		-C src \
-		CXXFLAGS="${CXXFLAGS} $(sdl-config --cflags)"
+		CXXFLAGS="${CXXFLAGS} $(sdl-config --cflags)" \
+		CC=$(tc-getCC) \
+		CPP=$(tc-getCXX)
 }
 
 src_install() {

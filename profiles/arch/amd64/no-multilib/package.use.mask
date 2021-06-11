@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2020-12-27)
@@ -13,7 +13,7 @@ dev-embedded/urjtag ftd2xx
 # GLEP 73 Immutability, USE=ovmf requires hvm
 app-emulation/xen-tools ovmf
 
-# NP-Hardass <NP-Hardass@gentoo.org> (2017-07-11)
+# Adam Feldman <NP-Hardass@gentoo.org> (2017-07-11)
 # GLEP 73 Immutability, USE=test requires
 # abi_x86_32 at this time.
 app-emulation/wine-vanilla test

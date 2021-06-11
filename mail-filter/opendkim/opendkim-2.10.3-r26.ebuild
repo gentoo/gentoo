@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-1 lua5-2 )
 
-inherit autotools db-use eutils systemd tmpfiles lua-single
+inherit autotools db-use systemd tmpfiles lua-single
 
 DESCRIPTION="A milter providing DKIM signing and verification"
 HOMEPAGE="http://opendkim.org/"
@@ -14,8 +14,8 @@ SRC_URI="https://downloads.sourceforge.net/project/opendkim/${P}.tar.gz"
 # The GPL-2 is for the init script, bug 425960.
 LICENSE="BSD GPL-2 Sendmail-Open-Source"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs stats querycache test unbound"
+KEYWORDS="amd64 ~arm ~arm64 x86"
+IUSE="berkdb ldap lmdb lua memcached opendbx poll sasl selinux +ssl static-libs stats querycache test unbound"
 
 BDEPEND="acct-user/opendkim
 	test? ( ${LUA_DEPS} )"
@@ -24,8 +24,7 @@ COMMON_DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	dev-libs/libbsd
 	sys-apps/grep
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	berkdb? ( >=sys-libs/db-3.2:* )
 	opendbx? ( >=dev-db/opendbx-1.4.0 )
@@ -59,6 +58,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-define-P-macro-in-libvbr.patch"
 	"${FILESDIR}/${P}-fix-libmilter-search.patch"
 )
+
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
 
 src_prepare() {
 	default
@@ -143,7 +146,7 @@ src_install() {
 	dosbin stats/opendkim-reportstats
 
 	newinitd "${S}/contrib/OpenRC/opendkim.openrc" "${PN}"
-	systemd_newtmpfilesd "${S}/contrib/systemd/opendkim.tmpfiles" "${PN}.conf"
+	newtmpfiles "${S}/contrib/systemd/opendkim.tmpfiles" "${PN}.conf"
 	systemd_newunit "contrib/systemd/opendkim.service" "${PN}.service"
 
 	dodir /etc/opendkim

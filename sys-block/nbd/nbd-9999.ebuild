@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit systemd
 
 DESCRIPTION="Userland client/server for kernel network block device"
 HOMEPAGE="http://nbd.sourceforge.net/"
@@ -57,4 +59,9 @@ src_configure() {
 		$(use_with netlink libnl)
 	)
 	econf "${myeconfargs[@]}"
+}
+
+src_install() {
+	default
+	systemd_dounit systemd/nbd@.service
 }

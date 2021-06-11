@@ -12,10 +12,10 @@ S="${WORKDIR}/${PN}-2.0.13"
 
 LICENSE="HPND"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="ipv6 threads debug"
 
-DOCS=( "INSTALL" "README" )
+DOCS=( INSTALL README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.12-ipv6.patch

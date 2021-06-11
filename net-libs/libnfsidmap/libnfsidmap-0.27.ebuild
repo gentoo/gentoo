@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools multilib
+inherit autotools
 
 DESCRIPTION="NFSv4 ID <-> name mapping library"
 HOMEPAGE="http://www.citi.umich.edu/projects/nfsv4/linux/"
@@ -12,7 +12,7 @@ SRC_URI="https://fedorapeople.org/~steved/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="ldap static-libs"
 
 DEPEND="ldap? ( net-nds/openldap )"

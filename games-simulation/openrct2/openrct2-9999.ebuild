@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,8 +12,8 @@ MY_PN="OpenRCT2"
 MY_PN_OBJ="objects"
 MY_PN_RPL="replays"
 MY_PN_TS="title-sequences"
-MY_PV_OBJ="1.0.18"
-MY_PV_RPL="0.0.19"
+MY_PV_OBJ="1.0.21"
+MY_PV_RPL="0.0.38"
 MY_PV_TS="0.1.2c"
 
 DESCRIPTION="An open source re-implementation of Chris Sawyer's RollerCoaster Tycoon 2"
@@ -27,7 +27,7 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="dedicated libressl +lightfx +opengl scripting test +truetype"
+IUSE="dedicated +lightfx +opengl scripting test +truetype"
 
 COMMON_DEPEND="
 	dev-libs/icu:=
@@ -41,8 +41,7 @@ COMMON_DEPEND="
 		media-libs/speexdsp
 		opengl? ( virtual/opengl )
 	)
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( dev-libs/openssl:0= )
+	dev-libs/openssl:0=
 	scripting? ( dev-lang/duktape:= )
 	truetype? (
 		media-libs/fontconfig:1.0

@@ -1,0 +1,40 @@
+From 3e0bc63e1b0ca03493b936e92e871ca7ae451a0a Mon Sep 17 00:00:00 2001
+From: Rich Ercolani <214141+rincebrain@users.noreply.github.com>
+Date: Tue, 1 Jun 2021 14:58:08 -0400
+Subject: [PATCH] Remove iov_iter_advance() for iter_write
+
+The additional iter advance is incorrect, as copy_from_iter() has
+already done the right thing.  This will result in the following
+warning being printed to the console as of the 5.12 kernel.
+
+    Attempted to advance past end of bvec iter
+
+This change should have been included with #11378 when a
+similar change was made on the read side.
+
+Suggested-by: @siebenmann
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Signed-off-by: Rich Ercolani <rincebrain@gmail.com>
+Issue #11378
+Closes #12041
+Closes #12155
+(cherry picked from commit 3f81aba7668143c6ca6fc44983d4c880606dea8f)
+Signed-off-by: Jonathon Fernyhough <jonathon@m2x.dev>
+---
+ module/os/linux/zfs/zpl_file.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/module/os/linux/zfs/zpl_file.c b/module/os/linux/zfs/zpl_file.c
+index 08bf97ff338..e20c1dd413c 100644
+--- a/module/os/linux/zfs/zpl_file.c
++++ b/module/os/linux/zfs/zpl_file.c
+@@ -342,9 +342,6 @@ zpl_iter_write(struct kiocb *kiocb, struct iov_iter *from)
+ 	ssize_t wrote = count - uio.uio_resid;
+ 	kiocb->ki_pos += wrote;
+ 
+-	if (wrote > 0)
+-		iov_iter_advance(from, wrote);
+-
+ 	return (wrote);
+ }
+ 

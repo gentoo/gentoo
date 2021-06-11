@@ -1,11 +1,11 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-simple.eclass
 # @MAINTAINER:
 # java@gentoo.org
 # @AUTHOR:
-# Java maintainers (java@gentoo.org)
+# Java maintainers <java@gentoo.org>
 # @BLURB: Eclass for packaging Java software with ease.
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources

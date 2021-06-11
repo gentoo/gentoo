@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic user
+EAPI=7
+
+inherit flag-o-matic user
 
 DESCRIPTION="Network performance benchmark"
 SRC_URI="ftp://ftp.netperf.org/${PN}/${P}.tar.bz2"
@@ -13,7 +14,13 @@ LICENSE="netperf"
 SLOT="0"
 IUSE="demo sctp"
 
-DEPEND=">=sys-apps/sed-4"
+PATCHES=(
+	"${FILESDIR}"/${PN}-fix-scripts.patch
+	"${FILESDIR}"/${PN}-2.6.0-log-dir.patch
+	"${FILESDIR}"/${PN}-2.7.0-includes.patch
+	"${FILESDIR}"/${PN}-2.7.0-space.patch
+	"${FILESDIR}"/${PN}-2.7.0-inline.patch
+)
 
 pkg_setup() {
 	enewuser netperf
@@ -21,13 +28,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply \
-		"${FILESDIR}"/${PN}-fix-scripts.patch \
-		"${FILESDIR}"/${PN}-2.6.0-log-dir.patch \
-		"${FILESDIR}"/${PN}-2.7.0-includes.patch \
-		"${FILESDIR}"/${PN}-2.7.0-space.patch \
-		"${FILESDIR}"/${PN}-2.7.0-inline.patch
-
 	# Fixing paths in scripts
 	sed -i \
 		-e 's:^\(NETHOME=\).*:\1"/usr/bin":' \
@@ -39,7 +39,7 @@ src_prepare() {
 		doc/examples/udp_stream_script \
 		|| die
 
-	eapply_user
+	default
 }
 
 src_configure() {
@@ -57,10 +57,10 @@ src_configure() {
 src_install() {
 	default
 
-	# move netserver into sbin as we had it before 2.4 was released with its
+	# Move netserver into sbin as we had it before 2.4 was released with its
 	# autoconf goodness
 	dodir /usr/sbin
-	mv "${D}"/usr/{bin,sbin}/netserver || die
+	mv "${ED}"/usr/{bin,sbin}/netserver || die
 
 	# init.d / conf.d
 	newinitd "${FILESDIR}"/${PN}-2.7.0-init netperf
@@ -73,6 +73,6 @@ src_install() {
 	# documentation and example scripts
 	dodoc AUTHORS ChangeLog NEWS README Release_Notes
 	dodir /usr/share/doc/${PF}/examples
-	#Scripts no longer get installed by einstall
-	cp doc/examples/*_script "${D}"/usr/share/doc/${PF}/examples || die
+	# Scripts no longer get installed by einstall
+	cp doc/examples/*_script "${ED}"/usr/share/doc/${PF}/examples || die
 }

@@ -3,25 +3,24 @@
 
 EAPI=7
 
-inherit autotools git-r3
+inherit git-r3
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
-HOMEPAGE="https://github.com/esnet/iperf/"
-EGIT_REPO_URI="https://github.com/esnet/iperf/"
+HOMEPAGE="https://github.com/esnet/iperf"
+EGIT_REPO_URI="https://github.com/esnet/iperf"
 S="${WORKDIR}/${P/_/}"
 
 LICENSE="BSD"
 SLOT="3"
-IUSE="libressl sctp static-libs"
+IUSE="sctp static-libs"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	sctp? ( net-misc/lksctp-tools )
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( "README.md" "RELNOTES.md" )
+DOCS=( README.md RELNOTES.md )
 
 src_configure() {
 	econf \
@@ -34,5 +33,6 @@ src_install() {
 
 	newconfd "${FILESDIR}"/iperf.confd iperf3
 	newinitd "${FILESDIR}"/iperf3.initd iperf3
+
 	find "${ED}" -name '*.la' -delete || die
 }

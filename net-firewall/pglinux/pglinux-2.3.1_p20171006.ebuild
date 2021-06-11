@@ -1,24 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=9d91ab6a8e6bc2b41e985aa698eb5c1eb364fea8
 MY_PN="peerguardian"
 MY_P="${MY_PN}-${PV}"
-inherit autotools gnome2-utils linux-info systemd
+inherit autotools qmake-utils linux-info systemd xdg-utils
 
 DESCRIPTION="Privacy oriented firewall application"
 HOMEPAGE="https://sourceforge.net/projects/peerguardian/"
 SRC_URI="https://sourceforge.net/code-snapshots/git/p/pe/peerguardian/code.git/peerguardian-code-${COMMIT}.zip -> ${P}.zip"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="cron dbus logrotate networkmanager qt5 zlib"
 REQUIRED_USE="qt5? ( dbus )"
 
-COMMON_DEPEND="
+DEPEND="
 	net-libs/libnetfilter_queue
 	net-libs/libnfnetlink
 	dbus? ( sys-apps/dbus )
@@ -31,16 +31,17 @@ COMMON_DEPEND="
 	)
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-	sys-devel/libtool:2
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	net-firewall/iptables
 	sys-apps/sysvinit
 	cron? ( virtual/cron )
 	logrotate? ( app-admin/logrotate )
 	networkmanager? ( net-misc/networkmanager:= )
+"
+BDEPEND="
+	app-arch/unzip
+	sys-devel/libtool:2
+	virtual/pkgconfig
 "
 
 CONFIG_CHECK="~NETFILTER_NETLINK
@@ -58,9 +59,8 @@ CONFIG_CHECK="~NETFILTER_NETLINK
 	~IP_NF_IPTABLES
 	~IP_NF_TARGET_REJECT"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fno-common.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
+
 S="${WORKDIR}/${MY_PN}-code-${COMMIT}"
 
 src_prepare() {
@@ -82,6 +82,12 @@ src_configure() {
 		$(use_enable logrotate)
 		$(use_enable networkmanager)
 		$(use_with qt5)
+		LRELEASE=$(qt5_get_bindir)/lrelease
+		LUPDATE=$(qt5_get_bindir)/lupdate
+		MOC=$(qt5_get_bindir)/moc
+		QMAKE=$(qt5_get_bindir)/qmake
+		RCC=$(qt5_get_bindir)/rcc
+		UIC=$(qt5_get_bindir)/uic
 		$(use_enable zlib)
 		--with-systemd="$(systemd_get_systemunitdir)"
 	)
@@ -91,7 +97,7 @@ src_configure() {
 src_install() {
 	default
 	keepdir /var/{lib,log,spool}/pgl
-	rm -rf "${ED%/}"/tmp || die
+	rm -rf "${ED}"/tmp || die
 	find "${ED}" -name '*.la' -delete || die
 }
 
@@ -102,9 +108,9 @@ pkg_postinst() {
 	elog "  virtual/mta (needed to send informational (blocklist updates) and"
 	elog "    warning mails (if pglcmd.wd detects a problem.))"
 
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

@@ -1,0 +1,30 @@
+From 7e426c597539c1b6f33c34300b84d2074f94c9b6 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Mon, 4 Jan 2021 22:27:37 +0100
+Subject: [PATCH] configure.ac: Remove argument from AC_PROG_LEX
+
+autoconf-2.70 only accepts "yywrap" and "noyywrap" as arguments to
+AC_PROG_LEX. Calling it with no arguments will trigger the old behavior
+from autoconf-2.69.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e0968b65..03dc1d2f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,7 +7,7 @@ AH_BOTTOM([#include "gitconfig.h"])
+ dnl ---------------------------------------------------------------------
+ dnl Lex & Bison language parser.
+ dnl ---------------------------------------------------------------------
+-AC_PROG_LEX([flex])
++AC_PROG_LEX
+ AC_PROG_YACC
+ 
+ 
+-- 
+2.30.0
+

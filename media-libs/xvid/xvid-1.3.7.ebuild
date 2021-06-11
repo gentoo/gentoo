@@ -13,7 +13,7 @@ SRC_URI="https://downloads.xvid.com/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="elibc_FreeBSD examples pic +threads"
 
 NASM=">=dev-lang/nasm-2"
@@ -22,7 +22,6 @@ YASM=">=dev-lang/yasm-1"
 BDEPEND="sys-apps/grep"
 DEPEND="amd64? ( || ( ${YASM} ${NASM} ) )
 	x86? ( || ( ${YASM} ${NASM} ) )
-	x86-macos? ( ${NASM} )
 	x64-macos? ( ${NASM} )"
 
 S="${WORKDIR}/${MY_PN}/build/generic"

@@ -1,0 +1,16 @@
+# Redis-sentinel user.
+REDIS_SENTINEL_USER="redis"
+
+# Redis-sentinel group.
+REDIS_SENTINEL_GROUP="redis"
+
+# Redis-sentinel configuration file.
+REDIS_SENTINEL_CONF="/etc/redis/sentinel.conf"
+
+# Redis-sentinel working directory.
+REDIS_SENTINEL_DIR="/tmp"
+
+# Specify the network service that corresponds to the "bind" setting
+# in your sentinel.conf. For example, if you bind to 127.0.0.1, this should
+# be set to "net.lo" which provides the loopback interface.
+rc_need="net.lo"

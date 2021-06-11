@@ -1,0 +1,23 @@
+From 1aec708b98d8657ef241d02813960e8af8ebd952 Mon Sep 17 00:00:00 2001
+From: Eugene Kenny <elkenny@gmail.com>
+Date: Sun, 26 Apr 2020 17:35:41 +0100
+Subject: [PATCH] Require time core extension for 1.year
+
+Since 39ab83a43a64b339739c6e8c7ab24bb1325204ed this file uses `1.year`
+without requiring the Active Support core extension that defines it.
+---
+ lib/global_id/railtie.rb | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/global_id/railtie.rb b/lib/global_id/railtie.rb
+index edc90d8..096c20b 100644
+--- a/lib/global_id/railtie.rb
++++ b/lib/global_id/railtie.rb
+@@ -5,6 +5,7 @@
+ require 'global_id'
+ require 'active_support'
+ require 'active_support/core_ext/string/inflections'
++require 'active_support/core_ext/integer/time'
+ 
+ class GlobalID
+   # = GlobalID Railtie

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
 MY_PN="WTForms"
@@ -31,19 +31,30 @@ BDEPEND="
 	)
 "
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
 python_prepare_all() {
-	# Extension-tests are written for an older version of Django
-	# Disable pep8 even when it is installed
-	sed \
-		-e "s|'ext_django.tests', ||" \
-		-e "/import pep8/d" \
-		-e "s|has_pep8 = True|has_pep8 = False|" \
-		-i tests/runtests.py || die
+	# use pytest instead of ugly custom test runner
+	cat >> setup.cfg <<-EOF || die
+		[tool:pytest]
+		python_files = *.py
+	EOF
+
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	"${EPYTHON}" tests/runtests.py -v || die
+	local ignore=(
+		# requires gaetest_common... also upstream doesn't run it at all
+		tests/ext_appengine
+		# requires old django; also extensions are deprecated anyway
+		tests/ext_django
+	)
+	local deselect=(
+		# incompatible with sqlalchemy-1.4
+		tests/ext_sqlalchemy.py::QuerySelectFieldTest
+		tests/ext_sqlalchemy.py::QuerySelectMultipleFieldTest
+	)
+
+	epytest tests ${ignore[@]/#/--ignore } ${deselect[@]/#/--deselect }
 }

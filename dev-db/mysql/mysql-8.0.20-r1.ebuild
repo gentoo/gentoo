@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -23,11 +23,10 @@ HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="8.0"
-IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
+IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling
 	router selinux +server tcmalloc test"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!test? ( test ) libressl? ( test )"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	cjk? ( server )
@@ -37,7 +36,7 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 	router? ( server )
 	tcmalloc? ( server )"
 
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -49,8 +48,7 @@ COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+	>=dev-libs/openssl-1.0.0:0=
 	server? (
 		dev-libs/icu:=
 		dev-libs/libevent:=

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="A GUI for cupsd"
 HOMEPAGE="https://gtklp.sirtobi.com/"
@@ -15,14 +15,13 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="nls ssl"
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
 	net-print/cups
+	x11-libs/gtk+:2
 	nls? ( sys-devel/gettext )
 	ssl? ( dev-libs/openssl:0= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
-
-DOCS="AUTHORS BUGS ChangeLog README TODO USAGE"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${P}-formatsec.patch" )
 
@@ -35,6 +34,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -fcommon
 	econf \
 		$(use_enable nls) \
 		$(use_enable ssl) \
@@ -44,6 +44,7 @@ src_configure() {
 src_install() {
 	default
 
+	dodoc USAGE
 	doicon "${WORKDIR}"/gtklp-logo.xpm
 	make_desktop_entry 'gtklp -i' "Print files via CUPS" gtklp-logo 'System;HardwareSettings;Settings;Printing'
 	make_desktop_entry gtklpq "CUPS queue manager" gtklp-logo 'System;HardwareSettings;Settings;Printing'

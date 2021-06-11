@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="ipv6?"
 
 DISTUTILS_USE_SETUPTOOLS=no
@@ -17,19 +17,26 @@ LICENSE="PSF-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="ipv6 test"
+REQUIRED_USE="test? ( ipv6 )"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/authres[${PYTHON_USEDEP}]
-	|| ( dev-python/pydns:3[${PYTHON_USEDEP}]
-		 dev-python/dnspython[${PYTHON_USEDEP}] )"
+RDEPEND="
+	dev-python/authres[${PYTHON_USEDEP}]
+	|| (
+		dev-python/pydns:3[${PYTHON_USEDEP}]
+		dev-python/dnspython[${PYTHON_USEDEP}]
+	)
+"
 
-DEPEND="test? ( ${RDEPEND}
-	dev-python/pyyaml[${PYTHON_USEDEP}] )"
-
-REQUIRED_USE="test? ( ipv6 )"
+DEPEND="
+	test? (
+		${RDEPEND}
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+	)
+"
 
 python_test() {
-	pushd test &> /dev/null
+	pushd test &> /dev/null || die
 	"${PYTHON}" testspf.py || die
-	popd &> /dev/null
+	popd &> /dev/null || die
 }

@@ -1,0 +1,29 @@
+# Use copy assignment instead of copy constructor to avoid unavailability of placement new operator.
+# But more likely there is another hidden bug, since this syntax is actually correct.
+# There are still similar syntax remain in other headers, which may cause identical compilation error.
+
+# Suggested by Yuyi Wang <strawberry_str@hotmail.com>
+diff --color -uprN rocThrust-rocm-4.0.0.orig/thrust/system/hip/detail/uninitialized_copy.h rocThrust-rocm-4.0.0/thrust/system/hip/detail/uninitialized_copy.h
+--- rocThrust-rocm-4.0.0.orig/thrust/system/hip/detail/uninitialized_copy.h	2021-01-21 20:42:44.439246148 +0800
++++ rocThrust-rocm-4.0.0/thrust/system/hip/detail/uninitialized_copy.h	2021-01-21 21:13:20.926840762 +0800
+@@ -62,7 +62,7 @@ namespace __uninitialized_copy
+             InputType const& in  = raw_reference_cast(input[idx]);
+             OutputType&      out = raw_reference_cast(output[idx]);
+ 
+-            ::new(static_cast<void*>(&out)) OutputType(in);
++            out = in;
+         }
+     }; // struct functor
+ 
+diff --color -uprN rocThrust-rocm-4.0.0.orig/thrust/system/hip/detail/uninitialized_fill.h rocThrust-rocm-4.0.0/thrust/system/hip/detail/uninitialized_fill.h
+--- rocThrust-rocm-4.0.0.orig/thrust/system/hip/detail/uninitialized_fill.h	2021-01-21 20:42:44.439246148 +0800
++++ rocThrust-rocm-4.0.0/thrust/system/hip/detail/uninitialized_fill.h	2021-01-21 21:13:07.022489406 +0800
+@@ -59,7 +59,7 @@ namespace __uninitialized_fill
+         {
+             value_type& out = raw_reference_cast(items[idx]);
+ 
+-            ::new(static_cast<void*>(&out)) value_type(value);
++            out = value;
+         }
+     }; // struct functor
+ } // namespace __uninitialized_copy

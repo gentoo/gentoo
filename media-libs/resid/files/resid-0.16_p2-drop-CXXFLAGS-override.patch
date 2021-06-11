@@ -1,0 +1,24 @@
+--- a/configure.in
++++ b/configure.in
+@@ -26,20 +26,6 @@ AC_SUBST(RESID_INLINE)
+ dnl Checks for programs.
+ AC_PROG_CXX
+ 
+-dnl Set CXXFLAGS for g++. Use -fno-exceptions if supported.
+-if test "$GXX" = yes; then
+-  if test "$ac_test_CXXFLAGS" != set; then
+-    CXXFLAGS="-g -Wall -O2 -funroll-loops -fomit-frame-pointer -fno-exceptions"
+-    AC_MSG_CHECKING([whether the C++ compiler ($CXX $CXXFLAGS $LDFLAGS) works])
+-    AC_TRY_COMPILE([],
+-                   [int test;],
+-                   [ AC_MSG_RESULT(yes) ],
+-                   [ AC_MSG_RESULT(no)
+-                     CXXFLAGS="-g -Wall -O2 -funroll-loops -fomit-frame-pointer"
+-                     ])
+-  fi
+-fi
+-
+ AC_PATH_PROG(PERL, perl)
+ 
+ dnl Checks for libraries.
+-- 

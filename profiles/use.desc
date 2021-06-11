@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -62,6 +62,7 @@ dbus - Enable dbus support for anything that needs it (gpsd, gnomemeeting, etc)
 debug - Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
 dedicated - Add support for dedicated game servers (some packages do not provide clients and servers at the same time)
 dga - Add DGA (Direct Graphic Access) support for X
+dist-kernel - Enable subslot rebuilds on Distribution Kernel upgrades
 djvu - Support DjVu, a PDF-like document format esp. suited for scanned documents
 doc - Add extra documentation (API, Javadoc, etc). It is recommended to enable per package instead of globally
 dri - Enable direct rendering: used for accelerated 3D and some 2D, like DMA
@@ -164,11 +165,11 @@ libcaca - Add support for colored ASCII-art graphics
 libedit - Use the libedit library (replacement for readline)
 libffi - Enable support for Foreign Function Interface library
 libnotify - Enable desktop notification support
-libressl - Use dev-libs/libressl instead of dev-libs/openssl when applicable (see also the ssl useflag)
 libsamplerate - Build with support for converting sample rates using libsamplerate
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
+llvm-libunwind - Use sys-libs/llvm-libunwind instead of sys-libs/libunwind
 lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
 luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
@@ -179,6 +180,7 @@ m17n-lib - Enable m17n-lib support
 mad - Add support for mad (high-quality mp3 decoder library and cli frontend)
 magic - Add support for file type detection via magic bytes (usually via libmagic from sys-apps/file)
 maildir - Add support for maildir (~/.maildir) style mail spools
+man - Build and install man pages
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 mbox - Add support for mbox (/var/spool/mail) style mail spools
 memcached - Add support for memcached

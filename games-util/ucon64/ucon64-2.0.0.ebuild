@@ -1,26 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="The backup tool and wonderful emulator's Swiss Army knife program"
 HOMEPAGE="http://ucon64.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ucon64/${P}-src.tar.gz"
+S="${WORKDIR}"/${P}-src/src
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND=""
-
-S=${WORKDIR}/${P}-src/src
+PATCHES=(
+	"${FILESDIR}"/${P}-ovflfix.patch
+	"${FILESDIR}"/${P}-zlib.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ovflfix.patch \
-		"${FILESDIR}"/${P}-zlib.patch
+	default
+
 	sed -i \
 		-e "/^CFLAGS/s/-O3/${CFLAGS}/" \
 		-e "/^LDFLAGS/s/-s$/${LDFLAGS}/" \
@@ -30,7 +29,7 @@ src_prepare() {
 src_configure() {
 	local myconf
 
-	if [[ ! -e /usr/include/sys/io.h ]] ; then
+	if [[ ! -e "${ESYSROOT}"/usr/include/sys/io.h ]] ; then
 		ewarn "Disabling support for parallel port"
 		myconf="${myconf} --disable-parallel"
 	fi
@@ -41,8 +40,13 @@ src_configure() {
 src_install() {
 	dobin ucon64
 	dolib.so libdiscmage/discmage.so
-	cd ..
-	dohtml -x src -r -A png,jpg *
+
+	cd .. || die
+
+	docinto html
+	dodoc *.html
+	docinto html/images
+	dodoc images/*
 }
 
 pkg_postinst() {

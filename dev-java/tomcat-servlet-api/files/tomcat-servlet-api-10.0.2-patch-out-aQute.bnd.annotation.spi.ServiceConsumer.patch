@@ -1,0 +1,20 @@
+diff --git a/java/jakarta/el/ExpressionFactory.java b/java/jakarta/el/ExpressionFactory.java
+index 2f42de7..5d52580 100644
+--- a/java/jakarta/el/ExpressionFactory.java
++++ b/java/jakarta/el/ExpressionFactory.java
+@@ -36,13 +36,13 @@ import java.util.concurrent.locks.Lock;
+ import java.util.concurrent.locks.ReadWriteLock;
+ import java.util.concurrent.locks.ReentrantReadWriteLock;
+ 
+-import aQute.bnd.annotation.spi.ServiceConsumer;
++//import aQute.bnd.annotation.spi.ServiceConsumer;
+ 
+ /**
+  *
+  * @since 2.1
+  */
+-@ServiceConsumer(value=ExpressionFactory.class)
++//@ServiceConsumer(value=ExpressionFactory.class)
+ public abstract class ExpressionFactory {
+ 
+     private static final boolean IS_SECURITY_ENABLED =

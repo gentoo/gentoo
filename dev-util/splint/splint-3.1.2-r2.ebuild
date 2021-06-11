@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Check C programs for vulnerabilities and programming mistakes"
 HOMEPAGE="http://lclint.cs.virginia.edu/"
@@ -10,14 +11,16 @@ SRC_URI="http://www.splint.org/downloads/${P}.src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~ppc-macos ~x64-macos"
 
-DEPEND="
-	sys-devel/flex
-"
+DEPEND="sys-devel/flex"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.2-musl.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.1.2-musl.patch
+	default
 
 	# verbose compiler calls
 	sed -i -e '/Compiling/d' src/Makefile.am || die

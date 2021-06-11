@@ -1,9 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multiprocessing toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Wayland compositor inspired by CWM"
 HOMEPAGE="https://hikari.acmelabs.space/"
@@ -31,8 +31,10 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 "
 
+# Needeed in DEPEND only (not BDEPEND as need to be right location etc)
+DEPEND+=" dev-libs/wayland-protocols"
+
 BDEPEND="
-	dev-libs/wayland-protocols
 	sys-devel/bmake
 	virtual/pkgconfig
 "
@@ -40,12 +42,18 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-2.2.1-pkgconfig.patch )
 
 pkg_setup() {
+	# We set `bmake` and we also have to remove any reference to -l in MAKEOPTS
+	# as `bmake` does not support load average
+	# We do this in a crude way until flag-o-matic supports MAKEOPTS
+	# bug 778191
 	export MAKE=bmake
+	export MAKEOPTS=$(echo ${MAKEOPTS} | sed 's/-l \?[\.0-9]\+//' || die)
 	tc-export CC PKG_CONFIG
 }
 
 src_compile() {
-	${MAKE} -j$(makeopts_jobs) VERSION="{PV}" \
+	emake \
+		VERSION="${PV}" \
 		CC="$(tc-getCC)" \
 		CFLAGS_EXTRA="${CFLAGS}" \
 		LDFLAGS_EXTRA="${LDFLAGS}" \
@@ -55,12 +63,16 @@ src_compile() {
 		$(usex screencopy -DWITH_SCREENCOPY "") \
 		$(usex virtual-io -DWITH_VIRTUAL_INPUT "") \
 		$(usex X -DWITH_XWAYLAND "") \
-		all || die
+		all
 }
 
 src_install() {
-	${MAKE} DESTDIR="${D}" PREFIX=/usr ETC_PREFIX=/ \
-	$(usex suid "" -DWITHOUT_SUID) \
-	install || die
+	emake \
+		DESTDIR="${D}" \
+		PREFIX=/usr \
+		ETC_PREFIX=/ \
+		$(usex suid "" -DWITHOUT_SUID) \
+		install
+
 	doman share/man/man1/hikari.1
 }

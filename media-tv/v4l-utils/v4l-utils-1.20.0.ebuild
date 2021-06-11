@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ppc ~ppc64 ~sparc x86"
 IUSE="+bpf dvb opengl qt5 +udev"
 
 RDEPEND="
@@ -46,12 +46,20 @@ PATCHES=(
 # Not really prebuilt but BPF objects make our QA checks go crazy.
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 
-pkg_pretend() {
+check_llvm() {
 	if [[ ${MERGE_TYPE} != binary ]] && use bpf; then
 		local clang=${ac_cv_prog_CLANG:-${CLANG:-clang}}
 		${clang} -target bpf -print-supported-cpus &>/dev/null ||
 			die "${clang} does not support the BPF target. Please check LLVM_TARGETS."
 	fi
+}
+
+pkg_pretend() {
+	has_version -b sys-devel/clang && check_llvm
+}
+
+pkg_setup() {
+	check_llvm
 }
 
 src_prepare() {
@@ -63,9 +71,9 @@ src_configure() {
 	if use qt5; then
 		append-cxxflags -std=c++11
 		local qt5_paths=( \
-			MOC="$(pkg-config --variable=host_bins Qt5Core)/moc" \
-			UIC="$(pkg-config --variable=host_bins Qt5Core)/uic" \
-			RCC="$(pkg-config --variable=host_bins Qt5Core)/rcc" \
+			MOC="$($(tc-getPKG_CONFIG) --variable=host_bins Qt5Core)/moc" \
+			UIC="$($(tc-getPKG_CONFIG) --variable=host_bins Qt5Core)/uic" \
+			RCC="$($(tc-getPKG_CONFIG) --variable=host_bins Qt5Core)/rcc" \
 		)
 		if use !opengl; then
 			sed -e 's/Qt5OpenGL/DiSaBlEd/g' -i configure || die

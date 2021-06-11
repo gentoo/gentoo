@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">ReinhardPrix/FreedroidClassic</remote-id>
 		<remote-id type="sourceforge">freedroid</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,7 +8,6 @@
 	<use>
 		<flag name="demo">Install launcher dor doom1.wad from <pkg>games-fps/doom-data</pkg></flag>
 		<flag name="fluidsynth">Build the FluidSynth sound driver</flag>
-		<flag name="fmod">Enable support for fmod music and sound effects lib</flag>
 		<flag name="freedoom">Install launcher for doom1.wad from <pkg>games-fps/freedoom</pkg></flag>
 		<flag name="tools">Build additional tools such as doomsday-shell, md2tool and texc</flag>
 	</use>

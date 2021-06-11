@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">inveniosoftware/dictdiffer</remote-id>
+		<remote-id type="pypi">dictdiffer</remote-id>
+	</upstream>
+	<stabilize-allarches/>
+</pkgmetadata>

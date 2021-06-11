@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit elisp-common eutils
+inherit elisp-common
 
 DESCRIPTION="GNU Forth is a fast and portable implementation of the ANSI Forth language"
 HOMEPAGE="https://www.gnu.org/software/gforth"
@@ -22,7 +22,17 @@ SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-make-elc.patch
+	"${FILESDIR}"/${PN}-0.7.3-rdynamic.patch
+	"${FILESDIR}"/${PN}-0.7.3-rdynamic-auto.patch
 )
+
+src_prepare() {
+	default
+
+	# We patches both configure and configure.ac.
+	# Avoid reruining aclocal.
+	touch aclocal.m4 configure || die
+}
 
 src_configure() {
 	econf \

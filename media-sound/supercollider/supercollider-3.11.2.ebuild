@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit cmake flag-o-matic readme.gentoo-r1 xdg-utils
 
-DESCRIPTION="An environment and a programming language for real time audio synthesis."
+DESCRIPTION="Environment and programming language for real time audio synthesis"
 HOMEPAGE="https://supercollider.github.io/"
 SRC_URI="https://github.com/supercollider/supercollider/releases/download/Version-${PV}/SuperCollider-${PV}-Source.tar.bz2"
 
@@ -57,9 +57,7 @@ DEPEND="${RDEPEND}
 	dev-libs/icu
 	emacs? ( >=app-editors/emacs-23.1:* )
 	gedit? ( app-editors/gedit )
-	qt5? (
-		dev-qt/qtconcurrent:5
-	)
+	qt5? ( dev-qt/qtconcurrent:5 )
 	vim? ( app-editors/vim )
 "
 
@@ -67,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.10.2-no-ccache.patch
 	"${FILESDIR}"/${P}-fewer-qt-deps.patch # Upstream PR 4991
 	"${FILESDIR}"/${P}-fix-libscsynth-linker-issue.patch # Upstream issue 4992
+	"${FILESDIR}"/${P}-boost-1.74.patch # bug 760489
 )
 
 S="${WORKDIR}/SuperCollider-${PV}-Source"

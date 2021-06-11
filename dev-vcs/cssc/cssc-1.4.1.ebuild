@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${CSSC_P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/cssc/"
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 IUSE="test valgrind"
 RESTRICT="!test? ( test )"

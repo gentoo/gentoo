@@ -6,7 +6,6 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
-	<flag name="tracker">Load contacts from <pkg>app-misc/tracker</pkg> index</flag>
 	<flag name="telepathy">Load contacts from the Telepathy framework</flag>
 	<flag name="utils">Build the folks-inspect utility</flag>
 </use>

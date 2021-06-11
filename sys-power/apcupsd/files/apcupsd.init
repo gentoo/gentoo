@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${APCUPSD_CONFIGFILE:=/etc/apcupsd/${SVCNAME#*.}.conf}
+: ${APCUPSD_POWERFAILFILE:=/etc/apcupsd/powerfail}
+: ${APCUPSD_PIDFILE:=/run/${SVCNAME}.pid}
+: ${APCUPSD_SSDARGS:=--wait 1000}
+: ${APCUPSD_TERMTIMEOUT:=TERM/60/KILL/5}
+
+command="/sbin/apcupsd"
+command_args="${APCUPSD_OPTS} --config-file \"${APCUPSD_CONFIGFILE}\" --pid-file \"${APCUPSD_PIDFILE}\""
+pidfile="${APCUPSD_PIDFILE}"
+retry="${APCUPSD_TERMTIMEOUT}"
+start_stop_daemon_args="${APCUPSD_SSDARGS}"
+required_files="${APCUPSD_CONFIGFILE}"
+
+depend() {
+	use dns
+}
+
+start_pre() {
+	if [ -e "${APCUPSD_POWERFAILFILE}" ] ; then
+		ebegin "Removing stale ${APCUPSD_POWERFAILFILE}"
+		rm "${APCUPSD_POWERFAILFILE}"
+		eend $?
+	fi
+}

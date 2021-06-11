@@ -1,0 +1,35 @@
+https://github.com/boto/boto/commit/4f4dcb31fe852c05ce19b44eb9d5b5d747e36f7c
+https://github.com/boto/boto/pull/2718
+
+From 4f4dcb31fe852c05ce19b44eb9d5b5d747e36f7c Mon Sep 17 00:00:00 2001
+From: Lee Ball <43632885+catleeball@users.noreply.github.com>
+Date: Mon, 10 Jun 2019 16:02:53 -0700
+Subject: [PATCH] Remove `strict=True` from http_client (#6)
+
+In Python 3.4, the `strict` kwarg was removed[1]. We are removing it
+here too.
+
+Alternatively, we can leave in `strict=True` for 2.x, but I chose to
+remove it entirely to maintain consistent behavior across versions.
+
+[1]: https://docs.python.org/3/library/http.client.html
+---
+ boto/connection.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/boto/connection.py b/boto/connection.py
+index c731173bb4eb..54e26fb2de16 100644
+--- a/boto/connection.py
++++ b/boto/connection.py
+@@ -807,7 +807,7 @@ class AWSAuthConnection(object):
+                 sock.sendall(six.ensure_binary("\r\n"))
+         else:
+             sock.sendall(six.ensure_binary("\r\n"))
+-        resp = http_client.HTTPResponse(sock, strict=True, debuglevel=self.debug)
++        resp = http_client.HTTPResponse(sock, debuglevel=self.debug)
+         resp.begin()
+ 
+         if resp.status != 200:
+-- 
+2.28.0
+

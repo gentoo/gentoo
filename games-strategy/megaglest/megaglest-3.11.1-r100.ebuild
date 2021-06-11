@@ -1,4 +1,4 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # google-breakpad
@@ -14,7 +14,8 @@ LUA_COMPAT=( lua5-{1..2} )
 # Only needed by certain features
 VIRTUALX_REQUIRED="manual"
 
-inherit cmake desktop flag-o-matic lua-single virtualx wxwidgets xdg-utils
+WX_GTK_VER="3.0"
+inherit cmake desktop lua-single virtualx wxwidgets xdg-utils
 
 DESCRIPTION="Cross-platform 3D realtime strategy game"
 HOMEPAGE="https://megaglest.org/ https://github.com/MegaGlest/megaglest-source"
@@ -23,7 +24,7 @@ SRC_URI="https://github.com/MegaGlest/megaglest-source/releases/download/${PV}/m
 LICENSE="GPL-3 BitstreamVera"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static +streflop +tools +unicode wxuniversal +model-viewer videos"
+IUSE="debug +editor fribidi cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 +streflop +tools +unicode wxuniversal +model-viewer videos"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -43,32 +44,19 @@ RDEPEND="${LUA_DEPS}
 	virtual/glu
 	x11-libs/libX11
 	x11-libs/libXext
-	editor? ( x11-libs/wxGTK:3.0[X,opengl] )
+	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
 	fribidi? ( dev-libs/fribidi )
-	model-viewer? ( x11-libs/wxGTK:3.0[X] )
-	!static? (
-		dev-libs/xerces-c[icu]
-		media-libs/ftgl
-		media-libs/glew
-		media-libs/libpng:0
-		net-libs/libircclient
-		>=net-libs/miniupnpc-1.8
-		net-misc/curl
-		virtual/jpeg:0
-		)
+	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	dev-libs/xerces-c[icu]
+	media-libs/ftgl
+	media-libs/glew:=
+	media-libs/libpng:0
+	net-libs/libircclient
+	>=net-libs/miniupnpc-1.8:=
+	net-misc/curl
+	virtual/jpeg:0
 	videos? ( media-video/vlc )"
-DEPEND="${RDEPEND}
-	static? (
-		dev-libs/icu[static-libs]
-		dev-libs/xerces-c[icu,static-libs]
-		media-libs/ftgl[static-libs]
-		media-libs/glew[static-libs]
-		media-libs/libpng:0[static-libs]
-		net-libs/libircclient[static-libs]
-		net-libs/miniupnpc[static-libs]
-		net-misc/curl[static-libs]
-		virtual/jpeg:0[static-libs]
-	)"
+DEPEND="${RDEPEND}"
 BDEPEND="sys-apps/help2man
 	virtual/pkgconfig
 	editor? ( ${VIRTUALX_DEPEND} )
@@ -86,7 +74,6 @@ src_prepare() {
 	cmake_src_prepare
 
 	if use editor || use model-viewer ; then
-		WX_GTK_VER="3.0"
 		setup-wxwidgets
 	fi
 }
@@ -110,10 +97,10 @@ src_configure() {
 		-DFORCE_LUA_VERSION="$(lua_get_version)"
 		-DMAX_SSE_LEVEL_DESIRED="${SSE}"
 		-DUSE_FTGL=ON
-		-DWANT_STATIC_LIBS=$(usex static)
+		-DWANT_STATIC_LIBS=OFF
 		-DWANT_STREFLOP=$(usex streflop)
 		-DWITH_VLC=$(usex videos)
-		-DwxWidgets_USE_STATIC=$(usex static)
+		-DwxWidgets_USE_STATIC=OFF
 		-DwxWidgets_USE_UNICODE=$(usex unicode)
 		-DwxWidgets_USE_UNIVERSAL=$(usex wxuniversal)
 

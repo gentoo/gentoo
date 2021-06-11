@@ -1,2 +1,6 @@
 # Don't enable the security measures for convienence
 sys-apps/portage -rsync-verify
+
+# Yiyang Wu <xgreenlandforwyy@gmail.com> (2021-03-03)
+# bazel should link libstdc++ statically in prefix to avoid finding host's libstdc++ when building other packages
+dev-util/bazel static-libs

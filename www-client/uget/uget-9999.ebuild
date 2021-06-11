@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,7 @@ EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="aria2 appindicator control-socket +gnutls gstreamer libnotify nls openssl rss"
+REQUIRED_USE="^^ ( gnutls openssl )"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -25,6 +26,7 @@ RDEPEND="
 	aria2? ( net-misc/aria2[xmlrpc] )
 	appindicator? ( dev-libs/libappindicator:3 )
 	gstreamer? ( media-libs/gstreamer:1.0 )
+	openssl? ( dev-libs/openssl:= )
 	libnotify? ( x11-libs/libnotify )"
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 MY_PN=xdot.py
 EGIT_REPO_URI="https://github.com/jrfonseca/${MY_PN}"
@@ -35,7 +35,7 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
+	[[ ${PV} = 9999* ]] && git-r3_src_unpack
 }
 
 src_prepare() {

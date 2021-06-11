@@ -1,20 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit cmake flag-o-matic python-single-r1
+inherit cmake python-single-r1
 
-DESCRIPTION="A color management framework for visual effects and animation"
+DESCRIPTION="color management framework for visual effects and animation"
 HOMEPAGE="https://opencolorio.org/"
 SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/OpenColorIO-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
 REQUIRED_USE="
 	doc? ( python )
@@ -53,6 +53,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.0-remove-Werror.patch"
 	"${FILESDIR}/${PN}-1.1.1-yaml-cpp-boost-check.patch"
 	"${FILESDIR}/${P}-fix-self-assign-clang.patch"
+	"${FILESDIR}/${P}-no-werror.patch"
+	"${FILESDIR}/${P}-Gentoo-specific-OCIOMacros.cmake-remove-LIB_SUFFIX.patch"
 )
 
 pkg_setup() {
@@ -88,6 +90,13 @@ src_configure() {
 		-DOCIO_USE_SSE=$(usex cpu_flags_x86_sse2)
 		-DOCIO_BUILD_TESTS=$(usex test)
 	)
+
+	if use python; then
+		mycmakeargs+=(
+			-DPYTHON=${PYTHON}
+			-DPYTHON_LIBRARY=$(python_get_library_path)
+		)
+	fi
 
 	use doc && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_LATEX=ON ) # broken
 	cmake_src_configure

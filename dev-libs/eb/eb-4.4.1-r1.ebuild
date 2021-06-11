@@ -3,8 +3,10 @@
 
 EAPI=7
 
+inherit autotools
+
 DESCRIPTION="EB is a C library and utilities for accessing CD-ROM books"
-HOMEPAGE="http://www.sra.co.jp/people/m-kasahr/eb/"
+HOMEPAGE="https://web.archive.org/web/20120330123930/http://www.sra.co.jp/people/m-kasahr/eb/"
 SRC_URI="ftp://ftp.sra.co.jp/pub/misc/eb/${P}.tar.lzma"
 
 LICENSE="BSD"
@@ -19,6 +21,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
 
 DOCS=( AUTHORS ChangeLog{,.0,.1,.2} NEWS README )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \

@@ -1,0 +1,32 @@
+diff --git a/doc/meson.build b/doc/meson.build
+index 05c7ed35..ce9b52ea 100644
+--- a/doc/meson.build
++++ b/doc/meson.build
+@@ -24,11 +24,14 @@ doxyfile = configure_file(input: 'Doxyfile.in',
+                           output: 'Doxyfile',
+                           configuration: doxyfile_conf)
+ 
+-docdir = join_paths(pipewire_datadir, 'doc')
++docdir = get_option('docdir')
++if docdir == ''
++  docdir = join_paths(pipewire_datadir, 'doc', meson.project_name())
++endif
+ 
+ html_target = custom_target('pipewire-docs',
+                             input: [ doxyfile ],
+                             output: [ 'html' ],
+                             command: [ doxygen, doxyfile ],
+                             install: true,
+-                            install_dir: join_paths(docdir, 'pipewire'))
++                            install_dir: docdir)
+diff --git a/meson_options.txt b/meson_options.txt
+index 858283f2..d51e693f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,6 @@
++option('docdir',
++	type : 'string',
++	description : 'Directory for installing documentation to (defaults to pipewire_datadir/doc/meson.project_name() )')
+ option('docs',
+        description: 'Build documentation',
+        type: 'feature',

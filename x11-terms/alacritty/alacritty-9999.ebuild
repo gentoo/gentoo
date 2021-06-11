@@ -1,4 +1,4 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 BSD BSD-2 CC0-1.0 FTL ISC MIT MPL-2.0 Unlicense WTFPL-2 ZLIB"
@@ -113,4 +113,14 @@ src_install() {
 src_test() {
 	cd alacritty || die
 	cargo_src_test
+}
+
+pkg_postinst() {
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		einfo "Configuration files for ${CATEGORY}/${PN}"
+		einfo "in \$HOME often need to be updated after a version change"
+		einfo ""
+		einfo "An up-to-date sample configuration file always can be found at"
+		einfo "${ROOT}/usr/share/doc/${PF}/alacritty.yml.*"
+	fi
 }

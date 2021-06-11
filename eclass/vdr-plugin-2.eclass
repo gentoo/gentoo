@@ -368,7 +368,7 @@ vdr-plugin-2_pkg_setup() {
 	VDR_INCLUDE_DIR="/usr/include/vdr"
 	DVB_INCLUDE_DIR="/usr/include"
 
-	TMP_LOCALE_DIR="${WORKDIR}/tmp-locale"
+	TMP_LOCALE_DIR="${T}/tmp-locale"
 
 	LOCDIR=$(pkg-config --variable=locdir vdr)
 

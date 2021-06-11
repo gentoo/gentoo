@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Applications to monitor on a beowulf- or GRID-style clusters"
 HOMEPAGE="http://www.phy.duke.edu/~rgb/Beowulf/wulfware.php"
@@ -12,18 +12,15 @@ SRC_URI="http://www.phy.duke.edu/~rgb/Beowulf/${PN}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-libs/libxml2:=
 	sys-libs/ncurses:0=
-	sys-libs/zlib:=
-"
+	sys-libs/zlib:="
 DEPEND="
 	${RDEPEND}
 	!sys-cluster/wulfstat
-	!sys-cluster/xmlsysd
-"
+	!sys-cluster/xmlsysd"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-opts_and_strip.patch
@@ -37,6 +34,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
+	append-cflags -fcommon
 	econf
 }
 
@@ -45,14 +43,17 @@ src_compile() {
 }
 
 src_install() {
-	emake prefix="${D}/usr" libdir="${D}/usr/$(get_libdir)" \
-		includedir="${D}/usr/include" sysconfdir="${D}/etc" \
+	emake prefix="${ED}"/usr libdir="${ED}"/usr/$(get_libdir) \
+		includedir="${ED}"/usr/include sysconfdir="${ED}"/etc \
 		install
 
 	dodoc AUTHORS ChangeLog NEWS NOTES README xmlsysd/DESIGN
 
 	# FIXME: Update to Gentoo style init script.
 	rm -r "${ED}"/etc/init.d/wulf2html || die
+
+	dosym libwulf.so.2.6.0 /usr/lib64/libwulf.so.2
+	gunzip "${ED}"/usr/share/man/man?/*.gz || die
 }
 
 pkg_postinst() {

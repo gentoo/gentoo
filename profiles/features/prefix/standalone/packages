@@ -1,3 +1,6 @@
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # RAP does not need busybox for emergency recovery, the host have all those tools.
 -*sys-apps/busybox
 
@@ -6,7 +9,6 @@
 
 # Man pages are not essential.
 -*sys-apps/man-pages
--*virtual/man
 
 # A service manager is not essential.
 -*virtual/service-manager

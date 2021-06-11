@@ -9,6 +9,7 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		This is a Python implementation of SNMP v.1/v.2c engine. Its general
 		functionality is to assemble/disassemble SNMP messages from/into

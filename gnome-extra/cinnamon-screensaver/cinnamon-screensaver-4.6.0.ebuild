@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit meson python-single-r1 xdg
 
@@ -14,7 +14,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="systemd xinerama"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]
@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	xinerama? ( x11-libs/libXinerama )
 "
 RDEPEND="${COMMON_DEPEND}
+	>=app-accessibility/caribou-0.3
 	sys-apps/accountsservice[introspection]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -60,8 +61,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	xdg_src_prepare
-	python_fix_shebang src
+	default
+	python_fix_shebang install-scripts src
 }
 
 src_configure() {

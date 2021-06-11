@@ -11,7 +11,6 @@ HOMEPAGE="http://bb.osmocom.org/trac/wiki/libosmocore"
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="http://cgit.osmocom.org/cgit/libosmocore/snapshot/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm ~x86"

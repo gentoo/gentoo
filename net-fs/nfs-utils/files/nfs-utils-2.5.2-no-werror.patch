@@ -14,7 +14,7 @@ diff --git a/configure.ac b/configure.ac
 index 50847d8a..6bc18e93 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -620,47 +620,15 @@ AC_SUBST(CPPFLAGS_FOR_BUILD)
+@@ -631,47 +631,15 @@ AC_SUBST(CPPFLAGS_FOR_BUILD)
  AC_SUBST(LDFLAGS_FOR_BUILD)
  
  my_am_cflags="\

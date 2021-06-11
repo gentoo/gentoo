@@ -1,0 +1,67 @@
+From 840eaa67e1ee0d10aa6bfb1e34659efa3095b772 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Sat, 13 Mar 2021 13:01:50 +0200
+Subject: [PATCH] menuselect: exit non-zero in case of failure on
+ --enable|disable options.
+
+Change-Id: I77e3466435f5a51a57538b29addb68d811af238d
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ menuselect/menuselect.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/menuselect/menuselect.c b/menuselect/menuselect.c
+index 2eea3f09eb..adb6fa1777 100644
+--- a/menuselect/menuselect.c
++++ b/menuselect/menuselect.c
+@@ -2090,6 +2090,7 @@ int main(int argc, char *argv[])
+ 		/* Reset options processing */
+ 		option_index = 0;
+ 		optind = 1;
++		res = 0;
+ 
+ 		while ((c = getopt_long(argc, argv, "", long_options, &option_index)) != -1) {
+ 			print_debug("Got option %c\n", c);
+@@ -2100,6 +2101,7 @@ int main(int argc, char *argv[])
+ 						set_member_enabled(mem);
+ 					} else {
+ 						fprintf(stderr, "'%s' not found\n", optarg);
++						res = 1;
+ 					}
+ 				}
+ 				break;
+@@ -2109,6 +2111,7 @@ int main(int argc, char *argv[])
+ 						set_all(cat, 1);
+ 					} else {
+ 						fprintf(stderr, "'%s' not found\n", optarg);
++						res = 1;
+ 					}
+ 				}
+ 				break;
+@@ -2123,6 +2126,7 @@ int main(int argc, char *argv[])
+ 						clear_member_enabled(mem);
+ 					} else {
+ 						fprintf(stderr, "'%s' not found\n", optarg);
++						res = 1;
+ 					}
+ 				}
+ 				break;
+@@ -2132,6 +2136,7 @@ int main(int argc, char *argv[])
+ 						set_all(cat, 0);
+ 					} else {
+ 						fprintf(stderr, "'%s' not found\n", optarg);
++						res = 1;
+ 					}
+ 				}
+ 				break;
+@@ -2146,7 +2151,6 @@ int main(int argc, char *argv[])
+ 				break;
+ 			}
+ 		}
+-		res = 0;
+ 	}
+ 
+ 	if (!res) {
+-- 
+2.26.2
+

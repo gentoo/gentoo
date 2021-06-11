@@ -5,15 +5,16 @@
 		<email>3dprint@gentoo.org</email>
 		<name>Gentoo 3D Printer Project</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>mathy@vanvoorden.be</email>
 		<name>Mathy Vanvoorden</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/nothings/stb/issues</bugs-to>
 		<remote-id type="github">nothings/stb</remote-id>
 	</upstream>
 </pkgmetadata>

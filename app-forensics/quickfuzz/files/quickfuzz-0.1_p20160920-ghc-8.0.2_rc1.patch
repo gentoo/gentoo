@@ -1,8 +1,0 @@
-diff --git a/src/Midi.hs b/src/Midi.hs
-index 2b7a359..8c4eacc 100644
---- a/src/Midi.hs
-+++ b/src/Midi.hs
-@@ -1,2 +1,2 @@
--{-# LANGUAGE TemplateHaskell, FlexibleInstances#-}
-+{-# LANGUAGE TemplateHaskell, FlexibleInstances, OverlappingInstances #-}
- 

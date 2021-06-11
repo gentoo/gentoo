@@ -5,6 +5,7 @@
 		<email>sbraz@gentoo.org</email>
 		<name>Louis Sautier</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">airdcpp-web/airdcpp-webui</remote-id>
 		<bugs-to>https://github.com/airdcpp-web/airdcpp-webclient/issues</bugs-to>

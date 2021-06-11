@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Revised version of the original translation by Károli Gáspár, first
 		published in 1590 in Vizsoly, Hungary.

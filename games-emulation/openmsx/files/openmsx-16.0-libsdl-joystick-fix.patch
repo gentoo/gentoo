@@ -1,0 +1,66 @@
+From eb5ddae80bdc6793de42ee67dd72e2da9d632ba8 Mon Sep 17 00:00:00 2001
+From: Maarten ter Huurne <maarten@treewalker.org>
+Date: Sat, 23 Jan 2021 03:25:38 +0100
+Subject: [PATCH] Fix compile errors and warnings when SDL_JOYSTICK_DISABLED is
+ defined
+
+If there is no base class, it's impossible to override the destructor.
+
+There were warning suppressors for 3 out of 5 arguments that are unused
+when SDL_JOYSTICK_DISABLED is defined; I added the othe two.
+---
+ src/input/JoyMega.hh  | 6 +++++-
+ src/input/Joystick.cc | 2 ++
+ src/input/Joystick.hh | 8 ++++++--
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/src/input/JoyMega.hh b/src/input/JoyMega.hh
+index 8422bcd2a..05371e27d 100644
+--- a/src/input/JoyMega.hh
++++ b/src/input/JoyMega.hh
+@@ -25,7 +25,11 @@ public:
+ 	JoyMega(MSXEventDistributor& eventDistributor,
+ 	         StateChangeDistributor& stateChangeDistributor,
+ 	         SDL_Joystick* joystick);
+-	~JoyMega() override;
++	~JoyMega()
++#ifndef SDL_JOYSTICK_DISABLED
++		override
++#endif
++		;
+ 
+ #ifndef SDL_JOYSTICK_DISABLED
+ 	// Pluggable
+diff --git a/src/input/Joystick.cc b/src/input/Joystick.cc
+index 04b4826cd..90b344c42 100644
+--- a/src/input/Joystick.cc
++++ b/src/input/Joystick.cc
+@@ -32,6 +32,8 @@ void Joystick::registerAll(MSXEventDistributor& eventDistributor,
+ #ifdef SDL_JOYSTICK_DISABLED
+ 	(void)eventDistributor;
+ 	(void)stateChangeDistributor;
++	(void)commandController;
++	(void)globalSettings;
+ 	(void)controller;
+ #else
+ 	for (auto i : xrange(SDL_NumJoysticks())) {
+diff --git a/src/input/Joystick.hh b/src/input/Joystick.hh
+index 18dd3c1c0..6a0f38d9d 100644
+--- a/src/input/Joystick.hh
++++ b/src/input/Joystick.hh
+@@ -38,9 +38,13 @@ public:
+ 	Joystick(MSXEventDistributor& eventDistributor,
+ 	         StateChangeDistributor& stateChangeDistributor,
+ 	         CommandController& commandController,
+-		 GlobalSettings& globalSettings,
++	         GlobalSettings& globalSettings,
+ 	         SDL_Joystick* joystick);
+-	~Joystick() override;
++	~Joystick()
++#ifndef SDL_JOYSTICK_DISABLED
++		override
++#endif
++		;
+ 
+ #ifndef SDL_JOYSTICK_DISABLED
+ 	// Pluggable

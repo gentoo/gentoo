@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Dumitru Cornilescu (4 April 1891 - 1975), a Romanian orthodox archdeacon, later a Protestant minister created this translation in 1921. It is popular particularly among protestants. Copyright of the Cornilescu Bible © 1924 belongs to British and Foreign Bible Society. Copyright © 2010, 2014 of the revised edition in Romanian language belongs to the Interconfessional Bible Society of Romania, with the approval of the British and Foreign Bible Society. Used by permission.
 	</longdescription>

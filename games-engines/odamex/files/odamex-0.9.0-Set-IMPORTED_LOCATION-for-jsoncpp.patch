@@ -1,0 +1,24 @@
+From 3707d8ebad7a4a0664ca4d5a5a5bef4a276af6a2 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Mon, 29 Mar 2021 20:30:10 +0900
+Subject: [PATCH] Set IMPORTED_LOCATION for jsoncpp
+
+---
+ libraries/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libraries/CMakeLists.txt b/libraries/CMakeLists.txt
+index 2ffe95a5..a7dcb83b 100644
+--- a/libraries/CMakeLists.txt
++++ b/libraries/CMakeLists.txt
+@@ -172,6 +172,7 @@ if(BUILD_SERVER)
+     INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_CURRENT_BINARY_DIR}/local/include"
+     IMPORTED_LOCATION_DEBUG ${JSONCPP_LIBRARY_DEBUG}
+     IMPORTED_LOCATION_RELEASE ${JSONCPP_LIBRARY_RELEASE}
++    IMPORTED_LOCATION ${JSONCPP_LIBRARY_RELEASE}
+     MAP_IMPORTED_CONFIG_MINSIZEREL Release
+     MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release)
+ endif()
+-- 
+2.31.0
+

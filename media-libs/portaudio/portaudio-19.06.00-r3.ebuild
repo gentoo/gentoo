@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools multilib-minimal
 
 DESCRIPTION="A free, cross-platform, open-source, audio I/O library"
@@ -11,7 +12,7 @@ SRC_URI="http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="alsa +cxx debug doc jack oss static-libs"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
@@ -29,6 +30,7 @@ DOCS=( README.txt )
 PATCHES=(
 	"${DISTDIR}/${PN}-19.06.00-audacity-portmixer.patch"
 	"${FILESDIR}"/${PN}-19.06.00-AR.patch # bug #720966, trigger reconf
+	"${FILESDIR}"/${PN}-19.06.00-slibtool.patch
 )
 
 src_prepare() {
@@ -66,7 +68,9 @@ src_compile() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	default
+
 	use doc && dodoc -r doc/html
+
 	find "${ED}" -name "*.la" -delete || die
 }

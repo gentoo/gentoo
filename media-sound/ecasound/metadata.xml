@@ -20,4 +20,7 @@
 	<flag name="oil">Use <pkg>dev-libs/liboil</pkg> for inner loop optimizations</flag>
 	<flag name="lv2">Add support for Ladspa V2</flag>
 </use>
+<upstream>
+	<remote-id type="github">kaivehmanen/ecasound</remote-id>
+</upstream>
 </pkgmetadata>

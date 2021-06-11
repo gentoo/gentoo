@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://${EGO_PN}.git"
 else
 	SRC_URI="https://${EGO_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="A flexible DNS proxy, with support for encrypted DNS protocols"
@@ -23,7 +23,6 @@ SLOT="0"
 IUSE="pie"
 
 BDEPEND=">=dev-lang/go-1.13"
-
 RDEPEND="
 	acct-group/dnscrypt-proxy
 	acct-user/dnscrypt-proxy
@@ -31,7 +30,9 @@ RDEPEND="
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 
-PATCHES=( "${FILESDIR}"/config-full-paths-r11.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.45-config-full-paths.patch"
+)
 
 src_compile() {
 	pushd "${PN}" >/dev/null || die
@@ -51,13 +52,13 @@ src_install() {
 
 	insinto /etc/dnscrypt-proxy
 	newins example-dnscrypt-proxy.toml dnscrypt-proxy.toml
-	doins example-{blacklist.txt,whitelist.txt}
+	doins example-{allowed,blocked}-{ips.txt,names.txt}
 	doins example-{cloaking-rules.txt,forwarding-rules.txt}
 
 	popd >/dev/null || die
 
 	insinto /usr/share/dnscrypt-proxy
-	doins -r "utils/generate-domains-blacklists/."
+	doins -r "utils/generate-domains-blocklist/."
 
 	newinitd "${FILESDIR}"/dnscrypt-proxy.initd dnscrypt-proxy
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd dnscrypt-proxy

@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit user golang-build golang-vcs-snapshot
+
+inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/${PN}"
 EGIT_COMMIT="4a7436442837da72f9e211d99f0145dff3246b66"
@@ -14,7 +15,6 @@ HOMEPAGE="https://github.com/prometheus/prom2json"
 SRC_URI="${ARCHIVE_URI}"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
 
 DEPEND="dev-util/promu"
 

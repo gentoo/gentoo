@@ -18,15 +18,15 @@
 		
 		This package uses bindings to the optimized C implementation
 		of Skein.  We provide a high-level interface (see module
-		&quot;Crypto.Skein&quot;) to some of the Skein use cases.  We also
+		"Crypto.Skein") to some of the Skein use cases.  We also
 		provide a low-level interface (see module
-		&quot;Crypto.Skein.Internal&quot;) should you need to use Skein in a
+		"Crypto.Skein.Internal") should you need to use Skein in a
 		different way.
 		
 		Currently we have support for Skein as cryptographic hash
 		function as Skein as a message authentication code
 		(Skein-MAC).  For examples of how to use this package, see
-		&quot;Crypto.Skein&quot; module documentation.
+		"Crypto.Skein" module documentation.
 		
 		This package includes Skein v1.3. Versions of this package
 		before 1.0.0 implemented Skein v1.1.

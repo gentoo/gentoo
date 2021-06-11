@@ -5,6 +5,7 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="github">sebastianbergmann/php-file-iterator</remote-id>
   </upstream>

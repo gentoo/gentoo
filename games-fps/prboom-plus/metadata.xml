@@ -12,11 +12,11 @@
 		variable gamespeed, re-record, walkcam, chasecam, full mouselook, FOV,
 		and other features without loss of compatibility with the original Doom.
 	</longdescription>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>

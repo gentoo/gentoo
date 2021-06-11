@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+# Temporarily needed for slibtool patch
+# It's upstreamed so should be able to drop in future
+# bug #778041
+GNOME2_EAUTORECONF="yes"
 inherit gnome2 multilib
 
 DESCRIPTION="A library for using 3D graphics hardware to draw pretty pictures"
@@ -17,7 +21,7 @@ REQUIRED_USE="
 	wayland? ( gles2 )
 	|| ( gles2 opengl )
 "
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32:2
@@ -56,6 +60,10 @@ DEPEND="${COMMON_DEPEND}
 # Need classic mesa swrast for tests, llvmpipe causes a test failure
 # For some reason GL3 conformance test all fails again...
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-slibtool.patch
+)
 
 src_prepare() {
 	# Do not build examples

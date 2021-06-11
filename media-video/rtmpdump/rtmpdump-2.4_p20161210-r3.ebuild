@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ HOMEPAGE="https://rtmpdump.mplayerhq.hu/"
 # the library is LGPL-2.1, the command is GPL-2
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="gnutls ssl static-libs libressl"
+IUSE="gnutls ssl static-libs"
 
 DEPEND="ssl? (
 		gnutls? (
@@ -19,8 +19,7 @@ DEPEND="ssl? (
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 		)
 		!gnutls? (
-			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+			dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 		)
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
@@ -67,7 +66,7 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
-	use ssl && use !gnutls && use !libressl && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
+	use ssl && use !gnutls && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
 	default
 	multilib_copy_sources
 }

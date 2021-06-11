@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs games
+EAPI=7
+
+inherit desktop flag-o-matic toolchain-funcs
 
 FILE_STEM="QuDos-${PV}-src"
 PK3_FILE="QuDos-${PV}.pk3"
@@ -12,6 +13,7 @@ DESCRIPTION="Enhanced Quake 2 engine"
 HOMEPAGE="https://github.com/ZwS/qudos"
 SRC_URI="mirror://gentoo/${FILE_STEM}.tar.bz2
 	https://github.com/ZwS/qudos/raw/master/quake2/baseq2/qudos.pk3 -> ${PK3_FILE}"
+S="${WORKDIR}"/${FILE_STEM}
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -33,13 +35,19 @@ DEPEND="opengl? (
 	x11-libs/libXext
 	x11-libs/libXxf86dga
 	x11-libs/libXxf86vm"
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	cdinstall? ( games-fps/quake2-data )
 	demo? ( games-fps/quake2-demodata[symlink] )
-	textures? ( games-fps/quake2-textures )"
+	textures? ( games-fps/quake2-textures )
+"
 
-S=${WORKDIR}/${FILE_STEM}
-dir=${GAMES_DATADIR}/${MY_PN}
+dir=usr/share/${MY_PN}
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libpng15.patch
+	"${FILESDIR}"/${P}-gnusource.patch
+)
 
 default_client() {
 	if use opengl || use sdl || ! use dedicated ; then
@@ -50,8 +58,6 @@ default_client() {
 }
 
 pkg_setup() {
-	games_pkg_setup
-
 	if ! use qmax && $( use opengl || use sdl ) ; then
 		elog "The 'qmax' graphical improvements are recommended."
 		echo
@@ -84,12 +90,12 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm docs/gnu.txt
+	rm docs/gnu.txt || die
 
 	# Change default sound driver and its location
 	sed -i \
 		-e "s:\"oss\":\"${snd_drv}\":" \
-		-e "s:\"\./snd:\"$(games_get_libdir)/${PN}/snd:" \
+		-e "s:\"\./snd:\"/usr/$(get_libdir)/${PN}/snd:" \
 		src/client/snd_dma.c || die
 
 	sed -i \
@@ -101,15 +107,23 @@ src_prepare() {
 			-e '1i#define OF(x) x' \
 			src/qcommon/unzip/ioapi.h || die
 	fi
+
 	sed -i -e '106,119 s/CFL/LED/' Makefile || die
 
-	epatch \
-		"${FILESDIR}"/${P}-libpng15.patch \
-		"${FILESDIR}"/${P}-gnusource.patch
+	sed -i -e 's:-L/usr/lib -L$(LOCALBASE)/lib :: ' Makefile || die
+
+	default
+}
+
+src_configure() {
+	append-cflags -fcommon
+	default
 }
 
 src_compile() {
-	yesno() { usex $1 YES NO; }
+	yesno() {
+		usex ${1} YES NO;
+	}
 
 	local client="YES"
 	default_client || client="NO"
@@ -131,7 +145,7 @@ src_compile() {
 		TYPE="${type}" \
 		DATADIR="${dir}" \
 		LOCALBASE=/usr \
-		LIBDIR="$(games_get_libdir)"/${PN} \
+		LIBDIR="/usr/$(get_libdir)"/${PN} \
 		WITH_QMAX=$(yesno qmax) \
 		BUILD_3ZB2=$(yesno mods) \
 		BUILD_CTF=$(yesno mods) \
@@ -151,24 +165,24 @@ src_compile() {
 
 src_install() {
 	if default_client ; then
-		newgamesbin ${MY_PN}/QuDos ${PN}
+		newbin ${MY_PN}/QuDos ${PN}
+
 		# Change from gif to png in next version?
 		newicon docs/q2_orig/quake2.gif ${PN}.gif
+
 		make_desktop_entry ${PN} "QuDos" ${PN}.gif
 	fi
 
 	if use dedicated ; then
-		newgamesbin ${MY_PN}/QuDos-ded ${PN}-ded
+		newbin ${MY_PN}/QuDos-ded ${PN}-ded
 	fi
 
-	insinto "$(games_get_libdir)"/${PN}
+	insinto "/usr/$(get_libdir)"/${PN}
 	doins -r ${MY_PN}/*
-	rm "${D}/$(games_get_libdir)"/${PN}/QuDos
+	rm "${ED}/usr/$(get_libdir)"/${PN}/QuDos || die
 
-	insinto "$(games_get_libdir)"/${PN}/baseq2
+	insinto "/usr/$(get_libdir)"/${PN}/baseq2
 	newins "${DISTDIR}/${PK3_FILE}" qudos.pk3
 
 	dodoc $(find docs -name \*.txt) docs/q2_orig/README*
-
-	prepgamesdirs
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<name>Graeme Lawes</name>
 		<email>graemelawes@gmail.com</email>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<name>Gentoo Proxy Maintainers Project</name>
 		<email>proxy-maint@gentoo.org</email>
 	</maintainer>

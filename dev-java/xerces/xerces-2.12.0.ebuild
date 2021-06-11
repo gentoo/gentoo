@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="xerces:xercesImpl:2.12.0"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -40,8 +41,12 @@ JAVA_GENTOO_CLASSPATH="
 
 S="${WORKDIR}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-overrides.patch"
+)
+
 src_prepare() {
 	default
 
-	epatch "${FILESDIR}/${P}-overrides.patch"
+	java-pkg-2_src_prepare
 }

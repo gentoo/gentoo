@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,10 @@ SRC_URI="https://www.netlib.org/research/9libs/${P}.tar.bz2"
 LICENSE="PLAN9"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="static-libs"
 
 DEPEND="
-	>=x11-libs/libX11-1.0.0[static-libs?]
-	>=x11-libs/libXt-1.0.0[static-libs?]
+	>=x11-libs/libX11-1.0.0
+	>=x11-libs/libXt-1.0.0
 "
 RDEPEND="
 	${DEPEND}
@@ -36,8 +35,8 @@ src_configure() {
 	tc-export CC
 
 	econf \
-		$(use_enable static-libs static) \
 		--enable-shared \
+		--disable-static \
 		--includedir=/usr/include/9libs \
 		--with-x
 }
@@ -51,7 +50,5 @@ src_install() {
 		mv "${D}"/usr/share/man/man3/${f}.{3,3g} || die
 	done
 
-	if ! use static-libs; then
-		find "${ED}" -name '*.la' -delete || die
-	fi
+	find "${ED}" -name '*.la' -delete || die
 }

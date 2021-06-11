@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 VALA_USE_DEPEND="vapigen"
 inherit gnome2-utils vala meson python-r1 xdg-utils
@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 
 SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/xapp-${PV}"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 SLOT="0"
 IUSE="gtk-doc introspection static-libs"
@@ -45,9 +45,12 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_environment_reset
 	vala_src_prepare
 	default
+
+	# Fix meson helpers
+	python_setup
+	python_fix_shebang meson-scripts schemas
 }
 
 src_configure() {

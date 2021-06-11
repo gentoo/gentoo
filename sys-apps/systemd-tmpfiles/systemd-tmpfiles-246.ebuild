@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${P
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
@@ -31,29 +31,35 @@ RDEPEND="${DEPEND}
 "
 
 BDEPEND="
+	${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	dev-util/gperf
 	>=dev-util/meson-0.46
 	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
 	sys-devel/m4
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )
 "
 
 S="${WORKDIR}/systemd-${PV}"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
 	# musl patchset from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
 	use elibc_musl && eapply "${WORKDIR}/${P}-musl"
+	use elibc_musl && eapply "${FILESDIR}/musl-1.2.2.patch" # https://bugs.gentoo.org/766833
 	default
+
+	# https://bugs.gentoo.org/767403
+	python_fix_shebang src/test/*.py
+	python_fix_shebang tools/*.py
 }
 
 src_configure() {
@@ -187,7 +193,6 @@ src_install() {
 
 src_test() {
 	# 'meson test' will compile full systemd, but we can still outsmart it
-	python_fix_shebang src/test/test-systemd-tmpfiles.py
 	"${EPYTHON}" src/test/test-systemd-tmpfiles.py \
 		"${BUILD_DIR}"/systemd-tmpfiles.standalone || die "${FUNCNAME} failed"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/Fedict/${PN}.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="+dialogs +gtk +p11v220 p11-kit"
+IUSE="+dialogs +gtk p11-kit"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 	gtk? (
@@ -20,7 +20,7 @@ RDEPEND=">=sys-apps/pcsc-lite-1.2.9
 		dev-libs/libxml2
 		net-misc/curl[ssl]
 		net-libs/libproxy
-		app-crypt/pinentry[gtk]
+		>=app-crypt/pinentry-1.1.0-r4[gtk]
 	)
 	p11-kit? ( app-crypt/p11-kit )"
 
@@ -53,13 +53,15 @@ src_prepare() {
 		-e '/LDFLAGS="/ s:$CPPFLAGS:$LDFLAGS:' \
 		configure.ac || die
 
+	# See bug #751472
+	eapply "${FILESDIR}/use-printf-in-Makefile.patch"
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		$(use_enable dialogs) \
-		$(use_enable p11v220) \
 		$(use_enable p11-kit p11kit) \
 		$(use_with gtk gtkvers 'detect') \
 		--with-gnu-ld \
@@ -83,11 +85,11 @@ pkg_postinst() {
 
 		local peimpl=$(eselect --brief --colour=no pinentry show)
 		case "${peimpl}" in
-		*gtk*) ;;
+		*gnome*|*qt*) ;;
 		*)	ewarn "The pinentry front-end currently selected is not supported by eid-mw."
 			ewarn "You may be prompted for your pin code in an inaccessible shell!!"
-			ewarn "Please select pinentry-gtk-2 as default pinentry provider:"
-			ewarn " # eselect pinentry set pinentry-gtk-2"
+			ewarn "Please select pinentry-gnome3 as default pinentry provider:"
+			ewarn " # eselect pinentry set pinentry-gnome3"
 		;;
 		esac
 	fi

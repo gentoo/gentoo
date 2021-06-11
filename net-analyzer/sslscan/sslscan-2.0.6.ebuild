@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,8 +7,6 @@ EAPI=7
 # to be enabled so that they can be tested.
 OPENSSL_RELEASE_TAG="OpenSSL_1_1_1h"
 
-inherit toolchain-funcs
-
 DESCRIPTION="Fast SSL configuration scanner"
 HOMEPAGE="https://github.com/rbsec/sslscan"
 SRC_URI="https://github.com/rbsec/sslscan/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -16,8 +14,7 @@ SRC_URI="https://github.com/rbsec/sslscan/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 x86"
 
 # Requires a docker environment
 RESTRICT="test"

@@ -5,7 +5,7 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>gentoo@aisha.cc</email>
     <name>Aisha Tammy</name>
   </maintainer>
@@ -14,7 +14,7 @@
     graphs. Plotly is an online collaborative data analysis and graphing tool. 
   </longdescription>
   <upstream>
-    <remote-id type="pypi">plotly</remote-id>
+    <remote-id type="pypi">plotly-geo</remote-id>
     <remote-id type="github">plotly/plotly.py</remote-id>
   </upstream>
 </pkgmetadata>

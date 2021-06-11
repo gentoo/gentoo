@@ -1,0 +1,15 @@
+diff --git a/widget/makefile b/widget/makefile
+index 93b178b..eeedc51 100644
+--- a/widget/makefile
++++ b/widget/makefile
+@@ -16,8 +16,8 @@ tgz:
+ 	tar cvzf widget.tgz *.cpp *.h makefile
+ 
+ dummy: $(OBJECTS)
+-	ar r $(LIBNAME) $(OBJECTS)
+-	ranlib $(LIBNAME)
++	$(AR) r $(LIBNAME) $(OBJECTS)
++	$(RANLIB) $(LIBNAME)
+ 	mv $(LIBNAME) ..
+ 	touch dummy
+ 

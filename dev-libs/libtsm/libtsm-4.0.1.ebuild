@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-CMAKE_BUILD_TYPE=Release
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Terminal Emulator State Machine"
 HOMEPAGE="https://github.com/Aetf/libtsm"
@@ -14,3 +13,5 @@ LICENSE="LGPL-2.1 MIT"
 SLOT="0/4"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )

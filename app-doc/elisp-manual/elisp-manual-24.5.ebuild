@@ -1,25 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="The GNU Emacs Lisp Reference Manual"
 HOMEPAGE="https://www.gnu.org/software/emacs/manual/"
 # taken from doc/lispref/ of emacs-${PV}
 SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
+S="${WORKDIR}/lispref"
 
 LICENSE="FDL-1.3+"
 SLOT="24"
 KEYWORDS="amd64 ppc x86"
 
-DEPEND="sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"
 
-S="${WORKDIR}/lispref"
+PATCHES=("${FILESDIR}/${P}-direntry.patch")
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-direntry.patch"
+	default
 	echo "@set EMACSVER ${PV}" >emacsver.texi || die
 }
 

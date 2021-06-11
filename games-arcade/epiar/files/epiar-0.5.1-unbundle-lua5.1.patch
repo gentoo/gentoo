@@ -1,0 +1,49 @@
+From 0ed05474a5ea50cc972fae620fd1580ed0026fca Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 7 Apr 2021 00:28:07 +0000
+Subject: [PATCH 1/2] Unbundle Lua 5.1 and dynamically link with system copy
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Makefile.am  | 6 ++----
+ configure.ac | 3 +++
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 334b80e..b24ad29 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-AM_CXXFLAGS = -I$(top_srcdir)/source/ -I$(top_srcdir)/source/lua/src
++AM_CXXFLAGS = -I$(top_srcdir)/source/ $(LUA_CFLAGS)
+ 
+ bin_PROGRAMS = epiar
+ 
+@@ -74,9 +74,7 @@ epiar_SOURCES = source/main.cpp \
+                 source/Utilities/trig.cpp \
+                 source/Utilities/xml.cpp
+ 
+-epiar_LDADD = source/lua/src/liblua.a
+-
+-SUBDIRS=source/lua
++epiar_LDADD = $(LUA_LIBS)
+ 
+ include resources/Animations/Makefile.am
+ include resources/audio/Makefile.am
+diff --git a/configure.ac b/configure.ac
+index 17202ae..b5a70d5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -99,6 +99,9 @@ case "$target" in *-apple-darwin*)
+ 	LIBS="$LIBS `xml2-config --libs`"
+ esac
+ 
++dnl Check for Lua 5.1
++PKG_CHECK_MODULES([LUA], [lua5.1], [], [AC_MSG_ERROR([Could not find needed Lua 5.1])])
++
+ dnl Check for SDL
+ SDL_VERSION=1.2.10
+ 
+-- 
+2.31.1
+

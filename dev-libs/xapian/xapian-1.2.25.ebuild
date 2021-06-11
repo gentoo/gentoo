@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit eutils multilib-minimal
+inherit multilib-minimal
 
 MY_P="${PN}-core-${PV}"
 
@@ -14,7 +14,7 @@ SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/1.2.22" # ABI version of libxapian.so, prefixed with 1.2.
 KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~x64-solaris"
-IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +brass +chert +inmemory"
+IUSE="doc static-libs cpu_flags_x86_sse cpu_flags_x86_sse2 +brass +chert +inmemory"
 
 DEPEND="sys-libs/zlib"
 RDEPEND="${DEPEND}"
@@ -42,7 +42,7 @@ multilib_src_configure() {
 
 	myconf="${myconf} --enable-backend-flint --enable-backend-remote"
 
-	ECONF_SOURCE=${S} econf $myconf
+	ECONF_SOURCE=${S} econf ${myconf}
 }
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -61,11 +61,11 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use doc || rm -rf "${ED}usr/share/doc/xapian-core-${PV}"
+	use doc || rm -rf "${ED%/}/usr/share/doc/xapian-core-${PV}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
-	find "${D}" -name "*.la" -type f -delete || die
+	find "${ED}" -name "*.la" -type f -delete || die
 }
 
 multilib_src_test() {

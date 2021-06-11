@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit flag-o-matic fortran-2 python-any-r1 toolchain-funcs
 
@@ -101,6 +101,10 @@ src_configure() {
 	# configureMPITypes with openmpi-2* insists on accessing the scaling
 	# governor rw.
 	addpredict /sys/devices/system/cpu/
+
+	# bug 771711
+	# configureMPIEXEC and  configureMPITypes access /dev/nvidiactl
+	addpredict /dev/nvidiactl
 
 	local mylang
 	local myopt

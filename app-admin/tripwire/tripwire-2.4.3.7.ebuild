@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Open Source File Integrity Checker and IDS"
 HOMEPAGE="http://www.tripwire.org/"
@@ -12,13 +12,10 @@ SRC_URI="https://github.com/Tripwire/tripwire-open-source/archive/${PV}.tar.gz -
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="libressl selinux ssl static +tools"
+IUSE="selinux ssl static +tools"
 
 DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 "
 RDEPEND="${DEPEND}
 	virtual/cron
@@ -71,7 +68,7 @@ pkg_postinst() {
 		elog "script provided by the app-admin/mktwpol package. This package is"
 		elog "installed for you by the \"tools\" USE flag (which is enabled by"
 		elog "default."
-else
+	else
 		elog "Maintenance of tripwire policy files as packages are added"
 		elog "and deleted from your system can be automated by the mktwpol.sh"
 		elog "script provided by the app-admin/mktwpol package. This package"

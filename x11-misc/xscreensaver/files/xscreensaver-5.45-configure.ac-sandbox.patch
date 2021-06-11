@@ -1,0 +1,146 @@
+From 6e4e7c657f6628109c9809561f2c5d7bf51c8c8e Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Tue, 16 Mar 2021 00:55:54 +0100
+Subject: [PATCH] configure.ac: Stop asking rpm and dpkg things, we're on
+ Gentoo
+
+---
+ configure.ac | 115 ---------------------------------------------------
+ 1 file changed, 115 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 603b993..6ef2631 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3917,25 +3917,6 @@ for d in /usr/share/fonts/X11 \
+ done
+ AC_MSG_RESULT($have_bitmap_fonts)
+ 
+-# In case we didn't guess the font directory properly, check RPMs and DEBs too.
+-if test $have_bitmap_fonts != yes ; then
+-  for r in 100dpi 75dpi ; do
+-    for f in xfonts-$r \
+-             xorg-x11-fonts-$r \
+-             xorg-x11-fonts-ISO8859-1-$r \
+-      ; do
+-      if test $have_bitmap_fonts != yes ; then
+-        AC_MSG_CHECKING(for $f)
+-        if ( rpm -q "$f"  2>&- >&- ) ||
+-           ( dpkg -s "$f" 2>&- | grep -q '^Status:.*installed' ) ; then
+-          have_bitmap_fonts=yes
+-        fi
+-        AC_MSG_RESULT($have_bitmap_fonts)
+-      fi
+-    done
+-  done
+-fi
+-
+ 
+ ###############################################################################
+ #
+@@ -4876,102 +4857,6 @@ for bad_choice in xscreensaver xscreensaver-demo xscreensaver-command ; do
+   fi
+ done
+ 
+-
+-# Now let's warn if there's a previous RPM version already installed.
+-# But don't bother with this test if we are currently *building* an RPM.
+-
+-if test -z "$RPM_PACKAGE_VERSION" ; then
+-
+-  rpmnames="xscreensaver xscreensaver-base xscreensaver-extras"
+-
+-  # M4 sucks!!
+-  changequote(X,Y)
+-  rpmv=`(rpm -qv $rpmnames) 2>/dev/null | \
+-        sed -n 's/^[-a-z]*-\([0-9][0-9]*[.][0-9][0-9a-z]*\)-.*$/\1/p' | \
+-        head -1`
+-  changequote([,])
+-
+-  if test \! -z "$rpmv" ; then
+-
+-    # M4 sucks!!
+-    changequote(A,B)
+-    rpmbdir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)xscreensaver-demo$@\1@p'`
+-    rpmhdir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)popsquares$@\1@p'`
+-    rpmcdir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)popsquares\.xml$@\1@p'`
+-    rpmadir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)XScreenSaver$@\1@p'`
+-    changequote([,])
+-
+-    err=" (DIFFERS)"
+-    if test -z "$rpmbdir" ; then rpmbdir='???'
+-    elif test "$rpmbdir" != "${bindir}/"       ; then rpmbdir="$rpmbdir$err";fi
+-
+-    if test -z "$rpmhdir" ; then rpmhdir='???'
+-    elif test "$rpmhdir" != "${HACKDIR}/"      ; then rpmhdir="$rpmhdir$err";fi
+-
+-    if test -z "$rpmcdir" ; then rpmcdir='???'
+-    elif test "$rpmcdir" != "${HACK_CONF_DIR}/"; then rpmcdir="$rpmcdir$err";fi
+-
+-    if test -z "$rpmadir" ; then rpmadir='???'
+-    elif test "$rpmadir" != "${APPDEFAULTS}/"  ; then rpmadir="$rpmadir$err";fi
+-
+-    warning=no
+-    warnL "There is already an installed RPM of xscreensaver"
+-    warn2 "version \"$rpmv\" on this system."
+-    echo ""
+-    warn2 "It is currently installed in these directories:"
+-    echo ""
+-    warn2 "User programs: $rpmbdir$berr"
+-    warn2 "Screen savers: $rpmhdir$herr"
+-    warn2 "Configuration: $rpmcdir$cerr"
+-    warn2 "App Defaults:  $rpmadir$aerr"
+-  fi
+-fi
+-
+-# Also warn if there's a Debian package installed.
+-#
+-debnames="xscreensaver xscreensaver-data xscreensaver-data-extra"
+-debv=''
+-for dpkg in $debnames ; do
+-  if test -z "$debv"; then
+-    debv=`dpkg -s $dpkg 2>/dev/null | sed -n 's/^Version: \(.*\)$/\1/p'`
+-  fi
+-done
+-
+-if test \! -z "$debv" ; then
+-
+-  # M4 sucks!!
+-  changequote(A,B)
+-  debbdir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/bin/\)xscreensaver$@\1@p'`
+-  debhdir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\)popsquares$@\1@p'`
+-  debcdir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\)popsquares\.xml$@\1@p'`
+-  debadir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\)XScreenSaver[^/]*$@\1@p'`
+-  changequote([,])
+-
+-  err=" (DIFFERS)"
+-  if test -z "$debbdir" ; then debbdir='???'
+-  elif test "$debbdir" != "${bindir}/"        ; then debbdir="$debbdir$err"; fi
+-
+-  if test -z "$debhdir" ; then debhdir='???'
+-  elif test "$debhdir" != "${HACKDIR}/"       ; then debhdir="$debhdir$err"; fi
+-
+-  if test -z "$debcdir" ; then debcdir='???'
+-  elif test "$debcdir" != "${HACK_CONF_DIR}/" ; then debcdir="$debcdir$err"; fi
+-
+-  if test -z "$debadir" ; then debadir='???'
+-  elif test "$debadir" != "${APPDEFAULTS}/"   ; then debadir="$debadir$err"; fi
+-
+-  warning=no
+-  warnL "There is already an installed dpkg of xscreensaver"
+-  warn2 "version \"$debv\" on this system."
+-  echo ""
+-  warn2 "It is currently installed in these directories:"
+-  echo ""
+-  warn2 "User programs: $debbdir$berr"
+-  warn2 "Screen savers: $debhdir$herr"
+-  warn2 "Configuration: $debcdir$cerr"
+-  warn2 "App Defaults:  $debadir$aerr"
+-fi
+-
+ echo ""
+ echo "$warnsep"
+ echo ""
+-- 
+2.30.2
+

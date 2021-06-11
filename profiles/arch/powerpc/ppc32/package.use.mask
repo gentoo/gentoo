@@ -1,9 +1,35 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Sam James <sam@gentoo.org> (2021-05-17)
+# Deps not yet tested/keyworded.
+# bug #708344
+sys-devel/llvm gold
+
+# Marek Szuba <marecki@gentoo.org> (2021-05-07)
+# Legacy interface that depends on kernel headers not available on this arch
+# as well as currently-unkeyworded dev-libs/libx86
+x11-misc/read-edid vbe-mode
+
+# Sam James <sam@gentoo.org> (2021-03-11)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+
+# Sam James <sam@gentoo.org> (2021-02-28)
+# compiler-rt* has no support for ppc32 (yet?)
+# bug #708344
+sys-devel/clang-runtime compiler-rt sanitize
+sys-devel/clang default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and
 # dev-tex/pythontex which are not keyworded on ppc.
+# bug #766150
 dev-tex/rubber test
 
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
@@ -105,7 +131,6 @@ net-vpn/tor seccomp
 # Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
-sys-libs/libcxx libcxxrt
 
 # Michael Weber <xmw@gentoo.org> (2017-03-15)
 # Cannot test non-free dependency dev-libs/device-atlas-api-c

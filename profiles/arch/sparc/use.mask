@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -52,10 +52,6 @@ physfs
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on sparc
@@ -121,7 +117,6 @@ dmi
 ibm
 jfs
 libedit
-pm-utils
 reiser4
 reiserfs
 xfs
@@ -141,6 +136,7 @@ librtmp
 rtmp
 vpx
 kde
+kwallet
 wildmidi
 barcode
 xmms2
@@ -149,7 +145,6 @@ aacplus
 soundcloud
 devil
 gts
-clang
 metalink
 tremor
 fdk

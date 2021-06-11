@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,12 +16,12 @@ IUSE="alsa doc jack lv2 sf2 sqlite"
 REQUIRED_USE="|| ( alsa jack )"
 
 RDEPEND="
-	>=media-libs/libgig-4.2.0
+	media-libs/libgig
 	media-libs/libsndfile[-minimal]
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
 	lv2? ( media-libs/lv2 )
-	sqlite? ( >=dev-db/sqlite-3.3 )
+	sqlite? ( dev-db/sqlite )
 "
 DEPEND="${RDEPEND}
 	media-libs/dssi

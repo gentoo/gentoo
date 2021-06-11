@@ -5,12 +5,6 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<use>
-		<flag name="executable">build 'cpuid' tool</flag>
-	</use>
-	<longdescription>
-		Lowlevel cpu routines to get basic properties of the cpu platform, like endianness and architecture.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">vincenthz/hs-cpu</remote-id>
 	</upstream>

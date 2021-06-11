@@ -1,0 +1,31 @@
+From 4b2f17e8cce8fa078aa55f5da5f726c20eac3e2e Mon Sep 17 00:00:00 2001
+From: Nikias Bassen <nikias@gmx.li>
+Date: Tue, 13 Apr 2021 05:36:03 +0200
+Subject: [PATCH] common: Add missing *_LIBS and *_CFLAGS to fix build
+
+---
+ common/Makefile.am | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/common/Makefile.am b/common/Makefile.am
+index 4e3facba..ab01b834 100644
+--- a/common/Makefile.am
++++ b/common/Makefile.am
+@@ -8,12 +8,17 @@ AM_CFLAGS = \
+ 	$(libplist_CFLAGS) \
+ 	$(libgnutls_CFLAGS) \
+ 	$(libtasn1_CFLAGS) \
++	$(libgcrypt_CFLAGS) \
+ 	$(openssl_CFLAGS) \
+ 	$(LFS_CFLAGS)
+ 
+ AM_LDFLAGS = \
+ 	$(libusbmuxd_LIBS) \
+ 	$(libplist_LIBS) \
++	$(libgnutls_LIBS) \
++	$(libtasn1_LIBS) \
++	$(libgcrypt_LIBS) \
++	$(openssl_LIBS) \
+ 	${libpthread_LIBS}
+ 
+ noinst_LTLIBRARIES = libinternalcommon.la

@@ -127,6 +127,16 @@ perl_delete_emptybsdir() {
 	fi
 }
 
+# @FUNCTION: perl_fix_permissions
+# @DESCRIPTION:
+# Make all of ${D} user-writable, since EU::MM does silly things with
+# the w bit. See bug 554346.
+perl_fix_permissions() {
+	debug-print-function $FUNCNAME "$@"
+	perl_set_version
+	fperms -R u+w "${D}"
+}
+
 # @FUNCTION: perl_fix_packlist
 # @DESCRIPTION:
 # Look through ${D} for .packlist text files containing the temporary installation

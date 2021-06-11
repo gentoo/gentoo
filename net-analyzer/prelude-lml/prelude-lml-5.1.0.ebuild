@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools systemd
+inherit autotools systemd tmpfiles
 
 DESCRIPTION="The prelude log analyzer"
 HOMEPAGE="https://www.prelude-siem.org"
@@ -53,7 +53,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
-	systemd_newtmpfilesd "${FILESDIR}/${PN}.run" "${PN}.conf"
+	newtmpfiles "${FILESDIR}/${PN}.run" "${PN}.conf"
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 }

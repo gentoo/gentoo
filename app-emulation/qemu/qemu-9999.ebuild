@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="4.0.0-r50"
+FIRMWARE_ABI_VERSION="5.2.0-r50"
 
-inherit eutils linux-info toolchain-funcs multilib python-r1 \
-	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+inherit eutils linux-info toolchain-funcs multilib python-r1
+inherit udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
@@ -32,8 +32,8 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
-IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
-	+fdt glusterfs gnutls gtk infiniband iscsi io-uring
+IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug +doc
+	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo multipath
 	ncurses nfs nls numa opengl +oss +pin-upstream-blobs
@@ -43,14 +43,55 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	usbredir vde +vhost-net vhost-user-fs virgl virtfs +vnc vte xattr xen
 	xfs zstd"
 
-COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
-	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
-	sh4 sh4eb sparc sparc64 x86_64 xtensa xtensaeb"
-IUSE_SOFTMMU_TARGETS="${COMMON_TARGETS}
-	avr lm32 moxie rx tricore unicore32"
-IUSE_USER_TARGETS="${COMMON_TARGETS}
-	aarch64_be armeb mipsn32 mipsn32el ppc64abi32 ppc64le sparc32plus
-	tilegx"
+COMMON_TARGETS="
+	aarch64
+	alpha
+	arm
+	cris
+	hppa
+	i386
+	m68k
+	microblaze
+	microblazeel
+	mips
+	mips64
+	mips64el
+	mipsel
+	nios2
+	or1k
+	ppc
+	ppc64
+	riscv32
+	riscv64
+	s390x
+	sh4
+	sh4eb
+	sparc
+	sparc64
+	x86_64
+	xtensa
+	xtensaeb
+"
+IUSE_SOFTMMU_TARGETS="
+	${COMMON_TARGETS}
+	avr
+	lm32
+	moxie
+	rx
+	tricore
+	unicore32
+"
+IUSE_USER_TARGETS="
+	${COMMON_TARGETS}
+	aarch64_be
+	armeb
+	hexagon
+	mipsn32
+	mipsn32el
+	ppc64abi32
+	ppc64le
+	sparc32plus
+"
 
 use_softmmu_targets=$(printf ' qemu_softmmu_targets_%s' ${IUSE_SOFTMMU_TARGETS})
 use_user_targets=$(printf ' qemu_user_targets_%s' ${IUSE_USER_TARGETS})
@@ -70,8 +111,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
 	vhost-user-fs? ( caps seccomp )
+	virgl? ( opengl )
 	virtfs? ( caps xattr )
 	vte? ( gtk )
+	multipath? ( udev )
 	plugins? ( !static !static-user )
 "
 
@@ -106,6 +149,7 @@ SOFTMMU_TOOLS_DEPEND="
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
+	fuse? ( >=sys-fs/fuse-3.1:3[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -168,25 +212,27 @@ SOFTMMU_TOOLS_DEPEND="
 	zstd? ( >=app-arch/zstd-1.4.0[static-libs(+)] )
 "
 
+SEABIOS_VERSION="1.14.0"
+
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-201905[binary]
-		~sys-firmware/ipxe-1.0.0_p20190728[binary,qemu]
-		~sys-firmware/seabios-1.12.0[binary,seavgabios]
-		~sys-firmware/sgabios-0.1_pre8[binary]
+		~sys-firmware/edk2-ovmf-202008[binary]
+		~sys-firmware/ipxe-1.21.1[binary,qemu]
+		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
+		~sys-firmware/sgabios-0.1_pre10[binary]
 	)
 	!pin-upstream-blobs? (
 		sys-firmware/edk2-ovmf
 		sys-firmware/ipxe[qemu]
-		>=sys-firmware/seabios-1.10.2[seavgabios]
+		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
 		sys-firmware/sgabios
 	)"
-PPC64_FIRMWARE_DEPEND="
+PPC_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.12.0[binary,seavgabios]
+		~sys-firmware/seabios-${SEABIOS_VERSION}[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
-		>=sys-firmware/seabios-1.10.2[seavgabios]
+		>=sys-firmware/seabios-${SEABIOS_VERSION}[seavgabios]
 	)
 "
 
@@ -209,7 +255,8 @@ CDEPEND="
 	)
 	qemu_softmmu_targets_i386? ( ${X86_FIRMWARE_DEPEND} )
 	qemu_softmmu_targets_x86_64? ( ${X86_FIRMWARE_DEPEND} )
-	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
+	qemu_softmmu_targets_ppc? ( ${PPC_FIRMWARE_DEPEND} )
+	qemu_softmmu_targets_ppc64? ( ${PPC_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
@@ -225,6 +272,9 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-5.2.0-strings.patch
+	"${FILESDIR}"/${PN}-5.2.0-cleaner-werror.patch
+	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
+	"${FILESDIR}"/${PN}-5.2.0-dce-locks.patch
 )
 
 QA_PREBUILT="
@@ -455,6 +505,7 @@ qemu_src_configure() {
 		$(conf_notuser caps cap-ng)
 		$(conf_notuser curl)
 		$(conf_notuser fdt)
+		$(conf_notuser fuse)
 		$(conf_notuser glusterfs)
 		$(conf_notuser gnutls)
 		$(conf_notuser gnutls nettle)
@@ -490,7 +541,7 @@ qemu_src_configure() {
 		$(conf_notuser vhost-user-fs)
 		$(conf_tools vhost-user-fs virtiofsd)
 		$(conf_notuser virgl virglrenderer)
-		$(conf_notuser virtfs)
+		$(conf_softmmu virtfs)
 		$(conf_notuser vnc)
 		$(conf_notuser vte)
 		$(conf_notuser xen)
@@ -566,6 +617,9 @@ qemu_src_configure() {
 	else
 		tc-enables-pie && conf_opts+=( --enable-pie )
 	fi
+
+	# Meson will not use a cross-file unless cross_prefix is set.
+	tc-is-cross-compiler && conf_opts+=( --cross-prefix="${CHOST}-" )
 
 	# Plumb through equivalent of EXTRA_ECONF to allow experiments
 	# like bug #747928.
@@ -717,7 +771,7 @@ src_install() {
 		[[ -e check-report.html ]] && dodoc check-report.html
 
 		if use kernel_linux; then
-			udev_newrules "${FILESDIR}"/65-kvm.rules-r1 65-kvm.rules
+			udev_newrules "${FILESDIR}"/65-kvm.rules-r2 65-kvm.rules
 		fi
 
 		if use python; then
@@ -760,8 +814,8 @@ src_install() {
 		rm "${ED}/usr/share/qemu/vgabios-stdvga.bin"
 		rm "${ED}/usr/share/qemu/vgabios-virtio.bin"
 		rm "${ED}/usr/share/qemu/vgabios-vmware.bin"
-		# PPC64 loads vgabios-stdvga
-		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 || use qemu_softmmu_targets_ppc64; then
+		# PPC/PPC64 loads vgabios-stdvga
+		if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 || use qemu_softmmu_targets_ppc || use qemu_softmmu_targets_ppc64; then
 			dosym ../seavgabios/vgabios-isavga.bin /usr/share/qemu/vgabios.bin
 			dosym ../seavgabios/vgabios-cirrus.bin /usr/share/qemu/vgabios-cirrus.bin
 			dosym ../seavgabios/vgabios-qxl.bin /usr/share/qemu/vgabios-qxl.bin
@@ -795,7 +849,7 @@ src_install() {
 firmware_abi_change() {
 	local pv
 	for pv in ${REPLACING_VERSIONS}; do
-		if ver_test $pv -lt ${FIRMWARE_ABI_VERSION}; then
+		if ver_test ${pv} -lt ${FIRMWARE_ABI_VERSION}; then
 			return 0
 		fi
 	done

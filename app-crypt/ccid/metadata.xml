@@ -9,4 +9,7 @@
 		<flag name="kobil-midentity">Build and install Kobil_mIDentity_switch tool</flag>
 		<flag name="twinserial">Enable twinserial reader</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">LudovicRousseau/CCID</remote-id>
+	</upstream>
 </pkgmetadata>

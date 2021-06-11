@@ -10,6 +10,6 @@
 		<flag name="threaded">Build with the multi-threaded runtime</flag>
 	</use>
 	<longdescription>
-		Bustle records and draws sequence diagrams of D-Bus activity, showing signal emissions, method calls and their corresponding returns, with timestamps for each individual event and the duration of each method call. This can help you check for unwanted D-Bus traffic, and pinpoint why your D-Bus-based application isn&#39;t performing as well as you like.  It also provides statistics like signal frequencies and average method call times.
+		Bustle records and draws sequence diagrams of D-Bus activity, showing signal emissions, method calls and their corresponding returns, with timestamps for each individual event and the duration of each method call. This can help you check for unwanted D-Bus traffic, and pinpoint why your D-Bus-based application isn't performing as well as you like.  It also provides statistics like signal frequencies and average method call times.
 	</longdescription>
 </pkgmetadata>

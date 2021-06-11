@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit ssl-cert systemd
+inherit ssl-cert systemd tmpfiles
 
 DESCRIPTION="WWW Admin for the Video Disk Recorder"
 HOMEPAGE="http://andreas.vdr-developer.org/vdradmin-am/index.html"
@@ -75,7 +75,7 @@ src_install() {
 	newconfd "${FILESDIR}"/vdradmin-3.6.10.conf vdradmin
 
 	systemd_dounit "${WORKDIR}"/vdradmind.service
-	systemd_dotmpfilesd "${FILESDIR}"/vdradmind.conf
+	dotmpfiles "${FILESDIR}"/vdradmind.conf
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/vdradmin-3.6.6.logrotate vdradmin

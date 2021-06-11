@@ -16,6 +16,7 @@ bh - SANE_BACKENDS setting for building the bh backend
 canon - SANE_BACKENDS setting for building the canon backend
 canon630u - SANE_BACKENDS setting for building the canon630u backend
 canon_dr - SANE_BACKENDS setting for building the canon_dr backend
+canon_lide70 - SANE_BACKENDS setting for building the canon_lide70 backend
 canon_pp - SANE_BACKENDS setting for building the canon_pp backend
 cardscan - SANE_BACKENDS setting for building the cardscan backend
 coolscan - SANE_BACKENDS setting for building the coolscan backend
@@ -64,6 +65,7 @@ net - SANE_BACKENDS setting for building the net backend
 niash - SANE_BACKENDS setting for building the niash backend
 p5 - SANE_BACKENDS setting for building the p5 backend
 pie - SANE_BACKENDS setting for building the pie backend
+pieusb - SANE_BACKENDS setting for building the pieusb backend
 pixma - SANE_BACKENDS setting for building the pixma backend
 plustek - SANE_BACKENDS setting for building the plustek backend
 plustek_pp - SANE_BACKENDS setting for building the plustek_pp backend

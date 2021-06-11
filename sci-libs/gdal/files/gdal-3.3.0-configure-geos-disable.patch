@@ -1,0 +1,187 @@
+https://github.com/OSGeo/gdal/commit/b414b0a0594b3e9c175a001e8455819463039eb6.patch
+https://github.com/OSGeo/gdal/issues/3782
+
+From b414b0a0594b3e9c175a001e8455819463039eb6 Mon Sep 17 00:00:00 2001
+From: Thomas Bonfort <thomas.bonfort@airbus.com>
+Date: Tue, 4 May 2021 08:13:45 +0200
+Subject: [PATCH] configure: fix explicit disabling of geos/sfcgal
+--- a/configure
++++ b/configure
+@@ -38323,6 +38323,7 @@ fi
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: GEOS support disabled" >&5
+ $as_echo "GEOS support disabled" >&6; }
+     GEOS_CONFIG=no
++    HAVE_GEOS=no
+ 
+   elif test x"$with_geos" = x"yes" -o x"$with_geos" = x"" ; then
+ 
+@@ -38580,15 +38581,13 @@ $as_echo "$as_me: WARNING: GEOS was found on your system, but the library could
+ 
+   else
+ 
+-    if test $ac_geos_config_auto = "no" ; then
++    if test x"$with_geos" != x"no" -a x"$with_geos" != x ; then
+       as_fn_error $? "GEOS support explicitly enabled, but geos-config could not be found" "$LINENO" 5
+     fi
+ 
+   fi
+ 
+-HAVE_GEOS_RESULT="no"
+ if test "${HAVE_GEOS}" = "yes" ; then
+-
+   { $as_echo "$as_me:${as_lineno-$LINENO}: Using C API from GEOS $GEOS_VERSION" >&5
+ $as_echo "$as_me: Using C API from GEOS $GEOS_VERSION" >&6;}
+ 
+@@ -38602,7 +38601,6 @@ $as_echo "$as_me: Using C API from GEOS $GEOS_VERSION" >&6;}
+ 
+   GEOS_LIBS="$STRIPPED_LIBRARY_NAME"
+   LIBS="${GEOS_LIBS} ${LIBS}"
+-  HAVE_GEOS_RESULT="yes"
+ fi
+ 
+ 
+@@ -38625,6 +38623,7 @@ fi
+ 
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: SFCGAL support disabled" >&5
+ $as_echo "SFCGAL support disabled" >&6; }
++    HAVE_SFCGAL=no
+     SFCGAL_CONFIG=no
+ 
+   elif test x"$with_sfcgal" = x"yes" -o x"$with_sfcgal" = x"" ; then
+@@ -38883,15 +38882,13 @@ $as_echo "$as_me: WARNING: SFCGAL was found on your system, but the library coul
+ 
+   else
+ 
+-    if test $ac_sfcgal_config_auto = "no" ; then
++    if test x"$with_sfcgal" != x"no" -a x"$with_sfcgal" != x ; then
+       as_fn_error $? "SFCGAL support explicitly enabled, but sfcgal-config could not be found" "$LINENO" 5
+     fi
+ 
+   fi
+ 
+-HAVE_SFCGAL_RESULT="no"
+ if test "${HAVE_SFCGAL}" = "yes" ; then
+-
+   { $as_echo "$as_me:${as_lineno-$LINENO}: Using C API from SFCGAL $SFCGAL_VERSION" >&5
+ $as_echo "$as_me: Using C API from SFCGAL $SFCGAL_VERSION" >&6;}
+ 
+@@ -38905,7 +38902,6 @@ $as_echo "$as_me: Using C API from SFCGAL $SFCGAL_VERSION" >&6;}
+ 
+   SFCGAL_LIBS="$STRIPPED_LIBRARY_NAME"
+   LIBS="${SFCGAL_LIBS} ${LIBS}"
+-  HAVE_SFCGAL_RESULT="yes"
+ fi
+ 
+ 
+@@ -44998,7 +44994,7 @@ echo "  FreeXL support:            ${HAVE_FREEXL}"
+ echo "  GEORASTER support:         ${HAVE_GEORASTER}"
+ 
+ 
+-echo "  GEOS support:              ${HAVE_GEOS_RESULT}"
++echo "  GEOS support:              ${HAVE_GEOS}"
+ 
+ 
+ echo "  Google libkml support:     ${HAVE_LIBKML}"
+@@ -45162,7 +45158,7 @@ echo "  RasterLite2 support:       ${HAVE_RASTERLITE2}"
+ echo "  RDB support:               ${RDB_SETTING}"
+ 
+ 
+-echo "  SFCGAL support:            ${HAVE_SFCGAL_RESULT}"
++echo "  SFCGAL support:            ${HAVE_SFCGAL}"
+ 
+ 
+ echo "  SOSI support:              ${SOSI_ENABLED}"
+diff --git a/configure.ac b/configure.ac
+index ffc71b7faf76..1f88370c4045 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4541,14 +4541,11 @@ dnl Check if geos library is available.
+ dnl ---------------------------------------------------------------------------
+ 
+ GEOS_INIT(3.1.0)
+-HAVE_GEOS_RESULT="no"
+ if test "${HAVE_GEOS}" = "yes" ; then
+-
+   AC_MSG_NOTICE([Using C API from GEOS $GEOS_VERSION])
+   STRIP_SYSTEM_LIBRARY_PATHS("${GEOS_LIBS}")
+   GEOS_LIBS="$STRIPPED_LIBRARY_NAME"
+   LIBS="${GEOS_LIBS} ${LIBS}"
+-  HAVE_GEOS_RESULT="yes"
+ fi
+ 
+ dnl ---------------------------------------------------------------------------
+@@ -4556,14 +4553,11 @@ dnl Check if SFCGAL library is available.
+ dnl ---------------------------------------------------------------------------
+ 
+ SFCGAL_INIT(1.2.2)
+-HAVE_SFCGAL_RESULT="no"
+ if test "${HAVE_SFCGAL}" = "yes" ; then
+-
+   AC_MSG_NOTICE([Using C API from SFCGAL $SFCGAL_VERSION])
+   STRIP_SYSTEM_LIBRARY_PATHS("${SFCGAL_LIBS}")
+   SFCGAL_LIBS="$STRIPPED_LIBRARY_NAME"
+   LIBS="${SFCGAL_LIBS} ${LIBS}"
+-  HAVE_SFCGAL_RESULT="yes"
+ fi
+ 
+ dnl ---------------------------------------------------------------------------
+@@ -6077,7 +6071,7 @@ LOC_MSG([  EXR support:               ${HAVE_EXR}])
+ LOC_MSG([  FGDB support:              ${FGDB_ENABLED}])
+ LOC_MSG([  FreeXL support:            ${HAVE_FREEXL}])
+ LOC_MSG([  GEORASTER support:         ${HAVE_GEORASTER}])
+-LOC_MSG([  GEOS support:              ${HAVE_GEOS_RESULT}])
++LOC_MSG([  GEOS support:              ${HAVE_GEOS}])
+ LOC_MSG([  Google libkml support:     ${HAVE_LIBKML}])
+ LOC_MSG([  GRASS support:             ${GRASS_SETTING}])
+ LOC_MSG([  GTA support:               ${GTA_SETTING}])
+@@ -6135,7 +6129,7 @@ LOC_MSG([  QHull support:             ${QHULL_SETTING}])
+ LOC_MSG([  Rasdaman support:          ${RASDAMAN_ENABLED}])
+ LOC_MSG([  RasterLite2 support:       ${HAVE_RASTERLITE2}])
+ LOC_MSG([  RDB support:               ${RDB_SETTING}])
+-LOC_MSG([  SFCGAL support:            ${HAVE_SFCGAL_RESULT}])
++LOC_MSG([  SFCGAL support:            ${HAVE_SFCGAL}])
+ LOC_MSG([  SOSI support:              ${SOSI_ENABLED}])
+ LOC_MSG([  SpatiaLite support:        ${HAVE_SPATIALITE}])
+ if test "x$SPATIALITE_SONAME" != "x"; then
+diff --git a/m4/geos.m4 b/m4/geos.m4
+index 1c685039740e..608466c67c69 100644
+--- a/m4/geos.m4
++++ b/m4/geos.m4
+@@ -55,6 +55,7 @@ AC_DEFUN([GEOS_INIT],[
+ 
+     AC_MSG_RESULT([GEOS support disabled])
+     GEOS_CONFIG=no
++    HAVE_GEOS=no
+ 
+   elif test x"$with_geos" = x"yes" -o x"$with_geos" = x"" ; then
+ 
+@@ -160,7 +161,7 @@ AC_DEFUN([GEOS_INIT],[
+ 
+   else
+ 
+-    if test $ac_geos_config_auto = "no" ; then
++    if test x"$with_geos" != x"no" -a x"$with_geos" != x ; then
+       AC_MSG_ERROR([GEOS support explicitly enabled, but geos-config could not be found])
+     fi
+ 
+diff --git a/m4/sfcgal.m4 b/m4/sfcgal.m4
+index 2384f0f0dc5d..1a8d26460ce7 100644
+--- a/m4/sfcgal.m4
++++ b/m4/sfcgal.m4
+@@ -53,6 +53,7 @@ AC_DEFUN([SFCGAL_INIT],[
+   if test x"$with_sfcgal" = x"no" ; then
+ 
+     AC_MSG_RESULT([SFCGAL support disabled])
++    HAVE_SFCGAL=no
+     SFCGAL_CONFIG=no
+ 
+   elif test x"$with_sfcgal" = x"yes" -o x"$with_sfcgal" = x"" ; then
+@@ -159,7 +160,7 @@ AC_DEFUN([SFCGAL_INIT],[
+ 
+   else
+ 
+-    if test $ac_sfcgal_config_auto = "no" ; then
++    if test x"$with_sfcgal" != x"no" -a x"$with_sfcgal" != x ; then
+       AC_MSG_ERROR([SFCGAL support explicitly enabled, but sfcgal-config could not be found])
+     fi
+ 

@@ -1,0 +1,44 @@
+From a288a7ba4283b2102a4602aa105072f33bc25645 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 4 May 2021 20:52:59 +0200
+Subject: [PATCH] thumbnail: Check shm size before writing to it
+
+The SHM is created by the application, which might've done a different size
+calculation. Verify that the data fits instead of writing past the end and
+crashing.
+
+CCBUG: 430862
+
+
+(cherry picked from commit 112b67ae7895bdc4f32d851c09a4d6baecbb6666)
+---
+ thumbnail/thumbnail.cpp | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/thumbnail/thumbnail.cpp b/thumbnail/thumbnail.cpp
+index 6b133323..afdb088e 100644
+--- a/thumbnail/thumbnail.cpp
++++ b/thumbnail/thumbnail.cpp
+@@ -288,14 +288,15 @@ void ThumbnailProtocol::get(const QUrl &url)
+             error(KIO::ERR_INTERNAL, i18n("Failed to attach to shared memory segment %1", shmid));
+             return;
+         }
+-        if (img.width() * img.height() > m_width * m_height) {
++        if( img.format() != QImage::Format_ARGB32 ) { // KIO::PreviewJob and this code below completely ignores colortable :-/,
++            img = img.convertToFormat(QImage::Format_ARGB32); //  so make sure there is none
++        }
++        struct shmid_ds shmStat;
++        if (shmctl(shmid.toInt(), IPC_STAT, &shmStat) == -1 || shmStat.shm_segsz < img.sizeInBytes()) {
+             error(KIO::ERR_INTERNAL, i18n("Image is too big for the shared memory segment"));
+             shmdt((char*)shmaddr);
+             return;
+         }
+-        if( img.format() != QImage::Format_ARGB32 ) { // KIO::PreviewJob and this code below completely ignores colortable :-/,
+-            img = img.convertToFormat(QImage::Format_ARGB32); //  so make sure there is none
+-        }
+         // Keep in sync with kdelibs/kio/kio/previewjob.cpp
+         stream << img.width() << img.height() << quint8(img.format());
+         memcpy(shmaddr, img.bits(), img.sizeInBytes());
+-- 
+GitLab
+

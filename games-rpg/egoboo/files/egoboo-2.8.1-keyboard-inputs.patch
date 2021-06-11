@@ -1,0 +1,12 @@
+Fix being only able move down and right when using keyboard.
+https://bugs.gentoo.org/654574
+http://egoboo.sourceforge.net/phpBB3/viewtopic.php?p=61333#p61333
+--- a/src/game/game.c
++++ b/src/game/game.c
+@@ -2054,4 +2054,4 @@
+         {
+-            joy_pos.x = ( control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_RIGHT ) - control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_LEFT ) );
+-            joy_pos.y = ( control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_DOWN ) - control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_UP ) );
++            joy_pos.x = ( (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_RIGHT ) - (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_LEFT ) );
++            joy_pos.y = ( (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_DOWN ) - (int)control_is_pressed( INPUT_DEVICE_KEYBOARD,  CONTROL_UP ) );
+ 

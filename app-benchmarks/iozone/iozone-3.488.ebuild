@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="http://www.iozone.org/src/current/${PN}${PV/./_}.tar"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ppc64 ~sparc x86"
 
 S="${WORKDIR}/${PN}${PV/./_}"
 
@@ -41,6 +41,10 @@ src_configure() {
 		s390)       PLATFORM="linux-S390";;
 		*)          PLATFORM="linux-${ARCH}";;
 	esac
+
+	# makefile uses $(GCC) in a few places, probably
+	# by mistake.
+	export GCC=$(tc-getCC)
 }
 
 src_compile() {

@@ -1,18 +1,20 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-MY_PV="${PV/_/-}"
 
+WX_GTK_VER="3.0-gtk3"
 inherit cmake fcaps flag-o-matic multilib toolchain-funcs wxwidgets
 
+MY_PV="${PV/_/-}"
+
 DESCRIPTION="A PlayStation 2 emulator"
-HOMEPAGE="https://www.pcsx2.net"
+HOMEPAGE="https://pcsx2.net/"
 SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
@@ -32,7 +34,7 @@ RDEPEND="
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	>=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
+	x11-libs/wxGTK:${WX_GTK_VER}[abi_x86_32(-),X]
 "
 DEPEND="${RDEPEND}
 	dev-cpp/pngpp
@@ -96,7 +98,7 @@ src_configure() {
 		-DUSE_VTUNE=FALSE
 	)
 
-	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
+	setup-wxwidgets
 	cmake_src_configure
 }
 

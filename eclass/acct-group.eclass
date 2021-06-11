@@ -59,7 +59,8 @@ readonly ACCT_GROUP_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # Preferred GID for the new group.  This variable is obligatory, and its
-# value must be unique across all group packages.
+# value must be unique across all group packages.  This can be overriden
+# in make.conf through ACCT_GROUP_<UPPERCASE_USERNAME>_ID variable.
 #
 # Overlays should set this to -1 to dynamically allocate GID.  Using -1
 # in ::gentoo is prohibited by policy.
@@ -75,7 +76,7 @@ readonly ACCT_GROUP_NAME
 # << Boilerplate ebuild variables >>
 : ${DESCRIPTION:="System group: ${ACCT_GROUP_NAME}"}
 : ${SLOT:=0}
-: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
+: ${KEYWORDS:=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris}
 S=${WORKDIR}
 
 
@@ -91,25 +92,33 @@ acct-group_pkg_pretend() {
 
 	# verify ACCT_GROUP_ID
 	[[ -n ${ACCT_GROUP_ID} ]] || die "Ebuild error: ACCT_GROUP_ID must be set!"
-	[[ ${ACCT_GROUP_ID} -eq -1 ]] && return
-	[[ ${ACCT_GROUP_ID} -ge 0 ]] || die "Ebuild errors: ACCT_GROUP_ID=${ACCT_GROUP_ID} invalid!"
+	[[ ${ACCT_GROUP_ID} -ge -1 ]] || die "Ebuild error: ACCT_GROUP_ID=${ACCT_GROUP_ID} invalid!"
+	local group_id=${ACCT_GROUP_ID}
+
+	# check for the override
+	local override_name=${ACCT_GROUP_NAME^^}
+	local override_var=ACCT_GROUP_${override_name//-/_}_ID
+	if [[ -n ${!override_var} ]]; then
+		group_id=${!override_var}
+		[[ ${group_id} -ge -1 ]] || die "${override_var}=${group_id} invalid!"
+	fi
 
 	# check for ACCT_GROUP_ID collisions early
-	if [[ -n ${ACCT_GROUP_ENFORCE_ID} ]]; then
-		local group_by_id=$(egetgroupname "${ACCT_GROUP_ID}")
+	if [[ ${group_id} -ne -1 && -n ${ACCT_GROUP_ENFORCE_ID} ]]; then
+		local group_by_id=$(egetgroupname "${group_id}")
 		local group_by_name=$(egetent group "${ACCT_GROUP_NAME}")
 		if [[ -n ${group_by_id} ]]; then
 			if [[ ${group_by_id} != ${ACCT_GROUP_NAME} ]]; then
 				eerror "The required GID is already taken by another group."
-				eerror "  GID: ${ACCT_GROUP_ID}"
+				eerror "  GID: ${group_id}"
 				eerror "  needed for: ${ACCT_GROUP_NAME}"
 				eerror "  current group: ${group_by_id}"
-				die "GID ${ACCT_GROUP_ID} taken already"
+				die "GID ${group_id} taken already"
 			fi
 		elif [[ -n ${group_by_name} ]]; then
 			eerror "The requested group exists already with wrong GID."
 			eerror "  groupname: ${ACCT_GROUP_NAME}"
-			eerror "  requested GID: ${ACCT_GROUP_ID}"
+			eerror "  requested GID: ${group_id}"
 			eerror "  current entry: ${group_by_name}"
 			die "Group ${ACCT_GROUP_NAME} exists with wrong GID"
 		fi
@@ -122,11 +131,21 @@ acct-group_pkg_pretend() {
 acct-group_src_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	# check for the override
+	local override_name=${ACCT_GROUP_NAME^^}
+	local override_var=ACCT_GROUP_${override_name//-/_}_ID
+	if [[ -n ${!override_var} ]]; then
+		ewarn "${override_var}=${!override_var} override in effect, support will not be provided."
+		_ACCT_GROUP_ID=${!override_var}
+	else
+		_ACCT_GROUP_ID=${ACCT_GROUP_ID}
+	fi
+
 	insinto /usr/lib/sysusers.d
 	newins - ${CATEGORY}-${ACCT_GROUP_NAME}.conf < <(
 		printf "g\t%q\t%q\n" \
 			"${ACCT_GROUP_NAME}" \
-			"${ACCT_GROUP_ID/#-*/-}"
+			"${_ACCT_GROUP_ID/#-*/-}"
 	)
 }
 
@@ -137,7 +156,7 @@ acct-group_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	enewgroup ${ACCT_GROUP_ENFORCE_ID:+-F} "${ACCT_GROUP_NAME}" \
-		"${ACCT_GROUP_ID}"
+		"${_ACCT_GROUP_ID}"
 }
 
 fi

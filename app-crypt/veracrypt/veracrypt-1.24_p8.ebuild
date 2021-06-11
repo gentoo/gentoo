@@ -1,13 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop eapi7-ver linux-info pax-utils toolchain-funcs wxwidgets
+EAPI=7
+
+WX_GTK_VER="3.0-gtk3"
+inherit desktop linux-info pax-utils toolchain-funcs wxwidgets
 
 MY_PV="$(ver_cut 1-2)-Update$(ver_cut 4)_MacOSX"
+
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
 HOMEPAGE="https://www.veracrypt.fr/en/Home.html"
 SRC_URI="https://github.com/${PN}/VeraCrypt/archive/VeraCrypt_${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/VeraCrypt-VeraCrypt_${MY_PV}/src"
 
 # The modules not linked against in Linux include (but not limited to):
 #   libzip, chacha-xmm, chacha256, chachaRng, rdrand, t1ha2
@@ -15,31 +19,24 @@ SRC_URI="https://github.com/${PN}/VeraCrypt/archive/VeraCrypt_${MY_PV}.tar.gz ->
 # For this reason, we don't have to worry about their licenses
 LICENSE="Apache-2.0 BSD truecrypt-3.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+asm cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc X"
 RESTRICT="bindist mirror"
-
-WX_GTK_VER="3.0-gtk3"
 
 RDEPEND="
 	sys-fs/lvm2
 	sys-fs/fuse:0
 	x11-libs/wxGTK:${WX_GTK_VER}[X?]
 	app-admin/sudo
-	dev-libs/pkcs11-helper
-"
-DEPEND="
-	${RDEPEND}
+	dev-libs/pkcs11-helper"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	asm? ( dev-lang/yasm )
-"
+	asm? ( dev-lang/yasm )"
 
-S="${WORKDIR}/VeraCrypt-VeraCrypt_${MY_PV}/src"
+CONFIG_CHECK="~BLK_DEV_DM ~CRYPTO ~CRYPTO_XTS ~DM_CRYPT ~FUSE_FS"
 
-pkg_setup() {
-	local CONFIG_CHECK="~BLK_DEV_DM ~CRYPTO ~CRYPTO_XTS ~DM_CRYPT ~FUSE_FS"
-	linux-info_pkg_setup
-
+src_configure() {
 	setup-wxwidgets
 }
 
@@ -67,32 +64,31 @@ src_compile() {
 }
 
 src_test() {
-	"${S}/Main/veracrypt" --text --test || die "tests failed"
+	./Main/veracrypt --text --test || die "tests failed"
 }
 
 src_install() {
 	local DOCS=( Readme.txt )
-	local HTML_DOCS=( )
 
 	dobin Main/veracrypt
 	if use doc; then
 		DOCS+=( "${S}"/../doc/EFI-DCS )
-		docompress -x "/usr/share/doc/${PF}/EFI-DCS"
-		HTML_DOCS+=( "${S}"/../doc/html/. )
+		docompress -x /usr/share/doc/${PF}/EFI-DCS
+		HTML_DOCS=( "${S}"/../doc/html/. )
 	fi
 	einstalldocs
 
-	newinitd "${FILESDIR}/${PN}.init" ${PN}
+	newinitd "${FILESDIR}"/veracrypt.init veracrypt
 
 	if use X; then
 		local s
 		for s in 16 48 128 256; do
 			newicon -s ${s} Resources/Icons/VeraCrypt-${s}x${s}.xpm veracrypt.xpm
 		done
-		make_desktop_entry ${PN} "VeraCrypt" ${PN} "Utility;Security"
+		make_desktop_entry veracrypt "VeraCrypt" veracrypt "Utility;Security"
 	fi
 
-	pax-mark -m "${D%/}/usr/bin/veracrypt"
+	pax-mark -m "${ED}"/usr/bin/veracrypt
 }
 
 pkg_postinst() {

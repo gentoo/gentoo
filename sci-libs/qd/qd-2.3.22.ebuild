@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://crd.lbl.gov/~dhbailey/mpdist/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 doc fortran static-libs"
 
 PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )

@@ -9,7 +9,7 @@
 		<flag name="icons">Enable support for icons</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">emmersion/mako</remote-id>
+		<remote-id type="github">emersion/mako</remote-id>
 		<bugs-to>https://github.com/emersion/mako/issues</bugs-to>
 		<changelog>https://github.com/emersion/mako/releases</changelog>
 	</upstream>

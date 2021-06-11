@@ -2,12 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>0xe2.0x9a.0x9b@gmail.com</email>
-		<name>Jan Ziak</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
+
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
 	<use>
 		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto of some

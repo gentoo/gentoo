@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	before display-manager
+}
+
+start() {
+	ebegin "Loading tpconfig options..."
+	/usr/bin/tpconfig ${TPOPTIONS} > /dev/null 2> /tmp/tpconfig.start
+	if [ -z "`cat /tmp/tpconfig.start 2> /dev/null`" ]; then
+		eend 0
+	else
+		eend 1
+	fi
+}
+
+stop() {
+	ebegin "Stoping tpconfig (this does nothing)..."
+	eend 0
+}

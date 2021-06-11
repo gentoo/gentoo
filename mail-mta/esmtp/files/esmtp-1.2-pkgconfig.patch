@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/782709
+--- a/configure.ac
++++ b/configure.ac
+@@ -28,21 +28,14 @@ then
+ 	CPPFLAGS="$CPPFLAGS -I$with_libesmtp/include"
+ 	LDFLAGS="$LDFLAGS -L$with_libesmtp/lib"
+ 	AC_CHECK_HEADER(libesmtp.h, ,[AC_MSG_ERROR([libesmtp.h not found in $with_libesmtp])])
+-fi    
+-AC_MSG_CHECKING(for libESMTP)
+-if libesmtp-config --version > /dev/null 2>&1
+-then
+-	AC_MSG_RESULT(yes)
+-	CFLAGS="$CFLAGS `libesmtp-config --cflags`"
+-	LIBS="$LIBS `libesmtp-config --libs`"
+-else
+-	AC_MSG_RESULT(no)
+-	AC_MSG_ERROR(libESMTP library not found)
+ fi
+ 
++PKG_CHECK_MODULES([libesmtp], [libesmtp-1.0])
++CFLAGS="$CFLAGS ${libesmtp_CFLAGS}"
++LIBS="$LIBS ${libesmtp_LIBS}"
++
+ jrf_FUNC_GETOPT
+ 
+ AC_CHECK_FUNCS([getuid geteuid])
+-		
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

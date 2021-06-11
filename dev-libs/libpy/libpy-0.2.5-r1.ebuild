@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit flag-o-matic distutils-r1
 
@@ -44,7 +44,7 @@ PATCHES=(
 )
 
 python_test() {
-	emake GTEST_ROOT="${WORKDIR}/googletest-${GTEST_VER}" test || die "Tests failed with ${EPYTHON}"
+	emake GTEST_ROOT="${WORKDIR}/googletest-${GTEST_VER}" test
 }
 
 python_configure() {

@@ -1,0 +1,29 @@
+From bb9c69ed7052614546d34d98a9cf1218e4a45bdc Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Fri, 14 May 2021 10:26:11 -0400
+Subject: [PATCH] Utilities/Sphinx: Update man page config for Sphinx 4
+
+Sphinx 4 by default generates `man/#/foo.#`, but older versions generate
+`man/foo.#` as our install rules expect.  Update our Sphinx config file
+to tell Sphinx 4 to use the old layout.
+
+Fixes: #22192
+---
+ Utilities/Sphinx/conf.py.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Utilities/Sphinx/conf.py.in b/Utilities/Sphinx/conf.py.in
+index 5def681dc4..c383828bd7 100644
+--- a/Utilities/Sphinx/conf.py.in
++++ b/Utilities/Sphinx/conf.py.in
+@@ -53,6 +53,7 @@ for fpath in cmake_manuals:
+     except Exception as e:
+         sys.stderr.write("ERROR: %s\n" % str(e))
+ man_show_urls = False
++man_make_section_directory = False
+ 
+ html_show_sourcelink = True
+ html_static_path = ['@conf_path@/static']
+-- 
+GitLab
+

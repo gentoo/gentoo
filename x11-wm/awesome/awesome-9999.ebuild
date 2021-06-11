@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,9 +44,7 @@ RDEPEND="${LUA_DEPS}
 	x11-libs/libxkbcommon[X]
 	x11-libs/libX11
 	dbus? ( sys-apps/dbus )"
-
-# graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
-# ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP
+# ldoc is used by invoking its executable, hence no need for LUA_SINGLE_USEDEP.
 # On the other hand, it means that we should explicitly depend on a version
 # migrated to Lua eclasses so that during the upgrade from unslotted
 # to slotted dev-lang/lua, the package manager knows to emerge migrated
@@ -61,8 +59,8 @@ DEPEND="${RDEPEND}
 			dev-lua/luacheck[${LUA_USEDEP}]
 		')
 	)"
-BDEPEND="
-	app-text/asciidoc
+# graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
+BDEPEND="app-text/asciidoc
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
 	doc? ( >=dev-lua/ldoc-1.4.6-r100 )
@@ -70,6 +68,7 @@ BDEPEND="
 
 # Skip installation of README.md by einstalldocs, which leads to broken symlink
 DOCS=()
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0-convert-path.patch  # bug #408025
 	"${FILESDIR}"/${PN}-xsession.patch          # bug #408025
@@ -77,7 +76,10 @@ PATCHES=(
 )
 
 src_configure() {
-	# Compression of manpages is handled by portage
+	# Compression of manpages is handled by portage.
+	# WITH_DBUS uses AutoOption.cmake which currently does not
+	# understand yes/no (or indeed any values other than ON, OFF
+	# or AUTO).
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DCOMPRESS_MANPAGES=OFF
@@ -119,7 +121,7 @@ src_install() {
 	fi
 
 	# This directory contains SVG images which we don't want to compress
-	use doc && touch "${ED}"/usr/share/doc/${PF}/doc/images.ecompress.skip
+	use doc && docompress -x /usr/share/doc/${PF}/doc
 }
 
 pkg_postinst() {

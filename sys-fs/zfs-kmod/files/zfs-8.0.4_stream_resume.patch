@@ -1,0 +1,33 @@
+From ee2a9d2c771657168652e058477b81389c662b5e Mon Sep 17 00:00:00 2001
+From: Paul Zuchowski <31706010+PaulZ-98@users.noreply.github.com>
+Date: Fri, 14 May 2021 00:46:14 -0400
+Subject: [PATCH] Fix dmu_recv_stream test for resumable
+
+Use dsl_dataset_has_resume_receive_state()
+not dsl_dataset_is_zapified() to check if
+stream is resumable.
+
+Reviewed-by: Matthew Ahrens <mahrens@delphix.com>
+Reviewed-by: Alek Pinchuk <apinchuk@axcient.com>
+Reviewed-by: Ryan Moeller <ryan@ixsystems.com>
+Signed-off-by: Paul Zuchowski <pzuchowski@datto.com>
+Closes #12034
+---
+ module/zfs/dmu_recv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/module/zfs/dmu_recv.c b/module/zfs/dmu_recv.c
+index b5414749f7f..f44b397853f 100644
+--- a/module/zfs/dmu_recv.c
++++ b/module/zfs/dmu_recv.c
+@@ -2878,8 +2878,8 @@ dmu_recv_stream(dmu_recv_cookie_t *drc, offset_t *voffp)
+ 	int err = 0;
+ 	struct receive_writer_arg *rwa = kmem_zalloc(sizeof (*rwa), KM_SLEEP);
+ 
+-	if (dsl_dataset_is_zapified(drc->drc_ds)) {
+-		uint64_t bytes;
++	if (dsl_dataset_has_resume_receive_state(drc->drc_ds)) {
++		uint64_t bytes = 0;
+ 		(void) zap_lookup(drc->drc_ds->ds_dir->dd_pool->dp_meta_objset,
+ 		    drc->drc_ds->ds_object, DS_FIELD_RESUME_BYTES,
+ 		    sizeof (bytes), 1, &bytes);

@@ -1,23 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils git-r3 perl-module
+inherit desktop git-r3 perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
 HOMEPAGE="https://slic3r.org"
-SRC_URI=""
 EGIT_REPO_URI="https://github.com/Slic3r/Slic3r.git"
+S="${WORKDIR}/slic3r-${PV}"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS=""
 IUSE="+gui test"
 RESTRICT="!test? ( test )"
 
 # check Build.PL for dependencies
-RDEPEND="!=dev-lang/perl-5.16*
+RDEPEND="
+	!=dev-lang/perl-5.16*
 	>=dev-libs/boost-1.55[threads]
 	dev-perl/Class-XSAccessor
 	dev-perl/Devel-CheckLib
@@ -53,7 +53,8 @@ RDEPEND="!=dev-lang/perl-5.16*
 		>=virtual/perl-Socket-2.16.0
 		x11-libs/libXmu
 	)"
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	dev-libs/clipper
 	dev-perl/Devel-CheckLib
 	>=dev-perl/ExtUtils-CppGuess-0.70.0
@@ -63,14 +64,15 @@ DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-WithXSpp-0.140.0
 	>=virtual/perl-ExtUtils-MakeMaker-6.800.0
 	>=virtual/perl-ExtUtils-ParseXS-3.220.0
-	test? (	virtual/perl-Test-Harness
-		virtual/perl-Test-Simple )"
+	test? (
+		virtual/perl-Test-Harness
+		virtual/perl-Test-Simple
+	)
+"
 
-S="${WORKDIR}/slic3r-${PV}"
 PERL_S="${S}/xs"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.3.1_pre20200824-boost-1.73.patch"
 	"${FILESDIR}/${PN}-1.3.0-no-locallib.patch"
 	"${FILESDIR}/${PN}-1.3.0-use-system-clipper.patch"
 )

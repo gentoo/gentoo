@@ -1,6 +1,6 @@
-diff -uNr libmodplug-0.8.9.0.ORIG/configure.ac libmodplug-0.8.9.0/configure.ac
---- libmodplug-0.8.9.0.ORIG/configure.ac	2017-07-26 22:39:07.461198820 +0100
-+++ libmodplug-0.8.9.0/configure.ac	2017-07-26 22:39:53.284622741 +0100
+diff -uNr a/configure.ac b/configure.ac
+--- a/configure.ac	2017-07-26 22:39:07.461198820 +0100
++++ b/configure.ac	2017-07-26 22:39:53.284622741 +0100
 @@ -31,7 +31,7 @@
  AC_CHECK_HEADERS([inttypes.h stdint.h malloc.h])
  AC_CHECK_FUNCS(setenv sinf)

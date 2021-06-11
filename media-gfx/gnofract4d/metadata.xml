@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>aklhfex@gmail.com</email>
 		<name>Chris Mayo</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">edyoung/gnofract4d</remote-id>
 	</upstream>
-	<use>
-		<flag name="doc">Install user manual</flag>
-	</use>
 </pkgmetadata>

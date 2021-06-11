@@ -1,0 +1,24 @@
+--- a/util/cmake/SeqAnBuildSystem.cmake	2018-01-11 12:32:45.591134000 +0100
++++ b/util/cmake/SeqAnBuildSystem.cmake	2018-01-11 12:51:55.193282581 +0100
+@@ -399,10 +399,10 @@
+         # Install pkg-config file, except on Windows.
+         if (NOT CMAKE_SYSTEM_NAME MATCHES Windows)
+             configure_file("util/pkgconfig/seqan.pc.in" "${CMAKE_BINARY_DIR}/util/pkgconfig/seqan-${SEQAN_VERSION_MAJOR}.pc" @ONLY)
+-            install(FILES "${CMAKE_BINARY_DIR}/util/pkgconfig/seqan-${SEQAN_VERSION_MAJOR}.pc" DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
++            install(FILES "${CMAKE_BINARY_DIR}/util/pkgconfig/seqan-${SEQAN_VERSION_MAJOR}.pc" DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+         endif (NOT CMAKE_SYSTEM_NAME MATCHES Windows)
+         # Install FindSeqAn TODO(h-2) rename seqan-config.cmake to seqan-config${SEQAN_VERSION_MAJOR}.cmake after 2.x cycle
+-        install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/util/cmake/seqan-config.cmake" DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/cmake/seqan/)
++        install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/util/cmake/seqan-config.cmake" DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/seqan2/)
+ 
+         # Install headers
+         file (GLOB HEADERS
+@@ -473,7 +473,7 @@
+             set (CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc" CACHE STRING "Documentation root (DATAROOTDIR/doc)" FORCE)
+         endif ()
+         set (SEQAN_PREFIX_SHARE "${CMAKE_INSTALL_DATADIR}/${APP_NAME}")
+-        set (SEQAN_PREFIX_SHARE_DOC "${CMAKE_INSTALL_DOCDIR}/${APP_NAME}")
++        set (SEQAN_PREFIX_SHARE_DOC "${CMAKE_INSTALL_DOCDIR}/examples/")
+     endif ()
+ endmacro (seqan_setup_install_vars)
+ 

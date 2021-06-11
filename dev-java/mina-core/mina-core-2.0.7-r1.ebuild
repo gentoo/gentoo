@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ MY_P="apache-mina-${PV}"
 DESCRIPTION="Apache MINA Project"
 HOMEPAGE="https://mina.apache.org/"
 SRC_URI="mirror://apache/mina/mina/${PV}/${MY_P}-src.tar.bz2 -> ${P}.tar.bz2"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 LICENSE="Apache-2.0"
 SLOT="0"
 

@@ -1,21 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
 # @MAINTAINER:
 # rkitover@gmail.com
 # Mark Wright <gienah@gentoo.org>
+# ML <ml@gentoo.org>
 # @AUTHOR:
 # Rafael Kitover <rkitover@gmail.com>
 # @SUPPORTED_EAPIS: 5 6 7
-# @BLURB: Provides functions for installing dune packages.
+# @BLURB: Provides functions for installing Dune packages.
 # @DESCRIPTION:
-# Provides dependencies on dune and ocaml and default src_compile, src_test and
-# src_install for dune-based packages.
+# Provides dependencies on dDne and OCaml and default src_compile, src_test and
+# src_install for Dune-based packages.
 
 # @ECLASS-VARIABLE: DUNE_PKG_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
-# Sets the actual dune package name, if different from gentoo package name.
+# Sets the actual Dune package name, if different from Gentoo package name.
 # Set before inheriting the eclass.
 
 case ${EAPI:-0} in
@@ -23,12 +25,20 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
+# Do not complain about CFLAGS etc since ml projects do not use them.
+QA_FLAGS_IGNORED='.*'
+
 EXPORT_FUNCTIONS src_compile src_test src_install
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) DEPEND="${RDEPEND} dev-ml/dune";;
-	*) BDEPEND="dev-ml/dune dev-lang/ocaml"; DEPEND="${RDEPEND}" ;;
+	5|6)
+		DEPEND="${RDEPEND} dev-ml/dune"
+		;;
+	*)
+		BDEPEND="dev-ml/dune dev-lang/ocaml"
+		DEPEND="${RDEPEND}"
+		;;
 esac
 
 dune_src_compile() {

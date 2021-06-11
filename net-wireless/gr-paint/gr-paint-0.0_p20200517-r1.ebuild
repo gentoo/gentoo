@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -14,7 +14,7 @@ else
 	S="${WORKDIR}/${PN}38-${COMMIT}"
 	KEYWORDS="~amd64"
 fi
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="Paints monochrome images into the waterfall of a receiver"
 HOMEPAGE="https://github.com/drmpeg/gr-paint"
@@ -50,10 +50,10 @@ src_configure() {
 		-DENABLE_DOXYGEN=$(usex doc)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize
 }

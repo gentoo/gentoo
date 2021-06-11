@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib qmake-utils
+inherit qmake-utils
 
 DESCRIPTION="Library for Qt that implements the OAuth 1.0 authentication specification"
 HOMEPAGE="https://github.com/kypeli/kQOAuth"

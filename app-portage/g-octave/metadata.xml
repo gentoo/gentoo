@@ -5,6 +5,7 @@
 		<email>sci-mathematics@gentoo.org</email>
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		g-octave is a tool that generates and installs ebuilds for Octave-Forge
 		packages "on-the-fly" to Gentoo Linux, using Portage. It's capable to

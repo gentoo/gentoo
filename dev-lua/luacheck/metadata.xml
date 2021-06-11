@@ -5,20 +5,15 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>vpayno+gentoo@gmail.com</email>
-		<name>Victor Payno</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>gyakovlev@gentoo.org</email>
-		<name>Georgy Yakovlev</name>
-	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		A tool for linting and static analysis of Lua code.
-
-		Luacheck supports checking Lua files using syntax of Lua 5.1, Lua 5.2, Lua 5.3 and LuaJIT. Luacheck itself is written in Lua and runs on all of mentioned Lua versions.
+		Luacheck supports checking Lua files using syntax of
+		Lua 5.1, Lua 5.2, Lua 5.3, Lua 5.4 and LuaJIT.
+		Luacheck itself is written in Lua and runs on all of mentioned Lua versions.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">luarocks/luacheck</remote-id>
 		<remote-id type="github">mpeterv/luacheck</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,6 +8,7 @@
 		<email>chutzpah@gentoo.org</email>
 		<name>Patrick McLean</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		blurb is a tool designed to rid CPython core development of the scourge of
 		Misc/NEWS conflicts.

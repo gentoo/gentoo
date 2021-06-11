@@ -21,6 +21,7 @@
 	<flag name="remoting">Enable plugin to stream output to remote hosts using <pkg>media-libs/gstreamer</pkg></flag>
 	<flag name="resize-optimization">Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi</flag>
 	<flag name="screen-sharing">Enable screen-sharing through RDP</flag>
+	<flag name="seatd">Enable support for rootless session via <pkg>sys-auth/seatd</pkg></flag>
 	<flag name="wayland-compositor">Enable Wayland compositor support</flag>
 	<flag name="xwayland">Enable ability support native X11 applications</flag>
 </use>

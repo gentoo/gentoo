@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,22 +8,27 @@ inherit toolchain-funcs
 DESCRIPTION="A simple application launcher and combined editor"
 HOMEPAGE="http://apwal.free.fr/"
 SRC_URI="http://apwal.free.fr/download/${P}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-RDEPEND="x11-libs/gtk+:2
-	x11-libs/gdk-pixbuf
+RDEPEND="
 	dev-libs/libxml2
-	dev-libs/glib:2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	dev-libs/glib:2
+	x11-libs/gdk-pixbuf
+	x11-libs/gtk+:2
+"
+DEPEND="
+	${RDEPEND}
+	virtual/pkgconfig
+"
 
-PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
-S=${WORKDIR}/${PN}
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+)
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 }

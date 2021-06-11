@@ -1,17 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 inherit systemd toolchain-funcs
 
-DESCRIPTION="port of the OpenBSD TFTP server"
+DESCRIPTION="Port of the OpenBSD TFTP server"
 HOMEPAGE="https://www.kernel.org/pub/software/network/tftp/"
 SRC_URI="https://www.kernel.org/pub/software/network/tftp/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-macos"
 IUSE="ipv6 readline selinux tcpd +client +server"
 
 DEPEND="

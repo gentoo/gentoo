@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2020-12-24)
@@ -31,11 +31,6 @@ dev-qt/qtwebkit:5 printsupport
 app-arch/unzip natspec
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Required by dev-qt/qtcore
-dev-libs/libpcre pcre16
-dev-libs/libpcre2 pcre16
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl libinput
 
@@ -59,9 +54,10 @@ dev-lang/php -exif -truetype
 # Enable luajit for OSC and youtube-dl support by default.
 # Override default +sdl from desktop profile and disable sdl outputs.
 # These outputs are for systems without a proper audio/video support.
-media-video/mpv lua luajit -sdl
+# NOTE: Needs syncing to negate profile defaults if we decide
+# to keep this up.
+media-video/mpv lua -sdl
 media-video/mpv -lua_single_target_lua5-1 -lua_single_target_lua5-2
-media-video/mpv -lua_single_target_lua5-3 -lua_single_target_lua5-4
 media-video/mpv lua_single_target_luajit
 
 # Mike Gilbert <floppym@gentoo.org> (2017-01-04)
@@ -71,11 +67,6 @@ app-text/xmlto text
 # Ben de Groot <yngwin@gentoo.org> (2015-02-18)
 # Enable sensible defaults for desktop users (bug #540046)
 dev-python/PyQt5 gui multimedia network printsupport widgets
-
-# Samuli Suominen <ssuominen@gentoo.org> (2014-07-24)
-# Because targets/desktop/make.defaults has USE="bluetooth" but net-libs/libpcap doesn't
-# support BlueZ 5.x, disable USE="bluetooth" by default to avoid conflicting packages:
-net-libs/libpcap -bluetooth
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-05-08)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]

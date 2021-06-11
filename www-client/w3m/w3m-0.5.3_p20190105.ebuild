@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/tats/${PN}/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.g
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="X fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja libressl lynxkeymap nls nntp ssl unicode xface"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="X fbcon gdk-pixbuf gpm imlib l10n_de l10n_ja lynxkeymap nls nntp ssl unicode xface"
 REQUIRED_USE="X? ( ?? ( gdk-pixbuf imlib ) )
 	fbcon? ( ?? ( gdk-pixbuf imlib ) )"
 
@@ -35,8 +35,7 @@ RDEPEND="dev-libs/boehm-gc:=
 	)
 	gpm? ( sys-libs/gpm )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)
 	xface? ( media-libs/compface )"
 DEPEND="${RDEPEND}

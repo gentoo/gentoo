@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
+inherit flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs
 
 DESCRIPTION="Molecular modeling package that includes force fields, such as AMBER and CHARMM"
 HOMEPAGE="http://dasher.wustl.edu/tinker/"
@@ -15,14 +15,16 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 DEPEND="
-	>=virtual/jdk-1.6"
-
+	>=virtual/jdk-1.6
+	virtual/pkgconfig
+"
 RDEPEND="
 	>=sci-libs/fftw-3.2.2-r1[fortran,threads]
 	dev-libs/maloc
 	!sys-apps/bar
 	!dev-util/diffuse
-	>=virtual/jre-1.6"
+	>=virtual/jre-1.6
+"
 
 RESTRICT="mirror"
 

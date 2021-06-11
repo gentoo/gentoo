@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,19 +8,20 @@ inherit toolchain-funcs
 DESCRIPTION="Be a rampaging monster and destroy the city"
 HOMEPAGE="http://evlweb.eecs.uic.edu/aej/AndyBattalion.html"
 SRC_URI="http://evlweb.eecs.uic.edu/aej/BATTALION/${PN}${PV}.tar.bz2"
+S="${WORKDIR}"/${PN}${PV}
 
 LICENSE="battalion HPND"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
 
 DEPEND="
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}${PV}
+DEPEND+=" virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-warning.patch
 	"${FILESDIR}"/${PN}-1.4b-fix-build-system.patch
@@ -47,7 +48,7 @@ src_prepare() {
 }
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 }
 
 src_install() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -26,7 +26,7 @@ COMMONDEPEND="
 	dev-libs/glib
 	dev-libs/libxml2
 	dev-libs/libzip:=
-	media-libs/portaudio
+	media-libs/portaudio[cxx]
 	media-libs/libsndfile
 	sys-libs/zlib:=
 	x11-libs/gtk+:3
@@ -41,5 +41,5 @@ BDEPEND="
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

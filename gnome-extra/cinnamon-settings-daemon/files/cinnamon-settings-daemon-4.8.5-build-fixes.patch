@@ -1,0 +1,140 @@
+From 281bc6b8e0085a91b7e59af45469c4da397646c2 Mon Sep 17 00:00:00 2001
+From: Sparky Bluefang <sparky@bluefang-logic.com>
+Date: Mon, 28 Dec 2020 17:05:21 -0500
+Subject: [PATCH] build: Add missing defines. Fix optional wacom build. Make
+ build options behave consistently.
+
+---
+ meson.build                | 20 ++++++++++++--------
+ meson_options.txt          | 14 ++++++++++----
+ plugins/meson.build        |  2 +-
+ plugins/xrandr/meson.build |  1 +
+ 4 files changed, 24 insertions(+), 13 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 0e11d50..0d6c35a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -9,6 +9,7 @@ pkgname = meson.project_name().to_lower()
+ api_version = '3.0'
+ 
+ cc = meson.get_compiler('c')
++cargs = []
+ 
+ # directories
+ prefix = get_option('prefix')
+@@ -43,7 +44,7 @@ endif
+ cinnamon_desktop_required = '>= 4.8.0'
+ canberra = dependency('libcanberra-gtk3')
+ cinnamon_desktop = dependency('cinnamon-desktop', version: cinnamon_desktop_required)
+-colord = dependency('colord', version: '>= 0.1.27')
++colord = dependency('colord', version: '>= 0.1.27', required: get_option('use_color'))
+ cups = dependency('cups', version: '>= 1.4', required: get_option('use_cups'))
+ cvc = dependency('cvc', version: cinnamon_desktop_required)
+ fontconfig = dependency('fontconfig')
+@@ -56,13 +57,13 @@ gtk = dependency('gtk+-3.0', version: '>= 3.14.0')
+ gudev = dependency('gudev-1.0', required: get_option('use_gudev'))
+ libnotify = dependency('libnotify', version: '>= 0.7.3')
+ kbproto = dependency('kbproto')
+-nss = dependency('nss', version: '>= 3.11.2', required: get_option('enable_smartcard'))
++nss = dependency('nss', version: '>= 3.11.2', required: get_option('use_smartcard'))
+ polkit = dependency('polkit-gobject-1', version: '>= 0.97', required: get_option('use_polkit'))
+ pulse_required = '>= 0.9.16'
+ pulse = dependency('libpulse', version: pulse_required)
+ pulse_glib = dependency('libpulse-mainloop-glib', version: pulse_required)
+ upower_glib = dependency('upower-glib', version: '>= 0.9.11')
+-wacom = dependency('libwacom', version: '>= 0.7', required: false)
++wacom = dependency('libwacom', version: '>= 0.7', required: get_option('use_wacom'))
+ x11 = dependency('x11')
+ xext = dependency('xext')
+ xfixes = dependency('xfixes')
+@@ -80,13 +81,12 @@ librsvg = dependency('librsvg-2.0', version: '>= 2.36.2', required: wacom.found(
+ xorg_wacom = dependency('xorg-wacom', required: wacom.found())
+ 
+ lcms = dependency('lcms2', version: '>= 2.2', required: false)
+-has_new_lcms = lcms.found()
+-if not has_new_lcms
+-    lcms = dependency('lcms2')
++if lcms.found()
++    cargs += '-DHAVE_NEW_LCMS'
++else
++    lcms = dependency('lcms2', required: colord.found())
+ endif
+ 
+-cargs = []
+-
+ using_logind = false
+ if not get_option('use_logind').disabled()
+     logind = dependency('libsystemd-logind', required: false)
+@@ -125,6 +125,10 @@ if gudev.found()
+     cargs += '-DHAVE_GUDEV'
+ endif
+ 
++if wacom.found()
++    cargs += '-DHAVE_WACOM'
++endif
++
+ if not get_option('enable_debug')
+     cargs += [
+           '-Wno-deprecated-declarations',
+diff --git a/meson_options.txt b/meson_options.txt
+index 0a6941b..e3c89f3 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -35,20 +35,26 @@ option(
+     description: 'Whether cups (and therefore the print notifications plugin) support should be enabled'
+ )
+ option(
+-    'enable_smartcard',
++    'use_smartcard',
+     type: 'feature',
+     value: 'enabled',
+     description: 'Set to false to disable smartcard support'
+ )
+ option(
+     'use_color',
+-    type: 'boolean',
+-    value: true,
++    type: 'feature',
++    value: 'enabled',
+     description: 'Whether the color plugin should be enabled'
+ )
++option(
++    'use_wacom',
++    type: 'feature',
++    value: 'auto',
++    description: 'Whether the wacom plugin should be enabled'
++)
+ option(
+     'enable_debug',
+     type: 'boolean',
+     value: false,
+     description: 'Show additional build warnings'
+-)
+\ No newline at end of file
++)
+diff --git a/plugins/meson.build b/plugins/meson.build
+index 0d11a52..069366d 100644
+--- a/plugins/meson.build
++++ b/plugins/meson.build
+@@ -24,7 +24,7 @@ subdir('sound')
+ subdir('xrandr')
+ subdir('xsettings')
+ 
+-if get_option('use_color')
++if colord.found()
+     subdir('color')
+ endif
+ 
+diff --git a/plugins/xrandr/meson.build b/plugins/xrandr/meson.build
+index db2bf73..3296f1a 100644
+--- a/plugins/xrandr/meson.build
++++ b/plugins/xrandr/meson.build
+@@ -11,6 +11,7 @@ xrandr_deps = [
+     csd_dep,
+     libnotify,
+     upower_glib,
++    wacom,
+     xfixes,
+ ]
+ 

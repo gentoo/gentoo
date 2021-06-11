@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils flag-o-matic ltprune multilib
+inherit flag-o-matic
 
 DESCRIPTION="Network access framework for IPv4/IPv6 written in C++"
 HOMEPAGE="http://gobby.0x539.de/"
@@ -12,13 +12,17 @@ SRC_URI="http://releases.0x539.de/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ppc x86"
-IUSE="nls static-libs"
+IUSE="nls"
 
-RDEPEND="dev-libs/libsigc++:2
-	>=net-libs/gnutls-1.2.10"
-DEPEND="${RDEPEND}
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
+RDEPEND="
+	dev-libs/libsigc++:2
+	>=net-libs/gnutls-1.2.10:=
+"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 PATCHES=(
@@ -27,11 +31,14 @@ PATCHES=(
 
 src_configure() {
 	append-cxxflags -std=c++11
-	econf $(use_enable nls) \
-		$(use_enable static-libs static)
+
+	econf \
+		--disable-static \
+		$(use_enable nls)
 }
 
 src_install() {
 	default
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 }

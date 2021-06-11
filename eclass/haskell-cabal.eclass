@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: haskell-cabal.eclass
@@ -29,10 +29,20 @@
 #                  only used for packages that use libghc internally and _must_
 #                  not pull upper versions
 #   test-suite --  add support for cabal test-suites (introduced in Cabal-1.8)
+#   rebuild-after-doc-workaround -- enable doctest test failue workaround.
+#                  Symptom: when `./setup haddock` is run in a `build-type: Custom`
+#                  package it might cause cause the test-suite to fail with
+#                  errors like:
+#                  > <command line>: cannot satisfy -package-id singletons-2.7-3Z7pnljD8tU1NrslJodXmr
+#                  Workaround re-reginsters the package to avoid the failure
+#                  (and rebuilds changes).
+#                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
+#                  is fixed.
 
 inherit eutils ghc-package multilib toolchain-funcs
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup configure'.
 # example: /etc/portage/make.conf:
@@ -40,12 +50,14 @@ inherit eutils ghc-package multilib toolchain-funcs
 : ${CABAL_EXTRA_CONFIGURE_FLAGS:=}
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_BUILD_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup build'.
 # example: /etc/portage/make.conf: CABAL_EXTRA_BUILD_FLAGS=-v
 : ${CABAL_EXTRA_BUILD_FLAGS:=}
 
 # @ECLASS-VARIABLE: GHC_BOOTSTRAP_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters for ghc when building
 # _only_ 'setup' binary bootstrap.
@@ -53,7 +65,33 @@ inherit eutils ghc-package multilib toolchain-funcs
 # linking 'setup' faster.
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
+# @ECLASS-VARIABLE: CABAL_EXTRA_HADDOCK_FLAGS
+# @USER_VARIABLE
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup haddock'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_HADDOCK_FLAGS="--haddock-options=--latex --haddock-options=--pretty-html"
+: ${CABAL_EXTRA_HADDOCK_FLAGS:=}
+
+# @ECLASS-VARIABLE: CABAL_EXTRA_HOOGLE_FLAGS
+# @USER_VARIABLE
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup haddock --hoogle'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_HOOGLE_FLAGS="--haddock-options=--show-all"
+: ${CABAL_EXTRA_HOOGLE_FLAGS:=}
+
+# @ECLASS-VARIABLE: CABAL_EXTRA_HSCOLOUR_FLAGS
+# @USER_VARIABLE
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup hscolour'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_HSCOLOUR_FLAGS="--executables --tests"
+: ${CABAL_EXTRA_HSCOLOUR_FLAGS:=}
+
+
 # @ECLASS-VARIABLE: CABAL_EXTRA_TEST_FLAGS
+# @USER_VARIABLE
 # @DESCRIPTION:
 # User-specified additional parameters passed to 'setup test'.
 # example: /etc/portage/make.conf:
@@ -99,6 +137,7 @@ for feature in ${CABAL_FEATURES}; do
 		nocabaldep) CABAL_FROM_GHC=yes;;
 		ghcdeps)    CABAL_GHC_CONSTRAINT=yes;;
 		test-suite) CABAL_TEST_SUITE=yes;;
+		rebuild-after-doc-workaround) CABAL_REBUILD_AFTER_DOC_WORKAROUND=yes;;
 
 		# does nothing, removed 2016-09-04
 		bin)        ;;
@@ -222,43 +261,17 @@ cabal-mksetup() {
 		> "${setup_src}" || die "failed to create default Setup.hs"
 }
 
+haskell-cabal-run_verbose() {
+	echo "$@"
+	"$@" || die "failed: $@"
+}
+
 cabal-hscolour() {
-	set -- hscolour "$@"
-	echo ./setup "$@"
-	./setup "$@" || die "setup hscolour failed"
+	haskell-cabal-run_verbose ./setup hscolour "$@"
 }
 
 cabal-haddock() {
-	set -- haddock "$@"
-	echo ./setup "$@"
-	./setup "$@" || die "setup haddock failed"
-}
-
-cabal-hoogle() {
-	ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
-}
-
-cabal-hscolour-haddock() {
-	# --hyperlink-source implies calling 'setup hscolour'
-	set -- haddock --hyperlink-source
-	echo ./setup "$@"
-	./setup "$@" --hyperlink-source || die "setup haddock --hyperlink-source failed"
-}
-
-cabal-hoogle-haddock() {
-	set -- haddock --hoogle
-	echo ./setup "$@"
-	./setup "$@" || die "setup haddock --hoogle failed"
-}
-
-cabal-hoogle-hscolour-haddock() {
-	cabal-hscolour-haddock
-	cabal-hoogle-haddock
-}
-
-cabal-hoogle-hscolour() {
-	ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
-	cabal-hscolour
+	haskell-cabal-run_verbose ./setup haddock "$@"
 }
 
 cabal-die-if-nonempty() {
@@ -342,10 +355,34 @@ cabal-configure() {
 	fi
 
 	# currently cabal does not respect CFLAGS and LDFLAGS on it's own (bug #333217)
-	# so translate LDFLAGS to ghc parameters (without filtering)
+	# so translate LDFLAGS to ghc parameters (with mild filtering).
 	local flag
-	for flag in   $CFLAGS; do cabalconf+=(--ghc-option="-optc$flag"); done
-	for flag in  $LDFLAGS; do cabalconf+=(--ghc-option="-optl$flag"); done
+	for flag in   $CFLAGS; do
+		case "${flag}" in
+			-flto|-flto=*)
+				# binutils does not support partial linking yet:
+				# https://github.com/gentoo-haskell/gentoo-haskell/issues/1110
+				# https://sourceware.org/PR12291
+				einfo "Filter '${flag}' out of CFLAGS (avoid lto partial linking)"
+				continue
+				;;
+		esac
+
+		cabalconf+=(--ghc-option="-optc$flag")
+	done
+	for flag in  $LDFLAGS; do
+		case "${flag}" in
+			-flto|-flto=*)
+				# binutils does not support partial linking yet:
+				# https://github.com/gentoo-haskell/gentoo-haskell/issues/1110
+				# https://sourceware.org/PR12291
+				einfo "Filter '${flag}' out of LDFLAGS (avoid lto partial linking)"
+				continue
+				;;
+		esac
+
+		cabalconf+=(--ghc-option="-optl$flag")
+	done
 
 	# disable executable stripping for the executables, as portage will
 	# strip by itself, and pre-stripping gives a QA warning.
@@ -512,38 +549,30 @@ cabal_src_compile() {
 	has src_configure ${HASKELL_CABAL_EXPF} || haskell-cabal_src_configure "$@"
 	cabal-build
 
-	if [[ -n "${CABAL_USE_HADDOCK}" ]] && use doc; then
-		if [[ -n "${CABAL_USE_HSCOLOUR}" ]] && use hscolour; then
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# hoogle, hscolour and haddock
-				cabal-hoogle-hscolour-haddock
-			else
-				# haddock and hscolour
-				cabal-hscolour-haddock
-			fi
-		else
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# hoogle and haddock
-				cabal-hoogle-haddock
-			else
-				# just haddock
-				cabal-haddock
-			fi
+	if [[ -n "$CABAL_USE_HADDOCK" ]] && use doc; then
+		if [[ -n "$CABAL_USE_HSCOLOUR" ]] && use hscolour; then
+			# --hyperlink-source implies calling 'setup hscolour'
+			haddock_args+=(--hyperlink-source)
+		fi
+
+		cabal-haddock "${haddock_args[@]}" $CABAL_EXTRA_HADDOCK_FLAGS
+
+		if [[ -n "$CABAL_USE_HOOGLE" ]] && use hoogle; then
+			cabal-haddock --hoogle $CABAL_EXTRA_HOOGLE_FLAGS
+		fi
+		if [[ -n "${CABAL_REBUILD_AFTER_DOC_WORKAROUND}" ]]; then
+			ewarn "rebuild-after-doc-workaround is enabled. This is a"
+			ewarn "temporary worakround to deal with https://github.com/haskell/cabal/issues/7213"
+			ewarn "until the upstream issue can be resolved."
+			cabal-build
 		fi
 	else
-		if [[ -n "${CABAL_USE_HSCOLOUR}" ]] && use hscolour; then
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# hoogle and hscolour
-				cabal-hoogle-hscolour
-			else
-				# just hscolour
-				cabal-hscolour
-			fi
-		else
-			if [[ -n "${CABAL_USE_HOOGLE}" ]] && use hoogle; then
-				# just hoogle
-				cabal-hoogle
-			fi
+		if [[ -n "$CABAL_USE_HSCOLOUR" ]] && use hscolour; then
+			cabal-hscolour $CABAL_EXTRA_HSCOLOUR_FLAGS
+		fi
+
+		if [[ -n "$CABAL_USE_HOOGLE" ]] && use hoogle; then
+			ewarn "hoogle USE flag requires doc USE flag, building without hoogle"
 		fi
 	fi
 }

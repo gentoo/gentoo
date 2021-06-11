@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs eutils multilib
+inherit toolchain-funcs multilib
 
 DESCRIPTION="Linux boot loader for EFI-based systems such as IA-64"
 HOMEPAGE="https://sourceforge.net/projects/elilo/"
@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.16-gnu-efi-3.0.6-ia64.patch
 	"${FILESDIR}"/${PN}-3.16-strncpy-clash.patch
 	"${FILESDIR}"/${PN}-3.16-FLAGS.patch
+	"${FILESDIR}"/${PN}-3.16-ARCH.patch
 )
 
 src_unpack() {

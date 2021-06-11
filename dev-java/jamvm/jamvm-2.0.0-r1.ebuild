@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib java-vm-2 autotools
+inherit epatch flag-o-matic multilib java-vm-2 autotools toolchain-funcs
 
 DESCRIPTION="An extremely small and specification-compliant virtual machine"
 HOMEPAGE="http://jamvm.sourceforge.net/"
@@ -44,7 +44,7 @@ src_configure() {
 	filter-flags "-fomit-frame-pointer"
 
 	if use ppc64 || use sparc || use libffi; then
-		append-cflags "$(pkg-config --cflags-only-I libffi)"
+		append-cflags "$($(tc-getPKG_CONFIG) --cflags-only-I libffi)"
 	fi
 
 	local fficonf="--enable-ffi"

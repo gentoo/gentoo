@@ -5,7 +5,6 @@
     <email>sci@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="mkl">Enable support for Intel Vector Math Library, part of sci-libs/mkl</flag>
     <flag name="io-restrictions">POV-Ray's mechanism for control of I/O operations</flag>
   </use>
   <upstream>

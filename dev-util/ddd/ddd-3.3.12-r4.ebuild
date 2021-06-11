@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools eutils
+inherit autotools desktop optfeature
 
 DESCRIPTION="Graphical front-end for command-line debuggers"
 HOMEPAGE="https://www.gnu.org/software/ddd"
@@ -74,24 +74,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version sci-visualization/gnuplot; then
-		echo
-		elog "To enable data visualization in DDD, install sci-visualization/gnuplot."
-		elog "For flat file package.use layout:"
-		elog "   echo '${CATEGORY}/${PN} gnuplot' >> /etc/portage/package.use && emerge -va gnuplot"
-		elog "For directory package.use layout:"
-		elog "   echo '${CATEGORY}/${PN} gnuplot' > /etc/portage/package.use/ddd && emerge -va gnuplot"
-		elog
-	fi
+	optfeature "Data visualisation" sci-visualization/gnuplot
+	optfeature "Java debugging" virtual/jdk
+	optfeature "Bash debugging" app-shells/bashdb
+	optfeature "Perl debugging" dev-lang/perl
+	optfeature "Python debugging" dev-python/pydb
+
 	echo
 	elog "Important notice: if you encounter DDD crashes during visualization, you might"
 	elog "have hit bug #459324. Try switching to plotting in external window:"
 	elog "Select Edit|Preferences|Helpers and switch 'plot window' to 'external'"
-	elog
-	elog "To be able to debug java, bash, perl or python scripts within DDD, install respectively:"
-	elog "    virtual/jdk"
-	elog "    app-shells/bashdb"
-	elog "    dev-lang/perl"
-	elog "    dev-python/pydb"
 	echo
 }

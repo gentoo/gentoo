@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+colord debug input_devices_wacom +networkmanager +modemmanager systemd"
 REQUIRED_USE="modemmanager? ( networkmanager )"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
@@ -53,12 +53,12 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/iso-codes
-	sys-devel/autoconf-archive
 	x11-base/xorg-proto
 "
 BDEPEND="
 	dev-util/glib-utils
 	>=dev-util/intltool-0.40.1
+	sys-devel/autoconf-archive
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "

@@ -1,4 +1,4 @@
-# Copyright 2017-2020 Gentoo Authors
+# Copyright 2017-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -54,7 +54,7 @@ EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.54.0
+MESON_DEPEND=">=dev-util/meson-0.56.0
 	>=dev-util/ninja-1.8.2
 	dev-util/meson-format-array
 "
@@ -142,6 +142,11 @@ _meson_get_machine_info() {
 	case ${cpu_family} in
 		amd64) cpu_family=x86_64 ;;
 		arm64) cpu_family=aarch64 ;;
+		riscv)
+			case ${tuple} in
+				riscv32*) cpu_family=riscv32 ;;
+				riscv64*) cpu_family=riscv64 ;;
+			esac ;;
 	esac
 
 	# This may require adjustment based on CFLAGS
@@ -169,12 +174,13 @@ _meson_create_cross_file() {
 	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
 	nm = $(_meson_env_array "$(tc-getNM)")
 	objc = $(_meson_env_array "$(tc-getPROG OBJC cc)")
+	objcopy = $(_meson_env_array "$(tc-getOBJCOPY)")
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
 	windres = $(_meson_env_array "$(tc-getRC)")
 
-	[properties]
+	[built-in options]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
 	c_link_args = $(_meson_env_array "${CFLAGS} ${LDFLAGS}")
 	cpp_args = $(_meson_env_array "${CXXFLAGS} ${CPPFLAGS}")
@@ -185,6 +191,8 @@ _meson_create_cross_file() {
 	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
+
+	[properties]
 	needs_exe_wrapper = true
 	sys_root = '${SYSROOT}'
 	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
@@ -220,12 +228,13 @@ _meson_create_native_file() {
 	llvm-config = '$(tc-getBUILD_PROG LLVM_CONFIG llvm-config)'
 	nm = $(_meson_env_array "$(tc-getBUILD_NM)")
 	objc = $(_meson_env_array "$(tc-getBUILD_PROG OBJC cc)")
+	objcopy = $(_meson_env_array "$(tc-getBUILD_OBJCOPY)")
 	objcpp = $(_meson_env_array "$(tc-getBUILD_PROG OBJCXX c++)")
 	pkgconfig = '$(tc-getBUILD_PKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getBUILD_STRIP)")
 	windres = $(_meson_env_array "$(tc-getBUILD_PROG RC windres)")
 
-	[properties]
+	[built-in options]
 	c_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_CPPFLAGS}")
 	c_link_args = $(_meson_env_array "${BUILD_CFLAGS} ${BUILD_LDFLAGS}")
 	cpp_args = $(_meson_env_array "${BUILD_CXXFLAGS} ${BUILD_CPPFLAGS}")
@@ -236,6 +245,8 @@ _meson_create_native_file() {
 	objc_link_args = $(_meson_env_array "${BUILD_OBJCFLAGS} ${BUILD_LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${BUILD_OBJCXXFLAGS} ${BUILD_LDFLAGS}")
+
+	[properties]
 	needs_exe_wrapper = false
 	pkg_config_libdir = '${BUILD_PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
@@ -409,7 +420,10 @@ meson_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	DESTDIR="${D}" eninja -C "${BUILD_DIR}" install "$@"
+
+	pushd "${S}" > /dev/null || die
 	einstalldocs
+	popd > /dev/null || die
 }
 
 fi

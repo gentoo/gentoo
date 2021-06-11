@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>haubi@gentoo.org</email>
-		<name>Michael Haubenwallner</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		The rebaseall utility is a convenient way for users that suffer from the
 		Cygwin rebase problem to rebase their entire system (i.e., all of their

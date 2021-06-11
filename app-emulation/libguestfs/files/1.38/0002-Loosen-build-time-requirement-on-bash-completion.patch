@@ -7,12 +7,6 @@ Distributions might avoid pulling bash-completion during build as it is
 an optional feature and would only make sense at runtime anyway. Since
 this setting is well-known across a given distribution, allow them to
 provide the value and avoid the dependency.
----
- m4/guestfs-bash-completion.m4 | 21 ++++++++++-----------
- 1 file changed, 10 insertions(+), 11 deletions(-)
-
-diff --git a/m4/guestfs-bash-completion.m4 b/m4/guestfs-bash-completion.m4
-index 1975b8c03..9a38ab2d6 100644
 --- a/m4/guestfs-bash-completion.m4
 +++ b/m4/guestfs-bash-completion.m4
 @@ -16,14 +16,13 @@

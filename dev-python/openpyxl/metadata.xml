@@ -8,8 +8,8 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">openpyxl</remote-id>
-		<bugs-to>https://foss.heptapod.net/openpyxl/openpyxl/issues</bugs-to>
+		<bugs-to>https://foss.heptapod.net/openpyxl/openpyxl/-/issues</bugs-to>
 		<changelog>https://openpyxl.readthedocs.io/en/stable/changes.html</changelog>
-		<doc>https://openpyxl.readthedocs.io</doc>
+		<doc>https://openpyxl.readthedocs.io/</doc>
 	</upstream>
 </pkgmetadata>

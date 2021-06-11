@@ -1,11 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
-
-inherit eutils python-r1
+PYTHON_COMPAT=( python3_{7,8,9} )
+inherit python-r1
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/grc.html"
@@ -53,7 +52,7 @@ pkg_postinst() {
 	elog "Shell specific configurations can be found in ${ROOT}/usr/share/grc"
 	elog "Be sure to symlink one to use grc globally:"
 	elog
-	elog "    ln -s ${ROOT}/usr/share/grc.SHELL ${ROOT}/etc/profile.d/grc.sh"
+	elog "    ln -s ${ROOT}/usr/share/grc/grc.SHELL ${ROOT}/etc/profile.d/grc.sh"
 	elog
 	elog "Replace 'SHELL' in the above command with one of: bashrc, fish, zsh."
 	elog "Afterwards, use '. ${ROOT}/etc/profile' to activate grc in existing"

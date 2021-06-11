@@ -9,6 +9,9 @@
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
   </maintainer>
+  <use>
+    <flag name="zfs">ZFS support</flag>
+  </use>
   <longdescription>
     The library has modular design: its core part implements only the core 
     Raft algorithm logic, in a fully platform independent way. On top of that, 

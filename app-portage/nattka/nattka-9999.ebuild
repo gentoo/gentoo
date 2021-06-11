@@ -1,10 +1,10 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1 git-r3
 
@@ -28,7 +28,6 @@ RDEPEND="
 	)"
 BDEPEND="
 	test? (
-		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/networkx[${PYTHON_USEDEP}]
 		dev-python/vcrpy[${PYTHON_USEDEP}]
 	)"

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>matt@offtopica.uk</email>
+    <name>Matt Smith</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    Zutty is a terminal emulator for the X Window System, functionally
+    similar to several other X terminal emulators such as xterm, rxvt
+    and countless others. It is also similar to other, much more
+    modern, GPU-accelerated terminal emulators such as Alacritty and
+    Kitty. What really sets Zutty apart is its radically simple, yet
+    extremely efficient rendering implementation, coupled with a
+    sufficiently complete feature set to make it useful for a wide
+    range of users. Zutty offers high throughput with low latency, and
+    strives to conform to relevant (published or de-facto) standards.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">tomszilagyi/zutty</remote-id>
+  </upstream>
+</pkgmetadata>

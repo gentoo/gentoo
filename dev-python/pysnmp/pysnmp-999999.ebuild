@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python SNMP library"
@@ -16,9 +16,8 @@ IUSE="doc examples"
 
 RDEPEND="
 	>=dev-python/pyasn1-0.2.3[${PYTHON_USEDEP}]
-	dev-python/pysmi[${PYTHON_USEDEP}]
-	dev-python/pycryptodome[${PYTHON_USEDEP}]
-"
+	dev-python/pycryptodome[${PYTHON_USEDEP}]"
+PDEPEND="dev-python/pysmi[${PYTHON_USEDEP}]"
 
 distutils_enable_sphinx docs/source
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
 
 IUSE="mariadb +mysql test +ssl"
 RESTRICT="!test? ( test )"
@@ -28,7 +28,7 @@ RDEPEND="
 DEPEND="
 	${DB_DEPENDS}
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-Data-Dumper
 	test? (
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 		virtual/perl-Time-HiRes
 	)
 "
+
 PATCHES=(
 	"${FILESDIR}/${PN}-4.050-no-dot-inc.patch"
 	"${FILESDIR}/${PN}-4.050-fix-float-type-conversion.patch"

@@ -1,0 +1,81 @@
+From 02abfc3695b71e05e3d5df83514f50ec0ab60bdf Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Fri, 14 May 2021 20:42:02 +0200
+Subject: [PATCH] Fix doc build with Sphinx 4
+
+Port away from removed functions. In particular, port to the new index structure which was introduced in 1.4 (released november 2016).
+Also account for the new default location of built man pages.
+
+BUG: 436818
+---
+ docs/CMakeLists.txt    |  3 ++-
+ docs/sphinx/ext/ecm.py | 13 ++++++++-----
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 84cca9ea..32687b64 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -110,7 +110,8 @@ if(BUILD_MAN_DOCS)
+             set(name "${CMAKE_MATCH_1}")
+             set(sec "${CMAKE_MATCH_2}")
+             install(
+-                FILES ${CMAKE_CURRENT_BINARY_DIR}/man/${name}.${sec}
++                FILES ${CMAKE_CURRENT_BINARY_DIR}/man/${name}.${sec} ${CMAKE_CURRENT_BINARY_DIR}/man/${sec}/${name}.${sec}
++                OPTIONAL
+                 DESTINATION ${MAN_INSTALL_DIR}/man${sec}
+             )
+         endif()
+diff --git a/docs/sphinx/ext/ecm.py b/docs/sphinx/ext/ecm.py
+index 8667b367..a09e4890 100644
+--- a/docs/sphinx/ext/ecm.py
++++ b/docs/sphinx/ext/ecm.py
+@@ -5,6 +5,7 @@
+ #
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
++import html
+ import os
+ import re
+ 
+@@ -19,8 +20,11 @@ CMakeLexer.tokens["args"].append(('(\\$<)(.+?)(>)',
+ 
+ # Monkey patch for sphinx generating invalid content for qcollectiongenerator
+ # https://bitbucket.org/birkenfeld/sphinx/issue/1435/qthelp-builder-should-htmlescape-keywords
+-from sphinx.util.pycompat import htmlescape
+-from sphinx.builders.qthelp import QtHelpBuilder
++try:
++  from sphinxcontrib.qthelp import QtHelpBuilder
++except ImportError:
++  # sphinx < 4.0
++  from sphinx.builders.qthelp import QtHelpBuilder
+ old_build_keywords = QtHelpBuilder.build_keywords
+ def new_build_keywords(self, title, refs, subitems):
+   old_items = old_build_keywords(self, title, refs, subitems)
+@@ -29,13 +33,12 @@ def new_build_keywords(self, title, refs, subitems):
+     before, rest = item.split("ref=\"", 1)
+     ref, after = rest.split("\"")
+     if ("<" in ref and ">" in ref):
+-      new_items.append(before + "ref=\"" + htmlescape(ref) + "\"" + after)
++      new_items.append(before + "ref=\"" + html.escape(ref) + "\"" + after)
+     else:
+       new_items.append(item)
+   return new_items
+ QtHelpBuilder.build_keywords = new_build_keywords
+ 
+-
+ from docutils.parsers.rst import Directive, directives
+ from docutils.transforms import Transform
+ try:
+@@ -127,7 +130,7 @@ class _ecm_index_entry:
+         self.desc = desc
+ 
+     def __call__(self, title, targetid):
+-        return ('pair', u'%s ; %s' % (self.desc, title), targetid, 'main')
++        return ('pair', u'%s ; %s' % (self.desc, title), targetid, 'main', None)
+ 
+ _ecm_index_objs = {
+     'manual':      _ecm_index_entry('manual'),
+-- 
+GitLab
+

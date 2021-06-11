@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit autotools toolchain-funcs multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="Jemalloc is a general-purpose scalable concurrent allocator"
 HOMEPAGE="http://jemalloc.net/ https://github.com/jemalloc/jemalloc"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jemalloc/jemalloc/releases/download/${PV}/${P}.tar.b
 
 LICENSE="BSD"
 SLOT="0/2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 IUSE="debug hardened lazy-lock prof static-libs stats xmalloc"
 HTML_DOCS=( doc/jemalloc.html )
 PATCHES=( "${FILESDIR}/${PN}-5.2.0-gentoo-fixups.patch" )

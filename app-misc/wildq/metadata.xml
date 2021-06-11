@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="pypi">wildq</remote-id>
+		<remote-id type="github">ahmet2mir/wildq</remote-id>
+	</upstream>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="hcl">HCL support via pyhcl</flag>
+		<flag name="toml">TOML support via pytoml</flag>
+		<flag name="xml">XML support via xmltodict</flag>
+	</use>
+</pkgmetadata>

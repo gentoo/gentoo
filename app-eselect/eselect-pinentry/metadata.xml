@@ -5,4 +5,5 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

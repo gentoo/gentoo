@@ -36,6 +36,7 @@ src_prepare() {
 }
 
 myconf() {
+	tc-export CC
 	echo ./configure $*
 	./configure $* || die "./configure failed"
 }
@@ -56,7 +57,6 @@ src_configure() {
 		--with-note \
 		--with-notify \
 		--with-rawdns \
-		--with-redirect \
 		--with-seen \
 		--with-stats \
 		--with-telnet \
@@ -66,6 +66,7 @@ src_configure() {
 		--with-web \
 		--with-wingate \
 		--without-profiling \
+		--without-redirect \
 		$(use_with tcl) \
 		$(use_with session) \
 		$(use_with debug)

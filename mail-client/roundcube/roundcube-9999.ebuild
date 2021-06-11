@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -71,7 +71,7 @@ src_unpack() {
 src_install() {
 	webapp_src_preinst
 
-	dodoc CHANGELOG INSTALL README.md UPGRADING
+	dodoc CHANGELOG.md INSTALL README.md UPGRADING
 
 	insinto "${MY_HTDOCSDIR}"
 	doins -r [[:lower:]]* SQL
@@ -91,6 +91,6 @@ pkg_postinst() {
 
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
 		elog "You can review the post-upgrade instructions at:"
-		elog "${EROOT%/}/usr/share/webapps/${PN}/${PV}/postupgrade-en.txt"
+		elog "${EROOT}/usr/share/webapps/${PN}/${PV}/postupgrade-en.txt"
 	fi
 }

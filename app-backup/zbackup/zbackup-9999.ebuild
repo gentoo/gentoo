@@ -1,27 +1,26 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="A versatile deduplicating backup tool"
-HOMEPAGE="http://zbackup.org/ https://github.com/zbackup/zbackup"
+HOMEPAGE="https://github.com/zbackup/zbackup"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
 LICENSE="GPL-2+-with-openssl-exception"
-KEYWORDS=""
 SLOT="0"
-IUSE="libressl tartool"
+KEYWORDS=""
+IUSE="tartool"
 
 DEPEND="app-arch/lzma
 	dev-libs/lzo:2
 	dev-libs/protobuf:0=
-	sys-libs/libunwind:0
+	sys-libs/libunwind:=
 	sys-libs/zlib
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )"
+	dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 
 # Add tartool build
@@ -32,5 +31,5 @@ src_configure() {
 		-DBUILD_TARTOOL="$(usex tartool)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

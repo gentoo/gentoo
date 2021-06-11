@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
 JAVA_PKG_IUSE="source"
+MAVEN_ID="org.antlr:antlr4:4.5.3"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -13,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}4/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://www.antlr.org/download/${P}-complete.jar" # Prebuilt version needed.
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

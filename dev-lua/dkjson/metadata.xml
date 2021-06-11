@@ -9,6 +9,7 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		dkjson is a module for encoding and decoding JSON data. It supports
 		UTF-8.

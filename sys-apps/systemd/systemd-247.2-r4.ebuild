@@ -1,4 +1,4 @@
-# Copyright 2011-2020 Gentoo Authors
+# Copyright 2011-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,10 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 fi
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev usr-ldscript
 
@@ -31,8 +31,9 @@ SLOT="0/2"
 IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi homed http +hwdb idn importd +kmod +lz4 lzma nat pam pcre pkcs11 policykit pwquality qrcode repart +resolvconf +seccomp selinux split-usr static-libs +sysv-utils test vanilla xkb +zstd"
 
 REQUIRED_USE="
-	homed? ( cryptsetup )
+	homed? ( cryptsetup pam )
 	importd? ( curl gcrypt lzma )
+	pwquality? ( homed )
 "
 RESTRICT="!test? ( test )"
 
@@ -111,7 +112,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=acct-user/systemd-timesync-0-r1
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
-	sysv-utils? ( !sys-apps/sysvinit )
+	sysv-utils? (
+		!sys-apps/openrc[sysv-utils(-)]
+		!sys-apps/sysvinit
+	)
 	!sysv-utils? ( sys-apps/sysvinit )
 	resolvconf? ( !net-dns/openresolv )
 	!build? ( || (
@@ -208,6 +212,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}"/247-cgroup-test.patch
 	)
 
 	if ! use vanilla; then
@@ -278,6 +283,8 @@ multilib_src_configure() {
 		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
+		-Defi-includedir="${ESYSROOT}/usr/include/efi"
+		-Defi-ld="$(tc-getLD)"
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dhomed=$(meson_multilib_native_use homed)
 		-Dhwdb=$(meson_multilib_native_use hwdb)

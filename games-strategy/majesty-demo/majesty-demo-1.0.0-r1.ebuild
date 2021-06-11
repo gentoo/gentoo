@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils unpacker
+
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Control your own kingdom in this simulation"
 HOMEPAGE="https://www.linuxgamepublishing.com/info.php?id=8&"

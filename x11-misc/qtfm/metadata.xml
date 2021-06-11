@@ -10,7 +10,7 @@
 	<name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 <use>
-<flag name='dbus'>Install the qtfm-tray removable device manager</flag>
-<flag name='shared'>Install the libQtFM shared library and headers</flag>
+<flag name="dbus">Install the qtfm-tray removable device manager</flag>
+<flag name="shared">Install the libQtFM shared library and headers</flag>
 </use>
 </pkgmetadata>

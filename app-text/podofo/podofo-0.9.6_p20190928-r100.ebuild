@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,16 +13,15 @@ SRC_URI="https://dev.gentoo.org/~zmedico/dist/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV%_*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+boost idn libressl debug test +tools"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
+IUSE="+boost idn debug test +tools"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	test? ( tools )"
 
 RDEPEND="${LUA_DEPS}
 	idn? ( net-dns/libidn:= )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	media-libs/fontconfig:=
 	media-libs/freetype:2=
 	virtual/jpeg:0=
@@ -43,11 +42,6 @@ DOCS="AUTHORS ChangeLog TODO"
 src_prepare() {
 	cmake_src_prepare
 	local x sed_args
-
-	if use libressl; then
-		sed -e 's:^#ifdef PODOFO_HAVE_OPENSSL_1_1$:#ifndef PODOFO_HAVE_OPENSSL_1_1:' \
-			 -i tools/podofosign/podofosign.cpp || die #663602
-	fi
 
 	# bug 620934 - Disable linking with cppunit when possible, since it
 	# triggers errors with some older compilers.

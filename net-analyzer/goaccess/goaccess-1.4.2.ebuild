@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ HOMEPAGE="https://goaccess.io"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="debug geoip geoipv2 getline libressl ssl unicode"
+IUSE="debug geoip geoipv2 getline ssl unicode"
 REQUIRED_USE="geoipv2? ( geoip )"
 
 BDEPEND="virtual/pkgconfig"
@@ -28,8 +28,7 @@ RDEPEND="sys-libs/ncurses:0=[unicode?]
 		geoipv2? ( dev-libs/libmaxminddb:0= )
 	)
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 DEPEND="${RDEPEND}"
 

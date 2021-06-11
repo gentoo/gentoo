@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,13 +37,25 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
-pkg_setup() {
-	PATCHES=(
+src_prepare() {
+	local PATCHES=(
 		"${FILESDIR}"/${P}-consolekit.patch # bug 747124
 		"${FILESDIR}"/${P}-make-xinerama-optional.patch
 	)
 
-	XORG_CONFIGURE_OPTIONS=(
+	sed -i -e 's:^Alias=.*$:Alias=display-manager.service:' \
+		xdm.service.in || die
+
+	# Disable XDM-AUTHORIZATION-1 (bug #445662).
+	# it causes issue with libreoffice and SDL games (bug #306223).
+	sed -i -e '/authorize/a DisplayManager*authName:	MIT-MAGIC-COOKIE-1' \
+			config/xdm-config.in || die
+
+	xorg-3_src_prepare
+}
+
+src_configure() {
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_with pam)
 		$(use_with systemd systemd-daemon)
@@ -54,18 +66,7 @@ pkg_setup() {
 		--with-default-vt=${DEFAULTVT}
 		--with-xdmconfigdir=/etc/X11/xdm
 	)
-}
-
-src_prepare() {
-	sed -i -e 's:^Alias=.*$:Alias=display-manager.service:' \
-		xdm.service.in || die
-
-	# Disable XDM-AUTHORIZATION-1 (bug #445662).
-	# it causes issue with libreoffice and SDL games (bug #306223).
-	sed -i -e '/authorize/a DisplayManager*authName:	MIT-MAGIC-COOKIE-1' \
-			config/xdm-config.in || die
-
-	xorg-3_src_prepare
+	xorg-3_src_configure
 }
 
 src_install() {

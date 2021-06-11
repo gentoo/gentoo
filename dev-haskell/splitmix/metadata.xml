@@ -6,8 +6,8 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name='optimised-mixer'>Use JavaScript for mix32</flag>
-		<flag name='random'>Providen RandomGen SMGen instance</flag>
+		<flag name="optimised-mixer">Use JavaScript for mix32</flag>
+		<flag name="random">Providen RandomGen SMGen instance</flag>
 	</use>
 	<longdescription>
 		Pure Haskell implementation of SplitMix described in
@@ -15,7 +15,7 @@
 		Guy L. Steele, Jr., Doug Lea, and Christine H. Flood. 2014.
 		Fast splittable pseudorandom number generators. In Proceedings
 		of the 2014 ACM International Conference on Object Oriented
-		Programming Systems Languages &amp; Applications (OOPSLA &#39;14). ACM,
+		Programming Systems Languages &amp; Applications (OOPSLA '14). ACM,
 		New York, NY, USA, 453-472. DOI:
 		&lt;https://doi.org/10.1145/2660193.2660195&gt;
 		
@@ -25,7 +25,7 @@
 		
 		/SplitMix/ is tested with two standard statistical test suites (DieHarder and
 		TestU01, this implementation only using the former) and it appears to be
-		adequate for &quot;everyday&quot; use, such as Monte Carlo algorithms and randomized
+		adequate for "everyday" use, such as Monte Carlo algorithms and randomized
 		data structures where speed is important.
 		
 		In particular, it __should not be used for cryptographic or security applications__,

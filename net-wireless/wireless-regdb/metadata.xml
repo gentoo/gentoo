@@ -9,4 +9,5 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

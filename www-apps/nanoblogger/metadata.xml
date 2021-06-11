@@ -5,6 +5,7 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 Nanoblogger is a small weblog engine written in Bash for the command line. It
 uses common UNIX tools such as cat, grep, and sed.  Features include: support

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,16 +11,16 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86"
 IUSE="+alsa ao +audiofile bzip2 cdio chromaprint +cue +curl doc +dbus
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
-	recorder samba selinux sid signalfd sndfile soundcloud sqlite systemd
+	recorder samba selinux sid signalfd sndfile sndio soundcloud sqlite systemd
 	test tidal twolame udisks unicode vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
-OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio recorder"
+OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio sndio recorder"
 DECODER_PLUGINS="audiofile faad ffmpeg flac fluidsynth mad mikmod
 	modplug mpg123 musepack flac sid vorbis wavpack wildmidi"
 ENCODER_PLUGINS="audiofile flac lame twolame vorbis"
@@ -88,6 +88,7 @@ RDEPEND="
 		media-libs/libsidplayfp
 	) )
 	sndfile? ( media-libs/libsndfile )
+	sndio? ( media-sound/sndio )
 	soundcloud? ( >=dev-libs/yajl-2:= )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
@@ -186,6 +187,7 @@ src_configure() {
 		-Dpipe=$(usex pipe true false)
 		-Dpulse=$(usex pulseaudio enabled disabled)
 		-Drecorder=$(usex recorder true false)
+		-Dsndio=$(usex sndio enabled disabled)
 	)
 
 	if use samba || use upnp; then
@@ -240,7 +242,6 @@ src_configure() {
 	emesonargs+=(
 		--libdir="/usr/$(get_libdir)"
 		-Ddocumentation=$(usex doc enabled disabled)
-		-Dsndio=disabled #not yet in the tree
 		-Dsolaris_output=disabled
 
 		-Ddatabase=true
@@ -282,6 +283,8 @@ src_install() {
 	keepdir /var/lib/mpd/playlists
 
 	rm -r "${ED}"/usr/share/doc/mpd || die
+
+	fowners mpd:audio -R /var/lib/mpd
 
 }
 

@@ -1,7 +1,7 @@
-http://bugs.gentoo.org/327353
+https://bugs.gentoo.org/327353
 
---- doc/Makefile.am
-+++ doc/Makefile.am
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
 @@ -6,7 +6,7 @@
  
  CLEANFILES = index.html compatibility.html changelog.html license.html Xdialog.1

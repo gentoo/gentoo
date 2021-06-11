@@ -1,0 +1,29 @@
+From 7078ffb91c05e6cd436eaf222541044b98265113 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Fri, 16 Apr 2021 19:45:05 +0200
+Subject: [PATCH] Fix build after Qt commit
+ f8ad329f7ee01993c388f78851fc4ac88f5093b4
+
+Build fails after this commit when using QT_NO_CAST_FROM_ASCII
+---
+ .../webservices/mediawiki/backend/mediawiki_queryrevision.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/core/dplugins/generic/webservices/mediawiki/backend/mediawiki_queryrevision.cpp b/core/dplugins/generic/webservices/mediawiki/backend/mediawiki_queryrevision.cpp
+index dce0fc9eb5..625d170d5e 100644
+--- a/core/dplugins/generic/webservices/mediawiki/backend/mediawiki_queryrevision.cpp
++++ b/core/dplugins/generic/webservices/mediawiki/backend/mediawiki_queryrevision.cpp
+@@ -299,8 +299,8 @@ void QueryRevision::doWorkProcessReply()
+                 while (count < 2)
+                 {
+                     if (replytmp[i] == QLatin1Char('"') && replytmp[i-1] != QLatin1Char('\\')) count++;
+-                    if (replytmp[i] == QLatin1Char('<'))                          replytmp[i] = char(255);
+-                    if (replytmp[i] == QLatin1Char('>'))                          replytmp[i] = char(254);
++                    if (replytmp[i] == QLatin1Char('<'))                          replytmp[i] = QLatin1Char(char(255));
++                    if (replytmp[i] == QLatin1Char('>'))                          replytmp[i] = QLatin1Char(char(254));
+                     ++i;
+                 }
+             }
+-- 
+GitLab
+

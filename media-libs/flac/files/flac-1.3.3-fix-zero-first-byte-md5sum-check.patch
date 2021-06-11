@@ -1,0 +1,13 @@
+diff --git a/src/flac/decode.c b/src/flac/decode.c
+index c26d3f60..bd3f6524 100644
+--- a/src/flac/decode.c
++++ b/src/flac/decode.c
+@@ -1307,7 +1307,7 @@ void metadata_callback(const FLAC__StreamDecoder *decoder, const FLAC__StreamMet
+ 	if(metadata->type == FLAC__METADATA_TYPE_STREAMINFO) {
+ 		FLAC__uint64 skip, until;
+ 		decoder_session->got_stream_info = true;
+-		decoder_session->has_md5sum = memcmp(metadata->data.stream_info.md5sum, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16);
++		decoder_session->has_md5sum = memcmp(metadata->data.stream_info.md5sum, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) != 0;
+ 		decoder_session->bps = metadata->data.stream_info.bits_per_sample;
+ 		decoder_session->channels = metadata->data.stream_info.channels;
+ 		decoder_session->sample_rate = metadata->data.stream_info.sample_rate;

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PV}/${PN}-src-${PV}.tar.gz"
 
 LICENSE="BSD GPL-2 GPL-3 FDL-1.3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 FS_USE="btrfs +ext2 +ext4 hfs +iso9660 ntfs reiserfs"
 IUSE="${FS_USE} custom-cflags doc"
 
@@ -77,9 +77,9 @@ src_compile() {
 		EFILIB="/usr/$(get_libdir)"
 		EFICRT0="/usr/$(get_libdir)"
 		EDK2BASE="${UDK_WORKSPACE}"
-		EDK2_DRIVER_BASENAMES="${fs_names[@]}"
-		FILESYSTEMS="${fs_names[@]}"
-		FILESYSTEMS_GNUEFI="${fs_names[@]}"
+		EDK2_DRIVER_BASENAMES="${fs_names[*]}"
+		FILESYSTEMS="${fs_names[*]}"
+		FILESYSTEMS_GNUEFI="${fs_names[*]}"
 	)
 	if use custom-cflags; then
 		make_flags=(CFLAGS="${CFLAGS} -fno-tree-loop-distribute-patterns" "${make_flags[@]}")

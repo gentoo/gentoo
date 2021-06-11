@@ -1,0 +1,36 @@
+diff --git a/Makefile b/Makefile
+index 0b1d1ef..1b98acf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,11 +3,10 @@ ST=strip
+ datadir  = $(DESTDIR)/usr/share/cqrlog
+ bindir   = $(DESTDIR)/usr/bin
+ sharedir = $(DESTDIR)/usr/share
+-tmpdir   = /tmp
++tmpdir   := $(shell mktemp -d)
+ 
+ cqrlog: src/cqrlog.lpi
+-	$(CC) --ws=gtk2 --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
+-	$(ST) src/cqrlog
++	$(CC) -d --ws=gtk2 --max-process-count=1 --lazarusdir=/usr/share/lazarus --pcp=$(tmpdir)/.lazarus src/cqrlog.lpi
+ 	gzip tools/cqrlog.1 -c > tools/cqrlog.1.gz
+ 
+ clean:
+@@ -38,7 +37,7 @@ install:
+ 	install -d -v         $(sharedir)/pixmaps/cqrlog
+ 	install -d -v         $(sharedir)/icons/cqrlog
+ 	install -d -v         $(sharedir)/applications
+-	install -d -v         $(sharedir)/appdata
++	install -d -v         $(sharedir)/metainfo
+ 	install -d -v         $(sharedir)/man/man1
+ 	install    -v -m 0755 src/cqrlog $(bindir)
+ 	install    -v -m 0755 tools/cqrlog-apparmor-fix $(datadir)/cqrlog-apparmor-fix
+@@ -61,7 +60,7 @@ install:
+ #	install    -v -m 0644 images/icon/256x256/*   $(datadir)/images/icon/256x256/
+ #	install    -v -m 0644 images/*   $(datadir)/images/
+ 	install    -v -m 0644 tools/cqrlog.desktop $(sharedir)/applications/cqrlog.desktop
+-	install    -v -m 0644 tools/cqrlog.appdata.xml $(sharedir)/appdata/cqrlog.appdata.xml
++	install    -v -m 0644 tools/cqrlog.appdata.xml $(sharedir)/metainfo/cqrlog.appdata.xml
+ 	install    -v -m 0644 images/icon/32x32/cqrlog.png $(sharedir)/pixmaps/cqrlog/cqrlog.png
+ 	install    -v -m 0644 images/icon/128x128/cqrlog.png $(sharedir)/icons/cqrlog.png
+ 	install    -v -m 0644 src/changelog.html $(datadir)/changelog.html

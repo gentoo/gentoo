@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>spiderx@spiderx.dp.ua</email>
 		<name>Vladimir Pavljuchenkov</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -14,9 +14,6 @@
 	It can sync files between devices on a local network, or between remote devices
 	over the Internet via a modified version of the BitTorrent protocol.
 	</longdescription>
-	<use>
-		<flag name="pax_kernel">Use paxctl to mark binaries</flag>
-	</use>
 	<upstream>
 		<doc>https://help.resilio.com/</doc>
 		<bugs-to>https://help.resilio.com/hc/en-us/requests/new?ticket_form_id=91563</bugs-to>

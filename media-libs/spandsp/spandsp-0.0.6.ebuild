@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -57,7 +57,7 @@ src_install() {
 
 	if ! use static-libs; then
 		# remove useless la file when not installing static lib
-		rm "${D}"/usr/$(get_libdir)/lib${PN}.la || die "rm failed"
+		find "${ED}" -name '*.la' -delete || die
 	fi
 
 	if use doc; then

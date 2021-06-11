@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="https://www.shoup.net/ntl/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/43"
-KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="bindist doc static-libs threads cpu_flags_x86_avx2"
 
 BDEPEND="dev-lang/perl"

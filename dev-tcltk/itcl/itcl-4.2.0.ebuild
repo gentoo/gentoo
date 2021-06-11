@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib
+inherit multilib
 
 MY_P="${PN}${PV}"
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itcl%
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-lang/tcl-8.6:0="

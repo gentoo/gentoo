@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit python-single-r1 wxwidgets cmake xdg
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 
 LANGS=" ca ca-valencia cs da de en-GB es eu fi fr hu it ja nl pl pt-BR ro ru sk sv zh-CN zh-TW"
 IUSE="debug lapack python raw sift $(echo ${LANGS//\ /\ l10n_})"
@@ -92,7 +92,7 @@ src_install() {
 			*) dir=${lang/-/_};;
 		esac
 		if ! use l10n_${lang} ; then
-			rm -r "${ED%/}"/usr/share/locale/${dir} || die
+			rm -r "${ED}"/usr/share/locale/${dir} || die
 		fi
 	done
 }

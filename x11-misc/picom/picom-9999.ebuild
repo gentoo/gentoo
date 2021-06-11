@@ -24,7 +24,6 @@ RDEPEND="dev-libs/libev
 	x11-libs/xcb-util-renderutil
 	config-file? (
 		dev-libs/libconfig:=
-		dev-libs/libxdg-basedir
 	)
 	dbus? ( sys-apps/dbus )
 	drm? ( x11-libs/libdrm )
@@ -35,6 +34,16 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-text/asciidoc )"
+
+DOCS=( README.md picom.sample.conf )
+
+python_check_deps() {
+	has_version -b "dev-python/xcffib[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local emesonargs=(

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake flag-o-matic systemd toolchain-funcs
+inherit cmake systemd toolchain-funcs
 
 MY_PN="gsa"
 MY_DN="gsad"
@@ -35,7 +35,7 @@ RDEPEND="
 
 BDEPEND="
 	dev-python/polib
-	>=net-libs/nodejs-8.12.0
+	>=net-libs/nodejs-8.12.0[ssl]
 	>=sys-apps/yarn-1.15.2
 	virtual/pkgconfig
 	extras? (
@@ -54,6 +54,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-8.0.1-node.patch"
 	# Remove ugly uninstall-snippet that causes failing re-emerge.
 	"${FILESDIR}/${P}-uninstall-snippet.patch"
+	# Replace deprecated glibc sys_siglist with strsignal
+	"${FILESDIR}/${P}-glibc_siglist.patch"
 )
 
 src_prepare() {

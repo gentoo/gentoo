@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,9 @@ src_compile() {
 		BUILD_SHARED=y \
 		LIBSUBDIR="$(get_libdir)" \
 		$(usex static-libs 'BUILD_STATIC=y' '' '' '') \
-		CC="$(tc-getCC)"
+		CC="$(tc-getCC)" \
+		AR="$(tc-getAR)" \
+		V=1
 }
 
 src_install() {

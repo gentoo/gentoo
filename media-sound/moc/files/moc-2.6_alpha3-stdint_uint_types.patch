@@ -1,0 +1,39 @@
+diff -ru a/configure.in b/configure.in
+--- a/configure.in	2016-11-16 02:29:53.000000000 +0200
++++ b/configure.in	2020-11-21 06:07:06.778092416 +0200
+@@ -152,9 +152,9 @@
+ 	CFLAGS="$save_CFLAGS"
+ 	LDFLAGS="$LDFLAGS $BDB_LDFLAGS"
+ 	EXTRA_LIBS="$EXTRA_LIBS $BDB_LIBS"
+-	AC_CHECK_TYPES([u_int], , , [[#include "${srcdir}/compiler.h"]
++	AC_CHECK_TYPES([u_int,u_int32_t], , , [[#include "${srcdir}/compiler.h"]
+ 	                             [#include <sys/types.h>]
+-	                             [#include <db.h>]])
++	                             [#include <stdint.h>]])
+ fi
+ 
+ AC_ARG_WITH(oss, AS_HELP_STRING([--without-oss],
+diff -ru a/tags_cache.c b/tags_cache.c
+--- a/tags_cache.c	2016-11-16 02:29:53.000000000 +0200
++++ b/tags_cache.c	2020-11-21 06:02:55.043214842 +0200
+@@ -24,6 +24,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include <dirent.h>
++#include <stdint.h>
+ 
+ #ifdef HAVE_DB_H
+ # ifndef HAVE_U_INT
+@@ -32,6 +33,12 @@
+ typedef unsigned int u_int;
+ typedef unsigned long int u_long;
+ # endif
++# ifndef HAVE_U_INT32_T
++typedef uint8_t u_int8_t;
++typedef uint16_t u_int16_t;
++typedef uint32_t u_int32_t;
++typedef uint64_t u_int64_t;
++# endif
+ #include <db.h>
+ #endif
+ 

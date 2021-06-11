@@ -1,6 +1,6 @@
-diff -Nru /tmp/jxplorer.orig/src/com/ca/directory/jxplorer/JXplorer.java src/com/ca/directory/jxplorer/JXplorer.java
---- /tmp/jxplorer.orig/src/com/ca/directory/jxplorer/JXplorer.java	2012-07-31 14:53:59.869914047 +0300
-+++ src/com/ca/directory/jxplorer/JXplorer.java	2012-07-31 14:54:47.836311029 +0300
+diff -Nru a/src/com/ca/directory/jxplorer/JXplorer.java src/com/ca/directory/jxplorer/JXplorer.java
+--- a/src/com/ca/directory/jxplorer/JXplorer.java	2012-07-31 14:53:59.869914047 +0300
++++ b/src/com/ca/directory/jxplorer/JXplorer.java	2012-07-31 14:54:47.836311029 +0300
 @@ -502,7 +502,7 @@
  
          // look for JXWorkBenchBrowser 'add on' module...

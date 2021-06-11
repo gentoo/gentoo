@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib ltprune
+inherit epatch multilib
 
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="http://sg.danny.cz/sg/"
@@ -40,5 +40,5 @@ src_install() {
 		dosym "${lib}" "${path}/${lib/libsgutils2/libsgutils}"
 	done
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

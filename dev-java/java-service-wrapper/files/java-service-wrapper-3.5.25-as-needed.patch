@@ -1,6 +1,7 @@
-
---- src/c/Makefile-linux-armel-32.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-armel-32.make	2014-07-21 10:50:11.000000000 +0200
+https://bugs.gentoo.org/622806
+https://sourceforge.net/p/wrapper/patches/25/
+--- a/src/c/Makefile-linux-armel-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-armel-32.make	2014-07-21 10:50:11.000000000 +0200
 @@ -33,14 +33,14 @@
  	if test ! -d .deps; then mkdir .deps; fi
  
@@ -20,8 +21,8 @@
  	@-cp .deps/$(*F).pp .deps/$(*F).P; \
  	tr ' ' '\012' < .deps/$(*F).pp \
  	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
---- src/c/Makefile-linux-armhf-32.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-armhf-32.make	2014-07-21 10:51:05.000000000 +0200
+--- a/src/c/Makefile-linux-armhf-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-armhf-32.make	2014-07-21 10:51:05.000000000 +0200
 @@ -33,14 +33,14 @@
  	if test ! -d .deps; then mkdir .deps; fi
  
@@ -41,8 +42,8 @@
  	@-cp .deps/$(*F).pp .deps/$(*F).P; \
  	tr ' ' '\012' < .deps/$(*F).pp \
  	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
---- src/c/Makefile-linux-ia-64.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-ia-64.make	2014-07-21 10:51:37.000000000 +0200
+--- a/src/c/Makefile-linux-ia-64.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-ia-64.make	2014-07-21 10:51:37.000000000 +0200
 @@ -33,14 +33,14 @@
  	if test ! -d .deps; then mkdir .deps; fi
  
@@ -62,8 +63,8 @@
  	@-cp .deps/$(*F).pp .deps/$(*F).P; \
  	tr ' ' '\012' < .deps/$(*F).pp \
  	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
---- src/c/Makefile-linux-ppc-32.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-ppc-32.make	2014-07-21 10:52:05.000000000 +0200
+--- a/src/c/Makefile-linux-ppc-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-ppc-32.make	2014-07-21 10:52:05.000000000 +0200
 @@ -33,14 +33,14 @@
  	if test ! -d .deps; then mkdir .deps; fi
  
@@ -83,8 +84,8 @@
  	@-cp .deps/$(*F).pp .deps/$(*F).P; \
  	tr ' ' '\012' < .deps/$(*F).pp \
  	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
---- src/c/Makefile-linux-ppc-64.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-ppc-64.make	2014-07-21 10:52:45.000000000 +0200
+--- a/src/c/Makefile-linux-ppc-64.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-ppc-64.make	2014-07-21 10:52:45.000000000 +0200
 @@ -33,14 +33,14 @@
  	if test ! -d .deps; then mkdir .deps; fi
  
@@ -104,8 +105,8 @@
  	@-cp .deps/$(*F).pp .deps/$(*F).P; \
  	tr ' ' '\012' < .deps/$(*F).pp \
  	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
---- src/c/Makefile-linux-x86-32.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-x86-32.make	2014-07-21 10:53:39.000000000 +0200
+--- a/src/c/Makefile-linux-x86-32.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-x86-32.make	2014-07-21 10:53:39.000000000 +0200
 @@ -36,17 +36,17 @@
  	if test ! -d .deps; then mkdir .deps; fi
  
@@ -129,8 +130,8 @@
  	@-cp .deps/$(*F).pp .deps/$(*F).P; \
  	tr ' ' '\012' < .deps/$(*F).pp \
  	| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
---- src/c/Makefile-linux-x86-64.make.old	2014-07-21 10:48:31.000000000 +0200
-+++ src/c/Makefile-linux-x86-64.make	2014-07-21 10:54:16.000000000 +0200
+--- a/src/c/Makefile-linux-x86-64.make.old	2014-07-21 10:48:31.000000000 +0200
++++ b/src/c/Makefile-linux-x86-64.make	2014-07-21 10:54:16.000000000 +0200
 @@ -36,17 +36,17 @@
  	if test ! -d .deps; then mkdir .deps; fi
  

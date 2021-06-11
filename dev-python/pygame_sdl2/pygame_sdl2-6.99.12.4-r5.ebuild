@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_7,3_8} )
 inherit distutils-r1
 
 PYSDL="${PN}-2.1.0"
@@ -40,8 +40,7 @@ PATCHES=( "${FILESDIR}/pygame_sdl2-6.99.12.4-mixer.patch" )
 
 # PyGame distribution for this version has some pregenerated files;
 # we need to remove them
-python_prepare_all()
-{
+python_prepare_all() {
 	rm -r gen{,3} || die
 	distutils-r1_python_prepare_all
 }

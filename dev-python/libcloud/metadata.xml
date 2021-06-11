@@ -3,4 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">apache/libcloud</remote-id>
+		<remote-id type="pypi">apache-libcloud</remote-id>
+	</upstream>
 </pkgmetadata>

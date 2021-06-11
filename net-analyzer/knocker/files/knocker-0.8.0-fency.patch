@@ -1,0 +1,151 @@
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -23,7 +23,7 @@
+    .conf in the user ~/.knocker subdirectory.
+  
+ 13 May 2002
+-  - --no-fency (-nf for short) option added. This switch tells knocker to show
++  - --no-fancy (-nf for short) option added. This switch tells knocker to show
+     the output in a "polite" way. All the lines and stuffs shown in the default
+ 	mode, will not be displayed using this option.
+   
+--- a/src/knocker_args.c
++++ b/src/knocker_args.c
+@@ -82,7 +82,7 @@
+   fprintf (stdout, "Extra options:\n");
+   fprintf (stdout, "      %s,  %s             quiet mode (no console output, logs to file)\n", QUIET_MODE_SHORT_OPT, QUIET_MODE_LONG_OPT);
+   fprintf (stdout, "      %s, %s <logfile> log scan results to the specified file\n", ENABLE_LOGFILE_SHORT_OPT, ENABLE_LOGFILE_LONG_OPT);
+-  fprintf (stdout, "      %s, %s          disable fency output\n", NO_FENCY_SHORT_OPT, NO_FENCY_LONG_OPT);
++  fprintf (stdout, "      %s, %s          disable fancy output\n", NO_FANCY_SHORT_OPT, NO_FANCY_LONG_OPT);
+   fprintf (stdout, "      %s, %s         disable colored output\n", NO_COLORS_SHORT_OPT, NO_COLORS_LONG_OPT);
+   fprintf (stdout, "\n");
+   fprintf (stdout, "      %s              let you configure %s\n", CONFIGURE_LONG_OPT, PACKAGE);
+@@ -111,7 +111,7 @@
+   args->logfile = logfile;
+   args->quiet = quiet;
+   args->colors = colors;
+-  args->fency = TRUE;           /* true by default */
++  args->fancy = TRUE;           /* true by default */
+ 
+   return 0;
+ }
+@@ -189,10 +189,10 @@
+             }
+           return (0);           /* we should have all arguments here */
+         }
+-      else if ((!strcmp (argv[i], NO_FENCY_SHORT_OPT)) || (!strcmp (argv[i], NO_FENCY_LONG_OPT)))
++      else if ((!strcmp (argv[i], NO_FANCY_SHORT_OPT)) || (!strcmp (argv[i], NO_FANCY_LONG_OPT)))
+         {
+-          /* Disable fency output */
+-          args->fency = FALSE;
++          /* Disable fancy output */
++          args->fancy = FALSE;
+         }
+       else if ((!strcmp (argv[i], NO_COLORS_SHORT_OPT)) || (!strcmp (argv[i], NO_COLORS_LONG_OPT)))
+         {
+--- a/src/knocker_main.c
++++ b/src/knocker_main.c
+@@ -75,7 +75,7 @@
+ 
+   knocker_core_init_portscan_data (&pscan_data);
+ 
+-  if (knocker_args.fency)
++  if (knocker_args.fancy)
+     knocker_term_clear ();
+ 
+   knocker_output_open ();
+--- a/src/knocker_args.h
++++ b/src/knocker_args.h
+@@ -53,9 +53,9 @@
+ #define QUIET_MODE_SHORT_OPT "-q"
+ #define QUIET_MODE_LONG_OPT "--quiet"
+ 
+-  /* option to disable fency cool out put */
+-#define NO_FENCY_SHORT_OPT "-nf"
+-#define NO_FENCY_LONG_OPT  "--no-fency"
++  /* option to disable fancy cool out put */
++#define NO_FANCY_SHORT_OPT "-nf"
++#define NO_FANCY_LONG_OPT  "--no-fancy"
+ 
+   /* option to disable colored out put */
+ #define NO_COLORS_SHORT_OPT "-nc"
+@@ -88,7 +88,7 @@
+   int logfile;     /* log to file TRUE,FALSE */
+   int quiet;       /* quiet mode TRUE,FALSE  */
+   int colors;      /* no colors, TRUE,FALSE  */
+-  int fency;       /* fency output, TRUE, FALSE */
++  int fancy;       /* fancy output, TRUE, FALSE */
+   int win32_frontend;
+ } knocker_args_t;
+ 
+--- a/doc/knocker.1
++++ b/dos/knocker.1
+@@ -38,8 +38,8 @@
+ \fB\-lf\fr, \fB\-\-logfile <logfile>\fR
+ log the results to a specified file.
+ .TP
+-\fB\-nf\fr, \fB\-\-no-fency\fR
+-disable fency output
++\fB\-nf\fr, \fB\-\-no-fancy\fR
++disable fancy output
+ .TP
+ \fB\-nc\fr, \fB\-\-no-colors\fR
+ disable colored output
+diff --git a/src/knocker_output.c b/src/knocker_output.c
+index 4714c24..613b608 100755
+--- a/src/knocker_output.c
++++ b/src/knocker_output.c
+@@ -46,7 +46,7 @@ int knocker_output_open (void)
+   time (&timenow);
+   knocker_time = ctime (&timenow);
+ 
+-  if (knocker_args.fency)
++  if (knocker_args.fancy)
+   {
+     knocker_term_color_fprintf (knocker_output_fp, "\n", KNOCKER_COLOR_1, KNOCKER_COLOR_1_ATTR);
+ 
+@@ -98,7 +98,7 @@ int knocker_output_open (void)
+ 
+ void knocker_output_host_info (const char *hostname_str, const char *hostip_str)
+ {
+-  if (knocker_args.fency)
++  if (knocker_args.fancy)
+     {
+       knocker_term_color_fprintf (knocker_output_fp, " - ", KNOCKER_COLOR_1, KNOCKER_COLOR_1_ATTR);
+       knocker_term_color_fprintf (knocker_output_fp, "hostname to scan: ", KNOCKER_COLOR_1, KNOCKER_COLOR_1_ATTR);
+@@ -124,7 +124,7 @@ void knocker_output_host_info (const char *hostname_str, const char *hostip_str)
+ 
+ void knocker_output_resolve_error (char *hostname_str)
+ {
+-  if (knocker_args.fency)
++  if (knocker_args.fancy)
+     {
+       knocker_term_color_fprintf (knocker_output_fp, " - ", KNOCKER_COLOR_1, KNOCKER_COLOR_1_ATTR);
+       knocker_term_color_fprintf (knocker_output_fp, "failed to resolve given hostname/IP: ", KNOCKER_COLOR_1, KNOCKER_COLOR_1_ATTR);
+@@ -144,7 +144,7 @@ void knocker_output_resolve_error (char *hostname_str)
+ 
+ void knocker_output_ports_info (int sp, int ep)
+ {
+-  if (!knocker_args.fency)
++  if (!knocker_args.fancy)
+     {
+       knocker_term_color_fprintf (knocker_output_fp, "\n", KNOCKER_COLOR_2, KNOCKER_COLOR_2_ATTR);
+       return;
+@@ -166,7 +166,7 @@ void knocker_output_ports_info (int sp, int ep)
+ 
+ void knocker_output_open_port (int port, char *service_str)
+ {
+-  if (knocker_args.fency)
++  if (knocker_args.fancy)
+     {
+       knocker_term_color_fprintf (knocker_output_fp, " -=[ ", KNOCKER_COLOR_1, KNOCKER_COLOR_1_ATTR);
+       knocker_term_color_intfprintf (knocker_output_fp, port, KNOCKER_COLOR_2, KNOCKER_COLOR_2_ATTR);
+@@ -192,7 +192,7 @@ void knocker_output_open_port (int port, char *service_str)
+ 
+ void knocker_output_results (char *hostname_str, char *hostname_ip, int tot_ps,  int open_ps, char *secs)
+ {
+-  if (knocker_args.fency)
++  if (knocker_args.fancy)
+     {
+       knocker_term_color_fprintf (knocker_output_fp, "\n", KNOCKER_COLOR_2, KNOCKER_COLOR_2_ATTR);
+       knocker_term_color_fprintf (knocker_output_fp, "+=- - - - - - - - - - - - - - - - - - - - - - - - - - - - ",

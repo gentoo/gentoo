@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
@@ -16,6 +16,7 @@
 		Sanesecurity, URLhaus and others. Fangfrisch was designed with
 		security in mind, to be run by an unprivileged user only.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">rseichter/fangfrisch</remote-id>
 		<remote-id type="pypi">fangfrisch</remote-id>

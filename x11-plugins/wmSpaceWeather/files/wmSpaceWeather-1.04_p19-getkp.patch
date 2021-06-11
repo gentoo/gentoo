@@ -1,5 +1,5 @@
---- wmSpaceWeather/GetKp.orig	2008-01-28 14:20:43.000000000 +0100
-+++ wmSpaceWeather/GetKp	2008-01-28 14:22:48.000000000 +0100
+--- wmSpaceWeather/GetKp
++++ wmSpaceWeather/GetKp
 @@ -17,10 +17,10 @@
      unlink(CUR_INDEX);
  

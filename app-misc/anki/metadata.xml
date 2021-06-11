@@ -10,4 +10,7 @@
 		(such as words and phrases in a foreign language) as
 		quickly, easily and efficiently as possible.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ankitects/anki</remote-id>
+	</upstream>
 </pkgmetadata>

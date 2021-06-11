@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ OFED_SUFFIX="1"
 inherit openib
 
 DESCRIPTION="OpenIB - Direct Access Provider Library"
-KEYWORDS="amd64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 x86 ~amd64-linux"
 IUSE=""
 
 DEPEND="sys-fabric/libibverbs:${SLOT}

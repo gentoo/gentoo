@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,6 +61,10 @@ src_prepare() {
 	if use system-tbb; then
 		rm -f "${WORKDIR}/${INTEL_CL}"/lib64/libtbb*
 	fi
+	# Prepend EPREFIX to library path in intel64.icd
+	if [[ -n ${EPREFIX} ]]; then
+		sed -i -e "s@^/opt@${EPREFIX}/opt@" "${WORKDIR}/${INTEL_CL}"/etc/intel64.icd
+	fi
 	default
 }
 
@@ -74,6 +78,10 @@ src_install() {
 
 	insinto /"${INTEL_CL}"/bin
 	doins "${WORKDIR}"/"${INTEL_CL}"/bin/*
+
+	# fix symlinks for oclopt and clangSpir12 on prefix
+	dosym "../lib64/oclopt"      "opt/intel/opencl-1.2-${PV}/bin/oclopt"
+	dosym "../lib64/clangSpir12" "opt/intel/opencl-1.2-${PV}/bin/clangSpir12"
 
 	# TODO put this somewhere
 	# doins ${INTEL_CL}/eclipse-plug-in/OpenCL_SDK_0.1.0.jar

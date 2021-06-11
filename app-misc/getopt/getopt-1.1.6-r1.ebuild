@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="getopt(1) replacement supporting GNU-style long options"
 HOMEPAGE="http://frodo.looijaard.name/project/getopt/"
@@ -11,7 +11,7 @@ SRC_URI="http://frodo.looijaard.name/system/files/software/getopt/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~x64-cygwin ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~x64-cygwin ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls"
 
 RDEPEND="nls? ( virtual/libintl )"

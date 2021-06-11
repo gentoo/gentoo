@@ -5,10 +5,7 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
-	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">miracle2k/flask-assets</remote-id>
 		<remote-id type="pypi">Flask-Assets</remote-id>

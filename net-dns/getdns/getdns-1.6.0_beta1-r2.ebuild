@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 _SRCURI_P="${P/%_beta1/-beta.1}"
 
-inherit cmake fcaps systemd
+inherit cmake fcaps systemd tmpfiles
 
 DESCRIPTION="Modern asynchronous DNS API"
 HOMEPAGE="https://getdnsapi.net/"
@@ -76,7 +76,7 @@ src_install() {
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}"/stubby.logrotate stubby
 		systemd_dounit "${S}"/stubby/systemd/stubby.service
-		systemd_dotmpfilesd "${S}"/stubby/systemd/stubby.conf
+		dotmpfiles "${S}"/stubby/systemd/stubby.conf
 	fi
 }
 

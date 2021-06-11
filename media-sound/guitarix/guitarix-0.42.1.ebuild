@@ -1,9 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-any-r1 waf-utils xdg
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/guitarix/guitarix/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="bluetooth debug lv2 nls nsm +standalone zeroconf"
 REQUIRED_USE="|| ( lv2 standalone )"
 
@@ -65,6 +65,7 @@ DOCS=( changelog README )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.41.0-nostrip.patch
+	"${FILESDIR}"/${P}-fix-build-with-glib-2.68.patch
 )
 
 src_configure() {

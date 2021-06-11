@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
 
 # Sam James <sam@gentoo.org> (2020-10-08)
 # PyPy3 works on arm64
@@ -92,7 +96,6 @@ zvbi
 sid
 mms
 ieee1394
-pm-utils
 darcs
 bs2b
 ladspa

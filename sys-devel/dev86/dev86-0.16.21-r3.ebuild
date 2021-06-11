@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="http://v3.sk/~lkundrak/dev86/Dev86src-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND="sys-devel/bin86"
@@ -49,7 +49,6 @@ src_compile() {
 
 	# First `make` is also a config, so set all the path vars here
 	emake -j1 \
-		DIST="${D}" \
 		CC="$(tc-getCC)" \
 		LIBDIR="/usr/$(get_libdir)/bcc" \
 		INCLDIR="/usr/$(get_libdir)/bcc" \
@@ -63,7 +62,6 @@ src_compile() {
 
 	cd bootblocks || die
 	emake \
-		DIST="${D}" \
 		HOSTCC="$(tc-getCC)"
 
 }

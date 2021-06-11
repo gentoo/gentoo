@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit meson gnome2-utils python-any-r1 xdg
+inherit meson gnome2-utils python-any-r1
 
 DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="0/4" # subslot = libcinnamon-desktop soname version
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.37.3:2[dbus]
@@ -39,6 +39,11 @@ BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	python_fix_shebang install-scripts
+}
 
 pkg_postinst() {
 	gnome2_schemas_update

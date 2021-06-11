@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
@@ -9,4 +9,5 @@
     <remote-id type="github">pear/pear_exception</remote-id>
     <remote-id type="pear">PEAR_Exception</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

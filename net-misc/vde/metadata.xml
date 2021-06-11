@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>NP-Hardass@gentoo.org</email>
-    <name>NP-Hardass</name>
+    <email>np-hardass@gentoo.org</email>
+    <name>Adam Feldman</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>mlspamcb@noci.work</email>
     <name>Nico Baggus</name>
   </maintainer>
@@ -13,7 +13,7 @@
     <email>jmbsvicetto@gentoo.org</email>
     <name>Jorge Manuel B. S. Vicetto</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

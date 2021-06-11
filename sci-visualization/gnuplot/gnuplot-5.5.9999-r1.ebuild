@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1,2,3} )
+WX_GTK_VER="3.0-gtk3"
 
 inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
 
@@ -19,7 +20,7 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -52,7 +53,7 @@ RDEPEND="
 	readline? ( sys-libs/readline:0= )
 	libcerf? ( sci-libs/libcerf )
 	wxwidgets? (
-		x11-libs/wxGTK:3.0-gtk3[X]
+		x11-libs/wxGTK:${WX_GTK_VER}[X]
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/gtk+:3 )
@@ -112,16 +113,11 @@ src_configure() {
 		sed -i -e '/SUBDIRS/s/LaTeX//' share/Makefile.in || die
 	fi
 
-	if use wxwidgets; then
-		WX_GTK_VER="3.0-gtk3"
-		setup-wxwidgets
-	fi
+	use wxwidgets && setup-wxwidgets
 
 	tc-export CC CXX			#453174
 	tc-export_build_env BUILD_CC
 	export CC_FOR_BUILD=${BUILD_CC}
-
-	use qt5 && append-cxxflags -std=c++11
 
 	econf \
 		--with-texdir="${TEXMF}/tex/latex/${PN}" \
@@ -183,8 +179,8 @@ src_install() {
 		# Demo files
 		insinto /usr/share/${PN}/${GP_VERSION}
 		doins -r demo
-		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/Makefile*
-		rm -f "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary*
+		rm "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/binary{1,2,3} || die
+		rm "${ED}"/usr/share/${PN}/${GP_VERSION}/demo/plugin/*.{o,so} || die
 	fi
 
 	if use doc; then

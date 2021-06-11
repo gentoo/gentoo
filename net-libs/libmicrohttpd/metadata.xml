@@ -5,9 +5,13 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>k2k@narod.ru</email>
+		<name>Evgeny Grin</name>
+	</maintainer>
 	<use>
-		<flag name="messages">enable error messages</flag>
-		<flag name="epoll">use epoll() system call</flag>
+		<flag name="epoll">Use epoll() system call</flag>
+		<flag name="thread-names">Assign thread names to internal threads, useful for dependent apps debugging</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:libmicrohttpd</remote-id>

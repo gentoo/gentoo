@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit multilib-minimal
 
@@ -14,7 +14,7 @@ if [[ "${PV}" = *_pre* ]] ; then
 else
 	SRC_URI="http://www.jedsoft.org/releases/${PN}/${P}.tar.bz2
 		http://www.jedsoft.org/releases/${PN}/old/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 LICENSE="GPL-2"
 SLOT="0"
@@ -62,20 +62,17 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake elf $(use static-libs && echo static)
-
-	pushd slsh >/dev/null || die
-	emake slsh
-	popd || die
+	emake elf $(usex static-libs static '')
+	emake -C slsh slsh
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install $(use static-libs && echo install-static)
+	emake DESTDIR="${D}" install $(usex static-libs install-static '')
 }
 
 multilib_src_install_all() {
-	rm -r "${ED%/}"/usr/share/doc/{slang,slsh} || die
-	dodoc NEWS README *.txt doc/{,internal,text}/*.txt
-	docinto html
-	dodoc doc/slangdoc.html slsh/doc/html/*.html
+	rm -r "${ED}"/usr/share/doc/{slang,slsh} || die
+	local -a DOCS=( NEWS README *.txt doc/{,internal,text}/*.txt )
+	local -a HTML_DOCS=( doc/slangdoc.html slsh/doc/html/*.html )
+	einstalldocs
 }

@@ -1,0 +1,26 @@
+From fdf8a4c57c3997f95ea0571b627f3c5a31dfe7b1 Mon Sep 17 00:00:00 2001
+From: Mart <mart@martlubbers.net>
+Date: Thu, 1 Oct 2020 09:55:08 +0000
+Subject: [PATCH] set the perceived to zero when the screen is off
+
+This fixes the issue that you cannot take the 10-log of zero
+---
+ xbacklight | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/xbacklight b/xbacklight
+index 2cb0fa8..f1c2187 100755
+--- a/xbacklight
++++ b/xbacklight
+@@ -82,6 +82,8 @@ class LogController(RawController):
+ 
+     @property
+     def brightness(self):
++        if super().brightness == 0:
++            return 0
+         return log10(super().brightness)/log10(super().max_brightness)*self.max_brightness
+ 
+     @brightness.setter
+-- 
+GitLab
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ HOMEPAGE="https://kmymoney.org/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -120,8 +120,7 @@ src_test() {
 
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "Optional dependencies:"
-		optfeature "More options for online stock quote retrieval" dev-perl/Finance-Quote
+		optfeature "more options for online stock quote retrieval" dev-perl/Finance-Quote
 	fi
 	if has_version "app-office/kmymoney[quotes]"; then
 		elog "Please note: IUSE=quotes flag is gone in ${PN}-5.1.1. ${PN} still"

@@ -1,66 +1,63 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
+inherit bash-completion-r1 cmake
 
-inherit bash-completion-r1 cmake multilib
-
-IUSE="doc examples extras +gromacs hdf5"
-PDEPEND="extras? ( ~sci-chemistry/${PN}apps-${PV} )"
-if [ "${PV}" != "9999" ]; then
-	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
-		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
-	S="${WORKDIR}/${P#votca-}"
-else
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	KEYWORDS=""
-	PDEPEND="${PDEPEND} doc? ( ~app-doc/${PN}-manual-${PV} )"
+else
+	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	S="${WORKDIR}/${P#votca-}"
 fi
 
 DESCRIPTION="Votca coarse-graining engine"
-HOMEPAGE="http://www.votca.org"
+HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="examples extras +gromacs hdf5 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~sci-libs/votca-tools-${PV}
+	app-shells/bash:*
 	>=dev-cpp/eigen-3.3
+	dev-lang/perl
+	~sci-libs/votca-tools-${PV}
 	gromacs? ( sci-chemistry/gromacs:= )
 	hdf5? ( sci-libs/hdf5 )
-	dev-lang/perl
-	app-shells/bash:*"
-
-DEPEND="${RDEPEND}
-	>=app-text/txt2tags-2.5
-	virtual/pkgconfig"
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
 
 src_unpack() {
-	if [[ ${PV} != *9999 ]]; then
-		default
-	else
+	if [[ ${PV} == *9999 ]]; then
 		git-r3_src_unpack
 		if use examples; then
 			EGIT_REPO_URI="https://github.com/${PN/-//}-tutorials.git"
 			EGIT_BRANCH="master"
-			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN#votca-}-tutorials"\
+			EGIT_CHECKOUT_DIR="${WORKDIR}/${PN#votca-}-tutorials" \
 				git-r3_src_unpack
 		fi
+	else
+		default
 	fi
 }
 
 src_configure() {
-	mycmakeargs=(
-		-DWITH_GMX=$(usex gromacs)
-		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex '!hdf5')
-		-DWITH_RC_FILES=OFF
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_GROMACS=$(usex !gromacs)
+		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
+		-DBUILD_CSGAPPS=$(usex extras)
+		-DENABLE_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }
@@ -72,9 +69,6 @@ src_install() {
 		[[ ${i} = *csg_call ]] && continue
 		bashcomp_alias csg_call "${i##*/}"
 	done
-	if use doc; then
-		[[ ${PV} != *9999* ]] && dodoc "${DISTDIR}/${PN}-manual-${PV}.pdf"
-	fi
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/tutorials"
 		docompress -x "/usr/share/doc/${PF}/tutorials"

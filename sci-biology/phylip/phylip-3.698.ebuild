@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION=" The PHYLogeny Inference Package"
+DESCRIPTION="The PHYLogeny Inference Package"
 HOMEPAGE="http://evolution.genetics.washington.edu/phylip.html"
 SRC_URI="http://evolution.gs.washington.edu/${PN}/download/${P}.zip"
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://cheetahtemplate.org/ https://pypi.org/project/Cheetah3/"
 SRC_URI="https://github.com/CheetahTemplate3/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 SLOT="0"
 
 RDEPEND="

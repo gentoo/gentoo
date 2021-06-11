@@ -6,7 +6,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="icarus">Build icarus library manager</flag>
-		<flag name="udev">Enable udev based input</flag>
+		<flag name="gtk">Use GTK3 (Qt5 if disabled) user interface backend</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://github.com/higan-emu/higan/issues</bugs-to>
+		<remote-id type="github">higan-emu/higan</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,6 +1,5 @@
-diff -ur ttf2pt1-3.4.0.orig/ttf2pt1.1 ttf2pt1-3.4.0/ttf2pt1.1
---- ttf2pt1-3.4.0.orig/ttf2pt1.1	2001-11-25 00:58:11.000000000 +0000
-+++ ttf2pt1-3.4.0/ttf2pt1.1	2006-08-15 19:15:37.129672839 +0000
+--- a/ttf2pt1.1
++++ b/ttf2pt1.1
 @@ -109,7 +109,8 @@
  ..
  .\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
@@ -11,9 +10,8 @@ diff -ur ttf2pt1-3.4.0.orig/ttf2pt1.1 ttf2pt1-3.4.0/ttf2pt1.1
  .	\" fudge factors for nroff and troff
  .if n \{\
  .	ds #H 0
-diff -ur ttf2pt1-3.4.0.orig/ttf2pt1_convert.1 ttf2pt1-3.4.0/ttf2pt1_convert.1
---- ttf2pt1-3.4.0.orig/ttf2pt1_convert.1	2001-11-25 00:58:13.000000000 +0000
-+++ ttf2pt1-3.4.0/ttf2pt1_convert.1	2006-08-15 19:16:14.369517359 +0000
+--- a/ttf2pt1_convert.1
++++ b/ttf2pt1_convert.1
 @@ -109,7 +109,8 @@
  ..
  .\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
@@ -24,9 +22,8 @@ diff -ur ttf2pt1-3.4.0.orig/ttf2pt1_convert.1 ttf2pt1-3.4.0/ttf2pt1_convert.1
  .	\" fudge factors for nroff and troff
  .if n \{\
  .	ds #H 0
-diff -ur ttf2pt1-3.4.0.orig/ttf2pt1_x2gs.1 ttf2pt1-3.4.0/ttf2pt1_x2gs.1
---- ttf2pt1-3.4.0.orig/ttf2pt1_x2gs.1	2001-11-25 00:58:13.000000000 +0000
-+++ ttf2pt1-3.4.0/ttf2pt1_x2gs.1	2006-08-15 19:16:30.770568473 +0000
+--- a/ttf2pt1_x2gs.1
++++ b/ttf2pt1_x2gs.1
 @@ -109,7 +109,8 @@
  ..
  .\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2

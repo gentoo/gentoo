@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e921
 LICENSE="torque-2.5"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="autorun cgroups cpusets +crypt doc kernel_linux libressl munge nvidia quickcommit server +syslog tk"
+IUSE="autorun cgroups cpusets +crypt doc kernel_linux munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
 	sys-libs/zlib

@@ -1,17 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1 #290284
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="Tools to convert docbook to man and info"
 SRC_URI="mirror://sourceforge/docbook2x/${P}.tar.gz"
 HOMEPAGE="http://docbook2x.sourceforge.net/"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv s390 sparc x86 ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 LICENSE="MIT"
@@ -35,23 +34,28 @@ PATCHES=(
 	# bug #296112
 	"${FILESDIR}/${P}-drop-htmldir.patch"
 )
+
 src_prepare() {
+	default
+
 	sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac || die 'sed on configure.ac failed'
 
-	autotools-utils_src_prepare
+	# bug #290284
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		--with-xslt-processor=libxslt
 		--program-transform-name='/^docbook2/s,$,.pl,'
 	)
-	autotools-utils_src_configure
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
+
 	dosym docbook2man.pl /usr/bin/docbook2x-man
 	dosym docbook2texi.pl /usr/bin/docbook2x-texi
 }

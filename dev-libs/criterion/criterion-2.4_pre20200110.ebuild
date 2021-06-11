@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit meson python-any-r1
 
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/Snaipe/Criterion/archive/${CRITERION_COMMIT}.tar.gz 
 
 LICENSE="BSD-2 MIT ZLIB"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/Criterion-${CRITERION_COMMIT}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.4_pre20200110-gcc11.patch
+)
 
 python_check_deps() {
 	has_version "dev-util/cram[${PYTHON_USEDEP}]"

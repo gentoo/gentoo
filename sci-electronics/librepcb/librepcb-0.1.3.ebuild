@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,8 @@ RDEPEND="
 	dev-qt/qtxml:5
 	sys-libs/zlib"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/qttest:5"
 
 src_configure() {
 	eqmake5 -r PREFIX="/usr"

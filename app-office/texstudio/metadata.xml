@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">texstudio-org/texstudio</remote-id>
+		<changelog>https://github.com/texstudio-org/texstudio/blob/master/utilities/manual/CHANGELOG.txt</changelog>
 	</upstream>
 </pkgmetadata>

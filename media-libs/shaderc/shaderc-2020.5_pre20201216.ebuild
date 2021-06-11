@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9} )
+PYTHON_COMPAT=( python{3_7,3_8,3_9} )
 
 CMAKE_ECLASS=cmake
 
@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="doc test"
 
 RDEPEND="
@@ -79,7 +79,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	if multilib_is_native_abi && use doc; then
-		cmake_src_make glslc_doc_README
+		cmake_src_compile glslc_doc_README
 	fi
 	cmake_src_compile
 }

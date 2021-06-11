@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 MY_PN=monkeys-audio
 MY_PV=$(ver_cut 1-2)-u$(ver_cut 3)-b$(ver_cut 4)-s$(ver_cut 5)
@@ -39,7 +39,11 @@ RESTRICT="mirror"
 src_prepare() {
 	default
 
-	sed -i -e 's:-O3::' configure || die
+	sed -i -e 's:-O3::' configure{,.in} || die
+
+	# bug #778260
+	sed -i 's/tag=ASM/tag=NASM/' src/MACLib/Assembly/Makefile.am || die
+	eautoreconf
 }
 
 src_configure() {

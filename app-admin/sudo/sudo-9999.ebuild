@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit pam multilib libtool systemd tmpfiles
+inherit pam multilib libtool systemd tmpfiles toolchain-funcs
 
 MY_P="${P/_/}"
 MY_P="${MY_P/beta/b}"
@@ -30,7 +30,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
+IUSE="gcrypt ldap nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
 
 DEPEND="
 	sys-libs/zlib:=
@@ -42,13 +42,11 @@ DEPEND="
 			net-nds/openldap[sasl]
 		)
 	)
+	nls? ( virtual/libintl )
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	sssd? ( sys-auth/sssd[sudo] )
 "
 RDEPEND="
@@ -63,6 +61,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/bison
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -80,11 +79,6 @@ src_prepare() {
 }
 
 set_secure_path() {
-	# FIXME: secure_path is a compile time setting. using PATH or
-	# ROOTPATH is not perfect, env-update may invalidate this, but until it
-	# is available as a sudoers setting this will have to do.
-	einfo "Setting secure_path ..."
-
 	# first extract the default ROOTPATH from build env
 	SECURE_PATH=$(unset ROOTPATH; . "${EPREFIX}"/etc/profile.env;
 		echo "${ROOTPATH}")
@@ -110,7 +104,7 @@ set_secure_path() {
 		done
 		SECURE_PATH=${newpath#:}
 	}
-	cleanpath /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
+	cleanpath /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin${SECURE_PATH:+:${SECURE_PATH}}
 
 	# finally, strip gcc paths #136027
 	rmpath() {
@@ -122,13 +116,12 @@ set_secure_path() {
 		SECURE_PATH=${newpath#:}
 	}
 	rmpath '*/gcc-bin/*' '*/gnat-gcc-bin/*' '*/gnat-gcc/*'
-
-	einfo "... done"
 }
 
 src_configure() {
 	local SECURE_PATH
 	set_secure_path
+	tc-export PKG_CONFIG #767712
 
 	# audit: somebody got to explain me how I can test this before I
 	# enable it.. - Diego
@@ -198,8 +191,10 @@ src_install() {
 		newins doc/schema.OpenLDAP sudo.schema
 	fi
 
-	pamd_mimic system-auth sudo auth account session
-	pamd_mimic system-auth sudo-i auth account session
+	if use pam; then
+		pamd_mimic system-auth sudo auth account session
+		pamd_mimic system-auth sudo-i auth account session
+	fi
 
 	keepdir /var/db/sudo/lectured
 	fperms 0700 /var/db/sudo/lectured

@@ -8,7 +8,7 @@
 		<email>3dprint@gentoo.org</email>
 		<name>Gentoo 3D print</name>
 	</maintainer>
-	<longdescription lang="en">
+	<longdescription>
 		levmar is a native ANSI C implementation of the Levenberg-Marquardt
 		optimization algorithm.  Both unconstrained and constrained (under
 		linear equations, inequality and box constraints)

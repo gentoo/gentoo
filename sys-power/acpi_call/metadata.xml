@@ -2,9 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>maksbotan@gentoo.org</email>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">teleshoes/acpi_call</remote-id>
+		<bugs-to>https://github.com/nix-community/acpi_call/issues</bugs-to>
+		<remote-id type="github">nix-community/acpi_call</remote-id>
 	</upstream>
 </pkgmetadata>

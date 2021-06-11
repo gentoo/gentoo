@@ -1,0 +1,494 @@
+From e4ef997dbbddcb372ba20cff18c8dc2a17da215c Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 13:35:34 +0800
+Subject: [PATCH 1/8] chg: test: basic for print_rec
+
+---
+ tests/test_bukuDb.py | 86 ++++++++++++++++++++------------------------
+ 1 file changed, 38 insertions(+), 48 deletions(-)
+
+diff --git a/tests/test_bukuDb.py b/tests/test_bukuDb.py
+index 4413760c..b5c0d7a7 100644
+--- a/tests/test_bukuDb.py
++++ b/tests/test_bukuDb.py
+@@ -9,22 +9,21 @@
+ import shutil
+ import sqlite3
+ import sys
++import unittest
+ import urllib
+ import zipfile
+-from tempfile import TemporaryDirectory, NamedTemporaryFile
+-
+-from unittest import mock
+-import unittest
+ from genericpath import exists
++from tempfile import NamedTemporaryFile, TemporaryDirectory
++from unittest import mock
++
+ import pytest
++import vcr
+ import yaml
+-from hypothesis import given, example, settings
++from hypothesis import HealthCheck, example, given, settings
+ from hypothesis import strategies as st
+-import vcr
+ 
+ from buku import BukuDb, parse_tags, prompt
+ 
+-
+ logging.basicConfig()  # you need to initialize logging, otherwise you will not see anything from vcrpy
+ vcr_log = logging.getLogger("vcr")
+ vcr_log.setLevel(logging.INFO)
+@@ -686,54 +685,45 @@ def test_refreshdb(refreshdb_fixture, title_in, exp_res):
+     assert from_db[2] == exp_res, 'from_db: {}'.format(from_db)
+ 
+ 
+-@given(
+-    index=st.integers(min_value=-10, max_value=10),
+-    low=st.integers(min_value=-10, max_value=10),
+-    high=st.integers(min_value=-10, max_value=10),
+-    is_range=st.booleans(),
+-)
+-@settings(deadline=None)
+-def test_print_rec_hypothesis(caplog, setup, index, low, high, is_range):
+-    """test when index, low or high is less than 0."""
+-    # setup
+-    caplog.handler.records.clear()
+-    caplog.records.clear()
+-
+-    bdb = BukuDb()
++@pytest.fixture
++def test_print_db(tmp_path):
++    bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
+     # clear all record first before testing
+     bdb.delete_rec_all()
+     bdb.add_rec("http://one.com", "", parse_tags(['cat,ant,bee,1']), "")
+-    db_len = 1
+-    bdb.print_rec(index=index, low=low, high=high, is_range=is_range)
+-
+-    check_print = False
+-    err_msg = ['Actual log:']
+-    err_msg.extend(['{}:{}'.format(x.levelname, x.getMessage()) for x in caplog.records])
+-
+-    if index < 0 or (0 <= index <= db_len and not is_range):
+-        check_print = True
+-    # negative index/range on is_range
+-    elif (is_range and any([low < 0, high < 0])):
+-        assert any([x.levelname == "ERROR" for x in caplog.records]), \
+-            '\n'.join(err_msg)
+-        assert any([x.getMessage() == "Negative range boundary" for x in caplog.records]), \
+-            '\n'.join(err_msg)
+-    elif is_range:
+-        check_print = True
+-    else:
+-        assert any([x.levelname == "ERROR" for x in caplog.records]), \
+-            '\n'.join(err_msg)
+-        assert any([x.getMessage().startswith("No matching index") for x in caplog.records]), \
+-            '\n'.join(err_msg)
++    yield bdb
++    bdb.delete_rec(index=1)
+ 
+-    if check_print:
+-        assert not any([x.levelname == "ERROR" for x in caplog.records]), \
+-            '\n'.join(err_msg)
+ 
+-    # teardown
+-    bdb.delete_rec(index=1)
++@pytest.fixture
++def test_print_caplog(caplog):
+     caplog.handler.records.clear()
+     caplog.records.clear()
++    yield caplog
++
++
++@pytest.mark.parametrize('kwargs, exp_res', [
++    [{}, (True, [])],
++    [{'is_range': True}, (True, [])],
++    [{'index': 0}, (True, [])],
++    [{'index': -1}, (True, [])],
++    [{'index': -2}, (True, [])],
++    [{'index': 2}, (False, [('root', 40, 'No matching index 2')])],
++])
++def test_print_rec(kwargs, exp_res, test_print_db, caplog):
++    bdb = test_print_db
++    # run the function
++    assert (bdb.print_rec(**kwargs), caplog.record_tuples) == exp_res
++
++
++@pytest.mark.parametrize('index, exp_res', [
++    [0, (True, [('root', 40, '0 records')])],
++    [-1, (False, [('root', 40, 'Empty database')])],
++    [1, (False, [('root', 40, 'No matching index 1')])],
++])
++def test_print_rec_on_empty_db(tmp_path, caplog, index, exp_res):
++    bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
++    assert (bdb.print_rec(index=index), caplog.record_tuples) == exp_res
+ 
+ 
+ def test_list_tags(capsys, setup):
+
+From adb7314d49e47823d83bb7a07ef21ac1d628998a Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 13:42:17 +0800
+Subject: [PATCH 2/8] new: dev: type hint for print_rec
+
+---
+ buku | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/buku b/buku
+index 540c7d5e..a18c6b47 100755
+--- a/buku
++++ b/buku
+@@ -1658,7 +1658,7 @@ class BukuDb:
+ 
+         return False
+ 
+-    def print_rec(self, index=0, low=0, high=0, is_range=False):
++    def print_rec(self, index : int = 0 , low : int = 0, high : int = 0, is_range : bool = False) -> bool:
+         """Print bookmark details at index or all bookmarks if index is 0.
+ 
+         A negative index behaves like tail, if title is blank show "Untitled".
+
+From 92caf1c6c8687773cb288434fff7e1218ae918ce Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 14:11:16 +0800
+Subject: [PATCH 3/8] chg: test: print_rec
+
+- merge no db and single rec test
+- more test case
+---
+ tests/test_bukuDb.py | 52 +++++++++++++++++++++++++++-----------------
+ 1 file changed, 32 insertions(+), 20 deletions(-)
+
+diff --git a/tests/test_bukuDb.py b/tests/test_bukuDb.py
+index b5c0d7a7..2142dcf3 100644
+--- a/tests/test_bukuDb.py
++++ b/tests/test_bukuDb.py
+@@ -33,6 +33,7 @@
+ TEST_TEMP_DBDIR_PATH = os.path.join(TEST_TEMP_DIR_PATH, 'buku')
+ TEST_TEMP_DBFILE_PATH = os.path.join(TEST_TEMP_DBDIR_PATH, 'bookmarks.db')
+ MAX_SQLITE_INT = int(math.pow(2, 63) - 1)
++TEST_PRINT_REC = ("https://example.com", "", parse_tags(['cat,ant,bee,1']), "")
+ 
+ TEST_BOOKMARKS = [
+     ['http://slashdot.org',
+@@ -690,7 +691,7 @@ def test_print_db(tmp_path):
+     bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
+     # clear all record first before testing
+     bdb.delete_rec_all()
+-    bdb.add_rec("http://one.com", "", parse_tags(['cat,ant,bee,1']), "")
++    bdb.add_rec
+     yield bdb
+     bdb.delete_rec(index=1)
+ 
+@@ -702,30 +703,41 @@ def test_print_caplog(caplog):
+     yield caplog
+ 
+ 
+-@pytest.mark.parametrize('kwargs, exp_res', [
+-    [{}, (True, [])],
+-    [{'is_range': True}, (True, [])],
+-    [{'index': 0}, (True, [])],
+-    [{'index': -1}, (True, [])],
+-    [{'index': -2}, (True, [])],
+-    [{'index': 2}, (False, [('root', 40, 'No matching index 2')])],
++@pytest.mark.parametrize('kwargs, rec, exp_res', [
++    [{}, TEST_PRINT_REC, (True, [])],
++    [{'is_range': True}, TEST_PRINT_REC, (True, [])],
++    [{'index': 0}, TEST_PRINT_REC, (True, [])],
++    [{'index': -1}, TEST_PRINT_REC, (True, [])],
++    [{'index': -2}, TEST_PRINT_REC, (True, [])],
++    [{'index': 2}, TEST_PRINT_REC, (False, [('root', 40, 'No matching index 2')])],
++    [{'low': -1, 'high': -1}, TEST_PRINT_REC, (True, [])],
++    [{'low': -1, 'high': -1, 'is_range': True}, TEST_PRINT_REC, (False, [('root', 40, 'Negative range boundary')])],
++    [{'low': 0, 'high': 0, 'is_range': True}, TEST_PRINT_REC, (True, [])],
++    [{'low': 0, 'high': 1, 'is_range': True}, TEST_PRINT_REC, (True, [])],
++    [{'low': 0, 'high': 2, 'is_range': True}, TEST_PRINT_REC, (True, [])],
++    [{'low': 2, 'high': 2, 'is_range': True}, TEST_PRINT_REC, (True, [])],
++    [{'low': 2, 'high': 3, 'is_range': True}, TEST_PRINT_REC, (True, [])],
++    # empty database
++    [{'is_range': True}, None, (True, [])],
++    [{'index': 0}, None, (True, [('root', 40, '0 records')])],
++    [{'index': -1}, None, (False, [('root', 40, 'Empty database')])],
++    [{'index': 1}, None, (False, [('root', 40, 'No matching index 1')])],
++    [{'low': -1, 'high': -1}, TEST_PRINT_REC, (True, [])],
++    [{'low': -1, 'high': -1, 'is_range': True}, None, (False, [('root', 40, 'Negative range boundary')])],
++    [{'low': 0, 'high': 0, 'is_range': True}, None, (True, [])],
++    [{'low': 0, 'high': 1, 'is_range': True}, None, (True, [])],
++    [{'low': 0, 'high': 2, 'is_range': True}, None, (True, [])],
++    [{'low': 2, 'high': 2, 'is_range': True}, None, (True, [])],
++    [{'low': 2, 'high': 3, 'is_range': True}, None, (True, [])],
+ ])
+-def test_print_rec(kwargs, exp_res, test_print_db, caplog):
+-    bdb = test_print_db
++def test_print_rec(setup, kwargs, rec, exp_res, tmp_path, caplog):
++    bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
++    if rec:
++        bdb.add_rec(*rec)
+     # run the function
+     assert (bdb.print_rec(**kwargs), caplog.record_tuples) == exp_res
+ 
+ 
+-@pytest.mark.parametrize('index, exp_res', [
+-    [0, (True, [('root', 40, '0 records')])],
+-    [-1, (False, [('root', 40, 'Empty database')])],
+-    [1, (False, [('root', 40, 'No matching index 1')])],
+-])
+-def test_print_rec_on_empty_db(tmp_path, caplog, index, exp_res):
+-    bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
+-    assert (bdb.print_rec(index=index), caplog.record_tuples) == exp_res
+-
+-
+ def test_list_tags(capsys, setup):
+     bdb = BukuDb()
+ 
+
+From ae088057ccf5e7f0d6b4916293b5d3b3535a71ed Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 14:52:06 +0800
+Subject: [PATCH 4/8] chg: test: simplify
+ test_delete_rec_range_and_delay_commit
+
+---
+ tests/test_bukuDb.py | 76 ++++++++++----------------------------------
+ 1 file changed, 16 insertions(+), 60 deletions(-)
+
+diff --git a/tests/test_bukuDb.py b/tests/test_bukuDb.py
+index 2142dcf3..ad1ef5ba 100644
+--- a/tests/test_bukuDb.py
++++ b/tests/test_bukuDb.py
+@@ -774,74 +774,30 @@ def test_compactdb(setup):
+ 
+ 
+ @vcr.use_cassette('tests/vcr_cassettes/test_delete_rec_range_and_delay_commit.yaml')
+-@given(
+-    low=st.integers(min_value=-10, max_value=10),
+-    high=st.integers(min_value=-10, max_value=10),
+-    delay_commit=st.booleans(),
+-    input_retval=st.characters()
+-)
+-@example(low=0, high=0, delay_commit=False, input_retval='y')
+-@settings(max_examples=2, deadline=None)
+-def test_delete_rec_range_and_delay_commit(setup, low, high, delay_commit, input_retval):
++@pytest.mark.parametrize('low, high, delay_commit, input_retval, exp_res', [
++    #  delay_commit, y input_retval
++    [0, 0, True, 'y', (True, [])],
++    #  delay_commit, non-y input_retval
++    [0, 0, True, 'x', (False, [tuple([x] + y + [0]) for x,y in zip(range(1, 4), TEST_BOOKMARKS)])],
++    #  non delay_commit, y input_retval
++    [0, 0, False, 'y', (True, [])],
++    #  non delay_commit, non-y input_retval
++    [0, 0, False, 'x', (False, [tuple([x] + y + [0]) for x,y in zip(range(1, 4), TEST_BOOKMARKS)])],
++])
++def test_delete_rec_range_and_delay_commit(setup, tmp_path, low, high, delay_commit, input_retval, exp_res):
+     """test delete rec, range and delay commit."""
+-    bdb = BukuDb()
+-    bdb_dc = BukuDb()  # instance for delay_commit check.
+-    index = 0
+-    is_range = True
++    bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
++    kwargs = {'is_range': True, 'low': low, 'high': high, 'delay_commit': delay_commit} 
++    kwargs['index'] = 0
+ 
+     # Fill bookmark
+     for bookmark in TEST_BOOKMARKS:
+         bdb.add_rec(*bookmark)
+-    db_len = len(TEST_BOOKMARKS)
+-
+-    # use normalized high and low variable
+-    n_low, n_high = normalize_range(db_len=db_len, low=low, high=high)
+-
+-    exp_res = True
+-    if n_high > db_len >= n_low:
+-        exp_db_len = db_len - (db_len + 1 - n_low)
+-    elif n_high == n_low > db_len:
+-        exp_db_len = db_len
+-        exp_res = False
+-    elif n_high == n_low <= db_len:
+-        exp_db_len = db_len - 1
+-    else:
+-        exp_db_len = db_len - (n_high + 1 - n_low)
+ 
+     with mock.patch('builtins.input', return_value=input_retval):
+-        res = bdb.delete_rec(
+-            index=index, low=low, high=high, is_range=is_range, delay_commit=delay_commit)
++        res = bdb.delete_rec(**kwargs)
+ 
+-    if n_low < 0:
+-        assert not res
+-        assert len(bdb_dc.get_rec_all()) == db_len
+-        # teardown
+-        os.environ['XDG_DATA_HOME'] = TEST_TEMP_DIR_PATH
+-        return
+-    if (low == 0 or high == 0) and input_retval != 'y':
+-        assert not res
+-        assert len(bdb_dc.get_rec_all()) == db_len
+-        # teardown
+-        os.environ['XDG_DATA_HOME'] = TEST_TEMP_DIR_PATH
+-        return
+-    if (low == 0 or high == 0) and input_retval == 'y':
+-        assert res == exp_res
+-        assert len(bdb_dc.get_rec_all()) == 0
+-        # teardown
+-        os.environ['XDG_DATA_HOME'] = TEST_TEMP_DIR_PATH
+-        return
+-    if n_low > db_len and n_low > 0:
+-        assert not res
+-        assert len(bdb_dc.get_rec_all()) == db_len
+-        # teardown
+-        os.environ['XDG_DATA_HOME'] = TEST_TEMP_DIR_PATH
+-        return
+-    assert res == exp_res
+-    assert len(bdb.get_rec_all()) == exp_db_len
+-    if delay_commit:
+-        assert len(bdb_dc.get_rec_all()) == db_len
+-    else:
+-        assert len(bdb_dc.get_rec_all()) == exp_db_len
++    assert (res, bdb.get_rec_all()) == exp_res
+ 
+     # teardown
+     os.environ['XDG_DATA_HOME'] = TEST_TEMP_DIR_PATH
+
+From 70533309146cace69cc0b1d6163d6a239e73f055 Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 15:02:25 +0800
+Subject: [PATCH 5/8] new: dev: update test package
+
+---
+ setup.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 1cda44d1..60a36a37 100644
+--- a/setup.py
++++ b/setup.py
+@@ -20,12 +20,12 @@
+     'beautifulsoup4>=4.6.0',
+     'Click>=7.0',
+     'flake8>=3.4.1',
+-    'hypothesis>=3.7.0',
++    'hypothesis>=6.0.0',
+     'mypy-extensions==0.4.1',
+     'py>=1.5.0',
+     'pylint>=1.7.2',
+     'pytest-cov',
+-    'pytest>=3.4.2',
++    'pytest>=6.2.1',
+     'PyYAML>=4.2b1',
+     'setuptools>=41.0.1',
+     'vcrpy>=1.13.0',
+
+From 61592a42dcd1cadf168934a0fc74cb42da5fed0f Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 15:29:00 +0800
+Subject: [PATCH 6/8] fix: test: pylint
+
+---
+ buku                 | 2 +-
+ tests/test_bukuDb.py | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/buku b/buku
+index a18c6b47..df2e1f8d 100755
+--- a/buku
++++ b/buku
+@@ -1658,7 +1658,7 @@ class BukuDb:
+ 
+         return False
+ 
+-    def print_rec(self, index : int = 0 , low : int = 0, high : int = 0, is_range : bool = False) -> bool:
++    def print_rec(self, index: int = 0, low: int = 0, high: int = 0, is_range: bool = False) -> bool:
+         """Print bookmark details at index or all bookmarks if index is 0.
+ 
+         A negative index behaves like tail, if title is blank show "Untitled".
+diff --git a/tests/test_bukuDb.py b/tests/test_bukuDb.py
+index ad1ef5ba..e22ddacb 100644
+--- a/tests/test_bukuDb.py
++++ b/tests/test_bukuDb.py
+@@ -19,7 +19,7 @@
+ import pytest
+ import vcr
+ import yaml
+-from hypothesis import HealthCheck, example, given, settings
++from hypothesis import example, given, settings
+ from hypothesis import strategies as st
+ 
+ from buku import BukuDb, parse_tags, prompt
+@@ -778,16 +778,16 @@ def test_compactdb(setup):
+     #  delay_commit, y input_retval
+     [0, 0, True, 'y', (True, [])],
+     #  delay_commit, non-y input_retval
+-    [0, 0, True, 'x', (False, [tuple([x] + y + [0]) for x,y in zip(range(1, 4), TEST_BOOKMARKS)])],
++    [0, 0, True, 'x', (False, [tuple([x] + y + [0]) for x, y in zip(range(1, 4), TEST_BOOKMARKS)])],
+     #  non delay_commit, y input_retval
+     [0, 0, False, 'y', (True, [])],
+     #  non delay_commit, non-y input_retval
+-    [0, 0, False, 'x', (False, [tuple([x] + y + [0]) for x,y in zip(range(1, 4), TEST_BOOKMARKS)])],
++    [0, 0, False, 'x', (False, [tuple([x] + y + [0]) for x, y in zip(range(1, 4), TEST_BOOKMARKS)])],
+ ])
+ def test_delete_rec_range_and_delay_commit(setup, tmp_path, low, high, delay_commit, input_retval, exp_res):
+     """test delete rec, range and delay commit."""
+     bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
+-    kwargs = {'is_range': True, 'low': low, 'high': high, 'delay_commit': delay_commit} 
++    kwargs = {'is_range': True, 'low': low, 'high': high, 'delay_commit': delay_commit}
+     kwargs['index'] = 0
+ 
+     # Fill bookmark
+
+From 961071eac597206c63aac5c20e692f8b269d0171 Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 15:41:46 +0800
+Subject: [PATCH 7/8] fix: test: pylint wrong import order
+
+---
+ tests/test_bukuDb.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_bukuDb.py b/tests/test_bukuDb.py
+index e22ddacb..32738260 100644
+--- a/tests/test_bukuDb.py
++++ b/tests/test_bukuDb.py
+@@ -12,9 +12,9 @@
+ import unittest
+ import urllib
+ import zipfile
+-from genericpath import exists
+ from tempfile import NamedTemporaryFile, TemporaryDirectory
+ from unittest import mock
++from genericpath import exists
+ 
+ import pytest
+ import vcr
+
+From c51d454f2f7ff35995265f276a5d96adb5aff995 Mon Sep 17 00:00:00 2001
+From: rachmadaniHaryono <foreturiga@gmail.com>
+Date: Sat, 9 Jan 2021 15:42:00 +0800
+Subject: [PATCH 8/8] chg: test: remove unused fixture
+
+---
+ tests/test_bukuDb.py | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/tests/test_bukuDb.py b/tests/test_bukuDb.py
+index 32738260..23f2f84a 100644
+--- a/tests/test_bukuDb.py
++++ b/tests/test_bukuDb.py
+@@ -686,16 +686,6 @@ def test_refreshdb(refreshdb_fixture, title_in, exp_res):
+     assert from_db[2] == exp_res, 'from_db: {}'.format(from_db)
+ 
+ 
+-@pytest.fixture
+-def test_print_db(tmp_path):
+-    bdb = BukuDb(dbfile=tmp_path / 'tmp.db')
+-    # clear all record first before testing
+-    bdb.delete_rec_all()
+-    bdb.add_rec
+-    yield bdb
+-    bdb.delete_rec(index=1)
+-
+-
+ @pytest.fixture
+ def test_print_caplog(caplog):
+     caplog.handler.records.clear()

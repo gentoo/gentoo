@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/lzo
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[jpeg]
 	dev-qt/qtnetwork:5
 	dev-qt/qtscript:5
 	dev-qt/qtsql:5[mysql]

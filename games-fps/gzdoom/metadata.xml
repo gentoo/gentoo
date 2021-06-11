@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>vilhelm.gray@gmail.com</email>
 		<name>William Breathitt Gray</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -14,7 +14,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="gtk2">Enable support for GTK+2 instead of GTK+3</flag>
 		<flag name="non-free">Enable non-free components</flag>
 	</use>
 	<upstream>

@@ -16,6 +16,9 @@ Extend Racket whenever you need to. Mold it to better suit your tasks without sa
 Whether you're just starting out, want to know more about programming language applications or models, looking to expand your horizons, or ready to dive into research, Racket can help you become a better programmer and system builder.
   </longdescription>
   <use>
+    <flag name="chez">
+      Build Racket on Chez (Racket CS)
+    </flag>
     <flag name="futures"> 
       Enable racket/future library for fine-grained hardware parallelism
     </flag>

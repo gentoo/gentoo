@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		The Holy Bible Containing the Old and the New Testaments. Version of Cipriano de Valera (1602) Revised &amp; corrected (1865) With updated orthography (2018).
 

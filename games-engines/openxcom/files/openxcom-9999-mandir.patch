@@ -1,0 +1,9 @@
+--- a/docs/CMakeLists.txt	2021-02-27 13:15:37.168240019 +0100
++++ b/docs/CMakeLists.txt	2021-02-27 13:16:28.640486232 +0100
+@@ -38,5 +38,5 @@
+ 
+ # Only useful for make install/package under *nix OSes, but not macOS.
+ if ( UNIX AND NOT APPLE )
+-    INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man6)
++    INSTALL(FILES ${CMAKE_CURRENT_SOURCE_DIR}/openxcom.6 DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man6)
+ endif ()

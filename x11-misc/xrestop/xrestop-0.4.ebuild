@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="'Top' like statistics of X11 client's server side resource usage"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/xrestop"
@@ -19,13 +20,18 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
-	eautoreconf
-}
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tinfo.patch
+)
+
+src_prepare() {
+	default
+
+	eautoreconf
+}

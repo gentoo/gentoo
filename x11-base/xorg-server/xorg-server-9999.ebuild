@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,12 +15,12 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug +elogind ipv6 libressl minimal selinux suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug +elogind ipv6 minimal selinux suid systemd test +udev unwind xcsecurity"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	media-libs/libglvnd[X]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	>=x11-apps/iceauth-1.0.2
 	>=x11-apps/rgb-1.0.3
 	>=x11-apps/xauth-1.0.3
@@ -33,7 +33,6 @@ CDEPEND="
 	>=x11-libs/libxkbfile-1.0.4
 	>=x11-libs/libxshmfence-1.1
 	>=x11-libs/pixman-0.27.2
-	>=x11-libs/xtrans-1.3.5
 	>=x11-misc/xbitmaps-1.0.1
 	>=x11-misc/xkeyboard-config-2.4.1-r3
 	dmx? (
@@ -84,12 +83,11 @@ CDEPEND="
 		sys-auth/elogind[pam]
 		sys-auth/pambase[elogind]
 	)
-	!!x11-drivers/nvidia-drivers[-libglvnd(-)]
+	!!x11-drivers/nvidia-drivers[-libglvnd(+)]
 "
-
 DEPEND="${CDEPEND}
-	sys-devel/flex
 	>=x11-base/xorg-proto-2018.4
+	>=x11-libs/xtrans-1.3.5
 	dmx? (
 		doc? (
 			|| (
@@ -98,12 +96,16 @@ DEPEND="${CDEPEND}
 				www-client/w3m
 			)
 		)
-	)"
-
+	)
+"
 RDEPEND="${CDEPEND}
+	!systemd? ( gui-libs/display-manager-init )
 	selinux? ( sec-policy/selinux-xserver )
 "
-
+BDEPEND="
+	sys-devel/flex
+	wayland? ( dev-util/wayland-scanner )
+"
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
 
@@ -131,17 +133,20 @@ pkg_setup() {
 		ewarn "Performance may be unacceptable without it."
 		ewarn "Build with USE=-minimal to enable glamor."
 	fi
+}
 
+src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
 	# NOTE: fop is used for doc generating; and I have no idea if Gentoo
 	#	package it somewhere
-	XORG_CONFIGURE_OPTIONS=(
+	local XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ipv6)
 		$(use_enable debug)
 		$(use_enable dmx)
 		$(use_enable kdrive)
+		$(use_enable test unit-tests)
 		$(use_enable unwind libunwind)
 		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
@@ -175,16 +180,27 @@ pkg_setup() {
 
 	if use systemd || use elogind; then
 		XORG_CONFIGURE_OPTIONS+=(
-			"--enable-systemd-logind"
-			"--disable-install-setuid"
-			"$(use_enable suid suid-wrapper)"
+			--enable-systemd-logind
+			--disable-install-setuid
+			$(use_enable suid suid-wrapper)
 		)
 	else
 		XORG_CONFIGURE_OPTIONS+=(
-			"--disable-systemd-logind"
-			"--disable-suid-wrapper"
-			"$(use_enable suid install-setuid)"
+			--disable-systemd-logind
+			--disable-suid-wrapper
+			$(use_enable suid install-setuid)
 		)
+	fi
+
+	xorg-3_src_configure
+}
+
+server_based_install() {
+	if ! use xorg; then
+		rm -f "${ED}"/usr/share/man/man1/Xserver.1x \
+			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
+			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
+			"${ED}"/usr/share/man/man1/Xserver.1x || die
 	fi
 }
 
@@ -198,10 +214,6 @@ src_install() {
 		dodoc "${S}"/hw/xfree86/xorg.conf.example
 	fi
 
-	newinitd "${FILESDIR}"/xdm-setup.initd-1 xdm-setup
-	newinitd "${FILESDIR}"/xdm.initd-11 xdm
-	newconfd "${FILESDIR}"/xdm.confd-4 xdm
-
 	# install the @x11-module-rebuild set for Portage
 	insinto /usr/share/portage/config/sets
 	newins "${FILESDIR}"/xorg-sets.conf xorg.conf
@@ -213,14 +225,5 @@ pkg_postrm() {
 	# Get rid of module dir to ensure opengl-update works properly
 	if [[ -z ${REPLACED_BY_VERSION} && -e ${EROOT}/usr/$(get_libdir)/xorg/modules ]]; then
 		rm -rf "${EROOT}"/usr/$(get_libdir)/xorg/modules
-	fi
-}
-
-server_based_install() {
-	if ! use xorg; then
-		rm "${ED}"/usr/share/man/man1/Xserver.1x \
-			"${ED}"/usr/$(get_libdir)/xserver/SecurityPolicy \
-			"${ED}"/usr/$(get_libdir)/pkgconfig/xorg-server.pc \
-			"${ED}"/usr/share/man/man1/Xserver.1x
 	fi
 }

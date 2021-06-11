@@ -1,0 +1,11 @@
+diff -Naur wmpasman-2.2.orig/configure.ac wmpasman-2.2/configure.ac
+--- wmpasman-2.2.orig/configure.ac	2018-12-16 17:39:47.000000000 +0100
++++ wmpasman-2.2/configure.ac	2021-01-03 00:17:27.934691093 +0100
+@@ -9,6 +9,7 @@
+ AC_SUBST(VERSION)
+ 
+ # Checks for programs.
++AM_PROG_AR
+ AC_PROG_AWK
+ AC_PROG_CC
+ AC_PROG_CC_STDC

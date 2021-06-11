@@ -1,6 +1,5 @@
-diff -Naur cdb-0.75-orig/cdb.c cdb-0.75/cdb.c
---- cdb-0.75-orig/cdb.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdb.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdb.c
++++ b/cdb.c
 @@ -41,7 +41,7 @@
      }
  }
@@ -30,9 +29,8 @@ diff -Naur cdb-0.75-orig/cdb.c cdb-0.75/cdb.c
  
    if (!c->loop) {
      u = cdb_hash(key,len);
-diff -Naur cdb-0.75-orig/cdbdump.c cdb-0.75/cdbdump.c
---- cdb-0.75-orig/cdbdump.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdbdump.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdbdump.c
++++ b/cdbdump.c
 @@ -18,7 +18,7 @@
    if (buffer_flush(buffer_1) == -1) die_write();
  }
@@ -73,9 +71,8 @@ diff -Naur cdb-0.75-orig/cdbdump.c cdb-0.75/cdbdump.c
  
    getnum(&eod);
    while (pos < 2048) getnum(&dlen);
-diff -Naur cdb-0.75-orig/cdbget.c cdb-0.75/cdbget.c
---- cdb-0.75-orig/cdbget.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdbget.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdbget.c
++++ b/cdbget.c
 @@ -27,8 +27,8 @@
  {
    char *key;
@@ -87,9 +84,8 @@ diff -Naur cdb-0.75-orig/cdbget.c cdb-0.75/cdbget.c
    unsigned long u = 0;
  
    if (!*argv) die_usage();
-diff -Naur cdb-0.75-orig/cdb.h cdb-0.75/cdb.h
---- cdb-0.75-orig/cdb.h	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdb.h	2009-01-16 19:46:17.000000000 +0100
+--- a/cdb.h
++++ b/cdb.h
 @@ -6,26 +6,26 @@
  #include "uint32.h"
  
@@ -128,9 +124,8 @@ diff -Naur cdb-0.75-orig/cdb.h cdb-0.75/cdb.h
  
  extern void cdb_findstart(struct cdb *);
  extern int cdb_findnext(struct cdb *,char *,unsigned int);
-diff -Naur cdb-0.75-orig/cdb_hash.c cdb-0.75/cdb_hash.c
---- cdb-0.75-orig/cdb_hash.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdb_hash.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdb_hash.c
++++ b/cdb_hash.c
 @@ -2,15 +2,15 @@
  
  #include "cdb.h"
@@ -150,9 +145,8 @@ diff -Naur cdb-0.75-orig/cdb_hash.c cdb-0.75/cdb_hash.c
  
    h = CDB_HASHSTART;
    while (len) {
-diff -Naur cdb-0.75-orig/cdb_make.c cdb-0.75/cdb_make.c
---- cdb-0.75-orig/cdb_make.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdb_make.c	2009-01-16 19:51:05.000000000 +0100
+--- a/cdb_make.c
++++ b/cdb_make.c
 @@ -19,15 +19,15 @@
    return seek_set(fd,c->pos);
  }
@@ -198,9 +192,8 @@ diff -Naur cdb-0.75-orig/cdb_make.c cdb-0.75/cdb_make.c
    u /= sizeof(struct cdb_hp);
    if (memsize > u) { errno = error_nomem; return -1; }
  
-diff -Naur cdb-0.75-orig/cdbmake.c cdb-0.75/cdbmake.c
---- cdb-0.75-orig/cdbmake.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdbmake.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdbmake.c
++++ b/cdbmake.c
 @@ -41,7 +41,7 @@
    unsigned int klen;
    unsigned int dlen;
@@ -210,9 +203,8 @@ diff -Naur cdb-0.75-orig/cdbmake.c cdb-0.75/cdbmake.c
    int fd;
    char ch;
  
-diff -Naur cdb-0.75-orig/cdb_make.h cdb-0.75/cdb_make.h
---- cdb-0.75-orig/cdb_make.h	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdb_make.h	2009-01-16 19:46:17.000000000 +0100
+--- a/cdb_make.h
++++ b/cdb_make.h
 @@ -8,7 +8,7 @@
  
  #define CDB_HPLIST 1000
@@ -248,9 +240,8 @@ diff -Naur cdb-0.75-orig/cdb_make.h cdb-0.75/cdb_make.h
  extern int cdb_make_add(struct cdb_make *,char *,unsigned int,char *,unsigned int);
  extern int cdb_make_finish(struct cdb_make *);
  
-diff -Naur cdb-0.75-orig/cdbstats.c cdb-0.75/cdbstats.c
---- cdb-0.75-orig/cdbstats.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdbstats.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdbstats.c
++++ b/cdbstats.c
 @@ -28,7 +28,7 @@
    if (buffer_flush(buffer_1small) == -1) die_write();
  }
@@ -282,9 +273,8 @@ diff -Naur cdb-0.75-orig/cdbstats.c cdb-0.75/cdbstats.c
    seek_pos rest;
    int r;
  
-diff -Naur cdb-0.75-orig/cdbtest.c cdb-0.75/cdbtest.c
---- cdb-0.75-orig/cdbtest.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/cdbtest.c	2009-01-16 19:46:17.000000000 +0100
+--- a/cdbtest.c
++++ b/cdbtest.c
 @@ -24,7 +24,7 @@
    if (buffer_flush(buffer_1small) == -1) die_write();
  }
@@ -316,9 +306,8 @@ diff -Naur cdb-0.75-orig/cdbtest.c cdb-0.75/cdbtest.c
    seek_pos rest;
    int r;
  
-diff -Naur cdb-0.75-orig/Makefile cdb-0.75/Makefile
---- cdb-0.75-orig/Makefile	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/Makefile	2009-01-16 19:46:17.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -298,13 +298,6 @@
  uint32.h
  	./compile testzero.c
@@ -333,9 +322,8 @@ diff -Naur cdb-0.75-orig/Makefile cdb-0.75/Makefile
  uint32_pack.o: \
  compile uint32_pack.c uint32.h
  	./compile uint32_pack.c
-diff -Naur cdb-0.75-orig/TARGETS cdb-0.75/TARGETS
---- cdb-0.75-orig/TARGETS	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/TARGETS	2009-01-16 19:52:06.000000000 +0100
+--- a/TARGETS
++++ b/TARGETS
 @@ -1,6 +1,5 @@
  load
  compile
@@ -343,9 +331,8 @@ diff -Naur cdb-0.75-orig/TARGETS cdb-0.75/TARGETS
  cdbget.o
  systype
  makelib
-diff -Naur cdb-0.75-orig/uint32.h cdb-0.75/uint32.h
---- cdb-0.75-orig/uint32.h	1970-01-01 01:00:00.000000000 +0100
-+++ cdb-0.75/uint32.h	2009-01-16 19:46:17.000000000 +0100
+--- a/uint32.h
++++ b/uint32.h
 @@ -0,0 +1,11 @@
 +#ifndef UINT32_H
 +#define UINT32_H
@@ -358,9 +345,8 @@ diff -Naur cdb-0.75-orig/uint32.h cdb-0.75/uint32.h
 +extern void uint32_unpack_big(char *,uint32_t *);
 +
 +#endif
-diff -Naur cdb-0.75-orig/uint32.h1 cdb-0.75/uint32.h1
---- cdb-0.75-orig/uint32.h1	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/uint32.h1	1970-01-01 01:00:00.000000000 +0100
+--- a/uint32.h1
++++ b/uint32.h1
 @@ -1,11 +0,0 @@
 -#ifndef UINT32_H
 -#define UINT32_H
@@ -373,9 +359,8 @@ diff -Naur cdb-0.75-orig/uint32.h1 cdb-0.75/uint32.h1
 -extern void uint32_unpack_big(char *,uint32 *);
 -
 -#endif
-diff -Naur cdb-0.75-orig/uint32.h2 cdb-0.75/uint32.h2
---- cdb-0.75-orig/uint32.h2	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/uint32.h2	1970-01-01 01:00:00.000000000 +0100
+--- a/uint32.h2
++++ b/uint32.h2
 @@ -1,11 +0,0 @@
 -#ifndef UINT32_H
 -#define UINT32_H
@@ -388,9 +373,8 @@ diff -Naur cdb-0.75-orig/uint32.h2 cdb-0.75/uint32.h2
 -extern void uint32_unpack_big(char *,uint32 *);
 -
 -#endif
-diff -Naur cdb-0.75-orig/uint32_pack.c cdb-0.75/uint32_pack.c
---- cdb-0.75-orig/uint32_pack.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/uint32_pack.c	2009-01-16 19:46:17.000000000 +0100
+--- a/uint32_pack.c
++++ b/uint32_pack.c
 @@ -1,6 +1,6 @@
  #include "uint32.h"
  
@@ -408,9 +392,8 @@ diff -Naur cdb-0.75-orig/uint32_pack.c cdb-0.75/uint32_pack.c
  {
    s[3] = u & 255;
    u >>= 8;
-diff -Naur cdb-0.75-orig/uint32_unpack.c cdb-0.75/uint32_unpack.c
---- cdb-0.75-orig/uint32_unpack.c	2009-01-16 19:38:41.000000000 +0100
-+++ cdb-0.75/uint32_unpack.c	2009-01-16 19:46:17.000000000 +0100
+--- a/uint32_unpack.c
++++ b/uint32_unpack.c
 @@ -1,8 +1,8 @@
  #include "uint32.h"
  

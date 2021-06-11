@@ -1,5 +1,5 @@
---- 44-wqy-zenhei.conf.old	2014-02-14 00:41:31.277115976 +0100
-+++ 44-wqy-zenhei.conf	2014-02-14 00:43:18.985123207 +0100
+--- a/44-wqy-zenhei.conf
++++ b/44-wqy-zenhei.conf
 @@ -4,9 +4,35 @@
  <fontconfig>
    <!-- modified by Madsen@SMTH -->

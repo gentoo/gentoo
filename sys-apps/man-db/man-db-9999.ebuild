@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit systemd
+inherit systemd prefix
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -36,6 +36,8 @@ BDEPEND="
 	nls? (
 		>=app-text/po4a-0.45
 		sys-devel/gettext
+		virtual/libiconv
+		virtual/libintl
 	)
 "
 RDEPEND="
@@ -48,6 +50,7 @@ PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
 	"${FILESDIR}"/man-db-2.9.3-sandbox-env-tests.patch
+	"${FILESDIR}"/man-db-2.9.3-darwin-libdb-intl.patch
 )
 
 pkg_setup() {
@@ -84,21 +87,56 @@ src_prepare() {
 
 		eautoreconf
 	fi
+
+	hprefixify src/man_db.conf.in
+	if use prefix ; then
+		{
+			echo "#"
+			echo "# Added settings for Gentoo Prefix"
+			[[ ${CHOST} == *-darwin* ]] && \
+				echo "MANDATORY_MANPATH ${EPREFIX}/MacOSX.sdk/usr/share/man"
+			echo "MANDATORY_MANPATH /usr/share/man"
+		} >> src/man_db.conf.in
+	fi
 }
 
 src_configure() {
+	# set sections we want to search by default
+	local sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o"
+	sections+=" 1x 2x 3x 4x 5x 6x 7x 8x"
+	case ${CHOST} in
+		*-solaris*)
+			# Solaris tends to use sections named after the pkgs that
+			# owns them, in particular for libc functions we want those
+			# sections
+			local s
+			for s in $(cd /usr/share/man/ && echo man*) ; do
+				s=${s#man}
+				[[ " ${sections} " != *" ${s} "* ]] && sections+=" ${s}"
+			done
+			;;
+	esac
+
 	export ac_cv_lib_z_gzopen=$(usex zlib)
 	local myeconfargs=(
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--disable-setuid #662438
 		--enable-cache-owner=man
-		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
+		--with-sections="${sections}"
 		$(use_enable nls)
 		$(use_enable static-libs static)
 		$(use_with seccomp libseccomp)
 		--with-db=$(usex gdbm gdbm $(usex berkdb db gdbm))
 	)
+	case ${CHOST} in
+		*-solaris*|*-darwin*)
+			myeconfargs+=(
+				$(use_with nls libiconv-prefix ${EPREFIX}/usr)
+				$(use_with nls libintl-prefix ${EPREFIX}/usr)
+			)
+			;;
+	esac
 	econf "${myeconfargs[@]}"
 
 	# Disable color output from groff so that the manpager can add it. #184604

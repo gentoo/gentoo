@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -10,7 +10,7 @@
 # This eclass is intended to streamline the creation of ebuilds for packages
 # that use cmake and KDE Frameworks' extra-cmake-modules, thereby following
 # some of their packaging conventions. It is primarily intended for the three
-# upstream release groups (Frameworks, Plasma, Applications) but also for any
+# upstream release groups (Frameworks, Plasma, Gear) but also for any
 # other package that follows similar conventions.
 #
 # This eclass unconditionally inherits cmake.eclass and all its public
@@ -19,6 +19,17 @@
 #
 # This eclass's phase functions are not intended to be mixed and matched, so if
 # any phase functions are overridden the version here should also be called.
+
+case ${EAPI} in
+	7) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+if [[ -v KDE_GCC_MINIMAL ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
 
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
@@ -47,17 +58,6 @@ inherit cmake flag-o-matic toolchain-funcs virtualx
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
 fi
-
-case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-if [[ -v KDE_GCC_MINIMAL ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: ECM_KDEINSTALLDIRS
 # @DESCRIPTION:

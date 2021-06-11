@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,9 @@ IUSE="ldap"
 
 BDEPEND="sys-devel/gettext"
 
+# >=dev-lang/php-8:curly braces string offset access was removed (Bug 764908)
 RDEPEND="app-admin/pwgen
-	dev-lang/php:*[calendar,curl,iconv,imap,ldap?,nls,pdo,postgres,xml]
+	<dev-lang/php-8:*[calendar,curl,iconv,imap,ldap?,nls,pdo,postgres,xml]
 	dev-perl/DBD-Pg
 	dev-perl/DBI
 	dev-perl/YAML

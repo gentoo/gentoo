@@ -8,6 +8,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">zopefoundation/zope.configuration</remote-id>
 		<remote-id type="pypi">zope.configuration</remote-id>

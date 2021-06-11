@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+drun test +windowmode"
 RESTRICT="!test? ( test )"
 
@@ -41,19 +41,21 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.12-Werror.patch
 	"${FILESDIR}"/${PN}-1.5.0-gtk-settings-test.patch
+	"${FILESDIR}"/${PN}-1.6.1-autoconf-2.70.patch
 )
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
 src_configure() {
 	tc-export CC
 
-	econf \
-		$(use_enable drun) \
-		$(use_enable test check) \
+	local myeconfargs=(
+		$(use_enable drun)
+		$(use_enable test check)
 		$(use_enable windowmode)
+	)
+	econf "${myeconfargs[@]}"
 }

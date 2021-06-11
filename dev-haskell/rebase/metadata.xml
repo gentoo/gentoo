@@ -13,9 +13,9 @@
 		
 		To solve those problems this package does the following:
 		
-		* Reexport the original APIs under the \&quot;Rebase\&quot; namespace.
+		* Reexport the original APIs under the \"Rebase\" namespace.
 		
-		* Export all the possible non-conflicting symbols from the \&quot;Rebase.Prelude\&quot; module.
+		* Export all the possible non-conflicting symbols from the \"Rebase.Prelude\" module.
 		
 		* Give priority to the modern practices in the conflicting cases.
 		

@@ -5,6 +5,7 @@
 		<email>mattst88@gentoo.org</email>
 		<name>Matt Turner</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">eclipse/paho.mqtt.python</remote-id>
 		<remote-id type="pypi">paho-mqtt</remote-id>

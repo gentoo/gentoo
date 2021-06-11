@@ -7,12 +7,13 @@ QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="Network abstraction library for the Qt5 framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-${PV}-gcc11.patch.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
 fi
 
-IUSE="bindist connman gssapi libressl libproxy networkmanager sctp +ssl"
+IUSE="bindist connman gssapi libproxy networkmanager sctp +ssl"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}:5=
@@ -23,8 +24,7 @@ DEPEND="
 	networkmanager? ( ~dev-qt/qtdbus-${PV} )
 	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1.1:0=[bindist=] )
-		libressl? ( dev-libs/libressl:0= )
+		>=dev-libs/openssl-1.1.1:0=[bindist=]
 	)
 "
 RDEPEND="${DEPEND}
@@ -50,7 +50,7 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-QNetworkAccessManager-memleak.patch # QTBUG-88063
-	"${FILESDIR}"/${PN}-5.15.2-libressl.patch # Bug 562050, not upstreamable
+	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 752012
 )
 
 pkg_setup() {

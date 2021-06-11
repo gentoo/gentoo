@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit multilib toolchain-funcs
 
 MY_PN=UFconfig
 DESCRIPTION="Common configuration scripts for the SuiteSparse libraries"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_PN}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="static-libs"
 
 src_compile() {

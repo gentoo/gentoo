@@ -1,9 +1,7 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-inherit multiprocessing
 
 DESCRIPTION="A composable build system for OCaml"
 HOMEPAGE="https://github.com/ocaml/dune"
@@ -14,10 +12,9 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 x86"
 IUSE="test"
 
-DEPEND="dev-lang/ocaml"
+DEPEND=">=dev-lang/ocaml-4.07:="
 RDEPEND="${DEPEND}
 	!dev-ml/jbuilder"
-BDEPEND=""
 
 RESTRICT="test"
 
@@ -27,6 +24,6 @@ src_configure() {
 
 src_install() {
 	default
-	mv "${D}"/usr/doc "${D}"/usr/share/doc/${PF}
-	mv "${D}"/usr/man "${D}"/usr/share/man
+	mv "${ED}"/usr/doc "${ED}"/usr/share/doc/${PF} || die
+	mv "${ED}"/usr/man "${ED}"/usr/share/man || die
 }

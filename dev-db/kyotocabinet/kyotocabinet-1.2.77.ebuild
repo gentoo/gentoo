@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit autotools toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="https://fallabs.com/kyotocabinet/pkg/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="debug doc examples +lzma +lzo static-libs"
 
 DEPEND="sys-libs/zlib[static-libs?]
@@ -57,13 +57,12 @@ src_install() {
 		find "${ED}" -name '*.a' -delete || die
 	fi
 
-	if use examples; then
-		insinto /usr/share/${PF}/example
-		doins example/*
+	if use doc; then
+		dodoc -r doc/*
 	fi
 
-	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins -r doc/*
+	if use examples; then
+		docinto example
+		dodoc example/*
 	fi
 }

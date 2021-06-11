@@ -1,26 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop eutils unpacker
+
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Space Pirates and Zombies"
 HOMEPAGE="http://minmax-games.com/SpacePiratesAndZombies/"
 SRC_URI="${PN}-linux-humblebundle-09182012-bin"
+S="${WORKDIR}"/data
+
 LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="alsa pulseaudio"
 RESTRICT="bindist fetch strip"
 
-DEPEND=""
-BDEPEND="app-arch/unzip"
 RDEPEND="
 	>=media-libs/openal-1.15.1[alsa?,pulseaudio?,abi_x86_32(-)]
 	>=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]
 "
-
-S="${WORKDIR}"/data
+BDEPEND="app-arch/unzip"
 
 QA_PREBUILT="opt/spaz/SPAZ"
 
@@ -29,10 +29,10 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir=/opt/${PN}
 
-	insinto "${dir}"
-	exeinto "${dir}"
+	insinto ${dir}
+	exeinto ${dir}
 	doexe SPAZ
 	doins -r common game mods
 	doins audio.so

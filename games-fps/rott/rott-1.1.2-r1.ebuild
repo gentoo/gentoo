@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
 
 DESCRIPTION="Rise of the Triad for Linux!"
 HOMEPAGE="http://www.icculus.org/rott/"

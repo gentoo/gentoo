@@ -6,20 +6,20 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
-		With the function &#39;Test.Tasty.ExpectedFailure.expectFail&#39; in the provided module
-		&quot;Test.Tasty.ExpectedFailure&quot;, you can mark that you expect test cases to fail,
+		With the function 'Test.Tasty.ExpectedFailure.expectFail' in the provided module
+		"Test.Tasty.ExpectedFailure", you can mark that you expect test cases to fail,
 		and not to pass.
 		
 		This can for example be used for test-driven development: Create the tests,
-		mark them with &#39;Test.Tasty.ExpectedFailure.expectFail&#39;, and you can still push
+		mark them with 'Test.Tasty.ExpectedFailure.expectFail', and you can still push
 		to the main branch, without your continuous integration branch failing.
 		
 		Once someone implements the feature or fixes the bug (maybe unknowingly), the
 		test suite will tell him so, due to the now unexpectedly passing test, and he
-		can remove the &#39;Test.Tasty.ExpectedFailure.expectFail&#39; marker.
+		can remove the 'Test.Tasty.ExpectedFailure.expectFail' marker.
 		
-		The module also provides &#39;Test.Tasty.ExpectedFailure.ignoreTest&#39; to avoid
+		The module also provides 'Test.Tasty.ExpectedFailure.ignoreTest' to avoid
 		running a test. Both funtions are implemented via the more general
-		&#39;Test.Tasty.ExpectedFailure.warpTest&#39;, which is also provided.
+		'Test.Tasty.ExpectedFailure.warpTest', which is also provided.
 	</longdescription>
 </pkgmetadata>

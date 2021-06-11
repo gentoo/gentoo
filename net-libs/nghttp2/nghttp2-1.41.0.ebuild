@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: Add python support.
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="HTTP/2 C Library"
@@ -20,13 +20,12 @@ HOMEPAGE="https://nghttp2.org/"
 
 LICENSE="MIT"
 SLOT="0/1.14" # <C++>.<C> SONAMEs
-IUSE="cxx debug hpack-tools jemalloc libressl static-libs test +threads utils xml"
+IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
 
 RESTRICT="!test? ( test )"
 
 SSL_DEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+	>=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}]
 "
 RDEPEND="
 	cxx? (

@@ -5,7 +5,7 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>lumin@debian.org</email>
     <name>Mo Zhou</name>
   </maintainer>

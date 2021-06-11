@@ -1,5 +1,3 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 08027ce..8884585 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -121,13 +121,7 @@ if(BLAS_FOUND)

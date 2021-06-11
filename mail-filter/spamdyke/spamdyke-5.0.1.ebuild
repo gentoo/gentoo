@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="A drop-in connection-time spam filter for qmail"
 HOMEPAGE="http://www.spamdyke.org/"
@@ -12,12 +12,11 @@ SRC_URI="http://www.spamdyke.org/releases/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl +ssl"
+IUSE="+ssl"
 
 DEPEND="
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		dev-libs/openssl:0=
 	)"
 
 RDEPEND="

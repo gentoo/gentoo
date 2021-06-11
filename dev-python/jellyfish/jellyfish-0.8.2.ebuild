@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
@@ -12,28 +12,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 x86"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+BDEPEND="
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/unicodecsv[${PYTHON_USEDEP}]
 	)
 "
 
-python_compile_all() {
-	if use doc; then
-		esetup.py build_sphinx
-		HTML_DOCS=( build/sphinx/html/. )
-	fi
-}
+distutils_enable_sphinx docs --no-autodoc
+distutils_enable_tests pytest
 
 python_test() {
 	cp -r testdata "${BUILD_DIR}" || die
 	cd "${BUILD_DIR}" || die
-	pytest -vv lib/jellyfish/test.py || die "tests failed with ${EPYTHON}"
+	epytest lib/jellyfish/test.py
 }

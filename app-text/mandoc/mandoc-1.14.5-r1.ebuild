@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="cgi system-man"
 
 RDEPEND="sys-libs/zlib
@@ -24,7 +24,10 @@ BDEPEND="
 	cgi? ( app-text/highlight )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.14.5-r1-www-install.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-r1-www-install.patch
+	"${FILESDIR}"/${PN}-1.14.5-gcc10.patch
+)
 
 pkg_pretend() {
 	if use system-man ; then
@@ -93,6 +96,10 @@ src_prepare() {
 	if [[ -n "${MANDOC_CGI_H}" ]]; then
 		cp "${MANDOC_CGI_H}" cgi.h || die
 	fi
+
+	# ./configure does not propagate all configure.local
+	# settings to Makefile.local settings.
+	tc-export AR
 }
 
 src_compile() {

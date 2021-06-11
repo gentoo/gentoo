@@ -7,12 +7,13 @@
   </maintainer>
   <use>
     <flag name="agent">Enable update notification agent</flag>
+    <flag name="archive">Use <pkg>app-arch/libarchive</pkg> for archives support</flag>
     <flag name="amt">Build and install Intel AMT plugin</flag>
     <flag name="dell">Enable Dell-specific support.</flag>
     <flag name="flashrom">Enable flashrom plugin via <pkg>sys-apps/flashrom</pkg></flag>
-    <flag name="man">Build and install man pages</flag>
+    <flag name="gusb">Enable <pkg>dev-libs/libgusb</pkg> support</flag>
     <flag name="nvme">Build and install NVMe plugin</flag>
-    <flag name="redfish">Install redfish plugin</flag>
+    <flag name="spi">Install Intel-SPI plugin</flag>
     <flag name="synaptics">Install synaptics plugin</flag>
     <flag name="thunderbolt">Install Thunderbolt plugin</flag>
     <flag name="tpm">Install Trusted Platform Module plugin</flag>

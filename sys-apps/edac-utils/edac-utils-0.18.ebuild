@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-
-inherit eutils ltprune
 
 DESCRIPTION="Userspace helper for Linux kernel EDAC drivers"
 HOMEPAGE="https://github.com/grondo/edac-utils"
@@ -11,7 +9,7 @@ SRC_URI="https://github.com/grondo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~arm64"
 IUSE="debug"
 
 DEPEND="sys-fs/sysfsutils"
@@ -38,7 +36,7 @@ src_install() {
 	# The rest is done via the udev-rule
 	rm -rf "${D}/etc/init.d"
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

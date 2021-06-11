@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools eutils multilib qmake-utils
+PYTHON_COMPAT=( python3_{6..9} )
+
+inherit autotools multilib python-any-r1 qmake-utils
 
 MY_P=qp${PV}
 
@@ -13,7 +15,7 @@ SRC_URI="http://www.itee.uq.edu.au/~pjr/HomePages/QPFiles/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug doc examples pedro qt5 readline threads"
 
 RDEPEND="
@@ -26,15 +28,19 @@ RDEPEND="
 	pedro? ( net-misc/pedro )
 	readline? ( app-misc/rlwrap )"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
 	dev-lang/perl"
 
 S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.x-qt5.patch
+	eapply "${FILESDIR}"/${PN}-10.x-compiler-flags.patch
 	eapply_user
 
 	eautoconf
+
+	python_fix_shebang "${S}"/bin/qc.in
 }
 
 src_configure() {

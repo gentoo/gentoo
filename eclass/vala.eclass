@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vala.eclass
@@ -27,12 +27,12 @@ esac
 # @ECLASS-VARIABLE: VALA_MIN_API_VERSION
 # @DESCRIPTION:
 # Minimum vala API version (e.g. 0.36).
-VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.36}
+VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.44}
 
 # @ECLASS-VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
 # Maximum vala API version (e.g. 0.36).
-VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.50}
+VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.52}
 
 # @ECLASS-VARIABLE: VALA_USE_DEPEND
 # @DEFAULT_UNSET
@@ -102,7 +102,7 @@ vala_best_api_version() {
 	u=$(_vala_use_depend)
 
 	for v in $(vala_api_versions); do
-		has_version "dev-lang/vala:${v}${u}" && echo "${v}" && return
+		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${v}${u}" && echo "${v}" && return
 	done
 }
 
@@ -136,7 +136,7 @@ vala_src_prepare() {
 	fi
 
 	if [[ ${version} ]]; then
-		has_version "dev-lang/vala:${version}" || die "No installed vala:${version}"
+		has_version $([[ $EAPI == [1-6] ]] || echo -b) "dev-lang/vala:${version}" || die "No installed vala:${version}"
 	else
 		version=$(vala_best_api_version)
 		[[ ${version} ]] || die "No installed vala in $(vala_depend)"

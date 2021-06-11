@@ -1,6 +1,5 @@
-diff -urNp wepdecrypt-0.8.org/src/Makefile wepdecrypt-0.8/src/Makefile
---- wepdecrypt-0.8.org/src/Makefile	2006-07-09 02:48:08.000000000 +0300
-+++ wepdecrypt-0.8/src/Makefile	2007-11-10 18:36:25.000000000 +0200
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -6,15 +6,12 @@ include ../config.mak
  wepdecrypt: 	wepdecrypt.o rc4.o wepfilter.o log.o modes.o misc.o verify.o keygen.o localkeygen.o wepserver.o wepclient.o md5_digest.o
  	$(LD) $(LDFLAGS) -o $@ wepdecrypt.o rc4.o wepfilter.o log.o \

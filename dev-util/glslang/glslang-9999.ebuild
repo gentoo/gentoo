@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS="cmake"
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then

@@ -1,12 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-# Does not work with 3.8+ https://bugs.gentoo.org/754006
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit cmake lua-single python-single-r1 xdg-utils
 
@@ -24,7 +23,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack lua nvenc pulseaudio python speex +ssl truetype v4l vlc"
+IUSE="+alsa decklink fdk imagemagick jack lua nvenc pipewire pulseaudio python speex +ssl truetype v4l vlc wayland"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -38,7 +37,7 @@ DEPEND="
 	>=dev-libs/jansson-2.5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[wayland?]
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
@@ -65,6 +64,7 @@ DEPEND="
 	jack? ( virtual/jack )
 	lua? ( ${LUA_DEPS} )
 	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
+	pipewire? ( media-video/pipewire )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
@@ -75,8 +75,11 @@ DEPEND="
 	)
 	v4l? ( media-libs/libv4l )
 	vlc? ( media-video/vlc:= )
+	wayland? ( dev-libs/wayland )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-26.1.2-python-3.8.patch" ) # https://github.com/obsproject/obs-studio/pull/3335
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
@@ -86,10 +89,15 @@ pkg_setup() {
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DBUILD_BROWSER=no
+		-DBUILD_VST=no
+		-DENABLE_WAYLAND=$(usex wayland)
 		-DDISABLE_ALSA=$(usex !alsa)
+		-DDISABLE_DECKLINK=$(usex !decklink)
 		-DDISABLE_FREETYPE=$(usex !truetype)
 		-DDISABLE_JACK=$(usex !jack)
 		-DDISABLE_LIBFDK=$(usex !fdk)
+		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
@@ -145,6 +153,16 @@ pkg_postinst() {
 		elog "'xdg-screensaver reset' is used instead"
 		elog "(if 'x11-misc/xdg-utils' is installed)."
 		elog
+	fi
+}
+
+pkg_postinst() {
+	if use python; then
+		ewarn "This ebuild applies a patch that is not yet accepted upstream,"
+		ewarn "and while it fixes Python support at least to some extent, it"
+		ewarn "may cause other issues."
+		ewarn ""
+		ewarn "Please report any such issues to the Gentoo maintainer."
 	fi
 }
 

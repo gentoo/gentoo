@@ -1,93 +1,66 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit cmake python-any-r1 xdg
+inherit xdg cmake python-any-r1
 
-MY_PV="build$(ver_cut 2-)"
-MY_P="${PN}-${MY_PV/_/-}"
-
-DESCRIPTION="A game similar to Settlers 2"
+DESCRIPTION="Game similar to Settlers 2"
 HOMEPAGE="https://www.widelands.org/"
 
-if [[ "${PV}" == *9999 ]] ; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/widelands/widelands.git"
 else
-	SRC_URI="https://launchpad.net/widelands/build$(ver_cut 2)/${MY_PV/_/-}/+download/${MY_P}.tar.bz2"
+	MY_PV="build$(ver_cut 2)"
+	MY_P="${PN}-${MY_PV}"
+
+	SRC_URI="https://launchpad.net/widelands/${MY_PV}/${MY_PV}/+download/${MY_P}-source.tar.gz"
 	S="${WORKDIR}/${MY_P}"
+
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-2+"
+LICENSE="|| ( Apache-2.0 GPL-3 ) BitstreamVera CC-BY-SA-3.0 GPL-2 GPL-2+ MIT OFL-1.1 ZLIB"
 SLOT="0"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/boost-1.48:=
 	dev-libs/icu:=
 	media-libs/glew:0=
 	media-libs/libglvnd
-	media-libs/libpng:0=
-	media-libs/libsdl2[video]
+	media-libs/libpng:=
+	media-libs/libsdl2[opengl,sound,video]
 	media-libs/sdl2-image[jpeg,png]
 	media-libs/sdl2-mixer[vorbis]
 	media-libs/sdl2-ttf
-	sys-libs/zlib:=[minizip]"
-DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-"
+	net-misc/curl
+	sys-libs/zlib:=
+	virtual/libintl"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost"
 BDEPEND="
-	sys-devel/gettext
-"
-
-CMAKE_BUILD_TYPE="Release"
+	${PYTHON_DEPS}
+	sys-devel/gettext"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.20_rc1-cxxflags.patch"
+	"${FILESDIR}"/${PN}-0.20_rc1-cxxflags.patch
 )
 
-src_prepare() {
-	cmake_src_prepare
-
-	sed -i -e 's:__ppc__:__PPC__:' src/map_io/s2map.cc || die
-	# don't call gtk-update-icon-cache
-	sed '/^find_program(GTK_UPDATE_ICON_CACHE/d' \
-		-i xdg/CMakeLists.txt || die
-}
-
 src_configure() {
-	local WLDIR="${EPREFIX}/usr/share/${PN}"
+	CMAKE_BUILD_TYPE="Release"
+
 	local mycmakeargs=(
-		-DOPTION_BUILD_WEBSITE_TOOLS=OFF
-
-		# -DUSE_XDG=ON breaks finding of datadir
-		-DUSE_XDG=OFF
-
-		# Upstream's cmake files are totally fscked up...
-		# This just helps dealing with less crap in src_install
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
-		-DWL_INSTALL_BASEDIR="${WLDIR}"
-		-DWL_INSTALL_DATADIR="${WLDIR}/data"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr/bin
+		-DWL_INSTALL_BASEDIR="${EPREFIX}"/usr/share/doc/${PF}
+		-DWL_INSTALL_DATADIR="${EPREFIX}"/usr/share/${PN}
+		-DGTK_UPDATE_ICON_CACHE=OFF
+		-DOPTION_BUILD_TESTS=$(usex test)
 	)
+
 	cmake_src_configure
-}
-
-src_install() {
-	cmake_src_install
-
-	# upstream CMakeLists.txt file is totally bonkers
-	local sharedir="${ED}/usr/share"
-	dodir /usr/bin
-	mv "${ED}"/usr/${PN} "${ED}"/usr/bin || die
-	mv "${ED}"/share/* "${sharedir}" || die
-	rmdir "${ED}"/share || die
-	rm "${sharedir}"/${PN}/{COPYING,CREDITS,ChangeLog} || die
-	mv "${sharedir}"/${PN}/VERSION "${sharedir}"/doc/${PF}/ || die
-
-	#newicon data/images/logos/wl-ico-128.png ${PN}.png
-	#make_desktop_entry ${PN} ${PN^}
 }

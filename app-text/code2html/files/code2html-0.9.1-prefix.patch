@@ -1,5 +1,5 @@
---- code2html
-+++ code2html
+--- a/code2html
++++ b/code2html
 @@ -1,4 +1,4 @@
 -#!/usr/bin/perl -w
 +#!@GENTOO_PORTAGE_EPREFIX@/usr/bin/perl -w

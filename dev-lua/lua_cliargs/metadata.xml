@@ -9,6 +9,7 @@
 		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		This module adds support for accepting CLI
 		arguments easily using multiple notations and argument types.

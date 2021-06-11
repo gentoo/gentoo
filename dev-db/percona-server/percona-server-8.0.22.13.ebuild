@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -17,7 +17,7 @@ MY_MAJOR_PV=$(ver_cut 1-2)
 MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/${MY_MAJOR_PV}/"
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.22.13-patches-01.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/percona-server/${PN}-8.0.22.13-patches-02.tar.xz"
 
 SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
 	https://dl.bintray.com/boostorg/release/${MY_BOOST_VERSION}/source/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION}).tar.bz2
@@ -28,11 +28,10 @@ HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server https:/
 DESCRIPTION="Fully compatible, enhanced and open source drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="8.0"
-IUSE="cjk cracklib debug jemalloc latin1 ldap libressl numa pam +perl profiling
+IUSE="cjk cracklib debug jemalloc latin1 ldap numa pam +perl profiling
 	rocksdb router selinux +server tcmalloc test tokudb tokudb-backup-plugin"
 
-# Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!test? ( test ) libressl? ( test )"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	cjk? ( server )
@@ -42,7 +41,7 @@ REQUIRED_USE="?? ( tcmalloc jemalloc )
 	router? ( server )
 	tcmalloc? ( server )"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -55,8 +54,7 @@ COMMON_DEPEND="
 	app-arch/zstd:=
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
-	libressl? ( dev-libs/libressl:0= )
-	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+	>=dev-libs/openssl-1.0.0:0=
 	server? (
 		dev-libs/icu:=
 		dev-libs/libevent:=[ssl,threads]
@@ -212,6 +210,9 @@ src_configure() {
 
 	append-cxxflags -felide-constructors
 
+	# code is not C++17 ready, bug #786402
+	append-cxxflags -std=c++14
+
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
 
@@ -306,6 +307,7 @@ src_configure() {
 	if use server ; then
 		mycmakeargs+=(
 			-DWITH_AUTHENTICATION_LDAP=$(usex ldap system OFF)
+			-DWITH_COREDUMPER=OFF
 			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
 			-DWITH_MECAB=$(usex cjk system OFF)

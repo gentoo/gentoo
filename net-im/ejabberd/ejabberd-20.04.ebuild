@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 SSL_CERT_MANDATORY=1
 
-inherit eutils pam rebar ssl-cert systemd
+inherit eutils pam rebar ssl-cert systemd tmpfiles
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
@@ -26,7 +26,7 @@ RESTRICT="test"
 # TODO: tools? (
 # TODO:		>=dev-erlang/luerl-0.3
 # TODO: )
-DEPEND=">=dev-lang/erlang-19.3[hipe?,odbc?,ssl]
+DEPEND=">=dev-lang/erlang-19.3[hipe(-)?,odbc?,ssl]
 	>=dev-erlang/cache_tab-1.0.22
 	>=dev-erlang/eimp-1.0.14
 	>=dev-erlang/fast_tls-1.1.5
@@ -251,7 +251,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	systemd_dounit "${PN}.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
+	dotmpfiles "${FILESDIR}/${PN}.tmpfiles.conf"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" "${PN}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,19 +17,18 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="http://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="GPL-2+"
 SLOT="3.0/3"
-IUSE="cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi openmp quad test threads zbus"
+IUSE="cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi openmp test threads zbus"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	quad? ( sys-devel/gcc[fortran] )
 	test? ( dev-lang/perl )"
 
 S="${WORKDIR}/${MY_P}"
@@ -46,15 +45,7 @@ pkg_setup() {
 	fi
 
 	fortran-2_pkg_setup
-
 	MULTIBUILD_VARIANTS=( single double longdouble )
-	if use quad; then
-		if ! tc-is-gcc; then
-			ewarn "quad precision only available for gcc >= 4.6"
-			die "need quad precision capable gcc"
-		fi
-		MULTIBUILD_VARIANTS+=( quad )
-	fi
 }
 
 src_prepare() {
@@ -65,16 +56,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# jlec reported USE=quad on abi_x86_32 has too few registers
-	# stub Makefiles
-	if [[ ${MULTILIB_ABI_FLAG} == abi_x86_32 && ${MULTIBUILD_ID} == quad-* ]]; then
-		mkdir -p "${BUILD_DIR}/tests" || die
-		echo "all: ;" > "${BUILD_DIR}/Makefile" || die
-		echo "install: ;" >> "${BUILD_DIR}/Makefile" || die
-		echo "smallcheck: ;" > "${BUILD_DIR}/tests/Makefile" || die
-		return 0
-	fi
-
 	local myconf=(
 		--enable-shared
 		--disable-static
@@ -86,6 +67,9 @@ multilib_src_configure() {
 	)
 	[[ ${PV} == *9999 ]] && myconf+=( --enable-maintainer-mode )
 
+	# --enable-quad-precision is a brittle feature that requires
+	# __float128 support from the toolchain, which is lacking on
+	# most niche architectures. Bug #770346
 	case "${MULTIBUILD_ID}" in
 		single-*)
 			# altivec, sse, single-paired only work for single
@@ -117,13 +101,6 @@ multilib_src_configure() {
 			)
 			;;
 
-		quad-*)
-			# quad does not support mpi
-			myconf+=(
-				--enable-quad-precision
-			)
-			;;
-
 		*)
 			die "${MULTIBUILD_ID%-*} precision not implemented in this ebuild"
 			;;
@@ -133,6 +110,10 @@ multilib_src_configure() {
 }
 
 src_configure() {
+	# upstream does not append proper -m flags
+	# https://bugs.gentoo.org/698572
+	use cpu_flags_x86_avx2 && append-flags -mavx2
+
 	multibuild_foreach_variant multilib-minimal_src_configure
 }
 

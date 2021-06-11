@@ -1,0 +1,67 @@
+From 303826ceb22985cfa1dfbf1e7a68ed327ffc741b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 15 May 2021 09:30:58 +0200
+Subject: [PATCH] pytest: Delay loading pkgcore modules until fixtures are used
+
+Delay loading pkgcore modules until the EbuildRepo-based fixtures are
+actually used.  This prevents the pkgcore signal handlers from being
+enabled on all packages using pytest while keeping the old behavior
+of setting them upon import in packages using pkgcore directly.
+---
+ src/pkgcore/pytest/plugin.py | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/src/pkgcore/pytest/plugin.py b/src/pkgcore/pytest/plugin.py
+index 082538ab..bdc89e4b 100644
+--- a/src/pkgcore/pytest/plugin.py
++++ b/src/pkgcore/pytest/plugin.py
+@@ -1,3 +1,4 @@
++import importlib
+ import os
+ import subprocess
+ import textwrap
+@@ -5,8 +6,6 @@ from collections.abc import MutableSet
+ from datetime import datetime
+ 
+ import pytest
+-from pkgcore.ebuild import cpv as cpv_mod
+-from pkgcore.ebuild import repo_objs, repository
+ from snakeoil import klass
+ from snakeoil.fileutils import touch
+ from snakeoil.osutils import pjoin
+@@ -169,6 +168,12 @@ class EbuildRepo:
+     """Class for creating/manipulating ebuild repos."""
+ 
+     def __init__(self, path, repo_id='fake', eapi='5', masters=(), arches=()):
++        # load pkgcore modules late to avoid overriding signal handlers
++        # when the plugin is not actually used
++        self.cpv_mod = importlib.import_module('pkgcore.ebuild.cpv')
++        self.repo_objs = importlib.import_module('pkgcore.ebuild.repo_objs')
++        self.repository = importlib.import_module('pkgcore.ebuild.repository')
++
+         self.path = path
+         self.arches = _FileSet(pjoin(self.path, 'profiles', 'arch.list'))
+         self._today = datetime.today()
+@@ -194,8 +199,8 @@ class EbuildRepo:
+ 
+     def sync(self):
+         """Forcibly create underlying repo object avoiding cache usage."""
+-        repo_config = repo_objs.RepoConfig(location=self.path, disable_inst_caching=True)
+-        self._repo = repository.UnconfiguredTree(self.path, repo_config=repo_config)
++        repo_config = self.repo_objs.RepoConfig(location=self.path, disable_inst_caching=True)
++        self._repo = self.repository.UnconfiguredTree(self.path, repo_config=repo_config)
+ 
+     def create_profiles(self, profiles):
+         for p in profiles:
+@@ -215,7 +220,7 @@ class EbuildRepo:
+                     f.write(f'{p.eapi}\n')
+ 
+     def create_ebuild(self, cpvstr, data=None, **kwargs):
+-        cpv = cpv_mod.VersionedCPV(cpvstr)
++        cpv = self.cpv_mod.VersionedCPV(cpvstr)
+         self._repo.notify_add_package(cpv)
+         ebuild_dir = pjoin(self.path, cpv.category, cpv.package)
+         os.makedirs(ebuild_dir, exist_ok=True)
+-- 
+2.31.1
+

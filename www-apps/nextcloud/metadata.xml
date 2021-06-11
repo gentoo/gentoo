@@ -13,4 +13,9 @@
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/nextcloud/server/issues</bugs-to>
+		<remote-id type="github">nextcloud/server</remote-id>
+	</upstream>
 </pkgmetadata>

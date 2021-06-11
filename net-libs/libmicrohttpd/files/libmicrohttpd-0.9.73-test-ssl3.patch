@@ -1,0 +1,35 @@
+ Disable usage of SSLv3 in testing
+
+ Integrated uptream version 0.9.74
+
+
+diff --git a/src/testcurl/https/test_tls_options.c b/src/testcurl/https/test_tls_options.c
+
+--- a/src/testcurl/https/test_tls_options.c
++++ b/src/testcurl/https/test_tls_options.c
+@@ -119,11 +119,6 @@ main (int argc, char *const *argv)
+     fprintf (stderr, "Curl does not support SSL.  Cannot run the test.\n");
+     return 77;
+   }
+-  if (0 != strncmp (ssl_version, "GnuTLS", 6))
+-  {
+-    fprintf (stderr, "This test can be run only with libcurl-gnutls.\n");
+-    return 77;
+-  }
+ 
+   if (! testsuite_curl_global_init ())
+     return 99;
+@@ -152,10 +147,10 @@ main (int argc, char *const *argv)
+   fprintf (stderr,
+            "The following handshake should fail (and print an error message)...\n");
+   if (0 !=
+-      test_wrap ("TLS1.0 vs SSL3",
++      test_wrap ("TLS1.1 vs TLS1.0",
+                  &test_unmatching_ssl_version, NULL, port, daemon_flags,
+                  aes256_sha,
+-                 CURL_SSLVERSION_SSLv3,
++                 CURL_SSLVERSION_TLSv1_1,
+                  MHD_OPTION_HTTPS_MEM_KEY, srv_key_pem,
+                  MHD_OPTION_HTTPS_MEM_CERT, srv_self_signed_cert_pem,
+                  MHD_OPTION_HTTPS_PRIORITIES,
+

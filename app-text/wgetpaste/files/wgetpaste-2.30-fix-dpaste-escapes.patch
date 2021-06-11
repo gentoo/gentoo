@@ -1,0 +1,13 @@
+diff --git a/wgetpaste b/wgetpaste
+index 0f8219b..ed0bdac 100755
+--- a/wgetpaste
++++ b/wgetpaste
+@@ -110,6 +110,8 @@ Python Python%Interactive/Traceback Ruby Ruby%HTML%(ERB) SQL XML"
+ LANGUAGE_VALUES_dpaste="% Apache Bash Css Diff DjangoTemplate Haskell JScript Python PythonConsole \
+ Ruby Rhtml Sql Xml"
+ EXPIRATIONS_dpaste=$(printf "%s " {1..365})
++escape_description_dpaste() { echo "$*"; }
++escape_input_dpaste() { echo "$*"; }
+ POST_dpaste() {
+ 	local title="${2}"
+ 	local syntax="${3}"

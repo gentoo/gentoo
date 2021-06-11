@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 
 LICENSE="BSD MIT RSA BEER-WARE"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="static-libs"
 
 DEPEND="dev-lang/perl
@@ -21,7 +21,7 @@ RDEPEND="dev-lang/perl
 	virtual/perl-Time-Local
 	sys-libs/cracklib"
 
-PATCHES="../patch"
+PATCHES=("${WORKDIR}/patch")
 
 src_configure() {
 	tc-export CC

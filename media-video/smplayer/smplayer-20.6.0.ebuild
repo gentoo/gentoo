@@ -1,4 +1,4 @@
-# Copyright 2007-2020 Gentoo Authors
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="autoshutdown bidi debug mpris"
 
 BDEPEND="dev-qt/linguist-tools:5"

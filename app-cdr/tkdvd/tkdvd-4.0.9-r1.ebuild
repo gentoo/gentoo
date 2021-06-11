@@ -1,18 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils
+inherit desktop
 
 DESCRIPTION="A Tcl/Tk GUI for writing DVDs and CDs"
 HOMEPAGE="http://regis.damongeot.free.fr/tkdvd/"
 SRC_URI="http://regis.damongeot.free.fr/tkdvd/dl/${P}.tar.gz"
+S="${WORKDIR}"/tkdvd
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND="
 	app-cdr/cdrtools
@@ -20,8 +20,6 @@ RDEPEND="
 	dev-lang/tcl:0
 	dev-lang/tk:0
 "
-
-S=${WORKDIR}/tkdvd
 
 src_compile() { :; }
 

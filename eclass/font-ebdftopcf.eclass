@@ -1,45 +1,59 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Author: Robin H. Johnson <robbat2@gentoo.org>
-
-# font-ebdftopcf.eclass
-# Eclass to make PCF font generator from BDF uniform and optimal
+# @ECLASS: font-ebdftopcf.eclass
+# @MAINTAINER:
+# fonts@gentoo.org
+# @AUTHOR:
+# Robin H. Johnson <robbat2@gentoo.org>
+# @SUPPORTED_EAPIS: 7
+# @BLURB: Eclass to make PCF font generator from BDF uniform and optimal
+# @DESCRIPTION:
 # The manpage for this eclass is in media-gfx/ebdftopcf.
+# Inherit this eclass after font.eclass
 
-# inherit this eclass after font.eclass
+case ${EAPI} in
+	7) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
 
-# if USE="-X", this eclass is basically a no-op, since bdftopcf requires Xorg.
+EXPORT_FUNCTIONS src_compile
+
+if [[ -z ${_FONT_EBDFTOPCF_ECLASS} ]]; then
+_FONT_EBDFTOPCF_ECLASS=1
+
+# Make dependence on Xorg optional
 IUSE="X"
 
-# Variable declarations
-DEPEND="X? ( media-gfx/ebdftopcf )"
-RDEPEND=""
+BDEPEND="X? ( media-gfx/ebdftopcf )"
 
-#
-# Public functions
-#
+# @FUNCTION: ebdftopcf
+# @USAGE: <list of BDF files to convert>
+# @DESCRIPTION:
+# Convert BDF to PCF. This implicitly requires USE="X" to be enabled.
 ebdftopcf() {
-	local bdffiles
-	bdffiles="$@"
-	[ -z "$bdffiles" ] && die "No BDF files specified."
-	emake -f "${EPREFIX}"/usr/share/ebdftopcf/Makefile.ebdftopcf \
+	debug-print-function ${FUNCNAME} "$@"
+
+	local bdffiles="$@"
+	[[ -z ${bdffiles} ]] && die "No BDF files specified"
+	emake -f "${BROOT}"/usr/share/ebdftopcf/Makefile.ebdftopcf \
 		BDFFILES="${bdffiles}" \
 		BDFTOPCF_PARAMS="${BDFTOPCF_PARAMS}" \
 		|| die "Failed to build PCF files"
 }
 
-#
-# Public inheritable functions
-#
+# @FUNCTION: font-ebdftopcf_src_compile
+# @DESCRIPTION:
+# Default phase function to convert BDF to PCF. If USE="-X", this amounts to
+# a no-op, since bdftopcf requires Xorg.
 font-ebdftopcf_src_compile() {
-	use X && FONT_SUFFIX="pcf.gz"
-	use X || FONT_SUFFIX="bdf"
+	debug-print-function ${FUNCNAME} "$@"
 
+	FONT_SUFFIX=$(usex X "pcf.gz" "bdf")
 	if use X; then
-		[ -z "${BDFFILES}" ] && BDFFILES="$(find . -name '*.bdf')"
+		[[ -z ${BDFFILES} ]] && local BDFFILES="$(find . -name '*.bdf')"
 		ebdftopcf ${BDFFILES}
 	fi
 }
 
-EXPORT_FUNCTIONS src_compile
+fi

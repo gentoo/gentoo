@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,13 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-02-06)
+# Drags in too much unstable GNOME for now
+# bug #727572
+mail-client/claws-mail gdata
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-07-21)
 # Unstable test deps.
 dev-cpp/eigen test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-03)
-# dev-qt/qtwebkit:5 is not stable.
-dev-qt/designer webkit
 
 # Michael Weber <xmw@gentoo.org> (2017-03-01)
 # Mask until >sys-cluster/ceph-0.94 goes stable

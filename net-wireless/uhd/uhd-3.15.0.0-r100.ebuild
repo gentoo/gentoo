@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 #not sure why, but eapi 7 fails
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit eapi7-ver python-single-r1 gnome2-utils cmake-utils multilib
 
@@ -34,10 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	sys-libs/ncurses:0[tinfo]
 	$(python_gen_cond_dep '
-	|| (
-		dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-	)
+	dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 	dev-python/requests[${PYTHON_MULTI_USEDEP}]
 	')
 "

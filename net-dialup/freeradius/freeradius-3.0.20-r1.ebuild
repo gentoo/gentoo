@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit autotools pam python-single-r1 systemd
 
 MY_P="${PN}-server-${PV}"
@@ -20,7 +20,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="
-	debug firebird iodbc kerberos ldap libressl memcached mysql mongodb odbc oracle pam
+	debug firebird iodbc kerberos ldap memcached mysql mongodb odbc oracle pam
 	pcap postgres python readline redis rest samba sqlite ssl systemd
 "
 RESTRICT="test firebird? ( bindist )"
@@ -56,8 +56,7 @@ RDEPEND="acct-group/radius
 	samba? ( net-fs/samba )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[-bindist] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=[-bindist]
 	)
 	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}"
@@ -67,7 +66,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.18-libressl.patch
 	"${FILESDIR}"/${P}-systemd-service.patch
 	# Fix rlm_python3 build
 	# Backport from rlm_python changes to rlm_python3
@@ -226,7 +224,9 @@ src_install() {
 		R="${D}" \
 		install
 
-	pamd_mimic_system radiusd auth account password session
+	if use pam; then
+		pamd_mimic_system radiusd auth account password session
+	fi
 
 	# fix #711756
 	fowners -R radius:radius /etc/raddb

@@ -1,18 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools desktop wxwidgets
+EAPI=7
+
+inherit autotools desktop
 
 DESCRIPTION="A graphical rogue-like adventure game"
 HOMEPAGE="https://sourceforge.net/projects/scourge/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz
+SRC_URI="
+	mirror://sourceforge/${PN}/${P}.src.tar.gz
 	mirror://sourceforge/${PN}/${P}.data.tar.gz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/freetype:2
@@ -24,17 +26,19 @@ RDEPEND="
 	virtual/libintl
 	virtual/opengl
 	virtual/glu"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-gcc6.patch
 	"${FILESDIR}"/${P}-automake-1.13.patch
 	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
+	"${FILESDIR}"/${P}-Wc++11-narrowing.patch
+	"${FILESDIR}"/${PN}-0.21.1-respect-AR.patch
+	"${FILESDIR}"/${P}-gcc-11.patch
 )
 
 src_prepare() {
@@ -47,22 +51,23 @@ src_prepare() {
 	sed -i \
 		-e '/snprintf/s/tmp, 256/tmp, sizeof(tmp)/' \
 		src/scourgehandler.cpp || die
+
 	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
-	local myeconfargs=(
-		--with-data-dir=/usr/share/${PN}
-		--localedir=/usr/share/locale
-	)
-	econf "${myeconfargs[@]}"
+	econf \
+		--disable-rpath \
+		--with-data-dir="${EPREFIX}"/usr/share/${PN}
 }
 
 src_install() {
 	default
-	insinto /usr/share/${PN}
-	doins -r ../scourge_data/*
+
+	insinto /usr/share/scourge
+	doins -r ../scourge_data/.
+
 	doicon assets/scourge.png
 	make_desktop_entry scourge S.C.O.U.R.G.E.
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -17,12 +17,14 @@
 inherit ruby-ng
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem name for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
 RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN}}"
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_VERSION
+# @PRE_INHERIT
 # @DESCRIPTION:
 # Sets the Gem version for the generated fake gemspec.
 # This variable MUST be set before inheriting the eclass.
@@ -112,6 +114,20 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # List of files and directories relative to the top directory that also
 # get installed. Some gems provide extra files such as version information,
 # Rails generators, or data that needs to be installed as well.
+
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSIONS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# List of extensions supported by this gem. Each extension is listed as
+# the configuration script that needs to be run to generate the
+# extension.
+
+# @ECLASS-VARIABLE: RUBY_FAKEGEM_EXTENSION_LIBDIR
+# @DESCRIPTION:
+# The lib directory where extensions are copied directly after they have
+# been compiled. This is needed to run tests on the code and was the
+# legacy way to install extensions for a long time.
+RUBY_FAKEGEM_EXTENSION_LIBDIR="${RUBY_FAKEGEM_EXTENSION_LIBDIR-lib}"
 
 case "${EAPI:-0}" in
 	0|1|2|3)
@@ -274,7 +290,7 @@ ruby_fakegem_install_gemspec() {
 # RUBY_FAKEGEM_GEMSPEC. This file is eval'ed to produce a final specification
 # in a way similar to packaging the gemspec file.
 ruby_fakegem_gemspec_gemspec() {
-	${RUBY} -e "puts eval(File::open('$1').read).to_ruby" > $2
+	${RUBY} --disable=did_you_mean -e "puts eval(File::open('$1').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_metadata_gemspec
@@ -284,7 +300,7 @@ ruby_fakegem_gemspec_gemspec() {
 # the metadata distributed by the gem itself. This is similar to how
 # rubygems creates an installation from a .gem file.
 ruby_fakegem_metadata_gemspec() {
-	${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
+	${RUBY} --disable=did_you_mean -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_genspec
@@ -387,6 +403,22 @@ EOF
 	) || die "Unable to create fakegem wrapper"
 }
 
+# @FUNCTION: each_fakegem_configure
+# @DESCRIPTION:
+# Configure extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
+each_fakegem_configure() {
+	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
+		${RUBY} --disable=did_you_mean -C ${extension%/*} ${extension##*/} || die
+	done
+}
+
+# @FUNCTION: each_ruby_configure
+# @DESCRIPTION:
+# Run each_fakegem_configure for each ruby target
+each_ruby_configure() {
+	each_fakegem_configure
+}
+
 # @FUNCTION: all_fakegem_compile
 # @DESCRIPTION:
 # Build documentation for the package if indicated by the doc USE flag
@@ -406,6 +438,24 @@ all_fakegem_compile() {
 				;;
 		esac
 	fi
+}
+
+# @FUNCTION: each_fakegem_compile
+# @DESCRIPTION:
+# Compile extensions defined in RUBY_FAKEGEM_EXTENSIONS, if any.
+each_fakegem_compile() {
+	for extension in "${RUBY_FAKEGEM_EXTENSIONS[@]}" ; do
+		emake V=1 -C ${extension%/*}
+		mkdir -p "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}"
+		cp "${extension%/*}"/*$(get_modname) "${RUBY_FAKEGEM_EXTENSION_LIBDIR%/}/" || die "Copy of extension into ${RUBY_FAKEGEM_EXTENSION_LIBDIR} failed"
+	done
+}
+
+# @FUNCTION: each_ruby_compile
+# @DESCRIPTION:
+# Run each_fakegem_compile for each ruby target
+each_ruby_compile() {
+	each_fakegem_compile
 }
 
 # @FUNCTION: all_ruby_unpack
@@ -467,7 +517,7 @@ all_ruby_compile() {
 each_fakegem_test() {
 	case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		rake)
-			${RUBY} -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
+			${RUBY} --disable=did_you_mean -S rake ${RUBY_FAKEGEM_TASK_TEST} || die "tests failed"
 			;;
 		rspec)
 			RSPEC_VERSION=2 ruby-ng_rspec
@@ -506,6 +556,18 @@ each_fakegem_install() {
 
 	[[ -n ${_gemlibdirs} ]] && \
 		ruby_fakegem_doins -r ${_gemlibdirs}
+
+	if [[ -n ${RUBY_FAKEGEM_EXTENSIONS} ]] && [ ${#RUBY_FAKEGEM_EXTENSIONS[@]} -ge 0 ]; then
+		einfo "installing extensions"
+		local _extensionsdir="$(ruby_fakegem_gemsdir)/extensions/$(ruby_rbconfig_value 'arch')/$(ruby_rbconfig_value 'ruby_version')/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}"
+
+		for extension in ${RUBY_FAKEGEM_EXTENSIONS[@]} ; do
+			emake V=1 sitearchdir="${ED}${_extensionsdir}" -C ${extension%/*} install
+		done
+
+		# Add the marker to indicate that the extensions are installed
+		touch "${ED}${_extensionsdir}/gem.build_complete" || die
+	fi
 }
 
 # @FUNCTION: each_ruby_install

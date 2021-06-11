@@ -12,10 +12,10 @@
 	<longdescription>
 		This package provides a pure interface for compressing and
 		decompressing streams of data represented as lazy
-		&#39;ByteString&#39;s. It uses the
+		'ByteString's. It uses the
 		&lt;https://en.wikipedia.org/wiki/Zlib zlib C library&gt;
-		so it has high performance. It supports the \&quot;zlib\&quot;,
-		\&quot;gzip\&quot; and \&quot;raw\&quot; compression formats.
+		so it has high performance. It supports the \"zlib\",
+		\"gzip\" and \"raw\" compression formats.
 		
 		It provides a convenient high level API suitable for most
 		tasks and for the few cases where more control is needed it

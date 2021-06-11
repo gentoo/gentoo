@@ -1,6 +1,5 @@
 Description: fix FTBFS with GCC 6
 Author: Andreas Beckmann <anbe@debian.org>
-
 --- a/cuneiform_src/Kern/rimage/sources/main/cricontrol.cpp
 +++ b/cuneiform_src/Kern/rimage/sources/main/cricontrol.cpp
 @@ -594,8 +594,8 @@ Bool32 CRIControl::CreateDestinatonDIB(u

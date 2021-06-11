@@ -1,5 +1,5 @@
---- a/Makefile	2003-05-17 20:08:29.000000000 +0200
-+++ b/Makefile	2013-03-13 18:24:24.552941672 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -9,12 +9,10 @@
  GTK_INCLUDE = $(shell pkg-config gtk+-2.0 --cflags)
  GTK_LIB = $(shell pkg-config gtk+-2.0 --libs)

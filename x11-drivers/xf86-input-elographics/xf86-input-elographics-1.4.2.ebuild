@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_STATIC="no"
 inherit xorg-3
 
 DESCRIPTION="Elographics input driver"

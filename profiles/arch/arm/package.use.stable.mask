@@ -1,6 +1,16 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-03-04)
+# Dependencies not yet stable, drags in
+# large amount of fabric. bug #763954
+sys-block/open-iscsi infiniband
+
+# Sam James <sam@gentoo.org> (2021-02-09)
+# dev-libs/libgdata is not (yet?) stable on arm
+# bug #769767, bug #769764
+mail-client/claws-mail gdata
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-05)
 # media-libs/libffado is not stable yet, which itself has unstable and
 # unmaintained/broken dependencies. bug #746722
@@ -58,11 +68,6 @@ dev-db/qdbm java
 app-text/dblatex inkscape
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
-# Requires not stabilised dev-python/restkit
-dev-python/wsgiproxy2 test
-dev-python/pyquery test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # Requires not stabilised dev-python/matplotlib
 dev-python/numpydoc test
 dev-python/ipython matplotlib
@@ -83,6 +88,10 @@ media-sound/mpd fluidsynth
 # Alexis Ballier <aballier@gentoo.org> (2017-05-29)
 # frei0r-plugins is not stable yet, mask it on stable versions
 media-video/ffmpeg frei0r
+
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi
 
 # Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
@@ -108,10 +117,6 @@ dev-db/mariadb galera
 # Pacho Ramos <pacho@gentoo.org> (2016-12-31)
 # Not going to be stable for now
 dev-util/geany-plugins gtkspell
-
-# Pacho Ramos <pacho@gentoo.org> (2016-12-31)
-# No stable for arm
-sys-fs/dmraid dietlibc klibc
 
 # Christoph Junghans <junghans@gentoo.org> (2016-11-27)
 # no stable mpi on arm yet, but maybe in the future
@@ -151,7 +156,3 @@ net-misc/connman l2tp pptp
 gnome-base/gvfs google
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
-
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop xdg
+inherit xdg
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Winetricks/${PN}.git"
@@ -84,10 +84,8 @@ src_test() {
 src_install() {
 	default
 
-	if use gtk || use kde; then
-		cd "${WORKDIR}/${wtg}" || die
-		domenu winetricks.desktop
-		insinto /usr/share/icons/hicolor/scalable/apps
-		doins wine-winetricks.svg
+	if ! use gtk && ! use kde; then
+		rm -r "${ED}"/usr/share/applications || die
+		rm -r "${ED}"/usr/share/icons || die
 	fi
 }

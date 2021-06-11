@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils ltprune multilib-minimal
+inherit multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="image file loading library"
@@ -11,7 +11,7 @@ SRC_URI="http://www.libsdl.org/projects/SDL_image/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="gif jpeg png static-libs tiff webp"
 
 RDEPEND="
@@ -54,5 +54,7 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc CHANGES README
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

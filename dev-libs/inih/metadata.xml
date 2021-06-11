@@ -5,7 +5,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>hurikhan77+bgo@gmail.com</email>
 		<name>Kai Krakow</name>
 	</maintainer>

@@ -28,6 +28,12 @@
 			Enables dependencies for the "btrfs" graph driver, including
 			necessary kernel flags.
 		</flag>
+			<flag name="cli">
+				This is a temporary use flag which pulls in
+				app-emulation/docker-cli, the docker command line client.
+				This flag is here to assist in the transition to split packages
+				and will be removed in a future release.
+		</flag>
 		<flag name="container-init">
 			Makes the a staticly-linked init system tini available inside a
 			container.
@@ -42,6 +48,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">docker/docker</remote-id>
+		<remote-id type="github">moby/moby</remote-id>
 	</upstream>
 </pkgmetadata>

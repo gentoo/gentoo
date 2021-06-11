@@ -1,9 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit git-r3 linux-info systemd toolchain-funcs
+PYTHON_COMPAT=( python3_{8,9} )
+
+inherit git-r3 linux-info python-any-r1 systemd toolchain-funcs
 
 DESCRIPTION="Tvheadend is a TV streaming server and digital video recorder"
 HOMEPAGE="https://tvheadend.org/"
@@ -13,11 +15,13 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv libressl opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
+IUSE="dbus debug +ddci dvbcsa +dvb +ffmpeg hdhomerun +imagecache +inotify iptv opus satip systemd +timeshift uriparser vpx x264 x265 xmltv zeroconf zlib"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 RDEPEND="
 	acct-user/tvheadend
@@ -26,11 +30,11 @@ RDEPEND="
 	dvbcsa? ( media-libs/libdvbcsa )
 	ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] )
 	hdhomerun? ( media-libs/libhdhomerun )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )
 	zeroconf? ( net-dns/avahi )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+"
 
 # ffmpeg sub-dependencies needed for headers only. Check under
 # src/transcoding/codec/codecs/libs for include statements.
@@ -43,11 +47,13 @@ DEPEND="
 		vpx? ( media-libs/libvpx )
 		x264? ( media-libs/x264 )
 		x265? ( media-libs/x265 )
-	)"
+	)
+"
 
 RDEPEND+="
 	dvb? ( media-tv/dtv-scan-tables )
-	xmltv? ( media-tv/xmltv )"
+	xmltv? ( media-tv/xmltv )
+"
 
 REQUIRED_USE="
 	ddci? ( dvb )
@@ -66,6 +72,8 @@ PATCHES=(
 DOCS=( README.md )
 
 pkg_setup() {
+	python-any-r1_pkg_setup
+
 	use inotify &&
 		CONFIG_CHECK="~INOTIFY_USER" linux-info_pkg_setup
 }

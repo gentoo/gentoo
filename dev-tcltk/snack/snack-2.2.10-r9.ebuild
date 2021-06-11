@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_7 )
+PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_OPTIONAL=yes
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.speech.kth.se/snack/"
 SRC_URI="http://www.speech.kth.se/snack/dist/${PN}${PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~hppa ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~hppa ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 SLOT="0"
 IUSE="alsa examples python vorbis"
 RESTRICT="!test? ( test )"

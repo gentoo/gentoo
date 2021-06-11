@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit autotools cuda flag-o-matic fortran-2 toolchain-funcs
 
 MY_P=${P/-mpi}
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}"/${MY_P}
 
 IUSE_OPENMPI_FABRICS="
 	openmpi_fabrics_ofed
@@ -131,7 +131,7 @@ src_configure() {
 	econf "${myconf[@]}" \
 		$(use_enable cxx mpi-cxx) \
 		$(use_with cma) \
-		$(use_with cuda cuda "$EPREFIX"/opt/cuda) \
+		$(use_with cuda cuda "${EPREFIX}"/opt/cuda) \
 		$(use_enable romio io-romio) \
 		$(use_enable heterogeneous) \
 		$(use_enable ipv6) \
@@ -149,8 +149,10 @@ src_configure() {
 
 src_install() {
 	default
+
 	# From USE=vt see #359917
 	rm "${ED}"/usr/share/libtool || die
+
 	# Avoid collisions with libevent
 	rm -rf "${ED}"/usr/include/event2 || die
 	dodoc README AUTHORS NEWS VERSION

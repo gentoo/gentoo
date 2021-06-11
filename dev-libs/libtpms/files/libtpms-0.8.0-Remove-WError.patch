@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 40d2c7f..809f8e0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -304,7 +304,7 @@ if test "x$enable_hardening" != "xno"; then
+ 	AC_SUBST([HARDENING_LDFLAGS])
+ fi
+ 
+-CFLAGS="$CFLAGS $COVERAGE_CFLAGS -Wall -Werror -Wreturn-type -Wsign-compare -Wno-self-assign"
++CFLAGS="$CFLAGS $COVERAGE_CFLAGS -Wall -Wreturn-type -Wsign-compare -Wno-self-assign"
+ CFLAGS="$CFLAGS -Wmissing-prototypes"
+ LDFLAGS="$LDFLAGS $COVERAGE_LDFLAGS"
+ 

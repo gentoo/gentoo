@@ -1,0 +1,28 @@
+From c2471d4cf3e2ef2556c150d52860b4e8f04e4994 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>
+Date: Mon, 1 Mar 2021 22:13:36 +0200
+Subject: [PATCH] distcc: fix i686 cross compile
+
+[mgorny: disable toolchain prefix rewriting code that workarounds some
+ Debian invention and breaks everything else]
+
+---
+ src/compile.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/compile.c b/src/compile.c
+index 25df355..e5d655b 100644
+--- a/src/compile.c
++++ b/src/compile.c
+@@ -572,7 +572,7 @@ static int dcc_gcc_rewrite_fqn(char **argv)
+     if (!newcmd)
+         return -ENOMEM;
+ 
+-    if ((t = strstr(target_with_vendor, "-pc-"))) {
++    if (0 && (t = strstr(target_with_vendor, "-pc-"))) {
+         memcpy(newcmd, target_with_vendor, t - target_with_vendor);
+         strcat(newcmd, t + strlen("-pc"));
+     } else
+-- 
+2.26.2
+

@@ -8,11 +8,6 @@
 # NOTE: Please add your entry at the top!
 #
 
-# Fabian Groffen <grobian@gentoo.org> (2021-01-02)
-# Fails to compile on Darwin, and probably other platforms as well,
-# masking globally for now, bug #763123
-=net-misc/wget-1.21
-
 # Fabian Groffen <grobian@gentoo.org> (2020-08-02)
 # Python 3.6 is soon going away and won't be updated for Prefix anymore.
 dev-lang/python:3.6

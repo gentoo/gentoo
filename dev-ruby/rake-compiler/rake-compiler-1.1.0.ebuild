@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 
 RUBY_FAKEGEM_GEMSPEC="rake-compiler.gemspec"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Provide a standard and simplified way to build and package Ruby extensions"
 HOMEPAGE="https://github.com/luislavena/rake-compiler"
@@ -19,7 +19,7 @@ LICENSE="MIT"
 
 SRC_URI="https://github.com/luislavena/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 

@@ -1,0 +1,11 @@
+--- a/misc/instdrv.in
++++ b/misc/instdrv.in
+@@ -296,7 +296,7 @@
+ #
+ test -n "$MD5PROG" || MD5PROG="$DEFAULT_MD5PROG"
+ case $MD5PROG in
+-	*/libtool*)
++	*libtool*)
+ 		# It's OK when calling MD5PROG through libtool
+ 		;;
+ 	/*)

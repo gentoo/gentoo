@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/737694
+--- a/dns_resolv.c	2013-02-26 07:37:27.000000000 +0200
++++ b/dns_resolv.c	2020-08-17 20:33:32.000000000 +0300
+@@ -78,11 +78,11 @@ DBC      *geo_dbc  = NULL;
+ 
+ struct   dns_child child[MAXCHILD];            /* DNS child pipe data      */
+ 
+-DNODEPTR host_table[MAXHASH];                  /* hostname/ip hash table   */
++extern DNODEPTR host_table[MAXHASH];                  /* hostname/ip hash table   */
+ 
+-char     buffer[BUFSIZE];                      /* log file record buffer   */
+-char     tmp_buf[BUFSIZE];                     /* used to temp save above  */
+-struct   utsname system_info;                  /* system info structure    */
++extern char     buffer[BUFSIZE];                      /* log file record buffer   */
++extern char     tmp_buf[BUFSIZE];                     /* used to temp save above  */
++extern struct   utsname system_info;                  /* system info structure    */
+ 
+ int      raiseSigChild = 1;
+ 

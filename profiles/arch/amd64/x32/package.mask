@@ -1,14 +1,102 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-02-13)
+# Is reverse-dependency of dev-qt/qtwebengine
+media-gfx/freecad
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-09)
+# Requires net-libs/nodejs, plus mask all reverse-dependencies.
+dev-qt/qtwebengine
+dev-qt/qtwebview
+dev-python/PyQtWebEngine
+app-admin/calamares
+app-doc/zeal
+app-editors/ghostwriter
+app-editors/notepadqq
+app-editors/retext
+app-misc/anki
+app-office/kmymoney:5
+app-office/skrooge:5
+app-office/texmaker
+app-text/bibletime
+app-text/calibre
+app-text/cb2bib
+app-text/sigil
+dev-lang/typescript
+dev-python/spyder
+dev-python/spyder-line-profiler
+dev-python/spyder-memory-profiler
+dev-python/spyder-notebook
+dev-python/spyder-terminal
+dev-python/spyder-unittest
+dev-python/spyder-vim
+dev-util/kdevelop:5
+dev-util/kdevelop-php:5
+dev-util/kdevelop-python:5
+gnome-extra/gnome-shell-extension-pop-shell
+kde-apps/akonadi-calendar:5
+kde-apps/akonadi-import-wizard:5
+kde-apps/akonadiconsole:5
+kde-apps/akregator:5
+kde-apps/calendarjanitor:5
+kde-apps/calendarsupport:5
+kde-apps/eventviews:5
+kde-apps/grantlee-editor:5
+kde-apps/incidenceeditor:5
+kde-apps/kaccounts-providers:5
+kde-apps/kaddressbook:5
+kde-apps/kalarm:5
+kde-apps/kalgebra:5
+kde-apps/kdepim-addons:5
+kde-apps/kdepim-meta:5
+kde-apps/kdepim-runtime:5
+kde-apps/kimagemapeditor:5
+kde-apps/kmail:5
+kde-apps/kmail-account-wizard:5
+kde-apps/kmailtransport:5
+kde-apps/knotes:5
+kde-apps/konqueror:5
+kde-apps/konsolekalendar:5
+kde-apps/kontact:5
+kde-apps/korganizer:5
+kde-apps/ktp-accounts-kcm:5
+kde-apps/ktp-text-ui:5
+kde-apps/libksieve:5
+kde-apps/mailcommon:5
+kde-apps/messagelib:5
+kde-apps/mbox-importer:5
+kde-apps/parley:5
+kde-apps/pim-data-exporter:5
+kde-apps/pim-sieve-editor:5
+kde-apps/plasma-telepathy-meta:5
+kde-misc/kmarkdownwebview:5
+kde-misc/tellico:5
+kde-misc/zanshin:5
+mail-client/kube
+mail-client/trojita
+media-gfx/digikam:5
+media-gfx/luminance-hdr
+media-sound/frescobaldi
+media-sound/teamspeak-client:3
+>=media-video/openshot-2.5.1_p20210103
+media-video/vidify
+media-video/vidify-audiosync
+net-analyzer/nmapsi
+net-libs/signon-ui
+net-misc/nextcloud-client
+net-p2p/ktorrent:5
+sci-geosciences/qmapshack
+sci-mathematics/rkward:5
+sci-mathematics/rstudio
+www-client/falkon
+www-client/otter
+www-client/qutebrowser
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2020-09-20)
 # Binary-only with no x32 support
 app-office/libreoffice-bin
 app-office/libreoffice-bin-debug
-
-# Ben Kohler <bkohler@gentoo.org> (2020-08-12)
-# Breaks several portage features, see bug 736904
-=sys-libs/glibc-2.31-r6
 
 # Marek Szuba <marecki@gentoo.org> (2020-05-08)
 # Requires sys-cluster/ceph, which is masked in this profile as well

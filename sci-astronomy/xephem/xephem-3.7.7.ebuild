@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Interactive tool for astronomical ephemeris and sky simulation"
-HOMEPAGE="http://www.clearskyinstitute.com/xephem"
+HOMEPAGE="https://www.clearskyinstitute.com/xephem"
 SRC_URI="http://97.74.56.125/free/${P}.tar.gz"
 
 LICENSE="XEphem"

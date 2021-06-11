@@ -1,0 +1,14 @@
+diff --git a/tests/test_get_lyrics.py b/tests/test_get_lyrics.py
+index 5b1bb74..634ca55 100644
+--- a/tests/test_get_lyrics.py
++++ b/tests/test_get_lyrics.py
+@@ -26,6 +26,6 @@ def test_returnLyricsNotFound():
+     assert len(responses.calls) == 1
+ 
+ 
+-def test_integration():
+-    lyrics = get_lyrics('Led Zeppelin', 'Stairway to Heaven')
+-    assert 'lady' in lyrics.lower()
++# def test_integration():
++#     lyrics = get_lyrics('Led Zeppelin', 'Stairway to Heaven')
++#     assert 'lady' in lyrics.lower()

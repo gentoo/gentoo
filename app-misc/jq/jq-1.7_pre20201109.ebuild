@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="MIT CC-BY-3.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="+oniguruma static-libs test"
 
 ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.1.3' # Keep this in sync with bundled modules/oniguruma/
@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/jq-1.7-runpath.patch
 	"${FILESDIR}"/jq-1.7-warnings.patch
 	"${FILESDIR}"/jq-1.7-visible-null.patch
+	# https://bugs.gentoo.org/776385
+	"${FILESDIR}"/jq-1.7_pre20201109-no-git-bdep.patch
 )
 
 RESTRICT="!test? ( test )"

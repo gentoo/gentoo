@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake python-single-r1 readme.gentoo-r1 systemd
 
@@ -29,7 +29,7 @@ fi
 HOMEPAGE="https://znc.in"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+ipv6 +icu libressl nls perl python +ssl sasl tcl test +zlib"
+IUSE="+ipv6 +icu nls perl python +ssl sasl tcl test +zlib"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} icu )"
@@ -40,10 +40,7 @@ DEPEND="
 	perl? ( >=dev-lang/perl-5.10:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	tcl? ( dev-lang/tcl:0= )
 	zlib? ( sys-libs/zlib:0= )
 "

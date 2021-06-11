@@ -1,0 +1,41 @@
+Index: /trunk/src/VBox/Devices/Storage/DevLsiLogicSCSI.cpp
+===================================================================
+--- trunk/src/VBox/Devices/Storage/DevLsiLogicSCSI.cpp	(revision 88530)
++++ trunk/src/VBox/Devices/Storage/DevLsiLogicSCSI.cpp	(revision 88643)
+@@ -3678,8 +3678,6 @@
+     LogFlowFunc(("pThis=%#p\n", pThis));
+ 
+-    /* Clear everything first. */
+     AssertPtrReturnVoid(pThisCC->pConfigurationPages);
+     PMptConfigurationPagesSupported pPages = pThisCC->pConfigurationPages;
+-    memset(pPages, 0, sizeof(MptConfigurationPagesSupported));
+ 
+     /* Manufacturing Page 0. */
+Index: /trunk/src/VBox/Devices/Storage/DevLsiLogicSCSI.h
+===================================================================
+--- trunk/src/VBox/Devices/Storage/DevLsiLogicSCSI.h	(revision 82968)
++++ trunk/src/VBox/Devices/Storage/DevLsiLogicSCSI.h	(revision 88643)
+@@ -3327,13 +3327,17 @@
+ 
+ #define MPT_CONFIG_PAGE_HEADER_INIT_MANUFACTURING(pg, type, nr, flags) \
++    RT_ZERO(*pg); \
+     MPT_CONFIG_PAGE_HEADER_INIT(pg, type, nr, flags | MPT_CONFIGURATION_PAGE_TYPE_MANUFACTURING)
+ 
+ #define MPT_CONFIG_PAGE_HEADER_INIT_IO_UNIT(pg, type, nr, flags) \
++    RT_ZERO(*pg); \
+     MPT_CONFIG_PAGE_HEADER_INIT(pg, type, nr, flags | MPT_CONFIGURATION_PAGE_TYPE_IO_UNIT)
+ 
+ #define MPT_CONFIG_PAGE_HEADER_INIT_IOC(pg, type, nr, flags) \
++    RT_ZERO(*pg); \
+     MPT_CONFIG_PAGE_HEADER_INIT(pg, type, nr, flags | MPT_CONFIGURATION_PAGE_TYPE_IOC)
+ 
+ #define MPT_CONFIG_PAGE_HEADER_INIT_BIOS(pg, type, nr, flags) \
++    RT_ZERO(*pg); \
+     MPT_CONFIG_PAGE_HEADER_INIT(pg, type, nr, flags | MPT_CONFIGURATION_PAGE_TYPE_BIOS)
+ 
+@@ -3342,4 +3346,5 @@
+  */
+ #define MPT_CONFIG_EXTENDED_PAGE_HEADER_INIT(pg, cb, nr, flags, exttype) \
++    RT_BZERO(pg, cb); \
+     (pg)->u.fields.ExtHeader.u8PageType   = (flags) | MPT_CONFIGURATION_PAGE_TYPE_EXTENDED; \
+     (pg)->u.fields.ExtHeader.u8PageNumber = (nr); \

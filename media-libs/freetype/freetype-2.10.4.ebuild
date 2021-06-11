@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ if [[ "${PV}" != 9999 ]] ; then
 			mirror://nongnu/freetype/ft2demos-${PV}.tar.xz )
 		doc?	( mirror://sourceforge/freetype/${PN}-doc-${PV}.tar.xz
 			mirror://nongnu/freetype/${PN}-doc-${PV}.tar.xz )"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	IUSE+=" doc"
 else
 	inherit autotools git-r3
@@ -90,8 +90,7 @@ src_prepare() {
 		sed -e "s;@VERSION@;$freetype_major$freetype_minor$freetype_patch;" \
 			< configure.raw > configure.ac || die
 		# eautoheader produces broken ftconfig.in
-		eautoheader() { return 0 ; }
-		AT_M4DIR="." eautoreconf
+		AT_NOEAUTOHEADER="yes" AT_M4DIR="." eautoreconf
 		unset freetype_major freetype_minor freetype_patch
 		popd &>/dev/null || die
 	fi
@@ -149,6 +148,11 @@ src_prepare() {
 		if ! use X; then
 			sed -i -e "/EXES\ +=\ ftdiff/ s:^:#:" Makefile || die
 		fi
+
+		# Taken from upstream (https://bugs.gentoo.org/775881)
+		eapply "${FILESDIR}/${P}-slibtool_build_fix.patch"
+		eapply "${FILESDIR}/${P}-dont_hardcode_libtool.patch"
+		eapply "${FILESDIR}/ft2demos-2.10.4-install_target.patch"
 		cd "${S}" || die
 	fi
 
@@ -205,15 +209,10 @@ multilib_src_compile() {
 multilib_src_install() {
 	default
 
-	if multilib_is_native_abi && use utils; then
+	if multilib_is_native_abi && use utils ; then
 		einfo "Installing utils"
-		rm "${WORKDIR}"/ft2demos-${PV}/bin/README || die
-		dodir /usr/bin #654780
-		local ft2demo
-		for ft2demo in ../ft2demos-${PV}/bin/*; do
-			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
-				"${ED}"/usr/bin || die
-		done
+		emake DESTDIR="${D}" FT2DEMOS=1 \
+			TOP_DIR_2="${WORKDIR}/ft2demos-${PV}" install
 	fi
 }
 
@@ -236,7 +235,4 @@ multilib_src_install_all() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -name '*.a' -delete || die
-	fi
 }

@@ -1,24 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+if [[ ${PV} = 9999* ]]; then
+	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoolkit.git"
+	inherit git-r3
+else
+	SRC_URI="https://gitweb.gentoo.org/proj/gentoolkit.git/snapshot/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+fi
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage-Tools"
-SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
-
-KEYWORDS=""
 
 DEPEND="
 	sys-apps/portage[${PYTHON_USEDEP}]"
@@ -33,11 +36,12 @@ python_prepare_all() {
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	distutils-r1_python_prepare_all
-}
 
-pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-0.4.0"; then
-		SHOW_GENTOOKIT_DEV_DEPRECATED_MSG=1
+	if use prefix-guest ; then
+		# use correct repo name, bug #632223
+		sed -i \
+			-e "/load_profile_data/s/repo='gentoo'/repo='gentoo_prefix'/" \
+			pym/gentoolkit/profile.py || die
 	fi
 }
 
@@ -45,14 +49,6 @@ pkg_postinst() {
 	# Create cache directory for revdep-rebuild
 	mkdir -p -m 0755 "${EROOT}"/var/cache
 	mkdir -p -m 0700 "${EROOT}"/var/cache/revdep-rebuild
-
-	if [[ ${SHOW_GENTOOKIT_DEV_DEPRECATED_MSG} ]]; then
-		elog "Starting with version 0.4.0, ebump, ekeyword and imlate are now"
-		elog "part of the gentoolkit package."
-		elog "The gentoolkit-dev package is now deprecated in favor of a single"
-		elog "gentoolkit package.   The remaining tools from gentoolkit-dev"
-		elog "are now obsolete/unused with the git based tree."
-	fi
 
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then

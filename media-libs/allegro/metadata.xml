@@ -20,6 +20,7 @@ and a GUI.
     <flag name="vga">Enables the VGA graphics driver</flag>
   </use>
   <upstream>
+    <remote-id type="github">liballeg/allegro5</remote-id>
     <remote-id type="sourceforge">alleg</remote-id>
   </upstream>
 </pkgmetadata>

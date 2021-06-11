@@ -1,0 +1,9 @@
+Fix stub definition for USE=-png
+https://github.com/quakeforge/quakeforge/issues/14
+--- a/libs/image/png.c
++++ b/libs/image/png.c
+@@ -320,3 +320,3 @@
+ VISIBLE tex_t *
+-LoadPNG (QFile *infile)
++LoadPNG (QFile *infile, int load)
+ {

@@ -1,0 +1,17 @@
+There are only two test compatible with portage sandbox.
+All other tests require access to install VA driver and
+Intel video on the host machine.
+
+https://bugs.gentoo.org/647746
+https://bugs.gentoo.org/632180
+https://bugs.gentoo.org/714126
+https://bugs.gentoo.org/758620
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -91,4 +91,4 @@ test_va_api_CXXFLAGS =						\
+ 	$(NULL)
+ 
+ check-local: test_va_api
+-	$(builddir)/test_va_api
++	$(builddir)/test_va_api '--gtest_filter=Internal.*:VAAPIInitTerminate.InitTermWithoutDisplay'
+

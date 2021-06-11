@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
@@ -31,13 +31,14 @@ RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]
 	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP},crypt?]
 	>=dev-python/autobahn-0.16.0[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-0.8[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-migrate-0.9[${PYTHON_USEDEP}]
-	dev-python/future[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-1.2.0[${PYTHON_USEDEP}]
+	<dev-python/sqlalchemy-1.4.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlalchemy-migrate-0.13[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-1.5[${PYTHON_USEDEP}]
 	>=dev-python/txaio-2.2.2[${PYTHON_USEDEP}]
 	dev-python/pyjwt[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/unidiff[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-4.1.1[${PYTHON_USEDEP}]
 	~dev-util/buildbot-worker-${PV}[${PYTHON_USEDEP}]
 	crypt? (
@@ -65,6 +66,7 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
 	test? (
+		dev-python/ldap3[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		dev-python/moto[${PYTHON_USEDEP}]
 		>=dev-python/boto3-1.12.48[${PYTHON_USEDEP}]
@@ -95,10 +97,10 @@ src_compile() {
 
 	if use doc; then
 		einfo "Generation of documentation"
-		pushd docs > /dev/null
+		pushd docs > /dev/null || die
 		#'man' target is currently broken
 		emake html
-		popd > /dev/null
+		popd > /dev/null || die
 	fi
 }
 

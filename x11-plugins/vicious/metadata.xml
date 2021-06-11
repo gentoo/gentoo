@@ -2,10 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>maksbotan@gentoo.org</email>
-		<name>Maxim Koltsov</name>
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="contrib">Install extra widgets, some for less common hardware, some contributed by Vicious users.</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">vicious-widgets/vicious</remote-id>
+	</upstream>
 </pkgmetadata>

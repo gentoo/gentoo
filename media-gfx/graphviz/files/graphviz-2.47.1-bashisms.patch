@@ -1,0 +1,12 @@
+diff -Naur a/configure.ac b/configure.ac
+--- a/configure.ac	2019-07-13 03:14:04.000000000 +0000
++++ b/configure.ac	2020-05-15 19:44:57.715169627 +0000
+@@ -315,7 +315,7 @@
+ dnl ===========================================================================
+ dnl Set GCC compiler flags
+ 
+-if [test "${GCC}" == "yes"]
++if [test "${GCC}" = "yes"]
+ then
+   # Enable common warnings flags
+   CFLAGS="${CFLAGS} -Wall"

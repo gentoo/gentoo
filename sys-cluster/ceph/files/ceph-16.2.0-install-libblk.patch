@@ -1,0 +1,12 @@
+diff --git a/src/blk/CMakeLists.txt b/src/blk/CMakeLists.txt
+index b424482dee..dc4f9b82ae 100644
+--- a/src/blk/CMakeLists.txt
++++ b/src/blk/CMakeLists.txt
+@@ -26,6 +26,7 @@ if(WITH_ZBD)
+ endif()
+ 
+ add_library(blk ${libblk_srcs})
++install(TARGETS blk DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ target_include_directories(blk PRIVATE "./")
+ 
+ if(HAVE_LIBAIO)

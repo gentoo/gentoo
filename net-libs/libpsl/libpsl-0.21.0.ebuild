@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{6,7,8,9})
+PYTHON_COMPAT=(python3_{7,8,9})
 inherit multilib-minimal python-any-r1
 
 DESCRIPTION="C library for the Public Suffix List"
@@ -12,13 +12,13 @@ SRC_URI="https://github.com/rockdaboot/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="icu +idn +man"
 
 RDEPEND="
 	icu? ( !idn? ( dev-libs/icu:=[${MULTILIB_USEDEP}] ) )
 	idn? (
-		dev-libs/libunistring[${MULTILIB_USEDEP}]
+		dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 		net-dns/libidn2:=[${MULTILIB_USEDEP}]
 	)
 "

@@ -13,4 +13,7 @@
 		various domains such as hardware design, software verification and
 		formal testing.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">OCamlPro/alt-ergo</remote-id>
+	</upstream>
 </pkgmetadata>

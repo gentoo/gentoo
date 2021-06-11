@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,12 +20,13 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm
 	rplay? ( media-sound/rplay )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-text/rman
 	sys-devel/bison
 	sys-devel/flex
 	x11-base/xorg-proto
-	x11-misc/imake"
+	>=x11-misc/imake-1.0.8-r1"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-do-not-rm.patch
@@ -45,14 +46,14 @@ src_prepare() {
 }
 
 src_configure() {
-	xmkmf || die "xmkmf failed"
-	emake depend
+	CC="$(tc-getBUILD_CC)" LD="$(tc-getLD)" \
+		IMAKECPP="${IMAKECPP:-$(tc-getCPP)}" xmkmf -a || die "xmkmf failed"
 }
 
 src_compile() {
 	emake \
-		CC=$(tc-getCC) \
-		CCOPTIONS="${CFLAGS}" \
+		CC="$(tc-getCC)" \
+		CDEBUGFLAGS="${CFLAGS}" \
 		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 

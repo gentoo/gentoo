@@ -13,7 +13,6 @@
 		The OpenSceneGraph is an open source high performance 3D graphics toolkit, used by application developers in fields such as visual simulation, games, virtual reality, scientific visualization and modelling. Written entirely in Standard C++ and OpenGL it runs on all Windows platforms, OSX, GNU/Linux, IRIX, Solaris, HP-Ux, AIX and FreeBSD operating systems. The OpenSceneGraph is now well established as the world leading scene graph technology, used widely in the vis-sim, space, scientific, oil-gas, games and virtual reality industries.
 	</longdescription>
 	<use>
-		<flag name="asio">Enable support for <pkg>dev-cpp/asio</pkg> library</flag>
 		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
 		<flag name="egl">Enable EGL support</flag>
 		<flag name="fox">Build examples using <pkg>x11-libs/fox</pkg> library</flag>

@@ -12,7 +12,7 @@ SRC_URI="https://files.dyne.org/frei0r/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ~ppc64 x86"
 IUSE="doc +facedetect +scale0tilt"
 
 RDEPEND="x11-libs/cairo[${MULTILIB_USEDEP}]

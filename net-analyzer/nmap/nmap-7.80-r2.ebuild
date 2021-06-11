@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-3 )
 LUA_REQ_USE="deprecated"
 
-inherit autotools desktop flag-o-matic lua-single toolchain-funcs
+inherit autotools lua-single toolchain-funcs
 
 DESCRIPTION="Network exploration tool and security / port scanner"
 HOMEPAGE="https://nmap.org/"
@@ -14,8 +14,8 @@ SRC_URI="https://nmap.org/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="ipv6 libressl libssh2 ncat nmap-update nping +nse ssl +system-lua"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="ipv6 libssh2 ncat nmap-update nping +nse ssl +system-lua"
 REQUIRED_USE="system-lua? ( nse ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
@@ -31,10 +31,7 @@ RDEPEND="
 		dev-vcs/subversion
 	)
 	nse? ( sys-libs/zlib )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}"

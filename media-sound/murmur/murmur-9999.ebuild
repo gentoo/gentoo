@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake systemd readme.gentoo-r1
+inherit cmake systemd readme.gentoo-r1 tmpfiles
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -145,7 +145,7 @@ src_install() {
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
 	systemd_dounit scripts/${PN}.service
-	systemd_newtmpfilesd "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
+	newtmpfiles "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
 
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur

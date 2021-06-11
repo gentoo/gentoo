@@ -1,6 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-17)↲
+# chromium works on ppc64le
+-www-client/chromium
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)↲
+# works on little-endian↲
+sci-mathematics/geogebra-bin
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-17)
 # works on ppc64le
 -app-emulation/docker
@@ -17,6 +25,7 @@
 # little-endian power8 ppc64 configs are provided
 -sys-kernel/gentoo-kernel
 -sys-kernel/vanilla-kernel
+-virtual/dist-kernel
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # libva unmasked on little-endian profile

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 # Python is used during build for some scripted source files generation (and twisted tests)
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit gnome2 python-any-r1
 
@@ -15,7 +15,7 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
-IUSE="gnutls +jingle libressl plugins test"
+IUSE="gnutls +jingle plugins test"
 RESTRICT="!test? ( test )"
 
 # Prevent false positives due nested configure
@@ -36,8 +36,7 @@ RDEPEND="
 
 	gnutls? ( >=net-libs/gnutls-2.10.2 )
 	!gnutls? (
-		libressl? ( dev-libs/libressl:0= )
-		!libressl? ( >=dev-libs/openssl-0.9.8g:0=[-bindist] )
+		>=dev-libs/openssl-0.9.8g:0=[-bindist]
 	)
 	jingle? (
 		>=net-libs/libsoup-2.42

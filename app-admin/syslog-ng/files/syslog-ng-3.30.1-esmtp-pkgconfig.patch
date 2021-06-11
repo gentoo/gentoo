@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/782643
+--- a/configure.ac
++++ b/configure.ac
+@@ -1270,20 +1270,9 @@ if test "x$enable_smtp" != "xno" && test "x$with_libesmtp" != "xno"; then
+ 		CPPFLAGS="$CPPFLAGS_SAVE"
+ 		LDFLAGS="$LDFLAGS_SAVE"
+ 	else
+-		AC_MSG_CHECKING(for libESMTP)
+-		if libesmtp-config --version >/dev/null 2>&1; then
+-			AC_MSG_RESULT(yes)
+-			LIBESMTP_CFLAGS="`libesmtp-config --cflags`"
+-			LIBESMTP_LIBS="`libesmtp-config --libs`"
+-		else
+-			AC_MSG_RESULT(no)
+-			libesmtp=no
+-		fi
+-	fi
+-	if test "x$enable_smtp" = "xyes" && test "x$libesmtp" = "xno"; then
+-		AC_MSG_ERROR(libESMTP not found)
++		PKG_CHECK_MODULES(libesmtp, libesmtp-1.0)
+ 	fi
+-	enable_smtp=$libesmtp
++	enable_smtp="yes"
+ fi
+ 
+ dnl ***************************************************************************

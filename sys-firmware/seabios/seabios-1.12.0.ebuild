@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit eutils toolchain-funcs python-any-r1
+inherit toolchain-funcs python-any-r1
 
 # SeaBIOS maintainers sometimes don't release stable tarballs or stable
 # binaries to generate the stable tarball the following is necessary:
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* || -n "${EGIT_COMMIT}" ]] ; then
 	EGIT_REPO_URI="git://git.seabios.org/seabios.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 
 	# Binary versions taken from fedora:
 	# http://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/

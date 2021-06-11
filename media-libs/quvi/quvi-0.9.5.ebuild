@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,10 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.9.1-automagic.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.1-automagic.patch
+	"${FILESDIR}"/${PN}-0.9.5-autoconf-2.70.patch #777768
+)
 
 src_prepare() {
 	default
@@ -35,8 +38,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--with-manual \
-		$(use_enable json) \
+	local myeconfargs=(
+		--with-manual
+		$(use_enable json)
 		$(use_enable xml)
+	)
+	econf "${myeconfargs[@]}"
 }

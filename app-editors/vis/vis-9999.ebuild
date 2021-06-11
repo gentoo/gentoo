@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-LUA_COMPAT=( lua5-2 lua5-3 lua5-4 )
+LUA_COMPAT=( lua5-2 lua5-3 )
 
 inherit lua-single git-r3 optfeature
 
@@ -23,6 +23,8 @@ DEPEND="dev-libs/libtermkey
 	tre? ( dev-libs/tre:= )"
 RDEPEND="${DEPEND}
 	app-eselect/eselect-vi"
+# https://github.com/martanne/vis-test/issues/28
+BDEPEND="test? ( $(lua_gen_cond_dep 'dev-lua/lpeg[${LUA_USEDEP}]') )"
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup

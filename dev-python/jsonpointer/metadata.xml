@@ -13,6 +13,7 @@
   Identify specific nodes in a JSON document (according to draft 08)
   http://tools.ietf.org/html/draft-ietf-appsawg-json-pointer-08
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">jsonpointer</remote-id>
     <remote-id type="github">stefankoegl/python-json-pointer</remote-id>

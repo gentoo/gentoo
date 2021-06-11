@@ -12,4 +12,7 @@
   <use>
     <flag name="netpbm">Add support for <pkg>media-libs/netpbm</pkg></flag>
   </use>
+  <upstream>
+    <remote-id type="github">texmacs/texmacs</remote-id>
+  </upstream>
 </pkgmetadata>

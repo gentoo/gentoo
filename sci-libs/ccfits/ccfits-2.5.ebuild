@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils ltprune
+inherit autotools
 
 MYPN=CCfits
 MYP=${MYPN}-${PV}
@@ -14,18 +14,16 @@ SRC_URI="https://heasarc.gsfc.nasa.gov/fitsio/CCfits/${MYP}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc static-libs"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+IUSE="doc"
 
 RDEPEND=">=sci-libs/cfitsio-3.080"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MYPN}"
 
-DOCS=( CHANGES README.INSTALL )
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.2-makefile.patch # avoid building cookbook by default and no rpath
-)
+# avoid building cookbook by default and no rpath
+PATCHES=( "${FILESDIR}"/${PN}-2.2-makefile.patch )
 
 src_prepare() {
 	default
@@ -34,7 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable static-libs static)
+	econf --disable-static
 }
 
 src_install() {
@@ -43,5 +41,6 @@ src_install() {
 		HTML_DOCS=( html/. )
 	fi
 	default
-	use static-libs || prune_libtool_files --all
+
+	find "${ED}" -name '*.la' -delete || die
 }

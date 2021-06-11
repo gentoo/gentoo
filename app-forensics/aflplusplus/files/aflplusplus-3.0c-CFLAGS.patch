@@ -1,0 +1,110 @@
+--- a/GNUmakefile.gcc_plugin
++++ b/GNUmakefile.gcc_plugin
+@@ -28,14 +28,14 @@ MAN_PATH    ?= $(PREFIX)/share/man/man8
+ 
+ VERSION     = $(shell grep '^$(HASH)define VERSION ' ./config.h | cut -d '"' -f2)
+ 
+-CFLAGS          ?= -O3 -g -funroll-loops -D_FORTIFY_SOURCE=2
++CFLAGS          ?= -D_FORTIFY_SOURCE=2
+ CFLAGS_SAFE     := -Wall -Iinclude -Wno-pointer-sign \
+                    -DAFL_PATH=\"$(HELPER_PATH)\" -DBIN_PATH=\"$(BIN_PATH)\" \
+                    -DGCC_VERSION=\"$(GCCVER)\" -DGCC_BINDIR=\"$(GCCBINDIR)\" \
+                    -Wno-unused-function
+ override CFLAGS += $(CFLAGS_SAFE)
+ 
+-CXXFLAGS    ?= -O3 -g -funroll-loops -D_FORTIFY_SOURCE=2
++CXXFLAGS    ?= -D_FORTIFY_SOURCE=2
+ CXXEFLAGS   := $(CXXFLAGS) -Wall -std=c++11
+ 
+ CC          ?= gcc
+--- a/GNUmakefile.llvm
++++ b/GNUmakefile.llvm
+@@ -237,7 +237,7 @@ else
+         AFL_CLANG_DEBUG_PREFIX =
+ endif
+ 
+-CFLAGS          ?= -O3 -funroll-loops -fPIC -D_FORTIFY_SOURCE=2
++CFLAGS          ?= -fPIC -D_FORTIFY_SOURCE=2
+ CFLAGS_SAFE     := -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ \
+                    -DAFL_PATH=\"$(HELPER_PATH)\" -DBIN_PATH=\"$(BIN_PATH)\" \
+                    -DLLVM_BINDIR=\"$(LLVM_BINDIR)\" -DVERSION=\"$(VERSION)\" \
+@@ -254,7 +254,7 @@ ifdef AFL_TRACE_PC
+   $(info Compile option AFL_TRACE_PC is deprecated, just set AFL_LLVM_INSTRUMENT=PCGUARD to activate when compiling targets )
+ endif
+ 
+-CXXFLAGS          ?= -O3 -funroll-loops -fPIC -D_FORTIFY_SOURCE=2
++CXXFLAGS          ?= -fPIC -D_FORTIFY_SOURCE=2
+ override CXXFLAGS += -Wall -g -I ./include/ \
+                      -DVERSION=\"$(VERSION)\" -Wno-variadic-macros \
+                      -DLLVM_MINOR=$(LLVM_MINOR) -DLLVM_MAJOR=$(LLVM_MAJOR)
+@@ -434,20 +434,20 @@ afl-llvm-dict2file.so:	instrumentation/afl-llvm-dict2file.so.cc instrumentation/
+ 
+ .PHONY: document
+ document:
+-	$(CLANG_BIN) -D_AFL_DOCUMENT_MUTATIONS $(CFLAGS_SAFE) $(CPPFLAGS) $(CLANG_CFL) -O3 -Wno-unused-result -fPIC -c instrumentation/afl-compiler-rt.o.c -o ./afl-compiler-rt.o
+-	@$(CLANG_BIN) -D_AFL_DOCUMENT_MUTATIONS $(CFLAGS_SAFE) $(CPPFLAGS) $(CLANG_CFL) -O3 -Wno-unused-result -m32 -fPIC -c instrumentation/afl-compiler-rt.o.c -o ./afl-compiler-rt-32.o 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; else echo "failed (that's fine)"; fi
+-	@$(CLANG_BIN) -D_AFL_DOCUMENT_MUTATIONS $(CFLAGS_SAFE) $(CPPFLAGS) $(CLANG_CFL) -O3 -Wno-unused-result -m64 -fPIC -c instrumentation/afl-compiler-rt.o.c -o ./afl-compiler-rt-64.o 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; else echo "failed (that's fine)"; fi
++	$(CLANG_BIN) -D_AFL_DOCUMENT_MUTATIONS $(CFLAGS_SAFE) $(CPPFLAGS) $(CLANG_CFL) -Wno-unused-result -fPIC -c instrumentation/afl-compiler-rt.o.c -o ./afl-compiler-rt.o
++	@$(CLANG_BIN) -D_AFL_DOCUMENT_MUTATIONS $(CFLAGS_SAFE) $(CPPFLAGS) $(CLANG_CFL) -Wno-unused-result -m32 -fPIC -c instrumentation/afl-compiler-rt.o.c -o ./afl-compiler-rt-32.o 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; else echo "failed (that's fine)"; fi
++	@$(CLANG_BIN) -D_AFL_DOCUMENT_MUTATIONS $(CFLAGS_SAFE) $(CPPFLAGS) $(CLANG_CFL) -Wno-unused-result -m64 -fPIC -c instrumentation/afl-compiler-rt.o.c -o ./afl-compiler-rt-64.o 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; else echo "failed (that's fine)"; fi
+ 
+ ./afl-compiler-rt.o: instrumentation/afl-compiler-rt.o.c
+-	$(CC) $(CLANG_CFL) $(CFLAGS_SAFE) $(CPPFLAGS) -O3 -Wno-unused-result -fPIC -c $< -o $@
++	$(CC) $(CLANG_CFL) $(CFLAGS_SAFE) $(CPPFLAGS) -Wno-unused-result -fPIC -c $< -o $@
+ 
+ ./afl-compiler-rt-32.o: instrumentation/afl-compiler-rt.o.c
+ 	@printf "[*] Building 32-bit variant of the runtime (-m32)... "
+-	@$(CC) $(CLANG_CFL) $(CFLAGS_SAFE) $(CPPFLAGS) -O3 -Wno-unused-result -m32 -fPIC -c $< -o $@ 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; ln -sf afl-compiler-rt-32.o afl-llvm-rt-32.o; else echo "failed (that's fine)"; fi
++	@$(CC) $(CLANG_CFL) $(CFLAGS_SAFE) $(CPPFLAGS) -Wno-unused-result -m32 -fPIC -c $< -o $@ 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; ln -sf afl-compiler-rt-32.o afl-llvm-rt-32.o; else echo "failed (that's fine)"; fi
+ 
+ ./afl-compiler-rt-64.o: instrumentation/afl-compiler-rt.o.c
+ 	@printf "[*] Building 64-bit variant of the runtime (-m64)... "
+-	@$(CC) $(CLANG_CFL) $(CFLAGS_SAFE) $(CPPFLAGS) -O3 -Wno-unused-result -m64 -fPIC -c $< -o $@ 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; ln -sf afl-compiler-rt-64.o afl-llvm-rt-64.o; else echo "failed (that's fine)"; fi
++	@$(CC) $(CLANG_CFL) $(CFLAGS_SAFE) $(CPPFLAGS) -Wno-unused-result -m64 -fPIC -c $< -o $@ 2>/dev/null; if [ "$$?" = "0" ]; then echo "success!"; ln -sf afl-compiler-rt-64.o afl-llvm-rt-64.o; else echo "failed (that's fine)"; fi
+ 
+ .PHONY: test_build
+ test_build: $(PROGS)
+--- a/unicorn_mode/samples/c/Makefile
++++ b/unicorn_mode/samples/c/Makefile
+@@ -35,7 +35,7 @@ clean:
+ 	rm -rf *.o harness harness-debug
+ 
+ harness.o: harness.c ../../unicornafl/include/unicorn/*.h
+-	${MYCC} ${CFLAGS} -O3 -c harness.c
++	${MYCC} ${CFLAGS} -c harness.c
+ 
+ harness-debug.o: harness.c ../../unicornafl/include/unicorn/*.h
+ 	${MYCC} ${CFLAGS} -g -c harness.c -o $@
+--- a/unicorn_mode/samples/persistent/Makefile
++++ b/unicorn_mode/samples/persistent/Makefile
+@@ -35,7 +35,7 @@ clean:
+ 	rm -rf *.o harness harness-debug
+ 
+ harness.o: harness.c ../../unicornafl/include/unicorn/*.h
+-	${MYCC} ${CFLAGS} -O3 -c harness.c
++	${MYCC} ${CFLAGS} -c harness.c
+ 
+ harness-debug.o: harness.c ../../unicornafl/include/unicorn/*.h
+ 	${MYCC} ${CFLAGS} -DAFL_DEBUG=1 -g -c harness.c -o $@
+--- a/utils/afl_untracer/Makefile
++++ b/utils/afl_untracer/Makefile
+@@ -1,7 +1,7 @@
+ ifdef DEBUG
+   OPT=-O0
+ else
+-  OPT=-O3
++  OPT?=-O2
+ endif
+ 
+ all:	afl-untracer libtestinstr.so
+--- a/utils/custom_mutators/Makefile
++++ b/utils/custom_mutators/Makefile
+@@ -1,7 +1,7 @@
+ all: libexamplemutator.so
+ 
+ libexamplemutator.so:
+-	$(CC) $(CFLAGS) -D_FORTIFY_SOURCE=2 -O3 -fPIC -shared -g -I ../../include example.c -o libexamplemutator.so
++	$(CC) $(CFLAGS) -D_FORTIFY_SOURCE=2 -fPIC -shared -g -I ../../include example.c -o libexamplemutator.so
+ 
+ clean:
+ 	rm -rf libexamplemutator.so

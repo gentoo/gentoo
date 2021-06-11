@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
@@ -49,7 +49,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	elog "Support for extra feature can be get from:"
 	optfeature "Support for pre-deployment testing" net-dns/bind
 
 	# Warn about extra requirements for >=OpenSSL 1.1.0

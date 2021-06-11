@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake python-any-r1
 
@@ -18,6 +18,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="test? ( ${PYTHON_DEPS} )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-python38_tests.patch"
+)
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

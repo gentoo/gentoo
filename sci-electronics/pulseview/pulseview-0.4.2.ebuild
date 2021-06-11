@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit cmake python-single-r1 xdg-utils
 
@@ -45,7 +45,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( HACKING NEWS README )
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.15.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.15.patch"
+	"${FILESDIR}"/${PN}-0.4.2-glib-2.68.patch
+)
 
 pkg_setup() {
 	use decode && python_setup

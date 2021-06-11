@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 # vala-0.36 fails to build, https://bugs.gentoo.org/692538
 VALA_MIN_API_VERSION="0.40"
 

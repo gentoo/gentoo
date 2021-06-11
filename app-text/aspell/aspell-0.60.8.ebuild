@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,14 +10,14 @@ MY_P="${P/_/-}"
 DESCRIPTION="A spell checker replacement for ispell"
 HOMEPAGE="http://aspell.net/"
 if [[ "${PV}" = *_rc* ]] ; then
-	SRC_URI="mirror://gnu-alpha/aspell/${MY_P}.tar.gz"
+	SRC_URI="https://alpha.gnu.org/gnu/aspell/${MY_P}.tar.gz"
 else
 	SRC_URI="mirror://gnu/aspell/${MY_P}.tar.gz"
 fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 IUSE="nls unicode"
 
 PDEPEND="app-dicts/aspell-en"

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit cmake llvm.org multilib-minimal pax-utils python-any-r1 \
 	toolchain-funcs
 
@@ -11,6 +11,7 @@ DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=pregenerated
+LLVM_PATCHSET=10.0.1-3
 llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
@@ -29,7 +30,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
@@ -66,12 +67,6 @@ RDEPEND="${RDEPEND}
 	!sys-devel/llvm:0"
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
-
-PATCHES=(
-	# Fix linking to dylib and .a libs simultaneously
-	"${FILESDIR}"/10.0.1/0001-llvm-Avoid-linking-llvm-cfi-verify-to-duplicate-libs.patch
-	"${FILESDIR}"/10.0.1/0002-llvm-Disable-linking-llvm-exegesis-to-dylib.patch
-)
 
 python_check_deps() {
 	use doc || return 0
@@ -141,10 +136,6 @@ check_distribution_components() {
 }
 
 src_prepare() {
-	# Fix llvm-config for shared linking and sane flags
-	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
-
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 

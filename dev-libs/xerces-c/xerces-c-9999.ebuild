@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+EAPI=7
 
-inherit cmake-utils prefix
+inherit cmake prefix
 
 DESCRIPTION="A validating XML parser written in a portable subset of C++"
 HOMEPAGE="https://xerces.apache.org/xerces-c/"
@@ -19,14 +18,16 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-
 IUSE="cpu_flags_x86_sse2 curl doc elibc_Darwin elibc_FreeBSD examples iconv icu static-libs test threads"
+
 RESTRICT="!test? ( test )"
 
-RDEPEND="icu? ( dev-libs/icu:0= )
+RDEPEND="
 	curl? ( net-misc/curl )
+	icu? ( dev-libs/icu:0= )
 	virtual/libiconv"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( app-doc/doxygen )
 	test? ( dev-lang/perl )"
 
@@ -83,17 +84,17 @@ src_configure() {
 		-Dsse2:BOOL="$(usex cpu_flags_x86_sse2)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
-	use doc && cmake-utils_src_compile doc-style createapidocs doc-xml
+	use doc && cmake_build doc-style createapidocs doc-xml
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# package provides .pc files
 	find "${D}" -name '*.la' -delete || die

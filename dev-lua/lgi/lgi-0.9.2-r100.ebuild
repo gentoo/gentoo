@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 VIRTUALX_REQUIRED="manual"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit lua eutils toolchain-funcs flag-o-matic virtualx
+inherit lua toolchain-funcs virtualx
 
 DESCRIPTION="Lua bindings using gobject-introspection"
 HOMEPAGE="https://github.com/pavouk/lgi"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/pavouk/lgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 			x11-libs/gtk+[introspection]
 			${VIRTUALX_DEPEND}
 		)"
+
+PATCHES=( "${FILESDIR}/${P}-lua54.patch" )
 
 lua_src_prepare() {
 	pushd "${BUILD_DIR}" || die

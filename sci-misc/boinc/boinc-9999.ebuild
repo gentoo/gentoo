@@ -1,11 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+MY_PV=7.16
 WX_GTK_VER=3.0-gtk3
 
-inherit autotools gnome2-utils linux-info systemd user wxwidgets
+inherit autotools desktop flag-o-matic linux-info systemd wxwidgets xdg-utils
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="https://boinc.ssl.berkeley.edu/"
@@ -15,27 +16,28 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/BOINC/${PN}.git"
 	inherit git-r3
 else
-	MY_PV="7.14"
 	SRC_URI+=" https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 fi
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-3"
 SLOT="0"
-IUSE="X cuda curl_ssl_gnutls curl_ssl_libressl +curl_ssl_openssl"
+IUSE="X cuda curl_ssl_gnutls +curl_ssl_openssl"
 
-REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_libressl curl_ssl_openssl ) "
+REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
 COMMON_DEPEND="
+	acct-group/boinc
+	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-2.1
 		>=x11-drivers/nvidia-drivers-180.22
 	)
-	net-misc/curl[curl_ssl_gnutls(-)=,curl_ssl_libressl(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
+	net-misc/curl[curl_ssl_gnutls(-)=,-curl_ssl_nss(-),curl_ssl_openssl(-)=,-curl_ssl_axtls(-),-curl_ssl_cyassl(-)]
 	sys-apps/util-linux
 	sys-libs/zlib
 	X? (
@@ -43,8 +45,13 @@ COMMON_DEPEND="
 		media-libs/freeglut
 		virtual/jpeg:0=
 		x11-libs/gtk+:3
+		x11-libs/libICE
 		>=x11-libs/libnotify-0.7
+		x11-libs/libSM
+		x11-libs/libXi
+		x11-libs/libXmu
 		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		virtual/jpeg
 	)
 "
 DEPEND="${RDEPEND}
@@ -59,7 +66,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	# >=x11-libs/wxGTK-3.0.2.0-r3 has webview removed, bug 587462
-	"${FILESDIR}"/fix_webview.patch
+	"${FILESDIR}"/${PN}-${MY_PV}-fix_webview.patch
 )
 
 pkg_setup() {
@@ -86,6 +93,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# bug #732024
+	if test "x$(get_libdir)" = "xlib64"; then
+	    sed -i -e 's,/:/lib:/usr/lib:,:/lib64:/usr/lib64:,g' m4/sah_check_lib.m4 || die
+	fi
+
 	default
 
 	# prevent bad changes in compile flags, bug 286701
@@ -93,10 +105,17 @@ src_prepare() {
 
 	eautoreconf
 
-	use X && need-wxwidgets unicode
+	# bug #732024
+	if test "x$(get_libdir)" = "xlib64"; then
+	    sed -i -e 's,/lib\([ /;:"]\),/lib64\1,g' configure || die
+	fi
 }
 
 src_configure() {
+	use X && setup-wxwidgets
+
+	append-libs -L"${ESYSROOT}"/usr/$(get_libdir) -L"${ESYSROOT}"/$(get_libdir)
+
 	econf --disable-server \
 		--enable-client \
 		--enable-dynamic-client-linkage \
@@ -117,18 +136,22 @@ src_install() {
 		# Create new icons. bug 593362
 		local s SIZES=(16 22 24 32 36 48 64 72 96 128 192 256)
 		for s in "${SIZES[@]}"; do
-			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png || die
+			# The convert command is not checked, because it will issue warnings and exit with
+			# an error code if imagemagick is used and was merged with USE="-xml", although the
+			# conversion has worked. See #766093
+			# Instead, newicon will fail if the conversion did not produce the icon.
+			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png
 			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
 		done
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
 
 		# Rename the desktop file to boincmgr.desktop to (hot)fix bug 599910
-		mv "${ED%/}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
+		mv "${ED}"/usr/share/applications/boincmgr{-${PN},}.desktop || \
 			die "Failed to rename desktop file"
 	fi
 
 	# cleanup cruft
-	rm -rf "${ED%/}"/etc || die "rm failed"
+	rm -r "${ED}"/etc || die "rm failed"
 	find "${D}" -name '*.la' -delete || die "Removing .la files failed"
 
 	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.init.in > ${PN}.init || die
@@ -136,20 +159,11 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-
-	enewgroup ${PN}
-	# note this works only for first install so we have to
-	# elog user about the need of being in video group
-	local groups="${PN}"
-	groups+=",video"
-	enewuser ${PN} -1 -1 /var/lib/${PN} "${groups}"
-}
-
 pkg_postinst() {
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
+	if use X; then
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+		xdg_icon_cache_update
 	fi
 
 	elog
@@ -186,7 +200,9 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
+	if use X; then
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
+		xdg_icon_cache_update
 	fi
 }

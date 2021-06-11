@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -11,37 +11,37 @@ inherit bash-completion-r1
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
 VERSION_BCACHE_TOOLS="1.0.8_p20141204"
-VERSION_BOOST="1.73.0"
-VERSION_BTRFS_PROGS="5.7"
-VERSION_BUSYBOX="1.32.0"
+VERSION_BOOST="1.75.0"
+VERSION_BTRFS_PROGS="5.11"
+VERSION_BUSYBOX="1.33.0"
 VERSION_COREUTILS="8.32"
-VERSION_CRYPTSETUP="2.3.4"
+VERSION_CRYPTSETUP="2.3.5"
 VERSION_DMRAID="1.0.0.rc16-3"
-VERSION_DROPBEAR="2020.80"
-VERSION_EUDEV="3.2.9"
-VERSION_EXPAT="2.2.9"
-VERSION_E2FSPROGS="1.45.6"
+VERSION_DROPBEAR="2020.81"
+VERSION_EUDEV="3.2.10"
+VERSION_EXPAT="2.2.10"
+VERSION_E2FSPROGS="1.46.2"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
-VERSION_HWIDS="20200813.1"
+VERSION_HWIDS="20201207"
 VERSION_ISCSI="2.0.878"
 VERSION_JSON_C="0.13.1"
-VERSION_KMOD="27"
+VERSION_KMOD="28"
 VERSION_LIBAIO="0.3.112"
-VERSION_LIBGCRYPT="1.8.6"
-VERSION_LIBGPGERROR="1.39"
+VERSION_LIBGCRYPT="1.9.2"
+VERSION_LIBGPGERROR="1.41"
 VERSION_LVM="2.02.187"
 VERSION_LZO="2.10"
 VERSION_MDADM="4.1"
 VERSION_POPT="1.18"
-VERSION_STRACE="5.8"
-VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
+VERSION_STRACE="5.11"
+VERSION_THIN_PROVISIONING_TOOLS="0.9.0"
 VERSION_UNIONFS_FUSE="2.0"
-VERSION_UTIL_LINUX="2.36"
-VERSION_XFSPROGS="5.7.0"
+VERSION_UTIL_LINUX="2.36.2"
+VERSION_XFSPROGS="5.11.0"
 VERSION_XZ="5.2.5"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.5"
+VERSION_ZSTD="1.4.9"
 
 COMMON_URI="
 	https://github.com/g2p/bcache-tools/archive/399021549984ad27bf4a13ae85e458833fe003d7.tar.gz -> bcache-tools-${VERSION_BCACHE_TOOLS}.tar.gz
@@ -51,7 +51,7 @@ COMMON_URI="
 	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz
 	https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
 	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
-	https://dev.gentoo.org/~whissi/dist/dropbear/dropbear-${VERSION_DROPBEAR}.tar.bz2
+	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
 	https://dev.gentoo.org/~blueness/eudev/eudev-${VERSION_EUDEV}.tar.gz
 	https://github.com/libexpat/libexpat/releases/download/R_${VERSION_EXPAT//\./_}/expat-${VERSION_EXPAT}.tar.xz
 	https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz
@@ -86,7 +86,7 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://dev.gentoo.org/~whissi/dist/genkernel/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"

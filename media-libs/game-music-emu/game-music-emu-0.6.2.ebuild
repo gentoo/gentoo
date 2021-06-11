@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Video game music file emulators"
@@ -16,6 +17,4 @@ IUSE=""
 
 DOCS=( changes.txt design.txt gme.txt readme.txt )
 
-PATCHES=(
-	"${FILESDIR}/game-music-emu-0.6.2-gcc10.patch"
-)
+PATCHES=( "${FILESDIR}/game-music-emu-0.6.2-gcc10.patch" )

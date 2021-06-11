@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,15 +11,14 @@ SRC_URI="http://security.appspot.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 s390 sparc x86"
-IUSE="caps libressl pam tcpd ssl selinux xinetd"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+IUSE="caps pam tcpd ssl selinux xinetd"
 
 DEPEND="caps? ( >=sys-libs/libcap-2 )
 	pam? ( sys-libs/pam )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${DEPEND}
 	net-ftp/ftpbase

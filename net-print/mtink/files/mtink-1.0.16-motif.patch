@@ -1,0 +1,49 @@
+https://sources.debian.org/patches/mtink/1.0.16-11/lesstif-multiarch/
+--- a/Configure
++++ b/Configure
+@@ -127,6 +127,8 @@
+ /usr/openwin/lib
+ /usr/local/lib
+ /usr/dt/lib'
++LIBDIRS="$LIBDIRS `${CC-gcc} -print-search-dirs 2>/dev/null |
++                   awk '/^libraries:/{print $2}' | tr ':' ' '`"
+ 
+ # Add gimp-2.0 for fedora core 2
+ INCLDIRS='/usr/include/gimp-2.0/libgimp
+@@ -279,11 +281,6 @@
+       exit 1
+    fi
+ 
+-   case $OS in
+-      Linux) . ./checkMotifVersion.sh;;
+-      Darwin) . ./checkMotifVersion.sh;;
+-   esac
+-
+    if [ "$MotifLib" != "" ]
+    then
+       mlCmd="s@^MOLIB.*@MOLIB = $MotifLib@"
+@@ -297,24 +294,6 @@
+       miCmd=
+    fi
+ 
+-   # Check for the Xp libary, some Motif libraries need this
+-
+-   xplibFound=0
+-   for dir in $LIBDIRS
+-   do
+-      if [ "`ls -c $dir/libXp.* 2>/dev/null`" != "" ]
+-      then
+-         xplibFound=1
+-         break
+-      fi
+-   done
+-
+-   # but not for Solaris
+-   if [ `uname` = SunOS ]
+-   then
+-      xplibFound=0
+-   fi
+-
+    # Gimp part ################################################
+    # check for gimp
+    includeFileFound=0

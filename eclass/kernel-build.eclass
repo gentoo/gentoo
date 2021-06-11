@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-build.eclass
@@ -32,9 +32,12 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-inherit savedconfig toolchain-funcs kernel-install
+PYTHON_COMPAT=( python3_{7..9} )
+
+inherit python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
+	${PYTHON_DEPS}
 	sys-devel/bc
 	sys-devel/flex
 	virtual/libelf
@@ -117,7 +120,7 @@ kernel-build_src_test() {
 
 	local ver="${PV}${KV_LOCALVERSION}"
 	kernel-install_test "${ver}" \
-		"${WORKDIR}/build/$(kernel-install_get_image_path)" \
+		"${WORKDIR}/build/$(dist-kernel_get_image_path)" \
 		"${T}/lib/modules/${ver}"
 }
 
@@ -173,7 +176,7 @@ kernel-build_src_install() {
 	# install the kernel and files needed for module builds
 	insinto "/usr/src/linux-${ver}"
 	doins build/{System.map,Module.symvers}
-	local image_path=$(kernel-install_get_image_path)
+	local image_path=$(dist-kernel_get_image_path)
 	cp -p "build/${image_path}" "${ED}/usr/src/linux-${ver}/${image_path}" || die
 
 	# building modules fails with 'vmlinux has no symtab?' if stripped

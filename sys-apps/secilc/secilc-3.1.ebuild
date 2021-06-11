@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -24,15 +24,10 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
-DEPEND="
-	app-text/xmlto
-	>=sys-libs/libsepol-${SEPOL_VER}
-	"
-RDEPEND="
-	>=sys-libs/libsepol-${SEPOL_VER}
-	"
+DEPEND=">=sys-libs/libsepol-${SEPOL_VER}"
+RDEPEND="${DEPEND}"
+BDEPEND="app-text/xmlto"
 
 # tests are not meant to be run outside of the
 # full SELinux userland repo

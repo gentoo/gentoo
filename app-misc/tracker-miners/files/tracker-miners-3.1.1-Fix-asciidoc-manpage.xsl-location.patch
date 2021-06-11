@@ -1,0 +1,25 @@
+From 24a47894578f48c54cb303c8a11ad8df29fc93a4 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sat, 13 Mar 2021 17:35:17 -0500
+Subject: [PATCH] Fix asciidoc manpage.xsl location
+
+---
+ docs/manpages/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/manpages/meson.build b/docs/manpages/meson.build
+index 0b8a64863..831d08597 100644
+--- a/docs/manpages/meson.build
++++ b/docs/manpages/meson.build
+@@ -43,7 +43,7 @@ foreach m : daemon_manpages + cli_manpages
+     command: [xsltproc,
+               '--output', '@OUTPUT@',
+               '--stringparam', 'man.authors.section.enabled', '0',
+-              '/etc/asciidoc/docbook-xsl/manpage.xsl', '@INPUT@'],
++              '/usr/share/asciidoc/docbook-xsl/manpage.xsl', '@INPUT@'],
+     input: xml,
+     output: manpage,
+     install: true,
+-- 
+2.26.2
+

@@ -1,6 +1,5 @@
-diff -ur work.orig/src/cEffects.cpp work/src/cEffects.cpp
---- work.orig/src/cEffects.cpp	2002-01-12 16:19:00.000000000 -0500
-+++ work/src/cEffects.cpp	2009-06-10 18:14:27.000000000 -0400
+--- a/src/cEffects.cpp
++++ b/src/cEffects.cpp
 @@ -180,7 +180,6 @@
  	{
  		if(!i->update())
@@ -18,9 +17,8 @@ diff -ur work.orig/src/cEffects.cpp work/src/cEffects.cpp
  		}
  	}
  
-diff -ur work.orig/src/cFont.cpp work/src/cFont.cpp
---- work.orig/src/cFont.cpp	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cFont.cpp	2009-06-10 18:19:15.000000000 -0400
+--- a/src/cFont.cpp
++++ b/src/cFont.cpp
 @@ -62,7 +62,7 @@
  }
  
@@ -30,9 +28,8 @@ diff -ur work.orig/src/cFont.cpp work/src/cFont.cpp
  {
  	font = TTF_OpenFont(path,size);
  	if(font==NULL)
-diff -ur work.orig/src/cFont.h work/src/cFont.h
---- work.orig/src/cFont.h	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cFont.h	2009-06-10 18:19:27.000000000 -0400
+--- a/src/cFont.h
++++ b/src/cFont.h
 @@ -34,7 +34,7 @@
  	static void		delInstance();
  	static bool		initttf();
@@ -42,9 +39,8 @@ diff -ur work.orig/src/cFont.h work/src/cFont.h
  	void			setcolor(int r,int g,int b);
  	void			setshader(int r,int g,int b);
  	void			print(SDL_Surface *screen,int posx,int posy,const char *fmt, ...);
-diff -ur work.orig/src/cParticleSys.cpp work/src/cParticleSys.cpp
---- work.orig/src/cParticleSys.cpp	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cParticleSys.cpp	2009-06-10 18:14:27.000000000 -0400
+--- a/src/cParticleSys.cpp
++++ b/src/cParticleSys.cpp
 @@ -81,9 +81,6 @@
  		if(time-p->getstarttime()>p->getlifetime())
  		{
@@ -55,9 +51,8 @@ diff -ur work.orig/src/cParticleSys.cpp work/src/cParticleSys.cpp
  		}
  	}
  
-diff -ur work.orig/src/cSound.cpp work/src/cSound.cpp
---- work.orig/src/cSound.cpp	2002-01-12 16:27:34.000000000 -0500
-+++ work/src/cSound.cpp	2009-06-10 18:17:44.000000000 -0400
+--- a/src/cSound.cpp
++++ b/src/cSound.cpp
 @@ -92,7 +92,7 @@
  }
  
@@ -67,9 +62,8 @@ diff -ur work.orig/src/cSound.cpp work/src/cSound.cpp
  {
  	if(!sound_on)
  		return true;
-diff -ur work.orig/src/cSound.h work/src/cSound.h
---- work.orig/src/cSound.h	2002-01-08 12:30:57.000000000 -0500
-+++ work/src/cSound.h	2009-06-10 18:17:50.000000000 -0400
+--- a/src/cSound.h
++++ b/src/cSound.h
 @@ -35,7 +35,7 @@
  
  	bool			init();
@@ -79,9 +73,8 @@ diff -ur work.orig/src/cSound.h work/src/cSound.h
  	void				stopogg();
  	bool			loadwav(int index,char *path);
  	void				playwav(int index);
-diff -ur work.orig/src/cSprite.cpp work/src/cSprite.cpp
---- work.orig/src/cSprite.cpp	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cSprite.cpp	2009-06-10 18:18:34.000000000 -0400
+--- a/src/cSprite.cpp
++++ b/src/cSprite.cpp
 @@ -29,7 +29,7 @@
  
  ///lädt ein BMP in das image-Surface
@@ -98,9 +91,8 @@ diff -ur work.orig/src/cSprite.cpp work/src/cSprite.cpp
 -}
 \ No newline at end of file
 +}
-diff -ur work.orig/src/cSprite.h work/src/cSprite.h
---- work.orig/src/cSprite.h	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cSprite.h	2009-06-10 18:18:44.000000000 -0400
+--- a/src/cSprite.h
++++ b/src/cSprite.h
 @@ -26,7 +26,7 @@
  	cSprite();
  	~cSprite();
@@ -110,9 +102,8 @@ diff -ur work.orig/src/cSprite.h work/src/cSprite.h
  	void 	render(SDL_Surface *screen,int x,int y);
  	void 	setColorKey(int r,int g,int b);
  
-diff -ur work.orig/src/cSpriteAnim.cpp work/src/cSpriteAnim.cpp
---- work.orig/src/cSpriteAnim.cpp	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cSpriteAnim.cpp	2009-06-10 18:20:09.000000000 -0400
+--- a/src/cSpriteAnim.cpp
++++ b/src/cSpriteAnim.cpp
 @@ -145,7 +145,7 @@
  }
  
@@ -129,9 +120,8 @@ diff -ur work.orig/src/cSpriteAnim.cpp work/src/cSpriteAnim.cpp
 -}
 \ No newline at end of file
 +}
-diff -ur work.orig/src/cSpriteAnim.h work/src/cSpriteAnim.h
---- work.orig/src/cSpriteAnim.h	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cSpriteAnim.h	2009-06-10 18:20:16.000000000 -0400
+--- a/src/cSpriteAnim.h
++++ b/src/cSpriteAnim.h
 @@ -53,7 +53,7 @@
  	cSpriteAnim();
  	~cSpriteAnim();
@@ -141,9 +131,8 @@ diff -ur work.orig/src/cSpriteAnim.h work/src/cSpriteAnim.h
  	void	setColorKey(int r,int g,int b);
  	void	render(SDL_Surface *screen,cAnim *anim,int x,int y);
  	int		getMaxNum();
-diff -ur work.orig/src/cUtil.cpp work/src/cUtil.cpp
---- work.orig/src/cUtil.cpp	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cUtil.cpp	2009-06-10 18:16:29.000000000 -0400
+--- a/src/cUtil.cpp
++++ b/src/cUtil.cpp
 @@ -85,7 +85,7 @@
  }
  
@@ -153,9 +142,8 @@ diff -ur work.orig/src/cUtil.cpp work/src/cUtil.cpp
  {
  	FILE	*file;
  	char	buffer[512];
-diff -ur work.orig/src/cUtil.h work/src/cUtil.h
---- work.orig/src/cUtil.h	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/cUtil.h	2009-06-10 18:16:39.000000000 -0400
+--- a/src/cUtil.h
++++ b/src/cUtil.h
 @@ -31,7 +31,7 @@
  
  	void	updatetime();
@@ -165,9 +153,8 @@ diff -ur work.orig/src/cUtil.h work/src/cUtil.h
  	void	drawpixel(SDL_Surface *screen, int x, int y,Uint8 R, Uint8 G,Uint8 B);
  	bool	collision(SDL_Rect objekt1,SDL_Rect objekt2);	
  
-diff -ur work.orig/src/mmgr.cpp work/src/mmgr.cpp
---- work.orig/src/mmgr.cpp	2002-01-02 07:57:46.000000000 -0500
-+++ work/src/mmgr.cpp	2009-06-10 18:14:23.000000000 -0400
+--- a/src/mmgr.cpp
++++ b/src/mmgr.cpp
 @@ -59,6 +59,7 @@
  #include <time.h>
  #include <stdarg.h>

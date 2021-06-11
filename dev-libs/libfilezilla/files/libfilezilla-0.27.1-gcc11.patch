@@ -1,0 +1,10 @@
+--- libfilezilla/lib/buffer.cpp	2020/12/09 13:33:18	10031
++++ libfilezilla/lib/buffer.cpp	2021/04/27 07:39:32	10225
+@@ -2,6 +2,7 @@
+ 
+ #include <algorithm>
+ #include <cstdlib>
++#include <limits>
+ 
+ #include <string.h>
+ 

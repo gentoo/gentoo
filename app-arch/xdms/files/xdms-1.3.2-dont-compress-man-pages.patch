@@ -1,0 +1,13 @@
+From: Sam James <sam@gentoo.org>
+Subject: [PATCH 2/2] Don't compress man pages
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,5 +11,4 @@ install:	xdms
+ 	install xdms.txt COPYING ChangeLog.txt ${DESTDIR}{PREFIX}/share/doc/xdms-{VERSION}/
+ 	chmod og+rx ${DESTDIR}{PREFIX}/bin ${DESTDIR}{PREFIX}/bin/xdms
+ 	chmod -R og+rX ${DESTDIR}{PREFIX}/share/doc/xdms-{VERSION}
+-	gzip < xdms.1 > xdms.1.gz
+-	install xdms.1.gz ${DESTDIR}{PREFIX}/share/man/man1/
++	install xdms.1 ${DESTDIR}{PREFIX}/share/man/man1/
+-- 
+

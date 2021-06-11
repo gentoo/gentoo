@@ -1,16 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils toolchain-funcs
+inherit desktop toolchain-funcs wrapper
 
 COMMIT="cc31822e4ebe54c0109623ac0c5cdf0e3acad755"
 DESCRIPTION="Free version of the well-known city building simulation"
 HOMEPAGE="https://www.donhopkins.com/home/micropolis/"
 SRC_URI="https://gitlab.com/stargo/micropolis/-/archive/${COMMIT}/micropolis-${COMMIT}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit multilib toolchain-funcs libtool multilib-minimal preserve-libs usr-ldscript
+inherit libtool multilib multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
@@ -17,7 +17,7 @@ else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
 	[[ "${PV}" == *_alpha* ]] || [[ "${PV}" == *_beta* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S="${WORKDIR}/${MY_P}"
 fi
 

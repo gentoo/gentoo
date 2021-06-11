@@ -5,4 +5,7 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">oco2000/xfce4-kbdleds-plugin</remote-id>
+  </upstream>
 </pkgmetadata>

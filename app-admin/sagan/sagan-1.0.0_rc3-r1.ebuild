@@ -1,39 +1,37 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-inherit eutils autotools-utils user
+inherit autotools flag-o-matic user
 
 DESCRIPTION="Sagan is a multi-threaded, real time system and event log monitoring system"
 HOMEPAGE="http://sagan.quadrantsec.com/"
 SRC_URI="http://sagan.quadrantsec.com/download/sagan-1.0.0RC3.tar.gz"
+S="${WORKDIR}/sagan-1.0.0RC3/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="geoip +libdnet +lognorm mysql +pcap smtp snort"
 
-RDEPEND="dev-libs/libpcre
+BDEPEND="virtual/pkgconfig"
+RDEPEND="
 	app-admin/sagan-rules[lognorm?]
-	smtp? ( net-libs/libesmtp )
-	pcap? ( net-libs/libpcap )
+	dev-libs/libpcre
+	geoip? ( dev-libs/geoip )
 	lognorm? (
 		dev-libs/liblognorm
 		dev-libs/json-c:=
 		dev-libs/libee
 		dev-libs/libestr
-			)
+	)
 	libdnet? ( dev-libs/libdnet )
+	pcap? ( net-libs/libpcap )
+	smtp? ( net-libs/libesmtp )
 	snort? ( >=net-analyzer/snortsam-2.50 )
-	geoip? ( dev-libs/geoip )
-	"
-
-DEPEND="virtual/pkgconfig
-	${RDEPEND}"
+"
+DEPEND="${RDEPEND}"
 
 # Package no longer logs directly to a database
 # and relies on Unified2 format to accomplish it
@@ -42,16 +40,26 @@ RDEPEND="${RDEPEND} mysql? ( net-analyzer/barnyard2[mysql] )"
 REQUIRED_USE="mysql? ( libdnet )"
 
 DOCS=( AUTHORS ChangeLog FAQ INSTALL README NEWS TODO )
-PATCHES=( "${FILESDIR}"/${PN}-1.0.0-liblognorm-json-c.patch )
-S="${WORKDIR}/sagan-1.0.0RC3/"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.0-liblognorm-json-c.patch
+)
 
 pkg_setup() {
 	enewgroup sagan
 	enewuser sagan -1 -1 /dev/null sagan
 }
 
+src_prepare() {
+	default
+
+	eautoreconf
+}
+
 src_configure() {
-	 local myeconfargs=(
+	append-flags -fcommon
+
+	local myeconfargs=(
 		$(use_enable smtp esmtp)
 		$(use_enable lognorm)
 		$(use_enable libdnet)
@@ -60,11 +68,11 @@ src_configure() {
 		$(use_enable geoip)
 	)
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	diropts -g sagan -o sagan -m 775
 
@@ -72,14 +80,14 @@ src_install() {
 
 	keepdir /var/log/sagan
 
-	touch "${ED}"/var/log/sagan/sagan.log
-	chown sagan.sagan "${ED}"/var/log/sagan/sagan.log
+	touch "${ED}"/var/log/sagan/sagan.log || die
+	chown sagan.sagan "${ED}"/var/log/sagan/sagan.log || die
 
 	newinitd "${FILESDIR}"/sagan.init-r1 sagan
 	newconfd "${FILESDIR}"/sagan.confd sagan
 
-	insinto /usr/share/doc/${PF}/examples
-	doins -r extra/*
+	docinto examples
+	dodoc -r extra/*
 }
 
 pkg_postinst() {

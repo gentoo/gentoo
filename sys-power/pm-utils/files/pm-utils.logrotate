@@ -1,8 +1,0 @@
-/var/log/pm-suspend.log /var/log/pm-powersave.log {
-       monthly
-       rotate 4
-       delaycompress
-       compress
-       notifempty
-       missingok
-}

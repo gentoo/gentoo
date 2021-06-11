@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		Produced in accordance with the key at
 		http://www.byztxt.com/download/PARSINGS.TXT, on the basis of numerous Greek

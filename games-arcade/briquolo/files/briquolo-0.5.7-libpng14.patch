@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/show_bug.cgi?id=308667
 
---- src/MOGL/MOGL_Image.cpp
-+++ src/MOGL/MOGL_Image.cpp
+--- a/src/MOGL/MOGL_Image.cpp
++++ b/src/MOGL/MOGL_Image.cpp
 @@ -183,7 +183,7 @@ bool MOGL_Image::ChargerPNG(const char *
    info_ptr = png_create_info_struct(png_ptr);
    if (info_ptr == NULL)

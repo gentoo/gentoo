@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -15,4 +15,8 @@
 		<remote-id type="sourceforge">warzone2100</remote-id>
 		<remote-id type="github">Warzone2100/warzone2100</remote-id>
 	</upstream>
+	<use>
+		<flag name="discord">Enable Discord presence/join integration</flag>
+		<flag name="vulkan">Enable vulkan backend</flag>
+	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD-2"
 SLOT="2/$(ver_cut 1-2)" # soname version
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
-IUSE="bindist bzip2 boost doc libressl lzma python sqlite ssl static-libs zlib"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
+IUSE="bindist doc boost bzip2 lzma python ssl static-libs sqlite zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
@@ -34,8 +34,7 @@ DEPEND="
 	lzma? ( app-arch/xz-utils:= )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[bindist=] )
-		libressl? ( dev-libs/libressl:0= )
+		dev-libs/openssl:0=[bindist=]
 	)
 	sqlite? ( dev-db/sqlite:3= )
 	zlib? ( >=sys-libs/zlib-1.2.3:= )

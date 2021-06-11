@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit edos2unix flag-o-matic toolchain-funcs
 
 DESCRIPTION="bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler"
 HOMEPAGE="http://members.cox.net/beyeler/bbmpeg.html"

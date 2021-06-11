@@ -1,20 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Polish speech synthesizer based on rsynth"
 HOMEPAGE="http://kadu.net/index.php?page=download&lang=en"
-SRC_URI="http://kadu.net/download/additions/powiedz-1.0.tgz"
+SRC_URI="http://kadu.net/download/additions/${P}.tgz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
-IUSE=""
-
-S=${WORKDIR}/${PN}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-dsp-handle-fix.patch

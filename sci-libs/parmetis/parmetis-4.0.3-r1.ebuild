@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,17 +22,13 @@ KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc double-precision examples int64 mpi openmp pcre static-libs"
 RESTRICT="mirror bindist"
 
-DEPEND="mpi? ( virtual/mpi )"
+DEPEND="mpi? ( virtual/mpi )
+	pcre? ( dev-libs/libpcre:= )"
 RDEPEND="${DEPEND}
 	!<sci-libs/metis-5"
 
 pkg_setup() {
-	if use openmp; then
-		if [[ $(tc-getCC)$ == *gcc* ]] && ! tc-has-openmp; then
-			ewarn "You are using gcc but openmp is not available"
-			die "Need an OpenMP capable compiler"
-		fi
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_prepare() {

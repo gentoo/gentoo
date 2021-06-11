@@ -1,40 +1,46 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="ninja"
+inherit bash-completion-r1 cmake
 
-inherit bash-completion-r1 cmake multilib
-
-IUSE=""
-if [ "${PV}" != "9999" ]; then
-	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
-	S="${WORKDIR}/${P#votca-}"
-else
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	KEYWORDS=""
+else
+	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	S="${WORKDIR}/${P#votca-}"
 fi
 
 DESCRIPTION="Votca excitation and charge properties module"
-HOMEPAGE="http://www.votca.org"
+HOMEPAGE="https://www.votca.org/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	~sci-libs/votca-tools-${PV}
 	>=dev-cpp/eigen-3.3
-	sci-libs/hdf5[cxx]
 	~sci-chemistry/votca-csg-${PV}
-	sci-libs/libxc"
+	sci-libs/hdf5[cxx]
+	sci-libs/libecpint
+	sci-libs/libxc
+	~sci-libs/votca-tools-${PV}
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DOCS=( README.rst NOTICE.rst CHANGELOG.rst )
 
-DOCS=( README.md NOTICE CHANGELOG.md )
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_TESTING=$(usex test)
+	)
+	cmake_src_configure
+}
 
 pkg_postinst() {
 	einfo

@@ -1,4 +1,7 @@
-# Main ARM64 (Aarch64/ARMv8) profile; endian independent.
+# Copyright 2014-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Main ARM64 (AArch64/ARMv8) profile; endian independent.
 
 ARCH="arm64"
 ACCEPT_KEYWORDS="arm64"

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools toolchain-funcs eutils java-pkg-opt-2 java-ant-2 ltprune
+inherit autotools toolchain-funcs java-pkg-opt-2 java-ant-2
 
 MYP="Healpix_${PV}"
 MYPF=${MYP}_2016Aug26
@@ -120,7 +120,7 @@ src_install() {
 		dodoc ../CHANGES
 		popd > /dev/null
 	fi
-	use static-libs || prune_libtool_files --all
+	use static-libs || find "${ED}" -name '*.la' -delete || die
 	if use idl; then
 		pushd src/idl > /dev/null
 		insinto /usr/share/gnudatalanguage/healpix

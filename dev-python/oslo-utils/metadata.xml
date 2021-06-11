@@ -5,6 +5,10 @@
 		<email>openstack@gentoo.org</email>
 		<name>Openstack</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">oslo.utils</remote-id>

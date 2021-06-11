@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -10,6 +10,8 @@
 		Mahotas-imread is a simple module with a small number of functions.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/luispedro/imread</bugs-to>
+		<doc>https://imread.readthedocs.io/</doc>
 		<remote-id type="github">luispedro/imread</remote-id>
 		<remote-id type="pypi">imread</remote-id>
 	</upstream>

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,11 +11,10 @@ SRC_URI="https://github.com/vgough/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~ppc64 ~sparc x86"
-IUSE="libressl nls"
+IUSE="nls"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	dev-libs/tinyxml2:0=
 	sys-fs/fuse:=
 	sys-libs/zlib"

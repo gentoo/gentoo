@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 
 inherit distutils-r1
 
@@ -13,15 +13,15 @@ SRC_URI="https://github.com/testing-cabal/mock/archive/${PV}.tar.gz -> ${P}.gh.t
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 
 RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/funcsigs[${PYTHON_USEDEP}]
-	' -2)
 	>=dev-python/six-1.9[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
-	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]"
+BDEPEND=${RDEPEND}
+
+PATCHES=(
+	"${FILESDIR}"/${P}-py310.patch
+)
 
 src_prepare() {
 	sed -i -e '/  pytest.*/d' setup.cfg || die
@@ -35,9 +35,6 @@ python_test() {
 	# test filtering.
 	cp -r mock/tests "${BUILD_DIR}"/lib/mock/ || die
 	cd "${BUILD_DIR}"/lib || die
-	if ! python_is_python3; then
-		rm mock/tests/*py3* || die
-	fi
 
 	# https://github.com/testing-cabal/mock/commit/d6b42149bb87cf38729eef8a100c473f602ef7fa
 	if [[ ${EPYTHON} == pypy* ]]; then

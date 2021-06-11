@@ -13,6 +13,10 @@
 	<email>alexxy@gentoo.org</email>
 	<name>Alexey Shvetsov</name>
 </maintainer>
+<maintainer type="person">
+	<email>chewi@gentoo.org</email>
+	<name>James Le Cuirot</name>
+</maintainer>
 <upstream>
 	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
 </upstream>
@@ -21,11 +25,9 @@
 	<flag name="client">Build client-side code</flag>
 	<flag name="clipboard">Enable clipboard support</flag>
 	<flag name="csc">Enable csc softscaler support</flag>
-	<flag name="dec_avcodec2">Enable avcodec2 decoder support</flag>
-	<flag name="enc_ffmpeg">Enable advanced ffmpeg/libav encoder support</flag>
-	<flag name="enc_x264">Enable x264 encoder support</flag>
-	<flag name="enc_x265">Enable x265 encoder support</flag>
+	<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 	<flag name="pillow">Enable pillow support</flag>
+	<flag name="pinentry">Use <pkg>app-crypt/pinentry</pkg> for password entry</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>
 	<flag name="webcam">Enable webcam support via opencv</flag>

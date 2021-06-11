@@ -14,6 +14,8 @@
         the ground running if your game fits one of those genres).
     </longdescription>
     <upstream>
+        <bugs-to>https://github.com/kxgames/glooey/issues</bugs-to>
+        <doc>https://glooey.readthedocs.io/</doc>
         <remote-id type="github">kxgames/glooey</remote-id>
         <remote-id type="pypi">glooey</remote-id>
     </upstream>

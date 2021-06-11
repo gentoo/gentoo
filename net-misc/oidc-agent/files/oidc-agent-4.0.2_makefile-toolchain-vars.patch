@@ -1,0 +1,43 @@
+--- a/Makefile
++++ b/Makefile
+@@ -74,9 +74,9 @@
+ endif
+ 
+ # Compiler options
+-CC       = gcc
++CC       := $(CC)
+ # compiling flags here
+-CFLAGS   = -g -std=c99 -I$(SRCDIR) -I$(LIBDIR)  -Wall -Wextra -fno-common
++CFLAGS   := $(CFLAGS) -g -std=c99 -I$(SRCDIR) -I$(LIBDIR)  -Wall -Wextra -fno-common
+ ifndef MAC_OS
+ ifndef NODPKG
+ 	CFLAGS   +=$(shell dpkg-buildflags --get CPPFLAGS)
+@@ -87,11 +87,11 @@
+ TEST_CFLAGS = $(CFLAGS) -I.
+ 
+ # Linker options
+-LINKER   = gcc
++LINKER   := $(CC)
+ ifdef MAC_OS
+ LFLAGS   = -lsodium -largp
+ else
+-LFLAGS   = -lsodium -lseccomp -fno-common
++LFLAGS   := $(LDFLAGS) -lsodium -lseccomp -fno-common
+ ifndef NODPKG
+ LFLAGS +=$(shell dpkg-buildflags --get LDFLAGS)
+ endif
+@@ -112,12 +112,12 @@
+ ifdef MAC_OS
+ CLIENT_LFLAGS = -L$(APILIB) -largp -loidc-agent.$(LIBVERSION) -lsodium
+ else
+-CLIENT_LFLAGS = -L$(APILIB) -l:$(SHARED_LIB_NAME_FULL) -lsodium -lseccomp
++CLIENT_LFLAGS := $(LDFLAGS) -L$(APILIB) -l:$(SHARED_LIB_NAME_FULL) -lsodium -lseccomp
+ ifndef NODPKG
+ 	CLIENT_LFLAGS += $(shell dpkg-buildflags --get LDFLAGS)
+ endif
+ endif
+-LIB_LFLAGS = -lc -lsodium
++LIB_LFLAGS := $(LDFLAGS) -lc -lsodium
+ ifndef MAC_OS
+ ifndef NODPKG
+ 	LIB_FLAGS += $(shell dpkg-buildflags --get LDFLAGS)

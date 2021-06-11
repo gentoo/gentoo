@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools eutils gnome2-utils xdg-utils
+
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
 HOMEPAGE="https://projects.linuxmint.com/cinnamon/"
@@ -11,7 +12,7 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection test xinerama"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 RESTRICT="test"
 
 RDEPEND="
@@ -59,7 +60,6 @@ BDEPEND="
 "
 
 src_prepare() {
-	xdg_environment_reset
 	default
 	eautoreconf
 	gnome2_disable_deprecation_warning

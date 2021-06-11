@@ -9,6 +9,9 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<use>
+		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> backend</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">jonaski/strawberry</remote-id>
 	</upstream>

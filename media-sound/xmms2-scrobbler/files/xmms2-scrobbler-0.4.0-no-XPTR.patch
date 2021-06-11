@@ -1,5 +1,3 @@
-diff --git a/src/xmms2-scrobbler.c b/src/xmms2-scrobbler.c
-index 244fccb..8cd06ed 100644
 --- a/src/xmms2-scrobbler.c
 +++ b/src/xmms2-scrobbler.c
 @@ -534,3 +534,3 @@ on_medialib_get_info2 (xmmsv_t *val, void *udata)

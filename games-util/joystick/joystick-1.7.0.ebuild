@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ DEPEND="sdl? ( media-libs/libsdl2:0[video] )
 	!<x11-libs/tslib-1.0-r2"
 RDEPEND="${DEPEND}
 	udev? ( virtual/udev )"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

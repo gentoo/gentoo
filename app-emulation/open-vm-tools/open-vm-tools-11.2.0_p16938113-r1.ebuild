@@ -1,4 +1,4 @@
-# Copyright 2007-2020 Gentoo Authors
+# Copyright 2007-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV%_
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth"
 REQUIRED_USE="
 	multimon? ( X )

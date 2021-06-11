@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{6..8})
-inherit eutils prefix python-r1 autotools multilib multilib-minimal systemd s6
+PYTHON_COMPAT=(python3_{7..9})
+inherit prefix python-r1 autotools multilib multilib-minimal systemd s6 tmpfiles
 
 DESCRIPTION="NSS module for name lookups using LDAP"
 HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"
@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}/nss-pam-ldapd-0.9.11-use-mkstemp.patch"
 	"${FILESDIR}/nss-pam-ldapd-0.9.11-relative-imports.patch"
 	"${FILESDIR}/nss-pam-ldapd-0.9.11-tests.patch"
+	"${FILESDIR}/nss-pam-ldapd-0.9.11-tests-py39.patch"
 )
 
 src_prepare() {
@@ -100,7 +101,8 @@ multilib_src_test() {
 }
 
 python_test() {
-	emake check
+	cp -l "${S}"/pynslcd/*.py pynslcd/ || die "Could not copy python files for tests"
+	nonfatal emake check || die "tests failed with ${EPYTHON}"
 }
 
 multilib_src_install_all() {
@@ -131,7 +133,7 @@ multilib_src_install_all() {
 		newinitd "${FILESDIR}"/pynslcd.init pynslcd
 	fi
 
-	systemd_newtmpfilesd "${FILESDIR}"/nslcd-tmpfiles.conf nslcd.conf
+	newtmpfiles "${FILESDIR}"/nslcd-tmpfiles.conf nslcd.conf
 	systemd_newunit "${FILESDIR}"/nslcd.service nslcd.service
 }
 

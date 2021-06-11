@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit fortran-2 flag-o-matic toolchain-funcs
+inherit fortran-2 flag-o-matic multilib toolchain-funcs
 
 MYP=MUMPS_${PV}
 
@@ -29,7 +29,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-get_version_component_count() {
+_get_version_component_count() {
 	local cnt=( $(ver_rs 1- ' ') )
 	echo ${#cnt[@]} || die
 }
@@ -53,7 +53,7 @@ static_to_shared() {
 			-Wl,--whole-archive ${libstatic} -Wl,--no-whole-archive \
 			"$@" -o ${libdir}/${soname} || die "${soname} failed"
 
-		if [[ $(get_version_component_count) -ge 1 ]] ; then
+		if [[ $(_get_version_component_count) -ge 1 ]] ; then
 			ln -s ${soname} ${libdir}/${libname}$(get_libname $(ver_cut 1)) || die
 		fi
 

@@ -1,0 +1,33 @@
+when compiling with CC="clang" CXX="clang++" it aborts with 
+
+
+createcats.c:71:42: error: ordered comparison between pointer and zero ('char *' and 'int')
+    if (fgets(buffer, sizeof(buffer), f) > 0) {
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~
+
+This patch fixes it.
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net> ( 2021-02-16 )
+
+--- a/epgsearchext.c	2021-02-14 02:29:17.347224714 +0100
++++ b/epgsearchext.c	2021-02-14 09:12:46.606509411 +0100
+@@ -1424,7 +1424,7 @@
+             int line = 0;
+             char buffer[MAXPARSEBUFFER];
+             result = true;
+-            while (fgets(buffer, sizeof(buffer), f) > 0) {
++            while (fgets(buffer, sizeof(buffer), f) != NULL) {
+                 line++;
+                 char *p = strchr(buffer, '#');
+                 if (p == buffer) *p = 0;
+--- a/createcats.c	2021-02-14 09:18:05.146499999 +0100
++++ b/createcats.c	2021-02-14 09:18:25.974499384 +0100
+@@ -68,7 +68,7 @@
+ 
+ char *cReadLine::Read(FILE *f)
+ {
+-    if (fgets(buffer, sizeof(buffer), f) > 0) {
++    if (fgets(buffer, sizeof(buffer), f) != NULL) {
+         int l = strlen(buffer) - 1;
+         if (l >= 0 && buffer[l] == '\n')
+             buffer[l] = 0;

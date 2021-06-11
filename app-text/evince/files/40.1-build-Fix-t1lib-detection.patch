@@ -1,0 +1,30 @@
+From bb3c826f134c47c505ad4fd93b1c97f67da5350c Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Mon, 12 Apr 2021 23:47:14 -0400
+Subject: [PATCH] build: Fix t1lib detection
+
+Without this, Meson always fails to detect t1lib. Autotools looked for
+the correct function name. See the check at the time of removal in
+commit b27189bb ("build: Remove autotools")
+
+Fixes: d69158ec ("build: Port to Meson build system")
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index abee124d..0d7fd4d4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -365,7 +365,7 @@ if enable_dvi
+   endforeach
+ 
+   t1_dep = cc.find_library('t1', required: get_option('t1lib'))
+-  enable_t1lib = t1_dep.found() and cc.has_function('T1_initLib', dependencies: t1_dep)
++  enable_t1lib = t1_dep.found() and cc.has_function('T1_InitLib', dependencies: t1_dep)
+   config_h.set('WITH_TYPE1_FONTS', enable_t1lib)
+ 
+   backends += {'dvi': mime_types_list.get('dvi')}
+-- 
+2.26.3
+

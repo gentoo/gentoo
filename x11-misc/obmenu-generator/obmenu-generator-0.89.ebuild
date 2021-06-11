@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/trizen/obmenu-generator/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-lang/perl[gdbm]
@@ -30,7 +30,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "For icon (-i) functionality, install:"
+	optfeature_header "For icon (-i) functionality, install:"
 	optfeature "support via gtk+:2 (default)" dev-perl/Gtk2
 	optfeature "support via gtk+:3 (enabled via config)" dev-perl/Gtk3
 }

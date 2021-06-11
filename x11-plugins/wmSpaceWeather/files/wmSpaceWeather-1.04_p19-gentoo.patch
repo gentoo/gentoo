@@ -1,5 +1,5 @@
---- wmSpaceWeather/Makefile.orig	2008-01-28 02:45:07.000000000 +0100
-+++ wmSpaceWeather/Makefile	2008-01-28 02:46:04.000000000 +0100
+--- wmSpaceWeather/Makefile
++++ wmSpaceWeather/Makefile
 @@ -1,8 +1,8 @@
 -CC     = gcc
 -CFLAGS = -O2 -Wall
@@ -48,8 +48,8 @@
 +	install -m 0755 GetKp $(DESTDIR)$(PREFIX)/share/wmspaceweather
 +	install -m 0644 wmSpaceWeather.1 $(DESTDIR)$(PREFIX)/share/man/man1
  
---- wmSpaceWeather/wmSpaceWeather.c.orig	2008-01-28 03:16:36.000000000 +0100
-+++ wmSpaceWeather/wmSpaceWeather.c	2008-01-28 03:22:12.000000000 +0100
+--- wmSpaceWeather/wmSpaceWeather.c
++++ wmSpaceWeather/wmSpaceWeather.c
 @@ -663,7 +663,7 @@
      if (GotDoubleClick1) {
          GotFirstClick1 = 0;

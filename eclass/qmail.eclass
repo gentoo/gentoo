@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmail.eclass
 # @MAINTAINER:
-# qmail-bugs@gentoo.org
+# Rolf Eike Beer <eike@sf-mail.de>
 # @BLURB: common qmail functions
 
 inherit flag-o-matic toolchain-funcs fixheadtails

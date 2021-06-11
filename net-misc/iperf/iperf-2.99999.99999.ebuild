@@ -13,11 +13,7 @@ LICENSE="HPND"
 SLOT="2"
 IUSE="ipv6 threads debug"
 
-DOCS=( "INSTALL" "README" )
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.12-ipv6.patch
-)
+DOCS=( INSTALL README )
 
 src_configure() {
 	econf \

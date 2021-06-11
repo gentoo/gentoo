@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,6 @@ DESCRIPTION="C library to create simple HTTP servers and Web Applications"
 HOMEPAGE="https://www.coralbits.com/libonion/ https://github.com/davidmoreno/onion"
 
 if [ "${PV#9999}" != "${PV}" ] ; then
-	KEYWORDS=""
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
@@ -26,7 +25,7 @@ LICENSE="|| ( GPL-2+ Apache-2.0 ) AGPL-3"
 SLOT="0"
 IUSE="
 	gnutls pam png jpeg xml systemd sqlite boehm-gc
-	test examples cxx -libev -libevent
+	test examples cxx libev libevent
 	redis
 "
 RESTRICT="!test? ( test )"

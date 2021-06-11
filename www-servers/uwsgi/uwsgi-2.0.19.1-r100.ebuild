@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -13,7 +13,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php7-2 php7-3 php7-4" # deps must be registered separately below
+USE_PHP="php7-3 php7-4" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
@@ -25,7 +25,7 @@ SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=( ping cache carbon nagios rpc rrdtool
 	http ugreen signal syslog rsyslog
@@ -55,7 +55,7 @@ LANG_SUPPORT_EXTENDED=( go lua php python python-asyncio python-gevent ruby )
 # *java*: TODO
 # v8: TODO
 # matheval: TODO
-IUSE="apache2 +caps debug +embedded expat jemalloc json libressl +pcre +routing selinux +ssl +xml yajl yaml zeromq"
+IUSE="apache2 +caps debug +embedded expat jemalloc json +pcre +routing selinux +ssl +xml yajl yaml zeromq"
 
 for plugin in ${UWSGI_PLUGINS_STD[@]}; do IUSE="${IUSE} +uwsgi_plugins_${plugin}"; done
 for plugin in ${UWSGI_PLUGINS_OPT[@]}; do IUSE="${IUSE} uwsgi_plugins_${plugin}"; done
@@ -88,10 +88,7 @@ CDEPEND="
 		yajl? ( dev-libs/yajl )
 	)
 	pcre? ( dev-libs/libpcre:3 )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
-	)
+	ssl? ( dev-libs/openssl:0= )
 	xml? (
 		!expat? ( dev-libs/libxml2 )
 		expat? ( dev-libs/expat )
@@ -118,7 +115,6 @@ CDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? (
 		net-libs/libnsl
-		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 		php_targets_php7-4? ( dev-lang/php:7.4[embed] )
 	)

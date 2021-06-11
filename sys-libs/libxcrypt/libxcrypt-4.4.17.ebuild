@@ -1,17 +1,17 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit autotools multibuild python-any-r1 multilib-minimal
 
-DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others "
+DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others"
 SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/besser82/libxcrypt"
 
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+compat split-usr +static-libs system test"
 
 DEPEND="system? (

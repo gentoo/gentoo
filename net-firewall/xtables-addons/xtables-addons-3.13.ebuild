@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 MODULES_OPTIONAL_USE=modules
 MODULES_OPTIONAL_USE_IUSE_DEFAULT=1
-inherit eutils linux-info linux-mod multilib toolchain-funcs
+inherit linux-info linux-mod multilib toolchain-funcs
 
 DESCRIPTION="iptables extensions not yet accepted in the main kernel"
 HOMEPAGE="https://inai.de/projects/xtables-addons/"
@@ -13,7 +13,7 @@ SRC_URI="https://inai.de/files/xtables-addons/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 MODULES="quota2 psd pknock lscan length2 ipv4options ipp2p iface gradm geoip fuzzy condition tarpit sysrq logmark ipmark echo dnetmap dhcpmac delude chaos account"
 

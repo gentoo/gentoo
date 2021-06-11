@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>waebbl@gmail.com</email>
+<maintainer type="person" proxied="yes">
+	<email>waebbl-gentoo@posteo.net</email>
 	<name>Bernd Waibel</name>
 </maintainer>
-<maintainer type="project">
+<maintainer type="project" proxied="proxy">
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
@@ -14,17 +14,12 @@
 	developed by Sony Pictures Imageworks Inc. and Lucasfilm Ltd.
 </longdescription>
 <use>
-	<flag name="boost">Use <pkg>dev-libs/boost</pkg> library</flag>
-	<flag name="examples">Install alembic examples</flag>
 	<flag name="hdf5">Add support <pkg>sci-libs/hdf5</pkg></flag>
-	<flag name="prman">
-		Compile Alembic plugin for Renderman (experimental)
-	</flag>
 	<flag name="test">Build and run the test-suite</flag>
 	<flag name="zlib">Use <pkg>sys-libs/zlib</pkg> for compressions</flag>
 </use>
 <upstream>
 	<bugs-to>https://github.com/alembic/alembic/issues</bugs-to>
-	<remote-id type="github">https://github.com/alembic/alembic</remote-id>
+	<remote-id type="github">alembic/alembic</remote-id>
 </upstream>
 </pkgmetadata>

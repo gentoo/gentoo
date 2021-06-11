@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Generic build tool with built-in rules for building OCaml library and programs"
 HOMEPAGE="https://github.com/ocaml/ocamlbuild"
@@ -21,6 +21,14 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	test? ( dev-ml/findlib )"
 
+src_prepare() {
+	sed -i \
+		-e "/package_exists/s:camlp4.macro:xxxxxx:" \
+		-e "/package_exists/s:menhirLib:xxxxxx:" \
+		testsuite/external.ml || die
+	default
+}
+
 src_configure() {
 	emake -f configure.make Makefile.config \
 		PREFIX="${EPREFIX}/usr" \
@@ -29,6 +37,11 @@ src_configure() {
 		OCAML_NATIVE=$(usex ocamlopt true false) \
 		OCAML_NATIVE_TOOLS=$(usex ocamlopt true false) \
 		NATDYNLINK=$(usex ocamlopt true false)
+}
+
+src_compile() {
+	emake src/ocamlbuild_config.cmo
+	default
 }
 
 src_install() {

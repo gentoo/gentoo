@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,19 +12,22 @@ SRC_URI="http://download.openvz.org/utils/${PN}/${PV}/src/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc64 ~sparc x86"
-IUSE=""
 
 src_prepare() {
+	default
+
 	sed -e 's,$(INSTALL) -s -m,$(INSTALL) -m,' \
 		-e 's:$(CC) $(CFLAGS) -o:$(CC) $(CFLAGS) $(LDFLAGS) -o:' \
 		-e 's:-Werror ::' \
-			-i "${S}/src/Makefile" || die 'sed on src/Makefile failed'
+		-i "${S}/src/Makefile" || die "sed on src/Makefile failed"
+
 	tc-export CC
 }
 
 src_install() {
 	emake DESTDIR="${ED}" INSTALL="${EPREFIX}/usr/bin/install" install
 	keepdir /var/vzquota
+
 	# remove accidentally created man8 dir
-	rm -r "${ED}/man8" || die 'remove man8 directory failed'
+	rm -r "${ED}/man8" || die "remove man8 directory failed"
 }

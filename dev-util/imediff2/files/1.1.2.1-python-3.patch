@@ -1,0 +1,157 @@
+diff -aurN a/imediff2 b/imediff2
+--- a/imediff2	2018-10-20 13:36:19.000000000 -0400
++++ b/imediff2	2021-03-03 10:03:31.121774492 -0500
+@@ -167,19 +167,19 @@
+ def read_lines( filename ):
+   global assume_empty
+   try:
+-    fp = file( filename )
++    fp = open( filename )
+     l = fp.readlines()
+     fp.close()
+     return l
+-  except IOError, (error, message):
+-    if error == errno.ENOENT and assume_empty:
++  except IOError as e:
++    if e.errno == errno.ENOENT and assume_empty:
+       return ""
+     else:
+-      sys.stderr.write(_("Could not read '%s': %s\n") % (filename, message))
++      sys.stderr.write(_("Could not read '%s': %s\n") % (filename, e.strerror))
+       sys.exit(3)
+ 
+ def strip_end_lines( txt ):
+-  return string.replace(string.replace(txt,"%c"%10,""),"%c"%13,"")
++  return txt.replace("%c"%10,"").replace("%c"%13,"")
+ 
+ def main(stdscr, lines_a, lines_b, start_mode):
+   global sel, active_chunks, x,y, lines, textpad, contw,conth
+@@ -283,7 +283,7 @@
+         active_chunks.append( [j, j+len(line_list), i] )
+ 
+       for l in line_list:
+-        lines.append( [string.expandtabs(strip_end_lines(l)),
++        lines.append( [strip_end_lines(l).expandtabs(),
+           decor, color_pair] )
+         j+=1
+ 
+@@ -332,9 +332,9 @@
+   def sel_next( dir ):
+     global sel, active_chunks
+     if dir == 'up':
+-      rng = range(sel-1, -1, -1)
++      rng = list(range(sel-1, -1, -1))
+     else:
+-      rng = range(sel+1, len(active_chunks))
++      rng = list(range(sel+1, len(active_chunks)))
+     for j in rng:
+       if active_chunks[j][1] > y and active_chunks[j][0] < y+winh:
+         sel = j
+@@ -487,7 +487,7 @@
+     elif c == ord('h') or c == ord('?') or c == curses.KEY_HELP:
+       helpw = 0
+       helph = 0
+-      for l in string.split(helptext(), "%c"%10):
++      for l in helptext().split("%c"%10):
+         helpw = max(helpw, len(l))
+         helph += 1
+       helppad = curses.newpad(helph+2, helpw+2)
+@@ -502,7 +502,7 @@
+     elif c == ord('q') or c == curses.KEY_CANCEL:
+       quitw = 0
+       quith = 0
+-      for l in string.split(quittext(), "%c"%10):
++      for l in quittext().split("%c"%10):
+         quitw = max(quitw, len(l))
+         quith += 1
+       quitpad = curses.newpad(quith+2, quitw+2)
+@@ -571,33 +571,33 @@
+ try:
+   opts, args = getopt.getopt(sys.argv[1:], "hmuo:abcNtV",
+     ["help","mono","unresolved","output=", "template", "version", "new-file"])
+-except getopt.GetoptError, e:
+-  print _("Error: ") + str(e)
+-  print usagetext()
++except getopt.GetoptError as e:
++  print((_("Error: ") + str(e)))
++  print(usagetext())
+   sys.exit(2)
+ 
+ for o, a in opts:
+   if o in ("-h", "--help"):
+-    print usagetext()
++    print((usagetext()))
+     sys.exit()
+   elif o in ("-t", "--template"):
+     try:
+       with open(config_file, 'w') as f:
+-        print >>f, "# Configuration for imediff2: (Erase this file to reset)"
+-        print >>f, "# <command_key_in_action> <command_key_in_manpage>"
+-        print >>f, "# edit only first character of each line to 'a'...'z'"
+-        print >>f, "#"
++        print(("# Configuration for imediff2: (Erase this file to reset)"), file=f)
++        print(("# <command_key_in_action> <command_key_in_manpage>"), file=f)
++        print(("# edit only first character of each line to 'a'...'z'"), file=f)
++        print(("#"), file=f)
+         for k in kcvalues:
+-          print >>f, "%s %s" % (k , k)
++          print(("%s %s" % (k , k)), file=f)
+     except:
+-      print "%s not writable, aborting" % config_file
++      print(("%s not writable, aborting" % config_file))
+     sys.exit()
+   elif o in ("-V", "--version"):
+-    print "%s %s" % (PACKAGE, VERSION)
++    print(("%s %s" % (PACKAGE, VERSION)))
+     sys.exit()
+ 
+ if len(args)<2:
+-  print usagetext()
++  print((usagetext()))
+   sys.exit(2)
+ 
+ for o, a in opts:
+@@ -692,14 +695,14 @@
+     assert( not editor is None )
+     try:
+       (of, of_name) = tempfile.mkstemp(prefix='imediff2')
+-      os.write( of, output )
++      os.write( of, output.encode() )
+       os.close(of)
+       time.sleep(0.1) # make the change visible - many editor look a lot like imediff2
+       editor_ret = os.system('%s %s' % (editor, of_name))
+       time.sleep(0.1)
+       if editor_ret == 0:
+         new_b_lines = read_lines(of_name)
+-        if string.join(new_b_lines, '') == output:
++        if ''.join(new_b_lines) == output:
+           chunk_mode = 'old'
+         elif new_b_lines != lines_a:
+           lines_b = new_b_lines
+@@ -707,8 +710,8 @@
+         else:
+           chunks = 'old'
+       os.unlink(of_name)
+-    except IOError, (error, message):
+-      sys.stderr.write(_("Could not write to '%s': %s\n") % (of_name, message));
++    except IOError as e:
++      sys.stderr.write(_("Could not write to '%s': %s\n") % (of_name, e.strerror));
+ 
+   if not launch_editor:
+     break
+@@ -719,11 +722,11 @@
+ else:
+   try:
+     if ofile is not None:
+-      of = file(ofile, 'wb')
+-      of.write( output )
++      of = open(ofile, 'wb')
++      of.write( output.encode() )
+       of.close()
+     sys.exit(0)
+-  except IOError, (error, message):
+-    sys.stderr.write(_("Could not write to '%s': %s\n") % (ofile, message));
++  except IOError as e:
++    sys.stderr.write(_("Could not write to '%s': %s\n") % (ofile, e.strerror));
+ 
+ sys.exit(3)

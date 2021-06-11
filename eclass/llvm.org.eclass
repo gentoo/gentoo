@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm.org.eclass
@@ -44,7 +44,7 @@ esac
 # @DESCRIPTION:
 # The major version of current LLVM trunk.  Used to determine
 # the correct branch to use.
-_LLVM_MASTER_MAJOR=12
+_LLVM_MASTER_MAJOR=13
 
 # @ECLASS-VARIABLE: _LLVM_SOURCE_TYPE
 # @INTERNAL
@@ -88,6 +88,11 @@ inherit multiprocessing
 # Set to 'build', include the dependency on dev-python/sphinx to build
 # the manpages.  If set to 'pregenerated', fetch and install
 # pregenerated manpages from the archive.
+
+# @ECLASS-VARIABLE: LLVM_PATCHSET
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# LLVM patchset version.  No patchset is used if unset.
 
 
 # == global scope logic ==
@@ -145,6 +150,11 @@ llvm.org_set_globals() {
 			die "Invalid LLVM_MANPAGES=${LLVM_MANPAGES}"
 	esac
 
+	if [[ -n ${LLVM_PATCHSET} ]]; then
+		SRC_URI+="
+			https://dev.gentoo.org/~mgorny/dist/llvm/llvm-gentoo-patchset-${LLVM_PATCHSET}.tar.xz"
+	fi
+
 	# === useful defaults for cmake-based packages ===
 
 	# least intrusive of all
@@ -192,6 +202,15 @@ llvm.org_src_unpack() {
 			[[ ${x} != ${archive} ]] && unpack "${x}"
 		done
 	fi
+
+	if [[ -n ${LLVM_PATCHSET} ]]; then
+		# strip patches that don't match current components
+		local IFS='|'
+		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}" |
+			xargs rm
+		assert
+	fi
 }
 
 # @FUNCTION: llvm.org_src_prepare
@@ -201,6 +220,13 @@ llvm.org_src_unpack() {
 # ${WORKDIR}, so that patches straight from llvm-project repository
 # work correctly with -p1.
 llvm.org_src_prepare() {
+	if [[ -n ${LLVM_PATCHSET} ]]; then
+		local PATCHES=(
+			"${PATCHES[@]}"
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}"
+		)
+	fi
+
 	if declare -f cmake_src_prepare >/dev/null; then
 		# cmake eclasses force ${S} for default_src_prepare
 		# but use ${CMAKE_USE_DIR} for everything else

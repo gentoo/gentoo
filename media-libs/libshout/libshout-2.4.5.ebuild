@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,14 +11,13 @@ SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="libressl speex static-libs theora"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+IUSE="speex static-libs theora"
 
 RDEPEND="
 	>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
 	theora? ( media-libs/libtheora[${MULTILIB_USEDEP}] )
 "

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PATCHSET_VER="3"
+PATCHSET_VER="5"
 
 inherit autotools java-pkg-opt-2
 
@@ -19,7 +19,7 @@ IUSE="curl debug iodbc java mysql odbc pcre threads xml"
 
 RDEPEND="curl? ( net-misc/curl )
 	iodbc? ( dev-db/libiodbc )
-	java? ( >=virtual/jdk-1.4:= )
+	java? ( >=virtual/jdk-1.8:* )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	pcre? ( dev-libs/libpcre )

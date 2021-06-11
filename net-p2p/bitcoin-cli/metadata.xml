@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
-	<maintainer type="project">
+	<maintainer type="project" proxied="proxy">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
@@ -15,5 +15,7 @@
 	<upstream>
 		<remote-id type="github">bitcoin/bitcoin</remote-id>
 		<remote-id type="github">bitcoinknots/bitcoin</remote-id>
+		<remote-id type="cpe">cpe:/a:bitcoin:bitcoin_core</remote-id>
+		<remote-id type="cpe">cpe:/a:bitcoin_knots_project:bitcoin_knots</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,30 +1,57 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common functions to manipulate and query toolchain flags
 # @DESCRIPTION:
 # This eclass contains a suite of functions to help developers sanely
 # and safely manage toolchain flags in their builds.
 
+case ${EAPI:-0} in
+	0|1|2|3|4) die "flag-o-matic.eclass: EAPI ${EAPI} is too old." ;;
+	5|6|7) ;;
+	*) die "EAPI ${EAPI} is not supported by flag-o-matic.eclass." ;;
+esac
+
 if [[ -z ${_FLAG_O_MATIC_ECLASS} ]]; then
 _FLAG_O_MATIC_ECLASS=1
 
-inherit eutils toolchain-funcs multilib
+inherit toolchain-funcs
 
+[[ ${EAPI} == [567] ]] && inherit eutils
+
+# @FUNCTION: all-flag-vars
+# @DESCRIPTION:
 # Return all the flag variables that our high level funcs operate on.
 all-flag-vars() {
 	echo {ADA,C,CPP,CXX,CCAS,F,FC,LD}FLAGS
 }
 
+# @FUNCTION: setup-allowed-flags
+# @INTERNAL
+# @DESCRIPTION:
 # {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
 # Note: shell globs and character lists are allowed
 setup-allowed-flags() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_setup-allowed-flags "$@"
+}
+
+# @FUNCTION: _setup-allowed-flags
+# @INTERNAL
+# @DESCRIPTION:
+# {C,CPP,CXX,CCAS,F,FC,LD}FLAGS that we allow in strip-flags
+# Note: shell globs and character lists are allowed
+_setup-allowed-flags() {
 	ALLOWED_FLAGS=(
 		-pipe -O '-O[12sg]' -mcpu -march -mtune
-		'-fstack-protector*' '-fsanitize*' '-fstack-check*' -fno-stack-check
+		'-fstack-protector*'
+		'-fsanitize*' '-fno-sanitize*'
+		'-fstack-check*' -fno-stack-check
 		-fbounds-check -fbounds-checking -fno-strict-overflow
 		-fno-PIE -fno-pie -nopie -no-pie -fno-unit-at-a-time
 
@@ -87,7 +114,10 @@ setup-allowed-flags() {
 	)
 }
 
-# inverted filters for hardened compiler.  This is trying to unpick
+# @FUNCTION: _filter-hardened
+# @INTERNAL
+# @DESCRIPTION:
+# Inverted filters for hardened compiler.  This is trying to unpick
 # the hardened compiler defaults.
 _filter-hardened() {
 	local f
@@ -121,6 +151,9 @@ _filter-hardened() {
 	done
 }
 
+# @FUNCTION: _filter-var
+# @INTERNAL
+# @DESCRIPTION:
 # Remove occurrences of strings from variable given in $1
 # Strings removed are matched as globs, so for example
 # '-O*' would remove -O1, -O2 etc.
@@ -313,6 +346,11 @@ replace-cpu-flags() {
 	return 0
 }
 
+# @FUNCTION: _is_flagq
+# @USAGE: <variable> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is in a given <variable>, else returns shell false.
 _is_flagq() {
 	local x var="$1[*]"
 	for x in ${!var} ; do
@@ -405,7 +443,7 @@ strip-flags() {
 	local x y var
 
 	local ALLOWED_FLAGS
-	setup-allowed-flags
+	_setup-allowed-flags
 
 	set -f	# disable pathname expansion
 
@@ -438,7 +476,25 @@ strip-flags() {
 	return 0
 }
 
+# @FUNCTION: test-flag-PROG
+# @USAGE: <compiler> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by given <compiler>,
+# else returns shell false.
 test-flag-PROG() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_test-flag-PROG "$@"
+}
+
+# @FUNCTION: _test-flag-PROG
+# @USAGE: <compiler> <flag>
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by given <compiler>,
+# else returns shell false.
+_test-flag-PROG() {
 	local comp=$1
 	local lang=$2
 	shift 2
@@ -533,33 +589,51 @@ test-flag-PROG() {
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler, else returns shell false.
-test-flag-CC() { test-flag-PROG "CC" c "$@"; }
+test-flag-CC() { _test-flag-PROG CC c "$@"; }
 
 # @FUNCTION: test-flag-CXX
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C++ compiler, else returns shell false.
-test-flag-CXX() { test-flag-PROG "CXX" c++ "$@"; }
+test-flag-CXX() { _test-flag-PROG CXX c++ "$@"; }
 
 # @FUNCTION: test-flag-F77
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 77 compiler, else returns shell false.
-test-flag-F77() { test-flag-PROG "F77" f77 "$@"; }
+test-flag-F77() { _test-flag-PROG F77 f77 "$@"; }
 
 # @FUNCTION: test-flag-FC
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the Fortran 90 compiler, else returns shell false.
-test-flag-FC() { test-flag-PROG "FC" f95 "$@"; }
+test-flag-FC() { _test-flag-PROG FC f95 "$@"; }
 
 # @FUNCTION: test-flag-CCLD
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
-test-flag-CCLD() { test-flag-PROG "CC" c+ld "$@"; }
+test-flag-CCLD() { _test-flag-PROG CC c+ld "$@"; }
 
+# @FUNCTION: test-flags-PROG
+# @USAGE: <compiler> <flag> [more flags...]
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by given <compiler>,
+# else returns shell false.
 test-flags-PROG() {
+	[[ ${EAPI} == [567] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_test-flags-PROG "$@"
+}
+
+# @FUNCTION: _test-flags-PROG
+# @USAGE: <compiler> <flag> [more flags...]
+# @INTERNAL
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by given <compiler>,
+# else returns shell false.
+_test-flags-PROG() {
 	local comp=$1
 	local flags=()
 	local x
@@ -596,31 +670,31 @@ test-flags-PROG() {
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C compiler, else returns shell false.
-test-flags-CC() { test-flags-PROG "CC" "$@"; }
+test-flags-CC() { _test-flags-PROG CC "$@"; }
 
 # @FUNCTION: test-flags-CXX
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C++ compiler, else returns shell false.
-test-flags-CXX() { test-flags-PROG "CXX" "$@"; }
+test-flags-CXX() { _test-flags-PROG CXX "$@"; }
 
 # @FUNCTION: test-flags-F77
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the Fortran 77 compiler, else returns shell false.
-test-flags-F77() { test-flags-PROG "F77" "$@"; }
+test-flags-F77() { _test-flags-PROG F77 "$@"; }
 
 # @FUNCTION: test-flags-FC
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the Fortran 90 compiler, else returns shell false.
-test-flags-FC() { test-flags-PROG "FC" "$@"; }
+test-flags-FC() { _test-flags-PROG FC "$@"; }
 
 # @FUNCTION: test-flags-CCLD
 # @USAGE: <flags>
 # @DESCRIPTION:
 # Returns shell true if <flags> are supported by the C compiler and default linker, else returns shell false.
-test-flags-CCLD() { test-flags-PROG "CCLD" "$@"; }
+test-flags-CCLD() { _test-flags-PROG CCLD "$@"; }
 
 # @FUNCTION: test-flags
 # @USAGE: <flags>

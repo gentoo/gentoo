@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Small utility which bothers you at certain intervals"
-HOMEPAGE="https://apps.kde.org/en/rsibreak https://userbase.kde.org/RSIBreak"
+HOMEPAGE="https://apps.kde.org/rsibreak/ https://userbase.kde.org/RSIBreak"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.xz"

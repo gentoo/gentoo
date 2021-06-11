@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>luke-jr+gentoobugs@utopios.org</email>
     <name>Luke Dashjr</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -14,9 +14,13 @@
     <flag name="ecdh">Enable ECDH shared secret computation</flag>
     <flag name="endomorphism">Enable endomorphism</flag>
     <flag name="experimental">Allow experimental USE flags</flag>
+    <flag name="extrakeys">Enable extrakeys module</flag>
+    <flag name="lowmem">Reduce runtime memory usage at the expense of performance (ecmult window size 2, gen precision 2)</flag>
+    <flag name="precompute-ecmult">Use over 512 MB memory at runtime for better performance (ecmult window size 24, gen precision 8)</flag>
     <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
     <flag name="schnorr">Enable Schnorr signature module</flag>
     <flag name="test-openssl">Enable OpenSSL comparison tests</flag>
+    <flag name="valgrind">Compile in valgrind memory hints</flag>
   </use>
   <upstream>
     <remote-id type="github">bitcoin/secp256k1</remote-id>

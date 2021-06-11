@@ -1,9 +1,64 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (2020-12-31)
-# dev-python/pyudev is not keyworded
-dev-libs/libwacom test
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# dev-python/sphinx_lv2_theme isn't keyworded here (bug #769413)
+>=media-libs/lilv-0.24.12 doc
+>=media-libs/sratom-0.6.8 doc
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-03-13)
+# virtual/jdk isn't keyworded here
+media-libs/rubberband jni
+
+# Sam James <sam@gentoo.org> (2021-03-11)
+# media-libs/libheif isn't keyworded here
+# media-libs/libavif isn't keyworded here
+media-libs/gd avif heif
+
+# Sam James <sam@gentoo.org> (2021-02-26)
+# dev-libs/efl not keyworded here
+# and is a desktop application mainly
+# bug #773178
+app-crypt/pinentry efl
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-02-14)
+# sci-libs/cholmod is not keyworded.
+sci-libs/umfpack cholmod
+
+# Sam James <sam@gentoo.org> (2021-02-22)
+# media-sound/sndio is not yet keyworded here
+# bug #769098, bug #769122
+media-libs/openal sndio
+media-video/ffmpeg sndio
+media-sound/moc sndio
+media-sound/mpd sndio
+media-libs/libsdl2 sndio
+
+# Sam James <sam@gentoo.org> (2021-01-19)
+# Avoid pulling in a large unkeyworded dep
+# which is largely a desktop application
+# bug #766186
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2021-01-19)
+# app-text/dblatex not yet keyworded
+# bug #766186
+dev-util/ragel doc
+
+# Sam James <sam@gentoo.org> (2011-01-19)
+# Joonas Niilola <juippis@gentoo.org> (2021-01-10)
+# Test-dep needs keywording on multiple arches, best to just mask it
+# globally for now. Resolves issue by b5248bbb1b5
+# bug #766147
+app-text/enchant test
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
 
 # Michał Górny <mgorny@gentoo.org> (2020-11-30)
 # Qt5 is not keyworded here.
@@ -196,7 +251,8 @@ media-sound/pulseaudio native-headset
 # Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
-dev-vcs/git pcre-jit
+# Since >=dev-vcs/git-2.31.0 pcre1 support has been dropped from git.
+<dev-vcs/git-2.31.0 pcre-jit
 
 # Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
@@ -288,10 +344,6 @@ net-misc/networkmanager wext
 # dev-lua/lgi lacks alpha keyword, bug #551540
 dev-libs/libpeas lua
 
-# Michał Górny <mgorny@gentoo.org> (2015-02-22)
-# Dependency not keyworded for some reason.
-media-libs/gegl umfpack
-
 # Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
 app-crypt/qca botan
@@ -318,10 +370,6 @@ app-accessibility/orca braille
 # Tobias Klausmann <klausman@gentoo.org>
 # media-libs/x265 doesn't work on alpha (bug 519046)
 media-video/ffmpeg x265
-
-# Tobias Klausmann <klausman@gentoo.org (2014-07-16)
-# neither dietlibc nor klibc will likely ever build/work on alpha, bug #487672
->=sys-fs/dmraid-1.0.0_rc16-r3 dietlibc klibc
 
 # Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250

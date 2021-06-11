@@ -1,0 +1,36 @@
+From 9249ff391ee0765ac5e8d4e113e28b8a908c136f Mon Sep 17 00:00:00 2001
+From: Dennis Schridde <devurandom@gmx.net>
+Date: Sat, 16 Jan 2021 10:40:26 +0100
+Subject: [PATCH] Link against libpthread
+
+`CFLAGS` is needed in addition to `LIBS`, because on some systems it
+contains `-pthread` and `LIBS` is empty.
+
+Closes: https://github.com/USBGuard/usbguard/issues/432
+---
+ Makefile.am | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 402854fd..34a2e960 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -167,6 +167,7 @@ libusbguard_la_CPPFLAGS=\
+ 	-I$(top_srcdir)/src/Library/public \
+ 	-I$(top_builddir)/src/Library/IPC \
+ 	${BOOST_CPPFLAGS} \
++	${PTHREAD_CPPFLAGS} \
+ 	@qb_CFLAGS@ \
+ 	@protobuf_CFLAGS@ \
+ 	@crypto_CFLAGS@ \
+@@ -185,7 +186,9 @@ libusbguard_la_LIBADD=\
+ 	@pegtl_LIBS@ \
+ 	@atomic_LIBS@ \
+ 	@umockdev_LIBS@ \
+-	${BOOST_IOSTREAMS_LIB}
++	${BOOST_IOSTREAMS_LIB} \
++	${PTHREAD_CFLAGS} \
++	${PTHREAD_LIBS}
+ 
+ EXTRA_DIST+=\
+ 	src/Library/IPC/Devices.proto \

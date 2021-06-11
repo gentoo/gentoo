@@ -13,6 +13,6 @@
 		<changelog>https://www.riverbankcomputing.com/hg/sip/raw-file/tip/NEWS</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/sip/</doc>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
-		<remote-id type="pypi">SIP</remote-id>
+		<remote-id type="pypi">sip</remote-id>
 	</upstream>
 </pkgmetadata>

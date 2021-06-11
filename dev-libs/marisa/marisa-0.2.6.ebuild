@@ -1,8 +1,8 @@
-# Copyright 2014-2020 Gentoo Authors
+# Copyright 2014-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_6,3_7,3_8,3_9})
+PYTHON_COMPAT=(python{3_7,3_8,3_9})
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_USE_SETUPTOOLS="no"
 
@@ -24,7 +24,7 @@ fi
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

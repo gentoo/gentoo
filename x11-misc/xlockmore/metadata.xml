@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
-  </maintainer>
-  <use>
-    <flag name="xlockrc">Enables xlockrc for people without PAM</flag>
-    <flag name="vtlock">Enables support for virtual terminal locking</flag>
-  </use>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="xlockrc">Enables xlockrc for people without PAM</flag>
+		<flag name="vtlock">Enables support for virtual terminal locking</flag>
+	</use>
 </pkgmetadata>

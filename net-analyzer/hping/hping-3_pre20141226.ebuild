@@ -1,28 +1,27 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils multilib toolchain-funcs
+EAPI=7
 
+inherit toolchain-funcs
+
+HPING_COMMIT="3547c7691742c6eaa31f8402e0ccbb81387c1b99"
 DESCRIPTION="A ping-like TCP/IP packet assembler/analyzer"
 HOMEPAGE="http://www.hping.org"
-HPING_COMMIT="3547c7691742c6eaa31f8402e0ccbb81387c1b99"
-SRC_URI="https://github.com/antirez/${PN}/archive/${HPING_COMMIT}.zip -> ${P}.zip"
+SRC_URI="https://github.com/antirez/${PN}/archive/${HPING_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${HPING_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ppc sparc x86"
 IUSE="tcl"
-
-S=${WORKDIR}/${PN}-${HPING_COMMIT}
 
 DEPEND="
 	net-libs/libpcap
 	tcl? ( dev-lang/tcl:0= )
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-3_pre20051105-libtcl.patch
 	"${FILESDIR}"/${PN}-3_pre20051105-tcl.patch

@@ -1,37 +1,40 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools base libtool
+inherit autotools
 
 MY_P="tacacs+-F${PV}"
-S="${WORKDIR}/${MY_P}"
-
 DESCRIPTION="An updated version of Cisco's TACACS+ server"
 HOMEPAGE="http://www.shrubbery.net/tac_plus/"
 SRC_URI="ftp://ftp.shrubbery.net/pub/tac_plus/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="HPND RSA GPL-2" # GPL-2 only for init script
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug finger maxsess tcpd skey static-libs"
 
-DEPEND="skey? ( >=sys-auth/skey-1.1.5-r1 )
+DEPEND="
+	net-libs/libnsl
+	sys-libs/pam
+	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	tcpd? ( sys-apps/tcp-wrappers )
-	sys-libs/pam"
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-parallelmake.patch"
-	"${FILESDIR}/${P}-deansification.patch"
+	"${FILESDIR}/${PN}-4.0.4.19-deansification.patch"
 )
 
 src_prepare() {
-	base_src_prepare
+	default
+
 	mv configure.in configure.ac || die "Unable to quiet autoconf deprecation warning"
 	AT_M4DIR="." eautoreconf
-	elibtoolize
+
 }
 
 src_configure() {
@@ -47,7 +50,10 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	use static-libs || find "${D}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
+	if use static-libs ; then
+		find "${ED}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
+	fi
+
 	dodoc CHANGES FAQ
 
 	newinitd "${FILESDIR}/tac_plus.init2" tac_plus

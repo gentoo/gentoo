@@ -1,12 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit autotools bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
+inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -16,12 +17,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	SRC_URI="https://github.com/openzfs/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="amd64 arm64 ppc64"
 fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0/2" # just libzfs soname major for now. possible candidates: libuutil, libzpool, libnvpair
-IUSE="custom-cflags debug kernel-builtin libressl minimal nls python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs test-suite static-libs"
 
 DEPEND="
 	net-libs/libtirpc[static-libs?]
@@ -29,8 +30,7 @@ DEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
 	virtual/libudev[static-libs(-)?]
-	libressl? ( dev-libs/libressl:0=[static-libs?] )
-	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	dev-libs/openssl:0=[static-libs?]
 	!minimal? ( ${PYTHON_DEPS} )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
@@ -46,9 +46,11 @@ BDEPEND="virtual/awk
 "
 
 RDEPEND="${DEPEND}
-	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV} )
+	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV}:=[dist-kernel?] )
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
+	virtual/awk
+	dist-kernel? ( virtual/dist-kernel:= )
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
@@ -77,8 +79,19 @@ PATCHES=(
 	"${FILESDIR}/bash-completion-sudo.patch"
 )
 
+pkg_pretend() {
+	use rootfs || return 0
+
+	if has_version virtual/dist-kernel && ! use dist-kernel; then
+		ewarn "You have virtual/dist-kernel installed, but"
+		ewarn "USE=\"dist-kernel\" is not enabled for ${CATEGORY}/${PN}"
+		ewarn "It's recommended to globally enable dist-kernel USE flag"
+		ewarn "to auto-trigger initrd rebuilds with kernel updates"
+	fi
+}
+
 pkg_setup() {
-	if use kernel_linux && use test-suite; then
+	if use kernel_linux; then
 		linux-info_pkg_setup
 
 		if  ! linux_config_exists; then
@@ -185,6 +198,15 @@ src_install() {
 }
 
 pkg_postinst() {
+	# we always need userspace utils in sync with zfs-kmod
+	# so force initrd update for userspace as well, to avoid
+	# situation when zfs-kmod trigger initrd rebuild before
+	# userspace component is rebuilt
+	# KV_* variables are provided by linux-info.eclass
+	if [[ -z ${ROOT} ]] && use dist-kernel; then
+		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
+	fi
+
 	if use rootfs; then
 		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
 			elog "root on zfs requires initramfs to boot"

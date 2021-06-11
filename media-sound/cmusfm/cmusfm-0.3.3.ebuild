@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools readme.gentoo-r1
 
 DESCRIPTION="Last.fm scrobbler for cmus music player"
@@ -13,18 +14,23 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libnotify"
 
-CDEPEND="net-misc/curl
+DEPEND="
+	net-misc/curl
 	dev-libs/openssl:0=
-	libnotify? ( >=x11-libs/libnotify-0.7 )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
-	media-sound/cmus"
+	libnotify? ( >=x11-libs/libnotify-0.7 )
+"
+RDEPEND="
+	${DEPEND}
+	media-sound/cmus
+"
+BDEPEND="virtual/pkgconfig"
+
+DOC_CONTENTS="Please refer to the README.md file before running cmusfm the first time."
 
 src_prepare() {
 	default
+
 	eautoreconf
-	DOC_CONTENTS="Please refer to the README.md file before running cmusfm the first time."
 }
 
 src_configure() {

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_{6,7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 # The package uses distutils
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -15,12 +15,10 @@ SRC_URI="https://github.com/Fuuzetsu/torrentinfo/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
-
-BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" )
+
+distutils_enable_tests nose
 
 # distutils_enable_tests nose doesn't work here,
 # probably because the test file has a non-standard name

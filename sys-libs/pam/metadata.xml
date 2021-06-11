@@ -15,6 +15,7 @@
 	</flag>
 		</use>
 <upstream>
+	<remote-id type="github">linux-pam/linux-pam</remote-id>
 	<remote-id type="cpe">cpe:/a:kernel:linux-pam</remote-id>
 </upstream>
 </pkgmetadata>

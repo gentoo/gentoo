@@ -9,11 +9,11 @@
     conventional architectures and, currently, Linux based systems, such as SMP
     nodes and conventional clusters.
   </longdescription>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>kurt@kmk-computers.de</email>
     <name>Kurt Kanzenbach</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>

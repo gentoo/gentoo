@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ S="${WORKDIR}"
 
 LICENSE="Broadcom"
 SLOT="0"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="arm arm64"
 
 RDEPEND="!sys-kernel/linux-firmware[-savedconfig]"
 

@@ -1,8 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Michał Górny <mgorny@gentoo.org> (2021-05-04)
+# Python 3.10 is not yet stable (and will not be until it's out of beta,
+# around September.
+python_single_target_python3_10
+python_targets_python3_10
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernel rebuilds are supported on stable yet.
+dist-kernel
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
@@ -15,10 +25,6 @@ firebird
 # Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # The modern versions of CUDA SDK are not suitable for stabilization.
 cuda
-
-# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
-# no stable versions on amd64
-clozurecl
 
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is unstable on this arch.

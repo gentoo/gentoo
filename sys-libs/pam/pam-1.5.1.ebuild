@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/linux-pam/linux-pam/releases/download/v${PV}/${MY_P}
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="audit berkdb debug nis selinux"
 
 BDEPEND="
@@ -60,11 +60,10 @@ multilib_src_configure() {
 	local myconf=(
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		--with-db-uniquename=-$(db_findver sys-libs/db)
-		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog
-		--enable-securedir="${EPREFIX}"/$(get_libdir)/security
-		--includedir="${EPREFIX}"/usr/include/security
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--exec-prefix="${EPREFIX}"
+		--with-xml-catalog=/etc/xml/catalog
+		--enable-securedir=/$(get_libdir)/security
+		--includedir=/usr/include/security
+		--libdir=/usr/$(get_libdir)
 		--enable-pie
 		--enable-unix
 		--disable-prelude
@@ -83,12 +82,12 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	emake sepermitlockdir="${EPREFIX}/run/sepermit"
+	emake sepermitlockdir="/run/sepermit"
 }
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install \
-		sepermitlockdir="${EPREFIX}/run/sepermit"
+		sepermitlockdir="/run/sepermit"
 
 	gen_usr_ldscript -a pam pam_misc pamc
 }

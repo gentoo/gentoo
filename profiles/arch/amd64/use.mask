@@ -1,10 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
 # SECTION: Unmask
+
+# Michał Górny <mgorny@gentoo.org> (2021-01-07)
+# Prebuilt kernels are supported here.
+-dist-kernel
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl works on amd64
@@ -51,7 +55,6 @@
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on amd64
 -clisp
--clozurecl
 -ecls
 -gcl
 -sbcl

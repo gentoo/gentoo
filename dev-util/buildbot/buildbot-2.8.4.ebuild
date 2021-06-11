@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
@@ -100,10 +100,10 @@ src_compile() {
 	# missing files, so skip building
 	if use doc; then
 		einfo "Generation of documentation"
-		pushd docs > /dev/null
+		pushd docs > /dev/null || die
 		#'man' target is currently broken
-		emake html || die "Docs generation failed"
-		popd > /dev/null
+		emake html
+		popd > /dev/null || die
 	fi
 }
 

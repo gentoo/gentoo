@@ -62,6 +62,7 @@ lbmethod_heartbeat - Heartbeat Traffic Counting load balancer scheduler algorith
 log_config - Logging of the requests made to the server
 log_forensic - Forensic Logging of the requests made to the server
 logio - Logging of input and output bytes per request
+lua - Provides Lua hooks into various portions of the httpd request processing
 macro - Macros for the Apache config file
 md - Managing domains across virtual hosts, certificate provisioning via the ACME protocol
 mem_cache - Content cache keyed to URIs

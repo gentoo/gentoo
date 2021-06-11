@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A utility to set the framebuffer videomode"
 HOMEPAGE="http://users.telenet.be/geertu/Linux/fbdev/"
@@ -11,18 +11,17 @@ SRC_URI="http://users.telenet.be/geertu/Linux/fbdev/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="static"
 
-DEPEND="sys-devel/bison
+BDEPEND="sys-devel/bison
 	sys-devel/flex"
 RDEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-build.patch"
-	epatch "${FILESDIR}/${P}-add-linux-types-h.patch"
-	default
-}
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-add-linux-types-h.patch"
+)
 
 src_compile() {
 	use static && append-ldflags -static

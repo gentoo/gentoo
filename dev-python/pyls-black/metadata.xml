@@ -5,12 +5,9 @@
 		<remote-id type="pypi">pyls-black</remote-id>
 		<remote-id type="github">rupert/pyls-black</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 	<maintainer type="person">
-		<email>andrewammerlaan@riseup.net</email>
+		<email>andrewammerlaan@gentoo.org</email>
 		<name>Andrew Ammerlaan</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 </pkgmetadata>

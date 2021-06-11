@@ -1,0 +1,30 @@
+diff -Naur a/configure b/configure
+--- a/configure	2019-10-17 17:28:10.000000000 +0300
++++ b/configure	2021-02-19 11:32:45.084523937 +0200
+@@ -17652,7 +17652,7 @@
+ 
+ 
+ tmp_CXXFLAGS="$CXXFLAGS"
+-CXXFLAGS="$CXXFLAGS -Wall -Werror -fvisibility=hidden"
++CXXFLAGS="$CXXFLAGS -fvisibility=hidden"
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether $CC supports the visibility attribute" >&5
+ $as_echo_n "checking whether $CC supports the visibility attribute... " >&6; }
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+@@ -18413,7 +18413,7 @@
+                 if test "x$ax_pthread_try" = "xunknown"; then :
+   break
+ fi
+-                CFLAGS="-Werror -Wunknown-warning-option $ax_pthread_try -pthread $ax_pthread_save_CFLAGS"
++                CFLAGS="-Wunknown-warning-option $ax_pthread_try -pthread $ax_pthread_save_CFLAGS"
+                 ac_link="$ax_pthread_save_ac_link"
+                 cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+@@ -19102,7 +19102,7 @@
+ done
+ 
+ 
+-CXXFLAGS="$CXXFLAGS -Wall -Werror -pedantic"
++CXXFLAGS="$CXXFLAGS -pedantic"
+ 
+ ac_config_files="$ac_config_files Makefile src/Makefile src/tools/Makefile java/Makefile test/Makefile cs/Makefile cl/Makefile src/libvoikko.pc"
+ 

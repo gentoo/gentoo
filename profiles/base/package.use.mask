@@ -6,22 +6,86 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-01-01)
-# media-video/pipewire:0/0.2 cleanup
-<dev-libs/weston-9 pipewire
+# Michał Górny <mgorny@gentoo.org> (2021-05-31)
+# Requires Python 3.7 and old SciPy.
+<sys-cluster/ceph-16 diskprediction
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
+# Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
+kde-plasma/plasma-meta firewall
+
+# Matt Turner <mattst88@gentoo.org> (2021-04-14)
+# Was masked since 2014. Unmasked starting with 0.3.13.
+<media-plugins/grilo-plugins-0.3.13 lua
+
+# Joonas Niilola <juippis@gentoo.org> (2021-04-12)
+# Creates +130 GB worth of bindings, possibly Gentoo-related.
+# Upstream issue: https://phab.enlightenment.org/T8924
+dev-libs/efl mono
+
+# Sam James <sam@gentoo.org> (2021-04-09)
+# Crashes at runtime.
+# Mask LTO for now until issue with Qt
+# (to be resolved in Wireshark?) is resolved
+# bug #754021
+net-analyzer/wireshark lto
+
+# Sam James <sam@gentoo.org> (2021-04-09)
+# Fails to build right now
+# bug #651740
+net-misc/openssh debug
+
+# Michał Górny <mgorny@gentoo.org> (2021-03-06)
+# LLVM 9 has been removed.
+<dev-lang/julia-1.6.0 system-llvm
+dev-util/perf clang
+
+# Thomas Deutschmann <whissi@gentoo.org> (2021-02-17)
+# PCRE JIT support via dev-libs/libpcre2[jit] is only available for certain architectures
+dev-lang/php jit
+
+# Sam James <sam@gentoo.org> (2021-02-07)
+# Fails to build with USE=doc for now.
+# Needs rework to use Python eclasses
+# for conditional doc dependencies.
+# bug #759523
+sci-libs/gdal doc
+
+# Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
+# Fails to build:
+#
+#   TEST-UNEXPECTED-FAIL | check_nsmodules | libxul.so | NSModules are not ordered appropriately
+#
+www-client/seamonkey lto
+
+# Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
+# Upstream considers this module being a high security risk
+# http://httpd.apache.org/docs/current/mod/mod_lua.html
+www-servers/apache apache2_modules_lua
+
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# Block test deps on packages until they can be updated
+# Old phpunit does not work with new PHP and last is vulnerable
+<dev-php/PEAR-Crypt_GPG-1.6.4 test
+dev-php/PEAR-Text_Wiki_Mediawiki test
+dev-php/PEAR-VersionControl_SVN test
+dev-php/PHP_CodeSniffer test
+dev-php/php-redmine-api test
+dev-php/phptal test
+dev-php/recaptcha test
+dev-php/symfony-config test
+dev-php/symfony-event-dispatcher test
+dev-php/symfony-filesystem test
+dev-php/symfony-finder test
+
+# Sam James <sam@gentoo.org> (2021-01-04)
+# Doc generation is broken, needs gtkdoc-mktmpl (gone from gtk-doc)
+# bug #723438
+app-i18n/enca doc
 
 # Marek Szuba <marecki@gentoo.org> (2020-12-26)
 # User manual is only available for releases
 =media-gfx/darktable-9999 doc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-12-26)
-# Depends on masked media-libs/qt-gstreamer and kde-apps/ktp-call-ui
-kde-apps/artikulate gstreamer
-kde-apps/plasma-telepathy-meta gstreamer
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-21)
-# LSAN is currently broken (due to new glibc?)
-<sys-libs/compiler-rt-sanitizers-12 lsan
 
 # Rick Farina <zerochaos@gentoo.org> (2020-12-21)
 # This use flag enables code which appears to be broken
@@ -41,15 +105,15 @@ x11-libs/colord-gtk doc
 <dev-ml/llvm-ocaml-11 llvm_targets_AVR
 <sys-devel/clang-11 llvm_targets_AVR
 <sys-devel/llvm-11 llvm_targets_AVR
-<dev-ml/llvm-ocaml-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
-<sys-devel/clang-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
-<sys-devel/llvm-11.0.1.9999 llvm_targets_ARC llvm_targets_VE
+<dev-ml/llvm-ocaml-12 llvm_targets_ARC llvm_targets_VE
+<sys-devel/clang-12 llvm_targets_ARC llvm_targets_VE
+<sys-devel/llvm-12 llvm_targets_ARC llvm_targets_VE
 <dev-ml/llvm-ocaml-12.0.0.9999 llvm_targets_CSKY
 <sys-devel/clang-12.0.0.9999 llvm_targets_CSKY
 <sys-devel/llvm-12.0.0.9999 llvm_targets_CSKY
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-03)
-# Doc building seem to be very random without any predictability, 
+# Doc building seem to be very random without any predictability,
 # bug #734104
 media-gfx/blender doc
 
@@ -64,52 +128,21 @@ mail-mta/protonmail-bridge gui
 # libclangformat-ide is masked for removal.
 dev-qt/qt-creator clang
 
-# Joonas Niilola <juippis@gentoo.org> (2020-11-26)
-# Still too experimental. efl's upstream can't keep up with libavif's.
-# Bug: 756733
-dev-libs/efl avif
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-25)
-# Depends on masked net-libs/libkvkontakte
-kde-apps/kipi-plugins vkontakte
-
-# Alfredo Tupone <tupone@gentoo.org> (2020-11-06)
-# waiting for lua to be slotted
-media-gfx/exact-image lua
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-08)
-# USE=doc broken on 1.47.0
-# error: unresolved link to `crate::os::unix::ffi::OsStrExt`
-#
-# USE=miri seems to be not working on 1.48.0
-~dev-lang/rust-1.47.0 doc
-~dev-lang/rust-1.48.0 doc miri
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
 
-# Michał Górny <mgorny@gentoo.org> (2020-09-26)
-# The respective dependencies are masked for removal.
-sci-geosciences/viking mapnik
-
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
-# Highly experimental, may cause breakages when updating. Use with 
+# Highly experimental, may cause breakages when updating. Use with
 # caution!
 dev-libs/efl efl-one
-
-# Michał Górny <mgorny@gentoo.org> (2020-09-20)
-# The respective dependencies are masked for removal.
-net-nntp/pan gnome-keyring
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
 media-plugins/mythplugins mythnetvision
-sys-cluster/drbd-utils heartbeat
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-09)
 # The respective dependencies are masked for removal.
-app-metrics/collectd collectd_plugins_gmond
 app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
@@ -118,23 +151,17 @@ app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
-net-libs/zeromq pgm
 sci-geosciences/qgis grass
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-08-17)
-# CMake checks will only allow on amd64 & x86
+# Only supported on 64bit systems, see storage/columnstore/CMakeLists.txt
 dev-db/mariadb columnstore
-
-# Michał Górny <mgorny@gentoo.org> (2020-07-30)
-# Forces downgrade of dev-python/ws4py and its revdeps.
-www-apps/nikola websocket
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # These packages require Python 2 support in dev-python/sphinx.
 # They are generally fixable by adding py3 support and using
 # distutils_enable_sphinx to build docs.
 <=dev-python/lockfile-0.12.2-r2 doc
-<dev-python/pep8-1.7.1-r1 doc
 
 # Michał Górny <mgorny@gentoo.org> (2020-07-27)
 # Requires Python 2 support in xapian-bindings which in turn require
@@ -172,26 +199,9 @@ net-fs/samba test
 # Tests are very sensitive to the host environment.
 dev-util/meson test
 
-# Michał Górny <mgorny@gentoo.org> (2020-04-19)
-# Requires dev-vcs/ghp-import that is masked for removal.
-www-apps/nikola ghpages
-
-# Ulrich Müller <ulm@gentoo.org> (2020-04-08, 2020-11-21)
-# Old versions of libjpeg-turbo have known security issues.
-# The version included with >=zoom-5.3 has an empty DT_RPATH,
-# which is insecure because the loader will search the working
-# directory when it finds an empty path.
-# Use the bundled lib on your own risk. Bug #715106.
-net-im/zoom bundled-libjpeg-turbo
-
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
-# Ada support is not yet ready for sys-deve/gcc
+# Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
-
-# Joshua Kinard <kumba@gentoo.org> (2020-03-28)
-# NCP support is masked pending removal of net-fs/ncpfs
-# Bug #681820
-net-analyzer/hydra ncp
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-28)
 # Requires masked dev-vcs/bzr.  Remove the mask if breezy is packaged
@@ -221,17 +231,13 @@ dev-python/pyzmq doc
 # Unsatisfiable dep due to missing impls.
 dev-python/zeep tornado
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-27)
-# Requires old split dev-python/twisted-*.
-net-irc/telepathy-idle test
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# libcxxrt is unmaintained and it's going to be removed.
-sys-libs/libcxx libcxxrt
+# Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
+# Gromacs python module install br0ken
+sci-chemistry/gromacs python
 
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
-# PHP 7.1 is end of life and has security issues Bug 703326
-# Associated packages are not ready for new versions tracked in bug 702110
+# PHP 7.1 is end of life and has security issues, bug #703326
+# Associated packages are not ready for new versions tracked in bug #702110
 dev-libs/ossp-uuid php
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-16)
@@ -243,10 +249,6 @@ sci-mathematics/gsl-shell fox
 # James Le Cuirot <chewi@gentoo.org> (2019-12-10)
 # The JIT feature only works on amd64 and x86.
 app-emulation/aranym jit
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
-# dev-python/flask-cors is PMASKED.
-media-sound/beets webserver
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Packages requiring dev-python/ipython to build the docs and still
@@ -281,17 +283,8 @@ app-i18n/xcin unicode
 net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# media-libs/libnut is slated for removal.
-media-video/mplayer nut
-
-# Michał Górny <mgorny@gentoo.org> (2019-09-07)
-# media-libs/fmod is slated for removal.
-games-arcade/savagewheels fmod
-games-fps/doomsday fmod
-
 # Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
-# PGO not yet supported for comm-central, #693160
+# PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
@@ -353,11 +346,6 @@ games-fps/ut2003 dedicated
 # go brokes build of gnat-gpl
 dev-lang/gnat-gpl go
 
-# Pacho Ramos <pacho@gentoo.org> (2018-11-11)
-# pm-utils will be removed, bug #659616
-sys-apps/razercfg pm-utils
-sys-power/powermgmt-base pm-utils
-
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
@@ -372,6 +360,10 @@ dev-python/paramiko server
 # New and for Gentoo still quite experimental. You've been
 # warned. (Also, works only on x86_64 and with certain CPUs
 # and compiler/binutils combinations.)
+sys-devel/binutils cet
+sys-devel/binutils-hppa64 cet
+sys-devel/gdb cet
+sys-libs/binutils-libs cet
 sys-libs/glibc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
@@ -409,7 +401,7 @@ dev-db/mariadb client-libs
 dev-db/mysql client-libs
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
-# This feature is not ready yet pre-2.29-r4, see bug 146882 comment 26
+# This feature is not ready yet pre-2.29-r4, see bug #146882 comment 26
 <sys-libs/glibc-2.29-r4 compile-locales
 
 # Mart Raudsepp <leio@gentoo.org> (2018-01-10)
@@ -435,11 +427,11 @@ dev-java/openjdk:11 gentoo-vm
 sys-libs/glibc vanilla
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-08-24)
-# This is a security risk if not used carefully, bug 628596.
+# This is a security risk if not used carefully, bug #628596.
 net-analyzer/nrpe command-args
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-04)
-# sys-kernel/openvz-sources is being treecleaned wrt #580516.
+# sys-kernel/openvz-sources is being treecleaned wrt bug #580516.
 app-emulation/libvirt openvz
 
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
@@ -448,7 +440,7 @@ app-emulation/libvirt openvz
 # rather sensitive when it comes to compiler flags, resulting in
 # black screens, hangs or crashes. The average joe should have no
 # need or even advantage to set custom compiler flags at all.
-# Example: https://bugs.gentoo.org/619628
+# Example: bug #619628
 sys-boot/gnu-efi custom-cflags
 sys-boot/refind custom-cflags
 
@@ -475,7 +467,7 @@ net-fs/samba system-heimdal
 # Robin H. Johnson <robbat2@gentoo.org> (2016-12-04)
 # Additional HAProxy functionality waiting for related stuff to land in the
 # tree.
-# bug 541042 - lua 5.3
+# bug #541042 - lua 5.3
 net-proxy/haproxy lua
 # bug (none) - 51Degrees
 net-proxy/haproxy 51degrees
@@ -494,16 +486,15 @@ app-editors/emacs:25 cairo
 app-editors/emacs:26 cairo
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-06-02)
-# Acked-by: Amy Winston <amynka@gentoo.org>
 # Currently broken upstream.
 >=dev-lang/rakudo-2016.05 java
 
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
-# Most targets do not support VTV #547040.
+# Most targets do not support VTV, bug #547040.
 sys-devel/gcc vtv
 
 # Matthew Brewer <tomboy64@sina.cn> (2016-05-08)
-# Acked-by: Amy Winston <amynka@gentoo.org>
+# Acked-by: Amy Liffey <amynka@gentoo.org>
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
 dev-lang/moarvm asan
@@ -521,7 +512,9 @@ dev-java/icedtea cacao jamvm
 # Justin Lecher <jlec@gentoo.org> (2015-09-22)
 # Downloads files during installation
 # https://bugs.gentoo.org/show_bug.cgi?id=533876
->=sci-libs/vtk-6.1.0 examples
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-03-26)
+# Fixed in vtk-9
+<sci-libs/vtk-9 examples
 
 # James Le Cuirot <chewi@gentoo.org> (2015-08-18)
 # gcc[awt] is only used by gcj-jdk[awt] and that isn't needed by
@@ -560,15 +553,6 @@ sys-devel/gcc sanitize
 # Rick Farina <zerochaos@gentoo.org> (2014-08-26)
 # mirisdr does not seem to like making releases
 <net-wireless/gr-osmosdr-9999 mirisdr
-
-# Pacho Ramos <pacho@gentoo.org> (2014-06-01)
-# Needs hardmasked lua-5.2
->=media-plugins/grilo-plugins-0.2.12 lua
-
-# Tom Wijsman <TomWij@gentoo.org> (2014-05-14)
-# Documentation generation needs APIviz which is not in the Portage tree yet.
-# Tracked in Gentoo bug #509602.
-dev-java/jboss-logging doc
 
 # Mike Frysinger <vapier@gentoo.org> (2014-02-03)
 # Upstream says to not use this for now.
@@ -610,11 +594,11 @@ media-libs/avidemux-core system-ffmpeg
 # PGO is known to be busted with most configurations
 www-client/firefox pgo
 
-# Diego Elio Pettenò (2012-08-27)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp pci
 
-# Diego Elio Pettenò (2012-08-20)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-20)
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp prevent-removal
 
@@ -638,9 +622,8 @@ sys-devel/gcc libssp
 sci-libs/mathgl octave
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
-#
 # Mask pdnsd's Linux-specific USE flags.
-net-dns/pdnsd isdn urandom
+net-dns/pdnsd urandom
 
 # Raúl Porcel <armin76@gentoo.org> (2011-02-13)
 # Masked until devs know how to use repoman
@@ -650,7 +633,7 @@ net-dns/pdnsd isdn urandom
 # Masked because libsvm module is broken with this release on every arch.
 dev-lisp/clisp svm
 
-# Diego E. Pettenò <flameeyes@gmail.com> (2010-01-18)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2010-01-18)
 # Don't use system-wide mode unless you *really* know what you're doing.
 # Keep it masked here so that I don't need to manage two versions every time.
 media-sound/pulseaudio system-wide
@@ -666,3 +649,8 @@ media-video/vlc directx
 # Since >=dev-games/ogre-1.11.2 is masked, mask contribovis USE to
 # make repoman happy
 media-libs/opencv contribovis
+
+# Tobias Klausmann <klausman@gentoo.org> (2021-04-16)
+# Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
+# puddletag needs to be updated to handle that.
+media-sound/puddletag quodlibet

@@ -15,7 +15,7 @@
     </flag>
 
     <flag name="udev">
-      Use <pkg>sys-fs/udev</pkg> rules to handle devices' permissions
+      Use <pkg>virtual/libudev</pkg> rules to handle devices' permissions
       and hotplug support. Unless you know what you're doing do not
       disable this flag on Linux kernels. This is provided as an
       option for completeness.

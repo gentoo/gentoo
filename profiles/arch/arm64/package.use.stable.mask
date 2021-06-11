@@ -1,6 +1,22 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-05-28)
+# media-gfx/inkscape is not yet stable on arm64
+# bug #785685
+app-text/dblatex inkscape
+
+# Sam James <sam@gentoo.org> (2021-02-25)
+# Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
+# Dependencies not yet stable, migrated from p.u.m.
+app-crypt/qca botan
+gnome-base/nautilus previewer
+
+# Sam James <sam@gentoo.org> (2021-02-05)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
+# No lua stable for this arch yet
+www-servers/nginx nginx_modules_http_lua
+
 # Sam James <sam@gentoo.org> (2020-12-23)
 # Needs stable dev-lang/luajit
 kde-apps/cantor lua
@@ -108,10 +124,6 @@ app-text/xmlto latex
 sys-auth/pambase pam_krb5 pam_ssh
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
-
-# Michał Górny <mgorny@gentoo.org> (2018-03-03)
-# Requires masked dependent flags.
-net-dns/avahi python
 
 # Michał Górny <mgorny@gentoo.org> (2018-02-28)
 # Requires masked dependent flags.

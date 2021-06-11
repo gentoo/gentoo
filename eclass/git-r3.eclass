@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
@@ -36,6 +36,7 @@ if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
 fi
 
 # @ECLASS-VARIABLE: EGIT_CLONE_TYPE
+# @USER_VARIABLE
 # @DESCRIPTION:
 # Type of clone that should be used against the remote repository.
 # This can be either of: 'mirror', 'single', 'shallow'.

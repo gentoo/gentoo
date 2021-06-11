@@ -1,17 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-utils eutils
+EAPI=7
+
+inherit cmake desktop wrapper
 
 DESCRIPTION="Brain teasers, puzzle and memory games for kid's in one pack"
-HOMEPAGE="http://www.viewizard.com/memonix/"
+HOMEPAGE="https://www.viewizard.com/memonix/"
 SRC_URI="http://www.viewizard.com/download/${PN}_${PV}_src.tar.bz2"
+S="${WORKDIR}/MemonixSourceCode"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	media-libs/libsdl:0[sound,opengl,video,X]
@@ -19,8 +20,6 @@ RDEPEND="
 	media-libs/sdl-mixer[vorbis]
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/MemonixSourceCode"
 
 src_install() {
 	exeinto /usr/"$(get_libdir)"

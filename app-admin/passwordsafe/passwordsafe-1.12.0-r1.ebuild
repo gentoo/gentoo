@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/pwsafe/pwsafe/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="libressl qr test +xml yubikey"
+KEYWORDS="amd64 ~x86"
+IUSE="qr test +xml yubikey"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -25,8 +25,7 @@ DEPEND="
 	x11-libs/libXt
 	x11-libs/libXtst
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	qr? ( media-gfx/qrencode )
 	xml? ( dev-libs/xerces-c )
 	yubikey? ( sys-auth/ykpers )"

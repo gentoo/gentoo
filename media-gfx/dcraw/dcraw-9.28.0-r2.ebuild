@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,8 +74,8 @@ src_compile() {
 	# rawphoto gimp plugin
 	if use gimp; then
 		run_build $(tc-getCC) ${CFLAGS} ${LDFLAGS} \
-			$(pkg-config --cflags gimpui-2.0) rawphoto.c -o rawphoto \
-			$(pkg-config --libs gimpui-2.0)
+			$($(tc-getPKG_CONFIG) --cflags gimpui-2.0) rawphoto.c -o rawphoto \
+			$($(tc-getPKG_CONFIG) --libs gimpui-2.0)
 	fi
 
 	if use nls; then
@@ -92,7 +92,7 @@ src_install() {
 
 	# rawphoto gimp plugin
 	if use gimp; then
-		insinto "$(pkg-config --variable=gimplibdir gimp-2.0)/plug-ins"
+		insinto "$($(tc-getPKG_CONFIG) --variable=gimplibdir gimp-2.0)/plug-ins"
 		insopts -m0755
 		doins rawphoto
 	fi

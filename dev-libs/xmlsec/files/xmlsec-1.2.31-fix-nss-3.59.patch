@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/764437
+https://github.com/lsh123/xmlsec/commit/f3a59c721e38a663405093e2bbb30e2bf45853a2.patch
+From f3a59c721e38a663405093e2bbb30e2bf45853a2 Mon Sep 17 00:00:00 2001
+From: lsh123 <aleksey@aleksey.com>
+Date: Fri, 18 Dec 2020 16:22:40 -0800
+Subject: [PATCH] Remove MD5 for NSS 3.59 and above; enable nss test on osx and
+ mingw (issue #305) (#306)
+
+---
+ include/xmlsec/nss/crypto.h      | 6 ++++++
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/include/xmlsec/nss/crypto.h b/include/xmlsec/nss/crypto.h
+index 223c1d85..614ac931 100644
+--- a/include/xmlsec/nss/crypto.h
++++ b/include/xmlsec/nss/crypto.h
+@@ -19,6 +19,12 @@
+ #include <xmlsec/transforms.h>
+ #include <xmlsec/dl.h>
+ 
++
++/* MD5 was removed from NSS */
++#if (NSS_VMAJOR > 3) || ((NSS_VMAJOR == 3) && (NSS_VMINOR > 58))
++#define XMLSEC_NO_MD5 1
++#endif /* (NSS_VMAJOR > 3) || ((NSS_VMAJOR == 3) && (NSS_VMINOR > 58)) */
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */

@@ -1,0 +1,72 @@
+--- tdesktop-2.7.3-full.orig/Telegram/lib_webview/CMakeLists.txt
++++ tdesktop-2.7.3-full/Telegram/lib_webview/CMakeLists.txt
+@@ -116,7 +116,7 @@ if (WIN32)
+         desktop-app::lib_webview_winrt
+     )
+ elseif (LINUX)
+-    if (NOT DESKTOP_APP_DISABLE_GTK_INTEGRATION)
++    if (NOT DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION)
+         find_package(PkgConfig REQUIRED)
+ 
+         if (DESKTOP_APP_USE_PACKAGED AND NOT DESKTOP_APP_USE_PACKAGED_LAZY)
+--- tdesktop-2.7.3-full.orig/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
++++ tdesktop-2.7.3-full/Telegram/lib_webview/webview/platform/linux/webview_linux.cpp
+@@ -11,14 +11,14 @@
+ namespace Webview {
+ 
+ Available Availability() {
+-#ifndef DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#ifndef DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
+ 	return WebKit2Gtk::Availability();
+-#else // !DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#else // !DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
+ 	return Available{
+ 		.error = Available::Error::NoGtkOrWebkit2Gtk,
+ 		.details = "This feature was disabled at build time.",
+ 	};
+-#endif // DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#endif // DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
+ }
+ 
+ bool SupportsEmbedAfterCreate() {
+@@ -26,11 +26,11 @@ bool SupportsEmbedAfterCreate() {
+ }
+ 
+ std::unique_ptr<Interface> CreateInstance(Config config) {
+-#ifndef DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#ifndef DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
+ 	return WebKit2Gtk::CreateInstance(std::move(config));
+-#else // !DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#else // !DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
+ 	return nullptr;
+-#endif // DESKTOP_APP_DISABLE_GTK_INTEGRATION
++#endif // DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
+ }
+ 
+ } // namespace Webview
+--- tdesktop-2.7.3-full.orig/cmake/options.cmake
++++ tdesktop-2.7.3-full/cmake/options.cmake
+@@ -49,6 +49,13 @@ if (DESKTOP_APP_DISABLE_GTK_INTEGRATION)
+     )
+ endif()
+ 
++if (DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION)
++    target_compile_definitions(common_options
++    INTERFACE
++        DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION
++    )
++endif()
++
+ if (DESKTOP_APP_USE_PACKAGED)
+     target_compile_definitions(common_options
+     INTERFACE
+--- tdesktop-2.7.3-full.orig/cmake/variables.cmake
++++ tdesktop-2.7.3-full/cmake/variables.cmake
+@@ -32,6 +32,7 @@ option(DESKTOP_APP_DISABLE_DBUS_INTEGRAT
+ option(DESKTOP_APP_DISABLE_X11_INTEGRATION "Disable all code for X11 integration (Linux only)." OFF)
+ option(DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION "Disable all code for Wayland integration (Linux only)." OFF)
+ option(DESKTOP_APP_DISABLE_GTK_INTEGRATION "Disable all code for GTK integration (Linux only)." OFF)
++option(DESKTOP_APP_DISABLE_WEBKIT_INTEGRATION "Disable all code for WebkitGTK integration (Linux only)." OFF)
+ option(DESKTOP_APP_USE_GLIBC_WRAPS "Use wraps for new GLIBC features." OFF)
+ option(DESKTOP_APP_USE_PACKAGED "Find libraries using CMake instead of exact paths." ${no_special_target})
+ option(DESKTOP_APP_USE_PACKAGED_LAZY "Bundle recommended Qt plugins for self-contained packages. (Linux only)" OFF)

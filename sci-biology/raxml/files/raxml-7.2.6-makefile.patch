@@ -14,7 +14,7 @@ index 716b6c6..f0c1de2 100644
  
  
 -CFLAGS = -D_GNU_SOURCE  -fomit-frame-pointer -funroll-loops -O2 -msse
-+CFLAGS += -D_GNU_SOURCE
++CPPFLAGS += -D_GNU_SOURCE
  
  
  
@@ -23,7 +23,7 @@ index 716b6c6..f0c1de2 100644
  
  raxmlHPC : $(objs)
 -	$(CC) -o raxmlHPC $(objs) $(LIBRARIES) 
-+	$(CC) $(LDFLAGS) -o raxmlHPC $(objs) $(LIBRARIES) 
++	$(CC) $(LDFLAGS) -o raxmlHPC $(objs) $(LIBRARIES) $(LIBS)
  
  classify.o : classify.c $(GLOBAL_DEPS)
  evaluatePartialSpecialGeneric.o : evaluatePartialSpecialGeneric.c $(GLOBAL_DEPS)

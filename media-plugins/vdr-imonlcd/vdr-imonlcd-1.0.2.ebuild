@@ -1,29 +1,36 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit vdr-plugin-2 linux-info udev
+inherit linux-info udev vdr-plugin-2
 
 VERSION="2086" # every bump, new version
 
 DESCRIPTION="VDR Plugin: shows information about the current state of VDR on iMON LCD"
-HOMEPAGE="http://projects.vdr-developer.org/wiki/plg-imonlcd"
-SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-imonlcd/wiki"
+SRC_URI="https://projects.vdr-developer.org/attachments/download/${VERSION}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="media-libs/freetype"
+RDEPEND="
+	media-libs/freetype
+	virtual/udev"
 DEPEND="${RDEPEND}
-		media-video/vdr"
+	media-video/vdr"
+QA_FLAGS_IGNORED="
+	usr/lib/vdr/plugins/libvdr-.*
+	usr/lib64/vdr/plugins/libvdr-.*"
 
+DOCS=(
+	HISTORY
+	README
+)
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.2-freetype_pkgconfig.patch"
 )
-
 CONFIG_CHECK="~IR_IMON"
 
 pkg_setup() {
@@ -35,6 +42,9 @@ src_install() {
 	rm -f README.git
 	vdr-plugin-2_src_install
 
-	insinto $(get_udevdir)/rules.d
-	doins "${FILESDIR}"/99-imonlcd.rules
+	udev_dorules "${FILESDIR}"/99-imonlcd.rules
+}
+
+pkg_postinst() {
+	udev_reload
 }

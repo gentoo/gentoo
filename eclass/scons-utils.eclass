@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
@@ -73,6 +73,7 @@
 # set in src_configure().
 
 # @ECLASS-VARIABLE: SCONSOPTS
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The default set of options to pass to scons. Similar to MAKEOPTS,
@@ -80,6 +81,7 @@
 # up MAKEOPTS instead.
 
 # @ECLASS-VARIABLE: EXTRA_ESCONS
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # The additional parameters to pass to SCons whenever escons() is used.

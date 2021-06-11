@@ -1,0 +1,13 @@
+diff -ruN a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-05-03 12:55:07.561259897 +0300
++++ b/CMakeLists.txt	2021-05-03 12:55:36.772461830 +0300
+@@ -70,9 +70,6 @@
+ 
+ add_library(project_warnings INTERFACE)
+ 
+-# enable cache system
+-include(cmake/Cache.cmake)
+-
+ # standard compiler warnings
+ include(cmake/CompilerWarnings.cmake)
+ # set_project_warnings(project_warnings)

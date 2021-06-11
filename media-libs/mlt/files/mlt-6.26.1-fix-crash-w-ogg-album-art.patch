@@ -1,0 +1,50 @@
+From 7063e88e09977282470c4f2f93e56e05f21b7c2b Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Fri, 16 Apr 2021 11:15:37 -0700
+Subject: [PATCH] fix #704 by properly identifying cover art
+
+(cherry picked from commit 6b0829df726aa9a840b8b34e923e9faf17a3a5ca)
+---
+ src/modules/avformat/producer_avformat.c | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/src/modules/avformat/producer_avformat.c b/src/modules/avformat/producer_avformat.c
+index 049452f9d..e079e6f70 100644
+--- a/src/modules/avformat/producer_avformat.c
++++ b/src/modules/avformat/producer_avformat.c
+@@ -398,10 +398,7 @@ static mlt_properties find_default_streams( producer_avformat self )
+ 				if ( first_video_index < 0 )
+ 					first_video_index = i;
+ 				// Only set the video stream if not album art
+-				if (self->video_index < 0 &&
+-						(codec_params->codec_id != AV_CODEC_ID_MJPEG ||
+-						 codec_context->time_base.num != 1 ||
+-						 codec_context->time_base.den != 90000)) {
++				if (self->video_index < 0 && !(context->streams[i]->disposition & AV_DISPOSITION_ATTACHED_PIC)) {
+ 					self->video_index = i;
+ 				}
+ 				mlt_properties_set( meta_media, key, "video" );
+@@ -1682,11 +1679,7 @@ static int producer_get_image( mlt_frame frame, uint8_t **buffer, mlt_image_form
+ 	codec_params = stream->codecpar;
+ 
+ 	// Always use the image cache for album art.
+-	int is_album_art = ((codec_context->codec_id == AV_CODEC_ID_MJPEG
+-		|| codec_context->codec_id == AV_CODEC_ID_GIF
+-		|| codec_context->codec_id == AV_CODEC_ID_PNG)
+-		&& mlt_properties_get_int(properties, "meta.media.frame_rate_num") == 90000
+-		&& mlt_properties_get_int(properties, "meta.media.frame_rate_den") == 1);
++	int is_album_art = stream->disposition & AV_DISPOSITION_ATTACHED_PIC;
+ 	if (is_album_art)
+ 		position = 0;
+ 
+@@ -2296,8 +2289,8 @@ static int video_codec_init( producer_avformat self, int index, mlt_properties p
+ 		mlt_properties_set_int( properties, "meta.media.frame_rate_num", frame_rate.num );
+ 		mlt_properties_set_int( properties, "meta.media.frame_rate_den", frame_rate.den );
+ 
+-		// MP3 album art is a single JPEG at 90000 fps, which is not seekable.
+-		if ( codec->id == AV_CODEC_ID_MJPEG && frame_rate.num == 90000 && frame_rate.den == 1 )
++		// Cover art is a single image at 90000 fps, which is not seekable.
++		if (stream->disposition & AV_DISPOSITION_ATTACHED_PIC)
+ 			self->video_seekable = 0;
+ 
+ 		// Set the YUV colorspace from override or detect

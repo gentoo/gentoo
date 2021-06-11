@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Expressive Synthesis, Transformation, Rendering of Environmental Audio"
 HOMEPAGE="http://taps.cs.princeton.edu/"
@@ -26,6 +26,11 @@ DEPEND="${RDEPEND}
 	sys-devel/bison:0
 	sys-devel/flex:0"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc44.patch
+	"${FILESDIR}"/${PF}-underlinking-alsa-pthread.patch
+)
+
 pkg_setup() {
 	if ! use alsa && ! use jack && ! use oss; then
 		eerror "One of the following USE flags is needed: jack, alsa or oss"
@@ -34,8 +39,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gcc44.patch
-
 	# Respect LDFLAGS/CC
 	for bend in alsa jack oss; do
 		sed -i -e "s:gcc -o:\$(CC) \$(LDFLAGS) -o :" \
@@ -51,20 +54,21 @@ src_prepare() {
 	sed -i -e "s:-make:\$(MAKE):g" \
 		"${S}/scripting/chuck-1.2.1.2/src/makefile" || die
 
-	epatch "${FILESDIR}"/${PF}-underlinking-alsa-pthread.patch
+	default
 }
 
 compile_backend() {
-	backend=$1
+	backend=${1}
 	einfo "Compiling against ${backend}"
 
-	cd "${S}/scripting/chuck-1.2.1.2/src"
+	cd "${S}/scripting/chuck-1.2.1.2/src" || die
+
 	emake -f "makefile.${backend}" \
-		CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+		PKG_CONFIG=$(tc-getPKG_CONFIG) CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 
 	cd "${S}/src"
 	emake -f "makefile.${backend}" \
-		CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+		PKG_CONFIG=$(tc-getPKG_CONFIG) CC=$(tc-getCC) CXX=$(tc-getCXX) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 
 	mv taps{,-${backend}} || die
 	emake -f makefile clean
@@ -92,12 +96,15 @@ src_install() {
 	dodoc AUTHORS BUGS DEVELOPER PROGRAMMER QUICKSTART README THANKS TODO VERSIONS
 
 	if use doc ; then
-		for tapedir in `find examples/* -type d -maxdepth 0`; do
-			docinto $tapedir
-			dodoc `find $tapedir/* -type f -maxdepth 0`
-			for tapedir2 in `find $tapedir/* -type d -maxdepth 0`; do
-				docinto $tapedir2
-				dodoc `find $tapedir2/* -type f -maxdepth 0`
+		local tapedir
+		for tapedir in $(find examples/* -type d -maxdepth 0); do
+			docinto ${tapedir}
+			dodoc $(find ${tapedir}/* -type f -maxdepth 0)
+
+			local tapedir2
+			for tapedir2 in $(find ${tapedir}/* -type d -maxdepth 0); do
+				docinto ${tapedir2}
+				dodoc $(find ${tapedir2}/* -type f -maxdepth 0)
 			done
 		done
 		docinto doc

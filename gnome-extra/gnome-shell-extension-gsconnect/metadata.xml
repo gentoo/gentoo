@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<use>
 		<flag name="nautilus">Install Nautilus extension for sending files via GSConnect</flag>
 	</use>

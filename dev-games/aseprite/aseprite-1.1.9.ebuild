@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -74,7 +74,7 @@ src_configure() {
 		-DUSE_SHARED_FREETYPE=ON
 		-DUSE_SHARED_GIFLIB=ON
 		-DUSE_SHARED_JPEGLIB=ON
-		-DUSE_SHARED_LIBLOADPNG=ON
+		-DUSE_SHARED_LIBLOADPNG=$(usex !bundled-libs)
 		-DUSE_SHARED_LIBPNG=ON
 		-DUSE_SHARED_PIXMAN=ON
 		-DUSE_SHARED_TINYXML=ON

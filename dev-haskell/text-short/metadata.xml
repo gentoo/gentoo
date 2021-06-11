@@ -9,8 +9,8 @@
 		<flag name="asserts">Enable runtime-checks via 'assert'</flag>
 	</use>
 	<longdescription>
-		This package provides the &#39;ShortText&#39; type which is suitable for keeping many short strings in memory. This is similiar to how &#39;ShortByteString&#39; relates to &#39;ByteString&#39;.
+		This package provides the 'ShortText' type which is suitable for keeping many short strings in memory. This is similiar to how 'ShortByteString' relates to 'ByteString'.
 		
-		The main difference between &#39;Text&#39; and &#39;ShortText&#39; is that &#39;ShortText&#39; uses UTF-8 instead of UTF-16 internally and also doesn&#39;t support zero-copy slicing (thereby saving 2 words). Consequently, the memory footprint of a (boxed) &#39;ShortText&#39; value is 4 words (2 words when unboxed) plus the length of the UTF-8 encoded payload.
+		The main difference between 'Text' and 'ShortText' is that 'ShortText' uses UTF-8 instead of UTF-16 internally and also doesn't support zero-copy slicing (thereby saving 2 words). Consequently, the memory footprint of a (boxed) 'ShortText' value is 4 words (2 words when unboxed) plus the length of the UTF-8 encoded payload.
 	</longdescription>
 </pkgmetadata>

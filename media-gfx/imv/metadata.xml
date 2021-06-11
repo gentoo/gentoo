@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> as image library</flag>
-<flag name="heif">Use <pkg>media-libs/libheif</pkg> as image library</flag>
-<flag name="libnsgif">Use <pkg>media-libs/libnsgif</pkg> as image library</flag>
-</use>
-<upstream>
-<remote-id type="github">eXeC64/imv</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
+	<use>
+		<flag name="freeimage">Use <pkg>media-libs/freeimage</pkg> for additional image support</flag>
+		<flag name="heif">Add HEIF/HEIC image support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">eXeC64/imv</remote-id>
+	</upstream>
 </pkgmetadata>

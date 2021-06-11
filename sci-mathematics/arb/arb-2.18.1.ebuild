@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C library for arbitrary-precision interval arithmetic"
 HOMEPAGE="https://fredrikj.net/arb/"
@@ -14,7 +14,7 @@ RESTRICT="!test? ( test )"
 
 LICENSE="GPL-2+"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
 	dev-libs/gmp:0=
@@ -33,5 +33,5 @@ src_configure() {
 		-DBUILD_TESTING="$(usex test)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

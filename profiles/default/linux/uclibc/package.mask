@@ -46,7 +46,6 @@ games-simulation/bcs-demo
 games-strategy/defcon-demo
 games-strategy/knights-demo
 games-strategy/majesty-demo
-www-plugins/adobe-flash
 
 # needs boost[nls]
 games-strategy/wesnoth

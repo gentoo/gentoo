@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit elisp-common multilib eutils flag-o-matic
+
+inherit elisp-common epatch flag-o-matic
 
 DESCRIPTION="Scheme48 is an implementation of the Scheme Programming Language"
 HOMEPAGE="http://www.s48.org/"
@@ -10,11 +11,12 @@ SRC_URI="http://www.s48.org/${PV}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc emacs"
 
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
+
 SITEFILE=50scheme48-gentoo.el
 
 src_prepare() {
@@ -23,7 +25,7 @@ src_prepare() {
 
 src_configure() {
 	append-cflags -fno-strict-aliasing
-	econf --docdir=/usr/share/doc/${P}
+	econf --docdir=/usr/share/doc/${PF}
 }
 
 src_compile() {

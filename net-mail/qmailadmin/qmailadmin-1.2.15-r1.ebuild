@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmail webapp autotools
+WEBAPP_MANUAL_SLOT="yes"
+inherit autotools qmail webapp
 
 MY_P=${P/_rc/-rc}
 
@@ -13,18 +14,18 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~ia64 ppc ~s390 sparc x86"
 IUSE="maildrop"
 # the RESTRICT is because the vpopmail lib directory is locked down
 # and non-root can't access them.
 RESTRICT="userpriv"
 
-RDEPEND="virtual/qmail
-	>=net-mail/vpopmail-5.4.33
+RDEPEND="
 	net-mail/autorespond
+	>=net-mail/vpopmail-5.4.33
+	virtual/qmail
 	maildrop? ( >=mail-filter/maildrop-2.0.1 )"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 

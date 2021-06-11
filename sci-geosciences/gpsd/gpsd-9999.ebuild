@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 SCONS_MIN_VERSION="2.3.0"
 
-inherit eutils udev multilib distutils-r1 scons-utils toolchain-funcs
+inherit udev multilib distutils-r1 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/gpsd/gpsd.git"

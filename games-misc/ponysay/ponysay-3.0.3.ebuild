@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit bash-completion-r1 python-single-r1
 
 DESCRIPTION="cowsay reimplemention for ponies"
@@ -21,6 +21,10 @@ BDEPEND="${PYTHON_DEPS}
 RDEPEND="${PYTHON_DEPS}
 	fish-completion? ( app-shells/fish )
 	zsh-completion? ( app-shells/zsh )"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.3-python-syntax.patch"
+)
 
 setup_py() {
 	"${PYTHON}" setup.py \

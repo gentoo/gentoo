@@ -1,8 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -ia64
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
+# sys-libs/llvm-libunwind not supported on IA64.
+llvm-libunwind
 
 # Matt Turner <mattst88@gentoo.org> (2020-07-01)
 # Unlikely.
@@ -34,10 +38,6 @@ lua_targets_luajit
 luajit
 luajittex
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
-# kwallet integration split from kde to distinct flag
-kwallet
-
 # No hardware to test by the team
 3dfx
 bluetooth
@@ -60,7 +60,6 @@ wifi
 apm
 battery
 lm-sensors
-pm-utils
 
 # Stuff that doesn't work on ia64, or not tested
 afs
@@ -73,6 +72,7 @@ lqr
 capi
 lensfun
 kde
+kwallet
 metalink
 upnp
 fdk

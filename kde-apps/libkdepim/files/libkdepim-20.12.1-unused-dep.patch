@@ -1,0 +1,37 @@
+From 6c468905d6d8b0a910a4f1d423a226815c630acb Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Thu, 10 Dec 2020 07:15:35 +0100
+Subject: [PATCH] Remove KF5Codecs
+
+---
+ CMakeLists.txt               | 1 -
+ src/libkdepim/CMakeLists.txt | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5232c8d..a9b2c1b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,7 +27,6 @@ set(QT_REQUIRED_VERSION "5.13.0")
+ 
+ find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Test DBus Network)
+ 
+-find_package(KF5Codecs ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Config ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5Completion ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF5ConfigWidgets ${KF5_MIN_VERSION} CONFIG REQUIRED)
+diff --git a/src/libkdepim/CMakeLists.txt b/src/libkdepim/CMakeLists.txt
+index 9f5eaff..9ff0420 100644
+--- a/src/libkdepim/CMakeLists.txt
++++ b/src/libkdepim/CMakeLists.txt
+@@ -59,7 +59,6 @@ target_include_directories(KF5Libkdepim PUBLIC "$<BUILD_INTERFACE:${libkdepim_SO
+ 
+ target_link_libraries(KF5Libkdepim
+     PRIVATE
+-    KF5::Codecs
+     KF5::Completion
+     KF5::I18n
+     KF5::ConfigGui
+-- 
+GitLab
+

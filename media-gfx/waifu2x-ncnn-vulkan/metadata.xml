@@ -5,6 +5,10 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>ionen@gentoo.org</email>
+		<name>Ionen Wolkens</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">nihui/waifu2x-ncnn-vulkan</remote-id>
 	</upstream>

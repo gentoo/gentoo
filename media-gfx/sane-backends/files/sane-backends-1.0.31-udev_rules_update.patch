@@ -1,0 +1,55 @@
+https://gitlab.com/sane-project/backends/-/merge_requests/541
+
+--- sane-backends-1.0.31/testsuite/tools/data/udev+acl.ref
++++ sane-backends-1.0.31/testsuite/tools/data/udev+acl.ref
+@@ -23,7 +23,7 @@
+ # If the scanner is supported by sane-backends, please mail the entry to
+ # the sane-devel mailing list (sane-devel@alioth-lists.debian.net).
+ #
+-ACTION!="add", GOTO="libsane_rules_end"
++ACTION=="remove", GOTO="libsane_rules_end"
+ ENV{DEVTYPE}=="usb_device", GOTO="libsane_create_usb_dev"
+ SUBSYSTEMS=="scsi", GOTO="libsane_scsi_rules_begin"
+ SUBSYSTEM=="usb_device", GOTO="libsane_usb_rules_begin"
+--- sane-backends-1.0.31/testsuite/tools/data/udev+hwdb.ref
++++ sane-backends-1.0.31/testsuite/tools/data/udev+hwdb.ref
+@@ -20,7 +20,7 @@
+ # If the scanner is supported by sane-backends, please mail the entry to
+ # the sane-devel mailing list (sane-devel@alioth-lists.debian.net).
+ #
+-ACTION!="add", GOTO="libsane_rules_end"
++ACTION=="remove", GOTO="libsane_rules_end"
+ 
+ # The following rule will disable USB autosuspend for the device
+ ENV{DEVTYPE}=="usb_device", ENV{libsane_matched}=="yes", TEST=="power/control", ATTR{power/control}="on"
+--- sane-backends-1.0.31/testsuite/tools/data/udev.ref
++++ sane-backends-1.0.31/testsuite/tools/data/udev.ref
+@@ -23,7 +23,7 @@
+ # If the scanner is supported by sane-backends, please mail the entry to
+ # the sane-devel mailing list (sane-devel@alioth-lists.debian.net).
+ #
+-ACTION!="add", GOTO="libsane_rules_end"
++ACTION=="remove", GOTO="libsane_rules_end"
+ ENV{DEVTYPE}=="usb_device", GOTO="libsane_create_usb_dev"
+ SUBSYSTEMS=="scsi", GOTO="libsane_scsi_rules_begin"
+ SUBSYSTEM=="usb_device", GOTO="libsane_usb_rules_begin"
+--- sane-backends-1.0.31/tools/sane-desc.c
++++ sane-backends-1.0.31/tools/sane-desc.c
+@@ -3496,7 +3496,7 @@
+   int i;
+ 
+   print_udev_header ();
+-  printf("ACTION!=\"add\", GOTO=\"libsane_rules_end\"\n"
++  printf("ACTION==\"remove\", GOTO=\"libsane_rules_end\"\n"
+ 	 "ENV{DEVTYPE}==\"usb_device\", GOTO=\"libsane_create_usb_dev\"\n"
+ 	 "SUBSYSTEMS==\"scsi\", GOTO=\"libsane_scsi_rules_begin\"\n"
+ 	 "SUBSYSTEM==\"usb_device\", GOTO=\"libsane_usb_rules_begin\"\n"
+@@ -3679,7 +3679,7 @@
+   int i;
+ 
+   print_udevhwdb_header ();
+-  printf("ACTION!=\"add\", GOTO=\"libsane_rules_end\"\n\n");
++  printf("ACTION==\"remove\", GOTO=\"libsane_rules_end\"\n\n");
+ 
+   printf("# The following rule will disable USB autosuspend for the device\n");
+   printf("ENV{DEVTYPE}==\"usb_device\", ENV{libsane_matched}==\"yes\", TEST==\"power/control\", ATTR{power/control}=\"on\"\n\n");

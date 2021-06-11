@@ -12,16 +12,15 @@
     internally.
   </longdescription>
   <use>
-    <flag name="fdk">Enable libfdk support for AAC encoding.</flag>
+    <flag name="decklink">Build the Decklink plugin.</flag>
+    <flag name="fdk">Build with LibFDK AAC support.</flag>
     <flag name="imagemagick">Use ImageMagick for image loading instead of FFmpeg.</flag>
-    <flag name="luajit">Build support for scripting via Luajit.</flag>
-    <flag name="nvenc">Enable NVENC encoding for nVidia video cards.</flag>
-    <flag name="python">Build support for scripting via Python 3.</flag>
-    <flag name="speex">Enable noise suppression filter support via
-      <pkg>media-libs/speexdsp</pkg>.</flag>
-    <flag name="ssl">Build support for TLS/SSL connections (RTMPS) via
-      <pkg>net-libs/mbedtls</pkg>.</flag>
-    <flag name="vlc">Build support for using <pkg>media-video/vlc</pkg> as a media source.</flag>
+    <flag name="nvenc">Build with NVENC encoding support for nVidia video cards.</flag>
+    <flag name="pipewire">Build with PipeWire support.</flag>
+    <flag name="python">Build with scripting support for Python 3.</flag>
+    <flag name="speex">Build with Speex noise suppression filter support.</flag>
+    <flag name="ssl">Build with TLS/SSL support for RTMPS connections.</flag>
+    <flag name="vlc">Build with VLC media source support.</flag>
   </use>
   <upstream>
     <remote-id type="github">obsproject/obs-studio</remote-id>

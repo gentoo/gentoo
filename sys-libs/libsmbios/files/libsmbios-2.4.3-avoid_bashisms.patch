@@ -1,0 +1,84 @@
+From 97b4bdc042c48001132200828fe32c08cf9265e7 Mon Sep 17 00:00:00 2001
+From: Joe Dight <17280110+joedight@users.noreply.github.com>
+Date: Fri, 27 Nov 2020 20:14:24 +0000
+Subject: [PATCH 1/2] Fix configure.ac bashism
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index e14ec4a..6db254f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -116,7 +116,7 @@ AC_PROG_INSTALL
+ 
+ dnl Check for python support
+ AM_CONDITIONAL([HAVE_PYTHON], [false])
+-if test x$wantpython == xyes ; then
++if test x$wantpython = xyes ; then
+     AM_PATH_PYTHON([3.0],,[:])
+     AM_CONDITIONAL([HAVE_PYTHON], [test "$PYTHON" != :])
+ fi
+-- 
+2.30.0
+
+
+From fb7585222503c48f35270ee148ad3fef762a7502 Mon Sep 17 00:00:00 2001
+From: Kerin Millar <kfm@plushkava.net>
+Date: Mon, 4 Jan 2021 00:57:29 +0100
+Subject: [PATCH 2/2] Don't rely on support for indirect expansion in the shell
+
+POSIX does not define the indirect expansion syntax. Moreover, if going
+to the trouble of executing Perl, one may as well take full advantage of
+it. Address the issue by first having the shell export the variable.
+Next, have Perl perform the replacement without utilising any form of
+code injection. Instead, export 'var' into Perl's environment. That
+way, Perl can reference the variable name as $ENV{var} and its value as
+$ENV{$ENV{var}}.
+
+Signed-off-by: Kerin Millar <kfm@plushkava.net>
+Closes: https://bugs.gentoo.org/715202
+Closes: https://github.com/dell/libsmbios/issues/89
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ Makefile-std           | 4 ++--
+ src/python/Makefile.am | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile-std b/Makefile-std
+index 7ac6fa2..dd30d68 100644
+--- a/Makefile-std
++++ b/Makefile-std
+@@ -38,7 +38,7 @@ install-data-hook:
+ 	    file=$(DESTDIR)/$$i                     ;\
+ 	    for var in $(REPLACE_VARS)	;\
+ 	    do	\
+-	        perl -p -i -e "s|^$$var\s*=.*|$$var=\"$${!var}\"|"  $$file;\
++	        var="$$var" perl -p -i -e 's|^\Q$$ENV{var}\E\s*=.*|$$ENV{var}="$$ENV{$$ENV{var}}"|'  $$file;\
+ 	    done	;\
+ 	done
+ 
+@@ -48,7 +48,7 @@ install-exec-hook:
+ 	    file=$(DESTDIR)/$$i                     ;\
+ 	    for var in $(REPLACE_VARS)	;\
+ 	    do	\
+-	        perl -p -i -e "s|^$$var\s*=.*|$$var=\"$${!var}\"|"  $$file;\
++	        var="$$var" perl -p -i -e 's|^\Q$$ENV{var}\E\s*=.*|$$ENV{var}="$$ENV{$$ENV{var}}"|'  $$file;\
+ 	    done	;\
+ 	done
+ 
+diff --git a/src/python/Makefile.am b/src/python/Makefile.am
+index 693b6d9..6aca968 100644
+--- a/src/python/Makefile.am
++++ b/src/python/Makefile.am
+@@ -29,5 +29,5 @@ src/python/_vars.py: src/python/libsmbios_c/_vars.py  configure Makefile config.
+ 	cp $< $@
+ 	for var in $(REPLACE_VARS)	;\
+ 	do	\
+-		perl -p -i -e "s|^$$var\s*=.*|$$var=\"$${!var}\"|"  $@;\
++		var="$$var" perl -p -i -e 's|^\Q$$ENV{var}\E\s*=.*|$$ENV{var}="$$ENV{$$ENV{var}}"|'  $@;\
+ 	done
+-- 
+2.30.0
+

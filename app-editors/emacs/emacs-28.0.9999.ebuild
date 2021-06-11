@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,21 +29,21 @@ else
 		SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 		S="${WORKDIR}/emacs"
 	elif [[ ${PV//[0-9]} != "." ]]; then
-		SRC_URI="mirror://gnu-alpha/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
+		SRC_URI="https://alpha.gnu.org/gnu/emacs/pretest/${PN}-${PV/_/-}.tar.xz"
 	fi
 	SLOT="${PV%%.*}"
 	[[ ${PV} == *.*.* ]] && SLOT+="-vcs"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gtk2 gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jit jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 RESTRICT="test"
 
-RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
+RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -52,6 +52,7 @@ RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
+	jit? ( sys-devel/gcc:=[jit(-)] )
 	json? ( dev-libs/jansson )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
@@ -94,34 +95,23 @@ RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 			)
 		)
 		gtk? (
-			gtk2? ( x11-libs/gtk+:2 )
-			!gtk2? (
-				x11-libs/gtk+:3
-				xwidgets? (
-					net-libs/webkit-gtk:4=
-					x11-libs/libXcomposite
-				)
+			x11-libs/gtk+:3
+			xwidgets? (
+				net-libs/webkit-gtk:4=
+				x11-libs/libXcomposite
 			)
 		)
 		!gtk? (
-			motif? (
-				>=x11-libs/motif-2.3:0
-				x11-libs/libXpm
+			Xaw3d? (
+				x11-libs/libXaw3d
 				x11-libs/libXmu
 				x11-libs/libXt
 			)
-			!motif? (
-				Xaw3d? (
-					x11-libs/libXaw3d
-					x11-libs/libXmu
-					x11-libs/libXt
-				)
-				!Xaw3d? ( athena? (
-					x11-libs/libXaw
-					x11-libs/libXmu
-					x11-libs/libXt
-				) )
-			)
+			!Xaw3d? ( athena? (
+				x11-libs/libXaw
+				x11-libs/libXmu
+				x11-libs/libXt
+			) )
 		)
 	) )"
 
@@ -151,7 +141,11 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
-	eapply_user
+	# These files ignore LDFLAGS. We assign the variable here, because
+	# for live ebuilds FULL_VERSION doesn't exist in global scope
+	use jit && QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
+
+	default
 
 	# Fix filename reference in redirected man page
 	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
@@ -222,28 +216,16 @@ src_configure() {
 				Your version of GTK+ will have problems with closing open
 				displays. This is no problem if you just use one display, but
 				if you use more than one and close one of them Emacs may crash.
-				See <https://bugzilla.gnome.org/show_bug.cgi?id=85715>.
+				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
+				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 				If you intend to use more than one display, then it is strongly
-				recommended that you compile Emacs with the Athena/Lucid or the
-				Motif toolkit instead.
+				recommended that you compile Emacs with the Athena/Lucid
+				toolkit instead.
 			EOF
-			if use gtk2; then
-				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
-				use xwidgets && ewarn \
-					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
-			else
-				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			fi
-			for f in motif Xaw3d athena; do
-				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"gtk\" is set."
-			done
-		elif use motif; then
-			einfo "Configuring to build with Motif toolkit"
-			myconf+=" --with-x-toolkit=motif"
+			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 			for f in Xaw3d athena; do
 				use ${f} && ewarn \
-					"USE flag \"${f}\" has no effect if \"motif\" is set."
+					"USE flag \"${f}\" has no effect if \"gtk\" is set."
 			done
 		elif use athena || use Xaw3d; then
 			einfo "Configuring to build with Athena/Lucid toolkit"
@@ -252,12 +234,8 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		if ! use gtk; then
-			use gtk2 && ewarn \
-				"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
-			use xwidgets && ewarn \
-				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
-		fi
+		! use gtk && use xwidgets && ewarn \
+			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
 	fi
 
 	if tc-is-cross-compiler; then
@@ -288,6 +266,7 @@ src_configure() {
 		$(use_with games gameuser ":gamestat") \
 		$(use_with gmp libgmp) \
 		$(use_with gpm) \
+		$(use_with jit native-compilation) \
 		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
@@ -321,7 +300,7 @@ src_install() {
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
 	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
-	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.appdata.xml || die
+	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.metainfo.xml || die
 
 	# move info dir to avoid collisions with the dir file generated by portage
 	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
@@ -335,16 +314,16 @@ src_install() {
 	fi
 
 	# avoid collision between slots, see bug #169033 e.g.
-	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
-	rm -rf "${ED}/usr/$(get_libdir)"
-	rm -rf "${ED}"/var
+	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
+	rm -rf "${ED}"/usr/share/{applications,icons} || die
+	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
+	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
-	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp
+	rm -rf "${ED}"/usr/share/emacs/${FULL_VERSION}/site-lisp || die
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
-	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING || die
 
 	if use systemd; then
 		insinto /usr/lib/systemd/user
@@ -397,7 +376,7 @@ src_install() {
 
 	if use gui && use aqua; then
 		dodir /Applications/Gentoo
-		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app
+		rm -rf "${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 		mv nextstep/Emacs.app \
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
@@ -423,7 +402,7 @@ src_install() {
 	tc-is-cross-compiler && DOC_CONTENTS+="\\n\\nEmacs did not write
 		a portable dump file due to being cross-compiled.
 		To create this file at run time, execute the following command:
-		\\n${EMACS_SUFFIX} --batch --eval='(dump-emacs-portable
+		\\n${EMACS_SUFFIX} --batch -Q --eval='(dump-emacs-portable
 		\"/usr/libexec/emacs/${FULL_VERSION}/${CHOST}/emacs.pdmp\")'"
 	readme.gentoo_create_doc
 }
@@ -443,9 +422,6 @@ pkg_postinst() {
 		# force an update of the emacs symlink for the livecd/dvd,
 		# because some microemacs packages set it with USE=livecd
 		eselect emacs update
-	elif [[ $(readlink "${EROOT}"/usr/bin/emacs) = ${EMACS_SUFFIX} ]]; then
-		# refresh symlinks in case any installed files have changed
-		eselect emacs set ${EMACS_SUFFIX}
 	else
 		eselect emacs update ifunset
 	fi

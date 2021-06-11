@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Library to parse, pretty print, and evaluate CUDF documents"
 HOMEPAGE="http://www.mancoosi.org/cudf/"
@@ -11,7 +11,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/36602/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +26,11 @@ DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild
 	dev-lang/perl
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=( "${FILESDIR}/ounit2.patch" )
+
+QA_FLAGS_IGNORED='.*'
 
 src_prepare() {
 	default

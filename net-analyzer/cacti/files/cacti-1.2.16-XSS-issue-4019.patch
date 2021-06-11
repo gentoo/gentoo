@@ -1,0 +1,360 @@
+https://github.com/Cacti/cacti/issues/4019
+
+From ef10fe1c340ed932dc18b6a566b21f9dd15933c2 Mon Sep 17 00:00:00 2001
+From: TheWitness <thewitness@cacti.net>
+Date: Wed, 23 Dec 2020 16:33:27 -0500
+Subject: [PATCH] Fixing Issue #4019
+
+* In a recent audit of core Cacti code, there were a few stored XSS issues that can be exposed
+* Also removed a few spurious title_trims, that should no longer be a problem.
+--- a/automation_devices.php
++++ b/automation_devices.php
+@@ -485,7 +485,7 @@ function draw_filter() {
+ 							<?php
+ 							if (cacti_sizeof($networks)) {
+ 								foreach ($networks as $key => $name) {
+-									print "<option value='" . $key . "'"; if (get_request_var('network') == $key) { print ' selected'; } print '>' . $name . "</option>";
++									print "<option value='" . html_escape($key) . "'"; if (get_request_var('network') == $key) { print ' selected'; } print '>' . html_escape($name) . "</option>";
+ 								}
+ 							}
+ 							?>
+@@ -515,7 +515,7 @@ function draw_filter() {
+ 							<?php
+ 							if (cacti_sizeof($status_arr)) {
+ 								foreach ($status_arr as $st) {
+-									print "<option value='" . $st . "'"; if (get_request_var('status') == $st) { print ' selected'; } print '>' . $st . "</option>";
++									print "<option value='" . html_escape($st) . "'"; if (get_request_var('status') == $st) { print ' selected'; } print '>' . html_escape($st) . "</option>";
+ 								}
+ 							}
+ 							?>
+@@ -530,7 +530,7 @@ function draw_filter() {
+ 							<?php
+ 							if (cacti_sizeof($os_arr)) {
+ 								foreach ($os_arr as $st) {
+-									print "<option value='" . $st . "'"; if (get_request_var('os') == $st) { print ' selected'; } print '>' . $st . "</option>";
++									print "<option value='" . html_escape($st) . "'"; if (get_request_var('os') == $st) { print ' selected'; } print '>' . html_escape($st) . "</option>";
+ 								}
+ 							}
+ 							?>
+@@ -545,7 +545,7 @@ function draw_filter() {
+ 							<?php
+ 							if (cacti_sizeof($status_arr)) {
+ 								foreach ($status_arr as $st) {
+-									print "<option value='" . $st . "'"; if (get_request_var('snmp') == $st) { print ' selected'; } print '>' . $st . "</option>";
++									print "<option value='" . html_escape($st) . "'"; if (get_request_var('snmp') == $st) { print ' selected'; } print '>' . html_escape($st) . "</option>";
+ 								}
+ 							}
+ 							?>
+@@ -560,7 +560,7 @@ function draw_filter() {
+ 							<?php
+ 							if (cacti_sizeof($item_rows) > 0) {
+ 								foreach ($item_rows as $key => $value) {
+-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
++									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
+ 								}
+ 							}
+ 							?>
+--- a/data_debug.php
++++ b/data_debug.php
+@@ -969,7 +969,7 @@ function data_debug_filter() {
+ 
+ 							if (cacti_sizeof($templates) > 0) {
+ 								foreach ($templates as $template) {
+-									print "<option value='" . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . title_trim(html_escape($template['name']), 40) . "</option>";
++									print "<option value='" . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . html_escape($template['name']) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -997,7 +997,7 @@ function data_debug_filter() {
+ 							$profiles = array_rekey(db_fetch_assoc('SELECT id, name FROM data_source_profiles ORDER BY name'), 'id', 'name');
+ 							if (cacti_sizeof($profiles)) {
+ 								foreach ($profiles as $key => $value) {
+-									print "<option value='" . $key . "'"; if (get_request_var('profile') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
++									print "<option value='" . $key . "'"; if (get_request_var('profile') == $key) { print ' selected'; } print '>' . html_escape($value) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -1063,7 +1063,7 @@ function data_debug_filter() {
+ 							<?php
+ 							if (cacti_sizeof($item_rows) > 0) {
+ 								foreach ($item_rows as $key => $value) {
+-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . "</option>";
++									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . html_escape($value) . '</option>';
+ 								}
+ 							}
+ 							?>
+--- a/data_sources.php
++++ b/data_sources.php
+@@ -1361,7 +1361,7 @@ function clearFilter() {
+ 
+ 							if (cacti_sizeof($templates)) {
+ 								foreach ($templates as $template) {
+-									print "<option value='" . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . title_trim(html_escape($template['name']), 40) . '</option>';
++									print "<option value='" . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . html_escape($template['name']) . '</option>';
+ 								}
+ 							}
+ 							?>
+--- a/lib/api_automation.php
++++ b/lib/api_automation.php
+@@ -154,7 +154,7 @@ function clearDeviceFilter() {
+ 
+ 								if (cacti_sizeof($host_templates)) {
+ 									foreach ($host_templates as $host_template) {
+-										print "<option value='" . $host_template['id'] . "'"; if (get_request_var('host_template_id') == $host_template['id']) { print ' selected'; } print '>' . $host_template['name'] . "</option>\n";
++										print "<option value='" . $host_template['id'] . "'"; if (get_request_var('host_template_id') == $host_template['id']) { print ' selected'; } print '>' . html_escape($host_template['name']) . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -184,7 +184,7 @@ function clearDeviceFilter() {
+ 								<?php
+ 								if (cacti_sizeof($item_rows)) {
+ 									foreach ($item_rows as $key => $value) {
+-										print "<option value='". $key . "'"; if (get_request_var('rowsd') == $key) { print ' selected'; } print '>' . $value . '</option>\n';
++										print "<option value='". $key . "'"; if (get_request_var('rowsd') == $key) { print ' selected'; } print '>' . $value . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -432,7 +432,7 @@ function clearFilter() {
+ 								$hosts = get_allowed_devices();
+ 								if (cacti_sizeof($hosts)) {
+ 									foreach ($hosts as $host) {
+-										print "<option value='" . $host['id'] . "'"; if (get_request_var('host_id') == $host['id']) { print ' selected'; } print '>' . html_escape($host['description']) . "</option>\n";
++										print "<option value='" . $host['id'] . "'"; if (get_request_var('host_id') == $host['id']) { print ' selected'; } print '>' . html_escape($host['description']) . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -453,7 +453,7 @@ function clearFilter() {
+ 
+ 								if (cacti_sizeof($templates) > 0) {
+ 									foreach ($templates as $template) {
+-										print "<option value=' " . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . title_trim($template['name'], 40) . "</option>\n";
++										print "<option value=' " . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . html_escape($template['name']) . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -484,7 +484,7 @@ function clearFilter() {
+ 								<?php
+ 								if (cacti_sizeof($item_rows)) {
+ 									foreach ($item_rows as $key => $value) {
+-										print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>\n";
++										print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -718,7 +718,7 @@ function clearObjectFilter() {
+ 								<?php
+ 								if (cacti_sizeof($item_rows)) {
+ 									foreach ($item_rows as $key => $value) {
+-										print "<option value='". $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . '</option>\n';
++										print "<option value='". $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -1078,10 +1078,10 @@ function clearFilter() {
+ 							<?php
+ 							$host_templates = db_fetch_assoc('select id,name from host_template order by name');
+ 
+-							if (cacti_sizeof($host_templates) > 0) {
+-							foreach ($host_templates as $host_template) {
+-								print "<option value='" . $host_template['id'] . "'"; if (get_request_var('host_template_id') == $host_template['id']) { print ' selected'; } print '>' . $host_template['name'] . "</option>\n";
+-							}
++							if (cacti_sizeof($host_templates)) {
++								foreach ($host_templates as $host_template) {
++									print "<option value='" . $host_template['id'] . "'"; if (get_request_var('host_template_id') == $host_template['id']) { print ' selected'; } print '>' . html_escape($host_template['name']) . '</option>';
++								}
+ 							}
+ 							?>
+ 						</select>
+@@ -1110,7 +1110,7 @@ function clearFilter() {
+ 							<?php
+ 							if (cacti_sizeof($item_rows)) {
+ 								foreach ($item_rows as $key => $value) {
+-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>\n";
++									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . '</option>';
+ 								}
+ 							}
+ 							?>
+--- a/lib/html.php
++++ b/lib/html.php
+@@ -998,7 +998,7 @@ function html_create_list($form_data, $column_display, $column_id, $form_previou
+ 					print ' selected';
+ 				}
+ 
+-				print '>' . title_trim(null_out_substitutions(html_escape($form_data[$id])), 75) . '</option>';
++				print '>' . html_escape(null_out_substitutions($form_data[$id])) . '</option>';
+ 			}
+ 		}
+ 	} else {
+@@ -1011,9 +1011,9 @@ function html_create_list($form_data, $column_display, $column_id, $form_previou
+ 				}
+ 
+ 				if (isset($row['host_id'])) {
+-					print '>' . title_trim(html_escape($row[$column_display]), 75) . '</option>';
++					print '>' . html_escape($row[$column_display]) . '</option>';
+ 				} else {
+-					print '>' . title_trim(null_out_substitutions(html_escape($row[$column_display])), 75) . '</option>';
++					print '>' . html_escape(null_out_substitutions($row[$column_display])) . '</option>';
+ 				}
+ 			}
+ 		}
+@@ -2010,7 +2010,7 @@ function html_host_filter($host_id = '-1', $call_back = 'applyFilter', $sql_wher
+ 
+ 				if (cacti_sizeof($devices)) {
+ 					foreach ($devices as $device) {
+-						print "<option value='" . $device['id'] . "'"; if ($host_id == $device['id']) { print ' selected'; } print '>' . title_trim(html_escape(strip_domain($device['description'])), 40) . '</option>';
++						print "<option value='" . $device['id'] . "'"; if ($host_id == $device['id']) { print ' selected'; } print '>' . html_escape(strip_domain($device['description'])) . '</option>';
+ 					}
+ 				}
+ 				?>
+@@ -2385,6 +2385,7 @@ function html_common_header($title, $selectedTheme = '') {
+ 	<meta name='apple-mobile-web-app-capable' content='yes'>
+ 	<meta name='description' content='Monitoring tool of the Internet'>
+ 	<meta name='mobile-web-app-capable' content='yes'>
++	<meta name="theme-color" content="#161616"/>
+ 	<meta http-equiv="Content-Security-Policy" content="default-src *; img-src 'self' <?php print $alternates;?> data: blob:; style-src 'self' 'unsafe-inline' <?php print $alternates;?>; script-src 'self' <?php print $script_policy;?> 'unsafe-inline' <?php print $alternates;?>; worker-src 'self'">
+ 	<meta name='robots' content='noindex,nofollow'>
+ 	<title><?php print $title; ?></title>
+--- a/lib/html_graph.php
++++ b/lib/html_graph.php
+@@ -212,9 +212,9 @@ function html_graph_preview_filter($page, $action, $devices_where = '', $templat
+ 						<select id='graphs' onChange='applyGraphFilter()'>
+ 							<?php
+ 							if (cacti_sizeof($graphs_per_page)) {
+-							foreach ($graphs_per_page as $key => $value) {
+-								print "<option value='" . $key . "'"; if (get_request_var('graphs') == $key) { print ' selected'; } print '>' . $value . "</option>\n";
+-							}
++								foreach ($graphs_per_page as $key => $value) {
++									print "<option value='" . $key . "'"; if (get_request_var('graphs') == $key) { print ' selected'; } print '>' . $value . "</option>\n";
++								}
+ 							}
+ 							?>
+ 						</select>
+@@ -260,7 +260,7 @@ function html_graph_preview_filter($page, $action, $devices_where = '', $templat
+ 
+ 							if (cacti_sizeof($graph_timespans)) {
+ 								foreach($graph_timespans as $value => $text) {
+-									print "<option value='$value'"; if ($_SESSION['sess_current_timespan'] == $value) { print ' selected'; } print '>' . $text . "</option>\n";
++									print "<option value='$value'"; if ($_SESSION['sess_current_timespan'] == $value) { print ' selected'; } print '>' . html_escape($text) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -293,7 +293,7 @@ function html_graph_preview_filter($page, $action, $devices_where = '', $templat
+ 								$end_val = cacti_sizeof($graph_timeshifts)+1;
+ 								if (cacti_sizeof($graph_timeshifts) > 0) {
+ 									for ($shift_value=$start_val; $shift_value < $end_val; $shift_value++) {
+-										print "<option value='$shift_value'"; if ($_SESSION['sess_current_timeshift'] == $shift_value) { print ' selected'; } print '>' . title_trim($graph_timeshifts[$shift_value], 40) . "</option>\n";
++										print "<option value='$shift_value'"; if ($_SESSION['sess_current_timeshift'] == $shift_value) { print ' selected'; } print '>' . html_escape($graph_timeshifts[$shift_value]) . '</option>';
+ 									}
+ 								}
+ 								?>
+--- a/lib/html_tree.php
++++ b/lib/html_tree.php
+@@ -1138,7 +1138,7 @@ function grow_right_pane_tree($tree_id, $leaf_id, $host_group_data) {
+ 
+ 							if (cacti_sizeof($graph_timespans)) {
+ 								foreach($graph_timespans as $value => $text) {
+-									print "<option value='$value'"; if ($_SESSION['sess_current_timespan'] == $value) { print ' selected'; } print '>' . $text . '</option>';
++									print "<option value='$value'"; if ($_SESSION['sess_current_timespan'] == $value) { print ' selected'; } print '>' . html_escape($text) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -1171,7 +1171,7 @@ function grow_right_pane_tree($tree_id, $leaf_id, $host_group_data) {
+ 								$end_val = cacti_sizeof($graph_timeshifts)+1;
+ 								if (cacti_sizeof($graph_timeshifts)) {
+ 									for ($shift_value=$start_val; $shift_value < $end_val; $shift_value++) {
+-										print "<option value='$shift_value'"; if ($_SESSION['sess_current_timeshift'] == $shift_value) { print ' selected'; } print '>' . title_trim($graph_timeshifts[$shift_value], 40) . '</option>';
++										print "<option value='$shift_value'"; if ($_SESSION['sess_current_timeshift'] == $shift_value) { print ' selected'; } print '>' . html_escape($graph_timeshifts[$shift_value]) . '</option>';
+ 									}
+ 								}
+ 								?>
+--- a/managers.php
++++ b/managers.php
+@@ -483,7 +483,7 @@ function clearFilter() {
+ 								<?php
+ 								if (cacti_sizeof($mibs)) {
+ 									foreach ($mibs as $mib) {
+-										print "<option value='" . $mib['mib'] . "'"; if (get_request_var('mib') == $mib['mib']) { print ' selected'; } print '>' . $mib['mib'] . '</option>';
++										print "<option value='" . html_escape($mib['mib']) . "'"; if (get_request_var('mib') == $mib['mib']) { print ' selected'; } print '>' . html_escape($mib['mib']) . '</option>';
+ 									}
+ 								}
+ 								?>
+--- a/utilities.php
++++ b/utilities.php
+@@ -812,7 +812,7 @@ function applyFilter() {
+ 
+ 							if (cacti_sizeof($users)) {
+ 								foreach ($users as $user) {
+-									print "<option value='" . $user['username'] . "'"; if (get_request_var('username') == $user['username']) { print ' selected'; } print '>' . $user['username'] . '</option>';
++									print "<option value='" . html_escape($user['username']) . "'"; if (get_request_var('username') == $user['username']) { print ' selected'; } print '>' . html_escape($user['username']) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -1034,19 +1034,19 @@ function utilities_view_logfile() {
+ 
+ 	$logfile = basename(get_nfilter_request_var('filename'));
+ 	$logbase = basename(read_config_option('path_cactilog'));
+-	
++
+ 	if ($logfile == '') {
+ 		$logfile = $logbase;
+ 	}
+-	
++
+ 	if ($logfile == '') {
+ 		$logfile = 'cacti.log';
+ 	}
+-	
++
+ 	$logname = '';
+ 	$logpath = '';
+ 
+-	if (!clog_validate_filename($logfile, $logpath, $logname, true)) {	
++	if (!clog_validate_filename($logfile, $logpath, $logname, true)) {
+ 		raise_message('clog_invalid');
+ 		header('Location: utilities.php?action=view_logfile&filename=' . $logbase);
+ 		exit(0);
+@@ -1171,7 +1171,7 @@ function clearFilter() {
+ 
+ 							if (cacti_sizeof($logFileArray)) {
+ 								foreach ($logFileArray as $logFile) {
+-									print "<option value='" . $logFile . "'";
++									print "<option value='" . html_escape($logFile) . "'";
+ 
+ 									if (get_nfilter_request_var('filename') == $logFile) {
+ 										print ' selected';
+@@ -1182,7 +1182,7 @@ function clearFilter() {
+ 									$logDate = cacti_count($logParts) < 2 ? '' : $logParts[1] . (isset($logParts[2]) ? '-' . $logParts[2]:'');
+ 									$logName = $logParts[0];
+ 
+-									print '>' . $logName . ($logDate != '' ? ' [' . substr($logDate,4) . ']':'') . '</option>';
++									print '>' . html_escape($logName . ($logDate != '' ? ' [' . substr($logDate,4) . ']':'')) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -1807,7 +1807,7 @@ function clearFilter() {
+ 
+ 							if (cacti_sizeof($templates)) {
+ 								foreach ($templates as $template) {
+-									print "<option value='" . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . title_trim(html_escape($template['name']), 40) . '</option>';
++									print "<option value='" . $template['id'] . "'"; if (get_request_var('template_id') == $template['id']) { print ' selected'; } print '>' . html_escape($template['name']) . '</option>';
+ 								}
+ 							}
+ 							?>
+@@ -2540,7 +2540,7 @@ function clearFilter() {
+ 								<?php
+ 								if (cacti_sizeof($mibs) > 0) {
+ 									foreach ($mibs as $mib) {
+-										print "<option value='" . $mib['mib'] . "'"; if (get_request_var('mib') == $mib['mib']) { print ' selected'; } print '>' . html_escape($mib['mib']) . '</option>';
++										print "<option value='" . html_escape($mib['mib']) . "'"; if (get_request_var('mib') == $mib['mib']) { print ' selected'; } print '>' . html_escape($mib['mib']) . '</option>';
+ 									}
+ 								}
+ 								?>
+@@ -2804,7 +2804,7 @@ function purgeFilter() {
+ 								<option value='-1'<?php if (get_request_var('receiver') == '-1') {?> selected<?php }?>><?php print __('Any');?></option>
+ 								<?php
+ 								foreach ($receivers as $receiver) {
+-									print "<option value='" . $receiver['manager_id'] . "'"; if (get_request_var('receiver') == $receiver['manager_id']) { print ' selected'; } print '>' . $receiver['hostname'] . '</option>';
++									print "<option value='" . $receiver['manager_id'] . "'"; if (get_request_var('receiver') == $receiver['manager_id']) { print ' selected'; } print '>' . html_escape($receiver['hostname']) . '</option>';
+ 								}
+ 								?>
+ 							</select>

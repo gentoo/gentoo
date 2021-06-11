@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -76,7 +76,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Ddocdir="/usr/share/doc/${PF}"
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(meson_use doc docs)
 		$(meson_use doc mans)
 	)
@@ -96,10 +96,8 @@ src_test() {
 }
 
 pkg_postinst() {
-	elog "There are several packages that you may find useful with i3 and"
-	elog "their usage is suggested by the upstream maintainers."
-	elog "Uninstalled optional dependencies:"
-	optfeature "Application launcher" x11-misc/dmenu
-	optfeature "Simple screen locker" x11-misc/i3lock
-	optfeature "Status bar generator" x11-misc/i3status
+	optfeature_header "There are several packages that may be useful with i3:"
+	optfeature "application launcher" x11-misc/dmenu
+	optfeature "simple screen locker" x11-misc/i3lock
+	optfeature "status bar generator" x11-misc/i3status
 }

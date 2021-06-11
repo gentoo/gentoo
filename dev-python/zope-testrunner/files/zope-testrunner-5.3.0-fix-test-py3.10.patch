@@ -1,0 +1,64 @@
+From af8bfec49d90613633b76e914a6f54884463ba94 Mon Sep 17 00:00:00 2001
+From: Jerry James <loganjerry@gmail.com>
+Date: Mon, 10 May 2021 09:55:23 -0600
+Subject: [PATCH] Adapt to python 3.10 SyntaxError messages
+
+---
+ .../testrunner/tests/testrunner-debugging-import-failure.rst    | 2 +-
+ src/zope/testrunner/tests/testrunner-errors.rst                 | 2 +-
+ src/zope/testrunner/tests/testrunner-subunit-v2.rst             | 2 +-
+ src/zope/testrunner/tests/testrunner-subunit.rst                | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/zope/testrunner/tests/testrunner-debugging-import-failure.rst b/src/zope/testrunner/tests/testrunner-debugging-import-failure.rst
+index 1613cb9..c0b2aee 100644
+--- a/src/zope/testrunner/tests/testrunner-debugging-import-failure.rst
++++ b/src/zope/testrunner/tests/testrunner-debugging-import-failure.rst
+@@ -41,7 +41,7 @@ Post-mortem debugging also works when there is an import failure.
+       File ".../TESTS-DIR/tests.py", line 2
+         impot doctest
+                     ^
+-    SyntaxError: invalid syntax
++    SyntaxError: invalid syntax...
+     > ...find.py(399)import_name()
+     -> __import__(name)
+     (Pdb) c
+diff --git a/src/zope/testrunner/tests/testrunner-errors.rst b/src/zope/testrunner/tests/testrunner-errors.rst
+index e210fe3..05d74b8 100644
+--- a/src/zope/testrunner/tests/testrunner-errors.rst
++++ b/src/zope/testrunner/tests/testrunner-errors.rst
+@@ -818,7 +818,7 @@ Then run the tests:
+       File "testrunner-ex/sample2/sampletests_i.py", line 1
+         importx unittest
+                        ^
+-    SyntaxError: invalid syntax
++    SyntaxError: invalid syntax...
+     <BLANKLINE>
+     <BLANKLINE>
+     Module: sample2.sample21.sampletests_i
+diff --git a/src/zope/testrunner/tests/testrunner-subunit-v2.rst b/src/zope/testrunner/tests/testrunner-subunit-v2.rst
+index 8658fe3..c165b23 100644
+--- a/src/zope/testrunner/tests/testrunner-subunit-v2.rst
++++ b/src/zope/testrunner/tests/testrunner-subunit-v2.rst
+@@ -447,7 +447,7 @@ Let's run tests including a module with some bad syntax:
+       File "/home/benji/workspace/all-the-trunks/zope.testrunner/src/zope/testrunner/testrunner-ex/sample2/badsyntax.py", line 16
+         importx unittest  # noqa: E999
+                        ^
+-    SyntaxError: invalid syntax
++    SyntaxError: invalid syntax...
+     <BLANKLINE>
+     id=sample2.badsyntax status=fail tags=(zope:import_error)
+     id=sample2.sample21.sampletests_i status=inprogress
+diff --git a/src/zope/testrunner/tests/testrunner-subunit.rst b/src/zope/testrunner/tests/testrunner-subunit.rst
+index 6597a88..1882671 100644
+--- a/src/zope/testrunner/tests/testrunner-subunit.rst
++++ b/src/zope/testrunner/tests/testrunner-subunit.rst
+@@ -480,7 +480,7 @@ Let's run tests including a module with some bad syntax:
+       File "/home/benji/workspace/all-the-trunks/zope.testrunner/src/zope/testrunner/testrunner-ex/sample2/badsyntax.py", line 16
+         importx unittest  # noqa: E999
+                        ^
+-    SyntaxError: invalid syntax
++    SyntaxError: invalid syntax...
+     ]
+     test: sample2.sample21.sampletests_i
+     tags: zope:import_error

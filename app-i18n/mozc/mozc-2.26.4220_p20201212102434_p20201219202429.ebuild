@@ -1,4 +1,4 @@
-# Copyright 2010-2020 Gentoo Authors
+# Copyright 2010-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -41,7 +41,7 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="debug emacs fcitx4 +gui ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx4 ibus )"
 RESTRICT="!test? ( test )"
@@ -53,7 +53,7 @@ BDEPEND="$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )"
-DEPEND=">=dev-cpp/abseil-cpp-20200923[cxx17(+)]
+DEPEND="=dev-cpp/abseil-cpp-20200923*[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	fcitx4? (
 		app-i18n/fcitx:4
@@ -79,7 +79,7 @@ DEPEND=">=dev-cpp/abseil-cpp-20200923[cxx17(+)]
 		>=dev-cpp/gtest-1.8.0
 		dev-libs/jsoncpp
 	)"
-RDEPEND=">=dev-cpp/abseil-cpp-20200923[cxx17(+)]
+RDEPEND="=dev-cpp/abseil-cpp-20200923*[cxx17(+)]
 	>=dev-libs/protobuf-3.0.0:=
 	emacs? ( app-editors/emacs:* )
 	fcitx4? (

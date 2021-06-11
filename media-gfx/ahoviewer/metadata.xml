@@ -5,6 +5,7 @@
     <email>juippis@gentoo.org</email>
   </maintainer>
   <use>
+    <flag name="plugins">Build plugin support for now, in future pull additional plugins</flag>
     <flag name="rar">Rar archive support</flag>
     <flag name="zip">Zip archive support</flag>
   </use>

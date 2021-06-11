@@ -14,7 +14,6 @@
   </longdescription>
   <use>
     <flag name="anacron">Install the periodic anacron command scheduler.</flag>
-    <flag name="inotify">Enable inotify filesystem monitoring support.</flag>
   </use>
   <upstream>
     <remote-id type="github">cronie-crond/cronie</remote-id>

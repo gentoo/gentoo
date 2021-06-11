@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_COMGR_LIBRARY=YES
 		-DOPENCL_DIR="${WORKDIR}/ROCm-OpenCL-Runtime-rocm-${PV}"
-		-DCMAKE_INSTALL_PREFIX="/usr"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 	)
 	cmake_src_configure
 }
@@ -40,5 +40,5 @@ src_install() {
 	cmake_src_install
 
 	# This should be fixed in the CMakeLists.txt
-	sed -e "s:${BUILD_DIR}:${EPREFIX}/usr:" -i "${D}/usr/lib/cmake/rocclr/ROCclrConfig.cmake" || die
+	sed -e "s:${BUILD_DIR}:${EPREFIX}/usr:" -i "${ED}/usr/lib/cmake/rocclr/ROCclrConfig.cmake" || die
 }

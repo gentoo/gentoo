@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs epatch
 
 DESCRIPTION="Apple's top from Mac OS X Lion 10.7"
 HOMEPAGE="http://www.opensource.apple.com/"
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="APSL-2 BSD"
 SLOT="0"
-KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos"
 IUSE=""
 
 S=${WORKDIR}/top-${PV}

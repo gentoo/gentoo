@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 systemd toolchain-funcs
+inherit autotools flag-o-matic lua-single readme.gentoo-r1 systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
@@ -13,11 +13,11 @@ SRC_URI="https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="bzip2 dbi doc fam gdbm geoip ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php postgres rrdtool sasl selinux ssl sqlite test webdav xattr zlib"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+IUSE="bzip2 dbi doc fam gdbm geoip ipv6 kerberos ldap libev lua minimal mmap memcached mysql pcre php postgres rrdtool sasl selinux ssl sqlite test webdav xattr zlib"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="kerberos? ( ssl !libressl )
+REQUIRED_USE="kerberos? ( ssl )
 	lua? ( ${LUA_REQUIRED_USE} )
 	webdav? ( sqlite )"
 
@@ -41,8 +41,7 @@ COMMON_DEPEND="
 	rrdtool?  ( net-analyzer/rrdtool )
 	sasl?     ( dev-libs/cyrus-sasl )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0= )
-		libressl? ( dev-libs/libressl:= )
+		>=dev-libs/openssl-0.9.7:0=
 	)
 	sqlite?	( dev-db/sqlite:3 )
 	webdav? (
@@ -225,7 +224,7 @@ src_install() {
 	use minimal && remove_non_essential
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
+	dotmpfiles "${FILESDIR}/${PN}.tmpfiles.conf"
 }
 
 pkg_postinst() {

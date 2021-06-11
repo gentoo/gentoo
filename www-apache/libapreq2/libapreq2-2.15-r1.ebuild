@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,13 @@ HOMEPAGE="https://httpd.apache.org/apreq/"
 
 LICENSE="Apache-2.0"
 SLOT="2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="perl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	|| (
 		dev-libs/apr-util[openssl]
-		dev-libs/apr-util[libressl]
 		dev-libs/apr-util[nss]
 	)
 	perl? (

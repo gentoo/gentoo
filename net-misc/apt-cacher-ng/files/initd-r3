@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+CACHEDIR="/var/cache/${RC_SVCNAME}"
+SOCKETDIR="/run/apt-cacher-ng"
+SOCKETFILE="${SOCKETDIR}/${RC_SVCNAME}.socket"
+
+command="/usr/sbin/apt-cacher-ng"
+command_args="SocketPath=${SOCKETFILE} foreground=1 ${APT_CACHER_NG_ARGS}"
+command_background="true"
+command_user="apt-cacher-ng:apt-cacher-ng"
+pidfile="/run/${RC_SVCNAME}.pid"
+retry="15"
+
+start_pre() {
+	for d in "${SOCKETDIR}" "${CACHEDIR}"; do
+		checkpath --directory --mode 0755 --owner "${command_user}" "${d}"
+	done
+}

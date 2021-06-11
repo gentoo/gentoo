@@ -1,13 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools desktop
 
 DESCRIPTION="A free Worms clone"
 HOMEPAGE="http://gna.org/projects/warmux/"
 SRC_URI="http://download.gna.org/warmux/${P}.tar.bz2"
+S="${WORKDIR}"/${PN}-11.04
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,8 +32,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-S=${WORKDIR}/${PN}-11.04
-
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-zlib.patch
@@ -40,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-stat.patch
 	"${FILESDIR}"/${P}-fix-c++14.patch
+	"${FILESDIR}"/${P}-respect-AR.patch
 )
 
 src_prepare() {

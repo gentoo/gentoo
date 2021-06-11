@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_{7..8} )
 PYTHON_REQ_USE="ipv6,sqlite,ssl"
 
 inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
@@ -105,7 +105,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/setuptools-23.1.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		<dev-python/sip-5[${PYTHON_MULTI_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"

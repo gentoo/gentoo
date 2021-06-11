@@ -1,5 +1,35 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
+# no stable virtual/jdk on this arch
+media-libs/rubberband jni
+
+# Mike Gilbert <floppym@gentoo.org> (2021-03-29)
+# Unmask TPM on supported archs.
+sys-apps/systemd -tpm
+
+# Sam James <sam@gentoo.org> (2021-02-17)
+# Unmask dev-libs/libpcre2[jit] support on PHP
+# where available
+dev-lang/php -jit
+
+# Jonathan Davies <jpds@protonmail.com> (2021-01-27)
+# No SELinux on ARM
+net-im/prosody selinux
+
+# Jakov Smolic <jakov.smolic@sartura.hr> (2021-01-23)
+# Depends on media-video/rav1e which needs Rust
+>=media-libs/libheif-1.10.0 rav1e
+
+# Sam James <sam@gentoo.org> (2020-01-17)
+# gnuefi + systemd-boot works on arm
+# bug #729720
+sys-apps/systemd -gnuefi
+
+# Joonas Niilola <juippis@gentoo.org> (2021-01-15)
+# Dependency not keyworded on this arch.
+app-text/enchant voikko
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-21)
 # Sanitizers supported on this architecture.
@@ -20,8 +50,11 @@ net-wireless/gnuradio ctrlport
 media-libs/libsdl2 fcitx4
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-02)
+# Sam James <sam@gentoo.org> (2021-03-11)
 # Dependency only keyworded on specific arm profiles.
 dev-libs/efl avif
+kde-frameworks/kimageformats avif
+media-libs/gd avif
 
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-09-05)
 # dev-util/dogtail is not keyworded for arm
@@ -59,7 +92,7 @@ kde-plasma/kdeplasma-addons webengine
 dev-libs/rapidjson test
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
@@ -83,11 +116,6 @@ net-libs/gnome-online-accounts gnome
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-20)
 # Not keyworded on arm
 net-misc/whois xcrypt
-
-# Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
-# Dependency has no stable keyword
-# and as for now we have only stable mate versions
-mate-base/mate bluetooth
 
 # Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
 # zfs is not keyworded on arm
@@ -185,6 +213,10 @@ media-video/mpv -raspberry-pi
 # smallest wav files.
 media-sound/xmms2 mac
 
+# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
+# missing keywords media-libs/lastfmlib
+net-misc/gerbera lastfm
+
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=ipmi which is masked in this profile.
 sys-power/nut ups_drivers_nut-ipmipsu
@@ -221,7 +253,6 @@ sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabric
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
 dev-libs/libsecp256k1 -asm
-<dev-libs/libsecp256k1-0.0.0_pre20161213 asm
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
@@ -231,6 +262,11 @@ games-emulation/dosbox glide
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 >=sci-libs/gdal-2.0.3 mdb
 
+# Ettore Di Giacinto <mudler@gentoo.org> (2016-11-10)
+# Dependency has no stable keyword
+# and as for now we have only stable mate versions
+mate-base/mate bluetooth
+
 # Gilles Dartiguelongue <eva@gentoo.org> (2016-08-23)
 # Missing keywords on media-libs/grilo - bug #521972
 media-sound/rhythmbox upnp-av
@@ -239,9 +275,13 @@ media-sound/rhythmbox upnp-av
 # Allow jdbc on this arch
 dev-db/mariadb -jdbc
 
-# Amy Winston <amynka@gentoo.org> (2016-06-12)
+# Amy Liffey <amynka@gentoo.org> (2016-06-12)
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit
+
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi
 
 # Thomas Deutschmann <whissi@gentoo.org> (2016-03-19)
 # Unkeyworded deps, bug #564274
@@ -312,10 +352,6 @@ app-i18n/scim-anthy kasumi
 # Unkeyworded deps, bug #518742
 dev-python/ipython doc
 dev-python/oct2py doc
-
-# Markus Meier <maekke@gentoo.org> (2014-11-14)
-# Unkeyworded deps, bug #511532
-net-im/prosody libevent mysql postgres sqlite
 
 # Alexis Ballier <aballier@gentoo.org> (2014-10-24)
 # sci-libs/hdf is not supported on arm
@@ -397,10 +433,6 @@ media-libs/devil allegro nvtt
 # Firmware loader not keyworded yet
 sci-libs/linux-gpib firmware
 
-# Christoph Junghans <junghans@gentoo.org> (2013-04-29)
-# MKL not available on this arch
-media-gfx/povray mkl
-
 # Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
@@ -460,12 +492,4 @@ dev-qt/qtscript -jit
 dev-qt/qtwebkit -jit
 
 # missing keywords
-media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug taglib vcd wavpack dvd
-
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
-
-# Ian Whyman <thev00d00@gentoo.org> (2017-09-05)
-# missing keywords media-libs/lastfmlib
-net-misc/gerbera lastfm
+media-plugins/gst-plugins-meta aac dts dv lame libvisual modplug vcd wavpack

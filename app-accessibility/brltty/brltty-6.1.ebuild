@@ -1,15 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
 
-inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
-	autotools udev systemd python-r1
+inherit findlib multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
+	autotools udev systemd python-r1 tmpfiles
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
 HOMEPAGE="https://brltty.app/"
@@ -110,7 +110,6 @@ src_configure() {
 		--includedir="${EPREFIX}"/usr/include
 		--localstatedir="${EPREFIX}"/var
 		--disable-stripping
-		--with-install-root="${D}"
 		--with-writable-directory="${EPREFIX}"/run/brltty
 		$(use_enable api)
 		$(use_with beeper beep-package)
@@ -163,12 +162,12 @@ src_install() {
 		findlib_src_preinst
 	fi
 
-	emake OCAML_LDCONF= install
+	emake INSTALL_ROOT="${D}" OCAML_LDCONF= install
 
 	if use python; then
 		python_install() {
 			cd "Bindings/Python" || die
-			emake install
+			emake INSTALL_ROOT="${D}" install
 		}
 		python_foreach_impl run_in_build_dir python_install
 	fi
@@ -183,7 +182,7 @@ src_install() {
 	udev_newrules Autostart/Udev/rules 70-brltty.rules
 	newinitd "${FILESDIR}"/brltty.rc brltty
 	systemd_dounit Autostart/Systemd/brltty@.service
-	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
+	dotmpfiles "${FILESDIR}/${PN}.tmpfiles.conf"
 
 	if use api ; then
 		local libdir="$(get_libdir)"

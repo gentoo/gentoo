@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake eutils flag-o-matic xdg-utils
+
+inherit cmake flag-o-matic l10n xdg-utils
 
 DESCRIPTION="sakura is a terminal emulator based on GTK and VTE"
 HOMEPAGE="https://www.pleyades.net/david/projects/sakura"
@@ -10,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/glib-2.20:2

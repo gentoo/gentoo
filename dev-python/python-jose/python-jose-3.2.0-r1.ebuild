@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+
+PYTHON_COMPAT=( python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="A JavaScript Object Signing and Encryption (JOSE) implementation in Python"
@@ -25,13 +25,20 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+distutils_enable_sphinx docs
 
 python_prepare_all() {
 	sed -e '/pytest-runner/d' \
 		-e '/ecdsa/s:<0.15::' \
 		-i setup.py || die
 	sed -e '/addopts/d' -i setup.cfg || die
-	sed -e 's:test_key_too_short:_&:' \
-		-i tests/algorithms/test_EC.py || die
+	sed -e 's/sphinxcontrib.napoleon/sphinx.ext.napoleon/' -i docs/conf.py || die
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	local deselect=(
+		tests/algorithms/test_EC.py::TestECAlgorithm::test_key_too_short
+	)
+	epytest ${deselect[@]/#/--deselect }
 }

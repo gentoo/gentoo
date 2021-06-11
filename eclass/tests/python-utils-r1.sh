@@ -129,6 +129,20 @@ fi
 test_var PYTHON_PKG_DEP python3_9 '*dev-lang/python*:3.9'
 test_var PYTHON_SCRIPTDIR python3_9 /usr/lib/python-exec/python3.9
 
+test_var EPYTHON python3_10 python3.10
+test_var PYTHON python3_10 /usr/bin/python3.10
+if [[ -x /usr/bin/python3.10 ]]; then
+	abiflags=$(/usr/bin/python3.10 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
+	test_var PYTHON_SITEDIR python3_10 "/usr/lib/python3.10/site-packages"
+	test_var PYTHON_INCLUDEDIR python3_10 "/usr/include/python3.10${abiflags}"
+	test_var PYTHON_LIBPATH python3_10 "/usr/lib*/libpython3.10${abiflags}$(get_libname)"
+	test_var PYTHON_CONFIG python3_10 "/usr/bin/python3.10${abiflags}-config"
+	test_var PYTHON_CFLAGS python3_10 "*-I/usr/include/python3.10*"
+	test_var PYTHON_LIBS python3_10 "*-lpython3.10*"
+fi
+test_var PYTHON_PKG_DEP python3_10 '*dev-lang/python*:3.10'
+test_var PYTHON_SCRIPTDIR python3_10 /usr/lib/python-exec/python3.10
+
 test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3
 if [[ -x /usr/bin/pypy3 ]]; then
@@ -182,24 +196,6 @@ test_fix_shebang '#!/usr/bin/foo' python2.7 FAIL
 
 # regression test for bug #522080
 test_fix_shebang '#!/usr/bin/python ' python2.7 '#!/usr/bin/python2.7 '
-
-# make sure we don't break pattern matching
-test_is "_python_impl_supported python2_5" 1
-test_is "_python_impl_supported python2_6" 1
-test_is "_python_impl_supported python2_7" 0
-test_is "_python_impl_supported python3_1" 1
-test_is "_python_impl_supported python3_2" 1
-test_is "_python_impl_supported python3_3" 1
-test_is "_python_impl_supported python3_4" 1
-test_is "_python_impl_supported python3_5" 1
-test_is "_python_impl_supported python3_6" 0
-test_is "_python_impl_supported python3_7" 0
-test_is "_python_impl_supported python3_8" 0
-test_is "_python_impl_supported pypy1_8" 1
-test_is "_python_impl_supported pypy1_9" 1
-test_is "_python_impl_supported pypy2_0" 1
-test_is "_python_impl_supported pypy" 1
-test_is "_python_impl_supported pypy3" 0
 
 # check _python_impl_matches behavior
 test_is "_python_impl_matches python2_7 -2" 0

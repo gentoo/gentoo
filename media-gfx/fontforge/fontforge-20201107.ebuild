@@ -1,8 +1,8 @@
-# Copyright 2004-2020 Gentoo Authors
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit python-single-r1 xdg cmake
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/fontforge/fontforge/releases/download/${PV}/fontforg
 
 LICENSE="BSD GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc truetype-debugger gif gtk jpeg png +python readline test tiff svg unicode woff2 X"
 RESTRICT="!test? ( test )"
 

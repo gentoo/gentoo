@@ -4,33 +4,22 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-
-# Michał Górny <mgorny@gentoo.org> (2021-01-01)
-# The support for python3.6 target in Gentoo is discontinued.
-# The flags are masked to permit removal of the last backport packages.
-# Once they're gone, the eclass support will be disabled and the flags
-# removed.
-python_targets_python3_6
-python_single_target_python3_6
+# Brian Evans <grknight@gentoo.org> (2021-01-07)
+# PHP 7.2 is security vulnerable and end-of-life
+# Please upgrade to a newer slot
+php_targets_php7-2
+php7-2
 
 # Alexis Ballier <aballier@gentoo.org> (2020-10-13)
 # Nothing depends on those ROS messages. dev-ros/geneus
 # is half broken in our setup where it looks for packages
 # on the filesystem and causes build failures.
-# See e.g. https://bugs.gentoo.org/741076
+# See e.g. bug #741076
 ros_messages_eus
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# app-office/openoffice-bin is being removed.
-office_implementation_openoffice
 
 # Hans de Graaff <graaff@gentoo.org> (2020-06-13)
 # Mask Ruby 2.4 as EOL
 ruby_targets_ruby24
-
-# Matt Turner <mattst88@gentoo.org> (2020-03-25)
-# media-libs/libav is masked for removal
-libav
 
 # Brian Evans <grknight@gentoo.org> (2019-12-19)
 # PHP 7.1 is end of life and has security issues Bug 703326
@@ -126,11 +115,3 @@ prelude
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # netlink is a Linux-specific interface
 netlink
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-09-18)
-# mask removed ABI_RISCV flags so they do not trigger rebuild
-# in emerge
-abi_riscv_lp64
-abi_riscv_lp64d
-abi_riscv_ilp32
-abi_riscv_ilp32d

@@ -1,0 +1,15 @@
+--- a/build-tools/krb5-config.in
++++ b/build-tools/krb5-config.in
+@@ -208,12 +208,6 @@
+ 
+ 
+ if test -n "$do_libs"; then
+-    # Assumes /usr/lib is the standard library directory everywhere...
+-    if test "$libdir" = /usr/lib; then
+-	libdirarg=
+-    else
+-	libdirarg="-L$libdir"
+-    fi
+     # Ugly gross hack for our build tree
+     lib_flags=`echo $CC_LINK | sed -e 's/\$(CC)//' \
+ 	    -e 's/\$(PURE)//' \

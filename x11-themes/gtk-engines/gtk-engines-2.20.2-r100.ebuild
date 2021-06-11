@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+GNOME2_EAUTORECONF="yes"
 GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 LUA_COMPAT=( lua5-{1..4} )
@@ -14,7 +15,7 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="accessibility lua"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -38,15 +39,20 @@ PATCHES=(
 	"${FILESDIR}"/${P}-change-bullet.patch
 	"${FILESDIR}"/${P}-tooltips.patch
 	"${FILESDIR}"/${P}-window-dragging.patch
+	"${FILESDIR}"/${P}-slibtool.patch #766680
+	"${FILESDIR}"/${P}-automake-1.14.patch # taken from Debian
 )
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_prepare() {
-	gnome2_src_prepare
 	# pkgconfig wrapper set up by lua-single.eclass is not multilib-compatible
 	# at present so point Autoconf directly to the correct implementation.
-	# We patch configure rather than configure.ac because running 'eautoreconf'
-	# results for some reason in corrupted test Makefiles.
-	sed -i -e "s|\"lua\"|\"${ELUA}\"|g" configure || die
+	sed -i -e "/PKG_CHECK_MODULES(LUA,/s|lua|${ELUA}|" configure.ac || die
+
+	gnome2_src_prepare
 }
 
 multilib_src_configure() {

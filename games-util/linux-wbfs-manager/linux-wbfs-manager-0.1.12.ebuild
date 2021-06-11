@@ -1,14 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
+inherit toolchain-funcs
+
 if [[ "${PV}" == "9999" ]]; then
 	ESVN_REPO_URI="https://linux-wbfs-manager.googlecode.com/svn/trunk/"
-	inherit toolchain-funcs subversion
+	inherit subversion
 	SRC_URI=""
-	#KEYWORDS=""
 else
-	inherit toolchain-funcs
 	SRC_URI="https://linux-wbfs-manager.googlecode.com/files/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi;
@@ -23,7 +24,8 @@ IUSE=""
 RDEPEND="dev-libs/glib:2
 	gnome-base/libglade:2.0"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 if [[ ${PV} == "9999" ]] ; then
 	S=${WORKDIR}/${ECVS_MODULE}

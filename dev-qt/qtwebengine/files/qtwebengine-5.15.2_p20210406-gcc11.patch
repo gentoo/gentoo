@@ -1,0 +1,126 @@
+diff --git a/src/3rdparty/chromium/third_party/angle/src/libANGLE/HandleAllocator.cpp b/src/3rdparty/chromium/third_party/angle/src/libANGLE/HandleAllocator.cpp
+index 013f1dfb2..3ce63c192 100644
+--- a/src/3rdparty/chromium/third_party/angle/src/libANGLE/HandleAllocator.cpp
++++ b/src/3rdparty/chromium/third_party/angle/src/libANGLE/HandleAllocator.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "libANGLE/HandleAllocator.h"
+ 
++#include <limits>
+ #include <algorithm>
+ #include <functional>
+ 
+diff --git a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.cc b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.cc
+index fd651958f..1e8d0606c 100644
+--- a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.cc
++++ b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.cc
+@@ -14,9 +14,9 @@
+  * limitations under the License.
+  */
+ 
++#include <limits>
+ #include "src/trace_processor/containers/string_pool.h"
+ 
+-#include <limits>
+ 
+ #include "perfetto/base/logging.h"
+ #include "perfetto/ext/base/utils.h"
+diff --git a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/db/column.cc b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/db/column.cc
+index 00496b335..0dccfeb8a 100644
+--- a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/db/column.cc
++++ b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/db/column.cc
+@@ -14,6 +14,7 @@
+  * limitations under the License.
+  */
+ 
++#include <limits>
+ #include "src/trace_processor/db/column.h"
+ 
+ #include "src/trace_processor/db/compare.h"
+diff --git a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/types/variadic.cc b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/types/variadic.cc
+index 837bfeba9..cdd56817d 100644
+--- a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/types/variadic.cc
++++ b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/types/variadic.cc
+@@ -14,6 +14,7 @@
+  * limitations under the License.
+  */
+ 
++#include <limits>
+ #include "src/trace_processor/types/variadic.h"
+ 
+ namespace perfetto {
+diff --git a/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_atk_hyperlink.cc b/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
+index be91def6b..73f202356 100644
+--- a/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
++++ b/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
+@@ -245,7 +245,7 @@ static void AXPlatformAtkHyperlinkInit(AXPlatformAtkHyperlink* self, gpointer) {
+ }
+ 
+ GType ax_platform_atk_hyperlink_get_type() {
+-  static volatile gsize type_volatile = 0;
++  static gsize type_volatile = 0;
+ 
+   AXPlatformNodeAuraLinux::EnsureGTypeInit();
+ 
+diff --git a/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_node_auralinux.cc b/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_node_auralinux.cc
+index 04125c6fd..6c64e5d8e 100644
+--- a/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_node_auralinux.cc
++++ b/src/3rdparty/chromium/ui/accessibility/platform/ax_platform_node_auralinux.cc
+@@ -2274,7 +2274,7 @@ void ClassInit(gpointer class_pointer, gpointer /* class_data */) {
+ GType GetType() {
+   AXPlatformNodeAuraLinux::EnsureGTypeInit();
+ 
+-  static volatile gsize type_volatile = 0;
++  static gsize type_volatile = 0;
+   if (g_once_init_enter(&type_volatile)) {
+     static const GTypeInfo type_info = {
+         sizeof(AXPlatformNodeAuraLinuxClass),  // class_size
+diff --git a/src/3rdparty/chromium/ui/gtk/gtk_key_bindings_handler.cc b/src/3rdparty/chromium/ui/gtk/gtk_key_bindings_handler.cc
+index c663a2074..38a342484 100644
+--- a/src/3rdparty/chromium/ui/gtk/gtk_key_bindings_handler.cc
++++ b/src/3rdparty/chromium/ui/gtk/gtk_key_bindings_handler.cc
+@@ -141,7 +141,7 @@ void GtkKeyBindingsHandler::HandlerClassInit(HandlerClass* klass) {
+ }
+ 
+ GType GtkKeyBindingsHandler::HandlerGetType() {
+-  static volatile gsize type_id_volatile = 0;
++  static gsize type_id_volatile = 0;
+   if (g_once_init_enter(&type_id_volatile)) {
+     GType type_id = g_type_register_static_simple(
+         GTK_TYPE_TEXT_VIEW, g_intern_static_string("GtkKeyBindingsHandler"),
+--- a/src/3rdparty/chromium/components/bookmarks/browser/bookmark_expanded_state_tracker.cc
++++ b/src/3rdparty/chromium/components/bookmarks/browser/bookmark_expanded_state_tracker.cc
+@@ -2,6 +2,7 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
++#include <cstddef>
+ #include "components/bookmarks/browser/bookmark_expanded_state_tracker.h"
+ 
+ #include <stdint.h>
+diff --git a/src/3rdparty/chromium/components/bookmarks/browser/base_bookmark_model_observer.cc b/src/3rdparty/chromium/components/bookmarks/browser/base_bookmark_model_observer.cc
+index 657a3c96b..ad641a082 100644
+--- a/src/3rdparty/chromium/components/bookmarks/browser/base_bookmark_model_observer.cc
++++ b/src/3rdparty/chromium/components/bookmarks/browser/base_bookmark_model_observer.cc
+@@ -2,6 +2,8 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
++#include <cstddef>
++
+ #include "components/bookmarks/browser/base_bookmark_model_observer.h"
+ 
+ namespace bookmarks {
+diff --git a/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc b/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+index 19f9aab5b..27fec2168 100644
+--- a/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
++++ b/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+@@ -37,6 +37,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <limits>
+ #include "absl/base/internal/hide_ptr.h"
+ #include "absl/base/internal/raw_logging.h"
+ #include "absl/base/internal/spinlock.h"
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit linux-info python-r1 systemd
 
 DESCRIPTION="shared storage lock manager"
@@ -12,7 +12,7 @@ SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2+ GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -35,7 +35,7 @@ pkg_setup() {
 	if linux_config_exists; then
 		if ! linux_chkconfig_present SOFT_WATCHDOG; then
 			ewarn ""
-			ewarn "$warning"
+			ewarn "${warning}"
 			ewarn ""
 		fi
 	else
@@ -47,19 +47,29 @@ pkg_setup() {
 
 src_compile() {
 	for d in wdmd src fence_sanlock reset; do
-		cd $d; emake; cd ..
+		cd ${d} || die
+		emake
+		cd .. || die
 	done
+
 	if use python; then
-		cd python; python_foreach_impl emake; cd ..
+		cd python || die
+		python_foreach_impl emake
+		cd .. || die
 	fi
 }
 
 src_install() {
 	for d in wdmd src fence_sanlock reset; do
-		cd $d; emake DESTDIR="${D}" LIBDIR="${EROOT}usr/$(get_libdir)" install; cd ..
+		cd ${d} || die
+		emake DESTDIR="${D}" LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
+		cd .. || die
 	done
+
 	if use python; then
-		cd python; python_foreach_impl emake DESTDIR="${D}" install; cd ..
+		cd python || die
+		python_foreach_impl emake DESTDIR="${D}" install
+		cd .. || die
 	fi
 
 	# config
@@ -78,7 +88,7 @@ src_install() {
 
 	# systemd
 	systemd_newunit init.d/sanlock.service.native sanlock.service
-	sed -i 's,^ExecStartPre=,#ExecStartPre=,' init.d/wdmd.service.native
+	sed -i 's,^ExecStartPre=,#ExecStartPre=,' init.d/wdmd.service.native || die
 	systemd_newunit init.d/wdmd.service.native wdmd.service
 	systemd_dounit init.d/sanlk-resetd.service
 	#systemd_dounit ${FILESDIR}/fence_sanlockd.service

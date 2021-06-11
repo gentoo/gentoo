@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-{1..2} luajit )
 
-inherit lua toolchain-funcs
+inherit flag-o-matic lua toolchain-funcs
 
 DESCRIPTION="Bit Operations Library for the Lua Programming Language"
 HOMEPAGE="http://bitop.luajit.org"
@@ -13,7 +13,7 @@ SRC_URI="http://bitop.luajit.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~x64-macos"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -45,6 +45,9 @@ lua_src_compile() {
 }
 
 src_compile() {
+	if [[ $CHOST == *-darwin* ]] ; then
+		append-ldflags "-undefined dynamic_lookup"
+	fi
 	lua_foreach_impl lua_src_compile
 }
 
@@ -72,10 +75,19 @@ src_test() {
 lua_src_install() {
 	pushd "${BUILD_DIR}" || die
 
-	exeinto $(lua_get_cmod_dir)
+	mycmoddir="$(lua_get_cmod_dir)"
+	exeinto "${mycmoddir#$EPREFIX}"
 	doexe bit.so
 
 	popd
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local luav=$(lua_get_version)
+		# we only want the major version (e.g. 5.1)
+		local luamv=${luav:0:3}
+		local file="lua/${luamv}/bit.so"
+		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+	fi
 }
 
 src_install() {

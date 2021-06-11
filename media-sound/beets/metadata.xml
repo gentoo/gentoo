@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
+  <maintainer type="person" proxied="yes">
     <email>guillaumeseren@gmail.com</email>
     <name>Guillaume Seren</name>
   </maintainer>
-  <maintainer type="project">
+  <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
@@ -31,17 +31,6 @@
         If beets doesn’t do what you want yet, writing your own plugin is
         shockingly simple if you know a little Python.
   </longdescription>
-  <use>
-    <flag name="badfiles">Validate MP3 &amp; FLAC files</flag>
-    <flag name="chromaprint">Enable support for acoustic fingerprinting plugin using <pkg>media-libs/chromaprint</pkg></flag>
-    <flag name="ffmpeg">Enable support for the convert plugin to transcode files via <pkg>media-video/ffmpeg</pkg></flag>
-    <flag name="discogs">Enable support for the discogs API plugin</flag>
-    <flag name="lastfm">Enable support for importing personal last.fm playcounts and music genres from last.fm tags</flag>
-    <flag name="mpd">Enable support for <pkg>media-sound/mpd</pkg> server emulation and statistic gathered from <pkg>media-sound/mpd</pkg></flag>
-    <flag name="replaygain">Enable support for Replay Gain metadata calculation during import</flag>
-    <flag name="thumbnail">Enable album thumbnails generation</flag>
-    <flag name="webserver">Enable embedded webserver support through <pkg>dev-python/flask</pkg></flag>
-  </use>
   <upstream>
     <remote-id type="pypi">beets</remote-id>
   </upstream>

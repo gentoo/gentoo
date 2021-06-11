@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: unpacker.eclass
@@ -20,6 +20,7 @@ _UNPACKER_ECLASS=1
 inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: UNPACKER_BZ2
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress bzip2 files.  Will dynamically pick between
@@ -27,6 +28,7 @@ inherit toolchain-funcs
 # Note: this is meant for users to set, not ebuilds.
 
 # @ECLASS-VARIABLE: UNPACKER_LZIP
+# @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Utility to use to decompress lzip files.  Will dynamically pick between

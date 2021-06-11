@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc ~x86"
 IUSE="examples numa"
 
 DEPEND="

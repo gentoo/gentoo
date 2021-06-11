@@ -17,10 +17,6 @@ net-misc/mosh utempter
 # Avoid pulling in broken and unnecessary ossp-uuid, bug #324527
 dev-db/postgresql uuid
 
-# Christoph Junghans <junghans@gentoo.org> (2012-08-26)
-# libutempter support does not work on Darwin (bug #388791)
-x11-terms/eterm utempter
-
 # Fabian Groffen <grobian@gentoo.org> (2012-03-24)
 # There's no upstream support for MPI on Darwin
 media-gfx/tachyon mpi

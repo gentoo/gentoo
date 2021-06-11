@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit multilib toolchain-funcs
 
 DESCRIPTION="A set of utilities for converting to/from the netpbm (and related) formats"
 HOMEPAGE="http://netpbm.sourceforge.net/"
@@ -11,11 +11,14 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
 
-BDEPEND="app-arch/xz-utils
-	sys-devel/flex"
+BDEPEND="
+	app-arch/xz-utils
+	sys-devel/flex
+	virtual/pkgconfig
+"
 RDEPEND="jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( >=media-libs/libpng-1.4:0 )

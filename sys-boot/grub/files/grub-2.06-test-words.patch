@@ -1,0 +1,25 @@
+From 0f5080a2f3c952e2ee00bd271f42c56bb955dc19 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 14 Mar 2021 12:44:52 -0400
+Subject: [PATCH] Use /usr/share/dict/words as a 'compressible' file
+
+---
+ tests/util/grub-fs-tester.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/util/grub-fs-tester.in b/tests/util/grub-fs-tester.in
+index bfc425e1f..efd2977b0 100644
+--- a/tests/util/grub-fs-tester.in
++++ b/tests/util/grub-fs-tester.in
+@@ -265,7 +265,7 @@ for LOGSECSIZE in $(range "$MINLOGSECSIZE" "$MAXLOGSECSIZE" 1); do
+ 	    MASTER="${tempdir}/master"
+ 	    FSLABEL="grub_;/testé莭莽茝😁киритi urewfceniuewruevrewnuuireurevueurnievrewfnerfcnevirivinrewvnirewnivrewiuvcrewvnuewvrrrewniuerwreiuviurewiuviurewnuvewnvrenurnunuvrevuurerejiremvreijnvcreivire nverivnreivrevnureiorfnfrvoeoiroireoireoifrefoieroifoireoifoirefoireoifoijfoirereoireoivoioirevoinvoinreoinvnoieoinreoinveoinveoinreoinvoineoinoinoineoinernoiveoinvreoiioewdioewoirvnoireoivfoirewfewoifoijewoijfoijewfoijfewoijoijoijoijoijoijoijfewceniuewruevrewnuuireurevueurnievrewfnerfcnevirivinrewvnirewnivrewiuvcrewvnuewvrrrewniuerwreiuviurewiuviurewnuvewnvrenurnunuvrevuurerejiremvreijnvcreivire nverivnreivrevnureiorfnfrvoeoiroireoireoifrefoieroifoireoifoirefoireoifoijfoirereoireoivoioirevoinvoinreoinvnoieoinreoinveoinveoinreoinvoineoinoinoineoinernoiveoinvreoiioewdioewoirvnoireoivfoirewfewoifoijewoijfoijewfoijfewoijoijoijoijoijoijoijfewrewfceniuewruevrewnuuireurevueurnievrewfnerfcnevirivinrewvnirewnivrewiuvcrewvnuewvrrrewniuerwreiuviurewiuviurewnuvewnvrenurnunuvrevuurerejiremvreijnvcreivire nverivnreivrevnureiorfnfrvoeoiroireoireoifrefoieroifoireoifoirefoireoifoijfoirereoireoivoioirevoinvoinreoinvnoieoinreoinveoinveoinreoinvoineoinoinoineoinernoiveoinvreoiioewdioewoirvnoireoivfoirewfewoifoijewoijfoijewfoijfewoijoijoijoijoijoijoijfewceniuewruevrewnuuireurevueurnievrewfnerfcnevirivinrewvnirewnivrewiuvcrewvnuewvrrrewniuerwreiuviurewiuviurewnuvewnvrenurnunuvrevuurerejiremvreijnvcreivire nverivnreivrevnureiorfnfrvoeoiroireoireoifrefoieroifoireoifoirefoireoifoijfoirereoireoivoioirevoinvoinreoinvnoieoinreoinveoinveoinreoinvoineoinoinoineoinernoiveoinvreoiioewdioewoirvnoireoivfoirewfewoifoijewoijfoijewfoijfewoijoijoijoijoijoijoijfew"
+ 	    CFILESRC=
+-	    for cand in /usr/share/dict/american-english /usr/share/dict/linux.words /data/data/com.termux/files/usr/share/hunspell/en_US.dic; do
++	    for cand in /usr/share/dict/words; do
+ 		if test -f "$cand" ; then
+ 		    CFILESRC="$cand"
+ 		    break
+-- 
+2.31.0.rc1
+

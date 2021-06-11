@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic unpacker
+EAPI=7
+
+inherit desktop flag-o-matic wrapper unpacker
 
 # Latest versions are in http://icculus.org/twilight/darkplaces/files/
 MY_PV="${PV/_beta/beta}"
@@ -18,6 +19,7 @@ SRC_URI="http://icculus.org/twilight/${PN}/files/${MY_ENGINE}
 	lights? (
 		http://www.fuhquake.net/files/extras/${MY_LIGHTS}
 		http://www.kgbsyndicate.com/romi/id1.pk3 )"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -60,14 +62,17 @@ DEPEND="lights? ( || (
 	!opengl? ( !sdl? ( !dedicated? (
 		${UIRDEPEND}
 		${UIDEPEND} ) ) )
-	virtual/pkgconfig
+"
+BDEPEND="
 	app-arch/unzip
+	virtual/pkgconfig
 "
 
-S="${WORKDIR}/${PN}"
 dir="/usr/share/quake1"
 
-opengl_client() { use opengl || ( ! use dedicated && ! use sdl ) }
+opengl_client() {
+	use opengl || ( ! use dedicated && ! use sdl )
+}
 
 src_unpack() {
 	if use lights ; then
@@ -76,6 +81,7 @@ src_unpack() {
 		mv *.lit maps/ || die
 		mv ReadMe.txt rtlights.txt
 	fi
+
 	unpack "${MY_ENGINE}"
 	unpack ./${PN}*.zip
 }
@@ -92,7 +98,7 @@ src_prepare() {
 	# Only additional CFLAGS optimization is the -march flag
 	local march=$(get-flag -march)
 	sed -i \
-		-e "s:-lasound:$(pkg-config --libs alsa):" \
+		-e "s:-lasound:$($(tc-getPKG_CONFIG) --libs alsa):" \
 		-e "/^CPUOPTIMIZATIONS/d" \
 		-e '/^OPTIM_RELEASE/s/=.*/=$(CFLAGS)/' \
 		-e '/^OPTIM_DEBUG/s/=.*/=$(CFLAGS)/' \
@@ -114,6 +120,12 @@ src_prepare() {
 
 src_compile() {
 	local opts="DP_FS_BASEDIR=\"${dir}\" DP_LINK_TO_LIBJPEG=1"
+
+	# Protect against people choosing a strip implementation
+	# bug #739194
+	unset STRIP
+
+	tc-export CC
 
 	# Preferred sound is alsa
 	local sound_api="NULL"
@@ -168,6 +180,7 @@ src_install() {
 	if use lights ; then
 		insinto "${dir}"/id1
 		doins -r "${WORKDIR}"/{cubemaps,maps}
+
 		if use demo ; then
 			# Set up symlinks, for the demo levels to include the lights
 			local d

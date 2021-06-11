@@ -1,0 +1,119 @@
+https://bugs.gentoo.org/778341
+
+commit 9213297c1717f6477c4784ead6c91864693e6b40
+Author: orbea <orbea@riseup.net>
+Date:   Fri Mar 26 15:56:31 2021 -0700
+
+    Link the .la files to fix the build with slibtool.
+
+diff --git a/modules/Makefile.am b/modules/Makefile.am
+index c66aea0..d6db7b6 100644
+--- a/modules/Makefile.am
++++ b/modules/Makefile.am
+@@ -78,24 +78,21 @@ libmap2D_la_SOURCES = map.c
+ libmap2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1
+ libmap2D_la_LIBADD = $(GFS2D_LIBS) -lproj
+ 
+-KDTLIBS = -Lkdt -lkdt -lm
+-KDTDEPS = kdt/libkdt.la
++KDTLIBS = kdt/libkdt.la -lm
+ 
+ libterrain3D_la_SOURCES = terrain.c
+ libterrain3D_la_LIBADD = $(GFS3D_LIBS) $(KDTLIBS)
+-libterrain3D_la_DEPENDENCIES = $(KDTDEPS)
+ 
+ libterrain2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1
+ libterrain2D_la_SOURCES = terrain.c
+ libterrain2D_la_LIBADD = $(GFS2D_LIBS) $(KDTLIBS)
+-libterrain2D_la_DEPENDENCIES = $(KDTDEPS)
+ 
+ libtide3D_la_SOURCES = tide.c
+ libtide3D_la_CFLAGS = $(AM_CFLAGS) $(GSL_CFLAGS)
+-libtide3D_la_LIBADD = $(GFS3D_LIBS) -Lfes2004 -lfes -lnetcdf $(GSL_LIBS)
++libtide3D_la_LIBADD = $(GFS3D_LIBS) fes2004/libfes.la -lnetcdf $(GSL_LIBS)
+ libtide2D_la_SOURCES = tide.c
+ libtide2D_la_CFLAGS = $(AM_CFLAGS) $(GSL_CFLAGS) -DFTT_2D=1
+-libtide2D_la_LIBADD = $(GFS2D_LIBS) -Lfes2004 -lfes -lnetcdf $(GSL_LIBS)
++libtide2D_la_LIBADD = $(GFS2D_LIBS) fes2004/libfes.la -lnetcdf $(GSL_LIBS)
+ 
+ libstokes3D_la_SOURCES = stokes.c CW263.f
+ libstokes3D_la_CFLAGS = $(AM_CFLAGS)
+@@ -105,7 +102,7 @@ libstokes2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1
+ libstokes2D_la_LIBADD = $(GFS2D_LIBS)
+ 
+ libwavewatch2D_la_SOURCES = wavewatch.c
+-libwavewatch2D_la_LIBADD = $(GFS2D_LIBS) -Lwavewatch -lwavewatch
++libwavewatch2D_la_LIBADD = $(GFS2D_LIBS) wavewatch/libwavewatch.la
+ libwavewatch2D_la_CFLAGS = $(AM_CFLAGS) -DFTT_2D=1 \
+   -DW3SRCE=`nm wavewatch/libwavewatch.a | grep w3srce | awk '{ if ($$2 == "T") print $$3; }'` \
+   -DGFSW3INIT=`nm wavewatch/libwavewatch.a | grep gfsw3_init | awk '{ if ($$2 == "T") print $$3; }'`
+@@ -119,9 +116,9 @@ libode2D_la_CFLAGS = $(AM_CFLAGS) $(ODE_CFLAGS) -DFTT_2D=1
+ libode2D_la_LIBADD = $(GFS2D_LIBS) $(ODE_LIBS)
+ 
+ rsurface2kdt_SOURCES = rsurface2kdt.c rsurface.c rsurface.h
+-rsurface2kdt_LDADD = -LRStarTree -lcSmRST $(KDTLIBS)
++rsurface2kdt_LDFLAGS = $(NO_UNDEFINED)
++rsurface2kdt_LDADD = RStarTree/libcSmRST.la $(KDTLIBS)
+ rsurface2kdt_CFLAGS = $(AM_CFLAGS)
+-rsurface2kdt_DEPENDENCIES = $(KDTDEPS)
+ 
+ noinst_LTLIBRARIES = libparticulatecommon2D.la libparticulatecommon3D.la
+ 
+@@ -210,7 +207,7 @@ libtopics2D_la_LIBADD = $(GFS2D_LIBS)
+ 
+ libculvert2D_la_SOURCES = culvert.c
+ libculvert2D_la_CFLAGS = $(AM_CFLAGS)
+-libculvert2D_la_LIBADD = $(GFS2D_LIBS) -Lculvert -lboyd87 -lm
++libculvert2D_la_LIBADD = $(GFS2D_LIBS) culvert/libboyd87.la -lm
+ libculvert2D_la_DEPENDENCIES = culvert/libboyd87.la
+ 
+ liblayered2D_la_SOURCES = layered.c
+diff --git a/modules/culvert/Makefile.am b/modules/culvert/Makefile.am
+index dff5b46..cb47591 100644
+--- a/modules/culvert/Makefile.am
++++ b/modules/culvert/Makefile.am
+@@ -8,17 +8,17 @@ libboyd87_la_SOURCES = boyd87.c boyd87.h
+ noinst_PROGRAMS = check_inlet check_outlet discharge_table
+ 
+ check_outlet_SOURCES = check_outlet.c boyd87.h
+-check_outlet_LDADD = -lboyd87 -lm
++check_outlet_LDADD = libboyd87.la -lm
+ check_outlet_CFLAGS = $(AM_CFLAGS)
+ check_outlet_DEPENDENCIES = libboyd87.la
+ 
+ check_inlet_SOURCES = check_inlet.c boyd87.h
+-check_inlet_LDADD = -lboyd87 -lm
++check_inlet_LDADD = libboyd87.la -lm
+ check_inlet_CFLAGS = $(AM_CFLAGS)
+ check_inlet_DEPENDENCIES = libboyd87.la
+ 
+ discharge_table_SOURCES = discharge_table.c boyd87.h
+-discharge_table_LDADD = -lboyd87 -lm
++discharge_table_LDADD = libboyd87.la -lm
+ discharge_table_CFLAGS = $(AM_CFLAGS)
+ discharge_table_DEPENDENCIES = libboyd87.la
+ 
+diff --git a/modules/kdt/Makefile.am b/modules/kdt/Makefile.am
+index a9e7954..376e7dd 100644
+--- a/modules/kdt/Makefile.am
++++ b/modules/kdt/Makefile.am
+@@ -13,16 +13,16 @@ libkdt_la_SOURCES = \
+ 	kdt.h
+ 
+ xyz2kdt_SOURCES = xyz2kdt.c kdt.h
+-xyz2kdt_LDADD = -lkdt -lm
++xyz2kdt_LDADD = libkdt.la -lm
+ xyz2kdt_CFLAGS = $(AM_CFLAGS)
+ xyz2kdt_DEPENDENCIES = libkdt.la
+ 
+ kdt2kdt_SOURCES = kdt2kdt.c kdt.h
+-kdt2kdt_LDADD = -lkdt -lm
++kdt2kdt_LDADD = libkdt.la -lm
+ kdt2kdt_CFLAGS = $(AM_CFLAGS)
+ kdt2kdt_DEPENDENCIES = libkdt.la
+ 
+ kdtquery_SOURCES = kdtquery.c kdt.h
+-kdtquery_LDADD = -lkdt -lm
++kdtquery_LDADD = libkdt.la -lm
+ kdtquery_CFLAGS = $(AM_CFLAGS)
+ kdtquery_DEPENDENCIES = libkdt.la

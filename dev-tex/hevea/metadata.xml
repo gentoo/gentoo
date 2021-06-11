@@ -5,4 +5,7 @@
 		<email>tex@gentoo.org</email>
 		<name>Gentoo TeX Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">maranget/hevea</remote-id>
+	</upstream>
 </pkgmetadata>

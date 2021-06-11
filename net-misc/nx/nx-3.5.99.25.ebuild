@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ArcticaProject/nx-libs/archive/${PV}.tar.gz -> nx-li
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="elibc_glibc"
 
 RDEPEND="dev-libs/libxml2
@@ -113,8 +113,9 @@ src_compile() {
 	emake -C nx-X11 BuildDependsOnly
 	# Parallel make issue resurfaced, upstream working on autotools switch
 	emake -j1 -C nx-X11 World \
-		USRLIBDIR="/usr/$(get_libdir)/${PN}/X11" \
-		SHLIBDIR="/usr/$(get_libdir)"
+		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/X11" \
+		SHLIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		ETCDIR_NX="${EPREFIX}/etc/nxagent"
 
 	emake -C nxproxy
 }
@@ -122,10 +123,11 @@ src_compile() {
 src_install() {
 	emake \
 		DESTDIR="${D}" \
-		PREFIX="/usr" \
-		NXLIBDIR="/usr/$(get_libdir)/${PN}" \
-		SHLIBDIR="/usr/$(get_libdir)" \
-		USRLIBDIR="/usr/$(get_libdir)/${PN}/X11" \
+		PREFIX="${EPREFIX}/usr" \
+		NXLIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}" \
+		SHLIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		USRLIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/X11" \
+		ETCDIR_NX="${EPREFIX}/etc/nxagent" \
 		install
 
 	# Already provided by mesa & related packages

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,7 +16,7 @@ RESTRICT="mirror"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb libressl
+IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb
 	logwatch mysql ndmp +postgres rados rados-striper readline scsi-crypto
 	sql-pooling sqlite ssl static +storage-daemon systemd tcpd vim-syntax"
 REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
@@ -51,8 +51,7 @@ DEPEND="
 		sys-libs/ncurses:=[static-libs]
 		ssl? (
 			!gnutls? (
-				!libressl? ( dev-libs/openssl:0=[static-libs] )
-				libressl? ( dev-libs/libressl:0=[static-libs] )
+				dev-libs/openssl:0=[static-libs]
 			)
 			gnutls? ( net-libs/gnutls[static-libs] )
 		)
@@ -62,8 +61,7 @@ DEPEND="
 		dev-libs/lzo
 		ssl? (
 			!gnutls? (
-				!libressl? ( dev-libs/openssl:0= )
-				libressl? ( dev-libs/libressl:0= )
+				dev-libs/openssl:0=
 			)
 			gnutls? ( net-libs/gnutls )
 		)

@@ -1,0 +1,55 @@
+From 0757ba8f903fc94ac852c8ba394cd96358b0e2c7 Mon Sep 17 00:00:00 2001
+From: Christoph Willing <chris.willing@iinet.net.au>
+Date: Mon, 23 Jan 2017 17:49:12 +1000
+Subject: [PATCH] Add support for LIB_SUFFIX
+
+Signed-off-by: Christoph Willing <chris.willing@iinet.net.au>
+---
+ CMakeLists.txt | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0f5511..6b490ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,8 @@ option(UTPP_AMPLIFY_WARNINGS
+     "Set this to OFF if you wish to use CMake default warning levels; should generally only use to work around support issues for your specific compiler"
+     ON)
+ 
++set(LIB_SUFFIX "" CACHE STRING "Identifier to add to end of lib directory name e.g. 64 for lib64")
++
+ if(MSVC14 OR MSVC12)
+     # has the support we need
+ else()
+@@ -92,10 +94,10 @@ else()
+ 	set (UTPP_INSTALL_DESTINATION "include/UnitTestPP")
+ endif()
+ 
+-set(config_install_dir_ lib/cmake/${PROJECT_NAME})
++set(config_install_dir_ lib${LIB_SUFFIX}/cmake/${PROJECT_NAME})
+ set(targets_export_name_ "${PROJECT_NAME}Targets")
+ 
+-install(TARGETS UnitTest++ EXPORT "${targets_export_name_}" DESTINATION lib)
++install(TARGETS UnitTest++ EXPORT "${targets_export_name_}" DESTINATION lib${LIB_SUFFIX})
+ install(FILES ${headers_} DESTINATION ${UTPP_INSTALL_DESTINATION})
+ install(FILES ${platformHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${platformDir_})
+ install(FILES cmake/UnitTest++Config.cmake DESTINATION "${config_install_dir_}")
+@@ -103,13 +105,13 @@ install(EXPORT "${targets_export_name_}" DESTINATION "${config_install_dir_}")
+ 
+ set(prefix      ${CMAKE_INSTALL_PREFIX})
+ set(exec_prefix ${CMAKE_INSTALL_PREFIX}/bin)
+-set(libdir      ${CMAKE_INSTALL_PREFIX}/lib)
++set(libdir      ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ set(includedir  ${CMAKE_INSTALL_PREFIX}/include/UnitTest++)
+ configure_file("UnitTest++.pc.in" "UnitTest++.pc" @ONLY)
+ if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+     set(pkgconfdir  ${CMAKE_INSTALL_PREFIX}/libdata/pkgconfig)
+ else()
+-    set(pkgconfdir  ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
++    set(pkgconfdir  ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/pkgconfig)
+ endif()
+ install(FILES       "${CMAKE_CURRENT_BINARY_DIR}/UnitTest++.pc"
+         DESTINATION "${pkgconfdir}")
+-- 
+2.26.2
+

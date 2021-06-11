@@ -1,12 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 eutils multilib
+inherit distutils-r1 multilib
 
 DESCRIPTION="Homology or comparative modeling of protein three-dimensional structures"
 HOMEPAGE="https://salilab.org/modeller/"
@@ -37,7 +37,7 @@ pkg_setup() {
 	esac
 }
 
-python_prepare_all(){
+python_prepare_all() {
 	sed "s:i386-intel8:${EXECTYPE}:g" -i src/swig/setup.py || die
 	rm -rf modlib/modeller/python_library || die
 	sed -i '1 i\#!/usr/bin/python' bin/modslave.py || die
@@ -45,7 +45,7 @@ python_prepare_all(){
 	distutils-r1_python_prepare_all
 }
 
-python_compile(){
+python_compile() {
 	cd src/swig || die
 	swig -python -keyword -nodefaultctor -nodefaultdtor -noproxy modeller.i || die
 	distutils-r1_python_compile
@@ -56,7 +56,7 @@ python_install() {
 	distutils-r1_python_install
 }
 
-python_install_all(){
+python_install_all() {
 	cd "${S}" || die
 	sed \
 		-e "/^EXECUTABLE_TYPE/s:xxx:${EXECTYPE}:g" \

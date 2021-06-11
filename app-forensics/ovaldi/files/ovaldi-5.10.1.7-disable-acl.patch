@@ -1,5 +1,5 @@
---- src/probes/unix/FileProbe.cpp.old	2014-10-08 09:15:37.000000000 +0200
-+++ src/probes/unix/FileProbe.cpp	2014-10-08 09:15:55.000000000 +0200
+--- a/src/probes/unix/FileProbe.cpp
++++ b/src/probes/unix/FileProbe.cpp
 @@ -386,18 +386,8 @@
  	   6) If a file has an ACL, the value will be 'true'.
  	*/

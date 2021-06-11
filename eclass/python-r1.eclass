@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: A common, simple eclass for Python packages.
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -30,11 +30,10 @@
 # https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
-	0|1|2|3|4)
+	[0-5])
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	5|6|7)
-		# EAPI=5 is required for sane USE_EXPAND dependencies
+	[6-7])
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -49,7 +48,6 @@ elif [[ ${_PYTHON_ANY_R1} ]]; then
 	die 'python-r1.eclass can not be used with python-any-r1.eclass.'
 fi
 
-[[ ${EAPI} == [45] ]] && inherit eutils
 inherit multibuild python-utils-r1
 
 fi
@@ -121,7 +119,7 @@ fi
 # @CODE
 # RDEPEND="${PYTHON_DEPS}
 #	dev-foo/mydep"
-# DEPEND="${RDEPEND}"
+# BDEPEND="${PYTHON_DEPS}"
 # @CODE
 #
 # Example value:
@@ -357,12 +355,12 @@ _python_gen_usedep() {
 # Example:
 # @CODE
 # PYTHON_COMPAT=( python{2_7,3_4} )
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
+# BDEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # @CODE
 #
 # It will cause the dependency to look like:
 # @CODE
-# DEPEND="doc? ( dev-python/epydoc[python_targets_python2_7?] )"
+# BDEPEND="doc? ( dev-python/epydoc[python_targets_python2_7?] )"
 # @CODE
 python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
@@ -524,16 +522,18 @@ python_gen_impl_dep() {
 }
 
 # @FUNCTION: python_gen_any_dep
-# @USAGE: <dependency-block> [<impl-pattern>...]
+# @USAGE: [<dependency-block> [<impl-pattern>...]]
 # @DESCRIPTION:
 # Generate an any-of dependency that enforces a version match between
-# the Python interpreter and Python packages. <dependency-block> needs
-# to list one or more dependencies with verbatim '${PYTHON_USEDEP}'
+# the Python interpreter and Python packages. <dependency-block> may
+# list one or more dependencies with verbatim '${PYTHON_USEDEP}'
 # or '${PYTHON_SINGLE_USEDEP}' references (quoted!) that will get
-# expanded inside the function. Optionally, patterns may be specified
-# to restrict the dependency to a subset of Python implementations
-# supported by the ebuild.
+# expanded inside the function. If <dependency-block> is an empty string
+# (or no arguments are passed), a pure dependency on any Python
+# interpreter will be generated.
 #
+# Optionally, patterns may be specified to restrict the dependency to
+# a subset of Python implementations supported by the ebuild.
 # The patterns can be either fnmatch-style patterns (matched via bash
 # == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
 # appropriately all enabled Python 2/3 implementations (alike
@@ -546,7 +546,7 @@ python_gen_impl_dep() {
 #
 # Example use:
 # @CODE
-# DEPEND="$(python_gen_any_dep '
+# BDEPEND="$(python_gen_any_dep '
 #	dev-python/foo[${PYTHON_SINGLE_USEDEP}]
 #	|| ( dev-python/bar[${PYTHON_USEDEP}]
 #		dev-python/baz[${PYTHON_USEDEP}] )' -2)"
@@ -587,7 +587,6 @@ python_gen_any_dep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local depstr=${1}
-	[[ ${depstr} ]] || die "No dependency string provided"
 	shift
 
 	local i PYTHON_PKG_DEP out=
@@ -738,7 +737,7 @@ python_foreach_impl() {
 #
 # Pure mode example:
 # @CODE
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
+# BDEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
 # REQUIRED_USE="doc? ( $(python_gen_useflags 'python2*') )"
 #
 # src_compile() {
@@ -752,7 +751,7 @@ python_foreach_impl() {
 #
 # Any-of mode example:
 # @CODE
-# DEPEND="doc? (
+# BDEPEND="doc? (
 #	$(python_gen_any_dep 'dev-python/epydoc[${PYTHON_USEDEP}]' 'python2*') )"
 #
 # python_check_deps() {
@@ -770,14 +769,17 @@ python_foreach_impl() {
 python_setup() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_python_validate_useflags
+	local has_check_deps
+	declare -f python_check_deps >/dev/null && has_check_deps=1
+
+	if [[ ! ${has_check_deps} ]]; then
+		_python_validate_useflags
+	fi
+
 	local pycompat=( "${PYTHON_COMPAT[@]}" )
 	if [[ ${PYTHON_COMPAT_OVERRIDE} ]]; then
 		pycompat=( ${PYTHON_COMPAT_OVERRIDE} )
 	fi
-
-	local has_check_deps
-	declare -f python_check_deps >/dev/null && has_check_deps=1
 
 	# (reverse iteration -- newest impl first)
 	local found

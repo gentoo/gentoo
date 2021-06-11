@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,24 +9,29 @@ SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="systemd"
 
-COMMON_DEPEND="
+DEPEND="
 	>=dev-libs/glib-2.30:2
 	dev-libs/libdaemon:0=
 	sys-apps/dbus
 	sys-apps/openrc:=
 	sys-auth/polkit
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${DEPEND}
 	systemd? ( >=sys-apps/systemd-197 )
 	!systemd? ( sys-auth/nss-myhostname !sys-apps/systemd )
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.1-remove-bashisms.patch
+)
 
 src_prepare() {
 	default

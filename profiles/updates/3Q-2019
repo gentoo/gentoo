@@ -4,4 +4,3 @@ move kde-apps/kjots app-text/kjots
 move app-arch/upx-ucl app-arch/upx
 slotmove app-text/docbook-xml-simple-dtd 0 4.1.2.4
 move sys-apps/lm_sensors sys-apps/lm-sensors
-move net-misc/networkmanager-wireguard net-vpn/networkmanager-wireguard

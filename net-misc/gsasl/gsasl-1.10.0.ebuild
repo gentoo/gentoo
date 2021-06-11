@@ -5,12 +5,13 @@ EAPI=7
 
 inherit autotools
 
+# NOTE: Please bump with net-libs/libgsasl
 DESCRIPTION="The GNU SASL client, server, and library"
 HOMEPAGE="https://www.gnu.org/software/gsasl/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc gcrypt idn kerberos nls ntlm static-libs +threads"
 
 DEPEND="

@@ -1,9 +1,0 @@
---- a/KDSoapWSDiscoveryClientConfig.cmake.in	2020-03-02 23:38:05.253097303 +0100
-+++ b/KDSoapWSDiscoveryClientConfig.cmake.in	2020-03-02 23:39:03.346641208 +0100
-@@ -5,5 +5,6 @@
- @PACKAGE_INIT@
- 
- find_dependency(Qt5Core @REQUIRED_QT_VERSION@)
-+find_dependency(KDSoap)
- 
- include("${CMAKE_CURRENT_LIST_DIR}/KDSoapWSDiscoveryClientTargets.cmake")

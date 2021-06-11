@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit base eutils
+EAPI=7
 
 DESCRIPTION="Localshell allows per-user/group local control of shell execution"
 HOMEPAGE="http://git.orbis-terrarum.net/?p=infrastructure/localshellc.git;a=summary"
@@ -12,7 +10,6 @@ SRC_URI="http://git.orbis-terrarum.net/?p=infrastructure/localshellc.git;a=summa
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86"
-IUSE=""
 
 src_configure() {
 	# this is a shell, it needs to be in /bin
@@ -21,7 +18,10 @@ src_configure() {
 
 src_install() {
 	emake install DESTDIR="${D}"
-	rm -f "${D}"/usr/share/doc/${PF}/{COPYING,INSTALL}
+
+	mv "${ED}"/usr/share/doc/${P}/ "${ED}"/usr/share/doc/${PF} || die
+
+	rm -f "${D}"/usr/share/doc/${PF}/{COPYING,INSTALL} || die
 }
 
 pkg_postinst() {

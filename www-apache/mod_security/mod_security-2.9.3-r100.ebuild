@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="https://www.modsecurity.org/tarball/${PV}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc fuzzyhash geoip jit json lua mlogc"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -55,7 +55,7 @@ need_apache2
 pkg_setup() {
 	_init_apache2
 	_init_apache2_late
-	lua-single_pkg_setup
+	use lua && lua-single_pkg_setup
 }
 
 src_prepare() {

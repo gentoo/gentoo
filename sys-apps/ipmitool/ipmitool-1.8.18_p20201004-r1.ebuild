@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+
+inherit autotools
 
 DESCRIPTION="Utility for controlling IPMI enabled devices."
 HOMEPAGE="http://ipmitool.sf.net/"
@@ -26,14 +27,13 @@ SRC_URI+="
 	#http://http.debian.net/debian/pool/main/i/${PN}/${DEBIAN_PF}.tar.xz
 	# https://launchpad.net/ubuntu/+archive/primary/+files/${DEBIAN_PF}.tar.xz
 #IUSE="freeipmi openipmi status"
-IUSE="libressl openbmc openipmi static"
+IUSE="openbmc openipmi static"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa ~ia64 ppc ~ppc64 x86"
 LICENSE="BSD"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	openbmc? ( sys-apps/systemd:0= )
 	sys-libs/readline:0="
 DEPEND="${RDEPEND}
@@ -61,9 +61,9 @@ src_prepare() {
 			-e '/0120-openssl1.1.patch/d' \
 			debian/patches/series
 		for p in $(cat debian/patches/series) ; do
-			echo $p
+			echo ${p}
 			if ! nonfatal eapply -p1 debian/patches/$p ; then
-				echo "failed $p"
+				echo "failed ${p}"
 				fail=1
 			fi
 		done
@@ -84,7 +84,7 @@ src_prepare() {
 		#"${pd}"/0010.0010-utf8.patch
 	)
 	for p in "${PATCHES[@]}" ; do
-		eapply -p1 $p || die "failed $p"
+		eapply -p1 ${p} || die "failed ${p}"
 	done
 
 	eautoreconf

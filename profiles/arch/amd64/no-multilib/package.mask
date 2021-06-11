@@ -58,10 +58,10 @@ games-arcade/jardinains
 games-arcade/thinktanks-demo
 games-emulation/caps
 games-emulation/nestra
-games-emulation/pcsx2
+<games-emulation/pcsx2-9999
+games-emulation/vgba
 games-emulation/zinc
 games-emulation/zsnes
-games-fps/avp
 games-fps/etqw-bin
 games-fps/etqw-data
 games-fps/etqw-demo
@@ -96,7 +96,6 @@ games-strategy/spaz
 media-sound/aucdtect
 media-video/binkplayer
 media-video/tsmuxer
-net-misc/icaclient
 net-misc/ps3mediaserver
 net-print/cndrvcups-common-lb
 net-print/cndrvcups-lb

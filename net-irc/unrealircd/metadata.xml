@@ -4,14 +4,15 @@
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>sam@gentoo.org</email>
+		<name>Sam James</name>
+	</maintainer>
 	<use>
 		<flag name="class-nofakelag">Enable an unsupported class::options flag called “nofakelag” allowing you to grant fakelag exemption to normal user (instead of just opers).</flag>
-		<flag name="extban-stacking">Enable extended channel bans (such as +b ~c: and +b ~n:) to contain other extended bans instead of just hostmasks.</flag>
 		<flag name="prefixaq">Enable chanadmin and chanowner prefixes</flag>
 		<flag name="showlistmodes">Display channel modes in /LIST (only configured at compiletime)</flag>
 		<flag name="operoverride-verify">Enable requiring opers to invite themselves to +s/+p channels</flag>
 		<flag name="operoverride">Enable OperOverride extension</flag>
-		<flag name="usermod">Enable /set* and /chg* commands</flag>
-		<flag name="shunnotices">Enable notifying a user when un-shunned</flag>
 	</use>
 </pkgmetadata>

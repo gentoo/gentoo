@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 DIST_AUTHOR=CHM
 DIST_VERSION=0.70
 
-inherit perl-module eutils
+inherit perl-module
 
 DESCRIPTION="Perl interface providing graphics display using OpenGL"
 

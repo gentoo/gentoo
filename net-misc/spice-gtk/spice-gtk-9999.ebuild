@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ VALA_USE_DEPEND="vapigen"
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit desktop eutils git-r3 meson python-any-r1 readme.gentoo-r1 vala xdg-utils
+inherit desktop git-r3 meson python-any-r1 readme.gentoo-r1 vala xdg-utils
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -17,7 +17,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-gtk.git"
 KEYWORDS=""
-IUSE="+gtk3 +introspection libressl lz4 mjpeg policykit pulseaudio sasl smartcard usbredir vala webdav"
+IUSE="+gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard usbredir vala webdav"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -35,8 +35,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
 	introspection? ( dev-libs/gobject-introspection )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	lz4? ( app-arch/lz4 )
 	pulseaudio? (
 		media-plugins/gst-plugins-pulse:1.0

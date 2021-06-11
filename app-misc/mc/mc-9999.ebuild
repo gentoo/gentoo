@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ inherit flag-o-matic ${LIVE_ECLASSES}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	SRC_URI="http://ftp.midnight-commander.org/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
@@ -110,6 +110,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if use spell && ! has_version app-dicts/aspell-en ; then
+		elog "'spell' USE flag is enabled however app-dicts/aspell-en is not installed."
+		elog "You should manually set 'spell_language' in the Misc section of ~/.config/mc/ini"
+		elog "It has to be set to one of your installed aspell dictionaries or 'NONE'"
+		elog
+	fi
 	elog "To enable exiting to latest working directory,"
 	elog "put this into your ~/.bashrc:"
 	elog ". ${EPREFIX}/usr/libexec/mc/mc.sh"

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="Response JSON parser using MultiJson and FaradayMiddleware"
 HOMEPAGE="https://github.com/denro/faraday_middleware-multi_json"

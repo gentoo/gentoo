@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PV="v${PV}"
-inherit autotools eutils systemd
+inherit autotools systemd
 
 DESCRIPTION="A lightweight secured SOCKS5 proxy for embedded devices and low end boxes"
 HOMEPAGE="https://github.com/shadowsocks/shadowsocks-libev"
@@ -39,6 +39,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	sed -i -e 's|AC_CONFIG_FILES(\[libbloom/Makefile libcork/Makefile libipset/Makefile\])||' \
 		configure.ac || die
+	sed -i -e 's|-Werror||g' \
+		configure.ac src/Makefile.am || die
+
 	default
 	eautoreconf
 }

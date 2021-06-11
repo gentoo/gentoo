@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic linux-mod toolchain-funcs
+inherit autotools dist-kernel-utils flag-o-matic linux-mod toolchain-funcs
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://github.com/openzfs/zfs"
@@ -13,13 +13,13 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="amd64 arm64 ppc64"
 	S="${WORKDIR}/zfs-${PV}"
 	ZFS_KERNEL_COMPAT="5.9"
 fi
 
 LICENSE="CDDL debug? ( GPL-2+ )"
-SLOT="0"
+SLOT="0/${PVR}"
 IUSE="custom-cflags debug +rootfs"
 
 DEPEND=""
@@ -33,9 +33,24 @@ BDEPEND="
 	virtual/awk
 "
 
+# PDEPEND in this form is needed to trick portage suggest
+# enabling dist-kernel if only 1 package have it set
+PDEPEND="dist-kernel? ( ~sys-fs/zfs-${PV}[dist-kernel] )"
+
 RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
+
+pkg_pretend() {
+	use rootfs || return 0
+
+	if has_version virtual/dist-kernel && ! use dist-kernel; then
+		ewarn "You have virtual/dist-kernel installed, but"
+		ewarn "USE=\"dist-kernel\" is not enabled for ${CATEGORY}/${PN}"
+		ewarn "It's recommended to globally enable dist-kernel USE flag"
+		ewarn "to auto-trigger initrd rebuilds with kernel updates"
+	fi
+}
 
 # https://github.com/openzfs/zfs/pull/11371
 PATCHES=( "${FILESDIR}/${PV}-copy-builtin.patch" )
@@ -136,9 +151,9 @@ src_install() {
 	set_arch_to_kernel
 
 	myemakeargs+=(
-		DEPMOD="/bin/true"
+		DEPMOD=:
 		DESTDIR="${D}"
-		INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
+		INSTALL_MOD_PATH="${EPREFIX:-/}" # lib/modules/<kver> added by KBUILD
 	)
 
 	emake "${myemakeargs[@]}" install
@@ -156,6 +171,11 @@ pkg_postinst() {
 		ewarn "Automatically removing old modules to avoid problems."
 		rm -r "${EROOT}/lib/modules/${KV_FULL}/addon/zfs" || die "Cannot remove modules"
 		rmdir --ignore-fail-on-non-empty "${EROOT}/lib/modules/${KV_FULL}/addon"
+	fi
+
+	if [[ -z ${ROOT} ]] && use dist-kernel; then
+		set_arch_to_portage
+		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
 	fi
 
 	if use x86 || use arm; then

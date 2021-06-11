@@ -12,5 +12,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">notebook</remote-id>
+    <remote-id type="github">jupyter/notebook</remote-id>
   </upstream>
 </pkgmetadata>

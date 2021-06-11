@@ -5,6 +5,7 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <stabilize-allarches/>
   <longdescription lang="en">
     Command line interface to and serialization format for Blosc, a high
     performance, multi-threaded, blocking and shuffling compressor. Uses

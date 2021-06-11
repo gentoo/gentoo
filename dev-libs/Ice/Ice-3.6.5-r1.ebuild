@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 RUBY_OPTIONAL="yes"
 USE_RUBY="ruby26"
@@ -27,15 +27,14 @@ SRC_URI="https://github.com/zeroc-ice/ice/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( https://download.zeroc.com/Ice/$(ver_cut 1-2)/${PN}-3.6.4.pdf )"
 LICENSE="GPL-2"
 SLOT="0/36"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug doc examples libressl +readline mono php python ruby test"
+KEYWORDS="amd64 ~arm x86"
+IUSE="debug doc examples +readline mono php python ruby test"
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND=">=dev-libs/expat-2.0.1
 	>=app-arch/bzip2-1.0.5
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0=
 	|| (
 		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}[cxx]" ; done)
 	)

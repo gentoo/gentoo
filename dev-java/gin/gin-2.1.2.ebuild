@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,13 +27,13 @@ CDEPEND="
 		dev-java/gwt:2.8
 		dev-java/validation-api:1.0
 "
-
 RDEPEND="
 		${CDEPEND}
 		>=virtual/jre-1.8:*"
 DEPEND="
 		${CDEPEND}
 		>=virtual/jdk-1.8:*"
+BDEPEND="app-arch/unzip"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_XML="build.xml"
@@ -55,15 +55,15 @@ JAVA_RM_FILES=(
 
 src_compile() {
 	local EANT_BUILD_TARGET="compile"
-	GWT_HOME="${EROOT}/usr/share/gwt-2.8/lib" \
+	GWT_HOME="${ESYSROOT}/usr/share/gwt-2.8/lib" \
 		java-pkg-2_src_compile
 	EANT_BUILD_TARGET="jars"
-	GWT_HOME="${EROOT}/usr/share/gwt-2.8/lib" \
+	GWT_HOME="${ESYSROOT}/usr/share/gwt-2.8/lib" \
 		java-pkg-2_src_compile
 }
 
 src_test() {
-	GWT_HOME="${EROOT}/usr/share/gwt-2.8/lib" \
+	GWT_HOME="${ESYSROOT}/usr/share/gwt-2.8/lib" \
 		ant test || die
 }
 

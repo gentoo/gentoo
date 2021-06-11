@@ -1,5 +1,5 @@
---- lanes-3.13.0.old/Makefile	2018-11-30 13:28:50.000000000 +0100
-+++ lanes-3.13.0/Makefile	2020-11-30 21:28:36.769384766 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -33,7 +33,7 @@
  
  # Autodetect LUA
@@ -9,8 +9,8 @@
  
  _TARGET_SO=$(_TARGET_DIR)/core.$(_SO)
  
---- lanes-3.13.0.old/src/Makefile	2018-11-30 13:28:50.000000000 +0100
-+++ lanes-3.13.0/src/Makefile	2020-11-30 21:40:06.399382894 +0100
+--- a/src/Makefile
++++ b/src/Makefile
 @@ -15,7 +15,7 @@
  #
  LIBFLAG=-shared
@@ -68,8 +68,8 @@
 -        LUA_LIBS:=-llua
 -      endif
 -    endif
-+    LUA_FLAGS ?= $(shell pkg-config --cflags lua)
-+    LUA_LIBS ?= $(shell pkg-config --libs lua)
++    LUA_FLAGS ?= $(shell ${PKG_CONFIG} --cflags lua)
++    LUA_LIBS ?= $(shell ${PKG_CONFIG} --libs lua)
    endif
  
    ifeq "$(shell uname -s)" "Darwin"

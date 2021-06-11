@@ -1,0 +1,30 @@
+From 41367bb2b4732507248f2b3c2e43e2aa46c5ef2a Mon Sep 17 00:00:00 2001
+From: Jimi Huotari <chiitoo@gentoo.org>
+Date: Wed, 30 Dec 2020 03:14:34 +0200
+Subject: [PATCH] UI: Fix crash when no audio backends are available
+
+This commit prevents a crash in, for example, Linux configurations
+where PulseAudio is disabled, which leads into 'mod' being 'null',
+which in turn leads into a segmentation fault when an ALSA source
+is selected.
+
+Closes https://github.com/obsproject/obs-studio/issues/3485
+---
+ UI/context-bar-controls.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/UI/context-bar-controls.cpp b/UI/context-bar-controls.cpp
+index 9dff8979a2..9ef850b6d1 100644
+--- a/UI/context-bar-controls.cpp
++++ b/UI/context-bar-controls.cpp
+@@ -179,6 +179,10 @@ void AudioCaptureToolbar::Init()
+ 
+ 	obs_module_t *mod =
+ 		get_os_module("win-wasapi", "mac-capture", "linux-pulseaudio");
++	if (!mod) {
++		return;
++	}
++
+ 	const char *device_str =
+ 		get_os_text(mod, "Device", "CoreAudio.Device", "Device");
+ 	ui->deviceLabel->setText(device_str);

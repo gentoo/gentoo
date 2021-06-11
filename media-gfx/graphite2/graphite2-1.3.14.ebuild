@@ -1,12 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
-
 CMAKE_ECLASS=cmake
 GENTOO_DEPEND_ON_PERL="no"
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
@@ -15,21 +14,23 @@ SRC_URI="mirror://sourceforge/silgraphite/${PN}/${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="perl test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	perl? ( dev-lang/perl:= )
+RDEPEND="perl? ( dev-lang/perl:= )"
+DEPEND="
+	perl? ( dev-lang/perl )
+	test? ( dev-libs/glib:2 )
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	perl? (
+		dev-lang/perl
 		dev-perl/Locale-Maketext-Lexicon
 		dev-perl/Module-Build
 	)
 	test? (
 		${PYTHON_DEPS}
-		dev-libs/glib:2
 		$(python_gen_any_dep 'dev-python/fonttools[${PYTHON_USEDEP}]')
 		media-libs/fontconfig
 		perl? ( virtual/perl-Test-Simple )

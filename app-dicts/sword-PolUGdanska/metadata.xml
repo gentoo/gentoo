@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription lang="en">
 		This project is being undertaken by the Gate of Hope Foundation. Its founders are Brent Riggs and Joe West. Brent and Joe have both been pastors and gospel preachers for more than 30 years. They have worked closely with Polish nationals to update the old grammar and vocabulary of the 1632 Polish Gdansk Bible. The entire Bible is now finished and available in both printed and electronic formats. For more information, visit the website at www.wrotanadziei.org
 	</longdescription>

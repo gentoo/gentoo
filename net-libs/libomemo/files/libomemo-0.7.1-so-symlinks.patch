@@ -1,0 +1,25 @@
+From 3911dc9d496f61b774d091bd1f2394d458abe8d7 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 21 Feb 2021 20:51:01 +0100
+Subject: [PATCH] Add missing symlinks libomemo.so.$(VER_MAJ) and libomemo.so
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index e7b9ea6..289d2ec 100644
+--- a/Makefile
++++ b/Makefile
+@@ -108,6 +108,8 @@ install: $(BDIR)
+ 	install -d $(DESTDIR)/$(PREFIX)/lib/$(ARCH)/pkgconfig/
+ 	install -m 644 $(BDIR)/libomemo-conversations.a  $(DESTDIR)/$(PREFIX)/lib/$(ARCH)/libomemo.a
+ 	install -m 644 $(BDIR)/libomemo.so $(DESTDIR)/$(PREFIX)/lib/$(ARCH)/libomemo.so.$(VERSION)
++	ln -s libomemo.so.$(VERSION) $(DESTDIR)/$(PREFIX)/lib/$(ARCH)/libomemo.so.$(VER_MAJ)
++	ln -s libomemo.so.$(VERSION) $(DESTDIR)/$(PREFIX)/lib/$(ARCH)/libomemo.so
+ 	install -m 644 $(BDIR)/libomemo.pc $(DESTDIR)/$(PREFIX)/lib/$(ARCH)/pkgconfig/
+ 	install -d $(DESTDIR)/$(PREFIX)/include/libomemo/
+ 	install -m 644 $(SDIR)/libomemo_crypto.h $(DESTDIR)/$(PREFIX)/include/libomemo/
+-- 
+2.30.1
+

@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 virtualx xdg
 
@@ -16,7 +16,7 @@ IUSE="+bluetooth +browser-extension elogind gtk-doc +ibus +networkmanager system
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 x86"
 
 # libXfixes-5.0 needed for pointer barriers and #include <X11/extensions/Xfixes.h>
 # FIXME:
@@ -106,7 +106,7 @@ RDEPEND="${DEPEND}
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
-	>=gnome-base/gdm-3.5[introspection]
+	>=gnome-base/gdm-3.5[introspection(+)]
 	>=gnome-base/gnome-control-center-3.26[bluetooth(+)?,networkmanager(+)?]
 	browser-extension? ( gnome-extra/chrome-gnome-shell )
 "

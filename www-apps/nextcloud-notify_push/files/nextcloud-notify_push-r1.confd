@@ -1,0 +1,87 @@
+# /etc/conf.d/nextcloud-notify_push
+
+# User to run instance as
+#NOTIFY_PUSH_USER=nobody
+
+# Group to run instance as
+#NOTIFY_PUSH_GROUP=nobody
+
+# Nextcloud config file
+# Set this to the Nextcloud configuration file this
+# instance is used for.
+NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE="/path/to/your/nextcloud/config.php"
+
+# Data Source Name (DSN) to the Nextcloud database
+# E.g. mysql://user:password@db_host/db_name
+# 
+# Note: If you set NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE, notify_push
+#       will read this information from config.php file.
+#DATABASE_URL=""
+
+# Database prefix of the used Nextcloud database
+# 
+# Note: If you set NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE, notify_push
+#       will read this information from config.php file.
+#DATABASE_PREFIX="oc_"
+
+# Redis connection string
+# To use notify_push, used Nextcloud instance must be configured
+# to use Redis. Use this option to point to the same Redis instance.
+# 
+# Note: If you set NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE, notify_push
+#       will read this information from config.php file.
+#REDIS_URL=""
+
+# URL to used Nextcloud instance
+# 
+# Note: If you set NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE, notify_push
+#       will read this information from config.php file.
+#NEXTCLOUD_URL=""
+
+# IP address notify_push will bind to
+#BIND="127.0.0.1"
+
+# Port notify_push will listen on
+#PORT="7867"
+
+# Socket notify_push will listen on
+SOCKET_PATH="/run/${SVCNAME}/notify_push.socket"
+
+# Socket permissions
+#SOCKET_PERMISSIONS=0666
+
+# Port notify_push will listen on for metrics
+#METRICS_PORT="9867"
+
+# Socket notify_push will listen on for metrics
+#METRICS_SOCKET_PATH="/run/${SVCNAME}/notify_push_metrics.socket"
+
+# You can use this configuration option to pass additional options to the
+# start-stop-daemon, see start-stop-daemon(8) for more details.
+# Per default we wait 1000ms after we have started the service to ensure
+# that the daemon is really up and running.
+#NOTIFY_PUSH_SSDARGS="--wait 1000"
+
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (30 + 5 seconds
+# per default) when you are stopping the service.
+#NOTIFY_PUSH_TERMTIMEOUT="TERM/30/KILL/5"
+
+# Options to notify_push
+# See `nextcloud-notify_push --help` for more details
+#NOTIFY_PUSH_OPTS=""
+
+# Set log level
+# E.g. error, warn, info, debug
+#LOG=""
+
+# By default, a background service in OpenRC will produce no output.
+# Uncomment the following option to log output to a file.
+#LOGFILE="/var/log/${SVCNAME}.log"
+
+# Configure service dependencies
+# notify_push needs to connect to same mysql and redis instance
+# like Nextcloud. By default we assume that Nextcloud is running
+# on same host. Adjust when using different instances or when
+# notify_push isn't using any listed local service.
+RC_USE="mysql redis"

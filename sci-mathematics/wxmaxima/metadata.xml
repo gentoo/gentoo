@@ -13,6 +13,6 @@ completion based on previous input (tab-key).
 wxMaxima provides 2d formated display of maxima output.
 </longdescription>
   <upstream>
-    <remote-id type="github">andrejv/wxmaxima</remote-id>
+    <remote-id type="github">wxMaxima-developers/wxmaxima</remote-id>
   </upstream>
 </pkgmetadata>

@@ -11,23 +11,23 @@
 	<longdescription>
 		This package provides access to platform dependent file locking APIs:
 		
-		* Open file descriptor locking on Linux (&quot;Lukko.OFD&quot;)
-		* @flock@ locking on unix platforms (&quot;Lukko.FLock&quot;)
-		* Windows locking @LockFileEx@ (&quot;Lukko.Windows&quot;)
-		* No-op locking, which throws exceptions (&quot;Lukko.NoOp&quot;)
-		* &quot;Lukko&quot; module exports the best option for the target platform with uniform API.
+		* Open file descriptor locking on Linux ("Lukko.OFD")
+		* @flock@ locking on unix platforms ("Lukko.FLock")
+		* Windows locking @LockFileEx@ ("Lukko.Windows")
+		* No-op locking, which throws exceptions ("Lukko.NoOp")
+		* "Lukko" module exports the best option for the target platform with uniform API.
 		
 		There are alternative file locking packages:
 		
-		* &quot;GHC.IO.Handle.Lock&quot; in @base &gt;= 4.10@ is good enough for most use cases.
-		However, uses only &#39;Handle&#39;s so these locks cannot be used for intra-process locking.
-		(You should use e.g. &#39;MVar&#39; in addition).
+		* "GHC.IO.Handle.Lock" in @base &gt;= 4.10@ is good enough for most use cases.
+		However, uses only 'Handle's so these locks cannot be used for intra-process locking.
+		(You should use e.g. 'MVar' in addition).
 		
-		* &lt;https://hackage.haskell.org/package/filelock filelock&gt; doesn&#39;t support OFD locking.
+		* &lt;https://hackage.haskell.org/package/filelock filelock&gt; doesn't support OFD locking.
 		
 		/Lukko/ means lock in Finnish.
 		
-		Submodules &quot;Lukko.OFD&quot;, &quot;Lukko.Windows&quot; etc are available based on following conditions.
+		Submodules "Lukko.OFD", "Lukko.Windows" etc are available based on following conditions.
 		
 		@
 		if os(windows)
@@ -41,7 +41,7 @@
 		\  cpp-options: -DHAS_FLOCK
 		@
 		
-		&quot;Lukko.FLock&quot; is available on not (Windows or Solaris or AIX).
-		&quot;Lukko.NoOp&quot; is always available.
+		"Lukko.FLock" is available on not (Windows or Solaris or AIX).
+		"Lukko.NoOp" is always available.
 	</longdescription>
 </pkgmetadata>

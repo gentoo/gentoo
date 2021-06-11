@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="doc examples libressl test"
+IUSE="doc examples test"
 
 RDEPEND="
 	=dev-cpp/abseil-cpp-20200225*:=
@@ -22,8 +22,7 @@ RDEPEND="
 	>=dev-libs/protobuf-3.13.0:=
 	>=net-dns/c-ares-1.15.0:=
 	sys-libs/zlib:=
-	!libressl? ( >=dev-libs/openssl-1.1.1:0=[-bindist] )
-	libressl? ( dev-libs/libressl:0= )
+	>=dev-libs/openssl-1.1.1:0=[-bindist]
 "
 
 DEPEND="${RDEPEND}

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,10 +7,9 @@ inherit cmake-utils
 
 DESCRIPTION="A data-centric parallel programming system"
 HOMEPAGE="https://legion.stanford.edu/"
-if [[ $PV = 9999 ]]; then
+if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://StanfordLegion/${PN}.git https://github.com/StanfordLegion/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
 	KEYWORDS="~amd64"

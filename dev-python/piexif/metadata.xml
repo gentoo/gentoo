@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>sping@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">piexif</remote-id>
 		<remote-id type="github">hMatoba/Piexif</remote-id>

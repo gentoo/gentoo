@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">stella-emu/stella</remote-id>
 		<remote-id type="sourceforge">stella</remote-id>
 	</upstream>
 </pkgmetadata>

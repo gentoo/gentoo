@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="proxy">
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
-		<description>Proxy</description>
 	</maintainer>
+	<stabilize-allarches/>
 	<longdescription>
 		automx2 makes configuring a mail account easy. It unites
 		methods for automated mailbox configuration from Apple
@@ -17,11 +17,11 @@
 		(autoconfig) in one tool.
 	</longdescription>
 	<upstream>
-		<doc>https://gitlab.com/automx/automx2/blob/master/doc/automx2.adoc</doc>
+		<doc>https://github.com/rseichter/automx2/blob/master/doc/automx2.pdf</doc>
 		<maintainer>
 			<email>automx2@seichter.de</email>
 			<name>Ralph Seichter</name>
 		</maintainer>
-		<remote-id type="gitlab">automx/automx2</remote-id>
+		<remote-id type="github">rseichter/automx2</remote-id>
 	</upstream>
 </pkgmetadata>

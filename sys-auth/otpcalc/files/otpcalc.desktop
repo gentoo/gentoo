@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=otpCalc
-Comment=One Time Password and S/Key calculator
-Icon=dialog-password
-Exec=otpCalc
-Categories=Utility;GTK;System;Security;

@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_COMMIT="5b18e475f38fcf28429b1cc4b17baee3b9793a62"
-LUA_COMPAT=( lua5-{1..3} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 MY_P="${PN}-${EGIT_COMMIT}"
 
 inherit flag-o-matic lua toolchain-funcs
@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="test"
 

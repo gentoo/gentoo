@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,5 +31,9 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 "
-PATCHES=( "${FILESDIR}/${PN}-1.98-dot-in-inc.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.98-dot-in-inc.patch"
+	"${FILESDIR}/${PN}-1.98-vacuum.patch"
+)
+
 DIST_TEST="do" # Parallel tests broken

@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit versionator toolchain-funcs eutils
+inherit toolchain-funcs
 
-MY_PV=$(get_version_component_range 1-3)
-DEB_PV=$(get_version_component_range 4-5)
-DESCRIPTION="create and edit the partition table of a disk partitioned in Atari format"
+MY_PV=$(ver_cut 1-3)
+DEB_PV=$(ver_cut 4-5)
+DESCRIPTION="Create and edit the partition table of a disk partitioned in Atari format"
 HOMEPAGE="https://packages.qa.debian.org/a/atari-fdisk.html"
 SRC_URI="mirror://debian/pool/main/a/${PN}/${PN}_${MY_PV}-${DEB_PV}.tar.gz"
+S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,14 +18,11 @@ SLOT="0"
 # use this on 64bit systems (where sizeof(long) == 8), then misbehavior
 # and memory corruption will ensue.
 KEYWORDS="-* ~m68k x86"
-IUSE=""
 
-S=${WORKDIR}/${PN}-${MY_PV}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.7.1.5.4-prompt-logic.patch
-	epatch "${FILESDIR}"/${PN}-0.7.1.5.4-gcc-5-inline.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.1.5.4-prompt-logic.patch
+	"${FILESDIR}"/${PN}-0.7.1.5.4-gcc-5-inline.patch
+)
 
 src_compile() {
 	emake \

@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_ECLASS=cmake
 inherit java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
 
@@ -115,7 +115,6 @@ RDEPEND="
 	lapack? (
 		virtual/cblas
 		virtual/lapack
-		virtual/lapacke
 	)
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	openexr? ( media-libs/openexr[${MULTILIB_USEDEP}] )

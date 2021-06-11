@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit linux-info autotools python-single-r1 user
 
@@ -13,8 +13,9 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
-IUSE="libvirt selinux sqlite +ssl zeroconf"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+IUSE="libvirt selinux sqlite +ssl test zeroconf"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/elfutils-0.142
 	dev-libs/json-c:=
@@ -33,9 +34,13 @@ RDEPEND=">=dev-libs/elfutils-0.142
 DEPEND="${RDEPEND}
 	app-arch/cpio
 	app-text/xmlto
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	')
 	>=sys-devel/gettext-0.18.2
 	libvirt? ( dev-libs/libxml2 )
 "
+BDEPEND="test? ( dev-util/dejagnu )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

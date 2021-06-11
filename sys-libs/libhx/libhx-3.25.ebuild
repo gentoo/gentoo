@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,10 @@ SRC_URI="https://inai.de/files/${PN}/libHX-${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0/32" # soname version
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="doc"
 
-DEPEND="app-arch/xz-utils"
-RDEPEND=""
+BDEPEND="app-arch/xz-utils"
 
 S="${WORKDIR}/libHX-${PV}"
 

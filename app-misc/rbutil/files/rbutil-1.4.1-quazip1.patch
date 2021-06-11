@@ -1,0 +1,84 @@
+From f9e3ba5d8be99dc78eeb7b21d16afe2955e0a9f8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 20 Feb 2021 18:11:09 +0100
+Subject: [PATCH] Use upstream quazip1-qt5 pkgconfig
+
+Based on patch by James Le Cuirot <chewi@gentoo.org>
+http://gerrit.rockbox.org/1825
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ rbutil/rbutilqt/base/ziputil.cpp | 6 +++---
+ rbutil/rbutilqt/base/ziputil.h   | 6 +++---
+ rbutil/rbutilqt/rbutilqt.pro     | 9 +++------
+ 3 files changed, 9 insertions(+), 12 deletions(-)
+
+diff --git a/rbutil/rbutilqt/base/ziputil.cpp b/rbutil/rbutilqt/base/ziputil.cpp
+index b6cfddd..9fa6632 100644
+--- a/rbutil/rbutilqt/base/ziputil.cpp
++++ b/rbutil/rbutilqt/base/ziputil.cpp
+@@ -22,9 +22,9 @@
+ #include "progressloggerinterface.h"
+ #include "Logger.h"
+ 
+-#include "quazip/quazip.h"
+-#include "quazip/quazipfile.h"
+-#include "quazip/quazipfileinfo.h"
++#include "quazip.h"
++#include "quazipfile.h"
++#include "quazipfileinfo.h"
+ 
+ 
+ ZipUtil::ZipUtil(QObject* parent) : ArchiveUtil(parent)
+diff --git a/rbutil/rbutilqt/base/ziputil.h b/rbutil/rbutilqt/base/ziputil.h
+index 25c3dce..7a6e08a 100644
+--- a/rbutil/rbutilqt/base/ziputil.h
++++ b/rbutil/rbutilqt/base/ziputil.h
+@@ -21,9 +21,9 @@
+ 
+ #include <QtCore>
+ #include "archiveutil.h"
+-#include "quazip/quazip.h"
+-#include "quazip/quazipfile.h"
+-#include "quazip/quazipfileinfo.h"
++#include "quazip.h"
++#include "quazipfile.h"
++#include "quazipfileinfo.h"
+ 
+ class ZipUtil : public ArchiveUtil
+ {
+diff --git a/rbutil/rbutilqt/rbutilqt.pro b/rbutil/rbutilqt/rbutilqt.pro
+index d5caa77..40a62ff 100644
+--- a/rbutil/rbutilqt/rbutilqt.pro
++++ b/rbutil/rbutilqt/rbutilqt.pro
+@@ -140,11 +140,6 @@ for(rblib, RBLIBS) {
+ # We need libcrypto++
+ LIBS += -lcryptopp
+ 
+-# on win32 libz is linked implicitly.
+-!win32 {
+-    LIBS += -lz
+-}
+-
+ # Add a (possibly found) libspeex now, don't do this before -lrbspeex!
+ !static:!isEmpty(LIBSPEEX) {
+     LIBS += $$LIBSPEEX
+@@ -205,6 +200,9 @@ unix:!static:libusb0:!macx {
+     LIBS += -lusb
+ }
+ 
++CONFIG += link_pkgconfig
++PKGCONFIG += quazip1-qt5
++
+ unix:!macx:static {
+     # force statically linking of libusb. Libraries that are appended
+     # later will get linked dynamically again.
+@@ -271,5 +269,4 @@ unix {
+ 
+ # source files are separate.
+ include(rbutilqt.pri)
+-include(quazip/quazip.pri)
+ include(logger/logger.pri)
+-- 
+2.30.1
+

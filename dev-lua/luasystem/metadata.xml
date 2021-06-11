@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
@@ -11,7 +11,7 @@
 	</maintainer>
 	<longdescription>
 		luasystem is a platform independent system call library for Lua.
-		Supports Lua >= 5.1 and luajit >= 2.0.0.
+		Supports Lua &gt;= 5.1 and luajit &gt;= 2.0.0.
 	</longdescription>
 	<upstream>
 		<remote-id type="github">LuaDist2/luasystem</remote-id>

@@ -1,0 +1,14 @@
+--- kino-1.3.4/Kino.desktop_orig	2021-04-10 11:55:07.696950138 +0200
++++ kino-1.3.4/Kino.desktop	2021-04-10 11:55:19.621863615 +0200
+@@ -41,9 +41,9 @@
+ Encoding=UTF-8
+ TryExec=kino
+ Exec=kino %F
+-Icon=kino.png
++Icon=kino
+ Terminal=false
+ StartupNotify=true
+ Type=Application
+-Categories=Application;AudioVideo;AudioVideoEditing;
++Categories=AudioVideo;AudioVideoEditing;
+ MimeType=video/dv;application/smil

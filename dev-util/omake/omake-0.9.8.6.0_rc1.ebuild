@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit toolchain-funcs multilib versionator eutils
+inherit epatch toolchain-funcs multilib versionator
 
 MY_PV=$(replace_version_separator 5 '.' "$(replace_version_separator 4 '-' )")
 DESCRIPTION="Make replacement"
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${PN}-${MY_PV%-*}
 
 use_boolean() {
-	if use $1; then
+	if use ${1}; then
 		echo "true"
 	else
 		echo "false"

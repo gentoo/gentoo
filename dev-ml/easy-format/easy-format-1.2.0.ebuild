@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit findlib
 
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/mjambon/easy-format/archive/v${PV}.tar.gz -> ${P}.ta
 SLOT="0/${PV}"
 LICENSE="BSD"
 KEYWORDS="~amd64"
-
 IUSE="examples +ocamlopt"
 
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"

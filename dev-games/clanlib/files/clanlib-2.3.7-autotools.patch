@@ -1,5 +1,5 @@
---- Documentation/Reference/Makefile.am.old	2012-09-25 10:39:25.973544935 +0200
-+++ Documentation/Reference/Makefile.am	2012-09-25 10:39:42.560554053 +0200
+--- a/Documentation/Reference/Makefile.am
++++ b/Documentation/Reference/Makefile.am
 @@ -10,7 +10,7 @@
  	mkdir doxyoutput;
  	mkdir reftest
@@ -9,8 +9,8 @@
  	../Utilities/ReferenceDocs/ReferenceDocs
  
  install-html:
---- configure.ac.old	2012-09-25 11:07:38.412537590 +0200
-+++ configure.ac	2012-09-25 11:09:41.133939131 +0200
+--- a/configure.ac
++++ b/configure.ac
 @@ -337,11 +337,9 @@
  
  	dnl  Optional linux/joystick.h
