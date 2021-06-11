@@ -1,0 +1,55 @@
+--- rstudio-1.3.1093-orig/src/cpp/r/session/RStdCallbacks.cpp
++++ rstudio-1.3.1093/src/cpp/r/session/RStdCallbacks.cpp
+@@ -19,7 +19,7 @@
+ 
+ #include <boost/function.hpp>
+ #include <boost/regex.hpp>
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
+ 
+ #include <r/RExec.hpp>
+ #include <r/ROptions.hpp>
+@@ -58,6 +58,7 @@ __declspec(dllimport) SA_TYPE SaveAction
+ }
+ 
+ using namespace rstudio::core;
++using namespace boost::placeholders;
+ 
+ namespace rstudio {
+ namespace r {
+--- rstudio-1.3.1093-orig/src/cpp/core/HtmlUtils.cpp.orig
++++ rstudio-1.3.1093/src/cpp/core/HtmlUtils.cpp
+@@ -19,13 +19,15 @@
+ 
+ #include <boost/format.hpp>
+ #include <boost/algorithm/string/predicate.hpp>
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
+ 
+ #include <core/Base64.hpp>
+ #include <core/FileSerializer.hpp>
+ #include <core/RegexUtils.hpp>
+ 
+ #include <core/http/Util.hpp>
++
++using namespace boost::placeholders;
+ 
+ namespace rstudio {
+ namespace core {
+--- rstudio-1.3.1093-orig/src/cpp/core/file_lock/FileLock.cpp.orig
++++ rstudio-1.3.1093/src/cpp/core/file_lock/FileLock.cpp
+@@ -26,10 +26,12 @@
+ #include <core/system/Environment.hpp>
+ 
+ #include <boost/algorithm/string.hpp>
+-#include <boost/bind.hpp>
++#include <boost/bind/bind.hpp>
+ 
+ // borrowed from SessionConstants.hpp
+ #define kRStudioSessionRoute "RSTUDIO_SESSION_ROUTE"
++
++using namespace boost::placeholders;
+ 
+ namespace rstudio {
+ namespace core {
+ 

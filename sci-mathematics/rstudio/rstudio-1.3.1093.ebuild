@@ -95,6 +95,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.5042-boost-1.73.0.patch
 	"${FILESDIR}"/${PN}-1.3.1056-R-4.0.0.patch
 	"${FILESDIR}"/${PN}-1.3.1056-boost-1.74.0.patch
+	"${FILESDIR}"/${PN}-1.3.1093-boost-1.76.patch
 )
 
 src_unpack() {
@@ -177,6 +178,7 @@ src_configure() {
 		-DRSTUDIO_TARGET=$(usex dedicated "Server" "$(usex server "Development" "Desktop")")
 		-DRSTUDIO_VERIFY_R_VERSION=FALSE
 		-DRSTUDIO_USE_SYSTEM_BOOST=TRUE
+		-DRSTUDIO_BOOST_SIGNALS_VERSION=2
 		)
 
 	if use !dedicated; then
