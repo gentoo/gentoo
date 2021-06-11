@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PLOCALES="af am an ar as ast az be be@latin ber bg bn bn_IN br bs ca ca@valencia crh cs csb cy da de dz el en@shaw en_AU en_CA en_GB en_IE en_NZ en_ZA eo es es_AR et eu fa fi fil fo fr fr_CA frp fur fy ga gd gl gu ha he hi hr hu hy ia id ie ig is it ja jv ka kab kk km kn ko ksw ku ky la li lo lt lv mai mg mi mk ml mn mr ms my nap nb nds ne nl nn no nso oc om or pa pap pl ps pt pt_BR ro ru rue rw sa sc sco shn si sk sl so sq sr sr@ijekavianlatin sr@latin sv sw szl ta te tg th tk tl tlh tpi tr ts tt ug uk ur uz uz@cyrillic vi wa xh yi yo zgh zh_CN zh_HK zh_TW zu"
+PLOCALES="af am an ar ary as ast az be be@latin ber bg bn bn_IN br bs ca ca@valencia crh cs csb cy da de dz el en@shaw en_AU en_CA en_GB en_IE en_NZ en_ZA eo es es_AR et eu fa fi fil fo fr fr_CA frp fur fy ga gd gl gu ha he hi hr hu hy ia id ie ig is it ja jv ka kab kk km kn ko ksw ku ky la li lo lt lv mai mg mi mk ml mn mo mr ms my nap nb nds ne nl nn no nso oc om or pa pap pl ps pt pt_BR ro ru rue rw sa sc sco shn si sk sl so sq sr sr@ijekavianlatin sr@latin sv sw szl ta te tg th tk tl tlh tpi tr ts tt ug uk ur uz uz@cyrillic vi wa xh yi yo zgh zh_CN zh_HK zh_TW zu"
 
 inherit l10n
 
