@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -21,7 +21,7 @@
+     author_email='alexey.diyan@gmail.com',
+     url='http://github.com/diyan/pywinrm/',
+     license='MIT license',
+-    packages=find_packages(),
++    packages=find_packages(exclude=('winrm.tests',)),
+     package_data={'winrm.tests': ['*.ps1']},
+     install_requires=['xmltodict', 'requests>=2.9.1', 'requests_ntlm>=0.3.0', 'six'],
+     extras_require={
