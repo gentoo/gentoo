@@ -44,6 +44,7 @@ BDEPEND="test? (
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0_beta25-web-folder.patch
 	"${FILESDIR}"/${PN}-2.1.15-mpv-args.patch
+	"${FILESDIR}"/${PN}-2.1.15-unescape.patch
 )
 
 src_prepare() {
