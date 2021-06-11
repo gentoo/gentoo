@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,17 +12,21 @@ SRC_URI="http://www.pc-tools.net/files/unix/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0-Makefile.patch
+)
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	emake \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		CPPFLAGS="${CPPFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EROOT}/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 
 	dodoc README ChangeLog
 }
