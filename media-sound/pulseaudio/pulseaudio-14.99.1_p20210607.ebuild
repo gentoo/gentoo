@@ -81,10 +81,7 @@ REQUIRED_USE="
 
 # libpcre needed in some cases, bug #472228 # TODO: Read it
 RDEPEND="
-	|| (
-		virtual/libc
-		dev-libs/libpcre
-	)
+	virtual/libc
 	>=media-libs/libsndfile-1.0.20[${MULTILIB_USEDEP}]
 	X? (
 		>=x11-libs/libxcb-1.6[${MULTILIB_USEDEP}]
@@ -97,7 +94,7 @@ RDEPEND="
 	)
 	>=sys-libs/libcap-2.22-r2
 	alsa? ( >=media-libs/alsa-lib-1.0.24 )
-	glib? ( >=dev-libs/glib-2.26.0:2[${MULTILIB_USEDEP}] )
+	glib? ( >=dev-libs/glib-2.28.0:2[${MULTILIB_USEDEP}] )
 	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
 	jack? ( virtual/jack )
 	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
@@ -117,7 +114,7 @@ RDEPEND="
 	orc? ( >=dev-lang/orc-0.4.15 )
 	sox? ( >=media-libs/soxr-0.1.1 )
 	ssl? ( dev-libs/openssl:= )
-	media-libs/speexdsp[${MULTILIB_USEDEP}]
+	>=media-libs/speexdsp-1.2[${MULTILIB_USEDEP}]
 	gdbm? ( sys-libs/gdbm:= )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
 	elogind? ( sys-auth/elogind )
@@ -153,11 +150,13 @@ RDEPEND="${RDEPEND}
 	)
 "
 
+# NOTE: dev-libs/libpcre header will be used if found but no linking is done on non-Windows
 BDEPEND="
 	doc? ( app-doc/doxygen )
 	orc? ( >=dev-lang/orc-0.4.15 )
 	system-wide? ( dev-util/unifdef )
 	test? ( >=dev-libs/check-0.9.10 )
+	dev-libs/libpcre
 	sys-devel/gettext
 	sys-devel/m4
 	virtual/libiconv
