@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -9,15 +9,16 @@ DESCRIPTION="Wherever Change Directory"
 HOMEPAGE="http://waterlan.home.xs4all.nl/#WCD_ANCHOR"
 SRC_URI="http://waterlan.home.xs4all.nl/${PN}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="nls unicode"
 
 CDEPEND="
 	sys-libs/ncurses:0=[unicode?]
 	unicode? ( dev-libs/libunistring:= )"
-DEPEND="${CDEPEND}
+DEPEND="${CDEPEND}"
+BDEPEND="
 	app-text/ghostscript-gpl
 	virtual/pkgconfig
 "
