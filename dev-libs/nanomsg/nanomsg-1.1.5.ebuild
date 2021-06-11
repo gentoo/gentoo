@@ -20,9 +20,10 @@ DEPEND="doc? ( dev-ruby/asciidoctor )"
 multilib_src_prepare() {
 	eapply_user
 	# Old CPUs like HPPA fails test because of timeout
-	sed -i -e 's/inproc_shutdown 5/inproc_shutdown 10/' \
-		-e 's/ws_async_shutdown 5/ws_async_shutdown 10/' \
-		-e 's/ipc_shutdown 30/ipc_shutdown 40/' -i CMakeLists.txt || die
+	sed -i \
+		-e '/inproc_shutdown/s/5/80/' \
+		-e '/ws_async_shutdown/s/5/80/' \
+		-e '/ipc_shutdown/s/30/80/' CMakeLists.txt || die
 }
 
 multilib_src_configure() {
