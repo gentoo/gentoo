@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/705128
+https://bugs.gentoo.org/786228
 --- a/ntpd/ntp_sandbox.c
 +++ b/ntpd/ntp_sandbox.c
 @@ -463,6 +463,15 @@ int scmp_sc[] = {
@@ -17,3 +18,13 @@ https://bugs.gentoo.org/705128
  };
         {
                 for (unsigned int i = 0; i < COUNTOF(scmp_sc); i++) {
+--- a/ntpd/ntp_sandbox.c
++++ b/ntpd/ntp_sandbox.c
+@@ -355,6 +355,7 @@ int scmp_sc[] = {
+ 	SCMP_SYS(openat),	/* SUSE */
+ #endif
+ 	SCMP_SYS(poll),
++	SCMP_SYS(pread64),
+ 	SCMP_SYS(pselect6),
+ 	SCMP_SYS(read),
+ 	SCMP_SYS(recvfrom),    /* Comment this out for testing.
