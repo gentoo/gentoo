@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -113,7 +113,7 @@ src_install() {
 
 	# Create desktop entry
 	newicon bin/${PN}icon50.png ${PF}-icon50.png
-	make_desktop_entry "${ROOT}/opt/bin/eagle" "CadSoft EAGLE Layout Editor" ${PF}-icon50 "Graphics;Electronics"
+	make_desktop_entry "${EPREFIX}/opt/bin/eagle" "CadSoft EAGLE Layout Editor" ${PF}-icon50 "Graphics;Electronics"
 }
 
 pkg_postinst() {
