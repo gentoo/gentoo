@@ -53,7 +53,8 @@ src_test() {
 
 src_install() {
 	dodoc README
-	local ld="${ROOT}usr/"$(get_libdir)"/${PN}"
+
+	local ld="${EPREFIX%/}/usr/$(get_libdir)/${PN}"
 	dodir ${ld}
 	exeinto ${ld}
 	doexe libsha1.so
