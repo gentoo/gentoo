@@ -1,0 +1,12 @@
+Respect CPPFLAGS, LDFLAGS>
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ LDFLAGS=
+ all: grepcidr
+ 
+ grepcidr: grepcidr.o
+-	$(CC) $(CFLAGS) grepcidr.o -o grepcidr
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) grepcidr.o -o grepcidr
+ 
+ doc: grepcidr.1
+ 
