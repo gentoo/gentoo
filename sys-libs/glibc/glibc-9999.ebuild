@@ -1292,6 +1292,27 @@ glibc_do_src_install() {
 		fi
 	done
 
+	# In the LSB 5.0 definition, someone had the excellent idea to "standardize"
+	# the runtime loader name, see also https://xkcd.com/927/
+	# Normally, in Gentoo one should never come across executables that require this.
+	# However, binary commercial packages are known to adhere to weird practices.
+	# https://refspecs.linuxfoundation.org/LSB_5.0.0/LSB-Core-AMD64/LSB-Core-AMD64.html#BASELIB
+	local lsb_ldso_name native_ldso_name lsb_ldso_abi
+	local lsb_ldso_abi_list=(
+		# x86
+		amd64	ld-linux-x86-64.so.2	ld-lsb-x86-64.so.3
+	)
+	for (( i = 0; i < ${#lsb_ldso_abi_list[@]}; i += 3 )) ; do
+		lsb_ldso_abi=${lsb_ldso_abi_list[i]}
+		native_ldso_name=${lsb_ldso_abi_list[i+1]}
+		lsb_ldso_name=${lsb_ldso_abi_list[i+2]}
+		has ${lsb_ldso_abi} $(get_install_abis) || continue
+
+		if [[ ! -L ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} && ! -e ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} ]] ; then
+			dosym ${native_ldso_name} "/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
+		fi
+	done
+
 	# With devpts under Linux mounted properly, we do not need the pt_chown
 	# binary to be setuid.  This is because the default owners/perms will be
 	# exactly what we want.
