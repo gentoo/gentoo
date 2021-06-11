@@ -3,7 +3,9 @@
 
 EAPI="7"
 
-inherit meson-multilib optfeature udev
+PYTHON_COMPAT=( python3_{7..10} )
+
+inherit meson-multilib optfeature python-any-r1 udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
@@ -38,6 +40,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	app-doc/xmltoman
 	virtual/pkgconfig
+	${PYTHON_DEPS}
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
