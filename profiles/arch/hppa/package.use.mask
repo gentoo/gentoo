@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Matt Turner <mattst88@gentoo.org> (2021-06-10)
+# dev-python/django is not keyworded here
+dev-python/diskcache test
+
 # Rolf Eike Beer <eike@sf-mail.de> (2021-03-14)
 # dependencies not yet keyworded
 dev-ruby/globalid test

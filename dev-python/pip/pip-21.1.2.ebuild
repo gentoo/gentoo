@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit bash-completion-r1 distutils-r1
@@ -38,14 +38,16 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/cryptography[${PYTHON_USEDEP}]
-		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/pretend[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/scripttest[${PYTHON_USEDEP}]
-		<dev-python/virtualenv-20[${PYTHON_USEDEP}]
-		dev-python/werkzeug[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cryptography[${PYTHON_USEDEP}]
+			dev-python/freezegun[${PYTHON_USEDEP}]
+			dev-python/pretend[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/scripttest[${PYTHON_USEDEP}]
+			<dev-python/virtualenv-20[${PYTHON_USEDEP}]
+			dev-python/werkzeug[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+		' python3_{7..9})
 	)
 "
 
@@ -69,6 +71,12 @@ python_prepare_all() {
 python_test() {
 	if [[ ${EPYTHON} == pypy* ]]; then
 		ewarn "Skipping tests on ${EPYTHON} since they are very broken"
+		return 0
+	fi
+
+	# virtualenv-16 doesn't support python3_10 yet is still required by pip test suite
+	if [[ ${EPYTHON} == "python3.10" ]]; then
+		ewarn "Skipping tests on ${EPYTHON} due to missing dependencies"
 		return 0
 	fi
 

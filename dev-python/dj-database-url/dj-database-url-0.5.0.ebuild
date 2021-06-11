@@ -17,6 +17,6 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 distutils_enable_tests unittest

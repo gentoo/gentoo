@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 # arm{,64} either pyilmbase needs to be keyworded or imath merged and keyworded
 # to re-add python / pyalembic support
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="examples hdf5 test"
 RESTRICT="!test? ( test )"
 

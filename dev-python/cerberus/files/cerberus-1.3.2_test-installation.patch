@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,7 @@
+     ),
+     license="ISC",
+     platforms=["any"],
+-    packages=find_packages(),
++    packages=find_packages(exclude=("cerberus.tests",)),
+     include_package_data=True,
+     setup_requires=setup_requires,
+     tests_require=["pytest"],

@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_sse threads"
 RDEPEND="sci-libs/minuit"
 DEPEND="${RDEPEND}"
 
-RESTRICT=mirror
+RESTRICT="mirror"
 
 S="${WORKDIR}/${PN}R3"
 
@@ -44,7 +44,7 @@ src_configure() {
 	econf \
 		--with-minuit \
 		--without-atlas \
-		--with-sysroot="${EROOT}" \
+		--with-sysroot="${ESYSROOT}" \
 		$(use_with cpu_flags_x86_sse sse) \
 		$(use_with threads)
 }

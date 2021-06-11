@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/792228
+https://gitlab.com/libvirt/libvirt/-/commit/e3d60f7
+
+-- 
+diff --git a/src/remote/meson.build b/src/remote/meson.build
+index 9ad2f6ab1c268012a263ab4ede6410fb80e14a12..0a188268b58b7af41645799aac3ef3f156fd48ad 100644
+--- a/src/remote/meson.build
++++ b/src/remote/meson.build
+@@ -230,7 +230,7 @@ if conf.has('WITH_REMOTE')
+       'name': 'Libvirt proxy',
+       'sockprefix': 'libvirt',
+       'sockets': [ 'main', 'ro', 'admin', 'tcp', 'tls' ],
+-      'deps': libvirtd_socket_conflicts,
++      'deps': 'Conflicts=' + libvirtd_socket_conflicts,
+     }
+ 
+     openrc_init_files += {
+

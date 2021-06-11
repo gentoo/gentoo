@@ -25,6 +25,10 @@ RDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/sysconfig-fix-0.6.7.patch"
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 	local CONFIG_CHECK="~ACPI_EXTLOG"

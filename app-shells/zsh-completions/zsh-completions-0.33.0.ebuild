@@ -14,7 +14,7 @@ fi
 DESCRIPTION="Additional completion definitions for Zsh"
 HOMEPAGE="https://github.com/zsh-users/zsh-completions"
 
-LICENSE="BSD"
+LICENSE="Apache-2.0 BSD MIT ZSH"
 SLOT="0"
 
 RDEPEND="app-shells/zsh"

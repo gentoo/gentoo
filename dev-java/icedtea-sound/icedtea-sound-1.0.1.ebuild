@@ -35,7 +35,7 @@ pkg_setup() {
 src_configure() {
 	econf --with-jdk-home="${JAVA_HOME}" \
 		$(use_enable doc docs) \
-		--htmldir="${EROOT}usr/share/doc/${PF}/html"
+		--htmldir="${EPREFIX%/}/usr/share/doc/${PF}/html"
 }
 
 src_compile() {

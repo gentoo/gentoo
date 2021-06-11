@@ -962,7 +962,7 @@ postinst_sources() {
 			die "${EROOT%/}/usr/src/linux exist and is not a symlink"
 		fi
 
-		ln -sf linux-${KV_FULL} "${EROOT%/}"/usr/src/linux || die
+		ln -snf linux-${KV_FULL} "${EROOT%/}"/usr/src/linux || die
 	fi
 
 	# Don't forget to make directory for sysfs

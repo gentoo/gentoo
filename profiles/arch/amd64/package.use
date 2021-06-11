@@ -1,5 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Theo Anderson <telans@posteo.de> (2021-03-06)
+# Enable 32-bit clang runtime to ease -m32 builds with non-GCC runtime
+sys-devel/clang-runtime abi_x86_32
+sys-libs/libcxxabi abi_x86_32
+sys-libs/libcxx abi_x86_32
+sys-libs/libomp abi_x86_32
+sys-libs/llvm-libunwind abi_x86_32
 
 # Mike Gilbert <floppym@gentoo.org> (2016-11-17)
 # Enable both efi and pc by default.

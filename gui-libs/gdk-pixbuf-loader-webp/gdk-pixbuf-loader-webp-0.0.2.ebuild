@@ -12,7 +12,7 @@ S="${WORKDIR}/webp-pixbuf-loader-${PV}"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND=">x11-libs/gdk-pixbuf-2.22.0:2[${MULTILIB_USEDEP}]

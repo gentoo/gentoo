@@ -13,14 +13,15 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/openzfs/zfs.git"
 else
 	MY_PV="${PV/_rc/-rc}"
-	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz"
+	SRC_URI="https://github.com/openzfs/zfs/releases/download/zfs-${MY_PV}/zfs-${MY_PV}.tar.gz
+		https://github.com/openzfs/zfs/commit/f315d9a3ff3cc0b81c99dd9be5878a55d2e98d8e.patch -> zfs-8.0.4_5.12_compat_idmapped_mounts.patch"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/zfs-${PV%_rc?}"
 	ZFS_KERNEL_COMPAT="5.12"
 fi
 
 LICENSE="CDDL MIT debug? ( GPL-2+ )"
-SLOT="0"
+SLOT="0/${PVR}"
 IUSE="custom-cflags debug +rootfs"
 
 DEPEND=""
@@ -34,12 +35,27 @@ BDEPEND="
 	virtual/awk
 "
 
+# PDEPEND in this form is needed to trick portage suggest
+# enabling dist-kernel if only 1 package have it set
+PDEPEND="dist-kernel? ( ~sys-fs/zfs-${PV}[dist-kernel] )"
+
 RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+pkg_pretend() {
+	use rootfs || return 0
+
+	if has_version virtual/dist-kernel && ! use dist-kernel; then
+		ewarn "You have virtual/dist-kernel installed, but"
+		ewarn "USE=\"dist-kernel\" is not enabled for ${CATEGORY}/${PN}"
+		ewarn "It's recommended to globally enable dist-kernel USE flag"
+		ewarn "to auto-trigger initrd rebuilds with kernel updates"
+	fi
+}
+
 PATCHES=(
-	"${FILESDIR}"/zfs-8.0.4_5.12_compat_idmapped_mounts.patch
+	"${DISTDIR}"/zfs-8.0.4_5.12_compat_idmapped_mounts.patch
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_bio_max_segs.patch
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_tmpfile.patch
 	"${FILESDIR}"/zfs-8.0.4_5.12_compat_userns.patch

@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 
 DOCS=( AUTHORS.rst CHANGELOG.rst README.rst )
 

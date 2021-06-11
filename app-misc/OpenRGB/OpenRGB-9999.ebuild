@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,6 +12,9 @@ else
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${PV}/OpenRGB-release_${PV}.tar.bz2"
 	S="${WORKDIR}/OpenRGB-release_${PV}"
 	KEYWORDS="~amd64 ~x86"
+	PATCHES=(
+		"${FILESDIR}"/OpenRGB-0.5-build-system.patch
+	)
 fi
 
 DESCRIPTION="Open source RGB lighting control that doesn't depend on manufacturer software"
@@ -24,6 +27,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	net-libs/mbedtls:=
 	virtual/libusb:1
 "
 DEPEND="
@@ -34,12 +38,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES+=(
+	"${FILESDIR}"/OpenRGB-0.6-pkgconf.patch
+)
+
 src_prepare() {
 	default
-	rm -r dependencies/{hidapi,libusb,json}* || die
-	if [[ ${PV} != *9999* ]]; then
-		eapply "${FILESDIR}/OpenRGB-0.5-build-system.patch"
-	fi
+	rm -r dependencies/{hidapi,libusb,json,mbedtls}* || die
 }
 
 src_configure() {

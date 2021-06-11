@@ -17,7 +17,7 @@ index f751107f..69bf39d4 100755
              f'-Wextra {float_conversion} -Wno-missing-field-initializers -Wall -Wstrict-prototypes {std}'
 -            f' {werror} {optimize} {sanitize_flag} -fwrapv {stack_protector} {missing_braces}'
 -            f' -pipe {march} -fvisibility=hidden {fortify_source}'
-+            f' -pedantic-errors {optimize} {sanitize_flag} -fwrapv {stack_protector} {missing_braces}'
++            f' {optimize} {sanitize_flag} -fwrapv {stack_protector} {missing_braces}'
 +            f' {march} -fvisibility=hidden {fortify_source}'
          )
      )
@@ -31,14 +31,15 @@ index f751107f..69bf39d4 100755
      )
      ldflags = shlex.split(ldflags_)
      ldflags.append('-shared')
-@@ -789,9 +789,7 @@ def safe_makedirs(path: str) -> None:
- 
- 
+@@ -789,10 +789,7 @@
+
+
  def build_launcher(args: Options, launcher_dir: str = '.', bundle_type: str = 'source') -> None:
--    cflags = '-Wall -Werror -fpie'.split()
+-    werror = '' if args.ignore_compiler_warnings else '-pedantic-errors -Werror'
+-    cflags = f'-Wall {werror} -fpie'.split()
 -    if args.build_universal_binary:
 -        cflags += '-arch x86_64 -arch arm64'.split()
-+    cflags = '-Wall -fpie'.split()
++    cflags = f'-Wall -fpie'.split()
      cppflags = []
      libs: List[str] = []
      if args.profile or args.sanitize:

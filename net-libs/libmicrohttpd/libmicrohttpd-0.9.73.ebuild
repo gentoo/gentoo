@@ -12,6 +12,8 @@ HOMEPAGE="https://www.gnu.org/software/libmicrohttpd/"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
 S="${WORKDIR}"/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
+
 LICENSE="LGPL-2.1+"
 SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
