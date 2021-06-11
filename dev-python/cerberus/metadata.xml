@@ -5,6 +5,7 @@
 		<email>marecki@gentoo.org</email>
 		<name>Marek Szuba</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pyeve/cerberus</remote-id>
 		<remote-id type="pypi">Cerberus</remote-id>
