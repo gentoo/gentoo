@@ -1,0 +1,22 @@
+This package has been patched with patches from Debian, including one to
+include the following feature:
+
+  This new version includes a patch allowing users to define interfaces
+  profiles for the client:
+
+    profile default
+    {
+        # same as an interface statement
+    };
+
+  Which profile is to be used is passed to dhcp6c with the -P option (see
+  dhcp6c.8).
+
+  For each interface dhcp6c is asked to handle, it parses the configuration
+  file:
+    -> if it can find a corresponding interface statement, it uses this
+       statement to configure the interface
+    -> otherwise, the given profile is used
+
+ -- Jeremie Corbier <jeremie.corbier@resel.enst-bretagne.fr>  Thu, 18 Dec 2008 09:27:02 +0100
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Wide DHCPv6 server daemon
+Documentation=man:dhcp6s(8)
+After=sys-subsystem-net-devices-%i.device
+Requires=sys-subsystem-net-devices-%i.device
+
+[Service]
+ExecStart=dhcp6s -f -P /run/dhcp6c-%i.pid %I
+ExecReload=/bin/kill -HUP $MAINPID
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

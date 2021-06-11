@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Wide DHCPv6 client"
+command="/usr/sbin/dhcp6c"
+pidfile="/run/${RC_SVCNAME}.pid"
+command_args="${OPTIONS} ${INTERFACES}"
+command_args_background="-p ${pidfile}"
+
+depend() {
+	need net
+}
