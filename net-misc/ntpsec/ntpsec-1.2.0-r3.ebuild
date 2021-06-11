@@ -68,6 +68,7 @@ WAF_BINARY="${S}/waf"
 
 src_prepare() {
 	default
+
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript || die
 	if ! use libbsd ; then
