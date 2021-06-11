@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Heirloom toolchest - original Unix tools"
@@ -53,7 +54,6 @@ src_compile() {
 		CPPFLAGS="${CPPFLAGS}" \
 		LCURS="$( $(tc-getPKG_CONFIG) --libs ncurses)" \
 		LDFLAGS="${LDFLAGS}" \
-		ROOT="${ED}" \
 		DEFBIN="/usr/bin/${PN}/5bin" \
 		DEFSBIN="/usr/bin/${PN}/5bin" \
 		SV3BIN="/usr/bin/${PN}/5bin" \
