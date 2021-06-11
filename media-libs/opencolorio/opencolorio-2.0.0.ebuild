@@ -49,6 +49,7 @@ BDEPEND="
 	doc? (
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/testresources[${PYTHON_USEDEP}]
 		')
 	)
 "
