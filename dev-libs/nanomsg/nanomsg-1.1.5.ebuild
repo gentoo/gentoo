@@ -17,6 +17,14 @@ IUSE="doc"
 
 DEPEND="doc? ( dev-ruby/asciidoctor )"
 
+multilib_src_prepare() {
+	eapply_user
+	# Old CPUs like HPPA fails test because of timeout
+	sed -i -e 's/inproc_shutdown 5/inproc_shutdown 10/' \
+		-e 's/ws_async_shutdown 5/ws_async_shutdown 10/' \
+		-e 's/ipc_shutdown 30/ipc_shutdown 40/' -i CMakeLists.txt || die
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DNN_STATIC_LIB=OFF
