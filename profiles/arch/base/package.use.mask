@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
+# Has unpackaged depdencies, bug #795459
+>=media-libs/opencolorio-2.0.0 doc
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # TPM only exists on some archs.
 sys-apps/systemd tpm
