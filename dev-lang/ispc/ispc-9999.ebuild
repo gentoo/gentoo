@@ -37,7 +37,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.13.0-cmake-gentoo-release.patch"
 	"${FILESDIR}/${PN}-9999-llvm.patch"
-	"${FILESDIR}/${PN}-9999-werror.patch"
 )
 
 CMAKE_BUILD_TYPE="RelWithDebInfo"
