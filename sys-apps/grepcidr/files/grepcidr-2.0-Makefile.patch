@@ -1,4 +1,4 @@
-Respect CPPFLAGS, LDFLAGS>
+Respect CPPFLAGS, LDFLAGS
 --- a/Makefile
 +++ b/Makefile
 @@ -15,7 +15,7 @@ LDFLAGS=
