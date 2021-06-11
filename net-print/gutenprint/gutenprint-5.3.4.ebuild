@@ -28,24 +28,21 @@ BDEPEND="
 # gimp restriction: https://sourceforge.net/p/gimp-print/bugs/725/
 RDEPEND="
 	dev-lang/perl
-	cups? ( >=net-print/cups-1.1.14 )
-	gimp? (
-		media-gfx/gimp:0/2
-		x11-libs/gtk+:2
-	)
-	gtk? ( x11-libs/gtk+:2 )
+	x11-libs/gtk+:2
+	cups? ( net-print/cups )
+	gimp? ( media-gfx/gimp:0/2 )
 	readline? ( sys-libs/readline:0= )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README doc/gutenprint-users-manual.{pdf,odt} )
-PATCHES=( "${FILESDIR}"/${PN}-5.3.1-cflags.patch )
+PATCHES=( "${FILESDIR}/${PN}-5.3.1-cflags.patch" )
 
 src_configure() {
 	local myeconfargs=(
 		--enable-test
 		--disable-translated-cups-ppds
-		$(use_enable gtk libgutenprintui2)
+		$(use_with gtk libgutenprintui2)
 		$(use_with gimp gimp2)
 		$(use_with gimp gimp2-as-gutenprint)
 		$(use_with cups)
@@ -69,7 +66,6 @@ src_install() {
 	dodoc doc/FAQ.html
 	dodoc -r doc/gutenprintui2/html
 	rm -r "${ED}"/usr/share/gutenprint/doc || die
-
 	find "${ED}" -name '*.la' -delete || die
 }
 
