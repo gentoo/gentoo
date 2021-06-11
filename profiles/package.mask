@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-06-11)
+# Masked for removal in 30 days. No more supported
+<dev-lang/gnat-gpl-2017
+<dev-ada/gnat-suite-bin-2017
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2021-06-10)
 # Based on unsupported grub-legacy, replaced by
 # pvgrub2.
