@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-python/tinycss2-0.5[${PYTHON_USEDEP}]
-	<dev-python/tinycss-2[${PYTHON_USEDEP}]
+	<dev-python/tinycss2-2[${PYTHON_USEDEP}]
 	>=dev-python/inflection-0.3.0[${PYTHON_USEDEP}]
 	<dev-python/inflection-1[${PYTHON_USEDEP}]
 "
