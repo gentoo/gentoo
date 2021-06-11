@@ -1,0 +1,40 @@
+From f29aceacbd99fc905ac6d871351505e8d9aa7264 Mon Sep 17 00:00:00 2001
+From: Alexander Mikhaylenko <alexm@gnome.org>
+Date: Sun, 25 Apr 2021 20:00:58 +0000
+Subject: [PATCH] Revert "backend-x11: Use pixbuf dimensions when masking"
+
+This reverts commit f53d720c7d9199075369f085cf5a39a6b53268bc
+---
+ src/screenshot-backend-x11.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/screenshot-backend-x11.c b/src/screenshot-backend-x11.c
+index 990e715..bf32de8 100644
+--- a/src/screenshot-backend-x11.c
++++ b/src/screenshot-backend-x11.c
+@@ -206,18 +206,20 @@ mask_monitors (GdkPixbuf *pixbuf,
+                GdkWindow *root_window)
+ {
+   GdkDisplay *display;
++  GdkScreen *screen;
+   cairo_region_t *region_with_monitors;
+   cairo_region_t *invisible_region;
+   cairo_rectangle_int_t rect;
+ 
+   display = gdk_window_get_display (root_window);
++  screen = gdk_display_get_default_screen (display);
+ 
+   region_with_monitors = make_region_with_monitors (display);
+ 
+   rect.x = 0;
+   rect.y = 0;
+-  rect.width = gdk_pixbuf_get_width (pixbuf);
+-  rect.height = gdk_pixbuf_get_height (pixbuf);
++  rect.width = gdk_screen_get_width (screen);
++  rect.height = gdk_screen_get_height (screen);
+ 
+   invisible_region = cairo_region_create_rectangle (&rect);
+   cairo_region_subtract (invisible_region, region_with_monitors);
+-- 
+GitLab
+
