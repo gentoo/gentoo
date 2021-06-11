@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,11 +23,11 @@ RDEPEND="${DEPEND}
 "
 
 src_compile() {
-	emake PREFIX=/usr CC="$(tc-getCC)"
+	emake PREFIX="${EPREFIX}/usr" CC="$(tc-getCC)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr DOCPREFIX="/usr/share/doc/${PF}" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" DOCPREFIX="${EPREFIX}/usr/share/doc/${PF}" install
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
