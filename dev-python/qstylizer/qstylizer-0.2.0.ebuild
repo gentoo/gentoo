@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-python/tinycss-0.4[${PYTHON_USEDEP}]
-	<dev-python/tinycss-1[${PYTHON_USEDEP}]
+	>=dev-python/tinycss2-0.5[${PYTHON_USEDEP}]
+	<dev-python/tinycss-2[${PYTHON_USEDEP}]
 	>=dev-python/inflection-0.3.0[${PYTHON_USEDEP}]
 	<dev-python/inflection-1[${PYTHON_USEDEP}]
 "
@@ -45,8 +45,8 @@ python_prepare_all() {
 	git config user.email "larry@gentoo.org" || die
 	git config user.name "Larry the Cow" || die
 	git add . || die
-	git commit -mq "init" || die
-	git tag -aq "${PV}" -m "${PV}" || die
+	git commit -m "init" || die
+	git tag -a "${PV}" -m "${PV}" || die
 
 	distutils-r1_python_prepare_all
 }
