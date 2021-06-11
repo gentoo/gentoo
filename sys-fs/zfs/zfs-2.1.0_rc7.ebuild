@@ -153,9 +153,11 @@ src_prepare() {
 	default
 	libsoversion_check
 
-	if [[ ${PV} == "9999" ]]; then
-		eautoreconf
-	else
+	# Run unconditionally (bug #792627)
+	eautoreconf
+
+
+	if [[ ${PV} != "9999" ]]; then
 		# Set revision number
 		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
 	fi
