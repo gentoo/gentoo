@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-lang/perl
+	dev-perl/Carp-Always
 	dev-perl/libxml-perl
 	dev-perl/libwww-perl
 	dev-perl/Glib-Object-Introspection
