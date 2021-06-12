@@ -19,7 +19,9 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/twisted[${PYTHON_USEDEP}] )"
 
