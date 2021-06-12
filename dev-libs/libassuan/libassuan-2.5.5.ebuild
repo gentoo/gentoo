@@ -34,7 +34,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-static
-		GPG_ERROR_CONFIG="${EROOT}/usr/bin/${CHOST}-gpg-error-config"
+		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
 	econf "${myeconfargs[@]}"
