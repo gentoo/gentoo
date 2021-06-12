@@ -17,7 +17,6 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	>=gnome-base/libglade-2
 	dev-libs/libxml2
 	media-libs/netpbm
 	x11-apps/appres
