@@ -22,6 +22,7 @@
 </upstream>
 <use>
 	<flag name="nss">Enable signatures handling with <pkg>dev-libs/nss</pkg></flag>
+	<flag name="splash">Build the Splash graphics backend (requires <pkg>dev-libs/boost</pkg>)</flag>
 	<flag name="utils">Install command-line PDF converters and various utilities.</flag>
 </use>
 <slots>
