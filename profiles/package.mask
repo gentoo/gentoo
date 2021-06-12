@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-06-12)
+# Package miscompiles and fails to resolve most
+# types of NSS query. See bug #795579.
+=sys-auth/nss-mdns-0.15
+
 # Joonas Niilola <juippis@gentoo.org> (2021-06-12)
 # A library without consumers, old dep of tree-cleaned gnome-mplayer,
 # EAPI-5. Removal in ~30 days. #776898
