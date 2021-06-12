@@ -67,6 +67,11 @@ multilib_src_test() {
 	GVFS_DISABLE_FUSE=1 dbus-run-session emake check
 }
 
+multilib_src_install() {
+	# Fails in parallel, bug #795444
+	emake -j1 DESTDIR="${D}" install
+}
+
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
