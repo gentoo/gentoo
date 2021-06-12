@@ -10,7 +10,7 @@ DESCRIPTION="Wallpapers for the Plasma workspace"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 BDEPEND="
