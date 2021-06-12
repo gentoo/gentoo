@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2021-06-12)
+# A library without consumers, old dep of tree-cleaned gnome-mplayer,
+# EAPI-5. Removal in ~30 days. #776898
+media-libs/gmtk
+
 # Sam James <sam@gentoo.org> (2021-06-12)
 # Masked until all reverse dependencies support
 # OCaml 4.12.
