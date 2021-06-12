@@ -107,8 +107,8 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export AR PKG_CONFIG
-	emake COPTS="${CFLAGS} -D_GNU_SOURCE" CC="$(tc-getCC)"
+	tc-export AR CC PKG_CONFIG
+	emake CC="${CC}" COPTS="${CFLAGS} -D_GNU_SOURCE"
 
 	# build pppgetpass
 	cd contrib/pppgetpass || die
