@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="
 "
 LICENSE="GPL-2 IJG"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="curl fbcon ghostscript +gif lirc +png scanner +tiff X +webp"
 REQUIRED_USE="
 	ghostscript? ( tiff )
