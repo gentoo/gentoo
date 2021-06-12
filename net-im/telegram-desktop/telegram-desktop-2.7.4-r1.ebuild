@@ -61,6 +61,7 @@ REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
 	)
+	webkit? ( gtk )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -68,7 +69,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	# https://github.com/desktop-app/cmake_helpers/pull/91
 	# https://github.com/desktop-app/lib_webview/pull/2
-	"${FILESDIR}/tdesktop-2.7.3-disable-webkit-separately.patch"
+	"${FILESDIR}/tdesktop-2.7.4-disable-webkit-separately.patch"
 	# https://github.com/desktop-app/lib_webview/commit/0b4100d7cecc4e748c51f3f51ebfd1392ec3978a
 	"${FILESDIR}/tdesktop-2.7.3-webview-include-gdkx.patch"
 	# https://github.com/desktop-app/lib_webview/pull/3
@@ -108,7 +109,7 @@ src_configure() {
 		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland OFF ON)
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus OFF ON)
 		-DDESKTOP_APP_DISABLE_GTK_INTEGRATION=$(usex gtk OFF ON)
-		-DDESKTOP_APP_DISABLE_WEBKIT_INTEGRATION=$(usex webkit OFF ON)
+		-DDESKTOP_APP_DISABLE_WEBKIT=$(usex webkit OFF ON)
 		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell OFF ON)  # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant ON OFF)  # enables enchant and disables hunspell
 	)
