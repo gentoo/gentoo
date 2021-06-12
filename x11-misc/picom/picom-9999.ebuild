@@ -13,7 +13,9 @@ EGIT_REPO_URI="https://github.com/yshui/picom.git"
 LICENSE="MPL-2.0 MIT"
 SLOT="0"
 IUSE="+config-file dbus +doc +drm opengl pcre test"
-RESTRICT="!test? ( test )"
+
+REQUIRED_USE="test? ( dbus )" # avoid "DBus support not compiled in!"
+RESTRICT="test" # but tests require dbus_next
 
 RDEPEND="dev-libs/libev
 	dev-libs/uthash
