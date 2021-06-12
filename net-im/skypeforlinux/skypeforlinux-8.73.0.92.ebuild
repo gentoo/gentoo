@@ -49,6 +49,7 @@ RDEPEND="
 	x11-libs/libXrender[${MULTILIB_USEDEP}]
 	x11-libs/libXtst[${MULTILIB_USEDEP}]
 	x11-libs/libxcb[${MULTILIB_USEDEP}]
+	x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
 	x11-libs/libxkbfile[${MULTILIB_USEDEP}]
 	x11-libs/pango[${MULTILIB_USEDEP}]"
 
