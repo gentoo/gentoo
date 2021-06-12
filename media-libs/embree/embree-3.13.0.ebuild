@@ -7,29 +7,32 @@ inherit cmake flag-o-matic linux-info toolchain-funcs
 
 DESCRIPTION="Collection of high-performance ray tracing kernels"
 HOMEPAGE="https://github.com/embree/embree"
-LICENSE="Apache-2.0"
-KEYWORDS="~amd64 ~x86"
 SRC_URI="https://github.com/embree/embree/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="Apache-2.0"
 SLOT="3"
+KEYWORDS="~amd64 ~x86"
 X86_CPU_FLAGS=( sse2:sse2 sse4_2:sse4_2 avx:avx avx2:avx2 avx512dq:avx512dq )
 CPU_FLAGS=( ${X86_CPU_FLAGS[@]/#/cpu_flags_x86_} )
 IUSE="+compact-polys ispc +raymask ssp +tbb tutorial static-libs ${CPU_FLAGS[@]%:*}"
+RESTRICT="mirror"
+
 BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	ispc? ( dev-lang/ispc )
 	>=media-libs/glfw-3.2.1
+	virtual/opengl
+	ispc? ( dev-lang/ispc )
 	tbb? ( dev-cpp/tbb )
 	tutorial? (
 		>=media-libs/libpng-1.6.34:0=
-		>=media-libs/openimageio-1.8.7
+		>=media-libs/openimageio-1.8.7:0=
 		virtual/jpeg:0
 	)
-	virtual/opengl
 "
 DEPEND="${RDEPEND}"
-RESTRICT="mirror"
+
 DOCS=( CHANGELOG.md README.md readme.pdf )
 
 pkg_setup() {
@@ -62,6 +65,9 @@ src_configure() {
 	filter-flags -march=*
 
 	local mycmakeargs=(
+		# Currently Intel only host their test files on their internal network.
+		# So it seems like users can't easily get a hold of these and do
+		# regression testing on their own.
 		-DBUILD_TESTING:BOOL=OFF
 		-DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
 		-DEMBREE_BACKFACE_CULLING=OFF	   	# default
@@ -93,7 +99,7 @@ src_configure() {
 		-DEMBREE_TUTORIALS=$(usex tutorial) )
 
 	# Disable asserts
-	append-flags  -DNDEBUG
+	append-cppflags -DNDEBUG
 
 	if use tutorial; then
 		mycmakeargs+=(
