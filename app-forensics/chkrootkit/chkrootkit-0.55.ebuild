@@ -5,12 +5,12 @@ EAPI=7
 
 inherit toolchain-funcs
 
-GENTOO_PATCH="${PN}-0.54-gentoo.diff"
+GENTOO_PATCH="${PN}-0.55-gentoo.patch"
 
 DESCRIPTION="Tool to locally check for signs of a rootkit"
 HOMEPAGE="http://www.chkrootkit.org/"
-SRC_URI="ftp://ftp.pangeia.com.br/pub/seg/pac/${P}.tar.gz
-	https://dev.gentoo.org/~polynomial-c/${GENTOO_PATCH}.xz"
+SRC_URI="ftp://ftp.pangeia.com.br/pub/seg/pac/${P}.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${GENTOO_PATCH}.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
