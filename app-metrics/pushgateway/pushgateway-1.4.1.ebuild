@@ -469,7 +469,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "s/\\(\\.Revision=\\).*/\\1${GIT_COMMIT}/" .promu.yml || die
+	sed -i -e 's|{{\.Revision}}|'${GIT_COMMIT}'|g' .promu.yml || die
 }
 
 src_compile() {
