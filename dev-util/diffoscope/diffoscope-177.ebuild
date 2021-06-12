@@ -71,3 +71,5 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 # Presence if filemagic's magic.py breaks imports
 # of dev-python/python-magic: https://bugs.gentoo.org/716482
 RDEPEND+=" !dev-python/filemagic"
+
+distutils_enable_tests pytest
