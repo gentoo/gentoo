@@ -30,12 +30,15 @@ LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 nettle nls rarpd rdisc ssl static tftpd tracepath traceroute6"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn2:=[static-libs(+)] )
-	nls? ( sys-devel/gettext[static-libs(+)] )
+	nls? ( virtual/libintl[static-libs(+)] )
 "
 
 RDEPEND="
@@ -58,8 +61,6 @@ if [[ ${PV} == "99999999" ]] ; then
 		dev-libs/libxslt:0
 	"
 fi
-
-PATCHES=()
 
 src_prepare() {
 	default
