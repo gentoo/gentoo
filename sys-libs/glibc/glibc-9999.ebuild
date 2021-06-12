@@ -1309,7 +1309,7 @@ glibc_do_src_install() {
 		has ${lsb_ldso_abi} $(get_install_abis) || continue
 
 		if [[ ! -L ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} && ! -e ${ED}/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name} ]] ; then
-			dosym ${native_ldso_name} "/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
+			dosym ${native_ldso_name} "$(alt_prefix)/$(get_abi_LIBDIR ${lsb_ldso_abi})/${lsb_ldso_name}"
 		fi
 	done
 
