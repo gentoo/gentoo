@@ -25,6 +25,7 @@ IUSE="cairo cjk curl +cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png q
 RESTRICT="test"
 
 BDEPEND="
+	dev-libs/boost
 	dev-util/glib-utils
 	virtual/pkgconfig
 "
@@ -87,6 +88,8 @@ src_configure() {
 		-DBUILD_CPP_TESTS=OFF
 		-DBUILD_MANUAL_TESTS=OFF
 		-DRUN_GPERF_IF_PRESENT=OFF
+		# Required for SPLASH
+		-DENABLE_BOOST=ON
 		-DENABLE_SPLASH=ON
 		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
