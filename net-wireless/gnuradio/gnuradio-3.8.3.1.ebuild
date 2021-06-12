@@ -17,7 +17,7 @@ if [[ ${PV} =~ "9999" ]]; then
 	EGIT_BRANCH="maint-3.8"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz"
+	SRC_URI="https://github.com/gnuradio/gnuradio/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -114,14 +114,6 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cppunit-1.9.14 )
 	zeromq? ( net-libs/cppzmq )
 "
-
-PATCHES=(
-	"${FILESDIR}/gnuradio-3.8.2.0-lamda-gr-qtgui.patch"
-	"${FILESDIR}/gnuradio-3.8.2.0-lamda-gr-uhd.patch"
-	"${FILESDIR}/gnuradio-3.8.2.0-lamda-most-components.patch"
-	"${FILESDIR}/gnuradio-3.8.2.0-lamda-set-msg-handlers.patch"
-	"${FILESDIR}/gnuradio-3.8.2.0-3967.patch"
-)
 
 src_prepare() {
 	xdg_environment_reset #534582
