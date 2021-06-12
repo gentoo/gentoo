@@ -11,7 +11,7 @@ DESCRIPTION="Qt component to allow applications make use of Wayland wl-layer-she
 
 LICENSE="LGPL-3+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="
