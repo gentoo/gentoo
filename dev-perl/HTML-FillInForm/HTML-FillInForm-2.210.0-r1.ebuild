@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=MARKSTOS
-MODULE_VERSION=2.21
+DIST_AUTHOR=MARKSTOS
+DIST_VERSION=2.21
 inherit perl-module
 
 DESCRIPTION="Populates HTML Forms with data"
@@ -18,10 +18,8 @@ RDEPEND="
 	dev-perl/HTML-Parser
 	virtual/perl-Carp
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( dev-perl/CGI )
 "
 # the dep specs are rather incomplete
-
-SRC_TEST="do parallel"
