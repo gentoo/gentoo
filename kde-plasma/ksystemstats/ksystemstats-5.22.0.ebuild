@@ -15,7 +15,7 @@ DESCRIPTION="Plugin-based system monitoring daemon"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="lm-sensors networkmanager"
 
 DEPEND="
