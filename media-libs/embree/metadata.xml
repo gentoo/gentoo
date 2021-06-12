@@ -20,14 +20,15 @@
 		<flag restrict="&gt;=media-libs/embree-3.12.2" name="compact-polys">
 			Enables double indexed poly layout.
 		</flag>
-		<flag restrict="&gt;=media-libs/embree-3.12.2" name="ssp">
-			When enabled, Embree compiles with stack protection against return address overrides.
-		</flag>
 		<flag restrict="&gt;=media-libs/embree-3.12.2" name="ispc">
 			Build Embree with support for ISPC applications.
 		</flag>
 		<flag restrict="&gt;=media-libs/embree-3.12.2" name="raymask">
 			Enables ray mask support.
+		</flag>
+		<flag restrict="&gt;=media-libs/embree-3.12.2" name="ssp">
+			When enabled, Embree compiles with stack protection against return address overrides.
+			Stack protection will wield a minor performance decrease in return for higher security.
 		</flag>
 		<flag restrict="&gt;=media-libs/embree-3.12.2" name="tbb">
 			Use TBB instead of the built-in Embree tasking system.
