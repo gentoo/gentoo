@@ -11,7 +11,7 @@ DESCRIPTION="A FileHandle which supports ungetting of multiple bytes"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ia64 ppc sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

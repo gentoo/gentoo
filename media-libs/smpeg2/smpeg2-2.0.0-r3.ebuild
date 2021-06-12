@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools epatch ltprune multilib-minimal
+inherit autotools epatch multilib-minimal
 
 MY_P=smpeg-${PV}
 DESCRIPTION="SDL MPEG Player Library"
@@ -49,5 +49,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files
+	if ! use static-libs; then
+		find "${ED}" -name '*.la' -delete || die
+	fi
 }

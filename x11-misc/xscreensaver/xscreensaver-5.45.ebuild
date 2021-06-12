@@ -2,13 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop eutils flag-o-matic multilib optfeature pam
+inherit autotools flag-o-matic l10n multilib optfeature pam
 
-DESCRIPTION="A modular screen saver and locker for the X Window System"
+DESCRIPTION="modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
-SRC_URI="
-	https://www.jwz.org/xscreensaver/${P}.tar.gz
-"
+SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

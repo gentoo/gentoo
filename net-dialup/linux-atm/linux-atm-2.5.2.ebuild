@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit epatch flag-o-matic libtool linux-info ltprune
+inherit epatch flag-o-matic libtool linux-info
 
 DESCRIPTION="Tools for ATM"
 HOMEPAGE="http://linux-atm.sourceforge.net/"
@@ -41,6 +41,6 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 	dodoc doc/README* doc/atm*
 }

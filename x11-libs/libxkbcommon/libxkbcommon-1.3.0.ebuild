@@ -13,7 +13,7 @@ fi
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit meson multilib-minimal ${GIT_ECLASS} python-any-r1 virtualx
+inherit meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
 
 DESCRIPTION="keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
@@ -56,14 +56,6 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	virtx meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

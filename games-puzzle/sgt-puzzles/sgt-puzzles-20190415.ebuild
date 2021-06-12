@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils toolchain-funcs autotools
+inherit autotools desktop toolchain-funcs xdg-utils
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
@@ -22,16 +22,17 @@ HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+doc gtk3"
+IUSE="+doc"
 
 COMMON_DEPEND="
-	!gtk3? ( x11-libs/gtk+:2 )
-	gtk3? ( x11-libs/gtk+:3 )"
+	x11-libs/gtk+:3"
 
 RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-utils" # Used by builtin help patch
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}"
+
+BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 	doc? ( >=app-doc/halibut-1.2 )"
@@ -67,7 +68,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--program-prefix="${PN}_" \
-		--with-gtk=$(usex gtk3 3 2)
+		--with-gtk=3
 }
 
 src_compile() {
@@ -86,12 +87,12 @@ src_install() {
 		name=$(awk -F: '/exe:/ { print $3 }' "${file}")
 		file=${file%.R}
 		newicon -s 48 icons/${file}-48d24.png ${PN}_${file}.png
-		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "Game;LogicGame;X-${PN};"
+		make_desktop_entry "${PN}_${file}" "${name}" "${PN}_${file}" "LogicGame;X-${PN};"
 	done
 
 	if use doc ; then
-		DOCS=( puzzles.{pdf,ps,txt} )
-		HTML_DOCS=( *.html )
+		local DOCS=( puzzles.{pdf,ps,txt} )
+		local HTML_DOCS=( *.html )
 		einstalldocs
 		doinfo puzzles.info{,-1,-2,-3}
 	fi
@@ -102,14 +103,10 @@ src_install() {
 	doins "${FILESDIR}/${PN}.directory"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

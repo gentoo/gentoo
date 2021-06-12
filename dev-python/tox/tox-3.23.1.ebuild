@@ -12,7 +12,7 @@ SRC_URI="https://github.com/tox-dev/tox/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86"
 # doc disabled because of missing deps in tree
 IUSE="test"
 RESTRICT="!test? ( test )"
@@ -53,11 +53,6 @@ python_test() {
 
 		# expects python2 to exist
 		tests/unit/interpreters/test_interpreters.py::test_tox_get_python_executable
-
-		# broken without tox installed first
-		# TODO: figure out how to make importlib_metadata work
-		tests/unit/test_z_cmdline.py::test_tox_console_script
-		tests/unit/test_z_cmdline.py::test_tox_quickstart_script
 	)
 
 	[[ ${EPYTHON} != pypy3 ]] && deselect+=(
@@ -69,6 +64,6 @@ python_test() {
 		tests/integration/test_parallel_interrupt.py::test_parallel_interrupt
 	)
 
-	distutils_install_for_testing --via-root
+	distutils_install_for_testing --via-venv
 	epytest --no-network ${deselect[@]/#/--deselect }
 }

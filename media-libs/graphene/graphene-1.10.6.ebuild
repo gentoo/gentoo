@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-inherit xdg-utils meson multilib-minimal python-any-r1
+inherit xdg-utils meson-multilib python-any-r1
 
 DESCRIPTION="A thin layer of types for graphic libraries"
 HOMEPAGE="https://ebassi.github.io/graphene/"
@@ -34,9 +34,9 @@ BDEPEND="
 multilib_src_configure() {
 	# TODO: Do we want G_DISABLE_ASSERT as buildtype=release would do upstream?
 	local emesonargs=(
-		-Dgtk_doc=$(multilib_native_usex doc true false)
+		$(meson_native_use_bool doc gtk_doc)
 		-Dgobject_types=true
-		-Dintrospection=$(multilib_native_usex introspection enabled disabled)
+		$(meson_native_use_feature introspection)
 		-Dgcc_vector=true # if built-in support tests fail, it'll just not enable vector intrinsics; unfortunately this probably means disabled on clang too, due to it claiming to be <gcc-4.9
 		$(meson_use cpu_flags_x86_sse2 sse2)
 		$(meson_use cpu_flags_arm_neon arm_neon)
@@ -44,16 +44,4 @@ multilib_src_configure() {
 		-Dinstalled_tests=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

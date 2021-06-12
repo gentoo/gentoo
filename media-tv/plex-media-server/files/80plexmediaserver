@@ -1,0 +1,1 @@
+SEARCH_DIRS_MASK="/usr/lib/plexmediaserver/lib /usr/lib/plexmediaserver/Resources/Python/lib/python2.7/lib-dynload /usr/lib/plexmediaserver/Resources/Python/lib/python2.7/site-packages/lxml"

@@ -2,7 +2,7 @@
 +++ b/bootstrap.make	2013-04-11 20:35:26.710082615 +0200
 @@ -1,4 +1,4 @@
 -_xml2po = PYTHONPATH="$(shell pwd)/$(top_builddir)/xml2po:$(shell pwd)/$(top_srcdir)/xml2po:$(PYTHONPATH)" "$(shell pwd)/$(top_builddir)/xml2po/xml2po/xml2po"
-+_xml2po = PYTHONPATH="$(abs_top_builddir)/xml2po:$(abs_top_srcdir)/xml2po:$(PYTHONPATH)" "$(abs_top_builddir)/xml2po/xml2po/xml2po"
++_xml2po = PYTHONPATH="$(abs_top_builddir)/xml2po:$(abs_top_srcdir)/xml2po:$(PYTHONPATH)" "${EPYTHON}" "$(abs_top_builddir)/xml2po/xml2po/xml2po"
  
  _db2html = $(top_srcdir)/xslt/docbook/html/db2html.xsl
  _db2omf  = $(top_srcdir)/xslt/docbook/omf/db2omf.xsl
@@ -13,7 +13,7 @@
  _clean_dir = $(if $(DOC_MODULE)$(DOC_ID),clean-doc-dir)
  _doc_install_dir = $(if $(DOC_ID),$(DOC_ID),$(DOC_MODULE))
 -_xml2po = PYTHONPATH="$(shell pwd)/$(top_builddir)/xml2po:$(shell pwd)/$(top_srcdir)/xml2po:$(PYTHONPATH)" "$(shell pwd)/$(top_builddir)/xml2po/xml2po/xml2po"
-+_xml2po = PYTHONPATH="$(abs_top_builddir)/xml2po:$(abs_top_srcdir)/xml2po:$(PYTHONPATH)" "$(abs_top_builddir)/xml2po/xml2po/xml2po"
++_xml2po = PYTHONPATH="$(abs_top_builddir)/xml2po:$(abs_top_srcdir)/xml2po:$(PYTHONPATH)" "${EPYTHON}" "$(abs_top_builddir)/xml2po/xml2po/xml2po"
  _db2html = $(top_srcdir)/xslt/docbook/html/db2html.xsl
  _db2omf = $(top_srcdir)/xslt/docbook/omf/db2omf.xsl
  _chunks = $(top_srcdir)/xslt/docbook/utils/chunks.xsl
@@ -24,7 +24,7 @@
  _clean_dir = $(if $(DOC_MODULE)$(DOC_ID),clean-doc-dir)
  _doc_install_dir = $(if $(DOC_ID),$(DOC_ID),$(DOC_MODULE))
 -_xml2po = PYTHONPATH="$(shell pwd)/$(top_builddir)/xml2po:$(shell pwd)/$(top_srcdir)/xml2po:$(PYTHONPATH)" "$(shell pwd)/$(top_builddir)/xml2po/xml2po/xml2po"
-+_xml2po = PYTHONPATH="$(abs_top_builddir)/xml2po:$(abs_top_srcdir)/xml2po:$(PYTHONPATH)" "$(abs_top_builddir)/xml2po/xml2po/xml2po"
++_xml2po = PYTHONPATH="$(abs_top_builddir)/xml2po:$(abs_top_srcdir)/xml2po:$(PYTHONPATH)" "${EPYTHON}" "$(abs_top_builddir)/xml2po/xml2po/xml2po"
  _db2html = $(top_srcdir)/xslt/docbook/html/db2html.xsl
  _db2omf = $(top_srcdir)/xslt/docbook/omf/db2omf.xsl
  _chunks = $(top_srcdir)/xslt/docbook/utils/chunks.xsl

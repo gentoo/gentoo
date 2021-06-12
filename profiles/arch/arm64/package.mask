@@ -1,7 +1,2 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Joonas Niilola <juippis@gentoo.org> (2021-05-27)
-# Package not properly tested by the arch team, but ebuild needs to
-# have conditions pre-written based on arch.
-app-editors/vscode

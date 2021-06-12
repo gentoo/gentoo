@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools flag-o-matic ltprune vcs-snapshot
+inherit autotools flag-o-matic vcs-snapshot
 
 DESCRIPTION="A libav/ffmpeg based source library for easy frame accurate access"
 HOMEPAGE="https://github.com/FFMS/ffms2"
@@ -42,5 +42,5 @@ src_prepare() {
 
 src_install() {
 	default_src_install
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

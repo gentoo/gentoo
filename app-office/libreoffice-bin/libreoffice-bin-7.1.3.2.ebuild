@@ -7,7 +7,7 @@ BASE_PACKAGENAME="bin"
 BASE_AMD64_URI="https://tamiko.43-1.org/distfiles/amd64-${BASE_PACKAGENAME}-"
 BASE_X86_URI="https://tamiko.43-1.org/distfiles/x86-${BASE_PACKAGENAME}-"
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_9 )
 PYTHON_REQ_USE="xml"
 
 inherit java-pkg-opt-2 python-single-r1 prefix toolchain-funcs xdg-utils
@@ -46,7 +46,7 @@ SRC_URI="
 IUSE="gnome java kde"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 BIN_COMMON_DEPEND="
 	app-text/hunspell:0/1.7

@@ -126,13 +126,19 @@ esac
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
-	>=media-libs/gstreamer-${GST_MIN_PV}:${SLOT}[${MULTILIB_USEDEP}]
 "
 BDEPEND="
 	>=sys-apps/sed-4
 	virtual/pkgconfig
 	virtual/perl-JSON-PP
 "
+
+if [[ "${PN}" != "gstreamer" ]]; then
+	RDEPEND="
+		${RDEPEND}
+		>=media-libs/gstreamer-${GST_MIN_PV}:${SLOT}[${MULTILIB_USEDEP}]
+	"
+fi
 
 # Export common multilib phases.
 multilib_src_configure() { gstreamer_multilib_src_configure; }

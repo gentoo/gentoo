@@ -13,7 +13,7 @@ SRC_URI="https://github.com/asottile/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~hppa"
 
 RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"

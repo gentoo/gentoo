@@ -4,7 +4,7 @@
 EAPI=6
 
 AUTOTOOLS_AUTORECONF=true
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="A library for high quality time and pitch scale modification"
 HOMEPAGE="http://sbsms.sourceforge.net/"
@@ -33,5 +33,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,0 +1,171 @@
+https://github.com/google/glog/issues/649
+https://github.com/google/glog/pull/650
+https://github.com/google/glog/commit/86fea1ab254c463cbb72e5ce8bcc6855bc4e1e9c
+
+--- /src/glog/vlog_is_on.h.in
++++ /src/glog/vlog_is_on.h.in
+@@ -81,10 +81,10 @@
+ // parsing of --vmodule flag and/or SetVLOGLevel calls.
+ #define VLOG_IS_ON(verboselevel)                                \
+   __extension__  \
+-  ({ static @ac_google_namespace@::int32* vlocal__ = NULL;           \
++  ({ static @ac_google_namespace@::SiteFlag vlocal__{NULL, NULL, 0, NULL};       \
+      @ac_google_namespace@::int32 verbose_level__ = (verboselevel);                    \
+-     (vlocal__ == NULL ? @ac_google_namespace@::InitVLOG3__(&vlocal__, &FLAGS_v, \
+-                        __FILE__, verbose_level__) : *vlocal__ >= verbose_level__); \
++     (vlocal__.level == NULL ? @ac_google_namespace@::InitVLOG3__(&vlocal__, &FLAGS_v, \
++                        __FILE__, verbose_level__) : *vlocal__.level >= verbose_level__); \
+   })
+ #else
+ // GNU extensions not available, so we do not support --vmodule.
+@@ -105,6 +105,13 @@
+ 
+ // Various declarations needed for VLOG_IS_ON above: =========================
+ 
++struct SiteFlag {
++  @ac_google_namespace@::int32* level;
++  const char* base_name;
++  size_t base_len;
++  SiteFlag* next;
++};
++
+ // Helper routine which determines the logging info for a particalur VLOG site.
+ //   site_flag     is the address of the site-local pointer to the controlling
+ //                 verbosity level
+@@ -114,7 +121,7 @@
+ // We will return the return value for VLOG_IS_ON
+ // and if possible set *site_flag appropriately.
+ extern GOOGLE_GLOG_DLL_DECL bool InitVLOG3__(
+-    @ac_google_namespace@::int32** site_flag,
++    @ac_google_namespace@::SiteFlag* site_flag,
+     @ac_google_namespace@::int32* site_default,
+     const char* fname,
+     @ac_google_namespace@::int32 verbose_level);
+--- /src/logging_unittest.cc
++++ /src/logging_unittest.cc
+@@ -98,6 +98,7 @@
+ static void TestRawLogging();
+ static void LogWithLevels(int v, int severity, bool err, bool alsoerr);
+ static void TestLoggingLevels();
++static void TestVLogModule();
+ static void TestLogString();
+ static void TestLogSink();
+ static void TestLogToString();
+@@ -223,6 +224,7 @@
+   TestLogging(true);
+   TestRawLogging();
+   TestLoggingLevels();
++  TestVLogModule();
+   TestLogString();
+   TestLogSink();
+   TestLogToString();
+@@ -453,6 +455,24 @@
+   LogWithLevels(1, GLOG_FATAL, false, true);
+ }
+ 
++int TestVlogHelper() {
++  if (VLOG_IS_ON(1)) {
++    return 1;
++  }
++  return 0;
++}
++
++void TestVLogModule() {
++  int c = TestVlogHelper();
++  EXPECT_EQ(0, c);
++
++#if defined(__GNUC__)
++  EXPECT_EQ(0, SetVLOGLevel("logging_unittest", 1));
++  c = TestVlogHelper();
++  EXPECT_EQ(1, c);
++#endif
++}
++
+ TEST(DeathRawCHECK, logging) {
+   ASSERT_DEATH(RAW_CHECK(false, "failure 1"),
+                "RAW: Check false failed: failure 1");
+--- /src/vlog_is_on.cc
++++ /src/vlog_is_on.cc
+@@ -125,6 +125,8 @@
+ // Pointer to head of the VModuleInfo list.
+ // It's a map from module pattern to logging level for those module(s).
+ static VModuleInfo* vmodule_list = 0;
++static SiteFlag* cached_site_list = 0;
++
+ // Boolean initialization flag.
+ static bool inited_vmodule = false;
+ 
+@@ -190,6 +192,23 @@
+       info->vlog_level = log_level;
+       info->next = vmodule_list;
+       vmodule_list = info;
++
++      SiteFlag** item_ptr = &cached_site_list;
++      SiteFlag* item = cached_site_list;
++
++      // We traverse the list fully because the pattern can match several items
++      // from the list.
++      while (item) {
++        if (SafeFNMatch_(module_pattern, pattern_len, item->base_name,
++                         item->base_len)) {
++          // Redirect the cached value to its module override.
++          item->level = &info->vlog_level;
++          *item_ptr = item->next;  // Remove the item from the list.
++        } else {
++          item_ptr = &item->next;
++        }
++        item = *item_ptr;
++      }
+     }
+   }
+   RAW_VLOG(1, "Set VLOG level for \"%s\" to %d", module_pattern, log_level);
+@@ -198,7 +217,7 @@
+ 
+ // NOTE: Individual VLOG statements cache the integer log level pointers.
+ // NOTE: This function must not allocate memory or require any locks.
+-bool InitVLOG3__(int32** site_flag, int32* site_default,
++bool InitVLOG3__(SiteFlag* site_flag, int32* level_default,
+                  const char* fname, int32 verbose_level) {
+   MutexLock l(&vmodule_lock);
+   bool read_vmodule_flag = inited_vmodule;
+@@ -211,10 +230,17 @@
+   int old_errno = errno;
+ 
+   // site_default normally points to FLAGS_v
+-  int32* site_flag_value = site_default;
++  int32* site_flag_value = level_default;
+ 
+   // Get basename for file
+   const char* base = strrchr(fname, '/');
++
++#ifdef _WIN32
++  if (!base) {
++    base = strrchr(fname, '\\');
++  }
++#endif
++
+   base = base ? (base+1) : fname;
+   const char* base_end = strchr(base, '.');
+   size_t base_length = base_end ? size_t(base_end - base) : strlen(base);
+@@ -244,7 +270,20 @@
+   ANNOTATE_BENIGN_RACE(site_flag,
+                        "*site_flag may be written by several threads,"
+                        " but the value will be the same");
+-  if (read_vmodule_flag) *site_flag = site_flag_value;
++  if (read_vmodule_flag) {
++    site_flag->level = site_flag_value;
++    // If VLOG flag has been cached to the default site pointer,
++    // we want to add to the cached list in order to invalidate in case
++    // SetVModule is called afterwards with new modules.
++    // The performance penalty here is neglible, because InitVLOG3__ is called
++    // once per site.
++    if (site_flag_value == level_default && !site_flag->base_name) {
++      site_flag->base_name = base;
++      site_flag->base_len = base_length;
++      site_flag->next = cached_site_list;
++      cached_site_list = site_flag;
++    }
++  }
+ 
+   // restore the errno in case something recoverable went wrong during
+   // the initialization of the VLOG mechanism (see above note "protect the..")

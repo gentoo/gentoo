@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -21,6 +21,7 @@ BDEPEND="
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
+		sys-apps/dbus
 	)
 "
 
@@ -32,6 +33,10 @@ distutils_enable_sphinx docs \
 src_prepare() {
 	rm jeepney/io/tests/test_trio.py || die
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	dbus-run-session pytest -vv -ra -l || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

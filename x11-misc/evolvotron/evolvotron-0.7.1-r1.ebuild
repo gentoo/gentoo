@@ -1,14 +1,14 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit qmake-utils
 
 DESCRIPTION="Generative art image evolver"
-HOMEPAGE="
-	https://sourceforge.net/projects/evolvotron/
-"
+HOMEPAGE="https://sourceforge.net/projects/evolvotron/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+S="${WORKDIR}"/${PN}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,13 +23,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-DOCS=(
-	BUGS NEWS README TODO USAGE
+DOCS=( BUGS NEWS README TODO USAGE )
+HTML_DOCS=( evolvotron.html )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.1-gcc11-predicate-decl.patch
 )
-HTML_DOCS=(
-	evolvotron.html
-)
-S=${WORKDIR}/${PN}
 
 src_configure() {
 	eqmake5 main.pro
@@ -37,9 +36,9 @@ src_configure() {
 
 src_compile() {
 	local etsubdir
-	for etsubdir in \
-		libfunction libevolvotron evolvotron evolvotron_render evolvotron_mutate
-		do
+	local targets=( libfunction libevolvotron evolvotron evolvotron_render evolvotron_mutate )
+
+	for etsubdir in ${targets[@]}; do
 		emake sub-${etsubdir}
 	done
 }
@@ -49,6 +48,7 @@ src_install() {
 	for bin in ${PN}{,_mutate,_render}; do
 		dobin ${bin}/${bin}
 	done
+
 	doman man/man1/*
 	einstalldocs
 }

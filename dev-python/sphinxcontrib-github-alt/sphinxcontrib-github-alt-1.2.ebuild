@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit distutils-r1
 
@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~s390 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~s390 x86"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"

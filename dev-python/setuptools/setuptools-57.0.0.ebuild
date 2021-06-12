@@ -33,7 +33,7 @@ BDEPEND="
 			dev-python/pytest-xdist[${PYTHON_USEDEP}]
 			>=dev-python/virtualenv-20[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
-		' python3_{7..9} pypy3)
+		' python3_{7..10} pypy3)
 	)
 "
 PDEPEND="
@@ -46,10 +46,10 @@ DISTUTILS_IN_SOURCE_BUILD=1
 DOCS=( {CHANGES,README}.rst )
 
 python_test() {
-	# temporarily skipped, until we port all test deps
-	[[ ${EPYTHON} == python3.10 ]] && continue
+	# keep in sync with python_gen_cond_dep above!
+	has "${EPYTHON}" python3.{7..10} pypy3 || continue
 
-	distutils_install_for_testing --via-root
+	distutils_install_for_testing
 	local deselect=(
 		# network
 		'setuptools/tests/test_virtualenv.py::test_pip_upgrade_from_source[None]'

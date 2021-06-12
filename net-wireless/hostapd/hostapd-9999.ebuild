@@ -28,30 +28,29 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="internal-tls ipv6 logwatch netlink sqlite +suiteb +wps +crda"
+IUSE="internal-tls ipv6 netlink sqlite +suiteb +wps +crda"
 
 DEPEND="
-		internal-tls? ( dev-libs/libtommath )
-		!internal-tls? ( dev-libs/openssl:0=[-bindist] )
-
+	internal-tls? ( dev-libs/libtommath )
+	!internal-tls? ( dev-libs/openssl:0=[-bindist] )
 	kernel_linux? (
 		dev-libs/libnl:3
 		crda? ( net-wireless/crda )
 	)
 	netlink? ( net-libs/libnfnetlink )
 	sqlite? ( >=dev-db/sqlite-3 )"
-
 RDEPEND="${DEPEND}"
 
 pkg_pretend() {
 	if use internal-tls; then
-			ewarn "internal-tls implementation is experimental and provides fewer features"
+		ewarn "internal-tls implementation is experimental and provides fewer features"
 	fi
 }
 
 src_unpack() {
 	# Override default one because we need the SRC_URI ones even in case of 9999 ebuilds
 	default
+
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
 	fi
@@ -60,24 +59,16 @@ src_unpack() {
 src_prepare() {
 	# Allow users to apply patches to src/drivers for example,
 	# i.e. anything outside ${S}/${PN}
-	pushd ../ >/dev/null || die
+	pushd ../ &>/dev/null || die
 	default
-
-	# CVE-2019-16275 bug #696032
-	eapply "${FILESDIR}/hostapd-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
-	# CVE-2020-12695 bug #727542
-	eapply "${FILESDIR}/${P}-0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch"
-	eapply "${FILESDIR}/${P}-0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch"
-	eapply "${FILESDIR}/${P}-0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch"
-
-	popd >/dev/null || die
+	popd &>/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
 		"${S}/hostapd.conf" || die
 }
 
 src_configure() {
-	local CONFIG="${S}/.config"
+	local CONFIG="${S}"/.config
 
 	restore_config "${CONFIG}"
 	if [[ -f "${CONFIG}" ]]; then
@@ -162,6 +153,7 @@ src_configure() {
 	echo "CONFIG_IEEE80211W=y" >> ${CONFIG} || die
 	echo "CONFIG_IEEE80211N=y" >> ${CONFIG} || die
 	echo "CONFIG_IEEE80211AC=y" >> ${CONFIG} || die
+	echo "CONFIG_OCV=y" >> ${CONFIG} || die
 	echo "CONFIG_PEERKEY=y" >> ${CONFIG} || die
 	echo "CONFIG_RSN_PREAUTH=y" >> ${CONFIG} || die
 	echo "CONFIG_INTERWORKING=y" >> ${CONFIG} || die
@@ -202,7 +194,7 @@ src_configure() {
 src_compile() {
 	emake V=1
 
-	if  use internal-tls; then
+	if ! use internal-tls; then
 		emake V=1 nt_password_hash
 		emake V=1 hlr_auc_gw
 	fi
@@ -233,20 +225,18 @@ src_install() {
 	docinto examples
 	dodoc wired.conf
 
-	if use logwatch; then
-		insinto /etc/log.d/conf/services/
-		doins logwatch/${PN}.conf
+	insinto /etc/log.d/conf/services/
+	doins logwatch/${PN}.conf
 
-		exeinto /etc/log.d/scripts/services/
-		doexe logwatch/${PN}
-	fi
+	exeinto /etc/log.d/scripts/services/
+	doexe logwatch/${PN}
 
 	save_config .config
 }
 
 pkg_postinst() {
 	einfo
-	einfo "If you are running openRC you need to follow this instructions:"
+	einfo "If you are running OpenRC you need to follow this instructions:"
 	einfo "In order to use ${PN} you need to set up your wireless card"
 	einfo "for master mode in /etc/conf.d/net and then start"
 	einfo "/etc/init.d/${PN}."
@@ -267,7 +257,7 @@ pkg_postinst() {
 
 	if use wps; then
 		einfo "You have enabled Wi-Fi Protected Setup support, please"
-		einfo "read the README-WPS file in /usr/share/doc/${P}"
+		einfo "read the README-WPS file in /usr/share/doc/${PF}"
 		einfo "for info on how to use WPS"
 	fi
 }

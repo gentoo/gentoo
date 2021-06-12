@@ -7,7 +7,7 @@ VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit meson multilib-minimal python-any-r1 vala
+inherit meson-multilib python-any-r1 vala
 
 DESCRIPTION="GObject wrapper for libusb"
 HOMEPAGE="https://github.com/hughsie/libgusb"
@@ -53,22 +53,11 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
 		$(meson_use test tests)
-		-Dvapi=$(multilib_native_usex vala true false)
+		$(meson_native_use_bool vala vapi)
 		-Dusb_ids="${EPREFIX}"/usr/share/misc/usb.ids
-		-Ddocs=$(multilib_native_usex gtk-doc true false)
-		-Dintrospection=$(multilib_native_usex introspection true false)
+		$(meson_native_use_bool gtk-doc docs)
+		$(meson_native_use_bool introspection)
+
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

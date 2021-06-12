@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python style guide checker (fka pep8)"

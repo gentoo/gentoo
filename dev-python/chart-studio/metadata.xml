@@ -14,7 +14,7 @@
     graphs. Plotly is an online collaborative data analysis and graphing tool. 
   </longdescription>
   <upstream>
-    <remote-id type="pypi">plotly</remote-id>
+    <remote-id type="pypi">chart-studio</remote-id>
     <remote-id type="github">plotly/plotly.py</remote-id>
   </upstream>
 </pkgmetadata>

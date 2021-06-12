@@ -1,0 +1,29 @@
+diff --git a/Makefile.am b/Makefile.am
+index 183289f7..c791896c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -689,24 +689,6 @@ endif #FAPI
+ EXTRA_DIST += dist/tpm-udev.rules
+ 
+ install-dirs:
+-if HOSTOS_LINUX
+-if SYSD_SYSUSERS
+-	@echo "systemd-sysusers $(DESTDIR)$(sysconfdir)/sysusers.d/tpm2-tss.conf"
+-	@systemd-sysusers $(DESTDIR)$(sysconfdir)/sysusers.d/tpm2-tss.conf || echo "WARNING Failed to create the tss user and group"
+-else
+-	@echo "call make_tss_user_and_group"
+-	@$(call make_tss_user_and_group) || echo "WARNING Failed to create the tss user and group"
+-endif
+-if SYSD_TMPFILES
+-	@echo "systemd-tmpfiles --create $(DESTDIR)$(sysconfdir)/tmpfiles.d/tpm2-tss-fapi.conf"
+-	@systemd-tmpfiles --create $(DESTDIR)$(sysconfdir)/tmpfiles.d/tpm2-tss-fapi.conf|| echo "WARNING Failed to create the FAPI directories with the correct permissions"
+-else
+-	@echo "(call make_fapi_dirs) && (call set_fapi_permissions)"
+-	@-$(call make_fapi_dirs) && $(call set_fapi_permissions) || echo "WARNING Failed to create the FAPI directories with the correct permissions"
+-endif
+-	@echo "call check_fapi_dirs"
+-	@$(call check_fapi_dirs)
+-endif
+ 
+ install-data-hook: install-dirs
+ 	-if [ ! -z "$(udevrulesprefix)" ]; then \

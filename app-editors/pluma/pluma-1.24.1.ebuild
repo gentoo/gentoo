@@ -73,7 +73,7 @@ src_configure() {
 
 src_test() {
 	# FIXME: This should be handled at eclass level.
-	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
+	"${EPREFIX%/}/${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
 
 	unset DBUS_SESSION_BUS_ADDRESS
 

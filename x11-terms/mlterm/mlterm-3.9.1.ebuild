@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 
 RDEPEND="x11-libs/libICE
+	x11-libs/libxkbcommon
 	x11-libs/libSM
 	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )

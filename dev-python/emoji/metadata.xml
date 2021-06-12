@@ -5,6 +5,7 @@
 		<email>alexxy@gentoo.org</email>
 		<name>Alexey Shvetsov</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">emoji</remote-id>
 		<remote-id type="github">carpedm20/emoji</remote-id>

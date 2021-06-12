@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,10 +6,10 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit desktop distutils-r1 xdg-utils
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Advanced freedesktop.org compliant menu editor"
-HOMEPAGE="https://bluesabre.org/projects/menulibre/"
+HOMEPAGE="https://bluesabre.org/menulibre/"
 SRC_URI="https://launchpad.net/${PN}/$(ver_cut 1-2)/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"

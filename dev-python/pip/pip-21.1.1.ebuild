@@ -30,7 +30,7 @@ SRC_URI="
 LICENSE="MIT"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~x64-macos"
 SLOT="0"
-IUSE="test -vanilla"
+IUSE="test vanilla"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -40,12 +40,9 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/cryptography[${PYTHON_USEDEP}]
-		dev-python/csv23[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/scripttest[${PYTHON_USEDEP}]
 		<dev-python/virtualenv-20[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]

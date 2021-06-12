@@ -1,0 +1,59 @@
+From 783784582225e8ddfbf07993d9fc278bf08025c5 Mon Sep 17 00:00:00 2001
+From: Brian Behlendorf <behlendorf1@llnl.gov>
+Date: Thu, 3 Jun 2021 13:37:45 -0700
+Subject: [PATCH] Linux: Set spl_kmem_cache_slab_limit when page size !4K
+
+For small objects the kernel's slab implementation is very fast and
+space efficient. However, as the allocation size increases to
+require multiple pages performance suffers. The SPL kmem cache
+allocator was designed to better handle these large allocation
+sizes. Therefore, on Linux the kmem_cache_* compatibility wrappers
+prefer to use the kernel's slab allocator for small objects and
+the custom SPL kmem cache allocator for larger objects.
+
+This logic was effectively disabled for all architectures using
+a non-4K page size which caused all kmem caches to only use the
+SPL implementation. Functionally this is fine, but the SPL code
+which calculates the target number of objects per-slab does not
+take in to account that __vmalloc() always returns page-aligned
+memory. This can result in a massive amount of wasted space when
+allocating tiny objects on a platform using large pages (64k).
+
+To resolve this issue we set the spl_kmem_cache_slab_limit cutoff
+to 16K for all architectures.
+
+This particular change does not attempt to update the logic used
+to calculate the optimal number of pages per slab. This remains
+an issue which should be addressed in a future change.
+
+Reviewed-by: Matthew Ahrens <mahrens@delphix.com>
+Reviewed-by: Tony Nguyen <tony.nguyen@delphix.com>
+Signed-off-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Closes #12152
+Closes #11429
+Closes #11574
+Closes #12150
+---
+ module/os/linux/spl/spl-kmem-cache.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/module/os/linux/spl/spl-kmem-cache.c b/module/os/linux/spl/spl-kmem-cache.c
+index 3699b6a159a..2151ef008fd 100644
+--- a/module/os/linux/spl/spl-kmem-cache.c
++++ b/module/os/linux/spl/spl-kmem-cache.c
+@@ -100,13 +100,10 @@ MODULE_PARM_DESC(spl_kmem_cache_max_size, "Maximum size of slab in MB");
+  * For small objects the Linux slab allocator should be used to make the most
+  * efficient use of the memory.  However, large objects are not supported by
+  * the Linux slab and therefore the SPL implementation is preferred.  A cutoff
+- * of 16K was determined to be optimal for architectures using 4K pages.
++ * of 16K was determined to be optimal for architectures using 4K pages and
++ * to also work well on architecutres using larger 64K page sizes.
+  */
+-#if PAGE_SIZE == 4096
+ unsigned int spl_kmem_cache_slab_limit = 16384;
+-#else
+-unsigned int spl_kmem_cache_slab_limit = 0;
+-#endif
+ module_param(spl_kmem_cache_slab_limit, uint, 0644);
+ MODULE_PARM_DESC(spl_kmem_cache_slab_limit,
+ 	"Objects less than N bytes use the Linux slab");

@@ -92,7 +92,7 @@ kde-plasma/kdeplasma-addons webengine
 dev-libs/rapidjson test
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 

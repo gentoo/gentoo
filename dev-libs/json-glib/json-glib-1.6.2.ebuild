@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit gnome.org meson multilib-minimal xdg-utils
+inherit gnome.org meson-multilib xdg-utils
 
 DESCRIPTION="Library providing GLib serialization and deserialization for the JSON format"
 HOMEPAGE="https://wiki.gnome.org/Projects/JsonGlib"
@@ -38,21 +38,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dintrospection=$(multilib_native_usex introspection enabled disabled)
-		-Dgtk_doc=$(multilib_native_usex gtk-doc enabled disabled)
-		-Dman=true
+		$(meson_native_use_feature introspection)
+		$(meson_native_use_feature gtk-doc gtk_doc)
+		$(meson_native_true man)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
-multilib_src_test() {
-	meson_src_test
 }

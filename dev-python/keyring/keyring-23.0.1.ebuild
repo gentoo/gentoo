@@ -3,9 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
-
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 inherit distutils-r1
 
 DESCRIPTION="Provides access to the system keyring service"
@@ -35,5 +33,10 @@ distutils_enable_sphinx docs \
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 python_test() {
-	epytest --ignore tests/backends/test_kwallet.py
+	local deselect=(
+		# this test fails if importlib-metadata returns more than one
+		# entry, i.e. when keyring is installed already
+		tests/test_packaging.py::test_entry_point
+	)
+	epytest --ignore tests/backends/test_kwallet.py ${deselect[@]/#/--deselect }
 }

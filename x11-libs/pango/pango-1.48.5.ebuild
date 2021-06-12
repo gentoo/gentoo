@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils meson multilib-minimal toolchain-funcs xdg
+inherit gnome2-utils meson-multilib toolchain-funcs xdg
 
 DESCRIPTION="Internationalized text layout and rendering library"
 HOMEPAGE="https://www.pango.org/"
@@ -11,10 +11,9 @@ SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/pango/$(ver_cut 1-2)/${P}.tar.xz
 
 LICENSE="LGPL-2+ FTL"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
-# X USE flag is simply a stub until all revdeps have been adjusted to use X(+)
-IUSE="gtk-doc +introspection sysprof test +X"
+IUSE="gtk-doc +introspection sysprof test X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
@@ -63,28 +62,15 @@ multilib_src_configure() {
 		-Dcairo=enabled
 		-Dfontconfig=enabled
 		-Dfreetype=enabled
-		-Dgtk_doc="$(multilib_native_usex gtk-doc true false)"
-		-Dintrospection="$(multilib_native_usex introspection enabled disabled)"
+		$(meson_native_use_bool gtk-doc gtk_doc)
+		$(meson_native_use_feature introspection)
 		-Dinstall-tests=false
 		-Dlibthai=disabled
 	)
 	meson_src_configure
 }
 
-muiltilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
 multilib_src_install_all() {
-	einstalldocs
 	if use gtk-doc; then
 		mv "${ED}"/usr/share/doc/{${PN}/reference/,${PF}/html/} || die
 		rmdir "${ED}"/usr/share/doc/${PN} || die

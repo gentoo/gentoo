@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/795069
+https://github.com/tux4kids/tuxmath/pull/15
+--- a/src/menu_lan.c
++++ b/src/menu_lan.c
+@@ -39,3 +39,2 @@
+ /* lan_player_type now defined in network.h */
+-lan_player_type lan_player_info[MAX_CLIENTS];
+ 

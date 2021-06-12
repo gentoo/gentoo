@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_SINGLE_IMPL=yes
 EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
 inherit distutils-r1 git-r3
@@ -25,15 +25,14 @@ RDEPEND="
 		>=dev-python/cryptography-1.0.0[${PYTHON_USEDEP}]
 		>=dev-python/prompt_toolkit-3.0.0[${PYTHON_USEDEP}]
 		<dev-python/prompt_toolkit-4.0.0[${PYTHON_USEDEP}]
+		dev-python/pyaes[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 		>=dev-python/pymysql-0.9.2[${PYTHON_USEDEP}]
+		dev-python/pyperclip[${PYTHON_USEDEP}]
 		>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
 		<dev-python/sqlparse-0.5.0[${PYTHON_USEDEP}]
 		ssh? ( dev-python/paramiko[${PYTHON_USEDEP}] )')
 "
-BDEPEND="
-	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]') )"
-
 distutils_enable_tests pytest
 
 PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" )

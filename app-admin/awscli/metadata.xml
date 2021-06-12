@@ -5,10 +5,6 @@
 		<email>slashbeast@gentoo.org</email>
 		<name>Piotr Karbowski</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>patrick@gentoo.org</email>
-		<name>Patrick Lauer</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>

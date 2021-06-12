@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org meson multilib-minimal
+inherit gnome.org meson-multilib
 
 DESCRIPTION="Deprecated Xlib integration for GdkPixbuf"
 HOMEPAGE="https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib"
@@ -28,15 +28,7 @@ BDEPEND="
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dgtk-doc="$(multilib_native_usex gtk-doc true false)"
+		$(meson_native_use_bool gtk-doc)
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
 }

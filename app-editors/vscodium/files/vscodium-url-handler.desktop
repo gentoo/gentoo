@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=VSCodium - URL Handler
+Comment=Editing evolved
+GenericName=Code Editor
+Exec=/usr/bin/vscodium --open-url %U
+Icon=vscodium
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/vscodium;
+Keywords=vscode;

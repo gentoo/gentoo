@@ -18,7 +18,7 @@ DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug doc kerberos kernel_linux ldap nls pam perl
-	  -pg-legacytimestamp python +readline selinux +server systemd ssl
+	  pg-legacytimestamp python +readline selinux +server systemd ssl
 	  static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

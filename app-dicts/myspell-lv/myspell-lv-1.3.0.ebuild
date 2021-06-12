@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MYSPELL_DICT=(
 	"lv_LV.aff"
@@ -10,9 +10,6 @@ MYSPELL_DICT=(
 
 MYSPELL_HYPH=(
 	"hyph_lv_LV.dic"
-)
-
-MYSPELL_THES=(
 )
 
 inherit myspell-r2
@@ -24,6 +21,5 @@ SRC_URI="http://dict.dv.lv/download/lv_LV-${PV}.zip -> ${P}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
-IUSE=""
 
 DEPEND="app-arch/unzip"

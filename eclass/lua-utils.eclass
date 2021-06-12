@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua-utils.eclass
@@ -212,7 +212,9 @@ _lua_get_library_file() {
 			die "Invalid implementation: ${impl}"
 			;;
 	esac
+
 	libdir=$($(tc-getPKG_CONFIG) --variable libdir ${impl}) || die
+	libdir="${libdir#${ESYSROOT#${SYSROOT}}}"
 
 	debug-print "${FUNCNAME}: libdir = ${libdir}, libname = ${libname}"
 	echo "${libdir}/${libname}"
@@ -274,6 +276,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_CMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_CMOD_DIR = ${LUA_CMOD_DIR}"
@@ -282,6 +285,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable includedir ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_INCLUDE_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}"
@@ -298,6 +302,7 @@ _lua_export() {
 				local val
 
 				val=$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD ${impl}) || die
+				val="${val#${ESYSROOT#${SYSROOT}}}"
 
 				export LUA_LMOD_DIR=${val}
 				debug-print "${FUNCNAME}: LUA_LMOD_DIR = ${LUA_LMOD_DIR}"

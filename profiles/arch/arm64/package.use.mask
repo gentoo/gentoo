@@ -114,7 +114,7 @@ media-video/ffmpeg -rav1e
 sys-block/fio -io-uring
 
 # Michał Górny <mgorny@gentoo.org> (2020-06-19)
-# Requires dev-util/dwarves.
+# Requires dev-util/pahole.
 sys-kernel/gentoo-kernel debug
 sys-kernel/vanilla-kernel debug
 
@@ -363,10 +363,6 @@ net-libs/libpcap bluetooth
 app-text/evince dvi nautilus postscript t1lib xps
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
-
-# Steev Klimaszewski <steev@gentoo.org> (2016-03-04)
-# Chromium uses an internal tcmalloc that doesn't support this arch yet.
-www-client/chromium tcmalloc
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724

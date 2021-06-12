@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
-HOMEPAGE="https://alsa-project.org/"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/tools/${P}.tar.bz2"
 
 LICENSE="GPL-2"

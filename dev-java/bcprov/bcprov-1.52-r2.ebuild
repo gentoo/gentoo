@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 MY_P="${PN}-jdk15on-${PV/./}"
 
 DESCRIPTION="Java cryptography APIs"
-HOMEPAGE="http://www.bouncycastle.org/java.html"
+HOMEPAGE="https://www.bouncycastle.org/java.html"
 SRC_URI="http://polydistortion.net/bc/download/${MY_P}.tar.gz"
 
 LICENSE="BSD"

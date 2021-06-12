@@ -22,10 +22,7 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
 # dev-python/nbformat-5.1.{0..2} did not install package data
 BDEPEND="
 	test? (
-		|| (
-			>=dev-python/nbformat-5.1.2-r1[${PYTHON_USEDEP}]
-			<dev-python/nbformat-5.1[${PYTHON_USEDEP}]
-		)
+		>=dev-python/nbformat-5.1.2-r1[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests --install pytest

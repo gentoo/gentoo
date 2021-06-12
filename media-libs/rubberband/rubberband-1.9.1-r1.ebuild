@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib-minimal
+inherit meson-multilib
 
 DESCRIPTION="An audio time-stretching and pitch-shifting library and utility program"
 HOMEPAGE="https://www.breakfastquay.com/rubberband/"
@@ -37,7 +37,7 @@ multilib_src_configure() {
 		--buildtype=release
 		-Dfft=fftw
 		-Dresampler=libsamplerate
-		-Dstatic=$(usex static-libs true false)
+		$(meson_use static-libs static)
 		$(meson_use ladspa)
 		$(meson_use jni)
 		$(meson_use programs)
@@ -49,15 +49,6 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
-}
-
 multilib_src_install_all() {
 	! use jni && find "${ED}" -name "*.a" -delete
-	einstalldocs
 }

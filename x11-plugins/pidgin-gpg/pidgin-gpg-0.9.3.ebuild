@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="Pidgin GPG/OpenPGP (XEP-0027) plugin"
 HOMEPAGE="https://github.com/Draghtnod/Pidgin-GPG"
@@ -27,5 +27,5 @@ src_prepare() {
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name '*.la' -delete || die
 }

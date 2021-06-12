@@ -23,7 +23,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink rdma -remote static-libs usb -yydebug"
+IUSE="bluetooth dbus netlink rdma remote static-libs usb yydebug"
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )

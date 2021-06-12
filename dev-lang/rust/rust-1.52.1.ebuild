@@ -91,7 +91,7 @@ BDEPEND="${PYTHON_DEPS}
 	)
 	system-bootstrap? ( ${BOOTSTRAP_DEPEND} )
 	!system-llvm? (
-		dev-util/cmake
+		>=dev-util/cmake-3.13.4
 		dev-util/ninja
 	)
 	test? ( sys-devel/gdb )
@@ -279,10 +279,14 @@ src_configure() {
 
 	local rust_stage0_root
 	if use system-bootstrap; then
-		rust_stage0_root="$(rustc --print sysroot)"
+		local printsysroot
+		printsysroot="$(rustc --print sysroot || die "Can't determine rust's sysroot")"
+		rust_stage0_root="${printsysroot}"
 	else
 		rust_stage0_root="${WORKDIR}"/rust-stage0
 	fi
+	# in case of prefix it will be already prefixed, as --print sysroot returns full path
+	[[ -d ${rust_stage0_root} ]] || die "${rust_stage0_root} is not a directory"
 
 	rust_target="$(rust_abi)"
 
@@ -442,6 +446,11 @@ src_configure() {
 		if use system-llvm; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
+			_EOF_
+		fi
+		if [[ "${cross_toolchain}" == *-musl* ]]; then
+			cat <<- _EOF_ >> "${S}"/config.toml
+				musl-root = "$(${cross_toolchain}-gcc -print-sysroot)/usr"
 			_EOF_
 		fi
 
