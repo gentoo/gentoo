@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kscreen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 # bug #580440, last checked 5.6.3
