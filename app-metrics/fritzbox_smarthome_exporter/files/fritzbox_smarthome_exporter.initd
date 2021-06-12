@@ -1,0 +1,58 @@
+#!/sbin/openrc-run
+# Copyright 2021 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Prometheus exporter for FRITZ!Box Smart Home"
+
+EXPORTER_FLAGS=${EXPORTER_FLAGS:-""}
+EXPORTER_USER=${EXPORTER_USER:-"fritzbox_smarthome_exporter"}
+EXPORTER_GROUP=${EXPORTER_GROUP:-"fritzbox_smarthome_exporter"}
+EXPORTER_PIDFILE=${EXPORTER_PIDFILE:-"/run/${RC_SVCNAME}.pid"}
+EXPORTER_SSDARGS=${EXPORTER_SSDARGS:-"--wait 1000"}
+EXPORTER_TERMTIMEOUT=${EXPORTER_TERMTIMEOUT:-"TERM/60/KILL/5"}
+
+command="/usr/bin/fritzbox_smarthome_exporter"
+command_args="${EXPORTER_FLAGS}"
+command_background="true"
+start_stop_daemon_args="${EXPORTER_SSDARGS}"
+start_stop_daemon_args="${start_stop_daemon_args} --user ${EXPORTER_USER}"
+start_stop_daemon_args="${start_stop_daemon_args} --group ${EXPORTER_GROUP}"
+
+start_stop_daemon_args="${start_stop_daemon_args} --stdout /var/log/fritzbox_smarthome_exporter/${RC_SVCNAME}.log"
+start_stop_daemon_args="${start_stop_daemon_args} --stderr /var/log/fritzbox_smarthome_exporter/${RC_SVCNAME}.log"
+
+getconfig() {
+	local key="$1"
+	local value_default="$2"
+	local value=
+
+	if service_started; then
+		value="$(service_get_value "${key}")"
+	fi
+
+	if [ -z "${value}" ]; then
+		# Value not explicitly set
+		echo "${value_default}"
+	else
+		echo "${value}"
+	fi
+}
+
+pidfile="$(getconfig pidfile ${EXPORTER_PIDFILE})"
+retry="$(getconfig retry ${EXPORTER_TERMTIMEOUT})"
+
+depend() {
+	after net
+	use dns
+}
+
+start_pre() {
+	if [ -n "${FRITZBOX_USERNAME}" ] && [ -n "${FRITZBOX_PASSWORD}" ] ; then
+		export USERNAME="${FRITZBOX_USERNAME}"
+		export PASSWORD="${FRITZBOX_PASSWORD}"
+	fi
+}
+
+start_post() {
+	service_set_value retry "${EXPORTER_TERMTIMEOUT}"
+}
