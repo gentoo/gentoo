@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>johu@gentoo.org</email>
-		<name>Johannes Huber</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Bogofilter is a mail filter that classifies mail as spam or ham (non-spam)
 		by a statistical analysis of the message's header and content (body). The
