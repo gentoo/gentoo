@@ -1,0 +1,36 @@
+From c8b2162c0e7eb42b74811b7ed225fa0f56be4083 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 11 Jun 2021 10:30:02 +0900
+Subject: [PATCH] dirmngir: Fix build with --disable-ldap.
+
+* dirmngr/dirmngr.c (parse_rereadable_options) [USE_LDAP]:
+Conditionalize.
+
+--
+
+Reported-by: Phil Pennock
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ dirmngr/dirmngr.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dirmngr/dirmngr.c b/dirmngr/dirmngr.c
+index 04fe9e238..6a818cabc 100644
+--- a/dirmngr/dirmngr.c
++++ b/dirmngr/dirmngr.c
+@@ -736,6 +736,7 @@ parse_rereadable_options (ARGPARSE_ARGS *pargs, int reread)
+     case oRecursiveResolver: enable_recursive_resolver (1); break;
+ 
+     case oLDAPServer:
++#if USE_LDAP
+       {
+         ldap_server_t server;
+         char *p;
+@@ -757,6 +758,7 @@ parse_rereadable_options (ARGPARSE_ARGS *pargs, int reread)
+             opt.ldapservers = server;
+           }
+       }
++#endif
+       break;
+ 
+     case oKeyServer:
