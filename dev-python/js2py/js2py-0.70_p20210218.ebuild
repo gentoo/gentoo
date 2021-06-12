@@ -23,12 +23,16 @@ SRC_URI="https://github.com/PiotrDabkowski/${MY_PN}/archive/${MY_COMMIT}.tar.gz 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/pyjsparser-2.5.1[${PYTHON_USEDEP}]
 	>=dev-python/tzlocal-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 "
+BDEPEND="test? ( ${RDEPEND} )"
 
 S="${WORKDIR}/${MY_PN}-${MY_COMMIT}"
 
