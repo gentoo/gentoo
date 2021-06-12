@@ -14,7 +14,7 @@ DESCRIPTION="Useful applications for Plasma development"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
