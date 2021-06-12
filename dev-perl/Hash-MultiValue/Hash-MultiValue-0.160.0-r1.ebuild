@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=ARISTOTLE
-MODULE_VERSION=0.16
+DIST_AUTHOR=ARISTOTLE
+DIST_VERSION=0.16
 inherit perl-module
 
 DESCRIPTION="Store multiple values per key"
@@ -15,9 +15,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST="do parallel"
