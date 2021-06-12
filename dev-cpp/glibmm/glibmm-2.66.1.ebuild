@@ -3,14 +3,14 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{7..9} )
-inherit gnome.org meson multilib-minimal python-any-r1
+inherit gnome.org meson-multilib python-any-r1
 
 DESCRIPTION="C++ interface for glib2"
 HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc debug test"
 RESTRICT="!test? ( test )"
 
@@ -46,21 +46,9 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Dwarnings=min
 		-Dbuild-deprecated-api=true
-		-Dbuild-documentation=$(usex doc true false)
-		-Ddebug-refcounting=$(usex debug true false)
+		$(meson_native_use_bool doc build-documentation)
+		$(meson_use debug debug-refcounting)
 		-Dbuild-examples=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_test() {
-	meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

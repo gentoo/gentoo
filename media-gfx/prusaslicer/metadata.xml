@@ -16,6 +16,7 @@
 	<upstream>
 		<bugs-to>https://github.com/prusa3d/PrusaSlicer/issues</bugs-to>
 		<doc>https://help.prusa3d.com/en/article/general-info_1910</doc>
+		<remote-id type="cpe">cpe:/a:prusa3d:prusaslicer</remote-id>
 		<remote-id type="github">prusa3d/PrusaSlicer</remote-id>
 	</upstream>
 </pkgmetadata>

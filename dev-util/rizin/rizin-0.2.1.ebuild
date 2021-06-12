@@ -29,12 +29,14 @@ RDEPEND="
 	dev-libs/libuv:0=
 	dev-libs/libzip:0=
 	dev-libs/openssl:0=
-	dev-libs/tree-sitter
+	>=dev-libs/tree-sitter-0.19.0
 	dev-libs/xxhash
 	sys-libs/zlib:0=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
+
+PATCHES=("${FILESDIR}"/${PN}-0.2.1-no-rzpipe.patch)
 
 S="${WORKDIR}/${PN}-v${PV}"
 

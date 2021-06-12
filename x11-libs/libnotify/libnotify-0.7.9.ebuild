@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit gnome.org meson multilib-minimal xdg-utils
+inherit gnome.org meson-multilib xdg-utils
 
 DESCRIPTION="A library for sending desktop notifications"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="gtk-doc +introspection test"
 RESTRICT="!test? ( test )"
 
@@ -40,9 +40,9 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dtests="$(usex test true false)"
-		-Dintrospection="$(multilib_native_usex introspection enabled disabled)"
-		-Dgtk_doc=$(multilib_native_usex gtk-doc true false)
+		$(meson_use test tests)
+		$(meson_native_use_feature introspection)
+		$(meson_native_use_bool gtk-doc gtk_doc)
 		-Ddocbook_docs=disabled
 	)
 	meson_src_configure

@@ -14,7 +14,11 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     einfo "Prefixifying dynamic linkers..."
     for h in gcc/config/*/*linux*.h; do
 	ebegin "  Updating $h"
-	sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
+	if [[ "${h}" == gcc/config/rs6000/linux*.h ]]; then
+	    sed -i -r "s,(DYNAMIC_LINKER_PREFIX\s+)\"\",\1\"${EPREFIX}\",g" $h
+	else
+	    sed -i -r "/_DYNAMIC_LINKER/s,([\":])(/lib),\1${EPREFIX}\2,g" $h
+	fi
 	eend $?
     done
 

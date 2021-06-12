@@ -8,7 +8,4 @@
 	<upstream>
 		<remote-id type="github">tux4kids/tuxtype</remote-id>
 	</upstream>
-	<use>
-		<flag name="pango">Render fonts using <pkg>media-libs/sdl-pango</pkg> instead of <pkg>media-libs/sdl-ttf</pkg></flag>
-	</use>
 </pkgmetadata>

@@ -12,14 +12,14 @@ fi
 PYTHON_COMPAT=( python3_{7..9} )
 VIRTUALX_REQUIRED=manual
 
-inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1 virtualx
+inherit ${GIT_ECLASS} meson-multilib python-any-r1 virtualx
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
 HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S=${WORKDIR}/${PN}-v${PV}
 fi
@@ -56,18 +56,10 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	if use X; then
 		virtx meson_src_test
 	else
 		meson_src_test
 	fi
-}
-
-multilib_src_install() {
-	meson_src_install
 }

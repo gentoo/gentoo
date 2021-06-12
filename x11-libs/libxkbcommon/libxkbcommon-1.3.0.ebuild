@@ -8,12 +8,12 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/xkbcommon/${PN}"
 else
 	SRC_URI="https://xkbcommon.org/download/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit meson multilib-minimal ${GIT_ECLASS} python-any-r1 virtualx
+inherit meson-multilib ${GIT_ECLASS} python-any-r1 virtualx
 
 DESCRIPTION="keymap handling library for toolkits and window systems"
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon/"
@@ -56,14 +56,6 @@ multilib_src_configure() {
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	virtx meson_src_test
-}
-
-multilib_src_install() {
-	meson_src_install
 }

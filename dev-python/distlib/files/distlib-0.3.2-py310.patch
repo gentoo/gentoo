@@ -1,0 +1,29 @@
+From 5a9540cf58fc020b0c6a1d5c23b9b93d1abd2eb0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 29 May 2021 22:08:57 +0200
+Subject: [PATCH] Fix test_is_compatible to fix Python 3.10 support
+
+On Python 3.10, PYVER is py310 which wrongly matches the original
+'py27' <= PYVER < 'py32' condition.  Replace it with explicit match
+against known Python versions in this range.  This is probably
+the simplest and the most future-proof solution to the problem at hand.
+---
+ tests/test_wheel.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_wheel.py b/tests/test_wheel.py
+index 849e7c1..7c8f5ee 100644
+--- a/tests/test_wheel.py
++++ b/tests/test_wheel.py
+@@ -206,7 +206,7 @@ class WheelTestCase(DistlibTestCase):
+ 
+     def test_is_compatible(self):
+         fn = os.path.join(HERE, 'dummy-0.1-py27-none-any.whl')
+-        if 'py27' <= PYVER < 'py32':
++        if PYVER in ('py27', 'py30', 'py31'):
+             self.assertTrue(is_compatible(fn))
+             self.assertTrue(Wheel(fn).is_compatible())
+         # use actual wheel names from PyPI.
+-- 
+2.31.1
+

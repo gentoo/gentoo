@@ -1,0 +1,47 @@
+From 78fa1f32078eb7a56073ed49fd4b5ce481250f83 Mon Sep 17 00:00:00 2001
+From: Paul Gevers <elbrus@debian.org>
+Date: Thu, 29 Apr 2021 20:59:01 +0200
+Subject: [PATCH] Apply patch for easier review
+
+---
+ src/webkit/webkit.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/src/webkit/webkit.c b/src/webkit/webkit.c
+index 5be72130..70823359 100644
+--- a/src/webkit/webkit.c
++++ b/src/webkit/webkit.c
+@@ -369,6 +369,21 @@ liferea_webkit_impl_download_started (WebKitWebContext	*context,
+ 	enclosure_download (NULL, webkit_uri_request_get_uri (request), TRUE);
+ }
+ 
++static void
++liferea_webkit_handle_liferea_scheme (WebKitURISchemeRequest *request, gpointer user_data)
++{
++	const gchar *uri = webkit_uri_scheme_request_get_uri (request);
++	GInputStream *stream;
++	gssize length;
++	gchar *contents;
++
++	contents = g_strdup_printf ("Placeholder handler for liferea scheme. URI requested : %s", uri);
++	length = (gssize) strlen (contents);
++	stream = g_memory_input_stream_new_from_data (contents, length, g_free);
++	webkit_uri_scheme_request_finish (request, stream, length, "text/plain");
++	g_object_unref (stream);
++}
++
+ static void
+ liferea_webkit_impl_init (LifereaWebKitImpl *self)
+ {
+@@ -379,6 +394,8 @@ liferea_webkit_impl_init (LifereaWebKitImpl *self)
+ 	self->dbus_connections = NULL;
+ 	self->settings = webkit_settings_new ();
+ 	font = webkit_get_font (&fontSize);
++	webkit_web_context_register_uri_scheme (webkit_web_context_get_default(), "liferea",
++		(WebKitURISchemeRequestCallback) liferea_webkit_handle_liferea_scheme,NULL,NULL);
+ 
+ 	security_manager = webkit_web_context_get_security_manager (webkit_web_context_get_default ());
+ 	webkit_security_manager_register_uri_scheme_as_local (security_manager, "liferea");
+-- 
+GitLab
+

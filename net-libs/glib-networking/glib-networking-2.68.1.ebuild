@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org gnome2-utils meson multilib-minimal xdg
+inherit gnome.org gnome2-utils meson-multilib xdg
 
 DESCRIPTION="Network-related giomodules for glib"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="+gnome +libproxy +ssl test"
 RESTRICT="!test? ( test )"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.67.0:2[${MULTILIB_USEDEP}]
@@ -53,14 +53,6 @@ multilib_src_configure() {
 		-Dstatic_modules=false
 	)
 	meson_src_configure
-}
-
-multilib_src_compile() {
-	meson_src_compile
-}
-
-multilib_src_install() {
-	meson_src_install
 }
 
 multilib_src_test() {

@@ -15,7 +15,7 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="appstream +calculator +calendar +fontconfig geolocation gps screencast
 +semantic-desktop systemd telemetry"
 
@@ -144,7 +144,7 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
+	"${FILESDIR}/${P}-split-libkworkspace.patch" # downstream patch
 	"${FILESDIR}/${P}-revert-activate-krunner.patch" # bug 767478
 	"${FILESDIR}/${P}-transparency.patch" # KDE-bug 434202
 	"${FILESDIR}/${P}-transparency-panelConfig.patch" # KDE-bug 434285

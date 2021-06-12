@@ -12,7 +12,7 @@ if [[ ${PV} = *9999 ]]; then
 else
 	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 inherit cmake desktop python-single-r1 qmake-utils xdg
 
@@ -84,7 +84,7 @@ COMMON_DEPEND="
 			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
 			>=dev-python/qscintilla-python-2.10.3[${PYTHON_MULTI_USEDEP}]
 			dev-python/requests[${PYTHON_MULTI_USEDEP}]
-			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+			<dev-python/sip-5:=[${PYTHON_MULTI_USEDEP}]
 			dev-python/six[${PYTHON_MULTI_USEDEP}]
 			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
 			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )

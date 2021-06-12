@@ -1,4 +1,4 @@
-From 9f1ef23f34a7ceca1063606cfc749e4d32bef81c Mon Sep 17 00:00:00 2001
+From 41c4a0869d68d894cbe74a63612df75fd1e93bdf Mon Sep 17 00:00:00 2001
 From: Michael Orlitzky <michael@orlitzky.com>
 Date: Mon, 19 Apr 2021 16:56:54 -0400
 Subject: [PATCH 1/1] CMake/FindGMP.cmake: compile a test program to check the
@@ -7,18 +7,18 @@ Subject: [PATCH 1/1] CMake/FindGMP.cmake: compile a test program to check the
 The existing GMP version check consists of grepping the contents of
 the gmp.h header to parse out a few constants. This test fails, at
 least, on Gentoo, where the usual header file is a wrapper that
-includes the true header (to allow for simultaneous 32/64-bit
-support).
+includes the true header to allow for simultaneous 32/64-bit
+support.
 
-This commit updates the FindGMP check to compile a test program
-against gmp.h that compares the version bounds within C, and reports
-success or failure as the return value from main().
+This commit updates FindGMP to compile a test program against gmp.h
+that compares version constants using the C preprocessor. If GMP is
+too old, the test program will fail to compile and CMake will know.
 ---
- CMake/FindGMP.cmake | 97 +++++++++++++++++++++++++--------------------
- 1 file changed, 53 insertions(+), 44 deletions(-)
+ CMake/FindGMP.cmake | 91 +++++++++++++++++++++++----------------------
+ 1 file changed, 47 insertions(+), 44 deletions(-)
 
 diff --git a/CMake/FindGMP.cmake b/CMake/FindGMP.cmake
-index ce4df70f5..bd2871ca3 100644
+index ce4df70f5..951151274 100644
 --- a/CMake/FindGMP.cmake
 +++ b/CMake/FindGMP.cmake
 @@ -2,28 +2,23 @@
@@ -55,7 +55,7 @@ index ce4df70f5..bd2871ca3 100644
    endif()
    if(NOT GMP_FIND_VERSION_PATCH)
      set(GMP_FIND_VERSION_PATCH 0)
-@@ -32,43 +27,57 @@ if(NOT GMP_FIND_VERSION)
+@@ -32,43 +27,51 @@ if(NOT GMP_FIND_VERSION)
      "${GMP_FIND_VERSION_MAJOR}.${GMP_FIND_VERSION_MINOR}.${GMP_FIND_VERSION_PATCH}")
  endif()
  
@@ -102,42 +102,36 @@ index ce4df70f5..bd2871ca3 100644
 +
 +if(GMP_INCLUDE_DIRS AND GMP_LIBRARIES)
 +
-+  # Return "1" if the version is OK, or "0" otherwise.  This is
-+  # opposite the usual C program conventions, but makes the purpose of
-+  # the result variable semantically clear. We create an integer using
-+  # a few basic GMP functions to ensure that we can actually link against
-+  # the GMP library.
++  # This program will fail to compile if GMP is too old.
++  # We prefer to perform this "test" at compile-time to
++  # avoid problems with e.g. try_run() during cross-compilation.
 +  file(WRITE ${PROJECT_BINARY_DIR}/gmp-version-check.c ""
 +  "#include <gmp.h>\n"
 +  "\n"
-+  "int main(int argc, char **argv) {\n"
-+  "  mpz_t x;\n"
-+  "  mpz_init_set_str(x, \"7612058254738945\", 10);\n"
-+  "  mpz_clear(x);\n"
-+  "  if (__GNU_MP_VERSION < ${GMP_FIND_VERSION_MAJOR}) {\n"
-+  "    return 0;\n"
-+  "  }\n"
-+  "  else {\n"
-+  "    if (__GNU_MP_VERSION_MINOR < ${GMP_FIND_VERSION_MINOR}) {\n"
-+  "      return 0;\n"
-+  "    }\n"
-+  "    else {\n"
-+  "      if (__GNU_MP_VERSION_PATCHLEVEL < ${GMP_FIND_VERSION_PATCH}) {\n"
-+  "        return 0;\n"
-+  "      }\n"
-+  "    }\n"
-+  "  }\n"
-+  "  return 1;\n"
-+  "}\n")
++  "#define GMP_FIND_VERSION_MAJOR ${GMP_FIND_VERSION_MAJOR}\n"
++  "#define GMP_FIND_VERSION_MINOR ${GMP_FIND_VERSION_MINOR}\n"
++  "#define GMP_FIND_VERSION_PATCH ${GMP_FIND_VERSION_PATCH}\n"
++  "\n"
++  "#if __GNU_MP_VERSION < GMP_FIND_VERSION_MAJOR\n"
++  "#error insufficient GMP major version\n"
++  "#elif __GNU_MP_VERSION == GMP_FIND_VERSION_MAJOR\n"
++  "#if __GNU_MP_VERSION_MINOR < GMP_FIND_VERSION_MINOR\n"
++  "#error insufficient GMP minor version\n"
++  "#elif __GNU_MP_VERSION_MINOR == GMP_FIND_VERSION_MINOR\n"
++  "#if __GNU_MP_VERSION_PATCH < GMP_FIND_VERSION_PATCH\n"
++  "#error insufficient GMP patch version\n"
++  "#endif\n"
++  "#endif\n"
++  "#endif\n"
++  "\n"
++  "int main(int argc, char** argv) { return 0; }\n")
 +
-+  # Try to run the test program above with the appropriate version
++  # Try to compile the test program above with the appropriate version
 +  # strings substituted in.
-+  try_run(GMP_VERSION_OK
-+          GMP_VERSION_COMPILE_OK
++  try_compile(GMP_VERSION_OK
 +          "${PROJECT_BINARY_DIR}"
 +          "${PROJECT_BINARY_DIR}/gmp-version-check.c"
-+          CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${GMP_INCLUDE_DIRS}"
-+          LINK_LIBRARIES "${GMP_LIBRARIES}")
++          CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${GMP_INCLUDE_DIRS}")
  endif()
  
 -find_library(GMP_LIBRARIES gmp PATHS $ENV{GMPDIR} ${LIB_INSTALL_DIR})

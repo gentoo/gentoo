@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.9.73-test-ssl3.patch )
+
 S=${WORKDIR}/${MY_P}
 
 DOCS="AUTHORS NEWS README ChangeLog"

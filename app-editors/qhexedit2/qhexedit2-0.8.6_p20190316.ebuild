@@ -30,7 +30,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	python? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
-		dev-python/sip[${PYTHON_USEDEP}]
+		<dev-python/sip-5[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 		)
 "

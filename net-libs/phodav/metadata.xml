@@ -9,7 +9,4 @@
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
-	<use>
-		<flag name="spice">Install the spice-webdavd guest agent</flag>
-	</use>
 </pkgmetadata>

@@ -1,0 +1,68 @@
+These are integers and use of "is" with pygame-2 ignores input events.
+
+https://bugs.gentoo.org/794211
+
+See also: pygame-2.0.1/buildconfig/pygame-stubs/constants.pyi
+--- a/pathological.py
++++ b/pathological.py
+@@ -133,3 +133,3 @@
+ 	if colorkey is not None:
+-		if colorkey is -1:
++		if colorkey == -1:
+ 			colorkey = image.get_at((0,0))
+@@ -1395,6 +1395,6 @@
+ 			for event in pygame.event.get():
+-				if event.type is QUIT:
++				if event.type == QUIT:
+ 					return -4
+-				elif event.type is KEYDOWN:
+-					if event.key is K_ESCAPE: return -3
++				elif event.type == KEYDOWN:
++					if event.key == K_ESCAPE: return -3
+ 					elif event.key == ord('n'): return 2
+@@ -1419,3 +1419,3 @@
+ 
+-				elif event.type is MOUSEBUTTONDOWN:
++				elif event.type == MOUSEBUTTONDOWN:
+ 					if self.paused:
+@@ -1713,5 +1713,5 @@
+ 			for event in pygame.event.get():
+-				if event.type is QUIT:
++				if event.type == QUIT:
+ 					return -2
+-				elif event.type is KEYDOWN:
++				elif event.type == KEYDOWN:
+ 					if event.key == K_ESCAPE: return -1
+@@ -1744,3 +1744,3 @@
+ 					return 1
+-				elif event.type is MOUSEBUTTONDOWN:
++				elif event.type == MOUSEBUTTONDOWN:
+ 					return 1
+@@ -1799,5 +1799,5 @@
+ 		for event in pygame.event.get():
+-			if event.type is QUIT:
++			if event.type == QUIT:
+ 				return None
+-			elif event.type is KEYUP:
++			elif event.type == KEYUP:
+ 				if event.key == K_LSHIFT:
+@@ -1806,3 +1806,3 @@
+ 					shift_state &= ~KMOD_RSHIFT
+-			elif event.type is KEYDOWN:
++			elif event.type == KEYDOWN:
+ 				if event.key == K_LSHIFT:
+@@ -1994,3 +1994,3 @@
+ 			for event in pygame.event.get():
+-				if event.type is QUIT:
++				if event.type == QUIT:
+ 					if self.curpage == 1:
+@@ -1999,3 +1999,3 @@
+ 					return -2
+-				elif event.type is KEYDOWN:
++				elif event.type == KEYDOWN:
+ 					if event.key == K_F2:
+@@ -2032,3 +2032,3 @@
+ 					continue
+-				elif event.type is MOUSEBUTTONDOWN:
++				elif event.type == MOUSEBUTTONDOWN:
+ 					if self.curpage == 1:

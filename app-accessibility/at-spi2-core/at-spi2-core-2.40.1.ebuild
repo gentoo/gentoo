@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org meson multilib-minimal systemd virtualx xdg
+inherit gnome.org meson-multilib systemd virtualx xdg
 
 DESCRIPTION="D-Bus accessibility specifications and registration daemon"
 HOMEPAGE="https://wiki.gnome.org/Accessibility"
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Accessibility"
 LICENSE="LGPL-2.1+"
 SLOT="2"
 IUSE="X gtk-doc +introspection"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]
@@ -42,21 +42,13 @@ PATCHES=(
 multilib_src_configure() {
 	local emesonargs=(
 		-Dsystemd_user_dir="$(systemd_get_userunitdir)"
-		-Ddocs=$(multilib_native_usex gtk-doc true false)
+		$(meson_native_use_bool gtk-doc docs)
 		-Dintrospection=$(multilib_native_usex introspection)
 		-Dx11=$(usex X)
 	)
 	meson_src_configure
 }
 
-multilib_src_compile() {
-	meson_src_compile
-}
-
 multilib_src_test() {
 	virtx dbus-run-session meson test -C "${BUILD_DIR}"
-}
-
-multilib_src_install() {
-	meson_src_install
 }

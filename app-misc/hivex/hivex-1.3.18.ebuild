@@ -8,7 +8,7 @@ RUBY_OPTIONAL=yes
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit eutils perl-module ruby-ng python-single-r1
+inherit l10n perl-module ruby-ng python-single-r1
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="https://libguestfs.org"
@@ -20,27 +20,28 @@ KEYWORDS="~amd64 ~x86"
 IUSE="ocaml readline +perl python test ruby"
 
 RDEPEND="
+	dev-libs/libxml2:2
 	virtual/libiconv
 	virtual/libintl
-	dev-libs/libxml2:2
 	ocaml? ( dev-lang/ocaml[ocamlopt]
 			 dev-ml/findlib[ocamlopt]
 			 )
-	readline? ( sys-libs/readline:0 )
 	perl? (
 		dev-lang/perl:=
 		dev-perl/IO-stringy
 	)
-	ruby? ( $(ruby_implementations_depend) )
 	python? ( ${PYTHON_DEPS} )
+	readline? ( sys-libs/readline:0 )
+	ruby? ( $(ruby_implementations_depend) )
 	"
 
 DEPEND="${RDEPEND}
 	perl? (
-		test? ( dev-perl/Pod-Coverage
-			dev-perl/Test-Pod-Coverage )
-		  )
-	"
+		test? (
+			dev-perl/Pod-Coverage
+			dev-perl/Test-Pod-Coverage
+		)
+	)"
 
 ruby_add_bdepend "ruby? ( dev-ruby/rake
 			virtual/rubygems
@@ -62,11 +63,11 @@ pkg_setup() {
 
 src_unpack() {
 	default
-	cp -prlP "${WORKDIR}/${P}" "${WORKDIR}"/all
+	cp -prlP "${WORKDIR}/${P}" "${WORKDIR}"/all || die
 }
 
 src_configure() {
-	ruby-ng_src_configure
+	use ruby && ruby-ng_src_configure
 
 	if use perl; then
 		pushd perl
@@ -90,7 +91,8 @@ src_configure() {
 
 src_compile() {
 	default
-	ruby-ng_src_compile
+
+	use ruby && ruby-ng_src_compile
 }
 
 src_install() {
@@ -101,7 +103,7 @@ src_install() {
 		python_optimize
 	fi
 
-	ruby-ng_src_install
+	use ruby && ruby-ng_src_install
 
 	if use perl; then
 		perl_delete_localpod

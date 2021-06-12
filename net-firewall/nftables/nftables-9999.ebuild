@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit autotools linux-info python-r1 systemd
 
@@ -20,7 +20,7 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	"
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -51,6 +51,10 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	libedit? ( !readline )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+)
 
 python_make() {
 	emake \

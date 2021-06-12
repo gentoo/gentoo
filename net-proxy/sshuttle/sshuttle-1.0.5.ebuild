@@ -48,13 +48,7 @@ python_compile_all() {
 python_install_all() {
 	HTML_DOCS=( docs/_build/html/. )
 
-	# Sphinx 4.0 changed the layout for installed man pages
-	# https://bugs.gentoo.org/789417
-	if has_version '>=dev-python/sphinx-4.0.0' ; then
-		doman docs/_build/man/1/*
-	else
-		doman docs/_build/man/*
-	fi
+	doman docs/_build/man/*
 
 	distutils-r1_python_install_all
 }

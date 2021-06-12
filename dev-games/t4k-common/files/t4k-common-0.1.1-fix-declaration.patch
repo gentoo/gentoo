@@ -1,0 +1,10 @@
+https://bugs.gentoo.org/759574
+--- a/src/t4k_menu.c	2013-12-02 10:50:23.000000000 -0500
++++ b/src/t4k_menu.c	2021-01-04 19:49:20.561524579 -0500
+@@ -152,5 +152,5 @@
+ char*           find_longest_text(MenuNode* menu, int* length);
+ int             find_longest_menu_page(MenuNode* menu);
+-void            set_font_size();
++void            set_font_size(bool uniform);
+ void            prerender_menu(MenuNode* menu);
+ int		min(int a, int b);

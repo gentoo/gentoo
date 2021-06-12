@@ -106,7 +106,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/setuptools-23.1.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		<dev-python/sip-5[${PYTHON_MULTI_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"

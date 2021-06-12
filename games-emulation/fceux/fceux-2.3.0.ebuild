@@ -20,7 +20,7 @@ RDEPEND="
 	${LUA_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtopengl:5
+	dev-qt/qtopengl:5[-gles2-only]
 	dev-qt/qtwidgets:5
 	media-libs/libglvnd
 	media-libs/libsdl2[joystick,sound,threads,video]

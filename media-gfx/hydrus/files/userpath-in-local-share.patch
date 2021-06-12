@@ -1,0 +1,12 @@
+diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
+index 05fff23..d68fc06 100644
+--- a/hydrus/core/HydrusConstants.py
++++ b/hydrus/core/HydrusConstants.py
+@@ -67,6 +67,7 @@ if USERPATH_DB_DIR == desired_userpath_db_dir:
+     
+     USERPATH_DB_DIR = None
+     
++USERPATH_DB_DIR = os.path.expanduser ( os.path.join( '~', '.local', 'share', 'hydrus', 'db' ) )
+ 
+ LICENSE_PATH = os.path.join( BASE_DIR, 'license.txt' )
+ 

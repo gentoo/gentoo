@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -60,6 +60,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-doc-link.patch"
+	"${FILESDIR}/${P}-py310.patch"
 )
 
 distutils_enable_tests pytest

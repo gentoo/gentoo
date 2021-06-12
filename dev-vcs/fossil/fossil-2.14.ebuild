@@ -12,7 +12,7 @@ SRC_URI="https://fossil-scm.org/home/uv/fossil-src-${PV}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE="debug fusefs json -miniz system-sqlite +ssl static tcl tcl-stubs
+IUSE="debug fusefs json miniz system-sqlite +ssl static tcl tcl-stubs
 	  tcl-private-stubs th1-docs th1-hooks"
 
 REQUIRED_USE="ssl? ( !miniz )"

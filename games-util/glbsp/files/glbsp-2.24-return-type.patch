@@ -1,0 +1,9 @@
+Fix build failure with USE=fltk due to wrong return type.
+https://bugs.gentoo.org/627412
+--- a/nodeview/path.cc
++++ b/nodeview/path.cc
+@@ -47,3 +47,3 @@
+     PrintWarn("Unable to open path file: %s\n", strerror(errno));
+-    return false;
++    return NULL;
+   }

@@ -14,6 +14,9 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]"
+
 distutils_enable_tests pytest
 
 python_prepare_all() {

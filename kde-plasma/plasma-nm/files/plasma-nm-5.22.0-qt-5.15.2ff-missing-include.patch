@@ -1,0 +1,30 @@
+From 55ab9bfd83fb74d14e26cc1a3d8f257bc47c45ea Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heiko.becker@kde.org>
+Date: Sun, 6 Jun 2021 19:34:16 +0200
+Subject: [PATCH] Add missing QFile include
+
+Used since 40d056195bc400bc4e249cd152993000011687c2. I suppose it's
+implicitly pulled in some cases, but for me the build fails against
+Qt from KDE's patch collection with "libs/handler.cpp:704:5: error:
+'QFile' was not declared in this scope;".
+
+(cherry picked from commit 6cac88b61da1277dcb9a801e47f2d69829c68086)
+---
+ libs/handler.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libs/handler.cpp b/libs/handler.cpp
+index 470b0fc1..7c8302be 100644
+--- a/libs/handler.cpp
++++ b/libs/handler.cpp
+@@ -45,6 +45,7 @@
+ #include <QDBusError>
+ #include <QDBusMetaType>
+ #include <QDBusPendingReply>
++#include <QFile>
+ #include <QIcon>
+ 
+ #include <KNotification>
+-- 
+GitLab
+

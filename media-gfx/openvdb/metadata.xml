@@ -27,6 +27,9 @@
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="abi7-compat">
 			Disables newer features to maintain compatibility with ABI7.
 		</flag>
+		<flag restrict="&gt;=media-gfx/openvdb-8.0.0" name="abi8-compat">
+			Disables newer features to maintain compatibility with ABI8.
+		</flag>
 		<flag restrict="&gt;=media-gfx/openvdb-7.0.0" name="utils">
 			Build utility binaries
 		</flag>

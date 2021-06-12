@@ -33,9 +33,12 @@ src_prepare() {
 src_configure() {
 	append-cxxflags -std=c++11 #566450
 
-	local myeconfargs=(
+	econf \
+		--disable-static \
 		$(use_enable doc api-docs)
-	)
+}
 
-	econf "${myeconfargs[@]}"
+src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -41,6 +41,7 @@ src_unpack() {
 
 src_prepare() {
 	php-ext-source-r3_src_prepare
+
 	local slot
 	for slot in $(php_get_slots); do
 		php_init_slot_env "${slot}"
@@ -55,10 +56,12 @@ src_install() {
 		insinto "${EXT_DIR}"
 		doins "src/.libs/${PHP_EXT_NAME}.so"
 	done
+
 	php-ext-source-r3_createinifiles
 	einstalldocs
+
 	if use doc ; then
-		docinto /usr/share/doc/${PF}/html
+		docinto html
 		dodoc -r docs/*
 	fi
 }

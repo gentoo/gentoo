@@ -65,6 +65,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-perl/File-Which
 			dev-perl/Parse-RecDescent
 			dev-perl/Test-Differences )"
+BDEPEND="dev-perl/Module-Build"
 
 mydoc="doc/biber.tex"
 

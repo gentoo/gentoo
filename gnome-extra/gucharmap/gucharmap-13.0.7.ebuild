@@ -14,7 +14,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="2.90"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ppc ppc64 sparc x86"
 
 UNICODE_VERSION="13.0"
 
@@ -27,7 +27,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	gtk-doc? ( >=dev-util/gtk-doc-1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
-	$(vala_depend)"
+	vala? ( $(vala_depend) )"
 
 DEPEND="=app-i18n/unicode-data-${UNICODE_VERSION}*
 	>=dev-libs/glib-2.32:2

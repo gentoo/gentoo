@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-ADA_COMPAT=( gnat_201{8,9} gnat_2020 )
+ADA_COMPAT=( gnat_201{8,9} gnat_202{0..1} )
 inherit ada multiprocessing autotools
 
 MYP=${P}-20200429-19987-src

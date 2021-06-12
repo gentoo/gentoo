@@ -1,0 +1,12 @@
+diff -dupr a/setup.py b/setup.py
+--- a/setup.py	2021-05-29 19:21:13.876463476 +0200
++++ b/setup.py	2021-05-29 19:21:21.986626313 +0200
+@@ -74,7 +74,7 @@ setup(
+     author_email=__author_email__,
+     url=__url__,
+     license=__license__,
+-    python_requires=">=3.6, ",
++    python_requires=">=3.6",
+     install_requires=[
+         'et_xmlfile',
+         ],

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/2048"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="

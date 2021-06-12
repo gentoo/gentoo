@@ -24,5 +24,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">containerd/containerd</remote-id>
+		<remote-id type="cpe">cpe:/a:linuxfoundation:containerd</remote-id>
 	</upstream>
 </pkgmetadata>

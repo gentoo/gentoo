@@ -42,6 +42,7 @@ DEPEND="
 			net-nds/openldap[sasl]
 		)
 	)
+	nls? ( virtual/libintl )
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
@@ -60,6 +61,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/bison
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 S="${WORKDIR}/${MY_P}"

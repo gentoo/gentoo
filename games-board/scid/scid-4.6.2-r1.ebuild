@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 inherit desktop edos2unix toolchain-funcs gnome2-utils python-any-r1
 
 DESCRIPTION="a free chess database application"

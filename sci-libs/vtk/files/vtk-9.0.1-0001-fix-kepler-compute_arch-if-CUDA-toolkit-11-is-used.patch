@@ -1,0 +1,32 @@
+From 33d9b7ded14ce36e3f63810f3403623ee5c2059c Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sun, 10 Jan 2021 20:29:56 +0100
+Subject: [PATCH] fix kepler compute_arch if CUDA toolkit >=11 is used.
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ .../vtkm/vtkvtkm/vtk-m/CMake/VTKmDeviceAdapters.cmake     | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmDeviceAdapters.cmake b/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmDeviceAdapters.cmake
+index ff0b2581..e565e783 100644
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmDeviceAdapters.cmake
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmDeviceAdapters.cmake
+@@ -229,8 +229,12 @@ if(VTKm_ENABLE_CUDA)
+     if(VTKm_CUDA_Architecture STREQUAL "fermi")
+       set(arch_flags --generate-code=arch=compute_20,code=sm_20)
+     elseif(VTKm_CUDA_Architecture STREQUAL "kepler")
+-      set(arch_flags --generate-code=arch=compute_30,code=sm_30
+-                     --generate-code=arch=compute_35,code=sm_35)
++      if(CMAKE_CUDA_COMPILER_VERSION VERSION_LESS 11.0)
++        set(arch_flags --generate-code=arch=compute_30,code=sm_30
++                       --generate-code=arch=compute_35,code=sm_35)
++      else()
++        set(arch_flags --generate-code=arch=compute_35,code=sm_35)
++      endif()
+     elseif(VTKm_CUDA_Architecture STREQUAL "maxwell")
+       set(arch_flags --generate-code=arch=compute_50,code=sm_50)
+     elseif(VTKm_CUDA_Architecture STREQUAL "pascal")
+-- 
+2.30.0
+

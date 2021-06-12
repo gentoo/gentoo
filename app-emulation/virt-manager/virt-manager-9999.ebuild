@@ -16,6 +16,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
+	EGIT_BRANCH="master"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
@@ -34,6 +35,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=dev-python/libvirt-python-6.10.0[${PYTHON_MULTI_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
 		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/tqdm[${PYTHON_MULTI_USEDEP}]
 	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (

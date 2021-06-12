@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 BDEPEND="
 	test? (
@@ -39,18 +39,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-py310.patch
 )
 
-src_prepare() {
-	distutils-r1_src_prepare
-	# prevent esetup.py install from zipping the egg
-	sed -i -e '/\[options\]/azip_safe = False' setup.cfg || die
-}
-
 python_test() {
-	"${EPYTHON}" -m venv --system-site-packages --without-pip \
-		"${BUILD_DIR}"/venv || die
-	local -x PATH=${BUILD_DIR}/venv/bin:${PATH}
-	unset PYTHONPATH
-	esetup.py install
+	distutils_install_for_testing --via-venv
 
 	# the default portage tempdir is too long for AF_UNIX sockets
 	local -x TMPDIR=/tmp
