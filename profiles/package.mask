@@ -37,6 +37,7 @@
 # OCaml 4.12.
 # bug #795138
 >=dev-lang/ocaml-4.12
+=dev-ml/camlp4-4.12
 
 # Alfredo Tupone <tupone@gentoo.org> (2021-06-11)
 # Masked for removal in 30 days. No more supported
