@@ -336,7 +336,7 @@ src_install() {
 	python_fix_shebang "${ED}/usr/bin/blender-${BV}-thumbnailer.py"
 	python_optimize "${ED}/usr/share/blender/${BV}/scripts"
 
-	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}"
+	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}" || die
 }
 
 pkg_postinst() {
@@ -378,7 +378,7 @@ pkg_postrm() {
 
 	ewarn ""
 	ewarn "You may want to remove the following directory."
-	ewarn "~/.config/${PN}/<blender version>/cache/"
+	ewarn "~/.config/${PN}/${SLOT}/cache/"
 	ewarn "It may contain extra render kernels not tracked by portage"
 	ewarn ""
 }
