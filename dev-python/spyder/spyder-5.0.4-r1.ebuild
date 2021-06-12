@@ -52,11 +52,9 @@ RDEPEND="
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 	>=dev-python/pylint-1.0[${PYTHON_USEDEP}]
-	>=dev-python/pyls-black-0.4.6[${PYTHON_USEDEP}]
-	>=dev-python/pyls-spyder-0.3.2[${PYTHON_USEDEP}]
-	<dev-python/pyls-spyder-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/python-language-server-0.36.2[${PYTHON_USEDEP}]
-	<dev-python/python-language-server-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/python-lsp-black-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pyls-spyder-0.4.0[${PYTHON_USEDEP}]
+	>=dev-python/python-lsp-server-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
 	~dev-python/qdarkstyle-3.0.2[${PYTHON_USEDEP}]
@@ -73,17 +71,16 @@ RDEPEND="
 	>=dev-python/watchdog-0.10.3[${PYTHON_USEDEP}]
 "
 
-# python-language-server[all] deps
+# python-lsp-server[all] deps
 RDEPEND+="
 	dev-python/autopep8[${PYTHON_USEDEP}]
 	>=dev-python/flake8-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
 	<dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
-	>=dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
-	<dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pyflakes-2.2.0[${PYTHON_USEDEP}]
-	<dev-python/pyflakes-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pyflakes-2.3.0[${PYTHON_USEDEP}]
+	<dev-python/pyflakes-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
 	dev-python/yapf[${PYTHON_USEDEP}]
@@ -143,6 +140,25 @@ python_prepare_all() {
 	rm -r external-deps/* || die
 	# runs against things packaged in external-deps dir
 	rm conftest.py || die
+
+	# Use the spyder fork of pyls (python-lsp-server instead of python-language-server)
+	# The original hasn't been update in over 6 months, and spyder upstream is slow
+	# in making the switch. Because we are running into issues with outdated deps
+	# and a whole dependency mess as a result, we can no longer wait for upstream.
+	find . -name "*.py" -exec sed -i \
+		-e 's/python-language-server\[all\]>=0.36.2,<1.0.0/python-lsp-server\[all\]>=1.0.0/g' \
+		-e 's/python-language-server/python-lsp-server/g' \
+		-e 's/python_language_server/python_lsp_server/g' \
+		-e 's/python-jsonrpc-server/python-lsp-jsonrpc/g' \
+		-e 's/python_jsonrpc_server/python_lsp_jsonrpc/g' \
+		-e 's/pyls/pylsp/g' \
+		-e 's/pylsp-spyder/pyls-spyder/g' \
+		-e 's/pylsp_spyder/pyls_spyder/g' \
+		-e 's/pyls-spyder>=0.3.2,<0.4.0/pyls-spyder>=0.4.0/g' \
+		-e 's/pylsp-black/python-lsp-black/g' \
+		-e 's/>=0.3.2;<0.4.0/>=0.4.0/g' \
+		-e 's/>=0.36.2;<1.0.0/>=1.0.0/g' \
+		{} + || die
 
 	# do not depend on pyqt5<13
 	sed -i -e '/pyqt5/d' \
