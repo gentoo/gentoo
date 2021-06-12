@@ -12,7 +12,7 @@ DESCRIPTION="Backend implementation for xdg-desktop-portal that is using Qt/KDE 
 
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 COMMON_DEPEND="
