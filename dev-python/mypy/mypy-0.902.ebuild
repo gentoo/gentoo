@@ -21,6 +21,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 RDEPEND="
 	!dev-util/stubgen
 	>=dev-python/psutil-4[${PYTHON_USEDEP}]
+	>=dev-python/typed-ast-1.4.0[${PYTHON_USEDEP}]
+	<dev-python/typed-ast-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-3.7.4[${PYTHON_USEDEP}]
 	>=dev-python/mypy_extensions-0.4.3[${PYTHON_USEDEP}]
 	<dev-python/mypy_extensions-0.5.0[${PYTHON_USEDEP}]
