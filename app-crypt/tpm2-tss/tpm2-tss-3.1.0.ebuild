@@ -27,7 +27,8 @@ RDEPEND="acct-group/tss
 	openssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
-BDEPEND="virtual/pkgconfig
+BDEPEND="sys-apps/acl
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
