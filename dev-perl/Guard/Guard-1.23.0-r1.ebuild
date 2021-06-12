@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=MLEHMANN
-MODULE_VERSION=1.023
+DIST_AUTHOR=MLEHMANN
+DIST_VERSION=1.023
 inherit perl-module
 
 DESCRIPTION="Safe cleanup blocks"
@@ -14,5 +14,3 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
-
-SRC_TEST="do"
