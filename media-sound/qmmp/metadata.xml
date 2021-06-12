@@ -19,6 +19,7 @@
 		<flag name="lyrics">Fetch track lyrics from the web</flag>
 		<flag name="midi">Enable midi support using wildmidi library</flag>
 		<flag name="notifier">Enable qmmps' notifier system</flag>
+		<flag name="pipewire">Enable PipeWire output plugin</flag>
 		<flag name="projectm">Enable projectm music visualization plugin</flag>
 		<flag name="qsui">Enable QMMP simple UI</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>

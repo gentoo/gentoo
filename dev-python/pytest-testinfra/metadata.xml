@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		With Testinfra you can write unit tests in Python to test actual state of your servers
+		configured by management tools like Salt, Ansible, Puppet, Chef and so on.
+
+		Testinfra aims to be a Serverspec equivalent in Python.
+	</longdescription>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">pytest-dev/pytest-testinfra</remote-id>
+		<remote-id type="pypi">pytest-testinfra</remote-id>
+	</upstream>
+</pkgmetadata>

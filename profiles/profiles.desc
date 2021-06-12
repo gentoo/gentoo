@@ -205,6 +205,8 @@ riscv		default/linux/riscv/17.0/rv64gc/lp64		stable
 riscv		default/linux/riscv/17.0/rv64gc/lp64/systemd	stable
 riscv		default/linux/riscv/17.0/rv32imac/ilp32		exp
 riscv		default/linux/riscv/17.0/rv32imac/ilp32d	exp
+riscv		default/linux/riscv/20.0/rv64gc/lp64d		exp
+riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd	exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org

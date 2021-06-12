@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,10 @@ IUSE="fft static-libs custom-tune"
 IUSE_CPU_FLAGS=" pclmul sse2 sse3 sse4_1 ssse3"
 IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
 
-PATCHES=( "${FILESDIR}/fno-common.patch" )
+PATCHES=(
+	"${FILESDIR}/fno-common.patch"
+	"${FILESDIR}/${P}-0001-src-tunefft.c-add-include-statement-for-MIN-and-MAX.patch"
+)
 
 src_prepare() {
 	default

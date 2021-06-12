@@ -21,6 +21,7 @@ fi
 inherit bash-completion-r1 perl-module ${VCS_ECLASS}
 
 DESCRIPTION="(R)?ex, the friendly automation framework"
+HOMEPAGE="https://metacpan.org/release/Rex https://www.rexify.org"
 
 SLOT="0"
 IUSE="minimal test"

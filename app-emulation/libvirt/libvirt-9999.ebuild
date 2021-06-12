@@ -10,6 +10,7 @@ inherit meson bash-completion-r1 linux-info python-any-r1 readme.gentoo-r1 tmpfi
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
+	EGIT_BRANCH="master"
 	SRC_URI=""
 	SLOT="0"
 else
@@ -225,7 +226,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature apparmor)
-		$(meson_use apparmor apparmor_profiles)
+		$(meson_feature apparmor apparmor_profiles)
 		$(meson_feature audit)
 		$(meson_feature caps capng)
 		$(meson_feature dtrace)

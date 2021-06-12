@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1
 
@@ -27,6 +27,10 @@ src_prepare() {
 	sed -i -e '/network_avail/s:True:False:' \
 		tests/*.py || die
 	distutils-r1_src_prepare
+}
+
+python_test() {
+	epytest -s
 }
 
 python_install_all() {

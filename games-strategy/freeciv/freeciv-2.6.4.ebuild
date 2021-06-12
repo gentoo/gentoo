@@ -3,10 +3,12 @@
 
 EAPI=7
 
+LUA_COMPAT=( lua5-3 )
+
 MY_PV="${PV/_beta/-beta}"
 MY_PV="${MY_PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
-inherit desktop flag-o-matic qmake-utils xdg
+inherit desktop flag-o-matic lua-single qmake-utils xdg
 
 DESCRIPTION="Multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
@@ -19,6 +21,8 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="aimodules auth dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
+
+REQUIRED_USE="system-lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
 	app-arch/bzip2
@@ -56,7 +60,7 @@ RDEPEND="
 		)
 	)
 	readline? ( sys-libs/readline:0= )
-	system-lua? ( >=dev-lang/lua-5.3:= )
+	system-lua? ( ${LUA_DEPS} )
 "
 DEPEND="${RDEPEND}
 	!dedicated? ( x11-base/xorg-proto )
@@ -74,6 +78,8 @@ pkg_setup() {
 		ewarn "Disabling server USE flag will make it impossible to start local"
 		ewarn "games, but you will still be able to join multiplayer games."
 	fi
+
+	use system-lua && lua-single_pkg_setup
 }
 
 src_prepare() {

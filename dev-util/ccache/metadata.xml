@@ -5,6 +5,9 @@
 		<email>toolchain@gentoo.org</email>
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
+	<use>
+		<flag name="static-c++">Avoid dynamic dependency on gcc's libstdc++.</flag>
+	</use>
 	<longdescription lang="en">
 		ccache acts as a caching pre-processor to C/C++ compilers, improving
 		compilation time when recompiling previously compiled source.

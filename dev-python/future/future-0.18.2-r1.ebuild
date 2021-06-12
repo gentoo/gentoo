@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
+PYTHON_COMPAT=( python3_{8..9} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Easy, clean, reliable Python 2/3 compatibility"
@@ -16,8 +15,12 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-# TODO: restore numpy when python2.7 is gone
-#BDEPEND="test? ( dev-python/numpy[${PYTHON_USEDEP}] )"
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_USEDEP}]
+		' 'python*')
+	)"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-bootstrap-theme
@@ -25,6 +28,7 @@ distutils_enable_sphinx docs dev-python/sphinx-bootstrap-theme
 PATCHES=(
 	"${FILESDIR}"/${P}-tests.patch
 	"${FILESDIR}"/${P}-py39.patch
+	"${FILESDIR}"/${P}-py39-fileurl.patch
 )
 
 python_prepare_all() {

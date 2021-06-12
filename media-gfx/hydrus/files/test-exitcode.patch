@@ -1,0 +1,36 @@
+diff --git a/hydrus/hydrus_test.py b/hydrus/hydrus_test.py
+index 3504c9c..7f95af8 100644
+--- a/hydrus/hydrus_test.py
++++ b/hydrus/hydrus_test.py
+@@ -91,6 +91,9 @@ def boot():
+         if sys.stdin.isatty():
+             
+             input( 'Press any key to exit.' )
++        else:
+             
++            success = 0 if controller.was_successful else 1
++            sys.exit(success)
+         
+     
+diff --git a/hydrus/test/TestController.py b/hydrus/test/TestController.py
+index 0c43440..7e6c5ef 100644
+--- a/hydrus/test/TestController.py
++++ b/hydrus/test/TestController.py
+@@ -168,7 +168,6 @@ only_run = None
+ class Controller( object ):
+     
+     def __init__( self, win, only_run ):
+-        
+         self.app = win
+         self.win = win
+         self.only_run = only_run
+@@ -827,8 +826,7 @@ class Controller( object ):
+         def do_it():
+             
+             try:
+-                
+-                runner.run( suite )
++                self.was_successful = runner.run( suite ).wasSuccessful()
+                 
+             finally:
+                 

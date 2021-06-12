@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="ALSA topology configuration files"
-HOMEPAGE="https://www.alsa-project.org"
+HOMEPAGE="https://alsa-project.org/wiki/Main_Page"
 SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"

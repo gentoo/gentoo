@@ -1,0 +1,20 @@
+From 3f34021beffba4e39f064a14c5faceeaa224b766 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 1 Jun 2021 21:08:53 +0200
+Subject: [PATCH] HDA-Intel: the lookups are supported from syntax 4
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA-Intel/HDA-Intel.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/HDA-Intel/HDA-Intel.conf b/ucm2/HDA-Intel/HDA-Intel.conf
+index 5794e72..8a8e0e7 100644
+--- a/ucm2/HDA-Intel/HDA-Intel.conf
++++ b/ucm2/HDA-Intel/HDA-Intel.conf
+@@ -1,4 +1,4 @@
+-Syntax 3
++Syntax 4
+
+ Define.Use ""	# a non-empty string to use UCM configuration for HDA devices
+

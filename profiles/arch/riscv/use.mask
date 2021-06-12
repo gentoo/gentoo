@@ -15,13 +15,6 @@
 -gtk3
 -introspection
 
-# Michał Górny <mgorny@gentoo.org> (2021-05-20)
-# Unresolved keywordreqs are getting in the way.
-# https://bugs.gentoo.org/773451
-# https://bugs.gentoo.org/789606
-python_targets_python3_10
-python_single_target_python3_10
-
 # Ben Kohler <bkohler@gentoo.org> (2019-01-09)
 # no fam providers keyworded yet
 fam

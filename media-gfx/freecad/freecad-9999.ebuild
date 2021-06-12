@@ -224,6 +224,9 @@ src_configure() {
 		-DFREECAD_USE_QT_FILEDIALOG=ON
 		-DFREECAD_USE_QTWEBMODULE:STRING="Qt WebEngine"
 
+		# Use the version of shiboken2 that matches the selected python version
+		-DPYTHON_CONFIG_SUFFIX="-${EPYTHON}"
+
 		# install python modules to site-packages' dir. True only for the main package,
 		# sub-packages will still be installed inside /usr/lib64/freecad
 		-DINSTALL_TO_SITEPACKAGES=ON
@@ -236,6 +239,7 @@ src_configure() {
 		# bug https://bugs.gentoo.org/788274
 		local OCC_P=$(best_version sci-libs/opencascade[vtk])
 		OCC_P=${OCC_P#sci-libs/}
+		OCC_P=${OCC_P%-r*}
 		mycmakeargs+=(
 			-DOCC_INCLUDE_DIR="${CASROOT}"/include/${OCC_P}
 			-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/${OCC_P}

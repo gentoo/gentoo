@@ -74,9 +74,9 @@ src_install() {
 	install_pygobject_override() {
 		PYTHON_GI_OVERRIDESDIR=$("${EPYTHON}" -c 'import gi;print(gi._overridesdir)' || die)
 		einfo "gobject overrides directory: ${PYTHON_GI_OVERRIDESDIR}"
-		mkdir -p "${ED}/${PYTHON_GI_OVERRIDESDIR}/" || die
-		cp -r "${D}"/pygobject/* "${ED}/${PYTHON_GI_OVERRIDESDIR}/" || die
-		python_optimize "${ED}/${PYTHON_GI_OVERRIDESDIR}/"
+		mkdir -p "${D}/${PYTHON_GI_OVERRIDESDIR}/" || die
+		cp -r "${D}"/pygobject/* "${D}/${PYTHON_GI_OVERRIDESDIR}/" || die
+		python_optimize "${D}/${PYTHON_GI_OVERRIDESDIR}/"
 	}
 	python_foreach_impl install_pygobject_override
 	rm -r "${D}/pygobject" || die

@@ -32,6 +32,51 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-06-12)
+# Package miscompiles and fails to resolve most
+# types of NSS query. See bug #795579.
+=sys-auth/nss-mdns-0.15
+
+# Joonas Niilola <juippis@gentoo.org> (2021-06-12)
+# A library without consumers, old dep of tree-cleaned gnome-mplayer,
+# EAPI-5. Removal in ~30 days. #776898
+media-libs/gmtk
+
+# Sam James <sam@gentoo.org> (2021-06-12)
+# Masked until all reverse dependencies support
+# OCaml 4.12.
+# bug #795138
+>=dev-lang/ocaml-4.12
+=dev-ml/camlp4-4.12
+
+# Alfredo Tupone <tupone@gentoo.org> (2021-06-11)
+# Masked for removal in 30 days. No more supported
+<dev-lang/gnat-gpl-2017
+<dev-ada/gnat-suite-bin-2017
+
+# Tomáš Mózes <hydrapolic@gmail.com> (2021-06-10)
+# Based on unsupported grub-legacy, replaced by
+# pvgrub2.
+# Removal on 2021-07-08.  Bug #790668.
+app-emulation/xen-pvgrub
+
+# Sam James <sam@gentoo.org> (2021-06-10)
+# Fails to build with modern libetpan. Unmaintained.
+# See bug #699570, bug #448574.
+# Removal on 2021-07-10.
+mail-client/etpan-ng
+
+# Michał Górny <mgorny@gentoo.org> (2021-06-05)
+# A backport for 'older Python versions' with no revdeps.
+# Removal on 2021-07-05.  Bug #794268.
+dev-python/chainmap
+
+# Stephan Hartmann <sultan@gentoo.org> (2021-06-05)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-93
+
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
 # Alpha versions of fetchmail 7
 # Add support for OAUTH2 for those needing it
@@ -46,11 +91,11 @@ dev-python/csv23
 # Sam James <sam@gentoo.org> (2021-06-01)
 # Possible issues with new ALSA release
 # See bug #793410
-=media-libs/alsa-lib-1.2.5
+=media-libs/alsa-lib-1.2.5_p20210604
 =media-libs/alsa-topology-conf-1.2.5
-=media-libs/alsa-ucm-conf-1.2.5
-=media-sound/alsa-utils-1.2.5
-=sys-firmware/alsa-firmware-1.2.5
+=media-libs/alsa-ucm-conf-1.2.5-r1
+=media-plugins/alsa-plugins-1.2.5
+=media-sound/alsa-utils-1.2.5-r1
 
 # Michał Górny <mgorny@gentoo.org> (2021-05-31)
 # Requires removed media-libs/opencv version.
@@ -149,6 +194,7 @@ dev-python/csv23
 # remove some stuff to make redacted happy
 # bug #793800
 app-admin/glance
+app-emulation/spice-html5
 dev-python/aodhclient
 dev-python/automaton
 dev-python/castellan
@@ -259,11 +305,6 @@ dev-java/sun-jimi
 # see bug: https://bugs.gentoo.org/786828
 dev-java/squareness-jlf
 
-# Sam James <sam@gentoo.org> (2021-05-20)
-# Need to ditch Meson or investigate consumers.
-# https://bugs.gentoo.org/791163
-=dev-libs/tinyxml2-8.1.0
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-19)
 # no consumer, removal in 30 days
 # see bug: https://bugs.gentoo.org/784065
@@ -290,15 +331,6 @@ dev-java/freemarker
 # Mask gcc-6 branch (ended upstream support). Please switch
 # to a freshed gcc branch.
 <sys-devel/gcc-7
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-15)
-# Dead upstream, homepage missing, EAPI=5, no systemd units.
-# https://bugs.gentoo.org/790413 , #434900, #552760
-# Use any of or combination of the following instead:
-# sys-apps/rng-tools
-# sys-apps/haveged
-# app-crypt/jitterentropy-rngd
-sys-apps/timer_entropyd
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
 # Dead upstream, dead downstream, GTK+2 based.  Bug #770898
@@ -351,15 +383,6 @@ sci-libs/fftw:2.1
 # ago, dead upstream. Bug #779421, removal in 30 days.
 media-sound/gramofile
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-09)
-# PortageXS saw its last release in 2016 and would need
-# a new upstream maintainer. Multiple bugs, e.g.,
-# 688238, 625536, 613114, 473394, 332611, 289524, 264680
-# Masked for removal in 30 days, including reverse deps.
-dev-perl/PortageXS
-app-portage/demerge
-app-portage/perl-info
-
 # Sam James <sam@gentoo.org> (2021-05-09)
 # Not working properly with cmake.eclass port
 # bug #788448
@@ -371,84 +394,9 @@ app-portage/perl-info
 # bug #731266
 >=net-mail/cyrus-imapd-3.4.0
 
-# Joonas Niilola <juippis@gentoo.org> (2021-05-06)
-# sci-libs/cbflib: Doesn't compile with GCC-10 or GCC-11. Was never
-# ported to work with GCC-10+. sci-chemistry/rasmol depends on cbflib.
-# Both packages have updates ignored in Gentoo, and their ebuilds
-# pretty much untouched during git-era. Both had their latest upstream
-# version release in 2018. Removal in ~30 days. Bug #788508
-sci-libs/cbflib
-sci-chemistry/rasmol
-
 # David Seifert <soap@gentoo.org> (2021-05-05)
 # Causes unsolvable package conflicts, bug #788310
 >=media-libs/openexr-3
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, dead homepage
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787329
-app-misc/jitac
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# last release in 2009
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787332
-app-office/hourglass
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2005
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787368
-dev-util/jarwizard
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2008
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787428
-media-sound/entagged-tageditor
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2009
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787434
-media-sound/protux
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers, last release in 2011
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787656
-sci-physics/jaxodraw
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-05)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/785400
-dev-java/cldc-api
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
-# Superceded by dev-perl/Image-Sane. Tests hang, bug 626594
-# Removal in 30 days.
-dev-perl/Sane
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-04-30)
-# Outdated, not pulled in by any virtuals anymore, no
-# keywords. Removal in 30 days.
-perl-core/Devel-PPPort
-perl-core/Time-Local
-perl-core/Unicode-Normalize
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-04-30)
-# no consumers
-# removal in 30 days
-# see bug: https://bugs.gentoo.org/787152
-dev-java/tagsoup
-
-# Michał Górny <mgorny@gentoo.org> (2021-04-29)
-# The most recent release is still broken with current
-# dev-python/coverage.  Inactive downstream maintainer.  No revdeps.
-# Removal on 2021-05-29.  Bug #786666.
-dev-python/pytest-testmon
 
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
@@ -685,10 +633,6 @@ app-admin/amazon-ec2-init
 =sys-libs/db-6.1*
 =sys-libs/db-6.2*
 =sys-libs/db-18.1*
-
-# Mikle Kolyada <zlogene@gentoo.org> (2014-06-27)
-# Masked for proper testing. (Major updates in the code).
-~dev-perl/PortageXS-0.2.12
 
 # Mike Gilbert <floppym@gentoo.org> (2014-03-04)
 # Dev channel releases are only for people who are developers or want more

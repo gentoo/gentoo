@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/790776
+--- a/src/exportvector.cpp
++++ b/src/exportvector.cpp
+@@ -4,6 +4,7 @@
+ // Copyright 2008-2013 Jonathan Westhues.
+ //-----------------------------------------------------------------------------
+ #include <libdxfrw.h>
++#include <limits>
+ #include "solvespace.h"
+ 
+ VectorFileWriter::~VectorFileWriter() {
+--- a/src/importdxf.cpp
++++ b/src/importdxf.cpp
+@@ -1,3 +1,5 @@
++#include <limits>
++
+ #include "solvespace.h"
+ #include "libdxfrw.h"
+ #include "libdwgr.h"
