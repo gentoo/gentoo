@@ -13,7 +13,7 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
-	<stabilize-allarches/>
+	<!-- no ALLARCHES: uses ctypes -->
 	<upstream>
 		<remote-id type="github">secdev/scapy</remote-id>
 	</upstream>
