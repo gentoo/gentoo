@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit meson python-single-r1 udev
 
@@ -30,7 +30,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
 		dev-python/python-evdev[${PYTHON_MULTI_USEDEP}]
 	')
 "
