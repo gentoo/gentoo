@@ -10,7 +10,7 @@ SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="caps +gdk-pixbuf gdm +gtk jpeg +locking new-login offensive opengl pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gdk-pixbuf? ( gtk )
