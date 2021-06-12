@@ -20,6 +20,7 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
 # gtk2. Nuff said. See HOMEPAGE, too.
 dev-perl/Gtk2-SourceView2
+dev-perl/Gtk2-Unique
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
 # version older than 3 don't compile with java 1.5+ and will be removed
