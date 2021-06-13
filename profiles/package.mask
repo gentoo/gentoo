@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-06-13)
+# no consumer, removal in 30 days
+# see bug: https://bugs.gentoo.org/785856
+dev-java/commons-validator
+
 # Joonas Niilola <juippis@gentoo.org> (2021-06-12)
 # A library without consumers, old dep of tree-cleaned gnome-mplayer,
 # EAPI-5. Removal in ~30 days. #776898
