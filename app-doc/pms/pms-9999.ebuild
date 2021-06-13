@@ -10,7 +10,7 @@ EGIT_BRANCH="master"
 DESCRIPTION="Gentoo Package Manager Specification (draft)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
 
-LICENSE="CC-BY-SA-3.0"
+LICENSE="CC-BY-SA-4.0"
 SLOT="live"
 IUSE="html twoside"
 
