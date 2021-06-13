@@ -1,23 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_VERSION=1.03
-MODULE_AUTHOR="WROSS"
+DIST_VERSION=1.03
+DIST_AUTHOR="WROSS"
 inherit perl-module
 
 DESCRIPTION="A fine-grained html-filter, xss-blocker and mailto-obfuscator"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/HTML-Parser
 	dev-perl/URI
 "
-DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/${P}-no-dot-inc.patch" )
+BDEPEND="${RDEPEND}
+"
 
-SRC_TEST="do"
+PATCHES=( "${FILESDIR}/${P}-no-dot-inc.patch" )
