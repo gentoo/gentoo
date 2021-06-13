@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-13)
+# blocks removal of dev-java/miglayout which blocks jdk-11
+# see bug https://bugs.gentoo.org/795765
+games-strategy/freecol
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-06-13)
 # no consumer, removal in 30 days
 # see bug: https://bugs.gentoo.org/785856
