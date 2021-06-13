@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
 	brotli? ( >=app-arch/brotli-1.0.6-r1:=[${MULTILIB_USEDEP}] )
 	>=net-libs/libpsl-0.20[${MULTILIB_USEDEP}]
-	sysprof? ( >=dev-util/sysprof-capture-3.38:4[${MULTILIB_USEDEP}] )
+	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4[${MULTILIB_USEDEP}] )
 	sys-libs/zlib
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
