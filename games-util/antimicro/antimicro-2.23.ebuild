@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linking-errors.patch
 	"${FILESDIR}"/${PN}-2.23-no-compress-man-page.patch
 	"${FILESDIR}"/${PN}-2.23-SDL2-include.patch
+	"${FILESDIR}"/${PN}-2.23-gcc11-ptr-compare.patch
 )
 
 src_prepare() {
