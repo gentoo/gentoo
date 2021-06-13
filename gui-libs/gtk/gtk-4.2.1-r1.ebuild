@@ -62,7 +62,7 @@ COMMON_DEPEND="
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	sysprof? ( >=dev-util/sysprof-capture-3.38:4 )
+	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	X? ( x11-base/xorg-proto )
 "
 RDEPEND="${COMMON_DEPEND}
