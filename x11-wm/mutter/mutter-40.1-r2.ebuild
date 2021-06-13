@@ -6,7 +6,6 @@ inherit gnome.org gnome2-utils meson udev virtualx xdg
 
 DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
-SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${PF}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/8" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
@@ -56,7 +55,7 @@ DEPEND="
 	>=media-libs/libcanberra-0.26
 	sys-apps/dbus
 	media-libs/mesa[X(+),egl]
-	sysprof? ( >=dev-util/sysprof-capture-3.38.0:4 )
+	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	wayland? (
 		>=dev-libs/wayland-protocols-1.19
 		>=dev-libs/wayland-1.18.0
@@ -95,7 +94,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${WORKDIR}"/patches
 	"${FILESDIR}"/${PN}-40.0-Disable-anonymous-file-test.patch
 )
 
