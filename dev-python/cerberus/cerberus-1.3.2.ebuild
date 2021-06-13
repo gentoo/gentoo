@@ -18,7 +18,6 @@ KEYWORDS="~amd64"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.2_no-pytest-runner.patch
-	"${FILESDIR}"/${PN}-1.3.2_test-installation.patch
 )
 
 distutils_enable_tests pytest
