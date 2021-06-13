@@ -385,11 +385,6 @@ media-sound/gramofile
 # Version 3.15 is broken with Emacs 27.2.
 =app-emacs/mic-paren-3.15-r0
 
-# Jonas Stein <jstein@gentoo.org> (2021-04-19)
-# Bad SRC_URI, missing license files
-# Removal on 2021-07-01.  Bug #784221.
-x11-apps/amlc
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-18)
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
