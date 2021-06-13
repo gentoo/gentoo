@@ -18,7 +18,7 @@ IUSE="+ocamlopt"
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}"
+	emake CFLAGS="${CFLAGS}" NATDYNLINK="$(usex ocamlopt true false)"
 }
 
 src_test() {
@@ -28,5 +28,5 @@ src_test() {
 
 src_install() {
 	findlib_src_preinst
-	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}"
+	OCAMLPATH="${OCAMLFIND_DESTDIR}" emake install DESTDIR="${D}" NATDYNLINK="$(usex ocamlopt true false)"
 }
