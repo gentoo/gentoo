@@ -26,8 +26,4 @@ RDEPEND="dev-python/requests[${PYTHON_USEDEP}]
 	)"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.2_test-installation.patch
-)
-
 distutils_enable_tests pytest
