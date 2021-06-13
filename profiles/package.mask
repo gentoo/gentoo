@@ -609,7 +609,7 @@ sys-devel/automake:1.10
 # If you still use one of these old toolchain packages, please upgrade (and
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
-<sys-libs/glibc-2.32-r3
+<sys-libs/glibc-2.33
 <sys-devel/binutils-2.35.2
 <sys-devel/binutils-hppa64-2.35.2
 
