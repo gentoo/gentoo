@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/json-glib-1.2.0
 	>=net-libs/libsoup-2.52.0:2.4
 	>=gui-libs/libhandy-1.0.2:1=
-	sysprof? ( >=dev-util/sysprof-capture-3.38.1:4 )
+	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	gnome? ( >=gnome-base/gsettings-desktop-schemas-3.18.0 )
 	spell? ( app-text/gspell:= )
 	sys-auth/polkit
