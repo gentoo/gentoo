@@ -43,21 +43,6 @@ has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 JAVA_PKG_E_DEPEND=">=dev-java/java-config-2.2.0-r3"
 has source ${JAVA_PKG_IUSE} && JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} source? ( app-arch/zip )"
 
-# @ECLASS_VARIABLE: JAVA_PKG_WANT_BOOTCLASSPATH
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# The version of bootclasspath the package needs to work. Translates to a proper
-# dependency. The bootclasspath can then be obtained by java-ant_rewrite-bootclasspath
-if [[ -n "${JAVA_PKG_WANT_BOOTCLASSPATH}" ]]; then
-	if [[ "${JAVA_PKG_WANT_BOOTCLASSPATH}" == "1.5" ]]; then
-		JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} >=dev-java/gnu-classpath-0.98-r1:0.98"
-	else
-		eerror "Unknown value of JAVA_PKG_WANT_BOOTCLASSPATH"
-		# since die in global scope doesn't work, this will make repoman fail
-		JAVA_PKG_E_DEPEND="${JAVA_PKG_E_DEPEND} BAD_JAVA_PKG_WANT_BOOTCLASSPATH"
-	fi
-fi
-
 # @ECLASS_VARIABLE: JAVA_PKG_ALLOW_VM_CHANGE
 # @DESCRIPTION:
 # Allow this eclass to change the active VM?
@@ -76,9 +61,9 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #
 # Should only be used for testing and debugging.
 #
-# Example: use sun-jdk-1.5 to emerge foo:
+# Example: use openjdk-11 to emerge foo:
 # @CODE
-#	JAVA_PKG_FORCE_VM=sun-jdk-1.5 emerge foo
+#	JAVA_PKG_FORCE_VM=openjdk-11 emerge foo
 # @CODE
 
 # @ECLASS_VARIABLE: JAVA_PKG_WANT_BUILD_VM
@@ -103,9 +88,9 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #
 # Should generally only be used for testing and debugging.
 #
-# Use 1.4 source to emerge baz
+# Use 1.8 source to emerge baz
 # @CODE
-#	JAVA_PKG_WANT_SOURCE=1.4 emerge baz
+#	JAVA_PKG_WANT_SOURCE=1.8 emerge baz
 # @CODE
 
 # @ECLASS_VARIABLE: JAVA_PKG_WANT_TARGET
@@ -118,9 +103,9 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #
 # Should generally only be used for testing and debugging.
 #
-# emerge bar to be compatible with 1.3
+# emerge bar to be compatible with 1.8
 # @CODE
-#	JAVA_PKG_WANT_TARGET=1.3 emerge bar
+#	JAVA_PKG_WANT_TARGET=1.8 emerge bar
 # @CODE
 
 # @ECLASS_VARIABLE: JAVA_TEST_EXTRA_ARGS
@@ -1387,7 +1372,7 @@ java-pkg_register-environment-variable() {
 # @DESCRIPTION:
 # Returns classpath of a given bootclasspath-providing package version.
 #
-# @param $1 - the version of bootclasspath (e.g. 1.5), 'auto' for bootclasspath
+# @param $1 - the version of bootclasspath (e.g. 1.8), 'auto' for bootclasspath
 #             of the current JDK
 java-pkg_get-bootclasspath() {
 	local version="${1}"
@@ -1396,9 +1381,6 @@ java-pkg_get-bootclasspath() {
 	case "${version}" in
 		auto)
 			bcp="$(java-config -g BOOTCLASSPATH)"
-			;;
-		1.5)
-			bcp="$(java-pkg_getjars --build-only gnu-classpath-0.98)"
 			;;
 		*)
 			eerror "unknown parameter of java-pkg_get-bootclasspath"
@@ -2580,20 +2562,9 @@ java-pkg_setup-vm() {
 	debug-print-function ${FUNCNAME} $*
 
 	local vendor="$(java-pkg_get-vm-vendor)"
-	if [[ "${vendor}" == "sun" ]] && java-pkg_is-vm-version-ge "1.5" ; then
-		addpredict "/dev/random"
-	elif [[ "${vendor}" == "ibm" ]]; then
-		addpredict "/proc/self/maps"
-		addpredict "/proc/cpuinfo"
-		addpredict "/proc/self/coredump_filter"
-	elif [[ "${vendor}" == "oracle" ]]; then
+	if [[ "${vendor}" == icedtea* ]] && java-pkg_is-vm-version-ge "1.8" ; then
 		addpredict "/dev/random"
 		addpredict "/proc/self/coredump_filter"
-	elif [[ "${vendor}" == icedtea* ]] && java-pkg_is-vm-version-ge "1.7" ; then
-		addpredict "/dev/random"
-		addpredict "/proc/self/coredump_filter"
-	elif [[ "${vendor}" == "jrockit" ]]; then
-		addpredict "/proc/cpuinfo"
 	fi
 }
 
