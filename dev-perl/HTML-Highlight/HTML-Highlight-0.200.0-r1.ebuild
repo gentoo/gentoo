@@ -1,17 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR="TRIPIE"
-MODULE_VERSION=0.20
+DIST_AUTHOR="TRIPIE"
+DIST_VERSION=0.20
 inherit perl-module
 
 DESCRIPTION="A module to highlight words or patterns in HTML documents"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-SRC_TEST="do"
 PATCHES=( "${FILESDIR}"/fix-pod.patch )
