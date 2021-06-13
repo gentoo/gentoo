@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit java-pkg-2 user
+inherit java-pkg-2
 
 MY_PN="zeppelin"
 MY_P="${MY_PN}-${PV}-bin-all"
