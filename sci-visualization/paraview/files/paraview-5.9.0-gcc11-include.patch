@@ -1,3 +1,4 @@
+https://bugs.gentoo.org/789573
 --- a/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
 +++ b/VTK/Common/Core/vtkGenericDataArrayLookupHelper.h
 @@ -25,6 +25,7 @@
@@ -17,4 +18,24 @@
 +#include <limits>
  #include <set>
  #include <vector>
+ 
+--- a/VTK/Rendering/Core/vtkColorTransferFunction.cxx
++++ b/VTK/Rendering/Core/vtkColorTransferFunction.cxx
+@@ -21,6 +21,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <iterator>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
+--- a/VTK/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
++++ b/VTK/Filters/HyperTree/vtkHyperTreeGridThreshold.cxx
+@@ -27,6 +27,7 @@
+ #include "vtkHyperTreeGridNonOrientedCursor.h"
+ 
+ #include <cmath>
++#include <limits>
+ 
+ vtkStandardNewMacro(vtkHyperTreeGridThreshold);
  
