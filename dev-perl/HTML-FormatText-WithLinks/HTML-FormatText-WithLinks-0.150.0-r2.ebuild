@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=STRUAN
-MODULE_VERSION=0.15
+DIST_AUTHOR=STRUAN
+DIST_VERSION=0.15
 inherit perl-module
 
 DESCRIPTION="HTML to text conversion with links as footnotes"
@@ -19,9 +19,7 @@ RDEPEND="
 	dev-perl/HTML-Tree
 	dev-perl/URI
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
 	test? ( virtual/perl-Test-Simple )
 "
-
-SRC_TEST="do parallel"
