@@ -33,7 +33,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	sysprof? ( dev-util/sysprof-capture:4[${MULTILIB_USEDEP}] )
+	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4[${MULTILIB_USEDEP}] )
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
