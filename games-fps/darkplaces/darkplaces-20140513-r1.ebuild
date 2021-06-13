@@ -68,6 +68,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=("${FILESDIR}"/${P}-gcc-11.patch)
+
 dir="/usr/share/quake1"
 
 opengl_client() {
