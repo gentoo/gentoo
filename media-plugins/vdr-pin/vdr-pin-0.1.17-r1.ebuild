@@ -21,6 +21,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/vdr-plugin-pin-${VERSION_GIT}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.17-gcc11-strstr-ptr-comp.patch
+)
+
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
