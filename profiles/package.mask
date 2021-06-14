@@ -353,11 +353,6 @@ app-mobilephone/gnocky
 # Removal on 2021-06-14.  Bugs #560032, #740020, #769095
 media-gfx/gtkam
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
-# Unmaintained, pending version bump request since 2014, no revdeps.
-# Removal on 2021-06-14.  Bug #507760
-media-libs/libexif-gtk
-
 # Michał Górny <mgorny@gentoo.org> (2021-05-15)
 # Relies on dev-python/astunparse that is broken with Python 3.8+
 # and abandoned upstream.  The current version is also broken
