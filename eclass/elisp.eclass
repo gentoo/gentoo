@@ -9,7 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #
@@ -64,7 +64,7 @@
 inherit elisp-common
 
 case ${EAPI:-0} in
-	6|7) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
