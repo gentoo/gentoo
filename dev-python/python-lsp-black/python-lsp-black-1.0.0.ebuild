@@ -14,7 +14,7 @@ SRC_URI="https://github.com/python-lsp/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	dev-python/python-lsp-server[${PYTHON_USEDEP}]
