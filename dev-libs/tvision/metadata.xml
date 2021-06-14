@@ -9,11 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="gpm">
-			Support text mode mouse through <pkg>sys-libs/gpm</pkg>
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">set-soft/tvision</remote-id>
 	</upstream>
