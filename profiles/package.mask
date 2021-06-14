@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-14)
+# DeprecatedDep jre-1.3, upstream dead,removal in 30 days
+# see bug: https://bugs.gentoo.org/787410
+media-gfx/povtree
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-06-13)
 # no consumer, removal in 30 days
 # see bug: https://bugs.gentoo.org/785856
