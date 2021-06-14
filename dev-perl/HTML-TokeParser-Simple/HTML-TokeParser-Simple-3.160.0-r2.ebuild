@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=OVID
-MODULE_VERSION=3.16
+DIST_AUTHOR=OVID
+DIST_VERSION=3.16
 inherit perl-module
 
 DESCRIPTION="Easy to use HTML::TokeParser interface"
@@ -14,9 +14,8 @@ KEYWORDS="amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=dev-perl/HTML-Parser-3.25"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	virtual/perl-Test-Simple
-	dev-perl/Sub-Override"
-
-SRC_TEST="do"
+	dev-perl/Sub-Override
+"
