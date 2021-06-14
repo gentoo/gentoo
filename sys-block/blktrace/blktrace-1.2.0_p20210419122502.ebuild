@@ -23,7 +23,7 @@ SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.${EXT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE="doc"
 
 RDEPEND="dev-libs/libaio"
