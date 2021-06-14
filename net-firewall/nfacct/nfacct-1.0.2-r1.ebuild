@@ -22,3 +22,11 @@ DEPEND="
 "
 
 CONFIG_CHECK="~NETFILTER_NETLINK_ACCT"
+
+src_install() {
+	default_src_install
+
+	keepdir /var/lib/nfacct
+	newinitd "${FILESDIR}"/${PN}.initd nfacct
+	newconfd "${FILESDIR}"/${PN}.confd nfacct
+}
