@@ -5,7 +5,6 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -16,8 +15,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="0"
-
-PATCHES=( "${FILESDIR}/${PN}-0.16.8-click-7-compat.patch" )
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]
 	>=dev-python/click-log-0.3.0[${PYTHON_USEDEP}]
@@ -45,5 +42,12 @@ python_test() {
 	# pytest dies hard if the envvars do not have any value...
 	local -x CI=false
 	local -x DETERMINISTIC_TESTS=false
-	epytest
+
+	local deselect=(
+		# test CA is too weak for modern python
+		tests/system/utils/test_main.py::test_request_ssl
+		tests/system/utils/test_main.py::test_request_ssl_fingerprints
+	)
+
+	epytest ${deselect[@]/#/--deselect }
 }
