@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A C++ toolkit"
 HOMEPAGE="https://github.com/puppetlabs/leatherman"
@@ -27,7 +27,7 @@ PATCHES+=( "${FILESDIR}"/1.12.2-shared_nowide.patch )
 src_prepare() {
 	sed -i 's/\-Werror\ //g' "cmake/cflags.cmake" || die
 	# vendored boost lib conflicts with boost 1.73 and above
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -49,7 +49,7 @@ src_configure() {
 		  -DCMAKE_BUILD_TYPE=Debug
 		)
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -57,5 +57,5 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }
