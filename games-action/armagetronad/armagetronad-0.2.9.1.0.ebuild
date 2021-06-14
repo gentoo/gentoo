@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop xdg-utils
+inherit autotools desktop
 
 DESCRIPTION="Fast-paced 3D lightcycle game based on Tron"
 HOMEPAGE="http://armagetronad.org/"
@@ -24,9 +24,11 @@ RDEPEND="
 		virtual/opengl
 		sound? ( media-libs/sdl-mixer )
 	)"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
-PATCHES=("${FILESDIR}"/${P}-AR.patch)
+PATCHES=(
+	"${FILESDIR}"/${P}-AR.patch
+)
 
 src_prepare() {
 	default
@@ -35,29 +37,28 @@ src_prepare() {
 }
 
 src_configure() {
-	# --enable-games just messes up paths
-	econf \
-		$(use_enable dedicated) \
-		$(use_enable sound music) \
-		--disable-sysinstall \
-		--disable-useradd \
-		--disable-uninstall \
+	local econfargs=(
+		$(use_enable dedicated)
+		$(use_enable sound music)
+		# following options only mess with paths and users
 		--disable-games
+		--disable-sysinstall
+		--disable-uninstall
+		--disable-useradd
+	)
+	econf ${econfargs[@]}
 }
 
 src_install() {
-	default
+	# long history of being broken without -j1 (bug #330705,698020)
+	# do not remove (again) without a proper fix or extensive tests
+	emake -j1 DESTDIR="${D}" install
+	einstalldocs
 
-	# misplaced desktop-file/icons
-	rm -r "${ED}"/usr/share/${PN}/desktop || die
-	doicon -s 48 desktop/icons/48x48/armagetronad.png
-	make_desktop_entry ${PN}
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	# handle misplaced .desktop / icons
+	if ! use dedicated; then
+		rm -r "${ED}"/usr/share/${PN}/desktop || die
+		doicon desktop/icons/48x48/armagetronad.png
+		make_desktop_entry ${PN}
+	fi
 }
