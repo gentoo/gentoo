@@ -85,11 +85,11 @@ src_install() {
 }
 
 pkg_postinst() {
-		einfo "No rustup toolchains installed by default"
-		einfo "eselect activated system rust toolchain can be added to rustup by running"
-		einfo "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
-		einfo "it will create symlinks to system-installed rustup in home directory"
-		einfo "and rustup updates will be managed by portage"
-		einfo "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
-		einfo "before running rustup-init-gentoo"
+		elog "No rustup toolchains installed by default"
+		elog "eselect activated system rust toolchain can be added to rustup by running"
+		elog "helper script installed as ${EPREFIX}/usr/bin/rustup-init-gentoo"
+		elog "it will create symlinks to system-installed rustup in home directory"
+		elog "and rustup updates will be managed by portage"
+		elog "please delete current rustup binaries from ~/.cargo/bin/ (if any)"
+		elog "before running rustup-init-gentoo"
 }
