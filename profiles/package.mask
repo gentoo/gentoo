@@ -373,10 +373,10 @@ dev-python/sphinxcontrib-httpdomain
 dev-python/sphinxcontrib-httpexample
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
-# Unmaintained, last revdep of dev-perl/gtk2-spell, bugs #724796, #769296
+# Unmaintained, last revdep of dev-perl/gtk2-spell, bug #724796
 # Removal on 2021-06-08
+# Pending PR: https://github.com/gentoo/gentoo/pull/20763
 app-misc/gcstar
-dev-perl/gtk2-spell
 
 # David Seifert <soap@gentoo.org> (2021-05-09)
 # All revdeps masked, last release in 1999, needs to do now.
