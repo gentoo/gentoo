@@ -342,11 +342,6 @@ dev-java/freemarker
 # Removal on 2021-06-14.
 app-editors/amyedit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
-# Unmaintained, GTK+2-based, dubiously duplicating app-mobilephone/gnokii[X]
-# Removal on 2021-06-14. Bug #769032
-app-mobilephone/gnocky
-
 # Michał Górny <mgorny@gentoo.org> (2021-05-15)
 # Relies on dev-python/astunparse that is broken with Python 3.8+
 # and abandoned upstream.  The current version is also broken
