@@ -58,6 +58,7 @@ S="${WORKDIR}/${MY_PN}-version_${PV}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-miniz-zip-header.patch"
+	"${FILESDIR}/${PN}-2.3.1-gcc11-missing-include.patch"
 )
 
 src_configure() {
