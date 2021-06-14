@@ -16,6 +16,7 @@ KEYWORDS="~amd64"
 IUSE="debugger"
 RDEPEND="debugger? ( ${PYTHON_DEPS} )"
 BDEPEND="${RDEPEND}"
+RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}/jerryscript-2.4.0-python3.patch"
