@@ -25,9 +25,7 @@ src_configure() {
 src_install() {
 	dosbin "${BUILD_DIR}"/ryzenadj
 
-	dodir "/usr/$(get_libdir)"
-	insinto "/usr/$(get_libdir)"
-	doins "${BUILD_DIR}"/libryzenadj.so
+	dolib.so "${BUILD_DIR}"/libryzenadj.so
 
 	dodoc "${S}"/README.md
 }
