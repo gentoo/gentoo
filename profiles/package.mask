@@ -315,12 +315,6 @@ dev-java/squareness-jlf
 # see bug: https://bugs.gentoo.org/784065
 dev-java/werken-xpath
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-16)
-# no consumer, does not compile, not with jdk-11
-# and not even with openjdk:8
-# see bug: https://bugs.gentoo.org/790551
-dev-java/freemarker
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
 # Mask gcc-7 branch (ended upstream support). Please switch
 # to a freshed gcc branch.
