@@ -22,6 +22,9 @@ SLOT="0"
 IUSE=""
 RDEPEND="acct-user/energi3"
 
+# Does all kinds of wonky stuff like connecting to Docker daemon, network activity, ...
+RESTRICT+=" test"
+
 src_compile() {
 	GOPATH="${WORKDIR}/${P}/vendor/" emake geth
 }
