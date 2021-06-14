@@ -34,5 +34,3 @@ python_test() {
 	fi
 	distutils-r1_python_test
 }
-
-# TODO: do not install subprocess_tee.test
