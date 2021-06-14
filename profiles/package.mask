@@ -344,7 +344,6 @@ dev-java/freemarker
 # makes little sense.  No reverse dependencies.
 # Removal on 2021-06-14.  Bug #743889.
 dev-python/sphinxcontrib-httpdomain
-dev-python/sphinxcontrib-httpexample
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Unmaintained, last revdep of dev-perl/gtk2-spell, bug #724796
