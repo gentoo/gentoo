@@ -337,11 +337,6 @@ dev-java/freemarker
 # to a freshed gcc branch.
 <sys-devel/gcc-7
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-15)
-# Dead upstream, dead downstream, GTK+2 based.  Bug #770898
-# Removal on 2021-06-14.
-app-editors/amyedit
-
 # Michał Górny <mgorny@gentoo.org> (2021-05-15)
 # Relies on dev-python/astunparse that is broken with Python 3.8+
 # and abandoned upstream.  The current version is also broken
