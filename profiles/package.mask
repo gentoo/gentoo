@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Davide Pesavento <pesa@gentoo.org> (2021-06-15)
+# Masked for revdep testing.
+>=dev-python/sip-6
+
 # Sam James <sam@gentoo.org> (2021-06-15)
 # Fails to build with GCC 11. Strange build system that needs more
 # work to function properly (and integrate better). Several open bugs.
