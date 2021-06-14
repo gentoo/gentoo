@@ -352,11 +352,6 @@ dev-python/sphinxcontrib-httpexample
 # Pending PR: https://github.com/gentoo/gentoo/pull/20763
 app-misc/gcstar
 
-# David Seifert <soap@gentoo.org> (2021-05-09)
-# All revdeps masked, last release in 1999, needs to do now.
-# Bug #772815, removal in 30 days.
-sci-libs/fftw:2.1
-
 # Sam James <sam@gentoo.org> (2021-05-09)
 # Not working properly with cmake.eclass port
 # bug #788448
