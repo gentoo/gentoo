@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT:0:7}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ~ppc64 sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x86-linux"
 IUSE="nls"
 
 RDEPEND="
