@@ -1,0 +1,28 @@
+From fa531a3ff2dd8aa4e0b6767e3390f88bfbaca791 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 14 Jun 2021 12:11:32 +0200
+Subject: [PATCH] hacks/glx/Makefile.in: Fix target install-program for
+ --without-gl
+
+Symptom was:
+/usr/bin/install: cannot stat 'sonar': No such file or directory
+---
+ hacks/glx/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hacks/glx/Makefile.in b/hacks/glx/Makefile.in
+index ed07a1f..6ae969c 100644
+--- a/hacks/glx/Makefile.in
++++ b/hacks/glx/Makefile.in
+@@ -320,7 +320,7 @@ install-program:: $(EXES)
+ 		  $(INSTALL_PROGRAM) $$program $$idir/$$program ;	\
+ 	   done ;							\
+ 									\
+-	   exes="$(SUID_EXES)" ;					\
++	   exes="@SUID_EXES@" ;						\
+ 	   if [ @SETUID_HACKS@ = yes ]; then				\
+ 	     sinst="$(INSTALL_SETUID)" ;				\
+ 	   else								\
+-- 
+2.31.1
+
