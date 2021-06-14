@@ -35,6 +35,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/netaddr[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
+	dev-python/resolvelib[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
 	!app-admin/ansible-base
