@@ -7,7 +7,7 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="4"				# Tarball revision for patches
+GENPATCHREV="5"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}"
