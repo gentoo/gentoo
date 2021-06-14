@@ -16,12 +16,12 @@ else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 fi
 
-# Sub-slot based on ${S}/sipbuild/module/source
-SLOT="0/12"
+SLOT="5"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
+	!=dev-python/sip-5.5.0-r0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
