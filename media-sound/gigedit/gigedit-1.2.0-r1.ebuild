@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="
-	dev-cpp/gtkmm:2.4
+	dev-cpp/gtkmm:3.0
 	media-libs/libgig
 	media-libs/libsndfile
 	media-sound/linuxsampler"
