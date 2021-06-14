@@ -56,7 +56,7 @@ DEPEND="
 	>=media-libs/libcanberra-0.26
 	sys-apps/dbus
 	media-libs/mesa[X(+),egl]
-	sysprof? ( >=dev-util/sysprof-capture-3.38.0:4 )
+	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	wayland? (
 		>=dev-libs/wayland-protocols-1.19
 		>=dev-libs/wayland-1.18.0
