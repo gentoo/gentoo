@@ -32,6 +32,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-06-14)
+# The original Python Language Server by Palantir is no longer actively
+# developed [1]. Development on a language server for Python is continued by
+# the Spyder IDE community under a new name and in a new package. To continue
+# using pyls, please switch to the maintained forks [2]:
+# dev-python/python-language-server --> dev-python/python-lsp-server
+# dev-python/python-jsonrpc-server --> dev-python/python-lsp-jsonrpc
+# dev-python/pyls-black --> dev-python/python-lsp-black
+#
+# Note that dev-python/pyls-spyder has already switched to the new language
+# server as of version 0.4.0. Users of the Spyder IDE will automatically
+# switch to the new language server when upgrading to version 4.2.5-r1 or
+# 5.0.4-r1. Manual adjustments to the settings may be required in certain
+# configurations [3].
+#
+# Masked for removal in 30 days (2021-07-14).
+#
+# [1] https://github.com/palantir/python-language-server/issues/935
+# [2] https://bugs.gentoo.org/795924
+# [3] https://bugs.gentoo.org/783615
+dev-python/python-language-server
+dev-python/python-jsonrpc-server
+dev-python/pyls-black
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-14)
 # DeprecatedDep jre-1.3, upstream dead,removal in 30 days
 # see bug: https://bugs.gentoo.org/787410
