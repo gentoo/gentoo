@@ -1,0 +1,23 @@
+Fix crash on 64bit platforms in change_mem2()
+https://bugs.gentoo.org/753950
+
+From upstream:
+https://sourceforge.net/p/ucon64/svn/2821/
+--- a/libdiscmage/misc.c
++++ b/libdiscmage/misc.c
+@@ -1875,5 +1875,5 @@
+           if (strpos == pos_1st_esc)
+             setindex = 0;                       // reset argument pointer
+-          if (pos_1st_esc == (unsigned int) -1)
++          if (pos_1st_esc == (size_t) -1)
+             pos_1st_esc = strpos;
+ 
+--- a/misc/misc.c
++++ b/misc/misc.c
+@@ -502,5 +502,5 @@
+           if (strpos == pos_1st_esc)
+             setindex = 0;                       // reset argument pointer
+-          if (pos_1st_esc == (unsigned int) -1)
++          if (pos_1st_esc == (size_t) -1)
+             pos_1st_esc = strpos;
+ 

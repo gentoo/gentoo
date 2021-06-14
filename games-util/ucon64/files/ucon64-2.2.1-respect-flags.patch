@@ -1,0 +1,35 @@
+Respect *FLAGS and toolchain variables in Makefiles where missing.
+--- a/Makefile
++++ b/Makefile
+@@ -12,3 +12,3 @@
+ CFLAGS+=-I. -Wall -W -Wno-implicit-fallthrough -Wno-format-truncation \
+--Wno-stringop-overflow -O3 -fsigned-char
++-Wno-stringop-overflow -fsigned-char
+ # Enable -Wstringop-overflow[=type] when it is no longer a broken, partial
+@@ -19,3 +19,2 @@
+ # ld: warning: option -s is obsolete and being ignored
+-LDFLAGS+=-s
+ endif
+--- a/backup/libcd64/Makefile
++++ b/backup/libcd64/Makefile
+@@ -1,2 +1 @@
+-CC=gcc
+ 
+@@ -7,3 +6,2 @@
+ else
+-CFLAGS+=-O6 -funroll-loops -fexpensive-optimizations
+ endif
+@@ -181,4 +179,4 @@
+ else
+-	ld -r $^ $(LIBS) -o $*.o
+-	ar crs $@ $*.o
++	$(LD) -r $^ $(LIBS) -o $*.o
++	$(AR) crs $@ $*.o
+ endif
+--- a/libdiscmage/Makefile.in
++++ b/libdiscmage/Makefile.in
+@@ -33,3 +33,2 @@
+ # /usr/bin/libtool: -static not specified, -s invalid
+-LDFLAGS+=-s
+ endif
+
