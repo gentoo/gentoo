@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=GETTY
-MODULE_VERSION=1.22
+DIST_AUTHOR=GETTY
+DIST_VERSION=1.22
 inherit perl-module
 
 DESCRIPTION="HTTP Body Parser"
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-perl/HTTP-Message
 	>=virtual/perl-IO-1.140.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Encode
@@ -35,11 +35,11 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.860.0
 	)
 "
+
 PERL_RM_FILES=(
 	t/02pod.t
 	t/03podcoverage.t
 	t/04critic.t
 )
-PATCHES=( "${FILESDIR}/${PN}-1.190.0-CVE-2013-4407.patch" )
 
-SRC_TEST=do
+PATCHES=( "${FILESDIR}/${PN}-1.190.0-CVE-2013-4407.patch" )
