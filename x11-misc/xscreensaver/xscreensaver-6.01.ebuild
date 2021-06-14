@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.01-gentoo.patch
 	"${FILESDIR}"/${PN}-5.45-gcc.patch
 	"${FILESDIR}"/${PN}-6.01-configure.ac-sandbox.patch
+	"${FILESDIR}"/${PN}-6.01-without-gl-makefile.patch
 )
 
 src_prepare() {
