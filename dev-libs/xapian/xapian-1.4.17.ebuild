@@ -21,6 +21,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.17-gcc11-missing-include.patch
+)
+
 multilib_src_configure() {
 	local myconf=""
 
