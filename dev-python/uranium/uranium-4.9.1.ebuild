@@ -26,6 +26,7 @@ BDEPEND="${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
 			dev-python/mypy[${PYTHON_USEDEP}]
+			dev-python/twisted[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -51,6 +52,10 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	python_fix_shebang .
+
+	if ! use doc ; then
+		sed -i -e '/add_custom_target(doc/d' CMakeLists.txt || die
+	fi
 
 	cmake_src_prepare
 }
