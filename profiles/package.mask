@@ -327,12 +327,6 @@ dev-java/werken-xpath
 # to a freshed gcc branch.
 <sys-devel/gcc-7
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
-# Unmaintained, last revdep of dev-perl/gtk2-spell, bug #724796
-# Removal on 2021-06-08
-# Pending PR: https://github.com/gentoo/gentoo/pull/20763
-app-misc/gcstar
-
 # Sam James <sam@gentoo.org> (2021-05-09)
 # Not working properly with cmake.eclass port
 # bug #788448
