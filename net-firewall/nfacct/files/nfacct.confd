@@ -1,0 +1,7 @@
+# /etc/conf.d/nfacct
+
+# Location for nfacct initscript to save and restore the counters
+NFACCT_SAVE="/var/lib/nfacct/counters-save"
+
+# Save counters on stopping nfacct
+SAVE_ON_STOP="yes"
