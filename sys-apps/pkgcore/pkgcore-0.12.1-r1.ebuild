@@ -20,7 +20,9 @@ HOMEPAGE="https://github.com/pkgcore/pkgcore"
 LICENSE="BSD MIT"
 SLOT="0"
 
-RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=app-shells/bash-5.0
+	dev-python/lxml[${PYTHON_USEDEP}]"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
