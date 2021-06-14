@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ DOCS=(AUTHORS ChangeLog README README.PACKAGE REQUESTS)
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
+	"${FILESDIR}"/clucene-2.3.3.4-fix-clang.patch
 	"${FILESDIR}/${P}-contrib.patch"
 	"${FILESDIR}/${P}-pkgconfig.patch"
 	"${FILESDIR}/${P}-gcc6.patch"
