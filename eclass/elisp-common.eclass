@@ -10,7 +10,7 @@
 # Mamoru Komachi <usata@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Emacs-related installation utilities
 # @DESCRIPTION:
 #
@@ -167,7 +167,7 @@
 
 case ${EAPI:-0} in
 	5|6) inherit eapi7-ver ;;
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
