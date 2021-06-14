@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	dev-cpp/gtkmm:2.4
+	dev-cpp/gtkmm:3.0
 	media-libs/libgig
 	media-libs/libsndfile
 	media-sound/linuxsampler"
