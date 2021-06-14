@@ -21,7 +21,7 @@ HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
 SLOT="0/7.0.11-0"
-IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
+IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zip zlib"
 
 REQUIRED_USE="corefonts? ( truetype )
 	svg? ( xml )
@@ -72,6 +72,7 @@ RDEPEND="
 		)
 	xml? ( dev-libs/libxml2:= )
 	lzma? ( app-arch/xz-utils )
+	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib:= )"
 
 DEPEND="${RDEPEND}
@@ -143,6 +144,7 @@ src_configure() {
 		--with-gs-font-dir="${EPREFIX}"/usr/share/fonts/urw-fonts
 		$(use_with bzip2 bzlib)
 		$(use_with X x)
+		$(use_with zip)
 		$(use_with zlib)
 		--without-autotrace
 		$(use_with postscript dps)
