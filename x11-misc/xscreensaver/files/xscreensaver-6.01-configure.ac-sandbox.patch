@@ -1,0 +1,120 @@
+From 0f4d029102c651ccbc69860bf222126d2c58e36e Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 13 Jun 2021 23:41:42 +0200
+Subject: [PATCH] configure.ac: Stop asking rpm and dpkg things, we're on
+ Gentoo
+
+---
+ configure.ac | 96 ----------------------------------------------------
+ 1 file changed, 96 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9b8641e..2eaea28 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -4833,102 +4833,6 @@ for bad_choice in xscreensaver xscreensaver-settings xscreensaver-command ; do
+ done
+ 
+ 
+-# Warn if there's a previous RPM package installed.
+-
+-rpm_vers=
+-if test -z "$RPM_PACKAGE_VERSION" ; then
+-  # Don't bother with this test if we are currently *building* an RPM.
+-  rpmnames="xscreensaver xscreensaver-base xscreensaver-extras
+-            xscreensaver-data xscreensaver-data-extra"
+-
+-  # M4 sucks!!
+-  changequote(X,Y)
+-  pkg_vers=`(rpm -qv $rpmnames) 2>&- | \
+-        sed -n 's/^[-a-z]*-\([0-9][0-9]*[.].*\)/\1/p' | head -1`
+-  rpm_vers="$pkg_vers"
+-  changequote([,])
+-fi
+-
+-if test \! -z "$rpm_vers" ; then
+-
+-  # M4 sucks!!
+-  changequote(A,B)
+-  pkg_bindir=`rpm  -ql $rpmnames | sed -n 's@^\(.*/\)xscreensaver-settings$@\1@p'`
+-  pkg_bindir2=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)xscreensaver-demo$@\1@p'`
+-  pkg_hackdir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)popsquares$@\1@p'`
+-  pkg_confdir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\)popsquares\.xml$@\1@p'`
+-  pkg_fontdir=`rpm -ql $rpmnames | sed -n 's@^\(.*/\).*\.ttf$@\1@p' | head -1`
+-  pkg_addir=`rpm   -ql $rpmnames | sed -n 's@^\(.*/\)XScreenSaver$@\1@p'`
+-
+-  if test -z "$pkg_bindir" ; then pkg_bindir="$pkg_bindir2" ; fi
+-  changequote([,])
+-fi
+-
+-
+-# Warn if there's a previous Debian package installed.
+-#
+-deb_vers=
+-if test -z "$pkg_vers" ; then
+-  debnames="xscreensaver xscreensaver-data xscreensaver-data-extra"
+-  pkg_vers=''
+-  for dpkg in $debnames ; do
+-    if test -z "$pkg_vers"; then
+-      pkg_vers=`dpkg -s $dpkg 2>/dev/null | sed -n 's/^Version: \(.*\)$/\1/p'`
+-      deb_vers="$pkg_vers"
+-    fi
+-  done
+-fi
+-
+-if test \! -z "$deb_vers" ; then
+-
+-  # M4 sucks!!
+-  changequote(A,B)
+-  pkg_bindir=`dpkg  -L $debnames 2>&- | sed -n 's@^\(.*/\)xscreensaver-settings$@\1@p'`
+-  pkg_bindir2=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\)xscreensaver-demo$@\1@p'`
+-  pkg_hackdir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\)popsquares$@\1@p'`
+-  pkg_confdir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\)popsquares\.xml$@\1@p'`
+-  pkg_fontdir=`dpkg -L $debnames 2>&- | sed -n 's@^\(.*/\).*\.ttf$@\1@p' | head -1`
+-  pkg_addir=`dpkg   -L $debnames 2>&- | sed -n 's@^\(.*/\)XScreenSaver[^/]*$@\1@p'`
+-  changequote([,])
+-
+-  if test -z "$pkg_bindir" ; then pkg_bindir="$pkg_bindir2" ; fi
+-fi
+-
+-bindir_err=
+-hackdir_err=
+-confdir_err=
+-fontdir_err=
+-addir_err=
+-if ! test -z "$pkg_vers" ; then
+-
+-  err=" (DIFFERS)"
+-
+-  if test -z "$pkg_bindir"  ; then pkg_bindir='???'
+-  elif test "$pkg_bindir"  != "${bindir}/"        ; then bindir_err="$err" ; fi
+-
+-  if test -z "$pkg_hackdir" ; then pkg_hackdir='???'
+-  elif test "$pkg_hackdir" != "${HACKDIR}/"       ; then hackdir_err="$err"; fi
+-
+-  if test -z "$pkg_confdir" ; then pkg_confdir='???'
+-  elif test "$pkg_confdir" != "${HACK_CONF_DIR}/" ; then confdir_err="$err"; fi
+-
+-  if test -z "$pkg_fontdir" ; then pkg_fontdir='none'
+-  elif test "$pkg_fontdir/" != "${FONT_DIR}"      ; then fontdir_err="$err"; fi
+-
+-  if test -z "$pkg_addir"   ; then pkg_addir='???'
+-  elif test "$pkg_addir"   != "${APPDEFAULTS}/"   ; then addir_err="$err"  ; fi
+-
+-  warning=no
+-  warnL "There is already an installed package of xscreensaver"
+-  warn2 "version \"$pkg_vers\", in these directories:"
+-  echo ""
+-  warn2 "User programs: $pkg_bindir$bindir_err"
+-  warn2 "Screen savers: $pkg_hackdir$hackdir_err"
+-  warn2 "Configuration: $pkg_confdir$confdir_err"
+-  warn2 "Extra fonts:   $pkg_fontdir$fontdir_err"
+-  warn2 "App Defaults:  $pkg_addir$addir_err"
+-fi
+-
+ echo ""
+ echo "$warnsep"
+ echo ""
+-- 
+2.31.1
+
