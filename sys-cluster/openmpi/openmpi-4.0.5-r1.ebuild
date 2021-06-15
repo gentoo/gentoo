@@ -31,7 +31,7 @@ SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-IUSE="cma cuda cxx fortran heterogeneous ipv6 java +libompitrace peruse romio
+IUSE="cma cuda cxx fortran heterogeneous ipv6 java libompitrace peruse romio
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
