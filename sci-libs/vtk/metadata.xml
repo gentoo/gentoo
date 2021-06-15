@@ -27,7 +27,6 @@
     <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> to handle smp support</flag>
     <flag name="views">Building Views modules</flag>
     <flag name="web">Install web component</flag>
-    <flag name="xdmf2">Support for xdmf2 formatted data</flag>
     <flag name="R">Enable support for dev-lang/R</flag>
   </use>
 </pkgmetadata>
