@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="xml-resolver:xml-resolver:1.2"
 
 inherit java-pkg-2 java-pkg-simple
 
