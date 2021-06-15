@@ -49,6 +49,7 @@ BDEPEND="dev-tex/hevea
 PATCHES=(
 	"${FILESDIR}/${PN}-1.7.0.1-gsl_lapack.patch"
 	"${FILESDIR}/${PN}-1.6.0-pari-2.11.patch"
+	"${FILESDIR}/${PN}-1.7.0.13-xcas-desktop.patch"
 )
 
 REQUIRED_USE="test? ( gui )"
