@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="CaptAgent: 100% Open-Source Packet Capture Agent for HEP"
+DESCRIPTION="100% Open-Source Packet Capture Agent for HEP"
 HOMEPAGE="https://sipcapture.org/ https://github.com/sipcapture/captagent"
 SRC_URI="https://github.com/sipcapture/captagent/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
