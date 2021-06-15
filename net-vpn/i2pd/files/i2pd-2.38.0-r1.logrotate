@@ -5,7 +5,9 @@
         notifempty
         create 640 i2pd i2pd
         postrotate
-                /bin/kill -HUP $(cat /run/i2pd/i2pd.pid)
+                if [ -f /run/i2pd/i2pd.pid ]; then
+                    /bin/kill -HUP $(/bin/cat /run/i2pd/i2pd.pid)
+                fi
         endscript
 }
 
