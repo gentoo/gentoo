@@ -32,12 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# David Seifert <soap@gentoo.org> (2021-06-15)
-# New versions >=1.6.0 are broken at runtime because
-# of a missing new dependency.
-# bug #791835, bug #791307.
->=sys-apps/fwupd-1.6.0
-
 # Davide Pesavento <pesa@gentoo.org> (2021-06-15)
 # Masked for revdep testing.
 >=dev-python/sip-6
