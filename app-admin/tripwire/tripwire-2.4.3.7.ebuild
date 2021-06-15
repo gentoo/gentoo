@@ -38,7 +38,7 @@ src_configure() {
 	strip-flags
 
 	append-cppflags -DCONFIG_DIR='"\"/etc/tripwire\""'
-	append-cflags -fno-strict-aliasing
+	append-flags -fno-strict-aliasing
 
 	# "integer.cpp:1162:24: error: reference to ‘byte’ is ambiguous"
 	# bug #786465
