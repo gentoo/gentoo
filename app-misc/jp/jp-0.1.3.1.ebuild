@@ -8,7 +8,7 @@ MY_PN=jpp
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Command line interface to JMESPath"
-HOMEPAGE="https://github.com/pipebus/jpp https://github.com/jmespath/jp http://jmespath.org"
+HOMEPAGE="https://github.com/pipebus/jpp https://github.com/jmespath/jp/pull/30 http://jmespath.org"
 SRC_URI="https://github.com/pipebus/jpp/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 MIT"
