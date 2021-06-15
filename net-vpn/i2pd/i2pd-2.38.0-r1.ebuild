@@ -79,7 +79,7 @@ src_install() {
 
 	# logrotate
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/i2pd-2.6.0-r3.logrotate" i2pd
+	newins "${FILESDIR}/i2pd-2.38.0-r1.logrotate" i2pd
 }
 
 pkg_postinst() {
