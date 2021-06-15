@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.mockito:mockito-core:1.9.5"
 
 inherit java-pkg-2 java-pkg-simple
 
