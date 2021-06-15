@@ -3,45 +3,49 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Rampart-like game set in space"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="BitstreamVera GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-libs/libsdl[sound,video]
-	media-libs/sdl-net
+RDEPEND="
+	media-libs/libsdl[sound,video]
 	media-libs/sdl-image[png]
-	media-libs/sdl-ttf
 	media-libs/sdl-mixer[vorbis]
-	sys-libs/ncurses:0
-	sys-libs/readline:0
-"
-RDEPEND="${DEPEND}"
+	media-libs/sdl-net
+	media-libs/sdl-ttf
+	sys-libs/ncurses:=
+	sys-libs/readline:="
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-makefile.patch
 	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-gcc11.patch
 )
 
 src_prepare() {
 	default
 
-	sed -i \
-		-e "s:GENTOODIR:/usr/share/${PN}/:" \
-		Makefile || die
+	sed -i "s|GENTOODIR|${EPREFIX}/usr/share/${PN}/|" Makefile || die
 
 	tc-export CXX
+	append-cxxflags -std=c++14 #790743
 }
 
 src_install() {
-	dobin kajaani-kombat
-	insinto "/usr/share/${PN}"
-	doins *.{png,ttf,ogg}
+	dobin ${PN}
+	doman ${PN}.6
+
+	insinto /usr/share/${PN}
+	doins *.{ogg,png,ttf}
+
+	make_desktop_entry ${PN} "Kajaani Kombat" applications-games
+
 	einstalldocs
-	doman kajaani-kombat.6
 }
