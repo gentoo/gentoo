@@ -79,6 +79,7 @@ proxy_html - Module to rewrite links in html pages behind a reverse proxy
 proxy_http - HTTP support module for mod_proxy
 proxy_http2 - HTTP2 support module for mod_proxy
 proxy_scgi - SCGI gateway module for mod_proxy
+proxy_uwsgi - UWSGI gateway module for mod_proxy
 proxy_wstunnel - Provides support for the tunnelling of web socket connections to a backend websockets server
 ratelimit - Bandwidth Rate Limiting for Clients
 remoteip - Replaces the original client IP address for the connection with the useragent IP address list presented by a proxies or a load balancer via the request headers
