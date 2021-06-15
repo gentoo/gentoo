@@ -389,12 +389,11 @@ src_prepare() {
 
 	# Prepare Patch dir with additional patches / remove unwanted patches
 	# Inject bug/desc entries for perl -V
-	if use hppa ; then
-		# bug 634162
-		add_patch "${FILESDIR}/${PN}-5.26.2-hppa.patch" "100-5.26.2-hppa.patch"\
-			"Fix broken miniperl on hppa"\
-			"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
-	fi
+	# Old example:
+	# add_patch "${FILESDIR}/${PN}-5.26.2-hppa.patch" "100-5.26.2-hppa.patch"\
+	#		"Fix broken miniperl on hppa"\
+	#		"https://bugs.debian.org/869122" "https://bugs.gentoo.org/634162"
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
