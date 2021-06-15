@@ -16,10 +16,9 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ansible/ansible.git"
 	EGIT_BRANCH="devel"
 else
-	SRC_URI="mirror://pypi/${PN:0:1}/${PN}-core/${PN}-core-${PV}.tar.gz"
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 fi
-S="${WORKDIR}/${PN}-core-${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
