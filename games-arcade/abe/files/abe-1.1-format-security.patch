@@ -1,5 +1,6 @@
---- ./src/Game.c.orig	2005-03-05 09:20:04.000000000 -0700
-+++ ./src/Game.c	2013-11-20 12:30:00.000000000 -0700
+Fix build failure with -Werror=format-security
+--- ./src/Game.c
++++ ./src/Game.c
 @@ -6,21 +6,14 @@ Game game;
  
  // path_sprintf should not be used by other .c files, as it does not fit for them.
