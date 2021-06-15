@@ -36,11 +36,11 @@ RDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
-	app-admin/ansible-base
+	<app-admin/ansible-base-2.11
 "
 DEPEND="
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
-	app-admin/ansible-base
+	<app-admin/ansible-base-2.11
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
