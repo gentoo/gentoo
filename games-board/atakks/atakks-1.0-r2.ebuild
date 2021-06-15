@@ -5,21 +5,17 @@ EAPI=7
 
 inherit desktop toolchain-funcs
 
-MY_P="${P/-/_}"
 DESCRIPTION="Clone of Ataxx"
-HOMEPAGE="http://team.gcu-squad.org/~fab"
-# no version upstream
-#SRC_URI="http://team.gcu-squad.org/~fab/down/${PN}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
+S="${WORKDIR}/${PN}_${PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-libs/libsdl:0"
-RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
+RDEPEND="media-libs/libsdl[video]"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-warnings.patch
@@ -29,21 +25,22 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Modify game data paths
-	sed -i \
-		-e "s:SDL_LoadBMP(\":SDL_LoadBMP(\"/usr/share/${PN}/:" \
-		main.c || die
+	sed -i "/LoadBMP/s|\"|\"${EPREFIX}/usr/share/${PN}/|" main.c || die
 }
 
 src_compile() {
 	tc-export CC
+
 	emake E_CFLAGS="${CFLAGS}"
 }
 
 src_install() {
 	dobin ${PN}
+
 	insinto /usr/share/${PN}
-	doins *bmp
-	newicon icon.bmp ${PN}.bmp
-	make_desktop_entry ${PN} Atakks /usr/share/pixmaps/${PN}.bmp
+	doins *.bmp
+
+	make_desktop_entry ${PN} Atakks applications-games
+
+	einstalldocs
 }
