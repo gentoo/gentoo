@@ -16,9 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
+# Ansible is called via its CLI
 BDEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
-		app-admin/ansible[${PYTHON_USEDEP}]
+		app-admin/ansible
 		app-admin/salt[${PYTHON_USEDEP}]
 		dev-python/paramiko[${PYTHON_USEDEP}]
 		dev-python/pywinrm[${PYTHON_USEDEP}]
