@@ -1,0 +1,352 @@
+Backport from
+https://github.com/wojdyr/fityk/pull/38
+
+--- a/fityk/fityk.cpp
++++ b/fityk/fityk.cpp
+@@ -129,8 +129,7 @@
+     delete p_;
+ }
+ 
+-void Fityk::execute(string const& s)  throw(SyntaxError, ExecuteError,
+-                                            ExitRequestedException)
++void Fityk::execute(string const& s)
+ {
+     try {
+         priv_->parse_and_execute_line(s);
+@@ -139,8 +138,7 @@
+     CATCH_EXECUTE_ERROR
+ }
+ 
+-string Fityk::get_info(string const& s, int dataset)  throw(SyntaxError,
+-                                                            ExecuteError)
++string Fityk::get_info(string const& s, int dataset)
+ {
+     try {
+         string result;
+@@ -152,8 +150,7 @@
+     return "";
+ }
+ 
+-realt Fityk::calculate_expr(string const& s, int dataset)  throw(SyntaxError,
+-                                                                  ExecuteError)
++realt Fityk::calculate_expr(string const& s, int dataset)
+ {
+     try {
+         Lexer lex(s.c_str());
+@@ -209,7 +206,7 @@
+     return priv_->mgr.functions()[n];
+ }
+ 
+-vector<Func*> Fityk::get_components(int dataset, char fz)  throw(ExecuteError)
++vector<Func*> Fityk::get_components(int dataset, char fz)
+ {
+     const Model *model = priv_->dk.get_model(hd(priv_, dataset));
+     const vector<int>& indexes = model->get_fz(fz).idx;
+@@ -220,7 +217,7 @@
+     return ret;
+ }
+ 
+-realt Fityk::get_model_value(realt x, int dataset)  throw(ExecuteError)
++realt Fityk::get_model_value(realt x, int dataset)
+ {
+     try {
+         return priv_->dk.get_model(hd(priv_, dataset))->value(x);
+@@ -230,7 +227,6 @@
+ }
+ 
+ vector<realt> Fityk::get_model_vector(vector<realt> const& x, int dataset)
+-                                                          throw(ExecuteError)
+ {
+     vector<realt> xx(x);
+     vector<realt> yy(x.size(), 0.);
+@@ -241,7 +237,7 @@
+     return yy;
+ }
+ 
+-const Var* Fityk::get_variable(string const& name)  throw(ExecuteError)
++const Var* Fityk::get_variable(string const& name)
+ {
+     try {
+         string vname;
+@@ -274,7 +270,6 @@
+ }
+ 
+ void Fityk::load(LoadSpec const& spec, int dataset)
+-                     throw(ExecuteError)
+ {
+     if (dataset == DEFAULT_DATASET)
+         dataset = priv_->dk.default_idx();
+@@ -290,7 +285,7 @@
+                       vector<realt> const& x,
+                       vector<realt> const& y,
+                       vector<realt> const& sigma,
+-                      string const& title)     throw(ExecuteError)
++                      string const& title)
+ {
+     try {
+         priv_->dk.data(dataset)->load_arrays(x, y, sigma, title);
+@@ -299,7 +294,6 @@
+ }
+ 
+ void Fityk::add_point(realt x, realt y, realt sigma, int dataset)
+-                                                          throw(ExecuteError)
+ {
+     try {
+         priv_->dk.data(hd(priv_, dataset))->add_one_point(x, y, sigma);
+@@ -307,7 +301,7 @@
+     CATCH_EXECUTE_ERROR
+ }
+ 
+-vector<Point> const& Fityk::get_data(int dataset)  throw(ExecuteError)
++vector<Point> const& Fityk::get_data(int dataset)
+ {
+     static const vector<Point> empty;
+     try {
+@@ -335,23 +329,21 @@
+ }
+ 
+ void Fityk::set_option_as_string(const string& opt, const string& val)
+-                                                            throw(ExecuteError)
+ {
+     priv_->mutable_settings_mgr()->set_as_string(opt, val);
+ }
+ 
+ void Fityk::set_option_as_number(const string& opt, double val)
+-                                                            throw(ExecuteError)
+ {
+     priv_->mutable_settings_mgr()->set_as_number(opt, val);
+ }
+ 
+-string Fityk::get_option_as_string(const string& opt) const  throw(ExecuteError)
++string Fityk::get_option_as_string(const string& opt) const
+ {
+     return priv_->settings_mgr()->get_as_string(opt, /*quote_str=*/false);
+ }
+ 
+-double Fityk::get_option_as_number(const string& opt) const  throw(ExecuteError)
++double Fityk::get_option_as_number(const string& opt) const
+ {
+     return priv_->settings_mgr()->get_as_number(opt);
+ }
+@@ -366,7 +358,7 @@
+     return priv_->ui()->get_input_from_user(prompt);
+ }
+ 
+-realt Fityk::get_wssr(int dataset)  throw(ExecuteError)
++realt Fityk::get_wssr(int dataset)
+ {
+     try {
+         return get_wssr_or_ssr(priv_, dataset, true);
+@@ -375,7 +367,7 @@
+     return 0.;
+ }
+ 
+-realt Fityk::get_ssr(int dataset)  throw(ExecuteError)
++realt Fityk::get_ssr(int dataset)
+ {
+     try {
+         return get_wssr_or_ssr(priv_, dataset, false);
+@@ -384,7 +376,7 @@
+     return 0.;
+ }
+ 
+-realt Fityk::get_rsquared(int dataset)  throw(ExecuteError)
++realt Fityk::get_rsquared(int dataset)
+ {
+     try {
+         if (dataset == ALL_DATASETS) {
+@@ -402,7 +394,7 @@
+     return 0.;
+ }
+ 
+-int Fityk::get_dof(int dataset)  throw(ExecuteError)
++int Fityk::get_dof(int dataset)
+ {
+     try {
+         return priv_->get_fit()->get_dof(get_datasets_(priv_, dataset));
+@@ -412,7 +404,6 @@
+ }
+ 
+ vector<vector<realt> > Fityk::get_covariance_matrix(int dataset)
+-                                                           throw(ExecuteError)
+ {
+     try {
+         vector<Data*> dss = get_datasets_(priv_, dataset);
+--- a/fityk/fityk.h
++++ b/fityk/fityk.h
+@@ -118,10 +118,8 @@
+ 
+     virtual const std::string& get_template_name() const = 0;
+     virtual std::string get_param(int n) const = 0;
+-    virtual const std::string& var_name(const std::string& param) const
+-                                                    throw(ExecuteError) = 0;
+-    virtual realt get_param_value(const std::string& param) const
+-                                                    throw(ExecuteError) = 0;
++    virtual const std::string& var_name(const std::string& param) const = 0;
++    virtual realt get_param_value(const std::string& param) const = 0;
+     virtual realt value_at(realt x) const = 0;
+ protected:
+     Func(const std::string name_) : name(name_) {}
+@@ -177,26 +175,23 @@
+     // @{
+ 
+     /// execute command; throws exception on error
+-    void execute(std::string const& s) throw(SyntaxError, ExecuteError,
+-                                             ExitRequestedException);
++    void execute(std::string const& s);
+ 
+ 
+     /// load data from file (path should be ascii or utf8, col=0 is index)
+-    void load(LoadSpec const& spec, int dataset=DEFAULT_DATASET)
+-                  throw(ExecuteError);
++    void load(LoadSpec const& spec, int dataset=DEFAULT_DATASET);
+     void load(std::string const& path, int dataset=DEFAULT_DATASET)
+-      throw(ExecuteError) { load(LoadSpec(path), dataset); }
++      { load(LoadSpec(path), dataset); }
+ 
+     /// load data from arrays
+     void load_data(int dataset,
+                    std::vector<realt> const& x,
+                    std::vector<realt> const& y,
+                    std::vector<realt> const& sigma,
+-                   std::string const& title="")  throw(ExecuteError);
++                   std::string const& title="");
+ 
+     /// add one data point to dataset
+-    void add_point(realt x, realt y, realt sigma, int dataset=DEFAULT_DATASET)
+-                                                     throw(ExecuteError);
++    void add_point(realt x, realt y, realt sigma, int dataset=DEFAULT_DATASET);
+ 
+     // @}
+ 
+@@ -220,14 +215,10 @@
+ 
+     /// @name settings
+     // @{
+-    void set_option_as_string(const std::string& opt, const std::string& val)
+-                                                         throw(ExecuteError);
+-    void set_option_as_number(const std::string& opt, double val)
+-                                                         throw(ExecuteError);
+-    std::string get_option_as_string(const std::string& opt) const
+-                                                         throw(ExecuteError);
+-    double get_option_as_number(const std::string& opt) const
+-                                                         throw(ExecuteError);
++    void set_option_as_string(const std::string& opt, const std::string& val);
++    void set_option_as_number(const std::string& opt, double val);
++    std::string get_option_as_string(const std::string& opt) const;
++    double get_option_as_number(const std::string& opt) const;
+     // @}
+ 
+     /// @name input/output
+@@ -253,12 +244,10 @@
+     // @{
+ 
+     /// return output of the info command
+-    std::string get_info(std::string const& s, int dataset=DEFAULT_DATASET)
+-                                            throw(SyntaxError, ExecuteError);
++    std::string get_info(std::string const& s, int dataset=DEFAULT_DATASET);
+ 
+     /// return expression value, similarly to the print command
+-    realt calculate_expr(std::string const& s, int dataset=DEFAULT_DATASET)
+-                                            throw(SyntaxError, ExecuteError);
++    realt calculate_expr(std::string const& s, int dataset=DEFAULT_DATASET);
+ 
+     //(planned)
+     /// returns dataset titles
+@@ -273,8 +262,7 @@
+     int get_default_dataset() const;
+ 
+     /// get data points
+-    std::vector<Point> const& get_data(int dataset=DEFAULT_DATASET)
+-                                                         throw(ExecuteError);
++    std::vector<Point> const& get_data(int dataset=DEFAULT_DATASET);
+ 
+     /// returns number of simple-variables (parameters that can be fitted)
+     int get_parameter_count() const;
+@@ -286,7 +274,7 @@
+     std::vector<Var*> all_variables() const;
+ 
+     /// returns variable $name
+-    const Var* get_variable(std::string const& name)  throw(ExecuteError);
++    const Var* get_variable(std::string const& name);
+ 
+     /// returns all %functions
+     std::vector<Func*> all_functions() const;
+@@ -295,17 +283,14 @@
+     const Func* get_function(const std::string& name) const;
+ 
+     /// returns %functions used in dataset
+-    std::vector<Func*> get_components(int dataset=DEFAULT_DATASET, char fz='F')
+-                                                         throw(ExecuteError);
++    std::vector<Func*> get_components(int dataset=DEFAULT_DATASET, char fz='F');
+ 
+     /// returns the value of the model for a given dataset at x
+-    realt get_model_value(realt x, int dataset=DEFAULT_DATASET)
+-                                                         throw(ExecuteError);
++    realt get_model_value(realt x, int dataset=DEFAULT_DATASET);
+ 
+     /// multiple point version of the get_model_value()
+     std::vector<realt>
+-    get_model_vector(std::vector<realt> const& x, int dataset=DEFAULT_DATASET)
+-                                                         throw(ExecuteError);
++    get_model_vector(std::vector<realt> const& x, int dataset=DEFAULT_DATASET);
+ 
+     /// get coordinates of rectangle set by the plot command
+     /// side is one of L(eft), R(ight), T(op), B(ottom)
+@@ -317,20 +302,20 @@
+     // @{
+ 
+     /// get WSSR for given dataset or for all datasets
+-    realt get_wssr(int dataset=ALL_DATASETS)  throw(ExecuteError);
++    realt get_wssr(int dataset=ALL_DATASETS);
+ 
+     /// get SSR for given dataset or for all datasets
+-    realt get_ssr(int dataset=ALL_DATASETS)  throw(ExecuteError);
++    realt get_ssr(int dataset=ALL_DATASETS);
+ 
+     /// get R-squared for given dataset or for all datasets
+-    realt get_rsquared(int dataset=ALL_DATASETS)  throw(ExecuteError);
++    realt get_rsquared(int dataset=ALL_DATASETS);
+ 
+     /// get number of degrees-of-freedom for given dataset or for all datasets
+-    int get_dof(int dataset=ALL_DATASETS)  throw(ExecuteError);
++    int get_dof(int dataset=ALL_DATASETS);
+ 
+     /// get covariance matrix (for given dataset or for all datasets)
+     std::vector<std::vector<realt> >
+-    get_covariance_matrix(int dataset=ALL_DATASETS)  throw(ExecuteError);
++    get_covariance_matrix(int dataset=ALL_DATASETS);
+     // @}
+ 
+     /// UiApi contains functions used by CLI and may be used to implement
+--- a/fityk/func.cpp
++++ b/fityk/func.cpp
+@@ -197,7 +197,7 @@
+     return n;
+ }
+ 
+-realt Function::get_param_value(const string& param) const  throw(ExecuteError)
++realt Function::get_param_value(const string& param) const
+ {
+     realt a;
+     if (!param.empty() && islower(param[0]))
+--- a/fityk/func.h
++++ b/fityk/func.h
+@@ -86,8 +86,7 @@
+ #pragma clang diagnostic push
+ #pragma clang diagnostic ignored "-Wdeprecated"
+ #endif
+-    virtual realt get_param_value(const std::string& param) const
+-                            throw(ExecuteError); // exc. spec. is used by SWIG
++    virtual realt get_param_value(const std::string& param) const;
+ 
+     realt numarea(realt x1, realt x2, int nsteps) const;
+ 
+@@ -101,7 +100,6 @@
+     // implementation of members of Func
+     virtual const std::string& get_template_name() const { return tp_->name; }
+     virtual const std::string& var_name(const std::string& param) const
+-                        throw(ExecuteError) // exc. spec. is used by SWIG
+                         { return used_vars_.get_name(get_param_nr(param)); }
+ #ifdef __clang__
+ #pragma clang diagnostic pop
