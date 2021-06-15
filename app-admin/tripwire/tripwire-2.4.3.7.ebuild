@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic
 
@@ -36,8 +36,17 @@ src_configure() {
 	# see #32613, #45823, and others.
 	# 	-taviso@gentoo.org
 	strip-flags
-	append-cppflags -DCONFIG_DIR='"\"/etc/tripwire\""' -fno-strict-aliasing
-	econf $(use_enable ssl openssl) $(use_enable static)
+
+	append-cppflags -DCONFIG_DIR='"\"/etc/tripwire\""'
+	append-cflags -fno-strict-aliasing
+
+	# "integer.cpp:1162:24: error: reference to ‘byte’ is ambiguous"
+	# bug #786465
+	append-cxxflags -std=c++14
+
+	econf \
+		$(use_enable ssl openssl) \
+		$(use_enable static)
 }
 
 src_install() {
