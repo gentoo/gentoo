@@ -21,4 +21,6 @@ src_prepare() {
 	default
 	mv russian-aot.dic ru_RU.dic || die
 	mv russian-aot.aff ru_RU.aff || die
+	mv ru_th_aot.dat th_ru_RU_v2.dat || die
+	mv ru_th_aot.idx th_ru_RU_v2.idx || die
 }
