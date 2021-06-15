@@ -67,7 +67,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	systemd? ( >=sys-apps/systemd-211 )
 	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
-		sys-boot/gnu-efi
+		sys-apps/fwupd-efi
 		sys-boot/efibootmgr
 		sys-fs/udisks
 		sys-libs/efivar
