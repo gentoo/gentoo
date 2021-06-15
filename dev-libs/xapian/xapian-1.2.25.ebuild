@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 MY_P="${PN}-core-${PV}"
 
@@ -23,6 +23,10 @@ S="${WORKDIR}/${MY_P}"
 
 multilib_src_configure() {
 	local myconf=""
+
+	# "brass_check.cc:40:48: error: reference to ‘byte’ is ambiguous"
+	# bug #789390
+	append-cxxflags -std=c++14
 
 	if use cpu_flags_x86_sse2; then
 		myconf="${myconf} --enable-sse=sse2"
