@@ -40,15 +40,14 @@
 # dev-python/python-language-server --> dev-python/python-lsp-server
 # dev-python/python-jsonrpc-server --> dev-python/python-lsp-jsonrpc
 # dev-python/pyls-black --> dev-python/python-lsp-black
-#
+# -
 # Note that dev-python/pyls-spyder has already switched to the new language
 # server as of version 0.4.0. Users of the Spyder IDE will automatically
 # switch to the new language server when upgrading to version 4.2.5-r1 or
 # 5.0.4-r1. Manual adjustments to the settings may be required in certain
 # configurations [3].
-#
+# -
 # Masked for removal in 30 days (2021-07-14).
-#
 # [1] https://github.com/palantir/python-language-server/issues/935
 # [2] https://bugs.gentoo.org/795924
 # [3] https://bugs.gentoo.org/783615
