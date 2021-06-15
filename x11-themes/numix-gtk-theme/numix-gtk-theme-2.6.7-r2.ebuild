@@ -21,6 +21,10 @@ BDEPEND="dev-lang/sassc"
 
 PATCHES=( "${FILESDIR}/${P}-replace-ruby-sassc-with-dev-lang-sassc.patch" )
 
+src_compile() {
+	emake -j1
+}
+
 src_install() {
 	emake -j1 DESTDIR="${D}" install
 	einstalldocs
