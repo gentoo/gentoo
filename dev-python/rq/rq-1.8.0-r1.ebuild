@@ -25,7 +25,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	>=dev-python/click-5.0[${PYTHON_USEDEP}]
+	<dev-python/click-8.0[${PYTHON_USEDEP}]
 	>=dev-python/redis-py-3.5.0[${PYTHON_USEDEP}]
 "
 
