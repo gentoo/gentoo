@@ -48,8 +48,8 @@ src_prepare() {
 	eautoreconf
 
 	if use cuda ; then
-		append-cflags "-I${EPREFIX}/opt/cuda/include"
-		append-cppflags "-I${EPREFIX}/opt/cuda/include"
+		append-cflags "-I${ESYSROOT}/opt/cuda/include"
+		append-cppflags "-I${ESYSROOT}/opt/cuda/include"
 	fi
 }
 
@@ -58,7 +58,7 @@ multilib_src_configure() {
 
 	if use cuda ; then
 		local -x LDFLAGS="${LDFLAGS}"
-		append-ldflags "-L${EPREFIX}/opt/cuda/$(get_libdir)"
+		append-ldflags "-L${ESYSROOT}/opt/cuda/$(get_libdir)"
 	fi
 
 	local myconf=(
