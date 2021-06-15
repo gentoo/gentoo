@@ -87,7 +87,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.7-logind_plugin.patch
-	"${FILESDIR}"/${PN}-1.6.1-revert-Change-python-version-check-order.patch
+	"${FILESDIR}"/${P}-fix-python-detection.patch
 )
 
 pkg_setup() {
