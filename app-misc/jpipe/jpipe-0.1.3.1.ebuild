@@ -14,15 +14,26 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64"
 SLOT="0"
-IUSE="jp-symlink test"
+IUSE="jpp jp-symlink test"
 RESTRICT="!test? ( test )"
 RDEPEND="
-	jp-symlink? ( !app-misc/jp )
+	jpp? ( !app-misc/jp[jpp] )
+	jp-symlink? ( !app-misc/jp[jp] )
 	dev-python/jmespath[${PYTHON_USEDEP}]
 "
 
+python_prepare_all() {
+	if ! use jpp; then
+		sed -e '/jpp_main/d' -i setup.py || die
+	fi
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	"${PYTHON}" test/test_jpipe.py || die "tests failed for ${EPYTHON}"
+	if use jpp; then
+		"${PYTHON}" test/test_jpp.py || die "jpp tests failed for ${EPYTHON}"
+	fi
 }
 
 src_install() {
