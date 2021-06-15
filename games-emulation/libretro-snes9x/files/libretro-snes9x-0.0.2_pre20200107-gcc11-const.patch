@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/787116
+https://github.com/libretro/snes9x/commit/da1fc9a69d8fc776f1b13b080bc27cf329c52a1f
+
+From da1fc9a69d8fc776f1b13b080bc27cf329c52a1f Mon Sep 17 00:00:00 2001
+From: Alberto Fustinoni <alberto@aftnet.net>
+Date: Thu, 10 Sep 2020 22:22:46 +0900
+Subject: [PATCH] Build fix
+
+---
+ conffile.cpp | 2 +-
+ conffile.h   | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/conffile.cpp b/conffile.cpp
+index 817afae7f..5e121e2cc 100644
+--- a/conffile.cpp
++++ b/conffile.cpp
+@@ -452,7 +452,7 @@ void ConfigFile::ClearLines()
+     }
+ }
+ 
+-bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) {
++bool ConfigFile::ConfigEntry::section_then_key_less::operator()(const ConfigEntry &a, const ConfigEntry &b) const {
+ 	if(curConfigFile && a.section!=b.section){
+ 		const int sva = curConfigFile->GetSectionSize(a.section);
+ 		const int svb = curConfigFile->GetSectionSize(b.section);
+diff --git a/conffile.h b/conffile.h
+index ba69812df..c09cea362 100644
+--- a/conffile.h
++++ b/conffile.h
+@@ -90,18 +90,18 @@ class ConfigFile {
+ 		mutable bool used;
+ 
+         struct section_then_key_less {
+-            bool operator()(const ConfigEntry &a, const ConfigEntry &b);
++            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const;
+         };
+ 
+         struct key_less {
+-            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const{
++            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const {
+                 if(a.section!=b.section) return a.section<b.section;
+                 return a.key<b.key;
+             }
+         };
+ 
+         struct line_less {
+-            bool operator()(const ConfigEntry &a, const ConfigEntry &b){
++            bool operator()(const ConfigEntry &a, const ConfigEntry &b) const {
+ 				if(a.line==b.line) return (b.val.empty() && !a.val.empty()) || a.key<b.key;
+                 if(b.line<0) return true;
+                 if(a.line<0) return false;
