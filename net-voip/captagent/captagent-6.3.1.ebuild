@@ -27,7 +27,7 @@ DEPEND="dev-libs/json-c
 	mysql? ( dev-db/mysql-connector-c )
 	pcre? ( dev-libs/libpcre )
 	redis? ( dev-db/redis )
-	ssl? ( dev-libs/openssl )"
+	ssl? ( dev-libs/openssl:= )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
