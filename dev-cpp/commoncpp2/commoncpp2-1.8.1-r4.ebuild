@@ -9,7 +9,7 @@ DESCRIPTION="C++ library offering portable support for system-related services"
 HOMEPAGE="https://www.gnu.org/software/commoncpp/"
 SRC_URI="
 	mirror://gnu/commoncpp/${P}.tar.gz
-	https://dev.gentoo.org/~soap/distfiles/${P}-patches.txz"
+	https://dev.gentoo.org/~soap/distfiles/${P}-patches-r1.txz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -41,6 +41,7 @@ PATCHES=(
 	"${WORKDIR}"/patches/1.8.1-gnutls-3.4.patch
 	"${WORKDIR}"/patches/1.8.1-fix-gcc9.patch
 	"${WORKDIR}"/patches/1.8.1-c++17.patch
+	"${WORKDIR}"/patches/1.8.1-openssl-1.1.patch
 )
 
 src_prepare() {
