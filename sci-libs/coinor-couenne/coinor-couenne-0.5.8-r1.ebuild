@@ -32,6 +32,10 @@ BDEPEND="
 		virtual/latex-base
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.8-fix-build-with-gcc11.patch
+)
+
 src_prepare() {
 	default
 	# Prevent unneeded call to pkg-config that needs ${ED}'s in path.
