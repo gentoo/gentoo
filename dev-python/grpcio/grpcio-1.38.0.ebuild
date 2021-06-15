@@ -27,6 +27,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/1.37.1-cc-flag-test-fix.patch" ) 
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 	hprefixify setup.py
