@@ -20,7 +20,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Norwegian dictionaries for myspell/hunspell"
-HOMEPAGE="http://spell-norwegian.alioth.debian.org/"
+HOMEPAGE="http://freshmeat.sourceforge.net/projects/spell-norwegian"
 SRC_URI="https://alioth.debian.org/frs/download.php/2357/no_NO-pack2-${PV}.zip"
 
 LICENSE="GPL-2"
