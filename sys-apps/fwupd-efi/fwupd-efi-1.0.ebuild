@@ -27,7 +27,7 @@ BDEPEND="${PYTHON_DEPS}
 
 DEPEND="sys-boot/gnu-efi"
 
-RDEPEND=""
+RDEPEND="!<sys-apps/fwupd-1.6.0"
 
 src_prepare() {
 	default
