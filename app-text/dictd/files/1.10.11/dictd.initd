@@ -12,7 +12,7 @@ prepconfig() {
 	fi
 
 	# if no dictionaries, skip startup.
-	# The new way of doing this is to scan /usr/lib/dict and tweek the conf
+	# The new way of doing this is to scan /usr/share/dict and tweek the conf
 	einfo "Scanning for dictionaries..."
 	if [ ! -d "${DLIBDIR}" ]; then
 		eerror "${DLIBDIR} doesn't exist, no dictionaries found."
