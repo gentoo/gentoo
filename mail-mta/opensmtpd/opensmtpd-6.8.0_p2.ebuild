@@ -12,7 +12,7 @@ SRC_URI="https://www.opensmtpd.org/archives/${P/_}.tar.gz"
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
-IUSE="pam +mta berkdb"
+IUSE="berkdb +mta pam split-usr"
 
 DEPEND="
 	acct-user/smtpd
@@ -66,7 +66,9 @@ src_install() {
 	if use mta ; then
 		dodir /usr/sbin
 		dosym smtpctl /usr/sbin/sendmail
-		dosym ../sbin/smtpctl /usr/bin/sendmail
+		# on USE="-split-usr" system sbin and bin are merged
+		# so symlink made above will collide with one below
+		use split-usr && dosym ../sbin/smtpctl /usr/bin/sendmail
 		mkdir -p "${ED}"/usr/$(get_libdir) || die
 		ln -s --relative "${ED}"/usr/sbin/smtpctl "${ED}"/usr/$(get_libdir)/sendmail || die
 	fi
