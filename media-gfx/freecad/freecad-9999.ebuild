@@ -3,8 +3,7 @@
 
 EAPI=7
 
-# vtk needs updating to use 3.9
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit check-reqs cmake desktop eapi8-dosym optfeature python-single-r1 xdg
 
@@ -69,7 +68,7 @@ RDEPEND="
 	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1[python,${PYTHON_SINGLE_USEDEP}]
-	sci-libs/opencascade:=[vtk(+)]
+	<sci-libs/opencascade-7.5.2:=[vtk(+)]
 	sci-libs/orocos_kdl:=
 	sys-libs/zlib
 	virtual/glu
