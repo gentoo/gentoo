@@ -6,7 +6,7 @@ EAPI=7
 inherit desktop edos2unix java-pkg-2 java-ant-2
 
 DESCRIPTION="Unofficial online version of the Classic BattleTech board game"
-HOMEPAGE="https://www.megamek.org/"
+HOMEPAGE="https://megamek.org/"
 SRC_URI="mirror://sourceforge/${PN}/MegaMek-v${PV}.zip"
 S="${WORKDIR}"
 
