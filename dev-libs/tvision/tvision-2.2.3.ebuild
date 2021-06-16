@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="examples nls"
+IUSE="examples gpm nls"
 
 DOCS=( readme.txt THANKS TODO )
 HTML_DOCS=( www-site/. )
@@ -25,7 +25,6 @@ RDEPEND="
 	dev-libs/libbsd
 	media-libs/allegro:0[X]
 	sys-apps/util-linux
-	sys-libs/gpm
 	sys-libs/ncurses:0=
 	x11-libs/libICE
 	x11-libs/libSM
@@ -36,6 +35,7 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXt
 	x11-libs/libxcb:=
+	gpm? ( sys-libs/gpm )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
@@ -43,7 +43,10 @@ BDEPEND="sys-devel/gettext"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1.4-flags.patch
 	"${FILESDIR}"/${PN}-2.2.1.4-ldconfig.patch
-	"${FILESDIR}"/${P}-0001-use-proper-AR.patch
+	"${FILESDIR}"/${P}-0001-Added-ar-command-now-can-be-configured-from-the-envi.patch
+	"${FILESDIR}"/${P}-0002-Added-configuration-option-to-exclude-libgpm.patch
+	"${FILESDIR}"/${P}-0003-Adjusted-c-years.patch
+	"${FILESDIR}"/${P}-0004-Made-ar-command-configurable.patch
 )
 
 src_configure() {
@@ -58,6 +61,7 @@ src_configure() {
 		--x-include="${EPREFIX}/usr/include/X11"
 	)
 
+	use gpm || myconf+=( --without-gpm )
 	use nls || myconf+=( --no-intl )
 
 	# Note: Do not use econf here, this isn't an autoconf configure script,

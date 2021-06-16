@@ -1,0 +1,23 @@
+From: "Salvador E. Tropea" <salvador@inti.gob.ar>
+Date: Thu, 17 Jun 2021 13:36:09 -0300
+Subject: [PATCH 4/4] Made ar command configurable.
+
+---
+ intl/dummy/Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/intl/dummy/Makefile b/intl/dummy/Makefile
+index c32b0a8b..e24c1976 100644
+--- a/intl/dummy/Makefile
++++ b/intl/dummy/Makefile
+@@ -1,5 +1,6 @@
+ RHIDE_GCC=gcc
++RHIDE_AR=ar
+ CC=$(RHIDE_GCC)
+ 
+ libtvfintl.a: intldummy.o
+-	ar -rv libtvfintl.a intldummy.o
++	$(RHIDE_AR) -rv libtvfintl.a intldummy.o
+-- 
+2.32.0
+
