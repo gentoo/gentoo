@@ -5,7 +5,7 @@ EAPI=7
 
 inherit bash-completion-r1 go-module
 
-DESCRIPTION="A general-purpose command-line fuzzy finder, written in GoLang"
+DESCRIPTION="A general-purpose command-line fuzzy finder, written in Golang"
 HOMEPAGE="https://github.com/junegunn/fzf"
 
 # For fancy versioning only. Bump on the next release!
