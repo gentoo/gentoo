@@ -32,7 +32,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 src_prepare() {
 	default
 	sed -i "s!doc/gitflow!doc/${PF}!" Makefile || die "Fixing doc path failed"
-	sed -i "s!@PREFIX@!${EPREFIX}!" git-flow || die "Failed to set prefix in the script"
+	sed -i "s!@PREFIX@!${EPREFIX}/usr!" git-flow || die "Failed to set prefix in the script"
 }
 
 src_compile() {
