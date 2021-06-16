@@ -783,7 +783,7 @@ compile_headers() {
 
 	if kernel_is 2 4; then
 		yes "" | make oldconfig ${xmakeopts}
-		elog ">>> make oldconfig complete"
+		einfo ">>> make oldconfig complete"
 		make dep ${xmakeopts}
 	elif kernel_is 2 6; then
 		# 2.6.18 introduces headers_install which means we dont need any
@@ -905,7 +905,7 @@ install_sources() {
 
 	cd "${S}" || die
 	dodir /usr/src
-	elog ">>> Copying sources ..."
+	einfo ">>> Copying sources ..."
 
 	file="$(find ${WORKDIR} -iname "docs" -type d)"
 	if [[ -n ${file} ]]; then
@@ -1488,7 +1488,7 @@ kernel-2_src_compile() {
 	[[ ${ETYPE} == headers ]] && compile_headers
 
 	if [[ ${K_DEBLOB_AVAILABLE} == 1 ]] && use deblob; then
-		elog ">>> Running deblob script ..."
+		einfo ">>> Running deblob script ..."
 		python_setup
 		sh "${T}/${DEBLOB_A}" --force || die "Deblob script failed to run!!!"
 	fi
@@ -1548,7 +1548,7 @@ kernel-2_pkg_setup() {
 	fi
 
 	[[ ${ETYPE} == headers ]] && setup_headers
-	[[ ${ETYPE} == sources ]] && elog ">>> Preparing to unpack ..."
+	[[ ${ETYPE} == sources ]] && einfo ">>> Preparing to unpack ..."
 }
 
 # @FUNCTION: kernel-2_pkg_postrm
