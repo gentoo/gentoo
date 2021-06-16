@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: lua.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: A common eclass for Lua packages
 # @DESCRIPTION:
 # A common eclass providing helper functions to build and install
@@ -27,7 +27,7 @@
 #
 # @EXAMPLE:
 # @CODE
-# EAPI=7
+# EAPI=8
 #
 # LUA_COMPAT=( lua5-{1..3} )
 #
@@ -54,7 +54,7 @@ case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
 		;;
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
