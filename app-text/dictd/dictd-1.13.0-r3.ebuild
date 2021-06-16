@@ -113,3 +113,11 @@ src_install() {
 
 	readme.gentoo_create_doc
 }
+
+pkg_postinst() {
+	if has_version sys-apps/systemd; then
+		ewarn "The default location for dicts has changed! If you've modified your"
+		ewarn "systemd units locally to point into /usr/lib/dict, please update it"
+		ewarn "to point at /usr/share/dict now."
+	fi
+}
