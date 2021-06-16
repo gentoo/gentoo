@@ -174,6 +174,7 @@ RDEPEND="
 		app-dicts/sword-KJV
 		app-dicts/sword-KJVA
 		app-dicts/sword-KJVPCE
+		app-dicts/sword-KingComm
 		app-dicts/sword-LEB
 		app-dicts/sword-LITV
 		app-dicts/sword-LO
