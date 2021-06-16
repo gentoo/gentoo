@@ -69,6 +69,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS CHANGES LICENSES README TODO )
 
+PATCHES=( "${FILESDIR}/${PN}-21.04.1-gcc11.patch" ) # bug 790158, KDE-bug 437432; pending
+
 src_configure() {
 	local mycmakeargs=(
 		-DDEBUG=$(usex debug)
