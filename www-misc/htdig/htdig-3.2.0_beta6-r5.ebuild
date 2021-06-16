@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_PV="${PV/_beta/b}"
 
@@ -43,6 +43,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# "WordDBPage.h:309:76: error: reference to ‘byte’ is ambiguous"
+	# bug #787716
+	append-cxxflags -std=c++14
+
 	local myeconfargs=(
 		--disable-static
 		--with-config-dir="${EPREFIX}"/etc/${PN}
