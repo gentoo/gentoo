@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos 
 CDEPEND="
 	acct-group/hsqldb
 	acct-user/hsqldb
-	java-virtuals/servlet-api:2.5"
+	dev-java/tomcat-servlet-api:4.0"
 RDEPEND="${CDEPEND}
 	virtual/jre:1.8"
 DEPEND="${CDEPEND}
@@ -77,7 +77,7 @@ JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_BUILD_XML="build/build.xml"
 EANT_BUILD_TARGET="jar jarclient jarsqltool jarutil"
 EANT_DOC_TARGET="javadocdev"
-EANT_GENTOO_CLASSPATH="servlet-api-2.5"
+EANT_GENTOO_CLASSPATH="tomcat-servlet-api-4.0"
 
 src_test() {
 	java-pkg_jar-from --into lib junit
