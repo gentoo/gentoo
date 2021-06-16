@@ -32,7 +32,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit python-any-r1 savedconfig toolchain-funcs kernel-install
 
