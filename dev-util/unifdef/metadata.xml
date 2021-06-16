@@ -5,4 +5,7 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">fanf2/unifdef</remote-id>
+	</upstream>
 </pkgmetadata>
