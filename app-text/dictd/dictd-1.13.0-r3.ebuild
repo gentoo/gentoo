@@ -58,7 +58,7 @@ src_configure() {
 	econf \
 		$(use_with dbi plugin-dbi) \
 		$(use_with judy plugin-judy) \
-		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/${PN} \
+		--libexecdir="${EPREFIX}"/usr/share/dict \
 		--sysconfdir="${EPREFIX}"/etc/dict
 }
 
