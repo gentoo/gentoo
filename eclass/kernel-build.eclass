@@ -116,7 +116,7 @@ kernel-build_src_test() {
 	fi
 
 	emake O="${WORKDIR}"/build "${MAKEARGS[@]}" \
-		INSTALL_MOD_PATH="${T}" INSTALL_PATH="${ED}/boot"  "${targets[@]}"
+		INSTALL_MOD_PATH="${T}" "${targets[@]}"
 
 	local ver="${PV}${KV_LOCALVERSION}"
 	kernel-install_test "${ver}" \
