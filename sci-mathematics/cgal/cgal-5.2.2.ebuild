@@ -20,15 +20,15 @@ IUSE="doc examples +gmp mpfi ntl qt5 shared"
 
 RDEPEND="
 	dev-cpp/eigen
-	dev-libs/boost:=[threads(+)]
+	dev-libs/boost:=[threads]
 	dev-libs/mpfr:=
 	sys-libs/zlib
 	x11-libs/libX11:=
 	virtual/glu:=
 	virtual/opengl:=
-	gmp? ( dev-libs/gmp:=[cxx(+)] )
+	gmp? ( dev-libs/gmp:=[cxx] )
 	mpfi? ( sci-libs/mpfi )
-	ntl? ( dev-libs/ntl:= )
+	ntl? ( dev-libs/ntl )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
