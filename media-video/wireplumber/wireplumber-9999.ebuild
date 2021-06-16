@@ -34,7 +34,7 @@ BDEPEND="
 
 DEPEND="
 	${LUA_DEPS}
-	>=dev-libs/glib-2.58
+	>=dev-libs/glib-2.62
 	>=media-video/pipewire-0.3.26
 	virtual/libc
 	systemd? ( sys-apps/systemd )
