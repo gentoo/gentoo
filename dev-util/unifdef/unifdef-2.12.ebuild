@@ -13,6 +13,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
+PATCHES=("${FILESDIR}"/${P}-tests.patch)
+
 DOCS=( README )
 
 src_prepare() {
