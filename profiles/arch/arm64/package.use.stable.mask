@@ -1,6 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-06-16)
+# Drags in several not-yet-stable deps on arm64
+# glusterfs: sys-cluster/glusterfs
+# rbd: sys-cluster/ceph
+# bug #796362
+app-emulation/libvirt glusterfs rbd
+
 # Sam James <sam@gentoo.org> (2021-05-28)
 # media-gfx/inkscape is not yet stable on arm64
 # bug #785685
