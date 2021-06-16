@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
 	"${FILESDIR}"/${PN}-3.12-automagic-libbsd.patch
+	"${FILESDIR}"/${PN}-3.15-pkg-config.patch
 )
 
 criu_arch() {
@@ -93,6 +94,7 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
 		AR="$(tc-getAR)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		PYTHON="${EPYTHON%.?}" \
 		FULL_PYTHON="${PYTHON%.?}" \
 		OBJCOPY="$(tc-getOBJCOPY)" \
