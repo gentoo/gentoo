@@ -230,8 +230,8 @@ dev-python/csv23
 <net-mail/courier-imap-5
 
 # Matthew Thode <prometheanfire@gentoo.org> (2021-05-27)
-# remove some stuff to make redacted happy
-# bug #793800
+# Remove some openstack-related packages due to high-burden,
+# unmaintainable python requirements. Bug #793800
 app-admin/glance
 app-emulation/spice-html5
 dev-python/aodhclient
