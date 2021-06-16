@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..3} )
 WX_GTK_VER=3.0-gtk3
 
-inherit lua-single wxwidgets xdg
+inherit flag-o-matic lua-single wxwidgets xdg
 
 DESCRIPTION="General-purpose nonlinear curve fitting and data analysis"
 HOMEPAGE="https://fityk.nieto.pl/"
@@ -29,12 +29,14 @@ RDEPEND="${DEPEND}
 	gnuplot? ( sci-visualization/gnuplot )"
 BDEPEND="dev-lang/swig"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-gtk3.patch
-	"${FILESDIR}"/${P}-c++17.patch # bug 787317
-)
+PATCHES=( "${FILESDIR}"/${P}-fix-gtk3.patch )
 
 src_configure() {
+	# codebase relies on dynamic exception specifications
+	# for SWIG, no point in trying to fix at this point.
+	# https://github.com/wojdyr/fityk/pull/38
+	append-cxxflags -std=c++14
+
 	use wxwidgets && setup-wxwidgets
 
 	econf \
