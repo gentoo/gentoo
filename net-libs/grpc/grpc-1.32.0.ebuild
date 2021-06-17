@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/protobuf-3.13.0:=
 	>=net-dns/c-ares-1.15.0:=
 	sys-libs/zlib:=
-	>=dev-libs/openssl-1.1.1:0=[-bindist]
+	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
 "
 
 DEPEND="${RDEPEND}
