@@ -21,7 +21,7 @@ IUSE="doc examples test"
 RDEPEND="
 	=dev-cpp/abseil-cpp-20200923*:=[cxx17(+)]
 	>=dev-libs/re2-0.2021.04.01:=
-	>=dev-libs/openssl-1.1.1:0=[-bindist]
+	>=dev-libs/openssl-1.1.1:0=[-bindist(-)]
 	>=dev-libs/protobuf-3.15.2:=
 	>=net-dns/c-ares-1.15.0:=
 	sys-libs/zlib:=
