@@ -1,0 +1,52 @@
+From 7ab81002fe127d16602b85b391c1d1b0422a9afd Mon Sep 17 00:00:00 2001
+From: Kohei Yoshida <kohei.yoshida@gmail.com>
+Date: Mon, 14 Jun 2021 22:52:14 -0400
+Subject: [PATCH] std::deque::erase invalidates all elements if the erased
+ element ...
+
+... is not the first or the last element. My previous assumption (
+that only the elements that occur after the erased element become
+invalid) was in fact wrong.
+
+This should resolve #66.
+---
+ include/mdds/rtree_def.inl | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/include/mdds/rtree_def.inl b/include/mdds/rtree_def.inl
+index ed0e9be..84f0673 100644
+--- a/include/mdds/rtree_def.inl
++++ b/include/mdds/rtree_def.inl
+@@ -836,17 +836,20 @@ bool rtree<_Key,_Value,_Trait>::directory_node::erase(const node_store* ns)
+     if (it == children.end())
+         return false;
+ 
+-    it = children.erase(it);
++    // NB: std::deque::erase invalidates all elements when the erased element
++    // is somwhere in the middle. But if the erased element is either the
++    // first or the last element, only the erased element becomes invalidated.
+ 
+-    // All nodes that occur after the erased node have their memory addresses
+-    // shifted.
++    std::size_t pos = std::distance(children.begin(), it);
++    bool all_valid = pos == 0 || pos == children.size() - 1;
+ 
+-    std::for_each(it, children.end(),
+-        [](node_store& this_ns)
+-        {
+-            this_ns.valid_pointer = false;
+-        }
+-    );
++    it = children.erase(it);
++
++    if (!all_valid)
++    {
++        for (node_store& ns : children)
++            ns.valid_pointer = false;
++    }
+ 
+     return true;
+ }
+-- 
+GitLab
+
