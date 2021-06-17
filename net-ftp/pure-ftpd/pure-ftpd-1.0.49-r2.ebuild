@@ -34,7 +34,7 @@ DEPEND="caps? ( sys-libs/libcap )
 	pam? ( sys-libs/pam )
 	postgres? ( dev-db/postgresql:= )
 	ssl? (
-		>=dev-libs/openssl-0.9.6g:0=[-bindist]
+		>=dev-libs/openssl-0.9.6g:0=[-bindist(-)]
 	)
 	sysquota? ( sys-fs/quota[-rpc] )
 	xinetd? ( virtual/inetd )"
