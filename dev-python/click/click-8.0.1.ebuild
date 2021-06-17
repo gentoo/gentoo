@@ -23,7 +23,8 @@ RDEPEND="
 
 distutils_enable_sphinx docs \
 	'>=dev-python/docutils-0.14' \
-	dev-python/pallets-sphinx-themes
+	dev-python/pallets-sphinx-themes \
+	dev-python/sphinxcontrib-log_cabinet
 distutils_enable_tests pytest
 
 python_install_all() {
