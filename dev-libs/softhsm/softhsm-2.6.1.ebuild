@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	migration-tool? ( dev-db/sqlite:3= )
-	dev-libs/openssl:0=[bindist=]
+	dev-libs/openssl:0=[bindist(-)=]
 	!~dev-libs/softhsm-2.0.0:0
 "
 DEPEND="${RDEPEND}"
