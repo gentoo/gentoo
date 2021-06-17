@@ -371,6 +371,7 @@ src_configure() {
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
 			-DPLUGIN_TOKUDB=$(usex tokudb YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
+			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_CASSANDRA=NO
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
