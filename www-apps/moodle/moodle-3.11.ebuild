@@ -24,7 +24,7 @@ AUTHENTICATION_FLAGS="imap?,ldap?,odbc?"
 AUTHENTICATION_MODES=${AUTHENTICATION_FLAGS//\?/}
 AUTHENTICATION_MODES=${AUTHENTICATION_MODES//,/ }
 
-PHP_REQUIRED_FLAGS="ctype,curl,iconv,json,session,simplexml,xml,zip"
+PHP_REQUIRED_FLAGS="ctype,curl,iconv,json(+),session,simplexml,xml,zip"
 PHP_OPTIONAL_FLAGS="gd,intl,soap,ssl,tokenizer,xmlrpc"
 PHP_FLAGS="${PHP_REQUIRED_FLAGS},${PHP_OPTIONAL_FLAGS}"
 
