@@ -42,10 +42,6 @@ BDEPEND="
 	${PYTHON_DEPS}
 	sys-devel/gettext"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.20_rc1-cxxflags.patch
-)
-
 src_configure() {
 	CMAKE_BUILD_TYPE="Release"
 
