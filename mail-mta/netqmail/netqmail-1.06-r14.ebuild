@@ -83,17 +83,6 @@ RDEPEND="${DEPEND}
 	!mail-mta/ssmtp[mta]
 "
 
-pkg_setup() {
-	if [[ -n "${QMAIL_PATCH_DIR}" ]]; then
-		eerror
-		eerror "The QMAIL_PATCH_DIR variable for custom patches"
-		eerror "has been removed from ${PN}. If you need custom patches"
-		eerror "see 'user patches' in the portage manual."
-		eerror
-		die "QMAIL_PATCH_DIR is not supported anymore"
-	fi
-}
-
 src_unpack() {
 	genqmail_src_unpack
 	use qmail-spp && qmail_spp_src_unpack
