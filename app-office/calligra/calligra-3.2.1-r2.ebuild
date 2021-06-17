@@ -117,7 +117,10 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.1.89-no-arch-detection.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.89-no-arch-detection.patch
+	"${FILESDIR}"/${P}-cmake-3.16.patch # bug 796224
+)
 
 pkg_pretend() {
 	check-reqs_pkg_pretend
