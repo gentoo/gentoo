@@ -13,11 +13,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="net-misc/curl
+DEPEND="dev-libs/expat
+	dev-libs/openssl:0=
+	net-misc/curl
 	sys-fs/fuse:0
-	sys-libs/zlib
-	dev-libs/expat
-	dev-libs/openssl:0="
+	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
