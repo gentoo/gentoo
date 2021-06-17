@@ -22,13 +22,13 @@ REQUIRED_USE="
 RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	ecdsa? (
-		>=dev-libs/openssl-1.0.1e:0=[-bindist,${MULTILIB_USEDEP}]
+		>=dev-libs/openssl-1.0.1e:0=[-bindist(-),${MULTILIB_USEDEP}]
 	)
 	ed25519? (
-		>=dev-libs/openssl-1.1.0:0=[-bindist,${MULTILIB_USEDEP}]
+		>=dev-libs/openssl-1.1.0:0=[-bindist(-),${MULTILIB_USEDEP}]
 	)
 	ed448? (
-		>=dev-libs/openssl-1.1.1:0=[-bindist,${MULTILIB_USEDEP}]
+		>=dev-libs/openssl-1.1.1:0=[-bindist(-),${MULTILIB_USEDEP}]
 	)
 	>=dev-libs/openssl-1.0.1e:0=[${MULTILIB_USEDEP}]
 "
