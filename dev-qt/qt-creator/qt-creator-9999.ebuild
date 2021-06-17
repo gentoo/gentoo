@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-LLVM_MAX_SLOT=10
+LLVM_MAX_SLOT=12
 PLOCALES="cs da de fr ja pl ru sl uk zh-CN zh-TW"
 
 inherit llvm qmake-utils virtualx xdg
@@ -69,10 +69,9 @@ CDEPEND="
 	clang? (
 		>=dev-cpp/yaml-cpp-0.6.2:=
 		|| (
-			( sys-devel/clang:10
-				dev-libs/libclangformat-ide:10 )
-			( sys-devel/clang:9
-				dev-libs/libclangformat-ide:9 )
+			sys-devel/clang:12
+			sys-devel/clang:11
+			sys-devel/clang:10
 		)
 		<sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=
 	)
@@ -115,14 +114,7 @@ done
 unset x
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.12.0-dylib-fix.patch
-	"${FILESDIR}"/${PN}-4.12.0-libclangformat-ide.patch
 )
-
-llvm_check_deps() {
-	has_version -d "sys-devel/clang:${LLVM_SLOT}" && \
-		has_version -d "dev-libs/libclangformat-ide:${LLVM_SLOT}"
-}
 
 pkg_setup() {
 	use clang && llvm_pkg_setup
@@ -190,7 +182,7 @@ src_prepare() {
 	sed -i -e '/CONFIG +=/s/$/ no_testcase_installs/' tests/auto/{qttest.pri,json/json.pro} || die
 
 	# fix path to some clang headers
-	sed -i -e "/^CLANG_RESOURCE_DIR\s*=/s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
+	sed -i -e "/^CLANG_INCLUDE_DIR\s*=/s:\$\${LLVM_LIBDIR}:${EPREFIX}/usr/lib:" src/shared/clang/clang_defines.pri || die
 
 	# fix translations
 	local lang languages=
