@@ -43,7 +43,7 @@ CDEPEND="
 	)
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
-	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] )
+	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	xapian? ( >=dev-libs/xapian-1.4.0:0= )
