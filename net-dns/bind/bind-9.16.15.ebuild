@@ -56,7 +56,7 @@ DEPEND="
 	acct-group/named
 	acct-user/named
 	berkdb? ( sys-libs/db:= )
-	dev-libs/openssl:=[-bindist]
+	dev-libs/openssl:=[-bindist(-)]
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
