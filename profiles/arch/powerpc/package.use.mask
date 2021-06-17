@@ -248,7 +248,8 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-14)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib nbconvert notebook test
+dev-python/ipython doc matplotlib nbconvert notebook
+<=dev-python/ipython-7.24.1 test
 
 # Anthony G. Basile <blueness@gentoo.org> (2014-08-12)
 # Ultimately pulls in nodejs which is broken.
