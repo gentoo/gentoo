@@ -46,7 +46,7 @@ RDEPEND="
 		$(python_gen_cond_dep 'dev-python/libvirt-python[${PYTHON_USEDEP}]' python3_8)
 	)
 	openssl? (
-		dev-libs/openssl:0=[-bindist]
+		dev-libs/openssl:0=[-bindist(-)]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 	)
 	raet? (
