@@ -21,7 +21,7 @@ RDEPEND="
 	>=sys-libs/glibc-2.10
 	acct-user/pgbouncer
 	c-ares? ( >=net-dns/c-ares-1.10 )
-	ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist] )
+	ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist(-)] )
 	systemd? ( sys-apps/systemd )
 	udns? ( >=net-libs/udns-0.1 )
 "
