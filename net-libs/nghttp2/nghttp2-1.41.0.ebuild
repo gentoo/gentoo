@@ -25,7 +25,7 @@ IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
 RESTRICT="!test? ( test )"
 
 SSL_DEPEND="
-	>=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}]
+	>=dev-libs/openssl-1.0.2:0=[-bindist(-),${MULTILIB_USEDEP}]
 "
 RDEPEND="
 	cxx? (
