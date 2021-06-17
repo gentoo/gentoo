@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-lang/php:*[json,mysql,session,posix]
+	dev-lang/php:*[json(+),mysql,session,posix]
 	dev-perl/DBD-mysql
 	dev-perl/DBI
 	dev-perl/HTTP-Date
