@@ -1,0 +1,10 @@
+--- a/absl/synchronization/internal/graphcycles.cc
++++ b/absl/synchronization/internal/graphcycles.cc
+@@ -37,6 +37,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <limits>
+ #include "absl/base/internal/hide_ptr.h"
+ #include "absl/base/internal/raw_logging.h"
+ #include "absl/base/internal/spinlock.h"

@@ -25,6 +25,7 @@ RESTRICT=test
 
 PATCHES=(
 	"${FILESDIR}/${PN}-20200923-arm_no_crypto.patch"
+	"${FILESDIR}/include_limits.patch"
 )
 
 src_prepare() {
