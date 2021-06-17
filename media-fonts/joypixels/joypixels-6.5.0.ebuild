@@ -4,7 +4,7 @@
 EAPI=7
 
 FONT_SUFFIX="ttf"
-inherit font
+inherit font readme.gentoo-r1
 
 DESCRIPTION="A font for better emoji and unicode support"
 HOMEPAGE="https://www.joypixels.com/"
@@ -20,7 +20,16 @@ RESTRICT="bindist mirror"
 
 FONT_CONF=( "${FILESDIR}"/99-joypixels.conf )
 
+DOC_CONTENTS="Free for personal/education use only,
+premium/enterprise license required for any other use:
+    https://www.joypixels.com/licenses"
+
 src_prepare() {
 	default
 	cp "${DISTDIR}"/${P}.ttf "${S}"/${P}.ttf || die
+}
+
+src_install() {
+	font_src_install
+	readme.gentoo_create_doc
 }
