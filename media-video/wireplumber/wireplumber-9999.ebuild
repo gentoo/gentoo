@@ -52,11 +52,10 @@ DOCS=( {NEWS,README}.rst )
 src_configure() {
 	local emesonargs=(
 		-Dintrospection=disabled # Likely only used for doc generation
-		-Ddocs=disabled # Literally not worth dealing with right now
 		-Dsystem-lua=true # We always unbundle everything we can
 		$(meson_feature systemd)
 		-Dsystemd-system-service=false # Matches upstream
-		$(meson_feature systemd Dsystemd-user-service)
+		$(meson_feature systemd systemd-user-service)
 		#-Dsystemd-system-unit-dir=""
 		#-Dsystemd-user-unit-dir=""
 		-Dwpipc=disabled # Upstream commit 5efb46a3: embedded only; no good reason to use it on desktop
