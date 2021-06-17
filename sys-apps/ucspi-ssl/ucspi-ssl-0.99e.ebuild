@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ppc ppc64 ~s390 sparc x86"
 IUSE="bindist perl"
 
 DEPEND="
-	dev-libs/openssl:0=[bindist=]
+	dev-libs/openssl:0=[bindist(-)=]
 	perl? ( dev-lang/perl:= )"
 RDEPEND="${DEPEND}
 	sys-apps/ucspi-tcp"
