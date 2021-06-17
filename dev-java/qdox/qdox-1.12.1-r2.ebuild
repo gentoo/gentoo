@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
+MAVEN_ID="com.thoughtworks.qdox:qdox:1.12"
 
 inherit java-pkg-2 java-ant-2
 
