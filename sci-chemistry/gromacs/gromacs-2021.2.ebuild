@@ -7,6 +7,7 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
+DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_SINGLE_IMPL=1
 
 inherit bash-completion-r1 cmake cuda distutils-r1 flag-o-matic multilib readme.gentoo-r1 toolchain-funcs xdg-utils
@@ -21,6 +22,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="
 		http://ftp.gromacs.org/gromacs/${PN}-${PV/_/-}.tar.gz
+		doc? ( https://ftp.gromacs.org/manual/manual-${PV/_/-}.pdf )
 		test? ( http://ftp.gromacs.org/regressiontests/regressiontests-${PV/_/-}.tar.gz )"
 	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
@@ -35,7 +37,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +custom-cflags +doc double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -57,7 +59,7 @@ CDEPEND="
 	"
 BDEPEND="${CDEPEND}
 	virtual/pkgconfig
-	doc? (
+	build-manual? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
@@ -72,6 +74,7 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
 	|| ( single-precision double-precision )
+	|| ( doc build-manual )
 	cuda? ( single-precision )
 	cuda? ( !opencl )
 	mkl? ( !blas !fftw !lapack )
@@ -136,28 +139,29 @@ src_prepare() {
 	fi
 
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
-
-	# try to create policy for imagemagik
-	mkdir -p ${HOME}/.config/ImageMagick
-	cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
-	<?xml version="1.0" encoding="UTF-8"?>
-	<!DOCTYPE policymap [
-	<!ELEMENT policymap (policy)+>
-	!ATTLIST policymap xmlns CDATA #FIXED ''>
-	<!ELEMENT policy EMPTY>
-	<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+	if use build-manual; then
+		# try to create policy for imagemagik
+		mkdir -p ${HOME}/.config/ImageMagick
+		cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
+		<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE policymap [
+		<!ELEMENT policymap (policy)+>
+		!ATTLIST policymap xmlns CDATA #FIXED ''>
+		<!ELEMENT policy EMPTY>
+		<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
 			name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
 			stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
-	]>
-	<policymap>
-		<policy domain="coder" rights="read | write" pattern="PS" />
-		<policy domain="coder" rights="read | write" pattern="PS2" />
-		<policy domain="coder" rights="read | write" pattern="PS3" />
-		<policy domain="coder" rights="read | write" pattern="EPS" />
-		<policy domain="coder" rights="read | write" pattern="PDF" />
-		<policy domain="coder" rights="read | write" pattern="XPS" />
-	</policymap>
-	EOF
+		]>
+		<policymap>
+			<policy domain="coder" rights="read | write" pattern="PS" />
+			<policy domain="coder" rights="read | write" pattern="PS2" />
+			<policy domain="coder" rights="read | write" pattern="PS3" />
+			<policy domain="coder" rights="read | write" pattern="EPS" />
+			<policy domain="coder" rights="read | write" pattern="PDF" />
+			<policy domain="coder" rights="read | write" pattern="XPS" />
+		</policymap>
+		EOF
+	fi
 }
 
 src_configure() {
@@ -218,7 +222,7 @@ src_configure() {
 		-DGMX_OPENMP=$(usex openmp)
 		-DGMX_COOL_QUOTES=$(usex offensive)
 		-DGMX_USE_TNG=$(usex tng)
-		-DGMX_BUILD_MANUAL=$(usex doc)
+		-DGMX_BUILD_MANUAL=$(usex build-manual)
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
@@ -289,7 +293,7 @@ src_compile() {
 				distutils-r1_src_compile
 		fi
 		# not 100% necessary for rel ebuilds as available from website
-		if use doc; then
+		if use build-manual; then
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake_src_compile manual
 		fi
@@ -315,9 +319,14 @@ src_install() {
 			BUILD_DIR="${WORKDIR}/${P}_${x}" \
 				cmake_src_install	python_packaging/install
 		fi
-		if use doc; then
+		if use build-manual; then
 			newdoc "${WORKDIR}/${P}_${x}"/docs/manual/gromacs.pdf "${PN}-manual-${PV}.pdf"
 		fi
+
+		if use doc; then
+			newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
+		fi
+
 		use mpi || continue
 		BUILD_DIR="${WORKDIR}/${P}_${x}_mpi" \
 			cmake_src_install

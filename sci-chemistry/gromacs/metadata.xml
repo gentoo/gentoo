@@ -10,6 +10,7 @@
 		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 	<use>
+		<flag name="build-manual">Build manual instead of downloading it</flag>
 		<flag name="cuda">Enable cuda non-bonded kernels</flag>
 		<flag name="double-precision">More precise calculations at the expense of speed</flag>
 		<flag name="gmxapi">Add support for gmxapi library</flag>
