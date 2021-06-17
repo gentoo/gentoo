@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
-	ssl? ( dev-libs/openssl:=[-bindist] )
+	ssl? ( dev-libs/openssl:=[-bindist(-)] )
 	xmpp? ( dev-libs/iksemel )
 "
 
