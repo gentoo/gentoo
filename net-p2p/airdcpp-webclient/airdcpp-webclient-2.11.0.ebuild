@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/leveldb:=
 	dev-libs/libmaxminddb:=
-	dev-libs/openssl:0=[-bindist]
+	dev-libs/openssl:0=[-bindist(-)]
 	net-libs/miniupnpc:=
 	sys-libs/zlib
 	virtual/libiconv
