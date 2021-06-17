@@ -16,7 +16,6 @@ IUSE="static-libs"
 
 DEPEND="sys-devel/libtool"
 RDEPEND=""
-PDEPEND=">=sys-apps/rescan-scsi-bus-1.24"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.26-stdint.patch #580236
