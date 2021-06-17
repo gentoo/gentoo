@@ -365,10 +365,11 @@ src_configure() {
 	)
 
 	if use server ; then
-
-		# Federated{,X} must be treated special otherwise they will not be built as plugins
+		# Connect and Federated{,X} must be treated special
+		# otherwise they will not be built as plugins
 		if ! use extraengine ; then
 			mycmakeargs+=(
+				-DPLUGIN_CONNECT=NO
 				-DPLUGIN_FEDERATED=NO
 				-DPLUGIN_FEDERATEDX=NO
 			)
@@ -385,7 +386,6 @@ src_configure() {
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
 			-DPLUGIN_S3=$(usex s3 YES NO)
 			-DPLUGIN_COLUMNSTORE=$(usex columnstore YES NO)
-			-DPLUGIN_CONNECT=$(usex extraengine YES NO)
 			-DCONNECT_WITH_MYSQL=1
 			-DCONNECT_WITH_LIBXML2=$(usex xml)
 			-DCONNECT_WITH_ODBC=$(usex odbc)
@@ -461,7 +461,6 @@ src_configure() {
 			-DWITH_MYISAM_STORAGE_ENGINE=1
 			-DWITH_PARTITION_STORAGE_ENGINE=1
 		)
-
 	else
 		mycmakeargs+=(
 			-DWITHOUT_SERVER=1
