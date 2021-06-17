@@ -36,7 +36,7 @@ RDEPEND="
 
 	gnutls? ( >=net-libs/gnutls-2.10.2 )
 	!gnutls? (
-		>=dev-libs/openssl-0.9.8g:0=[-bindist]
+		>=dev-libs/openssl-0.9.8g:0=[-bindist(-)]
 	)
 	jingle? (
 		>=net-libs/libsoup-2.42
