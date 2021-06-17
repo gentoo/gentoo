@@ -32,7 +32,7 @@ COMMON_DEPEND="non-root? (
 	caps? ( sys-libs/libcap )
 	curl? ( net-misc/curl )
 	ldap? ( net-nds/openldap )
-	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] )
+	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist(-)] )
 	mysql? ( dev-db/mysql-connector-c:= )
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
 	systemd? ( sys-apps/systemd )

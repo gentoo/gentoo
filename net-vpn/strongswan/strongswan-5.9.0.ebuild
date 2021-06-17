@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -29,7 +29,7 @@ COMMON_DEPEND="!net-misc/openswan
 	caps? ( sys-libs/libcap )
 	curl? ( net-misc/curl )
 	ldap? ( net-nds/openldap )
-	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist] )
+	openssl? ( >=dev-libs/openssl-0.9.8:=[-bindist(-)] )
 	mysql? ( dev-db/mysql-connector-c:= )
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
 	systemd? ( sys-apps/systemd )
