@@ -26,7 +26,7 @@ RDEPEND="
 	acct-user/litecoin
 	dev-libs/boost:=[threads(+)]
 	dev-libs/leveldb:=
-	dev-libs/openssl:0[-bindist]
+	dev-libs/openssl:0[-bindist(-)]
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]
 	logrotate? ( app-admin/logrotate )
 	upnp? ( net-libs/miniupnpc )
