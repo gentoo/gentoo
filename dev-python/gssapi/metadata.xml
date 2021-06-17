@@ -5,7 +5,6 @@
     <email>titanofold@gentoo.org</email>
     <name>Aaron W. Swenson</name>
   </maintainer>
-  <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">gssapi</remote-id>
   </upstream>
