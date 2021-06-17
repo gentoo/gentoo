@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
-	>=dev-libs/openssl-1.0.2:0=[-bindist]
+	>=dev-libs/openssl-1.0.2:0=[-bindist(-)]
 	>=dev-libs/re2-0.2021.04.01:=
 	>=dev-python/cython-0.28.3[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
