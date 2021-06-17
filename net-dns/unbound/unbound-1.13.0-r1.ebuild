@@ -34,7 +34,7 @@ CDEPEND="acct-group/unbound
 		>=dev-libs/protobuf-c-1.0.2-r1[${MULTILIB_USEDEP}]
 	)
 	ecdsa? (
-		dev-libs/openssl:0[-bindist]
+		dev-libs/openssl:0[-bindist(-)]
 	)
 	http2? ( net-libs/nghttp2[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
