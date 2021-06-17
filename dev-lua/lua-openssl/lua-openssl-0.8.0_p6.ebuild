@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!dev-lua/luaossl
 	!dev-lua/luasec
-	dev-libs/openssl:0=[-bindist]
+	dev-libs/openssl:0=[-bindist(-)]
 	${LUA_DEPS}
 "
 DEPEND="${RDEPEND}"
