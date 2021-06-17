@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sparc 
 IUSE="bindist doc gnutls nss static-libs"
 
 RDEPEND="
-	>=dev-libs/openssl-0.9.7:0=[bindist=]
+	>=dev-libs/openssl-0.9.7:0=[bindist(-)=]
 	gnutls? ( >=net-libs/gnutls-1.4.4 )
 	nss? ( dev-libs/nss )"
 DEPEND="${RDEPEND}"
