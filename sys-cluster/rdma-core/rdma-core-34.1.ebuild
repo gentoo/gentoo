@@ -76,6 +76,7 @@ src_configure() {
 		-DENABLE_VALGRIND="$(usex valgrind)"
 		-DENABLE_RESOLVE_NEIGH="$(usex neigh)"
 		-DENABLE_STATIC="$(usex static-libs)"
+		-DNO_PYVERBS="$(usex python OFF ON)"
 	)
 
 	if use python; then
