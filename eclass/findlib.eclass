@@ -16,6 +16,7 @@ QA_FLAGS_IGNORED='.*'
 # From this findlib version, there is proper stublibs support.
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
 [[ ${FINDLIB_USE} ]] && DEPEND="${FINDLIB_USE}? ( ${DEPEND} )"
+RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
 
 check_ocamlfind() {
 	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ] ; then
