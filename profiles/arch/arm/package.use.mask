@@ -223,7 +223,7 @@ sys-power/nut ups_drivers_nut-ipmipsu
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-10)
 # Requires USE=octave which is masked in this profile.
-dev-python/ipython test
+<=dev-python/ipython-7.24.1 test
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
