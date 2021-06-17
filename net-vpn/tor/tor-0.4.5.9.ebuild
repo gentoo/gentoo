@@ -26,7 +26,7 @@ DEPEND="
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
-	dev-libs/openssl:0=[-bindist]
+	dev-libs/openssl:0=[-bindist(-)]
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
