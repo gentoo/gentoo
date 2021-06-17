@@ -30,7 +30,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	>=dev-libs/openssl-1.0.2k:0=[bindist=]
+	>=dev-libs/openssl-1.0.2k:0=[bindist(-)=]
 	dbus? ( sys-apps/dbus )
 	kernel_linux? (
 		dev-libs/libnl:3
