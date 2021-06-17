@@ -29,46 +29,31 @@ GENQMAIL_S="${WORKDIR}"/genqmail-${GENQMAIL_PV}
 QMAIL_SPP_F=qmail-spp-${QMAIL_SPP_PV}.tar.gz
 QMAIL_SPP_S="${WORKDIR}"/qmail-spp-${QMAIL_SPP_PV}
 
-# @FUNCTION: primes
-# @USAGE: <min> <max>
+# @FUNCTION: is_prime
+# @USAGE: <number>
 # @DESCRIPTION:
-# Prints a list of primes between min and max inclusive
-# Note: this functions gets very slow when used with large numbers.
-primes() {
-	local min=${1} max=${2}
-	local result= primelist=2 i p
+# Checks wether a number is a valid prime number for queue split
+is_prime() {
+	local number=${1} i
 
-	[[ ${min} -le 2 ]] && result="${result} 2"
+	if [[ ${number} -lt 7 ]]; then
+		# too small
+		return 1
+	fi
 
-	for ((i = 3; i <= max; i += 2))
+	if [[ $[number % 2] == 0 ]]; then
+		return 1
+	fi
+
+	# let i run up to the square root of number
+	for ((i = 3; i * i <= number; i += 2))
 	do
-		for p in ${primelist}
-		do
-			[[ $[i % p] == 0 || $[p * p] -gt ${i} ]] && \
-				break
-		done
-		if [[ $[i % p] != 0 ]]
-		then
-			primelist="${primelist} ${i}"
-			[[ ${i} -ge ${min} ]] && \
-				result="${result} ${i}"
+		if [[ $[number % i ] == 0 ]]; then
+			return 1
 		fi
 	done
 
-	echo ${result}
-}
-
-# @FUNCTION: is_prima
-# @USAGE: <number>
-# @DESCRIPTION:
-# Checks wether a number is a prime number
-is_prime() {
-	local number=${1} i
-	for i in $(primes ${number} ${number})
-	do
-		[[ ${i} == ${number} ]] && return 0
-	done
-	return 1
+	return 0
 }
 
 dospp() {
