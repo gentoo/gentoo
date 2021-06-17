@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="bindist doc static-libs"
 
 RDEPEND="
-	dev-libs/openssl:0=[bindist=]"
+	dev-libs/openssl:0=[bindist(-)=]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
