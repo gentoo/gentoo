@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+server ssl"
 
 # openssl with EC required, see #644674
-DEPEND="ssl? ( dev-libs/openssl:0=[-bindist] )"
+DEPEND="ssl? ( dev-libs/openssl:0=[-bindist(-)] )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
