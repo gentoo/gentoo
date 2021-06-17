@@ -84,3 +84,13 @@ index 9068f39..68b68e3 100644
  #include "atomicio.h"
  
  #define SOCKS_PORT	"1080"
+--- a/socks.c
++++ b/socks.c
+@@ -53,5 +53,7 @@
+ #define SOCKS_DOMAIN	3
+ #define SOCKS_IPV6	4
+ 
++#define explicit_bzero(S,L) bzero(S,L)
++ 
+ int	remote_connect(const char *, const char *, struct addrinfo);
+ int	socks_connect(const char *, const char *, struct addrinfo,
