@@ -1,0 +1,54 @@
+From 3270c158d191f7e59540667c2dbe6c5dc7a19a59 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Thu, 17 Jun 2021 14:52:01 +0200
+Subject: [PATCH] Add compile-spec ant build target
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Suggested-by: Göktürk Yüksek <gokturk@gentoo.org>
+---
+ build.xml | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/build.xml b/build.xml
+index 4d29bbf9a27e..dc742113938f 100644
+--- a/build.xml
++++ b/build.xml
+@@ -85,6 +85,24 @@
+     </java>
+   </target>
+ 
++  <target name="compile-spec"
++          description="Compile Clojure spec sources."
++          depends="compile-java">
++    <java classname="clojure.lang.Compile"
++          classpath="${build}:${cljsrc}"
++          failonerror="true"
++          fork="true">
++      <sysproperty key="clojure.compile.path" value="${build}"/>
++        <sysproperty key="clojure.compiler.direct-linking" value="true"/>
++        <sysproperty key="clojure.spec.skip-macros" value="true"/>
++      <sysproperty key="java.awt.headless" value="true"/>
++      <arg value="clojure.spec.alpha"/>
++      <arg value="clojure.spec.gen.alpha"/>
++      <arg value="clojure.spec.test.alpha"/>
++      <arg value="clojure.core.specs.alpha"/>
++    </java>
++  </target>
++
+   <target name="compile-tests" 
+           description="Compile the subset of tests that require compilation."
+           unless="maven.test.skip">
+@@ -149,7 +167,7 @@
+ 
+   <target name="build"
+           description="Build Clojure (compilation only, no tests)."
+-          depends="compile-java, compile-clojure"/>
++          depends="compile-java, compile-clojure, compile-spec"/>
+ 
+   <target name="jar" depends="build"
+           description="Create clojure jar file.">
+-- 
+2.31.1
+
