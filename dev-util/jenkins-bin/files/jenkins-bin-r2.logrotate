@@ -3,7 +3,7 @@
     dateext
     maxage 365
     rotate 99
-    size=+4096k
+    size 4M
     notifempty
     missingok
     create 644

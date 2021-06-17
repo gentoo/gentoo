@@ -34,7 +34,7 @@ src_install() {
 	newins "${DISTDIR}"/${P}.war ${PN/-bin/}.war
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/${PN}-r1.logrotate ${PN/-bin/}
+	newins "${FILESDIR}"/${PN}-r2.logrotate ${PN/-bin/}
 
 	newinitd "${FILESDIR}"/${PN}-r2.init jenkins
 	newconfd "${FILESDIR}"/${PN}.confd jenkins
