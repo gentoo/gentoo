@@ -5,6 +5,10 @@
 # This package states supports for arm >= v6
 dev-lang/nim
 
+# Marco Scardovi <marco@scardovi.com> (2021-06-17)
+# This package requires dev-libs/gjs to be unmasked
+sci-geosciences/gnome-maps
+
 # There is no prebuilt rustc for armv5 by upstream
 dev-lang/rust-bin
 dev-lang/rust
