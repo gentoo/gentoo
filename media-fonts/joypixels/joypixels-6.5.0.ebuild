@@ -6,7 +6,7 @@ EAPI=7
 FONT_SUFFIX="ttf"
 inherit font
 
-DESCRIPTION="joypixels font for better emoji and unicode support"
+DESCRIPTION="A font for better emoji and unicode support"
 HOMEPAGE="https://www.joypixels.com/"
 SRC_URI="https://cdn.joypixels.com/distributions/gentoo-linux/font/${PV}/joypixels-android.ttf -> ${P}.ttf"
 S="${WORKDIR}"
