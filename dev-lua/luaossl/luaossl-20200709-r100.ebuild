@@ -20,7 +20,7 @@ IUSE="examples"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="
-	dev-libs/openssl:0[-bindist]
+	dev-libs/openssl:0[-bindist(-)]
 	!dev-lua/lua-openssl
 	!dev-lua/luasec
 	${LUA_DEPS}
