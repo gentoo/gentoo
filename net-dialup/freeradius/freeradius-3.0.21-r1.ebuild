@@ -56,7 +56,7 @@ RDEPEND="acct-group/radius
 	samba? ( net-fs/samba )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		dev-libs/openssl:0=[-bindist]
+		dev-libs/openssl:0=[-bindist(-)]
 	)
 	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}"
