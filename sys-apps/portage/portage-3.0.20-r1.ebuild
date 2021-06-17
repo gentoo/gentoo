@@ -74,8 +74,7 @@ PDEPEND="
 # NOTE: FEATURES=installsources requires debugedit and rsync
 
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	https://github.com/gentoo/portage/commit/a4d882964ee1931462f911d0c46a80e27e59fa48.patch -> portage-3.0.20-bug-777492-a4d8829.patch
-	https://github.com/gentoo/portage/commit/055abe523c2c3f6c8f1dccfb53565209222f90c1.patch -> portage-3.0.20-bug-777492-a4d8829-fix-055abe5.patch"
+	https://github.com/gentoo/portage/commit/a4d882964ee1931462f911d0c46a80e27e59fa48.patch -> portage-3.0.20-bug-777492-a4d8829.patch"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
@@ -86,9 +85,10 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
-	# Revert a4d8829 and apply 055abe5 for bug 777492.
+	# Revert due to regressions:
+	# https://bugs.gentoo.org/777492
+	# https://github.com/gentoo/portage/pull/728
 	eapply -R "${DISTDIR}/portage-3.0.20-bug-777492-a4d8829.patch"
-	eapply "${DISTDIR}/portage-3.0.20-bug-777492-a4d8829-fix-055abe5.patch"
 
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
