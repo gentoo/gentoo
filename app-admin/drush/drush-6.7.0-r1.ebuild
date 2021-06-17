@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-lang/php[cli,ctype,json,simplexml]
+RDEPEND="dev-lang/php[cli,ctype,json(+),simplexml]
 	dev-php/PEAR-Console_Table"
 
 # Fixes the bash completion script, check the patch for Gentoo/upstream
