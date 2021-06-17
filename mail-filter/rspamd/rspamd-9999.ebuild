@@ -45,7 +45,7 @@ RDEPEND="${LUA_DEPS}
 	)
 	cpu_flags_x86_ssse3? ( dev-libs/hyperscan )
 	jemalloc? ( dev-libs/jemalloc )
-	dev-libs/openssl:0=[-bindist]
+	dev-libs/openssl:0=[-bindist(-)]
 	pcre2? ( dev-libs/libpcre2[jit=] )
 	!pcre2? ( dev-libs/libpcre[jit=] )"
 DEPEND="${RDEPEND}"
