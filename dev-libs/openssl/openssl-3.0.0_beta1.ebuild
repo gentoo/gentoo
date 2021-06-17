@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic toolchain-funcs multilib-minimal
+inherit flag-o-matic linux-info toolchain-funcs multilib-minimal
 
 MY_P=${P/_/-}
 
@@ -53,6 +53,18 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 pkg_setup() {
+	if use ktls ; then
+		if kernel_is -lt 4 18 ; then
+			ewarn "Kernel implementation of TLS (USE=ktls) requires kernel >=4.18!"
+		else
+			CONFIG_CHECK="~TLS ~TLS_DEVICE"
+			ERROR_TLS="You will be unable to offload TLS to kernel because CONFIG_TLS is not set!"
+			ERROR_TLS_DEVICE="You will be unable to offload TLS to kernel because CONFIG_TLS_DEVICE is not set!"
+
+			linux-info_pkg_setup
+		fi
+	fi
+
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	# must check in pkg_setup; sysctl don't work with userpriv!
