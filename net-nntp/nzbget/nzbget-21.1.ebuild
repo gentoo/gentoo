@@ -26,7 +26,7 @@ DEPEND="
 			net-libs/gnutls:=
 			dev-libs/nettle:=
 		)
-		!gnutls? ( dev-libs/openssl:0=[-bindist] )
+		!gnutls? ( dev-libs/openssl:0=[-bindist(-)] )
 	)
 	zlib? ( sys-libs/zlib:= )"
 RDEPEND="
