@@ -63,6 +63,7 @@ DOCS=( AUTHORS README.md README.generic README.kernel )
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/053-network-manager.patch
 	"${FILESDIR}"/gentoo-ldconfig-paths.patch
 )
 
