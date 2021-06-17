@@ -65,7 +65,10 @@ multilib_src_test() {
 
 multilib_src_install_all() {
 	# installed via fuse-common
-	rm -r "${ED}"/{etc,$(get_udevdir)} || die
+	rm -r "${ED}"{/etc,$(get_udevdir)} || die
+
+	# init script location is hard-coded in install_helper.sh
+	rm -rf "${D}"/etc || die
 
 	# useroot=false prevents the build system from doing this.
 	use suid && fperms u+s /usr/bin/fusermount3
