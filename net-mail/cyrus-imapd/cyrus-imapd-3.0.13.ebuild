@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ CDEPEND="
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= )
-	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] )
+	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6
 		snmp? ( net-analyzer/net-snmp:0=[tcpd=] )

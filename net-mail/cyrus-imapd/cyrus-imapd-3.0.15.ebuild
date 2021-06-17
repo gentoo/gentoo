@@ -41,7 +41,7 @@ CDEPEND="
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= )
-	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] )
+	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6
 		snmp? ( net-analyzer/net-snmp:0=[tcpd=] )
