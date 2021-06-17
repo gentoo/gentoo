@@ -19,7 +19,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
-	dev-libs/openssl:0=[bindist=]
+	dev-libs/openssl:0=[bindist(-)=]
 	doc? ( app-text/linuxdoc-tools )"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
