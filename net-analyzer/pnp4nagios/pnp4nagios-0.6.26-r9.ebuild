@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ REQUIRED_USE="^^ ( icinga nagios )"
 # nagios-3.x has been end-of-life'd, we don't have much choice here but
 # to accept it.
 DEPEND="
-	dev-lang/php:*[filter,gd,json,simplexml,xml,zlib]
+	dev-lang/php:*[filter,gd,json(+),simplexml,xml,zlib]
 	net-analyzer/rrdtool[graph,perl]
 	icinga? ( net-analyzer/icinga2 )
 	nagios? ( net-analyzer/nagios-core )"
