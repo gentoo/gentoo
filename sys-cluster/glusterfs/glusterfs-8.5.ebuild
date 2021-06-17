@@ -39,7 +39,7 @@ RDEPEND="
 	!elibc_glibc? ( sys-libs/argp-standalone )
 	libtirpc? ( net-libs/libtirpc:= )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
-	dev-libs/openssl:=[-bindist]
+	dev-libs/openssl:=[-bindist(-)]
 "
 DEPEND="
 	${RDEPEND}
