@@ -34,7 +34,7 @@ DEPEND="
 	lzma? ( app-arch/xz-utils:= )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (
-		dev-libs/openssl:0=[bindist=]
+		dev-libs/openssl:0=[bindist(-)=]
 	)
 	sqlite? ( dev-db/sqlite:3= )
 	zlib? ( >=sys-libs/zlib-1.2.3:= )
