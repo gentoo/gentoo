@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2021-06-17)
+# rescan-scsi-bus.sh is installed by >=sys-apps/sg3_utils-1.44, rendering
+# this package redundant.
+# Removal on 2021-07-17.
+sys-apps/rescan-scsi-bus
+
 # Davide Pesavento <pesa@gentoo.org> (2021-06-15)
 # Masked for revdep testing.
 >=dev-python/sip-6
