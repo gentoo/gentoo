@@ -64,7 +64,12 @@ KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 # A string containing the error message to display when the check against CONFIG_CHECK
 # fails. <CFG> should reference the appropriate option used in CONFIG_CHECK.
 #
-#   e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
+# e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
+#
+# CONFIG_CHECK="CFG" with ERROR_<CFG>="Error Message" will die
+# CONFIG_CHECK="~CFG" with ERROR_<CFG>="Error Message" calls eerror without dieing
+# CONFIG_CHECK="~CFG" with WARNING_<CFG>="Warning Message" calls ewarn without dieing
+
 
 # @ECLASS-VARIABLE: KBUILD_OUTPUT
 # @DEFAULT_UNSET
