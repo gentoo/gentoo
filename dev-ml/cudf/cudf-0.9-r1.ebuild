@@ -20,6 +20,8 @@ RDEPEND="
 	dev-ml/extlib:=
 	dev-ml/findlib:=
 	dev-libs/glib:2
+	sys-libs/libunwind:=
+	sys-libs/ncurses:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit2 )
