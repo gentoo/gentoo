@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	media-libs/gstreamer:1.0
 "
 DEPEND="${RDEPEND}
