@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 BDEPEND="doc? ( virtual/latex-base )"
-DEPEND="dev-libs/gmp:0=[cxx]
+DEPEND="dev-libs/gmp:0=[cxx(+)]
 	sci-libs/cddlib:0="
 RDEPEND="${DEPEND}"
 
