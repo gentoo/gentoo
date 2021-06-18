@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.60:=[nls,python,threads,${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.60:=[nls,python,threads(+),${PYTHON_MULTI_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
@@ -46,7 +46,7 @@ RDEPEND="
 		media-libs/libsdl2[X,opengl,video]
 		>=media-libs/libvorbis-1.1.2
 		media-libs/openal
-		sci-physics/bullet
+		sci-physics/bullet:=
 		virtual/opengl
 	)
 	sys-libs/zlib
