@@ -29,6 +29,11 @@ DEPEND="sys-boot/gnu-efi"
 
 RDEPEND="!<sys-apps/fwupd-1.6.0"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-add-genpeimg-parameter.patch
+	"${FILESDIR}"/${P}-pass-genpeimg.patch
+)
+
 src_prepare() {
 	default
 
