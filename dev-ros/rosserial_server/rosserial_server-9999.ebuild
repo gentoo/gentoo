@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/topic_tools
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 "
 DEPEND="${RDEPEND}
 	dev-ros/rosserial_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
