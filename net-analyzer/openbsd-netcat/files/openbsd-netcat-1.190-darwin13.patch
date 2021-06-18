@@ -1,4 +1,8 @@
-strtonum isn't available on <Darwin-10.15
+strtonum isn't available on <Darwin-11
+
+however, it is in the header files on systems like 10.15 with an
+availability clause, so don't define strtonum static such that it
+matches the prototype from stdlib.h
 
 diff --git a/netcat.c b/netcat.c
 index a0fb51b..bbb5dd1 100644
@@ -14,7 +18,7 @@ index a0fb51b..bbb5dd1 100644
 +	"invalid"
 +};
 +
-+static long long
++long long
 +strtonum(
 +		const char *nptr,
 +		long long minval,
