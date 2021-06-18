@@ -21,7 +21,7 @@ for X in ${LANGS} ; do
 done
 
 # nauty and cliquer are automagical dependencies
-RDEPEND="dev-libs/gmp:=[cxx]
+RDEPEND="dev-libs/gmp:=[cxx(+)]
 	sys-libs/readline:=
 	gui? ( x11-libs/fltk
 		media-libs/libpng:= )
