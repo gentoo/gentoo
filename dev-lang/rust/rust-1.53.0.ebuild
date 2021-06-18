@@ -305,6 +305,9 @@ src_configure() {
 		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
 		[build]
+		build-stage = 2
+		test-stage = 2
+		doc-stage = 2
 		build = "${rust_target}"
 		host = ["${rust_target}"]
 		target = [${rust_targets}]
@@ -500,8 +503,7 @@ src_compile() {
 	(
 	IFS=$'\n'
 	env $(cat "${S}"/config.env) RUST_BACKTRACE=1\
-		"${EPYTHON}" ./x.py build --stage 2 \
-			-vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 	)
 }
 
