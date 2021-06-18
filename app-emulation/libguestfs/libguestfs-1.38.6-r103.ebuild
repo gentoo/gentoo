@@ -138,8 +138,10 @@ src_configure() {
 	# configured kernel.
 	export vmchannel_test=no
 
-	# bug #703118
-	append-ldflags "-L/usr/$(get_libdir)/xcrypt"
+	# Give a nudge to help find libxcrypt[-system]
+	# bug #703118, bug #789354
+	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/xcrypt"
+	append-ldflags "-Wl,-R${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 
 	econf \
 		--with-bashcompletiondir="$(get_bashcompdir)" \
