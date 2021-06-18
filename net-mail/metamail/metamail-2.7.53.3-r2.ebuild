@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
 IUSE="static-libs"
 
-DEPEND="sys-libs/ncurses
+DEPEND="sys-libs/ncurses:=
 	app-arch/sharutils
 	net-mail/mailbase"
 RDEPEND="app-misc/mime-types
