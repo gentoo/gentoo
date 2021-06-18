@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-li
 IUSE="pch"
 
 DEPEND="
-	sys-libs/ncurses:*
+	sys-libs/ncurses:=
 "
 RDEPEND="
 	${DEPEND}
