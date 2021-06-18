@@ -15,8 +15,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc lvm pam test systemd xattr"
 RESTRICT="test"
 
-RDEPEND="dev-libs/boost:=[threads]
-	dev-libs/json-c
+RDEPEND="dev-libs/boost:=[threads(+)]
+	dev-libs/json-c:=
 	dev-libs/libxml2
 	dev-libs/icu:=
 	sys-apps/acl
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/cron-confd.patch
-	"${FILESDIR}"/${P}-testsuite.patch
+	"${FILESDIR}"/${PN}-0.8.15-testsuite.patch
 )
 
 src_prepare() {
