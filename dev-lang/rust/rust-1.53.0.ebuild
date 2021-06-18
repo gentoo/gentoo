@@ -149,6 +149,7 @@ PATCHES=(
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.49.0-gentoo-musl-target-specs.patch
 	"${FILESDIR}"/1.53.0-rustversion-1.0.5.patch # https://github.com/rust-lang/rust/pull/86425
+	"${FILESDIR}"/1.53.0-miri-vergen.patch # https://github.com/rust-lang/rust/issues/84182
 )
 
 S="${WORKDIR}/${MY_P}-src"
