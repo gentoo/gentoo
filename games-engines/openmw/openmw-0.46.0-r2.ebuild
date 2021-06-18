@@ -31,8 +31,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-games/mygui
 	dev-games/recastnavigation
-	dev-libs/boost:=[threads,zlib]
-	dev-libs/tinyxml[stl]
+	dev-libs/boost:=[threads(+),zlib]
+	dev-libs/tinyxml:=[stl]
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
 	media-video/ffmpeg:=
