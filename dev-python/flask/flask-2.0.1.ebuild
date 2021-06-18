@@ -34,7 +34,7 @@ BDEPEND="
 		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_sphinx docs dev-python/pallets-sphinx-themes dev-python/sphinxcontrib-log_cabinet
+distutils_enable_sphinx docs dev-python/pallets-sphinx-themes
 distutils_enable_tests pytest
 
 python_test() {
