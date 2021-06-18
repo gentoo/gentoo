@@ -1,10 +1,9 @@
 New Makefile handling up from vdr-1.7.34
 completed german translation
 minor fixes in .po files
-Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> 2015/Jan/03
-diff -Naur duplicates-0.0.5.orig/Makefile duplicates-0.0.5/Makefile
---- duplicates-0.0.5.orig/Makefile	2015-02-03 10:40:33.661259290 +0100
-+++ duplicates-0.0.5/Makefile	2015-02-03 10:53:20.542203193 +0100
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> 2015/Jan/03
+--- a/Makefile
++++ b/Makefile
 @@ -6,48 +6,50 @@
  # The official name of this plugin.
  # This name will be used in the '-P...' option of VDR to load the plugin.
@@ -30,7 +29,7 @@ diff -Naur duplicates-0.0.5.orig/Makefile duplicates-0.0.5/Makefile
 -LIBDIR = ../../lib
 -TMPDIR = /tmp
 +# Use package data if installed...otherwise assume we're under the VDR source directory:
-+PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell pkg-config --variable=$(1) vdr || pkg-config --variable=$(1) ../../../vdr.pc))
++PKGCFG = $(if $(VDRDIR),$(shell ${PKG_CONFIG} --variable=$(1) $(VDRDIR)/vdr.pc),$(shell ${PKG_CONFIG} --variable=$(1) vdr || ${PKG_CONFIG} --variable=$(1) ../../../vdr.pc))
 +LIBDIR = $(call PKGCFG,libdir)
 +LOCDIR = $(call PKGCFG,locdir)
 +PLGCFG = $(call PKGCFG,plgcfg)
@@ -153,10 +152,8 @@ diff -Naur duplicates-0.0.5.orig/Makefile duplicates-0.0.5/Makefile
 -	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~ $(PODIR)/*.mo $(PODIR)/*.pot
 +	@-rm -f $(PODIR)/*.mo $(PODIR)/*.pot
 +	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~
-diff -Naur duplicates-0.0.5.orig/Makefile-vdr-1.7.33 duplicates-0.0.5/Makefile-vdr-1.7.33
-diff -Naur duplicates-0.0.5.orig/po/de_DE.po duplicates-0.0.5/po/de_DE.po
---- duplicates-0.0.5.orig/po/de_DE.po	2012-12-13 09:32:52.000000000 +0100
-+++ duplicates-0.0.5/po/de_DE.po	2015-02-03 11:12:44.879118021 +0100
+--- a/po/de_DE.po
++++ b/po/de_DE.po
 @@ -5,20 +5,19 @@
  #
  msgid ""
@@ -191,9 +188,8 @@ diff -Naur duplicates-0.0.5.orig/po/de_DE.po duplicates-0.0.5/po/de_DE.po
  msgid "Compare title"
 -msgstr ""
 +msgstr "Vergleiche Titel"
-diff -Naur duplicates-0.0.5.orig/po/fi_FI.po duplicates-0.0.5/po/fi_FI.po
---- duplicates-0.0.5.orig/po/fi_FI.po	2015-02-03 10:40:33.661259290 +0100
-+++ duplicates-0.0.5/po/fi_FI.po	2015-02-03 11:13:00.607116870 +0100
+--- a/po/fi_FI.po
++++ b/po/fi_FI.po
 @@ -12,7 +12,7 @@
  "PO-Revision-Date: 2011-12-12 19:57+0300\n"
  "Last-Translator: Timo Eskola <timo@tolleri.net>\n"
@@ -203,9 +199,8 @@ diff -Naur duplicates-0.0.5.orig/po/fi_FI.po duplicates-0.0.5/po/fi_FI.po
  "MIME-Version: 1.0\n"
  "Content-Type: text/plain; charset=UTF-8\n"
  "Content-Transfer-Encoding: 8bit\n"
-diff -Naur duplicates-0.0.5.orig/po/it_IT.po duplicates-0.0.5/po/it_IT.po
---- duplicates-0.0.5.orig/po/it_IT.po	2015-02-03 10:40:33.661259290 +0100
-+++ duplicates-0.0.5/po/it_IT.po	2015-02-03 11:13:17.167115659 +0100
+--- a/po/it_IT.po
++++ b/po/it_IT.po
 @@ -12,7 +12,7 @@
  "PO-Revision-Date: 2011-06-05 23:37+0100\n"
  "Last-Translator: Diego Pierotto <vdr-italian@tiscali.it>\n"
