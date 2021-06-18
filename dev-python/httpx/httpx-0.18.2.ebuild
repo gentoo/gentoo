@@ -3,9 +3,13 @@
 
 EAPI=7
 
+# Docs builder mkdocs not keyworded on all these arches yet
+# DOCS_BUILDER="mkdocs"
+# DOCS_DEPEND="dev-python/mkdocs-material"
+# DOCS_AUTODOC=1
 PYTHON_COMPAT=( python3_{8..9} )
 
-inherit distutils-r1
+inherit distutils-r1 # docs
 
 DESCRIPTION="Fully-featured HTTP client which provides sync and async APIs"
 HOMEPAGE="https://www.python-httpx.org/"
@@ -38,6 +42,7 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# trio is not currently in the tree
 	sed -i '/^import trio/d' tests/concurrency.py || die
+	sed -i '/pytest.param("trio", marks=pytest.mark.trio)/d' tests/conftest.py || die
 	distutils-r1_python_prepare_all
 }
 
