@@ -22,13 +22,13 @@ RDEPEND="
 	${DEPEND}
 	net-dialup/ppp"
 
-DOCS=(CREDITS README.md BUGS CHANGES TODO doc/README.patents)
+DOCS=( CREDITS README.md BUGS CHANGES TODO doc/README.patents )
 
 src_compile() {
 	tc-export CC
 	local OSFLAGS="-DLINUX"
 	use kernel && OSFLAGS+=" -DUSE_KERNEL"
-	emake OSFLAGS="$OSFLAGS"
+	emake OSFLAGS="${OSFLAGS}"
 }
 
 src_install() {
