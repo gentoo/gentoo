@@ -17,7 +17,7 @@ IUSE="doc extras openmp"
 
 # would be nice to package scip and cocoalib
 RDEPEND="
-	dev-libs/gmp:=[cxx]
+	dev-libs/gmp:=[cxx(+)]
 "
 DEPEND="
 	${RDEPEND}
