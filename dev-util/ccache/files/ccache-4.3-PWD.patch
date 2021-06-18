@@ -1,0 +1,85 @@
+https://github.com/ccache/ccache/commit/2d720aed1843b47aafb2af8bfd15139228545e2b.patch
+https://bugs.gentoo.org/751355
+
+From 2d720aed1843b47aafb2af8bfd15139228545e2b Mon Sep 17 00:00:00 2001
+From: Joel Rosdahl <joel@rosdahl.net>
+Date: Wed, 16 Jun 2021 18:19:04 +0200
+Subject: [PATCH] =?UTF-8?q?Don=E2=80=99t=20crash=20on=20relative=20PWD=20v?=
+ =?UTF-8?q?alue?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Even though PWD “shall represent an absolute pathname of the current
+working directory”[1], we shouldn’t crash if a user sets it to a
+relative path.
+
+[1]: https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html#tag_08_03
+
+Fixes #860.
+---
+ src/Util.cpp             |  2 +-
+ test/run                 |  1 +
+ test/suites/basedir.bash | 32 ++++++++++++++++++++++++++++++++
+ 3 files changed, 34 insertions(+), 1 deletion(-)
+
+--- a/src/Util.cpp
++++ b/src/Util.cpp
+@@ -617,7 +617,7 @@ get_apparent_cwd(const std::string& actual_cwd)
+   return actual_cwd;
+ #else
+   auto pwd = getenv("PWD");
+-  if (!pwd) {
++  if (!pwd || !Util::is_absolute_path(pwd)) {
+     return actual_cwd;
+   }
+ 
+--- a/test/run
++++ b/test/run
+@@ -356,6 +356,7 @@ reset_environment() {
+     unset TERM
+     unset XDG_CACHE_HOME
+     unset XDG_CONFIG_HOME
++    export PWD=$(pwd)
+ 
+     export CCACHE_DETECT_SHEBANG=1
+     export CCACHE_DIR=$ABS_TESTDIR/.ccache
+--- a/test/suites/basedir.bash
++++ b/test/suites/basedir.bash
+@@ -311,4 +311,36 @@ EOF
+         expect_stat 'cache miss' 1
+         expect_equal_content reference.stderr ccache.stderr
+     fi
++
++    # -------------------------------------------------------------------------
++    TEST "Relative PWD"
++
++    cd dir1
++    CCACHE_BASEDIR="$(pwd)" PWD=. $CCACHE_COMPILE -I$(pwd)/include -c src/test.c
++    expect_stat 'cache hit (direct)' 0
++    expect_stat 'cache hit (preprocessed)' 0
++    expect_stat 'cache miss' 1
++
++    cd ../dir2
++    CCACHE_BASEDIR="$(pwd)" PWD=. $CCACHE_COMPILE -I$(pwd)/include -c src/test.c
++    expect_stat 'cache hit (direct)' 1
++    expect_stat 'cache hit (preprocessed)' 0
++    expect_stat 'cache miss' 1
++
++    # -------------------------------------------------------------------------
++    TEST "Unset PWD"
++
++    unset PWD
++
++    cd dir1
++    CCACHE_BASEDIR="$(pwd)" $CCACHE_COMPILE -I$(pwd)/include -c src/test.c
++    expect_stat 'cache hit (direct)' 0
++    expect_stat 'cache hit (preprocessed)' 0
++    expect_stat 'cache miss' 1
++
++    cd ../dir2
++    CCACHE_BASEDIR="$(pwd)" $CCACHE_COMPILE -I$(pwd)/include -c src/test.c
++    expect_stat 'cache hit (direct)' 1
++    expect_stat 'cache hit (preprocessed)' 0
++    expect_stat 'cache miss' 1
+ }
