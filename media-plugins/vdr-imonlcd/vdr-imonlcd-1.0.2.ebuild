@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info udev vdr-plugin-2
+inherit linux-info toolchain-funcs udev vdr-plugin-2
 
 VERSION="2086" # every bump, new version
 
@@ -20,6 +20,7 @@ RDEPEND="
 	virtual/udev"
 DEPEND="${RDEPEND}
 	media-video/vdr"
+BDEPEND="virtual/pkgconfig"
 QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-.*
 	usr/lib64/vdr/plugins/libvdr-.*"
@@ -36,6 +37,11 @@ CONFIG_CHECK="~IR_IMON"
 pkg_setup() {
 	linux-info_pkg_setup
 	vdr-plugin-2_pkg_setup
+}
+
+src_configure() {
+	tc-export PKG_CONFIG
+	default
 }
 
 src_install() {
