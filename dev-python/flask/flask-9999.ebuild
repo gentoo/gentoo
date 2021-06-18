@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -34,7 +34,7 @@ BDEPEND="
 		>=dev-python/asgiref-3.2[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs dev-python/pallets-sphinx-themes dev-python/sphinxcontrib-log_cabinet
 distutils_enable_tests pytest
 
 python_test() {
