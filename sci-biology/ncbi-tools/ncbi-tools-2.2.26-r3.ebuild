@@ -18,6 +18,8 @@ RDEPEND="
 	app-shells/tcsh
 	dev-lang/perl
 	media-libs/libpng:0=
+	virtual/glu
+	virtual/opengl
 	X? (
 		media-libs/fontconfig
 		x11-libs/motif:0=
