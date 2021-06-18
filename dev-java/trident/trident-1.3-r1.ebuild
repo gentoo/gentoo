@@ -13,7 +13,7 @@ SRC_URI="https://kenai.com/projects/trident/downloads/download/version%20${PV}%2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 RESTRICT="test"
