@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
-DESCRIPTION="platform abstraction code for tucnak package"
+DESCRIPTION="Platform abstraction code for tucnak package"
 HOMEPAGE="http://tucnak.nagano.cz"
 SRC_URI="http://tucnak.nagano.cz/${P}.tar.gz"
 
@@ -18,9 +19,8 @@ RDEPEND="dev-libs/glib:2
 	media-libs/libsdl
 	media-libs/libpng:0
 	ftdi? ( dev-embedded/libftdi:1 )"
-
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 MAKEOPTS+=" -j1"
 
