@@ -136,6 +136,9 @@ src_configure() {
 		-DUSE_FREETYPE=$(usex truetype)
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
+	if use python; then
+		mycmakeargs+=( -DPYTHON_SITE_DIR=$(python_get_sitedir) )
+	fi
 
 	cmake_src_configure
 }
