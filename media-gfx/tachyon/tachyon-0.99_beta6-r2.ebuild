@@ -11,16 +11,14 @@ MY_P="${PN}-${MY_PV}"
 DESCRIPTION="A portable, high performance parallel ray tracing system"
 HOMEPAGE="http://jedi.ks.uiuc.edu/~johns/raytracer/"
 SRC_URI="http://jedi.ks.uiuc.edu/~johns/raytracer/files/${MY_PV}/${MY_P}.tar.gz"
+S="${WORKDIR}/${PN}/unix"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x64-macos"
 IUSE="doc examples jpeg mpi +opengl openmp png threads"
 
-PATCHES=(	"${FILESDIR}/${PF}-ldflags.patch"
-		"${FILESDIR}/${PF}-shared.patch"  )
-
-CDEPEND="
+DEPEND="
 	jpeg? ( virtual/jpeg:0= )
 	mpi? ( virtual/mpi )
 	opengl? (
@@ -28,14 +26,17 @@ CDEPEND="
 		virtual/opengl
 		)
 	png? ( media-libs/libpng:0= )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}"
+RDEPEND="${DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}/unix"
+PATCHES=(
+	"${FILESDIR}/${PF}-ldflags.patch"
+	"${FILESDIR}/${PF}-shared.patch"
+)
 
 src_prepare() {
 	emakeconf=()
+
 	use jpeg && \
 		emakeconf+=(
 			USEJPEG=-DUSEJPEG
@@ -47,7 +48,7 @@ src_prepare() {
 			USEPNG=-DUSEPNG
 			PNGINC="$($(tc-getPKG_CONFIG) --cflags libpng)"
 			PNGLIB="$($(tc-getPKG_CONFIG) --libs libpng)"
-			)
+		)
 
 	if use mpi ; then
 		sed \
@@ -96,7 +97,7 @@ src_install() {
 	cd .. || die
 	dodoc Changes README
 
-	insinto "/usr/include/${PN}"
+	insinto /usr/include/${PN}
 	doins src/*.h
 
 	use doc && docinto html && dodoc -r docs/tachyon/.
