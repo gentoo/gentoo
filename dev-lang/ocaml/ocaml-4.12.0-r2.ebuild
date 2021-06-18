@@ -12,10 +12,9 @@ DESCRIPTION="Programming language supporting functional, imperative & object-ori
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE="emacs flambda latex +ocamlopt spacetime xemacs"
+IUSE="emacs flambda latex +ocamlopt xemacs"
 
-RDEPEND="sys-libs/binutils-libs:=
-	spacetime? ( sys-libs/libunwind:= )"
+RDEPEND="sys-libs/binutils-libs:="
 BDEPEND="${RDEPEND}
 	virtual/pkgconfig"
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
@@ -24,13 +23,15 @@ PDEPEND="emacs? ( app-emacs/ocaml-mode )
 src_prepare() {
 	default
 
+	cp "${FILESDIR}"/ocaml.conf "${T}" || die
+
 	# OCaml generates textrels on 32-bit arches
 	# We can't do anything about it, but disabling it means that tests
 	# for OCaml-based packages won't fail on unexpected output
 	# bug #773226
-	#if use arm || use ppc || use x86 ; then
+	if use arm || use ppc || use x86 ; then
 		append-ldflags "-Wl,-z,notext"
-	#fi
+	fi
 
 	# Upstream build ignores LDFLAGS in several places.
 	sed -i -e 's/\(^MKDLL=.*\)/\1 $(LDFLAGS)/' \
@@ -46,40 +47,51 @@ src_configure() {
 		--mandir="${EPREFIX}/usr/share/man"
 		--prefix="${EPREFIX}/usr"
 		$(use_enable flambda)
-		$(use_enable spacetime)
 	)
-	econf ${opt[@]}
+
+	econf "${opt[@]}"
 }
 
 src_compile() {
+	env -u P emake world
+
 	if use ocamlopt ; then
-		env -u P emake world.opt
-	else
-		env -u P emake world
+		env -u P emake opt
+		env -u P emake opt.opt
 	fi
 }
 
 src_test() {
+	emake -j
+
+	# OCaml tests only work when run sequentially
 	if use ocamlopt ; then
-		# OCaml tests only work when run sequentially
-		emake -j1 tests
+		emake -j1 ocamltest.opt
 	else
-		ewarn "${PN} was built without 'ocamlopt' USE flag; skipping tests."
+		emake -j1 ocamltest
+		#ewarn "${PN} was built without 'ocamlopt' USE flag; skipping tests."
 	fi
+
+	emake -j1 tests
 }
 
 src_install() {
 	default
+
 	dodir /usr/include
 	# Create symlink for header files
 	dosym "../$(get_libdir)/ocaml/caml" /usr/include/caml
 	dodoc Changes README.adoc
+
 	# Create envd entry for latex input files
 	if use latex ; then
-		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc"
-		doenvd "${T}/99ocamldoc"
+		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}"/99ocamldoc || die
+		doenvd "${T}"/99ocamldoc
 	fi
+
+	sed -i -e "s:lib:$(get_libdir):" "${T}"/ocaml.conf || die
+
 	# Install ocaml-rebuild portage set
 	insinto /usr/share/portage/config/sets
-	doins "${FILESDIR}/ocaml.conf"
+	doins "${T}"/ocaml.conf
 }

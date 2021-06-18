@@ -33,8 +33,9 @@ PDEPEND="emacs? ( app-emacs/ocaml-mode )
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.04.2-tinfo.patch" #459512
+	"${FILESDIR}"/${PN}-4.04.2-tinfo.patch #459512
 	"${FILESDIR}"/${P}-gcc10.patch
+	"${FILESDIR}"/${P}-CVE-2018-9838.patch
 )
 
 pkg_setup() {
@@ -50,6 +51,9 @@ pkg_setup() {
 
 src_prepare() {
 	EPATCH_SUFFIX="patch" eapply "${WORKDIR}/patches"
+
+	cp "${FILESDIR}"/ocaml.conf "${T}" || die
+
 	default
 }
 
@@ -133,10 +137,13 @@ src_install() {
 	dodoc Changes README.adoc
 	# Create envd entry for latex input files
 	if use latex ; then
-		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc"
-		doenvd "${T}/99ocamldoc"
+		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}"/99ocamldoc || die
+		doenvd "${T}"/99ocamldoc
 	fi
+
+	sed -i -e "s:lib:$(get_libdir):" "${T}"/ocaml.conf || die
+
 	# Install ocaml-rebuild portage set
 	insinto /usr/share/portage/config/sets
-	doins "${FILESDIR}/ocaml.conf"
+	doins "${T}"/ocaml.conf
 }
