@@ -1,0 +1,80 @@
+From b0b666350a91529caeb36e957e465eba3b6d7589 Mon Sep 17 00:00:00 2001
+From: David Tolnay <dtolnay@gmail.com>
+Date: Fri, 14 May 2021 13:49:17 -0700
+Subject: [PATCH 1/2] Add regression test for issue 28
+
+---
+ tests/test_parse.rs | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/tests/test_parse.rs b/tests/test_parse.rs
+index a5de1aa..cb39b31 100644
+--- a/vendor/rustversion/tests/test_parse.rs
++++ b/vendor/rustversion/tests/test_parse.rs
+@@ -76,6 +76,14 @@ fn test_parse() {
+                 }),
+             },
+         ),
++        (
++            "rustc 1.52.1-nightly (gentoo)",
++            Version {
++                minor: 52,
++                patch: 1,
++                channel: Dev,
++            },
++        ),
+     ];
+ 
+     for (string, expected) in cases {
+
+From 2ee81bd2701915684137ae40415afa4b552af79e Mon Sep 17 00:00:00 2001
+From: David Tolnay <dtolnay@gmail.com>
+Date: Fri, 14 May 2021 13:59:44 -0700
+Subject: [PATCH 2/2] Parse distro nightly without a date
+
+---
+ build/rustc.rs | 30 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/build/rustc.rs b/build/rustc.rs
+index 723e6bd..dfc6a05 100644
+--- a/vendor/rustversion/build/rustc.rs
++++ b/vendor/rustversion/build/rustc.rs
+@@ -48,23 +48,21 @@ pub fn parse(string: &str) -> Option<Version> {
+         Some(channel) if channel == "dev" => Dev,
+         Some(channel) if channel.starts_with("beta") => Beta,
+         Some(channel) if channel == "nightly" => match words.next() {
+-            Some(hash) => {
+-                if !hash.starts_with('(') {
+-                    return None;
++            Some(hash) if hash.starts_with('(') => match words.next() {
++                None if hash.ends_with(')') => Dev,
++                Some(date) if date.ends_with(')') => {
++                    let mut date = date[..date.len() - 1].split('-');
++                    let year = date.next()?.parse().ok()?;
++                    let month = date.next()?.parse().ok()?;
++                    let day = date.next()?.parse().ok()?;
++                    match date.next() {
++                        None => Nightly(Date { year, month, day }),
++                        Some(_) => return None,
++                    }
+                 }
+-                let date = words.next()?;
+-                if !date.ends_with(')') {
+-                    return None;
+-                }
+-                let mut date = date[..date.len() - 1].split('-');
+-                let year = date.next()?.parse().ok()?;
+-                let month = date.next()?.parse().ok()?;
+-                let day = date.next()?.parse().ok()?;
+-                match date.next() {
+-                    None => Nightly(Date { year, month, day }),
+-                    Some(_) => return None,
+-                }
+-            }
++                None | Some(_) => return None,
++            },
++            Some(_) => return None,
+             None => Dev,
+         },
+         Some(_) => return None,
