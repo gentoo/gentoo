@@ -41,6 +41,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+BDEPEND="virtual/pkgconfig"
+
 S="${WORKDIR}"/${MY_P}/extras
 
 mercury_pkgs() {
