@@ -21,8 +21,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 "
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( ANNOUNCE CHANGES CHANGES.current README TODO )
 
