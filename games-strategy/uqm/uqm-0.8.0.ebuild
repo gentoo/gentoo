@@ -37,6 +37,7 @@ src_prepare() {
 	default
 
 	cat > config.state <<-EOF || die
+		CHOICE_accel_VALUE='plainc'
 		CHOICE_debug_VALUE='nodebug'
 		CHOICE_mikmod_VALUE='external'
 		INPUT_install_prefix_VALUE='${EPREFIX}/usr'
