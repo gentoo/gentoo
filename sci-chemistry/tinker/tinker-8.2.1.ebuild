@@ -14,16 +14,17 @@ LICENSE="Tinker"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
-DEPEND="
-	>=virtual/jdk-1.6
-	virtual/pkgconfig
-"
 RDEPEND="
 	>=sci-libs/fftw-3.2.2-r1[fortran,threads]
 	dev-libs/maloc
 	!sys-apps/bar
 	!dev-util/diffuse
 	>=virtual/jre-1.6
+"
+DEPEND="
+	${RDEPEND}
+	>=virtual/jdk-1.6
+	virtual/pkgconfig
 "
 
 RESTRICT="mirror"
