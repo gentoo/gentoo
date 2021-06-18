@@ -1,0 +1,44 @@
+From: Sam James <sam@gentoo.org>
+Date: Wed, 21 Apr 2021 06:06:13 +0100
+Subject: Use PKG_CHECK_MODULES for ncurses
+
+We don't _always_ have split tinfo, e.g. Prefix.
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,31 +74,9 @@ dnl -------------------
+ dnl (n)curses detection
+ dnl -------------------
+ 
+-abook_cv_curses=/usr
+-AC_ARG_WITH(curses, [  --with-curses=DIR       Where ncurses is installed ],
+-	[if test $withval != yes; then
+-		abook_cv_curses=$withval
+-	fi
+-	if test x$abook_cv_curses != x/usr; then
+-		LDFLAGS="-L${abook_cv_curses}/lib $LDFLAGS"
+-		CPPFLAGS="$CPPFLAGS -I${abook_cv_curses}/include"
+-	fi])
+-
+-AC_CHECK_LIB(ncursesw, initscr,
+-	[LIBS="$LIBS -lncursesw"
+-	if test x$abook_cv_curses = x/usr -a -d /usr/include/ncursesw; then
+-		CPPFLAGS="$CPPFLAGS -I/usr/include/ncursesw"
+-	fi
+-	AC_CHECK_HEADERS(ncurses.h)],[
+-	ac_widec_possible=no
+-	AC_CHECK_LIB(ncurses, initscr,
+-		[LIBS="$LIBS -lncurses"
+-		if test x$abook_cv_curses = x/usr -a -d /usr/include/ncurses; then
+-			CPPFLAGS="$CPPFLAGS -I/usr/include/ncurses"
+-		fi
+-		AC_CHECK_HEADERS(ncurses.h)],
+-		[CF_CURSES_LIBS])
+-	])
++PKG_CHECK_MODULES(ncurses, ncurses)
++LDFLAGS="${ncurses_LIBS} $LDFLAGS"
++CPPFLAGS="${ncurses_CFLAGS} $CPPFLAGS"
+ 
+ dnl --------------------------
+ dnl end of (n)curses detection
+-- 
+
