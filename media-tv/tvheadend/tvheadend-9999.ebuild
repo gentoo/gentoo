@@ -87,7 +87,7 @@ pkg_setup() {
 
 src_configure() {
 	CC="$(tc-getCC)" \
-	PKG_CONFIG="${CHOST}-pkg-config" \
+	PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 	econf \
 		--disable-bundle \
 		--disable-ccache \
