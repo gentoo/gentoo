@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="cxx doc imlib java mono ncurses opengl ruby slang static-libs test truetype X"
+IUSE="doc imlib java mono ncurses opengl ruby slang static-libs test truetype X"
 RESTRICT="!test? ( test )"
 
 # ruby? ( ruby_targets_${USE_RUBY} )
@@ -139,7 +139,7 @@ multilib_src_configure() {
 		$(use_with X x)
 		--x-libraries=/usr/$(get_libdir)
 		$(use_enable opengl gl)
-		$(use_enable cxx)
+		--enable-cxx
 		$(use_enable imlib imlib2)
 		$(use_enable test cppunit)
 		$(multilib_native_use_enable java)
