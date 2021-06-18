@@ -45,7 +45,7 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	!gmp? ( sci-libs/mpir:=[cxx] )
-	gmp? ( dev-libs/gmp:0=[cxx] )
+	gmp? ( dev-libs/gmp:0=[cxx(+)] )
 	plasma? (
 		>=kde-frameworks/kpackage-${KFMIN}:5
 		>=kde-frameworks/plasma-${KFMIN}:5
