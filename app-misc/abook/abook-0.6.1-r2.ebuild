@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,18 +16,24 @@ KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="nls"
 
 RDEPEND="
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/ncurses:=
+	sys-libs/readline:=
 	dev-libs/libvformat
 	nls? ( virtual/libintl )"
 
-DEPEND="nls? ( sys-devel/gettext )"
+DEPEND="
+	sys-devel/autoconf-archive
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( BUGS ChangeLog FAQ README TODO sample.abookrc )
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.6.1-tinfo.patch
+	"${FILESDIR}"/${PN}-0.6.1-use-PKG_CHECK_MODULES-for-ncurses.patch
+	"${FILESDIR}"/${PN}-0.6.1-use-newer-macro-for-readline.patch
 	"${FILESDIR}"/${PN}-0.6.1-vformat.patch
 )
 
@@ -38,8 +44,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--with-curses \
-		--with-readline \
 		--enable-vformat \
 		$(use_enable nls)
 }
