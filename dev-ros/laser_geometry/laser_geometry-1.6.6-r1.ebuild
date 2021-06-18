@@ -21,7 +21,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/tf2[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-cpp/eigen:3
 "
 DEPEND="${RDEPEND}
