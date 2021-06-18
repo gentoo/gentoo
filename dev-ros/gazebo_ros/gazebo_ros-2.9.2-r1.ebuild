@@ -25,7 +25,7 @@ RDEPEND="
 	dev-ros/tf[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/dynamic_reconfigure
 	dev-libs/libxml2
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
