@@ -21,10 +21,11 @@ RDEPEND="jack? ( media-sound/jack-audio-connection-kit:0 )
 	virtual/opengl:0
 	virtual/glu:0
 	x11-libs/gtk+:2"
-
-DEPEND="${RDEPEND}
-	sys-devel/bison:0
-	sys-devel/flex:0"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc44.patch
