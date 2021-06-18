@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~x86"
 
 DEPEND="
 	sys-apps/miscfiles
-	sys-libs/ncurses:0
+	sys-libs/ncurses:0=
 	!app-misc/banner
 	!games-misc/wtf
 	!games-puzzle/hangman
