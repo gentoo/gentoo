@@ -14,14 +14,14 @@ LICENSE="GPL-2"
 SLOT="0"
 # uneven minor versions are development versions
 if [[ $(( $(ver_cut 2) % 2 )) == 0 ]] ; then
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
-IUSE="dbus dedicated doc fribidi nls server"
+IUSE="dbus dedicated doc nls server"
 
 RDEPEND="
 	acct-group/wesnoth
 	acct-user/wesnoth
-	>=dev-libs/boost-1.50:=[nls,threads,icu]
+	>=dev-libs/boost-1.50:=[nls,threads(+),icu]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2
@@ -29,13 +29,11 @@ RDEPEND="
 		>=media-libs/fontconfig-2.4.1
 		>=media-libs/sdl2-image-2.0.0[jpeg,png]
 		>=media-libs/sdl2-mixer-2.0.0[vorbis]
-		>=media-libs/sdl2-ttf-2.0.12
 		media-libs/libvorbis
 		>=x11-libs/pango-1.22.0
 		>=x11-libs/cairo-1.10.0
 		sys-libs/readline:0=
 		dbus? ( sys-apps/dbus )
-		fribidi? ( dev-libs/fribidi )
 	)"
 DEPEND="${RDEPEND}
 	x11-libs/libX11
@@ -45,13 +43,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/wesnoth-1.14.14-ar.patch"
-)
-
 src_prepare() {
 	cmake_src_prepare
 
+	sed 's@ coroutine@@' -i CMakeLists.txt || die
 	if ! use doc ; then
 		sed -i \
 			-e '/manual/d' \
@@ -95,7 +90,6 @@ src_configure() {
 		-DENABLE_DESKTOP_ENTRY="$(usex !dedicated)"
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_NOTIFICATIONS="$(usex dbus)"
-		-DENABLE_FRIBIDI="$(usex fribidi)"
 		-DENABLE_STRICT_COMPILATION="OFF"
 		)
 	cmake_src_configure
