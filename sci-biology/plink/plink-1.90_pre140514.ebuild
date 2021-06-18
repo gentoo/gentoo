@@ -14,14 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	app-arch/unzip
-	virtual/pkgconfig"
 RDEPEND="
 	sys-libs/zlib
 	virtual/cblas
 	virtual/lapack
-	"
+"
+DEPEND="
+	${RDEPEND}
+	app-arch/unzip
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/"
 
