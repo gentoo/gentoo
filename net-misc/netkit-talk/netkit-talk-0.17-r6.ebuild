@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ipv6"
 
-COMMON_DEPEND=">=sys-libs/ncurses-5.2"
+COMMON_DEPEND=">=sys-libs/ncurses-5.2:="
 DEPEND="
 	${COMMON_DEPEND}
 	virtual/pkgconfig
