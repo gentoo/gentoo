@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Hüttel <dilfridge@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: eclass for installing Perl module distributions
 # @DESCRIPTION:
 # The perl-module eclass is designed to allow easier installation of Perl
@@ -25,6 +25,10 @@ case ${EAPI:-0} in
 		;;
 	6|7)
 		inherit multiprocessing perl-functions
+		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
+		;;
+	8)
+		inherit multiprocessing perl-functions readme.gentoo-r1
 		PERL_EXPF="src_prepare src_configure src_compile src_test src_install"
 		;;
 	*)
@@ -99,7 +103,7 @@ case ${EAPI:-0} in
 
 		EXPORT_FUNCTIONS ${PERL_EXPF}
 		;;
-	7)
+	*)
 		[[ ${CATEGORY} == perl-core ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
@@ -125,9 +129,6 @@ case ${EAPI:-0} in
 		fi
 
 		EXPORT_FUNCTIONS ${PERL_EXPF}
-		;;
-	*)
-		die "EAPI=${EAPI:-0} is not supported by perl-module.eclass"
 		;;
 esac
 
@@ -179,6 +180,25 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # in /usr/share/doc/${PF}/examples. If set before inherit, automatically adds
 # a use-flag examples, if not you'll have to add the useflag in your ebuild.
 # Examples are installed only if the useflag examples exists and is activated.
+
+# @ECLASS-VARIABLE: DIST_WIKI
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# (EAPI=8 and later) This variable can be set to contain space-separated keywords
+# corresponding to article sections in a maintenance notes wiki article. If a
+# keyword is set, an ebuild phase can output a message and a link to the wiki.
+# Current keywords as of EAPI=8 are:
+# * features: Notes about additional dependencies for optional features
+# * tests:    Notes about additional dependencies and preparations needed for testing
+
+# @ECLASS-VARIABLE: DIST_MAKE
+# @DESCRIPTION:
+# (EAPI=8 and later) This Bash array contains parameters to the make call
+# from ExtUtils::MakeMaker. Replaces mymake in EAPI=7 and earlier.
+# Defaults to ( OPTIMIZE="${CFLAGS}" )
+if [[ $(declare -p DIST_MAKE 2>&-) != "declare -a DIST_MAKE="* ]]; then
+	DIST_MAKE=( OPTIMIZE="${CFLAGS}" )
+fi
 
 
 if [[ ${EAPI:-0} == 5 ]]; then
@@ -343,11 +363,18 @@ perl-module_src_compile() {
 	debug-print-function $FUNCNAME "$@"
 	perl_set_version
 
-	if [[ $(declare -p mymake 2>&-) != "declare -a mymake="* ]]; then
-		local mymake_local=(${mymake})
-	else
-		local mymake_local=("${mymake[@]}")
-	fi
+	case ${EAPI} in
+		5|6|7)
+			if [[ $(declare -p mymake 2>&-) != "declare -a mymake="* ]]; then
+				local mymake_local=(${mymake})
+			else
+				local mymake_local=("${mymake[@]}")
+			fi
+			;;
+		*)
+			local mymake_local=("${DIST_MAKE[@]}")
+			;;
+	esac
 
 	if [[ -f Build ]] ; then
 		./Build build \
@@ -396,7 +423,7 @@ perl-module_src_test() {
 	local my_test_control
 	local my_test_verbose
 
-	if [[ ${EAPI:-0} == 5 ]] ; then
+	if [[ ${EAPI} == 5 ]] ; then
 		my_test_control=${SRC_TEST}
 		my_test_verbose=${TEST_VERBOSE:-0}
 		if has 'do' ${my_test_control} || has 'parallel' ${my_test_control} ; then
@@ -433,6 +460,18 @@ perl-module_src_test() {
 			export NO_NETWORK_TESTING=1
 		fi
 	fi
+
+	case ${EAPI} in
+		5|6|7)
+			;;
+		*)
+			if has 'tests' ${DIST_WIKI} ; then
+				ewarn "This package may require additional dependencies and/or preparation steps for"
+				ewarn "comprehensive testing. For details, see:"
+				ewarn "$(perl_get_wikiurl_tests)"
+			fi
+			;;
+	esac
 
 	perl_set_version
 	if [[ -f Build ]] ; then
@@ -473,9 +512,17 @@ perl-module_src_install() {
 			|| die "emake ${myinst_local[@]} ${mytargets} failed"
 	fi
 
+	case ${EAPI} in
+		5|6|7)
+			;;
+		*)
+			perl_fix_permissions
+			;;
+	esac
+
 	perl_delete_module_manpages
 	perl_delete_localpod
-	if [[ ${EAPI:-0} == 5 ]] ; then
+	if [[ ${EAPI} == 5 ]] ; then
 		perl_delete_packlist
 	else
 		perl_fix_packlist
@@ -487,13 +534,29 @@ perl-module_src_install() {
 		[[ -s ${f} ]] && dodoc ${f}
 	done
 
-	if [[ ${EAPI:-0} != 5 ]] ; then
+	if [[ ${EAPI} != 5 ]] ; then
 		if in_iuse examples && use examples ; then
                         [[ ${#DIST_EXAMPLES[@]} -eq 0 ]] || perl_doexamples "${DIST_EXAMPLES[@]}"
 		fi
 	fi
 
 	perl_link_duallife_scripts
+
+	case ${EAPI} in
+		5|6|7)
+			;;
+		*)
+			if has 'features' ${DIST_WIKI} ; then
+				DISABLE_AUTOFORMATTING=yes
+				DOC_CONTENTS="This package may require additional dependencies and/or preparation steps for\n"
+				DOC_CONTENTS+="some optional features. For details, see\n"
+				DOC_CONTENTS+="$(perl_get_wikiurl_features)"
+				einfo
+				readme.gentoo_create_doc
+				readme.gentoo_print_elog
+			fi
+			;;
+	esac
 }
 
 # @FUNCTION: perl-module_pkg_postinst
