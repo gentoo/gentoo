@@ -1,0 +1,29 @@
+This patch file updates the autoconfigure script so that it works when using OpenSSL >= 1.1.0, as SSL_library_init
+is deprecated, and has been replaced by OPENSSL_init_ssl.
+In addition to this, no call to the init function is needed, as this is now done automatically.
+
+
+diff -u ./tls.c.orig ./tls.c
+--- ./tls.c.orig        2020-04-29 03:50:32.700402228 +0100
++++ ./tls.c     2020-04-29 03:51:18.758402228 +0100
+@@ -186,7 +186,7 @@
+
+   if (!initialized)
+     {
+-    SSL_library_init();
++//    SSL_library_init();
+
+     if (!RAND_status())
+       {
+diff -u ./configure.ac.orig ./configure.ac
+--- ./configure.ac.orig 2020-04-29 05:08:56.046402228 +0100
++++ ./configure.ac      2020-04-29 05:09:23.864402228 +0100
+@@ -149,7 +149,7 @@
+                        [
+                          AC_MSG_RESULT([yes])
+                          AC_SEARCH_LIBS([RSA_sign], [ssl crypto], [], [ AC_MSG_FAILURE([--enable-tls was given but OpenSSL was not found]) ])
+-                         AC_SEARCH_LIBS([SSL_library_init],
++                         AC_SEARCH_LIBS([OPENSSL_init_ssl],
+                                         [ssl crypto],
+                                         [ LIBS="$LIBS -lssl"
+                                           AC_DEFINE([HAVE_LIBSSL], [1])

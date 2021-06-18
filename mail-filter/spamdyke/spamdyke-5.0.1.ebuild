@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit autotools
 
@@ -12,62 +12,52 @@ SRC_URI="http://www.spamdyke.org/releases/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+ssl"
 
-DEPEND="
-	ssl? (
-		dev-libs/openssl:0=
-	)"
+DEPEND=">=dev-libs/openssl-1.1.0:="
 
 RDEPEND="
 	${DEPEND}
-	virtual/qmail"
+	virtual/qmail
+"
 
 S="${WORKDIR}/${P}/${PN}"
 
+PATCHES=( "${FILESDIR}/patch-for-openssl-1.1.patch" )
+DOCS=( Changelog.txt INSTALL.txt UPGRADING.txt )
+
 src_prepare() {
-	echo "# Configuration option for ${PN}" > ${PN}.conf || die
-	if use ssl; then
-		echo "tls-certificate-file=/var/qmail/control/clientcert.pem" \
-			>> ${PN}.conf || die
-	fi
-	cat <<- EOF >> ${PN}.conf || die
+	default
+	echo "# Configuration option for ${PN}" > "${PN}".conf || die
+	echo "tls-certificate-file=/var/qmail/control/clientcert.pem" >> "${PN}".conf || die
+	cat <<- EOF >> "${PN}".conf || die
 graylist-level=always-create-dir
-graylist-dir=/var/tmp/${PN}/graylist
+graylist-dir=/var/tmp/"${PN}"/graylist
 reject-empty-rdns
 reject-unresolvable-rdns
 dns-blacklist-entry=zen.spamhaus.org
 local-domains-file=/var/qmail/control/rcpthosts
 EOF
-	sed -i \
-		-e "/STRIP_CMD/d" \
-		Makefile.in || die "sed on Makefile.in failed"
+	sed -i -e "/STRIP_CMD/d" Makefile.in || die "sed on Makefile.in failed"
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable ssl tls)
-	cd ../utils || die
-	econf
+	econf $(use_with tls)
 }
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}"
-	cd ../utils
-	emake CFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	insinto /etc/${PN}
-	doins ${PN}.conf
-	dodir /var/tmp/${PN}/graylist
-	fowners -R qmaild /var/tmp/${PN}/graylist
-	cd ../utils || die
-	dobin domain2path
+	dobin spamdyke
+	insinto /etc/"${PN}"
+	doins "${PN}".conf
+	keepdir /var/tmp/"${PN}"/graylist
+	fowners -R qmaild /var/tmp/"${PN}"/graylist
 	cd ../documentation || die
-	dodoc {Changelog,INSTALL,UPGRADING}.txt
-	dohtml FAQ.html \
+	docinto html
+	dodoc FAQ.html \
 		README.html \
 		README_ip_file_format.html \
 		README_rdns_directory_format.html \
