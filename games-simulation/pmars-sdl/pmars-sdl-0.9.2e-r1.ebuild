@@ -25,6 +25,7 @@ RDEPEND="
 	!sdl? ( !X? ( sys-libs/ncurses:0= ) )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
@@ -46,15 +47,15 @@ src_compile() {
 		append-cflags $(sdl-config --cflags)
 		append-cppflags -DSDLGRAPHX
 
-		LIB=$(sdl-config --libs)
+		LIB="$(sdl-config --libs)"
 	elif use X ; then
 		append-cppflags -DXWINGRAPHX
 
-		LIB="-L${ESYSROOT}/usr/X11R6/lib -lX11"
+		LIB="$($(tc-getPKG_CONFIG) --libs x11)"
 	else
 		append-cppflags -DCURSESGRAPHX
 
-		LIB="-lcurses -ltinfo"
+		LIB="$($(tc-getPKG_CONFIG) --libs ncurses)"
 	fi
 
 	cd src || die
