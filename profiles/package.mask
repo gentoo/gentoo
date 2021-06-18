@@ -510,6 +510,7 @@ dev-lang/spark
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
+# (NOTE: Likely needs to be moved to musl + uclibc profiles, not dropped entirely)
 >=virtual/libcrypt-2
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
