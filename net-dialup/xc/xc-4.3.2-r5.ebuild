@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
