@@ -21,7 +21,7 @@ RESTRICT="adolc? ( test ) ipopt? ( test )"
 
 # No need for RDEPEND.
 DEPEND="
-	dev-libs/boost[threads]
+	dev-libs/boost[threads(+)]
 	adolc? ( sci-libs/adolc )
 	eigen? ( dev-cpp/eigen )
 	ipopt? ( sci-libs/ipopt )"
