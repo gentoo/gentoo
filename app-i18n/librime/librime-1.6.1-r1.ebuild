@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/1-${PV}"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
@@ -30,7 +30,7 @@ BDEPEND="dev-libs/capnproto:0"
 RDEPEND="app-i18n/opencc:0=
 	>=dev-cpp/glog-0.3.5:0=
 	dev-cpp/yaml-cpp:0=
-	dev-libs/boost:0=[threads]
+	dev-libs/boost:0=[threads(+)]
 	dev-libs/capnproto:0=
 	dev-libs/leveldb:0=
 	dev-libs/marisa:0="
@@ -44,6 +44,7 @@ DOCS=(CHANGELOG.md README.md)
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.6.0-boost-1.76.patch"
+	eapply "${FILESDIR}/${PN}-1.6.1-plugins.patch"
 
 	# Use headers of dev-libs/darts, dev-libs/utfcpp and x11-base/xorg-proto.
 	sed -e "/\${PROJECT_SOURCE_DIR}\/thirdparty/d" -i CMakeLists.txt || die
