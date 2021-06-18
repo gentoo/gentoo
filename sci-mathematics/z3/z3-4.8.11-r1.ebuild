@@ -20,7 +20,7 @@ IUSE="doc examples gmp isabelle java python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	gmp? ( dev-libs/gmp:0=[cxx,${MULTILIB_USEDEP}] )"
+	gmp? ( dev-libs/gmp:0=[cxx(+),${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.8 )"
 BDEPEND="
