@@ -24,19 +24,15 @@ RDEPEND="
 
 python_prepare_all() {
 	if ! use jpp; then
-		sed -e '/jpp_main/d' -i setup.py || die
+		sed -e '/"jpp = jpipe/d' -i setup.py || die
+	fi
+	if ! use jp-symlink; then
+		sed -e '/"jp = jpipe/d' -i setup.py || die
 	fi
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	"${PYTHON}" test/test_jpipe.py || die "tests failed for ${EPYTHON}"
-	if use jpp; then
-		"${PYTHON}" test/test_jpp.py || die "jpp tests failed for ${EPYTHON}"
-	fi
-}
-
-src_install() {
-	distutils-r1_src_install
-	use jp-symlink && dosym jpipe /usr/bin/jp
+	"${PYTHON}" test/test_jp.py || die "jp tests failed for ${EPYTHON}"
+	"${PYTHON}" test/test_jpp.py || die "jpp tests failed for ${EPYTHON}"
 }
