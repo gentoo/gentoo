@@ -1,5 +1,5 @@
---- security/coreconf/Linux.mk.orig	2010-01-15 22:19:00.000000000 +0000
-+++ security/coreconf/Linux.mk	2015-09-27 22:17:50.102547607 +0100
+--- a/security/coreconf/Linux.mk
++++ b/security/coreconf/Linux.mk
 @@ -142,7 +142,7 @@
  ARCH			= linux
  
