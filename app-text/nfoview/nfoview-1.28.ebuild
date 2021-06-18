@@ -26,7 +26,8 @@ BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext"
 DEPEND="dev-python/pygobject:3[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	media-fonts/cascadia-code"
+	media-fonts/cascadia-code
+	x11-libs/gtk+:3[introspection]"
 
 distutils_enable_tests pytest
 
