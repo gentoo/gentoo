@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,13 +26,13 @@ COMMON_DEPEND="
 		virtual/opengl
 	)
 	dmtx? ( media-libs/libdmtx )
-	gsl? ( sci-libs/gsl )
+	gsl? ( sci-libs/gsl:= )
 	ieee1394? ( media-libs/libdc1394:2= )
 	jpeg? ( virtual/jpeg:0 )
 	motif? ( media-libs/SoXt )
 	ogre? (
 		dev-games/ogre[ois(+)]
-		dev-libs/boost:=[threads]
+		dev-libs/boost:=[threads(+)]
 	)
 	opencv? ( media-libs/opencv:=[contribdnn(+)] )
 	pcl? ( sci-libs/pcl:= )
