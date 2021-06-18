@@ -24,7 +24,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	>=dev-libs/boost-1.61:=[context,nls,threads]
+	>=dev-libs/boost-1.61:=[context,nls,threads(+)]
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	oce? ( sci-libs/oce )
 	python? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.61:=[context,nls,threads,python,${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.61:=[context,nls,threads(+),python,${PYTHON_MULTI_USEDEP}]
 			dev-python/wxpython:4.0[${PYTHON_MULTI_USEDEP}]
 		')
 		${PYTHON_DEPS}
