@@ -19,7 +19,7 @@ BDEPEND="doc? ( app-doc/doxygen )"
 # The project README says that gmp, givaro, and blas/lapack are required
 # transitively via fflas-ffpack, but that's not true. The build system
 # checks for them, and `git grep` shows that they're used directly.
-DEPEND="dev-libs/gmp[cxx]
+DEPEND="dev-libs/gmp[cxx(+)]
 	=sci-libs/givaro-4.1*
 	=sci-libs/fflas-ffpack-2.4*
 	virtual/cblas
