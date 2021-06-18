@@ -14,12 +14,17 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="debug libffi"
 
-DEPEND="dev-java/gnu-classpath:0.98
+RDEPEND="dev-java/gnu-classpath:0.98
 	|| ( dev-java/eclipse-ecj:* dev-java/ecj-gcj:* )
 	libffi? ( dev-libs/libffi:= )
 	ppc64? ( dev-libs/libffi:= )
 	sparc? ( dev-libs/libffi:= )"
-RDEPEND="${DEPEND}"
+DEPEND="
+	${DEPEND}
+	ppc64? ( virtual/pkgconfig )
+	sparc? ( virtual/pkgconfig )
+	libffi? ( virtual/pkgconfig )
+"
 
 PATCHES=(
 	"${FILESDIR}"/"${P}-classes-location.patch"
