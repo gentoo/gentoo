@@ -1,0 +1,15 @@
+diff --git a/ant/compile.xml b/ant/compile.xml
+index f1b228e..db3d197 100644
+--- a/ant/compile.xml
++++ b/ant/compile.xml
+@@ -22,8 +22,8 @@
+                debug="${build.debug}"
+                deprecation="${build.deprecation}" 
+                optimize="on"
+-               source="1.5"
+-               target="1.5">
++               source="1.8"
++               target="1.8">
+             <classpath refid="compile.classpath"/>
+             <include name="${include}"/>
+ 	    <exclude name="${exclude1}"/>
