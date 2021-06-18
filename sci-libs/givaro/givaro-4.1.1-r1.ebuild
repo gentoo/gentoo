@@ -23,7 +23,7 @@ BDEPEND="
 		dev-texlive/texlive-latexextra
 	)
 "
-DEPEND="dev-libs/gmp:0[cxx]"
+DEPEND="dev-libs/gmp:0[cxx(+)]"
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README.md )
