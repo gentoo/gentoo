@@ -3,20 +3,15 @@
 
 EAPI=7
 
-MY_PN="edge-addition-planarity-suite-Version"
 DESCRIPTION="The edge addition planarity suite of graph algorithms"
 HOMEPAGE="https://github.com/graph-algorithms/edge-addition-planarity-suite/"
 
-# Use the tarball from sage because the github release doesn't
-# contain the generated autotools files (like ./configure).
-SRC_URI="http://files.sagemath.org/spkg/upstream/${PN}/${P}.tar.gz"
-IUSE="examples static-libs"
+SRC_URI="https://github.com/graph-algorithms/edge-addition-planarity-suite/releases/download/Version_${PV}/${P}.tar.gz"
+IUSE="static-libs"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-S="${WORKDIR}/${MY_PN}_${PV}"
 
 src_configure() {
 	econf $(use_enable static-libs static)
@@ -25,5 +20,4 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
-	use examples && dodoc -r c/samples
 }
