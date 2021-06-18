@@ -24,6 +24,8 @@ PDEPEND="emacs? ( app-emacs/ocaml-mode )
 src_prepare() {
 	default
 
+	cp "${FILESDIR}"/ocaml.conf "${T}" || die
+
 	# OCaml generates textrels on 32-bit arches
 	# We can't do anything about it, but disabling it means that tests
 	# for OCaml-based packages won't fail on unexpected output
@@ -80,11 +82,13 @@ src_install() {
 
 	# Create envd entry for latex input files
 	if use latex ; then
-		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc"
-		doenvd "${T}/99ocamldoc"
+		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc" || die
+		doenvd "${T}"/99ocamldoc
 	fi
+
+	sed -i -e "s:lib:$(get_libdir):" "${T}"/ocaml.conf || die
 
 	# Install ocaml-rebuild portage set
 	insinto /usr/share/portage/config/sets
-	doins "${FILESDIR}/ocaml.conf"
+	doins "${T}"/ocaml.conf
 }
