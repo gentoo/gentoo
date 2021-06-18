@@ -20,9 +20,8 @@ RESTRICT="bindist mirror"
 
 FONT_CONF=( "${FILESDIR}"/99-joypixels.conf )
 
-DOC_CONTENTS="Free for personal/education use only,
-premium/enterprise license required for any other use:
-    https://www.joypixels.com/licenses"
+DOC_CONTENTS="Free for personal/education use only, premium/enterprise license
+	required for any other use. See: https://www.joypixels.com/licenses"
 
 src_prepare() {
 	default
@@ -32,4 +31,8 @@ src_prepare() {
 src_install() {
 	font_src_install
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
