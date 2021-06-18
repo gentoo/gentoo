@@ -78,7 +78,7 @@ src_install() {
 	fperms 700 /var/lib/litecoin
 	fowners litecoin:litecoin /var/lib/litecoin/
 	fowners litecoin:litecoin /var/lib/litecoin/.litecoin
-	dosym /etc/litecoin/litecoin.conf /var/lib/litecoin/.litecoin/litecoin.conf
+	dosym ../../../../etc/litecoin/litecoin.conf /var/lib/litecoin/.litecoin/litecoin.conf
 
 	dodoc doc/README.md doc/release-notes.md
 
