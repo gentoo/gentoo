@@ -74,7 +74,7 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="
 	|| ( single-precision double-precision )
-	|| ( doc build-manual )
+	doc? ( !build-manual )
 	cuda? ( single-precision )
 	cuda? ( !opencl )
 	mkl? ( !blas !fftw !lapack )
@@ -319,7 +319,9 @@ src_install() {
 		fi
 
 		if use doc; then
-			newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
+			if [[ ${PV} != *9999* ]]; then
+				newdoc "${DISTDIR}/manual-${PV}.pdf" "${PN}-manual-${PV}.pdf"
+			fi
 		fi
 
 		use mpi || continue
