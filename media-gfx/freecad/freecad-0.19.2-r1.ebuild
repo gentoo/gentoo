@@ -64,7 +64,7 @@ RDEPEND="
 	dev-qt/qtxml:5
 	>=media-libs/coin-4.0.0
 	media-libs/freetype
-	media-libs/qhull
+	media-libs/qhull:=
 	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1[python,${PYTHON_SINGLE_USEDEP}]
@@ -82,7 +82,7 @@ RDEPEND="
 	openscad? ( media-gfx/openscad )
 	pcl? ( >=sci-libs/pcl-1.8.1:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[python,threads,${PYTHON_MULTI_USEDEP}]
+		dev-libs/boost:=[python,threads(+),${PYTHON_MULTI_USEDEP}]
 		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pivy-0.6.5[${PYTHON_MULTI_USEDEP}]
