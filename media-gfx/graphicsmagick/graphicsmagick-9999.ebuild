@@ -20,7 +20,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-IUSE="bzip2 +cxx debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma
+IUSE="bzip2 debug dynamic-loading fpx imagemagick jbig jpeg lcms lzma
 	openmp perl png postscript q16 q32 static-libs svg threads tiff truetype
 	webp wmf X zlib"
 
@@ -83,7 +83,7 @@ src_configure() {
 		$(use_with dynamic-loading modules)
 		--with-quantum-depth=${depth}
 		--without-frozenpaths
-		$(use_with cxx magick-plus-plus)
+		--with-magick-plus-plus
 		$(use_with perl)
 		--with-perl-options=INSTALLDIRS=vendor
 		$(use_with bzip2 bzlib)
