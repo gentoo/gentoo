@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
-	dev-libs/gmp:0=[cxx]
+	dev-libs/gmp:0=[cxx(+)]
 	dev-libs/libsigsegv
 	dev-libs/libtecla
 	sci-libs/buddy"
