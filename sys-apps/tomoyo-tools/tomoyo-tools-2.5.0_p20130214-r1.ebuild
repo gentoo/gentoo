@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-COMMON_DEPEND="sys-libs/ncurses"
+COMMON_DEPEND="sys-libs/ncurses:="
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
