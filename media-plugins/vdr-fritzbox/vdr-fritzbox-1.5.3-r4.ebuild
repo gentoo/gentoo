@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-libs/libgcrypt:0
-	dev-libs/boost[threads]
+DEPEND="
+	dev-libs/libgcrypt:=
+	dev-libs/boost:=[threads(+)]
 	media-video/vdr"
 RDEPEND="${DEPEND}"
 
