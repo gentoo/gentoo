@@ -1,6 +1,5 @@
-diff -ru abook-0.6.1.orig/configure.ac abook-0.6.1/configure.ac
---- abook-0.6.1.orig/configure.ac	2020-05-24 19:10:09.826143646 +0200
-+++ abook-0.6.1/configure.ac	2020-05-24 19:10:52.088381318 +0200
+--- a/configure.ac
++++ b/configure.ac
 @@ -140,6 +140,7 @@
  if test x$vformat = xtrue; then
     AC_CHECK_HEADER([vf_iface.h], [
