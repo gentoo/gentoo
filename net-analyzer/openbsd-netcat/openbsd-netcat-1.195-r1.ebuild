@@ -31,7 +31,7 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# this undoes some of the Debian/Linux changes
 		eapply "${FILESDIR}"/${PN}-1.195-darwin.patch
-		if [[ ${CHOST##*-darwin} -lt 19 ]] ; then
+		if [[ ${CHOST##*-darwin} -lt 20 ]] ; then
 			eapply "${FILESDIR}"/${PN}-1.190-darwin13.patch
 		fi
 	fi
