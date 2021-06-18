@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="ipv6 kerberos readline socks5 ssh"
 
 RDEPEND="
-	sys-libs/ncurses:*
+	sys-libs/ncurses:=
 	dev-libs/libbsd
 	dev-libs/openssl:0=
 	kerberos? ( virtual/krb5 )
