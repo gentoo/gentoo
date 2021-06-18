@@ -83,7 +83,7 @@ DEPEND="
 		net-misc/curl:=[curl_ssl_openssl]
 	)
 	ssl? ( dev-libs/openssl:= )
-	system-boost? ( dev-libs/boost[threads,context,python,${PYTHON_USEDEP}] )
+	system-boost? ( dev-libs/boost:=[threads(+),context,python,${PYTHON_USEDEP}] )
 	xfs? ( sys-fs/xfsprogs:= )
 	zfs? ( sys-fs/zfs:= )
 	${PYTHON_DEPS}

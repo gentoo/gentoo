@@ -87,7 +87,7 @@ DEPEND="
 	)
 	rbd-rwl? ( dev-libs/pmdk:= )
 	ssl? ( dev-libs/openssl:= )
-	system-boost? ( >=dev-libs/boost-1.72[threads,context,python,${PYTHON_USEDEP}] )
+	system-boost? ( >=dev-libs/boost-1.72:=[threads(+),context,python,${PYTHON_USEDEP}] )
 	uring? ( sys-libs/liburing:= )
 	xfs? ( sys-fs/xfsprogs:= )
 	zfs? ( sys-fs/zfs:= )
@@ -181,14 +181,16 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-13.2.0-cflags.patch"
-	"${FILESDIR}/ceph-15.2.13-no-virtualenvs.patch"
+	"${FILESDIR}/ceph-15.2.0-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
+	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 	"${FILESDIR}/ceph-15.2.0-rocksdb-cmake.patch"
 	"${FILESDIR}/ceph-15.2.2-systemd-unit.patch"
 	"${FILESDIR}/ceph-15.2.3-spdk-compile.patch"
 	"${FILESDIR}/ceph-15.2.4-system-uring.patch"
+	"${FILESDIR}/ceph-15.2.5-missing-includes.patch"
 	"${FILESDIR}/ceph-15.2.9-dont-compile-isal_compress-if-don-t-have-SSE4_1.patch"
 )
 
