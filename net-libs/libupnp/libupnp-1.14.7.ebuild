@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/release-${PV}.tar.gz -> ${
 
 LICENSE="BSD"
 SLOT="0/17"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux"
 IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 
 # bug 733750
