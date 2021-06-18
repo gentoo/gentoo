@@ -6,13 +6,11 @@ EAPI=7
 inherit cmake
 
 MY_P=CGAL-${PV}
-
 DESCRIPTION="C++ library for geometric algorithms and data structures"
 HOMEPAGE="https://www.cgal.org/"
 SRC_URI="
 	https://github.com/CGAL/cgal/releases/download/v${PV}/${MY_P}.tar.xz
 	doc? ( https://github.com/CGAL/cgal/releases/download/v${PV}/${MY_P}-doc_html.tar.xz )"
-
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
@@ -28,7 +26,7 @@ RDEPEND="
 	x11-libs/libX11:=
 	virtual/glu:=
 	virtual/opengl:=
-	gmp? ( dev-libs/gmp:=[cxx] )
+	gmp? ( dev-libs/gmp:=[cxx(+)] )
 	mpfi? ( sci-libs/mpfi )
 	ntl? ( dev-libs/ntl )
 	qt5? (
