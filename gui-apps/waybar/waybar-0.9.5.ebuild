@@ -35,7 +35,7 @@ DEPEND="
 	dev-libs/date:=
 	dev-libs/wayland
 	dev-libs/wayland-protocols
-	gui-libs/wlroots
+	gui-libs/wlroots:=
 	x11-libs/gtk+:3[wayland]
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
