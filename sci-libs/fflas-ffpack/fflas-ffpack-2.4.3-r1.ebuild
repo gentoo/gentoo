@@ -19,7 +19,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="virtual/cblas
 	virtual/blas
 	virtual/lapack
-	dev-libs/gmp[cxx]
+	dev-libs/gmp[cxx(+)]
 	=sci-libs/givaro-4.1*"
 RDEPEND="${DEPEND}"
 
