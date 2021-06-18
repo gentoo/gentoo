@@ -33,8 +33,10 @@
 # @DESCRIPTION:
 # A string containing the directory of the target kernel sources. The default value is
 # "/usr/src/linux"
+KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
 
 # @ECLASS-VARIABLE: CONFIG_CHECK
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing a list of .config options to check for before
 # proceeding with the install.
@@ -57,6 +59,7 @@
 # sources.
 
 # @ECLASS-VARIABLE: ERROR_<CFG>
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string containing the error message to display when the check against CONFIG_CHECK
 # fails. <CFG> should reference the appropriate option used in CONFIG_CHECK.
@@ -64,6 +67,7 @@
 #   e.g.: ERROR_MTRR="MTRR exists in the .config but shouldn't!!"
 
 # @ECLASS-VARIABLE: KBUILD_OUTPUT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A string passed on commandline, or set from the kernel makefile. It contains the directory
 # which is to be used as the kernel object directory.
@@ -72,35 +76,43 @@
 # set by hand. These are as follows:
 
 # @ECLASS-VARIABLE: KV_FULL
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the full kernel version. ie: 2.6.9-gentoo-johnm-r1
 
 # @ECLASS-VARIABLE: KV_MAJOR
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel major version. ie: 2
 
 # @ECLASS-VARIABLE: KV_MINOR
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel minor version. ie: 6
 
 # @ECLASS-VARIABLE: KV_PATCH
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's an integer containing the kernel patch version. ie: 9
 
 # @ECLASS-VARIABLE: KV_EXTRA
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel EXTRAVERSION. ie: -gentoo
 
 # @ECLASS-VARIABLE: KV_LOCAL
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel LOCALVERSION concatenation. ie: -johnm
 
 # @ECLASS-VARIABLE: KV_DIR
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel source directory, will be null if
 # KERNEL_DIR is invalid.
 
 # @ECLASS-VARIABLE: KV_OUT_DIR
+# @INTERNAL
 # @DESCRIPTION:
 # A read-only variable. It's a string containing the kernel object directory, will be KV_DIR unless
 # KBUILD_OUTPUT is used. This should be used for referencing .config.
@@ -112,11 +124,6 @@ inherit toolchain-funcs
 EXPORT_FUNCTIONS pkg_setup
 
 IUSE="kernel_linux"
-
-# Overwritable environment Var's
-# ---------------------------------------
-KERNEL_DIR="${KERNEL_DIR:-${ROOT%/}/usr/src/linux}"
-
 
 # Bug fixes
 # fix to bug #75034
