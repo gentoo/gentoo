@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit vdr-plugin-2
+inherit toolchain-funcs vdr-plugin-2
 
 GENTOO_VDR_CONDITIONAL=yes
 
@@ -43,7 +43,6 @@ COMMON_DEPEND="
 	)"
 
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	sys-kernel/linux-headers
 	nls? ( sys-devel/gettext )
 	xine? (
@@ -53,6 +52,7 @@ DEPEND="${COMMON_DEPEND}
 		)
 	)"
 RDEPEND="${COMMON_DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE=" || ( vdr xine )"
 
@@ -62,7 +62,7 @@ pkg_setup() {
 	vdr-plugin-2_pkg_setup
 
 	if use xine; then
-		XINE_PLUGIN_DIR=$(pkg-config --variable=plugindir libxine)
+		XINE_PLUGIN_DIR=$($(tc-getPKG_CONFIG) --variable=plugindir libxine)
 		[ -z "${XINE_PLUGIN_DIR}" ] && die "Could not find xine plugin dir"
 	fi
 }
