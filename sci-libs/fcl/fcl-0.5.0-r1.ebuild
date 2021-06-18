@@ -25,9 +25,9 @@ SLOT="0"
 IUSE="cpu_flags_x86_sse"
 
 RDEPEND="
-	sci-libs/octomap
+	sci-libs/octomap:=
 	sci-libs/flann
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	sci-libs/libccd"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
