@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/libtorrent-libtorrent-${PV}"
 
 RDEPEND="
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	virtual/libiconv
 	examples? ( !net-p2p/mldonkey )
 	python? (

@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+dht debug gnutls python ssl test"
 
 RESTRICT="!test? ( test ) test" # not yet fixed
-RDEPEND="dev-libs/boost:=[threads]"
+RDEPEND="dev-libs/boost:=[threads(+)]"
 DEPEND="
 	python? (
 		${PYTHON_DEPS}
