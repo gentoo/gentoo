@@ -21,7 +21,9 @@ IUSE="static-libs"
 DEPEND="sys-libs/ncurses:=
 	app-arch/sharutils
 	net-mail/mailbase"
-RDEPEND="app-misc/mime-types
+RDEPEND="
+	${DEPEND}
+	app-misc/mime-types
 	sys-apps/debianutils
 	!app-misc/run-mailcap"
 BDEPEND="virtual/pkgconfig"
