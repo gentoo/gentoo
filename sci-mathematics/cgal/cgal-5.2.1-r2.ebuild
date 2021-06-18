@@ -15,12 +15,12 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0/14"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
 	dev-cpp/eigen
-	dev-libs/boost:=[threads]
+	dev-libs/boost:=[threads(+)]
 	dev-libs/mpfr:=
 	sys-libs/zlib
 	x11-libs/libX11:=
@@ -28,7 +28,7 @@ RDEPEND="
 	virtual/opengl:=
 	gmp? ( dev-libs/gmp:=[cxx(+)] )
 	mpfi? ( sci-libs/mpfi )
-	ntl? ( dev-libs/ntl )
+	ntl? ( dev-libs/ntl:= )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
@@ -55,7 +55,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCGAL_INSTALL_LIB_DIR="$(get_libdir)"
 		-DCGAL_INSTALL_CMAKE_DIR="$(get_libdir)/cmake/CGAL"
-		-DCGAL_HEADER_ONLY=OFF
+		-DCGAL_HEADER_ONLY=ON
 		-DWITH_LEDA=OFF
 		-DWITH_Eigen3=ON
 		-DWITH_ZLIB=ON
