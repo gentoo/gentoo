@@ -148,7 +148,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
 PATCHES=(
 	"${FILESDIR}"/1.47.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.49.0-gentoo-musl-target-specs.patch
-	"${FILESDIR}"/1.53.0-rustversion.patch #https://github.com/dtolnay/rustversion/issues/28
+	"${FILESDIR}"/1.53.0-rustversion-1.0.5.patch # https://github.com/rust-lang/rust/pull/86425
 )
 
 S="${WORKDIR}/${MY_P}-src"
