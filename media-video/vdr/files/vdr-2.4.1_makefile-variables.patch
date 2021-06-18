@@ -2,9 +2,8 @@ we change some variables in the Makefile
 for a better handling in gentoo ebuild
 
 Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 22 Dec 2019 )
-diff -Naur vdr-2.4.1.orig/Makefile vdr-2.4.1/Makefile
---- vdr-2.4.1.orig/Makefile	2019-12-22 00:51:31.000000000 +0100
-+++ vdr-2.4.1/Makefile	2019-12-22 00:53:34.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -54,7 +54,7 @@
  
  # Output control
