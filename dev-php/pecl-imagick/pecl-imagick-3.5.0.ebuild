@@ -24,3 +24,9 @@ DEPEND="${RDEPEND}
 	test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,svg,truetype,xml] )"
 
 PHP_EXT_ECONF_ARGS="--with-imagick=${EPREFIX}/usr"
+
+src_install() {
+	php-ext-pecl-r3_src_install
+
+	php-ext-source-r3_addtoinifiles "imagick.skip_version_check" "1"
+}
