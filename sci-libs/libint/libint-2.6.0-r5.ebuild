@@ -16,7 +16,7 @@ IUSE="static-libs doc"
 
 DEPEND="
 	dev-libs/boost
-	dev-libs/gmp[cxx]
+	dev-libs/gmp[cxx(+)]
 	doc? (
 		dev-texlive/texlive-latex
 		dev-tex/latex2html
