@@ -45,15 +45,12 @@ RDEPEND="${DEPEND}
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
-	!mail-mta/mini-qmail
 	!mail-mta/msmtp[mta]
 	!mail-mta/netqmail
 	!mail-mta/nullmailer
-	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
 	!mail-mta/opensmtpd
 	!mail-mta/ssmtp[mta]
-	!net-mail/fastforward
 	selinux? ( sec-policy/selinux-postfix )"
 
 REQUIRED_USE="ldap-bind? ( ldap sasl )"
