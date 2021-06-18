@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,6 +21,6 @@ RESTRICT="!test? ( test )"
 # https://github.com/mkoppanen/imagick#openmp
 RDEPEND=">=media-gfx/imagemagick-6.2.4:=[-openmp]"
 DEPEND="${RDEPEND}
-	test? ( >=media-gfx/imagemagick-6.2.4:=[jpeg,png,svg,truetype,xml] )"
+	test? ( >=media-gfx/imagemagick-6.2.4:=[hdri,jpeg,png,svg,truetype,xml] )"
 
 PHP_EXT_ECONF_ARGS="--with-imagick=${EPREFIX}/usr"
