@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	sci-mathematics/glpk:=[gmp]
-	dev-libs/gmp:0=[cxx]"
+	dev-libs/gmp:0=[cxx(+)]"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.3.2-gold.patch )
