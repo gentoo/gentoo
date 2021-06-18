@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
-	dev-libs/libgcrypt:0
-	dev-libs/boost[threads]
+	dev-libs/libgcrypt:=
+	dev-libs/boost:=[threads(+)]
 	>=media-video/vdr-1.7.34
 "
 RDEPEND="${DEPEND}"
