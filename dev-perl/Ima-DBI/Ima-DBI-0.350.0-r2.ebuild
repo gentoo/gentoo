@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=PERRIN
-MODULE_VERSION=0.35
+DIST_AUTHOR=PERRIN
+DIST_VERSION=0.35
 inherit perl-module
 
 DESCRIPTION="Add contextual fetches to DBI"
@@ -13,11 +13,13 @@ SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc ppc64 sparc x86 ~x86-solaris"
 IUSE=""
 
-RDEPEND="dev-perl/DBI
+RDEPEND="
+	dev-perl/DBI
 	dev-perl/Class-WhiteHole
 	dev-perl/DBIx-ContextualFetch
 	virtual/perl-Test-Simple
-	>=dev-perl/Class-Data-Inheritable-0.02"
-DEPEND="${RDEPEND}"
+	>=dev-perl/Class-Data-Inheritable-0.02
+"
+BDEPEND="${RDEPEND}"
 
-SRC_TEST="do"
+PERL_RM_FILES=( t/pod-coverage.t )
