@@ -71,7 +71,7 @@ index f185b69..8acf1ab 100644
 -AC_CHECK_HEADERS(libconfig.h, , AC_MSG_ERROR(libconfig header (libconfig.h) not found. You may need to install a libconfig development package.))
  AC_CHECK_HEADERS(sys/acl.h, , AC_MSG_ERROR(libacl header (sys/acl.h) not found. You may need to install a libacl development package.))
  
-+PKG_CHECK_MODULES([ncurses], [ncurses])
++PKG_CHECK_MODULES([ncurses], [ncursesw ncurses])
 +PKG_CHECK_MODULES([libconfig], [libconfig])
 +
  AC_ARG_WITH([selinux], AS_HELP_STRING([--with-selinux], [Build with selinux library (default: disabled)]))
