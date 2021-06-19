@@ -5,14 +5,14 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8,9,10} )
 
-inherit cmake python-any-r1 llvm
+inherit cmake llvm python-any-r1
 
 LLVM_MAX_SLOT=12
 
 DESCRIPTION="Intel SPMD Program Compiler"
 HOMEPAGE="https://ispc.github.io/"
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ispc/ispc.git"
 else
@@ -27,15 +27,12 @@ IUSE="examples"
 RDEPEND="<sys-devel/clang-13:="
 DEPEND="
 	${RDEPEND}
-	${PYTHON_DEPS}
-	"
+	${PYTHON_DEPS}"
 BDEPEND="
 	sys-devel/bison
-	sys-devel/flex
-	"
+	sys-devel/flex"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.13.0-cmake-gentoo-release.patch"
 	"${FILESDIR}/${PN}-9999-llvm.patch"
 )
 
@@ -50,7 +47,7 @@ src_prepare() {
 		# On amd64 systems, build system enables x86/i686 build too.
 		# This ebuild doesn't even have multilib support, nor need it.
 		# https://bugs.gentoo.org/730062
-		elog "Removing auto-x86 build on amd64"
+		ewarn "Removing auto-x86 build on amd64"
 		sed -i -e 's:set(target_arch "i686"):return():' cmake/GenerateBuiltins.cmake || die
 	fi
 
@@ -59,25 +56,24 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		"-DARM_ENABLED=$(usex arm)"
-		"-DCMAKE_SKIP_RPATH=ON"
-		"-DISPC_NO_DUMPS=ON"
+		-DARM_ENABLED=$(usex arm)
+		-DCMAKE_SKIP_RPATH=ON
+		-DISPC_NO_DUMPS=ON
 	)
 	cmake_src_configure
-}
-
-src_install() {
-	dobin "${BUILD_DIR}"/bin/ispc
-	dodoc README.md
-
-	if use examples; then
-		insinto "/usr/share/doc/${PF}/examples"
-		docompress -x "/usr/share/doc/${PF}/examples"
-		doins -r "${S}"/examples/*
-	fi
 }
 
 src_test() {
 	# Inject path to prevent using system ispc
 	PATH="${BUILD_DIR}/bin:${PATH}" ${EPYTHON} ./run_tests.py || die "Testing failed under ${EPYTHON}"
+}
+
+src_install() {
+	dobin "${BUILD_DIR}"/bin/ispc
+	einstalldocs
+
+	if use examples; then
+		docompress -x /usr/share/doc/${PF}/examples
+		dodoc -r examples
+	fi
 }
