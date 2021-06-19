@@ -5,12 +5,18 @@
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
 # @BLURB: functions to query common info about the toolchain
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # The toolchain-funcs aims to provide a complete suite of functions
 # for gleaning useful information about the toolchain and to simplify
 # ugly things like cross-compiling and multilib.  All of this is done
 # in such a way that you can rely on the function always returning
 # something sane.
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_TOOLCHAIN_FUNCS_ECLASS} ]]; then
 _TOOLCHAIN_FUNCS_ECLASS=1
