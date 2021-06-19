@@ -20,7 +20,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
 
 KEYWORDS="~amd64"
-IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua ocaml +perl python ruby selinux static-libs systemtap test"
+IUSE="doc erlang +fuse gtk inspect-icons introspection libvirt lua +ocaml +perl python ruby selinux static-libs systemtap test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
@@ -152,8 +152,10 @@ src_configure() {
 	# configured kernel.
 	export vmchannel_test=no
 
-	# bug #703118
+	# Give a nudge to help find libxcrypt[-system]
+	# bug #703118, bug #789354
 	append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/xcrypt"
+	append-ldflags "-Wl,-R${ESYSROOT}/usr/$(get_libdir)/xcrypt"
 
 	econf \
 		$(use_with libvirt) \
@@ -202,7 +204,7 @@ pkg_postinst() {
 	fi
 
 	if ! use ocaml ; then
-		einfo "OCaml based tools and bindings (sysprep, ...) NOT installed"
+		einfo "OCaml based tools and bindings (virt-resize, virt-sparsify, virt-sysprep, ...) NOT installed"
 	fi
 
 	if ! use perl ; then

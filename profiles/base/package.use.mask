@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (2021-06-14)
+# Avoid running failing tests by default.
+sys-kernel/dracut test
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-31)
 # Requires Python 3.7 and old SciPy.
 <sys-cluster/ceph-16 diskprediction
@@ -266,6 +270,7 @@ dev-python/statsmodels doc
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-11-07)
 # Collides with sys-libc/glibc[crypt]
+# (NOTE: Likely needs to be moved to musl + uclibc profiles, not dropped entirely)
 sys-libs/libxcrypt split-usr system
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-05)

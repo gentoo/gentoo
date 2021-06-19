@@ -12,7 +12,7 @@ SRC_URI="https://mosquitto.org/files/source/${P}.tar.gz"
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 IUSE="bridge examples +persistence +srv ssl tcpd test websockets"
 RESTRICT="!test? ( test )"
 
@@ -96,10 +96,28 @@ src_install() {
 	doinitd "${FILESDIR}"/mosquitto
 	insinto /etc/mosquitto
 	doins mosquitto.conf
+	insinto /usr/share/mosquitto
+	doins misc/letsencrypt/mosquitto-copy.sh
 	systemd_dounit "${FILESDIR}/mosquitto.service"
 
 	if use examples; then
 		docompress -x "/usr/share/doc/${PF}/examples"
 		dodoc -r examples
 	fi
+}
+
+pkg_postinst() {
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ $(ver_cut 1 "$v") -lt 2 ]]; then
+			elog
+			elog "Please read the migration guide at:"
+			elog "https://mosquitto.org/documentation/migrating-to-2-0/"
+			elog
+			elog "If you use Lets Encrypt TLS certificates, take note of"
+			elog "the changes required to run the daemon as the unprivileged"
+			elog "mosquitto user. The mosquitto-copy.sh script has been"
+			elog "installed to /usr/share/mosquitto/ for your convenience."
+			elog
+		fi
+	done
 }

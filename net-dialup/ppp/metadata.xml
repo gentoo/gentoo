@@ -11,8 +11,6 @@
   </maintainer>
   <use>
     <flag name="activefilter">Enables active filter support</flag>
-    <flag name="atm">Enables ATM (Asynchronous Transfer Mode) protocol
-    support</flag>
     <flag name="dhcp">Installs PPP DHCP client plugin for IP address allocation
     by a DHCP server (see http://www.netservers.co.uk/gpl/)</flag>
     <flag name="eap-tls">Enables support for Extensible Authentication
@@ -21,7 +19,6 @@
     <flag name="gtk">Installs GTK+ password prompting program that can be used
     by passprompt.so PPP plugin for reading the password from a X11 input
     terminal</flag>
-    <flag name="ipv6">Enables support for IP version 6</flag>
     <flag name="radius">Enables RADIUS support</flag>
   </use>
   <upstream>

@@ -1,2 +1,0 @@
-KERNEL=="kvm", GROUP="kvm", MODE="0660"
-KERNEL=="vhost-net", GROUP="kvm", MODE="0660", OPTIONS+="static_node=vhost-net"

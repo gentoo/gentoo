@@ -5,6 +5,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="sourceforge">cracklib</remote-id>
 		<remote-id type="github">cracklib/cracklib</remote-id>

@@ -1,0 +1,41 @@
+https://bugs.gentoo.org/787185
+
+From 9ea918cfdfcd99fbcac64a820ddbaefb562c11a0 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 14 Jun 2021 15:06:58 +0000
+Subject: [PATCH] src/help.h: Rename __help identifier
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+__help is reserved, so we need to rename it to fix a build failure with GCC 11:
+
+	"In addition to the names documented in this manual, reserved names include all
+	external identifiers (global functions and variables) that begin with an
+	underscore (‘_’) and all identifiers regardless of use that begin with either
+	two underscores or an underscore followed by a capital letter are reserved names."
+	-- glibc manual, 1.3.3 Reserved Names
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ src/help.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/help.h b/src/help.h
+index ae0954b..af7f178 100644
+--- a/src/help.h
++++ b/src/help.h
+@@ -5,8 +5,8 @@
+ * For more information, please visit https://dinisnoise.org/
+ */
+ 
+-#ifndef __help
+-#define __help
++#ifndef DIN_help
++#define DIN_help
+ #include <string>
+ #include <vector>
+ struct help {
+-- 
+2.32.0
+

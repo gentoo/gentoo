@@ -2,4 +2,4 @@
 # --locale switch to DICTD_OPTS, e. g. "--locale=en_US.utf8"
 DICTD_OPTS="-s "
 DICTDCONF=/etc/dict/dictd.conf
-DLIBDIR=/usr/lib/dict
+DLIBDIR=/usr/share/dict

@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/WayfireWM/wayfire-plugins-extra.git"
 else
 	SRC_URI="https://github.com/WayfireWM/wayfire-plugins-extra/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -21,8 +21,9 @@ SLOT="0"
 
 DEPEND="
 	dev-cpp/glibmm:2
-	>=gui-libs/wlroots-0.11.0
-	>=gui-wm/wayfire-${PV%.*}
+	>=gui-libs/wlroots-0.13.0:=
+	<gui-libs/wlroots-0.14.0:=
+	>=gui-wm/wayfire-0.7.0
 	x11-libs/cairo
 "
 RDEPEND="${DEPEND}"

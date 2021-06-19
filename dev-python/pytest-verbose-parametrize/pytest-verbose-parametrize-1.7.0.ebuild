@@ -22,11 +22,12 @@ RESTRICT="test"
 
 RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-BDEPEND="test? (
-	dev-python/coverage[${PYTHON_USEDEP}]
-	dev-python/mock[${PYTHON_USEDEP}]
-	dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-)"
+BDEPEND="dev-python/setuptools-git[${PYTHON_USEDEP}]
+	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0_collections-abc.patch

@@ -26,12 +26,12 @@ RDEPEND="acct-group/dnsdist
 	acct-user/dnsdist
 	>=dev-libs/boost-1.35:=
 	dev-libs/libedit:=
+	>=dev-libs/protobuf-3:=
 	dnscrypt? ( dev-libs/libsodium:= )
 	dnstap? ( dev-libs/fstrm:= )
 	doh? ( www-servers/h2o:=[libh2o] )
 	lmdb? ( dev-db/lmdb:= )
 	regex? ( dev-libs/re2:= )
-	remote-logging? ( >=dev-libs/protobuf-3:= )
 	snmp? ( net-analyzer/net-snmp:= )
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
@@ -44,9 +44,9 @@ RDEPEND="acct-group/dnsdist
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-gcc11-missing-include.patch
+)
 
 src_configure() {
 	econf \
@@ -57,7 +57,6 @@ src_configure() {
 		$(use_enable dnstap) \
 		$(use_with lmdb ) \
 		$(use_with regex re2) \
-		$(use_with remote-logging protobuf) \
 		$(use_with snmp net-snmp) \
 		$(use ssl && { echo "--enable-dns-over-tls" && use_with gnutls && use_with !gnutls libssl;} || echo "--without-gnutls --without-libssl") \
 		$(use_enable systemd) \

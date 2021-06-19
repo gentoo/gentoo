@@ -2,41 +2,30 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake flag-o-matic xdg
 
-DESCRIPTION="free Lemmings clone"
+inherit xdg cmake git-r3
+
+DESCRIPTION="Free Lemmings clone"
 HOMEPAGE="https://pingus.gitlab.io/"
-if [[ "${PV}" == *9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/pingus/pingus.git"
-else
-	SRC_URI="https://github.com/Pingus/pingus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
-LICENSE="GPL-3"
+EGIT_REPO_URI="https://gitlab.com/pingus/pingus.git"
+
+LICENSE="GPL-3+"
 SLOT="0"
-IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=
-	dev-libs/jsoncpp
-	media-libs/libpng:0=
+	dev-libs/jsoncpp:=
+	dev-libs/libfmt:=
+	dev-libs/libsigc++:2
+	media-libs/libmodplug
+	media-libs/libpng:=
 	media-libs/libsdl2[joystick,opengl,video]
-	media-libs/sdl2-image[png]
-	media-libs/sdl2-mixer[mod]
-	virtual/opengl
-"
-DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.6-noopengl.patch
-	"${FILESDIR}"/${P}-no_libexec.patch
-)
-
-src_prepare() {
-	sed '/find_package(Boost/s@ signals@@' -i CMakeLists.txt || die
-	cmake_src_prepare
-	strip-flags
-}
+	media-libs/libvorbis
+	media-libs/openal
+	media-libs/opusfile
+	media-libs/sdl2-image[jpeg,png]
+	media-sound/mpg123
+	virtual/opengl"
+DEPEND="
+	${RDEPEND}
+	dev-libs/boost
+	media-libs/glm"

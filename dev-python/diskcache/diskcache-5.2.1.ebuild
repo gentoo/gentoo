@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -18,11 +18,11 @@ S=${WORKDIR}/python-diskcache-${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~mips ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	test? (
-		>=dev-python/django-2.2[${PYTHON_USEDEP}]
+		<dev-python/django-3.2[${PYTHON_USEDEP}]
 	)
 "
 

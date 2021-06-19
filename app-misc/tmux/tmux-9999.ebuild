@@ -20,7 +20,7 @@ fi
 
 LICENSE="ISC"
 SLOT="0"
-IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
+IUSE="debug selinux utempter vim-syntax"
 
 DEPEND="
 	dev-libs/libevent:0=

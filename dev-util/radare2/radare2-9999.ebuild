@@ -28,7 +28,10 @@ RDEPEND="
 	dev-libs/capstone:0=
 	ssl? ( dev-libs/openssl:0= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-util/gperf
+"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {

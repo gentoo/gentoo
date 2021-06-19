@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">MegaMek/megamek</remote-id>
 		<remote-id type="sourceforge">megamek</remote-id>
 	</upstream>
 </pkgmetadata>

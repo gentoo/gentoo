@@ -43,6 +43,7 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-util/gdbus-codegen
 	>=dev-util/intltool-0.40.6
 	virtual/pkgconfig
 

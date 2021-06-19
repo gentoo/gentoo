@@ -11,7 +11,7 @@ SRC_URI="https://archive.org/download/dinisnoise_source_code/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+alsa jack"
 
 RDEPEND="
@@ -35,6 +35,7 @@ REQUIRED_USE="|| ( alsa jack )"
 PATCHES=(
 	"${FILESDIR}/${PN}-49.1-makefile.patch"
 	"${FILESDIR}/${PN}-48-fix-random-constants.patch"
+	"${FILESDIR}/${PN}-50.2-gcc11-rename-identifier.patch"
 )
 
 src_prepare() {

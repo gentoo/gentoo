@@ -29,6 +29,7 @@ DEPEND="
 	)
 "
 RDEPEND=""
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.1.9998.3407-unknown_configure_opt.patch"

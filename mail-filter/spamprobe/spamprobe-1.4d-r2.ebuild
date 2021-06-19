@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Fast, intelligent, automatic spam detector using Bayesian analysis"
 HOMEPAGE="http://spamprobe.sourceforge.net/"
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}+db-5.0.patch
 	"${FILESDIR}"/${P}-gcc47.patch
 	"${FILESDIR}"/${P}-giflib5.patch
+	"${FILESDIR}"/${P}-gcc11-const-comp.patch
 )
 
 src_configure() {
@@ -37,6 +38,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	insinto /usr/share/${PN}/contrib
 	doins contrib/*
 }

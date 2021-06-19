@@ -4,6 +4,7 @@
 EAPI=7
 
 JAVA_PKG_IUSE="doc source"
+MAVEN_ID="org.mockito:mockito-core:1.9.5"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -13,7 +14,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 x86"
 
 CDEPEND="
 	dev-java/ant-core:0

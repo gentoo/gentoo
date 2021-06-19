@@ -31,7 +31,7 @@ HOMEPAGE="https://csound.github.io/"
 LICENSE="LGPL-2.1 doc? ( FDL-1.2+ )"
 SLOT="0"
 IUSE="+alsa beats chua curl +cxx debug doc double-precision dssi examples
-fltk +fluidsynth hdf5 +image jack java keyboard linear lua mp3 nls osc portaudio
+fltk +fluidsynth hdf5 jack java keyboard linear lua mp3 nls osc portaudio
 portaudio portmidi pulseaudio python samples static-libs stk test +threads +utils
 vim-syntax websocket"
 
@@ -71,7 +71,6 @@ CDEPEND="
 	fluidsynth? ( media-sound/fluidsynth:= )
 	fltk? ( x11-libs/fltk:1[threads?] )
 	hdf5? ( sci-libs/hdf5 )
-	image? ( media-libs/libpng:0= )
 	jack? ( virtual/jack )
 	java? ( >=virtual/jdk-1.8:* )
 	keyboard? ( x11-libs/fltk:1[threads?] )
@@ -133,11 +132,9 @@ src_configure() {
 		-DBUILD_DSSI_OPCODES=$(usex dssi)
 		-DBUILD_EMUGENS_OPCODES=ON
 		-DBUILD_EXCITER_OPCODES=ON
-		-DBUILD_FAUST_OPCODES=OFF
 		-DBUILD_FLUID_OPCODES=$(usex fluidsynth)
 		-DBUILD_FRAMEBUFFER_OPCODES=ON
 		-DBUILD_HDF5_OPCODES=$(usex hdf5)
-		-DBUILD_IMAGE_OPCODES=$(usex image)
 		-DBUILD_INSTALLER=OFF
 		-DBUILD_JACK_OPCODES=$(usex jack)
 		-DBUILD_JAVA_INTERFACE=$(usex java)
@@ -152,7 +149,6 @@ src_configure() {
 		-DBUILD_PLATEREV_OPCODES=ON
 		-DBUILD_PVSGENDY_OPCODE=OFF
 		-DBUILD_PYTHON_INTERFACE=$(usex python)
-		-DBUILD_PYTHON_OPCODES=$(usex python)
 		-DBUILD_RELEASE=ON
 		-DBUILD_SCANSYN_OPCODES=OFF # this is not allowed to be redistributed: https://github.com/csound/csound/issues/1148
 		-DBUILD_SELECT_OPCODE=ON
@@ -202,10 +198,6 @@ src_configure() {
 		-DLUA_LIBRARY="$(lua_get_shared_lib)"
 		# LUA_MODULE_INSTALL_DIR omitted on purpose, csound Lua module links against liblua
 		# so it must NOT be installed into cmod_dir.
-	)
-
-	use python && mycmakeargs+=(
-		-DPYTHON_MODULE_INSTALL_DIR="$(python_get_sitedir)"
 	)
 
 	cmake_src_configure

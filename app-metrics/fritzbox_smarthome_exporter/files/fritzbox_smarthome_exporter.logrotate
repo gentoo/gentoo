@@ -1,0 +1,5 @@
+/var/log/fritzbox_smarthome_exporter/*.log {
+	missingok
+	notifempty
+	size 30k
+}

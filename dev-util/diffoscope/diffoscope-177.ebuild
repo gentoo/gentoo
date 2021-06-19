@@ -71,3 +71,19 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 # Presence if filemagic's magic.py breaks imports
 # of dev-python/python-magic: https://bugs.gentoo.org/716482
 RDEPEND+=" !dev-python/filemagic"
+
+distutils_enable_tests pytest
+
+python_test() {
+	local exclude=(
+		# test seems to use different tarball
+		tests/test_presenters.py::test_text_proper_indentation
+
+		# needs triage
+		tests/comparators/test_binary.py::test_with_compare_details_and_tool_not_found
+
+		# needs triage
+		tests/comparators/test_rlib.py::test_item3_deflate_llvm_bitcode
+	)
+	epytest ${exclude[@]/#/--deselect }
+}

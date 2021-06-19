@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source examples"
+MAVEN_ID="com.jcraft:jsch:0.1.55"
 
 inherit java-pkg-2 java-ant-2 java-osgi
 

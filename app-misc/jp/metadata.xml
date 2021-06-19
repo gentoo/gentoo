@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/pipebus/jpp/issues</bugs-to>
+		<changelog>https://github.com/pipebus/jpp/commits/master</changelog>
+		<remote-id type="github">pipebus/jpp</remote-id>
+	</upstream>
+	<use>
+		<flag name="jp">
+			Install jp which is the official jp CLI for JMESPath
+		</flag>
+		<flag name="jpp">
+			Install jpp which is an extended superset of the jp CLI for JMESPath
+		</flag>
+	</use>
+</pkgmetadata>

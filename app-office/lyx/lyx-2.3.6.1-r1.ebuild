@@ -15,11 +15,13 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.3.x/${MY_P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~x64-macos"
 IUSE="aspell cups debug dia dot enchant gnumeric html +hunspell +latex monolithic-build nls rcs rtf svg l10n_he"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# bc needed http://comments.gmane.org/gmane.editors.lyx.devel/137498 and bug #787839
 BDEPEND="
+	sys-devel/bc
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "

@@ -93,8 +93,8 @@ sys-kernel/vanilla-kernel initramfs
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-06)
 # Upstream plans to drop libcrypt.so.1/crypt.h from glibc
-# distribution and rely on external providers lke libxcrypt.
-# Gentoo will follow the suit but today we are not ready.
+# distribution and rely on external providers like libxcrypt.
+# Gentoo will follow suit but today we are not yet ready.
 # Unmask at your risk. Bug #699422 tracks the effort.
 sys-libs/glibc crypt
 

@@ -9,6 +9,7 @@
 		</maintainer>
 	</upstream>
 	<use>
+		<flag name="fonts">Install the fonts shipped with XScreenSaver that have clear licensing</flag>
 		<flag name="gdk-pixbuf">Include support for the <pkg>x11-libs/gdk-pixbuf</pkg> library in some demos, which will make it possible for them to read GIF, JPEG, and PNG files as well</flag>
 		<flag name="gdm">Use gdmflexiserver from <pkg>gnome-base/gdm</pkg> instead of <pkg>x11-misc/lightdm</pkg></flag>
 		<flag name="locking">Compile in support for locking the display</flag>

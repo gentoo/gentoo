@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 
@@ -20,7 +20,6 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/httpx-0.11[${PYTHON_USEDEP}]
-	<dev-python/httpx-0.18[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
@@ -40,6 +39,8 @@ python_prepare_all() {
 	# requires network
 	sed -i -e 's:test_bad_arguments_raises_error:_&:' \
 			tests/auth/expiring.py || die
+	# unpin
+	sed -i -e '/httpx/s:,<0[.]18::' setup.py || die
 
 	distutils-r1_python_prepare_all
 }

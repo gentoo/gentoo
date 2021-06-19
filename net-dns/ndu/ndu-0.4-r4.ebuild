@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,13 +12,14 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND="sys-apps/ed" # dnstouch calls ed to do the dirty work
 
 src_prepare() {
 	default
+
 	eapply "${FILESDIR}"/${P}-binary-locations.patch
+	eapply "${FILESDIR}"/${P}-fix-pointer-comparison-with-0.patch
 
 	# match our bind config
 	sed -e 's|0.0.127.in-addr.arpa|127.in-addr.arpa|g' -i ndu.conf || die
