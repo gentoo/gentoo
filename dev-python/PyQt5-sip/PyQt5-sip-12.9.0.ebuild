@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="sip extension module for PyQt5"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/ https://pypi.org/project/PyQt5-sip/"
 
 MY_P=${PN/-/_}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
