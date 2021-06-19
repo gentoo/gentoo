@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.18.16-rpath.patch
 	"${FILESDIR}"/${PN}-5.18.16-respect-TMPDIR.patch
 	"${FILESDIR}"/${PN}-5.18.16-make-4.3.patch
+	"${FILESDIR}"/${PN}-5.18.16-guile-3.patch
 )
 
 src_prepare() {
