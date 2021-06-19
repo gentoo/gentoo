@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1 multiprocessing
 
@@ -27,8 +27,8 @@ BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		!!dev-python/pytest-aiohttp
+		app-arch/brotli[python,${PYTHON_USEDEP}]
 		dev-python/async_generator[${PYTHON_USEDEP}]
-		dev-python/brotlipy[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
@@ -39,6 +39,10 @@ BDEPEND="
 		dev-python/trustme[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/aiohttp-3.7.4-brotli.patch
+)
 
 DOCS=( CHANGES.rst CONTRIBUTORS.txt README.rst )
 
