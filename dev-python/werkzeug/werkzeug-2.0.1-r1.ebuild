@@ -37,6 +37,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py310.patch
+	"${FILESDIR}"/${P}-test-warning.patch
 )
 
 python_test() {
