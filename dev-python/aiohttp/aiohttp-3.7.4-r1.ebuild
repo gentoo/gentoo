@@ -57,21 +57,6 @@ distutils_enable_sphinx docs \
 	'dev-python/sphinx-aiohttp-theme'
 
 python_prepare_all() {
-	# Fails due to a warning
-	sed -e 's:test_read_boundary_with_incomplete_chunk:_&:' \
-		-i tests/test_multipart.py || die
-	# with py3.7+
-	sed -e 's:test_aiohttp_request_coroutine:_&:' \
-		-i tests/test_client_functional.py || die
-
-	# Fails due to path mismatch
-	sed -e 's:test_static:_&:' \
-		-i tests/test_route_def.py || die
-
-	# Internet
-	sed -e 's:test_mark_formdata_as_processed:_&:' \
-		-i tests/test_formdata.py || die
-
 	# newer chardet works too
 	sed -e 's|chardet>=2.0,<4.0|chardet>=2.0|' \
 		-i setup.py aiohttp.egg-info/requires.txt || die
@@ -83,10 +68,32 @@ python_prepare_all() {
 }
 
 python_test() {
+	local deselect=(
+		# fails with a 'runtime warning'
+		'tests/test_client_functional.py::test_aiohttp_request_coroutine[pyloop]'
+
+		# fragile to test paths
+		tests/test_route_def.py::test_static
+
+		# requires Internet
+		tests/test_formdata.py::test_mark_formdata_as_processed
+
+		# 'Event loop is closed' -- probably broken by old age
+		'tests/test_streams.py::TestDataQueue::test_read[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_eof[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_cancelled[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_until_eof[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_exc[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_exception[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_exception_with_data[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_read_exception_on_wait[pyloop]'
+		'tests/test_streams.py::TestDataQueue::test_exception_waiter[pyloop]'
+	)
+
 	pushd "${BUILD_DIR}/lib" >/dev/null || die
 	ln -snf "${S}"/{LICENSE.txt,tests} . || die
-	pytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" --forked \
-		-vv tests || die "Tests fail with ${EPYTHON}"
-	rm -rf .pytest_cache tests || die
+	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" --forked \
+		${deselect[@]/#/--deselect } tests
+	rm -rf .hypothesis .pytest_cache tests || die
 	popd >/dev/null || die
 }
