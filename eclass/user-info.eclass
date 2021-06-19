@@ -1,11 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user-info.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Read-only access to user and group information
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_USER_INFO_ECLASS} ]]; then
 _USER_INFO_ECLASS=1
