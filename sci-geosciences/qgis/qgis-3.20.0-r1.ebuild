@@ -22,7 +22,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml serial"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
@@ -96,6 +96,7 @@ COMMON_DEPEND="
 		')
 	)
 	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
+	serial? ( >=dev-qt/qtserialport-${QT_MIN_VER}:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qttest-${QT_MIN_VER}:5
@@ -145,6 +146,7 @@ src_configure() {
 		-DWITH_BINDINGS=$(usex python)
 		-DWITH_CUSTOM_WIDGETS=$(usex python)
 		-DWITH_QUICK=$(usex qml)
+		-DWITH_QT5SERIALPORT=$(usex serial)
 		-DWITH_QTWEBKIT=OFF
 	)
 
