@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cannadic.eclass
@@ -6,40 +6,33 @@
 # cjk@gentoo.org
 # @AUTHOR:
 # Mamoru KOMACHI <usata@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Function for Canna compatible dictionaries
 # @DESCRIPTION:
 # The cannadic eclass is used for installation and setup of Canna
-# compatible dictionaries within the Portage system.
+# compatible dictionaries.
 
-inherit eutils
+case ${EAPI} in
+	7) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
 
-EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_postrm src_install
+EXPORT_FUNCTIONS src_install pkg_postinst pkg_postrm
 
-HOMEPAGE="http://canna.osdn.jp/"		# you need to change this!
+if [[ -z ${_CANNADIC_ECLASS} ]]; then
+_CANNADIC_ECLASS=1
+
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-DICSDIRFILE="${FILESDIR}/*.dics.dir"
-CANNADICS="${CANNADICS}"			# (optional)
-
 # You don't need to modify these
-CANNADIC_CANNA_DIR="${EROOT:-${ROOT}}"var/lib/canna/dic/canna
-CANNADIC_DICS_DIR="${EROOT:-${ROOT}}"var/lib/canna/dic/dics.d
-readonly CANNADIC_CANNA_DIR CANNADIC_DICS_DIR
-
-# @FUNCTION: cannadic_pkg_setup
-# @DESCRIPTION:
-# Sets up ${CANNADIC_CANNA_DIR}
-cannadic_pkg_setup() {
-	keepdir "${CANNADIC_CANNA_DIR}"
-	fowners bin:bin "${CANNADIC_CANNA_DIR}"
-	fperms 0775 "${CANNADIC_CANNA_DIR}"
-}
+readonly _CANNADIC_CANNA_DIR="/var/lib/canna/dic/canna"
+readonly _CANNADIC_DICS_DIR="/var/lib/canna/dic/dics.d"
 
 # @FUNCTION: cannadic-install
 # @DESCRIPTION:
-# Installs dictionaries to ${CANNADIC_CANNA_DIR}
+# Installs dictionaries to ${EPREFIX}/var/lib/canna/dic/canna
 cannadic-install() {
-	insinto "${CANNADIC_CANNA_DIR}"
+	insinto ${_CANNADIC_CANNA_DIR}
 	insopts -m 0664 -o bin -g bin
 	doins "${@}"
 }
@@ -48,8 +41,8 @@ cannadic-install() {
 # @DESCRIPTION:
 # Installs dics.dir from ${DICSDIRFILE}
 dicsdir-install() {
-	insinto "${CANNADIC_DICS_DIR}"
-	doins "${DICSDIRFILE}"
+	insinto ${_CANNADIC_DICS_DIR}
+	doins ${DICSDIRFILE}
 }
 
 # @FUNCTION: cannadic_src_install
@@ -57,14 +50,18 @@ dicsdir-install() {
 # Installs all dictionaries under ${WORKDIR}
 # plus dics.dir and docs
 cannadic_src_install() {
+	keepdir ${_CANNADIC_CANNA_DIR}
+	fowners bin:bin ${_CANNADIC_CANNA_DIR}
+	fperms 0775 ${_CANNADIC_CANNA_DIR}
+
 	local f
 	for f in *.c[btl]d *.t; do
-		if [[ -s "${f}" ]]; then
+		if [[ -s ${f} ]]; then
 			cannadic-install "${f}"
 		fi
 	done 2> /dev/null
 
-	dicsdir-install || die
+	dicsdir-install
 
 	einstalldocs
 }
@@ -83,19 +80,20 @@ update-cannadic-dir() {
 	einfo
 
 	# write new dics.dir file in case we are interrupted
-	cat <<-EOF > "${CANNADIC_CANNA_DIR}"/dics.dir.update-new
-	# dics.dir -- automatically generated file by Portage.
-	# DO NOT EDIT BY HAND.
+	cat <<-EOF > "${EROOT}${_CANNADIC_CANNA_DIR}"/dics.dir.update-new || die
+		# dics.dir -- automatically generated file by Portage.
+		# DO NOT EDIT BY HAND.
 	EOF
 
 	local f
-	for f in "${CANNADIC_DICS_DIR}"/*.dics.dir; do
-		echo "# ${f}" >> "${CANNADIC_CANNA_DIR}"/dics.dir.update-new
-		cat "${f}" >> "${CANNADIC_CANNA_DIR}"/dics.dir.update-new
+	for f in "${EROOT}${_CANNADIC_DICS_DIR}"/*.dics.dir; do
+		echo "# ${f}" >> "${EROOT}${_CANNADIC_CANNA_DIR}"/dics.dir.update-new || die
+		cat "${f}" >> "${EROOT}${_CANNADIC_CANNA_DIR}"/dics.dir.update-new || die
 		einfo "Added ${f}."
 	done
 
-	mv "${CANNADIC_CANNA_DIR}"/dics.dir.update-new "${CANNADIC_CANNA_DIR}"/dics.dir
+	mv "${EROOT}${_CANNADIC_CANNA_DIR}"/dics.dir.update-new \
+		"${EROOT}${_CANNADIC_CANNA_DIR}"/dics.dir || die
 
 	einfo
 	einfo "Done."
@@ -106,36 +104,47 @@ update-cannadic-dir() {
 # @DESCRIPTION:
 # Updates dics.dir and print out notice after install
 cannadic_pkg_postinst() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	update-cannadic-dir
 
-	einfo
-	einfo "Please restart cannaserver to fit the changes."
+	einfo "Please restart cannaserver for changes to propagate."
 	einfo "You need to modify your config file (~/.canna) to enable dictionaries."
 
-	if [[ -n "${CANNADICS}" ]]; then
-		einfo "e.g) add $(for d in ${CANNADICS}; do echo -n "\"${d}\" "; done)to section use-dictionary()."
-		einfo "For details, see documents under /usr/share/doc/${PF}."
+	if [[ -n ${CANNADICS} ]]; then
+		einfo "e.g) add"
+		einfo
+		einfo "  $(IFS=' ' ; echo ${CANNADICS[*]})"
+		einfo
+		einfo "to section use-dictionary()."
+		einfo "For details, see documents under ${EROOT}/usr/share/doc/${PF}."
 	fi
 
-	einfo "If you do not have ~/.canna, you can find sample files in /usr/share/canna."
+	einfo "If you do not have ~/.canna, you can find sample files in ${EROOT}/usr/share/canna."
 	ewarn "If you are upgrading from existing dictionary, you may need to recreate"
 	ewarn "user dictionary if you have one."
-	einfo
 }
 
 # @FUNCTION: cannadic_pkg_postrm
 # @DESCRIPTION:
 # Updates dics.dir and print out notice after uninstall
 cannadic_pkg_postrm() {
+	debug-print-function ${FUNCNAME} "${@}"
+
 	update-cannadic-dir
 
-	einfo
-	einfo "Please restart cannaserver to fit changes."
+	einfo "Please restart cannaserver for changes to propagate."
 	einfo "and modify your config file (~/.canna) to disable dictionary."
 
-	if [[ -n "${CANNADICS}" ]]; then
-		einfo "e.g) delete $(for d in ${CANNADICS}; do echo -n "\"${d}\" "; done)from section use-dictionary()."
+	if [[ -n ${CANNADICS} ]]; then
+		einfo "e.g) delete"
+		einfo
+		einfo "  $(IFS=' ' ; echo ${CANNADICS[*]})"
+		einfo
+		einfo "from section use-dictionary()."
 	fi
 
 	einfo
 }
+
+fi
