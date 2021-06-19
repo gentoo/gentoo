@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=LBROCARD
-MODULE_VERSION=2.03
-inherit perl-module eutils
+DIST_AUTHOR=LBROCARD
+DIST_VERSION=2.03
+inherit perl-module
 
 DESCRIPTION="Interface to the Imlib2 image library"
 
@@ -16,14 +16,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=media-libs/imlib2-1"
 DEPEND="${RDEPEND}
+"
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.28
 	test? (
 		>=media-libs/imlib2-1[jpeg,png]
-	)"
+	)
+"
 
-SRC_TEST=do
-
-src_test() {
-	perl_rm_files t/pod.t t/pod_coverage.t
-	perl-module_src_test
-}
+PERL_RM_FILES=( t/pod.t t/pod_coverage.t )
