@@ -119,8 +119,7 @@ src_install() {
 	fi
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins doc/man/guide/tex/canna.{dvi,ps,pdf}
+		dodoc doc/man/guide/tex/canna.{dvi,ps,pdf}
 	fi
 
 	# for backward compatibility
