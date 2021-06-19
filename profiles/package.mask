@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2021-06-19)
+# Unmaintained, open security bug.
+# Removal on 2021-07-19.  Bug #717794.
+net-misc/netkit-rsh
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-19)
 # Conflicts with app-arch/brotli[python].  Discontinued in favor
 # of dev-python/brotlicffi.  No revdeps remain.
