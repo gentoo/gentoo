@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-Wformat.patch
 	"${FILESDIR}"/${PN}-Wformat-security.patch
 )
+
 DOCS="*CHANGES* ChangeLog INSTALL* README* RKCCONF* WHATIS*"
 
 src_prepare() {

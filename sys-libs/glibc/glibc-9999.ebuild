@@ -941,6 +941,11 @@ glibc_do_configure() {
 		# -march= option tricks build system to infer too
 		# high ISA level: https://sourceware.org/PR27318
 		libc_cv_include_x86_isa_level=no
+		# Explicit override of https://sourceware.org/PR27991
+		# exposes a bug in glibc's configure:
+		# https://sourceware.org/PR27991
+		libc_cv_have_x86_lahf_sahf=no
+		libc_cv_have_x86_movbe=no
 
 		${EXTRA_ECONF}
 	)

@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_PN} ${PV}"
 
 LICENSE="netlogo GPL-2 LGPL-2.1 LGPL-3 BSD Apache-2.0"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 RDEPEND="
 	>=virtual/jre-1.8

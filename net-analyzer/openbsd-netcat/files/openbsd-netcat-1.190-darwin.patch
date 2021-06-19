@@ -34,50 +34,6 @@ index a0fb51b..bbb5dd1 100644
  
  #include "atomicio.h"
  
-@@ -240,6 +243,43 @@ static int connect_with_timeout(int fd, const struct sockaddr *sa,
- 
- static void quit();
- 
-+static char* strtonumerrs[] = {
-+	"too large",
-+	"too small",
-+	"invalid"
-+};
-+
-+static long long
-+strtonum(
-+		const char *nptr,
-+		long long minval,
-+		long long maxval,
-+		const char **errstr)
-+{
-+	long long val;
-+
-+	while (*nptr != '\0' && isspace(*nptr))
-+		nptr++;
-+	if (*nptr == '\0') {
-+		if (errstr != NULL)
-+			*errstr = strtonumerrs[2];
-+		return 0;
-+	}
-+	val = atoll(nptr);
-+	if (val < minval) {
-+		if (errstr != NULL)
-+			*errstr = strtonumerrs[1];
-+		return 0;
-+	}
-+	if (val > maxval) {
-+		if (errstr != NULL)
-+			*errstr = strtonumerrs[0];
-+		return 0;
-+	}
-+	*errstr = NULL;
-+	return val;
-+}
-+
- int
- main(int argc, char *argv[])
- {
 @@ -814,9 +814,8 @@
  # endif
  			} else {

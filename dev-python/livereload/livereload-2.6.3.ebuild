@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-
+PYTHON_COMPAT=( python3_{7..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -12,6 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Python LiveReload is an awesome tool for web developers"
 HOMEPAGE="https://github.com/lepture/python-livereload"
 SRC_URI="https://github.com/lepture/python-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/python-${P}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,8 +23,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "
-
-S="${WORKDIR}/python-${P}"
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/flask-sphinx-themes

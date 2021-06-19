@@ -20,9 +20,10 @@ RDEPEND="
 	xinerama? ( x11-libs/libXinerama )
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+BDEPEND="virtual/pkgconfig"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.9-gentoo.patch
 )

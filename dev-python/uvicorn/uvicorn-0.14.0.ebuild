@@ -42,3 +42,12 @@ python_prepare_all() {
 		-i tests/supervisors/test_reload.py
 	distutils-r1_python_prepare_all
 }
+
+python_test() {
+	local deselect=(
+		# requires python-dotenv that's not keyworded everywhere yet
+		# see 0.14.0-r1
+		tests/test_config.py::test_env_file
+	)
+	epytest ${deselect[@]/#/--deselect }
+}

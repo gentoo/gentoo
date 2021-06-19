@@ -23,7 +23,7 @@ IUSE=""
 
 DEPEND="media-sound/pulseaudio:="
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="virtual/pkgconfig"
 
 src_compile() {
 	$(tc-getCC) -o fsync-mdc1200-decode ${CFLAGS} ${LDFLAGS} demod.c fsync_decode.c mdc_decode.c $($(tc-getPKG_CONFIG) --cflags --libs libpulse-simple)

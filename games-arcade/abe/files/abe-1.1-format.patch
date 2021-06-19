@@ -1,5 +1,7 @@
---- a/src/MapIO.c.orig	2005-03-05 09:20:04.000000000 -0700
-+++ b/src/MapIO.c	2011-03-14 10:15:33.166949366 -0600
+Fix an incorrect printf format specifier. Sent upstream 15 Mar 2011:
+https://sourceforge.net/p/abe/patches/2/
+--- a/src/MapIO.c
++++ b/src/MapIO.c
 @@ -93,7 +93,7 @@
    // compression step 1: read compressed data from disk
    // FIXME: what would be nicer is to only allocate as much mem as used on disk.

@@ -25,15 +25,15 @@ IUSE="cxx debug hpack-tools jemalloc static-libs test +threads utils xml"
 RESTRICT="!test? ( test )"
 
 SSL_DEPEND="
-	>=dev-libs/openssl-1.0.2:0=[-bindist,${MULTILIB_USEDEP}]
+	>=dev-libs/openssl-1.0.2:0=[-bindist(-),${MULTILIB_USEDEP}]
 "
 RDEPEND="
 	cxx? (
 		${SSL_DEPEND}
-		dev-libs/boost:=[${MULTILIB_USEDEP},threads]
+		dev-libs/boost:=[${MULTILIB_USEDEP},threads(+)]
 	)
 	hpack-tools? ( >=dev-libs/jansson-2.5 )
-	jemalloc? ( dev-libs/jemalloc[${MULTILIB_USEDEP}] )
+	jemalloc? ( dev-libs/jemalloc:=[${MULTILIB_USEDEP}] )
 	utils? (
 		${SSL_DEPEND}
 		>=dev-libs/libev-4.15[${MULTILIB_USEDEP}]

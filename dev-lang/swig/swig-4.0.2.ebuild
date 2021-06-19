@@ -16,11 +16,11 @@ IUSE="ccache doc pcre"
 RESTRICT="test"
 
 RDEPEND="
-	virtual/pkgconfig
 	pcre? ( dev-libs/libpcre )
 	ccache? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( ANNOUNCE CHANGES CHANGES.current README TODO )
 

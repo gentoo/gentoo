@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 
 inherit distutils-r1 optfeature
 
@@ -22,6 +22,7 @@ RDEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.1.0-tests_optional_modules.patch
+	"${FILESDIR}"/${P}-new-eventlet.patch
 )
 
 DOCS=( README.rst )

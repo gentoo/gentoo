@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="Yamaha DX7 modeling DSSI plugin"
 HOMEPAGE="http://smbolton.com/hexter.html"
@@ -30,7 +32,7 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	PKG_CONFIG=pkg-config \
+	PKG_CONFIG=$(tc-getPKG_CONFIG) \
 	econf $(use_with gtk2) \
 		$(use_with readline textui)
 }

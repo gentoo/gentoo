@@ -8,13 +8,9 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>williamh@gentoo.org</email>
-		<name>William Hubbs</name>
-	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">rq/rq</remote-id>
 		<remote-id type="pypi">rq</remote-id>
 	</upstream>
-	<stabilize-allarches/>
 </pkgmetadata>

@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-06-19)
+# Conflicts with app-arch/brotli[python].  Discontinued in favor
+# of dev-python/brotlicffi.  No revdeps remain.
+# Removal on 2021-07-19.  Bug #796749.
+dev-python/brotlipy
+
+# Mike Gilbert <floppym@gentoo.org> (2021-06-17)
+# rescan-scsi-bus.sh is installed by >=sys-apps/sg3_utils-1.44, rendering
+# this package redundant.
+# Removal on 2021-07-17.
+sys-apps/rescan-scsi-bus
+
 # Davide Pesavento <pesa@gentoo.org> (2021-06-15)
 # Masked for revdep testing.
 >=dev-python/sip-6
@@ -40,7 +52,7 @@
 # Fails to build with GCC 11. Strange build system that needs more
 # work to function properly (and integrate better). Several open bugs.
 # bug #795999, bug #787902, bug #766033, bug #724674, bug #713206.
-# Removal on 15-07-2021.
+# Removal on 2021-07-15.
 media-sound/sc2mpd
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-06-14)
@@ -230,8 +242,8 @@ dev-python/csv23
 <net-mail/courier-imap-5
 
 # Matthew Thode <prometheanfire@gentoo.org> (2021-05-27)
-# remove some stuff to make redacted happy
-# bug #793800
+# Remove some openstack-related packages due to high-burden,
+# unmaintainable python requirements. Bug #793800
 app-admin/glance
 app-emulation/spice-html5
 dev-python/aodhclient
@@ -504,6 +516,7 @@ dev-lang/spark
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
+# (NOTE: Likely needs to be moved to musl + uclibc profiles, not dropped entirely)
 >=virtual/libcrypt-2
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)

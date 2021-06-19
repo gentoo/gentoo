@@ -1,6 +1,5 @@
-diff -Nru jss-3.4-src/mozilla/security/jss/build_java.pl jss-3.4-src.patched/mozilla/security/jss/build_java.pl
---- jss-3.4-src/mozilla/security/jss/build_java.pl	2002-10-17 02:33:29.000000000 +0200
-+++ jss-3.4-src.patched/mozilla/security/jss/build_java.pl	2006-08-15 00:53:05.000000000 +0200
+--- a/mozilla/security/jss/build_java.pl
++++ b/mozilla/security/jss/build_java.pl
 @@ -190,7 +190,7 @@
      #
      if( scalar(@source_list) > 0 ) {
