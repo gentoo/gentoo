@@ -29,18 +29,14 @@ inherit multilib-build
 # @DESCRIPTION:
 # Outputs a list of all the enabled Rust ABIs
 rust_all_abis() {
-	if use multilib; then
-		local ALL_ABIS=()
-		local abi abi_target
-		for abi in $(multilib_get_enabled_abis); do
-			abi_target="RUSTHOST_${abi}"
-			ALL_ABIS+=( ${!abi_target} )
-		done
-		local IFS=,
-		echo "${ALL_ABIS[*]}"
-	else
-		echo "${RUSTHOST}"
-	fi
+	local ALL_ABIS=()
+	local abi abi_target
+	for abi in $(get_all_abis); do
+		abi_target="RUSTHOST_${abi}"
+		ALL_ABIS+=( ${!abi_target} )
+	done
+	local IFS=,
+	echo "${ALL_ABIS[*]}"
 }
 
 # @FUNCTION: rust_arch_uri
