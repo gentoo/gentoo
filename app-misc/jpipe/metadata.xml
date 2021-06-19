@@ -12,8 +12,8 @@
 		<flag name="jp-symlink">
 			Install a jp symlink that points to jpipe.
 		</flag>
-		<flag name="jpp">
-			Install jpp which is an extended superset of the jp CLI for JMESPath.
+		<flag name="jpp-symlink">
+			Install a jpp symlink that points to jpipe.
 		</flag>
 	</use>
 </pkgmetadata>
