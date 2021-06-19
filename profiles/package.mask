@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
+# New Minecraft server release needs at least Java 16,
+# which is currently not available in Gentoo.
+>=games-server/minecraft-server-1.17
+
 # Zac Medico <zmedico@gentoo.org> (2021-06-19)
 # Upstream inactive and fails to compile.
 # Removal on 2021-07-19.  Bug #786279.
