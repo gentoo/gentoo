@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-06-19)
+# Conflicts with app-arch/brotli[python].  Discontinued in favor
+# of dev-python/brotlicffi.  No revdeps remain.
+# Removal on 2021-07-19.  Bug #796749.
+dev-python/brotlipy
+
 # Mike Gilbert <floppym@gentoo.org> (2021-06-17)
 # rescan-scsi-bus.sh is installed by >=sys-apps/sg3_utils-1.44, rendering
 # this package redundant.
