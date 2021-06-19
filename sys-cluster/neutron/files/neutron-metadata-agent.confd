@@ -1,2 +1,0 @@
-NEUTRON_CONFS=("/etc/neutron/neutron.conf" "/etc/neutron/metadata_agent.ini")
-
