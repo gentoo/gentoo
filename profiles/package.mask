@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2021-06-19)
+# Upstream inactive and fails to compile.
+# Removal on 2021-07-19.  Bug #786279.
+app-misc/rq
+
 # John Helmert III <ajak@gentoo.org> (2021-06-19)
 # Unmaintained, open security bug.
 # Removal on 2021-07-19.  Bug #717794.
