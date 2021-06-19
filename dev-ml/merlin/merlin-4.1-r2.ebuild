@@ -16,8 +16,6 @@ KEYWORDS="~amd64"
 IUSE="emacs +ocamlopt"
 
 RDEPEND="
-	app-emacs/auto-complete
-	app-emacs/company-mode
 	dev-ml/csexp:=
 	dev-ml/yojson:=
 	dev-ml/menhir:=
