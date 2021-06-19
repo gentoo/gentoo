@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/"
+HOMEPAGE="https://www.riverbankcomputing.com/software/sip/ https://pypi.org/project/sip/"
 
 MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
@@ -15,6 +15,7 @@ if [[ ${PV} == *_pre* ]]; then
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 fi
+S=${WORKDIR}/${MY_P}
 
 SLOT="5"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
