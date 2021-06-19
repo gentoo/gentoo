@@ -29,8 +29,6 @@ RDEPEND="${DEPEND}"
 CONFIG_CHECK="~BTRFS_FS"
 ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
 
-PATCHES=( "${FILESDIR}/v9999-0001-HACK-musl-does-not-define-pthread_getname_np.patch" )
-
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if kernel_is -lt 4 11; then
