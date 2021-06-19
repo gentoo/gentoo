@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=RJRAY
-MODULE_VERSION=3.300
+DIST_AUTHOR=RJRAY
+DIST_VERSION=3.300
 inherit perl-module
 
 DESCRIPTION="A library to extract height/width from images"
@@ -18,12 +18,11 @@ RDEPEND="
 	virtual/perl-IO-Compress
 	>=virtual/perl-File-Spec-0.800.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.420.0
 	test? (
 		virtual/perl-Test-Simple
 	)
 "
 
-SRC_TEST="do parallel"
 mydoc="ToDo"
