@@ -17,7 +17,7 @@ IUSE="libnotify"
 DEPEND="
 	net-misc/curl
 	dev-libs/openssl:0=
-	libnotify? ( >=x11-libs/libnotify-0.7 )
+	libnotify? ( x11-libs/libnotify )
 "
 RDEPEND="
 	${DEPEND}
