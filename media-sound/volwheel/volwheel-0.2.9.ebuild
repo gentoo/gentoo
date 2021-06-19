@@ -7,7 +7,7 @@ inherit xdg
 
 DESCRIPTION="A volume control trayicon with mouse wheel support"
 HOMEPAGE="https://oliwer.net/b/volwheel.html"
-SRC_URI="https://github.com/oliwer/volwheel/archive/refs/tags/v0.2.9.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/oliwer/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
