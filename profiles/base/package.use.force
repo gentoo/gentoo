@@ -206,3 +206,8 @@ dev-lang/python wide-unicode
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode
+
+# John Helmert III <ajak@gentoo.org> (2021-06-19)
+# netkit-rsh is last-rited and torque has
+# '!crypt? ( net-misc/netkit-rsh )', so force USE=crypt
+sys-cluster/torque crypt
