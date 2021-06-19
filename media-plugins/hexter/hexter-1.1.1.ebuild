@@ -17,8 +17,8 @@ BDEPEND="
 "
 RDEPEND="
 	media-libs/alsa-lib
-	>=media-libs/dssi-0.4
-	>=media-libs/liblo-0.12
+	media-libs/dssi
+	media-libs/liblo
 	readline? (
 		sys-libs/ncurses:0=
 		sys-libs/readline:0=
@@ -32,4 +32,9 @@ src_configure() {
 	PKG_CONFIG=pkg-config \
 	econf --without-gtk2 \
 		$(use_with readline textui)
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
