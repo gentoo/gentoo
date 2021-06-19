@@ -131,6 +131,7 @@ src_configure() {
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
+		-DWITH_GSL=$(usex georeferencer)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
 		$(cmake_use_find_package hdf5 HDF5)
