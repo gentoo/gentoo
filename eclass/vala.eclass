@@ -6,7 +6,7 @@
 # gnome@gentoo.org
 # @AUTHOR:
 # Alexandre Rostovtsev <tetromino@gentoo.org>
-# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Sets up the environment for using a specific version of vala.
 # @DESCRIPTION:
 # This eclass sets up commonly used environment variables for using a specific
@@ -16,13 +16,15 @@
 #
 # This eclass provides one phase function: src_prepare.
 
-inherit eutils multilib
-
-case "${EAPI:-0}" in
-	0)	die "EAPI=0 is not supported" ;;
-	1)	;;
-	*)	EXPORT_FUNCTIONS src_prepare ;;
+case ${EAPI:-0} in
+	[67]) inherit eutils multilib ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
+
+EXPORT_FUNCTIONS src_prepare
+
+if [[ -z ${_VALA_ECLASS} ]] ; then
+_VALA_ECLASS=1
 
 # @ECLASS-VARIABLE: VALA_MIN_API_VERSION
 # @DESCRIPTION:
@@ -170,3 +172,5 @@ vala_src_prepare() {
 	: ${PKG_CONFIG_PATH:="${EPREFIX}/usr/$(get_libdir)/pkgconfig:${EPREFIX}/usr/share/pkgconfig"}
 	export PKG_CONFIG_PATH="${T}/pkgconfig:${PKG_CONFIG_PATH}"
 }
+
+fi
