@@ -7,7 +7,7 @@ EAPI="6"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="5"				# Tarball revision for patches
+GENPATCHREV="6"				# Tarball revision for patches
 
 # Directories
 S="${WORKDIR}/linux-${OKV}"
@@ -23,7 +23,7 @@ K_FROM_GIT="yes"
 ETYPE="sources"
 
 # Inherit Eclasses
-inherit kernel-2
+inherit kernel-2 eapi7-ver
 detect_version
 
 # Version Data
