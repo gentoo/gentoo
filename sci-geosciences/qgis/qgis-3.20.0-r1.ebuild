@@ -38,6 +38,7 @@ COMMON_DEPEND="
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
+	dev-libs/protobuf:=
 	dev-libs/qtkeychain[qt5(+)]
 	>=dev-qt/designer-${QT_MIN_VER}:5
 	>=dev-qt/qtconcurrent-${QT_MIN_VER}:5
