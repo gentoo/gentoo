@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=DANKOGAI
-MODULE_VERSION=0.06
+DIST_AUTHOR=DANKOGAI
+DIST_VERSION=0.06
 inherit perl-module
 
 DESCRIPTION="Adds encoding() to HTTP::Response"
@@ -15,10 +15,9 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/libwww-perl"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	test? (
 		dev-perl/Test-Pod
 		dev-perl/Test-Pod-Coverage
-	)"
-
-SRC_TEST=do
+	)
+"
