@@ -203,15 +203,6 @@ _python_set_globals() {
 
 	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
 	local optflags=${flags[@]/%/(-)?}
-
-	# A nice QA trick here. Since a python-single-r1 package has to have
-	# at least one PYTHON_SINGLE_TARGET enabled (REQUIRED_USE),
-	# the following check will always fail on those packages. Therefore,
-	# it should prevent developers from mistakenly depending on packages
-	# not supporting multiple Python implementations.
-
-	local flags_st=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/-python_single_target_}" )
-	optflags+=,${flags_st[@]/%/(-)}
 	local requse="|| ( ${flags[*]} )"
 	local usedep=${optflags// /,}
 
@@ -321,7 +312,6 @@ _python_gen_usedep() {
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=(
 				"python_targets_${impl}(-)?"
-				"-python_single_target_${impl}(-)"
 			)
 		fi
 	done
@@ -572,8 +562,8 @@ python_gen_impl_dep() {
 #	(
 #		dev-lang/python:3.8
 #		dev-python/foo[python_single_target_python3_8(-)]
-#		|| ( dev-python/bar[python_targets_python3_8(-),-python_single_target_python3_8(-)]
-#			dev-python/baz[python_targets_python3_8(-),-python_single_target_python3_8(-)] )
+#		|| ( dev-python/bar[python_targets_python3_8(-)]
+#			dev-python/baz[python_targets_python3_8(-)] )
 #	)
 # )
 # @CODE
@@ -587,7 +577,7 @@ python_gen_any_dep() {
 	_python_verify_patterns "${@}"
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
-			local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
+			local PYTHON_USEDEP="python_targets_${i}(-)"
 			local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
 			_python_export "${i}" PYTHON_PKG_DEP
 
@@ -799,7 +789,7 @@ python_setup() {
 			# first check if the interpreter is installed
 			python_is_installed "${impl}" || continue
 			# then run python_check_deps
-			local PYTHON_USEDEP="python_targets_${impl}(-),-python_single_target_${impl}(-)"
+			local PYTHON_USEDEP="python_targets_${impl}(-)"
 			local PYTHON_SINGLE_USEDEP="python_single_target_${impl}(-)"
 			python_check_deps || continue
 		fi
