@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: l10n.eclass
@@ -7,12 +7,18 @@
 # @AUTHOR:
 # Ben de Groot <yngwin@gentoo.org>
 # @BLURB: convenience functions to handle localizations
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # The l10n (localization) eclass offers a number of functions to more
 # conveniently handle localizations (translations) offered by packages.
 # These are meant to prevent code duplication for such boring tasks as
 # determining the cross-section between the user's set LINGUAS and what
 # is offered by the package.
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_L10N_ECLASS} ]]; then
 _L10N_ECLASS=1
