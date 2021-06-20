@@ -72,22 +72,15 @@ REQUIRED_USE="
 	zeroconf? ( dbus )
 "
 
-# NOTE:
-# - dev-libs/libpcre header will be used if found but no linking is done
-#   on non-Windows
-# - meson is currently always checking for doxygen,
-#   see https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/issues/1226
 BDEPEND="
-	app-doc/doxygen
-	dev-libs/libpcre
 	sys-devel/gettext
 	sys-devel/m4
 	virtual/libiconv
 	virtual/libintl
 	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 	orc? ( >=dev-lang/orc-0.4.15 )
 	system-wide? ( dev-util/unifdef )
-	test? ( >=dev-libs/check-0.9.10 )
 "
 
 # NOTE:
@@ -145,6 +138,8 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libatomic_ops
+	dev-libs/libpcre:*
+	test? ( >=dev-libs/check-0.9.10 )
 	X? ( x11-base/xorg-proto )
 "
 
@@ -181,11 +176,12 @@ multilib_src_configure() {
 		--localstatedir="${EPREFIX}"/var
 		-Dmodlibexecdir="${EPREFIX}/usr/$(get_libdir)/${PN}/modules" # Was $(get_libdir)/${P}
 		-Dsystemduserunitdir=$(systemd_get_userunitdir)
-		-Dudevrulesdir="$(get_udevdir)"/rules.d
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dbashcompletiondir="$(get_bashcompdir)" # Alternatively DEPEND on app-shells/bash-completion for pkg-config to provide the value
 		$(meson_native_use_feature alsa)
 		$(meson_native_use_bool bluetooth bluez5)
 		$(meson_native_use_bool daemon)
+		$(meson_native_use_bool doc doxygen)
 		$(meson_native_use_bool native-headset bluez5-native-headset)
 		$(meson_native_use_bool ofono-headset bluez5-ofono-headset)
 		$(meson_native_use_feature glib gsettings) # Supposedly correct?
@@ -209,7 +205,7 @@ multilib_src_configure() {
 		$(meson_feature glib) # WARNING: toggling this likely changes ABI
 		$(meson_feature asyncns)
 		#$(meson_use cpu_flags_arm_neon neon-opt)
-		$(meson_feature tcpd tcpwrap) # TODO: system-wide specific?
+		$(meson_native_use_feature tcpd tcpwrap)
 		$(meson_feature dbus)
 		$(meson_feature elogind)
 		$(meson_feature X x11)
