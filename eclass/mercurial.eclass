@@ -20,8 +20,6 @@ case ${EAPI:-0} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-inherit eutils
-
 EXPORT_FUNCTIONS src_unpack
 
 if [[ -z ${_MERCURIAL_ECLASS} ]] ; then
@@ -29,7 +27,15 @@ _MERCURIAL_ECLASS=1
 
 PROPERTIES+=" live"
 
-DEPEND="dev-vcs/mercurial"
+case ${EAPI:-0} in
+	7)
+		# For compatibiilty only (indirect inherits).
+		# Eclass itself doesn't need it.
+		inherit eutils
+		;;
+esac
+
+BDEPEND="dev-vcs/mercurial"
 
 # @ECLASS-VARIABLE: EHG_REPO_URI
 # @DESCRIPTION:
