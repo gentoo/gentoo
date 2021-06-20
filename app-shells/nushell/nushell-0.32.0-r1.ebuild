@@ -4,14 +4,13 @@
 EAPI=7
 
 CRATES="
-Inflector-0.11.4
 addr2line-0.14.1
-adler32-1.2.0
 adler-1.0.2
+adler32-1.2.0
 aead-0.3.2
-aesni-0.10.0
 aes-0.6.0
 aes-gcm-0.8.0
+aesni-0.10.0
 aes-soft-0.6.4
 ahash-0.7.2
 aho-corasick-0.6.10
@@ -27,6 +26,7 @@ arrayref-0.3.6
 arrayvec-0.4.12
 arrayvec-0.5.2
 arrow-4.1.0
+as-slice-0.1.5
 async-channel-1.6.1
 async-executor-1.4.1
 async-global-executor-2.0.2
@@ -37,14 +37,13 @@ async-recursion-0.3.2
 async-std-1.9.0
 async-task-4.0.3
 async-trait-0.1.50
-as-slice-0.1.5
 atomic-waker-1.0.0
 atty-0.2.14
 autocfg-1.0.1
 backtrace-0.3.58
+base64-0.13.0
 base64-0.6.0
 base64-0.9.3
-base64-0.13.0
 base-x-0.2.8
 bat-0.17.1
 bigdecimal-0.2.0
@@ -53,10 +52,10 @@ bitflags-1.2.1
 bit-set-0.5.2
 bit-vec-0.6.3
 blake2b_simd-0.5.11
-blocking-1.0.2
 block-0.1.6
 block-buffer-0.2.0
 block-buffer-0.9.0
+blocking-1.0.2
 brotli-3.3.0
 brotli-decompressor-2.3.1
 bson-0.14.1
@@ -75,9 +74,9 @@ cache-padded-1.1.1
 calamine-0.17.0
 cassowary-0.3.0
 cc-1.0.67
+cfg_aliases-0.1.1
 cfg-if-0.1.10
 cfg-if-1.0.0
-cfg_aliases-0.1.1
 chrono-0.4.19
 chrono-tz-0.5.3
 cipher-0.2.5
@@ -115,16 +114,16 @@ crossterm-0.18.2
 crossterm-0.19.0
 crossterm_winapi-0.6.2
 crossterm_winapi-0.7.0
-crypto-mac-0.4.0
 crypto-mac-0.10.0
+crypto-mac-0.4.0
 cssparser-0.27.2
 cssparser-macros-0.6.0
 cstr_core-0.2.3
 csv-1.1.6
 csv-core-0.1.10
 ctor-0.1.20
-ctrlc-3.1.9
 ctr-0.6.0
+ctrlc-3.1.9
 cty-0.2.1
 curl-0.4.36
 curl-sys-0.4.42+curl-7.76.0
@@ -133,9 +132,9 @@ data-encoding-2.3.2
 decimal-2.1.0
 deflate-0.7.20
 deflate-0.8.6
-derive-new-0.5.9
 derive_is_enum_variant-0.1.1
 derive_more-0.99.13
+derive-new-0.5.9
 digest-0.6.2
 digest-0.9.0
 directories-3.0.2
@@ -160,8 +159,8 @@ encoding-index-japanese-1.20141219.5
 encoding-index-korean-1.20141219.5
 encoding-index-simpchinese-1.20141219.5
 encoding-index-singlebyte-1.20141219.5
-encoding-index-tradchinese-1.20141219.5
 encoding_index_tests-0.1.4
+encoding-index-tradchinese-1.20141219.5
 encoding_rs-0.8.28
 endian-type-0.1.2
 env_logger-0.7.1
@@ -175,8 +174,8 @@ fake-simd-0.1.2
 fallible-iterator-0.2.0
 fallible-streaming-iterator-0.1.9
 fancy-regex-0.3.5
-fastrand-1.4.1
 fast-float-0.2.0
+fastrand-1.4.1
 fd-lock-2.0.0
 filesize-0.2.0
 fixedbitset-0.2.0
@@ -195,6 +194,7 @@ futf-0.1.4
 futures-0.1.31
 futures-0.3.14
 futures-channel-0.3.14
+futures_codec-0.4.1
 futures-core-0.3.14
 futures-cpupool-0.1.8
 futures-executor-0.3.14
@@ -205,13 +205,12 @@ futures-sink-0.3.14
 futures-task-0.3.14
 futures-timer-3.0.2
 futures-util-0.3.14
-futures_codec-0.4.1
 fxhash-0.2.1
 gcc-0.3.55
-generic-array-0.8.4
 generic-array-0.12.4
 generic-array-0.13.3
 generic-array-0.14.4
+generic-array-0.8.4
 gethostname-0.2.1
 getrandom-0.1.16
 getrandom-0.2.2
@@ -220,14 +219,14 @@ ghash-0.3.1
 gimli-0.23.0
 git2-0.13.18
 gjson-0.7.5
-globset-0.4.6
 glob-0.3.0
+globset-0.4.6
 gloo-timers-0.2.1
 h2-0.2.7
 hamcrest2-0.3.0
 hash32-0.1.1
-hashbrown-0.9.1
 hashbrown-0.11.2
+hashbrown-0.9.1
 hashlink-0.7.0
 heapless-0.6.1
 heck-0.3.2
@@ -235,16 +234,16 @@ hermit-abi-0.1.18
 hex-0.3.2
 hex-0.4.3
 hkdf-0.10.0
-hmac-0.4.2
 hmac-0.10.1
+hmac-0.4.2
 hmac-sha1-0.1.3
 html5ever-0.25.1
 htmlescape-0.3.1
-httparse-1.4.0
-httpdate-0.3.2
 http-0.2.4
+httparse-1.4.0
 http-body-0.3.1
 http-client-6.3.5
+httpdate-0.3.2
 http-types-2.11.0
 humantime-1.3.0
 hyper-0.11.27
@@ -257,6 +256,7 @@ image-0.23.14
 indexmap-1.6.2
 infer-0.2.3
 inflate-0.4.5
+Inflector-0.11.4
 instant-0.1.9
 integer-encoding-1.1.7
 iovec-0.1.4
@@ -308,11 +308,11 @@ mime_guess-2.0.3
 miniz_oxide-0.3.7
 miniz_oxide-0.4.4
 minus-3.3.3
-miow-0.2.2
-miow-0.3.7
 mio-0.6.23
 mio-0.7.11
 mio-uds-0.6.8
+miow-0.2.2
+miow-0.3.7
 multiversion-0.6.1
 multiversion-macros-0.6.1
 native-tls-0.2.7
@@ -333,6 +333,7 @@ num-bigint-0.3.2
 num-bigint-0.4.0
 num-complex-0.2.4
 num-complex-0.4.0
+num_cpus-1.13.0
 num-format-0.4.0
 num-integer-0.1.44
 num-iter-0.1.42
@@ -341,43 +342,6 @@ num-rational-0.3.2
 num-rational-0.4.0
 num-traits-0.1.43
 num-traits-0.2.14
-num_cpus-1.13.0
-nu-0.32.0
-nu-ansi-term-0.32.0
-nu-cli-0.32.0
-nu-command-0.32.0
-nu-data-0.32.0
-nu-engine-0.32.0
-nu-errors-0.32.0
-nu-json-0.32.0
-nu-parser-0.32.0
-nu-plugin-0.32.0
-nu-pretty-hex-0.32.0
-nu-protocol-0.32.0
-nu-source-0.32.0
-nu-stream-0.32.0
-nu-table-0.32.0
-nu-test-support-0.32.0
-nu-value-ext-0.32.0
-nu_plugin_binaryview-0.32.0
-nu_plugin_chart-0.32.0
-nu_plugin_fetch-0.32.0
-nu_plugin_from_bson-0.32.0
-nu_plugin_from_sqlite-0.32.0
-nu_plugin_inc-0.32.0
-nu_plugin_match-0.32.0
-nu_plugin_post-0.32.0
-nu_plugin_ps-0.32.0
-nu_plugin_query_json-0.32.0
-nu_plugin_s3-0.32.0
-nu_plugin_selector-0.32.0
-nu_plugin_start-0.32.0
-nu_plugin_sys-0.32.0
-nu_plugin_textview-0.32.0
-nu_plugin_to_bson-0.32.0
-nu_plugin_to_sqlite-0.32.0
-nu_plugin_tree-0.32.0
-nu_plugin_xpath-0.32.0
 objc-0.2.7
 objc-foundation-0.1.1
 objc_id-0.1.1
@@ -386,14 +350,14 @@ once_cell-1.7.2
 onig-6.1.1
 onig_sys-69.6.0
 opaque-debug-0.3.0
+open-1.7.0
 openssl-0.10.34
 openssl-probe-0.1.2
 openssl-sys-0.9.62
-open-1.7.0
 ordered-float-1.1.1
 parking-2.0.0
-parking_lot-0.9.0
 parking_lot-0.11.1
+parking_lot-0.9.0
 parking_lot_core-0.6.2
 parking_lot_core-0.8.3
 parquet-4.1.0
@@ -430,9 +394,9 @@ polling-2.0.3
 polyval-0.4.5
 ppv-lite86-0.2.10
 precomputed-hash-0.1.1
-prettytable-rs-0.8.0
 pretty-0.5.2
 pretty_env_logger-0.4.0
+prettytable-rs-0.8.0
 proc-macro2-1.0.26
 proc-macro-error-1.0.4
 proc-macro-error-attr-1.0.4
@@ -483,18 +447,18 @@ reqwest-0.10.10
 result-1.0.0
 roxmltree-0.14.1
 rusqlite-0.25.3
+rust-argon2-0.8.3
 rustc-demangle-0.1.18
+rust-crypto-0.2.36
 rustc-serialize-0.3.24
 rustc_version-0.2.3
-rustversion-1.0.4
-rustyline-8.1.0
-rust-argon2-0.8.3
-rust-crypto-0.2.36
+rust_decimal-0.10.2
 rust-embed-5.9.0
 rust-embed-impl-5.9.0
 rust-embed-utils-5.1.0
 rust-ini-0.13.0
-rust_decimal-0.10.2
+rustversion-1.0.4
+rustyline-8.1.0
 ryu-1.0.5
 s3handler-0.6.6
 safemem-0.2.0
@@ -506,22 +470,22 @@ scopeguard-1.1.0
 security-framework-2.2.0
 security-framework-sys-2.2.0
 selectors-0.22.0
-semver-0.9.0
 semver-0.11.0
-semver-parser-0.7.0
+semver-0.9.0
 semver-parser-0.10.2
+semver-parser-0.7.0
 serde-0.8.23
 serde-1.0.125
-serde-hjson-0.9.1
-serde-value-0.6.0
 serde_bytes-0.11.5
 serde_derive-1.0.125
+serde-hjson-0.9.1
 serde_ini-0.2.0
 serde_json-1.0.64
 serde_qs-0.7.2
 serde_test-0.8.23
 serde_test-1.0.125
 serde_urlencoded-0.7.0
+serde-value-0.6.0
 serde_yaml-0.8.17
 serial_test-0.5.1
 serial_test_derive-0.5.1
@@ -550,41 +514,41 @@ spinning_top-0.2.3
 stable_deref_trait-1.2.0
 standback-0.2.17
 static_assertions-1.1.0
+std_prelude-0.2.12
 stdweb-0.4.20
 stdweb-derive-0.5.3
 stdweb-internal-macros-0.2.9
 stdweb-internal-runtime-0.1.5
-std_prelude-0.2.12
+str-buf-2.0.0
 string_cache-0.8.1
 string_cache_codegen-0.5.1
 strip-ansi-escapes-0.1.0
 strsim-0.8.0
-str-buf-2.0.0
 subtle-2.4.0
 surf-2.2.0
 sxd-document-0.3.2
 sxd-xpath-0.4.2
+syn-0.11.11
+syn-1.0.71
 synom-0.11.3
 synstructure-0.12.4
 syntect-4.5.0
-syn-0.11.11
-syn-1.0.71
 sysinfo-0.16.5
 sys-locale-0.1.0
 take-0.1.0
 tempfile-3.2.0
 tendril-0.4.2
-termcolor-1.1.2
-terminal_size-0.1.16
 term-0.5.2
 term-0.7.0
+termcolor-1.1.2
+terminal_size-0.1.16
 term_size-0.3.2
 textwrap-0.11.0
 thin-slice-0.1.1
 thiserror-1.0.24
 thiserror-impl-1.0.24
-threadpool-1.8.1
 thread_local-0.3.6
+threadpool-1.8.1
 thrift-0.13.0
 tiff-0.6.1
 time-0.1.44
@@ -642,11 +606,11 @@ unsafe_unwrap-0.1.0
 url-2.2.1
 user32-sys-0.2.0
 users-0.11.0
+utf-8-0.7.6
 utf8parse-0.1.1
 utf8parse-0.2.0
 utf8-ranges-1.0.4
 utf8-width-0.1.5
-utf-8-0.7.6
 uuid-0.8.2
 value-bag-1.0.0-alpha.6
 vcpkg-0.2.12
@@ -658,8 +622,8 @@ waker-fn-1.1.0
 walkdir-2.3.2
 want-0.0.4
 want-0.3.0
-wasi-0.9.0+wasi-snapshot-preview1
 wasi-0.10.0+wasi-snapshot-preview1
+wasi-0.9.0+wasi-snapshot-preview1
 wasm-bindgen-0.2.73
 wasm-bindgen-backend-0.2.73
 wasm-bindgen-futures-0.4.23
@@ -682,8 +646,8 @@ winapi-wsapoll-0.1.1
 winapi-x86_64-pc-windows-gnu-0.4.0
 winreg-0.7.0
 ws2_32-sys-0.2.1
-x11rb-0.8.1
 x11-2.18.2
+x11rb-0.8.1
 xmlparser-0.13.3
 xml-rs-0.8.3
 yaml-rust-0.4.5
@@ -695,18 +659,62 @@ zstd-sys-1.6.0+zstd.1.5.0
 
 inherit cargo
 
-DESCRIPTION="A new type of shell"
-HOMEPAGE="https://github.com/nushell/nushell"
-SRC_URI="$(cargo_crate_uris ${CRATES})
-	https://github.com/nushell/nushell/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-LICENSE="MIT"
-SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
+DESCRIPTION="A new type of shell, written in Rust"
+HOMEPAGE="https://www.nushell.sh"
+SRC_URI="https://github.com/nushell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	$(cargo_crate_uris ${CRATES})"
 
-DEPEND="${RUST_DEPEND}"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0 CC0-1.0 ISC LGPL-3+ MIT MPL-2.0 Unlicense ZLIB"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
+IUSE="+extra"
+
+DEPEND="
+	>=dev-libs/libgit2-0.99:=
+	dev-libs/oniguruma:=
+	dev-libs/openssl:0=
+	net-libs/libssh2:=
+	net-libs/nghttp2:=
+	net-misc/curl
+	extra? (
+		dev-db/sqlite:3=
+		x11-libs/libX11
+		x11-libs/libxcb
+	)
+"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="
+	dev-util/cmake
+	>=virtual/rust-1.46
+	virtual/pkgconfig
+"
+
+QA_FLAGS_IGNORED="usr/bin/nu.*"
+
+src_configure() {
+	# high magic to allow system-libs
+	export OPENSSL_NO_VENDOR=true
+	export RUSTONIG_SYSTEM_LIBONIG=1
+	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export PKG_CONFIG_ALLOW_CROSS=1
+
+	local myfeatures=(
+		stable
+		$(usev extra)
+	)
+
+	cargo_src_configure
+}
+
+src_compile() {
+	cargo_src_compile --workspace
+}
 
 src_install() {
 	cargo_src_install
-	dodoc -r {docs,README.md}
+	local DOCS=( README.md docs/. )
+	einstalldocs
 }
