@@ -1,25 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools
-
-data_ver=1.5
-snd_trk_ver=1.0
-snd_eff_ver=1.0
+inherit autotools desktop
 
 DESCRIPTION="Heroes Enjoy Riding Over Empty Slabs: similar to Tron and Nibbles"
 HOMEPAGE="http://heroes.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-data-${data_ver}.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-sound-tracks-${snd_trk_ver}.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-sound-effects-${snd_eff_ver}.tar.bz2"
+SRC_URI="
+	mirror://sourceforge/${PN}/${P}.tar.bz2
+	mirror://sourceforge/${PN}/${PN}-data-1.5.tar.bz2
+	mirror://sourceforge/${PN}/${PN}-sound-tracks-1.0.tar.bz2
+	mirror://sourceforge/${PN}/${PN}-sound-effects-1.0.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ggi nls sdl"
+IUSE="ggi nls +sdl"
 REQUIRED_USE="^^ ( ggi sdl )"
 RESTRICT="test"
 
@@ -31,8 +28,8 @@ RDEPEND="
 	)
 	nls? ( virtual/libintl )
 	sdl? (
-		media-libs/libsdl
-		media-libs/sdl-mixer
+		media-libs/libsdl[joystick,sound,video]
+		media-libs/sdl-mixer[mod]
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
@@ -47,28 +44,35 @@ PATCHES=(
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
 src_configure() {
+	local econfargs=(
+		$(use_enable nls)
+		$(use_with ggi mikmod)
+		$(use_with ggi)
+		$(use_with sdl sdl-mixer)
+		$(use_with sdl)
+		--disable-heroes-debug
+		--disable-optimizations
+	)
+
 	local pkg
 	for pkg in ${A//.tar.bz2}; do
 		cd "${WORKDIR}"/${pkg} || die
-		econf \
-			--disable-heroes-debug \
-			--disable-optimizations \
-			$(use_with sdl) \
-			$(use_with sdl sdl-mixer) \
-			$(use_with ggi) \
-			$(use_with ggi mikmod) \
-			$(use_enable nls)
+		econf "${econfargs[@]}"
 	done
 }
 
 src_install() {
 	local pkg
 	for pkg in ${A//.tar.bz2} ; do
-		cd "${WORKDIR}"/${pkg} || die
-		emake DESTDIR="${D}" install
+		emake -C "${WORKDIR}"/${pkg} DESTDIR="${D}" install
 	done
+
+	einstalldocs
+
+	make_desktop_entry ${PN} Heroes applications-games
 }
