@@ -532,6 +532,7 @@ distutils_install_for_testing() {
 	local install_method=root
 	case ${1} in
 		--via-home)
+			[[ ${EAPI} == [67] ]] || die "${*} is banned in EAPI ${EAPI}"
 			install_method=home
 			shift
 			;;
