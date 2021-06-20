@@ -39,8 +39,8 @@ src_prepare() {
 }
 
 src_configure() {
-    # fix bug 570408 by restoring pre-GCC 5 inline semantics
-    append-cflags -std=gnu89
+	# fix bug #570408 by restoring pre-GCC 5 inline semantics
+	append-cflags -std=gnu89
 
 	econf
 }
