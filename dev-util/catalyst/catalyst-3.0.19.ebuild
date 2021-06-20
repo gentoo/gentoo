@@ -9,7 +9,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/catalyst.git/snapshot/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 PYTHON_COMPAT=( python3_{8,9} )
