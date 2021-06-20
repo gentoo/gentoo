@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-06-20)
+# kde-frameworks/syndication not yet keyworded, bug #796233
+kde-frameworks/knewstuff opds
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
 # no stable virtual/jdk on this arch
 media-libs/rubberband jni
