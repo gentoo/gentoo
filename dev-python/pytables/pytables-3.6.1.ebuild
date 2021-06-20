@@ -1,10 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="threads(+)"
 
 MY_PN=tables
@@ -15,6 +14,7 @@ inherit distutils-r1 flag-o-matic
 DESCRIPTION="Hierarchical datasets for Python"
 HOMEPAGE="https://www.pytables.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux"
@@ -22,25 +22,31 @@ LICENSE="BSD"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+DEPEND="
 	app-arch/bzip2:0=
 	app-arch/lz4:0=
 	>=app-arch/zstd-1.0.0:=
 	>=dev-libs/c-blosc-1.11.1:0=
 	dev-libs/lzo:2=
 	>=dev-python/numpy-1.8.1[${PYTHON_USEDEP}]
-	>=dev-python/numexpr-2.5.2[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-libs/hdf5-1.8.15:0=
 "
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
+	>=dev-python/numexpr-2.5.2[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]"
+BDEPEND="
 	>=dev-python/cython-0.21[${PYTHON_USEDEP}]
-	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
+		${RDEPEND}
+	)
 "
 
-S="${WORKDIR}/${MY_P}"
-
 DOCS=( RELEASE_NOTES.txt THANKS )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-numpy-float.patch
+)
 
 python_prepare_all() {
 	export HDF5_DIR="${EPREFIX}"/usr
