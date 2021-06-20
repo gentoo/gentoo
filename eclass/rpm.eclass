@@ -1,12 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
 # @BLURB: convenience class for extracting RPMs
+# @SUPPORTED_EAPIS: 5 6 7
 
-inherit estack eutils
+case ${EAPI:-0} in
+	[567]) inherit eutils ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_unpack
+
+if [[ -z ${_RPM_ECLASS} ]] ; then
+_RPM_ECLASS=1
+
+inherit estack
 
 case "${EAPI:-0}" in
 	[0-6]) DEPEND=">=app-arch/rpm2targz-9.0.0.3g" ;;
@@ -126,4 +137,4 @@ rpm_spec_epatch() {
 	eend
 }
 
-EXPORT_FUNCTIONS src_unpack
+fi
