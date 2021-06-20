@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-20)
+# no consumer, removal in 30 days
+# see bug: https://bugs.gentoo.org/796587
+# and https://bugs.gentoo.org/561504
+dev-java/annogen
+dev-java/xml-xmlbeans
+java-virtuals/stax-api
+dev-java/jsr173
+dev-java/jibx-tools
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
 # New Minecraft server release needs at least Java 16,
 # which is currently not available in Gentoo.
