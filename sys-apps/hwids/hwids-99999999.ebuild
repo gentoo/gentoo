@@ -1,4 +1,4 @@
-# Copyright 2012-2020 Gentoo Authors
+# Copyright 2012-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,9 +18,11 @@ fi
 
 LICENSE="|| ( GPL-2 BSD ) public-domain"
 SLOT="0"
-IUSE="+net +pci +udev +usb"
+IUSE="+net +pci systemd +udev +usb"
+REQUIRED_USE="systemd? ( udev )"
 
 RDEPEND="
+	systemd? ( sys-apps/systemd[hwdb] )
 	udev? ( virtual/udev )
 "
 
@@ -83,7 +85,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use udev; then
+	if use systemd; then
+		systemd-hwdb --root="${ROOT}" update
+	elif use udev; then
 		udevadm hwdb --update --root="${ROOT}"
 	fi
 }
