@@ -179,12 +179,6 @@ EXPORT_FUNCTIONS pkg_setup
 # python_targets_python3_4(-)
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_MULTI_USEDEP
-# @OUTPUT_VARIABLE
-# @DESCRIPTION:
-# This is a backwards-compatibility placeholder.  Use PYTHON_USEDEP
-# instead.
-
 # @ECLASS-VARIABLE: PYTHON_REQUIRED_USE
 # @OUTPUT_VARIABLE
 # @DESCRIPTION:
@@ -391,6 +385,12 @@ python_gen_cond_dep() {
 				dep=${dep//\$\{PYTHON_SINGLE_USEDEP\}/${usedep}}
 			fi
 			local multi_usedep="python_targets_${impl}(-)"
+
+			if [[ ${EAPI} != [67] ]]; then
+				if [[ ${dep} == *\$\{PYTHON_MULTI_USEDEP\}* ]]; then
+					die "Replace PYTHON_MULTI_USEDEP with PYTHON_USEDEP in EAPI ${EAPI}"
+				fi
+			fi
 
 			local subdep=${dep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}}
 			matches+=( "python_single_target_${impl}? (
