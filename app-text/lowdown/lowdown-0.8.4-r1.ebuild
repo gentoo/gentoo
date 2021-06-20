@@ -15,9 +15,7 @@ LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	virtual/libcrypt
-"
+DEPEND="virtual/libcrypt:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
