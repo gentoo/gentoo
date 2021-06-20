@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
 MY_PN=tables
@@ -46,6 +46,7 @@ DOCS=( RELEASE_NOTES.txt THANKS )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-numpy-float.patch
+	"${FILESDIR}"/${P}-py310.patch
 )
 
 python_prepare_all() {
@@ -64,7 +65,7 @@ python_compile() {
 
 python_test() {
 	cd "${BUILD_DIR}"/lib* || die
-	${EPYTHON} tables/tests/test_all.py || die
+	"${EPYTHON}" tables/tests/test_all.py -v || die
 }
 
 python_install_all() {
