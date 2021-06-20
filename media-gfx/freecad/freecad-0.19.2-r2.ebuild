@@ -323,15 +323,33 @@ pkg_postinst() {
 	einfo "You can load a lot of additional workbenches using the integrated"
 	einfo "AddonManager."
 
+	# ToDo: check opencv, pysolar (::science), elmerfem (::science)
+	#		ifc++, ifcopenshell, netgen, z88 (no pkgs), calculix-ccx (::waebbl)
 	einfo "There are a lot of additional tools, for which FreeCAD has builtin"
 	einfo "support. Some of them are available in Gentoo. Take a look at"
 	einfo "https://wiki.freecadweb.org/Installing#External_software_supported_by_FreeCAD"
-	optfeature "interact with git repositories" dev-python/GitPython
-	optfeature "work with COLLADA documents" dev-python/pycollada
-	optfeature "dependency graphs" media-gfx/graphviz
+	optfeature_header "Computational utilities"
+	optfeature "Numerical computations with Python" dev-python/numpy
+	optfeature "BLAS library" sci-libs/openblas
+	optfeature "Statistical computation with Python" dev-python/pandas
+	optfeature "Use Point Clouds" sci-libs/pcl
+	optfeature "Use scientific computation with Python" dev-python/scipy
+	optfeature "Use symbolic math with Python" dev-python/sympy
+	optfeature_header "Imaging, Plotting and Rendering utilities"
+	optfeature "Function plotting with Python" dev-python/matplotlib
+	optfeature "Dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
+	optfeature_header "Import / Export"
+	optfeature "Interact with git repositories" dev-python/GitPython
+	optfeature "Work with COLLADA documents" dev-python/pycollada
+	optfeature "YAML importer and emitter" dev-python/pyyaml
+	optfeature "Importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
+	optfeature "Importing and exporting geospatial data formats" sci-libs/gdal
+	optfeature "Working with projection data" sci-libs/proj
+	optfeature_header "Meshing and FEM"
 	optfeature "FEM mesh generator" sci-libs/gmsh
-	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
+	optfeature "Triangulating meshes" sci-libs/gts
+	optfeature "Visualization" sci-visualization/paraview
 }
 
 pkg_postrm() {
