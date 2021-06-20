@@ -137,23 +137,18 @@ case ${EAPI:-0} in
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
-			yes)
+			yes|noslotop)
 				DEPEND="dev-lang/perl"
 				BDEPEND="dev-lang/perl
 					 test? ( virtual/perl-Test-Simple )"
-				RDEPEND="dev-lang/perl:="
 				IUSE="test"
-				# RESTRICT="!test? ( test )"
-				# not handled correctly in portage yet
+				RESTRICT="!test? ( test )"
+				;;&
+			yes)
+				RDEPEND="dev-lang/perl:="
 				;;
 			noslotop)
-				DEPEND="dev-lang/perl"
-				BDEPEND="dev-lang/perl
-					 test? ( virtual/perl-Test-Simple )"
 				RDEPEND="dev-lang/perl"
-				IUSE="test"
-				# RESTRICT="!test? ( test )"
-				# not handled correctly in portage yet
 				;;
 		esac
 
