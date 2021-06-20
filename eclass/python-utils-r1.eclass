@@ -34,6 +34,7 @@ fi
 
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
+[[ ${EAPI} == [67] ]] && inherit eapi8-dosym
 inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
@@ -712,8 +713,9 @@ python_newexe() {
 	)
 
 	# install the wrapper
-	_python_ln_rel "${ED%/}"/usr/lib/python-exec/python-exec2 \
-		"${ED%/}/${wrapd}/${newfn}" || die
+	local dosym=dosym
+	[[ ${EAPI} == [67] ]] && dosym=dosym8
+	"${dosym}" -r /usr/lib/python-exec/python-exec2 "${wrapd}/${newfn}"
 
 	# don't use this at home, just call python_doscript() instead
 	if [[ ${_PYTHON_REWRITE_SHEBANG} ]]; then
