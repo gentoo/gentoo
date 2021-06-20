@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-MODULE_AUTHOR=CLKAO
-MODULE_VERSION=0.11
+DIST_AUTHOR=CLKAO
+DIST_VERSION=0.11
 inherit perl-module
 
 DESCRIPTION="IO::Digest - Calculate digests while reading or writing"
@@ -15,9 +15,7 @@ IUSE=""
 
 RDEPEND=">=dev-perl/PerlIO-via-dynamic-0.10
 	virtual/perl-Digest"
-DEPEND="${RDEPEND}"
-
-SRC_TEST="do"
+BDEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install;/use lib q[.]; use inc::Module::Install;/' Makefile.PL ||
