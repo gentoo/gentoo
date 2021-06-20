@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="See Your Data in the Nude"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc"
 
 RDEPEND="
 	>=dev-perl/YAML-PP-0.18.0
