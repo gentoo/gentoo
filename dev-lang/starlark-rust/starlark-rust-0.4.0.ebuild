@@ -172,7 +172,6 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RESTRICT+=" test"
 
 # Nightly rust-1.53.0 required for https://bugs.gentoo.org/796824
 BDEPEND="${RUST_DEPEND}
@@ -182,6 +181,12 @@ src_prepare() {
 	grep -lZ println starlark/bin/*.rs | xargs -0 sed -e 's:e\?println!:eprintln!:g' -i
 	assert "failed to patch println to eprintln in bin/*.rs"
 	default
+}
+
+src_test() {
+	source "${FILESDIR}/test/features.bash" || die
+	unset -f test_features
+	test-features_main "${PWD}/target/release/starlark" || die
 }
 
 src_install() {
