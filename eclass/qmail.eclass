@@ -5,6 +5,15 @@
 # @MAINTAINER:
 # Rolf Eike Beer <eike@sf-mail.de>
 # @BLURB: common qmail functions
+# @SUPPORTED_EAPIS: 6 7
+
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_QMAIL_ECLASS} ]] ; then
+_QMAIL_ECLASS=1
 
 inherit flag-o-matic toolchain-funcs fixheadtails
 
@@ -509,3 +518,5 @@ qmail_ssl_generate() {
 	einfo "Send req.pem to your CA to obtain signed_req.pem, and do:"
 	einfo "cat signed_req.pem >> ${QMAIL_HOME}/control/servercert.pem"
 }
+
+fi
