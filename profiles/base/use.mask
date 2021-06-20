@@ -4,6 +4,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# David Seifert <soap@gentoo.org> (2021-06-20)
+# Abandoned upstream, last release 17 years ago, unmaintained, tons of
+# QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
+canna
+canna-2ch
+
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
