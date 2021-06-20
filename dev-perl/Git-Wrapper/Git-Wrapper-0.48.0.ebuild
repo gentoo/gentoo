@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Wrap git(7) command-line interface"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
