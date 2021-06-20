@@ -8,12 +8,23 @@
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
 # @BLURB: eclass for ant based Java packages
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # Eclass for Ant-based Java packages. Provides support for both automatic and
 # manual manipulation of build.xml files. Should be inherited after java-pkg-2
 # or java-pkg-opt-2 eclass.
 
 inherit java-utils-2 multilib
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_configure
+
+if [[ -z ${_JAVA_ANT_2_ECLASS} ]] ; then
+_JAVA_ANT_2_ECLASS=1
 
 # This eclass provides functionality for Java packages which use
 # ant to build. In particular, it will attempt to fix build.xml files, so that
@@ -108,11 +119,6 @@ JAVA_ANT_CLASSPATH_TAGS="javac xjavac"
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # When set, <available> Ant tasks are rewritten to ignore Ant's runtime classpath.
-
-case "${EAPI:-0}" in
-	0|1) : ;;
-	*) EXPORT_FUNCTIONS src_configure ;;
-esac
 
 # @FUNCTION: java-ant-2_src_configure
 # @DESCRIPTION:
@@ -430,3 +436,5 @@ java-ant_rewrite-bootclasspath() {
 	java-ant_xml-rewrite -f "${file}" -c -e ${JAVA_PKG_BSFIX_TARGET_TAGS// / -e } \
 		-a bootclasspath -v "${bcp}"
 }
+
+fi
