@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fortran-2.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -27,9 +27,10 @@
 # FORTRAN_NEED_OPENMP=1
 
 inherit toolchain-funcs
+
 case ${EAPI:-0} in
 	# not used in the eclass, but left for backward compatibility with legacy users
-	4|5|6) inherit eutils ;;
+	5|6) inherit eutils ;;
 	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
