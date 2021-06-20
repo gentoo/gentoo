@@ -33,6 +33,8 @@ inherit user-info
 # @FUNCTION: _assert_pkg_ebuild_phase
 # @INTERNAL
 # @USAGE: <calling func name>
+# @DESCRIPTION:
+# Raises an alert if the phase is not suitable for user.eclass usage.
 _assert_pkg_ebuild_phase() {
 	case ${EBUILD_PHASE} in
 	setup|preinst|postinst|prerm|postrm) ;;
