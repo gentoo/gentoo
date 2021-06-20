@@ -1,10 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: preserve-libs.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
 # @BLURB: preserve libraries after SONAME changes
+# @SUPPORTED_EAPIS: 5 6 7
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_PRESERVE_LIBS_ECLASS} ]]; then
 _PRESERVE_LIBS_ECLASS=1
