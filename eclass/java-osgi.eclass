@@ -7,11 +7,20 @@
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
 # @BLURB: Java OSGi eclass
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # This eclass provides functionality which is used by packages that need to be
 # OSGi compliant. This means that the generated jars will have special headers
 # in their manifests. Currently this is used only by Eclipse-3.3 - later we
 # could extend this so that Gentoo Java system would be fully OSGi compliant.
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JAVA_OSGI_ECLASS} ]] ; then
+_JAVA_OSGI_ECLASS=1
 
 inherit java-utils-2
 
@@ -275,3 +284,5 @@ java-osgi_dojar-fromfile() {
 	_java-osgi_makejar-fromfile "$@" "${versionRewriting}"
 	java-pkg_dojar "${_OSGI_T}/osgi/${jarName}"
 }
+
+fi
