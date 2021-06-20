@@ -1,4 +1,4 @@
-# Copyright 2004-2015 Gentoo Foundation
+# Copyright 2004-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-pkg-opt-2.eclass
@@ -7,9 +7,20 @@
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
 # @BLURB: Eclass for package with optional Java support
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # Inherit this eclass instead of java-pkg-2 if you only need optional Java
 # support.
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_setup src_prepare pkg_preinst
+
+if [[ -z ${_JAVA_PKG_OPT_2_ECLASS} ]] ; then
+_JAVA_PKG_OPT_2_ECLASS=1
 
 inherit java-utils-2
 
@@ -23,11 +34,6 @@ RDEPEND="${DEPEND}"
 
 # See java-pkg-2.eclass for JAVA_PKG_IUSE documentation
 IUSE="${JAVA_PKG_IUSE} ${JAVA_PKG_OPT_USE}"
-
-case "${EAPI:-0}" in
-	0|1) EXPORT_FUNCTIONS pkg_setup pkg_preinst ;;
-	*) EXPORT_FUNCTIONS pkg_setup src_prepare pkg_preinst ;;
-esac
 
 # @FUNCTION: java-pkg-opt-2_pkg_setup
 # @DESCRIPTION:
@@ -58,3 +64,5 @@ java-pkg-opt-2_src_prepare() {
 java-pkg-opt-2_pkg_preinst() {
 	use ${JAVA_PKG_OPT_USE} && java-utils-2_pkg_preinst
 }
+
+fi
