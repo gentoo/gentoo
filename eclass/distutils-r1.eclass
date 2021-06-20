@@ -129,7 +129,7 @@ _distutils_set_globals() {
 			rdep+=" ${setuptools_dep}"
 			;;
 		pyproject.toml)
-			bdep+=' dev-python/pyproject2setuppy[${PYTHON_USEDEP}]'
+			bdep+=' >=dev-python/pyproject2setuppy-15[${PYTHON_USEDEP}]'
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
@@ -465,8 +465,7 @@ esetup.py() {
 
 	local setup_py=( setup.py )
 	if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
-		# TODO: remove '.main' when we require v10
-		setup_py=( -m pyproject2setuppy.main )
+		setup_py=( -m pyproject2setuppy )
 	fi
 
 	if [[ ${EAPI} != [67] && ${mydistutilsargs[@]} ]]; then
