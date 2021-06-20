@@ -11,4 +11,7 @@
 		<doc>https://www.nushell.sh/book/</doc>
 		<remote-id type="github">nushell/nushell</remote-id>
 	</upstream>
+    <use>
+		<flag name="extra">Install extra plugins: binaryview, tree, clipboard-cli, trash-support and others</flag>
+	</use>
 </pkgmetadata>
