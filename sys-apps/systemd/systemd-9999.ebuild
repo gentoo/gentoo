@@ -437,19 +437,7 @@ migrate_locale() {
 	fi
 }
 
-save_enabled_units() {
-	ENABLED_UNITS=()
-	type systemctl &>/dev/null || return
-	for x; do
-		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
-			ENABLED_UNITS+=( "${x}" )
-		fi
-	done
-}
-
 pkg_preinst() {
-	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
-
 	if ! use split-usr; then
 		local dir
 		for dir in bin sbin lib; do
@@ -478,15 +466,9 @@ pkg_postinst() {
 
 	udev_reload || FAIL=1
 
-	# Bug 465468, make sure locales are respect, and ensure consistency
+	# Bug 465468, make sure locales are respected, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
-
-	systemd_reenable systemd-networkd.service systemd-resolved.service
-
-	if [[ ${ENABLED_UNITS[@]} ]]; then
-		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
-	fi
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if type systemctl &>/dev/null; then
