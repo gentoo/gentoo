@@ -5,6 +5,10 @@
 EAPI=7
 source tests-common.sh
 
+eqawarn() {
+	: # stub
+}
+
 test_var() {
 	local var=${1}
 	local impl=${2}
