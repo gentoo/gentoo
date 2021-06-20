@@ -104,7 +104,11 @@ src_compile() {
 }
 
 src_test() {
-	[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake_src_test
+	run_tests() {
+		[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake_src_test
+	}
+
+	multibuild_foreach_variant run_tests
 }
 
 src_install() {
