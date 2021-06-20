@@ -192,8 +192,8 @@ _python_set_impls() {
 # <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns can be
 # either:
 # a) fnmatch-style patterns, e.g. 'python2*', 'pypy'...
-# b) '-2' to indicate all Python 2 variants (= !python_is_python3)
-# c) '-3' to indicate all Python 3 variants (= python_is_python3)
+# b) '-2' to indicate all Python 2 variants
+# c) '-3' to indicate all Python 3 variants
 _python_impl_matches() {
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME}: takes at least 1 parameter"
 	[[ ${#} -eq 1 ]] && return 0
@@ -203,10 +203,9 @@ _python_impl_matches() {
 
 	for pattern; do
 		if [[ ${pattern} == -2 ]]; then
-			python_is_python3 "${impl}" || return 0
+			:
 		elif [[ ${pattern} == -3 ]]; then
-			python_is_python3 "${impl}" && return 0
-			return
+			return 0
 		# unify value style to allow lax matching
 		elif [[ ${impl/./_} == ${pattern/./_} ]]; then
 			return 0
@@ -919,7 +918,7 @@ _python_wrapper_setup() {
 		_python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
-		if python_is_python3; then
+		if [[ ${EPYTHON} != python2* ]]; then
 			pyver=3
 			pyother=2
 		else
@@ -1096,13 +1095,10 @@ python_fix_shebang() {
 							if [[ ${i} == *python2 ]]; then
 								from=python2
 								if [[ ! ${force} ]]; then
-									python_is_python3 "${EPYTHON}" && error=1
+									error=1
 								fi
 							elif [[ ${i} == *python3 ]]; then
 								from=python3
-								if [[ ! ${force} ]]; then
-									python_is_python3 "${EPYTHON}" || error=1
-								fi
 							else
 								from=python
 							fi
