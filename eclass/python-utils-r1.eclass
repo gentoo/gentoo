@@ -265,6 +265,8 @@ python_export() {
 	eqawarn "python_export() is part of private eclass API."
 	eqawarn "Please call python_get*() instead."
 
+	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
+
 	_python_export "${@}"
 }
 
@@ -877,6 +879,8 @@ python_wrapper_setup() {
 
 	eqawarn "python_wrapper_setup() is part of private eclass API."
 	eqawarn "Please call python_setup() instead."
+
+	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
 
 	_python_wrapper_setup "${@}"
 }
