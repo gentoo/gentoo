@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
@@ -50,7 +50,7 @@ RDEPEND="
 		dev-python/xlwt[${PYTHON_USEDEP}]
 	)
 	gtk3? (
-		dev-python/pygobject:3[cairo?,${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
 	)
 	latex? (
@@ -69,7 +69,9 @@ RDEPEND="
 		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 	wxwidgets? (
-		dev-python/wxpython:*[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/wxpython:*[${PYTHON_USEDEP}]
+		' python3_{8,9})
 	)
 "
 
@@ -93,7 +95,7 @@ BDEPEND="
 	test? (
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pygobject:3[cairo?,${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.40.1-r1:3[cairo?,${PYTHON_USEDEP}]
 		>=www-servers/tornado-6.0.4[${PYTHON_USEDEP}]
 		x11-libs/gtk+:3[introspection]
 	)
