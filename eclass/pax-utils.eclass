@@ -8,6 +8,7 @@
 # Author: Kevin F. Quinn <kevquinn@gentoo.org>
 # Author: Anthony G. Basile <blueness@gentoo.org>
 # @BLURB: functions to provide PaX markings for hardened kernels
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 #
 # This eclass provides support for manipulating PaX markings on ELF binaries,
@@ -19,6 +20,11 @@
 #
 # To control what markings are made, set PAX_MARKINGS in /etc/portage/make.conf
 # to contain either "PT", "XT" or "none".  The default is none
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_PAX_UTILS_ECLASS} ]]; then
 _PAX_UTILS_ECLASS=1
