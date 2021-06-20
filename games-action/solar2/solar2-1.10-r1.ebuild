@@ -1,105 +1,60 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop gnome2-utils wrapper
+inherit desktop wrapper
 
-GAMEBALL="${PN}-linux-${PV}.tar.gz"
-ICONFILE="https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
-DESCRIPTION="An open-world, sandbox game set in an infinite abstract universe"
+DESCRIPTION="Open-world sandbox game set in an infinite abstract universe"
 HOMEPAGE="http://murudai.com/solar/"
-SRC_URI="${GAMEBALL} ${ICONFILE}"
-S="${WORKDIR}"/Solar2
+SRC_URI="
+	${PN}-linux-${PV}.tar.gz
+	fetch+https://dev.gentoo.org/~chewi/distfiles/${PN}.png"
+S="${WORKDIR}/Solar2"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="bundled-libs"
+RESTRICT="bindist fetch"
 
-RESTRICT="bindist fetch splitdebug"
-
-MYGAMEDIR=opt/${PN}
-QA_PREBUILT="
-	${MYGAMEDIR#/}/lib/*
-	${MYGAMEDIR#/}/Solar2.bin.x86
-"
-
-# TODO: - unbundle libmono for 64bit
-#       - unbundling libSDL_mixer breaks the game
-#       - provide icon
-#       - test useflags for libsdl on x86
+# game outputs audio using openal and libsdl backends simultaneously
 RDEPEND="
-	virtual/opengl
-	amd64? (
-		>=media-libs/flac-1.2.1-r5[abi_x86_32(-)]
-		>=media-libs/libsdl-1.2.15-r4[X,sound,video,joystick,abi_x86_32(-)]
-		>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
-		>=virtual/opengl-7.0-r1[abi_x86_32(-)]
-		!bundled-libs? (
-			>=media-libs/libmad-0.15.1b-r8[abi_x86_32(-)]
-			>=media-libs/openal-1.15.1[abi_x86_32(-)]
-			>=media-libs/sdl-mixer-1.2.12-r4[flac,mikmod,mad,mp3,vorbis,abi_x86_32(-)]
-			>=media-libs/libmikmod-3.2.0[abi_x86_32(-)]
-		)
-	)
-	x86? (
-		media-libs/flac
-		media-libs/libsdl[X,sound,video,joystick]
-		media-libs/libvorbis
-		!bundled-libs? (
-			dev-lang/mono
-			media-libs/libmad
-			media-libs/libmikmod
-			media-libs/openal
-			media-libs/sdl-mixer[flac,mikmod,mad,mp3,vorbis]
-		)
-	)"
+	media-libs/libsdl[X,joystick,opengl,sound,video,abi_x86_32(-)]
+	media-libs/openal[abi_x86_32(-)]
+	media-libs/sdl-mixer[mad,mp3,abi_x86_32(-)]
+	virtual/opengl[abi_x86_32(-)]"
+
+QA_PREBUILT="
+	opt/${PN}/Solar2.bin.x86
+	opt/${PN}/lib/libmono-2.0.so.1"
 
 pkg_nofetch() {
-	einfo "Please buy and download ${GAMEBALL} from:"
+	einfo "Please buy and download '${A%% *}' from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "Also download ${ICONFILE}"
-	einfo "and move both to your distfiles directory. The Humble Bundle download"
-	einfo "may have a timestamp appended to the filename."
+	einfo "and place it in your distfiles directory. The Humble Bundle"
+	einfo "download may have a timestamp appended to the filename."
 }
 
 src_prepare() {
 	default
 
-	# remove unused files
-	rm solar2.sh || die
+	# remove duplicate libmono and unused wrapper
+	rm lib/libmono-2.0.so solar2.sh || die
 
-	if ! use bundled-libs ; then
-		einfo "Removing bundled libs..."
-		if use amd64 ; then
-			# no mono 32bit libs on amd64 yet
-			rm -v lib/libmad.so* lib/libmikmod.so* lib/libopenal.so* || die
-		else
-			rm -v lib/libmad.so* lib/libmikmod.so* lib/libopenal.so* lib/libmono-2.0.so* || die
-		fi
-	fi
+	# remove bundled libs except mono (had no success using system's)
+	rm lib/lib{SDL_mixer-1.2,mad,mikmod,openal}.so* || die
 }
 
 src_install() {
-	insinto ${MYGAMEDIR}
-	doins -r *
+	insinto /opt/${PN}
+	doins -r .
 
-	make_wrapper ${PN} "./Solar2.bin.x86" "${MYGAMEDIR}"
-	make_desktop_entry ${PN}
-	doicon -s 64 "${DISTDIR}"/${PN}.png
+	fperms +x /opt/${PN}/Solar2.bin.x86
+	make_wrapper ${PN} ./Solar2.bin.x86 /opt/${PN}
 
-	fperms +x ${MYGAMEDIR}/Solar2.bin.x86
-}
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} "Solar 2"
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	# game insists on loading sdl-mixer from its own directory
+	dosym -r /{usr,opt/${PN}}/lib/libSDL_mixer-1.2.so.0
 }
