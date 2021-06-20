@@ -345,22 +345,6 @@ python_setup() {
 		fi
 	fi
 
-	# then, try eselect-python
-	local variant i
-	for variant in '' '--python2' '--python3'; do
-		i=$(eselect python --show ${variant} 2>/dev/null)
-
-		if [[ ! ${i} ]]; then
-			# no eselect-python?
-			break
-		elif _python_EPYTHON_supported "${i}"; then
-			_python_export "${i}" EPYTHON PYTHON
-			_python_wrapper_setup
-			einfo "Using ${EPYTHON} to build"
-			return
-		fi
-	done
-
 	# fallback to best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
