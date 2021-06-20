@@ -1,12 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
 # @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # This eclass is for all functions pertaining to handling multilib configurations.
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_MULTILIB_ECLASS} ]]; then
 _MULTILIB_ECLASS=1
@@ -47,7 +53,7 @@ has_multilib_profile() {
 #   fall back on old behavior.  Any profile that has these set should also
 #   depend on a newer version of portage (not yet released) which uses these
 #   over CONF_LIBDIR in econf, dolib, etc...
-if has "${EAPI:-0}" 0 1 2 3 4 5; then
+if [[ ${EAPI} == 5 ]] ; then
 	get_libdir() {
 		local CONF_LIBDIR
 		if [ -n  "${CONF_LIBDIR_OVERRIDE}" ] ; then
