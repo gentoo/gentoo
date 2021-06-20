@@ -9,7 +9,17 @@
 # Since Common Lisp libraries share similar structure, this eclass aims
 # to provide a simple way to write ebuilds with these characteristics.
 
+case ${EAPI} in
+	[67]) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_compile src_install
+
 inherit eutils
+
+if [[ -z ${_COMMON_LISP_3_ECLASS} ]]; then
+_COMMON_LISP_3_ECLASS=1
 
 # @ECLASS-VARIABLE: CLIMPLEMENTATIONS
 # @DESCRIPTION:
@@ -35,8 +45,6 @@ CLSYSTEMROOT="${ROOT%/}"/usr/share/common-lisp/systems
 CLPACKAGE="${PN}"
 
 PDEPEND="virtual/commonlisp"
-
-EXPORT_FUNCTIONS src_compile src_install
 
 # @FUNCTION: common-lisp-3_src_compile
 # @DESCRIPTION:
@@ -235,3 +243,5 @@ common-lisp-export-impl-args() {
 	esac
 	export CL_BINARY CL_NORC CL_LOAD CL_EVAL
 }
+
+fi
