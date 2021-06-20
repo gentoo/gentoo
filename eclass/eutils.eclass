@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eutils.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: many extra (but common) functions that are used in ebuilds
 # @DESCRIPTION:
 # The eutils eclass contains a suite of functions that complement
@@ -24,7 +24,7 @@ _EUTILS_ECLASS=1
 
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
+	5|6)
 		inherit desktop edos2unix epatch estack l10n ltprune multilib \
 			preserve-libs toolchain-funcs vcs-clean wrapper
 		;;
@@ -90,23 +90,7 @@ use_if_iuse() {
 	use $1
 }
 
-case ${EAPI:-0} in
-0|1|2|3|4)
-
-# @FUNCTION: usex
-# @USAGE: <USE flag> [true output] [false output] [true suffix] [false suffix]
-# @DESCRIPTION:
-# Proxy to declare usex for package managers or EAPIs that do not provide it
-# and use the package manager implementation when available (i.e. EAPI >= 5).
-# If USE flag is set, echo [true output][true suffix] (defaults to "yes"),
-# otherwise echo [false output][false suffix] (defaults to "no").
-usex() { use "$1" && echo "${2-yes}$4" || echo "${3-no}$5" ; } #382963
-
-;;
-esac
-
-case ${EAPI:-0} in
-0|1|2|3|4|5)
+if [[ ${EAPI} == 5 ]] ; then
 
 # @FUNCTION: einstalldocs
 # @DESCRIPTION:
@@ -138,7 +122,6 @@ einstalldocs() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local dodoc_opts=-r
-	has ${EAPI} 0 1 2 3 && dodoc_opts=
 
 	if ! declare -p DOCS &>/dev/null ; then
 		local d
@@ -189,11 +172,10 @@ in_iuse() {
 	has "${flag}" "${liuse[@]#[+-]}"
 }
 
-;;
-esac
+fi
 
 case ${EAPI:-0} in
-0|1|2|3|4|5|6)
+5|6)
 
 # @FUNCTION: eqawarn
 # @USAGE: [message]
