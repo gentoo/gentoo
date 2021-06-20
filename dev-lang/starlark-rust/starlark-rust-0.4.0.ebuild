@@ -174,7 +174,9 @@ KEYWORDS="~amd64"
 IUSE=""
 RESTRICT+=" test"
 
-DEPEND="${RUST_DEPEND}"
+# Nightly rust-1.53.0 required for https://bugs.gentoo.org/796824
+BDEPEND="${RUST_DEPEND}
+	>=dev-lang/rust-1.53.0[nightly]"
 
 src_prepare() {
 	grep -lZ println starlark/bin/*.rs | xargs -0 sed -e 's:e\?println!:eprintln!:g' -i
