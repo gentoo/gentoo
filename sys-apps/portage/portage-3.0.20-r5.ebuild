@@ -76,7 +76,8 @@ PDEPEND="
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
 	https://github.com/gentoo/portage/commit/a4d882964ee1931462f911d0c46a80e27e59fa48.patch -> portage-3.0.20-bug-777492-a4d8829.patch
 	https://github.com/gentoo/portage/commit/209be9a8bee13384dd04a4762436b4c2a5e35bc6.patch -> portage-3.0.20-bug-777492-209be9a.patch
-	https://github.com/gentoo/portage/compare/8e47286b7082aac21fe25402a1f9d03db968cd30...693f6bf5a54e2424e2ad49e1838b61f76bf78e40.patch -> portage-3.0.20-bug-796584-693f6bf.patch"
+	https://github.com/gentoo/portage/compare/8e47286b7082aac21fe25402a1f9d03db968cd30...693f6bf5a54e2424e2ad49e1838b61f76bf78e40.patch -> portage-3.0.20-bug-796584-693f6bf.patch
+	https://github.com/gentoo/portage/commit/2ce11f06e48290efb2d4b6743c8edf01c176b0fc.patch -> portage-3.0.20-bug-796812-2ce11f0.patch"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS ~UTS_NS"
@@ -95,6 +96,9 @@ python_prepare_all() {
 
 	# Apply regression fix for https://bugs.gentoo.org/796584.
 	eapply "${DISTDIR}/portage-3.0.20-bug-796584-693f6bf.patch"
+
+	# Apply EAPI 8 fix for https://bugs.gentoo.org/796812.
+	eapply "${DISTDIR}/portage-3.0.20-bug-796812-2ce11f0.patch"
 
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
