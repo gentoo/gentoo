@@ -8,6 +8,7 @@
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>
 # @BLURB: It provides the functionality required to install external modules against a kernel source tree.
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # This eclass is used to interface with linux-info.eclass in such a way
 # to provide the functionality and initial functions
@@ -134,8 +135,19 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
-inherit eutils linux-info multilib toolchain-funcs
+case ${EAPI:-0} in
+	[567]) inherit eutils ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
+
+if [[ -z ${_LINUX_MOD_ECLASS} ]] ; then
+_LINUX_MOD_ECLASS=1
+
+# TODO: When adding support for future EAPIs, please audit this list
+# for unused inherits and conditionalise them.
+inherit linux-info multilib toolchain-funcs
 
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
   [nNfF]*|[oO][fF]*|0|-) _modules_optional_use_iuse_default='' ;;
@@ -769,3 +781,5 @@ linux-mod_pkg_postrm() {
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 	remove_moduledb;
 }
+
+fi
