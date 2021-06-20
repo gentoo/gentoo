@@ -189,11 +189,8 @@ _python_set_impls() {
 # of the patterns following it. Return 0 if it does, 1 otherwise.
 # Matches if no patterns are provided.
 #
-# <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns can be
-# either:
-# a) fnmatch-style patterns, e.g. 'python2*', 'pypy'...
-# b) '-2' to indicate all Python 2 variants
-# c) '-3' to indicate all Python 3 variants
+# <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns
+# are fnmatch-style.
 _python_impl_matches() {
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME}: takes at least 1 parameter"
 	[[ ${#} -eq 1 ]] && return 0
@@ -202,14 +199,30 @@ _python_impl_matches() {
 	shift
 
 	for pattern; do
-		if [[ ${pattern} == -2 ]]; then
-			:
-		elif [[ ${pattern} == -3 ]]; then
-			return 0
-		# unify value style to allow lax matching
-		elif [[ ${impl/./_} == ${pattern/./_} ]]; then
-			return 0
-		fi
+		case ${pattern} in
+			-2|python2*|pypy)
+				if [[ ${EAPI} != [67] ]]; then
+					eerror
+					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
+					eerror "${FUNCNAME[1]} calls."
+					die "Passing ${pattern} to ${FUNCNAME[1]} is banned in EAPI ${EAPI}"
+				fi
+				;;
+			-3)
+				# NB: "python3*" is fine, as "not pypy3"
+				if [[ ${EAPI} != [67] ]]; then
+					eerror
+					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
+					eerror "${FUNCNAME[1]} calls."
+					die "Passing ${pattern} to ${FUNCNAME[1]} is banned in EAPI ${EAPI}"
+				fi
+				return 0
+				;;
+			*)
+				# unify value style to allow lax matching
+				[[ ${impl/./_} == ${pattern/./_} ]] && return 0
+				;;
+		esac
 	done
 
 	return 1
