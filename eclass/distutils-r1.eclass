@@ -248,15 +248,16 @@ unset -f _distutils_set_globals
 # }
 # @CODE
 
-# @ECLASS-VARIABLE: mydistutilsargs
+# @ECLASS-VARIABLE: DISTUTILS_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array containing options to be passed to setup.py.
+# An array containing options to be passed to setup.py.  They are passed
+# before the default arguments, i.e. before the first command.
 #
 # Example:
 # @CODE
 # python_configure_all() {
-# 	mydistutilsargs=( --enable-my-hidden-option )
+# 	DISTUTILS_ARGS=( --enable-my-hidden-option )
 # }
 # @CODE
 
@@ -446,8 +447,9 @@ distutils_enable_tests() {
 # (if ${EPYTHON} is set; fallback 'python' otherwise).
 #
 # setup.py will be passed the following, in order:
-# 1. ${mydistutilsargs[@]}
-# 2. additional arguments passed to the esetup.py function.
+# 1. ${DISTUTILS_ARGS[@]}
+# 2. ${mydistutilsargs[@]} (deprecated)
+# 3. additional arguments passed to the esetup.py function.
 #
 # Please note that setup.py will respect defaults (unless overridden
 # via command-line options) from setup.cfg that is created
@@ -467,7 +469,12 @@ esetup.py() {
 		setup_py=( -m pyproject2setuppy.main )
 	fi
 
-	set -- "${EPYTHON}" "${setup_py[@]}" "${mydistutilsargs[@]}" "${@}"
+	if [[ ${EAPI} != [67] && ${mydistutilsargs[@]} ]]; then
+		die "mydistutilsargs is banned in EAPI ${EAPI} (use DISTUTILS_ARGS)"
+	fi
+
+	set -- "${EPYTHON}" "${setup_py[@]}" "${DISTUTILS_ARGS[@]}" \
+		"${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die -n
@@ -839,13 +846,15 @@ distutils-r1_python_install() {
 	local root=${D%/}/_${EPYTHON}
 	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
 
-	# inline mydistutilsargs logic from esetup.py in order to make
+	# inline DISTUTILS_ARGS logic from esetup.py in order to make
 	# argv overwriting easier
 	local args=(
+		"${DISTUTILS_ARGS[@]}"
 		"${mydistutilsargs[@]}"
 		install --skip-build --root="${root}" "${args[@]}"
 		"${@}"
 	)
+	local DISTUTILS_ARGS=()
 	local mydistutilsargs=()
 
 	# enable compilation for the install phase.
