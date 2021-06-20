@@ -12,7 +12,7 @@ DESCRIPTION="Framework for downloading and sharing additional application data"
 
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE=""
+IUSE="opds"
 
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -34,7 +34,16 @@ DEPEND="
 	=kde-frameworks/ktextwidgets-${PVCUT}*:5
 	=kde-frameworks/kwidgetsaddons-${PVCUT}*:5
 	=kde-frameworks/kxmlgui-${PVCUT}*:5
+	opds? ( =kde-frameworks/syndication-${PVCUT}*:5 )
 "
 RDEPEND="${DEPEND}
 	>=kde-frameworks/kirigami-${PVCUT}:5
 "
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake_use_find_package opds KF5Syndication)
+	)
+
+	ecm_src_configure
+}
