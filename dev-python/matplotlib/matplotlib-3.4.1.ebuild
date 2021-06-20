@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
@@ -147,6 +147,7 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/matplotlib-3.4.0-test.patch
 		"${FILESDIR}"/matplotlib-3.3.3-disable-lto.patch
+		"${FILESDIR}"/matplotlib-3.4.1-xelatex-test.patch
 	)
 
 	# requires jupyter-nbconvert
