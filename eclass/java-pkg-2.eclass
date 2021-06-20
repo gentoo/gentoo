@@ -7,9 +7,20 @@
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
 # @BLURB: Eclass for Java Packages
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # This eclass should be inherited for pure Java packages, or by packages which
 # need to use Java.
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_compile pkg_preinst
+
+if [[ -z ${_JAVA_PKG_2_ECLASS} ]] ; then
+_JAVA_PKG_2_ECLASS=1
 
 inherit java-utils-2
 
@@ -35,10 +46,6 @@ if [[ ${CATEGORY} = dev-java && ${PN} = commons-* ]]; then
 	SRC_URI="mirror://apache/${PN/-///}/source/${P}-src.tar.gz"
 fi
 
-case "${EAPI:-0}" in
-	0|1) EXPORT_FUNCTIONS pkg_setup src_compile pkg_preinst ;;
-	*) EXPORT_FUNCTIONS pkg_setup src_prepare src_compile pkg_preinst ;;
-esac
 
 # @FUNCTION: java-pkg-2_pkg_setup
 # @DESCRIPTION:
@@ -149,3 +156,5 @@ java-pkg-2_src_test() {
 java-pkg-2_pkg_preinst() {
 	java-utils-2_pkg_preinst
 }
+
+fi
