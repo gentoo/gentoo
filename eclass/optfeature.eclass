@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # base-system@gentoo.org
 # @BLURB: Advertise optional functionality that might be useful to users
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 
 case ${EAPI:-0} in
 	[0-7]) ;;
