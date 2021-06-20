@@ -15,7 +15,7 @@ HOMEPAGE="
 SRC_URI="https://github.com/bskinn/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 SLOT="0"
 
 RDEPEND=">=dev-python/attrs-17.1[${PYTHON_USEDEP}]"
