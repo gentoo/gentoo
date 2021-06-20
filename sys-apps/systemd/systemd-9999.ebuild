@@ -223,7 +223,6 @@ src_prepare() {
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync-r1.patch"
 			"${FILESDIR}/gentoo-journald-audit.patch"
-			"${FILESDIR}/gentoo-pam-r1.patch"
 		)
 	fi
 
@@ -379,6 +378,10 @@ multilib_src_install_all() {
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
+
+	if use pam; then
+		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+	fi
 
 	if use hwdb; then
 		rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
