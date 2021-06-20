@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-06-20)
+# Abandoned upstream, last release 17 years ago, unmaintained, tons of
+# QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
+app-dicts/canna-cannadic
+app-dicts/canna-2ch
+app-emacs/yc
+app-i18n/canna
+app-i18n/canfep
+app-i18n/im-canna
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-20)
 # no consumer, removal in 30 days
 # see bug: https://bugs.gentoo.org/796587
