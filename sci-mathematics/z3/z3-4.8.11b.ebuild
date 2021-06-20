@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit cmake-multilib python-single-r1 toolchain-funcs
+inherit cmake-multilib java-pkg-opt-2 python-single-r1 toolchain-funcs
 
 DESCRIPTION="An efficient theorem prover"
 HOMEPAGE="https://github.com/Z3Prover/z3/"
@@ -28,6 +28,11 @@ BDEPEND="
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+src_prepare() {
+	cmake_src_prepare
+	java-pkg-opt-2_src_prepare
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${P}"
@@ -39,6 +44,8 @@ multilib_src_configure() {
 		-DZ3_INCLUDE_GIT_DESCRIBE=OFF
 		-DZ3_INCLUDE_GIT_HASH=OFF
 	)
+
+	multilib_is_native_abi && use java && mycmakeargs+=( -DJAVA_HOME="$(java-config -g JAVA_HOME )" )
 
 	cmake_src_configure
 }
