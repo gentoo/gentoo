@@ -43,7 +43,9 @@ esac
 # dev-lang/perl is automatically added by the eclass. It defaults to yes.
 # Set to no to disable, set to noslotop to add a perl dependency without
 # slot operator (EAPI=6). All packages installing into the vendor_perl
-# path must use yes here.
+# path must use yes here. (EAPI=8 and later) Also adds a test useflag,
+# a use-conditional build time dependency on virtual/perl-Test-Simple, and
+# the required RESTRICT setting.
 
 case ${EAPI:-0} in
 	5)
@@ -103,7 +105,7 @@ case ${EAPI:-0} in
 
 		EXPORT_FUNCTIONS ${PERL_EXPF}
 		;;
-	*)
+	7)
 		[[ ${CATEGORY} == perl-core ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
@@ -117,6 +119,41 @@ case ${EAPI:-0} in
 				DEPEND="dev-lang/perl"
 				BDEPEND="dev-lang/perl"
 				RDEPEND="dev-lang/perl"
+				;;
+		esac
+
+		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT:-yes}" != "yes" ]]; then
+			die "GENTOO_DEPEND_ON_PERL_SUBSLOT=no is banned in EAPI=6 and later."
+		fi
+
+		if [[ "${PERL_EXPORT_PHASE_FUNCTIONS}" ]]; then
+			die "PERL_EXPORT_PHASE_FUNCTIONS is banned in EAPI=6 and later."
+		fi
+
+		EXPORT_FUNCTIONS ${PERL_EXPF}
+		;;
+	*)
+		[[ ${CATEGORY} == perl-core ]] && \
+			PERL_EXPF+=" pkg_postinst pkg_postrm"
+
+		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
+			yes)
+				DEPEND="dev-lang/perl"
+				BDEPEND="dev-lang/perl
+					 test? ( virtual/perl-Test-Simple )"
+				RDEPEND="dev-lang/perl:="
+				IUSE="test"
+				# RESTRICT="!test? ( test )"
+				# not handled correctly in portage yet
+				;;
+			noslotop)
+				DEPEND="dev-lang/perl"
+				BDEPEND="dev-lang/perl
+					 test? ( virtual/perl-Test-Simple )"
+				RDEPEND="dev-lang/perl"
+				IUSE="test"
+				# RESTRICT="!test? ( test )"
+				# not handled correctly in portage yet
 				;;
 		esac
 
