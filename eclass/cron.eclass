@@ -15,15 +15,20 @@
 #
 # NOTE on defaults: the default settings in the below functions were
 # chosen based on the most common setting among cron ebuilds.
-#
 
-inherit eutils flag-o-matic
+case ${EAPI} in
+	[67]) inherit eutils ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+inherit flag-o-matic
 
 EXPORT_FUNCTIONS pkg_postinst
 
-SLOT="0"
+if [[ -z ${_CRON_ECLASS} ]]; then
+_CRON_ECLASS=1
 
-DEPEND=">=sys-apps/sed-4.0.5"
+SLOT="0"
 
 RDEPEND=">=sys-process/cronbase-0.3.2"
 for pn in vixie-cron bcron cronie dcron fcron; do
@@ -41,7 +46,6 @@ done
 # ex: docrondir /some/dir -m 0770 -o root -g cron
 #     docrondir /some/dir (uses default perms)
 #     docrondir -m0700 (uses default dir)
-
 docrondir() {
 	# defaults
 	local perms="-m0750 -o root -g cron" dir="/var/spool/cron/crontabs"
@@ -75,7 +79,6 @@ docrondir() {
 #
 # ex: docron -m 0700 -o root -g root ('exe' defaults to "cron")
 #     docron crond -m 0110
-
 docron() {
 	local cron="cron" perms="-m 0750 -o root -g wheel"
 
@@ -106,7 +109,6 @@ docron() {
 # Install crontab executable
 #
 #   Uses same semantics as docron.
-
 docrontab() {
 	local crontab="crontab" perms="-m 4750 -o root -g cron"
 
@@ -157,3 +159,5 @@ cron_pkg_postinst() {
 	einfo "    https://wiki.gentoo.org/wiki/Cron"
 	echo
 }
+
+fi
