@@ -1010,6 +1010,9 @@ _python_wrapper_setup() {
 #
 # Returns 0 (true) if it is, 1 (false) otherwise.
 python_is_python3() {
+	eqawarn "${FUNCNAME} is deprecated, as Python 2 is not supported anymore"
+	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
+
 	local impl=${1:-${EPYTHON}}
 	[[ ${impl} ]] || die "python_is_python3: no impl nor EPYTHON"
 
