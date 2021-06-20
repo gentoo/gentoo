@@ -1,6 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# No consumers left. Removal in 30 days.
+
 # @ECLASS: cannadic.eclass
 # @MAINTAINER:
 # cjk@gentoo.org
