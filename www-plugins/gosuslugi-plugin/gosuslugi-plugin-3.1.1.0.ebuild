@@ -17,7 +17,7 @@ SRC_URI="
 #	x64-winnt? ( https://ds-plugin.gosuslugi.ru/plugin/htdocs/plugin/IFCPlugin-x64.msi )
 
 HOMEPAGE="http://gosuslugi.ru/"
-LICENSE="EULA"
+LICENSE="all-rights-reserved"
 RESTRICT="mirror"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x64-macos"
