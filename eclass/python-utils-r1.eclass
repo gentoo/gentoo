@@ -658,7 +658,7 @@ python_optimize() {
 python_scriptinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_scriptroot=${1}
+	_PYTHON_SCRIPTROOT=${1}
 }
 
 # @FUNCTION: python_doexe
@@ -693,7 +693,7 @@ python_newexe() {
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
 
-	local wrapd=${python_scriptroot:-/usr/bin}
+	local wrapd=${_PYTHON_SCRIPTROOT:-/usr/bin}
 
 	local f=${1}
 	local newfn=${2}
@@ -797,7 +797,7 @@ python_newscript() {
 python_moduleinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_moduleroot=${1}
+	_PYTHON_MODULEROOT=${1}
 }
 
 # @FUNCTION: python_domodule
@@ -821,13 +821,13 @@ python_domodule() {
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local d
-	if [[ ${python_moduleroot} == /* ]]; then
+	if [[ ${_PYTHON_MODULEROOT} == /* ]]; then
 		# absolute path
-		d=${python_moduleroot}
+		d=${_PYTHON_MODULEROOT}
 	else
 		# relative to site-packages
 		local sitedir=$(python_get_sitedir)
-		d=${sitedir#${EPREFIX}}/${python_moduleroot//.//}
+		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
 	fi
 
 	(
