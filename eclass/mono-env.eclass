@@ -5,14 +5,21 @@
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
 # @BLURB: Set environment variables commonly used by dotnet packages.
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # Set environment variables commonly used by dotnet packages.
 
-SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.bz2"
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 EXPORT_FUNCTIONS pkg_setup
 
-if [[ ! ${_MONO_ENV} ]]; then
+if [[ -z ${_MONO_ENV_ECLASS} ]] ; then
+_MONO_ENV_ECLASS=1
+
+SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.bz2"
 
 mono-env_pkg_setup() {
 	# >=mono-0.92 versions using mcs -pkg:foo-sharp require shared memory, so we set the
@@ -40,5 +47,4 @@ mono-env_pkg_setup() {
 	QA_MULTILIB_PATHS="usr/lib/"
 }
 
-_MONO_ENV=1
 fi
