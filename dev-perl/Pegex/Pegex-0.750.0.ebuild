@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Acmeist PEG Parser Framework"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
