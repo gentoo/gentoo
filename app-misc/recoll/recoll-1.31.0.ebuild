@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit linux-info optfeature python-single-r1 qmake-utils
 
@@ -110,22 +110,22 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "XML based documents support"    "dev-libs/libxslt[python] dev-libs/libxml2[python]"
-	optfeature "PDF files support"              app-text/poppler
-	optfeature "PDF files with OCR support"     app-text/tesseract
-	optfeature "MS Word files support"          app-text/antiword
-	optfeature "Wordperfect files support"      "app-text/libwpd[tools]"
-	optfeature "Lyx files support"              app-office/lyx
-	optfeature "GNU Info files support"         sys-apps/texinfo
-	optfeature "RAR archives support"           dev-python/rarfile
-	optfeature "7zip archives support"          dev-python/pylzma
-	optfeature "iCalendar files support"        dev-python/icalendar
-	optfeature "Postscript files support"       app-text/pstotext
-	optfeature "RTF files support"              app-text/unrtf
-	optfeature "TeX files support"              dev-text/detex
-	optfeature "DVI files support"              virtual/tex-base
-	optfeature "DJVU files support"             app-text/djvu
-	optfeature "tags in audio files support"    media-libs/mutagen
-	optfeature "tags in image files support"    media-libs/exiftool
-	optfeature "Midi karaoke files support"     dev-python/chardet
+	optfeature "XML based documents support" "dev-libs/libxslt[python] dev-libs/libxml2[python]"
+	optfeature "PDF files support" app-text/poppler
+	optfeature "PDF files with OCR support" app-text/tesseract
+	optfeature "MS Word files support" app-text/antiword
+	optfeature "Wordperfect files support" "app-text/libwpd[tools]"
+	optfeature "Lyx files support" app-office/lyx
+	optfeature "GNU Info files support" sys-apps/texinfo
+	optfeature "RAR archives support" dev-python/rarfile
+	optfeature "7zip archives support" dev-python/pylzma
+	optfeature "iCalendar files support" dev-python/icalendar
+	optfeature "Postscript files support" app-text/pstotext
+	optfeature "RTF files support" app-text/unrtf
+	optfeature "TeX files support" dev-text/detex
+	optfeature "DVI files support" virtual/tex-base
+	optfeature "DJVU files support" app-text/djvu
+	optfeature "tags in audio files support" media-libs/mutagen
+	optfeature "tags in image files support" media-libs/exiftool
+	optfeature "Midi karaoke files support" dev-python/chardet
 }
