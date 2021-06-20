@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: An eclass for Python packages not installed for multiple implementations.
 # @DESCRIPTION:
 # An extension of the python-r1 eclass suite for packages which
@@ -40,7 +40,7 @@ case "${EAPI:-0}" in
 	[0-5])
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	[6-7])
+	[6-8])
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
