@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
 # @BLURB: Eclass for packaging Java software with ease.
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
 # without the use of any build instructions shipped with the sources.
@@ -15,13 +16,21 @@
 # addressed by an ebuild by putting corresponding files into the target
 # directory before calling the src_compile function of this eclass.
 
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_compile src_install src_test
+
+if [[ -z ${_JAVA_PKG_SIMPLE_ECLASS} ]] ; then
+_JAVA_PKG_SIMPLE_ECLASS=1
+
 inherit java-utils-2
 
 if ! has java-pkg-2 ${INHERITED}; then
 	eerror "java-pkg-simple eclass can only be inherited AFTER java-pkg-2"
 fi
-
-EXPORT_FUNCTIONS src_compile src_install src_test
 
 # We are only interested in finding all java source files, wherever they may be.
 S="${WORKDIR}"
@@ -479,3 +488,5 @@ java-pkg-simple_src_test() {
 		esac
 	done
 }
+
+fi
