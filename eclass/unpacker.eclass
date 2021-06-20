@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # base-system@gentoo.org
 # @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # Some extraneous file formats are not part of PMS, or are only in certain
 # EAPIs.  Rather than worrying about that, support the crazy cruft here
@@ -13,6 +14,11 @@
 # Possible todos:
 #  - merge rpm unpacking
 #  - support partial unpacks?
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_UNPACKER_ECLASS} ]]; then
 _UNPACKER_ECLASS=1
