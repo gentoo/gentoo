@@ -20,8 +20,16 @@ _GNUSTEP_2_ECLASS=1
 
 inherit gnustep-base
 
-DEPEND=">=gnustep-base/gnustep-make-2.0
-	virtual/gnustep-back"
+case ${EAPI:-0} in
+	[56])
+		DEPEND=">=gnustep-base/gnustep-make-2.0"
+		;;
+	*)
+		BDEPEND=">=gnustep-base/gnustep-make-2.0"
+		;;
+esac
+
+DEPEND+=" virtual/gnustep-back"
 RDEPEND="${DEPEND}"
 
 # The following gnustep-based EXPORT_FUNCTIONS are available:
