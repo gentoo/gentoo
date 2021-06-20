@@ -1120,20 +1120,22 @@ python_fix_shebang() {
 							fi
 							break
 							;;
-						*python[23].[0123456789]|*pypy|*pypy3|*jython[23].[0123456789])
+						*python[23].[0-9]|*python3.[1-9][0-9]|*pypy|*pypy3|*jython[23].[0-9])
 							# Explicit mismatch.
 							if [[ ! ${force} ]]; then
 								error=1
 							else
 								case "${i}" in
-									*python[23].[0123456789])
-										from="python[23].[0123456789]";;
+									*python[23].[0-9])
+										from="python[23].[0-9]";;
+									*python3.[1-9][0-9])
+										from="python3.[1-9][0-9]";;
 									*pypy)
 										from="pypy";;
 									*pypy3)
 										from="pypy3";;
-									*jython[23].[0123456789])
-										from="jython[23].[0123456789]";;
+									*jython[23].[0-9])
+										from="jython[23].[0-9]";;
 									*)
 										die "${FUNCNAME}: internal error in 2nd pattern match";;
 								esac
