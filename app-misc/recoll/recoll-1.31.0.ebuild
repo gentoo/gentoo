@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="camelcase chm doc +inotify qt5 session +spell webengine"
+IUSE="camelcase chm +inotify qt5 session +spell webengine"
 REQUIRED_USE="
 	session? ( inotify )
 	webengine? ( qt5 )
@@ -104,7 +104,7 @@ src_install() {
 	python_optimize
 
 	# html docs should be placed in /usr/share/doc/${PN}/html
-	use doc && dodoc -r "${ED}"/usr/share/recoll/doc/.
+	dodoc -r "${ED}"/usr/share/recoll/doc/.
 	rm -r "${ED}/usr/share/recoll/doc" || die
 	find "${D}" -name '*.la' -delete || die
 }
