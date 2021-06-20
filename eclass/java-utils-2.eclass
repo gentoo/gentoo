@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
 # @BLURB: Base eclass for Java packages
+# @SUPPORTED_EAPIS: 5 6 7
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass,
 # java-pkg-opt-2.eclass and java-ant-2 eclass, as well as from ebuilds.
@@ -16,17 +17,22 @@
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
 
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_JAVA_UTILS_2_ECLASS} ]] ; then
+_JAVA_UTILS_2_ECLASS=1
+
 # EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver eutils multilib versionator
+[[ ${EAPI} == [56] ]] && inherit eapi7-ver eutils multilib versionator
 
 IUSE="elibc_FreeBSD"
 
 # Make sure we use java-config-2
 export WANT_JAVA_CONFIG="2"
-
-# Prefix variables are only available for EAPI>=3
-has "${EAPI:-0}" 0 1 2 && ED="${D}" EPREFIX= EROOT="${ROOT}"
 
 has test ${JAVA_PKG_IUSE} && RESTRICT+=" !test? ( test )"
 
@@ -975,10 +981,6 @@ java-pkg_jar-from() {
 
 	[[ -z ${target_pkg} ]] && die "Must specify a package"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		target_pkg="${target_pkg//:/-}"
-	fi
-
 	# default destjar to the target jar
 	[[ -z "${destjar}" ]] && destjar="${target_jar}"
 
@@ -1114,10 +1116,6 @@ java-pkg_getjars() {
 
 	local pkgs="${1}"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	jars="$(java-config ${deep} --classpath=${pkgs})"
 	[[ $? != 0 ]] && die "java-config --classpath=${pkgs} failed"
 	debug-print "${pkgs}:${jars}"
@@ -1182,10 +1180,6 @@ java-pkg_getjar() {
 	[[ ${#} -ne 2 ]] && die "${FUNCNAME} takes only two arguments besides --*"
 
 	local pkg="${1}" target_jar="${2}" jar
-
-	if [[ "${EAPI}" == "1" ]]; then
-		pkg="${pkg//:/-}"
-	fi
 
 	[[ -z ${pkg} ]] && die "Must specify package to get a jar from"
 	[[ -z ${target_jar} ]] && die "Must specify jar to get"
@@ -1272,10 +1266,6 @@ java-pkg_register-dependency() {
 
 	[[ -z "${pkgs}" ]] && die "${FUNCNAME} called with no package(s) specified"
 
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
-
 	if [[ -z "${jar}" ]]; then
 		for pkg in ${pkgs//,/ }; do
 			java-pkg_ensure-dep runtime "${pkg}"
@@ -1328,10 +1318,6 @@ java-pkg_register-optional-dependency() {
 	local jar="${2}"
 
 	[[ -z "${pkgs}" ]] && die "${FUNCNAME} called with no package(s) specified"
-
-	if [[ "${EAPI}" == "1" ]]; then
-		pkgs="${pkgs//:/-}"
-	fi
 
 	if [[ -z "${jar}" ]]; then
 		for pkg in ${pkgs//,/ }; do
@@ -1904,7 +1890,7 @@ etestng() {
 # Don't call directly, but via java-pkg-2_src_prepare!
 java-utils-2_src_prepare() {
 	case ${EAPI:-0} in
-		[0-5])
+		5)
 			java-pkg_func-exists java_prepare && java_prepare ;;
 		*)
 			java-pkg_func-exists java_prepare &&
@@ -2191,9 +2177,6 @@ java-pkg_init() {
 
 	# Don't set up build environment if installing from binary. #206024 #258423
 	[[ "${MERGE_TYPE}" == "binary" ]] && return
-	# Also try Portage's nonstandard EMERGE_FROM for old EAPIs, if it doesn't
-	# work nothing is lost.
-	has ${EAPI:-0} 0 1 2 3 && [[ "${EMERGE_FROM}" == "binary" ]] && return
 
 	unset JAVAC
 	unset JAVA_HOME
@@ -2956,3 +2939,5 @@ java-pkg_gen-cp() {
 		fi
 	done
 }
+
+fi
