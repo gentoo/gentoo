@@ -8,5 +8,6 @@
   <use>
     <flag name="cuda10-2">On nVidia CUDA 10.2.</flag>
     <flag name="cuda11-1">On nVidia CUDA 11.1.</flag>
+    <flag name="cuda11">On nVidia CUDA 11.x.</flag>
   </use>
 </pkgmetadata>
