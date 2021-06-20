@@ -836,7 +836,17 @@ distutils-r1_python_test() {
 distutils-r1_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local args=( "${@}" )
+	local root=${D%/}/_${EPYTHON}
+	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
+
+	# inline mydistutilsargs logic from esetup.py in order to make
+	# argv overwriting easier
+	local args=(
+		"${mydistutilsargs[@]}"
+		install --skip-build --root="${root}" "${args[@]}"
+		"${@}"
+	)
+	local mydistutilsargs=()
 
 	# enable compilation for the install phase.
 	local -x PYTHONDONTWRITEBYTECODE=
@@ -852,42 +862,31 @@ distutils-r1_python_install() {
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		# user may override --install-scripts
 		# note: this is poor but distutils argv parsing is dumb
-		local mydistutilsargs=( "${mydistutilsargs[@]}" )
 		local scriptdir=${EPREFIX}/usr/bin
 
-		# construct a list of mydistutilsargs[0] args[0] args[1]...
-		local arg arg_vars
-		[[ ${mydistutilsargs[@]} ]] && eval arg_vars+=(
-			'mydistutilsargs['{0..$(( ${#mydistutilsargs[@]} - 1 ))}']'
-		)
-		[[ ${args[@]} ]] && eval arg_vars+=(
-			'args['{0..$(( ${#args[@]} - 1 ))}']'
-		)
-
-		set -- "${arg_vars[@]}"
+		# rewrite all the arguments
+		set -- "${args[@]}"
+		args=()
 		while [[ ${@} ]]; do
-			local arg_var=${1}
+			local a=${1}
 			shift
-			local a=${!arg_var}
 
-			case "${a}" in
+			case ${a} in
 				--install-scripts=*)
 					scriptdir=${a#--install-scripts=}
-					unset "${arg_var}"
 					;;
 				--install-scripts)
-					scriptdir=${!1}
-					unset "${arg_var}" "${1}"
+					scriptdir=${1}
 					shift
+					;;
+				*)
+					args+=( "${a}" )
 					;;
 			esac
 		done
 	fi
 
-	local root=${D%/}/_${EPYTHON}
-	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
-
-	esetup.py install --skip-build --root="${root}" "${args[@]}"
+	esetup.py "${args[@]}"
 
 	local forbidden_package_names=(
 		examples test tests
