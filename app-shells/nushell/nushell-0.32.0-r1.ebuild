@@ -686,8 +686,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 BDEPEND="
-	dev-util/cmake
-	>=virtual/rust-1.46
+	>=virtual/rust-1.51
 	virtual/pkgconfig
 "
 
