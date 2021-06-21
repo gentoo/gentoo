@@ -7,8 +7,8 @@
 # @AUTHOR:
 # Next gen author: Krzysztof Pawlik <nelchael@gentoo.org>
 # Original author: Aron Griffis <agriffis@gentoo.org>
-# @BLURB: This eclass provides generic mercurial fetching functions
 # @SUPPORTED_EAPIS: 7
+# @BLURB: This eclass provides generic mercurial fetching functions
 # @DESCRIPTION:
 # This eclass provides generic mercurial fetching functions. To fetch sources
 # from mercurial repository just set EHG_REPO_URI to correct repository URI. If
