@@ -36,6 +36,8 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}
 
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+
 pkg_setup() {
 	ada_pkg_setup
 	python-any-r1_pkg_setup
@@ -44,6 +46,9 @@ pkg_setup() {
 src_prepare() {
 	ln -sf "${WORKDIR}"/${GNATDIR}/src/ada gnat2why/gnat_src || die
 	default
+	sed -i \
+		-e "s:gnatls:${GNATLS}:g" \
+		src/gnatprove/configuration.adb || die
 }
 
 src_compile() {
