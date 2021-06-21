@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>stefan@steils.org</email>
+		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
 	</maintainer>
 	<maintainer type="project">
