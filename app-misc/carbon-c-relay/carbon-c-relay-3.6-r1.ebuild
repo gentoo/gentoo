@@ -23,7 +23,7 @@ REQUIRED_USE="
 RDEPEND="lz4? ( app-arch/lz4 )
 	snappy? ( app-arch/snappy )
 	zlib? ( app-arch/gzip )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	!oniguruma? ( !pcre2? ( pcre? ( dev-libs/libpcre ) ) )
 	pcre2? ( dev-libs/libpcre2 )
 	oniguruma? ( dev-libs/oniguruma )"
