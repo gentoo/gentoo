@@ -24,6 +24,8 @@ BDEPEND="test? ( dev-lang/yasm )"
 
 distutils_enable_tests pytest
 
+PATCHES=("${FILESDIR}"/${P}-under.patch)
+
 python_install() {
 	distutils-r1_python_install
 
