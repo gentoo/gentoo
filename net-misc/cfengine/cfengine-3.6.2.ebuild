@@ -28,7 +28,7 @@ DEPEND="acl? ( virtual/acl )
 	qdbm? ( dev-db/qdbm )
 	libvirt? ( app-emulation/libvirt )
 	xml? ( dev-libs/libxml2:2  ) \
-	dev-libs/openssl
+	dev-libs/openssl:=
 	dev-libs/libpcre
 	net-libs/libnsl"
 RDEPEND="${DEPEND}"
