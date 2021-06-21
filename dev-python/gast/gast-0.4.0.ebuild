@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-distutils_enable_tests unittest
-
 BDEPEND="
 	test? ( dev-python/astunparse[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests unittest
