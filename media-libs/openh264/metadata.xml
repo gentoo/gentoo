@@ -2,11 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>media-video@gentoo.org</email>
+		<email>mozilla@gentoo.org</email>
 	</maintainer>
 	<maintainer type="project">
-		<email>mozilla@gentoo.org</email>
-		<description>Primary maintainer</description>
+		<email>media-video@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="plugin">Install the Gecko Media Plugin (GMP) for use with Mozilla packages</flag>
