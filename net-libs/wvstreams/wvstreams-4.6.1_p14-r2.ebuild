@@ -24,10 +24,11 @@ RESTRICT="test"
 #more tightly this time. Probably for the better since upstream xplc seems dead.
 
 RDEPEND="
+	>=dev-libs/openssl-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
+	virtual/libcrypt:=
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	>=dev-libs/openssl-1.1:0=
 	pam? ( sys-libs/pam )
 "
 DEPEND="
