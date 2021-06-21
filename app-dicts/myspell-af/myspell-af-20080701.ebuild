@@ -15,7 +15,7 @@ MYSPELL_HYPH=(
 inherit myspell-r2
 
 DESCRIPTION="Afrikaans dictionaries for myspell/hunspell"
-HOMEPAGE="https://extensions.services.openoffice.org/project/dict_af"
+HOMEPAGE="https://extensions.openoffice.org/project/dict_af"
 SRC_URI="mirror://sourceforge/aoo-extensions/1109/0/dict-af.oxt"
 
 LICENSE="LGPL-3"
