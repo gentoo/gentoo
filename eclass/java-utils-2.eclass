@@ -6,8 +6,8 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>, Karl Trygve Kalleberg <karltk@gentoo.org>
-# @BLURB: Base eclass for Java packages
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Base eclass for Java packages
 # @DESCRIPTION:
 # This eclass provides functionality which is used by java-pkg-2.eclass,
 # java-pkg-opt-2.eclass and java-ant-2 eclass, as well as from ebuilds.
