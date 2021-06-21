@@ -141,7 +141,7 @@ RDEPEND="
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
-	live? ( media-plugins/live:= )
+	live? ( <media-plugins/live-2021.05.22:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
