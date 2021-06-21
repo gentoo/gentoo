@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for QtWebEngine"
-HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/intro"
+HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/intro https://pypi.org/project/PyQtWebEngine/"
 
 MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then

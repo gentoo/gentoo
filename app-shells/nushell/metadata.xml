@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/nushell/nushell/issues</bugs-to>
+		<changelog>https://github.com/nushell/nushell/commits/main</changelog>
+		<doc>https://www.nushell.sh/book/</doc>
+		<remote-id type="github">nushell/nushell</remote-id>
+	</upstream>
+	<use>
+		<flag name="extra">Install extra plugins: binaryview, tree, clipboard-cli, trash-support and others</flag>
+	</use>
+</pkgmetadata>

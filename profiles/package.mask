@@ -32,6 +32,41 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-06-20)
+# Abandoned upstream, last release 17 years ago, unmaintained, tons of
+# QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
+app-dicts/canna-cannadic
+app-dicts/canna-2ch
+app-emacs/yc
+app-i18n/canna
+app-i18n/canfep
+app-i18n/im-canna
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-20)
+# no consumer, removal in 30 days
+# see bug: https://bugs.gentoo.org/796587
+# and https://bugs.gentoo.org/561504
+dev-java/annogen
+dev-java/xml-xmlbeans
+java-virtuals/stax-api
+dev-java/jsr173
+dev-java/jibx-tools
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
+# New Minecraft server release needs at least Java 16,
+# which is currently not available in Gentoo.
+>=games-server/minecraft-server-1.17
+
+# Zac Medico <zmedico@gentoo.org> (2021-06-19)
+# Upstream inactive and fails to compile.
+# Removal on 2021-07-19.  Bug #786279.
+app-misc/rq
+
+# John Helmert III <ajak@gentoo.org> (2021-06-19)
+# Unmaintained, open security bug.
+# Removal on 2021-07-19.  Bug #717794.
+net-misc/netkit-rsh
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-19)
 # Conflicts with app-arch/brotli[python].  Discontinued in favor
 # of dev-python/brotlicffi.  No revdeps remain.
@@ -241,78 +276,6 @@ dev-python/csv23
 # bug #788013
 <net-mail/courier-imap-5
 
-# Matthew Thode <prometheanfire@gentoo.org> (2021-05-27)
-# Remove some openstack-related packages due to high-burden,
-# unmaintainable python requirements. Bug #793800
-app-admin/glance
-app-emulation/spice-html5
-dev-python/aodhclient
-dev-python/automaton
-dev-python/castellan
-dev-python/cursive
-dev-python/futurist
-dev-python/glance_store
-dev-python/keystonemiddleware
-dev-python/ldappool
-dev-python/microversion-parse
-dev-python/neutron-lib
-dev-python/os-brick
-dev-python/os-ken
-dev-python/oslo-cache
-dev-python/oslo-concurrency
-dev-python/oslo-db
-dev-python/oslo-messaging
-dev-python/oslo-middleware
-dev-python/oslo-policy
-dev-python/oslo-privsep
-dev-python/oslo-reports
-dev-python/oslo-rootwrap
-dev-python/oslo-service
-dev-python/oslo-upgradecheck
-dev-python/oslo-versionedobjects
-dev-python/oslo-vmware
-dev-python/osprofiler
-dev-python/os-resource-classes
-dev-python/os-traits
-dev-python/os-vif
-dev-python/os-win
-dev-python/os-xenapi
-dev-python/ovsdbapp
-dev-python/pycadf
-dev-python/pypowervm
-dev-python/pysaml2
-dev-python/python-barbicanclient
-dev-python/python-blazarclient
-dev-python/python-designateclient
-dev-python/python-heatclient
-dev-python/python-magnumclient
-dev-python/python-manilaclient
-dev-python/python-mistralclient
-dev-python/python-monascaclient
-dev-python/python-octaviaclient
-dev-python/python-saharaclient
-dev-python/python-senlinclient
-dev-python/python-troveclient
-dev-python/python-vitrageclient
-dev-python/python-zaqarclient
-dev-python/python-zunclient
-dev-python/ryu
-dev-python/taskflow
-dev-python/tinyrpc
-dev-python/tooz
-dev-python/WSME
-dev-python/XenAPI
-dev-python/yaql
-dev-python/zVMCloudConnector
-sys-auth/keystone
-sys-cluster/cinder
-sys-cluster/heat
-sys-cluster/neutron
-sys-cluster/nova
-sys-cluster/openstack-meta
-sys-cluster/placement
-sys-cluster/swift
-
 # Andrey Grozin <grozin@gentoo.org> (2021-05-25)
 # DEPENDs on sci-libs/proj-8
 # Unmask after unmasking proj-8
@@ -337,14 +300,6 @@ app-admin/diamond
 # see bug: https://bugs.gentoo.org/791106
 app-editors/jext
 dev-java/jgoodies-looks:1.2
-
-# Andrew Ammmerlaan <andrewammerlaan@gentoo.org> (2021-05-20)
-# dev-python/QtPy-1.9.0-r4 now uses USE flags to control if it uses
-# PySide2 or PyQt5. With the removal of -r3, this eselect module does
-# not do anything and will only lead to confusion and possibly breakage.
-# See also: https://bugs.gentoo.org/790764
-# Removal in 30 days.
-app-eselect/eselect-QtPy
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-20)
 # no non-masked consumer, removal in 30 days

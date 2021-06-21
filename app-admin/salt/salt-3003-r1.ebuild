@@ -17,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -56,6 +56,7 @@ RDEPEND="
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	cheetah? ( dev-python/cheetah3[${PYTHON_USEDEP}] )
+	genshi? ( dev-python/genshi[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
@@ -119,13 +120,13 @@ python_prepare_all() {
 	rm -r tests/integration/cloud || die
 	rm -r tests/kitchen/tests/wordpress/tests || die
 	rm tests/kitchen/test_kitchen.py || die
+	rm tests/unit/modules/test_network.py || die
 
 	# tests require root access
 	rm tests/integration/pillar/test_git_pillar.py || die
 	rm tests/integration/states/test_supervisord.py || die
 	rm tests/pytests/unit/client/test_ssh.py || die
 
-	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	find "${S}" -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d ; /pycryptodomex/ d' -i || die
 	# pycryptodome rather than pycryptodomex

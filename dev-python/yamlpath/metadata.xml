@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<bugs-to>https://github.com/wwkimball/yamlpath/issues</bugs-to>
+		<changelog>https://raw.githubusercontent.com/wwkimball/yamlpath/master/CHANGES</changelog>
+		<doc>https://github.com/wwkimball/yamlpath/wiki</doc>
+		<remote-id type="pypi">yamlpath</remote-id>
+		<remote-id type="github">wwkimball/yamlpath</remote-id>
+	</upstream>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+</pkgmetadata>

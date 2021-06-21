@@ -132,7 +132,7 @@ RDEPEND="${COMMON_DEPEND}
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
-	hwdb? ( >=sys-apps/hwids-20150417[udev] )
+	hwdb? ( sys-apps/hwids[systemd(+),udev] )
 	>=sys-fs/udev-init-scripts-34
 	policykit? ( sys-auth/polkit )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )"
@@ -223,7 +223,6 @@ src_prepare() {
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync-r1.patch"
 			"${FILESDIR}/gentoo-journald-audit.patch"
-			"${FILESDIR}/gentoo-pam-r1.patch"
 		)
 	fi
 
@@ -380,6 +379,10 @@ multilib_src_install_all() {
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
+	if use pam; then
+		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+	fi
+
 	if use hwdb; then
 		rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
 	fi
@@ -437,19 +440,7 @@ migrate_locale() {
 	fi
 }
 
-save_enabled_units() {
-	ENABLED_UNITS=()
-	type systemctl &>/dev/null || return
-	for x; do
-		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
-			ENABLED_UNITS+=( "${x}" )
-		fi
-	done
-}
-
 pkg_preinst() {
-	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
-
 	if ! use split-usr; then
 		local dir
 		for dir in bin sbin lib; do
@@ -471,22 +462,16 @@ pkg_postinst() {
 	systemd_update_catalog
 
 	# Keep this here in case the database format changes so it gets updated
-	# when required. Despite that this file is owned by sys-apps/hwids.
-	if has_version "sys-apps/hwids[udev]"; then
-		udevadm hwdb --update --root="${EROOT}"
+	# when required.
+	if use hwdb; then
+		systemd-hwdb --root="${ROOT}" update
 	fi
 
 	udev_reload || FAIL=1
 
-	# Bug 465468, make sure locales are respect, and ensure consistency
+	# Bug 465468, make sure locales are respected, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
-
-	systemd_reenable systemd-networkd.service systemd-resolved.service
-
-	if [[ ${ENABLED_UNITS[@]} ]]; then
-		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
-	fi
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if type systemctl &>/dev/null; then

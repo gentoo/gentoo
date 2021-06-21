@@ -14,7 +14,7 @@ SRC_URI="https://github.com/aseprite/aseprite/releases/download/v${PV}/Aseprite-
 # gtest duktape modp_b64 simpleini
 LICENSE="Aseprite-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="bundled-libs debug kde gtk3 test webp"
 RESTRICT="bindist mirror !test? ( test )"

@@ -1,6 +1,14 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-06-21)
+# net-libs/mbedtls not keyworded here, not tested
+net-libs/libssh2 mbedtls
+
+# Marek Szuba <marecki@gentoo.org> (2021-06-21)
+# net-fs/samba not keyworded here, not tested
+app-misc/mc samba
+
 # Marek Szuba <marecki@gentoo.org> (2021-05-31)
 # dev-python/networkx not keyworded here
 app-portage/nattka depgraph-order

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multiprocessing.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Brian Harring <ferringb@gentoo.org>
 # Mike Frysinger <vapier@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: multiprocessing helper functions
 # @DESCRIPTION:
 # The multiprocessing eclass contains a suite of utility functions
@@ -22,6 +23,11 @@
 #   ./mybs -j$(makeopts_jobs)
 # }
 # @CODE
+
+case ${EAPI:-0} in
+	[5678]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_MULTIPROCESSING_ECLASS} ]]; then
 _MULTIPROCESSING_ECLASS=1

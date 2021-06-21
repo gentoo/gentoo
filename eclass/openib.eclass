@@ -6,11 +6,18 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Author: Alexey Shvetsov <alexxy@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Simplify working with OFED packages
 
-inherit eutils rpm versionator
+case ${EAPI:-0} in
+	[56]) inherit eutils rpm versionator ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 EXPORT_FUNCTIONS src_unpack
+
+if [[ -z ${_OPENIB_ECLASS} ]] ; then
+_OPENIB_ECLASS=1
 
 HOMEPAGE="https://www.openfabrics.org/"
 LICENSE="|| ( GPL-2 BSD-2 )"
@@ -146,3 +153,5 @@ openib_src_unpack() {
 		esac
 	fi
 }
+
+fi

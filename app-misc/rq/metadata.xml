@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zmedico@gentoo.org</email>
-		<name>Zac Medico</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://github.com/dflemstr/rq/issues</bugs-to>
 		<changelog>https://github.com/dflemstr/rq/commits/master</changelog>

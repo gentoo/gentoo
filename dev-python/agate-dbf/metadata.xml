@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/wireservice/agate-dbf/issues</bugs-to>
+		<changelog>https://github.com/wireservice/agate-dbf/blob/master/CHANGELOG.rst</changelog>
+		<remote-id type="pypi">agate-dbf</remote-id>
+		<remote-id type="github">wireservice/agate-dbf</remote-id>
+	</upstream>
+</pkgmetadata>
