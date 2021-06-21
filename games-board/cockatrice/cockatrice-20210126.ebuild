@@ -3,14 +3,16 @@
 
 EAPI=7
 
-inherit cmake
+inherit xdg cmake
 
 MY_PV="2021-01-26-Release-2.8.0"
-DESCRIPTION="An open-source multiplatform software for playing card games over a network"
+
+DESCRIPTION="Open-source multiplatform software for playing card games over a network"
 HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
 SRC_URI="https://github.com/Cockatrice/Cockatrice/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/Cockatrice-${MY_PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+client +oracle test server"
@@ -33,17 +35,14 @@ RDEPEND="
 	server? (
 		dev-libs/protobuf:=
 		dev-qt/qtsql:5
-	)
-"
+	)"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-cpp/gtest )"
 BDEPEND="
 	dev-qt/linguist-tools:5
 	client? ( dev-libs/protobuf )
-	server? ( dev-libs/protobuf )
-	test? ( dev-cpp/gtest )
-"
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/Cockatrice-${MY_PV}"
+	server? ( dev-libs/protobuf )"
 
 src_configure() {
 	local mycmakeargs=(
@@ -54,19 +53,12 @@ src_configure() {
 		-DWITH_SERVER=$(usex server)
 		-DTEST=$(usex test)
 		-DICONDIR="${EPREFIX}/usr/share/icons"
-		-DDESKTOPDIR="${EPREFIX}/usr/share/applications" )
+		-DDESKTOPDIR="${EPREFIX}/usr/share/applications"
+	)
 
 	# Add date in the help about, come from git originally
 	sed -e 's/^set(PROJECT_VERSION_FRIENDLY.*/set(PROJECT_VERSION_FRIENDLY \"'${MY_PV}'\")/' \
 		-i cmake/getversion.cmake || die "sed failed!"
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
