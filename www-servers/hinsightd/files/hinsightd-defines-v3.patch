@@ -1,0 +1,21 @@
+diff --git a/src/hin/conf.h b/src/hin/conf.h
+index 61db395..1eaaa14 100644
+--- a/src/hin/conf.h
++++ b/src/hin/conf.h
+@@ -2,11 +2,11 @@
+ #ifndef HIN_CONF_H
+ #define HIN_CONF_H
+ 
+-#define HIN_CONF_PATH "workdir/main.lua"
+-#define HIN_LOGDIR_PATH "workdir/logs/"
+-#define HIN_WORKDIR_PATH "./"
+-#define HIN_TEMP_PATH "/tmp/"
+-#define HIN_DEBUG_MASK 0xffffffff
++#define HIN_CONF_PATH "/etc/hinsightd/main.lua"
++#define HIN_LOGDIR_PATH "/var/log/hinsightd/"
++#define HIN_WORKDIR_PATH "/etc/hinsightd/"
++#define HIN_TEMP_PATH "/var/tmp/hinsightd/"
++#define HIN_DEBUG_MASK 0x27f0f
+ 
+ #define HIN_URING_QUEUE_DEPTH 256
+ #define HIN_URING_DONT_FORK 0
