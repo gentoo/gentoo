@@ -15,7 +15,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Crypt-OpenSSL-Bignum-0.40.0
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 "
 DEPEND="
 	dev-libs/openssl:0
