@@ -4,9 +4,9 @@
 # @ECLASS: mono.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 7
 # @BLURB: common settings and functions for mono and dotnet related packages
 # @DEPRECATED: mono-env
-# @SUPPORTED_EAPIS: 7
 # @DESCRIPTION:
 # The mono eclass contains common environment settings that are useful for
 # dotnet packages.  Currently, it provides no functions, just exports
