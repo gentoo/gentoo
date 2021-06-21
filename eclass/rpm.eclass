@@ -4,8 +4,8 @@
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @BLURB: convenience class for extracting RPMs
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: convenience class for extracting RPMs
 
 case ${EAPI:-0} in
 	[567]) inherit eutils ;;
