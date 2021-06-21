@@ -16,7 +16,7 @@ IUSE="clamav ssl transparent"
 DEPEND="
 	clamav? ( >=app-antivirus/clamav-0.80 )
 	ssl? (
-		dev-libs/openssl:0
+		dev-libs/openssl:0=
 	)
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6 )
 "
