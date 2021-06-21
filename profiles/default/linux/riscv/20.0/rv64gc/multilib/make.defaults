@@ -1,0 +1,10 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# we need to reset the two-level libdirs here, otherwise the one-level
+# paths lead to collisions... note that the default abi libdir remains
+# "lib64"
+
+LIBDIR_lp64="lib64/lp64"
+LIBDIR_ilp32d="lib32/ilp32d"
+LIBDIR_ilp32="lib32/ilp32"
