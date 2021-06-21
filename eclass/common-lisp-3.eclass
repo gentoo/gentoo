@@ -4,6 +4,7 @@
 # @ECLASS: common-lisp-3.eclass
 # @MAINTAINER:
 # Common Lisp project <common-lisp@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: functions to support the installation of Common Lisp libraries
 # @DESCRIPTION:
 # Since Common Lisp libraries share similar structure, this eclass aims
