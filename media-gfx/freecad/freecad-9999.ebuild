@@ -19,7 +19,8 @@ if [[ ${PV} = *9999 ]]; then
 else
 	MY_PV=$(ver_cut 1-2)
 	MY_PV=$(ver_rs 1 '_' ${MY_PV})
-	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+		https://raw.githubusercontent.com/waebbl/waebbl-gentoo/master/patches/${P}-0005-Make-smesh-compile-with-vtk9.patch.xz"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
@@ -68,7 +69,7 @@ RDEPEND="
 	sci-libs/flann[openmp]
 	sci-libs/hdf5:=[fortran,zlib]
 	>=sci-libs/med-4.0.0-r1[python,${PYTHON_SINGLE_USEDEP}]
-	<sci-libs/opencascade-7.5.2:=[vtk(+)]
+	sci-libs/opencascade:=[vtk(+)]
 	sci-libs/orocos_kdl:=
 	sys-libs/zlib
 	virtual/glu
@@ -78,9 +79,9 @@ RDEPEND="
 		dev-libs/openssl:=
 		net-misc/curl
 	)
-	fem? ( <sci-libs/vtk-9[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
+	fem? ( sci-libs/vtk[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
 	openscad? ( media-gfx/openscad )
-	pcl? ( >=sci-libs/pcl-1.8.1:=[opengl,openni2(+),qt5(+),vtk(+)] )
+	pcl? ( ~sci-libs/pcl-${PV}:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[python,threads(+),${PYTHON_MULTI_USEDEP}]
 		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
@@ -319,15 +320,33 @@ pkg_postinst() {
 	einfo "You can load a lot of additional workbenches using the integrated"
 	einfo "AddonManager."
 
+	# ToDo: check opencv, pysolar (::science), elmerfem (::science)
+	#		ifc++, ifcopenshell, netgen, z88 (no pkgs), calculix-ccx (::waebbl)
 	einfo "There are a lot of additional tools, for which FreeCAD has builtin"
 	einfo "support. Some of them are available in Gentoo. Take a look at"
 	einfo "https://wiki.freecadweb.org/Installing#External_software_supported_by_FreeCAD"
-	optfeature "interact with git repositories" dev-python/GitPython
-	optfeature "work with COLLADA documents" dev-python/pycollada
+	optfeature_header "Computational utilities"
+	optfeature "numerical computations with Python" dev-python/numpy
+	optfeature "BLAS library" sci-libs/openblas
+	optfeature "statistical computation with Python" dev-python/pandas
+	optfeature "usage of Point Clouds" sci-libs/pcl
+	optfeature "scientific computation with Python" dev-python/scipy
+	optfeature "symbolic math with Python" dev-python/sympy
+	optfeature_header "Imaging, Plotting and Rendering utilities"
+	optfeature "function plotting with Python" dev-python/matplotlib
 	optfeature "dependency graphs" media-gfx/graphviz
 	optfeature "PBR Rendering" media-gfx/povray
-	optfeature "FEM mesh generator" sci-libs/gmsh
+	optfeature_header "Import / Export"
+	optfeature "interacting with git repositories" dev-python/GitPython
+	optfeature "working with COLLADA documents" dev-python/pycollada
+	optfeature "YAML importer and emitter" dev-python/pyyaml
 	optfeature "importing and exporting 2D AutoCAD DWG files" media-gfx/libredwg
+	optfeature "importing and exporting geospatial data formats" sci-libs/gdal
+	optfeature "working with projection data" sci-libs/proj
+	optfeature_header "Meshing and FEM"
+	optfeature "FEM mesh generator" sci-libs/gmsh
+	optfeature "triangulating meshes" sci-libs/gts
+	optfeature "visualization" sci-visualization/paraview
 }
 
 pkg_postrm() {
