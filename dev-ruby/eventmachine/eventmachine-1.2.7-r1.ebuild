@@ -23,7 +23,7 @@ IUSE=""
 DEPEND="${DEPEND}
 	dev-libs/openssl:0"
 RDEPEND="${RDEPEND}
-	dev-libs/openssl:0"
+	dev-libs/openssl:0="
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
 
