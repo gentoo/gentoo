@@ -6,8 +6,8 @@
 # Ulrich Müller <ulm@gentoo.org>
 # @AUTHOR:
 # Ben de Groot <yngwin@gentoo.org>
-# @BLURB: convenience functions to handle localizations
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: convenience functions to handle localizations
 # @DESCRIPTION:
 # The l10n (localization) eclass offers a number of functions to more
 # conveniently handle localizations (translations) offered by packages.
