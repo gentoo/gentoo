@@ -34,6 +34,7 @@ python_install() {
 python_test() {
 	local exclude=(
 		# outdated tests? API udage mismatch
+		# https://github.com/gdabah/distorm/issues/173
 		python/test_distorm3.py::Test::test_dummy
 		python/test_distorm3.py::InstBin::test_dummy
 		python/test_distorm3.py::Inst::test_dummy
