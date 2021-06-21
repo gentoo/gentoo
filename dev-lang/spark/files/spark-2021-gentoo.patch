@@ -1,0 +1,13 @@
+--- a/src/gnatprove/configuration.adb	2021-06-21 22:30:18.962850246 +0200
++++ b/src/gnatprove/configuration.adb	2021-06-21 22:31:03.621210570 +0200
+@@ -1269,7 +1269,9 @@
+ 
+          end if;
+ 
+-         Set_Path_From_Gnatls (Proj_Env.all, "gnatls", GNAT_Version);
++         Set_Path_From_Gnatls (Proj_Env.all,
++                               "gnatls",
++                               GNAT_Version);
+          Free (GNAT_Version);
+          Set_Object_Subdir (Proj_Env.all,
+                             Filesystem_String
