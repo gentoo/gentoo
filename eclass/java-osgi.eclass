@@ -6,8 +6,8 @@
 # java@gentoo.org
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
-# @BLURB: Java OSGi eclass
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Java OSGi eclass
 # @DESCRIPTION:
 # This eclass provides functionality which is used by packages that need to be
 # OSGi compliant. This means that the generated jars will have special headers
