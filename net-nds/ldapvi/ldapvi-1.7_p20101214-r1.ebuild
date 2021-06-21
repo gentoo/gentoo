@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/glib:2
 	sys-libs/readline
 	gnutls? ( net-libs/gnutls )
-	!gnutls? ( dev-libs/openssl:0 )
+	!gnutls? ( dev-libs/openssl:0= )
 	sasl? ( dev-libs/cyrus-sasl:2 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
