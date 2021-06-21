@@ -19,7 +19,7 @@ DEPEND="dev-db/mysql-connector-c:=
 	dev-libs/json-c:=
 	dev-libs/libmaxminddb
 	dev-libs/libsodium:=
-	dev-libs/openssl
+	dev-libs/openssl:=
 	net-analyzer/rrdtool
 	net-libs/libpcap
 	>=net-libs/nDPI-3.0:=
