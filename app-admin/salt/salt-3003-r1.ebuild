@@ -120,13 +120,13 @@ python_prepare_all() {
 	rm -r tests/integration/cloud || die
 	rm -r tests/kitchen/tests/wordpress/tests || die
 	rm tests/kitchen/test_kitchen.py || die
+	rm tests/unit/modules/test_network.py || die
 
 	# tests require root access
 	rm tests/integration/pillar/test_git_pillar.py || die
 	rm tests/integration/states/test_supervisord.py || die
 	rm tests/pytests/unit/client/test_ssh.py || die
 
-	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	# make sure pkg_resources doesn't bomb because pycrypto isn't installed
 	find "${S}" -name '*.txt' -print0 | xargs -0 sed -e '/pycrypto>/ d ; /pycryptodomex/ d' -i || die
 	# pycryptodome rather than pycryptodomex
