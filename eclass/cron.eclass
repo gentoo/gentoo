@@ -6,6 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Some functions for cron
 # @DESCRIPTION:
 # Purpose: The main motivation for this eclass was to simplify
