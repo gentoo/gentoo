@@ -18,11 +18,12 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc 
 IUSE="activefilter atm dhcp +eap-tls gtk ipv6 pam radius"
 
 DEPEND="
+	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	activefilter? ( net-libs/libpcap )
 	atm? ( net-dialup/linux-atm )
-	pam? ( sys-libs/pam )
 	gtk? ( x11-libs/gtk+:2 )
-	dev-libs/openssl:0=
+	pam? ( sys-libs/pam )
 "
 RDEPEND="${DEPEND}
 	!<net-misc/netifrc-0.7.1-r2"
