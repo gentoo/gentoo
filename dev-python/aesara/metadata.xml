@@ -8,6 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">aesara</remote-id>
-		<remote-id type="github">pymc-devs/aesara</remote-id>
+		<remote-id type="github">aesara-devs/aesara</remote-id>
 	</upstream>
 </pkgmetadata>
