@@ -1,0 +1,39 @@
+From 3e08e9d634ae6fe259ba35139ef0a7bb4b7e60d8 Mon Sep 17 00:00:00 2001
+From: Florian Schmaus <flo@geekplace.eu>
+Date: Sat, 17 Apr 2021 18:19:59 +0200
+Subject: [PATCH] Makefile: Optionally avoid installation of Ubuntu-specific
+ PAM config
+
+This allows non Ubuntu distributions to opt out from the installation
+of Ubuntu-specific PAM files.
+---
+ Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 6e79421356de..307eeedc5153 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,6 +28,7 @@ PAM_NAME := pam_$(NAME)
+ # BINDIR: Where to install the fscrypt binary.        Default: $(PREFIX)/bin
+ # PAM_MODULE_DIR: Where to install pam_fscrypt.so.    Default: $(PREFIX)/lib/security
+ # PAM_CONFIG_DIR: Where to install Ubuntu PAM config. Default: $(PREFIX)/share/pam-configs
++#   If the empty string, then the Ubuntu PAM config will not be installed.
+ #
+ # MOUNT: The filesystem where our tests are run.    Default: /mnt/fscrypt_mount
+ #   Ex: make test-setup MOUNT=/foo/bar
+@@ -178,9 +179,11 @@ install-pam: $(PAM_MODULE)
+ 	install -d $(DESTDIR)$(PAM_MODULE_DIR)
+ 	install $(PAM_MODULE) $(DESTDIR)$(PAM_MODULE_DIR)
+ 
++ifdef $(PAM_CONFIG_DIR)
+ 	m4 --define=PAM_INSTALL_PATH=$(PAM_INSTALL_PATH) < $(PAM_NAME)/config > $(PAM_CONFIG)
+ 	install -d $(DESTDIR)$(PAM_CONFIG_DIR)
+ 	install $(PAM_CONFIG) $(DESTDIR)$(PAM_CONFIG_DIR)/$(NAME)
++endif
+ 
+ COMPLETION_INSTALL_DIR := $(PREFIX)/share/bash-completion/completions
+ 
+-- 
+2.30.2
+
