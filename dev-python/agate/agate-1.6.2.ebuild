@@ -25,20 +25,32 @@ RDEPEND="
 	>=dev-python/python-slugify-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/leather-0.3.2[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-expect[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	cat > .pytest.expect <<-EOF
+# @FUNCTION: pytest-expect-to-deselect
+# @USAGE: readarray -t pytest_args < <(pytest-expect-to-deselect <<<PYTEST_EXPECT_CONTENT)
+# @DESCRIPTION:
+# Read a pytest-expect pytest --xfail-file file from stdin and write
+# equivalent pytest --deselect arguments to stdout for consumption by
+# readarray -t. The generated pytest --deselect arguments are appropriate
+# for use as described here:
+# https://dev.gentoo.org/~mgorny/python-guide/pytest.html#skipping-tests-based-on-paths-names
+pytest-expect-to-deselect() {
+	while read -r; do
+		[[ ${REPLY} =~ ^[u]?\'([^\']*) ]] || continue
+		printf -- '%s\n' --deselect "${BASH_REMATCH[1]}" || return
+	done
+}
+
+python_test() {
+	local -a pytest_args
+	readarray -t pytest_args < <(pytest-expect-to-deselect <<<"
 pytest-expect file v1
 (3, 8, 10, 'final', 0)
 u'tests/test_data_types.py::TestDate::test_cast_format_locale': FAIL
 u'tests/test_data_types.py::TestDateTime::test_cast_format_locale': FAIL
-EOF
-	distutils-r1_python_prepare_all
+")
+
+	epytest "${pytest_args[@]}" || die
 }
