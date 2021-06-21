@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Crypt-OpenSSL-EC-0.50.0
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 "
 DEPEND="
 	dev-libs/openssl:0
