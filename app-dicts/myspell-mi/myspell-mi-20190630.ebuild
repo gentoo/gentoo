@@ -12,7 +12,7 @@ inherit myspell-r2
 
 DESCRIPTION="Maori dictionaries for myspell/hunspell"
 LICENSE="LGPL-2.1"
-HOMEPAGE="http://lingucomponent.openoffice.org/"
+HOMEPAGE="https://www.openoffice.org/lingucomponent/"
 SRC_URI="https://github.com/scardracs/gentoo-packages/releases/download/mi-${PV}/${P}.tar.gz"
 
 SLOT="0"
