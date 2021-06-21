@@ -11,6 +11,7 @@ DATE="20210406"
 DESCRIPTION="A free, cross-platform, open-source, audio I/O library"
 HOMEPAGE="http://www.portaudio.com/"
 SRC_URI="http://files.portaudio.com/archives/pa_stable_v$(ver_rs 1- '')_${DATE}.tgz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-audacity.patch.bz2"
 S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
@@ -29,7 +30,10 @@ BDEPEND="
 DOCS=( README.md )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-19.06.00-AR.patch # bug #720966, trigger reconf
+	# Obtained from Fedora this time, previous one was from Debian
+	"${WORKDIR}"/${P}-audacity.patch
+	# bug #720966, trigger reconf
+	"${FILESDIR}"/${PN}-19.06.00-AR.patch
 )
 
 src_prepare() {
