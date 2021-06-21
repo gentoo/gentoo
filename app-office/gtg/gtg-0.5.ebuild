@@ -40,7 +40,7 @@ BDEPEND="
 			dev-python/cheetah3[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
 		')
-		app-text/pdfjam
+		|| ( app-text/pdfjam >=app-text/texlive-core-2021 )
 		app-text/pdftk
 		dev-texlive/texlive-latex
 	)
