@@ -4,8 +4,8 @@
 # @ECLASS: unpacker.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: helpers for extraneous file formats and consistent behavior across EAPIs
 # @DESCRIPTION:
 # Some extraneous file formats are not part of PMS, or are only in certain
 # EAPIs.  Rather than worrying about that, support the crazy cruft here
