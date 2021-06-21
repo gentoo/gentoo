@@ -45,6 +45,14 @@ pytest-expect-to-deselect() {
 }
 
 python_test() {
+	# test_cast_format_locale fails with "locale.Error: unsupported locale setting"
+	# which appears to be triggered by these locale settings in the unit tests:
+	#
+	#   agate-1.6.2/tests/test_data_types.py:257:    def test_cast_format_locale(self):
+	#   agate-1.6.2/tests/test_data_types.py-258-        date_type = Date(date_format='%d-%b-%Y', locale='de_DE')
+	#   agate-1.6.2/tests/test_data_types.py:381:    def test_cast_format_locale(self):
+	#   agate-1.6.2/tests/test_data_types.py-382-        date_type = DateTime(datetime_format='%Y-%m-%d %I:%M %p', locale='ko_KR')
+
 	local -a pytest_args
 	readarray -t pytest_args < <(pytest-expect-to-deselect <<<"
 pytest-expect file v1
