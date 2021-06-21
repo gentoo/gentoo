@@ -12,8 +12,8 @@ SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV%_
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl static-libs +vgauth"
+KEYWORDS="~amd64 ~x86"
+IUSE="X +deploypkg +dnet doc +fuse gtkmm +icu multimon pam +resolutionkms +ssl +vgauth"
 REQUIRED_USE="
 	multimon? ( X )
 	vgauth? ( ssl )
@@ -25,7 +25,7 @@ RDEPEND="
 	deploypkg? ( dev-libs/libmspack )
 	fuse? ( sys-fs/fuse:0 )
 	pam? ( sys-libs/pam )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	vgauth? (
 		dev-libs/libxml2
 		dev-libs/xmlsec
@@ -69,6 +69,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/10.1.0-mount.vmhgfs.patch"
 	"${FILESDIR}/10.1.0-Werror.patch"
+	"${FILESDIR}/11.2.5-glib-2.68.patch"
 )
 
 pkg_setup() {
@@ -96,7 +97,7 @@ src_configure() {
 		$(use_enable doc docs)
 		--disable-tests
 		$(use_enable resolutionkms)
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_enable deploypkg)
 		$(use_with pam)
 		$(use_enable vgauth)
