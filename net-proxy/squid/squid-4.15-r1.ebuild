@@ -41,7 +41,7 @@ COMMON_DEPEND="acct-group/squid
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (
-		!gnutls? ( dev-libs/openssl:0 )
+		!gnutls? ( dev-libs/openssl:0= )
 		dev-libs/nettle:= )
 	sasl? ( dev-libs/cyrus-sasl )
 	systemd? ( sys-apps/systemd:= )
