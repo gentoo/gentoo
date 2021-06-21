@@ -519,7 +519,7 @@ multilib_toolchain_setup() {
 	fi
 
 	if [[ ${ABI} != ${DEFAULT_ABI} ]] ; then
-		# Back that multilib-ass up so we can restore it later
+		# Backup multilib state so we can restore it later
 		for v in "${save_restore_variables[@]}" ; do
 			vv="_abi_saved_${v}"
 			[[ ${!v+set} == "set" ]] && export ${vv}="${!v}" || unset ${vv}
