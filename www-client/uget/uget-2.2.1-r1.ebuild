@@ -28,7 +28,7 @@ RDEPEND="
 	appindicator? ( dev-libs/libappindicator:3 )
 	gstreamer? ( media-libs/gstreamer:1.0 )
 	libnotify? ( x11-libs/libnotify )
-	openssl? ( dev-libs/openssl:0 )"
+	openssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/intltool
