@@ -6,9 +6,18 @@
 # ML <ml@gentoo.org>
 # @AUTHOR:
 # Original author: Matthieu Sozeau <mattam@gentoo.org> (retired)
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: ocamlfind (a.k.a. findlib) eclass
 # @DESCRIPTION:
 # ocamlfind (a.k.a. findlib) eclass
+
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_FINDLIB_ECLASS} ]] ; then
+_FINDLIB_ECLASS=1
 
 # Do not complain about CFLAGS etc since ML projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -60,3 +69,5 @@ findlib_src_install() {
 	findlib_src_preinst
 	make DESTDIR="${D}" "$@" install || die "make failed"
 }
+
+fi
