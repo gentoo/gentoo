@@ -28,10 +28,10 @@ DEPEND="
 	dev-libs/libpcre
 	brotli? ( app-arch/brotli )
 	ssl? (
-		mbedtls? ( net-libs/mbedtls )
-		openssl? ( dev-libs/openssl )
+		mbedtls? ( net-libs/mbedtls:= )
+		openssl? ( dev-libs/openssl:= )
 	)
-	zlib? ( sys-libs/zlib )
+	zlib? ( sys-libs/zlib:= )
 "
 RDEPEND="${DEPEND}
 	extended-host-patterns? ( dev-lang/perl )
