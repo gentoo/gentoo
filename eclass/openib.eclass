@@ -6,8 +6,8 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Author: Alexey Shvetsov <alexxy@gentoo.org>
-# @BLURB: Simplify working with OFED packages
 # @SUPPORTED_EAPIS: 5 6
+# @BLURB: Simplify working with OFED packages
 
 case ${EAPI:-0} in
 	[56]) inherit eutils rpm versionator ;;
