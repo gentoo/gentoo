@@ -7,8 +7,8 @@
 # @AUTHOR:
 # Authors: Spidler <spidler@gentoo.org> with help of carparski.
 # eclass variable additions and documentation: Gilles Dartiguelongue <eva@gentoo.org>
-# @BLURB: Helper eclass for gnome.org hosted archives
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Helper eclass for gnome.org hosted archives
 # @DESCRIPTION:
 # Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
 
