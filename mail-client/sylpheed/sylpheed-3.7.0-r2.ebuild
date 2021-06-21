@@ -25,7 +25,7 @@ CDEPEND="net-libs/liblockfile
 		dev-libs/dbus-glib
 	)
 	ssl? (
-		dev-libs/openssl:0
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${CDEPEND}
 	app-misc/mime-types
