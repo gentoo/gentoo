@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
