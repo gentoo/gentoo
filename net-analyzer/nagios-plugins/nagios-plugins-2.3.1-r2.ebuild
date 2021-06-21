@@ -35,7 +35,7 @@ DEPEND="
 	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:* )
 	ssl? (
-		dev-libs/openssl:0
+		dev-libs/openssl:0=
 	)
 	radius? ( net-dialup/freeradius-client )"
 
