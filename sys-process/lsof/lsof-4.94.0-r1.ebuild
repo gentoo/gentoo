@@ -28,6 +28,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.85-cross.patch #432120
+	"${FILESDIR}"/${PN}-4.94-arm-sigbus-fix.patch
 )
 
 src_prepare() {
