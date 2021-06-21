@@ -14,7 +14,8 @@
 # something sane.
 
 case ${EAPI:-0} in
-	[567]) ;;
+	# EAPI=0 is still used by crossdev, bug #797367
+	[0567]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
