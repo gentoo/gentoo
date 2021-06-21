@@ -5,10 +5,12 @@ EAPI=7
 
 inherit autotools multilib-minimal
 
+# See http://files.portaudio.com/download.html
+# Update on bumps, please!
+DATE="20210406"
 DESCRIPTION="A free, cross-platform, open-source, audio I/O library"
 HOMEPAGE="http://www.portaudio.com/"
-SRC_URI="http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz
-	https://sources.debian.org/data/main/p/portaudio19/19.6.0-1/debian/patches/audacity-portmixer.patch -> ${PN}-19.06.00-audacity-portmixer.patch"
+SRC_URI="http://files.portaudio.com/archives/pa_stable_v$(ver_rs 1- '')_${DATE}.tgz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
@@ -24,12 +26,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( README.txt )
+DOCS=( README.md )
 
 PATCHES=(
-	"${DISTDIR}/${PN}-19.06.00-audacity-portmixer.patch"
 	"${FILESDIR}"/${PN}-19.06.00-AR.patch # bug #720966, trigger reconf
-	"${FILESDIR}"/${PN}-19.06.00-slibtool.patch
 )
 
 src_prepare() {
