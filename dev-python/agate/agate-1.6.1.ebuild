@@ -7,8 +7,8 @@ DISTUTILS_USE_SETUPTOOLS=bdepend
 
 inherit distutils-r1
 
-DESCRIPTION="Python charting for 80% of humans."
-HOMEPAGE="https://github.com/wireservice/leather https://pypi.org/project/leather/"
+DESCRIPTION="A Python data analysis library that is optimized for humans instead of machines"
+HOMEPAGE="https://github.com/wireservice/agate https://pypi.org/project/agate/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
