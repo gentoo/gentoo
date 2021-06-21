@@ -3,13 +3,13 @@
 
 EAPI="6"
 
-inherit autotools desktop flag-o-matic
+inherit desktop autotools flag-o-matic
 
 MY_P="${P/_p/-}"
 
 DESCRIPTION="gtk2 based 2ch browser written in C++"
 HOMEPAGE="http://jd4linux.sourceforge.jp/"
-SRC_URI="mirror://sourceforge.jp/${PN}4linux/62877/${MY_P}.tgz"
+SRC_URI="mirror://sourceforge.jp/${PN}4linux/56721/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +24,7 @@ RDEPEND="dev-cpp/gtkmm:2.4
 	x11-misc/xdg-utils
 	alsa? ( >=media-libs/alsa-lib-1 )
 	gnutls? ( net-libs/gnutls )
-	!gnutls? ( dev-libs/openssl:0 )
+	!gnutls? ( dev-libs/openssl:0= )
 	migemo? ( app-text/cmigemo )
 	oniguruma? ( dev-libs/oniguruma )"
 DEPEND="${RDEPEND}
@@ -37,6 +37,7 @@ src_prepare() {
 	default
 	append-cxxflags -std=c++11
 
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
