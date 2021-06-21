@@ -5,8 +5,8 @@
 # @MAINTAINER:
 # Feel free to contact the Prefix team through <prefix@gentoo.org> if
 # you have problems, suggestions or questions.
-# @BLURB: Eclass to provide Prefix functionality
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Eclass to provide Prefix functionality
 # @DESCRIPTION:
 # Gentoo Prefix allows users to install into a self defined offset
 # located somewhere in the filesystem.  Prefix ebuilds require
