@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RESTRICT="!test? ( test )"
 DEPEND="!!dev-libs/ucl
 	lua? ( ${LUA_DEPS} )
 	urls? ( net-misc/curl )
-	sign? ( dev-libs/openssl:0 )
+	sign? ( dev-libs/openssl:0= )
 "
 BDEPEND="${DEPEND}
 	virtual/pkgconfig
