@@ -15,7 +15,7 @@ IUSE="test minimal"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/openssl-0.9.9:0
+	>=dev-libs/openssl-0.9.9:0=
 	virtual/perl-XSLoader
 "
 BDEPEND="${RDEPEND}
