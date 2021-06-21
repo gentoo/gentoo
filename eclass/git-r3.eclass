@@ -4,21 +4,15 @@
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
-case "${EAPI:-0}" in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (obsolete) for ${ECLASS}"
-		;;
-	4|5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI:-0} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 EXPORT_FUNCTIONS src_unpack
@@ -28,7 +22,7 @@ if [[ ! ${_GIT_R3} ]]; then
 PROPERTIES+=" live"
 
 if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
-	if [[ ${EAPI:-0} != [0123456] ]]; then
+	if [[ ${EAPI} != [56] ]]; then
 		BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 	else
 		DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
@@ -612,7 +606,7 @@ git-r3_fetch() {
 	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
 	# support new override API for EAPI 6+
-	if ! has "${EAPI:-0}" 0 1 2 3 4 5; then
+	if [[ ${EAPI} != 5 ]]; then
 		# get the name and do some more processing:
 		# 1) kill .git suffix,
 		# 2) underscore (remaining) non-variable characters,
