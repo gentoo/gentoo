@@ -255,15 +255,6 @@ pkg_preinst() {
 		mkdir -p "${EROOT}"/etc/bash
 		mv -f "${EROOT}"/etc/bashrc "${EROOT}"/etc/bash/
 	fi
-
-	if [[ -L ${EROOT}/bin/sh ]] ; then
-		# Rewrite the symlink to ensure that its mtime changes. Having /bin/sh
-		# missing even temporarily causes a fatal error with paludis.
-		local target=$(readlink "${EROOT}"/bin/sh)
-		local tmp="${T}"/sh
-		ln -sf "${target}" "${tmp}"
-		mv -f "${tmp}" "${EROOT}"/bin/sh
-	fi
 }
 
 pkg_postinst() {
