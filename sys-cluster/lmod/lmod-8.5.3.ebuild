@@ -95,6 +95,8 @@ src_configure() {
 		$(use_with cache cachedLoads)
 		$(use_with duplicate-paths duplicatePaths)
 		$(use_with auto-swap autoSwap)
+		# needed because configure.ac relies on TCL_INCLUDE not being empty
+		PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1
 	)
 	econf "${myconf[@]}"
 }
