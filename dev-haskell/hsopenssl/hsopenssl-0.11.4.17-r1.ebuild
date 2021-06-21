@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ IUSE="fast-bignum"
 RDEPEND=">=dev-haskell/network-2.1:=[profile?] <dev-haskell/network-3.2:=[profile?]
 	>=dev-haskell/old-locale-1.0.0.2:=[profile?] <dev-haskell/old-locale-1.1:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	dev-libs/openssl
+	dev-libs/openssl:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.12
