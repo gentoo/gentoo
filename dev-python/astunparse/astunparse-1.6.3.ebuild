@@ -1,9 +1,9 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Astun parser for python"
@@ -20,6 +20,8 @@ RDEPEND="
 "
 PATCHES=(
 	"${FILESDIR}/astunparse-1.6.2-tests.patch"
+	# from Fedora
+	"${FILESDIR}/${P}-py39.patch"
 )
 
 distutils_enable_tests setup.py
