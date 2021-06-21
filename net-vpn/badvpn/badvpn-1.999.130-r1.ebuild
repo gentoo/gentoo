@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ambrop72/badvpn https://code.google.com/p/badvpn/"
 SRC_URI="https://github.com/ambrop72/badvpn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 TARGETS="+client +ncd +server +tun2socks +udpgw"
 IUSE="${TARGETS} debug"
@@ -21,15 +21,12 @@ COMMON_DEPEND="
 	client? (
 		dev-libs/nspr
 		dev-libs/nss
-		dev-libs/openssl
+		dev-libs/openssl:0=
 	)
 	server? (
 		dev-libs/nspr
 		dev-libs/nss
-		dev-libs/openssl
-	)
-	ncd? (
-		dev-libs/openssl
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${COMMON_DEPEND}
 	ncd? (

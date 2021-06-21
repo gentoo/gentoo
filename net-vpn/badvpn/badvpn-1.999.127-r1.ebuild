@@ -6,11 +6,11 @@ inherit cmake-utils user toolchain-funcs systemd
 
 MY_P=${PN}-${PV/_rc/rc}
 DESCRIPTION="Peer-to-peer VPN, NCD scripting language, tun2socks proxifier"
-HOMEPAGE="https://github.com/ambrop72/badvpn https://code.google.com/p/badvpn/"
-SRC_URI="https://github.com/ambrop72/badvpn/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://code.google.com/p/badvpn/"
+SRC_URI="https://badvpn.googlecode.com/files/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 SLOT="0"
 TARGETS="+client +ncd +server +tun2socks +udpgw"
 IUSE="${TARGETS} debug"
@@ -21,12 +21,15 @@ COMMON_DEPEND="
 	client? (
 		dev-libs/nspr
 		dev-libs/nss
-		dev-libs/openssl:0
+		dev-libs/openssl:=
 	)
 	server? (
 		dev-libs/nspr
 		dev-libs/nss
-		dev-libs/openssl:0
+		dev-libs/openssl:=
+	)
+	ncd? (
+		dev-libs/openssl
 	)"
 RDEPEND="${COMMON_DEPEND}
 	ncd? (
@@ -77,7 +80,7 @@ src_install() {
 	fi
 
 	if use ncd; then
-		newinitd "${FILESDIR}"/${PN}-1.999.127-ncd.init ${PN}-ncd
+		newinitd "${FILESDIR}"/${P}-ncd.init ${PN}-ncd
 		newconfd "${FILESDIR}"/${PN}-ncd.conf ${PN}-ncd
 		systemd_dounit "${FILESDIR}"/badvpn-ncd.service
 	fi
