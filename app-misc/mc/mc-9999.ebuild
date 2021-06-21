@@ -13,7 +13,7 @@ inherit flag-o-matic ${LIVE_ECLASSES}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	SRC_URI="http://ftp.midnight-commander.org/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
