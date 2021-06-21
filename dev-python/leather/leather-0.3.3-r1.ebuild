@@ -13,5 +13,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
-RDEPEND=">=dev-python/six-1.6.1[${PYTHON_USEDEP}]"
+IUSE="+xml"
+
+# Other packages have BDEPEND="test? ( dev-python/leather[xml] )"
+TEST_AGAINST_RDEPEND="xml? ( dev-python/lxml[${PYTHON_USEDEP}] )"
+RDEPEND="
+	${TEST_AGAINST_RDEPEND}
+	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
+"
