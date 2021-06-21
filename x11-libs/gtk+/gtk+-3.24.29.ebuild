@@ -4,7 +4,7 @@
 EAPI=7
 GNOME2_EAUTORECONF="yes"
 
-inherit gnome2 multilib multilib-minimal virtualx
+inherit gnome2 multilib multilib-minimal virtualx flag-o-matic
 
 DESCRIPTION="Gimp ToolKit +"
 HOMEPAGE="https://www.gtk.org/"
@@ -139,6 +139,12 @@ src_prepare() {
 		strip_builddir SRC_SUBDIRS demos Makefile.{am,in}
 		strip_builddir SRC_SUBDIRS examples Makefile.{am,in}
 	fi
+
+	if ! use X; then
+		append-cxxflags "-DEGL_NO_X11=true";
+		append-cflags "-DEGL_NO_X11=true";
+		append-cppflags "-DEGL_NO_X11=true";
+	fi;
 
 	gnome2_src_prepare
 }
