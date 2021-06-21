@@ -47,6 +47,7 @@ src_prepare() {
 	cmake_src_prepare
 
 	sed 's@ coroutine@@' -i CMakeLists.txt || die
+	sed '/Boost::coroutine/d' -i src/CMakeLists.txt || die
 	if ! use doc ; then
 		sed -i \
 			-e '/manual/d' \
