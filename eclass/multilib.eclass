@@ -4,8 +4,8 @@
 # @ECLASS: multilib.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
-# @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: This eclass is for all functions pertaining to handling multilib configurations.
 # @DESCRIPTION:
 # This eclass is for all functions pertaining to handling multilib configurations.
 
