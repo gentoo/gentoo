@@ -6,8 +6,8 @@
 # java@gentoo.org
 # @AUTHOR:
 # Original Author: Alistair John Bush <ali_bush@gentoo.org>
-# @BLURB: Java virtuals eclass
 # @SUPPORTED_EAPIS: 5 6
+# @BLURB: Java virtuals eclass
 # @DESCRIPTION:
 # To provide a default (and only) src_install function for ebuilds in the
 # java-virtuals category.
