@@ -164,6 +164,8 @@ DOCS=( NEWS README )
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${MY_P}-require-GIO-for-RTP-GStreamer.patch )
+
 src_prepare() {
 	default
 
