@@ -6,8 +6,8 @@
 # java@gentoo.org
 # @AUTHOR:
 # Java maintainers <java@gentoo.org>
-# @BLURB: Eclass for packaging Java software with ease.
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Eclass for packaging Java software with ease.
 # @DESCRIPTION:
 # This class is intended to build pure Java packages from Java sources
 # without the use of any build instructions shipped with the sources.
