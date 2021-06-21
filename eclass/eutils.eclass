@@ -29,7 +29,7 @@ case ${EAPI:-0} in
 			preserve-libs toolchain-funcs vcs-clean wrapper
 		;;
 	7) inherit edos2unix l10n wrapper ;;
-	*) die "${ECLASS} is banned in EAPI ${EAPI}" ;;
+	*) die "${ECLASS} is banned in EAPI ${EAPI:-0}" ;;
 esac
 
 # @FUNCTION: emktemp
