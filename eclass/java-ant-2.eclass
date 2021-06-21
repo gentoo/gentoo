@@ -7,8 +7,8 @@
 # @AUTHOR:
 # kiorky <kiorky@cryptelium.net>
 # Petteri Räty <betelgeuse@gentoo.org>
-# @BLURB: eclass for ant based Java packages
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: eclass for ant based Java packages
 # @DESCRIPTION:
 # Eclass for Ant-based Java packages. Provides support for both automatic and
 # manual manipulation of build.xml files. Should be inherited after java-pkg-2
