@@ -15,10 +15,9 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~x64-sola
 IUSE="examples ssl static-libs test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	ssl? ( dev-libs/openssl )
-	test? ( dev-db/redis )
-"
+DEPEND="ssl? ( dev-libs/openssl:= )"
+RDEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-db/redis )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-disable-network-tests.patch
