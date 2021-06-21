@@ -23,7 +23,7 @@ else
 	fi
 
 	# Never stabilize snapshot ebuilds please
-	KEYWORDS="amd64 arm ~arm64 ~mips ppc x86"
+	KEYWORDS="amd64 arm arm64 ~mips ppc x86"
 fi
 
 LICENSE="BSD"
