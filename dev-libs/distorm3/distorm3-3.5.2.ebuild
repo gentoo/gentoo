@@ -11,17 +11,32 @@ DESCRIPTION="The ultimate disassembler library (X86-32, X86-64)"
 HOMEPAGE="http://www.ragestorm.net/distorm/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-DEPEND=""
-RDEPEND=""
-
 LICENSE="BSD-4"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+
+RESTRICT="!test? ( test )"
+
+DEPEND=""
+RDEPEND=""
+BDEPEND="test? ( dev-lang/yasm )"
+
+distutils_enable_tests pytest
 
 python_install() {
 	distutils-r1_python_install
 
 	# don't know why it does not happen by default
 	python_optimize
+}
+
+python_test() {
+	local exclude=(
+		# outdated tests? API udage mismatch
+		python/test_distorm3.py::Test::test_dummy
+		python/test_distorm3.py::InstBin::test_dummy
+		python/test_distorm3.py::Inst::test_dummy
+	)
+	epytest ${exclude[@]/#/--deselect }
 }
