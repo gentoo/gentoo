@@ -16,6 +16,7 @@ IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm thre
 # "jit" disabled ATM
 
 RDEPEND=">=dev-lisp/asdf-2.33-r3
+         virtual/libcrypt:=
 		 virtual/libiconv
 		 >=dev-libs/libsigsegv-2.10
 		 >=dev-libs/ffcall-1.10
