@@ -6,6 +6,7 @@
 # Chromium Project <chromium@gentoo.org>
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Shared functions for chromium and google-chrome
 
 case ${EAPI} in
