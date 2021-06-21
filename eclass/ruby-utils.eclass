@@ -6,8 +6,8 @@
 # Ruby team <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @BLURB: An eclass for supporting ruby scripts and bindings in non-ruby packages
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: An eclass for supporting ruby scripts and bindings in non-ruby packages
 # @DESCRIPTION:
 # The ruby-utils eclass is designed to allow an easier installation of
 # Ruby scripts and bindings for non-ruby packages.
