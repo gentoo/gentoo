@@ -159,6 +159,8 @@ python_check_deps() {
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
+QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if use test && has pid-sandbox ${FEATURES}; then
