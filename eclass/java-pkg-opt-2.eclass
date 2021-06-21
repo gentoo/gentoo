@@ -6,8 +6,8 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
-# @BLURB: Eclass for package with optional Java support
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Eclass for package with optional Java support
 # @DESCRIPTION:
 # Inherit this eclass instead of java-pkg-2 if you only need optional Java
 # support.
