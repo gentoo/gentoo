@@ -9,7 +9,7 @@ PATCHSET_VER="0"
 
 DESCRIPTION="Versatile implementation of the Prolog programming language"
 HOMEPAGE="https://www.swi-prolog.org/"
-SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz"
+SRC_URI="https://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -26,7 +26,7 @@ RDEPEND="sys-libs/ncurses:=
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	java? ( >=virtual/jdk-1.8:* )
 	uuid? ( dev-libs/ossp-uuid )
 	qt5? (
