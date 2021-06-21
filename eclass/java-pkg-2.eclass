@@ -6,8 +6,8 @@
 # java@gentoo.org
 # @AUTHOR:
 # Thomas Matthijs <axxo@gentoo.org>
-# @BLURB: Eclass for Java Packages
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: Eclass for Java Packages
 # @DESCRIPTION:
 # This eclass should be inherited for pure Java packages, or by packages which
 # need to use Java.
