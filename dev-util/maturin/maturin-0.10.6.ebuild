@@ -296,6 +296,8 @@ DEPEND="test? (
 	)"
 BDEPEND=""
 
+QA_FLAGS_IGNORED="usr/bin/maturin"
+
 python_check_deps() {
 	has_version -d "dev-python/cffi[${PYTHON_USEDEP}]" &&
 	has_version -d "dev-python/pycparser[${PYTHON_USEDEP}]"
