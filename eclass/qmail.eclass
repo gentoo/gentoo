@@ -4,8 +4,8 @@
 # @ECLASS: qmail.eclass
 # @MAINTAINER:
 # Rolf Eike Beer <eike@sf-mail.de>
-# @BLURB: common qmail functions
 # @SUPPORTED_EAPIS: 6 7
+# @BLURB: common qmail functions
 
 case ${EAPI:-0} in
 	[67]) ;;
