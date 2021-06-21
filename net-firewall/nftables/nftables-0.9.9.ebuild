@@ -20,7 +20,7 @@ if [[ ${PV} =~ ^[9]{4,}$ ]]; then
 	"
 else
 	SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-2"
