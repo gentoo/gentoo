@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-python/python-slugify-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/leather-0.3.2[${PYTHON_USEDEP}]
 "
+BDEPEND="test? ( >=dev-python/leather-0.3.2[xml,${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
