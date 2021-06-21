@@ -24,7 +24,7 @@ RDEPEND="
 		dev-libs/libedit
 	)
 	system-sqlite? ( >=dev-db/sqlite-3.33.0:3 )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	tcl? ( dev-lang/tcl:0= )
 "
 
