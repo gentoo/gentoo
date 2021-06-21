@@ -6,8 +6,8 @@
 # base-system@gentoo.org
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
-# @BLURB: This eclass is created to avoid using non-portable GNUisms inside ebuilds
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: This eclass is created to avoid using non-portable GNUisms inside ebuilds
 
 case ${EAPI:-0} in
 	[567]) ;;
