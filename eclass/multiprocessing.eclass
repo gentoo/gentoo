@@ -7,8 +7,8 @@
 # @AUTHOR:
 # Brian Harring <ferringb@gentoo.org>
 # Mike Frysinger <vapier@gentoo.org>
-# @BLURB: multiprocessing helper functions
 # @SUPPORTED_EAPIS: 5 6 7 8
+# @BLURB: multiprocessing helper functions
 # @DESCRIPTION:
 # The multiprocessing eclass contains a suite of utility functions
 # that could be helpful to controlling parallel multiple job execution.
