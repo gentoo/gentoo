@@ -185,7 +185,6 @@ src_prepare() {
 
 src_test() {
 	source "${FILESDIR}/test/features.bash" || die
-	unset -f test_features
 	test-features_main "${PWD}/target/release/starlark" || die
 }
 
