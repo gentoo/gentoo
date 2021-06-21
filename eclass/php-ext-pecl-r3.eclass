@@ -4,8 +4,8 @@
 # @ECLASS: php-ext-pecl-r3.eclass
 # @MAINTAINER:
 # Gentoo PHP team <php-bugs@gentoo.org>
-# @BLURB: A uniform way to install PECL extensions
 # @SUPPORTED_EAPIS: 6 7
+# @BLURB: A uniform way to install PECL extensions
 # @DESCRIPTION:
 # This eclass should be used by all dev-php/pecl-* ebuilds as a uniform
 # way of installing PECL extensions. For more information about PECL,
