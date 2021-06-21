@@ -3,14 +3,15 @@
 
 EAPI=7
 
-inherit cmake
+inherit cmake xdg
 
 MY_PV="2021-01-26-Release-2.8.0"
-DESCRIPTION="An open-source multiplatform software for playing card games over a network"
+DESCRIPTION="Open-source multiplatform software for playing card games over a network"
 HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
 SRC_URI="https://github.com/Cockatrice/Cockatrice/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/Cockatrice-${MY_PV}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+client +oracle test server"
@@ -39,11 +40,9 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	client? ( dev-libs/protobuf )
 	server? ( dev-libs/protobuf )
-	test? ( dev-cpp/gtest )
 "
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/Cockatrice-${MY_PV}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )"
 
 src_configure() {
 	local mycmakeargs=(
@@ -61,12 +60,4 @@ src_configure() {
 		-i cmake/getversion.cmake || die "sed failed!"
 
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
