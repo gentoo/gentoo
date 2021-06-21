@@ -15,10 +15,11 @@ KEYWORDS=""
 IUSE="+dbus debug doc pam static-libs +zlib"
 
 RDEPEND="
+	<dev-libs/openssl-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
+	virtual/libcrypt:=
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	<dev-libs/openssl-1.1:0=
 	pam? ( sys-libs/pam )
 "
 DEPEND="
