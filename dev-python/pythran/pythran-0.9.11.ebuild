@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..9} )
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Ahead of Time compiler for numeric kernels"
 HOMEPAGE="
@@ -26,6 +26,10 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/ply-3.4[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
@@ -36,5 +40,5 @@ src_prepare() {
 
 python_test() {
 	local -x COLUMNS=80
-	epytest
+	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
