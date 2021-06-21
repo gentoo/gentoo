@@ -19,8 +19,7 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	dev-ml/dune-configurator
-	>=sci-libs/gsl-1.19
-"
+	>=sci-libs/gsl-1.19:="
 RDEPEND="${DEPEND}
 	!dev-ml/ocamlgsl"
 
