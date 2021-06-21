@@ -4,8 +4,8 @@
 # @ECLASS: preserve-libs.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @BLURB: preserve libraries after SONAME changes
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: preserve libraries after SONAME changes
 
 case ${EAPI:-0} in
 	[567]) ;;
