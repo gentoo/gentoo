@@ -51,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 	redis?      ( dev-libs/hiredis )"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.69-r5
-	virtual/rust"
+	<virtual/rust-1.53.0"  # Bug #797370. Hopefully to be fixed come next release.
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.0.1_configure-no-lz4-automagic.patch"
