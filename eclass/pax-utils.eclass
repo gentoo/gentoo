@@ -7,8 +7,8 @@
 # @AUTHOR:
 # Author: Kevin F. Quinn <kevquinn@gentoo.org>
 # Author: Anthony G. Basile <blueness@gentoo.org>
-# @BLURB: functions to provide PaX markings for hardened kernels
 # @SUPPORTED_EAPIS: 5 6 7
+# @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
 # This eclass provides support for manipulating PaX markings on ELF binaries,
