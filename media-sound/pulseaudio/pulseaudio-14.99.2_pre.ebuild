@@ -164,7 +164,10 @@ DOCS=( NEWS README )
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${MY_P}-require-GIO-for-RTP-GStreamer.patch )
+PATCHES=(
+	"${FILESDIR}"/${MY_P}-require-GIO-for-RTP-GStreamer.patch
+	"${FILESDIR}"/${MY_P}-require-bluez-dependency.patch
+)
 
 src_prepare() {
 	default
@@ -181,7 +184,7 @@ multilib_src_configure() {
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
 		-Dbashcompletiondir="$(get_bashcompdir)" # Alternatively DEPEND on app-shells/bash-completion for pkg-config to provide the value
 		$(meson_native_use_feature alsa)
-		$(meson_native_use_bool bluetooth bluez5)
+		$(meson_native_use_feature bluetooth bluez5)
 		$(meson_native_use_bool daemon)
 		$(meson_native_use_bool doc doxygen)
 		$(meson_native_use_bool native-headset bluez5-native-headset)
