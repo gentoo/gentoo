@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="app-arch/bzip2
 	dev-lang/tcl:=
 	dev-lang/tk:=
-	dev-libs/openssl:0
+	dev-libs/openssl:0=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
