@@ -37,6 +37,13 @@
 # see bug: https://bugs.gentoo.org/797739
 dev-java/xml-commons
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
+# libraries without consumers, removal in 30 days
+dev-java/bytelist
+dev-java/jcodings
+dev-java/joni
+dev-java/jvyamlb
+
 # David Seifert <soap@gentoo.org> (2021-06-20)
 # Abandoned upstream, last release 17 years ago, unmaintained, tons of
 # QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
@@ -349,12 +356,6 @@ dev-java/werken-xpath
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
 >=dev-java/xerces-2.12.1
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-15)
-# dev-java/jcodings-1.0.55 depends on masked >=virtual/{jdk,jre}-11
-# dev-java/joni-2.1.41 depends on masked >=virtual/{jdk,jre}-11
->=dev-java/jcodings-1.0.55
->=dev-java/joni-2.1.41
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
