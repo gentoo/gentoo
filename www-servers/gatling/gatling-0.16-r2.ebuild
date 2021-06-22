@@ -18,7 +18,7 @@ REQUIRED_USE="ssl? ( !diet )"
 DEPEND=">=dev-libs/libowfat-0.32-r2[diet=]
 	diet? ( dev-libs/dietlibc )
 	ssl? (
-		dev-libs/openssl:0
+		dev-libs/openssl:0=
 	)"
 RDEPEND="${DEPEND}
 	acct-group/gatling
