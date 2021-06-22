@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
+PYTHON_COMPAT=( python3_8 )
 inherit distutils-r1
 
 DESCRIPTION="OpenStack logging config library, configuration for all openstack projects."
@@ -25,4 +24,15 @@ RDEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.19.0[${PYTHON_USEDEP}]
 	>=dev-python/pyinotify-0.9.6[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.7.0[${PYTHON_USEDEP}]"
-DEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]"
+BDEPEND=">=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/testtools-2.3.0[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-3.3.0[${PYTHON_USEDEP}]
+		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
+	)"
+
+distutils_enable_tests unittest
+
+python_test() {
+	eunittest -b
+}
