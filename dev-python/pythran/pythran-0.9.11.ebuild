@@ -28,7 +28,10 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
+		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
+		dev-python/scipy[${PYTHON_USEDEP}]
+		virtual/cblas
 	)"
 
 distutils_enable_tests pytest
