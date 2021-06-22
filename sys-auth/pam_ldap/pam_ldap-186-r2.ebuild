@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ IUSE="ssl sasl"
 
 DEPEND="sys-libs/pam[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r3[${MULTILIB_USEDEP}] )"
 
 RDEPEND="${DEPEND}"
