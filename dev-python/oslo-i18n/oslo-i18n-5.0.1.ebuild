@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
+PYTHON_COMPAT=( python3_8 )
 inherit distutils-r1 vcs-snapshot
 
 MY_PN=${PN/-/.}
@@ -19,8 +18,14 @@ KEYWORDS="amd64 ~arm arm64 x86"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
-DEPEND="${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	${CDEPEND}
+	>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
+	>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests unittest
