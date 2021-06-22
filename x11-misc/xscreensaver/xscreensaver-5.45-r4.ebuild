@@ -10,15 +10,17 @@ SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="caps +gdk-pixbuf gdm +gtk jpeg +locking new-login offensive opengl pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gdk-pixbuf? ( gtk )
 "
 
 COMMON_DEPEND="
+	>=gnome-base/libglade-2
 	dev-libs/libxml2
 	media-libs/netpbm
+	virtual/libcrypt:=
 	x11-apps/appres
 	x11-apps/xwininfo
 	x11-libs/libX11
@@ -51,7 +53,6 @@ COMMON_DEPEND="
 # For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`
 RDEPEND="
 	${COMMON_DEPEND}
-	media-gfx/fbida
 	perl? (
 		dev-lang/perl
 		dev-perl/libwww-perl
