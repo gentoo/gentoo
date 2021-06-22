@@ -32,6 +32,12 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_PN}-${MY_COMMIT}"
 
+src_prepare() {
+	sed -i 's/description-file/description_file/g' setup.cfg || die
+
+	default
+}
+
 python_test() {
 	pushd ./tests >/dev/null || die
 
