@@ -1,0 +1,70 @@
+--- a/rlogind/rlogind.c
++++ b/rlogind/rlogind.c
+@@ -333,9 +333,10 @@
+ 
+ 
+ static void child(const char *hname, const char *termtype,
+-		  const char *localuser, int authenticated)
++		  const char *localuser, int authenticated,
++		  const char *rusername)
+ {
+-    char *termenv[2];
++    char *termenv[4];
+ 
+     setup_term(0, termtype);
+ 
+@@ -344,7 +345,17 @@
+ 	strcpy(termenv[0], "TERM=");
+ 	strcat(termenv[0], termtype);
+     }
+-    termenv[1] = NULL;
++    termenv[1] = malloc(strlen(rusername)+12);
++    if (termenv[1]) {   /* shouldn't ever fail, mind you */
++	strcpy(termenv[1], "REMOTEUSER=");
++	strcat(termenv[1], rusername);
++    }
++    termenv[2] = malloc(strlen(hname)+12);
++    if (termenv[2]) {   /* shouldn't ever fail, mind you */
++	strcpy(termenv[2], "REMOTEHOST=");
++	strcat(termenv[2], hname);
++    }
++    termenv[3] = NULL;
+ 
+     if (authenticated) {
+ 	auth_finish();
+@@ -420,7 +431,7 @@
+     if (pid == 0) {
+ 	/* netfd should always be 0, but... */ 
+ 	if (netfd > 2) close(netfd);
+-	child(hname, termtype, lusername, authenticated);
++	child(hname, termtype, lusername, authenticated, rusername);
+     }
+     on = 1;
+     ioctl(netfd, FIONBIO, &on);
+--- a/rshd/rshd.c
++++ b/rshd/rshd.c
+@@ -102,8 +102,10 @@
+ char	homedir[64] = "HOME=";
+ char	shell[64] = "SHELL=";
+ char	path[100] = "PATH=";
++char	remoteuser[20] = "REMOTEUSER=";
++char	remotehost[50] = "REMOTEHOST=";
+ char	*envinit[] =
+-	    {homedir, shell, path, username, 0};
++	    {homedir, shell, path, username, remoteuser, remotehost, 0};
+ extern	char	**environ;
+ 
+ static void error(const char *fmt, ...);
+@@ -460,6 +462,12 @@
+ 	strncat(homedir, pwd->pw_dir, sizeof(homedir)-6);
+ 	homedir[sizeof(homedir)-1] = 0;
+ 
++	strncat(remoteuser, remuser, sizeof(remoteuser)-12);
++	remoteuser[sizeof(remoteuser)-1] = 0;
++
++	strncat(remotehost, hostname, sizeof(remotehost)-12);
++	remotehost[sizeof(remotehost)-1] = 0;
++
+ 	strcat(path, _PATH_DEFPATH);
+ 
+ 	strncat(shell, theshell, sizeof(shell)-7);

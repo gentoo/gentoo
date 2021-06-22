@@ -1,0 +1,66 @@
+--- a/rcp/Makefile
++++ b/rcp/Makefile
+@@ -7,7 +7,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: rcp
+-	install -s rcp $(INSTALLROOT)$(BINDIR)
++	install rcp $(INSTALLROOT)$(BINDIR)
+ 	install -m$(MANMODE) rcp.1 $(INSTALLROOT)$(MANDIR)/man1
+ 
+ clean:
+--- a/rexecd/Makefile
++++ b/rexecd/Makefile
+@@ -27,7 +27,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: rexecd
+-	install -s -m$(DAEMONMODE) rexecd $(INSTALLROOT)$(SBINDIR)/in.rexecd
++	install -m$(DAEMONMODE) rexecd $(INSTALLROOT)$(SBINDIR)/in.rexecd
+ 	install -m$(MANMODE) rexecd.8 $(INSTALLROOT)$(MANDIR)/man8/in.rexecd.8
+ 	ln -sf in.rexecd.8 $(INSTALLROOT)$(MANDIR)/man8/rexecd.8
+ ifeq ($(USE_PAM),1)
+--- a/rlogin/Makefile
++++ b/rlogin/Makefile
+@@ -10,7 +10,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: $(PROG)
+-	install -s $(PROG) $(INSTALLROOT)$(BINDIR)
++	install $(PROG) $(INSTALLROOT)$(BINDIR)
+ 	install -m $(MANMODE) $(PROG).1 $(INSTALLROOT)$(MANDIR)/man1
+ 
+ clean:
+--- a/rlogind/Makefile
++++ b/rlogind/Makefile
+@@ -20,7 +20,7 @@
+ auth.o network.o: rlogind.h
+ 
+ install: rlogind
+-	install -s -m$(DAEMONMODE) rlogind $(INSTALLROOT)$(SBINDIR)/in.rlogind
++	install -m$(DAEMONMODE) rlogind $(INSTALLROOT)$(SBINDIR)/in.rlogind
+ 	install -m$(MANMODE) rlogind.8 $(INSTALLROOT)$(MANDIR)/man8/in.rlogind.8
+ 	ln -sf in.rlogind.8 $(INSTALLROOT)$(MANDIR)/man8/rlogind.8
+ 
+--- a/rsh/Makefile
++++ b/rsh/Makefile
+@@ -9,7 +9,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: rsh
+-	install -s rsh $(INSTALLROOT)$(BINDIR)
++	install rsh $(INSTALLROOT)$(BINDIR)
+ 	install -m$(MANMODE) rsh.1 $(INSTALLROOT)$(MANDIR)/man1
+ 
+ clean:
+--- a/rshd/Makefile
++++ b/rshd/Makefile
+@@ -14,7 +14,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: rshd
+-	install -s -m$(DAEMONMODE) rshd $(INSTALLROOT)$(SBINDIR)/in.rshd
++	install -m$(DAEMONMODE) rshd $(INSTALLROOT)$(SBINDIR)/in.rshd
+ 	install -m$(MANMODE) rshd.8 $(INSTALLROOT)$(MANDIR)/man8/in.rshd.8
+ 	ln -sf in.rshd.8 $(INSTALLROOT)$(MANDIR)/man8/rshd.8
+ 
