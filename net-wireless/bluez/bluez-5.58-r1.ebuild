@@ -80,17 +80,13 @@ pkg_setup() {
 	# to prevent bugs like:
 	# https://bugzilla.kernel.org/show_bug.cgi?id=196621
 	CONFIG_CHECK="~NET ~BT ~BT_RFCOMM ~BT_RFCOMM_TTY ~BT_BNEP ~BT_BNEP_MC_FILTER
-				~BT_BNEP_PROTO_FILTER ~BT_HIDP ~RFKILL"
+				~BT_BNEP_PROTO_FILTER ~BT_HIDP ~RFKILL ~CRYPTO_USER_API_HASH ~CRYPTO_USER_API_SKCIPHER"
 	# https://bugzilla.kernel.org/show_bug.cgi?id=196621
 	# https://bugzilla.kernel.org/show_bug.cgi?id=206815
 	if use mesh || use test; then
 		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_USER
 		~CRYPTO_USER_API ~CRYPTO_USER_API_AEAD ~CRYPTO_USER_API_HASH
 		~CRYPTO_AES ~CRYPTO_CCM ~CRYPTO_AEAD ~CRYPTO_CMAC"
-	fi
-	if use test; then
-		# http://www.linuxfromscratch.org/blfs/view/svn/general/bluez.html
-		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO ~CRYPTO_USER_API_HASH ~CRYPTO_USER_API_SKCIPHER"
 	fi
 	linux-info_pkg_setup
 
