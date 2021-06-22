@@ -79,7 +79,7 @@ DESCRIPTION="A modern replacement for 'ls' written in Rust"
 HOMEPAGE="https://the.exa.website/"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="Apache-2.0 MIT Unlicense"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+git man"
@@ -92,13 +92,13 @@ QA_FLAGS_IGNORED="/usr/bin/exa"
 
 src_prepare() {
 	default
-	if use man
-	then
-		mkdir -p contrib/man && \
+	if use man; then
+		mkdir -p contrib/man || die "failed to create man directory"
 		pandoc --standalone -f markdown -t man man/exa_colors.5.md \
-		-o contrib/man/exa_colors.1 && \
-		pandoc --standalone -f markdown -t man man/exa.1.md -o contrib/man/exa.1 && \
-		rm -rf man || die "failed to creat directory"
+		-o contrib/man/exa_colors.1 || die "failed to create colored man pages"
+		pandoc --standalone -f markdown -t man man/exa.1.md -o \
+			contrib/man/exa.1 || die "failed to create man pages"
+		rm -r man || die "failed to remove man directory from source"
 	fi
 }
 
