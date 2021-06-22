@@ -21,6 +21,7 @@ DEPEND="
 	sys-apps/keyutils:=
 	sys-libs/libcap
 	sys-libs/zlib
+	virtual/libcrypt:=
 "
 
 RDEPEND="${DEPEND}"
