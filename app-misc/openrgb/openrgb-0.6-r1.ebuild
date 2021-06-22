@@ -18,7 +18,7 @@ else
 fi
 
 DESCRIPTION="Open source RGB lighting control that doesn't depend on manufacturer software"
-HOMEPAGE="https://gitlab.com/CalcProgrammer1/OpenRGB/"
+HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
 LICENSE="GPL-2"
 SLOT="0/1"
 
