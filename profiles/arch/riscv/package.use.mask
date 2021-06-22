@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-06-22)
+# Dependencies not keyworded here yet
+dev-python/pillow imagequant test tk
+
 # Marek Szuba <marecki@gentoo.org> (2021-06-21)
 # net-libs/mbedtls not keyworded here, not tested
 net-libs/libssh2 mbedtls
