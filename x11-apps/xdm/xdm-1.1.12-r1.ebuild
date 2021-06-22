@@ -25,6 +25,7 @@ RDEPEND="
 	x11-libs/libXdmcp
 	x11-libs/libXmu
 	x11-libs/libXt
+	virtual/libcrypt:=
 	pam? ( sys-libs/pam )
 	systemd? ( >=sys-apps/systemd-209 )
 	truetype? (
