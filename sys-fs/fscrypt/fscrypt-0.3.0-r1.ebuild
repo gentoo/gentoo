@@ -61,7 +61,7 @@ SRC_URI="
 	${EGO_SUM_SRC_URI}
 "
 
-# Apaache-2.0: fscrypt, google/renameio
+# Apache-2.0: fscrypt, google/renameio
 # BSD: golang/protobuf, rogpeppe/go-internal, golang/x/*
 # BSD-2: pkg/errors
 # MIT: BurntSushi/toml, kisielk/gotool, kr/*, urfave/cli, honnef.co/go/tools
