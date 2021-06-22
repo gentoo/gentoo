@@ -3,9 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8} )
-
-inherit autotools elisp-common eutils flag-o-matic python-single-r1 xdg-utils
+inherit autotools elisp-common eutils xdg-utils
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
@@ -13,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 
 # Supported lisps
 LISPS=(     sbcl cmucl gcl             ecls clozurecl clisp )
@@ -22,10 +20,9 @@ SUPP_RL=(   .    .     y               .    .         y     )
 # . - just --enable-<lisp>, <flag> - --enable-<flag>
 CONF_FLAG=( .    .     .               ecl  ccl       .     )
 # patch file version; . - no patch
-PATCH_V=(   2    1     .               4    3         1     )
+PATCH_V=(   2    1     .               3    2         1     )
 
-IUSE="emacs gui nls unicode vtk X test ${LISPS[*]}"
-RESTRICT="!test? ( test )"
+IUSE="emacs tk nls unicode X ${LISPS[*]}"
 
 # Languages
 LANGS="de es pt pt_BR"
@@ -34,30 +31,16 @@ for lang in ${LANGS}; do
 done
 
 # texlive-latexrecommended needed by imaxima for breqn.sty
-#
-# VTK is an optional plotting backend that can be enabled by
-# running "draw_renderer: 'vtk;" within maxima.
-#
-# It's NON-optional for the scene() command, but that command is
-# currently useless since Tcl/Tk support was dropped in sci-libs/vtk.
-# Thus we include VTK only as an optional dependency.
-RDEPEND="
-	X? (
-		x11-misc/xdg-utils
-		sci-visualization/gnuplot[gd]
-		vtk? (
-			${PYTHON_DEPS}
-			sci-libs/vtk[python,rendering,${PYTHON_SINGLE_USEDEP}]
-		)
-	)
-	emacs? (
-		>=app-editors/emacs-23.1:*
+RDEPEND="!app-emacs/imaxima
+	virtual/libcrypt:=
+	X? ( x11-misc/xdg-utils
+		 sci-visualization/gnuplot[gd]
+		 tk? ( dev-lang/tk:0 ) )
+	emacs? ( >=app-editors/emacs-23.1:*
 		virtual/latex-base
 		app-emacs/auctex
 		app-text/ghostscript-gpl
-		dev-texlive/texlive-latexrecommended
-	)
-	gui? ( dev-lang/tk:0 )"
+		dev-texlive/texlive-latexrecommended )"
 
 # generating lisp dependencies
 depends() {
@@ -89,25 +72,15 @@ done
 
 unset LISP
 
-# Maxima can make use of X features like plotting (and launching a PNG
-# viewer) from the console, but you can't use the xmaxima GUI without X.
-REQUIRED_USE="${PYTHON_REQUIRED_USE} gui? ( X )"
-
 RDEPEND="${RDEPEND}
 	${DEF_DEP}"
 
-# Python is used in e.g. doc/info/build_html.sh to build the docs.
-DEPEND="${PYTHON_DEPS}
-	${RDEPEND}
-	test? ( sci-visualization/gnuplot )
+DEPEND="${RDEPEND}
 	sys-apps/texinfo"
 
 TEXMF="${EPREFIX}"/usr/share/texmf-site
 
 pkg_setup() {
-	# Set the PYTHON variable to whatever it should be.
-	python-single-r1_pkg_setup
-
 	local n=${#LISPS[*]}
 
 	for ((n--; n >= 0; n--)); do
@@ -123,8 +96,7 @@ pkg_setup() {
 
 src_prepare() {
 	local n PATCHES v
-	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1
-			  dont-hardcode-python support-new-vtk )
+	PATCHES=( emacs-0 rmaxima-0 wish-2 xdg-utils-1 )
 
 	n=${#PATCHES[*]}
 	for ((n--; n >= 0; n--)); do
@@ -169,25 +141,14 @@ src_configure() {
 		done
 	fi
 
-	# Using raw-ldflags fixes the error,
-	#
-	#   x86_64-pc-linux-gnu/bin/ld: fatal error: -O1 -Wl: invalid option
-	#   value (expected an integer): 1 -Wl
-	#
-	# when building the maxima.fas library for ECL.
-	#
 	econf ${CONFS} \
-		LDFLAGS="$(raw-ldflags)" \
-		$(use_with gui wish) \
+		$(use_with tk wish) \
 		$(use_enable emacs) \
 		--with-lispdir="${EPREFIX}/${SITELISP}/${PN}"
 }
 
 src_compile() {
-	# The variable PYTHONBIN is used in one place while building the
-	# German documentation. Some day that script should be converted
-	# to use the value of @PYTHON@ obtained during ./configure.
-	emake PYTHONBIN="${PYTHON}"
+	emake
 	if use emacs; then
 		pushd interfaces/emacs/emaxima > /dev/null
 		elisp-compile *.el
@@ -203,7 +164,7 @@ src_install() {
 	docompress -x /usr/share/info
 	emake DESTDIR="${D}" emacsdir="${EPREFIX}/${SITELISP}/${PN}" install
 
-	use gui && make_desktop_entry xmaxima xmaxima \
+	use tk && make_desktop_entry xmaxima xmaxima \
 		/usr/share/${PN}/${PV}/xmaxima/maxima-new.png \
 		"Science;Math;Education"
 
@@ -227,9 +188,9 @@ src_install() {
 		doins -r interfaces/emacs/imaxima/imath-example
 	fi
 
+	# if we use ecls, build an ecls library for maxima
 	if use ecls; then
-		# Use ECL to find the path where it expects to load packages from.
-		ECLLIB=$(ecl -eval "(princ (SI:GET-LIBRARY-PATHNAME))" -eval "(quit)")
+		ECLLIB=`ecl -eval "(princ (SI:GET-LIBRARY-PATHNAME))" -eval "(quit)"`
 		insinto "${ECLLIB#${EPREFIX}}"
 		doins src/binary-ecl/maxima.fas
 	fi
