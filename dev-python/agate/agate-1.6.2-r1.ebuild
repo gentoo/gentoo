@@ -17,7 +17,7 @@ IUSE="test +xml"
 RESTRICT="!test? ( test )"
 
 # Other packages have BDEPEND="test? ( dev-python/agate[xml] )"
-LEATHER_VERSION_DEP=">=dev-python/leather-0.3.2"
+LEATHER_VERSION_DEP=">=dev-python/leather-0.3.3-r2"
 TEST_AGAINST_RDEPEND="xml? ( ${LEATHER_VERSION_DEP}[xml,${PYTHON_USEDEP}] )"
 RDEPEND="
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
