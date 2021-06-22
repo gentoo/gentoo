@@ -22,7 +22,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND+=" dev-libs/openssl:0 test? ( net-misc/curl )"
-RDEPEND+=" dev-libs/openssl:0"
+RDEPEND+=" dev-libs/openssl:0="
 
 ruby_add_bdepend "virtual/ruby-ssl
 	test? ( dev-ruby/rack >=dev-ruby/minitest-5.9:5 >=dev-ruby/test-unit-3.0:2 )"
