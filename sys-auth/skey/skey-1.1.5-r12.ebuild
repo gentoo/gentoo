@@ -16,10 +16,14 @@ KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 
 IUSE="static-libs"
 
 DEPEND="dev-lang/perl
+	sys-libs/cracklib
+	virtual/libcrypt:="
+
+RDEPEND="${DEPEND}
+	virtual/perl-Time-Local"
+
+DEPEND="${DEPEND}
 	app-arch/xz-utils"
-RDEPEND="dev-lang/perl
-	virtual/perl-Time-Local
-	sys-libs/cracklib"
 
 PATCHES=("${WORKDIR}/patch")
 
