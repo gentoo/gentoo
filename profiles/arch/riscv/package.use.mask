@@ -177,7 +177,7 @@ sys-libs/libcxx libcxxabi libunwind static-libs
 sys-libs/libcxxabi libunwind
 media-gfx/graphviz devil svg pdf
 media-libs/mesa lm-sensors unwind
-media-libs/tiff jbig jpeg test webp
+media-libs/tiff jbig webp
 net-fs/nfs-utils nfsv41
 media-libs/fontconfig doc
 net-irc/irssi socks5
