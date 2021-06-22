@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools elisp-common flag-o-matic
 
 DESCRIPTION="Shared library implementing a Lisp dialect"
@@ -14,13 +15,14 @@ KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
 IUSE="emacs gmp readline"
 
 RDEPEND="
-	>=sys-libs/gdbm-1.8.0
+	>=sys-libs/gdbm-1.8.0:=
+	virtual/libcrypt:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	gmp? ( dev-libs/gmp:= )
 	readline? ( sys-libs/readline:0= )
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
-	${RDEPEND}
 	sys-apps/texinfo
 "
 
