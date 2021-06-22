@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
 # Michał Górny <mgorny@gentoo.org> (NetBSD)
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: user management in ebuilds
 # @DEPRECATED: acct-user/acct-group packages
 # @DESCRIPTION:
@@ -16,8 +16,8 @@ if [[ -z ${_USER_ECLASS} ]]; then
 _USER_ECLASS=1
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
-	*)
+	5|6|7) ;;
+	8)
 		if [[ ${CATEGORY} != acct-* ]]; then
 			eerror "In EAPI ${EAPI}, packages must not inherit user.eclass"
 			eerror "unless they are in the acct-user or acct-group category."
@@ -26,6 +26,7 @@ case ${EAPI:-0} in
 			die "Invalid \"inherit user\" in EAPI ${EAPI}"
 		fi
 		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit user-info
