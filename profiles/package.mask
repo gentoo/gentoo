@@ -454,11 +454,6 @@ kde-apps/kdebase-meta:5
 ~app-i18n/scim-sunpinyin-3.0.0_rc1
 ~app-i18n/xsunpinyin-3.0.0_rc1
 
-# Alfredo Tupone <tupone@gentoo.org> (2020-08-23)
-# Ported to py3 but not yet released
-# Masked to allow py2.7 removal
-dev-lang/spark
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
 # www-servers/tomcat >= 9 depends on masked dev-java/eclipse-ecj
