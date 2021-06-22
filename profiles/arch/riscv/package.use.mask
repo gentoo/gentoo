@@ -204,4 +204,5 @@ sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi
 x11-base/xorg-server  unwind
+x11-base/xwayland unwind
 x11-libs/libvdpau doc
