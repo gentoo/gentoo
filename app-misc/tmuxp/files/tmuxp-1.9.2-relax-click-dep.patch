@@ -1,0 +1,10 @@
+diff --git a/requirements/base.txt b/requirements/base.txt
+index 4b713f1..3ca88e5 100644
+--- a/requirements/base.txt
++++ b/requirements/base.txt
+@@ -1,4 +1,4 @@
+ kaptan>=0.5.10
+ libtmux>=0.10.1,<0.11
+-click>=7,<8.1
++click>=7
+ colorama>=0.3.9
