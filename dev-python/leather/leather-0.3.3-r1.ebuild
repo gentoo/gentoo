@@ -9,11 +9,13 @@ inherit distutils-r1
 
 DESCRIPTION="Python charting for 80% of humans."
 HOMEPAGE="https://github.com/wireservice/leather https://pypi.org/project/leather/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	test? ( https://github.com/wireservice/leather/archive/refs/tags/${PV}.tar.gz -> ${P}-src.tar.gz ) "
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+xml"
+IUSE="test +xml"
+RESTRICT="!test? ( test )"
 
 # Other packages have BDEPEND="test? ( dev-python/leather[xml] )"
 TEST_AGAINST_RDEPEND="xml? ( dev-python/lxml[${PYTHON_USEDEP}] )"
@@ -21,3 +23,5 @@ RDEPEND="
 	${TEST_AGAINST_RDEPEND}
 	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests pytest
