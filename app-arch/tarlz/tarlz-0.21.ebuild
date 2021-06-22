@@ -15,10 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND=">=app-arch/lzlib-1.12:0="
-DEPEND="
-	${RDEPEND}
-	$(unpacker_src_uri_depends)
-"
+DEPEND="${RDEPEND}"
+BDEPEND="$(unpacker_src_uri_depends)"
 
 src_configure() {
 	econf \
