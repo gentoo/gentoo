@@ -1,0 +1,25 @@
+--- a/rcp/rcp.c
++++ b/rcp/rcp.c
+@@ -482,7 +482,7 @@
+ 			}
+ 		}
+ 		(void)snprintf(buf, sizeof(buf),
+-		    "C%04o %ld %s\n", stb.st_mode&07777, stb.st_size, last);
++		    "C%04o %lld %s\n", stb.st_mode&07777, (long long)(stb.st_size), last);
+ 		(void)write(rem, buf, (int)strlen(buf));
+ 		if (response() < 0) {
+ 			(void)close(f);
+@@ -614,11 +614,11 @@
+ 	struct timeval tv[2];
+ 	enum { YES, NO, DISPLAYED } wrerr;
+ 	BUF *bp;
+-	off_t i, j;
++	off_t i, j, size;
+ 	char ch, *targ;
+ 	const char *why;
+ 	int amt, count, exists, first, mask, mode;
+-	int ofd, setimes, size, targisdir;
++	int ofd, setimes, targisdir;
+ 	char *np, *vect[1], buf[BUFSIZ];
+ 
+ #define	atime	tv[0]

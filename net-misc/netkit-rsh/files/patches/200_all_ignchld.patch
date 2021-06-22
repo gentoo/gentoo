@@ -1,0 +1,22 @@
+--- a/rlogind/rlogind.c
++++ b/rlogind/rlogind.c
+@@ -440,7 +440,7 @@
+     ioctl(master, TIOCPKT, &on);
+     signal(SIGCHLD, cleanup);
+     protocol(netfd, master);
+-    signal(SIGCHLD, SIG_IGN);
++    signal(SIGCHLD, SIG_DFL);
+     cleanup(0);
+ }
+ 
+--- a/rlogin/rlogin.c
++++ b/rlogin/rlogin.c
+@@ -523,7 +523,7 @@
+ stop(char cmdc)
+ {
+ 	mode(0);
+-	signal(SIGCHLD, SIG_IGN);
++	signal(SIGCHLD, SIG_DFL);
+ 	kill(cmdc == defsusp ? 0 : getpid(), SIGTSTP);
+ 	signal(SIGCHLD, catch_child);
+ 	mode(1);

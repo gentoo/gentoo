@@ -1,0 +1,57 @@
+--- a/rshd/rshd.c
++++ b/rshd/rshd.c
+@@ -388,15 +388,6 @@
+ 		     remuser, hostname, locuser, cmdbuf);
+ 	}
+ 
+-	if (chdir(pwd->pw_dir) < 0) {
+-		chdir("/");
+-		/*
+-		 * error("No remote directory.\n");
+-		 * exit(1);
+-		 */
+-	}
+-
+-
+ 	if (pwd->pw_uid != 0 && !access(_PATH_NOLOGIN, F_OK)) {
+ 		error("Logins currently disabled.\n");
+ 		exit(1);
+@@ -456,6 +447,14 @@
+ 		exit(1);
+ 	}
+ 	environ = envinit;
++
++	if (chdir(pwd->pw_dir) < 0) {
++		chdir("/");
++		/*
++		 * error("No remote directory.\n");
++		 * exit(1);
++		 */
++	}
+ 
+ 	strncat(homedir, pwd->pw_dir, sizeof(homedir)-6);
+ 	homedir[sizeof(homedir)-1] = 0;
+--- a/rexecd/rexecd.c
++++ b/rexecd/rexecd.c
+@@ -375,10 +375,6 @@
+ 	/* Log successful attempts. */
+ 	syslog(LOG_INFO, "login from %.128s as %s", remote, user);
+ 
+-	if (chdir(pwd->pw_dir) < 0) {
+-		fatal("No remote directory.\n");
+-	}
+-
+ 	write(2, "\0", 1);
+ 	if (port) {
+ 		/* If we have a port, dup STDERR on that port KRH */
+@@ -408,6 +404,10 @@
+ 	if (setuid(pwd->pw_uid)) {
+ 		perror("setuid");
+ 		exit(1);
++	}
++
++	if (chdir(pwd->pw_dir) < 0) {
++		fatal("No remote directory.\n");
+ 	}
+ 
+ 	strcat(path, _PATH_DEFPATH);
