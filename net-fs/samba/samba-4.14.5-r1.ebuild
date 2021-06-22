@@ -78,6 +78,7 @@ COMMON_DEPEND="
 	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	$(python_gen_cond_dep "
 		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
