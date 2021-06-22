@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 optfeature verify-sig
@@ -22,7 +22,7 @@ LICENSE+=" Apache-2.0"
 # admin icons, jquery, xregexp.js
 LICENSE+=" MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~sparc x86 ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86 ~x64-macos"
 IUSE="doc sqlite test"
 RESTRICT="!test? ( test )"
 
