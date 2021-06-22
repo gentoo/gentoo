@@ -14,11 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="minimal pcre examples"
 
-DEPEND="dev-libs/confuse
+DEPEND="dev-libs/confuse:=
 	dev-libs/expat
-	>=dev-libs/apr-1.0
+	>=dev-libs/apr-1.0:=
 	net-libs/libnsl:0=
 	net-libs/libtirpc:0=
+	virtual/libcrypt:=
 	!dev-db/firebird
 	pcre? ( dev-libs/libpcre )"
 
