@@ -13,7 +13,7 @@ SRC_URI="https://github.com/migonzalvar/dj-email-url/archive/refs/tags/v${PV}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 DOCS=( CHANGELOG.rst README.rst )
 
