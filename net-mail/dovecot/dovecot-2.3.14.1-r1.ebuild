@@ -30,7 +30,7 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib zstd"
@@ -40,7 +40,7 @@ IUSE="${IUSE_DOVECOT_AUTH} ${IUSE_DOVECOT_COMPRESS} ${IUSE_DOVECOT_OTHER}"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-DEPEND="argon2? ( dev-libs/libsodium )
+DEPEND="argon2? ( dev-libs/libsodium:= )
 	bzip2? ( app-arch/bzip2 )
 	caps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
@@ -50,9 +50,9 @@ DEPEND="argon2? ( dev-libs/libsodium )
 	lzma? ( app-arch/xz-utils )
 	lz4? ( app-arch/lz4 )
 	mysql? ( dev-db/mysql-connector-c:0= )
-	pam? ( sys-libs/pam )
+	pam? ( sys-libs/pam:= )
 	postgres? ( dev-db/postgresql:* !dev-db/postgresql[ldap,threads] )
-	rpc? ( net-libs/libtirpc net-libs/rpcsvc-proto )
+	rpc? ( net-libs/libtirpc:= net-libs/rpcsvc-proto )
 	selinux? ( sec-policy/selinux-dovecot )
 	solr? ( net-misc/curl dev-libs/expat )
 	sqlite? ( dev-db/sqlite:* )
@@ -60,9 +60,10 @@ DEPEND="argon2? ( dev-libs/libsodium )
 	suid? ( acct-group/mail )
 	tcpd? ( sys-apps/tcp-wrappers )
 	textcat? ( app-text/libexttextcat )
-	unwind? ( sys-libs/libunwind )
-	zlib? ( sys-libs/zlib )
-	zstd? ( app-arch/zstd )
+	unwind? ( sys-libs/libunwind:= )
+	zlib? ( sys-libs/zlib:= )
+	zstd? ( app-arch/zstd:= )
+	virtual/libcrypt:=
 	virtual/libiconv
 	dev-libs/icu:="
 
