@@ -79,7 +79,7 @@ DESCRIPTION="A modern replacement for 'ls' written in Rust"
 HOMEPAGE="https://the.exa.website/"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 MIT Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+git man"
