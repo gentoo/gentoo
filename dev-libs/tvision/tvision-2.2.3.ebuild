@@ -56,6 +56,8 @@ src_configure() {
 	myconf+=(
 		--fhs
 		--prefix="${EPREFIX}/usr"
+		# avoid stripping
+		--with-debug
 		--with-pthread
 		--without-static
 		--x-include="${EPREFIX}/usr/include/X11"
