@@ -4,13 +4,15 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_8 )
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
 MY_PN=${PN/-/.}
+MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Oslo i18n library"
 HOMEPAGE="https://launchpad.net/oslo"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
