@@ -177,6 +177,9 @@ IUSE=""
 BDEPEND="${RUST_DEPEND}
 	>=dev-lang/rust-1.53.0[nightly]"
 
+# RUSTFLAGS support needed: https://bugs.gentoo.org/796887
+QA_FLAGS_IGNORED=".*"
+
 src_prepare() {
 	grep -lZ println starlark/bin/*.rs | xargs -0 sed -e 's:e\?println!:eprintln!:g' -i
 	assert "failed to patch println to eprintln in bin/*.rs"
