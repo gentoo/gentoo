@@ -18,7 +18,7 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github"> madmartin/noad</remote-id>
+		<remote-id type="github">madmartin/noad</remote-id>
 	</upstream>
 	<use>
 		<flag name="libmpeg2">Build support for mpeg2 through <pkg>media-libs/libmpeg2</pkg> rather than using <pkg>media-video/ffmpeg</pkg></flag>
