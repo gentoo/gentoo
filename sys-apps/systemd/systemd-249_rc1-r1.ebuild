@@ -16,7 +16,7 @@ else
 	MY_P=${MY_PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 PYTHON_COMPAT=( python3_{7..9} )
@@ -43,6 +43,7 @@ OPENSSL_DEP=">=dev-libs/openssl-1.1.0:0="
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl:0= )
 	apparmor? ( sys-libs/libapparmor:0= )
 	audit? ( >=sys-process/audit-2:0= )
@@ -132,7 +133,7 @@ RDEPEND="${COMMON_DEPEND}
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
-	hwdb? ( >=sys-apps/hwids-20150417[udev] )
+	hwdb? ( sys-apps/hwids[systemd(+),udev] )
 	>=sys-fs/udev-init-scripts-34
 	policykit? ( sys-auth/polkit )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )"
@@ -150,12 +151,16 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 
 python_check_deps() {
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
+
+QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -221,7 +226,6 @@ src_prepare() {
 			"${FILESDIR}/gentoo-generator-path-r2.patch"
 			"${FILESDIR}/gentoo-systemctl-disable-sysv-sync-r1.patch"
 			"${FILESDIR}/gentoo-journald-audit.patch"
-			"${FILESDIR}/gentoo-pam.patch"
 		)
 	fi
 
@@ -378,6 +382,10 @@ multilib_src_install_all() {
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
 
+	if use pam; then
+		newpamd "${FILESDIR}"/systemd-user.pam systemd-user
+	fi
+
 	if use hwdb; then
 		rm -r "${ED}${rootprefix}"/lib/udev/hwdb.d || die
 	fi
@@ -435,19 +443,7 @@ migrate_locale() {
 	fi
 }
 
-save_enabled_units() {
-	ENABLED_UNITS=()
-	type systemctl &>/dev/null || return
-	for x; do
-		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
-			ENABLED_UNITS+=( "${x}" )
-		fi
-	done
-}
-
 pkg_preinst() {
-	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
-
 	if ! use split-usr; then
 		local dir
 		for dir in bin sbin lib; do
@@ -469,22 +465,16 @@ pkg_postinst() {
 	systemd_update_catalog
 
 	# Keep this here in case the database format changes so it gets updated
-	# when required. Despite that this file is owned by sys-apps/hwids.
-	if has_version "sys-apps/hwids[udev]"; then
-		udevadm hwdb --update --root="${EROOT}"
+	# when required.
+	if use hwdb; then
+		systemd-hwdb --root="${ROOT}" update
 	fi
 
 	udev_reload || FAIL=1
 
-	# Bug 465468, make sure locales are respect, and ensure consistency
+	# Bug 465468, make sure locales are respected, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
-
-	systemd_reenable systemd-networkd.service systemd-resolved.service
-
-	if [[ ${ENABLED_UNITS[@]} ]]; then
-		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
-	fi
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		if type systemctl &>/dev/null; then
