@@ -12,7 +12,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Oslo i18n library"
 HOMEPAGE="https://launchpad.net/oslo"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -26,8 +26,10 @@ RDEPEND="
 "
 BDEPEND="
 	${CDEPEND}
-	>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
-	>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
+		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests unittest
