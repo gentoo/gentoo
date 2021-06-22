@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ia64 ~x86"
 
 RDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]"
@@ -25,6 +25,7 @@ BDEPEND="
 		dev-python/black[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
+		dev-python/natsort[${PYTHON_USEDEP}]
 		dev-python/pylama[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-vcs/git
