@@ -55,6 +55,7 @@ src_configure() {
 src_install() {
 	newsbin "${BUILD_DIR}/hin9" $PN
 	newinitd "${FILESDIR}/initd-v1.sh" $PN
+	newconfd "${FILESDIR}/confd-v1.sh" $PN
 	systemd_dounit "${FILESDIR}/$PN.service" # not tested
 
 	# config
