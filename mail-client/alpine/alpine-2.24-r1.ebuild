@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="+chappa doc ipv6 kerberos ldap nls onlyalpine passfile smime spell ssl threads"
 
-DEPEND="sys-libs/ncurses
+DEPEND="sys-libs/ncurses:=
+	virtual/libcrypt:=
 	kerberos? ( app-crypt/mit-krb5 )
 	ldap? ( net-nds/openldap )
 	spell? ( app-text/aspell )
