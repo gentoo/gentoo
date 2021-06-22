@@ -79,6 +79,7 @@ COMMON_DEPEND="
 		tokudb? ( app-arch/snappy )
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
+	virtual/libcrypt:=
 "
 BDEPEND="virtual/yacc
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )

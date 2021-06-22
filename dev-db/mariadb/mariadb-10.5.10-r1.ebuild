@@ -10,7 +10,7 @@ inherit eutils systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
 # Patch version
-PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.5.9-patches-05.tar.xz"
+PATCH_SET="https://dev.gentoo.org/~whissi/dist/${PN}/${PN}-10.5.10-patches-01.tar.xz"
 
 SRC_URI="https://downloads.mariadb.org/interstitial/${P}/source/${P}.tar.gz
 	${PATCH_SET}"
@@ -31,7 +31,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
+	virtual/libcrypt:=
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
@@ -91,7 +92,7 @@ BDEPEND="virtual/yacc
 "
 DEPEND="${COMMON_DEPEND}
 	server? (
-		extraengine? ( jdbc? ( >=virtual/jdk-1.6 ) )
+		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )
 		test? ( acct-group/mysql acct-user/mysql )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
@@ -104,12 +105,13 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb:10.2
 	!dev-db/mariadb:10.3
 	!dev-db/mariadb:10.4
+	!dev-db/mariadb:10.6
 	!<virtual/mysql-5.6-r11
 	!<virtual/libmysqlclient-18-r1
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
 		columnstore? ( dev-db/mariadb-connector-c )
-		extraengine? ( jdbc? ( >=virtual/jre-1.6 ) )
+		extraengine? ( jdbc? ( >=virtual/jre-1.8 ) )
 		galera? (
 			sys-apps/iproute2
 			=sys-cluster/galera-26*
@@ -226,9 +228,9 @@ src_prepare() {
 	}
 
 	if use jemalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd jemalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mariadbd LINK_PUBLIC jemalloc)" >> "${S}/sql/CMakeLists.txt"
 	elif use tcmalloc; then
-		echo "TARGET_LINK_LIBRARIES(mariadbd tcmalloc)" >> "${S}/sql/CMakeLists.txt"
+		echo "TARGET_LINK_LIBRARIES(mariadbd LINK_PUBLIC tcmalloc)" >> "${S}/sql/CMakeLists.txt"
 	fi
 
 	local plugin
@@ -364,10 +366,11 @@ src_configure() {
 	)
 
 	if use server ; then
-
-		# Federated{,X} must be treated special otherwise they will not be built as plugins
+		# Connect and Federated{,X} must be treated special
+		# otherwise they will not be built as plugins
 		if ! use extraengine ; then
 			mycmakeargs+=(
+				-DPLUGIN_CONNECT=NO
 				-DPLUGIN_FEDERATED=NO
 				-DPLUGIN_FEDERATEDX=NO
 			)
@@ -378,13 +381,13 @@ src_configure() {
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
+			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_CASSANDRA=NO
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)
 			-DPLUGIN_S3=$(usex s3 YES NO)
 			-DPLUGIN_COLUMNSTORE=$(usex columnstore YES NO)
-			-DPLUGIN_CONNECT=$(usex extraengine YES NO)
 			-DCONNECT_WITH_MYSQL=1
 			-DCONNECT_WITH_LIBXML2=$(usex xml)
 			-DCONNECT_WITH_ODBC=$(usex odbc)
@@ -460,7 +463,6 @@ src_configure() {
 			-DWITH_MYISAM_STORAGE_ENGINE=1
 			-DWITH_PARTITION_STORAGE_ENGINE=1
 		)
-
 	else
 		mycmakeargs+=(
 			-DWITHOUT_SERVER=1
@@ -558,6 +560,8 @@ src_test() {
 
 	local -a disabled_tests
 	disabled_tests+=( "compat/oracle.plugin;0;Needs example plugin which Gentoo disables" )
+	disabled_tests+=( "innodb_gis.1;25095;Known rounding error with latest AMD processors" )
+	disabled_tests+=( "innodb_gis.gis;25095;Known rounding error with latest AMD processors" )
 	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
 	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
 	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
@@ -570,6 +574,7 @@ src_test() {
 	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
 	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
 	disabled_tests+=( "roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test" )
+	disabled_tests+=( "sys_vars.wsrep_on_without_provider;25625;Known to be broken" )
 
 	if ! use latin1 ; then
 		disabled_tests+=( "funcs_1.is_columns_mysql;0;Requires USE=latin1" )
