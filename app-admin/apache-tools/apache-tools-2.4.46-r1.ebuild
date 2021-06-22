@@ -10,7 +10,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc64-solaris ~x64-solaris"
 IUSE="ssl"
 RESTRICT="test"
 
@@ -18,9 +18,9 @@ RDEPEND=">=dev-libs/apr-1.5.0:1=
 	dev-libs/apr-util:1=
 	dev-libs/expat
 	dev-libs/libpcre
+	virtual/libcrypt:=
 	kernel_linux? ( sys-apps/util-linux )
 	ssl? ( dev-libs/openssl:0= )"
-
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
 BDEPEND="virtual/pkgconfig"
@@ -69,7 +69,7 @@ src_configure() {
 		$(usex ssl '--with-ssl="${EPREFIX}"/usr' '')
 	)
 	# econf overwrites the stuff from config.layout.
-	ac_cv_path_PKGCONFIG="${PKG_CONFIG}" \
+	ac_cv_path_PKGCONFIG=${PKG_CONFIG} \
 	econf "${myeconfargs[@]}"
 	sed -i \
 		-e '/^LTFLAGS/s:--silent::' \
