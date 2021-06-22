@@ -68,8 +68,6 @@ SRC_URI="
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 DEPEND="sys-libs/pam"
 RDEPEND="${DEPEND}"
