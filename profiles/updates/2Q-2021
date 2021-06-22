@@ -5,3 +5,4 @@ move dev-util/robin-hood-hashing dev-cpp/robin-hood-hashing
 move dev-python/awscli app-admin/awscli
 move dev-util/dwarves dev-util/pahole
 move net-irc/oragono net-irc/ergo
+move app-misc/OpenRGB app-misc/openrgb
