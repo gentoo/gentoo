@@ -24,6 +24,7 @@ RDEPEND="!mail-client/nmh
 	sys-libs/ncurses:=
 	sys-libs/readline:=
 	dev-libs/libltdl:0
+	virtual/libcrypt:=
 	virtual/mta
 	berkdb? ( sys-libs/db:= )
 	bidi? ( dev-libs/fribidi )
@@ -35,7 +36,7 @@ RDEPEND="!mail-client/nmh
 	ldap? ( net-nds/openldap )
 	mysql? ( dev-db/mysql-connector-c )
 	nls? ( sys-devel/gettext )
-	pam? ( sys-libs/pam )
+	pam? ( sys-libs/pam:= )
 	postgres? ( dev-db/postgresql:= )
 	python? ( ${PYTHON_DEPS} )
 	sasl? ( virtual/gsasl )
@@ -44,8 +45,9 @@ RDEPEND="!mail-client/nmh
 	tcpd? ( sys-apps/tcp-wrappers )
 	tokyocabinet? ( dev-db/tokyocabinet )"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	servers? ( tcpd ldap )"
