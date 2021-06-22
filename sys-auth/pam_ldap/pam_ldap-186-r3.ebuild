@@ -16,7 +16,7 @@ IUSE="ssl sasl"
 
 DEPEND="sys-libs/pam[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
-	virtual/libcrypt:=
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r3[${MULTILIB_USEDEP}] )"
 
 RDEPEND="${DEPEND}"
