@@ -1,0 +1,43 @@
+--- a/rcp/rcp.c
++++ b/rcp/rcp.c
+@@ -836,19 +836,33 @@
+ error(const char *fmt, ...)
+ {
+ 	static FILE *fp;
+-	va_list ap;
+-
+-	va_start(ap, fmt);
++	char buf[1000];
+ 
+ 	++errs;
+ 	if (!fp && !(fp = fdopen(rem, "w")))
+ 		return;
+-	fprintf(fp, "%c", 0x01);
+-	vfprintf(fp, fmt, ap);
++	
++	/* (fmt,...) might need to go to two streams.
++	 *
++	 * In { va_start ; vfprintf ; vfprintf ; va_end }, second
++	 * vfprintf didn't restart (ie: vfprintf affects ap) (glibc)
++	 *
++	 * Is { va_start ; vfprintf ; va_end} * 2 even allowed?
++	 *
++	 * => Dump (fmt,...) to buffer.  */
++	
++	{
++	    va_list ap;
++	    va_start(ap, fmt);
++	    vsnprintf(buf, sizeof(buf), fmt, ap);
++	    buf[sizeof(buf)-1] = 0;
++	    va_end(ap);
++	}
++	
++	fprintf(fp, "%c%s", 0x01, buf);
+ 	fflush(fp);
+-	if (!iamremote)	vfprintf(stderr, fmt, ap);
+ 
+-	va_end(ap);
++	if (!iamremote)	fputs(buf, stderr);
+ }
+ 
+ static void 

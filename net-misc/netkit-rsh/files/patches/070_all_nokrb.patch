@@ -1,0 +1,231 @@
+diff -uNr a/rcp/rcp.1 a/rcp/rcp.1
+--- a/rcp/rcp.1
++++ b/rcp/rcp.1
+@@ -41,12 +41,10 @@
+ .Sh SYNOPSIS
+ .Nm rcp
+ .Op Fl px
+-.Op Fl k Ar realm
+ .Ar file1 file2
+ .Nm rcp
+ .Op Fl px
+ .Op Fl r
+-.Op Fl k Ar realm
+ .Ar file ...
+ .Ar directory
+ .Sh DESCRIPTION
+@@ -79,27 +77,6 @@
+ modified by the
+ .Xr umask  2
+ on the destination host is used.
+-.It Fl k
+-The
+-.Fl k
+-option requests
+-.Nm rcp
+-to obtain tickets
+-for the remote host in realm
+-.Ar realm
+-instead of the remote host's realm as determined by
+-.Xr krb_realmofhost  3  .
+-.It Fl x
+-The
+-.Fl x
+-option turns on
+-.Tn DES
+-encryption for all data passed by
+-.Nm rcp .
+-This may impact response time and
+-.Tn CPU
+-utilization, but provides
+-increased security.
+ .El
+ .Pp
+ If
+@@ -134,11 +111,6 @@
+ .Nm rcp
+ command appeared in
+ .Bx 4.2 .
+-The version of
+-.Nm rcp
+-described here
+-has been reimplemented with Kerberos in
+-.Bx 4.3 Reno .
+ .Sh BUGS
+ Doesn't detect all cases where the target of a copy might
+ be a file in cases where only a directory should be legal.
+diff -uNr a/rlogin/rlogin.1 a/rlogin/rlogin.1
+--- a/rlogin/rlogin.1
++++ b/rlogin/rlogin.1
+@@ -42,7 +42,6 @@
+ .Ar rlogin
+ .Op Fl 8EKLdx
+ .Op Fl e Ar char
+-.Op Fl k Ar realm
+ .Op Fl l Ar username
+ .Ar host
+ .Sh DESCRIPTION
+@@ -50,9 +49,7 @@
+ starts a terminal session on a remote host
+ .Ar host  .
+ .Pp
+-.Nm Rlogin
+-first attempts to use the Kerberos authorization mechanism, described below.
+-If the remote host does not supporting Kerberos the standard Berkeley
++The standard Berkeley
+ .Pa rhosts
+ authorization mechanism is used.
+ The options are as follows:
+@@ -71,10 +68,6 @@
+ When used with the
+ .Fl 8
+ option, this provides a completely transparent connection.
+-.It Fl K
+-The
+-.Fl K
+-option turns off all Kerberos authentication.
+ .It Fl L
+ The
+ .Fl L
+@@ -94,25 +87,6 @@
+ ``~'' by default.
+ This specification may be as a literal character, or as an octal
+ value in the form \ennn.
+-.It Fl k
+-The
+-.FL k
+-option requests rlogin to obtain tickets for the remote host
+-in realm
+-.Ar realm
+-instead of the remote host's realm as determined by
+-.Xr krb_realmofhost  3  .
+-.It Fl x
+-The
+-.Fl x
+-option turns on
+-.Tn DES
+-encryption for all data passed via the
+-rlogin session.
+-This may impact response time and
+-.Tn CPU
+-utilization, but provides
+-increased security.
+ .El
+ .Pp
+ A line of the form ``<escape char>.'' disconnects from the remote host.
+@@ -129,35 +103,6 @@
+ is transparent.
+ Flow control via ^S/^Q and flushing of input and output on interrupts
+ are handled properly.
+-.Sh KERBEROS AUTHENTICATION
+-Each user may have a private authorization list in the file
+-.Pa .klogin
+-in their home directory.
+-Each line in this file should contain a Kerberos principal name of the
+-form
+-.Ar principal.instance@realm  .
+-If the originating user is authenticated to one of the principals named
+-in
+-.Pa .klogin ,
+-access is granted to the account.
+-The principal
+-.Ar accountname.@localrealm
+-is granted access if
+-there is no
+-.Pa .klogin
+-file.
+-Otherwise a login and password will be prompted for on the remote machine
+-as in
+-.Xr login  1  .
+-To avoid certain security problems, the
+-.Pa .klogin
+-file must be owned by
+-the remote user.
+-.Pp
+-If Kerberos authentication fails, a warning message is printed and the
+-standard Berkeley
+-.Nm rlogin
+-is used instead.
+ .Sh ENVIRONMENT
+ The following environment variable is utilized by
+ .Nm rlogin :
+@@ -167,9 +112,6 @@
+ .El
+ .Sh SEE ALSO
+ .Xr rsh 1 ,
+-.Xr kerberos 3 ,
+-.Xr krb_sendauth 3 ,
+-.Xr krb_realmofhost 3
+ .Sh HISTORY
+ The
+ .Nm rlogin
+diff -uNr a/rsh/rsh.1 a/rsh/rsh.1
+--- a/rsh/rsh.1
++++ b/rsh/rsh.1
+@@ -41,7 +41,6 @@
+ .Sh SYNOPSIS
+ .Nm rsh
+ .Op Fl Kdnx
+-.Op Fl k Ar realm
+ .Op Fl l Ar username
+ .Ar host
+ .Op command
+@@ -62,10 +61,6 @@
+ normally terminates when the remote command does.
+ The options are as follows:
+ .Bl -tag -width flag
+-.It Fl K
+-The
+-.Fl K
+-option turns off all Kerberos authentication.
+ .It Fl d
+ The
+ .Fl d
+@@ -74,23 +69,11 @@
+ on the
+ .Tn TCP
+ sockets used for communication with the remote host.
+-.It Fl k
+-The
+-.Fl k
+-option causes
+-.Nm rsh
+-to obtain tickets for the remote host in
+-.Ar realm
+-instead of the remote host's realm as determined by
+-.Xr krb_realmofhost  3  .
+ .It Fl l
+ By default, the remote username is the same as the local username.
+ The
+ .Fl l
+ option allows the remote name to be specified.
+-Kerberos authentication is used, and authorization is determined
+-as in
+-.Xr rlogin  1  .
+ .It Fl n
+ The
+ .Fl n
+@@ -99,13 +82,6 @@
+ (see the
+ .Sx BUGS
+ section of this manual page).
+-.It Fl x
+-The
+-.Fl x
+-option turns on
+-.Tn DES
+-encryption for all data exchange.
+-This may introduce a significant delay in response time.
+ .El
+ .Pp
+ If no
+@@ -142,9 +118,6 @@
+ .El
+ .Sh SEE ALSO
+ .Xr rlogin 1 ,
+-.Xr kerberos 3 ,
+-.Xr krb_sendauth 3 ,
+-.Xr krb_realmofhost 3
+ .Sh HISTORY
+ The
+ .Nm rsh
