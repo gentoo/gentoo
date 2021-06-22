@@ -20,6 +20,7 @@ COMMON_DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXext
 	>=x11-libs/libXtst-1.1.0
+	virtual/libcrypt:=
 	ssl? ( dev-libs/openssl:0= )
 	xcomposite? ( x11-libs/libXcomposite )
 	xdamage? ( x11-libs/libXdamage )
@@ -72,6 +73,6 @@ src_configure() {
 
 src_install() {
 	default
-	newinitd "${FILESDIR}/x11vnc.init.d" x11vnc
+	newinitd "${FILESDIR}/x11vnc.init.d-r1" x11vnc
 	newconfd "${FILESDIR}/x11vnc.conf.d" x11vnc
 }
