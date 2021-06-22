@@ -31,7 +31,7 @@ DEPEND="perl? ( dev-lang/perl:= )
 		dev-lang/ruby:*
 		dev-ruby/rubygems:*
 	)
-	ssl? ( dev-libs/openssl:0 )"
+	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
