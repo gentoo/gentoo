@@ -2,24 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic l10n multilib optfeature pam
+inherit autotools flag-o-matic font multilib optfeature pam
 
 DESCRIPTION="modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="https://www.jwz.org/xscreensaver/${P}.tar.gz"
 
-LICENSE="BSD"
+# Font license mapping for folder ./hacks/fonts/ as following:
+#   clacon.ttf       -- MIT
+#   gallant12x22.ttf -- unclear, hence dropped
+#   luximr.ttf       -- bh-luxi (package media-fonts/font-bh-ttf)
+#   OCRAStd.otf      -- unclear, hence dropped
+#   SpecialElite.ttf -- Apache-2.0
+LICENSE="BSD fonts? ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="caps +gdk-pixbuf gdm +gtk jpeg +locking new-login offensive opengl pam +perl selinux suid systemd xinerama"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="elogind fonts +gdk-pixbuf gdm +gtk jpeg +locking new-login offensive opengl pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gdk-pixbuf? ( gtk )
+	elogind? ( !systemd )
 "
 
 COMMON_DEPEND="
-	>=gnome-base/libglade-2
 	dev-libs/libxml2
 	media-libs/netpbm
+	virtual/libcrypt:=
 	x11-apps/appres
 	x11-apps/xwininfo
 	x11-libs/libX11
@@ -30,7 +37,7 @@ COMMON_DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXt
 	x11-libs/libXxf86vm
-	caps? ( sys-libs/libcap )
+	elogind? ( sys-auth/elogind )
 	gdk-pixbuf? (
 		x11-libs/gdk-pixbuf-xlib
 		>=x11-libs/gdk-pixbuf-2.42.0:2
@@ -52,6 +59,7 @@ COMMON_DEPEND="
 # For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`
 RDEPEND="
 	${COMMON_DEPEND}
+	media-gfx/fbida
 	perl? (
 		dev-lang/perl
 		dev-perl/libwww-perl
@@ -68,14 +76,12 @@ DEPEND="
 	x11-base/xorg-proto
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.45-remove-libXxf86misc-dep.patch
-	"${FILESDIR}"/${PN}-5.45-interix.patch
+	"${FILESDIR}"/${PN}-6.01-interix.patch
 	"${FILESDIR}"/${PN}-5.31-pragma.patch
-	"${FILESDIR}"/${PN}-5.44-blurb-hndl-test-passwd.patch
-	"${FILESDIR}"/${PN}-5.44-gentoo.patch
+	"${FILESDIR}"/${PN}-6.01-gentoo.patch
 	"${FILESDIR}"/${PN}-5.45-gcc.patch
-	"${FILESDIR}"/${PN}-5.45-configure.ac-sandbox.patch
-	"${FILESDIR}"/${P}-cve-2021-34557.patch  # bug 794475
+	"${FILESDIR}"/${PN}-6.01-configure.ac-sandbox.patch
+	"${FILESDIR}"/${PN}-6.01-without-gl-makefile.patch
 )
 
 src_prepare() {
@@ -91,6 +97,10 @@ src_prepare() {
 
 	default
 
+	# We are patching driver/XScreenSaver.ad.in, so let's delete the
+	# header generated from it so that it gets back in sync during build:
+	rm driver/XScreenSaver_ad.h || die
+
 	if ! use offensive; then
 		sed -i \
 			-e '/boobies/d;/boobs/d;/cock/d;/pussy/d;/viagra/d;/vibrator/d' \
@@ -100,7 +110,11 @@ src_prepare() {
 			-e 's|flaccid penis|flaccid anchor|g' \
 			-e 's|vagina|engagement ring|g' \
 			-e 's|Penis|Shuttle|g' \
-			hacks/glx/glsnake.c || break
+			hacks/glx/glsnake.c || die
+		sed -i \
+			's| Stay.*fucking mask\.$||' \
+			hacks/glx/covid19.man \
+			hacks/config/covid19.xml || die
 	fi
 
 	eapply_user
@@ -116,11 +130,10 @@ src_configure() {
 	fi
 
 	unset BC_ENV_ARGS #24568
-	export RPM_PACKAGE_VERSION=no #368025
 
 	econf \
 		$(use_enable locking) \
-		$(use_with caps setcap-hacks) \
+		$(use_with elogind) \
 		$(use_with gdk-pixbuf pixbuf) \
 		$(use_with gtk) \
 		$(use_with jpeg) \
@@ -152,6 +165,18 @@ src_configure() {
 src_install() {
 	emake install_prefix="${D}" install
 
+	if use fonts; then
+		# Do not install fonts with unclear licensing
+		rm -v "${ED}${FONTDIR}"/{gallant12x22.ttf,OCRAStd.otf} || die
+
+		# Do not duplicate font Luxi Mono (of package media-fonts/font-bh-ttf)
+		rm -v "${ED}${FONTDIR}"/luximr.ttf || die
+
+		font_xfont_config
+	else
+		rm -v "${ED}${FONTDIR}"/*.{ttf,otf} || die
+	fi
+
 	dodoc README{,.hacking}
 
 	if use pam; then
@@ -163,6 +188,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	use fonts && font_pkg_postinst
+
 	optfeature 'Bitmap fonts 75dpi' media-fonts/font-adobe-75dpi
 	optfeature 'Bitmap fonts 100dpi' media-fonts/font-adobe-100dpi
+	optfeature 'Truetype font Luxi Mono' media-fonts/font-bh-ttf
+}
+
+pkg_postrm() {
+	use fonts && font_pkg_postrm
 }

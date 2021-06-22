@@ -19,6 +19,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	dev-libs/libxml2
 	media-libs/netpbm
+	virtual/libcrypt:=
 	x11-apps/appres
 	x11-apps/xwininfo
 	x11-libs/libX11
