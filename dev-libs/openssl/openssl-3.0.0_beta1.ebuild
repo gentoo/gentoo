@@ -148,7 +148,7 @@ multilib_src_configure() {
 	unset SCRIPTS #312551
 	unset CROSS_COMPILE #311473
 
-	tc-export CC AR RANLIB RC
+	tc-export AR CC CXX RANLIB RC
 
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
 	echoit() { echo "$@" ; "$@" ; }
