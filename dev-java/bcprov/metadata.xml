@@ -5,4 +5,7 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+	<longdescription>
+		"The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains JCE provider and lightweight API for the Bouncy Castle Cryptography APIs for JDK 1.5 to JDK 1.8."
+	</longdescription>
 </pkgmetadata>
