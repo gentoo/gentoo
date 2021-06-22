@@ -74,6 +74,7 @@ COMMON_DEPEND="
 	>=kde-plasma/libkworkspace-${PVCUT}:5
 	>=kde-plasma/plasma-workspace-${PVCUT}:5
 	>=media-libs/phonon-4.11.0
+	virtual/libcrypt:=
 	x11-libs/libX11
 	x11-libs/libXfixes
 	x11-libs/libXi
