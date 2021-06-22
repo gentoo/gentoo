@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit epatch flag-o-matic autotools prefix
+inherit flag-o-matic autotools prefix
 
 CONFVER="1.9"
 
@@ -15,13 +15,14 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="nls doc"
 RESTRICT="test"
 
 # we need gettext because we run autoconf (AM_ICONV)
 RDEPEND="
 	>=sys-libs/ncurses-5.1:0=
+	virtual/libcrypt:=
 	virtual/libiconv"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
@@ -31,14 +32,12 @@ CONFDIR=${WORKDIR}/tcsh-gentoo-patches-r${CONFVER}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.20.00-debian-dircolors.patch # bug #120792
-	"${FILESDIR}"/${PN}-6.18.01-aix.patch
-	"${FILESDIR}"/${PN}-6.21.00-no-nls.patch
+	"${FILESDIR}"/${PN}-6.21.04-no-nls.patch
 	"${FILESDIR}"/${PN}-6.21.00-use-ncurses.patch
-	"${FILESDIR}"/${PN}-6.21.00-fno-common.patch # upstream
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	eautoreconf
 
@@ -78,6 +77,12 @@ src_configure() {
 	append-cppflags -D_PATH_DOTLOGOUT="'"'"${EPREFIX}/etc/csh.logout"'"'"
 	append-cppflags -D_PATH_USRBIN="'"'"${EPREFIX}/usr/bin"'"'"
 	append-cppflags -D_PATH_BIN="'"'"${EPREFIX}/bin"'"'"
+
+	# musl's utmp is non-functional
+	if use elibc_musl ; then
+		export ac_cv_header_utmp_h=no
+		export ac_cv_header_utmpx_h=no
+	fi
 
 	econf \
 		--prefix="${EPREFIX:-}" \
