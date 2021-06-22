@@ -9,8 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python charting for 80% of humans."
 HOMEPAGE="https://github.com/wireservice/leather https://pypi.org/project/leather/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
-	test? ( https://github.com/wireservice/leather/archive/refs/tags/${PV}.tar.gz -> ${P}-src.tar.gz ) "
+SRC_URI="https://github.com/wireservice/leather/archive/refs/tags/${PV}.tar.gz -> ${P}-src.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -21,7 +20,26 @@ RESTRICT="!test? ( test )"
 TEST_AGAINST_RDEPEND="xml? ( dev-python/lxml[${PYTHON_USEDEP}] )"
 RDEPEND="
 	${TEST_AGAINST_RDEPEND}
+	>=dev-python/cssselect-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
+
+python_prepare_all() {
+	local requirements_files sed_args
+
+	sed_args=(
+		-e '/coverage/d'
+		-e '/lxml/d' # lxml is required only when leather is used as a test dependency
+		-e '/nose/d'
+		-e '/tox/d'
+		-e '/Sphinx/d'
+		-e '/sphinx_rtd_theme/d'
+		-e '/unittest2/d'
+	)
+
+	requirements_files+=(requirements*.txt)
+	sed "${sed_args[@]}" -i "${requirements_files[@]}" || die
+	distutils-r1_python_prepare_all
+}
