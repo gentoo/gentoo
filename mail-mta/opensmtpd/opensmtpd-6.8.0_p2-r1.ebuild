@@ -22,10 +22,11 @@ DEPEND="
 	sys-libs/zlib
 	pam? ( sys-libs/pam )
 	berkdb? ( sys-libs/db:= )
-	dev-libs/libevent
+	dev-libs/libevent:=
 	app-misc/ca-certificates
 	net-mail/mailbase
 	net-libs/libasr
+	virtual/libcrypt:=
 	!mail-mta/courier
 	!mail-mta/esmtp
 	!mail-mta/exim
