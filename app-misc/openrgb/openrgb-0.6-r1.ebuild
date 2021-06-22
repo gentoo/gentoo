@@ -27,7 +27,6 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	net-libs/mbedtls:=
 	virtual/libusb:1
 "
 DEPEND="
@@ -45,7 +44,7 @@ PATCHES+=(
 
 src_prepare() {
 	default
-	rm -r dependencies/{hidapi,libusb,json,mbedtls}* || die
+	rm -r dependencies/{hidapi,libusb,json}* || die
 }
 
 src_configure() {
