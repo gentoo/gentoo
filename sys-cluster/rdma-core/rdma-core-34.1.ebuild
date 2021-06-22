@@ -79,12 +79,6 @@ src_configure() {
 		-DNO_PYVERBS="$(usex python OFF ON)"
 	)
 
-	if use python; then
-		mycmakeargs+=( -DNO_PYVERBS=OFF -DPYTHON_EXECUTABLE="${PYTHON}" )
-	else
-		mycmakeargs+=( -DNO_PYVERBS=ON )
-	fi
-
 	cmake_src_configure
 }
 
