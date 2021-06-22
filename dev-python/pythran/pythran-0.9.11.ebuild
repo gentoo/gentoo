@@ -31,6 +31,7 @@ BDEPEND="
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 		virtual/cblas
 	)"
 
