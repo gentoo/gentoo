@@ -99,6 +99,7 @@ COMMON_DEPEND="
 	daemon? (
 		dev-libs/libltdl
 		sys-kernel/linux-headers
+		>=sys-libs/libcap-2.22-r2
 	)
 	dbus? ( >=sys-apps/dbus-1.4.12[${MULTILIB_USEDEP}] )
 	elogind? ( sys-auth/elogind )
