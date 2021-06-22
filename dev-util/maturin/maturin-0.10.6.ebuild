@@ -280,7 +280,7 @@ SRC_URI="https://github.com/PyO3/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.t
 	$(cargo_crate_uris ${CRATES})
 	test? ( $(cargo_crate_uris ${CRATES_TEST}) )"
 
-LICENSE="Apache-2.0 MIT"
+LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
