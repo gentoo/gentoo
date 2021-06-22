@@ -6,8 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="Python bindings generator for C/C++ libraries"
-HOMEPAGE="https://www.riverbankcomputing.com/software/sip/ https://pypi.org/project/sip/"
+DESCRIPTION="The PEP 517 compliant PyQt build system"
+HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt-builder/ https://pypi.org/project/PyQt-builder/"
 
 MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
@@ -18,14 +18,20 @@ fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
-SLOT="5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
-	!<dev-python/sip-4.19.25-r1[${PYTHON_USEDEP}]
-	!=dev-python/sip-5.5.0-r0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
-	dev-python/toml[${PYTHON_USEDEP}]
+	>=dev-python/sip-5.5[${PYTHON_USEDEP}]
 "
 
 distutils_enable_sphinx doc --no-autodoc
+
+python_prepare_all() {
+	# don't install prebuilt Windows DLLs
+	sed -i -e "s:'dlls/\*/\*',::" setup.py || die
+	rm -r "${PN/-/_}.egg-info" || die
+
+	distutils-r1_python_prepare_all
+}
