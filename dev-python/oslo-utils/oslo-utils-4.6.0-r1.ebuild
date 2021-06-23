@@ -33,11 +33,13 @@ RDEPEND="
 BDEPEND="
 	${CDEPEND}
 	>dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
-	>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
-	>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
-	>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
-	>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
+		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
+		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests unittest
