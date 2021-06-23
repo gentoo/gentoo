@@ -27,6 +27,15 @@ DEPEND="
 
 PATCHES=( "${FILESDIR}"/${P}-zone_nr.patch )
 
+src_prepare() {
+	if has_version '>=media-libs/hamlib-4.2' ; then
+		sed -i -e "s/FILPATHLEN/HAMLIB_FILPATHLEN/g" "${S}"/src/sendqrg.c || die
+	fi
+
+	eapply ${PATCHES}
+	eapply_user
+}
+
 src_configure() {
 	append-ldflags -L/usr/$(get_libdir)/hamlib
 	econf --enable-fldigi-xmlrpc
