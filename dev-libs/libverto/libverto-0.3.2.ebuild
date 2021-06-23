@@ -12,7 +12,7 @@ SRC_URI="https://github.com/latchset/libverto/releases/download/${PV}/${P}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="glib +libev libevent +threads static-libs"
+IUSE="glib +libev libevent +threads"
 REQUIRED_USE="|| ( glib libev libevent )"
 
 DEPEND="glib? ( >=dev-libs/glib-2.34.3[${MULTILIB_USEDEP}] )
@@ -39,13 +39,11 @@ multilib_src_configure() {
 		$(use_with libev) \
 		$(use_with libevent) \
 		$(use_with threads pthread) \
-		$(use_enable static-libs static)
+		--disable-static
 }
 
 multilib_src_install_all() {
 	default
 
-	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -delete
-	fi
+	find "${ED}" -name '*.la' -delete
 }
