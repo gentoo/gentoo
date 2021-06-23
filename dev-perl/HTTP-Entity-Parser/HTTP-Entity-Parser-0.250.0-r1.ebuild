@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=KAZEBURO
 DIST_VERSION=0.25
@@ -11,8 +11,7 @@ inherit perl-module
 DESCRIPTION="PSGI compliant HTTP Entity Parser"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="test +xs"
-RESTRICT="!test? ( test )"
+IUSE="+xs"
 
 RDEPEND="
 	virtual/perl-Encode
@@ -25,7 +24,7 @@ RDEPEND="
 	>=dev-perl/WWW-Form-UrlEncoded-0.230.0
 	xs? ( >=dev-perl/WWW-Form-UrlEncoded-XS-0.230.0 )
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-Tiny-0.35.0
 	test? (
 		virtual/perl-File-Spec
