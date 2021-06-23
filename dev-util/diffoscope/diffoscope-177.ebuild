@@ -91,6 +91,16 @@ python_test() {
 
 		# needs triage
 		tests/comparators/test_rlib.py::test_item3_deflate_llvm_bitcode
+
+		# img2txt based failures, bug #797688
+		tests/comparators/test_ico_image.py::test_diff
+		tests/comparators/test_ico_image.py::test_diff_meta
+		tests/comparators/test_ico_image.py::test_diff_meta2
+		tests/comparators/test_ico_image.py::test_has_visuals
+		tests/comparators/test_jpeg_image.py::test_diff
+		tests/comparators/test_jpeg_image.py::test_compare_non_existing
+		tests/comparators/test_jpeg_image.py::test_diff_meta
+		tests/comparators/test_jpeg_image.py::test_has_visuals
 	)
 	epytest ${exclude[@]/#/--deselect }
 }
