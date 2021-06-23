@@ -24,10 +24,7 @@ dev-perl/Gtk2-Unique
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
 # version older than 3 don't compile with java 1.5+ and will be removed
-# slot 3.1 (versions < 3.6) are 99% compatible with slot 3.6 and should
-# not be used, use slot 3.6 or newer
 # see: https://bugs.gentoo.org/779472
-#      https://bugs.gentoo.org/784023
 <dev-java/commons-lang-3.6
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
