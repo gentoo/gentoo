@@ -21,10 +21,11 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="+doc python"
+IUSE="+doc python test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="
+COMMON_DEPEND="
 	media-libs/freetype
 	x11-libs/libX11
 	x11-libs/libXext
@@ -32,8 +33,18 @@ DEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 "
+DEPEND="
+	${COMMON_DEPEND}
+	test? (
+		dev-python/ewmh
+		dev-python/python-xlib
+		x11-apps/xsetroot
+		x11-base/xorg-server[xephyr,xvfb]
+		x11-misc/xdotool
+	)
+"
 RDEPEND="
-	${DEPEND}
+	${COMMON_DEPEND}
 	app-shells/bash
 	python? ( ${PYTHON_DEPS} )
 "
@@ -110,4 +121,12 @@ src_install() {
 			doman "doc/${man_page}"
 		done
 	fi
+}
+
+distutils_enable_tests pytest
+
+src_test() {
+	ln -s "${BUILD_DIR}/herbstclient" || die "Could not symlink herbstclient"
+	ln -s "${BUILD_DIR}/herbstluftwm" || die "Could not symlink herbstluftwm"
+	python_test
 }
