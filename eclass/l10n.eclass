@@ -8,6 +8,7 @@
 # Ben de Groot <yngwin@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: convenience functions to handle localizations
+# @DEPRECATED: plocale.eclass
 # @DESCRIPTION:
 # The l10n (localization) eclass offers a number of functions to more
 # conveniently handle localizations (translations) offered by packages.
