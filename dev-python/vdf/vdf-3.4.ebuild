@@ -13,6 +13,6 @@ SRC_URI="https://codeload.github.com/ValvePython/${PN}/tar.gz/v${PV} -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 distutils_enable_tests pytest

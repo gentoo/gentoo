@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Marek Szuba <marecki@gentoo.org>
 # Based on python-utils-r1.eclass by Michał Górny <mgorny@gentoo.org> et al.
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Utility functions for packages with Lua parts
 # @DESCRIPTION:
 # A utility eclass providing functions to query Lua implementations,
@@ -21,7 +21,7 @@ case ${EAPI:-0} in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
 		;;
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"

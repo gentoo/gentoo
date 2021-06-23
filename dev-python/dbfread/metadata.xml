@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/olemb/dbfread/issues</bugs-to>
+		<changelog>https://github.com/olemb/dbfread/commits/master</changelog>
+		<remote-id type="pypi">dbfread</remote-id>
+		<remote-id type="github">olemb/dbfread</remote-id>
+	</upstream>
+</pkgmetadata>

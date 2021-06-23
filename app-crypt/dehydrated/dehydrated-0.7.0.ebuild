@@ -9,7 +9,7 @@ SRC_URI="https://github.com/lukas2511/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 x86"
+KEYWORDS="amd64 arm arm64 ~riscv x86"
 IUSE="+cron"
 
 RDEPEND="acct-group/dehydrated

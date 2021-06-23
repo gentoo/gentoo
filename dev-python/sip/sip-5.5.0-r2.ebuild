@@ -17,8 +17,8 @@ else
 fi
 S=${WORKDIR}/${MY_P}
 
-SLOT="5"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
+SLOT="5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="

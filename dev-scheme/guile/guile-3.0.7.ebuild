@@ -21,7 +21,8 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/libunistring:0=
 	sys-libs/ncurses:0=
-	sys-libs/readline:0="
+	sys-libs/readline:0=
+	virtual/libcrypt:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig

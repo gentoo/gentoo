@@ -1,0 +1,27 @@
+diff --git a/dix/meson.build b/dix/meson.build
+index ddc5cc3..bf5bfa3 100644
+--- a/dix/meson.build
++++ b/dix/meson.build
+@@ -56,8 +56,3 @@ libxserver_main = static_library('libxserver_main',
+     include_directories: inc,
+     dependencies: common_dep,
+ )
+-
+-install_data(
+-    'protocol.txt',
+-    install_dir: serverconfigdir,
+-)
+diff --git a/meson.build b/meson.build
+index 4af03ef..791465d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -520,9 +520,3 @@ subdir('hw')
+ if host_machine.system() != 'windows'
+     subdir('test')
+ endif
+-
+-install_man(configure_file(
+-    input: 'man/Xserver.man',
+-    output: 'Xserver.1',
+-    configuration: manpage_config,
+-))

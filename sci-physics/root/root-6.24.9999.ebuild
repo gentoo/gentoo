@@ -60,6 +60,7 @@ CDEPEND="
 	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libpng:0=
+	virtual/libcrypt:=
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	X? (

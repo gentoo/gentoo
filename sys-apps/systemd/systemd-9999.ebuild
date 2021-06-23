@@ -43,6 +43,7 @@ OPENSSL_DEP=">=dev-libs/openssl-1.1.0:0="
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl:0= )
 	apparmor? ( sys-libs/libapparmor:0= )
 	audit? ( >=sys-process/audit-2:0= )
@@ -158,6 +159,8 @@ python_check_deps() {
 	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
+
+QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{7..10} )
 inherit autotools linux-info lua-single python-single-r1 systemd tmpfiles
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
-HOMEPAGE="https://suricata-ids.org/"
+HOMEPAGE="https://suricata.io/"
 SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
