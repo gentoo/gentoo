@@ -54,6 +54,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-qt-5.15.patch"
 	"${FILESDIR}/${PN}-1.0.0-cmake_lua_version.patch"
+	# http://hg.hedgewars.org/hedgewars/rev/6832dab555ae
+	"${FILESDIR}/${PN}-1.0.0-fpc-3.2.patch"
 )
 
 S="${WORKDIR}"/${MY_P}
