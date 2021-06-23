@@ -25,8 +25,7 @@ RDEPEND="
 	iconv? ( virtual/libiconv )
 	idn? ( net-dns/libidn2:= )
 	nls? ( virtual/libintl )
-	xcrypt? ( >=sys-libs/libxcrypt-4.1:= )
-	!xcrypt? ( virtual/libcrypt:= )
+	xcrypt? ( >=sys-libs/libxcrypt-4.1 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
