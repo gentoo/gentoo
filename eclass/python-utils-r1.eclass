@@ -601,11 +601,14 @@ python_optimize() {
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
 				;;
-			python*|pypy3)
+			python3.[5678]|pypy3)
 				# both levels of optimization are separate since 3.5
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -O -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
+				;;
+			python*)
+				"${PYTHON}" -m compileall -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
 				;;
 			*)
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
