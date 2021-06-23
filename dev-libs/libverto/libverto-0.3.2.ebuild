@@ -44,5 +44,8 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	default
-	use static-libs || find "${ED}" -name '*.la' -delete
+
+	if ! use static-libs ; then
+		find "${ED}" -name '*.la' -delete
+	fi
 }
