@@ -98,8 +98,10 @@ src_prepare() {
 		-o contrib/man/exa_colors.1 || die "failed to create colored man pages"
 		pandoc --standalone -f markdown -t man man/exa.1.md -o \
 			contrib/man/exa.1 || die "failed to create man pages"
-		rm -r man || die "failed to remove man directory from source"
 	fi
+
+	# "source" files only, but cargo.eclass will attempt to install them.
+	rm -r man || die "failed to remove man directory from source"
 }
 
 src_compile() {
@@ -123,8 +125,7 @@ src_install() {
 	insinto /usr/share/fish/vendor_completions.d
 	newins completions/completions.fish exa.fish
 
-	if use man
-	then
+	if use man; then
 		doman contrib/man/*
 	fi
 }
