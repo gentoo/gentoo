@@ -1,0 +1,25 @@
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Tue, 22 Jun 2021 11:08:15 +0200
+Subject: [PATCH] disable py2 for boost
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 291b96e..68b280d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -142,8 +142,6 @@ endif()
+ 
+ find_package(Boost OPTIONAL_COMPONENTS
+   python
+-  python2
+-  ${PYILMBASE_BOOST_PY2_COMPONENT}
+   python3
+   ${PYILMBASE_BOOST_PY3_COMPONENT})
+ set(_pyilmbase_have_perver_boost)
+-- 
+2.32.0
+

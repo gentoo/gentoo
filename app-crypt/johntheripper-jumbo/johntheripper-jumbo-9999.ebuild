@@ -27,7 +27,7 @@ SLOT="0"
 #removed rexgen and commoncrypto
 IUSE="custom-cflags kerberos mpi opencl openmp pcap"
 
-DEPEND=">=dev-libs/openssl-1.0.1:0
+DEPEND=">=dev-libs/openssl-1.0.1:0=
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
 	kerberos? ( virtual/krb5 )

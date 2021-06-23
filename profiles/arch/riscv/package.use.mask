@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-06-22)
+# Dependencies not keyworded here yet
+dev-python/pillow imagequant test tk
+
 # Marek Szuba <marecki@gentoo.org> (2021-06-21)
 # net-libs/mbedtls not keyworded here, not tested
 net-libs/libssh2 mbedtls
@@ -177,7 +181,7 @@ sys-libs/libcxx libcxxabi libunwind static-libs
 sys-libs/libcxxabi libunwind
 media-gfx/graphviz devil svg pdf
 media-libs/mesa lm-sensors unwind
-media-libs/tiff jbig jpeg test webp
+media-libs/tiff jbig webp
 net-fs/nfs-utils nfsv41
 media-libs/fontconfig doc
 net-irc/irssi socks5
@@ -200,4 +204,5 @@ sys-fs/squashfs-tools lzma
 sys-libs/libcap-ng python
 sys-process/audit gssapi
 x11-base/xorg-server  unwind
+x11-base/xwayland unwind
 x11-libs/libvdpau doc

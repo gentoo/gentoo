@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=(python3_{7..10})
+PYTHON_COMPAT=(python3_{8..10})
 
 inherit distutils-r1
 MY_PN=zope.component
@@ -18,7 +18,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]
 	dev-python/zope-event[${PYTHON_USEDEP}]
