@@ -25,10 +25,10 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI} in
 	5|6)
-		inherit desktop edos2unix epatch estack l10n ltprune multilib \
-			preserve-libs toolchain-funcs vcs-clean wrapper
+		inherit desktop edos2unix epatch estack ltprune multilib \
+			preserve-libs strip-linguas toolchain-funcs vcs-clean wrapper
 		;;
-	7) inherit edos2unix l10n wrapper ;;
+	7) inherit edos2unix strip-linguas wrapper ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
