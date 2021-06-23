@@ -25,9 +25,13 @@ RESTRICT="!test? ( test )"
 
 # pull in optional tools for tests:
 # img2txt: bug #797688
+# docx2txt: bug #797688
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( media-libs/libcaca )
+	test? (
+		app-text/docx2txt
+		media-libs/libcaca
+	)
 "
 RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	dev-python/libarchive-c[${PYTHON_USEDEP}]
@@ -101,6 +105,9 @@ python_test() {
 		tests/comparators/test_jpeg_image.py::test_compare_non_existing
 		tests/comparators/test_jpeg_image.py::test_diff_meta
 		tests/comparators/test_jpeg_image.py::test_has_visuals
+
+		# docx2txt based falures, bug #797688
+		tests/comparators/test_docx.py::test_diff
 	)
 	epytest ${exclude[@]/#/--deselect }
 }
