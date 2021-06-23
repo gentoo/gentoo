@@ -3,46 +3,48 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-inherit desktop gnome2-utils python-single-r1 wrapper xdg
+PYTHON_COMPAT=( python3_{8..9} )
+inherit desktop python-single-r1 wrapper xdg
 
-DESCRIPTION="A side scrolling shooter game starring a steamboat on the sea"
+DESCRIPTION="Side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="http://funnyboat.sourceforge.net/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P/_p*}-src.zip
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
-"
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz"
+S="${WORKDIR}/${PN}"
 
-LICENSE="GPL-2 MIT"
+LICENSE="BitstreamVera GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep '
-		>=dev-python/pygame-1.6.2[${PYTHON_MULTI_USEDEP}]
-	')
-"
-DEPEND="${RDEPEND}"
-BDEPEND="app-arch/unzip"
+	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_MULTI_USEDEP}]')
+	media-libs/sdl2-image[png]
+	media-libs/sdl2-mixer[vorbis]"
+BDEPEND="
+	${PYTHON_DEPS}
+	app-arch/unzip"
 
-S="${WORKDIR}/${PN}"
+PATCHES=(
+	 "${WORKDIR}"/debian/patches
+)
 
 src_prepare() {
 	# Drop Debian specific patch
 	rm "${WORKDIR}"/debian/patches/use_debian_vera_ttf.patch || die
-	eapply -p1 "${WORKDIR}"/debian/patches/*.patch
 
-	xdg_src_prepare
+	default
 }
 
 src_install() {
 	insinto /usr/share/${PN}
 	doins -r data *.py
+
 	python_optimize "${ED}"/usr/share/${PN}
 
-	dodoc *.txt
+	einstalldocs
 
 	make_wrapper ${PN} "${EPYTHON} main.py" /usr/share/${PN}
 
