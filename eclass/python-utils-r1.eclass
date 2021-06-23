@@ -35,7 +35,7 @@ fi
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
 [[ ${EAPI} == [67] ]] && inherit eapi8-dosym
-inherit toolchain-funcs
+inherit multiprocessing toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
 # @INTERNAL
@@ -590,6 +590,9 @@ python_optimize() {
 		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
 	fi
 
+	local jobs=$(makeopts_jobs "${MAKEOPTS}" INF)
+	[[ ${jobs} == INF ]] && jobs=$(get_nproc)
+
 	local d
 	for d; do
 		# make sure to get a nice path without //
@@ -603,12 +606,12 @@ python_optimize() {
 				;;
 			python3.[5678]|pypy3)
 				# both levels of optimization are separate since 3.5
-				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
-				"${PYTHON}" -O -m compileall -q -f -d "${instpath}" "${d}"
-				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -O -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -OO -m compileall -j "${jobs}" -q -f -d "${instpath}" "${d}"
 				;;
 			python*)
-				"${PYTHON}" -m compileall -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 --hardlink-dupes -q -f -d "${instpath}" "${d}"
 				;;
 			*)
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
