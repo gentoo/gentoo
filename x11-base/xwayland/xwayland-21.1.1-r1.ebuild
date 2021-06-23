@@ -19,7 +19,6 @@ CDEPEND="
 	>=x11-libs/pixman-0.27.2
 	dev-libs/libbsd
 	>=x11-libs/libXfont2-2.0.1
-	>=x11-libs/libXdmcp-1.0.2
 	dev-libs/wayland
 	>=x11-libs/libXdmcp-1.0.2
 	>=x11-libs/libdrm-2.4.89
@@ -31,6 +30,10 @@ CDEPEND="
 	media-libs/libglvnd[X]
 	unwind? ( sys-libs/libunwind )
 	>=dev-libs/wayland-protocols-1.18
+	media-fonts/font-util
+	x11-libs/libxkbfile
+	>=x11-libs/xtrans-1.3.5
+	x11-base/xorg-proto
 "
 
 DEPEND="
