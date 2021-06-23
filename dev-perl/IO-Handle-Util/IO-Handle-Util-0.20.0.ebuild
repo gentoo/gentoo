@@ -19,7 +19,7 @@ RDEPEND="
 	virtual/perl-parent
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+	>=dev-perl/Module-Build-Tiny-0.34.0
 	test? (
 		virtual/perl-File-Spec
 		>=virtual/perl-Test-Simple-1.1.10
