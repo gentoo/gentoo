@@ -13,7 +13,8 @@ KEYWORDS="x86"
 # bug #252054
 RESTRICT="strip"
 
-RDEPEND="sys-apps/util-linux"
+RDEPEND="sys-apps/util-linux
+	sys-libs/libtermcap-compat"
 
 QA_PREBUILT="*"
 
