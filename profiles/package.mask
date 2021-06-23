@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
+# obsolete, no consumers
+# see bug: https://bugs.gentoo.org/797739
+dev-java/xml-commons
+
 # David Seifert <soap@gentoo.org> (2021-06-20)
 # Abandoned upstream, last release 17 years ago, unmaintained, tons of
 # QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
