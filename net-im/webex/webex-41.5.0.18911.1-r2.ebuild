@@ -44,7 +44,7 @@ RDEPEND="
 	x11-libs/xcb-util-renderutil
 	x11-libs/xcb-util-wm
 	|| (
-		sys-libs/glibc[crypt]
+		sys-libs/glibc[crypt(+)]
 		sys-libs/libxcrypt[compat]
 	)
 "
