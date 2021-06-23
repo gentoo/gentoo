@@ -45,8 +45,14 @@ distutils_enable_tests pytest
 export MYPY_USE_MYPYC=0
 
 python_test() {
+	local deselect=(
+		# TODO
+		mypy/test/teststubtest.py
+	)
+
 	# Some mypy/test/testcmdline.py::PythonCmdlineSuite tests
 	# fail with high COLUMNS values
 	local -x COLUMNS=80
-	epytest -n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
+	epytest ${deselect[@]/#/--deselect } \
+		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
