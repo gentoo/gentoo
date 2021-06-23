@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{7..10} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
@@ -17,7 +18,11 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
-	"
+"
+
+PATCHES=(
+	"${FILESDIR}/${P}-python3_10.patch"
+)
 
 distutils_enable_sphinx docs/source \
 	dev-python/ipython_genutils \
