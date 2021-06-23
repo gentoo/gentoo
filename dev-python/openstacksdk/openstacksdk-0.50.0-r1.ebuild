@@ -39,6 +39,7 @@ BDEPEND="${CDEPEND}
 		>=dev-python/ddt-1.0.1[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
+		dev-python/hacking[${PYTHON_USEDEP}]
 		>=dev-python/prometheus_client-0.4.2[${PYTHON_USEDEP}]
 		>=dev-python/oslo-config-6.1.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
