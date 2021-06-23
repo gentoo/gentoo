@@ -26,15 +26,12 @@ DEPEND="
 	|| (
 		>=dev-libs/libverto-0.2.5[libev,${MULTILIB_USEDEP}]
 		>=dev-libs/libverto-0.2.5[libevent,${MULTILIB_USEDEP}]
-		>=dev-libs/libverto-0.2.5[tevent,${MULTILIB_USEDEP}]
 	)
 	keyutils? ( >=sys-apps/keyutils-1.5.8:=[${MULTILIB_USEDEP}] )
 	lmdb? ( dev-db/lmdb )
 	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
 	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
-	pkinit? (
-		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
-	)
+	pkinit? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	xinetd? ( sys-apps/xinetd )
 	"
 BDEPEND="
@@ -59,7 +56,7 @@ S=${WORKDIR}/${MY_P}/src
 PATCHES=(
 	"${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	"${FILESDIR}/${PN}-config_LDFLAGS-r1.patch"
-	"${FILESDIR}/${PN}_dont_create_run.patch"
+	"${FILESDIR}/${PN}_dont_create_rundir.patch"
 	"${FILESDIR}/${PN}-1.18.2-krb5-config.patch"
 )
 
@@ -86,6 +83,7 @@ src_configure() {
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
+	AR="$(tc-getAR)" \
 	WARN_CFLAGS="set" \
 	econf \
 		$(use_with openldap ldap) \
@@ -102,9 +100,7 @@ multilib_src_configure() {
 		--enable-dns-for-realm \
 		--enable-kdc-lookaside-cache \
 		--with-system-verto \
-		--disable-rpath \
-		\
-		AR="$(tc-getAR)"
+		--disable-rpath
 }
 
 multilib_src_compile() {
