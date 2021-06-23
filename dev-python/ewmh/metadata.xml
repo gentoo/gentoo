@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<longdescription>
+		An implementation of EWMH (Extended Window Manager Hints) for python 2 and 3, based on Xlib.
+		It allows EWMH-compliant window managers (most modern WMs) to be queried and controlled.
+	</longdescription>
+</pkgmetadata>
