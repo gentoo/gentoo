@@ -150,6 +150,12 @@ HTTP_LDAP_MODULE_P="nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 HTTP_LDAP_MODULE_URI="https://github.com/kvspb/nginx-auth-ldap/archive/${HTTP_LDAP_MODULE_PV}.tar.gz"
 HTTP_LDAP_MODULE_WD="${WORKDIR}/nginx-auth-ldap-${HTTP_LDAP_MODULE_PV}"
 
+# nginx-vod-module (https://github.com/kaltura/nginx-vod-module, AGPL-3+)
+HTTP_VOD_MODULE_PV="1.28"
+HTTP_VOD_MODULE_P="nginx-vod-module-${HTTP_VOD_MODULE_PV}"
+HTTP_VOD_MODULE_URI="https://github.com/kaltura/nginx-vod-module/archive/${HTTP_VOD_MODULE_PV}.tar.gz"
+HTTP_VOD_MODULE_WD="${WORKDIR}/nginx-vod-module-${HTTP_VOD_MODULE_PV}"
+
 # geoip2 (https://github.com/leev/ngx_http_geoip2_module, BSD-2)
 GEOIP2_MODULE_PV="3.3"
 GEOIP2_MODULE_P="ngx_http_geoip2_module-${GEOIP2_MODULE_PV}"
@@ -194,6 +200,7 @@ SRC_URI="https://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_upload_progress? ( ${HTTP_UPLOAD_PROGRESS_MODULE_URI} -> ${HTTP_UPLOAD_PROGRESS_MODULE_P}.tar.gz )
 	nginx_modules_http_upstream_check? ( ${HTTP_UPSTREAM_CHECK_MODULE_URI} -> ${HTTP_UPSTREAM_CHECK_MODULE_P}.tar.gz )
 	nginx_modules_http_vhost_traffic_status? ( ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_URI} -> ${HTTP_VHOST_TRAFFIC_STATUS_MODULE_P}.tar.gz )
+	nginx_modules_http_vod? ( ${HTTP_VOD_MODULE_URI} -> ${HTTP_VOD_MODULE_P}.tar.gz )
 	nginx_modules_stream_geoip2? ( ${GEOIP2_MODULE_URI} -> ${GEOIP2_MODULE_P}.tar.gz )
 	nginx_modules_stream_javascript? ( ${NJS_MODULE_URI} -> ${NJS_MODULE_P}.tar.gz )
 	rtmp? ( ${RTMP_MODULE_URI} -> ${RTMP_MODULE_P}.tar.gz )"
@@ -243,6 +250,7 @@ NGINX_MODULES_3RD="
 	http_upload_progress
 	http_upstream_check
 	http_vhost_traffic_status
+	http_vod
 	stream_geoip2
 	stream_javascript
 "
@@ -319,6 +327,7 @@ CDEPEND="
 		www-servers/apache
 	)
 	nginx_modules_http_auth_ldap? ( net-nds/openldap[ssl?] )
+	nginx_modules_http_vod? ( media-video/ffmpeg:0= )
 	nginx_modules_stream_geoip? ( dev-libs/geoip )
 	nginx_modules_stream_geoip2? ( dev-libs/libmaxminddb:= )"
 RDEPEND="${CDEPEND}
@@ -342,7 +351,8 @@ REQUIRED_USE="pcre-jit? ( pcre )
 	nginx_modules_http_dav_ext? ( nginx_modules_http_dav nginx_modules_http_xslt )
 	nginx_modules_http_metrics? ( nginx_modules_http_stub_status )
 	nginx_modules_http_security? ( pcre )
-	nginx_modules_http_push_stream? ( ssl )"
+	nginx_modules_http_push_stream? ( ssl )
+	nginx_modules_http_vod? ( threads )"
 
 pkg_setup() {
 	NGINX_HOME="/var/lib/nginx"
@@ -599,6 +609,12 @@ src_configure() {
 		myconf+=( --add-module=${HTTP_BROTLI_MODULE_WD} )
 	fi
 
+	if use nginx_modules_http_vod; then
+		http_enabled=1
+		export HTTP_POSTPONE=no
+		myconf+=( --add-module=${HTTP_VOD_MODULE_WD} )
+	fi
+
 	if use http || use http-cache || use http2 || use nginx_modules_http_javascript; then
 		http_enabled=1
 	fi
@@ -832,6 +848,11 @@ src_install() {
 	if use nginx_modules_http_auth_ldap; then
 		docinto ${HTTP_LDAP_MODULE_P}
 		dodoc "${HTTP_LDAP_MODULE_WD}"/example.conf
+	fi
+
+	if use nginx_modules_http_vod; then
+		docinto ${HTTP_VOD_MODULE_P}
+		dodoc "${HTTP_VOD_MODULE_WD}"/{CHANGELOG,README}.md
 	fi
 }
 
