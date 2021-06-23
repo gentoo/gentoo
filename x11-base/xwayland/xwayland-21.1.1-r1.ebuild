@@ -75,3 +75,9 @@ src_configure() {
 
 	meson_src_configure
 }
+
+src_install() {
+	dosym ../libexec/Xwayland /usr/bin/Xwayland
+
+	meson_src_install
+}
