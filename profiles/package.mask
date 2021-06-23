@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-23)
+# completely broken, no consumers, removal in 30 days
+# also removing an obsolete package version that has only this dependant
+# see https://bugs.gentoo.org/786429
+app-office/borg
+dev-java/jgoodies-looks:2.0
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
 # obsolete, no consumers
 # see bug: https://bugs.gentoo.org/797739
