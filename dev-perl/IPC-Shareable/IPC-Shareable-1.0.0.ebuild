@@ -19,3 +19,6 @@ BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.720.0
 	test? ( dev-perl/Test-SharedFork )
 "
+
+# tests fail when running parallelized, see bug 797445
+DIST_TEST=do
