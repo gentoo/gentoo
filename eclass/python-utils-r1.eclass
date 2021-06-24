@@ -549,6 +549,46 @@ python_get_scriptdir() {
 	echo "${PYTHON_SCRIPTDIR}"
 }
 
+# @FUNCTION: _python_ln_rel
+# @USAGE: <from> <to>
+# @INTERNAL
+# @DESCRIPTION:
+# Create a relative symlink.
+_python_ln_rel() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local target=${1}
+	local symname=${2}
+
+	local tgpath=${target%/*}/
+	local sympath=${symname%/*}/
+	local rel_target=
+
+	while [[ ${sympath} ]]; do
+		local tgseg= symseg=
+
+		while [[ ! ${tgseg} && ${tgpath} ]]; do
+			tgseg=${tgpath%%/*}
+			tgpath=${tgpath#${tgseg}/}
+		done
+
+		while [[ ! ${symseg} && ${sympath} ]]; do
+			symseg=${sympath%%/*}
+			sympath=${sympath#${symseg}/}
+		done
+
+		if [[ ${tgseg} != ${symseg} ]]; then
+			rel_target=../${rel_target}${tgseg:+${tgseg}/}
+		fi
+	done
+	rel_target+=${tgpath}${target##*/}
+
+	debug-print "${FUNCNAME}: ${symname} -> ${target}"
+	debug-print "${FUNCNAME}: rel_target = ${rel_target}"
+
+	ln -fs "${rel_target}" "${symname}"
+}
+
 # @FUNCTION: python_optimize
 # @USAGE: [<directory>...]
 # @DESCRIPTION:
