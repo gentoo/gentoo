@@ -12,7 +12,8 @@ SLOT="0"
 LICENSE="GPL-3"
 KEYWORDS="amd64 ppc x86"
 
-RDEPEND="x11-libs/libX11"
+RDEPEND="virtual/libcrypt:=
+	x11-libs/libX11"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	x11-base/xorg-proto
