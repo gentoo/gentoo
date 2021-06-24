@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake llvm eutils
+inherit cmake llvm
 
 MY_COMMIT="3a92064409d258e1688727266c3f023a502e8866"
 
