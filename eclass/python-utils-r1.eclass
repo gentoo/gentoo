@@ -597,14 +597,18 @@ python_optimize() {
 		instpath=/${instpath##/}
 
 		case "${EPYTHON}" in
+			python2.7|python3.[34])
+				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
+				;;
 			python*|pypy3)
-				# both levels of optimization are separate since py3.5
+				# both levels of optimization are separate since 3.5
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -O -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
 				;;
 			*)
-				die "Unknown impl for python_optimize: ${EPYTHON}"
+				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
 				;;
 		esac
 	done
