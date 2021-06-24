@@ -4,7 +4,7 @@
 EAPI=7
 inherit gnome.org gnome2-utils meson udev virtualx xdg
 
-DESCRIPTION="GNOME 3 compositing window manager based on Clutter"
+DESCRIPTION="GNOME compositing window manager based on Clutter"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 
 LICENSE="GPL-2+"
