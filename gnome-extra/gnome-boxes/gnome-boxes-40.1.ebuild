@@ -7,7 +7,7 @@ VALA_MIN_API_VERSION="0.40"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
-DESCRIPTION="Simple GNOME 3 application to access remote or virtual systems"
+DESCRIPTION="Simple GNOME application to access remote or virtual systems"
 HOMEPAGE="https://wiki.gnome.org/Apps/Boxes"
 
 LICENSE="LGPL-2+ CC-BY-2.0"
