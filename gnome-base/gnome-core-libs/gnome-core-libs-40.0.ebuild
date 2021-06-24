@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Sub-meta package for the core libraries of GNOME 3"
+DESCRIPTION="Sub-meta package for the core libraries of GNOME"
 HOMEPAGE="https://www.gnome.org/"
 LICENSE="metapackage"
 SLOT="3.0"
@@ -14,7 +14,7 @@ IUSE="cups python"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 
 # Note to developers:
-# This is a wrapper for the core libraries used by GNOME 3
+# This is a wrapper for the core libraries used by GNOME
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
 	>=x11-libs/gdk-pixbuf-2.42.4:2
