@@ -41,7 +41,8 @@ PATCHES=(
 	"${FILESDIR}/tinyxml.patch"
 	"${FILESDIR}/jpeg.patch"
 	"${FILESDIR}/soname.patch"
-	"${FILESDIR}/${PN}-1.5.7.10-gcc6.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/betterdefines.patch"
 )
 
 src_prepare() {
