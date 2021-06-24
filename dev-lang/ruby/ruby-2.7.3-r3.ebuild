@@ -23,7 +23,7 @@ IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +s
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
@@ -65,11 +65,7 @@ PDEPEND="
 src_prepare() {
 	# 005 does not compile bigdecimal and is questionable because it
 	# compiles ruby in a non-standard way, may be dropped
-	eapply "${FILESDIR}"/2.7/{002,003,010}*.patch
-
-	# Reset time on patched gem_prelude.rb to avoid the need for a base
-	# ruby during bootstrapping, bug 787137
-	touch -t 202001010000 gem_prelude.rb || die
+	eapply "${FILESDIR}"/2.7/{002,010}*.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"

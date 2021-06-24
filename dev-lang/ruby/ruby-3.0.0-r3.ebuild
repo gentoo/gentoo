@@ -23,7 +23,7 @@ IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +s
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
@@ -38,6 +38,7 @@ RDEPEND="
 	dev-libs/libffi:=
 	sys-libs/readline:0=
 	sys-libs/zlib
+	virtual/libcrypt:=
 	>=app-eselect/eselect-ruby-20201225
 "
 

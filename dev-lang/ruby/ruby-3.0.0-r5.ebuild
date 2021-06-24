@@ -23,7 +23,7 @@ IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +s
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
@@ -38,39 +38,41 @@ RDEPEND="
 	dev-libs/libffi:=
 	sys-libs/readline:0=
 	sys-libs/zlib
-	>=app-eselect/eselect-ruby-20191222
+	virtual/libcrypt:=
+	>=app-eselect/eselect-ruby-20201225
 "
 
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/minitest-5.13.0[ruby_targets_ruby27]
-	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby27]
-	>=dev-ruby/power_assert-1.1.7[ruby_targets_ruby27]
-	>=dev-ruby/rake-13.0.1[ruby_targets_ruby27]
-	>=dev-ruby/test-unit-3.3.4[ruby_targets_ruby27]
-	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby27]
+	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30]
+	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30]
+	>=dev-ruby/rake-13.0.3[ruby_targets_ruby30]
+	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30]
+	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30]
+	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30]
+	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby27]
-	>=dev-ruby/bundler-2.1.4[ruby_targets_ruby27]
-	>=dev-ruby/did_you_mean-1.3.1[ruby_targets_ruby27]
-	>=dev-ruby/json-2.0.2[ruby_targets_ruby27]
-	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby27] )
+	virtual/rubygems[ruby_targets_ruby30]
+	>=dev-ruby/bundler-2.1.4[ruby_targets_ruby30]
+	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30]
+	>=dev-ruby/json-2.5.1[ruby_targets_ruby30]
+	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
-	# 005 does not compile bigdecimal and is questionable because it
-	# compiles ruby in a non-standard way, may be dropped
-	eapply "${FILESDIR}"/2.7/{002,010}*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/{001,010}*.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"
 	# Remove bundled gems that we will install via PDEPEND, bug
 	# 539700.
 	rm -fr gems/* || die
+	touch gems/bundled_gems || die
 	# Don't install CLI tools since they will clash with the gem
 	rm -f bin/{racc,racc2y,y2racc} || die
 	sed -i -e '/executables/ s:^:#:' lib/racc/racc.gemspec || die
@@ -193,8 +195,10 @@ src_install() {
 	# Remove the remaining bundled gems. We do this late in the process
 	# since they are used during the build to e.g. create the
 	# documentation.
-	rm -rf ext/json || die
+	einfo "Removing default gems before installation"
+	rm -rf .ext/common/json.rb .ext/common/json ext/json || die
 	rm -rf lib/bundler* lib/rdoc/rdoc.gemspec || die
+	rm -rf lib/did_you_mean* || die
 
 	# Ruby is involved in the install process, we don't want interference here.
 	unset RUBYOPT
@@ -234,7 +238,7 @@ src_install() {
 		dodoc -r sample
 	fi
 
-	dodoc ChangeLog NEWS doc/NEWS* README*
+	dodoc ChangeLog NEWS.md doc/NEWS* README*
 
 	if use rubytests; then
 		pushd test
