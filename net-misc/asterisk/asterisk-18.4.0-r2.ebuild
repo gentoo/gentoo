@@ -12,36 +12,34 @@ HOMEPAGE="https://www.asterisk.org/"
 SRC_URI="https://downloads.asterisk.org/pub/telephony/asterisk/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 IUSE_VOICEMAIL_STORAGE=(
-	+voicemail_storage_file
 	voicemail_storage_odbc
 	voicemail_storage_imap
 )
-IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster curl dahdi debug doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster codec2 curl dahdi debug deprecated doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog systemd unbound vorbis xmpp"
+IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	lua? ( ${LUA_REQUIRED_USE} )
-	^^ ( ${IUSE_VOICEMAIL_STORAGE[*]//+/} )
 	voicemail_storage_odbc? ( odbc )
 "
 
 PATCHES=(
-	"${FILESDIR}/asterisk-historic-no-var-run-install.patch"
-	"${FILESDIR}/asterisk-13.38.1-r1-autoconf-lua-version.patch"
-	"${FILESDIR}/asterisk-13.38.1-r1-func_lock-fix-races.patch"
-	"${FILESDIR}/asterisk-13.18.1-r2-autoconf-2.70.patch"
+	"${FILESDIR}/${PN}-16.16.2-no-var-run-install.patch"
+	"${FILESDIR}/${PN}-16.18.0-r1-func_lock-fix-races.patch"
 )
 
 DEPEND="acct-user/asterisk
 	acct-group/asterisk
 	dev-db/sqlite:3
 	dev-libs/popt
-	dev-libs/jansson
+	>=dev-libs/jansson-2.11
 	dev-libs/libedit
 	dev-libs/libxml2:2
 	dev-libs/libxslt
-	sys-libs/ncurses:0=
+	virtual/libcrypt:=
+	sys-apps/util-linux
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez:= )
@@ -53,6 +51,7 @@ DEPEND="acct-user/asterisk
 	caps? ( sys-libs/libcap )
 	blocks? ( sys-libs/blocksruntime )
 	cluster? ( sys-cluster/corosync )
+	codec2? ( media-libs/codec2:= )
 	curl? ( net-misc/curl )
 	dahdi? (
 		net-libs/libpri
@@ -68,7 +67,7 @@ DEPEND="acct-user/asterisk
 	mysql? ( dev-db/mysql-connector-c:= )
 	newt? ( dev-libs/newt )
 	odbc? ( dev-db/unixODBC )
-	pjproject? ( net-libs/pjproject )
+	pjproject? ( >=net-libs/pjproject-2.9:= )
 	portaudio? ( media-libs/portaudio )
 	postgres? ( dev-db/postgresql:* )
 	radius? ( net-dialup/freeradius-client )
@@ -83,6 +82,9 @@ DEPEND="acct-user/asterisk
 	ssl? (
 		dev-libs/openssl:0=
 	)
+	systemd? ( sys-apps/systemd )
+	!systemd? ( !sys-apps/systemd )
+	unbound? ( net-dns/unbound )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
@@ -102,6 +104,17 @@ BDEPEND="dev-libs/libxml2:2
 	virtual/pkgconfig"
 
 QA_DT_NEEDED="/usr/lib.*/libasteriskssl[.]so[.][0-9]\+"
+
+_make_args=(
+	"NOISY_BUILD=yes"
+	"ASTDBDIR=\$(ASTDATADIR)/astdb"
+	"ASTCACHEDIR=/var/cache/asterisk"
+	"OPTIMIZE="
+	"DEBUG="
+	"DESTDIR=${D}"
+	"CONFIG_SRC=configs/samples"
+	"CONFIG_EXTEN=.sample"
+)
 
 pkg_pretend() {
 	CONFIG_CHECK="~!NF_CONNTRACK_SIP"
@@ -130,6 +143,7 @@ src_prepare() {
 
 src_configure() {
 	local vmst
+	local copt cstate
 
 	econf \
 		LUA_VERSION="${ELUA#lua}" \
@@ -140,20 +154,24 @@ src_configure() {
 		--with-popt \
 		--with-z \
 		--with-libedit \
+		--without-jansson-bundled \
+		--without-pjproject-bundled \
 		$(use_with caps cap) \
+		$(use_with codec2) \
 		$(use_with lua lua) \
 		$(use_with http gmime) \
 		$(use_with newt) \
 		$(use_with pjproject) \
 		$(use_with portaudio) \
-		$(use_with ssl)
+		$(use_with ssl) \
+		$(use_with unbound)
 
 	_menuselect() {
 		menuselect/menuselect "$@" || die "menuselect $* failed."
 	}
 
 	_use_select() {
-		local state=$(usex "$1" enable disable)
+		local state=$(use "$1" && echo enable || echo disable)
 		shift # remove use from parameters
 
 		while [[ -n $1 ]]; do
@@ -171,7 +189,7 @@ src_configure() {
 	sed -i 's/NATIVE_ARCH=/NATIVE_ARCH=0/' build_tools/menuselect-deps || die "Unable to squelch noisy build system"
 
 	# Compile menuselect binary for optional components
-	emake NOISE_BUILD=yes menuselect.makeopts
+	emake "${_make_args[@]}" menuselect.makeopts
 
 	# Disable BUILD_NATIVE (bug #667498)
 	_menuselect --disable build_native menuselect.makeopts
@@ -205,8 +223,10 @@ src_configure() {
 	_use_select bluetooth    chan_mobile
 	_use_select calendar     res_calendar res_calendar_{caldav,ews,exchange,icalendar}
 	_use_select cluster      res_corosync
+	_use_select codec2       codec_codec2
 	_use_select curl         func_curl res_config_curl res_curl
 	_use_select dahdi        app_dahdiras app_meetme chan_dahdi codec_dahdi res_timing_dahdi
+	_use_select deprecated   app_macro
 	_use_select freetds      {cdr,cel}_tds
 	_use_select gtalk        chan_motif
 	_use_select http         res_http_post
@@ -230,52 +250,62 @@ src_configure() {
 	_use_select xmpp         res_xmpp
 
 	# Voicemail storage ...
+	_menuselect --enable app_voicemail menuselect.makeopts
 	for vmst in "${IUSE_VOICEMAIL_STORAGE[@]}"; do
 		if use "${vmst#+}"; then
-			_menuselect --enable "$(echo "${vmst##*_}" | tr '[:lower:]' '[:upper:]')_STORAGE" menuselect.makeopts
+			_menuselect --enable "app_voicemail_${vmst##*_}" menuselect.makeopts
 		fi
 	done
 
 	if use debug; then
-		for o in DONT_OPTIMIZE DEBUG_THREADS BETTER_BACKTRACES; do
-			_menuselect --enable $o menuselect.makeopts
+		for o in DONT_OPTIMIZE DEBUG_FD_LEAKS MALLOC_DEBUG BETTER_BACKTRACES; do
+			_menuselect --enable "${o}" menuselect.makeopts
+		done
+	fi
+
+	if [[ -n "${GENTOO_ASTERISK_CUSTOM_MENUSELECT:+yes}" ]]; then
+		for copt in ${GENTOO_ASTERISK_CUSTOM_MENUSELECT}; do
+			cstate=--enable
+			[[ "${copt}" == -* ]] && cstate=--disable
+			ebegin "Custom option ${copt#[-+]} ${cstate:2}d"
+			_menuselect ${cstate} "${copt#[-+]}"
+			eend $?
 		done
 	fi
 }
 
 src_compile() {
-	emake ASTCFLAGS="${CFLAGS}" ASTLDFLAGS="${LDFLAGS}" NOISY_BUILD=yes
+	emake "${_make_args[@]}"
 }
 
 src_install() {
 	local d
 
 	dodir "/usr/$(get_libdir)/pkgconfig"
-	emake DESTDIR="${D}" NOISY_BUILD=yes install
+
+	diropts -m 0750 -o root -g asterisk
+	dodir /etc/asterisk
+
+	emake "${_make_args[@]}" install install-headers install-configs
+
+	fowners asterisk: /var/lib/asterisk/astdb
 
 	if use radius; then
 		insinto /etc/radiusclient/
 		doins contrib/dictionary.digium
 	fi
-	diropts -m 0750 -o root -g asterisk
-	keepdir	/etc/asterisk
-	emake NOISY_BUILD=yes DESTDIR="${D}" CONFIG_SRC=configs/samples CONFIG_EXTEN=.sample install-configs
-	chown root:root "${ED}/etc/asterisk/"* || die "chown root:root of config files failed"
-	chmod 644 "${ED}/etc/asterisk/"* || die "chmod 644 of config files failed"
 
 	# keep directories
 	diropts -m 0750 -o asterisk -g root
-	keepdir /var/lib/asterisk
-	keepdir /var/spool/asterisk
 	keepdir /var/spool/asterisk/{system,tmp,meetme,monitor,dictate,voicemail,recording}
 	diropts -m 0750 -o asterisk -g asterisk
 	keepdir /var/log/asterisk/{cdr-csv,cdr-custom}
 
-	newinitd "${FILESDIR}"/initd-13.32.0-r1 asterisk
-	newconfd "${FILESDIR}"/confd-13.32.0 asterisk
+	newinitd "${FILESDIR}"/initd-16.16.2-r1 asterisk
+	newconfd "${FILESDIR}"/confd-16.16.2-r1 asterisk
 
 	systemd_dounit "${FILESDIR}"/asterisk.service
-	newtmpfiles "${FILESDIR}"/asterisk.tmpfiles2.conf asterisk.conf
+	newtmpfiles "${FILESDIR}"/asterisk.tmpfiles3.conf asterisk.conf
 	systemd_install_serviced "${FILESDIR}"/asterisk.service.conf
 
 	# Reset diropts else dodoc uses it for doc installations.
@@ -308,5 +338,26 @@ pkg_postinst() {
 		elog "You are updating from Asterisk $(ver_cut 1 "${REPLACING_VERSIONS}") upgrade document:"
 		elog "https://wiki.asterisk.org/wiki/display/AST/Upgrading+to+Asterisk+$(ver_cut 1)"
 		elog "Gentoo VoIP IRC Channel: #gentoo-voip @ irc.freenode.net"
+	fi
+
+	if use deprecated; then
+		ewarn "You really aught to port whatever code you have that depends on this since these are going to go away."
+		ewarn "Refer: https://wiki.asterisk.org/wiki/display/AST/Module+Deprecation"
+	fi
+
+	if [[ -n "${GENTOO_ASTERISK_CUSTOM_MENUSELECT:+yes}" ]]; then
+		ewarn "You are using GENTOO_ASTERISK_CUSTOM_MENUSELECT, this should only be used"
+		ewarn "for debugging, for anything else, please file a bug on https://bugs.gentoo.org"
+	fi
+
+	if [[ -f /var/lib/asterisk/astdb.sqlite3 ]]; then
+		ewarn "Default astdb location has changed from /var/lib/asterisk to /var/lib/asterisk/astdb"
+		ewarn "You still have a /var/lib/asterisk/astdb.sqlite file.  You need to either set"
+		ewarn "astdbdir in /etc/asterisk/asterisk.conf to /var/lib/asterisk or follow these"
+		ewarn "steps to migrate:"
+		ewarn "1.  /etc/init.d/asterisk stop"
+		ewarn "2.  mv /var/lib/asterisk/astdb.sqlite /var/lib/asterisk/astdb/"
+		ewarn "3.  /etc/init.d/asterisk start"
+		ewarn "This update was done partly for security reasons so that /var/lib/asterisk can be root owned."
 	fi
 }
