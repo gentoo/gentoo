@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="C Language Support for Inline"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
