@@ -778,8 +778,8 @@ _distutils-r1_wrap_scripts() {
 			debug-print "${FUNCNAME}: installing wrapper at ${bindir}/${basename}"
 			local dosym=dosym
 			[[ ${EAPI} == [67] ]] && dosym=dosym8
-			"${dosym}" -r "${path#${D}}"/usr/lib/python-exec/python-exec2 \
-				"${path#${D}}${bindir#${EPREFIX}}/${basename}"
+			"${dosym}" -r "${path#${D%/}}"/usr/lib/python-exec/python-exec2 \
+				"${path#${D%/}}${bindir#${EPREFIX}}/${basename}"
 		done
 
 		for f in "${non_python_files[@]}"; do
