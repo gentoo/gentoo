@@ -116,6 +116,10 @@ RDEPEND="${DEPEND}
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
 	x11-libs/vte:2.91[introspection]
+	|| (
+		sys-libs/glibc[crypt(+)]
+		sys-libs/libxcrypt[compat]
+	)
 "
 
 pkg_nofetch() {
