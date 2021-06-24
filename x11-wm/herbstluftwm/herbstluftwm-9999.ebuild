@@ -41,6 +41,7 @@ DEPEND="
 		x11-apps/xsetroot
 		x11-base/xorg-server[xephyr,xvfb]
 		x11-misc/xdotool
+		x11-terms/xterm
 	)
 "
 RDEPEND="
