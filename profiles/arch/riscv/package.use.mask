@@ -7,7 +7,7 @@ media-gfx/imagemagick fftw openexr wmf
 
 # Marek Szuba <marecki@gentoo.org> (2021-06-22)
 # Dependencies not keyworded here yet
-dev-python/pillow imagequant test tk
+dev-python/pillow tk
 
 # Marek Szuba <marecki@gentoo.org> (2021-06-21)
 # net-libs/mbedtls not keyworded here, not tested
