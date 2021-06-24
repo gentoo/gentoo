@@ -20,6 +20,6 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 
 distutils_enable_tests pytest
