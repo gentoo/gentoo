@@ -88,6 +88,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	)
 	sqlite? ( dev-db/sqlite )
 	radius? ( net-dialup/freeradius-client )
+	virtual/libcrypt:=
 	virtual/libiconv
 	"
 	# added X check for #57206
