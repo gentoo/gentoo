@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://raw.githubusercontent.com/excon/excon/master/changelog.txt</changelog>
+    <doc>https://github.com/excon/excon/blob/master/README.md</doc>
+    <bugs-to>https://github.com/excon/excon/issues</bugs-to>
+    <remote-id type="github">excon/excon</remote-id>
+  </upstream>
+  <maintainer type="person" proxied="yes">
+    <email>sascha@spreitzer.ch</email>
+    <name>Sascha Spreitzer</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+</pkgmetadata>
