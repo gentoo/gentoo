@@ -150,10 +150,6 @@ media-plugins/mythplugins mythnetvision
 app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# These flags depend on dev-python/pygtk that is masked for removal.
-<media-gfx/gimp-3 python
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
 sci-geosciences/qgis grass
 
