@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: eapi7-ver.eclass
@@ -58,7 +58,7 @@
 
 case ${EAPI:-0} in
 	0|1|2|3|4|5|6) ;;
-	7) die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass" ;;
+	7|8) die "${ECLASS}: EAPI=${EAPI} includes all functions from this eclass" ;;
 	*) die "${ECLASS}: EAPI=${EAPI} unknown" ;;
 esac
 
