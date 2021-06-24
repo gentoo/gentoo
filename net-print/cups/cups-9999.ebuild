@@ -42,6 +42,7 @@ BDEPEND="
 DEPEND="
 	app-text/libpaper
 	sys-libs/zlib
+	virtual/libcrypt:=
 	acl? (
 		kernel_linux? (
 			sys-apps/acl
