@@ -34,6 +34,13 @@ DEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	default
+
+	# https://github.com/pytransitions/transitions/pull/538
+	sed -e 's/description-file/description_file/g' -i setup.cfg || die
+}
+
 src_install() {
 	distutils-r1_src_install
 
