@@ -1,0 +1,9 @@
+--- a/setup.cfg	2021-06-24 21:17:00.815577470 +0100
++++ b/setup.cfg	2021-06-24 21:17:04.775540043 +0100
+@@ -1,5 +1,5 @@
+ [metadata]
+-description-file=README.rst
++description_file=README.rst
+ 
+ [yapf]
+ based_on_style=facebook

@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-requirements-remove-dev-tests.patch"
+	"${FILESDIR}/${P}-fix-setuptools-dash.patch"
 )
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
