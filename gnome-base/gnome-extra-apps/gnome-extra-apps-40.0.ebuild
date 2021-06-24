@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DESCRIPTION="Sub-meta package for the applications of GNOME 3"
+DESCRIPTION="Sub-meta package for the applications of GNOME"
 HOMEPAGE="https://www.gnome.org/"
 LICENSE="metapackage"
 SLOT="3.0"
@@ -12,7 +12,7 @@ IUSE="+games share +shotwell +tracker"
 KEYWORDS="amd64 ~arm64 x86"
 
 # Note to developers:
-# This is a wrapper for the extra apps integrated with GNOME 3
+# This is a wrapper for the extra apps integrated with GNOME
 # Keep pkg order within a USE flag as upstream releng versions file
 # TODO: Should we keep these here: gnome-dictionary, gucharmap, sound-juicer, vinagre; replace gucharmap with gnome-characters?
 # TODO: Add gnome-remote-desktop as replacement for vino that was removed from meta in 3.36?
