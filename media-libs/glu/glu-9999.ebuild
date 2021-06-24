@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit autotools multilib-minimal ${GIT_ECLASS}
+inherit meson-multilib ${GIT_ECLASS}
 
 DESCRIPTION="The OpenGL Utility Library"
 HOMEPAGE="https://gitlab.freedesktop.org/mesa/glu"
@@ -18,7 +18,7 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/glu/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="SGI-B-2.0"
@@ -28,20 +28,10 @@ IUSE="static-libs"
 DEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	default
-	[[ ${PV} == 9999 ]] && eautoreconf
-}
-
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
-}
-
-multilib_src_install() {
-	default
-	find "${D}" -name '*.la' -delete || die
-}
-
-src_test() {
-	:;
+	local emesonargs=(
+		-Ddefault_library=$(usex static-libs both shared)
+		-Dgl_provider=glvnd
+	)
+	meson_src_configure
 }
