@@ -22,6 +22,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/glib
 	net-libs/libtirpc
+	virtual/libcrypt:=
 	deploypkg? ( dev-libs/libmspack )
 	fuse? ( sys-fs/fuse:0 )
 	pam? ( sys-libs/pam )
