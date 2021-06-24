@@ -21,7 +21,7 @@ DESCRIPTION="Basic hardware drivers for logic analyzers and input/output file fo
 HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
-SLOT="0/9999"
+SLOT="0/4"
 IUSE="+cxx ftdi java parport python ruby serial static-libs test +udev usb"
 REQUIRED_USE="java? ( cxx )
 	python? ( cxx ${PYTHON_REQUIRED_USE} )
@@ -66,6 +66,14 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 "
 
 S="${WORKDIR}"/${P}
+
+PATCHES=(
+	# https://sigrok.org/bugzilla/show_bug.cgi?id=1527
+	"${FILESDIR}/${P}-swig-4.patch"
+	# https://sigrok.org/bugzilla/show_bug.cgi?id=1526
+	"${FILESDIR}/${P}-ruby-swig-docs.patch" # bug 705074
+	"${FILESDIR}/${P}-check-0.15.patch"
+)
 
 pkg_setup() {
 	use python && python_setup
