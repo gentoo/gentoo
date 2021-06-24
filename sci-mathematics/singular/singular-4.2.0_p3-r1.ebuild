@@ -36,7 +36,7 @@ S="${WORKDIR}/${PN}-${MY_DIR2}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-gfan_linking.patch"
-	"${FILESDIR}/${PN}-4.2.0-doc_install.patch"
+	"${FILESDIR}/${PN}-4.2.0-doc_install-v2.patch"
 	"${FILESDIR}/${PN}-4.2.0-no-static.patch"
 )
 
