@@ -326,7 +326,7 @@ java-pkg-simple_prepend_resources() {
 # If USE FLAG 'binary' exists and is set, it will just copy
 # ${JAVA_BINJAR_FILENAME} to ${S} and skip the rest of src_compile.
 java-pkg-simple_src_compile() {
-	local sources=sources.lst classes=target/classes apidoc=target/api
+	local sources=sources.lst classes=target/classes apidoc=target/api moduleinfo
 
 	# auto generate classpath
 	java-pkg_gen-cp JAVA_GENTOO_CLASSPATH
@@ -344,7 +344,14 @@ java-pkg-simple_src_compile() {
 	fi
 
 	# gather sources
-	find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
+	# if target < 9, we need to compile module-info.java separately
+	# as this feature is not supported before Java 9
+	if [[ java-pkg_get-target -lt 9 ]]; then
+		find "${JAVA_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${sources}
+		moduleinfo=$(find "${JAVA_SRC_DIR[@]}" -name module-info.java)
+	else
+		find "${JAVA_SRC_DIR[@]}" -name \*.java > ${sources}
+	fi
 
 	# create the target directory
 	mkdir -p ${classes} || die "Could not create target directory"
@@ -357,6 +364,23 @@ java-pkg-simple_src_compile() {
 	ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
 		${classpath:+-classpath ${classpath}} ${JAVAC_ARGS}\
 		@${sources}
+
+	# handle module-info.java separately as it needs at least JDK 9
+	if [[ -n ${moduleinfo} ]]; then
+		if java-pkg_is-vm-version-ge "9" ; then
+			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+			JAVA_PKG_WANT_SOURCE="9"
+			JAVA_PKG_WANT_TARGET="9"
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING} ${JAVAC_ARGS} "${moduleinfo}"
+
+			JAVA_PKG_WANT_SOURCE=${tmp_source}
+			JAVA_PKG_WANT_TARGET=${tmp_target}
+		else
+			ewarn "Need at least JDK 9 to compile module-info.java in src_compile,"
+			ewarn "see https://bugs.gentoo.org/796875"
+		fi
+	fi
 
 	# javadoc
 	if has doc ${JAVA_PKG_IUSE} && use doc; then
@@ -422,7 +446,7 @@ java-pkg-simple_src_install() {
 # It will perform test with frameworks that are defined in
 # ${JAVA_TESTING_FRAMEWORKS}.
 java-pkg-simple_src_test() {
-	local test_sources=test_sources.lst classes=target/test-classes
+	local test_sources=test_sources.lst classes=target/test-classes moduleinfo
 	local tests_to_run classpath
 
 	# do not continue if the USE FLAG 'test' is explicitly unset
@@ -444,12 +468,37 @@ java-pkg-simple_src_test() {
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_TEST_RESOURCE_DIRS[@]}"
 
 	# gathering sources for testing
-	find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
+	# if target < 9, we need to compile module-info.java separately
+	# as this feature is not supported before Java 9
+	if [[ java-pkg_get-target -lt 9 ]]; then
+		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java ! -name module-info.java > ${test_sources}
+		moduleinfo=$(find "${JAVA_TEST_SRC_DIR[@]}" -name module-info.java)
+	else
+		find "${JAVA_TEST_SRC_DIR[@]}" -name \*.java > ${test_sources}
+	fi
+
 
 	# compile
 	[[ -s ${test_sources} ]] && ejavac -d ${classes} ${JAVAC_ARGS} \
 		-encoding ${JAVA_ENCODING} ${classpath:+-classpath ${classpath}} \
 		@${test_sources}
+
+	# handle module-info.java separately as it needs at least JDK 9
+	if [[ -n ${moduleinfo} ]]; then
+		if java-pkg_is-vm-version-ge "9" ; then
+			local tmp_source=${JAVA_PKG_WANT_SOURCE} tmp_target=${JAVA_PKG_WANT_TARGET}
+
+			JAVA_PKG_WANT_SOURCE="9"
+			JAVA_PKG_WANT_TARGET="9"
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING} ${JAVAC_ARGS} "${moduleinfo}"
+
+			JAVA_PKG_WANT_SOURCE=${tmp_source}
+			JAVA_PKG_WANT_TARGET=${tmp_target}
+		else
+			ewarn "Need at least JDK 9 to compile module-info.java in src_test,"
+			ewarn "see https://bugs.gentoo.org/796875"
+		fi
+	fi
 
 	# grab a set of tests that testing framework will run
 	tests_to_run=$(find "${classes}" -type f\
