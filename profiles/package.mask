@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-06-24)
+# Package of huge complexity, given its premise.  Unmaintained
+# in Gentoo.  No revdeps.
+# Removal on 2021-07-24.  Bug #798291.
+dev-python/frozendict
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
 # obsolete, no consumers
 # see bug: https://bugs.gentoo.org/797739
