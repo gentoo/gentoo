@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/nspr
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libglvnd
+	media-libs/libglvnd[X]
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/zlib:0/1[minizip]
@@ -32,7 +32,7 @@ RDEPEND="
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libxcb
-	x11-libs/libxkbcommon
+	x11-libs/libxkbcommon[X]
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
 	x11-libs/libXdamage
@@ -112,7 +112,7 @@ src_install() {
 	dosym ../../usr/share/doc/${PF}/doc ${dst}/doc
 
 	# We need to keep docs uncompressed, bug #778617
-	docompress -x /usr/share/doc/${PF}/*
+	docompress -x /usr/share/doc/${PF}/.
 
 	keepdir /etc/${MY_P}
 	dosym ../../etc/${MY_P} ${dst}/config
