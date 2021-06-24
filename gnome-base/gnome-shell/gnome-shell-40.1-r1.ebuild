@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 virtualx xdg
 
-DESCRIPTION="Provides core UI functions for the GNOME 3 desktop"
+DESCRIPTION="Provides core UI functions for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell"
 SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${PF}-patchset.tar.xz"
 
