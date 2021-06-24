@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,10 +12,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
-REQUIRED_USE="gtk2? ( gtk )"
+IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 
-RDEPEND="x11-libs/libICE
+RDEPEND="virtual/libcrypt:=
+	x11-libs/libICE
+	x11-libs/libxkbcommon
 	x11-libs/libSM
 	x11-libs/libX11
 	bidi? ( dev-libs/fribidi )
@@ -25,10 +26,7 @@ RDEPEND="x11-libs/libICE
 	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )
 	freewnn? ( app-i18n/freewnn )
-	gtk? (
-		gtk2? ( x11-libs/gtk+:2 )
-		!gtk2? ( x11-libs/gtk+:3 )
-	)
+	gtk? ( x11-libs/gtk+:3 )
 	harfbuzz? ( media-libs/harfbuzz[truetype(+)] )
 	ibus? ( app-i18n/ibus )
 	libssh2? ( net-libs/libssh2 )
@@ -84,9 +82,9 @@ src_configure() {
 		$(use_enable scim)
 		$(use_enable skk)
 		$(use_enable uim)
-		$(use_enable utempter utmp)
 		--with-gui=xlib$(usex fbcon ",fb" "")$(usex wayland ",wayland" "")
 		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
+		--with-utmp=$(usex utempter utempter none)
 		--enable-optimize-redrawing
 		--enable-vt52
 		--disable-static
@@ -96,11 +94,13 @@ src_configure() {
 	local tools="mlclient,mlcc,mlfc,mlmenu,${PN}-zoom"
 	if use gtk; then
 		myconf+=(
-			$(use_with gtk gtk $(usex gtk2 2.0 3.0))
+			--with-gtk=3.0
 			--with-imagelib=gdk-pixbuf
 		)
 		scrollbars+=",pixmap_engine"
 		tools+=",mlconfig,mlimgloader"
+	else
+		myconf+=( --without-gtk )
 	fi
 	if use regis; then
 		tools+=",registobmp"
