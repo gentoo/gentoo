@@ -17,13 +17,13 @@ HOMEPAGE="https://www.ruby-lang.org/"
 SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +ssl static-libs systemtap tk xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
@@ -38,39 +38,47 @@ RDEPEND="
 	dev-libs/libffi:=
 	sys-libs/readline:0=
 	sys-libs/zlib
-	>=app-eselect/eselect-ruby-20181225
+	virtual/libcrypt:=
+	>=app-eselect/eselect-ruby-20191222
 "
 
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/did_you_mean-1.2.1[ruby_targets_ruby26]
-	>=dev-ruby/minitest-5.11.3[ruby_targets_ruby26]
-	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby26]
-	>=dev-ruby/power_assert-1.1.3[ruby_targets_ruby26]
-	>=dev-ruby/rake-12.3.2[ruby_targets_ruby26]
-	>=dev-ruby/test-unit-3.2.9[ruby_targets_ruby26]
-	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby26]
+	>=dev-ruby/minitest-5.13.0[ruby_targets_ruby27]
+	>=dev-ruby/net-telnet-0.2.0[ruby_targets_ruby27]
+	>=dev-ruby/power_assert-1.1.7[ruby_targets_ruby27]
+	>=dev-ruby/rake-13.0.1[ruby_targets_ruby27]
+	>=dev-ruby/test-unit-3.3.4[ruby_targets_ruby27]
+	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby27]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby26]
-	>=dev-ruby/bundler-1.17.2[ruby_targets_ruby26]
-	>=dev-ruby/json-2.0.2[ruby_targets_ruby26]
-	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby26] )
+	virtual/rubygems[ruby_targets_ruby27]
+	>=dev-ruby/bundler-2.1.4[ruby_targets_ruby27]
+	>=dev-ruby/did_you_mean-1.3.1[ruby_targets_ruby27]
+	>=dev-ruby/json-2.0.2[ruby_targets_ruby27]
+	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby27] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
 	# 005 does not compile bigdecimal and is questionable because it
 	# compiles ruby in a non-standard way, may be dropped
-	eapply "${FILESDIR}"/2.6/{002,010}*.patch
+	eapply "${FILESDIR}"/2.7/{002,003,010}*.patch
+
+	# Reset time on patched gem_prelude.rb to avoid the need for a base
+	# ruby during bootstrapping, bug 787137
+	touch -t 202001010000 gem_prelude.rb || die
 
 	einfo "Unbundling gems..."
 	cd "$S"
 	# Remove bundled gems that we will install via PDEPEND, bug
 	# 539700.
 	rm -fr gems/* || die
+	# Don't install CLI tools since they will clash with the gem
+	rm -f bin/{racc,racc2y,y2racc} || die
+	sed -i -e '/executables/ s:^:#:' lib/racc/racc.gemspec || die
 
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
@@ -190,8 +198,10 @@ src_install() {
 	# Remove the remaining bundled gems. We do this late in the process
 	# since they are used during the build to e.g. create the
 	# documentation.
-	rm -rf ext/json || die
+	einfo "Removing default gems before installation"
+	rm -rf .ext/common/json.rb .ext/common/json ext/json || die
 	rm -rf lib/bundler* lib/rdoc/rdoc.gemspec || die
+	rm -rf lib/did_you_mean* || die
 
 	# Ruby is involved in the install process, we don't want interference here.
 	unset RUBYOPT

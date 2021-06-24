@@ -23,7 +23,7 @@ IUSE="berkdb debug doc examples gdbm ipv6 jemalloc +rdoc rubytests socks5 +ssl s
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
-	jemalloc? ( dev-libs/jemalloc )
+	jemalloc? ( dev-libs/jemalloc:= )
 	ssl? (
 		dev-libs/openssl:0=
 	)
