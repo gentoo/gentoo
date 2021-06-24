@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
+# library with no consumer, removal in 30 days
+# see https://bugs.gentoo.org/794562
+dev-java/bctsp
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-24)
 # Package of huge complexity, given its premise.  Unmaintained
 # in Gentoo.  No revdeps.
