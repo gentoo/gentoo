@@ -25,3 +25,8 @@ KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
 # all tests are related to making releases and final checks for distribution
 
 S=${WORKDIR}/${MY_P}
+
+src_install() {
+	export BUILDBOT_VERSION="${MY_PV}"
+	distutils-r1_src_install
+}
