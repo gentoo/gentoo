@@ -52,21 +52,26 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	elog "youtube-dl(1) / https://bugs.gentoo.org/355661 /"
-	elog "https://github.com/rg3/youtube-dl/blob/master/README.md#faq :"
-	elog
-	elog "youtube-dl works fine on its own on most sites. However, if you want"
-	elog "to convert video/audio, you'll need ffmpeg (media-video/ffmpeg)."
-	elog "On some sites - most notably YouTube - videos can be retrieved in"
-	elog "a higher quality format without sound. youtube-dl will detect whether"
-	elog "ffmpeg is present and automatically pick the best option."
-	elog
-	elog "Videos or video formats streamed via RTMP protocol can only be"
-	elog "downloaded when rtmpdump (media-video/rtmpdump) is installed."
-	elog
-	elog "Downloading MMS and RTSP videos requires either mplayer"
-	elog "(media-video/mplayer) or mpv (media-video/mpv) to be installed."
-	elog
-	elog "If you want youtube-dl to embed thumbnails from the metadata into the"
-	elog "resulting MP4 files, consider installing media-video/atomicparsley"
+	if ! has_version media-video/ffmpeg; then
+		elog "${PN} works fine on its own on most sites. However, if you want"
+		elog "to convert video/audio, you'll need media-video/ffmpeg."
+		elog "On some sites - most notably YouTube - videos can be retrieved in"
+		elog "a higher quality format without sound. ${PN} will detect whether"
+		elog "ffmpeg is present and automatically pick the best option."
+	fi
+	if ! has_version media-video/rtmpdump; then
+		elog
+		elog "Videos or video formats streamed via RTMP protocol can only be"
+		elog "downloaded when media-video/rtmpdump is installed."
+	fi
+	if ! has_version media-video/mplayer && ! has_version media-video/mpv; then
+		elog
+		elog "Downloading MMS and RTSP videos requires either media-video/mplayer"
+		elog "or media-video/mpv to be installed."
+	fi
+	if ! has_version media-video/atomicparsley; then
+		elog
+		elog "Install media-video/atomicparsley if you want ${PN} to embed thumbnails"
+		elog "from the metadata into the resulting MP4/M4A files."
+	fi
 }
