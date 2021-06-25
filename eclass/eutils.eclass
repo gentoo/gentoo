@@ -23,7 +23,7 @@ if [[ -z ${_EUTILS_ECLASS} ]]; then
 _EUTILS_ECLASS=1
 
 # implicitly inherited (now split) eclasses
-case ${EAPI:-0} in
+case ${EAPI} in
 	5|6)
 		inherit desktop edos2unix epatch estack l10n ltprune multilib \
 			preserve-libs toolchain-funcs vcs-clean wrapper
@@ -172,10 +172,9 @@ in_iuse() {
 	has "${flag}" "${liuse[@]#[+-]}"
 }
 
-fi
+fi # EAPI 5
 
-case ${EAPI:-0} in
-5|6)
+if [[ ${EAPI} == [56] ]] ; then
 
 # @FUNCTION: eqawarn
 # @USAGE: [message]
@@ -190,7 +189,6 @@ if ! declare -F eqawarn >/dev/null ; then
 	}
 fi
 
-;;
-esac
+fi # EAPI [56]
 
 fi
