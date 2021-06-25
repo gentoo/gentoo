@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -23,7 +23,7 @@ RDEPEND="${COMMON}
 	>=dev-python/appdirs-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/decorator-3.2.0[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
-	>=dev-python/pytools-2017.6[${PYTHON_USEDEP}]
+	>=dev-python/pytools-2021.2.7[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 DEPEND="${COMMON}
 	dev-python/pybind11[${PYTHON_USEDEP}]
