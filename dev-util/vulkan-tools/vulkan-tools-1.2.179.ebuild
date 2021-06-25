@@ -26,7 +26,7 @@ SLOT="0"
 IUSE="cube wayland +X"
 
 # Cube demo only supports one window system at a time
-REQUIRED_USE="!cube? ( || ( X wayland ) ) cube? ( ^^ ( X wayland ) )"
+REQUIRED_USE="cube? ( ^^ ( X wayland ) )"
 
 BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cmake-3.10.2
