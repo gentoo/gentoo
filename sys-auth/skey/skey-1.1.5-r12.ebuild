@@ -66,7 +66,7 @@ src_install() {
 
 	dodoc README CHANGES
 
-	DOC_CONTENTS="For an introduction into using s/key authentication,
+	local DOC_CONTENTS="For an introduction into using s/key authentication,
 		take a look at the EXAMPLES section from the skey(1) manpage."
 	readme.gentoo_create_doc
 }
