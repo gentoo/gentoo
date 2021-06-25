@@ -12,10 +12,11 @@ HOMEPAGE="http://fcron.free.fr/"
 SRC_URI="http://fcron.free.fr/archives/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="audit debug pam selinux l10n_fr +mta +system-crontab readline"
 
-DEPEND="audit? ( sys-process/audit )
+DEPEND="virtual/libcrypt:=
+	audit? ( sys-process/audit )
 	pam? ( sys-libs/pam )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )"
@@ -28,6 +29,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-noreadline.patch
 	"${FILESDIR}"/${PN}-3.2.1-configure-fix-audit-parameter-check.patch
+	"${FILESDIR}"/${PN}-3.2.1-musl-getopt-order.patch
 )
 
 pkg_setup() {
@@ -161,8 +163,10 @@ src_install() {
 	EOF
 	use pam && newpamd "${T}"/fcrontab.pam fcrontab
 
-	newinitd "${FILESDIR}"/fcron.init.4 fcron
+	newinitd "${FILESDIR}"/fcron.init-r5 fcron
 	systemd_newunit "${S}/script/fcron.init.systemd" fcron.service
+
+	newconfd "${FILESDIR}"/fcron.confd fcron
 
 	local DOCS=( MANIFEST VERSION "${WORKDIR}/crontab")
 	DOCS+=( doc/en/txt/{readme,thanks,faq,todo,relnotes,changes}.txt )
