@@ -15,7 +15,7 @@ HOMEPAGE="
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~sparc"
 SLOT="0"
 
 BDEPEND="
