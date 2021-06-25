@@ -921,8 +921,8 @@ distutils-r1_python_install() {
 	fi
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		_distutils-r1_wrap_scripts "${root}" "${scriptdir}"
 		multibuild_merge_root "${root}" "${D%/}"
+		_distutils-r1_wrap_scripts "${D%/}" "${scriptdir}"
 	fi
 }
 
