@@ -18,7 +18,7 @@ else
 	SRC_URI="https://dl.midipix.org/slibtool/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://dl.midipix.org/slibtool/${P}.tar.xz.sig )"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x64-macos"
 
 	BDEPEND="verify-sig? ( app-crypt/openpgp-keys-midipix )"
 fi
