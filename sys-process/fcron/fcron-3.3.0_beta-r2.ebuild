@@ -7,15 +7,19 @@ WANT_AUTOMAKE=none
 
 inherit cron pam flag-o-matic user autotools versionator systemd
 
+MY_PV=${PV/_beta/}
+MY_P=${PN}-${MY_PV}
+
 DESCRIPTION="A command scheduler with extended capabilities over cron and anacron"
 HOMEPAGE="http://fcron.free.fr/"
-SRC_URI="http://fcron.free.fr/archives/${P}.src.tar.gz"
+SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS=""
 IUSE="audit debug pam selinux l10n_fr +mta +system-crontab readline"
 
-DEPEND="audit? ( sys-process/audit )
+DEPEND="virtual/libcrypt:=
+	audit? ( sys-process/audit )
 	pam? ( sys-libs/pam )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )"
@@ -30,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-configure-fix-audit-parameter-check.patch
 	"${FILESDIR}"/${PN}-3.2.1-musl-getopt-order.patch
 )
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup fcron

@@ -7,18 +7,16 @@ WANT_AUTOMAKE=none
 
 inherit cron pam flag-o-matic user autotools versionator systemd
 
-MY_PV=${PV/_beta/}
-MY_P=${PN}-${MY_PV}
-
 DESCRIPTION="A command scheduler with extended capabilities over cron and anacron"
 HOMEPAGE="http://fcron.free.fr/"
-SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://fcron.free.fr/archives/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
 IUSE="audit debug pam selinux l10n_fr +mta +system-crontab readline"
 
-DEPEND="audit? ( sys-process/audit )
+DEPEND="virtual/libcrypt:=
+	audit? ( sys-process/audit )
 	pam? ( sys-libs/pam )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )"
@@ -31,10 +29,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.1-noreadline.patch
 	"${FILESDIR}"/${PN}-3.2.1-configure-fix-audit-parameter-check.patch
-	"${FILESDIR}"/${PN}-3.2.1-musl-getopt-order.patch
 )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup fcron
@@ -167,10 +162,8 @@ src_install() {
 	EOF
 	use pam && newpamd "${T}"/fcrontab.pam fcrontab
 
-	newinitd "${FILESDIR}"/fcron.init-r5 fcron
+	newinitd "${FILESDIR}"/fcron.init.4 fcron
 	systemd_newunit "${S}/script/fcron.init.systemd" fcron.service
-
-	newconfd "${FILESDIR}"/fcron.confd fcron
 
 	local DOCS=( MANIFEST VERSION "${WORKDIR}/crontab")
 	DOCS+=( doc/en/txt/{readme,thanks,faq,todo,relnotes,changes}.txt )
