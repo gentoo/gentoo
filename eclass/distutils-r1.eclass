@@ -740,24 +740,23 @@ distutils-r1_python_compile() {
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
-# @USAGE: <path> <bindir>
+# @USAGE: <bindir>
 # @INTERNAL
 # @DESCRIPTION:
 # Moves and wraps all installed scripts/executables as necessary.
 _distutils-r1_wrap_scripts() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${#} -eq 2 ]] || die "usage: ${FUNCNAME} <path> <bindir>"
-	local path=${1}
-	local bindir=${2}
+	[[ ${#} -eq 1 ]] || die "usage: ${FUNCNAME} <bindir>"
+	local bindir=${1}
 
 	local scriptdir=$(python_get_scriptdir)
 	local f python_files=() non_python_files=()
 
-	if [[ -d ${path}${scriptdir} ]]; then
-		for f in "${path}${scriptdir}"/*; do
+	if [[ -d ${D%/}${scriptdir} ]]; then
+		for f in "${D%/}${scriptdir}"/*; do
 			[[ -d ${f} ]] && die "Unexpected directory: ${f}"
-			debug-print "${FUNCNAME}: found executable at ${f#${path}/}"
+			debug-print "${FUNCNAME}: found executable at ${f#${D%/}/}"
 
 			local shebang
 			read -r shebang < "${f}"
@@ -769,22 +768,22 @@ _distutils-r1_wrap_scripts() {
 				non_python_files+=( "${f}" )
 			fi
 
-			mkdir -p "${path}${bindir}" || die
+			mkdir -p "${D%/}${bindir}" || die
 		done
 
 		for f in "${python_files[@]}"; do
 			local basename=${f##*/}
 
 			debug-print "${FUNCNAME}: installing wrapper at ${bindir}/${basename}"
-			_python_ln_rel "${path}${EPREFIX}"/usr/lib/python-exec/python-exec2 \
-				"${path}${bindir}/${basename}" || die
+			_python_ln_rel "${ED%/}"/usr/lib/python-exec/python-exec2 \
+				"${D%/}${bindir}/${basename}" || die
 		done
 
 		for f in "${non_python_files[@]}"; do
 			local basename=${f##*/}
 
-			debug-print "${FUNCNAME}: moving ${f#${path}/} to ${bindir}/${basename}"
-			mv "${f}" "${path}${bindir}/${basename}" || die
+			debug-print "${FUNCNAME}: moving ${f#${D%/}/} to ${bindir}/${basename}"
+			mv "${f}" "${D%/}${bindir}/${basename}" || die
 		done
 	fi
 }
@@ -922,7 +921,7 @@ distutils-r1_python_install() {
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		multibuild_merge_root "${root}" "${D%/}"
-		_distutils-r1_wrap_scripts "${D%/}" "${scriptdir}"
+		_distutils-r1_wrap_scripts "${scriptdir}"
 	fi
 }
 
