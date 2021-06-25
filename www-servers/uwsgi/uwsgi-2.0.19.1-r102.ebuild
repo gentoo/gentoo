@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -25,7 +25,7 @@ SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=( ping cache carbon nagios rpc rrdtool
 	http ugreen signal syslog rsyslog
@@ -82,6 +82,7 @@ REQUIRED_USE="|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 # 4. Language/app support
 CDEPEND="
 	sys-libs/zlib
+	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	json? (
 		!yajl? ( dev-libs/jansson )
