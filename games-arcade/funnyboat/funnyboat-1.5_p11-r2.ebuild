@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{8..9} )
-inherit desktop python-single-r1 wrapper xdg
+inherit desktop python-single-r1 wrapper
 
 DESCRIPTION="Side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="http://funnyboat.sourceforge.net/"
