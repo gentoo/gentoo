@@ -654,8 +654,3 @@ media-libs/opencv contribovis
 # Newer (>=4.4.0) versions of Quodlibet have a different library structure, so
 # puddletag needs to be updated to handle that.
 media-sound/puddletag quodlibet
-
-# John Helmert III <ajak@gentoo.org> (2021-06-19)
-# Reverse dependencies of last rited net-misc/netkit-rsh
-app-shells/pdsh rsh
-net-misc/sitecopy rsh
