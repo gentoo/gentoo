@@ -37,6 +37,7 @@ QA_PREBUILT="
 	opt/mattermost-desktop/libffmpeg.so
 	opt/mattermost-desktop/libGLESv2.so
 	opt/mattermost-desktop/libEGL.so
+	opt/mattermost-desktop/libvk_swiftshader.so
 "
 
 DOCS=(
