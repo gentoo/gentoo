@@ -5,7 +5,7 @@ EAPI=7
 
 inherit flag-o-matic toolchain-funcs pax-utils
 
-DESCRIPTION="fast password cracker"
+DESCRIPTION="Fast password cracker"
 HOMEPAGE="http://www.openwall.com/john/"
 
 MY_PN="JohnTheRipper"
@@ -28,18 +28,22 @@ SLOT="0"
 IUSE="custom-cflags kerberos mpi opencl openmp pcap"
 
 DEPEND=">=dev-libs/openssl-1.0.1:0=
+	virtual/libcrypt:=
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
 	kerberos? ( virtual/krb5 )
 	pcap? ( net-libs/libpcap )
-	dev-libs/gmp:*
+	dev-libs/gmp:=
 	sys-libs/zlib
 	app-arch/bzip2"
 
 RDEPEND="${DEPEND}
 		!app-crypt/johntheripper"
 
-PATCHES=( "${FILESDIR}/${P}-opencl-fix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-opencl-fix.patch"
+	"${FILESDIR}/${P}-gcc11.patch"
+)
 
 pkg_setup() {
 	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
