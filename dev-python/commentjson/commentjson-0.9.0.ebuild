@@ -26,3 +26,9 @@ BDEPEND="
 	)"
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	# remove unnecessary version bind
+	sed -i -e '/lark-parser/s:,<0.8.0::' setup.py || die
+	distutils-r1_src_prepare
+}
