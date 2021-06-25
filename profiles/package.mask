@@ -32,11 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Sam James <sam@gentoo.org> (2021-06-25)
-# Missing patch file for now.
-# bug #798471
-=dev-python/numpy-1.21.0
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
 # library with no consumer, removal in 30 days
 # see https://bugs.gentoo.org/794562
