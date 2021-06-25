@@ -304,10 +304,10 @@ src_install() {
 pkg_postinst() {
 	if [ -z "${REPLACING_VERSIONS}" ]; then
 		elog "Asterisk Wiki: https://wiki.asterisk.org/wiki/"
-		elog "Gentoo VoIP IRC Channel: #gentoo-voip @ irc.freenode.net"
+		elog "Gentoo VoIP IRC Channel: #gentoo-voip @ irc.libera.chat"
 	elif [ "$(ver_cut 1 "${REPLACING_VERSIONS}")" != "$(ver_cut 1)" ]; then
 		elog "You are updating from Asterisk $(ver_cut 1 "${REPLACING_VERSIONS}") upgrade document:"
 		elog "https://wiki.asterisk.org/wiki/display/AST/Upgrading+to+Asterisk+$(ver_cut 1)"
-		elog "Gentoo VoIP IRC Channel: #gentoo-voip @ irc.freenode.net"
+		elog "Gentoo VoIP IRC Channel: #gentoo-voip @ irc.libera.chat"
 	fi
 }
