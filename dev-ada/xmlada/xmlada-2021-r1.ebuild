@@ -72,8 +72,10 @@ src_install() {
 	fi
 
 	einstalldocs
-	dodoc xmlada-roadmap.txt
 	rm -f "${D}"/usr/share/doc/${PN}/.buildinfo
-	rm -rf "${D}"/usr/share/examples
+	dodoc xmlada-roadmap.txt
 	rm -rf "${D}"/usr/share/gpr/manifests
+	dodir /usr/share/gnatdoc
+	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/gnatdoc/ || die
+	mv "${D}"/usr/share/examples/xmlada "${D}"/usr/share/doc/"${PF}"/examples || die
 }
