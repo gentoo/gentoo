@@ -15,8 +15,8 @@
 # determining the cross-section between the user's set LINGUAS and what
 # is offered by the package.
 
-case ${EAPI:-0} in
-	[567]) ;;
+case ${EAPI} in
+	5|6|7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
