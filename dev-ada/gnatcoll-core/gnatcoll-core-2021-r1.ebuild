@@ -72,4 +72,6 @@ src_install() {
 	fi
 	rm -r "${D}"/usr/share/gpr/manifests || die
 	einstalldocs
+	dodir /usr/share/gnatdoc
+	mv "${D}"/usr/share/doc/gnatcoll "${D}"/usr/share/gnatdoc/ || die
 }
