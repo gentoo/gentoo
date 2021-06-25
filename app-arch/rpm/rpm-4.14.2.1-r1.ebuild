@@ -36,7 +36,7 @@ CDEPEND="!app-arch/rpm5
 	dev-libs/nss
 	python? ( ${PYTHON_DEPS} )
 	nls? ( virtual/libintl )
-	lua? ( >=dev-lang/lua-5.1.0:0=[deprecated] )
+	lua? ( dev-lang/lua:5.1=[deprecated] )
 	acl? ( virtual/acl )
 	caps? ( >=sys-libs/libcap-2.0 )
 	zstd? ( app-arch/zstd )
