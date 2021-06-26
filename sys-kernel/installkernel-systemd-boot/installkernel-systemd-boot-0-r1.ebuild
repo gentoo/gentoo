@@ -20,7 +20,7 @@ src_install() {
 	# us to know the correct path, and that implies /usr merge problems
 	into /
 	newsbin - installkernel <<-EOF
-		#!/bin/sh
+		#!/usr/bin/env sh
 		exec kernel-install add "\${1}" "\${2}"
 	EOF
 
