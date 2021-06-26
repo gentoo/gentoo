@@ -64,6 +64,11 @@ BDEPEND="
 	doc? ( dev-util/gtk-doc )
 "
 
+PATCHES=(
+	# Undo the switch to untex as it's not packaged.
+	"${FILESDIR}/${PN}-5.0.3-use-detex.patch"
+)
+
 DISABLE_AUTOFORMATTING="yes"
 FORCE_PRINT_ELOG="yes"
 DOC_CONTENTS="
@@ -71,11 +76,14 @@ ${PN} search capabilities can be extended through external
 helpers. Install any of the following packages to make
 their associated file types searchable.
 
-Image metadata     - media-gfx/exif
-MP3 tags           - media-sound/id3
-OpenDocument files - app-text/odt2txt or app-office/unoconv
-PDF                - app-text/poppler[utils]
-PostScript         - app-text/ghostscript-gpl
+Image metadata           - media-gfx/exif
+MP3 tags                 - media-sound/id3
+Microsoft Office .doc    - app-text/catdoc
+Microsoft Office .xls    - dev-libs/libxls
+OpenDocument/LibreOffice - app-text/odt2txt or app-office/unoconv
+PDF                      - app-text/poppler[utils]
+PostScript               - app-text/ghostscript-gpl
+TeX                      - app-text/texlive-core
 "
 
 src_prepare() {
