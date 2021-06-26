@@ -4,6 +4,7 @@
 # Ye Cao <ye.c@rioslab.org> (2021-06-26)
 # Dependencies not keyworded, not tested
 dev-python/pyzmq test
+net-libs/zeromq unwind sodium
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
