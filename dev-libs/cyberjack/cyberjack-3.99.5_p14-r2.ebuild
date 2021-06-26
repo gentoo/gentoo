@@ -38,8 +38,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cxxflags -fno-permissive
-
 	local myeconfargs=(
 		--disable-debug
 		--disable-error-on-warning
