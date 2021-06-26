@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop gnome2-utils readme.gentoo-r1 xdg
+inherit desktop readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
 HOMEPAGE="http://www.jetbrains.com/pycharm/"
@@ -51,11 +51,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_pkg_postinst
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_pkg_postrm
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
