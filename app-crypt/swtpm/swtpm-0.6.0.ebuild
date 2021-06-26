@@ -14,7 +14,7 @@ SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse gnutls seccomp test"
+IUSE="fuse +gnutls seccomp test"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
