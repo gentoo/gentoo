@@ -1,0 +1,10 @@
+--- a/search-helpers/third-party/untex.nemo_search_helper
++++ b/search-helpers/third-party/untex.nemo_search_helper
+@@ -1,5 +1,5 @@
+ [Nemo Search Helper]
+-TryExec=untex;
+-Exec=untex %s
++TryExec=detex;
++Exec=detex %s
+ MimeType=text/x-tex;
+ Priority=100
