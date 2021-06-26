@@ -21,6 +21,6 @@ DEPEND="
 "
 
 src_prepare() {
-	sed -i -e 's/description-file/descriptiongfile/g' "${S}/setup.cfg" ||die
+	sed -i -e 's/description-file/description_file/g' "${S}/setup.cfg" ||die
 	default
 }
