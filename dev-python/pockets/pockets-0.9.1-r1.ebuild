@@ -19,3 +19,8 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
+
+src_prepare() {
+	sed -i -e 's/description-file/descriptiongfile/g' "${S}/setup.cfg" ||die
+	default
+}
