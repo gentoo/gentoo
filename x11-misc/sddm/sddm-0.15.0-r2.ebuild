@@ -22,11 +22,11 @@ RDEPEND="
 	>=dev-qt/qtgui-5.6:5
 	>=dev-qt/qtdeclarative-5.6:5
 	>=dev-qt/qtnetwork-5.6:5
-	virtual/libcrypt:=
 	>=x11-base/xorg-server-1.15.1
 	x11-libs/libxcb[xkb]
 	elogind? ( sys-auth/elogind )
 	pam? ( sys-libs/pam )
+	!pam? ( virtual/libcrypt:= )
 	systemd? ( sys-apps/systemd:= )
 	!systemd? ( sys-power/upower )"
 
