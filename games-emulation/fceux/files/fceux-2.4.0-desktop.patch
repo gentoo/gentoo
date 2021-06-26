@@ -1,4 +1,4 @@
-Remove harcoded paths from .desktop, not replacing with
+Remove hardcoded paths from .desktop, not replacing with
 make_desktop_entry given upstream's also defines MimeType.
 --- a/fceux.desktop
 +++ b/fceux.desktop
