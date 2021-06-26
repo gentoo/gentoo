@@ -65,11 +65,11 @@ multilib_src_configure() {
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
-		-DVULKAN_HEADERS_INSTALL_DIR="${EPREFIX}/usr"
+		-DVULKAN_HEADERS_INSTALL_DIR="${ESYSROOT}/usr"
 	)
 
 	use cube && mycmakeargs+=(
-		-DGLSLANG_INSTALL_DIR="${EPREFIX}/usr"
+		-DGLSLANG_INSTALL_DIR="${ESYSROOT}/usr"
 		-DCUBE_WSI_SELECTION=$(usex X XCB WAYLAND)
 	)
 
