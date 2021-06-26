@@ -1,0 +1,138 @@
+https://github.com/libffi/libffi/pull/646
+--- a/configure.ac
++++ b/configure.ac
+@@ -40,6 +40,7 @@ AM_PROG_AS
+ AM_PROG_CC_C_O
+ AC_PROG_LIBTOOL
+ AC_CONFIG_MACRO_DIR([m4])
++AC_CHECK_TOOL(READELF, readelf)
+ 
+ # Test for 64-bit build.
+ AC_CHECK_SIZEOF([size_t])
+@@ -271,7 +272,7 @@ if test "x$GCC" = "xyes"; then
+   	libffi_cv_ro_eh_frame=yes
+   	echo 'extern void foo (void); void bar (void) { foo (); foo (); }' > conftest.c
+   	if $CC $CFLAGS -c -fpic -fexceptions $libffi_cv_no_lto -o conftest.o conftest.c > /dev/null 2>&1; then
+-	    if readelf -WS conftest.o | grep -q -n 'eh_frame .* WA'; then
++	    if $READELF -WS conftest.o | grep -q -n 'eh_frame .* WA'; then
+ 	        libffi_cv_ro_eh_frame=no
+ 	    fi
+   	fi
+--- a/configure
++++ b/configure
+@@ -667,6 +667,7 @@ MAINT
+ MAINTAINER_MODE_FALSE
+ MAINTAINER_MODE_TRUE
+ PRTDIAG
++READELF
+ CXXCPP
+ CPP
+ LT_SYS_LIBRARY_PATH
+@@ -16380,6 +16393,98 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+ 
+ 
++if test -n "$ac_tool_prefix"; then
++  # Extract the first word of "${ac_tool_prefix}readelf", so it can be a program name with args.
++set dummy ${ac_tool_prefix}readelf; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_prog_READELF+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  if test -n "$READELF"; then
++  ac_cv_prog_READELF="$READELF" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_READELF="${ac_tool_prefix}readelf"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++fi
++fi
++READELF=$ac_cv_prog_READELF
++if test -n "$READELF"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $READELF" >&5
++$as_echo "$READELF" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++
++fi
++if test -z "$ac_cv_prog_READELF"; then
++  ac_ct_READELF=$READELF
++  # Extract the first word of "readelf", so it can be a program name with args.
++set dummy readelf; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_prog_ac_ct_READELF+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  if test -n "$ac_ct_READELF"; then
++  ac_cv_prog_ac_ct_READELF="$ac_ct_READELF" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_ac_ct_READELF="readelf"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++fi
++fi
++ac_ct_READELF=$ac_cv_prog_ac_ct_READELF
++if test -n "$ac_ct_READELF"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_ct_READELF" >&5
++$as_echo "$ac_ct_READELF" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++  if test "x$ac_ct_READELF" = x; then
++    READELF=""
++  else
++    case $cross_compiling:$ac_tool_warned in
++yes:)
++{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: using cross tools not prefixed with host triplet" >&5
++$as_echo "$as_me: WARNING: using cross tools not prefixed with host triplet" >&2;}
++ac_tool_warned=yes ;;
++esac
++    READELF=$ac_ct_READELF
++  fi
++else
++  READELF="$ac_cv_prog_READELF"
++fi
++
+ 
+ # Test for 64-bit build.
+ # The cast to long int works around a bug in the HP C Compiler
+@@ -18651,7 +18756,7 @@ else
+   	libffi_cv_ro_eh_frame=yes
+   	echo 'extern void foo (void); void bar (void) { foo (); foo (); }' > conftest.c
+   	if $CC $CFLAGS -c -fpic -fexceptions $libffi_cv_no_lto -o conftest.o conftest.c > /dev/null 2>&1; then
+-	    if readelf -WS conftest.o | grep -q -n 'eh_frame .* WA'; then
++	    if $READELF -WS conftest.o | grep -q -n 'eh_frame .* WA'; then
+ 	        libffi_cv_ro_eh_frame=no
+ 	    fi
+   	fi
