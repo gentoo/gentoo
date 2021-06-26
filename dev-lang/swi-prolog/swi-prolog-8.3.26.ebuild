@@ -26,7 +26,7 @@ RDEPEND="sys-libs/ncurses:=
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )
 	gmp? ( dev-libs/gmp:0 )
-	ssl? ( dev-libs/openssl:0 )
+	ssl? ( dev-libs/openssl:0= )
 	java? ( >=virtual/jdk-1.8:* )
 	uuid? ( dev-libs/ossp-uuid )
 	qt5? (
