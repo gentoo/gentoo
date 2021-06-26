@@ -128,16 +128,15 @@ src_configure() {
 		$(meson_use gstreamer build_recorder)
 		$(meson_use gtk-doc docs)
 		-Ddisable_networkmanager=$(usex networkmanager false true)
+		-Dpy3modules_dir="$(python_get_sitedir)"
 	)
 	meson_src_configure
 }
 
 src_install() {
-	python_domodule files/usr/lib/python3/dist-packages/cinnamon
-	rm -rf files/usr/lib/python3 || die
-
 	meson_src_install
 
+	python_optimize "${D}$(python_get_sitedir)"
 	python_optimize "${ED}"/usr/share/cinnamon/
 
 	# Required for gnome-shell on hardened/PaX, bug #398941
@@ -165,7 +164,8 @@ pkg_postinst() {
 			ewarn "org.cinnamon.recorder/pipeline to what you want to use."
 		fi
 	else
-		ewarn "Cinnamon's built-in screen recording utility is disabled."
+		ewarn "Cinnamon's built-in screen recording utility is not installed"
+		ewarn "because gstreamer support is disabled."
 	fi
 }
 
