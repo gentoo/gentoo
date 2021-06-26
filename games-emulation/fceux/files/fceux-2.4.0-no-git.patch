@@ -1,0 +1,12 @@
+Prevent meaningless use of git (QA notice if missing) in a release.
+--- a/scripts/genGitHdr.sh
++++ b/scripts/genGitHdr.sh
+@@ -8,6 +8,6 @@
+ echo "Output File: $OUTPUT_DIR/$FILE";
+ 
+-GIT_URL=`git config --get remote.origin.url`;
+-GIT_REV=`git rev-parse HEAD`;
++GIT_URL=
++GIT_REV=
+ 
+ echo "// fceux_git_info.cpp -- DO NOT EDIT: This file is auto-generated at build" >| $TMP_FILE;
