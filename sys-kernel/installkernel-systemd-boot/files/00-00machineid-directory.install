@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 COMMAND="${1}"
 ENTRY_DIR_ABS="${3}"
