@@ -19,8 +19,8 @@ MACHINE_ID_DIR="${ENTRY_DIR_ABS%/*}"
 if ! [[ -d "${MACHINE_ID_DIR}" ]]; then
 	if [[ "${KERNEL_INSTALL_VERBOSE}" -gt 0 ]]; then
     		echo "+mkdir -v -p ${MACHINE_ID_DIR}"
-    		exec mkdir -v -p "${MACHINE_ID_DIR}"
+    		mkdir -v -p "${MACHINE_ID_DIR}"
 	else
-    		exec mkdir -p "${MACHINE_ID_DIR}"
+    		mkdir -p "${MACHINE_ID_DIR}"
 	fi
 fi
