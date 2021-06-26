@@ -11,7 +11,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ppc64 ~riscv ~s390 x86"
 IUSE="elogind examples gtk +introspection kde nls pam selinux systemd test"
 RESTRICT="!test? ( test )"
 
@@ -35,12 +35,12 @@ DEPEND="
 	dev-lang/spidermonkey:78[-debug]
 	dev-libs/glib:2
 	dev-libs/expat
-	virtual/libcrypt:=
 	elogind? ( sys-auth/elogind )
 	pam? (
 		sys-auth/pambase
 		sys-libs/pam
 	)
+	!pam? ( virtual/libcrypt:= )
 	systemd? ( sys-apps/systemd:0=[policykit] )
 "
 RDEPEND="${DEPEND}
@@ -58,8 +58,7 @@ PDEPEND="
 DOCS=( docs/TODO HACKING NEWS README )
 
 PATCHES=(
-	# bug 660880
-	"${FILESDIR}"/polkit-0.115-elogind.patch
+	"${FILESDIR}"/${PN}-0.115-elogind.patch # bug 660880
 )
 
 QA_MULTILIB_PATHS="
