@@ -1,0 +1,25 @@
+From 04d56bcb5a59c4a36b9bb9ac57a84090033761ce Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sat, 19 Jun 2021 13:08:48 +0000
+Subject: [PATCH] unbundle: add libavcodec/format.h shim headers
+
+Header is included in ffmpeg_demuxer.
+---
+ build/linux/unbundle/ffmpeg.gn | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/build/linux/unbundle/ffmpeg.gn b/build/linux/unbundle/ffmpeg.gn
+index 978298a..16e2074 100644
+--- a/build/linux/unbundle/ffmpeg.gn
++++ b/build/linux/unbundle/ffmpeg.gn
+@@ -23,6 +23,7 @@ shim_headers("ffmpeg_shim") {
+   root_path = "."
+   headers = [
+     "libavcodec/avcodec.h",
++    "libavcodec/packet.h",
+     "libavformat/avformat.h",
+     "libavutil/imgutils.h",
+   ]
+-- 
+2.31.1
+

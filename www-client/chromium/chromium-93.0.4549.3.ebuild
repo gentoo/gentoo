@@ -13,7 +13,7 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="3"
+PATCHSET="4"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
@@ -234,6 +234,7 @@ src_prepare() {
 		"${WORKDIR}/patches"
 		"${FILESDIR}/chromium-92-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
+		"${FILESDIR}/chromium-93-system-ffmpeg.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
@@ -261,9 +262,6 @@ src_prepare() {
 		rm -r third_party/highway/src || die
 		ln -s "${WORKDIR}/highway-0.12.1" third_party/highway/src || die
 	fi
-
-	# lastchange.py requires initialized git repository
-	git init -q || die
 
 	local keeplibs=(
 		base/third_party/cityhash
