@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 "
 
+distutils_enable_tests pytest
+
 DOCS=( README.md NEWS.md )
 
 src_prepare() {
