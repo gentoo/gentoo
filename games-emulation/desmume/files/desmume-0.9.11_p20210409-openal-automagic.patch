@@ -1,0 +1,10 @@
+Option only changes whether the dep is required and doesn't disable it.
+--- a/desmume/src/frontend/posix/meson.build
++++ b/desmume/src/frontend/posix/meson.build
+@@ -176,5 +176,5 @@
+ endif
+ 
+-if dep_openal.found()
++if dep_openal.found() and get_option('openal')
+   dependencies += dep_openal
+   libdesmume_src += [

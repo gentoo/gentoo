@@ -35,7 +35,9 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-gtk-cliopts.patch
+	"${FILESDIR}"/${P}-openal-automagic.patch
 )
+
 DOCS=( ${PN}/{AUTHORS,ChangeLog,README,README.LIN,doc/.} )
 
 src_configure() {
