@@ -8,9 +8,16 @@
 libcrypt_check() {
 	if ! type -P scanelf >/dev/null || has binchecks ${PORTAGE_RESTRICT}; then
 		return
-	fi	
+	fi
 
-	if grep -q virtual/libcrypt <<<${RDEPEND}; then
+	# skip libcrypt.so providers
+	case "${CATEGORY}/${PN}" in
+		sys-libs/libxcrypt|sys-libs/glibc|sys-libs/musl|sys-libs/uclibc-ng)
+			return
+			;;
+	esac
+
+	if grep -q "virtual/libcrypt" <<<${RDEPEND}; then
 		# nothing to do here
 		return
 	fi
@@ -18,7 +25,7 @@ libcrypt_check() {
 	local libcrypt_consumers
 	# grep outputs newline separated list of files, so it's ok to skip specifying delimiter
 	IFS= mapfile libcrypt_consumers < <(find "${ED}" -type f -executable \
-		-print0 | xargs -0 scanelf -qyRF '%F %n' | grep 'libcrypt.so' 2>/dev/null )
+		-print0 | xargs -0 scanelf -qyRF '%F %n' | grep 'libcrypt\.so' 2>/dev/null )
 	
 	if [[ -n ${libcrypt_consumers[@]} ]]; then
 		eqawarn "Binary files linked to libcrypt.so found"
@@ -26,7 +33,7 @@ libcrypt_check() {
 		eqawarn
 		eqatag -v virtual-libcrypt.missing "${libcrypt_consumers[@]%% *}"
 		eqawarn
-		eqawarn "Please add virtual/libcrypt dependency"
+		eqawarn "Please add virtual/libcrypt:= dependency"
 		eqawarn "Gentoo Bug: https://bugs.gentoo.org/699422"
 	fi
 	
