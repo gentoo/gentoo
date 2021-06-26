@@ -1,22 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic
+EAPI=8
 
-DESCRIPTION="clone of old-school Wizardry(tm) games by SirTech"
-HOMEPAGE="http://icculus.org/gwiz/"
-SRC_URI="http://icculus.org/gwiz/${P}.tar.bz2"
+inherit desktop flag-o-matic toolchain-funcs
+
+DESCRIPTION="Clone of old-school Wizardry(tm) games by SirTech"
+HOMEPAGE="https://icculus.org/gwiz/"
+SRC_URI="https://icculus.org/gwiz/${P}.tar.bz2"
 
 KEYWORDS="~alpha ~amd64 ~x86"
 SLOT="0"
-LICENSE="GPL-2"
-IUSE=""
+LICENSE="GPL-2+"
 
-DEPEND=">=media-libs/libsdl-1.2.3[joystick,video]
-	>=media-libs/sdl-image-1.2.1-r1[png]
-	>=media-libs/sdl-ttf-2.0.4"
-RDEPEND=${DEPEND}
+DEPEND="media-libs/libsdl[joystick,video]
+	media-libs/sdl-image[png]
+	media-libs/sdl-ttf"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-buffer.patch
@@ -25,12 +25,14 @@ PATCHES=(
 src_prepare() {
 	default
 
+	tc-export CC
 	append-cflags -std=gnu89 # build with gcc5 (bug #572532)
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog README doc/HOWTO-PLAY" \
-		default
+	default
+
+	dodoc doc/HOWTO-PLAY
 	newicon pixmaps/gwiz_icon.xpm ${PN}.xpm
 	make_desktop_entry gwiz Gwiz
 }
