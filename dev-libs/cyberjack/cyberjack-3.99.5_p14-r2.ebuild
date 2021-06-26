@@ -7,7 +7,7 @@ MY_PN="pcsc-${PN}"
 MY_PV="${PV/_p/final.SP}"
 MY_P="${MY_PN}_${MY_PV}"
 
-inherit autotools flag-o-matic toolchain-funcs udev
+inherit autotools toolchain-funcs udev
 
 DESCRIPTION="REINER SCT cyberJack USB chipcard reader user space driver"
 HOMEPAGE="https://www.reiner-sct.de/"
