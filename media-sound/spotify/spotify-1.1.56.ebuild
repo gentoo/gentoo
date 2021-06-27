@@ -34,6 +34,7 @@ RDEPEND="
 	systray? ( gnome-extra/gnome-integration-spotify )
 	x11-libs/gtk+:2
 	app-accessibility/at-spi2-atk
+	x11-libs/libxkbcommon
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-libs/libSM
