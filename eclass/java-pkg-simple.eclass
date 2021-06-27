@@ -361,9 +361,14 @@ java-pkg-simple_src_compile() {
 	java-pkg-simple_getclasspath
 	java-pkg-simple_prepend_resources ${classes} "${JAVA_RESOURCE_DIRS[@]}"
 
-	ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
-		${classpath:+-classpath ${classpath}} ${JAVAC_ARGS}\
-		@${sources}
+	if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${sources}
+	else
+		ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+			${classpath:+--module-path ${classpath}} --module-version ${PV}\
+			${JAVAC_ARGS} @${sources}
+	fi
 
 	# handle module-info.java separately as it needs at least JDK 9
 	if [[ -n ${moduleinfo} ]]; then
@@ -372,7 +377,9 @@ java-pkg-simple_src_compile() {
 
 			JAVA_PKG_WANT_SOURCE="9"
 			JAVA_PKG_WANT_TARGET="9"
-			ejavac -d ${classes} -encoding ${JAVA_ENCODING} ${JAVAC_ARGS} "${moduleinfo}"
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} "${moduleinfo}"
 
 			JAVA_PKG_WANT_SOURCE=${tmp_source}
 			JAVA_PKG_WANT_TARGET=${tmp_target}
@@ -479,9 +486,16 @@ java-pkg-simple_src_test() {
 
 
 	# compile
-	[[ -s ${test_sources} ]] && ejavac -d ${classes} ${JAVAC_ARGS} \
-		-encoding ${JAVA_ENCODING} ${classpath:+-classpath ${classpath}} \
-		@${test_sources}
+	if [[ -s ${test_sources} ]]; then
+		if [[ -n ${moduleinfo} ]] || [[ java-pkg_get-target -lt 9 ]]; then
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+-classpath ${classpath}} ${JAVAC_ARGS} @${test_sources}
+		else
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} @${test_sources}
+		fi
+	fi
 
 	# handle module-info.java separately as it needs at least JDK 9
 	if [[ -n ${moduleinfo} ]]; then
@@ -490,7 +504,9 @@ java-pkg-simple_src_test() {
 
 			JAVA_PKG_WANT_SOURCE="9"
 			JAVA_PKG_WANT_TARGET="9"
-			ejavac -d ${classes} -encoding ${JAVA_ENCODING} ${JAVAC_ARGS} "${moduleinfo}"
+			ejavac -d ${classes} -encoding ${JAVA_ENCODING}\
+				${classpath:+--module-path ${classpath}} --module-version ${PV}\
+				${JAVAC_ARGS} "${moduleinfo}"
 
 			JAVA_PKG_WANT_SOURCE=${tmp_source}
 			JAVA_PKG_WANT_TARGET=${tmp_target}
