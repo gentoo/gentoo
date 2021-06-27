@@ -17,6 +17,8 @@
 		<remote-id type="github">qutebrowser/qutebrowser</remote-id>
 	</upstream>
 	<use>
+		<flag name="adblock">Enable Brave's ABP-style adblocker library
+			for improved adblocking</flag>
 		<flag name="scripts">Installs userscripts from the misc/userscripts
 			directory to /usr/share/qutebrowser/userscripts.</flag>
 	</use>
