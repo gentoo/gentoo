@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x64-macos"
 IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -96,6 +96,14 @@ lua_src_install() {
 	emake "${myemakeargs[@]}" install
 
 	popd
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		local luav=$(lua_get_version)
+		# we only want the major version (e.g. 5.1)
+		local luamv=${luav:0:3}
+		local file="lua/${luamv}/mpack.so"
+		install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/${file}" "${ED}/usr/$(get_libdir)/${file}" || die "Failed to adjust install_name"
+	fi
 }
 
 src_install() {
