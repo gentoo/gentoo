@@ -36,7 +36,7 @@ ruby_add_rdepend "
 	~dev-ruby/activerecord-${PV}:*
 	~dev-ruby/activesupport-${PV}:*
 	dev-ruby/marcel:1.0
-	>=dev-ruby/mini_mime-1.1.0 =dev-ruby/mini_mime-1.0*
+	>=dev-ruby/mini_mime-1.1.0
 "
 
 ruby_add_bdepend "
