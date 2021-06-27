@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.infradead.org/pub/ocserv/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc64 x86"
 IUSE="geoip kerberos +lz4 otp pam radius +seccomp systemd tcpd test"
 RESTRICT="!test? ( test )"
 
@@ -35,6 +35,7 @@ DEPEND="
 	net-libs/http-parser:0=
 	sys-libs/readline:0=
 	sys-libs/talloc:0=
+	virtual/libcrypt:=
 	geoip? ( dev-libs/geoip:0= )
 	kerberos? ( virtual/krb5 )
 	lz4? ( app-arch/lz4:0= )
@@ -50,6 +51,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	local myconf=(
 		--without-root-tests
+		--without-docker-tests
 		--without-nuttcp-tests
 
 		$(use_enable seccomp)
