@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>dotnet@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<changelog>https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.1.md</changelog>
+		<doc>https://powershell.org/free-resources/</doc>
+		<bugs-to>https://github.com/PowerShell/PowerShell/issues</bugs-to>
+		<remote-id type="github">PowerShell/PowerShell</remote-id>
+	</upstream>
+	<use>
+		<flag name="pwsh-symlink">
+			Install a pwsh symlink that points to pwsh-bin.
+		</flag>
+	</use>
+</pkgmetadata>
