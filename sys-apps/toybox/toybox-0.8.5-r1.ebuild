@@ -19,6 +19,9 @@ HOMEPAGE="https://landley.net/code/toybox/"
 LICENSE="0BSD"
 SLOT="0"
 
+DEPEND="virtual/libcrypt:="
+RDEPEND="${DEPEND}"
+
 src_prepare() {
 	default
 	restore_config .config
