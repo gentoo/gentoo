@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="scripts test"
+IUSE="+adblock test"
 
 BDEPEND="app-text/asciidoc"
 RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
@@ -26,7 +26,8 @@ RDEPEND="dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.4.1[${PYTHON_USEDEP},libyaml]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
-	dev-python/zipp[${PYTHON_USEDEP}]"
+	dev-python/zipp[${PYTHON_USEDEP}]
+	adblock? ( dev-python/adblock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
 
@@ -39,39 +40,38 @@ python_compile_all() {
 }
 
 python_install_all() {
+	insinto /usr/share/metainfo
+	doins misc/org.qutebrowser.qutebrowser.appdata.xml
 	doman doc/${PN}.1
 	domenu misc/org.${PN}.${PN}.desktop
+	for s in 16 24 32 48 64 128 256 512; do
+		doicon -s ${s} icons/qutebrowser-${s}x${s}.png
+	done
 	doicon -s scalable icons/${PN}.svg
 
-	if use scripts; then
-		insinto /usr/share/qutebrowser/userscripts/
-		doins misc/userscripts/README.md
-		exeinto /usr/share/qutebrowser/userscripts/
-		doexe misc/userscripts/add-nextcloud-bookmarks \
-		      misc/userscripts/add-nextcloud-cookbook \
-		      misc/userscripts/cast \
-		      misc/userscripts/dmenu_qutebrowser \
-		      misc/userscripts/format_json \
-		      misc/userscripts/getbib \
-		      misc/userscripts/kodi \
-		      misc/userscripts/open_download \
-		      misc/userscripts/openfeeds \
-		      misc/userscripts/password_fill \
-		      misc/userscripts/qr \
-		      misc/userscripts/qute-bitwarden \
-		      misc/userscripts/qutedmenu \
-		      misc/userscripts/qute-keepass \
-		      misc/userscripts/qute-keepassxc \
-		      misc/userscripts/qute-lastpass \
-		      misc/userscripts/qute-pass \
-		      misc/userscripts/readability \
-		      misc/userscripts/readability-js \
-		      misc/userscripts/ripbang \
-		      misc/userscripts/rss \
-		      misc/userscripts/taskadd \
-		      misc/userscripts/tor_identity \
-		      misc/userscripts/view_in_mpv
-	fi
+	insinto /usr/share/qutebrowser/userscripts
+	doins misc/userscripts/README.md
+	exeinto /usr/share/qutebrowser/userscripts
+	for f in misc/userscripts/*; do
+		if [[ "${f}" == "__pycache__" ]]; then
+			continue
+		fi
+		doexe "${f}"
+	done
+
+	exeinto /usr/share/qutebrowser/scripts
+	for f in scripts/*; do
+		if [[ "${f}" == "scripts/__init__.py" || \
+		      "${f}" == "scripts/__pycache__" || \
+		      "${f}" == "scripts/dev" || \
+		      "${f}" == "scripts/testbrowser" || \
+		      "${f}" == "scripts/asciidoc2html.py" || \
+		      "${f}" == "scripts/setupcommon.py" || \
+		      "${f}" == "scripts/link_pyqt.py" ]]; then
+			continue
+		fi
+		doexe "${f}"
+	done
 
 	distutils-r1_python_install_all
 }

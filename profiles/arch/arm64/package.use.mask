@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Stefan Strogin <steils@gentoo.org> (2021-06-27)
+# Requires dev-python/adblock which is not keyworded on arm64 yet
+www-client/qutebrowser adblock
+
 # Sam James <sam@gentoo.org> (2021-04-14)
 # Supports 64-bit NEON
 # Note: libpng-compat 1.5.30 does NOT seem to.
