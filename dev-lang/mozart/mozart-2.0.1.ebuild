@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake java-pkg-2 java-ant-2
+inherit cmake elisp-common java-pkg-2 java-ant-2
 
 PATCHSET_VER="1"
 
@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	>=virtual/jdk-1.8:=
 	dev-lang/scala:2.12
 	test? ( dev-cpp/gtest:= )"
+
+SITEFILE="50${PN}-gentoo.el"
 
 S="${WORKDIR}/${PN}2-${PV}"
 
@@ -71,12 +73,19 @@ src_install() {
 
 	dolib.so "${BUILD_DIR}"/vm/vm/main/libmozartvm.so
 	dolib.so "${BUILD_DIR}"/vm/boostenv/main/libmozartvmboost.so
+
+	if use emacs; then
+		elisp-install ${PN} "${S}"/opi/emacs/*.el
+		elisp-site-file-install "${FILESDIR}"/"${SITEFILE}" \
+			|| die "elsip-site-file-install failed"
+	fi
 }
 
 pkg_postinst() {
 	if use emacs; then
 		xdg_icon_cache_update
 		xdg_desktop_database_update
+		elisp-site-regen
 	fi
 }
 
@@ -84,5 +93,6 @@ pkg_postrm() {
 	if use emacs; then
 		xdg_icon_cache_update
 		xdg_desktop_database_update
+		elisp-site-regen
 	fi
 }
