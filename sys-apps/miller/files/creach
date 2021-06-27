@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# ================================================================
+# This is a shell script replacement of John Kerl's perl script:
+# https://github.com/johnkerl/scripts/blob/master/fundam/creach
+#
+# Prints a newline after each nth line.  E.g.
+#
+# $ seq 1 10 | creach 2
+# 1
+# 2
+# 
+# 3
+# 4
+# 
+# 5
+# 6
+# 
+# 7
+# 8
+# 
+# 9
+# 10
+#
+# E.g. if you have one file per month and you're doing ls -l,
+# you can pipe that to creach 12 to group them by years.
+# ================================================================
+
+i=0
+n=${1}
+
+this=$(basename "${0}")
+
+if ! [[ "${n}" =~ ^(0|[1-9][0-9]*)$ ]]; then
+    >&2 echo "Usage: ${this} <number> [input]"
+    >&2 echo "  E.g. ${this} 2 'a' 'b' 'c'"
+    >&2 echo "  E.g. seq 1 10 | ${this} 2"
+    exit 1
+fi
+
+case $# in
+    1) while read -r line; do
+	   (( i++ )); echo "${line}"
+	   (( i == n )) && { i=0; echo; }
+       done
+       ;;
+    *) shift
+       for line in "$@"; do
+	   (( i++ )); echo "${line}"
+	   (( i == n )) && { i=0; echo; }
+       done
+       ;;
+esac
