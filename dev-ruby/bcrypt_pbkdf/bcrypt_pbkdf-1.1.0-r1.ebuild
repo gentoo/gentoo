@@ -29,6 +29,8 @@ all_ruby_prepare() {
 	sed -e '/extensiontask/ s:^:#:' -e '/ExtensionTask/,/^end/ s:^:#:' \
 		-e '/bundler/ s:^:#:' \
 		-i Rakefile || die
+
+	sed -i -e 's/git ls-files/find * -print/' bcrypt_pbkdf.gemspec || die
 }
 
 each_ruby_configure() {
