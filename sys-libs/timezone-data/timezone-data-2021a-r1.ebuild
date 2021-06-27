@@ -21,7 +21,10 @@ DEPEND="nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
 	!sys-libs/glibc[vanilla(+)]"
 
-S=${WORKDIR}
+src_unpack() {
+	mkdir -p "${S}" && cd "${S}" || die
+	default
+}
 
 src_prepare() {
 	default
