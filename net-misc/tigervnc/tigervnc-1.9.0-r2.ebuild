@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_IN_SOURCE_BUILD=1
 
-inherit autotools cmake-utils eutils flag-o-matic java-pkg-opt-2 systemd xdg-utils gnome2-utils
+inherit autotools cmake flag-o-matic java-pkg-opt-2 systemd xdg-utils gnome2-utils
 
 XSERVER_VERSION="1.20.0"
 
@@ -88,7 +88,7 @@ src_prepare() {
 	sed -i 's:^\(install(.* DESTINATION ${DOC_DIR})\):#\1:' \
 		cmake/BuildPackages.cmake || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use server ; then
 		cd unix/xserver || die
@@ -111,7 +111,7 @@ src_configure() {
 		-DBUILD_JAVA=$(usex java)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	if use server ; then
 		cd unix/xserver || die
@@ -148,7 +148,7 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use server ; then
 		# deps of the vnc module and the module itself
@@ -163,7 +163,7 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use server ; then
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
