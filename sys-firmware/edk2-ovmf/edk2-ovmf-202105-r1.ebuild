@@ -25,7 +25,7 @@ SRC_URI="
 		https://github.com/openssl/openssl/archive/${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz -> openssl-${BUNDLED_OPENSSL_SUBMODULE_SHA}.tar.gz
 		https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
 	)
-	binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-bin.tar.xz )
+	binary? ( https://dev.gentoo.org/~tamiko/distfiles/${PF}-bin.tar.xz )
 	https://dev.gentoo.org/~tamiko/distfiles/${P}-qemu-firmware.tar.xz
 "
 
@@ -116,6 +116,8 @@ src_compile() {
 	BUILD_FLAGS="-D TLS_ENABLE \
 		-D HTTP_BOOT_ENABLE \
 		-D NETWORK_IP6_ENABLE \
+		-D TPM_ENABLE \
+		-D TPM2_ENABLE -D TPM2_CONFIG_ENABLE \
 		-D FD_SIZE_2MB"
 
 	SECUREBOOT_BUILD_FLAGS="${BUILD_FLAGS} \
