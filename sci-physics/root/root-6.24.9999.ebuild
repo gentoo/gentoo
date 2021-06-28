@@ -16,7 +16,7 @@ HOMEPAGE="https://root.cern"
 IUSE="+X aqua +asimage c++11 c++14 +c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
 	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
-	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran uring
+	qt5 R +roofit +root7 shadow sqlite +ssl +tbb test +tmva +unuran uring
 	vc vmc +xml xrootd"
 RESTRICT="!test? ( test )"
 
