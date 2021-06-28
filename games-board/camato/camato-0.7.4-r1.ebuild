@@ -1,31 +1,36 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit versionator
+EAPI=7
 
-MY_PV=$(replace_all_version_separators _)
-DESCRIPTION="A map editor for the game gnocatan"
-HOMEPAGE="http://yusei.ragondux.com/loisirs_jdp_catane_camato-en.html"
-SRC_URI="http://yusei.ragondux.com/files/gnocatan/${PN}-${MY_PV}.tar.gz"
+USE_RUBY="ruby25 ruby26 ruby27"
+inherit desktop ruby-ng
 
-LICENSE="GPL-2"
+DESCRIPTION="Map editor for the game gnocatan"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${PN}-$(ver_rs 1- _).tar.gz"
+
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="dev-ruby/ruby-gtk2"
-RDEPEND=${DEPEND}
+ruby_add_rdepend dev-ruby/ruby-gtk2
 
-src_prepare() {
-	default
+all_ruby_prepare() {
+	# this is really single target, but ruby-single is too limited
+	local ruby=$(ruby_get_use_implementations)
+	sed -i "1c\\#!$(ruby_implementation_command ${ruby##* })" ${PN} || die
 
-	rm -f Makefile || die
+	rm Makefile || die
 }
 
-src_install() {
+all_ruby_install() {
 	dobin ${PN}
+
 	insinto /usr/share/${PN}
 	doins -r *.rb img
-	dodoc ChangeLog README
+
+	einstalldocs
+
+	make_desktop_entry ${PN} Camato applications-games
 }
