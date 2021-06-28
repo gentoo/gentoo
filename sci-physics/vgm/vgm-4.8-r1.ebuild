@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
-HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html"
+HOMEPAGE="https://github.com/vmc-project/vgm/"
 
 LICENSE="GPL-2"
 SLOT="0"
