@@ -96,7 +96,12 @@ CDEPEND="
 	minuit? ( !sci-libs/minuit )
 	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c )
-	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
+	odbc? (
+		|| (
+			dev-db/libiodbc
+			dev-db/unixODBC
+		)
+	)
 	oracle? ( dev-db/oracle-instantclient-basic )
 	postgres? ( dev-db/postgresql:= )
 	pythia6? ( sci-physics/pythia:6 )
