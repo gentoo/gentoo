@@ -5,47 +5,46 @@ EAPI=7
 
 inherit flag-o-matic autotools
 
-LIBTGVOIP_COMMIT="0c0a6e476df58ee441490da72ca7a32f83e68dbd"
-
 DESCRIPTION="VoIP library for Telegram clients"
 HOMEPAGE="https://github.com/telegramdesktop/libtgvoip"
+
+LIBTGVOIP_COMMIT="0c0a6e476df58ee441490da72ca7a32f83e68dbd"
 SRC_URI="https://github.com/telegramdesktop/libtgvoip/archive/${LIBTGVOIP_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${LIBTGVOIP_COMMIT}"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
-IUSE="+dsp pulseaudio"
+KEYWORDS="~amd64 ~ppc64"
+IUSE="+dsp +alsa pulseaudio"
 
 DEPEND="
-	dev-libs/openssl:0=
 	media-libs/opus:=
-	media-libs/alsa-lib
-	!pulseaudio? ( media-sound/apulse[sdk] )
+	alsa? ( media-libs/alsa-lib )
+	dsp? ( media-libs/tg_owt:= )
 	pulseaudio? ( media-sound/pulseaudio )
-	dsp? ( media-libs/tg_owt )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}-${LIBTGVOIP_COMMIT}"
+REQUIRED_USE="
+	|| ( alsa pulseaudio )
+"
 
 src_prepare() {
 	# Will be controlled by us
 	sed -i -e '/^CFLAGS += -DTGVOIP_NO_DSP/d' Makefile.am || die
-	default
 	# https://bugs.gentoo.org/717210
 	echo 'libtgvoip_la_LIBTOOLFLAGS = --tag=CXX' >> Makefile.am || die
+	default
 	eautoreconf
 }
 
 src_configure() {
 	local myconf=(
 		--disable-static
-		--with-alsa
-		--with-pulse
 		--disable-dsp  # WebRTC is linked from tg_owt
+		$(use_with alsa)
+		$(use_with pulseaudio pulse)
 	)
-	append-cppflags '-DNDEBUG'
 	if use dsp; then
 		append-cppflags '-I/usr/include/tg_owt'
 		append-cppflags '-I/usr/include/tg_owt/third_party/abseil-cpp'

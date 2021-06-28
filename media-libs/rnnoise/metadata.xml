@@ -9,7 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
-	</use>
 </pkgmetadata>

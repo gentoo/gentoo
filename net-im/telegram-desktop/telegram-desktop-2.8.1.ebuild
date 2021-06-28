@@ -7,44 +7,53 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit xdg cmake python-any-r1 flag-o-matic
 
-MY_P="tdesktop-${PV}-full"
-
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
+
+MY_P="tdesktop-${PV}-full"
 SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
-IUSE="+dbus enchant +gtk +hunspell pulseaudio +spell wayland +X"
+KEYWORDS="~amd64"
+IUSE="+dbus enchant +gtk +hunspell +spell wayland webkit +X"
+REQUIRED_USE="
+	spell? (
+		^^ ( enchant hunspell )
+	)
+	webkit? ( gtk )
+"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
 	dev-cpp/glibmm:2
 	dev-libs/xxhash
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5[dbus?,jpeg,png,wayland?,X(-)?]
-	dev-qt/qtimageformats:5
-	dev-qt/qtnetwork:5[ssl]
-	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5[png,X(-)?]
+	>=dev-qt/qtcore-5.15:5
+	>=dev-qt/qtgui-5.15:5[dbus?,jpeg,png,wayland?,X(-)?]
+	>=dev-qt/qtimageformats-5.15:5
+	>=dev-qt/qtnetwork-5.15:5[ssl]
+	>=dev-qt/qtsvg-5.15:5
+	>=dev-qt/qtwidgets-5.15:5[png,X(-)?]
 	media-fonts/open-sans
 	media-libs/fontconfig:=
+	~media-libs/libtgvoip-2.4.4_p20210302
+	>=media-libs/libtgvoip-2.4.4_p20210302-r2
+	media-libs/openal
 	media-libs/opus:=
-	~media-libs/libtgvoip-2.4.4_p20210302[pulseaudio=]
-	media-libs/openal[alsa]
-	~media-libs/tg_owt-0_pre20210309[pulseaudio=]
-	media-video/ffmpeg:=[alsa,opus]
+	media-libs/rnnoise
+	~media-libs/tg_owt-0_pre20210626
+	media-video/ffmpeg:=[opus]
 	sys-libs/zlib:=[minizip]
 	dbus? (
 		dev-qt/qtdbus:5
 		dev-libs/libdbusmenu-qt[qt5(+)]
 	)
 	enchant? ( app-text/enchant:= )
-	gtk? ( x11-libs/gtk+:3[X?] )
+	gtk? ( x11-libs/gtk+:3[X?,wayland?] )
 	hunspell? ( >=app-text/hunspell-1.7:= )
 	wayland? ( kde-frameworks/kwayland:= )
+	webkit? ( net-libs/webkit-gtk:= )
 	X? ( x11-libs/libxcb:= )
 "
 DEPEND="${RDEPEND}
@@ -57,16 +66,15 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="
-	spell? (
-		^^ ( enchant hunspell )
-	)
-"
-
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/tdesktop-2.7.1-fix-disable-dbus-integration.patch"
+	# https://github.com/desktop-app/cmake_helpers/pull/91
+	# https://github.com/desktop-app/lib_webview/pull/2
+	"${FILESDIR}/tdesktop-2.7.4-disable-webkit-separately.patch"
+	# https://github.com/desktop-app/lib_webview/pull/3
+	# https://github.com/desktop-app/lib_base/commit/01d152af4c6282756585f1405c4bcbb75960a509 (landed in 2.8.0, patch is harmless)
+	"${FILESDIR}/tdesktop-2.7.4-webview-fix-gcc11.patch"
 )
 
 pkg_pretend() {
@@ -80,10 +88,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cd "${S}/Telegram/ThirdParty/tgcalls" || die
-	eapply "${FILESDIR}/fix-tgcalls-gcc10.patch"
-
-	cd "${S}" || die
 	# no explicit toggle, doesn't build with the system one #752417
 	sed -i 's/DESKTOP_APP_USE_PACKAGED/NO_ONE_WILL_EVER_SET_THIS/' \
 		cmake/external/rlottie/CMakeLists.txt || die
@@ -99,8 +103,9 @@ src_configure() {
 
 		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex X OFF ON)
 		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland OFF ON)
-		-DDESKTOP_APP_DISABLE_GTK_INTEGRATION=$(usex gtk OFF ON)
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus OFF ON)
+		-DDESKTOP_APP_DISABLE_GTK_INTEGRATION=$(usex gtk OFF ON)
+		-DDESKTOP_APP_DISABLE_WEBKIT=$(usex webkit OFF ON)
 		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell OFF ON)  # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant ON OFF)  # enables enchant and disables hunspell
 	)
@@ -133,5 +138,5 @@ src_configure() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	use gtk || einfo "enable 'gtk' useflag if you have image copy-paste problems"
+	use gtk || elog "enable 'gtk' useflag if you have image copy-paste problems"
 }
