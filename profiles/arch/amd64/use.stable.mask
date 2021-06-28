@@ -10,10 +10,6 @@
 python_single_target_python3_10
 python_targets_python3_10
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-07)
-# Prebuilt kernel rebuilds are supported on stable yet.
-dist-kernel
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
 mkl
