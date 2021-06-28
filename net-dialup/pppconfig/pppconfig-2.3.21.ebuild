@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit l10n
+inherit strip-linguas
 
 DESCRIPTION="A text menu based utility for configuring ppp"
 HOMEPAGE="https://packages.qa.debian.org/p/pppconfig.html"
