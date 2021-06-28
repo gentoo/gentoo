@@ -20,6 +20,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.20:3[introspection]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/pango-1.36[introspection]
+	gnome-base/gnome-desktop:3[introspection]
 	>=gui-libs/libhandy-1.1:1=
 "
 DEPEND="${RDEPEND}"
