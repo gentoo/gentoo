@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit flag-o-matic l10n
+inherit flag-o-matic strip-linguas
 
 MY_P="${P/_/-}"
 DESCRIPTION="Tools to deal with shar archives"
