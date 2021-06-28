@@ -616,6 +616,20 @@ _distutils-r1_handle_pyproject_toml() {
 	fi
 }
 
+# @FUNCTION: _distutils-r1_check_all_phase_mismatch
+# @DESCRIPTION:
+# Verify whether *_all phase impls is not called from from non-*_all
+# subphase.
+_distutils-r1_check_all_phase_mismatch() {
+	if has "python_${EBUILD_PHASE}" "${FUNCNAME[@]}"; then
+		eqawarn "QA Notice: distutils-r1_python_${EBUILD_PHASE}_all called"
+		eqawarn "from python_${EBUILD_PHASE}.  Did you mean to use"
+		eqawarn "python_${EBUILD_PHASE}_all()?"
+		[[ ${EAPI} != [67] ]] &&
+			die "distutils-r1_python_${EBUILD_PHASE}_all called from python_${EBUILD_PHASE}."
+	fi
+}
+
 # @FUNCTION: distutils-r1_python_prepare_all
 # @DESCRIPTION:
 # The default python_prepare_all(). It applies the patches from PATCHES
@@ -626,6 +640,7 @@ _distutils-r1_handle_pyproject_toml() {
 # distutils patches and/or quirks.
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_distutils-r1_check_all_phase_mismatch
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 		default
@@ -932,6 +947,7 @@ distutils-r1_python_install() {
 # The default python_install_all(). It installs the documentation.
 distutils-r1_python_install_all() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_distutils-r1_check_all_phase_mismatch
 
 	einstalldocs
 }
