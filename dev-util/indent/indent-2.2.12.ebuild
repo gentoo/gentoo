@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit l10n
+inherit strip-linguas
 
 DESCRIPTION="Indent program source files"
 HOMEPAGE="https://www.gnu.org/software/indent/"
