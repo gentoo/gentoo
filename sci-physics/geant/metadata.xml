@@ -18,6 +18,7 @@
     <flag name="c++11">Build using the C++11 standard</flag>
     <flag name="c++14">Build using the C++14 standard</flag>
     <flag name="c++17">Build using the C++17 standard</flag>
+    <flag name="c++20">Build using the C++20 standard</flag>
     <flag name="data">Add a lot of standard physics data files for geant4</flag>
     <flag name="dawn">Add support for <pkg>media-gfx/dawn</pkg> (3D postscript rendering)</flag>
     <flag name="freetype">Add support for <pkg>media-libs/freetype</pkg></flag>
