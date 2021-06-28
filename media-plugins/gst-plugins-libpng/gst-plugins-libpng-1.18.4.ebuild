@@ -12,3 +12,5 @@ IUSE=""
 
 RDEPEND=">=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+GST_PLUGINS_ENABLED="png"
