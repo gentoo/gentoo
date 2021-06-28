@@ -28,11 +28,11 @@ SRC_URI="https://geant4-data.web.cern.ch/geant4-data/releases/${MY_P}.tar.gz"
 LICENSE="geant4"
 SLOT="4"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+c++11 c++14 c++17 +data dawn doc examples freetype gdml geant3 hdf5
-	inventor motif opengl qt5 raytracerx static-libs threads vrml"
+IUSE="+c++17 c++20 +data dawn doc examples freetype gdml geant3 hdf5 inventor motif opengl
+	qt5 raytracerx static-libs threads vrml"
 
 REQUIRED_USE="
-	^^ ( c++11 c++14 c++17 )
+	^^ ( c++17 c++20 )
 	inventor? ( opengl )
 	motif? ( opengl )
 	qt5? ( opengl )
@@ -66,7 +66,7 @@ S="${WORKDIR}/${MY_P}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DATADIR="${EPREFIX}/usr/share/geant4"
-		-DGEANT4_BUILD_CXXSTD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
+		-DCMAKE_CXX_STANDARD=$((usev c++17 || usev c++20) | cut -c4-)
 		-DGEANT4_BUILD_MULTITHREADED=$(usex threads)
 		-DGEANT4_BUILD_STORE_TRAJECTORY=OFF
 		-DGEANT4_BUILD_TLS_MODEL=$(usex threads global-dynamic initial-exec)
