@@ -834,7 +834,7 @@ EGO_SUM=(
 	"sourcegraph.com/sourcegraph/appdash v0.0.0-20190731080439-ebfcffb1b5c0/go.mod"
 )
 
-inherit fcaps go-module systemd
+inherit fcaps go-module systemd tmpfiles
 go-module_set_globals
 
 ARCHIVE_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -874,7 +874,7 @@ src_install() {
 	newins "${FILESDIR}"/coredns.logrotated coredns
 
 	systemd_dounit "${FILESDIR}"/coredns.service
-	systemd_newtmpfilesd "${FILESDIR}"/coredns.tmpfiles "${PN}.conf"
+	newtmpfiles "${FILESDIR}"/coredns.tmpfiles "${PN}.conf"
 }
 
 src_test() {
