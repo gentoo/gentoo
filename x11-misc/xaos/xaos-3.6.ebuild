@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop l10n
+inherit autotools desktop strip-linguas
 
 DESCRIPTION="Very fast real-time fractal zoomer"
 HOMEPAGE="http://matek.hu/xaos/doku.php"
