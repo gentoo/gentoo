@@ -21,7 +21,12 @@ IUSE="+dotnet-symlink"
 REQUIRED_USE="elibc_glibc"
 QA_PREBUILT="*"
 RESTRICT+=" splitdebug"
-RDEPEND="dotnet-symlink? ( !dev-dotnet/dotnet-sdk[dotnet-symlink(+)] )"
+RDEPEND="
+	app-crypt/mit-krb5:0/0
+	dev-util/lttng-ust:0
+	sys-libs/zlib:0/1
+	dotnet-symlink? ( !dev-dotnet/dotnet-sdk[dotnet-symlink(+)] )
+"
 
 S=${WORKDIR}
 
