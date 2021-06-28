@@ -18,7 +18,9 @@ DEPEND=">=dev-libs/ucl-1.03
 	sys-libs/zlib"
 RDEPEND="${RDEPEND}
 	!app-arch/upx-bin"
-BDEPEND="dev-lang/perl"
+BDEPEND="
+	app-arch/xz-utils[extra-filters]
+	dev-lang/perl"
 
 S="${WORKDIR}/${P}-src"
 
