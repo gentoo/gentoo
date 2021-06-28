@@ -16,18 +16,16 @@ else
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
-HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html"
+HOMEPAGE="http://ivana.home.cern.ch/ivana/VGM.html https://github.com/vmc-project/vgm/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+c++11 c++14 c++17 doc examples +geant4 +root test"
-
-REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+IUSE="doc examples +geant4 +root test"
 
 RDEPEND="
 	sci-physics/clhep:=
-	geant4? ( >=sci-physics/geant-4.10.6[c++11?,c++14?,c++17?] )
-	root? ( >=sci-physics/root-6.14:=[c++11?,c++14?,c++17?] )"
+	geant4? ( sci-physics/geant[c++17] )
+	root? ( sci-physics/root:=[c++17] )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	test? (
@@ -37,7 +35,8 @@ DEPEND="${RDEPEND}
 RESTRICT="
 	!geant4? ( test )
 	!root? ( test )
-	!test? ( test )"
+	!test? ( test )
+	!examples? ( test )"
 
 DOCS=(
 	doc/README
@@ -45,6 +44,9 @@ DOCS=(
 	doc/VGMhistory.txt
 	doc/VGM.html
 	doc/VGMversions.html
+)
+PATCHES=(
+	"${FILESDIR}"/"${PN}-copy-test-seed.patch"
 )
 
 src_configure() {
@@ -74,7 +76,9 @@ src_compile() {
 
 src_test() {
 	cd "${BUILD_DIR}"/test || die
-	./test_suite.sh || die
+	# See upstream issue: https://github.com/vmc-project/vgm/issues/5
+	sed -i 's/ ScaledSolids / /' test3_suite.sh || die
+	PATH="${BUILD_DIR}"/test:${PATH} ./test_suite.sh || die
 }
 
 src_install() {
