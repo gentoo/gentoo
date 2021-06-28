@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools desktop epatch l10n toolchain-funcs
+inherit autotools desktop epatch strip-linguas toolchain-funcs
 
 DESCRIPTION="Graphical scanning frontend"
 HOMEPAGE="http://www.xsane.org/"
