@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 # Fetch libyuv archive from: https://chromium.googlesource.com/libyuv/libyuv/+archive/${LIBYUV_COMMIT}.tar.gz
 
 LICENSE="BSD"
-SLOT="0/20210626"
+SLOT="0/${PV##*pre}"
 KEYWORDS="~amd64 ~ppc64"
 IUSE="+alsa pulseaudio screencast +X"
 REQUIRED_USE="pulseaudio? ( alsa )"
