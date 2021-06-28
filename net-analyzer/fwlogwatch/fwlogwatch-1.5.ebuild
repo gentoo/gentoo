@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic l10n toolchain-funcs
+inherit flag-o-matic strip-linguas toolchain-funcs
 
 DESCRIPTION="A packet filter and firewall log analyzer"
 HOMEPAGE="http://fwlogwatch.inside-security.de/"
