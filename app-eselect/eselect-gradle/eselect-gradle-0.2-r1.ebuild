@@ -18,10 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	app-admin/eselect
-	>dev-java/gradle-bin-6.3
-"
+RDEPEND="app-admin/eselect"
 
 src_install() {
 	insinto /usr/share/eselect/modules
