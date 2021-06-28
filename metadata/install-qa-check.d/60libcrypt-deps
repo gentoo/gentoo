@@ -35,6 +35,7 @@ libcrypt_check() {
 		eqawarn
 		eqawarn "Please add virtual/libcrypt:= dependency"
 		eqawarn "Gentoo bug: https://bugs.gentoo.org/699422"
+		eqawarn "Tracker bug: https://bugs.gentoo.org/798963"
 		eqawarn "See: https://wiki.gentoo.org/wiki/Project:Toolchain/libcrypt_implementation"
 	fi
 	
