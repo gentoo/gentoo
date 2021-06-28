@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-1 lua5-2 )
 
 PLOCALES="be bg cs da de el en es eu fr hu ie it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake l10n lua-single xdg-utils toolchain-funcs
+inherit cmake l10n lua-single strip-linguas xdg-utils toolchain-funcs
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
