@@ -11,13 +11,7 @@ inherit autotools systemd
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
 
-UPSTREAM_VER=2
-
-[[ -n ${UPSTREAM_VER} ]] && \
-	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}-1.1-upstream-patches-${UPSTREAM_VER}.tar.xz"
-
-SRC_URI="http://www.tinc-vpn.org/packages/${MY_P}.tar.gz
-	${UPSTREAM_PATCHSET_URI}"
+SRC_URI="http://www.tinc-vpn.org/packages/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -36,11 +30,6 @@ DEPEND="
 RDEPEND="${DEPEND}
 	vde? ( net-misc/vde )"
 S="${WORKDIR}/${MY_P}"
-
-# Upstream's patchset
-if [[ -n ${UPSTREAM_VER} ]]; then
-	PATCHES=( "${WORKDIR}"/patches-upstream )
-fi
 
 PATCHES+=(
 	"${FILESDIR}"/tinc-1.1_pre16-r1-fix-paths.patch #560528
