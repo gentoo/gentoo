@@ -5,9 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="sqlite"
-QT_MIN_VER="5.9.4"
 
-if [[ ${PV} = *9999 ]]; then
+if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 	inherit git-r3
 else
@@ -26,12 +25,9 @@ IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar 
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
-BDEPEND="
-	${PYTHON_DEPS}
-	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
-	sys-devel/bison
-	sys-devel/flex
-"
+# Disabling test suite because upstream disallow running from install path
+RESTRICT="test"
+
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -40,18 +36,18 @@ COMMON_DEPEND="
 	dev-libs/libzip:=
 	dev-libs/protobuf:=
 	dev-libs/qtkeychain[qt5(+)]
-	>=dev-qt/designer-${QT_MIN_VER}:5
-	>=dev-qt/qtconcurrent-${QT_MIN_VER}:5
-	>=dev-qt/qtcore-${QT_MIN_VER}:5
-	>=dev-qt/qtgui-${QT_MIN_VER}:5
-	>=dev-qt/qtnetwork-${QT_MIN_VER}:5[ssl]
-	>=dev-qt/qtpositioning-${QT_MIN_VER}:5
-	>=dev-qt/qtprintsupport-${QT_MIN_VER}:5
-	>=dev-qt/qtserialport-${QT_MIN_VER}:5
-	>=dev-qt/qtsvg-${QT_MIN_VER}:5
-	>=dev-qt/qtsql-${QT_MIN_VER}:5
-	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
-	>=dev-qt/qtxml-${QT_MIN_VER}:5
+	dev-qt/designer:5
+	dev-qt/qtconcurrent:5
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtpositioning:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtserialport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtsql:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	media-gfx/exiv2:=
 	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
@@ -60,7 +56,7 @@ COMMON_DEPEND="
 	>=sci-libs/proj-4.9.3:=
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
-	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
+	3d? ( dev-qt/qt3d:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( =sci-geosciences/grass-7*:= )
 	hdf5? ( sci-libs/hdf5:= )
@@ -95,19 +91,22 @@ COMMON_DEPEND="
 			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
 		')
 	)
-	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
-	serial? ( >=dev-qt/qtserialport-${QT_MIN_VER}:5 )
+	qml? ( dev-qt/qtdeclarative:5 )
+	serial? ( dev-qt/qtserialport:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-qt/qttest-${QT_MIN_VER}:5
+	dev-qt/qttest:5
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
 	sci-geosciences/gpsbabel
 "
-
-# Disabling test suite because upstream disallow running from install path
-RESTRICT="test"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-qt/linguist-tools:5
+	sys-devel/bison
+	sys-devel/flex
+"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -134,7 +133,6 @@ src_configure() {
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GSL=$(usex georeferencer)
-		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
 		$(cmake_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
@@ -159,7 +157,8 @@ src_configure() {
 		mycmakeargs+=( -DGRASS_PREFIX7=${GRASSDIR} )
 	fi
 
-	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
+	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON ) ||
+		mycmakeargs+=( -DWITH_QGIS_PROCESS=OFF ) # FIXME upstream issue #39973
 
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
