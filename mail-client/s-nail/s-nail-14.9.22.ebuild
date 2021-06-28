@@ -27,7 +27,10 @@ RDEPEND="
 	!mail-client/nail
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/awk"
+BDEPEND="
+	app-arch/xz-utils[extra-filters(-)]
+	virtual/awk
+"
 
 src_configure() {
 	local confopts=(
