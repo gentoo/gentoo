@@ -28,7 +28,7 @@ libcrypt_check() {
 		-print0 | xargs -0 scanelf -qyRF '%F %n' | grep 'libcrypt\.so' 2>/dev/null )
 	
 	if [[ -n ${libcrypt_consumers[@]} ]]; then
-		eqawarn "Binary files linked to libcrypt.so found"
+		eqawarn "QA Notice: Binary files linked to libcrypt.so found"
 		eqawarn "But a dependency on virtual/libcrypt is not declared!"
 		eqawarn
 		eqatag -v virtual-libcrypt.missing "${libcrypt_consumers[@]%% *}"
