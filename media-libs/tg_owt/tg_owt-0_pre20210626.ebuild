@@ -58,10 +58,10 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/tg_owt-0_pre20210604-allow-disabling-pipewire.patch"
-	"${FILESDIR}/tg_owt-0_pre20210604-allow-disabling-X11.patch"
-	"${FILESDIR}/tg_owt-0_pre20210604-allow-disabling-pulseaudio.patch"
-	"${FILESDIR}/tg_owt-0_pre20210604-expose-set_allow_pipewire.patch"
+	"${FILESDIR}/tg_owt-0_pre20210626-allow-disabling-pipewire.patch"
+	"${FILESDIR}/tg_owt-0_pre20210626-allow-disabling-X11.patch"
+	"${FILESDIR}/tg_owt-0_pre20210626-allow-disabling-pulseaudio.patch"
+	"${FILESDIR}/tg_owt-0_pre20210626-expose-set_allow_pipewire.patch"
 )
 
 src_unpack() {
