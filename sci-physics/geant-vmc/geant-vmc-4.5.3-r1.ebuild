@@ -10,13 +10,13 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/vmc-project/geant4_vmc.git"
 else
 	MY_PV=$(ver_rs 1-2 - $(ver_cut 2-))
-	SRC_URI="https://github.com/vmc-project/geant4-vmc/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vmc-project/geant4_vmc/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/geant4_vmc-${MY_PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Virtual Monte Carlo Geant4 implementation"
-HOMEPAGE="https://github.com/vmc-project/vmc"
+HOMEPAGE="https://github.com/vmc-project/geant4_vmc"
 
 LICENSE="GPL-3"
 SLOT="4"
