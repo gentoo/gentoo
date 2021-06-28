@@ -329,19 +329,19 @@ src_install() {
 	cmake_src_install
 
 	if use man; then
-		#Slot the man page
+		# Slot the man page
 		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
 	fi
 
-	# fix doc installdir
-	docinto "html"
+	# Fix doc installdir
+	docinto html
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -r "${ED}"/usr/share/doc/blender || die
 
 	python_fix_shebang "${ED}/usr/bin/blender-${BV}-thumbnailer.py"
 	python_optimize "${ED}/usr/share/blender/${BV}/scripts"
 
-	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}"
+	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}" || die
 }
 
 pkg_postinst() {
@@ -383,7 +383,7 @@ pkg_postrm() {
 
 	ewarn ""
 	ewarn "You may want to remove the following directory."
-	ewarn "~/.config/${PN}/<blender version>/cache/"
+	ewarn "~/.config/${PN}/${SLOT}/cache/"
 	ewarn "It may contain extra render kernels not tracked by portage"
 	ewarn ""
 }
