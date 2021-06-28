@@ -21,6 +21,7 @@
 		<flag name="ctf">Build support for the 'Capture The Flag' addon</flag>
 		<flag name="rogue">Build support for the 'Ground Zero' Mission Pack</flag>
 		<flag name="softrender">Build software renderer</flag>
+		<flag name="vulkan">Build experimental Vulkan renderer</flag>
 		<flag name="xatrix">Build support for the 'The Reckoning' Mission Pack</flag>
 	</use>
 </pkgmetadata>
