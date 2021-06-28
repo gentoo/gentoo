@@ -20,22 +20,13 @@ HOMEPAGE="https://github.com/vmc-project/vmc"
 
 LICENSE="GPL-3"
 SLOT="4"
-IUSE="+c++11 c++14 c++17 doc examples geant3 +g4root +mtroot rootvmc vgm test"
-
-REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+IUSE="doc examples geant3 +g4root +mtroot vgm test"
 
 RDEPEND="
-	rootvmc? (
-		>=sci-physics/root-6.18:=[vmc]
-		!!sci-physics/vmc
-	)
-	!rootvmc? (
-		>=sci-physics/root-6.18:=[-vmc]
-		sci-physics/vmc:=[c++11?,c++14?,c++17?]
-	)
-	>=sci-physics/geant-4.10.6[c++11?,c++14?,c++17?,opengl,geant3?]
-	>=sci-physics/root-6.18:=[c++11?,c++14?,c++17?]
-	vgm? ( >=sci-physics/vgm-4.8:=[c++11?,c++14?,c++17?] )"
+	sci-physics/geant[c++17,opengl,geant3?]
+	sci-physics/root:=[c++17,-vmc]
+	sci-physics/vmc:=[c++17]
+	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 RESTRICT="
