@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit l10n autotools systemd
+inherit autotools strip-linguas systemd
 
 DESCRIPTION="LXDE Display Manager"
 HOMEPAGE="https://wiki.lxde.org/en/LXDM"
