@@ -11,6 +11,7 @@
 		<flag name="oauth">Enable internal OAuth2 authentication support for Google and Outlook.com.
 			If gnome-online-accounts is enabled and used, this is not necessary,
 			but both can be supported at the same time with different setup at runtime</flag>
+		<flag name="phonenumber">Enable phone supports</flag>
 		<flag name="weather">Enable optional weather calendar support</flag>
 	</use>
 </pkgmetadata>
