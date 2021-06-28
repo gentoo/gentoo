@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit l10n xdg
+inherit strip-linguas xdg
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko ku lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
