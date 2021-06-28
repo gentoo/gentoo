@@ -5,7 +5,7 @@ EAPI=7
 
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit webapp java-pkg-opt-2 systemd toolchain-funcs go-module user-info
+inherit webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
 EGO_SUM=(
 	"github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU="
 	"github.com/cockroachdb/apd v1.1.0 h1:3LFP3629v+1aKXU5Q37mxmRxX/pIu1nijXydLShEq5I="
@@ -419,7 +419,7 @@ src_install() {
 		doins -r "${S}"/database/
 
 		systemd_dounit "${FILESDIR}"/zabbix-server.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-server.tmpfiles zabbix-server.conf
+		newtmpfiles "${FILESDIR}"/zabbix-server.tmpfiles zabbix-server.conf
 	fi
 
 	if use proxy; then
@@ -436,7 +436,7 @@ src_install() {
 		doins -r "${S}"/database/
 
 		systemd_dounit "${FILESDIR}"/zabbix-proxy.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-proxy.tmpfiles zabbix-proxy.conf
+		newtmpfiles "${FILESDIR}"/zabbix-proxy.tmpfiles zabbix-proxy.conf
 	fi
 
 	if use agent; then
@@ -453,7 +453,7 @@ src_install() {
 			src/zabbix_get/zabbix_get
 
 		systemd_dounit "${FILESDIR}"/zabbix-agentd.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-agentd.tmpfiles zabbix-agentd.conf
+		newtmpfiles "${FILESDIR}"/zabbix-agentd.tmpfiles zabbix-agentd.conf
 	fi
 
 	if use agent2; then
@@ -467,7 +467,7 @@ src_install() {
 		dosbin src/go/bin/zabbix_agent2
 
 		systemd_dounit "${FILESDIR}"/zabbix-agent2.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-agent2.tmpfiles zabbix-agent2.conf
+		newtmpfiles "${FILESDIR}"/zabbix-agent2.tmpfiles zabbix-agent2.conf
 	fi
 
 	fowners root:zabbix /etc/zabbix
