@@ -15,7 +15,8 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
-	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.93.0-tests.tar.bz2 )"
+	TEST_TARBALL_VERSION=2.93.0
+	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
 	KEYWORDS="~amd64"
 fi
 
@@ -160,7 +161,7 @@ src_unpack() {
 
 	if use test; then
 		mkdir -p lib || die
-		mv "${WORKDIR}"/blender*tests/tests lib || die
+		mv "${WORKDIR}"/blender-${TEST_TARBALL_VERSION}-tests/tests lib || die
 	fi
 }
 
@@ -329,12 +330,12 @@ src_install() {
 	cmake_src_install
 
 	if use man; then
-		#Slot the man page
+		# Slot the man page
 		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
 	fi
 
-	# fix doc installdir
-	docinto "html"
+	# Fix doc installdir
+	docinto html
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -r "${ED}"/usr/share/doc/blender || die
 

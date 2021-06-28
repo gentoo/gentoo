@@ -329,12 +329,12 @@ src_install() {
 	cmake_src_install
 
 	if use man; then
-		#Slot the man page
+		# Slot the man page
 		mv "${ED}/usr/share/man/man1/blender.1" "${ED}/usr/share/man/man1/blender-${BV}.1" || die
 	fi
 
-	# fix doc installdir
-	docinto "html"
+	# Fix doc installdir
+	docinto html
 	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -r "${ED}"/usr/share/doc/blender || die
 
