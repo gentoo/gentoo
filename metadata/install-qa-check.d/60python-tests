@@ -17,7 +17,7 @@ python_test_check() {
 	[[ -n ${any} ]] || return
 
 	eqawarn
-	eqawarn 'QA Notice: this package seems to contain tests but they are not enabled.'
+	eqawarn 'QA Notice: This package seems to contain tests but they are not enabled.'
 	eqawarn 'Please either run tests (via distutils_enable_tests or declaring'
 	eqawarn 'python_test yourself), or add RESTRICT="test" along with an explanatory'
 	eqawarn 'comment if tests cannot be run.'

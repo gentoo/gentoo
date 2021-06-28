@@ -47,7 +47,9 @@ distutils_use_setuptools_check() {
 
 	if [[ ${#expected[@]} -gt 1 ]] && has no "${expected[@]}"; then
 		# 'no' and '[rb]depend' are mutually exclusive
-		eerror "The package seems to have used distutils and setuptools simultaneously."
+		eerror "QA Notice: The package seems to have used distutils and setuptools"
+		eerror "simultaneously"
+		eerror ""
 		eerror "This could mean the package has bad conditions:"
 		eerror "https://dev.gentoo.org/~mgorny/python-guide/distutils.html#conditional-distutils-setuptools-use-in-packages"
 		eerror "Please report a bug about this and CC python@"
@@ -74,7 +76,7 @@ distutils_use_setuptools_check() {
 				local def=
 				[[ ${DISTUTILS_USE_SETUPTOOLS} == bdepend ]] && def=' (or unset)'
 
-				eqawarn "DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
+				eqawarn "QA Notice: DISTUTILS_USE_SETUPTOOLS value is probably incorrect"
 				eqawarn "  have:     DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}${def}"
 				if [[ ${expected[0]} == bdepend ]]; then
 					eqawarn "  expected: (unset)"
