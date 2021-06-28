@@ -5,7 +5,7 @@ EAPI=7
 USE_RUBY="ruby25 ruby26 ruby27"
 
 GITHUB_COMMIT="e358601cc521d8aced941eb928fae2d8c53cf0c2"
-inherit ruby-ng l10n user
+inherit ruby-ng strip-linguas user
 
 DESCRIPTION="A ruby IRC bot"
 HOMEPAGE="https://ruby-rbot.org/"
