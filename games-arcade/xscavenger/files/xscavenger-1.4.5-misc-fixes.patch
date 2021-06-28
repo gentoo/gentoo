@@ -1,0 +1,130 @@
+* Missing return value (needed by clang)
+* Implicit declarations (string.h and doall)
+* Datafile loading broken on architectures where sizeof(long)>4
+  https://bugs.debian.org/56139
+* Scavenger leaks file descriptors
+  https://bugs.debian.org/175128
+* Font mapping with clang or gcc-7+
+  https://svnweb.freebsd.org/ports?view=revision&revision=444423
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -3,2 +3,3 @@
+ #include <stdio.h>
++#include <string.h>
+ #include <unistd.h>
+--- a/src/scav.c
++++ b/src/scav.c
+@@ -246,7 +246,9 @@
+ 
+-	val1=myci()<<24L;
+-	val1|=myci()<<16L;
+-	val1|=myci()<<8;
+-	val1|=myci();
++	int i,j;
+ 
++	for (i=0; i<4; i++) {
++		j = myci();
++		if (j==-1) return -1L;
++		val1 = (val1<<8) + j;
++	}
+ 	return val1;
+@@ -404,6 +406,6 @@
+ 	got=read(input,buff,8);
+-	if(got!=8) return -2;
+-	if (strncmp(buff,"SCAV",4)) return -3;
++	if(got!=8) {close(input);return -2;}
++	if (strncmp(buff,"SCAV",4)) {close(input);return -3;}
+ 	max=(buff[4]<<24) | (buff[5]<<16) | (buff[6]<<8) | buff[7];
+-	if(num>=max) return 0;
++	if(num>=max) {close(input);return 0;}
+ 	lseek(input,(num+1)<<3,SEEK_SET);
+@@ -413,3 +415,3 @@
+ 	if(len>length) len=length;
+-	if(!offset || !len) return 0;
++	if(!offset || !len) {close(input);return 0;}
+ 	lseek(input,offset,SEEK_SET);
+@@ -450,4 +452,4 @@
+ 	got=read(input,buff,8);
+-	if(got!=8) return -2;
+-	if(strncmp(buff,"SCAV",4)) return -3;
++	if(got!=8) {close(input);return -2;}
++	if(strncmp(buff,"SCAV",4)) {close(input);return -3;}
+ 	output=creat(bakname,00600);
+@@ -475,4 +477,4 @@
+ 				headers[i+i]+=delta;
+-	if (write(output,"SCAV",4) != 4) return -200;
+-	if (!rlout(output,max))	return -200;
++	if (write(output,"SCAV",4) != 4) {close(input);close(output);return -200;}
++	if (!rlout(output,max))	{close(input);close(output);return -200;}
+ 	headers[num+num]=0;
+@@ -480,3 +482,3 @@
+ 	for(i=0;i<max+max;i++)
+-		if (!rlout(output,headers[i])) return -200;
++	    if (!rlout(output,headers[i])) {close(input);close(output);return -200;}
+ 
+@@ -489,4 +491,4 @@
+ 			got=count>1024 ? 1024 : count;
+-			if (read(input,copybuff,got) != got) return -200;
+-			if (write(output,copybuff,got) != got) return -200;
++			if (read(input,copybuff,got) != got) {close(input);close(output);return -200;}
++			if (write(output,copybuff,got) != got) {close(input);close(output);return -200;}
+ 			count-=got;
+@@ -500,3 +502,3 @@
+ 		if (!got) break;
+-		if (write (output, copybuff, got) != got) return -200;
++		if (write (output, copybuff, got) != got) {close(input);close(output);return -200;}
+ 		offset += got;
+@@ -505,8 +507,8 @@
+ 	{
+-		if (write (output, take, len) != len) return -200;
++	    if (write (output, take, len) != len) {close(input);close(output);return -200;}
+ 		lseek (output, (num+1) << 3, SEEK_SET);
+-		if (!rlout (output, offset)) return -200;
++		if (!rlout (output, offset)) {close(input);close(output);return -200;}
+ 	}
+ 	close (input);
+-	if (fsync(output)) return -200;
++	if (fsync(output)) {close(output);return -200;}
+ 	if (close(output)) return -200;
+@@ -1384,2 +1386,3 @@
+ 	}
++	close(file);
+ }
+@@ -1418,2 +1421,4 @@
+ 	} while(len);
++	close(input);
++	close(output);
+ 	return 0;
+@@ -1450,3 +1455,3 @@
+ 		}
+-	}
++	} else close(file);
+ 
+@@ -1487,3 +1492,3 @@
+ 		}
+-	}
++	} else close(file);
+ }
+@@ -1574,3 +1579,3 @@
+ 			puts(err);
+-			return;
++			return 1;
+ 		}
+--- a/src/sound.c
++++ b/src/sound.c
+@@ -50,2 +50,3 @@
+ 
++void doall();
+ void opendsp(int samplerate)
+@@ -201,3 +202,3 @@
+ 
+-doall()
++void doall()
+ {
+--- a/src/x.c
++++ b/src/x.c
+@@ -447,3 +447,3 @@
+ 	{
+-		fmap[tolower(*p)]=fmap[*p++]=i++;
++		fmap[tolower(*p)]=fmap[*p]=i++; p++;
+ 	}
