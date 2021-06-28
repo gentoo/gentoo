@@ -7,6 +7,7 @@ dev-python/pyzmq test
 net-libs/zeromq unwind sodium
 dev-python/linecache2 test
 dev-python/traceback2 test
+dev-db/mysql-connector-c ldap
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
