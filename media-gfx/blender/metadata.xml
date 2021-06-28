@@ -62,7 +62,7 @@
 			through <pkg>media-libs/opensubdiv</pkg>.
 		</flag>
 		<flag name="openvdb">
-			Add GPU preview rendering. Only works with nVidia cards.
+			Enable openvdb for volumetric processing, like the voxel remesher. Also enables volumetric GPU preview rendering for Nvidia cards.
 		</flag>
 		<flag name="osl">
 			Add support for OpenShadingLanguage scripting.
