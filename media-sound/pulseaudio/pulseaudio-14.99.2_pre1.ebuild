@@ -6,7 +6,7 @@ EAPI="7"
 MY_PV="${PV/_pre*}"
 MY_P="${PN}-${MY_PV}"
 
-inherit bash-completion-r1 gnome2-utils meson-multilib optfeature systemd udev
+inherit bash-completion-r1 gnome2-utils meson-multilib optfeature systemd tmpfiles udev
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -287,7 +287,7 @@ multilib_src_install_all() {
 		systemd_dounit "${FILESDIR}"/${PN}.service
 
 		# We need /var/run/pulse, bug 442852
-		systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
+		newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 	else
 		# Prevent warnings when system-wide is not used, bug 447694
 		if use dbus && use daemon; then
