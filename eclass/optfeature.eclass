@@ -4,11 +4,11 @@
 # @ECLASS: optfeature.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7 8
 # @BLURB: Advertise optional functionality that might be useful to users
 
 case ${EAPI:-0} in
-	[0-7]) ;;
+	[0-8]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
