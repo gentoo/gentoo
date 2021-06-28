@@ -1,21 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=MSTEVENS
-MODULE_VERSION=1.04
+DIST_AUTHOR=MSTEVENS
+DIST_VERSION=1.04
 inherit perl-module
 
 DESCRIPTION="Perl extension for detecting mailing list messages"
 
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-RDEPEND="dev-perl/URI
+RDEPEND="
+	dev-perl/URI
 	dev-perl/Email-Valid
-	dev-perl/Email-Abstract"
-DEPEND="${RDEPEND}"
-
-SRC_TEST="do"
+	dev-perl/Email-Abstract
+"
+BDEPEND="${RDEPEND}"
