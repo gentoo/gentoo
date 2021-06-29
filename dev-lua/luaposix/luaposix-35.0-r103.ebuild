@@ -20,7 +20,9 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 # Requires specl, which is not in the tree yet
 RESTRICT="test"
 
-DEPEND="${LUA_DEPS}"
+DEPEND="${LUA_DEPS}
+	virtual/libcrypt:=
+"
 RDEPEND="${DEPEND}
 	lua_targets_lua5-1? ( dev-lua/lua-bit32[lua_targets_lua5-1(-)] )
 	lua_targets_luajit? ( dev-lua/lua-bit32[lua_targets_luajit(-)] )
