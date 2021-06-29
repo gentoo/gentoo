@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,9 +20,10 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	# fix lib path for X11 and dont ignore LDFLAGS
-	sed -i -e "s#lib\\\/#$(get_libdir)\\\/#" \
+	sed -i  -e "s#lib\\\/#$(get_libdir)\\\/#" \
 		-e 's/CFLAGS/#CFLAGS/' \
-		-e 's/link.res pu/link.res $(LDFLAGS) pu/' Makefile || die
+		-e 's/link.res/.res/g' \
+		-e 's/.res pu/.res $(LDFLAGS) pu/' Makefile || die
 }
 
 src_compile() {
