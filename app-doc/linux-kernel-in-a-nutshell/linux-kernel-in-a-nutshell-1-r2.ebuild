@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Linux Kernel in a Nutshell: A Desktop Quick Reference"
 HOMEPAGE="http://www.kroah.com/lkn/"
@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 src_install() {
-	insinto /usr/share/doc/${PN}/pdf
-	doins -r lkn_pdf/*
-	insinto /usr/share/doc/${PN}/xml
-	doins -r lkn_xml/*
+	docinto pdf
+	dodoc -r lkn_pdf/*
+
+	docinto xml
+	dodoc -r lkn_xml/*
 }
