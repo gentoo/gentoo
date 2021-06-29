@@ -14,7 +14,7 @@ SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="w3m"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ppc ~riscv x86"
 IUSE="gpm nls ssl"
 
 DEPEND=">=dev-libs/boehm-gc-7.2
