@@ -7,7 +7,9 @@ inherit desktop toolchain-funcs
 
 DESCRIPTION="Breakout clone written with the SDL library"
 HOMEPAGE="http://lgames.sourceforge.net/LBreakout/"
-SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+SRC_URI="
+	mirror://sourceforge/lgames/${P}.tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -40,5 +42,6 @@ src_install() {
 	fperms g+s /usr/bin/${PN}
 	fperms 660 /var/games/${PN}.hscr
 
-	make_desktop_entry ${PN} LBreakout applications-games
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} LBreakout
 }
