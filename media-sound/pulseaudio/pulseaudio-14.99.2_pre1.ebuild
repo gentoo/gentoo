@@ -121,7 +121,7 @@ COMMON_DEPEND="
 	sox? ( >=media-libs/soxr-0.1.1 )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd:= )
-	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
+	tcpd? ( sys-apps/tcp-wrappers )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
 	X? (
