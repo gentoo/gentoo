@@ -11,5 +11,3 @@ KEYWORDS="~amd64"
 
 RDEPEND=">=media-libs/lcms-2.7:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
-
-GST_PLUGINS_ENABLED="lcms2"
