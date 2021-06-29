@@ -258,6 +258,7 @@ dev-python/csv23
 ~media-plugins/gst-plugins-kate-1.18.4
 ~media-plugins/gst-plugins-ladspa-1.18.4
 ~media-plugins/gst-plugins-lame-1.18.4
+~media-plugins/gst-plugins-ldac-1.18.4
 ~media-plugins/gst-plugins-libav-1.18.4
 ~media-plugins/gst-plugins-libde265-1.18.4
 ~media-plugins/gst-plugins-libmms-1.18.4
