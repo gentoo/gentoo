@@ -30,9 +30,6 @@ BDEPEND="${RDEPEND}
 	)
 "
 
-# https://github.com/OctoMap/octomap/issues/194
-PATCHES=( "${FILESDIR}/qglqt5.patch" )
-
 src_prepare() {
 	rm -r octovis/src/extern
 
