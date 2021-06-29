@@ -92,6 +92,12 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS NEWS README RELEASE"
 
+# Fixes backported to 1.18.x, to be removed in 1.18.5
+PATCHES=(
+	"${FILESDIR}/gst-plugins-base-1.18.4_meson-0.58.0.patch"
+	"${FILESDIR}/gst-plugins-base-1.18.4_wayland_registry_remove.patch"
+)
+
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
 
