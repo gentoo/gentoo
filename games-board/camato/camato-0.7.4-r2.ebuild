@@ -18,6 +18,10 @@ KEYWORDS="~amd64 ~x86"
 
 ruby_add_rdepend dev-ruby/ruby-gtk2
 
+PATCHES=(
+	"${FILESDIR}"/${P}-implicit-string.patch
+)
+
 all_ruby_prepare() {
 	# this is really single target, but ruby-single is too limited
 	local ruby=$(ruby_get_use_implementations)
