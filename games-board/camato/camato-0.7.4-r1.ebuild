@@ -8,7 +8,9 @@ inherit desktop ruby-ng
 
 DESCRIPTION="Map editor for the game gnocatan"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${PN}-$(ver_rs 1- _).tar.gz"
+SRC_URI="
+	mirror://gentoo/${PN}-$(ver_rs 1- _).tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -32,5 +34,6 @@ all_ruby_install() {
 
 	einstalldocs
 
-	make_desktop_entry ${PN} Camato applications-games
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} Camato
 }
