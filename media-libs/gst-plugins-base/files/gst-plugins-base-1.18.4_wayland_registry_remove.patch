@@ -1,0 +1,55 @@
+From dc1fe07687747f11be6bb0eb944d53efa82ef86c Mon Sep 17 00:00:00 2001
+From: Matthew Waters <matthew@centricular.com>
+Date: Mon, 22 Mar 2021 13:59:39 +1100
+Subject: [PATCH] gl/wayland: provide a dummy global_remove function
+
+Even if we don't care about any global objects being removed, wayland
+will still error if globals are removed without a corresponding listener
+set up for them.  e.g. wl_output hotplugging
+
+Discovered by: Matthias Clasen
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/merge_requests/1085>
+---
+ .../gst/gl/wayland/gstglwindow_wayland_egl.c    | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/gst-libs/gst/gl/wayland/gstglwindow_wayland_egl.c b/gst-libs/gst/gl/wayland/gstglwindow_wayland_egl.c
+index 6b06632a7..bb8be2756 100644
+--- a/gst-libs/gst/gl/wayland/gstglwindow_wayland_egl.c
++++ b/gst-libs/gst/gl/wayland/gstglwindow_wayland_egl.c
+@@ -494,7 +494,8 @@ registry_handle_global (void *data, struct wl_registry *registry,
+   GstGLWindowWaylandEGL *window_wayland = data;
+ 
+   GST_TRACE_OBJECT (window_wayland, "registry_handle_global with registry %p, "
+-      "interface %s, version %u", registry, interface, version);
++      "name %" G_GUINT32_FORMAT ", interface %s, version %u", registry, name,
++      interface, version);
+ 
+   if (g_strcmp0 (interface, "wl_compositor") == 0) {
+     window_wayland->display.compositor =
+@@ -518,8 +519,20 @@ registry_handle_global (void *data, struct wl_registry *registry,
+   }
+ }
+ 
++static void
++registry_handle_global_remove (void *data, struct wl_registry *registry,
++    uint32_t name)
++{
++  GstGLWindowWaylandEGL *window_wayland = data;
++
++  /* TODO: deal with any registry objects that may be removed */
++  GST_TRACE_OBJECT (window_wayland, "wl_registry %p global_remove %"
++      G_GUINT32_FORMAT, registry, name);
++}
++
+ static const struct wl_registry_listener registry_listener = {
+-  registry_handle_global
++  registry_handle_global,
++  registry_handle_global_remove,
+ };
+ 
+ static gboolean
+-- 
+GitLab
+
