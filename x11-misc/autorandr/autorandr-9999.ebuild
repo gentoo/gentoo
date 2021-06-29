@@ -26,10 +26,8 @@ RDEPEND="
 	launcher? ( x11-libs/libxcb )
 	udev? ( virtual/udev )
 "
-DEPEND="
-	virtual/pkgconfig
-	${RDEPEND}
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_compile() {
 	distutils-r1_src_compile
