@@ -7,7 +7,9 @@ inherit desktop flag-o-matic toolchain-funcs
 
 DESCRIPTION="Lode-Runner-like arcade game"
 HOMEPAGE="https://www.linuxmotors.com/linux/scavenger/index.html"
-SRC_URI="https://www.linuxmotors.com/linux/scavenger/downloads/${P}.tgz"
+SRC_URI="
+	https://www.linuxmotors.com/linux/scavenger/downloads/${P}.tgz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -48,5 +50,6 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r data/.
 
-	make_desktop_entry scavenger XScavenger applications-games
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry scavenger XScavenger
 }
