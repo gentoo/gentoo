@@ -90,7 +90,7 @@ src_install() {
 
 	if use system-ffmpeg; then
 		rm "${ED}/opt/${PN}/libffmpeg.so" || die
-		dosym "../../$(get_libdir)/chromium/libffmpeg.so" "opt/${PN}/libffmpeg.so" || die
+		dosym "../../usr/$(get_libdir)/chromium/libffmpeg.so" "opt/${PN}/libffmpeg.so" || die
 		elog "Using system ffmpeg. This is experimental and may lead to crashes."
 	fi
 
