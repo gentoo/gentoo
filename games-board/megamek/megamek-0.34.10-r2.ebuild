@@ -7,7 +7,9 @@ inherit desktop edos2unix java-pkg-2 java-ant-2
 
 DESCRIPTION="Unofficial online version of the Classic BattleTech board game"
 HOMEPAGE="https://megamek.org/"
-SRC_URI="mirror://sourceforge/${PN}/MegaMek-v${PV}.zip"
+SRC_URI="
+	mirror://sourceforge/${PN}/MegaMek-v${PV}.zip
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 S="${WORKDIR}"
 
 LICENSE="GPL-2+"
@@ -43,5 +45,6 @@ src_install() {
 
 	dodoc HACKING readme.txt
 
-	make_desktop_entry ${PN} MegaMek applications-games
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} MegaMek
 }
