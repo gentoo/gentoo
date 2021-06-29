@@ -10,6 +10,10 @@
 		<name>Jeffrey Lin</name>
 	</maintainer>
 	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>
