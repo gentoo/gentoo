@@ -18,7 +18,7 @@ RDEPEND="gui? ( dev-lang/tk )"
 
 src_install() {
 	if use gui; then
-		default
+		emake -j1 DESTDIR="${D}" install #799107
 
 		fperms +x /usr/share/${PN}/xawale.tcl
 
@@ -29,6 +29,7 @@ src_install() {
 	else
 		dobin src/awale
 		doman man/awale.6
-		einstalldocs
 	fi
+
+	einstalldocs
 }
