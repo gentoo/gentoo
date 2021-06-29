@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Open source VOIP client capable of connecting to Ventrilo 3.x servers"
 HOMEPAGE="http://www.mangler.org/"
@@ -37,6 +37,11 @@ PATCHES=(
 	"${FILESDIR}/mangler-version-info.patch"
 	"${FILESDIR}/fix_ftbfs_narrowing_conversion.patch"
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	tc-export CC
