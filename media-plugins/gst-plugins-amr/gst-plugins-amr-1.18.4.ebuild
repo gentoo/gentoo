@@ -16,5 +16,5 @@ IUSE=""
 RDEPEND=">=media-libs/opencore-amr-0.1.3-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
-GST_PLUGINS_ENABLED="amrnb amrwb"
+GST_PLUGINS_ENABLED="amrnb amrwbdec"
 GST_PLUGINS_BUILD_DIR="amrnb amrwbdec"
