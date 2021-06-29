@@ -27,7 +27,7 @@ SRC_URI="https://geant4-data.web.cern.ch/geant4-data/releases/${MY_P}.tar.gz"
 
 LICENSE="geant4"
 SLOT="4"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="c++11 c++14 +c++17 +data dawn doc examples freetype gdml geant3 hdf5
 	inventor motif opengl qt5 raytracerx static-libs threads vrml"
 
@@ -41,7 +41,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/expat
 	>=sci-physics/clhep-2.4.4.0:2=[threads?]
-	data? ( ~sci-physics/geant-data-4.10.7.1 )
+	data? ( ~sci-physics/geant-data-${PV} )
 	dawn? ( media-gfx/dawn )
 	doc? ( =app-doc/geant-docs-$(ver_cut 1-3)* )
 	gdml? ( dev-libs/xerces-c )
@@ -50,6 +50,7 @@ RDEPEND="
 	motif? ( x11-libs/motif:0 )
 	opengl? ( virtual/opengl )
 	qt5? (
+		dev-qt/qt3d:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtprintsupport:5
