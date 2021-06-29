@@ -24,7 +24,7 @@ S="${WORKDIR}/llvm-project-rocm-${PV}/llvm"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-current_pos.patch"
-	"${FILESDIR}/${PN}-4.2.0-add_BinaryFormat.patch"
+	"${FILESDIR}/${PN}-4.2.0-add_Object.patch"
 )
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
