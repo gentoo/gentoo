@@ -1,10 +1,10 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: verify-sig.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Eclass to verify upstream signatures on distfiles
 # @DESCRIPTION:
 # verify-sig eclass provides a streamlined approach to verifying
@@ -32,15 +32,9 @@
 # VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
 # @CODE
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (obsolete) for ${ECLASS}"
-		;;
-	7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 EXPORT_FUNCTIONS src_unpack
