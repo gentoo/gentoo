@@ -80,6 +80,7 @@ src_configure() {
 		--disable-pvs-libs \
 		--disable-isabelle-libs \
 		--enable-verbose-make \
+		--disable-hypothesis-selection \
 		$(use_enable coq coq-libs) \
 		$(use_enable doc) \
 		$(use_enable emacs emacs-compilation) \
