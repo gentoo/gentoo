@@ -421,7 +421,7 @@ distutils_enable_tests() {
 			test_deps+=" ${test_pkg}[${PYTHON_USEDEP}]"
 		else
 			test_deps+=" $(python_gen_cond_dep "
-				${test_pkg}[\${PYTHON_MULTI_USEDEP}]
+				${test_pkg}[\${PYTHON_USEDEP}]
 			")"
 		fi
 	fi
