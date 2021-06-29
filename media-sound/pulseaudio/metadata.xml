@@ -77,5 +77,8 @@
     <flag name="ofono-headset">
       Build with oFono HFP backend for bluez 5, requires <pkg>net-misc/ofono</pkg>.
     </flag>
+    <flag name="ldac">
+      LDAC over Bluetooth (primarily Sony headphones), requires <pkg>media-plugins/gst-plugins-ldac</pkg>.
+    </flag>
   </use>
 </pkgmetadata>

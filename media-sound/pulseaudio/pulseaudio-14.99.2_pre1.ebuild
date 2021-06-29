@@ -33,7 +33,7 @@ SLOT="0"
 # TODO: Find out why webrtc-aec is + prefixed - there's already the always available speexdsp-aec
 # NOTE: The current ebuild sets +X almost certainly just for the pulseaudio.desktop file
 IUSE="+alsa +alsa-plugin +asyncns bluetooth dbus +daemon doc elogind equalizer forget-missing +gdbm
-gstreamer +glib gtk ipv6 jack lirc native-headset ofono-headset +orc oss selinux sox ssl systemd
+gstreamer +glib gtk ipv6 jack ldac lirc native-headset ofono-headset +orc oss selinux sox ssl systemd
 system-wide tcpd test +udev +webrtc-aec +X zeroconf"
 
 RESTRICT="!test? ( test )"
@@ -153,6 +153,13 @@ RDEPEND="
 		acct-user/pulse
 		acct-group/audio
 		acct-group/pulse-access
+	)
+	daemon? (
+		bluetooth? (
+			gstreamer? (
+				ldac? ( media-plugins/gst-plugins-ldac )
+			)
+		)
 	)
 "
 
