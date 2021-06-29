@@ -190,8 +190,6 @@ src_prepare() {
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=1623054
 	eapply "${FILESDIR}/${PN}-2.53.7-ownertab.patch"
 
-	eapply "${FILESDIR}/${PN}-2.53.7.1-CLEANUP-workaround.patch" #790794
-
 	# Shell scripts sometimes contain DOS line endings; bug 391889
 	grep -rlZ --include="*.sh" $'\r$' . |
 	while read -r -d $'\0' file ; do
