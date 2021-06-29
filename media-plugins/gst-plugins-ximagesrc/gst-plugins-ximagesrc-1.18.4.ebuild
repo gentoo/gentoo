@@ -21,12 +21,14 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 
+GST_PLUGINS_BUILD_DIR="ximage"
+
 multilib_src_configure() {
 	local emesonargs=(
-		-Dximagesrc=true
-		-Dximagesrc-xshm=true
-		-Dximagesrc-xfixes=true
-		-Dximagesrc-xdamage=true
+		-Dximagesrc=enabled
+		-Dximagesrc-xshm=enabled
+		-Dximagesrc-xfixes=enabled
+		-Dximagesrc-xdamage=enabled
 	)
 
 	gstreamer_multilib_src_configure
