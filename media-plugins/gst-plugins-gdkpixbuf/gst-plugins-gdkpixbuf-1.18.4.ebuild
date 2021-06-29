@@ -13,5 +13,5 @@ IUSE=""
 RDEPEND=">=x11-libs/gdk-pixbuf-2.30.7:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
-GST_PLUGINS_ENABLED="gdk_pixbuf"
+GST_PLUGINS_ENABLED="gdk-pixbuf"
 GST_PLUGINS_BUILD_DIR="gdk_pixbuf"
