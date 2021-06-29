@@ -47,6 +47,7 @@ RDEPEND="
 		>=net-libs/webkit-gtk-2.28.0:4
 		${gdata_depend}
 	)
+	phonenumber? ( >=dev-libs/libphonenumber-8.12.26 )
 	gnome-online-accounts? (
 		>=net-libs/gnome-online-accounts-3.8:=
 		${gdata_depend} )
@@ -54,7 +55,6 @@ RDEPEND="
 	kerberos? ( virtual/krb5:= )
 	ldap? ( >=net-nds/openldap-2:= )
 	weather? ( >=dev-libs/libgweather-3.10:2= )
-	phonenumber? ( >=dev-libs/libphonenumber-8.12.26 )
 "
 DEPEND="${RDEPEND}
 	vala? ( $(vala_depend)
