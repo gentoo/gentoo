@@ -11,6 +11,6 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	net-libs/srt[${MULTILIB_USEDEP}]
+	net-libs/srt:=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
