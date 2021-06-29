@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # Feel free to contact the Prefix team through <prefix@gentoo.org> if
 # you have problems, suggestions or questions.
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Eclass to provide Prefix functionality
 # @DESCRIPTION:
 # Gentoo Prefix allows users to install into a self defined offset
@@ -13,7 +13,7 @@
 # additional functions and variables which are defined by this eclass.
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
