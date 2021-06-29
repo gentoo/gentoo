@@ -1,13 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop toolchain-funcs
 
 DESCRIPTION="3D dungeon crawling adventure in the spirit of NetHack"
 HOMEPAGE="http://egoboo.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="
+	mirror://sourceforge/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -53,5 +55,6 @@ src_install() {
 	insinto /etc/${PN}
 	doins controls.txt setup.txt
 
-	make_desktop_entry ${PN} Egoboo applications-games "Game;"
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} Egoboo
 }
