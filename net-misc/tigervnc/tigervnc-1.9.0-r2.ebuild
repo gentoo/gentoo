@@ -168,9 +168,9 @@ src_install() {
 	if use server ; then
 		emake -C unix/xserver/hw/vnc DESTDIR="${D}" install
 		if ! use xorgmodule; then
-			rm -rv "${ED%/}"/usr/$(get_libdir)/xorg || die
+			rm -rv "${ED}"/usr/$(get_libdir)/xorg || die
 		else
-			rm -v "${ED%/}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
+			rm -v "${ED}"/usr/$(get_libdir)/xorg/modules/extensions/libvnc.la || die
 		fi
 
 		newconfd "${FILESDIR}"/${PN}.confd ${PN}
