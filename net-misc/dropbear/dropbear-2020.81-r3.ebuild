@@ -16,6 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~spar
 IUSE="bsdpty minimal multicall pam +shadow static +syslog zlib"
 
 LIB_DEPEND="
+	virtual/libcrypt[static-libs(+)]
 	zlib? ( sys-libs/zlib[static-libs(+)] )
 "
 RDEPEND="
