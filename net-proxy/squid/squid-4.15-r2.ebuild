@@ -35,19 +35,23 @@ BDEPEND="dev-lang/perl"
 
 COMMON_DEPEND="acct-group/squid
 	acct-user/squid
+	virtual/libcrypt:=
 	caps? ( >=sys-libs/libcap-2.16 )
 	pam? ( sys-libs/pam )
 	ldap? ( net-nds/openldap )
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (
-		!gnutls? ( dev-libs/openssl:0= )
-		dev-libs/nettle:= )
+		!gnutls? (
+			dev-libs/openssl:0=
+		)
+		dev-libs/nettle:=
+	)
 	sasl? ( dev-libs/cyrus-sasl )
 	systemd? ( sys-apps/systemd:= )
 	ecap? ( net-libs/libecap:1 )
 	esi? ( dev-libs/expat dev-libs/libxml2 )
-	gnutls? ( >=net-libs/gnutls-3.1.5 )
+	gnutls? ( >=net-libs/gnutls-3.1.5:= )
 	logrotate? ( app-admin/logrotate )
 	>=sys-libs/db-4:*
 	dev-libs/libltdl:0"
@@ -77,6 +81,7 @@ pkg_pretend() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-4.3-gentoo.patch"
+
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
 		INSTALL QUICKSTART \
 		scripts/fileno-to-pathname.pl \
@@ -104,7 +109,7 @@ src_prepare() {
 	sed -i -e 's:_LTDL_SETUP:LTDL_INIT([installable]):' \
 		libltdl/configure.ac || die
 
-	 sed -i 's:/var/run/:/run/:g' tools/systemd/squid.service || die
+	sed -i 's:/var/run/:/run/:g' tools/systemd/squid.service || die
 
 	eapply_user
 	eautoreconf
