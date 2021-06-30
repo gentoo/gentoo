@@ -29,7 +29,7 @@ COMMON_DEPEND="
 		sys-libs/readline:0=
 		pam? ( sys-libs/pam )
 	)
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:= )
 	!elibc_glibc? ( dev-libs/libpcre )"
 DEPEND="${COMMON_DEPEND}
 	sys-apps/gawk
