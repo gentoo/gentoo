@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,22 +15,27 @@ KEYWORDS="~amd64 x86"
 IUSE="authexternal debug flatfile gdbm ldap maildir mbox mysql offensive
 	pam passwd perl postgres +sha1 shadow ssl tcpd"
 
-RDEPEND="sha1?		( >=dev-libs/openssl-0.9.6:0= )
-	ssl?		( >=dev-libs/openssl-0.9.6:0= )
-	ldap?		( >=net-nds/openldap-2.0.7 )
-	mysql?		( dev-db/mysql-connector-c:0= )
-	postgres?	( dev-db/postgresql[server] )
-	perl?		( >=dev-lang/perl-5.6.1 )
-	pam?		( sys-libs/pam
-				  >=net-mail/mailbase-0.00-r8 )
-	tcpd?		( >=sys-apps/tcp-wrappers-7.6 )"
-
+RDEPEND="gdbm? ( sys-libs/gdbm:= )
+	sha1? ( >=dev-libs/openssl-0.9.6:0= )
+	ssl? ( >=dev-libs/openssl-0.9.6:0= )
+	ldap? ( >=net-nds/openldap-2.0.7 )
+	mysql? ( dev-db/mysql-connector-c:0= )
+	postgres? ( dev-db/postgresql[server] )
+	perl? ( >=dev-lang/perl-5.6.1:= )
+	pam? (
+		>=net-mail/mailbase-0.00-r8
+		sys-libs/pam
+	)
+	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-1.5.4-gold.patch" )
 
 src_prepare() {
 	default
+
+	mv configure.{in,ac} || die
+
 	eautoreconf
 }
 
