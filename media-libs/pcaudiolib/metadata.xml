@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<maintainer>
+			<name>Reece H. Dunn</name>
+			<email>msclrhd@gmail.com</email>
+		</maintainer>
+		<remote-id type="github">espeak-ng/pcaudiolib</remote-id>
+		<bugs-to>https://github.com/espeak-ng/pcaudiolib/issues</bugs-to>
+		<changelog>https://github.com/espeak-ng/pcaudiolib/raw/master/CHANGELOG.md</changelog>
+	</upstream>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+</pkgmetadata>
