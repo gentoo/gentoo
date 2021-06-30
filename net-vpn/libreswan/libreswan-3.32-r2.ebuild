@@ -1,18 +1,17 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit systemd toolchain-funcs
 
-SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-KEYWORDS="amd64 ~arm ~ppc x86"
-
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
+SRC_URI="https://download.libreswan.org/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="caps curl dnssec ldap pam seccomp selinux systemd test"
 RESTRICT="!test? ( test )"
 
@@ -22,9 +21,10 @@ DEPEND="
 	dev-libs/nspr
 	>=dev-libs/nss-3.42
 	>=sys-kernel/linux-headers-4.19
+	virtual/libcrypt:=
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )
-	dnssec? ( >=net-dns/unbound-1.9.1-r1:= net-libs/ldns )
+	dnssec? ( >=net-dns/unbound-1.9.1-r1:= net-libs/ldns:= )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
