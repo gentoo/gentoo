@@ -20,7 +20,7 @@ else
 	SRC_URI="https://www.tcpdump.org/release/${P}.tar.gz -> ${P}-upstream.tar.gz"
 	SRC_URI+=" verify-sig? ( https://www.tcpdump.org/release/${P}.tar.gz.sig -> ${P}-upstream.tar.gz.sig )"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x86-solaris"
 fi
 
 LICENSE="BSD"
@@ -31,6 +31,7 @@ RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3[${MULTILIB_USEDEP}] )
+	remote? ( virtual/libcrypt:=[${MULTILIB_USEDEP}] )
 	rdma? ( sys-cluster/rdma-core )
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "
