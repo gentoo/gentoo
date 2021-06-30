@@ -35,6 +35,10 @@ RDEPEND="
 	>=x11-libs/libXdmcp-1.1.1-r1[abi_x86_32(-)]
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
 	>=x11-libs/libXi-1.7.2[abi_x86_32(-)]
+	|| (
+		sys-libs/glibc[crypt(+)]
+		sys-libs/libxcrypt[compat]
+	)
 "
 
 # RDEPEND+=" ${DYNAMIC_DEPS}"
