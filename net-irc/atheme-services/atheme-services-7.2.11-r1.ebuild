@@ -19,9 +19,10 @@ RDEPEND="
 	acct-group/atheme-services
 	acct-user/atheme-services
 	>=dev-libs/libmowgli-2.1.0:2
+	virtual/libcrypt:=
 	cracklib? ( sys-libs/cracklib )
 	ldap? ( net-nds/openldap )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	pcre? ( dev-libs/libpcre )
 	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}"
