@@ -12,13 +12,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
+IUSE="+X bidi brltty cairo canna debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
+REQUIRED_USE="|| ( X fbcon wayland )"
 
 RDEPEND="virtual/libcrypt:=
-	x11-libs/libICE
-	x11-libs/libxkbcommon
-	x11-libs/libSM
-	x11-libs/libX11
+	X? (
+		x11-libs/libICE
+		x11-libs/libSM
+		x11-libs/libX11
+	)
 	bidi? ( dev-libs/fribidi )
 	brltty? ( app-accessibility/brltty )
 	cairo? ( x11-libs/cairo[X(+)] )
@@ -47,7 +49,10 @@ RDEPEND="virtual/libcrypt:=
 	)
 	uim? ( app-i18n/uim )
 	utempter? ( sys-libs/libutempter )
-	wayland? ( dev-libs/wayland )
+	wayland? (
+		dev-libs/wayland
+		x11-libs/libxkbcommon
+	)
 	xft? ( x11-libs/libXft )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -82,7 +87,8 @@ src_configure() {
 		$(use_enable scim)
 		$(use_enable skk)
 		$(use_enable uim)
-		--with-gui=xlib$(usex fbcon ",fb" "")$(usex wayland ",wayland" "")
+		$(use_with X x)
+		--with-gui=$(usex X "xlib" "")$(usex fbcon ",fb" "")$(usex wayland ",wayland" "")
 		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
 		--with-utmp=$(usex utempter utempter none)
 		--enable-optimize-redrawing
