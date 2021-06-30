@@ -351,6 +351,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# upstream tests fail for agent2
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
