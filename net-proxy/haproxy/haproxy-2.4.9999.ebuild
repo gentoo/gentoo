@@ -29,13 +29,14 @@ REQUIRED_USE="pcre-jit? ( pcre )
 	?? ( slz zlib )"
 
 DEPEND="
+	crypt? ( virtual/libcrypt:= )
 	pcre? (
 		dev-libs/libpcre
 		pcre-jit? ( dev-libs/libpcre[jit] )
 	)
 	pcre2? (
-		dev-libs/libpcre
-		pcre2-jit? ( dev-libs/libpcre2[jit] )
+		dev-libs/libpcre2:=
+		pcre2-jit? ( dev-libs/libpcre2:=[jit] )
 	)
 	ssl? (
 		dev-libs/openssl:0=[zlib?]
