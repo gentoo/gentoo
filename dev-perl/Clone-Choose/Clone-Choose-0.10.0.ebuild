@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Choose appropriate clone utility"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa"
+KEYWORDS="~amd64 ~hppa ~ppc"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

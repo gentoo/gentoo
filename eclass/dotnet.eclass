@@ -4,7 +4,7 @@
 # @ECLASS: dotnet.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
-# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: common settings and functions for mono and dotnet related packages
 # @DESCRIPTION:
 # The dotnet eclass contains common environment settings that are useful for
@@ -13,13 +13,16 @@
 # of dotnet packages.
 
 case ${EAPI:-0} in
-	0)
-		die "this eclass doesn't support EAPI 0" ;;
-	[1-6])
+	6)
 		inherit eapi7-ver multilib
-		DEPEND="dev-lang/mono" ;;
+		DEPEND="dev-lang/mono"
+		;;
+	7)
+		BDEPEND="dev-lang/mono"
+		;;
 	*)
-		BDEPEND="dev-lang/mono" ;;
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
+		;;
 esac
 
 inherit mono-env

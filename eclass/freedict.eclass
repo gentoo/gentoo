@@ -12,6 +12,9 @@
 # This eclass exists to ease the installation of freedict translation
 # dictionaries.
 
+if [[ -z ${_FREEDICT_ECLASS} ]]; then
+_FREEDICT_ECLASS=1
+
 # @ECLASS-VARIABLE: FREEDICT_P
 # @DESCRIPTION:
 # Strips PN of 'freedict' prefix, to be used in SRC_URI and doins
@@ -45,3 +48,5 @@ freedict_src_install() {
 }
 
 EXPORT_FUNCTIONS src_install
+
+fi

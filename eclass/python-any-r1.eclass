@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: An eclass for packages having build-time dependency on Python.
 # @DESCRIPTION:
 # A minimal eclass for packages which need any Python interpreter
@@ -39,7 +39,7 @@
 
 case "${EAPI:-0}" in
 	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	[6-7]) ;;
+	[6-8]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
@@ -144,7 +144,7 @@ EXPORT_FUNCTIONS pkg_setup
 #
 # Example value:
 # @CODE
-# python_targets_python3_7(-),-python_single_target_python3_7(-)
+# python_targets_python3_7(-)
 # @CODE
 
 # @ECLASS-VARIABLE: PYTHON_SINGLE_USEDEP
@@ -239,14 +239,14 @@ if [[ ! ${_PYTHON_ANY_R1} ]]; then
 #	(
 #		dev-lang/python:3.7
 #		dev-python/foo[python_single_target_python3_7(-)]
-#		|| ( dev-python/bar[python_targets_python3_7(-),-python_single_target_python3_7(-)]
-#			dev-python/baz[python_targets_python3_7(-),-python_single_target_python3_7(-)] )
+#		|| ( dev-python/bar[python_targets_python3_7(-)
+#			dev-python/baz[python_targets_python3_7(-) )
 #	)
 #	(
 #		dev-lang/python:3.8
 #		dev-python/foo[python_single_target_python3_8(-)]
-#		|| ( dev-python/bar[python_targets_python3_8(-),-python_single_target_python3_8(-)]
-#			dev-python/baz[python_targets_python3_8(-),-python_single_target_python3_8(-)] )
+#		|| ( dev-python/bar[python_targets_python3_8(-)]
+#			dev-python/baz[python_targets_python3_8(-)] )
 #	)
 # )
 # @CODE
@@ -258,7 +258,7 @@ python_gen_any_dep() {
 
 	local i PYTHON_PKG_DEP out=
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
-		local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
+		local PYTHON_USEDEP="python_targets_${i}(-)"
 		local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
 		_python_export "${i}" PYTHON_PKG_DEP
 
@@ -294,7 +294,7 @@ _python_EPYTHON_supported() {
 	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
 		if python_is_installed "${i}"; then
 			if declare -f python_check_deps >/dev/null; then
-				local PYTHON_USEDEP="python_targets_${i}(-),-python_single_target_${i}(-)"
+				local PYTHON_USEDEP="python_targets_${i}(-)"
 				local PYTHON_SINGLE_USEDEP="python_single_target_${i}(-)"
 				python_check_deps
 				return ${?}
@@ -344,22 +344,6 @@ python_setup() {
 			return
 		fi
 	fi
-
-	# then, try eselect-python
-	local variant i
-	for variant in '' '--python2' '--python3'; do
-		i=$(eselect python --show ${variant} 2>/dev/null)
-
-		if [[ ! ${i} ]]; then
-			# no eselect-python?
-			break
-		elif _python_EPYTHON_supported "${i}"; then
-			_python_export "${i}" EPYTHON PYTHON
-			_python_wrapper_setup
-			einfo "Using ${EPYTHON} to build"
-			return
-		fi
-	done
 
 	# fallback to best installed impl.
 	# (reverse iteration over _PYTHON_SUPPORTED_IMPLS)

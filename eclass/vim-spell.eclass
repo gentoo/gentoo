@@ -6,6 +6,7 @@
 # Vim Maintainers <vim@gentoo.org>
 # @AUTHOR:
 # Ciaran McCreesh <ciaranm@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for managing Vim spell files.
 # @DESCRIPTION:
 # How to make a vim spell file package using prebuilt spell lists
@@ -62,7 +63,15 @@
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 EXPORT_FUNCTIONS src_install pkg_postinst
+
+if [[ -z ${_VIM_SPELL_ECLASS} ]] ; then
+_VIM_SPELL_ECLASS=1
 
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SLOT="0"
@@ -128,7 +137,6 @@ vim-spell_src_install() {
 # @DESCRIPTION:
 # This function displays installed Vim spell files.
 vim-spell_pkg_postinst() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	echo
 	elog "To enable ${VIM_SPELL_LANGUAGE} spell checking, use"
 	elog "    :setlocal spell spelllang=${VIM_SPELL_LOCALE}"
@@ -147,3 +155,5 @@ vim-spell_pkg_postinst() {
 	elog "    :help spell"
 	echo
 }
+
+fi

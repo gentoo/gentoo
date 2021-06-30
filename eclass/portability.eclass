@@ -6,7 +6,13 @@
 # base-system@gentoo.org
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: This eclass is created to avoid using non-portable GNUisms inside ebuilds
+
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ -z ${_PORTABILITY_ECLASS} ]]; then
 _PORTABILITY_ECLASS=1

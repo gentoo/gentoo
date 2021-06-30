@@ -12,6 +12,5 @@
 	</longdescription>
 	<use>
 		<flag name="tools">Build and install optional management tools.</flag>
-		<flag name="usb">Enable support for usb based chipcard reader.</flag>
 	</use>
 </pkgmetadata>

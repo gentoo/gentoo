@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">smb4k</remote-id>
 	</upstream>
+	<use>
+		<flag name="discovery">Build with <pkg>net-libs/kdsoap-ws-discovery-client</pkg> support to discover domains and workgroups</flag>
+	</use>
 </pkgmetadata>

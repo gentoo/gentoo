@@ -13,7 +13,7 @@ SRC_URI="https://www.lesbonscomptes.com/recoll/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="camelcase chm doc +inotify qt5 session +spell webengine"
 REQUIRED_USE="

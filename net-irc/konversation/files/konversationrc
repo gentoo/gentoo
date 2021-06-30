@@ -13,12 +13,12 @@ Name=#gentoo-xfce
 [Server 0]
 Port=8001
 SSLEnabled=false
-Server=chat.freenode.net
+Server=irc.libera.chat
 
 [ServerGroup 0]
 AutoConnect=false
 AutoJoinChannels=Channel 0,Channel 1,Channel 2,Channel 3
 EnableNotifications=true
 Expanded=false
-Name=Freenode
+Name=Libera
 ServerList=Server 0

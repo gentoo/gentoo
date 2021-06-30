@@ -108,6 +108,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
+	sdl-image? ( sdl )
 	static? ( static-user !alsa !gtk !jack !opengl !pulseaudio !plugins !rbd !snappy )
 	static-user? ( !plugins )
 	vhost-user-fs? ( caps seccomp )
@@ -275,6 +276,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-cleaner-werror.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-5.2.0-dce-locks.patch
+	"${FILESDIR}"/${PN}-6.0.0-make.patch
 )
 
 QA_PREBUILT="

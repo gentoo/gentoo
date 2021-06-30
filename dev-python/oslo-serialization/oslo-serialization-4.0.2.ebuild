@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
+PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
 MY_PN=${PN/-/.}
 
 DESCRIPTION="Oslo Serialization library"
 HOMEPAGE="https://launchpad.net/oslo"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="Apache-2.0"
@@ -21,13 +20,22 @@ IUSE=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
-DEPEND="${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/msgpack-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
 "
+BDEPEND="
+	${CDEPEND}
+	test? (
+		>=dev-python/netaddr-0.7.18[${PYTHON_USEDEP}]
+		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
+	)
+"
+
+distutils_enable_tests unittest
 
 python_prepare_all() {
 	# allow useage of renamed msgpack

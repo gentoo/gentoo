@@ -16,7 +16,7 @@ SRC_URI="${ADAMIRROR}/${ID}?filename=${MYP}.tar.gz -> ${MYP}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="coq doc emacs gtk html +ocamlopt zarith zip"
+IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip"
 RESTRICT="strip"
 
 DEPEND="dev-lang/ocaml:0/4.11[ocamlopt?]
@@ -35,6 +35,7 @@ DEPEND="dev-lang/ocaml:0/4.11[ocamlopt?]
 	gtk? ( dev-ml/lablgtk:=[sourceview] )
 	emacs? ( app-editors/emacs:* )
 	html? ( dev-tex/hevea:= )
+	hypothesis-selection? ( dev-ml/ocamlgraph:= )
 	zarith? ( dev-ml/zarith:= )
 	zip? ( dev-ml/camlzip:= )"
 RDEPEND="${DEPEND}"
@@ -85,6 +86,7 @@ src_configure() {
 		$(use_enable emacs emacs-compilation) \
 		$(use_enable gtk ide) \
 		$(use_enable html html-pdf) \
+		$(use_enable hypothesis-selection) \
 		$(use_enable ocamlopt native-code) \
 		$(use_enable zarith) \
 		$(use_enable zip)

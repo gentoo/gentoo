@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>flo@geekplace.eu</email>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person">
+		<email>flow@gentoo.org</email>
+		<name>Florian Schmaus</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>andrey_utkin@gentoo.org</email>

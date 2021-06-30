@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/facebookexperimental/starlark-rust/issues</bugs-to>
+		<changelog>https://github.com/facebookexperimental/starlark-rust/blob/master/CHANGELOG.md</changelog>
+		<doc>https://github.com/bazelbuild/starlark/blob/master/spec.md</doc>
+		<remote-id type="github">facebookexperimental/starlark-rust</remote-id>
+	</upstream>
+</pkgmetadata>

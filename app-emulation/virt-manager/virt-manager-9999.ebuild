@@ -54,6 +54,8 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 "
 
+distutils_enable_tests pytest
+
 DOCS=( README.md NEWS.md )
 
 src_prepare() {
@@ -72,8 +74,6 @@ python_install() {
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
 	distutils-r1_src_install
-
-	python_fix_shebang "${ED}"/usr/share/virt-manager
 }
 
 pkg_preinst() {

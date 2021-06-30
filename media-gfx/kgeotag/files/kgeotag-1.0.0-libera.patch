@@ -1,0 +1,26 @@
+From e8e52e07b3ef08a169bb37affc6689d75b27613c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nicol=C3=A1s=20Alvarez?= <nicolas.alvarez@gmail.com>
+Date: Sun, 23 May 2021 23:35:41 -0300
+Subject: [PATCH] Update IRC network in the README
+
+KDE has moved from freenode to Libera Chat, update the link in the README
+to reflect this.
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 831e9b0..46ab460 100644
+--- a/README.md
++++ b/README.md
+@@ -66,6 +66,6 @@ If a time drift has been identified and a deviation has been given, the images'
+ 
+ ## Getting in touch
+ 
+-The IRC channel of the project is [#kde-kgeotag](irc://chat.freenode.net/kde-kgeotag), and there's also a [mailing list](https://mail.kde.org/cgi-bin/mailman/listinfo/kgeotag/).
++The IRC channel of the project is [#kde-kgeotag](irc://irc.libera.chat/kde-kgeotag), and there's also a [mailing list](https://mail.kde.org/cgi-bin/mailman/listinfo/kgeotag/).
+ 
+ Everybody is invited to participate in KGeoTag's development! You don't have to be able to write code to do so. All testing and feedback is greatly appreciated!
+-- 
+GitLab
+

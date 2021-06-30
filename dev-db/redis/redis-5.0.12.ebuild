@@ -16,11 +16,9 @@ RESTRICT="!test? ( test )"
 SLOT="0"
 
 # Redis does NOT build with Lua 5.2 or newer at this time.
-# This should link correctly with both unslotted & slotted Lua, without
-# changes.
 COMMON_DEPEND="
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( || ( dev-lang/lua:5.1 =dev-lang/lua-5.1*:0 ) )
+	!luajit? ( dev-lang/lua:5.1 )
 	tcmalloc? ( dev-util/google-perftools )
 	jemalloc? ( >=dev-libs/jemalloc-5.1:= )"
 

@@ -9,6 +9,15 @@
  OFLAGS = $(FLAGS)
  BFLAGS = $(FLAGS)
  
+@@ -572,7 +572,7 @@
+ lib/plugins/hypothesis_selection.cmo:  EXTOBJS += graph.cmo
+ ifeq (@enable_ocamlfind@,yes)
+ lib/plugins/hypothesis_selection.cmxs: FLAGS += -package ocamlgraph -dontlink "$(EXTPKGS)" -linkpkg
+-lib/plugins/hypothesis_selection.cmo:  FLAGS += -package ocamlgraph graph.cmo
++lib/plugins/hypothesis_selection.cmo:  FLAGS += -package ocamlgraph
+ endif
+ endif
+ 
 @@ -778,13 +778,13 @@
  all: $(TOOLS)
  

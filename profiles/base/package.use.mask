@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-06-27)
+# lto does not work on dev-lang/gnat-gpl-2021
+dev-lang/gnat-gpl:10 lto
+
+# Stephan Hartmann <sultan@gentoo.org> (2021-06-26)
+# Requires unreleased media-video/ffmpeg.
+>=www-client/chromium-93 system-ffmpeg
+
 # Mike Gilbert <floppym@gentoo.org> (2021-06-14)
 # Avoid running failing tests by default.
 sys-kernel/dracut test
@@ -150,10 +158,6 @@ media-plugins/mythplugins mythnetvision
 app-metrics/collectd collectd_plugins_onewire
 
 # Michał Górny <mgorny@gentoo.org> (2020-08-22)
-# These flags depend on dev-python/pygtk that is masked for removal.
-<media-gfx/gimp-3 python
-
-# Michał Górny <mgorny@gentoo.org> (2020-08-22)
 # These flags depend on packages masked for removal due to py2.
 sci-geosciences/qgis grass
 
@@ -261,7 +265,6 @@ app-emulation/aranym jit
 dev-python/matplotlib doc
 dev-python/pandas doc
 dev-python/pandas-datareader doc
-dev-python/patsy doc
 dev-python/statsmodels doc
 
 # Haelwenn (lanodan) Monnier <contact@hacktivis.me> (2019-12-01)

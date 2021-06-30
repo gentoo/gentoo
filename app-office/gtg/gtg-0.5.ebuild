@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit meson python-single-r1 xdg
@@ -40,7 +40,7 @@ BDEPEND="
 			dev-python/cheetah3[${PYTHON_USEDEP}]
 			dev-python/mock[${PYTHON_USEDEP}]
 		')
-		app-text/pdfjam
+		|| ( app-text/pdfjam >=app-text/texlive-core-2021 )
 		app-text/pdftk
 		dev-texlive/texlive-latex
 	)

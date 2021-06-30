@@ -60,6 +60,7 @@ COMMON_DEPEND="
 		dev-libs/libltdl
 		sys-libs/e2fsprogs-libs
 		>=dev-db/lmdb-0.9.18:=
+		crypt? ( virtual/libcrypt:= )
 		tcpd? ( sys-apps/tcp-wrappers )
 		odbc? ( !iodbc? ( dev-db/unixODBC )
 			iodbc? ( dev-db/libiodbc ) )
@@ -87,14 +88,13 @@ RDEPEND="${COMMON_DEPEND}
 
 # The user/group are only used for running daemons which are
 # disabled in minimal builds, so elide the accounts too.
-# for tracking versions
-
 BDEPEND="!minimal? (
 		acct-group/ldap
 		acct-user/ldap
 )
 "
 
+# for tracking versions
 OPENLDAP_VERSIONTAG=".version-tag"
 OPENLDAP_DEFAULTDIR_VERSIONTAG="/var/lib/openldap-data"
 
@@ -754,13 +754,13 @@ multilib_src_install() {
 		#newdoc acl/README*
 		newdoc addpartial/README addpartial-README
 		newdoc allop/README allop-README
-		newdoc allowed/README  allowed-README
+		newdoc allowed/README allowed-README
 		newdoc autogroup/README autogroup-README
 		newdoc dsaschema/README dsaschema-README
 		newdoc passwd/README passwd-README
 		cd "${S}/contrib/slapi-plugins" || die
 		insinto /usr/$(get_libdir)/openldap/openldap
-		doins  */*.so
+		doins */*.so
 		docinto contrib
 		newdoc addrdnvalues/README addrdnvalues-README
 

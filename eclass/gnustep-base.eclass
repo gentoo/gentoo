@@ -1,16 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Internal handling of GNUstep pacakges
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
 # packages
 
-inherit eutils flag-o-matic
+case ${EAPI:-0} in
+	[567]) inherit eutils ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_install pkg_postinst
+
+if [[ -z ${_GNUSTEP_BASE_ECLASS} ]] ; then
+_GNUSTEP_BASE_ECLASS=1
+
+inherit flag-o-matic
 
 # IUSE variables across all GNUstep packages
 # "debug": enable code for debugging
@@ -63,7 +73,7 @@ gnustep-base_src_prepare() {
 		eend $?
 	fi
 
-	! has ${EAPI:-0} 0 1 2 3 4 5 && default
+	! has ${EAPI} 5 && default
 }
 
 gnustep-base_src_configure() {
@@ -75,10 +85,6 @@ gnustep-base_src_configure() {
 
 gnustep-base_src_compile() {
 	egnustep_env
-	case ${EAPI:-0} in
-		0|1) gnustep-base_src_configure ;;
-	esac
-
 	egnustep_make
 }
 
@@ -263,7 +269,4 @@ EOF
 	doexe "${T}"/${cfile}
 }
 
-case ${EAPI:-0} in
-	0|1) EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_install pkg_postinst ;;
-	*) EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_compile src_install pkg_postinst ;;
-esac
+fi

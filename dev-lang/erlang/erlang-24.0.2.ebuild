@@ -54,6 +54,11 @@ src_prepare() {
 	default
 
 	tc-export AR CPP CXX LD
+
+	# bug #797886: erlang's VM does unsafe casts for ints
+	# to pointers and back. This breaks on gcc-11 -flto.
+	append-flags -fno-strict-aliasing
+
 	./otp_build autoconf || die
 }
 

@@ -11,7 +11,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snaps
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="static"
 
 LIB_DEPEND="dev-libs/openssl:0=[static-libs(+)]"
@@ -36,6 +36,11 @@ src_prepare() {
 		append-ldflags -static
 		sed -i "s/-lcrypto\b/$($(tc-getPKG_CONFIG) --static --libs libcrypto)/g" \
 			Makefile || die
+	fi
+
+	# Let it build with clang.
+	if tc-is-clang; then
+		sed -i -e 's/-fno-toplevel-reorder//g' Make.rules || die
 	fi
 
 	# Respect users CFLAGS

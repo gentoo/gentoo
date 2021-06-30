@@ -40,6 +40,12 @@ src_prepare() {
 	sed -i -e "s:/doc/\$\$TARGET:/doc/${PF}:" \
 		-e "s:-lhamlib:-L/usr/$(get_libdir)/hamlib -lhamlib:g" \
 		qsstv.pro || die
+
+	# prepare for media-radio/hamlib-4.2 change of API
+	if has_version '>=media-libs/hamlib-4.2' ; then
+		sed -i -e "s/FILPATHLEN/HAMLIB_FILPATHLEN/g" "${S}"/rig/rigcontrol.cpp \
+			|| die
+	fi
 }
 
 src_configure() {

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# this file is installed by sys-kernel/installkernel-systemd-boot
+
+COMMAND="${1}"
+ENTRY_DIR_ABS="${3}"
+
+# this is exported by kernel-install
+if ! [[ $KERNEL_INSTALL_MACHINE_ID ]]; then
+    exit 0
+fi
+
+if [[ $COMMAND != add ]]; then
+    exit 0
+fi
+
+# If the machine-id dir does not exist (e.g. $ESP/<machine-id>)
+# create it. It receives values directly from kernel-install.
+# This is the only function of this plugin.
+MACHINE_ID_DIR="${ENTRY_DIR_ABS%/*}"
+if ! [[ -d "${MACHINE_ID_DIR}" ]]; then
+	if [[ "${KERNEL_INSTALL_VERBOSE}" -gt 0 ]]; then
+    		echo "+mkdir -v -p ${MACHINE_ID_DIR}"
+    		mkdir -v -p "${MACHINE_ID_DIR}"
+	else
+    		mkdir -p "${MACHINE_ID_DIR}"
+	fi
+fi

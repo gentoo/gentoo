@@ -6,18 +6,15 @@
 # ros@gentoo.org
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Template eclass for catkin based ROS packages.
 # @DESCRIPTION:
 # Provides function for building ROS packages on Gentoo.
 # It supports selectively building messages, single-python installation, live ebuilds (git only).
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		die "EAPI='${EAPI}' is not supported"
-		;;
-	*)
-		;;
+	7) ;;
+	*) die "EAPI='${EAPI}' is not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: ROS_REPO_URI

@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: common ebuild functions for meson-based packages
 # @DESCRIPTION:
 # This eclass contains the default phase functions for packages which
@@ -15,7 +15,7 @@
 # Typical ebuild using meson.eclass:
 #
 # @CODE
-# EAPI=6
+# EAPI=8
 #
 # inherit meson
 #
@@ -23,7 +23,7 @@
 #
 # src_configure() {
 # 	local emesonargs=(
-# 		$(meson_use qt4)
+# 		$(meson_use qt5)
 # 		$(meson_feature threads)
 # 		$(meson_use bindist official_branding)
 # 	)
@@ -34,35 +34,28 @@
 #
 # @CODE
 
-case ${EAPI:-0} in
-	6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
-if [[ -z ${_MESON_ECLASS} ]]; then
-
-inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
-
-if [[ ${EAPI} == 6 ]]; then
-	inherit eapi7-ver
-fi
-
-fi
-
-EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-MESON_DEPEND=">=dev-util/meson-0.56.0
+[[ ${EAPI} == 6 ]] && inherit eapi7-ver
+inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+
+EXPORT_FUNCTIONS src_configure src_compile src_test src_install
+
+_MESON_DEPEND=">=dev-util/meson-0.56.0
 	>=dev-util/ninja-1.8.2
 	dev-util/meson-format-array
 "
 
-if [[ ${EAPI:-0} == [6] ]]; then
-	DEPEND=${MESON_DEPEND}
+if [[ ${EAPI} == 6 ]]; then
+	DEPEND=${_MESON_DEPEND}
 else
-	BDEPEND=${MESON_DEPEND}
+	BDEPEND=${_MESON_DEPEND}
 fi
 
 # @ECLASS-VARIABLE: BUILD_DIR

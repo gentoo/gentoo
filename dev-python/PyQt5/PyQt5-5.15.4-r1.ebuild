@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit multibuild python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
-HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/intro"
+HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/intro https://pypi.org/project/PyQt5/"
 
 MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then

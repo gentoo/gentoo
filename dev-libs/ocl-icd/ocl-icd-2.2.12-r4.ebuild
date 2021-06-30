@@ -19,7 +19,6 @@ IUSE="+khronos-headers"
 
 BDEPEND="${RUBY_DEPS}"
 DEPEND="~dev-util/opencl-headers-2020.06.16"
-DEPEND="dev-util/opencl-headers"
 RDEPEND="${DEPEND}
 	!app-eselect/eselect-opencl
 	!dev-libs/opencl-icd-loader"

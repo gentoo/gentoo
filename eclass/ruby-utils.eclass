@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-utils.eclass
@@ -6,6 +6,7 @@
 # Ruby team <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: An eclass for supporting ruby scripts and bindings in non-ruby packages
 # @DESCRIPTION:
 # The ruby-utils eclass is designed to allow an easier installation of
@@ -14,6 +15,10 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 
+case ${EAPI:-0} in
+	[567]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 if [[ ! ${_RUBY_UTILS} ]]; then
 

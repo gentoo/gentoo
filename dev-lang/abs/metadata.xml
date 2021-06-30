@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/abs-lang/abs/issues</bugs-to>
+		<changelog>https://github.com/abs-lang/abs/commits/master</changelog>
+		<doc>https://www.abs-lang.org/docs/</doc>
+		<remote-id type="github">abs-lang/abs</remote-id>
+	</upstream>
+</pkgmetadata>

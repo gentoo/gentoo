@@ -4,7 +4,7 @@
 # @ECLASS: flag-o-matic.eclass
 # @MAINTAINER:
 # toolchain@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: common functions to manipulate and query toolchain flags
 # @DESCRIPTION:
 # This eclass contains a suite of functions to help developers sanely
@@ -12,7 +12,7 @@
 
 case ${EAPI:-0} in
 	0|1|2|3|4) die "flag-o-matic.eclass: EAPI ${EAPI} is too old." ;;
-	5|6|7) ;;
+	5|6|7|8) ;;
 	*) die "EAPI ${EAPI} is not supported by flag-o-matic.eclass." ;;
 esac
 

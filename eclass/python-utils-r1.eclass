@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Utility functions for packages with Python parts.
 # @DESCRIPTION:
 # A utility eclass providing functions to query Python implementations,
@@ -24,7 +24,7 @@
 # See bug #704286, bug #781878
 case "${EAPI:-0}" in
 	[0-5]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	[6-7]) ;;
+	[6-8]) ;;
 	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
 
@@ -34,6 +34,7 @@ fi
 
 if [[ ! ${_PYTHON_UTILS_R1} ]]; then
 
+[[ ${EAPI} == [67] ]] && inherit eapi8-dosym
 inherit toolchain-funcs
 
 # @ECLASS-VARIABLE: _PYTHON_ALL_IMPLS
@@ -188,11 +189,8 @@ _python_set_impls() {
 # of the patterns following it. Return 0 if it does, 1 otherwise.
 # Matches if no patterns are provided.
 #
-# <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns can be
-# either:
-# a) fnmatch-style patterns, e.g. 'python2*', 'pypy'...
-# b) '-2' to indicate all Python 2 variants (= !python_is_python3)
-# c) '-3' to indicate all Python 3 variants (= python_is_python3)
+# <impl> can be in PYTHON_COMPAT or EPYTHON form. The patterns
+# are fnmatch-style.
 _python_impl_matches() {
 	[[ ${#} -ge 1 ]] || die "${FUNCNAME}: takes at least 1 parameter"
 	[[ ${#} -eq 1 ]] && return 0
@@ -201,15 +199,30 @@ _python_impl_matches() {
 	shift
 
 	for pattern; do
-		if [[ ${pattern} == -2 ]]; then
-			python_is_python3 "${impl}" || return 0
-		elif [[ ${pattern} == -3 ]]; then
-			python_is_python3 "${impl}" && return 0
-			return
-		# unify value style to allow lax matching
-		elif [[ ${impl/./_} == ${pattern/./_} ]]; then
-			return 0
-		fi
+		case ${pattern} in
+			-2|python2*|pypy)
+				if [[ ${EAPI} != [67] ]]; then
+					eerror
+					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
+					eerror "${FUNCNAME[1]} calls."
+					die "Passing ${pattern} to ${FUNCNAME[1]} is banned in EAPI ${EAPI}"
+				fi
+				;;
+			-3)
+				# NB: "python3*" is fine, as "not pypy3"
+				if [[ ${EAPI} != [67] ]]; then
+					eerror
+					eerror "Python 2 is no longer supported in Gentoo, please remove Python 2"
+					eerror "${FUNCNAME[1]} calls."
+					die "Passing ${pattern} to ${FUNCNAME[1]} is banned in EAPI ${EAPI}"
+				fi
+				return 0
+				;;
+			*)
+				# unify value style to allow lax matching
+				[[ ${impl/./_} == ${pattern/./_} ]] && return 0
+				;;
+		esac
 	done
 
 	return 1
@@ -264,6 +277,8 @@ python_export() {
 
 	eqawarn "python_export() is part of private eclass API."
 	eqawarn "Please call python_get*() instead."
+
+	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
 
 	_python_export "${@}"
 }
@@ -534,46 +549,6 @@ python_get_scriptdir() {
 	echo "${PYTHON_SCRIPTDIR}"
 }
 
-# @FUNCTION: _python_ln_rel
-# @USAGE: <from> <to>
-# @INTERNAL
-# @DESCRIPTION:
-# Create a relative symlink.
-_python_ln_rel() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local target=${1}
-	local symname=${2}
-
-	local tgpath=${target%/*}/
-	local sympath=${symname%/*}/
-	local rel_target=
-
-	while [[ ${sympath} ]]; do
-		local tgseg= symseg=
-
-		while [[ ! ${tgseg} && ${tgpath} ]]; do
-			tgseg=${tgpath%%/*}
-			tgpath=${tgpath#${tgseg}/}
-		done
-
-		while [[ ! ${symseg} && ${sympath} ]]; do
-			symseg=${sympath%%/*}
-			sympath=${sympath#${symseg}/}
-		done
-
-		if [[ ${tgseg} != ${symseg} ]]; then
-			rel_target=../${rel_target}${tgseg:+${tgseg}/}
-		fi
-	done
-	rel_target+=${tgpath}${target##*/}
-
-	debug-print "${FUNCNAME}: ${symname} -> ${target}"
-	debug-print "${FUNCNAME}: rel_target = ${rel_target}"
-
-	ln -fs "${rel_target}" "${symname}"
-}
-
 # @FUNCTION: python_optimize
 # @USAGE: [<directory>...]
 # @DESCRIPTION:
@@ -659,7 +634,7 @@ python_optimize() {
 python_scriptinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_scriptroot=${1}
+	_PYTHON_SCRIPTROOT=${1}
 }
 
 # @FUNCTION: python_doexe
@@ -694,7 +669,7 @@ python_newexe() {
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <path> <new-name>"
 
-	local wrapd=${python_scriptroot:-/usr/bin}
+	local wrapd=${_PYTHON_SCRIPTROOT:-/usr/bin}
 
 	local f=${1}
 	local newfn=${2}
@@ -710,8 +685,9 @@ python_newexe() {
 	)
 
 	# install the wrapper
-	_python_ln_rel "${ED%/}"/usr/lib/python-exec/python-exec2 \
-		"${ED%/}/${wrapd}/${newfn}" || die
+	local dosym=dosym
+	[[ ${EAPI} == [67] ]] && dosym=dosym8
+	"${dosym}" -r /usr/lib/python-exec/python-exec2 "${wrapd}/${newfn}"
 
 	# don't use this at home, just call python_doscript() instead
 	if [[ ${_PYTHON_REWRITE_SHEBANG} ]]; then
@@ -797,7 +773,7 @@ python_newscript() {
 python_moduleinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	python_moduleroot=${1}
+	_PYTHON_MODULEROOT=${1}
 }
 
 # @FUNCTION: python_domodule
@@ -821,13 +797,13 @@ python_domodule() {
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
 	local d
-	if [[ ${python_moduleroot} == /* ]]; then
+	if [[ ${_PYTHON_MODULEROOT} == /* ]]; then
 		# absolute path
-		d=${python_moduleroot}
+		d=${_PYTHON_MODULEROOT}
 	else
 		# relative to site-packages
 		local sitedir=$(python_get_sitedir)
-		d=${sitedir#${EPREFIX}}/${python_moduleroot//.//}
+		d=${sitedir#${EPREFIX}}/${_PYTHON_MODULEROOT//.//}
 	fi
 
 	(
@@ -878,6 +854,8 @@ python_wrapper_setup() {
 	eqawarn "python_wrapper_setup() is part of private eclass API."
 	eqawarn "Please call python_setup() instead."
 
+	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
+
 	_python_wrapper_setup "${@}"
 }
 
@@ -917,7 +895,7 @@ _python_wrapper_setup() {
 		_python_export "${impl}" EPYTHON PYTHON
 
 		local pyver pyother
-		if python_is_python3; then
+		if [[ ${EPYTHON} != python2* ]]; then
 			pyver=3
 			pyother=2
 		else
@@ -996,6 +974,9 @@ _python_wrapper_setup() {
 #
 # Returns 0 (true) if it is, 1 (false) otherwise.
 python_is_python3() {
+	eqawarn "${FUNCNAME} is deprecated, as Python 2 is not supported anymore"
+	[[ ${EAPI} == [67] ]] || die "${FUNCNAME} banned in EAPI ${EAPI}"
+
 	local impl=${1:-${EPYTHON}}
 	[[ ${impl} ]] || die "python_is_python3: no impl nor EPYTHON"
 
@@ -1094,32 +1075,31 @@ python_fix_shebang() {
 							if [[ ${i} == *python2 ]]; then
 								from=python2
 								if [[ ! ${force} ]]; then
-									python_is_python3 "${EPYTHON}" && error=1
+									error=1
 								fi
 							elif [[ ${i} == *python3 ]]; then
 								from=python3
-								if [[ ! ${force} ]]; then
-									python_is_python3 "${EPYTHON}" || error=1
-								fi
 							else
 								from=python
 							fi
 							break
 							;;
-						*python[23].[0123456789]|*pypy|*pypy3|*jython[23].[0123456789])
+						*python[23].[0-9]|*python3.[1-9][0-9]|*pypy|*pypy3|*jython[23].[0-9])
 							# Explicit mismatch.
 							if [[ ! ${force} ]]; then
 								error=1
 							else
 								case "${i}" in
-									*python[23].[0123456789])
-										from="python[23].[0123456789]";;
+									*python[23].[0-9])
+										from="python[23].[0-9]";;
+									*python3.[1-9][0-9])
+										from="python3.[1-9][0-9]";;
 									*pypy)
 										from="pypy";;
 									*pypy3)
 										from="pypy3";;
-									*jython[23].[0123456789])
-										from="jython[23].[0123456789]";;
+									*jython[23].[0-9])
+										from="jython[23].[0-9]";;
 									*)
 										die "${FUNCNAME}: internal error in 2nd pattern match";;
 								esac

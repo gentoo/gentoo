@@ -9,5 +9,6 @@
 	<flag name="archive">Enables ISO detection with <pkg>app-arch/libarchive</pkg></flag>
 	<flag name="crypt">Support AmazonAMZ decoding with <pkg>dev-libs/libgcrypt</pkg></flag>
 	<flag name="quvi">Use <pkg>media-libs/libquvi</pkg> for parsing video links</flag>
+	<flag name="uchardet">Enable charset discovery via <pkg>app-i18n/uchardet</pkg></flag>
 </use>
 </pkgmetadata>

@@ -18,3 +18,5 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 RDEPEND="virtual/pkgconfig"
 
 distutils_enable_tests pytest
+
+PATCHES=( "${FILESDIR}"/${P}-brittle-tests.patch )

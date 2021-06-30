@@ -4,6 +4,7 @@
 # @ECLASS: apache-module.eclass
 # @MAINTAINER:
 # apache-bugs@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides a common set of functions for apache modules
 # @DESCRIPTION:
 # This eclass handles apache modules in a sane way.
@@ -43,6 +44,16 @@
 # LoadModule foo_module modules/mod_foo.so
 # </IfDefine>
 # @CODE
+
+case ${EAPI} in
+	[5-7]) ;;
+	*)     die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS src_compile src_install pkg_postinst
+
+if [[ -z ${_APACHE_MODULE_ECLASS} ]]; then
+_APACHE_MODULE_ECLASS=1
 
 inherit depend.apache
 
@@ -235,4 +246,4 @@ apache-module_pkg_postinst() {
 	fi
 }
 
-EXPORT_FUNCTIONS src_compile src_install pkg_postinst
+fi

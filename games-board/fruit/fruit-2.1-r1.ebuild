@@ -1,41 +1,38 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit versionator
+EAPI=8
 
-MY_PV="$(replace_all_version_separators '')"
-MY_P="${PN}_${MY_PV}_linux"
+inherit toolchain-funcs
+
+MY_P="${PN}_$(ver_rs 1- '')_linux"
 
 DESCRIPTION="UCI-only chess engine"
-HOMEPAGE="http://arctrix.com/nas/fruit/"
-SRC_URI="http://arctrix.com/nas/${PN}/${MY_P}.zip"
+HOMEPAGE="https://arctrix.com/nas/fruit/"
+SRC_URI="https://arctrix.com/nas/${PN}/${MY_P}.zip"
+S="${WORKDIR}/${MY_P}/src"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND=""
-DEPEND="app-arch/unzip"
-
-S="${WORKDIR}/${MY_P}/src"
+BDEPEND="app-arch/unzip"
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}/${P}"-gentoo.patch
-	sed -i \
-		-e "s:@GENTOO_DATADIR@:/usr/share/${PN}:" \
-		option.cpp || die
-	sed -i \
-		-e '/^CXX/d' \
-		-e '/^LDFLAGS/d' \
-		Makefile || die
+
+	sed -i "s|book_small|${EPREFIX}/usr/share/${PN}/book_small|" option.cpp || die
+}
+
+src_compile() {
+	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
 	dobin ${PN}
-	insinto "/usr/share/${PN}"
+
+	insinto /usr/share/${PN}
 	doins ../book_small.bin
-	dodoc ../readme.txt ../technical_10.txt
+
+	dodoc ../{readme,technical_10}.txt
 }

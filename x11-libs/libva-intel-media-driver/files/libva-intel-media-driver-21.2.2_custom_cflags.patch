@@ -1,0 +1,52 @@
+    Prevent overriding of user-defined CFLAGS.
+
+
+--- a/media_driver/cmake/linux/media_compile_flags_linux.cmake
++++ b/media_driver/cmake/linux/media_compile_flags_linux.cmake
+@@ -51,16 +51,26 @@ set(MEDIA_COMPILER_FLAGS_COMMON
+     -fdata-sections
+     -ffunction-sections
+     -Wl,--gc-sections
++)
+ 
++if (OVERRIDE_COMPILER_FLAGS)
++    list (APPEND MEDIA_COMPILER_FLAGS_COMMON
+     # -m32 or -m64
+     -m${ARCH}
++)
++endif(OVERRIDE_COMPILER_FLAGS)
+ 
++list (APPEND MEDIA_COMPILER_FLAGS_COMMON
+     # Global defines
+     -DLINUX=1
+     -DLINUX
+     -DNO_RTTI
+     -DNO_EXCEPTION_HANDLING
+     -DINTEL_NOT_PUBLIC
++)
++
++if (OVERRIDE_COMPILER_FLAGS)
++    list (APPEND MEDIA_COMPILER_FLAGS_COMMON
+     -g
+ )
+ 
+@@ -73,6 +83,7 @@ if(${UFO_MARCH} STREQUAL "slm")
+         -mtune=atom
+     )
+ endif()
++endif(OVERRIDE_COMPILER_FLAGS)
+ 
+ if(${ARCH} STREQUAL "64")
+     set(MEDIA_COMPILER_FLAGS_COMMON
+@@ -189,9 +200,11 @@ include(${MEDIA_EXT_CMAKE}/ext/linux/media_compile_flags_linux_ext.cmake OPTIONA
+ if(${PLATFORM} STREQUAL "linux")
+     #set predefined compiler flags set
+     add_compile_options("${MEDIA_COMPILER_FLAGS_COMMON}")
++if (OVERRIDE_COMPILER_FLAGS)
+     add_compile_options("$<$<CONFIG:Debug>:${MEDIA_COMPILER_FLAGS_DEBUG}>")
+     add_compile_options("$<$<CONFIG:Release>:${MEDIA_COMPILER_FLAGS_RELEASE}>")
+     add_compile_options("$<$<CONFIG:ReleaseInternal>:${MEDIA_COMPILER_FLAGS_RELEASEINTERNAL}>")
++endif(OVERRIDE_COMPILER_FLAGS)
+ 
+     foreach (flag ${MEDIA_COMPILER_CXX_FLAGS_COMMON})
+         SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")

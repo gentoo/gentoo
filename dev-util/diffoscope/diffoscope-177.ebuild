@@ -19,9 +19,20 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="acl binutils bzip2 libcaca colord cpio +diff docx dtc e2fsprogs file
 find gettext gif gpg gzip haskell hdf5 hex imagemagick iso java llvm
 mono opendocument pascal pdf postscript R rpm sqlite squashfs
-ssh tar tcpdump xz zip zstd"
+ssh tar test tcpdump xz zip zstd"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RESTRICT="!test? ( test )"
+
+# pull in optional tools for tests:
+# img2txt: bug #797688
+# docx2txt: bug #797688
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
+		app-text/docx2txt
+		media-libs/libcaca
+	)
+"
 RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	dev-python/libarchive-c[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
@@ -84,6 +95,19 @@ python_test() {
 
 		# needs triage
 		tests/comparators/test_rlib.py::test_item3_deflate_llvm_bitcode
+
+		# img2txt based failures, bug #797688
+		tests/comparators/test_ico_image.py::test_diff
+		tests/comparators/test_ico_image.py::test_diff_meta
+		tests/comparators/test_ico_image.py::test_diff_meta2
+		tests/comparators/test_ico_image.py::test_has_visuals
+		tests/comparators/test_jpeg_image.py::test_diff
+		tests/comparators/test_jpeg_image.py::test_compare_non_existing
+		tests/comparators/test_jpeg_image.py::test_diff_meta
+		tests/comparators/test_jpeg_image.py::test_has_visuals
+
+		# docx2txt based falures, bug #797688
+		tests/comparators/test_docx.py::test_diff
 	)
 	epytest ${exclude[@]/#/--deselect }
 }

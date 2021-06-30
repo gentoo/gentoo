@@ -6,7 +6,7 @@
 # Sam James <sam@gentoo.org>
 # @AUTHOR:
 # Will Woods <wwoods@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Refresh bundled gnuconfig files (config.guess, config.sub)
 # @DESCRIPTION:
 # This eclass is used to automatically update files that typically come with
@@ -17,11 +17,8 @@
 #
 
 case ${EAPI:-0} in
-	5|6|7)
-		;;
-	*)
-		die "EAPI ${EAPI} is unsupported!"
-		;;
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_GNUCONFIG_ECLASS} ]] ; then

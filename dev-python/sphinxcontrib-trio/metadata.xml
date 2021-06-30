@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
+This sphinx extension helps you document Python code that uses async/await, or abstract methods, or context managers, or generators, or … you get the idea. It works by making sphinx’s regular directives for documenting Python functions and methods smarter and more powerful. The name is because it was originally written for the Trio project, and I’m not very creative. But don’t be put off – there’s nothing Trio- or async-specific about this extension; any Python project can benefit. (Though projects using async/await probably benefit the most, since sphinx’s built-in tools are especially inadequate in this case.)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">python-trio/sphinxcontrib-trio</remote-id>
+		<remote-id type="pypi">sphinxcontrib-trio</remote-id>
+	</upstream>
+</pkgmetadata>

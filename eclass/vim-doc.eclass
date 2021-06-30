@@ -1,6 +1,12 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
+
+# @ECLASS: vim-doc.eclass
+# @MAINTAINER:
+# vim@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
+# @BLURB: Eclass for vim{,-plugin}.eclass to update documentation tags.
+# @DESCRIPTION:
 # This eclass is used by vim.eclass and vim-plugin.eclass to update
 # the documentation tags.  This is necessary since vim doesn't look in
 # /usr/share/vim/vimfiles/doc for documentation; it only uses the
@@ -10,9 +16,15 @@
 # DEPEND in vim-plugin or by whatever version of vim is being
 # installed by the eclass.
 
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_VIM_DOC_ECLASS} ]] ; then
+_VIM_DOC_ECLASS=1
 
 update_vim_helptags() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local vimfiles vim d s
 
 	# This is where vim plugins are installed
@@ -70,3 +82,5 @@ update_vim_helptags() {
 
 	[[ -n "${vim}" && -f "${vim}" ]] && rm "${vim}"
 }
+
+fi

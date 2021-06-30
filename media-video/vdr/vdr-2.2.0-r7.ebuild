@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic l10n toolchain-funcs
+inherit flag-o-matic strip-linguas toolchain-funcs
 
 # Switches supported by extensions-patch
 EXT_PATCH_FLAGS="alternatechannel graphtft naludump permashift pinplugin

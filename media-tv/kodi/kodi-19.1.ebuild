@@ -30,6 +30,10 @@ else
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
+PATCHES=(
+	"${FILESDIR}/${P}-fmt-8.patch"
+)
+
 inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"

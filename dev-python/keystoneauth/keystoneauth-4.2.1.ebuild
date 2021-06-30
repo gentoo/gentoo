@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_7 python3_8 )
-DISTUTILS_USE_SETUPTOOLS=bdepend
 
+PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
 DESCRIPTION="This package contains tools for authenticating to an OpenStack-based cloud."

@@ -20,7 +20,7 @@ HOMEPAGE="https://vmc-project.github.io/ https://github.com/vmc-project/vmc"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+c++11 c++14 c++17 doc"
+IUSE="c++11 c++14 +c++17 doc"
 
 REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
 

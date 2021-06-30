@@ -4,6 +4,7 @@
 # @ECLASS: mono.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 7
 # @BLURB: common settings and functions for mono and dotnet related packages
 # @DEPRECATED: mono-env
 # @DESCRIPTION:
@@ -11,6 +12,14 @@
 # dotnet packages.  Currently, it provides no functions, just exports
 # MONO_SHARED_DIR and sets LC_ALL in order to prevent errors during compilation
 # of dotnet packages.
+
+case ${EAPI:-0} in
+	7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
+if [[ -z ${_MONO_ECLASS} ]] ; then
+_MONO_ECLASS=1
 
 inherit multilib
 
@@ -79,3 +88,5 @@ mono_multilib_comply() {
 
 	fi
 }
+
+fi

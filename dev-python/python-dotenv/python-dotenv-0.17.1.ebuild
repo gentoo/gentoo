@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~sparc ~x86"
 
 DEPEND="
 	test? (
@@ -23,6 +23,7 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/sh-1.09[${PYTHON_USEDEP}]
 	)"
+RDEPEND="!dev-ruby/dotenv"  # bug 798648
 
 DOCS=( CHANGELOG.md README.md )
 

@@ -1,13 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop toolchain-funcs
 
 DESCRIPTION="Fast paced action game"
 HOMEPAGE="https://icculus.org/excido/"
-SRC_URI="https://icculus.org/excido/${P}-src.tar.bz2"
+SRC_URI="
+	https://icculus.org/excido/${P}-src.tar.bz2
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -43,5 +45,6 @@ src_install() {
 	dodoc BUGS CHANGELOG HACKING README TODO \
 		data/{CREDITS,readme-jf-nebula_sky.txt} keyguide.txt
 
-	make_desktop_entry ${PN} Excido applications-games "Game;ArcadeGame"
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} Excido
 }

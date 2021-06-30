@@ -11,7 +11,7 @@ SRC_URI="https://developers.yubico.com/${PN/_/-}/Releases/${P}.tar.gz"
 
 LICENSE="BSD ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="

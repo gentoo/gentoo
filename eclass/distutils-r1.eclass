@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
 # Based on the work of: Krzysztof Pawlik <nelchael@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: A simple eclass to build Python packages using distutils.
 # @DESCRIPTION:
 # A simple eclass providing functions to build Python packages using
@@ -47,7 +47,7 @@ case "${EAPI:-0}" in
 	[0-5])
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	[6-7])
+	[6-8])
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -129,7 +129,7 @@ _distutils_set_globals() {
 			rdep+=" ${setuptools_dep}"
 			;;
 		pyproject.toml)
-			bdep+=' dev-python/pyproject2setuppy[${PYTHON_USEDEP}]'
+			bdep+=' >=dev-python/pyproject2setuppy-15[${PYTHON_USEDEP}]'
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
@@ -248,15 +248,16 @@ unset -f _distutils_set_globals
 # }
 # @CODE
 
-# @ECLASS-VARIABLE: mydistutilsargs
+# @ECLASS-VARIABLE: DISTUTILS_ARGS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# An array containing options to be passed to setup.py.
+# An array containing options to be passed to setup.py.  They are passed
+# before the default arguments, i.e. before the first command.
 #
 # Example:
 # @CODE
 # python_configure_all() {
-# 	mydistutilsargs=( --enable-my-hidden-option )
+# 	DISTUTILS_ARGS=( --enable-my-hidden-option )
 # }
 # @CODE
 
@@ -420,7 +421,7 @@ distutils_enable_tests() {
 			test_deps+=" ${test_pkg}[${PYTHON_USEDEP}]"
 		else
 			test_deps+=" $(python_gen_cond_dep "
-				${test_pkg}[\${PYTHON_MULTI_USEDEP}]
+				${test_pkg}[\${PYTHON_USEDEP}]
 			")"
 		fi
 	fi
@@ -446,8 +447,9 @@ distutils_enable_tests() {
 # (if ${EPYTHON} is set; fallback 'python' otherwise).
 #
 # setup.py will be passed the following, in order:
-# 1. ${mydistutilsargs[@]}
-# 2. additional arguments passed to the esetup.py function.
+# 1. ${DISTUTILS_ARGS[@]}
+# 2. ${mydistutilsargs[@]} (deprecated)
+# 3. additional arguments passed to the esetup.py function.
 #
 # Please note that setup.py will respect defaults (unless overridden
 # via command-line options) from setup.cfg that is created
@@ -463,11 +465,15 @@ esetup.py() {
 
 	local setup_py=( setup.py )
 	if [[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]]; then
-		# TODO: remove '.main' when we require v10
-		setup_py=( -m pyproject2setuppy.main )
+		setup_py=( -m pyproject2setuppy )
 	fi
 
-	set -- "${EPYTHON}" "${setup_py[@]}" "${mydistutilsargs[@]}" "${@}"
+	if [[ ${EAPI} != [67] && ${mydistutilsargs[@]} ]]; then
+		die "mydistutilsargs is banned in EAPI ${EAPI} (use DISTUTILS_ARGS)"
+	fi
+
+	set -- "${EPYTHON}" "${setup_py[@]}" "${DISTUTILS_ARGS[@]}" \
+		"${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
 	"${@}" || die -n
@@ -526,6 +532,7 @@ distutils_install_for_testing() {
 	local install_method=root
 	case ${1} in
 		--via-home)
+			[[ ${EAPI} == [67] ]] || die "${*} is banned in EAPI ${EAPI}"
 			install_method=home
 			shift
 			;;
@@ -609,6 +616,20 @@ _distutils-r1_handle_pyproject_toml() {
 	fi
 }
 
+# @FUNCTION: _distutils-r1_check_all_phase_mismatch
+# @DESCRIPTION:
+# Verify whether *_all phase impls is not called from from non-*_all
+# subphase.
+_distutils-r1_check_all_phase_mismatch() {
+	if has "python_${EBUILD_PHASE}" "${FUNCNAME[@]}"; then
+		eqawarn "QA Notice: distutils-r1_python_${EBUILD_PHASE}_all called"
+		eqawarn "from python_${EBUILD_PHASE}.  Did you mean to use"
+		eqawarn "python_${EBUILD_PHASE}_all()?"
+		[[ ${EAPI} != [67] ]] &&
+			die "distutils-r1_python_${EBUILD_PHASE}_all called from python_${EBUILD_PHASE}."
+	fi
+}
+
 # @FUNCTION: distutils-r1_python_prepare_all
 # @DESCRIPTION:
 # The default python_prepare_all(). It applies the patches from PATCHES
@@ -619,6 +640,7 @@ _distutils-r1_handle_pyproject_toml() {
 # distutils patches and/or quirks.
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_distutils-r1_check_all_phase_mismatch
 
 	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
 		default
@@ -733,24 +755,23 @@ distutils-r1_python_compile() {
 }
 
 # @FUNCTION: _distutils-r1_wrap_scripts
-# @USAGE: <path> <bindir>
+# @USAGE: <bindir>
 # @INTERNAL
 # @DESCRIPTION:
 # Moves and wraps all installed scripts/executables as necessary.
 _distutils-r1_wrap_scripts() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${#} -eq 2 ]] || die "usage: ${FUNCNAME} <path> <bindir>"
-	local path=${1}
-	local bindir=${2}
+	[[ ${#} -eq 1 ]] || die "usage: ${FUNCNAME} <bindir>"
+	local bindir=${1}
 
 	local scriptdir=$(python_get_scriptdir)
 	local f python_files=() non_python_files=()
 
-	if [[ -d ${path}${scriptdir} ]]; then
-		for f in "${path}${scriptdir}"/*; do
+	if [[ -d ${D%/}${scriptdir} ]]; then
+		for f in "${D%/}${scriptdir}"/*; do
 			[[ -d ${f} ]] && die "Unexpected directory: ${f}"
-			debug-print "${FUNCNAME}: found executable at ${f#${path}/}"
+			debug-print "${FUNCNAME}: found executable at ${f#${D%/}/}"
 
 			local shebang
 			read -r shebang < "${f}"
@@ -762,22 +783,24 @@ _distutils-r1_wrap_scripts() {
 				non_python_files+=( "${f}" )
 			fi
 
-			mkdir -p "${path}${bindir}" || die
+			mkdir -p "${D%/}${bindir}" || die
 		done
 
 		for f in "${python_files[@]}"; do
 			local basename=${f##*/}
 
 			debug-print "${FUNCNAME}: installing wrapper at ${bindir}/${basename}"
-			_python_ln_rel "${path}${EPREFIX}"/usr/lib/python-exec/python-exec2 \
-				"${path}${bindir}/${basename}" || die
+			local dosym=dosym
+			[[ ${EAPI} == [67] ]] && dosym=dosym8
+			"${dosym}" -r /usr/lib/python-exec/python-exec2 \
+				"${bindir#${EPREFIX}}/${basename}"
 		done
 
 		for f in "${non_python_files[@]}"; do
 			local basename=${f##*/}
 
-			debug-print "${FUNCNAME}: moving ${f#${path}/} to ${bindir}/${basename}"
-			mv "${f}" "${path}${bindir}/${basename}" || die
+			debug-print "${FUNCNAME}: moving ${f#${D%/}/} to ${bindir}/${basename}"
+			mv "${f}" "${D%/}${bindir}/${basename}" || die
 		done
 	fi
 }
@@ -836,7 +859,19 @@ distutils-r1_python_test() {
 distutils-r1_python_install() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	local args=( "${@}" )
+	local root=${D%/}/_${EPYTHON}
+	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
+
+	# inline DISTUTILS_ARGS logic from esetup.py in order to make
+	# argv overwriting easier
+	local args=(
+		"${DISTUTILS_ARGS[@]}"
+		"${mydistutilsargs[@]}"
+		install --skip-build --root="${root}" "${args[@]}"
+		"${@}"
+	)
+	local DISTUTILS_ARGS=()
+	local mydistutilsargs=()
 
 	# enable compilation for the install phase.
 	local -x PYTHONDONTWRITEBYTECODE=
@@ -852,42 +887,31 @@ distutils-r1_python_install() {
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 		# user may override --install-scripts
 		# note: this is poor but distutils argv parsing is dumb
-		local mydistutilsargs=( "${mydistutilsargs[@]}" )
 		local scriptdir=${EPREFIX}/usr/bin
 
-		# construct a list of mydistutilsargs[0] args[0] args[1]...
-		local arg arg_vars
-		[[ ${mydistutilsargs[@]} ]] && eval arg_vars+=(
-			'mydistutilsargs['{0..$(( ${#mydistutilsargs[@]} - 1 ))}']'
-		)
-		[[ ${args[@]} ]] && eval arg_vars+=(
-			'args['{0..$(( ${#args[@]} - 1 ))}']'
-		)
-
-		set -- "${arg_vars[@]}"
+		# rewrite all the arguments
+		set -- "${args[@]}"
+		args=()
 		while [[ ${@} ]]; do
-			local arg_var=${1}
+			local a=${1}
 			shift
-			local a=${!arg_var}
 
-			case "${a}" in
+			case ${a} in
 				--install-scripts=*)
 					scriptdir=${a#--install-scripts=}
-					unset "${arg_var}"
 					;;
 				--install-scripts)
-					scriptdir=${!1}
-					unset "${arg_var}" "${1}"
+					scriptdir=${1}
 					shift
+					;;
+				*)
+					args+=( "${a}" )
 					;;
 			esac
 		done
 	fi
 
-	local root=${D%/}/_${EPYTHON}
-	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
-
-	esetup.py install --skip-build --root="${root}" "${args[@]}"
+	esetup.py "${args[@]}"
 
 	local forbidden_package_names=(
 		examples test tests
@@ -913,8 +937,8 @@ distutils-r1_python_install() {
 	fi
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		_distutils-r1_wrap_scripts "${root}" "${scriptdir}"
 		multibuild_merge_root "${root}" "${D%/}"
+		_distutils-r1_wrap_scripts "${scriptdir}"
 	fi
 }
 
@@ -923,6 +947,7 @@ distutils-r1_python_install() {
 # The default python_install_all(). It installs the documentation.
 distutils-r1_python_install_all() {
 	debug-print-function ${FUNCNAME} "${@}"
+	_distutils-r1_check_all_phase_mismatch
 
 	einstalldocs
 }

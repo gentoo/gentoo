@@ -233,7 +233,7 @@ src_configure() {
 			einfo "Setting CUDA version: $TF_CUDA_VERSION"
 			einfo "Setting CUDNN version: $TF_CUDNN_VERSION"
 
-			if [[ *$(gcc-version)* != $(cuda-config -s) ]]; then
+			if [[ $(cuda-config -s) != *$(gcc-version)* ]]; then
 				ewarn "TensorFlow is being built with Nvidia CUDA support. Your default compiler"
 				ewarn "version is not supported by the currently installed CUDA. TensorFlow will"
 				ewarn "instead be compiled using: ${GCC_HOST_COMPILER_PATH}."

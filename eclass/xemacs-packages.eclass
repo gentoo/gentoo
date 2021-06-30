@@ -4,6 +4,7 @@
 # @ECLASS: xemacs-packages.eclass
 # @MAINTAINER:
 # xemacs@gentoo.org
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass to support elisp packages distributed by XEmacs.
 # @DESCRIPTION:
 # This eclass supports ebuilds for packages distributed by XEmacs.
@@ -23,7 +24,15 @@
 # in the experimental repository are auto-generated from XEmacs VCS, so
 # they may not be well-tested.
 
+case ${EAPI:-0} in
+	[67]) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 EXPORT_FUNCTIONS src_unpack src_install
+
+if [[ -z ${_XEMACS_PACKAGES_ECLASS} ]] ; then
+_XEMACS_PACKAGES_ECLASS=1
 
 RDEPEND="app-editors/xemacs"
 S="${WORKDIR}"
@@ -55,6 +64,8 @@ xemacs-packages_src_install() {
 	debug-print "install_dir is ${install_dir}"
 
 	dodir "${install_dir}"
-	cd "${D}${EPREFIX}${install_dir}" || die
+	cd "${ED}${install_dir}" || die
 	unpack ${A}
 }
+
+fi

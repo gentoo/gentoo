@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_P="${P/-/_}"
-inherit autotools elisp-common l10n xdg-utils
+inherit autotools elisp-common strip-linguas xdg-utils
 
 DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 HOMEPAGE="https://sawfish.fandom.com/wiki/Main_Page"

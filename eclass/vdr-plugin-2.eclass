@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vdr-plugin-2.eclass
@@ -13,6 +13,12 @@
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
+
+# @ECLASS-VARIABLE: VDRPLUGIN
+# @INTERNAL
+# @DESCRIPTION:
+# The name of the vdr plugin, plain name without "vdr-" or "plugin" prefix or suffix.
+# This variable is derived from ${PN}
 
 # @ECLASS-VARIABLE: VDR_CONFD_FILE
 # @DEFAULT_UNSET
@@ -54,28 +60,6 @@
 # PO_SUBDIR="bla foo/bla"
 # @CODE
 
-# @FUNCTION: fix_vdr_libsi_include
-# @DESCRIPTION:
-# Plugins failed on compile with wrong path of libsi includes,
-# this can be fixed by 'function + space separated list of files'
-#
-# Example:
-# @CODE
-# fix_vdr_libsi_include bla.c foo.c
-# @CODE
-
-# @FUNCTION: vdr_remove_i18n_include
-# @DESCRIPTION:
-# Compile will fail if plugin still use the old i18n language handling,
-# most parts are fixed by vdr-plugin-2.eclass internal functions itself.
-# Remove unneeded i18.n includes from files, if they are still wrong there,
-# this can be fixed by 'function + space separated list of files"
-#
-# Example:
-# @CODE
-# vdr_remove_i18n_include bla.n foo.n
-# @CODE
-
 # Applying your own local/user patches:
 # This is done by using the
 # (EAPI = 5) epatch_user() function of the eutils.eclass,
@@ -112,12 +96,10 @@ DESCRIPTION="vdr Plugin: ${VDRPLUGIN} (based on vdr-plugin-2.eclass)"
 # Works in most cases
 S="${WORKDIR}/${VDRPLUGIN}-${PV}"
 
-# depend on headers for DVB-driver
-COMMON_DEPEND=">=media-tv/gentoo-vdr-scripts-0.4.2"
-
-DEPEND="${COMMON_DEPEND}
+# depend on headers for DVB-driver and vdr-scripts
+DEPEND=">=media-tv/gentoo-vdr-scripts-0.4.2
 	virtual/linuxtv-dvb-headers"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND=">=media-tv/gentoo-vdr-scripts-0.4.2
 	>=app-eselect/eselect-vdr-0.0.2"
 
 if [[ "${GENTOO_VDR_CONDITIONAL:-no}" = "yes" ]]; then
@@ -126,9 +108,13 @@ if [[ "${GENTOO_VDR_CONDITIONAL:-no}" = "yes" ]]; then
 	RDEPEND="vdr? ( ${RDEPEND} )"
 fi
 
+# @FUNCTION: vdr_create_plugindb_file
+# @INTERNAL
+# @USAGE: <plugin name> [more plugin names]
+# @DESCRIPTION:
 # New method of storing plugindb
-#   Called from src_install
-#   file maintained by normal portage-methods
+# Called from src_install
+# file maintained by normal portage-methods
 vdr_create_plugindb_file() {
 	local NEW_VDRPLUGINDB_DIR=/usr/share/vdr/vdrplugin-rebuild/
 	local DB_FILE="${NEW_VDRPLUGINDB_DIR}/${CATEGORY}-${PF}"
@@ -151,6 +137,13 @@ vdr_create_plugindb_file() {
 	} > "${D%/}/${DB_FILE}"
 }
 
+# @FUNCTION: vdr_create_header_checksum_file
+# @USAGE:
+# @INTERNAL
+# @DESCRIPTION:
+# Create a file with md5 checksums of .h header files of the plugin being compiled.
+# The checksum files are used to detect if a plugin is compiled against the current
+# vdr binary.
 vdr_create_header_checksum_file() {
 	# Danger: Not using $ROOT here, as compile will also not use it !!!
 	# If vdr in $ROOT and / differ, plugins will not run anyway
@@ -175,6 +168,11 @@ vdr_create_header_checksum_file() {
 	done
 }
 
+# @FUNCTION: fix_vdr_libsi_include
+# @USAGE: <filename> [more filenames]
+# @DESCRIPTION:
+# Plugins failed on compile with wrong path of libsi includes,
+# this can be fixed by 'function + space separated list of files'
 fix_vdr_libsi_include() {
 	eqawarn "Fixing include of libsi-headers"
 	local f
@@ -185,6 +183,12 @@ fix_vdr_libsi_include() {
 	done
 }
 
+# @FUNCTION: vdr_patchmakefile
+# @USAGE:
+# @INTERNAL
+# @DESCRIPTION:
+# fix Makefile of the plugin for common mistakes often made by the authors or fix
+# missing things introduced with new vdr versions
 vdr_patchmakefile() {
 	einfo "Patching Makefile"
 	[[ -e Makefile ]] || die "Makefile of plugin can not be found!"
@@ -240,6 +244,11 @@ vdr_patchmakefile() {
 	touch "${WORKDIR}"/.vdr-plugin_makefile_patched
 }
 
+# @FUNCTION: vdr_gettext_missing
+# @USAGE:
+# @INTERNAL
+# @DESCRIPTION:
+# emit a warning when a plugin is using the old localization methods
 vdr_gettext_missing() {
 	# plugins without converting to gettext
 
@@ -249,10 +258,13 @@ vdr_gettext_missing() {
 	fi
 }
 
+# @FUNCTION: vdr_detect_po_dir
+# @INTERNAL
+# @USAGE:
+# @DESCRIPTION:
+# helper function to find the
+# DIR ${S}/po or DIR ${S]/_subdir_/po
 vdr_detect_po_dir() {
-#	helper function to find the
-#	DIR ${S}/po or DIR ${S]/_subdir_/po
-
 	[[ -f po ]] && local po_dir="${S}"
 	local po_subdir=( ${S}/${PO_SUBDIR} )
 	local f
@@ -260,10 +272,14 @@ vdr_detect_po_dir() {
 	pofile_dir=( ${po_dir} ${po_subdir[*]} )
 }
 
+# @FUNCTION: vdr_linguas_support
+# @INTERNAL
+# @USAGE:
+# @DESCRIPTION:
+# Patching Makefile for linguas support.
+# Only locales, enabled through the LINGUAS (make.conf) variable will be
+# compiled and installed.
 vdr_linguas_support() {
-#	Patching Makefile for linguas support.
-#	Only locales, enabled through the LINGUAS (make.conf) variable will be
-#	compiled and installed.
 
 	einfo "Patching for Linguas support"
 	einfo "available Languages for ${P} are:"
@@ -284,13 +300,16 @@ vdr_linguas_support() {
 	strip-linguas ${PLUGIN_LINGUAS} en
 }
 
+# @FUNCTION: vdr_i18n
+# @INTERNAL
+# @USAGE:
+# @DESCRIPTION:
+# i18n handling was deprecated since >=media-video/vdr-1.5.9,
+# finally with >=media-video/vdr-1.7.27 it has been dropped entirely and some
+# plugins will fail to compile because they're still using the old variant.
+# Simply remove the i18n.o object from Makefile (OBJECT) and
+# remove "static const tI18nPhrase*" from i18n.h.
 vdr_i18n() {
-#	i18n handling was deprecated since >=media-video/vdr-1.5.9,
-#	finally with >=media-video/vdr-1.7.27 it has been dropped entirely and some
-#	plugins will fail to compile because they're still using the old variant.
-#	Simply remove the i18n.o object from Makefile (OBJECT) and
-#	remove "static const tI18nPhrase*" from i18n.h.
-
 	vdr_gettext_missing
 
 	local I18N_OBJECT=$( grep i18n.o Makefile )
@@ -311,9 +330,14 @@ vdr_i18n() {
 	fi
 }
 
+# @FUNCTION: vdr_remove_i18n_include
+# @USAGE: <filename> [more filenames]
+# @DESCRIPTION:
+# Compile will fail if plugin still use the old i18n language handling,
+# most parts are fixed by vdr-plugin-2.eclass internal functions itself.
+# Remove unneeded i18n.h includes from files, if they are still wrong there,
+# this can be fixed by this function with a space separated list of files
 vdr_remove_i18n_include() {
-	# remove uneeded i18.n includes
-
 	local f
 	for f; do
 		sed -i "${f}" \
@@ -323,6 +347,11 @@ vdr_remove_i18n_include() {
 	eqawarn "removed i18n.h include in ${@}"
 }
 
+# @FUNCTION: vdr-plugin-2_print_enable_command
+# @INTERNAL
+# @USAGE:
+# @DESCRIPTION:
+# print out a hint how to enable this plugin
 vdr-plugin-2_print_enable_command() {
 	local p_name c=0 l=""
 	for p_name in ${vdr_plugin_list}; do
@@ -340,6 +369,12 @@ vdr-plugin-2_print_enable_command() {
 	elog
 }
 
+# @FUNCTION: has_vdr
+# @INTERNAL
+# @USAGE:
+# @RETURN: 0=header file found   1=header file not found
+# @DESCRIPTION:
+# safety check if vdr header file exists
 has_vdr() {
 	[[ -f "${VDR_INCLUDE_DIR}"/config.h ]]
 }
@@ -401,6 +436,10 @@ vdr-plugin-2_pkg_setup() {
 	fi
 }
 
+# @FUNCTION: vdr-plugin-2_src_util
+# @USAGE: [ list of wanted eclass helper functions to call ]
+# @DESCRIPTION:
+# wrapper function to call other functions in this eclass
 vdr-plugin-2_src_util() {
 	while [ "$1" ]; do
 		case "$1" in

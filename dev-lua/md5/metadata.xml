@@ -10,7 +10,6 @@
 		A hash (digest) function, a pair crypt/decrypt based on MD5 and CFB,
 		and a pair crypt/decrypt based on DES with 56-bit keys.
 	</longdescription>
-	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">keplerproject/md5</remote-id>
 	</upstream>

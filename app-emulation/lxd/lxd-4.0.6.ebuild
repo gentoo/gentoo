@@ -82,6 +82,11 @@ src_prepare() {
 		doc/environment.md \
 		lxd/apparmor/instance_qemu.go \
 		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
+
+	# Fix hardcoded virtfs-proxy-helper file path, see bug 798924
+	sed -i \
+		-e "s:/usr/lib/qemu/virtfs-proxy-helper:/usr/libexec/virtfs-proxy-helper:g" \
+		lxd/device/disk.go || die "Failed to fix virtfs-proxy-helper path."
 }
 
 src_configure() { :; }

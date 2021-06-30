@@ -32,6 +32,7 @@ kerberos
 latex
 libedit
 lua
+mono
 motif
 opencl
 qt5

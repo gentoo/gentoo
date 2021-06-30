@@ -37,6 +37,11 @@ src_prepare() {
 	sed -i -e "s:HAMLIB_LIBS@:HAMLIB_LIBS@ -lm:g" src/Makefile.am || die
 	eautoconf
 
+	# prepare for media-radio/hamlib-4.2 change of API
+	if has_version '>=media-libs/hamlib-4.2' ; then
+		sed -i -e "s/FILPATHLEN/HAMLIB_FILPATHLEN/g" "${S}"/src/hamlib-utils.c || die
+	fi
+
 	# Fix broken png files<<
 	einfo "Fixing broken png files."
 	pushd "${S}"/data/doc/manual/output/html

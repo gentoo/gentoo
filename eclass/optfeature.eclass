@@ -4,6 +4,7 @@
 # @ECLASS: optfeature.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Advertise optional functionality that might be useful to users
 
 case ${EAPI:-0} in

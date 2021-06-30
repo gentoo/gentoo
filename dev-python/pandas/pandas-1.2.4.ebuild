@@ -42,9 +42,7 @@ OPTIONAL_DEPEND="
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
-	' python3_{6,7})
+	>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
 	>=dev-python/xlrd-1.0.0[${PYTHON_USEDEP}]
 	dev-python/xlwt[${PYTHON_USEDEP}]

@@ -24,10 +24,7 @@ dev-perl/Gtk2-Unique
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-18)
 # version older than 3 don't compile with java 1.5+ and will be removed
-# slot 3.1 (versions < 3.6) are 99% compatible with slot 3.6 and should
-# not be used, use slot 3.6 or newer
 # see: https://bugs.gentoo.org/779472
-#      https://bugs.gentoo.org/784023
 <dev-java/commons-lang-3.6
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-14)
@@ -60,11 +57,6 @@ gnome-base/gnome-vfs
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # x11-libs/gtkglext is in the process of being removed, tracker bug #698950
 x11-libs/gtkglext
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
-# virtual/libffi has only one dev-libs/libffi provider. Use that instead.
-# bug #699796.
-virtual/libffi
 
 # Zac Medico <zmedico@gentoo.org> (2019-12-06)
 # These golang libraries should be vendored either by upstream or via

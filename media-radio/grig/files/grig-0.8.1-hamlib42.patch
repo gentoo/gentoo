@@ -1,0 +1,203 @@
+diff --git a/src/rig-daemon-check.c b/src/rig-daemon-check.c
+index 932a84c..07045bd 100644
+--- a/src/rig-daemon-check.c
++++ b/src/rig-daemon-check.c
+@@ -884,7 +884,7 @@ rig_daemon_check_level     (RIG               *myrig,
+ 	if (has_get->att || has_set->att) {
+ 		int i = 0;
+ 
+-		while ((i < MAXDBLSTSIZ) && (myrig->state.attenuator[i] != 0)) {
++		while ((i < HAMLIB_MAXDBLSTSIZ) && (myrig->state.attenuator[i] != 0)) {
+ 			rig_data_set_att_data (i, myrig->state.attenuator[i]);
+ 			i++;
+ 		}
+@@ -895,7 +895,7 @@ rig_daemon_check_level     (RIG               *myrig,
+ 	if (has_get->preamp || has_set->preamp) {
+ 		int i = 0;
+ 
+-		while ((i < MAXDBLSTSIZ) && (myrig->state.preamp[i] != 0)) {
++		while ((i < HAMLIB_MAXDBLSTSIZ) && (myrig->state.preamp[i] != 0)) {
+ 			rig_data_set_preamp_data (i, myrig->state.preamp[i]);
+ 			i++;
+ 		}
+diff --git a/src/rig-daemon.c b/src/rig-daemon.c
+index 0070283..c8e0ee5 100644
+--- a/src/rig-daemon.c
++++ b/src/rig-daemon.c
+@@ -537,7 +537,7 @@ rig_daemon_start       (int          rigid,
+ 	}
+ 
+ 	/* configure and open rig device */
+-	strncpy (myrig->state.rigport.pathname, rigport, FILPATHLEN);
++	strncpy (myrig->state.rigport.pathname, rigport, HAMLIB_FILPATHLEN);
+ 	g_free (rigport);
+ 
+ 	/* set speed if any special whishes */
+diff --git a/src/rig-data.c b/src/rig-data.c
+index cc76268..1858a8d 100644
+--- a/src/rig-data.c
++++ b/src/rig-data.c
+@@ -64,10 +64,10 @@ grig_cmd_avail_t has_get;  /*!< Flags to indicate reading capabilities. */
+ 
+ 
+ /** \brief List of attenuator values (absolute values). */
+-static int att[MAXDBLSTSIZ];
++static int att[HAMLIB_MAXDBLSTSIZ];
+ 
+ /** \brief List of preamp values. */
+-static int preamp[MAXDBLSTSIZ];
++static int preamp[HAMLIB_MAXDBLSTSIZ];
+ 
+ /** \brief Bit field of available VFO's */
+ static int vfo_list;
+@@ -116,7 +116,7 @@ rig_data_set_vfos         (int vfos)
+ void
+ rig_data_set_att_data (int index, int data)
+ {
+-	if ((index >= 0) && (index < MAXDBLSTSIZ))
++	if ((index >= 0) && (index < HAMLIB_MAXDBLSTSIZ))
+ 		att[index] = data;
+ }
+ 
+@@ -132,7 +132,7 @@ rig_data_set_att_data (int index, int data)
+ int
+ rig_data_get_att_data (int index)
+ {
+-	if ((index >= 0) && (index < MAXDBLSTSIZ)) {
++	if ((index >= 0) && (index < HAMLIB_MAXDBLSTSIZ)) {
+ 		return att[index];
+ 	}
+ 	else {
+@@ -158,7 +158,7 @@ rig_data_get_att_index    (int data)
+ 		return -1;
+ 
+ 	/* scan through the array */
+-	while ((i < MAXDBLSTSIZ) && (att[i] != 0)) {
++	while ((i < HAMLIB_MAXDBLSTSIZ) && (att[i] != 0)) {
+ 		if (att[i] == data) {
+ 			return i;
+ 		}
+@@ -182,7 +182,7 @@ rig_data_get_att_index    (int data)
+ void
+ rig_data_set_preamp_data (int index, int data)
+ {
+-	if ((index >= 0) && (index < MAXDBLSTSIZ))
++	if ((index >= 0) && (index < HAMLIB_MAXDBLSTSIZ))
+ 		preamp[index] = data;
+ }
+ 
+@@ -198,7 +198,7 @@ rig_data_set_preamp_data (int index, int data)
+ int
+ rig_data_get_preamp_data (int index)
+ {
+-	if ((index >= 0) && (index < MAXDBLSTSIZ)) {
++	if ((index >= 0) && (index < HAMLIB_MAXDBLSTSIZ)) {
+ 		return preamp[index];
+ 	}
+ 	else {
+@@ -225,7 +225,7 @@ rig_data_get_preamp_index    (int data)
+ 		return -1;
+ 
+ 	/* scan through the array */
+-	while ((i < MAXDBLSTSIZ) && (preamp[i] != 0)) {
++	while ((i < HAMLIB_MAXDBLSTSIZ) && (preamp[i] != 0)) {
+ 		if (preamp[i] == data) {
+ 			return i;
+ 		}
+diff --git a/src/rig-gui-buttons.c b/src/rig-gui-buttons.c
+index ae95f4d..6873447 100644
+--- a/src/rig-gui-buttons.c
++++ b/src/rig-gui-buttons.c
+@@ -283,10 +283,10 @@ rig_gui_buttons_create_att_selector    ()
+     /* add ATT OFF ie. 0 dB */
+     gtk_combo_box_append_text (GTK_COMBO_BOX (att), _("ATT OFF"));
+ 
+-    /* note: MAXDBLSTSIZ is defined in hamlib; it is the max size of the
++    /* note: HAMLIB_MAXDBLSTSIZ is defined in hamlib; it is the max size of the
+         ATT and preamp arrays.
+     */
+-    while ((i < MAXDBLSTSIZ) && rig_data_get_att_data (i)) {
++    while ((i < HAMLIB_MAXDBLSTSIZ) && rig_data_get_att_data (i)) {
+ 
+         text = g_strdup_printf ("-%d dB", rig_data_get_att_data (i));
+         gtk_combo_box_append_text (GTK_COMBO_BOX (att), text);
+@@ -343,10 +343,10 @@ rig_gui_buttons_create_preamp_selector    ()
+     /* add ATT OFF ie. 0 dB */
+     gtk_combo_box_append_text (GTK_COMBO_BOX (preamp), _("PREAMP OFF"));
+ 
+-    /* note: MAXDBLSTSIZ is defined in hamlib; it is the max size of the
++    /* note: HAMLIB_MAXDBLSTSIZ is defined in hamlib; it is the max size of the
+         ATT and preamp arrays.
+     */
+-    while ((i < MAXDBLSTSIZ) && rig_data_get_preamp_data (i)) {
++    while ((i < HAMLIB_MAXDBLSTSIZ) && rig_data_get_preamp_data (i)) {
+ 
+         text = g_strdup_printf ("%d dB", rig_data_get_preamp_data (i));
+         gtk_combo_box_append_text (GTK_COMBO_BOX (preamp), text);
+diff --git a/src/rig-gui-info.c b/src/rig-gui-info.c
+index 53733bf..d73ef2d 100644
+--- a/src/rig-gui-info.c
++++ b/src/rig-gui-info.c
+@@ -714,7 +714,7 @@ rig_gui_info_create_tunstep_frame  ()
+ 	/* Create a table with enough rows to show the
+ 	   max possible number of unique tuning steps.
+ 	*/
+-	table = gtk_table_new (TSLSTSIZ, 2, FALSE);
++	table = gtk_table_new (HAMLIB_TSLSTSIZ, 2, FALSE);
+ 
+ 	label = gtk_label_new (NULL);
+ 	gtk_label_set_markup (GTK_LABEL (label), _("<b>STEP</b>"));
+@@ -746,7 +746,7 @@ rig_gui_info_create_tunstep_frame  ()
+ 	      }
+ 	*/
+ 	/* for each available tuning ste */
+-	for (i = 0; i < TSLSTSIZ; i++) {
++	for (i = 0; i < HAMLIB_TSLSTSIZ; i++) {
+ 
+ 		gboolean firsthit = TRUE;   /* indicates whether found mode is the first one
+ 					       for the current tuning step. */
+@@ -757,7 +757,7 @@ rig_gui_info_create_tunstep_frame  ()
+ 		*/
+ 		if (myrig->caps->tuning_steps[i].ts == 0) {
+ 
+-			i = TSLSTSIZ;
++			i = HAMLIB_TSLSTSIZ;
+ 		}
+ 		
+ 		/* otherwise continue */
+@@ -853,7 +853,7 @@ rig_gui_info_create_frontend_frame ()
+ 	text = g_strdup ("");
+ 
+ 	/* loop over all available preamp values and concatenate them into a label */
+-	for (i = 0; i < MAXDBLSTSIZ; i++) {
++	for (i = 0; i < HAMLIB_MAXDBLSTSIZ; i++) {
+ 
+ 		data = rig_data_get_preamp_data (i);
+ 
+@@ -861,7 +861,7 @@ rig_gui_info_create_frontend_frame ()
+ 		   reached the terminator
+ 		*/
+ 		if (data == 0) {
+-			i = MAXDBLSTSIZ;
++			i = HAMLIB_MAXDBLSTSIZ;
+ 		}
+ 		else {
+ 			if (i > 0) {
+@@ -900,7 +900,7 @@ rig_gui_info_create_frontend_frame ()
+ 
+ 	text = g_strdup ("");
+ 	/* loop over all available attenuator values and concatenate them into a label */
+-	for (i = 0; i < MAXDBLSTSIZ; i++) {
++	for (i = 0; i < HAMLIB_MAXDBLSTSIZ; i++) {
+ 
+ 		data = rig_data_get_att_data (i);
+ 
+@@ -908,7 +908,7 @@ rig_gui_info_create_frontend_frame ()
+ 		   reached the terminator
+ 		*/
+ 		if (data == 0) {
+-			i = MAXDBLSTSIZ;
++			i = HAMLIB_MAXDBLSTSIZ;
+ 		}
+ 		else {
+ 			if (i > 0) {

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit l10n toolchain-funcs
+inherit strip-linguas toolchain-funcs
 
 IUSE="nls dbus ssl +gtk"
 

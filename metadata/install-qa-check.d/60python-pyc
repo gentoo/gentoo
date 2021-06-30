@@ -55,7 +55,8 @@ if [[ ${EAPI} == [6-7] ]]; then
 
 		if [[ ${missing[@]} ]]; then
 			eqawarn
-			eqawarn "This package installs one or more Python modules that are not byte-compiled."
+			eqawarn "QA Notice: This package installs one or more Python modules that are"
+			eqawarn "not byte-compiled."
 			eqawarn "The following files are missing:"
 			eqawarn
 			eqatag -v python-pyc.missing "${missing[@]#${D}}"
@@ -63,8 +64,8 @@ if [[ ${EAPI} == [6-7] ]]; then
 
 		if [[ ${outdated[@]} ]]; then
 			eqawarn
-			eqawarn "This package installs one or more compiled Python modules that have older"
-			eqawarn "timestamps than the corresponding source files:"
+			eqawarn "QA Notice: This package installs one or more compiled Python modules that have"
+			eqawarn "older timestamps than the corresponding source files:"
 			eqawarn
 			eqatag -v python-pyc.outdated "${outdated[@]#${D}}"
 		fi

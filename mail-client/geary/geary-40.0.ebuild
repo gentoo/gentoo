@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Geary"
 LICENSE="LGPL-2.1+ CC-BY-3.0 CC-BY-SA-3.0" # code is LGPL-2.1+, CC licenses for some icons
 SLOT="0"
 IUSE="ytnef"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 # >=gspell-1.7 dep to ensure all libraries used use enchant:2
 DEPEND="

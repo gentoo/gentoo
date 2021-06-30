@@ -32,6 +32,77 @@
 
 #--- END OF EXAMPLES ---
 
+# Matthias Maier <tamiko@gentoo.org> (2021-06-27)
+# Last release in 2013. Fails to build. No reverse dependencies.
+# Bugs #735260
+# Removal on 2021-07-27
+media-sound/loudness-scanner
+
+# Matt Turner <mattst88@gentoo.org> (2021-06-25)
+# Last release in 2015. Many open bugs. No reverse dependencies.
+# Bugs #312935, #341923, #629050, #739984, #775761, #777534
+# Removal on 2021-07-25
+media-gfx/ufraw
+
+# Marek Szuba <marecki@genoo.org> (2021-06-25)
+# Unslotted version conflicting with lua eclasses.
+# No revdeps left. EAPI 5. Removal in 30 days (Bug #798693)
+dev-lang/lua:0
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
+# library with no consumer, removal in 30 days
+# see https://bugs.gentoo.org/794562
+dev-java/bctsp
+
+# Michał Górny <mgorny@gentoo.org> (2021-06-24)
+# Package of huge complexity, given its premise.  Unmaintained
+# in Gentoo.  No revdeps.
+# Removal on 2021-07-24.  Bug #798291.
+dev-python/frozendict
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
+# obsolete, no consumers
+# see bug: https://bugs.gentoo.org/797739
+dev-java/xml-commons
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
+# libraries without consumers, removal in 30 days
+dev-java/bytelist
+dev-java/jcodings
+dev-java/joni
+dev-java/jvyamlb
+
+# David Seifert <soap@gentoo.org> (2021-06-20)
+# Abandoned upstream, last release 17 years ago, unmaintained, tons of
+# QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
+app-dicts/canna-cannadic
+app-dicts/canna-2ch
+app-emacs/yc
+app-i18n/canna
+app-i18n/canfep
+app-i18n/im-canna
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-20)
+# no consumer, removal in 30 days
+# see bug: https://bugs.gentoo.org/796587
+# and https://bugs.gentoo.org/561504
+dev-java/annogen
+dev-java/xml-xmlbeans
+java-virtuals/stax-api
+dev-java/jsr173
+dev-java/jibx-tools
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
+# New Minecraft server release needs at least Java 16,
+# which is currently not available in Gentoo.
+>=games-server/minecraft-server-1.17
+
+# Zac Medico <zmedico@gentoo.org> (2021-06-19)
+# Upstream inactive and fails to compile.
+# Removal on 2021-07-19.  Bug #786279.
+app-misc/rq
+
+
 # Michał Górny <mgorny@gentoo.org> (2021-06-19)
 # Conflicts with app-arch/brotli[python].  Discontinued in favor
 # of dev-python/brotlicffi.  No revdeps remain.
@@ -82,11 +153,6 @@ dev-python/pyls-black
 # DeprecatedDep jre-1.3, upstream dead,removal in 30 days
 # see bug: https://bugs.gentoo.org/787410
 media-gfx/povtree
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-06-13)
-# no consumer, removal in 30 days
-# see bug: https://bugs.gentoo.org/785856
-dev-java/commons-validator
 
 # Joonas Niilola <juippis@gentoo.org> (2021-06-12)
 # A library without consumers, old dep of tree-cleaned gnome-mplayer,
@@ -158,6 +224,7 @@ dev-python/csv23
 # be patient and report bugs if you choose to
 # unmask.
 # bug #756298, bug #690468.
+~dev-python/gst-python-1.18.4
 ~media-libs/gst-plugins-bad-1.18.4
 ~media-libs/gst-plugins-base-1.18.4
 ~media-libs/gst-plugins-good-1.18.4
@@ -246,17 +313,6 @@ dev-python/csv23
 # Unmask after unmasking proj-8
 >=sci-geosciences/qmapshack-1.16
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-05-25)
-# dev-java/jakarta-activation-api-2.0.1 depends on masked >=virtual/{jdk,jre}-11
->=dev-java/jakarta-activation-api-2.0.1
-
-# Fabian Groffen <grobian@gentoo.org> (2021-05-24)
-# Hack on hack no longer sustainable
-# - seemingly dead upstream
-# - no (official) Python 3 support
-# removal in 30 days, bug: https://bugs.gentoo.org/791613
-app-admin/diamond
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-24)
 # it's just a demo project, not a real app, see disclaimer
 # at https://github.com/romainguy/jext
@@ -265,14 +321,6 @@ app-admin/diamond
 # see bug: https://bugs.gentoo.org/791106
 app-editors/jext
 dev-java/jgoodies-looks:1.2
-
-# Andrew Ammmerlaan <andrewammerlaan@gentoo.org> (2021-05-20)
-# dev-python/QtPy-1.9.0-r4 now uses USE flags to control if it uses
-# PySide2 or PyQt5. With the removal of -r3, this eselect module does
-# not do anything and will only lead to confusion and possibly breakage.
-# See also: https://bugs.gentoo.org/790764
-# Removal in 30 days.
-app-eselect/eselect-QtPy
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-20)
 # no non-masked consumer, removal in 30 days
@@ -328,12 +376,6 @@ dev-java/werken-xpath
 # dev-java/xerces-2.12.1 depends on masked >=virtual/{jdk,jre}-11
 # https://bugs.gentoo.org/782697
 >=dev-java/xerces-2.12.1
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-04-15)
-# dev-java/jcodings-1.0.55 depends on masked >=virtual/{jdk,jre}-11
-# dev-java/joni-2.1.41 depends on masked >=virtual/{jdk,jre}-11
->=dev-java/jcodings-1.0.55
->=dev-java/joni-2.1.41
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-04-08)
 # Masked for testing
@@ -426,11 +468,6 @@ kde-apps/kdebase-meta:5
 ~app-i18n/scim-sunpinyin-3.0.0_rc1
 ~app-i18n/xsunpinyin-3.0.0_rc1
 
-# Alfredo Tupone <tupone@gentoo.org> (2020-08-23)
-# Ported to py3 but not yet released
-# Masked to allow py2.7 removal
-dev-lang/spark
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # >=dev-java/ant-eclipse-ecj-4.10 depends on masked >=virtual/{jdk,jre}-11
 # www-servers/tomcat >= 9 depends on masked dev-java/eclipse-ecj
@@ -445,7 +482,7 @@ dev-lang/spark
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
 # (NOTE: Likely needs to be moved to musl + uclibc profiles, not dropped entirely)
->=virtual/libcrypt-2
+~virtual/libcrypt-2
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
