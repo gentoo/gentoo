@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit bash-completion-r1 pam systemd
 
 DESCRIPTION="Monitoring and managing daemons or similar programs running on a Unix system"
@@ -13,13 +14,15 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux"
 IUSE="ipv6 pam ssl"
 
-RDEPEND="
-	ssl? ( dev-libs/openssl:0= )"
-DEPEND="${RDEPEND}
-	pam? ( sys-libs/pam )"
+RDEPEND="sys-libs/zlib:=
+	virtual/libcrypt:=
+	pam? ( sys-libs/pam )
+	ssl? ( dev-libs/openssl:0= )
+"
+DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/flex
 	sys-devel/bison
+	sys-devel/flex
 "
 
 src_prepare() {
