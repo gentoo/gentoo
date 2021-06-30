@@ -114,7 +114,7 @@ src_prepare() {
 	if ! use systemd; then
 		# This can be applied non-conditionally but would make for a
 		# significantly worse user experience on systemd then.
-		eapply "${FILESDIR}"/${PN}-0.3.25-non-systemd-integration.patch
+		eapply "${FILESDIR}"/${PN}-0.3.31-non-systemd-integration.patch
 	fi
 
 	einfo "Generating ${limitsdfile}"
