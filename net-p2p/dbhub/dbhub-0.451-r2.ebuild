@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="debug nls perl switch-user"
 
 DEPEND="
-	perl? ( dev-lang/perl )
+	virtual/libcrypt:=
+	perl? ( dev-lang/perl:= )
 	switch-user? ( sys-libs/libcap )"
 RDEPEND="${DEPEND}"
 
