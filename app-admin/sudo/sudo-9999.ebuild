@@ -34,6 +34,7 @@ IUSE="gcrypt ldap nls offensive pam sasl +secure-path selinux +sendmail skey ssl
 
 DEPEND="
 	sys-libs/zlib:=
+	virtual/libcrypt:=
 	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
