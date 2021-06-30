@@ -20,6 +20,7 @@ IUSE="archive perl tcl ruby socks5 valgrind" #ipv6
 RDEPEND="
 	>=dev-libs/openssl-0.9.8e-r3:0=
 	>=sys-libs/ncurses-5.6-r2:0=
+	virtual/libcrypt:=
 	virtual/libiconv
 	archive? ( app-arch/libarchive )
 	perl? ( >=dev-lang/perl-5.8.8-r2:= )
