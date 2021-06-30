@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 # Upstream does not support the building of Python bindings
 # via CMake for more than one implementation at a time.
@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
 	sys-libs/zlib
+	virtual/libcrypt:=
 	fuse? ( sys-fs/fuse:= )
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS} )

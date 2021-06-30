@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
 	sys-libs/zlib
+	virtual/libcrypt:=
 	fuse? ( sys-fs/fuse:= )
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS} )
