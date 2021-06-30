@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8} )
 inherit autotools pam python-single-r1 systemd
 
 MY_P="${PN}-server-${PV}"
@@ -15,7 +15,7 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -37,6 +37,7 @@ RDEPEND="acct-group/radius
 	dev-lang/perl:=
 	sys-libs/gdbm:=
 	sys-libs/talloc
+	virtual/libcrypt:=
 	firebird? ( dev-db/firebird )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -66,7 +67,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.20-systemd-service.patch
+	"${FILESDIR}"/${P}-systemd-service.patch
+	# Fix rlm_python3 build
+	# Backport from rlm_python changes to rlm_python3
+	"${FILESDIR}"/${P}-py3-fixes.patch
 )
 
 pkg_setup() {
@@ -233,8 +237,8 @@ src_install() {
 
 	rm "${ED}/usr/sbin/rc.radiusd" || die
 
-	newinitd "${FILESDIR}/radius.init-r4" radiusd
-	newconfd "${FILESDIR}/radius.conf-r5" radiusd
+	newinitd "${FILESDIR}/radius.init-r3" radiusd
+	newconfd "${FILESDIR}/radius.conf-r4" radiusd
 
 	if ! use systemd ; then
 		# If systemd builtin is not enabled we need use Type=Simple
@@ -246,6 +250,7 @@ src_install() {
 	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+
 }
 
 pkg_config() {
