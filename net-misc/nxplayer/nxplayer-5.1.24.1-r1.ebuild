@@ -21,6 +21,10 @@ RESTRICT="strip"
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/openssl:0
+	|| (
+		sys-libs/glibc[crypt(+)]
+		sys-libs/libxcrypt[compat]
+	)
 "
 
 QA_PREBUILT="*"
