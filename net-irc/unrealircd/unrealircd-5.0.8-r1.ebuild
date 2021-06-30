@@ -22,6 +22,7 @@ RDEPEND="
 	dev-libs/libpcre2
 	>=net-dns/c-ares-1.7:=
 	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	curl? ( net-misc/curl[adns] )
 "
 DEPEND="${RDEPEND}"
