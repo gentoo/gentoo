@@ -41,6 +41,7 @@ RDEPEND="
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	dev-libs/openssl:0="
 DEPEND="${RDEPEND}
+	>=sys-devel/bison-3.7.6
 	test? ( dev-libs/criterion )"
 BDEPEND="
 	sys-devel/flex
