@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,17 +10,18 @@ MY_P="ScrollZ-${PV}"
 DESCRIPTION="Advanced IRC client based on ircII"
 HOMEPAGE="https://www.scrollz.info/"
 SRC_URI="https://www.scrollz.info/download/${MY_P}.tar.gz"
+S="${WORKDIR}/ScrollZ-${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-
 IUSE="gmp gnutls ipv6 ssl"
 REQUIRED_USE="gnutls? ( ssl )"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	sys-libs/ncurses:0=
+	virtual/libcrypt:=
 	gmp? ( dev-libs/gmp:0= )
 	ssl? (
 		gnutls? ( net-libs/gnutls:0= )
@@ -28,8 +29,6 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/ScrollZ-${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3-fcommon.patch"
