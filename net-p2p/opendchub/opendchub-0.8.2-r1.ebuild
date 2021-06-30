@@ -14,13 +14,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE="perl"
 
-RDEPEND="perl? ( dev-lang/perl )"
+RDEPEND="dev-libs/openssl:=
+	virtual/libcrypt:=
+	perl? ( dev-lang/perl:= )
+	!perl? ( sys-libs/libcap )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-telnet.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-telnet.patch
+)
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
@@ -32,6 +38,7 @@ src_configure() {
 
 src_install() {
 	default
+
 	dodoc -r Documentation/.
 
 	if use perl; then
