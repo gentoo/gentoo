@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.5.0-do-not-install-libopencl.patch"
 	"${FILESDIR}/${PN}-3.10.0-add-rocclr-include-directories.patch"
 	"${FILESDIR}/${PN}-3.7.0-amdocl64icd.patch"
+	"${FILESDIR}/${P}-opencl3-header.patch"
 )
 
 src_prepare() {
