@@ -1,0 +1,16 @@
+Avoid a "|&" bashism
+
+I haven't been able to find a way to select a shell for msbuild, it just forces /bin/sh
+My /bin/sh is app-shells/dash, this should be a valid configuration.
+
+--- a/src/targetPacks/assemble.targets
++++ b/src/targetPacks/assemble.targets
+@@ -87,7 +87,7 @@
+     <Message Importance="High" Text="[$([System.DateTime]::Now.ToString('HH:mm:ss.ff'))] Assemble TargetingPacks src." />
+     <MakeDir Directories="@(TargetingPackSrc->'$(ArtifactsTFMPackTemp)$(MSBuildProjectName)/%(RecursiveDir)')" />
+     <!-- Note: Hack below to not fill up build logs.  Ilasm produces warning on validly disassembled il src.  The awk below eats just that warning -->
+-    <Exec Command="set -o pipefail;$(IlasmToolPathSB)ilasm %(TargetingPackSrc.ILSrcFile) -dll -quiet -nologo -output=$(ArtifactsTFMPackTemp)$(MSBuildProjectName)/%(TargetingPackSrc.RelativeOutputAssemblyFile) |&amp; awk '!/warning : Method has no body/'" IgnoreStandardErrorWarningFormat="true"/>
++    <Exec Command="$(IlasmToolPathSB)ilasm %(TargetingPackSrc.ILSrcFile) -dll -quiet -nologo -output=$(ArtifactsTFMPackTemp)$(MSBuildProjectName)/%(TargetingPackSrc.RelativeOutputAssemblyFile) 2>&amp;1 | awk '!/warning : Method has no body/'" IgnoreStandardErrorWarningFormat="true"/>
+     <Message Importance="High" Text="[$([System.DateTime]::Now.ToString('HH:mm:ss.ff'))] Done assembling TargetPacks src." />
+   </Target>
+ </Project>
