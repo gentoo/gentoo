@@ -66,7 +66,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_APPINDICATOR=$(usex appindicator)
 		-DWITH_GCRYPT=$(usex crypt)
 		-DWITH_EXAMPLES=$(usex examples)
 		-DWITH_LIBSECRET=$(usex gnome-keyring)
