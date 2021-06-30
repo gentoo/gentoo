@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit flag-o-matic libtool toolchain-funcs
 
 MY_PN=imap
@@ -20,15 +21,17 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="doc +ipv6 kerberos kernel_linux kernel_FreeBSD pam ssl static-libs topal chappa"
 
 RDEPEND="
+	!net-mail/uw-imap
 	ssl? (
 		dev-libs/openssl:0=
-		)
-	!net-mail/uw-imap
+	)
+	kernel_linux? (
+		pam? ( >=sys-libs/pam-0.72 )
+		!pam? ( virtual/libcrypt:= )
+	)
 	kerberos? ( app-crypt/mit-krb5 )
 "
-DEPEND="${RDEPEND}
-	kernel_linux? ( pam? ( >=sys-libs/pam-0.72 ) )
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	# Apply a patch to only build the stuff we need for c-client
