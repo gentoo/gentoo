@@ -5,14 +5,13 @@ EAPI=7
 
 inherit systemd toolchain-funcs
 
-SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-KEYWORDS="amd64 ~arm ~ppc x86"
-
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
+SRC_URI="https://download.libreswan.org/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="caps curl dnssec ldap networkmanager pam seccomp selinux systemd test"
 RESTRICT="!test? ( test )"
 
@@ -22,9 +21,10 @@ DEPEND="
 	dev-libs/nspr
 	>=dev-libs/nss-3.42
 	>=sys-kernel/linux-headers-4.19
+	virtual/libcrypt:=
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )
-	dnssec? ( >=net-dns/unbound-1.9.1-r1:= net-libs/ldns )
+	dnssec? ( >=net-dns/unbound-1.9.1-r1:= net-libs/ldns:= )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
 	seccomp? ( sys-libs/libseccomp )
@@ -79,7 +79,7 @@ src_configure() {
 	export USE_SECCOMP=$(usetf seccomp)
 	export USE_SYSTEMD_WATCHDOG=$(usetf systemd)
 	export SD_WATCHDOGSEC=$(usex systemd 200 0)
-	export USE_XAUTHPAM=$(usetf pam)
+	export USE_AUTHPAM=$(usetf pam)
 	export DEBUG_CFLAGS=
 	export OPTIMIZE_CFLAGS=
 	export WERROR_CFLAGS=
