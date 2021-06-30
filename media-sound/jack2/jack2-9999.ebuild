@@ -56,10 +56,6 @@ RDEPEND="${DEPEND}
 
 DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.9.14-fix-doc.patch"
-)
-
 src_prepare() {
 	default
 	python_fix_shebang waf
