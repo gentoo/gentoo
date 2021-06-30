@@ -272,10 +272,11 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent +agent2 curl frontend ipv6 java ldap libxml2 mysql odbc openipmi oracle +postgres proxy server snmp sqlite ssh ssl static"
+IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
 	server? ( ^^ ( mysql oracle postgres ) )
+	ssl? ( ^^ ( gnutls openssl ) )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
@@ -300,7 +301,10 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
-	ssl? ( dev-libs/openssl:=[-bindist(-)] )
+	ssl? (
+		gnutls? ( net-libs/gnutls:0= )
+		openssl? ( dev-libs/openssl:=[-bindist(-)] )
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -395,17 +399,18 @@ src_configure() {
 		"$(use_enable server)" \
 		"$(use_enable static)" \
 		"$(use_with curl libcurl)" \
+		"$(use_with gnutls)" \
 		"$(use_with ldap)" \
 		"$(use_with libxml2)" \
 		"$(use_with mysql)" \
 		"$(use_with odbc unixodbc)" \
 		"$(use_with openipmi openipmi)" \
+		"$(use_with openssl)" \
 		"$(use_with oracle)" \
 		"$(use_with postgres postgresql)" \
 		"$(use_with snmp net-snmp)" \
 		"$(use_with sqlite sqlite3)" \
-		"$(use_with ssh ssh2)" \
-		"$(use_with ssl openssl)"
+		"$(use_with ssh ssh2)"
 }
 
 src_compile() {
