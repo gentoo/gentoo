@@ -274,8 +274,8 @@ WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
 IUSE="+agent +agent2 java curl frontend ipv6 ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
-	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
-	server? ( ^^ ( mysql oracle postgres odbc ) )
+	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
+	server? ( ^^ ( mysql oracle postgres ) )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
