@@ -12,27 +12,26 @@ HOMEPAGE="http://www.csn.ul.ie/~airlied/pam_smb/"
 SRC_URI="
 	mirror://samba/pam_smb/v2/${MY_P}.tar.gz
 	http://www.csn.ul.ie/~airlied/pam_smb/v2/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 
-DEPEND=">=sys-libs/pam-0.75"
+DEPEND="virtual/libcrypt:=
+	>=sys-libs/pam-0.75"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
-
-src_prepare() {
-	default
-	eapply "${FILESDIR}/10-pam_smb-bash-3.1.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/10-pam_smb-bash-3.1.patch
+	"${FILESDIR}"/respect-FLAGS-CC-AR.patch
+	"${FILESDIR}"/add-various-missing-includes.patch
+)
 
 src_configure() {
-	econf --disable-root-only
-}
+	tc-export CC
 
-src_compile() {
-	emake CC="$(tc-getCC)"
+	LDFLAGS="${LDFLAGS}" econf --disable-root-only
 }
 
 src_install() {
@@ -47,8 +46,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
-	elog "You must create /etc/pam_smb.conf yourself, containing"
-	elog "your domainname, PDC and BDC.  See example files in docdir."
-	echo
+	elog "You must create ${EROOT}/etc/pam_smb.conf yourself, containing"
+	elog "your domain name, PDC and BDC.  See example files in docdir."
 }
