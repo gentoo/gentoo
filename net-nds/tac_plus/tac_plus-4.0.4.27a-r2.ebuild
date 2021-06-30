@@ -13,26 +13,29 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="HPND RSA GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug finger maxsess tcpd skey static-libs"
 
 DEPEND="
-	net-libs/libnsl
+	net-libs/libnsl:=
 	sys-libs/pam
+	virtual/libcrypt:=
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-parallelmake.patch
-	"${FILESDIR}"/${P}-deansification.patch
+	"${FILESDIR}/${P}-parallelmake.patch"
+	"${FILESDIR}/${PN}-4.0.4.19-deansification.patch"
 )
 
 src_prepare() {
 	default
 
+	mv configure.in configure.ac || die "Unable to quiet autoconf deprecation warning"
 	AT_M4DIR="." eautoreconf
+
 }
 
 src_configure() {
@@ -49,7 +52,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	if use static-libs ; then
-		find "${D}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
+		find "${ED}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
 	fi
 
 	dodoc CHANGES FAQ
