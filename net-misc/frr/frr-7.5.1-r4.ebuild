@@ -27,11 +27,12 @@ COMMON_DEPEND="
 	<net-libs/libyang-2.0.0
 	sys-libs/libcap
 	sys-libs/readline:0=
-	grpc? ( net-libs/grpc )
+	virtual/libcrypt:=
+	grpc? ( net-libs/grpc:= )
 	nhrp? ( net-dns/c-ares:0= )
 	pam? ( sys-libs/pam )
 	rpki? ( >=net-libs/rtrlib-0.6.3[ssh] )
-	snmp? ( net-analyzer/net-snmp )"
+	snmp? ( net-analyzer/net-snmp:= )"
 
 BDEPEND="
 	dev-util/clippy
