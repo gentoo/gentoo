@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ LIBS_DEPEND="app-arch/bzip2
 	>=dev-libs/newt-0.52
 	>=sys-libs/slang-2
 	sys-libs/zlib:=
+	!nologin? ( virtual/libcrypt:= )
 	ssl? ( dev-libs/openssl:0= )"
 PAM_DEPEND="!static? ( pam? ( sys-libs/pam ) )"
 RDEPEND="${PAM_DEPEND}
