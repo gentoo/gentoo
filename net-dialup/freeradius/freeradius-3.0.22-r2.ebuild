@@ -15,7 +15,7 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -37,6 +37,7 @@ RDEPEND="acct-group/radius
 	dev-lang/perl:=
 	sys-libs/gdbm:=
 	sys-libs/talloc
+	virtual/libcrypt:=
 	firebird? ( dev-db/firebird )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
