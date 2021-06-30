@@ -4,6 +4,7 @@
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
 sci-libs/fftw mpi
+media-sound/alsa-utils libsamplerate
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
