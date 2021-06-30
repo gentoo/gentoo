@@ -18,9 +18,11 @@ IUSE="nls"
 DEPEND="
 	net-libs/libtirpc:=
 	>=net-libs/libnsl-1.2.0:0=
+	virtual/libcrypt:=
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}"
-BDEPEND="nls? ( sys-devel/gettext )"
+BDEPEND="virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
