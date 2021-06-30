@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit multilib systemd tmpfiles toolchain-funcs
 
 MOD_CASE="0.7"
@@ -23,10 +24,10 @@ SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 	kerberos? ( mirror://sourceforge/gssmod/mod_gss-${MOD_GSS}.tar.gz )
 	msg? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-msg-${MOD_MSG}.tar.gz )
 	vroot? ( https://github.com/Castaglia/${PN}-mod_vroot/archive/v${MOD_VROOT}.tar.gz -> mod_vroot-${MOD_VROOT}.tar.gz )"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse dso dynmasq exec ifsession ifversion ident ipv6
 	kerberos ldap log-forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
 	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique-id vroot"
@@ -41,7 +42,8 @@ REQUIRED_USE="ban? ( ctrls )
 	sqlite? ( ssl )
 "
 
-CDEPEND="acl? ( virtual/acl )
+CDEPEND="virtual/libcrypt:=
+	acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
 	kerberos? ( virtual/krb5 )
@@ -67,9 +69,6 @@ S="${WORKDIR}/${P/_/}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
-	"${FILESDIR}"/${P}-tinfow-segv.patch
-	"${FILESDIR}"/${P}-no-ncurses.patch
-	"${FILESDIR}"/${P}-slibtool.patch
 )
 
 RESTRICT=test # Some tests are ran in chroot. Confuse sandbox.
