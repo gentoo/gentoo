@@ -9,12 +9,13 @@ DESCRIPTION="A packet filter and firewall log analyzer"
 HOMEPAGE="http://fwlogwatch.inside-security.de/"
 SRC_URI="http://fwlogwatch.inside-security.de/sw/${P}.tar.bz2"
 
-KEYWORDS="amd64 ~ppc sparc x86"
 LICENSE="GPL-1"
 SLOT="0"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="geoip nls zlib"
 
 RDEPEND="
+	virtual/libcrypt:=
 	geoip? ( dev-libs/geoip )
 	zlib? ( sys-libs/zlib )
 "
