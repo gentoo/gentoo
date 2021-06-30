@@ -22,7 +22,8 @@ RESTRICT="test"
 
 DEPEND=">=sys-libs/zlib-1.1.4
 	kerberos? ( virtual/krb5 )
-	pam? ( sys-libs/pam )"
+	pam? ( sys-libs/pam )
+	server? ( virtual/libcrypt:= )"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
