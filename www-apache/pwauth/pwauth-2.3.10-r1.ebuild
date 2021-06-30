@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="faillog pam ignore-case domain-aware"
 
-DEPEND="pam? ( sys-libs/pam )"
+DEPEND="pam? ( sys-libs/pam )
+	!pam? ( virtual/libcrypt:= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -38,24 +39,24 @@ pkg_setup() {
 	PWAUTH_SERVERUIDS="${PWAUTH_SERVERUIDS:-81}"
 	PWAUTH_MINUID="${PWAUTH_MINUID:-1000}"
 
-	append-cflags "-DSERVER_UIDS=${PWAUTH_SERVERUIDS}"
-	append-cflags "-DMIN_UNIX_UID=${PWAUTH_MINUID}"
+	append-cppflags "-DSERVER_UIDS=${PWAUTH_SERVERUIDS}"
+	append-cppflags "-DMIN_UNIX_UID=${PWAUTH_MINUID}"
 
 	if use faillog; then
-		append-cflags -DFAILLOG_PWAUTH
-		append-cflags "-DPATH_FAILLOG=\"\\\"${PWAUTH_FAILLOG}\\\"\""
+		append-cppflags -DFAILLOG_PWAUTH
+		append-cppflags "-DPATH_FAILLOG=\"\\\"${PWAUTH_FAILLOG}\\\"\""
 	fi
 
 	if use pam; then
-		append-cflags -DPAM
+		append-cppflags -DPAM
 		append-libs pam
 	else
-		append-cflags -DSHADOW_SUN
+		append-cppflags -DSHADOW_SUN
 		append-libs crypt
 	fi
 
-	use ignore-case && append-cflags -DIGNORE_CASE
-	use domain-aware && append-cflags -DOMAIN_AWARE
+	use ignore-case && append-cppflags -DIGNORE_CASE
+	use domain-aware && append-cppflags -DOMAIN_AWARE
 }
 
 src_compile() {
