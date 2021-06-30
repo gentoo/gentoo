@@ -25,7 +25,9 @@ REQUIRED_USE="implicittls? ( ssl )"
 
 BDEPEND="sys-devel/autoconf-archive"
 
-DEPEND="caps? ( sys-libs/libcap )
+DEPEND="dev-libs/libsodium:=
+	virtual/libcrypt:=
+	caps? ( sys-libs/libcap )
 	ldap? ( >=net-nds/openldap-2.0.25 )
 	mysql? ( || (
 		dev-db/mariadb-connector-c
