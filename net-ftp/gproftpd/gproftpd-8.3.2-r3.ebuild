@@ -1,21 +1,24 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools
 
 DESCRIPTION="GTK frontend to proftpd"
 HOMEPAGE="https://mange.dynalias.org/linux/gproftpd"
 SRC_URI="http://mange.dynup.net/linux/gproftpd/${P}.tar.gz"
+
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc sparc x86"
 SLOT="0"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 RDEPEND="
 	>=dev-libs/atk-1.0
 	>=media-libs/freetype-2.0
 	>=x11-libs/pango-1.0
 	dev-libs/glib:2
+	virtual/libcrypt:=
 	virtual/libiconv
 	x11-libs/gtk+:2
 "
@@ -35,6 +38,9 @@ DOCS="AUTHORS ChangeLog README"
 
 src_prepare() {
 	default
+
+	mv configure.{in,ac} || die
+
 	eautoreconf
 }
 
