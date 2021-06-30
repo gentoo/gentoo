@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 
 DEPEND="!net-dialup/radiusclient
-	!net-dialup/freeradius-client"
+	!net-dialup/freeradius-client
+	virtual/libcrypt:="
 RDEPEND="${DEPEND}"
 
 DOCS=( BUGS CHANGES README )
