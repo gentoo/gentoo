@@ -3,8 +3,6 @@
 
 EAPI=7
 
-AUTOTOOLS_AUTORECONF=yes
-
 inherit autotools flag-o-matic multilib pam systemd
 
 DESCRIPTION="Open Source AFP server"
@@ -19,10 +17,11 @@ IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl trac
 CDEPEND="
 	!app-editors/yudit
 	dev-libs/libevent:0=
-	>=dev-libs/libgcrypt-1.2.3:0
+	>=dev-libs/libgcrypt-1.2.3:0=
 	sys-apps/coreutils
 	>=sys-libs/db-4.2.52:=
 	sys-libs/tdb
+	virtual/libcrypt:=
 	acl? (
 		sys-apps/attr
 		sys-apps/acl
