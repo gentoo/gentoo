@@ -12,7 +12,7 @@ DESCRIPTION="A TCP/HTTP reverse proxy for high availability environments"
 HOMEPAGE="http://www.haproxy.org"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+	KEYWORDS="amd64 arm ~ppc x86"
 else
 	EGIT_REPO_URI="http://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
 	EGIT_BRANCH=master
@@ -29,13 +29,14 @@ REQUIRED_USE="pcre-jit? ( pcre )
 	?? ( slz zlib )"
 
 DEPEND="
+	crypt? ( virtual/libcrypt:= )
 	pcre? (
 		dev-libs/libpcre
 		pcre-jit? ( dev-libs/libpcre[jit] )
 	)
 	pcre2? (
-		dev-libs/libpcre
-		pcre2-jit? ( dev-libs/libpcre2[jit] )
+		dev-libs/libpcre2:=
+		pcre2-jit? ( dev-libs/libpcre2:=[jit] )
 	)
 	ssl? (
 		dev-libs/openssl:0=[zlib?]
@@ -93,6 +94,9 @@ src_compile() {
 	args+=( $(haproxy_use device-atlas DEVICEATLAS) )
 	args+=( $(haproxy_use wurfl WURFL) )
 	args+=( $(haproxy_use systemd SYSTEMD) )
+
+	# For now, until the strict-aliasing breakage will be fixed
+	append-cflags -fno-strict-aliasing
 
 	# Bug #668002
 	if use ppc || use arm || use hppa; then
