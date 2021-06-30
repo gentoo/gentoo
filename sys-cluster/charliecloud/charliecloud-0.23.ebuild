@@ -48,6 +48,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.22-sphinx-4.patch
+	"${FILESDIR}"/${PN}-0.24-dash.patch
 )
 
 src_prepare() {
