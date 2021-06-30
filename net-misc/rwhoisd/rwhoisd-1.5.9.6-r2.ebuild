@@ -14,13 +14,15 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	sys-devel/flex
-	virtual/yacc
-"
+DEPEND="virtual/libcrypt:="
 RDEPEND="
+	${DEPEND}
 	acct-group/rwhoisd
 	acct-user/rwhoisd
+"
+BDEPEND="
+	sys-devel/flex
+	virtual/yacc
 "
 
 src_compile() {
