@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,14 +12,18 @@ DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://resilio.com/"
 SRC_URI="amd64? ( ${BASE_URI/@arch@/amd64} )
 	x86? ( ${BASE_URI/@arch@/i386} )"
+S="${WORKDIR}"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="bindist mirror"
 
-S="${WORKDIR}"
+RDEPEND="
+	|| (
+		sys-libs/glibc[crypt(+)]
+		sys-libs/libxcrypt[compat]
+	)"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
 Default metadata path is /var/lib/resilio-sync/.sync\\n
