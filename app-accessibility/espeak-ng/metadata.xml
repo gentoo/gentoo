@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<maintainer>
+			<name>Reece H. Dunn</name>
+			<email>msclrhd@gmail.com</email>
+		</maintainer>
+		<remote-id type="github">espeak-ng/espeak-ng</remote-id>
+		<changelog>https://github.com/espeak-ng/espeak-ng/releases.atom</changelog>
+	</upstream>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
+	</maintainer>
+	<use>
+		<flag name="async">Enables asynchronous commands</flag>
+		<flag name="klatt">Enables Klatt formant synthesis and implementation</flag>
+		<flag name="l10n_ru">Builds extended Russian Dictionary file</flag>
+		<flag name="l10n_zh">Builds extended Chinese (Mandarin and Cantonese) Dictionary files</flag>
+		<flag name="man">Builds and installs manpage with app-text/ronn</flag>
+		<flag name="mbrola">Adds support for mbrola voices</flag>
+	</use>
+</pkgmetadata>
