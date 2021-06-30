@@ -6,6 +6,17 @@ EAPI="7"
 DESCRIPTION="Encryption and decryption"
 HOMEPAGE="https://sourceforge.net/projects/ccrypt/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+IUSE="emacs"
+
+RDEPEND="virtual/libcrypt:="
+DEPEND="${RDEPEND}
+	emacs? ( >=app-editors/emacs-23.1:* )"
+
+src_configure() {
+	econf \
+		$(use_enable emacs)
+}
