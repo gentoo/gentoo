@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="microwave CAD software"
 HOMEPAGE="https://wwwhome.cs.utwente.nl/~ptdeboer/ham/puff/"
@@ -21,13 +21,14 @@ src_prepare() {
 	default
 	# fix lib path for X11 and dont ignore LDFLAGS
 	sed -i  -e 's/CFLAGS/#CFLAGS/' \
+		-e 's/CC =/#CC =/' \
 		-e 's/link.res/.res/g' \
 		-e 's/.res pu/.res $(LDFLAGS) pu/' Makefile || die
 }
 
 src_compile() {
 	LDFLAGS="$(raw-ldflags)"
-	emake -j1
+	emake -j1 CC="$(tc-getCC)"
 }
 
 src_install() {
