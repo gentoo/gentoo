@@ -1,12 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 PLOCALES="de en fr it"
 PLOCALE_BACKUP="en"
 
-inherit l10n toolchain-funcs
+inherit l10n toolchain-funcs user
 
 DESCRIPTION="IRC fileserver using DCC"
 HOMEPAGE="http://iroffer.dinoex.net/"
@@ -15,7 +15,7 @@ SRC_URI="http://iroffer.dinoex.net/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+admin +blowfish +chroot curl debug geoip gnutls +http kqueue +memsave ruby ssl +telnet upnp"
 
 REQUIRED_USE="
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	gnutls? ( ssl )
 "
 
-RDEPEND="acct-user/iroffer
+RDEPEND="virtual/libcrypt:=
 	chroot? ( dev-libs/nss )
 	curl? (
 		net-misc/curl[ssl?]
@@ -37,8 +37,13 @@ RDEPEND="acct-user/iroffer
 
 DEPEND="${RDEPEND}"
 
+pkg_setup() {
+	enewgroup iroffer
+	enewuser iroffer -1 -1 -1 iroffer
+}
+
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-3.31-config.patch"
+	eapply "${FILESDIR}/${P}-config.patch"
 	eapply "${FILESDIR}/${PN}-Werror.patch"
 
 	eapply_user
@@ -53,8 +58,8 @@ do_configure() {
 
 src_configure() {
 	do_configure \
-		PREFIX="${EPREFIX}/usr" \
-		CC="$(tc-getCC)" \
+		CC="$(tc-getCC)"
+		PREFIX="${EPREFIX}/usr"\
 		$(usex debug '-profiling' '' '' '')\
 		$(usex debug '-debug' '' '' '')\
 		$(usex geoip '-geoip' '' '' '')\
