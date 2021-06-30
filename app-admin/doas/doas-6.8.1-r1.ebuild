@@ -18,7 +18,8 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="pam persist"
 
 BDEPEND="virtual/yacc"
-RDEPEND="pam? ( sys-libs/pam )"
+RDEPEND="pam? ( sys-libs/pam )
+	!pam? ( virtual/libcrypt:= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
