@@ -5,34 +5,34 @@ EAPI=7
 
 inherit pam toolchain-funcs fcaps
 
+PATCHVER="3"
+
 DESCRIPTION="Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}"
 HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
 SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz
-	mirror://gentoo/rexec-1.5.tar.gz"
+	mirror://gentoo/rexec-1.5.tar.gz
+	mirror://gentoo/${P}-patches-${PATCHVER}.tar.lzma"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="pam"
 
 RDEPEND="
-	sys-libs/ncurses:=
+	sys-libs/ncurses:0=
+	virtual/libcrypt:=
 	pam? ( >=sys-auth/pambase-20080219.1 )"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils"
 
-PATCHES=(
-	"${FILESDIR}"/patches/
-)
-
 FILECAPS=( cap_net_bind_service usr/bin/r{cp,login,sh} )
 
 src_prepare() {
-	# This must happen before patches are applied
 	rm -r rexec || die
 	mv ../rexec rexec || die
 
-	default
+	[[ -n ${PATCHVER} ]] && eapply "${WORKDIR}"/patch
+	eapply_user
 
 	if tc-is-cross-compiler ; then
 		# Can't do runtime tests when cross-compiling
@@ -45,9 +45,9 @@ src_configure() {
 	${CONFIG_SHELL:-/bin/sh} ./configure $(usex pam '' '--without-pam') || die
 
 	sed -i \
-		-e "s|-pipe -O2|${CFLAGS}|" \
+		-e "s:-pipe -O2:${CFLAGS}:" \
 		-e "/^LDFLAGS=$/d" \
-		-e "s|-Wpointer-arith||" \
+		-e "s:-Wpointer-arith::" \
 		MCONFIG || die
 }
 
