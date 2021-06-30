@@ -7,19 +7,21 @@ inherit autotools pam
 
 DESCRIPTION="pam_mysql is a module for pam to authenticate users with mysql"
 HOMEPAGE="https://github.com/NigelCunningham/pam-MySQL"
-
 SRC_URI="https://github.com/NigelCunningham/pam-MySQL/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-DEPEND="
-	>=sys-libs/pam-0.72:0=
-	dev-db/mysql-connector-c:0=
-	openssl? ( dev-libs/openssl:0= )
-"
-RDEPEND="${DEPEND}"
+S="${WORKDIR}/pam-MySQL-${PV}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="openssl"
-S="${WORKDIR}/pam-MySQL-${PV}"
+
+DEPEND="
+	>=sys-libs/pam-0.72:0=
+	dev-db/mysql-connector-c:0=
+	virtual/libcrypt:=
+	openssl? ( dev-libs/openssl:0= )
+"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
