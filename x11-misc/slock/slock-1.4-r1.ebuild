@@ -1,7 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit fcaps savedconfig toolchain-funcs
 
 DESCRIPTION="simple X display locker"
@@ -13,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 ~hppa x86"
 
 RDEPEND="
+	virtual/libcrypt:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr
@@ -21,6 +23,10 @@ DEPEND="
 	${RDEPEND}
 	x11-base/xorg-proto
 "
+
+PATCHES=(
+	"${FILESDIR}"/slock-1.4-fix-link-paths.patch
+)
 
 src_prepare() {
 	default
@@ -43,7 +49,9 @@ src_prepare() {
 	tc-export CC
 }
 
-src_compile() { emake slock; }
+src_compile() {
+	emake slock
+}
 
 src_install() {
 	dobin slock
