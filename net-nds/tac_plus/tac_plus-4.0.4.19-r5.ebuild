@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools pam
+inherit autotools
 
 MY_P="tacacs+-F${PV}"
 DESCRIPTION="An updated version of Cisco's TACACS+ server"
@@ -13,28 +13,27 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="HPND RSA GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug finger maxsess tcpd skey static-libs"
 
 DEPEND="
-	net-libs/libnsl
+	net-libs/libnsl:=
 	sys-libs/pam
+	virtual/libcrypt:=
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-parallelmake.patch"
-	"${FILESDIR}/${PN}-4.0.4.19-deansification.patch"
+	"${FILESDIR}"/${P}-parallelmake.patch
+	"${FILESDIR}"/${P}-deansification.patch
 )
 
 src_prepare() {
 	default
 
-	mv configure.in configure.ac || die "Unable to quiet autoconf deprecation warning"
 	AT_M4DIR="." eautoreconf
-
 }
 
 src_configure() {
@@ -51,16 +50,13 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	if use static-libs ; then
-		find "${ED}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
+		find "${D}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
 	fi
 
 	dodoc CHANGES FAQ
 
 	newinitd "${FILESDIR}/tac_plus.init2" tac_plus
 	newconfd "${FILESDIR}/tac_plus.confd2" tac_plus
-
-	# bug #474860
-	pamd_mimic_system tac_plus auth account password session
 
 	insinto /etc/tac_plus
 	newins "${FILESDIR}/tac_plus.conf2" tac_plus.conf
