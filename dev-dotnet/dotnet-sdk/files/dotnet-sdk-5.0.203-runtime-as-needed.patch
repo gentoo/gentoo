@@ -1,0 +1,22 @@
+Fix -Wl,--as-needed
+
+singlefilehost: undefined reference to symbol 'deflateInit2_'
+
+--- a/src/installer/corehost/cli/apphost/static/CMakeLists.txt
++++ b/src/installer/corehost/cli/apphost/static/CMakeLists.txt
+@@ -212,13 +212,13 @@ target_link_libraries(
+     libhostcommon
+     ${CORECLR_LIBRARIES}
+ 
+-    ${ZLIB_LIBRARIES}
+-    ${LIBGSS}
+     ${NATIVE_LIBS_EXTRA}
+ 
+     ${START_WHOLE_ARCHIVE}
+     ${RUNTIMEINFO_LIB}
+     ${NATIVE_LIBS}
++    ${ZLIB_LIBRARIES}
++    ${LIBGSS}
+     ${END_WHOLE_ARCHIVE}
+ )
+ 

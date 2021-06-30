@@ -1,0 +1,90 @@
+--- a/src/libraries/pkg/Microsoft.NETCore.Platforms/runtime.compatibility.json
++++ b/src/libraries/pkg/Microsoft.NETCore.Platforms/runtime.compatibility.json
+@@ -2489,6 +2489,26 @@
+     "any",
+     "base"
+   ],
++  "gentoo-arm": [
++    "gentoo-arm",
++    "gentoo",
++    "linux-arm",
++    "linux",
++    "unix-arm",
++    "unix",
++    "any",
++    "base"
++  ],
++  "gentoo-arm64": [
++    "gentoo-arm64",
++    "gentoo",
++    "linux-arm64",
++    "linux",
++    "unix-arm64",
++    "unix",
++    "any",
++    "base"
++  ],
+   "gentoo-x64": [
+     "gentoo-x64",
+     "gentoo",
+@@ -2498,6 +2518,16 @@
+     "unix",
+     "any",
+     "base"
++  ],
++  "gentoo-x86": [
++    "gentoo-x86",
++    "gentoo",
++    "linux-x86",
++    "linux",
++    "unix-x86",
++    "unix",
++    "any",
++    "base"
+   ],
+   "illumos": [
+     "illumos",
+--- a/src/libraries/pkg/Microsoft.NETCore.Platforms/runtime.json
++++ b/src/libraries/pkg/Microsoft.NETCore.Platforms/runtime.json
+@@ -1028,12 +1028,30 @@
+         "linux"
+       ]
+     },
++    "gentoo-arm": {
++      "#import": [
++        "gentoo",
++        "linux-arm"
++      ]
++    },
++    "gentoo-arm64": {
++      "#import": [
++        "gentoo",
++        "linux-arm64"
++      ]
++    },
+     "gentoo-x64": {
+       "#import": [
+         "gentoo",
+         "linux-x64"
+       ]
+     },
++    "gentoo-x86": {
++      "#import": [
++        "gentoo",
++        "linux-x86"
++      ]
++    },
+     "illumos": {
+       "#import": [
+         "unix"
+--- a/src/libraries/pkg/Microsoft.NETCore.Platforms/runtimeGroups.props
++++ b/src/libraries/pkg/Microsoft.NETCore.Platforms/runtimeGroups.props
+@@ -66,7 +66,7 @@
+ 
+     <RuntimeGroup Include="gentoo">
+       <Parent>linux</Parent>
+-      <Architectures>x64</Architectures>
++      <Architectures>x64;x86;arm;arm64</Architectures>
+     </RuntimeGroup>
+ 
+     <RuntimeGroup Include="ios">

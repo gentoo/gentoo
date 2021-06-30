@@ -1,0 +1,24 @@
+Allow additional build arguments through {Additional,Native}BuildArguments
+
+/p:AdditionalBuildArguments are passed to src/runtime.*/eng/build.sh
+/p:NativeBuildArguments are passed to src/runtime.*/eng/native/build-commons.sh
+
+To pass NativeBuildArguments along without issues, spaces are replaced with '#'
+and back, so keep that in mind.
+To update this patch, it might be useful to "grep -rw CMakeArgs" in
+"src/runtime.*".
+
+Submodule patches:
+* dotnet-sdk-*-runtime-additional-arguments.patch
+
+--- a/repos/runtime.common.props
++++ b/repos/runtime.common.props
+@@ -101,7 +101,7 @@
+     <CommonBuildArguments>$(CommonBuildArguments) $(FlagParameterPrefix)nodereuse $(ArcadeFalseBoolBuildArg)</CommonBuildArguments>
+     <CommonBuildArguments>$(CommonBuildArguments) $(FlagParameterPrefix)warnAsError $(ArcadeFalseBoolBuildArg)</CommonBuildArguments>
+ 
+-    <BuildCommand>$(ProjectDirectory)build-source-build$(ShellExtension) $(CommonBuildArguments) $(FlagParameterPrefix)coreclr-args $(CoreClrBuildArguments) $(FlagParameterPrefix)libraries-args $(LibrariesBuildArguments) $(FlagParameterPrefix)installer-args $(InstallerBuildArguments) $(FlagParameterPrefix)additional-args</BuildCommand>
++    <BuildCommand>$(ProjectDirectory)build-source-build$(ShellExtension) $(CommonBuildArguments) $(FlagParameterPrefix)coreclr-args $(CoreClrBuildArguments) $(FlagParameterPrefix)libraries-args $(LibrariesBuildArguments) $(FlagParameterPrefix)installer-args $(InstallerBuildArguments) $(FlagParameterPrefix)additional-args $(AdditionalBuildArguments) /p:NativeBuildArguments=$(NativeBuildArguments.Replace(' ', '#'))</BuildCommand>
+     <BuildCommand Condition="$(Platform.Contains('arm')) AND '$(BuildArchitecture)' != 'arm64'">$(ArmEnvironmentVariables) $(BuildCommand)</BuildCommand>
+     <CleanCommand>$(ProjectDirectory)/clean$(ShellExtension)</CleanCommand>
+   </PropertyGroup>

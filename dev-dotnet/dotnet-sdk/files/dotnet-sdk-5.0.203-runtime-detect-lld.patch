@@ -1,0 +1,15 @@
+Detect LLD as a GNU linker
+
+This is only required for sys-devel/clang[default-lld], as `clang -Wl,--version` is executed for this check.
+
+--- a/eng/native/configurecompiler.cmake
++++ b/eng/native/configurecompiler.cmake
+@@ -595,7 +595,7 @@
+         ERROR_QUIET
+         OUTPUT_VARIABLE ldVersionOutput)
+ 
+-    if("${ldVersionOutput}" MATCHES "GNU ld" OR "${ldVersionOutput}" MATCHES "GNU gold")
++    if("${ldVersionOutput}" MATCHES "GNU ld" OR "${ldVersionOutput}" MATCHES "GNU gold" OR "${ldVersionOutput}" MATCHES "GNU linkers")
+         set(LD_GNU 1)
+     elseif("${ldVersionOutput}" MATCHES "Solaris Link")
+         set(LD_SOLARIS 1)
