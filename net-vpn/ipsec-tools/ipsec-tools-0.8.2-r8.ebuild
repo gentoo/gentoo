@@ -17,6 +17,7 @@ IUSE="hybrid idea ipv6 kerberos ldap nat pam rc5 readline selinux stats"
 
 CDEPEND="
 	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
 	pam? ( sys-libs/pam )
