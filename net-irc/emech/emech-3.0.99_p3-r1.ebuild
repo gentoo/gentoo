@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,13 +8,15 @@ inherit readme.gentoo-r1 toolchain-funcs
 DESCRIPTION="UNIX compatible IRC bot programmed in the C language"
 HOMEPAGE="http://www.energymech.net/"
 SRC_URI="http://www.energymech.net/files/${P/_/}.tar.gz"
+S="${WORKDIR}/${P/_/}"
 
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="debug session tcl"
 KEYWORDS="amd64 ppc x86"
 
-IUSE="debug session tcl"
-S="${WORKDIR}/${P/_/}"
+RDEPEND="virtual/libcrypt:="
+DEPEND="${RDEPEND}"
 
 DOC_CONTENTS="You can find a compressed sample config file at /usr/share/doc/${PF}"
 
