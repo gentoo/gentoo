@@ -11,23 +11,24 @@ SRC_URI="https://github.com/grke/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl ipv6 test xattr"
 
 RESTRICT="!test? ( test )"
 
-CDEPEND=" acct-group/burp
+CDEPEND="acct-group/burp
 	acct-user/burp
 	dev-libs/uthash
-	net-libs/librsync
+	dev-libs/openssl:0=
+	net-libs/librsync:=
 	sys-libs/ncurses:0=
 	sys-libs/zlib
-	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"
 DEPEND="${CDEPEND}
-	virtual/pkgconfig
 	test? ( dev-libs/check )"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	virtual/logger"
 
@@ -57,6 +58,12 @@ src_configure() {
 		econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# See https://github.com/grke/burp/issues/869
+	local -x CK_DEFAULT_TIMEOUT=10
+	default
+}
+
 src_install() {
 	default
 	keepdir /var/spool/burp
@@ -74,6 +81,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	ewarn
+	ewarn "You are installing a development version of burp. These versions contain"
+	ewarn "new features but might have unexpected issues. It is recommended by upstream"
+	ewarn "to use the current stable version (i.e. currently the 2.2 branch) instead."
+	ewarn
+
 	elog "Burp ebuilds now support the autoupgrade mechanism in both"
 	elog "client and server mode. In both cases it is disabled by"
 	elog "default. You almost certainly do NOT want to enable it in"
