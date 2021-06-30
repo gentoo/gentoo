@@ -1,22 +1,22 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 MY_P="${P/-/}"
 DESCRIPTION="BNC (BouNCe) is used as a gateway to an IRC Server"
 HOMEPAGE="http://gotbnc.com/"
 SRC_URI="http://gotbnc.com/files/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ppc ppc64 ~s390 sparc x86"
 IUSE="ssl"
 
-DEPEND="ssl? ( dev-libs/openssl:0= )"
+DEPEND="virtual/libcrypt:=
+	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/respect-cflags-ldflags.patch"
