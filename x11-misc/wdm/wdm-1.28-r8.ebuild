@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
 IUSE="pam selinux truetype"
 
 DEPEND="
+	virtual/libcrypt:=
 	>=x11-wm/windowmaker-0.70.0
 	x11-libs/libXmu
 	x11-libs/libXpm
