@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-07-01)
+# Berkeley DB slots that are long past EOL by Oracle,
+# maintenance burden, and no real path forward by Oracle.
+# Bug #792222, removal in 90 days.
+sys-libs/db:1
+sys-libs/db:3
+sys-libs/db:4.2
+sys-libs/db:4.3
+sys-libs/db:4.4
+sys-libs/db:4.5
+sys-libs/db:4.6
+sys-libs/db:4.7
+sys-libs/db:5.1
+
 # Matthias Maier <tamiko@gentoo.org> (2021-06-27)
 # Last release in 2013. Fails to build. No reverse dependencies.
 # Bugs #735260
