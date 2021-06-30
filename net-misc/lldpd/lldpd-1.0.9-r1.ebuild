@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-libs/libevent-2.1.11:=
 	sys-libs/readline:0=
 	seccomp? ( sys-libs/libseccomp:= )
-	snmp? ( net-analyzer/net-snmp[extensible(+)] )
+	snmp? ( net-analyzer/net-snmp:=[extensible(+)] )
 	xml? ( dev-libs/libxml2:= )
 	zsh-completion? ( app-shells/zsh )
 "
@@ -38,10 +38,6 @@ BDEPEND="virtual/pkgconfig
 "
 
 REQUIRED_USE="graph? ( doc )"
-
-PATCHES=(
-	"${FILESDIR}/lldpd-1.0.10-glibc-2.33.patch"
-)
 
 src_prepare() {
 	default
