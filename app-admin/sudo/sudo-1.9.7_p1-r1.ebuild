@@ -22,7 +22,7 @@ else
 	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~sparc-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~sparc-solaris"
 	fi
 fi
 
@@ -34,6 +34,7 @@ IUSE="gcrypt ldap nls offensive pam sasl +secure-path selinux +sendmail skey ssl
 
 DEPEND="
 	sys-libs/zlib:=
+	virtual/libcrypt:=
 	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
@@ -42,7 +43,6 @@ DEPEND="
 			net-nds/openldap[sasl]
 		)
 	)
-	nls? ( virtual/libintl )
 	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
@@ -61,7 +61,6 @@ RDEPEND="
 BDEPEND="
 	sys-devel/bison
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
 "
 
 S="${WORKDIR}/${MY_P}"
