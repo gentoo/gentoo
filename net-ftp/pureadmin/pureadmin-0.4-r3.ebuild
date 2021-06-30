@@ -17,6 +17,7 @@ IUSE="doc"
 RDEPEND="
 	gnome-base/libglade:2.0
 	sys-libs/zlib
+	virtual/libcrypt:=
 	virtual/fam
 	x11-libs/gtk+:2
 	x11-libs/libX11"
