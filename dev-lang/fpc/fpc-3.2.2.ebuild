@@ -26,6 +26,17 @@ QA_FLAGS_IGNORED="
 	usr/bin/.*
 	usr/lib.*/.*"
 
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		# Bug 475210
+		if $(tc-getLD) --version | grep -q "GNU gold"; then
+			eerror "fpc has several issues with the gold linker and does not easily"
+			eerror "permit selection. Please do not use USE=default-gold on binutils."
+			die "GNU gold detected from $(tc-getLD)"
+		fi
+	fi
+}
+
 src_unpack() {
 	case ${ARCH} in
 		amd64)
@@ -49,20 +60,13 @@ src_unpack() {
 src_prepare() {
 	default
 
-	local f
-	while IFS="" read -d $'\0' -r f ; do
-		sed -i -e 's/ -Xs / /' "${f}" || die
-	done < <(find "${WORKDIR}" -name Makefile -type f -print0)
+	find "${WORKDIR}" -name Makefile -exec sed -i 's/ -Xs / /' {} + || die
 
 	# let the pkg manager compress man files
 	sed -i '/find man.* gzip /d' "${WORKDIR}"/fpcbuild-${PV}/install/man/Makefile || die
 
 	# make the compiled binary check for fpc.cfg under the prefixed /etc/ path
 	hprefixify "${WORKDIR}"/fpcbuild-${PV}/fpcsrc/compiler/options.pas
-}
-
-src_configure() {
-	tc-ld-disable-gold # bug 475210
 }
 
 set_pp() {
