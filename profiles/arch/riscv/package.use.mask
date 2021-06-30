@@ -13,10 +13,6 @@ dev-db/mysql-connector-c ldap
 # Dependencies not keyworded, not tested
 media-gfx/imagemagick fftw openexr wmf
 
-# Marek Szuba <marecki@gentoo.org> (2021-06-22)
-# Dependencies not keyworded here yet
-dev-python/pillow tk
-
 # Marek Szuba <marecki@gentoo.org> (2021-06-21)
 # net-fs/samba not keyworded here, not tested
 app-misc/mc samba
@@ -148,7 +144,6 @@ app-text/asciidoc test
 app-text/ghostscript-gpl cups
 app-text/po4a test
 app-text/xmlto text
-dev-lang/python tk
 dev-libs/boost mpi numpy zstd
 dev-libs/check doc subunit
 dev-libs/glib gtk-doc test
@@ -180,8 +175,8 @@ dev-util/meson test
 dev-util/ninja doc test
 dev-util/pkgconf test
 dev-util/strace unwind
-dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
-dev-vcs/mercurial tk rust zsh-completion
+dev-vcs/git cvs highlight gnome-keyring subversion xinetd
+dev-vcs/mercurial rust zsh-completion
 media-libs/freetype harfbuzz
 media-libs/harfbuzz doc
 sys-libs/libomp hwloc
