@@ -16,6 +16,9 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="static"
 RESTRICT="mirror bindist"
 
+RDEPEND="virtual/libcrypt:="
+DEPEND="${RDEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-errno.patch
 	"${FILESDIR}"/${P}-exit.patch
