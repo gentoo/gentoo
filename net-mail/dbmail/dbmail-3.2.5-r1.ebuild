@@ -24,7 +24,8 @@ DEPEND="dev-db/libzdb
 	sys-libs/zlib
 	dev-libs/gmime:2.6
 	>=dev-libs/glib-2.16
-	dev-libs/libevent
+	dev-libs/libevent:=
+	virtual/libcrypt:=
 	ssl? (
 		dev-libs/openssl:0=
 	)"
