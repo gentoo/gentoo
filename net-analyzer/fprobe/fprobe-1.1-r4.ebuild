@@ -9,7 +9,7 @@ LICENSE="GPL-2"
 
 SRC_URI="mirror://sourceforge/fprobe/${P}.tar.bz2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 IUSE="debug messages"
 
