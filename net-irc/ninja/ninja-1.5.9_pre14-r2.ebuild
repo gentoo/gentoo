@@ -10,14 +10,15 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="ftp://qoop.org/ninja/stable/${P/_/}.tar.gz"
 S="${WORKDIR}"/${P/_*/}
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 IUSE="ncurses ipv6 ssl"
 
 RESTRICT="test"
 
 DEPEND="
+	virtual/libcrypt:=
 	ncurses? ( sys-libs/ncurses:= )
 	ssl?  ( dev-libs/openssl:= )
 "
