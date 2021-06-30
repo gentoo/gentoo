@@ -1,0 +1,17 @@
+--- a/src/daemon/pipewire.conf.in	2021-06-30 22:22:09.520402459 +0200
++++ b/src/daemon/pipewire.conf.in	2021-06-30 22:22:30.620404999 +0200
+@@ -234,12 +234,12 @@
+     # but it is better to start it as a systemd service.
+     # Run the session manager with -h for options.
+     #
+-    @comment@{ path = "@session_manager_path@"  args = "@session_manager_args@" }
++    { path = "@session_manager_path@"  args = "@session_manager_args@" }
+     #
+     # You can optionally start the pulseaudio-server here as well
+     # but it is better to start it as a systemd service.
+     # It can be interesting to start another daemon here that listens
+     # on another address with the -a option (eg. -a tcp:4713).
+     #
+-    @comment@{ path = "@pipewire_path@" args = "-c pipewire-pulse.conf" }
++    { path = "@pipewire_path@" args = "-c pipewire-pulse.conf" }
+ ]
