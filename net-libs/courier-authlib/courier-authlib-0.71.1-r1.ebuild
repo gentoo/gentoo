@@ -2,29 +2,30 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+inherit flag-o-matic
 
 DESCRIPTION="Courier authentication library"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 HOMEPAGE="https://www.courier-mta.org/authlib/"
+
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb crypt debug gdbm ldap mysql pam postgres sqlite static-libs"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="berkdb debug gdbm ldap mysql pam postgres sqlite static-libs"
 
 RESTRICT="!berkdb? ( test )"
 
 DEPEND="net-mail/mailbase
-		>=net-libs/courier-unicode-2.2.3
-		gdbm? ( sys-libs/gdbm )
-		!gdbm? ( sys-libs/db:= )
-		dev-libs/openssl:0=
-		ldap? ( >=net-nds/openldap-1.2.11 )
-		mysql? ( dev-db/mysql-connector-c )
-		pam? ( sys-libs/pam )
-		postgres? ( dev-db/postgresql:= )
-		sqlite? ( dev-db/sqlite:3 )"
+	>=net-libs/courier-unicode-2.1.2
+	gdbm? ( sys-libs/gdbm:= )
+	!gdbm? ( sys-libs/db:= )
+	dev-libs/openssl:0=
+	ldap? ( >=net-nds/openldap-1.2.11 )
+	mysql? ( dev-db/mysql-connector-c:= )
+	pam? ( sys-libs/pam )
+	postgres? ( dev-db/postgresql:= )
+	sqlite? ( dev-db/sqlite:3 )"
 
 RDEPEND="${DEPEND}"
 
