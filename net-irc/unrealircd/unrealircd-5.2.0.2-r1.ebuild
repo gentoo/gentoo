@@ -21,8 +21,8 @@ RDEPEND="
 	>=app-crypt/argon2-20171227-r1:=
 	dev-libs/libpcre2
 	dev-libs/libsodium:=
-	>=net-dns/c-ares-1.7:=
 	dev-libs/openssl:0=
+	>=net-dns/c-ares-1.7:=
 	virtual/libcrypt:=
 	curl? ( net-misc/curl[adns] )
 "
