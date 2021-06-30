@@ -17,13 +17,19 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/openssl:0=
-	>=net-libs/libyang-2.0.0:=
-	net-libs/libssh:0=[server]"
-DEPEND="${RDEPEND}
-	test? ( dev-util/cmocka )"
+	>=net-libs/libyang-1.0.240:=
+	<net-libs/libyang-2.0.0:=
+	net-libs/libssh:0=[server]
+	virtual/libcrypt:=
+"
+DEPEND="
+	${RDEPEND}
+	test? ( dev-util/cmocka )
+"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+"
 
 src_configure() {
 	local mycmakeargs=(
