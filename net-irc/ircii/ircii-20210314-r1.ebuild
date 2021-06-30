@@ -10,12 +10,12 @@ SRC_URI="https://ircii.warped.com/${P}.tar.bz2
 	https://ircii.warped.com/old/${P}.tar.bz2"
 HOMEPAGE="http://eterna.com.au/ircii/"
 
-SLOT="0"
 LICENSE="BSD"
+SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE=""
 
 DEPEND="sys-libs/ncurses:0=
+	virtual/libcrypt:=
 	virtual/libiconv"
 RDEPEND="${DEPEND}"
 
@@ -27,7 +27,7 @@ src_configure() {
 }
 
 src_install() {
-	#Still needed as of 20210314, otherwise man dirs don't exist at the right time
+	# Still needed as of 20210314, otherwise man dirs don't exist at the right time
 	emake -j1 DESTDIR="${D}" install
 
 	dodoc ChangeLog INSTALL NEWS README \
