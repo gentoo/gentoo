@@ -62,7 +62,6 @@ src_configure() {
 _emake() {
 	emake \
 		REDO=$(usex leaps-timezone posix_right posix_only) \
-		TZDATA_TEXT= \
 		TOPDIR="${EPREFIX}" \
 		ZICDIR='$(TOPDIR)/usr/bin' \
 		"$@"
