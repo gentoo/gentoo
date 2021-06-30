@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,11 +16,12 @@ IUSE="mysql postgres test vpopmail"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/cdb:=
-	>=dev-libs/bglibs-2.04:0="
-DEPEND="${RDEPEND}
+	>=dev-libs/bglibs-2.04:0=
+	virtual/libcrypt:=
 	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql[server] )
-	vpopmail? ( net-mail/vpopmail )
+	vpopmail? ( net-mail/vpopmail )"
+DEPEND="${RDEPEND}
 	test? (
 		app-editors/vim
 		dev-db/sqlite
