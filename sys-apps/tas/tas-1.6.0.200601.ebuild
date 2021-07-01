@@ -14,7 +14,7 @@ HOMEPAGE="https://www.supermicro.com"
 SRC_URI="https://www.supermicro.com/wftp/utility/${MY_PN}/${MY_PN}_${MY_PV}_build.${MY_DATE}.zip"
 S="${WORKDIR}"
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="BSD supermicro"
 SLOT="0"
 
