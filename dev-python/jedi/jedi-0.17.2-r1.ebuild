@@ -52,7 +52,7 @@ python_prepare_all() {
 python_test() {
 	local deselect=(
 		# TODO
-		'test/test_integration.py::test_completion[stdlib:155]'
+		'test/test_integration.py::test_completion[stdlib:197]'
 		'test/test_integration.py::test_completion[on_import:29]'
 		# assume pristine virtualenv
 		test/test_utils.py::TestSetupReadline::test_local_import
