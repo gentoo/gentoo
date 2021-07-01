@@ -33,7 +33,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 	SRC_URI="http://git.ffmpeg.org/gitweb/rtmpdump.git/snapshot/c5f04a58fc2aeea6296ca7c44ee4734c18401aa3.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-c5f04a5"
 fi
