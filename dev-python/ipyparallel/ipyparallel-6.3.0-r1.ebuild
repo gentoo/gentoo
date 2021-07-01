@@ -48,13 +48,19 @@ BDEPEND="${RDEPEND}
 distutils_enable_sphinx docs/source
 distutils_enable_tests pytest
 
-src_prepare() {
-	# TODO: investigate
-	sed -e 's:test_unicode:_&:' \
-		-e 's:test_temp_flags:_&:' \
-		-i ipyparallel/tests/test_view.py || die
-
-	distutils-r1_src_prepare
+python_test() {
+	local deselect=(
+		# we don't run a mongo instance for tests
+		ipyparallel/tests/test_mongodb.py::TestMongoBackend
+		# TODO
+		ipyparallel/tests/test_util.py::test_disambiguate_ip
+		ipyparallel/tests/test_view.py::TestView::test_temp_flags
+		ipyparallel/tests/test_view.py::TestView::test_unicode_apply_arg
+		ipyparallel/tests/test_view.py::TestView::test_unicode_apply_result
+		ipyparallel/tests/test_view.py::TestView::test_unicode_execute
+		ipyparallel/tests/test_view.py::TestView::test_sync_imports_quiet
+	)
+	epytest ${deselect[@]/#/--deselect }
 }
 
 pkg_postinst() {
