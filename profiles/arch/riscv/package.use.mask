@@ -7,6 +7,7 @@ sci-libs/fftw mpi
 media-sound/alsa-utils libsamplerate
 dev-python/ipython doc matplotlib nbconvert notebook
 dev-python/matplotlib cairo excel tk wxwidgets
+app-text/texlive-core tk xetex
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
