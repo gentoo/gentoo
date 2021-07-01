@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/osm-c-tools/${PN}/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="sys-libs/zlib"
 RDEPEND="${DEPEND}"
