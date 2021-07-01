@@ -11,7 +11,7 @@ inherit python-single-r1 desktop optfeature
 DESCRIPTION="A booru-like media organizer for the desktop"
 HOMEPAGE="https://hydrusnetwork.github.io/hydrus/ https://github.com/hydrusnetwork/hydrus"
 
-if [ "${PV}" == "9999" ]; then
+if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/hydrusnetwork/hydrus.git"
