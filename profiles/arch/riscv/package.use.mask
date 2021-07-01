@@ -87,46 +87,19 @@ app-text/enchant voikko
 # No riscv keyword in sys-apps/hwloc
 sys-process/htop hwloc
 
-# Matt Turner <mattst88@gentoo.org> (2020-12-05)
-# dev-python/parameterized is not keyworded
-dev-util/gtk-doc test
-
-# Ulrich Müller <ulm@gentoo.org> (2020-01-12)
-# Dependencies not keyworded
-app-editors/emacs gui
-
-# Yixun Lan <dlan@gentoo.org> (2020-09-01)
-# Dependencies not keyworded
-dev-libs/jansson doc
-
-# Jakov Smolic <jakov.smolic@sartura.hr> (2020-08-14)
-# Large amount of missing keywords
-# Bug #724358
->=dev-libs/json-c-0.15 doc
-
-# Sam James <sam@gentoo.org> (2020-07-31)
-# Large amount of missing keywords for cmake and friends
-# bug #720296, bug #724358
-dev-util/cmake doc test
-dev-libs/jsoncpp doc
-
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
-# Lots of python dependencies, mask to facilitate keywording
+# dev-python/breathe not keyworded here, mask to facilitate
 # keywording dev-libs/libfido2
 dev-libs/libcbor doc
 
 # Joonas Niilola <juippis@gentoo.org> (2020-03-26)
 # Dependency not keyworded on ~riscv
-dev-libs/libpipeline test
-sys-apps/kbd test
+#FIXME dev-libs/libpipeline test
+#sys-apps/kbd test
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
-
-# Dependency resolution is broken because
-# sys-fs/lvm2 has no riscv keyword
-sys-fs/e2fsprogs cron
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
