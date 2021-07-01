@@ -75,6 +75,7 @@ DEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/zlib:=
 	sys-process/numactl:=
+	virtual/libcrypt:=
 	x11-libs/libpciaccess:=
 	babeltrace? ( dev-util/babeltrace )
 	fuse? ( sys-fs/fuse:0= )
