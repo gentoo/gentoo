@@ -63,7 +63,7 @@ x11-base/xwayland unwind
 dev-libs/gobject-introspection doctool test
 dev-python/markdown test
 x11-libs/gtk+ cups test colord
-net-libs/libsoup samba gssapi test
+net-libs/libsoup samba test
 net-libs/libproxy spidermonkey webkit kde networkmanager
 
 # Sam James <sam@gentoo.org> (2021-03-11)
@@ -204,5 +204,4 @@ sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
-sys-process/audit gssapi
 x11-libs/libvdpau doc
