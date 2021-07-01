@@ -3,7 +3,7 @@
 
 EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+PYTHON_COMPAT=(python{3_8,3_9})
 
 inherit cmake flag-o-matic python-single-r1 xdg-utils
 
@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
+IUSE="audiofile +dbus dcc-video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
@@ -53,7 +53,7 @@ DEPEND="dev-qt/qtcore:5
 	x11-libs/libXScrnSaver
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtdbus:5 )
-	dcc_video? ( dev-qt/qtmultimedia:5[widgets] )
+	dcc-video? ( dev-qt/qtmultimedia:5[widgets] )
 	kde? (
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/ki18n:5
@@ -117,7 +117,7 @@ src_configure() {
 		-DWANT_TRANSPARENCY=ON
 
 		-DWANT_AUDIOFILE=$(usex audiofile ON OFF)
-		-DWANT_DCC_VIDEO=$(usex dcc_video ON OFF)
+		-DWANT_DCC_VIDEO=$(usex dcc-video ON OFF)
 		-DWANT_DEBUG=$(usex debug ON OFF)
 		-DWANT_DOXYGEN=$(usex doc ON OFF)
 		-DWANT_GETTEXT=$(usex nls ON OFF)
