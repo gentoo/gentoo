@@ -3,7 +3,7 @@
 <pkgmetadata>
 <!-- maintainer-needed -->
 	<use>
-		<flag name="pax_kernel">Enable if the user plans to run the
+		<flag name="pax-kernel">Enable if the user plans to run the
 		package under a pax enabled hardened kernel</flag>
 	</use>
 </pkgmetadata>

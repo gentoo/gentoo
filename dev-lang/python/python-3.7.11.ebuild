@@ -175,7 +175,7 @@ src_compile() {
 	emake CPPFLAGS= CFLAGS= LDFLAGS=
 
 	# Work around bug 329499. See also bug 413751 and 457194.
-	if has_version dev-libs/libffi[pax_kernel]; then
+	if has_version dev-libs/libffi[pax-kernel]; then
 		pax-mark E python
 	else
 		pax-mark m python
@@ -254,7 +254,7 @@ src_install() {
 
 	# python seems to get rebuilt in src_install (bug 569908)
 	# Work around it for now.
-	if has_version dev-libs/libffi[pax_kernel]; then
+	if has_version dev-libs/libffi[pax-kernel]; then
 		pax-mark E "${ED}/usr/bin/${abiver}"
 	else
 		pax-mark m "${ED}/usr/bin/${abiver}"
