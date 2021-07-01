@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://issues.apache.org/jira/browse/CSV</bugs-to>
+		<changelog>https://commons.apache.org/proper/commons-csv/changes-report.html</changelog>
+	</upstream>
+</pkgmetadata>
