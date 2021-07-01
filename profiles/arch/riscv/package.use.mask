@@ -5,6 +5,7 @@
 # Dependencies not keyworded, not tested
 sci-libs/fftw mpi
 media-sound/alsa-utils libsamplerate
+dev-python/ipython doc matplotlib nbconvert notebook
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
