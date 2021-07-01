@@ -40,6 +40,8 @@ python_test() {
 		ipykernel/tests/test_serialize.py::test_class
 		ipykernel/tests/test_serialize.py::test_class_oldstyle
 		ipykernel/tests/test_serialize.py::test_class_inheritance
+		'ipykernel/tests/test_async.py::test_async_interrupt[trio]'
+		'ipykernel/tests/test_async.py::test_async_interrupt[trio]'
 	)
 
 	epytest ${deselect[@]/#/--deselect }
