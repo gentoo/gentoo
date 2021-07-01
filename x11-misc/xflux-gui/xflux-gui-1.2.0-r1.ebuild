@@ -1,15 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="A GUI for f.lux"
 HOMEPAGE="https://github.com/xflux-gui/fluxgui/"
 SRC_URI="https://github.com/${PN}/fluxgui/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/fluxgui-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,8 +26,6 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	x11-misc/xflux
 "
-
-S="${WORKDIR}/fluxgui-${PV}"
 
 python_install() {
 	# Don't let the package compiling the schemas,
