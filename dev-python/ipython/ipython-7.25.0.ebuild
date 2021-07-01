@@ -58,17 +58,13 @@ distutils_enable_tests pytest
 
 RDEPEND+="
 	nbconvert? (
-		$(python_gen_cond_dep '
-			dev-python/nbconvert[${PYTHON_USEDEP}]
-		' python3_{8..9})
+		dev-python/nbconvert[${PYTHON_USEDEP}]
 	)"
 PDEPEND="
 	notebook? (
-		$(python_gen_cond_dep '
-			dev-python/notebook[${PYTHON_USEDEP}]
-			dev-python/ipywidgets[${PYTHON_USEDEP}]
-			dev-python/widgetsnbextension[${PYTHON_USEDEP}]
-		' python3_{8..9})
+		dev-python/notebook[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
+		dev-python/widgetsnbextension[${PYTHON_USEDEP}]
 	)
 	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	smp? (
