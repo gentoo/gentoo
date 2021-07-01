@@ -18,10 +18,13 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/pbr[${PYTHON_USEDEP}]
 	test? ( dev-python/waitress[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}/${P}-no-pbr.patch"
+)
 
 src_prepare() {
 	sed -i -e 's:--pep8::' pytest.ini || die
