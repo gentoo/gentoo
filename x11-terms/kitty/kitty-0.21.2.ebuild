@@ -28,9 +28,9 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=media-libs/harfbuzz-1.5.0:=
+	media-libs/lcms
 	media-libs/libcanberra
 	media-libs/libpng:0=
-	media-libs/lcms
 	sys-apps/dbus
 	sys-libs/zlib
 	x11-libs/libxcb[xkb]
@@ -47,19 +47,19 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	media-libs/mesa[X(+)]
+	media-libs/mesa[X]
 	sys-libs/ncurses
 "
 
 BDEPEND="virtual/pkgconfig"
 
-[[ ${PV} == *9999 ]] && BDEPEND+="
-	$(python_gen_cond_dep '>=dev-python/sphinx-1.7[${PYTHON_MULTI_USEDEP}]')"
+[[ ${PV} == *9999 ]] && BDEPEND+=" >=dev-python/sphinx-1.7"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.2-flags.patch
-	"${FILESDIR}"/${PN}-0.21.2-remove-terminfo.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
+	"${FILESDIR}"/${PN}-0.21.2-remove-terminfo.patch
+	"${FILESDIR}"/${PN}-0.20.1-tests.patch
 )
 
 src_prepare() {
@@ -68,6 +68,9 @@ src_prepare() {
 	# disable wayland as required
 	if ! use wayland; then
 		sed -i "/'x11 wayland'/s/ wayland//" setup.py || die
+		# also disable wayland tests
+		sed -i "/if not self.is_ci/d" kitty_tests/check_build.py || die
+		sed -i "/linux_backends.append('wayland')/d" kitty_tests/check_build.py || die
 	fi
 
 	# respect doc dir
