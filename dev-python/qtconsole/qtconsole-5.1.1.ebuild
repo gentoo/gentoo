@@ -3,9 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
-
 inherit distutils-r1
 
 DESCRIPTION="Qt-based console for Jupyter with support for rich media output"
