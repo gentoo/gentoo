@@ -13,7 +13,7 @@ SRC_URI="https://download.mono-project.com/sources/mono/${P}.tar.xz"
 LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="doc minimal nls pax_kernel xen"
+IUSE="doc minimal nls pax-kernel xen"
 
 # Note: mono works incorrect with older versions of libgdiplus
 # Details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
@@ -31,7 +31,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/bc
 	virtual/yacc
-	pax_kernel? ( sys-apps/elfix )
+	pax-kernel? ( sys-apps/elfix )
 "
 
 PATCHES=(
@@ -66,7 +66,7 @@ src_prepare() {
 	# get killed in the build proces when MPROTECT is enabled, bug #286280
 	# RANDMMAP kills the build process too, bug #347365
 	# We use paxmark.sh to get PT/XT logic, bug #532244
-	if use pax_kernel ; then
+	if use pax-kernel ; then
 		ewarn "We are disabling MPROTECT on the mono binary."
 
 		# issue 9 : https://github.com/Heather/gentoo-dotnet/issues/9

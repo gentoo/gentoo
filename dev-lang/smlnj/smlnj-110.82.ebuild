@@ -57,8 +57,8 @@ SLOT="0"
 
 #sparc support should be there but is untested
 KEYWORDS="-* ~amd64 ~ppc ~x86"
-IUSE="pax_kernel"
-DEPEND="pax_kernel? ( sys-apps/elfix )"
+IUSE="pax-kernel"
+DEPEND="pax-kernel? ( sys-apps/elfix )"
 RDEPEND=""
 
 S=${WORKDIR}
@@ -87,7 +87,7 @@ src_prepare() {
 			-e "/^CC/s:gcc:$(tc-getCC):" \
 			-e "/^CPP/s:gcc:$(tc-getCC):" \
 			-e "/^CFLAGS/{s:-O[0123s]:: ; s:=:= ${CFLAGS}:}" \
-			-e "/^PAXMARK/s:true:"$(usex pax_kernel "paxmark.sh" "true")":" \
+			-e "/^PAXMARK/s:true:"$(usex pax-kernel "paxmark.sh" "true")":" \
 			-i base/runtime/objs/${file}
 	done
 }

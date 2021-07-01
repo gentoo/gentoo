@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
+		<flag name="pax-kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="xen">Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.</flag>
 	</use>
 	<upstream>

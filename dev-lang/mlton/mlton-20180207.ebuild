@@ -14,14 +14,14 @@ HOMEPAGE="http://www.mlton.org"
 LICENSE="HPND MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="binary bootstrap-smlnj stage3 doc pax_kernel"
+IUSE="binary bootstrap-smlnj stage3 doc pax-kernel"
 
 DEPEND="dev-libs/gmp:*
 		bootstrap-smlnj? ( dev-lang/smlnj )
 		!bootstrap-smlnj? (
 			!amd64?  ( dev-lang/smlnj )
 		)
-		pax_kernel? ( sys-apps/elfix )
+		pax-kernel? ( sys-apps/elfix )
 		doc? ( virtual/latex-base )"
 RDEPEND="dev-libs/gmp:*"
 
@@ -175,7 +175,7 @@ mlton_src_compile() {
 	if [[ ${MULTIBUILD_VARIANT} == $(mlton_bootstrap_variant) ]]; then
 		emake -j1 \
 			"bootstrap-smlnj" \
-			PAXMARK=$(usex pax_kernel "paxmark.sh" "true") \
+			PAXMARK=$(usex pax-kernel "paxmark.sh" "true") \
 			CFLAGS="${CFLAGS}" \
 			WITH_GMP_INC_DIR="${EPREFIX}"/usr/include \
 			WITH_GMP_LIB_DIR="${EPREFIX}"/$(get_libdir)

@@ -15,7 +15,7 @@ SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_X86}_i386.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="x86"
-IUSE="libnotify systray pax_kernel pulseaudio"
+IUSE="libnotify systray pax-kernel pulseaudio"
 RESTRICT="mirror strip"
 
 DEPEND=""
@@ -82,12 +82,12 @@ src_install() {
 			"spotify-client.png"
 	done
 	domenu "${S}${SPOTIFY_PKG_HOME}/spotify.desktop"
-	if use pax_kernel; then
+	if use pax-kernel; then
 		#create the headers, reset them to default, then paxmark -m them
 		pax-mark C "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark z "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark m "${ED}${SPOTIFY_HOME}/${PN}" || die
-		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
+		eqawarn "You have set USE=pax-kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel.  To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage!  If"
 		eqawarn "you suspect that ${PN} is being broken by this modification,"

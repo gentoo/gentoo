@@ -225,7 +225,7 @@ src_compile() {
 	emake
 
 	# Work around bug 329499. See also bug 413751 and 457194.
-	if has_version dev-libs/libffi[pax_kernel]; then
+	if has_version dev-libs/libffi[pax-kernel]; then
 		pax-mark E python
 	else
 		pax-mark m python
