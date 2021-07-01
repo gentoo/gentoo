@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="Spotify is a social music platform"
-HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
+HOMEPAGE="https://www.spotify.com/download/linux/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
 #BUILD_ID_AMD64="117.g6bd7cc73-35"
 BUILD_ID_X86="117.g6bd7cc73-35"
