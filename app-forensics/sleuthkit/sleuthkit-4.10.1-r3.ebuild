@@ -62,12 +62,7 @@ DEPEND="
 # "
 
 RDEPEND="${DEPEND}
-	java? (
-		|| (
-			virtual/jre:1.8
-			virtual/jdk:1.8
-		)
-	)
+	java? ( virtual/jre:1.8 )
 "
 DEPEND="${DEPEND}
 	java? ( virtual/jdk:1.8 )
