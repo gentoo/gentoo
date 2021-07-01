@@ -28,5 +28,6 @@
   </use>
   <upstream>
     <remote-id type="github">obsproject/obs-studio</remote-id>
+    <remote-id type="github">obsproject/obs-browser</remote-id>
   </upstream>
 </pkgmetadata>
