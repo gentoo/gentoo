@@ -7,7 +7,7 @@ WANT_AUTOMAKE="none"
 
 inherit flag-o-matic systemd autotools
 
-MY_PV=${PV/_rc/RC}
+MY_PV=${PV/_rc/rc}
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://www.php.net/"
 SRC_URI="https://www.php.net/distributions/${P}.tar.xz"
@@ -37,13 +37,13 @@ IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
 	coverage +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
-	intl iodbc ipv6 +jit +json kerberos ldap ldap-sasl libedit lmdb
+	intl iodbc ipv6 +jit kerberos ldap ldap-sasl libedit lmdb
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline selinux +session session-mm sharedmem
 	+simplexml snmp soap sockets sodium spell sqlite ssl
 	sysvipc systemd test tidy +tokenizer tokyocabinet truetype unicode webp
-	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
+	+xml xmlreader xmlwriter xpm xslt zip zlib"
 
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 # The Oracle instant client provides its own incompatible ldap library.
@@ -59,7 +59,6 @@ REQUIRED_USE="
 	gd? ( zlib )
 	simplexml? ( xml )
 	soap? ( xml )
-	xmlrpc? ( xml iconv )
 	xmlreader? ( xml )
 	xmlwriter? ( xml )
 	xslt? ( xml )
@@ -78,7 +77,7 @@ RESTRICT="!test? ( test )"
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
 COMMON_DEPEND="
-	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
+	>=app-eselect/eselect-php-0.9.7[apache2?,fpm?]
 	>=dev-libs/libpcre2-10.30[jit?,unicode]
 	fpm? ( acl? ( sys-apps/acl ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
@@ -92,8 +91,8 @@ COMMON_DEPEND="
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	coverage? ( dev-util/lcov )
-	curl? ( >=net-misc/curl-7.10.5 )
-	enchant? ( <app-text/enchant-2.0:0 )
+	curl? ( >=net-misc/curl-7.29.0 )
+	enchant? ( app-text/enchant:2 )
 	ffi? ( >=dev-libs/libffi-3.0.11 )
 	firebird? ( dev-db/firebird )
 	gd? ( >=virtual/jpeg-0-r3:0 media-libs/libpng:0= )
@@ -111,12 +110,12 @@ COMMON_DEPEND="
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient[sdk] )
 	odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( >=dev-db/unixODBC-1.8.13 ) )
-	postgres? ( dev-db/postgresql:* )
+	postgres? ( >=dev-db/postgresql-9.1:* )
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
 	session-mm? ( dev-libs/mm )
 	snmp? ( >=net-analyzer/net-snmp-5.2 )
-	sodium? ( dev-libs/libsodium:= )
+	sodium? ( dev-libs/libsodium:=[-minimal] )
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? ( >=dev-libs/openssl-1.0.1:0= )
@@ -125,7 +124,7 @@ COMMON_DEPEND="
 	truetype? ( =media-libs/freetype-2* )
 	unicode? ( dev-libs/oniguruma:= )
 	webp? ( media-libs/libwebp:0= )
-	xml? ( >=dev-libs/libxml2-2.7.6 )
+	xml? ( >=dev-libs/libxml2-2.9.0 )
 	xpm? ( x11-libs/libXpm )
 	xslt? ( dev-libs/libxslt )
 	zip? ( >=dev-libs/libzip-1.2.0:= )
@@ -150,7 +149,8 @@ BDEPEND="virtual/pkgconfig"
 PHP_MV="$(ver_cut 1)"
 
 PATCHES=(
-	"${FILESDIR}"/php-iodbc-header-location.patch
+	"${FILESDIR}/php-iodbc-header-location.patch"
+	"${FILESDIR}/php80-firebird-warnings.patch"
 )
 
 php_install_ini() {
@@ -244,7 +244,7 @@ src_configure() {
 		--with-libdir="$(get_libdir)"
 		--localstatedir="${EPREFIX}/var"
 		--without-pear
-		$(use_enable threads maintainer-zts)
+		$(use_enable threads zts)
 	)
 
 	our_conf+=(
@@ -269,7 +269,6 @@ src_configure() {
 			$(use elibc_glibc || use elibc_musl || use elibc_FreeBSD || echo "${EPREFIX}/usr"))
 		$(use_enable intl)
 		$(use_enable ipv6)
-		$(use_enable json)
 		$(use_with kerberos)
 		$(use_with xml libxml)
 		$(use_enable unicode mbstring)
@@ -296,7 +295,6 @@ src_configure() {
 		$(use_enable xml)
 		$(use_enable xmlreader)
 		$(use_enable xmlwriter)
-		$(use_with xmlrpc)
 		$(use_with xslt xsl)
 		$(use_with zip)
 		$(use_with zlib zlib "${EPREFIX}/usr")
@@ -541,7 +539,7 @@ src_install() {
 				# We're specifically not using emake install-sapi as libtool
 				# may cause unnecessary relink failures (see bug #351266)
 				insinto "${PHP_DESTDIR#${EPREFIX}}/apache2/"
-				newins ".libs/libphp${PHP_MV}$(get_libname)" \
+				newins ".libs/libphp$(get_libname)" \
 					   "libphp${PHP_MV}$(get_libname)"
 				keepdir "/usr/$(get_libdir)/apache2/modules"
 			else
@@ -564,7 +562,7 @@ src_install() {
 						source="sapi/fpm/php-fpm"
 						;;
 					embed)
-						source="libs/libphp${PHP_MV}$(get_libname)"
+						source="libs/libphp$(get_libname)"
 						;;
 					phpdbg)
 						source="sapi/phpdbg/phpdbg"
