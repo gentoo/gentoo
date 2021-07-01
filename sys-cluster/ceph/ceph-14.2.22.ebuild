@@ -68,7 +68,7 @@ DEPEND="
 	sys-libs/zlib:=
 	sys-process/numactl:=
 	x11-libs/libpciaccess:=
-	virtual/libcrypt
+	virtual/libcrypt:=
 	babeltrace? ( dev-util/babeltrace )
 	fuse? ( sys-fs/fuse:0= )
 	jemalloc? ( dev-libs/jemalloc:= )
