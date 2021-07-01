@@ -42,7 +42,6 @@ DEPEND="dev-libs/libsodium:=
 	xinetd? ( virtual/inetd )"
 
 RDEPEND="${DEPEND}
-	dev-libs/libsodium:=
 	net-ftp/ftpbase
 	selinux? ( sec-policy/selinux-ftp )"
 
