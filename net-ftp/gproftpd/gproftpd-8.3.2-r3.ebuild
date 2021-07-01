@@ -39,8 +39,6 @@ DOCS="AUTHORS ChangeLog README"
 src_prepare() {
 	default
 
-	mv configure.{in,ac} || die
-
 	eautoreconf
 }
 
