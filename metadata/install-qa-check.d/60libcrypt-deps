@@ -17,7 +17,7 @@ libcrypt_check() {
 			;;
 	esac
 
-	if grep -q "virtual/libcrypt" <<<${RDEPEND}; then
+	if grep -q -E "virtual/libcrypt|sys-libs/libxcrypt" <<<${RDEPEND}; then
 		# nothing to do here
 		return
 	fi
