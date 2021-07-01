@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# gui-libs/egl-wayland with nvidia-drivers does not function well with
+# the last drivers to support x86 (needed here to override use.mask).
+x11-base/xwayland video_cards_nvidia
+x11-wm/mutter video_cards_nvidia
+
 # Stefan Strogin <steils@gentoo.org> (2021-06-27)
 # Requires dev-python/adblock which is not keyworded on x86 yet
 www-client/qutebrowser adblock

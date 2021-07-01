@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# gui-libs/egl-wayland with nvidia-drivers is supported on this arch.
+x11-base/xwayland -video_cards_nvidia
+x11-wm/mutter -video_cards_nvidia
+
 # Mike Gilbert <floppym@gentoo.org> (2021-03-29)
 # Unmask TPM on supported archs.
 sys-apps/systemd -tpm
