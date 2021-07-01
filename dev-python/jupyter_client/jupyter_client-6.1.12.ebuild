@@ -33,3 +33,11 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	local deselect=(
+		jupyter_client/tests/test_kernelmanager.py::TestAsyncKernelManager::test_signal_kernel_subprocesses
+		jupyter_client/tests/test_kernelmanager.py::TestAsyncKernelManager::test_start_new_async_kernel
+	)
+	epytest ${deselect[@]/#/--deselect }
+}
