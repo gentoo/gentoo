@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit flag-o-matic
+
 DESCRIPTION="Sound card based multimode software modem for Amateur Radio use"
 HOMEPAGE="http://www.w1hkj.com"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -33,9 +35,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README )
 
-PATCHES=( "${FILESDIR}"/${PN}-c++11.patch )
-
 src_configure() {
+	append-cxxflags $(test-flags-CXX -std=c++14)
 	local myconf=""
 
 	use cpu_flags_x86_sse && myconf="${myconf} --enable-optimizations=sse"
