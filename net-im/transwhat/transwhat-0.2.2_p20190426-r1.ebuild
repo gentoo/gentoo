@@ -1,17 +1,18 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 EGIT_COMMIT="d022243f6c7b23674d3c87a09819f00b10df1165"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
 DESCRIPTION="A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3"
 HOMEPAGE="https://github.com/stv0g/transwhat"
 SRC_URI="https://github.com/stv0g/transwhat/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -25,8 +26,6 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 DOCS=( "INSTALL.rst" "README.rst" "USAGE.rst" )
 
