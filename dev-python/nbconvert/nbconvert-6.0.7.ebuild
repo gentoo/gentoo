@@ -54,9 +54,9 @@ python_test() {
 	local deselect=(
 		# Missing pyppeteer for now
 		# TODO: Doesn't skip?
-		--deselect exporters/tests/test_webpdf.py
+		--deselect nbconvert/exporters/tests/test_webpdf.py
 		# Needs pyppeteer too
-		--deselect 'tests/test_nbconvertapp.py::TestNbConvertApp::test_webpdf_with_chromium'
+		--deselect 'nbconvert/tests/test_nbconvertapp.py::TestNbConvertApp::test_webpdf_with_chromium'
 	)
 
 	distutils_install_for_testing bdist_egg
