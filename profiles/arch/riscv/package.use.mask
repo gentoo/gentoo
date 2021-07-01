@@ -6,12 +6,10 @@
 dev-libs/cyrus-sasl authdaemond postgres
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-26)
-# Dependencies not keyworded, not tested
-dev-python/pyzmq test
+# sys-libs/libunwind do not support riscv
 net-libs/zeromq unwind
-dev-python/linecache2 test
-dev-python/traceback2 test
-dev-db/mysql-connector-c ldap
+# www-servers/tornado not keyworded, not tested
+dev-python/pyzmq test
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
@@ -199,9 +197,6 @@ sys-block/thin-provisioning-tools test
 sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
-sys-devel/llvm doc
-sys-fs/squashfs-tools lzma
-sys-libs/libcap-ng python
 sys-process/audit gssapi
 x11-base/xorg-server  unwind
 x11-base/xwayland unwind
