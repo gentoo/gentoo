@@ -25,12 +25,15 @@ RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}/${PN}-${PN}-parent-${PV}/${PN}"
 
-JAVA_SRC_DIR=( "src/main/java" "src/main/java-templates" )
+JAVA_SRC_DIR=(
+	"src/main/java"
+	"src/main/java-templates"
+)
 
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
-JAVA_TEST_EXCLUDES=(
-	# Tests run: 1063,  Failures: 3
-	"com.google.gson.functional.GsonVersionDiagnosticsTest"
-	"com.google.gson.internal.GsonBuildConfigTest"
-)
+
+src_prepare() {
+	default
+	sed -i "s/\${project.version}/${PV}/g" src/main/java-templates/com/google/gson/internal/GsonBuildConfig.java || die "Failed to set version"
+}
