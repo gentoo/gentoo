@@ -3,9 +3,11 @@
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-01)
 # Dependencies not keyworded here yet:
+#  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib, net-libs/webkit-gtk
+app-editors/emacs gconf m17n-lib xwidgets
 #  - net-fs/openafs
 app-crypt/heimdal afs
-#  - mail-mta/courier|net-mail/courier-imap, dev-db/postgresql
+#  - mail-mta/courier | net-mail/courier-imap, dev-db/postgresql
 dev-libs/cyrus-sasl authdaemond postgres
 #  - dev-db/libdbi, sys-cluster/ceph
 net-analyzer/rrdtool dbi rados
