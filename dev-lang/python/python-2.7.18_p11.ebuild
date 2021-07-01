@@ -65,7 +65,6 @@ BDEPEND="
 	virtual/pkgconfig
 	verify-sig? ( app-crypt/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
-PDEPEND="app-eselect/eselect-python"
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 	!<=dev-lang/python-exec-2.4.6-r1"
