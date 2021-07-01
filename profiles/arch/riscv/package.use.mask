@@ -11,6 +11,8 @@ app-crypt/heimdal afs
 dev-libs/cyrus-sasl authdaemond postgres
 #  - dev-db/libdbi, sys-cluster/ceph
 net-analyzer/rrdtool dbi rados
+#  - virtual/mpi[fortran]
+sci-libs/arpack mpi
 #  - net-fs/samba, dev-libs/tre
 www-client/elinks samba tre
 
