@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-libs/openssl:=
+	sys-apps/keyutils:=
 	sys-libs/efivar:=
 	virtual/libcrypt:="
 RDEPEND="${DEPEND}"
