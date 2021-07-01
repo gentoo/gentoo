@@ -1,0 +1,29 @@
+From 6cc88caf1aac5418832af25fe02823a256fe5aa4 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 1 Jul 2021 04:19:51 +0100
+Subject: [PATCH] Read hashes_selected from injected file
+
+We now read the 'hashes_selected' value from ${srcdir}/hashes_selected. Pre-generate
+this with Perl.
+---
+ configure.ac | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 57d98d0..c8b4724 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -386,9 +386,7 @@ AC_ARG_ENABLE([hashes],
+ )
+ # This code must run after $PERL is set.
+ hashes_enabled=$(
+-    $PERL "$srcdir"/build-aux/expand-selected-hashes \
+-          "$srcdir"/lib/hashes.conf \
+-          "$hashes_selected"
++	cat "$srcdir"/hashes_selected
+ )
+ if test x"$hashes_enabled" = x || test x"$hashes_enabled" = x,; then
+     AC_MSG_ERROR([bad value '${hashes_selected}' for --enable-hashes])
+-- 
+2.32.0
+

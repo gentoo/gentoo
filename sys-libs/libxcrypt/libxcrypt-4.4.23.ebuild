@@ -2,33 +2,37 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..10} )
-inherit autotools multibuild python-any-r1 multilib-minimal
+
+PYTHON_COMPAT=( python3_{8..10} )
+# NEED_BOOTSTRAP is for developers to quickly generate a tarball
+# for publishing to the tree.
+NEED_BOOTSTRAP="no"
+inherit multibuild python-any-r1 multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others"
-SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/besser82/libxcrypt"
+if [[ ${NEED_BOOTSTRAP} == "yes" ]] ; then
+	inherit autotools
+	SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+else
+	SRC_URI="https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autotools.tar.xz"
+fi
 
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+compat split-usr +static-libs system test"
+REQUIRED_USE="split-usr? ( system )"
+RESTRICT="!test? ( test )"
 
 DEPEND="system? (
 		elibc_glibc? ( sys-libs/glibc[-crypt(+)] )
 		!sys-libs/musl
 	)"
 RDEPEND="${DEPEND}"
-BDEPEND="sys-apps/findutils
+BDEPEND="dev-lang/perl
+	sys-apps/findutils
 	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )"
-
-RESTRICT="!test? ( test )"
-
-REQUIRED_USE="split-usr? ( system )"
-
-PATCHES=(
-	"${FILESDIR}/libxcrypt-4.4.19-multibuild.patch"
-)
 
 python_check_deps() {
 	has_version -b "dev-python/passlib[${PYTHON_USEDEP}]"
@@ -45,7 +49,47 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	eautoreconf
+
+	# WARNING: Please read on bumping or applying patches!
+	#
+	# There are two circular dependencies to be aware of:
+	# 1)
+	# 	if we're bootstrapping configure and makefiles:
+	# 		libxcrypt -> automake -> perl -> libxcrypt
+	#
+	#   mitigation:
+	#		toolchain@ manually runs `make dist` after running autoconf + `./configure`
+	#		and the ebuild uses that.
+	#		(Don't include the pre-generated Perl artefacts.)
+	#
+	#	solution for future:
+	#		Upstream are working on producing `make dist` tarballs.
+	#		https://github.com/besser82/libxcrypt/issues/134#issuecomment-871833573
+	#
+	# 2)
+	#	configure *unconditionally* needs Perl at build time to generate
+	#	a list of enabled algorithms based on the set passed to `configure`:
+	#		libxcrypt -> perl -> libxcrypt
+	#
+	#	mitigation:
+	#		None at the moment.
+	#
+	#	solution for future:
+	#		Not possible right now. Upstream intend on depending on Perl for further
+	#		configuration options.
+	#		https://github.com/besser82/libxcrypt/issues/134#issuecomment-871833573
+	#
+	# Therefore, on changes (inc. bumps):
+	#	* You must check whether upstream have started providing tarballs with bootstrapped
+	#	  auto{conf,make};
+	#
+	#	* diff the build system changes!
+	#
+	if [[ ${NEED_BOOTSTRAP} == "yes" ]] ; then
+		# Facilitate our split variant build for compat + non-compat
+		eapply "${FILESDIR}"/${PN}-4.4.19-multibuild.patch
+		eautoreconf
+	fi
 }
 
 src_configure() {
@@ -112,7 +156,7 @@ src_install() {
 		done
 	) || die "failglob error"
 
-	# remove useless stuff from installation
+	# Remove useless stuff from installation
 	find "${D}"/usr/share/doc/${PF} -type l -delete || die
 	find "${D}" -name '*.la' -delete || die
 }
@@ -120,7 +164,7 @@ src_install() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
-	# don't install the libcrypt.so symlink for the "compat" version
+	# Don't install the libcrypt.so symlink for the "compat" version
 	case "${MULTIBUILD_ID}" in
 		xcrypt_compat-*)
 			rm "${D}"$(get_xclibdir)/libcrypt$(get_libname) \
@@ -131,14 +175,14 @@ multilib_src_install() {
 				(
 					if use static-libs; then
 						# .a files are installed to /$(get_libdir) by default
-						# move static libraries to /usr prefix or portage will abort
+						# Move static libraries to /usr prefix or portage will abort
 						shopt -s nullglob || die "failglob failed"
 						static_libs=( "${ED}"/$(get_xclibdir)/*.a )
 
 						if [[ -n ${static_libs[*]} ]]; then
 							dodir "/usr/$(get_xclibdir)"
 							mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
-								|| die "moving static libs failed"
+								|| die "Moving static libs failed"
 						fi
 					fi
 
@@ -153,7 +197,7 @@ multilib_src_install() {
 							dosym "../../$(get_libdir)/${lib_file_target}" "/usr/$(get_xclibdir)/${lib_file_basename}"
 						done
 
-						rm "${ED}"$(get_xclibdir)/*$(get_libname) || die "removing symlinks in incorrect location failed"
+						rm "${ED}"$(get_xclibdir)/*$(get_libname) || die "Removing symlinks in incorrect location failed"
 					fi
 				)
 			fi
