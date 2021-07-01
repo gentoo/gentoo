@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}_${MY_PV}_build.${MY_DATE}"
 
 LICENSE="supermicro"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 IUSE="uefi"
 
 BDEPEND="app-arch/unzip"
