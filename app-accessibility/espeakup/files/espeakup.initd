@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/espeakup
+command_args="${espeakup_opts:-${ESPEAKUP_OPTS}}"
+pidfile=/run/espeakup.pid
+
+depend() {
+	after modules
+	use alsasound pulseaudio
+}
+
+start_pre() {
+	[ -f /sys/accessibility/speakup/synth ] &&
+		echo soft > /sys/accessibility/speakup/synth
+	return 0
+}
