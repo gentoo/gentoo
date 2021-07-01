@@ -2,7 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-01)
-# courier|courier-imap and postgresql not keyworded here yet
+# Dependencies not keyworded here yet:
+#  - net-fs/openafs
+app-crypt/heimdal afs
+#  - mail-mta/courier|net-mail/courier-imap, dev-db/postgresql
 dev-libs/cyrus-sasl authdaemond postgres
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-26)
