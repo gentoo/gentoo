@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# Feature currently relies on amd64 prebuilt binaries.
+media-video/obs-studio browser
+
 # Joonas Niilola <juippis@gentoo.org> (2021-06-23)
 # Pandoc is a required dep, and not keyworded.
 sys-apps/exa man

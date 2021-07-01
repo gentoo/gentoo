@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# Feature currently relies on amd64 prebuilt binaries.
+media-video/obs-studio browser
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers does not function well with
 # the last drivers to support x86 (needed here to override use.mask).
 x11-base/xwayland video_cards_nvidia
