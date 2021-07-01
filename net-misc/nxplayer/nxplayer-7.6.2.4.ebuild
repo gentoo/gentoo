@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P="nomachine-enterprise-client_$(ver_cut 1-3)_$(ver_cut 4)"
 
@@ -14,9 +14,12 @@ S="${WORKDIR}"/NX/etc/NX/player/packages
 LICENSE="nomachine"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-RESTRICT="strip"
 
 RDEPEND="
+	|| (
+		sys-libs/glibc[crypt(+)]
+		sys-libs/libxcrypt[compat]
+	)
 	dev-libs/glib:2
 	dev-libs/openssl:0
 "
@@ -24,15 +27,10 @@ RDEPEND="
 QA_PREBUILT="*"
 
 src_install() {
-	local NXROOT=/opt/NX
-
-	#dodir /etc/NX/localhost
-	#echo 'PlayerRoot = "'"${NXROOT}"'"' > ${D}/etc/NX/localhost/player.cfg
-
 	dodir /opt
-	tar xozf nxclient.tar.gz -C "${ED}"/opt
-	tar xozf nxplayer.tar.gz -C "${ED}"/opt
+	tar xozf nxclient.tar.gz -C "${ED}"/opt || die
+	tar xozf nxplayer.tar.gz -C "${ED}"/opt || die
 
 	doenvd "${FILESDIR}"/50nxplayer
-	dosym ${NXROOT}/bin/nxplayer /opt/bin/nxplayer
+	dosym -r /opt/NX/bin/nxplayer /opt/bin/nxplayer
 }
