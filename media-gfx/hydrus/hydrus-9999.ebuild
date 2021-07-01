@@ -78,9 +78,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/upnpc.patch"
 	"${FILESDIR}/userpath-in-local-share.patch"
-	"${FILESDIR}/test-exitcode.patch"
 )
 
 src_prepare() {
