@@ -18,6 +18,11 @@ RDEPEND="virtual/latex-base"
 BDEPEND="${RDEPEND}
 	virtual/texi2dvi"
 
+pkg_setup() {
+	# https://bugs.gentoo.org/727996
+	export VARTEXFONTS="${T}"/fonts
+}
+
 python_install() {
 	distutils-r1_python_install \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \

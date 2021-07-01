@@ -49,6 +49,11 @@ BDEPEND="
 	)
 "
 
+pkg_setup() {
+	# https://bugs.gentoo.org/727996
+	export VARTEXFONTS="${T}"/fonts
+}
+
 python_test() {
 	cd tests || die
 
