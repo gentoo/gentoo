@@ -378,7 +378,7 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-if [[ ${EAPI} == [7,8] ]]; then
+if [[ ${EAPI} != 6 ]]; then
 	BDEPEND+=" doc? ( ${DOCS_DEPEND} )"
 else
 	DEPEND+=" doc? ( ${DOCS_DEPEND} )"
