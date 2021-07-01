@@ -10,7 +10,7 @@
 		<name>Mike Gilbert</name>
 	</maintainer>
 	<use>
-		<flag name="dcc_video">Support video connections over DCC protocol</flag>
+		<flag name="dcc-video">Support video connections over DCC protocol</flag>
 		<flag name="phonon">Support Phonon for audio output</flag>
 	</use>
 	<upstream>
