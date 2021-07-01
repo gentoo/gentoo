@@ -94,11 +94,6 @@ sys-process/htop hwloc
 # keywording dev-libs/libfido2
 dev-libs/libcbor doc
 
-# Joonas Niilola <juippis@gentoo.org> (2020-03-26)
-# Dependency not keyworded on ~riscv
-#FIXME dev-libs/libpipeline test
-#sys-apps/kbd test
-
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
