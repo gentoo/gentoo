@@ -6,8 +6,6 @@
 dev-libs/cyrus-sasl authdaemond postgres
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-26)
-# sys-libs/libunwind do not support riscv
-net-libs/zeromq unwind
 # www-servers/tornado not keyworded, not tested
 dev-python/pyzmq test
 
@@ -44,9 +42,18 @@ xfce-base/xfce4-meta pulseaudio
 # KDE not tested, so mask
 sys-auth/polkit kde
 
+# Ye Cao <ye.c@rioslab.org> (2021-06-26)
+# Piotr Karbowski <slashbeast@gentoo.org> (2021-06-22)
 # Yixun Lan <dlan@gentoo.org> (2021-05-21)
-# sys-libs/libunwind do not support riscv
+# Mikle Kolyada <zlogene@gentoo.org> (2020-12-03)
+# Göktürk Yüksek <gokturk@gentoo.org> (2019-10-10)
+#   sys-libs/libunwind do not support riscv
+dev-util/strace unwind
 media-libs/gstreamer unwind
+media-libs/mesa unwind
+net-libs/zeromq unwind
+x11-base/xorg-server unwind
+x11-base/xwayland unwind
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Dependencies not keyworded, not tested
@@ -168,7 +175,6 @@ dev-util/catalyst iso
 dev-util/meson test
 dev-util/ninja doc test
 dev-util/pkgconf test
-dev-util/strace unwind
 dev-vcs/git cvs highlight gnome-keyring subversion xinetd
 dev-vcs/mercurial rust zsh-completion
 media-libs/freetype harfbuzz
@@ -177,7 +183,6 @@ sys-libs/libomp hwloc
 sys-libs/libcxx libcxxabi libunwind static-libs
 sys-libs/libcxxabi libunwind
 media-gfx/graphviz devil svg pdf
-media-libs/mesa unwind
 media-libs/tiff jbig webp
 net-fs/nfs-utils nfsv41
 media-libs/fontconfig doc
@@ -197,6 +202,4 @@ sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
 sys-process/audit gssapi
-x11-base/xorg-server  unwind
-x11-base/xwayland unwind
 x11-libs/libvdpau doc
