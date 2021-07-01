@@ -15,7 +15,7 @@ HOMEPAGE="https://www.supermicro.com"
 SRC_URI="${MY_P}_${MY_DATE}.tar.gz"
 S="${WORKDIR}/${MY_P}/Linux"
 
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="supermicro"
 SLOT="0"
 
