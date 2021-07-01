@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 LICENSE="GPL-2+"
 SLOT="0/8" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
-IUSE="elogind input_devices_wacom +introspection screencast sysprof systemd test udev wayland"
+IUSE="elogind input_devices_wacom +introspection screencast sysprof systemd test udev wayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) udev )
@@ -65,6 +65,7 @@ DEPEND="
 		systemd? ( sys-apps/systemd )
 		elogind? ( sys-auth/elogind )
 		x11-base/xorg-server[wayland]
+		video_cards_nvidia? ( gui-libs/egl-wayland )
 	)
 	udev? ( >=dev-libs/libgudev-232:=
 		>=virtual/libudev-232-r1:= )
@@ -109,8 +110,6 @@ src_configure() {
 		$(meson_use wayland)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
-		-Degl_device=false # This should be dependent on wayland,video_drivers_nvidia, once eglstream support is there
-		-Dwayland_eglstream=false # requires packages egl-wayland for wayland-eglstream-protocols.pc
 		$(meson_use udev)
 		-Dudev_dir=$(get_udevdir)
 		$(meson_use input_devices_wacom libwacom)
@@ -130,6 +129,19 @@ src_configure() {
 		# TODO: relies on default settings, but in Gentoo we might have some more packages we want to give Xgrab access (mostly virtual managers and remote desktops)
 		#xwayland_grab_default_access_rules
 	)
+
+	if use wayland && use video_cards_nvidia; then
+		emesonargs+=(
+			-Degl_device=true
+			-Dwayland_eglstream=true
+		)
+	else
+		emsonargs+=(
+			-Degl_device=false
+			-Dwayland_eglstream=false
+		)
+	fi
+
 	meson_src_configure
 }
 
