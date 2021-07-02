@@ -16,7 +16,7 @@ HOMEPAGE="http://nexus.sonatype.org/oss-repository-hosting.html/junit-clptr"
 SRC_URI="https://github.com/bitstrings/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}-sources.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 ~x86"
 
 # Common dependencies
 # POM: pom.xml
