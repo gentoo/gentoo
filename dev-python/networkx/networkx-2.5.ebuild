@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
-HOMEPAGE="https://networkx.github.io/ https://github.com/networkx/networkx"
+HOMEPAGE="https://networkx.org/ https://github.com/networkx/networkx"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -27,7 +27,9 @@ RDEPEND="
 		' python3_{6,7,8})
 	)
 	pandas? (
-		>=dev-python/pandas-0.23.3[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pandas-0.23.3[${PYTHON_USEDEP}]
+		' python3_{8..9})
 	)
 	scipy? ( >=dev-python/scipy-1.1.0[${PYTHON_USEDEP}] )
 	xml? ( >=dev-python/lxml-4.2.3[${PYTHON_USEDEP}] )
@@ -39,8 +41,12 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-src_test() {
-	virtx distutils-r1_src_test
+python_test() {
+	local deselect=(
+		# pyyaml upgrade-related regression?
+		networkx/readwrite/tests/test_yaml.py
+	)
+	virtx epytest -p no:django ${deselect[@]/#/--deselect }
 }
 
 python_install_all() {
