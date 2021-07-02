@@ -5,6 +5,10 @@
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
 	<use>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> for frame unwinding support</flag>
 	</use>
