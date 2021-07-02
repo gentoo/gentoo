@@ -22,6 +22,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	acct-group/quagga
 	acct-user/quagga
+	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	nhrpd? ( net-dns/c-ares:0= )
 	protobuf? ( dev-libs/protobuf-c:0= )
