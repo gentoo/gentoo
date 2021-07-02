@@ -7,20 +7,33 @@
 # @AUTHOR:
 # Doug Goldstein <cardoe@gentoo.org>
 # Georgy Yakovlev <gyakovlev@genotoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: common functions and variables for cargo builds
 
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-# we need this for 'cargo vendor' subcommand and net.offline config knob
-RUST_DEPEND=">=virtual/rust-1.37.0"
+# check and document RUST_DEPEND and options we need below in case conditions.
+# https://github.com/rust-lang/cargo/blob/master/CHANGELOG.md
+RUST_DEPEND="virtual/rust"
 
 case "${EAPI:-0}" in
 	0|1|2|3|4|5|6)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
 	7)
+		# 1.37 added 'cargo vendor' subcommand and net.offline config knob
+		RUST_DEPEND=">=virtual/rust-1.37.0"
+		;;
+
+	8)
+		# 1.39 added --workspace
+		# 1.46 added --target dir
+		# 1.48 added term.progress config option
+		# 1.51 added split-debuginfo profile option
+		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
+		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
+		RUST_DEPEND=">=virtual/rust-1.53"
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -182,15 +195,6 @@ cargo_src_unpack() {
 				if [[ ${P} == ${pkg}* ]]; then
 					tar -xf "${DISTDIR}"/${archive} -C "${WORKDIR}" || die
 				fi
-				eend $?
-				;;
-			cargo-snapshot*)
-				ebegin "Unpacking ${archive}"
-				mkdir -p "${S}"/target/snapshot
-				tar -xzf "${DISTDIR}"/${archive} -C "${S}"/target/snapshot --strip-components 2 || die
-				# cargo's makefile needs this otherwise it will try to
-				# download it
-				touch "${S}"/target/snapshot/bin/cargo || die
 				eend $?
 				;;
 			*)
@@ -376,7 +380,16 @@ cargo_src_install() {
 	rm -f "${ED}/usr/.crates.toml" || die
 	rm -f "${ED}/usr/.crates2.json" || die
 
-	[ -d "${S}/man" ] && doman "${S}/man" || return 0
+	# it turned out to be non-standard dir, so get rid of it future EAPI
+	# and only run for EAPI=7
+	# https://bugs.gentoo.org/715890
+	case ${EAPI:-0} in
+		7)
+		if [ -d "${S}/man" ]; then
+			doman "${S}/man" || return 0
+		fi
+		;;
+	esac
 }
 
 # @FUNCTION: cargo_src_test
