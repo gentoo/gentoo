@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
+# Masked for removal in 30 days.
+media-sound/xmms2-scrobbler
+
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
