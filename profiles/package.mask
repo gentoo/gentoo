@@ -32,7 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-02)
+# Outdated, not really maintained. Grab it if you like.
+# Masked for removal in 30 days. bug #800097.
+x11-plugins/purple-mattermost
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-02)
 # Masked for removal in 30 days.
 media-sound/xmms2-scrobbler
 
