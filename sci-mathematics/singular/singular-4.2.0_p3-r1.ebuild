@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools elisp-common
+inherit autotools elisp-common flag-o-matic
 
 MY_PN=Singular
 MY_PV=$(ver_rs 3 '')
@@ -47,6 +47,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# singular may segfault with common optimisation such as -O2 without this flag
+	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
+
 	econf --with-gmp \
 		--with-ntl \
 		--with-flint \
@@ -57,6 +60,7 @@ src_configure() {
 		--enable-libfac \
 		--disable-polymake \
 		--with-libparse \
+		--disable-optimizationflags \
 		$(use_enable static-libs static) \
 		$(use_enable emacs) \
 		$(use_with readline)
