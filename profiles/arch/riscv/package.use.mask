@@ -1,22 +1,26 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-01)
+# Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib, net-libs/webkit-gtk
 app-editors/emacs gconf m17n-lib xwidgets
 #  - net-fs/openafs
 app-crypt/heimdal afs
+#  - dev-util/cmocka  (note: tests are restricted anyway)
+app-crypt/mit-krb5 test
+#  - MANY, to be reviewed
+dev-cpp/eigen doc test
 #  - mail-mta/courier | net-mail/courier-imap, dev-db/postgresql
 dev-libs/cyrus-sasl authdaemond postgres
+#  - sci-libs/umfpack (and a lot of its own deps in turn)
+dev-python/scipy sparse
 #  - dev-db/libdbi, sys-cluster/ceph
 net-analyzer/rrdtool dbi rados
 #  - virtual/mpi[fortran]
 sci-libs/arpack mpi
 #  - net-fs/samba, dev-libs/tre
 www-client/elinks samba tre
-#  - dev-util/cmocka
-app-crypt/mit-krb5 test
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-26)
 # www-servers/tornado not keyworded, not tested
