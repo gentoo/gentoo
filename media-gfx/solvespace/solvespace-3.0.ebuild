@@ -24,18 +24,21 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-3"
 SLOT="0"
 
-BDEPEND="openmp? ( >=sys-devel/gcc-4.2 )"
-
-RDEPEND="dev-cpp/gtkmm:2.4=
+RDEPEND="dev-cpp/atkmm:=
+	dev-cpp/glibmm:=
+	dev-cpp/gtkmm:3.0=
 	dev-cpp/pangomm:1.4
+	dev-libs/glib:2
 	dev-libs/json-c:=
+	dev-libs/libsigc++:=
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/glew:0=
+	media-libs/libglvnd
 	media-libs/libpng:0=
 	sys-libs/zlib
 	virtual/opengl
-	x11-libs/cairo"
+	x11-libs/cairo
+	x11-libs/gtk+:3"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
