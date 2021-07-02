@@ -92,6 +92,8 @@ REQUIRED_USE="
 
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/2.0.4-scrub-timers.patch" )
+
 pkg_pretend() {
 	use rootfs || return 0
 
