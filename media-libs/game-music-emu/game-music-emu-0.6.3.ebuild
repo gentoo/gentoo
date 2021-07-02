@@ -16,3 +16,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DOCS=( changes.txt design.txt gme.txt readme.txt )
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_UBSAN=off # disabled so that if gcc[-sanitize] it does not fail to compile
+	)
+	cmake-multilib_src_configure
+}
