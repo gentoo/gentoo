@@ -18,6 +18,7 @@ RESTRICT="!berkdb? ( test )"
 
 DEPEND="net-mail/mailbase
 	>=net-libs/courier-unicode-2.1
+	virtual/libcrypt:=
 	gdbm? ( sys-libs/gdbm:= )
 	!gdbm? ( sys-libs/db:= )
 	dev-libs/openssl:0=
