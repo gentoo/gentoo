@@ -19,6 +19,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
+# This package contains no-op tests, so they actually cannot be run
+RESTRICT="test"
+
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
 	dev-python/configargparse[${PYTHON_USEDEP}]
