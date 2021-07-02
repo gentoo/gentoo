@@ -23,6 +23,10 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md RELNOTES.md )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.10.1-drop-forced-debugging-symbols.patch
+)
+
 src_configure() {
 	econf \
 		--disable-static \
