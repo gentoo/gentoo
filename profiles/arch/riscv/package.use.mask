@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ye Cao <ye.c@rioslab.org> (2021-07-02)
+# Dependencies not keyworded, not tested
+sci-libs/fftw mpi
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib, net-libs/webkit-gtk
