@@ -46,7 +46,8 @@ RDEPEND="
 	>=dev-python/keyring-17.0.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
 	>=dev-python/numpydoc-0.6.0[${PYTHON_USEDEP}]
-	~dev-python/parso-0.7.0[${PYTHON_USEDEP}]
+	>=dev-python/parso-0.7.0[${PYTHON_USEDEP}]
+	<dev-python/parso-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
@@ -145,6 +146,7 @@ python_prepare_all() {
 	# The original hasn't been update in over 6 months, and spyder upstream is slow
 	# in making the switch. Because we are running into issues with outdated deps
 	# and a whole dependency mess as a result, we can no longer wait for upstream.
+	# Also relax the parso dependency to allow parso 0.7.1
 	find . -name "*.py" -exec sed -i \
 		-e 's/python-language-server\[all\]>=0.36.2,<1.0.0/python-lsp-server\[all\]>=1.0.0/g' \
 		-e 's/python-language-server/python-lsp-server/g' \
@@ -158,6 +160,8 @@ python_prepare_all() {
 		-e 's/pylsp-black/python-lsp-black/g' \
 		-e 's/>=0.3.2;<0.4.0/>=0.4.0/g' \
 		-e 's/>=0.36.2;<1.0.0/>=1.0.0/g' \
+		-e "s/'parso==0.7.0'/'parso>=0.7.0,<0.8.0'/g" \
+		-e "s/'=0.7.0'/'>=0.7.0;<0.8.0'/g" \
 		{} + || die
 
 	# do not depend on pyqt5<13
