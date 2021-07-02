@@ -108,6 +108,7 @@ DOCS=( Changelog README.md )
 
 PATCHES=(
 	"${FILESDIR}/${P}-QPainterPath_include.patch" #725678
+	"${FILESDIR}/${P}-gcc11-fix-static-assertion-failure.patch" #788607
 )
 
 src_prepare() {
