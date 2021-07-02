@@ -3,9 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{8..9} )
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A New Arch Tester Toolkit -- open-source stable-bot replacement"
