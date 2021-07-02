@@ -50,6 +50,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-fmt-8.0.0.patch" )
+
 src_configure() {
 	local emesonargs=(
 		$(meson_feature mpd)

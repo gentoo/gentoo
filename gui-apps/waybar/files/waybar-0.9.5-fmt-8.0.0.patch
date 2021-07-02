@@ -1,0 +1,31 @@
+diff --git a/include/util/format.hpp b/include/util/format.hpp
+index 288d8f0..61e8c85 100644
+--- a/include/util/format.hpp
++++ b/include/util/format.hpp
+@@ -35,7 +35,11 @@ namespace fmt {
+             // The rationale for ignoring it is that the only reason to specify
+             // an alignment and a with is to get a fixed width bar, and ">" is
+             // sufficient in this implementation.
+-            width = parse_nonnegative_int(it, end, ctx);
++#if FMT_VERSION < 80000
++            width = parse_nonnegative_int(it, end, ctx); 
++#else
++            width = detail::parse_nonnegative_int(it, end, -1);
++#endif
+           }
+           return it;
+         }
+diff --git a/src/modules/clock.cpp b/src/modules/clock.cpp
+index 22bedc7..82c5701 100644
+--- a/src/modules/clock.cpp
++++ b/src/modules/clock.cpp
+@@ -196,6 +196,9 @@ template <>
+ struct fmt::formatter<waybar_time> : fmt::formatter<std::tm> {
+   template <typename FormatContext>
+   auto format(const waybar_time& t, FormatContext& ctx) {
++#if FMT_VERSION >= 80000
++	auto& tm_format = specs;
++#endif
+     return format_to(ctx.out(), "{}", date::format(t.locale, fmt::to_string(tm_format), t.ztime));
+   }
+ };
