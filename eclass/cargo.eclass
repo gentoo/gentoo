@@ -52,6 +52,23 @@ IUSE="${IUSE} debug"
 ECARGO_HOME="${WORKDIR}/cargo_home"
 ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
+# @ECLASS-VARIABLE: CRATES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# bash string containing all crates package wants to download
+# used by cargo_crate_uris()
+# Example:
+# @CODE
+# CRATES="
+# metal-1.2.3
+# bar-4.5.6
+# iron_oxide-0.0.1
+# "
+# inherit cargo
+# ...
+# SRC_URI="$(cargo_crate_uris ${CRATES})"
+# @CODE
+
 # @ECLASS-VARIABLE: CARGO_OPTIONAL
 # @DEFAULT_UNSET
 # @PRE_INHERIT
