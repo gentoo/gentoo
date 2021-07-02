@@ -33,6 +33,8 @@ src_prepare() {
 
 	eapply "${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 
+	eapply "${FILESDIR}"/${PN}-3.17.0-lld.patch
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# upstream doesn't support this, but we don't build with
 		# Sun/Oracle ld, we have a GNU toolchain, so get some things
