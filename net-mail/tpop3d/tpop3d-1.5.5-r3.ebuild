@@ -15,7 +15,8 @@ KEYWORDS="~amd64 x86"
 IUSE="authexternal debug flatfile gdbm ldap maildir mbox mysql offensive
 	pam passwd perl postgres +sha1 shadow ssl tcpd"
 
-RDEPEND="gdbm? ( sys-libs/gdbm:= )
+RDEPEND="virtual/libcrypt:=
+	gdbm? ( sys-libs/gdbm:= )
 	sha1? ( >=dev-libs/openssl-0.9.6:0= )
 	ssl? ( >=dev-libs/openssl-0.9.6:0= )
 	ldap? ( >=net-nds/openldap-2.0.7 )
