@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
