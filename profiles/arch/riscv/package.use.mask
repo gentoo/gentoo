@@ -15,6 +15,8 @@ net-analyzer/rrdtool dbi rados
 sci-libs/arpack mpi
 #  - net-fs/samba, dev-libs/tre
 www-client/elinks samba tre
+#  - dev-util/cmocka
+app-crypt/mit-krb5 test
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-26)
 # www-servers/tornado not keyworded, not tested
