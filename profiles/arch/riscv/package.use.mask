@@ -3,11 +3,11 @@
 
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
-sci-libs/fftw mpi
-media-sound/alsa-utils libsamplerate
+app-text/texlive-core xetex
 dev-python/ipython nbconvert notebook
 dev-python/matplotlib cairo excel wxwidgets
-app-text/texlive-core xetex
+media-sound/alsa-utils libsamplerate
+sci-libs/fftw mpi
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
