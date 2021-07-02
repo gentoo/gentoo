@@ -30,10 +30,6 @@ sci-libs/arpack mpi
 #  - net-fs/samba, dev-libs/tre
 www-client/elinks samba tre
 
-# Ye Cao <ye.c@rioslab.org> (2021-06-26)
-# www-servers/tornado not keyworded, not tested
-dev-python/pyzmq test
-
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
 media-gfx/imagemagick fftw openexr wmf
