@@ -165,15 +165,6 @@ src_install() {
 pkg_postinst() {
 	linux-mod_pkg_postinst
 
-	# Remove old modules
-	if [[ -d "${EROOT}/lib/modules/${KV_FULL}/addon/zfs" ]]; then
-		ewarn "${PN} now installs modules in ${EROOT}/lib/modules/${KV_FULL}/extra/zfs"
-		ewarn "Old modules were detected in ${EROOT}/lib/modules/${KV_FULL}/addon/zfs"
-		ewarn "Automatically removing old modules to avoid problems."
-		rm -r "${EROOT}/lib/modules/${KV_FULL}/addon/zfs" || die "Cannot remove modules"
-		rmdir --ignore-fail-on-non-empty "${EROOT}/lib/modules/${KV_FULL}/addon"
-	fi
-
 	if [[ -z ${ROOT} ]] && use dist-kernel; then
 		set_arch_to_portage
 		dist-kernel_reinstall_initramfs "${KV_DIR}" "${KV_FULL}"
@@ -184,22 +175,17 @@ pkg_postinst() {
 		ewarn "at least 256M and decreasing zfs_arc_max to some value less than that."
 	fi
 
-	ewarn "This version of OpenZFS includes support for new feature flags"
-	ewarn "that are incompatible with previous versions. GRUB2 support for"
-	ewarn "/boot with the new feature flags is not yet available."
-	ewarn "Do *NOT* upgrade root pools to use the new feature flags."
-	ewarn "Any new pools will be created with the new feature flags by default"
-	ewarn "and will not be compatible with older versions of ZFSOnLinux. To"
-	ewarn "create a newpool that is backward compatible wih GRUB2, use "
-	ewarn
-	ewarn "zpool create -d -o feature@async_destroy=enabled "
-	ewarn "	-o feature@empty_bpobj=enabled -o feature@lz4_compress=enabled"
-	ewarn "	-o feature@spacemap_histogram=enabled"
-	ewarn "	-o feature@enabled_txg=enabled "
-	ewarn "	-o feature@extensible_dataset=enabled -o feature@bookmarks=enabled"
-	ewarn "	..."
-	ewarn
-	ewarn "GRUB2 support will be updated as soon as either the GRUB2"
-	ewarn "developers do a tag or the Gentoo developers find time to backport"
-	ewarn "support from GRUB2 HEAD."
+	if has_version sys-boot/grub; then
+		ewarn "This version of OpenZFS includes support for new feature flags"
+		ewarn "that are incompatible with previous versions. GRUB2 support for"
+		ewarn "/boot with the new feature flags is not yet available."
+		ewarn "Do *NOT* upgrade root pools to use the new feature flags."
+		ewarn "Any new pools will be created with the new feature flags by default"
+		ewarn "and will not be compatible with older versions of ZFSOnLinux. To"
+		ewarn "create a newpool that is backward compatible wih GRUB2, use "
+		ewarn
+		ewarn "zpool create -o compatibility=grub2 ..."
+		ewarn
+		ewarn "Refer to /etc/zfs/compatibility.d/grub2 for list of features."
+	fi
 }
