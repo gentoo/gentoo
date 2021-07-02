@@ -71,6 +71,8 @@ BDEPEND="
 RDEPEND="${RDEPEND}
 	vulkan? ( media-libs/vulkan-loader )"
 
+PATCHES=("${FILESDIR}"/${P}-musl.patch)
+
 src_prepare() {
 	cmake_src_prepare
 
