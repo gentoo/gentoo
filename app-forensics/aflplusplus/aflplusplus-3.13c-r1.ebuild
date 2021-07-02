@@ -32,6 +32,7 @@ RDEPEND="
 		sys-devel/clang:11
 		sys-devel/clang:12
 	)
+	!app-forensics/afl
 "
 DEPEND="
 	${RDEPEND}
