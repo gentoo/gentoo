@@ -250,6 +250,8 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RESTRICT="strip test"
 
+QA_PRESTRIPPED="usr/bin/gopass-jsonapi"
+
 DEPEND=">=dev-lang/go-1.16"
 RDEPEND="
 	dev-vcs/git
