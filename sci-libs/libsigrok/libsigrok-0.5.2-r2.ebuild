@@ -45,7 +45,7 @@ LIB_DEPEND="
 	usb? ( virtual/libusb:1[static-libs(+)] )
 "
 RDEPEND="
-	java? ( >=virtual/jre-1.4 )
+	java? ( >=virtual/jre-1.8:* )
 	!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	static-libs? ( ${LIB_DEPEND} )
 "
@@ -53,7 +53,7 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	cxx? ( app-doc/doxygen )
 	java? (
 		>=dev-lang/swig-3.0.6
-		>=virtual/jdk-1.4
+		>=virtual/jdk-1.8:*
 	)
 	python? (
 		>=dev-lang/swig-3.0.6
