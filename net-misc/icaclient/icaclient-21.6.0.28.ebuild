@@ -219,7 +219,6 @@ src_install() {
 		doexe ${bin}
 	done
 
-
 	# https://bugs.gentoo.org/655922
 	dosym gst_play1.0 "${ICAROOT}"/util/gst_play
 	dosym gst_read1.0 "${ICAROOT}"/util/gst_read
