@@ -118,7 +118,7 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 # Normally this is determined from the jre/jdk version specified in RDEPEND.
 # See java-pkg_get-target function below.
 #
-# Should generallyonly be used for testing and debugging.
+# Should generally only be used for testing and debugging.
 #
 # emerge bar to be compatible with 1.3
 # @CODE
