@@ -7,8 +7,6 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit llvm meson-multilib python-any-r1 linux-info
 
-OPENGL_DIR="xorg-x11"
-
 MY_P="${P/_/-}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
