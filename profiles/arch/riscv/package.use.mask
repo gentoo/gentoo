@@ -6,7 +6,7 @@
 sci-libs/fftw mpi
 media-sound/alsa-utils libsamplerate
 dev-python/ipython nbconvert notebook
-dev-python/matplotlib cairo excel tk wxwidgets
+dev-python/matplotlib cairo excel wxwidgets
 app-text/texlive-core xetex
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
