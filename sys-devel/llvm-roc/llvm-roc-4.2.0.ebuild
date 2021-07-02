@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug +runtime"
 
-RDEPEND="virtual/cblas
+RDEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
 	sys-libs/ncurses:="
