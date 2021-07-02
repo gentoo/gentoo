@@ -94,6 +94,10 @@ install_systemd_files() {
 	fi
 }
 
+multilib_src_test() {
+	eninja check
+}
+
 src_install() {
 	cmake-multilib_src_install
 
