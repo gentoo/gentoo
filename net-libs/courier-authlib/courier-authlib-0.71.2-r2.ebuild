@@ -17,7 +17,8 @@ IUSE="berkdb debug gdbm ldap mysql pam postgres sqlite static-libs"
 RESTRICT="!berkdb? ( test )"
 
 DEPEND="net-mail/mailbase
-	>=net-libs/courier-unicode-2.1.2
+	>=net-libs/courier-unicode-2.2.3
+	virtual/libcrypt:=
 	gdbm? ( sys-libs/gdbm:= )
 	!gdbm? ( sys-libs/db:= )
 	dev-libs/openssl:0=

@@ -11,13 +11,14 @@ HOMEPAGE="https://www.courier-mta.org/authlib/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="berkdb debug gdbm ldap mysql pam postgres sqlite static-libs"
 
 RESTRICT="!berkdb? ( test )"
 
 DEPEND="net-mail/mailbase
-	>=net-libs/courier-unicode-2.1
+	>=net-libs/courier-unicode-2.1.2
+	virtual/libcrypt:=
 	gdbm? ( sys-libs/gdbm:= )
 	!gdbm? ( sys-libs/db:= )
 	dev-libs/openssl:0=
