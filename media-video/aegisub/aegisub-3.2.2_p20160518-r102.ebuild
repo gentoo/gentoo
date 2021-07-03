@@ -10,7 +10,7 @@ WX_GTK_VER=3.0
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 COMMIT_ID="b118fe7e7a5c37540e2f0aa75af105e272bad234"
 
-inherit autotools flag-o-matic l10n lua-single wxwidgets xdg-utils vcs-snapshot
+inherit autotools flag-o-matic lua-single plocale wxwidgets xdg-utils vcs-snapshot
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/ https://github.com/Aegisub/Aegisub"
@@ -101,8 +101,8 @@ src_prepare() {
 		rm "po/${1}.po" || die
 	}
 
-	l10n_find_plocales_changes 'po' '' '.po'
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes 'po' '' '.po'
+	plocale_for_each_disabled_locale remove_locale
 
 	# See http://devel.aegisub.org/ticket/1914
 	config_rpath_update "${S}"/config.rpath

@@ -9,7 +9,7 @@ LUA_REQ_USE="lua52compat"
 WX_GTK_VER=3.0-gtk3
 PLOCALES="ar be bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS sr_RS@latin uk_UA vi zh_CN zh_TW"
 
-inherit autotools l10n lua-single wxwidgets xdg-utils git-r3
+inherit autotools lua-single plocale wxwidgets xdg-utils git-r3
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/ https://github.com/wangqr/Aegisub"
@@ -72,8 +72,8 @@ src_prepare() {
 		rm "po/${1}.po" || die
 	}
 
-	l10n_find_plocales_changes 'po' '' '.po'
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes 'po' '' '.po'
+	plocale_for_each_disabled_locale remove_locale
 
 	# See http://devel.aegisub.org/ticket/1914
 	config_rpath_update "${S}"/config.rpath
