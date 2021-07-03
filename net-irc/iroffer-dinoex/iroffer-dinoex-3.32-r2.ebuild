@@ -6,7 +6,7 @@ EAPI=7
 PLOCALES="de en fr it"
 PLOCALE_BACKUP="en"
 
-inherit l10n toolchain-funcs
+inherit plocale toolchain-funcs
 
 DESCRIPTION="IRC fileserver using DCC"
 HOMEPAGE="http://iroffer.dinoex.net/"
@@ -44,7 +44,7 @@ src_prepare() {
 
 	eapply_user
 
-	l10n_find_plocales_changes "" 'help-admin-' '.txt'
+	plocale_find_changes "" 'help-admin-' '.txt'
 }
 
 do_configure() {
@@ -75,7 +75,7 @@ src_configure() {
 
 src_compile() {
 	# TODO: default compile targets always include chrooted target, which is not good
-	emake CC="$(tc-getCC)" $(l10n_get_locales)
+	emake CC="$(tc-getCC)" $(plocale_get_locales)
 }
 
 myloc() {
@@ -96,7 +96,7 @@ myloc() {
 }
 
 src_install() {
-	l10n_for_each_locale_do myloc
+	plocale_for_each_locale myloc
 
 	dodoc README* THANKS TODO
 	doman iroffer.1 xdcc.7
