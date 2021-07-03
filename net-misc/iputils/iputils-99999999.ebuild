@@ -12,7 +12,7 @@ EAPI="7"
 
 PLOCALES="de fr ja pt_BR tr uk zh_CN"
 
-inherit fcaps flag-o-matic l10n meson systemd toolchain-funcs
+inherit fcaps flag-o-matic meson plocale systemd toolchain-funcs
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
@@ -65,7 +65,7 @@ fi
 src_prepare() {
 	default
 
-	l10n_get_locales > po/LINGUAS || die
+	plocale_get_locales > po/LINGUAS || die
 }
 
 src_configure() {
