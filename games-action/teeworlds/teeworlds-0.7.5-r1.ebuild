@@ -3,13 +3,15 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
-inherit xdg cmake desktop python-any-r1
+inherit cmake desktop python-any-r1
 
 DESCRIPTION="Online multi-player platform 2D shooter"
 HOMEPAGE="https://www.teeworlds.com/"
-SRC_URI="https://github.com/teeworlds/teeworlds/releases/download/${PV}/teeworlds-${PV}-src.tar.gz"
+SRC_URI="
+	https://github.com/teeworlds/teeworlds/releases/download/${PV}/teeworlds-${PV}-src.tar.gz
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 S="${WORKDIR}/${P}-src"
 
 LICENSE="ZLIB"
@@ -31,9 +33,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
-BDEPEND="
-	${PYTHON_DEPS}
-	virtual/imagemagick-tools[png]"
+BDEPEND="${PYTHON_DEPS}"
 
 src_configure() {
 	local mycmakeargs=(
@@ -47,10 +47,9 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	convert "other/icons/teeworlds.ico[0]" ${PN}.png || die
-	doicon -s 256 ${PN}.png
-
+	doicon "${DISTDIR}"/${PN}.png
 	domenu other/teeworlds.desktop
+
 	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
 
 	insinto /etc/${PN}
