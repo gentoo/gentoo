@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
-inherit flag-o-matic l10n qmake-utils xdg-utils
+inherit flag-o-matic plocale qmake-utils xdg-utils
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"
 HOMEPAGE="http://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
@@ -56,8 +56,8 @@ src_prepare() {
 		rm "translations/${PN}_${1}.ts" || die
 	}
 
-	if [[ -n "$(l10n_get_locales)" ]]; then
-		l10n_for_each_disabled_locale_do my_rm_loc
+	if [[ -n "$(plocale_get_locales)" ]]; then
+		plocale_for_each_disabled_locale my_rm_loc
 		$(qt5_get_bindir)/lrelease src/src.pro || die
 	fi
 
