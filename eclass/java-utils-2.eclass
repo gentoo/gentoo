@@ -125,6 +125,22 @@ JAVA_PKG_ALLOW_VM_CHANGE=${JAVA_PKG_ALLOW_VM_CHANGE:="yes"}
 #	JAVA_PKG_WANT_TARGET=1.3 emerge bar
 # @CODE
 
+# @ECLASS-VARIABLE: JAVA_TEST_EXTRA_ARGS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Array of extra arguments that should be passed to java command when running tests.
+# It is useful when you need to pass a value to a Java program that uses
+# System.getProperty(). If it uses System.getenv(), use `export var=value` instead.
+#
+# It is used only when running tests.
+#
+# @CODE
+#	JAVA_TEST_EXTRA_ARGS=(
+#		-Dsome.var=x
+#		"-Dother.var=\"y z\""
+#	)
+# @CODE
+
 # @ECLASS-VARIABLE: JAVA_PKG_DEBUG
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1797,8 +1813,8 @@ ejunit_() {
 	if [[ "${junit}" == "junit-4" ]] ; then
 		runner=org.junit.runner.JUnitCore
 	fi
-	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${runner} ${@}"
-	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${runner} "${@}" || die "Running junit failed"
+	debug-print "Calling: java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} ${@}"
+	java -cp "${cp}" -Djava.io.tmpdir="${T}/" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner} "${@}" || die "Running junit failed"
 }
 
 # @FUNCTION: ejunit
@@ -1877,9 +1893,9 @@ etestng() {
 	done
 
 	debug-print "java -cp \"${cp}\" -Djava.io.tmpdir=\"${T}\""\
-		"-Djava.awt.headless=true ${runner}"\
+		"-Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]} ${runner}"\
 		"-usedefaultlisteners false -testclass ${tests}"
-	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true\
+	java -cp "${cp}" -Djava.io.tmpdir=\"${T}\" -Djava.awt.headless=true ${JAVA_TEST_EXTRA_ARGS[@]}\
 		${runner} -usedefaultlisteners false -testclass ${tests}\
 		|| die "Running TestNG failed."
 }
