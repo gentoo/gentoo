@@ -3,10 +3,8 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..9} pypy3 )
 PYTHON_REQ_USE="threads(+)"
-
 inherit distutils-r1
 
 DESCRIPTION="Inject some useful and sensible default behaviors into setuptools"
@@ -16,8 +14,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 # git is needed for tests, see https://bugs.launchpad.net/pbr/+bug/1326682 and https://bugs.gentoo.org/show_bug.cgi?id=561038
 # docutils is needed for sphinx exceptions... https://bugs.gentoo.org/show_bug.cgi?id=603848
@@ -34,11 +30,11 @@ BDEPEND="
 			>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 			>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 			>=dev-python/virtualenv-20.0.3[${PYTHON_USEDEP}]
-			>=dev-python/stestr-2.1.0[${PYTHON_USEDEP}]
 			dev-vcs/git
 		' 'python*')
 	)"
-PDEPEND=""
+
+distutils_enable_tests unittest
 
 # This normally actually belongs here.
 python_prepare_all() {
@@ -56,16 +52,11 @@ python_prepare_all() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == pypy3 ]]; then
+	if [[ ${EPYTHON} != python* ]]; then
 		einfo "Testing on ${EPYTHON} is not supported at the moment"
 		return
 	fi
 
 	distutils_install_for_testing
-	local -x PATH=${TEST_DIR}/scripts:${PATH}
-
-	rm -rf .testrepository || die "couldn't remove '.testrepository' under ${EPTYHON}"
-
-	stestr init || die "stestr init failed under ${EPYTHON}"
-	stestr run || die "stestr run failed under ${EPYTHON}"
+	eunittest -b
 }
