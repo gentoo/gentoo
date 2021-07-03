@@ -9,6 +9,10 @@
     <email>marecki@gentoo.org</email>
     <name>Marek Szuba</name>
   </maintainer>
+  <maintainer type="person">
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
+  </maintainer>
   <use>
     <flag name="a-like-o">
       Changes view of letter 'a' - a looks like o (see homepage)
