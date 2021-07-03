@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
 PLOCALES="bg cs de es hu pl ru uk"
-inherit cmake wxwidgets l10n xdg
+inherit cmake plocale wxwidgets xdg
 
 CR_PV=$(ver_rs 3 '-')
 SRC_URI="https://github.com/buggins/${PN}/archive/cr${CR_PV}.tar.gz -> ${P}.tar.gz"
@@ -38,8 +38,8 @@ src_prepare() {
 	xdg_src_prepare
 
 	# locales
-	l10n_find_plocales_changes "${S}"/cr3qt/src/i18n 'cr3_' '.ts'
-	sed -e "s|SET(LANGUAGES .*)|SET(LANGUAGES $(l10n_get_locales))|" \
+	plocale_find_changes "${S}"/cr3qt/src/i18n 'cr3_' '.ts'
+	sed -e "s|SET(LANGUAGES .*)|SET(LANGUAGES $(plocale_get_locales))|" \
 		-i "${S}"/cr3qt/CMakeLists.txt \
 		|| die "sed CMakeLists.txt failed"
 }
