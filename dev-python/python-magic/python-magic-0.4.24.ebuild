@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
