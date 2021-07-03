@@ -1,0 +1,81 @@
+commit 8c6135984e6cc6d83320f4dc7a368f466ba2446c
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Jul 3 19:29:01 2021 +0300
+
+    Patch gst-plugins-bad 1.18.4 to also install opencv integration libs
+    
+    Signed-off-by: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+
+diff --git a/ext/meson.build b/ext/meson.build
+index 2cbddbf82..c70a07bbe 100644
+--- a/ext/meson.build
++++ b/ext/meson.build
+@@ -58,7 +58,6 @@ subdir('ttml')
+ subdir('voaacenc')
+ subdir('voamrwbenc')
+ subdir('vulkan')
+-subdir('wayland')
+ subdir('webrtc')
+ subdir('webrtcdsp')
+ subdir('webp')
+diff --git a/gst-libs/gst/meson.build b/gst-libs/gst/meson.build
+index 6cbed6c6c..d44943189 100644
+--- a/gst-libs/gst/meson.build
++++ b/gst-libs/gst/meson.build
+@@ -1,18 +1 @@
+-subdir('uridownloader')
+-
+-subdir('adaptivedemux')
+-subdir('audio')
+-subdir('basecamerabinsrc')
+-subdir('codecparsers')
+-subdir('codecs')
+-subdir('insertbin')
+-subdir('interfaces')
+-subdir('isoff')
+-subdir('mpegts')
+ subdir('opencv')
+-subdir('player')
+-subdir('sctp')
+-subdir('transcoder')
+-subdir('vulkan')
+-subdir('wayland')
+-subdir('webrtc')
+diff --git a/meson.build b/meson.build
+index c77aec00a..558eb0a85 100644
+--- a/meson.build
++++ b/meson.build
+@@ -479,13 +479,8 @@ gsturidownloader_dep = cc.find_library('gsturidownloader-1.0', required : false)
+ gstvulkan_dep = dependency('gstreamer-vulkan-1.0', required : false)
+ gstwebrtc_dep = dependency('gstreamer-webrtc-1.0', required : false)
+ 
+-subdir('gst')
+ subdir('sys')
+ subdir('ext')
+-subdir('tests')
+-subdir('data')
+-subdir('tools')
+-subdir('pkgconfig')
+ 
+ if have_orcc
+   update_orc_dist_files = find_program('scripts/update-orc-dist-files.py')
+@@ -513,7 +508,6 @@ endif
+ # xgettext is optional (on Windows for instance)
+ if find_program('xgettext', required : get_option('nls')).found()
+   cdata.set('ENABLE_NLS', 1)
+-  subdir('po')
+ endif
+ 
+ subdir('scripts')
+diff --git a/sys/meson.build b/sys/meson.build
+index cf39e5770..31d943d4b 100644
+--- a/sys/meson.build
++++ b/sys/meson.build
+@@ -17,7 +17,6 @@ subdir('mediafoundation')
+ subdir('msdk')
+ subdir('nvcodec')
+ subdir('opensles')
+-subdir('shm')
+ subdir('tinyalsa')
+ subdir('uvch264')
+ subdir('v4l2codecs')

@@ -1,0 +1,36 @@
+commit 504fd940f77d2dd199a2d9db90454fd2cb7ed06f
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Jul 3 19:10:06 2021 +0300
+
+    Patch gst-plugins-bad 1.18.4 to build split plugins using installed libs
+    
+    Signed-off-by: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+
+diff --git a/meson.build b/meson.build
+index e456c32da..c77aec00a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -462,6 +462,23 @@ if get_option('default_library') == 'shared'
+ endif
+ 
+ subdir('gst-libs')
++
++# Override all bundled dependencies with already installed packages for split plugins to use them
++gstadaptivedemux_dep = cc.find_library('gstadaptivedemux-1.0', required : false)
++gstbadaudio_dep = dependency('gstreamer-bad-audio-1.0', required : false)
++gstbasecamerabin_dep = cc.find_library('libgstbasecamerabinsrc-1.0', required : false)
++gstcodecparsers_dep = dependency('gstreamer-codecparsers-1.0', required : false)
++gstinsertbin_dep = dependency('gstreamer-insertbin-1.0', required : false)
++gstisoff_dep = cc.find_library('gstisoff-1.0', required : false)
++gstmpegts_dep = dependency('gstreamer-mpegts-1.0', required : false)
++gstphotography_dep = dependency('gstreamer-photography-1.0', required : false)
++gstplayer_dep = dependency('gstreamer-player-1.0', required : false)
++gstsctp_dep = dependency('gstreamer-sctp-1.0', required : false)
++gst_transcoder_dep = dependency('gstreamer-transcoder-1.0', required : false)
++gsturidownloader_dep = cc.find_library('gsturidownloader-1.0', required : false)
++gstvulkan_dep = dependency('gstreamer-vulkan-1.0', required : false)
++gstwebrtc_dep = dependency('gstreamer-webrtc-1.0', required : false)
++
+ subdir('gst')
+ subdir('sys')
+ subdir('ext')

@@ -16,3 +16,12 @@ RDEPEND="
 	<media-libs/opencv-4.2
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs.patch
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs-opencv.patch
+)
+
+multilib_src_install() {
+	DESTDIR="${D}" eninja install
+}
