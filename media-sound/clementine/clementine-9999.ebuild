@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mk_MK mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
-inherit cmake flag-o-matic l10n virtualx xdg
+inherit cmake flag-o-matic plocale virtualx xdg
 
 MY_P="${P/_}"
 if [[ ${PV} == *9999* ]]; then
@@ -105,7 +105,7 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( Changelog README.md )
 
 src_prepare() {
-	l10n_find_plocales_changes "src/translations" "" ".po"
+	plocale_find_changes "src/translations" "" ".po"
 
 	cmake_src_prepare
 	# some tests fail or hang
@@ -137,7 +137,7 @@ src_configure() {
 		-DUSE_SYSTEM_GMOCK=ON
 		-DUSE_SYSTEM_PROJECTM=ON
 		-DBUNDLE_PROJECTM_PRESETS=OFF
-		-DLINGUAS="$(l10n_get_locales)"
+		-DLINGUAS="$(plocale_get_locales)"
 		-DENABLE_BOX="$(usex box)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5DBus=$(usex !dbus)
