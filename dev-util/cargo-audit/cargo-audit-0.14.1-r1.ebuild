@@ -254,7 +254,7 @@ QA_FLAGS_IGNORED="usr/bin/${PN}"
 # requires checkout of vuln db/network
 RESTRICT="test"
 
-src_configuire() {
+src_configure() {
 	local myfeatures=( $(usev fix) )
 	cargo_src_configure
 }

@@ -302,7 +302,7 @@ src_configure() {
 	cargo_src_configure
 }
 
-cargo_src_compile() {
+src_compile() {
 	# normally we can pass --bin cargo-audit
 	# to build single workspace member, but we need to cd
 	# for tests to be discovered properly
