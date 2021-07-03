@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="ca cs da de el en es et eu fr gl hu it lv nb nl pl pt ru sr sv tr zh"
-inherit cmake l10n
+inherit cmake plocale
 
 DESCRIPTION="Application to create and manage beer recipes"
 HOMEPAGE="http://www.brewtarget.org/"
@@ -44,8 +44,8 @@ remove_locale() {
 src_prepare() {
 	cmake_src_prepare
 
-	l10n_find_plocales_changes translations bt_ .ts
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes translations bt_ .ts
+	plocale_for_each_disabled_locale remove_locale
 
 	# Tests are bogus, don't build them
 	sed -i -e '/Qt5Test/d' CMakeLists.txt || die
