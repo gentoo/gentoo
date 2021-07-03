@@ -15,3 +15,8 @@ RDEPEND="
 	virtual/libusb:1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	gstreamer_system_library gstbasecamerabin_dep:libgstbasecamerabinsrc
+}
