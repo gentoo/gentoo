@@ -12,3 +12,7 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="virtual/os-headers"
+
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs.patch
+)
