@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd
+inherit toolchain-funcs elisp-common perl-module bash-completion-r1 plocale python-single-r1 systemd
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 if [[ ${PV} == *9999 ]]; then
@@ -543,7 +543,7 @@ src_install() {
 			rm -r "${ED}/usr/share/locale/${1}" || die
 		fi
 	}
-	l10n_for_each_disabled_locale_do rm_loc
+	plocale_for_each_disabled_locale rm_loc
 }
 
 src_test() {
