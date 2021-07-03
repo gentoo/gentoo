@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar ast bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv ta te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
+inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils multilib multilib-minimal pax-utils plocale toolchain-funcs virtualx xdg-utils
 MY_PN="${PN%%-*}"
 MY_PV="${PV/_/-}"
 MY_P="${MY_PN}-${MY_PV}"
@@ -368,7 +368,7 @@ src_unpack() {
 
 	default
 
-	l10n_find_plocales_changes "${S}/po" "" ".po"
+	plocale_find_changes "${S}/po" "" ".po"
 }
 
 src_prepare() {
@@ -419,7 +419,7 @@ src_prepare() {
 	# hi-res default icon, #472990, https://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${PATCHDIR}/files/oic_winlogo.ico" dlls/user32/resources/ || die
 
-	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
+	plocale_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 
 	# Fix manpage generation for locales #469418 and abi_x86_64 #617864
 
@@ -443,7 +443,7 @@ src_prepare() {
 	}
 
 	while read f; do
-		l10n_for_each_disabled_locale_do rm_man_file "${f}"
+		plocale_for_each_disabled_locale rm_man_file "${f}"
 	done < <(find -name "Makefile.in" -exec grep -q "UTF-8.man.in" "{}" \; -print)
 }
 
@@ -569,7 +569,7 @@ multilib_src_install_all() {
 		local locale_doc="documentation/README.$1"
 		[[ ! -e ${locale_doc} ]] || DOCS+=( ${locale_doc} )
 	}
-	l10n_for_each_locale_do add_locale_docs
+	plocale_for_each_locale add_locale_docs
 
 	einstalldocs
 	prune_libtool_files --all
