@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ncurses,readline"
 FIRMWARE_ABI_VERSION="5.2.0-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1
-inherit udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+inherit udev fcaps readme.gentoo-r1 pax-utils xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
