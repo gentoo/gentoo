@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
-inherit autotools bash-completion-r1 gnome2-utils l10n linux-info python-single-r1 systemd xdg-utils
+inherit autotools bash-completion-r1 gnome2-utils linux-info plocale python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
 HOMEPAGE="http://www.firewalld.org/"
@@ -60,8 +60,8 @@ src_prepare() {
 	default
 	eautoreconf
 
-	l10n_find_plocales_changes "po" "" ".po"
-	l10n_get_locales | sed -e 's/ /\n/g' > po/LINGUAS
+	plocale_find_changes "po" "" ".po"
+	plocale_get_locales | sed -e 's/ /\n/g' > po/LINGUAS
 }
 
 src_configure() {
