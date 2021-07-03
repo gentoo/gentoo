@@ -32,6 +32,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-backports.patch
+)
+
 python_test() {
 	local deselect=(
 		# warning-targeted tests are fragile and not important to end users
