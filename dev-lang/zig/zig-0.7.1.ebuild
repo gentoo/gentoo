@@ -55,6 +55,6 @@ src_configure() {
 }
 
 src_test() {
-	cd "${BUILD_DIR}"
+	cd "${BUILD_DIR}" || die
 	./zig build test || die
 }
