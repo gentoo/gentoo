@@ -15,6 +15,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs.patch
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs-hls.patch
+)
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dhls-crypto=nettle
