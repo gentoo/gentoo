@@ -15,6 +15,19 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs-hls.patch
+)
+
+src_prepare() {
+	default
+	gstreamer_system_library gstadaptivedemux_dep:gstadaptivedemux
+	gstreamer_system_package pbutils_dep:gstreamer-pbutils
+	gstreamer_system_package tag_dep:gstreamer-tag
+	gstreamer_system_package video_dep:gstreamer-video
+	gstreamer_system_library gsturidownloader_dep:gsturidownloader
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dhls-crypto=nettle
