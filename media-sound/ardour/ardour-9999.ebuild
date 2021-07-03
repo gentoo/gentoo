@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="cs de el en_GB es eu fr it ja nn pl pt pt_PT ru sv zh"
-inherit eutils toolchain-funcs flag-o-matic l10n python-any-r1 waf-utils desktop xdg
+inherit eutils toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="https://ardour.org/"
@@ -99,7 +99,7 @@ src_prepare() {
 	fi
 	if use cpu_flags_x86_mmx; then
 		if [[ ${MARCH} == "i486" ]]; then
-		    elog "You enabled mmx with i486 set as march! You have been warned!"
+			elog "You enabled mmx with i486 set as march! You have been warned!"
 		fi
 		OPTFLAGS="${OPTFLAGS} mmx"
 	fi
@@ -115,7 +115,7 @@ src_prepare() {
 	my_lcmsg() {
 		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
 	}
-	l10n_for_each_disabled_locale_do my_lcmsg
+	plocale_for_each_disabled_locale my_lcmsg
 }
 
 src_configure() {
