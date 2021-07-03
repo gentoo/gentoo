@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="Convertor written in Perl that converts LATEX documents to HTML"
+DESCRIPTION="Convertor written in Perl that converts LaTeX documents to HTML"
 HOMEPAGE="https://www.latex2html.org/"
 SRC_URI="http://mirrors.ctan.org/support/latex2html/${P}.tar.gz"
 
