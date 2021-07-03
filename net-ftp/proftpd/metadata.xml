@@ -6,6 +6,10 @@
 		<name>Sergei Trofimovich</name>
 		<description>Mostly user.</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>slashbeast@gentoo.org</email>
+		<name>Piotr Karbowski</name>
+	</maintainer>
 	<longdescription>ProFTPD grew out of the desire to have a secure and 
 configurable FTP server, and out of a significant admiration of the Apache web 
 server.</longdescription>
