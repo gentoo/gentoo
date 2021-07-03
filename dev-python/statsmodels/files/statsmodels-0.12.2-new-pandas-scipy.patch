@@ -71,3 +71,52 @@ index d349c472d..2ee1a6e0b 100644
 -- 
 2.32.0
 
+From a9e21aef508ea98da8c5889547b8e5748986dae1 Mon Sep 17 00:00:00 2001
+From: Kevin Sheppard <kevin.k.sheppard@gmail.com>
+Date: Wed, 7 Apr 2021 09:52:25 +0100
+Subject: [PATCH] MAINT: Fix descriptive stats with extension dtypes
+
+Add special path for extension dtypes to remove N/A
+---
+ statsmodels/stats/descriptivestats.py | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/statsmodels/stats/descriptivestats.py b/statsmodels/stats/descriptivestats.py
+index d5ad2f2a5..0fd3eb542 100644
+--- a/statsmodels/stats/descriptivestats.py
++++ b/statsmodels/stats/descriptivestats.py
+@@ -441,8 +441,20 @@ class Description:
+         loc = count > 0
+         mode_freq = np.full(mode.shape[0], np.nan)
+         mode_freq[loc] = mode_counts[loc] / count.loc[loc]
++        # TODO: Workaround for pandas AbstractMethodError in extension
++        #  types. Remove when quantile is supported for these
++        _df = df
++        try:
++            from pandas.api.types import is_extension_array_dtype
++            _df = df.copy()
++            for col in df:
++                if is_extension_array_dtype(df[col].dtype):
++                    _df[col] = _df[col].astype(object).fillna(np.nan)
++        except ImportError:
++            pass
++
+         if df.shape[1] > 0:
+-            iqr = df.quantile(0.75) - df.quantile(0.25)
++            iqr = _df.quantile(0.75) - _df.quantile(0.25)
+         else:
+             iqr = mean
+ 
+@@ -493,7 +505,8 @@ class Description:
+             return results_df
+         # Pandas before 1.0 cannot handle empty DF
+         if df.shape[1] > 0:
+-            perc = df.quantile(self._percentiles / 100).astype(float)
++            # TODO: Remove when extension types support quantile
++            perc = _df.quantile(self._percentiles / 100).astype(float)
+         else:
+             perc = pd.DataFrame(index=self._percentiles / 100, dtype=float)
+         if np.all(np.floor(100 * perc.index) == (100 * perc.index)):
+-- 
+2.32.0
+
