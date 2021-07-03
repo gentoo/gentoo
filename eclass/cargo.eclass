@@ -34,6 +34,11 @@ case "${EAPI:-0}" in
 		# 1.52 may need setting RUSTC_BOOTSTRAP envvar for some crates
 		# 1.53 added cargo update --offline, can be used to update vulnerable crates from pre-fetched registry without editing toml
 		RUST_DEPEND=">=virtual/rust-1.53"
+
+		if [[ -z ${CRATES} && "${PV}" != *9999* ]]; then
+			eerror "undefined CRATES variable in non-live EAPI=8 ebuild"
+			die "CRATES variable not defined"
+		fi
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -54,6 +59,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 
 # @ECLASS-VARIABLE: CRATES
 # @DEFAULT_UNSET
+# @PRE_INHERIT
 # @DESCRIPTION:
 # bash string containing all crates package wants to download
 # used by cargo_crate_uris()
@@ -66,7 +72,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # "
 # inherit cargo
 # ...
-# SRC_URI="$(cargo_crate_uris ${CRATES})"
+# SRC_URI="$(cargo_crate_uris)"
 # @CODE
 
 # @ECLASS-VARIABLE: CARGO_OPTIONAL
@@ -131,10 +137,22 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
+# Uses first argument as crate list.
+# If no argument provided, uses CRATES variable.
 cargo_crate_uris() {
 	local -r regex='^([a-zA-Z0-9_\-]+)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
-	local crate
-	for crate in "$@"; do
+	local crate crates
+
+	if [[ -n ${@} ]]; then
+		crates="$@"
+	elif [[ -n ${CRATES} ]]; then
+		crates="${CRATES}"
+	else
+		eerror "CRATES variable is not defined and nothing passed as argument"
+		die "Can't generate SRC_URI from empty input"
+	fi
+
+	for crate in ${crates}; do
 		local name version url
 		[[ $crate =~ $regex ]] || die "Could not parse name and version from crate: $crate"
 		name="${BASH_REMATCH[1]}"
