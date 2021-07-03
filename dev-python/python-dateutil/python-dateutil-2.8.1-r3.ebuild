@@ -9,8 +9,8 @@ inherit distutils-r1
 
 DESCRIPTION="Extensions to the standard Python datetime module"
 HOMEPAGE="
-	https://dateutil.readthedocs.org/
-	https://pypi.org/project/python-dateutil
+	https://dateutil.readthedocs.io/
+	https://pypi.org/project/python-dateutil/
 	https://github.com/dateutil/dateutil/
 "
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
