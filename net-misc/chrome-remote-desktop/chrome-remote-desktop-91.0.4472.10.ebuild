@@ -18,7 +18,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{7,8,9} )
 PLOCALES="am ar bg bn ca cs da de el en_GB en es_419 es et fa fil fi fr gu he hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr sv sw ta te th tr uk vi zh_CN zh_TW"
 
-inherit unpacker python-single-r1 l10n optfeature
+inherit unpacker python-single-r1 optfeature plocale
 
 DESCRIPTION="access remote computers via Chrome!"
 PLUGIN_URL="https://chrome.google.com/remotedesktop"
@@ -91,13 +91,13 @@ src_prepare() {
 	cd remoting_locales
 	# These isn't always included.
 	rm -f fake-bidi* || die
-	PLOCALES=${PLOCALES//_/-} l10n_find_plocales_changes "${PWD}" '' '.pak'
+	PLOCALES=${PLOCALES//_/-} plocale_find_changes "${PWD}" '' '.pak'
 }
 
 src_install() {
 	pushd opt/google/chrome-remote-desktop/remoting_locales >/dev/null || die
 	rm_pak() { local l=${1//_/-}; rm "${l}.pak" "${l}.pak.info"; }
-	l10n_for_each_disabled_locale_do rm_pak
+	plocale_for_each_disabled_locale rm_pak
 	popd >/dev/null
 
 	insinto /etc
