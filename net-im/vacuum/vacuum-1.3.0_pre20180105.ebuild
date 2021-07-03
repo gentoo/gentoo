@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="de es pl ru uk"
-inherit cmake l10n
+inherit cmake plocale
 
 MY_PN="${PN}-im"
 MY_PV="${PV/_pre/.}-Alpha"
@@ -85,7 +85,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_LIB_DIR="$(get_libdir)"
 		-DINSTALL_SDK=ON
-		-DLANGS="$(l10n_get_locales)"
+		-DLANGS="$(plocale_get_locales)"
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
 		-DPLUGIN_adiummessagestyle=OFF
