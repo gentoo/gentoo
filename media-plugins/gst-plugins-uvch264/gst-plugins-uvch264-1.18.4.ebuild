@@ -15,3 +15,7 @@ RDEPEND="
 	virtual/libusb:1[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs.patch
+)
