@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,7 @@ RDEPEND="app-emacs/async
 	app-emacs/popup"
 BDEPEND="${RDEPEND}"
 
+PATCHES="${FILESDIR}/${P}-no-autoload-check.patch"
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
@@ -26,6 +27,5 @@ src_compile() {
 
 src_install() {
 	elisp_src_install
-	exeinto "${SITEETC}/${PN}"
-	doexe emacs-helm.sh
+	dobin emacs-helm.sh
 }
