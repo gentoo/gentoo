@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
 PLOCALES="ca cs da de el en es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_TW"
-inherit cmake wxwidgets l10n xdg
+inherit cmake plocale wxwidgets xdg
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
 HOMEPAGE="https://wxmaxima-developers.github.io/wxmaxima/"
@@ -41,8 +41,8 @@ src_prepare() {
 		rm -f info/${PN}.${1}.html
 		sed -e "\\|/${1}/wxmaxima.1|d" -i data/CMakeLists.txt
 	}
-	l10n_find_plocales_changes locales/wxMaxima '' '.po'
-	l10n_for_each_disabled_locale_do rm_po
+	plocale_find_changes locales/wxMaxima '' '.po'
+	plocale_for_each_disabled_locale rm_po
 }
 
 src_install() {
