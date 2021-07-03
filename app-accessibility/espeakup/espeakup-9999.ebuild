@@ -1,53 +1,47 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/williamh/espeakup.git"
 	inherit git-r3
 else
-	EGIT_COMMIT=v${PV}
-	SRC_URI="https://github.com/williamh/espeakup/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-	inherit vcs-snapshot
+	SRC_URI="https://github.com/linux-speakup/espeakup/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
 fi
 
-inherit linux-info
+inherit linux-info meson
 
 DESCRIPTION="espeakup is a small lightweight connector for espeak and speakup"
 HOMEPAGE="https://github.com/williamh/espeakup"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="man systemd"
 
-COMMON_DEPEND="|| (
-	app-accessibility/espeak[portaudio]
-	app-accessibility/espeak[pulseaudio] )"
+COMMON_DEPEND="app-accessibility/espeak-ng[sound]
+	media-libs/alsa-lib"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
+BDEPEND="man? ( app-text/ronn )"
 
 CONFIG_CHECK="~SPEAKUP ~SPEAKUP_SYNTH_SOFT"
-ERROR_SPEAKUP="CONFIG_SPEAKUP is not enabled in this kernel!"
-ERROR_SPEAKUP_SYNTH_SOFT="CONFIG_SPEAKUP_SYNTH_SOFT is not enabled in this kernel!"
 
-pkg_setup() {
-	if kernel_is -ge 2 6 37; then
-		check_extra_config
-	elif ! has_version app-accessibility/speakup; then
-		ewarn "Cannot find speakup on your system."
-		ewarn "Please upgrade your kernel to 2.6.37 or later and enable the"
-		ewarn "CONFIG_SPEAKUP and CONFIG_SPEAKUP_SYNTH_SOFT options"
-		ewarn "or install app-accessibility/speakup."
-	fi
+src_configure() {
+	local emesonargs
+	emesonargs=(
+		$(meson_feature man)
+		$(meson_feature systemd)
+		)
+	meson_src_configure
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install
+	meson_src_install
 	einstalldocs
 	newconfd "${FILESDIR}"/espeakup.confd espeakup
-	newinitd "${FILESDIR}"/espeakup.rc espeakup
+	newinitd "${FILESDIR}"/espeakup.initd espeakup
 }
 
 pkg_postinst() {
