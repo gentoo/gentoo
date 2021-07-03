@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ahh/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="nls"
 
 PATCHES=( "${FILESDIR}/${P}-musl.patch" )
