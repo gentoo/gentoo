@@ -51,9 +51,10 @@ python_prepare_all() {
 	export MPLCONFIGDIR="${T}"
 	printf -- 'backend : Agg\n' > "${MPLCONFIGDIR}"/matplotlibrc || die
 
-	# these tests require internet
-	sed -i -e 's:test_results_on_the:_&:' \
-		statsmodels/stats/tests/test_dist_dependant_measures.py || die
+	sed -e 's:test_combine:_&:' \
+		-i statsmodels/imputation/tests/test_mice.py || die
+	sed -e 's:test_mixedlm:_&:' \
+		-i statsmodels/stats/tests/test_mediation.py || die
 
 	distutils-r1_python_prepare_all
 }
