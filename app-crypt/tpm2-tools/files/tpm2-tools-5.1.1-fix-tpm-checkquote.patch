@@ -1,0 +1,34 @@
+From 3d7edb1c70cba6c34c71c9b856c07b8adcebb15c Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 17 Jun 2021 11:07:25 +0200
+Subject: [PATCH] tpm2_checkquote: fix uninitialized variable
+
+The variable `temp_pcrs` is uninitialized, and later partially
+uninitialized when reading the selection data from file.
+
+When activating lto optimizations, this bug presents itself showing an
+error during the read of the quote:
+
+ERROR: Malformed PCR file, pcr count cannot be greater than 32, got: ...
+
+Fixes: #2767
+
+Co-authored-by: Martin Liska <marxin.liska@gmail.com>
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ tools/misc/tpm2_checkquote.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/misc/tpm2_checkquote.c b/tools/misc/tpm2_checkquote.c
+index 531508579..8d780f111 100644
+--- a/tools/misc/tpm2_checkquote.c
++++ b/tools/misc/tpm2_checkquote.c
+@@ -376,7 +376,7 @@ static tool_rc init(void) {
+     TPM2B_ATTEST *msg = NULL;
+     TPML_PCR_SELECTION pcr_select;
+     tpm2_pcrs *pcrs;
+-    tpm2_pcrs temp_pcrs;
++    tpm2_pcrs temp_pcrs = {};
+     tool_rc return_value = tool_rc_general_error;
+ 
+     msg = message_from_file(ctx.msg_file_path);
