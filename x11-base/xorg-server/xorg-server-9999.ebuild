@@ -68,11 +68,6 @@ CDEPEND="
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
-	wayland? (
-		>=dev-libs/wayland-1.3.0
-		>=media-libs/libepoxy-1.5.4[egl(+)]
-		>=dev-libs/wayland-protocols-1.18
-	)
 	>=x11-apps/xinit-1.3.3-r1
 	systemd? (
 		sys-apps/dbus
@@ -97,6 +92,7 @@ DEPEND="${CDEPEND}
 			)
 		)
 	)
+	wayland? ( x11-base/xwayland )
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
@@ -104,7 +100,6 @@ RDEPEND="${CDEPEND}
 "
 BDEPEND="
 	sys-devel/flex
-	wayland? ( dev-util/wayland-scanner )
 "
 PDEPEND="
 	xorg? ( >=x11-base/xorg-drivers-$(ver_cut 1-2) )"
@@ -127,14 +122,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
 )
 
-pkg_setup() {
-	if use wayland && use minimal; then
-		ewarn "glamor is necessary for acceleration under Xwayland."
-		ewarn "Performance may be unacceptable without it."
-		ewarn "Build with USE=-minimal to enable glamor."
-	fi
-}
-
 src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
@@ -148,7 +135,6 @@ src_configure() {
 		$(use_enable kdrive)
 		$(use_enable test unit-tests)
 		$(use_enable unwind libunwind)
-		$(use_enable wayland xwayland)
 		$(use_enable !minimal record)
 		$(use_enable !minimal xfree86-utils)
 		$(use_enable !minimal dri)
@@ -165,6 +151,7 @@ src_configure() {
 		$(use_with doc doxygen)
 		$(use_with doc xmlto)
 		$(use_with systemd systemd-daemon)
+		--disable-xwayland
 		--enable-libdrm
 		--sysconfdir="${EPREFIX}"/etc/X11
 		--localstatedir="${EPREFIX}"/var
@@ -174,6 +161,7 @@ src_configure() {
 		--disable-linux-acpi
 		--without-dtrace
 		--without-fop
+		--with-os-vendor=Gentoo
 		--with-sha1=libcrypto
 		CPP="$(tc-getPROG CPP cpp)"
 	)
