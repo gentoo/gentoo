@@ -17,7 +17,8 @@
 		<remote-id type="cpe">cpe:/a:harfbuzz_project:harfbuzz</remote-id>
 	</upstream>
 	<use>
-		<flag name="glib">Compile with GLib Unicode support</flag>
-		<flag name="graphite">Use graphite to render complex non-Roman writing systems</flag>
+		<flag name="experimental">Enable experimental APIs</flag>
+		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> unicode functions</flag>
+		<flag name="graphite">Enable <pkg>media-gfx/graphite2</pkg> complementary shaper</flag>
 	</use>
 </pkgmetadata>
