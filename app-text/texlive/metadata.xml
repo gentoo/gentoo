@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="context">Add support for the ConTeXt format (<pkg>dev-texlive/texlive-context</pkg>)</flag>
-		<flag name="epspdf">Add support for <pkg>app-text/epspdf</pkg>, a tool for converting [e]ps files to pdf</flag>
 		<flag name="extra">Add support for extra TeXLive packages</flag>
 		<flag name="games">Add typesetting support for games (chess, etc.) (<pkg>dev-texlive/texlive-games</pkg>)</flag>
 		<flag name="graphics">Add support for several graphics packages (pgf, tikz,...)</flag>
