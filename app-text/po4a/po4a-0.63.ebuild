@@ -4,7 +4,7 @@
 EAPI="7"
 PLOCALES="af ar ca cs da de eo es et eu fr hr hu id it ja kn ko nb nl pl pt pt_BR ru sl sr_Cyrl sv uk vi zh_CN zh_HK"
 
-inherit l10n perl-module
+inherit perl-module plocale
 
 DESCRIPTION="Tools to ease the translation of documentation"
 HOMEPAGE="https://po4a.org/"
@@ -42,12 +42,12 @@ PATCHES=( "${FILESDIR}"/${PN}-0.60-man.patch )
 DIST_TEST="do"
 
 src_prepare() {
-	l10n_find_plocales_changes "${S}/po/bin" '' '.po'
+	plocale_find_changes "${S}/po/bin" '' '.po'
 
 	rm_locale() {
 		PERL_RM_FILES+=( po/{bin,pod}/${1}.po )
 	}
-	l10n_for_each_disabled_locale_do rm_locale
+	plocale_for_each_disabled_locale rm_locale
 
 	perl-module_src_prepare
 }
