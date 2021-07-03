@@ -46,9 +46,11 @@ BDEPEND="
 		' 'python3*')
 	)"
 
-distutils_enable_sphinx docs \
-	dev-python/sphinx_rtd_theme \
-	dev-python/towncrier
+# (unpackaged deps)
+#distutils_enable_sphinx docs \
+#	dev-python/sphinx-argparse \
+#	dev-python/sphinx_rtd_theme \
+#	dev-python/towncrier
 distutils_enable_tests pytest
 
 src_configure() {
