@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 IUSE="doc"
 
 RDEPEND=">=dev-db/sqlite-${PV%_p*}"
