@@ -12,3 +12,7 @@ IUSE=""
 
 RDEPEND=">=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs.patch
+)
