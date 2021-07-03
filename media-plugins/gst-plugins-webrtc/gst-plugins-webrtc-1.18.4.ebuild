@@ -19,5 +19,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-bad-${PV}-use-system-libs.patch
+)
+
 GST_PLUGINS_ENABLED="webrtc webrtcdsp"
 GST_PLUGINS_BUILD_DIR="webrtc webrtcdsp"
