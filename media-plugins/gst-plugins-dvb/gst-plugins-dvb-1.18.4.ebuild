@@ -12,3 +12,8 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="virtual/os-headers"
+
+src_prepare() {
+	default
+	gstreamer_system_package gstmpegts_dep:gstreamer-mpegts
+}
