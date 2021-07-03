@@ -57,7 +57,7 @@ index 34f11ad..e9870ca 100644
 +def iter_zones(topdir):
 +    for dirpath, dirnames, filenames in os.walk(topdir):
 +        for f in filenames:
-+            if f.endswith('.list') or f.endswith('.tab'):
++            if f.endswith(('.list', '.tab', '.zi', 'leapseconds')):
 +                continue
 +            fpath = os.path.join(dirpath, f)
 +            relpath = os.path.relpath(fpath, topdir)
