@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1..3} luajit )
 PLOCALES="fi fr it ja nl pt_BR ru sv"
 
-inherit lua-single toolchain-funcs l10n
+inherit lua-single plocale toolchain-funcs
 
 DESCRIPTION="Devilspie like window matching utility, using LUA for scripting"
 HOMEPAGE="https://www.nongnu.org/devilspie2/"
@@ -39,11 +39,11 @@ PATCHES=(
 
 src_compile() {
 	tc-export PKG_CONFIG
-	emake CC="$(tc-getCC)" PREFIX="/usr" LANGUAGES="$(l10n_get_locales)"
+	emake CC="$(tc-getCC)" PREFIX="/usr" LANGUAGES="$(plocale_get_locales)"
 }
 
 src_install() {
-	emake PREFIX="/usr" DESTDIR="${ED}" LANGUAGES="$(l10n_get_locales)" install
+	emake PREFIX="/usr" DESTDIR="${ED}" LANGUAGES="$(plocale_get_locales)" install
 	einstalldocs
 	doman devilspie2.1
 }
