@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
-inherit cmake l10n systemd user
+inherit cmake plocale systemd user
 
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
@@ -62,8 +62,8 @@ src_prepare() {
 	disable_locale() {
 		sed -e "/${1}\.ts/d" -i data/translations/CMakeLists.txt || die
 	}
-	l10n_find_plocales_changes "data/translations" "" ".ts"
-	l10n_for_each_disabled_locale_do disable_locale
+	plocale_find_changes "data/translations" "" ".ts"
+	plocale_for_each_disabled_locale disable_locale
 
 	if ! use test; then
 		sed -e "/^find_package/s/ Test//" -i CMakeLists.txt || die
