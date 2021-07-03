@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic l10n virtualx xdg
+inherit cmake flag-o-matic plocale virtualx xdg
 
 PLOCALES="cs de es fr hu id it ko nb pl ru sv"
 
@@ -86,7 +86,7 @@ REQUIRED_USE="
 "
 
 src_prepare() {
-	l10n_find_plocales_changes "src/translations" "" ".po"
+	plocale_find_changes "src/translations" "" ".po"
 
 	cmake_src_prepare
 }
@@ -98,7 +98,7 @@ src_configure() {
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
 		-DENABLE_GIO=ON
-		-DLINGUAS="$(l10n_get_locales)"
+		-DLINGUAS="$(plocale_get_locales)"
 		-DENABLE_AUDIOCD="$(usex cdda)"
 		-DENABLE_GSTREAMER="$(usex gstreamer)"
 		-DENABLE_LIBGPOD="$(usex ipod)"
