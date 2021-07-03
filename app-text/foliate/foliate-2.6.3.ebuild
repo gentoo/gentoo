@@ -3,7 +3,7 @@
 
 EAPI=7
 PLOCALES="cs de es eu fr id ie it ko nb nl nn pt_BR ru sv tr uk zh_CN zh_TW"
-inherit meson l10n xdg-utils gnome2-utils
+inherit meson plocale xdg-utils gnome2-utils
 SRC_URI="https://github.com/johnfactotum/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="gtk ebook reader built with gjs"
 HOMEPAGE="https://github.com/johnfactotum/foliate/"
@@ -26,14 +26,14 @@ RDEPEND="dev-libs/gjs
 src_prepare() {
 	default
 
-	l10n_find_plocales_changes "${S}"/po '' '.po'
+	plocale_find_changes "${S}"/po '' '.po'
 
 	rm_po() {
 		rm po/${1}.po
 		sed -e "/^${1}/d" -i po/LINGUAS
 	}
 
-	l10n_for_each_disabled_locale_do rm_po
+	plocale_for_each_disabled_locale rm_po
 }
 
 pkg_postinst() {
