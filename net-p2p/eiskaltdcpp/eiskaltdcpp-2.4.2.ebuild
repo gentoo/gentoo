@@ -7,7 +7,7 @@ LUA_COMPAT=( lua5-1 lua5-2 )
 
 PLOCALES="be bg cs da de el en es eu fr hu ie it pl pt_BR ru sk sr sr@latin sv_SE tr uk vi zh_CN"
 
-inherit cmake l10n lua-single strip-linguas xdg-utils toolchain-funcs
+inherit cmake lua-single plocale strip-linguas xdg-utils toolchain-funcs
 [[ ${PV} = *9999* ]] && inherit git-r3
 
 DESCRIPTION="Qt/DC++ based client for DirectConnect and ADC protocols"
@@ -99,14 +99,14 @@ pkg_setup() {
 
 src_prepare() {
 	cmake_src_prepare
-	l10n_find_plocales_changes 'eiskaltdcpp-qt/translations' '' '.ts'
+	plocale_find_changes 'eiskaltdcpp-qt/translations' '' '.ts'
 }
 
 src_configure() {
 	use gtk && strip-linguas -i eiskaltdcpp-gtk/po/
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="$(get_libdir)"
-		-Dlinguas="$(l10n_get_locales)"
+		-Dlinguas="$(plocale_get_locales)"
 		-DCREATE_MO=ON
 		-DUSE_GTK=OFF
 		-DUSE_LIBGNOME2=OFF
