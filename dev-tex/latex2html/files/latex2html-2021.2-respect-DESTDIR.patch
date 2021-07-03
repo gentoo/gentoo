@@ -1,0 +1,24 @@
+From 263eb47193ff9b0bd987b7f72eb7b331b96f9f96 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 3 Jul 2021 02:50:53 +0100
+Subject: [PATCH] Respect DESTDIR
+
+---
+ config/install.pl | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config/install.pl b/config/install.pl
+index d732176..678eaa6 100755
+--- a/config/install.pl
++++ b/config/install.pl
+@@ -376,6 +376,7 @@ if($cfg{TEXPATH}) {
+     print "\nNote: trying to install LaTeX2HTML style files in TeX directory tree\n     ($cfg{TEXPATH})\n";
+     my $dir = 'texinputs';
+     my $dest = $cfg{TEXPATH};
++    $dest = $ENV{'DESTDIR'}.$dest if($ENV{'DESTDIR'});
+     unless(opendir(DIR,$dir)) {
+       print STDERR qq{Error: Could not read directory "$dir": $!\n};
+     } else {
+-- 
+2.32.0
+
