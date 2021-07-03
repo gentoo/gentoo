@@ -33,7 +33,7 @@ src_test() {
 
 src_install() {
 	dobin ${PN}
-	doman ${PN}.1 ${PN}ini.5
+	doman ${PN}.6 ${PN}ini.5
 	dodoc README.txt
 
 	insinto /etc
