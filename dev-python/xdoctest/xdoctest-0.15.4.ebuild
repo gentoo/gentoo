@@ -24,4 +24,6 @@ BDEPEND="
 	)"
 
 distutils_enable_tests --install pytest
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+#distutils_enable_sphinx docs/source \
+#	dev-python/autoapi \
+#	dev-python/sphinx_rtd_theme
