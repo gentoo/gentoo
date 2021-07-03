@@ -16,6 +16,6 @@
 	<flag name="reencrypt">Build cryptsetup-reencrypt</flag>
 </use>
 <upstream>
-	<remote-id type="google-code">cryptsetup</remote-id>
+	<remote-id type="gitlab">cryptsetup/cryptsetup</remote-id>
 </upstream>
 </pkgmetadata>
