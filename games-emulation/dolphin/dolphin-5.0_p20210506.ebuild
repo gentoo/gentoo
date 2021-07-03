@@ -6,7 +6,7 @@ EAPI=7
 PLOCALES="ar ca cs da de el en es fa fr hr hu it ja ko ms nb nl pl pt pt_BR ro ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit cmake desktop xdg-utils l10n pax-utils
+inherit cmake desktop xdg-utils pax-utils plocale
 
 if [[ ${PV} == *9999 ]]
 then
@@ -123,15 +123,15 @@ src_prepare() {
 
 	remove_locale() {
 		# Ensure preservation of the backup locale when no valid LINGUA is set
-		if [[ "${PLOCALE_BACKUP}" == "${1}" ]] && [[ "${PLOCALE_BACKUP}" == "$(l10n_get_locales)" ]]; then
+		if [[ "${PLOCALE_BACKUP}" == "${1}" ]] && [[ "${PLOCALE_BACKUP}" == "$(plocale_get_locales)" ]]; then
 			return
 		else
 			rm "Languages/po/${1}.po" || die
 		fi
 	}
 
-	l10n_find_plocales_changes "Languages/po/" "" '.po'
-	l10n_for_each_disabled_locale_do remove_locale
+	plocale_find_changes "Languages/po/" "" '.po'
+	plocale_for_each_disabled_locale remove_locale
 
 	# About 50% compile-time speedup
 	use vulkan || sed -i -e '/Externals\/glslang/d' CMakeLists.txt
