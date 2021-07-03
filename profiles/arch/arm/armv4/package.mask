@@ -22,3 +22,4 @@ virtual/rust
 >=dev-libs/gjs-1.66
 >=gnome-base/gnome-shell-3.38
 >=x11-themes/adwaita-icon-theme-3.36
+>=net-irc/polari-3.37
