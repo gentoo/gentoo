@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="cs fr ru sk uk zh_CN zh_TW"
-inherit cmake l10n
+inherit cmake plocale
 
 DESCRIPTION="Console version of Stardict program"
 HOMEPAGE="https://dushistov.github.io/sdcv/"
@@ -41,7 +41,7 @@ src_prepare() {
 	rm_loc() {
 		rm "po/${1}.po" || die
 	}
-	l10n_for_each_disabled_locale_do rm_loc
+	plocale_for_each_disabled_locale rm_loc
 
 	# do not install locale-specific man pages unless asked to
 	if ! has uk ${LINGUAS-uk}; then
