@@ -20,16 +20,14 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	# fix lib path for X11 and dont ignore LDFLAGS
-	sed -i  -e "s#lib\\\/#$(get_libdir)\\\/#" \
-		-e 's/CFLAGS/#CFLAGS/' \
-		-e 's/CC =/#CC =/' \
-		-e 's/link.res/.res/g' \
-		-e 's/.res pu/.res $(LDFLAGS) pu/' Makefile || die
+	# respect CC and LD
+	eapply -p0 "${FILESDIR}"/$P-Makefile.patch
+	eapply_user
 }
 
 src_compile() {
 	LDFLAGS="$(raw-ldflags)"
-	emake -j1 CC="$(tc-getCC)"
+	emake -j1 CC="$(tc-getCC)" LD="$(tc-getLD)"
 }
 
 src_install() {
