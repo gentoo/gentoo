@@ -5,6 +5,10 @@
     <email>slyfox@gentoo.org</email>
     <name>Sergei Trofimovich</name>
   </maintainer>
+  <maintainer type="person">
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">astrand/xclip</remote-id>
   </upstream>
