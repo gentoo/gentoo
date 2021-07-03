@@ -79,6 +79,56 @@ gstreamer_get_plugins() {
 	)
 }
 
+# @FUNCTION: gstreamer_system_package
+# @USAGE: <gstaudio_dep:gstreamer-audio> [...]
+# @DESCRIPTION:
+# Walks through meson.build in order to make sure build will link against system
+# libraries.
+# Takes a list of path fragments and corresponding pkgconfig libraries
+# separated by colon (:). Will replace the path fragment by the output of
+# pkgconfig.
+gstreamer_system_package() {
+	local pdir directory libs pkgconfig pc tuple
+	pkgconfig=$(tc-getPKG_CONFIG)
+
+	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
+		pdir=$(gstreamer_get_plugin_dir ${plugin_dir})
+
+		for tuple in $@ ; do
+			dependency=${tuple%:*}
+			pc=${tuple#*:}-${SLOT}
+			#libs="$(${pkgconfig} --libs-only-l ${pc} || die)"
+			sed -e "1i${dependency} = dependency('${pc}', required : true)" \
+				-i "${pdir}"/meson.build || die
+		done
+	done
+}
+
+# @FUNCTION: gstreamer_system_library
+# @USAGE: <gstbasecamerabin_dep:libgstbasecamerabinsrc> [...]
+# @DESCRIPTION:
+# Walks through meson.build in order to make sure build will link against system
+# libraries.
+# Takes a list of path fragments and corresponding pkgconfig libraries
+# separated by colon (:). Will replace the path fragment by the output of
+# pkgconfig.
+gstreamer_system_library() {
+	local pdir directory libs pkgconfig pc tuple
+	pkgconfig=$(tc-getPKG_CONFIG)
+
+	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
+		pdir=$(gstreamer_get_plugin_dir ${plugin_dir})
+
+		for tuple in $@ ; do
+			dependency=${tuple%:*}
+			pc=${tuple#*:}-${SLOT}
+			#libs="$(${pkgconfig} --libs-only-l ${pc} || die)"
+			sed -e "1i${dependency} = cc.find_library('${pc}', required : true)" \
+				-i "${pdir}"/meson.build || die
+		done
+	done
+}
+
 # @ECLASS-VARIABLE: GST_PLUGINS_BUILD_DIR
 # @DESCRIPTION:
 # Actual build directories of the plugins.
