@@ -148,7 +148,6 @@ dev-util/catalyst iso
 dev-util/pkgconf test
 dev-vcs/git cvs highlight subversion
 dev-vcs/mercurial zsh-completion
-media-libs/freetype harfbuzz
 media-libs/harfbuzz doc
 sys-libs/libomp hwloc
 sys-libs/libcxx libcxxabi libunwind static-libs
