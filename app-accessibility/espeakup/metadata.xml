@@ -13,6 +13,6 @@ Espeakup is a small lightweight connector which makes it possible for
 speakup to use espeak as its synthesizer.
   </longdescription>
   <upstream>
-    <remote-id type="github">williamh/espeakup</remote-id>
+    <remote-id type="github">linux-speakup/espeakup</remote-id>
   </upstream>
 </pkgmetadata>
