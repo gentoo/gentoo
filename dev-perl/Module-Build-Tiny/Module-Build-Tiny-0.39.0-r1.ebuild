@@ -1,16 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-MODULE_AUTHOR=LEONT
-MODULE_VERSION=0.039
+EAPI=8
+
+DIST_AUTHOR=LEONT
+DIST_VERSION=0.039
 inherit perl-module
 
 DESCRIPTION='A tiny replacement for Module::Build'
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-CPAN-Meta
@@ -28,9 +27,7 @@ RDEPEND="
 	virtual/perl-podlators
 	virtual/perl-Test-Harness
 "
-
-DEPEND="
-	${RDEPEND}
+BDEPEND="${RDEPEND}
 	test? (
 		virtual/perl-Data-Dumper
 		virtual/perl-File-Temp
@@ -39,7 +36,5 @@ DEPEND="
 		virtual/perl-XSLoader
 	)
 "
-
-SRC_TEST="do parallel"
 
 mytargets="install"
