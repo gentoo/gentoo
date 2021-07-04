@@ -181,6 +181,8 @@ QA_PREBUILT="
 
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${P}-fix-xenstat-python-bindings.patch" )
+
 pkg_setup() {
 	python_setup
 	export "CONFIG_LOMOUNT=y"
@@ -419,8 +421,7 @@ src_configure() {
 src_compile() {
 	local myopt
 	use debug && myopt="${myopt} debug=y"
-	# Currently broken
-	#use python && myopt="${myopt} XENSTAT_PYTHON_BINDINGS=y"
+	use python && myopt="${myopt} XENSTAT_PYTHON_BINDINGS=y"
 
 	if test-flag-CC -fno-strict-overflow; then
 		append-flags -fno-strict-overflow
@@ -499,11 +500,10 @@ src_install() {
 	keepdir /var/lib/xenstored
 	keepdir /var/log/xen
 
-	# Currently broken
-	#if use python; then
-		#python_domodule "${S}/tools/libs/stat/bindings/swig/python/xenstat.py"
-		#python_domodule "${S}/tools/libs/stat/bindings/swig/python/_xenstat.so"
-	#fi
+	if use python; then
+		python_domodule "${S}/tools/libs/stat/bindings/swig/python/xenstat.py"
+		python_domodule "${S}/tools/libs/stat/bindings/swig/python/_xenstat.so"
+	fi
 
 	python_optimize
 }
