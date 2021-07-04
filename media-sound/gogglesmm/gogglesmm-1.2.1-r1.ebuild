@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+dbus +flac +mad +vorbis +ogg +opus +aac +pulseaudio +opengl nls"
 
 RDEPEND="x11-libs/fox:1.7
