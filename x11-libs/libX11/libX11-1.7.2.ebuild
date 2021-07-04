@@ -10,7 +10,7 @@ inherit toolchain-funcs xorg-3
 # Note: please bump this with x11-misc/compose-tables
 DESCRIPTION="X.Org X11 library"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="ipv6 test"
 RESTRICT="!test? ( test )"
 
