@@ -51,10 +51,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	# Add #include <limits> to fix compilation on gcc-11
-	# see: https://redmine.webtoolkit.eu/issues/8467
-	eapply "${FILESDIR}/0001-Add-limits.patch"
-
 	eapply_user
 
 	# Remove postinstall script
