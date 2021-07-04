@@ -2,6 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: l10n.eclass
+# @DEAD
+# Use plocale.eclass as drop-in replacement.
+# Functions should be replaced as follows:
+# l10n_for_each_locale_do → plocale_for_each_locale
+# plocale_for_each_disabled_locale → l10n_for_each_disabled_locale_do
+# plocale_find_changes → l10n_find_plocales_changes
+# plocale_get_locales → l10n_get_locales
+#
+# Rationale: Ever since the L10N USE_EXPAND variable was introduced,
+# the name of this eclass has caused some confusion, because it operates
+# on LINGUAS and is unrelated to L10N.
+#
 # @MAINTAINER:
 # Ulrich Müller <ulm@gentoo.org>
 # @AUTHOR:
