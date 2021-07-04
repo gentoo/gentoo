@@ -37,13 +37,10 @@ readonly ASPELL_SPELLANG=${PN/aspell-/}
 # If the value needs to be overridden, it needs to be overridden before inheriting the eclass.
 
 case ${EAPI:-0} in
-	[0-6])
-		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
-		;;
 	[7-8])
 		;;
 	*)
-		die "Unknown EAPI ${EAPI:-0}"
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
 		;;
 esac
 
