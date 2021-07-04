@@ -31,13 +31,10 @@
 # MYSPELL_THES=( "file.dat" "dir/file2.idx" )
 
 case ${EAPI:-0} in
-	[0-4])
-		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
-		;;
 	[5-8])
 		;;
 	*)
-		die "Unknown EAPI ${EAPI:-0}"
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
 		;;
 esac
 
