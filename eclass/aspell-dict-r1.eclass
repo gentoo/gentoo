@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Seemant Kulleen <seemant@gentoo.org> (original author)
 # David Seifert <soap@gentoo.org> (-r1 author)
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: An eclass to streamline the construction of ebuilds for new Aspell dictionaries.
 # @DESCRIPTION:
 # The aspell-dict-r1 eclass is designed to streamline the construction of ebuilds for
@@ -40,7 +40,7 @@ case ${EAPI:-0} in
 	[0-6])
 		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
 		;;
-	7)
+	[7-8])
 		;;
 	*)
 		die "Unknown EAPI ${EAPI:-0}"
