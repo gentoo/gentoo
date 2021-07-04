@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/fmtlib/fmt"
 
 LICENSE="MIT"
 IUSE="test"
-SLOT="0/$(ver_cut 1)"
+SLOT="0/${PV}"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/fmtlib/fmt.git"
