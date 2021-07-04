@@ -61,11 +61,6 @@ sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
 sys-libs/compiler-rt-sanitizers -profile
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2020-10-28)
-# dev-qt/linguist-tools-5.15.0 and 5.15.1 OOM with bad_alloc.
-# bug #751418
->=sci-astronomy/stellarium-0.20.3 nls
-
 # Sam James <sam@gentoo.org> (2020-10-05)
 # Guile only supports JIT on some arches
 # (See 9.3.8 in the Guile manual)
