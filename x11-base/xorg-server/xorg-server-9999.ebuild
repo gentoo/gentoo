@@ -4,7 +4,6 @@
 EAPI=7
 
 XORG_DOC=doc
-XORG_EAUTORECONF="yes"
 inherit xorg-3 multilib flag-o-matic toolchain-funcs
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
@@ -97,6 +96,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
 	selinux? ( sec-policy/selinux-xserver )
+	wayland? ( x11-base/xwayland )
 "
 BDEPEND="
 	sys-devel/flex
