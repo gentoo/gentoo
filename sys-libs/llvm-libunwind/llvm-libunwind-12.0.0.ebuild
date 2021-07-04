@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{7..9} )
-inherit cmake-multilib llvm llvm.org python-any-r1
+inherit cmake-multilib llvm llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
 HOMEPAGE="https://github.com/llvm-mirror/libunwind"
@@ -38,7 +38,18 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	local use_compiler_rt=OFF
 	local libdir=$(get_libdir)
+
+	# link to compiler-rt
+	# https://github.com/gentoo/gentoo/pull/21516
+	if tc-is-clang; then
+		local compiler-rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+		   ${LD_FLAGS} -print-libgcc-file-name)
+		if [[ ${compiler_rt} == *libclang_rt* ]]; then
+			use_compiler_rt=ON
+		fi
+	fi
 
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
@@ -49,6 +60,9 @@ multilib_src_configure() {
 		# support non-native unwinding; given it's small enough,
 		# enable it unconditionally
 		-DLIBUNWIND_ENABLE_CROSS_UNWINDING=ON
+
+		# avoid dependency on libgcc_s if compiler-rt is used
+		-DLIBUNWIND_USE_COMPILER_RT=${use_compiler_rt}
 	)
 	if use test; then
 		local clang_path=$(type -P "${CHOST:+${CHOST}-}clang" 2>/dev/null)
