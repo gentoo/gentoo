@@ -15,7 +15,7 @@ SRC_URI="https://gitlab.com/graphviz/graphviz/-/package_files/9573974/download -
 LICENSE="CPL-1.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris"
-IUSE="+cairo devil doc examples gtk gts guile java lasi nls pdf perl postscript python qt5 ruby svg tcl X"
+IUSE="+cairo devil doc examples gtk gts guile java lasi nls pdf perl postscript python qt5 ruby svg tcl webp X"
 
 REQUIRED_USE="
 	!cairo? ( !X !gtk !postscript !lasi )
@@ -81,6 +81,7 @@ RDEPEND="
 	ruby? ( dev-lang/ruby:* )
 	svg? ( gnome-base/librsvg )
 	tcl? ( >=dev-lang/tcl-8.3:0= )
+	webp? ( media-libs/libwebp:= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXaw
@@ -202,6 +203,7 @@ src_configure() {
 		$(use_with pdf poppler)
 		$(use_with postscript ghostscript)
 		$(use_with svg rsvg)
+		$(use_with webp)
 		$(use_with X x)
 		$(use_with X xaw)
 		$(use_with X lefty)
