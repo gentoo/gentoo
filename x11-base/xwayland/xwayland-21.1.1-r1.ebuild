@@ -35,6 +35,7 @@ CDEPEND="
 	x11-libs/libxkbfile
 	>=x11-libs/xtrans-1.3.5
 	x11-base/xorg-proto
+	>=x11-misc/xkeyboard-config-2.4.1-r3
 "
 
 DEPEND="
