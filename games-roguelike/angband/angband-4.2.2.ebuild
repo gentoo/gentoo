@@ -1,15 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools desktop xdg-utils
 
-MAJOR_PV=$(ver_cut 1-2)
-
 DESCRIPTION="A roguelike dungeon exploration game based on the books of J.R.R. Tolkien"
 HOMEPAGE="https://rephial.org/"
-SRC_URI="https://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz
+SRC_URI="https://github.com/angband/angband/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~steils/distfiles/${P}-man.tar.gz"
 
 LICENSE="GPL-2"
@@ -36,8 +34,6 @@ RDEPEND="X? (
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=( "${FILESDIR}/${P}-sdl2-sound.patch" )
 
 src_prepare() {
 	default
