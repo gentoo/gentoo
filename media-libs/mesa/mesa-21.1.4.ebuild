@@ -501,6 +501,11 @@ multilib_src_configure() {
 		echo "${drivers//$'\n'/,}"
 	}
 
+	local vulkan_layers
+	use vulkan && vulkan_layers+="device-select"
+	use vulkan-overlay && vulkan_layers+=",overlay"
+	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
+
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dglx=$(usex X dri disabled)
@@ -517,8 +522,6 @@ multilib_src_configure() {
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
-		$(meson_use vulkan vulkan-device-select-layer)
-		$(meson_use vulkan-overlay vulkan-overlay-layer)
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
