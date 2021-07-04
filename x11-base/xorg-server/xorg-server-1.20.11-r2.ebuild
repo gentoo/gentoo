@@ -91,11 +91,11 @@ DEPEND="${CDEPEND}
 			)
 		)
 	)
-	wayland? ( x11-base/xwayland )
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
 	selinux? ( sec-policy/selinux-xserver )
+	wayland? ( x11-base/xwayland )
 "
 BDEPEND="
 	sys-devel/flex
