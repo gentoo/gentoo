@@ -336,11 +336,6 @@ dev-python/csv23
 ~media-plugins/gst-plugins-ximagesrc-1.18.4
 ~media-plugins/gst-plugins-zbar-1.18.4
 
-# Alfredo Tupone <tupone@gentoo.org> (2021-05-29)
-# Old version masked for removal on 2021-07-01
-# bug #788013
-<net-mail/courier-imap-5
-
 # Andrey Grozin <grozin@gentoo.org> (2021-05-25)
 # DEPENDs on sci-libs/proj-8
 # Unmask after unmasking proj-8
