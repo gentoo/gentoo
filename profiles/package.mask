@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-07-04)
+# Last release in 2016, failing tests, no dependencies.
+# Masked for removal in 30 days.
+dev-ruby/shotgun
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-04)
+# Last release in 2012, no working tests, no dependencies.
+# Masked for removal in 30 days.
+dev-ruby/source_map
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-07-02)
 # Outdated, not really maintained. Grab it if you like.
 # Masked for removal in 30 days. bug #800097.
