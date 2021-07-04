@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools bash-completion-r1 vcs-snapshot
+inherit autotools bash-completion-r1 flag-o-matic vcs-snapshot
 
 COMMIT="a61f1780b64266587e7bc30f0f5f71c6cca97c0f"
 
@@ -40,6 +40,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# false positive TEXTRELs on riscv
+	# https://bugs.gentoo.org/797355
+	append-flags -fPIC
+
 	econf \
 		$(use_enable lzma) \
 		$(use_enable zlib)
