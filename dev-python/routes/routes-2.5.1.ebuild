@@ -1,10 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
-
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 MY_PN="Routes"
@@ -18,7 +17,6 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="doc"
 
 RDEPEND="
 	>=dev-python/repoze-lru-0.3[${PYTHON_USEDEP}]
@@ -40,13 +38,8 @@ distutils_enable_sphinx docs
 # for the faulty docbuild converted to sed stmnts
 python_prepare_all() {
 	# The default theme in sphinx switched to classic from shpinx-1.3.1
-	if has_version ">=dev-python/sphinx-1.3.1"; then
-		sed -e "s:html_theme_options = {:html_theme = 'classic'\n&:" \
-			-i docs/conf.py || die
-	else
-		sed -e "s:html_theme_options = {:html_theme = 'default'\n&:" \
-			-i docs/conf.py || die
-	fi
+	sed -e "s:html_theme_options = {:html_theme = 'classic'\n&:" \
+		-i docs/conf.py || die
 	sed -e "s:changes:changes\n   todo:" \
 		-i docs/index.rst || die
 
