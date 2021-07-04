@@ -30,18 +30,3 @@ BDEPEND="
 	)"
 
 distutils_enable_tests nose
-distutils_enable_sphinx docs
-
-# The testsuite appears to be held back by the author
-
-# https://github.com/bbangert/routes/issues/42 presents a patch
-# for the faulty docbuild converted to sed stmnts
-python_prepare_all() {
-	# The default theme in sphinx switched to classic from shpinx-1.3.1
-	sed -e "s:html_theme_options = {:html_theme = 'classic'\n&:" \
-		-i docs/conf.py || die
-	sed -e "s:changes:changes\n   todo:" \
-		-i docs/index.rst || die
-
-	distutils-r1_python_prepare_all
-}
