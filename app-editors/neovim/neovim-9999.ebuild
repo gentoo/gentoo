@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -46,12 +46,10 @@ DEPEND="${LUA_DEPS}
 	$(lua_gen_cond_dep '
 		dev-lua/LuaBitOp[${LUA_USEDEP}]
 	' lua5-{1,2})
-	dev-libs/libutf8proc:=
 	dev-libs/libuv:0=
 	>=dev-libs/libvterm-0.1.2
 	dev-libs/msgpack:0=
 	dev-libs/tree-sitter:=
-	net-libs/libnsl
 	tui? (
 		dev-libs/libtermkey
 		>=dev-libs/unibilium-2.0.0:0=
@@ -65,6 +63,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.4-cmake_lua_version.patch"
 	"${FILESDIR}/${PN}-0.4.4-cmake-release-type.patch"
+	"${FILESDIR}/${PN}-0.4.4-cmake-darwin.patch"
 )
 
 src_prepare() {
@@ -82,6 +81,7 @@ src_configure() {
 	# if we want it on (not just -flto)
 	# ... but allow turning it off.
 	local mycmakeargs=(
+		-DUSE_BUNDLED=OFF
 		-DENABLE_LTO=$(usex lto)
 		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
