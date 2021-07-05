@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -33,6 +33,7 @@ PDEPEND=">=dev-python/fixtures-1.3.0[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/testtools-2.4.0-py39.patch
+	"${FILESDIR}"/testtools-2.4.0-py310.patch
 	"${FILESDIR}"/testtools-2.4.0-assertitemsequal.patch
 )
 
@@ -47,6 +48,9 @@ src_prepare() {
 		sed -i -e 's:unittest2:unittest:' {} + || die
 	sed -i -e 's/^traceback =.*/import traceback/' \
 		testtools/content.py || die
+	# py3.10 changed the output
+	sed -i -e 's:test_syntax_error:_&:' \
+		testtools/tests/test_testresult.py || die
 	distutils-r1_src_prepare
 }
 
