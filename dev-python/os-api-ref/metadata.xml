@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>lssndrbarbieri@gmail.com</email>
+		<name>Alessandro Barbieri</name>
+	</maintainer>
+	<longdescription lang="en">
+This project is a collection of sphinx stanzas that assist in building an API Reference site for an OpenStack project in RST. RST is great for unstructured English, but displaying semi structured (and repetitive) data in tables is not its strength. This provides tooling to insert semi-structured data describing request and response parameters and status or error messages, and turn those into nice tables.
+The project also includes a set of styling (and javascript) that is expected to layer on top of a Sphinx theme base. This addition provides a nice set of collapsing sections for REST methods and javascript controls to expand / collapse all sections.
+Features
+Sphinx stanza rest_method describing the method and resource for a REST API call. Lets authors write simply and also gives readers a clean way to scan all methods then click a button to get more information about a method.
+Sphinx stanza rest_parameters used to insert semi-structured data into the RST files describing the parameters users cansend with the request. The stanza points to a structured YAML file, parameters.yaml.
+Sphinx stanza rest_status_code used to insert pointers to error or status codes returned by the service. Points to a structured YAML file, http_codes.yaml.
+	</longdescription>
+</pkgmetadata>
