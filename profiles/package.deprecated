@@ -17,9 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
-# Deprecated upstream, see HOMEPAGE
-dev-perl/Mail-Sender
+# Michał Górny <mgorny@gentoo.org> (2021-07-05)
+# Backport for old versions of Python.  Most of the revdeps are either
+# stale (i.e. package doesn't use it at all) or can be trivially sed-ed
+# into using the built-in unittest module.
+dev-python/unittest2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
 # gtk2. Nuff said. See HOMEPAGE, too.
