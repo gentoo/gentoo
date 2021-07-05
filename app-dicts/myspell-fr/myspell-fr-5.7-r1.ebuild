@@ -32,7 +32,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/z/lo-oo-ressources-
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~x86-linux"
 
 DOCS=( package-description.txt README_dict_fr.txt README_hyph_fr-2.9.txt README_hyph_fr-3.0.txt README_thes_fr.txt )
 
