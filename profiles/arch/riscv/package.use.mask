@@ -11,6 +11,7 @@ mail-mta/courier fax
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 #   dev-db/postgresql not keyworded here yet
+dev-db/libdbi-drivers postgres
 dev-libs/cyrus-sasl postgres
 mail-mta/courier postgres
 net-libs/courier-authlib postgres
