@@ -4,7 +4,7 @@
 # @ECLASS: haskell-cabal.eclass
 # @MAINTAINER:
 # Haskell herd <haskell@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 6 7
 # @AUTHOR:
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
@@ -113,20 +113,17 @@ inherit eutils ghc-package multilib toolchain-funcs
 # Set to anything else to disable.
 : ${CABAL_REPORT_OTHER_BROKEN_PACKAGES:=yes}
 
-HASKELL_CABAL_EXPF="pkg_setup src_compile src_test src_install pkg_postinst pkg_postrm"
-
 # 'dev-haskell/cabal' passes those options with ./configure-based
 # configuration, but most packages don't need/don't accept it:
 # #515362, #515362
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-hc --with-hc-pkg --with-gcc"
 
 case "${EAPI:-0}" in
-	0|1) ;;
-	2|3|4|5|6|7) HASKELL_CABAL_EXPF+=" src_configure" ;;
+	6|7) ;;
 	*) die "EAPI ${EAPI} unsupported." ;;
 esac
 
-EXPORT_FUNCTIONS ${HASKELL_CABAL_EXPF}
+EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst pkg_postrm
 
 for feature in ${CABAL_FEATURES}; do
 	case ${feature} in
@@ -140,9 +137,6 @@ for feature in ${CABAL_FEATURES}; do
 		ghcdeps)    CABAL_GHC_CONSTRAINT=yes;;
 		test-suite) CABAL_TEST_SUITE=yes;;
 		rebuild-after-doc-workaround) CABAL_REBUILD_AFTER_DOC_WORKAROUND=yes;;
-
-		# does nothing, removed 2016-09-04
-		bin)        ;;
 
 		*) CABAL_UNKNOWN="${CABAL_UNKNOWN} ${feature}";;
 	esac
@@ -315,7 +309,6 @@ cabal-show-brokens-and-die() {
 
 cabal-configure() {
 	local cabalconf=()
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 
 	if [[ -n "${CABAL_USE_HADDOCK}" ]] && use doc; then
 		# We use the bundled with GHC version if exists
@@ -452,8 +445,6 @@ cabal-build() {
 }
 
 cabal-copy() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && ED=${D}
-
 	set -- copy --destdir="${D}" "$@"
 	echo ./setup "$@"
 	./setup "$@" || die "setup copy failed"
@@ -535,20 +526,8 @@ cabal_src_configure() {
 
 # exported function: cabal-style bootstrap configure and compile
 cabal_src_compile() {
-	# it's a common mistake when one bumps ebuild to EAPI="2" (and upper)
-	# and forgets to separate src_compile() to src_configure()/src_compile().
-	# Such error leads to default src_configure and we lose all passed flags.
-	if ! has "${EAPI:-0}" 0 1; then
-		local passed_flag
-		for passed_flag in "$@"; do
-			[[ ${passed_flag} == --flags=* ]] && \
-				eqawarn "QA Notice: Cabal option '${passed_flag}' has effect only in src_configure()"
-		done
-	fi
-
 	cabal-is-dummy-lib && return
 
-	has src_configure ${HASKELL_CABAL_EXPF} || haskell-cabal_src_configure "$@"
 	cabal-build
 
 	if [[ -n "$CABAL_USE_HADDOCK" ]] && use doc; then
@@ -616,8 +595,6 @@ haskell-cabal_src_test() {
 
 # exported function: cabal-style copy and register
 cabal_src_install() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-
 	if ! cabal-is-dummy-lib; then
 		cabal-copy
 		cabal-pkg
