@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org>
+# severely broken nfs
+# https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ff4b2b4014cbffb3d32b22629252f4dc8616b0fe
+# feel free to unmask if it works for you
+=sys-kernel/gentoo-sources-5.13.0
+=sys-kernel/vanilla-sources-5.13.0
+
 # Matt Turner <mattst88@gentoo.org> (2021-07-04)
 # Not used by any package. Has not worked for a very long time
 # as far as I can tell.
