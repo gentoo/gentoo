@@ -5,6 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 DISTUTILS_USE_SETUPTOOLS=no
+DISTUTILS_IN_SOURCE_BUILD=yes # needed for tests
 inherit distutils-r1
 
 MY_PV="${PV:0:4}-${PV:4:2}-${PV:6:2}"
@@ -43,10 +44,14 @@ RDEPEND="
 	!net-irc/supybot-plugins"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
-python_prepare() {
-	einfo "Removing the RSS plugin because of clashes between libxml2's Python3"
-	einfo "bindings and feedparser."
-	rm -r "plugins/RSS" || die
+PATCHES=(
+	"${FILESDIR}/${P}-rss-testRemoveAliasedFeed-mock_data.patch" # GH#1479
+)
+
+python_prepare_all() {
+	# replace "installed on ${timestamp}" with real version
+	echo "version='${MY_PV}'" > "${S}"/src/version.py || die
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
@@ -56,8 +61,6 @@ python_test() {
 	# intermittent failure due to issues loading libsandbox.so from LD_PRELOAD
 	# runs successfully when running the tests on the installed system
 	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Unix" )
-	# Runs despite --no-network (GH #1392)
-	EXCLUDE_PLUGINS+=( --exclude="${PLUGINS_DIR}/Aka" )
 	"${EPYTHON}" "${BUILD_DIR}"/scripts/supybot-test "${BUILD_DIR}/../test" \
 		--plugins-dir="${PLUGINS_DIR}" --no-network \
 		--disable-multiprocessing "${EXCLUDE_PLUGINS[@]}" \
