@@ -14,6 +14,7 @@ net-analyzer/wireshark sdjournal
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-emulation/libvirt firewalld
 gnome-base/gdm wayland
+gnome-base/gnome-extra-apps share
 net-firewall/fwknop firewalld
 www-servers/uwsgi uwsgi_plugins_systemd_logger
 >=x11-wm/mutter-3.22 wayland
