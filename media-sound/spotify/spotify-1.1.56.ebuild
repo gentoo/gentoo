@@ -11,7 +11,7 @@ BUILD_ID_AMD64="595.g2d2da0de"
 SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="libnotify local-playback pax-kernel pulseaudio systray"
 RESTRICT="mirror strip"
 
