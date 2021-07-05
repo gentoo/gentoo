@@ -34,7 +34,6 @@ BDEPEND="
 	test? ( $(python_gen_cond_dep '
 		dev-python/coverage[${PYTHON_MULTI_USEDEP}]
 		dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]
-		dev-python/unittest2[${PYTHON_MULTI_USEDEP}]
 	') )
 "
 
