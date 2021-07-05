@@ -58,30 +58,11 @@ ghc-getghcpkg() {
 # because for some reason the global package file
 # must be specified
 ghc-getghcpkgbin() {
-	if ver_test "$(ghc-version)" -ge "7.9.20141222"; then
-		# ghc-7.10 stopped supporting single-file database
-		local empty_db="${T}/empty.conf.d" ghc_pkg="$(ghc-libdir)/bin/ghc-pkg"
-		if [[ ! -d ${empty_db} ]]; then
-			"${ghc_pkg}" init "${empty_db}" || die "Failed to initialize empty global db"
-		fi
-		echo "$(ghc-libdir)/bin/ghc-pkg" "--global-package-db=${empty_db}"
-
-	elif ver_test "$(ghc-version)" -ge "7.7.20121101"; then
-		# the ghc-pkg executable changed name in ghc 6.10, as it no longer needs
-		# the wrapper script with the static flags
-		# was moved to bin/ subtree by:
-		# http://www.haskell.org/pipermail/cvs-ghc/2012-September/076546.html
-		echo '[]' > "${T}/empty.conf"
-		echo "$(ghc-libdir)/bin/ghc-pkg" "--global-package-db=${T}/empty.conf"
-
-	elif ver_test "$(ghc-version)" -ge "7.5.20120516"; then
-		echo '[]' > "${T}/empty.conf"
-		echo "$(ghc-libdir)/ghc-pkg" "--global-package-db=${T}/empty.conf"
-
-	else
-		echo '[]' > "${T}/empty.conf"
-		echo "$(ghc-libdir)/ghc-pkg" "--global-conf=${T}/empty.conf"
+	local empty_db="${T}/empty.conf.d" ghc_pkg="$(ghc-libdir)/bin/ghc-pkg"
+	if [[ ! -d ${empty_db} ]]; then
+		"${ghc_pkg}" init "${empty_db}" || die "Failed to initialize empty global db"
 	fi
+	echo "$(ghc-libdir)/bin/ghc-pkg" "--global-package-db=${empty_db}"
 }
 
 # @FUNCTION: ghc-version
@@ -117,15 +98,9 @@ ghc-pm-version() {
 # @DESCRIPTION:
 # return version of the Cabal library bundled with ghc
 ghc-cabal-version() {
-	if ver_test "$(ghc-version)" -ge "7.9.20141222"; then
-		# outputs in format: 'version: 1.18.1.5'
-		set -- `$(ghc-getghcpkg) --package-db=$(ghc-libdir)/package.conf.d.initial field Cabal version`
-		echo "$2"
-	else
-		local cabal_package=`echo "$(ghc-libdir)"/Cabal-*`
-		# /path/to/ghc/Cabal-${VER} -> ${VER}
-		echo "${cabal_package/*Cabal-/}"
-	fi
+	# outputs in format: 'version: 1.18.1.5'
+	set -- `$(ghc-getghcpkg) --package-db=$(ghc-libdir)/package.conf.d.initial field Cabal version`
+	echo "$2"
 }
 
 # @FUNCTION: ghc-is-dynamic
