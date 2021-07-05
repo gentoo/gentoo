@@ -41,7 +41,6 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/contextlib2[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="
