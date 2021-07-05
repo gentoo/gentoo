@@ -47,7 +47,6 @@ DEPEND="
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
 
