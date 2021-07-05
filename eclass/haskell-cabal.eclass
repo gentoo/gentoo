@@ -4,7 +4,7 @@
 # @ECLASS: haskell-cabal.eclass
 # @MAINTAINER:
 # Haskell herd <haskell@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
@@ -40,7 +40,16 @@
 #                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
 #                  is fixed.
 
-inherit eutils ghc-package multilib toolchain-funcs
+case "${EAPI:-0}" in
+	# eutils is for eqawarn
+	6|7) inherit eutils ;;
+	8) ;;
+	*) die "EAPI ${EAPI} unsupported." ;;
+esac
+
+inherit ghc-package multilib toolchain-funcs
+
+EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: CABAL_EXTRA_CONFIGURE_FLAGS
 # @USER_VARIABLE
@@ -117,13 +126,6 @@ inherit eutils ghc-package multilib toolchain-funcs
 # configuration, but most packages don't need/don't accept it:
 # #515362, #515362
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-hc --with-hc-pkg --with-gcc"
-
-case "${EAPI:-0}" in
-	6|7) ;;
-	*) die "EAPI ${EAPI} unsupported." ;;
-esac
-
-EXPORT_FUNCTIONS pkg_setup src_configure src_compile src_test src_install pkg_postinst pkg_postrm
 
 for feature in ${CABAL_FEATURES}; do
 	case ${feature} in
