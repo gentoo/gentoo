@@ -26,7 +26,6 @@ BDEPEND="
 		dev-python/pyfakefs[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 	)
 "
 
