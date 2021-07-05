@@ -1,0 +1,156 @@
+size_t is not defined by default on musl
+
+See https://reviews.llvm.org/D105425
+
+Signed-off-by: Alex Revin <lyssdod@gmail.com>
+
+===================================================================
+
+--- compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
++++ compiler-rt/lib/fuzzer/FuzzerInterceptors.cpp
+@@ -26,6 +26,7 @@
+ 
+ #include <cassert>
+ #include <cstdint>
++#include <cstddef>
+ #include <dlfcn.h> // for dlsym()
+ 
+ static void *getFuncAddr(const char *name, uintptr_t wrapper_addr) {
+@@ -59,8 +60,8 @@ static void ensureFuzzerInited() {
+ }
+ 
+ static int internal_strcmp_strncmp(const char *s1, const char *s2, bool strncmp,
+-                                   size_t n) {
+-  size_t i = 0;
++                                   std::size_t n) {
++  std::size_t i = 0;
+   while (true) {
+     if (strncmp) {
+       if (i == n)
+@@ -79,7 +80,7 @@ static int internal_strcmp_strncmp(const char *s1, const char *s2, bool strncmp,
+   return 0;
+ }
+ 
+-static int internal_strncmp(const char *s1, const char *s2, size_t n) {
++static int internal_strncmp(const char *s1, const char *s2, std::size_t n) {
+   return internal_strcmp_strncmp(s1, s2, true, n);
+ }
+ 
+@@ -87,17 +88,17 @@ static int internal_strcmp(const char *s1, const char *s2) {
+   return internal_strcmp_strncmp(s1, s2, false, 0);
+ }
+ 
+-static int internal_memcmp(const void *s1, const void *s2, size_t n) {
++static int internal_memcmp(const void *s1, const void *s2, std::size_t n) {
+   const uint8_t *t1 = static_cast<const uint8_t *>(s1);
+   const uint8_t *t2 = static_cast<const uint8_t *>(s2);
+-  for (size_t i = 0; i < n; ++i, ++t1, ++t2)
++  for (std::size_t i = 0; i < n; ++i, ++t1, ++t2)
+     if (*t1 != *t2)
+       return *t1 < *t2 ? -1 : 1;
+   return 0;
+ }
+ 
+-static size_t internal_strlen(const char *s) {
+-  size_t i = 0;
++static std::size_t internal_strlen(const char *s) {
++  std::size_t i = 0;
+   while (s[i])
+     i++;
+   return i;
+@@ -105,11 +106,11 @@ static size_t internal_strlen(const char *s) {
+ 
+ static char *internal_strstr(const char *haystack, const char *needle) {
+   // This is O(N^2), but we are not using it in hot places.
+-  size_t len1 = internal_strlen(haystack);
+-  size_t len2 = internal_strlen(needle);
++  std::size_t len1 = internal_strlen(haystack);
++  std::size_t len2 = internal_strlen(needle);
+   if (len1 < len2)
+     return nullptr;
+-  for (size_t pos = 0; pos <= len1 - len2; pos++) {
++  for (std::size_t pos = 0; pos <= len1 - len2; pos++) {
+     if (internal_memcmp(haystack + pos, needle, len2) == 0)
+       return const_cast<char *>(haystack) + pos;
+   }
+@@ -121,11 +122,11 @@ extern "C" {
+ // Weak hooks forward-declared to avoid dependency on
+ // <sanitizer/common_interface_defs.h>.
+ void __sanitizer_weak_hook_memcmp(void *called_pc, const void *s1,
+-                                  const void *s2, size_t n, int result);
++                                  const void *s2, std::size_t n, int result);
+ void __sanitizer_weak_hook_strncmp(void *called_pc, const char *s1,
+-                                   const char *s2, size_t n, int result);
++                                   const char *s2, std::size_t n, int result);
+ void __sanitizer_weak_hook_strncasecmp(void *called_pc, const char *s1,
+-                                       const char *s2, size_t n, int result);
++                                       const char *s2, std::size_t n, int result);
+ void __sanitizer_weak_hook_strcmp(void *called_pc, const char *s1,
+                                   const char *s2, int result);
+ void __sanitizer_weak_hook_strcasecmp(void *called_pc, const char *s1,
+@@ -134,20 +135,20 @@ void __sanitizer_weak_hook_strstr(void *called_pc, const char *s1,
+                                   const char *s2, char *result);
+ void __sanitizer_weak_hook_strcasestr(void *called_pc, const char *s1,
+                                       const char *s2, char *result);
+-void __sanitizer_weak_hook_memmem(void *called_pc, const void *s1, size_t len1,
+-                                  const void *s2, size_t len2, void *result);
++void __sanitizer_weak_hook_memmem(void *called_pc, const void *s1, std::size_t len1,
++                                  const void *s2, std::size_t len2, void *result);
+ 
+-DEFINE_REAL(int, bcmp, const void *, const void *, size_t)
+-DEFINE_REAL(int, memcmp, const void *, const void *, size_t)
+-DEFINE_REAL(int, strncmp, const char *, const char *, size_t)
++DEFINE_REAL(int, bcmp, const void *, const void *, std::size_t)
++DEFINE_REAL(int, memcmp, const void *, const void *, std::size_t)
++DEFINE_REAL(int, strncmp, const char *, const char *, std::size_t)
+ DEFINE_REAL(int, strcmp, const char *, const char *)
+-DEFINE_REAL(int, strncasecmp, const char *, const char *, size_t)
++DEFINE_REAL(int, strncasecmp, const char *, const char *, std::size_t)
+ DEFINE_REAL(int, strcasecmp, const char *, const char *)
+ DEFINE_REAL(char *, strstr, const char *, const char *)
+ DEFINE_REAL(char *, strcasestr, const char *, const char *)
+-DEFINE_REAL(void *, memmem, const void *, size_t, const void *, size_t)
++DEFINE_REAL(void *, memmem, const void *, std::size_t, const void *, std::size_t)
+ 
+-ATTRIBUTE_INTERFACE int bcmp(const char *s1, const char *s2, size_t n) {
++ATTRIBUTE_INTERFACE int bcmp(const char *s1, const char *s2, std::size_t n) {
+   if (!FuzzerInited)
+     return internal_memcmp(s1, s2, n);
+   int result = REAL(bcmp)(s1, s2, n);
+@@ -155,7 +156,7 @@ ATTRIBUTE_INTERFACE int bcmp(const char *s1, const char *s2, size_t n) {
+   return result;
+ }
+ 
+-ATTRIBUTE_INTERFACE int memcmp(const void *s1, const void *s2, size_t n) {
++ATTRIBUTE_INTERFACE int memcmp(const void *s1, const void *s2, std::size_t n) {
+   if (!FuzzerInited)
+     return internal_memcmp(s1, s2, n);
+   int result = REAL(memcmp)(s1, s2, n);
+@@ -163,7 +164,7 @@ ATTRIBUTE_INTERFACE int memcmp(const void *s1, const void *s2, size_t n) {
+   return result;
+ }
+ 
+-ATTRIBUTE_INTERFACE int strncmp(const char *s1, const char *s2, size_t n) {
++ATTRIBUTE_INTERFACE int strncmp(const char *s1, const char *s2, std::size_t n) {
+   if (!FuzzerInited)
+     return internal_strncmp(s1, s2, n);
+   int result = REAL(strncmp)(s1, s2, n);
+@@ -179,7 +180,7 @@ ATTRIBUTE_INTERFACE int strcmp(const char *s1, const char *s2) {
+   return result;
+ }
+ 
+-ATTRIBUTE_INTERFACE int strncasecmp(const char *s1, const char *s2, size_t n) {
++ATTRIBUTE_INTERFACE int strncasecmp(const char *s1, const char *s2, std::size_t n) {
+   ensureFuzzerInited();
+   int result = REAL(strncasecmp)(s1, s2, n);
+   __sanitizer_weak_hook_strncasecmp(GET_CALLER_PC(), s1, s2, n, result);
+@@ -209,7 +210,7 @@ ATTRIBUTE_INTERFACE char *strcasestr(const char *s1, const char *s2) {
+ }
+ 
+ ATTRIBUTE_INTERFACE
+-void *memmem(const void *s1, size_t len1, const void *s2, size_t len2) {
++void *memmem(const void *s1, std::size_t len1, const void *s2, std::size_t len2) {
+   ensureFuzzerInited();
+   void *result = REAL(memmem)(s1, len1, s2, len2);
+   __sanitizer_weak_hook_memmem(GET_CALLER_PC(), s1, len1, s2, len2, result);
+

@@ -1,0 +1,33 @@
+From 7f5d4498bcb68924c27680c93bf12c3fea022664 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Sat, 29 May 2021 13:42:25 -0700
+Subject: [PATCH] compiler-rt: Use uintptr_t instead of _Unwind_Word
+
+_Unwind_Word is defined in compiler specific unwind.h but not in
+libunwind provided unwind.h header, it works in most cases because
+compilers search compiler headers ahead of system headers but for some
+systems e.g. musl bases systems the compiler provided versions are not
+preferred over system headers and therefore relying on _Unwind_Word
+means its expecting this define in all unwind.h headers which is not the
+case, using uintptr_t means we don't need this from unwind.h
+
+See https://reviews.llvm.org/D65699
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ compiler-rt/lib/hwasan/hwasan_exceptions.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/compiler-rt/lib/hwasan/hwasan_exceptions.cpp
++++ b/compiler-rt/lib/hwasan/hwasan_exceptions.cpp
+@@ -29,8 +29,8 @@ typedef _Unwind_Reason_Code PersonalityFn(int version, _Unwind_Action actions,
+ // is statically linked and the sanitizer runtime and the program are linked
+ // against different unwinders. The _Unwind_Context data structure is opaque so
+ // it may be incompatible between unwinders.
+-typedef _Unwind_Word GetGRFn(_Unwind_Context* context, int index);
+-typedef _Unwind_Word GetCFAFn(_Unwind_Context* context);
++typedef uintptr_t GetGRFn(_Unwind_Context* context, int index);
++typedef uintptr_t GetCFAFn(_Unwind_Context* context);
+ 
+ extern "C" SANITIZER_INTERFACE_ATTRIBUTE _Unwind_Reason_Code
+ __hwasan_personality_wrapper(int version, _Unwind_Action actions,

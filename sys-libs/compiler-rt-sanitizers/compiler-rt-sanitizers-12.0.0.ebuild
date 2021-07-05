@@ -53,6 +53,12 @@ LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support llvm/utils/unittest )
 LLVM_PATCHSET=12.0.0-1
 llvm.org_set_globals
 
+PATCHES=(
+	"${FILESDIR}"/12.0.0/001-compiler-rt-Use-uintptr_t-instead-of-_Unwind_Word.patch
+	"${FILESDIR}"/12.0.0/002-compiler-rt-Do-not-use-backtrace-APIs-on-non-glibc.patch
+	"${FILESDIR}"/12.0.0/003-compiler-rt-Explicit-namespace-for-size_t.patch
+)
+
 python_check_deps() {
 	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
