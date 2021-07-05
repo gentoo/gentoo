@@ -4,7 +4,7 @@
 # @ECLASS: ghc-package.eclass
 # @MAINTAINER:
 # "Gentoo's Haskell Language team" <haskell@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original Author: Andres Loeh <kosmikus@gentoo.org>
 # @BLURB: This eclass helps with the Glasgow Haskell Compiler's package configuration utility.
@@ -15,7 +15,7 @@ inherit multiprocessing
 
 # Maintain version-testing compatibility with ebuilds not using EAPI 7.
 case "${EAPI:-0}" in
-	7) ;;
+	7|8) ;;
 	6) inherit eapi7-ver ;;
 	*) die "EAPI ${EAPI} unsupported." ;;
 esac
