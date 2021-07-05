@@ -8,6 +8,7 @@
 	<use>
 		<flag name="dynrec">Use recompiling cpu core instead of dynamic x86/x64 specific cpu core</flag>
 		<flag name="fluidsynth">use <pkg>media-sound/fluidsynth</pkg> for MIDI emulation</flag>
+		<flag name="mt-32">use <pkg>media-sound/munt</pkg> for MT-32 emulation</flag>
 		<flag name="network">Enable networking features (modem, ipx)</flag>
 		<flag name="opus">Support compressed audio tracks (.opus) used with CDROM images</flag>
 	</use>
