@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
 
-inherit meson python-single-r1 udev
+inherit meson python-single-r1 udev xdg
 
 DESCRIPTION="GTK configuration application for libratbag"
 HOMEPAGE="https://github.com/libratbag/piper"
