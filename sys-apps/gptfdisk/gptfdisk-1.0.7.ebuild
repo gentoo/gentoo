@@ -30,6 +30,10 @@ DEPEND="
 "
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-remove_byteswap.patch" #797412
+)
+
 src_prepare() {
 	default
 
