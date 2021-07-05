@@ -21,7 +21,6 @@ RDEPEND=">=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 BDEPEND="${RDEPEND}
 	test? (
 		>=dev-python/msgpack-1.0.0[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
