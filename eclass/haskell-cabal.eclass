@@ -4,6 +4,7 @@
 # @ECLASS: haskell-cabal.eclass
 # @MAINTAINER:
 # Haskell herd <haskell@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @AUTHOR:
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
@@ -120,8 +121,9 @@ HASKELL_CABAL_EXPF="pkg_setup src_compile src_test src_install pkg_postinst pkg_
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-hc --with-hc-pkg --with-gcc"
 
 case "${EAPI:-0}" in
+	0|1) ;;
 	2|3|4|5|6|7) HASKELL_CABAL_EXPF+=" src_configure" ;;
-	*) ;;
+	*) die "EAPI ${EAPI} unsupported." ;;
 esac
 
 EXPORT_FUNCTIONS ${HASKELL_CABAL_EXPF}
