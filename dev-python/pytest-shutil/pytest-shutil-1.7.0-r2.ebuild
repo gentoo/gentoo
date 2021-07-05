@@ -1,10 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
-
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A goodie-bag of unix shell and environment tools for py.test"
@@ -18,7 +17,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~x64
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/contextlib2[${PYTHON_USEDEP}]
 	dev-python/execnet[${PYTHON_USEDEP}]
 	dev-python/path-py[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
@@ -34,11 +32,12 @@ BDEPEND="
 	dev-python/setuptools-git[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests --install setup.py
+distutils_enable_tests --install pytest
 
 python_prepare_all() {
-	# keeps trying to install this in tests
-	sed -i 's:path.py::' setup.py || die
+	# remove unnecessary deps
+	# (contextlib2 is not used in py3)
+	sed -i -e '/path\.py/d' -e '/contextlib2/d' setup.py || die
 
 	distutils-r1_python_prepare_all
 }
