@@ -16,11 +16,11 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
 
 RDEPEND="dev-python/packaging[${PYTHON_USEDEP}]"
-BDEPEND="
-	test? (
-		dev-python/unittest2[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_sphinx docs
 distutils_enable_tests unittest
+
+src_prepare() {
+	sed -i -e 's:unittest2:unittest:' tests/test_deprecation.py || die
+	distutils-r1_src_prepare
+}
