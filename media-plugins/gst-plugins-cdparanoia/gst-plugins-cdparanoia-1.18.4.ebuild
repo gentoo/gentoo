@@ -12,3 +12,8 @@ IUSE=""
 
 RDEPEND=">=media-sound/cdparanoia-3.10.2-r6[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	gstreamer_system_package audio_dep:gstreamer-audio
+}
