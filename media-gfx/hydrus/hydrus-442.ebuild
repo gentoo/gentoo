@@ -64,7 +64,6 @@ BDEPEND="
 			dev-python/httmock[${PYTHON_MULTI_USEDEP}]
 			dev-python/mock[${PYTHON_MULTI_USEDEP}]
 			dev-python/nose[${PYTHON_MULTI_USEDEP}]
-			dev-python/unittest2[${PYTHON_MULTI_USEDEP}]
 		)
 	')
 "
