@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..9} pypy3 )
 
 inherit distutils-r1 multilib-minimal autotools
 
@@ -47,6 +47,10 @@ src_prepare() {
 	# fails on py3.6
 	sed -i -e 's:test_add_tag:_&:' \
 		python/subunit/tests/test_subunit_tags.py || die
+
+	# eliminate unittest2
+	sed -i -e 's:unittest2 as ::' \
+		python/subunit/tests/test_test_protocol.py || die
 
 	distutils-r1_src_prepare
 	eautoreconf
