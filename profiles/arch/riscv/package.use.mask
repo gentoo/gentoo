@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# sys-cluster/ucx fails to compile on this arch
+sys-cluster/slurm ucx
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # net-dialup/mgetty fails to compile on this arch
 mail-mta/courier fax
 
@@ -26,7 +30,7 @@ gnome-base/gvfs samba
 net-libs/libsoup samba
 www-client/elinks samba
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-02)
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib, net-libs/webkit-gtk
 app-editors/emacs gconf m17n-lib xwidgets
@@ -40,8 +44,10 @@ dev-python/networkx extras pandas
 dev-python/scipy sparse
 #  - dev-db/libdbi, sys-cluster/ceph
 net-analyzer/rrdtool dbi rados
-#  - all the fabrics, sys-cluster/slurm, sys-cluster/torque
-sys-cluster/openmpi openmpi_rm_pbs openmpi_rm_slurm openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
+#  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
+sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
+#  - sci-libs/hdf5, sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
+sys-cluster/slurm hdf5 ofed slurmdbd
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
