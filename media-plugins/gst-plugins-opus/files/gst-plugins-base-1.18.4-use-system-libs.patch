@@ -1,0 +1,34 @@
+commit 59faf0083da00ba4b99bd6324effb2e2ae210d94
+Author: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+Date:   Sat Jul 3 12:48:39 2021 +0300
+
+    Patch gst-plugins-base 1.18.4 to use installed deps for split plugins
+    
+    Signed-off-by: Igor V. Kovalenko <igor.v.kovalenko@gmail.com>
+
+diff --git a/meson.build b/meson.build
+index 7d93bf426..b5c7c15b1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -433,6 +433,21 @@ endif
+ 
+ python3 = import('python').find_installation()
+ subdir('gst-libs')
++
++# Override all bundled dependencies with already installed packages for split plugins to use them
++allocators_dep = dependency('gstreamer-allocators-1.0', required : false)
++app_dep = dependency('gstreamer-app-1.0', version : gst_req, required : false)
++audio_dep = dependency('gstreamer-audio-1.0', version : gst_req, required : false)
++fft_dep = dependency('gstreamer-fft-1.0', version : gst_req, required : false)
++gstgl_dep = dependency('gstreamer-gl-1.0', version : gst_req, required : false)
++pbutils_dep = dependency('gstreamer-pbutils-1.0', version : gst_req, required : false)
++riff_dep = dependency('gstreamer-riff-1.0', version : gst_req, required : false)
++rtp_dep = dependency('gstreamer-rtp-1.0', version : gst_req, required : false)
++rtsp_dep = dependency('gstreamer-rtsp-1.0', version : gst_req, required : false)
++sdp_dep = dependency('gstreamer-sdp-1.0', version : gst_req, required : false)
++tag_dep = dependency('gstreamer-tag-1.0', version : gst_req, required : false)
++video_dep = dependency('gstreamer-video-1.0', version : gst_req, required : false)
++
+ subdir('gst')
+ subdir('ext')
+ subdir('sys')
