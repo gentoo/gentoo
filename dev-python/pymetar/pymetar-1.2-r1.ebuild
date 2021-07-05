@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 inherit distutils-r1
 
 DESCRIPTION="Downloads and decodes to the weather report for a given station ID"
-HOMEPAGE="https://www.schwarzvogel.de/software-pymetar.shtml"
+HOMEPAGE="https://www.schwarzvogel.de/software/pymetar/"
 SRC_URI="https://www.schwarzvogel.de/pkgs/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
