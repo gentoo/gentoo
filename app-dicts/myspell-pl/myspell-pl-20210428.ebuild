@@ -24,4 +24,4 @@ SRC_URI="https://github.com/scardracs/gentoo-packages/releases/download/pl-${PV}
 
 LICENSE="CC-SA-1.0 Apache-2.0 LGPL-2.1+ GPL-2+ MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
