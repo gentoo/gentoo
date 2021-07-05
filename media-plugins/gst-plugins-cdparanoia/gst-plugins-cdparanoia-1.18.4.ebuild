@@ -12,3 +12,7 @@ IUSE=""
 
 RDEPEND=">=media-sound/cdparanoia-3.10.2-r6[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-base-${PV}-use-system-libs.patch
+)
