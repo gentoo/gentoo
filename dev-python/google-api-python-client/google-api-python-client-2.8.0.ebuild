@@ -32,10 +32,15 @@ BDEPEND="
 		dev-python/oauth2client[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
-		dev-python/unittest2[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests --install pytest
+
+src_prepare() {
+	find tests -name '*.py' -exec \
+		sed -i -e 's:unittest2 as ::' {} + || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	local deselect=(
