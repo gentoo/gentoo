@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples extras pandas scipy test xml yaml"
 RESTRICT="!test? ( test )"
 
@@ -24,7 +24,7 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			>=dev-python/pygraphviz-1.5[${PYTHON_USEDEP}]
 			>=sci-libs/gdal-1.10.0[python,${PYTHON_USEDEP}]
-		' python3_{6,7,8})
+		' python3_8)
 	)
 	pandas? (
 		$(python_gen_cond_dep '
