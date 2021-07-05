@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit autotools python-single-r1 systemd
 
 MY_PV_MM=$(ver_cut 1-2)
@@ -34,7 +34,7 @@ RDEPEND="
 	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
 	python? ( ${PYTHON_DEPS} )
 	redis? ( >=dev-libs/hiredis-0.11.0:= )
-	smtp? ( >=net-libs/libesmtp-1.0.6_p20200824:= )
+	smtp? ( net-libs/libesmtp:= )
 	snmp? ( net-analyzer/net-snmp:0= )
 	spoof-source? ( net-libs/libnet:1.1= )
 	systemd? ( sys-apps/systemd:= )

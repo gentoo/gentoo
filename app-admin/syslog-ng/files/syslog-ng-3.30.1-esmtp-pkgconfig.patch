@@ -1,7 +1,25 @@
 https://bugs.gentoo.org/782643
+https://github.com/syslog-ng/syslog-ng/pull/3669/commits/b8284f8ecac588f6a321c779cce06cbe182611a5
+
+From b8284f8ecac588f6a321c779cce06cbe182611a5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?L=C3=A1szl=C3=B3=20V=C3=A1rady?=
+ <laszlo.varady@protonmail.com>
+Date: Sun, 9 May 2021 03:43:46 +0200
+Subject: [PATCH] configure: add pkg-config detection for libesmtp
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: László Várady <laszlo.varady@protonmail.com>
+---
+ configure.ac | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 86b67ba9a2..bd6efa8711 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1270,20 +1270,9 @@ if test "x$enable_smtp" != "xno" && test "x$with_libesmtp" != "xno"; then
+@@ -1278,15 +1278,19 @@ if test "x$enable_smtp" != "xno" && test "x$with_libesmtp" != "xno"; then
  		CPPFLAGS="$CPPFLAGS_SAVE"
  		LDFLAGS="$LDFLAGS_SAVE"
  	else
@@ -14,13 +32,19 @@ https://bugs.gentoo.org/782643
 -			AC_MSG_RESULT(no)
 -			libesmtp=no
 -		fi
--	fi
--	if test "x$enable_smtp" = "xyes" && test "x$libesmtp" = "xno"; then
--		AC_MSG_ERROR(libESMTP not found)
-+		PKG_CHECK_MODULES(libesmtp, libesmtp-1.0)
++		PKG_CHECK_MODULES(LIBESMTP, libesmtp-1.0, libesmtp="yes", libesmtp="no")
++		if test "x$libesmtp" = "xno"; then
++			AC_MSG_CHECKING(for libESMTP with libesmtp-config)
++			if libesmtp-config --version >/dev/null 2>&1; then
++				AC_MSG_RESULT(yes)
++				LIBESMTP_CFLAGS="`libesmtp-config --cflags`"
++				LIBESMTP_LIBS="`libesmtp-config --libs`"
++				libesmtp="yes"
++			else
++				AC_MSG_RESULT(no)
++				libesmtp=no
++			fi
++                fi
  	fi
--	enable_smtp=$libesmtp
-+	enable_smtp="yes"
- fi
- 
- dnl ***************************************************************************
+ 	if test "x$enable_smtp" = "xyes" && test "x$libesmtp" = "xno"; then
+ 		AC_MSG_ERROR(libESMTP not found)
