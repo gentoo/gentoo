@@ -1,0 +1,27 @@
+From 2ead7c11a54b0860e02992212e302c4a7bd26c35 Mon Sep 17 00:00:00 2001
+From: Matthew Treinish <mtreinish@kortar.org>
+Date: Wed, 8 Jul 2020 14:22:24 -0400
+Subject: [PATCH] Update testtools/testcase.py
+
+Co-authored-by: Thomas Grainger <tagrain@gmail.com>
+---
+ testtools/testcase.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+Rebased for 2.4.0 by Michał Górny (eliminating intermediate commits).
+
+diff --git a/testtools/testcase.py b/testtools/testcase.py
+index bff5be2..22e9143 100644
+--- a/testtools/testcase.py
++++ b/testtools/testcase.py
+@@ -501,6 +501,7 @@ class TestCase(unittest.TestCase):
+         if mismatch_error is not None:
+             raise mismatch_error
+ 
++    assertItemsEqual = unittest.TestCase.assertCountEqual
+     def addDetailUniqueName(self, name, content_object):
+         """Add a detail to the test, but ensure it's name is unique.
+ 
+-- 
+2.32.0
+
