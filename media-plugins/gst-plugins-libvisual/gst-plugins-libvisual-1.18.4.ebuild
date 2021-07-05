@@ -15,3 +15,10 @@ RDEPEND="
 	>=media-plugins/libvisual-plugins-0.4.0-r3[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	gstreamer_system_package audio_dep:gstreamer-audio
+	gstreamer_system_package pbutils_dep:gstreamer-pbutils
+	gstreamer_system_package video_dep:gstreamer-video
+}
