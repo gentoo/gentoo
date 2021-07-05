@@ -21,8 +21,6 @@
 	this for all the file formats it supports -- Ogg Vorbis, FLAC, MP3, 
 	Musepack, and MOD.</longdescription>
 	<upstream>
-		<remote-id type="google-code">quodlibet</remote-id>
 		<remote-id type="github">quodlibet/quodlibet</remote-id>
-		<remote-id type="bitbucket">lazka/quodlibet-files</remote-id>
 	</upstream>
 </pkgmetadata>
