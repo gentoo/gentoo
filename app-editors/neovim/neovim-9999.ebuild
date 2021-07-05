@@ -80,8 +80,8 @@ src_configure() {
 	# have preferences for how we should use LTO
 	# if we want it on (not just -flto)
 	# ... but allow turning it off.
+	# TODO: Investigate USE_BUNDLED, doesn't seem to be needed right now
 	local mycmakeargs=(
-		-DUSE_BUNDLED=OFF
 		-DENABLE_LTO=$(usex lto)
 		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
