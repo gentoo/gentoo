@@ -30,6 +30,15 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# gforth uses both $LIBTOOL and $GNU_LIBTOOL.
+	# Let's settle on the former: bug #799371
+	if [[ -n $LIBTOOL ]]; then
+		export GNU_LIBTOOL=$LIBTOOL
+		# ./configure does not generate it, but slibtool assumes
+		# it's around
+		ln -s ${EPREFIX}/usr/bin/libtool libtool || die
+	fi
+
 	# We patches both configure and configure.ac.
 	# Avoid reruining aclocal.
 	touch aclocal.m4 configure || die
