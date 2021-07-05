@@ -22,7 +22,6 @@ RDEPEND="
 	>=dev-python/pbr-0.11[${PYTHON_USEDEP}]
 	dev-python/pyrsistent[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
-	dev-python/traceback2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	test? (
@@ -41,11 +40,13 @@ distutils_enable_sphinx doc
 distutils_enable_tests unittest
 
 src_prepare() {
-	# eliminate unittest2
-	sed -i -e '/unittest2/d' requirements.txt || die
+	# eliminate unittest2 & traceback2
+	sed -i -e '/unittest2/d' -e '/traceback2/d' requirements.txt || die
 	# also conditional imports
 	find -name '*.py' -exec \
 		sed -i -e 's:unittest2:unittest:' {} + || die
+	sed -i -e 's/^traceback =.*/import traceback/' \
+		testtools/content.py || die
 	distutils-r1_src_prepare
 }
 
