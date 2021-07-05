@@ -15,7 +15,7 @@ SRC_URI="https://extensions.libreoffice.org/assets/downloads/48/dict_pack_ru-aot
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux"
 
 src_prepare() {
 	default
