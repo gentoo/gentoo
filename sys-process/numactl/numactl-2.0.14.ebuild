@@ -13,7 +13,7 @@ if [[ "${PV}" == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/numactl/numactl/releases/download/v${PV}/${P}.tar.gz"
 	# ARM lacks the __NR_migrate_pages syscall.
-	KEYWORDS="~alpha amd64 -arm arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux"
+	KEYWORDS="~alpha amd64 -arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux"
 fi
 
 LICENSE="GPL-2"
@@ -21,6 +21,7 @@ SLOT="0"
 IUSE="static-libs"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.14-latomic.patch
 	"${FILESDIR}"/${PN}-2.0.14-numademo-cflags.patch #540856
 )
 
