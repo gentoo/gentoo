@@ -31,6 +31,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-2.6-gentoo.patch"
+	"${FILESDIR}/${P}-ref_module_fix.patch" # bug #781014
 )
 
 pkg_setup() {
