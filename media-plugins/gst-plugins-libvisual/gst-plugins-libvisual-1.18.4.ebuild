@@ -15,3 +15,7 @@ RDEPEND="
 	>=media-plugins/libvisual-plugins-0.4.0-r3[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/gst-plugins-base-${PV}-use-system-libs.patch
+)
