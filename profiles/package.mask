@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-07-06)
+# Various Python 2-specific backports.  All the reverse dependencies
+# (except for deps between these packages) have been eliminated.
+# Removal on 2021-08-05.  Bug #800698.
+dev-python/contextlib2
+dev-python/linecache2
+dev-python/traceback2
+dev-python/unittest2
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-07-05)
 # The platform is outdated and not maintained anymore.
 # Mask for removal in 30 days.
