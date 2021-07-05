@@ -1,13 +1,30 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# net-dialup/mgetty fails to compile on this arch
+mail-mta/courier fax
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+#   dev-db/postgresql not keyworded here yet
+dev-libs/cyrus-sasl postgres
+mail-mta/courier postgres
+net-libs/courier-authlib postgres
+
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
 app-text/texlive-core xetex
 dev-python/ipython nbconvert notebook
 dev-python/matplotlib cairo excel wxwidgets
 media-sound/alsa-utils libsamplerate
-sci-libs/fftw mpi
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-02)
+# Yixun Lan <dlan@gentoo.org> (2021-05-24)
+#   net-fs/samba not keyworded here yet
+app-misc/mc samba
+gnome-base/gvfs samba
+net-libs/libsoup samba
+www-client/elinks samba
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Dependencies not keyworded here yet:
@@ -15,32 +32,20 @@ sci-libs/fftw mpi
 app-editors/emacs gconf m17n-lib xwidgets
 #  - net-fs/openafs
 app-crypt/heimdal afs
-#  - dev-util/cmocka  (note: tests are restricted anyway)
-app-crypt/mit-krb5 test
 #  - MANY, to be reviewed
 dev-cpp/eigen doc test
-#  - mail-mta/courier | net-mail/courier-imap, dev-db/postgresql
-dev-libs/cyrus-sasl authdaemond postgres
+#  - dev-python/pygraphviz & sci-libs/gdal, dev-python/pandas
+dev-python/networkx extras pandas
 #  - sci-libs/umfpack (and a lot of its own deps in turn)
 dev-python/scipy sparse
 #  - dev-db/libdbi, sys-cluster/ceph
 net-analyzer/rrdtool dbi rados
-#  - virtual/mpi[fortran]
-sci-libs/arpack mpi
-#  - net-fs/samba, dev-libs/tre
-www-client/elinks samba tre
+#  - all the fabrics, sys-cluster/slurm, sys-cluster/torque
+sys-cluster/openmpi openmpi_rm_pbs openmpi_rm_slurm openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
 media-gfx/imagemagick fftw openexr wmf
-
-# Marek Szuba <marecki@gentoo.org> (2021-06-21)
-# net-fs/samba not keyworded here, not tested
-app-misc/mc samba
-
-# Marek Szuba <marecki@gentoo.org> (2021-05-31)
-# dev-python/networkx not keyworded here
-app-portage/nattka depgraph-order
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
@@ -53,7 +58,7 @@ dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-text/docbook-xsl-ns-stylesheets ruby
 app-misc/geoclue modemmanager zeroconf
-gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios samba test zeroconf
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios test zeroconf
 sys-power/upower ios
 net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings colord libcanberra
@@ -99,10 +104,6 @@ app-crypt/pinentry efl
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Lars Wendler <polynomial-c@gentoo.org> (2020-12-07)
-# No riscv keyword in sys-apps/hwloc
-sys-process/htop hwloc
-
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
 # dev-python/breathe not keyworded here, mask to facilitate
 # keywording dev-libs/libfido2
@@ -123,7 +124,6 @@ dev-libs/libpcre jit
 
 app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis spoof-source smtp snmp test
 app-arch/p7zip wxwidgets
-app-crypt/gnupg wks-server
 app-crypt/mit-krb5 doc
 app-doc/doxygen doc
 app-editors/emacs mailutils
@@ -131,7 +131,6 @@ app-misc/pax-utils python
 app-text/asciidoc test
 app-text/ghostscript-gpl cups
 app-text/po4a test
-dev-libs/boost mpi
 dev-libs/check subunit
 dev-libs/libgcrypt doc
 dev-python/argcomplete test
@@ -149,7 +148,6 @@ dev-util/pkgconf test
 dev-vcs/git cvs highlight subversion
 dev-vcs/mercurial zsh-completion
 media-libs/harfbuzz doc
-sys-libs/libomp hwloc
 sys-libs/libcxx libcxxabi libunwind static-libs
 sys-libs/libcxxabi libunwind
 media-gfx/graphviz devil svg pdf
