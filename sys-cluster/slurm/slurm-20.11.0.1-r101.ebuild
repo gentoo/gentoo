@@ -78,6 +78,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-20.11.0.1_autoconf-lua.patch
 )
 
+pkg_setup() {
+	use lua && lua-single_pkg_setup
+}
+
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
