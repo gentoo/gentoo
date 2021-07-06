@@ -32,6 +32,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-07-06)
+# Obsolete slot, no dependencies. Use dev-ruby/http:4 instead.
+# Masked for removal in 30 days.
+dev-ruby/http:3
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-06)
+# Last release in 2013, no tests, no dependencies.
+# Masked for removal in 30 days.
+dev-ruby/nagios
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-06)
+# Last release in 2013, no tests, no dependencies.
+# Masked for removal in 30 days.
+dev-ruby/notify
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-06)
+# Last release in 2013, all dependencies have switched to rash_alt.
+# Masked for removal in 30 days.
+dev-ruby/rash
+
 # Michał Górny <mgorny@gentoo.org> (2021-07-06)
 # Upstream changed license to GPL-3+ in order to deliberately cause
 # incompatiblity with revdep licenses.  Mask until the situation
