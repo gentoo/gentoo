@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-07-06)
+# Upstream changed license to GPL-3+ in order to deliberately cause
+# incompatiblity with revdep licenses.  Mask until the situation
+# is resolved.  Bug #791259.
+>=media-libs/libopenaptx-0.2.1
+
 # Aaron W. Swenon <titanofold@gentoo.org> (2021-07-05)
 # PostgreSQL 9.5 has reached end of life and will no longer receive any
 # updates -- security or otherwise -- from upstream or Gentoo.
