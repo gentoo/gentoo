@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -55,6 +55,8 @@ all_ruby_prepare() {
 
 	# Avoid unneeded dependency on git
 	sed -i -e '/git ls-files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e '1irequire "fileutils"' spec/spec_helper.rb || die
 }
 
 each_ruby_test() {
