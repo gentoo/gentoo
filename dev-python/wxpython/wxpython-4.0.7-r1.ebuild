@@ -35,7 +35,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	app-doc/doxygen
-	dev-python/pathlib2[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	test? (
