@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/parsedatetime[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg,truetype,${PYTHON_USEDEP}]
 	dev-python/texttable[${PYTHON_USEDEP}]
 	media-fonts/dejavu
 	media-video/ffmpeg"
