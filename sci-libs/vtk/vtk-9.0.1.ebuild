@@ -30,7 +30,7 @@ SRC_URI="
 S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
-SLOT="0"
+SLOT="0/${MY_PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 # Note: external xdmf2 has no recognized target
 IUSE="+X all-modules boost cuda doc examples ffmpeg gdal imaging java
