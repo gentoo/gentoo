@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="python api for tmux"
@@ -18,7 +17,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 RDEPEND=">=app-misc/tmux-3.0a"
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python3_{7..9})
 		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/twine[${PYTHON_USEDEP}]
