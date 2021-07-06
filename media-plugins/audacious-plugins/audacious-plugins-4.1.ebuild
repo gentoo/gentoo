@@ -14,8 +14,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="
 	aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
-	lame libnotify libsamplerate lirc mms modplug mp3 nls opengl pulseaudio
-	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack
+	openmpt lame libnotify libsamplerate lirc mms modplug mp3 nls opengl
+	pulseaudio scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis
+	wavpack
 "
 
 REQUIRED_USE="ampache? ( http ) streamtuner? ( http )"
@@ -75,6 +76,7 @@ DEPEND="
 	)
 	lame? ( media-sound/lame )
 	libnotify? ( x11-libs/libnotify )
+	openmpt? ( media-libs/libopenmpt )
 	libsamplerate? ( media-libs/libsamplerate:= )
 	lirc? ( app-misc/lirc )
 	mms? ( >=media-libs/libmms-0.3 )
@@ -118,7 +120,6 @@ src_configure() {
 		--enable-songchange
 		--disable-adplug # not packaged
 		--disable-gtk
-		--disable-openmpt # not packaged
 		--disable-oss4
 		--disable-coreaudio
 		--disable-sndio
@@ -136,6 +137,7 @@ src_configure() {
 		$(use_enable jack)
 		$(use_enable lame filewriter_mp3)
 		$(use_enable libnotify notify)
+		$(use_enable openmpt openmpt)
 		$(use_enable libsamplerate resample)
 		$(use_enable lirc)
 		$(use_enable mms)
@@ -155,6 +157,5 @@ src_configure() {
 		$(use_enable wavpack)
 		$(use_with ffmpeg ffmpeg ffmpeg)
 	)
-
 	econf "${myeconfargs[@]}"
 }
