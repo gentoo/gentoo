@@ -243,7 +243,7 @@ multilib_src_compile() {
 		emake
 	else
 		local targets=(
-			libnm/libnm.la
+			src/libnm-client-impl/libnm.la
 		)
 		emake "${targets[@]}"
 	fi
