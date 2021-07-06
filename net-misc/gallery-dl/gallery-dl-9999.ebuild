@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7..9})
+PYTHON_COMPAT=(python3_{8,9})
 PYTHON_REQ_USE="sqlite,ssl,xml"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -12,7 +12,7 @@ inherit distutils-r1 optfeature
 DESCRIPTION="Download image galleries and collections from several image hosting sites"
 HOMEPAGE="https://github.com/mikf/gallery-dl"
 
-if [[ ${PV} == *9999 ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mikf/${PN}.git"
 else
@@ -20,19 +20,18 @@ else
 	KEYWORDS="~amd64"
 fi
 
-# tests require network access
-RESTRICT="test"
 LICENSE="GPL-2"
 SLOT="0"
+# tests require network access
+RESTRICT="test"
 
 RDEPEND=">=dev-python/requests-2.11.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests setup.py
 
 src_compile() {
-	emake data/completion/gallery-dl
-	emake data/completion/_gallery-dl
-	emake man
+	emake data/completion/{,_}gallery-dl man
+
 	distutils-r1_src_compile
 }
 
