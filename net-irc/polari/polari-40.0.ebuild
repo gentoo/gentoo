@@ -5,8 +5,8 @@ EAPI=7
 
 inherit gnome.org gnome2-utils meson xdg
 
-DESCRIPTION="An IRC client for Gnome"
-HOMEPAGE="https://wiki.gnome.org/Apps/Polari"
+DESCRIPTION="An IRC client for GNOME"
+HOMEPAGE="https://wiki.gnome.org/Apps/Polari https://gitlab.gnome.org/GNOME/polari"
 
 LICENSE="GPL-2+"
 SLOT="0"
