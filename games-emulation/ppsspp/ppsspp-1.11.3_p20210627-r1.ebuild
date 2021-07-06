@@ -46,7 +46,7 @@ RDEPEND="
 		dev-qt/qtopengl:5[-gles2-only]
 		dev-qt/qtwidgets:5[-gles2-only]
 	)
-	!qt5? ( media-libs/libsdl2[opengl,sound,video] )
+	!qt5? ( media-libs/libsdl2[X,opengl,sound,video] )
 "
 DEPEND="${RDEPEND}"
 
