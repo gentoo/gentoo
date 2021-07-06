@@ -5,21 +5,19 @@ EAPI=7
 
 MY_P="${P/_/-}"
 
-if [[ ${PV} == *9999 ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious-plugins.git"
-else
-	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
-fi
 DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
+SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 
+KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
+IUSE="
+	aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gme http jack
 	lame libnotify libsamplerate lirc mms modplug mp3 nls opengl pulseaudio
-	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack"
+	scrobbler sdl sid sndfile soxr speedpitch streamtuner vorbis wavpack
+"
+
 REQUIRED_USE="ampache? ( http ) streamtuner? ( http )"
 
 # The following plugins REQUIRE a GUI build of audacious, because non-GUI
@@ -108,9 +106,8 @@ pkg_setup() {
 src_prepare() {
 	default
 	if ! use nls; then
-		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
+		sed -e "/SUBDIRS/s/ po//" -i Makefile || die "Failed to sed" # bug #512698
 	fi
-	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {

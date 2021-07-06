@@ -5,19 +5,14 @@ EAPI=7
 
 MY_P="${P/_/-}"
 
-if [[ ${PV} == *9999 ]]; then
-	inherit autotools git-r3
-	EGIT_REPO_URI="https://github.com/audacious-media-player/audacious.git"
-else
-	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
-fi
 inherit xdg
 
 DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
+SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 SRC_URI+=" mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
 
+KEYWORDS="~amd64 ~x86"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="nls"
@@ -41,17 +36,11 @@ PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
 S="${WORKDIR}/${MY_P}"
 
-src_unpack() {
-	default
-	[[ ${PV} == *9999 ]] && git-r3_src_unpack
-}
-
 src_prepare() {
 	default
 	if ! use nls; then
-		sed -e "/SUBDIRS/s/ po//" -i Makefile || die # bug #512698
+		sed -e "/SUBDIRS/s/ po//" -i Makefile || die "failed to sed" # bug #512698
 	fi
-	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
