@@ -32,6 +32,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron W. Swenon <titanofold@gentoo.org> (2021-07-05)
+# PostgreSQL 9.5 has reached end of life and will no longer receive any
+# updates -- security or otherwise -- from upstream or Gentoo.
+#
+# You should migrate immediately.
+#     https://wiki.gentoo.org/wiki/PostgreSQL/QuickStart#Post-9.0_Migration
+#
+# For more information about PostgreSQL's versioning policy, see:
+#     https://www.postgresql.org/support/versioning/
+#
+# Removal after 2021-08-04.
+dev-db/postgresql:9.5
+
 # Michał Górny <mgorny@gentoo.org> (2021-07-06)
 # Various Python 2-specific backports.  All the reverse dependencies
 # (except for deps between these packages) have been eliminated.
