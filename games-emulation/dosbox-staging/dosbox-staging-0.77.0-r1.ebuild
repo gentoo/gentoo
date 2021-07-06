@@ -19,6 +19,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 		media-sound/fluid-soundfont
 		media-sound/fluidsynth
 	)
+	mt-32? ( media-libs/munt-mt32emu )
 	network? ( media-libs/sdl2-net )
 	opengl? ( virtual/opengl )
 	media-libs/libpng:0=
