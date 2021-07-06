@@ -20,7 +20,6 @@ SLOT="4"
 KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
-
 ruby_add_rdepend ">=dev-ruby/liquid-3.0.0:*"
 
 all_ruby_prepare() {
