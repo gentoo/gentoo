@@ -144,6 +144,7 @@ PATCHES=(
 	"${PATCHDIR}/patches/${MY_PN}-4.7-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
 	"${PATCHDIR}/patches/${MY_PN}-5.9-Revert-makedep-Install-also-generated-typelib-for-in.patch"
+	"${FILESDIR}/wine-vanilla-6.12-winegcc-equals-args.patch" #800809
 )
 PATCHES_BIN=()
 
