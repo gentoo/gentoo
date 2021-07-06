@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A Module::Build class for building XS modules"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="examples"
 
 RDEPEND="
