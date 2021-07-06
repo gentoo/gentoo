@@ -29,7 +29,7 @@ BDEPEND="
 	${PYTHON_DEPS}"
 
 LLVM_COMPONENTS=( compiler-rt )
-LLVM_PATCHSET=9999-1
+LLVM_PATCHSET=12.0.1-rc4-1
 llvm.org_set_globals
 
 python_check_deps() {
