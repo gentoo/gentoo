@@ -258,6 +258,11 @@ pkg_postinst() {
 		elog
 		elog "#\"/usr/bin/pipewire\" = { args = \"-c pipewire-pulse.conf\" }"
 		elog
+		elog "NOTE:"
+		elog "Starting with PipeWire-0.3.30, package is no longer installing config"
+		elog "into ${EROOT}/etc/pipewire by default. In case you need to change"
+		elog "config, please start by copying default config from ${EROOT}/usr/share/pipewire"
+		elog "and just override sections you want to change."
 	fi
 
 	elog "For latest tips and tricks, troubleshooting information and documentation"
