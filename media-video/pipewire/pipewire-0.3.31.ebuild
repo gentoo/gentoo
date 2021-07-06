@@ -20,7 +20,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.3"
-IUSE="aac aptx bluetooth doc extra gstreamer jack-client jack-sdk ldac pipewire-alsa systemd test v4l"
+IUSE="bluetooth doc extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -28,12 +28,7 @@ IUSE="aac aptx bluetooth doc extra gstreamer jack-client jack-sdk ldac pipewire-
 # JACK's sink - doing so is likely to yield no audio, cause a CPU
 # cycles consuming loop (and may even cause GUI crashes)!
 
-REQUIRED_USE="
-	aac? ( bluetooth )
-	aptx? ( bluetooth )
-	jack-sdk? ( !jack-client )
-	ldac? ( bluetooth )
-"
+REQUIRED_USE="jack-sdk? ( !jack-client )"
 
 RESTRICT="!test? ( test )"
 
@@ -54,9 +49,9 @@ RDEPEND="
 	virtual/libintl[${MULTILIB_USEDEP}]
 	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
-		aac? ( media-libs/fdk-aac )
-		aptx? ( media-libs/libopenaptx )
-		ldac? ( media-libs/libldac )
+		media-libs/fdk-aac
+		media-libs/libldac
+		media-libs/libopenaptx
 		media-libs/sbc
 		>=net-wireless/bluez-4.101:=
 	)
@@ -151,9 +146,9 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-backend-hfp-native)
 		$(meson_native_use_feature bluetooth bluez5-backend-ofono)
 		$(meson_native_use_feature bluetooth bluez5-backend-hsphfpd)
-		$(meson_native_use_feature aac bluez5-codec-aac)
-		$(meson_native_use_feature aptx bluez5-codec-aptx)
-		$(meson_native_use_feature ldac bluez5-codec-ldac)
+		$(meson_native_use_feature bluetooth bluez5-codec-aac)
+		$(meson_native_use_feature bluetooth bluez5-codec-aptx)
+		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
