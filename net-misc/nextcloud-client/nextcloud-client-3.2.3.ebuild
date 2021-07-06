@@ -53,6 +53,8 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-inkscape.patch )
+
 S="${WORKDIR}/desktop-${PV/_/-}"
 
 src_prepare() {
