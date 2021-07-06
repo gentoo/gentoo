@@ -17,7 +17,7 @@ else
 	SRC_URI="ftp://ftp.isc.org/isc/kea/${MY_P}.tar.gz
 		ftp://ftp.isc.org/isc/kea/${MY_PV}/${MY_P}.tar.gz"
 	[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
