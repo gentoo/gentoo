@@ -33,6 +33,7 @@ need_apache2_4
 
 src_prepare() {
 	default
+	sed -i -e 's#SBINDIR/apachectl#SBINDIR/apache2ctl#' configure.ac || die # https://github.com/icing/mod_h2/issues/218
 	eautoreconf
 }
 
