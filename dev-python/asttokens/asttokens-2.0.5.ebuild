@@ -1,9 +1,9 @@
 # Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Annotate Python AST trees with source text and token information"
@@ -29,3 +29,12 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+python_test() {
+	local deselect=()
+	[[ ${EPYTHON} == python3.8 ]] && deselect+=(
+		tests/test_astroid.py::TestAstroid::test_slices
+	)
+
+	epytest ${deselect[@]/#/--deselect }
+}
