@@ -9,7 +9,7 @@ DATUMGRID="${PN}-datumgrid-1.8.tar.gz"
 EUROPE_DATUMGRID="${PN}-datumgrid-europe-1.6.tar.gz"
 
 DESCRIPTION="PROJ coordinate transformation software"
-HOMEPAGE="https://proj4.org/"
+HOMEPAGE="https://proj.org/"
 SRC_URI="
 	https://download.osgeo.org/proj/${P}.tar.gz
 	https://download.osgeo.org/proj/${DATUMGRID}
