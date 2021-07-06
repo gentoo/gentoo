@@ -77,6 +77,7 @@ dev-db/postgresql:9.5
 # Removal on 2021-08-05.  Bug #800698.
 dev-python/contextlib2
 dev-python/linecache2
+dev-python/pathlib2
 dev-python/traceback2
 dev-python/unittest2
 
