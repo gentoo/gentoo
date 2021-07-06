@@ -19,7 +19,6 @@ RDEPEND="
 	app-text/zotero-bin
 	dev-python/bibtexparser[${PYTHON_USEDEP}]
 	<dev-python/feedparser-6[${PYTHON_USEDEP}]
-	dev-python/pathlib2[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
