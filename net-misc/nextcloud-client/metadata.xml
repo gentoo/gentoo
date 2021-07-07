@@ -8,6 +8,7 @@
 	<use>
 		<flag name="dolphin">Install the <pkg>kde-apps/dolphin</pkg> extension</flag>
 		<flag name="nautilus">Install the <pkg>gnome-base/nautilus</pkg> extension</flag>
+		<flag name="webengine">Enable old Flow1 login using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">nextcloud/desktop</remote-id>
