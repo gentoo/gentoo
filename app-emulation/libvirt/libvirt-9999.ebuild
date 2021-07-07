@@ -117,7 +117,7 @@ RDEPEND="
 	)
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		>=app-emulation/xen-4.6.0
+		>=app-emulation/xen-4.9.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
