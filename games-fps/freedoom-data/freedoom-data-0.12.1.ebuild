@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
 BDEPEND="
-	$(python_gen_any_dep 'dev-python/pillow[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/pillow[${PYTHON_USEDEP},zlib]')
 	app-text/asciidoc
 	games-util/deutex"
 
@@ -25,7 +25,7 @@ S="${WORKDIR}/freedoom-${PV}"
 DOOMWADPATH=share/doom
 
 python_check_deps() {
-	has_version -b "dev-python/pillow[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/pillow[${PYTHON_USEDEP},zlib]"
 }
 
 src_prepare() {
