@@ -12,7 +12,7 @@ SRC_URI="https://github.com/intel/thermal_daemon/archive/v${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="-doc"
 
 RDEPEND="
 	dev-libs/dbus-glib:=
@@ -22,16 +22,16 @@ RDEPEND="
 	sys-power/upower
 	sys-apps/dbus:="
 DEPEND="${RDEPEND}
-	dev-util/gtk-doc
+	doc? ( dev-util/gtk-doc )
 	dev-util/glib-utils"
 
 S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
-
 src_prepare() {
 	sed -i -e "/group=/s/power/wheel/g" \
 		data/org.freedesktop.thermald.conf || die
 
+	use doc || PATCHES+=("${FILESDIR}/${PN}-no-docs.patch")
 	default
 	eautoreconf
 }

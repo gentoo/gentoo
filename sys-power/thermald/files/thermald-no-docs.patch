@@ -1,0 +1,41 @@
+--- a/Makefile.am	2021-07-07 10:08:41.193127800 +0200
++++ b/Makefile.am	2021-07-07 10:08:49.336489915 +0200
+@@ -1,6 +1,6 @@
+ include $(GLIB_MAKEFILE)
+ 
+-SUBDIRS = . docs data
++SUBDIRS = . data
+ 
+ ACLOCAL_AMFLAGS =
+ 
+--- a/autogen.sh	2021-07-07 10:12:43.853933437 +0200
++++ b/autogen.sh	2021-07-07 10:12:52.917295964 +0200
+@@ -7,7 +7,6 @@
+ cd "$srcdir"
+ 
+ aclocal --install || exit 1
+-gtkdocize --copy --flavour no-tmpl || exit 1
+ autoreconf --install --verbose || exit 1
+ 
+ cd "$olddir"
+
+--- a/configure.ac	2021-07-07 10:19:20.028548056 +0200
++++ b/configure.ac	2021-07-07 10:20:42.425482481 +0200
+@@ -15,8 +15,6 @@
+ AM_INIT_AUTOMAKE([1.11 foreign no-define subdir-objects])
+ AM_MAINTAINER_MODE([enable])
+ 
+-GTK_DOC_CHECK([1.11],[--flavour no-tmpl])
+-
+ AC_ARG_WITH(dbus-sys-dir, AS_HELP_STRING([--with-dbus-sys-dir=DIR], [where D-BUS system.d directory is]))
+ if test -n "$with_dbus_sys_dir" ; then
+     DBUS_SYS_DIR="$with_dbus_sys_dir"
+@@ -118,8 +116,6 @@
+ AS_IF([test "x$enable_werror" != "xno"], [CXXFLAGS="$CXXFLAGS -Werror"])
+ 
+ AC_CONFIG_FILES([Makefile
+-                 docs/Makefile
+-                 docs/version.xml
+                  data/Makefile])
+ 
+ AC_OUTPUT
