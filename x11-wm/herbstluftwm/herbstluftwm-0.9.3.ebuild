@@ -16,7 +16,7 @@ if [[ "${PV}" == "9999" ]] || [[ -n "${EGIT_COMMIT_ID}" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="BSD-2"
