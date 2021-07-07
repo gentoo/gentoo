@@ -40,6 +40,7 @@ BDEPEND="
 	>=dev-util/meson-0.46
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
+	sys-devel/m4
 	virtual/pkgconfig
 "
 
