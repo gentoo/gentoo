@@ -44,9 +44,8 @@ BDEPEND="
 	dev-libs/libxslt:0
 	dev-util/gperf
 	>=dev-util/meson-0.46
-	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	sys-devel/m4
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 
