@@ -80,9 +80,7 @@ src_configure() {
 		DEFAULT_MAKE_TARGET=all
 	EOF
 	if [[ ${PV} != "9999" ]] ; then
-		cat >>localconf <<-EOF || die
-			BEES_VERSION=v${PV}
-		EOF
+		echo BEES_VERSION=v${PV} >>localconf || die
 	fi
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
