@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-07-07)
+# Security bug CVE-2015-9284, bug 761960. Use slot 2 instead.
+# Masked for removal in 30 days.
+dev-ruby/omniauth:0
+
 # Hans de Graaff <graaff@gentoo.org> (2021-07-06)
 # Obsolete slot, no dependencies. Use dev-ruby/http:4 instead.
 # Masked for removal in 30 days.
