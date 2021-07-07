@@ -143,6 +143,9 @@ python_prepare() {
 	local abc
 	abc="$("${EPYTHON}" -c 'import collections.abc; print("|".join((c for c in dir(collections.abc) if not c.startswith("_"))))')" || die
 	find -name '*.py' -type f -print0 | xargs -0 sed -r -e "s:collections\\.(${abc}):collections.abc.\\1:g" -i || die
+
+	# removes contextvars, see bug: https://bugs.gentoo.org/799431
+	sed -i '/^contextvars/d' requirements/base.txt || die
 }
 
 python_install_all() {
