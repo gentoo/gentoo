@@ -73,10 +73,10 @@ src_prepare() {
 
 src_configure() {
 	cat >localconf <<-EOF || die
-		LIBEXEC_PREFIX=/usr/libexec
-		PREFIX=/usr
-		LIBDIR="$(get_libdir)"
-		SYSTEMD_SYSTEM_UNIT_DIR="$(systemd_get_systemunitdir)"
+		LIBEXEC_PREFIX="${EPREFIX}/usr/libexec"
+		PREFIX="${EPREFIX}/usr"
+		LIBDIR="${EPREFIX}/$(get_libdir)"
+		SYSTEMD_SYSTEM_UNIT_DIR="${EPREFIX}/$(systemd_get_systemunitdir)"
 		DEFAULT_MAKE_TARGET=all
 	EOF
 	if [[ ${PV} != "9999" ]] ; then
