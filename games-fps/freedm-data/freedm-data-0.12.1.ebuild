@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 
 inherit prefix python-any-r1 xdg
 
@@ -30,7 +30,6 @@ python_check_deps() {
 
 src_prepare() {
 	xdg_src_prepare
-	eapply_user
 
 	hprefixify dist/freedoom
 }
