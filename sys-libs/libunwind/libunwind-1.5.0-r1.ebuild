@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2-coredump-regs.patch #586092
 	"${FILESDIR}"/${PN}-1.2-ia64-ptrace-coredump.patch
 	"${FILESDIR}"/${PN}-1.2-ia64-missing.patch
+	"${FILESDIR}"/${PN}-1.5.0-x32.patch
 	# needs refresh:
 	#"${FILESDIR}"/${PN}-1.2.1-only-include-execinfo_h-if-avaliable.patch
 )
