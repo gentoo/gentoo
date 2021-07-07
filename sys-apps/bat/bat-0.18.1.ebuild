@@ -152,7 +152,7 @@ CRATES="
 
 inherit cargo
 
-DESCRIPTION="A cat(1) clone with wings."
+DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 # Double check the homepage as the cargo_metadata crate
 # does not provide this value so instead repository is used
 HOMEPAGE="https://github.com/sharkdp/bat"
@@ -161,13 +161,12 @@ SRC_URI+=" $(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 CC0-1.0 ISC LGPL-3+ MIT Apache-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>=dev-libs/libgit2-1.1.0:=[threads]
 	dev-libs/oniguruma:=
-	sys-libs/zlib
 "
 # >app-backup/bacula-9.2[qt5] has file collisions, #686118
 RDEPEND="${DEPEND}
@@ -196,7 +195,7 @@ src_install() {
 
 	# Hack to find/install generated zsh completions files as it can be present in
 	# multiple directories
-	local BUILD_DIR="$(dirname $(find target/release -name bat.zsh -print -quit))"
+	local BUILD_DIR="$(dirname $(find target/release -name bat.zsh -print -quit || die) || die)"
 	insinto /usr/share/zsh/site-functions/
 	newins "${BUILD_DIR}"/bat.zsh _${PN}
 }
