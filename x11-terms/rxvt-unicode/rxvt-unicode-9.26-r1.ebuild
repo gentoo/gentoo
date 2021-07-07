@@ -5,14 +5,17 @@ EAPI=7
 
 inherit autotools desktop flag-o-matic systemd prefix
 
+COLOUR_PATCH_NAME="${PN}-9.26_24-bit-color_aur-20210516+eautoreconf.patch"
+
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
-SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2"
+SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2
+	https://dev.gentoo.org/~marecki/dists/${PN}/${COLOUR_PATCH_NAME}.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
+IUSE="24-bit-color 256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
 	+perl startup-notification unicode3 +utmp +wtmp xft"
 
 RDEPEND=">=sys-libs/ncurses-5.7-r6:=
@@ -28,11 +31,12 @@ RDEPEND=">=sys-libs/ncurses-5.7-r6:=
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
-# WARNING: will bdepend on >=sys-devel/autoconf-2.71 (masked as of 2021-05-16) if eautoreconf has to be called
+# WARNING: will bdepend on >=sys-devel/autoconf-2.71 (masked as of 2021-07-07) if eautoreconf has to be called
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
 	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${WORKDIR}"/${COLOUR_PATCH_NAME}
 )
 DOCS=(
 	Changes
@@ -56,6 +60,7 @@ src_prepare() {
 src_configure() {
 	# --enable-everything goes first: the order of the arguments matters
 	econf --enable-everything \
+		$(use_enable 24-bit-color) \
 		$(use_enable 256-color) \
 		$(use_enable blink text-blink) \
 		$(use_enable fading-colors fading) \
@@ -87,4 +92,14 @@ src_install() {
 
 	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
 		"System;TerminalEmulator"
+}
+
+pkg_postinst() {
+	if use 24-bit-color; then
+		ewarn
+		ewarn "You have enabled 24-bit colour support in ${PN}, which is UNOFFICIAL and INCOMPLETE."
+		ewarn "You may or may not encounter visual glitches or stability issues. When in doubt,"
+		ewarn "rebuild =${CATEGORY}/${PF} with USE=-24-bit-color (the default setting)."
+		ewarn
+	fi
 }
