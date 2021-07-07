@@ -30,7 +30,6 @@ python_check_deps() {
 
 src_prepare() {
 	xdg_src_prepare
-	eapply_user
 
 	hprefixify dist/freedoom
 }
