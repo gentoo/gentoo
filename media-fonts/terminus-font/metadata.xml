@@ -13,6 +13,7 @@
     <email>slashbeast@gentoo.org</email>
     <name>Piotr Karbowski</name>
   </maintainer>
+  <stabilize-allarches/>
   <use>
     <flag name="a-like-o">
       Changes view of letter 'a' - a looks like o (see homepage)
