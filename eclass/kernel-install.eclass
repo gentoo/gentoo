@@ -184,13 +184,26 @@ kernel-install_create_init() {
 
 	cat <<-_EOF_ >"${T}/init.c" || die
 		#include <stdio.h>
+		#include <sys/utsname.h>
+
 		int main() {
+			struct utsname u;
+			int ret = uname(&u);
+			if (ret != 0) {
+				printf("uname() failed, but that's fine\n");
+			}
+			else {
+				// Booted: Linux 5.10.47 ppc64le #1 SMP Fri Jul 2 12:55:24 PDT 2021
+				printf("Booted: %s %s %s %s\n", u.sysname, u.release,
+						u.machine, u.version);
+			}
+
 			printf("Hello, World!\n");
 			return 0;
 		}
 	_EOF_
 
-	$(tc-getBUILD_CC) -Os -static "${T}/init.c" -o "${output}" || die 
+	$(tc-getBUILD_CC) -Os -static "${T}/init.c" -o "${output}" || die
 	$(tc-getBUILD_STRIP) "${output}" || die
 }
 
