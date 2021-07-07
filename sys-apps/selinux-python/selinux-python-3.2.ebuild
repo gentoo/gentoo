@@ -7,6 +7,8 @@ PYTHON_REQ_USE="xml"
 
 inherit python-r1 toolchain-funcs
 
+IUSE="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DESCRIPTION="SELinux core utilities"
@@ -29,6 +31,7 @@ DEPEND=">=sys-libs/libselinux-${PV}:=[python]
 	>=sys-libs/libsepol-${PV}:=
 	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
 	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
+	test? ( >=sys-apps/secilc-${PV} )
 	${PYTHON_DEPS}"
 
 RDEPEND="${DEPEND}"
@@ -47,6 +50,26 @@ src_compile() {
 			LIBDIR="\$(PREFIX)/$(get_libdir)"
 	}
 	python_foreach_impl building
+}
+
+src_test() {
+	testing() {
+		# The different subprojects have some interproject dependencies:
+		# - audit2allow depens on sepolgen
+		# - chcat depends on semanage
+		# and maybe others.
+		# Add all the modules of the individual subprojects to the
+		# PYTHONPATH, so they get actually found and used. In
+		# particular, already installed versions on the system are not
+		# used.
+		for dir in audit2allow chcat semanage sepolgen/src sepolicy ; do
+			PYTHONPATH="${BUILD_DIR}/${dir}:${PYTHONPATH}"
+		done
+		PYTHONPATH=${PYTHONPATH} \
+			emake -C "${BUILD_DIR}" \
+				test
+	}
+	python_foreach_impl testing
 }
 
 src_install() {
