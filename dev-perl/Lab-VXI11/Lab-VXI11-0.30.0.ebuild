@@ -5,7 +5,7 @@ EAPI=8
 
 DIST_VERSION=0.03
 DIST_AUTHOR=AMBA
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 inherit perl-module
 
 DESCRIPTION="Perl interface to the VXI-11 Test&Measurement backend"
