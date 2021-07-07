@@ -12,7 +12,7 @@ SRC_URI="https://github.com/inverse-inc/sogo/archive/SOGo-${PV}.tar.gz -> ${P}.t
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="activesync gnutls +ssl"
+IUSE="activesync gnutls +ssl sodium"
 
 RDEPEND="
 	acct-user/sogo
@@ -25,6 +25,7 @@ RDEPEND="
 	!gnutls? (
 		dev-libs/openssl:0=
 	)
+	sodium? ( dev-libs/libsodium:= )
 "
 DEPEND="${RDEPEND}
 	>=gnustep-base/gnustep-make-2.6.3"
@@ -55,11 +56,15 @@ src_configure() {
 
 	egnustep_env
 
+	# saml2 requires liblasso, mfa requires liboath
 	./configure \
 		--disable-strip \
 		--prefix=/usr \
 		--with-ssl="${ssl_provider}" \
 		$(use_enable debug) \
+		$(use_enable sodium) \
+		--disable-mfa \
+		--disable-saml2 \
 		|| die "configure failed"
 }
 
