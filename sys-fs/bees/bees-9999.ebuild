@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info systemd
+inherit linux-info systemd toolchain-funcs
 
 DESCRIPTION="Best-Effort Extent-Same, a btrfs dedup agent"
 HOMEPAGE="https://github.com/Zygo/bees"
@@ -72,6 +72,7 @@ src_prepare() {
 }
 
 src_configure() {
+	tc-export CC CXX AR
 	cat >localconf <<-EOF || die
 		LIBEXEC_PREFIX="${EPREFIX}/usr/libexec"
 		PREFIX="${EPREFIX}/usr"
