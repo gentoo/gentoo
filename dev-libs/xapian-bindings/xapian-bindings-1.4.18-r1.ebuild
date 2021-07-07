@@ -14,7 +14,7 @@ PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 RUBY_OPTIONAL="yes"
 
 inherit java-pkg-opt-2 lua mono-env multibuild php-ext-source-r3 python-r1 ruby-ng
