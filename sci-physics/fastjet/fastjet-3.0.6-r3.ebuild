@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cgal doc examples +plugins"
 
 RDEPEND="
-	cgal? ( sci-mathematics/cgal:= )
+	cgal? ( sci-mathematics/cgal:=[shared(+)] )
 	plugins? ( sci-physics/siscone:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen[dot] )"
