@@ -14,3 +14,9 @@ S="${WORKDIR}/${PN/-/.}-${MY_COMMIT}"
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+src_prepare() {
+	eapply_user
+	# we don't actually run these tests
+	rm -r test || die
+}
