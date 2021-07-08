@@ -12,11 +12,11 @@ SRC_URI="https://github.com/glfw/glfw/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc64 x86"
-IUSE="wayland"
+IUSE="wayland-only"
 
 RDEPEND="
 	x11-libs/libxkbcommon
-	!wayland? (
+	!wayland-only? (
 		virtual/opengl
 		x11-libs/libX11
 		x11-libs/libXcursor
@@ -24,24 +24,24 @@ RDEPEND="
 		x11-libs/libXrandr
 		x11-libs/libXxf86vm
 	)
-	wayland? (
+	wayland-only? (
 		dev-libs/wayland
 		media-libs/mesa[egl,wayland]
 	)
 "
 DEPEND="
 	${RDEPEND}
-	!wayland? ( x11-libs/libXi )
-	wayland? ( dev-libs/wayland-protocols )
+	!wayland-only? ( x11-libs/libXi )
+	wayland-only? ( dev-libs/wayland-protocols )
 "
 BDEPEND="
-	wayland? ( kde-frameworks/extra-cmake-modules )
+	wayland-only? ( kde-frameworks/extra-cmake-modules )
 "
 
 src_configure() {
 	local mycmakeargs=(
 		-DGLFW_BUILD_EXAMPLES=no
-		-DGLFW_USE_WAYLAND="$(usex wayland)"
+		-DGLFW_USE_WAYLAND="$(usex wayland-only wayland)"
 		-DBUILD_SHARED_LIBS=1
 	)
 	cmake_src_configure
