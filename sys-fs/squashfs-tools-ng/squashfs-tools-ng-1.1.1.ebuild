@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,13 +15,13 @@ fi
 
 LICENSE="LGPL-3+ tools? ( GPL-3+ )"
 SLOT="0"
-IUSE="lz4 lzo selinux +tools +xz zstd"
+IUSE="lz4 +lzma lzo selinux +tools zstd"
 
 DEPEND="
 	sys-libs/zlib:=
 	lz4?     ( app-arch/lz4:= )
+	lzma?    ( app-arch/xz-utils:= )
 	lzo?     ( dev-libs/lzo:= )
-	xz?      ( app-arch/xz-utils:= )
 	selinux? ( sys-libs/libselinux:= )
 	zstd?    ( app-arch/zstd:= )
 "
