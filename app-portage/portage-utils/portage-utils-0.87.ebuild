@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage-utils.git"
 else
 	SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
-	KEYWORDS="hppa"
+	KEYWORDS="hppa ppc"
 fi
 
 RDEPEND="
