@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop
+inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="2d construction toy with objects that react on physical forces"
 HOMEPAGE="http://www.nongnu.org/construo/"
@@ -29,6 +29,10 @@ src_prepare() {
 	default
 	sed -i -e 's/^bindir=.*/bindir=@bindir@/' src/Makefile.am || die
 	eautoreconf
+}
+
+src_compile() {
+	emake AR=$(tc-getAR)
 }
 
 src_install() {
