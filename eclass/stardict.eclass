@@ -39,7 +39,7 @@ S="${WORKDIR}"/${DICT_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="gzip"
+IUSE="+zlib"
 
 DEPEND="
 	|| (
@@ -47,7 +47,7 @@ DEPEND="
 		app-text/sdcv
 		app-text/goldendict
 	)
-	gzip? (
+	zlib? (
 		app-arch/gzip
 		app-text/dictd
 	)"
