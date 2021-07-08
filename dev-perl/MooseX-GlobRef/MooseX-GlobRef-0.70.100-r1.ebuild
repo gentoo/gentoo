@@ -1,26 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=DEXTER
-MODULE_VERSION=0.0701
+DIST_AUTHOR=DEXTER
+DIST_VERSION=0.0701
 inherit perl-module
 
 DESCRIPTION="Store a Moose object in glob reference"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Moose-0.96"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		>=dev-perl/Test-Unit-Lite-0.12
 		dev-perl/Test-Assert
 		virtual/perl-parent
 	)"
-
-SRC_TEST=do
