@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage-utils.git"
 else
 	SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
-	KEYWORDS="hppa"
+	KEYWORDS="sparc x86"
 fi
 
 RDEPEND="
@@ -64,18 +64,4 @@ src_configure() {
 		$(use_enable qtegrity) \
 		$(use_enable openmp) \
 		$(use_enable static)
-}
-
-pkg_postinst() {
-	local pvr
-	local doshow=
-	for pvr in ${REPLACING_VERSIONS} ; do
-		[[ ${pvr} != "0.8"[012]* ]] && doshow=true
-	done
-
-	if [[ ${doshow} == true ]] ; then
-		elog "This version of Portage utils has undergone significant changes."
-		elog "Please read the elog manpages for applets like qlop(1) and"
-		elog "qfile(1) where argument options have changed."
-	fi
 }
