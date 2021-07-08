@@ -55,6 +55,7 @@ src_prepare() {
 	local PATCHES=(
 		# meh, genpatches have no directory
 		"${WORKDIR}"/*.patch
+		"${FILESDIR}"/5.10.47-ppc64-kvm.patch
 	)
 	default
 
