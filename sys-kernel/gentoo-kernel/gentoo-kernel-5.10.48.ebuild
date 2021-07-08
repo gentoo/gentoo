@@ -55,6 +55,9 @@ src_prepare() {
 	local PATCHES=(
 		# meh, genpatches have no directory
 		"${WORKDIR}"/*.patch
+		# NOTE: please ppc64 kvm patch while it applies
+		# should land to genpatches or upstream at .49 or .50
+		"${FILESDIR}"/5.10.47-ppc64-kvm.patch
 	)
 	default
 
