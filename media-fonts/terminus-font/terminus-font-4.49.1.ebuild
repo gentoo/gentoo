@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~a
 IUSE="a-like-o +center-tilde distinct-l +otf +pcf +pcf-unicode-only +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
-DEPEND="app-arch/gzip
+BDEPEND="app-arch/gzip
 	${PYTHON_DEPS}
 	virtual/awk
 	pcf? ( x11-apps/bdftopcf )"
