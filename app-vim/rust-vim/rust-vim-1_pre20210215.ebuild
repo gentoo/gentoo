@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_prepare() {
-	eapply_user
+	default
 	# we don't actually run these tests
 	rm -r test || die
 }
