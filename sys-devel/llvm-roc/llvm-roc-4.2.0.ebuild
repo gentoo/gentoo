@@ -33,6 +33,7 @@ src_prepare() {
 	cd "${WORKDIR}/llvm-project-rocm-${PV}" || die
 	eapply "${FILESDIR}/${PN}-3.0.0-add_libraries.patch"
 	eapply "${FILESDIR}/${PN}-4.0.0-remove-isystem-usr-include.patch"
+	eapply "${FILESDIR}/${PN}-4.2.0-cyclades.patch"
 
 	if [[ -n ${EPREFIX} ]]; then
 		pushd "${S}"/../clang >/dev/null || die
