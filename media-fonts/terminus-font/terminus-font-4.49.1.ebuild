@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit font python-any-r1
 
 DESCRIPTION="A clean fixed font for the console and X11"
@@ -26,7 +26,7 @@ FONTDIR=/usr/share/fonts/terminus
 FONT_CONF=( 75-yes-terminus.conf )
 DOCS=( README README-BG AUTHORS CHANGES )
 
-REQUIRED_USE="X? ( pcf )"
+REQUIRED_USE="X? ( || ( otf pcf ) )"
 
 pkg_setup() {
 	python_setup

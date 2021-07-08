@@ -25,7 +25,7 @@
       Install Open Type Font (OTF) (required for HarfBuzz backend)
     </flag>
     <flag name="pcf">
-      Install Portable Compiled Font (PCF) (required for X11)
+      Install Portable Compiled Font (PCF) (X11 bitmap fonts)
     </flag>
     <flag name="psf">
       Install PC Screen Font (PSF) with unicode data (for linux console)
