@@ -10,7 +10,7 @@ SRC_URI="https://github.com/numediart/mbrola-voices/archive/${GIT_COMMIT}.tar.gz
 
 LICENSE="MBROLA-VOICES"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 
 # This maps the l10n values to the appropriate voices
 declare -A voicemap
