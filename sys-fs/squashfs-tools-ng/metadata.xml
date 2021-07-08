@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="tools">Build the gensquashfs, rdsquashfs, sqfs2tar, sqfsdiff, and tar2sqfs tools</flag>
-		<flag name="xz">Enable support for XZ ("LZMA2") compression using <pkg>app-arch/xz-utils</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">AgentD/squashfs-tools-ng</remote-id>
