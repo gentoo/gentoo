@@ -77,6 +77,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC CXX
 	cat >localconf <<-EOF || die
+		ETC_PREFIX="${EPREFIX}/etc"
 		LIBEXEC_PREFIX="${EPREFIX}/usr/libexec"
 		PREFIX="${EPREFIX}/usr"
 		LIBDIR="${EPREFIX}/$(get_libdir)"
@@ -91,4 +92,10 @@ src_configure() {
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 	fi
+}
+
+src_compile() {
+	default
+	# localconf quotes leak in the systemd unit but are still needed for spaces
+	sed -i 's/"//g' scripts/beesd@.service || die
 }
