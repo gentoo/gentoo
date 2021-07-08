@@ -29,7 +29,7 @@ REQUIRED_USE="^^ ( curl_ssl_gnutls curl_ssl_openssl ) "
 
 # libcurl must not be using an ssl backend boinc does not support.
 # If the libcurl ssl backend changes, boinc should be recompiled.
-COMMON_DEPEND="
+DEPEND="
 	acct-group/boinc
 	acct-user/boinc
 	>=app-misc/ca-certificates-20080809
@@ -54,13 +54,12 @@ COMMON_DEPEND="
 		virtual/jpeg
 	)
 "
-DEPEND="${RDEPEND}
-	app-text/docbook-xml-dtd:4.4
+BDEPEND="app-text/docbook-xml-dtd:4.4
 	app-text/docbook2X
 	sys-devel/gettext
 	X? ( virtual/imagemagick-tools[png,tiff] )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!app-admin/quickswitch
 "
 
