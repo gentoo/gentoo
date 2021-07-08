@@ -17,9 +17,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="acl binutils bzip2 libcaca colord cpio +diff docx dtc e2fsprogs file
-find gettext gif gpg gzip haskell hdf5 hex imagemagick iso java llvm
+find gettext gif gpg haskell hdf5 hex imagemagick iso java llvm lzma
 mono opendocument pascal pdf postscript R rpm sqlite squashfs
-ssh tar test tcpdump xz zip zstd"
+ssh tar test tcpdump zip zlib zstd"
 
 RESTRICT="!test? ( test )"
 
@@ -51,7 +51,6 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	gettext? ( sys-devel/gettext )
 	gif? ( media-libs/giflib )
 	gpg? ( app-crypt/gnupg )
-	gzip? ( app-arch/gzip )
 	haskell? ( dev-lang/ghc )
 	hdf5? ( sci-libs/hdf5 )
 	hex? ( app-editors/vim-core )
@@ -59,6 +58,7 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	iso? ( app-cdr/cdrtools )
 	java? ( virtual/jdk )
 	llvm? ( sys-devel/llvm )
+	lzma? ( app-arch/xz-utils )
 	mono? ( dev-lang/mono )
 	opendocument? ( app-text/odt2txt )
 	pascal? ( dev-lang/fpc )
@@ -75,8 +75,8 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	ssh? ( net-misc/openssh )
 	tar? ( app-arch/tar )
 	tcpdump? ( net-analyzer/tcpdump )
-	xz? ( app-arch/xz-utils )
 	zip? ( app-arch/unzip )
+	zlib? ( app-arch/gzip )
 	zstd? ( app-arch/zstd )
 "
 # Presence if filemagic's magic.py breaks imports

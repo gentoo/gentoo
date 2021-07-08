@@ -35,7 +35,6 @@
 		<flag name="ssh">Use <pkg>net-misc/openssh</pkg></flag>
 		<flag name="tar">Use <pkg>app-arch/tar</pkg></flag>
 		<flag name="tcpdump">Use <pkg>net-analyzer/tcpdump</pkg></flag>
-		<flag name="xz">Use <pkg>app-arch/xz-utils</pkg></flag>
 		<flag name="zip">Use <pkg>app-arch/unzip</pkg></flag>
 	</use>
 	<upstream>
