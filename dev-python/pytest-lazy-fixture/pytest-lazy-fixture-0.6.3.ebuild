@@ -15,9 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="
-	dev-python/flake8[${PYTHON_USEDEP}]
-	dev-python/tox[${PYTHON_USEDEP}]
-"
+RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
