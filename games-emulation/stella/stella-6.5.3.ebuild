@@ -12,7 +12,7 @@ SRC_URI="https://github.com/stella-emu/stella/releases/download/${PV}/${P}-src.t
 LICENSE="BSD GPL-2+ MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+joystick png zlib"
+IUSE="+joystick png +zlib"
 REQUIRED_USE="png? ( zlib )"
 
 RDEPEND="
