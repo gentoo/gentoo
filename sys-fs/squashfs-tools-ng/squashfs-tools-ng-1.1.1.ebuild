@@ -15,7 +15,7 @@ fi
 
 LICENSE="LGPL-3+ tools? ( GPL-3+ )"
 SLOT="0"
-IUSE="lz4 +lzma lzo selinux +tools zstd"
+IUSE="lz4 +lzma lzo selinux +tools +zstd"
 
 DEPEND="
 	sys-libs/zlib:=
