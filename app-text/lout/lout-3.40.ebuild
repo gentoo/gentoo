@@ -5,7 +5,7 @@ EAPI=6
 
 inherit toolchain-funcs
 
-IUSE="zlib doc"
+IUSE="+zlib doc"
 
 DESCRIPTION="High-level language for document formatting"
 HOMEPAGE="http://savannah.nongnu.org/projects/lout"
