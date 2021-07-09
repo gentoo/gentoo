@@ -21,7 +21,7 @@ LICENSE="GPL-2"
 
 SLOT="0/20"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="c++11 emacs fastjet hepmc java lhapdf static-libs test zlib"
+IUSE="c++11 emacs fastjet hepmc java lhapdf static-libs test +zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
