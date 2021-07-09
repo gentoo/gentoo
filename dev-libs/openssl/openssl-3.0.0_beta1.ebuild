@@ -22,7 +22,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0/3" # .so version of libssl/libcrypto
 
-IUSE="+asm cpu_flags_x86_sse2 elibc_musl ktls rfc3779 sctp static-libs test vanilla zlib"
+IUSE="+asm cpu_flags_x86_sse2 elibc_musl ktls rfc3779 sctp static-libs test vanilla +zlib"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
