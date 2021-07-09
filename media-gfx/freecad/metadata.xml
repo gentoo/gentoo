@@ -14,17 +14,9 @@
 			Build the addon manager module for automatic handling of 3rd 
 			party addons
 		</flag>
-		<flag name="arch">
-			Build the architecture workbench for working with architectural 
-			elements
-		</flag>
 		<flag name="cloud">
 			Build the Cloud workbench, to access cloud providers (mostly
 			Amazon S3).
-		</flag>
-		<flag name="drawing">
-			Build the drawing module and workbench to display 3D work on a 
-			2D sheet
 		</flag>
 		<flag name="fem">
 			Build the FEM module and workbench which provides Finite Element 
@@ -48,10 +40,6 @@
 		</flag>
 		<flag name="material">
 			Build the material module and workbench to work with materials
-		</flag>
-		<flag name="mesh">
-			Build the mesh module and workbench to work with triangulated 
-			meshes
 		</flag>
 		<flag name="openscad">
 			Build the OpenSCAD module for interoperability with OpenSCAD 
@@ -88,10 +76,6 @@
 		</flag>
 		<flag name="show">
 			Build the show module, a helper module for visibility automation
-		</flag>
-		<flag name="spreadsheet">
-			Build the spreadsheet module and workbench to create and manipulate 
-			spreadsheet data
 		</flag>
 		<flag name="surface">
 			Build the surface module and workbench
