@@ -79,7 +79,7 @@ RDEPEND="
 		dev-libs/openssl:=
 		net-misc/curl
 	)
-	fem? ( sci-libs/vtk[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
+	fem? ( sci-libs/vtk:=[boost,python,qt5,rendering,${PYTHON_SINGLE_USEDEP}] )
 	openscad? ( media-gfx/openscad )
 	pcl? ( ~sci-libs/pcl-${PV}:=[opengl,openni2(+),qt5(+),vtk(+)] )
 	$(python_gen_cond_dep '
