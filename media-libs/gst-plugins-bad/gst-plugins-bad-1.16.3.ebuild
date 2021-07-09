@@ -12,7 +12,7 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="LGPL-2"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86"
 
-IUSE="X bzip2 +introspection +orc vnc wayland"
+IUSE="X +bzip2 +introspection +orc vnc wayland"
 
 # X11 is automagic for now, upstream #709530 - only used by librfb USE=vnc plugin
 RDEPEND="
