@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples"
 
+PATCHES=( "${FILESDIR}/${P}-kernel-5.13.patch" )
+
 BUILD_TARGETS="default"
 CONFIG_CHECK="ACPI"
 MODULE_NAMES="acpi_call(misc:${S})"
