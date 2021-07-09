@@ -12,7 +12,7 @@ SRC_URI="https://www.cgsecurity.org/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
-IUSE="ewf jpeg ntfs qt5 reiserfs static zlib"
+IUSE="ewf jpeg ntfs qt5 reiserfs static +zlib"
 
 REQUIRED_USE="static? ( !qt5 )"
 
