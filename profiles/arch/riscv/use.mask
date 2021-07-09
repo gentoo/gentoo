@@ -21,10 +21,6 @@ lua_single_target_lua5-2
 lua_single_target_luajit
 lua_targets_lua5-2
 lua_targets_luajit
-# dev-lang/lua:5.1 needs run-time testing, it passes build-time tests
-# but its test suite is much less comprehensive than that of 5.2+
-lua_single_target_lua5-1
-lua_targets_lua5-1
 
 # Ben Kohler <bkohler@gentoo.org> (2019-01-09)
 # no fam providers keyworded yet
@@ -42,7 +38,6 @@ java
 kerberos
 latex
 libedit
-lua
 mono
 motif
 opencl
