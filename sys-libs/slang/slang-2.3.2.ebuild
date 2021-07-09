@@ -18,7 +18,7 @@ else
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="cjk pcre png readline static-libs zlib"
+IUSE="cjk pcre png readline static-libs +zlib"
 
 # ncurses for ncurses5-config to get terminfo directory
 RDEPEND="
