@@ -19,7 +19,7 @@ HOMEPAGE="https://kernel.org/pub/linux/utils/kernel/kexec/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="booke lzma xen zlib"
+IUSE="booke +lzma xen +zlib"
 
 REQUIRED_USE="lzma? ( zlib )"
 
