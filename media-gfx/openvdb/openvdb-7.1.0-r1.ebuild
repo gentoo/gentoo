@@ -66,6 +66,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-0001-Fix-multilib-header-source.patch"
 	"${FILESDIR}/${P}-0002-Fix-doc-install-dir.patch"
+	"${FILESDIR}/${PN}-8.0.1-glfw-libdir.patch"
 )
 
 pkg_setup() {
