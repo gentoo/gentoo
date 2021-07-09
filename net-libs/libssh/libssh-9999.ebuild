@@ -19,7 +19,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname major version
-IUSE="debug doc examples gcrypt gssapi mbedtls pcap server +sftp static-libs test zlib"
+IUSE="debug doc examples gcrypt gssapi mbedtls pcap server +sftp static-libs test +zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
 REQUIRED_USE="?? ( gcrypt mbedtls )"
