@@ -541,12 +541,6 @@ dev-go/qt
 media-plugins/kodi-game-libretro-nestopia
 media-plugins/kodi-game-libretro-dosbox
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-10-30)
-# broken acl handling, possible broken chattr handling
-# needs more testing
-# bug #751739
-=sys-apps/opentmpfiles-0.3.1
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-10-26)
 # Historical metapackage that exists in slot 5 only for transition from KDE SC4.
 # Masked for removal on 2021-08-31. Replaced by:
