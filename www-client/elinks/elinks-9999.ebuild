@@ -16,7 +16,7 @@ HOMEPAGE="http://elinks.or.cz/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
+IUSE="bittorrent brotli +bzip2 debug finger ftp gopher gpm gnutls guile idn ipv6
 	lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib zstd"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
