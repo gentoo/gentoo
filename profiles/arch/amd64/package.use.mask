@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-07-09)
+# dev-libs/libbpf has amd64 keyword
+sys-apps/iproute2 -bpf
+
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers is supported on this arch.
 x11-base/xwayland -video_cards_nvidia
