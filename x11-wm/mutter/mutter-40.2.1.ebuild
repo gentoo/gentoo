@@ -94,7 +94,7 @@ BDEPEND="
 		>=sys-kernel/linux-headers-4.4
 		|| (
 			x11-libs/libxcvt
-			x11-base/xorg-server[xorg,-minimal]
+			<x11-base/xorg-server-1.20.11-r3[xorg,-minimal]
 		)
 	)
 "
