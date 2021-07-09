@@ -34,6 +34,7 @@ amd64		default/linux/amd64/17.1/developer			stable
 amd64		default/linux/amd64/17.1/no-multilib			stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened		stable
 amd64		default/linux/amd64/17.1/no-multilib/hardened/selinux	stable
+amd64		default/linux/amd64/17.1/no-multilib/systemd		dev
 amd64		default/linux/amd64/17.1/systemd			stable
 
 # AMD64 Profiles
