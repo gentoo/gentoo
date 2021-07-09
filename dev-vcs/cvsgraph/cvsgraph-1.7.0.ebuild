@@ -10,7 +10,7 @@ SRC_URI="http://www.akhphd.au.dk/~bertho/cvsgraph/release/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
-IUSE="gif jpeg nls png truetype zlib"
+IUSE="gif jpeg nls png truetype +zlib"
 
 DEPEND="media-libs/gd
 	zlib? ( sys-libs/zlib )
