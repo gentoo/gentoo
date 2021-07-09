@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
-IUSE="zlib bzip2"
+IUSE="+zlib +bzip2"
 
 RDEPEND="zlib? ( sys-libs/zlib )
 	bzip2? ( app-arch/bzip2 )"
