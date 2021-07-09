@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}_src.tar.
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="zlib +ecm mpi"
+IUSE="+zlib +ecm mpi"
 
 RDEPEND="
 	ecm? ( sci-mathematics/gmp-ecm )
