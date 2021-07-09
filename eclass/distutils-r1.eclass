@@ -562,7 +562,7 @@ distutils_install_for_testing() {
 		local bindir=${TEST_DIR}/scripts
 		local libdir=${TEST_DIR}/lib
 		PATH=${bindir}:${PATH}
-		PYTHONPATH=${libdir}:${PYTHONPATH}
+		export PYTHONPATH=${libdir}:${PYTHONPATH}
 
 		case ${install_method} in
 			home)
