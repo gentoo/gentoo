@@ -41,6 +41,7 @@ RDEPEND="${DEPEND}
 	git? ( dev-vcs/git )
 	java? ( >=virtual/jre-1.8 )"
 BDEPEND="
+	!git? ( cvs? ( dev-vcs/cvs ) )
 	git? ( dev-vcs/git )
 "
 PDEPEND="emacs? ( app-emacs/po-mode )"
