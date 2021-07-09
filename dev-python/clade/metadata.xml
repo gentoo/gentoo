@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>efremov@linux.com</email>
+		<name>Denis Efremov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Clade is a tool for intercepting build commands (stuff like compilation, linking, mv, rm, and all other commands that are executed during build). Intercepted commands can be parsed (to search for input and output files, and options) and then used for various purposes, e.g. generating compilation database.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">17451k/clade</remote-id>
+		<remote-id type="pypi">clade</remote-id>
+		<bugs-to>https://github.com/17451k/clade/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
