@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Blosc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/1"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+lz4 +snappy test zlib zstd"
+IUSE="+lz4 +snappy test +zlib +zstd"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
