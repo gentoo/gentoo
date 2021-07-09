@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~a
 # Tests are broken. See bug 657500
 RESTRICT="test"
 
-IUSE="acl caps doc dbus lua nls python selinux test zstd"
+IUSE="acl caps doc dbus lua nls python selinux test +zstd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="!app-arch/rpm5
