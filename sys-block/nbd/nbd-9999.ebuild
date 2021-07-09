@@ -16,7 +16,7 @@ else
 fi
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug gnutls netlink zlib"
+IUSE="debug gnutls netlink +zlib"
 
 BDEPEND="virtual/pkgconfig"
 
