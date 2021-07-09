@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples fasttree fatlines judy lzma packed tcl"
+IUSE="doc examples fasttree fatlines judy +lzma packed tcl"
 
 RDEPEND="
 	dev-libs/glib:2
