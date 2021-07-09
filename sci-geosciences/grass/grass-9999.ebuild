@@ -19,7 +19,7 @@ EGIT_REPO_URI="https://github.com/OSGeo/grass.git"
 
 LICENSE="GPL-2"
 SLOT="0/7.9"
-IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl openmp png postgres readline sqlite threads tiff truetype X zstd"
+IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl openmp png postgres readline sqlite threads tiff truetype X +zstd"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
