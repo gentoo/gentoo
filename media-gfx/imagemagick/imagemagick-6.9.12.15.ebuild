@@ -21,7 +21,7 @@ HOMEPAGE="https://www.imagemagick.org/"
 
 LICENSE="imagemagick"
 SLOT="0/6.9.11-60"
-IUSE="bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml zlib"
+IUSE="+bzip2 corefonts +cxx djvu fftw fontconfig fpx graphviz hdri heif jbig jpeg jpeg2k lcms lqr +lzma opencl openexr openmp pango perl +png postscript q32 q8 raw static-libs svg test tiff truetype webp wmf X xml +zlib"
 
 REQUIRED_USE="corefonts? ( truetype )
 	svg? ( xml )
