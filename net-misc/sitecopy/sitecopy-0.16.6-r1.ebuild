@@ -12,7 +12,7 @@ KEYWORDS="amd64 x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="expat nls rsh ssl webdav xml zlib"
+IUSE="expat nls rsh ssl webdav xml +zlib"
 
 RDEPEND="
 	rsh? ( net-misc/netkit-rsh )
