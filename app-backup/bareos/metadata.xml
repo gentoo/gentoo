@@ -22,6 +22,7 @@
     <flag name="scsi-crypto">Enable low level SCSI crypto support</flag>
     <flag name="sql-pooling">Enable SQL pooling support</flag>
     <flag name="storage-daemon">Install storage daemon (bareos-sd)</flag>
+    <flag name="traymonitor">Install Bareos Tray Monitor (QT)</flag>
   </use>
   <upstream>
     <remote-id type="github">bareos/bareos</remote-id>
