@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ggreer/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="lzma test zlib"
+IUSE="+lzma test +zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libpcre
