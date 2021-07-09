@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-07-09)
+# dev-libs/libbpf has x86 keyword
+sys-apps/iproute2 -bpf
+
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
 # Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.
 games-fps/yamagi-quake2 vulkan
