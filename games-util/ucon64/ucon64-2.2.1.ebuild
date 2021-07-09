@@ -13,7 +13,7 @@ S="${WORKDIR}/${P}-src/src"
 LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug usb zlib"
+IUSE="debug usb +zlib"
 
 RDEPEND="
 	usb? ( virtual/libusb:0 )
