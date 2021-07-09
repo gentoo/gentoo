@@ -21,7 +21,7 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	test? (
-		dev-lang/ruby:2.5
+		dev-lang/ruby:2.6
 		>=dev-cpp/gtest-1.8.0
 		dev-util/cucumber
 		dev-util/aruba
