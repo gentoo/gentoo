@@ -23,7 +23,7 @@ fi
 LICENSE="BSD"
 SLOT="0/28"
 KEYWORDS=""
-IUSE="emacs examples static-libs test zlib"
+IUSE="emacs examples static-libs test +zlib"
 RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( app-editors/emacs:* )"
