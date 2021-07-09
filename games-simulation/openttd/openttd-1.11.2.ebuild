@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-IUSE="allegro cpu_flags_x86_sse dedicated +fluidsynth icu +lzma lzo +openmedia +png +sdl timidity +truetype zlib"
+IUSE="allegro cpu_flags_x86_sse dedicated +fluidsynth icu +lzma lzo +openmedia +png +sdl timidity +truetype +zlib"
 REQUIRED_USE="!dedicated? ( || ( allegro sdl ) )"
 
 RESTRICT="test" # needs a graphics set in order to test
