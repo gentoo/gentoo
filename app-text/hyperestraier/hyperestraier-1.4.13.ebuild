@@ -14,7 +14,7 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 sparc x86"
 SLOT="0"
-IUSE="bzip2 debug java lzo mecab perl ruby static-libs +zlib"
+IUSE="+bzip2 debug java lzo mecab perl ruby static-libs +zlib"
 
 RDEPEND="dev-db/qdbm
 	bzip2? ( app-arch/bzip2 )
