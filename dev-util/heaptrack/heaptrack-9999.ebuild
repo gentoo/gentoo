@@ -12,7 +12,7 @@ https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS=""
-IUSE="+gui test zstd"
+IUSE="+gui test +zstd"
 
 BDEPEND="
 	gui? ( kde-frameworks/extra-cmake-modules:5 )
