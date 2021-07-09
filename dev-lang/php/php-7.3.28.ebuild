@@ -31,7 +31,7 @@ IUSE="${IUSE}
 	${SAPIS/cli/+cli}
 	threads"
 
-IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
+IUSE="${IUSE} acl argon2 bcmath berkdb +bzip2 calendar cdb cjk
 	coverage +ctype curl debug
 	enchant exif +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +hash +iconv imap inifile
