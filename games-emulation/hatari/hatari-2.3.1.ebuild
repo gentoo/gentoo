@@ -13,7 +13,7 @@ SRC_URI="https://download.tuxfamily.org/hatari/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="capsimage gui microphone png portmidi readline udev zlib"
+IUSE="capsimage gui microphone png portmidi readline udev +zlib"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
