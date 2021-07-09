@@ -20,7 +20,7 @@ HOMEPAGE="https://gmic.eu/ https://github.com/dtschump/gmic"
 
 LICENSE="CeCILL-2 GPL-3"
 SLOT="0"
-IUSE="cli curl ffmpeg fftw gimp graphicsmagick jpeg krita opencv openexr openmp png qt5 static-libs tiff X zlib"
+IUSE="cli curl ffmpeg fftw gimp graphicsmagick jpeg krita opencv openexr openmp png qt5 static-libs tiff X +zlib"
 REQUIRED_USE="
 	gimp? ( png zlib fftw X )
 	krita? ( png zlib fftw X )
