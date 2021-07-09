@@ -15,7 +15,7 @@ SRC_URI="https://sourceforge.net/code-snapshots/git/p/pe/peerguardian/code.git/p
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron dbus logrotate networkmanager qt5 zlib"
+IUSE="cron dbus logrotate networkmanager qt5 +zlib"
 REQUIRED_USE="qt5? ( dbus )"
 
 DEPEND="
