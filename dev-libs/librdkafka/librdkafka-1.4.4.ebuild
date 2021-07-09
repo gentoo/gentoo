@@ -22,7 +22,7 @@ LICENSE="BSD-2"
 # subslot = soname version
 SLOT="0/1"
 
-IUSE="lz4 sasl ssl static-libs zstd"
+IUSE="lz4 sasl ssl static-libs +zstd"
 
 LIB_DEPEND="
 	lz4? ( app-arch/lz4:=[static-libs(+)] )
