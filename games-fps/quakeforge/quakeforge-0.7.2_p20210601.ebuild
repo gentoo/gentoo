@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa +client custom-cflags debug doc flac ipv6 jack ncurses oss png sdl vorbis wildmidi zlib"
+IUSE="alsa +client custom-cflags debug doc flac ipv6 jack ncurses oss png sdl vorbis wildmidi +zlib"
 
 RDEPEND="
 	client? (
