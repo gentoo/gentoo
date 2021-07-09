@@ -17,7 +17,7 @@ DESCRIPTION="PHP extension for interfacing with Redis"
 LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
-IUSE="igbinary +json lz4 +session zstd"
+IUSE="igbinary +json lz4 +session +zstd"
 
 DEPEND="
 	igbinary? ( >=dev-php/igbinary-3.0.1-r1[php_targets_php7-3(-)?,php_targets_php7-4(-)?,php_targets_php8-0(-)?] )
