@@ -3,76 +3,71 @@
 
 EAPI="7"
 
-inherit flag-o-matic linux-info toolchain-funcs multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P=${P/_/-}
 
-DESCRIPTION="Robust, full-featured Open Source Toolkit for the Transport Layer Security (TLS)"
+# This patch set is based on the following files from Fedora 31,
+# see https://src.fedoraproject.org/rpms/openssl/blob/f31/f/openssl.spec
+# for more details:
+# - hobble-openssl (SOURCE1)
+# - ec_curve.c (SOURCE12) -- MODIFIED
+# - ectest.c (SOURCE13)
+# - openssl-1.1.1-ec-curves.patch (PATCH37) -- MODIFIED
+BINDIST_PATCH_SET="openssl-1.1.1i-bindist-1.0.tar.xz"
+
+DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+	bindist? (
+		mirror://gentoo/${BINDIST_PATCH_SET}
+		https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET}
+	)"
 
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/openssl/openssl.git"
+LICENSE="openssl"
+SLOT="0/1.1" # .so version of libssl/libcrypto
+[[ "${PV}" = *_pre* ]] || \
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x86-linux"
+IUSE="+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-compression tls-heartbeat vanilla"
+RESTRICT="!bindist? ( bindist )
+	!test? ( test )"
 
-	inherit git-r3
-else
-	SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
-fi
-
-LICENSE="Apache-2.0"
-SLOT="0/3" # .so version of libssl/libcrypto
-
-IUSE="+asm cpu_flags_x86_sse2 elibc_musl ktls rfc3779 sctp static-libs test vanilla zlib"
-RESTRICT="!test? ( test )"
-
-COMMON_DEPEND="
-	>=app-misc/c_rehash-1.7-r1
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
-"
-
+RDEPEND=">=app-misc/c_rehash-1.7-r1
+	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/perl-5
-	dev-perl/Text-Template
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
 	test? (
 		sys-apps/diffutils
 		sys-devel/bc
 		sys-process/procps
 	)"
-
-DEPEND="${COMMON_DEPEND}"
-
-RDEPEND="${COMMON_DEPEND}"
-
 PDEPEND="app-misc/ca-certificates"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.1i-riscv32.patch
+)
 
 S="${WORKDIR}/${MY_P}"
 
+# force upgrade to prevent broken login, bug 696950
+RDEPEND+=" !<net-misc/openssh-8.0_p1-r3"
+
 MULTILIB_WRAPPED_HEADERS=(
-	/usr/include/openssl/configuration.h
+	usr/include/openssl/opensslconf.h
 )
 
 pkg_setup() {
-	if use ktls ; then
-		if kernel_is -lt 4 18 ; then
-			ewarn "Kernel implementation of TLS (USE=ktls) requires kernel >=4.18!"
-		else
-			CONFIG_CHECK="~TLS ~TLS_DEVICE"
-			ERROR_TLS="You will be unable to offload TLS to kernel because CONFIG_TLS is not set!"
-			ERROR_TLS_DEVICE="You will be unable to offload TLS to kernel because CONFIG_TLS_DEVICE is not set!"
-
-			linux-info_pkg_setup
-		fi
-	fi
-
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	# must check in pkg_setup; sysctl don't work with userpriv!
-	if has test ${FEATURES} && use sctp ; then
+	if has test ${FEATURES} && use sctp; then
 		# test_ssl_new will fail with "Ensure SCTP AUTH chunks are enabled in kernel"
 		# if sctp.auth_enable is not enabled.
 		local sctp_auth_status=$(sysctl -n net.sctp.auth_enable 2>/dev/null)
-		if [[ -z "${sctp_auth_status}" ]] || [[ ${sctp_auth_status} != 1 ]] ; then
+		if [[ -z "${sctp_auth_status}" ]] || [[ ${sctp_auth_status} != 1 ]]; then
 			die "FEATURES=test with USE=sctp requires net.sctp.auth_enable=1!"
 		fi
 	fi
@@ -82,6 +77,30 @@ src_prepare() {
 	# allow openssl to be cross-compiled
 	cp "${FILESDIR}"/gentoo.config-1.0.2 gentoo.config || die
 	chmod a+rx gentoo.config || die
+
+	if use bindist; then
+		mv "${WORKDIR}"/bindist-patches/hobble-openssl "${WORKDIR}" || die
+		bash "${WORKDIR}"/hobble-openssl || die
+
+		cp -f "${WORKDIR}"/bindist-patches/ec_curve.c "${S}"/crypto/ec/ || die
+		cp -f "${WORKDIR}"/bindist-patches/ectest.c "${S}"/test/ || die
+
+		eapply "${WORKDIR}"/bindist-patches/ec-curves.patch
+
+		local known_failing_test
+		for known_failing_test in \
+			30-test_evp_extra.t \
+			80-test_ssl_new.t \
+		; do
+			ebegin "Disabling test '${known_failing_test}' which is known to fail with USE=bindist"
+			rm test/recipes/${known_failing_test} || die
+			eend $?
+		done
+
+		# Also see the configure parts below:
+		# enable-ec \
+		# $(use_ssl !bindist ec2m) \
+	fi
 
 	# keep this in sync with app-misc/c_rehash
 	SSL_CNF_DIR="/etc/ssl"
@@ -96,11 +115,12 @@ src_prepare() {
 		fi
 	fi
 
-	eapply_user
+	eapply_user #332661
 
-	if has test ${FEATURES} && use sctp && has network-sandbox ${FEATURES} ; then
-		einfo "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox ..."
+	if has test ${FEATURES} && use sctp && has network-sandbox ${FEATURES}; then
+		ebegin "Disabling test '80-test_ssl_new.t' which is known to fail with FEATURES=network-sandbox"
 		rm test/recipes/80-test_ssl_new.t || die
+		eend $?
 	fi
 
 	# make sure the man pages are suffixed #302165
@@ -123,19 +143,18 @@ src_prepare() {
 
 	append-flags -fno-strict-aliasing
 	append-flags $(test-flags-CC -Wa,--noexecstack)
+	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
 
 	# Prefixify Configure shebang (#141906)
 	sed \
 		-e "1s,/usr/bin/env,${EPREFIX}&," \
 		-i Configure || die
-
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
 		sed \
 			-e '/^$config{dirs}/s@ "test",@@' \
 			-i Configure || die
 	fi
-
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
 	./config --test-sanity || die "I AM NOT SANE"
@@ -148,45 +167,67 @@ multilib_src_configure() {
 	unset SCRIPTS #312551
 	unset CROSS_COMPILE #311473
 
-	tc-export AR CC CXX RANLIB RC
+	tc-export CC AR RANLIB RC
+
+	# Clean out patent-or-otherwise-encumbered code
+	# Camellia: Royalty Free            https://en.wikipedia.org/wiki/Camellia_(cipher)
+	# IDEA:     Expired                 https://en.wikipedia.org/wiki/International_Data_Encryption_Algorithm
+	# EC:       ????????? ??/??/2015    https://en.wikipedia.org/wiki/Elliptic_Curve_Cryptography
+	# MDC2:     Expired                 https://en.wikipedia.org/wiki/MDC-2
+	# RC5:      Expired                 https://en.wikipedia.org/wiki/RC5
 
 	use_ssl() { usex $1 "enable-${2:-$1}" "no-${2:-$1}" " ${*:3}" ; }
 	echoit() { echo "$@" ; "$@" ; }
 
 	local krb5=$(has_version app-crypt/mit-krb5 && echo "MIT" || echo "Heimdal")
 
+	# See if our toolchain supports __uint128_t.  If so, it's 64bit
+	# friendly and can use the nicely optimized code paths. #460790
+	local ec_nistp_64_gcc_128
+	# Disable it for now though #469976
+	#if ! use bindist ; then
+	#	echo "__uint128_t i;" > "${T}"/128.c
+	#	if ${CC} ${CFLAGS} -c "${T}"/128.c -o /dev/null >&/dev/null ; then
+	#		ec_nistp_64_gcc_128="enable-ec_nistp_64_gcc_128"
+	#	fi
+	#fi
+
 	local sslout=$(./gentoo.config)
 	einfo "Use configuration ${sslout:-(openssl knows best)}"
 	local config="Configure"
 	[[ -z ${sslout} ]] && config="config"
 
-	local myeconfargs=(
-		${sslout}
-		$(use cpu_flags_x86_sse2 || echo "no-sse2")
-		enable-camellia
-		enable-ec
-		enable-ec2m
-		enable-sm2
-		enable-srp
-		$(use elibc_musl && echo "no-async")
-		enable-idea
-		enable-mdc2
-		enable-rc5
-		$(use_ssl asm)
-		$(use_ssl ktls)
-		$(use_ssl rfc3779)
-		$(use_ssl sctp)
-		$(use_ssl zlib)
-		--prefix="${EPREFIX}"/usr
-		--openssldir="${EPREFIX}"${SSL_CNF_DIR}
-		--libdir=$(get_libdir)
-		shared
-		threads
-	)
-
+	# Fedora hobbled-EC needs 'no-ec2m'
+	# 'srp' was restricted until early 2017 as well.
+	# "disable-deprecated" option breaks too many consumers.
+	# Don't set it without thorough revdeps testing.
+	# Make sure user flags don't get added *yet* to avoid duplicated
+	# flags.
 	CFLAGS= LDFLAGS= echoit \
-		./${config} \
-		"${myeconfargs[@]}" \
+	./${config} \
+		${sslout} \
+		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
+		enable-camellia \
+		enable-ec \
+		$(use_ssl !bindist ec2m) \
+		$(use_ssl !bindist sm2) \
+		enable-srp \
+		$(use elibc_musl && echo "no-async") \
+		${ec_nistp_64_gcc_128} \
+		enable-idea \
+		enable-mdc2 \
+		enable-rc5 \
+		$(use_ssl sslv3 ssl3) \
+		$(use_ssl sslv3 ssl3-method) \
+		$(use_ssl asm) \
+		$(use_ssl rfc3779) \
+		$(use_ssl sctp) \
+		$(use_ssl tls-compression zlib) \
+		$(use_ssl tls-heartbeat heartbeats) \
+		--prefix="${EPREFIX}"/usr \
+		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
+		--libdir=$(get_libdir) \
+		shared threads \
 		|| die
 
 	# Clean out hardcoded flags that openssl uses
@@ -207,8 +248,7 @@ multilib_src_configure() {
 	sed -i \
 		-e "/^CFLAGS=/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
 		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
-		Makefile \
-		|| die
+		Makefile || die
 }
 
 multilib_src_compile() {
@@ -224,7 +264,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 	# We need to create $ED/usr on our own to avoid a race condition #665130
-	if [[ ! -d "${ED}/usr" ]] ; then
+	if [[ ! -d "${ED}/usr" ]]; then
 		# We can only create this directory once
 		mkdir "${ED}"/usr || die
 	fi
@@ -236,7 +276,7 @@ multilib_src_install() {
 	# build system: the static archives are built as PIC all the time.
 	# Only way around this would be to manually configure+compile openssl
 	# twice; once with shared lib support enabled and once without.
-	if ! use static-libs ; then
+	if ! use static-libs; then
 		rm "${ED}"/usr/$(get_libdir)/lib{crypto,ssl}.a || die
 	fi
 }
@@ -246,7 +286,7 @@ multilib_src_install_all() {
 	# we provide a shell version via app-misc/c_rehash
 	rm "${ED}"/usr/bin/c_rehash || die
 
-	dodoc {AUTHORS,CHANGES,NEWS,README,README-PROVIDERS}.md doc/*.txt doc/${PN}-c-indent.el
+	dodoc CHANGES* FAQ NEWS README doc/*.txt doc/${PN}-c-indent.el
 
 	# create the certs directory
 	keepdir ${SSL_CNF_DIR}/certs
@@ -256,19 +296,14 @@ multilib_src_install_all() {
 	local m d s
 	for m in $(find . -type f | xargs grep -L '#include') ; do
 		d=${m%/*} ; d=${d#./} ; m=${m##*/}
-
 		[[ ${m} == openssl.1* ]] && continue
-
 		[[ -n $(find -L ${d} -type l) ]] && die "erp, broken links already!"
-
-		mv ${d}/{,ssl-}${m} || die
-
+		mv ${d}/{,ssl-}${m}
 		# fix up references to renamed man pages
-		sed -i '/^[.]SH "SEE ALSO"/,/^[.]/s:\([^(, ]*(1)\):ssl-\1:g' ${d}/ssl-${m} || die
-		ln -s ssl-${m} ${d}/openssl-${m} || die
-
-		# locate any symlinks that point to this man page ...
-		# we assume that any broken links are due to the above renaming
+		sed -i '/^[.]SH "SEE ALSO"/,/^[.]/s:\([^(, ]*(1)\):ssl-\1:g' ${d}/ssl-${m}
+		ln -s ssl-${m} ${d}/openssl-${m}
+		# locate any symlinks that point to this man page ... we assume
+		# that any broken links are due to the above renaming
 		for s in $(find -L ${d} -type l) ; do
 			s=${s##*/}
 			rm -f ${d}/${s}
