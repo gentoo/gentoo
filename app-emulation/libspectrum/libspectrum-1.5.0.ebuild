@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/fuse-emulator/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="audiofile bzip2 gcrypt zlib"
+IUSE="audiofile +bzip2 gcrypt +zlib"
 
 RDEPEND="dev-libs/glib:2
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
