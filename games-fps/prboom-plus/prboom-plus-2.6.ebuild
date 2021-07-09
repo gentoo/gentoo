@@ -12,7 +12,7 @@ SRC_URI="http://deb.debian.org/debian/pool/main/p/prboom-plus/${PN}_${PV}um.orig
 LICENSE="GPL-2+ GPL-3+ BSD BSD-2 BSD-with-disclosure CC-BY-3.0 CC0-1.0 LGPL-2.1+ MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dumb fluidsynth mad net +opengl +pcre portmidi sdl2-image +sdl2-mixer server vorbis zlib"
+IUSE="dumb fluidsynth mad net +opengl +pcre portmidi sdl2-image +sdl2-mixer server vorbis +zlib"
 REQUIRED_USE="server? ( net )"
 
 DEPEND="
