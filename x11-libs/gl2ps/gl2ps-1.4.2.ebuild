@@ -11,7 +11,7 @@ SRC_URI="http://geuz.org/${PN}/src/${P}.tgz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="doc png zlib"
+IUSE="doc png +zlib"
 
 RDEPEND="
 	media-libs/freeglut
