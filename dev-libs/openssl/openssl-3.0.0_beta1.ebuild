@@ -22,12 +22,12 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0/3" # .so version of libssl/libcrypto
 
-IUSE="+asm cpu_flags_x86_sse2 elibc_musl ktls rfc3779 sctp static-libs test vanilla zlib"
+IUSE="+asm cpu_flags_x86_sse2 elibc_musl ktls rfc3779 sctp static-libs test tls-compression vanilla"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=app-misc/c_rehash-1.7-r1
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 "
 
 BDEPEND="
@@ -176,7 +176,7 @@ multilib_src_configure() {
 		$(use_ssl ktls)
 		$(use_ssl rfc3779)
 		$(use_ssl sctp)
-		$(use_ssl zlib)
+		$(use_ssl tls-compression zlib)
 		--prefix="${EPREFIX}"/usr
 		--openssldir="${EPREFIX}"${SSL_CNF_DIR}
 		--libdir=$(get_libdir)
