@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/libssh2/libssh2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="gcrypt mbedtls zlib"
+IUSE="gcrypt mbedtls +zlib"
 REQUIRED_USE="?? ( gcrypt mbedtls )"
 RESTRICT="test"
 
