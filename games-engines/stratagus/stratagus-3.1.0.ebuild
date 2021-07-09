@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Wargus/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/3"
 KEYWORDS="~amd64 ~x86"
-IUSE="bzip2 debug doc mng theora vorbis"
+IUSE="+bzip2 debug doc mng theora vorbis"
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}
 	theora? ( vorbis )"
