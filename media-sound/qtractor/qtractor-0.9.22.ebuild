@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="aubio cpu_flags_x86_sse debug dssi ladspa libsamplerate mad osc rubberband vorbis zlib"
+IUSE="aubio cpu_flags_x86_sse debug dssi ladspa libsamplerate mad osc rubberband vorbis +zlib"
 REQUIRED_USE="dssi? ( ladspa )"
 
 BDEPEND="
