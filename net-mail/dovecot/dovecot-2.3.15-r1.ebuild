@@ -32,7 +32,7 @@ LICENSE="LGPL-2.1 MIT"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
-IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib zstd"
+IUSE_DOVECOT_COMPRESS="+bzip2 +lzma lz4 +zlib +zstd"
 IUSE_DOVECOT_OTHER="argon2 caps doc ipv6 lucene managesieve rpc
 	selinux sieve solr static-libs suid systemd tcpd textcat unwind"
 
