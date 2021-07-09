@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0/0" # subslot = libwget.so version
 KEYWORDS="~amd64 ~x86"
-IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzma openssl pcre psl +ssl test valgrind xattr zlib"
+IUSE="brotli +bzip2 doc +gnutls gpgme +http2 idn +lzma openssl pcre psl +ssl test valgrind xattr +zlib"
 REQUIRED_USE="valgrind? ( test )"
 
 RDEPEND="

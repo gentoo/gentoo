@@ -16,7 +16,7 @@ else
 fi
 LICENSE="GPL-3"
 SLOT="0/0" # subslot = libwget.so version
-IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn lzma openssl pcre psl +ssl test valgrind xattr zlib"
+IUSE="brotli +bzip2 doc +gnutls gpgme +http2 idn +lzma openssl pcre psl +ssl test valgrind xattr +zlib"
 REQUIRED_USE="valgrind? ( test )"
 
 RDEPEND="
