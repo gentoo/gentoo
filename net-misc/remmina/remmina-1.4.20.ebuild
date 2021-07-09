@@ -23,7 +23,6 @@ DEPEND="
 	dev-libs/libpcre2
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=
-	dev-libs/wayland
 	net-libs/libsoup
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3
