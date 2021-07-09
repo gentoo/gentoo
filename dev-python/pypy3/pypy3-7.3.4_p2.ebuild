@@ -21,7 +21,7 @@ LICENSE="MIT"
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
 SLOT="0/pypy37-pp73"
 KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit ncurses sqlite test tk"
+IUSE="+bzip2 gdbm +jit ncurses sqlite test tk"
 # pypy3.7 is in alpha state and a lot of tests are failing
 RESTRICT="test"
 
