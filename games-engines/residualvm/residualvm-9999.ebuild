@@ -15,7 +15,7 @@ else
 fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis zlib"
+IUSE="alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis +zlib"
 
 # TODO: fix dynamic plugin support
 # games crash without media-libs/libsdl2[alsa]
