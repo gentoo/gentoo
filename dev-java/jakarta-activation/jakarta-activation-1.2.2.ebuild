@@ -43,13 +43,11 @@ src_prepare() {
 
 src_compile() {
 	java-pkg-simple_src_compile
-	# we remove API classes from the api
-	zip -d ${PN}.jar "javax/*" || die "Failed to remove implementation classes"
-}
 
-src_install() {
-	default
-	# we remove the API sources so that they don't land in sources
-#	rm -fr ${JAVA_SRC_DIR}/javax || "Failed to delete implementation sources"
-	java-pkg-simple_src_install
+	# we remove API classes from the jar file
+	# removing javax sources in src_prepare does not work - compilation fails with:
+	# src/main/java/module-info.java:12: error: package is empty or does not exist: javax.activation
+	#    exports javax.activation;
+
+	zip -d ${PN}.jar "javax/*" || die "Failed to remove API classes"
 }
