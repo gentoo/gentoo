@@ -13,7 +13,7 @@ S="${WORKDIR}/${P/_p/-}"
 LICENSE="LGPL-3"
 SLOT="0/6"
 KEYWORDS="~amd64 ~x86"
-IUSE="bzip2 http lzma lzo test zlib"
+IUSE="+bzip2 http +lzma lzo test +zlib"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( lzma lzo )"
 
