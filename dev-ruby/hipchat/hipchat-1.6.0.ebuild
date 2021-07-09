@@ -21,7 +21,7 @@ IUSE=""
 
 RUBY_S="hipchat-rb-${PV}"
 
-ruby_add_rdepend "dev-ruby/httparty dev-ruby/mimemagic"
+ruby_add_rdepend "dev-ruby/httparty dev-ruby/mimemagic:*"
 ruby_add_bdepend "test? (
 		dev-ruby/rr
 		dev-ruby/rake
