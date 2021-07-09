@@ -19,7 +19,6 @@ src_prepare() {
 	default
 	sed -i -e 's/CXXFLAGS="`echo $CXXFLAGS | sed s:-g::` $debug_flags"//' \
 		-e 's/CFLAGS="`echo $CFLAGS | sed s:-g::` $debug_flags"//'     \
-		-e 's/-Werror//' \
 		m4/subs.m4 || die
 	sed -i -e 's/hermite<angle>/etl::&/' test/angle.cpp
 
