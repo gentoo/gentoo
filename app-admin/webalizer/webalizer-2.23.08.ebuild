@@ -28,7 +28,7 @@ SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
-IUSE="bzip2 xtended geoip nls"
+IUSE="+bzip2 xtended geoip nls"
 SLOT="0"
 
 DEPEND=">=sys-libs/db-4.2:*
