@@ -4,7 +4,7 @@
 EAPI=7
 
 EGIT_COMMIT="18f316b3f62c02bf2b7a3096701780f78a4d2c67"
-LUA_COMPAT=( lua5-{1..2} luajit )
+LUA_COMPAT=( lua5-{1..4} luajit )
 MY_PN="lua-MessagePack"
 MY_P="${MY_PN}-${EGIT_COMMIT}"
 
