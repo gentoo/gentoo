@@ -30,7 +30,7 @@ S=${WORKDIR}
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+pak128 +pak128-britain +pak128-german +pak192-comic truetype upnp zstd"
+IUSE="+pak128 +pak128-britain +pak128-german +pak192-comic truetype upnp +zstd"
 
 RDEPEND="
 	app-arch/bzip2
