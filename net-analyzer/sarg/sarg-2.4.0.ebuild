@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ppc x86"
 SLOT="0"
-IUSE="bzip2 doublecheck +gd +glob ldap lzma pcre zlib"
+IUSE="+bzip2 doublecheck +gd +glob ldap +lzma pcre +zlib"
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2 )
