@@ -12,7 +12,7 @@ SLOT="0/3"
 KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86"
 # upstream bug #2597171, pyewf has implicit declarations
 #IUSE="debug python unicode"
-IUSE="bfio bzip2 debug +fuse nls +ssl static-libs +uuid unicode zlib"
+IUSE="bfio +bzip2 debug +fuse nls +ssl static-libs +uuid unicode +zlib"
 
 # uses bundled libbfio until tree version is bumped
 RDEPEND="
