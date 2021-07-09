@@ -15,7 +15,7 @@ LICENSE="GPL-3 free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 ## cgns is not compiling ATM, maybe fix cgns lib first
-IUSE="blas cgns examples jpeg med metis mpi netgen opencascade petsc png python X zlib"
+IUSE="blas cgns examples jpeg med metis mpi netgen opencascade petsc png python X +zlib"
 
 REQUIRED_USE="med? ( mpi )"
 
