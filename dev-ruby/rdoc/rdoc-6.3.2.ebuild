@@ -13,7 +13,7 @@ RUBY_FAKEGEM_BINDIR="exe"
 
 RUBY_FAKEGEM_GEMSPEC="rdoc.gemspec"
 
-inherit ruby-fakegem eutils
+inherit ruby-fakegem
 
 DESCRIPTION="An extended version of the RDoc library from Ruby 1.8"
 HOMEPAGE="https://github.com/ruby/rdoc/"
