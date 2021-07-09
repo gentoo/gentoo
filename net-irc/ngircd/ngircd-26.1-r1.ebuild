@@ -76,11 +76,11 @@ src_configure() {
 
 	if use ssl ; then
 		if use gnutls ; then
-			myconf+=(
+			myeconf+=(
 				$( use_with gnutls )
 			)
 		else
-			myconf+=(
+			myeconf+=(
 				$( use_with !gnutls openssl )
 			)
 		fi
