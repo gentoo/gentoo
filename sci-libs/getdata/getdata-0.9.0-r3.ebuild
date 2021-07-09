@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 SLOT="0"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 cxx debug flac fortran lzma perl static-libs"
+IUSE="+bzip2 cxx debug flac fortran +lzma perl static-libs"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2 )
