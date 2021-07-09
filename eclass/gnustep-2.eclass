@@ -4,14 +4,14 @@
 # @ECLASS: gnustep-2.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: eclass for GNUstep Apps, Frameworks, and Bundles build
 # @DESCRIPTION:
 # This eclass sets up GNUstep environment to properly install
 # GNUstep packages
 
 case ${EAPI:-0} in
-	[567]) ;;
+	[5678]) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -34,9 +34,8 @@ RDEPEND="${DEPEND}"
 
 # The following gnustep-based EXPORT_FUNCTIONS are available:
 # * gnustep-base_pkg_setup
-# * gnustep-base_src_unpack (EAPI 0|1 only)
-# * gnustep-base_src_prepare (EAPI>=2 only)
-# * gnustep-base_src_configure (EAPI>=2 only)
+# * gnustep-base_src_prepare
+# * gnustep-base_src_configure
 # * gnustep-base_src_compile
 # * gnustep-base_src_install
 # * gnustep-base_pkg_postinst

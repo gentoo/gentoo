@@ -4,14 +4,14 @@
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Internal handling of GNUstep pacakges
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
 # packages
 
 case ${EAPI:-0} in
-	[567]) inherit eutils ;;
+	[5678]) inherit eutils ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -48,13 +48,6 @@ gnustep-base_pkg_setup() {
 
 	# known to break ObjC (bug 86089)
 	filter-flags -fomit-frame-pointer
-}
-
-gnustep-base_src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	gnustep-base_src_prepare
 }
 
 gnustep-base_src_prepare() {
