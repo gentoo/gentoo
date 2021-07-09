@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,16 @@ src_install() {
 
 	if use cron ; then
 		exeinto /etc/cron.daily
-		newexe debian/cron.daily etckeeper
+		newexe - etckeeper <<'_EOF_'
+#!/bin/sh
+set -e
+if [ -e /etc/etckeeper/daily ] && [ -e /etc/etckeeper/etckeeper.conf ]; then
+	. /etc/etckeeper/etckeeper.conf
+	if [ "$AVOID_DAILY_AUTOCOMMITS" != "1" ]; then
+		/etc/etckeeper/daily
+	fi
+fi
+_EOF_
 	fi
 }
 
