@@ -19,7 +19,7 @@ LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/73"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit ncurses sqlite tk"
+IUSE="+bzip2 gdbm +jit ncurses sqlite tk"
 
 RDEPEND="
 	|| (
