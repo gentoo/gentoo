@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="agent amt archive bluetooth dell gnutls gtk-doc gusb elogind flashrom lzma minimal introspection +man nvme policykit spi synaptics systemd test thunderbolt tpm uefi"
+IUSE="agent amt archive bluetooth dell gnutls gtk-doc gusb elogind flashrom +lzma minimal introspection +man nvme policykit spi synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	dell? ( uefi )
