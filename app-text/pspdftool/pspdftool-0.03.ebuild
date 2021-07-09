@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="zlib"
+IUSE="+zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}"
