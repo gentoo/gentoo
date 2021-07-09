@@ -10,7 +10,7 @@ HOMEPAGE="https://www.phpbb.com/"
 SRC_URI="https://download.phpbb.com/pub/release/$(ver_cut 1-2)/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
-IUSE="ftp gd mssql mysqli postgres sqlite zlib"
+IUSE="ftp gd mssql mysqli postgres sqlite +zlib"
 REQUIRED_USE="|| ( mssql mysqli postgres sqlite )"
 
 PHP_RDEPEND="(
