@@ -12,7 +12,7 @@ SRC_URI="https://kronosnet.org/releases/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0/1"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
-IUSE="doc nss +openssl zstd lz4 lzo2"
+IUSE="doc nss +openssl +zstd lz4 lzo2"
 
 DEPEND=">=sys-cluster/libqb-2.0.0:=
 	dev-libs/libnl:3
