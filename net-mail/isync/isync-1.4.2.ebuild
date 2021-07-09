@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-IUSE="berkdb sasl ssl zlib"
+IUSE="berkdb sasl ssl +zlib"
 
 RDEPEND="
 	berkdb? ( >=sys-libs/db-4.2:= )

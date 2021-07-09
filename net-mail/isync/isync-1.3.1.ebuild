@@ -16,7 +16,7 @@ else
 	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 fi
 
-IUSE="sasl ssl zlib"
+IUSE="sasl ssl +zlib"
 
 RDEPEND="
 	>=sys-libs/db-4.2:=
