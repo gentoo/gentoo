@@ -137,6 +137,7 @@ multilib_src_compile() {
 
 	local targets=(
 		${libudev}
+		src/libudev/libudev.pc
 	)
 	if use static-libs; then
 		targets+=( src/udev/libudev.a )
@@ -149,6 +150,7 @@ multilib_src_compile() {
 			src/udev/fido_id
 			src/udev/mtd_probe
 			src/udev/scsi_id
+			src/udev/udev.pc
 			src/udev/v4l_id
 			man/udev.conf.5
 			man/systemd.link.5
@@ -156,6 +158,8 @@ multilib_src_compile() {
 			man/udev.7
 			man/systemd-udevd.service.8
 			man/udevadm.8
+			rules.d/50-udev-default.rules
+			rules.d/64-btrfs.rules
 		)
 	fi
 	eninja "${targets[@]}"
@@ -180,9 +184,9 @@ multilib_src_install() {
 		exeinto /lib/udev
 		doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
-		rm rules.d/99-systemd.rules || die
 		insinto /lib/udev/rules.d
 		doins rules.d/*.rules
+		doins "${S}"/rules.d/*.rules
 
 		insinto /usr/share/pkgconfig
 		doins src/udev/udev.pc
@@ -207,6 +211,7 @@ multilib_src_install_all() {
 	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/40-gentoo.rules
 	doins "${S}"/rules.d/*.rules
+	doins rules.d/*.rules
 
 	dobashcomp shell-completion/bash/udevadm
 
