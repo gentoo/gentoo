@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
+# Last release in 2016. Tests fail with recent git versions.
+# No reverse dependencies, no maintainer.
+# Masked for removal in 30 days.
+dev-vcs/git-num
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Last release in 2014 and no longer supported upstream. Obsolete CSS
 # framework with known issues.
 # Masked for removal in 30 days.
