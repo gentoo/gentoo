@@ -24,7 +24,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl examples iconv ipv6 lz4 ssl stunnel system-zlib xattr xxhash zstd"
+IUSE="acl examples iconv ipv6 lz4 ssl stunnel system-zlib xattr xxhash +zstd"
 
 RDEPEND="acl? ( virtual/acl )
 	lz4? ( app-arch/lz4 )
