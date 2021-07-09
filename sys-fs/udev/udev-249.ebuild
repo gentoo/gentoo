@@ -184,9 +184,9 @@ multilib_src_install() {
 		exeinto /lib/udev
 		doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
+		# Install generated rules (${BUILD_DIR}/rules.d/*.rules)
 		insinto /lib/udev/rules.d
 		doins rules.d/*.rules
-		doins "${S}"/rules.d/*.rules
 
 		insinto /usr/share/pkgconfig
 		doins src/udev/udev.pc
@@ -207,11 +207,10 @@ multilib_src_install_all() {
 	insinto /lib/systemd/network
 	doins network/99-default.link
 
-	# see src_prepare() for content of 40-gentoo.rules
+	# Install static rules (${S}/rules.d/*.rules)
 	insinto /lib/udev/rules.d
-	doins "${FILESDIR}"/40-gentoo.rules
-	doins "${S}"/rules.d/*.rules
 	doins rules.d/*.rules
+	doins "${FILESDIR}"/40-gentoo.rules
 
 	dobashcomp shell-completion/bash/udevadm
 
