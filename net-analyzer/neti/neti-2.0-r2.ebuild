@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/neti/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~ppc x86"
-IUSE="zlib java"
+IUSE="+zlib java"
 
 DEPEND="
 	java? ( || ( >=virtual/jdk-1.2 >=virtual/jre-1.2 ) )
