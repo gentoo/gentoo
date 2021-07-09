@@ -14,7 +14,7 @@ SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="gzip +ssl stream zlib"
+IUSE="gzip +ssl stream +zlib"
 
 DEPEND=">=media-video/vdr-2
 		ssl? ( dev-libs/openssl )"
