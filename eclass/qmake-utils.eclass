@@ -24,54 +24,6 @@ _QMAKE_UTILS_ECLASS=1
 
 inherit toolchain-funcs
 
-# @FUNCTION: _qmake-utils_banned_func
-# @INTERNAL
-# @DESCRIPTION:
-# Banned functions are banned.
-_qmake-utils_banned_func() {
-	die "${FUNCNAME[1]} is banned in EAPI 7 and later"
-}
-
-# @FUNCTION: qt4_get_bindir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_bindir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_headerdir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_headerdir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_libdir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_libdir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_mkspecsdir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_mkspecsdir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_plugindir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_plugindir() {
-	_qmake-utils_banned_func
-}
-
 # @FUNCTION: qt5_get_bindir
 # @DESCRIPTION:
 # Echoes the directory where Qt5 binaries are installed.
@@ -106,22 +58,6 @@ qt5_get_mkspecsdir() {
 # Echoes the directory where Qt5 plugins are installed.
 qt5_get_plugindir() {
 	echo $(qt5_get_libdir)/qt5/plugins
-}
-
-# @FUNCTION: qmake-utils_find_pro_file
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qmake-utils_find_pro_file() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: eqmake4
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-eqmake4() {
-	_qmake-utils_banned_func
 }
 
 # @FUNCTION: eqmake5
