@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-07-09)
+# dev-libs/libbpf lacks keywords for most arches
+sys-apps/iproute2 bpf
+
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
 # gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
 x11-base/xwayland video_cards_nvidia
