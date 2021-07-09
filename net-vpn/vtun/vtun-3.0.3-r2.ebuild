@@ -12,7 +12,7 @@ HOMEPAGE="http://vtun.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~sparc x86"
-IUSE="lzo socks5 ssl zlib"
+IUSE="lzo socks5 ssl +zlib"
 
 RDEPEND="
 	lzo? ( dev-libs/lzo:2 )
