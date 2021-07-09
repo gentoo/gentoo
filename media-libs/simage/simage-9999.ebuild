@@ -19,7 +19,7 @@ fi
 
 LICENSE="BSD-1"
 SLOT="0"
-IUSE="gif jpeg png qt5 sndfile test tiff vorbis zlib"
+IUSE="gif jpeg png qt5 sndfile test tiff vorbis +zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
