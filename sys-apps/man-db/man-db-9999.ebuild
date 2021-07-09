@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb +gdbm +manpager nls +seccomp selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls +seccomp selinux static-libs +zlib"
 
 CDEPEND="
 	!sys-apps/man
