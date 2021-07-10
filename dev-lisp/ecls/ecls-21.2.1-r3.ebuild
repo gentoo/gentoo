@@ -17,11 +17,11 @@ SRC_URI="https://common-lisp.net/project/ecl/static/files/release/${MY_P}.tgz"
 LICENSE="BSD-2 LGPL-2.1+"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
-IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode +libatomic X"
+IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode X"
 
-CDEPEND="dev-libs/gmp:0
-		dev-libs/libffi
-		libatomic? ( dev-libs/libatomic_ops )
+CDEPEND="dev-libs/gmp:0=
+		dev-libs/libffi:=
+		dev-libs/libatomic_ops
 		>=dev-libs/boehm-gc-7.1[threads?]
 		>=dev-lisp/asdf-2.33-r3:="
 DEPEND="${CDEPEND}
@@ -36,15 +36,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-16.1.3-build.patch"
 )
 
-pkg_setup() {
-	if use gengc || use precisegc ; then
-		ewarn "You have enabled the generational garbage collector or"
-		ewarn "the precise collection routines. These features are not very stable"
-		ewarn "at the moment and may cause crashes."
-		ewarn "Don't enable them unless you know what you're doing."
-	fi
-}
-
 src_prepare() {
 	default
 	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
@@ -56,11 +47,11 @@ src_configure() {
 		--enable-boehm=system \
 		--enable-longdouble=yes \
 		--with-dffi \
+		--enable-libatomic=system \
 		$(use_with cxx) \
 		$(use_enable gengc) \
 		$(use_enable precisegc) \
 		$(use_with debug debug-cflags) \
-		$(use_enable libatomic libatomic system) \
 		$(use_with cpu_flags_x86_sse sse) \
 		$(use_enable threads) \
 		$(use_with threads __thread) \

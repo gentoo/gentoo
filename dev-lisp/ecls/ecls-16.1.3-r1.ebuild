@@ -19,8 +19,8 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="cxx debug emacs gengc precisegc cpu_flags_x86_sse +threads +unicode +libatomic X"
 
-CDEPEND="dev-libs/gmp:0
-		dev-libs/libffi
+CDEPEND="dev-libs/gmp:0=
+		dev-libs/libffi=
 		libatomic? ( dev-libs/libatomic_ops )
 		>=dev-libs/boehm-gc-7.1[threads?]
 		>=dev-lisp/asdf-2.33-r3:="
