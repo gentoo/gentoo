@@ -1272,7 +1272,12 @@ epytest() {
 
 	echo "${@}" >&2
 	"${@}" || die -n "pytest failed with ${EPYTHON}"
-	return ${?}
+	local ret=${?}
+
+	# remove common temporary directories left over by pytest plugins
+	rm -rf .hypothesis .pytest_cache || die
+
+	return ${ret}
 }
 
 # @FUNCTION: eunittest
