@@ -26,6 +26,12 @@ RDEPEND="
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
 
+pkg_nofetch() {
+	einfo "Please buy and download '${A}' from:"
+	einfo "  ${HOMEPAGE}"
+	einfo "and place it in your distfiles directory."
+}
+
 src_unpack() {
 	unpack_makeself ${A}
 	mv instarchive_all{,.tar.xz} || die
