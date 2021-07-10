@@ -185,7 +185,7 @@ RDEPEND="
 		kvazaar? ( >=media-libs/kvazaar-1.2.0[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
 		openh264? ( >=media-libs/openh264-1.4.0-r1:=[${MULTILIB_USEDEP}] )
-		rav1e? ( media-video/rav1e:=[capi] )
+		rav1e? ( >=media-video/rav1e-0.4:=[capi] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1:=[${MULTILIB_USEDEP}] )
 		theora? (
 			>=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}]
@@ -243,7 +243,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[sound,video,${MULTILIB_USEDEP}] )
 	sndio? ( media-sound/sndio:=[${MULTILIB_USEDEP}] )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
-	srt? ( >=net-libs/srt-1.3.0[${MULTILIB_USEDEP}] )
+	srt? ( >=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}] )
 	ssh? ( >=net-libs/libssh-0.5.5[${MULTILIB_USEDEP}] )
 	svg? ( gnome-base/librsvg:2=[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
@@ -318,8 +318,6 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
-	"${FILESDIR}"/${PN}-4.3-fix-build-without-SSSE3.patch
-	"${FILESDIR}"/${PN}-4.3-altivec-novsx-yuv2rgb.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -453,6 +451,13 @@ multilib_src_configure() {
 		$(multilib_native_enable manpages)
 	)
 
+	local extra_libs
+	if use arm || use ppc ; then
+		# bug #782811
+		# bug #790590
+		extra_libs+="-latomic "
+	fi
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -467,6 +472,7 @@ multilib_src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--extra-libs="${extra_libs}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}" \
 		${EXTRA_FFMPEG_CONF}
@@ -511,6 +517,11 @@ multilib_src_compile() {
 	fi
 }
 
+multilib_src_test() {
+	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
+		emake V=1 fate
+}
+
 multilib_src_install() {
 	emake V=1 DESTDIR="${D}" install install-doc
 
@@ -541,9 +552,4 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-}
-
-multilib_src_test() {
-	LD_LIBRARY_PATH="${BUILD_DIR}/libpostproc:${BUILD_DIR}/libswscale:${BUILD_DIR}/libswresample:${BUILD_DIR}/libavcodec:${BUILD_DIR}/libavdevice:${BUILD_DIR}/libavfilter:${BUILD_DIR}/libavformat:${BUILD_DIR}/libavutil:${BUILD_DIR}/libavresample" \
-		emake V=1 fate
 }
