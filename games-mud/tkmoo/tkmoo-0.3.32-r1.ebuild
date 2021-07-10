@@ -1,45 +1,49 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=8
 
-MY_PN=${PN/moo/MOO-light}
-MY_P=${P/moo/MOO-light}
+inherit desktop
+
+MY_P="tkMOO-light-${PV}"
+
 DESCRIPTION="MOO Client written in Tcl/Tk"
 HOMEPAGE="http://www.awns.com/tkMOO-light/"
 SRC_URI="http://www.awns.com/tkMOO-light/Source/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="tkMOO"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
-	>=dev-lang/tcl-8.3.3:0=
-	>=dev-lang/tk-8.3.3:0="
-RDEPEND=${DEPEND}
-
-S=${WORKDIR}/${MY_P}
+	dev-lang/tcl
+	dev-lang/tk
+"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PV}-Makefile-noclean.patch"
-		"${FILESDIR}/${PV}-keys-workaround.patch"
+	"${FILESDIR}/${PV}-keys-workaround.patch"
 )
 
 src_compile() {
-	emake \
-		WISH="$(type -P wish)" \
-		TKMOO_LIB_DIR="/usr/$(get_libdir)/${MY_PN}" \
-		TKMOO_BIN_DIR=/usr/bin
+	local myemakeargs=(
+		WISH="$(type -P wish)"
+		TKMOO_LIB_DIR="${EPREFIX}/usr/share/${PN}"
+		TKMOO_BIN_DIR="${EPREFIX}/usr/bin"
+	)
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
-	emake \
-		TKMOO_LIB_DIR="${D}/usr/$(get_libdir)/${MY_PN}" \
-		TKMOO_BIN_DIR="${D}/usr/bin" \
-		install
+	local emakeargs=(
+		TKMOO_LIB_DIR="${ED}/usr/share/${PN}"
+		TKMOO_BIN_DIR="${ED}/usr/bin"
+	)
+	emake "${emakeargs[@]}" install
+
 	dodoc README dot.tkmoolightrc bugsmail.txt
 	dosym tkMOO-lite /usr/bin/tkmoo
-	make_desktop_entry tkmoo "tkMOO"
+	make_desktop_entry tkmoo "tkMOO" applications-games
 }
