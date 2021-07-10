@@ -22,6 +22,7 @@ IUSE="doc memcached pam ssl static-libs"
 RDEPEND="
 	${POSTGRES_DEP}
 	net-libs/libnsl:0=
+	virtual/libcrypt:=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
 	ssl? (
