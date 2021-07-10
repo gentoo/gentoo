@@ -3,75 +3,49 @@
 
 EAPI=7
 
-inherit desktop gnome2-utils unpacker wrapper
+inherit desktop unpacker wrapper
 
 DESCRIPTION="Throw your toys into your fire, and play with them as they burn"
-HOMEPAGE="http://tomorrowcorporation.com/"
+HOMEPAGE="https://tomorrowcorporation.com/littleinferno"
 SRC_URI="LittleInferno-${PV}.sh"
+S="${WORKDIR}"
 
 LICENSE="Gameplay-Group-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="bundled-libs"
+RESTRICT="bindist fetch"
 
-RESTRICT="bindist fetch bundled-libs? ( splitdebug )"
-
-MYGAMEDIR=opt/${PN}
-QA_PREBUILT="${MYGAMEDIR#/}/LittleInferno.bin.x86
-	${MYGAMEDIR#/}/lib/*"
+QA_PREBUILT="
+	opt/${PN}/LittleInferno.bin.x86
+	opt/${PN}/lib/libogg.so.0
+	opt/${PN}/lib/libvorbis.so.0"
 
 RDEPEND="
-	>=net-misc/curl-7.37.0-r1[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]
+	media-libs/openal[abi_x86_32(-)]
+	net-misc/curl[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
-	!bundled-libs? (
-		>=media-libs/libogg-1.3.1[abi_x86_32(-)]
-		>=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)]
-		>=media-libs/openal-1.15.1-r1[abi_x86_32(-)]
-	)
-"
-BDEPEND="app-arch/xz-utils"
+	x11-libs/libX11[abi_x86_32(-)]"
 
 src_unpack() {
 	unpack_makeself ${A}
-
-	mkdir ${P} || die
-	cd ${P} || die
-
-	local i
-	for i in instarchive_{,linux_}all ; do
-		mv ../"${i}" ../"${i}".tar.xz || die
-		unpack ./../"${i}".tar.xz
-	done
-}
-
-src_prepare() {
-	default
-
-	if ! use bundled-libs ; then
-		rm -rv lib || die
-	fi
+	mv instarchive_all{,.tar.xz} || die
+	mv instarchive_linux_all{,.tar.xz} || die
+	unpack ./instarchive_{,linux_}all.tar.xz
 }
 
 src_install() {
-	insinto ${MYGAMEDIR}
-	doins -r *
+	exeinto /opt/${PN}
+	doexe LittleInferno.bin.x86
 
-	doicon -s 128 LittleInferno.png
-	make_desktop_entry ${PN} "Little Inferno" LittleInferno
-	make_wrapper ${PN} "./LittleInferno.bin.x86" "${MYGAMEDIR}" "${MYGAMEDIR}/lib"
+	insinto /opt/${PN}
+	doins -r {debug,embed,frontend,resource}.pak shaders
 
-	fperms +x ${MYGAMEDIR}/LittleInferno.bin.x86
-}
+	# game currently segfaults without bundled libvorbis
+	exeinto /opt/${PN}/lib
+	doexe lib/lib{ogg,vorbis}.so.0
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
+	make_wrapper ${PN} ./LittleInferno.bin.x86 /opt/${PN}
 
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	newicon LittleInferno.png ${PN}.png
+	make_desktop_entry ${PN} "Little Inferno"
 }
