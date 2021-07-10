@@ -25,7 +25,7 @@ REQUIRED_USE="test? ( awt nio-buffers )"
 # fine. Someone bisect it please. :)
 RESTRICT="test"
 
-CDEPEND="dev-libs/libffi"
+CDEPEND="dev-libs/libffi:="
 DEPEND="${CDEPEND}
 	virtual/jdk:1.8
 	x11-libs/libXt
