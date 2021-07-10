@@ -16,14 +16,15 @@ if [[ ${PV} = *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
-	S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
+	SRC_URI="https://get.videolan.org/vlc/${PV}/${P}.tar.xz"
+	#S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
+	#SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
 	#if [[ ${MY_P} = ${P} ]] ; then
 	#	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 	#else
 	#	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	#fi
-	KEYWORDS="amd64 ~arm arm64 ppc ppc64 -sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
 fi
 
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
@@ -188,7 +189,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( >=net-libs/srt-1.4.2 )
+	srt? ( >=net-libs/srt-1.4.2:= )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2
