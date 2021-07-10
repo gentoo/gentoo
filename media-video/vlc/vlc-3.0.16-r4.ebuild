@@ -16,8 +16,9 @@ if [[ ${PV} = *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
-	S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
+	SRC_URI="https://get.videolan.org/vlc/${PV}/${P}.tar.xz"
+	#S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
+	#SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
 	#if [[ ${MY_P} = ${P} ]] ; then
 	#	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 	#else
@@ -188,7 +189,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( >=net-libs/srt-1.4.2 )
+	srt? ( >=net-libs/srt-1.4.2:= )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2

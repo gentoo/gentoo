@@ -16,15 +16,14 @@ if [[ ${PV} = *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	SRC_URI="https://get.videolan.org/vlc/${PV}/${P}.tar.xz"
-	#S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
-	#SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
+	SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
+	S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
 	#if [[ ${MY_P} = ${P} ]] ; then
 	#	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 	#else
 	#	SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	#fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
+	KEYWORDS="amd64 ~arm arm64 ppc ppc64 -sparc x86"
 fi
 
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
@@ -42,7 +41,7 @@ IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast
 	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	nfs ogg omxil optimisememory opus png projectm pulseaudio +qt5 rdp
 	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
-	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X
+	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
 	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx
 	cpu_flags_x86_sse
 "
@@ -67,7 +66,6 @@ BDEPEND="
 	x86? ( dev-lang/yasm )
 "
 RDEPEND="
-	media-libs/libvorbis
 	net-dns/libidn:=
 	sys-libs/zlib[minizip]
 	virtual/libintl
@@ -83,7 +81,7 @@ RDEPEND="
 		media-libs/harfbuzz
 		virtual/ttf-fonts
 	)
-	bluray? ( >=media-libs/libbluray-1.3.0:= )
+	bluray? ( media-libs/libbluray:= )
 	cddb? ( media-libs/libcddb )
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
@@ -99,8 +97,8 @@ RDEPEND="
 	dts? ( media-libs/libdca )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:= )
 	dvd? (
-		>=media-libs/libdvdnav-6.1.1:0=
-		>=media-libs/libdvdread-6.1.2:0=
+		>=media-libs/libdvdnav-4.9:0=
+		>=media-libs/libdvdread-4.9:0=
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
@@ -141,11 +139,11 @@ RDEPEND="
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
-	live? ( >=media-plugins/live-2021.05.22:= )
+	live? ( media-plugins/live:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
-		>=dev-libs/libebml-1.4.2:=
+		>=dev-libs/libebml-1.3.6:=
 		media-libs/libmatroska:=
 	)
 	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
@@ -189,7 +187,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( >=net-libs/srt-1.4.2 )
+	srt? ( >=net-libs/srt-1.4.2:= )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2
@@ -210,6 +208,7 @@ RDEPEND="
 	vaapi? ( x11-libs/libva:=[drm,wayland?,X?] )
 	vdpau? ( x11-libs/libvdpau )
 	vnc? ( net-libs/libvncserver )
+	vorbis? ( media-libs/libvorbis )
 	vpx? ( media-libs/libvpx:= )
 	wayland? (
 		>=dev-libs/wayland-1.15
@@ -237,8 +236,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.11.1-srt-1.4.2.patch # bug 758062
-	"${FILESDIR}"/${PN}-3.0.13-srt-1.3.0.patch
-	"${FILESDIR}"/${PN}-3.0.14-fix-live-address-api.patch # bug 795798
+	"${FILESDIR}"/${PN}-3.0.12.1-limits-p{1,2}.patch # bug 767796
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -296,7 +294,6 @@ src_configure() {
 		--enable-screen
 		--enable-vcd
 		--enable-vlc
-		--enable-vorbis
 		$(use_enable a52)
 		$(use_enable alsa)
 		$(use_enable aom)
@@ -397,6 +394,7 @@ src_configure() {
 		$(use_enable vaapi libva)
 		$(use_enable vdpau)
 		$(use_enable vnc)
+		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
 		$(use_with X x)
