@@ -40,11 +40,11 @@
 #                  FEATURE can be removed once https://github.com/haskell/cabal/issues/7213
 #                  is fixed.
 
-case "${EAPI:-0}" in
+case ${EAPI} in
 	# eutils is for eqawarn
 	6|7) inherit eutils ;;
 	8) ;;
-	*) die "EAPI ${EAPI} unsupported." ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 inherit ghc-package multilib toolchain-funcs
