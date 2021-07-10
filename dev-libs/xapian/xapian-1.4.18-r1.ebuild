@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit flag-o-matic multilib-minimal
+inherit multilib-minimal
 
 MY_P="${PN}-core-${PV}"
 
@@ -12,21 +12,18 @@ HOMEPAGE="https://www.xapian.org/"
 SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0/1.2.22" # ABI version of libxapian.so, prefixed with 1.2.
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~x64-solaris"
-IUSE="doc static-libs cpu_flags_x86_sse cpu_flags_x86_sse2 +brass +chert +inmemory"
+SLOT="0/30" # ABI version of libxapian.so
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc ~x86 ~x64-macos ~x64-solaris"
+IUSE="doc static-libs cpu_flags_x86_sse cpu_flags_x86_sse2 +inmemory +remote"
 
-DEPEND="sys-libs/zlib"
+DEPEND="sys-apps/util-linux[${MULTILIB_USEDEP}]
+	sys-libs/zlib[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
 multilib_src_configure() {
 	local myconf=""
-
-	# "brass_check.cc:40:48: error: reference to ‘byte’ is ambiguous"
-	# bug #789390
-	append-cxxflags -std=c++14
 
 	if use cpu_flags_x86_sse2; then
 		myconf="${myconf} --enable-sse=sse2"
@@ -40,11 +37,10 @@ multilib_src_configure() {
 
 	myconf="${myconf} $(use_enable static-libs static)"
 
-	use brass || myconf="${myconf} --disable-backend-brass"
-	use chert || myconf="${myconf} --disable-backend-chert"
 	use inmemory || myconf="${myconf} --disable-backend-inmemory"
+	use remote || myconf="${myconf} --disable-backend-remote"
 
-	myconf="${myconf} --enable-backend-flint --enable-backend-remote"
+	myconf="${myconf} --enable-backend-glass --enable-backend-chert --program-suffix="
 
 	ECONF_SOURCE=${S} econf ${myconf}
 }
@@ -60,18 +56,20 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/xapian/registry.h
 )
 
+multilib_src_test() {
+	emake check VALGRIND=
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 }
 
 multilib_src_install_all() {
-	use doc || rm -rf "${ED%/}/usr/share/doc/xapian-core-${PV}"
+	if use doc; then
+		rm -rf "${ED}/usr/share/doc/xapian-core-${PV}" || die
+	fi
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
 	find "${ED}" -name "*.la" -type f -delete || die
-}
-
-multilib_src_test() {
-	emake check VALGRIND=
 }
