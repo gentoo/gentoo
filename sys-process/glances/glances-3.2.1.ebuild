@@ -18,7 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="dev-python/future[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/defusedxml[${PYTHON_USEDEP}]
+	dev-python/future[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
 
 # PYTHON_USEDEP omitted on purpose
