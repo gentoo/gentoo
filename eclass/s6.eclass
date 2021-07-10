@@ -4,7 +4,7 @@
 # @ECLASS: s6.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: helper functions to install s6 services
 # @DESCRIPTION:
 # This eclass provides helpers to install s6 services.
@@ -25,9 +25,9 @@
 # }
 # @CODE
 
-case ${EAPI:-0} in
-	5|6|7) ;;
-	*) die "${ECLASS}.eclass: API in EAPI ${EAPI} not yet established" ;;
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: _s6_get_servicedir
