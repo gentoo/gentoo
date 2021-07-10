@@ -21,7 +21,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
@@ -94,7 +94,7 @@ COMMON_DEPEND="
 	coverage? ( dev-util/lcov )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( <app-text/enchant-2.0:0 )
-	ffi? ( >=dev-libs/libffi-3.0.11 )
+	ffi? ( >=dev-libs/libffi-3.0.11:= )
 	firebird? ( dev-db/firebird )
 	gd? ( >=virtual/jpeg-0-r3:0 media-libs/libpng:0= )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
@@ -116,7 +116,7 @@ COMMON_DEPEND="
 	readline? ( sys-libs/readline:0= )
 	session-mm? ( dev-libs/mm )
 	snmp? ( >=net-analyzer/net-snmp-5.2 )
-	sodium? ( dev-libs/libsodium:= )
+	sodium? ( dev-libs/libsodium:=[-minimal] )
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
 	ssl? ( >=dev-libs/openssl-1.0.1:0= )
