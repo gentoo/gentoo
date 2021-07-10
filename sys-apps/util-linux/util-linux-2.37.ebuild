@@ -90,6 +90,10 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	# https://github.com/karelzak/util-linux/pull/1329
 	"${FILESDIR}/${P}-ppc-nortas.patch"
+
+	"${FILESDIR}/${P}-lcrypt_link_fix.patch" # 801403
+	"${FILESDIR}/${P}-lcrypt_use_LIBS.patch" # 801403
+	"${FILESDIR}/${P}-avoid_autoreconf.patch" # 801403
 )
 
 rm_man() {
