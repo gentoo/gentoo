@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/fms.pid"
+start_stop_daemon_args="--chdir /var/freenet/fms"
+
+command="/usr/bin/fms"
+command_background="true"
+command_group="freenet"
+command_user="freenet"
