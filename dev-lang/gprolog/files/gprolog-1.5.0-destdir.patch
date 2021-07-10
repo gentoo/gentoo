@@ -1,0 +1,61 @@
+--- gprolog-1.5.0.orig/src/Makefile.in	2021-07-07 16:06:16.000000000 -0000
++++ gprolog-1.5.0/src/Makefile.in	2021-07-10 12:49:40.967172260 -0000
+@@ -85,13 +85,13 @@
+ # --- Links --- #
+ 
+ install-links: install-system uninstall-links
+-	if test $(LINKS_DIR) != none; then \
++	if test @LINKS_DIR@ != none; then \
+ 	   ./mkinstalldirs $(LINKS_DIR); \
+ 	   (cd $(LINKS_DIR) ; $(LN_S) $(wildcard $(INSTALL_DIR)/bin/*) .); \
+ 	fi
+ 
+ uninstall-links:
+-	-if test $(LINKS_DIR) != none; then \
++	-if test @LINKS_DIR@ != none; then \
+ 	   (cd $(LINKS_DIR) 2>/dev/null && rm -f $(BIN_FILES)); \
+ 	   rmdir $(LINKS_DIR) 2>/dev/null; \
+ 	fi || exit 0;
+@@ -100,14 +100,14 @@
+ # --- Documentation --- #
+ 
+ install-doc:
+-	if test $(DOC_DIR) != none; then \
++	if test @DOC_DIR@ != none; then \
+ 	   ./mkinstalldirs $(DOC_DIR); \
+ 	   (F=`cd ../doc; echo $(DOC_FILES)`; \
+ 	   for i in $$F; do $(INSTALL_DATA) ../doc/$$i $(DOC_DIR); done); \
+ 	fi
+ 
+ uninstall-doc:
+-	-if test $(DOC_DIR) != none; then \
++	-if test @DOC_DIR@ != none; then \
+ 	   (cd $(DOC_DIR); rm -f $(DOC_FILES)); \
+ 	   rmdir $(DOC_DIR) 2>/dev/null; \
+ 	fi || exit 0;
+@@ -116,14 +116,14 @@
+ # --- HTML --- #
+ 
+ install-html:
+-	if test $(HTML_DIR) != none; then \
++	if test @HTML_DIR@ != none; then \
+ 	   ./mkinstalldirs $(HTML_DIR); \
+ 	   (F=`cd ../doc/html_node; echo $(HTML_FILES)`; \
+ 	   for i in $$F; do $(INSTALL_DATA) ../doc/html_node/$$i $(HTML_DIR); done); \
+ 	fi
+ 
+ uninstall-html:
+-	-if test $(HTML_DIR) != none; then \
++	-if test @HTML_DIR@ != none; then \
+ 	   (cd $(HTML_DIR); rm -f $(HTML_FILES)); \
+ 	   rmdir $(HTML_DIR) 2>/dev/null; \
+ 	fi || exit 0;
+@@ -132,7 +132,7 @@
+ # --- Examples --- #
+ 
+ install-examples:
+-	if test $(EXAMPLES_DIR) != none; then \
++	if test @EXAMPLES_DIR@ != none; then \
+ 	   ./mkinstalldirs $(EXAMPLES_DIR)/ExamplesPl; \
+ 	   (F=`cd ../examples/ExamplesPl; echo $(EXPL_FILES)`; \
+ 	   for i in $$F; do $(INSTALL_DATA) ../examples/ExamplesPl/$$i $(EXAMPLES_DIR)/ExamplesPl; done); \
