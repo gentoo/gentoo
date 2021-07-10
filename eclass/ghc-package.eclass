@@ -14,10 +14,10 @@
 inherit multiprocessing
 
 # Maintain version-testing compatibility with ebuilds not using EAPI 7.
-case "${EAPI:-0}" in
+case ${EAPI} in
 	7|8) ;;
 	6) inherit eapi7-ver ;;
-	*) die "EAPI ${EAPI} unsupported." ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # GHC uses it's own native code generator. Portage's
