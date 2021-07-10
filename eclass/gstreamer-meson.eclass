@@ -98,7 +98,7 @@ hls"
 # separated by colon (:). Will replace the path fragment by the output of
 # pkgconfig.
 gstreamer_system_package() {
-	local pdir directory libs pkgconfig pc tuple
+	local pdir directory libs pkgconfig pc tuple plugin_dir
 	pkgconfig=$(tc-getPKG_CONFIG)
 
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
@@ -107,7 +107,6 @@ gstreamer_system_package() {
 		for tuple in $@ ; do
 			dependency=${tuple%:*}
 			pc=${tuple#*:}-${SLOT}
-			#libs="$(${pkgconfig} --libs-only-l ${pc} || die)"
 			sed -e "1i${dependency} = dependency('${pc}', required : true)" \
 				-i "${pdir}"/meson.build || die
 		done
@@ -123,7 +122,7 @@ gstreamer_system_package() {
 # separated by colon (:). Will replace the path fragment by the output of
 # pkgconfig.
 gstreamer_system_library() {
-	local pdir directory libs pkgconfig pc tuple
+	local pdir directory libs pkgconfig pc tuple plugin_dir
 	pkgconfig=$(tc-getPKG_CONFIG)
 
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
@@ -132,7 +131,6 @@ gstreamer_system_library() {
 		for tuple in $@ ; do
 			dependency=${tuple%:*}
 			pc=${tuple#*:}-${SLOT}
-			#libs="$(${pkgconfig} --libs-only-l ${pc} || die)"
 			sed -e "1i${dependency} = cc.find_library('${pc}', required : true)" \
 				-i "${pdir}"/meson.build || die
 		done
