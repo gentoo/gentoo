@@ -24,8 +24,8 @@ SLOT="0"
 IUSE="asan clang debug doc static-libs optimize ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
-		>=dev-libs/libuv-1.26
-		dev-libs/libffi"
+		>=dev-libs/libuv-1.26:=
+		dev-libs/libffi:="
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
 	clang? ( >=sys-devel/clang-3.1 )
