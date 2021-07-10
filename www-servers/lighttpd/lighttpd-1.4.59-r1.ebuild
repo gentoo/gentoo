@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 COMMON_DEPEND="
 	acct-group/lighttpd
 	acct-user/lighttpd
+	virtual/libcrypt:=
 	brotli? ( app-arch/brotli )
 	bzip2? ( app-arch/bzip2 )
 	dbi? (
