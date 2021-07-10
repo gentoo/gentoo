@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64
 IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
 
 CDEPEND="sys-libs/readline:0=
-	dev-libs/libffi
+	dev-libs/libffi:=
 	net-libs/libnsl:0=
 	opengl? ( media-libs/freeglut )
 	nls? ( sys-devel/gettext )
