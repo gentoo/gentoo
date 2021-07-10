@@ -11,10 +11,8 @@ if [[ "${PV}" = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dxx-rebirth/dxx-rebirth"
 else
-	MY_COMMIT=''
-	S="${WORKDIR}/${PN}-${MY_COMMIT}"
-	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
-	unset MY_COMMIT
+	S="${WORKDIR}/${PN}_${PV##*_pre}-src"
+	SRC_URI="https://www.dxx-rebirth.com/download/dxx/rebirth/${PN}_${PV##*_pre}-src.tar.xz"
 
 	# Games under Gentoo are marked as 'testing' by convention
 	#
