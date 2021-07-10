@@ -40,8 +40,8 @@ want_apache2
 pkg_setup() {
 	depend.apache_pkg_setup
 
-	use nginx && usermod -a -G icingacmd,icingaweb2 nginx || die
-	use apache2 && usermod -a -G icingacmd,icingaweb2 apache || die
+	use nginx && usermod -a -G icingacmd,icingaweb2 nginx
+	use apache2 && usermod -a -G icingacmd,icingaweb2 apache
 }
 
 pkg_config() {
@@ -50,16 +50,16 @@ pkg_config() {
 	else
 		einfo "Running first time setup ..."
 		einfo "Creating configuration directory ..."
-		/usr/share/${PN}/bin/icingacli setup config directory || die
+		/usr/share/${PN}/bin/icingacli setup config directory
 		einfo "Creating authentication token for web setup ..."
-		/usr/share/${PN}/bin/icingacli setup token create || die
+		/usr/share/${PN}/bin/icingacli setup token create
 		if use apache2 ; then
 			einfo "The following might be useful for your Apache2 configuration:"
-			/usr/share/${PN}/bin/icingacli setup config webserver apache --document-root /usr/share/${PN}/public || die
+			/usr/share/${PN}/bin/icingacli setup config webserver apache --document-root /usr/share/${PN}/public
 		fi
 		if use nginx ; then
 			einfo "The following might be useful for your NGinx configuration:"
-			/usr/share/${PN}/bin/icingacli setup config webserver nginx --document-root /usr/share/${PN}/public || die
+			/usr/share/${PN}/bin/icingacli setup config webserver nginx --document-root /usr/share/${PN}/public
 		fi
 	fi
 	einfo "All done."
