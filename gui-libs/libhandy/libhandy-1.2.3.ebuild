@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libhandy/"
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="examples glade gtk-doc +introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
