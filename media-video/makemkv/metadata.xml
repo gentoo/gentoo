@@ -5,6 +5,9 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
+	<use>
+		<flag name="java">Handle additional Blu-ray protection mechanisms involving Java</flag>
+	</use>
 	<longdescription>
 		MakeMKV is your one-click solution to convert video that you own
 		into free and patents-unencumbered format that can be played

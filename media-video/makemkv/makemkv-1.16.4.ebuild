@@ -16,14 +16,16 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+gui "
+IUSE="+gui +java"
 RESTRICT="bindist mirror"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
 DEPEND="
-	sys-libs/glibc
 	dev-libs/expat
+	dev-libs/openssl:0=[-bindist(-)]
+	>=media-video/ffmpeg-1.0.0:0=
+	sys-libs/glibc
 	sys-libs/zlib
 	gui? (
 		dev-qt/qtcore:5
@@ -31,12 +33,11 @@ DEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
-	>=media-video/ffmpeg-1.0.0:0=
-	dev-libs/openssl:0=[-bindist(-)]
 "
 RDEPEND="
 	${DEPEND}
 	net-misc/wget
+	java? ( >=virtual/jre-1.8 )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -50,6 +51,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-path.patch
 	"${FILESDIR}"/${PN}-flags.patch
 )
+
+src_prepare() {
+	default
+
+	if ! use java; then
+		rm -v "${WORKDIR}/${MY_PB}"/src/share/blues.* || die
+	fi
+}
 
 src_configure() {
 	# See bug #439380.
