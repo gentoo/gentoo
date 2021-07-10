@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2021-07-10)
+# Masked for testing
+>=mail-client/claws-mail-4.0.0
+
 # Craig Andrews <candrews@gentoo.org> (2021-07-09)
 # deprecated; replaced by media-plugins/kodi-audiodecoder-sacd
 # No reverse dependencies
