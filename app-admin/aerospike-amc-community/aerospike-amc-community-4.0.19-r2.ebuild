@@ -6,6 +6,7 @@ EAPI=7
 DESCRIPTION="Web UI based monitoring tool for Aerospike Community Edition Server"
 HOMEPAGE="http://www.aerospike.com"
 SRC_URI="http://www.aerospike.com/download/amc/${PV}/artifact/linux -> ${P}.tar.gz"
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -15,8 +16,6 @@ RDEPEND="
 	acct-group/aerospike-amc
 	acct-user/aerospike-amc
 "
-
-S="${WORKDIR}"
 
 src_install() {
 	cp -r "${S}/"* "${ED}"
