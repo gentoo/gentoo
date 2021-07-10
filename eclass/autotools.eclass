@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -31,7 +31,7 @@ case ${EAPI} in
 		# Needed for eqawarn
 		inherit eutils
 		;;
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
