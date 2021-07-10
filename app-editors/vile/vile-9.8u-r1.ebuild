@@ -14,6 +14,7 @@ IUSE="perl iconv"
 
 RDEPEND="app-eselect/eselect-vi
 	>=sys-libs/ncurses-5.2:0=
+	virtual/libcrypt:=
 	iconv? ( virtual/libiconv )
 	perl? ( dev-lang/perl )"
 DEPEND="${RDEPEND}"

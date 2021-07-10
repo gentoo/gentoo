@@ -13,6 +13,7 @@ KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="perl"
 
 RDEPEND=">=sys-libs/ncurses-5.2:0=
+	virtual/libcrypt:=
 	perl? ( dev-lang/perl )"
 DEPEND="${RDEPEND}
 	sys-devel/flex
