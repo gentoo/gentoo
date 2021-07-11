@@ -94,6 +94,7 @@ pkg_setup() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}/249-libudev-static.patch"
 	)
 
 	default
