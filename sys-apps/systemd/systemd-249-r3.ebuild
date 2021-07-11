@@ -219,6 +219,7 @@ src_prepare() {
 	# Add local patches here
 	PATCHES+=(
 		"${FILESDIR}/249-hostnamed-error-variable.patch"
+		"${FILESDIR}/249-libudev-static.patch"
 	)
 
 	if ! use vanilla; then
