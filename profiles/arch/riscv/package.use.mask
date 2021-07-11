@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-11)
+# Causes 35 tests to fail with "fatal llvm error"
+dev-db/postgresql llvm
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # sys-cluster/ucx fails to compile on this arch
 sys-cluster/slurm ucx
@@ -8,13 +12,6 @@ sys-cluster/slurm ucx
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # net-dialup/mgetty fails to compile on this arch
 mail-mta/courier fax
-
-# Marek Szuba <marecki@gentoo.org> (2021-07-05)
-#   dev-db/postgresql not keyworded here yet
-dev-db/libdbi-drivers postgres
-dev-libs/cyrus-sasl postgres
-mail-mta/courier postgres
-net-libs/courier-authlib postgres
 
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
