@@ -1,0 +1,26 @@
+From f2c57d4f3805775e0ffdc80ce578eaa737017d31 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Fri, 9 Jul 2021 13:05:23 -0400
+Subject: [PATCH] libudev: add "Libs.private: -lrt -pthread" to libudev.pc
+
+This resolves a failure when linking cryptsetup.static against libudev.a.
+
+```
+libtool: link: x86_64-pc-linux-gnu-gcc -Wall -O2 -pipe -march=amdfam10 -static -O2 -o cryptsetup.static lib/utils_crypt.o lib/utils_loop.o lib/utils_io.o lib/utils_blkid.o src/utils_tools.o src/utils_password.o src/utils_luks2.o src/utils_blockdev.o src/cryptsetup.o -pthread -pthread  -Wl,--as-needed ./.libs/libcryptsetup.a -largon2 -lrt -ljson-c -lpopt -luuid -lblkid -lssl -lcrypto -lz -ldl -ldevmapper -lm -lpthread -ludev -pthread
+/usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../x86_64-pc-linux-gnu/bin/ld: /usr/lib/gcc/x86_64-pc-linux-gnu/11.1.0/../../../../lib64/libudev.a(src_libsystemd_sd-daemon_sd-daemon.c.o): in function `sd_is_mq':
+(.text.sd_is_mq+0x3a): undefined reference to `mq_getattr'
+```
+---
+ src/libudev/libudev.pc.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libudev/libudev.pc.in b/src/libudev/libudev.pc.in
+index 89028aaa6bf2..1d6487fa4084 100644
+--- a/src/libudev/libudev.pc.in
++++ b/src/libudev/libudev.pc.in
+@@ -16,4 +16,5 @@ Name: libudev
+ Description: Library to access udev device information
+ Version: {{PROJECT_VERSION}}
+ Libs: -L${libdir} -ludev
++Libs.private: -lrt -pthread
+ Cflags: -I${includedir}
