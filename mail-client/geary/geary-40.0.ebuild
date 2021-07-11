@@ -38,7 +38,6 @@ DEPEND="
 	>=app-crypt/libsecret-0.11
 	dev-libs/snowball-stemmer
 	>=net-libs/libsoup-2.48:2.4
-	>=sys-libs/libunwind-1.1:0
 	>=dev-libs/libxml2-2.7.8:2
 	ytnef? ( >=net-mail/ytnef-1.9.3 )
 "
