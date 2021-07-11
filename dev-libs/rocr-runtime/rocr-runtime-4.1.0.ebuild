@@ -39,10 +39,10 @@ src_prepare() {
 	sed -e "s:get_version ( \"1.0.0\" ):get_version ( \"${PV}\" ):" -i CMakeLists.txt || die
 
 	# ... otherwise system llvm/clang is used ...
-	sed -e "s:find_package(Clang REQUIRED HINTS \${CMAKE_INSTALL_PREFIX}/llvm \${CMAKE_PREFIX_PATH}/llvm PATHS /opt/rocm/llvm ):find_package(Clang REQUIRED HINTS /usr/lib/llvm/roc ):" -i image/blit_src/CMakeLists.txt || die
+	sed -e "s:find_package(Clang REQUIRED HINTS \${CMAKE_INSTALL_PREFIX}/llvm \${CMAKE_PREFIX_PATH}/llvm PATHS /opt/rocm/llvm ):find_package(Clang REQUIRED HINTS ${EPREFIX}/usr/lib/llvm/roc ):" -i image/blit_src/CMakeLists.txt || die
 
 	# Gentoo installs "*.bc" to "/usr/lib" instead of a "[path]/bitcode" directory ...
-	sed -e "s:/opt/rocm/amdgcn/bitcode:/usr/lib/amdgcn/bitcode:" -i image/blit_src/CMakeLists.txt || die
+	sed -e "s:/opt/rocm/amdgcn/bitcode:${EPREFIX}/usr/lib/amdgcn/bitcode:" -i image/blit_src/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
