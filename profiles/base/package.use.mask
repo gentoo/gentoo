@@ -136,10 +136,6 @@ media-gfx/blender doc
 # but making it do so while vendored is a non-trivial task.
 mail-mta/protonmail-bridge gui
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-29)
-# libclangformat-ide is masked for removal.
-dev-qt/qt-creator clang
-
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
 net-im/telepathy-connection-managers gadu icq meanwhile steam yahoo
