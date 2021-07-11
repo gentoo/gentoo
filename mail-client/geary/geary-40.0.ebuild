@@ -11,7 +11,8 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Geary"
 
 LICENSE="LGPL-2.1+ CC-BY-3.0 CC-BY-SA-3.0" # code is LGPL-2.1+, CC licenses for some icons
 SLOT="0"
-IUSE="ytnef"
+IUSE="test ytnef"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 # >=gspell-1.7 dep to ensure all libraries used use enchant:2
@@ -50,7 +51,7 @@ BDEPEND="
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	net-libs/gnutls[tools]
+	test? ( net-libs/gnutls[tools] )
 
 	$(vala_depend)
 	x11-libs/gtk+:3[introspection]
@@ -67,7 +68,8 @@ BDEPEND="
 
 src_prepare() {
 	vala_src_prepare
-	xdg_src_prepare
+	gnome2_environment_reset
+	default
 }
 
 src_configure() {
@@ -84,8 +86,6 @@ src_configure() {
 }
 
 src_test() {
-	unset GSETTINGS_BACKEND
-
 	virtx meson_src_test
 }
 
