@@ -33,5 +33,5 @@ pkg_postinst() {
 	einfo
 	einfo "Please file any enhancement requests, or bugs"
 	einfo "at https://github.com/dol-sen/pyDeComp/issues"
-	einfo "I am also on IRC @ #gentoo-releng of the freenode network"
+	einfo "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
 }
