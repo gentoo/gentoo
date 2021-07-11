@@ -321,7 +321,6 @@ multilib_src_configure() {
 		$(meson_native_true vconsole)
 
 		# static-libs
-		$(meson_use static-libs static-libsystemd)
 		$(meson_use static-libs static-libudev)
 	)
 
