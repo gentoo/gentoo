@@ -1,0 +1,255 @@
+commit a64a6cc703d08db5c223a16bf812a569534ba464
+Author: Hector Martin <marcan@marcan.st>
+Date:   Thu Aug 6 00:42:43 2020 +0900
+
+    alsaseq: fix constant objects in Python 3
+    
+    In Py3 everything is a long, so we can't get away with duplicating the
+    integer object layout any more. Properly subclass PyLong_Type instead,
+    with a bit of a hack to add an extra name field after the variable-sized
+    data section.
+    
+    Also get rid of the enum type stuff, which seems to be unused cruft, and
+    the numprotocol stuff, because the base type can take care of that (and
+    we can't map arbitrary arithmetic results back to constants anyway).
+    
+    Signed-off-by: Hector Martin <marcan@marcan.st>
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+
+diff --git a/pyalsa/alsaseq.c b/pyalsa/alsaseq.c
+index 0e7cc35..9d9b1a9 100644
+--- a/pyalsa/alsaseq.c
++++ b/pyalsa/alsaseq.c
+@@ -51,9 +51,6 @@
+ /* the C variable of a constant dict */
+ #define TDICT(subtype) _dictPYALSASEQ_CONST_##subtype
+ 
+-/* the C enumeration of a constant dict */
+-#define TTYPE(subtype) PYALSASEQ_CONST_##subtype
+-
+ /* defines constant dict by type */
+ #define TCONSTDICT(subtype)			\
+   static PyObject * TDICT(subtype);
+@@ -71,7 +68,7 @@
+ /* creates a typed constant and add it to the module and dictionary */
+ #define TCONSTADD(module, subtype, name) {				\
+     PyObject *tmp =							\
+-      Constant_create(#name, SND_##name, TTYPE(subtype));		\
++      Constant_create(#name, SND_##name);		\
+     if (tmp == NULL) {							\
+       return MOD_ERROR_VAL;						\
+     }									\
+@@ -109,46 +106,6 @@
+     }							\
+   }
+ 
+-
+-/* num protocol support for binary Constant operations */
+-#define NUMPROTOCOL2(name, oper)				\
+-  static PyObject *						\
+-  Constant_##name (PyObject *v, PyObject *w) {			\
+-    int type = 0;						\
+-    long val1, val2, val;					\
+-    if (get_long1(v, &val1) || get_long1(w, &val2)) {		\
+-      Py_INCREF(Py_NotImplemented);				\
+-      return Py_NotImplemented;					\
+-    }								\
+-    val = val1 oper val2;					\
+-    /* always asume left will be the type */			\
+-    if (PyObject_TypeCheck(v, &ConstantType)) {			\
+-      type = ((ConstantObject *) v)->type;			\
+-    } else if (PyObject_TypeCheck(w, &ConstantType)) {		\
+-      type = ((ConstantObject *) w)->type;			\
+-    }								\
+-    PyObject *self = Constant_create(#oper, val, type);		\
+-    return self;						\
+-  }
+-
+-/* num protocol support for unary Constant operations */
+-#define NUMPROTOCOL1(name, oper)			\
+-  static PyObject *					\
+-  Constant_##name (PyObject *v) {			\
+-    int type = 0;					\
+-    long val1, val;					\
+-    if (get_long1(v, &val1)) {				\
+-      Py_INCREF(Py_NotImplemented);			\
+-      return Py_NotImplemented;				\
+-    }							\
+-    val = oper val1;					\
+-    if (PyObject_TypeCheck(v, &ConstantType)) {		\
+-      type = ((ConstantObject *) v)->type;		\
+-    }							\
+-    PyObject *self = Constant_create(#oper, val, type); \
+-    return self;					\
+-  }
+-
+ /* sets the object into the dict */
+ #define SETDICTOBJ(name, object)		\
+   PyDict_SetItemString(dict, name, object)
+@@ -328,21 +285,6 @@
+ // alsaseq.Constant implementation
+ //////////////////////////////////////////////////////////////////////////////
+ 
+-/* alsaseq.Constant->type enumeration */
+-enum {
+-  PYALSASEQ_CONST_STREAMS,
+-  PYALSASEQ_CONST_MODE,
+-  PYALSASEQ_CONST_QUEUE,
+-  PYALSASEQ_CONST_CLIENT_TYPE,
+-  PYALSASEQ_CONST_PORT_CAP,
+-  PYALSASEQ_CONST_PORT_TYPE,
+-  PYALSASEQ_CONST_EVENT_TYPE,
+-  PYALSASEQ_CONST_EVENT_TIMESTAMP,
+-  PYALSASEQ_CONST_EVENT_TIMEMODE,
+-  PYALSASEQ_CONST_ADDR_CLIENT,
+-  PYALSASEQ_CONST_ADDR_PORT,
+-};
+-
+ // constants dictionaries
+ 
+ TCONSTDICT(STREAMS);
+@@ -390,34 +332,66 @@ PyDoc_STRVAR(Constant__doc__,
+   "Python number protocol."
+ );
+ 
+-/** alsaseq.Constant object structure type */
++/** alsaseq.Constant additional fields */
++/* This follows the variable length portion of the Long type */
+ typedef struct {
+-  PyObject_HEAD
+-  ;
+-
+-  /* value of constant */
+-  unsigned long int value;
+   /* name of constant */
+   const char *name;
+-  /* type of constant */
+-  int type;
++} ConstantExtraFields;
++
++/** alsaseq.Constant object structure type */
++typedef struct {
++#if PY_MAJOR_VERSION < 3
++  PyIntObject base;
++#else
++  /* NOTE: this only works if the value fits in one digit */
++  PyLongObject base;
++#endif
++  /* This field is actually offset by the base type's variable size portion */
++  ConstantExtraFields extra;
+ } ConstantObject;
+ 
++#if PY_MAJOR_VERSION < 3
++/* PyInt is fixed size in Python 2 */
++# define CONST_VALUE(x) PyInt_AsLong((PyObject *)x)
++# define CONST_EXTRA(x) (&(x->extra))
++#else
++/* PyLong is variable size in Python 3 */
++# define CONST_VALUE(x) PyLong_AsLong((PyObject *)x)
++# define CONST_EXTRA(x) \
++    ((ConstantExtraFields *)( \
++        ((intptr_t)(&x->extra)) \
++        + abs(Py_SIZE(&x->base)) * Py_TYPE(x)->tp_itemsize \
++    ))
++#endif
++
+ /** alsaseq.Constant type (initialized later...) */
+ static PyTypeObject ConstantType;
+ 
+ /** alsaseq.Constant internal create */
+ static PyObject *
+-Constant_create(const char *name, long value, int type) {
+-  ConstantObject *self = PyObject_New(ConstantObject, &ConstantType);
++Constant_create(const char *name, long value) {
++#if PY_MAJOR_VERSION < 3
++  PyObject *val = PyInt_FromLong(value);
++#else
++  PyObject *val = PyLong_FromLong(value);
++#endif
++
++  PyObject *args = PyTuple_Pack(1, val);
++  Py_DECREF(val);
++  
++#if PY_MAJOR_VERSION < 3
++  ConstantObject *self = (ConstantObject *)PyInt_Type.tp_new(&ConstantType, args, NULL);
++#else
++  ConstantObject *self = (ConstantObject *)PyLong_Type.tp_new(&ConstantType, args, NULL);
++#endif
++  Py_DECREF(args);
+ 
+   if (self == NULL) {
+     return NULL;
+   }
+ 
+-  self->value = value;
+-  self->name = name;
+-  self->type = type;
++  CONST_EXTRA(self)->name = name;
+ 
+   return (PyObject *)self;
+ }
+@@ -426,34 +400,16 @@ Constant_create(const char *name, long value, int type) {
+ static PyObject *
+ Constant_repr(ConstantObject *self) {
+   return PyUnicode_FromFormat("%s(0x%x)",
+-			     self->name,
+-			     (unsigned int)self->value);
++			     CONST_EXTRA(self)->name,
++			     (unsigned int)CONST_VALUE(self));
+ }
+ 
+ /** alsaseq.Constant tp_str */
+ static PyObject *
+ Constant_str(ConstantObject *self) {
+   return PyUnicode_FromFormat("%s",
+-			     self->name);
+-}
+-
+-/** alsaseq.Constant Number protocol support (note: not all ops supported) */
+-NUMPROTOCOL2(Add, +)
+-NUMPROTOCOL2(Subtract, -)
+-NUMPROTOCOL2(Xor, ^)
+-NUMPROTOCOL2(Or, |)
+-NUMPROTOCOL2(And, &)
+-NUMPROTOCOL1(Invert, ~)
+-
+-/** alsaseq.Constant number protocol methods */
+-static PyNumberMethods Constant_as_number = {
+- nb_add: (binaryfunc)Constant_Add,
+- nb_subtract: (binaryfunc)Constant_Subtract,
+- nb_xor: (binaryfunc)Constant_Xor,
+- nb_or: (binaryfunc)Constant_Or,
+- nb_and: (binaryfunc)Constant_And,
+- nb_invert: (unaryfunc)Constant_Invert
+-};
++			     CONST_EXTRA(self)->name);
++}
+ 
+ /** alsaseq.Constant type */
+ static PyTypeObject ConstantType = {
+@@ -464,7 +420,7 @@ static PyTypeObject ConstantType = {
+ #else
+   tp_base: &PyLong_Type,
+ #endif
+-  tp_basicsize: sizeof(ConstantObject),
++  tp_basicsize: sizeof(ConstantObject) + sizeof(ConstantExtraFields),
+   tp_flags:
+ #if PY_MAJOR_VERSION < 3
+   Py_TPFLAGS_HAVE_GETCHARBUFFER
+@@ -474,7 +430,6 @@ static PyTypeObject ConstantType = {
+   0,
+ #endif
+   tp_doc: Constant__doc__,
+-  tp_as_number: &Constant_as_number,
+   tp_free: PyObject_Del,
+   tp_str: (reprfunc)Constant_str,
+   tp_repr: (reprfunc)Constant_repr
+@@ -1730,7 +1685,7 @@ SeqEvent_repr(SeqEventObject *self) {
+   unsigned int ntime = 0;
+   Py_DECREF(key);
+   if (constObject != NULL) {
+-    typestr = constObject->name;
++    typestr = constObject->extra.name;
+   }
+ 
+   if (snd_seq_ev_is_real(self->event)) {
