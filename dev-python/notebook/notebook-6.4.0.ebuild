@@ -59,13 +59,13 @@ python_test() {
 	local deselect=(
 		# trash doesn't seem to work for us
 		notebook/services/contents/tests/test_contents_api.py::APITest::test_checkpoints_follow_file
+		notebook/services/contents/tests/test_contents_api.py::APITest::test_delete
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_checkpoints_follow_file
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete_dirs
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete_non_empty_dir
 		notebook/services/contents/tests/test_manager.py::TestContentsManager::test_delete
 		notebook/services/contents/tests/test_manager.py::TestContentsManagerNoAtomic::test_delete
-		notebook/services/contents/tests/test_contents_api.py::APITest::test_delete
 		# TODO
 		notebook/services/kernels/tests/test_kernels_api.py::KernelAPITest::test_connections
 		notebook/services/kernels/tests/test_kernels_api.py::AsyncKernelAPITest::test_connections
