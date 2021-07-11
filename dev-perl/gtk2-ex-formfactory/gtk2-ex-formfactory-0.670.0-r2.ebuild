@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=JRED
-MODULE_VERSION=0.67
-MY_PN=Gtk2-Ex-FormFactory
+DIST_AUTHOR=JRED
+DIST_VERSION=0.67
+DIST_NAME=Gtk2-Ex-FormFactory
 inherit perl-module
 
 DESCRIPTION="Gtk2 FormFactory"
@@ -14,9 +14,6 @@ HOMEPAGE="https://www.exit1.org/Gtk2-Ex-FormFactory/ https://metacpan.org/releas
 LICENSE="|| ( LGPL-2.1 LGPL-3 )" #LGPL-2.1+
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE=""
 
 RDEPEND="dev-perl/Gtk2"
-DEPEND="${RDEPEND}"
-
-SRC_TEST="do"
+BDEPEND="${RDEPEND}"
