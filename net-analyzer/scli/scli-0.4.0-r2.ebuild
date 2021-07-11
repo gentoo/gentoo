@@ -1,15 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools epatch
+inherit autotools
 
 DESCRIPTION="SNMP Command Line Interface"
 HOMEPAGE="https://github.com/schoenw/scli"
 SRC_URI="ftp://ftp.ibr.cs.tu-bs.de/pub/local/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux"
 
@@ -22,15 +22,14 @@ RDEPEND="
 	sys-libs/readline
 	sys-libs/zlib
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-configure.patch )
 
 DOCS=( AUTHORS ChangeLog NEWS PORTING README TODO )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-configure.patch
-
+	default
 	eautoreconf
 }
