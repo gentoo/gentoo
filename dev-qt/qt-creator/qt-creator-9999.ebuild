@@ -2,15 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-LLVM_MAX_SLOT=10
+LLVM_MAX_SLOT=12
 PLOCALES="cs da de fr ja pl ru sl uk zh-CN zh-TW"
 
 inherit llvm qmake-utils virtualx xdg
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="https://doc.qt.io/qtcreator/"
-LICENSE="GPL-3"
-SLOT="0"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -20,12 +18,12 @@ else
 	MY_P=${PN}-opensource-src-${MY_PV}
 	[[ ${MY_PV} == ${PV} ]] && MY_REL=official || MY_REL=development
 	SRC_URI="https://download.qt.io/${MY_REL}_releases/${PN/-}/$(ver_cut 1-2)/${MY_PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
 	S=${WORKDIR}/${MY_P}
+	KEYWORDS="~amd64 ~x86"
 fi
 
-# TODO: unbundle sqlite
-
+LICENSE="GPL-3"
+SLOT="0"
 QTC_PLUGINS=(android +autotest autotools:autotoolsprojectmanager baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangtools' clearcase cmake:cmakeprojectmanager cppcheck
 	ctfvisualizer cvs +designer git glsl:glsleditor +help lsp:languageclient mcu:mcusupport mercurial
@@ -69,8 +67,8 @@ CDEPEND="
 	clang? (
 		>=dev-cpp/yaml-cpp-0.6.2:=
 		|| (
-			sys-devel/clang:10
-			sys-devel/clang:9
+			sys-devel/clang:12
+			sys-devel/clang:11
 		)
 		<sys-devel/clang-$((LLVM_MAX_SLOT + 1)):=
 	)
@@ -99,7 +97,7 @@ RDEPEND="${CDEPEND}
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
 	mercurial? ( dev-vcs/mercurial )
-	qbs? ( >=dev-util/qbs-1.15 )
+	qbs? ( >=dev-util/qbs-1.18 )
 	qmldesigner? ( >=dev-qt/qtquicktimeline-${QT_PV} )
 	silversearcher? ( sys-apps/the_silver_searcher )
 	subversion? ( dev-vcs/subversion )
@@ -199,6 +197,8 @@ src_prepare() {
 
 	# remove bundled qbs
 	rm -r src/shared/qbs || die
+
+	# TODO: unbundle sqlite
 }
 
 src_configure() {
