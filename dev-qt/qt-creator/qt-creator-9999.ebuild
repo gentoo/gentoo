@@ -112,10 +112,6 @@ for x in ${PLOCALES}; do
 done
 unset x
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.12.0-dylib-fix.patch
-)
-
 llvm_check_deps() {
 	has_version -d "sys-devel/clang:${LLVM_SLOT}"
 }
