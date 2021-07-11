@@ -40,8 +40,8 @@ dev-cpp/eigen doc test
 dev-python/networkx extras pandas
 #  - sci-libs/umfpack (and a lot of its own deps in turn)
 dev-python/scipy sparse
-#  - dev-db/libdbi, sys-cluster/ceph
-net-analyzer/rrdtool dbi rados
+#  - sys-cluster/ceph
+net-analyzer/rrdtool rados
 #  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
 sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
 #  - sci-libs/hdf5, sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
@@ -49,7 +49,7 @@ sys-cluster/slurm hdf5 ofed slurmdbd
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
 # Dependencies not keyworded, not tested
-media-gfx/imagemagick fftw openexr wmf
+media-gfx/imagemagick openexr wmf
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
@@ -126,12 +126,10 @@ dev-libs/libpcre jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
-app-admin/syslog-ng amqp dbi geoip2 kafka mongodb redis spoof-source smtp snmp test
+app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp snmp test
 app-arch/p7zip wxwidgets
-app-crypt/mit-krb5 doc
 app-doc/doxygen doc
 app-editors/emacs mailutils
-app-misc/pax-utils python
 app-text/asciidoc test
 app-text/ghostscript-gpl cups
 app-text/po4a test
@@ -150,7 +148,6 @@ dev-python/urllib3 test
 dev-util/catalyst iso
 dev-util/pkgconf test
 dev-vcs/git cvs highlight subversion
-dev-vcs/mercurial zsh-completion
 media-libs/harfbuzz doc
 sys-libs/libcxx libcxxabi libunwind static-libs
 sys-libs/libcxxabi libunwind
