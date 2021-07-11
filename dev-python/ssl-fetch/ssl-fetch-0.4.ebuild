@@ -24,5 +24,5 @@ pkg_postinst() {
 	elog
 	elog "Please file any enhancement requests, or bugs"
 	elog "at https://github.com/dol-sen/ssl-fetch/issues"
-	elog "I am also on IRC @ #gentoo-portage, #gentoo-keys,... of the Freenode network"
+	einfo "I am also on IRC @ #gentoo-ci of the Libera.Chat network"
 }
