@@ -5,6 +5,9 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="fuse">Enable <pkg>sys-fs/fuse</pkg> uadefs frontend for on-the-fly WAV conversion</flag>
+	</use>
 	<upstream>
 		<remote-id type="gitlab">uade-music-player/uade</remote-id>
 	</upstream>
