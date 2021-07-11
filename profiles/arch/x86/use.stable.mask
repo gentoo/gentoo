@@ -10,10 +10,6 @@
 python_single_target_python3_10
 python_targets_python3_10
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-07)
-# Prebuilt kernel rebuilds are supported on stable yet.
-dist-kernel
-
 # Sam James <sam@gentoo.org> (2020-11-10)
 # media-gfx/openvdb is not stable on x86
 # ... and has failing tests right now anyway
