@@ -145,6 +145,7 @@ src_prepare() {
 		# These files ignore LDFLAGS. We assign the variable here, because
 		# for live ebuilds FULL_VERSION doesn't exist in global scope
 		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
+
 		# gccjit doesn't play well with ccache #801580
 		# For now, work around the problem with an explicit LIBRARY_PATH
 		has ccache ${FEATURES} \
