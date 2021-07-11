@@ -3,7 +3,7 @@
 
 EAPI=7
 LLVM_MAX_SLOT=12
-PLOCALES="cs da de fr ja pl ru sl uk zh-CN zh-TW"
+PLOCALES="cs da de fr hr ja pl ru sl uk zh-CN zh-TW"
 
 inherit llvm qmake-utils virtualx xdg
 
