@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 	>=dev-libs/glib-2.58:2
 	>=x11-libs/gtk+-3.12:3[introspection]
 	>=gnome-base/gnome-desktop-3.30:3[introspection]
-	gui-libs/libhandy:0.0[introspection]
+	gui-libs/libhandy:1[introspection]
 	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
