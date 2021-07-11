@@ -151,14 +151,13 @@ src_configure() {
 		[[ -z $uuid_config ]] && uuid_config="--with-uuid=ossp"
 	fi
 
-	econf \
+	local myconf="\
 		--prefix="${PO}/usr/$(get_libdir)/postgresql-${SLOT}" \
 		--datadir="${PO}/usr/share/postgresql-${SLOT}" \
 		--includedir="${PO}/usr/include/postgresql-${SLOT}" \
 		--mandir="${PO}/usr/share/postgresql-${SLOT}/man" \
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
-		$(use_enable !alpha spinlocks) \
 		$(use_enable debug) \
 		$(use_enable nls) \
 		$(use_enable threads thread-safety) \
@@ -177,7 +176,14 @@ src_configure() {
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
 		$(use_with systemd) \
-		${uuid_config}
+		${uuid_config}"
+	if use alpha || use riscv; then
+		myconf+=" --disable-spinlocks"
+	else
+		# Should be the default but just in case
+		myconf+=" --enable-spinlocks"
+	fi
+	econf ${myconf}
 }
 
 src_compile() {
