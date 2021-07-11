@@ -44,8 +44,11 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-apps/help2man
 	test? (
-		dev-python/minimock
-		dev-python/pytest-localserver
+		$(python_gen_cond_dep '
+			dev-python/minimock[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-localserver[${PYTHON_USEDEP}]
+		')
 	)
 "
 
