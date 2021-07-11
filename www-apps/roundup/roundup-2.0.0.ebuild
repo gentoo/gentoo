@@ -36,6 +36,9 @@ RDEPEND="${DEPEND}
 		)"
 
 DOCS="CHANGES.txt doc/*.txt"
+PATCHES=(
+	"${FILESDIR}/${P}-test-pyjwt.patch"
+)
 
 distutils_enable_tests pytest
 
