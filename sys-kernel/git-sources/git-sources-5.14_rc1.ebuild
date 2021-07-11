@@ -1,13 +1,13 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 UNIPATCH_STRICTORDER="yes"
 K_NOUSENAME="yes"
 K_NOSETEXTRAVERSION="yes"
 K_NOUSEPR="yes"
 K_SECURITY_UNSUPPORTED="1"
-K_BASE_VER="5.12"
+K_BASE_VER="5.13"
 K_EXP_GENPATCHES_NOUSE="1"
 K_FROM_GIT="yes"
 ETYPE="sources"
