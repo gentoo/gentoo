@@ -26,7 +26,8 @@ KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
 
 S=${WORKDIR}/${MY_P}
 
-src_install() {
-	export BUILDBOT_VERSION="${MY_PV}"
-	distutils-r1_src_install
+python_prepare_all() {
+	sed -e "s:version=buildbot_pkg.getVersion(\".\"),:version=\"${MY_PV}\",:" \
+		-i setup.py || die
+	distutils-r1_python_prepare_all
 }
