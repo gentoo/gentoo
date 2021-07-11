@@ -61,7 +61,7 @@ BDEPEND="
 	dev-libs/libgee:0.8[introspection]
 	media-libs/gsound[vala]
 	app-text/gspell[vala]
-	gui-libs/libhandy:0.0[vala]
+	gui-libs/libhandy:1[vala]
 	app-crypt/libsecret[introspection,vala]
 	net-libs/libsoup:2.4[introspection,vala]
 "
