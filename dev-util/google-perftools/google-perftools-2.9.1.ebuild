@@ -14,7 +14,7 @@ LICENSE="MIT"
 SLOT="0/4"
 # contains ASM code, with support for
 # freebsd x86/amd64
-# linux x86/amd64/ppc/ppc64/arm
+# linux amd64/arm/arm64/ppc/ppc64/riscv/x86
 # OSX ppc/amd64
 # AIX ppc/ppc64
 KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
