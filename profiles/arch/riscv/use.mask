@@ -31,7 +31,6 @@ bluetooth
 emacs
 fuse
 java
-kerberos
 latex
 libedit
 mono
