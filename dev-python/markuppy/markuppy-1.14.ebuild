@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 SLOT="0"
-LICENSE="BSD-2"
+LICENSE="MIT"
 KEYWORDS="~amd64"
 
 # MarkupPy does not have any test suite
