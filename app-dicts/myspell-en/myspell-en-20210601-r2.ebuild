@@ -26,6 +26,7 @@ src_prepare() {
 			"th_en_US_v2.dat"
 			"th_en_US_v2.idx"
 		)
+		MYSPELL_HYPH+=( "hyph_en_US.dic" )
 	fi
 
 	MYSPELL_DICT=( )
