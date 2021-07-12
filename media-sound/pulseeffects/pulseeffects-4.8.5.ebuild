@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="bs2b calf rubberband"
 
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
-RDEPEND="
+RDEPEND="!media-sound/easyeffects
 	>=dev-libs/boost-1.41:=
 	>=dev-cpp/glibmm-2.56.0:2
 	>=dev-cpp/gtkmm-3.24:3.0
