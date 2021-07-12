@@ -26,7 +26,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
-inherit desktop pax-utils xdg
+inherit desktop linux-info pax-utils xdg
 
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
@@ -163,6 +163,13 @@ moz_install_xpi() {
 		einfo "Installing ${emid}.xpi into ${ED}${DESTDIR} ..."
 		newins "${xpi_file}" "${emid}.xpi"
 	done
+}
+
+pkg_setup() {
+	CONFIG_CHECK="~SECCOMP"
+	WARNING_SECCOMP="CONFIG_SECCOMP not set! This system will be unable to play DRM-protected content."
+
+	linux-info_pkg_setup
 }
 
 src_unpack() {
