@@ -22,10 +22,6 @@ lua_single_target_luajit
 lua_targets_lua5-2
 lua_targets_luajit
 
-# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
-# no fam providers keyworded yet
-fam
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
 valgrind
