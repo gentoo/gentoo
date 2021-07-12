@@ -50,7 +50,7 @@ DEPEND="
 	readline? ( sys-libs/readline:0= )
 	tiff? ( media-libs/tiff:0= )
 	tk? ( dev-lang/tk:0= )
-	X? ( x11-libs/libXmu:0= x11-misc/xdg-utils )"
+	X? ( x11-libs/libXmu:0= x11-libs/libXt x11-misc/xdg-utils )"
 
 RDEPEND="${DEPEND}
 	sys-libs/zlib:0[minizip]
