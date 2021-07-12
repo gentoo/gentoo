@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jborean93/requests-credssp/archive/refs/tags/v${PV}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 # Needs unpackaged pyspnego (https://github.com/jborean93/pyspnego)
 RESTRICT="test"
 
