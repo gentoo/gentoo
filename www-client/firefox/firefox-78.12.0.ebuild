@@ -37,8 +37,8 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_PV_DISTFILES="${MOZ_PV}${MOZ_PV_SUFFIX}"
 MOZ_P_DISTFILES="${MOZ_PN}-${MOZ_PV_DISTFILES}"
 
-inherit autotools check-reqs desktop flag-o-matic gnome2-utils llvm \
-	multiprocessing pax-utils python-any-r1 toolchain-funcs \
+inherit autotools check-reqs desktop flag-o-matic gnome2-utils linux-info \
+	llvm multiprocessing pax-utils python-any-r1 toolchain-funcs \
 	virtualx xdg
 
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
@@ -475,6 +475,10 @@ pkg_setup() {
 		# Ensure we use C locale when building, bug #746215
 		export LC_ALL=C
 	fi
+
+	CONFIG_CHECK="~SECCOMP"
+	WARNING_SECCOMP="CONFIG_SECCOMP not set! This system will be unable to play DRM-protected content."
+	linux-info_pkg_setup
 }
 
 src_unpack() {
