@@ -18,6 +18,8 @@ IUSE="alsa cdda cddb debug flac ffmpeg ifp jack ladspa lame libsamplerate
 	lua mac modplug mp3 musepack oss podcast pulseaudio sndfile speex systray
 	vorbis wavpack"
 
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
+
 BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
