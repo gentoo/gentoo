@@ -36,7 +36,6 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
 	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
-	"${WORKDIR}"/${COLOUR_PATCH_NAME}
 )
 DOCS=(
 	Changes
@@ -50,6 +49,11 @@ DOCS=(
 src_prepare() {
 	default
 
+	# Current patch is too aggressive to apply unconditionally, see Bug #801571
+	if use 24-bit-color; then
+		eapply "${WORKDIR}"/${COLOUR_PATCH_NAME}
+	fi
+
 	# kill the rxvt-unicode terminfo file - #192083
 	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
 
@@ -59,21 +63,26 @@ src_prepare() {
 
 src_configure() {
 	# --enable-everything goes first: the order of the arguments matters
-	econf --enable-everything \
-		$(use_enable 24-bit-color) \
-		$(use_enable 256-color) \
-		$(use_enable blink text-blink) \
-		$(use_enable fading-colors fading) \
-		$(use_enable font-styles) \
-		$(use_enable gdk-pixbuf pixbuf) \
-		$(use_enable iso14755) \
-		$(use_enable mousewheel) \
-		$(use_enable perl) \
-		$(use_enable startup-notification) \
-		$(use_enable unicode3) \
-		$(use_enable utmp) \
-		$(use_enable wtmp) \
+	local myconf=(
+		--enable-everything
+		$(use_enable 256-color)
+		$(use_enable blink text-blink)
+		$(use_enable fading-colors fading)
+		$(use_enable font-styles)
+		$(use_enable gdk-pixbuf pixbuf)
+		$(use_enable iso14755)
+		$(use_enable mousewheel)
+		$(use_enable perl)
+		$(use_enable startup-notification)
+		$(use_enable unicode3)
+		$(use_enable utmp)
+		$(use_enable wtmp)
 		$(use_enable xft)
+	)
+	if use 24-bit-color; then
+		myconf+=( --enable-24-bit-color )
+	fi
+	econf "${myconf[@]}"
 }
 
 src_compile() {
