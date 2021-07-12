@@ -30,7 +30,6 @@ RDEPEND="
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/slixmpp-1.7.1[${PYTHON_USEDEP}]
 "
-DEPEND="test? ( ${RDEPEND} )"
 
 PATCHES=(
 	"${FILESDIR}/Do-not-install-man-pages-and-files-in-usr-share-poez.patch"
