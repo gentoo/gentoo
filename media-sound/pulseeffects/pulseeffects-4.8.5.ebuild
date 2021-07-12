@@ -6,14 +6,14 @@ EAPI=7
 inherit gnome2-utils meson
 
 DESCRIPTION="Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio"
-HOMEPAGE="https://github.com/wwmm/pulseeffects"
+HOMEPAGE="https://github.com/wwmm/easyeffects"
 
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/wwmm/pulseeffects"
+	EGIT_REPO_URI="https://github.com/wwmm/easyeffects"
 else
-	SRC_URI="https://github.com/wwmm/pulseeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/wwmm/easyeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
