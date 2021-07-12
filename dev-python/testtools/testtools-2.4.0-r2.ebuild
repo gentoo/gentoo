@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
@@ -43,6 +43,10 @@ distutils_enable_tests unittest
 src_prepare() {
 	# eliminate unittest2 & traceback2
 	sed -i -e '/unittest2/d' -e '/traceback2/d' requirements.txt || die
+	# eliminate linecache2
+	sed -i -e 's/import linecache2 as linecache/import linecache/' \
+		testtools/tests/test_compat.py || die
+
 	# also conditional imports
 	find -name '*.py' -exec \
 		sed -i -e 's:unittest2:unittest:' {} + || die
