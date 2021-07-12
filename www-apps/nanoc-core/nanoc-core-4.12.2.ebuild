@@ -42,6 +42,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/fuubar
 	dev-ruby/minitest
 	dev-ruby/timecop
+	dev-ruby/tty-command
 	dev-ruby/yard
 	www-apps/nanoc-spec
 )
