@@ -19,7 +19,7 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		>=dev-util/stripe-mock-0.103.0
+		>=dev-util/stripe-mock-0.109.0
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		net-misc/curl
 	)
