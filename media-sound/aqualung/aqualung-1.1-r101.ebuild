@@ -3,12 +3,12 @@
 
 EAPI=7
 
-LUA_COMPAT=( lua5-2 )
+LUA_COMPAT=( lua5-{1..4} luajit )
 
 inherit autotools desktop lua-single xdg
 
 DESCRIPTION="Music player for a wide range of formats designed for gapless playback"
-HOMEPAGE="http://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
+HOMEPAGE="https://aqualung.jeremyevans.net/ https://github.com/jeremyevans/aqualung"
 SRC_URI="https://github.com/jeremyevans/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
