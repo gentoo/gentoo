@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-12)
+# No releases since March 2015, no upstream repo activity since November
+# 2019. Unmaintained in Gentoo. Depends on effectively EOLed Lua 5.2,
+# fails to build against any other version. Removal in 30 days (Bug #801883)
+app-crypt/cardpeek
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-12)
 # Effectively EOL, no packages in the tree strictly require this
 # particular version. Removal, of both the ebuilds and target support,
 # in 30 days (bug #801865).
