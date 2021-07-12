@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="
 	test? (
 		${RDEPEND}
-		>=dev-util/stripe-mock-0.103.0
+		>=dev-util/stripe-mock-0.105.0
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		net-misc/curl
 	)
