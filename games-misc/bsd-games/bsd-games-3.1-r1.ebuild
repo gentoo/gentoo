@@ -14,7 +14,7 @@ LICENSE="BSD"
 # Subslot indicates the fork / new version
 # 3 doesn't include the same games as the classic variant, etc
 SLOT="0/3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # 'check' target doesn't exist, nor do any actual tests
 # bug #779649
