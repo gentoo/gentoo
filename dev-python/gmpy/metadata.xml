@@ -11,9 +11,6 @@
 		library, the MPFR (correctly rounded real floating-point arithmetic) and MPC
 		(correctly rounded complex floating-point arithmetic) libraries.
 	</longdescription>
-	<use>
-		<flag name="mpir">Use <pkg>sci-libs/mpir</pkg> as gmp implementation</flag>
-	</use>
 	<upstream>
 		<remote-id type="pypi">gmpy2</remote-id>
 		<remote-id type="github">aleaxit/gmpy</remote-id>
