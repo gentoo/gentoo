@@ -21,17 +21,20 @@ IUSE="cairo +cpuid cuda debug gl netloc nvml +pci static-libs svg udev xml X"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 
-	cairo?		( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
-	cuda?		( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
-	gl?		( x11-drivers/nvidia-drivers[static-libs,tools] )
-	netloc?		( !sys-apps/netloc )
-	nvml?		( x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}] )
-	pci?		(
-				>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]
-				>=x11-libs/libpciaccess-0.13.1-r1[${MULTILIB_USEDEP}]
-			)
+	cairo?	( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
+	cuda?	( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
+	gl?	( x11-drivers/nvidia-drivers[static-libs,tools] )
+	netloc?	( !sys-apps/netloc )
+	nvml?	(
+		>=dev-util/nvidia-cuda-toolkit-6.5.19-r1:=
+		x11-drivers/nvidia-drivers[${MULTILIB_USEDEP}]
+	)
+	pci?	(
+			>=sys-apps/pciutils-3.3.0-r2[${MULTILIB_USEDEP}]
+			>=x11-libs/libpciaccess-0.13.1-r1[${MULTILIB_USEDEP}]
+		)
 	udev?	( virtual/libudev )
-	xml?		( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
+	xml?	( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 # 2.69-r5 for --runstatedir
