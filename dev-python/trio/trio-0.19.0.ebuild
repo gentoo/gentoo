@@ -16,7 +16,7 @@ SRC_URI="https://github.com/python-trio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
 
 RDEPEND="
 	>=dev-python/async_generator-1.9[${PYTHON_USEDEP}]
