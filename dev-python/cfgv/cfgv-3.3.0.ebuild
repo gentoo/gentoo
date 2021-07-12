@@ -13,6 +13,6 @@ SRC_URI="https://github.com/asottile/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~riscv"
+KEYWORDS="amd64 ~hppa ~ppc ~riscv"
 
 distutils_enable_tests pytest
