@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/stefanberger/libtpms"
 SRC_URI="https://github.com/stefanberger/libtpms/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc"
 
 DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
