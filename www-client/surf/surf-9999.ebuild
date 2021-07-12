@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit savedconfig toolchain-funcs
+inherit savedconfig toolchain-funcs desktop xdg
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
 HOMEPAGE="https://surf.suckless.org/"
@@ -73,4 +73,25 @@ src_install() {
 	fi
 
 	save_config config.h
+
+	newicon "${S}"/"${PN}".png "${PN}".png
+
+	local mime_types="text/html;text/xml;application/xhtml+xml;"
+	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
+	make_desktop_entry \
+		"surf" \
+		"Surf" \
+		"surf" \
+		"Network;WebBrowser" \
+		"MimeType=${mime_types}\nStartupWMClass=surf"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
