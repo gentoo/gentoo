@@ -87,7 +87,7 @@ src_configure() {
 		$(myuse oss)
 		$(myuse portaudio)
 		$(myuse pulseaudio)
-		$(myuse rnnoise)
+		$(usex rnnoise bundled-rnnoise '')
 		$(usex speech '' no-speechd)
 		$(usex zeroconf '' no-bonjour)
 	)
