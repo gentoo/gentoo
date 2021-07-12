@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc"
 
 RDEPEND="
 	>=dev-python/async_generator-1.9[${PYTHON_USEDEP}]
