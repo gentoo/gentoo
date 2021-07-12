@@ -4,10 +4,10 @@
 # @ECLASS: haskell-cabal.eclass
 # @MAINTAINER:
 # Haskell herd <haskell@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original author: Andres Loeh <kosmikus@gentoo.org>
 # Original author: Duncan Coutts <dcoutts@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: for packages that make use of the Haskell Common Architecture for Building Applications and Libraries (cabal)
 # @DESCRIPTION:
 # Basic instructions:
