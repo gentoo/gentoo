@@ -4,9 +4,9 @@
 # @ECLASS: ghc-package.eclass
 # @MAINTAINER:
 # "Gentoo's Haskell Language team" <haskell@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7 8
 # @AUTHOR:
 # Original Author: Andres Loeh <kosmikus@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: This eclass helps with the Glasgow Haskell Compiler's package configuration utility.
 # @DESCRIPTION:
 # Helper eclass to handle ghc installation/upgrade/deinstallation process.
