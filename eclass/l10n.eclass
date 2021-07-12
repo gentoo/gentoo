@@ -1,7 +1,6 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: l10n.eclass
 # @DEAD
 # Use plocale.eclass as drop-in replacement.
 # Functions should be replaced as follows:
@@ -14,6 +13,7 @@
 # the name of this eclass has caused some confusion, because it operates
 # on LINGUAS and is unrelated to L10N.
 #
+# @ECLASS: l10n.eclass
 # @MAINTAINER:
 # Ulrich Müller <ulm@gentoo.org>
 # @AUTHOR:
