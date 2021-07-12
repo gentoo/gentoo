@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-07-12)
+# Version 3.3.0 suffers from ridiculously high CPU usage, this version has
+# therefore been retracted upstream.
+# https://github.com/RocketChat/Rocket.Chat.Electron/issues/2068
+# https://github.com/RocketChat/Rocket.Chat.Electron/issues/2070
+=net-im/rocketchat-desktop-bin-3.3.0
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-12)
 # No releases since March 2015, no upstream repo activity since November
 # 2019. Unmaintained in Gentoo. Depends on effectively EOLed Lua 5.2,
