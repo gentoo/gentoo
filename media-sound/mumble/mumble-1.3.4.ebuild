@@ -73,6 +73,7 @@ src_configure() {
 
 	local conf_add=(
 		bundled-celt
+		bundled-rnnoise
 		no-bundled-opus
 		no-bundled-speex
 		no-embed-qt-translations
