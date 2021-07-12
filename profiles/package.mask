@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-12)
+# Effectively EOL, no packages in the tree strictly require this
+# particular version. Removal, of both the ebuilds and target support,
+# in 30 days (bug #801865).
+dev-lang/lua:5.2
+
 # Craig Andrews <candrews@gentoo.org> (2021-07-10)
 # Masked until November, 2021
 # This release adds enforcement of the Taproot protocol change to the Bitcoin
