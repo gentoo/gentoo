@@ -55,12 +55,18 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${P}-configure-lua-version.patch"
 	"${FILESDIR}/${P}-ifp.patch"
 	"${FILESDIR}/${P}-var-collision.patch"
 )
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
