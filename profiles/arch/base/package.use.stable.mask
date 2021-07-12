@@ -1,7 +1,0 @@
-# Copyright 2019-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Sam James <sam@gentoo.org> (2021-07-12)
-# Haskell isn't stable on amd64 (or anywhere)
-# bug #801649
-dev-util/diffoscope haskell
