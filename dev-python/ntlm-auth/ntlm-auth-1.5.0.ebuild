@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jborean93/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
