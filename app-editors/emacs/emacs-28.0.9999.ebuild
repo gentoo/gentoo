@@ -148,7 +148,7 @@ src_prepare() {
 
 		# gccjit doesn't play well with ccache #801580
 		# For now, work around the problem with an explicit LIBRARY_PATH
-		has ccache ${FEATURES} \
+		has ccache ${FEATURES} && tc-is-gcc \
 			&& export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
 				| sed -n '/^libraries:/{s:^[^/]*::;p}')
 	fi
