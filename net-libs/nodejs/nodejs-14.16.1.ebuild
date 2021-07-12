@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
@@ -31,7 +31,10 @@ RDEPEND=">=app-arch/brotli-1.0.9
 	>=net-libs/nghttp2-1.41.0
 	sys-libs/zlib
 	system-icu? ( >=dev-libs/icu-67:= )
-	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )"
+	system-ssl? (
+		>=dev-libs/openssl-1.1.1:0=
+		<dev-libs/openssl-3.0.0_beta1:0=
+	)"
 BDEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
 	virtual/pkgconfig
