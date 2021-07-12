@@ -9,7 +9,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/rdiankov/collada-dom"
 else
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 	SRC_URI="https://github.com/rdiankov/collada-dom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
