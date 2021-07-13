@@ -133,7 +133,7 @@ dev-libs/libpcre jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
-app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp snmp test
+app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp test
 app-arch/p7zip wxwidgets
 app-doc/doxygen doc
 app-editors/emacs mailutils
@@ -166,7 +166,7 @@ net-irc/irssi socks5
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
 net-libs/libpcap rdma
-net-misc/ntp openntpd snmp vim-syntax zeroconf
+net-misc/ntp openntpd vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage apidoc
