@@ -29,6 +29,8 @@ RDEPEND="
 	vim-syntax? ( app-vim/gitolite-syntax )"
 
 src_prepare() {
+	default
+
 	rm Makefile doc/COPYING || die
 	rm -rf contrib/{gitweb,vim} || die
 
