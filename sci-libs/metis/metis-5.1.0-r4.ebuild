@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,12 +6,12 @@ EAPI=7
 inherit cmake fortran-2
 
 DESCRIPTION="A package for unstructured serial graph partitioning"
-HOMEPAGE="http://www-users.cs.umn.edu/~karypis/metis/metis/"
+HOMEPAGE="https://www-users.cs.umn.edu/~karypis/metis/metis/"
 SRC_URI="http://glaros.dtc.umn.edu/gkhome/fetch/sw/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc openmp"
 
 RDEPEND="!sci-libs/parmetis"
