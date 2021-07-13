@@ -17,7 +17,7 @@ if [[ -z ${LIVE_EBUILD} ]]; then
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="https://www.midnight-commander.org"
+HOMEPAGE="https://midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
