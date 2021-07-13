@@ -71,6 +71,10 @@ src_configure() {
 }
 
 src_test() {
+	# On kernels with Yama enabled this will not run, even without sandbox,
+	# unless /proc/sys/kernel/yama/ptrace_scope == 0. Just don't bother.
+	# Note: we only delete it here in order to avoid Makefile.am patching.
+	rm -f testsuite/ltrace.minor/attach-process.exp
 	# sandbox redirects vfork() to fork(): bug # 774054
 	# Let's avoid sandbox entirely.
 	SANDBOX_ON=0 LD_PRELOAD= emake check
