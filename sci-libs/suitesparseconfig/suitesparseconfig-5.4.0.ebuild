@@ -13,7 +13,7 @@ SRC_URI="http://202.36.178.9/sage/${P}.tar.bz2"
 # SuiteSparse_config directory".
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 multilib_src_configure() {
