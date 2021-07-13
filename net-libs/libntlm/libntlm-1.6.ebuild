@@ -4,12 +4,12 @@
 EAPI=7
 
 DESCRIPTION="Microsoft's NTLM authentication (libntlm) library"
-HOMEPAGE="http://www.nongnu.org/libntlm/"
-SRC_URI="http://www.nongnu.org/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/libntlm/"
+SRC_URI="https://www.nongnu.org/${PN}/releases/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux"
 IUSE="static-libs"
 
 src_configure() {
