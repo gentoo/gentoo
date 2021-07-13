@@ -24,4 +24,8 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( ${PYTHON_DEPS} )"
+BDEPEND="test? ( ${PYTHON_DEPS} )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
