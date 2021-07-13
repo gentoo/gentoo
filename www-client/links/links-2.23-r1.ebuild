@@ -75,8 +75,9 @@ DEPEND="${RDEPEND}
 	fbcon? ( virtual/os-headers )
 	livecd? ( virtual/os-headers )"
 
-BDEPEND="virtual/pkgconfig
-	X? ( dev-util/desktop-file-utils )"
+BDEPEND="virtual/pkgconfig"
+
+IDEPEND="X? ( dev-util/desktop-file-utils )"
 
 REQUIRED_USE="!livecd? ( fbcon? ( gpm ) )
 	svga? ( suid )"
