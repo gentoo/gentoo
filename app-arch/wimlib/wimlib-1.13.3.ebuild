@@ -11,7 +11,7 @@ else
 	MY_PV="${PV/_/-}"
 	MY_PV="${MY_PV^^}"
 	SRC_URI="https://wimlib.net/downloads/${PN}-${MY_PV}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="The open source Windows Imaging (WIM) library"
