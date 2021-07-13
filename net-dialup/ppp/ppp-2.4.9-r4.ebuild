@@ -5,7 +5,7 @@ EAPI=7
 
 inherit linux-info pam toolchain-funcs
 
-PATCH_TARBALL_NAME="${PN}-2.4.9-patches-02"
+PATCH_TARBALL_NAME="${PN}-2.4.9-patches-03"
 DESCRIPTION="Point-to-Point Protocol (PPP)"
 HOMEPAGE="https://ppp.samba.org/"
 SRC_URI="https://github.com/paulusmack/ppp/archive/${P}.tar.gz
