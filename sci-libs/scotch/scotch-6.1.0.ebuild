@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="CeCILL-2"
 SLOT="0/${SOVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc int64 mpi static-libs test tools threads"
 # bug #532620
 REQUIRED_USE="test? ( threads )"
