@@ -6,4 +6,7 @@ EAPI=8
 inherit acct-user
 
 DESCRIPTION="User for an open proxy monitor"
-ACCT_USER_ID=272
+ACCT_USER_ID=127
+ACCT_USER_GROUPS=( opm )
+
+acct-user_add_deps
