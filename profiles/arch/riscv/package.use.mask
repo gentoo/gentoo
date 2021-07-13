@@ -15,10 +15,8 @@ mail-mta/courier fax
 
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
-app-text/texlive-core xetex
 dev-python/ipython nbconvert notebook
-dev-python/matplotlib cairo excel wxwidgets
-media-sound/alsa-utils libsamplerate
+dev-python/matplotlib wxwidgets
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-02)
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
@@ -48,8 +46,10 @@ sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_ps
 sys-cluster/slurm hdf5 ofed slurmdbd
 
 # Ye Cao <ye.c@rioslab.org> (2021-06-24)
-# Dependencies not keyworded, not tested
-media-gfx/imagemagick openexr wmf
+# media-libs/openexr not keyworded yet - it compiles fine but the its test
+# suite times out, even with the time limit increased from 1500 to 3600 s.
+# Needs more work.
+media-gfx/imagemagick openexr
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
