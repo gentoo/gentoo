@@ -12,7 +12,6 @@
 	<use>
 		<flag name="bs2b">Enable use of media-libs/libbs2b</flag>
 		<flag name="calf">Enable use of media-plugins/calf for adding various FX</flag>
-		<flag name="mda-lv2">Enable use of media-plugins/mda-lv2 for the loudness FX</flag>
 		<flag name="rubberband">Enable usse of media-libs/rubberband for the pitch shifting FX</flag>
 	</use>
 	<longdescription lang="en">
