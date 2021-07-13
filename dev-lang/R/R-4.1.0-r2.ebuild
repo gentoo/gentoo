@@ -134,6 +134,7 @@ src_configure() {
 		--enable-R-shlib \
 		--disable-R-framework \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
+		--with-x=$(usex X) \
 		rdocdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable java) \
 		$(use_enable lto lto R)
@@ -153,8 +154,7 @@ src_configure() {
 		$(use_with tiff libtiff) \
 		$(use_with tk tcltk) \
 		$(use_with tk tk-config "${EPREFIX}"/usr/$(get_libdir)/tkConfig.sh) \
-		$(use_with tk tcl-config "${EPREFIX}"/usr/$(get_libdir)/tclConfig.sh) \
-		$(use_with X x)
+		$(use_with tk tcl-config "${EPREFIX}"/usr/$(get_libdir)/tclConfig.sh)
 }
 
 src_compile() {
