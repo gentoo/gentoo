@@ -6,14 +6,14 @@ EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio"
-HOMEPAGE="http://libsndfile.github.io/libsamplerate/"
+HOMEPAGE="https://libsndfile.github.io/libsamplerate/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/libsndfile/libsamplerate.git"
 else
 	SRC_URI="https://github.com/libsndfile/libsamplerate/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
 LICENSE="BSD-2"
