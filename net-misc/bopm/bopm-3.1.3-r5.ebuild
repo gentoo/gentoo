@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools user
+inherit autotools
 
 DESCRIPTION="Blitzed Open Proxy Monitor"
 HOMEPAGE="https://github.com/blitzed-org/bopm"
@@ -13,15 +13,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 
+RDEPEND="acct-user/opm"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-remove-njabl.patch
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${P}-quarantine-bad-pid-file.patch
 )
-
-pkg_setup() {
-	enewuser bopm
-}
 
 src_prepare() {
 	sed -i \
@@ -55,8 +53,19 @@ src_install() {
 
 	dodir /var/log/bopm
 	fperms 700 /var/log/bopm
-	fowners bopm:root /var/log/bopm
+	fowners opm:root /var/log/bopm
 
 	fperms 600 /etc/bopm.conf
-	fowners bopm:root /etc/bopm.conf
+	fowners opm:root /etc/bopm.conf
+}
+
+pkg_postinst() {
+	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
+		if has_version "<${CATEGORY}/${PF}" ; then
+			ewarn "You need to update permissions on:"
+			ewarn "- /var/log/bopm"
+			ewarn "- /etc/bopm.conf"
+			ewarn "to be owned by opm:root"
+		fi
+	fi
 }
