@@ -9,7 +9,7 @@ DESCRIPTION="Bayesian spam filter designed with fast algorithms, and tuned for s
 HOMEPAGE="http://bogofilter.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-3+ CC-BY-ND-3.0"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="berkdb sqlite tokyocabinet"
