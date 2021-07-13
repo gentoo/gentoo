@@ -15,6 +15,7 @@ S="${WORKDIR}/${MY_PN}-v${PV}"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test"
 
 RDEPEND=">=app-emacs/ebuild-mode-1.53"
 
