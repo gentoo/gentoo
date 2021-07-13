@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
@@ -15,15 +15,17 @@ S="${WORKDIR}/${P^}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
+	sys-process/schedtool"
 BDEPEND="${PYTHON_DEPS}"
-RDEPEND="
-	${BDEPEND}
-	sys-process/schedtool
-"
+
 DOCS=( README.md )
-PATCHES=( "${FILESDIR}/${PN}-fix-sysctl-path.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-sysctl-path.patch"
+)
 
 src_compile() {
 	return
@@ -31,7 +33,9 @@ src_compile() {
 
 src_install() {
 	emake PREFIX="${D}" install
-	python_fix_shebang "${ED}/usr/bin/ananicy"
-	doinitd "${FILESDIR}/ananicy.initd"
+
+	python_fix_shebang "${ED}"/usr/bin/ananicy
+	doinitd "${FILESDIR}"/ananicy.initd
+
 	einstalldocs
 }
