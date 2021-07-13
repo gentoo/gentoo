@@ -33,7 +33,7 @@ RDEPEND="
 	libnotify? ( x11-libs/libnotify )
 	media-sound/alsa-utils"
 
-ruby_add_rdepend "=dev-ruby/addressable-2.7*
+ruby_add_rdepend "=dev-ruby/addressable-2.8*
 	=dev-ruby/delayer-1.1*:1
 	=dev-ruby/delayer-deferred-2.1*
 	!<dev-ruby/delayer-deferred-2.1.3
