@@ -61,7 +61,7 @@ src_install() {
 
 pkg_postinst() {
 	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
-		if has_version "<${CATEGORY}/${PF}" ; then
+		if has_version "<${CATEGORY}/${PN}-3.1.3-r6" ; then
 			ewarn "You need to update permissions on:"
 			ewarn "- /var/log/bopm"
 			ewarn "- /etc/bopm.conf"
