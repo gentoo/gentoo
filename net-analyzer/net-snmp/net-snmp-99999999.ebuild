@@ -32,6 +32,7 @@ REQUIRED_USE="
 RESTRICT="test"
 
 COMMON_DEPEND="
+	virtual/libcrypt:=
 	bzip2? ( app-arch/bzip2 )
 	elf? ( dev-libs/elfutils )
 	lm-sensors? ( sys-apps/lm-sensors )

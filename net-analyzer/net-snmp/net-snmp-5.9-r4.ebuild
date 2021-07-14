@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 DISTUTILS_OPTIONAL=yesplz
 DISTUTILS_SINGLE_IMPL=yesplz
 GENTOO_DEPEND_ON_PERL=no
@@ -31,6 +32,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
+	virtual/libcrypt:=
 	bzip2? ( app-arch/bzip2 )
 	elf? ( dev-libs/elfutils )
 	lm-sensors? ( sys-apps/lm-sensors )
