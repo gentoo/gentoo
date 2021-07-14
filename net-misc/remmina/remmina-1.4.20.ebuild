@@ -7,14 +7,14 @@ inherit cmake optfeature xdg
 
 MY_P="${PN^}-v${PV}"
 
-DESCRIPTION="A GTK+ RDP, SPICE, VNC, XDMCP and SSH client"
+DESCRIPTION="A GTK+ RDP, SPICE, VNC and SSH client"
 HOMEPAGE="https://remmina.org/"
 SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry telepathy vnc webkit zeroconf"
+IUSE="crypt cups examples gnome-keyring gvnc kwallet nls spice ssh rdp telemetry vnc webkit zeroconf"
 
 DEPEND="
 	dev-libs/glib:2
@@ -38,7 +38,6 @@ DEPEND="
 	spice? ( net-misc/spice-gtk[gtk3] )
 	ssh? ( net-libs/libssh:0=[sftp]
 		x11-libs/vte:2.91 )
-	telepathy? ( net-libs/telepathy-glib )
 	vnc? ( net-libs/libvncserver[jpeg] )
 	webkit? ( net-libs/webkit-gtk:4 )
 	zeroconf? ( >=net-dns/avahi-0.8-r2[dbus,gtk] )
@@ -77,7 +76,6 @@ src_configure() {
 		-DWITH_SPICE=$(usex spice)
 		-DWITH_LIBSSH=$(usex ssh)
 		-DWITH_VTE=$(usex ssh)
-		-DWITH_TELEPATHY=$(usex telepathy)
 		-DWITH_LIBVNCSERVER=$(usex vnc)
 		-DWITH_WWW=$(usex webkit)
 		-DWITH_AVAHI=$(usex zeroconf)
@@ -94,5 +92,4 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	optfeature "encrypted VNC connections" net-libs/libvncserver[gcrypt]
-	optfeature "XDMCP support" x11-base/xorg-server[xephyr]
 }
