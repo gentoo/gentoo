@@ -8,10 +8,7 @@ inherit cmake lua
 
 DESCRIPTION="Header-only C++ <-> Lua API wrapper"
 HOMEPAGE="https://github.com/ThePhD/sol2"
-SRC_URI="
-	https://github.com/ThePhD/sol2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/ThePhD/sol2/commit/e5e6466e09b632677d24a8f204d6a0ea0a8862b1.patch -> ${P}-gcc11.patch
-"
+SRC_URI="https://github.com/ThePhD/sol2/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -33,7 +30,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${DISTDIR}"/${P}-gcc11.patch
+	"${FILESDIR}"/${P}-gcc11.patch
 	"${FILESDIR}"/${P}-luajit-pkgconf.patch
 	"${FILESDIR}"/${P}-catch-depend.patch
 )
