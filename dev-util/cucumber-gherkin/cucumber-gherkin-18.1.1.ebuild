@@ -27,3 +27,8 @@ SLOT="$(ver_cut 1)"
 IUSE=""
 
 ruby_add_rdepend ">=dev-util/cucumber-messages-15.0.0:15"
+
+all_ruby_prepare() {
+	sed -i -e '1igem "cucumber-messages", "~> 15.0"' spec/gherkin/*_spec.rb spec/gherkin/*/*_spec.rb || die
+	sed -i -e '5igem "cucumber-messages", "~> 15.0"' bin/gherkin || die
+}
