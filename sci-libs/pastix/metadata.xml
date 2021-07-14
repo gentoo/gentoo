@@ -17,7 +17,11 @@
   block structure of the incomplete factors.
 </longdescription>
   <use>
-    <flag name="int64">Build the 64 bits integer library</flag>
-    <flag name="starpu">Build and link with <pkg>dev-libs/starpu</pkg></flag>
+    <flag name="cuda">Enable GPU support using CUDA kernels</flag>
+    <flag name="fortran">Install the Fortran interface</flag>
+    <flag name="int64">Use 64- rather than 32-bit integer representation</flag>
+    <flag name="metis">Enable matrix ordering with <pkg>sci-libs/metis</pkg></flag>
+    <flag name="scotch">Enable matrix ordering with <pkg>sci-libs/scotch</pkg></flag>
+    <flag name="starpu">Enable support for ther <pkg>dev-libs/starpu</pkg> runtime</flag>
   </use>
 </pkgmetadata>
