@@ -3,29 +3,31 @@
 
 EAPI=7
 
-inherit cmake desktop xdg-utils flag-o-matic
+inherit cmake flag-o-matic multilib
 
 PATCHSET_VER="0"
 
-DESCRIPTION="Versatile implementation of the Prolog programming language"
+DESCRIPTION="versatile implementation of the Prolog programming language"
 HOMEPAGE="https://www.swi-prolog.org/"
-SRC_URI="https://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
+SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
+	https://dev.gentoo.org/~keri/distfiles/swi-prolog/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="archive berkdb debug doc +gmp java +libedit minimal odbc pcre qt5 readline ssl test uuid X yaml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
 	sys-libs/zlib
-	archive? ( app-arch/libarchive )
+	virtual/libcrypt:=
+	archive? ( app-arch/libarchive:= )
 	berkdb? ( >=sys-libs/db-4:= )
 	odbc? ( dev-db/unixODBC )
 	pcre? ( dev-libs/libpcre )
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit )
-	gmp? ( dev-libs/gmp:0 )
+	gmp? ( dev-libs/gmp:0= )
 	ssl? ( dev-libs/openssl:0= )
 	java? ( >=virtual/jdk-1.8:* )
 	uuid? ( dev-libs/ossp-uuid )
@@ -49,15 +51,17 @@ DEPEND="${RDEPEND}
 	java? ( test? ( =dev-java/junit-3.8* ) )"
 
 S="${WORKDIR}/swipl-${PV}"
+BUILD_DIR="${S}/build"
+CMAKE_USE_DIR="${S}"
 
 src_prepare() {
 	if [[ -d "${WORKDIR}"/${PV} ]] ; then
 		eapply "${WORKDIR}"/${PV}
 	fi
+	eapply_user
 
-	sed -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" \
-		-e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" \
-		-i CMakeLists.txt || die
+	sed -i -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" CMakeLists.txt || die
+	sed -i -e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -66,7 +70,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	use debug && append-flags -DO_DEBUG
 
-	local mycmakeargs=(
+	mycmakeargs=(
 		-DSWIPL_INSTALL_PREFIX=$(get_libdir)/swipl
 		-DUSE_GMP=$(usex gmp)
 		-DINSTALL_DOCUMENTATION=$(use doc && usex archive)
@@ -81,7 +85,7 @@ src_configure() {
 		-DSWIPL_PACKAGES_QT=$(usex qt5)
 		-DSWIPL_PACKAGES_X=$(usex X)
 		-DSWIPL_PACKAGES_TERM=$(if use libedit || use readline; then echo yes; else echo no; fi)
-	)
+		)
 
 	cmake_src_configure
 }
@@ -96,27 +100,4 @@ src_test() {
 	USE_PUBLIC_NETWORK_TESTS=false \
 	USE_ODBC_TESTS=false \
 		cmake_src_test -V
-}
-
-src_install() {
-	cmake_src_install
-
-	if use qt5; then
-		doicon "${S}"/snap/gui/swipl.png
-		make_desktop_entry swipl-win "SWI-Prolog" swipl "Development"
-	fi
-}
-
-pkg_postinst() {
-	if use qt5; then
-		xdg_icon_cache_update
-		xdg_desktop_database_update
-	fi
-}
-
-pkg_postrm() {
-	if use qt5; then
-		xdg_icon_cache_update
-		xdg_desktop_database_update
-	fi
 }
