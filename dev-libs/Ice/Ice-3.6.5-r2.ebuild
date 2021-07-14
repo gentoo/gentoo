@@ -35,6 +35,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND=">=dev-libs/expat-2.0.1
 	>=app-arch/bzip2-1.0.5
 	dev-libs/openssl:0=
+	virtual/libcrypt:=
 	|| (
 		$(for slot in ${BERKDB_SLOTS[@]} ; do printf '%s\n' "sys-libs/db:${slot}[cxx]" ; done)
 	)
