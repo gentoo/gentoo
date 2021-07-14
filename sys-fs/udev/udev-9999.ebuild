@@ -41,6 +41,7 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 "
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
@@ -70,6 +71,10 @@ RDEPEND="${COMMON_DEPEND}
 "
 PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-34"
+
+python_check_deps() {
+	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]] ; then
