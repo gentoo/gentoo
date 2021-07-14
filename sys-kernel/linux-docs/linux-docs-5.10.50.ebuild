@@ -18,10 +18,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-IUSE=""
+IUSE="graphviz"
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="graphviz? ( media-gfx/graphviz )"
 BDEPEND="${PYTHON_DEPS}
 	dev-python/sphinx
 	dev-python/sphinx_rtd_theme
