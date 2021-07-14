@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
+inherit check-reqs eutils toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
 DRIVER_PV="396.26"
@@ -36,7 +36,6 @@ QA_PREBUILT="opt/cuda/*"
 CHECKREQS_DISK_BUILD="3500M"
 
 pkg_setup() {
-	# We don't like to run cuda_pkg_setup as it depends on us
 	check-reqs_pkg_setup
 }
 
