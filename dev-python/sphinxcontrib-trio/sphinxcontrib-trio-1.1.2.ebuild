@@ -14,7 +14,7 @@ HOMEPAGE="
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 MIT )"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 SLOT="0"
 
 RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]"
