@@ -39,6 +39,8 @@ app-editors/emacs gconf m17n-lib xwidgets
 app-crypt/heimdal afs
 #  - MANY, to be reviewed
 dev-cpp/eigen doc test
+#  - sci-libs/hdf5
+dev-libs/starpu hdf5
 #  - dev-python/pygraphviz & sci-libs/gdal, dev-python/pandas
 dev-python/networkx extras pandas
 #  - sys-cluster/ceph
