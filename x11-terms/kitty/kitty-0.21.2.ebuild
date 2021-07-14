@@ -39,6 +39,7 @@ RDEPEND="
 	x11-libs/libXinerama
 	x11-libs/libxkbcommon[X]
 	x11-libs/libXrandr
+	x11-misc/xkeyboard-config
 	x11-terms/kitty-terminfo
 	wayland? (
 		dev-libs/wayland
