@@ -7,23 +7,19 @@ CMAKE_ECLASS=cmake
 
 inherit cmake-multilib flag-o-matic llvm
 
-EGIT_COMMIT="677b40cdab276a0b15e048f4d6c7d20d8968dfac"
 MY_PN="SPIRV-LLVM-Translator"
-MY_P="${MY_PN}-${EGIT_COMMIT}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UoI-NCSA"
 SLOT="12"
 KEYWORDS="~amd64"
-IUSE="test tools"
+IUSE="test +tools"
 
-# I have yet to see a non-release spirv-llvm-translator ebuild pass ANY tests.
-# This is probably something silly like the test suite expecting different
-# directory names but I really can't be bothered to debug VCS snapshots.
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
