@@ -3,11 +3,6 @@
 
 EAPI=7
 
-inherit multilib
-
-# weird failures
-RESTRICT="test"
-
 DESCRIPTION="Virtual machine designed to compile and execute bytecode for dynamic languages"
 HOMEPAGE="http://www.parrot.org/"
 SRC_URI="ftp://ftp.parrot.org/pub/parrot/releases/all/${PV}/${P}.tar.gz"
@@ -17,13 +12,17 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
 
+# weird failures
+RESTRICT="test"
+
 CDEPEND="sys-libs/readline:0=
 	dev-libs/libffi:=
 	net-libs/libnsl:0=
+	virtual/libcrypt:=
 	opengl? ( media-libs/freeglut )
 	nls? ( sys-devel/gettext )
 	unicode? ( >=dev-libs/icu-2.6:= )
-	gdbm? ( >=sys-libs/gdbm-1.8.3-r1 )
+	gdbm? ( >=sys-libs/gdbm-1.8.3-r1:= )
 	gmp? ( >=dev-libs/gmp-4.1.4:0= )
 	ssl? ( dev-libs/openssl:0= )
 	pcre? ( dev-libs/libpcre )
