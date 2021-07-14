@@ -3,11 +3,11 @@
 
 EAPI=7
 
-DESCRIPTION="Sipcalc is an advanced console-based IP subnet calculator"
+DESCRIPTION="Advanced console-based IPv4/IPv6 subnet calculator"
 HOMEPAGE="http://www.routemeister.net/projects/sipcalc/
 	https://github.com/sii/sipcalc"
 SRC_URI="http://www.routemeister.net/projects/${PN}/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 sparc x86 ~amd64-linux ~x86-linux"
