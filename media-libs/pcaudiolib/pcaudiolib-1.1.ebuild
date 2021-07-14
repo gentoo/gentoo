@@ -11,7 +11,7 @@ SRC_URI="https://github.com/espeak-ng/pcaudiolib/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3+ ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 IUSE="+alsa oss pulseaudio"
 
 REQUIRED_USE="|| ( alsa oss pulseaudio )"
