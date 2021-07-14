@@ -15,6 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x8
 IUSE="debug kerberos pam selinux static-libs tcpd upnp"
 
 CDEPEND="
+	virtual/libcrypt:=
 	kerberos? ( virtual/krb5 )
 	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
