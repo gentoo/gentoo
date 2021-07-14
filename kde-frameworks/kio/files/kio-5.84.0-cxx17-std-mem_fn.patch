@@ -1,0 +1,31 @@
+From 36f1814b184f4d5ac628fca5db5f6cc1440b4db7 Mon Sep 17 00:00:00 2001
+From: Jan Paul Batrina <jpmbatrina01@gmail.com>
+Date: Mon, 12 Jul 2021 22:06:19 +0800
+Subject: [PATCH] Use std::mem_fn instead of the deprecated/removed
+ std::mem_fun
+
+std::mem_fun was deprecated in C++11 and removed from
+the standard in C++17.
+
+BUG: 439780
+NO_CHANGELOG
+---
+ src/widgets/kpropertiesdialog.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/widgets/kpropertiesdialog.cpp b/src/widgets/kpropertiesdialog.cpp
+index 3f61e8ea3..1ed8bc7d8 100644
+--- a/src/widgets/kpropertiesdialog.cpp
++++ b/src/widgets/kpropertiesdialog.cpp
+@@ -2273,7 +2273,7 @@ void KFilePermissionsPropsPlugin::slotShowAdvancedPermissions()
+         d->fileSystemSupportsACLs = fileSystemSupportsACL(path);
+     }
+     if (d->fileSystemSupportsACLs) {
+-        std::for_each(theNotSpecials.begin(), theNotSpecials.end(), std::mem_fun(&QWidget::hide));
++        std::for_each(theNotSpecials.begin(), theNotSpecials.end(), std::mem_fn(&QWidget::hide));
+         extendedACLs = new KACLEditWidget(&dlg);
+         extendedACLs->setEnabled(d->canChangePermissions);
+         vbox->addWidget(extendedACLs);
+-- 
+GitLab
+
