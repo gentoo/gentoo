@@ -286,10 +286,12 @@ dev-python/statsmodels doc
 # broken static-linking in glibc and maybe others
 >app-shells/mksh-57-r1 static
 
-# Patrick McLean <chutzpah@gentoo.org> (2019-11-07)
-# Collides with sys-libc/glibc[crypt]
-# (NOTE: Likely needs to be moved to musl + uclibc profiles, not dropped entirely)
-sys-libs/libxcrypt split-usr system
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers like libxcrypt.
+# Here we are following that path too.
+>=sys-libs/glibc-2.33-r2 crypt
+<sys-libs/libxcrypt-4.4.23-r1 split-usr system
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-05)
 # net-libs/openslp is being removed.

@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org>
+# Restore mask here that is gone elsewhere
+sys-libs/libxcrypt split-usr system
+
 # Anthony G. Basile <blueness@gentoo.org>
 # sanitize is broken on at least all hardened uclibc
 sys-devel/gcc sanitize
