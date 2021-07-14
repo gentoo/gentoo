@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs cuda toolchain-funcs unpacker
+inherit check-reqs toolchain-funcs unpacker
 
 DRIVER_PV="460.27.04"
 
@@ -39,7 +39,6 @@ CHECKREQS_DISK_BUILD="6800M"
 PATCHES=( "${FILESDIR}"/${P}-nsight-systems-launcher.patch )
 
 pkg_setup() {
-	# We don't like to run cuda_pkg_setup as it depends on us
 	check-reqs_pkg_setup
 }
 

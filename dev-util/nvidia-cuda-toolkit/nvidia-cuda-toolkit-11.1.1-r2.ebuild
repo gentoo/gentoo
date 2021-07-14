@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs cuda toolchain-funcs unpacker
+inherit check-reqs toolchain-funcs unpacker
 
 DRIVER_PV="455.32.00"
 
@@ -38,7 +38,6 @@ QA_PREBUILT="opt/cuda/*"
 CHECKREQS_DISK_BUILD="6800M"
 
 pkg_setup() {
-	# We don't like to run cuda_pkg_setup as it depends on us
 	check-reqs_pkg_setup
 }
 
