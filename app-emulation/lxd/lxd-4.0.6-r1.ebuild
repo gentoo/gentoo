@@ -20,6 +20,7 @@ DEPEND="app-arch/xz-utils
 	dev-libs/dqlite
 	dev-libs/lzo
 	dev-libs/raft
+	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp,ipv6?]"
 RDEPEND="${DEPEND}
 	acct-group/lxd
