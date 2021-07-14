@@ -59,5 +59,5 @@ python_test() {
 src_install() {
 	distutils-r1_src_install
 
-	systemd_dounit contrib/vdirsyncer.{service,timer}
+	systemd_douserunit contrib/vdirsyncer.{service,timer}
 }
