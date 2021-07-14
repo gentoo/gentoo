@@ -1,0 +1,64 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -100,6 +100,9 @@
+ option(PASTIX_WITH_FORTRAN
+   "Enable Fortran files/interface/examples to be compiled" ON)
+ 
++option(PASTIX_WITH_PYTHON
++  "Install Python wrapper and examples" ON)
++
+ cmake_dependent_option(PASTIX_DISTRIBUTED
+  "Enable the distributed interface (requires PASTIX_WITH_MPI)" OFF "PASTIX_WITH_MPI" OFF)
+ 
+--- a/spm/CMakeLists.txt
++++ b/spm/CMakeLists.txt
+@@ -83,6 +83,13 @@
+     "Enable Fortran files/interface/examples to be compiled" ON)
+ endif()
+ 
++if ( DEFINED PASTIX_WITH_PYTHON )
++  set( SPM_WITH_PYTHON ${PASTIX_WITH_PYTHON} )
++else()
++  option(SPM_WITH_PYTHON
++    "Install Python wrapper and examples" ON)
++endif()
++
+ if (SPM_WITH_FORTRAN)
+   include(FortranCInterface)
+   FortranCInterface_HEADER(src/FCmangle.h
+--- a/spm/wrappers/CMakeLists.txt
++++ b/spm/wrappers/CMakeLists.txt
+@@ -13,8 +13,10 @@
+   add_subdirectory( fortran90 )
+ endif()
+ 
+-if (BUILD_SHARED_LIBS)
+-  add_subdirectory( python )
+-else()
+-  message(STATUS "--- Python wrapper is disabled with static libraries")
+-endif()
++if (SPM_WITH_PYTHON)
++  if (BUILD_SHARED_LIBS)
++    add_subdirectory( python )
++  else (BUILD_SHARED_LIBS)
++    message(FATAL_ERROR "--- Python wrapper requested but it cannot be built with static libraries")
++  endif (BUILD_SHARED_LIBS)
++endif (SPM_WITH_PYTHON)
+--- a/wrappers/CMakeLists.txt
++++ b/wrappers/CMakeLists.txt
+@@ -13,8 +13,10 @@
+   add_subdirectory( fortran90 )
+ endif()
+ 
+-if (BUILD_SHARED_LIBS)
+-  add_subdirectory( python )
+-else()
+-  message(STATUS "--- Python wrapper is disabled with static libraries")
+-endif()
++if (PASTIX_WITH_PYTHON)
++  if (BUILD_SHARED_LIBS)
++    add_subdirectory( python )
++  else (BUILD_SHARED_LIBS)
++    message(FATAL_ERROR "--- Python wrapper requested but it cannot be built with static libraries")
++  endif (BUILD_SHARED_LIBS)
++endif (PASTIX_WITH_PYTHON)
