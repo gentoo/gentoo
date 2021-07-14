@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 		app-crypt/swtpm
 		app-crypt/tpm2-abrmd
 		app-editors/vim-core
+		dev-tcltk/expect
 		dev-util/cmocka
 		dev-python/pyyaml
 	)"
