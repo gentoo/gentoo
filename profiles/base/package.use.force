@@ -91,12 +91,12 @@ sys-libs/libcxx libcxxabi
 # the flag.
 sys-kernel/vanilla-kernel initramfs
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-06)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Upstream plans to drop libcrypt.so.1/crypt.h from glibc
 # distribution and rely on external providers like libxcrypt.
-# Gentoo will follow suit but today we are not yet ready.
-# Unmask at your risk. Bug #699422 tracks the effort.
-sys-libs/glibc crypt
+# Here we are following that path too.
+<sys-libs/glibc-2.33-r2 crypt
+>=sys-libs/libxcrypt-4.4.23-r1 system compat
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
