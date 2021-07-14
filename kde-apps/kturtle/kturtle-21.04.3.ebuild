@@ -34,3 +34,8 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	rm -r po/sq/docs || die # broken with <KF-5.84, bug #801919
+	ecm_src_prepare
+}
