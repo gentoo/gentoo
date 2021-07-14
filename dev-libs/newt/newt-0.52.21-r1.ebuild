@@ -29,6 +29,14 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.52.13-gold.patch
+	"${FILESDIR}"/${PN}-0.52.14-tcl.patch
+	"${FILESDIR}"/${PN}-0.52.21-python-sitedir.patch
+	"${FILESDIR}"/${PN}-0.52.21-makefile-LDFLAGS-ordering.patch
+	"${FILESDIR}"/${PN}-0.52.21-fix-non-POSIX-backticks.patch
+)
+
 src_prepare() {
 	# bug 73850
 	if use elibc_uclibc; then
@@ -54,11 +62,7 @@ src_prepare() {
 			|| die "sed po/Makefile"
 	fi
 
-	eapply \
-		"${FILESDIR}"/${PN}-0.52.13-gold.patch \
-		"${FILESDIR}"/${PN}-0.52.14-tcl.patch \
-		"${FILESDIR}"/${PN}-0.52.21-python-sitedir.patch
-	eapply_user
+	default
 	eautoreconf
 
 	# can't build out-of-source
