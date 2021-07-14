@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,12 +8,14 @@ inherit autotools
 DESCRIPTION="Portable Rexx interpreter"
 HOMEPAGE="https://regina-rexx.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/Regina-REXX-${PV}.tar.gz"
+S="${WORKDIR}/Regina-REXX-${PV}"
 
 LICENSE="LGPL-2.1 MPL-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-S="${WORKDIR}/Regina-REXX-${PV}"
+RDEPEND="virtual/libcrypt:="
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.9.1-makefile.patch )
 
