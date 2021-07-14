@@ -11,7 +11,7 @@ HOMEPAGE="http://starpu.gforge.inria.fr/"
 SRC_URI="https://gforge.inria.fr/frs/download.php/file/37744/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0/8"
+SLOT="0/5"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="
