@@ -1,18 +1,16 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=KGRENNAN
-MODULE_VERSION=0.28
+DIST_AUTHOR=KGRENNAN
+DIST_VERSION=0.28
 inherit perl-module
 
 DESCRIPTION="OAuth protocol support"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Class-Accessor-0.31
@@ -23,11 +21,9 @@ RDEPEND="
 	>=virtual/perl-Encode-2.35
 	dev-perl/libwww-perl
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		>=virtual/perl-Test-Simple-0.66
 		>=dev-perl/Test-Warn-0.21
 	)"
-
-SRC_TEST=do
