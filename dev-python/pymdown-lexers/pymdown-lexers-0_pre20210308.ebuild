@@ -15,7 +15,7 @@ SRC_URI="https://github.com/facelessuser/${PN}/archive/${COMMIT}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/pygments-2.0.1[${PYTHON_USEDEP}]
