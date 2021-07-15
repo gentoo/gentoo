@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ALEXMV
 DIST_VERSION=1.3
@@ -22,7 +22,8 @@ RDEPEND="
 		dev-perl/Net-SSLeay
 	)
 "
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install/use lib q[.]; use inc::Module::Install/' Makefile.PL ||
