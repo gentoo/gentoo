@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-fix-scons.patch"
 	"${FILESDIR}/${PN}-4.4.1-no-compass.patch"
 	"${FILESDIR}/${PN}-4.4.1-boost.patch"
+	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
