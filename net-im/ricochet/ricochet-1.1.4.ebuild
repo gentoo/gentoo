@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/ricochet-im/ricochet"
 else
 	SRC_URI="https://github.com/ricochet-im/ricochet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Privacy-focused instant messaging through Tor hidden services"
