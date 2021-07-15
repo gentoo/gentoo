@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7 8
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -83,15 +83,12 @@ inherit ${inherits} multilib ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
+# S is no longer automatically assigned when it doesn't exist.
+S="${WORKDIR}"
+
 case ${EAPI} in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (too old) for ruby-ng.eclass" ;;
-	4|5|6|7)
-		# S is no longer automatically assigned when it doesn't exist.
-		S="${WORKDIR}"
-		;;
-	*)
-		die "Unknown EAPI=${EAPI} for ruby-ng.eclass"
+	4|5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: ruby_implementation_depend
