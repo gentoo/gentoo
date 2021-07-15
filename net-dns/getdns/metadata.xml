@@ -13,6 +13,5 @@
 		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> support</flag>
 		<flag name="libev">Enable <pkg>dev-libs/libev</pkg> support</flag>
 		<flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
-		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as crypto backend</flag>
 	</use>
 </pkgmetadata>
