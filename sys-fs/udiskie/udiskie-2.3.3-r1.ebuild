@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
@@ -20,7 +20,8 @@ RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	sys-fs/udisks:2"
 DEPEND="app-text/asciidoc
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/python-keyutils[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
 
