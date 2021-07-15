@@ -180,8 +180,10 @@ src_test() {
 
 src_install() {
 	# bug 558818: install binaries in $GOROOT/bin to avoid file collisions
-	exeinto "$(go env GOROOT)/bin"
+	local goroot=$(go env GOROOT)
+	goroot=${goroot#${EPREFIX}}
+	exeinto "${goroot}/bin"
 	doexe bin/*
 	dodir /usr/bin
-	ln "${ED}/$(go env GOROOT)/bin/godoc" "${ED}/usr/bin/godoc" || die
+	ln "${ED}/${goroot}/bin/godoc" "${ED}/usr/bin/godoc" || die
 }
