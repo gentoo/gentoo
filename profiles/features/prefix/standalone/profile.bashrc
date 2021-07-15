@@ -1,5 +1,5 @@
 # -*- mode: shell-script; -*-
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # RAP specific patches pending upstream:
@@ -109,4 +109,11 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/php && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying ext/iconv/config.m4 paths"
     sed -i -r "/for i in/s,(/usr(/local|)),${EPREFIX}\1,g" "${S}"/ext/iconv/config.m4
     eend $?
+elif [[ ${CATEGORY}/${PN} == dev-util/cmake && ${EBUILD_PHASE} == prepare ]]; then
+    einfo "Removing Debian magic..."
+    for f in Modules/{CMakeFindPackageMode,FindPkgConfig,GNUInstallDirs,Platform/{GNU,Linux}}.cmake; do
+	ebegin "  Updating $f"
+	sed -i -e 's,EXISTS "/etc/debian_version",FALSE,' "${S}"/$f
+	eend $?
+    done
 fi
