@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Kai Krakow <hurikhan77+bgo@gmail.com> (2021-07-16)
+# To be replaced by net-p2p/go-ipfs, no migration needed.
+# Simply deselect the masked package and install the replacement.
+# Masked for removal in 30 days.
+net-p2p/go-ipfs-bin
+
 # Hans de Graaff <graaff@gentoo.org> (2021-07-15)
 # Dead upstream, no longer maintained, last release in 2013.
 # No dependencies.
