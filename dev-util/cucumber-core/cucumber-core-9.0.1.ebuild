@@ -35,4 +35,7 @@ ruby_add_rdepend "
 all_ruby_prepare() {
 	# Avoid dependency on kramdown to keep dependency list manageable for all arches.
 	rm -f spec/readme_spec.rb || die
+
+	# Ensure the correct version of cucumber-messages is used
+	sed -i -e '1igem "cucumber-messages", "~> 15.0"' $(find spec -name '*_spec.rb') || die
 }
