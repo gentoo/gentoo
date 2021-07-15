@@ -14,7 +14,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~x86 ~x64-macos"
 SLOT="0"
 IUSE="ssl"
 
-RDEPEND="ssl? ( dev-libs/openssl:0= )"
+RDEPEND="sys-libs/zlib
+	ssl? ( dev-libs/openssl:0= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
