@@ -60,7 +60,7 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
 		;;
 	*)
@@ -130,7 +130,7 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 RUBY_FAKEGEM_EXTENSION_LIBDIR="${RUBY_FAKEGEM_EXTENSION_LIBDIR-lib}"
 
 case ${EAPI} in
-	4|5|6|7|8) ;;
+	5|6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -197,7 +197,7 @@ SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}$
 ruby_add_bdepend "virtual/rubygems !!dev-ruby/psych"
 ruby_add_rdepend virtual/rubygems
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		;;
 	*)
 		ruby_add_depend virtual/rubygems
@@ -312,7 +312,7 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
 	case ${EAPI} in
-		4|5|6) ;;
+		5|6) ;;
 		*)
 			eqawarn "Generating generic fallback gemspec *without* dependencies"
 			eqawarn "This will only work when there are no runtime dependencies"
