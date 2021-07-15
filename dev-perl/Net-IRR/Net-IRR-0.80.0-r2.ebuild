@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-DIST_AUTHOR="TCAINE"
-DIST_VERSION="0.08"
+DIST_AUTHOR=TCAINE
+DIST_VERSION=0.08
 inherit perl-module
 
 DESCRIPTION="Internet Route Registry daemon (IRRd) client"
 
 RDEPEND="virtual/perl-IO"
-DEPEND="virtual/perl-ExtUtils-MakeMaker
+BDEPEND="virtual/perl-ExtUtils-MakeMaker
 	${RDEPEND}"
 
 SLOT="0"
