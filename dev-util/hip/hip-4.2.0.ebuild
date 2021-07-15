@@ -19,14 +19,16 @@ RESTRICT="strip"
 
 DEPEND="dev-libs/rocclr:${SLOT}
 	dev-util/rocminfo:${SLOT}
-	=sys-devel/llvm-roc-${PV}*[runtime]"
+	=sys-devel/llvm-roc-${PV}*[runtime]
+	profile? ( dev-util/roctracer:${SLOT} )"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.0-DisableTest.patch"
 	"${FILESDIR}/${PN}-3.9.0-add-include-directories.patch"
-	"${FILESDIR}/${PN}-3.5.1-config-cmake-in.patch"
-	"${FILESDIR}/${PN}-3.9.0-lpl_ca-add-include.patch"
+	"${FILESDIR}/${PN}-4.2.0-config-cmake-in.patch"
+	"${FILESDIR}/${PN}-3.5.1-hip_vector_types.patch"
+	"${FILESDIR}/${PN}-4.2.0-cancel-hcc-header-removal.patch"
 )
 
 S="${WORKDIR}/HIP-rocm-${PV}"
@@ -41,11 +43,15 @@ src_prepare() {
 	# disable PCH, because it results in a build error in ROCm 4.0.0
 	sed -e "s:option(__HIP_ENABLE_PCH:#option(__HIP_ENABLE_PCH:" -i CMakeLists.txt || die
 
+	# remove forcing set USE_PROF_API to 1
+	sed -e '/set(USE_PROF_API "1")/d' -i rocclr/CMakeLists.txt || die
+
 	# "hcc" is deprecated and not installed, new platform is "rocclr";
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
 	sed -e "/FLAGS .= \" -isystem \$HSA_PATH/d" \
 		-e "s:\$ENV{'DEVICE_LIB_PATH'}:'/usr/lib/amdgcn/bitcode':" \
+		-e "/rpath/s,--rpath=[^ ]*,," \
 		-i bin/hipcc || die
 
 	# correctly find HIP_CLANG_INCLUDE_PATH using cmake
@@ -65,13 +71,7 @@ src_prepare() {
 
 src_configure() {
 	strip-flags
-	if ! use debug; then
-		append-cflags "-DNDEBUG"
-		append-cxxflags "-DNDEBUG"
-		buildtype="Release"
-	else
-		buildtype="Debug"
-	fi
+	use debug && CMAKE_BUILD_TYPE="Debug"
 
 	# TODO: Currently a GENTOO configuration is build,
 	# this is also used in the cmake configuration files
@@ -88,6 +88,7 @@ src_configure() {
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DHSA_PATH="${EPREFIX}/usr"
 		-DUSE_PROF_API=$(usex profile 1 0)
+		-DPROF_API_HEADER_PATH="${EPREFIX}"/usr/include/roctracer/ext
 		-DROCclr_DIR="${EPREFIX}"/usr/include/rocclr
 	)
 
@@ -102,4 +103,6 @@ src_install() {
 	doenvd 99hip
 
 	cmake_src_install
+
+	rm "${ED}/usr/lib/hip/include/hip/hcc_detail" || die
 }

@@ -1,0 +1,15 @@
+since _IMPORT_PREFIX=/opt/gentoo/usr/lib/hip, INTERFACE_INCLUDE_DIRECTORIES should change
+
+--- orig/hip-config.cmake.in
++++ HIP-rocm-4.2.0/hip-config.cmake.in
+@@ -185,8 +185,8 @@ if(HIP_RUNTIME MATCHES "rocclr")
+ 
+   if(NOT WIN32)
+     set_target_properties(hip::device PROPERTIES
+-      INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/../include"
+-      INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/../include"
++      INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
++      INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
+     )
+   endif()
+ endif()
