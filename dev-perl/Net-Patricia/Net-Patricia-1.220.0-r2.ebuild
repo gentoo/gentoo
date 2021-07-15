@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=GRUBER
 DIST_VERSION=1.22
@@ -19,9 +19,10 @@ RDEPEND="dev-perl/Net-CIDR-Lite
 		dev-perl/Socket6
 	)
 "
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 PATCHES=("${FILESDIR}/${PN}-1.22-no-lnsl.patch")
+
 src_compile() {
 	emake AR="$(tc-getAR)" OTHERLDFLAGS="${LDFLAGS}"
 }
