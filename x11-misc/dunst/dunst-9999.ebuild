@@ -40,7 +40,15 @@ BDEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.6.1-no-Os.patch )
+src_prepare() {
+	default
+
+	sed -i \
+		-e "/^DEFAULT_CFLAGS/s/-g //" \
+		-e "/^DEFAULT_CFLAGS/s/-Os //" \
+		config.mk \
+		|| die "sed failed"
+}
 
 src_configure() {
 	tc-export CC PKG_CONFIG
