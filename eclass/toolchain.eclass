@@ -30,10 +30,9 @@ fi
 FEATURES=${FEATURES/multilib-strict/}
 
 case ${EAPI:-0} in
-	0|1|2|3|4*) die "Need to upgrade to at least EAPI=5" ;;
 	5*|6) inherit eapi7-ver ;;
 	7) ;;
-	*) die "I don't speak EAPI ${EAPI}." ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
