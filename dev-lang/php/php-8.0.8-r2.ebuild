@@ -33,7 +33,7 @@ IUSE="${IUSE}
 	${SAPIS/cli/+cli}
 	threads"
 
-IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
+IUSE="${IUSE} acl apparmor argon2 bcmath berkdb bzip2 calendar cdb cjk
 	coverage +ctype curl debug
 	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
@@ -79,7 +79,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=app-eselect/eselect-php-0.9.7[apache2?,fpm?]
 	>=dev-libs/libpcre2-10.30[jit?,unicode]
-	fpm? ( acl? ( sys-apps/acl ) )
+	fpm? ( acl? ( sys-apps/acl ) apparmor? ( sys-libs/libapparmor ) )
 	apache2? ( www-servers/apache[apache2_modules_unixd(+),threads=] )
 	argon2? ( app-crypt/argon2:= )
 	berkdb? ( || (	sys-libs/db:5.3
@@ -248,6 +248,7 @@ src_configure() {
 	)
 
 	our_conf+=(
+		$(use_with apparmor fpm-apparmor)
 		$(use_with argon2 password-argon2 "${EPREFIX}/usr")
 		$(use_enable bcmath)
 		$(use_with bzip2 bz2 "${EPREFIX}/usr")
