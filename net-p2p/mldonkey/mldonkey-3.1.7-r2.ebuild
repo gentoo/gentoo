@@ -51,6 +51,8 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="!ocamlopt? ( strip )"
 
+PATCHES=( "${FILESDIR}/cpp17-byte-namespace.patch" )
+
 S="${WORKDIR}/${P}-2"
 
 pkg_setup() {

@@ -1,0 +1,63 @@
+diff -ur a/src/utils/lib/CryptoPP.cc b/src/utils/lib/CryptoPP.cc
+--- a/src/utils/lib/CryptoPP.cc	2021-07-06 22:20:46.675183781 +0200
++++ b/src/utils/lib/CryptoPP.cc	2021-07-06 22:20:51.025182789 +0200
+@@ -9482,7 +9482,7 @@
+ #define PRIVKEYSIZE 384
+ 
+ static Signer* s_signer = NULL;   
+-static byte m_publicKey[MAXPUBKEYSIZE+1];
++static CryptoPP::byte m_publicKey[MAXPUBKEYSIZE+1];
+ static unsigned long m_publicKeyLen = 0;
+ 
+ void cc_lprintf_nl(const char * msg, bool verb);
+@@ -9555,7 +9555,7 @@
+ 
+ 
+ // return signatureSize (buf)
+-int createSignature(byte *buf, int maxLen, byte *key, int keyLen, uint32_t cInt, uint8_t ipType, uint32_t ip) {
++int createSignature(CryptoPP::byte *buf, int maxLen, CryptoPP::byte *key, int keyLen, uint32_t cInt, uint8_t ipType, uint32_t ip) {
+ 
+ 	int result = 0;
+ 
+@@ -9570,7 +9570,7 @@
+ 		CryptoPP::SecByteBlock sBB(s_signer->SignatureLength());
+ 		CryptoPP::AutoSeededRandomPool rng;
+ 	
+-		byte bArray[MAXPUBKEYSIZE+9];
++		CryptoPP::byte bArray[MAXPUBKEYSIZE+9];
+ 
+ 		memcpy(bArray,key,keyLen);
+ 		PokeUInt32(bArray+keyLen,cInt);   
+@@ -9597,7 +9597,7 @@
+ 
+ }
+ 
+-int verifySignature(byte *key, int keyLen, byte *sig, int sigLen, uint32_t cInt, uint8_t ipType, uint32_t ip) {
++int verifySignature(CryptoPP::byte *key, int keyLen, CryptoPP::byte *sig, int sigLen, uint32_t cInt, uint8_t ipType, uint32_t ip) {
+   using namespace CryptoPP;
+ 
+ 	bool result = false;
+@@ -9607,7 +9607,7 @@
+ 		StringSource ss_Pubkey(key, keyLen,true,0);
+ 		Verifier pubKey(ss_Pubkey);
+ 
+-		byte bArray[MAXPUBKEYSIZE+9];
++		CryptoPP::byte bArray[MAXPUBKEYSIZE+9];
+ 	
+ 		memcpy(bArray,m_publicKey,m_publicKeyLen);
+ 		PokeUInt32(bArray+m_publicKeyLen,cInt); 
+diff -ur a/src/utils/lib/CryptoPP.h b/src/utils/lib/CryptoPP.h
+--- a/src/utils/lib/CryptoPP.h	2021-07-06 22:20:46.675183781 +0200
++++ b/src/utils/lib/CryptoPP.h	2021-07-06 22:20:56.271848200 +0200
+@@ -181,10 +181,9 @@
+ #	define __USE_W32_SOCKETS
+ #endif
+ 
+-typedef unsigned char byte;		// put in global namespace to avoid ambiguity with other byte typedefs
+-
+ NAMESPACE_BEGIN(CryptoPP)
+ 
++typedef unsigned char byte;		// put in global namespace to avoid ambiguity with other byte typedefs
+ typedef unsigned short word16;
+ typedef unsigned int word32;
+ 
