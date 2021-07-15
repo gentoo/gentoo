@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=WROG
 DIST_VERSION=1.20
@@ -11,8 +11,6 @@ DESCRIPTION="Libraries shared between Net::OpenID::Consumer and Net::OpenID::Ser
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Crypt-DH-GMP-0.0.110
@@ -25,7 +23,7 @@ RDEPEND="
 	dev-perl/XML-Simple
 	!<dev-perl/Net-OpenID-Consumer-1.30.99
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( virtual/perl-Test-Simple )
 "
