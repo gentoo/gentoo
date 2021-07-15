@@ -22,7 +22,7 @@ else
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_pdf.zip
 			https://github.com/csound/csound/releases/download/${PV}/${DOC_P}_manual_html.zip
 		)"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Sound design and signal processing system for composition and performance"
