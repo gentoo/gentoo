@@ -131,7 +131,7 @@ src_configure() {
 }
 
 src_compile() {
-	PREFIX="${ED}"/usr escons "${scons_opts[@]}" --nostrip install-core
+	PREFIX="${EPREFIX}/usr" escons "${scons_opts[@]}" --nostrip install-core
 }
 
 # FEATURES="test -usersandbox" emerge dev-db/mongodb
