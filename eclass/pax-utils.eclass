@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Kevin F. Quinn <kevquinn@gentoo.org>
 # Author: Anthony G. Basile <blueness@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: functions to provide PaX markings for hardened kernels
 # @DESCRIPTION:
 #
@@ -22,7 +22,7 @@
 # to contain either "PT", "XT" or "none".  The default is none
 
 case ${EAPI:-0} in
-	[567]) ;;
+	5|6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
