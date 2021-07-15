@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=ABLUM
 DIST_VERSION=0.5
@@ -11,11 +11,11 @@ DESCRIPTION="Queries multiple Realtime Blackhole Lists in parallel"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ppc64 sparc x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND="virtual/perl-Time-HiRes
 	dev-perl/Net-DNS"
+BDEPEND="${RDEPEND}
+"
 
 S=${WORKDIR}/RBLCLient-${DIST_VERSION} # second capitialized 'l' is deliberate
 
