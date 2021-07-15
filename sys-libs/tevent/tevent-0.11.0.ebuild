@@ -21,7 +21,6 @@ RESTRICT="test"
 
 RDEPEND="
 	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
-	>=dev-util/cmocka-1.1.3
 	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
 	python? (
 		${PYTHON_DEPS}
@@ -29,6 +28,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
+	>=dev-util/cmocka-1.1.3
 	elibc_glibc? (
 		net-libs/libtirpc[${MULTILIB_USEDEP}]
 		|| (
