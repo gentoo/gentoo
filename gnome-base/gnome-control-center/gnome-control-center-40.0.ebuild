@@ -20,6 +20,9 @@ REQUIRED_USE="
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
 KEYWORDS="amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 x86"
 
+# meson.build depends on python unconditionally
+BDEPEND="${PYTHON_DEPS}"
+
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
 # wacom panel requires gsd-enums.h from gsd at build time, probably also runtime support
@@ -127,11 +130,12 @@ PATCHES=(
 )
 
 python_check_deps() {
-	use test && has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+	use test || return 0
+	has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
