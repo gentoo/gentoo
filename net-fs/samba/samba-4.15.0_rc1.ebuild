@@ -327,7 +327,9 @@ pkg_postinst() {
 		elog "controller work previously known as 'samba4'."
 		elog
 	fi
-	elog "For further information and migration steps make sure to read "
-	elog "https://samba.org/samba/history/${P}.html "
-	elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
+	if [[ "${PV}" != *_rc* ]] ; then
+		elog "For further information and migration steps make sure to read "
+		elog "https://samba.org/samba/history/${P}.html "
+		elog "https://wiki.samba.org/index.php/Samba4/HOWTO "
+	fi
 }
