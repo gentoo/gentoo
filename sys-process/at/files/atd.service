@@ -6,8 +6,6 @@ After=networking.target
 Type=forking
 ExecStart=/usr/sbin/atd
 PIDFile=/run/atd.pid
-StandardOutput=syslog
-StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
