@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-07-15)
+# Dead upstream, no longer maintained, last release in 2013.
+# No dependencies.
+# Masked for removal in 30 days.
+dev-ruby/spork
+
 # John Helmert III <ajak@gentoo.org> (2021-07-14)
 # Dead upstream, unfixed security issue.
 # Removal on 2021-08-13.  Bugs #755896, #781467.
