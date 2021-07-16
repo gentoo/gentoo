@@ -34,8 +34,11 @@ RDEPEND="sys-apps/hwloc:0=
 	virtual/lapack
 	virtual/lapacke
 	cuda? ( dev-util/nvidia-cuda-toolkit )
-	metis? ( sci-libs/metis[int64?] )
-	mpi? ( virtual/mpi[fortran] )
+	metis? ( sci-libs/metis[int64=] )
+	mpi? (
+		virtual/mpi[fortran]
+		metis? ( sci-libs/parmetis )
+	)
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -43,7 +46,7 @@ RDEPEND="sys-apps/hwloc:0=
 			dev-python/scipy[${PYTHON_USEDEP}]
 		')
 	)
-	scotch? ( sci-libs/scotch:0=[int64?,mpi?] )
+	scotch? ( >=sci-libs/scotch-6.1.0-r1:0=[int64=,mpi?] )
 	starpu? ( >=dev-libs/starpu-1.3.0:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}
