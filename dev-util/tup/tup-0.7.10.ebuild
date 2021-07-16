@@ -38,13 +38,13 @@ WARNING_NAMESPACES="CONFIG_NAMESPACES is required for tup to work as intended (w
 src_prepare() {
 	# Use our toolchain
 	sed -i Tuprules.tup \
-		-e "s:CC = gcc:CC = $(tc-getCC) ${CFLAGS} ${LDFLAGS}:" \
-		-e "s:ar crs:$(tc-getAR) crs:"
+		-e "s|CC = gcc|CC = $(tc-getCC) ${CFLAGS} ${LDFLAGS}|" \
+		-e "s|ar crs|$(tc-getAR) crs|" || die
 
 	if [[ ${PV} != 9999 ]]; then
 		# Avoid invoking `git` to find version, use ours
 		sed -i src/tup/link.sh \
-			-e 's;`git describe`;v'"${PV};"
+			-e 's|`git describe`|v'"${PV}|" || die
 	fi
 
 	default
