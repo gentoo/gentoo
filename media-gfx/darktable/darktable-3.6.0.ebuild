@@ -18,12 +18,12 @@ if [[ ${PV} == *9999 ]]; then
 
 	LANGS=" af ca cs da de el es fi fr gl he hu it ja nb nl pl pt-BR pt-PT ro ru sk sl sq sv th uk zh-CN zh-TW"
 else
-	DOC_PV="3.4.0"
+	DOC_PV="3.6"
 	MY_PV="${PV/_/}"
 	MY_P="${P/_/.}"
 
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
-		doc? ( https://github.com/darktable-org/${PN}/releases/download/release-${DOC_PV}/${PN}-usermanual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
+		doc? ( https://www.darktable.org/usermanual/${DOC_PV}/en/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
 	KEYWORDS="~amd64 ~arm64 -x86"
 	LANGS=" af de eo es fr he hu it nl pt-BR ru sl uk"
