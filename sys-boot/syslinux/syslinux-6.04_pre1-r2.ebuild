@@ -22,13 +22,13 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE="custom-cflags"
 
-RDEPEND="sys-fs/mtools
+RDEPEND="sys-apps/util-linux
+	sys-fs/mtools
 	dev-perl/Crypt-PasswdMD5
 	dev-perl/Digest-SHA1"
 DEPEND="${RDEPEND}
 	dev-lang/nasm
 	>=sys-boot/gnu-efi-3.0u
-	sys-apps/util-linux
 	virtual/os-headers"
 
 S=${WORKDIR}/${P/_/-}
