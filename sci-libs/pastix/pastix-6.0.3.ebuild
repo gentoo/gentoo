@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{9,10} )
 
 inherit cmake fortran-2 python-single-r1
 
