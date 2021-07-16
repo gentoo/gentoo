@@ -1,0 +1,6 @@
+If using signed kernel modules change the '<hash>' and '<kernel>' values to match your setup:
+/usr/src/linux/scripts/sign-file <hash> /usr/src/linux/certs/signing_key.pem \
+/usr/src/linux/certs/signing_key.x509 /lib/modules/<kernel>/net/wireless/88x2bu.ko
+
+Alternatively see this wiki entry:
+https://wiki.gentoo.org/wiki/Signed_kernel_module_support#Automatically_signing_kernel_modules_.28Portage.29
