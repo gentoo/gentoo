@@ -136,7 +136,7 @@ src_configure() {
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
 		rdocdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable java) \
-		$(use_enable lto lto R)
+		$(use_enable lto lto R) \
 		$(use_enable nls) \
 		$(use_enable openmp) \
 		$(use_enable profile R-profiling) \
