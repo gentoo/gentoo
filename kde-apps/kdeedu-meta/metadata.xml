@@ -9,6 +9,6 @@
 		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
-		<flag name="webengine">Enable <pkg>kde-apps/kalzium</pkg> and <pkg>kde-apps/parley</pkg>, requiring <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="webengine">Enable packages requiring <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>
