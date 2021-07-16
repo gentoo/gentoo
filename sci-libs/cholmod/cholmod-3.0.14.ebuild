@@ -27,10 +27,7 @@ DEPEND="
 	partition? (
 		sci-libs/camd
 		sci-libs/ccolamd
-		|| (
-			>=sci-libs/metis-5.1.0
-			sci-libs/parmetis
-		)
+		>=sci-libs/metis-5.1.0
 	)"
 RDEPEND="${DEPEND}"
 
