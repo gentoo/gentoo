@@ -12,8 +12,7 @@ SRC_URI="https://wimlib.net/downloads/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 LICENSE="|| ( GPL-3+ LGPL-3+ ) CC0-1.0"
 SLOT="0"
-IUSE="cpu_flags_x86_ssse3 fuse iso ntfs openssl test threads yasm"
-REQUIRED_USE="cpu_flags_x86_ssse3? ( !openssl )"
+IUSE="cpu_flags_x86_ssse3 fuse iso ntfs ssl test threads yasm"
 
 RESTRICT="!test? ( test )"
 
@@ -32,7 +31,7 @@ RDEPEND="
 		app-cdr/cdrtools
 	)
 	ntfs? ( sys-fs/ntfs3g )
-	openssl? ( dev-libs/openssl:0= )
+	ssl? ( dev-libs/openssl:0= )
 "
 
 src_prepare() {
@@ -44,12 +43,22 @@ src_configure() {
 	local myeconfargs=(
 		$(use_with ntfs ntfs-3g)
 		$(use_with fuse)
-		$(use_enable cpu_flags_x86_ssse3 ssse3-sha1)
-		$(use_with openssl libcrypto)
+		$(use_with ssl libcrypto)
 		$(use_enable threads multithreaded-compression)
 		$(use_enable test test-support)
 		--disable-static
 	)
+
+	if use cpu_flags_x86_ssse3; then
+		if ! use ssl; then
+			myeconfargs+=( --enable-ssse3-sha1 )
+		else
+			elog "cpu_flags_x86_ssse3 and ssl can't be enabled together, "
+			elog "enabling ssl and disabling cpu_flags_x86_ssse3 for you."
+			myeconfargs+=( --disable-ssse3-sha1 )
+		fi
+	fi
+
 	ac_cv_prog_NASM="$(usex yasm yasm nasm)" \
 		econf "${myeconfargs[@]}"
 }
