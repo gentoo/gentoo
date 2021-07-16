@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-16)
+# library with no consumer, multiple vulnerabilities
+# removal in 30 days (bug #713098)
+dev-java/xmlrpc
+
 # Kai Krakow <hurikhan77+bgo@gmail.com> (2021-07-16)
 # To be replaced by net-p2p/go-ipfs, no migration needed.
 # Simply deselect the masked package and install the replacement.
