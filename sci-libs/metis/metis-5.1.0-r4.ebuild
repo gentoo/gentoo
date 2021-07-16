@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake fortran-2
+inherit cmake
 
 DESCRIPTION="A package for unstructured serial graph partitioning"
 HOMEPAGE="https://www-users.cs.umn.edu/~karypis/metis/metis/"
