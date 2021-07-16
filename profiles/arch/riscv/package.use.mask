@@ -6,10 +6,6 @@
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-07-13)
-# dependencies not keyworded/ use flag not tested
-net-analyzer/net-snmp lm-sensors rpm smux
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-11)
 # Causes 35 tests to fail with "fatal llvm error"
 dev-db/postgresql llvm
@@ -130,7 +126,6 @@ dev-libs/libpcre jit
 app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp test
 app-arch/p7zip wxwidgets
 app-doc/doxygen doc
-app-editors/emacs mailutils
 app-text/asciidoc test
 app-text/ghostscript-gpl cups
 app-text/po4a test
