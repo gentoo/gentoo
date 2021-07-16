@@ -18,6 +18,7 @@ RESTRICT="bindist mirror"
 
 RDEPEND="
 	>=x11-libs/gtk+-2.24.32-r1[X(+)]
+	app-crypt/libsecret
 	dev-libs/nss
 	dev-libs/libbsd
 	dev-libs/libffi
