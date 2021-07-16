@@ -47,7 +47,7 @@ all_ruby_prepare() {
 
 	sed -i -e '/bundler/ s:^:#: ; /Bundler/,/end/ s:^:#:' Rakefile || die
 	sed -i -e '/bundler/I s:^:#:' \
-		-e 's/gem "minitest"/gem "minitest", "~>5.0"/'\
+		-e '/simplecov/I s:^:#:' \
 		-e '1igem "actionpack", "~>6.0.0"'\
 		-e '1igem "activesupport", "~>6.0.0"; gem "activemodel", "~>6.0.0"'\
 		-e '1igem "railties", "~>6.0.0"'\
