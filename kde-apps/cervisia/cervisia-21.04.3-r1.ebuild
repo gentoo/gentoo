@@ -25,6 +25,7 @@ DEPEND="
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
 	>=kde-frameworks/kcoreaddons-${KFMIN}:5
 	>=kde-frameworks/kdesu-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kiconthemes-${KFMIN}:5
 	>=kde-frameworks/kinit-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
