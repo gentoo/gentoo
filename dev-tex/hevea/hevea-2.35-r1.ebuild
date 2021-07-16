@@ -30,20 +30,20 @@ QA_FLAGS_IGNORED=(
 src_compile() {
 	rm -f config.sh || die
 
-	emake PREFIX="${EPREFIX}"/usr DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)/hevea" LATEXLIBDIR="/usr/share/texmf-site/tex/latex/hevea" config.sh
+	emake PREFIX=/usr DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)/hevea" LATEXLIBDIR="/usr/share/texmf-site/tex/latex/hevea" config.sh
 
 	if use ocamlopt; then
-		emake PREFIX="${EPREFIX}"/usr
+		emake PREFIX=/usr
 	else
-		emake PREFIX="${EPREFIX}"/usr TARGET=byte
+		emake PREFIX=/usr TARGET=byte
 	fi
 }
 
 src_install() {
 	if use ocamlopt; then
-		emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
+		emake DESTDIR="${ED}" PREFIX=/usr install
 	else
-		emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr TARGET=byte install
+		emake DESTDIR="${ED}" PREFIX=/usr TARGET=byte install
 	fi
 
 	dodoc README CHANGES
