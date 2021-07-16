@@ -27,7 +27,7 @@ HOMEPAGE="https://tukaani.org/xz/"
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
 SLOT="0"
-IUSE="elibc_FreeBSD +extra-filters nls static-libs +threads"
+IUSE="elibc_FreeBSD +extra-filters nls static-libs"
 
 RDEPEND="!<app-arch/lzma-4.63
 	!<app-arch/p7zip-4.57
@@ -49,8 +49,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myconf=(
+		--enable-threads
 		$(use_enable nls)
-		$(use_enable threads)
 		$(use_enable static-libs static)
 	)
 	multilib_is_native_abi ||
