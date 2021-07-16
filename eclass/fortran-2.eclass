@@ -69,6 +69,9 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
+			if [[ ${EAPI} != [56] ]]; then
+				BDEPEND+=" virtual/fortran"
+			fi
 			DEPEND+=" virtual/fortran"
 			RDEPEND+=" virtual/fortran"
 			break
@@ -77,9 +80,16 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			break
 			;;
 		test)
-			DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			if [[ ${EAPI} != [56] ]]; then
+				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
+			else
+				DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			fi
 			;;
 		*)
+			if [[ ${EAPI} != [56] ]]; then
+				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
+			fi
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
 			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;
