@@ -34,7 +34,7 @@ RDEPEND="sys-apps/hwloc:0=
 	virtual/lapack
 	virtual/lapacke
 	cuda? ( dev-util/nvidia-cuda-toolkit )
-	metis? ( sci-libs/metis[int64=] )
+	metis? ( sci-libs/metis[int64(+)=] )
 	mpi? (
 		virtual/mpi[fortran]
 		metis? ( sci-libs/parmetis )
