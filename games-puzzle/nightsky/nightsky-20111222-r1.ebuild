@@ -1,28 +1,25 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit desktop gnome2-utils
+inherit desktop
 
 DESCRIPTION="Puzzle game that puts you inside and ambient and mysterious universe"
 HOMEPAGE="http://www.nicalis.com/nightsky/"
 SRC_URI="nightskyhd-linux-1324519044.tar.gz"
-S="${WORKDIR}"/NightSky
+S="${WORKDIR}/NightSky"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="bundled-libs"
+RESTRICT="bindist fetch"
 
-RESTRICT="bindist fetch splitdebug"
-
-MYGAMEDIR=opt/${PN}
 QA_PREBUILT="
-	${MYGAMEDIR#/}/NightSky*
-	${MYGAMEDIR#/}/lib/*
-	${MYGAMEDIR#/}/lib64/*
-"
+	opt/${PN}/NightSky*
+	opt/${PN}/lib/*
+	opt/${PN}/lib64/*"
 
 RDEPEND="
 	virtual/glu
@@ -50,8 +47,8 @@ src_prepare() {
 	default
 
 	einfo "Removing ${ARCH} unrelated files..."
-	rm -v NightSkyHD$(usex amd64 "" "_64") || die
-	rm -rv lib$(usex amd64 "" "64") || die
+	rm -v NightSkyHD$(usev !amd64 _64) || die
+	rm -rv lib$(usev !amd64 64) || die
 
 	if ! use bundled-libs ; then
 		einfo "Removing bundled libs..."
@@ -61,35 +58,24 @@ src_prepare() {
 	# empty dir, we create symlink here later
 	rm -r Settings || die
 
-	sed \
-		-e "s#@GAMES_PREFIX_OPT@#/opt#" \
+	sed "s|@GAMES_PREFIX_OPT@|${EPREFIX}/opt|" \
 		"${FILESDIR}"/${PN}-wrapper > "${T}"/${PN} || die
 }
 
 src_install() {
 	dobin "${T}"/${PN}
 
-	insinto "${MYGAMEDIR}"
-	doins -r *
+	insinto /opt/${PN}
+	doins -r .
 
-	newicon -s 128 "World/The Void/Physical"/Circle72.png ${PN}.png
-	make_desktop_entry ${PN}
+	newicon "World/The Void/Physical"/Circle72.png ${PN}.png
+	make_desktop_entry ${PN} "NightSky HD"
 
-	fperms +x "${MYGAMEDIR}"/NightSkyHD$(usex amd64 "_64" "")
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
+	fperms +x /opt/${PN}/NightSkyHD$(usev amd64 _64)
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-
-	echo
-	elog "Saves and Settings are in ~/.nightsky/Settings"
-	echo
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "Saves and Settings are in ~/.nightsky/Settings"
+	fi
 }
