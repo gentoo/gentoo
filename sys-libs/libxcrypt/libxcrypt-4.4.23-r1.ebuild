@@ -106,8 +106,8 @@ get_xclibdir() {
 multilib_src_configure() {
 	local -a myconf=(
 		--disable-werror
-		--libdir=$(get_xclibdir)
-		--with-pkgconfigdir=/usr/$(get_libdir)/pkgconfig
+		--libdir="${EPREFIX}"$(get_xclibdir)
+		--with-pkgconfigdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig"
 		--includedir="${EPREFIX}/usr/include/$(usex system '' 'xcrypt')"
 	)
 
@@ -157,8 +157,8 @@ src_install() {
 	) || die "failglob error"
 
 	# Remove useless stuff from installation
-	find "${D}"/usr/share/doc/${PF} -type l -delete || die
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}"/usr/share/doc/${PF} -type l -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
 
 multilib_src_install() {
@@ -167,7 +167,7 @@ multilib_src_install() {
 	# Don't install the libcrypt.so symlink for the "compat" version
 	case "${MULTIBUILD_ID}" in
 		xcrypt_compat-*)
-			rm "${D}"$(get_xclibdir)/libcrypt$(get_libname) \
+			rm "${ED}"$(get_xclibdir)/libcrypt$(get_libname) \
 				|| die "failed to remove extra compat libraries"
 		;;
 		xcrypt_nocompat-*)
@@ -181,7 +181,7 @@ multilib_src_install() {
 
 						if [[ -n ${static_libs[*]} ]]; then
 							dodir "/usr/$(get_xclibdir)"
-							mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
+							mv "${static_libs[@]}" "${ED}/usr/$(get_xclibdir)" \
 								|| die "Moving static libs failed"
 						fi
 					fi
