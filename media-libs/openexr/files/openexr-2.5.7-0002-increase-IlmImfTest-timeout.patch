@@ -1,0 +1,13 @@
+This consists of A LOT of individual tests and on some hardware
+(e.g. the RISC-V board BeagleV Starlight) the default test time-out
+of 1500 seconds is greatly insufficient. On said BeagleV OpenEXR.IlmImf
+takes almost 4800 s even on an otherwise idle system so let's add a bit
+of margin and set the time-out of this test to 1.5 hours.
+
+--- a/IlmImfTest/CMakeLists.txt	2021-06-15 00:15:14.000000000 +0000
++++ b/IlmImfTest/CMakeLists.txt	2021-07-16 16:51:20.600435829 +0000
+@@ -73,3 +73,4 @@
+   target_compile_definitions(IlmImfTest PRIVATE OPENEXR_DLL)
+ endif()
+ add_test(NAME OpenEXR.IlmImf COMMAND $<TARGET_FILE:IlmImfTest>)
++set_tests_properties(OpenEXR.IlmImf PROPERTIES TIMEOUT 5400)

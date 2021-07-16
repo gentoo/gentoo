@@ -13,7 +13,7 @@ S="${WORKDIR}/${P}/OpenEXR"
 
 LICENSE="BSD"
 SLOT="0/25" # based on SONAME
-KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE="cpu_flags_x86_avx doc examples static-libs utils test"
 RESTRICT="!test? ( test )"
 
@@ -34,6 +34,12 @@ src_prepare() {
 	if use test; then
 		if use abi_x86_32; then
 			eapply "${FILESDIR}/${PN}-2.5.2-0001-IlmImfTest-main.cpp-disable-tests.patch"
+		fi
+
+		# Technically this doesn't disable anything, it just gives this test time to complete.
+		# Could probably be applied unconditionally but will leave this to the maintainers.
+		if use riscv; then
+			eapply "${FILESDIR}/${P}-0002-increase-IlmImfTest-timeout.patch"
 		fi
 
 		if use sparc; then
