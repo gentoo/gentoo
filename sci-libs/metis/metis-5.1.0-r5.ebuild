@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc double-precision examples int64 openmp"
 
-RDEPEND="!sci-libs/parmetis"
+RDEPEND="!<sci-libs/parmetis-4.0.3-r2"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-shared-GKlib.patch
