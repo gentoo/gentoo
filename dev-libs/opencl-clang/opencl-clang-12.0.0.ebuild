@@ -27,6 +27,7 @@ LLVM_MAX_SLOT=12
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.0-clang_library_dir.patch
+	"${FILESDIR}"/${PN}-10.0.0.1_find-llvm-tblgen.patch
 )
 
 multilib_src_configure() {
