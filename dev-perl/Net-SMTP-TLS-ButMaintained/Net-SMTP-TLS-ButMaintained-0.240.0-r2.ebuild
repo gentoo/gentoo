@@ -1,17 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=FAYLAND
-MODULE_VERSION=0.24
+DIST_AUTHOR=FAYLAND
+DIST_VERSION=0.24
 inherit perl-module
 
 DESCRIPTION="An SMTP client supporting TLS and AUTH"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	virtual/perl-IO
@@ -21,8 +20,6 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/Digest-HMAC
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
 "
-
-SRC_TEST=do
