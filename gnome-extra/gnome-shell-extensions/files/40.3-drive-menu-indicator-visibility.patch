@@ -1,0 +1,32 @@
+From 3539ce113907ffda813e1a990891b0911c9702ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Tue, 13 Jul 2021 11:40:31 +0200
+Subject: [PATCH] drive-menu: Fix indicator visibility
+
+Commit 519269be9d made the check for network mounts non-blocking, and
+we now update the indicator's visibility before a newly-added network
+mount is hidden.
+
+Address this by monitoring the item itself for visibility changes.
+
+Part-of: <https://gitlab.gnome.org/GNOME/gnome-shell-extensions/-/merge_requests/176>
+---
+ extensions/drive-menu/extension.js | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/extensions/drive-menu/extension.js b/extensions/drive-menu/extension.js
+index 3fac236..6c6fd76 100644
+--- a/extensions/drive-menu/extension.js
++++ b/extensions/drive-menu/extension.js
+@@ -189,6 +189,8 @@ class DriveMenu extends PanelMenu.Button {
+         let item = new MountMenuItem(mount);
+         this._mounts.unshift(item);
+         this.menu.addMenuItem(item, 0);
++
++        item.connect('notify::visible', () => this._updateMenuVisibility());
+     }
+ 
+     _removeMount(mount) {
+-- 
+GitLab
+
