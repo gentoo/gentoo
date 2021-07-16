@@ -34,13 +34,11 @@ distutils_enable_tests pytest
 
 python_test() {
 	local deselect=(
-		# integration tests require a workable podman server,
-		# and it doesn't seem to work in ebuild env
-		podman/tests/integration
-
 		# TODO
 		podman/tests/unit/test_volumesmanager.py::VolumesManagerTestCase::test_get_404
 	)
 
-	epytest ${deselect[@]/#/--deselect }
+	# integration tests require a workable podman server,
+	# and it doesn't seem to work in ebuild env
+	epytest podman/tests/unit ${deselect[@]/#/--deselect }
 }
