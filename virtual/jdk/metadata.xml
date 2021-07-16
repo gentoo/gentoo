@@ -6,7 +6,7 @@
 		<name>Java</name>
 	</maintainer>
 	<use>
-		 <flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs</flag>
+		<flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs</flag>
 	</use>
 	<stabilize-allarches/>
 </pkgmetadata>
