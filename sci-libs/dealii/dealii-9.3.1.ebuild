@@ -58,7 +58,10 @@ RDEPEND="dev-libs/boost
 	gsl? ( sci-libs/gsl:= )
 	hdf5? ( sci-libs/hdf5[mpi=] )
 	lapack? ( virtual/lapack )
-	metis? ( >=sci-libs/parmetis-4 )
+	metis? (
+		>=sci-libs/metis-5
+		mpi? ( >=sci-libs/parmetis-4 )
+	)
 	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
 	opencascade? ( ~sci-libs/opencascade-${CAS_VERSION}:= )
