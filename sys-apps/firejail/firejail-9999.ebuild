@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit toolchain-funcs python-single-r1 linux-info
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/netblue30/${PN}/releases/download/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/netblue30/firejail.git"
@@ -21,7 +21,7 @@ HOMEPAGE="https://firejail.wordpress.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="X apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home +suid test +userns +whitelist"
+IUSE="apparmor +chroot contrib +dbusproxy +file-transfer +globalcfg +network +private-home +suid test +userns +whitelist X"
 # Needs a lot of work to function within sandbox/portage
 # bug #769731
 RESTRICT="test"
@@ -38,15 +38,24 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="contrib? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	CONFIG_CHECK="~SQUASHFS"
+	local ERROR_SQUASHFS="CONFIG_SQUASHFS: required for firejail --appimage mode"
+	check_extra_config
+	use contrib && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
 
-	find -type f -name Makefile.in -exec sed -i -r -e '/^\tinstall .*COPYING /d; /CFLAGS/s: (-O2|-ggdb) : :g' {} + || die
+	find -type f -name Makefile.in -exec sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' {} + || die
 
 	sed -i -r -e '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
+
+	# fix up hardcoded paths to templates and docs
+	local files=$(grep -E -l -r '/usr/share/doc/firejail([^-]|$)' ./RELNOTES ./src/man/ ./etc/profile*/ ./test/ || die)
+	for file in ${files[@]} ; do
+		sed -i -r -e "s:/usr/share/doc/firejail([^-]|\$):/usr/share/doc/${PF}\1:" "$file" || die
+	done
 
 	# remove compression of man pages
 	sed -i -r -e '/rm -f \$\$man.gz; \\/d; /gzip -9n \$\$man; \\/d; s|\*\.([[:digit:]])\) install -m 0644 \$\$man\.gz|\*\.\1\) install -m 0644 \$\$man|g' Makefile.in || die
@@ -79,16 +88,12 @@ src_compile() {
 src_install() {
 	default
 
+	rm "${ED}"/usr/share/doc/${PF}/COPYING || die
+
 	if use contrib; then
 		python_scriptinto /usr/$(get_libdir)/firejail
 		python_doscript contrib/*.py
 		insinto /usr/$(get_libdir)/firejail
 		dobin contrib/*.sh
 	fi
-}
-
-pkg_postinst() {
-	CONFIG_CHECK="~SQUASHFS"
-	local ERROR_SQUASHFS="CONFIG_SQUASHFS: required for firejail --appimage mode"
-	check_extra_config
 }
