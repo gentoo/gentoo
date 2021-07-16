@@ -3,19 +3,15 @@
 
 EAPI=8
 
-inherit autotools multilib-minimal git-r3
+inherit multilib-minimal
 
 DESCRIPTION="Message Digest functions from BSD systems"
 HOMEPAGE="https://www.hadrons.org/software/libmd/"
-EGIT_REPO_URI="https://git.hadrons.org/git/libmd.git"
+SRC_URI="https://archive.hadrons.org/software/libmd/${P}.tar.xz"
 
 LICENSE="|| ( BSD BSD-2 ISC BEER-WARE public-domain )"
 SLOT="0"
-
-src_prepare() {
-	default
-	eautoreconf
-}
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf
