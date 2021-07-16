@@ -37,5 +37,5 @@ python_prepare_all() {
 python_test() {
 	local -x PYTHONPATH="."
 	local -x DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
-	epytest
+	epytest -Wignore::DeprecationWarning
 }
