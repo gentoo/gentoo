@@ -33,8 +33,8 @@ REQUIRED_USE="|| ( spice vnc )"
 src_configure() {
 	local emesonargs=(
 		$(meson_feature libvirt libvirt)
-		$(meson_feature vnc gtk-vnc)
-		$(meson_feature spice spice-gtk)
+		$(meson_feature vnc vnc)
+		$(meson_feature spice spice)
 	)
 	meson_src_configure
 }
