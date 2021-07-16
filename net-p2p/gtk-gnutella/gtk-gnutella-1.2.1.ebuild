@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit strip-linguas toolchain-funcs
+inherit flag-o-matic strip-linguas toolchain-funcs
 
 IUSE="nls dbus ssl +gtk"
 
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	filter-flags -flto
 	strip-linguas -i po
 
 	echo "# Gentoo-selected LINGUAS" > po/LINGUAS
