@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/niko/ruby-shout"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND+=" >=media-libs/libshout-2.0"
