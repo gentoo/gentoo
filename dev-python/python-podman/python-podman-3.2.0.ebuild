@@ -25,6 +25,10 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		dev-python/requests-mock[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
