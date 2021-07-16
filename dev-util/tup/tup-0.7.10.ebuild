@@ -47,11 +47,9 @@ src_prepare() {
 			-e 's|`git describe`|v'"${PV}|" || die
 	fi
 
-	default
-}
-
-src_configure() {
 	echo "CONFIG_TUP_USE_SYSTEM_SQLITE=y" >> tup.config
+
+	default
 }
 
 src_compile() {
