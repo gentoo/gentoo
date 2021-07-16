@@ -54,7 +54,7 @@ src_prepare() {
 	# fix up hardcoded paths to templates and docs
 	local files=$(grep -E -l -r '/usr/share/doc/firejail([^-]|$)' ./RELNOTES ./src/man/ ./etc/profile*/ ./test/ || die)
 	for file in ${files[@]} ; do
-		sed -i -r -e "s:/usr/share/doc/firejail([^-]|\$):/usr/share/doc/${PF}\1:" "$file" || die
+		sed -i -r -e "s:/usr/share/doc/firejail([^-]|\$):/usr/share/doc/${PF}\1:" "${file}" || die
 	done
 
 	# remove compression of man pages
