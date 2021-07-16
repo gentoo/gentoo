@@ -725,12 +725,6 @@ sys-devel/automake:1.10
 # use. See bugs 603346 and 604998 for more information.
 app-admin/amazon-ec2-init
 
-# Michał Górny <mgorny@gentoo.org> (2016-11-17)
-# New version masked for testing. It supports source-window buffer size
-# over 2G but it 'currently performs 3-5% slower and has 1-2% worse
-# compression'.
->=dev-util/xdelta-3.1.0
-
 # Robin H. Johnson <robbat2@gentoo.org> (2014-08-04)
 # Masked for testing, presently fails upstream testsuite:
 # FAIL:07:02:35 (00:00:00) db_dump/db_load(./TESTDIR.3/recd001.db:child killed: kill signal): expected 0, got 1
