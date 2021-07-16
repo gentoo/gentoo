@@ -27,6 +27,7 @@ DEPEND="
 	x11-libs/gdk-pixbuf
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
+	x11-libs/libXext
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libnotify
