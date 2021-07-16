@@ -78,22 +78,23 @@ src_test() {
 
 	# Skip tests which require namespacing or root privileges.
 	pushd test || die
-	rm -v ./*full-deps*.sh
-	SKIPPED_TESTS=(
-	t4069-gcc-coverage.sh
-	t4072-proc-self.sh
-	t4074-getpwd.sh
-	t4131-proc-self-exe.sh
-	t4132-proc-meminfo.sh
-	t4171-dev-null.sh
-	t4200-ccache.sh
-	t4201-ccache2.sh
-	t4202-clang.sh
-	t5083-symlink-fullpath.sh
-	t5084-symlink-fullpath2.sh
-	t5103-python-sh.sh
-	)
-	rm ${SKIPPED_TESTS[@]} || die
+	rm -v ./*full-deps*.sh \
+	      t2150-lua-tupdefault.sh \
+	      t2172-lua-relativedir.sh \
+	      t2187-tupdefault.sh \
+	      t2197-tupdefault-ghost.sh \
+	      t4069-gcc-coverage.sh \
+	      t4072-proc-self.sh \
+	      t4074-getpwd.sh \
+	      t4131-proc-self-exe.sh \
+	      t4132-proc-meminfo.sh \
+	      t4171-dev-null.sh \
+	      t4200-ccache.sh \
+	      t4201-ccache2.sh \
+	      t4202-clang.sh \
+	      t5083-symlink-fullpath.sh \
+	      t5084-symlink-fullpath2.sh \
+	      t5103-python-sh.sh || die
 	./test.sh || die
 	popd || die
 
