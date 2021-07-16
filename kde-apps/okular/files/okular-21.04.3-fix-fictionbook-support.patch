@@ -1,0 +1,27 @@
+From 504eec7688e7139e9d193fc2b3ddafac0f835b6f Mon Sep 17 00:00:00 2001
+From: Yaroslav Sidlovsky <zawertun@gmail.com>
+Date: Mon, 12 Jul 2021 11:06:26 +0300
+Subject: [PATCH] Fix non unique KPlugin Id for fictionbook generator
+
+BUG: 439807
+(cherry picked from commit 8dc58c7617abcacf9325e5b93a5e38149f6e2aaf)
+---
+ generators/fictionbook/libokularGenerator_fb.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/generators/fictionbook/libokularGenerator_fb.json b/generators/fictionbook/libokularGenerator_fb.json
+index 1ef01a2d5..3d499a50f 100644
+--- a/generators/fictionbook/libokularGenerator_fb.json
++++ b/generators/fictionbook/libokularGenerator_fb.json
+@@ -120,7 +120,7 @@
+         "Description[x-test]": "xxA renderer for FictionBook eBooksxx",
+         "Description[zh_CN]": "FictionBook 电子书渲染器",
+         "Description[zh_TW]": "FictionBook 電子書成像器",
+-        "Id": "okular_fax",
++        "Id": "okular_fictionbook",
+         "License": "GPL",
+         "MimeTypes": [
+             "application/x-fictionbook+xml"
+-- 
+GitLab
+
