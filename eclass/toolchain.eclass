@@ -30,7 +30,7 @@ fi
 FEATURES=${FEATURES/multilib-strict/}
 
 case ${EAPI:-0} in
-	5*|6) inherit eapi7-ver ;;
+	5|6) inherit eapi7-ver ;;
 	7) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
