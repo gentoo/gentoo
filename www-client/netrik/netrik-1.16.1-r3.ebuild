@@ -13,7 +13,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~sparc x86"
 
-RDEPEND=">=sys-libs/ncurses-5.1:=[unicode]
+RDEPEND=">=sys-libs/ncurses-5.1:=[unicode(+)]
 	sys-libs/readline:="
 DEPEND="${RDEPEND}"
 
