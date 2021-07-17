@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="xml"
 VALA_MIN_API_VERSION="0.28"
 
@@ -36,9 +36,9 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			app-editors/gedit[python,${PYTHON_SINGLE_USEDEP}]
 			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
-			>=dev-python/dbus-python-0.82[${PYTHON_MULTI_USEDEP}]
-			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+			>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		')
 		>=x11-libs/gtk+-3.9:3[introspection]
 		>=x11-libs/gtksourceview-4.0.2:4[introspection]
