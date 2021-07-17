@@ -28,7 +28,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	aac? ( media-libs/faad2 )
 	alsa? ( >=media-libs/alsa-lib-1.0.11 )
 	ao? ( media-libs/libao )
