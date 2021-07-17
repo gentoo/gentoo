@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,22 +10,16 @@ MY_P="${P/_beta/beta}"
 DESCRIPTION="Emacs like micro editor Ng -- based on mg2a"
 HOMEPAGE="http://tt.sakura.ne.jp/~amura/ng/"
 SRC_URI="http://tt.sakura.ne.jp/~amura/archives/ng/${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="Emacs"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="canna"
 
 RDEPEND="
 	sys-libs/ncurses:0=
-	!dev-java/nailgun
-	canna? ( app-i18n/canna )"
-
-DEPEND="
-	${RDEPEND}
-	sys-apps/sed"
-
-S="${WORKDIR}/${MY_P}"
+	!dev-java/nailgun"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${MY_P}-ncurses.patch"
@@ -43,7 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable canna)
+	econf --disable-canna
 }
 
 src_compile() {
