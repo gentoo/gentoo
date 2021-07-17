@@ -141,7 +141,7 @@ RDEPEND="
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
-	live? ( <media-plugins/live-2021.05.22:= )
+	live? ( >=media-plugins/live-2021.05.22:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
 	matroska? (
@@ -153,7 +153,7 @@ RDEPEND="
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
-	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
 	opus? ( >=media-libs/opus-1.0.3 )
@@ -238,6 +238,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.11.1-srt-1.4.2.patch # bug 758062
 	"${FILESDIR}"/${PN}-3.0.13-srt-1.3.0.patch
+	"${FILESDIR}"/${PN}-3.0.14-fix-live-address-api.patch # bug 795798
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
