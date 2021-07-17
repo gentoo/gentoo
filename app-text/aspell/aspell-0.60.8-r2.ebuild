@@ -47,7 +47,7 @@ done
 unset DICT LANG LANGUAGES
 
 RDEPEND="
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	nls? ( virtual/libintl )
 "
 
