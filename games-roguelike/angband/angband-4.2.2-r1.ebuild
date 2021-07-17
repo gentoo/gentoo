@@ -22,7 +22,7 @@ RDEPEND="X? (
 		media-fonts/font-misc-misc
 		x11-libs/libX11
 	)
-	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	sdl? (
 		media-libs/libsdl2[video,X]
 		media-libs/sdl2-image
