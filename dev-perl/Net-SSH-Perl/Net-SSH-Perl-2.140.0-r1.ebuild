@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=SCHWIGON
 DIST_VERSION=2.14
@@ -12,8 +12,7 @@ DESCRIPTION="Perl client Interface to SSH"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="minimal test"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 RDEPEND="
 	>=dev-perl/Crypt-Curve25519-0.50.0
@@ -32,7 +31,7 @@ RDEPEND="
 		dev-perl/TermReadKey
 	)
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( >=virtual/perl-Test-Simple-0.610.0 )
 "
@@ -47,6 +46,7 @@ PERL_RM_FILES=(
 	't/99-spellcheck.t'
 	't/99-yaml.t'
 )
+
 PATCHES=(
 	"${FILESDIR}/${PN}-2.14-no-signatures.patch"
 )
