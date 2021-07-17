@@ -5,7 +5,4 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="alt_gfx">Use alternate graphics which are closer to the original Amiga version</flag>
-	</use>
 </pkgmetadata>
