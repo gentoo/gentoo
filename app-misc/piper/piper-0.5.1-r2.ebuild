@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit meson python-single-r1 udev xdg
 
@@ -28,10 +28,10 @@ RDEPEND="
 	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/gtk+:3[introspection]
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
-		dev-python/python-evdev[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		dev-python/python-evdev[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="
