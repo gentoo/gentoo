@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 DISTUTILS_USE_SETUPTOOLS=no
 DISTUTILS_SINGLE_IMPL=1
@@ -62,7 +62,7 @@ BDEPEND="${CDEPEND}
 	build-manual? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz
