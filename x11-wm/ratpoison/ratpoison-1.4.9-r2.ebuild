@@ -18,7 +18,7 @@ RDEPEND="
 	history? ( sys-libs/readline:= )
 	xft? ( x11-libs/libXft )
 	xrandr? ( x11-libs/libXrandr )
-	virtual/perl-Pod-Parser
+	dev-perl/Pod-Parser
 	x11-libs/libX11
 	x11-libs/libXtst
 "
