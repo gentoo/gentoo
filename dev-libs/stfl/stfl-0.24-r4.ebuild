@@ -18,7 +18,7 @@ IUSE="examples perl python ruby static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-lang/ruby:* )
 	python? ( ${PYTHON_DEPS} )
