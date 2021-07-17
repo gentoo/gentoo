@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit qmake-utils python-single-r1 desktop
 
@@ -18,8 +18,8 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=app-crypt/yubikey-manager-4.0.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
+		>=app-crypt/yubikey-manager-4.0.0[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
 	')
 	dev-python/pyotherside[${PYTHON_SINGLE_USEDEP}]
 	dev-qt/qtcore:5
