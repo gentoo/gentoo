@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="debug hwloc kernel_FreeBSD kernel_linux lm-sensors openvz unicode vserver"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="sys-libs/ncurses:0=[unicode?]
+RDEPEND="sys-libs/ncurses:=[unicode(+)?]
 	hwloc? ( sys-apps/hwloc )
 	lm-sensors? ( sys-apps/lm-sensors )"
 DEPEND="${RDEPEND}
