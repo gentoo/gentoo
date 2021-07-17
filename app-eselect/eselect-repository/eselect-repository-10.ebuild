@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit python-single-r1
 
 DESCRIPTION="Manage repos.conf via eselect"
@@ -18,7 +18,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	app-admin/eselect
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 	')
 	net-misc/wget"
 
