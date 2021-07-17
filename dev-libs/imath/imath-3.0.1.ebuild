@@ -31,15 +31,15 @@ RDEPEND="
 		!dev-python/pyilmbase
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[python?,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python?,${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_MULTI_USEDEP}]') )
+	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_USEDEP}]') )
 	python? ( ${PYTHON_DEPS} )
 "
 
