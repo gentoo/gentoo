@@ -19,7 +19,7 @@ RDEPEND="
 	app-cdr/dvd+rw-tools
 	dev-libs/libburn
 	dev-libs/libcdio:=[-minimal]
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
