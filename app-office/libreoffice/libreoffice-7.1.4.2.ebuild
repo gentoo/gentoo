@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="threads(+),xml"
 
 MY_PV="${PV/_alpha/.alpha}"
@@ -177,7 +177,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	accessibility? (
-		$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_MULTI_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 	)
 	bluetooth? (
 		dev-libs/glib:2
