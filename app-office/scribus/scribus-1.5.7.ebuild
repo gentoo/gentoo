@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic python-single-r1 xdg
 
@@ -62,7 +62,7 @@ DEPEND="${PYTHON_DEPS}
 	pdf? ( app-text/podofo:0= )
 	scripts? (
 		$(python_gen_cond_dep '
-			dev-python/pillow[tk?,${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[tk?,${PYTHON_USEDEP}]
 		')
 	)
 "
