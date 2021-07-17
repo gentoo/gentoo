@@ -217,7 +217,7 @@ SRC_URI="
 	https://github.com/facebookincubator/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)
 "
-LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD BSL-1.1 ISC LGPL-2.1 MIT MPL-2.0 Unlicense"
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0 ISC LGPL-2.1 MIT MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 
