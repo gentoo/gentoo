@@ -47,7 +47,7 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/translate-toolkit[${PYTHON_MULTI_USEDEP}]
+		dev-python/translate-toolkit[${PYTHON_USEDEP}]
 	')
 "
 
