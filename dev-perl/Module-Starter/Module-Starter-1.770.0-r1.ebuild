@@ -17,7 +17,7 @@ RDEPEND="
 	virtual/perl-File-Spec
 	virtual/perl-Getopt-Long
 	dev-perl/Module-Runtime
-	>=virtual/perl-Pod-Parser-1.210.0
+	>=dev-perl/Pod-Parser-1.210.0
 	>=dev-perl/Software-License-0.103.5
 	>=virtual/perl-Test-Harness-0.210.0
 	>=virtual/perl-Test-Simple-0.940.0

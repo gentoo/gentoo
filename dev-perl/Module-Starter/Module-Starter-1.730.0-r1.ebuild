@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ RDEPEND="
 	virtual/perl-File-Spec
 	virtual/perl-Getopt-Long
 	dev-perl/Module-Runtime
-	>=virtual/perl-Pod-Parser-1.210.0
+	>=dev-perl/Pod-Parser-1.210.0
 	virtual/perl-parent
 	>=virtual/perl-version-0.770.0
 "
