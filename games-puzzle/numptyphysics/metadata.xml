@@ -5,7 +5,4 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="user-levels">Install some fun user-created levels</flag>
-	</use>
 </pkgmetadata>
