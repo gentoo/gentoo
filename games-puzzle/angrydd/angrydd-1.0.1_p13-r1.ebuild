@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit desktop python-single-r1
 
@@ -22,7 +22,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygame[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"
