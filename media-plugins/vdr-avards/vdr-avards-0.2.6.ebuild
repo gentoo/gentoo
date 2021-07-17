@@ -11,7 +11,7 @@ SRC_URI="http://firefly.vdr-developer.org/avards/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="media-video/vdr"
 
