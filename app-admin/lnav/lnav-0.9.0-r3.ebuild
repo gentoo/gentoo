@@ -11,7 +11,7 @@ SRC_URI="https://github.com/tstack/lnav/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="unicode"
 
 RDEPEND="
@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-db/sqlite-3.9.0
 	dev-libs/libpcre[cxx]
 	>=net-misc/curl-7.23.0
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	sys-libs/readline:0=
 	sys-libs/zlib:0="
 DEPEND="${RDEPEND}"
@@ -32,6 +32,12 @@ PATCHES=(
 	# bug 713600
 	"${FILESDIR}"/${PN}-0.9.0-bug713600_0.patch
 	"${FILESDIR}"/${PN}-0.9.0-bug713600_1.patch
+	# Fix a segfault when using right arrow
+	# bug 792582
+	"${FILESDIR}"/${PN}-0.9.0-bug792582.patch
+	# Fix a build failure on gcc
+	# bug 786456
+	"${FILESDIR}"/${PN}-0.9.0-bug786456.patch
 )
 
 src_prepare() {
