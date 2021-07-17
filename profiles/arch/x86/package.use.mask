@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-17)
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc not keyworded here
+media-sound/easyeffects rnnoise webrtc
+media-sound/pulseeffects rnnoise webrtc
+
 # Sam James <sam@gentoo.org> (2021-07-12)
 # Haskell is (only) available on amd64/x86 right now in Gentoo
 # bug #801649
