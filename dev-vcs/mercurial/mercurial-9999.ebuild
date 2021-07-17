@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=no
 CARGO_OPTIONAL=1
 
-inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic
+inherit bash-completion-r1 cargo elisp-common distutils-r1 mercurial flag-o-matic multiprocessing
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -25,18 +25,18 @@ BDEPEND="
 
 RDEPEND="
 	app-misc/ca-certificates
-	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
-	tk? ( dev-lang/tk )
-"
+	tk? ( dev-lang/tk )"
+
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
-	test? ( app-arch/unzip
-		dev-python/pygments[${PYTHON_USEDEP}] )"
+	test? (
+		app-arch/unzip
+		dev-python/pygments[${PYTHON_USEDEP}]
+		)"
 
 SITEFILE="70${PN}-gentoo.el"
 
-# Too many tests fail #608720
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 src_unpack() {
 	mercurial_src_unpack
@@ -50,11 +50,7 @@ python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
-	sed -i -e '/    hgenv =/a\' -e '    hgenv.pop("PYTHONPATH", None)' setup.py || die
-	# Use absolute import for zstd
-	sed -i -e 's/from \.* import zstd/import zstandard as zstd/' \
-		mercurial/utils/compression.py \
-		mercurial/wireprotoframing.py || die
+	sed -i -e 's/__APPLE__/__NO_APPLE__/g' mercurial/cext/osutil.c || die
 
 	distutils-r1_python_prepare_all
 }
@@ -62,7 +58,7 @@ python_prepare_all() {
 src_compile() {
 	if use rust; then
 		pushd rust/hg-cpython || die
-		cargo_src_compile
+		cargo_src_compile --no-default-features --features python3 --jobs $(makeopts_jobs)
 		popd
 	fi
 	distutils-r1_src_compile
@@ -74,7 +70,7 @@ python_compile() {
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
-	distutils-r1_python_compile build_ext --no-zstd
+	distutils-r1_python_compile build_ext
 }
 
 python_compile_all() {
@@ -97,7 +93,7 @@ python_install() {
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
-	distutils-r1_python_install build_ext --no-zstd
+	distutils-r1_python_install build_ext
 }
 
 python_install_all() {
@@ -151,6 +147,7 @@ src_test() {
 	rm -f test-convert-mtn*		# monotone
 	rm -f test-convert-tla*		# GNU Arch tla
 	rm -f test-largefiles*		# tends to time out
+	rm -f test-https*			# requires to support tls1.0
 	if [[ ${EUID} -eq 0 ]]; then
 		einfo "Removing tests which require user privileges to succeed"
 		rm -f test-convert*
@@ -168,12 +165,11 @@ src_test() {
 python_test() {
 	local TEST_DIR
 
-	rm -rf "${TMPDIR}"/test
 	distutils_install_for_testing
 	cd tests || die
-	"${PYTHON}" run-tests.py --verbose \
-		--tmpdir="${TMPDIR}"/test \
-		--with-hg="${TEST_DIR}"/scripts/hg \
+	"${PYTHON}" run-tests.py \
+		--jobs $(makeopts_jobs) \
+		--timeout 0 \
 		|| die "Tests fail with ${EPYTHON}"
 }
 
