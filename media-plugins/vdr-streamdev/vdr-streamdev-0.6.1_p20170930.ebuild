@@ -13,7 +13,7 @@ SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-streamdev.git/snapsho
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="client server"
 REQUIRED_USE="|| ( client server )"
 
