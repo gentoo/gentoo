@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit autotools multilib python-single-r1 udev systemd
 
@@ -55,8 +55,8 @@ CDEPEND="
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	$(python_gen_cond_dep '
-		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/websockets[${PYTHON_MULTI_USEDEP}]
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
+		dev-python/websockets[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
@@ -73,14 +73,14 @@ DEPEND="${CDEPEND}
 
 RDEPEND="${CDEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyserial[${PYTHON_USEDEP}]
 	')
 	selinux? ( sec-policy/selinux-kismet )
 "
 PDEPEND="
 	rtlsdr? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 		net-wireless/rtl-sdr
 	)"
