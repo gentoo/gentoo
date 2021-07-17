@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ RDEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0 )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
 	mad? ( media-libs/libmad )
 	vorbis? ( media-libs/libvorbis )
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	dev-libs/icu:="
 DEPEND="${RDEPEND}"
 
