@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MIYAGAWA
 DIST_VERSION=1.0044
@@ -12,11 +12,12 @@ DESCRIPTION="Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
-IUSE="test minimal examples"
-RESTRICT="!test? ( test )"
+IUSE="minimal examples"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.900-network-testing.patch"
 )
+
 RDEPEND="
 	!minimal? (
 		dev-perl/CGI-Compile
@@ -39,7 +40,7 @@ RDEPEND="
 	>=dev-perl/HTTP-Message-5.814.0
 	>=virtual/perl-HTTP-Tiny-0.34.0
 	>=dev-perl/Hash-MultiValue-0.50.0
-	>=virtual/perl-Pod-Parser-1.360.0
+	>=dev-perl/Pod-Parser-1.360.0
 	>=dev-perl/Stream-Buffered-0.20.0
 	>=dev-perl/Test-TCP-2.150.0
 	dev-perl/Try-Tiny
@@ -47,7 +48,8 @@ RDEPEND="
 	>=dev-perl/WWW-Form-UrlEncoded-0.230.0
 	virtual/perl-parent
 "
-DEPEND="${RDEPEND}
+
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
@@ -64,6 +66,7 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+
 src_test() {
 	perl_rm_files "t/author-pod-syntax.t"
 	perl-module_src_test
