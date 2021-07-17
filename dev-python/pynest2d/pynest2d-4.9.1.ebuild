@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit cmake python-single-r1
 
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/libnest2d
-	$(python_gen_cond_dep '<dev-python/sip-5[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep '<dev-python/sip-5[${PYTHON_USEDEP}]')
 	"
 
 DEPEND="${RDEPEND}"
