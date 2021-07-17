@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit flag-o-matic linux-info python-single-r1 systemd xdg-utils
 
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 		media-libs/alsa-lib
 	)
 	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	ftdi? ( dev-embedded/libftdi:0 )
 	systemd? ( sys-apps/systemd )
@@ -55,7 +55,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libxslt
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	doc? ( app-doc/doxygen )
 	sys-apps/kmod
@@ -67,7 +67,7 @@ RDEPEND="
 	gtk? (
 		x11-libs/vte[introspection]
 		$(python_gen_cond_dep '
-			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject[${PYTHON_USEDEP}]
 		')
 	)
 	inputlirc? ( app-misc/inputlircd )
