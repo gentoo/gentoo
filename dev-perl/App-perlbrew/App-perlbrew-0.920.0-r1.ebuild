@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=GUGOD
 DIST_VERSION=0.92
@@ -11,8 +11,6 @@ DESCRIPTION='Manage perl installations in your $HOME'
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-7.220.0
@@ -22,7 +20,7 @@ RDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-7.220.0
 	>=virtual/perl-File-Temp-0.230.400
 	virtual/perl-JSON-PP
-	>=virtual/perl-Pod-Parser-1.630.0
+	>=dev-perl/Pod-Parser-1.630.0
 	>=dev-perl/local-lib-2.0.14
 "
 BDEPEND="${RDEPEND}
@@ -39,6 +37,7 @@ BDEPEND="${RDEPEND}
 		>=dev-perl/Test-TempDir-Tiny-0.16.0
 	)
 "
+
 mydoc=("doc/notes.org")
 src_test() {
 	( # export leak guard
