@@ -15,7 +15,7 @@ SLOT="0/6" # subslot = soname version
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="examples static-libs unicode"
 
-DEPEND=">=sys-libs/ncurses-5.2:0=[unicode?]"
+DEPEND="sys-libs/ncurses:=[unicode(+)?]"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
