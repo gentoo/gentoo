@@ -15,7 +15,8 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~sparc-solaris 
 IUSE="+unicode test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-libs/ncurses-5:0=[unicode?]
+RDEPEND="
+	sys-libs/ncurses:=[unicode(+)?]
 	virtual/perl-Data-Dumper
 "
 DEPEND="${RDEPEND}
