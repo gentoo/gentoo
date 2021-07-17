@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	elogind? ( sys-auth/elogind )
-	ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
+	ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode(+)?] )
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd[${MULTILIB_USEDEP}] )
 "
