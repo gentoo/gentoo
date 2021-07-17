@@ -27,7 +27,7 @@ GST_VER="1.14.2"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/pycairo-1.10[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pycairo-1.10[${PYTHON_USEDEP}]
 	')
 	>=x11-libs/cairo-1.10
 
@@ -39,11 +39,11 @@ RDEPEND="${COMMON_DEPEND}
 
 	>=dev-libs/gobject-introspection-1.34:=
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/gst-python-1.4:1.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygobject-3.8:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		>=dev-python/gst-python-1.4:1.0[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
 	')
 
 	gnome-base/librsvg:=
@@ -73,7 +73,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/nose2[${PYTHON_MULTI_USEDEP}]
+			dev-python/nose2[${PYTHON_USEDEP}]
 		')
 	)
 "
