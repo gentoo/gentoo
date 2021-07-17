@@ -18,7 +18,7 @@ REQUIRED_USE="
 
 DEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	openssl? ( dev-libs/openssl:0= )
 	gnutls? ( net-libs/gnutls )
 	pcre? ( dev-libs/libpcre )
