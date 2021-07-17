@@ -32,6 +32,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2021-07-17)
+# Deprecated upstream, replaced with factory_bot.
+# Last release in 2017, no dependencies.
+# Masked for removal in 30 days.
+dev-ruby/factory_girl
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-17)
+# Deprecated upstream, no longer needed with rspec 2+
+# Last release in 2016, factory_girl was last dependency.
+# Masked for removal in 30 days.
+dev-ruby/bourne
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-16)
 # library with no consumer, multiple vulnerabilities
 # removal in 30 days (bug #713098)
