@@ -14,7 +14,7 @@ LICENSE="Apache-2.0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="
-	sys-libs/ncurses:0=[unicode]"
+	sys-libs/ncurses:=[unicode(+)]"
 
 DEPEND="
 	${RDEPEND}"
