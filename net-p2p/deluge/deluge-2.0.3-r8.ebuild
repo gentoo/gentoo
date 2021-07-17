@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 systemd
 
@@ -29,33 +29,33 @@ REQUIRED_USE="
 
 DEPEND="
 	$(python_gen_cond_dep '
-		net-libs/libtorrent-rasterbar[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/wheel[${PYTHON_MULTI_USEDEP}]
+		net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 	')
 	dev-util/intltool
 	acct-group/deluge
 	acct-user/deluge"
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/distro[${PYTHON_MULTI_USEDEP}]
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
-		dev-python/rencode[${PYTHON_MULTI_USEDEP}]
-		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
-		dev-python/six[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/twisted-17.1.0[crypt,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/zope-interface-4.4.2[${PYTHON_MULTI_USEDEP}]
-		geoip? ( dev-python/geoip-python[${PYTHON_MULTI_USEDEP}] )
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/distro[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/pyxdg[${PYTHON_USEDEP}]
+		dev-python/rencode[${PYTHON_USEDEP}]
+		dev-python/setproctitle[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+		>=dev-python/twisted-17.1.0[crypt,${PYTHON_USEDEP}]
+		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
+		geoip? ( dev-python/geoip-python[${PYTHON_USEDEP}] )
 		gtk? (
-			sound? ( dev-python/pygame[${PYTHON_MULTI_USEDEP}] )
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
 			gnome-base/librsvg
 			libnotify? ( x11-libs/libnotify )
 		)
-		net-libs/libtorrent-rasterbar[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/mako[${PYTHON_MULTI_USEDEP}]
+		net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
+		dev-python/mako[${PYTHON_USEDEP}]
 	')"
 
 PATCHES=(
