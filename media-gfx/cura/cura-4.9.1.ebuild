@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{7..9})
+PYTHON_COMPAT=(python3_{8..9})
 inherit cmake desktop python-single-r1 xdg
 
 MY_PN=Cura
@@ -29,17 +29,17 @@ RDEPEND="${PYTHON_DEPS}
 	~media-gfx/fdm-materials-${PV}
 	dev-qt/qtquickcontrols[widgets]
 	$(python_gen_cond_dep '
-			dev-python/importlib_metadata[${PYTHON_MULTI_USEDEP}]
-			dev-python/keyring[${PYTHON_MULTI_USEDEP}]
-			dev-python/mypy[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[-debug,${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5-sip[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
-			dev-python/sentry-sdk[${PYTHON_MULTI_USEDEP}]
-			sci-libs/shapely[${PYTHON_MULTI_USEDEP}]
-			usb? ( dev-python/pyserial[${PYTHON_MULTI_USEDEP}] )
-			zeroconf? ( dev-python/zeroconf[${PYTHON_MULTI_USEDEP}] )
+			dev-python/importlib_metadata[${PYTHON_USEDEP}]
+			dev-python/keyring[${PYTHON_USEDEP}]
+			dev-python/mypy[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+			dev-python/PyQt5[-debug,${PYTHON_USEDEP}]
+			dev-python/PyQt5-sip[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
+			dev-python/sentry-sdk[${PYTHON_USEDEP}]
+			sci-libs/shapely[${PYTHON_USEDEP}]
+			usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
+			zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
 
