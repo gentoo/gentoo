@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DAPATRICK
 DIST_VERSION=1.05
@@ -13,8 +13,6 @@ DESCRIPTION="XMPP Perl Library"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Authen-SASL-2.120.0
@@ -22,7 +20,7 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	>=dev-perl/XML-Stream-1.240.0
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.360.300
 	test? (
 		>=dev-perl/LWP-Online-1.70.0
@@ -30,6 +28,7 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.920.0
 	)
 "
+
 PATCHES=(
 	"${FILESDIR}/${DIST_VERSION}-no-network-tests.patch"
 	"${FILESDIR}/${DIST_VERSION}-no-dot-inc.patch"
