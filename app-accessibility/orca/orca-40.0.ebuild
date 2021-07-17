@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit gnome2 python-single-r1
@@ -25,22 +25,22 @@ DEPEND="${PYTHON_DEPS}
 	media-libs/gstreamer:1.0[introspection]
 	>=x11-libs/gtk+-3.6.2:3[introspection]
 	$(python_gen_cond_dep '
-		dev-python/gst-python:1.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygobject-3.18:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/gst-python:1.0[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.18:3[${PYTHON_USEDEP}]
 	')
 	braille? (
 		$(python_gen_cond_dep '
-			>=app-accessibility/brltty-5.0-r3[python,${PYTHON_MULTI_USEDEP}]
-			dev-libs/liblouis[python,${PYTHON_MULTI_USEDEP}]
+			>=app-accessibility/brltty-5.0-r3[python,${PYTHON_USEDEP}]
+			dev-libs/liblouis[python,${PYTHON_USEDEP}]
 		')
 	)
 "
 RDEPEND="${DEPEND}
 	dev-libs/atk[introspection]
 	$(python_gen_cond_dep '
-		>=app-accessibility/speech-dispatcher-0.8[python,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyatspi-2.36[${PYTHON_MULTI_USEDEP}]
-		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
+		>=app-accessibility/speech-dispatcher-0.8[python,${PYTHON_USEDEP}]
+		>=dev-python/pyatspi-2.36[${PYTHON_USEDEP}]
+		dev-python/setproctitle[${PYTHON_USEDEP}]
 	')
 	x11-libs/libwnck:3[introspection]
 	x11-libs/pango[introspection]
