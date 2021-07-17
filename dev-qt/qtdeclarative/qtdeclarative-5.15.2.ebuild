@@ -31,6 +31,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
 	"${FILESDIR}/${P}-gcc11.patch" # bug 752093
+	"${FILESDIR}/${P}-riscv-atomic.patch" #bug 790689
 )
 
 src_prepare() {
