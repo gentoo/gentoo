@@ -13,6 +13,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x6
 
 BDEPEND="virtual/pkgconfig"
 
-DEPEND="sys-libs/ncurses:0=[unicode]"
+DEPEND="sys-libs/ncurses:=[unicode(+)]"
 
 RDEPEND="${DEPEND}"
