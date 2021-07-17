@@ -13,7 +13,7 @@ if [[ ${CTARGET} = ${CHOST} ]] ; then
 	fi
 fi
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{7..9} )
 inherit python-any-r1
 inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib multiprocessing pax-utils toolchain-funcs prefix
@@ -32,7 +32,6 @@ BIN_PV=${PV}
 arch_binaries="$arch_binaries amd64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
 #arch_binaries="$arch_binaries ia64?  ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries ppc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc.tbz2 )"
-#arch_binaries="$arch_binaries ppc64? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-ppc64.tbz2 )"
 #arch_binaries="$arch_binaries ppc64? ( !big-endian? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-powerpc64le-unknown-linux-gnu.tbz2 ) )"
 #arch_binaries="$arch_binaries sparc? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-sparc.tbz2 )"
 arch_binaries="$arch_binaries x86? ( https://slyfox.uni.cx/~slyfox/distfiles/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
@@ -50,7 +49,7 @@ yet_binary() {
 		#ia64) return 0 ;;
 		#ppc) return 0 ;;
 		#ppc64)
-		#	use big-endian && return 0
+		#	use big-endian && return 1
 		#	return 0
 		#	;;
 		#sparc) return 0 ;;
@@ -60,12 +59,12 @@ yet_binary() {
 }
 
 GHC_PV=${PV}
-#GHC_PV=8.10.0.20200123 # uncomment only for -alpha, -beta, -rc ebuilds
+#GHC_PV=8.6.0.20180810 # uncomment only for -alpha, -beta, -rc ebuilds
 GHC_P=${PN}-${GHC_PV} # using ${P} is almost never correct
 
 SRC_URI="!binary? (
-	https://downloads.haskell.org/ghc/${PV/_/-}/${GHC_P}-src.tar.xz
-	test? ( https://downloads.haskell.org/ghc/${PV/_/-}/${GHC_P}-testsuite.tar.xz )
+	https://downloads.haskell.org/~ghc/${PV/_/-}/${GHC_P}-src.tar.xz
+	test? ( https://downloads.haskell.org/~ghc/${PV/_/-}/${GHC_P}-testsuite.tar.xz )
 )"
 S="${WORKDIR}"/${GHC_P}
 
@@ -77,7 +76,7 @@ BUMP_LIBRARIES=(
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
 IUSE+=" binary"
 RESTRICT="!test? ( test )"
@@ -85,7 +84,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-lang/perl-5.6.1
 	dev-libs/gmp:0=
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	elfutils? ( dev-libs/elfutils )
 	!ghcmakebinary? ( dev-libs/libffi:= )
 	numa? ( sys-process/numactl )
@@ -278,6 +277,16 @@ ghc_setup_cflags() {
 	# Skip any gentoo-specific tweaks for cross-case to avoid passing unsupported
 	# options to gcc.
 	if is_native; then
+		# hardened-gcc needs to be disabled, because our prebuilt binaries/libraries
+		# are not built with fPIC, bug #606666
+		gcc-specs-pie && append-ghc-cflags persistent compile link -nopie
+		tc-is-gcc && ver_test $(gcc-version) -ge 6.3 && if ! use ghcbootstrap; then
+			# gcc-6.3 has support for -no-pie upstream, but spelling differs from
+			# gentoo-specific '-nopie'. We enable it in non-bootstrap to allow
+			# hardened users try '-pie' in USE=ghcbootstrap mode.
+			append-ghc-cflags compile link -no-pie
+		fi
+
 		# prevent from failing to build unregisterised ghc:
 		# https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
 		use ppc64 && append-ghc-cflags persistent compile -mminimal-toc
@@ -498,10 +507,13 @@ src_prepare() {
 
 		eapply "${FILESDIR}"/${PN}-7.0.4-CHOST-prefix.patch
 		eapply "${FILESDIR}"/${PN}-8.2.1-darwin.patch
-		#needs a port?
+		eapply "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
+		eapply "${FILESDIR}"/${PN}-8.0.2-no-relax-everywhere.patch
+		eapply "${FILESDIR}"/${PN}-8.4.2-allow-cross-bootstrap.patch
+		# fixed in 8.8.4. See https://gitlab.haskell.org/ghc/ghc/-/blob/ghc-8.8.4-release/configure.ac#L1273
+		# eapply "${FILESDIR}"/${PN}-8.6.5-numa.patch
+		# rumors say this is fixed properly in 8.8.3. Let's check!
 		#eapply "${FILESDIR}"/${PN}-8.8.1-revert-CPP.patch
-		eapply "${FILESDIR}"/${PN}-8.10.1-allow-cross-bootstrap.patch
-		eapply "${FILESDIR}"/${PN}-8.10.3-C99-typo-ac270.patch
 
 		# a bunch of crosscompiler patches
 		# needs newer version:
@@ -652,7 +664,7 @@ src_configure() {
 
 		econf ${econf_args[@]} \
 			--enable-bootstrap-with-devel-snapshot \
-			$(use_enable elfutils dwarf-unwind) \
+			$(use elfutils && echo --enable-dwarf-unwind) \
 			$(use_enable numa)
 
 		if [[ ${PV} == *9999* ]]; then
@@ -713,7 +725,7 @@ src_install() {
 		# Skip for cross-targets as they all share target location:
 		# /usr/share/doc/ghc-9999/
 		if ! is_crosscompile; then
-			dodoc "distrib/README" "LICENSE" "VERSION"
+			dodoc "distrib/README" "ANNOUNCE" "LICENSE" "VERSION"
 		fi
 
 		# rename ghc-shipped files to avoid collision
