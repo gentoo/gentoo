@@ -143,12 +143,6 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	# --enable-altivec was dropped before gcc-4. We don't set it.
-	# We drop USE=altivec for newer gccs only to avoid rebuilds
-	# for most stable users. Once gcc-10 is stable we can drop it.
-	if ! tc_version_is_at_least 10; then
-		IUSE+=" altivec"
-	fi
 	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
