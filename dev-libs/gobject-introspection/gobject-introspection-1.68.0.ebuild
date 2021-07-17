@@ -24,8 +24,8 @@ RDEPEND="
 	dev-libs/libffi:=
 	doctool? (
 		$(python_gen_cond_dep '
-			dev-python/mako[${PYTHON_MULTI_USEDEP}]
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/mako[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 	)
 	virtual/pkgconfig
@@ -42,8 +42,8 @@ DEPEND="${RDEPEND}
 	test? (
 		x11-libs/cairo[glib]
 		$(python_gen_cond_dep '
-			dev-python/mako[${PYTHON_MULTI_USEDEP}]
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/mako[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 	)
 "
