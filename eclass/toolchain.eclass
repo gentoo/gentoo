@@ -146,15 +146,13 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	IUSE+=" debug +cxx +nptl" TC_FEATURES+=(nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
-	# fortran support appeared in 4.1, but 4.1 needs outdated mpfr
-	tc_version_is_at_least 4.2 && IUSE+=" +fortran" TC_FEATURES+=(fortran)
-	tc_version_is_at_least 3 && IUSE+=" doc hardened multilib objc"
+	IUSE+=" +fortran" TC_FEATURES+=(fortran)
+	IUSE+=" doc hardened multilib objc"
 	tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=(gcj)
-	tc_version_is_at_least 3.3 && IUSE+=" pgo"
-	tc_version_is_at_least 4.0 &&
-		IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
-	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
-	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
+	IUSE+=" pgo"
+	IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
+	IUSE+=" libssp objc++"
+	IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
 	# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
@@ -203,17 +201,15 @@ fi
 #---->> DEPEND <<----
 
 RDEPEND="sys-libs/zlib
-	nls? ( virtual/libintl )"
+	virtual/libiconv
+	nls? ( virtual/libintl )
+"
 
-tc_version_is_at_least 3 && RDEPEND+=" virtual/libiconv"
-
-if tc_version_is_at_least 4 ; then
-	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
-	if tc_version_is_at_least 4.3 ; then
-		RDEPEND+=" ${GMP_MPFR_DEPS}"
-	elif tc_has_feature fortran ; then
-		RDEPEND+=" fortran? ( ${GMP_MPFR_DEPS} )"
-	fi
+GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
+if tc_version_is_at_least 4.3 ; then
+	RDEPEND+=" ${GMP_MPFR_DEPS}"
+elif tc_has_feature fortran ; then
+	RDEPEND+=" fortran? ( ${GMP_MPFR_DEPS} )"
 fi
 
 tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0="
@@ -239,18 +235,22 @@ BDEPEND="
 DEPEND="${RDEPEND}"
 
 if tc_has_feature gcj ; then
-	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
-	GCJ_GTK_DEPS="
-		x11-base/xorg-proto
-		x11-libs/libXt
-		x11-libs/libX11
-		x11-libs/libXtst
-		=x11-libs/gtk+-2*
-		virtual/pkgconfig
+	DEPEND+="
+		gcj? (
+			awt? (
+				x11-base/xorg-proto
+				x11-libs/libXt
+				x11-libs/libX11
+				x11-libs/libXtst
+				=x11-libs/gtk+-2*
+				x11-libs/pango
+				virtual/pkgconfig
+			)
+			>=media-libs/libart_lgpl-2.1
+			app-arch/zip
+			app-arch/unzip
+		)
 	"
-	tc_version_is_at_least 3.4 && GCJ_GTK_DEPS+=" x11-libs/pango"
-	tc_version_is_at_least 4.2 && GCJ_DEPS+=" app-arch/zip app-arch/unzip"
-	DEPEND+=" gcj? ( awt? ( ${GCJ_GTK_DEPS} ) ${GCJ_DEPS} )"
 fi
 
 if tc_has_feature systemtap ; then
@@ -527,9 +527,7 @@ toolchain_src_prepare() {
 	sed -i 's|A-Za-z0-9|[:alnum:]|g' "${S}"/gcc/*.awk #215828
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
-	if tc_version_is_at_least 4.1; then
-		tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
-	fi
+	tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
 
 	# >=gcc-4
 	if [[ -x contrib/gcc_update ]] ; then
@@ -782,9 +780,7 @@ toolchain_src_configure() {
 	is_jit && GCC_LANG+=",jit"
 	if is_objc || is_objcxx ; then
 		GCC_LANG+=",objc"
-		if tc_version_is_at_least 4 ; then
-			use objc-gc && confgcc+=( --enable-objc-gc )
-		fi
+		use objc-gc && confgcc+=( --enable-objc-gc )
 		is_objcxx && GCC_LANG+=",obj-c++"
 	fi
 
@@ -814,11 +810,11 @@ toolchain_src_configure() {
 		confgcc+=( --disable-nls )
 	fi
 
-	tc_version_is_at_least 3.4 || confgcc+=( --disable-libunwind-exceptions )
+	confgcc+=( --disable-libunwind-exceptions )
 
 	# Use the default ("release") checking because upstream usually neglects
 	# to test "disabled" so it has a history of breaking. bug #317217
-	if tc_version_is_at_least 3.4 && in_iuse debug ; then
+	if in_iuse debug ; then
 		# The "release" keyword is new to 4.0. bug #551636
 		local off=$(tc_version_is_at_least 4.0 && echo release || echo no)
 		confgcc+=( --enable-checking="${GCC_CHECKS_LIST:-$(usex debug yes ${off})}" )
@@ -943,7 +939,7 @@ toolchain_src_configure() {
 			fi
 		fi
 
-		tc_version_is_at_least 4.2 && confgcc+=( --disable-bootstrap )
+		confgcc+=( --disable-bootstrap )
 	else
 		if tc-is-static-only ; then
 			confgcc+=( --disable-shared )
@@ -967,10 +963,6 @@ toolchain_src_configure() {
 				--disable-__cxa_atexit
 				$(use_enable nptl tls)
 			)
-		fi
-		tc_version_is_between 3.3 3.4 && confgcc+=( --enable-sjlj-exceptions )
-		if tc_version_is_between 3.4 4.3 ; then
-			confgcc+=( --enable-clocale=uclibc )
 		fi
 		;;
 	*-elf|*-eabi)
@@ -1093,7 +1085,7 @@ toolchain_src_configure() {
 	# be small, and should simplify building of 64bit kernels in a 32bit
 	# userland by not needing sys-devel/kgcc64.  #349405
 	case $(tc-arch) in
-	ppc|ppc64) tc_version_is_at_least 3.4 && confgcc+=( --enable-targets=all ) ;;
+	ppc|ppc64) confgcc+=( --enable-targets=all ) ;;
 	sparc)     tc_version_is_at_least 4.4 && confgcc+=( --enable-targets=all ) ;;
 	amd64|x86) tc_version_is_at_least 4.3 && confgcc+=( --enable-targets=all ) ;;
 	esac
@@ -1116,44 +1108,40 @@ toolchain_src_configure() {
 		fi
 	fi
 
-	if tc_version_is_at_least 4.2 ; then
-		if in_iuse openmp ; then
-			# Make sure target has pthreads support. #326757 #335883
-			# There shouldn't be a chicken & egg problem here as openmp won't
-			# build without a C library, and you can't build that w/out
-			# already having a compiler ...
-			if ! is_crosscompile || \
-			   $(tc-getCPP ${CTARGET}) -E - <<<"#include <pthread.h>" >& /dev/null
-			then
-				confgcc+=( $(use_enable openmp libgomp) )
-			else
-				# Force disable as the configure script can be dumb #359855
-				confgcc+=( --disable-libgomp )
-			fi
+	if in_iuse openmp ; then
+		# Make sure target has pthreads support. #326757 #335883
+		# There shouldn't be a chicken & egg problem here as openmp won't
+		# build without a C library, and you can't build that w/out
+		# already having a compiler ...
+		if ! is_crosscompile || \
+		   $(tc-getCPP ${CTARGET}) -E - <<<"#include <pthread.h>" >& /dev/null
+		then
+			confgcc+=( $(use_enable openmp libgomp) )
 		else
-			# For gcc variants where we don't want openmp (e.g. kgcc)
+			# Force disable as the configure script can be dumb #359855
 			confgcc+=( --disable-libgomp )
 		fi
+	else
+		# For gcc variants where we don't want openmp (e.g. kgcc)
+		confgcc+=( --disable-libgomp )
 	fi
 
-	if tc_version_is_at_least 4.0 ; then
-		if _tc_use_if_iuse libssp ; then
-			confgcc+=( --enable-libssp )
+	if _tc_use_if_iuse libssp ; then
+		confgcc+=( --enable-libssp )
+	else
+		if hardened_gcc_is_stable ssp; then
+			export gcc_cv_libc_provides_ssp=yes
+		fi
+		if _tc_use_if_iuse ssp; then
+			# On some targets USE="ssp -libssp" is an invalid
+			# configuration as target libc does not provide
+			# stack_chk_* functions. Do not disable libssp there.
+			case ${CTARGET} in
+				mingw*|*-mingw*) ewarn "Not disabling libssp" ;;
+				*) confgcc+=( --disable-libssp ) ;;
+			esac
 		else
-			if hardened_gcc_is_stable ssp; then
-				export gcc_cv_libc_provides_ssp=yes
-			fi
-			if _tc_use_if_iuse ssp; then
-				# On some targets USE="ssp -libssp" is an invalid
-				# configuration as target libc does not provide
-				# stack_chk_* functions. Do not disable libssp there.
-				case ${CTARGET} in
-					mingw*|*-mingw*) ewarn "Not disabling libssp" ;;
-					*) confgcc+=( --disable-libssp ) ;;
-				esac
-			else
-				confgcc+=( --disable-libssp )
-			fi
+			confgcc+=( --disable-libssp )
 		fi
 	fi
 
@@ -1282,20 +1270,9 @@ downgrade_arch_flags() {
 	myarch=$(get-flag march)
 	mytune=$(get-flag mtune)
 
-	# If -march=native isn't supported we have to tease out the actual arch
-	if [[ ${myarch} == native || ${mytune} == native ]] ; then
-		if ! tc_version_is_at_least 4.2 ${bver}; then
-			arch=$($(tc-getCC) -march=native -v -E -P - </dev/null 2>&1 \
-				| sed -rn "/cc1.*-march/s:.*-march=([^ ']*).*:\1:p")
-			replace-cpu-flags native ${arch}
-		fi
-	fi
-
 	# Handle special -mtune flags
 	[[ ${mytune} == intel ]] && ! tc_version_is_at_least 4.9 ${bver} && replace-cpu-flags intel generic
-	[[ ${mytune} == generic ]] && ! tc_version_is_at_least 4.2 ${bver} && filter-flags '-mtune=*'
 	[[ ${mytune} == x86-64 ]] && filter-flags '-mtune=*'
-	tc_version_is_at_least 3.4 ${bver} || filter-flags '-mtune=*'
 
 	# "added" "arch" "replacement"
 	local archlist=(
@@ -1327,14 +1304,6 @@ downgrade_arch_flags() {
 		4.3 geode k6-2 # gcc.gnu.org/PR41989#c22
 		4.3 k8-sse3 k8
 		4.3 opteron-sse3 k8
-		3.4 athlon-fx x86-64
-		3.4 athlon64 x86-64
-		3.4 c3-2 c3
-		3.4 k8 x86-64
-		3.4 opteron x86-64
-		3.4 pentium-m pentium3
-		3.4 pentium3m pentium3
-		3.4 pentium4m pentium4
 	)
 
 	for ((i = 0; i < ${#archlist[@]}; i += 3)) ; do
@@ -1420,25 +1389,6 @@ gcc_do_filter_flags() {
 	filter-flags -frecord-gcc-switches # 490738
 	filter-flags -mno-rtm -mno-htm # 506202
 
-	if tc_version_is_between 3.2 3.4 ; then
-		# XXX: this is so outdated it's barely useful, but it don't hurt...
-		replace-cpu-flags G3 750
-		replace-cpu-flags G4 7400
-		replace-cpu-flags G5 7400
-
-		# XXX: should add a sed or something to query all supported flags
-		#      from the gcc source and trim everything else ...
-		filter-flags -f{no-,}unit-at-a-time -f{no-,}web -mno-tls-direct-seg-refs
-		filter-flags -f{no-,}stack-protector{,-all}
-		filter-flags -fvisibility-inlines-hidden -fvisibility=hidden
-		# and warning options
-		filter-flags -Wextra -Wstack-protector
-	fi
-	if ! tc_version_is_at_least 4.1 ; then
-		filter-flags -fdiagnostics-show-option
-		filter-flags -Wstack-protector
-	fi
-
 	if tc_version_is_between 6 8 ; then
 		# -mstackrealign triggers crashes in exception throwing
 		# at least on ada: bug #688580
@@ -1446,35 +1396,33 @@ gcc_do_filter_flags() {
 		filter-flags -mstackrealign
 	fi
 
-	if tc_version_is_at_least 3.4 ; then
-		case $(tc-arch) in
-			amd64|x86)
-				filter-flags '-mcpu=*'
+	case $(tc-arch) in
+		amd64|x86)
+			filter-flags '-mcpu=*'
 
-				tc_version_is_between 4.4 4.5 && append-flags -mno-avx # 357287
+			tc_version_is_between 4.4 4.5 && append-flags -mno-avx # 357287
 
-				if tc_version_is_between 4.6 4.7 ; then
-					# https://bugs.gentoo.org/411333
-					# https://bugs.gentoo.org/466454
-					replace-cpu-flags c3-2 pentium2 pentium3 pentium3m pentium-m i686
-				fi
-				;;
-			alpha)
-				# https://bugs.gentoo.org/454426
-				append-ldflags -Wl,--no-relax
-				;;
-			sparc)
-				# temporary workaround for random ICEs reproduced by multiple users
-				# https://bugs.gentoo.org/457062
-				tc_version_is_between 4.6 4.8 && MAKEOPTS+=" -j1"
-				;;
-			*-macos)
-				# http://gcc.gnu.org/PR25127
-				tc_version_is_between 4.0 4.2 && \
-					filter-flags '-mcpu=*' '-march=*' '-mtune=*'
-				;;
-		esac
-	fi
+			if tc_version_is_between 4.6 4.7 ; then
+				# https://bugs.gentoo.org/411333
+				# https://bugs.gentoo.org/466454
+				replace-cpu-flags c3-2 pentium2 pentium3 pentium3m pentium-m i686
+			fi
+			;;
+		alpha)
+			# https://bugs.gentoo.org/454426
+			append-ldflags -Wl,--no-relax
+			;;
+		sparc)
+			# temporary workaround for random ICEs reproduced by multiple users
+			# https://bugs.gentoo.org/457062
+			tc_version_is_between 4.6 4.8 && MAKEOPTS+=" -j1"
+			;;
+		*-macos)
+			# http://gcc.gnu.org/PR25127
+			tc_version_is_between 4.0 4.2 && \
+				filter-flags '-mcpu=*' '-march=*' '-mtune=*'
+			;;
+	esac
 
 	strip-unsupported-flags
 
@@ -1589,7 +1537,7 @@ gcc_do_make() {
 		# resulting binaries natively ^^;
 		GCC_MAKE_TARGET=${GCC_MAKE_TARGET-all}
 	else
-		if tc_version_is_at_least 3.3 && _tc_use_if_iuse pgo; then
+		if _tc_use_if_iuse pgo; then
 			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-profiledbootstrap}
 		else
 			GCC_MAKE_TARGET=${GCC_MAKE_TARGET-bootstrap-lean}
@@ -1648,7 +1596,7 @@ gcc_do_make() {
 			if tc_version_is_at_least 4.3 ; then
 				cd "${CTARGET}"/libstdc++-v3/doc
 				emake doc-man-doxygen || ewarn "failed to make docs"
-			elif tc_version_is_at_least 3.0 ; then
+			else
 				cd "${CTARGET}"/libstdc++-v3
 				emake doxygen-man || ewarn "failed to make docs"
 			fi
@@ -1795,11 +1743,9 @@ toolchain_src_install() {
 		rm -rf "${ED}"/usr/share/{man,info}
 		rm -rf "${D}"${DATAPATH}/{man,info}
 	else
-		if tc_version_is_at_least 3.0 ; then
-			local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man)
-			if [[ -d ${cxx_mandir} ]] ; then
-				cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/
-			fi
+		local cxx_mandir=$(find "${WORKDIR}/build/${CTARGET}/libstdc++-v3" -name man)
+		if [[ -d ${cxx_mandir} ]] ; then
+			cp -r "${cxx_mandir}"/man? "${D}${DATAPATH}"/man/
 		fi
 	fi
 
@@ -1891,9 +1837,6 @@ toolchain_src_install() {
 # when installing gcc, it dumps internal libraries into /usr/lib
 # instead of the private gcc lib path
 gcc_movelibs() {
-	# older versions of gcc did not support --print-multi-os-directory
-	tc_version_is_at_least 3.2 || return 0
-
 	# For non-target libs which are for CHOST and not CTARGET, we want to
 	# move them to the compiler-specific CHOST internal dir.  This is stuff
 	# that you want to link against when building tools rather than building
@@ -2008,21 +1951,16 @@ create_gcc_env_entry() {
 	# workaround for libtool being stupid and using .la's from
 	# conflicting ABIs by using the first one in the search path
 	local ldpaths mosdirs
-	if tc_version_is_at_least 3.2 ; then
-		local mdir mosdir abi ldpath
-		for abi in $(get_all_abis TARGET) ; do
-			mdir=$($(XGCC) $(get_abi_CFLAGS ${abi}) --print-multi-directory)
-			ldpath=${LIBPATH}
-			[[ ${mdir} != "." ]] && ldpath+="/${mdir}"
-			ldpaths="${ldpath}${ldpaths:+:${ldpaths}}"
+	local mdir mosdir abi ldpath
+	for abi in $(get_all_abis TARGET) ; do
+		mdir=$($(XGCC) $(get_abi_CFLAGS ${abi}) --print-multi-directory)
+		ldpath=${LIBPATH}
+		[[ ${mdir} != "." ]] && ldpath+="/${mdir}"
+		ldpaths="${ldpath}${ldpaths:+:${ldpaths}}"
 
-			mosdir=$($(XGCC) $(get_abi_CFLAGS ${abi}) -print-multi-os-directory)
-			mosdirs="${mosdir}${mosdirs:+:${mosdirs}}"
-		done
-	else
-		# Older gcc's didn't do multilib, so logic is simple.
-		ldpaths=${LIBPATH}
-	fi
+		mosdir=$($(XGCC) $(get_abi_CFLAGS ${abi}) -print-multi-os-directory)
+		mosdirs="${mosdir}${mosdirs:+:${mosdirs}}"
+	done
 
 	cat <<-EOF > ${gcc_envd_file}
 	GCC_PATH="${BINPATH}"
@@ -2294,7 +2232,6 @@ is_jit() {
 }
 
 is_multilib() {
-	tc_version_is_at_least 3 || return 1
 	_tc_use_if_iuse multilib
 }
 
