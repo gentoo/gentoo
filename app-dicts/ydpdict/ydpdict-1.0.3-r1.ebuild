@@ -15,7 +15,7 @@ IUSE="ao"
 
 RDEPEND="
 	app-dicts/libydpdict
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	ao? ( media-libs/libao )
 "
 DEPEND="
