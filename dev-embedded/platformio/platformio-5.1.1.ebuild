@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -20,23 +20,23 @@ IUSE=""
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		<dev-python/bottle-0.13[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/click-5[${PYTHON_MULTI_USEDEP}]
-		<dev-python/click-8[${PYTHON_MULTI_USEDEP}]
-		dev-python/colorama[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyserial-3[${PYTHON_MULTI_USEDEP}]
-		<dev-python/pyserial-4[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/requests-2.4[${PYTHON_MULTI_USEDEP}]
-		<dev-python/requests-3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/semantic_version-2.8.1[${PYTHON_MULTI_USEDEP}]
-		<dev-python/semantic_version-3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/tabulate-0.8.3[${PYTHON_MULTI_USEDEP}]
-		<dev-python/tabulate-1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyelftools-0.25[${PYTHON_MULTI_USEDEP}]
-		<dev-python/pyelftools-1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/marshmallow-2.20.5[${PYTHON_MULTI_USEDEP}]
+		<dev-python/bottle-0.13[${PYTHON_USEDEP}]
+		>=dev-python/click-5[${PYTHON_USEDEP}]
+		<dev-python/click-8[${PYTHON_USEDEP}]
+		dev-python/colorama[${PYTHON_USEDEP}]
+		>=dev-python/pyserial-3[${PYTHON_USEDEP}]
+		<dev-python/pyserial-4[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.4[${PYTHON_USEDEP}]
+		<dev-python/requests-3[${PYTHON_USEDEP}]
+		>=dev-python/semantic_version-2.8.1[${PYTHON_USEDEP}]
+		<dev-python/semantic_version-3[${PYTHON_USEDEP}]
+		>=dev-python/tabulate-0.8.3[${PYTHON_USEDEP}]
+		<dev-python/tabulate-1[${PYTHON_USEDEP}]
+		>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
+		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
+		>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
 	')"
