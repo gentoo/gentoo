@@ -6,7 +6,7 @@ EAPI=7
 ECM_TEST="forceoptional"
 KDE_ORG_CATEGORY="kdevelop"
 KDE_ORG_NAME="kdev-python"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 KFMIN=5.77.0
 QTMIN=5.15.2
 inherit ecm kde.org python-single-r1
@@ -44,7 +44,7 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pycodestyle[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycodestyle[${PYTHON_USEDEP}]
 	')
 "
 
