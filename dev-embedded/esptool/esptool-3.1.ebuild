@@ -20,20 +20,20 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/bitstring[${PYTHON_MULTI_USEDEP}]
-		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/ecdsa-0.16.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
-		dev-python/reedsolomon[${PYTHON_MULTI_USEDEP}]
+		dev-python/bitstring[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		>=dev-python/ecdsa-0.16.0[${PYTHON_USEDEP}]
+		dev-python/pyserial[${PYTHON_USEDEP}]
+		dev-python/reedsolomon[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/wheel[${PYTHON_MULTI_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 	')
 	test? ( $(python_gen_cond_dep '
-		dev-python/coverage[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]
+		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/pyelftools[${PYTHON_USEDEP}]
 	') )
 "
 
