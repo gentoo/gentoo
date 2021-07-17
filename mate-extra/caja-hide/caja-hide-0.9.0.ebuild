@@ -1,9 +1,9 @@
-# Copyright 2019-2020 Gentoo Authors
+# Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_8 )
 inherit python-single-r1
 
 MY_PN="Caja-hide"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	$(python_gen_cond_dep 'dev-python/future[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/future[${PYTHON_USEDEP}]')
 	dev-python/python-caja[${PYTHON_SINGLE_USEDEP}]
 	x11-misc/xautomation
 "
