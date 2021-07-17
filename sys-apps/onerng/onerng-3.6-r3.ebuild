@@ -27,7 +27,7 @@ RDEPEND="
 	${DEPEND}
 	${PYTHON_DEPS}
 	app-crypt/gnupg
-	$(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]')
 	sys-apps/rng-tools
 	sys-process/at
 "
