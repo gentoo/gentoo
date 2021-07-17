@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=CHM
 DIST_VERSION=2.017
@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 
 IUSE="+badval doc fortran gd gsl hdf netpbm pdl2 pgplot threads test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:0=
 	app-arch/sharutils
@@ -30,7 +29,7 @@ RDEPEND="sys-libs/ncurses:0=
 	dev-perl/TermReadKey
 	|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
 	>=virtual/perl-Data-Dumper-2.121.0
-	virtual/perl-Pod-Parser
+	dev-perl/Pod-Parser
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp
 	virtual/perl-Filter-Simple
@@ -53,6 +52,9 @@ RDEPEND="sys-libs/ncurses:0=
 "
 
 DEPEND="${RDEPEND}
+"
+
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.560.0
 	dev-perl/Devel-CheckLib
 	fortran? ( >=dev-perl/ExtUtils-F77-1.13 )
