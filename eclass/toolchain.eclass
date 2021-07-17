@@ -97,6 +97,11 @@ elif [[ ${GCC_PV} == *_rc* ]] ; then
 	SNAPSHOT=${GCC_PV%_rc*}-RC-${GCC_PV##*_rc}
 fi
 
+# Require minimum gcc version to simplify assumptions.
+# Normally we would require gcc-6+ (based on sys-devel/gcc)
+# but we still have sys-devel/gcc-apple-4.2.1_p5666.
+tc_version_is_at_least 4.2.1 || die "${ECLASS}: ${GCC_RELEASE_VER} is too old."
+
 PREFIX=${TOOLCHAIN_PREFIX:-${EPREFIX}/usr}
 
 LIBPATH=${TOOLCHAIN_LIBPATH:-${PREFIX}/lib/gcc/${CTARGET}/${GCC_CONFIG_VER}}
