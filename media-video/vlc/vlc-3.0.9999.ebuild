@@ -158,7 +158,7 @@ RDEPEND="
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
-	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
 	opus? ( >=media-libs/opus-1.0.3 )
