@@ -83,7 +83,7 @@ RDEPEND="${COMMON_DEPEND}
 		virtual/perl-Digest-SHA
 		virtual/perl-File-Path
 		virtual/perl-Getopt-Long
-		virtual/perl-Pod-Parser
+		dev-perl/Pod-Parser
 	)
 	nmbug? ( dev-vcs/git )
 "

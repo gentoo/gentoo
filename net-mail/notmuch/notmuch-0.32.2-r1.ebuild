@@ -84,7 +84,7 @@ RDEPEND="${COMMON_DEPEND}
 		virtual/perl-Digest-SHA
 		virtual/perl-File-Path
 		virtual/perl-Getopt-Long
-		virtual/perl-Pod-Parser
+		dev-perl/Pod-Parser
 	)
 	nmbug? ( dev-vcs/git )
 "
@@ -92,7 +92,7 @@ RDEPEND="${COMMON_DEPEND}
 SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
-	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}/${PN}-0.32.1-tests.patch"
 )
 
 pkg_setup() {
