@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit cuda desktop flag-o-matic prefix python-single-r1 toolchain-funcs xdg
 
@@ -27,7 +27,7 @@ RESTRICT="fetch"
 
 CDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	>=dev-lang/tk-8.6.1:0=
 	dev-lang/perl
