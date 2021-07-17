@@ -1,10 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 MATE_LA_PUNT="yes"
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_8 )
 
 inherit mate python-single-r1
 
@@ -20,7 +20,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.50:2
-	$( python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]' )
+	$( python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' )
 	>=mate-base/caja-1.17.1[introspection]
 	>=x11-libs/gtk+-3.22:3
 "
