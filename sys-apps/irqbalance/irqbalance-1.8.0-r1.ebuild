@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/glib:2
 	caps? ( sys-libs/libcap-ng )
 	numa? ( sys-process/numactl )
-	tui? ( sys-libs/ncurses:0=[unicode] )
+	tui? ( sys-libs/ncurses:=[unicode(+)] )
 "
 BDEPEND="
 	virtual/pkgconfig
