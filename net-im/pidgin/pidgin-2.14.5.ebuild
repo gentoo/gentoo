@@ -4,7 +4,7 @@
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit autotools gnome2-utils flag-o-matic toolchain-funcs multilib perl-module python-single-r1 xdg
 
@@ -55,7 +55,7 @@ RDEPEND="
 		>=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-0.90
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
 	perl? ( >=dev-lang/perl-5.16:= )
