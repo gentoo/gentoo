@@ -68,20 +68,23 @@ COMMON_DEPEND="
 	>=net-libs/gnutls-3.4.7[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-libs/e2fsprogs-libs[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.2.1[ldap(+)?,${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.3.0[ldap(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.3.0[ldap(+)?,${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.4.0[ldap(+)?,${MULTILIB_USEDEP}]
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	sys-libs/liburing:=[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.3.1[${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.3.2[${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.4.3[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.10.2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	$(python_gen_cond_dep "
-		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
+		addc? (
+			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
+			dev-python/markdown[\${PYTHON_MULTI_USEDEP}]
+		)
 		addns? (
 			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
 			net-dns/bind-tools[gssapi]
@@ -120,6 +123,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	spotlight? ( dev-libs/glib )
 	test? (
+		$(python_gen_cond_dep "dev-python/subunit[\${PYTHON_USEDEP},${MULTILIB_USEDEP}]" )
 		!system-mitkrb5? (
 			>=net-dns/resolv_wrapper-1.1.4
 			>=net-libs/socket_wrapper-1.1.9
