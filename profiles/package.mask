@@ -307,7 +307,6 @@ app-dicts/canna-2ch
 app-emacs/yc
 app-i18n/canna
 app-i18n/canfep
-app-i18n/im-canna
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-20)
 # no consumer, removal in 30 days
