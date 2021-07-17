@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/boost:=[icu,nls,threads(+)]
 	dev-libs/icu:=
 	net-misc/curl
-	sys-libs/ncurses:=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	sys-libs/readline:=
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
