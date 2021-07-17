@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 inherit autotools bash-completion-r1 gnome2-utils linux-info plocale python-single-r1 systemd xdg-utils
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
@@ -27,13 +27,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-slip-0.2.7[dbus,${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
+		>=dev-python/python-slip-0.2.7[dbus,${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		gui? (
 			x11-libs/gtk+:3
-			dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 		)
 	')"
 DEPEND="${RDEPEND}
