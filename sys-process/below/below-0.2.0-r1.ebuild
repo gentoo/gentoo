@@ -226,6 +226,7 @@ BDEPEND="
 		dev-lang/rust[rustfmt]
 		dev-lang/rust-bin[rustfmt]
 	)
+	sys-devel/clang
 	virtual/pkgconfig
 "
 RDEPEND="
