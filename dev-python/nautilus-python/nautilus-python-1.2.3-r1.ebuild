@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # requires pygobject:3 or :2 and >=nautilus-2.32
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=gnome-base/nautilus-3[introspection]
 	${PYTHON_DEPS}
