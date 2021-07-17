@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam tmpfiles
 
@@ -80,11 +80,11 @@ COMMON_DEPEND="
 	virtual/libiconv
 	$(python_gen_cond_dep "
 		addc? (
-			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
-			dev-python/markdown[\${PYTHON_MULTI_USEDEP}]
+			dev-python/dnspython:=[\${PYTHON_USEDEP}]
+			dev-python/markdown[\${PYTHON_USEDEP}]
 		)
 		ads? (
-			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
+			dev-python/dnspython:=[\${PYTHON_USEDEP}]
 			net-dns/bind-tools[gssapi]
 		)
 	")
