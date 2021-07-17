@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit python-single-r1
 
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	dev-lang/perl
 	$(python_gen_cond_dep '
-		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 	')
 	=sci-libs/htslib-${PV}*:=
 	sys-libs/zlib:=
