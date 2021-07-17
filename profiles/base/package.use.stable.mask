@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-07-18)
+# For docs, app-text/pandoc is needed, which is currently
+# not stabilized and probably will not be in near future.
+# Bug #737612
+x11-wm/xpra doc
+
 # Patrick McLean <chutzpah@gentoo.org> (2021-07-13)
 # Pulls in dev-libs/pmdk which has Haskell deps, a dep on rocr-runtime
 # all of which are not stable anywhere.
