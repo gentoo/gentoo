@@ -29,8 +29,8 @@ DEPEND="${PYTHON_DEPS}
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/twisted-16.6.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,svg,widgets,${PYTHON_USEDEP}]
+		>=dev-python/twisted-16.6.0[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}
