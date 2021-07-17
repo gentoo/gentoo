@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE=xml
 DISTUTILS_SINGLE_IMPL=1
 
@@ -22,16 +22,16 @@ IUSE="doc"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},gui,svg,webkit(-),widgets]
-		dev-python/pyzmq[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP},gui,svg,webkit(-),widgets]
+		dev-python/pyzmq[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	>=media-libs/libopenshot-0.2.5:0=[python,${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="
 	$(python_gen_cond_dep '
-		doc? ( dev-python/sphinx[${PYTHON_MULTI_USEDEP}] )
+		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	')
 "
 
