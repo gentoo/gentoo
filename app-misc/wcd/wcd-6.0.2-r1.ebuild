@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux"
 IUSE="nls unicode"
 
 CDEPEND="
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	unicode? ( dev-libs/libunistring:= )"
 DEPEND="${CDEPEND}
 	app-text/ghostscript-gpl
