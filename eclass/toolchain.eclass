@@ -7,9 +7,7 @@
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
 
-# TODO: Please audit this inherit list on future EAPI bumps and ideally
-# conditonalise them where possible.
-inherit eutils flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
+inherit flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
 tc_is_live() {
 	[[ ${PV} == *9999* ]]
@@ -30,8 +28,8 @@ fi
 FEATURES=${FEATURES/multilib-strict/}
 
 case ${EAPI:-0} in
-	5|6) inherit eapi7-ver ;;
-	7) ;;
+	5|6) inherit eapi7-ver eutils ;;
+	7) inherit eutils ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
