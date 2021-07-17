@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit gnome2 python-single-r1 meson optfeature virtualx
 
@@ -29,7 +29,7 @@ DEPEND="
 		${PYTHON_DEPS}
 		x11-libs/gtk+:3[introspection]
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.8:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
 		')
 	)
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4 )
