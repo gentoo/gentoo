@@ -92,7 +92,6 @@ DEPEND="${CDEPEND}
 			)
 		)
 	)
-	wayland? ( x11-base/xwayland )
 "
 RDEPEND="${CDEPEND}
 	!systemd? ( gui-libs/display-manager-init )
