@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.6.18
 	ncurses? (
 		>=dev-libs/libgnt-$(ver_cut 1-2)
-		sys-libs/ncurses:0=[unicode]
+		sys-libs/ncurses:=[unicode(+)]
 		dbus? ( ${PYTHON_DEPS} )
 		python? ( ${PYTHON_DEPS} )
 	)
