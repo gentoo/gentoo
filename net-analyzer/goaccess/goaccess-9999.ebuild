@@ -22,7 +22,7 @@ IUSE="debug geoip geoipv2 getline ssl unicode"
 REQUIRED_USE="geoipv2? ( geoip )"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="sys-libs/ncurses:0=[unicode?]
+RDEPEND="sys-libs/ncurses:=[unicode(+)?]
 	geoip? (
 		!geoipv2? ( dev-libs/geoip )
 		geoipv2? ( dev-libs/libmaxminddb:0= )
