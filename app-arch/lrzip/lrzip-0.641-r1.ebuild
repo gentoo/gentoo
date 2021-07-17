@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	virtual/perl-Pod-Parser
+	dev-perl/Pod-Parser
 	x86? ( dev-lang/nasm )
 "
 
