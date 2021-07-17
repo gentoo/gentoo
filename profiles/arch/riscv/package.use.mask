@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2021-07-21)
+# net-print/cups not keyworded
+net-print/cups-filters postscript
+app-text/ghostscript-gpl cups
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-19)
 # sci-libs/hdf5 currently not supported (fails tests) on this arch
 dev-libs/starpu hdf5
@@ -130,7 +135,6 @@ app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp test
 app-arch/p7zip wxwidgets
 app-doc/doxygen doc
 app-text/asciidoc test
-app-text/ghostscript-gpl cups
 app-text/po4a test
 dev-libs/check subunit
 dev-libs/libgcrypt doc
