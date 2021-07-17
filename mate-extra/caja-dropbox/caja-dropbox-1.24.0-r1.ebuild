@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_8 )
 MATE_LA_PUNT="yes"
 
 inherit eapi7-ver mate python-single-r1 linux-info
@@ -23,7 +23,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=mate-base/caja-1.19.1
 	mate-extra/caja-extensions
