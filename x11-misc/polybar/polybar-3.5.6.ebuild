@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 XPP_COMMIT="044e69d05db7f89339bda1ccd1efe0263b01c8f6"
 I3IPCPP_COMMIT="86ddf7102c6903ae0cc543071e2d375403fc0727"
 
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'x11-base/xcb-proto[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep 'x11-base/xcb-proto[${PYTHON_USEDEP}]')
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libxcb[xkb]
 	x11-libs/xcb-util-image
