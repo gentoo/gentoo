@@ -349,7 +349,6 @@ net-vpn/strongswan strongswan_plugins_unbound
 
 # Benda Xu <heroxbd@gentoo.org> (2015-01-03)
 # not tested
-app-i18n/anthy canna-2ch
 app-i18n/scim-anthy kasumi
 
 # Markus Meier <maekke@gentoo.org> (2014-11-29)

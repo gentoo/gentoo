@@ -1,7 +1,7 @@
-# Copyright 2003-2020 Gentoo Authors
+# Copyright 2003-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 inherit elisp-common
 
@@ -12,29 +12,16 @@ SRC_URI="mirror://sourceforge.jp/${PN}/37536/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="canna-2ch emacs static-libs"
+IUSE="emacs static-libs"
 
-BDEPEND="canna-2ch? ( app-dicts/canna-2ch )
-	emacs? ( >=app-editors/emacs-23.1:* )"
+BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 DEPEND=""
 RDEPEND="${BDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-anthy_context_t.patch"
-)
-
-DOCS=(AUTHORS ChangeLog DIARY NEWS README)
+PATCHES=( "${FILESDIR}/${PN}-anthy_context_t.patch" )
+DOCS=( AUTHORS ChangeLog DIARY NEWS README )
 
 SITEFILE="50${PN}-gentoo.el"
-
-src_prepare() {
-	default
-
-	if use canna-2ch; then
-		einfo "Adding nichan.ctd to anthy.dic"
-		sed -e "/set_input_encoding eucjp/aread ${EPREFIX}/var/lib/canna/dic/canna/nichan.ctd" -i mkworddic/dict.args.in || die
-	fi
-}
 
 src_configure() {
 	econf \
