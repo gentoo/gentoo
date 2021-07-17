@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PLOCALES="cs de es it ja ko pl pt ru sv th zh_CN zh_TW"
 inherit meson plocale python-single-r1 xdg-utils
 
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP},cairo]
+		dev-python/pygobject:3[${PYTHON_USEDEP},cairo]
 	')
 	x11-libs/gtk+:3[introspection]"
 # file collision, bug #279018
