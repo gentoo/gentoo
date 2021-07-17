@@ -16,9 +16,8 @@ if [[ ${PV} = *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	SRC_URI="https://get.videolan.org/vlc/${PV}/${P}.tar.xz"
-	#S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
-	#SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
+	SRC_URI="https://code.videolan.org/videolan/vlc-$(ver_cut 1-2)/-/archive/${PV}/vlc-$(ver_cut 1-2)-${PV}.tar.gz"
+	S="${WORKDIR}/${PN}-$(ver_cut 1-2)-${PV}"
 	#if [[ ${MY_P} = ${P} ]] ; then
 	#	SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 	#else
@@ -153,7 +152,7 @@ RDEPEND="
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
 	musepack? ( media-sound/musepack-tools )
-	ncurses? ( sys-libs/ncurses:0=[unicode] )
+	ncurses? ( sys-libs/ncurses:=[unicode(+)] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
 	opus? ( >=media-libs/opus-1.0.3 )
