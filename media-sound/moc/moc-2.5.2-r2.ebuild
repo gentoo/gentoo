@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modpl
 	oss sid sndfile speex timidity tremor +unicode vorbis wavpack"
 
 RDEPEND=">=dev-libs/libltdl-2:0
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
 	cache? ( >=sys-libs/db-4:= )

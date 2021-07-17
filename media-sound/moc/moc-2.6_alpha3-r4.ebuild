@@ -19,7 +19,7 @@ IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modpl
 RDEPEND="
 	>=dev-libs/libltdl-2:0
 	dev-libs/popt
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	aac? ( media-libs/faad2 )
 	alsa? ( >=media-libs/alsa-lib-1.0.11 )
 	cache? ( >=sys-libs/db-4.1:= )
