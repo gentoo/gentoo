@@ -10,9 +10,13 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<use>
-		<flag name="bs2b">Enable use of media-libs/libbs2b</flag>
-		<flag name="calf">Enable use of media-plugins/calf for adding various FX</flag>
-		<flag name="rubberband">Enable usse of media-libs/rubberband for the pitch shifting FX</flag>
+		<flag name="bs2b">Enable use of <pkg>media-libs/libbs2b</pkg> for the crossfeed FX</flag>
+		<flag name="calf">Enable use of <pkg>media-plugins/calf</pkg> for adding various FX</flag>
+		<flag name="rnnoise">Enable use of <pkg>media-libs/rnnoise</pkg> for the neural network-based
+			noise-reduction FX</flag>
+		<flag name="rubberband">Enable use of <pkg>media-libs/rubberband</pkg> for the pitch-shifting FX</flag>
+		<flag name="webrtc">Enable use of <pkg>media-plugins/gst-plugins-webrtc</pkg> for various
+			voice-enhancement FX</flag>
 	</use>
 	<longdescription lang="en">
 		GUI to manage audio effects for Pulseaudio applications, giving full control over the effects order to the user.
