@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 usr-ldscript \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -16,8 +16,9 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz
+		https://dev.gentoo.org/~polynomial-c/${MY_P}-manpages.tar.xz"
 fi
 
 DESCRIPTION="Various useful Linux utilities"
@@ -37,7 +38,7 @@ RDEPEND="
 	cryptsetup? ( sys-fs/cryptsetup )
 	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? (
-		>=sys-libs/ncurses-5.2-r2:0=[unicode?]
+		sys-libs/ncurses:=[unicode(+)?]
 		magic? ( sys-apps/file:0= )
 	)
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
@@ -71,12 +72,38 @@ RDEPEND+="
 		!>=sys-apps/shadow-4.7-r2[su]
 	)
 	!net-wireless/rfkill
-	!<app-shells/bash-completion-2.7-r1"
+	!<app-shells/bash-completion-2.7-r1
+"
+
+# Required for man-page generation
+if [[ "${PV}" == 9999 ]] ; then
+	BDEPEND+="
+		dev-ruby/asciidoctor
+	"
+fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	# https://github.com/karelzak/util-linux/pull/1329
+	"${FILESDIR}/${P}-ppc-nortas.patch"
+
+	"${FILESDIR}/${P}-lcrypt_link_fix.patch" # 801403
+	"${FILESDIR}/${P}-lcrypt_use_LIBS.patch" # 801403
+	"${FILESDIR}/${P}-avoid_autoreconf.patch" # 801403
+)
+
+rm_man() {
+	[[ -n $1 ]] || die
+	local el
+	for el in $1 ; do
+		find "${WORKDIR}/man" -type f -name "${el}.?" -delete \
+			|| die
+	done
+}
 
 src_prepare() {
 	default
@@ -86,7 +113,7 @@ src_prepare() {
 		-e "s|UUIDD_SOCKET=\"\$(mktemp -u \"\${TS_OUTDIR}/uuiddXXXXXXXXXXXXX\")\"|UUIDD_SOCKET=\"\$(mktemp -u \"${T}/uuiddXXXXXXXXXXXXX.sock\")\"|g" \
 		tests/ts/uuid/uuidd || die "Failed to fix uuidd test"
 
-	if ! use userland_GNU; then
+	if ! use userland_GNU ; then
 		# test runner is using GNU-specific xargs call
 		sed -i -e 's:xargs:gxargs:' tests/run.sh || die
 		# test requires util-linux uuidgen (which we don't build)
@@ -96,6 +123,14 @@ src_prepare() {
 	if [[ ${PV} == 9999 ]] ; then
 		po/update-potfiles
 		eautoreconf
+	else
+		# Conditionally remove some man-pages
+		use hardlink 	|| rm_man "hardlink"
+		use kill 	|| rm_man "kill"
+		use logger 	|| rm_man "logger"
+		use ncurses 	|| rm_man "pg"
+		use su 		|| rm_man "su"
+		use tty-helpers	|| rm_man "mesg wall write"
 	fi
 
 	elibtoolize
@@ -122,7 +157,7 @@ python_configure() {
 		--without-systemdsystemunitdir
 		--with-python
 	)
-	if use userland_GNU; then
+	if use userland_GNU ; then
 		myeconfargs+=(
 			--enable-libblkid
 			--enable-libmount
@@ -175,12 +210,14 @@ multilib_src_configure() {
 		$(use_with selinux)
 	)
 	# build programs only on GNU, on *BSD we want libraries only
-	if multilib_is_native_abi && use userland_GNU; then
+	if multilib_is_native_abi && use userland_GNU ; then
 		myeconfargs+=(
 			--disable-chfn-chsh
 			--disable-login
+			--disable-newgrp
 			--disable-nologin
 			--disable-pylibmount
+			--disable-vipw
 			--enable-agetty
 			--enable-bash-completion
 			--enable-line
@@ -203,9 +240,16 @@ multilib_src_configure() {
 			$(use_enable tty-helpers write)
 			$(use_with cryptsetup)
 		)
+		if [[ ${PV} == *9999 ]] ; then
+			myeconfargs+=( --enable-asciidoc )
+		else
+			# We ship pre-generated man-pages for releases
+			myeconfargs+=( --disable-asciidoc )
+		fi
 	else
 		myeconfargs+=(
 			--disable-all-programs
+			--disable-asciidoc
 			--disable-bash-completion
 			--without-systemdsystemunitdir
 			# build libraries
@@ -214,7 +258,7 @@ multilib_src_configure() {
 			--enable-libsmartcols
 			--enable-libfdisk
 		)
-		if use userland_GNU; then
+		if use userland_GNU ; then
 			# those libraries don't work on *BSD
 			myeconfargs+=(
 				--enable-libmount
@@ -223,7 +267,7 @@ multilib_src_configure() {
 	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi && use python ; then
 		python_foreach_impl python_configure
 	fi
 }
@@ -237,7 +281,7 @@ python_compile() {
 multilib_src_compile() {
 	emake all
 
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi && use python ; then
 		python_foreach_impl python_compile
 	fi
 }
@@ -250,7 +294,7 @@ python_test() {
 
 multilib_src_test() {
 	emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi && use python ; then
 		python_foreach_impl python_test
 	fi
 }
@@ -263,14 +307,14 @@ python_install() {
 }
 
 multilib_src_install() {
-	if multilib_is_native_abi && use python; then
+	if multilib_is_native_abi && use python ; then
 		python_foreach_impl python_install
 	fi
 
 	# This needs to be called AFTER python_install call (#689190)
 	emake DESTDIR="${D}" install
 
-	if multilib_is_native_abi && use userland_GNU; then
+	if multilib_is_native_abi && use userland_GNU ; then
 		# need the libs in /
 		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
 	fi
@@ -278,18 +322,21 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc AUTHORS NEWS README* Documentation/{TODO,*.txt,releases/*}
-	chmod -x "${ED}"/usr/share/doc/util-linux-${PVR}/getopt/getopt-parse* || die
 
 	# e2fsprogs-libs didnt install .la files, and .pc work fine
 	find "${ED}" -name "*.la" -delete || die
 
-	if ! use userland_GNU; then
+	if [[ ${PV} != 9999 ]] ; then
+		doman "${WORKDIR}"/man/man*/*
+	fi
+
+	if ! use userland_GNU ; then
 		# manpage collisions
 		# TODO: figure out a good way to keep them
 		rm "${ED}"/usr/share/man/man3/uuid* || die
 	fi
 
-	if use pam; then
+	if use pam ; then
 		newpamd "${FILESDIR}/runuser.pamd" runuser
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
 	fi
@@ -304,11 +351,11 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	if ! use tty-helpers; then
+	if ! use tty-helpers ; then
 		elog "The mesg/wall/write tools have been disabled due to USE=-tty-helpers."
 	fi
 
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "The agetty util now clears the terminal by default. You"
 		elog "might want to add --noclear to your /etc/inittab lines."
 	fi
