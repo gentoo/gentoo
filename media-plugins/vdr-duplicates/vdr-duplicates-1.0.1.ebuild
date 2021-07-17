@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: show duplicated records"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-duplicates/repository"
 SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-duplicates.git/snapshot/vdr-plugin-duplicates-${GIT_VERSION}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
