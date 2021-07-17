@@ -20,7 +20,7 @@ BDEPEND="
 "
 RDEPEND="
 	>=media-libs/libmpdclient-2.9
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	lirc? ( app-misc/lirc )
 	pcre? ( dev-libs/libpcre )
 "
