@@ -11,7 +11,7 @@ SRC_URI="http://phivdr.dyndns.org/vdr/vdr-undelete/vdr-undelete-2.3.1-pre1.tgz -
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND="media-video/vdr"
 
