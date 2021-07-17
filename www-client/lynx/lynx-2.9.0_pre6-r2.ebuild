@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 s
 IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode"
 
 RDEPEND="
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	sys-libs/zlib
 	nls? ( virtual/libintl )
 	ssl? (
