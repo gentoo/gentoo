@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_SINGLE_IMPL=1
 
 DISTUTILS_USE_SETUPTOOLS=no
@@ -30,12 +30,12 @@ RDEPEND="${PYTHON_DEPS}
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	$(python_gen_cond_dep '
-		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/libvirt-python-6.10.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		dev-python/tqdm[${PYTHON_MULTI_USEDEP}]
+		dev-libs/libxml2[python,${PYTHON_USEDEP}]
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		>=dev-python/libvirt-python-6.10.0[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/tqdm[${PYTHON_USEDEP}]
 	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
