@@ -19,7 +19,7 @@
 
 # Sam James <sam@gentoo.org> (2021-07-17)
 # Haskell isn't stable on amd64 (or anywhere)
-# bug #801649
+# bug #801652
 dev-util/diffoscope haskell
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-05-07)
