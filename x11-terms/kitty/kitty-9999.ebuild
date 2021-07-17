@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit optfeature python-single-r1 toolchain-funcs xdg
 
@@ -54,7 +54,7 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 [[ ${PV} == *9999 ]] && BDEPEND+="
-	$(python_gen_cond_dep '>=dev-python/sphinx-1.7[${PYTHON_MULTI_USEDEP}]')"
+	$(python_gen_cond_dep '>=dev-python/sphinx-1.7[${PYTHON_USEDEP}]')"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.21.2-flags.patch
