@@ -6,7 +6,7 @@ EAPI=7
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit cmake cuda elisp-common fortran-2 prefix python-single-r1 toolchain-funcs
 
@@ -114,7 +114,7 @@ CDEPEND="
 	tbb? ( dev-cpp/tbb )
 	tmva? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 	uring? ( sys-libs/liburing )
