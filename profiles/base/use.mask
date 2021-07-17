@@ -18,11 +18,6 @@ ruby_targets_ruby25
 # PostgreSQL 9.5 masked for removal
 postgres_targets_postgres9_5
 
-# David Seifert <soap@gentoo.org> (2021-06-20)
-# Abandoned upstream, last release 17 years ago, unmaintained, tons of
-# QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
-canna
-
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life
 # Please upgrade to a newer slot
