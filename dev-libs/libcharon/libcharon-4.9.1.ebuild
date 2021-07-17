@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit cmake python-single-r1
 
@@ -31,7 +31,7 @@ RDEPEND="
 
 DEPEND="${PYTHON_DEPS}
 	test? (
-		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_MULTI_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
 	)"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
