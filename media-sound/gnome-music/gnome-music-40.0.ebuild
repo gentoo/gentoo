@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -26,8 +26,8 @@ DEPEND="${PYTHON_DEPS}
 	app-misc/tracker:3=[introspection(+)]
 	>=x11-libs/pango-1.44:=
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.36.1:3[cairo,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pycairo-1.14.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.36.1:3[cairo,${PYTHON_USEDEP}]
+		>=dev-python/pycairo-1.14.0[${PYTHON_USEDEP}]
 	')
 	>=media-libs/grilo-0.3.13:0.3[introspection]
 	>=media-plugins/grilo-plugins-0.3.13:0.3
