@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="ncurses"
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
@@ -22,8 +22,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/python-discid[${PYTHON_MULTI_USEDEP}]
-		media-libs/mutagen[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-discid[${PYTHON_USEDEP}]
+		media-libs/mutagen[${PYTHON_USEDEP}]
 	')
 	media-libs/flac
 	media-sound/cdparanoia
