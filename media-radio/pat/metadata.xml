@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>om@OrganizedMagnetism.com</email>
+		<name>Scott Martin</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Pat is a cross platform Winlink client with basic messaging capabilities.
+		It is the primary sandbox/prototype application for the wl2k-go project,
+		and provides both a command line interface and a responsive (mobile-friendly) web interface.
+		It is mainly developed for Linux, but are also known to run on OS X, Windows and Android.
+	</longdescription>
+	<use>
+		<flag name="ax25">build with <pkg>media-radio/ax25-tools</pkg> support</flag>
+		<flag name="hamlib">build with <pkg>media-libs/hamlib</pkg> support</flag>
+	</use>
+	<upstream>
+		<changelog>https://github.com/la5nta/pat/commits/master</changelog>
+		<doc>https://github.com/la5nta/pat/wiki</doc>
+		<bugs-to>https://github.com/la5nta/pat/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
