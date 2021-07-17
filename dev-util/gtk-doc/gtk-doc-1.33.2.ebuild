@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit elisp-common gnome.org meson python-single-r1 readme.gentoo-r1
 
@@ -28,7 +28,7 @@ RDEPEND="
 	>=app-text/docbook-dsssl-stylesheets-1.40
 	emacs? ( >=app-editors/emacs-23.1:* )
 	$(python_gen_cond_dep '
-		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}
