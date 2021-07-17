@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="+X bidi brltty cairo canna debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
+IUSE="+X bidi brltty cairo debug fbcon fcitx freewnn gtk harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 REQUIRED_USE="|| ( X fbcon wayland )"
 
 RDEPEND="virtual/libcrypt:=
@@ -24,7 +24,6 @@ RDEPEND="virtual/libcrypt:=
 	bidi? ( dev-libs/fribidi )
 	brltty? ( app-accessibility/brltty )
 	cairo? ( x11-libs/cairo[X(+)] )
-	canna? ( app-i18n/canna )
 	fbcon? ( media-fonts/unifont )
 	fcitx? ( app-i18n/fcitx )
 	freewnn? ( app-i18n/freewnn )
@@ -75,7 +74,6 @@ src_configure() {
 	local myconf=(
 		$(use_enable bidi fribidi)
 		$(use_enable brltty brlapi)
-		$(use_enable canna)
 		$(use_enable debug)
 		$(use_enable fcitx)
 		$(use_enable freewnn wnn)
@@ -93,6 +91,7 @@ src_configure() {
 		--with-utmp=$(usex utempter utempter none)
 		--enable-optimize-redrawing
 		--enable-vt52
+		--disable-canna
 		--disable-static
 	)
 
