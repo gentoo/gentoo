@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 KFMIN=5.75.0
 QTMIN=5.15.2
 inherit python-single-r1 ecm kde.org
@@ -41,7 +41,7 @@ RDEPEND="${PYTHON_DEPS}
 	geogebra? ( >=dev-qt/qtxmlpatterns-${QTMIN}:5 )
 	scripting? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.70:=[python,${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]
 		')
 	)
 "
