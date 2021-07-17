@@ -31,8 +31,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	dev-libs/quazip:0=
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP}]
-		dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/sip:=[${PYTHON_USEDEP}]
 	')
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
