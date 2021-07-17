@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="ao +alsa pulseaudio oss http modplug mp3 sndfile vorbis xspf unicode nls"
 REQUIRED_USE="|| ( ao alsa pulseaudio oss )"
 
-RDEPEND="sys-libs/ncurses:0=[unicode?]
+RDEPEND="sys-libs/ncurses:=[unicode(+)?]
 	>=dev-libs/glib-2:2
 	ao? ( media-libs/libao )
 	alsa? ( media-libs/alsa-lib )
