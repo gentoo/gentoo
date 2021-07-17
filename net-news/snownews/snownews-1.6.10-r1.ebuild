@@ -15,7 +15,7 @@ IUSE=""
 
 COMMON_DEPEND="
 	>=dev-libs/libxml2-2.5.6
-	>=sys-libs/ncurses-5.3:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 "
 RDEPEND="
 	${COMMON_DEPEND}
