@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -80,7 +80,7 @@ RDEPEND="
 	mpi? (
 		virtual/mpi[cxx,romio]
 		$(python_gen_cond_dep '
-			python? ( dev-python/mpi4py[${PYTHON_MULTI_USEDEP}] )
+			python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
 		')
 	)
 	mysql? ( dev-db/mysql-connector-c )
@@ -90,7 +90,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/sip:5[${PYTHON_MULTI_USEDEP}]
+			dev-python/sip:5[${PYTHON_USEDEP}]
 		')
 	)
 	qt5? (
@@ -101,7 +101,7 @@ RDEPEND="
 		dev-qt/qtsql:5
 		dev-qt/qtx11extras:5
 		$(python_gen_cond_dep '
-			python? ( dev-python/PyQt5[${PYTHON_MULTI_USEDEP}] )
+			python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 		')
 	)
 	R? ( dev-lang/R )
@@ -112,14 +112,14 @@ RDEPEND="
 	web? (
 		${WEBAPP_DEPEND}
 		$(python_gen_cond_dep '
-			dev-python/autobahn[${PYTHON_MULTI_USEDEP}]
-			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
-			dev-python/hyperlink[${PYTHON_MULTI_USEDEP}]
-			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-			dev-python/txaio[${PYTHON_MULTI_USEDEP}]
-			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+			dev-python/autobahn[${PYTHON_USEDEP}]
+			dev-python/constantly[${PYTHON_USEDEP}]
+			dev-python/hyperlink[${PYTHON_USEDEP}]
+			dev-python/incremental[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			dev-python/twisted[${PYTHON_USEDEP}]
+			dev-python/txaio[${PYTHON_USEDEP}]
+			dev-python/zope-interface[${PYTHON_USEDEP}]
 		')
 	)
 "
