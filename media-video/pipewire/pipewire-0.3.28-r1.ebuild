@@ -3,16 +3,14 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7..10} )
-
-inherit meson-multilib optfeature python-any-r1 udev
+inherit meson-multilib optfeature udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -20,7 +18,7 @@ HOMEPAGE="https://pipewire.org/"
 
 LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.3"
-IUSE="bluetooth doc extra gstreamer jack-client jack-sdk pipewire-alsa systemd test v4l"
+IUSE="aac aptx bluetooth doc extra gstreamer jack-client jack-sdk ldac pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -28,14 +26,17 @@ IUSE="bluetooth doc extra gstreamer jack-client jack-sdk pipewire-alsa systemd t
 # JACK's sink - doing so is likely to yield no audio, cause a CPU
 # cycles consuming loop (and may even cause GUI crashes)!
 
-REQUIRED_USE="jack-sdk? ( !jack-client )"
+REQUIRED_USE="
+	aac? ( bluetooth )
+	aptx? ( bluetooth )
+	jack-sdk? ( !jack-client )
+	ldac? ( bluetooth )
+"
 
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-doc/xmltoman
-	virtual/pkgconfig
-	${PYTHON_DEPS}
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
@@ -45,13 +46,13 @@ RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
 	sys-apps/dbus[${MULTILIB_USEDEP}]
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
 	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
-		media-libs/fdk-aac
-		media-libs/libldac
-		media-libs/libopenaptx
+		aac? ( media-libs/fdk-aac )
+		aptx? ( media-libs/libopenaptx )
+		ldac? ( media-libs/libldac )
 		media-libs/sbc
 		>=net-wireless/bluez-4.101:=
 	)
@@ -96,7 +97,7 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
-	"${FILESDIR}"/${PN}-0.3.29-revert-openaptx-restriction.patch
+	"${FILESDIR}"/${PN}-0.3.28-revert-openaptx-restriction.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
@@ -146,9 +147,9 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-backend-hfp-native)
 		$(meson_native_use_feature bluetooth bluez5-backend-ofono)
 		$(meson_native_use_feature bluetooth bluez5-backend-hsphfpd)
-		$(meson_native_use_feature bluetooth bluez5-codec-aac)
-		$(meson_native_use_feature bluetooth bluez5-codec-aptx)
-		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
+		$(meson_native_use_feature aac bluez5-codec-aac)
+		$(meson_native_use_feature aptx bluez5-codec-aptx)
+		$(meson_native_use_feature ldac bluez5-codec-ldac)
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
 		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
@@ -253,11 +254,6 @@ pkg_postinst() {
 		elog
 		elog "#\"/usr/bin/pipewire\" = { args = \"-c pipewire-pulse.conf\" }"
 		elog
-		elog "NOTE:"
-		elog "Starting with PipeWire-0.3.30, package is no longer installing config"
-		elog "into ${EROOT}/etc/pipewire by default. In case you need to change"
-		elog "config, please start by copying default config from ${EROOT}/usr/share/pipewire"
-		elog "and just override sections you want to change."
 	fi
 
 	elog "For latest tips and tricks, troubleshooting information and documentation"

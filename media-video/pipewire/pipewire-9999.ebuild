@@ -45,7 +45,7 @@ RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
 	sys-apps/dbus[${MULTILIB_USEDEP}]
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
 	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (

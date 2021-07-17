@@ -43,7 +43,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/alsa-lib
 	sys-apps/dbus
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libudev
 	bluetooth? (
 		aac? ( media-libs/fdk-aac )
