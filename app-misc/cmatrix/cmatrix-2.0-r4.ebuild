@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="+unicode"
 
-DEPEND="sys-libs/ncurses:0=[unicode?]"
+DEPEND="sys-libs/ncurses:=[unicode(+)?]"
 BDEPEND=""
 RDEPEND="${DEPEND}"
 
