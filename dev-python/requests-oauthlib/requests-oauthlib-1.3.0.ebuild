@@ -22,14 +22,15 @@ BDEPEND="
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 	)"
 
-distutils_enable_tests unittest
+distutils_enable_tests pytest
 
-src_prepare() {
-	# require Internet access
-	sed -e 's:testCanPostBinaryData:_&:' \
-		-e 's:test_content_type_override:_&:' \
-		-e 's:test_url_is_native_str:_&:' \
-		-i tests/test_core.py || die
+python_test() {
+	local deselect=(
+		# Internet access
+		tests/test_core.py::OAuth1Test::testCanPostBinaryData
+		tests/test_core.py::OAuth1Test::test_content_type_override
+		tests/test_core.py::OAuth1Test::test_url_is_native_str
+	)
 
-	distutils-r1_src_prepare
+	epytest ${deselect[@]/#/--deselect }
 }
