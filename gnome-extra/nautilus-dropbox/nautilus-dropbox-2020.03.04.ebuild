@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit autotools python-single-r1 xdg-utils
 
@@ -19,7 +19,7 @@ IUSE="debug"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]' )
+	$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' )
 	dev-libs/glib:2
 	gnome-base/nautilus
 	net-misc/dropbox"
@@ -27,7 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 BDEPEND="
-	$(python_gen_cond_dep 'dev-python/docutils[${PYTHON_MULTI_USEDEP}]' )
+	$(python_gen_cond_dep 'dev-python/docutils[${PYTHON_USEDEP}]' )
 	virtual/pkgconfig"
 
 # use system rst2man
