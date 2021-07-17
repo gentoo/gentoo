@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1
@@ -20,15 +20,15 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/bitstring[${PYTHON_MULTI_USEDEP}]
-		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/ecdsa-0.16.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
-		dev-python/reedsolomon[${PYTHON_MULTI_USEDEP}]
+		dev-python/bitstring[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		>=dev-python/ecdsa-0.16.0[${PYTHON_USEDEP}]
+		dev-python/pyserial[${PYTHON_USEDEP}]
+		dev-python/reedsolomon[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="
-	test? ( $(python_gen_cond_dep 'dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]') )
+	test? ( $(python_gen_cond_dep 'dev-python/pyelftools[${PYTHON_USEDEP}]') )
 "
 
 python_test() {
