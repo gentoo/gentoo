@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit meson python-single-r1 systemd udev
 
@@ -31,8 +31,8 @@ BDEPEND="
 		dev-libs/gobject-introspection
 		dev-util/valgrind
 		$(python_gen_cond_dep '
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-			dev-python/python-evdev[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			dev-python/python-evdev[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -43,8 +43,8 @@ RDEPEND="
 	dev-libs/libevdev
 	virtual/libudev
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/python-evdev[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/python-evdev[${PYTHON_USEDEP}]
 	')
 	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )
