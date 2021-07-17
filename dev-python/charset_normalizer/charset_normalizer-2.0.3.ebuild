@@ -24,4 +24,3 @@ src_prepare() {
 	sed -i -e '/addopts/d' setup.cfg || die
 	distutils-r1_src_prepare
 }
-
