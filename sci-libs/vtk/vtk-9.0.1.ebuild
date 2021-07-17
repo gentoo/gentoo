@@ -7,7 +7,7 @@ EAPI=7
 # - add USE flag for remote modules? Those modules can be downloaded
 #	properly before building.
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -107,9 +107,9 @@ RDEPEND="
 	web? ( ${WEBAPP_DEPEND} )
 	$(python_gen_cond_dep '
 		python? (
-			boost? ( dev-libs/boost:=[mpi?,python?,${PYTHON_MULTI_USEDEP}] )
-			gdal? ( sci-libs/gdal:=[python?,${PYTHON_MULTI_USEDEP}] )
-			mpi? ( dev-python/mpi4py[${PYTHON_MULTI_USEDEP}] )
+			boost? ( dev-libs/boost:=[mpi?,python?,${PYTHON_USEDEP}] )
+			gdal? ( sci-libs/gdal:=[python?,${PYTHON_USEDEP}] )
+			mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
 		)
 	')
 "
