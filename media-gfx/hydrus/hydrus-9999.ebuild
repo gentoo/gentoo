@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 desktop optfeature
@@ -33,35 +33,35 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/psutil[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyside2[widgets,gui,charts?,${PYTHON_MULTI_USEDEP}]
-		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
-		dev-python/service_identity[${PYTHON_MULTI_USEDEP}]
-		dev-python/six[${PYTHON_MULTI_USEDEP}]
-		dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-		media-libs/opencv[python,png,jpeg,${PYTHON_MULTI_USEDEP}]
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/pyside2[widgets,gui,charts?,${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/send2trash[${PYTHON_USEDEP}]
+		dev-python/service_identity[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+		dev-python/twisted[${PYTHON_USEDEP}]
+		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
 
-		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_MULTI_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 
-		cloudscraper? ( dev-python/cloudscraper[${PYTHON_MULTI_USEDEP}] )
+		cloudscraper? ( dev-python/cloudscraper[${PYTHON_USEDEP}] )
 		ffmpeg? ( media-video/ffmpeg )
-		lz4? ( dev-python/lz4[${PYTHON_MULTI_USEDEP}] )
+		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
 		mpv? (
-			media-video/mpv[libmpv,${PYTHON_MULTI_USEDEP}]
-			dev-python/python-mpv[${PYTHON_MULTI_USEDEP}]
+			media-video/mpv[libmpv,${PYTHON_USEDEP}]
+			dev-python/python-mpv[${PYTHON_USEDEP}]
 		)
 		socks? (
-			|| ( dev-python/requests[socks5,${PYTHON_MULTI_USEDEP}]
-				dev-python/PySocks[${PYTHON_MULTI_USEDEP}] )
+			|| ( dev-python/requests[socks5,${PYTHON_USEDEP}]
+				dev-python/PySocks[${PYTHON_USEDEP}] )
 		)
 	')
 "
@@ -69,9 +69,9 @@ BDEPEND="
 	${RDEPEND}
 	$(python_gen_cond_dep '
 		test? (
-			dev-python/httmock[${PYTHON_MULTI_USEDEP}]
-			dev-python/mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/nose[${PYTHON_MULTI_USEDEP}]
+			dev-python/httmock[${PYTHON_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
 		)
 	')
 "
