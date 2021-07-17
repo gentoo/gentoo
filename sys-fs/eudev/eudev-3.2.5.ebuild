@@ -24,6 +24,7 @@ IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
+	virtual/libcrypt:=
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
