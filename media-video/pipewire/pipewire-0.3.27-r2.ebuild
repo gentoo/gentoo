@@ -16,7 +16,7 @@ fi
 DESCRIPTION="Multimedia processing graphs"
 HOMEPAGE="https://pipewire.org/"
 
-LICENSE="MIT LGPL-2.1+ GPL-2"
+LICENSE="LGPL-2.1+"
 SLOT="0/0.3"
 IUSE="aac aptx bluetooth doc extra gstreamer jack-client jack-sdk ldac pipewire-alsa systemd test v4l"
 
@@ -46,7 +46,7 @@ RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
 	sys-apps/dbus[${MULTILIB_USEDEP}]
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
 	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
@@ -97,7 +97,6 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
-	"${FILESDIR}"/${PN}-0.3.28-revert-openaptx-restriction.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
