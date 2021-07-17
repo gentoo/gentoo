@@ -14,7 +14,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x
 IUSE="examples minimal nls static-libs unicode"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.2-r5:=[unicode?]
+	>=sys-libs/ncurses-5.2-r5:=[unicode(+)?]
 "
 DEPEND="
 	${RDEPEND}
