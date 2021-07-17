@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -13,7 +13,7 @@ SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
@@ -24,23 +24,23 @@ RDEPEND=">=dev-libs/glib-2.26.0:2
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
-	!slang? ( sys-libs/ncurses:0=[unicode?] )
+	!slang? ( sys-libs/ncurses:=[unicode(+)?] )
 	spell? ( app-text/aspell )
 	X? ( x11-libs/libX11
 		x11-libs/libICE
 		x11-libs/libXau
 		x11-libs/libXdmcp
 		x11-libs/libSM )"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/xz-utils
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	test? ( dev-libs/check )
-	"
+	test? ( dev-libs/check )"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-shadow-crash.patch
-	"${FILESDIR}"/${P}-file-seccomp.patch
+	"${FILESDIR}"/${PN}-4.8.26-file-seccomp.patch
+	"${FILESDIR}"/${PN}-4.8.26-ncurses-mouse.patch
+	"${FILESDIR}"/${PN}-4.8.26-shadow-crash.patch
 )
 
 RESTRICT="!test? ( test )"
@@ -87,6 +87,12 @@ src_configure() {
 }
 
 src_test() {
+	# Bug #759466
+	if ! has userpriv ${FEATURES} && [[ $(id -u) == 0 ]]; then
+		ewarn "You are emerging ${PN} as root with 'userpriv' disabled." \
+			"Expect some test failures, or emerge with 'FEATURES=userpriv'!"
+	fi
+
 	# CK_FORK=no to avoid using fork() in check library
 	# as mc mocks fork() itself: bug #644462.
 	#
