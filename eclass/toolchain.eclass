@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
@@ -27,9 +27,10 @@ fi
 
 FEATURES=${FEATURES/multilib-strict/}
 
-case ${EAPI:-0} in
+case ${EAPI} in
 	5|6) inherit eapi7-ver eutils ;;
 	7) inherit eutils ;;
+	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -121,9 +122,9 @@ IUSE="test vanilla +nls"
 RESTRICT="!test? ( test )"
 
 tc_supports_dostrip() {
-	case ${EAPI:-0} in
-		5*|6) return 1 ;;
-		7) return 0 ;;
+	case ${EAPI} in
+		5|6) return 1 ;;
+		7|8) return 0 ;;
 		*) die "Update apply_patches() for ${EAPI}." ;;
 	esac
 }
@@ -266,8 +267,8 @@ if tc_has_feature valgrind; then
 	BDEPEND+=" valgrind? ( dev-util/valgrind )"
 fi
 
-case ${EAPI:-0} in
-	5*|6) DEPEND+=" ${BDEPEND}" ;;
+case ${EAPI} in
+	5|6) DEPEND+=" ${BDEPEND}" ;;
 esac
 
 PDEPEND=">=sys-devel/gcc-config-2.3"
@@ -446,11 +447,11 @@ tc_apply_patches() {
 
 	einfo "$1"; shift
 
-	case ${EAPI:-0} in
+	case ${EAPI} in
 		# Note: even for EAPI=6 we used 'epatch' semantics. To avoid
 		# breaking existing ebuilds use 'eapply' only in EAPI=7 or later.
-		5*|6) epatch "$@" ;;
-		7) eapply "$@" ;;
+		5|6) epatch "$@" ;;
+		7|8) eapply "$@" ;;
 		*) die "Update apply_patches() for ${EAPI}." ;;
 	esac
 }
@@ -467,9 +468,9 @@ toolchain_src_prepare() {
 		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
 	fi
 
-	case ${EAPI:-0} in
-		5*) epatch_user;;
-		6|7) eapply_user ;;
+	case ${EAPI} in
+		5) epatch_user;;
+		6|7|8) eapply_user ;;
 		*) die "Update toolchain_src_prepare() for ${EAPI}." ;;
 	esac
 
