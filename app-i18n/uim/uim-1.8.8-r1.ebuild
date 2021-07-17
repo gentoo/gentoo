@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
-IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt5 skk sqlite ssl static-libs xft"
+IUSE="X +anthy curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify m17n-lib ncurses nls qt5 skk sqlite ssl static-libs xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
 	gtk2? ( X )
@@ -21,7 +21,6 @@ REQUIRED_USE="gtk? ( X )
 
 COMMON_DEPEND="
 	anthy? ( app-i18n/anthy )
-	canna? ( app-i18n/canna )
 	curl? ( net-misc/curl )
 	eb? ( dev-libs/eb )
 	emacs? ( >=app-editors/emacs-23.1:* )
@@ -112,7 +111,6 @@ src_configure() {
 	local myconf=(
 		$(use_with X x)
 		$(use_with anthy anthy-utf8)
-		$(use_with canna)
 		$(use_with curl)
 		$(use_with eb)
 		$(use_enable emacs)
@@ -134,6 +132,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_with xft)
 		--without-anthy
+		--without-canna
 		--enable-default-toolkit=$(usex gtk gtk3 $(usex gtk2 gtk $(usex qt5 qt5)))
 		--disable-gnome-applet
 		--disable-gnome3-applet
@@ -144,7 +143,7 @@ src_configure() {
 		--disable-qt4-qt3support
 	)
 
-	if (use gtk || use gtk2) && (use anthy || use canna); then
+	if (use gtk || use gtk2) && use anthy; then
 		myconf+=( --enable-dict )
 	else
 		myconf+=( --disable-dict )
