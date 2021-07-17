@@ -21,7 +21,8 @@ SLOT="0"
 IUSE="debug justify magic minimal ncurses nls +spell +split-usr static unicode"
 
 LIB_DEPEND="
-	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?,static-libs(+)]
+	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?]
+	sys-libs/ncurses:=[static-libs(+)]
 	magic? ( sys-apps/file[static-libs(+)] )
 	nls? ( virtual/libintl )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"

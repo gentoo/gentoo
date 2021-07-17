@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN}-${PV/_}"
 	SRC_URI="https://www.nano-editor.org/dist/v${PV:0:1}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU GPL'd Pico clone with more functionality"
@@ -21,7 +21,8 @@ SLOT="0"
 IUSE="debug justify magic minimal ncurses nls +spell +split-usr static unicode"
 
 LIB_DEPEND="
-	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?,static-libs(+)]
+	>=sys-libs/ncurses-5.9-r1:=[unicode(+)?]
+	sys-libs/ncurses:=[static-libs(+)]
 	magic? ( sys-apps/file[static-libs(+)] )
 	nls? ( virtual/libintl )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
