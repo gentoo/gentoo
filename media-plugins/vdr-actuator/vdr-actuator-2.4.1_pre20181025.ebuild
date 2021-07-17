@@ -13,7 +13,7 @@ SRC_URI="https://github.com/olivluca/vdr-actuator-plugin/archive/${GIT_VERSION}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND=">=media-video/vdr-2.4"
 
