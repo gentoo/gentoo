@@ -4,11 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Sam James <sam@gentoo.org> (2021-07-17)
-# Haskell isn't stable on amd64 (or anywhere)
-# bug #801649
-dev-util/diffoscope haskell
-
 # Patrick McLean <chutzpah@gentoo.org> (2021-07-13)
 # Pulls in dev-libs/pmdk which has Haskell deps, a dep on rocr-runtime
 # all of which are not stable anywhere.
