@@ -4,7 +4,7 @@
 EAPI=7
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 GNOME2_EAUTORECONF=yes
 VALA_MIN_API_VERSION="0.44"
 VALA_USE_DEPEND=vapigen
@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.0:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 		')
 	)
 	udev? ( >=dev-libs/libgudev-167:= )
