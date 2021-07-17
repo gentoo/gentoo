@@ -55,7 +55,7 @@ OPTDEPEND="app-crypt/gnupg
 	dev-util/re2c
 	|| ( net-misc/wget[ssl] net-misc/curl[ssl] )
 	virtual/perl-MIME-Base64
-	virtual/perl-Pod-Parser
+	dev-perl/Pod-Parser
 	berkdb? ( virtual/perl-DB_File )
 	ipv6? ( dev-perl/IO-Socket-INET6 )
 	ldap? ( dev-perl/perl-ldap )
