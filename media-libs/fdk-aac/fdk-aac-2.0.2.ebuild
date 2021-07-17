@@ -26,6 +26,8 @@ SLOT="0/2"
 
 IUSE="static-libs examples"
 
+PATCHES=( "${FILESDIR}"/${P}-always_inline.patch )
+
 src_prepare() {
 	default
 	[[ ${PV} == *9999* ]] && eautoreconf
