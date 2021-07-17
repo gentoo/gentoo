@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DOLMEN
 DIST_VERSION=1.20
@@ -12,8 +12,7 @@ SRC_URI+=" mirror://gentoo/podspell.1.gz https://dev.gentoo.org/~tove/files/pods
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -22,11 +21,12 @@ RDEPEND="
 	dev-perl/Lingua-EN-Inflect
 	dev-perl/Path-Tiny
 	virtual/perl-Pod-Escapes
-	virtual/perl-Pod-Parser
+	dev-perl/Pod-Parser
 	virtual/perl-Text-Tabs+Wrap
 	virtual/perl-parent
 "
-DEPEND="${RDEPEND}
+
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
