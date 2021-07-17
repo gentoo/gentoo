@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit python-single-r1
 
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		>=media-libs/mutagen-1.11[${PYTHON_MULTI_USEDEP}]
+		>=media-libs/mutagen-1.11[${PYTHON_USEDEP}]
 	')
 	media-sound/vorbis-tools[ogg123]
 	aac? ( || (
