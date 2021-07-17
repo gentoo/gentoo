@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit gnome2 python-single-r1
 
@@ -31,7 +31,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	x11-libs/pango[introspection]
 	$(python_gen_cond_dep '
-		dev-python/gst-python:1.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/gst-python:1.0[${PYTHON_USEDEP}]
 	')
 	libnotify? ( x11-libs/libnotify[introspection] )
 
