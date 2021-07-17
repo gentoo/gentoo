@@ -28,14 +28,6 @@ mail-mta/courier fax
 dev-python/ipython nbconvert notebook
 dev-python/matplotlib wxwidgets
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-02)
-# Yixun Lan <dlan@gentoo.org> (2021-05-24)
-#   net-fs/samba not keyworded here yet
-app-misc/mc samba
-gnome-base/gvfs samba
-net-libs/libsoup samba
-www-client/elinks samba
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
 #  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib, net-libs/webkit-gtk
@@ -90,7 +82,7 @@ x11-base/xwayland unwind
 dev-libs/gobject-introspection doctool test
 dev-python/markdown test
 x11-libs/gtk+ test colord
-net-libs/libsoup samba test
+net-libs/libsoup test
 net-libs/libproxy spidermonkey webkit kde networkmanager
 
 # Sam James <sam@gentoo.org> (2021-03-11)
