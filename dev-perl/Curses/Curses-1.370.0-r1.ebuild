@@ -16,11 +16,11 @@ IUSE="+unicode test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=sys-libs/ncurses-5:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	virtual/perl-Data-Dumper
 "
 DEPEND="
-	>=sys-libs/ncurses-5:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 "
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
