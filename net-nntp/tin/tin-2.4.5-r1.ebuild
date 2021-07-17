@@ -15,15 +15,16 @@ KEYWORDS="amd64 arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="cancel-locks debug doc +etiquette gpg idn ipv6 mime nls sasl socks5 spell unicode"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="dev-libs/libpcre
+RDEPEND="
+	dev-libs/libpcre
 	dev-libs/uulib
+	sys-libs/ncurses:=[unicode(+)?]
 	gpg? ( app-crypt/gnupg )
 	idn? ( net-dns/libidn )
 	mime? ( net-mail/metamail )
 	nls? ( sys-devel/gettext )
 	sasl? ( virtual/gsasl )
 	socks5? ( net-proxy/dante )
-	sys-libs/ncurses:0[unicode?]
 	unicode? ( dev-libs/icu:= )"
 DEPEND="${RDEPEND}"
 
