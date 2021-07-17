@@ -1,13 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
-inherit meson optfeature udev
+inherit meson-multilib optfeature udev
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
-#	EGIT_BRANCH="master"
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
@@ -17,9 +16,9 @@ fi
 DESCRIPTION="Multimedia processing graphs"
 HOMEPAGE="https://pipewire.org/"
 
-LICENSE="LGPL-2.1+"
+LICENSE="MIT LGPL-2.1+ GPL-2"
 SLOT="0/0.3"
-IUSE="aac aptx bluetooth doc extra gstreamer jack-client ldac pipewire-alsa systemd test v4l"
+IUSE="aac aptx bluetooth doc extra gstreamer jack-client jack-sdk ldac pipewire-alsa systemd test v4l"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -30,21 +29,27 @@ IUSE="aac aptx bluetooth doc extra gstreamer jack-client ldac pipewire-alsa syst
 REQUIRED_USE="
 	aac? ( bluetooth )
 	aptx? ( bluetooth )
+	jack-sdk? ( !jack-client )
 	ldac? ( bluetooth )
 "
 
+RESTRICT="!test? ( test )"
+
 BDEPEND="
 	app-doc/xmltoman
+	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		media-gfx/graphviz
 	)
 "
 RDEPEND="
+	acct-group/audio
 	media-libs/alsa-lib
-	sys-apps/dbus
-	sys-libs/ncurses[unicode]
-	virtual/libudev
+	sys-apps/dbus[${MULTILIB_USEDEP}]
+	sys-libs/ncurses:=[unicode(+)]
+	virtual/libintl[${MULTILIB_USEDEP}]
+	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
 		aac? ( media-libs/fdk-aac )
 		aptx? ( media-libs/libopenaptx )
@@ -61,14 +66,18 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jack-client? ( >=media-sound/jack2-1.9.10:2[dbus] )
+	jack-sdk? (
+		!media-sound/jack-audio-connection-kit
+		!media-sound/jack2
+	)
 	pipewire-alsa? (
-		>=media-libs/alsa-lib-1.1.7
+		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
 		|| (
 			media-plugins/alsa-plugins[-pulseaudio]
 			!media-plugins/alsa-plugins
 		)
 	)
-	!pipewire-alsa? ( media-plugins/alsa-plugins[pulseaudio] )
+	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	systemd? ( sys-apps/systemd )
 	v4l? ( media-libs/libv4l )
 "
@@ -87,10 +96,9 @@ DEPEND="${RDEPEND}"
 
 DOCS=( {README,INSTALL}.md NEWS )
 
-RESTRICT="!test? ( test )"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	"${FILESDIR}"/${PN}-0.3.29-revert-openaptx-restriction.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
@@ -105,74 +113,77 @@ src_prepare() {
 		# significantly worse user experience on systemd then.
 		eapply "${FILESDIR}"/${PN}-0.3.25-non-systemd-integration.patch
 	fi
-}
-
-src_configure() {
-	local emesonargs=(
-		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
-		$(meson_feature doc docs)
-		-Dexamples=enabled # Disabling this implicitly disables -Dmedia-session (not good)
-		-Dmedia-session=enabled
-		-Dman=enabled
-		$(meson_feature test tests)
-		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
-		$(meson_feature gstreamer)
-		$(meson_feature gstreamer gstreamer-device-provider)
-		$(meson_feature systemd) # Also covers logind integration
-		-Dsystemd-system-service=disabled # Matches upstream
-		$(meson_feature systemd systemd-user-service)
-		$(meson_feature pipewire-alsa) # Allows integrating ALSA apps into PW graph
-		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
-		#-Dlibjack-path="" # Where to install libjack.so et al (if an absolute path is used, remember to prefix it with ${EROOT} or similar!); setting this will also break pw-jack's multilib support (but presumably that's okay as the intended use would be to replace system's libraries making the loader irrelevant)
-		-Dspa-plugins=enabled
-		-Dalsa=enabled # Allows using kernel ALSA for sound I/O (-Dmedia-session depends on this)
-		-Daudiomixer=enabled # Matches upstream
-		-Daudioconvert=enabled # Matches upstream
-		$(meson_feature bluetooth bluez5)
-		$(meson_feature bluetooth bluez5-backend-hsp-native)
-		$(meson_feature bluetooth bluez5-backend-hfp-native)
-		$(meson_feature bluetooth bluez5-backend-ofono)
-		$(meson_feature bluetooth bluez5-backend-hsphfpd)
-		$(meson_feature aac bluez5-codec-aac)
-		$(meson_feature aptx bluez5-codec-aptx)
-		$(meson_feature ldac bluez5-codec-ldac)
-		-Dcontrol=enabled # Matches upstream
-		-Daudiotestsrc=enabled # Matches upstream
-		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
-		$(meson_feature jack-client jack) # Allows PW to act as a JACK client
-		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
-		-Devl=disabled # Matches upstream
-		-Dtest=disabled # fakesink and fakesource plugins
-		$(meson_feature v4l v4l2)
-		-Dlibcamera=disabled # libcamera is not in Portage tree
-		-Dvideoconvert=enabled # Matches upstream
-		-Dvideotestsrc=enabled # Matches upstream
-		-Dvolume=enabled # Matches upstream
-		-Dvulkan=disabled # Uses pre-compiled Vulkan compute shader to provide a CGI video source (dev thing; disabled by upstream)
-		$(meson_feature extra pw-cat)
-		-Dudev=enabled
-		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
-		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
-		$(meson_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
-	)
-	meson_src_configure
-}
-
-src_compile() {
-	meson_src_compile
 
 	einfo "Generating ${limitsdfile}"
 	cat > ${limitsdfile} <<- EOF || die
 		# Start of ${limitsdfile} from ${P}
 
-		1000:60000	-	memlock 256
+		@audio	-	memlock 256
 
 		# End of ${limitsdfile} from ${P}
 	EOF
 }
 
-src_install() {
-	meson_src_install
+multilib_src_configure() {
+	local emesonargs=(
+		-Ddocdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(meson_native_use_feature doc docs)
+		$(meson_native_enabled examples) # Disabling this implicitly disables -Dmedia-session
+		$(meson_native_enabled media-session)
+		$(meson_native_enabled man)
+		$(meson_feature test tests)
+		-Dinstalled_tests=disabled # Matches upstream; Gentoo never installs tests
+		$(meson_native_use_feature gstreamer)
+		$(meson_native_use_feature gstreamer gstreamer-device-provider)
+		$(meson_native_use_feature systemd)
+		-Dsystemd-system-service=disabled # Matches upstream
+		$(meson_native_use_feature systemd systemd-user-service)
+		$(meson_feature pipewire-alsa) # Allows integrating ALSA apps into PW graph
+		-Dspa-plugins=enabled
+		-Dalsa=enabled # Allows using kernel ALSA for sound I/O (-Dmedia-session depends on this)
+		-Daudiomixer=enabled # Matches upstream
+		-Daudioconvert=enabled # Matches upstream
+		$(meson_native_use_feature bluetooth bluez5)
+		$(meson_native_use_feature bluetooth bluez5-backend-hsp-native)
+		$(meson_native_use_feature bluetooth bluez5-backend-hfp-native)
+		$(meson_native_use_feature bluetooth bluez5-backend-ofono)
+		$(meson_native_use_feature bluetooth bluez5-backend-hsphfpd)
+		$(meson_native_use_feature aac bluez5-codec-aac)
+		$(meson_native_use_feature aptx bluez5-codec-aptx)
+		$(meson_native_use_feature ldac bluez5-codec-ldac)
+		-Dcontrol=enabled # Matches upstream
+		-Daudiotestsrc=enabled # Matches upstream
+		-Dffmpeg=disabled # Disabled by upstream and no major developments to spa/plugins/ffmpeg/ since May 2020
+		-Dpipewire-jack=enabled # Allows integrating JACK apps into PW graph
+		$(meson_native_use_feature jack-client jack) # Allows PW to act as a JACK client
+		$(meson_feature jack-sdk jack-devel)
+		$(usex jack-sdk "-Dlibjack-path=${EPREFIX}/usr/$(get_libdir)" '')
+		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
+		-Devl=disabled # Matches upstream
+		-Dtest=disabled # fakesink and fakesource plugins
+		$(meson_native_use_feature v4l v4l2)
+		-Dlibcamera=disabled # libcamera is not in Portage tree
+		-Dvideoconvert=enabled # Matches upstream
+		-Dvideotestsrc=enabled # Matches upstream
+		-Dvolume=enabled # Matches upstream
+		-Dvulkan=disabled # Uses pre-compiled Vulkan compute shader to provide a CGI video source (dev thing; disabled by upstream)
+		$(meson_native_use_feature extra pw-cat)
+		-Dudev=enabled
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)/rules.d"
+		-Dsdl2=disabled # Controls SDL2 dependent code (currently only examples when -Dinstalled_tests=enabled which we never install)
+		$(meson_native_use_feature extra sndfile) # Enables libsndfile dependent code (currently only pw-cat)
+	)
+
+	meson_src_configure
+}
+
+multilib_src_install() {
+	# Our customs DOCS do not exist in multilib source directory
+	DOCS= meson_src_install
+}
+
+multilib_src_install_all() {
+	einstalldocs
 
 	insinto /etc/security/limits.d
 	doins ${limitsdfile}
@@ -195,43 +206,60 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use pipewire-alsa; then
-		elog "Contrary to what some online resources may suggest, avoid setting"
-		elog "PULSE_LATENCY_MSEC environment variable since it may break ALSA clients."
+	elog "It is recommended to raise RLIMIT_MEMLOCK to 256 for users"
+	elog "using PipeWire. Do it either manually or add yourself"
+	elog "to the 'audio' group:"
+	elog
+	elog "  usermod -aG audio <youruser>"
+	elog
+
+	if ! use jack-sdk; then
+		elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
+		elog "alternative libraries have been installed to a non-default location."
+		elog "To use them, put pw-jack <application> before every JACK application."
+		elog "When using pw-jack, do not run jackd/jackdbus. However, a virtual/jack"
+		elog "provider is still needed to compile the JACK applications themselves."
 		elog
 	fi
 
-	elog "JACK emulation is incomplete and not all programs will work. PipeWire's"
-	elog "alternative libraries have been installed to a non-default location."
-	elog "To use them, put pw-jack <application> before every JACK application."
-	elog "When using pw-jack, do not run jackd/jackdbus. However, a virtual/jack"
-	elog "provider is still needed to compile the JACK applications themselves."
-	elog
-
 	if use systemd; then
-		elog "Per Gentoo policy installed systemd units must be manually enabled:"
-		elog "systemctl --user disable pulseaudio.service pulseaudio.socket"
-		elog "systemctl --user enable pipewire.socket pipewire-pulse.socket"
-		elog "Rebooting is strongly recommended to avoid surprises from"
-		elog "remnant PulseAudio daemon auto-spawning and surviving logouts."
+		elog "To use PipeWire for audio, the user units must be manually enabled:"
 		elog
-		ewarn "Both new users and those upgrading need to enable pipewire-media-session:"
-		ewarn "systemctl --user enable pipewire-media-session.service"
+		elog "  systemctl --user enable pipewire.socket pipewire-pulse.socket"
+		elog
+		elog "When switching from PulseAudio, do not forget to disable PulseAudio:"
+		elog
+		elog "  systemctl --user disable pulseaudio.service pulseaudio.socket"
+		elog
+		elog "A reboot is recommended to avoid interferences from still running"
+		elog "PulseAudio daemon."
+		elog
+		elog "Both, new users and those upgrading, need to enable pipewire-media-session:"
+		elog
+		elog "  systemctl --user enable pipewire-media-session.service"
+		elog
+		elog "NOTE: This is not required when using PipeWire only for screencasting."
+		elog
 	else
-		elog "This ebuild auto-enables PulseAudio replacement. Because of that users"
+		elog "This ebuild auto-enables PulseAudio replacement. Because of that, users"
 		elog "are recommended to edit: ${EROOT}/etc/pulse/client.conf and disable "
 		elog "autospawn'ing of the original daemon by setting:"
-		elog "autospawn = no"
+		elog
+		elog "  autospawn = no"
+		elog
 		elog "Please note that the semicolon (;) must _NOT_ be at the beginning of the line!"
 		elog
 		elog "Alternatively, if replacing PulseAudio daemon is not desired, edit"
-		elog "${EROOT}/etc/pipewire/pipewire.conf"
-		elog "by commenting out the relevant command near the end of the file:"
+		elog "${EROOT}/etc/pipewire/pipewire.conf by commenting out the relevant"
+		elog "command near the end of the file:"
+		elog
 		elog "#\"/usr/bin/pipewire\" = { args = \"-c pipewire-pulse.conf\" }"
 		elog
-		elog "It is still necessary to manually enable PipeWire startup. Setup specific"
-		elog "instructions can be found at: https://wiki.gentoo.org/wiki/PipeWire"
 	fi
+
+	elog "For latest tips and tricks, troubleshooting information and documentation"
+	elog "in general, please refer to https://wiki.gentoo.org/wiki/PipeWire"
+	elog
 
 	optfeature_header "The following can be installed for optional runtime features:"
 	optfeature "restricted realtime capabilities vai D-Bus" sys-auth/rtkit

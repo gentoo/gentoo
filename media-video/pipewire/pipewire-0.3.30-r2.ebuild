@@ -12,7 +12,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"
@@ -45,7 +45,7 @@ RDEPEND="
 	acct-group/audio
 	media-libs/alsa-lib
 	sys-apps/dbus[${MULTILIB_USEDEP}]
-	sys-libs/ncurses[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libintl[${MULTILIB_USEDEP}]
 	virtual/libudev[${MULTILIB_USEDEP}]
 	bluetooth? (
@@ -96,7 +96,7 @@ DOCS=( {README,INSTALL}.md NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
-	"${FILESDIR}"/${PN}-0.3.31-revert-openaptx-restriction.patch
+	"${FILESDIR}"/${PN}-0.3.29-revert-openaptx-restriction.patch
 )
 
 # limitsdfile related code taken from =sys-auth/realtime-base-0.1
@@ -109,7 +109,7 @@ src_prepare() {
 	if ! use systemd; then
 		# This can be applied non-conditionally but would make for a
 		# significantly worse user experience on systemd then.
-		eapply "${FILESDIR}"/${PN}-0.3.31-non-systemd-integration.patch
+		eapply "${FILESDIR}"/${PN}-0.3.25-non-systemd-integration.patch
 	fi
 
 	einfo "Generating ${limitsdfile}"
