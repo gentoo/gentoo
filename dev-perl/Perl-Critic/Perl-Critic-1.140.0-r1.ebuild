@@ -1,27 +1,26 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=PETDANCE
-DIST_VERSION=1.130
+DIST_VERSION=1.140
 inherit perl-module elisp-common
 
 DESCRIPTION="Critique Perl source code for best-practices"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE="test minimal examples emacs"
-RESTRICT="!test? ( test )"
+KEYWORDS="~amd64 ~ppc ~ppc64"
+IUSE="minimal examples emacs"
+
 SITEFILE="50${PN}-gentoo.el"
+
 RDEPEND="
 	>=dev-perl/B-Keywords-1.50.0
 	virtual/perl-Carp
 	>=dev-perl/Config-Tiny-2
-	>=dev-perl/Email-Address-1.889.0
 	>=dev-perl/Exception-Class-1.230.0
 	>=virtual/perl-Exporter-5.630.0
-	dev-perl/File-HomeDir
 	virtual/perl-File-Path
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp
@@ -30,14 +29,15 @@ RDEPEND="
 	dev-perl/IO-String
 	>=dev-perl/List-MoreUtils-0.190.0
 	>=dev-perl/Module-Pluggable-3.100.0
-	>=dev-perl/PPI-1.224
-	>=dev-perl/PPIx-Regexp-0.27.0
+	>=dev-perl/PPI-1.265.0
+	dev-perl/PPIx-QuoteLike
+	>=dev-perl/PPIx-Regexp-0.80.0
 	>=dev-perl/PPIx-Utilities-1.1.0
-	virtual/perl-Pod-Parser
+	dev-perl/Pod-Parser
 	>=dev-perl/Pod-Spell-1
 	>=dev-perl/Readonly-2
 	virtual/perl-Scalar-List-Utils
-	>=dev-perl/String-Format-1.130.0
+	>=dev-perl/String-Format-1.180.0
 	dev-perl/Task-Weaken
 	>=virtual/perl-Term-ANSIColor-2.20.0
 	>=virtual/perl-Test-Simple-0.920.0
@@ -46,14 +46,16 @@ RDEPEND="
 	>=virtual/perl-version-0.770.0
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
-DEPEND="${RDEPEND}
+
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.402.400
 	test? (
 		dev-perl/Test-Deep
 		!minimal? (
 			dev-perl/Test-Memory-Cycle
 		)
-	)"
+	)
+"
 
 src_compile() {
 	perl-module_src_compile
@@ -61,6 +63,7 @@ src_compile() {
 		elisp-compile extras/perlcritic.el
 	fi
 }
+
 src_install() {
 	perl-module_src_install
 	if use examples; then
@@ -75,9 +78,11 @@ src_install() {
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	fi
 }
+
 pkg_postinst() {
 	use emacs && elisp-site-regen
 }
+
 pkg_postrm() {
 	use emacs && elisp-site-regen
 }
