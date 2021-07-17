@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit autotools python-single-r1 xdg-utils
 
@@ -41,15 +41,15 @@ RDEPEND="${DEPEND}
 	sys-apps/util-linux
 	>=sys-devel/gdb-7
 	$(python_gen_cond_dep '
-			dev-libs/satyr[${PYTHON_MULTI_USEDEP}]
-			dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-			dev-python/argh[${PYTHON_MULTI_USEDEP}]
-			dev-python/humanize[${PYTHON_MULTI_USEDEP}]
+			dev-libs/satyr[${PYTHON_USEDEP}]
+			dev-python/argcomplete[${PYTHON_USEDEP}]
+			dev-python/argh[${PYTHON_USEDEP}]
+			dev-python/humanize[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="
 	test? (
-		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_MULTI_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]')
 	)
 	app-text/asciidoc
 	app-text/xmlto
