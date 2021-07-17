@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
@@ -31,15 +31,15 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/jellyfish-0.7.1[${PYTHON_MULTI_USEDEP}]
-		dev-python/munkres[${PYTHON_MULTI_USEDEP}]
-		>=media-libs/mutagen-1.33[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-musicbrainz-ngs-0.4[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests-oauthlib[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/six-1.9[${PYTHON_MULTI_USEDEP}]
-		dev-python/unidecode[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/jellyfish-0.7.1[${PYTHON_USEDEP}]
+		dev-python/munkres[${PYTHON_USEDEP}]
+		>=media-libs/mutagen-1.33[${PYTHON_USEDEP}]
+		>=dev-python/python-musicbrainz-ngs-0.4[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		>=dev-python/six-1.9[${PYTHON_USEDEP}]
+		dev-python/unidecode[${PYTHON_USEDEP}]
 	')"
 DEPEND="
 	${RDEPEND}
@@ -51,23 +51,23 @@ BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
 			dev-db/sqlite[icu]
-			dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
-			dev-python/bluelet[${PYTHON_MULTI_USEDEP}]
-			dev-python/discogs-client[${PYTHON_MULTI_USEDEP}]
-			dev-python/flask[${PYTHON_MULTI_USEDEP}]
-			dev-python/mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/pyacoustid[${PYTHON_MULTI_USEDEP}]
-			dev-python/pylast[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-			dev-python/python-mpd[${PYTHON_MULTI_USEDEP}]
-			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+			dev-python/beautifulsoup[${PYTHON_USEDEP}]
+			dev-python/bluelet[${PYTHON_USEDEP}]
+			dev-python/discogs-client[${PYTHON_USEDEP}]
+			dev-python/flask[${PYTHON_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/pyacoustid[${PYTHON_USEDEP}]
+			dev-python/pylast[${PYTHON_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			dev-python/python-mpd[${PYTHON_USEDEP}]
+			dev-python/pyxdg[${PYTHON_USEDEP}]
 			|| (
-				dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+				dev-python/pillow[${PYTHON_USEDEP}]
 				media-gfx/imagemagick
 			)
-			dev-python/rarfile[${PYTHON_MULTI_USEDEP}]
-			dev-python/responses[${PYTHON_MULTI_USEDEP}]
-			dev-python/wheel[${PYTHON_MULTI_USEDEP}]
+			dev-python/rarfile[${PYTHON_USEDEP}]
+			dev-python/responses[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
 			media-libs/chromaprint[tools]
 			media-libs/flac
 			media-libs/gst-plugins-bad:1.0
