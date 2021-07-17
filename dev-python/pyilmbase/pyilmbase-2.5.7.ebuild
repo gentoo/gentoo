@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit cmake python-single-r1
 
 DESCRIPTION="IlmBase Python bindings"
@@ -23,8 +23,8 @@ RDEPEND="
 	~media-libs/openexr-${PV}:=
 	sys-libs/zlib
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.62.0-r1:=[python,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/numpy-1.10.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.62.0-r1:=[python,${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.10.4[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"
