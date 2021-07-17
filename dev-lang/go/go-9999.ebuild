@@ -31,6 +31,7 @@ HOMEPAGE="https://golang.org"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
+IUSE="cpu_flags_x86_sse2"
 
 BDEPEND="|| (
 		dev-lang/go
@@ -114,7 +115,7 @@ src_compile() {
 	fi
 
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
-	export GOROOT="$(pwd)"
+	export GOROOT="${PWD}"
 	export GOBIN="${GOROOT}/bin"
 
 	# Go's build script does not use BUILD/HOST/TARGET consistently. :(
@@ -126,9 +127,8 @@ src_compile() {
 	export GOOS=$(go_os)
 	export CC_FOR_TARGET=$(tc-getCC)
 	export CXX_FOR_TARGET=$(tc-getCXX)
-	if [[ ${ARCH} == arm ]]; then
-		export GOARM=$(go_arm)
-	fi
+	use arm && export GOARM=$(go_arm)
+	use x86 && export GO386=$(usex cpu_flags_x86_sse2 '' 'softfloat')
 
 	cd src
 	bash -x ./make.bash || die "build failed"
