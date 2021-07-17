@@ -157,7 +157,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 4.7 && IUSE+=" go"
 	# sanitizer support appeared in gcc-4.8, but <gcc-5 does not
 	# support modern glibc.
-	tc_version_is_at_least 5 && IUSE+=" +sanitize"
+	tc_version_is_at_least 5 && IUSE+=" +sanitize"  TC_FEATURES+=(sanitize)
 	# Note:
 	#   <gcc-4.8 supported graphite, it required forked ppl
 	#     versions which we dropped.  Since graphite was also experimental in
@@ -243,6 +243,13 @@ if tc_has_feature gcj ; then
 			app-arch/unzip
 		)
 	"
+fi
+
+if tc_has_feature sanitize ; then
+	# libsanitizer relies on 'crypt.h' to be present
+	# on target. glibc user to provide it unconditionally.
+	# Nowadays it's a standalone library: #802648
+	DEPEND+=" sanitize? ( virtual/libcrypt )"
 fi
 
 if tc_has_feature systemtap ; then
