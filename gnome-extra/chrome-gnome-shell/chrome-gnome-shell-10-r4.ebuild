@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit cmake-utils python-single-r1
 
@@ -24,8 +24,8 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	gnome-base/gnome-shell
 "
