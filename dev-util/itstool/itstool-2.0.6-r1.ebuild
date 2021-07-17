@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="xml"
 
 inherit python-single-r1
@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+		dev-libs/libxml2[python,${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 BDEPEND=""
