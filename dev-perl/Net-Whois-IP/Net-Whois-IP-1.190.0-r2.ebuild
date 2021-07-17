@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_VERSION=${PV%0.0}
 DIST_AUTHOR=BSCHMITZ
@@ -11,16 +11,18 @@ DESCRIPTION="Perl extension for looking up the whois information for ip addresse
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
 PERL_RM_FILES=(
 	"test.pl" # gets installed otherwise :(
 )
+
 RDEPEND="
 	dev-perl/Regexp-IPv6
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
 src_test() {
 	local MODULES=(
 		"Net::Whois::IP ${DIST_VERSION}"
