@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
 inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
@@ -50,8 +50,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=x11-libs/pango-1.37.2
 	x11-libs/gtk+:3
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		media-gfx/scour[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		media-gfx/scour[${PYTHON_USEDEP}]
 	')
 	cdr? (
 		app-text/libwpg:0.3
@@ -87,7 +87,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # on that.
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
