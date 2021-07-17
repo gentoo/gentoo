@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-COMMON_DEPEND="sys-libs/ncurses:0=[unicode]"
+COMMON_DEPEND="sys-libs/ncurses:=[unicode(+)]"
 RDEPEND="${COMMON_DEPEND}
 	!>=sys-libs/ncurses-6.1
 "
