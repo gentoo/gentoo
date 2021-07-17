@@ -23,7 +23,7 @@ IUSE="+unicode"
 
 RDEPEND="
 	media-sound/pulseaudio
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
