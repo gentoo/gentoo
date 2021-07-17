@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
 inherit autotools python-single-r1
 
@@ -30,8 +30,8 @@ BDEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3
 	alsa? ( dev-python/pyalsa )
