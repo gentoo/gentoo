@@ -19,14 +19,14 @@ IUSE="dbus network-map +ovf +savevm spice +vnc-client"
 RDEPEND="
 	app-emulation/qemu[vnc,virtfs,spice?]
 	dev-db/sqlite:3=
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	virtual/libusb:1
 	virtual/libudev:=
 	dbus? ( sys-apps/dbus )
 	network-map? ( media-gfx/graphviz[svg] )
 	ovf? (
 		dev-libs/libxml2:2
-		app-arch/libarchive
+		app-arch/libarchive:=
 	)
 	spice? ( app-emulation/virt-viewer )
 	vnc-client? ( net-misc/tigervnc )
