@@ -17,7 +17,7 @@ REQUIRED_USE="sound? ( || ( ncurses sdl ) )"
 
 DEPEND="
 	ncurses? (
-		sys-libs/ncurses:0=[unicode?]
+		sys-libs/ncurses:=[unicode(+)?]
 		sound? (
 			media-libs/libao
 			media-libs/libmodplug
