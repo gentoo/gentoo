@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_7,3_8,3_9} )
+PYTHON_COMPAT=( python{3_8,3_9} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
@@ -35,7 +35,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.60:=[nls,python,threads(+),${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.60:=[nls,python,threads(+),${PYTHON_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
