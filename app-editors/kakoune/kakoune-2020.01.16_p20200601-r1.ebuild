@@ -15,7 +15,7 @@ LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
-DEPEND="sys-libs/ncurses:0=[unicode]"
+DEPEND="sys-libs/ncurses:=[unicode(+)]"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
