@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=yesplz
 DISTUTILS_SINGLE_IMPL=yesplz
 GENTOO_DEPEND_ON_PERL=no
 PATCHSET=3
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 WANT_AUTOMAKE=none
 inherit autotools distutils-r1 perl-module systemd
 
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	perl? ( dev-lang/perl:= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+			dev-python/setuptools[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
