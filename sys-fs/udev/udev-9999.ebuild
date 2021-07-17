@@ -46,6 +46,7 @@ BDEPEND="
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl )
 	kmod? ( >=sys-apps/kmod-15 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
