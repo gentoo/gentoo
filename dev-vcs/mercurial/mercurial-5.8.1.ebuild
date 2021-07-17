@@ -127,7 +127,7 @@ zstd-safe-2.0.5+zstd.1.4.5
 zstd-sys-1.4.17+zstd.1.4.5
 "
 
-inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic
+inherit bash-completion-r1 cargo elisp-common distutils-r1 flag-o-matic multiprocessing
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -143,7 +143,6 @@ IUSE="+chg emacs gpg test tk rust"
 BDEPEND="rust? ( ${RUST_DEPEND} )"
 RDEPEND="
 	app-misc/ca-certificates
-	dev-python/zstandard[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
 	tk? ( dev-lang/tk )"
 
@@ -153,10 +152,11 @@ DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 		dev-python/pygments[${PYTHON_USEDEP}]
 		)"
 
-SITEFILE="70${PN}-gentoo.el"
+PATCHES=(
+	"${FILESDIR}"/${P}-testing-timeout.patch
+)
 
-# Too many tests fail #608720
-RESTRICT="test"
+SITEFILE="70${PN}-gentoo.el"
 
 src_unpack() {
 	default_src_unpack
@@ -171,10 +171,6 @@ python_prepare_all() {
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
 	sed -i -e 's/__APPLE__/__NO_APPLE__/g' mercurial/cext/osutil.c || die
-	# Use absolute import for zstd
-	sed -i -e 's/from \.* import zstd/import zstandard as zstd/' \
-		mercurial/utils/compression.py \
-		mercurial/wireprotoframing.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -182,7 +178,7 @@ python_prepare_all() {
 src_compile() {
 	if use rust; then
 		pushd rust/hg-cpython || die
-		cargo_src_compile --no-default-features --features python3
+		cargo_src_compile --no-default-features --features python3 --jobs $(makeopts_jobs)
 		popd
 	fi
 	distutils-r1_src_compile
@@ -194,7 +190,7 @@ python_compile() {
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
-	distutils-r1_python_compile build_ext --no-zstd
+	distutils-r1_python_compile build_ext
 }
 
 python_compile_all() {
@@ -216,7 +212,7 @@ python_install() {
 	if use rust; then
 		local -x HGWITHRUSTEXT="cpython"
 	fi
-	distutils-r1_python_install build_ext --no-zstd
+	distutils-r1_python_install build_ext
 }
 
 python_install_all() {
@@ -270,6 +266,7 @@ src_test() {
 	rm -f test-convert-mtn*		# monotone
 	rm -f test-convert-tla*		# GNU Arch tla
 	rm -f test-largefiles*		# tends to time out
+	rm -f test-https*			# requires to support tls1.0
 	if [[ ${EUID} -eq 0 ]]; then
 		einfo "Removing tests which require user privileges to succeed"
 		rm -f test-convert*
@@ -287,12 +284,11 @@ src_test() {
 python_test() {
 	local TEST_DIR
 
-	rm -rf "${TMPDIR}"/test
 	distutils_install_for_testing
 	cd tests || die
-	"${PYTHON}" run-tests.py --verbose \
-		--tmpdir="${TMPDIR}"/test \
-		--with-hg="${TEST_DIR}"/scripts/hg \
+	"${PYTHON}" run-tests.py \
+		--jobs $(makeopts_jobs) \
+		--timeout 0 \
 		|| die "Tests fail with ${EPYTHON}"
 }
 
