@@ -22,7 +22,7 @@ IUSE="test unicode"
 REQUIRED_USE="test? ( unicode )"
 
 DEPEND="
-	sys-libs/ncurses:0=[unicode?]
+	sys-libs/ncurses:=[unicode(+)?]
 	sys-libs/readline:0="
 RDEPEND="${DEPEND}
 	dev-vcs/git"
