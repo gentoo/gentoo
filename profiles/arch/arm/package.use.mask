@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-07-17)
+# Java isn't available here right now
+dev-util/diffoscope pdf
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
 # no stable virtual/jdk on this arch
 media-libs/rubberband jni
