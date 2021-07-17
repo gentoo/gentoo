@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit autotools optfeature python-single-r1
 
@@ -34,14 +34,14 @@ RDEPEND="${PYTHON_DEPS}"
 DEPEND="
 	ch-image? (
 		$(python_gen_cond_dep '
-			dev-python/lark-parser[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+			dev-python/lark-parser[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
 		')
 	)
 	doc? (
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 		')
 		net-misc/rsync
 	)"
