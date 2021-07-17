@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/pygame[${PYTHON_USEDEP}]')
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-mixer[vorbis]"
 BDEPEND="
