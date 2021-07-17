@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-single-r1 waf-utils multilib-build multilib-minimal
@@ -33,9 +33,9 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-		dev-python/rdflib[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/rdflib[${PYTHON_USEDEP}]
 	')
 "
 DOCS=( "README.md" "NEWS" )
