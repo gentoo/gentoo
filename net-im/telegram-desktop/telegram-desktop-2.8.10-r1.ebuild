@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+dbus enchant +gtk +hunspell +jemalloc +spell wayland webkit +X"
+IUSE="+dbus enchant +gtk +hunspell +spell wayland webkit +X"
 REQUIRED_USE="
 	spell? (
 		^^ ( enchant hunspell )
@@ -29,6 +29,7 @@ RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
 	dev-cpp/glibmm:2
+	dev-libs/jemalloc:=
 	dev-libs/xxhash
 	>=dev-qt/qtcore-5.15:5
 	>=dev-qt/qtgui-5.15:5[dbus?,jpeg,png,wayland?,X(-)?]
@@ -53,7 +54,6 @@ RDEPEND="
 	enchant? ( app-text/enchant:= )
 	gtk? ( x11-libs/gtk+:3[X?,wayland?] )
 	hunspell? ( >=app-text/hunspell-1.7:= )
-	jemalloc? ( dev-libs/jemalloc:= )
 	wayland? ( kde-frameworks/kwayland:= )
 	webkit? ( net-libs/webkit-gtk:= )
 	X? ( x11-libs/libxcb:= )
@@ -74,9 +74,6 @@ PATCHES=(
 	# https://github.com/desktop-app/cmake_helpers/pull/91
 	# https://github.com/desktop-app/lib_webview/pull/2
 	"${FILESDIR}/tdesktop-2.8.9-disable-webkit-separately.patch"
-	# Not going to attempt upstreaming this after the reaction to
-	#  "disable-webkit-separately"
-	"${FILESDIR}/tdesktop-2.8.9-disable-jemalloc-separately.patch"
 	# Not a proper fix, not upstreamed
 	"${FILESDIR}/tdesktop-2.8.9-webview-fix-glib.patch"
 )
@@ -110,7 +107,6 @@ src_configure() {
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus OFF ON)
 		-DDESKTOP_APP_DISABLE_GTK_INTEGRATION=$(usex gtk OFF ON)
 		-DDESKTOP_APP_DISABLE_WEBKIT=$(usex webkit OFF ON)
-		-DDESKTOP_APP_DISABLE_JEMALLOC=$(usex jemalloc OFF ON)
 		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell OFF ON)  # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant ON OFF)  # enables enchant and disables hunspell
 	)
@@ -143,5 +139,5 @@ src_configure() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	use gtk || elog "enable 'gtk' useflag if you have image copy-paste problems"
+	use gtk || elog "enable the 'gtk' useflag if you have image copy-paste problems"
 }
