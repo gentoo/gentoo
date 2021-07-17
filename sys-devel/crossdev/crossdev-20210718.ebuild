@@ -5,7 +5,7 @@ EAPI=8
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/crossdev.git"
+	EGIT_REPO_URI="git://anongit.gentoo.org/proj/crossdev.git"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
