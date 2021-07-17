@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 CMAKE_BUILD_TYPE=Release
 
 inherit cmake linux-info python-single-r1
@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 DEPEND+="
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pexpect[${PYTHON_MULTI_USEDEP}]
+			dev-python/pexpect[${PYTHON_USEDEP}]
 		')
 		sys-devel/gdb[xml]
 	)"
