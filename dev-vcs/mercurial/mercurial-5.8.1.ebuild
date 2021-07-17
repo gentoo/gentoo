@@ -158,6 +158,8 @@ PATCHES=(
 
 SITEFILE="70${PN}-gentoo.el"
 
+RESTRICT="!test? ( test )"
+
 src_unpack() {
 	default_src_unpack
 	if use rust; then
