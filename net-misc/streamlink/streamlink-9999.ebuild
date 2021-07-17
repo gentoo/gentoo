@@ -8,7 +8,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 ${GIT_ECLASS}
@@ -29,11 +29,11 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	$(python_gen_cond_dep '
-		>dev-python/requests-2.21.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/isodate[${PYTHON_MULTI_USEDEP}]
-		dev-python/websocket-client[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycountry[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pycryptodome-3.4.3[${PYTHON_MULTI_USEDEP}]
+		>dev-python/requests-2.21.0[${PYTHON_USEDEP}]
+		dev-python/isodate[${PYTHON_USEDEP}]
+		dev-python/websocket-client[${PYTHON_USEDEP}]
+		dev-python/pycountry[${PYTHON_USEDEP}]
+		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}
@@ -43,10 +43,10 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	$(python_gen_cond_dep '
 		test? (
-			dev-python/mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests-mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/pytest[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/freezegun-1.0.0[${PYTHON_MULTI_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/requests-mock[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			>=dev-python/freezegun-1.0.0[${PYTHON_USEDEP}]
 		)
 	')"
 
