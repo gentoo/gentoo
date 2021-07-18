@@ -3,16 +3,14 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="Creates windows installer on usb media from an iso image"
 HOMEPAGE="https://github.com/WoeUSB/WoeUSB"
 SRC_URI="https://github.com/WoeUSB/WoeUSB/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/WoeUSB-${PV}"
 
 LICENSE="CC-BY-SA-4.0 GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test" # No test suite
 
 RDEPEND="
 	app-arch/wimlib
@@ -20,13 +18,18 @@ RDEPEND="
 	sys-block/parted
 	sys-boot/grub:2[grub_platforms_pc]
 	sys-fs/dosfstools
-	sys-fs/ntfs3g
-"
+	sys-fs/ntfs3g"
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/WoeUSB-${PV}"
 
 src_prepare() {
 	default
-	sed -i -e "s/@@WOEUSB_VERSION@@/${PV}/" sbin/"${PN}" || die
+
+	sed -i "s/@@WOEUSB_VERSION@@/${PV}/" sbin/${PN} share/man/man1/${PN}.1 || die
+}
+
+src_install() {
+	dosbin sbin/${PN}
+	doman share/man/man1/${PN}.1
+
+	einstalldocs
 }
