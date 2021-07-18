@@ -20,6 +20,8 @@ BDEPEND="
 	sys-devel/m4
 	virtual/pkgconfig"
 DEPEND="
+	acct-group/smmsp
+	>=acct-user/smmsp-0-r2
 	net-mail/mailbase
 	>=sys-libs/db-3.2:=
 	ldap? ( net-nds/openldap )
@@ -29,8 +31,6 @@ DEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )"
 RDEPEND="
 	${DEPEND}
-	acct-group/smmsp
-	>=acct-user/smmsp-0-r2
 	>=mail-filter/libmilter-1.0.2_p1-r1
 	!mail-mta/courier
 	!mail-mta/esmtp
