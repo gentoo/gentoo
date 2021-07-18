@@ -48,16 +48,15 @@ RDEPEND="app-accessibility/at-spi2-atk:2
 	emoji? ( media-fonts/noto-emoji )"
 DEPEND="${RDEPEND}"
 
-QA_PREBUILT="
-	/opt/Element/chrome-sandbox
-	/opt/Element/element-desktop
-	/opt/Element/libEGL.so
-	/opt/Element/libGLESv2.so
-	/opt/Element/libffmpeg.so
-	/opt/Element/libvk_swiftshader.so
-	/opt/Element/libvulkan.so.1
-	/opt/Element/swiftshader/libEGL.so
-	/opt/Element/swiftshader/libGLESv2.so"
+QA_PREBUILT="opt/Element/chrome-sandbox
+	opt/Element/element-desktop
+	opt/Element/libEGL.so
+	opt/Element/libGLESv2.so
+	opt/Element/libffmpeg.so
+	opt/Element/libvk_swiftshader.so
+	opt/Element/libvulkan.so.1
+	opt/Element/swiftshader/libEGL.so
+	opt/Element/swiftshader/libGLESv2.so"
 
 src_prepare() {
 	default
@@ -73,7 +72,7 @@ src_install() {
 	doins -r opt
 	local f
 	for f in ${QA_PREBUILT}; do
-		fperms +x "${f}"
+		fperms +x "/${f}"
 	done
 	fperms u+s /opt/Element/chrome-sandbox
 
