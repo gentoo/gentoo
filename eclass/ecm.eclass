@@ -4,7 +4,7 @@
 # @ECLASS: ecm.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Support eclass for packages that use KDE Frameworks with ECM.
 # @DESCRIPTION:
 # This eclass is intended to streamline the creation of ebuilds for packages
@@ -21,15 +21,9 @@
 # any phase functions are overridden the version here should also be called.
 
 case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
-
-if [[ -v KDE_GCC_MINIMAL ]]; then
-	EXPORT_FUNCTIONS pkg_pretend
-fi
-
-EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
 
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
@@ -40,6 +34,8 @@ _ECM_ECLASS=1
 # Here we redefine default value to be manual, if your package needs virtualx
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
+
+inherit cmake flag-o-matic toolchain-funcs virtualx
 
 # @ECLASS-VARIABLE: ECM_NONGUI
 # @DEFAULT_UNSET
@@ -52,8 +48,6 @@ if [[ ${CATEGORY} = kde-frameworks ]] ; then
 	: ${ECM_NONGUI:=true}
 fi
 : ${ECM_NONGUI:=false}
-
-inherit cmake flag-o-matic toolchain-funcs virtualx
 
 if [[ ${ECM_NONGUI} = false ]] ; then
 	inherit xdg
@@ -154,7 +148,7 @@ fi
 if [[ ${CATEGORY} = kde-frameworks ]]; then
 	: ${KFMIN:=$(ver_cut 1-2)}
 fi
-: ${KFMIN:=5.64.0}
+: ${KFMIN:=5.82.0}
 
 # @ECLASS-VARIABLE: KFSLOT
 # @INTERNAL
@@ -271,7 +265,7 @@ unset COMMONDEPEND
 # @DESCRIPTION:
 # Determine if the current GCC version is acceptable, otherwise die.
 _ecm_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
+	if [[ ${MERGE_TYPE} != binary && -v ${KDE_GCC_MINIMAL} ]] && tc-is-gcc; then
 
 		local version=$(gcc-version)
 
@@ -586,3 +580,9 @@ ecm_pkg_postrm() {
 }
 
 fi
+
+if [[ -v ${KDE_GCC_MINIMAL} ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_prepare src_configure src_test pkg_preinst pkg_postinst pkg_postrm
