@@ -17,6 +17,7 @@
 		<flag name="rubberband">Enable use of <pkg>media-libs/rubberband</pkg> for the pitch-shifting FX</flag>
 		<flag name="webrtc">Enable use of <pkg>media-plugins/gst-plugins-webrtc</pkg> for various
 			voice-enhancement FX</flag>
+		<flag name="zamaudio">Enable use of <pkg>media-plugins/zam-plugins</pkg> for the maximizer FX</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">wwmm/easyeffects</remote-id>

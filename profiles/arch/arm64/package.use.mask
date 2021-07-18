@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# media-libs/rnnoise, media-libs/rubberband[ladspa], media-plugins/gst-plugins-webrtc not keyworded here
-media-sound/easyeffects rnnoise rubberband webrtc
+# media-libs/rnnoise, media-libs/rubberband[ladspa], media-plugins/gst-plugins-webrtc
+# and media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects rnnoise rubberband webrtc zamaudio
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
 # Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.

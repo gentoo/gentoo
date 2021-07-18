@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# media-libs/rnnoise, media-plugins/gst-plugins-webrtc not keyworded here
-media-sound/easyeffects rnnoise webrtc
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
+# and media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects rnnoise webrtc zamaudio
 
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
 # dev-python/django is not keyworded here
