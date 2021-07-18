@@ -167,10 +167,7 @@ llvm.org_set_globals() {
 
 # == phase functions ==
 
-EXPORT_FUNCTIONS src_unpack
-if ver_test -ge 10.0.1_rc; then
-	EXPORT_FUNCTIONS src_prepare
-fi
+EXPORT_FUNCTIONS src_unpack src_prepare
 
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
