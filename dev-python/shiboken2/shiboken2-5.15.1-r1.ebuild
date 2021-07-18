@@ -41,7 +41,8 @@ QT_PV="$(ver_cut 1-2):5"
 # Since Clang is required at both build- and runtime, BDEPEND is omitted here.
 RDEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtcore-${QT_PV}
-	>=sys-devel/clang-6:=
+	sys-devel/clang:=
+	sys-devel/clang-runtime:=
 	docstrings? (
 		>=dev-libs/libxml2-2.6.32
 		>=dev-libs/libxslt-1.1.19
