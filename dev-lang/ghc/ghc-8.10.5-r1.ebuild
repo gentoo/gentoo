@@ -526,8 +526,8 @@ src_configure() {
 		echo '# Gentoo changes' > mk/build.mk
 
 		# Put docs into the right place, ie /usr/share/doc/ghc-${GHC_PV}
-		echo "docdir = ${EPREFIX}/usr/share/doc/$(cross)${P}" >> mk/build.mk
-		echo "htmldir = ${EPREFIX}/usr/share/doc/$(cross)${P}" >> mk/build.mk
+		echo "docdir = ${EPREFIX}/usr/share/doc/$(cross)${PF}" >> mk/build.mk
+		echo "htmldir = ${EPREFIX}/usr/share/doc/$(cross)${PF}" >> mk/build.mk
 
 		# We also need to use the GHC_FLAGS flags when building ghc itself
 		echo "SRC_HC_OPTS+=${HCFLAGS} ${GHC_FLAGS}" >> mk/build.mk
