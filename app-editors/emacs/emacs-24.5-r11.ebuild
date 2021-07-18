@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
@@ -83,12 +83,12 @@ RDEPEND="acct-group/mail
 DEPEND="${RDEPEND}
 	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
-BDEPEND="app-eselect/eselect-emacs
-	virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
-RDEPEND="${RDEPEND}
-	app-eselect/eselect-emacs"
+IDEPEND="app-eselect/eselect-emacs"
+
+RDEPEND+=" ${IDEPEND}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
