@@ -68,13 +68,6 @@ _CHECK_REQS_ECLASS=1
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
 
-# Obsolete function executing all the checks and printing out results
-check_reqs() {
-	eerror "Package calling old ${FUNCNAME} function."
-	eerror "It should call check-reqs_pkg_pretend and check-reqs_pkg_setup."
-	die "${FUNCNAME} is banned"
-}
-
 # @FUNCTION: check-reqs_pkg_setup
 # @DESCRIPTION:
 # Exported function running the resources checks in pkg_setup phase.
