@@ -13,7 +13,6 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="doc ffmpeg plugins themes"
 
-DEPEND=""
 RDEPEND="dev-lang/perl
 	media-gfx/jhead
 	virtual/imagemagick-tools
@@ -29,7 +28,6 @@ src_install() {
 		dodoc -r Docs/.
 	fi
 
-	dodir /usr/share/album
 	insinto /usr/share/album
 	cd .. || die
 	doins -r lang
