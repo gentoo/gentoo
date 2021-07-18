@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common bits for fetching & unpacking llvm.org projects
 # @DESCRIPTION:
 # The llvm.org eclass provides common code to fetch and unpack parts
@@ -30,7 +30,7 @@
 # @CODE
 
 case "${EAPI:-0}" in
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
