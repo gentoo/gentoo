@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=SWMCD
 DIST_VERSION=1.11
@@ -11,9 +11,10 @@ DESCRIPTION="Manage newsrc files"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~ppc x86"
-IUSE=""
 
-RDEPEND=">=dev-perl/Set-IntSpan-1.70.0"
-DEPEND="${RDEPEND}
+RDEPEND="
+	>=dev-perl/Set-IntSpan-1.70.0
+"
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
