@@ -77,7 +77,7 @@ check_chroot() {
 		[ ! -d "${CHROOT}/etc/bind" ] || [ ! -d "${CHROOT}/var/bind" ] && return 1
 		[ ! -d "${CHROOT}/var/log/named" ] && return 1
 		[ ! -c "${CHROOT}/dev/null" ] || [ ! -c "${CHROOT}/dev/zero" ] && return 1
-		[ ! -c "${CHROOT}/dev/random" ] && [ ! -c "${CHROOT}/dev/urandom" ] && return 1
+		[ ! -c "${CHROOT}/dev/urandom" ] && return 1
 		[ "${CHROOT_GEOIP:-0}" -eq 1 ] && [ ! -d "${CHROOT}/usr/share/GeoIP" ] && return 1
 		if [ ${OPENSSL_LIBGOST:-0} -eq 1 ]; then
 			if [ -d "/usr/lib64" ]; then
