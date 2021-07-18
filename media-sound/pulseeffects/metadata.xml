@@ -17,6 +17,7 @@
 		<flag name="rubberband">Enable use of <pkg>media-libs/rubberband</pkg> for the pitch-shifting FX</flag>
 		<flag name="webrtc">Enable use of <pkg>media-plugins/gst-plugins-webrtc</pkg> for various
 			voice-enhancement FX</flag>
+		<flag name="zamaudio">Enable use of <pkg>media-plugins/zam-plugins</pkg> for the maximizer FX</flag>
 	</use>
 	<longdescription lang="en">
 		GUI to manage audio effects for Pulseaudio applications, giving full control over the effects order to the user.
