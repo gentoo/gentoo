@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/file-5.40-seccomp-faccessat.patch"
 	"${FILESDIR}/file-5.40-seccomp-fstatat64.patch" #784857
 	"${FILESDIR}/file-5.40-revert-char-count.patch" #799188
+	"${FILESDIR}/file-5.40-seccomp-fstatat64-musl.patch" #789336, not upstream yet
 )
 
 src_prepare() {
