@@ -66,11 +66,23 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 
 # @ECLASS-VARIABLE: CMAKE_REMOVE_MODULES_LIST
+# @PRE_INHERIT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Array of CMake modules that will be removed in ${CMAKE_USE_DIR}
-# (in EAPI-7: ${S}) during src_prepare, in order to force packages to use the
-# system version.  Set to empty to disable removing modules entirely.
-: ${CMAKE_REMOVE_MODULES_LIST:=FindBLAS FindLAPACK}
+# Array of .cmake modules to be removed in ${CMAKE_USE_DIR} (in EAPI-7: ${S})
+# during src_prepare, in order to force packages to use the system version.
+# By default, contains "FindBLAS" and "FindLAPACK".
+# Set to empty to disable removing modules entirely.
+if [[ ${CMAKE_REMOVE_MODULES_LIST} ]]; then
+	if [[ ${EAPI} != 7 ]]; then
+		[[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* ]] ||
+			die "CMAKE_REMOVE_MODULES_LIST must be an array"
+	fi
+else
+	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
+		CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
+	fi
+fi
 
 # @ECLASS-VARIABLE: CMAKE_USE_DIR
 # @DESCRIPTION:
@@ -108,7 +120,7 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 
 [[ ${CMAKE_MIN_VERSION} ]] && die "CMAKE_MIN_VERSION is banned; if necessary, set BDEPEND=\">=dev-util/cmake-${CMAKE_MIN_VERSION}\" directly"
 [[ ${CMAKE_BUILD_DIR} ]] && die "The ebuild must be migrated to BUILD_DIR"
-[[ ${CMAKE_REMOVE_MODULES} ]] && die "CMAKE_REMOVE_MODULES is banned, set CMAKE_REMOVE_MODULES_LIST=\"\" instead"
+[[ ${CMAKE_REMOVE_MODULES} ]] && die "CMAKE_REMOVE_MODULES is banned, set CMAKE_REMOVE_MODULES_LIST array instead"
 [[ ${CMAKE_UTILS_QA_SRC_DIR_READONLY} ]] && die "Use CMAKE_QA_SRC_DIR_READONLY instead"
 [[ ${WANT_CMAKE} ]] && die "WANT_CMAKE has been removed and is a no-op"
 [[ ${PREFIX} ]] && die "PREFIX has been removed and is a no-op"
@@ -353,10 +365,10 @@ cmake_src_prepare() {
 	fi
 
 	local modules_list
-	if [[ $(declare -p CMAKE_REMOVE_MODULES_LIST) == "declare -a"* ]]; then
-		modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
-	else
+	if [[ ${EAPI} == 7 && $(declare -p CMAKE_REMOVE_MODULES_LIST) != "declare -a"* ]]; then
 		modules_list=( ${CMAKE_REMOVE_MODULES_LIST} )
+	else
+		modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
 	fi
 
 	local name
