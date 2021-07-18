@@ -87,23 +87,17 @@ src_compile() {
 	# Drop jikes support as it seems to be unfriendly with SWT
 	java-pkg_filter-compiler jikes
 
-	local AWT_ARCH
 	local JAWTSO="libjawt.so"
-	if [[ $(tc-arch) == 'ppc64' ]] ; then
-		# no big-endian support
-		AWT_ARCH="ppc64le"
-	else
-		AWT_ARCH="amd64"
-	fi
-	if [[ -f "${JAVA_HOME}/jre/lib/${AWT_ARCH}/${JAWTSO}" ]]; then
-		export AWT_LIB_PATH="${JAVA_HOME}/jre/lib/${AWT_ARCH}"
-	elif [[ -f "${JAVA_HOME}/jre/bin/${JAWTSO}" ]]; then
-		export AWT_LIB_PATH="${JAVA_HOME}/jre/bin"
-	elif [[ -f "${JAVA_HOME}/$(get_libdir)/${JAWTSO}" ]] ; then
-		export AWT_LIB_PATH="${JAVA_HOME}/$(get_libdir)"
-	elif [[ -f "${JAVA_HOME}/lib/${JAWTSO}" ]] ; then
-		export AWT_LIB_PATH="${JAVA_HOME}/lib"
-	else
+	IFS=":" read -r -a ldpaths <<< $(java-config -g LDPATH)
+
+	for libpath in "${ldpaths[@]}"; do
+		if [[ -f "${libpath}/${JAWTSO}" ]]; then
+			export AWT_LIB_PATH="${libpath}"
+			break
+		fi
+	done
+
+	if [[ -z "${AWT_LIB_PATH}" ]]; then
 		eerror "${JAWTSO} not found in the JDK being used for compilation!"
 		die "cannot build AWT library"
 	fi
