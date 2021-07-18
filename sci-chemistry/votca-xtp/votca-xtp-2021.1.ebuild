@@ -26,7 +26,6 @@ RDEPEND="
 	>=dev-cpp/eigen-3.3
 	~sci-chemistry/votca-csg-${PV}
 	sci-libs/hdf5[cxx]
-	sci-libs/libecpint
 	sci-libs/libxc
 	sci-libs/libint:2
 	~sci-libs/votca-tools-${PV}
