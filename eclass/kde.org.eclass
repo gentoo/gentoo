@@ -82,12 +82,14 @@ declare -A KDE_ORG_CATEGORIES=(
 readonly KDE_ORG_CATEGORIES
 
 # @ECLASS-VARIABLE: KDE_ORG_CATEGORY
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If unset, default value is mapped from ${CATEGORY} to corresponding upstream
 # category on invent.kde.org, with "kde" as fallback value.
 : ${KDE_ORG_CATEGORY:=${KDE_ORG_CATEGORIES[${CATEGORY}]:-kde}}
 
 # @ECLASS-VARIABLE: KDE_ORG_COMMIT
+# @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set, instead of a regular release tarball, pull tar.gz snapshot from an
@@ -95,16 +97,23 @@ readonly KDE_ORG_CATEGORIES
 # at the desired COMMIT ID.
 
 # @ECLASS-VARIABLE: KDE_ORG_NAME
+# @PRE_INHERIT
 # @DESCRIPTION:
 # If unset, default value is set to ${PN}.
 # Name of the package as hosted on kde.org mirrors.
 : ${KDE_ORG_NAME:=$PN}
 
 # @ECLASS-VARIABLE: KDE_GEAR
+# @PRE_INHERIT
 # @DESCRIPTION:
-# If set to "false", do nothing.
+# Mark package is being part of KDE Gear release schedule.
+# By default, this is set to "false" and does nothing.
+# If CATEGORY equals kde-apps, this is automatically set to "true".
 # If set to "true", set SRC_URI accordingly and apply KDE_UNRELEASED.
 : ${KDE_GEAR:=false}
+if [[ ${CATEGORY} == kde-apps ]]; then
+	KDE_GEAR=true
+fi
 
 # @ECLASS-VARIABLE: KDE_SELINUX_MODULE
 # @PRE_INHERIT
@@ -137,9 +146,6 @@ case ${CATEGORY} in
 		KDE_ORG_NAME=${QT5_MODULE:-${PN}}
 		HOMEPAGE="https://community.kde.org/Qt5PatchCollection
 			https://invent.kde.org/qt/qt/ https://www.qt.io/"
-		;;
-	kde-apps)
-		KDE_GEAR=true
 		;;
 	kde-plasma)
 		HOMEPAGE="https://kde.org/plasma-desktop"
