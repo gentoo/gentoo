@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="bs2b calf rnnoise rubberband webrtc"
+IUSE="bs2b calf rnnoise rubberband webrtc zamaudio"
 
 DEPEND=">=dev-libs/boost-1.72:=
 	>=dev-cpp/glibmm-2.56.0:2
@@ -48,7 +48,8 @@ RDEPEND="!media-sound/pulseeffects
 	sys-apps/dbus
 	calf? ( >=media-plugins/calf-0.90.1[lv2] )
 	rubberband? ( media-libs/rubberband[ladspa] )
-	webrtc? ( media-plugins/gst-plugins-webrtc )"
+	webrtc? ( media-plugins/gst-plugins-webrtc )
+	zamaudio? ( media-plugins/zam-plugins )"
 # Only header files are used from libsamplerate so put it here rather than DEPEND
 # to avoid unnecessary cross-compilation.
 BDEPEND="dev-libs/appstream-glib
