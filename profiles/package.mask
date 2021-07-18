@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# No gtk4 and friends in the tree yet
+>=media-sound/easyeffects-6.0.0
+
 # Hans de Graaff <graaff@gentoo.org> (2021-07-18)
 # Compatibility package for ruby 1.8. No longer maintained upstream.
 # Last release in 2016, but current release in gentoo is from 2012.
