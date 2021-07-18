@@ -129,11 +129,10 @@ BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
-RDEPEND="${RDEPEND}
-	!app-editors/emacs-vcs:27
-	app-eselect/eselect-emacs"
-
 IDEPEND="app-eselect/eselect-emacs"
+
+RDEPEND+=" ${IDEPEND}
+	!app-editors/emacs-vcs:27"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
