@@ -37,5 +37,5 @@ all_ruby_prepare() {
 	rm -f spec/readme_spec.rb || die
 
 	# Ensure the correct version of cucumber-messages is used
-	sed -i -e '1igem "cucumber-messages", "~> 15.0"' $(find spec -name '*_spec.rb') || die
+	sed -i -e '1igem "cucumber-messages", "~> 15.0" ; gem "cucumber-gherkin", "~> 18.0"' $(find spec -name '*_spec.rb') || die
 }
