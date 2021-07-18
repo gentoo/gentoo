@@ -29,7 +29,7 @@
 # BDEPEND="
 #   verify-sig? ( app-crypt/openpgp-keys-example )"
 #
-# VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/example.asc
+# VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/example.asc
 # @CODE
 
 case ${EAPI} in
