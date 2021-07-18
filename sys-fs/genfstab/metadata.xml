@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>marco@scardovi.com</email>
-		<name>Marco Scardovi</name>
-	</maintainer>
-	<maintainer type="person" proxied="proxy">
+	<maintainer type="person">
 		<email>mattst88@gentoo.org</email>
 		<name>Matt Turner</name>
 	</maintainer>
