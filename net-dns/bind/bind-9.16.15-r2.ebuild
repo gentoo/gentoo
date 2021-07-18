@@ -222,7 +222,7 @@ src_install() {
 	insinto /var/bind/pri
 	newins "${FILESDIR}"/localhost.zone-r3 localhost.zone
 
-	newinitd "${FILESDIR}"/named.init-r13 named
+	newinitd "${FILESDIR}"/named.init-r14 named
 	newconfd "${FILESDIR}"/named.confd-r7 named
 
 	newenvd "${FILESDIR}"/10bind.env 10bind
@@ -354,6 +354,9 @@ pkg_config() {
 
 	mknod ${CHROOT}/dev/zero c 1 5 || die
 	chmod 0666 ${CHROOT}/dev/zero || die
+
+	mknod ${CHROOT}/dev/urandom c 1 9 || die
+	chmod 0666 ${CHROOT}/dev/urandom || die
 
 	if [ "${CHROOT_NOMOUNT:-0}" -ne 0 ]; then
 		cp -a /etc/bind ${CHROOT}/etc/ || die
