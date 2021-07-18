@@ -7,8 +7,8 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
-# @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
+# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @BLURB: Provides a uniform way of handling ebuilds with very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
 # build requirements in terms of memory or disk space. It provides a function
@@ -38,14 +38,22 @@
 # These checks should probably mostly work on non-Linux, and they should
 # probably degrade gracefully if they don't. Probably.
 
-if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
+case ${EAPI} in
+	4|5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
+esac
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup
+
+if [[ ! ${_CHECK_REQS_ECLASS} ]]; then
+_CHECK_REQS_ECLASS=1
 
 # @ECLASS-VARIABLE: CHECKREQS_MEMORY
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much RAM is needed? Eg.: CHECKREQS_MEMORY=15M
 
-# @ECLASS-VARIABLE:  CHECKREQS_DISK_BUILD
+# @ECLASS-VARIABLE: CHECKREQS_DISK_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much diskspace is needed to build the package? Eg.: CHECKREQS_DISK_BUILD=2T
@@ -59,13 +67,6 @@ if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
-
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-EXPORT_FUNCTIONS pkg_pretend pkg_setup
 
 # Obsolete function executing all the checks and printing out results
 check_reqs() {
@@ -357,5 +358,4 @@ check-reqs_unsatisfied() {
 	CHECKREQS_FAILED="true"
 }
 
-_CHECK_REQS_ECLASS_=1
 fi
