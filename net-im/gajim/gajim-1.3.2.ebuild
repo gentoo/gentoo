@@ -20,7 +20,7 @@ PATCHES=( "${FILESDIR}/gajim-1.3.2-fix-historymanager.diff" )
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+crypt geolocation jingle remote rst +spell upnp +webp omemo"
+IUSE="+crypt geolocation jingle omemo remote rst +spell upnp +webp"
 S="${WORKDIR}/${P}"
 
 COMMON_DEPEND="
@@ -60,6 +60,11 @@ RDEPEND="${COMMON_DEPEND}
 			media-libs/gst-plugins-ugly:1.0
 			media-plugins/gst-plugins-gtk
 		)
+		omemo? (
+			dev-python/python-axolotl[${PYTHON_USEDEP}]
+			dev-python/qrcode[${PYTHON_USEDEP}]
+			dev-python/cryptography[${PYTHON_USEDEP}]
+		)
 		remote? (
 			>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
 			sys-apps/dbus[X]
@@ -71,11 +76,6 @@ RDEPEND="${COMMON_DEPEND}
 		)
 		upnp? ( net-libs/gupnp-igd[introspection] )
 		webp? ( dev-python/pillow[${PYTHON_USEDEP}] )
-		omemo? (
-			dev-python/python-axolotl[${PYTHON_USEDEP}]
-			dev-python/qrcode[${PYTHON_USEDEP}]
-			dev-python/cryptography[${PYTHON_USEDEP}]
-		)
 	')"
 
 src_install() {
