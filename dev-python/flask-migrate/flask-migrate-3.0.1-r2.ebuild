@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=dev-python/alembic-0.7[${PYTHON_USEDEP}]
-	<dev-python/flask-2[${PYTHON_USEDEP}]
+	>=dev-python/flask-0.9[${PYTHON_USEDEP}]
 	>=dev-python/flask-sqlalchemy-1.0[${PYTHON_USEDEP}]
 "
 
