@@ -18,14 +18,21 @@
     <flag name="a-like-o">
       Changes view of letter 'a' - a looks like o (see homepage)
     </flag>
+    <flag name="center-tilde">
+      Place the '~' character vertically centered on the line instead of to the
+      top.
+    </flag>
     <flag name="distinct-l">
       ll2 variant with more distinctive l (lowercase L)
     </flag>
     <flag name="otf">
       Install Open Type Font (OTF) (required for HarfBuzz backend)
     </flag>
-    <flag name="pcf">
-      Install Portable Compiled Font (PCF) (X11 bitmap fonts)
+    <flag name="pcf-8bit">
+      Install Portable Compiled Font (PCF) (X11 bitmap fonts), 8-bit encodings
+    </flag>
+    <flag name="pcf-unicode">
+      Install Portable Compiled Font (PCF) (X11 bitmap fonts), Unicode encodings
     </flag>
     <flag name="psf">
       Install PC Screen Font (PSF) with unicode data (for linux console)
@@ -46,13 +53,6 @@
     </flag>
     <flag name="ru-k">
       Changes view of Russian letter 'k' (see homepage)
-    </flag>
-    <flag name="center-tilde">
-      Place the '~' character vertically centered on the line instead of to the
-      top.
-    </flag>
-    <flag name="pcf-unicode-only">
-      Remove non-unicode PCF fonts that could be problematic. See bug #520222.
     </flag>
   </use>
   <upstream>
