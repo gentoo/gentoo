@@ -26,6 +26,7 @@ RDEPEND="
 	media-libs/libglvnd[X]
 	>=sys-apps/dbus-1.4.2[X]
 	sys-libs/zlib
+	virtual/opengl
 	x11-libs/libSM
 	x11-libs/libdrm
 	x11-libs/libICE
