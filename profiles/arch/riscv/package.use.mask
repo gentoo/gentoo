@@ -4,7 +4,10 @@
 # Marek Szuba <marecki@gentoo.org> (2021-07-19)
 # sci-libs/hdf5 currently not supported (fails tests) on this arch
 dev-libs/starpu hdf5
+sci-libs/gdal hdf5
 sys-cluster/slurm hdf5
+# (via dev-python/pytables)
+dev-python/pandas doc full-support test
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # LuaJIT does not support riscv
@@ -34,8 +37,8 @@ dev-python/matplotlib wxwidgets
 app-editors/emacs gconf m17n-lib xwidgets
 #  - net-fs/openafs
 app-crypt/heimdal afs
-#  - dev-python/pygraphviz & sci-libs/gdal, dev-python/pandas
-dev-python/networkx extras pandas
+#  - dev-python/pygraphviz & sci-libs/gdal
+dev-python/networkx extras
 #  - sys-cluster/ceph
 net-analyzer/rrdtool rados
 #  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
