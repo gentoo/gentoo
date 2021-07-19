@@ -25,7 +25,10 @@ DEPEND="media-libs/ladspa-sdk
 	sci-libs/fftw:3.0
 	x11-libs/libX11
 	jack? ( media-sound/jack-audio-connection-kit )
-	opengl? ( media-libs/libglvnd[X] )"
+	opengl? (
+		media-libs/libglvnd[X]
+		x11-libs/cairo[X]
+	)"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
