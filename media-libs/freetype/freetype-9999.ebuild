@@ -60,10 +60,10 @@ _egit_repo_handler() {
 		esac
 
 		local EGIT_REPO_URI
-		EGIT_REPO_URI="https://git.sv.nongnu.org/r/freetype/freetype2.git"
+		EGIT_REPO_URI="https://gitlab.freedesktop.org/freetype/freetype.git"
 		git-r3_src_${phase}
 		if use utils ; then
-			EGIT_REPO_URI="https://git.sv.nongnu.org/r/freetype/freetype2-demos.git"
+			EGIT_REPO_URI="https://gitlab.freedesktop.org/freetype/freetype-demos.git"
 			local EGIT_CHECKOUT_DIR="${WORKDIR}/ft2demos-${PV}"
 			git-r3_src_${phase}
 		fi
