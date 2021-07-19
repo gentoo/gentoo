@@ -76,7 +76,7 @@ _CHECK_REQS_ECLASS=1
 check-reqs_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	check-reqs_prepare
+	_check-reqs_prepare
 	check-reqs_run
 	check-reqs_output
 }
@@ -95,6 +95,16 @@ check-reqs_pkg_pretend() {
 # @DESCRIPTION:
 # Internal function that checks the variables that should be defined.
 check-reqs_prepare() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_prepare "$@"
+}
+
+# @FUNCTION: _check-reqs_prepare
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that checks the variables that should be defined.
+_check-reqs_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z ${CHECKREQS_MEMORY} &&
