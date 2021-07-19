@@ -15,7 +15,7 @@ KEYWORDS="amd64"
 
 RDEPEND="
 	dev-libs/wayland
-	!x11-drivers/nvidia-drivers[wayland(-)]"
+	!<x11-drivers/nvidia-drivers-470.57.02[wayland(-)]"
 DEPEND="
 	${RDEPEND}
 	gui-libs/eglexternalplatform
