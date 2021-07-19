@@ -77,7 +77,7 @@ check-reqs_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	_check-reqs_prepare
-	check-reqs_run
+	_check-reqs_run
 	check-reqs_output
 }
 
@@ -122,6 +122,16 @@ _check-reqs_prepare() {
 # @DESCRIPTION:
 # Internal function that runs the check based on variable settings.
 check-reqs_run() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_run "$@"
+}
+
+# @FUNCTION: _check-reqs_run
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that runs the check based on variable settings.
+_check-reqs_run() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	# some people are *censored*
