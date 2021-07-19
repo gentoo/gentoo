@@ -338,7 +338,7 @@ _check-reqs_memory() {
 			eend 0
 		else
 			eend 1
-			check-reqs_unsatisfied \
+			_check-reqs_unsatisfied \
 				${size} \
 				"RAM"
 		fi
@@ -380,7 +380,7 @@ _check-reqs_disk() {
 	if [[ $? == 0 && -n ${space_kbi} ]] ; then
 		if [[ ${space_kbi} -lt $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
-			check-reqs_unsatisfied \
+			_check-reqs_unsatisfied \
 				${size} \
 				"disk space at \"${path}\""
 		else
@@ -421,10 +421,22 @@ _check-reqs_start_phase() {
 # @FUNCTION: check-reqs_unsatisfied
 # @INTERNAL
 # @DESCRIPTION:
-# Internal function that inform about check result.
+# Internal function that informs about check result.
 # It has different output between pretend and setup phase,
 # where in pretend phase it is fatal.
 check-reqs_unsatisfied() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_unsatisfied "$@"
+}
+
+# @FUNCTION: _check-reqs_unsatisfied
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that informs about check result.
+# It has different output between pretend and setup phase,
+# where in pretend phase it is fatal.
+_check-reqs_unsatisfied() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${2} ]] && die "Usage: ${FUNCNAME} [size] [location]"
