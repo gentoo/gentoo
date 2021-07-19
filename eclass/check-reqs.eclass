@@ -312,7 +312,7 @@ _check-reqs_memory() {
 	local actual_memory
 	local actual_swap
 
-	check-reqs_start_phase \
+	_check-reqs_start_phase \
 		${size} \
 		"RAM"
 
@@ -371,7 +371,7 @@ _check-reqs_disk() {
 	local size=${2}
 	local space_kbi
 
-	check-reqs_start_phase \
+	_check-reqs_start_phase \
 		${size} \
 		"disk space at \"${path}\""
 
@@ -397,6 +397,16 @@ _check-reqs_disk() {
 # @DESCRIPTION:
 # Internal function that inform about started check
 check-reqs_start_phase() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_start_phase "$@"
+}
+
+# @FUNCTION: _check-reqs_start_phase
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that inform about started check
+_check-reqs_start_phase() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${2} ]] && die "Usage: ${FUNCNAME} [size] [location]"
