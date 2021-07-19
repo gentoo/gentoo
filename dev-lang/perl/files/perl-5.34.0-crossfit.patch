@@ -1,0 +1,13 @@
+diff --git a/cnf/configure_path.sh b/cnf/configure_path.sh
+index fe7eac7..f55317f 100644
+--- a/cnf/configure_path.sh
++++ b/cnf/configure_path.sh
+@@ -67,6 +67,8 @@ define d_inc_version_list 'undef'
+ define otherlibdirs ''
+ define d_perl_otherlibdirs 'undef'
+ 
++define d_gentoolibdirs 'undef'
++
+ define siteman1dir "$man1dir"
+ define siteman3dir "$man3dir"
+ define sitehtml1dir "$html1dir"
