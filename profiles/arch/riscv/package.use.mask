@@ -39,6 +39,10 @@ app-editors/emacs gconf m17n-lib xwidgets
 app-crypt/heimdal afs
 #  - sci-libs/gdal
 dev-python/networkx extras
+#  - media-libs/dumb, media-libs/openal
+media-libs/allegro dumb openal
+#  - media-gfx/nvidia-texture-tools
+media-libs/devil nvtt
 #  - sys-cluster/ceph
 net-analyzer/rrdtool rados
 #  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
@@ -123,10 +127,7 @@ dev-libs/libpcre jit
 
 app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp test
 app-arch/p7zip wxwidgets
-app-doc/doxygen doc
 app-text/asciidoc test
-app-text/po4a test
-dev-libs/check subunit
 dev-libs/libgcrypt doc
 dev-python/argcomplete test
 dev-python/aiohttp doc test
@@ -142,9 +143,7 @@ dev-util/catalyst iso
 dev-util/pkgconf test
 dev-vcs/git cvs highlight subversion
 media-libs/harfbuzz doc
-sys-libs/libcxx libcxxabi libunwind static-libs
-sys-libs/libcxxabi libunwind
-media-gfx/graphviz devil svg pdf
+sys-libs/libcxx static-libs
 media-libs/tiff jbig webp
 net-fs/nfs-utils nfsv41
 media-libs/fontconfig doc
