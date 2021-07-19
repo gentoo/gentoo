@@ -139,7 +139,7 @@ _check-reqs_run() {
 
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -n ${CHECKREQS_MEMORY} ]] && \
-			check-reqs_memory \
+			_check-reqs_memory \
 				${CHECKREQS_MEMORY}
 
 		[[ -n ${CHECKREQS_DISK_BUILD} ]] && \
@@ -294,6 +294,16 @@ _check-reqs_output() {
 # @DESCRIPTION:
 # Internal function that checks size of RAM.
 check-reqs_memory() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_memory "$@"
+}
+
+# @FUNCTION: _check-reqs_memory
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that checks size of RAM.
+_check-reqs_memory() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
