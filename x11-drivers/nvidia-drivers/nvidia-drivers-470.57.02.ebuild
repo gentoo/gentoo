@@ -4,7 +4,7 @@
 EAPI=7
 
 MODULES_OPTIONAL_USE="driver"
-inherit desktop linux-info linux-mod multilib-build optfeature \
+inherit desktop linux-info linux-mod multilib-build \
 	readme.gentoo-r1 systemd toolchain-funcs unpacker
 
 NV_KERNEL_MAX="5.13"
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 LICENSE="GPL-2 MIT NVIDIA-r2 ZLIB"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* ~amd64"
-IUSE="+X +driver static-libs +tools"
+IUSE="+X +driver static-libs +tools wayland"
 
 COMMON_DEPEND="
 	acct-group/video
@@ -50,7 +50,8 @@ RDEPEND="
 		media-libs/libglvnd[X,${MULTILIB_USEDEP}]
 		x11-libs/libX11[${MULTILIB_USEDEP}]
 		x11-libs/libXext[${MULTILIB_USEDEP}]
-	)"
+	)
+	wayland? ( >=gui-libs/egl-wayland-1.1.7-r1 )"
 DEPEND="
 	${COMMON_DEPEND}
 	static-libs? (
@@ -74,18 +75,12 @@ QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 )
+
 DOCS=(
 	README.txt NVIDIA_Changelog supported-gpus/supported-gpus.json
 	nvidia-settings/doc/{FRAMELOCK,NV-CONTROL-API}.txt
 )
 HTML_DOCS=( html/. )
-
-DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="Users should be in the 'video' group to use NVIDIA devices.
-You can add yourself by using: gpasswd -a my-user video
-
-For general information on using nvidia-drivers, please see:
-https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 
 pkg_setup() {
 	use driver || return
@@ -165,6 +160,12 @@ src_prepare() {
 	sed 's/__USER__/nvpd/' \
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> nvidia-persistenced.service || die
+
+	# enable nvidia-drm.modeset=1 by default with USE=wayland
+	cp "${FILESDIR}"/nvidia-470.conf "${T}"/nvidia.conf || die
+	if use wayland; then
+		sed -i '/^#.*modeset=1$/s/^#//' "${T}"/nvidia.conf || die
+	fi
 
 	gzip -d nvidia-{cuda-mps-control,smi}.1.gz || die
 }
@@ -274,9 +275,7 @@ src_install() {
 		linux-mod_src_install
 
 		insinto /etc/modprobe.d
-		newins "${FILESDIR}"/nvidia-460.conf nvidia.conf
-		doins "${FILESDIR}"/nvidia-blacklist-nouveau.conf
-		doins "${FILESDIR}"/nvidia-rmmod.conf
+		doins "${T}"/nvidia.conf
 
 		insinto /lib/firmware/nvidia/${PV}
 		doins firmware/gsp.bin
@@ -370,8 +369,19 @@ src_install() {
 	dobin systemd/nvidia-sleep.sh
 	systemd_dounit systemd/system/nvidia-{hibernate,resume,suspend}.service
 
-	einstalldocs
+	# create README.gentoo
+	local DISABLE_AUTOFORMATTING="yes"
+	local DOC_CONTENTS=\
+"Trusted users should be in the 'video' group to use NVIDIA devices.
+You can add yourself by using: gpasswd -a my-user video
+
+See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options.
+
+For general information on using nvidia-drivers, please see:
+https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	readme.gentoo_create_doc
+
+	einstalldocs
 }
 
 pkg_preinst() {
@@ -381,8 +391,7 @@ pkg_preinst() {
 	# set video group id based on live system (bug #491414)
 	local g=$(getent group video | cut -d: -f3)
 	[[ ${g} ]] || die "Failed to determine video group id"
-	sed "s/PACKAGE/${PF}/;s/VIDEOGID/${g}/" \
-		-i "${ED}"/etc/modprobe.d/nvidia.conf || die
+	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do
@@ -397,14 +406,14 @@ pkg_preinst() {
 		fi
 	done
 	rm "${ED}"/usr/share/nvidia/supported-gpus.json || die
+
+	has_version "x11-drivers/nvidia-drivers[wayland]" && NV_HAD_WAYLAND=1
 }
 
 pkg_postinst() {
 	use driver && linux-mod_pkg_postinst
 
 	readme.gentoo_print_elog
-
-	optfeature "wayland EGLStream with nvidia-drm.modeset=1" gui-libs/egl-wayland
 
 	if [[ -r /proc/driver/nvidia/version &&
 		$(grep -o '  [0-9.]*  ' /proc/driver/nvidia/version) != "  ${PV}  " ]]; then
@@ -423,6 +432,17 @@ pkg_postinst() {
 		fi
 		ewarn "...then downgrade to a legacy branch if possible. For details, see:"
 		ewarn "https://www.nvidia.com/object/IO_32667.html"
+	fi
+
+	if use wayland && use driver && [[ ! ${NV_HAD_WAYLAND} ]]; then
+		elog
+		elog "With USE=wayland, this version of ${PN} sets nvidia-drm.modeset=1"
+		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. This feature is considered"
+		elog "experimental but is required for EGLStream (used for wayland acceleration"
+		elog "in compositors that support it) and PRIME offloading."
+		elog
+		elog "If you experience issues, please comment out the option from nvidia.conf."
+		elog "It is notably known to cause problems with SLI (Scalable Link Interface)."
 	fi
 
 	# Try to show this message only to users that may really need it
