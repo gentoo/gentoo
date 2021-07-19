@@ -42,14 +42,19 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # Eclass can use different cmake binary than the one provided in by system.
 : ${CMAKE_BINARY:=cmake}
 
+[[ ${EAPI} == 7 ]] && : ${CMAKE_BUILD_TYPE:=Gentoo}
 # @ECLASS-VARIABLE: CMAKE_BUILD_TYPE
 # @DESCRIPTION:
 # Set to override default CMAKE_BUILD_TYPE. Only useful for packages
 # known to make use of "if (CMAKE_BUILD_TYPE MATCHES xxx)".
 # If about to be set - needs to be set before invoking cmake_src_configure.
-# You usually do *NOT* want nor need to set it as it pulls CMake default
-# build-type specific compiler flags overriding make.conf.
-: ${CMAKE_BUILD_TYPE:=Gentoo}
+#
+# The default is RelWithDebInfo as that is least likely to append undesirable
+# flags. However, you may still need to sed CMake files or choose a different
+# build type to achieve desirable results.
+#
+# In EAPI 7, the default was non-standard build type of Gentoo.
+: ${CMAKE_BUILD_TYPE:=RelWithDebInfo}
 
 # @ECLASS-VARIABLE: CMAKE_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
