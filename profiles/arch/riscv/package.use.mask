@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-19)
+# sci-libs/hdf5 currently not supported (fails tests) on this arch
+dev-libs/starpu hdf5
+sys-cluster/slurm hdf5
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # LuaJIT does not support riscv
 app-text/texlive-core luajittex
@@ -37,16 +42,14 @@ www-client/elinks samba
 app-editors/emacs gconf m17n-lib xwidgets
 #  - net-fs/openafs
 app-crypt/heimdal afs
-#  - sci-libs/hdf5
-dev-libs/starpu hdf5
 #  - dev-python/pygraphviz & sci-libs/gdal, dev-python/pandas
 dev-python/networkx extras pandas
 #  - sys-cluster/ceph
 net-analyzer/rrdtool rados
 #  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
 sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
-#  - sci-libs/hdf5, sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
-sys-cluster/slurm hdf5 ofed slurmdbd
+#  - sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
+sys-cluster/slurm ofed slurmdbd
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
