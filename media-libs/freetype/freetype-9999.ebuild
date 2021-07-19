@@ -42,7 +42,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
