@@ -30,6 +30,7 @@ valgrind
 bluetooth
 emacs
 fuse
+jack
 java
 latex
 libedit
@@ -37,6 +38,7 @@ mono
 motif
 opencl
 qt5
+pulseaudio
 rsh
 ruby
 slang
