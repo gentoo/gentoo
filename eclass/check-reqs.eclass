@@ -167,6 +167,17 @@ _check-reqs_run() {
 # Internal function that returns number in KiB.
 # Returns 1024**2 for 1G or 1024**3 for 1T.
 check-reqs_get_kibibytes() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_kibibytes "$@"
+}
+
+# @FUNCTION: _check-reqs_get_kibibytes
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that returns number in KiB.
+# Returns 1024**2 for 1G or 1024**3 for 1T.
+_check-reqs_get_kibibytes() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -274,10 +285,10 @@ check-reqs_memory() {
 			| sed -e 's/^[^:=]*[:=][[:space:]]*//')
 	fi
 	if [[ -n ${actual_memory} ]] ; then
-		if [[ ${actual_memory} -ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+		if [[ ${actual_memory} -ge $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 0
 		elif [[ -n ${actual_swap} && $((${actual_memory} + ${actual_swap})) \
-				-ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+				-ge $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			ewarn "Amount of main memory is insufficient, but amount"
 			ewarn "of main memory combined with swap is sufficient."
 			ewarn "Build process may make computer very slow!"
@@ -314,7 +325,7 @@ check-reqs_disk() {
 	space_kbi=$(df -Pk "${1}" 2>/dev/null | awk 'FNR == 2 {print $4}')
 
 	if [[ $? == 0 && -n ${space_kbi} ]] ; then
-		if [[ ${space_kbi} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
+		if [[ ${space_kbi} -lt $(_check-reqs_get_kibibytes ${size}) ]] ; then
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
