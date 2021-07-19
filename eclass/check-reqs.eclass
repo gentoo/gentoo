@@ -201,6 +201,17 @@ _check-reqs_get_kibibytes() {
 # Internal function that returns the numerical value without the unit.
 # Returns "1" for "1G" or "150" for "150T".
 check-reqs_get_number() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_number "$@"
+}
+
+# @FUNCTION: _check-reqs_get_number
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that returns the numerical value without the unit.
+# Returns "1" for "1G" or "150" for "150T".
+_check-reqs_get_number() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${1} ]] && die "Usage: ${FUNCNAME} [size]"
@@ -350,7 +361,7 @@ check-reqs_start_phase() {
 
 	local size=${1}
 	local location=${2}
-	local sizeunit="$(check-reqs_get_number ${size}) $(check-reqs_get_unit ${size})"
+	local sizeunit="$(_check-reqs_get_number ${size}) $(check-reqs_get_unit ${size})"
 
 	ebegin "Checking for at least ${sizeunit} ${location}"
 }
@@ -369,7 +380,7 @@ check-reqs_unsatisfied() {
 	local msg="ewarn"
 	local size=${1}
 	local location=${2}
-	local sizeunit="$(check-reqs_get_number ${size}) $(check-reqs_get_unit ${size})"
+	local sizeunit="$(_check-reqs_get_number ${size}) $(check-reqs_get_unit ${size})"
 
 	[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && msg="eerror"
 	${msg} "There is NOT at least ${sizeunit} ${location}"
