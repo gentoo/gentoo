@@ -26,15 +26,18 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/libselinux-${PV}:=[python]
-	>=sys-libs/libsemanage-${PV}:=[python(+)]
-	>=sys-libs/libsepol-${PV}:=
-	>=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
-	>=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
-	test? ( >=sys-apps/secilc-${PV} )
-	${PYTHON_DEPS}"
-
-RDEPEND="${DEPEND}"
+RDEPEND=">=sys-libs/libselinux-${PV}:=[python]
+        >=sys-libs/libsemanage-${PV}:=[python(+)]
+        >=sys-libs/libsepol-${PV}:=
+        >=app-admin/setools-4.2.0[${PYTHON_USEDEP}]
+        >=sys-process/audit-1.5.1[python,${PYTHON_USEDEP}]
+        ${PYTHON_DEPS}"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	test? (
+		${RDEPEND}
+		>=sys-apps/secilc-${PV}
+	)"
 
 src_prepare() {
 	default
