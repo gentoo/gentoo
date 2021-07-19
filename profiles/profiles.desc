@@ -180,11 +180,11 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/developer		stable
 #ppc		 default/linux/ppc/17.0/uclibc				exp
 #ppc		 default/linux/ppc/17.0/uclibc/hardened			exp
 ppc64		default/linux/ppc64/17.0				stable
-#ppc64		default/linux/ppc64/17.0/desktop			stable
-#ppc64		default/linux/ppc64/17.0/desktop/gnome			stable
-#ppc64		default/linux/ppc64/17.0/desktop/gnome/systemd		stable
+ppc64		default/linux/ppc64/17.0/desktop			stable
+ppc64		default/linux/ppc64/17.0/desktop/gnome			stable
+ppc64		default/linux/ppc64/17.0/desktop/gnome/systemd		stable
 ppc64		default/linux/ppc64/17.0/systemd			stable
-#ppc64		default/linux/ppc64/17.0/developer			stable
+ppc64		default/linux/ppc64/17.0/developer			stable
 ppc64		default/linux/ppc64/17.0/musl				exp
 ppc64		default/linux/ppc64/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/17.0				stable
