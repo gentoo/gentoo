@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 # either pyilmbase or imath need to be keyworded for arm{,64} to re-add
 # python / pyalembic support
 IUSE="examples hdf5 test"
