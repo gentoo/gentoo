@@ -27,7 +27,6 @@ RDEPEND=">=dev-libs/rocr-runtime-${PV}
 	>=virtual/opencl-3
 	media-libs/mesa"
 DEPEND="${RDEPEND}
-	dev-lang/ocaml
 	dev-ml/findlib"
 BDEPEND=">=dev-util/rocm-cmake-${PV}"
 
