@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit autotools
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openil/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86"
 IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg mng nvtt openexr opengl png sdl static-libs tiff X xpm"
 
 RDEPEND="
@@ -30,11 +30,11 @@ RDEPEND="
 	sdl? ( media-libs/libsdl )
 	tiff? ( media-libs/tiff:0 )
 	X? ( x11-libs/libXext
-		 x11-libs/libX11
-		 x11-libs/libXrender )
+		x11-libs/libX11
+		x11-libs/libXrender )
 	xpm? ( x11-libs/libXpm )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	X? ( x11-base/xorg-proto )"
 
 PATCHES=(
@@ -86,5 +86,5 @@ src_install() {
 	default
 
 	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
