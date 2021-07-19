@@ -14,7 +14,7 @@ SRC_URI="https://github.com/zamaudio/${PN}/archive/refs/tags/3.14.tar.gz -> ${P}
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="jack opengl" # FIXME: +opengl
+IUSE="jack opengl"
 
 DEPEND="media-libs/ladspa-sdk
 	media-libs/liblo
@@ -24,7 +24,7 @@ DEPEND="media-libs/ladspa-sdk
 	media-libs/zita-convolver
 	sci-libs/fftw:3.0
 	x11-libs/libX11
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	opengl? (
 		media-libs/libglvnd[X]
 		x11-libs/cairo[X]
