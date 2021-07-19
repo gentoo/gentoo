@@ -13,20 +13,21 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}-$(ver_cut 1-2)/${P}.tar.gz"
 LICENSE="OFL-1.1 GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="a-like-o +center-tilde distinct-l +otf +pcf +pcf-unicode-only +psf quote
+IUSE="a-like-o +center-tilde distinct-l +otf pcf-8bit +pcf-unicode +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
 BDEPEND="app-arch/gzip
 	${PYTHON_DEPS}
 	virtual/awk
-	pcf? ( x11-apps/bdftopcf )"
+	pcf-8bit? ( x11-apps/bdftopcf )
+	pcf-unicode? ( x11-apps/bdftopcf )"
 RDEPEND=""
 
 FONTDIR=/usr/share/fonts/terminus
 FONT_CONF=( 75-yes-terminus.conf )
 DOCS=( README README-BG AUTHORS CHANGES )
 
-REQUIRED_USE="X? ( || ( otf pcf ) )"
+REQUIRED_USE="X? ( || ( otf pcf-8bit pcf-unicode ) )"
 
 pkg_setup() {
 	python_setup
@@ -62,33 +63,26 @@ src_configure() {
 
 src_compile() {
 	local args=(
-		$(usex psf 'psf psf-vgaw' '')
-		$(usex pcf 'pcf pcf-8bit' '')
-		$(usex otf otb '')
+		$(usex otf otb "")
+		$(usex pcf-8bit "pcf-8bit" "")
+		$(usex pcf-unicode "pcf" "")
+		$(usex psf "psf psf-vgaw" "")
 	)
 	[[ ${#args[@]} -gt 0 ]] && emake "${args[@]}"
 }
 
 src_install() {
 	local args=(
-		$(usex psf 'install-psf install-psf-vgaw install-psf-ref' '')
-		$(usex pcf 'install-pcf' '')
-		$(usex otf 'install-otb' '')
+		$(usex otf "install-otb" "")
+		$(usex pcf-8bit "install-pcf-8bit" "")
+		$(usex pcf-unicode "install-pcf" "")
+		$(usex psf "install-psf install-psf-vgaw install-psf-ref" "")
 	)
 	# Set the CHECKDIR to a dummy location so we always get the same set of
 	# files installed regardless of what is in / or ROOT or wherever.
-	[[ ${#args[@]} -gt 0 ]] && emake DESTDIR="${D}" CHECKDIR="${D}" "${args[@]}"
+	[[ ${#args[@]} -gt 0 ]] && emake DESTDIR="${ED}" CHECKDIR="${ED}" "${args[@]}"
 
-	# Remove trans files that the kbd package takes care of installing.
-	rm -f "${ED}"/usr/share/consoletrans/*.trans
-
-	if use pcf-unicode-only; then
-		# Only the ter-x* fonts are unicode (ISO-10646-1) based
-		rm -f "${ED}"/usr/share/fonts/terminus/ter-[0-9a-wy-z]* || die
-	fi
-
-	use otf && FONT_SUFFIX=otb
-	font_src_install
+	use otf && FONT_SUFFIX=otb font_src_install
 
 	einstalldocs
 }
