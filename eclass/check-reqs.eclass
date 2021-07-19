@@ -143,19 +143,19 @@ _check-reqs_run() {
 				${CHECKREQS_MEMORY}
 
 		[[ -n ${CHECKREQS_DISK_BUILD} ]] && \
-			check-reqs_disk \
+			_check-reqs_disk \
 				"${T}" \
 				"${CHECKREQS_DISK_BUILD}"
 	fi
 
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		[[ -n ${CHECKREQS_DISK_USR} ]] && \
-			check-reqs_disk \
+			_check-reqs_disk \
 				"${EROOT%/}/usr" \
 				"${CHECKREQS_DISK_USR}"
 
 		[[ -n ${CHECKREQS_DISK_VAR} ]] && \
-			check-reqs_disk \
+			_check-reqs_disk \
 				"${EROOT%/}/var" \
 				"${CHECKREQS_DISK_VAR}"
 	fi
@@ -353,6 +353,16 @@ _check-reqs_memory() {
 # @DESCRIPTION:
 # Internal function that checks space on the harddrive.
 check-reqs_disk() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_disk "$@"
+}
+
+# @FUNCTION: _check-reqs_disk
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that checks space on the harddrive.
+_check-reqs_disk() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	[[ -z ${2} ]] && die "Usage: ${FUNCNAME} [path] [size]"
