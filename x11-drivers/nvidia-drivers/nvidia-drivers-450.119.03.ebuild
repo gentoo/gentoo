@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 MIT NVIDIA-r2 ZLIB"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X +driver static-libs +tools"
 
 COMMON_DEPEND="
