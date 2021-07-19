@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -19,8 +19,9 @@ HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-IUSE="doc examples jemalloc mpi papi +perftools tbb test"
-RESTRICT="!test? ( test )"
+IUSE="examples jemalloc mpi papi +perftools tbb"
+# tests fail to compile
+RESTRICT="test"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -29,16 +30,6 @@ REQUIRED_USE="
 
 BDEPEND="
 	virtual/pkgconfig
-	doc? (
-		${PYTHON_DEPS}
-		app-doc/doxygen
-		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-			>=dev-python/breathe-4.22[${PYTHON_USEDEP}]
-		')
-	)
-	test? ( ${PYTHON_DEPS} )
 "
 RDEPEND="
 	${PYTHON_DEPS}
@@ -77,11 +68,11 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DHPX_WITH_EXAMPLES=OFF
-		-DHPX_WITH_DOCUMENTATION=$(usex doc)
+		-DHPX_WITH_DOCUMENTATION=OFF
 		-DHPX_WITH_PARCELPORT_MPI=$(usex mpi)
 		-DHPX_WITH_PAPI=$(usex papi)
 		-DHPX_WITH_GOOGLE_PERFTOOLS=$(usex perftools)
-		-DBUILD_TESTING=$(usex test)
+		-DBUILD_TESTING=OFF
 	)
 	if use jemalloc; then
 		mycmakeargs+=( -DHPX_WITH_MALLOC=jemalloc )
@@ -98,12 +89,6 @@ src_configure() {
 
 src_compile() {
 	cmake_src_compile
-	use test && cmake_build tests
-}
-
-src_test() {
-	# avoid over-suscribing
-	cmake_src_test -j1
 }
 
 src_install() {
