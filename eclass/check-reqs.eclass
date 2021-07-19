@@ -78,7 +78,7 @@ check-reqs_pkg_setup() {
 
 	_check-reqs_prepare
 	_check-reqs_run
-	check-reqs_output
+	_check-reqs_output
 }
 
 # @FUNCTION: check-reqs_pkg_pretend
@@ -261,6 +261,17 @@ _check-reqs_get_unit() {
 # Internal function that prints the warning and dies if required based on
 # the test results.
 check-reqs_output() {
+	[[ ${EAPI} == [67] ]] ||
+		die "Internal function ${FUNCNAME} is not available in EAPI ${EAPI}."
+	_check-reqs_get_unit "$@"
+}
+
+# @FUNCTION: _check-reqs_output
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function that prints the warning and dies if required based on
+# the test results.
+_check-reqs_output() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local msg="ewarn"
