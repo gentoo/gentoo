@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 7efef93b..12758ab0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -254,7 +254,7 @@ build/doc.html: $(JANET_TARGET) tools/gendoc.janet
+ 
+ build/jpm: jpm $(JANET_TARGET)
+ 	$(JANET_TARGET) tools/patch-jpm.janet jpm build/jpm "--libpath=$(LIBDIR)" "--headerpath=$(INCLUDEDIR)/janet" "--binpath=$(BINDIR)"
+-	chmod +x build/jpm
++	chmod +x jpm
+ 
+ .INTERMEDIATE: build/janet.pc
+ build/janet.pc: $(JANET_TARGET)
