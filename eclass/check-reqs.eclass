@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: Provides a uniform way of handling ebuilds with very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
@@ -39,7 +39,7 @@
 # probably degrade gracefully if they don't. Probably.
 
 case ${EAPI} in
-	4|5|6|7|8) ;;
+	6|7|8) ;;
 	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
 
