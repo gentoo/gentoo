@@ -37,7 +37,7 @@ dev-python/matplotlib wxwidgets
 app-editors/emacs gconf m17n-lib xwidgets
 #  - net-fs/openafs
 app-crypt/heimdal afs
-#  - dev-python/pygraphviz & sci-libs/gdal
+#  - sci-libs/gdal
 dev-python/networkx extras
 #  - sys-cluster/ceph
 net-analyzer/rrdtool rados
