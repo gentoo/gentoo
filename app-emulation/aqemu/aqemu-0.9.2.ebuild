@@ -26,7 +26,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 #DOCS=( AUTHORS CHANGELOG README TODO )
-PATCHES=( "${FILESDIR}/${PN}-0.9.2-qtbindir.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.2-qtbindir.patch"
+	"${FILESDIR}/${PN}-0.9.2-include.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
