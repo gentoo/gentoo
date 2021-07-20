@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>3dprint@gentoo.org</email>
+		<name>Gentoo 3D Printer Project</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<bugs-to>https://github.com/oz123/pytest-localftpserver/issues</bugs-to>
+		<doc>https://pytest-localftpserver.readthedocs.io</doc>
+		<remote-id type="pypi">pytest-localftpserver</remote-id>
+		<remote-id type="github">oz123/pytest-localftpserver</remote-id>
+	</upstream>
+</pkgmetadata>
