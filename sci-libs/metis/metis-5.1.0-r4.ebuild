@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake
 
 DESCRIPTION="A package for unstructured serial graph partitioning"
-HOMEPAGE="https://www-users.cs.umn.edu/~karypis/metis/metis/"
+HOMEPAGE="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview"
 SRC_URI="http://glaros.dtc.umn.edu/gkhome/fetch/sw/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
