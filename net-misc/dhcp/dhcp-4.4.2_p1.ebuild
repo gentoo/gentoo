@@ -67,7 +67,7 @@ PATCHES=(
 
 	# Possible upstream candidates
 	"${FILESDIR}/${PN}-4.4.2-fno-common.patch" #710194
-	"${FILESDIR}/dhcp-4.4.2-variable-name.patch" #752402
+	"${FILESDIR}/${PN}-4.4.2-variable-name.patch" #752402
 )
 
 src_prepare() {
