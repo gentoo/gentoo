@@ -1,0 +1,28 @@
+diff -Naur a/include/llvm/Support/raw_ostream.h b/include/llvm/Support/raw_ostream.h
+--- a/include/llvm/Support/raw_ostream.h	2021-05-22 19:56:44.779955686 +0200
++++ b/include/llvm/Support/raw_ostream.h	2021-05-22 20:00:49.449954752 +0200
+@@ -610,9 +610,7 @@
+   /// See raw_ostream::write_impl.
+   void write_impl(const char *Ptr, size_t Size) override;
+ 
+-  /// Return the current position within the stream, not counting the bytes
+-  /// currently in the buffer.
+-  uint64_t current_pos() const override { return OS.size(); }
++  uint64_t current_pos() const override;
+ 
+ public:
+   explicit raw_string_ostream(std::string &O) : OS(O) {
+diff -Naur a/lib/Support/raw_ostream.cpp b/lib/Support/raw_ostream.cpp
+--- a/lib/Support/raw_ostream.cpp	2021-05-22 19:59:05.651955148 +0200
++++ b/lib/Support/raw_ostream.cpp	2021-05-22 20:01:22.929954625 +0200
+@@ -938,6 +938,10 @@
+ //  raw_string_ostream
+ //===----------------------------------------------------------------------===//
+ 
++/// Return the current position within the stream, not counting the bytes
++/// currently in the buffer.
++uint64_t raw_string_ostream::current_pos() const { return OS.size(); }
++
+ raw_string_ostream::~raw_string_ostream() {
+   flush();
+ }

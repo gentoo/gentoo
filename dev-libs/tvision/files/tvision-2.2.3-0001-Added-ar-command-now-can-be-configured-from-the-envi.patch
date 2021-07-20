@@ -1,0 +1,56 @@
+From: "Salvador E. Tropea" <salvador@inti.gob.ar>
+Date: Thu, 17 Jun 2021 13:11:22 -0300
+Subject: [PATCH 1/4] Added `ar` command now can be configured from the
+ environment
+
+- Using the AR environment variable.
+- Related to issue: #1
+- Gentoo issue: https://bugs.gentoo.org/796278
+---
+ conflib.pl | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/conflib.pl b/conflib.pl
+index 0abd33df..946bfa95 100644
+--- a/conflib.pl
++++ b/conflib.pl
+@@ -1386,21 +1386,27 @@ sub LookForGNUMake
+ 
+ sub LookForGNUar
+ {
+- my $test;
+- print 'Looking for GNU ar: ';
++ my ($ar, $test);
+ 
+- if ($conf{'GNU_AR'})
++ print 'Looking for GNU ar: ';
++ $ar=$conf{'GNU_AR'};
++ if ($ar)
+    {
+-    print "$conf{'GNU_AR'} (cached)\n";
+-    return $conf{'GNU_AR'};
++    print "$ar (cached)\n";
++    return $ar;
++   }
++ $ar=$ENV{'AR'};
++ if (!length($ar))
++   {
++    $ar='ar';
+    }
+  $conf{'UseRanLib'}=0;
+- $test=RunRedirect('ar --version',$ErrorLog);
++ $test=RunRedirect($ar.' --version',$ErrorLog);
+  if (($test=~/GNU ar/) || ($test=~/BSD ar/))
+    {
+-    $conf{'GNU_AR'}='ar';
+-    print "ar\n";
+-    return 'ar';
++    $conf{'GNU_AR'}=$ar;
++    print "$ar\n";
++    return $ar;
+    }
+  $test=RunRedirect('gar --version',$ErrorLog);
+  if ($test=~/GNU ar/)
+-- 
+2.32.0
+

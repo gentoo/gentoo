@@ -1,0 +1,96 @@
+fix building when ARG_MAX is not defined
+
+patch by Tom-Steve Watzke
+
+http://bugs.gentoo.org/225341
+
+--- a/rexecd/rexecd.c
++++ b/rexecd/rexecd.c
+@@ -85,6 +85,7 @@ char rcsid[] =
+ #include <paths.h>
+ #include <grp.h>
+ #include <arpa/inet.h>
++#include <limits.h>
+   
+   
+ #ifdef USE_SHADOW
+@@ -233,7 +234,8 @@ static struct pam_conv PAM_conversation = {
+ static void
+ doit(struct sockaddr_in *fromp)
+ {
+-	char cmdbuf[ARG_MAX+1];
++	char *cmdbuf;
++	int cmdbuflen;
+ 	char user[16], pass[16];
+ 	struct passwd *pwd;
+ 	int s = -1;
+@@ -252,6 +254,15 @@ doit(struct sockaddr_in *fromp)
+ #endif
+ #endif /* USE_PAM */
+ 
++	cmdbuflen = sysconf(_SC_ARG_MAX);
++	if (cmdbuflen < _POSIX_ARG_MAX)
++		cmdbuflen = _POSIX_ARG_MAX;
++	cmdbuf = malloc(cmdbuflen);
++	if (cmdbuf == NULL) {
++		syslog(LOG_ERR, "unable to malloc(%i) for command buffer: %s", cmdbuflen, strerror(errno));
++		fatal("out of memory\n");
++	}
++
+ 	signal(SIGINT, SIG_DFL);
+ 	signal(SIGQUIT, SIG_DFL);
+ 	signal(SIGTERM, SIG_DFL);
+@@ -301,7 +312,7 @@ doit(struct sockaddr_in *fromp)
+ 
+ 	getstr(user, sizeof(user), "username too long\n");
+ 	getstr(pass, sizeof(pass), "password too long\n");
+-	getstr(cmdbuf, sizeof(cmdbuf), "command too long\n");
++	getstr(cmdbuf, cmdbuflen, "command too long\n");
+ #ifdef USE_PAM
+        #define PAM_BAIL if (pam_error != PAM_SUCCESS) { \
+ 	       pam_end(pamh, pam_error); exit(1); \
+--- a/rshd/rshd.c
++++ b/rshd/rshd.c
+@@ -79,6 +79,7 @@ char rcsid[] =
+ #include <stdarg.h>
+ #include <ctype.h>
+ #include <assert.h>
++#include <limits.h>
+ 
+ #if !(defined(__GLIBC__) && (__GLIBC__ < 2))
+ #define _check_rhosts_file  __check_rhosts_file
+@@ -337,7 +338,8 @@ static const char *findhostname(struct sockaddr_in *fromp,
+ static void
+ doit(struct sockaddr_in *fromp)
+ {
+-	char cmdbuf[ARG_MAX+1];
++	char *cmdbuf;
++	int cmdbuflen;
+ 	const char *theshell, *shellname;
+ 	char locuser[16], remuser[16];
+ 	struct passwd *pwd;
+@@ -346,6 +348,15 @@ doit(struct sockaddr_in *fromp)
+ 	u_short port;
+ 	int pv[2], pid, ifd;
+ 
++	cmdbuflen = sysconf(_SC_ARG_MAX);
++	if (cmdbuflen < _POSIX_ARG_MAX)
++		cmdbuflen = _POSIX_ARG_MAX;
++	cmdbuf = malloc(cmdbuflen);
++	if (cmdbuf == NULL) {
++		syslog(LOG_ERR, "unable to malloc(%i) for command buffer: %s", cmdbuflen, strerror(errno));
++		exit(1);
++	}
++
+ 	signal(SIGINT, SIG_DFL);
+ 	signal(SIGQUIT, SIG_DFL);
+ 	signal(SIGTERM, SIG_DFL);
+@@ -382,7 +393,7 @@ doit(struct sockaddr_in *fromp)
+ 
+ 	getstr(remuser, sizeof(remuser), "remuser");
+ 	getstr(locuser, sizeof(locuser), "locuser");
+-	getstr(cmdbuf, sizeof(cmdbuf), "command");
++	getstr(cmdbuf, cmdbuflen, "command");
+ 	if (!strcmp(locuser, "root")) paranoid = 1;
+ 
+ 	hostname = findhostname(fromp, remuser, locuser, cmdbuf);

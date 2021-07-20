@@ -14,7 +14,7 @@ HOMEPAGE="https://imath.readthedocs.io"
 SRC_URI="https://github.com/AcademySoftwareFoundation/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 # re-keywording needed for (according to ilmbase keywords):
 # ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x64-macos ~x86-solaris
-KEYWORDS="~amd64 ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
@@ -31,15 +31,15 @@ RDEPEND="
 		!dev-python/pyilmbase
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[python?,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python?,${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_MULTI_USEDEP}]') )
+	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_USEDEP}]') )
 	python? ( ${PYTHON_DEPS} )
 "
 

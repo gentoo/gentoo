@@ -19,9 +19,9 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Polish dictionaries for myspell/hunspell"
-HOMEPAGE="http://www.sjp.pl/slownik/en/"
+HOMEPAGE="https://sjp.pl/slownik/en/"
 SRC_URI="https://github.com/scardracs/gentoo-packages/releases/download/pl-${PV}/${P}.tar.gz"
 
 LICENSE="CC-SA-1.0 Apache-2.0 LGPL-2.1+ GPL-2+ MPL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86"

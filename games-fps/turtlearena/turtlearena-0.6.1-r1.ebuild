@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit eutils gnome2-utils
-
-MY_P=${PN/-/}-${PV}
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A turtle featuring free and open source third-person action game (ioq3 engine)"
-HOMEPAGE="http://ztm.x10host.com/ta/index.htm"
-SRC_URI="https://turtlearena.googlecode.com/files/${MY_P}-0-src.tar.bz2
-	https://turtlearena.googlecode.com/files/${MY_P}-0.zip"
+HOMEPAGE="https://clover.moe/turtlearena/"
+SRC_URI="
+	https://turtlearena.googlecode.com/files/${P}-0-src.tar.bz2
+	https://turtlearena.googlecode.com/files/${P}-0.zip"
+S+="-0-src"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 mplus-fonts lcc"
 SLOT="0"
@@ -18,11 +18,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+curl debug dedicated mumble openal server theora voice vorbis"
 
 RDEPEND="
-	sys-libs/zlib[minizip]
+	sys-libs/zlib:=[minizip]
 	!dedicated? (
 		media-libs/freetype:2
-		media-libs/libsdl[X,sound,joystick,opengl,video]
-		virtual/jpeg:0
+		media-libs/libsdl[X,joystick,opengl,sound,video]
+		virtual/jpeg
 		virtual/opengl
 		curl? ( net-misc/curl )
 		openal? ( media-libs/openal )
@@ -33,21 +33,21 @@ RDEPEND="
 		)
 		vorbis? ( media-libs/libvorbis )
 	)"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/unzip
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P}-0-src
+PATCHES=(
+	"${FILESDIR}"/${P}-build.patch
+	"${FILESDIR}"/${P}-freetype.patch
+)
 
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}"/${P}-build.patch
-	eapply "${FILESDIR}"/${P}-freetype.patch
-
-	sed -i \
-		-e 's:JPEG_LIB_VERSION < 80:JPEG_LIB_VERSION < 62:' \
-		engine/code/renderer/tr_image_jpg.c || die #479822
+	sed -e 's|JPEG_LIB_VERSION < 80|JPEG_LIB_VERSION < 62|' \
+		-i engine/code/renderer/tr_image_jpg.c || die #479822
 
 	rm -r engine/code/{AL,libcurl,libogg,libspeex,libtheora,libvorbis,SDL12,zlib} \
 		engine/code/freetype* engine/code/jpeg-* \
@@ -55,68 +55,60 @@ src_prepare() {
 }
 
 src_compile() {
-	buildit() { use $1 && echo 1 || echo 0 ; }
-	nobuildit() { use $1 && echo 0 || echo 1 ; }
+	tc-export CC
 
-	myarch=$(usex amd64 "x86_64" "x86")
-	emake -C engine \
-		Q="" \
-		ARCH=${myarch} \
-		CROSS_COMPILING=0 \
-		BUILD_GAME_QVM=0 \
-		BUILD_GAME_SO=0 \
-		BUILD_CLIENT=$(nobuildit dedicated) \
-		BUILD_SERVER=$(usex dedicated "1" "$(buildit server)") \
-		DEFAULT_BASEDIR="/usr/share/${PN}" \
-		GENERATE_DEPENDENCIES=0 \
-		OPTIMIZEVM="" \
-		OPTIMIZE="" \
-		DEBUG_CFLAGS="" \
-		USE_MUMBLE=$(buildit mumble) \
-		USE_VOIP=$(buildit voice) \
-		USE_INTERNAL_SPEEX=0 \
-		USE_INTERNAL_OGG=0 \
-		USE_INTERNAL_ZLIB=0 \
-		USE_INTERNAL_JPEG=0 \
-		USE_INTERNAL_FREETYPE=0 \
-		USE_CODEC_VORBIS=$(buildit vorbis) \
-		USE_INTERNAL_VORBIS=0 \
-		USE_CODEC_THEORA=$(buildit theora) \
-		USE_OPENAL=$(buildit openal) \
-		USE_OPENAL_DLOPEN=0 \
-		USE_CURL=$(buildit curl) \
-		USE_CURL_DLOPEN=0 \
-		USE_LOCAL_HEADERS=0 \
-		$(usex debug "debug" "release")
+	MY_ARCH=$(usex amd64 x86_64 x86)
+	MY_RELEASE=$(usex debug debug release)
+
+	local emakeargs=(
+		ARCH=${MY_ARCH}
+		BUILD_CLIENT=$(usex dedicated 0 1)
+		BUILD_SERVER=$(usex dedicated 1 $(usex server 1 0))
+		BUILD_GAME_QVM=0
+		BUILD_GAME_SO=0
+		CROSS_COMPILING=0
+		DEBUG_CFLAGS=
+		DEFAULT_BASEDIR="${EPREFIX}"/usr/share/${PN}
+		GENERATE_DEPENDENCIES=0
+		OPTIMIZE=
+		OPTIMIZEVM=
+		Q=
+		USE_CODEC_THEORA=$(usex theora 1 0)
+		USE_CODEC_VORBIS=$(usex vorbis 1 0)
+		USE_CURL=$(usex curl 1 0)
+		USE_CURL_DLOPEN=0
+		USE_INTERNAL_FREETYPE=0
+		USE_INTERNAL_JPEG=0
+		USE_INTERNAL_OGG=0
+		USE_INTERNAL_SPEEX=0
+		USE_INTERNAL_VORBIS=0
+		USE_INTERNAL_ZLIB=0
+		USE_LOCAL_HEADERS=0
+		USE_MUMBLE=$(usex mumble 1 0)
+		USE_OPENAL=$(usex openal 1 0)
+		USE_OPENAL_DLOPEN=0
+		USE_VOIP=$(usex voice 1 0)
+	)
+
+	emake -C engine "${emakeargs[@]}" ${MY_RELEASE}
 }
 
 src_install() {
+	if ! use dedicated; then
+		newbin engine/build/${MY_RELEASE}-linux-${MY_ARCH}/turtlearena.${MY_ARCH} turtlearena
+
+		use voice && dodoc engine/voip-readme.txt
+
+		newicon engine/misc/quake3-tango.svg ${PN}.svg
+		make_desktop_entry ${PN} "Turtle Arena"
+	fi
+
+	if use dedicated || use server; then
+		newbin engine/build/${MY_RELEASE}-linux-${MY_ARCH}/turtlearena-server.${MY_ARCH} turtlearena-server
+	fi
+
+	insinto /usr/share/${PN}
+	doins -r ../${P}-0/base
+
 	dodoc engine/{ChangeLog,BUGS,TODO}
-	use voice && dodoc engine/voip-readme.txt
-
-	if ! use dedicated ; then
-		newbin engine/build/$(usex debug "debug" "release")-linux-${myarch}/turtlearena.${myarch} turtlearena
-		newicon -s scalable engine/misc/quake3-tango.svg ${PN}.svg
-		newicon -s 256 engine/misc/quake3-tango.png ${PN}.png
-		make_desktop_entry ${PN}
-	fi
-
-	if use dedicated || use server ; then
-		newbin engine/build/$(usex debug "debug" "release")-linux-${myarch}/turtlearena-server.${myarch} turtlearena-server
-	fi
-
-	insinto "/usr/share/${PN}"
-	doins -r "${WORKDIR}"/${MY_P}-0/base
-}
-
-pkg_preinst() {
-	use dedicated || gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	use dedicated || gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	use dedicated || gnome2_icon_cache_update
 }

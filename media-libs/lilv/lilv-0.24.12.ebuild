@@ -26,11 +26,6 @@ BDEPEND="
 		dev-python/sphinx
 		dev-python/sphinx_lv2_theme
 	)
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/unittest2[${PYTHON_USEDEP}]
-		')
-	)
 "
 RDEPEND="
 	${PYTHON_DEPS}

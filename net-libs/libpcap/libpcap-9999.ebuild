@@ -29,6 +29,7 @@ RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3[${MULTILIB_USEDEP}] )
+	remote? ( virtual/libcrypt:=[${MULTILIB_USEDEP}] )
 	rdma? ( sys-cluster/rdma-core )
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "

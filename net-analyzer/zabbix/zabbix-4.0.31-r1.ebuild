@@ -15,11 +15,12 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/4.0/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
-IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
+KEYWORDS="amd64 x86"
+IUSE="+agent curl frontend gnutls ipv6 java ldap libxml2 mbedtls mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static xmpp"
 REQUIRED_USE="|| ( agent frontend proxy server )
-	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
-	server? ( ^^ ( mysql oracle postgres odbc ) )
+	ssl? ( ^^ ( gnutls mbedtls openssl ) )
+	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
+	server? ( ^^ ( mysql oracle postgres ) )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
@@ -44,7 +45,11 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
-	ssl? ( dev-libs/openssl:=[-bindist(-)] )
+	ssl? (
+		gnutls? ( net-libs/gnutls:0= )
+		mbedtls? ( net-libs/mbedtls:0= )
+		openssl? ( dev-libs/openssl:=[-bindist(-)] )
+	)
 	xmpp? ( dev-libs/iksemel )
 "
 
@@ -139,17 +144,19 @@ src_configure() {
 		$(use_enable server) \
 		$(use_enable static) \
 		$(use_with curl libcurl) \
+		$(use_with gnutls) \
 		$(use_with ldap) \
 		$(use_with libxml2) \
+		$(use_with mbedtls) \
 		$(use_with mysql) \
 		$(use_with odbc unixodbc) \
 		$(use_with openipmi openipmi) \
+		$(use_with openssl) \
 		$(use_with oracle) \
 		$(use_with postgres postgresql) \
 		$(use_with snmp net-snmp) \
 		$(use_with sqlite sqlite3) \
 		$(use_with ssh ssh2) \
-		$(use_with ssl openssl) \
 		$(use_with xmpp jabber)
 }
 

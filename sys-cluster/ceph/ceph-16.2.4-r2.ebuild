@@ -20,7 +20,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm64 ~ppc64"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -75,6 +75,7 @@ DEPEND="
 	sys-libs/ncurses:0=
 	sys-libs/zlib:=
 	sys-process/numactl:=
+	virtual/libcrypt:=
 	x11-libs/libpciaccess:=
 	babeltrace? ( dev-util/babeltrace )
 	fuse? ( sys-fs/fuse:0= )

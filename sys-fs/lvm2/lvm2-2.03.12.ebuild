@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="readline static static-libs systemd lvm2create_initrd sanlock selinux +udev +thin device-mapper-only"
 REQUIRED_USE="device-mapper-only? ( !lvm2create_initrd !sanlock !thin )
+	static? ( !systemd )
 	systemd? ( udev )"
 
 DEPEND_COMMON="
@@ -60,6 +61,7 @@ PATCHES=(
 	#"${FILESDIR}"/${PN}-2.02.178-asneeded.patch # -Wl,--as-needed
 	"${FILESDIR}"/${PN}-2.03.12-dynamic-static-ldflags.patch #332905
 	"${FILESDIR}"/${PN}-2.03.12-static-pkgconfig-libs.patch #370217, #439414 + blkid
+	"${FILESDIR}"/${PN}-2.03.12-static-pkgconfig-libs-2.patch
 	"${FILESDIR}"/${PN}-2.03.05-pthread-pkgconfig.patch #492450
 	"${FILESDIR}"/${PN}-2.03.12-static-libm.patch #617756
 	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446

@@ -3,14 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="sqlite"
 inherit python-single-r1 gnome2-utils meson xdg
 
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
 SRC_URI="https://adishatz.org/${PN}/${P}.tar.xz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -21,15 +21,15 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	dev-libs/gobject-introspection[cairo(+)]
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	gnome-base/gnome-common
 	x11-libs/gtk+:3
 "
 BDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pkgconfig[${PYTHON_MULTI_USEDEP}]
+		dev-python/pkgconfig[${PYTHON_USEDEP}]
 	')
 	dev-util/desktop-file-utils
 	dev-util/itstool
@@ -39,10 +39,10 @@ RDEPEND="${DEPEND}
 	app-crypt/libsecret[introspection]
 	dev-libs/totem-pl-parser
 	$(python_gen_cond_dep '
-		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 		dev-python/dbus-python
-		dev-python/gst-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/gst-python[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
 	')
 	gui-libs/libhandy:1
 	media-libs/gst-plugins-base:1.0[introspection]

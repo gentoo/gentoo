@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/findlib.patch"
+	"${FILESDIR}"/${P}-this-expression-has-type.patch
 )
 
 src_configure() {

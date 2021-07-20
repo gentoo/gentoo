@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="tk"
 
 inherit autotools python-single-r1 systemd tmpfiles toolchain-funcs
@@ -32,7 +32,7 @@ RDEPEND="acct-user/fetchmail
 	tk? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
+			dev-python/future[${PYTHON_USEDEP}]
 		')
 	)"
 DEPEND="${RDEPEND}

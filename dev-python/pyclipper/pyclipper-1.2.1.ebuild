@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1
 
 DESCRIPTION="Cython wrapper for the C++ translation of the Angus Johnson's Clipper library"
@@ -19,14 +19,12 @@ IUSE=""
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	test? (
-		dev-python/unittest2[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest
 
 src_prepare() {
+	sed -i -e 's:from unittest2:from unittest:' tests/test_pyclipper.py || die
 	distutils-r1_src_prepare
 	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV/_p/.post}"
 }

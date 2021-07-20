@@ -11,8 +11,10 @@ SRC_URI="https://github.com/nix-community/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples"
+
+PATCHES=( "${FILESDIR}/${P}-kernel-5.13.patch" )
 
 BUILD_TARGETS="default"
 CONFIG_CHECK="ACPI"

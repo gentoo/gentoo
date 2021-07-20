@@ -21,8 +21,8 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	virtual/blas
 	metis? (
-		   || ( >=sci-libs/metis-5 >=sci-libs/parmetis-4 )
-		   mpi? ( >=sci-libs/parmetis-4 )
+		>=sci-libs/metis-5
+		mpi? ( >=sci-libs/parmetis-4 )
 	)
 	mpi? ( sci-libs/scalapack )
 	scotch? ( >=sci-libs/scotch-6.0.1:=[mpi=] )

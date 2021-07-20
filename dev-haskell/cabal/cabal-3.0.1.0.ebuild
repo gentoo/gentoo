@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 PATCHES=("${FILESDIR}"/${PN}-2.0.0.2-no-bootstrap.patch)
 
-CABAL_CORE_LIB_GHC_PV="PM:8.8.2 PM:8.8.3 PM:8.8.4"
+CABAL_CORE_LIB_GHC_PV="PM:8.8.2 PM:8.8.3 PM:8.8.4 PM:8.8.4-r1"
 
 src_configure() {
 	haskell-cabal_src_configure \

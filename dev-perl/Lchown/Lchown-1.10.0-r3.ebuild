@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,21 +10,23 @@ inherit perl-module
 DESCRIPTION="Use the lchown(2) system call from Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
-DEPEND="dev-perl/Module-Build"
 BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 "
+
 PERL_RM_FILES=(
 	t/pod-coverage.t
 	t/pod.t
 )
+
 src_configure() {
 	unset LD
 	[[ -n "${CCLD}" ]] && export LD="${CCLD}"
 	perl-module_src_configure
 }
+
 src_compile() {
 	./Build --config optimize="${CFLAGS}" build || die
 }

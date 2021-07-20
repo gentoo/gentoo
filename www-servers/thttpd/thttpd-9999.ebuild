@@ -21,10 +21,9 @@ HOMEPAGE="https://github.com/blueness/sthttpd http://opensource.dyc.edu/sthttpd"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-IUSE=""
 
-RDEPEND=""
-DEPEND=""
+RDEPEND="virtual/libcrypt:="
+DEPEND="${RDEPEND}"
 
 WEBROOT="/var/www/localhost"
 

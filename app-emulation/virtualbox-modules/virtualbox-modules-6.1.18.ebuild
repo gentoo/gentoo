@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="amd64"
-IUSE="pax_kernel"
+IUSE="pax-kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
 
@@ -40,7 +40,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use pax_kernel && kernel_is -ge 3 0 0 ; then
+	if use pax-kernel && kernel_is -ge 3 0 0 ; then
 		eapply -p0 "${FILESDIR}"/${PN}-5.2.8-pax-const.patch
 	fi
 

@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions
@@ -17,15 +17,15 @@
 # dependencies shall use the USE dependency string in ${MULTILIB_USEDEP}
 # to properly request multilib enabled.
 
-if [[ ! ${_MULTILIB_BUILD} ]]; then
-
-# EAPI=4 is required for meaningful MULTILIB_USEDEP.
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-[[ ${EAPI} == [45] ]] && inherit eutils
+if [[ -z ${_MULTILIB_BUILD} ]]; then
+_MULTILIB_BUILD=1
+
+[[ ${EAPI} == 5 ]] && inherit eutils
 inherit multibuild multilib
 
 # @ECLASS-VARIABLE: _MULTILIB_FLAGS
@@ -250,7 +250,7 @@ multilib_parallel_foreach_abi() {
 multilib_for_best_abi() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
+	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
 
 	eqawarn "QA warning: multilib_for_best_abi() function is deprecated and should"
 	eqawarn "not be used. The multilib_is_native_abi() check may be used instead."
@@ -588,7 +588,7 @@ multilib_is_native_abi() {
 multilib_build_binaries() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
+	[[ ${EAPI} == 5 ]] || die "${FUNCNAME} is banned in EAPI ${EAPI}, use multilib_is_native_abi() instead"
 
 	eqawarn "QA warning: multilib_build_binaries is deprecated. Please use the equivalent"
 	eqawarn "multilib_is_native_abi function instead."
@@ -671,5 +671,4 @@ multilib_native_usex() {
 	fi
 }
 
-_MULTILIB_BUILD=1
 fi

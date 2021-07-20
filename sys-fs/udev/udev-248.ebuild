@@ -19,7 +19,7 @@ else
 	MY_P="${MY_PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -45,6 +45,7 @@ BDEPEND="
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl )
 	kmod? ( >=sys-apps/kmod-15 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
@@ -139,7 +140,7 @@ multilib_src_compile() {
 		${libudev}
 	)
 	if use static-libs; then
-		targets+=( src/udev/libudev.a )
+		targets+=( libudev.a )
 	fi
 	if multilib_is_native_abi; then
 		targets+=(
@@ -166,7 +167,7 @@ multilib_src_install() {
 
 	dolib.so {${libudev},libudev.so.1,libudev.so}
 	gen_usr_ldscript -a udev
-	use static-libs && dolib.a src/udev/libudev.a
+	use static-libs && dolib.a libudev.a
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins src/libudev/libudev.pc

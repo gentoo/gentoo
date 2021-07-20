@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic distutils-r1 toolchain-funcs
@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~mips ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~mips ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="+draft"
 
 DEPEND="
@@ -76,12 +76,13 @@ python_test() {
 		zmq/tests/test_security.py::TestSecurity::test_plain
 		zmq/tests/test_socket.py::TestSocket::test_large_send
 		zmq/tests/test_socket.py::TestSocket::test_tracker
-		zmq/tests/test_socket.py::TestSocketGreen::test_large_send
 
-		# hanging tests
-		zmq/tests/test_socket.py::TestSocketGreen::test_tracker
+		# green-thing tests cause hangs or crashes
+		zmq/tests/test_socket.py::TestSocketGreen
+
+		# hangs
+		zmq/tests/test_log.py::TestPubLog::test_blank_root_topic
 	)
 
-	pytest -vv ${deselect[@]/#/--deselect } ||
-		die "Tests failed with ${EPYTHON}"
+	epytest ${deselect[@]/#/--deselect }
 }

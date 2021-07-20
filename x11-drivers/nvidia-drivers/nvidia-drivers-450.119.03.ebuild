@@ -26,7 +26,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-2 MIT NVIDIA-r2 ZLIB"
 SLOT="0/${PV%%.*}"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="+X +driver static-libs +tools"
 
 COMMON_DEPEND="
@@ -405,5 +405,21 @@ pkg_postinst() {
 		fi
 		ewarn "...then downgrade to a legacy branch if possible. For details, see:"
 		ewarn "https://www.nvidia.com/object/IO_32667.html"
+	fi
+
+	# Try to show this message only to users that may really need it
+	# given the workaround is discouraged and usage isn't widespread.
+	if use X && [[ ${REPLACING_VERSIONS} ]] &&
+		ver_test ${REPLACING_VERSIONS} -lt 450.119.03 &&
+		grep -qr Coolbits "${EROOT}"/etc/X11/{xorg.conf,xorg.conf.d/*.conf} 2>/dev/null; then
+		elog
+		elog "Coolbits support with ${PN} has been restricted to require Xorg"
+		elog "with root privilege by NVIDIA (being in video group is not sufficient)."
+		elog "e.g. attempting to change fan speed with nvidia-settings would fail."
+		elog
+		elog "Depending on your display manager (e.g. sddm starts X as root, gdm doesn't)"
+		elog "or if using startx, it may be necessary to emerge x11-base/xorg-server with"
+		elog 'USE="suid -elogind -systemd" if wish to keep using this feature.'
+		elog "Bug: https://bugs.gentoo.org/784248"
 	fi
 }

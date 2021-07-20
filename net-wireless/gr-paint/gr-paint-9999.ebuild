@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -29,7 +29,7 @@ RESTRICT="test"
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
+		dev-libs/boost:=[${PYTHON_USEDEP}]
 	')
 	dev-libs/gmp
 	sci-libs/volk:=

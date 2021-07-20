@@ -1,8 +1,8 @@
-# Copyright 2018-2020 Gentoo Authors
+# Copyright 2018-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_8 )
 PYTHON_REQ_USE="sqlite"
 inherit git-r3 multilib multiprocessing python-utils-r1 python-single-r1
 
@@ -17,8 +17,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
-		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/markdown[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
 "

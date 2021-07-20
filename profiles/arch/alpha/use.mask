@@ -4,6 +4,9 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# Matt Turner <mattst88@gentoo.org> (2021-07-05)
+nftables
+
 # Michał Górny <mgorny@gentoo.org> (2021-05-20)
 # Unresolved keywordreqs are getting in the way.
 # https://bugs.gentoo.org/773451

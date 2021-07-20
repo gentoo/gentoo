@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="sqlite"
 
 if [[ ${PV} = *9999 ]]; then
@@ -12,7 +12,7 @@ if [[ ${PV} = *9999 ]]; then
 else
 	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 inherit cmake desktop python-single-r1 qmake-utils xdg
 
@@ -73,21 +73,21 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
-			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
-			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
-			dev-python/owslib[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[designer,gui,network,printsupport,sql,svg,${PYTHON_MULTI_USEDEP}]
-			dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
-			dev-python/pytz[${PYTHON_MULTI_USEDEP}]
-			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.3[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
-			<dev-python/sip-5:=[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
-			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
+			dev-python/httplib2[${PYTHON_USEDEP}]
+			dev-python/jinja[${PYTHON_USEDEP}]
+			dev-python/markupsafe[${PYTHON_USEDEP}]
+			dev-python/owslib[${PYTHON_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
+			dev-python/PyQt5[designer,gui,network,printsupport,sql,svg,${PYTHON_USEDEP}]
+			dev-python/python-dateutil[${PYTHON_USEDEP}]
+			dev-python/pytz[${PYTHON_USEDEP}]
+			dev-python/pyyaml[${PYTHON_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.3[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
+			<dev-python/sip-5:=[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
+			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
 	)
 	qml? ( dev-qt/qtdeclarative:5 )

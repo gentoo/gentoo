@@ -18,7 +18,10 @@ RDEPEND="X? (
 	)
 	"
 
-PATCHES=( "${FILESDIR}/${P}-iconv.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-iconv.patch"
+	"${FILESDIR}/${P}-ldflags.patch"
+)
 
 src_prepare() {
 	xdg_src_prepare

@@ -4,7 +4,7 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.75.0
 QTMIN=5.15.2
@@ -29,8 +29,8 @@ DEPEND="${PYTHON_DEPS}
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/twisted-16.6.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,svg,widgets,${PYTHON_USEDEP}]
+		>=dev-python/twisted-16.6.0[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}

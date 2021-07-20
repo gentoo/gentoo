@@ -1,6 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hank Leininger <hlein@korelogic.com> (2021-07-14)
+# Uses glibc-specific rexec(3) function, bug #715898
+net-misc/netkit-rsh
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
+# Mask the libxcrypt-based virtual
+~virtual/libcrypt-2
+
 # David Seifert <soap@gentoo.org> (2021-02-08)
 # nvidia-drivers only works against glibc.
 x11-drivers/nvidia-drivers
@@ -36,6 +44,13 @@ dev-libs/elfutils
 # Linux debugger needs a port to musl.
 app-emulation/dosemu
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
+# No source builds for musl
+app-emulation/firecracker
+
+# Old undated blocks of masks
+#
+
 sys-libs/uclibc-ng
 sys-libs/glibc
 
@@ -47,8 +62,8 @@ sys-fs/udev
 # systemd sources fail to build without glibc
 sys-boot/systemd-boot
 
-# Ian Stakenvicius, 2017-06-14
-# on behalf of mozilla@gentoo.org
+# Ian Stakenvicius <axs@gentoo.org> (2017-06-14)
+# (on behalf of <mozilla@gentoo.org>)
 # Mask firefox-54 and above as it requires rust
 # now, and rust reportedly will not build yet.
 >=www-client/firefox-54.0
@@ -57,7 +72,3 @@ sys-boot/systemd-boot
 dev-lang/rust-bin
 mail-client/thunderbird-bin
 www-client/firefox-bin
-
-# Mikle Kolyada <zlogene@gentoo.org> (2020-03-20)
-#  No source builds for musl
-app-emulation/firecracker

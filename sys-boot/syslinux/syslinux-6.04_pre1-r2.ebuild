@@ -22,7 +22,8 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE="custom-cflags"
 
-RDEPEND="sys-fs/mtools
+RDEPEND="sys-apps/util-linux
+	sys-fs/mtools
 	dev-perl/Crypt-PasswdMD5
 	dev-perl/Digest-SHA1"
 DEPEND="${RDEPEND}

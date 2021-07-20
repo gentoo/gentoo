@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit python-single-r1
 
@@ -21,13 +21,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/dnspython[${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
-		dev-python/m2crypto[${PYTHON_MULTI_USEDEP}]
+		dev-python/dnspython[${PYTHON_USEDEP}]
+		dev-python/ipaddr[${PYTHON_USEDEP}]
+		dev-python/m2crypto[${PYTHON_USEDEP}]
 	')
 	net-dns/unbound[python,${PYTHON_SINGLE_USEDEP}]
 	ipsec? ( net-vpn/libreswan[dnssec] )
-	openpgp? ( $(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}]') )
+	openpgp? ( $(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]') )
 	ssh? ( net-misc/openssh )
 "
 

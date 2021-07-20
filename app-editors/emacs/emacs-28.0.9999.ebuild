@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
@@ -118,13 +118,13 @@ RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
 DEPEND="${RDEPEND}
 	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
-BDEPEND="app-eselect/eselect-emacs
-	sys-apps/texinfo
+BDEPEND="sys-apps/texinfo
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
-RDEPEND="${RDEPEND}
-	app-eselect/eselect-emacs"
+IDEPEND="app-eselect/eselect-emacs"
+
+RDEPEND+=" ${IDEPEND}"
 
 EMACS_SUFFIX="emacs-${SLOT}"
 SITEFILE="20${EMACS_SUFFIX}-gentoo.el"
@@ -141,9 +141,17 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
-	# These files ignore LDFLAGS. We assign the variable here, because
-	# for live ebuilds FULL_VERSION doesn't exist in global scope
-	use jit && QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
+	if use jit; then
+		# These files ignore LDFLAGS. We assign the variable here, because
+		# for live ebuilds FULL_VERSION doesn't exist in global scope
+		QA_FLAGS_IGNORED="usr/$(get_libdir)/emacs/${FULL_VERSION}/native-lisp/.*"
+
+		# gccjit doesn't play well with ccache #801580
+		# For now, work around the problem with an explicit LIBRARY_PATH
+		has ccache ${FEATURES} && tc-is-gcc \
+			&& export LIBRARY_PATH=$("$(tc-getCC)" -print-search-dirs \
+				| sed -n '/^libraries:/{s:^[^/]*::;p}')
+	fi
 
 	default
 

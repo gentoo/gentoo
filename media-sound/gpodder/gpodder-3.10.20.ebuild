@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
@@ -44,8 +44,11 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-apps/help2man
 	test? (
-		dev-python/minimock
-		dev-python/pytest-localserver
+		$(python_gen_cond_dep '
+			dev-python/minimock[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-localserver[${PYTHON_USEDEP}]
+		')
 	)
 "
 

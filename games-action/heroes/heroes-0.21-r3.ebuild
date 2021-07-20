@@ -11,7 +11,8 @@ SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
 	mirror://sourceforge/${PN}/${PN}-data-1.5.tar.bz2
 	mirror://sourceforge/${PN}/${PN}-sound-tracks-1.0.tar.bz2
-	mirror://sourceforge/${PN}/${PN}-sound-effects-1.0.tar.bz2"
+	mirror://sourceforge/${PN}/${PN}-sound-effects-1.0.tar.bz2
+	https://dev.gentoo.org/~ionen/distfiles/${PN}.png"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -60,19 +61,20 @@ src_configure() {
 	)
 
 	local pkg
-	for pkg in ${A//.tar.bz2}; do
-		cd "${WORKDIR}"/${pkg} || die
+	for pkg in ${A% *}; do
+		cd "${WORKDIR}"/${pkg%.tar.bz2} || die
 		econf "${econfargs[@]}"
 	done
 }
 
 src_install() {
 	local pkg
-	for pkg in ${A//.tar.bz2} ; do
-		emake -C "${WORKDIR}"/${pkg} DESTDIR="${D}" install
+	for pkg in ${A% *}; do
+		emake -C "${WORKDIR}"/${pkg%.tar.bz2} DESTDIR="${D}" install
 	done
 
 	einstalldocs
 
-	make_desktop_entry ${PN} Heroes applications-games
+	doicon "${DISTDIR}"/${PN}.png
+	make_desktop_entry ${PN} Heroes
 }

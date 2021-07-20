@@ -13,7 +13,7 @@ S="${WORKDIR}/python-${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 distutils_enable_tests pytest
 

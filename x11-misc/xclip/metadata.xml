@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>slyfox@gentoo.org</email>
-    <name>Sergei Trofimovich</name>
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
   </maintainer>
   <upstream>
     <remote-id type="github">astrand/xclip</remote-id>

@@ -1,0 +1,419 @@
+diff -Naur desktop-3.2.3.orig/src/CMakeLists.txt desktop-3.2.3/src/CMakeLists.txt
+--- desktop-3.2.3.orig/src/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/CMakeLists.txt	2021-07-07 20:26:40.620839467 +0200
+@@ -4,7 +4,13 @@
+ 
+ set(synclib_NAME ${APPLICATION_EXECUTABLE}sync)
+ 
+-find_package(Qt5 5.12 COMPONENTS Core Network Xml Concurrent WebEngineWidgets WebEngine REQUIRED)
++find_package(Qt5 5.12 COMPONENTS Core Network Xml Concurrent REQUIRED)
++find_package(Qt5 5.12 COMPONENTS WebEngineWidgets WebEngine)
++
++if(Qt5WebEngine_FOUND AND Qt5WebEngineWidgets_FOUND)
++  add_compile_definitions(WITH_WEBENGINE=1)
++endif()
++
+ get_target_property (QT_QMAKE_EXECUTABLE Qt5::qmake IMPORTED_LOCATION)
+ message(STATUS "Using Qt ${Qt5Core_VERSION} (${QT_QMAKE_EXECUTABLE})")
+ 
+diff -Naur desktop-3.2.3.orig/src/gui/CMakeLists.txt desktop-3.2.3/src/gui/CMakeLists.txt
+--- desktop-3.2.3.orig/src/gui/CMakeLists.txt	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/CMakeLists.txt	2021-07-07 20:26:40.620839467 +0200
+@@ -128,12 +128,17 @@
+     wizard/owncloudwizardcommon.cpp
+     wizard/owncloudwizard.cpp
+     wizard/owncloudwizardresultpage.cpp
+-    wizard/webviewpage.cpp
+-    wizard/webview.cpp
+     wizard/slideshow.cpp
+     wizard/welcomepage.cpp
+     wizard/linklabel.cpp
+-)
++    )
++
++if (Qt5WebEngine_FOUND AND Qt5WebEngineWidgets_FOUND)
++  list(APPEND client_SRCS
++    wizard/webviewpage.cpp
++    wizard/webview.cpp
++  )
++endif()
+ 
+ IF(BUILD_UPDATER)
+     set(updater_SRCS
+@@ -339,9 +344,12 @@
+   Qt5::Qml
+   Qt5::Quick
+   Qt5::QuickControls2
+-  Qt5::WebEngineWidgets
+   ${synclib_NAME}
+-)
++  )
++
++if(Qt5WebEngine_FOUND AND Qt5WebEngineWidgets_FOUND)
++  target_link_libraries(nextcloudCore PUBLIC Qt5::WebEngineWidgets)
++endif()
+ 
+ set_target_properties(nextcloudCore
+   PROPERTIES
+diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentials.cpp desktop-3.2.3/src/gui/creds/webflowcredentials.cpp
+--- desktop-3.2.3.orig/src/gui/creds/webflowcredentials.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/creds/webflowcredentials.cpp	2021-07-07 20:26:40.618839464 +0200
+@@ -16,7 +16,9 @@
+ #include "account.h"
+ #include "configfile.h"
+ #include "theme.h"
++#ifdef WITH_WEBENGINE
+ #include "wizard/webview.h"
++#endif // WITH_WEBENGINE
+ #include "webflowcredentialsdialog.h"
+ 
+ using namespace QKeychain;
+@@ -144,8 +146,12 @@
+     // Do a DetermineAuthTypeJob to make sure that the server is still using Flow2
+     auto job = new DetermineAuthTypeJob(_account->sharedFromThis(), this);
+     connect(job, &DetermineAuthTypeJob::authType, [this](DetermineAuthTypeJob::AuthType type) {
+-        // LoginFlowV2 > WebViewFlow > OAuth > Shib > Basic
++    // LoginFlowV2 > WebViewFlow > OAuth > Shib > Basic
++#ifdef WITH_WEBENGINE
+         bool useFlow2 = (type != DetermineAuthTypeJob::WebViewFlow);
++#else // WITH_WEBENGINE
++        bool useFlow2 = true;
++#endif // WITH_WEBENGINE
+ 
+         _askDialog = new WebFlowCredentialsDialog(_account, useFlow2);
+ 
+diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.cpp desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.cpp
+--- desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.cpp	2021-07-07 20:26:40.618839464 +0200
+@@ -8,16 +8,20 @@
+ #include "owncloudgui.h"
+ #include "headerbanner.h"
+ #include "wizard/owncloudwizardcommon.h"
++#ifdef WITH_WEBENGINE
+ #include "wizard/webview.h"
++#endif // WITH_WEBENGINE
+ #include "wizard/flow2authwidget.h"
+ 
+ namespace OCC {
+ 
+ WebFlowCredentialsDialog::WebFlowCredentialsDialog(Account *account, bool useFlow2, QWidget *parent)
+-    : QDialog(parent),
+-      _useFlow2(useFlow2),
+-      _flow2AuthWidget(nullptr),
+-      _webView(nullptr)
++    : QDialog(parent)
++    , _useFlow2(useFlow2)
++    , _flow2AuthWidget(nullptr)
++#ifdef WITH_WEBENGINE
++    , _webView(nullptr)
++#endif // WITH_WEBENGINE
+ {
+     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+ 
+@@ -49,10 +53,12 @@
+ 
+         _flow2AuthWidget->startAuth(account);
+     } else {
++#ifdef WITH_WEBENGINE
+         _webView = new WebView();
+         _containerLayout->addWidget(_webView);
+ 
+         connect(_webView, &WebView::urlCatched, this, &WebFlowCredentialsDialog::urlCatched);
++#endif // WITH_WEBENGINE
+     }
+ 
+     auto app = static_cast<Application *>(qApp);
+@@ -73,12 +79,14 @@
+ void WebFlowCredentialsDialog::closeEvent(QCloseEvent* e) {
+     Q_UNUSED(e)
+ 
++#ifdef WITH_WEBENGINE
+     if (_webView) {
+         // Force calling WebView::~WebView() earlier so that _profile and _page are
+         // deleted in the correct order.
+         _webView->deleteLater();
+         _webView = nullptr;
+     }
++#endif // WITH_WEBENGINE
+ 
+     if (_flow2AuthWidget) {
+         _flow2AuthWidget->resetAuth();
+@@ -89,9 +97,14 @@
+     emit onClose();
+ }
+ 
+-void WebFlowCredentialsDialog::setUrl(const QUrl &url) {
++void WebFlowCredentialsDialog::setUrl(const QUrl &url)
++{
++#ifdef WITH_WEBENGINE
+     if (_webView)
+         _webView->setUrl(url);
++#else // WITH_WEBENGINE
++    Q_UNUSED(url);
++#endif // WITH_WEBENGINE
+ }
+ 
+ void WebFlowCredentialsDialog::setInfo(const QString &msg) {
+diff -Naur desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.h desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.h
+--- desktop-3.2.3.orig/src/gui/creds/webflowcredentialsdialog.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/creds/webflowcredentialsdialog.h	2021-07-07 20:26:40.618839464 +0200
+@@ -13,7 +13,9 @@
+ namespace OCC {
+ 
+ class HeaderBanner;
++#ifdef WITH_WEBENGINE
+ class WebView;
++#endif // WITH_WEBENGINE
+ class Flow2AuthWidget;
+ 
+ class WebFlowCredentialsDialog : public QDialog
+@@ -50,7 +52,9 @@
+     bool _useFlow2;
+ 
+     Flow2AuthWidget *_flow2AuthWidget;
++#ifdef WITH_WEBENGINE
+     WebView *_webView;
++#endif // WITH_WEBENGINE
+ 
+     QLabel *_errorLabel;
+     QLabel *_infoLabel;
+diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.cpp desktop-3.2.3/src/gui/wizard/owncloudsetuppage.cpp
+--- desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/wizard/owncloudsetuppage.cpp	2021-07-07 20:26:40.619839465 +0200
+@@ -119,21 +119,6 @@
+     _ui.leUrl->setPalette(leUrlPalette);
+ }
+ 
+-#ifdef WITH_PROVIDERS
+-void OwncloudSetupPage::slotLogin()
+-{
+-    _ocWizard->setRegistration(false);
+-}
+-void OwncloudSetupPage::slotGotoProviderList()
+-{
+-    _ocWizard->setRegistration(true);
+-    _ocWizard->setAuthType(DetermineAuthTypeJob::AuthType::WebViewFlow);
+-    _authTypeKnown = true;
+-    _checking = false;
+-    emit completeChanged();
+-}
+-#endif
+-
+ // slot hit from textChanged of the url entry field.
+ void OwncloudSetupPage::slotUrlChanged(const QString &url)
+ {
+@@ -228,8 +213,10 @@
+         return WizardCommon::Page_OAuthCreds;
+     case DetermineAuthTypeJob::LoginFlowV2:
+         return WizardCommon::Page_Flow2AuthCreds;
++#ifdef WITH_WEBENGINE
+     case DetermineAuthTypeJob::WebViewFlow:
+         return WizardCommon::Page_WebView;
++#endif // WITH_WEBENGINE
+     }
+     return WizardCommon::Page_HttpCreds;
+ }
+diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.h desktop-3.2.3/src/gui/wizard/owncloudsetuppage.h
+--- desktop-3.2.3.orig/src/gui/wizard/owncloudsetuppage.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/wizard/owncloudsetuppage.h	2021-07-07 20:26:40.617839462 +0200
+@@ -67,10 +67,6 @@
+ protected slots:
+     void slotUrlChanged(const QString &);
+     void slotUrlEditFinished();
+-#ifdef WITH_PROVIDERS
+-    void slotLogin();
+-    void slotGotoProviderList();
+-#endif
+ 
+     void setupCustomization();
+ 
+diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizardcommon.h desktop-3.2.3/src/gui/wizard/owncloudwizardcommon.h
+--- desktop-3.2.3.orig/src/gui/wizard/owncloudwizardcommon.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/wizard/owncloudwizardcommon.h	2021-07-07 20:26:40.619839465 +0200
+@@ -46,7 +46,9 @@
+         Page_HttpCreds,
+         Page_OAuthCreds,
+         Page_Flow2AuthCreds,
++#ifdef WITH_WEBENGINE
+         Page_WebView,
++#endif // WITH_WEBENGINE
+         Page_AdvancedSetup,
+         Page_Result
+     };
+diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.cpp desktop-3.2.3/src/gui/wizard/owncloudwizard.cpp
+--- desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/wizard/owncloudwizard.cpp	2021-07-07 20:26:40.619839465 +0200
+@@ -54,7 +54,11 @@
+     , _flow2CredsPage(new Flow2AuthCredsPage)
+     , _advancedSetupPage(new OwncloudAdvancedSetupPage(this))
+     , _resultPage(new OwncloudWizardResultPage)
++#ifdef WITH_WEBENGINE
+     , _webViewPage(new WebViewPage(this))
++#else // WITH_WEBENGINE
++    , _webViewPage(nullptr)
++#endif // WITH_WEBENGINE
+ {
+     setObjectName("owncloudWizard");
+ 
+@@ -66,7 +70,9 @@
+     setPage(WizardCommon::Page_Flow2AuthCreds, _flow2CredsPage);
+     setPage(WizardCommon::Page_AdvancedSetup, _advancedSetupPage);
+     setPage(WizardCommon::Page_Result, _resultPage);
++#ifdef WITH_WEBENGINE
+     setPage(WizardCommon::Page_WebView, _webViewPage);
++#endif // WITH_WEBENGINE
+ 
+     connect(this, &QDialog::finished, this, &OwncloudWizard::basicSetupFinished);
+ 
+@@ -78,7 +84,9 @@
+     connect(_httpCredsPage, &OwncloudHttpCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
+     connect(_browserCredsPage, &OwncloudOAuthCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
+     connect(_flow2CredsPage, &Flow2AuthCredsPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
++#ifdef WITH_WEBENGINE
+     connect(_webViewPage, &WebViewPage::connectToOCUrl, this, &OwncloudWizard::connectToOCUrl);
++#endif // WITH_WEBENGINE
+     connect(_advancedSetupPage, &OwncloudAdvancedSetupPage::createLocalAndRemoteFolders,
+         this, &OwncloudWizard::createLocalAndRemoteFolders);
+     connect(this, &QWizard::customButtonClicked, this, &OwncloudWizard::skipFolderConfiguration);
+@@ -230,9 +238,11 @@
+         _flow2CredsPage->setConnected();
+         break;
+ 
++#ifdef WITH_WEBENGINE
+     case WizardCommon::Page_WebView:
+         _webViewPage->setConnected();
+         break;
++#endif // WITH_WEBENGINE
+ 
+     case WizardCommon::Page_AdvancedSetup:
+         _advancedSetupPage->directoriesCreated();
+@@ -256,8 +266,10 @@
+         _credentialsPage = _browserCredsPage;
+     } else if (type == DetermineAuthTypeJob::LoginFlowV2) {
+         _credentialsPage = _flow2CredsPage;
++#ifdef WITH_WEBENGINE
+     } else if (type == DetermineAuthTypeJob::WebViewFlow) {
+         _credentialsPage = _webViewPage;
++#endif // WITH_WEBENGINE
+     } else { // try Basic auth even for "Unknown"
+         _credentialsPage = _httpCredsPage;
+     }
+@@ -281,7 +293,11 @@
+         button(QWizard::NextButton)->setHidden(true);
+         // Need to set it from here, otherwise it has no effect
+         _welcomePage->setLoginButtonDefault();
+-    } else if (id == WizardCommon::Page_WebView || id == WizardCommon::Page_Flow2AuthCreds) {
++    } else if (
++#ifdef WITH_WEBENGINE
++        id == WizardCommon::Page_WebView ||
++#endif // WITH_WEBENGINE
++        id == WizardCommon::Page_Flow2AuthCreds) {
+         setButtonLayout({ QWizard::Stretch, QWizard::BackButton });
+     } else if (id == WizardCommon::Page_AdvancedSetup) {
+         setButtonLayout({ QWizard::Stretch, QWizard::CustomButton1, QWizard::BackButton, QWizard::NextButton });
+diff -Naur desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.h desktop-3.2.3/src/gui/wizard/owncloudwizard.h
+--- desktop-3.2.3.orig/src/gui/wizard/owncloudwizard.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/wizard/owncloudwizard.h	2021-07-07 20:26:40.619839465 +0200
+@@ -128,7 +128,7 @@
+     OwncloudAdvancedSetupPage *_advancedSetupPage;
+     OwncloudWizardResultPage *_resultPage;
+     AbstractCredentialsWizardPage *_credentialsPage = nullptr;
+-    WebViewPage *_webViewPage;
++    WebViewPage *_webViewPage = nullptr;
+ 
+     QStringList _setupLog;
+ 
+diff -Naur desktop-3.2.3.orig/src/gui/wizard/welcomepage.cpp desktop-3.2.3/src/gui/wizard/welcomepage.cpp
+--- desktop-3.2.3.orig/src/gui/wizard/welcomepage.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/gui/wizard/welcomepage.cpp	2021-07-07 20:26:40.620839467 +0200
+@@ -13,6 +13,7 @@
+  */
+ 
+ #include "welcomepage.h"
++#include "guiutility.h"
+ #include "theme.h"
+ #include "wizard/owncloudwizard.h"
+ #include "wizard/slideshow.h"
+@@ -94,11 +95,18 @@
+ 
+ void WelcomePage::setupCreateAccountButton()
+ {
++#ifdef WITH_WEBENGINE
+     connect(_ui->createAccountButton, &QPushButton::clicked, this, [this](bool /*checked*/) {
+         _ocWizard->setRegistration(true);
+         _nextPage = WizardCommon::Page_WebView;
+         _ocWizard->next();
+     });
++#else // WITH_WEBENGINE
++    connect(_ui->createAccountButton, &QPushButton::clicked, this, [this](bool /*checked*/) {
++        _ocWizard->setRegistration(true);
++        Utility::openBrowser(QStringLiteral("https://nextcloud.com/register"));
++    });
++#endif // WITH_WEBENGINE
+ }
+ 
+ void WelcomePage::setupHostYourOwnServerLabel()
+diff -Naur desktop-3.2.3.orig/src/libsync/networkjobs.cpp desktop-3.2.3/src/libsync/networkjobs.cpp
+--- desktop-3.2.3.orig/src/libsync/networkjobs.cpp	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/libsync/networkjobs.cpp	2021-07-07 20:26:40.619839465 +0200
+@@ -30,6 +30,7 @@
+ #include <QCoreApplication>
+ #include <QJsonDocument>
+ #include <QJsonObject>
++#include <qloggingcategory.h>
+ #ifndef TOKEN_AUTH_ONLY
+ #include <QPainter>
+ #include <QPainterPath>
+@@ -958,7 +959,11 @@
+                 auto flow = gs.toObject().value("desktoplogin");
+                 if (flow != QJsonValue::Undefined) {
+                     if (flow.toInt() == 1) {
++#ifdef WITH_WEBENGINE
+                         _resultOldFlow = WebViewFlow;
++#else // WITH_WEBENGINE
++                        qCWarning(lcDetermineAuthTypeJob) << "Server does only support flow1, but this client was compiled without support for flow1";
++#endif // WITH_WEBENGINE
+                     }
+                 }
+             }
+@@ -985,20 +990,24 @@
+ 
+     auto result = _resultPropfind;
+ 
++#ifdef WITH_WEBENGINE
+     // WebViewFlow > OAuth > Basic
+     if (_account->serverVersionInt() >= Account::makeServerVersion(12, 0, 0)) {
+         result = WebViewFlow;
+     }
++#endif // WITH_WEBENGINE
+ 
+     // LoginFlowV2 > WebViewFlow > OAuth > Basic
+     if (_account->serverVersionInt() >= Account::makeServerVersion(16, 0, 0)) {
+         result = LoginFlowV2;
+     }
+ 
++#ifdef WITH_WEBENGINE
+     // If we determined that we need the webview flow (GS for example) then we switch to that
+     if (_resultOldFlow == WebViewFlow) {
+         result = WebViewFlow;
+     }
++#endif // WITH_WEBENGINE
+ 
+     // If we determined that a simple get gave us an authentication required error
+     // then the server enforces basic auth and we got no choice but to use this
+diff -Naur desktop-3.2.3.orig/src/libsync/networkjobs.h desktop-3.2.3/src/libsync/networkjobs.h
+--- desktop-3.2.3.orig/src/libsync/networkjobs.h	2021-06-24 12:04:33.000000000 +0200
++++ desktop-3.2.3/src/libsync/networkjobs.h	2021-07-07 20:26:40.619839465 +0200
+@@ -444,9 +444,11 @@
+ public:
+     enum AuthType {
+         NoAuthType, // used only before we got a chance to probe the server
++#ifdef WITH_WEBENGINE
++        WebViewFlow,
++#endif // WITH_WEBENGINE
+         Basic, // also the catch-all fallback for backwards compatibility reasons
+         OAuth,
+-        WebViewFlow,
+         LoginFlowV2
+     };
+     Q_ENUM(AuthType)

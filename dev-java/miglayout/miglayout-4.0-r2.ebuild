@@ -13,7 +13,7 @@ SRC_URI="http://www.migcalendar.com/miglayout/versions/${PV}/${P}-sources.jar"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="swt"
 
 COMMON_DEPEND="swt? ( dev-java/swt:4.10 )"

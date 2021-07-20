@@ -20,6 +20,7 @@ DEPEND="sys-libs/ncurses:=
 		net-libs/libpcap
 		net-libs/libnet:1.1
 	)
+	sctp? ( net-misc/lksctp-tools )
 	ssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"

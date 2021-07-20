@@ -25,3 +25,9 @@ KEYWORDS="~amd64 ~arm64 ~amd64-linux ~x86-linux"
 # all tests are related to making releases and final checks for distribution
 
 S=${WORKDIR}/${MY_P}
+
+python_prepare_all() {
+	sed -e "s:version=buildbot_pkg.getVersion(\".\"),:version=\"${MY_PV}\",:" \
+		-i setup.py || die
+	distutils-r1_python_prepare_all
+}

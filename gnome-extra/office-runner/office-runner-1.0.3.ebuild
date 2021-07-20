@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/office-runner/-/archive/${PV}/${P}.tar.b
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-libs/glib:2

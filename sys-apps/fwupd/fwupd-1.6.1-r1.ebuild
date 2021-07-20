@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit linux-info meson python-single-r1 vala xdg toolchain-funcs
 
@@ -48,9 +48,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libjcat-0.1.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.1.13:=
 	$(python_gen_cond_dep '
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	')
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
 	net-misc/curl

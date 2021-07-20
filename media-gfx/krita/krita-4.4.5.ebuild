@@ -13,7 +13,7 @@ inherit ecm kde.org python-single-r1
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.gz
 		https://dev.gentoo.org/~asturm/distfiles/${PN}-4.2.9-patchset.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
@@ -31,8 +31,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	dev-libs/quazip:0=
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP}]
-		dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/sip:=[${PYTHON_USEDEP}]
 	')
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5

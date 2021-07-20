@@ -4,12 +4,12 @@
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
 # @CODE
-# EAPI=5
+# EAPI=8
 #
 # src_configure() {
 # 	econf \
@@ -23,11 +23,14 @@
 # }
 # @CODE
 
+if [[ ! ${_BASH_COMPLETION_R1_ECLASS} ]]; then
+_BASH_COMPLETION_R1_ECLASS=1
+
 inherit toolchain-funcs
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6|7) ;;
-	*) die "EAPI ${EAPI} unsupported (yet)."
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 # @FUNCTION: _bash-completion-r1_get_bashdir
@@ -136,3 +139,5 @@ bashcomp_alias() {
 			|| return
 	done
 }
+
+fi

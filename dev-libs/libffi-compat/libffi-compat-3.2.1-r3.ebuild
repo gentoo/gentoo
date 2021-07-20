@@ -11,7 +11,7 @@ SRC_URI="ftp://sourceware.org/pub/libffi/libffi-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="6" # libffi.so.6
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug pax_kernel test"
+IUSE="debug pax-kernel test"
 
 RESTRICT="!test? ( test )"
 
@@ -45,7 +45,7 @@ multilib_src_configure() {
 	use userland_BSD && export HOST="${CHOST}"
 	econf \
 		--disable-static \
-		$(use_enable pax_kernel pax_emutramp) \
+		$(use_enable pax-kernel pax_emutramp) \
 		$(use_enable debug)
 }
 

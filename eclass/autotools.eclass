@@ -4,7 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -31,7 +31,7 @@ case ${EAPI} in
 		# Needed for eqawarn
 		inherit eutils
 		;;
-	7) ;;
+	7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
@@ -373,10 +373,21 @@ eautoconf() {
 		die "No configure.{ac,in} present!"
 	fi
 
+
 	if [[ ${WANT_AUTOCONF} != "2.1" && -e configure.in ]] ; then
-		eqawarn "This package has a configure.in file which has long been deprecated.  Please"
-		eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
-		eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
+		case ${EAPI:-0} in
+			0|1|2|3|4|5|6|7)
+				eqawarn "This package has a configure.in file which has long been deprecated.  Please"
+				eqawarn "update it to use configure.ac instead as newer versions of autotools will die"
+				eqawarn "when it finds this file.  See https://bugs.gentoo.org/426262 for details."
+			;;
+		*)
+				# Move configure file to the new location only on newer EAPIs to ensure
+				# checks are done rather than retroactively breaking ebuilds.
+				eqawarn "Moving configure.in to configure.ac (bug #426262)"
+				mv configure.{in,ac} || die
+			;;
+		esac
 	fi
 
 	# Install config.guess and config.sub which are required by many macros

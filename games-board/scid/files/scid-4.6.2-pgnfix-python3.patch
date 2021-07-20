@@ -1,3 +1,4 @@
+https://sourceforge.net/p/scid/patches/8/
 --- a/scripts/pgnfix.py
 +++ b/scripts/pgnfix.py
 @@ -12,7 +12,6 @@

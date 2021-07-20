@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-07-17)
+# Haskell isn't stable on amd64 (or anywhere)
+# bug #801652
+dev-util/diffoscope haskell
+
 # Sam James <sam@gentoo.org> (2021-03-04)
 # Dependencies not yet stable, drags in
 # large amount of fabric. bug #763954

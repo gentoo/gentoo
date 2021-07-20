@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="A native Prolog compiler with constraint solving over finite domains (FD)"
 HOMEPAGE="http://www.gprolog.org/"
@@ -21,7 +21,15 @@ PATCHES=(
 	"${FILESDIR}"/${P}-nodocs.patch
 	"${FILESDIR}"/${P}-txt-file.patch
 	"${FILESDIR}"/${P}-check-boot.patch
+	"${FILESDIR}"/${P}-llvm-as.patch
 )
+
+src_prepare() {
+	default
+
+	cd "${S}"/src
+	eautoconf
+}
 
 src_configure() {
 	CFLAGS_MACHINE="`get-flag -march` `get-flag -mcpu` `get-flag -mtune`"

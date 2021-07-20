@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmake-utils.eclass
@@ -6,7 +6,7 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common functions for qmake-based packages.
 # @DESCRIPTION:
 # Utility eclass providing wrapper functions for Qt5 qmake.
@@ -14,63 +14,15 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
+
 if [[ -z ${_QMAKE_UTILS_ECLASS} ]]; then
 _QMAKE_UTILS_ECLASS=1
 
-case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
-
 inherit toolchain-funcs
-
-# @FUNCTION: _qmake-utils_banned_func
-# @INTERNAL
-# @DESCRIPTION:
-# Banned functions are banned.
-_qmake-utils_banned_func() {
-	die "${FUNCNAME[1]} is banned in EAPI 7 and later"
-}
-
-# @FUNCTION: qt4_get_bindir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_bindir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_headerdir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_headerdir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_libdir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_libdir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_mkspecsdir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_mkspecsdir() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: qt4_get_plugindir
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qt4_get_plugindir() {
-	_qmake-utils_banned_func
-}
 
 # @FUNCTION: qt5_get_bindir
 # @DESCRIPTION:
@@ -106,22 +58,6 @@ qt5_get_mkspecsdir() {
 # Echoes the directory where Qt5 plugins are installed.
 qt5_get_plugindir() {
 	echo $(qt5_get_libdir)/qt5/plugins
-}
-
-# @FUNCTION: qmake-utils_find_pro_file
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-qmake-utils_find_pro_file() {
-	_qmake-utils_banned_func
-}
-
-# @FUNCTION: eqmake4
-# @INTERNAL
-# @DESCRIPTION:
-# Banned.
-eqmake4() {
-	_qmake-utils_banned_func
 }
 
 # @FUNCTION: eqmake5

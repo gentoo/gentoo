@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
@@ -42,7 +42,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.10.3-sizeof-types.patch # 459966
@@ -61,10 +60,10 @@ _egit_repo_handler() {
 		esac
 
 		local EGIT_REPO_URI
-		EGIT_REPO_URI="https://git.sv.nongnu.org/r/freetype/freetype2.git"
+		EGIT_REPO_URI="https://gitlab.freedesktop.org/freetype/freetype.git"
 		git-r3_src_${phase}
 		if use utils ; then
-			EGIT_REPO_URI="https://git.sv.nongnu.org/r/freetype/freetype2-demos.git"
+			EGIT_REPO_URI="https://gitlab.freedesktop.org/freetype/freetype-demos.git"
 			local EGIT_CHECKOUT_DIR="${WORKDIR}/ft2demos-${PV}"
 			git-r3_src_${phase}
 		fi

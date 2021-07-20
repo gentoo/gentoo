@@ -4,7 +4,7 @@
 EAPI="7"
 
 # Require python-2 with sqlite USE flag
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 systemd
@@ -32,15 +32,15 @@ COMMON_DEPS="
 	acct-group/sabnzbd
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/cheetah3[${PYTHON_MULTI_USEDEP}]
-		dev-python/cherrypy[${PYTHON_MULTI_USEDEP}]
-		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
-		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/feedparser-6[${PYTHON_MULTI_USEDEP}]
-		dev-python/notify2[${PYTHON_MULTI_USEDEP}]
-		dev-python/portend[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/sabyenc-4[${PYTHON_MULTI_USEDEP}]
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/cheetah3[${PYTHON_USEDEP}]
+		dev-python/cherrypy[${PYTHON_USEDEP}]
+		dev-python/configobj[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		>=dev-python/feedparser-6[${PYTHON_USEDEP}]
+		dev-python/notify2[${PYTHON_USEDEP}]
+		dev-python/portend[${PYTHON_USEDEP}]
+		>=dev-python/sabyenc-4[${PYTHON_USEDEP}]
 	')
 "
 

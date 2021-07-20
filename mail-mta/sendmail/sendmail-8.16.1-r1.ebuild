@@ -13,14 +13,15 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
-# TODO: restore keywords soon for bug 730890 after testing
-#KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ipv6 ldap mbox nis sasl sockets ssl tcpd"
 
 BDEPEND="
 	sys-devel/m4
 	virtual/pkgconfig"
 DEPEND="
+	acct-group/smmsp
+	>=acct-user/smmsp-0-r2
 	net-mail/mailbase
 	>=sys-libs/db-3.2:=
 	ldap? ( net-nds/openldap )
@@ -30,8 +31,6 @@ DEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )"
 RDEPEND="
 	${DEPEND}
-	acct-group/smmsp
-	>=acct-user/smmsp-0-r2
 	>=mail-filter/libmilter-1.0.2_p1-r1
 	!mail-mta/courier
 	!mail-mta/esmtp

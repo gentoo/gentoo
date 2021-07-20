@@ -4,21 +4,15 @@
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
-case "${EAPI:-0}" in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (obsolete) for ${ECLASS}"
-		;;
-	4|5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI:-0} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 EXPORT_FUNCTIONS src_unpack
@@ -27,12 +21,10 @@ if [[ ! ${_GIT_R3} ]]; then
 
 PROPERTIES+=" live"
 
-if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
-	if [[ ${EAPI:-0} != [0123456] ]]; then
-		BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
-	else
-		DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
-	fi
+if [[ ${EAPI} != [56] ]]; then
+	BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+else
+	DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
 fi
 
 # @ECLASS-VARIABLE: EGIT_CLONE_TYPE
@@ -283,50 +275,6 @@ _git-r3_env_setup() {
 
 	if [[ ${EGIT_COMMIT} && ${EGIT_COMMIT_DATE} ]]; then
 		die "EGIT_COMMIT and EGIT_COMMIT_DATE can not be specified simultaneously"
-	fi
-
-	# Migration helpers. Remove them when git-2 is removed.
-
-	if [[ ${EGIT_SOURCEDIR} ]]; then
-		eerror "EGIT_SOURCEDIR has been replaced by EGIT_CHECKOUT_DIR. While updating"
-		eerror "your ebuild, please check whether the variable is necessary at all"
-		eerror "since the default has been changed from \${S} to \${WORKDIR}/\${P}."
-		eerror "Therefore, proper setting of S may be sufficient."
-		die "EGIT_SOURCEDIR has been replaced by EGIT_CHECKOUT_DIR."
-	fi
-
-	if [[ ${EGIT_MASTER} ]]; then
-		eerror "EGIT_MASTER has been removed. Instead, the upstream default (HEAD)"
-		eerror "is used by the eclass. Please remove the assignment or use EGIT_BRANCH"
-		eerror "as necessary."
-		die "EGIT_MASTER has been removed."
-	fi
-
-	if [[ ${EGIT_HAS_SUBMODULES} ]]; then
-		eerror "EGIT_HAS_SUBMODULES has been removed. The eclass no longer needs"
-		eerror "to switch the clone type in order to support submodules and therefore"
-		eerror "submodules are detected and fetched automatically. If you need to"
-		eerror "disable or filter submodules, see EGIT_SUBMODULES."
-		die "EGIT_HAS_SUBMODULES is no longer necessary."
-	fi
-
-	if [[ ${EGIT_PROJECT} ]]; then
-		eerror "EGIT_PROJECT has been removed. Instead, the eclass determines"
-		eerror "the local clone path using path in canonical EGIT_REPO_URI."
-		eerror "If the current algorithm causes issues for you, please report a bug."
-		die "EGIT_PROJECT is no longer necessary."
-	fi
-
-	if [[ ${EGIT_BOOTSTRAP} ]]; then
-		eerror "EGIT_BOOTSTRAP has been removed. Please create proper src_prepare()"
-		eerror "instead."
-		die "EGIT_BOOTSTRAP has been removed."
-	fi
-
-	if [[ ${EGIT_NOUNPACK} ]]; then
-		eerror "EGIT_NOUNPACK has been removed. The eclass no longer calls default"
-		eerror "unpack function. If necessary, please declare proper src_unpack()."
-		die "EGIT_NOUNPACK has been removed."
 	fi
 }
 
@@ -612,7 +560,7 @@ git-r3_fetch() {
 	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
 	# support new override API for EAPI 6+
-	if ! has "${EAPI:-0}" 0 1 2 3 4 5; then
+	if [[ ${EAPI} != 5 ]]; then
 		# get the name and do some more processing:
 		# 1) kill .git suffix,
 		# 2) underscore (remaining) non-variable characters,

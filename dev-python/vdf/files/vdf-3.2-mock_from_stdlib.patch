@@ -1,9 +1,0 @@
---- a/tests/test_vdf.py
-+++ b/tests/test_vdf.py
-@@ -1,5 +1,5 @@
- import unittest
--import mock
-+import unittest.mock as mock
- import sys
- 
- try:

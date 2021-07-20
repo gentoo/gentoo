@@ -10,10 +10,6 @@
 python_single_target_python3_10
 python_targets_python3_10
 
-# Michał Górny <mgorny@gentoo.org> (2021-01-07)
-# Prebuilt kernel rebuilds are supported on stable yet.
-dist-kernel
-
 # Sam James <sam@gentoo.org> (2020-12-23)
 # dev-lang/luajit is not yet stable
 lua_single_target_luajit

@@ -1,0 +1,3 @@
+# Allow fscrypt to check your login passphrase when you create a login protector
+# See https://github.com/google/fscrypt/issues/130#issuecomment-533955949
+auth		required	pam_unix.so

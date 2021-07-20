@@ -1,0 +1,16 @@
+Exposes a dummy version of set_allow_pipewire in case the library is built
+without WEBRTC_USE_PIPEWIRE. This function is expected to be used by
+applications, and removing it completely breaks the ABI.
+
+--- tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34.orig/src/modules/desktop_capture/desktop_capture_options.h
++++ tg_owt-91d836dc84a16584c6ac52b36c04c0de504d9c34/src/modules/desktop_capture/desktop_capture_options.h
+@@ -131,6 +131,9 @@
+ #if defined(WEBRTC_USE_PIPEWIRE)
+   bool allow_pipewire() const { return allow_pipewire_; }
+   void set_allow_pipewire(bool allow) { allow_pipewire_ = allow; }
++#else
++  bool allow_pipewire() const { return false; }
++  void set_allow_pipewire(bool allow) { }
+ #endif
+ 
+  private:

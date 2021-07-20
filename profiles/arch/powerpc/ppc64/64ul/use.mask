@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-06-03)
@@ -52,11 +52,6 @@ hddtemp
 
 # Unmask this here, since only ppc64 can use it
 -ibm
-
-# USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 2007-09-18
-# Robin H. Johnson <robbat2@gentoo.org>
-audit
 
 # unregisterised ghc arch for now.
 # no ghci - no TH

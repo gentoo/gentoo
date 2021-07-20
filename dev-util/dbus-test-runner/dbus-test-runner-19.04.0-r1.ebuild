@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit flag-o-matic python-single-r1
 
 DESCRIPTION="Run executables under a new DBus session for testing"
@@ -30,13 +30,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbusmock[${PYTHON_USEDEP}]
 		')
 	)
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbusmock[${PYTHON_USEDEP}]
 	')
 "
 

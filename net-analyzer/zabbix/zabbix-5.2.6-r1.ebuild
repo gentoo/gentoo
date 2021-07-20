@@ -5,7 +5,7 @@ EAPI=7
 
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit webapp java-pkg-opt-2 systemd toolchain-funcs go-module user-info
+inherit webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
 # content of src/go/go.sum
 EGO_SUM=(
 	"github.com/BurntSushi/locker v0.0.0-20171006230638-a6e239ea1c69 h1:+tu3HOoMXB7RXEINRVIpxJCT+KdYiI7LAEAUrOw3dIU="
@@ -255,11 +255,13 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="~amd64 ~x86"
-IUSE="+agent +agent2 java curl frontend ipv6 ldap libxml2 mysql openipmi oracle +postgres proxy server ssh ssl snmp sqlite odbc static"
+KEYWORDS="amd64 x86"
+IUSE="+agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy server snmp sqlite ssh ssl static"
+
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
-	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
-	server? ( ^^ ( mysql oracle postgres odbc ) )
+	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
+	server? ( ^^ ( mysql oracle postgres ) )
+	ssl? ( ^^ ( gnutls openssl ) )
 	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
@@ -284,7 +286,10 @@ COMMON_DEPEND="
 	snmp? ( net-analyzer/net-snmp )
 	sqlite? ( dev-db/sqlite )
 	ssh? ( net-libs/libssh2 )
-	ssl? ( dev-libs/openssl:=[-bindist(-)] )
+	ssl? (
+		gnutls? ( net-libs/gnutls:0= )
+		openssl? ( dev-libs/openssl:=[-bindist(-)] )
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -330,6 +335,9 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	virtual/pkgconfig
 "
+
+# upstream tests fail for agent2
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
@@ -379,17 +387,18 @@ src_configure() {
 		"$(use_enable server)" \
 		"$(use_enable static)" \
 		"$(use_with curl libcurl)" \
+		"$(use_with gnutls)" \
 		"$(use_with ldap)" \
 		"$(use_with libxml2)" \
 		"$(use_with mysql)" \
 		"$(use_with odbc unixodbc)" \
 		"$(use_with openipmi openipmi)" \
+		"$(use_with openssl)" \
 		"$(use_with oracle)" \
 		"$(use_with postgres postgresql)" \
 		"$(use_with snmp net-snmp)" \
 		"$(use_with sqlite sqlite3)" \
-		"$(use_with ssh ssh2)" \
-		"$(use_with ssl openssl)"
+		"$(use_with ssh ssh2)"
 }
 
 src_compile() {
@@ -428,7 +437,7 @@ src_install() {
 		doins -r "${S}"/database/
 
 		systemd_dounit "${FILESDIR}"/zabbix-server.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-server.tmpfiles zabbix-server.conf
+		newtmpfiles "${FILESDIR}"/zabbix-server.tmpfiles zabbix-server.conf
 	fi
 
 	if use proxy; then
@@ -445,7 +454,7 @@ src_install() {
 		doins -r "${S}"/database/
 
 		systemd_dounit "${FILESDIR}"/zabbix-proxy.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-proxy.tmpfiles zabbix-proxy.conf
+		newtmpfiles "${FILESDIR}"/zabbix-proxy.tmpfiles zabbix-proxy.conf
 	fi
 
 	if use agent; then
@@ -462,7 +471,7 @@ src_install() {
 			src/zabbix_get/zabbix_get
 
 		systemd_dounit "${FILESDIR}"/zabbix-agentd.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-agentd.tmpfiles zabbix-agentd.conf
+		newtmpfiles "${FILESDIR}"/zabbix-agentd.tmpfiles zabbix-agentd.conf
 	fi
 	if use agent2; then
 		insinto /etc/zabbix
@@ -475,7 +484,7 @@ src_install() {
 		dosbin src/go/bin/zabbix_agent2
 
 		systemd_dounit "${FILESDIR}"/zabbix-agent2.service
-		systemd_newtmpfilesd "${FILESDIR}"/zabbix-agent2.tmpfiles zabbix-agent2.conf
+		newtmpfiles "${FILESDIR}"/zabbix-agent2.tmpfiles zabbix-agent2.conf
 	fi
 
 	fowners root:zabbix /etc/zabbix

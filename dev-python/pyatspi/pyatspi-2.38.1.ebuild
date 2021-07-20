@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit gnome2 python-r1 virtualx
 
@@ -22,13 +22,14 @@ DEPEND="
 	>=dev-libs/atk-2.11.2
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-2.90.1:3[${PYTHON_USEDEP}]
-	test? ( x11-libs/gtk+:3 )
 "
 RDEPEND="${DEPEND}
 	>=sys-apps/dbus-1
 	>=app-accessibility/at-spi2-core-2.34[introspection]
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	test? ( x11-libs/gtk+:3 )
+"
 
 src_prepare() {
 	gnome2_src_prepare

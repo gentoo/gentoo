@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>base-system@gentoo.org</email>
-		<name>Gentoo base-system Project</name>
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<stabilize-allarches/>
 </pkgmetadata>

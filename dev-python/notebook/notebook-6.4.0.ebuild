@@ -3,8 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 xdg-utils
@@ -15,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-libs/mathjax-2.4
@@ -59,6 +58,8 @@ python_prepare_all() {
 python_test() {
 	local deselect=(
 		# trash doesn't seem to work for us
+		notebook/services/contents/tests/test_contents_api.py::APITest::test_checkpoints_follow_file
+		notebook/services/contents/tests/test_contents_api.py::APITest::test_delete
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_checkpoints_follow_file
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete
 		notebook/services/contents/tests/test_contents_api.py::GenericFileCheckpointsAPITest::test_delete_dirs

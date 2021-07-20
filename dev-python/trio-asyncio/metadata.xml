@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrewammerlaan@gentoo.org</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<longdescription lang="en">
+Rationale
+
+Trio has native concepts of tasks and task cancellation. Asyncio is based on callbacks and chaining Futures, albeit with nicer syntax, which make handling of failures and timeouts fundamentally less reliable, especially in larger programs. Thus, you really want to base your async project on Trio.
+
+On the other hand, there are quite a few asyncio-enhanced libraries. You really don't want to re-invent any wheels in your project.
+
+Thus, being able to use asyncio libraries from Trio is useful. trio-asyncio enables you to do that, and more.
+Transparent vs. explicit translation
+
+trio_asyncio does not try to magically allow calling await trio_code() from asyncio or vice versa. There are multiple reasons for this; the executive summary is that cross-domain calls can't be made to work correctly, and any such call is likely to result in an irrecoverable error. You need to keep your code's asyncio and trio domains rigidly separate.
+
+Fortunately, this is not difficult.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">python-trio/trio-asyncio</remote-id>
+		<remote-id type="pypi">trio-asyncio</remote-id>
+	</upstream>
+</pkgmetadata>

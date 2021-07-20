@@ -10,32 +10,23 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/vmc-project/geant4_vmc.git"
 else
 	MY_PV=$(ver_rs 1-2 - $(ver_cut 2-))
-	SRC_URI="https://github.com/vmc-project/geant4-vmc/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/vmc-project/geant4_vmc/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/geant4_vmc-${MY_PV}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Virtual Monte Carlo Geant4 implementation"
-HOMEPAGE="https://github.com/vmc-project/vmc"
+HOMEPAGE="https://github.com/vmc-project/geant4_vmc"
 
 LICENSE="GPL-3"
 SLOT="4"
-IUSE="+c++11 c++14 c++17 doc examples geant3 +g4root +mtroot rootvmc vgm test"
-
-REQUIRED_USE="^^ ( c++11 c++14 c++17 )"
+IUSE="doc examples geant3 +g4root +mtroot vgm test"
 
 RDEPEND="
-	rootvmc? (
-		>=sci-physics/root-6.18:=[vmc]
-		!!sci-physics/vmc
-	)
-	!rootvmc? (
-		>=sci-physics/root-6.18:=[-vmc]
-		sci-physics/vmc:=[c++11?,c++14?,c++17?]
-	)
-	>=sci-physics/geant-4.10.6[c++11?,c++14?,c++17?,opengl,geant3?]
-	>=sci-physics/root-6.18:=[c++11?,c++14?,c++17?]
-	vgm? ( >=sci-physics/vgm-4.8:=[c++11?,c++14?,c++17?] )"
+	sci-physics/geant[c++17,opengl,geant3?]
+	sci-physics/root:=[c++17,-vmc]
+	sci-physics/vmc:=[c++17]
+	vgm? ( sci-physics/vgm:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 RESTRICT="

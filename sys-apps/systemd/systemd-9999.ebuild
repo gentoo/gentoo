@@ -43,6 +43,7 @@ OPENSSL_DEP=">=dev-libs/openssl-1.1.0:0="
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl:0= )
 	apparmor? ( sys-libs/libapparmor:0= )
 	audit? ( >=sys-process/audit-2:0= )
@@ -141,9 +142,8 @@ BDEPEND="
 	app-arch/xz-utils:0
 	dev-util/gperf
 	>=dev-util/meson-0.46
-	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
-	sys-devel/m4
+	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( sys-apps/dbus )
 	app-text/docbook-xml-dtd:4.2
@@ -158,6 +158,8 @@ python_check_deps() {
 	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
 }
+
+QA_EXECSTACK="usr/lib/systemd/boot/efi/*"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
@@ -319,7 +321,6 @@ multilib_src_configure() {
 		$(meson_native_true vconsole)
 
 		# static-libs
-		$(meson_use static-libs static-libsystemd)
 		$(meson_use static-libs static-libudev)
 	)
 

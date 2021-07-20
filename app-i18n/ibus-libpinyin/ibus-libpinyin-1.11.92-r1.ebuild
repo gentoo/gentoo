@@ -1,9 +1,9 @@
-# Copyright 2015-2020 Gentoo Authors
+# Copyright 2015-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 LUA_COMPAT=(lua{5-1,5-2,5-3})
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+PYTHON_COMPAT=(python{3_8,3_9})
 
 inherit autotools gnome2-utils lua-single python-single-r1
 
@@ -27,8 +27,8 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	virtual/libintl
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	boost? ( dev-libs/boost:= )
 	lua? ( ${LUA_DEPS} )

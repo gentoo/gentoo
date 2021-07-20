@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit git-r3
 
@@ -28,7 +28,7 @@ RDEPEND="!app-doc/pms-bin"
 src_compile() {
 	# just in case; we shouldn't be generating any fonts
 	export VARTEXFONTS="${T}/fonts"
-	emake $(usex twoside TWOSIDE=yes "")
+	emake $(usev twoside TWOSIDE=yes)
 	use html && emake html
 }
 

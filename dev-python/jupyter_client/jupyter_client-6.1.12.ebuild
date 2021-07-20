@@ -1,12 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="threads(+)"
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
 inherit distutils-r1
 
 DESCRIPTION="Jupyter protocol implementation and client libraries"
@@ -15,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	dev-python/async_generator[${PYTHON_USEDEP}]
@@ -33,3 +31,11 @@ BDEPEND="
 	)"
 
 distutils_enable_tests pytest
+
+python_test() {
+	local deselect=(
+		jupyter_client/tests/test_kernelmanager.py::TestAsyncKernelManager::test_signal_kernel_subprocesses
+		jupyter_client/tests/test_kernelmanager.py::TestAsyncKernelManager::test_start_new_async_kernel
+	)
+	epytest ${deselect[@]/#/--deselect }
+}

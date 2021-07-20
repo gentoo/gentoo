@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools cuda flag-o-matic eapi7-ver multilib-minimal toolchain-funcs
+inherit autotools cuda flag-o-matic multilib-minimal toolchain-funcs
 
 MY_PV=v$(ver_cut 1-2)
 
@@ -32,8 +32,8 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	plugins? ( dev-libs/libltdl:0[${MULTILIB_USEDEP}] )
 	numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-1.8.1-gl.patch" )
 DOCS=( AUTHORS NEWS README VERSION )

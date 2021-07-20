@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="Spotify is a social music platform"
-HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
+HOMEPAGE="https://www.spotify.com/download/linux/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
 #BUILD_ID_AMD64="117.g6bd7cc73-35"
 BUILD_ID_X86="117.g6bd7cc73-35"
@@ -15,7 +15,7 @@ SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_X86}_i386.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="x86"
-IUSE="libnotify systray pax_kernel pulseaudio"
+IUSE="libnotify systray pax-kernel pulseaudio"
 RESTRICT="mirror strip"
 
 DEPEND=""
@@ -82,12 +82,12 @@ src_install() {
 			"spotify-client.png"
 	done
 	domenu "${S}${SPOTIFY_PKG_HOME}/spotify.desktop"
-	if use pax_kernel; then
+	if use pax-kernel; then
 		#create the headers, reset them to default, then paxmark -m them
 		pax-mark C "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark z "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark m "${ED}${SPOTIFY_HOME}/${PN}" || die
-		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
+		eqawarn "You have set USE=pax-kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel.  To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage!  If"
 		eqawarn "you suspect that ${PN} is being broken by this modification,"

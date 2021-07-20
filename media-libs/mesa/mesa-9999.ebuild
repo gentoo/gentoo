@@ -7,8 +7,6 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit llvm meson-multilib python-any-r1 linux-info
 
-OPENGL_DIR="xorg-x11"
-
 MY_P="${P/_/-}"
 
 DESCRIPTION="OpenGL-like graphic library for Linux"
@@ -500,6 +498,11 @@ multilib_src_configure() {
 		echo "${drivers//$'\n'/,}"
 	}
 
+	local vulkan_layers
+	use vulkan && vulkan_layers+="device-select"
+	use vulkan-overlay && vulkan_layers+=",overlay"
+	emesonargs+=(-Dvulkan-layers=${vulkan_layers#,})
+
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dglx=$(usex X dri disabled)
@@ -516,8 +519,6 @@ multilib_src_configure() {
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
-		$(meson_use vulkan vulkan-device-select-layer)
-		$(meson_use vulkan-overlay vulkan-overlay-layer)
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)

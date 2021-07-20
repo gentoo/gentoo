@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 
@@ -20,10 +20,10 @@ IUSE="lha"
 RDEPEND="
 	app-emulation/fs-uae
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},declarative,gui,network,opengl,widgets]
-		dev-python/pyopengl[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		lha? ( dev-python/python-lhafile[${PYTHON_MULTI_USEDEP}] )
+		dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
+		dev-python/pyopengl[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		lha? ( dev-python/python-lhafile[${PYTHON_USEDEP}] )
 	')
 "
 

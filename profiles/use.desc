@@ -35,7 +35,6 @@ build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating 
 bzip2 - Use the bzlib compression library
 cairo - Enable support for the cairo graphics library
 calendar - Add support for calendars (not using mcal!)
-canna - Add support for the Canna kana to kanji conversion engine
 caps - Use Linux capabilities library to control privilege
 cdb - Add support for the CDB database engine from the author of qmail
 cdda - Add Compact Disk Digital Audio (Standard Audio CD) support

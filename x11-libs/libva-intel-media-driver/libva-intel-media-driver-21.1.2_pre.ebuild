@@ -15,7 +15,8 @@ else
 	MY_PV="${PV%_pre}"
 	SRC_URI="https://github.com/intel/media-driver/archive/intel-media-${MY_PV}.tar.gz"
 	S="${WORKDIR}/media-driver-intel-media-${MY_PV}"
-	KEYWORDS="~amd64"
+	# No keywords for _pre releases
+	#KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Intel Media Driver for VAAPI (iHD)"

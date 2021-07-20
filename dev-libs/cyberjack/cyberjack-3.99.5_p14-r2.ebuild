@@ -12,23 +12,22 @@ inherit autotools toolchain-funcs udev
 DESCRIPTION="REINER SCT cyberJack USB chipcard reader user space driver"
 HOMEPAGE="https://www.reiner-sct.de/"
 SRC_URI="https://support.reiner-sct.de/downloads/LINUX/V${PV/_p/_SP}/${MY_P}.tar.gz -> ${MY_P}.tar.bz2"
+S="${WORKDIR}/${MY_P/_/-}"
 
 KEYWORDS="amd64 x86"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-IUSE="static-libs threads tools +udev +usb xml"
+IUSE="static-libs threads tools +udev xml"
 
 RDEPEND="
 	sys-apps/pcsc-lite
-	usb? ( virtual/libusb:1 )
+	virtual/libusb:1=
 	udev? ( virtual/udev )
 	xml? ( dev-libs/libxml2:2= )
 "
 
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P/_/-}"
 
 PATCHES="${FILESDIR}/${P}-gcc10.patch"
 
@@ -47,6 +46,7 @@ src_configure() {
 		--disable-mac-arches-i386
 		--disable-mac-arches-x86_64
 		--disable-visibility
+		--enable-nonserial
 		--enable-pcsc
 		--enable-release
 		--enable-warnings
@@ -54,7 +54,6 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable threads)
 		$(use_enable udev)
-		$(use_enable usb nonserial)
 		$(use_enable xml xml2)
 		--with-usbdropdir="$($(tc-getPKG_CONFIG) libpcsclite --variable=usbdropdir)"
 	)

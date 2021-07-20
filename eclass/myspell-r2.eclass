@@ -6,7 +6,7 @@
 # Conrad Kostecki <conikost@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: An eclass to streamline the construction of ebuilds for new Myspell dictionaries.
 # @DESCRIPTION:
 # The myspell-r2 eclass is designed to streamline the construction of ebuilds for
@@ -31,13 +31,10 @@
 # MYSPELL_THES=( "file.dat" "dir/file2.idx" )
 
 case ${EAPI:-0} in
-	[0-4])
-		die "${ECLASS} is banned in EAPI ${EAPI:-0}"
-		;;
-	[5-7])
+	[5-8])
 		;;
 	*)
-		die "Unknown EAPI ${EAPI:-0}"
+		die "${ECLASS}: EAPI ${EAPI:-0} not supported"
 		;;
 esac
 
@@ -46,7 +43,7 @@ EXPORT_FUNCTIONS src_unpack src_install
 # Basically no extra deps needed.
 # Unzip is required for .oxt libreoffice extensions
 # which are just fancy zip files.
-if [[ ${EAPI:-0} == 7 ]]; then
+if [[ ${EAPI:-0} != [56] ]]; then
 	BDEPEND="app-arch/unzip"
 else
 	DEPEND="app-arch/unzip"

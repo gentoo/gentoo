@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Andrew Ammerlaan <andrewammerlaan@gentoo.org>
 # Based on the work of: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 6 7 8
 # @BLURB: A simple eclass to build documentation.
 # @DESCRIPTION:
 # A simple eclass providing basic functions and variables to build
@@ -50,7 +50,7 @@
 # DOCS_DEPEND="dev-python/mkdocs-material"
 # DOCS_DIR="doc"
 #
-# PYTHON_COMPAT=( python3_{7,8,9} )
+# PYTHON_COMPAT=( python3_{8..10} )
 #
 # inherit distutils-r1 docs
 #
@@ -61,7 +61,7 @@ case "${EAPI:-0}" in
 	0|1|2|3|4|5)
 		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}"
 		;;
-	6|7)
+	6|7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -378,7 +378,7 @@ case ${DOCS_BUILDER} in
 		;;
 esac
 
-if [[ ${EAPI} == [7] ]]; then
+if [[ ${EAPI} != 6 ]]; then
 	BDEPEND+=" doc? ( ${DOCS_DEPEND} )"
 else
 	DEPEND+=" doc? ( ${DOCS_DEPEND} )"

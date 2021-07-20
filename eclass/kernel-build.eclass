@@ -38,6 +38,7 @@ inherit python-any-r1 savedconfig toolchain-funcs kernel-install
 
 BDEPEND="
 	${PYTHON_DEPS}
+	app-arch/cpio
 	sys-devel/bc
 	sys-devel/flex
 	virtual/libelf

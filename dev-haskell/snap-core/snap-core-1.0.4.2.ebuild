@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,13 +18,16 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug portable"
 
+# Fixed in next release: https://github.com/snapframework/snap-core/commit/49a8090d7834a0ef9b438048e96be36e55b2fbf5
+RESTRICT=test # test relied on headers ordering
+
 RDEPEND=">=dev-haskell/attoparsec-0.12:=[profile?] <dev-haskell/attoparsec-0.14:=[profile?]
 	>=dev-haskell/bytestring-builder-0.10.4:=[profile?] <dev-haskell/bytestring-builder-0.11:=[profile?]
 	>=dev-haskell/case-insensitive-1.1:=[profile?] <dev-haskell/case-insensitive-1.3:=[profile?]
 	>=dev-haskell/fail-4.9:=[profile?] <dev-haskell/fail-4.10:=[profile?]
 	>=dev-haskell/hashable-1.2.0.6:=[profile?] <dev-haskell/hashable-1.4:=[profile?]
 	>=dev-haskell/hunit-1.2:=[profile?] <dev-haskell/hunit-2:=[profile?]
-	>=dev-haskell/io-streams-1.3:=[profile?] <dev-haskell/io-streams-1.6:=[profile?]
+	>=dev-haskell/io-streams-1.3:=[zlib,profile?] <dev-haskell/io-streams-1.6:=[zlib,profile?]
 	>=dev-haskell/lifted-base-0.1:=[profile?] <dev-haskell/lifted-base-0.3:=[profile?]
 	>=dev-haskell/monad-control-1.0:=[profile?] <dev-haskell/monad-control-1.1:=[profile?]
 	>=dev-haskell/mtl-2.0:=[profile?] <dev-haskell/mtl-2.3:=[profile?]

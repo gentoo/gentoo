@@ -3,12 +3,12 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 RUBY_OPTIONAL=yes
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
-inherit l10n perl-module ruby-ng python-single-r1
+inherit perl-module ruby-ng python-single-r1 strip-linguas
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="https://libguestfs.org"

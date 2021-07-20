@@ -38,12 +38,11 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
-IUSE="debug doc source +threads +unicode pax_kernel zlib"
+IUSE="debug doc source +threads +unicode zlib"
 
 CDEPEND=">=dev-lisp/asdf-3.1:="
 DEPEND="${CDEPEND}
-		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
-		pax_kernel? ( sys-apps/elfix )"
+		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )"
 RDEPEND="${CDEPEND}
 		!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )"
 
@@ -156,15 +155,6 @@ src_configure() {
 
 src_compile() {
 	local bindir="${WORKDIR}"/sbcl-binary
-
-	if use pax_kernel ; then
-		# To disable PaX on hardened systems
-		pax-mark -mr "${bindir}"/src/runtime/sbcl
-
-		# Hack to disable PaX on second GENESIS stage
-		sed -i -e '/^[ \t]*echo \/\/doing warm init - compilation phase$/a\    paxmark.sh -mr \.\/src\/runtime\/sbcl' \
-			"${S}"/make-target-2.sh || die "Cannot disable PaX on second GENESIS runtime"
-	fi
 
 	# clear the environment to get rid of non-ASCII strings, see bug #174702
 	# set HOME for paludis

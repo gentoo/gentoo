@@ -27,14 +27,14 @@ IUSE="+custom-cflags set-as-default test X"
 
 RESTRICT="!test? ( test )"
 
-DEPEND=">=media-libs/gmmlib-21.1.1
+DEPEND=">=media-libs/gmmlib-21.1.3
 	>=x11-libs/libva-2.11.0[X?]
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-20.2.0_x11_optional.patch
-	"${FILESDIR}"/${PN}-21.1.2_custom_cflags.patch
+	"${FILESDIR}"/${PN}-21.2.2_custom_cflags.patch
 	"${FILESDIR}"/${PN}-20.4.5_testing_in_src_test.patch
 )
 

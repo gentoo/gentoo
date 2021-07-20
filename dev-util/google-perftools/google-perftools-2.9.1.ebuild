@@ -14,16 +14,21 @@ LICENSE="MIT"
 SLOT="0/4"
 # contains ASM code, with support for
 # freebsd x86/amd64
-# linux x86/amd64/ppc/ppc64/arm
+# linux amd64/arm/arm64/ppc/ppc64/riscv/x86
 # OSX ppc/amd64
 # AIX ppc/ppc64
-KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="largepages largepages64k +debug minimal optimisememory test static-libs"
 
 RESTRICT="!test? ( test )"
 
-DEPEND="!ppc64? ( sys-libs/libunwind )"
+# TODO: remove the riscv special case once either libunwind has begun supporting this arch
+# or this package allows using llvm-libunwind for other arches
+DEPEND="!ppc64? (
+	riscv? ( sys-libs/llvm-libunwind )
+	!riscv? ( sys-libs/libunwind )
+)"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"

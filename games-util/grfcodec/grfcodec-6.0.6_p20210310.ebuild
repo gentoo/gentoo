@@ -8,18 +8,15 @@ inherit cmake
 COMMIT=045774dee7cab1a618a3e0d9b39bff78a12b6efa
 
 DESCRIPTION="A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files"
-HOMEPAGE="https://dev.openttdcoop.org/projects/grfcodec"
+HOMEPAGE="https://github.com/OpenTTD/grfcodec"
 SRC_URI="https://github.com/OpenTTD/grfcodec/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="media-libs/libpng:0"
-DEPEND="
-	${RDEPEND}
-	dev-lang/perl
+DEPEND="${RDEPEND}
 	dev-libs/boost
 "
 

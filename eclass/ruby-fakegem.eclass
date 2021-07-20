@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7 8
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -60,7 +60,7 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
 		;;
 	*)
@@ -129,16 +129,10 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # legacy way to install extensions for a long time.
 RUBY_FAKEGEM_EXTENSION_LIBDIR="${RUBY_FAKEGEM_EXTENSION_LIBDIR-lib}"
 
-case "${EAPI:-0}" in
-	0|1|2|3)
-		die "Unsupported EAPI=${EAPI} (too old) for ruby-fakegem.eclass" ;;
-	4|5|6|7)
-		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
-
 
 RUBY_FAKEGEM_SUFFIX="${RUBY_FAKEGEM_SUFFIX:-}"
 
@@ -203,7 +197,7 @@ SRC_URI="https://rubygems.org/gems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}$
 ruby_add_bdepend "virtual/rubygems !!dev-ruby/psych"
 ruby_add_rdepend virtual/rubygems
 case ${EAPI} in
-	4|5|6)
+	5|6)
 		;;
 	*)
 		ruby_add_depend virtual/rubygems
@@ -318,7 +312,7 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
 	case ${EAPI} in
-		4|5|6) ;;
+		5|6) ;;
 		*)
 			eqawarn "Generating generic fallback gemspec *without* dependencies"
 			eqawarn "This will only work when there are no runtime dependencies"

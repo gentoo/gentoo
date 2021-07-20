@@ -14,20 +14,22 @@ SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${P
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+RDEPEND="
 	sys-apps/acl:0=
 	>=sys-apps/util-linux-2.30:0=
-	>=sys-kernel/linux-headers-${MINKV}
 	sys-libs/libcap:0=
 	selinux? ( sys-libs/libselinux:0= )
-"
-RDEPEND="${DEPEND}
 	!sys-apps/opentmpfiles
 	!sys-apps/systemd
+"
+
+DEPEND="
+	${RDEPEND}
+	>=sys-kernel/linux-headers-${MINKV}
 "
 
 BDEPEND="
@@ -38,8 +40,8 @@ BDEPEND="
 	dev-libs/libxslt:0
 	dev-util/gperf
 	>=dev-util/meson-0.46
-	>=dev-util/intltool-0.50
 	>=sys-apps/coreutils-8.16
+	sys-devel/gettext
 	sys-devel/m4
 	virtual/pkgconfig
 "
@@ -53,8 +55,11 @@ pkg_setup() {
 src_prepare() {
 	# musl patchset from:
 	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
-	use elibc_musl && eapply "${WORKDIR}/${P}-musl"
-	use elibc_musl && eapply "${FILESDIR}/musl-1.2.2.patch" # https://bugs.gentoo.org/766833
+	if use elibc_musl; then
+		eapply "${WORKDIR}/${P}-musl"
+		eapply "${FILESDIR}/musl-1.2.2.patch" # https://bugs.gentoo.org/766833
+		use selinux && eapply "${FILESDIR}/${P}-musl-mallinfo.patch" # https://github.com/gentoo/musl/pull/433
+	fi
 	default
 
 	# https://bugs.gentoo.org/767403

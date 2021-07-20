@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools xdg l10n
+inherit autotools plocale xdg
 
 DESCRIPTION="DeaDBeeF is a modular audio player similar to foobar2000"
 HOMEPAGE="https://deadbeef.sourceforge.io/"
@@ -77,7 +77,7 @@ src_prepare() {
 		EOF
 	}
 
-	l10n_for_each_disabled_locale_do drop_from_linguas || die
+	plocale_for_each_disabled_locale drop_from_linguas || die
 
 	eautopoint --force
 	eautoreconf

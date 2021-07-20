@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -33,9 +33,9 @@ BDEPEND="
 		${PYTHON_DEPS}
 		app-doc/doxygen
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
-			dev-python/breathe[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+			dev-python/breathe[${PYTHON_USEDEP}]
 		')
 	)
 	test? ( ${PYTHON_DEPS} )

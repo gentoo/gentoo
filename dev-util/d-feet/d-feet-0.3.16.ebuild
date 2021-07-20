@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit gnome2 meson python-single-r1 virtualx
 
@@ -26,7 +26,7 @@ RDEPEND="
 	${DEPEND}
 	>=dev-libs/glib-2.34:2
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.3.91:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.3.91:3[${PYTHON_USEDEP}]
 	')
 	>=sys-apps/dbus-1
 	X? ( x11-libs/libwnck:3[introspection] )

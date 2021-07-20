@@ -82,7 +82,6 @@ dev-python/socketpool eventlet gevent
 # These pull in:
 # - direct ruby dependency:
 app-admin/augeas test
-app-i18n/canna doc
 sys-block/thin-provisioning-tools test
 # - texlive japan modules: ruby runtime scripts
 app-text/texlive l10n_ja context

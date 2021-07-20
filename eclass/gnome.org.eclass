@@ -7,13 +7,13 @@
 # @AUTHOR:
 # Authors: Spidler <spidler@gentoo.org> with help of carparski.
 # eclass variable additions and documentation: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Helper eclass for gnome.org hosted archives
 # @DESCRIPTION:
 # Provide a default SRC_URI for tarball hosted on gnome.org mirrors.
 
-case ${EAPI:-0} in
-	[567]) ;;
+case ${EAPI} in
+	5|6|7|8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -31,7 +31,7 @@ _GNOME_ORG_ECLASS=1
 # moving to only have xz tarballs for new releases.
 : ${GNOME_TARBALL_SUFFIX:="xz"}
 
-# Even though xz-utils are in @system, they must still be added to DEPEND; see
+# Even though xz-utils are in @system, they must still be added to BDEPEND; see
 # https://archives.gentoo.org/gentoo-dev/msg_a0d4833eb314d1be5d5802a3b710e0a4.xml
 if [[ ${GNOME_TARBALL_SUFFIX} == "xz" ]]; then
 	if [[ ${EAPI} != [56] ]]; then

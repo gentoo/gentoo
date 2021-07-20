@@ -5,14 +5,14 @@ EAPI=7
 inherit desktop pax-utils unpacker xdg
 
 DESCRIPTION="Spotify is a social music platform"
-HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
+HOMEPAGE="https://www.spotify.com/download/linux/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
 BUILD_ID_AMD64="498.gf9a83c60"
 SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libnotify local-playback pax_kernel pulseaudio systray"
+IUSE="libnotify local-playback pax-kernel pulseaudio systray"
 RESTRICT="mirror strip"
 
 BDEPEND=">=dev-util/patchelf-0.10"
@@ -94,12 +94,12 @@ src_install() {
 			"spotify-client.png"
 	done
 	domenu "${S}${SPOTIFY_PKG_HOME}/spotify.desktop"
-	if use pax_kernel; then
+	if use pax-kernel; then
 		#create the headers, reset them to default, then paxmark -m them
 		pax-mark C "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark z "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark m "${ED}${SPOTIFY_HOME}/${PN}" || die
-		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
+		eqawarn "You have set USE=pax-kernel meaning that you intend to run"
 		eqawarn "${PN} under a PaX enabled kernel.	To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage!  If"
 		eqawarn "you suspect that ${PN} is being broken by this modification,"

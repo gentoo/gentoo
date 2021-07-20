@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/azureus/${PN}/${MY_SRC}/${MY_SRC}_source.zip"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 # bundles parts of http://www.programmers-friend.org/
 # bundles bcprov - 1.37 required but not in the tree

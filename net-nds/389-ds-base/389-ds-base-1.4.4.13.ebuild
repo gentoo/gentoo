@@ -133,7 +133,7 @@ DEPEND="
 	pam-passthru? ( sys-libs/pam )
 	selinux? (
 		$(python_gen_cond_dep '
-			sys-libs/libselinux[python,${PYTHON_MULTI_USEDEP}]
+			sys-libs/libselinux[python,${PYTHON_USEDEP}]
 		')
 	)
 	systemd? ( >=sys-apps/systemd-244 )
@@ -143,7 +143,7 @@ BDEPEND=">=sys-devel/autoconf-2.69-r5
 	virtual/pkgconfig
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/argparse-manpage[${PYTHON_MULTI_USEDEP}]
+		dev-python/argparse-manpage[${PYTHON_USEDEP}]
 	')
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cmocka )
@@ -157,12 +157,12 @@ RDEPEND="${DEPEND}
 	acct-group/dirsrv
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pyasn1[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyasn1-modules[${PYTHON_MULTI_USEDEP}]
-		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
-		dev-python/python-ldap[sasl,${PYTHON_MULTI_USEDEP}]
-		dev-python/distro[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyasn1[${PYTHON_USEDEP}]
+		dev-python/pyasn1-modules[${PYTHON_USEDEP}]
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/python-ldap[sasl,${PYTHON_USEDEP}]
+		dev-python/distro[${PYTHON_USEDEP}]
 	')
 	virtual/perl-Archive-Tar
 	virtual/perl-DB_File

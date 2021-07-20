@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=yes
 DISTUTILS_SINGLE_IMPL=yes
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 WANT_AUTOMAKE=none
 
 inherit autotools distutils-r1 git-r3 perl-module systemd
@@ -32,6 +32,7 @@ REQUIRED_USE="
 RESTRICT="test"
 
 COMMON_DEPEND="
+	virtual/libcrypt:=
 	bzip2? ( app-arch/bzip2 )
 	elf? ( dev-libs/elfutils )
 	lm-sensors? ( sys-apps/lm-sensors )

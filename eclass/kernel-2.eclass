@@ -1175,7 +1175,8 @@ unipatch() {
 				( kernel_is eq 5 4 && kernel_is gt 5 4 115 ) ||
 				( kernel_is eq 5 10 && kernel_is gt 5 10 33 ) ||
 				( kernel_is eq 5 11 && kernel_is gt 5 11 17 ) ||
-				( kernel_is eq 5 12 && kernel_is gt 5 12 0 ); then
+				( kernel_is eq 5 12 && kernel_is gt 5 12 0 ) ||
+				( kernel_is ge 5 13); then
 				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"

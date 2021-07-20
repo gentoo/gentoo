@@ -16,13 +16,15 @@ configure different types of notifications for pre-defined events.
     <flag name="agent2">Enable go-based zabbix agent 2 (for to-be-monitored machines)</flag>
     <flag name="frontend">Enable zabbix web frontend</flag>
     <flag name="ipv6">Turn on support of IPv6</flag>
-    <flag name="proxy">Enable proxy support</flag>
-    <flag name="openipmi">Enable openipmi things</flag>
-    <flag name="server">Enable zabbix server</flag>
-    <flag name="ssh">SSH v2 based checks</flag>
-    <flag name="odbc">Enable Database Monitor and use UnixODBC Library by default</flag>
-    <flag name="static">Build statically linked binaries</flag>
     <flag name="java">Enable Zabbix Java JMX Management Gateway</flag>
     <flag name="libxml2">Use libxml2 client library</flag>
+    <flag name="mbedtls">Use net-libs/mbedtls as TLS backend</flag>
+    <flag name="odbc">Enable Database Monitor and use UnixODBC Library by default</flag>
+    <flag name="openipmi">Enable openipmi things</flag>
+    <flag name="openssl">Use dev-libs/openssl as TLS backend</flag>
+    <flag name="proxy">Enable proxy support</flag>
+    <flag name="server">Enable zabbix server</flag>
+    <flag name="ssh">SSH v2 based checks</flag>
+    <flag name="static">Build statically linked binaries</flag>
   </use>
 </pkgmetadata>

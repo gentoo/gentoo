@@ -1,0 +1,33 @@
+--- a/rcp/Makefile
++++ b/rcp/Makefile
+@@ -7,7 +7,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: rcp
+-	install -s -o root -m$(SUIDMODE) rcp $(INSTALLROOT)$(BINDIR)
++	install -s rcp $(INSTALLROOT)$(BINDIR)
+ 	install -m$(MANMODE) rcp.1 $(INSTALLROOT)$(MANDIR)/man1
+ 
+ clean:
+--- a/rlogin/Makefile
++++ a/rlogin/Makefile
+@@ -10,7 +10,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: $(PROG)
+-	install -s -o root -m$(SUIDMODE) $(PROG) $(INSTALLROOT)$(BINDIR)
++	install -s $(PROG) $(INSTALLROOT)$(BINDIR)
+ 	install -m $(MANMODE) $(PROG).1 $(INSTALLROOT)$(MANDIR)/man1
+ 
+ clean:
+--- a/rsh/Makefile
++++ b/rsh/Makefile
+@@ -9,7 +9,7 @@
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ install: rsh
+-	install -s -o root -m$(SUIDMODE) rsh $(INSTALLROOT)$(BINDIR)
++	install -s rsh $(INSTALLROOT)$(BINDIR)
+ 	install -m$(MANMODE) rsh.1 $(INSTALLROOT)$(MANDIR)/man1
+ 
+ clean:

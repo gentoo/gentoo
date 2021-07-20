@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS="bdepend"
 EGIT_COMMIT="2adc067f306d9e7d8b634f66e96c52d80a42e1ff"
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="readline"
 
 inherit distutils-r1
@@ -13,10 +13,14 @@ inherit distutils-r1
 DESCRIPTION="A library that enables you to build applications which use the WhatsApp service"
 HOMEPAGE="https://github.com/tgalal/yowsup"
 SRC_URI="https://github.com/tgalal/yowsup/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
+
+# This package contains no-op tests, so they actually cannot be run
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
@@ -29,8 +33,6 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 PATCHES=( "${FILESDIR}/${PF}-fix-install-path.patch" )
 

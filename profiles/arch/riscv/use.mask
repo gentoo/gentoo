@@ -15,9 +15,12 @@
 -gtk3
 -introspection
 
-# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
-# no fam providers keyworded yet
-fam
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# dev-lang/lua:5.2 and dev-lang/luajit known not to work here
+lua_single_target_lua5-2
+lua_single_target_luajit
+lua_targets_lua5-2
+lua_targets_luajit
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
@@ -27,14 +30,15 @@ valgrind
 bluetooth
 emacs
 fuse
+jack
 java
-kerberos
 latex
 libedit
-lua
+mono
 motif
 opencl
 qt5
+pulseaudio
 rsh
 ruby
 slang

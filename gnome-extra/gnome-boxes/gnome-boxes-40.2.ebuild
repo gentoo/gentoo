@@ -7,14 +7,14 @@ VALA_MIN_API_VERSION="0.40"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
-DESCRIPTION="Simple GNOME 3 application to access remote or virtual systems"
+DESCRIPTION="Simple GNOME application to access remote or virtual systems"
 HOMEPAGE="https://wiki.gnome.org/Apps/Boxes"
 
 LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
 
 IUSE="rdp"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: qemu probably needs to depend on spice[smartcard] directly with USE=spice
 # FIXME: Check over libvirt USE=libvirtd,qemu and the smartcard/usbredir requirements

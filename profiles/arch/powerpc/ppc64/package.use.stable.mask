@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,11 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2021-06-25)
+# ceph is not going to be stable on ppc64
+# https://bugs.gentoo.org/798744
+sys-block/tgt rbd
 
 # Sam James <sam@gentoo.org> (2021-02-06)
 # Drags in too much unstable GNOME for now

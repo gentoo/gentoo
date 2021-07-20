@@ -21,7 +21,7 @@ LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 [[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="amd64"
-IUSE="alsa debug doc dtrace headless java lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc dtrace headless java lvm +opus pam pax-kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 CDEPEND="
 	${PYTHON_DEPS}
@@ -68,7 +68,7 @@ DEPEND="
 		opengl? ( virtual/opengl )
 	)
 	pam? ( sys-libs/pam )
-	pax_kernel? ( sys-apps/elfix )
+	pax-kernel? ( sys-apps/elfix )
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
@@ -206,8 +206,8 @@ src_prepare() {
 		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
 	fi
 
-	# Only add paxmark patch when we're on pax_kernel
-	if use pax_kernel ; then
+	# Only add paxmark patch when we're on pax-kernel
+	if use pax-kernel ; then
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 

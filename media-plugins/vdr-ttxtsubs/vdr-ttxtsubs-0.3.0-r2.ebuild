@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: displaying, recording and replaying teletext based subt
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-ttxtsubs"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 LICENSE="GPL-2+"
 IUSE=""

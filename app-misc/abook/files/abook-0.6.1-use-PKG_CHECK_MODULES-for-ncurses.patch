@@ -34,7 +34,7 @@ We don't _always_ have split tinfo, e.g. Prefix.
 -		AC_CHECK_HEADERS(ncurses.h)],
 -		[CF_CURSES_LIBS])
 -	])
-+PKG_CHECK_MODULES(ncurses, ncurses)
++PKG_CHECK_MODULES(ncurses, [ncursesw ncurses])
 +LDFLAGS="${ncurses_LIBS} $LDFLAGS"
 +CPPFLAGS="${ncurses_CFLAGS} $CPPFLAGS"
  

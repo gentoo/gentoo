@@ -1,0 +1,7 @@
+--- a/src/ui_tcltk.h
++++ b/src/ui_tcltk.h
+@@ -59,3 +59,3 @@
+ 		else dirname += 1;
+-		strcpy (dirname, "tcl/start.tcl");
++		strcpy (dirname, "../share/scid/tcl/start.tcl");
+ 		if (0 != Tcl_Access(sourceFileName, 4)) {

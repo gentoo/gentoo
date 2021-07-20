@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 TMPFILES_OPTIONAL=1
 
-inherit python-any-r1 prefix toolchain-funcs flag-o-matic gnuconfig \
+inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
@@ -1489,6 +1489,16 @@ pkg_preinst() {
 		# https://bugs.gentoo.org/753740
 		rm "${EROOT}"/usr/lib/locale || die
 	fi
+
+	# Keep around libcrypt so that Perl doesn't break when merging libxcrypt
+	# (libxcrypt is the new provider for now of libcrypt.so.{1,2}).
+	# bug #802207
+	if has_version "${CATEGORY}/${PN}[crypt]"; then
+		PRESERVED_OLD_LIBCRYPT=1
+		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
+	else
+		PRESERVED_OLD_LIBCRYPT=0
+	fi
 }
 
 pkg_postinst() {
@@ -1517,5 +1527,9 @@ pkg_postinst() {
 				ewarn ""
 			fi
 		done
+	fi
+
+	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
+		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
 	fi
 }

@@ -1,0 +1,37 @@
+--- a/rexec/rexec.c
++++ b/rexec/rexec.c
+@@ -164,12 +164,30 @@
+     user_name[strlen(user_name)-1] = '\0'; /* Hopefully fgets always adds
+ 					      a newline. */
+     passwd = getpass("Password: ");
++  } else {
++
++    if ( user_name == NULL )
++      user_name = getenv("REXEC_USER");
++    if ( user_name == NULL ) {
++      uid_t uid = getuid();
++      struct passwd *pw = getpwuid(uid);
++      if (!(pw && pw->pw_name)) {
++        fprintf(stderr, "Can't lookup uid %d\n", uid);
++	exit(1);
++      }
++      user_name = strdup(pw->pw_name);
++    }
++    if ( passwd == NULL )
++      passwd = getenv("REXEC_PASS");
++    if ( passwd == NULL )
++       passwd = getpass("Password: ");
+   }
+ 
+-  if ( user_name == NULL )
+-    user_name = getenv("REXEC_USER");
+-  if ( passwd == NULL )
+-    passwd = getenv("REXEC_PASS");
++  if (!(user_name && passwd)) {
++    fprintf(stderr, "Can't use %s without supplying a user and password\n",
++    	progname);
++    exit(1);
++  }
+ 
+   if ( (sock = rexec(&host, port_exec, user_name, passwd, command, 
+ 		     p_to_aux_sock)) < 0 )

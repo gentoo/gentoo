@@ -21,3 +21,10 @@ DEPEND="${RDEPEND}"
 
 GST_PLUGINS_ENABLED="webrtc webrtcdsp"
 GST_PLUGINS_BUILD_DIR="webrtc webrtcdsp"
+
+src_prepare() {
+	default
+	gstreamer_system_package gstwebrtc_dep:gstreamer-webrtc
+	gstreamer_system_package gstsctp_dep:gstreamer-sctp
+	gstreamer_system_package gstbadaudio_dep:gstreamer-bad-audio
+}

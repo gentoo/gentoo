@@ -6,6 +6,6 @@
     <name>Lars Wendler</name>
   </maintainer>
   <use>
-    <flag name="pax_kernel">Apply patch needed for pax enabled kernels</flag>
+    <flag name="pax-kernel">Apply patch needed for pax enabled kernels</flag>
   </use>
 </pkgmetadata>

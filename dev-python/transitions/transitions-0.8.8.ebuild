@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -33,6 +33,13 @@ DEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	default
+
+	# https://github.com/pytransitions/transitions/pull/538
+	sed -e 's/description-file/description_file/g' -i setup.cfg || die
+}
 
 src_install() {
 	distutils-r1_src_install

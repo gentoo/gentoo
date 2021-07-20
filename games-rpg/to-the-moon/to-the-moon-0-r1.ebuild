@@ -3,27 +3,25 @@
 
 EAPI=7
 
-inherit desktop gnome2-utils unpacker wrapper
+inherit desktop unpacker wrapper
 
-MY_PN=ToTheMoon
+MY_PN="ToTheMoon"
+
 DESCRIPTION="Two doctors traversing the memories of a dying man to fulfill his last wish"
 HOMEPAGE="http://freebirdgames.com/games/to-the-moon"
 SRC_URI="${MY_PN}_linux_1389114090.sh"
-S="${WORKDIR}"/data
+S="${WORKDIR}/data"
 
 LICENSE="all-rights-reserved bundled-libs? ( LGPL-2 LGPL-2.1 ZLIB )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bundled-libs"
+RESTRICT="bindist fetch"
 
-RESTRICT="fetch bindist splitdebug"
-
-QA_PREBUILT="opt/${PN}/${MY_PN}.bin*"
-if [[ ${ARCH} == "amd64" ]] ; then
-	QA_PREBUILT="${QA_PREBUILT} opt/${PN}/lib64/*"
-else
-	QA_PREBUILT="${QA_PREBUILT} opt/${PN}/lib/*"
-fi
+QA_PREBUILT="
+	opt/${PN}/${MY_PN}.bin*
+	opt/${PN}/lib/*
+	opt/${PN}/lib64/*"
 
 # TODO: unbundling sdl-sound breaks the game
 RDEPEND="
@@ -37,17 +35,11 @@ RDEPEND="
 		media-libs/sdl2-ttf
 	)
 "
-DEPEND="
-	sys-apps/coreutils
-	sys-apps/grep
-"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to your DISTDIR directory."
-	einfo
 }
 
 src_unpack() {
@@ -64,35 +56,24 @@ src_unpack() {
 
 src_install() {
 	local dir=/opt/${PN}
-	local libsuffix=$(usex amd64 "64" "")
-	local arch=$(usex amd64 "x86_64" "x86")
+	local libsuffix=$(usex amd64 64 '')
+	local arch=$(usex amd64 x86_64 x86)
 
-	insinto "${dir}"
+	insinto ${dir}
 	doins -r noarch/{Audio,Data,Fonts,Graphics,Game.ini,mkxp.conf,ToTheMoon.png}
 
-	exeinto "${dir}"
+	exeinto ${dir}
 	doexe ${arch}/${MY_PN}.bin.${arch}
 
-	exeinto "${dir}/lib${libsuffix}"
+	exeinto ${dir}/lib${libsuffix}
 	if use bundled-libs ; then
 		doexe ${arch}/lib${libsuffix}/*
 	else
 		doexe ${arch}/lib${libsuffix}/libSDL_sound-1.0.so.1
 	fi
 
-	make_wrapper ${PN} "./${MY_PN}.bin.${arch}" "${dir}" "${dir}/lib${libsuffix}"
+	make_wrapper ${PN} ./${MY_PN}.bin.${arch} ${dir}{,/lib${libsuffix}}
+
+	newicon noarch/${MY_PN}.png ${PN}.png
 	make_desktop_entry ${PN} "To the Moon"
-	newicon -s 32 noarch/${MY_PN}.png ${PN}.png
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

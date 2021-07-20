@@ -12,7 +12,7 @@ SRC_URI="https://download.owncloud.com/desktop/${MY_PN}/stable/${PV}/source/${MY
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc dolphin gnome-keyring nautilus test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3

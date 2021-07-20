@@ -23,6 +23,7 @@ DEPEND="
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/sh-1.09[${PYTHON_USEDEP}]
 	)"
+RDEPEND="!dev-ruby/dotenv"  # bug 798648
 
 DOCS=( CHANGELOG.md README.md )
 

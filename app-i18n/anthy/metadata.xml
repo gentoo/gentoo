@@ -15,9 +15,6 @@
     and <pkg>app-editors/emacs</pkg> (to enable Anthy support for emacs, build
     this package with emacs USE flag).
   </longdescription>
-  <use>
-    <flag name="canna-2ch">Enable support for <pkg>app-dicts/canna-2ch</pkg></flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge-jp">anthy</remote-id>
   </upstream>
