@@ -126,31 +126,31 @@ update_vim_afterscripts() {
 display_vim_plugin_help() {
 	local h
 
-	if ! has_version ${CATEGORY}/${PN} ; then
-		if [[ -n "${VIM_PLUGIN_HELPFILES}" ]] ; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		if [[ -n "${VIM_PLUGIN_HELPFILES}" ]]; then
 			elog " "
 			elog "This plugin provides documentation via vim's help system. To"
 			elog "view it, use:"
-			for h in ${VIM_PLUGIN_HELPFILES} ; do
+			for h in ${VIM_PLUGIN_HELPFILES}; do
 				elog "    :help ${h}"
 			done
 			elog " "
 
-		elif [[ -n "${VIM_PLUGIN_HELPTEXT}" ]] ; then
+		elif [[ -n "${VIM_PLUGIN_HELPTEXT}" ]]; then
 			elog " "
 			while read h ; do
 				elog "$h"
 			done <<<"${VIM_PLUGIN_HELPTEXT}"
 			elog " "
 
-		elif [[ -n "${VIM_PLUGIN_HELPURI}" ]] ; then
+		elif [[ -n "${VIM_PLUGIN_HELPURI}" ]]; then
 			elog " "
 			elog "Documentation for this plugin is available online at:"
 			elog "    ${VIM_PLUGIN_HELPURI}"
 			elog " "
 		fi
 
-		if has "filetype" "${VIM_PLUGIN_MESSAGES}" ; then
+		if has "filetype" "${VIM_PLUGIN_MESSAGES}"; then
 			elog "This plugin makes use of filetype settings. To enable these,"
 			elog "add lines like:"
 			elog "    filetype plugin on"
