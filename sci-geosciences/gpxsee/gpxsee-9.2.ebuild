@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="cs da de en eo es fi fr hu it nb pl pt_BR ru sv tr uk"
-inherit desktop qmake-utils l10n xdg
+inherit desktop plocale qmake-utils xdg
 
 MY_PN="GPXSee"
 MY_P="${MY_PN}-${PV}"
@@ -34,13 +34,13 @@ PATCHES=( "${FILESDIR}"/${PN}-7.33.patch )
 src_prepare() {
 	default
 
-	l10n_find_plocales_changes lang "${PN}_" '.ts'
+	plocale_find_changes lang "${PN}_" '.ts'
 
 	rm_ts() {
 		sed -e "s|lang/gpxsee_${1}.ts||" -i gpxsee.pro
 	}
 
-	l10n_for_each_disabled_locale_do rm_ts
+	plocale_for_each_disabled_locale rm_ts
 }
 
 src_compile() {
