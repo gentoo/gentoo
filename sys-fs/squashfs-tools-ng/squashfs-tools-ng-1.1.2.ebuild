@@ -39,7 +39,7 @@ src_configure() {
 		$(use_with lzo)
 		$(use_with selinux)
 		$(use_with tools)
-		$(use_with xz)
+		$(use_with lzma xz)
 		$(use_with zstd)
 	)
 	econf "${myconf[@]}"
