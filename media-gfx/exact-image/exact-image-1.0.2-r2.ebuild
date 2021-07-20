@@ -23,7 +23,7 @@ RDEPEND="
 	expat? ( dev-libs/expat )
 	jpeg? ( virtual/jpeg )
 	lua? ( ${LUA_DEPS} )
-	openexr? ( media-libs/openexr )
+	openexr? ( <media-libs/openexr-3.0.0:0= )
 	php? ( dev-lang/php:* )
 	perl? ( dev-lang/perl )
 	png? ( >=media-libs/libpng-1.2.43 )
