@@ -38,7 +38,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=sys-devel/make-3.82-r4
 	>=sys-kernel/linux-headers-${KV_min}
-	>=dev-util/intltool-0.50
 	test? ( app-text/tree dev-lang/perl )"
 
 RDEPEND="${COMMON_DEPEND}
