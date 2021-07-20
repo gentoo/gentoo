@@ -71,7 +71,6 @@ src_configure() {
 	# - OpenImageIO is required for building ociodisplay and ocioconvert (USE opengl)
 	# - OpenGL, GLUT and GLEW is required for building ociodisplay (USE opengl)
 	local mycmakeargs=(
-		-DOCIO_BUILD_NUKE=$(usex nuke)
 		-DBUILD_SHARED_LIBS=ON
 		-DOCIO_BUILD_STATIC=$(usex static-libs)
 		-DOCIO_BUILD_DOCS=$(usex doc)
