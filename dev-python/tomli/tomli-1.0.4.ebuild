@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 
 BDEPEND="
 	test? ( dev-python/python-dateutil[${PYTHON_USEDEP}] )"
