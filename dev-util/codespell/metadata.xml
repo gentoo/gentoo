@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+	<email>waebbl-gentoo@posteo.net</email>
+	<name>Bernd Waibel</name>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Gentoo Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	A tool to fix common misspellings in text files. It's designed primarily
+	checking misspelled words in source code, but can be used with other
+	text files as well.
+</longdescription>
+<upstream>
+	<bugs-to>https://github.com/codespell-project/codespell/issues</bugs-to>
+	<remote-id type="github">codespell-project/codespell</remote-id>
+</upstream>
+</pkgmetadata>
