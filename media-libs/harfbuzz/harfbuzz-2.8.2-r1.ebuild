@@ -87,7 +87,7 @@ multilib_src_configure() {
 		$(meson_feature truetype freetype)
 
 		$(meson_native_use_feature cairo)
-		$(meson_native_use_feature doc)
+		$(meson_native_use_feature doc docs)
 		$(meson_native_use_feature introspection)
 
 		$(meson_use experimental experimental_api)
