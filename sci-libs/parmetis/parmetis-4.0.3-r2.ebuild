@@ -6,7 +6,7 @@ EAPI=7
 inherit cmake toolchain-funcs
 
 DESCRIPTION="Parallel (MPI) unstructured graph partitioning library"
-HOMEPAGE="https://www-users.cs.umn.edu/~karypis/metis/parmetis/"
+HOMEPAGE="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview"
 SRC_URI="http://glaros.dtc.umn.edu/gkhome/fetch/sw/${PN}/${P}.tar.gz"
 
 LICENSE="all-rights-reserved"
