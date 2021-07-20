@@ -10,7 +10,7 @@ S="${WORKDIR}/rules"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 PDEPEND="app-admin/sagan"
 
