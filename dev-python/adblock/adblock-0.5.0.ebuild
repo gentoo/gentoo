@@ -94,7 +94,7 @@ BDEPEND="app-arch/unzip
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 QA_FLAGS_IGNORED="usr/lib.*/libadblock.so
-	usr/lib/python3*/site-packages/adblock/adblock.abi3.so"
+	usr/lib/python3.*/site-packages/adblock/adblock.abi3.so"
 QA_SONAME="${QA_FLAGS_IGNORED}"
 
 src_compile() {
