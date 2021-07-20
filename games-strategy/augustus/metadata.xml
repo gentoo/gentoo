@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@chymera.eu</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		The aim of this project is to provide enhanced, customizable gameplay
+		to Caesar 3 using project Julius UI enhancements. Augustus is able to
+		load Caesar 3 and Julius saves, however saves made with Augustus will
+		not work outside Augustus.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Keriew/augustus</remote-id>
+	</upstream>
+	<use>
+		<flag name="uncapped">Uncap grand temple count</flag>
+	</use>
+</pkgmetadata>
