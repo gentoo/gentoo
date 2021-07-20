@@ -11,7 +11,7 @@ SRC_URI="https://sagan.quadrantsec.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="geoip +libdnet mysql redis +pcap smtp"
 
 BDEPEND="virtual/pkgconfig"
