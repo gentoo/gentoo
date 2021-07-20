@@ -1,0 +1,79 @@
+From 8bed99cc9f3763269b6b1aada45a43c9993d7b80 Mon Sep 17 00:00:00 2001
+From: Gioacchino Mazzurco <gio@eigenlab.org>
+Date: Fri, 6 Aug 2021 12:15:34 +0200
+Subject: [PATCH] Fix compilation with C++17
+
+---
+ libretroshare/src/util/rsdir.cc | 42 +++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 20 deletions(-)
+
+diff --git a/libretroshare/src/util/rsdir.cc b/libretroshare/src/util/rsdir.cc
+index 8556b8198..1a6375297 100644
+--- a/libretroshare/src/util/rsdir.cc
++++ b/libretroshare/src/util/rsdir.cc
+@@ -4,8 +4,8 @@
+  * libretroshare: retroshare core library                                      *
+  *                                                                             *
+  * Copyright (C) 2004-2007  Robert Fernie <retroshare@lunamutt.com>            *
+- * Copyright (C) 2020  Gioacchino Mazzurco <gio@eigenlab.org>                  *
+- * Copyright (C) 2020  Asociación Civil Altermundi <info@altermundi.net>       *
++ * Copyright (C) 2020-2021  Gioacchino Mazzurco <gio@eigenlab.org>             *
++ * Copyright (C) 2020-2021  Asociación Civil Altermundi <info@altermundi.net>  *
+  *                                                                             *
+  * This program is free software: you can redistribute it and/or modify        *
+  * it under the terms of the GNU Lesser General Public License as              *
+@@ -64,6 +64,26 @@
+  * #define RSDIR_DEBUG 1
+  ****/
+ 
++#if __cplusplus < 201703L
++bool std::filesystem::create_directories(const std::string& path)
++{
++	for( std::string::size_type lastIndex = 0; lastIndex < std::string::npos;
++	     lastIndex = path.find('/', lastIndex) )
++	{
++		std::string&& curDir = path.substr(0, ++lastIndex);
++		if(!RsDirUtil::checkCreateDirectory(curDir))
++		{
++			RsErr() << __PRETTY_FUNCTION__ << " failure creating: " << curDir
++			        << " of: " << path << std::endl;
++			return false;
++		}
++	}
++	return true;
++}
++#else
++#	include <filesystem>
++#endif // __cplusplus < 201703L
++
+ std::string 	RsDirUtil::getTopDir(const std::string& dir)
+ {
+ 	std::string top;
+@@ -528,24 +548,6 @@ bool RsDirUtil::checkCreateDirectory(const std::string& dir)
+ 	return true;
+ }
+ 
+-#if __cplusplus < 201703L
+-bool std::filesystem::create_directories(const std::string& path)
+-{
+-	for( std::string::size_type lastIndex = 0; lastIndex < std::string::npos;
+-	     lastIndex = path.find('/', lastIndex) )
+-	{
+-		std::string&& curDir = path.substr(0, ++lastIndex);
+-		if(!RsDirUtil::checkCreateDirectory(curDir))
+-		{
+-			RsErr() << __PRETTY_FUNCTION__ << " failure creating: " << curDir
+-			        << " of: " << path << std::endl;
+-			return false;
+-		}
+-	}
+-	return true;
+-}
+-#endif // __cplusplus < 201703L
+-
+ std::string RsDirUtil::removeSymLinks(const std::string& path)
+ {
+ #if defined(WINDOWS_SYS) || defined(__APPLE__) || defined(__ANDROID__)
+-- 
+2.31.1
+
