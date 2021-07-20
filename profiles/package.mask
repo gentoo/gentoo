@@ -36,11 +36,6 @@
 # Mask for testing
 >=dev-ml/findlib-1.9.1
 
-# David Seifert <soap@gentoo.org> (2021-07-20)
-# No maintainer or upstream activity, lacking features,
-# use app-portage/pram nowadays, bug #803056, removal in 30 days.
-dev-perl/Gentoo-App-Pram
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # No gtk4 and friends in the tree yet
 >=media-sound/easyeffects-6.0.0
