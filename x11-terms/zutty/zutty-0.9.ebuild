@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tomszilagyi/zutty/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	media-libs/freetype:2
