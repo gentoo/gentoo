@@ -36,6 +36,7 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-util/cmake-3.16.2-r1
 	virtual/pkgconfig
