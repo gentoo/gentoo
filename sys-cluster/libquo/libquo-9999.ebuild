@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=90
@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-DESCRIPTION="run-time tuning of process binding policies made easy"
+DESCRIPTION="Run-time tuning of process binding policies made easy"
 HOMEPAGE="https://lanl.github.io/libquo/"
 
 LICENSE="BSD"
