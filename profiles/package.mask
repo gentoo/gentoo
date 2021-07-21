@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-20)
+# breaks screen unlock in sddm, xscreensaver
+# https://bugs.gentoo.org/803050
+=sys-libs/pam-1.5.1_p20210610
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-07-20)
 # Mask for testing
 >=dev-ml/findlib-1.9.1
