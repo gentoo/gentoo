@@ -202,6 +202,12 @@ llvm.org_src_unpack() {
 	fi
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
+		local nocomp=$(grep -r -L "^Gentoo-Component:" \
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}")
+		if [[ -n ${nocomp} ]]; then
+			die "Patches lacking Gentoo-Component found: ${nocomp}"
+		fi
+
 		# strip patches that don't match current components
 		local IFS='|'
 		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \
