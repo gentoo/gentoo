@@ -74,18 +74,12 @@ QA_PREBUILT="lib/firmware/* opt/bin/* usr/lib*"
 PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 )
+
 DOCS=(
 	README.txt NVIDIA_Changelog supported-gpus/supported-gpus.json
 	nvidia-settings/doc/{FRAMELOCK,NV-CONTROL-API}.txt
 )
 HTML_DOCS=( html/. )
-
-DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="Users should be in the 'video' group to use NVIDIA devices.
-You can add yourself by using: gpasswd -a my-user video
-
-For general information on using nvidia-drivers, please see:
-https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 
 pkg_setup() {
 	use driver || return
@@ -274,9 +268,7 @@ src_install() {
 		linux-mod_src_install
 
 		insinto /etc/modprobe.d
-		newins "${FILESDIR}"/nvidia-460.conf nvidia.conf
-		doins "${FILESDIR}"/nvidia-blacklist-nouveau.conf
-		doins "${FILESDIR}"/nvidia-rmmod.conf
+		newins "${FILESDIR}"/nvidia-470.conf nvidia.conf
 
 		insinto /lib/firmware/nvidia/${PV}
 		doins firmware/gsp.bin
@@ -370,8 +362,19 @@ src_install() {
 	dobin systemd/nvidia-sleep.sh
 	systemd_dounit systemd/system/nvidia-{hibernate,resume,suspend}.service
 
-	einstalldocs
+	# create README.gentoo
+	local DISABLE_AUTOFORMATTING="yes"
+	local DOC_CONTENTS=\
+"Trusted users should be in the 'video' group to use NVIDIA devices.
+You can add yourself by using: gpasswd -a my-user video
+
+See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options.
+
+For general information on using nvidia-drivers, please see:
+https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	readme.gentoo_create_doc
+
+	einstalldocs
 }
 
 pkg_preinst() {
@@ -381,8 +384,7 @@ pkg_preinst() {
 	# set video group id based on live system (bug #491414)
 	local g=$(getent group video | cut -d: -f3)
 	[[ ${g} ]] || die "Failed to determine video group id"
-	sed "s/PACKAGE/${PF}/;s/VIDEOGID/${g}/" \
-		-i "${ED}"/etc/modprobe.d/nvidia.conf || die
+	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do

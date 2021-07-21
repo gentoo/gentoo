@@ -76,18 +76,12 @@ PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-390.141-fno-common.patch
 )
+
 DOCS=(
 	README.txt NVIDIA_Changelog
 	nvidia-settings/doc/{FRAMELOCK,NV-CONTROL-API}.txt
 )
 HTML_DOCS=( html/. )
-
-DISABLE_AUTOFORMATTING="yes"
-DOC_CONTENTS="Users should be in the 'video' group to use NVIDIA devices.
-You can add yourself by using: gpasswd -a my-user video
-
-For general information on using nvidia-drivers, please see:
-https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 
 pkg_setup() {
 	use driver || return
@@ -269,8 +263,6 @@ src_install() {
 
 		insinto /etc/modprobe.d
 		newins "${FILESDIR}"/nvidia-390.conf nvidia.conf
-		doins "${FILESDIR}"/nvidia-blacklist-nouveau.conf
-		doins "${FILESDIR}"/nvidia-rmmod.conf
 	fi
 
 	if use X; then
@@ -345,8 +337,19 @@ src_install() {
 	# install prebuilt-only libraries
 	multilib_foreach_abi nvidia-drivers_libs_install
 
-	einstalldocs
+	# create README.gentoo
+	local DISABLE_AUTOFORMATTING="yes"
+	local DOC_CONTENTS=\
+"Trusted users should be in the 'video' group to use NVIDIA devices.
+You can add yourself by using: gpasswd -a my-user video
+
+See '${EPREFIX}/etc/modprobe.d/nvidia.conf' for modules options.
+
+For general information on using nvidia-drivers, please see:
+https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	readme.gentoo_create_doc
+
+	einstalldocs
 }
 
 pkg_preinst() {
@@ -358,8 +361,7 @@ pkg_preinst() {
 	# set video group id based on live system (bug #491414)
 	local g=$(getent group video | cut -d: -f3)
 	[[ ${g} ]] || die "Failed to determine video group id"
-	sed "s/PACKAGE/${PF}/;s/VIDEOGID/${g}/" \
-		-i "${ED}"/etc/modprobe.d/nvidia.conf || die
+	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 }
 
 pkg_postinst() {
