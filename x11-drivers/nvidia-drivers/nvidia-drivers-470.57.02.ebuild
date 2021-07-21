@@ -90,6 +90,7 @@ pkg_setup() {
 		~DRM_KMS_HELPER
 		~SYSVIPC
 		~!LOCKDEP
+		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
 	of drivers (no custom config), and optional nvidia-drm.modeset=1.
@@ -420,6 +421,12 @@ pkg_postinst() {
 		ewarn "Currently loaded NVIDIA modules do not match the newly installed"
 		ewarn "libraries and will lead to GPU-using application issues."
 		use driver && ewarn "The easiest way to fix this is usually to reboot."
+	fi
+
+	if [[ $(</proc/cmdline) == *slub_debug=[!-]* ]]; then
+		ewarn "Detected that the current kernel command line is using 'slub_debug=',"
+		ewarn "this may lead to system instability/freezes with this version of"
+		ewarn "${PN}. Bug: https://bugs.gentoo.org/796329"
 	fi
 
 	if [[ ${NV_LEGACY_MASK} ]]; then
