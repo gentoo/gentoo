@@ -10,7 +10,6 @@ sci-libs/hdf5 fortran debug
 # sci-libs/hdf5 currently not supported (fails tests) on this arch
 dev-libs/starpu hdf5
 sci-libs/gdal hdf5
-sys-cluster/slurm hdf5
 # (via dev-python/pytables)
 dev-python/pandas doc full-support test
 
