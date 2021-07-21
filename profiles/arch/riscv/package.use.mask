@@ -2,12 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
-# sci-libs/hdf5 fails tests with these 2 use flags enabled, 
+# sci-libs/hdf5 fails tests with these 2 use flags enabled,
 # otherwise passes all tests
 sci-libs/hdf5 fortran debug
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-19)
-# sci-libs/hdf5 currently not supported (fails tests) on this arch
+# sci-libs/hdf5 may or may not work properly on this arch (on some
+# systems fails tests even with the mask above in place), masked for
+# further testing.
 dev-libs/starpu hdf5
 sci-libs/gdal hdf5
 # (via dev-python/pytables)
