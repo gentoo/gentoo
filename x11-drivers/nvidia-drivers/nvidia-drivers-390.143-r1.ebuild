@@ -163,8 +163,8 @@ src_prepare() {
 	sed 's/__NV_VK_ICD__/libGLX_nvidia.so.0/' \
 		nvidia_icd.json.template > nvidia_icd.json || die
 
-	sed "s/%LIBDIR%/$(get_libdir)/g" "${FILESDIR}/nvidia-390.conf" \
-		> nvidia-drm-outputclass.conf || die
+	sed "s|@LIBDIR@|${EPREFIX}/usr/$(get_libdir)|" \
+		"${FILESDIR}"/nvidia-drm-outputclass-390.conf > nvidia-drm-outputclass.conf || die
 
 	gzip -d nvidia-{cuda-mps-control,smi}.1.gz || die
 }
@@ -268,7 +268,7 @@ src_install() {
 		linux-mod_src_install
 
 		insinto /etc/modprobe.d
-		newins "${FILESDIR}"/nvidia-169.07 nvidia.conf
+		newins "${FILESDIR}"/nvidia-390.conf nvidia.conf
 		doins "${FILESDIR}"/nvidia-blacklist-nouveau.conf
 		doins "${FILESDIR}"/nvidia-rmmod.conf
 	fi
