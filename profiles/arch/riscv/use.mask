@@ -16,6 +16,11 @@
 -introspection
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# Relevant Ruby versions not keyworded yet
+ruby_targets_ruby27
+ruby_targets_ruby30
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # dev-lang/lua:5.2 and dev-lang/luajit known not to work here
 lua_single_target_lua5-2
 lua_single_target_luajit
