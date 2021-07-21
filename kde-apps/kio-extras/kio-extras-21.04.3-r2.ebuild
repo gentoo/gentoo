@@ -51,7 +51,7 @@ DEPEND="
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	nfs? ( net-libs/libtirpc:= )
-	openexr? ( media-libs/openexr:= )
+	openexr? ( media-libs/openexr:* )
 	phonon? ( >=media-libs/phonon-4.11.0 )
 	samba? (
 		net-fs/samba[client]
