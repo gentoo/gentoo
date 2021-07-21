@@ -43,7 +43,7 @@ DEPEND="
 		pcre2-jit? ( dev-libs/libpcre2:=[jit] )
 	)
 	ssl? (
-		dev-libs/openssl:0=[zlib?]
+		dev-libs/openssl:0=
 	)
 	slz? ( dev-libs/libslz:= )
 	systemd? ( sys-apps/systemd )
