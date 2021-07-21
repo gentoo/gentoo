@@ -43,6 +43,8 @@ app-editors/emacs gconf m17n-lib xwidgets
 app-crypt/heimdal afs
 #  - sci-libs/gdal
 dev-python/networkx extras
+#  - app-text/dblatex & media-gfx/transfig
+dev-util/ragel doc
 #  - media-libs/dumb, media-libs/openal
 media-libs/allegro dumb openal
 #  - media-gfx/nvidia-texture-tools
