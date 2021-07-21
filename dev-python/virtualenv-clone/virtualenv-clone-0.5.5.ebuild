@@ -8,8 +8,15 @@ inherit distutils-r1
 
 DESCRIPTION="A script for cloning a non-relocatable virtualenv"
 HOMEPAGE="https://github.com/edwardgeorge/virtualenv-clone/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/edwardgeorge/virtualenv-clone/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+BDEPEND="
+	test? ( dev-python/virtualenv[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
