@@ -449,7 +449,12 @@ pkg_postinst() {
 		elog "in compositors that support it) and PRIME offloading."
 		elog
 		elog "If you experience issues, please comment out the option from nvidia.conf."
-		elog "It is notably known to cause problems with SLI (Scalable Link Interface)."
+		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
+		if has_version "gnome-base/gdm[wayland]"; then
+			elog
+			elog "This also cause gnome-base/gdm to use a wayland session by default,"
+			elog "select 'GNOME on Xorg' if you wish to continue using it."
+		fi
 	fi
 
 	# Try to show this message only to users that may really need it
