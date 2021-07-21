@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,12 +7,12 @@ inherit autotools db-use flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bayesian spam filter designed with fast algorithms, and tuned for speed"
 HOMEPAGE="http://bogofilter.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
-IUSE="berkdb sqlite tokyocabinet"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="berkdb +sqlite tokyocabinet"
 
 # pax needed for bf_tar
 DEPEND="
@@ -29,8 +29,6 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-test-env.patch" )
 
 pkg_setup() {
 	has_version mail-filter/bogofilter || return 0
