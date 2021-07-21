@@ -7,12 +7,12 @@ inherit autotools db-use flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bayesian spam filter designed with fast algorithms, and tuned for speed"
 HOMEPAGE="http://bogofilter.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="berkdb sqlite tokyocabinet"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
+IUSE="berkdb +sqlite tokyocabinet"
 
 # pax needed for bf_tar
 DEPEND="
@@ -29,6 +29,8 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-test-env.patch" )
 
 pkg_setup() {
 	has_version mail-filter/bogofilter || return 0
