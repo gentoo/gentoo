@@ -25,12 +25,12 @@ CONFIG_CHECK="~!R8169"
 WARNING_R8169="CONFIG_R8169 is enabled. ${P} will not be loaded unless kernel driver Realtek 8169 PCI Gigabit Ethernet (CONFIG_R8169) is DISABLED."
 
 pkg_setup() {
-    linux-mod_pkg_setup
-    BUILD_PARAMS="KERNELDIR=${KV_DIR}"
-    BUILD_PARAMS+=" ENABLE_USE_FIRMWARE_FILE=$(usex use-firmware y n)"
+	linux-mod_pkg_setup
+	BUILD_PARAMS="KERNELDIR=${KV_DIR}"
+	BUILD_PARAMS+=" ENABLE_USE_FIRMWARE_FILE=$(usex use-firmware y n)"
 }
 
 src_install() {
-    linux-mod_src_install
-    einstalldocs
+	linux-mod_src_install
+	einstalldocs
 }
