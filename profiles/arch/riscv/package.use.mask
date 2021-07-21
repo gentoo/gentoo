@@ -69,7 +69,6 @@ media-libs/libcaca doc imlib
 x11-libs/tslib sdl
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
-app-text/docbook-xsl-ns-stylesheets ruby
 app-misc/geoclue modemmanager zeroconf
 gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios test zeroconf
 sys-power/upower ios
@@ -151,24 +150,10 @@ dev-python/twisted test
 dev-python/urllib3 test
 dev-util/catalyst iso
 dev-util/pkgconf test
-dev-vcs/git cvs highlight subversion
-media-libs/harfbuzz doc
+dev-vcs/git highlight subversion
 sys-libs/libcxx static-libs
-media-libs/tiff jbig webp
-net-fs/nfs-utils nfsv41
 media-libs/fontconfig doc
-net-irc/irssi socks5
-net-libs/gnutls doc test-full
-net-libs/ldns doc python
+net-libs/gnutls test-full
 net-libs/libpcap rdma
-net-misc/ntp openntpd vim-syntax zeroconf
-net-nds/openldap cxx kerberos sasl
-sys-apps/kmod doc
-sys-apps/portage apidoc
-sys-apps/rng-tools nistbeacon pkcs11
-sys-auth/pambase gnome-keyring pam_krb5 pam_ssh  mktemp
-sys-block/thin-provisioning-tools test
-sys-devel/automake test
-sys-devel/gdb source-highlight
+net-misc/ntp openntpd
 sys-devel/gettext cvs
-x11-libs/libvdpau doc
