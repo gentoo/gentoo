@@ -53,8 +53,8 @@ dev-util/ragel doc
 media-libs/allegro dumb openal
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
-#  - sys-cluster/ceph
-net-analyzer/rrdtool rados
+#  - sys-cluster/ceph, dev-ruby/rrdtool-bindings
+net-analyzer/rrdtool rados ruby
 #  - dev-util/aruba & dev-util/cucumber
 sys-block/thin-provisioning-tools test
 #  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
