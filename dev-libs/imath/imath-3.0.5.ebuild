@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit cmake python-single-r1
 
-MY_PN=Imath
+MY_PN="${PN^}"
 
 DESCRIPTION="Imath basic math package"
 HOMEPAGE="https://imath.readthedocs.io"
@@ -15,12 +15,11 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${MY_PN}/archive/refs/tags
 # re-keywording needed for (according to ilmbase keywords):
 # ~arm ~arm64 ~mips ~x64-macos ~x86-solaris
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="3/28"
 IUSE="doc large-stack python static-libs test"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,35 +27,39 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[python?,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_MULTI_USEDEP}]') )
+	doc? ( $(python_gen_cond_dep 'dev-python/breathe[${PYTHON_USEDEP}]') )
 	python? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-0001-changes-needed-for-proper-slotting.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-0001-changes-needed-for-proper-slotting.patch
+)
 DOCS=( CHANGES.md CONTRIBUTORS.md README.md SECURITY.md docs/PortingGuide2-3.md )
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {
-	local MY_PV=$(ver_cut 1)
+	local majorver=$(ver_cut 1)
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DIMATH_ENABLE_LARGE_STACK=$(usex large-stack)
 		-DIMATH_INSTALL_PKG_CONFIG=ON
-		-DIMATH_OUTPUT_SUBDIR="${MY_PN}-${MY_PV}"
+		-DIMATH_OUTPUT_SUBDIR="${MY_PN}-${majorver}"
 		-DIMATH_USE_CLANG_TIDY=OFF
 	)
-
 	if use python; then
 		mycmakeargs+=(
 			# temp. disable for finding libboost_python310, #803032
@@ -83,12 +86,8 @@ src_compile() {
 }
 
 src_install() {
+	use doc && HTML_DOCS=( "${S}/docs/_build/html/." )
 	cmake_src_install
-
-	if use doc; then
-		HTML_DOCS=( "${S}/docs/_build/html/." )
-		einstalldocs
-	fi
 
 #	if use python; then
 #		rm "${ED}"/usr/$(get_libdir)/cmake/${MY_PN}/${MY_PN}Config-gentoo.cmake || die
