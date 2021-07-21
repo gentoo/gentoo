@@ -19,12 +19,12 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 LICENSE="openssl"
 SLOT="0.9.8"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
-IUSE="bindist gmp kerberos cpu_flags_x86_sse2 test zlib"
+IUSE="bindist gmp kerberos cpu_flags_x86_sse2 test tls-compression"
 RESTRICT="!bindist? ( bindist )
 	test"
 
 RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
 	!=dev-libs/openssl-0.9.8*:0
 	!dev-libs/openssl:0.9.8"
@@ -128,7 +128,7 @@ multilib_src_configure() {
 		enable-tlsext \
 		$(use_ssl gmp gmp -lgmp) \
 		$(use_ssl kerberos krb5 --with-krb5-flavor=${krb5}) \
-		$(use_ssl zlib) \
+		$(use_ssl tls-compression zlib) \
 		--prefix=/usr \
 		--openssldir=/etc/ssl \
 		shared threads \
