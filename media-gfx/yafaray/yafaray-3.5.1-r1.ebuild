@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 # doesn't build with ninja when qt5 and python USE flags are both enabled
 CMAKE_MAKEFILE_GENERATOR="emake"
@@ -14,7 +14,6 @@ DESCRIPTION="A free open-source montecarlo raytracing engine"
 # Regular homepage is currently down. Upstream is working on this.
 HOMEPAGE="https://www.yafaray.org https://github.com/YafaRay/libYafaRay"
 SRC_URI="https://github.com/YafaRay/libYafaRay/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
 S="${WORKDIR}/libYafaRay-${PV}"
 
 LICENSE="LGPL-2.1"
@@ -23,9 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+fastmath +fasttrig jpeg opencv openexr png python qt5 tiff truetype"
 RESTRICT="test"
 
-REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
-"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Note: according to upstream, the blender plugin doesn't work with >=blender-2.8 (yet).
 RDEPEND="
@@ -33,7 +30,7 @@ RDEPEND="
 	sys-libs/zlib
 	jpeg? ( virtual/jpeg )
 	opencv? ( media-libs/opencv:= )
-	openexr? ( media-libs/openexr:= )
+	openexr? ( <media-libs/openexr-3.0.0:0= )
 	png? ( media-libs/libpng:= )
 	python? ( ${PYTHON_DEPS} )
 	qt5? ( dev-qt/qtwidgets:5 )
@@ -41,15 +38,14 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="python? (
+BDEPEND="
+	python? (
 		${PYTHON_DEPS}
 		dev-lang/swig
-	)"
+	)
+"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch
-)
-
+PATCHES=( "${FILESDIR}"/${P}-0001-respect-distribution-CFLAGS.patch )
 DOCS=( AUTHORS.md CHANGELOG.md CODING.md INSTALL.md README.md )
 
 pkg_setup() {
