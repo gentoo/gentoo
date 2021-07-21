@@ -33,17 +33,16 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +llvm
+	+classic d3d9 debug +egl +gallium +gbm gles1 +gles2 +llvm
 	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
 	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
 REQUIRED_USE="
-	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
+	d3d9?   ( || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
 	gles1?  ( egl )
 	gles2?  ( egl )
 	osmesa? ( gallium )
-	vulkan? ( dri3
-			  video_cards_radeonsi? ( llvm ) )
+	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
 	wayland? ( egl gbm )
 	video_cards_freedreno?  ( gallium )
@@ -507,7 +506,7 @@ multilib_src_configure() {
 		$(meson_use test build-tests)
 		-Dglx=$(usex X dri disabled)
 		-Dshared-glapi=enabled
-		$(meson_feature dri3)
+		-Ddri3=enabled
 		$(meson_feature egl)
 		$(meson_feature gbm)
 		$(meson_feature gles1)
