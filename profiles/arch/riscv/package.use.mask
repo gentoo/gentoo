@@ -55,6 +55,8 @@ media-libs/allegro dumb openal
 media-libs/devil nvtt
 #  - sys-cluster/ceph
 net-analyzer/rrdtool rados
+#  - dev-util/aruba & dev-util/cucumber
+sys-block/thin-provisioning-tools test
 #  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
 sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
 #  - sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
