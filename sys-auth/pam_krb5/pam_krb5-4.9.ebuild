@@ -16,8 +16,8 @@ IUSE=""
 # tests fail without a /etc/krb5.conf
 RESTRICT="test"
 
-DEPEND="
-	virtual/krb5
+DEPEND="virtual/krb5
+	virtual/libcrypt:=
 	sys-libs/pam"
 
 RDEPEND="${DEPEND}"
