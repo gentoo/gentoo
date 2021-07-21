@@ -39,14 +39,14 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 LICENSE="openssl"
 SLOT="1.0.0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86 ~x86-linux"
-IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla zlib"
+IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla tls-compression"
 
 RESTRICT="!bindist? ( bindist )
 	test"
 
 RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	!=dev-libs/openssl-1.0.2*:0
 	!dev-libs/openssl:1.0.0"
 DEPEND="${RDEPEND}"
@@ -205,7 +205,7 @@ multilib_src_configure() {
 		$(use_ssl sslv2 ssl2) \
 		$(use_ssl sslv3 ssl3) \
 		$(use_ssl tls-heartbeat heartbeats) \
-		$(use_ssl zlib) \
+		$(use_ssl tls-compression zlib) \
 		--prefix="${EPREFIX}"/usr \
 		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
 		--libdir=$(get_libdir) \
