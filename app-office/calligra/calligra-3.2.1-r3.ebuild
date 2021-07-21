@@ -91,7 +91,7 @@ COMMON_DEPEND="
 		media-libs/lcms:2
 	)
 	okular? ( kde-apps/okular:5 )
-	openexr? ( media-libs/openexr )
+	openexr? ( <media-libs/openexr-3.0.0:0= )
 	pdf? ( app-text/poppler:=[qt5] )
 	phonon? ( >=media-libs/phonon-4.11.0 )
 	spacenav? ( dev-libs/libspnav )
