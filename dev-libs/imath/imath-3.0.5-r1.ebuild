@@ -15,6 +15,7 @@ SRC_URI="https://github.com/AcademySoftwareFoundation/${MY_PN}/archive/refs/tags
 # re-keywording needed for (according to ilmbase keywords):
 # ~arm ~arm64 ~mips ~x64-macos ~x86-solaris
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
 SLOT="3/28"
@@ -22,7 +23,9 @@ IUSE="doc large-stack python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
+# blocker due to file collision #803347
 RDEPEND="
+	!~dev-libs/imath-3.0.1:0
 	sys-libs/zlib
 	python? (
 		${PYTHON_DEPS}
@@ -39,12 +42,8 @@ BDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-0001-changes-needed-for-proper-slotting.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-0001-changes-needed-for-proper-slotting.patch )
 DOCS=( CHANGES.md CONTRIBUTORS.md README.md SECURITY.md docs/PortingGuide2-3.md )
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
