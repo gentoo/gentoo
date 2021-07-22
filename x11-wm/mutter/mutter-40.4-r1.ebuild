@@ -54,13 +54,13 @@ DEPEND="
 	>=dev-libs/atk-2.5.3[introspection?]
 	>=media-libs/libcanberra-0.26
 	sys-apps/dbus
-	media-libs/mesa[X(+),egl]
+	media-libs/mesa[X(+),egl(+)]
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 )
 	wayland? (
 		>=dev-libs/wayland-protocols-1.19
 		>=dev-libs/wayland-1.18.0
 		x11-libs/libdrm:=
-		>=media-libs/mesa-17.3[egl,gbm,wayland,gles2]
+		>=media-libs/mesa-17.3[egl(+),gbm(+),wayland,gles2]
 		>=dev-libs/libinput-1.15.0
 		systemd? ( sys-apps/systemd )
 		elogind? ( sys-auth/elogind )
