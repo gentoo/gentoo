@@ -6,10 +6,10 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 PYTHON_REQ_USE="ncurses,readline"
 
-FIRMWARE_ABI_VERSION="6.0.0-r50"
+FIRMWARE_ABI_VERSION="6.1.0"
 
-inherit eutils linux-info toolchain-funcs multilib python-r1
-inherit udev fcaps readme.gentoo-r1 pax-utils xdg-utils
+inherit linux-info toolchain-funcs python-r1 udev fcaps readme.gentoo-r1 \
+		pax-utils xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
@@ -23,7 +23,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.qemu.org/${P}.tar.xz"
-	KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -32,7 +32,7 @@ HOMEPAGE="https://www.qemu.org https://www.linux-kvm.org"
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
-IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug +doc
+IUSE="accessibility +aio alsa bpf bzip2 capstone +caps +curl debug +doc
 	+fdt fuse glusterfs gnutls gtk infiniband iscsi io-uring
 	jack jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo multipath
@@ -75,11 +75,8 @@ COMMON_TARGETS="
 IUSE_SOFTMMU_TARGETS="
 	${COMMON_TARGETS}
 	avr
-	lm32
-	moxie
 	rx
 	tricore
-	unicore32
 "
 IUSE_USER_TARGETS="
 	${COMMON_TARGETS}
@@ -145,6 +142,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
+	bpf? ( dev-libs/libbpf:= )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
@@ -182,7 +180,7 @@ SOFTMMU_TOOLS_DEPEND="
 		virtual/opengl
 		media-libs/libepoxy[static-libs(+)]
 		media-libs/mesa[static-libs(+)]
-		media-libs/mesa[egl,gbm]
+		media-libs/mesa[egl(+),gbm(+)]
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
@@ -243,7 +241,10 @@ BDEPEND="
 	dev-lang/perl
 	sys-apps/texinfo
 	virtual/pkgconfig
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+	)
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
 		dev-libs/glib[utils]
@@ -273,11 +274,10 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${PN}-5.2.0-strings.patch
-	"${FILESDIR}"/${PN}-5.2.0-cleaner-werror.patch
 	"${FILESDIR}"/${PN}-5.2.0-disable-keymap.patch
-	"${FILESDIR}"/${PN}-5.2.0-dce-locks.patch
 	"${FILESDIR}"/${PN}-6.0.0-make.patch
+	"${FILESDIR}"/${PN}-6.1.0-strings.patch
+	"${FILESDIR}"/${P}-automagic-libbpf.patch
 )
 
 QA_PREBUILT="
@@ -390,7 +390,7 @@ check_targets() {
 	local var=$1 mak=$2
 	local detected sorted
 
-	pushd "${S}"/default-configs/targets/ >/dev/null || die
+	pushd "${S}"/configs/targets/ >/dev/null || die
 
 	# Force C locale until glibc is updated. #564936
 	detected=$(echo $(printf '%s\n' *-${mak}.mak | sed "s:-${mak}.mak::" | LC_COLLATE=C sort -u))
@@ -503,6 +503,7 @@ qemu_src_configure() {
 	conf_opts+=(
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
+		$(conf_softmmu bpf)
 		$(conf_notuser bzip2)
 		$(conf_notuser capstone)
 		$(conf_notuser caps cap-ng)

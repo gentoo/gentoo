@@ -182,7 +182,7 @@ SOFTMMU_TOOLS_DEPEND="
 		virtual/opengl
 		media-libs/libepoxy[static-libs(+)]
 		media-libs/mesa[static-libs(+)]
-		media-libs/mesa[egl,gbm]
+		media-libs/mesa[egl(+),gbm(+)]
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
