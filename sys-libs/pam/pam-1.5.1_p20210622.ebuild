@@ -5,13 +5,14 @@ EAPI=7
 
 inherit autotools db-use fcaps toolchain-funcs usr-ldscript multilib-minimal
 
-GIT_COMMIT="ec0e724fe53188c5c762c34ca9db6681c0de01b8"
+GIT_COMMIT="fe1307512fb8892b5ceb3d884c793af8dbd4c16a"
+DOC_SNAPSHOT="20210610"
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
 
 SRC_URI="https://github.com/linux-pam/linux-pam/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${PN}-doc-${PV}.tar.xz"
+	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${PN}-doc-${PV%_p*}_p${DOC_SNAPSHOT}.tar.xz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
@@ -103,7 +104,7 @@ multilib_src_install_all() {
 
 	local page
 
-	for page in ${WORKDIR}/man/*.{3,5,8} ; do
+	for page in "${WORKDIR}"/man/*.{3,5,8} ; do
 		doman ${page}
 	done
 }
