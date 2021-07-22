@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dmabuf? (
-		media-libs/mesa[gbm,vaapi?,wayland]
+		media-libs/mesa[gbm(+),vaapi?,wayland]
 		x11-libs/libdrm
 	)
 	lz4? ( app-arch/lz4 )
@@ -53,10 +53,6 @@ BDEPEND="
 	man? ( app-text/scdoc )
 	test? ( dev-libs/weston[examples,headless,remoting,screen-sharing,wayland-compositor] )
 "
-
-PATCHES=(
-	"${FILESDIR}"/waypipe-0.7.2-no-simd.patch
-)
 
 src_configure() {
 	local emesonargs=(
