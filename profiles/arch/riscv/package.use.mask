@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
+# dependencies not keyworded/not tested
+dev-qt/qtnetwork networkmanager connman
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-20)
 # sys-auth/sssd and its deps not keyworded yet
 app-admin/sudo sssd
