@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	>=dev-libs/libtsm-4.0.0:=
 	media-libs/mesa[X(+)]
 	drm? ( x11-libs/libdrm
-		>=media-libs/mesa-8.0.3[egl,gbm] )
+		>=media-libs/mesa-8.0.3[egl(+),gbm(+)] )
 	gles2? ( >=media-libs/mesa-8.0.3[gles2] )
 	systemd? ( sys-apps/systemd )
 	pango? ( x11-libs/pango dev-libs/glib:2 )
