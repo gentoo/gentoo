@@ -29,7 +29,7 @@ RDEPEND="
 	>=x11-libs/libva-2.4.0:=[X?,wayland?,drm,${MULTILIB_USEDEP}]
 	wayland? (
 		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
-		>=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}]
+		>=media-libs/mesa-9.1.6[egl(+),${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}"
