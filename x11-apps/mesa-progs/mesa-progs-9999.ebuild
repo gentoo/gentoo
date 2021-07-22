@@ -26,7 +26,7 @@ SLOT="0"
 IUSE="egl gles2"
 
 RDEPEND="
-	media-libs/mesa[egl?,gles2?]
+	media-libs/mesa[egl(+)?,gles2?]
 	virtual/opengl
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
