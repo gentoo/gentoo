@@ -31,7 +31,7 @@ CDEPEND="
 	curl? ( net-misc/curl )
 	fbcon? (
 		app-text/poppler[cairo]
-		media-libs/mesa[X(+),gbm]
+		media-libs/mesa[X(+),gbm(+)]
 		x11-libs/libdrm
 		x11-libs/pixman
 	)
