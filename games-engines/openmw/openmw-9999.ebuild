@@ -38,8 +38,8 @@ RDEPEND="${LUA_DEPS}
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=[double-precision]
 	virtual/opengl
-	osg-fork? ( dev-games/openscenegraph-openmw:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
-	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
+	!osg-fork? ( >=dev-games/openscenegraph-3.5.5:=[collada(-),ffmpeg,jpeg,png,sdl,svg,truetype,zlib] )
 	qt5? (
 		app-arch/unshield
 		dev-qt/qtcore:5
@@ -81,7 +81,7 @@ src_configure() {
 	use devtools && ! use qt5 && \
 		elog "'qt5' USE flag is disabled, 'openmw-cs' will not be installed"
 
-	append-cxxflags "-I${EPREFIX}/usr/include/recastnavigation"
+	append-cppflags "-I${ESYSROOT}/usr/include/recastnavigation"
 
 	local mycmakeargs=(
 		-DBUILD_BSATOOL=$(usex devtools)
