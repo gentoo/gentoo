@@ -15,7 +15,7 @@ SLOT="1.0"
 KEYWORDS="amd64 arm arm64 ~ia64 ~ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
-	media-libs/mesa[egl]
+	media-libs/mesa[egl(+)]
 	x11-libs/libxkbcommon
 "
 DEPEND="${RDEPEND}"
