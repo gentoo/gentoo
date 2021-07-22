@@ -25,7 +25,7 @@ IUSE="+egl test +X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
+	egl? ( media-libs/mesa[egl(+),${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )"
 BDEPEND="${PYTHON_DEPS}
