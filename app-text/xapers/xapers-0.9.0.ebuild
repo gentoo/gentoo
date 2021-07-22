@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -17,8 +16,6 @@ RESTRICT="!test? ( test )"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 RDEPEND="app-text/poppler[utils]
 	dev-libs/xapian-bindings[python,${PYTHON_USEDEP}]
