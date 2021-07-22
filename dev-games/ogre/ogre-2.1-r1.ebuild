@@ -36,7 +36,7 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
-	egl? ( media-libs/mesa[egl] )
+	egl? ( media-libs/mesa[egl(+)] )
 	freeimage? ( media-libs/freeimage )
 	json? ( dev-libs/rapidjson )
 	opengl? (
