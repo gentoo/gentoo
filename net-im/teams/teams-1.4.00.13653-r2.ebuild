@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/nss
 	media-libs/alsa-lib
 	media-libs/fontconfig
-	media-libs/mesa[gbm]
+	media-libs/mesa[gbm(+)]
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
