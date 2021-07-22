@@ -56,7 +56,7 @@ RDEPEND="
 	)
 	colord? ( >=x11-misc/colord-0.1.27 )
 	drm? (
-		>=media-libs/mesa-17.1[gbm]
+		>=media-libs/mesa-17.1[gbm(+)]
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
 	)
