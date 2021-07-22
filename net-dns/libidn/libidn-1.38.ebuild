@@ -16,28 +16,20 @@ SLOT="0/12"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc emacs java mono nls"
 
+DEPEND="mono? ( >=dev-lang/mono-0.95 )
+	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
+RDEPEND="${DEPEND}
+	java? ( >=virtual/jre-1.8:* )"
+BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
+	java? ( >=virtual/jdk-1.8:* )
+	nls? ( >=sys-devel/gettext-0.17 )
+	verify-sig? ( app-crypt/openpgp-keys-libidn )"
+
 DOCS=( AUTHORS ChangeLog FAQ NEWS README THANKS )
 
-COMMON_DEPEND="
-	mono? ( >=dev-lang/mono-0.95 )
-	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-"
-DEPEND="
-	${COMMON_DEPEND}
-	java? ( >=virtual/jdk-1.8:* )
-"
-RDEPEND="
-	${COMMON_DEPEND}
-	java? ( >=virtual/jre-1.8:* )
-"
-BDEPEND="
-	emacs? ( >=app-editors/emacs-23.1:* )
-	nls? ( >=sys-devel/gettext-0.17 )
-	verify-sig? ( app-crypt/openpgp-keys-libidn )
-"
-
 pkg_setup() {
-	mono-env_pkg_setup
+	use mono && mono-env_pkg_setup
+
 	java-pkg-opt-2_pkg_setup
 }
 
@@ -63,7 +55,7 @@ multilib_src_configure() {
 		--with-lispdir="${EPREFIX}${SITELISP}/${PN}"
 		--with-packager-bug-reports="https://bugs.gentoo.org"
 		--with-packager-version="r${PR}"
-		--with-packager="Gentoo"
+		--with-packager="Gentoo Linux"
 	)
 
 	ECONF_SOURCE="${S}" econf "${args[@]}"
@@ -99,16 +91,14 @@ multilib_src_install_all() {
 	if use emacs; then
 		# *.el are installed by the build system
 		elisp-install ${PN} "${S}"/src/*.elc
-		elisp-site-file-install "${FILESDIR}/50${PN}-gentoo.el"
+		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
 	else
-		rm -r "${ED}/usr/share/emacs" || die
+		rm -r "${ED}"/usr/share/emacs || die
 	fi
 
 	einstalldocs
 
-	if use doc ; then
-		dodoc -r doc/reference/html/
-	fi
+	use doc && dodoc -r doc/reference/html
 
 	find "${ED}" -name '*.la' -delete || die
 }
