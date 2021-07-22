@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.19.0
 	>=dev-libs/wayland-protocols-1.23
-	media-libs/mesa[egl,gles2,gbm]
+	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
 	virtual/libudev
 	x11-libs/libdrm
