@@ -40,6 +40,9 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.14
 "
 RDEPEND="${COMMON_DEPEND}
+	!<sys-apps/man-pages-5.11-r1
+	!=sys-apps/man-pages-5.12-r0
+	!=sys-apps/man-pages-5.12-r1
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
@@ -205,8 +208,8 @@ src_install() {
 	fi
 
 	# Remove manpages that are handled by other packages
-	find "${ED}"/usr/share/man \
-		'(' -name id.1 -o -name passwd.5 -o -name getspnam.3 ')' \
+	find "${ED}"/usr/share/man -type f \
+		'(' -name id.1 -o -name getspnam.3 ')' \
 		-delete
 
 	cd "${S}" || die
