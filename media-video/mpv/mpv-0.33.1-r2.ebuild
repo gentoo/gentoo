@@ -71,7 +71,7 @@ COMMON_DEPEND="
 		>=media-libs/libdvdnav-4.2.0:=
 		>=media-libs/libdvdread-4.1.0:=
 	)
-	egl? ( media-libs/mesa[egl,gbm(-)?,wayland(-)?] )
+	egl? ( media-libs/mesa[egl(+),gbm(+)?,wayland(-)?] )
 	gamepad? ( media-libs/libsdl2 )
 	iconv? (
 		virtual/libiconv
