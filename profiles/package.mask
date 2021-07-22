@@ -512,7 +512,7 @@ dev-ml/ppx_metaquot
 
 # John Helmert III <ajak@gentoo.org> (2021-09-29)
 # VM image data corruption bug, causing I/O errors in VMs. Bug #815379
-=app-emulation/qemu-6.1.0
+=app-emulation/qemu-6.1.0-r1
 
 # Brian Evans <grknight@gentoo.org> (2021-09-26)
 # Mask for 8.1 RC
