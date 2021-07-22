@@ -23,7 +23,7 @@ RDEPEND=">=virtual/glu-9.0-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXi-1.7.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXrandr-1.4.2[${MULTILIB_USEDEP}]
 	>=x11-libs/libXxf86vm-1.1.3[${MULTILIB_USEDEP}]"
-# gles? ( media-libs/mesa[egl,gles1,gles2,${MULTILIB_USEDEP}] )
+# gles? ( media-libs/mesa[egl(+),gles1,gles2,${MULTILIB_USEDEP}] )
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
