@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Oz Tiram</name>
+		<email>oz.tiram@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A small program you put in your Makefile to produce fancy help.
+		mh parses the comments you put after targets and variables, and
+		produces a help menu, which helps understanding what each target
+		does. This is useful, if Makefile is used as a task launcher for
+		different tools (e.g. wrapper around docker, yarn, npm and setup.py
+		etc.)
+	</longdescription>
+	<upstream>
+		<remote-id type="github">oz123/mh</remote-id>
+	</upstream>
+</pkgmetadata>
