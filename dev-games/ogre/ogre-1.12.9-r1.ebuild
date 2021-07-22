@@ -52,7 +52,7 @@ RDEPEND="
 	x11-libs/libXt
 	assimp? ( media-libs/assimp )
 	cg? ( media-gfx/nvidia-cg-toolkit )
-	egl? ( media-libs/mesa[egl] )
+	egl? ( media-libs/mesa[egl(+)] )
 	freeimage? ( media-libs/freeimage )
 	json? ( dev-libs/rapidjson )
 	openexr? ( media-libs/openexr:= )
