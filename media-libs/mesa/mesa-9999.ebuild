@@ -514,7 +514,7 @@ multilib_src_configure() {
 		$(meson_use osmesa)
 		$(meson_use selinux)
 		$(meson_feature zstd)
-		-Dvalgrind=$(usex valgrind auto false)
+		-Dvalgrind=$(usex valgrind auto disabled)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
