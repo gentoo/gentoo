@@ -40,12 +40,12 @@ COMMON_DEPEND="
 		media-libs/gst-plugins-base:1.0 )
 	introspection? ( >=dev-libs/gobject-introspection-1.34.2:= )
 	kms? (
-		media-libs/mesa[egl,gbm]
+		media-libs/mesa[egl(+),gbm(+)]
 		x11-libs/libdrm:= )
 	pango? ( >=x11-libs/pango-1.20.0[introspection?] )
 	wayland? (
 		>=dev-libs/wayland-1.1.90
-		media-libs/mesa[egl,wayland] )
+		media-libs/mesa[egl(+),wayland] )
 "
 # before clutter-1.7, cogl was part of clutter
 RDEPEND="${COMMON_DEPEND}
