@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 inherit meson
 
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	SLOT="0/9999"
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 	SLOT="0/14"
 fi
 
@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-libs/libinput-1.14.0:0=
 	>=dev-libs/wayland-1.19.0
 	>=dev-libs/wayland-protocols-1.17.0
-	media-libs/mesa[egl,gles2,gbm]
+	media-libs/mesa[egl(+),gles2,gbm(+)]
 	sys-auth/seatd:=
 	virtual/libudev
 	x11-libs/libdrm
