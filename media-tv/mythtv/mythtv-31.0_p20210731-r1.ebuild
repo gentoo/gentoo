@@ -73,7 +73,7 @@ RDEPEND="
 		media-libs/libdvdcss
 		sys-fs/udisks:2
 	)
-	egl? ( media-libs/mesa[egl] )
+	egl? ( media-libs/mesa[egl(+)] )
 	fftw? ( sci-libs/fftw:3.0=[threads] )
 	hdhomerun? ( media-libs/libhdhomerun )
 	ieee1394? (
