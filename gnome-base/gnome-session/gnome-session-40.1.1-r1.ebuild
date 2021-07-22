@@ -22,7 +22,7 @@ DEPEND="
 	x11-libs/libX11
 	>=gnome-base/gnome-desktop-3.34.2:3=
 	>=dev-libs/json-glib-0.10
-	media-libs/mesa[egl,gles2,X(+)]
+	media-libs/mesa[egl(+),gles2,X(+)]
 	media-libs/libepoxy
 	x11-libs/libXcomposite
 
