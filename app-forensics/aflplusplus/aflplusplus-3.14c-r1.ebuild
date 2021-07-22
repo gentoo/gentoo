@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-LLVM_MAX_SLOT=12
+PYTHON_COMPAT=( python3_{8,9,10} )
+LLVM_MAX_SLOT=13
 inherit toolchain-funcs llvm optfeature python-single-r1
 
 DESCRIPTION="A fork of AFL, the popular compile-time instrumentation fuzzer"
@@ -31,6 +31,7 @@ RDEPEND="
 		sys-devel/clang:10
 		sys-devel/clang:11
 		sys-devel/clang:12
+		sys-devel/clang:13
 	)
 	!app-forensics/afl
 "
