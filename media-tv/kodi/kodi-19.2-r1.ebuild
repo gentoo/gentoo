@@ -93,7 +93,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-libs/libfstrcmp
 	gbm? (
 		>=dev-libs/libinput-1.10.5
-		media-libs/mesa[gbm]
+		media-libs/mesa[gbm(+)]
 		x11-libs/libxkbcommon
 	)
 	gles? (
@@ -105,7 +105,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	media-fonts/roboto
 	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
-	!raspberry-pi? ( media-libs/mesa[egl] )
+	!raspberry-pi? ( media-libs/mesa[egl(+)] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d?,encode,postproc]
@@ -122,7 +122,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	!gles? ( media-libs/glu )
 	>=dev-libs/openssl-1.1.1k:0=
 	raspberry-pi? (
-		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl,gles2,video_cards_vc4] )
+		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl(+),gles2,video_cards_vc4] )
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
