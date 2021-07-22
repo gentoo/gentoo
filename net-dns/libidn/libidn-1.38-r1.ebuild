@@ -18,8 +18,7 @@ IUSE="doc emacs java mono nls"
 
 DEPEND="mono? ( >=dev-lang/mono-0.95 )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
-RDEPEND="${DEPEND}
-	java? ( >=virtual/jre-1.8:* )"
+RDEPEND="java? ( >=virtual/jre-1.8:* )"
 BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jdk-1.8:* )
 	nls? ( >=sys-devel/gettext-0.17 )
