@@ -28,7 +28,7 @@ RDEPEND=">=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
 	)
-	egl? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] )
+	egl? ( >=media-libs/mesa-9.1.6[egl(+),${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
 	wayland? ( >=dev-libs/wayland-1.0.6[${MULTILIB_USEDEP}] )
 	!x11-libs/libva:0/0"
