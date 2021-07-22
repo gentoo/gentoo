@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/aml
 	dev-libs/wayland
 	gui-libs/neatvnc[tracing?]
-	media-libs/mesa:=[egl,gles2,gbm?]
+	media-libs/mesa:=[egl(+),gles2,gbm(+)?]
 	x11-libs/libxkbcommon
 	x11-libs/pixman
 	tracing? ( dev-util/systemtap )
