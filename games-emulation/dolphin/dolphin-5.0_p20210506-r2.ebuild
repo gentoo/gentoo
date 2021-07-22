@@ -33,7 +33,7 @@ RDEPEND="
 	dev-libs/pugixml:0=
 	media-libs/libpng:0=
 	media-libs/libsfml
-	media-libs/mesa[egl]
+	media-libs/mesa[egl(+)]
 	net-libs/enet:1.3
 	net-libs/mbedtls:0=
 	net-misc/curl:0=
