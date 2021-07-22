@@ -33,7 +33,7 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	+classic cpu_flags_x86_sse2 d3d9 debug +gallium +gbm gles1 +gles2 +llvm
+	+classic cpu_flags_x86_sse2 d3d9 debug +gallium gles1 +gles2 +llvm
 	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
 	vulkan-overlay wayland +X xa xvmc zink +zstd"
 
@@ -42,7 +42,6 @@ REQUIRED_USE="
 	osmesa? ( gallium )
 	vulkan? ( video_cards_radeonsi? ( llvm ) )
 	vulkan-overlay? ( vulkan )
-	wayland? ( gbm )
 	video_cards_crocus? ( gallium )
 	video_cards_freedreno?  ( gallium )
 	video_cards_intel?  ( classic )
@@ -62,7 +61,7 @@ REQUIRED_USE="
 	video_cards_v3d? ( gallium )
 	video_cards_vc4? ( gallium )
 	video_cards_virgl? ( gallium )
-	video_cards_vivante? ( gallium gbm )
+	video_cards_vivante? ( gallium )
 	video_cards_vmware? ( gallium )
 	xa? ( X )
 	xvmc? ( X )
@@ -505,8 +504,8 @@ multilib_src_configure() {
 		-Dshared-glapi=enabled
 		-Ddri3=enabled
 		-Degl=true
+		-Dgbm=true
 		-Dglvnd=true
-		$(meson_feature gbm)
 		$(meson_feature gles1)
 		$(meson_feature gles2)
 		$(meson_use osmesa)
