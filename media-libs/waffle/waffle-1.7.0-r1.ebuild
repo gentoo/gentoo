@@ -22,7 +22,7 @@ IUSE="doc +egl +gbm wayland X"
 RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
-	>=media-libs/mesa-9.1.6[egl?,gbm?,${MULTILIB_USEDEP}]
+	>=media-libs/mesa-9.1.6[egl(+)?,gbm(+)?,${MULTILIB_USEDEP}]
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
