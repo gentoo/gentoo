@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
-	gles2? ( media-libs/mesa[egl,gles2] )
+	gles2? ( media-libs/mesa[egl(+),gles2] )
 	systemd? ( sys-apps/systemd )
 	elogind? ( sys-auth/elogind )
 	xtrans? ( x11-libs/xtrans )
