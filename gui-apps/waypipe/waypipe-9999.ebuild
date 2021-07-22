@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dmabuf? (
-		media-libs/mesa[gbm,vaapi?,wayland]
+		media-libs/mesa[gbm(+),vaapi?,wayland]
 		x11-libs/libdrm
 	)
 	lz4? ( app-arch/lz4 )
