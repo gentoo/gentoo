@@ -74,7 +74,7 @@ RDEPEND="${LUA_DEPS}
 	drm? (
 		dev-libs/libinput
 		dev-libs/wayland
-		media-libs/mesa[gbm]
+		media-libs/mesa[gbm(+)]
 		x11-libs/libdrm
 		x11-libs/libxkbcommon
 	)
@@ -85,7 +85,7 @@ RDEPEND="${LUA_DEPS}
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gles2-only? (
-		media-libs/mesa[egl,gles2]
+		media-libs/mesa[egl(+),gles2]
 		virtual/opengl
 	)
 	glib? ( dev-libs/glib:2 )
