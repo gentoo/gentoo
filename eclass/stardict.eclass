@@ -53,7 +53,7 @@ DEPEND="
 	)"
 
 stardict_src_compile() {
-	if use gzip; then
+	if use zlib; then
 		for file in *.idx; do
 			[[ -f $file ]] && gzip ${file}
 		done
