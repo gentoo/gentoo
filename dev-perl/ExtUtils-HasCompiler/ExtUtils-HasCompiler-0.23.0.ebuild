@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Check for the presence of a compiler"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="
 	virtual/perl-Carp
