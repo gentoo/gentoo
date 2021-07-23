@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/elastic/elasticsearch-ruby"
 SRC_URI="https://github.com/elastic/elasticsearch-ruby/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="$(ver_cut 1)"
+SLOT="$(ver_cut 1-3)"
 KEYWORDS="~amd64"
 IUSE=""
 
