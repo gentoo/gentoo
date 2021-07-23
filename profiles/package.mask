@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-07-23)
+# Abandoned.  All versions are vulnerable to CVE-2021-33909.
+# sys-kernel/gentoo-kernel{,-bin} are the suggested replacements.
+# Removal on 2021-08-06.  Bug #803212.
+sys-kernel/bliss-kernel-bin
+
 # Conrad Kostecki <conikost@gentoo.org> (2021-07-23)
 # Outdated and multiple bugs open.
 # Other alternatives in tree available.
