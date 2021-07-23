@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 EGIT_REPO_URI="https://github.com/Vacuum-IM/vacuum-im"
 PLOCALES="de es pl ru uk"
-inherit cmake git-r3 l10n
+inherit cmake git-r3 plocale
 
 DESCRIPTION="Qt Crossplatform Jabber client"
 HOMEPAGE="http://www.vacuum-im.org/"
@@ -77,7 +77,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_LIB_DIR="$(get_libdir)"
 		-DINSTALL_SDK=ON
-		-DLANGS="$(l10n_get_locales)"
+		-DLANGS="$(plocale_get_locales)"
 		-DINSTALL_DOCS=OFF
 		-DFORCE_BUNDLED_MINIZIP=OFF
 		-DPLUGIN_adiummessagestyle=OFF

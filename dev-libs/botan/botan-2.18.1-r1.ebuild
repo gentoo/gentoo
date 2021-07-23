@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/botan.asc"
 inherit python-r1 toolchain-funcs verify-sig
 
@@ -59,6 +59,8 @@ python_check_deps() {
 }
 
 src_configure() {
+	python_setup
+
 	local disable_modules=(
 		$(usex boost '' 'boost')
 		$(usex bindist 'ecdsa' '')
@@ -147,7 +149,7 @@ src_configure() {
 
 	tc-export CC CXX AR
 
-	./configure.py "${myargs[@]}" || die "configure.py failed"
+	${EPYTHON} configure.py "${myargs[@]}" || die "configure.py failed with ${EPYTHON}"
 }
 
 src_test() {

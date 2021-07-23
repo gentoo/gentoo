@@ -54,6 +54,10 @@ BDEPEND="virtual/awk
 	nls? ( sys-devel/gettext )
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
+		|| (
+			dev-python/packaging[${PYTHON_USEDEP}]
+			dev-python/distlib[${PYTHON_USEDEP}]
+		)
 	)
 "
 

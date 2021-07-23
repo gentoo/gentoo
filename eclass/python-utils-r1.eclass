@@ -1264,6 +1264,9 @@ epytest() {
 		-ra
 		# print local variables in tracebacks, useful for debugging
 		-l
+		# override filterwarnings=error, we do not really want -Werror
+		# for end users, as it tends to fail on new warnings from deps
+		-Wdefault
 	)
 	set -- "${EPYTHON}" -m pytest "${args[@]}" "${@}"
 

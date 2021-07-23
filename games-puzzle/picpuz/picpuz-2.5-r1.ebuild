@@ -1,60 +1,48 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit desktop gnome2-utils toolchain-funcs
+inherit desktop flag-o-matic toolchain-funcs
 
-DESCRIPTION="A jigsaw puzzle program"
-HOMEPAGE="http://kornelix.squarespace.com/picpuz/"
-SRC_URI="http://kornelix.squarespace.com/storage/downloads/${P}.tar.gz"
+DESCRIPTION="Jigsaw puzzle program"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-build.patch
-	"${FILESDIR}"/${P}-pthread-underlinking.patch
+	"${FILESDIR}"/${P}-docdir.patch
 )
 
 src_compile() {
-	tc-export CXX PKG_CONFIG
+	tc-export CXX
 
-	emake \
-		BINDIR="/usr/bin" \
-		DATADIR=/usr/share/${PN} \
-		DOCDIR=/usr/share/doc/${PF}/html
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags gtk+-3.0) -DDOCDIR="'\"${PF}\"'"
+	append-ldflags -pthread
+	append-libs $($(tc-getPKG_CONFIG) --libs gtk+-3.0)
+
+	emake PREFIX="${EPREFIX}/usr" CFLAGS="${CXXFLAGS} ${CPPFLAGS} -c" LIBS="${LIBS}"
 }
 
 src_install() {
 	dobin ${PN}
+	newman doc/${PN}.man ${PN}.1
 
 	insinto /usr/share/${PN}
 	doins -r icons locales
 
-	doicon -s 48 icons/${PN}.png
+	dodoc doc/{README,changelog,translations}
+
+	docinto html
+	dodoc -r doc/{images,userguide-en.html}
+
+	doicon icons/${PN}.png
 	make_desktop_entry ${PN} Picpuz
-
-	HTML_DOCS="doc/userguide-en.html doc/images" einstalldocs
-
-	dodoc doc/{changelog,README,translations}
-	newman doc/${PN}.man ${PN}.1
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

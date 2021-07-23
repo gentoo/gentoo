@@ -1,11 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
+inherit check-reqs toolchain-funcs unpacker
 
-MYD=$(get_version_component_range 1-2)
+MYD=$(ver_cut 1-2 ${PV})
 DRIVER_PV="396.26"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
@@ -18,8 +18,8 @@ KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
 RESTRICT="bindist mirror"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+BDEPEND=""
+RDEPEND="
 	<sys-devel/gcc-8[cxx]
 	>=x11-drivers/nvidia-drivers-${DRIVER_PV}
 	debugger? (
@@ -36,7 +36,6 @@ QA_PREBUILT="opt/cuda/*"
 CHECKREQS_DISK_BUILD="3500M"
 
 pkg_setup() {
-	# We don't like to run cuda_pkg_setup as it depends on us
 	check-reqs_pkg_setup
 }
 
@@ -97,7 +96,7 @@ src_install() {
 	done
 
 	dodir ${cudadir}
-	mv * "${ED%/}${cudadir}" || die
+	mv * "${ED}${cudadir}" || die
 
 	cat > "${T}"/99cuda <<- EOF || die
 		PATH=${ecudadir}/bin$(usex profiler ":${ecudadir}/libnvvp" "")
@@ -114,15 +113,19 @@ src_install() {
 
 pkg_postinst_check() {
 	local a b
-	a="$(version_sort $(cuda-config -s))"; a=( $a )
-	# greatest supported version
-	b="${a[${#a[@]}-1]}"
+	a="$(${EROOT}/opt/cuda/bin/cuda-config -s)"
+	b="0.0"
+	for v in $a; do
+		if ver_test "${v}" -gt "${b}"; then
+			b="${v}"
+		fi
+	done
 
 	# if gcc and if not gcc-version is at least greatest supported
 	if tc-is-gcc && \
-		! version_is_at_least gcc-version ${b}; then
+		ver_test $(gcc-version) -gt ${b}; then
 			ewarn ""
-			ewarn "gcc >= ${b} will not work with CUDA"
+			ewarn "gcc > ${b} will not work with CUDA"
 			ewarn "Make sure you set an earlier version of gcc with gcc-config"
 			ewarn "or append --compiler-bindir= pointing to a gcc bindir like"
 			ewarn "--compiler-bindir=${EPREFIX}/usr/*pc-linux-gnu/gcc-bin/gcc${b}"

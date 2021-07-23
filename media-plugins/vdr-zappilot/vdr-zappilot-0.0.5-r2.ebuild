@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: browse fast the EPG information without being to switch
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-zappilot"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

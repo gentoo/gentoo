@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/occipital/openni2"
 fi
 
-inherit ${SCM} toolchain-funcs epatch multilib java-pkg-opt-2 flag-o-matic
+inherit ${SCM} toolchain-funcs multilib java-pkg-opt-2 flag-o-matic
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
@@ -30,17 +30,20 @@ RDEPEND="
 	virtual/libudev
 	virtual/jpeg:0
 	opengl? ( media-libs/freeglut )
-	java? ( >=virtual/jre-1.5:* )
+	java? ( virtual/jre:1.8 )
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	java? ( >=virtual/jdk-1.5:* )"
+	java? ( virtual/jdk:1.8 )"
+
+PATCHES=(
+	"${FILESDIR}/jpeg.patch"
+	"${FILESDIR}/rpath.patch"
+	"${FILESDIR}/soname.patch"
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/jpeg.patch" \
-		"${FILESDIR}/rpath.patch" \
-		"${FILESDIR}/soname.patch"
+	default
 
 	rm -rf ThirdParty/LibJPEG
 	for i in ThirdParty/PSCommon/BuildSystem/Platform.* ; do
@@ -85,7 +88,8 @@ src_install() {
 	dodoc CHANGES.txt NOTICE README.md ReleaseNotes.txt Source/Documentation/Text/*.txt
 
 	if use doc ; then
-		dohtml -r "${S}/Source/Documentation/html/"*
+		docinto html
+		dodoc -r "${S}/Source/Documentation/html/"*
 	fi
 
 	dodir /usr/$(get_libdir)/pkgconfig

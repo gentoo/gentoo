@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit gnome2 python-single-r1
 
@@ -35,7 +35,7 @@ RDEPEND="
 		>=dev-libs/glib-2.32:2[dbus]
 		dev-libs/libpeas:=[gtk,python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
 		')
 		gnome-base/gsettings-desktop-schemas
 		media-gfx/eog[introspection]

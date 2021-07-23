@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -11,9 +11,9 @@
 
 
 # Default starting set of USE flags for all default/linux profiles.
-USE="berkdb crypt ipv6 ncurses nls pam readline ssl tcpd zlib"
+USE="crypt ipv6 ncurses nls pam readline ssl tcpd zlib"
 
-# make sure toolchain has sane defaults <tooclhain@gentoo.org>
+# make sure toolchain has sane defaults <toolchain@gentoo.org>
 USE="${USE} fortran openmp"
 
 # Security ftw.

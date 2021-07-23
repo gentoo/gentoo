@@ -69,7 +69,7 @@ LICENSE="Apache-1.1 Apache-2.0 GPL-1 GPL-2 GPL-2-with-linking-exception LGPL-2 M
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 IUSE="+alsa cacao +cups doc examples +gtk headless-awt
-	jamvm +jbootstrap kerberos pax_kernel +pch
+	jamvm +jbootstrap kerberos pax-kernel +pch
 	pulseaudio sctp selinux shenandoah smartcard +source +system-lcms test zero"
 
 RESTRICT="!test? ( test )"
@@ -152,7 +152,7 @@ DEPEND="${COMMON_DEP} ${ALSA_COMMON_DEP} ${CUPS_COMMON_DEP} ${X_COMMON_DEP} ${X_
 	sys-apps/lsb-release
 	x11-libs/libXt
 	virtual/pkgconfig
-	pax_kernel? ( sys-apps/elfix )"
+	pax-kernel? ( sys-apps/elfix )"
 
 PDEPEND="pulseaudio? ( dev-java/icedtea-sound )"
 
@@ -330,7 +330,7 @@ src_configure() {
 		$(use_enable doc docs) \
 		$(use_enable kerberos system-kerberos) \
 		$(use_enable system-lcms) \
-		$(use_with pax_kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
+		$(use_with pax-kernel pax "${EPREFIX}/usr/sbin/paxmark.sh") \
 		$(use_enable sctp system-sctp) \
 		$(use_enable smartcard system-pcsc) \
 		${zero_config} ${cacao_config} ${jamvm_config} ${hs_config}

@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit epatch flag-o-matic toolchain-funcs user multilib
+inherit flag-o-matic multilib toolchain-funcs
 
 DESCRIPTION="A small, fast, and scalable web server"
 HOMEPAGE="http://www.monkey-project.com/"
@@ -37,17 +37,14 @@ DEPEND="
 	dev-util/cmake
 	monkeyd_plugins_tls? ( net-libs/mbedtls:= )"
 RDEPEND="
+	acct-group/monkeyd
+	acct-user/monkeyd
 	php? ( dev-lang/php )
 	cgi? ( dev-lang/php[cgi] )"
 
 S="${WORKDIR}/${MY_P}"
 
 WEBROOT="/var/www/localhost"
-
-pkg_preinst() {
-	enewgroup monkeyd
-	enewuser monkeyd -1 -1 /var/tmp/monkeyd monkeyd
-}
 
 pkg_setup() {
 	if use debug; then
@@ -62,11 +59,13 @@ pkg_setup() {
 src_prepare() {
 	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
-	epatch "${FILESDIR}"/${PN}-1.6.9-fix-pidfile.patch
-	epatch "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
+	eapply "${FILESDIR}"/${PN}-1.6.9-fix-pidfile.patch
+	eapply "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
+	eapply_user
 }
 
 src_configure() {
+	append-cflags -fcommon
 	local myconf=""
 
 	use elibc_uclibc && myconf+=" --uclib-mode"
@@ -136,16 +135,13 @@ src_install() {
 	mv "${D}"${WEBROOT}/htdocs \
 		"${D}"/usr/share/doc/"${PF}"/htdocs.dist || die
 
-	keepdir \
-		/var/tmp/monkeyd \
-		/var/log/monkeyd \
-		${WEBROOT}/htdocs
+	keepdir /var/log/monkeyd ${WEBROOT}/htdocs
 
 	# This needs to be created at runtime
 	rm -rf "${D}"/run
 }
 
 pkg_postinst() {
-	chown monkeyd:monkeyd /var/{log,tmp}/monkeyd
-	chmod 770 /var/{log,tmp}/monkeyd
+	chown monkeyd:monkeyd /var/log/monkeyd
+	chmod 770 /var/log/monkeyd
 }

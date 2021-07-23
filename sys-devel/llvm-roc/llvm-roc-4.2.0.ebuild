@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug +runtime"
 
-RDEPEND="virtual/cblas
+RDEPEND="
 	dev-libs/libxml2
 	sys-libs/zlib
 	sys-libs/ncurses:="
@@ -33,6 +33,7 @@ src_prepare() {
 	cd "${WORKDIR}/llvm-project-rocm-${PV}" || die
 	eapply "${FILESDIR}/${PN}-3.0.0-add_libraries.patch"
 	eapply "${FILESDIR}/${PN}-4.0.0-remove-isystem-usr-include.patch"
+	eapply "${FILESDIR}/${PN}-4.2.0-cyclades.patch"
 
 	if [[ -n ${EPREFIX} ]]; then
 		pushd "${S}"/../clang >/dev/null || die
@@ -67,6 +68,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/roc"
+		-DCMAKE_DISABLE_FIND_PACKAGE_CUDA=ON
 		-DLLVM_ENABLE_PROJECTS="${PROJECTS}"
 		-DLLVM_TARGETS_TO_BUILD="AMDGPU;X86"
 		-DLLVM_BUILD_DOCS=NO

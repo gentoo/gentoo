@@ -9,7 +9,7 @@ PYTHON_REQ_USE="ncurses,readline"
 FIRMWARE_ABI_VERSION="6.0.0-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1
-inherit udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+inherit udev fcaps readme.gentoo-r1 pax-utils xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
@@ -173,8 +173,8 @@ SOFTMMU_TOOLS_DEPEND="
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	multipath? ( sys-fs/multipath-tools )
 	ncurses? (
-		sys-libs/ncurses:0=[unicode]
-		sys-libs/ncurses:0=[static-libs(+)]
+		sys-libs/ncurses:=[unicode(+)]
+		sys-libs/ncurses:=[static-libs(+)]
 	)
 	nfs? ( >=net-fs/libnfs-1.9.3:=[static-libs(+)] )
 	numa? ( sys-process/numactl[static-libs(+)] )

@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author Justin Lecher <jlec@gentoo.org>
 # Test functions provided by Sebastien Fabbro and Kacper Kowalik
-# @SUPPORTED_EAPIS: 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Simplify fortran compiler management
 # @DESCRIPTION:
 # If you need a fortran compiler, then you should be inheriting this eclass.
@@ -31,7 +31,7 @@ inherit toolchain-funcs
 case ${EAPI:-0} in
 	# not used in the eclass, but left for backward compatibility with legacy users
 	5|6) inherit eutils ;;
-	7) ;;
+	7|8) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -69,6 +69,9 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
 		always)
+			if [[ ${EAPI} != [56] ]]; then
+				BDEPEND+=" virtual/fortran"
+			fi
 			DEPEND+=" virtual/fortran"
 			RDEPEND+=" virtual/fortran"
 			break
@@ -77,9 +80,16 @@ for _f_use in ${FORTRAN_NEEDED}; do
 			break
 			;;
 		test)
-			DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			if [[ ${EAPI} != [56] ]]; then
+				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
+			else
+				DEPEND+=" ${_f_use}? ( virtual/fortran )"
+			fi
 			;;
 		*)
+			if [[ ${EAPI} != [56] ]]; then
+				BDEPEND+=" ${_f_use}? ( virtual/fortran )"
+			fi
 			DEPEND+=" ${_f_use}? ( virtual/fortran )"
 			RDEPEND+=" ${_f_use}? ( virtual/fortran )"
 			;;

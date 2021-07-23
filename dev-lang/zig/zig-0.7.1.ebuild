@@ -9,7 +9,8 @@ DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
 LICENSE="MIT"
 SLOT="0"
-IUSE="+experimental"
+IUSE="+experimental test"
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ziglang/zig.git"
@@ -18,6 +19,8 @@ else
 	SRC_URI="https://github.com/ziglang/zig/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
+
+BUILD_DIR="${S}/build"
 
 # According to zig's author, zig builds that do not support all targets are not
 # supported by the upstream project.
@@ -49,4 +52,9 @@ src_configure() {
 		-DZIG_PREFER_CLANG_CPP_DYLIB=ON
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	cd "${BUILD_DIR}" || die
+	./zig build test || die
 }

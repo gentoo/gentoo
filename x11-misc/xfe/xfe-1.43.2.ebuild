@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ PLOCALES="
 	bs ca cs da de el es_AR es_CO es fr hu it ja nl no pl pt_BR pt_PT ru sv tr
 	zh_CN zh_TW
 "
-inherit l10n xdg-utils
+inherit plocale xdg-utils
 
 DESCRIPTION="MS-Explorer-like minimalist file manager for X"
 HOMEPAGE="http://roland65.free.fr/xfe"
@@ -55,7 +55,7 @@ src_prepare() {
 
 	# remove not selected locales
 	rm_locale() { sed -i -e "/${1}/d" po/LINGUAS || die ;}
-	l10n_for_each_disabled_locale_do rm_locale
+	plocale_for_each_disabled_locale rm_locale
 }
 
 src_configure() {

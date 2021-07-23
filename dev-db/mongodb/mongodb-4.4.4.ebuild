@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.1-fix-scons.patch"
 	"${FILESDIR}/${PN}-4.4.1-no-compass.patch"
 	"${FILESDIR}/${PN}-4.4.1-boost.patch"
+	"${FILESDIR}/${PN}-4.4.1-gcc11.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -129,7 +130,7 @@ src_configure() {
 }
 
 src_compile() {
-	PREFIX="${ED}"/usr escons "${scons_opts[@]}" --nostrip install-core
+	PREFIX="${EPREFIX}/usr" escons "${scons_opts[@]}" --nostrip install-core
 }
 
 # FEATURES="test -usersandbox" emerge dev-db/mongodb

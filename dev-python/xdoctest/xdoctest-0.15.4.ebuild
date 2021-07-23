@@ -1,11 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A rewrite of Python's builtin doctest module but without all the weirdness"
@@ -26,4 +24,6 @@ BDEPEND="
 	)"
 
 distutils_enable_tests --install pytest
-distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
+#distutils_enable_sphinx docs/source \
+#	dev-python/autoapi \
+#	dev-python/sphinx_rtd_theme

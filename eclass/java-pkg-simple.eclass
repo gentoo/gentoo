@@ -168,6 +168,17 @@ fi
 # JAVA_TESTING_FRAMEWORKS="junit pkgdiff"
 # @CODE
 
+# @ECLASS-VARIABLE: JAVA_TEST_RUN_ONLY
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# A array of classes that should be executed during src_test(). This variable
+# has precedence over JAVA_TEST_EXCLUDES, that is if this variable is set,
+# the other variable is ignored.
+#
+# @CODE
+# JAVA_TEST_RUN_ONLY=( "net.sf.cglib.AllTests" "net.sf.cglib.TestAll" )
+# @CODE
+
 # @ECLASS-VARIABLE: JAVA_TEST_EXCLUDES
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -517,25 +528,29 @@ java-pkg-simple_src_test() {
 	fi
 
 	# grab a set of tests that testing framework will run
-	tests_to_run=$(find "${classes}" -type f\
-		\( -name "*Test.class"\
-		-o -name "Test*.class"\
-		-o -name "*Tests.class"\
-		-o -name "*TestCase.class" \)\
-		! -name "*Abstract*"\
-		! -name "*BaseTest*"\
-		! -name "*TestTypes*"\
-		! -name "*TestUtils*"\
-		! -name "*\$*")
-	tests_to_run=${tests_to_run//"${classes}"\/}
-	tests_to_run=${tests_to_run//.class}
-	tests_to_run=${tests_to_run//\//.}
+	if [[ -n ${JAVA_TEST_RUN_ONLY} ]]; then
+		tests_to_run="${JAVA_TEST_RUN_ONLY[@]}"
+	else
+		tests_to_run=$(find "${classes}" -type f\
+			\( -name "*Test.class"\
+			-o -name "Test*.class"\
+			-o -name "*Tests.class"\
+			-o -name "*TestCase.class" \)\
+			! -name "*Abstract*"\
+			! -name "*BaseTest*"\
+			! -name "*TestTypes*"\
+			! -name "*TestUtils*"\
+			! -name "*\$*")
+		tests_to_run=${tests_to_run//"${classes}"\/}
+		tests_to_run=${tests_to_run//.class}
+		tests_to_run=${tests_to_run//\//.}
 
-	# exclude extra test classes, usually corner cases
-	# that the code above cannot handle
-	for class in "${JAVA_TEST_EXCLUDES[@]}"; do
-		tests_to_run=${tests_to_run//${class}}
-	done
+		# exclude extra test classes, usually corner cases
+		# that the code above cannot handle
+		for class in "${JAVA_TEST_EXCLUDES[@]}"; do
+			tests_to_run=${tests_to_run//${class}}
+		done
+	fi
 
 	# launch test
 	for framework in ${JAVA_TESTING_FRAMEWORKS}; do

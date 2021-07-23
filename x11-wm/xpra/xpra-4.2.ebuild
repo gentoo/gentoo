@@ -14,7 +14,7 @@ SRC_URI="https://xpra.org/src/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="brotli +client +clipboard csc cups dbus doc ffmpeg jpeg ibus +lz4 lzo minimal opengl pillow pinentry pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

@@ -7,7 +7,7 @@ Fix .desktop file to comply with FDO specifications.
  Exec=xye
  Type=Application
 -Categories=Application;Game;PuzzleGame
-+Categories=Game
++Categories=Game;LogicGame
  Name=Xye
  GenericName=Xye
  Comment=Solve puzzles and action challenges in order to get all the gems in the room.

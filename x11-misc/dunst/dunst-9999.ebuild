@@ -27,6 +27,7 @@ DEPEND="
 	x11-libs/gdk-pixbuf
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
+	x11-libs/libXext
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libnotify
@@ -40,7 +41,15 @@ BDEPEND="
 	wayland? ( dev-libs/wayland-protocols )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.6.1-no-Os.patch )
+src_prepare() {
+	default
+
+	sed -i \
+		-e "/^DEFAULT_CFLAGS/s/-g //" \
+		-e "/^DEFAULT_CFLAGS/s/-Os //" \
+		config.mk \
+		|| die "sed failed"
+}
 
 src_configure() {
 	tc-export CC PKG_CONFIG

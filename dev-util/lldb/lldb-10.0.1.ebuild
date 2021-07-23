@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit cmake llvm llvm.org python-single-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
@@ -25,7 +25,7 @@ RDEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -37,7 +37,7 @@ BDEPEND="
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
 		$(python_gen_cond_dep "
-			~dev-python/lit-${PV}[\${PYTHON_MULTI_USEDEP}]
+			~dev-python/lit-${PV}[\${PYTHON_USEDEP}]
 		")
 		sys-devel/lld )
 	${PYTHON_DEPS}"

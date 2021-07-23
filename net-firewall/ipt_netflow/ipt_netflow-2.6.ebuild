@@ -14,7 +14,7 @@ SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug natevents snmp"
 
@@ -31,6 +31,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-2.6-gentoo.patch"
+	"${FILESDIR}/${P}-ref_module_fix.patch" # bug #781014
 )
 
 pkg_setup() {

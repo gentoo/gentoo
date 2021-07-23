@@ -1,0 +1,7 @@
+# Copyright 2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-09)
+# Unmask opentmpfiles on uclibc profiles until systemd-tmpfiles is
+# usable (bug #801106).
+sys-apps/opentmpfiles

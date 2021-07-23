@@ -50,15 +50,10 @@
 # }
 # @CODE
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6)
-		die "Unsupported EAPI=${EAPI} (too old) for ${ECLASS}"
-		;;
+case ${EAPI} in
 	7|8)
 		;;
-	*)
-		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-		;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ ! ${_LUA_R0} ]]; then

@@ -44,7 +44,7 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc )
 	matio? ( sci-libs/matio )
 	mkl? ( sci-libs/mkl )
-	metis? ( || ( sci-libs/parmetis sci-libs/metis ) )
+	metis? ( sci-libs/metis )
 	mumps? ( sci-libs/mumps )
 	netcdf? ( sci-libs/netcdf )
 	petsc? ( sci-mathematics/petsc )

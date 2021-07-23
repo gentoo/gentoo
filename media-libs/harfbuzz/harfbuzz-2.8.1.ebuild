@@ -78,7 +78,7 @@ multilib_src_configure() {
 	local emesonargs=(
 		$(meson_native_use_feature cairo)
 		-Dcoretext="disabled"
-		$(meson_native_use_feature doc)
+		$(meson_native_use_feature doc docs)
 		-Dfontconfig="disabled" #609300
 		$(meson_native_use_feature introspection)
 		$(meson_use static-libs static)

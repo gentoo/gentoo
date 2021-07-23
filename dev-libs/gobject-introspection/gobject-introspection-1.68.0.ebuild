@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
 inherit gnome.org meson python-single-r1 xdg
 
@@ -24,8 +24,8 @@ RDEPEND="
 	dev-libs/libffi:=
 	doctool? (
 		$(python_gen_cond_dep '
-			dev-python/mako[${PYTHON_MULTI_USEDEP}]
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/mako[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 	)
 	virtual/pkgconfig
@@ -42,8 +42,8 @@ DEPEND="${RDEPEND}
 	test? (
 		x11-libs/cairo[glib]
 		$(python_gen_cond_dep '
-			dev-python/mako[${PYTHON_MULTI_USEDEP}]
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/mako[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 	)
 "

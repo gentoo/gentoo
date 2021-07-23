@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit python-single-r1
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mgorny/unsymlink-lib/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # tests are docker-based, you need a running docker daemon and you
 # should expect leftover images
@@ -20,7 +20,7 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		sys-apps/portage[${PYTHON_MULTI_USEDEP}]
+		sys-apps/portage[${PYTHON_USEDEP}]
 	')"
 
 src_install() {

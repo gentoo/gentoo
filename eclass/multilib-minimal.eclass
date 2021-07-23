@@ -4,7 +4,7 @@
 # @ECLASS: multilib-minimal.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
 #
@@ -23,14 +23,13 @@
 # If you need generic install rules, use multilib_src_install_all function.
 
 
-# EAPI=4 is required for meaningful MULTILIB_USEDEP.
-case ${EAPI:-0} in
-	4|5|6|7) ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI} in
+	5|6|7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 
-[[ ${EAPI} == [45] ]] && inherit eutils
+[[ ${EAPI} == 5 ]] && inherit eutils
 inherit multilib-build
 
 EXPORT_FUNCTIONS src_configure src_compile src_test src_install

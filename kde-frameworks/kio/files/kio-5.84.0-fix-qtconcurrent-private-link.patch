@@ -1,0 +1,76 @@
+From fb9bbb6f1fbb4e6232221a851f55ca2dc43b012c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 23 Apr 2021 20:10:31 +0200
+Subject: [PATCH] Introduce KIO_NO_PUBLIC_QTCONCURRENT option
+
+If set, move Qt5Concurrent to private link interface, drop from
+KF5KIOConfig.cmake.in. Originally added in 2f83dde2, but only used
+in the implementation, not the API.
+
+Test-built various revdeps successfully against the patched KIO
+with/without Qt5Concurrent installed, fixing implicit deps while
+at it. KDE Gear packages fixed in >=21.04.2, Plasma in >=5.21.5.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt          | 3 +++
+ KF5KIOConfig.cmake.in   | 2 ++
+ src/core/CMakeLists.txt | 7 ++++++-
+ 3 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0063c2c..63aef43c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,6 +49,9 @@ option(KIO_ASSERT_SLAVE_STATES
+     "Used to control whether slave state assertions are enabled. When not enabled only warnings are generated."
+     ${ASSERT_SLAVE_STATES_DEFAULT})
+ 
++# TODO KF6: remove
++option(KIO_NO_PUBLIC_QTCONCURRENT "Privatize QtConcurrent linking, so KIO does not provide the target to revdeps.")
++
+ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
+ 
+diff --git a/KF5KIOConfig.cmake.in b/KF5KIOConfig.cmake.in
+index 687ec512..69564b3d 100644
+--- a/KF5KIOConfig.cmake.in
++++ b/KF5KIOConfig.cmake.in
+@@ -21,7 +21,9 @@ find_dependency(KF5WindowSystem "@KF_DEP_VERSION@")
+ endif()
+ 
+ find_dependency(Qt5Network "@REQUIRED_QT_VERSION@")
++if (NOT @KIO_NO_PUBLIC_QTCONCURRENT@)
+ find_dependency(Qt5Concurrent "@REQUIRED_QT_VERSION@")
++endif()
+ find_dependency(Qt5DBus "@REQUIRED_QT_VERSION@")
+ 
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5KIOTargets.cmake")
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index c09d408a..f6efee23 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -201,7 +201,6 @@ PUBLIC
+  KF5::CoreAddons   # KJob
+  KF5::Service # TODO KF6 move to PRIVATE
+  Qt5::Network
+- Qt5::Concurrent            # QtConcurrentRun in hostinfo.cpp # TODO KF6 move to PRIVATE
+  Qt5::DBus
+ PRIVATE
+  Qt5::Xml                   # davjob.cpp uses QDom
+@@ -211,6 +210,12 @@ PRIVATE
+  KF5::DBusAddons            # KDEInitInterface
+ )
+ 
++if(KIO_NO_PUBLIC_QTCONCURRENT)
++  target_link_libraries(KF5KIOCore PRIVATE Qt5::Concurrent) # QtConcurrentRun in hostinfo.cpp
++else()
++  target_link_libraries(KF5KIOCore PUBLIC Qt5::Concurrent) # TODO KF6: remove
++endif()
++
+ if (UNIX)
+   target_link_libraries(KF5KIOCore PRIVATE KF5::AuthCore)   #SlaveBase uses KAuth::Action
+ endif()
+-- 
+2.32.0
+

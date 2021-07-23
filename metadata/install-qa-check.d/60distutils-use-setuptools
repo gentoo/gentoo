@@ -12,6 +12,15 @@ distutils_use_setuptools_check() {
 	# pyproject.toml is verified by using it
 	[[ ${DISTUTILS_USE_SETUPTOOLS} == pyproject.toml ]] && return
 
+	# setuptools dep is not set if distutils is optional
+	if [[ ${DISTUTILS_OPTIONAL} ]]; then
+		if [[ ${DISTUTILS_USE_SETUPTOOLS} != bdepend ]]; then
+			eerror "QA Notice: DISTUTILS_USE_SETUPTOOLS is not used when DISTUTILS_OPTIONAL"
+			eerror "is enabled."
+		fi
+		return
+	fi
+
 	local expected=()
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		local EPYTHON PYTHON

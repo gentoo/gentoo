@@ -14,5 +14,4 @@ SRC_URI="https://github.com/FrodeSolheim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-
-# NOTE: The tests don't work, they're probably outdated.
+RESTRICT="test" # The tests don't work, they're probably outdated.

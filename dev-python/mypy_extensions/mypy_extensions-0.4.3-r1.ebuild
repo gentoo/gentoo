@@ -25,9 +25,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 distutils_enable_tests unittest
-distutils_enable_sphinx docs \
-	dev-python/sphinx \
-	dev-python/sphinx_rtd_theme
 
 python_test() {
 	"${PYTHON}" -m unittest discover tests -v || die "tests fail with ${EPYTHON}"

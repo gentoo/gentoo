@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 
-inherit cuda flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs versionator multilib-minimal
+inherit cuda flag-o-matic fortran-2 java-pkg-opt-2 toolchain-funcs multilib-minimal
 
 MY_P=${P/-mpi}
 S=${WORKDIR}/${MY_P}
@@ -29,7 +29,7 @@ IUSE_OPENMPI_OFED_FEATURES="
 
 DESCRIPTION="A high-performance message passing library (MPI)"
 HOMEPAGE="https://www.open-mpi.org"
-SRC_URI="https://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
+SRC_URI="https://www.open-mpi.org/software/ompi/v$(ver_cut 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
@@ -160,30 +160,33 @@ multilib_src_install() {
 	# fortran header cannot be wrapped (bug #540508), workaround part 1
 	if multilib_is_native_abi && use fortran; then
 		mkdir "${T}"/fortran || die
-		mv "${ED}"usr/include/mpif* "${T}"/fortran || die
+		mv "${ED}"/usr/include/mpif* "${T}"/fortran || die
 	else
 		# some fortran files get installed unconditionally
-		rm "${ED}"usr/include/mpif* "${ED}"usr/bin/mpif* || die
+		rm \
+			"${ED}"/usr/include/mpif* \
+			"${ED}"/usr/bin/mpif* \
+			|| die
 	fi
 }
 
 multilib_src_install_all() {
 	# From USE=vt see #359917
-	rm -rf "${ED}"usr/share/libtool &> /dev/null || die
+	rm -rf "${ED}"/usr/share/libtool &> /dev/null || die
 
 	# fortran header cannot be wrapped (bug #540508), workaround part 2
 	if use fortran; then
-		mv "${T}"/fortran/mpif* "${ED}"usr/include || die
+		mv "${T}"/fortran/mpif* "${ED}"/usr/include || die
 	fi
 
 	# Avoid collisions with libevent
-	rm -rf "${ED}"usr/include/event2 &> /dev/null || die
+	rm -rf "${ED}"/usr/include/event2 &> /dev/null || die
 
 	# Remove la files, no static libs are installed and we have pkg-config
 	find "${ED}" -name '*.la' -delete || die
 
 	if use java; then
-		local mpi_jar="${ED}"usr/$(get_libdir)/mpi.jar
+		local mpi_jar="${ED}"/usr/$(get_libdir)/mpi.jar
 		java-pkg_dojar "${mpi_jar}"
 		# We don't want to install the jar file twice
 		# so let's clean after ourselves.

@@ -20,6 +20,13 @@ DEPEND="${COMMON_DEPEND}"
 # Everything below is for building opusparse from gst-plugins-bad. Once it moves into -base, all below can be removed
 SRC_URI+=" https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${PV}.tar.${GST_TARBALL_SUFFIX}"
 
+src_prepare() {
+	default
+	gstreamer_system_package audio_dep:gstreamer-audio
+	gstreamer_system_package pbutils_dep:gstreamer-pbutils
+	gstreamer_system_package tag_dep:gstreamer-tag
+}
+
 multilib_src_configure() {
 	gstreamer_multilib_src_configure
 	S="${WORKDIR}/gst-plugins-bad-${PV}" gstreamer_multilib_src_configure

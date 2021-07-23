@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -26,6 +26,7 @@ IUSE="+blkid efi +hwdb +kmod selinux smack test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
+	virtual/libcrypt:=
 	kmod? ( >=sys-apps/kmod-16 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 	!<sys-libs/glibc-2.11
@@ -37,7 +38,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=sys-devel/make-3.82-r4
 	>=sys-kernel/linux-headers-${KV_min}
-	>=dev-util/intltool-0.50
 	test? ( app-text/tree dev-lang/perl )"
 
 RDEPEND="${COMMON_DEPEND}

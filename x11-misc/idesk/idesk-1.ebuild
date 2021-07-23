@@ -11,7 +11,7 @@ SRC_URI="https://github.com/antonialoytorrens/idesk/releases/download/v1/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
 
 S="${WORKDIR}/${MY_P}"
 

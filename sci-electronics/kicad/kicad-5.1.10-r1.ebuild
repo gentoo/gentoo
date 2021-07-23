@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 WX_GTK_VER="3.0-gtk3"
 
@@ -40,8 +40,8 @@ COMMON_DEPEND="
 	oce? ( sci-libs/oce )
 	python? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.61:=[context,nls,threads(+),python,${PYTHON_MULTI_USEDEP}]
-			dev-python/wxpython:4.0[${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.61:=[context,nls,threads(+),python,${PYTHON_USEDEP}]
+			dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DZIL_PLUGINS=( Git PodWeaver AuthorsFromGit )
+DZIL_PLUGINS=( Git PodWeaver AuthorsFromGit RPM )
 
 RDEPEND="
 	virtual/perl-Carp
@@ -44,6 +44,7 @@ RDEPEND="
 	dev-perl/List-MoreUtils
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-Math-Complex
+	dev-perl/Math-Round
 	>=virtual/perl-Module-Load-0.260.0
 	>=dev-perl/Moose-2.121.300
 	>=dev-perl/MooseX-Params-Validate-0.180.0

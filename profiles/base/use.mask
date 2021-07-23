@@ -4,11 +4,19 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# David Seifert <soap@gentoo.org> (2021-06-20)
-# Abandoned upstream, last release 17 years ago, unmaintained, tons of
-# QA bugs, eclass is terrible. Bug #796878, removal in 30 days.
-canna
-canna-2ch
+# Marek Szuba <marecki@gentoo.org> (2021-07-12)
+# Effectively EOL, no packages in the tree strictly require this
+# particular version
+lua_single_target_lua5-2
+lua_targets_lua5-2
+
+# Hans de Graaff <graaff@gentoo.org> (2021-07-09)
+# Mask Ruby 2.5 as EOL
+ruby_targets_ruby25
+
+# Aaron W. Swenson <titanofold@gentoo.org> (2021-07-05)
+# PostgreSQL 9.5 masked for removal
+postgres_targets_postgres9_5
 
 # Brian Evans <grknight@gentoo.org> (2021-01-07)
 # PHP 7.2 is security vulnerable and end-of-life

@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/797649
+https://github.com/Alexays/Waybar/pull/1144
+
+From: John Helmert III <jchelmert3@posteo.net>
+Date: Tue, 29 Jun 2021 21:29:12 -0500
+Subject: [PATCH] libfmt >=8.0.0 compatibility
+--- a/include/util/format.hpp
++++ b/include/util/format.hpp
+@@ -35,7 +35,11 @@ namespace fmt {
+             // The rationale for ignoring it is that the only reason to specify
+             // an alignment and a with is to get a fixed width bar, and ">" is
+             // sufficient in this implementation.
++#if FMT_VERSION < 80000
+             width = parse_nonnegative_int(it, end, ctx);
++#else
++            width = detail::parse_nonnegative_int(it, end, -1);
++#endif
+           }
+           return it;
+         }
+--- a/src/modules/clock.cpp
++++ b/src/modules/clock.cpp
+@@ -196,6 +196,9 @@ template <>
+ struct fmt::formatter<waybar_time> : fmt::formatter<std::tm> {
+   template <typename FormatContext>
+   auto format(const waybar_time& t, FormatContext& ctx) {
++#if FMT_VERSION >= 80000
++	auto& tm_format = specs;
++#endif
+     return format_to(ctx.out(), "{}", date::format(t.locale, fmt::to_string(tm_format), t.ztime));
+   }
+ };

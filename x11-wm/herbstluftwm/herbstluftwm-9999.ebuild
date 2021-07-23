@@ -129,5 +129,12 @@ distutils_enable_tests pytest
 src_test() {
 	ln -s "${BUILD_DIR}/herbstclient" || die "Could not symlink herbstclient"
 	ln -s "${BUILD_DIR}/herbstluftwm" || die "Could not symlink herbstluftwm"
+
+	pushd python > /dev/null || die
+	distutils_install_for_testing
+	popd > /dev/null || die
+
+	# Ensure PYTHONPATH is exported, see https://bugs.gentoo.org/801658.
+	export PYTHONPATH
 	python_test
 }

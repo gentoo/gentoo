@@ -5,9 +5,6 @@
     <email>proaudio@gentoo.org</email>
     <name>Gentoo ProAudio Project</name>
   </maintainer>
-  <use>
-    <flag name="gtk2">Enable <pkg>x11-libs/gtk+</pkg>:2 based GUI</flag>
-  </use>
   <upstream>
     <remote-id type="sourceforge">dssi</remote-id>
   </upstream>

@@ -6,7 +6,7 @@ EAPI=7
 WX_GTK_VER=3.0-gtk3
 FORTRAN_NEEDED=fortran
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 # fails with ninja, due to USE=java missing swig output dependencies
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -53,8 +53,8 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			qt5? ( dev-python/PyQt5[${PYTHON_MULTI_USEDEP}] )
+			dev-python/numpy[${PYTHON_USEDEP}]
+			qt5? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 		')
 	)
 	qhull? ( media-libs/qhull:0= )

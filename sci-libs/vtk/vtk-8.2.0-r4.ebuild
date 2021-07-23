@@ -3,26 +3,26 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
 # Short package version
-SPV="$(ver_cut 1-2)"
+MY_PV="$(ver_cut 1-2)"
 inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils toolchain-funcs cmake virtualx webapp
 
 DESCRIPTION="The Visualization Toolkit"
 HOMEPAGE="https://www.vtk.org/"
 SRC_URI="
-	https://www.vtk.org/files/release/${SPV}/VTK-${PV}.tar.gz
-	doc? ( https://www.vtk.org/files/release/${SPV}/vtkDocHtml-${PV}.tar.gz )
+	https://www.vtk.org/files/release/${MY_PV}/VTK-${PV}.tar.gz
+	doc? ( https://www.vtk.org/files/release/${MY_PV}/vtkDocHtml-${PV}.tar.gz )
 	examples? (
-		https://www.vtk.org/files/release/${SPV}/VTKData-${PV}.tar.gz
-		https://www.vtk.org/files/release/${SPV}/VTKLargeData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKData-${PV}.tar.gz
+		https://www.vtk.org/files/release/${MY_PV}/VTKLargeData-${PV}.tar.gz
 	)"
 
 LICENSE="BSD LGPL-2"
-SLOT="0"
+SLOT="0/${MY_PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="all-modules aqua boost doc examples ffmpeg gdal imaging java json mpi
 	mysql odbc offscreen postgres python qt5 R rendering tbb tcl theora tk
@@ -80,7 +80,7 @@ RDEPEND="
 	mpi? (
 		virtual/mpi[cxx,romio]
 		$(python_gen_cond_dep '
-			python? ( dev-python/mpi4py[${PYTHON_MULTI_USEDEP}] )
+			python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
 		')
 	)
 	mysql? ( dev-db/mysql-connector-c )
@@ -90,7 +90,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/sip:5[${PYTHON_MULTI_USEDEP}]
+			dev-python/sip:5[${PYTHON_USEDEP}]
 		')
 	)
 	qt5? (
@@ -101,7 +101,7 @@ RDEPEND="
 		dev-qt/qtsql:5
 		dev-qt/qtx11extras:5
 		$(python_gen_cond_dep '
-			python? ( dev-python/PyQt5[${PYTHON_MULTI_USEDEP}] )
+			python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 		')
 	)
 	R? ( dev-lang/R )
@@ -112,14 +112,14 @@ RDEPEND="
 	web? (
 		${WEBAPP_DEPEND}
 		$(python_gen_cond_dep '
-			dev-python/autobahn[${PYTHON_MULTI_USEDEP}]
-			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
-			dev-python/hyperlink[${PYTHON_MULTI_USEDEP}]
-			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-			dev-python/txaio[${PYTHON_MULTI_USEDEP}]
-			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+			dev-python/autobahn[${PYTHON_USEDEP}]
+			dev-python/constantly[${PYTHON_USEDEP}]
+			dev-python/hyperlink[${PYTHON_USEDEP}]
+			dev-python/incremental[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			dev-python/twisted[${PYTHON_USEDEP}]
+			dev-python/txaio[${PYTHON_USEDEP}]
+			dev-python/zope-interface[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -181,7 +181,7 @@ src_configure() {
 		-Wno-dev
 		-DVTK_DIR="${S}"
 		-DVTK_INSTALL_LIBRARY_DIR=$(get_libdir)
-		-DVTK_INSTALL_PACKAGE_DIR="$(get_libdir)/cmake/${PN}-${SPV}"
+		-DVTK_INSTALL_PACKAGE_DIR="$(get_libdir)/cmake/${PN}-${MY_PV}"
 		-DVTK_INSTALL_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DVTK_DATA_ROOT="${EPREFIX}/usr/share/${PN}/data"
 		-DVTK_CUSTOM_LIBRARY_SUFFIX=""
@@ -357,7 +357,7 @@ src_install() {
 	# environment
 	cat >> "${T}"/40${PN} <<- EOF || die
 		VTK_DATA_ROOT=${EPREFIX}/usr/share/${PN}/data
-		VTK_DIR=${EPREFIX}/usr/$(get_libdir)/${PN}-${SPV}
+		VTK_DIR=${EPREFIX}/usr/$(get_libdir)/${PN}-${MY_PV}
 		VTKHOME=${EPREFIX}/usr
 		EOF
 	doenvd "${T}"/40${PN}

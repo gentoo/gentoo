@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
 inherit distutils-r1 xdg
@@ -29,9 +29,9 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/fasteners[${PYTHON_MULTI_USEDEP}]
-		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
+		dev-python/fasteners[${PYTHON_USEDEP}]
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtgui:5
 	media-libs/mutagen

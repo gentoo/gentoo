@@ -120,8 +120,8 @@ COMMON_DEPEND="
 	selinux? ( sec-policy/selinux-pulseaudio )
 	sox? ( >=media-libs/soxr-0.1.1 )
 	ssl? ( dev-libs/openssl:= )
-	systemd? ( sys-apps/systemd:=[${MULTILIB_USEDEP}] )
-	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
+	systemd? ( sys-apps/systemd:= )
+	tcpd? ( sys-apps/tcp-wrappers )
 	udev? ( >=virtual/udev-143[hwdb(+)] )
 	webrtc-aec? ( >=media-libs/webrtc-audio-processing-0.2 )
 	X? (
@@ -213,9 +213,9 @@ multilib_src_configure() {
 		#$(meson_use cpu_flags_arm_neon neon-opt)
 		$(meson_native_use_feature tcpd tcpwrap)
 		$(meson_feature dbus)
-		$(meson_feature elogind)
+		$(meson_native_use_feature elogind)
 		$(meson_feature X x11)
-		$(meson_feature systemd)
+		$(meson_native_use_feature systemd)
 		$(meson_use ipv6)
 	)
 

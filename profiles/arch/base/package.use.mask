@@ -1,10 +1,20 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-07-12)
+# Haskell is only available on amd64/x86 right now in Gentoo
+# bug #801649
+dev-util/diffoscope haskell
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-01)
+# gui-libs/egl-wayland with nvidia-drivers is only usable on some arches.
+x11-base/xwayland video_cards_nvidia
+x11-wm/mutter video_cards_nvidia
+
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-16)
 # sci-libs/pcl-1.11.1 is missing support for >=sci-libs/vtk-9
 # bug #796368
-=media-gfx/freecad-0.19.2-r2 pcl
+~media-gfx/freecad-0.19.2 pcl
 
 # Bernd Waibel <waebbl-gentoo@posteo.net> (2021-06-11)
 # Has unpackaged depdencies, bug #795459

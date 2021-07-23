@@ -25,14 +25,14 @@ SRC_URI="http://home.thep.lu.se/~torbjorn/${PN}${MV}/${MY_P}.tgz
 SLOT="8"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples fastjet gzip +hepmc lhapdf root test"
+IUSE="doc examples fastjet +hepmc lhapdf root test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	fastjet? ( sci-physics/fastjet )
-	gzip? ( sys-libs/zlib )
 	hepmc? ( sci-physics/hepmc:0= )
-	lhapdf? ( sci-physics/lhapdf:= )"
+	lhapdf? ( sci-physics/lhapdf:= )
+	zlib? ( sys-libs/zlib )"
 # ROOT is used only when building related tests
 DEPEND="${RDEPEND}
 	test? (
@@ -113,7 +113,7 @@ src_configure() {
 		--prefix-lib="$(get_libdir)" \
 		--prefix-share="${EPYTHIADIR}" \
 		$(usex fastjet "--with-fastjet3" "") \
-		$(usex gzip "--with-gzip" "") \
+		$(usex zlib "--with-gzip" "") \
 		$(usex hepmc "--with-hepmc2" "") \
 		$(usex lhapdf "--with-lhapdf6
 			--with-lhapdf6-plugin=LHAPDF6.h

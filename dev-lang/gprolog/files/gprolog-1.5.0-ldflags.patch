@@ -1,0 +1,104 @@
+diff -ur gprolog-1.5.0.orig/src/EnginePl/Makefile.in gprolog-1.5.0/src/EnginePl/Makefile.in
+--- gprolog-1.5.0.orig/src/EnginePl/Makefile.in	2021-07-10 10:13:23.046564472 -0000
++++ gprolog-1.5.0/src/EnginePl/Makefile.in	2021-07-10 10:41:59.585492681 -0000
+@@ -2,6 +2,7 @@
+ GPLC          = @GPLC@
+ CC            = @CC@ @CFLAGS_MACHINE@
+ CFLAGS        = @CFLAGS@
++LDFLAGS       = @LDFLAGS@
+ AR_RC         = @AR_RC@
+ RANLIB        = @RANLIB@
+ 
+@@ -35,7 +36,7 @@
+ config: pl_config@EXE_SUFFIX@ wam_regs.h
+ 
+ pl_config@EXE_SUFFIX@: pl_config.c gp_config.h machine.h stacks_sigsegv.h wam_archi.def
+-	$(CC) $(CFLAGS) $(LFLAGS) @CC_EXE_NAME_OPT@pl_config@EXE_SUFFIX@ pl_config.c
++	$(CC) $(CFLAGS) $(LDFLAGS) @CC_EXE_NAME_OPT@pl_config@EXE_SUFFIX@ pl_config.c
+ 
+ 
+ wam_regs.h: pl_config@EXE_SUFFIX@ machine.h stacks_sigsegv.h wam_archi.def
+@@ -49,10 +50,10 @@
+ 
+ 
+ cpp_headers@EXE_SUFFIX@: cpp_headers.c
+-	$(CC) $(CFLAGS) $(LFLAGS) @CC_EXE_NAME_OPT@cpp_headers@EXE_SUFFIX@ cpp_headers.c
++	$(CC) $(CFLAGS) $(LDFLAGS) @CC_EXE_NAME_OPT@cpp_headers@EXE_SUFFIX@ cpp_headers.c
+ 
+ try_sigaction@EXE_SUFFIX@: try_sigaction.c
+-	$(CC) $(CFLAGS) $(LFLAGS) @CC_EXE_NAME_OPT@try_sigaction@EXE_SUFFIX@ try_sigaction.c
++	$(CC) $(CFLAGS) $(LDFLAGS) @CC_EXE_NAME_OPT@try_sigaction@EXE_SUFFIX@ try_sigaction.c
+ 
+ 
+ 
+diff -ur gprolog-1.5.0.orig/src/Ma2Asm/Makefile.in gprolog-1.5.0/src/Ma2Asm/Makefile.in
+--- gprolog-1.5.0.orig/src/Ma2Asm/Makefile.in	2021-07-07 10:13:02.000000000 -0000
++++ gprolog-1.5.0/src/Ma2Asm/Makefile.in	2021-07-10 10:40:22.683496734 -0000
+@@ -1,7 +1,8 @@
+-GPLC   = @GPLC@
+-CC     = @CC@ @CFLAGS_MACHINE@
+-CFLAGS = @CFLAGS@
+-LDLIBS = @LDLIBS@
++GPLC    = @GPLC@
++CC      = @CC@ @CFLAGS_MACHINE@
++CFLAGS  = @CFLAGS@
++LDFLAGS = @LDFLAGS@
++LDLIBS  = @LDLIBS@
+ 
+ # set by mappers.sh
+ FORCE_MAP =
+@@ -25,7 +26,7 @@
+ 
+ ma2asm@EXE_SUFFIX@: ma2asm@OBJ_SUFFIX@ ma_parser@OBJ_SUFFIX@ \
+                     ma2asm_inst@OBJ_SUFFIX@ ma2asm_inst.c
+-	$(CC) $(CFLAGS) @CC_EXE_NAME_OPT@ma2asm@EXE_SUFFIX@ ma2asm@OBJ_SUFFIX@ ma2asm_inst@OBJ_SUFFIX@ ma_parser@OBJ_SUFFIX@
++	$(CC) $(LDFLAGS) @CC_EXE_NAME_OPT@ma2asm@EXE_SUFFIX@ ma2asm@OBJ_SUFFIX@ ma2asm_inst@OBJ_SUFFIX@ ma_parser@OBJ_SUFFIX@
+ 
+ 
+ clean:
+diff -ur gprolog-1.5.0.orig/src/TopComp/Makefile.in gprolog-1.5.0/src/TopComp/Makefile.in
+--- gprolog-1.5.0.orig/src/TopComp/Makefile.in	2021-07-07 10:13:02.000000000 -0000
++++ gprolog-1.5.0/src/TopComp/Makefile.in	2021-07-10 10:41:31.081493873 -0000
+@@ -4,7 +4,7 @@
+ CFLAGS          = @CFLAGS@
+ HEXGPLC         = @HEXGPLC@
+ CC              = @CC@ @CFLAGS_MACHINE@
+-CFLAGS          = @CFLAGS@
++LDFLAGS         = @LDFLAGS@
+ LDLIBS          = @LDLIBS@
+ TOP_LEVEL_LIBS  = @TOP_LEVEL_LIBS@
+ 
+@@ -24,10 +24,10 @@
+ 
+ $(GPLC)@EXE_SUFFIX@: top_comp.c copying.c ../EnginePl/wam_regs.h \
+          ../EnginePl/gp_config.h ../EnginePl/machine1.c decode_hexa.c copying.c prolog_path.c
+-	$(CC) $(CFLAGS) @CC_EXE_NAME_OPT@$(GPLC)@EXE_SUFFIX@ top_comp.c $(LDLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) @CC_EXE_NAME_OPT@$(GPLC)@EXE_SUFFIX@ top_comp.c $(LDLIBS)
+ 
+ $(HEXGPLC)@EXE_SUFFIX@: hexfilter.c decode_hexa.c
+-	$(CC) $(CFLAGS) @CC_EXE_NAME_OPT@$(HEXGPLC)@EXE_SUFFIX@ hexfilter.c
++	$(CC) $(CFLAGS) $(LDFLAGS) @CC_EXE_NAME_OPT@$(HEXGPLC)@EXE_SUFFIX@ hexfilter.c
+ 
+ 
+ 
+diff -ur gprolog-1.5.0.orig/src/Wam2Ma/Makefile.in gprolog-1.5.0/src/Wam2Ma/Makefile.in
+--- gprolog-1.5.0.orig/src/Wam2Ma/Makefile.in	2021-05-03 13:55:34.000000000 -0000
++++ gprolog-1.5.0/src/Wam2Ma/Makefile.in	2021-07-10 10:40:30.134496422 -0000
+@@ -1,5 +1,6 @@
+-CC     = @CC@ @CFLAGS_MACHINE@
+-CFLAGS = @CFLAGS@
++CC      = @CC@ @CFLAGS_MACHINE@
++CFLAGS  = @CFLAGS@
++LDFLAGS = @LDFLAGS@
+ 
+ 
+ all: wam2ma@EXE_SUFFIX@
+@@ -12,7 +13,7 @@
+ 	$(CC) $(CFLAGS) -c wam2ma.c
+ 
+ wam2ma@EXE_SUFFIX@: wam2ma@OBJ_SUFFIX@ wam_parser@OBJ_SUFFIX@
+-	$(CC) $(CFLAGS) @CC_EXE_NAME_OPT@wam2ma@EXE_SUFFIX@ wam2ma@OBJ_SUFFIX@ wam_parser@OBJ_SUFFIX@
++	$(CC) $(LDFLAGS) @CC_EXE_NAME_OPT@wam2ma@EXE_SUFFIX@ wam2ma@OBJ_SUFFIX@ wam_parser@OBJ_SUFFIX@
+ 
+ 
+ clean:

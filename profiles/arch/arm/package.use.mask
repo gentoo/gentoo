@@ -1,9 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2021-06-20)
-# kde-frameworks/syndication not yet keyworded, bug #796233
-kde-frameworks/knewstuff opds
+# Marek Szuba <marecki@gentoo.org> (2021-07-18)
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
+# and media-plugins/zam-plugins not keyworded here
+media-sound/easyeffects rnnoise webrtc zamaudio
+
+# Sam James <sam@gentoo.org> (2021-07-17)
+# Java isn't available here right now
+dev-util/diffoscope pdf
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
 # no stable virtual/jdk on this arch
@@ -349,7 +354,6 @@ net-vpn/strongswan strongswan_plugins_unbound
 
 # Benda Xu <heroxbd@gentoo.org> (2015-01-03)
 # not tested
-app-i18n/anthy canna-2ch
 app-i18n/scim-anthy kasumi
 
 # Markus Meier <maekke@gentoo.org> (2014-11-29)

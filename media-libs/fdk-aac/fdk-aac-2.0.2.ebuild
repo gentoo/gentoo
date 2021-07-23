@@ -24,7 +24,9 @@ LICENSE="FraunhoferFDK"
 # subslot == N where N is libfdk-aac.so.N
 SLOT="0/2"
 
-IUSE="static-libs examples"
+IUSE="examples"
+
+PATCHES=( "${FILESDIR}"/${P}-always_inline.patch )
 
 src_prepare() {
 	default
@@ -33,8 +35,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--enable-shared
-		$(use_enable static-libs static)
+		--disable-static
 		$(use_enable examples example)
 	)
 	ECONF_SOURCE=${S} econf "${myeconfargs[@]}"

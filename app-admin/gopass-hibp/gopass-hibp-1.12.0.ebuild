@@ -219,9 +219,11 @@ SRC_URI="https://github.com/gopasspw/gopass-hibp/archive/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="MIT Apache-2.0 BSD MPL-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 RESTRICT="strip test"
+
+QA_PRESTRIPPED="usr/bin/gopass-hibp"
 
 DEPEND=">=dev-lang/go-1.16"
 RDEPEND="

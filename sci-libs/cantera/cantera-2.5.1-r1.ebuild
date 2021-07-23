@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
@@ -30,12 +30,12 @@ RDEPEND="
 	lapack? ( virtual/lapack )
 	cti? (
 		$(python_gen_cond_dep '
-			dev-python/ruamel-yaml[${PYTHON_MULTI_USEDEP}]
+			dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 		')
 	)
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 	dev-cpp/yaml-cpp
@@ -49,15 +49,15 @@ DEPEND="
 	dev-libs/libfmt
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+			dev-python/cython[${PYTHON_USEDEP}]
 		')
 	)
 	test? (
 		>=dev-cpp/gtest-1.8.0
 		python? (
 			$(python_gen_cond_dep '
-				dev-python/h5py[${PYTHON_MULTI_USEDEP}]
-				dev-python/pandas[${PYTHON_MULTI_USEDEP}]
+				dev-python/h5py[${PYTHON_USEDEP}]
+				dev-python/pandas[${PYTHON_USEDEP}]
 			')
 		)
 	)

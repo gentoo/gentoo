@@ -4,6 +4,17 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Conrad Kostecki <conikost@gentoo.org> (2021-07-18)
+# For docs, app-text/pandoc is needed, which is currently
+# not stabilized and probably will not be in near future.
+# Bug #737612
+x11-wm/xpra doc
+
+# Patrick McLean <chutzpah@gentoo.org> (2021-07-13)
+# Pulls in dev-libs/pmdk which has Haskell deps, a dep on rocr-runtime
+# all of which are not stable anywhere.
+sys-cluster/ceph pmdk rbd-rwl
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-05-30)
 # dev-perl/Net-Netmask-2.0.100 needs ... and ... which ends
 # up pulling in a Test-Simple version newer than 5.32.
@@ -43,12 +54,6 @@ dev-php/theseer-Autoload test
 # Cinnamon is not stable on any architecture.
 x11-themes/arc-theme cinnamon
 
-# Sam James <sam@gentoo.org> (2020-10-09)
-# Depends on dev-libs/boost[python,numpy], not fully working atm
-# bug #733830, bug #746740, bug #753566
-media-gfx/openvdb python numpy
-media-libs/openimageio python
-
 # Pacho Ramos <pacho@gentoo.org> (2020-08-21)
 # app-text/pandoc is hard to stabilize #737612
 sys-apps/earlyoom docs
@@ -64,11 +69,6 @@ app-emulation/winetricks test
 # Adam Feldman <NP-Hardass@gentoo.org> (2020-04-12)
 # Dependency (net-wireless/blueman) has no stable keywords
 mate-base/mate bluetooth
-
-# David Seifert <soap@gentoo.org> (2020-03-31)
-# Numpy support in Boost.Python is brittle and shouldn't be enabled
-# on stable systems or force a stable upgrade.
-dev-libs/boost numpy
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # For bleeding edge features and testing, not generally suitable

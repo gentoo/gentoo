@@ -2,12 +2,16 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>slyfox@gentoo.org</email>
-    <name>Sergei Trofimovich</name>
-  </maintainer>
-  <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>marecki@gentoo.org</email>
+    <name>Marek Szuba</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>slashbeast@gentoo.org</email>
+    <name>Piotr Karbowski</name>
   </maintainer>
   <use>
     <flag name="edit">Compile and install the mcedit application</flag>

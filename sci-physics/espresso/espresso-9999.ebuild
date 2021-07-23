@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake cuda python-single-r1 savedconfig
@@ -31,8 +31,8 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/cython-0.26.1[${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/cython-0.26.1[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )

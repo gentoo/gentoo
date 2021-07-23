@@ -77,6 +77,64 @@ gstreamer_get_plugins() {
 		"/^# Feature options for plugins (with|that need) external deps$/,/^#.*$/s;^option\('([^']*)'.*;\1;p" \
 		"${S}/meson_options.txt" || die "Failed to extract options for plugins with external deps"
 	)
+
+	# opencv and hls in gst-plugins-bad are split, can't be properly detected
+	if grep -q "option('opencv'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+opencv"
+	fi
+	if grep -q "option('hls'" "${EMESON_SOURCE}"/meson_options.txt ; then
+		GST_PLUGINS_EXT_DEPS="${GST_PLUGINS_EXT_DEPS}
+hls"
+	fi
+}
+
+# @FUNCTION: gstreamer_system_package
+# @USAGE: <gstaudio_dep:gstreamer-audio> [...]
+# @DESCRIPTION:
+# Walks through meson.build in order to make sure build will link against system
+# libraries.
+# Takes a list of path fragments and corresponding pkgconfig libraries
+# separated by colon (:). Will replace the path fragment by the output of
+# pkgconfig.
+gstreamer_system_package() {
+	local pdir directory libs pkgconfig pc tuple plugin_dir
+	pkgconfig=$(tc-getPKG_CONFIG)
+
+	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
+		pdir=$(gstreamer_get_plugin_dir ${plugin_dir})
+
+		for tuple in $@ ; do
+			dependency=${tuple%:*}
+			pc=${tuple#*:}-${SLOT}
+			sed -e "1i${dependency} = dependency('${pc}', required : true)" \
+				-i "${pdir}"/meson.build || die
+		done
+	done
+}
+
+# @FUNCTION: gstreamer_system_library
+# @USAGE: <gstbasecamerabin_dep:libgstbasecamerabinsrc> [...]
+# @DESCRIPTION:
+# Walks through meson.build in order to make sure build will link against system
+# libraries.
+# Takes a list of path fragments and corresponding pkgconfig libraries
+# separated by colon (:). Will replace the path fragment by the output of
+# pkgconfig.
+gstreamer_system_library() {
+	local pdir directory libs pkgconfig pc tuple plugin_dir
+	pkgconfig=$(tc-getPKG_CONFIG)
+
+	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
+		pdir=$(gstreamer_get_plugin_dir ${plugin_dir})
+
+		for tuple in $@ ; do
+			dependency=${tuple%:*}
+			pc=${tuple#*:}-${SLOT}
+			sed -e "1i${dependency} = cc.find_library('${pc}', required : true)" \
+				-i "${pdir}"/meson.build || die
+		done
+	done
 }
 
 # @ECLASS-VARIABLE: GST_PLUGINS_BUILD_DIR

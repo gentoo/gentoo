@@ -6,6 +6,17 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-14)
+# Several known issues (possibly with older pastix versions as well but
+# in v6 they result in clear errors):
+# * CUDA support needs testing, may or may not work as it is;
+# * With MPI enabled two tests fail (when linked against openmpi, at least)
+#   due to incorrect implementation of either MPI support itself or
+#   said tests - example_drv_facto0_d_reentrant tries to initialise MPI
+#   more than once, test_bvec_gemv_tests calls MPI_Query_thread() after
+#   invocation of MPI_FINALIZE.
+>=sci-libs/pastix-6.0.0 cuda mpi
+
 # Alfredo Tupone <tupone@gentoo.org> (2021-06-27)
 # lto does not work on dev-lang/gnat-gpl-2021
 dev-lang/gnat-gpl:10 lto
@@ -135,10 +146,6 @@ media-gfx/blender doc
 # The qt module itself apparently can be made to build against system Qt5
 # but making it do so while vendored is a non-trivial task.
 mail-mta/protonmail-bridge gui
-
-# Michał Górny <mgorny@gentoo.org> (2020-11-29)
-# libclangformat-ide is masked for removal.
-dev-qt/qt-creator clang
 
 # Michał Górny <mgorny@gentoo.org> (2020-09-27)
 # The respective dependencies are masked for removal.
@@ -271,10 +278,12 @@ dev-python/statsmodels doc
 # broken static-linking in glibc and maybe others
 >app-shells/mksh-57-r1 static
 
-# Patrick McLean <chutzpah@gentoo.org> (2019-11-07)
-# Collides with sys-libc/glibc[crypt]
-# (NOTE: Likely needs to be moved to musl + uclibc profiles, not dropped entirely)
-sys-libs/libxcrypt split-usr system
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers like libxcrypt.
+# Here we are following that path too.
+>=sys-libs/glibc-2.33-r2 crypt
+<sys-libs/libxcrypt-4.4.23-r1 split-usr system
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-05)
 # net-libs/openslp is being removed.

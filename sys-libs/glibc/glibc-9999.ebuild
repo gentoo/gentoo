@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{7,8,9,10} )
 TMPFILES_OPTIONAL=1
 
-inherit python-any-r1 prefix toolchain-funcs flag-o-matic gnuconfig \
+inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
@@ -95,7 +95,7 @@ fi
 
 BDEPEND="
 	${PYTHON_DEPS}
-	>=app-misc/pax-utils-0.1.10
+	>=app-misc/pax-utils-1.3.3
 	sys-devel/bison
 	doc? ( sys-apps/texinfo )
 	!compile-locales? (
@@ -113,7 +113,6 @@ COMMON_DEPEND="
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
 	systemtap? ( dev-util/systemtap )
-	!<net-misc/openssh-8.1_p1-r2
 "
 DEPEND="${COMMON_DEPEND}
 	compile-locales? (
@@ -128,6 +127,8 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/grep
 	virtual/awk
 	sys-apps/gentoo-functions
+	!<app-misc/pax-utils-1.3.3
+	!<net-misc/openssh-8.1_p1-r2
 "
 
 RESTRICT="!test? ( test )"
@@ -1448,6 +1449,12 @@ glibc_sanity_check() {
 	# (e.g. /var/tmp/portage:${HOSTNAME})
 	pushd "${ED}"/$(get_libdir) >/dev/null
 
+	# first let's find the actual dynamic linker here
+	# symlinks may point to the wrong abi
+	local newldso=$(find . -name 'ld-linux*.so.2' -type f -print -quit)
+
+	einfo Last-minute run tests with ${newldso} in /$(get_libdir) ...
+
 	local x striptest
 	for x in cal date env free ls true uname uptime ; do
 		x=$(type -p ${x})
@@ -1460,7 +1467,7 @@ glibc_sanity_check() {
 		# We need to clear the locale settings as the upgrade might want
 		# incompatible locale data.  This test is not for verifying that.
 		LC_ALL=C \
-		./ld-*.so --library-path . ${x} > /dev/null \
+		${newldso} --library-path . ${x} > /dev/null \
 			|| die "simple run test (${x}) failed"
 	done
 
@@ -1488,6 +1495,16 @@ pkg_preinst() {
 		# Help portage migrate this to a directory
 		# https://bugs.gentoo.org/753740
 		rm "${EROOT}"/usr/lib/locale || die
+	fi
+
+	# Keep around libcrypt so that Perl doesn't break when merging libxcrypt
+	# (libxcrypt is the new provider for now of libcrypt.so.{1,2}).
+	# bug #802207
+	if has_version "${CATEGORY}/${PN}[crypt]"; then
+		PRESERVED_OLD_LIBCRYPT=1
+		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
+	else
+		PRESERVED_OLD_LIBCRYPT=0
 	fi
 }
 
@@ -1517,5 +1534,9 @@ pkg_postinst() {
 				ewarn ""
 			fi
 		done
+	fi
+
+	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
+		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
 	fi
 }

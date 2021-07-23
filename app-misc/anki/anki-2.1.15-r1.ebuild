@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 PYTHON_REQ_USE="sqlite"
 
 inherit desktop optfeature python-single-r1 xdg
@@ -21,22 +21,22 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/PyQtWebEngine-5.12[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/httplib2-0.7.4[${PYTHON_MULTI_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
-		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
-		dev-python/jsonschema[${PYTHON_MULTI_USEDEP}]
-		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_USEDEP}]
+		>=dev-python/PyQtWebEngine-5.12[${PYTHON_USEDEP}]
+		>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
+		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/markdown[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/send2trash[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="test? (
 	${RDEPEND}
 	$(python_gen_cond_dep '
-		dev-python/nose[${PYTHON_MULTI_USEDEP}]
-		dev-python/mock[${PYTHON_MULTI_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		')
 	)
 "

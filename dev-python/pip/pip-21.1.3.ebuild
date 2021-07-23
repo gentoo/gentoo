@@ -10,11 +10,11 @@ inherit bash-completion-r1 distutils-r1
 
 # setuptools & wheel .whl files are required for testing,
 # the exact version is not very important.
-SETUPTOOLS_WHL="setuptools-56.0.0-py3-none-any.whl"
+SETUPTOOLS_WHL="setuptools-57.4.0-py3-none-any.whl"
 WHEEL_WHL="wheel-0.36.2-py2.py3-none-any.whl"
 # upstream still requires virtualenv-16 for testing, we are now fetching
 # it directly to avoid blockers with virtualenv-20
-VENV_PV=16.7.10
+VENV_PV=16.7.11
 
 DESCRIPTION="Installs python packages -- replacement for easy_install"
 HOMEPAGE="
@@ -67,10 +67,6 @@ python_prepare_all() {
 		mkdir tests/data/common_wheels/ || die
 		cp "${DISTDIR}"/{${SETUPTOOLS_WHL},${WHEEL_WHL}} \
 			tests/data/common_wheels/ || die
-
-		pushd "${WORKDIR}/virtualenv-${VENV_PV}" >/dev/null || die
-		eapply "${FILESDIR}/virtualenv-${VENV_PV}-py310.patch"
-		popd >/dev/null || die
 	fi
 }
 

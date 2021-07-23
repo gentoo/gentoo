@@ -22,7 +22,7 @@ LICENSE="Apache-2.0"
 # same build of ERTS that was used when compiling the code.  See
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc emacs java +kpoll odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
@@ -46,6 +46,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-22.0-dont-ignore-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-24.0.2-serial-configure.patch
 )
 
 SITEFILE=50"${PN}"-gentoo.el
@@ -58,8 +59,6 @@ src_prepare() {
 	# bug #797886: erlang's VM does unsafe casts for ints
 	# to pointers and back. This breaks on gcc-11 -flto.
 	append-flags -fno-strict-aliasing
-
-	./otp_build autoconf || die
 }
 
 src_configure() {

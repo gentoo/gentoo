@@ -3,19 +3,19 @@
 
 EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 
 inherit unpacker
 
 DESCRIPTION="Library needed to connect puppet to puppetdb"
-HOMEPAGE="http://docs.puppetlabs.com/puppetdb/"
+HOMEPAGE="https://puppet.com/docs/puppetdb/latest/index.html"
 SRC_URI="http://apt.puppetlabs.com/pool/stretch/puppet/${PN:0:1}/${PN}/${PN}_${PV}-1stretch_all.deb"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 # will need the same keywords as puppet
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND+=""
 DEPEND+=""

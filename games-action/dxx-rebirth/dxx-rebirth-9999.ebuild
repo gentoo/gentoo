@@ -16,6 +16,8 @@ else
 	SRC_URI="https://codeload.github.com/dxx-rebirth/dxx-rebirth/tar.gz/${MY_COMMIT} -> ${PN}-${PVR}.tar.gz"
 	unset MY_COMMIT
 
+	# Games under Gentoo are marked as 'testing' by convention
+	#
 	# Other architectures are reported to work, but not tested regularly by
 	# the core team.
 	#

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit autotools linux-info python-single-r1 readme.gentoo-r1 systemd udev multilib-minimal
 
@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 x86"
 IUSE="btpclient cups doc debug deprecated extra-tools experimental +mesh midi +obex +readline selinux systemd test test-programs +udev user-session"
 
 # Since this release all remaining extra-tools need readline support, but this could
@@ -26,8 +26,8 @@ REQUIRED_USE="
 
 TEST_DEPS="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/dbus-python-1[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="

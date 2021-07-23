@@ -17,11 +17,11 @@ if [[ -z ${LIVE_EBUILD} ]]; then
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
-HOMEPAGE="https://www.midnight-commander.org"
+HOMEPAGE="https://midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
+IUSE="+edit gpm nls samba sftp +slang spell test unicode X"
 
 REQUIRED_USE="spell? ( edit )"
 
@@ -31,7 +31,7 @@ RDEPEND=">=dev-libs/glib-2.26.0:2
 	samba? ( net-fs/samba )
 	sftp? ( net-libs/libssh2 )
 	slang? ( >=sys-libs/slang-2 )
-	!slang? ( sys-libs/ncurses:0=[unicode?] )
+	!slang? ( sys-libs/ncurses:=[unicode(+)?] )
 	spell? ( app-text/aspell )
 	X? ( x11-libs/libX11
 		x11-libs/libICE
@@ -65,7 +65,6 @@ src_configure() {
 	local myeconfargs=(
 		--enable-charset
 		--enable-vfs
-		--with-homedir=$(usex xdg 'XDG' '.mc')
 		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
 		$(use_enable kernel_linux vfs-undelfs)
 		# Today mclib does not expose any headers and is linked to
@@ -101,11 +100,6 @@ src_install() {
 	if use kernel_linux && [[ ${EUID} == 0 ]] ; then
 		fowners root:tty /usr/libexec/mc/cons.saver
 		fperms g+s /usr/libexec/mc/cons.saver
-	fi
-
-	if ! use xdg ; then
-		sed 's@MC_XDG_OPEN="xdg-open"@MC_XDG_OPEN="/bin/false"@' \
-			-i "${ED}"/usr/libexec/mc/ext.d/*.sh || die
 	fi
 }
 

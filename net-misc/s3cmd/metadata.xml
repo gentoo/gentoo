@@ -20,4 +20,5 @@
   <upstream>
     <remote-id type="sourceforge">s3tools</remote-id>
   </upstream>
+  <stabilize-allarches/>
 </pkgmetadata>

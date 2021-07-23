@@ -64,7 +64,7 @@ src_configure() {
 		-DSUPERLUMT_LIBRARY="-lsuperlu_mt"
 		-DEXAMPLES_ENABLE="$(usex examples)"
 		-DEXAMPLES_INSTALL=ON
-		-DEXAMPLES_INSTALL_PATH="/usr/share/doc/${PF}/examples"
+		-DEXAMPLES_INSTALL_PATH="${EPREFIX}/usr/share/doc/${PF}/examples"
 		-DUSE_GENERIC_MATH=ON
 	)
 	use sparse && mycmakeargs+=( -DKLU_LIBRARY="${EPREFIX}/usr/$(get_libdir)/libklu.so" )

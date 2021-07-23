@@ -30,7 +30,7 @@ DEPEND="
 	>=dev-libs/glib-2.64:2[dbus]
 	>=dev-libs/json-glib-1.2
 	dev-libs/libgpg-error
-	>=gui-libs/libhandy-1.0
+	>=gui-libs/libhandy-1.0:1
 	>=net-libs/libsoup-2.48
 	>=x11-libs/gtk+-3.22:3
 	>=x11-libs/libnotify-0.7

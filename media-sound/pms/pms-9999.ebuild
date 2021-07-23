@@ -21,7 +21,7 @@ BDEPEND="
 	doc? ( app-text/pandoc )
 "
 RDEPEND="
-	sys-libs/ncurses:0=[unicode]
+	sys-libs/ncurses:=[unicode(+)]
 	media-libs/libmpdclient
 "
 DEPEND="${RDEPEND}"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27 ruby30"
 
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
@@ -25,7 +25,7 @@ SRC_URI="https://github.com/unbit/uwsgi/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=( ping cache carbon nagios rpc rrdtool
 	http ugreen signal syslog rsyslog

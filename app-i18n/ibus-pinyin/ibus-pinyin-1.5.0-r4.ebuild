@@ -3,7 +3,7 @@
 
 EAPI=7
 LUA_COMPAT=(lua5-1)
-PYTHON_COMPAT=(python3_{7,8,9})
+PYTHON_COMPAT=(python3_{8,9})
 
 inherit autotools lua-single python-single-r1
 
@@ -22,8 +22,8 @@ RDEPEND="${PYTHON_DEPS}
 	app-i18n/pyzy
 	dev-db/sqlite:3
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	boost? ( dev-libs/boost )
 	lua? ( ${LUA_DEPS} )

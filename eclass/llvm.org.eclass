@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Common bits for fetching & unpacking llvm.org projects
 # @DESCRIPTION:
 # The llvm.org eclass provides common code to fetch and unpack parts
@@ -30,7 +30,7 @@
 # @CODE
 
 case "${EAPI:-0}" in
-	7)
+	7|8)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} for ${ECLASS}"
@@ -167,10 +167,7 @@ llvm.org_set_globals() {
 
 # == phase functions ==
 
-EXPORT_FUNCTIONS src_unpack
-if ver_test -ge 10.0.1_rc; then
-	EXPORT_FUNCTIONS src_prepare
-fi
+EXPORT_FUNCTIONS src_unpack src_prepare
 
 # @FUNCTION: llvm.org_src_unpack
 # @DESCRIPTION:
@@ -205,6 +202,12 @@ llvm.org_src_unpack() {
 	fi
 
 	if [[ -n ${LLVM_PATCHSET} ]]; then
+		local nocomp=$(grep -r -L "^Gentoo-Component:" \
+			"${WORKDIR}/llvm-gentoo-patchset-${LLVM_PATCHSET}")
+		if [[ -n ${nocomp} ]]; then
+			die "Patches lacking Gentoo-Component found: ${nocomp}"
+		fi
+
 		# strip patches that don't match current components
 		local IFS='|'
 		grep -E -r -L "^Gentoo-Component:.*(${components[*]})" \

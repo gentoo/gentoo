@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools git-r3
+inherit autotools multilib-minimal git-r3
 
 DESCRIPTION="Message Digest functions from BSD systems"
 HOMEPAGE="https://www.hadrons.org/software/libmd/"
@@ -14,16 +14,14 @@ SLOT="0"
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
-src_configure() {
-	econf --disable-static
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf
 }
 
-src_install() {
+multilib_src_install() {
 	default
-
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }

@@ -34,6 +34,11 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/swig )
 	perl? ( dev-lang/swig )
 "
+BDEPEND="|| (
+	sys-devel/gcc[sanitize]
+	sys-libs/compiler-rt-sanitizers[asan(-)]
+	)
+"
 
 src_configure() {
 	perl_set_version

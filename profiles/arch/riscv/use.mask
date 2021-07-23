@@ -15,9 +15,12 @@
 -gtk3
 -introspection
 
-# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
-# no fam providers keyworded yet
-fam
+# Marek Szuba <marecki@gentoo.org> (2021-07-05)
+# dev-lang/lua:5.2 and dev-lang/luajit known not to work here
+lua_single_target_lua5-2
+lua_single_target_luajit
+lua_targets_lua5-2
+lua_targets_luajit
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
@@ -27,20 +30,18 @@ valgrind
 bluetooth
 emacs
 fuse
+jack
 java
-kerberos
 latex
 libedit
-lua
 mono
 motif
 opencl
 qt5
+pulseaudio
 rsh
-ruby
 slang
 sound
-systemtap
 webkit
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
@@ -52,7 +53,6 @@ ayatana
 
 video_cards_ast
 video_cards_dummy
-video_cards_fbdev
 video_cards_freedreno
 video_cards_geode
 video_cards_glint
@@ -60,7 +60,6 @@ video_cards_i915
 video_cards_i965
 video_cards_intel
 video_cards_mga
-video_cards_nouveau
 video_cards_nv
 video_cards_omap
 video_cards_qxl
@@ -78,7 +77,6 @@ video_cards_nvidia
 # input devices
 
 input_devices_elographics
-input_devices_evdev
 input_devices_joystick
 input_devices_vmmouse
 input_devices_void

@@ -22,7 +22,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="berkdb bluetooth build elibc_uclibc examples gdbm hardened ipv6 +ncurses +readline +sqlite +ssl +threads tk +wide-unicode wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -65,7 +65,6 @@ BDEPEND="
 	virtual/pkgconfig
 	verify-sig? ( app-crypt/openpgp-keys-python )
 	!sys-devel/gcc[libffi(-)]"
-PDEPEND="app-eselect/eselect-python"
 RDEPEND+="
 	!build? ( app-misc/mime-types )
 	!<=dev-lang/python-exec-2.4.6-r1"
@@ -225,7 +224,7 @@ src_compile() {
 	emake
 
 	# Work around bug 329499. See also bug 413751 and 457194.
-	if has_version dev-libs/libffi[pax_kernel]; then
+	if has_version dev-libs/libffi[pax-kernel]; then
 		pax-mark E python
 	else
 		pax-mark m python

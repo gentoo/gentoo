@@ -1,15 +1,15 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools gnome2-utils
 
 DESCRIPTION="A library for reading vector images in Microsoft's Windows Metafile Format (WMF)"
 HOMEPAGE="http://wvware.sourceforge.net/"
-SRC_URI="mirror://sourceforge/wvware/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/project/wvware/${PN}/${PV}/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug doc expat X"
@@ -27,8 +27,8 @@ RDEPEND="app-text/ghostscript-gpl
 		x11-libs/libXt
 		x11-libs/libXpm )"
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( "AUTHORS" "BUILDING" "ChangeLog" "CREDITS" "INSTALL" "NEWS" "README" "TODO" )
 

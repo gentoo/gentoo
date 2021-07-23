@@ -5,13 +5,13 @@ EAPI=7
 
 inherit git-r3
 
+EGIT_REPO_URI="https://github.com/beave/sagan-rules.git"
+
 DESCRIPTION="Rules for Sagan log analyzer"
 HOMEPAGE="http://sagan.softwink.com/"
-EGIT_REPO_URI="https://github.com/beave/sagan-rules.git"
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+lognorm"
 
 PDEPEND="app-admin/sagan"
 
@@ -19,7 +19,6 @@ src_install() {
 	insinto /etc/sagan-rules
 	doins *.config
 	doins *rules
-	if use lognorm; then
-		doins normalization.rulebase
-	fi
+	doins *map
+	doins normalization.rulebase
 }

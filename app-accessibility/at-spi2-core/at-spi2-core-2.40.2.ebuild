@@ -6,12 +6,13 @@ EAPI=7
 inherit gnome.org meson-multilib systemd virtualx xdg
 
 DESCRIPTION="D-Bus accessibility specifications and registration daemon"
-HOMEPAGE="https://wiki.gnome.org/Accessibility"
+HOMEPAGE="https://wiki.gnome.org/Accessibility https://gitlab.gnome.org/GNOME/at-spi2-core"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
 IUSE="X gtk-doc +introspection"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+REQUIRED_USE="gtk-doc? ( X )"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]

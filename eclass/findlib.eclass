@@ -29,6 +29,7 @@ IUSE="ocamlopt"
 DEPEND=">=dev-ml/findlib-1.0.4-r1"
 [[ ${FINDLIB_USE} ]] && DEPEND="${FINDLIB_USE}? ( ${DEPEND} )"
 RDEPEND="dev-lang/ocaml:=[ocamlopt?]"
+[[ ${FINDLIB_USE} ]] && RDEPEND="${FINDLIB_USE}? ( ${RDEPEND} )"
 
 check_ocamlfind() {
 	if [ ! -x "${EPREFIX}"/usr/bin/ocamlfind ] ; then
