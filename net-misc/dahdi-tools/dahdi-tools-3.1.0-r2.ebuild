@@ -25,7 +25,7 @@ DEPEND="dev-libs/newt
 	net-misc/dahdi
 	sys-kernel/linux-headers
 	virtual/libusb:0
-	ppp? ( net-dialup/ppp )"
+	ppp? ( net-dialup/ppp:= )"
 RDEPEND="${DEPEND}
 	dev-lang/perl:=
 	dev-perl/CGI"
