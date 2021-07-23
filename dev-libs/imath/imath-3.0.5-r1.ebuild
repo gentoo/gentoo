@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 # blocker due to file collision #803347
 RDEPEND="
-	!~dev-libs/imath-3.0.1:0
+	!dev-libs/imath:0
 	sys-libs/zlib
 	python? (
 		${PYTHON_DEPS}
