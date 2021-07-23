@@ -14,6 +14,12 @@ IUSE=""
 
 RDEPEND="virtual/man"
 
+src_prepare() {
+	default
+	# Remove man page provided by sys-apps/shadow
+	rm man-pages/man5/passwd.5 || die
+}
+
 src_compile() { :; } # emake does bad things here
 
 src_install() {
