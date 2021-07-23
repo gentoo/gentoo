@@ -18,12 +18,11 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 
 # The 'libck.so' has a name collision.
-# See #616762 for more information.
+# See bug #616762 for more information.
 RDEPEND="!sys-cluster/charm"
 
 src_configure() {
 	tc-export AR CC LD
-	$(usex x86 'export PROFILE=x86' '')
 
 	local myeconfargs=(
 		"--disable-static"
