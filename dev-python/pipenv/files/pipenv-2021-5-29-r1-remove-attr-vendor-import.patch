@@ -1,0 +1,95 @@
+diff --git a/pipenv/installers.py b/pipenv/installers.py
+index 1e81047d..ccfd639c 100644
+--- a/pipenv/installers.py
++++ b/pipenv/installers.py
+@@ -6,8 +6,11 @@ from abc import ABCMeta, abstractmethod
+ 
+ 
+ from .environments import PIPENV_INSTALL_TIMEOUT
+-from .vendor import attr, delegator
+ from .utils import find_windows_executable
++# future version of pipenv drops this
++# hence, this stays here for a while
++from .vendor import delegator
++import attr
+ 
+ 
+ @attr.s
+diff --git a/pipenv/vendor/passa/models/projects.py b/pipenv/vendor/passa/models/projects.py
+index c7807c05..f6e037d6 100644
+--- a/pipenv/vendor/passa/models/projects.py
++++ b/pipenv/vendor/passa/models/projects.py
+@@ -6,7 +6,7 @@ import collections
+ import io
+ import os
+ 
+-from pipenv.vendor import attr
++import attr
+ import packaging.markers
+ import packaging.utils
+ import plette
+diff --git a/pipenv/vendor/pythonfinder/models/mixins.py b/pipenv/vendor/pythonfinder/models/mixins.py
+index aeba0443..76327115 100644
+--- a/pipenv/vendor/pythonfinder/models/mixins.py
++++ b/pipenv/vendor/pythonfinder/models/mixins.py
+@@ -5,7 +5,7 @@ import abc
+ import operator
+ from collections import defaultdict
+ 
+-from pipenv.vendor import attr
++import attr
+ import six
+ 
+ from ..compat import fs_str
+diff --git a/pipenv/vendor/pythonfinder/models/path.py b/pipenv/vendor/pythonfinder/models/path.py
+index e8c13429..7a197181 100644
+--- a/pipenv/vendor/pythonfinder/models/path.py
++++ b/pipenv/vendor/pythonfinder/models/path.py
+@@ -7,7 +7,7 @@ import sys
+ from collections import defaultdict
+ from itertools import chain
+ 
+-from pipenv.vendor import attr
++import attr
+ import six
+ from cached_property import cached_property
+ from ..compat import Path, fs_str
+diff --git a/pipenv/vendor/pythonfinder/models/python.py b/pipenv/vendor/pythonfinder/models/python.py
+index 4f7e5563..d001a1e5 100644
+--- a/pipenv/vendor/pythonfinder/models/python.py
++++ b/pipenv/vendor/pythonfinder/models/python.py
+@@ -7,7 +7,7 @@ import platform
+ import sys
+ from collections import defaultdict
+ 
+-from pipenv.vendor import attr
++import attr
+ import six
+ from packaging.version import Version
+ 
+diff --git a/pipenv/vendor/pythonfinder/models/windows.py b/pipenv/vendor/pythonfinder/models/windows.py
+index c69b9484..fb36a272 100644
+--- a/pipenv/vendor/pythonfinder/models/windows.py
++++ b/pipenv/vendor/pythonfinder/models/windows.py
+@@ -4,7 +4,7 @@ from __future__ import absolute_import, print_function
+ import operator
+ from collections import defaultdict
+ 
+-from pipenv.vendor import attr
++import attr
+ 
+ from ..environment import MYPY_RUNNING
+ from ..exceptions import InvalidPythonVersion
+diff --git a/pipenv/vendor/pythonfinder/utils.py b/pipenv/vendor/pythonfinder/utils.py
+index bcea7f3e..41d2d59a 100644
+--- a/pipenv/vendor/pythonfinder/utils.py
++++ b/pipenv/vendor/pythonfinder/utils.py
+@@ -10,7 +10,7 @@ from collections import OrderedDict
+ from fnmatch import fnmatch
+ from threading import Timer
+ 
+-from pipenv.vendor import attr
++import attr
+ import six
+ from packaging.version import LegacyVersion, Version
+ 
