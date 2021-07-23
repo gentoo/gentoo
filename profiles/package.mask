@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 
+# Alfredo Tupone <tupone@gentoo.org> (2021-07-23)
+# Requirements conflicts so it is not buildable
+# No revdep. Retire in 30 days (2021-08-22)
+dev-ml/cstruct
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # No gtk4 and friends in the tree yet
 >=media-sound/easyeffects-6.0.0
