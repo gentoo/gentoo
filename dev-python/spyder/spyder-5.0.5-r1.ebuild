@@ -9,7 +9,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit optfeature xdg distutils-r1
 
 # Commit of documentation to fetch
-DOCS_PV="6ebb1ace2d7ce94e45e8b2c1b7ddb53395f86e67"
+DOCS_PV="5eb83118155a3765de4a0f863b936bcbe73bb7aa"
 
 DESCRIPTION="The Scientific Python Development Environment"
 HOMEPAGE="
@@ -41,13 +41,10 @@ RDEPEND="
 	>=dev-python/diff-match-patch-20181111[${PYTHON_USEDEP}]
 	>=dev-python/intervaltree-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/ipython-7.6.0[${PYTHON_USEDEP}]
-	~dev-python/jedi-0.17.2[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-3.2.0[${PYTHON_USEDEP}]
 	>=dev-python/keyring-17.0.0[${PYTHON_USEDEP}]
 	>=dev-python/nbconvert-4.0[${PYTHON_USEDEP}]
 	>=dev-python/numpydoc-0.6.0[${PYTHON_USEDEP}]
-	>=dev-python/parso-0.7.0[${PYTHON_USEDEP}]
-	<dev-python/parso-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pickleshare-0.4[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.3[${PYTHON_USEDEP}]
@@ -55,7 +52,6 @@ RDEPEND="
 	>=dev-python/pylint-1.0[${PYTHON_USEDEP}]
 	>=dev-python/python-lsp-black-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyls-spyder-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/python-lsp-server-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyxdg-0.26[${PYTHON_USEDEP}]
 	>=dev-python/pyzmq-17[${PYTHON_USEDEP}]
 	~dev-python/qdarkstyle-3.0.2[${PYTHON_USEDEP}]
@@ -70,21 +66,6 @@ RDEPEND="
 	>=dev-python/textdistance-4.2.0[${PYTHON_USEDEP}]
 	>=dev-python/three-merge-0.1.1[${PYTHON_USEDEP}]
 	>=dev-python/watchdog-0.10.3[${PYTHON_USEDEP}]
-"
-
-# python-lsp-server[all] deps
-RDEPEND+="
-	dev-python/autopep8[${PYTHON_USEDEP}]
-	>=dev-python/flake8-3.8.0[${PYTHON_USEDEP}]
-	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
-	<dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
-	>=dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
-	>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pyflakes-2.3.0[${PYTHON_USEDEP}]
-	<dev-python/pyflakes-2.4.0[${PYTHON_USEDEP}]
-	>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
-	>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
-	dev-python/yapf[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
@@ -146,28 +127,39 @@ python_prepare_all() {
 	# The original hasn't been update in over 6 months, and spyder upstream is slow
 	# in making the switch. Because we are running into issues with outdated deps
 	# and a whole dependency mess as a result, we can no longer wait for upstream.
-	# Also relax the parso dependency to allow parso 0.7.1
 	find . -name "*.py" -exec sed -i \
-		-e 's/python-language-server\[all\]>=0.36.2,<1.0.0/python-lsp-server\[all\]>=1.0.0/g' \
-		-e 's/python-language-server/python-lsp-server/g' \
-		-e 's/python_language_server/python_lsp_server/g' \
-		-e 's/python-jsonrpc-server/python-lsp-jsonrpc/g' \
-		-e 's/python_jsonrpc_server/python_lsp_jsonrpc/g' \
 		-e 's/pyls/pylsp/g' \
 		-e 's/pylsp-spyder/pyls-spyder/g' \
 		-e 's/pylsp_spyder/pyls_spyder/g' \
-		-e 's/pyls-spyder>=0.3.2,<0.4.0/pyls-spyder>=0.4.0/g' \
 		-e 's/pylsp-black/python-lsp-black/g' \
+		-e 's/pyls-spyder>=0.3.2,<0.4.0/pyls-spyder>=0.4.0/g' \
 		-e 's/>=0.3.2;<0.4.0/>=0.4.0/g' \
-		-e 's/>=0.36.2;<1.0.0/>=1.0.0/g' \
-		-e "s/'parso==0.7.0'/'parso>=0.7.0,<0.8.0'/g" \
-		-e "s/'=0.7.0'/'>=0.7.0;<0.8.0'/g" \
 		{} + || die
 
-	# do not depend on pyqt5<13
-	sed -i -e '/pyqt5/d' \
+	# Do not depend on pyqt5<5.13, this dependency is carried by QtPy[pyqt5]
+	# Do not depend on pyqtwebengine<5.13, this dependency is carried by QtPy[webengine]
+	# Do not depend on parso and jedi, this is dependency is carried in python-lsp-server
+	# Do not depend on python-lsp-server, this dependency is carried in pyls-spyder
+	# The explicit version requirements only make things more complicated, if e.g.
+	# pyls-spyder gains compatibility with a newer version of python-lsp-server
+	# in a new release it will take time for this information to propagate into
+	# the next spyder release. So just remove the dependency and let the other
+	# ebuilds handle the version requirements to speed things up and prevent
+	# issues such as Bug 803269.
+	sed -i \
+		-e '/pyqt5/d' \
 		-e '/pyqtwebengine/d' \
-			setup.py || die
+		-e '/python-language-server/d' \
+		-e '/python-lsp-server/d' \
+		-e '/parso/d' \
+		-e '/jedi/d' \
+			{setup.py,requirements/conda.txt} || die
+	sed -i \
+		-e "/^PYLS_REQVER/c\PYLS_REQVER = '>=0.0.1'" \
+		-e "/^PYLSP_REQVER/c\PYLSP_REQVER = '>=0.0.1'" \
+		-e "/^PARSO_REQVER/c\PARSO_REQVER = '>=0.0.1'" \
+		-e "/^JEDI_REQVER/c\JEDI_REQVER = '>=0.0.1'" \
+			spyder/dependencies.py || die
 
 	# do not check deps, fails because we removed pyqt5 dependency above
 	sed -i -e 's:test_dependencies_for_spyder_setup_install_requires_in_sync:_&:' \
