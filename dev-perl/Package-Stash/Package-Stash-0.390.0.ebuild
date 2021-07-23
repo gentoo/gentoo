@@ -32,11 +32,13 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-File-Spec
+	dev-perl/CPAN-Meta-Check
 	dev-perl/ExtUtils-HasCompiler
 	virtual/perl-Text-ParseWords
 	test? (
 		virtual/perl-IO
 		dev-perl/Test-Fatal
+		dev-perl/Test-Needs
 		dev-perl/Test-Requires
 		>=virtual/perl-Test-Simple-0.880.0
 	)
