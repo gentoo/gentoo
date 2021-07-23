@@ -17,6 +17,12 @@ RDEPEND="virtual/man"
 
 S="${WORKDIR}/${PN}_${MY_PV}"
 
+src_prepare() {
+	default
+	# Remove man page provided by sys-apps/shadow
+	rm man5/passwd.5 || die
+}
+
 src_install() {
 	insinto /usr/share/man/ru
 	doins -r man*
