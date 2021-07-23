@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-1 lua5-3 )
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools lua-single ssl-cert systemd toolchain-funcs
+inherit autotools flag-o-matic lua-single ssl-cert systemd toolchain-funcs
 
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
@@ -29,7 +29,7 @@ HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib zstd"
@@ -99,6 +99,13 @@ src_prepare() {
 	# bug 657108
 	#elibtoolize
 	eautoreconf
+
+	if use riscv; then
+		# Without this, src_tests dies due to failed asserts in test-backtrace.c;
+		# See https://salsa.debian.org/debian/dovecot/-/merge_requests/8 .
+		# Might in fact be needed on other arches as well.
+		append-cflags -funwind-tables
+	fi
 }
 
 src_configure() {

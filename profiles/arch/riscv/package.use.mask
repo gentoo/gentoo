@@ -96,6 +96,7 @@ dev-util/strace unwind
 media-libs/gstreamer unwind
 media-libs/mesa unwind
 net-libs/zeromq unwind
+net-mail/dovecot unwind
 x11-base/xorg-server unwind
 x11-base/xwayland unwind
 
