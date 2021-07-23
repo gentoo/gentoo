@@ -7,16 +7,15 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 SSL_DEPS_SKIP=1
 USE_RUBY="ruby24 ruby25 ruby26"
 
-inherit cmake git-r3 ruby-single ssl-cert systemd toolchain-funcs
-
-EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+inherit cmake ruby-single ssl-cert systemd toolchain-funcs
 
 DESCRIPTION="H2O - the optimized HTTP/1, HTTP/2 server"
 HOMEPAGE="https://h2o.examp1e.net/"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="amd64 x86"
 IUSE="libh2o +mruby"
 
 RDEPEND="
@@ -42,7 +41,7 @@ DEPEND="
 "
 RDEPEND+="!sci-libs/libh2o"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.3-mruby.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.2-mruby.patch )
 
 src_prepare() {
 	cmake_src_prepare
