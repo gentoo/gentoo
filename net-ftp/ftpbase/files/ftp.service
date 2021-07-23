@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+
+<service-group>
+	<name replace-wildcards="yes">File Transfer Protocol (FTP) on %h</name>
+	<service>
+		<port>21</port>
+		<type>_ftp._tcp</type>
+	</service>
+</service-group>
