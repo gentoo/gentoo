@@ -58,8 +58,8 @@ src_prepare() {
 	#
 	# There are two circular dependencies to be aware of:
 	# 1)
-	# 	if we're bootstrapping configure and makefiles:
-	# 		libxcrypt -> automake -> perl -> libxcrypt
+	#	if we're bootstrapping configure and makefiles:
+	#		libxcrypt -> automake -> perl -> libxcrypt
 	#
 	#   mitigation:
 	#		toolchain@ manually runs `make dist` after running autoconf + `./configure`
