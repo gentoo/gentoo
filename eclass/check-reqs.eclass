@@ -68,6 +68,14 @@ _CHECK_REQS_ECLASS=1
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
 
+# @ECLASS-VARIABLE: CHECKREQS_DONOTHING
+# @USER_VARIABLE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Do not error out in _check-reqs_output if requirements are not met.
+# This is a user flag and should under _no circumstances_ be set in the ebuild.
+[[ -n ${I_KNOW_WHAT_I_AM_DOING} ]] && CHECKREQS_DONOTHING=1
+
 # @FUNCTION: check-reqs_pkg_setup
 # @DESCRIPTION:
 # Exported function running the resources checks in pkg_setup phase.
@@ -276,7 +284,7 @@ _check-reqs_output() {
 
 	local msg="ewarn"
 
-	[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && msg="eerror"
+	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	if [[ -n ${CHECKREQS_FAILED} ]]; then
 		${msg}
 		${msg} "Space constraints set in the ebuild were not met!"
@@ -284,7 +292,7 @@ _check-reqs_output() {
 		${msg} "as per failed tests."
 		${msg}
 
-		[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && \
+		[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && \
 			die "Build requirements not met!"
 	fi
 }
@@ -446,7 +454,7 @@ _check-reqs_unsatisfied() {
 	local location=${2}
 	local sizeunit="$(_check-reqs_get_number ${size}) $(_check-reqs_get_unit ${size})"
 
-	[[ ${EBUILD_PHASE} == "pretend" && -z ${I_KNOW_WHAT_I_AM_DOING} ]] && msg="eerror"
+	[[ ${EBUILD_PHASE} == "pretend" && -z ${CHECKREQS_DONOTHING} ]] && msg="eerror"
 	${msg} "There is NOT at least ${sizeunit} ${location}"
 
 	# @ECLASS-VARIABLE: CHECKREQS_FAILED
