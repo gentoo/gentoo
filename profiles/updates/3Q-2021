@@ -1,1 +1,2 @@
 move media-sound/zam-plugins media-plugins/zam-plugins
+slotmove =dev-ruby/elasticsearch-transport-6.8.3 6 6.8.3
