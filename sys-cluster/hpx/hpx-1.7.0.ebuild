@@ -33,9 +33,11 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-cpp/asio
 	dev-libs/boost:=
 	sys-apps/hwloc
 	sys-libs/zlib
+	jemalloc? ( dev-libs/jemalloc )
 	mpi? ( virtual/mpi )
 	papi? ( dev-libs/papi )
 	perftools? ( dev-util/google-perftools )
