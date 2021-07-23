@@ -155,8 +155,10 @@ pkg_postinst() {
 }
 
 pkg_prerm() {
-	elog "Unsetting iptables symlinks before removal"
-	eselect iptables unset
+	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+		elog "Unsetting iptables symlinks before removal"
+		eselect iptables unset
+	fi
 
 	if ! has_version 'net-firewall/ebtables'; then
 		elog "Unsetting ebtables symlinks before removal"
