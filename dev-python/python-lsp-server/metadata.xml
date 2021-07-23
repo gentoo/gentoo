@@ -13,4 +13,7 @@
 	<upstream>
 		<remote-id type="pypi">python-lsp-server</remote-id>
 	</upstream>
+	<use>
+		<flag name="all-plugins">Pull in all optional plugins</flag>
+	</use>
 </pkgmetadata>

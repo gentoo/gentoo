@@ -16,6 +16,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
+IUSE="all-plugins"
+
 BDEPEND="
 	test? (
 		dev-python/autopep8[${PYTHON_USEDEP}]
@@ -41,7 +43,19 @@ RDEPEND="
 	<dev-python/jedi-0.19.0[${PYTHON_USEDEP}]
 	>=dev-python/python-lsp-jsonrpc-1.0.0[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
-	>=dev-python/ujson-3[${PYTHON_USEDEP}]
+	all-plugins? (
+		dev-python/autopep8[${PYTHON_USEDEP}]
+		>=dev-python/flake8-3.8.0[${PYTHON_USEDEP}]
+		>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
+		<dev-python/mccabe-0.7.0[${PYTHON_USEDEP}]
+		>=dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
+		>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pyflakes-2.3.0[${PYTHON_USEDEP}]
+		<dev-python/pyflakes-2.4.0[${PYTHON_USEDEP}]
+		>=dev-python/pylint-2.5.0[${PYTHON_USEDEP}]
+		>=dev-python/rope-0.10.5[${PYTHON_USEDEP}]
+		dev-python/yapf[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
