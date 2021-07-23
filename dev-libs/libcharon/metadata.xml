@@ -21,9 +21,6 @@
 		<email>perlovka@gmail.com</email>
 		<name>Michael Perlov</name>
 	</maintainer>
-	<slots>
-		<subslots>soname major version number</subslots>
-	</slots>
 	<longdescription>
 		Library to read and write several 3D-printing related file formats including G-Code and Ultimaker File Package (UFP).
 	</longdescription>
