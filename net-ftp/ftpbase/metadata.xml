@@ -6,4 +6,7 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="zeroconf">Enable support for zero-configuration networking via Avahi.</flag>
+	</use>
 </pkgmetadata>
