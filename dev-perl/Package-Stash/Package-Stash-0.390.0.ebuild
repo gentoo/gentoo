@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Routines for manipulating stashes"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="minimal"
 
 RDEPEND="
