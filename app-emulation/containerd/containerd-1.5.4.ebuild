@@ -60,7 +60,7 @@ src_compile() {
 		REVISION=69107e47a62e1d690afa2b9b1d43f8ece3ff4483
 		VERSION=v${PV}
 	)
-	
+
 	# race condition in man target https://bugs.gentoo.org/765100
 	# we need to explicitly specify GOFLAGS for "go run" to use vendor source
 	GOFLAGS="-v -x -mod=vendor" emake "${myemakeargs[@]}" man -j1 #nowarn
