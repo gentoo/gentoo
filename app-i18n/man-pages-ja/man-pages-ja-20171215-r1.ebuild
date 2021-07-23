@@ -23,6 +23,7 @@ src_prepare() {
 	# remove man pages that are provided by other packages.
 	# - sys-apps/shadow +nls
 	rm -f manual/*/man1/{chfn,chsh,newgrp,su,passwd,groups}.1 || die
+	rm -f manual/*/man5/passwd.5 || die
 	rm -f manual/*/man8/{vigr,vipw}.8 || die
 	# - app-arch/rpm +nls
 	rm -rf manual/rpm || die
