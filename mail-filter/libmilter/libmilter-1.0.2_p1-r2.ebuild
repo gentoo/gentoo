@@ -20,7 +20,7 @@ S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 LICENSE="Sendmail"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="ipv6 poll"
 
 RDEPEND="!<mail-mta/sendmail-8.16.1"
