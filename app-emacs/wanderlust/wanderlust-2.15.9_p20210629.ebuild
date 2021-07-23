@@ -53,6 +53,6 @@ src_install() {
 	if use l10n_ja; then
 		insinto "${SITEETC}/wl/samples/ja"
 		doins samples/ja/*
-		dodoc BUGS.ja INSTALL.ja NEWS.ja README.ja
+		dodoc BUGS.ja INSTALL.ja NEWS.ja README.ja.md
 	fi
 }
