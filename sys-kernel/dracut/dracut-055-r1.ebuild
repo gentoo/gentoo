@@ -60,6 +60,8 @@ BDEPEND="
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 
 PATCHES=(
+	"${FILESDIR}"/055-fix-crypt-remove-quotes-from-cryptsetupopts.patch
+	"${FILESDIR}"/055-fix-base-do-not-quote-initargs-for-switch_root.patch
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 )
 
