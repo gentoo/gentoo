@@ -16,7 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="dev-python/python-lsp-server[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/python-lsp-server[all-plugins,${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
