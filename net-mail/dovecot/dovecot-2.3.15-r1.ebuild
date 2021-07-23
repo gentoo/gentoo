@@ -100,12 +100,8 @@ src_prepare() {
 	#elibtoolize
 	eautoreconf
 
-	if use riscv; then
-		# Without this, src_tests dies due to failed asserts in test-backtrace.c;
-		# See https://salsa.debian.org/debian/dovecot/-/merge_requests/8 .
-		# Might in fact be needed on other arches as well.
-		append-cflags -funwind-tables
-	fi
+	# Bug #727244
+	append-cflags -fasynchronous-unwind-tables
 }
 
 src_configure() {
