@@ -40,6 +40,13 @@ _LUA_ALL_IMPLS=(
 )
 readonly _LUA_ALL_IMPLS
 
+# @ECLASS-VARIABLE: _LUA_HISTORICAL_IMPLS
+# @INTERNAL
+# @DESCRIPTION:
+# All historical Lua implementations that are no longer supported.
+_LUA_HISTORICAL_IMPLS=()
+readonly _LUA_HISTORICAL_IMPLS
+
 # @FUNCTION: _lua_set_impls
 # @INTERNAL
 # @DESCRIPTION:
