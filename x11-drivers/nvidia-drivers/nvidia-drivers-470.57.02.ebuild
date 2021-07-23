@@ -446,7 +446,7 @@ pkg_postinst() {
 		elog "With USE=wayland, this version of ${PN} sets nvidia-drm.modeset=1"
 		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. This feature is considered"
 		elog "experimental but is required for EGLStream (used for wayland acceleration"
-		elog "in compositors that support it) and PRIME offloading."
+		elog "in compositors that support it)."
 		elog
 		elog "If you experience issues, please comment out the option from nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
