@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
