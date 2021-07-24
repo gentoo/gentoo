@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=STRZELEC
 DIST_VERSION=0.71
@@ -10,7 +10,6 @@ inherit perl-module
 DESCRIPTION="access to standard unix passwd files"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	virtual/perl-Carp
@@ -21,9 +20,11 @@ RDEPEND="
 	>=virtual/perl-IO-Compress-2.15.0
 	dev-perl/Struct-Compare
 "
-DEPEND="${RDEPEND}
+
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
+
 src_prepare() {
 	mkdir t/
 	mv test.pl t/test.t
