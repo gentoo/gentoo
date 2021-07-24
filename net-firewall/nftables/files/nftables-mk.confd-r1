@@ -5,7 +5,8 @@
 NFTABLES_SAVE="/var/lib/nftables/rules-save"
 
 # Options to pass to nft on save
-SAVE_OPTIONS="-n"
+# -n is broken see bug #790014
+SAVE_OPTIONS="-T -y -p"
 
 # Save state on stopping nftables
 SAVE_ON_STOP="yes"
