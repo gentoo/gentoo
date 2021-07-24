@@ -3,6 +3,7 @@
 
 EAPI=7
 
+# don't forget to add itoa-0.3.4 for tests https://bugs.gentoo.org/803512
 CRATES="
 addr2line-0.14.1
 adler-0.2.3
@@ -138,6 +139,7 @@ instant-0.1.9
 iovec-0.1.4
 itertools-0.10.0
 itertools-0.9.0
+itoa-0.3.4
 itoa-0.4.7
 jobserver-0.1.21
 jsonwebtoken-7.2.0
