@@ -1,0 +1,162 @@
+From 19073a8ed52dbc02b64be4cb55a6203dbf36707e Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 24 Jul 2021 22:28:34 +0200
+Subject: [PATCH] changes needed for proper slotting
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+---
+ config/CMakeLists.txt                  | 6 +++---
+ config/Imath.pc.in                     | 4 ++--
+ config/LibraryDefine.cmake             | 8 ++++----
+ src/python/PyImath.pc.in               | 4 ++--
+ src/python/PyImathNumpy/CMakeLists.txt | 2 +-
+ src/python/config/CMakeLists.txt       | 4 ++--
+ src/python/config/ModuleDefine.cmake   | 6 +++---
+ 7 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/config/CMakeLists.txt b/config/CMakeLists.txt
+index d51c25b..63cc98d 100644
+--- a/config/CMakeLists.txt
++++ b/config/CMakeLists.txt
+@@ -60,7 +60,7 @@ include(CMakePackageConfigHelpers)
+ 
+ configure_package_config_file(ImathConfig.cmake.in
+   ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${IMATH_OUTPUT_SUBDIR}
+ )
+ 
+ write_basic_package_version_file("${PROJECT_NAME}ConfigVersion.cmake"
+@@ -70,11 +70,11 @@ write_basic_package_version_file("${PROJECT_NAME}ConfigVersion.cmake"
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+               ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${IMATH_OUTPUT_SUBDIR}
+ )
+ 
+ install(EXPORT ${PROJECT_NAME}
+-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${IMATH_OUTPUT_SUBDIR}
+   FILE ${PROJECT_NAME}Targets.cmake
+   NAMESPACE ${PROJECT_NAME}::
+   EXPORT_LINK_INTERFACE_LIBRARIES
+diff --git a/config/Imath.pc.in b/config/Imath.pc.in
+index df11cfd..6eb4f40 100644
+--- a/config/Imath.pc.in
++++ b/config/Imath.pc.in
+@@ -5,7 +5,7 @@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
++libdir=@libdir@/@IMATH_OUTPUT_SUBDIR@
+ includedir=@includedir@
+ libsuffix=@LIB_SUFFIX_DASH@
+ Name: Imath
+@@ -14,4 +14,4 @@ Version: @IMATH_VERSION@
+ Requires:
+ Conflicts:
+ Libs: -L${libdir} -lImath${libsuffix}
+-Cflags: -I${includedir} -I${includedir}/Imath
++Cflags: -I${includedir} -I${includedir}/@IMATH_OUTPUT_SUBDIR@
+diff --git a/config/LibraryDefine.cmake b/config/LibraryDefine.cmake
+index 4868954..60b6532 100644
+--- a/config/LibraryDefine.cmake
++++ b/config/LibraryDefine.cmake
+@@ -87,8 +87,8 @@ function(IMATH_DEFINE_LIBRARY libname)
+   install(TARGETS ${libname}
+     EXPORT ${PROJECT_NAME}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${IMATH_OUTPUT_SUBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/${IMATH_OUTPUT_SUBDIR}
+     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+     PUBLIC_HEADER
+       DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${IMATH_OUTPUT_SUBDIR}
+@@ -101,8 +101,8 @@ function(IMATH_DEFINE_LIBRARY libname)
+       install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E chdir \"\$ENV\{DESTDIR\}${CMAKE_INSTALL_FULL_BINDIR}\" ${CMAKE_COMMAND} -E create_symlink ${verlibname} ${baselibname})")
+       install(CODE "message(STATUS \"Creating symlink ${CMAKE_INSTALL_FULL_BINDIR}/${baselibname} -> ${verlibname}\")")
+     else()
+-      install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E chdir \"\$ENV\{DESTDIR\}${CMAKE_INSTALL_FULL_LIBDIR}\" ${CMAKE_COMMAND} -E create_symlink ${verlibname} ${baselibname})")
+-      install(CODE "message(STATUS \"Creating symlink ${CMAKE_INSTALL_FULL_LIBDIR}/${baselibname} -> ${verlibname}\")")
++      install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E chdir \"\$ENV\{DESTDIR\}${CMAKE_INSTALL_FULL_LIBDIR}/${IMATH_OUTPUT_SUBDIR}\" ${CMAKE_COMMAND} -E create_symlink ${verlibname} ${baselibname})")
++      install(CODE "message(STATUS \"Creating symlink ${CMAKE_INSTALL_FULL_LIBDIR}/${IMATH_OUTPUT_SUBDIR}/${baselibname} -> ${verlibname}\")")
+     endif()
+     set(verlibname)
+     set(baselibname)
+diff --git a/src/python/PyImath.pc.in b/src/python/PyImath.pc.in
+index 8e8de6f..1902660 100644
+--- a/src/python/PyImath.pc.in
++++ b/src/python/PyImath.pc.in
+@@ -5,7 +5,7 @@
+ 
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@
++libdir=@libdir@/@IMATH_OUTPUT_SUBDIR@
+ includedir=@includedir@
+ libsuffix=@LIB_SUFFIX_DASH@
+ 
+@@ -13,4 +13,4 @@ Name: PyImath
+ Description: Python bindings for the Imath libraries
+ Version: @IMATH_VERSION@
+ Libs: -L${libdir} -lImath${libsuffix} -lPyImath@PYIMATH_LIB_PYTHONVER_ROOT@@Python_VERSION_MAJOR@_@Python_VERSION_MINOR@${libsuffix}
+-Cflags: -I${includedir} -I${includedir}/Imath
++Cflags: -I${includedir} -I${includedir}/@IMATH_OUTPUT_SUBDIR@
+diff --git a/src/python/PyImathNumpy/CMakeLists.txt b/src/python/PyImathNumpy/CMakeLists.txt
+index 7b4f6b2..8f7fd70 100644
+--- a/src/python/PyImathNumpy/CMakeLists.txt
++++ b/src/python/PyImathNumpy/CMakeLists.txt
+@@ -48,5 +48,5 @@ if(TARGET Python3::Python AND
+     LIBRARY_OUTPUT_NAME "imathnumpy"
+     DEBUG_POSTFIX ""
+   )
+-  install(TARGETS imathnumpy_python3 DESTINATION ${PyImath_Python3_SITEARCH_REL})
++  install(TARGETS imathnumpy_python3 DESTINATION ${PyImath_Python3_SITEARCH_REL}/${IMATH_OUTPUT_SUBDIR})
+ endif()
+diff --git a/src/python/config/CMakeLists.txt b/src/python/config/CMakeLists.txt
+index 4f796df..15d7026 100644
+--- a/src/python/config/CMakeLists.txt
++++ b/src/python/config/CMakeLists.txt
+@@ -41,10 +41,10 @@ write_basic_package_version_file("${PROJECT_NAME}ConfigVersion.cmake"
+   COMPATIBILITY SameMajorVersion
+ )
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${IMATH_OUTPUT_SUBDIR}
+ )
+ install(EXPORT ${PROJECT_NAME}
+-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${IMATH_OUTPUT_SUBDIR}
+   FILE ${PROJECT_NAME}Config.cmake
+   NAMESPACE ${PROJECT_NAME}::
+   EXPORT_LINK_INTERFACE_LIBRARIES
+diff --git a/src/python/config/ModuleDefine.cmake b/src/python/config/ModuleDefine.cmake
+index 7e30614..40d9032 100644
+--- a/src/python/config/ModuleDefine.cmake
++++ b/src/python/config/ModuleDefine.cmake
+@@ -54,8 +54,8 @@ function(PYIMATH_ADD_LIBRARY_PRIV libname)
+   install(TARGETS ${libname}
+     EXPORT ${PROJECT_NAME}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${IMATH_OUTPUT_SUBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/${IMATH_OUTPUT_SUBDIR}
+   )
+ endfunction()
+ 
+@@ -154,7 +154,7 @@ function(PYIMATH_DEFINE_MODULE modname)
+         LIBRARY_OUTPUT_NAME "${modname}"
+         DEBUG_POSTFIX ""
+       )
+-      install(TARGETS ${modname}_python3 DESTINATION ${PyImath_Python3_SITEARCH_REL})
++      install(TARGETS ${modname}_python3 DESTINATION ${PyImath_Python3_SITEARCH_REL}/${IMATH_OUTPUT_SUBDIR})
+     endif()
+   endif()
+ endfunction()
+-- 
+2.32.0
+
