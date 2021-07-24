@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-inherit epatch
+inherit toolchain-funcs
 
 DESCRIPTION="simple tuning app for DVB cards"
 HOMEPAGE="https://sourceforge.net/projects/dvbtools"
@@ -18,9 +18,15 @@ RDEPEND="xml? ( dev-libs/libxml2 )"
 DEPEND="${RDEPEND}
 	virtual/linuxtv-dvb-headers"
 
+PATCHES=(
+	"${FILESDIR}"/${PF}-gentoo.diff
+	"${FILESDIR}"/${PN}-0.5-stdint.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PF}-gentoo.diff
-	epatch "${FILESDIR}"/${PN}-0.5-stdint.patch
+	default
+
+	tc-export CC
 }
 
 src_compile() {
