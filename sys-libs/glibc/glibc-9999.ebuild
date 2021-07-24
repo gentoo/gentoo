@@ -1461,7 +1461,7 @@ glibc_sanity_check() {
 
 	# first let's find the actual dynamic linker here
 	# symlinks may point to the wrong abi
-	local newldso=$(find . -name 'ld-linux*.so.2' -type f -print -quit)
+	local newldso=$(find . -name 'ld-linux*.so.?' -type f -print -quit)
 
 	einfo Last-minute run tests with ${newldso} in /$(get_libdir) ...
 
