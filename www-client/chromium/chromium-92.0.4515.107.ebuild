@@ -15,7 +15,7 @@ DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
 PATCHSET="7"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
-PPC64LE_PATCHSET="91-ppc64le-6"
+PPC64LE_PATCHSET="92-ppc64le-1"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://files.pythonhosted.org/packages/ed/7b/bbf89ca71e722b7f9464ebffe4b5ee20a9e5c9a555a56e2d3914bb9119a6/setuptools-44.1.0.zip
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
@@ -25,7 +25,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="component-build cups cpu_flags_arm_neon +hangouts headless +js-type-check kerberos official pic +proprietary-codecs pulseaudio screencast selinux +suid +system-ffmpeg +system-icu vaapi wayland widevine"
 REQUIRED_USE="
 	component-build? ( !suid )
@@ -239,9 +239,16 @@ src_prepare() {
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
 
-	use ppc64 && eapply -p0 "${WORKDIR}/${PN}"-ppc64le
+	if use ppc64; then
+		eapply "${WORKDIR}/${PN}-ppc64le/xxx-ppc64le-libvpx.patch"
+		eapply "${WORKDIR}/${PN}-ppc64le/xxx-ppc64le-support.patch"
+		eapply "${WORKDIR}/${PN}-ppc64le/xxx-ppc64le-swiftshader.patch"
+	fi
 
 	default
+
+	# this patch needs to be applied after gentoo sandbox patchset
+	use ppc64 && eapply "${WORKDIR}/${PN}-ppc64le/xxx-ppc64le-sandbox_kernel_stat.patch"
 
 	mkdir -p third_party/node/linux/node-linux-x64/bin || die
 	ln -s "${EPREFIX}"/usr/bin/node third_party/node/linux/node-linux-x64/bin/node || die
