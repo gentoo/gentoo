@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit epatch flag-o-matic libtool multilib
+inherit epatch flag-o-matic libtool multilib toolchain-funcs
 
 PATCH_VER="1.10"
 
@@ -151,6 +151,8 @@ src_prepare() {
 			"${S}"/gcc/config/i386/t-linux64 \
 			|| die "sed failed!"
 	fi
+
+	tc-export AR CC RANLIB NM
 }
 
 src_configure() {
@@ -175,12 +177,17 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C "${WORKDIR}"/build all-target-libstdc++-v3
+	emake \
+		-C "${WORKDIR}"/build all-target-libstdc++-v3 \
+		AR="$(tc-getAR)" \
+		NM="$(tc-getNM)"
 }
 
 src_install() {
 	emake -j1 \
 		-C "${WORKDIR}"/build \
+		AR="$(tc-getAR)" \
+		NM="$(tc-getNM)" \
 		DESTDIR="${D}" \
 		install-target-libstdc++-v3
 
