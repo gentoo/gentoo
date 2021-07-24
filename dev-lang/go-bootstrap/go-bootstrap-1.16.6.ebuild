@@ -33,4 +33,7 @@ S="${WORKDIR}"
 src_install() {
 	dodir /usr/lib
 	mv go-*-bootstrap "${ED}/usr/lib/go-bootstrap" || die
+
+	# testdata directories are not needed on the installed system
+	rm -fr $(find "${ED}"/usr/lib/go -iname testdata -type d -print)
 }
