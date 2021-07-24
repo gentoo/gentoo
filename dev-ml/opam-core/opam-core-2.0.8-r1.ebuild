@@ -24,6 +24,7 @@ RDEPEND="
 	dev-ml/cmdliner:=
 "
 DEPEND="${RDEPEND}
+	<=dev-ml/dune-2.9
 	dev-ml/cppo"
 
 src_prepare() {
