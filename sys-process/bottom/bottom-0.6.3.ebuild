@@ -186,6 +186,12 @@ KEYWORDS="~amd64"
 # Rust packages ignore CFLAGS and LDFLAGS so let's silence the QA warnings
 QA_FLAGS_IGNORED="usr/bin/btm"
 
+src_configure() {
+	# https://github.com/ClementTsang/bottom/blob/bacaca5548c2b23d261ef961ee6584b609529567/Cargo.toml#L63
+	# fern and log features are for debugging only, so disable default features
+	cargo_src_configure $(usev !debug --no-default-features)
+}
+
 src_install() {
 	cargo_src_install
 
