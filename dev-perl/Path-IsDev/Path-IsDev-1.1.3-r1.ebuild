@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=KENTNL
 DIST_VERSION=1.001003
@@ -10,8 +10,7 @@ inherit perl-module
 DESCRIPTION="Determine if a given Path resembles a development source tree"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -23,7 +22,8 @@ RDEPEND="
 	virtual/perl-Scalar-List-Utils
 	dev-perl/Sub-Exporter
 "
-DEPEND="${RDEPEND}
+
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	!minimal? ( >=virtual/perl-ExtUtils-MakeMaker-7.0.0 )
 	test? (
