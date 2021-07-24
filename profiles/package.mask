@@ -410,10 +410,6 @@ dev-qt/qtwebkit:5
 # bug #731266
 >=net-mail/cyrus-imapd-3.4.0
 
-# David Seifert <soap@gentoo.org> (2021-05-05)
-# Causes unsolvable package conflicts, bug #788310
->=media-libs/openexr-3
-
 # Eray Aslan <eras@gentoo.org> (2021-04-29)
 # Mask experimental software
 =mail-mta/postfix-3.7*
