@@ -111,7 +111,7 @@ src_compile() {
 }
 
 src_test() {
-	if has userpriv ${FEATURES} || ${EUID} -ne 0 ; then
+	if [[ ${EUID} != 0 ]]; then
 		einfo "Tests require root privileges; Skipping ..."
 		return
 	fi
