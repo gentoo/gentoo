@@ -13,7 +13,7 @@ SRC_URI="https://github.com/docopt/docopt/archive/${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.2-pytest_node_from_parent.patch
