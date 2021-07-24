@@ -1,10 +1,5 @@
-Index: MPEGaudio.h
-===================================================================
-RCS file: /cvs/cvsroot/smpeg/MPEGaudio.h,v
-retrieving revision 1.23
-diff -u -p -r1.23 MPEGaudio.h
---- smpeg/MPEGaudio.h	17 Jul 2001 19:52:24 -0000	1.23
-+++ smpeg/MPEGaudio.h	6 Dec 2005 06:10:43 -0000
+--- smpeg/MPEGaudio.h
++++ smpeg/MPEGaudio.h
 @@ -151,12 +151,6 @@ private:
  /* The actual MPEG audio class */
  class MPEGaudio : public MPEGerror, public MPEGaudioaction {
