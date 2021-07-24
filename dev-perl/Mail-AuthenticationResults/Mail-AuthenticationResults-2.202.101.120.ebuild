@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Object Oriented Authentication-Results Headers"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc"
 
 RDEPEND="
 	virtual/perl-Carp
