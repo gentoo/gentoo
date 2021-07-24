@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Read JSON into a Perl Variable"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
