@@ -37,10 +37,10 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	cat <<EOF >> setup.cfg || die
-[build_ext]
-use-system-libuv=1
-EOF
+	cat <<-EOF >> setup.cfg || die
+		[build_ext]
+		use_system_libuv=1
+	EOF
 
 	# flake8 only
 	rm tests/test_sourcecode.py || die
