@@ -8,7 +8,7 @@ inherit autotools flag-o-matic toolchain-funcs
 DESCRIPTION="Open source SIP, Media, and NAT Traversal Library"
 HOMEPAGE="https://www.pjsip.org/"
 SRC_URI="https://github.com/pjsip/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
