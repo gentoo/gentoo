@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Sam James <sam@gentoo.org> (2021-07-24)
+# USE=exec-static-trampoline can break consumers due to
+# faulty assumptions. Masked for now due to the possibility
+# of breaking systems.
+# https://archives.gentoo.org/gentoo-dev/message/576259af17d008d4ec935f69a9049af7
+# bug #801109
+dev-libs/libffi exec-static-trampoline
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Several known issues (possibly with older pastix versions as well but
 # in v6 they result in clear errors):
