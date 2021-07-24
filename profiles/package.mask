@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-24)
+# API, its only consumer is last-rited
+# removal in 30 days
+dev-java/jsr101
+
 # Michał Górny <mgorny@gentoo.org> (2021-07-23)
 # Abandoned.  All versions are vulnerable to CVE-2021-33909.
 # sys-kernel/gentoo-kernel{,-bin} are the suggested replacements.
