@@ -19,6 +19,7 @@ IUSE="ipv6 mbedtls test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/gdbm
+	virtual/libcrypt:=
 	mbedtls? ( net-libs/mbedtls:= )"
 DEPEND="${RDEPEND}
 	test? (
