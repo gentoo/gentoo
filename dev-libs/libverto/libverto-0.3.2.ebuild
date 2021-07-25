@@ -45,5 +45,5 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	default
 
-	find "${ED}" -name '*.la' -delete
+	find "${ED}" -name '*.la' -delete || die
 }
