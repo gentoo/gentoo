@@ -38,7 +38,6 @@ src_prepare() {
 		rm "${WORKDIR}"/themes/Ace/.theme.swp || die
 	fi
 
-
 	eautoreconf
 }
 
