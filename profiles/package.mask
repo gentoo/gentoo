@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-07-25)
+# Conflicts with dev-python/pyxdg.  Upstream is unwilling to resolve
+# this.  The only revdep has been patched to use pyxdg.
+# Removal on 2021-08-24.  Bug #804127.
+dev-python/xdg
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-24)
 # API, its only consumer is last-rited
 # removal in 30 days
