@@ -14,7 +14,7 @@ SRC_URI="https://github.com/namhyung/uftrace/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="bash-completion capstone lua"
+IUSE="capstone lua"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
@@ -57,6 +57,7 @@ src_compile() {
 
 src_install() {
 	default
+
 	dodoc doc/*.{md,gif,png}
-	use bash-completion && newbashcomp misc/bash-completion.sh uftrace
+	newbashcomp misc/bash-completion.sh uftrace
 }
