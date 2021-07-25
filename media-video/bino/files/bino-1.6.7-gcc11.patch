@@ -1,0 +1,30 @@
+https://git.marlam.de/gitweb/?p=bino.git;a=commitdiff;h=7997ad11eefe241bb85a27c50d009c99851d7b0b
+https://bugs.gentoo.org/790128
+
+From 7997ad11eefe241bb85a27c50d009c99851d7b0b Mon Sep 17 00:00:00 2001
+From: Martin Lambers <marlam@marlam.de>
+Date: Sat, 27 Feb 2021 21:28:50 +0100
+Subject: [PATCH] fix compilation with C++ 17 compilers such as gcc 11
+
+---
+ src/base/dbg.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/base/dbg.cpp b/src/base/dbg.cpp
+index 6c6234f..044be67 100644
+--- a/src/base/dbg.cpp
++++ b/src/base/dbg.cpp
+@@ -74,8 +74,10 @@ namespace dbg
+         (void)sigaction(SIGFPE, &signal_handler, NULL);
+         (void)sigaction(SIGSEGV, &signal_handler, NULL);
+ #endif
++#if __cplusplus < 201700
+         std::set_unexpected(exception_crash);
+         std::set_terminate(exception_crash);
++#endif
+         std::set_new_handler(oom_abort);
+     }
+ 
+-- 
+2.20.1
+

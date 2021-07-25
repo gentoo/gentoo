@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic xdg-utils
+inherit flag-o-matic xdg
 
 DESCRIPTION="Stereoscopic and multi-display media player"
 HOMEPAGE="https://bino3d.org/"
@@ -25,28 +25,28 @@ RDEPEND="
 	virtual/libintl
 	>=media-video/ffmpeg-0.7:0=
 	lirc? ( app-misc/lirc )
-	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
-"
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
-"
+	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext
+	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.7-gcc11.patch
+)
 
 src_configure() {
-	# Qt5 now requires C++11, #649282
-	append-cxxflags -std=c++11
-
 	if use video_cards_nvidia; then
-		append-cppflags "-I/usr/include/NVCtrl"
-		append-ldflags "-L/usr/$(get_libdir)/opengl/nvidia/lib -L/usr/$(get_libdir)"
+		append-cppflags "-I${ESYSROOT}/usr/include/NVCtrl"
+		append-ldflags "-L${ESYSROOT}/usr/$(get_libdir)/opengl/nvidia/lib -L${ESYSROOT}/usr/$(get_libdir)"
 		append-libs "Xext"
 	fi
+
 	if use lirc; then
-		append-cppflags "-I/usr/include/lirc"
+		append-cppflags "-I${ESYSROOT}/usr/include/lirc"
 		append-libs "lirc_client"
 	fi
 
-	# Fix a compilation error because of a multiple definitions in glew
+	# Fix a compilation error because of a multiple definitions error in glew
 	append-ldflags "-zmuldefs"
 
 	econf \
@@ -59,15 +59,8 @@ src_configure() {
 
 src_install() {
 	default
+
 	if ! use doc; then
-		rm -rf "${D}"/usr/share/doc/${PF}/html || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/html || die
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
