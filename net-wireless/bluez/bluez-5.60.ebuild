@@ -71,6 +71,9 @@ PATCHES=(
 	# Fedora patches
 	# http://www.spinics.net/lists/linux-bluetooth/msg40136.html
 	"${FILESDIR}"/0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
+
+	# https://marc.info/?l=linux-bluetooth&m=161498090629584&w=2
+	"${FILESDIR}"/${PN}-5.60-glibc-2.34.patch
 )
 
 pkg_setup() {
