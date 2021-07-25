@@ -7,7 +7,7 @@ inherit autotools desktop
 
 DESCRIPTION="A lightweight window manager initially based on aewm++"
 HOMEPAGE="
-	https://www.pekwm.org/
+	https://www.pekwm.se/
 	https://github.com/pekdon/pekwm
 "
 SRC_URI="
