@@ -28,6 +28,7 @@ CDEPEND="
 acct-group/postgres
 acct-user/postgres
 sys-apps/less
+virtual/libcrypt:=
 virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
