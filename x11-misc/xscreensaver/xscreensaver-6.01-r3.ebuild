@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic font multilib optfeature pam
 
 DESCRIPTION="modular screen saver and locker for the X Window System"
@@ -87,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.01-without-gl-makefile.patch
 	"${FILESDIR}"/${PN}-6.01-non-gtk-install.patch
 	"${FILESDIR}"/${PN}-6.01-gtk-detection.patch
+	"${FILESDIR}"/${PN}-6.01-configure-install_sh.patch
 )
 
 src_prepare() {
@@ -125,19 +127,7 @@ src_prepare() {
 	eapply_user
 
 	# Must be eauto*re*conf, to force the rebuild
-	# it is NOT an entirely normal autoconf so there is weirdness!
 	eautoreconf
-	eautoheader
-
-	# Afterwards, fix the linguas
-	# doesn't populate @install_sh@ properly
-	# https://bugs.gentoo.org/803479
-	# requires LINGUAS to trigger
-	sed -i.orig \
-		-e "/^install_sh = /s!=.*!= ${S}/install-sh!g" \
-		"${S}/po/Makefile.in.in" || die
-	grep -e install_sh \
-		"${S}/po/Makefile.in.in" || die
 }
 
 src_configure() {
