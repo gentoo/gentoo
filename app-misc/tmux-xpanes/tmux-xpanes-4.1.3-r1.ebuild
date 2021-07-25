@@ -7,19 +7,13 @@ DESCRIPTION="tmux-based terminal divider"
 HOMEPAGE="https://github.com/greymd/tmux-xpanes"
 SRC_URI="https://github.com/greymd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
-IUSE="zsh-completion"
-
-RDEPEND="
-	app-misc/tmux
+RDEPEND="app-misc/tmux
 	dev-lang/perl
-	dev-libs/openssl:0=
-	zsh-completion? ( app-shells/zsh )"
-
-DEPEND="${RDEPEND}"
+	dev-libs/openssl:0"
 
 RESTRICT="test"
 
@@ -29,8 +23,7 @@ src_install() {
 	dobin bin/*
 	doman man/*.1
 	einstalldocs
-	if use zsh-completion; then
-		insinto /usr/share/zsh/site-functions
-		doins completion/zsh/*
-	fi
+
+	insinto /usr/share/zsh/site-functions
+	doins -r completion/zsh/.
 }

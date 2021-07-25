@@ -9,14 +9,11 @@ SRC_URI="https://github.com/greymd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
-RDEPEND="
-	app-misc/tmux
+RDEPEND="app-misc/tmux
 	dev-lang/perl
-	dev-libs/openssl:0=
-"
-DEPEND="${RDEPEND}"
+	dev-libs/openssl:0"
 
 RESTRICT="test"
 
@@ -28,5 +25,5 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/share/zsh/site-functions
-	doins completion/zsh/*
+	doins -r completion/zsh/.
 }
