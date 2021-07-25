@@ -41,14 +41,13 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx-issues
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	# Skip tests causing sandbox violations
-	rm \
-		tests/test_hello_cpp.py \
-		tests/test_issue274_support_default_package_dir.py \
-		tests/test_issue274_support_one_package_without_package_dir.py \
-		tests/test_issue284_build_ext_inplace.py \
-		tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py \
-		|| die
-	distutils-r1_python_prepare_all
+python_test() {
+	local deselect=(
+		# sandbox violations
+		tests/test_hello_cpp.py::test_hello_develop
+		tests/test_issue274_support_default_package_dir.py
+		tests/test_issue274_support_one_package_without_package_dir.py
+		tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py
+	)
+	epytest ${deselect[@]/#/--deselect }
 }
