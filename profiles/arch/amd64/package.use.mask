@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Nicolas Werner <nicolas.werner@hotmail.de> (2021-09-05)
+# Qt5 packages don't support multilib, so disable it for this plugin.
+media-plugins/gst-plugins-qt5 abi_x86_32
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-01)
 # requires sys-apps/dbus-broker, which keyworded here.
 sys-apps/systemd -hostnamed-fallback
