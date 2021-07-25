@@ -63,11 +63,9 @@ lm-sensors
 
 # Stuff that doesn't work on ia64, or not tested
 afs
-blas
 djbfft
 emboss
 jack
-lapack
 lqr
 capi
 lensfun
