@@ -6,6 +6,7 @@ EAPI=7
 inherit cmake pam systemd
 
 DESCRIPTION="Simple Login Manager"
+HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
 SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
 KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 
