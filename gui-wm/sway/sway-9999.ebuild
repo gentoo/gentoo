@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="fish-completion +man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag tray wallpapers X zsh-completion"
+IUSE="+man +swaybar +swaybg +swayidle +swaylock +swaymsg +swaynag tray wallpapers X"
 
 DEPEND="
 	>=dev-libs/json-c-0.13:0=
@@ -80,16 +80,16 @@ src_configure() {
 		-Dtray=$(usex tray enabled disabled)
 		-Dxwayland=$(usex X enabled disabled)
 		$(meson_use wallpapers default-wallpaper)
-		$(meson_use fish-completion fish-completions)
-		$(meson_use zsh-completion zsh-completions)
-		"-Dbash-completions=true"
-		"-Dwerror=false"
+		-Dfish-completions=true
+		-Dzsh-completions=true
+		-Dbash-completions=true
+		-Dwerror=false
 	)
 
 	if use swaybar; then
-		emesonargs+=("-Dgdk-pixbuf=enabled")
+		emesonargs+=( -Dgdk-pixbuf=enabled )
 	else
-		emesonargs+=("-Dgdk-pixbuf=disabled")
+		emesonargs+=( -Dgdk-pixbuf=disabled )
 	fi
 
 	meson_src_configure
