@@ -26,7 +26,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.1.0-DisableTest.patch"
 	"${FILESDIR}/${PN}-3.9.0-add-include-directories.patch"
 	"${FILESDIR}/${PN}-3.5.1-config-cmake-in.patch"
-	"${FILESDIR}/${PN}-3.5.1-hip_vector_types.patch"
 	"${FILESDIR}/${PN}-3.9.0-lpl_ca-add-include.patch"
 )
 
@@ -40,18 +39,14 @@ src_prepare() {
 	sed -e "/set (HIP_LIB_VERSION_STRING/cset (HIP_LIB_VERSION_STRING ${PVR})" -i CMakeLists.txt || die
 
 	# disable PCH, because it results in a build error in ROCm 4.0.0
-	sed -e "s:option(__HIP_ENABLE_PCH:#option(__HIP_ENABLE_PCH:" -i "${S}/CMakeLists.txt" || die
+	sed -e "s:option(__HIP_ENABLE_PCH:#option(__HIP_ENABLE_PCH:" -i CMakeLists.txt || die
 
 	# "hcc" is deprecated and not installed, new platform is "rocclr";
 	# Setting HSA_PATH to "/usr" results in setting "-isystem /usr/include"
 	# which makes "stdlib.h" not found when using "#include_next" in header files;
-	sed -e "/HIP_PLATFORM.*HIP_COMPILER.*clang/s:hcc:rocclr:" \
-		-e "/FLAGS .= \" -isystem \$HSA_PATH/d" \
+	sed -e "/FLAGS .= \" -isystem \$HSA_PATH/d" \
 		-e "s:\$ENV{'DEVICE_LIB_PATH'}:'/usr/lib/amdgcn/bitcode':" \
 		-i bin/hipcc || die
-
-	# replace hcc remnants with modern rocclr.
-	sed -e "/HIP_PLATFORM.*STREQUAL/s:hcc:rocclr:" -i cmake/FindHIP/run_hipcc.cmake || die
 
 	# correctly find HIP_CLANG_INCLUDE_PATH using cmake
 	sed -e "/set(HIP_CLANG_ROOT/s:\"\${ROCM_PATH}/llvm\":/usr/lib/llvm/roc:" -i hip-config.cmake.in || die
