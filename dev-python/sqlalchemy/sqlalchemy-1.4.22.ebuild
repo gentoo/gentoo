@@ -44,8 +44,32 @@ src_prepare() {
 }
 
 python_test() {
+	local deselect=()
+	if [[ ${EPYTHON} != pypy3 ]] &&
+			! has_version -b "dev-python/greenlet[${PYTHON_USEDEP}]"
+	then
+		# skip tests requiring greenlet
+		deselect+=(
+			test/base/test_concurrency_py3k.py::TestAsyncAdaptedQueue::test_lazy_init
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_async_error
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_await_fallback_error
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_await_only_error
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_await_only_no_greenlet
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_contextvars
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_ok
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_propagate_cancelled
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_require_await
+			test/base/test_concurrency_py3k.py::TestAsyncioCompat::test_sync_error
+			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_execution
+			test/ext/asyncio/test_engine_py3k.py::TextSyncDBAPI::test_sync_driver_run_sync
+			test/base/test_concurrency_py3k.py::TestAsyncAdaptedQueue::test_error_other_loop
+			test/engine/test_pool.py::PoolEventsTest::test_checkin_event_gc[True-_exclusions0]
+			test/engine/test_pool.py::QueuePoolTest::test_userspace_disconnectionerror_weakref_finalizer[True-_exclusions0]
+		)
+	fi
+
 	# Disable tests hardcoding function call counts specific to Python versions.
-	epytest --ignore test/aaa_profiling \
+	epytest --ignore test/aaa_profiling ${deselect[@]/#/--deselect } \
 		-n "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")"
 }
 
