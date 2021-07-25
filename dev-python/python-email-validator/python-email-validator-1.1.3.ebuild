@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
@@ -29,6 +29,10 @@ python_test() {
 		tests/test_main.py::test_deliverability_fails
 		tests/test_main.py::test_validate_email__with_caching_resolver
 		tests/test_main.py::test_validate_email__with_configured_resolver
+		# these tests rely on example.com being resolvable
+		tests/test_main.py::test_main_single_good_input
+		tests/test_main.py::test_main_multi_input
+		tests/test_main.py::test_main_input_shim
 	)
 
 	epytest ${deselect[@]/#/--deselect }
