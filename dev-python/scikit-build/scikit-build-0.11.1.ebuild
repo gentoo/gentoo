@@ -26,7 +26,6 @@ DEPEND="
 		dev-python/path-py[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
