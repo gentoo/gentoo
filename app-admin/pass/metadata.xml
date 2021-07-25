@@ -12,9 +12,6 @@
 		<flag name="git">
 			Use <pkg>dev-vcs/git</pkg> for password revisions.
 		</flag>
-		<flag name="fish-completion">
-			Enable fish completion support.
-		</flag>
 		<flag name="dmenu">
 			Add support for x11-misc/dmenu with the 'passmenu' program.
 		</flag>
