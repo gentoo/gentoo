@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
+# lack an ios device to test it
+kde-frameworks/solid ios
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
 # dependencies not keyworded/not tested
 dev-qt/qtnetwork networkmanager connman
 
