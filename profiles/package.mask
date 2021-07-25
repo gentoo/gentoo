@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-07-26)
+# Fails to build with GCC 11, terrible codebase, tests fail with
+# modern ImageMagick, last release over 12 years ago.
+# Bug #725436, #786915, removal in 30 days.
+sci-electronics/drawtiming
+
 # Sam James <sam@gentoo.org> (2021-07-25)
 # No activity upstream since 2014. Fails to build with GCC 11.
 # Only one reverse dependency (media-libs/openexr_ctl) which
