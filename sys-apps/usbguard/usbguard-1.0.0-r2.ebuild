@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools bash-completion-r1
 
 DESCRIPTION="Daemon protecting your computer against BadUSB"
 HOMEPAGE="https://github.com/USBGuard/usbguard"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/USBGuard/usbguard/releases/download/${P}/${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0/1"  # due to libusbguard.so.<1>.0.0
 KEYWORDS="~amd64 ~x86"
-IUSE="bash-completion dbus ldap policykit static-libs systemd test umockdev"
+IUSE="dbus ldap policykit static-libs systemd test umockdev"
 
 REQUIRED_USE="policykit? ( dbus )"
 
@@ -29,7 +29,6 @@ CDEPEND="
 	>=sys-libs/libcap-ng-0.7.0
 	>=sys-libs/libseccomp-2.0.0
 	>=sys-process/audit-2.7.7
-	bash-completion? ( >=app-shells/bash-completion-2.0 )
 	dbus? (
 		dev-libs/glib:2
 		sys-apps/dbus
@@ -56,6 +55,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-pthreads-link.patch
+	"${FILESDIR}"/${PN}-1.0.0-bash-completion-configure.patch
 )
 
 src_prepare() {
@@ -65,6 +65,7 @@ src_prepare() {
 
 src_configure() {
 	local myargs=(
+		--with-bash-completion-dir=$(get_bashcompdir)
 		$(use_with dbus)
 		$(use_with ldap)
 		$(use_with policykit polkit)

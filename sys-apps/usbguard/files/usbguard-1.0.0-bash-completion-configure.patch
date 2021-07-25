@@ -1,0 +1,105 @@
+https://github.com/USBGuard/usbguard/pull/483
+
+From b3bb39e0e5de61e1c713cb98ebca5e4c6529e2b9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 18 Jul 2021 03:42:21 +0100
+Subject: [PATCH] configure.ac: Use standard --with-bash-completion-dir option
+
+Rationale:
+This makes it a lot easier to enable/disable installation
+of bash completion files rather than it being based on
+a certain package being installed (or not). It's useful
+in Gentoo Linux for example where we may want to always
+install Bash completion files to the right location, even
+if the user isn't using it yet, to save rebuilds.
+
+This makes a few changes to the current Bash completion logic, mainly:
+* Falls back gracefully to a standard directory if bash-completion
+  itself is not installed (in that case, we can't ask it via pkgconfig
+  where to place files).
+
+* So the behaviour is now:
+  * no argument / --with-bash-completion-dir=yes:
+
+    Asks pkgconfig, but falls back to standard directory.
+
+  * --with-bash-completion-dir=dir:
+
+    Use the given directory with no detection.
+
+  * --without-bash-completion-dir:
+
+    No installation of Bash completion files.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Makefile.am  |  2 +-
+ configure.ac | 32 ++++++++++++++------------------
+ 2 files changed, 15 insertions(+), 19 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 34a2e96..910c3c5 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -438,7 +438,7 @@ usbguard_LDADD=\
+ 	$(top_builddir)/libusbguard.la \
+ 	${PTHREAD_LIBS}
+ 
+-if BASH_COMPLETION_ENABLED
++if ENABLE_BASH_COMPLETION
+ bashcompletiondir = $(BASH_COMPLETION_DIR)
+ dist_bashcompletion_DATA = $(top_srcdir)/scripts/bash_completion/usbguard
+ endif
+diff --git a/configure.ac b/configure.ac
+index 73021b6..4207ae2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -663,11 +663,18 @@ AC_ARG_ENABLE([systemd],
+        *) AC_MSG_ERROR([bad value ${enableval} for --enable-systemd]) ;;
+      esac], [systemd=no])
+ 
+-
+-PKG_CHECK_MODULES([BASH_COMPLETION], [bash-completion >= 2.0],
+-  [bash_completion_dir="`$PKG_CONFIG --variable=completionsdir bash-completion`"
+-   bash_completion=yes],
+-  [bash_completion=no])
++AC_ARG_WITH([bash-completion-dir],
++	AS_HELP_STRING([--with-bash-completion-dir[=PATH]],
++		[Enable bash auto-completion. Uses pkgconfig if no path given. @<:@default=yes@:>@]),
++	[], [with_bash_completion_dir=yes])
++
++if test "x$with_bash_completion_dir" = "xyes"; then
++	PKG_CHECK_MODULES([BASH_COMPLETION], [bash-completion >= 2.0],
++		[BASH_COMPLETION_DIR=$($PKG_CONFIG --variable=completionsdir bash-completion)],
++		[BASH_COMPLETION_DIR="$datadir/bash-completion/completions"])
++else
++	BASH_COMPLETION_DIR="$with_bash_completion_dir"
++fi
+ 
+ if test "x$debug" = xyes; then
+    CXXFLAGS="$CXXFLAGS $CXXFLAGS_DEBUG_ENABLED"
+@@ -706,19 +713,8 @@ fi
+ 
+ AC_SUBST([ANALYZE_CONFIGURE_ARGS], $ac_configure_args)
+ 
+-case "$bash_completion_dir" in
+-  /usr/share/*|/usr/local/share/*)
+-    bash_completion_dir=$(echo "$bash_completion_dir" | sed -r 's,^(/usr/share|/usr/local/share),${datadir},')
+-    ;;
+-  /usr/*|/usr/local/*)
+-    bash_completion_dir=$(echo "$bash_completion_dir" | sed -r 's,^(/usr|/usr/local),${prefix},')
+-    ;;
+-  /*)
+-    bash_completion_dir='${prefix}'"$bash_completion_dir"
+-    ;;
+-esac
+-
+-AC_SUBST([BASH_COMPLETION_DIR], $bash_completion_dir)
++AC_SUBST([BASH_COMPLETION_DIR])
++AM_CONDITIONAL([ENABLE_BASH_COMPLETION], [test "x$with_bash_completion_dir" != "xno"])
+ 
+ AM_CONDITIONAL([SYSTEMD_SUPPORT_ENABLED], [test "x$systemd" = xyes ])
+ AM_CONDITIONAL([DBUS_ENABLED], [test "x$with_dbus" = xyes ])
+-- 
+2.32.0
+
