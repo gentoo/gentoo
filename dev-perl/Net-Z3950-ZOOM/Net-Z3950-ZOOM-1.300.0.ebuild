@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/yaz-2.1.50
+	>=dev-libs/yaz-4.0.0
 	>=dev-perl/MARC-Record-1.380.0
 "
 DEPEND="${RDEPEND}
