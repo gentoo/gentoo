@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/sdl2-mixer"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/premake:4
+	dev-util/premake:5
 	virtual/pkgconfig"
 
 src_prepare() {
@@ -51,15 +51,25 @@ src_configure() {
 	append-cppflags $($(tc-getPKG_CONFIG) --cflags "${pkgs[@]}" || die)
 	append-libs $($(tc-getPKG_CONFIG) --libs "${pkgs[@]}" || die)
 
-	premake4 gmake || die
+	premake5 gmake || die
 }
 
 src_compile() {
-	emake verbose=y ARCH= CC="$(tc-getCC)" CXX="$(tc-getCXX)" LIBS="${LIBS}"
+	local emakeargs=(
+		config=release
+		verbose=y
+		ARCH= # build assumes this is -m64 and tries to pass it to the compiler
+		CC="$(tc-getCC)"
+		CXX="$(tc-getCXX)"
+		LIBS="${LIBS}"
+		ALL_LDFLAGS="${LDFLAGS}" # only used to override -s
+	)
+
+	emake "${emakeargs[@]}"
 }
 
 src_install() {
-	dobin ${PN}
+	dobin bin/Release/${PN}
 
 	insinto /usr/share/${PN}
 	doins -r builtin cfg extra_campaigns pix sound
@@ -69,5 +79,5 @@ src_install() {
 	einstalldocs
 
 	doicon "${DISTDIR}"/${PN}.png
-	make_desktop_entry openglad Openglad
+	make_desktop_entry ${PN} ${PN^}
 }
