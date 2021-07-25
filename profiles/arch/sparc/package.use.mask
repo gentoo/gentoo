@@ -241,10 +241,6 @@ media-sound/dir2ogg aac wma
 # app-text/mupdf sparc keyword was dropped in bug #631970
 net-print/cups-filters pdf
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
-# mpir fails to build at least on sparc: bug #640424
-dev-python/gmpy mpir
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
 # Skip keywording it for now.
