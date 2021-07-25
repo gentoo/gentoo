@@ -13,7 +13,7 @@ DESCRIPTION="Generalized implementation of the middleware abstraction for Ruby"
 HOMEPAGE="https://github.com/mitchellh/middleware"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~sparc"
+KEYWORDS="~amd64 ~arm ~sparc"
 SLOT="0"
 IUSE=""
 
