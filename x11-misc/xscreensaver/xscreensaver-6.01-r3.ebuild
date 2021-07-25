@@ -125,8 +125,19 @@ src_prepare() {
 	eapply_user
 
 	# Must be eauto*re*conf, to force the rebuild
+	# it is NOT an entirely normal autoconf so there is weirdness!
 	eautoreconf
 	eautoheader
+
+	# Afterwards, fix the linguas
+	# doesn't populate @install_sh@ properly
+	# https://bugs.gentoo.org/803479
+	# requires LINGUAS to trigger
+	sed -i.orig \
+		-e "/^install_sh = /s!=.*!= ${S}/install-sh!g" \
+		"${S}/po/Makefile.in.in" || die
+	grep -e install_sh \
+		"${S}/po/Makefile.in.in" || die
 }
 
 src_configure() {
@@ -183,7 +194,8 @@ src_compile() {
 }
 
 src_install() {
-	emake install_prefix="${D}" install
+	use pam && dodir /etc/pam.d/
+	emake install_prefix="${D}" DESTDIR="${D}" install
 
 	if use fonts; then
 		# Do not install fonts with unclear licensing
@@ -200,6 +212,7 @@ src_install() {
 	dodoc README{,.hacking}
 
 	if use pam; then
+		rm -f "${ED}/etc/pam.d/xscreensaver" # install our version instead
 		fperms 755 /usr/bin/${PN}
 		pamd_mimic_system ${PN} auth
 	fi
