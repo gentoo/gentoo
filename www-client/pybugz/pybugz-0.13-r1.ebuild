@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+
+PYTHON_COMPAT=( python3_{8..9} )
 PYTHON_REQ_USE="readline(+)"
 
 if [ "${PV}" = "9999" ]; then
@@ -17,9 +18,9 @@ inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Command line interface to (Gentoo) Bugzilla"
 HOMEPAGE="https://github.com/williamh/pybugz"
+
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="zsh-completion"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -28,8 +29,6 @@ python_install_all() {
 	distutils-r1_python_install_all
 	newbashcomp contrib/bash-completion bugz
 
-	if use zsh-completion ; then
-		insinto /usr/share/zsh/site-functions
-		newins contrib/zsh-completion _pybugz
-	fi
+	insinto /usr/share/zsh/site-functions
+	newins contrib/zsh-completion _pybugz
 }
