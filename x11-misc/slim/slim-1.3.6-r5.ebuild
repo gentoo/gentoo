@@ -6,13 +6,8 @@ EAPI=7
 inherit cmake pam systemd
 
 DESCRIPTION="Simple Login Manager"
-if [[ ${PV} == 9999* ]]; then
-        EGIT_REPO_URI="https://github.com/axs-gentoo/slim-git.git"
-        inherit git-r3
-else
-	SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
-	KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
-fi
+SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
 
 LICENSE="GPL-2"
 SLOT="0"
