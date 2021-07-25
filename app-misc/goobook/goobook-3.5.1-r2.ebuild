@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Access your Google contacts from the command line"
@@ -20,7 +19,12 @@ RDEPEND="
 	>=dev-python/simplejson-3.16.0[${PYTHON_USEDEP}]
 	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]
 	<dev-python/oauth2client-5[${PYTHON_USEDEP}]
-	dev-python/xdg[${PYTHON_USEDEP}]"
+	dev-python/pyxdg[${PYTHON_USEDEP}]"
+
+PATCHES=(
+	# https://gitlab.com/goobook/goobook/-/merge_requests/13
+	"${FILESDIR}"/${P}-pyxdg.patch
+)
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
