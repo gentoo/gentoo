@@ -40,6 +40,10 @@ DOCS=(
 	CONTRIBUTING.md
 )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-71.1-bash-completion-configure.patch"
+)
+
 src_prepare() {
 	default
 	printf 'm4_define([GIT_VERSION], [%s])' "${PV}" > version.m4 || die
@@ -49,7 +53,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_with bash-completion bash) \
+		--with-bash-completion-dir="$(get_bashcompdir)" \
 		$(use_with systemd) \
 		--disable-asciidoctor
 }
@@ -61,5 +65,5 @@ src_test() {
 src_install() {
 	default
 
-	use bash-completion && bashcomp_alias ndctl daxctl
+	bashcomp_alias ndctl daxctl
 }
