@@ -211,6 +211,14 @@ src_install() {
 }
 
 pkg_postinst() {
+	echo
+	ewarn "Downgrading to pre-GLEP 81 user for now."
+	ewarn "See bug #802495 and bug #803500 for more information."
+	ewarn ""
+	ewarn "You will need to run the following command to unlock the user:"
+	ewarn "usermod -e '' -U apache 2>/dev/null"
+	echo
+
 	apache-2_pkg_postinst || die "apache-2_pkg_postinst failed"
 
 	tmpfiles_process apache.conf #662544
