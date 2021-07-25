@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-07-25)
+# At present, dev-lang/fpc doesn't support arm64.
+# bug #801649
+dev-util/diffoscope pascal
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-libs/rnnoise, media-libs/rubberband[ladspa], media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
