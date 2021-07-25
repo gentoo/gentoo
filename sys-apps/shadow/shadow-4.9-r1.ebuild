@@ -114,6 +114,9 @@ set_login_opt() {
 src_install() {
 	emake DESTDIR="${D}" suidperms=4711 install
 
+	# 4.9 regression: https://github.com/shadow-maint/shadow/issues/389
+	emake DESTDIR="${D}" -C man install
+
 	# Remove libshadow and libmisc; see bug 37725 and the following
 	# comment from shadow's README.linux:
 	#   Currently, libshadow.a is for internal use only, so if you see
