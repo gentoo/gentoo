@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-07-25)
+# media-libs/ctl
+# media-libs/openexr_ctl
+media-libs/ctl
+
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # Conflicts with dev-python/pyxdg.  Upstream is unwilling to resolve
 # this.  The only revdep has been patched to use pyxdg.
@@ -385,7 +390,6 @@ dev-java/jibx-tools
 # Upstream inactive and fails to compile.
 # Removal on 2021-07-19.  Bug #786279.
 app-misc/rq
-
 
 # Michał Górny <mgorny@gentoo.org> (2021-06-19)
 # Conflicts with app-arch/brotli[python].  Discontinued in favor
