@@ -45,6 +45,7 @@ all_ruby_prepare() {
 	# remove useless dependencies from Rakefile
 	sed -e '/bundler/d' \
 		-e '/require.*cane/,/end/d' \
+		-e '/require.*yard/,/end/ s:^:#:' \
 		-i Rakefile || die
 
 	sed -e '/reporters/I s:^:#:' \
