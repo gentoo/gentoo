@@ -15,7 +15,7 @@ DESCRIPTION="Protocol Buffer messages for Cucumber's inter-process communication
 HOMEPAGE="https://github.com/cucumber/cucumber-messages-ruby#readme"
 LICENSE="MIT"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 SLOT="$(ver_cut 1)"
 
 ruby_add_rdepend ">=dev-util/protobuf-cucumber-3.10.8:3"
