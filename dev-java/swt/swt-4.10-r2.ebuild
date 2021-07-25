@@ -94,6 +94,10 @@ src_compile() {
 		if [[ -f "${libpath}/${JAWTSO}" ]]; then
 			export AWT_LIB_PATH="${libpath}"
 			break
+		# this is a workaround for broken LDPATH in <=openjdk-8.292_p10 and <=dev-java/openjdk-bin-8.292_p10
+		elif [[ -f "${libpath}/$(tc-arch)/${JAWTSO}" ]]; then
+			export AWT_LIB_PATH="${libpath}/$(tc-arch)"
+			break
 		fi
 	done
 
