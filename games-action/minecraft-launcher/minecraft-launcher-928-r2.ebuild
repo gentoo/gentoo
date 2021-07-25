@@ -21,7 +21,7 @@ RDEPEND="
 	app-crypt/libsecret
 	dev-libs/nss
 	dev-libs/libbsd
-	dev-libs/libffi
+	dev-libs/libffi:0/7
 	dev-libs/libpcre
 	media-libs/alsa-lib
 	media-libs/openal
