@@ -1,19 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit bash-completion-r1
+EAPI=7
 
 DESCRIPTION="Command-line downloader and uploader for file-sharing websites"
 HOMEPAGE="https://github.com/mcrapet/plowshare"
+SRC_URI="https://github.com/mcrapet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="bash-completion +javascript view-captcha"
-
-SRC_URI="https://github.com/mcrapet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+IUSE="+javascript view-captcha"
 
 RDEPEND="
 	>=app-shells/bash-4
@@ -24,7 +21,6 @@ RDEPEND="
 	virtual/imagemagick-tools[tiff]
 	javascript? ( || ( dev-lang/spidermonkey:0 dev-java/rhino ) )
 	view-captcha? ( || ( media-gfx/aview media-libs/libcaca ) )"
-DEPEND=""
 
 # NOTES:
 # javascript dep should be any javascript interpreter using /usr/bin/js
@@ -32,12 +28,6 @@ DEPEND=""
 src_prepare() {
 	# Fix doc install path
 	sed -i -e "/^DOCDIR/s|plowshare|${PF}|" Makefile || die "sed failed"
-
-	if ! use bash-completion
-	then
-		sed -i -e \ "/^install:/s/install_bash_completion//" \
-			Makefile || die "sed failed"
-	fi
 
 	default
 }
