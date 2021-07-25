@@ -40,7 +40,7 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	default
 
-	[[ ${CHOST} == *-darwin9 ]] && eapply "${FILESDIR}"/${P}-darwin9.patch
+	[[ ${CHOST} == *-darwin9 ]] && eapply "${FILESDIR}"/${PN}-1.7.3-darwin9.patch
 
 	[[ ${PV} == "9999" ]] && eautoreconf
 	if use pkg-config; then
