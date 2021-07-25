@@ -45,10 +45,6 @@ sys-kernel/dracut test
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
 kde-plasma/plasma-meta firewall
 
-# Matt Turner <mattst88@gentoo.org> (2021-04-14)
-# Was masked since 2014. Unmasked starting with 0.3.13.
-<media-plugins/grilo-plugins-0.3.13 lua
-
 # Joonas Niilola <juippis@gentoo.org> (2021-04-12)
 # Creates +130 GB worth of bindings, possibly Gentoo-related.
 # Upstream issue: https://phab.enlightenment.org/T8924
@@ -393,8 +389,7 @@ sys-libs/glibc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
-# Bugs #651604, #651606.
-<dev-libs/leveldb-1.20 static-libs
+# Bug #651606.
 sys-block/fio static
 
 # Michał Górny <mgorny@gentoo.org> (2018-05-16)
