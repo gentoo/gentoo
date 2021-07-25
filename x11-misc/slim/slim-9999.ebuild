@@ -1,20 +1,19 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils pam systemd versionator
-
-if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://github.com/axs-gentoo/slim-git.git"
-	inherit git-r3
-else
-	SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
-fi
+inherit cmake pam systemd
 
 DESCRIPTION="Simple Login Manager"
-HOMEPAGE="https://sourceforge.net/projects/slim.berlios/"
+if [[ ${PV} == 9999* ]]; then
+        EGIT_REPO_URI="https://github.com/axs-gentoo/slim-git.git"
+        inherit git-r3
+else
+	SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
+	KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 sparc x86"
+fi
+
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="branding pam"
@@ -27,11 +26,11 @@ RDEPEND="x11-libs/libXmu
 	media-libs/libpng:0=
 	virtual/jpeg:=
 	x11-apps/sessreg
-	pam? ( sys-libs/pam
+	pam? (	sys-libs/pam
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 PDEPEND="branding? ( >=x11-themes/slim-themes-1.2.3a-r3 )"
 
 PATCHES=(
@@ -40,7 +39,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use elibc_FreeBSD; then
 		sed -i -e 's/"-DHAVE_SHADOW"/"-DNEEDS_BASENAME"/' CMakeLists.txt \
@@ -59,11 +58,11 @@ src_configure() {
 		-DUSE_CONSOLEKIT=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use pam ; then
 		pamd_mimic system-local-login slim auth account session
@@ -89,11 +88,12 @@ pkg_postinst() {
 	# a previous emerge attempt failed in the middle of qmerge.
 	local rv=none
 	for rv in ${REPLACING_VERSIONS} ; do
-		if version_is_at_least "1.3.2-r7" "${rv}" ; then
+		if ver_test "1.3.2-r7" -le "${rv}" ; then
 			rv=newer
 			break;
 		fi
-		if version_is_at_least "1.0" "${rv}"  ; then
+
+		if ver_test "1.0" -le "${rv}"  ; then
 			rv=older
 			break;
 		fi
@@ -108,12 +108,9 @@ pkg_postinst() {
 	fi
 	if [[ ${rv} != newer ]]; then
 		elog
-		elog "By default, ${PN} is set up to provide X session selection based on the"
-		elog ".desktop entries in /usr/share/xsessions/ that are installed by each"
-		elog "DE, including ~/.xsession support via the 'Xsession' session.  Sessions"
-		elog "are selected at login by pressing [F1].  As per the Xorg guide, each"
-		elog "user's default session can be specified by adding the name from"
-		elog "/etc/X11/Sessions to ~/.xsession."
+		elog "By default, ${PN} is set up to do proper X session selection, including ~/.xsession"
+		elog "support, as well as selection between sessions available in"
+		elog "/etc/X11/Sessions/ at login by pressing [F1]."
 		elog
 		elog "The XSESSION environment variable is still supported as a default"
 		elog "if no session has been specified by the user."
@@ -124,6 +121,7 @@ pkg_postinst() {
 		elog "accordingly."
 		elog
 	fi
+
 	if ! use pam; then
 		elog "You have merged ${PN} without USE=\"pam\", this will cause ${PN} to fall back to"
 		elog "the console when restarting your window manager. If this is not desired, then"
