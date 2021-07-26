@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # John Helmert III <ajak@gentoo.org> (2021-07-26)
+# Open security bug, service backing it seems to be dead, making these
+# packages useless. Old EAPIs. Removal on 2021-08-26. Bug #630814
+app-portage/getdelta
+app-portage/deltup
+
+# John Helmert III <ajak@gentoo.org> (2021-07-26)
 # Maintained needed, open security bug, uninterested upstream.
 # No revdeps. Removal on 2021-08-26. Bug #752408.
 app-text/lout
