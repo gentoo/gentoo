@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-07-26)
+# Rather out of date, several open bugs, fails to build with GCC 11.
+# Removal in 2021-08-26.
+# bug #793020, bug #692976, bug #741600, bug #703948, bug #674334.
+sci-misc/tango
+
+# Sam James <sam@gentoo.org> (2021-07-26)
 # Fails to build with GCC 11.
 # Removal on 2021-08-26. bug #788577.
 net-im/minbif
