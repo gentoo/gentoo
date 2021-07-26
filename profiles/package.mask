@@ -508,11 +508,6 @@ media-gfx/povtree
 ~media-plugins/gst-plugins-ximagesrc-1.18.4
 ~media-plugins/gst-plugins-zbar-1.18.4
 
-# Andrey Grozin <grozin@gentoo.org> (2021-05-25)
-# DEPENDs on sci-libs/proj-8
-# Unmask after unmasking proj-8
->=sci-geosciences/qmapshack-1.16
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-24)
 # it's just a demo project, not a real app, see disclaimer
 # at https://github.com/romainguy/jext
@@ -606,6 +601,7 @@ sys-devel/autoconf:2.71
 # which haven't yet ported.
 # bug #729098
 >=sci-libs/proj-8.0.0
+>=sci-geosciences/qmapshack-1.16
 
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes
