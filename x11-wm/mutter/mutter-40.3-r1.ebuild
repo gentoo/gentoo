@@ -64,7 +64,7 @@ DEPEND="
 		>=dev-libs/libinput-1.15.0
 		systemd? ( sys-apps/systemd )
 		elogind? ( sys-auth/elogind )
-		x11-base/xorg-server[wayland]
+		x11-base/xwayland
 		video_cards_nvidia? ( gui-libs/egl-wayland )
 	)
 	udev? ( >=dev-libs/libgudev-232:=
