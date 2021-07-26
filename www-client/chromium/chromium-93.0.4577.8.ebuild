@@ -13,10 +13,11 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://chromium.org/"
-PATCHSET="5"
+PATCHSET="6"
 PATCHSET_NAME="chromium-$(ver_cut 1)-patchset-${PATCHSET}"
 SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
 	https://github.com/stha09/chromium-patches/releases/download/${PATCHSET_NAME}/${PATCHSET_NAME}.tar.xz
+	https://dev.gentoo.org/~sultan/distfiles/www-client/${PN}/${PN}-92-glibc-2.33-patch.tar.xz
 	arm64? ( https://github.com/google/highway/archive/refs/tags/0.12.1.tar.gz -> highway-0.12.1.tar.gz )"
 
 LICENSE="BSD"
@@ -55,7 +56,7 @@ COMMON_DEPEND="
 	>=dev-libs/nss-3.26:=
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
-	media-libs/freetype:=
+	>=media-libs/freetype-2.11.0:=
 	>=media-libs/harfbuzz-2.4.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
@@ -232,21 +233,13 @@ src_prepare() {
 
 	local PATCHES=(
 		"${WORKDIR}/patches"
-		"${FILESDIR}/chromium-92-EnumTable-crash.patch"
+		"${WORKDIR}/sandbox-patches/chromium-syscall_broker.patch"
+		"${WORKDIR}/sandbox-patches/chromium-fstatat-crash.patch"
+		"${FILESDIR}/chromium-92-GetUsableSize-nullptr.patch"
+		"${FILESDIR}/chromium-93-EnumTable-crash.patch"
 		"${FILESDIR}/chromium-93-InkDropHost-crash.patch"
 		"${FILESDIR}/chromium-shim_headers.patch"
 	)
-
-	# seccomp sandbox is broken if compiled against >=sys-libs/glibc-2.33, bug #769989
-	if has_version -d ">=sys-libs/glibc-2.33"; then
-		ewarn "Adding experimental glibc-2.33 sandbox patch. Seccomp sandbox might"
-		ewarn "still not work correctly. In case of issues, try to disable seccomp"
-		ewarn "sandbox by adding --disable-seccomp-filter-sandbox to CHROMIUM_FLAGS"
-		ewarn "in /etc/chromium/default."
-		PATCHES+=(
-			"${FILESDIR}/chromium-glibc-2.33.patch"
-		)
-	fi
 
 	default
 
