@@ -24,3 +24,6 @@ virtual/rust
 >=x11-themes/adwaita-icon-theme-3.36
 >=net-irc/polari-3.37
 >=sys-apps/bat-0.18.1
+gnome-base/gdm
+gnome-extra/chrome-gnome-shell
+gnome-extra/gnome-tweaks
