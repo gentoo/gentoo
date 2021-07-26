@@ -37,7 +37,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature introspection)
 		-Dgtk_doc=false
 		-Ddefault_library=$(usex static-libs both shared)
-		-Dumockdev=disabled # umockdev tests currently don't pass (might need extra setup)
+		-Dtests=disabled # umockdev tests currently don't pass (might need extra setup)
 		-Dvapi=disabled
 	)
 	meson_src_configure
