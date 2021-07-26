@@ -114,6 +114,7 @@ sys-auth/polkit kde
 # Mikle Kolyada <zlogene@gentoo.org> (2020-12-03)
 # Göktürk Yüksek <gokturk@gentoo.org> (2019-10-10)
 #   sys-libs/libunwind do not support riscv
+dev-libs/efl unwind
 dev-util/strace unwind
 media-libs/gstreamer unwind
 media-libs/mesa unwind
