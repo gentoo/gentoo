@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-07-26)
+# Fails to build with GCC 11.
+# Removal on 2021-08-26. bug #788577.
+net-im/minbif
+
+# Sam James <sam@gentoo.org> (2021-07-26)
 # No activity upstream. No reverse dependencies (library).
 # Fails to build with GCC 11.
 # Removal on 2021-08-26. bug #787113, bug #735714, bug #657510.
