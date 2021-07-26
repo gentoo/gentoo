@@ -48,6 +48,10 @@ PATCHES=(
 src_prepare() {
 	default
 
+	# avoid automagic dependency on dev-libs/openssl[sslv3]
+	# https://bugs.gentoo.org/789450
+	export CPPFLAGS="${CPPFLAGS} -DOPENSSL_NO_SSL3_METHOD=1"
+
 	# work around availability macros not supported in GCC (yet)
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		local darwinok=0
