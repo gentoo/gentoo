@@ -30,7 +30,7 @@ RDEPEND="${CDEPEND}
 	sys-libs/libselinux
 	sys-libs/glibc
 	sys-libs/readline:0/8
-	sys-libs/libxcrypt
+	sys-libs/libxcrypt[compat]
 	sys-libs/ncurses:0[tinfo]
 	selinux? (
 		sys-libs/libselinux[ruby]
