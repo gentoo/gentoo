@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# John Helmert III <ajak@gentoo.org> (2021-07-26)
+# Maintained needed, open security bug, uninterested upstream.
+# No revdeps. Removal on 2021-08-26. Bug #752408.
+app-text/lout
+
 # David Seifert <soap@gentoo.org> (2021-07-26)
 # Fails to build with GCC 11, terrible codebase, tests fail with
 # modern ImageMagick, last release over 12 years ago.
