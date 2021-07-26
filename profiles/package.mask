@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-26)
+# libraries with no consumers
+# removal in 30 days
+dev-java/asm-analysis
+dev-java/asm-commons
+dev-java/asm-tree
+dev-java/asm-util
+
 # Sam James <sam@gentoo.org> (2021-07-26)
 # Fails to build with GCC 11. No activity upstream.
 # Removal on 2021-08-26. bug #740536, bug #624746.
