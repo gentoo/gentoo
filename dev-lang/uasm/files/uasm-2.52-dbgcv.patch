@@ -1,0 +1,73 @@
+Use UASM patch as found at https://github.com/justdan96/7zip_static/blob/625df5aeb69b40a847005f52afddb207eff15a98/dbgcv.patch 
+
+--- dbgcv.c.orig	2021-06-09 16:42:58.071853143 +0100
++++ dbgcv.c	2021-06-10 10:32:31.453195825 +0100
+@@ -17,7 +17,24 @@
+ #include <fixup.h>
+ #include <dbgcv.h>
+ #include <linnum.h>
++#ifdef _WIN32
+ #include <direct.h>
++#endif
++#ifdef __UNIX__
++#include <stdio.h>
++#include <unistd.h>
++#include <limits.h>
++#endif
++#ifndef PATH_MAX
++#define PATH_MAX 4096
++#endif
++#define _MAX_PATH PATH_MAX
++#ifndef _getcwd
++#define _getcwd getcwd
++#endif
++#ifndef _pgmptr
++#define _pgmptr "uasm"
++#endif
+ #include <picohash.h>
+ 
+ #define SIZE_CV_SEGBUF ( MAX_LINE_LEN * 4 )
+@@ -1252,7 +1269,9 @@
+ #define USEMD5
+ 
+ #ifdef USEMD5
++#ifndef BUFSIZ
+ #define BUFSIZ 1024*4
++#endif
+ #define MD5_LENGTH ( sizeof( uint_32 ) + sizeof( uint_16 ) + 16 + sizeof( uint_16 ) )
+ 
+ static int calc_md5(const char* filename, unsigned char* sum)
+@@ -1565,22 +1584,31 @@
+ 		s = strcpy(s, "cwd") + 4;
+ 		s = strcpy(s, cv.currdir) + q + 1;
+ 		s = strcpy(s, "exe") + 4;
++		
+ 		len = strlen(_pgmptr) + 1;
+ 		s = strcpy(s, _pgmptr) + len;
++		
+ 		s = strcpy(s, "src") + 4;
+ 		p = cv.files[0].name;
+ 		if (_memicmp(p, cv.currdir, q) == 0)
+ 			p += q + 1;
+-
++		
+ 		len = strlen(p) + 1;
+ 		s = strcpy(s, p) + len;
+ 		*s++ = '\0';
++		#ifdef _WIN32
+ 		EnvBlock->reclen = (unsigned short)(s - cv.ps - 2);
++		#else
++		EnvBlock->reclen = (unsigned short)(s - (char*)cv.ps - 2);
++		#endif
+ 		cv.ps = s;
+ 
+ 		/* length needs to be added for each symbol */
+-
++		#ifdef _WIN32
+ 		cv.section->length += (s - start);
++		#else
++		cv.section->length += (s - (char*)start);
++		#endif
+ 
+ 	}
+ 	else {
