@@ -35,6 +35,6 @@ src_prepare() {
 
 src_install() {
 	default
-	# Remove unnecessary .la and .a files, as recommended by ltprune.eclass
+	# Remove unnecessary .la and .a files
 	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
 }
