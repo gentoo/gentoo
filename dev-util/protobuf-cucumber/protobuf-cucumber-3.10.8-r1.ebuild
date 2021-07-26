@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/ruby-protobuf/protobuf"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE=""
 
 ruby_add_rdepend "
