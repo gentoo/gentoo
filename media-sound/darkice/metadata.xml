@@ -10,6 +10,7 @@
 		<flag name="twolame">Build with twolame support</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">rafael2k/darkice</remote-id>
 		<remote-id type="google-code">darkice</remote-id>
 		<remote-id type="sourceforge">darkice</remote-id>
 	</upstream>
