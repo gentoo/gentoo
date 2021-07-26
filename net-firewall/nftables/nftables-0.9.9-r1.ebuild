@@ -54,6 +54,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.9.8-slibtool.patch"
+	"${FILESDIR}/${P}-numeric.patch"
 )
 
 python_make() {
