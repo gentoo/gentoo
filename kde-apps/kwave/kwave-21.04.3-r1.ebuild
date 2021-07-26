@@ -16,13 +16,6 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="alsa flac mp3 opus oss pulseaudio +qtmedia vorbis"
 
-BDEPEND="
-	sys-devel/gettext
-	handbook? ( || (
-		gnome-base/librsvg
-		virtual/imagemagick-tools[png,svg]
-	) )
-"
 RDEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
@@ -42,7 +35,7 @@ RDEPEND="
 	>=sci-libs/fftw-3
 	media-libs/libsamplerate
 	alsa? ( media-libs/alsa-lib )
-	flac? ( media-libs/flac )
+	flac? ( media-libs/flac[cxx] )
 	mp3? (
 		media-libs/id3lib
 		media-libs/libmad
@@ -65,6 +58,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
+"
+BDEPEND="
+	sys-devel/gettext
+	handbook? ( || (
+		gnome-base/librsvg
+		virtual/imagemagick-tools[png,svg]
+	) )
 "
 
 DOCS=( AUTHORS CHANGES LICENSES README TODO )
