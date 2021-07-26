@@ -383,11 +383,6 @@ dev-java/jibx-tools
 # which is currently not available in Gentoo.
 >=games-server/minecraft-server-1.17
 
-# Zac Medico <zmedico@gentoo.org> (2021-06-19)
-# Upstream inactive and fails to compile.
-# Removal on 2021-07-19.  Bug #786279.
-app-misc/rq
-
 # Mike Gilbert <floppym@gentoo.org> (2021-06-17)
 # rescan-scsi-bus.sh is installed by >=sys-apps/sg3_utils-1.44, rendering
 # this package redundant.
