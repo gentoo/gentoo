@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( "README" "README.Android" "TODO" "syscalls.txt" )
 
+PATCHES=( "${FILESDIR}/${PN}-0.12.12-glibc-2.34.patch" )
+
 src_compile() {
 	export MAN_COMPRESS=0
 	export VERBOSE=1
