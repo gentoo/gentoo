@@ -346,12 +346,6 @@ sys-libs/db:5.1
 # Removal on 2021-07-27
 media-sound/loudness-scanner
 
-# Matt Turner <mattst88@gentoo.org> (2021-06-25)
-# Last release in 2015. Many open bugs. No reverse dependencies.
-# Bugs #312935, #341923, #629050, #739984, #775761, #777534
-# Removal on 2021-07-25
-media-gfx/ufraw
-
 # Marek Szuba <marecki@genoo.org> (2021-06-25)
 # Unslotted version conflicting with lua eclasses.
 # No revdeps left. EAPI 5. Removal in 30 days (Bug #798693)
@@ -361,12 +355,6 @@ dev-lang/lua:0
 # library with no consumer, removal in 30 days
 # see https://bugs.gentoo.org/794562
 dev-java/bctsp
-
-# Michał Górny <mgorny@gentoo.org> (2021-06-24)
-# Package of huge complexity, given its premise.  Unmaintained
-# in Gentoo.  No revdeps.
-# Removal on 2021-07-24.  Bug #798291.
-dev-python/frozendict
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
 # obsolete, no consumers
