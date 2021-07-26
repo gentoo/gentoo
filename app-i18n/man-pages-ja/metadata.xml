@@ -12,6 +12,7 @@
     posted to that list with regard to man pages translation for
     portage/gentoolkit.
   </longdescription>
+  <stabilize-allarches/>
   <upstream>
     <remote-id type="sourceforge-jp">linuxjm</remote-id>
   </upstream>
