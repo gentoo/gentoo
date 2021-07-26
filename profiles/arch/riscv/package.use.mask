@@ -75,6 +75,8 @@ sys-block/thin-provisioning-tools test
 sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
 #  - sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
 sys-cluster/slurm ofed slurmdbd
+#  - media-libs/libsdl2
+x11-libs/wxGTK sdl
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-24)
 # Dependencies not keyworded, not tested
