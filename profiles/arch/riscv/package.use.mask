@@ -7,7 +7,7 @@ kde-frameworks/solid ios
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
 # dependencies not keyworded/not tested
-dev-qt/qtnetwork networkmanager connman
+dev-qt/qtnetwork networkmanager
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-20)
 # sys-auth/sssd and its deps not keyworded yet
@@ -153,10 +153,7 @@ dev-libs/libpcre jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
-app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp test
-app-arch/p7zip wxwidgets
-app-text/asciidoc test
-dev-libs/libgcrypt doc
+app-admin/syslog-ng mongodb test
 dev-python/argcomplete test
 dev-python/aiohttp doc test
 dev-python/jinja doc
