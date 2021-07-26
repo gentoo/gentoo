@@ -22,7 +22,7 @@ RESTRICT="test"
 
 DEPEND="
 	sys-apps/miscfiles
-	sys-libs/ncurses:=
+	sys-libs/ncurses:=[unicode(+)]
 	!games-puzzle/hangman
 	!games-misc/wumpus
 "
@@ -60,10 +60,8 @@ src_prepare() {
 	# Yes, this stinks.
 	# Right now, the custom configure script calls pkg-config manually
 	# and seds it a bunch, and this is easier.
-	if has_version sys-libs/ncurses[unicode] ; then
-		# Force looking for both ncurses and ncursesw
-		sed -i -e 's/pkgs="ncurses"/pkgs="ncursesw"/' configure || die
-	fi
+	# Force looking for both ncurses and ncursesw
+	sed -i -e 's/pkgs="ncurses"/pkgs="ncursesw"/' configure || die
 
 	cp "${FILESDIR}"/config.params-gentoo config.params || die
 	echo bsd_games_cfg_usrlibdir=\"$(get_libdir)\" >> ./config.params || die
@@ -151,5 +149,5 @@ src_install() {
 	fowners -R :gamestat /usr/bin/
 
 	# State dirs
-	chmod -R ug+rw "${ED}"/var/games/ || die
+	fperms -R ug+rw /var/games/
 }
