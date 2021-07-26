@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-07-26)
+# No activity upstream. No reverse dependencies (library).
+# Fails to build with GCC 11.
+# Removal on 2021-08-26. bug #787113, bug #735714, bug #657510.
+dev-cpp/libxsd-frontend
+
 # John Helmert III <ajak@gentoo.org> (2021-07-26)
 # Open security bug, service backing it seems to be dead, making these
 # packages useless. Old EAPIs. Removal on 2021-08-26. Bug #630814
