@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+PYTHON_COMPAT=( python3_{8,9} )
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_USE_SETUPTOOLS="no"
 
@@ -24,7 +24,7 @@ fi
 
 LICENSE="|| ( BSD-2 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -38,6 +38,10 @@ RDEPEND="${DEPEND}"
 if [[ "${PV}" != "9999" ]]; then
 	S="${WORKDIR}/marisa-trie-${PV}"
 fi
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.6-riscv_word_size.patch
+)
 
 src_prepare() {
 	default
