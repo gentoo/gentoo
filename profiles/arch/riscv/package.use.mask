@@ -132,8 +132,10 @@ net-libs/libsoup test
 net-libs/libproxy spidermonkey webkit kde networkmanager
 
 # Sam James <sam@gentoo.org> (2021-03-11)
+# Yixun Lan <dlan@gentoo.org> (2021-07-27)
 # media-libs/libheif isn't keyworded here
 # media-libs/libavif isn't keyworded here
+dev-libs/efl avif
 media-libs/gd avif heif
 
 # Sam James <sam@gentoo.org> (2021-02-26)
