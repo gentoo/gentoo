@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,5 +40,6 @@ src_prepare() {
 
 	cabal_chdeps \
 		'base         >= 4.5 && < 4.14' 'base         >= 4.5' \
-		'containers   >=0.4.2 && <0.7' 'containers   >=0.4.2'
+		'containers   >=0.4.2 && <0.7' 'containers   >=0.4.2' \
+		'aeson       ^>= 1.4.0.0' 'aeson       >= 1.4.0.0'
 }
