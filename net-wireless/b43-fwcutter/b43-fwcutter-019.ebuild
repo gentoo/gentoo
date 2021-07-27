@@ -1,23 +1,20 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="Firmware Tool for Broadcom 43xx based wireless network devices
-using the mac80211 wireless stack"
+DESCRIPTION="Firmware tool for Broadcom 43xx-based wireless devices using mac80211"
 HOMEPAGE="https://bues.ch/b43/fwcutter/"
 SRC_URI="https://bues.ch/b43/fwcutter/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
-IUSE=""
 
 src_compile() {
-	MAKEOPTS+=" V=1"
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" V=1
 }
 
 src_install() {
@@ -28,8 +25,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
 	einfo "Firmware may be downloaded from http://linuxwireless.org."
 	einfo "This version of fwcutter works with all b43 driver versions."
-	echo
 }
