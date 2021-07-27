@@ -513,6 +513,7 @@ media-gfx/povtree
 ~media-plugins/gst-plugins-opencv-1.18.4
 ~media-plugins/gst-plugins-openh264-1.18.4
 ~media-plugins/gst-plugins-opus-1.18.4
+~media-plugins/gst-plugins-opusparse-1.18.4
 ~media-plugins/gst-plugins-oss-1.18.4
 ~media-plugins/gst-plugins-pulse-1.18.4
 ~media-plugins/gst-plugins-raw1394-1.18.4
