@@ -25,8 +25,10 @@ RDEPEND="app-backup/borgbackup
 		dev-python/requests[${PYTHON_USEDEP}]
 		<dev-python/ruamel-yaml-0.18.0[${PYTHON_USEDEP}]
 	')"
+# one of the tests needs xxd
 BDEPEND="
 	test? (
+		app-editors/vim-core
 		$(python_gen_cond_dep '
 			dev-python/flexmock[${PYTHON_USEDEP}]
 		')
