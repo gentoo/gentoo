@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools xdg
+inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Programs and library containing GTK widgets and C++ classes related to chemistry"
 HOMEPAGE="http://gchemutils.nongnu.org/"
@@ -54,6 +54,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #790023
+	append-cxxflags -std=c++14
+
 	# lasem is not in the tree
 	econf \
 		--without-lasem \
