@@ -13,7 +13,7 @@
 			Use <pkg>dev-vcs/git</pkg> for password revisions.
 		</flag>
 		<flag name="dmenu">
-			Add support for x11-misc/dmenu with the 'passmenu' program.
+			Add support for <pkg>x11-misc/dmenu</pkg> with the 'passmenu' program.
 		</flag>
 		<flag name="importers">
 			Allow importing passwords from other password managers using various contributed scripts.
