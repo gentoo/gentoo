@@ -1,8 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Required by kde-apps/okular[pdf]
-app-text/poppler nss
+# NSS: Required by kde-apps/okular[pdf]
+# Boost: app-text/poppler[qt5] recommended w/ Boost (bug #795888)
+app-text/poppler nss boost
 
 # Required by sys-apps/fwupd, a dependency of kde-plasma/discover
 dev-libs/libjcat gpg pkcs7
