@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
+# dev-libs/boxfort does not support riscv64 yet, meaning
+# dev-libs/criterion cannot be keyworded here
+app-admin/syslog-ng test
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-db/mongodb does not support riscv, fails src_configure
 dev-python/pymongo test
 
