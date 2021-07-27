@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/libbsd
-	dev-libs/libffi:0/7
+	|| ( dev-libs/libffi:0/7 dev-libs/libffi-compat:7 )
 	dev-libs/libgcrypt:0
 	dev-libs/libgpg-error
 	dev-libs/libpcre:3
