@@ -11,7 +11,7 @@ inherit cmake desktop xdg-utils pax-utils plocale
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=()
+	EGIT_SUBMODULES=( 'Externals/mGBA/mgba')
 	inherit git-r3
 else
 	inherit vcs-snapshot
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan mgba"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -109,6 +109,8 @@ src_prepare() {
 		picojson
 		# No code to detect shared library.
 		zstd
+		# mGBA can't be found by cmake
+		mGBA
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
@@ -159,6 +161,7 @@ src_configure() {
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_SHARED_ENET=ON
 		-DUSE_UPNP=$(usex upnp)
+		-DUSE_MGBA=$(usex mgba)
 
 		# Undo cmake.eclass's defaults.
 		# All dolphin's libraries are private
