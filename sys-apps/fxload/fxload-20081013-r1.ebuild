@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -10,17 +10,17 @@ MY_P="${PN}-${PV:0:4}_${PV:4:2}_${PV:6:2}"
 DESCRIPTION="USB firmware uploader"
 HOMEPAGE="http://linux-hotplug.sourceforge.net/"
 SRC_URI="mirror://sourceforge/linux-hotplug/${MY_P}.tar.gz"
+S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
-IUSE=""
-
-S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	default
+
 	sed -i \
-		-e 's:$(CC) -o:$(CC) $(LDFLAGS) -o:' \
+		-e 's:$(CC) -o:$(CC) $(CPPFLAGS) $(LDFLAGS) -o:' \
 		Makefile || die
 }
 
