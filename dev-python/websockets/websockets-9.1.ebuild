@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
 
@@ -16,3 +16,12 @@ SLOT="0"
 KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
 
 distutils_enable_tests unittest
+
+src_prepare() {
+	# these fail due to timeouts on slower hardware
+	sed -e 's:test_keepalive_ping_with_no_ping_timeout:_&:' \
+		-e 's:test_keepalive_ping(:_&:' \
+		-i tests/legacy/test_protocol.py || die
+
+	distutils-r1_src_prepare
+}
