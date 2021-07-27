@@ -25,28 +25,6 @@ REQUIRED_USE="
 # Requires ksh, tests against installed package, missing files and directory
 RESTRICT="test"
 
-BDEPEND="
-	sys-devel/flex
-	sys-devel/libtool
-	x11-libs/gdk-pixbuf:2
-	virtual/pkgconfig
-	doc? (
-		app-text/ghostscript-gpl
-		sys-apps/groff
-	)
-	guile? (
-		dev-lang/swig
-		dev-scheme/guile
-	)
-	java? (
-		dev-lang/swig
-		>=virtual/jdk-1.8:*
-	)
-	nls? ( >=sys-devel/gettext-0.14.5 )
-	perl? ( dev-lang/swig )
-	python? ( dev-lang/swig )
-	ruby? ( dev-lang/swig )
-	tcl? ( dev-lang/swig )"
 RDEPEND="
 	>=dev-libs/expat-2
 	>=dev-libs/glib-2.11.1:2
@@ -90,6 +68,28 @@ RDEPEND="
 		x11-libs/libXt
 	)"
 DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/flex
+	sys-devel/libtool
+	x11-libs/gdk-pixbuf:2
+	virtual/pkgconfig
+	doc? (
+		app-text/ghostscript-gpl
+		sys-apps/groff
+	)
+	guile? (
+		dev-lang/swig
+		dev-scheme/guile
+	)
+	java? (
+		dev-lang/swig
+		>=virtual/jdk-1.8:*
+	)
+	nls? ( >=sys-devel/gettext-0.14.5 )
+	perl? ( dev-lang/swig )
+	python? ( dev-lang/swig )
+	ruby? ( dev-lang/swig )
+	tcl? ( dev-lang/swig )"
 
 # Dependency description / Maintainer-Info:
 
@@ -256,11 +256,6 @@ src_install() {
 	if ! use examples; then
 		rm -rf "${ED}"/usr/share/graphviz/demo || die
 	fi
-
-	# useless test binary, because upstream uses
-	# bin_PROGRAMS and not check_PROGRAMS, creates
-	# a spurious dependency on dev-libs/criterion
-	rm -f "${ED}"/usr/bin/command_line || die
 
 	find "${ED}" -name '*.la' -delete || die
 
