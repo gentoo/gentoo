@@ -34,6 +34,10 @@ DEPEND="${RDEPEND}
 # Tests seem to hang forever
 # RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-preload-Declare-__xstat-prototypes-for-glibc-2.32.90.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
