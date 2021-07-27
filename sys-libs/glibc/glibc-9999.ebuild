@@ -1510,9 +1510,10 @@ pkg_preinst() {
 	# Keep around libcrypt so that Perl doesn't break when merging libxcrypt
 	# (libxcrypt is the new provider for now of libcrypt.so.{1,2}).
 	# bug #802207
-	if has_version "${CATEGORY}/${PN}[crypt]"; then
+	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]"; then
 		PRESERVED_OLD_LIBCRYPT=1
 		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
+		cp "${EROOT}"/usr/include/crypt.h "${T}"/crypt.h || die
 	else
 		PRESERVED_OLD_LIBCRYPT=0
 	fi
@@ -1548,5 +1549,10 @@ pkg_postinst() {
 
 	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
 		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
+		cp "${T}"/crypt.h "${EROOT}"/usr/include/crypt.h || eerror "Error restoring crypt.h, please file a bug"
+		elog "Please ignore a possible later error message about a file collision involving"
+		elog "/usr/include/crypt.h. We need to preserve this file for the moment to keep"
+		elog "the upgrade working, but it also needs to be overwritten when"
+		elog "sys-libs/libxcrypt is installed. See bug 802210 for more details."
 	fi
 }
