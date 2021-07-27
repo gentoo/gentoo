@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
@@ -15,29 +15,27 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64"
-
-# Fails due to problems with dev-python/flexmock-0.10.4; see Bug #740128
-RESTRICT="test"
+KEYWORDS="~amd64 ~riscv"
 
 # borg is called as an external tool, hence no pythonic stuff
 RDEPEND="app-backup/borgbackup
 	$(python_gen_cond_dep '
 		dev-python/colorama[${PYTHON_USEDEP}]
-		>=dev-python/pykwalify-1.6.0[${PYTHON_USEDEP}]
+		dev-python/jsonschema[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		<dev-python/ruamel-yaml-0.18.0[${PYTHON_USEDEP}]
 	')"
-#BDEPEND="
-#	test? (
-#		$(python_gen_cond_dep '
-#			dev-python/flexmock[${PYTHON_USEDEP}]
-#		')
-#	)"
+BDEPEND="
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/flexmock[${PYTHON_USEDEP}]
+		')
+	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.1-systemd_service_bin_path.patch
 	"${FILESDIR}"/${PN}-1.5.1-no_test_coverage.patch
+	"${FILESDIR}"/${PN}-1.5.16-flexmock_write_args.patch
+	"${FILESDIR}"/${PN}-1.5.16-systemd_service_bin_path.patch
 )
 
 distutils_enable_tests pytest
