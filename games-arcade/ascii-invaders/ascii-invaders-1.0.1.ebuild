@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Space invaders clone, using ncurses library"
 HOMEPAGE="https://github.com/macdice/ascii-invaders"
@@ -13,18 +13,14 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~mips ~ppc64 ~x86 ~ppc-macos"
 
-RDEPEND="sys-libs/ncurses:0="
+RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-src_prepare() {
-	default
-	rm -f Makefile
-}
-
 src_compile() {
 	tc-export CC
-	emake LDLIBS="$($(tc-getPKG_CONFIG) ncurses --libs)" invaders
+	append-cppflags $($(tc-getPKG_CONFIG) --cflags ncurses || die)
+	emake -f /dev/null LDLIBS="$($(tc-getPKG_CONFIG) ncurses --libs || die)" invaders
 }
 
 src_install() {
