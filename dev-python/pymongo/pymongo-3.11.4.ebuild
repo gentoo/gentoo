@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 inherit check-reqs distutils-r1
 
 MY_P=mongo-python-driver-${PV}
@@ -16,7 +16,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa x86"
+KEYWORDS="amd64 ~arm64 ~hppa ~riscv x86"
 IUSE="doc kerberos"
 
 RDEPEND="
