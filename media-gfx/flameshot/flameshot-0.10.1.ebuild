@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop xdg
+inherit cmake xdg
 
 DESCRIPTION="Powerful yet simple to use screenshot software"
 HOMEPAGE="https://flameshot.org https://github.com/flameshot-org/flameshot"
