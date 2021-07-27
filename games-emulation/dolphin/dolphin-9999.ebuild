@@ -11,7 +11,7 @@ inherit cmake desktop xdg-utils pax-utils plocale
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=( 'Externals/mGBA/mgba')
+	EGIT_SUBMODULES=( 'Externals/mGBA/mgba' )
 	inherit git-r3
 else
 	inherit vcs-snapshot
