@@ -1,0 +1,34 @@
+From e8b8d86592565acde1ac6e7809947b8a761f2f91 Mon Sep 17 00:00:00 2001
+From: Marek Szuba <marek.szuba@cern.ch>
+Date: Tue, 27 Jul 2021 13:46:51 +0100
+Subject: [PATCH] tests/integration/test_execute: use plain Python rather than
+ xxd
+
+Removes this test's dependencies on vim and /dev/urandom.
+
+Signed-off-by: Marek Szuba <marek.szuba@cern.ch>
+---
+ tests/integration/test_execute.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/integration/test_execute.py b/tests/integration/test_execute.py
+index 6dc6467..3b9bef9 100644
+--- a/tests/integration/test_execute.py
++++ b/tests/integration/test_execute.py
+@@ -1,5 +1,6 @@
+ import logging
+ import subprocess
++import sys
+ 
+ import pytest
+ from flexmock import flexmock
+@@ -134,7 +135,8 @@ def test_log_outputs_vents_other_processes_when_one_exits():
+     flexmock(module).should_receive('command_for_process').and_return('grep')
+ 
+     process = subprocess.Popen(
+-        ['xxd', '-l', '40000', '-p', '/dev/urandom'], stdout=subprocess.PIPE, stderr=subprocess.PIPE
++        [sys.executable, '-c', "import random, string; print(''.join(random.choice(string.ascii_letters) for _ in range(40000)))"],
++        stdout=subprocess.PIPE, stderr=subprocess.PIPE
+     )
+     other_process = subprocess.Popen(
+         ['true'], stdin=process.stdout, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
