@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-27)
+# dev-db/mongodb does not support riscv, fails src_configure
+dev-python/pymongo test
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
 # lack an ios device to test it
 kde-frameworks/solid ios
