@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python{3_7,3_8,3_9})
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit cmake python-any-r1
 
@@ -22,7 +22,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/1.1"
-KEYWORDS="~amd64 ~arm64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~sparc ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
