@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-4.02:=[ocamlopt]
-	>=dev-libs/libffi-3.3_rc0:0/7
+	>=dev-libs/libffi-3.3_rc0:=
 	dev-ml/integers:=
 "
 DEPEND="${RDEPEND}
