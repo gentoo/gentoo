@@ -63,6 +63,8 @@ app-crypt/heimdal afs
 dev-lang/ruby xemacs
 #  - sci-libs/gdal
 dev-python/networkx extras
+#  - dev-ruby/asciidoctor
+dev-libs/nanomsg doc
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
 #  - media-libs/dumb, media-libs/openal
