@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby25 ruby26 ruby27"
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 RUBY_FAKEGEM_TASK_DOC=doc
 
@@ -46,7 +46,9 @@ all_ruby_prepare() {
 		-e '/require.*cane/,/end/d' \
 		-i Rakefile || die
 
-	sed -i -e '/config.formatter/ s/documentation/progress/' spec/spec_helper.rb || die
+	sed -e '/config.formatter/ s/documentation/progress/' \
+		-e '1irequire "patron"' \
+		-i spec/spec_helper.rb || die
 
 	# Avoid tests that require unpackaged jbuilder and jsonify
 	sed -i -e '/\(pry-nav\|jbuilder\|jsonify\)/ s:^:#:' spec/spec_helper.rb || die
