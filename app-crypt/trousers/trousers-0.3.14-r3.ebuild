@@ -64,5 +64,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/tcsd.service
 	udev_dorules "${FILESDIR}"/61-trousers.rules
 	fowners tss:tss /var/lib/tpm
+	fowners :tss /etc/tcsd.conf
+	fperms 640 /etc/tcsd.conf
 	readme.gentoo_create_doc
 }
