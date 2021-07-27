@@ -25,10 +25,8 @@ RDEPEND="app-backup/borgbackup
 		dev-python/requests[${PYTHON_USEDEP}]
 		<dev-python/ruamel-yaml-0.18.0[${PYTHON_USEDEP}]
 	')"
-# one of the tests needs xxd
 BDEPEND="
 	test? (
-		app-editors/vim-core
 		$(python_gen_cond_dep '
 			dev-python/flexmock[${PYTHON_USEDEP}]
 		')
@@ -38,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.1-no_test_coverage.patch
 	"${FILESDIR}"/${PN}-1.5.16-flexmock_write_args.patch
 	"${FILESDIR}"/${PN}-1.5.16-systemd_service_bin_path.patch
+	"${FILESDIR}"/${PN}-1.5.16-tests_no_vim_dep.patch  # already merged upstream
 )
 
 distutils_enable_tests pytest
