@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/fish-face/quasselgrep"
 MY_COMMIT="9b6b0bc1252daa6e574363d87d04eebd981215a5"
 SRC_URI="https://github.com/fish-face/quasselgrep/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
