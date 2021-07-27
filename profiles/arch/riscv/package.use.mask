@@ -1,6 +1,11 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2021-07-27)
+# depend on sci-physics/bullet, media-libs/libv4l, media-libs/libsdl2
+# which not keyworded
+dev-libs/efl physics sdl v4l
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-libs/boxfort does not support riscv64 yet, meaning
 # dev-libs/criterion cannot be keyworded here
