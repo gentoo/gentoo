@@ -11,7 +11,7 @@ inherit cmake desktop xdg-utils pax-utils plocale
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=()
+	EGIT_SUBMODULES=( Externals/mGBA/mgba )
 	inherit git-r3
 else
 	inherit vcs-snapshot
@@ -109,6 +109,9 @@ src_prepare() {
 		picojson
 		# No code to detect shared library.
 		zstd
+
+		# This is a stripped-down mGBA for integrated GBA support
+		mGBA
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
