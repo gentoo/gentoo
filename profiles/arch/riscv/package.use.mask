@@ -177,4 +177,3 @@ dev-python/pypiserver test
 dev-python/setuptools test
 sys-libs/libcxx static-libs
 media-libs/fontconfig doc
-net-libs/gnutls test-full
