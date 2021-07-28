@@ -36,7 +36,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.1-no_test_coverage.patch
 	"${FILESDIR}"/${PN}-1.5.16-flexmock_write_args.patch
 	"${FILESDIR}"/${PN}-1.5.16-systemd_service_bin_path.patch
-	"${FILESDIR}"/${PN}-1.5.16-tests_no_vim_dep.patch  # already merged upstream
 )
 
 distutils_enable_tests pytest
