@@ -15,7 +15,7 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/rfjakob/earlyoom/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 IUSE="docs systemd test"
 
