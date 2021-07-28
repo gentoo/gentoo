@@ -26,6 +26,9 @@ JAVA_SRC_DIR="src/main/java"
 src_configure() {
 	local mycmakeargs=(
 		-DJAVA_HOME="$(java-config -g JAVA_HOME)"
+		# Resolve bug #776910
+		# Reference: https://stackoverflow.com/a/51764145
+		-DJAVA_AWT_LIBRARY="NotNeeded"
 	)
 	cmake_src_configure
 }
