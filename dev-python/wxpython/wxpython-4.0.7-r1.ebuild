@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 WX_GTK_VER="3.0-gtk3"
 
 DISTUTILS_IN_SOURCE_BUILD="1"
@@ -18,7 +18,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_PN}-${MY_PV}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="4.0"
-KEYWORDS="~alpha amd64 arm ~arm64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="test webkit"
 # Tests broken: #726812, #722716
 RESTRICT="test"
