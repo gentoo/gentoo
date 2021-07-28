@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps not keyworded
+gnome-base/gnome-extra-apps share
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
 # keyworded and works on ppc64
 gnome-base/gnome -classic
 
