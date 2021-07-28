@@ -13,20 +13,17 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	dev-lang/ocaml:=
+RDEPEND="dev-lang/ocaml:=
 	dev-ml/rresult:=
 	dev-ml/astring:=
 	dev-ml/fpath:=
 	dev-ml/fmt:=
-	dev-ml/logs:=
-"
-DEPEND="${RDEPEND}
-	dev-ml/findlib
+	dev-ml/logs:="
+DEPEND="${RDEPEND}"
+BDEPEND="dev-ml/findlib
 	dev-ml/ocamlbuild
 	dev-ml/topkg
-	test? ( dev-ml/mtime )
-"
+	test? ( dev-ml/mtime )"
 
 src_compile() {
 	ocaml pkg/pkg.ml build --tests $(usex test true false) || die
