@@ -81,6 +81,8 @@ dev-libs/nanomsg doc
 dev-python/networkx extras
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
+#  - Qt5 & KDE
+dev-vcs/subversion kwallet
 #  - media-libs/dumb, media-libs/openal
 media-libs/allegro dumb openal
 #  - media-gfx/nvidia-texture-tools
@@ -171,7 +173,6 @@ dev-libs/libpcre jit
 dev-python/argcomplete test
 dev-python/pypiserver test
 dev-python/setuptools test
-dev-vcs/git subversion
 sys-libs/libcxx static-libs
 media-libs/fontconfig doc
 net-libs/gnutls test-full
