@@ -208,7 +208,7 @@ yaml-rust-0.4.5
 inherit cargo
 
 DESCRIPTION="A new way to see and navigate directory trees"
-HOMEPAGE="https://dystroy.org/broot/"
+HOMEPAGE="https://dystroy.org/broot/ https://github.com/Canop/broot"
 SRC_URI="https://github.com/Canop/broot/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris)"
 
