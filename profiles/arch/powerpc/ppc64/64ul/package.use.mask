@@ -3,7 +3,7 @@
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
 # deps are keyworded
-media-gfx/gnome-extra-apps -tracker
+gnome-base/gnome-extra-apps -tracker
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
 # deps not keyworded
