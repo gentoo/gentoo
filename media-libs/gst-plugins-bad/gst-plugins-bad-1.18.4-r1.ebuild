@@ -19,6 +19,7 @@ IUSE="X bzip2 +egl gles2 gtk +introspection +opengl +orc vnc wayland" # Keep def
 # We mirror opengl/gles2 from -base to ensure no automagic openglmixers plugin (with "opengl?" it'd still get built with USE=-opengl here)
 # FIXME	gtk? ( >=media-plugins/gst-plugins-gtk-${PV}:${SLOT}[${MULTILIB_USEDEP}] )
 RDEPEND="
+	!media-plugins/gst-transcoder
 	>=media-libs/gstreamer-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},egl?,introspection?,gles2=,opengl=]
 	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
