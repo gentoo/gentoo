@@ -159,6 +159,10 @@ src_configure() {
 	#define _PATH_DHCRELAY6_PID  "${r}/dhcrelay6.pid"
 	EOF
 
+	# Breaks with -O3 because of reliance on undefined behaviour
+	# bug #787935
+	append-flags -fno-strict-aliasing
+
 	# https://bugs.gentoo.org/720806
 	if use ppc || use arm || use hppa; then
 		append-libs -latomic
