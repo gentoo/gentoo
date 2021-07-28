@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
@@ -68,10 +68,7 @@ BDEPEND="
 				media-plugins/gst-plugins-openh264:1.0 )
 	) )
 "
-# intltool-merge manually called in meson.build in 2.3.5; might be properly gone by 3.0
-RDEPEND="${RDEPEND}
-	!>=app-misc/tracker-miners-2.99
-" # Incompatible revision for (upcoming) parallel-installable tracker-miners-3 due to autostart; a revision that disables autostart and drops the blocker to be added together with v3
+# intltool-merge manually called in meson.build in 2.3.5
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-fix-autostart-build.patch
@@ -140,7 +137,7 @@ src_configure() {
 		-Dcharset_detection=icu # enca is a possibility, but right now we have tracker core always dep on icu and icu is preferred over enca
 		-Dgeneric_media_extractor=${media_extractor}
 		# gupnp gstreamer_backend is in bad state, upstream suggests to use discoverer, which is the default
-		-Dautostart=true # turn to false to co-exist with tracker-miners-3
+		-Dautostart=false # false to co-exist with tracker-miners-3
 		-Dsystemd_user_services="$(systemd_get_userunitdir)"
 	)
 	meson_src_configure
