@@ -1,0 +1,118 @@
+From c1926dfc6591b55c4d33f9944de4d7ebe077e964 Mon Sep 17 00:00:00 2001
+From: Firstyear <william@blackhats.net.au>
+Date: Fri, 9 Jul 2021 11:53:35 +1000
+Subject: [PATCH] Issue 4817 - BUG - locked crypt accounts on import may allow
+ all passwords (#4819)
+
+Bug Description: Due to mishanding of short dbpwd hashes, the
+crypt_r algorithm was misused and was only comparing salts
+in some cases, rather than checking the actual content
+of the password.
+
+Fix Description: Stricter checks on dbpwd lengths to ensure
+that content passed to crypt_r has at least 2 salt bytes and
+1 hash byte, as well as stricter checks on ct_memcmp to ensure
+that compared values are the same length, rather than potentially
+allowing overruns/short comparisons.
+
+fixes: https://github.com/389ds/389-ds-base/issues/4817
+
+Author: William Brown <william@blackhats.net.au>
+
+Review by: @mreynolds389
+---
+ .../password/pwd_crypt_asterisk_test.py       | 50 +++++++++++++++++++
+ ldap/servers/plugins/pwdstorage/crypt_pwd.c   | 20 +++++---
+ 2 files changed, 64 insertions(+), 6 deletions(-)
+ create mode 100644 dirsrvtests/tests/suites/password/pwd_crypt_asterisk_test.py
+
+diff --git a/dirsrvtests/tests/suites/password/pwd_crypt_asterisk_test.py b/dirsrvtests/tests/suites/password/pwd_crypt_asterisk_test.py
+new file mode 100644
+index 000000000..d76614db1
+--- /dev/null
++++ b/dirsrvtests/tests/suites/password/pwd_crypt_asterisk_test.py
+@@ -0,0 +1,50 @@
++# --- BEGIN COPYRIGHT BLOCK ---
++# Copyright (C) 2021 William Brown <william@blackhats.net.au>
++# All rights reserved.
++#
++# License: GPL (version 3 or any later version).
++# See LICENSE for details.
++# --- END COPYRIGHT BLOCK ---
++#
++import ldap
++import pytest
++from lib389.topologies import topology_st
++from lib389.idm.user import UserAccounts
++from lib389._constants import (DEFAULT_SUFFIX, PASSWORD)
++
++pytestmark = pytest.mark.tier1
++
++def test_password_crypt_asterisk_is_rejected(topology_st):
++    """It was reported that {CRYPT}* was allowing all passwords to be
++    valid in the bind process. This checks that we should be rejecting
++    these as they should represent locked accounts. Similar, {CRYPT}!
++
++    :id: 0b8f1a6a-f3eb-4443-985e-da14d0939dc3
++    :setup: Single instance
++    :steps: 1. Set a password hash in with CRYPT and the content *
++            2. Test a bind
++            3. Set a password hash in with CRYPT and the content !
++            4. Test a bind
++    :expectedresults:
++            1. Successfully set the values
++            2. The bind fails
++            3. Successfully set the values
++            4. The bind fails
++    """
++    topology_st.standalone.config.set('nsslapd-allow-hashed-passwords', 'on')
++    topology_st.standalone.config.set('nsslapd-enable-upgrade-hash', 'off')
++
++    users = UserAccounts(topology_st.standalone, DEFAULT_SUFFIX)
++    user = users.create_test_user()
++
++    user.set('userPassword', "{CRYPT}*")
++
++    # Attempt to bind with incorrect password.
++    with pytest.raises(ldap.INVALID_CREDENTIALS):
++        badconn = user.bind('badpassword')
++
++    user.set('userPassword', "{CRYPT}!")
++    # Attempt to bind with incorrect password.
++    with pytest.raises(ldap.INVALID_CREDENTIALS):
++        badconn = user.bind('badpassword')
++
+diff --git a/ldap/servers/plugins/pwdstorage/crypt_pwd.c b/ldap/servers/plugins/pwdstorage/crypt_pwd.c
+index 9031b2199..1b37d41ed 100644
+--- a/ldap/servers/plugins/pwdstorage/crypt_pwd.c
++++ b/ldap/servers/plugins/pwdstorage/crypt_pwd.c
+@@ -48,15 +48,23 @@ static unsigned char itoa64[] = /* 0 ... 63 => ascii - 64 */
+ int
+ crypt_pw_cmp(const char *userpwd, const char *dbpwd)
+ {
+-    int rc;
+-    char *cp;
++    int rc = -1;
++    char *cp = NULL;
++    size_t dbpwd_len = strlen(dbpwd);
+     struct crypt_data data;
+     data.initialized = 0;
+ 
+-    /* we use salt (first 2 chars) of encoded password in call to crypt_r() */
+-    cp = crypt_r(userpwd, dbpwd, &data);
+-    if (cp) {
+-        rc = slapi_ct_memcmp(dbpwd, cp, strlen(dbpwd));
++    /*
++     * there MUST be at least 2 chars of salt and some pw bytes, else this is INVALID and will
++     * allow any password to bind as we then only compare SALTS.
++     */
++    if (dbpwd_len >= 3) {
++        /* we use salt (first 2 chars) of encoded password in call to crypt_r() */
++        cp = crypt_r(userpwd, dbpwd, &data);
++    }
++    /* If these are not the same length, we can not proceed safely with memcmp. */
++    if (cp && dbpwd_len == strlen(cp)) {
++        rc = slapi_ct_memcmp(dbpwd, cp, dbpwd_len);
+     } else {
+         rc = -1;
+     }
