@@ -50,6 +50,7 @@ dev-python/pandas doc full-support test
 # LuaJIT does not support riscv
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
+www-servers/nginx nginx_modules_http_lua
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-11)
 # Causes 35 tests to fail with "fatal llvm error"
@@ -165,6 +166,7 @@ net-misc/openssh security-key
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 <dev-vcs/git-2.31.0 pcre-jit
+www-servers/nginx pcre-jit
 
 # Not yet tested / unkeyworded dependencies
 # This includes also packages which do not support python-3 or
