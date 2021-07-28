@@ -32,7 +32,10 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.10
 
 	>=media-libs/gstreamer-${GST_VER}:1.0[introspection]
-	>=media-plugins/gst-transcoder-1.14.1
+	|| (
+		>media-libs/gst-plugins-bad-1.18
+		>=media-plugins/gst-transcoder-1.14.1
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.30.0:2
