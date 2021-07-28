@@ -19,7 +19,7 @@ gnome-base/gnome -classic -extras
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
 # deps not keyworded
-net-analyzer/netdata kinesis mongo
+net-analyzer/netdata kinesis mongodb
 
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.
