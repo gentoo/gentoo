@@ -139,16 +139,6 @@ perl-core/Dumpvalue
 perl-core/Encode
 perl-core/ExtUtils-Constant
 
-# # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-17)
-# # Obsolete virtual; package was removed from the Perl
-# # core distribution. Please depend on dev-perl/Pod-Parser
-# # instead. Removal in 30 days.
-# Commented out since this messes with people's upgrades
-# and now is the wrong time for it (5.34, libxcrypt).
-# Let's restart the clock later again.
-# (dilfridge, 2021-07-24)
-# virtual/perl-Pod-Parser
-
 # Hans de Graaff <graaff@gentoo.org> (2021-07-17)
 # Deprecated upstream, replaced with factory_bot.
 # Last release in 2017, no dependencies.
