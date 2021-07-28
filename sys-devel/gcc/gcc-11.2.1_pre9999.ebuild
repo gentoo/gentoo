@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PATCH_GCC_VER="11.1.0"
+PATCH_GCC_VER="11.2.0"
 PATCH_VER="1"
 
 inherit toolchain
@@ -21,10 +21,6 @@ src_prepare() {
 	for p in "${upstreamed_patches[@]}"; do
 		rm -v "${WORKDIR}/patch/${p}" || die
 	done
-
-	if has_version '>=sys-libs/glibc-2.32-r1'; then
-		rm -v "${WORKDIR}/patch/21_all_disable-riscv32-ABIs.patch" || die
-	fi
 
 	toolchain_src_prepare
 }
