@@ -176,4 +176,3 @@ sys-libs/libcxx static-libs
 media-libs/fontconfig doc
 net-libs/gnutls test-full
 net-misc/ntp openntpd
-sys-devel/gettext cvs
