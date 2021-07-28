@@ -36,6 +36,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+)
+
 python_test() {
 	local deselect=(
 		# Internet
