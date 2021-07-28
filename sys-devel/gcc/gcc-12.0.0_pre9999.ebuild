@@ -4,7 +4,7 @@
 EAPI="8"
 
 PATCH_GCC_VER="12.0.0"
-PATCH_VER="1"
+PATCH_VER="2"
 
 inherit toolchain
 
@@ -15,10 +15,3 @@ EGIT_BRANCH=master
 
 RDEPEND=""
 BDEPEND="${CATEGORY}/binutils"
-
-src_prepare() {
-	if has_version '>=sys-libs/glibc-2.32-r1'; then
-		rm -v "${WORKDIR}/patch/21_all_disable-riscv32-ABIs.patch" || die
-	fi
-	toolchain_src_prepare
-}
