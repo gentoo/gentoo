@@ -6,9 +6,9 @@
 dev-util/catalyst iso
 
 # Yixun Lan <dlan@gentoo.org> (2021-07-27)
-# depend on sci-physics/bullet, media-libs/libv4l, media-libs/libsdl2
+# depend on sci-physics/bullet, media-libs/libv4l
 # which not keyworded
-dev-libs/efl physics sdl v4l
+dev-libs/efl physics v4l
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-libs/boxfort does not support riscv64 yet, meaning
@@ -66,7 +66,6 @@ mail-mta/courier fax
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
 dev-python/ipython nbconvert notebook
-dev-python/matplotlib wxwidgets
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
@@ -76,10 +75,10 @@ app-editors/emacs gconf m17n-lib xwidgets
 app-crypt/heimdal afs
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
 dev-lang/ruby xemacs
-#  - sci-libs/gdal
-dev-python/networkx extras
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
+#  - sci-libs/gdal
+dev-python/networkx extras
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
 #  - media-libs/dumb, media-libs/openal
@@ -92,8 +91,8 @@ net-analyzer/rrdtool rados ruby
 net-misc/connman iwd ofono
 #  - dev-util/aruba & dev-util/cucumber
 sys-block/thin-provisioning-tools test
-#  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
-sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
+#  - sys-cluster/knem, sys-fabric/infinipath-psm
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_psm
 #  - sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
 sys-cluster/slurm ofed slurmdbd
 
@@ -147,12 +146,6 @@ net-libs/libproxy spidermonkey webkit kde networkmanager
 dev-libs/efl avif
 media-libs/gd avif heif
 
-# Sam James <sam@gentoo.org> (2021-02-26)
-# dev-libs/efl not keyworded here
-# and is a desktop application mainly
-# bug #773178
-app-crypt/pinentry efl
-
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
@@ -175,23 +168,12 @@ dev-libs/libpcre jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
-app-admin/syslog-ng mongodb test
 dev-python/argcomplete test
-dev-python/aiohttp doc test
-dev-python/jinja doc
-dev-python/lxml test
-dev-python/pbr test
 dev-python/pypiserver test
 dev-python/setuptools test
-dev-python/sphinx doc test
-dev-python/twisted test
-dev-python/urllib3 test
-dev-util/catalyst iso
-dev-util/pkgconf test
-dev-vcs/git highlight subversion
+dev-vcs/git subversion
 sys-libs/libcxx static-libs
 media-libs/fontconfig doc
 net-libs/gnutls test-full
-net-libs/libpcap rdma
 net-misc/ntp openntpd
 sys-devel/gettext cvs
