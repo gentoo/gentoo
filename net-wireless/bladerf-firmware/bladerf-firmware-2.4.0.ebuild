@@ -13,7 +13,7 @@ SRC_URI="http://nuand.com/fx3/bladeRF_fw_v${PV}.img"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 IUSE=""
 
 DEPEND=""
