@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/glib:2
 	>=media-libs/gstreamer-${PV}:1.0[introspection]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection]
+	!>media-libs/gst-plugins-bad-1.18
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
