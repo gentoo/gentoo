@@ -1,0 +1,32 @@
+diff -ruN Alien-HDF4-0.05.orig/common.pl Alien-HDF4-0.05/common.pl
+--- Alien-HDF4-0.05.orig/common.pl	2019-04-27 03:01:25.000000000 +0200
++++ Alien-HDF4-0.05/common.pl	2021-07-29 00:47:09.923447920 +0200
+@@ -36,13 +36,13 @@
+     foreach my $libdir ( @HDF_lib_locations ) {
+         return (
+             $libdir, '-lmfhdfalt -ldfalt',
+-        ) if -e "$libdir/libdfalt.a";
++        ) if -e "$libdir/libdfalt.$Config{so}";
+         return (
+             $libdir, '-lmfhdf -ldf',
+-        ) if -e "$libdir/libdf.a";
++        ) if -e "$libdir/libdf.$Config{so}";
+         return (
+             $libdir, '-lmfhdf -lhdf -lxdr',
+-        ) if -e "$libdir/libhdf.a";
++        ) if -e "$libdir/libhdf.$Config{so}";
+     }
+     return;
+ }
+diff -ruN Alien-HDF4-0.05.orig/Makefile.PL Alien-HDF4-0.05/Makefile.PL
+--- Alien-HDF4-0.05.orig/Makefile.PL	2019-04-27 02:53:52.000000000 +0200
++++ Alien-HDF4-0.05/Makefile.PL	2021-07-29 00:46:34.395073467 +0200
+@@ -7,7 +7,7 @@
+ 
+ my ($libpath, $libs) = findlibs();
+ die <<EOF unless defined $libpath;
+-Cannot find hdf library, libdf.a.
++Cannot find hdf library, libdf.$Config{so}.
+ Please add the correct library path to Makefile.PL or install HDF
+ EOF
+ 
