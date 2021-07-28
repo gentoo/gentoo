@@ -70,7 +70,7 @@ pkg_postinst() {
 	if use importers; then
 		einfo "To import passwords from other password managers, you may use the"
 		einfo "various importer scripts found in:"
-		einfo "    ${EROOT%/}/usr/share/${PN}/importers/"
+		einfo "    ${EROOT}/usr/share/${PN}/importers/"
 	fi
 }
 
