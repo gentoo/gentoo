@@ -16,7 +16,7 @@ SRC_URI="xA4? ( http://nuand.com/fpga/v${PV}/hostedxA4.rbf -> hostedxA4-${PV}.rb
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 IUSE="+xA4 +xA9 +x40 +x115"
 
 DEPEND=""
