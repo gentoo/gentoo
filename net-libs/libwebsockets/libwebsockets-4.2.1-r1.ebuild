@@ -11,7 +11,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0/18" # libwebsockets.so.18
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
 	+lejp libev libevent libuv mbedtls peer-limits server-status smtp socks5
 	sqlite3 ssl threads zip"
@@ -36,7 +36,7 @@ RDEPEND="
 	sqlite3? ( dev-db/sqlite:= )
 	ssl? (
 		!mbedtls? ( dev-libs/openssl:0= )
-		mbedtls? ( net-libs/mbedtls:= )
+		mbedtls? ( net-libs/mbedtls:0= )
 	)"
 DEPEND="${RDEPEND}"
 BDEPEND="
