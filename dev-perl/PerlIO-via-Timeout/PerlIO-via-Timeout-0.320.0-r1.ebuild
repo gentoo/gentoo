@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DAMS
 DIST_VERSION=0.32
@@ -11,15 +11,13 @@ DESCRIPTION="PerlIO layer that adds read & write timeout to a handle"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0
 	virtual/perl-Scalar-List-Utils
 	virtual/perl-Time-HiRes
 "
-DEPEND="
+BDEPEND="
 	>=dev-perl/Module-Build-Tiny-0.39.0
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
 	test? (
