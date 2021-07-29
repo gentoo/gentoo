@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 BDEPEND="
 	$(python_gen_any_dep 'dev-python/pillow[${PYTHON_USEDEP},zlib]')
 	app-text/asciidoc
-	games-util/deutex"
+	games-util/deutex[png]"
 
 S="${WORKDIR}/freedoom-${PV}"
 
@@ -44,7 +44,7 @@ src_install() {
 	emake install-freedoom \
 		prefix="${ED}/usr/" \
 		bindir="bin/" \
-		docdir="share/doc/${P}" \
+		docdir="share/doc/${PF}" \
 		mandir="share/man/" \
 		waddir="${DOOMWADPATH}/"
 }
