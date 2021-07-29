@@ -21,7 +21,7 @@ IUSE="
 RESTRICT="test"
 
 DEPEND="
-	mbedtls? ( net-libs/mbedtls )
+	mbedtls? ( net-libs/mbedtls:* )
 	ssl? (
 		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	)
