@@ -168,12 +168,8 @@ dev-libs/libpcre jit
 <dev-vcs/git-2.31.0 pcre-jit
 www-servers/nginx pcre-jit
 
-# Not yet tested / unkeyworded dependencies
-# This includes also packages which do not support python-3 or
-# do not support python-3.7 yet.
-
+# app-shells/fish not keyworded due to failing tests
 dev-python/argcomplete test
+
+# Several dependencies not keyworded due to failing tests.
 dev-python/pypiserver test
-dev-python/setuptools test
-sys-libs/libcxx static-libs
-media-libs/fontconfig doc
