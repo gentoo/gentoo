@@ -26,7 +26,7 @@ RDEPEND="
 	)
 	wayland? (
 		dev-libs/wayland
-		media-libs/mesa[egl,wayland]
+		media-libs/mesa[egl(+),wayland]
 	)
 "
 DEPEND="
