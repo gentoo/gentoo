@@ -71,7 +71,7 @@ src_install() {
 	doins -r tools
 
 	if use doc ; then
-		docinto /usr/share/doc/${PF}/html
+		docinto html
 		dodoc -r docs/*
 		java-pkg_dojavadoc javadoc
 	fi
