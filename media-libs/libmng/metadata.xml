@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>soap@gentoo.org</email>
+		<name>David Seifert</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">libmng</remote-id>
