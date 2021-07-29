@@ -23,7 +23,7 @@ RDEPEND="acct-group/tss
 	acct-user/tss
 	fapi? ( dev-libs/json-c
 		net-misc/curl )
-	mbedtls? ( net-libs/mbedtls:= )
+	mbedtls? ( net-libs/mbedtls:0= )
 	openssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
