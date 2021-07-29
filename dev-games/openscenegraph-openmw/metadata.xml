@@ -14,11 +14,16 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<longdescription lang="en">
-		OpenSceneGraph on steroids. This fork was created to experiment with performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project - either for design reasons or backward compatibility reasons. OpenMW still works with "vanilla" OpenSceneGraph, but it is recommended to use the fork for better performance (around 10-15% on most devices). Note that the improvements are very specific to OpenMW and its animation code in particular; other OpenSceneGraph applications are not likely to see the same speed-up, or any speed-up at all if they are already GPU limited.
+		OpenSceneGraph on steroids. This fork was created to experiment with
+		performance enhancements for OpenMW that are too controversial to be
+		included in the general purpose OSG project - either for design reasons
+		or backward compatibility reasons. OpenMW still works with "vanilla"
+		OpenSceneGraph, but it is recommended to use the fork for better
+		performance (around 10-15% on most devices). Note that the improvements
+		are very specific to OpenMW and its animation code in particular; other
+		OpenSceneGraph applications are not likely to see the same speed-up, or
+		any speed-up at all if they are already GPU limited.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">OpenMW/osg</remote-id>
-	</upstream>
 	<use>
 		<flag name="collada">Enable DAE file support via <pkg>dev-libs/collada-dom</pkg></flag>
 		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
@@ -31,4 +36,7 @@
 		<flag name="sdl2">Use <pkg>media-libs/libsdl2</pkg> additionally to <pkg>media-libs/libsdl</pkg></flag>
 		<flag name="xrandr">Enable support for the X xrandr extension</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">OpenMW/osg</remote-id>
+	</upstream>
 </pkgmetadata>
