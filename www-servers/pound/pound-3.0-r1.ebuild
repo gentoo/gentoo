@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/libyaml:=
 	dev-libs/nanomsg:=
 	dev-libs/openssl:=
-	net-libs/mbedtls:=
+	net-libs/mbedtls:0=
 "
 
 RDEPEND="${DEPEND}"
