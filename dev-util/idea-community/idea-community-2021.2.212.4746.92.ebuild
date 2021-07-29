@@ -6,13 +6,14 @@ inherit eutils desktop
 
 SLOT="0"
 PV_STRING="$(ver_cut 2-6)"
-MY_PV="$(ver_cut 1-2).$(ver_cut 3-3)"
+MY_PV="$(ver_cut 1-2)"
+
 MY_PN="idea"
 # Using the most recent Jetbrains Runtime binaries available at the time of writing
 # ( jre 11.0.10 build 1304.4  )
-JRE11_BASE="11_0_10"
-JRE11_VER="1304.4"
-IDEA_VER="2.23517177.257203969.1622674002-682219170.1619910833"
+JRE11_BASE="11_0_11"
+JRE11_VER="1504.12"
+IDEA_VER="2.8475829.1475113311.1627561399-1267779196.1624449062"
 
 # distinguish settings for official stable releases and EAP-version releases
 if [[ "$(ver_cut 7)"x = "prex" ]]
@@ -23,7 +24,7 @@ else
 	# upstream stable
 	KEYWORDS="~amd64 ~arm64"
 	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IC-${MY_PV}-no-jbr.tar.gz?_ga=${IDEA_VER} -> ${MY_PN}IC-${PV_STRING}.tar.gz
-		amd64? ( https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz )"
+		amd64? ( https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz -> jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz )"
 fi
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
@@ -48,7 +49,7 @@ RDEPEND="${DEPEND}
 
 BDEPEND="dev-util/patchelf"
 RESTRICT="splitdebug"
-S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 4-6)"
+S="${WORKDIR}/${MY_PN}-IC-$(ver_cut 3-6)"
 
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
@@ -92,7 +93,8 @@ src_prepare() {
 	if use arm64; then
 		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/aarch64/libpty.so || die "Unable to patch libpty for libc"
 	else
-		rm -vf "${S}"/lib/pty4j-native/linux/aarch64/libpty.so
+		rm -vf "${S}"/lib/pty4j-native/linux/{aarch64,arm,x86}/libpty.so
+		patchelf --replace-needed libc.so libc.so.6 "${S}"/lib/pty4j-native/linux/x86-64/libpty.so || die "Unable to patch libpty for libc"
 	fi
 
 	sed -i \
@@ -111,7 +113,7 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{format.sh,idea.sh,inspect.sh,printenv.py,restart.py,fsnotifier{,64}}
+	fperms 755 "${dir}"/bin/{format.sh,idea.sh,inspect.sh,printenv.py,restart.py,fsnotifier}
 	if use amd64; then
 		JRE_DIR=jre64
 	else
