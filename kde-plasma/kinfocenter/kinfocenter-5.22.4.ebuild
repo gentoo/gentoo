@@ -49,7 +49,7 @@ DEPEND="
 	usb? ( virtual/libusb:1 )
 	wayland? (
 		>=kde-frameworks/kwayland-${KFMIN}:5
-		media-libs/mesa[egl]
+		media-libs/mesa[egl(+)]
 	)
 "
 RDEPEND="${DEPEND}
