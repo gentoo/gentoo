@@ -40,7 +40,7 @@ RDEPEND+="
 	dev-libs/mpfr:0=
 	dev-libs/libutf8proc:0=
 	dev-util/patchelf
-	>=net-libs/mbedtls-2.2
+	>=net-libs/mbedtls-2.2:0=
 	net-misc/curl[http2,ssh]
 	sci-libs/amd:0=
 	sci-libs/arpack:0=
