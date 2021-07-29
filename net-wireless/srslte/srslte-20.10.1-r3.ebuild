@@ -28,7 +28,7 @@ DEPEND="
 	dev-libs/boost:=
 	dev-libs/libconfig:=[cxx]
 	net-misc/lksctp-tools
-	net-libs/mbedtls:=
+	net-libs/mbedtls:0=
 	sci-libs/fftw:3.0=
 	bladerf? ( net-wireless/bladerf:= )
 	simcard? ( sys-apps/pcsc-lite )
