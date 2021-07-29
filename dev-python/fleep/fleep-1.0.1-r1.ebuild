@@ -13,8 +13,9 @@ if [[ ${PV} == 9999 ]]; then
 else
 	# upstream aren't tagging the releases, just as commit title
 	COMMIT="994bc2c274482d80ab13d89d8f7343eb316d3e44"
+	# Note: On next bump, remove gh suffix from SRC_URI - was added just for tests
 	SRC_URI="https://github.com/floyernick/fleep-py/archive/${COMMIT}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/fleep-py-${COMMIT}"
 
 	KEYWORDS="~amd64 ~x86"
