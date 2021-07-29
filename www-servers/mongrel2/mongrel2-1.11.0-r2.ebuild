@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-db/sqlite:3
-	>=net-libs/mbedtls-2.1[havege]
+	>=net-libs/mbedtls-2.1:0[havege]
 	net-libs/zeromq"
 RDEPEND="${DEPEND}"
 
