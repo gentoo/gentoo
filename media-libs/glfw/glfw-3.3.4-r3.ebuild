@@ -20,7 +20,7 @@ RDEPEND="
 	x11-libs/libxkbcommon[${MULTILIB_USEDEP}]
 	wayland-only? (
 		dev-libs/wayland[${MULTILIB_USEDEP}]
-		media-libs/mesa[egl,wayland,${MULTILIB_USEDEP}]
+		media-libs/mesa[egl(+),wayland,${MULTILIB_USEDEP}]
 	)
 	!wayland-only? (
 		virtual/opengl[${MULTILIB_USEDEP}]
