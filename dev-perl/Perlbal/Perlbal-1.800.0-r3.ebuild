@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=DORMANDO
 DIST_VERSION=1.80
@@ -12,7 +12,6 @@ HOMEPAGE="http://www.danga.com/perlbal/"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-perl/libwww-perl
@@ -23,7 +22,7 @@ RDEPEND="
 	dev-perl/BSD-Resource
 	dev-perl/IO-AIO
 "
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.58-Use-saner-name-in-process-listing.patch"
@@ -38,11 +37,12 @@ PERL_RM_FILES=(
 	"t/35-reproxy.t"
 	"t/40-ranges.t"
 )
+
 DIST_TEST="do" # parallel testing broken
 
 src_install() {
-	perl-module_src_install || die "perl-module_src_install failed"
-	cd "${S}"
+	perl-module_src_install
+	cd "${S}" || die
 	dodoc doc/*.txt
 	docinto hacking
 	dodoc doc/hacking/*.txt
