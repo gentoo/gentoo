@@ -5,35 +5,26 @@ EAPI=7
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit xdg cmake lua-single python-single-r1
+inherit cmake lua-single python-single-r1 xdg-utils
 
-OBS_BROWSER_COMMIT="f1a61c5a2579e5673765c31a47c2053d4b502d4b"
-CEF_DIR="cef_binary_4280_linux64"
-
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/obsproject/obs-studio.git"
-	EGIT_SUBMODULES=( plugins/obs-browser )
+	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/obsproject/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI+=" browser? ( https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz )"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
-SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}.tar.bz2 )"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
 HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="
-	+alsa browser decklink fdk jack lua nvenc pipewire
-	pulseaudio python speex +ssl truetype v4l vlc wayland
-"
+IUSE="+alsa fdk imagemagick jack lua nvenc pulseaudio python speex +ssl truetype v4l vlc"
 REQUIRED_USE="
-	browser? ( || ( alsa pulseaudio ) )
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
@@ -43,10 +34,10 @@ BDEPEND="
 	python? ( dev-lang/swig )
 "
 DEPEND="
-	dev-libs/jansson
+	>=dev-libs/jansson-2.5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5[wayland?]
+	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
@@ -59,63 +50,36 @@ DEPEND="
 	media-video/ffmpeg:=[x264]
 	net-misc/curl
 	sys-apps/dbus
-	sys-libs/zlib:=
+	sys-libs/zlib
 	virtual/udev
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXfixes
 	x11-libs/libXinerama
 	x11-libs/libXrandr
-	x11-libs/libxcb:=
+	x11-libs/libxcb
 	alsa? ( media-libs/alsa-lib )
-	browser? (
-		app-accessibility/at-spi2-atk
-		dev-libs/atk
-		dev-libs/expat
-		dev-libs/glib
-		dev-libs/nspr
-		dev-libs/nss
-		media-libs/alsa-lib
-		media-libs/fontconfig
-		net-print/cups
-		x11-libs/libXScrnSaver
-		x11-libs/libXcursor
-		x11-libs/libXdamage
-		x11-libs/libXext
-		x11-libs/libXi
-		x11-libs/libXrender
-		x11-libs/libXtst
-	)
 	fdk? ( media-libs/fdk-aac:= )
+	imagemagick? ( media-gfx/imagemagick:= )
 	jack? ( virtual/jack )
 	lua? ( ${LUA_DEPS} )
 	nvenc? ( >=media-video/ffmpeg-4[video_cards_nvidia] )
-	pipewire? ( media-video/pipewire:= )
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
-	ssl? ( net-libs/mbedtls:= )
+	ssl? ( net-libs/mbedtls:0= )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
 	)
 	v4l? ( media-libs/libv4l )
 	vlc? ( media-video/vlc:= )
-	wayland? ( dev-libs/wayland )
 "
 RDEPEND="${DEPEND}"
 
-QA_PREBUILT="
-	usr/lib*/obs-plugins/chrome-sandbox
-	usr/lib*/obs-plugins/libEGL.so
-	usr/lib*/obs-plugins/libGLESv2.so
-	usr/lib*/obs-plugins/libcef.so
-	usr/lib*/obs-plugins/swiftshader/libEGL.so
-	usr/lib*/obs-plugins/swiftshader/libGLESv2.so
-"
-
 PATCHES=(
-	"${FILESDIR}/${PN}-26.1.2-python-3.8.patch"
+	"${FILESDIR}/${PN}-26.1.2-fix-alsa-crash.patch"
+	"${FILESDIR}/${PN}-26.1.2-python-3.8.patch" # https://github.com/obsproject/obs-studio/pull/3335
 )
 
 pkg_setup() {
@@ -123,44 +87,24 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_unpack() {
-	default
-
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	elif use browser; then
-		rm -d ${P}/plugins/obs-browser || die
-		mv obs-browser-${OBS_BROWSER_COMMIT} ${P}/plugins/obs-browser || die
-	fi
-}
-
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		$(usex browser -DCEF_ROOT_DIR=../${CEF_DIR} '')
-		-DBUILD_BROWSER=$(usex browser)
-		-DBUILD_VST=no
-		-DENABLE_WAYLAND=$(usex wayland)
 		-DDISABLE_ALSA=$(usex !alsa)
-		-DDISABLE_DECKLINK=$(usex !decklink)
 		-DDISABLE_FREETYPE=$(usex !truetype)
 		-DDISABLE_JACK=$(usex !jack)
 		-DDISABLE_LIBFDK=$(usex !fdk)
-		-DENABLE_PIPEWIRE=$(usex pipewire)
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DDISABLE_VLC=$(usex !vlc)
+		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DUNIX_STRUCTURE=1
 		-DWITH_RTMPS=$(usex ssl)
-
-		# deprecated and currently cause issues
-		# https://github.com/obsproject/obs-studio/pull/4560#issuecomment-826345608
-		-DLIBOBS_PREFER_IMAGEMAGICK=no
 	)
 
-	if [[ ${PV} != 9999 ]]; then
+	if [[ ${PV} != *9999 ]]; then
 		mycmakeargs+=(
 			-DOBS_VERSION_OVERRIDE=${PV}
 		)
@@ -181,14 +125,13 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-
-	# external plugins may need some things not installed by default, install them here
+	#external plugins may need some things not installed by default, install them here
 	insinto /usr/include/obs/UI/obs-frontend-api
 	doins UI/obs-frontend-api/obs-frontend-api.h
 }
 
 pkg_postinst() {
-	xdg_pkg_postinst
+	xdg_icon_cache_update
 
 	if ! use alsa && ! use pulseaudio; then
 		elog
@@ -207,7 +150,9 @@ pkg_postinst() {
 		elog "(if 'x11-misc/xdg-utils' is installed)."
 		elog
 	fi
+}
 
+pkg_postinst() {
 	if use python; then
 		ewarn "This ebuild applies a patch that is not yet accepted upstream,"
 		ewarn "and while it fixes Python support at least to some extent, it"
@@ -215,4 +160,8 @@ pkg_postinst() {
 		ewarn ""
 		ewarn "Please report any such issues to the Gentoo maintainer."
 	fi
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
