@@ -25,7 +25,7 @@ DEPEND="
 	>=x11-libs/libXdmcp-1.0.2
 	>=x11-libs/libdrm-2.4.89
 	>=media-libs/libepoxy-1.5.4[X,egl(+)]
-	>=media-libs/mesa-18[X(+),egl,gbm]
+	>=media-libs/mesa-18[X(+),egl(+),gbm(+)]
 	>=x11-libs/libxshmfence-1.1
 	rpc? ( net-libs/libtirpc )
 	>=x11-libs/libXau-1.0.4
