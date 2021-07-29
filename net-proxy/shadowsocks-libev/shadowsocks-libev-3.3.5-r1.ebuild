@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug doc"
 
-RDEPEND="net-libs/mbedtls:=
+RDEPEND="net-libs/mbedtls:0=
 	>=net-libs/libbloom-1.6
 	net-libs/libcork
 	net-libs/libcorkipset
