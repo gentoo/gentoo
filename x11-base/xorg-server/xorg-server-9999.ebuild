@@ -63,7 +63,7 @@ CDEPEND="
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
-		>=media-libs/mesa-18[X(+),egl,gbm]
+		>=media-libs/mesa-18[X(+),egl(+),gbm(+)]
 		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
