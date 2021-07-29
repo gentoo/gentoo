@@ -17,8 +17,10 @@ S="${WORKDIR}/${PN}-${P}"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	${PYTHON_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtquickcontrols2:5
 	dev-qt/qtdeclarative:5
