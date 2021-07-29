@@ -27,7 +27,7 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2:=
 		>=net-libs/gnutls-3.0.0:=
 	)
 	!gnutls? (
-		mbedtls? ( net-libs/mbedtls:= )
+		mbedtls? ( net-libs/mbedtls:0= )
 		!mbedtls? ( dev-libs/openssl:0= )
 	)
 "
