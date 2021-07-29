@@ -111,7 +111,7 @@ src_install() {
 	fi
 
 	if use examples; then
-		docinto /usr/share/doc/${PF}/examples
+		docinto examples
 		dodoc samples/*
 	fi
 
@@ -122,7 +122,7 @@ src_install() {
 			/usr/$(get_libdir)/libcdfNativeLibrary.so
 		java-pkg_dojar */*.jar
 		if use examples; then
-			docinto /usr/share/doc/${PF}/examples/java
+			docinto examples/java
 			dodoc examples/*
 		fi
 	fi
