@@ -22,7 +22,7 @@ RDEPEND="
 	gnutls? ( net-libs/gnutls:= dev-libs/libgcrypt:0 )
 	ldap? ( net-nds/openldap )
 	maxminddb? ( dev-libs/libmaxminddb )
-	mbedtls? ( net-libs/mbedtls:= )
+	mbedtls? ( net-libs/mbedtls:0= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	pcre? ( dev-libs/libpcre )
 	postgres? ( dev-db/postgresql:= )
