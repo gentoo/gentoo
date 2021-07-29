@@ -35,7 +35,7 @@ REQUIRED_USE="
 #DEPEND="jemalloc? ( >=dev-libs/jemalloc-3.3.1 )"
 DEPEND="
 	dev-util/cmake
-	monkeyd_plugins_tls? ( net-libs/mbedtls:= )"
+	monkeyd_plugins_tls? ( net-libs/mbedtls:0= )"
 RDEPEND="
 	acct-group/monkeyd
 	acct-user/monkeyd
