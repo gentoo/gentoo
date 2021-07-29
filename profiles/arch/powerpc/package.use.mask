@@ -366,7 +366,7 @@ sci-chemistry/vmd tachyon
 
 # Pacho Ramos <pacho@gentoo.org>
 # Not keyworded
-media-plugins/gst-plugins-meta dts vcd vpx
+media-plugins/gst-plugins-meta dts vcd
 
 # QA: This entry is moved from INVALID location from default/linux/powerpc.
 # VDPAU is currently not keyworded on PPC since its a nvidia-drivers feature
