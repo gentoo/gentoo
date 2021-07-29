@@ -36,8 +36,9 @@ src_prepare() {
 
 src_install() {
 	dobin ${PN}
+
 	if use examples; then
-		docinto /usr/share/doc/${PF}/examples
+		docinto examples
 		dodoc *.ti runtest.sh
 	fi
 
