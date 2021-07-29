@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools 
+inherit autotools
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
