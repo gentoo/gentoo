@@ -35,7 +35,7 @@ GCC_BOOTSTRAP_VER=20201208
 
 LOCALE_GEN_VER=2.10
 
-GLIBC_SYSTEMD_VER=20210724
+GLIBC_SYSTEMD_VER=20210729
 
 SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
