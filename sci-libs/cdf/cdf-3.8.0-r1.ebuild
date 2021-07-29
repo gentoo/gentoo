@@ -59,7 +59,9 @@ src_compile() {
 	PV_SO=${PV:0:1}
 	emake \
 		OS=linux \
+		AR=$(tc-getAR) \
 		CC=$(tc-getCC) \
+		LD=$(tc-getCC) \
 		ENV=gnu \
 		SHARED=yes \
 		SHAREDEXT_linux=so.${PV_SO} \
