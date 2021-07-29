@@ -284,8 +284,10 @@ SLOT="0"
 IUSE="+capi"
 
 ASM_DEP=">=dev-lang/nasm-2.15"
-DEPEND="amd64? ( ${ASM_DEP} )"
-RDEPEND="capi? ( dev-util/cargo-c )"
+BDEPEND="
+	amd64? ( ${ASM_DEP} )
+	capi? ( dev-util/cargo-c )
+"
 
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
@@ -305,19 +307,19 @@ src_compile() {
 		|| die "cargo build failed"
 
 	if use capi; then
-		cargo cbuild ${args} \
-			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
+		cargo cbuild ${args} --target-dir="capi" \
+			--prefix="/usr" --libdir="/usr/$(get_libdir)" \
 			|| die "cargo cbuild failed"
 	fi
 }
 
 src_install() {
 	export CARGO_HOME="${ECARGO_HOME}"
-	local args=$(usex debug "" --release)
+	local args=$(usex debug --debug "")
 
 	if use capi; then
-		cargo cinstall $args \
-			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
+		cargo cinstall $args --target-dir="capi" \
+			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED%/}" \
 			|| die "cargo cinstall failed"
 	fi
 
