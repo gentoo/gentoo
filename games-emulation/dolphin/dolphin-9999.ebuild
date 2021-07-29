@@ -25,7 +25,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto mgba profile pulseaudio +qt5 systemd upnp vulkan"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -153,6 +153,7 @@ src_configure() {
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DENABLE_LLVM=OFF
 		-DENABLE_LTO=$(usex lto)
+		-DUSE_MGBA=$(usex mgba)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_SDL=OFF # not supported: #666558
