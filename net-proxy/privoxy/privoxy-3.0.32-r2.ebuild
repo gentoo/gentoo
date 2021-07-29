@@ -28,7 +28,7 @@ DEPEND="
 	dev-libs/libpcre
 	brotli? ( app-arch/brotli )
 	ssl? (
-		mbedtls? ( net-libs/mbedtls:= )
+		mbedtls? ( net-libs/mbedtls:0= )
 		openssl? ( dev-libs/openssl:= )
 	)
 	zlib? ( sys-libs/zlib:= )
