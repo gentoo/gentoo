@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2021-07-29)
+# Upstream provided migration instructions from 2. -> 3. update, 
+# breaks if not all at least many revdeps. #805011 for tracker bug.
+>=net-libs/mbedtls-3.0.0
+
 # Sam James <sam@gentoo.org> (2021-07-26)
 # Fails to build with GCC 11. No activity upstream.
 # Removal on 2021-08-26. bug #740536, bug #624746.
