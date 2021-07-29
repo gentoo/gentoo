@@ -11,7 +11,7 @@ DESCRIPTION="Parse a X.509 certificate"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
