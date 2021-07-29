@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/gdbm
 	virtual/libcrypt:=
-	mbedtls? ( net-libs/mbedtls:= )"
+	mbedtls? ( net-libs/mbedtls:0= )"
 DEPEND="${RDEPEND}
 	test? (
 		dev-libs/openssl:0
