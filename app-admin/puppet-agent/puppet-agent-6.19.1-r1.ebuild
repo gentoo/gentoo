@@ -74,3 +74,7 @@ src_install() {
 	dosym ../../opt/puppetlabs/puppet/bin/virt-what /usr/bin/virt-what
 	dosym ../../../../usr/lib64/xcrypt/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
 }
+
+pkg_postinst() {
+	tmpfiles_process puppet-agent.conf
+}
