@@ -49,3 +49,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}/flanneld.service"
 	dodoc README.md
 }
+
+pkg_postinst() {
+	tmpfiles_process flannel.conf
+}
