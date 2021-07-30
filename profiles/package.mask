@@ -322,11 +322,6 @@ dev-python/pathlib2
 dev-python/traceback2
 dev-python/unittest2
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-05)
-# The platform is outdated and not maintained anymore.
-# Mask for removal in 30 days.
-dev-haskell/haskell-platform
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-04)
 # severely broken nfs
 # possibly depper problem due to bug in mm/page_alloc
