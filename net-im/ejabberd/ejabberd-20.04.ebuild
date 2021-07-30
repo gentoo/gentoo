@@ -271,6 +271,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.tmpfiles.conf
+
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		echo
 		elog "For configuration instructions, please see"
