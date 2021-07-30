@@ -83,10 +83,7 @@ pkg_postinst() {
 
 	move_old_state_file
 
-	elog "If you are running systemd you might need to run:"
-	elog "systemd-tmpfiles --create /usr/lib/tmpfiles.d/logrotate.conf"
-	elog "in order to create the new location of the logrotate state file"
-	elog
+	tmpfiles_process ${PN}.conf
 
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "If you wish to have logrotate e-mail you updates, please"
