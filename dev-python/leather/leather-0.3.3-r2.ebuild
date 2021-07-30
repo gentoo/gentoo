@@ -29,6 +29,8 @@ PATCHES=(
 )
 
 distutils_enable_tests pytest
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
 
 python_prepare_all() {
 	local requirements_files sed_args
