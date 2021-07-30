@@ -97,5 +97,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process /usr/lib/tmpfiles.d/connman_resolvconf.conf
+	tmpfiles_process connman_resolvconf.conf
 }
