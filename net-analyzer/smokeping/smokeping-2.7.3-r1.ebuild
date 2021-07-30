@@ -137,3 +137,7 @@ src_install() {
 
 	fperms 775 /var/lib/${PN} /var/lib/${PN}/.simg
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}
