@@ -331,6 +331,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process asterisk.conf
+
 	if [ -z "${REPLACING_VERSIONS}" ]; then
 		elog "Asterisk Wiki: https://wiki.asterisk.org/wiki/"
 		elog "Gentoo VoIP IRC Channel: #gentoo-voip @ irc.libera.chat"
