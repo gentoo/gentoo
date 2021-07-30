@@ -158,3 +158,7 @@ src_install() {
 	fi
 	keepdir /var/{log,lib}/redis
 }
+
+pkg_postinst() {
+	tmpfiles_process redis.conf
+}

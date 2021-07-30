@@ -181,6 +181,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process redis.conf
+
 	ewarn "The default redis configuration file location changed to:"
 	ewarn "  /etc/redis/{redis,sentinel}.conf"
 	ewarn "Please apply your changes to the new configuration files."
