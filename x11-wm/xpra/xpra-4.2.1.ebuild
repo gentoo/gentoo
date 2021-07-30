@@ -98,12 +98,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2-suid-warning.patch
 )
 
-pkg_postinst() {
-	tmpfiles_process /usr/lib/tmpfiles.d/xpra.conf
-
-	xdg_pkg_postinst
-}
-
 python_prepare_all() {
 	hprefixify -w '/os.path/' setup.py
 	hprefixify tmpfiles.d/xpra.conf xpra/server/server_util.py \
@@ -167,4 +161,9 @@ python_install_all() {
 	local dir=$(get_udevdir)
 	dodir "${dir%/*}"
 	mv -vnT "${ED}"/usr/lib/udev "${ED}${dir}" || die
+}
+
+pkg_postinst() {
+	tmpfiles_process xpra.conf
+	xdg_pkg_postinst
 }
