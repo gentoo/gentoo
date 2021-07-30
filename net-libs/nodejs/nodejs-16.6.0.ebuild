@@ -218,10 +218,10 @@ src_install() {
 }
 
 src_test() {
-	# parallel/test-fs-mkdir is known to fail with FEATURES=usersandbox
 	if has usersandbox ${FEATURES}; then
-		ewarn "You are emerging ${P} with 'usersandbox' enabled." \
-			"Expect some test failures or emerge with 'FEATURES=-usersandbox'!"
+		rm -f "${S}"/test/parallel/test-fs-mkdir.js
+		ewarn "You are emerging ${PN} with 'usersandbox' enabled. Excluding tests known to fail in this mode." \
+			"For full test coverage, emerge =${CATEGORY}/${PF} with 'FEATURES=-usersandbox'."
 	fi
 
 	out/${BUILDTYPE}/cctest || die
