@@ -101,3 +101,7 @@ src_install() {
 
 	fowners fhem:fhem /opt/fhem/fhem.cfg
 }
+
+pkg_postinst() {
+	tmpfiles_process fhem.conf
+}
