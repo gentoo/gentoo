@@ -100,3 +100,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	newtmpfiles "${FILESDIR}"/tmpfilesd ${PN}.conf
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}
