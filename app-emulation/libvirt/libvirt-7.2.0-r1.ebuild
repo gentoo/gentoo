@@ -324,6 +324,6 @@ pkg_postinst() {
 
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
-
+	tmpfiles_process libvirtd.conf
 	readme.gentoo_print_elog
 }
