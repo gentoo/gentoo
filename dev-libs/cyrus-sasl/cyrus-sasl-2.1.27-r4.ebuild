@@ -241,6 +241,8 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	# Generate an empty sasldb2 with correct permissions.
 	if ( use berkdb || use gdbm ) && [[ ! -f "${EROOT}/etc/sasl2/sasldb2" ]] ; then
 		einfo "Generating an empty sasldb2 with correct permissions ..."
