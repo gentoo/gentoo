@@ -97,7 +97,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process "${FILESDIR}"/kpathsea.conf
+	tmpfiles_process kpathsea.conf
 	etexmf-update
 }
 
