@@ -46,3 +46,9 @@ src_install() {
 		dodoc README
 	fi
 }
+
+pkg_postinst() {
+	if ! use minimal; then
+		tmpfiles_process nscd.conf
+	fi
+}
