@@ -80,3 +80,7 @@ src_install() {
 	newdoc INSTALL README.setup
 	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
 }
+
+pkg_postinst() {
+	tmpfiles_process vnstatd.conf
+}
