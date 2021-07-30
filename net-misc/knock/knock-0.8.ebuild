@@ -9,7 +9,7 @@ SRC_URI="https://www.zeroflux.org/proj/knock/files/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="+server"
 
 DEPEND="server? ( net-libs/libpcap )"
