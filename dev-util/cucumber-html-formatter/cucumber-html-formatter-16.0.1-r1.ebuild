@@ -14,7 +14,7 @@ DESCRIPTION="HTML formatter for Cucumber"
 HOMEPAGE="https://cucumber.io/"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 SLOT="$(ver_cut 1)"
 IUSE="test"
 
