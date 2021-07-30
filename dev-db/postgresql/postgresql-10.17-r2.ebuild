@@ -31,6 +31,7 @@ CDEPEND="
 acct-group/postgres
 acct-user/postgres
 sys-apps/less
+virtual/libcrypt:=
 virtual/libintl
 icu? ( dev-libs/icu:= )
 kerberos? ( virtual/krb5 )
