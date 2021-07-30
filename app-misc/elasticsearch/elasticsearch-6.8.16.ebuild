@@ -72,6 +72,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	elog
 	elog "You may create multiple instances of ${PN} by"
 	elog "symlinking the init script:"
