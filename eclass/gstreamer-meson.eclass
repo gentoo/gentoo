@@ -175,12 +175,8 @@ DESCRIPTION="${BUILD_GST_PLUGINS} plugin for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 SRC_URI="https://gstreamer.freedesktop.org/src/${GST_ORG_MODULE}/${GST_ORG_MODULE}-${PV}.tar.${GST_TARBALL_SUFFIX}"
 S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
-
 LICENSE="GPL-2"
-case ${GST_ORG_PVP} in
-	1.*) SLOT="1.0"; GST_MIN_PV="1.2.4-r1" ;;
-	*) die "Unkown gstreamer release."
-esac
+SLOT="1.0"
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[${MULTILIB_USEDEP}]
@@ -194,7 +190,7 @@ BDEPEND="
 if [[ "${PN}" != "gstreamer" ]]; then
 	RDEPEND="
 		${RDEPEND}
-		>=media-libs/gstreamer-${GST_MIN_PV}:${SLOT}[${MULTILIB_USEDEP}]
+		>=media-libs/gstreamer-$(ver_cut 1-2):${SLOT}[${MULTILIB_USEDEP}]
 	"
 fi
 
