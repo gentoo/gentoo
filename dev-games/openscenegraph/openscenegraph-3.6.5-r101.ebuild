@@ -33,7 +33,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 RDEPEND="
-	media-libs/mesa[egl?]
+	media-libs/mesa[egl(+)?]
 	virtual/glu
 	virtual/opengl
 	x11-libs/libSM
