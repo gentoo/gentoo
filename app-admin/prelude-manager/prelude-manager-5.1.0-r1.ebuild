@@ -64,3 +64,7 @@ src_install() {
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}
