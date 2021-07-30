@@ -1,0 +1,40 @@
+From 5dd1d3cc82d426388c66db8e3761ca2bf99a3991 Mon Sep 17 00:00:00 2001
+From: Brian <brian@quantrocket.com>
+Date: Fri, 27 Mar 2020 17:08:50 -0400
+Subject: [PATCH] import from collections.abc to suppress python 3.7 warning
+
+---
+ leather/series/base.py     | 5 ++++-
+ leather/series/category.py | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/leather/series/base.py b/leather/series/base.py
+index c5790e5..959e827 100644
+--- a/leather/series/base.py
++++ b/leather/series/base.py
+@@ -1,6 +1,9 @@
+ #!/usr/bin/env python
+ 
+-from collections import Iterable, Sequence, Mapping
++try:
++    from collections.abc import Iterable, Sequence, Mapping
++except ImportError:
++    from collections import Iterable, Sequence, Mapping
+ from functools import partial
+ 
+ import six
+diff --git a/leather/series/category.py b/leather/series/category.py
+index c575308..3678377 100644
+--- a/leather/series/category.py
++++ b/leather/series/category.py
+@@ -1,6 +1,9 @@
+ #!/usr/bin/env python
+ 
+-from collections import Iterable, Sequence, Mapping
++try:
++    from collections.abc import Iterable, Sequence, Mapping
++except ImportError:
++    from collections import Iterable, Sequence, Mapping
+ from functools import partial
+ 
+ import six
