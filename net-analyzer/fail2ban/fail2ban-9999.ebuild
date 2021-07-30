@@ -92,6 +92,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}-tmpfiles.conf
+
 	if [[ ${previous_less_than_0_7} == 0 ]] ; then
 		elog
 		elog "Configuration files are now in /etc/fail2ban/"
