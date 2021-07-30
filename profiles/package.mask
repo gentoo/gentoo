@@ -352,11 +352,6 @@ dev-ruby/shotgun
 # Masked for removal in 30 days.
 dev-ruby/source_map
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-02)
-# Outdated, not really maintained. Grab it if you like.
-# Masked for removal in 30 days. bug #800097.
-x11-plugins/purple-mattermost
-
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
