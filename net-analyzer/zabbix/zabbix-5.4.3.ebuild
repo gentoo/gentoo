@@ -581,6 +581,8 @@ pkg_postinst() {
 	fi
 
 	if use server; then
+		tmpfiles_process zabbix-server.conf
+
 		elog
 		elog "For distributed monitoring you have to run:"
 		elog
@@ -589,6 +591,18 @@ pkg_postinst() {
 		elog "This will convert database data for use with Node ID"
 		elog "and also adds a local node."
 		elog
+	fi
+
+	if use proxy; then
+		tmpfiles_process zabbix-proxy.conf
+	fi
+
+	if use agent; then
+		tmpfiles_process zabbix-agentd.conf
+	fi
+
+	if use agent2; then
+		tmpfiles_process zabbix-agent2.conf
 	fi
 
 	elog "--"
