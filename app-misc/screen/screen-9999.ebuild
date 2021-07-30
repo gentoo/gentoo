@@ -145,18 +145,7 @@ pkg_postinst() {
 		elog "applications. Please check /etc/screenrc for information on these changes."
 	fi
 
-	# Add /tmp/screen in case it doesn't exist yet. This should solve
-	# problems like bug #508634 where tmpfiles.d isn't in effect.
-	local rundir="${EROOT}/tmp/${PN}"
-	if [[ ! -d ${rundir} ]] ; then
-		if use multiuser || use prefix ; then
-			tmpfiles_group="root"
-		else
-			tmpfiles_group="utmp"
-		fi
-		mkdir -m 0775 "${rundir}"
-		chgrp ${tmpfiles_group} "${rundir}"
-	fi
+	tmpfiles_process screen.conf
 
-	ewarn "This revision changes the screen socket location to ${rundir}"
+	ewarn "This revision changes the screen socket location to ${EROOT}/tmp/${PN}"
 }
