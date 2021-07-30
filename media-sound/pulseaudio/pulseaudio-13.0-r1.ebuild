@@ -313,6 +313,8 @@ multilib_src_install_all() {
 pkg_postinst() {
 	gnome2_schemas_update
 	if use system-wide; then
+		tmpfiles_process "${PN}.conf"
+
 		elog "You have enabled the 'system-wide' USE flag for pulseaudio."
 		elog "This mode should only be used on headless servers, embedded systems,"
 		elog "or thin clients. It will usually require manual configuration, and is"
