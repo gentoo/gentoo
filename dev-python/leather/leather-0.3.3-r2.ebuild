@@ -1,28 +1,32 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+EAPI=8
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python charting for 80% of humans."
 HOMEPAGE="https://github.com/wireservice/leather https://pypi.org/project/leather/"
 SRC_URI="https://github.com/wireservice/leather/archive/refs/tags/${PV}.tar.gz -> ${P}-src.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test +xml"
-RESTRICT="!test? ( test )"
+IUSE="+xml"
 
 # Other packages have BDEPEND="test? ( dev-python/leather[xml] )"
 TEST_AGAINST_RDEPEND="xml? ( dev-python/lxml[${PYTHON_USEDEP}] )"
 RDEPEND="
 	${TEST_AGAINST_RDEPEND}
-	>=dev-python/cssselect-0.9.1[${PYTHON_USEDEP}]
-	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
+	dev-python/cssselect[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 distutils_enable_tests pytest
 
