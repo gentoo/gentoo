@@ -28,7 +28,7 @@ REQUIRED_USE="
 # TODO: COLLADA, FBX, GTA, OpenVRML, Performer, DCMTK
 RDEPEND="
 	!dev-games/openscenegraph
-	media-libs/mesa[egl?]
+	media-libs/mesa[egl(+)?]
 	virtual/glu
 	virtual/opengl
 	x11-libs/libSM
