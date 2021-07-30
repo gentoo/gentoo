@@ -271,6 +271,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	if use server ; then
+		tmpfiles_process dhcpd.conf
+	fi
+
 	if [[ -e "${ROOT}"/etc/init.d/dhcp ]] ; then
 		ewarn
 		ewarn "WARNING: The dhcp init script has been renamed to dhcpd"
