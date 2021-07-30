@@ -447,4 +447,5 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
+	tmpfiles_process ${PN}.conf
 }
