@@ -307,3 +307,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}d.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}d.confd" ${PN}
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}
