@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Adds SQL read/write support to agate."
@@ -42,16 +42,9 @@ python_prepare_all() {
 }
 
 python_test() {
-	local pytest_args test_name xfails
-
-	xfails=(
+	local deselect=(
 		tests/test_agatesql.py::TestSQL::test_to_sql_create_statement_with_dialects
 		tests/test_agatesql.py::TestSQL::test_to_sql_create_statement_with_schema
 	)
-
-	for test_name in "${xfails[@]}"; do
-		pytest_args+=(--deselect "${test_name}")
-	done
-
-	epytest "${pytest_args[@]}"
+	epytest ${deselect[@]/#/--deselect }
 }
