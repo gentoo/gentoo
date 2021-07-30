@@ -46,3 +46,7 @@ src_install() {
 	insopts -m 0600
 	newins doc/l2tp-secrets.sample l2tp-secrets
 }
+
+pkg_postinst() {
+	tmpfiles_process xl2tpd.conf
+}
