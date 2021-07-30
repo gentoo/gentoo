@@ -796,6 +796,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if ! use minimal ; then
+		tmpfiles_process slapd.conf
+
 		# You cannot build SSL certificates during src_install that will make
 		# binary packages containing your SSL key, which is both a security risk
 		# and a misconfiguration if multiple machines use the same key and cert.
