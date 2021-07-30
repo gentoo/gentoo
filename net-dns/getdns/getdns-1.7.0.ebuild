@@ -90,5 +90,6 @@ src_install() {
 pkg_postinst() {
 	if use stubby; then
 		fcaps cap_net_bind_service=ei /usr/bin/stubby
+		tmpfiles_process stubby.conf
 	fi
 }
