@@ -93,7 +93,7 @@ pkg_setup() {
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
-	of drivers (no custom config), and optional nvidia-drm.modeset=1.
+	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, so enable
 	options such as CONFIG_DRM_FBDEV_EMULATION instead."
 
