@@ -98,6 +98,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "Please see /etc/conf.d/fetchmail if you want to adjust"
 		elog "the polling delay used by the fetchmail init script."
