@@ -81,6 +81,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process puppetdb.conf
+
 	elog "to install please run '/opt/puppetlabs/server/bin/puppetdb ssl-setup'"
 	elog
 	elog "to upgrade please run '/opt/puppetlabs/server/bin/puppetdb config-migration'"
