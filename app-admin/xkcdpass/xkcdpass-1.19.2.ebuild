@@ -17,7 +17,7 @@ LICENSE="BSD CC-BY-3.0
 	l10n_no? ( CC-BY-4.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="l10n_de l10n_en l10n_es l10n_fi l10n_fr l10n_it l10n_no l10n_pt"
+IUSE="l10n_de +l10n_en l10n_es l10n_fi l10n_fr l10n_it l10n_no l10n_pt"
 
 distutils_enable_tests pytest
 REQUIRED_USE="test? ( l10n_en )"
