@@ -209,6 +209,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	if use ipv6; then readme.gentoo_print_elog; fi
 
 	if [[ -f ${ROOT}/etc/lighttpd.conf ]] ; then
