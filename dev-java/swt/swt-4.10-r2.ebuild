@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="4.10"
-KEYWORDS="~amd64 ppc64"
+KEYWORDS="amd64 ppc64"
 IUSE="cairo opengl webkit"
 
 COMMON_DEP="
