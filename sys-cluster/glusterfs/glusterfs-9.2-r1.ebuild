@@ -185,7 +185,7 @@ pkg_postinst() {
 	elog "If you are upgrading from a previous version of ${PN}, please read:"
 	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(ver_cut '1-2')/"
 
-	tmpfiles_process /usr/lib/tmpfiles.d/gluster.conf
+	tmpfiles_process gluster.conf
 
 	use emacs && elisp-site-regen
 }
