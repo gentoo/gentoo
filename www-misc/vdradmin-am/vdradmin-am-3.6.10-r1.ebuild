@@ -142,6 +142,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	tmpfiles_process vdradmind.conf
+
 	if use ipv6; then
 		elog
 		elog "To make use of the ipv6 protocol"
