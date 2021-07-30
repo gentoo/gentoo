@@ -8,5 +8,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">re-assert</remote-id>
+		<remote-id type="github">asottile/re-assert</remote-id>
 	</upstream>
 </pkgmetadata>
