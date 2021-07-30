@@ -70,6 +70,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process smsd.conf
+
 	touch "${EROOT}"/var/log/smsd.log || die
 	chown --no-dereference -f smsd:sms "${EROOT}"/var/log/smsd.log || die
 }
