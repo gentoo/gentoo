@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index b5f696c..bcb5800 100644
+index 7be3c15..099a707 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -6,7 +6,7 @@
@@ -17,7 +17,7 @@ index b5f696c..bcb5800 100644
  LIBS  =  -lspeex -lasound -lpthread -lm
 -JPEG  = -I$(JPEG_INCLUDE) $(JPEG_LIB)/libturbojpeg.a
 +JPEG  = -I$(JPEG_INCLUDE) $(JPEG_LIB)/libturbojpeg.so
- SRC   = src/connection.c src/settings.c src/decoder*.c src/av.c src/usb.c
+ SRC   = src/connection.c src/settings.c src/decoder*.c src/av.c src/usb.c src/queue.c
 -USBMUXD = -lusbmuxd
 +USBMUXD = -lusbmuxd-2.0
  
@@ -35,13 +35,13 @@ index b5f696c..bcb5800 100644
  
  droidcam-cli: LDLIBS += $(JPEG) $(LIBAV) $(LIBS)
  droidcam-cli: src/droidcam-cli.c $(SRC)
--	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
-+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
++	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
  
  droidcam: LDLIBS += $(GTK) $(JPEG) $(LIBAV) $(LIBS)
  droidcam: src/droidcam.c src/resources.c $(SRC)
--	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
-+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
++	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
  
  clean:
  	rm -f droidcam
