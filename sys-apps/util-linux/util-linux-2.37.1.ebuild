@@ -86,6 +86,10 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.37.1-lscpu_nullptr.patch
+)
+
 src_prepare() {
 	default
 
