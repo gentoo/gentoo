@@ -46,6 +46,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	[[ -d /var/cache/fscache ]] && return
 	elog "Before CacheFiles can be used, a directory for local storage"
 	elog "must be created.  The default configuration of /etc/cachefilesd.conf"
