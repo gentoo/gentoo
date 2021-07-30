@@ -1,18 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=TMTM
-MODULE_VERSION=1.25
+DIST_AUTHOR=TMTM
+DIST_VERSION=1.25
+DIST_EXAMPLES=( "bin/*" )
 inherit perl-module
 
 DESCRIPTION="Plucene - the Perl lucene port"
 
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Bit-Vector-Minimal-1.0.0
@@ -31,12 +30,10 @@ RDEPEND="
 	dev-perl/File-Slurp
 	dev-perl/IO-stringy
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.280.0
 	test? ( >=virtual/perl-Test-Harness-2.300.0 )
 "
-
-SRC_TEST="do"
 
 PERL_RM_FILES=( t/99_pod.t )
 
@@ -44,7 +41,4 @@ src_install() {
 	perl-module_src_install
 	rm -rf "${ED}"/usr/bin
 	rm -rf "${ED}"/usr/share/man
-	insinto /usr/share/doc/${PF}/examples
-	doins bin/*
-	docompress -x /usr/share/doc/${PF}/examples
 }
