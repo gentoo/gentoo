@@ -93,6 +93,8 @@ pkg_postinst() {
 		chmod 0640 "${EROOT}"/etc/stunnel/stunnel.{crt,csr,key,pem}
 	fi
 
+	tmpfiles_process stunnel.conf
+
 	einfo "If you want to run multiple instances of stunnel, create a new config"
 	einfo "file ending with .conf in /etc/stunnel/. **Make sure** you change "
 	einfo "\'pid= \' with a unique filename.  For openrc make a symlink from the"
