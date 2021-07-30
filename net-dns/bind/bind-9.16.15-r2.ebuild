@@ -278,7 +278,7 @@ python_install() {
 }
 
 pkg_postinst() {
-	tmpfiles_process "${FILESDIR}"/named.conf
+	tmpfiles_process named.conf
 
 	if [[ ! -f '/etc/bind/rndc.key' && ! -f '/etc/bind/rndc.conf' ]]; then
 		einfo "Using /dev/urandom for generating rndc.key"
