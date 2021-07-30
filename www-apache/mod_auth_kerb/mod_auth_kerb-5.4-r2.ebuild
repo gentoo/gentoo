@@ -52,3 +52,7 @@ src_install() {
 	apache-module_src_install
 	dotmpfiles "${FILESDIR}/${PN}.conf"
 }
+
+pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+}
