@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -107,4 +107,8 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
 
 	einstalldocs
+}
+
+pkg_postinst() {
+	tmpfiles_process spectrum2.conf
 }
