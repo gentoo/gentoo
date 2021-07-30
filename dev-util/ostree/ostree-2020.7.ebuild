@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-IUSE="archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount selinux sodium ssl soup systemd zeroconf"
+IUSE="archive curl doc dracut gnutls +gpg grub http2 httpd introspection libmount selinux sodium ssl +soup systemd zeroconf"
 RESTRICT="test"
 REQUIRED_USE="httpd? ( || ( curl soup ) )"
 
