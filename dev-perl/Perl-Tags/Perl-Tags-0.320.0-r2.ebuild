@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=OSFAMERON
 DIST_VERSION=0.32
@@ -11,17 +11,18 @@ DESCRIPTION="Generate (possibly exuberant) Ctags style tags for Perl sourcecode"
 
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 PATCHES=(
 	"${FILESDIR}/vim_noplugin.patch" # https://rt.cpan.org/Ticket/Display.html?id=105899
 	"${FILESDIR}/${PN}-0.32-no-dot-inc.patch"
 	"${FILESDIR}/${PN}-0.32-no-vim-tests.patch"
 )
+
 PERL_RM_FILES=(
 	"README.pod" # https://rt.cpan.org/Ticket/Display.html?id=113166
 )
+
 RDEPEND="
 	dev-perl/File-Find-Rule
 	virtual/perl-Data-Dumper
@@ -34,7 +35,8 @@ RDEPEND="
 		dev-perl/PPI
 	)
 "
-DEPEND="${RDEPEND}
+
+BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
 	test? (
 		dev-perl/Capture-Tiny
