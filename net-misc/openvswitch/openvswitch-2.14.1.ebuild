@@ -123,6 +123,8 @@ src_install() {
 pkg_postinst() {
 	use modules && linux-mod_pkg_postinst
 
+	tmpfiles_process openvswitch.conf
+
 	# only needed on non-systemd, but helps anyway
 	elog "Use the following command to create an initial database for ovsdb-server:"
 	elog "   emerge --config =${CATEGORY}/${PF}"
