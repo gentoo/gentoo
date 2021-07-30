@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{8..9} )
+
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
@@ -14,8 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test +xml"
-RESTRICT="!test? ( test )"
+IUSE="+xml"
 
 # Other packages have BDEPEND="test? ( dev-python/csvkit[xml] )"
 AGATE_VERSION_DEP=">=dev-python/agate-1.6.1"
@@ -34,15 +34,8 @@ BDEPEND="test? ( ${AGATE_VERSION_DEP}[xml,${PYTHON_USEDEP}] )"
 distutils_enable_tests pytest
 
 python_test() {
-	local pytest_args test_name xfails
-
-	xfails=(
+	local deselect=(
 		tests/test_utilities/test_in2csv.py::TestIn2CSV::test_convert_dbf
 	)
-
-	for test_name in "${xfails[@]}"; do
-		pytest_args+=(--deselect "${test_name}")
-	done
-
-	epytest "${pytest_args[@]}"
+	epytest ${deselect[@]/#/--deselect }
 }
