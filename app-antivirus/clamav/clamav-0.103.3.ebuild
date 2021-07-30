@@ -215,6 +215,12 @@ src_test() {
 }
 
 pkg_postinst() {
+	if ! use libclamav-only ; then
+		if use systemd ; then
+			tmpfiles_process clamav.conf
+		fi
+	fi
+
 	if use milter ; then
 		elog "For simple instructions how to setup the clamav-milter read the"
 		elog "clamav-milter.README.gentoo in /usr/share/doc/${PF}"
