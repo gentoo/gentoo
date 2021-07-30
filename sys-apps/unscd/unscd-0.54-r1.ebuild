@@ -34,3 +34,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/unscd.service
 	dosbin unscd
 }
+
+pkg_postinst() {
+	tmpfiles_process unscd.conf
+}
