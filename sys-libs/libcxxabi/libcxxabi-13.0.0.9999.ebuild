@@ -32,7 +32,7 @@ BDEPEND="
 	)"
 
 # libcxx is needed uncondtionally for the headers
-LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake/modules )
+LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake )
 llvm.org_set_globals
 
 python_check_deps() {
