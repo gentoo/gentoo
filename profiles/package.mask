@@ -175,7 +175,6 @@ sci-electronics/drawtiming
 # Only one reverse dependency (media-libs/openexr_ctl) which
 # is uninstallable.
 # Removal on 2021-08-25. bug #789792, bug #715298.
-media-libs/ctl
 media-libs/openexr_ctl
 
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
