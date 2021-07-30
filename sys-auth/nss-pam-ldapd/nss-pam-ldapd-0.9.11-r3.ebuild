@@ -147,6 +147,8 @@ multilib_src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process nslcd.conf
+
 	echo
 	elog "For this to work you must configure /etc/nslcd.conf"
 	elog "This configuration is similar to pam_ldap's /etc/ldap.conf"
