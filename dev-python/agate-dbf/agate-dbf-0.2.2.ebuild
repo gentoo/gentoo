@@ -1,20 +1,20 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+EAPI=8
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
 DESCRIPTION="Adds read support for DBF files to agate."
 HOMEPAGE="https://github.com/wireservice/agate-dbf https://pypi.org/project/agate-dbf/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test +xml"
-RESTRICT="!test? ( test )"
+IUSE="+xml"
 
 # Other packages have BDEPEND="test? ( dev-python/agate-dbf[xml] )"
 AGATE_VERSION_DEP=">=dev-python/agate-1.5.0"
