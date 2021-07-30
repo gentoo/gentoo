@@ -229,6 +229,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.tmpfiles.conf
+
 	use ipv6 && readme.gentoo_print_elog
 
 	if [[ -f ${ROOT}/etc/conf.d/spawn-fcgi.conf ]] ; then
