@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit gnome.org gnome2-utils meson systemd xdg
+TMPFILES_OPTIONAL=1
+inherit gnome.org gnome2-utils meson systemd tmpfiles xdg
 
 DESCRIPTION="Virtual filesystem implementation for GIO"
 HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
@@ -40,7 +41,10 @@ RDEPEND="
 	)
 	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 	udev? ( >=dev-libs/libgudev-147:= )
-	fuse? ( >=sys-fs/fuse-3.0.0:3 )
+	fuse? (
+		>=sys-fs/fuse-3.0.0:3
+		virtual/tmpfiles
+	)
 	udisks? ( >=sys-fs/udisks-1.97:2 )
 	systemd? ( >=sys-apps/systemd-206:0= )
 	elogind? ( >=sys-auth/elogind-229:0= )
@@ -128,6 +132,10 @@ src_configure() {
 }
 
 pkg_postinst() {
+	if use fuse; then
+		tmpfiles_process gvfsd-fuse-tmpfiles.conf
+	fi
+
 	xdg_pkg_postinst
 	gnome2_schemas_update
 	gnome2_giomodule_cache_update
