@@ -11,7 +11,7 @@ DESCRIPTION="A fast and simple mbox folder reader"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="
 	dev-perl/FileHandle-Unget
