@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="kate">Add karaoke and text encapsulation support for Ogg files</flag>
-		<flag name="logrotate">Install support files for <pkg>app-admin/logrotate</pkg>?</flag>
 		<flag name="yp">Build support for yp public directory listings</flag>
 	</use>
 </pkgmetadata>
