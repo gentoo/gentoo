@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=EWATERS
 DIST_VERSION=0.101
@@ -11,11 +11,13 @@ DESCRIPTION="Preforking task dispatcher"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-perl/Error
+RDEPEND="
+	dev-perl/Error
 	dev-perl/IO-Capture
 	dev-perl/Params-Validate
-	dev-perl/POE"
-DEPEND="${RDEPEND}
-	dev-perl/Module-Build"
+	dev-perl/POE
+"
+BDEPEND="${RDEPEND}
+	dev-perl/Module-Build
+"
