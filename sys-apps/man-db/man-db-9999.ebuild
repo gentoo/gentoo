@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd prefix
+inherit systemd prefix tmpfiles
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -192,6 +192,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	tmpfiles_process man-db.conf
+
 	if [[ $(ver_cut 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
 		einfo "Rebuilding man-db from scratch with new database format!"
 		su man -s /bin/sh -c 'mandb --quiet --create' 2>/dev/null
