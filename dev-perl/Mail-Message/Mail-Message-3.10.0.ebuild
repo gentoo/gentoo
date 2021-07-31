@@ -15,6 +15,7 @@ RDEPEND="
 	dev-perl/TimeDate
 	>=virtual/perl-Encode-2.260.0
 	>=virtual/perl-File-Spec-0.700.0
+	dev-perl/IO-stringy
 	virtual/perl-MIME-Base64
 	>=dev-perl/MIME-Types-1.4.0
 	>=dev-perl/MailTools-2.170.0
