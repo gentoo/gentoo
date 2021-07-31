@@ -22,7 +22,7 @@ fi
 DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="https://www.libvirt.org/ https://gitlab.com/libvirt/libvirt/"
 LICENSE="LGPL-2.1"
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="
 	apparmor audit +caps dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc nfs nls numa openvz
