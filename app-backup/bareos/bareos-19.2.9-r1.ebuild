@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7,8,9} )
 CMAKE_WARN_UNUSED_CLI=no
 #CMAKE_REMOVE_MODULES=yes
 
-inherit python-any-r1 systemd cmake
+inherit python-any-r1 systemd cmake tmpfiles
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="https://www.bareos.org/"
@@ -330,14 +330,15 @@ src_install() {
 	diropts -m0755
 	keepdir /var/log/bareos
 
-	insinto /usr/lib/tmpfiles.d
-	newins "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
+	newtmpfiles "${FILESDIR}"/tmpfiles.d-bareos.conf bareos.conf
 
 	# make sure bareos group can execute bareos libexec scripts
 	fowners -R root:bareos /usr/libexec/bareos
 }
 
 pkg_postinst() {
+	tmpfiles_process bareos.conf
+
 	if use clientonly; then
 		fowners root:bareos /var/lib/bareos
 	else
