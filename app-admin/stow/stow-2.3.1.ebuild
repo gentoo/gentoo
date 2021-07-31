@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/adamspiers.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/adamspiers.asc
 inherit perl-functions verify-sig
 
 DESCRIPTION="GNU Stow is a symlink farm manager"
