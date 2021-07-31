@@ -163,6 +163,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process gluster.conf
+
 	elog "Starting with ${PN}-3.1.0, you can use the glusterd daemon to configure your"
 	elog "volumes dynamically. To do so, simply use the gluster CLI after running:"
 	elog "  /etc/init.d/glusterd start"
@@ -184,9 +186,8 @@ pkg_postinst() {
 	elog "If you are upgrading from a previous version of ${PN}, please read:"
 	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(ver_cut '1-2')/"
 
-	tmpfiles_process glusterfs.conf
-
 	use emacs && elisp-site-regen
+
 }
 
 pkg_postrm() {
