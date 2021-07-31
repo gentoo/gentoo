@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=MITHALDU
 DIST_VERSION=1.270
@@ -11,8 +11,6 @@ DESCRIPTION="Parse, Analyze and Manipulate Perl (without perl)"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp
@@ -26,7 +24,7 @@ RDEPEND="
 	>=virtual/perl-Storable-2.170.0
 	dev-perl/Task-Weaken
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		>=dev-perl/Class-Inspector-1.220.0
