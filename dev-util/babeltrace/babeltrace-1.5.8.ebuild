@@ -9,7 +9,7 @@ SRC_URI="https://www.efficios.com/files/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
