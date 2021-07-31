@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit perl-functions flag-o-matic readme.gentoo-r1
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+debug +sizeof-warning"
 
 RDEPEND="dev-lang/perl:="
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	sys-kernel/linux-headers
 "
 
