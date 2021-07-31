@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic systemd linux-info
+inherit autotools flag-o-matic systemd linux-info tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 HOMEPAGE="https://openvpn.net/"
@@ -140,6 +140,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process openvpn.conf
+
 	if use x64-macos; then
 		elog "You might want to install tuntaposx for TAP interface support:"
 		elog "http://tuntaposx.sourceforge.net"
