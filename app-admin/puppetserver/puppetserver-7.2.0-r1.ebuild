@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib systemd
+inherit multilib systemd tmpfiles
 
 DESCRIPTION="Puppet Server is the next-generation application for managing Puppet agents."
 HOMEPAGE="http://docs.puppetlabs.com/puppetserver/"
@@ -104,12 +104,12 @@ src_install() {
 	insinto /opt/puppetlabs/server/data
 	doins ext/build-scripts/jruby-gem-list.txt
 	doins ext/build-scripts/mri-gem-list-no-dependencies.txt
-	insopts -m 0644
-	insinto /usr/lib/tmpfiles.d
-	newins ext/puppetserver.tmpfiles.conf puppetserver.conf
+	newtmpfiles ext/puppetserver.tmpfiles.conf puppetserver.conf
 }
 
 pkg_postinst() {
+	tmpfiles_process puppetserver.conf
+
 	elog "to install you may want to run the following:"
 	elog
 	elog "puppet config set --section master vardir  /opt/puppetlabs/server/data/puppetserver"
