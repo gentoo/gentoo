@@ -15,7 +15,7 @@ SRC_URI="https://sourceforge.net/code-snapshots/git/p/pe/peerguardian/code.git/p
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cron dbus logrotate networkmanager qt5 zlib"
+IUSE="cron dbus networkmanager qt5 zlib"
 REQUIRED_USE="qt5? ( dbus )"
 
 DEPEND="
@@ -35,7 +35,6 @@ RDEPEND="${DEPEND}
 	net-firewall/iptables
 	sys-apps/sysvinit
 	cron? ( virtual/cron )
-	logrotate? ( app-admin/logrotate )
 	networkmanager? ( net-misc/networkmanager:= )
 "
 BDEPEND="
@@ -77,9 +76,9 @@ src_configure() {
 		--with-iconsdir=/usr/share/icons/hicolor/128x128/apps
 		--with-gentoo-init
 		--localstatedir=/var
+		--enable-logrotate
 		$(use_enable cron)
 		$(use_enable dbus)
-		$(use_enable logrotate)
 		$(use_enable networkmanager)
 		$(use_with qt5)
 		LRELEASE=$(qt5_get_bindir)/lrelease

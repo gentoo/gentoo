@@ -10,7 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="cron">Install cron script</flag>
-		<flag name="logrotate">Install logrotate.d file</flag>
 	</use>
 	<longdescription lang="en">
 	PeerGuardian Linux (pgl) is a privacy oriented firewall application. It blocks
