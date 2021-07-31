@@ -1,11 +1,36 @@
+From 243d3c265289171f59de68f5da4de086afb58215 Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
-Date: Wed, 21 Apr 2021 06:06:13 +0100
-Subject: Use PKG_CHECK_MODULES for ncurses
+Date: Sat, 31 Jul 2021 03:21:28 +0100
+Subject: [PATCH] Use PKG_CHECK_MODULES for ncurses
 
 We don't _always_ have split tinfo, e.g. Prefix.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Makefile.am  |  4 ++--
+ configure.ac | 26 +-------------------------
+ 2 files changed, 3 insertions(+), 27 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 8faaa11..18c6892 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -22,8 +22,8 @@ abook_SOURCES = abook.c abook_rl.c database.c edit.c \
+ EXTRA_DIST = config.rpath  ANNOUNCE BUGS FAQ abook.1 abookrc.5 sample.abookrc \
+ 		abook.spec contrib doc/HOWTO.translating_abook RELEASE_NOTES
+ 
+-abook_LDADD = @LIBINTL@
+-
++abook_CFLAGS = $(ncurses_CFLAGS)
++abook_LDADD = @LIBINTL@ $(ncurses_LIBS)
+ 
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(mandir)/man1 $(DESTDIR)$(mandir)/man5
+diff --git a/configure.ac b/configure.ac
+index 5a9ae3b..73a7af0 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -74,31 +74,9 @@ dnl -------------------
+@@ -74,31 +74,7 @@ dnl -------------------
  dnl (n)curses detection
  dnl -------------------
  
@@ -35,10 +60,9 @@ We don't _always_ have split tinfo, e.g. Prefix.
 -		[CF_CURSES_LIBS])
 -	])
 +PKG_CHECK_MODULES(ncurses, [ncursesw ncurses])
-+LDFLAGS="${ncurses_LIBS} $LDFLAGS"
-+CPPFLAGS="${ncurses_CFLAGS} $CPPFLAGS"
  
  dnl --------------------------
  dnl end of (n)curses detection
 -- 
+2.32.0
 
