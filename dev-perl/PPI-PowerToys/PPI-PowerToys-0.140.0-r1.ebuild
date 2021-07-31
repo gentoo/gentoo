@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-DIST_AUTHOR="ADAMK"
+DIST_AUTHOR=ADAMK
 DIST_VERSION=0.14
 
 inherit perl-module
@@ -12,7 +12,6 @@ DESCRIPTION="A handy collection of small PPI-based utilities"
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	>=dev-perl/File-Find-Rule-0.32
@@ -22,7 +21,8 @@ RDEPEND="
 	dev-perl/PPI
 	dev-perl/IPC-Run3
 "
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+"
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install::DSL/use lib q[.];\nuse inc::Module::Install::DSL/' Makefile.PL ||
