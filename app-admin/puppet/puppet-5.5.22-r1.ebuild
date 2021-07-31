@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC="doc:all"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit ruby-fakegem tmpfiles
+inherit ruby-fakegem systemd tmpfiles
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="https://puppet.com/"
@@ -84,8 +84,7 @@ all_ruby_install() {
 	all_fakegem_install
 
 	# systemd stuffs
-	insinto /usr/lib/systemd/system
-	doins "${WORKDIR}/all/${P}/ext/systemd/puppet.service"
+	systemd_dounit "${WORKDIR}/all/${P}/ext/systemd/puppet.service"
 
 	# tmpfiles stuff
 	newtmpfiles "${FILESDIR}/tmpfiles.d" "puppet.conf"
