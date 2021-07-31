@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_P="${P/_/}"
 DESCRIPTION="Abook is a text-based addressbook program designed to use with mutt mail client"
@@ -20,8 +20,9 @@ RDEPEND="
 	sys-libs/readline:=
 	dev-libs/libvformat
 	nls? ( virtual/libintl )"
-
-DEPEND="
+DEPEND="${RDEPEND}
+	nls? ( sys-devel/gettext )"
+BDEPEND="
 	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -49,10 +50,8 @@ src_configure() {
 }
 
 src_compile() {
-	# bug 570428
-	emake CFLAGS="${CFLAGS} -std=gnu89"
-}
+	# bug #570428
+	append-cflags -std=gnu89
 
-src_install() {
-	default
+	emake CFLAGS="${CFLAGS}"
 }
