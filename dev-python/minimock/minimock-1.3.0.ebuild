@@ -3,12 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
-MY_PN="MiniMock"
-MY_P="${MY_PN}-${PV}"
+MY_P="MiniMock-${PV}"
 
 DESCRIPTION="The simplest possible mock library"
 HOMEPAGE="https://pypi.org/project/MiniMock/"
@@ -21,3 +20,8 @@ KEYWORDS="amd64 arm ~arm64 ppc x86"
 DOCS=( CHANGELOG.txt README.rst )
 
 distutils_enable_tests nose
+
+src_prepare() {
+	sed -i -e '/cov/d' setup.cfg || die
+	default
+}
