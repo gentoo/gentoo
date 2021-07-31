@@ -5,7 +5,7 @@ EAPI=7
 
 inherit systemd prefix tmpfiles
 
-DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
+DESCRIPTION="A man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
 if [[ "${PV}" = 9999* ]] ; then
 	inherit autotools git-r3
