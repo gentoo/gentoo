@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/alexbarton.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/alexbarton.asc
 inherit verify-sig
 
 DESCRIPTION="An IRC server written from scratch"
