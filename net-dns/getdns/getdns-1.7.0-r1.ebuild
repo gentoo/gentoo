@@ -58,7 +58,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_RUNSTATEDIR=/var/run
+		-DCMAKE_INSTALL_RUNSTATEDIR=/var/run/stubby
 		-DBUILD_DOXYGEN=$(usex doc)
 		-DBUILD_GETDNS_QUERY=$(usex getdns-query)
 		-DBUILD_GETDNS_SERVER_MON=$(usex getdns-server-mon)
