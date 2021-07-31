@@ -69,7 +69,7 @@ RDEPEND+="
 	!build? ( app-misc/mime-types )
 	!<=dev-lang/python-exec-2.4.6-r1"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
 pkg_setup() {
 	if use berkdb; then
