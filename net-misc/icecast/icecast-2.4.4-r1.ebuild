@@ -12,7 +12,7 @@ SRC_URI="https://downloads.xiph.org/releases/icecast/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
-IUSE="kate logrotate +speex +ssl +theora +yp"
+IUSE="kate +speex +ssl +theora +yp"
 
 #Although there is a --with-ogg and --with-orbis configure option, they're
 #only useful for specifying paths, not for disabling.
@@ -24,7 +24,6 @@ DEPEND="
 	media-libs/libogg
 	media-libs/libvorbis
 	kate? ( media-libs/libkate )
-	logrotate? ( app-admin/logrotate )
 	speex? ( media-libs/speex )
 	ssl? (
 		dev-libs/openssl:0=
@@ -73,12 +72,11 @@ src_install() {
 	doins "${FILESDIR}"/icecast.xml
 	fperms 600 /etc/icecast2/icecast.xml
 
-	if use logrotate; then
-		dodir /etc/logrotate.d
-		insopts -m0644
-		insinto /etc/logrotate.d
-		newins "${FILESDIR}"/${PN}.logrotate ${PN}
-	fi
+	dodir /etc/logrotate.d
+	insopts -m0644
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/${PN}.logrotate ${PN}
+
 	diropts -m0764 -o icecast -g icecast
 	dodir /var/log/icecast
 	keepdir /var/log/icecast
