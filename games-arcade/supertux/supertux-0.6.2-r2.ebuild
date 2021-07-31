@@ -24,7 +24,7 @@ IUSE="debug"
 RDEPEND="
 	!=media-libs/libsdl2-2.0.14-r0
 	>=dev-games/physfs-3.0
-	dev-libs/boost:=
+	dev-libs/boost:=[nls]
 	media-libs/freetype
 	media-libs/glew:=
 	media-libs/libpng:0=
