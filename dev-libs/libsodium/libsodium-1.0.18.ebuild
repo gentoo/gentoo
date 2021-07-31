@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jedisct1.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/jedisct1.asc
 inherit autotools multilib-minimal verify-sig
 
 DESCRIPTION="A portable fork of NaCl, a higher-level cryptographic library"
