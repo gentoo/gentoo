@@ -63,7 +63,7 @@ BDEPEND="
 PDEPEND="app-eselect/eselect-python"
 RDEPEND+=" !build? ( app-misc/mime-types )"
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/python.org.asc
 
 src_unpack() {
 	if use verify-sig; then
