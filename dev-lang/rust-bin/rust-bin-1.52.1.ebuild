@@ -33,7 +33,7 @@ QA_PREBUILT="
 	opt/${P}/lib/rustlib/.*/lib/.*
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 
 pkg_pretend() {
 	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
