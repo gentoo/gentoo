@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info
+inherit autotools linux-info tmpfiles
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -12,11 +12,11 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.t
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
-IUSE="${CRYPTO_BACKENDS} +argon2 nls pwquality reencrypt static static-libs +udev urandom"
+IUSE="${CRYPTO_BACKENDS} +argon2 nls pwquality reencrypt ssh static static-libs +udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
 	static? ( !gcrypt )" #496612
 
@@ -30,6 +30,7 @@ LIB_DEPEND="
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? ( dev-libs/openssl:0=[static-libs(+)] )
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
+	ssh? ( net-libs/libssh[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
 	udev? ( virtual/libudev[static-libs(-)] )"
 # We have to always depend on ${LIB_DEPEND} rather than put behind
@@ -85,6 +86,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable udev)
 		$(use_enable !urandom dev-random)
+		$(use_enable ssh ssh-token)
 		$(usex argon2 '' '--with-luks2-pbkdf=pbkdf2')
 	)
 	econf "${myeconfargs[@]}"
@@ -110,6 +112,10 @@ src_install() {
 	if use static ; then
 		mv "${ED}"/sbin/cryptsetup{.static,} || die
 		mv "${ED}"/sbin/veritysetup{.static,} || die
+		mv "${ED}"/sbin/integritysetup{.static,} || die
+		if use ssh ; then
+			mv "${ED}"/sbin/cryptsetup-ssh{.static,} || die
+		fi
 		if use reencrypt ; then
 			mv "${ED}"/sbin/cryptsetup-reencrypt{.static,} || die
 		fi
@@ -120,4 +126,8 @@ src_install() {
 
 	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
+}
+
+pkg_postinst() {
+	tmpfiles_process cryptsetup.conf
 }
