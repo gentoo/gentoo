@@ -88,6 +88,10 @@ BDEPEND="
 	) )
 "
 
+PATCHES=(
+	"${FILESDIR}/freerdp-2-openssl-3.0.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
