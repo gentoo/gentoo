@@ -42,6 +42,9 @@ src_configure() {
 src_install() {
 	default
 
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/monit.logrotate monit
+
 	insinto /etc; insopts -m600; doins monitrc
 	newinitd "${FILESDIR}"/monit.initd-5.0-r1 monit
 	systemd_dounit "${FILESDIR}"/${PN}.service
