@@ -22,7 +22,7 @@ if [[ ${PV} == *_p* ]] ; then
 
 	S="${WORKDIR}/${PN}-stable"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jedisct1.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/jedisct1.asc
 	inherit verify-sig
 
 	SRC_URI="https://download.libsodium.org/${PN}/releases/${P}.tar.gz"
