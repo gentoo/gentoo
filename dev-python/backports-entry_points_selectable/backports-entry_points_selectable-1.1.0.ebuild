@@ -18,7 +18,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~mips ~sparc ~x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
