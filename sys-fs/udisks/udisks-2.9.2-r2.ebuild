@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 linux-info systemd udev xdg-utils
+inherit bash-completion-r1 linux-info systemd tmpfiles udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -122,7 +122,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	mkdir -p "${EROOT}"/run #415987
+	# TODO: obsolete with tmpfiles_process?
+	# mkdir -p "${EROOT}"/run #415987
+
+	tmpfiles_process udisks2.conf
 
 	# See pkg_postinst() of >=sys-apps/baselayout-2.1-r1. Keep in sync?
 	if ! grep -qs "^tmpfs.*/run " "${EROOT}"/proc/mounts ; then
