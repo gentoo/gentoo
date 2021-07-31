@@ -11,7 +11,7 @@ RUBY_FAKEGEM_TASK_DOC="doc:all"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit ruby-fakegem
+inherit ruby-fakegem tmpfiles
 
 DESCRIPTION="A system automation and configuration management software."
 HOMEPAGE="https://puppet.com/"
@@ -88,8 +88,7 @@ all_ruby_install() {
 	doins "${WORKDIR}/all/${P}/ext/systemd/puppet.service"
 
 	# tmpfiles stuff
-	insinto /usr/lib/tmpfiles.d
-	newins "${FILESDIR}/tmpfiles.d" "puppet.conf"
+	newtmpfiles "${FILESDIR}/tmpfiles.d" "puppet.conf"
 
 	# openrc init stuff
 	newinitd "${FILESDIR}"/puppet.init-4.x puppet
@@ -121,6 +120,8 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process puppet.conf
+
 	elog
 	elog "Please, *don't* include the --ask option in EMERGE_EXTRA_OPTS as this could"
 	elog "cause puppet to hang while installing packages."
