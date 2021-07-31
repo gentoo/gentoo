@@ -5,19 +5,19 @@ EAPI=7
 
 PATCHSET=1
 
-inherit java-pkg-opt-2 systemd
+inherit java-pkg-opt-2 systemd tmpfiles
 
 MY_P=${P/_/-}
 
 DESCRIPTION="Munin Server Monitoring Tool"
-HOMEPAGE="http://munin-monitoring.org/"
+HOMEPAGE="https://munin-monitoring.org/"
 SRC_URI="
 	https://github.com/munin-monitoring/munin/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~graaff/munin/${P}-gentoo-${PATCHSET}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
 REQUIRED_USE="cgi? ( !minimal ) apache2? ( cgi )"
 RESTRICT="!test? ( test )"
@@ -84,7 +84,7 @@ DEPEND_COM="
 # Keep this seperate, as previous versions have had other deps here
 DEPEND="${DEPEND_COM}
 	dev-perl/Module-Build
-	java? ( >=virtual/jdk-1.5 )
+	java? ( >=virtual/jdk-1.8 )
 	test? (
 		dev-perl/Test-Deep
 		dev-perl/Test-Exception
@@ -100,7 +100,7 @@ RDEPEND="${DEPEND_COM}
 		virtual/awk
 		ipmi? ( >=sys-libs/freeipmi-1.1.6-r1 )
 		java? (
-			>=virtual/jre-1.5
+			>=virtual/jre-1.8:*
 			|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
 		)
 		!minimal? (
@@ -131,7 +131,7 @@ src_configure() {
 
 	local cgiuser=$(usex apache2 apache munin)
 
-	cat >> "${S}"/Makefile.config <<- EOF
+	cat >> "${S}"/Makefile.config <<- EOF || die
 	PREFIX=\$(DESTDIR)/usr
 	CONFDIR=\$(DESTDIR)/etc/munin
 	DOCDIR=${T}/useless/doc
@@ -204,8 +204,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/munin-asyncd.init.2 munin-asyncd
 
-	dodir /usr/lib/tmpfiles.d
-	cat > "${D}"/usr/lib/tmpfiles.d/${CATEGORY}:${PN}:${SLOT}.conf <<- EOF
+	newtmpfiles - ${CATEGORY}:${PN}:${SLOT}.conf <<-EOF || die
 	d /run/munin 0700 munin munin - -
 	EOF
 
@@ -261,10 +260,8 @@ src_install() {
 		if use cgi; then
 			sed -i -e '/#graph_strategy cgi/s:^#::' "${D}"/etc/munin/munin.conf || die
 
-			keepdir /var/cache/munin-cgi
 			touch "${D}"/var/log/munin/munin-cgi-{graph,html}.log
 			fowners $(usex apache2 apache munin) \
-				/var/cache/munin-cgi \
 				/var/log/munin/munin-cgi-{graph,html}.log
 
 			if use apache2; then
@@ -374,6 +371,8 @@ pkg_config() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${CATEGORY}:${PN}:${SLOT}.conf
+
 	elog "Please follow the munin documentation to set up the plugins you"
 	elog "need, afterwards start munin-node."
 	elog ""
@@ -392,7 +391,6 @@ pkg_postinst() {
 
 	if use cgi; then
 		chown $(usex apache2 apache munin) \
-			"${ROOT}"/var/cache/munin-cgi \
 			"${ROOT}"/var/log/munin/munin-cgi-{graph,html}.log
 
 		if use apache2; then
