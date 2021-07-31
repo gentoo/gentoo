@@ -16,7 +16,8 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="dev-libs/libunistring
 	media-video/ffmpeg
-	>=sys-libs/readline-8.0"
+	>=sys-libs/readline-8.0
+	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
 src_configure() {
