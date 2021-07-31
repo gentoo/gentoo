@@ -27,7 +27,7 @@ DESCRIPTION="libvirt Python bindings"
 HOMEPAGE="https://www.libvirt.org"
 LICENSE="LGPL-2"
 SLOT="0"
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libvirt.org.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libvirt.org.asc
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
