@@ -175,6 +175,7 @@ DESCRIPTION="${BUILD_GST_PLUGINS} plugin for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 SRC_URI="https://gstreamer.freedesktop.org/src/${GST_ORG_MODULE}/${GST_ORG_MODULE}-${PV}.tar.${GST_TARBALL_SUFFIX}"
 S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
+
 LICENSE="GPL-2"
 SLOT="1.0"
 
