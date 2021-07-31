@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libidn.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/libidn.asc
 inherit elisp-common java-pkg-opt-2 libtool mono-env multilib-minimal verify-sig
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
