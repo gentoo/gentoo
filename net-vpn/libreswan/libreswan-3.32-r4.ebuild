@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
@@ -11,8 +11,8 @@ SRC_URI="https://download.libreswan.org/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="caps curl dnssec ldap networkmanager pam seccomp selinux systemd test"
+KEYWORDS="amd64 ~arm ~ppc x86"
+IUSE="caps curl dnssec ldap pam seccomp selinux systemd test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -51,7 +51,7 @@ usetf() {
 	usex "$1" true false
 }
 
-PATCHES=( "${FILESDIR}/${PN}-4.2-ip-path.patch" )
+PATCHES=( "${FILESDIR}/${PN}-3.30-ip-path.patch" )
 
 src_prepare() {
 	sed -i -e 's:/sbin/runscript:/sbin/openrc-run:' initsystems/openrc/ipsec.init.in || die
@@ -61,25 +61,25 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR CC
-	export PREFIX=/usr
+	export INC_USRLOCAL=/usr
+	export INC_MANDIR=share/man
 	export FINALEXAMPLECONFDIR=/usr/share/doc/${PF}
 	export FINALDOCDIR=/usr/share/doc/${PF}/html
-	export INITSYSTEM=$(usex systemd systemd openrc)
-	export INITDDIRS=
-	export INITDDIR_DEFAULT=/etc/init.d
-	export USERCOMPILE=${CFLAGS}
-	export USERLINK=${LDFLAGS}
+	export INITSYSTEM=openrc
+	export INC_RCDIRS=
+	export INC_RCDEFAULT=/etc/init.d
+	export USERCOMPILE=
+	export USERLINK=
 	export USE_DNSSEC=$(usetf dnssec)
 	export USE_LABELED_IPSEC=$(usetf selinux)
 	export USE_LIBCAP_NG=$(usetf caps)
 	export USE_LIBCURL=$(usetf curl)
 	export USE_LINUX_AUDIT=$(usetf selinux)
 	export USE_LDAP=$(usetf ldap)
-	export USE_NM=$(usetf networkmanager)
 	export USE_SECCOMP=$(usetf seccomp)
 	export USE_SYSTEMD_WATCHDOG=$(usetf systemd)
 	export SD_WATCHDOGSEC=$(usex systemd 200 0)
-	export USE_AUTHPAM=$(usetf pam)
+	export USE_XAUTHPAM=$(usetf pam)
 	export DEBUG_CFLAGS=
 	export OPTIMIZE_CFLAGS=
 	export WERROR_CFLAGS=
@@ -101,16 +101,15 @@ src_install() {
 	echo "include /etc/ipsec.d/*.secrets" > "${D}"/etc/ipsec.secrets
 	fperms 0600 /etc/ipsec.secrets
 
-	keepdir /var/lib/ipsec/nss
-	fperms 0700 /var/lib/ipsec/nss
-
 	dodoc -r docs
 
 	find "${D}" -type d -empty -delete || die
 }
 
 pkg_postinst() {
-	local IPSEC_CONFDIR=${ROOT}/var/lib/ipsec/nss
+	tmpfiles_process libreswan.conf
+
+	local IPSEC_CONFDIR=${ROOT}/etc/ipsec.d
 	if [[ ! -f ${IPSEC_CONFDIR}/cert8.db && ! -f ${IPSEC_CONFDIR}/cert9.db ]] ; then
 		ebegin "Setting up NSS database in ${IPSEC_CONFDIR} with empty password"
 		certutil -N -d "${IPSEC_CONFDIR}" --empty-password

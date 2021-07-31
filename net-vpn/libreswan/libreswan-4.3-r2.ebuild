@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd toolchain-funcs
+inherit systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://download.libreswan.org/${P}.tar.gz"
 
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="caps curl dnssec ldap networkmanager pam seccomp selinux systemd test"
 RESTRICT="!test? ( test )"
 
@@ -79,7 +79,7 @@ src_configure() {
 	export USE_SECCOMP=$(usetf seccomp)
 	export USE_SYSTEMD_WATCHDOG=$(usetf systemd)
 	export SD_WATCHDOGSEC=$(usex systemd 200 0)
-	export USE_AUTHPAM=$(usetf pam)
+	export USE_XAUTHPAM=$(usetf pam)
 	export DEBUG_CFLAGS=
 	export OPTIMIZE_CFLAGS=
 	export WERROR_CFLAGS=
@@ -110,6 +110,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process libreswan.conf
+
 	local IPSEC_CONFDIR=${ROOT}/var/lib/ipsec/nss
 	if [[ ! -f ${IPSEC_CONFDIR}/cert8.db && ! -f ${IPSEC_CONFDIR}/cert9.db ]] ; then
 		ebegin "Setting up NSS database in ${IPSEC_CONFDIR} with empty password"
