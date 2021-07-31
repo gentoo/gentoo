@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info
+inherit autotools linux-info tmpfiles
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -120,4 +120,8 @@ src_install() {
 
 	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
+}
+
+pkg_postinst() {
+	tmpfiles_process cryptsetup.conf
 }
