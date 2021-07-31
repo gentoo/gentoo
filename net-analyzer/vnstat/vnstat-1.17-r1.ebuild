@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/teemutoivola.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/teemutoivola.asc
 inherit flag-o-matic toolchain-funcs verify-sig
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
