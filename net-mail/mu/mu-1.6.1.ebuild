@@ -18,6 +18,7 @@ DEPEND="
 	dev-libs/glib:2=
 	dev-libs/gmime:3.0=
 	>=dev-libs/xapian-1.4:=
+	sys-libs/readline
 	emacs? ( >=app-editors/emacs-25.3:* )
 	guile? ( >=dev-scheme/guile-2.2:* )
 	mug? (
