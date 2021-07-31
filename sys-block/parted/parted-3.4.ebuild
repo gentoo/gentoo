@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=${EPREFIX}/usr/share/openpgp-keys/bcl.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/bcl.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch
