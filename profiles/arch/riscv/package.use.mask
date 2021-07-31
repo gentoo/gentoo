@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ye Cao <ye.c@rioslab.org> (2021-07-31)
+# Dependencies not keyworded, not tested
+dev-util/perf unwind
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-28)
 # app-cdr/cdrtools fails to compile on riscv
 dev-util/catalyst iso
