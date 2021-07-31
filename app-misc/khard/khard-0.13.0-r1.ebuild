@@ -12,8 +12,6 @@ HOMEPAGE="https://github.com/scheibler/khard"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 if [ "${PV}" == "9999" ]; then
 	inherit git-r3
@@ -30,21 +28,13 @@ RDEPEND="
 	dev-python/unidecode[${PYTHON_USEDEP}]
 	>dev-python/vobject-0.9.3[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		${RDEPEND}
-	)
-"
 # vobject-0.9.3 breaks khard, see
 # https://github.com/scheibler/khard/issues/87
 # https://github.com/eventable/vobject/issues/39
 
 DOCS=( AUTHORS CHANGES README.md misc/khard/khard.conf.example )
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
 
 src_install() {
 	distutils-r1_src_install
