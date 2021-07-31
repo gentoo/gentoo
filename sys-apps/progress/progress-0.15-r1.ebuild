@@ -1,7 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Coreutils Viewer: show progress for cp, rm, dd, and so forth"
@@ -12,17 +13,17 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
-RDEPEND="sys-libs/ncurses"
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="sys-libs/ncurses:="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	default
+
 	tc-export CC
 }
 
 src_install() {
-	emake PREFIX="${D}/${EPREFIX}/usr" install
+	emake PREFIX="${ED}/usr" install
 	dodoc README.md
 }
