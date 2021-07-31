@@ -12,8 +12,6 @@ HOMEPAGE="https://github.com/scheibler/khard"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
@@ -32,18 +30,14 @@ RDEPEND="
 	dev-python/vobject[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
 		dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	)
 "
 
 DOCS=( CHANGES CONTRIBUTING.rst README.md doc/source/examples/khard.conf.example )
 
-python_test() {
-	esetup.py test
-}
+distutils_enable_tests setup.py
 
 src_install() {
 	distutils-r1_src_install
