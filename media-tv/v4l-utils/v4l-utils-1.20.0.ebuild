@@ -68,14 +68,15 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++14
+
 	if use qt5; then
-		append-cxxflags -std=c++11
 		local qt5_paths=( \
 			MOC="$($(tc-getPKG_CONFIG) --variable=host_bins Qt5Core)/moc" \
 			UIC="$($(tc-getPKG_CONFIG) --variable=host_bins Qt5Core)/uic" \
 			RCC="$($(tc-getPKG_CONFIG) --variable=host_bins Qt5Core)/rcc" \
 		)
-		if use !opengl; then
+		if ! use opengl; then
 			sed -e 's/Qt5OpenGL/DiSaBlEd/g' -i configure || die
 		fi
 	fi
