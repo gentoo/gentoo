@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/htmlobject/${MY_P}.tar.gz"
 HOMEPAGE="http://htmlobject.sourceforge.net"
 
 SLOT="0"
-KEYWORDS="~amd64 ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ppc ppc64 ~x86"
 IUSE="examples"
 
 RDEPEND="dev-perl/Data-FormValidator
