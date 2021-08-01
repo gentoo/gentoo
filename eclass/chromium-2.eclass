@@ -26,7 +26,8 @@ fi
 # @FUNCTION: chromium_suid_sandbox_check_kernel_config
 # @USAGE:
 # @DESCRIPTION:
-# Ensures the system kernel supports features needed for SUID sandbox to work.
+# Ensures the system kernel supports features needed for SUID and User namespaces sandbox
+# to work.
 chromium_suid_sandbox_check_kernel_config() {
 	if [[ "${MERGE_TYPE}" == "source" || "${MERGE_TYPE}" == "binary" ]]; then
 		# Warn if the kernel does not support features needed for sandboxing.
@@ -50,6 +51,12 @@ chromium_suid_sandbox_check_kernel_config() {
 # @DESCRIPTION:
 # List of language packs available for this package.
 
+# @FUNCTION: _chromium_set_l10n_IUSE
+# @USAGE:
+# @INTERNAL
+# @DESCRIPTION:
+# Converts and adds CHROMIUM_LANGS to IUSE. Called automatically if
+# CHROMIUM_LANGS is defined.
 _chromium_set_l10n_IUSE() {
 	local lang
 	for lang in ${CHROMIUM_LANGS}; do
@@ -105,6 +112,10 @@ chromium_remove_language_paks() {
 	done
 }
 
+# @FUNCTION: chromium_pkg_die
+# @USAGE:
+# @DESCRIPTION:
+# EBUILD_DEATH_HOOK function to display some warnings/information about build environment.
 chromium_pkg_die() {
 	if [[ "${EBUILD_PHASE}" != "compile" ]]; then
 		return
