@@ -30,10 +30,6 @@ BDEPEND="
 	dev-qt/qtpaths:5
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-cmake.patch
-)
-
 src_install() {
 	cmake_src_install
 
