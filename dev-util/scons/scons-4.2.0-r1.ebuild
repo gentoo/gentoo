@@ -38,7 +38,7 @@ PATCHES=(
 	# support env passthrough for Gentoo ebuilds
 	"${FILESDIR}"/scons-4.1.0-env-passthrough.patch
 	# respect CC, CXX, C*FLAGS, LDFLAGS by default
-	"${FILESDIR}"/scons-4.0.0-respect-cc-etc-r1.patch
+	"${FILESDIR}"/scons-4.2.0-respect-cc-etc.patch
 )
 
 src_unpack() {
