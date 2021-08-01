@@ -4,7 +4,7 @@
 # @ECLASS: wxwidgets.eclass
 # @MAINTAINER:
 # wxwidgets@gentoo.org
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Manages build configuration for wxGTK-using packages.
 # @DESCRIPTION:
 # This eclass sets up the proper environment for ebuilds using the wxGTK
@@ -21,10 +21,9 @@
 # The configuration chosen is based on the version required and the flags
 # wxGTK was built with.
 
-case ${EAPI:-0} in
-	[0-6]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
-	7)     ;;
-	*)     die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
+case ${EAPI} in
+	7|8) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
@@ -37,9 +36,14 @@ _WXWIDGETS_ECLASS=1
 # The SLOT of the x11-libs/wxGTK you're targeting.  Needs to be defined before
 # inheriting the eclass.  Can be either "3.0" or "3.0-gtk3".
 case ${WX_GTK_VER} in
-	3.0|3.0-gtk3) ;;
-	"")           die "WX_GTK_VER not declared" ;;
-	*)            die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT ('3.0' or '3.0-gtk3')" ;;
+	3.0-gtk3) ;;
+	3.0)
+		if [[ ${EAPI} != 7 ]]; then
+			die "${ECLASS}: GTK 2 no longer supported in EAPI ${EAPI}"
+		fi
+		;;
+	"") die "WX_GTK_VER not declared" ;;
+	*)  die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT ('3.0' or '3.0-gtk3')" ;;
 esac
 readonly WX_GTK_VER
 
