@@ -33,7 +33,7 @@ RESTRICT="test"
 
 BDEPEND="
 	dev-util/gperf
-	>=dev-util/intltool-0.50
+	sys-devel/gettext
 	>=sys-apps/coreutils-8.16
 	virtual/pkgconfig
 	app-text/docbook-xml-dtd:4.2
