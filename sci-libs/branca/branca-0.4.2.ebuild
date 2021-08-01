@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="spinoff from folium, host the non-map-specific features."
 HOMEPAGE="https://github.com/python-visualization/branca"
-SRC_URI="${HOMEPAGE}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-visualization/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
