@@ -1,3 +1,8 @@
+- do not link to bundled
+  * dev-libs/json-c
+  * net-libs/libcrafter
+- allow different lua versions
+
 --- a/configure.ac
 +++ b/configure.ac
 @@ -14,6 +14,8 @@
@@ -155,3 +160,55 @@
  
      ac_configure_args="$ac_configure_args_pre"
  ])
+@@ -271,7 +190,6 @@
+ 
+ AC_CONFIG_FILES([
+ 	Makefile
+-	noinst/Makefile
+ 	src/Makefile
+ 	src/tracebox/Makefile
+ 	tests/Makefile
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,8 +8,8 @@
+ MAYBE_DOC = doc
+ endif
+ 
+-SUBDIRS = noinst src $(MAYBE_OPT) $(MAYBE_DOC)
+-DIST_SUBDIRS = noinst src tests doc
++SUBDIRS =  src $(MAYBE_OPT) $(MAYBE_DOC)
++DIST_SUBDIRS =  src tests doc
+ 
+ debian-package:
+ 	dpkg-buildpackage -rfakeroot -tc -us -uc
+--- a/noinst/Makefile.am
++++ b/noinst/Makefile.am
+@@ -1,4 +1,3 @@
+-DIST_SUBDIRS = libcrafter/libcrafter
+ 
+ all-local:
+ 	cd libcrafter/libcrafter && $(MAKE) $(AM_MAKEFLAGS) all
+--- a/src/tracebox/Makefile.am
++++ b/src/tracebox/Makefile.am
+@@ -4,7 +4,6 @@
+ 
+ dist_man_MANS = tracebox.1
+ 
+-dist_bin_SCRIPTS = luatracebox
+ 
+ SUBDIRS = examples
+ 
+@@ -78,13 +77,11 @@
+ 
+ tracebox_LDADD = \
+ 	$(EXTRALIBS) \
+-	$(abs_top_builddir)/noinst/libcrafter/libcrafter/libcrafter.la \
+ 	$(LUA_LIB) \
+ 	$(PCAPLIB) \
+ 	$(JSON_LIB)
+ 
+ tracebox_CPPFLAGS = \
+-	-I$(top_srcdir)/noinst/libcrafter/libcrafter \
+ 	$(LUA_INCLUDE) \
+ 	$(PCAPINC) \
+ 	$(JSON_INCLUDE) \
