@@ -20,7 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
-	test? ( dev-python/pillow[${PYTHON_USEDEP}] )"
+	test? (
+		app-text/ghostscript-gpl
+		dev-python/pillow[${PYTHON_USEDEP}]
+	)"
 
 distutils_enable_tests pytest
 
