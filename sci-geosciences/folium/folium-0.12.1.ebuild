@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python Data, Leaflet.js Maps"
 HOMEPAGE="https://github.com/python-visualization/folium"
-SRC_URI="${HOMEPAGE}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/python-visualization/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
