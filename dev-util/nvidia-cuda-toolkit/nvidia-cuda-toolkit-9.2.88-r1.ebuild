@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs toolchain-funcs unpacker
+inherit check-reqs toolchain-funcs unpacker wrapper
 
 MYD=$(ver_cut 1-2 ${PV})
 DRIVER_PV="396.26"
