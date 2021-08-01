@@ -16,7 +16,7 @@ LICENSE="GPL-3"
 SLOT="2"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 examples"
-REQUIRED_USE="cpu_flags_x86_sse2"
+REQUIRED_USE="cpu_flags_x86_sse2 ${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
