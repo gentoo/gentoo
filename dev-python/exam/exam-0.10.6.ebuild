@@ -19,4 +19,4 @@ RDEPEND="
 	dev-python/mock[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests nose
+distutils_enable_tests unittest
