@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>grozin@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">geometer/FBReader</remote-id>
+	</upstream>
 </pkgmetadata>
