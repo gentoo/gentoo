@@ -41,7 +41,7 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	all-modules? ( boost ffmpeg gdal imaging mysql odbc postgres qt5 rendering theora views )
-	cuda? ( X )
+	cuda? ( X video_cards_nvidia )
 	java? ( rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( X rendering )
@@ -294,7 +294,28 @@ src_configure() {
 	fi
 
 	if use cuda; then
-		mycmakeargs+=( -DVTKm_CUDA_Architecture="native" )
+		local cuda_arch=
+		case ${VTK_CUDA_ARCH:-native} in
+			# we ignore fermi arch, because current nvidia-cuda-toolkit-11*
+			# no longer supports it
+			kepler|maxwell|pascal|volta|turing|ampere|all)
+				cuda_arch=${VTK_CUDA_ARCH}
+				;;
+			native)
+				ewarn "If auto detection fails for you, please try and export the"
+				ewarn "VTK_CUDA_ARCH environment variable to one of the common arch"
+				ewarn "names: kepler, maxwell, pascal, volta, turing, ampere or all."
+				cuda_arch=native
+				;;
+			*)
+				eerror "Please properly set the VTK_CUDA_ARCH environment variable to"
+				eerror "one of: kepler, maxwell, pascal, volta, turing, ampere, all"
+				die "Invalid CUDA architecture given: '${VTK_CUDA_ARCH}'!"
+				;;
+		esac
+		ewarn "Using CUDA architecture '${cuda_arch}'"
+
+		mycmakeargs+=( -DVTKm_CUDA_Architecture=${cuda_arch} )
 	fi
 
 	if use ffmpeg; then
