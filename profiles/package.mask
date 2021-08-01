@@ -35,6 +35,7 @@
 # Sam James <sam@gentoo.org> (2021-08-01)
 # Broken with GCC 11, out of date, unmaintained in Gentoo.
 # bug #763651, bug #774009, bug #789027.
+# Removal on 2021-09-01.
 dev-util/intel-graphics-compiler
 
 # Sam James <sam@gentoo.org> (2021-08-01)
