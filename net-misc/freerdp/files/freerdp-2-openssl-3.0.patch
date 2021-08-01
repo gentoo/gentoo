@@ -36,3 +36,26 @@ index 3a859039034..03b23af43ac 100644
  				WLog_INFO(TAG, "Openssl fips mode ENabled!");
  			else
  			{
+From e59acc13c8f9b522a15fd586e643f04af1a79d9a Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 1 Aug 2021 12:14:43 -0400
+Subject: [PATCH] winpr: avoid calling FIPS_mode() with OpenSSL 3.0
+
+Fixes: 26bf2816c3e0daeaf524c47cf0fcda8ae13b65ad
+---
+ winpr/libwinpr/utils/ssl.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/winpr/libwinpr/utils/ssl.c b/winpr/libwinpr/utils/ssl.c
+index 03b23af43ac..74ef156e7b0 100644
+--- a/winpr/libwinpr/utils/ssl.c
++++ b/winpr/libwinpr/utils/ssl.c
+@@ -364,6 +364,8 @@ BOOL winpr_FIPSMode(void)
+ {
+ #if (OPENSSL_VERSION_NUMBER < 0x10001000L) || defined(LIBRESSL_VERSION_NUMBER)
+ 	return FALSE;
++#elif defined(OPENSSL_VERSION_MAJOR) && (OPENSSL_VERSION_MAJOR >= 3)
++	return (EVP_default_properties_is_fips_enabled(NULL) == 1);
+ #else
+ 	return (FIPS_mode() == 1);
+ #endif
