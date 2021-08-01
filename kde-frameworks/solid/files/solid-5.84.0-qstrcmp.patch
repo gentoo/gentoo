@@ -1,0 +1,35 @@
+From e5964d13f36901e7768ca38064125a5c5c28a939 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Thu, 22 Jul 2021 01:26:37 +0200
+Subject: [PATCH] Use qstrcmp instead of strcmp
+
+qstrcmp can handle NULL args.
+
+This fixes an issue on Slackware, which doesn't use systemd and /var/run
+is a bind mount of /run, and for some reason mnt_fs_get_root(fs) would return
+NULL, which led to crashes in dolphin and plasmashell, see:
+https://invent.kde.org/frameworks/solid/-/commit/ef0b0dfa00b1de70c6d8e6913bbfdb79e7d3d1b6#note_276583
+---
+ src/solid/devices/backends/udisks2/udisksstorageaccess.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/solid/devices/backends/udisks2/udisksstorageaccess.cpp b/src/solid/devices/backends/udisks2/udisksstorageaccess.cpp
+index 1566787..35d1aa8 100644
+--- a/src/solid/devices/backends/udisks2/udisksstorageaccess.cpp
++++ b/src/solid/devices/backends/udisks2/udisksstorageaccess.cpp
+@@ -92,9 +92,9 @@ static QString baseMountPoint(const QByteArray &dev)
+             const QByteArray devicePath = dev.endsWith('\x00') ? dev.chopped(1) : dev;
+ 
+             while (mnt_table_next_fs(table, itr, &fs) == 0) {
+-                if (mnt_fs_get_srcpath(fs) == devicePath
+-                    // Base mount point will have "/" as root fs
+-                    && (strcmp(mnt_fs_get_root(fs), "/") == 0)) {
++                if (mnt_fs_get_srcpath(fs) == devicePath //
++                    && (qstrcmp(mnt_fs_get_root(fs), "/") == 0) // Base mount point will have "/" as root fs
++                ) {
+                     mountPoint = QFile::decodeName(mnt_fs_get_target(fs));
+                     break;
+                 }
+-- 
+GitLab
+
