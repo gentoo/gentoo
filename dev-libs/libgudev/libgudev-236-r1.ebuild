@@ -44,3 +44,11 @@ multilib_src_configure() {
 	)
 	meson_src_configure
 }
+
+src_test() {
+	# libsandbox interferes somehow.
+	# There are no access violations, but tests fail.
+	# https://bugs.gentoo.org/805449
+	local -x SANDBOX_ON=0
+	meson-multilib_src_test
+}
