@@ -19,7 +19,7 @@ else
 	MY_P="${MY_PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -33,7 +33,7 @@ RESTRICT="test"
 
 BDEPEND="
 	dev-util/gperf
-	>=dev-util/intltool-0.50
+	sys-devel/gettext
 	>=sys-apps/coreutils-8.16
 	virtual/pkgconfig
 	app-text/docbook-xml-dtd:4.2
@@ -41,7 +41,6 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	${PYTHON_DEPS}
-	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
 "
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
@@ -73,10 +72,6 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-34"
 
-python_check_deps() {
-	has_version -b "dev-python/jinja[${PYTHON_USEDEP}]"
-}
-
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != buildonly ]] ; then
 		CONFIG_CHECK="~BLK_DEV_BSG ~DEVTMPFS ~!IDE ~INOTIFY_USER ~!SYSFS_DEPRECATED ~!SYSFS_DEPRECATED_V2 ~SIGNALFD ~EPOLL ~FHANDLE ~NET ~!FW_LOADER_USER_HELPER ~UNIX"
@@ -100,7 +95,6 @@ pkg_setup() {
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}/249-libudev-static.patch"
 	)
 
 	default
@@ -144,7 +138,6 @@ multilib_src_compile() {
 
 	local targets=(
 		${libudev}
-		src/libudev/libudev.pc
 	)
 	if use static-libs; then
 		targets+=( libudev.a )
@@ -157,7 +150,6 @@ multilib_src_compile() {
 			src/udev/fido_id
 			src/udev/mtd_probe
 			src/udev/scsi_id
-			src/udev/udev.pc
 			src/udev/v4l_id
 			man/udev.conf.5
 			man/systemd.link.5
@@ -165,8 +157,6 @@ multilib_src_compile() {
 			man/udev.7
 			man/systemd-udevd.service.8
 			man/udevadm.8
-			rules.d/50-udev-default.rules
-			rules.d/64-btrfs.rules
 		)
 	fi
 	eninja "${targets[@]}"
@@ -191,7 +181,7 @@ multilib_src_install() {
 		exeinto /lib/udev
 		doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
-		# Install generated rules (${BUILD_DIR}/rules.d/*.rules)
+		rm rules.d/99-systemd.rules || die
 		insinto /lib/udev/rules.d
 		doins rules.d/*.rules
 
@@ -214,10 +204,10 @@ multilib_src_install_all() {
 	insinto /lib/systemd/network
 	doins network/99-default.link
 
-	# Install static rules (${S}/rules.d/*.rules)
+	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
-	doins rules.d/*.rules
 	doins "${FILESDIR}"/40-gentoo.rules
+	doins "${S}"/rules.d/*.rules
 
 	dobashcomp shell-completion/bash/udevadm
 
