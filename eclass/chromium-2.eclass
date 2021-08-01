@@ -6,12 +6,12 @@
 # Chromium Project <chromium@gentoo.org>
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
-# @SUPPORTED_EAPIS: 7
+# @SUPPORTED_EAPIS: 7 8
 # @BLURB: Shared functions for chromium and google-chrome
 
 case ${EAPI} in
-	7) ;;
-	*) die "EAPI=${EAPI:-0} is not supported" ;;
+	7|8) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
 
 inherit linux-info
