@@ -220,6 +220,9 @@ LICENSE="Apache-2.0 BSD-2 BSD LGPL-3+ MIT ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="sys-libs/zlib"
+DEPEND="${RDEPEND}"
+
 QA_FLAGS_IGNORED="usr/bin/broot"
 
 src_prepare() {
