@@ -1,10 +1,9 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8..10} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Simplified packaging of Python modules"
@@ -14,6 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
 RDEPEND="
 	>=dev-python/flit_core-3.2.0[${PYTHON_USEDEP}]
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/requests_download[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
 "
-BDEPEND="
+BDEPEND="${RDEPEND}
 	sys-apps/grep
 	sys-apps/findutils
 	test? (
@@ -39,3 +39,10 @@ distutils_enable_tests pytest
 distutils_enable_sphinx doc \
 	dev-python/sphinxcontrib-github-alt \
 	dev-python/pygments-github-lexers \
+
+python_prepare_all() {
+	printf -- "from setuptools import setup, find_packages\nsetup(name='%s',version='%s',%s)" \
+		"${PN}" "${PV}" "packages=find_packages(exclude=['tests'])" > setup.py || die
+
+	distutils-r1_python_prepare_all
+}
