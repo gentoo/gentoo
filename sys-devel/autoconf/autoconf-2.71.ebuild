@@ -69,3 +69,7 @@ src_install() {
 			"${ED}"/usr/share/autoconf-*/build-aux/${f} || die
 	done
 }
+
+src_test() {
+	emake check
+}
