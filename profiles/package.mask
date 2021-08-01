@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-08-01)
+# Broken with GCC 11, out of date, unmaintained in Gentoo.
+# bug #763651, bug #774009, bug #789027.
+dev-util/intel-graphics-compiler
+
+# Sam James <sam@gentoo.org> (2021-08-01)
 # Fails to compile, multiple open bugs.
 # No activity upstream since 2015.
 # bug #570484, bug #715412, bug #723204.
