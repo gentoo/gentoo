@@ -25,11 +25,15 @@ fi
 # icons included are CC-BY-2.5
 LICENSE="WTFPL-2 CC-BY-2.5"
 SLOT="0"
-IUSE="+mpv +ffmpeg +lz4 socks +cloudscraper charts test"
+IUSE="+cloudscraper +ffmpeg +lz4 charts socks test +mpv"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
 
+# RDEPEND is sorted as such:
+# - No specific requirements
+# - Specific version or slot
+# - Depends on use flags
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -123,14 +127,14 @@ src_install() {
 	# These files are copied into doc
 	rm -r "${DOCS[@]}" "${HTML_DOCS[@]}" || die
 	# The program expects to find documentation here, so add a symlink to doc
-	ln -s "${doc}/html/help" help || die
+	dosym "${doc}/html/help" help
 
 	insinto /opt/hydrus
 	doins -r "${S}"/.
 
 	exeinto /usr/bin
-	python_newexe - hydrus-server < <(sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-server")
-	python_newexe - hydrus-client < <(sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-client")
+	python_newexe - hydrus-server < <(sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-server" || die)
+	python_newexe - hydrus-client < <(sed "s/python/${EPYTHON}/" "${FILESDIR}/hydrus-client" || die)
 
 	make_desktop_entry "hydrus-client" "Hydrus Client" "/opt/hydrus/static/hydrus_non-transparent.png" \
 					   "AudioVideo;FileTools;Graphics;Network;"
