@@ -541,10 +541,9 @@ dev-java/werken-xpath
 =media-fonts/culmus-0.133-r1
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
-# Has unidentified race condition on very fast CPUs that causes maintainer-
-# mode to be triggered.
-# Most likely caused by the following upstream commit:
-#   https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=aba75f6d4a9c875a9d5d90a07c6b3678db66a4bf
+# On fast CPUs eautoreconf skips intermediate steps,
+# enables maintainer-mode or fails automake assertions:
+# bug #782985
 sys-devel/autoconf:2.71
 
 # Sam James <sam@gentoo.org> (2021-03-03)
