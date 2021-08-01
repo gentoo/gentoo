@@ -42,7 +42,7 @@ myhlopts=(
 	"CXX=$(tc-getCXX)"
 	"AR=$(tc-getAR)"
 	"LDFLAGS=${LDFLAGS}"
-	"CFLAGS=${CXXFLAGS} -DNDEBUG -std=c++11"
+	"CFLAGS=${CXXFLAGS} -DNDEBUG"
 	"DESTDIR=${D}"
 	"PREFIX=${EPREFIX}/usr"
 	"HL_CONFIG_DIR=${EPREFIX}/etc/highlight/"
