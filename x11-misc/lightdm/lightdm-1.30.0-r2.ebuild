@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic pam qmake-utils readme.gentoo-r1 systemd user vala xdg-utils
+inherit autotools pam qmake-utils readme.gentoo-r1 systemd user vala xdg-utils
 
 DESCRIPTION="A lightweight display manager"
 HOMEPAGE="https://github.com/CanonicalLtd/lightdm"
@@ -98,8 +98,6 @@ src_configure() {
 	einfo "Default greeter: ${_greeter}"
 	einfo "Default session: ${_session}"
 	einfo "Greeter user: ${_user}"
-
-	use qt5 && append-cxxflags -std=c++11
 
 	# also disable tests because libsystem.c does not build. Tests are
 	# restricted so it does not matter anyway.
