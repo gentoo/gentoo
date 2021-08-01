@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_P=${PN}-src-${PV}
-inherit autotools flag-o-matic qmake-utils toolchain-funcs
+inherit autotools qmake-utils toolchain-funcs
 
 DESCRIPTION="Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices"
 HOMEPAGE="http://guvcview.sourceforge.net/"
@@ -56,7 +56,7 @@ src_prepare() {
 
 src_configure() {
 	export MOC="$(qt5_get_bindir)/moc"
-	use qt5 && append-cxxflags -std=c++11
+
 	# 599030
 	tc-export CC CXX
 
