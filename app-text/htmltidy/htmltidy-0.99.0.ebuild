@@ -4,7 +4,8 @@
 EAPI=5
 
 MY_PN="tidy"
-MY_P="${MY_PN}-${PV}"
+MY_PV="20090325"
+MY_P="${MY_PN}-${MY_PV}"
 
 inherit epatch autotools
 
@@ -29,13 +30,13 @@ src_prepare() {
 	cp -R  ./build/gnuauto/* . || die "could not prepare autotools environment"
 
 	# Stop tidy from appending -O2 to our CFLAGS
-	epatch "${FILESDIR}"/htmltidy-5.10.26-strip-O2-flag.patch
+	epatch "${FILESDIR}"/${P}-strip-O2-flag.patch
 
 	# Define /etc/tidyrc for system wide config, bug 154834
-	epatch "${FILESDIR}"/htmltidy-20090325-tidyrc.patch
+	epatch "${FILESDIR}"/${P}-tidyrc.patch
 
 	# Fix security bug 561452
-	epatch "${FILESDIR}"/11CVE-2015-5522.patch
+	epatch "${FILESDIR}"/${P}-CVE-2015-5522.patch
 
 	eautoreconf
 }
