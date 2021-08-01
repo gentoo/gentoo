@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-08-01)
+# Fails to compile, multiple open bugs.
+# No activity upstream since 2015.
+# bug #570484, bug #715412, bug #723204.
+# Removal on 2021-09-01.
+sys-apps/lmctfy
+
+# Sam James <sam@gentoo.org> (2021-08-01)
 # Fails to build with network-sandbox and variety
 # of other open bugs. Unmaintained.
 # bug #632638, bug #688530, bug #709992, bug #757768,
