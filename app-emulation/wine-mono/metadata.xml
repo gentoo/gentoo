@@ -11,4 +11,7 @@
 	<upstream>
 		<remote-id type="github">madewokherd/wine-mono</remote-id>
 	</upstream>
+	<use>
+		<flag name="shared">Install pre-unpacked files which do not need to be copied into the Wine prefix</flag>
+	</use>
 </pkgmetadata>
