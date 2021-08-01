@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-08-01)
+# Dropped into ::gentoo, then unmaintained. Multiple versions behind
+# upstream, GCC 11 bug open, lacks python 3.10, python library without
+# revdeps. Bug #790137, #792870, removal in 30 days.
+sci-libs/sktime
+
+# David Seifert <soap@gentoo.org> (2021-08-01)
 # Last release 10 years ago, EOL upstream, no other distro packages this
 # anymore, tons of bugs. Revdeps are unmaintained too and out of date.
 # Bug #798015, removal in 30 days.
