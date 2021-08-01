@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2021-08-01)
+# Due to a bug in pyproject2setuppy, this version does not install
+# bundled dictionaries.  Masking until it is fixed.
+=dev-python/pyphen-0.11.0
+
 # David Seifert <soap@gentoo.org> (2021-08-01)
 # Last release 10 years ago, EOL upstream, no other distro packages this
 # anymore, tons of bugs. Revdeps are unmaintained too and out of date.
