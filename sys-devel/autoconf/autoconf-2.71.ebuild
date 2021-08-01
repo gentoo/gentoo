@@ -62,6 +62,10 @@ src_prepare() {
 	touch -r doc/{old_,}autoconf.texi || die
 }
 
+src_test() {
+	emake check
+}
+
 src_install() {
 	toolchain-autoconf_src_install
 
@@ -70,8 +74,4 @@ src_install() {
 		ln -fs ../../gnuconfig/${f} \
 			"${ED}"/usr/share/autoconf-*/build-aux/${f} || die
 	done
-}
-
-src_test() {
-	emake check
 }

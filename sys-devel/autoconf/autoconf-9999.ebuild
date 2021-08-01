@@ -43,6 +43,10 @@ src_prepare() {
 	toolchain-autoconf_src_prepare
 }
 
+src_test() {
+	emake check
+}
+
 src_install() {
 	default
 
@@ -51,8 +55,4 @@ src_install() {
 		ln -fs ../../gnuconfig/${f} \
 			"${ED}"/usr/share/autoconf-*/build-aux/${f} || die
 	done
-}
-
-src_test() {
-	emake check
 }
