@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-08-01)
+# Fails to build with network-sandbox and variety
+# of other open bugs. Unmaintained.
+# bug #632638, bug #688530, bug #709992, bug #757768,
+# bug #796920. Removal on 2021-09-01.
+sys-apps/habitat
+
 # David Seifert <soap@gentoo.org> (2021-08-01)
 # Dropped into ::gentoo, then unmaintained. Multiple versions behind
 # upstream, GCC 11 bug open, lacks python 3.10, python library without
@@ -74,7 +81,7 @@ dev-java/jgoodies-binding
 dev-java/jgoodies-forms
 
 # Joonas Niilola <juippis@gentoo.org> (2021-07-29)
-# Upstream provided migration instructions from 2. -> 3. update, 
+# Upstream provided migration instructions from 2. -> 3. update,
 # breaks if not all at least many revdeps. #805011 for tracker bug.
 >=net-libs/mbedtls-3.0.0
 
