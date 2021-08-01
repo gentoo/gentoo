@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
-	>=dev-python/pyproject2setuppy-17[${PYTHON_USEDEP}]"
+	>=dev-python/pyproject2setuppy-18[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
