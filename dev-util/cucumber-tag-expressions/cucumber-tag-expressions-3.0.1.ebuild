@@ -13,5 +13,5 @@ DESCRIPTION="Cucumber tag expressions for ruby"
 HOMEPAGE="https://docs.cucumber.io/tag-expressions/"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 SLOT="$(ver_cut 1)"
