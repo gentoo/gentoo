@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parse informal natural language date/time strings"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
