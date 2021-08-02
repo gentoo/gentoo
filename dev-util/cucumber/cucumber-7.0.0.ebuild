@@ -21,7 +21,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 SLOT="0"
 IUSE="examples test"
 
