@@ -22,7 +22,7 @@ fi
 HOMEPAGE="https://pointclouds.org/"
 DESCRIPTION="2D/3D image and point cloud processing"
 LICENSE="BSD"
-SLOT="0/1.11"
+SLOT="0/1.12"
 IUSE="cuda doc opengl openni openni2 pcap png +qhull qt5 usb vtk cpu_flags_x86_sse test tutorials"
 RESTRICT="!test? ( test )"
 
