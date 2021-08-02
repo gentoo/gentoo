@@ -3,8 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
-inherit python-any-r1 cmake-utils
+CMAKE_MAKEFILE_GENERATOR="emake"
+PYTHON_COMPAT=( python3_{8..9} )
+inherit python-any-r1 cmake
 
 DESCRIPTION="CBOR protocol implementation for C and others"
 HOMEPAGE="https://github.com/pjk/libcbor"
@@ -12,7 +13,7 @@ SRC_URI="https://github.com/PJK/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="+custom-alloc doc test"
 
 BDEPEND="
@@ -27,8 +28,6 @@ BDEPEND="
 "
 
 RESTRICT="!test? ( test )"
-
-CMAKE_MAKEFILE_GENERATOR="emake"
 
 python_check_deps() {
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]" && \
@@ -46,11 +45,11 @@ src_configure() {
 		-DWITH_TESTS=$(usex test 'ON' 'OFF')
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc; then
 		pushd doc >/dev/null || die
@@ -60,7 +59,7 @@ src_compile() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use doc; then
 		dodoc -r doc/build/html
