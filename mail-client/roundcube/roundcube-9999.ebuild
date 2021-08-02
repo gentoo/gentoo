@@ -59,6 +59,7 @@ src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
 		git-r3_src_unpack
 		pushd "${S}" > /dev/null || die
+		rm Makefile || die
 		mv composer.json-dist composer.json || die
 		composer install --no-dev || die
 		./bin/install-jsdeps.sh || die
