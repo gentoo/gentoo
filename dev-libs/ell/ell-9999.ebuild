@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,16 +17,11 @@ fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-IUSE="glib pie test"
+IUSE="pie test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
-"
-DEPEND="
-	${RDEPEND}
-	test? ( sys-apps/dbus )
-"
+RDEPEND=""
+DEPEND="test? ( sys-apps/dbus )"
 
 CONFIG_CHECK="
 	~TIMERFD
@@ -46,7 +41,6 @@ src_prepare() {
 multilib_src_configure() {
 	append-cflags "-fsigned-char" #662694
 	local myeconfargs=(
-		$(use_enable glib)
 		$(use_enable pie)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
