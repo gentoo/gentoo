@@ -27,7 +27,7 @@ RDEPEND="caps? ( sys-libs/libcap )
 DEPEND="${RDEPEND}
 	dev-util/conf2struct
 	dev-lang/perl
-	dev-libs/libpcre:="
+	dev-libs/libpcre2:="
 
 RESTRICT="test"
 
