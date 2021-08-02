@@ -22,12 +22,12 @@ SLOT="0"
 IUSE="caps pcre systemd tcpd"
 
 RDEPEND="caps? ( sys-libs/libcap )
+	pcre? ( dev-libs/libpcre:= )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	>=dev-libs/libconfig-1.5:="
 DEPEND="${RDEPEND}
-	dev-lang/perl
-	pcre? ( dev-libs/libpcre:= )"
+	dev-lang/perl"
 
 RESTRICT="test"
 
