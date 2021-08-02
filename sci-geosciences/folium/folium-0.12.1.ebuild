@@ -20,8 +20,12 @@ PATCHES=(
 )
 
 RDEPEND="sci-libs/branca[${PYTHON_USEDEP}]
-	dev-python/jinja[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+	dev-python/jinja[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	test? (
+		dev-python/pillow[${PYTHON_USEDEP}]
+	)"
 BDEPEND=""
 
 distutils_enable_tests pytest
