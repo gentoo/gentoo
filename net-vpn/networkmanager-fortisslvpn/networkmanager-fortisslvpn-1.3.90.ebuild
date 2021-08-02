@@ -27,11 +27,10 @@ RDEPEND="
 		>=x11-libs/gtk+-3.4:3
 	)
 "
-DEPEND="${RDEPEND}
-	dev-util/gdbus-codegen
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 src_configure() {
 	gnome2_src_configure \
