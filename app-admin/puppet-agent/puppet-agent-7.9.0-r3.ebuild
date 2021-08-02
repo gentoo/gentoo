@@ -70,7 +70,7 @@ src_install() {
 	dosym ../../opt/puppetlabs/bin/facter /usr/bin/facter
 	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
-	dosym ../../../../lib/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
+	dosym ../../../../usr/lib/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
 }
 
 pkg_postinst() {
