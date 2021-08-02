@@ -1,0 +1,24 @@
+diff -Naur a/src/command_line_options.hpp b/src/command_line_options.hpp
+--- a/src/command_line_options.hpp	2020-09-09 16:34:18.000000000 -0000
++++ b/src/command_line_options.hpp	2021-08-02 11:51:34.155245491 -0000
+@@ -21,7 +21,7 @@
+ 
+ #include <vector>
+ 
+-#include <argparser.hpp>
++#include <argparser/argparser.hpp>
+ 
+ #include "axis_map_option.hpp"
+ #include "button_map_option.hpp"
+diff -Naur a/src/virtualkeyboard/main.cpp b/src/virtualkeyboard/main.cpp
+--- a/src/virtualkeyboard/main.cpp	2020-09-09 16:34:18.000000000 -0000
++++ b/src/virtualkeyboard/main.cpp	2021-08-02 11:51:19.155273903 -0000
+@@ -21,7 +21,7 @@
+ #include <functional>
+ #include <errno.h>
+ 
+-#include <argparser.hpp>
++#include <argparser/argparser.hpp>
+ 
+ #include "log.hpp"
+ #include "status_icon.hpp"
