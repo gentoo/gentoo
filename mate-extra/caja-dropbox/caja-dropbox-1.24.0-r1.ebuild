@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 MATE_LA_PUNT="yes"
 
 inherit eapi7-ver mate python-single-r1 linux-info
