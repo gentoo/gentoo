@@ -32,6 +32,12 @@ BDEPEND="dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig"
 
+src_prepare() {
+	sed -i 's/\/appdata/\/metainfo/g' Makefile.am
+
+	eapply_user
+}
+
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
