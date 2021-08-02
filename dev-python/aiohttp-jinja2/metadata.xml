@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="pypi">aiohttp_jinja2</remote-id>
+		<remote-id type="pypi">aiohttp-jinja2</remote-id>
 		<remote-id type="github">aio-libs/aiohttp-jinja2</remote-id>
 	</upstream>
 </pkgmetadata>
