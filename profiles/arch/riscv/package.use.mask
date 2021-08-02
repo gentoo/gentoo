@@ -5,11 +5,6 @@
 # app-cdr/cdrtools fails to compile on riscv
 dev-util/catalyst iso
 
-# Yixun Lan <dlan@gentoo.org> (2021-07-27)
-# depend on sci-physics/bullet, media-libs/libv4l
-# which not keyworded
-dev-libs/efl physics v4l
-
 # Marek Szuba <marecki@gentoo.org> (2021-07-27)
 # dev-libs/boxfort does not support riscv64 yet, meaning
 # dev-libs/criterion cannot be keyworded here
@@ -109,10 +104,11 @@ media-libs/libcaca doc imlib
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-misc/geoclue modemmanager zeroconf
-gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios test zeroconf
+dev-libs/libgdata gnome-online-accounts
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios zeroconf
 sys-power/upower ios
 net-libs/webkit-gtk gstreamer
-xfce-base/xfce4-settings colord libcanberra
+xfce-base/xfce4-settings libcanberra
 xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
 xfce-extra/xfce4-power-manager networkmanager
 xfce-base/xfce4-meta pulseaudio
@@ -136,31 +132,20 @@ x11-base/xwayland unwind
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Dependencies not keyworded, not tested
-dev-libs/gobject-introspection doctool test
-dev-python/markdown test
-x11-libs/gtk+ test colord
-net-libs/libsoup test
 net-libs/libproxy spidermonkey webkit kde networkmanager
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # Yixun Lan <dlan@gentoo.org> (2021-07-27)
 # media-libs/libheif isn't keyworded here
-# media-libs/libavif isn't keyworded here
-dev-libs/efl avif
-media-libs/gd avif heif
+media-libs/gd heif
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
-# dev-python/breathe not keyworded here, mask to facilitate
-# keywording dev-libs/libfido2
+# dev-python/breathe not keyworded here
 dev-libs/libcbor doc
-
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
