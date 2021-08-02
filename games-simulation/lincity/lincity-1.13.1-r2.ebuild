@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop flag-o-matic
+inherit desktop
 
 DESCRIPTION="City simulation game for X"
 HOMEPAGE="http://lincity.sourceforge.net/"
@@ -30,8 +30,6 @@ PATCHES=(
 )
 
 src_configure() {
-	append-cflags -std=gnu89 # build with gcc5 (bug #570574)
-
 	local econfargs=(
 		--with-gzip
 		--with-x
