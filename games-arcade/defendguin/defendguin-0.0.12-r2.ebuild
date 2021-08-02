@@ -25,7 +25,7 @@ src_prepare() {
 	tc-export CC
 	sed	-e "s|\$(DATA_PREFIX)|${EPREFIX}/usr/share/${PN}/|" \
 		-e '/^CFLAGS=.*-O2/d' \
-		-e '/^CFLAGS=/s|=|+= $(LDFLAGS) |' \
+		-e '/^CFLAGS=/s|=|+= $(CPPFLAGS) $(LDFLAGS) |' \
 		-i Makefile || die
 	rm data/images/l2r.sh || die
 }
