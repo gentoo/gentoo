@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Robust and reusable Executor for joblib"
@@ -27,6 +27,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libc.patch
+	"${FILESDIR}"/${P}-fix-py3.10-tests.patch
 )
 
 python_test() {
