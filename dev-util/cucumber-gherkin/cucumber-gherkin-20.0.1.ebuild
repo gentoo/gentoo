@@ -22,7 +22,7 @@ SRC_URI="https://github.com/cucumber/common/archive/gherkin/v${PV}.tar.gz -> ${P
 RUBY_S="common-gherkin-v${PV}/gherkin/ruby"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 SLOT="$(ver_cut 1)"
 IUSE=""
 
