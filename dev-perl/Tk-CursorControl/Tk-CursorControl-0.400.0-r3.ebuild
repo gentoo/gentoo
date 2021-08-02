@@ -11,7 +11,7 @@ inherit edos2unix perl-module virtualx
 DESCRIPTION="Manipulate the mouse cursor programmatically"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 sparc ~x86"
+KEYWORDS="amd64 ~ia64 sparc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Tk"
