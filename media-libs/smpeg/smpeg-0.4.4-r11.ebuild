@@ -13,18 +13,13 @@ SRC_URI="https://mirrors.dotsrc.org/lokigames/open-source/smpeg/${P}.tar.gz
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="X debug cpu_flags_x86_mmx opengl"
+IUSE="cpu_flags_x86_mmx opengl"
 
 RDEPEND="
-	media-libs/libsdl[${MULTILIB_USEDEP}]
+	media-libs/libsdl[opengl?,sound,video,${MULTILIB_USEDEP}]
 	opengl? (
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
-	)
-	X? (
-		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/libXi[${MULTILIB_USEDEP}]
-		x11-libs/libX11[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}"
 
@@ -57,10 +52,9 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-gtk-player
 		--enable-debug # disabling this only passes extra optimizations
+		--without-x # does not actually use X, only causes a headers check
 		$(use_enable cpu_flags_x86_mmx mmx)
-		$(use_enable debug assertions)
 		$(use_enable opengl opengl-player)
-		$(use_with X x)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
