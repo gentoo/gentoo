@@ -17,8 +17,6 @@ IUSE="nls static"
 
 BDEPEND="nls? ( sys-devel/gettext )"
 
-DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
-
 src_configure() {
 	use static && append-ldflags -static
 
@@ -35,9 +33,4 @@ src_configure() {
 		$(use_enable nls)
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	# explicitly allow parallel testing
-	emake check
 }
