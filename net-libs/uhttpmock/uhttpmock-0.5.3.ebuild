@@ -8,7 +8,7 @@ inherit gnome2 vala
 
 DESCRIPTION="HTTP web service mocking library"
 HOMEPAGE="https://gitlab.com/uhttpmock/uhttpmock"
-SRC_URI="http://tecnocode.co.uk/downloads/${PN}/${P}.tar.xz"
+SRC_URI="https://tecnocode.co.uk/downloads/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
@@ -16,7 +16,7 @@ SLOT="0"
 IUSE="debug +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.38.0:2
