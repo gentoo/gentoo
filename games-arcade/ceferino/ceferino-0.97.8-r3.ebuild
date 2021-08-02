@@ -19,11 +19,9 @@ RDEPEND="
 	media-libs/libsdl[sound,video]
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[mod]
-	nls? ( virtual/libintl )
-"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-audio.patch
@@ -41,5 +39,5 @@ src_configure() {
 src_install() {
 	default
 	newicon data/ima/icono.png ${PN}.png
-	make_desktop_entry ceferino "Don Ceferino Hazaña"
+	make_desktop_entry ${PN} "Don Ceferino Hazaña"
 }
