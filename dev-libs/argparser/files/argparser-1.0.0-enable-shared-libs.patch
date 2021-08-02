@@ -1,0 +1,12 @@
+diff -Naur c/CMakeLists.txt d/CMakeLists.txt
+--- c/CMakeLists.txt	2020-10-11 00:27:24.000000000 -0000
++++ d/CMakeLists.txt	2021-08-02 10:29:57.355405912 -0000
+@@ -30,7 +30,7 @@
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ 
+-add_library(argparser STATIC
++add_library(argparser
+   src/argparser.cpp
+   src/prettyprinter.cpp)
+ target_include_directories(argparser PUBLIC include/ src/)
