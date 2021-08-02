@@ -13,7 +13,7 @@ KEYWORDS=""
 IUSE="bzip2 ipv6 truetype"
 
 RDEPEND="sys-libs/zlib
-	x11-base/xorg-proto
+	dev-libs/libbsd
 	x11-libs/libfontenc
 	bzip2? ( app-arch/bzip2 )
 	truetype? ( >=media-libs/freetype-2 )"
