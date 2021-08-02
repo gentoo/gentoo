@@ -68,18 +68,12 @@ distutils_use_setuptools_check() {
 		[[ ${#expected[@]} -eq 0 ]] && expected=( no )
 		# *+rdepend=rdepend
 		has rdepend "${expected[@]}" && expected=( rdepend )
-
-		if has entry-point "${expected[@]}"; then
-			if [[ ${DISTUTILS_STRICT_ENTRY_POINTS} ]]; then
-				# option for devs to future-proof their packages
-				# please don't let ago enable it
-				expected=( bdepend )
-			else
-				# accept either rdepend or bdepend for the time being
-				# but suggest bdepend as the future-proof option
-				expected=( bdepend rdepend )
-			fi
-		fi
+		# NB: note that expected is overwritten above, so this implies !rdepend
+		# if the package is using entry points, modern versions of setuptools
+		# use built-in importlib.metadata module, so no rdep needed anymore
+		# NB2: this is incorrect for pypy3.7 but we ignore this for the time
+		# being
+		has entry-point "${expected[@]}" && expected=( bdepend )
 
 		if ! has ${DISTUTILS_USE_SETUPTOOLS} "${expected[@]}"; then
 				local def=
