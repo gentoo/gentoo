@@ -1,9 +1,10 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -394,35 +394,6 @@
+@@ -393,34 +393,7 @@
+ endif ()
  
  
- #------------------------------------------------------------------------
+-#------------------------------------------------------------------------
 -# Static Library
 -#   The static library always builds.
 -#------------------------------------------------------------------------
@@ -25,14 +26,12 @@
 -        ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
 -        LIBRARY DESTINATION ${LIB_INSTALL_DIR}
 -        )
--install( FILES ${HFILES} DESTINATION ${INCLUDE_INSTALL_DIR} )
+ install( FILES ${HFILES} DESTINATION ${INCLUDE_INSTALL_DIR} )
 -if(MSVC)
 -    # install(FILES $<TARGET_PDB_FILE:${name}> DESTINATION lib OPTIONAL)
 -    INSTALL(FILES ${PROJECT_BINARY_DIR}/${name}.dir/Debug/${name}.pdb
 -    DESTINATION lib CONFIGURATIONS Debug )
 -endif()
--
--#------------------------------------------------------------------------
- # Dynamic Library
- #   If the user option is still on.
+ 
  #------------------------------------------------------------------------
+ # Dynamic Library
