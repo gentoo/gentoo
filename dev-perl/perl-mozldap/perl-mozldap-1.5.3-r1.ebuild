@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit perl-module
 
@@ -12,16 +12,17 @@ SRC_URI="https://ftp.mozilla.org/pub/mozilla.org/directory/perldap/releases/${PV
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-libs/nspr-4.0.1
 	>=dev-libs/nss-3.11.6
-	net-nds/openldap"
-
-DEPEND="
-	${RDEPEND}
-	sys-apps/sed"
+	net-nds/openldap
+"
+DEPEND="${RDEPEND}
+"
+BDEPEND="${RDEPEND}
+	sys-apps/sed
+"
 
 src_configure() {
 	export USE_OPENLDAP=1
