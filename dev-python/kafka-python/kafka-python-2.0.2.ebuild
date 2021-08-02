@@ -19,6 +19,7 @@ RDEPEND="dev-python/xxhash[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? (
 		dev-python/lz4[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/snappy[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
