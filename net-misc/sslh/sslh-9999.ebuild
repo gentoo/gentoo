@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps pcre systemd tcpd"
+IUSE="caps systemd tcpd"
 
 RDEPEND="caps? ( sys-libs/libcap )
 	systemd? ( sys-apps/systemd:= )
@@ -27,7 +27,7 @@ RDEPEND="caps? ( sys-libs/libcap )
 DEPEND="${RDEPEND}
 	dev-util/conf2struct
 	dev-lang/perl
-	pcre? ( dev-libs/libpcre:= )"
+	dev-libs/libpcre:="
 
 RESTRICT="test"
 
@@ -49,7 +49,6 @@ src_compile() {
 
 	emake \
 		CC="$(tc-getCC)" \
-		USELIBPCRE=$(usev pcre) \
 		USELIBCAP=$(usev caps) \
 		USELIBWRAP=$(usev tcpd) \
 		USESYSTEMD=$(usev systemd)
