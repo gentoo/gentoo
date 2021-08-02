@@ -20,6 +20,7 @@ RDEPEND="dev-python/jinja[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
 		dev-python/selenium[${PYTHON_USEDEP}]
+		dev-python/nbconvert[${PYTHON_USEDEP}]
 	)"
 BDEPEND=""
 
