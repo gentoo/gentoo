@@ -11,7 +11,7 @@ SRC_URI="https://github.com/XMLTV/xmltv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc x86 ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ppc x86 ~x86-linux"
 
 IUSE="ar ch-search dk dtvla eu-dotmedia eu-epgdata eu-xmltvse fi fi-sv fr
 huro il is it na-dd na-dtv na-tvmedia pt-meo pt-vodafone se-swedb se-tvzon tr
