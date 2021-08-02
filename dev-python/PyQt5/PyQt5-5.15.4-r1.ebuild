@@ -85,7 +85,7 @@ RDEPEND="${PYTHON_DEPS}
 	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.25[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.25:0[${PYTHON_USEDEP}]
 	dbus? ( virtual/pkgconfig )
 "
 
