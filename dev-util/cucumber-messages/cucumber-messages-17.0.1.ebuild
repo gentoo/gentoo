@@ -15,5 +15,5 @@ DESCRIPTION="Protocol Buffer messages for Cucumber's inter-process communication
 HOMEPAGE="https://github.com/cucumber/cucumber-messages-ruby#readme"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv"
 SLOT="$(ver_cut 1)"
