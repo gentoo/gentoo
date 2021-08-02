@@ -1,0 +1,132 @@
+From 71d7f5ea07453ce23c97651e67dd880ee72f26d3 Mon Sep 17 00:00:00 2001
+From: Thomas Moreau <thomas.moreau.2010@gmail.com>
+Date: Fri, 8 Jan 2021 10:43:18 +0100
+Subject: [PATCH] FIX skip test on win32+py38+ failing due to #279 (#282)
+
+---
+ loky/process_executor.py        | 27 ++++++++++++++++++++-------
+ tests/test_reusable_executor.py | 13 ++++++++++++-
+ 2 files changed, 32 insertions(+), 8 deletions(-)
+
+diff --git a/loky/process_executor.py b/loky/process_executor.py
+index 41e4a2b5..f2fc167f 100644
+--- a/loky/process_executor.py
++++ b/loky/process_executor.py
+@@ -115,7 +115,9 @@ def _get_memory_usage(pid, force_gc=False):
+         if force_gc:
+             gc.collect()
+ 
+-        return Process(pid).memory_info().rss
++        mem_size = Process(pid).memory_info().rss
++        mp.util.debug('psutil return memory size: {}'.format(mem_size))
++        return mem_size
+ 
+ except ImportError:
+     _USE_PSUTIL = False
+@@ -421,11 +423,13 @@ def _process_worker(call_queue, result_queue, initializer, initargs,
+                 # If we cannot format correctly the exception, at least print
+                 # the traceback.
+                 print(previous_tb)
++            mp.util.debug('Exiting with code 1')
+             sys.exit(1)
+         if call_item is None:
+             # Notify queue management thread about clean worker shutdown
+             result_queue.put(pid)
+             with worker_exit_lock:
++                mp.util.debug('Exited cleanly')
+                 return
+         try:
+             r = call_item()
+@@ -467,6 +471,7 @@ def _process_worker(call_queue, result_queue, initializer, initargs,
+                 mp.util.info("Memory leak detected: shutting down worker")
+                 result_queue.put(pid)
+                 with worker_exit_lock:
++                    mp.util.debug('Exit due to memory leak')
+                     return
+         else:
+             # if psutil is not installed, trigger gc.collect events
+@@ -645,7 +650,13 @@ def wait_result_broken_or_wakeup(self):
+                 # unstable, therefore they are not appended in the exception
+                 # message.
+                 exit_codes = "\nThe exit codes of the workers are {}".format(
+-                    get_exitcodes_terminated_worker(self.processes))
++                    get_exitcodes_terminated_worker(self.processes)
++                )
++            mp.util.debug('A worker unexpectedly terminated. Workers that '
++                          'might have caused the breakage: '
++                          + str({p.name: p.exitcode
++                                 for p in list(self.processes.values())
++                                 if p is not None and p.sentinel in ready}))
+             bpe = TerminatedWorkerError(
+                 "A worker process managed by the executor was unexpectedly "
+                 "terminated. This could be caused by a segmentation fault "
+@@ -733,7 +744,7 @@ def terminate_broken(self, bpe):
+ 
+         # Terminate remaining workers forcibly: the queues or their
+         # locks may be in a dirty state and block forever.
+-        self.kill_workers()
++        self.kill_workers(reason="broken executor")
+ 
+         # clean up resources
+         self.join_executor_internals()
+@@ -753,15 +764,16 @@ def flag_executor_shutting_down(self):
+                 del work_item
+ 
+             # Kill the remaining worker forcibly to no waste time joining them
+-            self.kill_workers()
++            self.kill_workers(reason="executor shutting down")
+ 
+-    def kill_workers(self):
++    def kill_workers(self, reason=''):
+         # Terminate the remaining workers using SIGKILL. This function also
+         # terminates descendant workers of the children in case there is some
+         # nested parallelism.
+         while self.processes:
+             _, p = self.processes.popitem()
+-            mp.util.debug('terminate process {}'.format(p.name))
++            mp.util.debug("terminate process {}, reason: {}"
++                          .format(p.name, reason))
+             try:
+                 recursive_terminate(p)
+             except ProcessLookupError:  # pragma: no cover
+@@ -1152,7 +1164,8 @@ def map(self, fn, *iterables, **kwargs):
+ 
+         results = super(ProcessPoolExecutor, self).map(
+             partial(_process_chunk, fn), _get_chunks(chunksize, *iterables),
+-            timeout=timeout)
++            timeout=timeout
++        )
+         return _chain_from_iterable_of_lists(results)
+ 
+     def shutdown(self, wait=True, kill_workers=False):
+diff --git a/tests/test_reusable_executor.py b/tests/test_reusable_executor.py
+index 6d4c26f7..1ff5b8b8 100644
+--- a/tests/test_reusable_executor.py
++++ b/tests/test_reusable_executor.py
+@@ -224,7 +224,8 @@ class TestExecutorDeadLock(ReusableExecutorMixin):
+         # on workers
+         (return_instance, (CrashAtPickle,), TerminatedWorkerError, r"SIGSEGV"),
+         (return_instance, (ExitAtPickle,), SystemExit, None),
+-        (return_instance, (CExitAtPickle,), TerminatedWorkerError, r"EXIT\(0\)"),
++        (return_instance, (CExitAtPickle,), TerminatedWorkerError,
++         r"EXIT\(0\)"),
+         (return_instance, (ErrorAtPickle,), PicklingError, None),
+         # Check problem occuring while unpickling a task in
+         # the result_handler thread
+@@ -344,6 +345,16 @@ def test_deadlock_kill(self):
+     @pytest.mark.parametrize("n_proc", [1, 2, 5, 13])
+     def test_crash_races(self, n_proc):
+         """Test the race conditions in reusable_executor crash handling"""
++
++        if (sys.platform == 'win32' and sys.version_info >= (3, 8)
++                and n_proc > 5):
++            pytest.skip(
++                "On win32, the paging size can be too small to import numpy "
++                "multiple times in the sub-processes (imported when loading "
++                "this file). Skipping while no better solution is found. See "
++                "https://github.com/joblib/loky/issues/279 for more details."
++            )
++
+         # Test for external crash signal comming from neighbor
+         # with various race setup
+         executor = get_reusable_executor(max_workers=n_proc, timeout=None)
