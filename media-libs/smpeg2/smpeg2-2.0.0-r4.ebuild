@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug cpu_flags_x86_mmx static-libs"
+IUSE="cpu_flags_x86_mmx"
 
 DEPEND="media-libs/libsdl2[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
@@ -40,7 +40,6 @@ multilib_src_configure() {
 		--disable-sdltest
 		--enable-debug # disabling this only passes extra optimizations
 		$(use_enable cpu_flags_x86_mmx mmx)
-		$(use_enable debug assertions)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
