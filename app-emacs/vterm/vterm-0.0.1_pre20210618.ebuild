@@ -26,6 +26,13 @@ SITEFILE="50${PN}-gentoo.el"
 DOCS="README.md"
 
 src_prepare() {
+	if [[ -e ${ESYSROOT}/usr/include/emacs-module.h ]]; then
+		# Use system header file instead of bundled one
+		rm emacs-module.h || die
+	else
+		ewarn "${ESYSROOT}/usr/include/emacs-module.h does not exist"
+		ewarn "Falling back to bundled header file"
+	fi
 	cmake_src_prepare
 }
 
