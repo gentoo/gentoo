@@ -23,11 +23,11 @@ IUSE="caps systemd tcpd"
 RDEPEND="caps? ( sys-libs/libcap )
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	>=dev-libs/libconfig-1.5:="
+	>=dev-libs/libconfig-1.5:=
+	dev-libs/libpcre2:="
 DEPEND="${RDEPEND}
 	dev-util/conf2struct
-	dev-lang/perl
-	dev-libs/libpcre2:="
+	dev-lang/perl"
 
 RESTRICT="test"
 
