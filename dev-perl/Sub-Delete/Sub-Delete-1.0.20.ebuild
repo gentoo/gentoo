@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Perl module enabling one to delete subroutines"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 ~riscv ~x86 ~x64-macos"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0
