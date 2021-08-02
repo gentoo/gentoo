@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
+
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python-powered template engine and code generator"
@@ -21,6 +21,10 @@ RDEPEND="
 BDEPEND="${RDEPEND}"
 
 DOCS=( ANNOUNCE.rst README.rst TODO )
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-py3.10-tests.patch"
+)
 
 python_prepare_all() {
 	# Disable broken tests.
