@@ -11,5 +11,6 @@ are its principle user group, but it has many potential uses and is also being
 used to generate C++ game code, Java, SQL, form emails, and even Python code.</longdescription>
 	<upstream>
 		<remote-id type="pypi">Cheetah3</remote-id>
+		<remote-id type="github">CheetahTemplate3/cheetah3</remote-id>
 	</upstream>
 </pkgmetadata>
