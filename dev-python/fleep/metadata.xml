@@ -8,6 +8,7 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">fleep</remote-id>
 	</upstream>
