@@ -9,7 +9,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/PointCloudLibrary/pcl"
 fi
 
-inherit ${SCM} cmake-utils multilib
+inherit ${SCM} cmake multilib
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
@@ -79,5 +79,5 @@ src_configure() {
 		"-DWITH_TUTORIALS=$(usex tutorials TRUE FALSE)"
 		"-DBUILD_TESTS=$(usex test TRUE FALSE)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
