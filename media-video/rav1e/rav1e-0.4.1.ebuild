@@ -272,7 +272,7 @@ else
 		https://github.com/xiph/rav1e/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		$(cargo_crate_uris ${CRATES})
 		"
-	KEYWORDS="amd64 arm arm64 ppc64 x86"
+	KEYWORDS="amd64 arm arm64 ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="The fastest and safest AV1 encoder"
@@ -319,7 +319,7 @@ src_install() {
 
 	if use capi; then
 		cargo cinstall $args --target-dir="capi" \
-			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED%/}" \
+			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
 			|| die "cargo cinstall failed"
 	fi
 
