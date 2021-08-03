@@ -31,3 +31,5 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}/tests.patch" )
