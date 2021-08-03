@@ -35,7 +35,7 @@ RDEPEND="
 	audit? ( >=sys-process/audit-2.6:= )
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
-	cryptsetup? ( sys-fs/cryptsetup )
+	cryptsetup? ( >=sys-fs/cryptsetup-2.1.0 )
 	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? (
 		sys-libs/ncurses:=[unicode(+)?]
