@@ -127,7 +127,7 @@ src_install() {
 	# These files are copied into doc
 	rm -r "${DOCS[@]}" "${HTML_DOCS[@]}" || die
 	# The program expects to find documentation here, so add a symlink to doc
-	dosym "${doc}/html/help" help
+	dosym "${doc}/html/help" /opt/hydrus/help
 
 	insinto /opt/hydrus
 	doins -r "${S}"/.
