@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,12 +30,10 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	)"
-PATCHES=( "${FILESDIR}/py3.patch" )
 
 src_prepare() {
 	ros-catkin_src_prepare
 	sed -e 's/yaml.load/yaml.safe_load/g' -i src/*/*.py -i test/*.py || die
-	2to3 -w src/*/*.py src/*/*/*.py test/*.py || die
 }
 
 src_test() {
