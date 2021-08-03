@@ -55,7 +55,7 @@ run_emake() {
 }
 
 src_configure() {
-	tc-export AR CC RANLIB
+	tc-export AR CC OBJCOPY RANLIB
 	tc-export_build_env BUILD_CC
 	multilib-minimal_src_configure
 }
