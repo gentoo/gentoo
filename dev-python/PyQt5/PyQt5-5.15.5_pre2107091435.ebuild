@@ -127,9 +127,9 @@ src_configure() {
 			--qmake="$(qt5_get_bindir)"/qmake
 			--no-make
 			$(usev debug '--debug --qml-debug --tracing')
-			--enable=QtCore
-			--enable=QtXml
+			--enable=Qt
 			$(pyqt_use_enable bluetooth)
+			--enable=QtCore
 			$(pyqt_use_enable dbus QtDBus)
 			$(usex dbus '' --no-dbus-python)
 			$(pyqt_use_enable declarative QtQml QtQuick $(usev widgets QtQuickWidgets))
@@ -155,7 +155,10 @@ src_configure() {
 			$(pyqt_use_enable websockets QtWebSockets)
 			$(pyqt_use_enable widgets)
 			$(pyqt_use_enable x11extras QtX11Extras)
+			--enable=QtXml
 			$(pyqt_use_enable xmlpatterns QtXmlPatterns)
+			--enable=pylupdate
+			--enable=pyrcc
 		)
 		echo "${myconf[@]}"
 		"${myconf[@]}" || die
