@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Do interesting things with the contents of tables"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND="
