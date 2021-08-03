@@ -42,24 +42,27 @@ diff --git a/Make.Rules b/Make.Rules
 index 8f7906c..fea4c78 100644
 --- a/Make.Rules
 +++ b/Make.Rules
-@@ -52,7 +52,6 @@ GOMAJOR=1
+@@ -52,18 +52,13 @@ GOMAJOR=1
  # Compilation specifics
  
  KERNEL_HEADERS := $(topdir)/libcap/include/uapi
 -IPATH += -fPIC -I$(KERNEL_HEADERS) -I$(topdir)/libcap/include
  
- CC := $(CROSS_COMPILE)gcc
+-CC := $(CROSS_COMPILE)gcc
  DEFINES := -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
-@@ -60,7 +59,7 @@ COPTS ?= -O2
+ COPTS ?= -O2
  CFLAGS ?= $(COPTS) $(DEFINES)
  BUILD_CC ?= $(CC)
  BUILD_COPTS ?= -O2
 -BUILD_CFLAGS ?= $(BUILD_COPTS) $(DEFINES) $(IPATH)
+-AR := $(CROSS_COMPILE)ar
+-RANLIB := $(CROSS_COMPILE)ranlib
+-OBJCOPY := $(CROSS_COMPILE)objcopy
 +BUILD_CFLAGS ?= $(CFLAGS)
- AR := $(CROSS_COMPILE)ar
- RANLIB := $(CROSS_COMPILE)ranlib
- OBJCOPY := $(CROSS_COMPILE)objcopy
-@@ -77,10 +76,13 @@ LIBPSXLIB := -L$(topdir)/libcap -lpsx $(PSXLINKFLAGS)
+ DEBUG = -g #-DDEBUG
+ WARNINGS=-Wall -Wwrite-strings \
+         -Wpointer-arith -Wcast-qual -Wcast-align \
+@@ -77,10 +72,13 @@
  
  BUILD_GPERF := $(shell which gperf >/dev/null 2>/dev/null && echo yes)
  

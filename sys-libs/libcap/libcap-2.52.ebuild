@@ -47,9 +47,6 @@ run_emake() {
 		PAM_CAP="$(usex pam yes no)"
 		DYNAMIC=yes
 		GOLANG=no
-		CC="$(tc-getCC)"
-		AR="$(tc-getAR)"
-		RANLIB="$(tc-getRANLIB)"
 	)
 	emake "${args[@]}" "$@"
 }
