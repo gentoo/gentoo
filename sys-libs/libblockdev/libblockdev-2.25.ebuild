@@ -19,7 +19,7 @@ else
 	#MY_P="${PN}-${MY_PV}"
 	#SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 	SRC_URI="https://github.com/storaged-project/${PN}/releases/download/${MY_PV}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~riscv sparc x86"
 	#S="${WORKDIR}/${MY_P}"
 fi
 LICENSE="LGPL-2+"
