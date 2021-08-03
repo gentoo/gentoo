@@ -1,0 +1,38 @@
+From dfc063a4d1f174cd5f84b82154a58b86da334d35 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=96mer=20Fad=C4=B1l=20Usta?= <omerusta@gmail.com>
+Date: Tue, 18 May 2021 15:15:26 +0000
+Subject: [PATCH] Fix tests with new ecm sytle
+
+---
+ CMakeLists.txt                        | 2 ++
+ plugins/ipfilter/tests/CMakeLists.txt | 7 ++-----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0f67a93..edc64983 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,6 +17,8 @@ set (KF5_MIN_VERSION "5.82")
+ set (LIBKTORRENT_MIN_VERSION "20.11.70")
+ set (Boost_MIN_VERSION "1.71.0")
+ 
++cmake_policy(SET CMP0115 OLD)
++
+ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH})
+ 
+diff --git a/plugins/ipfilter/tests/CMakeLists.txt b/plugins/ipfilter/tests/CMakeLists.txt
+index ec839aac..6c34b2d0 100644
+--- a/plugins/ipfilter/tests/CMakeLists.txt
++++ b/plugins/ipfilter/tests/CMakeLists.txt
+@@ -1,5 +1,2 @@
+-set(ipblocklisttest_SRCS ipblocklisttest.cpp ../ipblocklist.cpp)
+-add_executable(ipblocklisttest ${ipblocklisttest_SRCS})
+-add_test(ipblocklisttest ipblocklisttest)
+-ecm_mark_as_test(ipblocklisttest)
+-target_link_libraries(ipblocklisttest Qt5::Core Qt5::Network Qt5::Test ktcore)
++include(ECMAddTests)
++ecm_add_test(ipblocklisttest.cpp ../ipblocklist.cpp TEST_NAME ipblocklisttest LINK_LIBRARIES ktcore Qt5::Core Qt5::Network KF5::Torrent  Qt5::Test)
+-- 
+GitLab
+
