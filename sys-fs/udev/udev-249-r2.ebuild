@@ -49,7 +49,10 @@ BDEPEND="
 	dev-libs/libxslt
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
-	test? ( app-text/tree )
+	test? (
+		app-text/tree
+		dev-lang/perl
+	)
 "
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
@@ -199,13 +202,8 @@ multilib_src_test() {
 	# udev calls 'mknod' a number of times, and this interacts
 	# badly with kernel namespaces.
 
-	if has userpriv ${FEATURES}; then
-		ewarn "\'FEATURES=userpriv\' detected"
+	if [[ ${EUID} -ne 0 ]]; then
 		ewarn "udev tests need to run under uid 0"
-		ewarn "Skipping tests"
-	elif has usersandbox ${FEATURES}; then
-		ewarn "\'FEATURES=usersandbox\' detected"
-		ewarn "udev tests needs full access to /dev"
 		ewarn "Skipping tests"
 	elif has sandbox ${FEATURES}; then
 		ewarn "\'FEATURES=sandbox\' detected"

@@ -7,7 +7,7 @@ inherit acct-user
 
 DESCRIPTION="A user for www-apps/karma-bin"
 
-ACCT_user_ID=118
+ACCT_USER_ID=118
 ACCT_USER_GROUPS=( karma )
 
 acct-user_add_deps

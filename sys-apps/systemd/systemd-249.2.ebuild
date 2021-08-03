@@ -145,7 +145,11 @@ BDEPEND="
 	>=sys-apps/coreutils-8.16
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( sys-apps/dbus )
+	test? (
+		app-text/tree
+		dev-lang/perl
+		sys-apps/dbus
+	)
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets

@@ -78,10 +78,7 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-build_libcxxabi() {
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/libcxxabi
-	local BUILD_DIR=${BUILD_DIR}/libcxxabi
+wrap_libcxxabi() {
 	local mycmakeargs=(
 		-DLIBCXXABI_LIBDIR_SUFFIX=
 		-DLIBCXXABI_ENABLE_SHARED=OFF
@@ -89,18 +86,18 @@ build_libcxxabi() {
 		-DLIBCXXABI_USE_LLVM_UNWINDER=ON
 		-DLIBCXXABI_INCLUDE_TESTS=OFF
 
-		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
+		-DLIBCXXABI_LIBCXX_INCLUDES="${BUILD_DIR}"/libcxx/include/c++/v1
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${S}"/include
 	)
 
-	cmake_src_configure
-	cmake_src_compile
+	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
+	local CMAKE_USE_DIR=${WORKDIR}/libcxxabi
+	local BUILD_DIR=${BUILD_DIR}/libcxxabi
+
+	"${@}"
 }
 
-build_libcxx() {
-	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
-	local CMAKE_USE_DIR=${WORKDIR}/libcxx
-	local BUILD_DIR=${BUILD_DIR}/libcxx
+wrap_libcxx() {
 	local mycmakeargs=(
 		-DLIBCXX_LIBDIR_SUFFIX=
 		-DLIBCXX_ENABLE_SHARED=OFF
@@ -115,15 +112,21 @@ build_libcxx() {
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
 
-	cmake_src_configure
-	cmake_src_compile
+	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/libcxxabi/lib -L${BUILD_DIR}/$(get_libdir)"
+	local CMAKE_USE_DIR=${WORKDIR}/libcxx
+	local BUILD_DIR=${BUILD_DIR}/libcxx
+
+	"${@}"
 }
 
 multilib_src_test() {
 	# build local copies of libc++ & libc++abi for testing to avoid
 	# circular deps
-	build_libcxxabi
-	build_libcxx
+	wrap_libcxx cmake_src_configure
+	wrap_libcxx cmake_build generate-cxx-headers
+	wrap_libcxxabi cmake_src_configure
+	wrap_libcxxabi cmake_src_compile
+	wrap_libcxx cmake_src_compile
 	mv "${BUILD_DIR}"/libcxx*/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	local -x LIT_PRESERVES_TMP=1
