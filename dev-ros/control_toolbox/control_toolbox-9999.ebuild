@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/roscpp
-	dev-ros/dynamic_reconfigure
+	dev-ros/dynamic_reconfigure[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/realtime_tools
 	dev-libs/boost:=[threads(+)]
 	dev-libs/tinyxml

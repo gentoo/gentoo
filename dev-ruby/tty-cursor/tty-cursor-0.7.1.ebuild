@@ -19,7 +19,7 @@ SRC_URI="https://github.com/piotrmurach/tty-cursor/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE=""
 
 all_ruby_prepare() {

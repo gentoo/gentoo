@@ -21,6 +21,7 @@ DEPEND="
 	dev-ros/tf
 	dev-ros/tf2
 	dev-ros/tf2_bullet
+	dev-ros/tf2_eigen
 	dev-ros/tf2_ros[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_geometry_msgs[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/tf2_kdl[${PYTHON_SINGLE_USEDEP}]

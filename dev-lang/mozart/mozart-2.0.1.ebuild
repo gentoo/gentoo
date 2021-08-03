@@ -5,7 +5,7 @@ EAPI=7
 
 inherit cmake elisp-common java-pkg-2 java-ant-2
 
-PATCHSET_VER="1"
+PATCHSET_VER="2"
 
 DESCRIPTION="Advanced development platform for intelligent, distributed applications"
 HOMEPAGE="http://mozart2.org/"
