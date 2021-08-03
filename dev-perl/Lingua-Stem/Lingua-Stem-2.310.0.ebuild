@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Stemming of words"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="dev-perl/Snowball-Norwegian
