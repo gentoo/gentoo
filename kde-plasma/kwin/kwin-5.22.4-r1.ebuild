@@ -15,7 +15,7 @@ DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="accessibility caps gles2-only multimedia plasma screencast"
 
 RESTRICT+=" test"
@@ -25,8 +25,7 @@ COMMON_DEPEND="
 	>=dev-libs/wayland-1.2
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5=[gles2-only=]
-	>=dev-qt/qtscript-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5=[gles2-only=,libinput]
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-frameworks/kactivities-${KFMIN}:5
@@ -61,7 +60,7 @@ COMMON_DEPEND="
 	media-libs/freetype
 	media-libs/lcms:2
 	media-libs/libepoxy
-	media-libs/mesa[egl,gbm,wayland,X(+)]
+	media-libs/mesa[egl(+),gbm(+),wayland,X(+)]
 	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libXi
@@ -85,6 +84,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtvirtualkeyboard-${QTMIN}:5
 	>=kde-frameworks/kirigami-${KFMIN}:5
 	>=kde-frameworks/kitemmodels-${KFMIN}:5[qml]
+	|| (
+		x11-base/xwayland
+		x11-base/xorg-server[wayland(-)]
+	)
 	multimedia? ( >=dev-qt/qtmultimedia-${QTMIN}:5[gstreamer,qml] )
 "
 DEPEND="${COMMON_DEPEND}
@@ -102,7 +105,7 @@ PDEPEND="
 
 src_prepare() {
 	ecm_src_prepare
-	use multimedia || eapply "${FILESDIR}/${PN}-5.16.80-gstreamer-optional.patch"
+	use multimedia || eapply "${FILESDIR}/${PN}-5.21.80-gstreamer-optional.patch"
 
 	# TODO: try to get a build switch upstreamed
 	if ! use screencast; then
