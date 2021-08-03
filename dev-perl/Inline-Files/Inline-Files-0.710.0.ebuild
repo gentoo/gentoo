@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Multiple virtual files in a single file"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~x86"
+KEYWORDS="~alpha amd64 ppc x86"
 RESTRICT="!test? ( test )"
 
 RDEPEND=""
