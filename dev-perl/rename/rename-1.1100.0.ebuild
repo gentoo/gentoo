@@ -11,7 +11,7 @@ DESCRIPTION="A filename renaming utility based on perl regular expression"
 
 HOMEPAGE="https://metacpan.org/source/PEDERST/rename-1.11"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 src_install() {
