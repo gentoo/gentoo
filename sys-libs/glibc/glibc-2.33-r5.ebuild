@@ -97,7 +97,7 @@ fi
 
 BDEPEND="
 	${PYTHON_DEPS}
-	>=app-misc/pax-utils-0.1.10
+	>=app-misc/pax-utils-1.3.3
 	sys-devel/bison
 	doc? ( sys-apps/texinfo )
 	!compile-locales? (
@@ -115,7 +115,6 @@ COMMON_DEPEND="
 	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
 	systemtap? ( dev-util/systemtap )
-	!<net-misc/openssh-8.1_p1-r2
 "
 DEPEND="${COMMON_DEPEND}
 	compile-locales? (
@@ -130,6 +129,8 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/grep
 	virtual/awk
 	sys-apps/gentoo-functions
+	!<app-misc/pax-utils-1.3.3
+	!<net-misc/openssh-8.1_p1-r2
 "
 
 RESTRICT="!test? ( test )"
