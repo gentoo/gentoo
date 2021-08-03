@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic libtool linux-info udev
+inherit autotools flag-o-matic linux-info udev
 
 DESCRIPTION="An interface for filesystems implemented in userspace"
 HOMEPAGE="https://github.com/libfuse/libfuse"
@@ -18,6 +18,12 @@ PDEPEND="kernel_FreeBSD? ( sys-fs/fuse4bsd )"
 BDEPEND="virtual/pkgconfig"
 RDEPEND=">=sys-fs/fuse-common-3.3.0-r1"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.3-kernel-types.patch
+	"${FILESDIR}"/${PN}-2.9.9-avoid-calling-umount.patch
+	"${FILESDIR}"/${PN}-2.9.9-closefrom-glibc-2-34.patch
+)
+
 pkg_setup() {
 	if use kernel_linux ; then
 		if kernel_is lt 2 6 9 ; then
@@ -30,21 +36,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}"/${PN}-2.9.3-kernel-types.patch )
-	# sandbox violation with mtab writability wrt #438250
-	# don't sed configure.in without eautoreconf because of maintainer mode
-	sed -i 's:umount --fake:true --fake:' configure || die
-	elibtoolize
+	default
 
+	eautoreconf
+}
+
+src_configure() {
 	# lto not supported yet -- https://github.com/libfuse/libfuse/issues/198
 	# gcc-9 with -flto leads to link failures: #663518,
 	# https://gcc.gnu.org/PR91186
 	filter-flags -flto*
 
-	default
-}
-
-src_configure() {
 	econf \
 		INIT_D_PATH="${EPREFIX}/etc/init.d" \
 		MOUNT_FUSE_PATH="${EPREFIX}/sbin" \
