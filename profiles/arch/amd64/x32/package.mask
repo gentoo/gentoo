@@ -22,6 +22,7 @@ app-office/texmaker
 app-text/bibletime
 app-text/calibre
 app-text/cb2bib
+app-text/kchmviewer
 app-text/sigil
 dev-lang/typescript
 dev-python/spyder
