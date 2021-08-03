@@ -199,13 +199,8 @@ multilib_src_test() {
 	# udev calls 'mknod' a number of times, and this interacts
 	# badly with kernel namespaces.
 
-	if has userpriv ${FEATURES}; then
-		ewarn "\'FEATURES=userpriv\' detected"
+	if [[ ${EUID} -ne 0 ]]; then
 		ewarn "udev tests need to run under uid 0"
-		ewarn "Skipping tests"
-	elif has usersandbox ${FEATURES}; then
-		ewarn "\'FEATURES=usersandbox\' detected"
-		ewarn "udev tests needs full access to /dev"
 		ewarn "Skipping tests"
 	elif has sandbox ${FEATURES}; then
 		ewarn "\'FEATURES=sandbox\' detected"
