@@ -34,7 +34,7 @@ BDEPEND="
 
 DOCS=( CREDITS.TXT )
 
-LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake/modules,utils/llvm-lit} )
+LLVM_COMPONENTS=( libcxx{,abi} llvm/{cmake,utils/llvm-lit} )
 LLVM_PATCHSET=9999-1
 llvm.org_set_globals
 
