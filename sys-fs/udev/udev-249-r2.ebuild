@@ -49,7 +49,10 @@ BDEPEND="
 	dev-libs/libxslt
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
-	test? ( app-text/tree )
+	test? (
+		app-text/tree
+		dev-lang/perl
+	)
 "
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
