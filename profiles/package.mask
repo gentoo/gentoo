@@ -187,7 +187,7 @@ www-servers/resin
 dev-ml/cstruct
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# No gtk4 and friends in the tree yet
+# No dev-cpp/gtkmm:4 in the tree yet (Bug #801490)
 >=media-sound/easyeffects-6.0.0
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-18)
