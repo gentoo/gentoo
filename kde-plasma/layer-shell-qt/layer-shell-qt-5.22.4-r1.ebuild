@@ -22,7 +22,7 @@ RDEPEND="
 	x11-libs/libxkbcommon
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/plasma-wayland-protocols-1.1.1
+	dev-libs/wayland-protocols
 "
 BDEPEND="
 	dev-util/wayland-scanner
