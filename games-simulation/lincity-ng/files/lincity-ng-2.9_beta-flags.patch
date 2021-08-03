@@ -1,0 +1,10 @@
+--- a/Jamrules
++++ b/Jamrules
+@@ -23,5 +23,4 @@
+     case optimize :
+-        CFLAGS += -O3 -g -Wall ;
+-        CXXFLAGS += -O3 -g -Wall ;
+-        LIBS += -g ;
++        CFLAGS += -Wall ;
++        CXXFLAGS += -Wall ;
+     case debug :
