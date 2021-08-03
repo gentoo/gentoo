@@ -76,8 +76,9 @@ PATCHES=(
 	"${FILESDIR}/tdesktop-2.8.9-disable-webkit-separately.patch"
 	# Not a proper fix, not upstreamed
 	"${FILESDIR}/tdesktop-2.8.9-webview-fix-glib.patch"
-	# Not upstreamed (yet)
 	"${FILESDIR}/tdesktop-2.8.10-jemalloc-only-telegram.patch"
+	# Already upstream
+	"${FILESDIR}/tdesktop-2.8.11-load-gtk-with-qlibrary.patch"
 )
 
 pkg_pretend() {
