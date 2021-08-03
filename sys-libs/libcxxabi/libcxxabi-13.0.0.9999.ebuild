@@ -31,7 +31,6 @@ BDEPEND="
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)"
 
-# libcxx is needed uncondtionally for the headers
 LLVM_COMPONENTS=( libcxx{abi,} llvm/cmake )
 llvm.org_set_globals
 
@@ -49,6 +48,11 @@ pkg_setup() {
 }
 
 multilib_src_configure() {
+	# we need a configured libc++ for __config_site
+	wrap_libcxx cmake_src_configure
+	cp -R "${WORKDIR}"/libcxx/include/. \
+		"${BUILD_DIR}"/libcxx/include/c++/v1 || die
+
 	# link against compiler-rt instead of libgcc if we are using clang with libunwind
 	local want_compiler_rt=OFF
 	if use libunwind && tc-is-clang; then
@@ -68,7 +72,7 @@ multilib_src_configure() {
 		-DLIBCXXABI_INCLUDE_TESTS=$(usex test)
 		-DLIBCXXABI_USE_COMPILER_RT=${want_compiler_rt}
 
-		-DLIBCXXABI_LIBCXX_INCLUDES="${WORKDIR}"/libcxx/include
+		-DLIBCXXABI_LIBCXX_INCLUDES="${BUILD_DIR}"/libcxx/include/c++/v1
 		# upstream is omitting standard search path for this
 		# probably because gcc & clang are bundling their own unwind.h
 		-DLIBCXXABI_LIBUNWIND_INCLUDES="${EPREFIX}"/usr/include
@@ -86,7 +90,7 @@ multilib_src_configure() {
 	cmake_src_configure
 }
 
-build_libcxx() {
+wrap_libcxx() {
 	local -x LDFLAGS="${LDFLAGS} -L${BUILD_DIR}/$(get_libdir)"
 	local CMAKE_USE_DIR=${WORKDIR}/libcxx
 	local BUILD_DIR=${BUILD_DIR}/libcxx
@@ -103,13 +107,11 @@ build_libcxx() {
 		-DLIBCXX_INCLUDE_TESTS=OFF
 	)
 
-	cmake_src_configure
-	cmake_src_compile
+	"${@}"
 }
 
 multilib_src_test() {
-	# build a local copy of libc++ for testing to avoid circular dep
-	build_libcxx
+	wrap_libcxx cmake_src_compile
 	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
 	local -x LIT_PRESERVES_TMP=1
