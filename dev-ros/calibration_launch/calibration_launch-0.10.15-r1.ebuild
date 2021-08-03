@@ -22,3 +22,4 @@ RDEPEND="
 	dev-ros/roslaunch
 	dev-libs/urdfdom
 "
+PATCHES=( "${FILESDIR}/py3.patch" )
