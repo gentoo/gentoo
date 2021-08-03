@@ -31,15 +31,13 @@ python_prepare_all() {
 
 python_configure() {
 	cd Source || die
-	# all config options from 1.7.6 are all already set
-	esetup.py configure
+	CC="$(tc-getCC)" CCC="$(tc-getCXX)" \
+		esetup.py configure
 }
 
 python_compile() {
 	cd Source || die
-	emake \
-		CC="$(tc-getCC)" \
-		CCC="$(tc-getCXX)"
+	emake
 }
 
 python_test() {
