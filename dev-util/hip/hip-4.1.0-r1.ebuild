@@ -17,8 +17,8 @@ IUSE="debug profile"
 # Don't strip to prevent some tests from failing.
 RESTRICT="strip"
 
-DEPEND=">=dev-libs/rocclr-$(ver_cut 1-2)
-	>=dev-util/rocminfo-$(ver_cut 1-2)
+DEPEND="dev-libs/rocclr:${SLOT}
+	dev-util/rocminfo:${SLOT}
 	=sys-devel/llvm-roc-${PV}*[runtime]"
 RDEPEND="${DEPEND}"
 
@@ -35,8 +35,8 @@ src_prepare() {
 	cmake_src_prepare
 	eapply_user
 
-	# Use Gentoo version number, otherwise git hash is attempted in vain.
-	sed -e "/set (HIP_LIB_VERSION_STRING/cset (HIP_LIB_VERSION_STRING ${PVR})" -i CMakeLists.txt || die
+	# Use Gentoo slot number, otherwise git hash is attempted in vain.
+	sed -e "/set (HIP_LIB_VERSION_STRING/cset (HIP_LIB_VERSION_STRING ${SLOT#*/})" -i CMakeLists.txt || die
 
 	# disable PCH, because it results in a build error in ROCm 4.0.0
 	sed -e "s:option(__HIP_ENABLE_PCH:#option(__HIP_ENABLE_PCH:" -i CMakeLists.txt || die
@@ -58,7 +58,7 @@ src_prepare() {
 	einfo "prefixing hipcc and its utils..."
 	hprefixify $(grep -rl --exclude-dir=build/ "/usr" "${S}")
 
-	cp "${FILESDIR}"/hipvars.pm bin/ || die "failed to replace hipvars.pm"
+	cp "$(prefixify_ro "${FILESDIR}"/hipvars.pm)" bin/ || die "failed to replace hipvars.pm"
 }
 
 src_configure() {
