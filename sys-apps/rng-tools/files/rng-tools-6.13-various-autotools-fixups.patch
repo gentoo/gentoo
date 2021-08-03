@@ -1,4 +1,5 @@
 https://github.com/nhorman/rng-tools/pull/132
+https://github.com/nhorman/rng-tools/pull/143
 
 From 16b728f9a5bb138386fa770de817ec244a158be5 Mon Sep 17 00:00:00 2001
 From: David Seifert <soap@gentoo.org>
@@ -76,3 +77,27 @@ Subject: [PATCH 3/3] `AC_CANONICAL_TARGET` -> `AC_CANONICAL_HOST`
  AM_CONDITIONAL([JITTER], [false])
  
  AC_ARG_ENABLE(jitterentropy,
+From 800d7c6e23f0a04bd893ee748a74b622657017a9 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Sun, 1 Aug 2021 13:16:16 +0200
+Subject: [PATCH] configure.ac: Add missing `test`
+
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 0fe06fc..7c8e327 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,8 +68,8 @@ AC_PROG_GCC_TRADITIONAL
+ 
+ AX_PTHREAD
+ 
+-AM_CONDITIONAL([RDRAND], [test $host_cpu = x86_64 || $host_cpu = i686])
+-AS_IF([test $host_cpu = x86_64 || $host_cpu = i686], [AC_DEFINE([HAVE_RDRAND],1,[Enable RDRAND])],[])
++AM_CONDITIONAL([RDRAND], [test $host_cpu = x86_64 || test $host_cpu = i686])
++AS_IF([test $host_cpu = x86_64 || test $host_cpu = i686], [AC_DEFINE([HAVE_RDRAND],1,[Enable RDRAND])],[])
+ 
+ AM_CONDITIONAL([DARN], [test $host_cpu = powerpc64le])
+ AS_IF([test $host_cpu = powerpc64le], [AC_DEFINE([HAVE_DARN],1,[Enable DARN])],[])
