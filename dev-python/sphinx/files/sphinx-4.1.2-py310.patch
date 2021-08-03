@@ -1,0 +1,63 @@
+From 1fd5f746539d3e02886032fae8d53af0c2f6ecdd Mon Sep 17 00:00:00 2001
+From: Takeshi KOMIYA <i.tkomiya@gmail.com>
+Date: Fri, 30 Jul 2021 01:27:38 +0900
+Subject: [PATCH] Fix #9512: sphinx-build: crashed with the HEAD of Python 3.10
+
+Recently, `types.Union` was renamed to `types.UnionType` on the HEAD
+of 3.10 (refs: python/cpython#27342). After this change, sphinx-build
+has been crashed because of ImportError.
+---
+ CHANGES               |  2 ++
+ sphinx/util/typing.py | 12 ++++++------
+ 2 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/CHANGES b/CHANGES
+index a643bfe841..70eb8db93a 100644
+--- a/CHANGES
++++ b/CHANGES
+@@ -16,6 +16,8 @@ Features added
+ Bugs fixed
+ ----------
+ 
++* #9512: sphinx-build: crashed with the HEAD of Python 3.10
++
+ Testing
+ --------
+ 
+diff --git a/sphinx/util/typing.py b/sphinx/util/typing.py
+index f1723c035a..012d32e524 100644
+--- a/sphinx/util/typing.py
++++ b/sphinx/util/typing.py
+@@ -33,10 +33,10 @@ def _evaluate(self, globalns: Dict, localns: Dict) -> Any:
+             ref = _ForwardRef(self.arg)
+             return ref._eval_type(globalns, localns)
+ 
+-if sys.version_info > (3, 10):
+-    from types import Union as types_Union
+-else:
+-    types_Union = None
++try:
++    from types import UnionType  # type: ignore  # python 3.10 or above
++except ImportError:
++    UnionType = None
+ 
+ if False:
+     # For type annotation
+@@ -114,7 +114,7 @@ def restify(cls: Optional[Type]) -> str:
+             return ':class:`%s`' % INVALID_BUILTIN_CLASSES[cls]
+         elif inspect.isNewType(cls):
+             return ':class:`%s`' % cls.__name__
+-        elif types_Union and isinstance(cls, types_Union):
++        elif UnionType and isinstance(cls, UnionType):
+             if len(cls.__args__) > 1 and None in cls.__args__:
+                 args = ' | '.join(restify(a) for a in cls.__args__ if a)
+                 return 'Optional[%s]' % args
+@@ -337,7 +337,7 @@ def _stringify_py37(annotation: Any) -> str:
+     elif hasattr(annotation, '__origin__'):
+         # instantiated generic provided by a user
+         qualname = stringify(annotation.__origin__)
+-    elif types_Union and isinstance(annotation, types_Union):  # types.Union (for py3.10+)
++    elif UnionType and isinstance(annotation, UnionType):  # types.Union (for py3.10+)
+         qualname = 'types.Union'
+     else:
+         # we weren't able to extract the base type, appending arguments would
