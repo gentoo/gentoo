@@ -159,7 +159,7 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	projectm? (
 		media-fonts/dejavu
-		media-libs/libprojectm:0=
+		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? (
