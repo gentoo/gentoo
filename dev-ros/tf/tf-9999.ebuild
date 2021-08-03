@@ -25,6 +25,7 @@ RDEPEND="
 	dev-ros/rospy[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/roslib[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/rospkg[\${PYTHON_USEDEP}]")
+	$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
 "
