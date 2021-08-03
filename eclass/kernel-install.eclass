@@ -388,11 +388,23 @@ kernel-install_src_test() {
 
 # @FUNCTION: kernel-install_pkg_preinst
 # @DESCRIPTION:
-# Stub out mount-boot.eclass.
+# Verify whether the kernel has been installed correctly.
 kernel-install_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	# (no-op)
+	local ver="${PV}${KV_LOCALVERSION}"
+	local kdir="${ED}/usr/src/linux-${ver}"
+	local relfile="${kdir}/include/config/kernel.release"
+	[[ ! -d ${kdir} ]] && die "Kernel directory ${kdir} not installed!"
+	[[ ! -f ${relfile} ]] && die "Release file ${relfile} not installed!"
+	local release="$(<"${relfile}")"
+	if [[ ${release} != ${PV}* ]]; then
+		eerror "Kernel release mismatch!"
+		eerror "  expected (PV): ${PV}*"
+		eerror "          found: ${release}"
+		eerror "Please verify that you are applying the correct patches."
+		die "Kernel release mismatch (${release} instead of ${PV}*)"
+	fi
 }
 
 # @FUNCTION: kernel-install_install_all

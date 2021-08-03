@@ -34,7 +34,7 @@ RDEPEND="
 	audit? ( >=sys-process/audit-2.6:= )
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
-	cryptsetup? ( sys-fs/cryptsetup )
+	cryptsetup? ( >=sys-fs/cryptsetup-2.1.0 )
 	hardlink? ( dev-libs/libpcre2:= )
 	ncurses? (
 		sys-libs/ncurses:=[unicode(+)?]
@@ -85,6 +85,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.37.1-lscpu_nullptr.patch
+)
 
 src_prepare() {
 	default

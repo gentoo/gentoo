@@ -94,14 +94,5 @@ pkg_postinst() {
 	elog ""
 	elog "Sample config file in /etc/pdnsd/pdnsd.conf.sample"
 
-	# The tmpfiles.d configuration does not come into effect before the
-	# next reboot so create the cachedir now.
-	local cachedir="${EPREFIX}/var/cache/pdnsd"
-	if [[ ! -d "${cachedir}" ]] ; then
-		mkdir "${cachedir}" || eerror "Failed to create cache"
-	fi
-	chown pdnsd:pdnsd "${cachedir}" \
-		|| eerror "Failed to set ownership for cachedir"
-	chmod 0750 "${cachedir}" \
-		|| eerror "Failed to set permissions for cachedir"
+	tmpfiles_process pdnsd.conf
 }

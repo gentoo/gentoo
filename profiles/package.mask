@@ -32,6 +32,159 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
+# Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
+# for good. No commits to upstream repository for >9 months, latest available
+# tarball still "alpha" with warning about known unpatched vulnerabilities.
+# Bugs: #684580, #685750, #709858, #740416
+dev-qt/qtwebkit:5
+app-text/fb2edit
+mail-client/trojita
+<media-video/openshot-2.5.1_p20210228
+
+# Sam James <sam@gentoo.org> (2021-08-01)
+# Broken with GCC 11, out of date, unmaintained in Gentoo.
+# bug #763651, bug #774009, bug #789027, bug #759988.
+# Removal on 2021-09-01.
+dev-util/intel-graphics-compiler
+dev-libs/intel-neo
+
+# Sam James <sam@gentoo.org> (2021-08-01)
+# Fails to compile, multiple open bugs.
+# No activity upstream since 2015.
+# bug #570484, bug #715412, bug #723204.
+# Removal on 2021-09-01.
+sys-apps/lmctfy
+
+# Sam James <sam@gentoo.org> (2021-08-01)
+# Fails to build with network-sandbox and variety
+# of other open bugs. Unmaintained.
+# bug #632638, bug #688530, bug #709992, bug #757768,
+# bug #796920. Removal on 2021-09-01.
+sys-apps/habitat
+
+# David Seifert <soap@gentoo.org> (2021-08-01)
+# Dropped into ::gentoo, then unmaintained. Multiple versions behind
+# upstream, GCC 11 bug open, lacks python 3.10, python library without
+# revdeps. Bug #790137, #792870, removal in 30 days.
+sci-libs/sktime
+
+# David Seifert <soap@gentoo.org> (2021-08-01)
+# Last release 10 years ago, EOL upstream, no other distro packages this
+# anymore, tons of bugs. Revdeps are unmaintained too and out of date.
+# Bug #798015, removal in 30 days.
+sci-biology/ncbi-tools
+sci-biology/njplot
+sci-biology/psipred
+sci-chemistry/mars
+sci-libs/rosetta-fragments
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-31)
+# Obsolete; all versions in current Perl core distributions
+# are newer, and no virtuals currently pull these packages.
+# Removal in 30 days.
+perl-core/ExtUtils-MakeMaker
+perl-core/ExtUtils-Manifest
+perl-core/File-Path
+perl-core/Getopt-Long
+perl-core/HTTP-Tiny
+perl-core/JSON-PP
+perl-core/libnet
+
+# David Seifert <soap@gentoo.org> (2021-07-30)
+# games-engines/renpy has been gone for 6 months, the
+# eselect module has no use anymore and the ebuild has
+# QA issues. Bug #805275, removal in 30 days.
+app-eselect/eselect-renpy
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2021-07-30)
+# these libs have no consumers, removal in 30 days
+# see bug: https://bugs.gentoo.org/805152
+dev-java/jgoodies-animation
+dev-java/jgoodies-binding
+dev-java/jgoodies-forms
+
+# Joonas Niilola <juippis@gentoo.org> (2021-07-29)
+# Upstream provided migration instructions from 2. -> 3. update,
+# breaks if not all at least many revdeps. #805011 for tracker bug.
+>=net-libs/mbedtls-3.0.0
+
+# Sam James <sam@gentoo.org> (2021-07-26)
+# Fails to build with GCC 11. No activity upstream.
+# Removal on 2021-08-26. bug #740536, bug #624746.
+media-sound/tapestrea
+
+# Sam James <sam@gentoo.org> (2021-07-26)
+# Rather out of date, several open bugs, fails to build with GCC 11.
+# Removal in 2021-08-26.
+# bug #793020, bug #692976, bug #741600, bug #703948, bug #674334.
+sci-misc/tango
+
+# Sam James <sam@gentoo.org> (2021-07-26)
+# Fails to build with GCC 11.
+# Removal on 2021-08-26. bug #788577.
+net-im/minbif
+
+# Sam James <sam@gentoo.org> (2021-07-26)
+# No activity upstream. No reverse dependencies (library).
+# Fails to build with GCC 11.
+# Removal on 2021-08-26. bug #787113, bug #735714, bug #657510.
+dev-cpp/libxsd-frontend
+dev-cpp/libcutl
+dev-util/build
+
+# John Helmert III <ajak@gentoo.org> (2021-07-26)
+# Open security bug, service backing it seems to be dead, making these
+# packages useless. Old EAPIs. Removal on 2021-08-26. Bug #630814
+app-portage/getdelta
+app-portage/deltup
+
+# John Helmert III <ajak@gentoo.org> (2021-07-26)
+# Maintained needed, open security bug, uninterested upstream.
+# No revdeps. Removal on 2021-08-26. Bug #752408.
+app-text/lout
+
+# David Seifert <soap@gentoo.org> (2021-07-26)
+# Fails to build with GCC 11, terrible codebase, tests fail with
+# modern ImageMagick, last release over 12 years ago.
+# Bug #725436, #786915, removal in 30 days.
+sci-electronics/drawtiming
+
+# Sam James <sam@gentoo.org> (2021-07-25)
+# No activity upstream since 2014. Fails to build with GCC 11.
+# Only one reverse dependency (media-libs/openexr_ctl) which
+# is uninstallable.
+# Removal on 2021-08-25. bug #789792, bug #715298.
+media-libs/ctl
+media-libs/openexr_ctl
+
+# Michał Górny <mgorny@gentoo.org> (2021-07-25)
+# Conflicts with dev-python/pyxdg.  Upstream is unwilling to resolve
+# this.  The only revdep has been patched to use pyxdg.
+# Removal on 2021-08-24.  Bug #804127.
+dev-python/xdg
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-07-24)
+# API, its only consumer is last-rited
+# removal in 30 days
+dev-java/jsr101
+
+# Michał Górny <mgorny@gentoo.org> (2021-07-23)
+# Abandoned.  All versions are vulnerable to CVE-2021-33909.
+# sys-kernel/gentoo-kernel{,-bin} are the suggested replacements.
+# Removal on 2021-08-06.  Bug #803212.
+sys-kernel/bliss-kernel-bin
+
+# Conrad Kostecki <conikost@gentoo.org> (2021-07-23)
+# Outdated and multiple bugs open.
+# Other alternatives in tree available.
+# Removal in 30 days (2021-08-22)
+www-servers/resin
+
+# Alfredo Tupone <tupone@gentoo.org> (2021-07-23)
+# Requirements conflicts so it is not buildable
+# No revdep. Retire in 30 days (2021-08-22)
+dev-ml/cstruct
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # No gtk4 and friends in the tree yet
@@ -64,12 +217,6 @@ perl-core/Digest-SHA
 perl-core/Dumpvalue
 perl-core/Encode
 perl-core/ExtUtils-Constant
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-17)
-# Obsolete virtual; package was removed from the Perl
-# core distribution. Please depend on dev-perl/Pod-Parser
-# instead. Removal in 30 days.
-virtual/perl-Pod-Parser
 
 # Hans de Graaff <graaff@gentoo.org> (2021-07-17)
 # Deprecated upstream, replaced with factory_bot.
@@ -225,13 +372,10 @@ dev-ruby/rash
 # Aaron W. Swenon <titanofold@gentoo.org> (2021-07-05)
 # PostgreSQL 9.5 has reached end of life and will no longer receive any
 # updates -- security or otherwise -- from upstream or Gentoo.
-#
 # You should migrate immediately.
 #     https://wiki.gentoo.org/wiki/PostgreSQL/QuickStart#Post-9.0_Migration
-#
 # For more information about PostgreSQL's versioning policy, see:
-#     https://www.postgresql.org/support/versioning/
-#
+#     https://www.postgresql.org/support/versioning/#
 # Removal after 2021-08-04.
 dev-db/postgresql:9.5
 
@@ -244,11 +388,6 @@ dev-python/linecache2
 dev-python/pathlib2
 dev-python/traceback2
 dev-python/unittest2
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-05)
-# The platform is outdated and not maintained anymore.
-# Mask for removal in 30 days.
-dev-haskell/haskell-platform
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-04)
 # severely broken nfs
@@ -275,15 +414,6 @@ dev-ruby/shotgun
 # Masked for removal in 30 days.
 dev-ruby/source_map
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-02)
-# Outdated, not really maintained. Grab it if you like.
-# Masked for removal in 30 days. bug #800097.
-x11-plugins/purple-mattermost
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2021-07-02)
-# Masked for removal in 30 days.
-media-sound/xmms2-scrobbler
-
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
@@ -304,12 +434,6 @@ sys-libs/db:5.1
 # Removal on 2021-07-27
 media-sound/loudness-scanner
 
-# Matt Turner <mattst88@gentoo.org> (2021-06-25)
-# Last release in 2015. Many open bugs. No reverse dependencies.
-# Bugs #312935, #341923, #629050, #739984, #775761, #777534
-# Removal on 2021-07-25
-media-gfx/ufraw
-
 # Marek Szuba <marecki@genoo.org> (2021-06-25)
 # Unslotted version conflicting with lua eclasses.
 # No revdeps left. EAPI 5. Removal in 30 days (Bug #798693)
@@ -319,12 +443,6 @@ dev-lang/lua:0
 # library with no consumer, removal in 30 days
 # see https://bugs.gentoo.org/794562
 dev-java/bctsp
-
-# Michał Górny <mgorny@gentoo.org> (2021-06-24)
-# Package of huge complexity, given its premise.  Unmaintained
-# in Gentoo.  No revdeps.
-# Removal on 2021-07-24.  Bug #798291.
-dev-python/frozendict
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
 # obsolete, no consumers
@@ -353,34 +471,10 @@ dev-java/jibx-tools
 # which is currently not available in Gentoo.
 >=games-server/minecraft-server-1.17
 
-# Zac Medico <zmedico@gentoo.org> (2021-06-19)
-# Upstream inactive and fails to compile.
-# Removal on 2021-07-19.  Bug #786279.
-app-misc/rq
-
-
-# Michał Górny <mgorny@gentoo.org> (2021-06-19)
-# Conflicts with app-arch/brotli[python].  Discontinued in favor
-# of dev-python/brotlicffi.  No revdeps remain.
-# Removal on 2021-07-19.  Bug #796749.
-dev-python/brotlipy
-
-# Mike Gilbert <floppym@gentoo.org> (2021-06-17)
-# rescan-scsi-bus.sh is installed by >=sys-apps/sg3_utils-1.44, rendering
-# this package redundant.
-# Removal on 2021-07-17.
-sys-apps/rescan-scsi-bus
-
 # Davide Pesavento <pesa@gentoo.org> (2021-06-15)
 # Masked for revdep testing.
 >=dev-python/sip-6
-
-# Sam James <sam@gentoo.org> (2021-06-15)
-# Fails to build with GCC 11. Strange build system that needs more
-# work to function properly (and integrate better). Several open bugs.
-# bug #795999, bug #787902, bug #766033, bug #724674, bug #713206.
-# Removal on 2021-07-15.
-media-sound/sc2mpd
+>=dev-python/PyQt5-5.15.5_pre
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-14)
 # DeprecatedDep jre-1.3, upstream dead,removal in 30 days
@@ -394,33 +488,10 @@ media-gfx/povtree
 >=dev-lang/ocaml-4.12
 =dev-ml/camlp4-4.12
 
-# Sam James <sam@gentoo.org> (2021-06-10)
-# Fails to build with modern libetpan. Unmaintained.
-# See bug #699570, bug #448574.
-# Removal on 2021-07-10.
-mail-client/etpan-ng
-
-# Michał Górny <mgorny@gentoo.org> (2021-06-05)
-# A backport for 'older Python versions' with no revdeps.
-# Removal on 2021-07-05.  Bug #794268.
-dev-python/chainmap
-
-# Stephan Hartmann <sultan@gentoo.org> (2021-06-05)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-93
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2021-06-04)
 # Alpha versions of fetchmail 7
 # Add support for OAUTH2 for those needing it
 =net-mail/fetchmail-7.0.0_alpha*
-
-# Michał Górny <mgorny@gentoo.org> (2021-06-02)
-# This is Python 2/3 compatibility layer that was used shortly
-# by dev-python/pip.  No revdeps left.
-# Removal on 2021-07-02.  Bug #793902.
-dev-python/csv23
 
 # Sam James <sam@gentoo.org> (2021-06-01)
 # Possible issues with new ALSA release
@@ -434,96 +505,6 @@ dev-python/csv23
 # Michał Górny <mgorny@gentoo.org> (2021-05-31)
 # Requires removed media-libs/opencv version.
 <media-plugins/gst-plugins-opencv-1.18
-
-# Sam James <sam@gentoo.org> (2021-05-30)
-# GStreamer 1.18.x! Masked for testing.
-# This is a large suite of packages, so please
-# be patient and report bugs if you choose to
-# unmask.
-# bug #756298, bug #690468.
-~dev-python/gst-python-1.18.4
-~media-libs/gst-plugins-bad-1.18.4
-~media-libs/gst-plugins-base-1.18.4
-~media-libs/gst-plugins-good-1.18.4
-~media-libs/gst-plugins-ugly-1.18.4
-~media-libs/gstreamer-1.18.4
-~media-libs/gst-rtsp-server-1.18.4
-~media-plugins/gst-plugins-a52dec-1.18.4
-~media-plugins/gst-plugins-amr-1.18.4
-~media-plugins/gst-plugins-assrender-1.18.4
-~media-plugins/gst-plugins-bluez-1.18.4
-~media-plugins/gst-plugins-bs2b-1.18.4
-~media-plugins/gst-plugins-cairo-1.18.4
-~media-plugins/gst-plugins-cdio-1.18.4
-~media-plugins/gst-plugins-cdparanoia-1.18.4
-~media-plugins/gst-plugins-chromaprint-1.18.4
-~media-plugins/gst-plugins-colormanagement-1.18.4
-~media-plugins/gst-plugins-dash-1.18.4
-~media-plugins/gst-plugins-dtls-1.18.4
-~media-plugins/gst-plugins-dts-1.18.4
-~media-plugins/gst-plugins-dv-1.18.4
-~media-plugins/gst-plugins-dvb-1.18.4
-~media-plugins/gst-plugins-dvdread-1.18.4
-~media-plugins/gst-plugins-faac-1.18.4
-~media-plugins/gst-plugins-faad-1.18.4
-~media-plugins/gst-plugins-flac-1.18.4
-~media-plugins/gst-plugins-gdkpixbuf-1.18.4
-~media-plugins/gst-plugins-gtk-1.18.4
-~media-plugins/gst-plugins-hls-1.18.4
-~media-plugins/gst-plugins-jack-1.18.4
-~media-plugins/gst-plugins-jpeg-1.18.4
-~media-plugins/gst-plugins-kate-1.18.4
-~media-plugins/gst-plugins-ladspa-1.18.4
-~media-plugins/gst-plugins-lame-1.18.4
-~media-plugins/gst-plugins-libav-1.18.4
-~media-plugins/gst-plugins-libde265-1.18.4
-~media-plugins/gst-plugins-libmms-1.18.4
-~media-plugins/gst-plugins-libpng-1.18.4
-~media-plugins/gst-plugins-libvisual-1.18.4
-~media-plugins/gst-plugins-lv2-1.18.4
-~media-plugins/gst-plugins-meta-1.18.4
-~media-plugins/gst-plugins-modplug-1.18.4
-~media-plugins/gst-plugins-mpeg2dec-1.18.4
-~media-plugins/gst-plugins-mpeg2enc-1.18.4
-~media-plugins/gst-plugins-mpg123-1.18.4
-~media-plugins/gst-plugins-mplex-1.18.4
-~media-plugins/gst-plugins-neon-1.18.4
-~media-plugins/gst-plugins-ofa-1.18.4
-~media-plugins/gst-plugins-opencv-1.18.4
-~media-plugins/gst-plugins-openh264-1.18.4
-~media-plugins/gst-plugins-opus-1.18.4
-~media-plugins/gst-plugins-oss-1.18.4
-~media-plugins/gst-plugins-pulse-1.18.4
-~media-plugins/gst-plugins-raw1394-1.18.4
-~media-plugins/gst-plugins-resindvd-1.18.4
-~media-plugins/gst-plugins-rtmp-1.18.4
-~media-plugins/gst-plugins-shout2-1.18.4
-~media-plugins/gst-plugins-sidplay-1.18.4
-~media-plugins/gst-plugins-smoothstreaming-1.18.4
-~media-plugins/gst-plugins-soundtouch-1.18.4
-~media-plugins/gst-plugins-soup-1.18.4
-~media-plugins/gst-plugins-speex-1.18.4
-~media-plugins/gst-plugins-srt-1.18.4
-~media-plugins/gst-plugins-srtp-1.18.4
-~media-plugins/gst-plugins-taglib-1.18.4
-~media-plugins/gst-plugins-twolame-1.18.4
-~media-plugins/gst-plugins-uvch264-1.18.4
-~media-plugins/gst-plugins-v4l2-1.18.4
-~media-plugins/gst-plugins-vaapi-1.18.4
-~media-plugins/gst-plugins-voaacenc-1.18.4
-~media-plugins/gst-plugins-voamrwbenc-1.18.4
-~media-plugins/gst-plugins-vpx-1.18.4
-~media-plugins/gst-plugins-wavpack-1.18.4
-~media-plugins/gst-plugins-webrtc-1.18.4
-~media-plugins/gst-plugins-x264-1.18.4
-~media-plugins/gst-plugins-x265-1.18.4
-~media-plugins/gst-plugins-ximagesrc-1.18.4
-~media-plugins/gst-plugins-zbar-1.18.4
-
-# Andrey Grozin <grozin@gentoo.org> (2021-05-25)
-# DEPENDs on sci-libs/proj-8
-# Unmask after unmasking proj-8
->=sci-geosciences/qmapshack-1.16
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-05-24)
 # it's just a demo project, not a real app, see disclaimer
@@ -551,14 +532,14 @@ dev-java/werken-xpath
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
 # Mask gcc-7 branch (ended upstream support). Please switch
-# to a freshed gcc branch.
+# to a fresher gcc branch.
 <sys-devel/gcc-8
 <dev-util/nvidia-cuda-toolkit-10
 <dev-util/nvidia-cuda-sdk-10
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
 # Mask gcc-6 branch (ended upstream support). Please switch
-# to a freshed gcc branch.
+# to a fresher gcc branch.
 <sys-devel/gcc-7
 
 # Sam James <sam@gentoo.org> (2021-05-09)
@@ -599,13 +580,6 @@ dev-java/werken-xpath
 # bug #737406
 =media-fonts/culmus-0.133-r1
 
-# Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
-# Has unidentified race condition on very fast CPUs that causes maintainer-
-# mode to be triggered.
-# Most likely caused by the following upstream commit:
-#   https://git.savannah.gnu.org/cgit/autoconf.git/commit/?id=aba75f6d4a9c875a9d5d90a07c6b3678db66a4bf
-sys-devel/autoconf:2.71
-
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Doesn't seem to sync clock correctly
 # in some cases.
@@ -618,6 +592,7 @@ sys-devel/autoconf:2.71
 # which haven't yet ported.
 # bug #729098
 >=sci-libs/proj-8.0.0
+>=sci-geosciences/qmapshack-1.16
 
 # Sam James <sam@gentoo.org> (2021-02-18)
 # 0.9.27 included a regression wrt deletes

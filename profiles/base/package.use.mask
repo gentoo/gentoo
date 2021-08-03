@@ -6,6 +6,25 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
+# Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
+# for good. No commits to upstream repository for >9 months, latest available
+# tarball still "alpha" with warning about known unpatched vulnerabilities.
+# Bugs: #684580, #750893
+app-office/kexi webkit
+dev-libs/kreport webkit
+dev-python/PyQt5 webkit
+media-plugins/mythplugins mythbrowser mythmusic
+net-irc/kvirc webkit
+
+# Sam James <sam@gentoo.org> (2021-07-24)
+# USE=exec-static-trampoline can break consumers due to
+# faulty assumptions. Masked for now due to the possibility
+# of breaking systems.
+# https://archives.gentoo.org/gentoo-dev/message/576259af17d008d4ec935f69a9049af7
+# bug #801109
+dev-libs/libffi exec-static-trampoline
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # Several known issues (possibly with older pastix versions as well but
 # in v6 they result in clear errors):
@@ -36,10 +55,6 @@ sys-kernel/dracut test
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-05-09)
 # Dependency requires sys-apps/systemd. Will only be unmasked in systemd target.
 kde-plasma/plasma-meta firewall
-
-# Matt Turner <mattst88@gentoo.org> (2021-04-14)
-# Was masked since 2014. Unmasked starting with 0.3.13.
-<media-plugins/grilo-plugins-0.3.13 lua
 
 # Joonas Niilola <juippis@gentoo.org> (2021-04-12)
 # Creates +130 GB worth of bindings, possibly Gentoo-related.
@@ -131,9 +146,12 @@ x11-libs/colord-gtk doc
 <dev-ml/llvm-ocaml-12 llvm_targets_ARC llvm_targets_VE
 <sys-devel/clang-12 llvm_targets_ARC llvm_targets_VE
 <sys-devel/llvm-12 llvm_targets_ARC llvm_targets_VE
-<dev-ml/llvm-ocaml-12.0.0.9999 llvm_targets_CSKY
-<sys-devel/clang-12.0.0.9999 llvm_targets_CSKY
-<sys-devel/llvm-12.0.0.9999 llvm_targets_CSKY
+<dev-ml/llvm-ocaml-13 llvm_targets_CSKY
+<sys-devel/clang-13 llvm_targets_CSKY
+<sys-devel/llvm-13 llvm_targets_CSKY
+<dev-ml/llvm-ocaml-14 llvm_targets_M68k
+<sys-devel/clang-14 llvm_targets_M68k
+<sys-devel/llvm-14 llvm_targets_M68k
 
 # Joonas Niilola <juippis@gentoo.org> (2020-12-03)
 # Doc building seem to be very random without any predictability,
@@ -385,8 +403,7 @@ sys-libs/glibc cet
 
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
-# Bugs #651604, #651606.
-<dev-libs/leveldb-1.20 static-libs
+# Bug #651606.
 sys-block/fio static
 
 # Michał Górny <mgorny@gentoo.org> (2018-05-16)

@@ -1,8 +1,30 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Marek Szuba <marecki@gentoo.org> (2021-07-28)
+# app-cdr/cdrtools fails to compile on riscv
+dev-util/catalyst iso
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-27)
+# dev-libs/boxfort does not support riscv64 yet, meaning
+# dev-libs/criterion cannot be keyworded here
+app-admin/syslog-ng test
+
+# Marek Szuba <marecki@gentoo.org> (2021-07-27)
+# dev-db/mongodb does not support riscv, fails src_configure
+dev-libs/mongo-c-driver test
+dev-python/pymongo test
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
+# lack an ios device to test it
+kde-frameworks/solid ios
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-07-22)
+# dependencies not keyworded/not tested
+dev-qt/qtnetwork networkmanager
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-20)
-# sys-auth/sssd and it's deps not keyworded yet
+# sys-auth/sssd and its deps not keyworded yet
 app-admin/sudo sssd
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
@@ -23,6 +45,7 @@ dev-python/pandas doc full-support test
 # LuaJIT does not support riscv
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
+www-servers/nginx nginx_modules_http_lua
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-11)
 # Causes 35 tests to fail with "fatal llvm error"
@@ -39,7 +62,6 @@ mail-mta/courier fax
 # Ye Cao <ye.c@rioslab.org> (2021-07-02)
 # Dependencies not keyworded, not tested
 dev-python/ipython nbconvert notebook
-dev-python/matplotlib wxwidgets
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
@@ -49,20 +71,26 @@ app-editors/emacs gconf m17n-lib xwidgets
 app-crypt/heimdal afs
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
 dev-lang/ruby xemacs
+#  - dev-ruby/asciidoctor
+dev-libs/nanomsg doc
 #  - sci-libs/gdal
 dev-python/networkx extras
 #  - app-text/dblatex & media-gfx/transfig
 dev-util/ragel doc
+#  - Qt5 & KDE
+dev-vcs/subversion kwallet
 #  - media-libs/dumb, media-libs/openal
 media-libs/allegro dumb openal
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
 #  - sys-cluster/ceph, dev-ruby/rrdtool-bindings
 net-analyzer/rrdtool rados ruby
+#  - net-wireless/iwd, net-misc/ofono
+net-misc/connman iwd ofono
 #  - dev-util/aruba & dev-util/cucumber
 sys-block/thin-provisioning-tools test
-#  - sys-cluster/rdma-core | sys-fabric/ofed, sys-cluster/knem, sys-fabric/infinipath-psm, sys-fabric/librdmacm
-sys-cluster/openmpi openmpi_fabrics_ofed openmpi_fabrics_knem openmpi_fabrics_psm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_dynamic-sl openmpi_ofed_features_rdmacm openmpi_ofed_features_udcm
+#  - sys-cluster/knem, sys-fabric/infinipath-psm
+sys-cluster/openmpi openmpi_fabrics_knem openmpi_fabrics_psm
 #  - sys-fabric/ofed, dev-db/mariadb | dev-db/mysql
 sys-cluster/slurm ofed slurmdbd
 
@@ -71,15 +99,16 @@ sys-cluster/slurm ofed slurmdbd
 dev-libs/libdbusmenu test
 virtual/notification-daemon gnome kde
 media-libs/libsdl nas pulseaudio
+media-libs/libsdl2 nas pulseaudio
 media-libs/libcaca doc imlib
-x11-libs/tslib sdl
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-misc/geoclue modemmanager zeroconf
-gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios test zeroconf
+dev-libs/libgdata gnome-online-accounts
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios zeroconf
 sys-power/upower ios
 net-libs/webkit-gtk gstreamer
-xfce-base/xfce4-settings colord libcanberra
+xfce-base/xfce4-settings libcanberra
 xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
 xfce-extra/xfce4-power-manager networkmanager
 xfce-base/xfce4-meta pulseaudio
@@ -92,74 +121,40 @@ sys-auth/polkit kde
 # Mikle Kolyada <zlogene@gentoo.org> (2020-12-03)
 # Göktürk Yüksek <gokturk@gentoo.org> (2019-10-10)
 #   sys-libs/libunwind do not support riscv
+dev-libs/efl unwind
 dev-util/strace unwind
 media-libs/gstreamer unwind
 media-libs/mesa unwind
 net-libs/zeromq unwind
+net-mail/dovecot unwind
 x11-base/xorg-server unwind
 x11-base/xwayland unwind
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Dependencies not keyworded, not tested
-dev-libs/gobject-introspection doctool test
-dev-python/markdown test
-x11-libs/gtk+ test colord
-net-libs/libsoup test
 net-libs/libproxy spidermonkey webkit kde networkmanager
 
 # Sam James <sam@gentoo.org> (2021-03-11)
+# Yixun Lan <dlan@gentoo.org> (2021-07-27)
 # media-libs/libheif isn't keyworded here
-# media-libs/libavif isn't keyworded here
-media-libs/gd avif heif
-
-# Sam James <sam@gentoo.org> (2021-02-26)
-# dev-libs/efl not keyworded here
-# and is a desktop application mainly
-# bug #773178
-app-crypt/pinentry efl
+media-libs/gd heif
 
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-04-16)
-# dev-python/breathe not keyworded here, mask to facilitate
-# keywording dev-libs/libfido2
+# dev-python/breathe not keyworded here
 dev-libs/libcbor doc
-
-# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
-# Mask until dev-libs/libfido2 is keyworded
-net-misc/openssh security-key
 
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 <dev-vcs/git-2.31.0 pcre-jit
+www-servers/nginx pcre-jit
 
-# Not yet tested / unkeyworded dependencies
-# This includes also packages which do not support python-3 or
-# do not support python-3.7 yet.
-
-app-admin/syslog-ng amqp geoip2 kafka mongodb redis spoof-source smtp test
-app-arch/p7zip wxwidgets
-app-text/asciidoc test
-dev-libs/libgcrypt doc
+# app-shells/fish not keyworded due to failing tests
 dev-python/argcomplete test
-dev-python/aiohttp doc test
-dev-python/jinja doc
-dev-python/lxml test
-dev-python/pbr test
+
+# Several dependencies not keyworded due to failing tests.
 dev-python/pypiserver test
-dev-python/setuptools test
-dev-python/sphinx doc test
-dev-python/twisted test
-dev-python/urllib3 test
-dev-util/catalyst iso
-dev-util/pkgconf test
-dev-vcs/git highlight subversion
-sys-libs/libcxx static-libs
-media-libs/fontconfig doc
-net-libs/gnutls test-full
-net-libs/libpcap rdma
-net-misc/ntp openntpd
-sys-devel/gettext cvs

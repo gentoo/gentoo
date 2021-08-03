@@ -18,7 +18,6 @@
 		Swaylock is the official screen locker for <pkg>gui-wm/sway</pkg>.
 	</longdescription>
 	<use>
-		<flag name="fish-completion">Enable fish completion support</flag>
 		<flag name="gdk-pixbuf">Enable additional image format support via the <pkg>x11-libs/gdk-pixbuf</pkg> library</flag>
 	</use>
 	<upstream>

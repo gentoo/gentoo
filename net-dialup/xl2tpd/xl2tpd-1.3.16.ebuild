@@ -11,7 +11,7 @@ SRC_URI="https://github.com/xelerance/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~mips ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~mips ~ppc ppc64 ~riscv x86"
 IUSE="+kernel"
 
 DEPEND="
@@ -45,4 +45,8 @@ src_install() {
 	newins doc/l2tpd.conf.sample xl2tpd.conf
 	insopts -m 0600
 	newins doc/l2tp-secrets.sample l2tp-secrets
+}
+
+pkg_postinst() {
+	tmpfiles_process xl2tpd.conf
 }

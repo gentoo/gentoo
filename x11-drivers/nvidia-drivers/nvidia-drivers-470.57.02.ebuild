@@ -93,7 +93,7 @@ pkg_setup() {
 		~!SLUB_DEBUG_ON
 		!DEBUG_MUTEXES"
 	local ERROR_DRM_KMS_HELPER="CONFIG_DRM_KMS_HELPER: is not set but needed for Xorg auto-detection
-	of drivers (no custom config), and optional nvidia-drm.modeset=1.
+	of drivers (no custom config), and for wayland / nvidia-drm.modeset=1.
 	Cannot be directly selected in the kernel's menuconfig, so enable
 	options such as CONFIG_DRM_FBDEV_EMULATION instead."
 
@@ -446,7 +446,7 @@ pkg_postinst() {
 		elog "With USE=wayland, this version of ${PN} sets nvidia-drm.modeset=1"
 		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. This feature is considered"
 		elog "experimental but is required for EGLStream (used for wayland acceleration"
-		elog "in compositors that support it) and PRIME offloading."
+		elog "in compositors that support it)."
 		elog
 		elog "If you experience issues, please comment out the option from nvidia.conf."
 		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."

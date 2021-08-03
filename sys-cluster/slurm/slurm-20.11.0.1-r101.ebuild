@@ -250,6 +250,8 @@ pkg_postinst() {
 	done
 	echo
 
+	tmpfiles_process slurm.conf
+
 	elog "Please visit the file '/usr/share/doc/${P}/html/configurator.html"
 	elog "through a (javascript enabled) browser to create a configureation file."
 	elog "Copy that file to /etc/slurm/slurm.conf on all nodes (including the headnode) of your cluster."

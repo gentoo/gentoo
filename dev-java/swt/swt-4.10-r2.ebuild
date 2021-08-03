@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="CPL-1.0 LGPL-2.1 MPL-1.1"
 SLOT="4.10"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 IUSE="cairo opengl webkit"
 
 COMMON_DEP="
@@ -93,6 +93,10 @@ src_compile() {
 	for libpath in "${ldpaths[@]}"; do
 		if [[ -f "${libpath}/${JAWTSO}" ]]; then
 			export AWT_LIB_PATH="${libpath}"
+			break
+		# this is a workaround for broken LDPATH in <=openjdk-8.292_p10 and <=dev-java/openjdk-bin-8.292_p10
+		elif [[ -f "${libpath}/$(tc-arch)/${JAWTSO}" ]]; then
+			export AWT_LIB_PATH="${libpath}/$(tc-arch)"
 			break
 		fi
 	done

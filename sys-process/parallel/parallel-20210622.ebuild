@@ -3,7 +3,7 @@
 
 EAPI=7
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/oletange.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/oletange.asc
 inherit verify-sig
 
 DESCRIPTION="A shell tool for executing jobs in parallel locally or on remote machines"
@@ -13,7 +13,7 @@ SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${P}.tar.bz2.sig )"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~ppc64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="dev-lang/perl:=
 	dev-perl/Devel-Size

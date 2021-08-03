@@ -16,7 +16,7 @@ S="${WORKDIR}/fpcbuild-${PV}/fpcsrc"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="doc source"
 RESTRICT="strip" #269221
 

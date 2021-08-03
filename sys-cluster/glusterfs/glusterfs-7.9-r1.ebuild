@@ -104,13 +104,17 @@ src_configure() {
 		$(use_enable xml xml-output) \
 		$(use libtirpc || echo --without-libtirpc) \
 		$(use ipv6 && echo --with-ipv6-default) \
-		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
+		--with-tmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d \
 		--localstatedir="${EPREFIX}"/var
 }
 
 src_compile() {
 	default
 	use emacs && elisp-compile extras/glusterfs-mode.el
+}
+
+src_test() {
+	./run-tests.sh || die
 }
 
 src_install() {
@@ -171,11 +175,9 @@ src_install() {
 	python_optimize "${ED}"
 }
 
-src_test() {
-	./run-tests.sh || die
-}
-
 pkg_postinst() {
+	tmpfiles_process gluster.conf
+
 	elog "Starting with ${PN}-3.1.0, you can use the glusterd daemon to configure your"
 	elog "volumes dynamically. To do so, simply use the gluster CLI after running:"
 	elog "  /etc/init.d/glusterd start"

@@ -9,12 +9,13 @@ inherit perl-module
 
 DESCRIPTION="General Message Object for MIME Messsage Handling"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc64 ~x86"
 
 RDEPEND="
 	dev-perl/TimeDate
 	>=virtual/perl-Encode-2.260.0
 	>=virtual/perl-File-Spec-0.700.0
+	dev-perl/IO-stringy
 	virtual/perl-MIME-Base64
 	>=dev-perl/MIME-Types-1.4.0
 	>=dev-perl/MailTools-2.170.0

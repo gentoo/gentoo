@@ -19,6 +19,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="php"
 
+RESTRICT+=" test" # no-qtwebkit.patch lacks test fixes
+
 RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt

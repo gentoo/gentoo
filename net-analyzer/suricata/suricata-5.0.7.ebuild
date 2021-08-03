@@ -15,7 +15,7 @@ SRC_URI="https://www.openinfosecfoundation.org/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/5"
 KEYWORDS="~amd64 ~x86"
-IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened logrotate lua lz4 nflog +nfqueue redis systemd test"
+IUSE="+af-packet bpf control-socket cuda debug +detection geoip hardened lua lz4 nflog +nfqueue redis systemd test"
 
 RESTRICT="!test? ( test )"
 
@@ -43,7 +43,6 @@ RDEPEND="${PYTHON_DEPS}
 	bpf?        ( >=dev-libs/libbpf-0.1.0 )
 	cuda?       ( dev-util/nvidia-cuda-toolkit )
 	geoip?      ( dev-libs/libmaxminddb )
-	logrotate?  ( app-admin/logrotate )
 	lua?        ( ${LUA_DEPS} )
 	lz4?        ( app-arch/lz4 )
 	nflog?      ( net-libs/libnetfilter_log )
@@ -142,14 +141,14 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/${PN}.service
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfiles ${PN}.conf
 
-	if use logrotate; then
-		insopts -m0644
-		insinto /etc/logrotate.d
-		newins etc/${PN}.logrotate ${PN}
-	fi
+	insopts -m0644
+	insinto /etc/logrotate.d
+	newins etc/${PN}.logrotate ${PN}
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
+
 	elog
 	if use systemd; then
 		elog "Suricata requires either the mode of operation (e.g. --af-packet) or the interface to listen on (e.g. -i eth0)"

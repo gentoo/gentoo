@@ -13,7 +13,7 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="clippy cpu_flags_x86_sse2 doc prefix rls rustfmt"
 
 DEPEND=""
@@ -33,7 +33,7 @@ QA_PREBUILT="
 	opt/${P}/lib/rustlib/.*/lib/.*
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/rust.asc"
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/rust.asc
 
 pkg_pretend() {
 	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then

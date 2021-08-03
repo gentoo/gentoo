@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-python/distro[${PYTHON_USEDEP}]
@@ -26,7 +26,6 @@ DEPEND="
 		dev-python/path-py[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
@@ -42,14 +41,13 @@ distutils_enable_sphinx docs \
 	dev-python/sphinx-issues
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	# Skip tests causing sandbox violations
-	rm \
-		tests/test_hello_cpp.py \
-		tests/test_issue274_support_default_package_dir.py \
-		tests/test_issue274_support_one_package_without_package_dir.py \
-		tests/test_issue284_build_ext_inplace.py \
-		tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py \
-		|| die
-	distutils-r1_python_prepare_all
+python_test() {
+	local deselect=(
+		# sandbox violations
+		tests/test_hello_cpp.py::test_hello_develop
+		tests/test_issue274_support_default_package_dir.py
+		tests/test_issue274_support_one_package_without_package_dir.py
+		tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py
+	)
+	epytest ${deselect[@]/#/--deselect }
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit desktop linux-info pax-utils toolchain-funcs wxwidgets
+inherit desktop flag-o-matic linux-info pax-utils toolchain-funcs wxwidgets
 
 MY_PV="$(ver_cut 1-2)-Update$(ver_cut 4)_MacOSX"
 
@@ -38,6 +38,10 @@ CONFIG_CHECK="~BLK_DEV_DM ~CRYPTO ~CRYPTO_XTS ~DM_CRYPT ~FUSE_FS"
 
 src_configure() {
 	setup-wxwidgets
+
+	# https://bugs.gentoo.org/786741
+	# std::byte clashes with src/Common/Tcdefs.h typedef
+	append-cxxflags -std=c++14
 }
 
 src_compile() {

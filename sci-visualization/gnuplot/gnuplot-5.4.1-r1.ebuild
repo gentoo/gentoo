@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1,2,3} )
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
@@ -118,8 +118,6 @@ src_configure() {
 	tc-export CC CXX			#453174
 	tc-export_build_env BUILD_CC
 	export CC_FOR_BUILD=${BUILD_CC}
-
-	use qt5 && append-cxxflags -std=c++11
 
 	econf \
 		--with-texdir="${TEXMF}/tex/latex/${PN}" \

@@ -5,7 +5,7 @@ EAPI=6
 
 MATE_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8,3_9,3_10} )
 
 inherit mate python-single-r1 virtualx
 
@@ -73,7 +73,7 @@ src_configure() {
 
 src_test() {
 	# FIXME: This should be handled at eclass level.
-	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
+	"${EPREFIX%/}/${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
 
 	unset DBUS_SESSION_BUS_ADDRESS
 

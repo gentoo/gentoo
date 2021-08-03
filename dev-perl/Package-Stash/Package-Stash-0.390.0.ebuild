@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Routines for manipulating stashes"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc64 ~riscv ~sparc"
 IUSE="minimal"
 
 RDEPEND="
@@ -32,11 +32,13 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	virtual/perl-File-Spec
+	dev-perl/CPAN-Meta-Check
 	dev-perl/ExtUtils-HasCompiler
 	virtual/perl-Text-ParseWords
 	test? (
 		virtual/perl-IO
 		dev-perl/Test-Fatal
+		dev-perl/Test-Needs
 		dev-perl/Test-Requires
 		>=virtual/perl-Test-Simple-0.880.0
 	)

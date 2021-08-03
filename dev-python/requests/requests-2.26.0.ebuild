@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~mips ~ppc64 ~riscv ~sparc ~x86"
 IUSE="socks5"
 
 RDEPEND="
@@ -35,6 +35,10 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-test.patch
+)
 
 python_test() {
 	local deselect=(

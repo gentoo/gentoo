@@ -74,7 +74,7 @@ BDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	if use !dedicated && use !server ; then
+	if ! use dedicated && ! use server ; then
 		ewarn "Disabling server USE flag will make it impossible to start local"
 		ewarn "games, but you will still be able to join multiplayer games."
 	fi
@@ -129,7 +129,6 @@ src_configure() {
 			if use qt5 ; then
 				local -x MOCCMD=$(qt5_get_bindir)/moc
 				myclient+=( qt )
-				append-cxxflags -std=c++11
 			fi
 		fi
 		myeconfargs+=(

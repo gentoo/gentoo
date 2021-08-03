@@ -17,7 +17,7 @@ if [[ ${PV} == *9999* ]] ; then
 	# Just in case for now as future seems undecided.
 	LICENSE="NPSL"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/nmap.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/nmap.asc
 	inherit verify-sig
 
 	SRC_URI="https://nmap.org/dist/${P}.tar.bz2"

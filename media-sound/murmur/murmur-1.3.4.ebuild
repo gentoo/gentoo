@@ -157,5 +157,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process ${PN}.conf
 	readme.gentoo_print_elog
 }

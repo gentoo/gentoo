@@ -185,6 +185,7 @@ multilib_src_configure() {
 		$(use_enable imap)
 		$(use_enable ldap)
 		$(use_enable ldap ldaps)
+		--disable-ntlm
 		--disable-ntlm-wb
 		$(use_enable pop3)
 		--enable-rt

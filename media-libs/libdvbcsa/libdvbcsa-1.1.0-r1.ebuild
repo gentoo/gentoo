@@ -11,7 +11,7 @@ SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 IUSE="cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse2 debug"
 
 # https://github.com/buildroot/buildroot/blob/master/package/libdvbcsa/

@@ -35,10 +35,13 @@ GCC_BOOTSTRAP_VER=20201208
 
 LOCALE_GEN_VER=2.10
 
+GLIBC_SYSTEMD_VER=20210729
+
 SRC_URI+=" https://gitweb.gentoo.org/proj/locale-gen.git/snapshot/locale-gen-${LOCALE_GEN_VER}.tar.gz"
 SRC_URI+=" multilib-bootstrap? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
+SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git/snapshot/glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz )"
 
-IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib multilib-bootstrap nscd profile selinux +ssp +static-libs static-pie suid systemd systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -756,6 +759,7 @@ src_unpack() {
 
 	cd "${WORKDIR}" || die
 	unpack locale-gen-${LOCALE_GEN_VER}.tar.gz
+	use systemd && unpack glibc-systemd-${GLIBC_SYSTEMD_VER}.tar.gz
 }
 
 src_prepare() {
@@ -1363,7 +1367,13 @@ glibc_do_src_install() {
 
 	# Install misc network config files
 	insinto /etc
-	doins posix/gai.conf nss/nsswitch.conf
+	doins posix/gai.conf
+
+	if use systemd ; then
+		doins "${WORKDIR}/glibc-systemd-${GLIBC_SYSTEMD_VER}/gentoo-config/nsswitch.conf"
+	else
+		doins nss/nsswitch.conf
+	fi
 
 	# Gentoo-specific
 	newins "${FILESDIR}"/host.conf-1 host.conf
@@ -1379,7 +1389,7 @@ glibc_do_src_install() {
 
 		sed -i "${nscd_args[@]}" "${ED}"/etc/init.d/nscd
 
-		systemd_dounit nscd/nscd.service
+		use systemd && systemd_dounit nscd/nscd.service
 		newtmpfiles nscd/nscd.tmpfiles nscd.conf
 	fi
 
@@ -1451,7 +1461,7 @@ glibc_sanity_check() {
 
 	# first let's find the actual dynamic linker here
 	# symlinks may point to the wrong abi
-	local newldso=$(find . -name 'ld-linux*.so.2' -type f -print -quit)
+	local newldso=$(find . -name 'ld*so.?' -type f -print -quit)
 
 	einfo Last-minute run tests with ${newldso} in /$(get_libdir) ...
 
@@ -1500,9 +1510,10 @@ pkg_preinst() {
 	# Keep around libcrypt so that Perl doesn't break when merging libxcrypt
 	# (libxcrypt is the new provider for now of libcrypt.so.{1,2}).
 	# bug #802207
-	if has_version "${CATEGORY}/${PN}[crypt]"; then
+	if ! use crypt && has_version "${CATEGORY}/${PN}[crypt]"; then
 		PRESERVED_OLD_LIBCRYPT=1
 		preserve_old_lib /$(get_libdir)/libcrypt$(get_libname 1)
+		cp "${EROOT}"/usr/include/crypt.h "${T}"/crypt.h || die
 	else
 		PRESERVED_OLD_LIBCRYPT=0
 	fi
@@ -1538,5 +1549,10 @@ pkg_postinst() {
 
 	if [[ ${PRESERVED_OLD_LIBCRYPT} -eq 1 ]] ; then
 		preserve_old_lib_notify /$(get_libdir)/libcrypt$(get_libname 1)
+		cp "${T}"/crypt.h "${EROOT}"/usr/include/crypt.h || eerror "Error restoring crypt.h, please file a bug"
+		elog "Please ignore a possible later error message about a file collision involving"
+		elog "/usr/include/crypt.h. We need to preserve this file for the moment to keep"
+		elog "the upgrade working, but it also needs to be overwritten when"
+		elog "sys-libs/libxcrypt is installed. See bug 802210 for more details."
 	fi
 }

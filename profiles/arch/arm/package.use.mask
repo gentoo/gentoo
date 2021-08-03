@@ -1,14 +1,16 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2021-07-25)
+# At present, dev-lang/fpc doesn't support arm64.
+# Java isn't here either.
+# bug #801649
+dev-util/diffoscope pascal pdf
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-libs/rnnoise, media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects rnnoise webrtc zamaudio
-
-# Sam James <sam@gentoo.org> (2021-07-17)
-# Java isn't available here right now
-dev-util/diffoscope pdf
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2021-04-12)
 # no stable virtual/jdk on this arch
@@ -198,7 +200,6 @@ net-analyzer/zmap mongo
 
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Unkeyworded dep masks moved from default/linux.
-app-admin/diamond mongo
 net-libs/gnutls test-full
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
@@ -372,10 +373,6 @@ sys-block/fio glusterfs rbd
 # Rick Farina <zerochaos@gentoo.org> (2014-07-27)
 # net-misc/dahdi doesn't build
 net-voip/yate dahdi
-
-# Rick Farina <zerochaos@gentoo.org> (2014-07-22)
-# sci-libs/mpir doesn't build
-dev-python/gmpy mpir
 
 # Markus Meier <maekke@gentoo.org> (2014-06-24)
 # Unkeyworded deps, bug #513108

@@ -11,13 +11,13 @@ SRC_URI="https://github.com/Yubico/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/2"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/pcsc-lite
-	dev-libs/openssl:0=[-bindist(-)]"
+	<dev-libs/openssl-3.0.0:0=[-bindist(-)]"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="dev-util/gengetopt

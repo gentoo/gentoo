@@ -36,4 +36,5 @@ DEPEND="${RDEPEND}
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/geometry_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/trajectory_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "

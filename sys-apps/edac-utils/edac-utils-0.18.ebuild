@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="Userspace helper for Linux kernel EDAC drivers"
 HOMEPAGE="https://github.com/grondo/edac-utils"
@@ -17,6 +17,8 @@ RDEPEND="${DEPEND}
 	sys-apps/dmidecode"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's|-Werror||' \
 		configure || die
@@ -34,13 +36,13 @@ src_install() {
 	# We don't need this init.d file
 	# Modules should be loaded by adding them to /etc/conf.d/modules
 	# The rest is done via the udev-rule
-	rm -rf "${D}/etc/init.d"
+	rm -rf "${ED}/etc/init.d" || die
 
 	find "${ED}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	elog "There must be an entry for your mainboard in /etc/edac/labels.db"
+	elog "There must be an entry for your mainboard in ${EROOT}/etc/edac/labels.db"
 	elog "in case you want nice labels in /sys/module/*_edac/"
 	elog "Run the following command to check whether such an entry is already available:"
 	elog "    edac-ctl --print-labels"

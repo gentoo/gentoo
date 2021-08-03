@@ -51,7 +51,7 @@ src_configure() {
 
 src_install() {
 	default
-	# Remove unnecessary .la files, as recommended by ltprune.eclass
+	# Remove unnecessary .la files
 	find "${ED}" -name '*.la' -delete || die
 	python_fix_shebang "${ED}"/usr/bin/seaf-cli
 }

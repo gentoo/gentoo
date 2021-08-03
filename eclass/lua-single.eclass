@@ -348,7 +348,7 @@ _lua_verify_patterns() {
 
 	local impl pattern
 	for pattern; do
-		for impl in "${_LUA_ALL_IMPLS[@]}"; do
+		for impl in "${_LUA_ALL_IMPLS[@]}" "${_LUA_HISTORICAL_IMPLS[@]}"; do
 			[[ ${impl} == ${pattern/./-} ]] && continue 2
 		done
 

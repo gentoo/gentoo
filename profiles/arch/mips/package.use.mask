@@ -1,6 +1,12 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Joshua Kinard <kumba@gentoo.org> (2021-07-31)
+# Mask USE 'test' on MIPS for libgudev.  This requires dev-util/umockdev,
+# which has apparently never had a MIPS keyword.  Running the testsuite can be
+# revisited at a later date.  Bug #805083
+dev-libs/libgudev test
+
 # Matt Turner <mattst88@gentoo.org> (2021-06-10)
 # dev-python/django is not keyworded here
 dev-python/diskcache test

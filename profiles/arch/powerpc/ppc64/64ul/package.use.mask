@@ -1,9 +1,25 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps are keyworded
+gnome-base/gnome-extra-apps -tracker
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps not keyworded
+media-gfx/gnome-photos flickr upnp-av
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# deps not keyworded
+gnome-base/gnome-extra-apps share
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-07-27)
+# keyworded and works on ppc64
+gnome-base/gnome -classic -extras
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-06)
 # deps not keyworded
-net-analyzer/netdata kinesis mongo
+net-analyzer/netdata kinesis mongodb
 
 # Michał Górny <mgorny@gentoo.org> (2021-03-06)
 # LLVM 9 has been removed.

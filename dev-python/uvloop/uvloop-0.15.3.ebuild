@@ -3,14 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv"
 HOMEPAGE="https://github.com/magicstack/uvloop"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="doc examples"
@@ -32,10 +32,10 @@ BDEPEND="
 distutils_enable_tests setup.py
 
 python_prepare_all() {
-	cat <<EOF >> setup.cfg || die
-[build_ext]
-use-system-libuv=1
-EOF
+	cat <<-EOF >> setup.cfg || die
+		[build_ext]
+		use_system_libuv=1
+	EOF
 
 	# flake8 only
 	rm tests/test_sourcecode.py || die

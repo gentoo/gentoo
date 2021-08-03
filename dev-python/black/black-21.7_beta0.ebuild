@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
@@ -42,6 +42,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=${MY_PV}
 
 python_test() {
 	cp "${S}"/src/black_primer/primer.json "${BUILD_DIR}"/lib/black_primer/primer.json || die
+	distutils_install_for_testing
 	epytest -m "not python2"
 }
 

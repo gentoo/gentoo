@@ -18,7 +18,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="elogind fish-completion +man systemd zsh-completion"
+IUSE="elogind +man systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
@@ -36,11 +36,12 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dman-pages=$(usex man enabled disabled)
-		$(meson_use fish-completion fish-completions)
-		$(meson_use zsh-completion zsh-completions)
+		"-Dfish-completions=true"
+		"-Dzsh-completions=true"
 		"-Dbash-completions=true"
 		"-Dwerror=false"
 	)
+
 	if use systemd; then
 		emesonargs+=("-Dlogind=enabled" "-Dlogind-provider=systemd")
 	elif use elogind; then

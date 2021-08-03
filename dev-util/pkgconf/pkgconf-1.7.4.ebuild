@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.sr.ht/~kaniini/pkgconf"
 else
 	SRC_URI="http://distfiles.dereferenced.org/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~ppc-macos ~x64-macos"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-cygwin ~ppc-macos ~x64-macos"
 fi
 
 DESCRIPTION="pkg-config compatible replacement with no dependencies other than ANSI C89"
@@ -40,7 +40,7 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	default
 
-	[[ ${CHOST} == *-darwin9 ]] && eapply "${FILESDIR}"/${P}-darwin9.patch
+	[[ ${CHOST} == *-darwin9 ]] && eapply "${FILESDIR}"/${PN}-1.7.3-darwin9.patch
 
 	[[ ${PV} == "9999" ]] && eautoreconf
 	if use pkg-config; then

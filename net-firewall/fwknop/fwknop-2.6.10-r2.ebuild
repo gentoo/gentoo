@@ -108,6 +108,8 @@ pkg_postinst() {
 	if use server; then
 		readme.gentoo_print_elog
 
+		tmpfiles_process fwknopd.conf
+
 		if ! linux_config_exists || ! linux_chkconfig_present NETFILTER_XT_MATCH_COMMENT; then
 			echo
 			ewarn "fwknopd daemon relies on the 'comment' match in order to expire"

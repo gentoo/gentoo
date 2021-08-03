@@ -1,6 +1,11 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2021-07-26)
+# nvenc on x86 needs both legacy 390 drivers and old vulnerable
+# <=media-video/ffmpeg-4.2.4, nvidia has no real x86 support.
+media-video/obs-studio nvenc
+
 # Marek Szuba <marecki@gentoo.org> (2021-07-17)
 # media-libs/rnnoise, media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here

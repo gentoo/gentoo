@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DESCRIPTION="Testing framework for infrastructure software"
 HOMEPAGE="https://github.com/jmmv/kyua"
@@ -9,7 +9,7 @@ SRC_URI="https://github.com/jmmv/kyua/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 IUSE="test"
 
 # Tests fail
@@ -20,12 +20,13 @@ RDEPEND="
 	dev-libs/atf
 	dev-lua/lutok
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-libs/atf )
 "
 
 src_install() {
 	default
-	rm -r "${ED%/}"/usr/tests || die
+	rm -r "${ED}"/usr/tests || die
 }

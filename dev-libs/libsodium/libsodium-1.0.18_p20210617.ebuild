@@ -22,7 +22,7 @@ if [[ ${PV} == *_p* ]] ; then
 
 	S="${WORKDIR}/${PN}-stable"
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jedisct1.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/jedisct1.asc
 	inherit verify-sig
 
 	SRC_URI="https://download.libsodium.org/${PN}/releases/${P}.tar.gz"
@@ -31,7 +31,7 @@ fi
 
 LICENSE="ISC"
 SLOT="0/23"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+asm minimal static-libs +urandom"
 
 CPU_USE=( cpu_flags_x86_{aes,sse4_1} )

@@ -3,13 +3,13 @@
 
 EAPI="7"
 
-inherit autotools 
+inherit autotools
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 else
 	SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
-	#KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Eselect module for management of multiple Rust versions"

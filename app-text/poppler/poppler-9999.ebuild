@@ -19,7 +19,7 @@ DESCRIPTION="PDF rendering library based on the xpdf-3.0 code base"
 HOMEPAGE="https://poppler.freedesktop.org/"
 
 LICENSE="GPL-2"
-IUSE="cairo cjk curl +cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 +splash tiff +utils"
+IUSE="boost cairo cjk curl +cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 tiff +utils"
 
 # No test data provided
 RESTRICT="test"
@@ -54,7 +54,7 @@ RDEPEND="${DEPEND}
 	cjk? ( app-text/poppler-data )
 "
 DEPEND+="
-	splash? ( dev-libs/boost )
+	boost? ( dev-libs/boost )
 "
 
 DOCS=( AUTHORS NEWS README.md README-XPDF )
@@ -90,9 +90,7 @@ src_configure() {
 		-DBUILD_CPP_TESTS=OFF
 		-DBUILD_MANUAL_TESTS=OFF
 		-DRUN_GPERF_IF_PRESENT=OFF
-		# Required for SPLASH
-		-DENABLE_BOOST="$(usex splash)"
-		-DENABLE_SPLASH="$(usex splash)"
+		-DENABLE_BOOST="$(usex boost)"
 		-DENABLE_ZLIB=ON
 		-DENABLE_ZLIB_UNCOMPRESS=OFF
 		-DENABLE_UNSTABLE_API_ABI_HEADERS=ON

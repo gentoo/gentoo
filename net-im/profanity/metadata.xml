@@ -14,4 +14,7 @@
 		<flag name="omemo">Enable OMEMO encryption</flag>
 		<flag name="otr">Enable encrypted conversations using Off-The-Records messaging</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">profanity-im/profanity</remote-id>
+	</upstream>
 </pkgmetadata>

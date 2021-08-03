@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for QtWebEngine"
-HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/intro https://pypi.org/project/PyQtWebEngine/"
+HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/ https://pypi.org/project/PyQtWebEngine/"
 
 MY_P=${PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
@@ -28,13 +28,13 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-5.15[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
+	~dev-python/PyQt5-5.15.4[gui,network,printsupport,ssl,webchannel,widgets,${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-sip-4.19.22:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtwebengine:5[widgets]
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.22[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.22:0[${PYTHON_USEDEP}]
 "
 
 src_configure() {

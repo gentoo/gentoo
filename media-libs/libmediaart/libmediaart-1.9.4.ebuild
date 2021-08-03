@@ -6,7 +6,7 @@ EAPI="6"
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.16"
 
-inherit autotools flag-o-matic gnome2 vala virtualx
+inherit autotools gnome2 vala virtualx
 
 DESCRIPTION="Manages, extracts and handles media art caches"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libmediaart"
@@ -47,6 +47,7 @@ src_prepare() {
 	mv html/libmediaart{,-${SLOT}}.devhelp2 || die
 	cd "${S}" || die
 
+	eapply "${FILESDIR}"/${PN}-1.9.4-drop-bashisms-configure.patch
 	eautoreconf
 
 	use vala && vala_src_prepare
@@ -56,7 +57,6 @@ src_prepare() {
 src_configure() {
 	if use qt5 ; then
 		local myconf="--with-qt-version=5"
-		append-cxxflags -std=c++11
 	fi
 
 	gnome2_src_configure \

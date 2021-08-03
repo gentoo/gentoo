@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/vergoh/vnstat"
 	inherit git-r3
 else
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/teemutoivola.asc
+	VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/teemutoivola.asc
 	inherit verify-sig
 
 	SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
@@ -76,4 +76,8 @@ src_install() {
 
 	newdoc INSTALL README.setup
 	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
+}
+
+pkg_postinst() {
+	tmpfiles_process vnstatd.conf
 }

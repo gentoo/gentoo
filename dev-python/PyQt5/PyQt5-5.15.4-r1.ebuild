@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
 
 # TODO: QtNfc, QtQuick3D, QtRemoteObjects
 IUSE="bluetooth dbus debug declarative designer examples gles2-only gui help location
@@ -85,7 +85,7 @@ RDEPEND="${PYTHON_DEPS}
 	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.25[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.25:0[${PYTHON_USEDEP}]
 	dbus? ( virtual/pkgconfig )
 "
 

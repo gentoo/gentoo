@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	SLOT="0/9999"
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	SLOT="0/14"
 fi
 
@@ -33,7 +33,7 @@ DEPEND="
 	x11-libs/pixman
 	x11-backend? ( x11-libs/libxcb:0= )
 	X? (
-		x11-base/xorg-server[wayland]
+		x11-base/xwayland
 		x11-libs/libxcb:0=
 		x11-libs/xcb-util-image
 		x11-libs/xcb-util-wm

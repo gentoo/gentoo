@@ -11,16 +11,12 @@ SRC_URI="https://github.com/ibus/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="gtk gtk2 nls"
-REQUIRED_USE="gtk2? ( gtk )"
+KEYWORDS="amd64 x86"
+IUSE="gtk nls"
 
 DEPEND="app-i18n/ibus
 	dev-libs/m17n-lib
-	gtk? (
-		gtk2? ( x11-libs/gtk+:2 )
-		!gtk2? ( x11-libs/gtk+:3 )
-	)
+	gtk? ( x11-libs/gtk+:3 )
 	nls? ( virtual/libintl )"
 RDEPEND="${DEPEND}
 	>=dev-db/m17n-db-1.7"
@@ -30,7 +26,7 @@ BDEPEND="sys-devel/gettext
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		$(use_with gtk gtk $(usex gtk2 2.0 3.0))
+		$(use_with gtk gtk 3.0)
 }
 
 pkg_preinst() {

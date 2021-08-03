@@ -21,7 +21,7 @@ case ${PV}  in
 	case ${PV} in
 	*_beta*|*_rc*) ;;
 	*)
-		KEYWORDS="-* amd64 arm arm64 ~ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+		KEYWORDS="-* amd64 arm arm64 ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
 		;;
 	esac
 esac
@@ -43,6 +43,10 @@ QA_FLAGS_IGNORED='.*'
 
 # The tools in /usr/lib/go should not cause the multilib-strict check to fail.
 QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
+
+# This package triggers "unrecognized elf file(s)" notices on riscv.
+# https://bugs.gentoo.org/794046
+QA_PREBUILT='.*'
 
 # Do not strip this package. Stripping is unsupported upstream and may
 # fail.

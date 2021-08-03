@@ -11,7 +11,7 @@ inherit cmake desktop xdg-utils pax-utils plocale
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=()
+	EGIT_SUBMODULES=( Externals/mGBA/mgba )
 	inherit git-r3
 else
 	inherit vcs-snapshot
@@ -25,7 +25,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto mgba profile pulseaudio +qt5 systemd upnp vulkan"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -109,6 +109,9 @@ src_prepare() {
 		picojson
 		# No code to detect shared library.
 		zstd
+
+		# This is a stripped-down mGBA for integrated GBA support
+		mGBA
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
@@ -150,6 +153,7 @@ src_configure() {
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DENABLE_LLVM=OFF
 		-DENABLE_LTO=$(usex lto)
+		-DUSE_MGBA=$(usex mgba)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_SDL=OFF # not supported: #666558

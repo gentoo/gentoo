@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 
 inherit distutils-r1 multiprocessing
 
@@ -42,6 +42,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/aiohttp-3.7.4-brotli.patch
+	"${FILESDIR}"/aiohttp-3.7.4-fix-py3.10.patch
 )
 
 DOCS=( CHANGES.rst CONTRIBUTORS.txt README.rst )
@@ -88,6 +89,11 @@ python_test() {
 		'tests/test_streams.py::TestDataQueue::test_read_exception_with_data[pyloop]'
 		'tests/test_streams.py::TestDataQueue::test_read_exception_on_wait[pyloop]'
 		'tests/test_streams.py::TestDataQueue::test_exception_waiter[pyloop]'
+	)
+
+	[[ ${EPYTHON} == pypy3 ]] && deselect+=(
+		# fails with a 'runtime warning'
+		tests/test_multipart.py::TestPartReader::test_read_boundary_with_incomplete_chunk
 	)
 
 	pushd "${BUILD_DIR}/lib" >/dev/null || die

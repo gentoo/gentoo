@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A Python data analysis library that is optimized for humans instead of machines"
@@ -33,6 +33,8 @@ RDEPEND="
 BDEPEND="test? ( ${LEATHER_VERSION_DEP}[xml,${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+distutils_enable_sphinx docs \
+	dev-python/sphinx_rtd_theme
 
 python_test() {
 	local deselect=(

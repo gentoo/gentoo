@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit python-r1 qmake-utils
 
 DESCRIPTION="Python bindings for QScintilla"
-HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
+HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/"
 
 MY_PN=QScintilla
 MY_P=${MY_PN}-${PV/_pre/.dev}
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="debug"
 
 REQUIRED_USE="
@@ -28,7 +28,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-5.12[gui,printsupport,widgets,${PYTHON_USEDEP}]
+	<dev-python/PyQt5-5.15.5_pre[gui,printsupport,widgets,${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-sip-4.19.22:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -37,7 +37,7 @@ RDEPEND="
 	~x11-libs/qscintilla-${PV}:=
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.22[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.22:0[${PYTHON_USEDEP}]
 "
 
 S=${WORKDIR}/${MY_P}/Python

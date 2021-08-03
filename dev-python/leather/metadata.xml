@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<bugs-to>https://github.com/wireservice/leather/issues</bugs-to>
 		<changelog>https://github.com/wireservice/leather/commits/master</changelog>

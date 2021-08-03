@@ -13,7 +13,7 @@ SRC_URI="http://www.andre-simon.de/zip/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="examples qt5"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
@@ -42,7 +42,7 @@ myhlopts=(
 	"CXX=$(tc-getCXX)"
 	"AR=$(tc-getAR)"
 	"LDFLAGS=${LDFLAGS}"
-	"CFLAGS=${CXXFLAGS} -DNDEBUG -std=c++11"
+	"CFLAGS=${CXXFLAGS} -DNDEBUG"
 	"DESTDIR=${D}"
 	"PREFIX=${EPREFIX}/usr"
 	"HL_CONFIG_DIR=${EPREFIX}/etc/highlight/"

@@ -10,7 +10,7 @@ inherit perl-module
 LICENSE="Artistic-2"
 DESCRIPTION="Real-time web framework"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 

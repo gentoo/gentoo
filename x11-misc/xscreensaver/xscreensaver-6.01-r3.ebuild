@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools flag-o-matic font multilib optfeature pam
 
 DESCRIPTION="modular screen saver and locker for the X Window System"
@@ -87,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.01-without-gl-makefile.patch
 	"${FILESDIR}"/${PN}-6.01-non-gtk-install.patch
 	"${FILESDIR}"/${PN}-6.01-gtk-detection.patch
+	"${FILESDIR}"/${PN}-6.01-configure-install_sh.patch
 )
 
 src_prepare() {
@@ -126,7 +128,6 @@ src_prepare() {
 
 	# Must be eauto*re*conf, to force the rebuild
 	eautoreconf
-	eautoheader
 }
 
 src_configure() {
@@ -183,7 +184,8 @@ src_compile() {
 }
 
 src_install() {
-	emake install_prefix="${D}" install
+	use pam && dodir /etc/pam.d/
+	emake install_prefix="${D}" DESTDIR="${D}" install
 
 	if use fonts; then
 		# Do not install fonts with unclear licensing
@@ -200,6 +202,7 @@ src_install() {
 	dodoc README{,.hacking}
 
 	if use pam; then
+		rm -f "${ED}/etc/pam.d/xscreensaver" # install our version instead
 		fperms 755 /usr/bin/${PN}
 		pamd_mimic_system ${PN} auth
 	fi

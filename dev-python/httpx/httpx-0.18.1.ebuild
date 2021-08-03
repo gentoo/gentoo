@@ -13,7 +13,7 @@ SRC_URI="https://github.com/encode/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
@@ -29,6 +29,7 @@ BDEPEND="
 		dev-python/hyper-h2[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
+		dev-python/typing-extensions[${PYTHON_USEDEP}]
 		dev-python/uvicorn[${PYTHON_USEDEP}]
 	)
 "

@@ -320,6 +320,8 @@ multilib_src_test() {
 }
 
 pkg_postinst() {
+	tmpfiles_process samba.conf
+
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "Be aware that this release contains the best of all of Samba's"
 		elog "technology parts, both a file server (that you can reasonably expect"

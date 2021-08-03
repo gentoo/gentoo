@@ -15,7 +15,7 @@ else
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Free implementation of the Remote Desktop Protocol"
@@ -87,6 +87,10 @@ BDEPEND="
 		app-text/xmlto
 	) )
 "
+
+PATCHES=(
+	"${FILESDIR}/freerdp-2-openssl-3.0.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

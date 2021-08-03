@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 USE_RUBY="ruby26 ruby25 ruby24"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Apache-2.0 BSD MIT BSD-2 FSFAP unicode"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 IUSE="apache2 berkdb debug doc extras gnome-keyring java kwallet nls perl ruby sasl test"
 RESTRICT="!test? ( test )"
 

@@ -7,7 +7,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="xml"
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/danielveillard.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/danielveillard.asc
 inherit autotools flag-o-matic prefix python-r1 multilib-minimal verify-sig
 
 XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"

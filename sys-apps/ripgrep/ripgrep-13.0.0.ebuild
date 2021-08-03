@@ -99,7 +99,7 @@ src_install() {
 	# hack to find/install generated files
 	# stamp file can be present in multiple dirs if we build additional features
 	# so grab fist match only
-	local BUILD_DIR="$(dirname $(find target/release -name ripgrep-stamp -print -quit))"
+	local BUILD_DIR="$(dirname $(find target/ -name ripgrep-stamp -print -quit))"
 
 	newbashcomp "${BUILD_DIR}"/rg.bash rg
 
