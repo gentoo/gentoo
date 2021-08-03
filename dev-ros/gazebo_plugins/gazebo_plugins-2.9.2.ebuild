@@ -51,4 +51,5 @@ DEPEND="${RDEPEND}
 	dev-ros/rosgraph_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/trajectory_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/moveit_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/visualization_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
