@@ -67,8 +67,7 @@ catkin_src_configure_internal() {
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_INSTALL_DIR="${sitedir#${EPREFIX}/usr/}"
 	)
-	python_export PYTHON_SCRIPTDIR
-	cmake_src_configure
+	PYTHON_SCRIPTDIR="$(python_get_scriptdir)" cmake_src_configure
 }
 
 src_configure() {
@@ -85,12 +84,11 @@ src_compile() {
 }
 
 src_test() {
-	unset PYTHON_SCRIPTDIR
 	python_foreach_impl cmake_src_test
 }
 
 catkin_src_install_internal() {
-	python_export PYTHON_SCRIPTDIR
+	export PYTHON_SCRIPTDIR="$(python_get_scriptdir)"
 	cmake_src_install
 	if [ ! -f "${T}/.catkin_python_symlinks_generated" ]; then
 		dodir /usr/bin
@@ -110,13 +108,4 @@ src_install() {
 	touch "${ED}/usr/.catkin"
 
 	python_foreach_impl python_optimize
-}
-
-pkg_postinst() {
-	ewarn "Starting from version 0.7.1-r2, dev-util/catkin changed the"
-	ewarn "installation path for package.xml files on Gentoo."
-	ewarn "In order for ROS to work properly, you will need to reinstall ROS"
-	ewarn "packages that have it installed in the old location:"
-	ewarn "		emerge -1O /usr/share/*/package.xml"
-	ewarn "See https://bugs.gentoo.org/show_bug.cgi?id=595004 for more details."
 }
