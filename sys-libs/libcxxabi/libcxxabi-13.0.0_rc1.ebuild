@@ -50,8 +50,7 @@ pkg_setup() {
 multilib_src_configure() {
 	# we need a configured libc++ for __config_site
 	wrap_libcxx cmake_src_configure
-	cp -R "${WORKDIR}"/libcxx/include/. \
-		"${BUILD_DIR}"/libcxx/include/c++/v1 || die
+	wrap_libcxx cmake_build generate-cxx-headers
 
 	# link against compiler-rt instead of libgcc if we are using clang with libunwind
 	local want_compiler_rt=OFF
