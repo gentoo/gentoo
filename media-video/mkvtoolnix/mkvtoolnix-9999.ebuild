@@ -89,6 +89,7 @@ src_configure() {
 		$(use_enable dbus)
 		--disable-qt6
 		--enable-qt5
+		--with-qmake=$(qt5_get_bindir)/qmake
 		$(use_with dvd dvdread)
 		$(use_with nls gettext)
 		$(usex nls "" --with-po4a-translate=false)
@@ -96,14 +97,6 @@ src_configure() {
 		--disable-optimization
 		--with-boost="${ESYSROOT}"/usr
 		--with-boost-libdir="${ESYSROOT}"/usr/$(get_libdir)
-	)
-
-	# ac/qt5.m4 finds default Qt version set by qtchooser, bug #532600
-	myeconfargs+=(
-		--with-moc=$(qt5_get_bindir)/moc
-		--with-uic=$(qt5_get_bindir)/uic
-		--with-rcc=$(qt5_get_bindir)/rcc
-		--with-qmake=$(qt5_get_bindir)/qmake
 	)
 
 	econf "${myeconfargs[@]}"
