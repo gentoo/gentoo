@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-cpp/eigen:3
-	test? ( dev-ros/rosbag dev-ros/rostest dev-ros/rosunit )
+	test? ( dev-ros/rosbag dev-ros/rostest dev-ros/rosunit dev-cpp/gtest )
 "
 BDEPEND="dev-ros/roslint"
 
