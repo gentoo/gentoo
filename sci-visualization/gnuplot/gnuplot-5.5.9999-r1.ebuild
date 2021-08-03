@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-LUA_COMPAT=( lua5-{1,2,3} )
+LUA_COMPAT=( lua5-{1,2,3,4} )
 WX_GTK_VER="3.0-gtk3"
 
 inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
@@ -70,13 +70,13 @@ BDEPEND="
 		app-text/ghostscript-gpl )
 	qt5? ( dev-qt/linguist-tools:5 )"
 
+IDEPEND="latex? ( virtual/latex-base )"
+
 GP_VERSION="${PV%.*}"
-E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
-	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
+	"${FILESDIR}"/${PN}-5.5-no-picins.patch
 )
 
 pkg_setup() {
