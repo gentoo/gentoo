@@ -21,7 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+bwscheduler +downloadorder +infowidget +ipfilter +kross +logviewer +magnetgenerator
 +mediaplayer rss +scanfolder +shutdown +stats +upnp +webengine +zeroconf"
 
-BDEPEND="sys-devel/gettext"
 COMMON_DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
@@ -76,6 +75,9 @@ RDEPEND="${COMMON_DEPEND}
 		>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	)
 "
+BDEPEND="sys-devel/gettext"
+
+PATCHES=( "${FILESDIR}/${P}-fix-tests.patch" )
 
 src_configure() {
 	local mycmakeargs=(
