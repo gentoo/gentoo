@@ -580,12 +580,6 @@ dev-java/werken-xpath
 # bug #737406
 =media-fonts/culmus-0.133-r1
 
-# Lars Wendler <polynomial-c@gentoo.org> (2021-03-22)
-# On fast CPUs eautoreconf skips intermediate steps,
-# enables maintainer-mode or fails automake assertions:
-# bug #782985
-sys-devel/autoconf:2.71
-
 # Sam James <sam@gentoo.org> (2021-03-03)
 # Doesn't seem to sync clock correctly
 # in some cases.
