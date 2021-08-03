@@ -9,14 +9,16 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/introlab/rtabmap"
 fi
 
-inherit ${SCM} cmake-utils multilib
+inherit ${SCM} cmake multilib
+
+VER_SUFFIX=rolling
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/introlab/rtabmap/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${P}"
+	SRC_URI="https://github.com/introlab/rtabmap/archive/${PV}-${VER_SUFFIX}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${P}-${VER_SUFFIX}"
 fi
 
 DESCRIPTION="Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)"
@@ -51,11 +53,11 @@ src_configure() {
 		"-DWITH_OPENNI2=$(usex openni2 ON OFF)"
 		"-DBUILD_EXAMPLES=$(usex examples ON OFF)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	# Needed since we force ros crawling to be done only in
 	# /usr/share/ros_packages/
 	insinto /usr/share/ros_packages/${PN}
