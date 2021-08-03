@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 	test? (
 		dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
+		dev-ros/rosnode[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 	)"
 RDEPEND="${RDEPEND}
