@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-{1,2,3,4} )
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
