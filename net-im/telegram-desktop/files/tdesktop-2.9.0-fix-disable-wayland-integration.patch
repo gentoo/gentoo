@@ -1,0 +1,11 @@
+--- tdesktop-2.9.0-full.orig/Telegram/lib_ui/ui/platform/linux/ui_linux_wayland_integration_dummy.cpp
++++ tdesktop-2.9.0-full/Telegram/lib_ui/ui/platform/linux/ui_linux_wayland_integration_dummy.cpp
+@@ -18,6 +18,8 @@
+ WaylandIntegration::WaylandIntegration() {
+ }
+ 
++WaylandIntegration::~WaylandIntegration() = default;
++
+ WaylandIntegration *WaylandIntegration::Instance() {
+ 	if (!::Platform::IsWayland()) return nullptr;
+ 	static WaylandIntegration instance;
