@@ -51,3 +51,6 @@ net-firewall/nftables json python xtables
 
 # Required by dev-qt/qtwebengine:5
 sys-libs/zlib minizip
+
+# Required by kde-plasma/kwin; >=1.20.13-r1 has dropped the flag
+<x11-base/xorg-server-1.20.13-r1 wayland
