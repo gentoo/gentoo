@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
@@ -16,26 +17,31 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="gtk"
 
-RDEPEND="
-	>=net-misc/networkmanager-1.2:=
+DEPEND="
 	>=dev-libs/glib-2.32:2
-	net-dialup/ppp:=
-	>=net-vpn/openfortivpn-1.2.0
+	>=net-misc/networkmanager-1.2:=
 	gtk? (
 		>=app-crypt/libsecret-0.18
+		media-libs/harfbuzz
 		>=net-libs/libnma-1.2.0
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-3.4:3
+		x11-libs/pango
 	)
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${RDEPEND}
+	net-dialup/ppp
+	>=net-vpn/openfortivpn-1.2.0"
 BDEPEND="dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.19
 	virtual/pkgconfig"
 
 src_prepare() {
-	sed -i 's/\/appdata/\/metainfo/g' Makefile.am
+	default
 
-	eapply_user
+	# Fix deprecated location, #709450
+	sed -i 's|/appdata|/metainfo|g' Makefile.{in,am} || die
 }
 
 src_configure() {
