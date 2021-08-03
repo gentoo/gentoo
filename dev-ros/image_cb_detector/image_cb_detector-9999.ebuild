@@ -30,4 +30,4 @@ DEPEND="${RDEPEND}
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/calibration_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
-PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/c11.patch" )
+PATCHES=( "${FILESDIR}/gcc6.patch" "${FILESDIR}/c11.patch" "${FILESDIR}/py3.patch" )
