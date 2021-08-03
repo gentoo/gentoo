@@ -29,14 +29,14 @@ RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
 	dev-cpp/glibmm:2
-	dev-libs/jemalloc:=
+	dev-libs/jemalloc:=[-lazy-lock]
 	dev-libs/xxhash
 	>=dev-qt/qtcore-5.15:5
-	>=dev-qt/qtgui-5.15:5[dbus?,jpeg,png,wayland?,X(-)?]
+	>=dev-qt/qtgui-5.15:5[dbus?,jpeg,png,wayland?,X?]
 	>=dev-qt/qtimageformats-5.15:5
 	>=dev-qt/qtnetwork-5.15:5[ssl]
 	>=dev-qt/qtsvg-5.15:5
-	>=dev-qt/qtwidgets-5.15:5[png,X(-)?]
+	>=dev-qt/qtwidgets-5.15:5[png,X?]
 	media-fonts/open-sans
 	media-libs/fontconfig:=
 	~media-libs/libtgvoip-2.4.4_p20210302
