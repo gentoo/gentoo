@@ -211,6 +211,8 @@ src_prepare() {
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
+	eapply "${FILESDIR}/${P}-configure-include-qt5-path.patch" #805365
+
 	eapply "${WORKDIR}/patches"
 
 	default
