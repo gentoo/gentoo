@@ -51,6 +51,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake_use_find_package audit Audit)
 		$(cmake_use_find_package systemd Journald)
 	)
 	ecm_src_configure
