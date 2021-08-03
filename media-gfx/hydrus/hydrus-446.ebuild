@@ -25,7 +25,7 @@ fi
 # icons included are CC-BY-2.5
 LICENSE="WTFPL-2 CC-BY-2.5"
 SLOT="0"
-IUSE="+cloudscraper +ffmpeg +lz4 charts socks test +mpv"
+IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="!test? ( test )"
@@ -33,18 +33,19 @@ RESTRICT="!test? ( test )"
 # RDEPEND is sorted as such:
 # - No specific requirements
 # - Specific version or slot
-# - Depends on use flags
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/cloudscraper[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/pyside2[widgets,gui,charts?,${PYTHON_USEDEP}]
+		dev-python/pyside2[widgets,gui,${PYTHON_USEDEP}]
+		dev-python/python-mpv[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/send2trash[${PYTHON_USEDEP}]
@@ -52,21 +53,11 @@ RDEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/twisted[${PYTHON_USEDEP}]
 		media-libs/opencv[python,png,jpeg,${PYTHON_USEDEP}]
+		media-video/ffmpeg
+		media-video/mpv[libmpv,${PYTHON_USEDEP}]
 
 		>=dev-python/QtPy-1.9.0-r4[pyside2,${PYTHON_USEDEP}]
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
-
-		cloudscraper? ( dev-python/cloudscraper[${PYTHON_USEDEP}] )
-		ffmpeg? ( media-video/ffmpeg )
-		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
-		mpv? (
-			media-video/mpv[libmpv,${PYTHON_USEDEP}]
-			dev-python/python-mpv[${PYTHON_USEDEP}]
-		)
-		socks? (
-			|| ( dev-python/requests[socks5,${PYTHON_USEDEP}]
-				dev-python/PySocks[${PYTHON_USEDEP}] )
-		)
 	')
 "
 BDEPEND="
@@ -141,5 +132,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "support for automatic port forwarding" "net-libs/miniupnpc"
+	optfeature "automatic port forwarding support" "net-libs/miniupnpc"
+	optfeature "bandwidth charts support" "dev-python/pyside2[charts]"
+	optfeature "memory compression in the client" "dev-python/lz4"
+	optfeature "SOCKS proxy support" "dev-python/requests[socks5]" "dev-python/PySocks"
 }

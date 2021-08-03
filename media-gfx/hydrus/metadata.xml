@@ -14,13 +14,5 @@
 		with tags instead of folders, a little like a booru on your desktop. Advanced users can share tags and files
 		anonymously through custom servers that any user may run
 	</longdescription>
-	<use>
-		<flag name="charts">Support for bandwidth charts</flag>
-		<flag name="cloudscraper">Support working around cloudflare anti-bot page</flag>
-		<flag name="ffmpeg">Show duration and other information on video thumbnails</flag>
-		<flag name="lz4">Enable memory compression in the client</flag>
-		<flag name="mpv">Support playing videos with libmpv</flag>
-		<flag name="socks">Support SOCKS proxies</flag>
-	</use>
 	<stabilize-allarches/>
 </pkgmetadata>
