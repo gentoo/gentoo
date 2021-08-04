@@ -110,7 +110,11 @@ src_prepare() {
 
 src_configure() {
 	local myconf
+
 	append-flags -fno-lto
+	# bug #786702
+	append-cxxflags -std=c++14
+
 	tc-export CC
 	tc-export CXX
 	tc-export AR
