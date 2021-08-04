@@ -29,14 +29,18 @@ _VIRTUALX_ECLASS=1
 : ${VIRTUALX_REQUIRED:=test}
 
 # @ECLASS-VARIABLE: VIRTUALX_DEPEND
+# @OUTPUT_VARIABLE
 # @DESCRIPTION:
-# Dep string available for use outside of eclass, in case a more
-# complicated dep is needed.
-# You can specify the variable BEFORE inherit to add more dependencies.
-VIRTUALX_DEPEND="${VIRTUALX_DEPEND}
+# Standard dependencies string that is automatically added to BDEPEND
+# (in EAPI-6: DEPEND) unless VIRTUALX_REQUIRED is set to "manual".
+# DEPRECATED: Pre-EAPI-8 you can specify the variable BEFORE inherit
+# to add more dependencies.
+[[ ${EAPI} != [67] ]] && VIRTUALX_DEPEND=""
+VIRTUALX_DEPEND+="
 	x11-base/xorg-server[xvfb]
 	x11-apps/xhost
 "
+[[ ${EAPI} != [67] ]] && readonly VIRTUALX_DEPEND
 
 # @ECLASS-VARIABLE: VIRTUALX_COMMAND
 # @DESCRIPTION:
