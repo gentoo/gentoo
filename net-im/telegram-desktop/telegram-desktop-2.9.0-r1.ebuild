@@ -99,12 +99,12 @@ src_configure() {
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DCMAKE_DISABLE_FIND_PACKAGE_tl-expected=ON  # header only lib, some git version. prevents warnings.
 
-		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex X)
-		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland)
-		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus)
-		-DDESKTOP_APP_DISABLE_GTK_INTEGRATION=$(usex gtk)
-		-DDESKTOP_APP_DISABLE_WEBKITGTK=$(usex webkit)
-		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell)  # enables hunspell (recommended)
+		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex X no yes)
+		-DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=$(usex wayland no yes)
+		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=$(usex dbus no yes)
+		-DDESKTOP_APP_DISABLE_GTK_INTEGRATION=$(usex gtk no yes)
+		-DDESKTOP_APP_DISABLE_WEBKITGTK=$(usex webkit no yes)
+		-DDESKTOP_APP_DISABLE_SPELLCHECK=$(usex spell no yes)  # enables hunspell (recommended)
 		-DDESKTOP_APP_USE_ENCHANT=$(usex enchant)  # enables enchant and disables hunspell
 	)
 
