@@ -1,12 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Network Security Analysis Tool, an application-level network security scanner"
 HOMEPAGE="http://nsat.sourceforge.net/"
 SRC_URI="mirror://sourceforge/nsat/${P}.tgz"
+S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +19,7 @@ RDEPEND="
 	dev-libs/libmix
 	net-libs/libnsl:0=
 	net-libs/libpcap
-	net-libs/libtirpc
+	net-libs/libtirpc:=
 	net-libs/rpcsvc-proto
 	X? (
 		dev-lang/tk:*
@@ -25,7 +27,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
-S="${WORKDIR}/${PN}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-configure.patch
 	"${FILESDIR}"/${P}-lvalue-gcc4.patch
@@ -34,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-va_list.patch
 	"${FILESDIR}"/${P}-libtirpc.patch
 	"${FILESDIR}"/${P}-amd64-compat.patch
+	"${FILESDIR}"/${P}-configure-dash.patch
 )
 
 src_prepare() {
@@ -47,6 +50,8 @@ src_prepare() {
 		-e "s:/usr/local/share/nsat/nsat.conf:/etc/nsat/nsat.conf:g" \
 		-e "s:/usr/local/share/nsat/nsat.cgi:/usr/share/nsat/nsat.cgi:g" \
 		src/lang.h || die
+
+	mv configure.{in,ac} || die
 
 	eautoreconf
 }
