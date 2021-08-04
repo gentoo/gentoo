@@ -14,7 +14,7 @@ SRC_URI="mirror://ubuntu/pool/main/p/${PN}/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="crypt"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
