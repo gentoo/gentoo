@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/glib-2.36:2
 	>=net-libs/gssdp-1.2:0=
 	>=net-libs/gupnp-1.2:0=
-	>=net-libs/gupnp-av-0.11.5
+	>=net-libs/gupnp-av-0.11.5:=
 	>=media-libs/gupnp-dlna-0.9.4:2.0=
 	>=net-libs/libsoup-2.28.2:2.4
 	>=net-libs/dleyna-core-0.6.0:1.0=
