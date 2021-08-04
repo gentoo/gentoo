@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-08-04)
+# Last release 7 years ago, multiple test failures, unmaintained,
+# last distro that still packages this.
+# Bug #629610, #646690, removal in 30 days.
+dev-libs/hyperleveldb
+dev-libs/replicant
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-02)
 # Two years after the tracker was opened it is time to mask dev-qt/qtwebkit
 # for good. No commits to upstream repository for >9 months, latest available
