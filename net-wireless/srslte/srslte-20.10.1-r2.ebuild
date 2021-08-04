@@ -39,6 +39,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-20.10.1-add-missing-include.patch
+)
+
 src_prepare() {
 	sed -i '/ -Werror"/d' CMakeLists.txt || die
 	cmake_src_prepare
