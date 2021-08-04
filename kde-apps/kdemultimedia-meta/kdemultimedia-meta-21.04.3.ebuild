@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/multimedia/ https://multimedia.kde.org/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+cdrom +ffmpeg gstreamer"
 
 RDEPEND="
