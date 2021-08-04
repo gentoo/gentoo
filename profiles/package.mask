@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
+# Last release 11 years ago, XDG env issue, no revdeps, blocks
+# WANT_AUTOMAKE=1.11 removal, last major distro to package this.
+# Bug #586586, removal in 30 days.
+media-libs/memphis
+
+# David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release 16 years ago, multiple build failures, unmaintained,
 # upstream disappeared, last distro that still packages this.
 # Bug #722376, #742938, #742941, removal in 30 days.
