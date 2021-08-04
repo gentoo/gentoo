@@ -5,7 +5,7 @@ EAPI=7
 
 LUA_COMPAT=( lua5-{1..3} )
 
-inherit autotools lua-single toolchain-funcs
+inherit autotools flag-o-matic lua-single toolchain-funcs
 
 DESCRIPTION="Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees"
 HOMEPAGE="http://www.p4est.org/"
@@ -26,34 +26,31 @@ LICENSE="GPL-2+"
 SLOT="0"
 
 # TODO petsc
-IUSE="debug doc examples mpi openmp romio static-libs threads +vtk-binary"
+IUSE="debug doc examples mpi openmp romio threads +vtk-binary"
 REQUIRED_USE="${LUA_REQUIRED_USE}
 	romio? ( mpi )"
 
 RDEPEND="${LUA_DEPS}
-	~sci-libs/libsc-${PV}[${LUA_SINGLE_USEDEP},mpi=,openmp=,romio=,static-libs=,threads=]
+	~sci-libs/libsc-${PV}[${LUA_SINGLE_USEDEP},mpi=,openmp=,romio=,threads=]
 	sys-apps/util-linux
 	virtual/blas
 	virtual/lapack
 	mpi? ( virtual/mpi[romio=] )"
-
-DEPEND="
-	${RDEPEND}
-	sys-devel/automake
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-fix_aclocal.patch
 	"${FILESDIR}"/${PN}-2.3-add_soname.patch
 )
 
-DOCS=( AUTHORS NEWS README )
-
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp; then
-		tc-has-openmp || \
-			die "Please select an openmp capable compiler like gcc[openmp]"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -82,19 +79,19 @@ src_prepare() {
 
 src_configure() {
 	# avoid underlinkage
-	LDFLAGS="${LDFLAGS} -lsc"
+	append-libs -lsc
 
 	local myeconfargs=(
+		--disable-static
 		$(use_enable debug)
 		$(use_enable mpi)
 		$(use_enable openmp)
 		$(use_enable romio mpiio)
-		$(use_enable static-libs static)
 		$(use_enable threads pthread)
 		$(use_enable vtk-binary)
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
-		--with-sc="${EPREFIX}/usr"
+		--with-sc="${ESYSROOT}/usr"
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -119,4 +116,7 @@ src_install() {
 	mv "${ED}"/usr/share/data "${ED}"/usr/share/p4est/data || die "mv failed"
 	mv "${ED}"/etc/* "${ED}"/usr/share/p4est || die "mv failed"
 	rmdir "${ED}"/etc/ || die "rmdir failed"
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
