@@ -6,7 +6,7 @@ EAPI=7
 LUA_COMPAT=( lua5-{1,2,3} )
 WX_GTK_VER="3.0-gtk3"
 
-inherit autotools flag-o-matic lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools lua-single readme.gentoo-r1 toolchain-funcs wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
@@ -75,7 +75,6 @@ E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
 	"${FILESDIR}"/${PN}-5.0.6-no-picins.patch
 )
 
