@@ -1,4 +1,6 @@
 Allow user to specify AR. Derive ar from --host=.
+
+Bug: https://bugs.gentoo.org/730796
 --- a/configure.in
 +++ b/configure.in
 @@ -14,6 +14,7 @@ AC_PROG_INSTALL
