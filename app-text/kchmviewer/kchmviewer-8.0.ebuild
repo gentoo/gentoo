@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-underlinking.patch"
 	"${FILESDIR}/${P}-custom-url-scheme-registration.patch"
+	"${FILESDIR}/${P}-no-qtwebkit.patch"
 )
 
 src_configure() {
