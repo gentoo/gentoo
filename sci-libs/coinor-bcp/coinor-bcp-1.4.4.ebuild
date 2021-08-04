@@ -25,6 +25,10 @@ BDEPEND="
 	doc? ( app-doc/doxygen[dot] )
 	test? ( sci-libs/coinor-sample )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc11-exceptions.patch
+)
+
 src_prepare() {
 	default
 	# Prevent unneeded call to pkg-config that needs ${ED}'s in path.
