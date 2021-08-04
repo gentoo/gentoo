@@ -6,7 +6,7 @@ inherit flag-o-matic multilib systemd toolchain-funcs udev
 
 DESCRIPTION="Tool for running RAID systems - replacement for the raidtools"
 HOMEPAGE="https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git/"
-DEB_PF="4.1-11"
+DEB_PF="4.2~rc2-1"
 SRC_URI="https://www.kernel.org/pub/linux/utils/raid/mdadm/${P/_/-}.tar.xz
 		mirror://debian/pool/main/m/mdadm/${PN}_${DEB_PF}.debian.tar.xz"
 
