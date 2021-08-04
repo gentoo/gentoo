@@ -469,7 +469,6 @@ src_test() {
 		emailAddress			= Email Address
 		emailAddress_max		= 64
 
-
 		[default_conf]
 		ssl_conf = ssl_sect
 
@@ -482,7 +481,6 @@ src_test() {
 
 		local -x OPENSSL_CONF="${T}/openssl_tlsv1.cnf"
 
-		# no need to force dep app-arch/zip for one test
 		disabled_tests+=( "x.connection_tls_version;0;Not compatible with OpenSSL 3.x error messages" )
 	fi
 
