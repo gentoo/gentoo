@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2021-08-04)
+# Fails to build with GCC 11. No activity upstream since 2008.
+# bug #730692, bug #787866. Removal on 2021-09-04.
+dev-scheme/ypsilon
+
+# Sam James <sam@gentoo.org> (2021-08-04)
 # Fails to build with GCC 11. Library with no reverse-dependencies.
 # bug #731254, bug #787905. Removal on 2021-09-04.
 net-libs/openmq-cclient
