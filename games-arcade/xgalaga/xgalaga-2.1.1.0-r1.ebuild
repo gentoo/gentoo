@@ -41,10 +41,6 @@ src_prepare() {
 		-e "/SOUNDDEFS/ s:(SOUNDSRVDIR):(SOUNDSRVDIR)/bin:" \
 		-e 's:make ;:$(MAKE) ;:' \
 		Makefile.in || die "sed Makefile.in failed"
-
-	sed -i \
-		-e 's/AR = ar/AR = @AR@/' \
-		libsprite/Makefile.in || die
 }
 
 src_install() {
