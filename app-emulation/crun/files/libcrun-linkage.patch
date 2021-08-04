@@ -1,0 +1,29 @@
+From 7cfdf094071fcff038bab573c1eeee599fa17b16 Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Mon, 2 Aug 2021 03:53:25 -0700
+Subject: [PATCH] Makefile.am: link libcrun to $(FOUND_LIBS)
+
+otherwise libcrun consumers fail at runtime with
+symbol lookup errors
+
+Closes: https://github.com/containers/crun/issues/711
+Issue: https://github.com/containers/crun/issues/340
+Downstream-bug: https://bugs.gentoo.org/717750
+Signed-off-by: Georgy Yakovlev <gyakovlev@gentoo.org>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 150e933a..7e5a4406 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -46,7 +46,7 @@ libocispec/libocispec.la:
+ 
+ libcrun_la_SOURCES = $(libcrun_SOURCES)
+ libcrun_la_CFLAGS = -I $(abs_top_builddir)/libocispec/src -I $(abs_top_srcdir)/libocispec/src -fvisibility=hidden
+-libcrun_la_LIBADD = libocispec/libocispec.la $(maybe_libyajl.la)
++libcrun_la_LIBADD = libocispec/libocispec.la $(FOUND_LIBS) $(maybe_libyajl.la)
+ libcrun_la_LDFLAGS = -Wl,--version-script=$(abs_top_srcdir)/libcrun.lds
+ 
+ # build a version with all the symbols visible for testing
