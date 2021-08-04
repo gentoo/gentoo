@@ -42,11 +42,7 @@ VIRTUALX_DEPEND+="
 "
 [[ ${EAPI} != [67] ]] && readonly VIRTUALX_DEPEND
 
-# @ECLASS-VARIABLE: VIRTUALX_COMMAND
-# @DESCRIPTION:
-# Command (or eclass function call) to be run in the X11 environment
-# (within virtualmake function).
-: ${VIRTUALX_COMMAND:="emake"}
+[[ ${VIRTUALX_COMMAND} ]] && die "VIRTUALX_COMMAND has been removed and is a no-op"
 
 case ${VIRTUALX_REQUIRED} in
 	manual)
