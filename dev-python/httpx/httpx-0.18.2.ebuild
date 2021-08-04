@@ -7,7 +7,7 @@ EAPI=7
 # DOCS_BUILDER="mkdocs"
 # DOCS_DEPEND="dev-python/mkdocs-material"
 # DOCS_AUTODOC=1
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 # docs
 
