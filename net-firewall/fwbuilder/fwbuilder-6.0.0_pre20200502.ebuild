@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix_version.patch
-	"${FILESDIR}"/${PN}-6.0.0_p20200502-drop-Werror.patch
+	"${FILESDIR}"/${PN}-6.0.0_pre20200502-drop-Werror.patch
 )
 
 src_install() {
