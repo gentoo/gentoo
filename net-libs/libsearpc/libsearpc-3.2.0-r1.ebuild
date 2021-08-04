@@ -1,11 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=(python3_{8,9})
-
-WANT_AUTOMAKE=1.16
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit autotools python-single-r1
 
@@ -16,7 +14,6 @@ SRC_URI="https://github.com/haiwen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
@@ -35,6 +32,6 @@ src_prepare() {
 
 src_install() {
 	default
-	# Remove unnecessary .la and .a files
-	find "${ED}" -name '*.la' -o -name '*.a' -delete || die
+	# Remove unnecessary .la files
+	find "${ED}" -name '*.la' -delete || die
 }
