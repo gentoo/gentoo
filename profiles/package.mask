@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
+# Last release 16 years ago, multiple build failures, unmaintained,
+# upstream disappeared, last distro that still packages this.
+# Bug #722376, #742938, #742941, removal in 30 days.
+app-i18n/libtabe
+app-i18n/xcin
+
+# David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release 7 years ago, multiple test failures, unmaintained,
 # last distro that still packages this.
 # Bug #629610, #646690, removal in 30 days.
