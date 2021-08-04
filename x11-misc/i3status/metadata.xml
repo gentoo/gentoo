@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>slyfox@gentoo.org</email>
-		<name>Sergei Trofimovich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		i3status is a small program (about 1500 SLOC) for generating a status bar for
 		dzen2, xmobar or similar programs. It is designed to be very efficient by
