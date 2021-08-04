@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>TDLib (Telegram Database Library) is a
+cross-platform, fully functional Telegam client, designed by Telegram
+to help third-party developers create their own custom applications
+using the Telegram platform.
+  </longdescription>
+  <use>
+    <flag name="clang">Compile using Clang</flag>
+    <flag name="cli">Install tg_cli</flag>
+    <flag name="gcc">Compile using GCC</flag>
+    <flag name="low-ram">Split source files during compilation (for systems with less than 3.5G RAM)</flag>
+    <flag name="lto">Enable Link Time Optimization</flag>
+  </use>
+  <upstream>
+    <remote-id type="github">td/tdlib</remote-id>
+  </upstream>
+</pkgmetadata>
