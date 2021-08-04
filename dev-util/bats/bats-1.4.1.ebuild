@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit optfeature
+inherit multiprocessing optfeature
 
 MY_PN="bats-core"
 DESCRIPTION="Bats-core: Bash Automated Testing System"
@@ -20,7 +20,11 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_test() {
-	bin/bats --tap test || die "Tests failed"
+	local my_jobs=$(makeopts_jobs)
+	if ! command -v parallel; then
+		my_jobs=1
+	fi
+	bin/bats --tap --jobs "$my_jobs" test || die "Tests failed"
 }
 
 src_install() {
