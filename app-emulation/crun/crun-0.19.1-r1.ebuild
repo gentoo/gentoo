@@ -36,6 +36,15 @@ RESTRICT="test"
 
 DOCS=( README.md )
 
+PATCHES=( "${FILESDIR}/libcrun-linkage.patch" )
+
+src_prepare() {
+	default
+
+	# for libcrun-linkage.patch
+	eautoreconf
+}
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable bpf)
