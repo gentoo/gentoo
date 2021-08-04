@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=KKANE
 inherit perl-module
@@ -10,17 +10,18 @@ DESCRIPTION="A simple client for interacting with RESTful http/https resources"
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/LWP-Protocol-https
 	dev-perl/libwww-perl
 	dev-perl/URI
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
-	test? ( virtual/perl-Test-Simple )
+	test? (
+		dev-perl/HTTP-Server-Simple
+		virtual/perl-Test-Simple
+	)
 "
 
 src_prepare() {
