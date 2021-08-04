@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..10} pypy3 )
+PYTHON_COMPAT=( python3_{8..10} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~riscv ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
