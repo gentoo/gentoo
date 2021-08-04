@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="pcap">Support sniffing packets from network using <pkg>net-libs/libpcap</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">duncanthrax/scream</remote-id>
 	</upstream>
