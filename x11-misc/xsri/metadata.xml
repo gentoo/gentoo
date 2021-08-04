@@ -5,8 +5,4 @@
 	<email>desktop-misc@gentoo.org</email>
 	<name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
-<maintainer type="person">
-	<email>slyfox@gentoo.org</email>
-	<name>Sergei Trofimovich</name>
-</maintainer>
 </pkgmetadata>
