@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,11 @@ DEPEND="
 	sys-libs/zlib:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/2.2.8-gcc11.patch"
+	"${FILESDIR}/2.2.8-warnings.patch"
+)
 
 src_prepare() {
 	default
