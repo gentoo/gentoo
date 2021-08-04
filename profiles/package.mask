@@ -475,6 +475,7 @@ dev-java/jibx-tools
 # Masked for revdep testing.
 >=dev-python/sip-6
 >=dev-python/PyQt5-5.15.5_pre
+>=dev-python/qscintilla-python-2.13
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-14)
 # DeprecatedDep jre-1.3, upstream dead,removal in 30 days
