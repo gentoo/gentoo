@@ -34,6 +34,11 @@
 
 # Sam James <sam@gentoo.org> (2021-08-04)
 # Fails to build with GCC 11, no activity upstream.
+# bug #786738. Removal on 2021-09-04.
+app-dicts/kasumi
+
+# Sam James <sam@gentoo.org> (2021-08-04)
+# Fails to build with GCC 11, no activity upstream.
 # bug #729106, bug #786648. Removal on 2021-09-04.
 app-backup/zbackup
 
