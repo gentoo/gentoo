@@ -611,7 +611,6 @@ src_test() {
 		emailAddress			= Email Address
 		emailAddress_max		= 64
 
-
 		[default_conf]
 		ssl_conf = ssl_sect
 
