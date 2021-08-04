@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-08-04)
+# Fails to build with GCC 11 and has Boost incompatibility issues.
+# bug #741646, bug #792993. Removal on 2021-09-04.
+sci-physics/sassena
+
 # David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
