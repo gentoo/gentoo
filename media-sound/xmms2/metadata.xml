@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>slyfox@gentoo.org</email>
-		<name>Sergei Trofimovich</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		It features a client-server model, allowing multiple (even simultaneous!) user
 		interfaces, both textual and graphical. All common audio formats are supported
