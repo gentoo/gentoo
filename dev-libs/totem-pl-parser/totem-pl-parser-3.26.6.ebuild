@@ -36,6 +36,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-plparser-Fix-uninitialized-variable-error.patch
+)
+
 src_prepare() {
 	# Disable tests requiring network access, bug #346127
 	# 3rd test fails on upgrade, not once installed
