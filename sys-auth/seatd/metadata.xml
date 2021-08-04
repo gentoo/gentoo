@@ -9,4 +9,8 @@
 	<email>proxy-maint@gentoo.org</email>
 	<name>Proxy Maintainers</name>
 </maintainer>
+<use>
+	<flag name="builtin">Enable embedded server in libseat</flag>
+	<flag name="server">Enable standalone seatd server</flag>
+</use>
 </pkgmetadata>
