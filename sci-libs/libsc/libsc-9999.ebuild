@@ -10,11 +10,10 @@ inherit autotools lua-single toolchain-funcs
 DESCRIPTION="Support for parallel scientific applications"
 HOMEPAGE="http://www.p4est.org/"
 
-if [[ ${PV} = *9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/cburstedde/${PN}.git"
 	EGIT_BRANCH="develop"
-	SRC_URI=""
 else
 	SRC_URI="https://github.com/cburstedde/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -22,34 +21,31 @@ fi
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="debug examples mpi openmp romio static-libs threads"
-
-REQUIRED_USE="${LUA_REQUIRED_USE}
+IUSE="debug examples mpi openmp romio threads"
+REQUIRED_USE="
+	${LUA_REQUIRED_USE}
 	romio? ( mpi )"
 
-RDEPEND="${LUA_DEPS}
+RDEPEND="
+	${LUA_DEPS}
 	sys-apps/util-linux
 	virtual/blas
 	virtual/lapack
 	mpi? ( virtual/mpi[romio?] )"
-
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999_20201220-autoconf_lua_version.patch
 )
 
-DOCS=( AUTHORS NEWS README )
-
-AUTOTOOLS_AUTORECONF=true
-
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != "binary" ]] && use openmp; then
-		tc-has-openmp || \
-			die "Please select an openmp capable compiler like gcc[openmp]"
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	lua-single_pkg_setup
 }
 
 src_prepare() {
@@ -64,11 +60,11 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		$(use_enable debug)
 		$(use_enable mpi)
 		$(use_enable openmp openmp)
 		$(use_enable romio mpiio)
-		$(use_enable static-libs static)
 		$(use_enable threads pthread)
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)"
 		--with-lapack="$($(tc-getPKG_CONFIG) --libs lapack)"
@@ -97,4 +93,7 @@ src_install() {
 	rmdir "${ED}"/etc/ || die "rmdir failed"
 	mv "${ED}"/usr/share/ini/* "${ED}"/usr/share/libsc || die "mv failed"
 	rmdir "${ED}"/usr/share/ini || die "rmdir failed"
+
+	# no static archives
+	find "${ED}" -name '*.la' -delete || die
 }
