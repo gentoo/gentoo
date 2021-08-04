@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-08-04)
+# Last release over 4 years ago, upstream pretty much dead, the
+# ecosystem has switched to dev-util/pkgconf, which is alive. Testing
+# and prefix bugs, blocks WANT_AUTOMAKE=1.12 removal.
+# Bug #245228, #632124, #691268, #767853, removal in 30 days.
+dev-util/pkgconfig
+
+# David Seifert <soap@gentoo.org> (2021-08-04)
 # Last release 11 years ago, XDG env issue, no revdeps, blocks
 # WANT_AUTOMAKE=1.11 removal, last major distro to package this.
 # Bug #586586, removal in 30 days.
