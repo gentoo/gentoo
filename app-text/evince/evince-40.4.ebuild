@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome.org meson systemd xdg
+inherit gnome.org gnome2-utils meson systemd xdg
 
 DESCRIPTION="Simple document viewer for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evince"
@@ -70,7 +70,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# Do not depend on adwaita-icon-theme, bug #326855, #391859
 	# https://gitlab.freedesktop.org/xdg/default-icon-theme/issues/7
@@ -114,14 +114,12 @@ src_configure() {
 	meson_src_configure
 }
 
-src_compile() {
-	meson_src_compile
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
 }
 
-src_test() {
-	meson_src_test
-}
-
-src_install() {
-	meson_src_install
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_schemas_update
 }
