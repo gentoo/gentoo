@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 IUSE="+alsa pulseaudio screencast +X"
 REQUIRED_USE="pulseaudio? ( alsa )"
 
