@@ -25,10 +25,12 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
 
+# x11-libs/libdrm[video_cards_intel] for intel_bufmgr.h in samples
+# bug #805224
 DEPEND="
 	>=x11-libs/libva-intel-media-driver-${PV}
+	x11-libs/libdrm[video_cards_intel]
 "
 RDEPEND="${DEPEND}"
 
