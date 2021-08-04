@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python3_{8,9})
-
-WANT_AUTOMAKE=1.16
+PYTHON_COMPAT=( python3_{8..9} )
 
 inherit autotools python-single-r1 vala
 
