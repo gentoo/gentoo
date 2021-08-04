@@ -53,7 +53,7 @@ net-misc/asterisk -blocks
 sys-libs/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 sys-libs/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 sys-libs/compiler-rt-sanitizers -gwp-asan
-sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -profile -xray
+sys-libs/compiler-rt-sanitizers -libfuzzer -memprof -orc -profile -xray
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
