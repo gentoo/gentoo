@@ -472,11 +472,6 @@ sys-libs/db:5.1
 # Removal on 2021-07-27
 media-sound/loudness-scanner
 
-# Marek Szuba <marecki@genoo.org> (2021-06-25)
-# Unslotted version conflicting with lua eclasses.
-# No revdeps left. EAPI 5. Removal in 30 days (Bug #798693)
-dev-lang/lua:0
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
 # library with no consumer, removal in 30 days
 # see https://bugs.gentoo.org/794562
