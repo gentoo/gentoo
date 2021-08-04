@@ -68,6 +68,9 @@ sci-physics/sassena
 # Last release over 4 years ago, upstream pretty much dead, the
 # ecosystem has switched to dev-util/pkgconf, which is alive. Testing
 # and prefix bugs, blocks WANT_AUTOMAKE=1.12 removal.
+# (If you hit blockers, please run:
+# $ emerge --deselect dev-util/pkgconfig
+# This is necessary as your world file should not contain dependencies.)
 # Bug #245228, #632124, #691268, #767853, removal in 30 days.
 dev-util/pkgconfig
 
