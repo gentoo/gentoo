@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
 	"${FILESDIR}/${P}-libsubid_pam_linking.patch"
 	"${FILESDIR}/${P}-libsubid_oot_build.patch"
+	"${FILESDIR}/shadow-4.9-libcrack.patch"
 )
 
 src_prepare() {
