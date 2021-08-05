@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator
+inherit flag-o-matic toolchain-funcs versionator
 
 MY_P=${PN}_$(replace_all_version_separators '_')
 
@@ -27,6 +27,9 @@ src_configure() {
 	# other flags will break duma
 	export CFLAGS="-O0 -Wall -Wextra -U_FORTIFY_SOURCE"
 	tc-export AR CC CXX LD RANLIB
+
+	# bug #789708
+	append-cxxflags -std=c++14
 
 	case "${CHOST}" in
 		*-linux-gnu)
