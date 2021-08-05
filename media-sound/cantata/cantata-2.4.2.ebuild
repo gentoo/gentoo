@@ -66,7 +66,10 @@ DEPEND="${COMMON_DEPEND}
 # cantata has no tests
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-2.2.0-headers.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-headers.patch"
+	"${FILESDIR}/${P}-solid-musl.patch" # bug 792555
+)
 
 src_prepare() {
 	remove_locale() {
