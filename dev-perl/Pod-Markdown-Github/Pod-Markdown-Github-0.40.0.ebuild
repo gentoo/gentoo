@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Convert POD to Github's specific markdown"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
