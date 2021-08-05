@@ -1,0 +1,55 @@
+From b02e5c5403b1ac88b1fd606f3c1147330c47700c Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:38:31 -0400
+Subject: [PATCH 12/12] configure.ac: remove the --enable-warnings flag.
+
+This flag simply adds "-Wall" to $CXXFLAGS when it is enabled and the
+value of the $GCC variable is true. Given how easy it is to run
+
+  CXXFLAGS=-Wall ./configure
+
+(which uses standard knowledge) compared to
+
+  ./configure --enable-warnings
+
+(which does not), I don't think this flag warrants the extra complexity
+in configure.ac. This commit removes the option.
+---
+ configure.ac | 15 ---------------
+ 1 file changed, 15 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5ac7079..46640e5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,27 +62,12 @@ fi
+ AC_MSG_RESULT($enable_sloppy_div)
+ 
+ 
+-# --enable-warnings
+-AC_ARG_ENABLE([warnings], AS_HELP_STRING(--enable-warnings, [enable compiler warnings. [[default=no]]]))
+-AC_MSG_CHECKING([if compiler warnings is to be enabled])
+-if test "$enable_warnings" != "yes"; then
+-  enable_warnings="no"
+-fi
+-AC_MSG_RESULT($enable_warnings)
+-
+-
+ # Checks for programs.
+ AC_LANG(C++)
+ AC_PROG_CXX
+ AC_PROG_CC
+ 
+ 
+-if test "$enable_warnings" = "yes"; then
+-  if test "$GCC" = "yes"; then
+-    CXXFLAGS="$CXXFLAGS -Wall"
+-  fi
+-fi
+-
+ # --enable-fma
+ AC_ARG_ENABLE([fma], AS_HELP_STRING(--enable-fma, [use fused multiply-add/subtract (auto,gnu,ia64,c99,ibm,compiler).  Use this option with care.  [[default=auto]]]))
+ if test "x$enable_fma" = "x"; then
+-- 
+2.31.1
+

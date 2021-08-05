@@ -1,0 +1,102 @@
+From 6aac051631b20f5cde990fb3eda8dae85ff29666 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:01:17 -0400
+Subject: [PATCH 06/12] configure.ac: remove --enable-debug flag.
+
+The --enable-debug flag only does two things at the moment:
+
+  1. It adds "-O" (as opposed to "-O2") to your CXXFLAGS and FCFLAGS.
+  2. It adds "-g" to your CXXFLAGS and FCFLAGS.
+
+When using gcc and gfortran, this is a convenient way to enable those
+debugging flags. However, those options are not guaranteed to be
+supported by other compilers. In the interest of simplicity and
+portability, this commit simply removes the flag.
+
+It would of course be possible to compile two test programs with
+CXXFLAGS="-g -O" and FCFLAGS="-g -O" to determine whether or not those
+flags are supported. That would solve half of the problem, but would
+be a no-op (that is, it would not enable any debugging features) on
+systems where the flags are not supported. That problem is more
+difficult to solve, and hints that it's best to leave specific
+compiler flags out of the build system whenever possible.
+---
+ configure.ac | 30 ++----------------------------
+ 1 file changed, 2 insertions(+), 28 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1e91cd1..108e58a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -62,16 +62,6 @@ fi
+ AC_MSG_RESULT($enable_sloppy_div)
+ 
+ 
+-# --enable-debug
+-AC_ARG_ENABLE([debug], AS_HELP_STRING(--enable-debug, [enable debugging code. [[default=no]]]))
+-AC_MSG_CHECKING([if debugging code is to be enabled])
+-if test "$enable_debug" = "yes"; then
+-  AC_DEFINE([QD_DEBUG], [1], [Define to 1 to enable debugging code.])
+-else
+-  enable_debug="no"
+-fi
+-AC_MSG_RESULT($enable_debug)
+-
+ # --enable-warnings
+ AC_ARG_ENABLE([warnings], AS_HELP_STRING(--enable-warnings, [enable compiler warnings. [[default=no]]]))
+ AC_MSG_CHECKING([if compiler warnings is to be enabled])
+@@ -84,11 +74,7 @@ AC_MSG_RESULT($enable_warnings)
+ # Checks for programs.
+ AC_LANG(C++)
+ if test "$CXXFLAGS" = ""; then
+-  if test "$enable_debug" = "yes"; then
+-    CXXFLAGS="-O"
+-  else
+-    CXXFLAGS="-O2"
+-  fi
++  CXXFLAGS="-O2"
+ fi
+ 
+ # Set up compiler search list.  DUe to possible case insensitive filesystems, 
+@@ -144,10 +130,6 @@ if test "$enable_warnings" = "yes"; then
+   fi
+ fi
+ 
+-if test "$enable_debug" = "yes"; then
+-  CXXFLAGS="$CXXFLAGS -g"
+-fi
+-
+ # --enable-fma
+ AC_ARG_ENABLE([fma], AS_HELP_STRING(--enable-fma, [use fused multiply-add/subtract (auto,gnu,ia64,c99,ibm,compiler).  Use this option with care.  [[default=auto]]]))
+ if test "x$enable_fma" = "x"; then
+@@ -242,11 +224,7 @@ AC_DEFINE([QD_HAVE_STD], [1], [Define to 1 if your compiler have the C++ standar
+ 
+ # Check for fortran-90 compiler
+ if test "$FCFLAGS" = ""; then
+-  if test "$enable_debug" = "yes"; then
+-    FCFLAGS="-O"
+-  else
+-    FCFLAGS="-O2"
+-  fi
++  FCFLAGS="-O2"
+ fi
+ AC_ARG_ENABLE([fortran], AS_HELP_STRING(--enable-fortran, [build Fortran 77/90 interfaces [[default=auto]]]))
+ if test "$enable_fortran" != "no"; then
+@@ -296,14 +274,10 @@ if test "$enable_fortran" != "no"; then
+   fi
+   AC_SUBST(REQ_FCFLAGS)
+   FCFLAGS="$FCFLAGS $REQ_FCFLAGS"
+-  if test "$enable_debug" = "yes"; then
+-    FCFLAGS="$FCFLAGS -g"
+-  fi
+   AC_LANG_POP(Fortran)
+ fi
+ AM_CONDITIONAL(UPCASE_MODULE, [test "$module_case" = "uppercase"])
+ AM_CONDITIONAL(HAVE_FORTRAN, [test "$enable_fortran" = "yes"])
+-AM_CONDITIONAL(QD_DEBUG, [test "$enable_debug" = "yes"])
+ 
+ AC_SUBST(F77, $FC)
+ AC_SUBST(FFLAGS, $FCFLAGS)
+-- 
+2.31.1
+

@@ -1,0 +1,37 @@
+From a6ba0059c80849ef349b9d02e5972f89fcd59793 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 18:40:26 -0400
+Subject: [PATCH 03/12] configure.ac: replace AC_PROG_LIBTOOL with LT_INIT.
+
+The AC_PROG_LIBTOOL macro is obsolete, according to modern versions of
+autoconf:
+
+  configure.ac:316: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+  configure.ac:316: You should run autoupdate.
+
+Running autoupdate replaces it with a call to LT_INIT, which is what
+this commit does too. We have also removed a call AC_DISABLE_SHARED,
+which no longer affects anything; its removal is "harmless" since, at
+worst, it will cause some people to build shared libraries that they
+do not need.
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7b52a9e..31b32f5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -312,8 +312,7 @@ AC_SUBST(FFLAGS, $FCFLAGS)
+ AC_CHECK_LIB(m,sqrt)
+ 
+ # libtool stuff
+-AC_DISABLE_SHARED
+-AC_PROG_LIBTOOL
++LT_INIT
+ 
+ # Output
+ AC_CONFIG_FILES([Makefile config/Makefile src/Makefile include/Makefile 
+-- 
+2.31.1
+

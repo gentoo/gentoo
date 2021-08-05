@@ -1,0 +1,27 @@
+From 8d9e74e71cd2c0878c85b3559eeb66ec5020a99b Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:36:23 -0400
+Subject: [PATCH 11/12] qd-config.in: remove @REQ_CXXFLAGS@.
+
+We no longer compute REQ_CXXFLAGS in configure.ac, so this commit
+removes the empty variable from qd-config.in.
+---
+ qd-config.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/qd-config.in b/qd-config.in
+index 3abfcb7..56bc960 100644
+--- a/qd-config.in
++++ b/qd-config.in
+@@ -14,7 +14,7 @@ builddir="@abs_top_builddir@"
+ build_CXXFLAGS="@CXXFLAGS@"
+ build_LDFLAGS="@LDFLAGS@"
+ CXX="@CXX@"
+-CXXFLAGS="-I$includedir @REQ_CXXFLAGS@"
++CXXFLAGS="-I$includedir"
+ FC="@FC@"
+ 
+ LDFLAGS="-L$libdir -lqd @LIBS@"
+-- 
+2.31.1
+

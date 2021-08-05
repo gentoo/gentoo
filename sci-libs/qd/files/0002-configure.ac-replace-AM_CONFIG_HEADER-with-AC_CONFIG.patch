@@ -1,0 +1,34 @@
+From 0641c0b9dd87bfbef6a7b6e77cf4b264e3fa84d7 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 18:32:21 -0400
+Subject: [PATCH 02/12] configure.ac: replace AM_CONFIG_HEADER with
+ AC_CONFIG_HEADERS.
+
+The AM_CONFIG_HEADER macro is obsolete, as evidenced by warnings like,
+
+  configure.ac:21: warning: 'AM_CONFIG_HEADER': this macro is obsolete.
+  configure.ac:21: You should use the 'AC_CONFIG_HEADERS' macro instead.
+
+This commit uses the suggested replacement.
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7485936..7b52a9e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,8 +18,8 @@ echo "configuring $PACKAGE $VERSION..."
+ 
+ AC_CONFIG_AUX_DIR(config)
+ AM_INIT_AUTOMAKE([nostdinc foreign])
+-AM_CONFIG_HEADER([config.h])
+-AM_CONFIG_HEADER([include/qd/qd_config.h])
++AC_CONFIG_HEADERS([config.h])
++AC_CONFIG_HEADERS([include/qd/qd_config.h])
+ 
+ AC_CANONICAL_HOST
+ 
+-- 
+2.31.1
+

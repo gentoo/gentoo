@@ -1,0 +1,31 @@
+From a05e1577085507266908f40ff8e5246e10eb72d1 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 18:29:45 -0400
+Subject: [PATCH 01/12] configure.ac: update QD_PATCH_VERSION to 2.3.22.
+
+Autotools currently thinks that this is version 2.3.12, as can be seen
+when running
+
+  $ ./configure
+  configuring qd 2.3.12...
+
+We update QD_PATCH_VERSION within configure.ac to fix that.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 2ca10c9..7485936 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,6 +1,6 @@
+ #                                               -*- Autoconf -*-
+ # Process this file with autoconf to produce a configure script.
+-define([QD_PATCH_VERSION], 12)
++define([QD_PATCH_VERSION], 22)
+ AC_PREREQ(2.60)
+ AC_INIT(qd, 2.3.QD_PATCH_VERSION, dhbailey@lbl.gov)
+ AC_CONFIG_SRCDIR([src/qd_real.cpp])
+-- 
+2.31.1
+

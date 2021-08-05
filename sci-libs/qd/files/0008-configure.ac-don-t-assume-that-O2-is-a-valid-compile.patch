@@ -1,0 +1,47 @@
+From fc272f5407e10e84dc1d3e0013bc6d43ecedc5db Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:10:34 -0400
+Subject: [PATCH 08/12] configure.ac: don't assume that "-O2" is a valid
+ compiler flag.
+
+Our configure script presently adds "-O2" to both CXXFLAGS and FCFLAGS
+when those variables are empty. If using gcc and gfortran, this
+enables some safe optimizations, but no checks are performed to ensure
+that the compiler actually understands "-O2". While we could compile
+some test programs to check, it may be simplest to leave the compiler
+flags up to the person (the user) who chooses the compilers themselves.
+
+Support for --enable-debug was removed in a recent commit for similar
+reasons.
+---
+ configure.ac | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 108e58a..823fa9e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,9 +73,6 @@ AC_MSG_RESULT($enable_warnings)
+ 
+ # Checks for programs.
+ AC_LANG(C++)
+-if test "$CXXFLAGS" = ""; then
+-  CXXFLAGS="-O2"
+-fi
+ 
+ # Set up compiler search list.  DUe to possible case insensitive filesystems, 
+ # Cygwin and Apple systems sometimes gets confused between cc and CC.
+@@ -223,9 +220,7 @@ AC_DEFINE([QD_API], [], [Any special symbols needed for exporting APIs.])
+ AC_DEFINE([QD_HAVE_STD], [1], [Define to 1 if your compiler have the C++ standard include files.])
+ 
+ # Check for fortran-90 compiler
+-if test "$FCFLAGS" = ""; then
+-  FCFLAGS="-O2"
+-fi
++
+ AC_ARG_ENABLE([fortran], AS_HELP_STRING(--enable-fortran, [build Fortran 77/90 interfaces [[default=auto]]]))
+ if test "$enable_fortran" != "no"; then
+   AC_LANG_PUSH(Fortran)
+-- 
+2.31.1
+
