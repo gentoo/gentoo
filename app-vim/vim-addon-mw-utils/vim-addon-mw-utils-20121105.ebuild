@@ -8,4 +8,4 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: interpret a file by function and cache file automatically"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2940 https://github.com/MarcWeber/vim-addon-mw-utils"
 LICENSE="GPL-3"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
