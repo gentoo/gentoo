@@ -144,7 +144,8 @@ src_configure() {
 	# Not done: java perl php ruby tcl
 	# Handled separately: lua
 	for i in python; do
-		use ${i} && mycmakeargs+=( -DSWIG_${i}=ON )
+		# bug #806484 wrt capitalisation
+		use ${i} && mycmakeargs+=( -DSWIG_${i^^}=ON )
 	done
 
 	cmake_src_configure
@@ -196,12 +197,7 @@ src_install() {
 	fi
 
 	if use python; then
-		cd "${S}"/src/swig/python || die
-
-		python_domodule mlt.py _mlt.so
-		chmod +x "${D}$(python_get_sitedir)/_mlt.so" || die
-		dodoc play.py
-
+		dodoc "${S}"/src/swig/python/play.py
 		python_optimize
 	fi
 
