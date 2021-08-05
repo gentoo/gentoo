@@ -6,6 +6,7 @@
 		<flag name="portable">Build the portable interpreter version of Poly/ML instead of native</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">polyml/polyml</remote-id>
 		<remote-id type="sourceforge">polyml</remote-id>
 	</upstream>
 </pkgmetadata>
