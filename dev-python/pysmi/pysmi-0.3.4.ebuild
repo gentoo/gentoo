@@ -18,3 +18,4 @@ RDEPEND="dev-python/ply[${PYTHON_USEDEP}]"
 BDEPEND="test? ( dev-python/pysnmp[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests unittest
+distutils_enable_sphinx docs/source
