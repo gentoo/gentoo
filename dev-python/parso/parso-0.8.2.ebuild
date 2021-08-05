@@ -20,6 +20,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py310.patch
+	"${FILESDIR}"/${P}-flaky-test.patch
 )
 
 python_test() {
