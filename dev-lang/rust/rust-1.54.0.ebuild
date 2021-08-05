@@ -182,7 +182,7 @@ bootstrap_rust_version_check() {
 }
 
 pre_build_checks() {
-	local M=8192
+	local M=4096
 	# multiply requirements by 1.5 if we are doing x86-multilib
 	if use amd64; then
 		M=$(( $(usex abi_x86_32 15 10) * ${M} / 10 ))
