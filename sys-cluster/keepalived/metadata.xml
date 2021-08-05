@@ -10,4 +10,7 @@
 		<flag name="json">compile with signal to dump configuration and stats as JSON.</flag>
 		<flag name="regex">compile with support for regex in health checks</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">acassen/keepalived</remote-id>
+	</upstream>
 </pkgmetadata>
