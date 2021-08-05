@@ -5,5 +5,8 @@
 		<email>rust@gentoo.org</email>
 		<name>Rust Project</name>
 	</maintainer>
+	<use>
+		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
+	</use>
 	<stabilize-allarches/>
 </pkgmetadata>
