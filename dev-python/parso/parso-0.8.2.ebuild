@@ -20,6 +20,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${P}-py310.patch
+	"${FILESDIR}"/${P}-py310-2.patch
 	"${FILESDIR}"/${P}-flaky-test.patch
 )
 
@@ -28,7 +29,6 @@ python_test() {
 	[[ ${EPYTHON} == python3.10 ]] && deselect+=(
 		# py3.10 changed exception messages
 		test/test_python_errors.py::test_python_exception_matches
-		test/test_python_errors.py::test_default_except_error_postition
 	)
 	epytest ${deselect[@]/#/--deselect }
 }
