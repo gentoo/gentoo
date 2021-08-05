@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2021-08-05)
+# Dead upstream, last release over 5 years ago, multiple
+# build issues, fails to build with GCC 11. Use something like
+# sci-biology/abyss or canu as a modern day replacement.
+# Bug #610094, #715874, #731860, #739486, removal in 30 days.
+sci-biology/wgs-assembler
+
+# David Seifert <soap@gentoo.org> (2021-08-05)
 # Unmaintained, tons of issues, fails to build with GCC 11.
 # Bug #631598, #690024, #735960, #749038, #761415, #761667,
 # #778557, #786789, #799179, removal in 30 days.
