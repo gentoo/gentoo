@@ -1,0 +1,57 @@
+From dc41958947770849c8b3b4d344db434e2c8548cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 5 Aug 2021 09:09:28 +0200
+Subject: [PATCH] Update expected exception line numbers for Python 3.10.0rc1
+
+It seems that upstream has fixed line numbers in some of the expections
+in Python 3.10.0rc1, so update the tests accordingly.  This means that
+test_non_async_in_async() gets the correct line again,
+and test_default_except_error_postition() no longer suffers from
+the apparent off-by-one problem.
+
+This doesn't fix tests entirely with Python 3.10 but it's a step
+forward.
+---
+ test/test_python_errors.py | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/test/test_python_errors.py b/test/test_python_errors.py
+index cda9bd2..e847ebb 100644
+--- a/test/test_python_errors.py
++++ b/test/test_python_errors.py
+@@ -57,10 +57,10 @@ def test_non_async_in_async():
+         error, = errors
+         actual = error.message
+     assert actual in wanted
+-    if sys.version_info[:2] < (3, 8):
++    if sys.version_info[:2] not in ((3, 8), (3,9)):
+         assert line_nr == error.start_pos[0]
+     else:
+-        assert line_nr == 0  # For whatever reason this is zero in Python 3.8+
++        assert line_nr == 0  # For whatever reason this is zero in Python 3.8/3.9
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -140,13 +140,16 @@ def _get_actual_exception(code):
+ 
+ 
+ def test_default_except_error_postition():
+-    # For this error the position seemed to be one line off, but that doesn't
+-    # really matter.
++    # For this error the position seemed to be one line off in Python < 3.10,
++    # but that doesn't really matter.
+     code = 'try: pass\nexcept: pass\nexcept X: pass'
+     wanted, line_nr = _get_actual_exception(code)
+     error, = _get_error_list(code)
+     assert error.message in wanted
+-    assert line_nr != error.start_pos[0]
++    if sys.version_info[:2] >= (3, 10):
++        assert line_nr == error.start_pos[0]
++    else:
++        assert line_nr != error.start_pos[0]
+     # I think this is the better position.
+     assert error.start_pos[0] == 2
+ 
+-- 
+2.32.0
+
