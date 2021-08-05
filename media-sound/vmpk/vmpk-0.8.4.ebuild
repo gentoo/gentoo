@@ -25,7 +25,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	>=media-sound/drumstick-2.3
+	media-sound/drumstick
 	x11-libs/libxcb
 	dbus? ( dev-qt/qtdbus:5 )
 "
