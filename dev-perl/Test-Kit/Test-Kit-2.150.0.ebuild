@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Build custom test packages with only the features you want"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="amd64 ~riscv x86 ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 RDEPEND="
