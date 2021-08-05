@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2021-08-05)
+# Unmaintained, tons of issues, fails to build with GCC 11.
+# Bug #631598, #690024, #735960, #749038, #761415, #761667,
+# #778557, #786789, #799179, removal in 30 days.
+app-backup/bareos
+dev-libs/bareos-fastlzlib
+dev-python/bareos
+
 # Sam James <sam@gentoo.org> (2021-08-05)
 # Fails to build with GCC 11. No activity upstream.
 # bug #740308, bug #789816. Removal on 2021-09-05.
