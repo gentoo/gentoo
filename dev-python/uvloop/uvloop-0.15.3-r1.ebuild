@@ -10,7 +10,7 @@ DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv"
 HOMEPAGE="https://github.com/magicstack/uvloop"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-KEYWORDS="~alpha ~amd64 ~arm64"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc"
 LICENSE="MIT"
 SLOT="0"
 IUSE="doc examples"
