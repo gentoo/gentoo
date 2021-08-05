@@ -130,7 +130,7 @@ src_prepare() {
 	java-pkg_jar-from --build-only --into "${d}" antlr-3 antlr-tool.jar antlr-3.1.3.jar
 	java-pkg_jar-from --build-only --into "${d}" antlr-3 antlr-runtime.jar antlr-runtime-3.1.3.jar
 	java-pkg_jar-from --build-only --into "${d}" stringtemplate  stringtemplate.jar stringtemplate-3.2.jar
-	sed -i "s#compile name: SWT_FILE_NAME#compile files(\"${swt_file_name#/}\")#" "${S}"/build.gradle || die
+	sed -i "s#compile name: SWT_FILE_NAME#compile files(\"${swt_file_name}\")#" "${S}"/build.gradle || die
 
 	sed -i 's/-rpath/-rpath-link/g' modules/media/src/main/native/jfxmedia/projects/linux/Makefile || die
 }
