@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="number sequences (for example from OEIS)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="examples"
 
 RDEPEND="
