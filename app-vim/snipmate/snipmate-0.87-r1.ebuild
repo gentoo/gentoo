@@ -12,7 +12,7 @@ DESCRIPTION="vim plugin: TextMate-style snippets"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2540 https://github.com/garbas/vim-snipmate"
 SRC_URI="https://github.com/garbas/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~riscv x86"
 
 RDEPEND="
 	app-vim/vim-addon-mw-utils
