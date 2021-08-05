@@ -1,3 +1,4 @@
+https://github.com/mattthias/slurm/pull/39
 --- a/os.h
 +++ b/os.h
 @@ -177,7 +177,7 @@
