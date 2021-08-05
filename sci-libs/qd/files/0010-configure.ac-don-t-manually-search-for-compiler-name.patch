@@ -1,0 +1,81 @@
+From 18d508793abbfc4045af7c7c91f6d71bb5bb7ef1 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:31:36 -0400
+Subject: [PATCH 10/12] configure.ac: don't manually search for compiler
+ names/flags.
+
+The AC_PROG_CXX macro is generally capable of finding the best C++
+compiler on the system these days, including the flags it needs.  This
+commit removes the hard-coded list of C++ compilers, and the manual
+computation of REQ_CXXFLAGS based on the name of the compiler.
+
+This serves another purpose: the qd-config program is capable of
+outputting an appropriate "-I" flag to allow consumers to use libqd
+when it is installed in a nonstandard location. At the moment, however,
+that "-I" flag is accompanied by whatever other REQ_CXXFLAGS were
+computed -- and many of those flags are invalid in the other context.
+By eliminating REQ_CXXFLAGS, we solve that problem too.
+---
+ configure.ac | 43 +------------------------------------------
+ 1 file changed, 1 insertion(+), 42 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a657e8f..5ac7079 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -73,51 +73,10 @@ AC_MSG_RESULT($enable_warnings)
+ 
+ # Checks for programs.
+ AC_LANG(C++)
+-
+-# Set up compiler search list.  DUe to possible case insensitive filesystems, 
+-# Cygwin and Apple systems sometimes gets confused between cc and CC.
+-# Try to use vendor compilers first, as they are often the fastest.
+-case $host in 
+-  *cygwin* | *mingw* ) cxx_list="" ;;
+-  *apple* ) cxx_list="xlC_r xlC icpc pathCC c++ g++ gpp" ;;
+-  * ) cxx_list="xlC_r xlC icpc pathCC pgCC cxx aCC CC cc++ FCC KCC RCC c++ g++ gpp" ;;
+-esac
+-
+-AC_PROG_CXX($cxx_list)
++AC_PROG_CXX
+ AC_PROG_CC
+ 
+ 
+-CXX_PROG_NAME=`basename $CXX`
+-case $host in
+-  powerpc*-*-*)
+-    case "$CXX_PROG_NAME" in
+-      xlC*) 
+-        REQ_CXXFLAGS="$REQ_CXXFLAGS -qstrict"
+-      ;;
+-    esac
+-  ;;
+-  i?86-*-* | k?*-*-* | athlon-*-* | ia64-*-* | x86_64-*-*)
+-    case "$CXX_PROG_NAME" in
+-      icc|icpc|ecc)
+-        REQ_CXXFLAGS="$REQ_CXXFLAGS -mp"
+-        if test "$enable_warnings" = "yes"; then
+-          CXXFLAGS="$CXXFLAGS -wd1572 -wd981 -wd1418 -wd1419"
+-        fi
+-      ;;
+-    esac
+-  ;;
+-  alpha*-*-*)
+-    case "$CXX_PROG_NAME" in
+-      cxx) 
+-        CXXFLAGS="$CXXFLAGS -std strict_ansi -tweak"
+-      ;;
+-    esac
+-  ;;
+-esac
+-
+-AC_SUBST(REQ_CXXFLAGS)
+-CXXFLAGS="$CXXFLAGS $REQ_CXXFLAGS"
+-
+ if test "$enable_warnings" = "yes"; then
+   if test "$GCC" = "yes"; then
+     CXXFLAGS="$CXXFLAGS -Wall"
+-- 
+2.31.1
+

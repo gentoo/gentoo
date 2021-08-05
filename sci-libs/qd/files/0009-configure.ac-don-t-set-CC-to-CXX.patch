@@ -1,0 +1,46 @@
+From eff1594d04f140d9e0a4c423a0685481a612c8ca Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 19:15:44 -0400
+Subject: [PATCH 09/12] configure.ac: don't set $CC to $CXX.
+
+The build system currently sets $CC to whatever $CXX that the
+configure script is able to find. This was harmless until now because
+C++ is a superset of C, so the C++ compiler should be able to compile
+any C code. But in the recently-released autoconf-2.71, the test
+program infrastructure no longer emits the
+
+  #ifdef __cplusplus
+  extern "C"
+  #endif
+
+in the same place it used to, which is breaking the test for
+name-mangling in the AC_FC_WRAPPERS macro. The macro thinks that it's
+compiling C code, but using a compiler that expects C++. While this may
+be fixable within autoconf, letting AC_PROG_CC detect the C compiler
+separately is both morally correct in this case and happens to solve the
+issue anyway.
+
+This fixes a build issue that was reported on Gentoo linux.
+
+Gentoo-bug: https://bugs.gentoo.org/775215
+---
+ configure.ac | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 823fa9e..a657e8f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -84,9 +84,6 @@ case $host in
+ esac
+ 
+ AC_PROG_CXX($cxx_list)
+-if test "$CC" = ""; then
+-  CC="$CXX";
+-fi
+ AC_PROG_CC
+ 
+ 
+-- 
+2.31.1
+

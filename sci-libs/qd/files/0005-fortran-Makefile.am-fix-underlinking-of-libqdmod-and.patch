@@ -1,0 +1,35 @@
+From 12e53493a0413590d9dc0a0eaeeb4dfec71a1a8c Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 4 Aug 2021 18:52:30 -0400
+Subject: [PATCH 05/12] fortran/Makefile.am: fix underlinking of libqdmod and
+ libqd_f_main.
+
+The libqdmod library needs to be linked to the just-built libqd, and
+then libqd_f_main needs to be linked to both the just-built libqd and
+the just-built libqdmod. Moreover, both of them need to be linked
+against whatever is in $FCLIBS.
+
+This commit adds two "_LIBADD" lines to fortran/Makefile.am to ensure
+that this happens. Their absence most likely only causes problems when
+the user has "--as-needed" in his LDFLAGS.
+---
+ fortran/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/fortran/Makefile.am b/fortran/Makefile.am
+index 1ab54f7..7a67c08 100644
+--- a/fortran/Makefile.am
++++ b/fortran/Makefile.am
+@@ -16,7 +16,9 @@ endif
+ 
+ lib_LTLIBRARIES = libqdmod.la libqd_f_main.la
+ libqdmod_la_SOURCES = ddext.f ddmod.f qdext.f qdmod.f f_dd.cpp f_qd.cpp
++libqdmod_la_LIBADD = $(top_builddir)/src/libqd.la $(FCLIBS)
+ libqd_f_main_la_SOURCES = main.cpp
++libqd_f_main_la_LIBADD = $(top_builddir)/src/libqd.la libqdmod.la $(FCLIBS)
+ ddmod.lo: $(DDEXT) ddext.lo
+ qdmod.lo: ddmod.lo $(DDMOD) qdext.lo
+ $(QDMOD): qdmod.lo $(DDMOD)
+-- 
+2.31.1
+
