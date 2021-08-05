@@ -10,7 +10,7 @@ inherit perl-module elisp-common
 DESCRIPTION="Critique Perl source code for best-practices"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ppc ~ppc64 x86"
 IUSE="minimal examples emacs"
 
 SITEFILE="50${PN}-gentoo.el"
