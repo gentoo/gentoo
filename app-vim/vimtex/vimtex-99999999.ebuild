@@ -12,7 +12,7 @@ else
 	inherit vcs-snapshot
 	COMMIT_HASH="17d809706edcb277f1ee7fa5e33aff3619926fe4"
 	SRC_URI="https://github.com/lervag/vimtex/archive/${COMMIT_HASH}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 DESCRIPTION="vim plugin: a modern vim plugin for editing LaTeX files"
