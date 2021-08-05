@@ -11,7 +11,6 @@
 		<flag name="double-precision">Use double-precision floating point for audio samples</flag>
 		<flag name="dssi">Build the DSSI opcodes</flag>
 		<flag name="fluidsynth">Build the fluidsynth opcodes</flag>
-		<flag name="image">Build the image opcodes</flag>
 		<flag name="keyboard">Build Virtual MIDI keyboard</flag>
 		<flag name="linear">Build the linear algebra Opcodes</flag>
 		<flag name="portmidi">Build the PortMIDI I/O module</flag>
