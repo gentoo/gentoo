@@ -36,7 +36,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	sys-devel/automake:1.11
 	test? (
 		dev-tcltk/expect
 		net-misc/netkit-telnetd
@@ -56,6 +55,7 @@ src_prepare() {
 
 	# Note that if we need to use automake, we need a certain version (for now):
 	# https://github.com/ngircd/ngircd/issues/261
+	# WANT_AUTOMAKE=1.11
 	# eautomake
 }
 
