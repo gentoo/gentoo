@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2021-08-05)
+# Fails to build with GCC 11. No activity upstream.
+# bug #740308, bug #789816. Removal on 2021-09-05.
+app-eselect/eselect-audicle
+app-eselect/eselect-miniaudicle
+media-sound/audicle
+
 # Sam James <sam@gentoo.org> (2021-08-04)
 # Fails to build with GCC 11. No activity upstream since 2008.
 # bug #730692, bug #787866. Removal on 2021-09-04.
