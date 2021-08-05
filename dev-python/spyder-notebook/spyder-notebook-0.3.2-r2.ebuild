@@ -25,7 +25,8 @@ RDEPEND="
 	dev-python/qdarkstyle[${PYTHON_USEDEP}]
 	dev-python/QtPy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	>=dev-python/spyder-5[${PYTHON_USEDEP}]
+	>=dev-python/spyder-5.0[${PYTHON_USEDEP}]
+	<dev-python/spyder-5.1[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 "
 
