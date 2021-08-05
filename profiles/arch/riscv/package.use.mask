@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Yixun Lan <dlan@gentoo.org> (2021-08-05)
+# Boost.Context can be built on riscv
+dev-libs/boost -context
+
 # Ye Cao <ye.c@rioslab.org> (2021-07-31)
 # Dependencies not keyworded, not tested
 dev-util/perf unwind
