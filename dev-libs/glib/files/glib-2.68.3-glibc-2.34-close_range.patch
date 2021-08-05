@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/803632
+https://gitlab.gnome.org/GNOME/glib/-/commit/63e7864d1a0ddbead3c18872e95116e3843e81be.patch
+
+From 6e59d21b273f026e82adc56fecbec67d1ffa72a4 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Thu, 8 Jul 2021 17:26:43 -0700
+Subject: [PATCH] correctly use 3 parameters for close_range
+
+libc implementation has 3 parameter e.g.
+https://www.freebsd.org/cgi/man.cgi?query=close_range&sektion=2&format=html
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ glib/gspawn.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/glib/gspawn.c b/glib/gspawn.c
+index 95f5b868e..a15fb1ca1 100644
+--- a/glib/gspawn.c
++++ b/glib/gspawn.c
+@@ -1494,7 +1494,7 @@ safe_closefrom (int lowfd)
+    *
+    * Handle ENOSYS in case itâ€™s supported in libc but not the kernel; if so,
+    * fall back to safe_fdwalk(). */
+-  if (close_range (lowfd, G_MAXUINT) != 0 && errno == ENOSYS)
++  if (close_range (lowfd, G_MAXUINT, 0) != 0 && errno == ENOSYS)
+ #endif  /* HAVE_CLOSE_RANGE */
+   (void) safe_fdwalk (close_func, GINT_TO_POINTER (lowfd));
+ #endif
+-- 
+GitLab
+

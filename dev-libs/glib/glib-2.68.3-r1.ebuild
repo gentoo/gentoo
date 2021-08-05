@@ -69,6 +69,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.64.1-mark-gdbus-server-auth-test-flaky.patch
+	"${FILESDIR}"/${PN}-2.68.3-glibc-2.34-close_range.patch
 )
 
 pkg_setup() {
