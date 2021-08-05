@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
 		dev-python/requests
-		dev-python/sphinx
+		<dev-python/sphinx-4
 	)
 "
 
