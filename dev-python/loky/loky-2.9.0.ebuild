@@ -38,6 +38,8 @@ python_test() {
 		# one test that uses a lot of memory, also broken on 32-bit
 		# platforms
 		--skip-high-memory
+		# breaks teardown
+		-p no:xvfb
 	)
 
 	epytest "${args[@]}"
