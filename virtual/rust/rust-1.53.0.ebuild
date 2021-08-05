@@ -10,6 +10,10 @@ DESCRIPTION="Virtual for Rust language compiler"
 LICENSE=""
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 ~riscv x86"
+IUSE="rustfmt"
 
 BDEPEND=""
-RDEPEND="|| ( ~dev-lang/rust-${PV}[${MULTILIB_USEDEP}] ~dev-lang/rust-bin-${PV}[${MULTILIB_USEDEP}] )"
+RDEPEND="|| (
+	~dev-lang/rust-${PV}[rustfmt,${MULTILIB_USEDEP}]
+	~dev-lang/rust-bin-${PV}[rustfmt,${MULTILIB_USEDEP}]
+)"
