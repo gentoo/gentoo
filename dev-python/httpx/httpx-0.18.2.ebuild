@@ -40,6 +40,11 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/encode/httpx/pull/1781
+	"${FILESDIR}"/${P}-big-endian.patch
+)
+
 python_prepare_all() {
 	# trio is not currently in the tree
 	sed -i '/^import trio/d' tests/concurrency.py || die
