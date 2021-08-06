@@ -35,7 +35,7 @@ RDEPEND="
 	dev-libs/nss
 	media-fonts/liberation-fonts
 	media-libs/alsa-lib
-	media-libs/mesa[gbm]
+	media-libs/mesa[gbm(+)]
 	net-misc/curl[ssl]
 	net-print/cups
 	sys-apps/dbus
