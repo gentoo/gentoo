@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 DIST_AUTHOR=JOSERODR
 DIST_VERSION=1.15
@@ -11,7 +11,8 @@ DESCRIPTION="OS independent interface to the Unix 'at' command"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-RDEPEND="sys-process/at"
-DEPEND="${RDEPEND}"
+RDEPEND="
+	sys-process/at
+"
+BDEPEND="${RDEPEND}"
