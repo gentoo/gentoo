@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2021-08-06)
+# Masked for removal in 30 days. Upstream has joined the
+# manpages-l10n project, so 5.06 was their ultimate release
+# as a separate package. Use app-i18n/man-pages-l10n[l10n_it]
+# as replacement. Bug #769017.
+app-i18n/man-pages-it
+
 # David Seifert <soap@gentoo.org> (2021-08-05)
 # Dead upstream, last release over 5 years ago, multiple
 # build issues, fails to build with GCC 11. Use something like
