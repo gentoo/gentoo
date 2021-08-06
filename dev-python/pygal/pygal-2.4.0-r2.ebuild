@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -24,7 +24,10 @@ RDEPEND="
 BDEPEND="
 	test? ( dev-python/pyquery[${PYTHON_USEDEP}] )"
 
-PATCHES=( "${FILESDIR}/${PV}-fix-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PV}-fix-tests.patch"
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 # CHANGELOG is a symlink to docs/changelog.rst
 DOCS=( docs/changelog.rst README.md )
