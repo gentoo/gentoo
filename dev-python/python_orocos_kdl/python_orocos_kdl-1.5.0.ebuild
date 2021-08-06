@@ -31,7 +31,6 @@ RDEPEND="
 	>=sci-libs/orocos_kdl-1.4.0:=
 	<dev-python/sip-5[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/0001-Declare-assignment-operator-private-for-SIP-Closes-2.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/python_orocos_kdl
