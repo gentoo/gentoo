@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <sultan@gentoo.org> (2021-08-06)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-94
+
 # Ulrich Müller <ulm@gentoo.org> (2021-08-06)
 # Masked for removal in 30 days. Upstream has joined the
 # manpages-l10n project, so 5.06 was their ultimate release
