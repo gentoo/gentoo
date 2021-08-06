@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="LGPL-2.1"
-SLOT="0/14"
+SLOT="0/15"
 IUSE="doc examples models test"
 REQUIRED_USE="examples? ( models )"
 RESTRICT="!test? ( test )"
@@ -31,12 +31,9 @@ BDEPEND="
 	test? ( dev-util/cppunit )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-0001-don-t-install-kdl.tag-file.patch
-	"${FILESDIR}"/${P}-0002-add-LIB_SUFFIX-in-pkg-config-file.patch
-)
-
 src_configure() {
+	# disable catkin support
+	sed -e 's/find_package(catkin/find_package(NoTcatkin/' -i CMakeLists.txt || die
 	local mycmakeargs=(
 		-DBUILD_MODELS=$(usex models ON OFF)
 		-DENABLE_EXAMPLES=$(usex examples)
@@ -73,8 +70,4 @@ src_install() {
 		docinto examples
 		dodoc -r "${S}"/examples/.
 	fi
-
-	# Need to have package.xml in our custom gentoo path
-	insinto /usr/share/ros_packages/${PN}
-	doins "${ED}/usr/share/${PN}/package.xml"
 }
