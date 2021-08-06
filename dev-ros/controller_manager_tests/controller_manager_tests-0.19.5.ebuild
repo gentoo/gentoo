@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
 	dev-ros/rosservice[${PYTHON_SINGLE_USEDEP}]
+	test? (
+		dev-ros/rosbash
+	)
 "
 # needed by combined_robot_hw_tests
 mycatkincmakeargs=( "-DCATKIN_ENABLE_TESTING=ON" )
