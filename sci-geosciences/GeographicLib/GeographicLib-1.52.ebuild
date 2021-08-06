@@ -17,10 +17,6 @@ LICENSE="MIT"
 SLOT="0/19"
 KEYWORDS="~amd64 ~arm"
 IUSE="doc examples python"
-# To-Do:find out why this doesn't work
-# 105/167 Test #105: GeodSolve82 ......................***Failed
-# Required regular expression not found. Regex=[20\.0010* 0\.0* 180\.0* 20\.0010* 0\.0* 180\.0* 0\.0* 0\.0* 0\.0* 1\.0* 1\.0* -?0
-RESTRICT="test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
@@ -71,7 +67,6 @@ src_compile() {
 }
 
 src_test() {
-	# Only 1 failing test in the C code, python passes for me
 	cmake_src_test
 
 	if use python; then
