@@ -23,4 +23,7 @@
 		<flag name="liblas">Include support for LAS and LAZ encoded LiDAR files through <pkg>sci-geosciences/liblas</pkg></flag>
 		<flag name="opencl">Enable OpenCL support</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">OSGeo/grass</remote-id>
+	</upstream>
 </pkgmetadata>
