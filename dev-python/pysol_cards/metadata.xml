@@ -7,4 +7,5 @@
 	<upstream>
 		<remote-id type="pypi">pysol-cards</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
