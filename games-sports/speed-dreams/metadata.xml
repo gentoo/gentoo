@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>games@gentoo.org</email>
-    <name>Gentoo Games Project</name>
-  </maintainer>
-  <use>
-    <flag name="xrandr">Enable support for the X xrandr extension</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">speed-dreams</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="osggraph">Enable the new work-in-progress 3D engine using <pkg>dev-games/openscenegraph</pkg></flag>
+		<flag name="webstats">Enable support for sending racing statistics to a web server (experimental)</flag>
+		<flag name="xrandr">Enable support for the X xrandr extension</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">speed-dreams</remote-id>
+	</upstream>
 </pkgmetadata>
