@@ -69,7 +69,7 @@ src_configure() {
 }
 
 src_install() {
-	local HTML_DOCS=( doc/faq/faq.html doc/userman/. )
+	local HTML_DOCS=( doc/userman/. )
 	cmake_src_install
 
 	newicon data/data/icons/icon.png ${PN}-2.png
