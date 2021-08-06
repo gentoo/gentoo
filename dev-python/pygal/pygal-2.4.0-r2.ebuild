@@ -25,7 +25,7 @@ BDEPEND="
 	test? ( dev-python/pyquery[${PYTHON_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PV}-fix-tests.patch"
+	"${FILESDIR}/${P}-fix-tests.patch"
 	"${FILESDIR}/${P}-fix-py3.10.patch"
 )
 
