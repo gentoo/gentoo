@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -17,14 +17,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="jpeg tiff"
 
-# Note: specific subslot of pango since it inlines some of pango headers.
-#	>=dev-python/lxml-3.0[${PYTHON_USEDEP}]
 RDEPEND="
 	>=dev-python/cffi-0.6:=[${PYTHON_USEDEP}]
 	>=dev-python/cssselect2-0.1[${PYTHON_USEDEP}]
 	>=dev-python/fonttools-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/html5lib-1.0.1[${PYTHON_USEDEP}]
-	>=dev-python/pillow-4.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pillow-4.0.0[jpeg,jpeg2k,${PYTHON_USEDEP}]
 	>=dev-python/pydyf-0.0.3[${PYTHON_USEDEP}]
 	>=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/tinycss2-1.0.0[${PYTHON_USEDEP}]
@@ -33,7 +31,9 @@ RDEPEND="
 
 BDEPEND="
 	test? (
+		app-text/ghostscript-gpl
 		media-fonts/ahem
+		media-fonts/dejavu
 	)
 "
 
