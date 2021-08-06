@@ -29,10 +29,7 @@ PDEPEND="
 	l10n_de? ( app-i18n/man-pages-l10n[l10n_de(-)] )
 	l10n_es? ( app-i18n/man-pages-l10n[l10n_es(-)] )
 	l10n_fr? ( app-i18n/man-pages-l10n[l10n_fr(-)] )
-	l10n_it? ( || (
-		app-i18n/man-pages-l10n[l10n_it(-)]
-		app-i18n/man-pages-it
-	) )
+	l10n_it? ( app-i18n/man-pages-l10n[l10n_it(-)] )
 	l10n_ja? ( app-i18n/man-pages-ja )
 	l10n_nl? ( app-i18n/man-pages-l10n[l10n_nl(-)] )
 	l10n_pl? ( app-i18n/man-pages-l10n[l10n_pl(-)] )
