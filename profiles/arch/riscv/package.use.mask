@@ -115,9 +115,9 @@ media-libs/libsdl2 nas pulseaudio
 media-libs/libcaca doc imlib
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
-app-misc/geoclue modemmanager zeroconf
+app-misc/geoclue modemmanager
 dev-libs/libgdata gnome-online-accounts
-gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios zeroconf
+gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios
 sys-power/upower ios
 net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings libcanberra
