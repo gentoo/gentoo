@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
-HOMEPAGE="https://github.com/eXeC64/imv"
+HOMEPAGE="https://github.com/eXeC64/imv/"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
@@ -23,9 +23,11 @@ REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/glib:2
 	dev-libs/icu:=
 	dev-libs/inih
 	media-libs/libglvnd[X?]
+	x11-libs/cairo
 	x11-libs/libxkbcommon[X?]
 	x11-libs/pango
 	X? (
@@ -43,6 +45,7 @@ RDEPEND="
 	!sys-apps/renameutils"
 DEPEND="
 	${RDEPEND}
+	X? ( x11-base/xorg-proto )
 	test? ( dev-util/cmocka )"
 BDEPEND="
 	app-text/asciidoc
@@ -51,9 +54,9 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# allow building with libglvnd[-X]
+	# if wayland-only, don't automagic on libGL and force libOpenGL
 	if ! use X; then
-		sed -i "/dependency('gl')/s/gl/opengl/" meson.build || die
+		sed -i "/dependency('gl'/{s/'gl'/'opengl'/;s/false/true/}" meson.build || die
 	fi
 
 	# glu isn't used by anything
@@ -61,10 +64,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local windows=all
-	use X || windows=wayland
-	use wayland || windows=x11
-
 	local emesonargs=(
 		$(meson_feature freeimage)
 		$(meson_feature gif libnsgif)
@@ -74,7 +73,8 @@ src_configure() {
 		$(meson_feature svg librsvg)
 		$(meson_feature test)
 		$(meson_feature tiff libtiff)
-		-Dwindows=${windows}
+		-Dwindows=$(usex X $(usex wayland all x11) wayland)
 	)
+
 	meson_src_configure
 }
