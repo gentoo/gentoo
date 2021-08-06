@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 virtualx
@@ -43,6 +43,7 @@ python_prepare_all() {
 }
 
 python_test() {
+	distutils_install_for_testing
 	# virtualx used when matplotlib is installed causing plot module tests to run
 	virtx epytest Tests fontTools
 }
