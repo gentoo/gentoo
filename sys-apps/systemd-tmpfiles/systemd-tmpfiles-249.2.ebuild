@@ -10,7 +10,7 @@ else
 fi
 
 MINKV="3.11"
-MUSL_PATCHSET="${PV%.*}.1-r0"
+MUSL_PATCHSET="${PV%.*}.1-r1"
 PYTHON_COMPAT=( python3_{8..10} )
 inherit flag-o-matic meson python-any-r1
 
