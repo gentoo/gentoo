@@ -26,8 +26,8 @@ fi
 # http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
 SRC_URI+="
 	elibc_musl? (
-		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${PV}.1-r0.tar.xz
-		https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${PV}.1-r0.tar.xz
+		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${PV}.1-r1.tar.xz
+		https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${PV}.1-r1.tar.xz
 	)"
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
