@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -15,21 +15,19 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
-IUSE="examples ssl test"
-RESTRICT="!test? ( test )"
+IUSE="examples ssl"
 
 RDEPEND="
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
 "
 BDEPEND="
 	test? (
-		${RDEPEND}
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
+distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 
 python_test() {
