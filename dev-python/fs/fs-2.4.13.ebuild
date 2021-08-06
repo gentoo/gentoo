@@ -3,12 +3,12 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 optfeature
 
-MY_PN="pyfilesystem2"
+MY_P=pyfilesystem2-${PV}
 DESCRIPTION="Filesystem abstraction layer"
 HOMEPAGE="
 	https://pypi.org/project/fs/
@@ -17,8 +17,10 @@ HOMEPAGE="
 "
 # Tests from the PyPI tarball are broken
 # https://github.com/PyFilesystem/pyfilesystem2/issues/364
-SRC_URI="https://github.com/PyFilesystem/pyfilesystem2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${MY_PN}-${PV}"
+SRC_URI="
+	https://github.com/PyFilesystem/pyfilesystem2/archive/v${PV}.tar.gz
+		-> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
