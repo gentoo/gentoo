@@ -1,9 +1,9 @@
 # Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for the XML Security Library"
@@ -23,11 +23,13 @@ RDEPEND="${DEPEND}
 BDEPEND="${RDEPEND}
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-"
+	test? (
+		dev-python/hypothesis[${PYTHON_USEDEP}]
+	)"
 
-# tests fail, has been reported upstream
-# https://github.com/mehcode/python-xmlsec/issues/84
-RESTRICT=test
+PATCHES=(
+	"${FILESDIR}/${P}-fix-xml-testfail.patch"
+)
 
 distutils_enable_tests pytest
 
