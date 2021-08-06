@@ -29,7 +29,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=sci-libs/orocos_kdl-1.4.0:=
-	<dev-python/sip-5[${PYTHON_USEDEP}]"
+	dev-python/pybind11[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -37,6 +37,14 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 else
 	S=${WORKDIR}/orocos_kinematics_dynamics-${PV}/python_orocos_kdl
 fi
+
+src_prepare() {
+	sed -e 's/find_package(catkin/find_package(NoTcatkin/' \
+		-e 's/add_subdirectory(pybind11/find_package(pybind11/' \
+		-e 's/dist-packages/site-packages/' \
+		-i CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	python_foreach_impl cmake_src_configure
@@ -52,8 +60,4 @@ src_test() {
 
 src_install() {
 	python_foreach_impl cmake_src_install
-
-	# Need to have package.xml in our custom gentoo path
-	insinto /usr/share/ros_packages/${PN}
-	doins "${ED}/usr/share/${PN}/package.xml"
 }
