@@ -71,6 +71,10 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
 	jack? ( virtual/jack )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-metadata.patch"
+)
+
 pkg_pretend() {
 	[[ $(tc-getLD) == *gold* ]] && (has_version sci-libs/fftw[openmp] || has_version sci-libs/fftw[threads]) && \
 		ewarn "Linking with gold linker might produce broken executable, see bug #733972"
@@ -84,7 +88,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
 	xdg_src_prepare
 
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
@@ -119,6 +122,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# avoid bug https://bugs.gentoo.org/800067
+	local -x AS="$(tc-getCC) -c"
+
 	local backends="alsa,dummy"
 	use jack && backends+=",jack"
 	use pulseaudio && backends+=",pulseaudio"
@@ -166,9 +172,6 @@ src_install() {
 
 	insinto /usr/share/mime/packages
 	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
-
-	insinto /usr/share/metainfo
-	doins build/gtk2_ardour/ardour${SLOT}.appdata.xml
 }
 
 pkg_postinst() {
