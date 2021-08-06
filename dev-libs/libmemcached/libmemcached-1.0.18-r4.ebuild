@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/continuum-1.0.18.patch
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${P}-autotools.patch
+	"${FILESDIR}"/${P}-disable-sphinx.patch
 )
 
 src_prepare() {
