@@ -77,8 +77,8 @@ dev-python/ipython nbconvert notebook
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-05)
 # Dependencies not keyworded here yet:
-#  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib, net-libs/webkit-gtk
-app-editors/emacs gconf m17n-lib xwidgets
+#  - gnome-base/gconf, dev-libs/libotf & dev-libs/m17n-lib
+app-editors/emacs gconf m17n-lib
 #  - net-fs/openafs
 app-crypt/heimdal afs
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
@@ -144,7 +144,7 @@ x11-base/xwayland unwind
 
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Dependencies not keyworded, not tested
-net-libs/libproxy spidermonkey webkit kde networkmanager
+net-libs/libproxy spidermonkey kde networkmanager
 
 # Sam James <sam@gentoo.org> (2021-03-11)
 # Yixun Lan <dlan@gentoo.org> (2021-07-27)
