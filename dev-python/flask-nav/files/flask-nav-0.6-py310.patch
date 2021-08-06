@@ -1,0 +1,22 @@
+From b61de7a6742f7d15f92b477b1518f420303b1efb Mon Sep 17 00:00:00 2001
+From: Jay Shepherd <shepherdjay@users.noreply.github.com>
+Date: Mon, 27 Apr 2020 12:11:48 -0600
+Subject: [PATCH] Fix deprecation warning for collections
+
+---
+ flask_nav/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/flask_nav/__init__.py b/flask_nav/__init__.py
+index 7c25dfa..9fea6ee 100644
+--- a/flask_nav/__init__.py
++++ b/flask_nav/__init__.py
+@@ -46,7 +46,7 @@ class NavbarRenderingError(Exception):
+     pass
+ 
+ 
+-class ElementRegistry(collections.MutableMapping):
++class ElementRegistry(collections.abc.MutableMapping):
+     def __init__(self):
+         self._elems = {}
+ 
