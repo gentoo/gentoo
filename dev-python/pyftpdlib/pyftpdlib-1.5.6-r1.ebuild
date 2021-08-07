@@ -74,7 +74,7 @@ python_test() {
 		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptionsTLSMixin::test_masquerade_address_map
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
-	TZ=UTC+1 epytest ${skipped_tests[@]/#/--deselect }
+	TZ=UTC+1 epytest -p no:xvfb ${skipped_tests[@]/#/--deselect }
 }
 
 python_install_all() {
