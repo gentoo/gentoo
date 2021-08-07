@@ -39,6 +39,11 @@ BDEPEND="
 distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
+python_test() {
+	# pytest-xvfb causes test failures due to a zombie Xvfb process
+	epytest -p no:xvfb
+}
+
 pkg_postinst() {
 	optfeature "S3 support" dev-python/boto
 	optfeature "SFTP support" dev-python/paramiko
