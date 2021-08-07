@@ -35,6 +35,7 @@ BDEPEND="
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
 		dev-python/werkzeug[${PYTHON_USEDEP}]
+		dev-python/zope-event[${PYTHON_USEDEP}]
 	)
 "
 
