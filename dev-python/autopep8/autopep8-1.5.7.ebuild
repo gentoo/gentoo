@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{7..10} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -24,6 +24,5 @@ SLOT="0"
 RDEPEND="
 	>=dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]"
-BDEPEND="test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
