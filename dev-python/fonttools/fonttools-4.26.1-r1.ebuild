@@ -19,6 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~
 RDEPEND=">=dev-python/fs-2.4.9[${PYTHON_USEDEP}]"
 BDEPEND="
 	${RDEPEND}
+	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		app-arch/brotli[python,${PYTHON_USEDEP}]
 		app-arch/zopfli
@@ -40,6 +41,10 @@ python_prepare_all() {
 	touch Tests/svgLib/__init__.py || die
 
 	distutils-r1_python_prepare_all
+}
+
+src_configure() {
+	DISTUTILS_ARGS=( --with-cython )
 }
 
 python_test() {
