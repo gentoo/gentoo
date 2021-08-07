@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-07)
+# The ORBlite scanner plugin only works on amd64 and x86.
+net-print/hplip-plugin -orblite
+
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-26)
 # nvenc on x86 needs both legacy 390 drivers and old vulnerable
 # <=media-video/ffmpeg-4.2.4, nvidia has no real x86 support.
