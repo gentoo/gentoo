@@ -17,7 +17,7 @@
 # pull in the dependency on the requested ruby targets.
 #
 # @CODE
-# USE_RUBY="ruby20 ruby21"
+# USE_RUBY="ruby26 ruby27"
 # inherit ruby-single
 # RDEPEND="${RUBY_DEPS}"
 # @CODE
@@ -66,7 +66,7 @@ inherit ruby-utils
 #
 # Example value:
 # @CODE
-# || ( dev-lang/ruby:2.0 dev-lang/ruby:1.9 ) virtual/rubygems
+# || ( dev-lang/ruby:2.7 dev-lang/ruby:2.6 ) virtual/rubygems
 # @CODE
 #
 # The order of dependencies will change over time to best match the
