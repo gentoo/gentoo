@@ -40,16 +40,9 @@ python_test() {
 	local skipped_tests=(
 		# Those tests are run separately
 		pyftpdlib/test/test_misc.py
-		# https://github.com/giampaolo/pyftpdlib/issues/470
-		# https://bugs.gentoo.org/659108
-		pyftpdlib/test/test_functional_ssl.py::TestTimeouts::test_idle_data_timeout2
-		pyftpdlib/test/test_functional_ssl.py::TestTimeoutsTLSMixin::test_idle_data_timeout2
 		# https://github.com/giampaolo/pyftpdlib/issues/471
 		# https://bugs.gentoo.org/636410
 		pyftpdlib/test/test_functional.py::TestCallbacks::test_on_incomplete_file_received
-		# https://github.com/giampaolo/pyftpdlib/issues/466
-		# https://bugs.gentoo.org/659786
-		pyftpdlib/test/test_functional_ssl.py::TestFtpListingCmdsTLSMixin::test_nlst
 		# https://github.com/giampaolo/pyftpdlib/issues/512
 		# https://bugs.gentoo.org/701146
 		pyftpdlib/test/test_functional_ssl.py::TestFtpStoreDataTLSMixin::test_rest_on_stor
@@ -74,7 +67,10 @@ python_test() {
 		pyftpdlib/test/test_functional_ssl.py::TestConfigurableOptionsTLSMixin::test_masquerade_address_map
 	)
 	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
-	TZ=UTC+1 epytest -p no:xvfb ${skipped_tests[@]/#/--deselect }
+	local -x TZ=UTC+1
+	# Skips some shoddy tests plus increases timeouts
+	local -x TRAVIS=1
+	epytest -p no:xvfb ${skipped_tests[@]/#/--deselect }
 }
 
 python_install_all() {
