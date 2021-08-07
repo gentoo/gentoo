@@ -7,7 +7,7 @@ DESCRIPTION="Web interface for airdcpp-webclient"
 HOMEPAGE="https://airdcpp-web.github.io/"
 SRC_URI="https://registry.npmjs.org/${PN}/-/${P}.tgz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
