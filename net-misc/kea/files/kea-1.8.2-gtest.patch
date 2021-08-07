@@ -1,0 +1,35 @@
+--- a/m4macros/ax_gtest.m4
++++ b/m4macros/ax_gtest.m4
+@@ -135,20 +135,18 @@ if test "x$enable_gtest" = "xyes" ; then
+             GTEST_FOUND="false"
+             for dir in $GTEST_PATHS; do
+                 if test -f "$dir/include/gtest/gtest.h"; then
+-                    if ! test -f "$dir/lib/libgtest.a"; then
+-                        AC_MSG_WARN([Found Google Test include but not the library in $dir.])
+-                        continue
+-                    fi
+-                    GTEST_INCLUDES="-I$dir/include"
+-                    GTEST_LDFLAGS="-L$dir/lib"
+-                    GTEST_LDADD="-lgtest"
+-                    GTEST_FOUND="true"
+-                    break
+-                fi
+-            done
+-        fi
+-        if test "${GTEST_FOUND}" != "true"; then
+-            AC_MSG_ERROR([Cannot find gtest in: $GTEST_PATHS])
++		    if test -f "$dir/lib64/libgtest.a" || \
++                       test -f "$dir/lib64/libgtest.so"; then
++                        GTEST_INCLUDES="-I$dir/include"
++                        GTEST_LDFLAGS="-L$dir/lib64"
++                        GTEST_LDADD="-lgtest"
++                        GTEST_FOUND="true"
++                        break
++                    else
++		        AC_MSG_ERROR([Cannot find gtest in: $GTEST_PATHS])
++		   fi
++	        fi
++	    done
+         fi
+
+     fi
