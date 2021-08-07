@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake desktop
+inherit cmake desktop flag-o-matic
 
 MY_PV="$(ver_rs 3 -)-r7601"
 
@@ -45,6 +45,8 @@ PATCHES=(
 )
 
 src_configure() {
+	append-cppflags -I. #806980
+
 	local mycmakeargs=(
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH=yes # see xmlversion-rpath patch
 		-DOPTION_3RDPARTY_SOLID=yes
