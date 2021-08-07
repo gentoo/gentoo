@@ -1,6 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-08)
+# dev-games/ogre doesn't build on arm64, see https://bugs.gentoo.org/806776#c12
+dev-games/mygui ogre
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-08-02)
 # pandoc not keyworded on arm64
 sys-apps/exa man
