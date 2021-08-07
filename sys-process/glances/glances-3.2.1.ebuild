@@ -5,7 +5,6 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{7,8,9} )
 PYTHON_REQ_USE="ncurses"
-DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 linux-info optfeature
 
