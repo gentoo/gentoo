@@ -1,0 +1,28 @@
+diff --git a/mechanize/_clientcookie.py b/mechanize/_clientcookie.py
+index ebd2773..6c89cbf 100644
+--- a/mechanize/_clientcookie.py
++++ b/mechanize/_clientcookie.py
+@@ -188,13 +188,22 @@ class CookieJar(CJ):
+         raise IndexError()
+ 
+ 
++try:
++    from http.cookiejar import NETSCAPE_MAGIC_RGX, NETSCAPE_HEADER_TEXT
++except ImportError:  # python < 3.10
++    NETSCAPE_MAGIC_RGX = MCJ.magic_re
++    NETSCAPE_HEADER_TEXT = MCJ.header
++else:
++    MCJ.header = NETSCAPE_HEADER_TEXT  # needed for tests
++
++
+ class MozillaCookieJar(MCJ):
+ 
+     def _really_load(self, f, filename, ignore_discard, ignore_expires):
+         now = time.time()
+ 
+         magic = f.readline()
+-        if not re.search(self.magic_re, magic):
++        if not re.search(NETSCAPE_MAGIC_RGX, magic):
+             f.close()
+             raise LoadError(
+                 "%r does not look like a Netscape format cookies file" %
