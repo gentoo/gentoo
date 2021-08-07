@@ -3,19 +3,16 @@
 
 EAPI=7
 
-inherit desktop optfeature perl-module git-r3 xdg-utils
+inherit desktop optfeature perl-module xdg-utils
 
 DESCRIPTION="A command line utility for viewing youtube-videos in Mplayer"
-HOMEPAGE="https://trizenx.blogspot.com/2012/03/gtk-youtube-viewer.html"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/trizen/${PN}.git"
+HOMEPAGE="https://github.com/trizen/youtube-viewer"
+SRC_URI="https://github.com/trizen/youtube-viewer/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-1+ )"
+LICENSE="|| ( Artistic-2 GPL-1+ )"
 SLOT="0"
-KEYWORDS=""
-IUSE="gtk gtk2"
-
-REQUIRED_USE="gtk2? ( gtk )"
+KEYWORDS="~amd64 ~x86"
+IUSE="gtk"
 
 RDEPEND="
 	dev-perl/Data-Dump
@@ -40,9 +37,8 @@ RDEPEND="
 	)
 	|| ( media-video/ffmpeg[openssl] media-video/ffmpeg[gnutls] )
 	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"
-DEPEND="dev-perl/Module-Build"
-
-SRC_TEST="do"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-perl/Module-Build"
 
 src_configure() {
 	local myconf
@@ -71,6 +67,10 @@ pkg_postinst() {
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"
 	elog "and configure your video player backend."
+	elog
+	ewarn "Starting with version 3.7.4, youtube-viewer requires the user to"
+	ewarn "get their own API key to function. Please refer to README.md or"
+	ewarn "https://github.com/trizen/youtube-viewer#logging-in for details!"
 }
 
 pkg_postrm() {
