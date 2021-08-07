@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/787029
+--- a/src/regex_impl.cc
++++ b/src/regex_impl.cc
+@@ -12,6 +12,7 @@
+ 
+ #include <cstdio>
+ #include <cstring>
++#include <limits>
+ 
+ namespace Kakoune
+ {
