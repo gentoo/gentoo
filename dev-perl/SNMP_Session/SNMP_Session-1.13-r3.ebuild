@@ -19,5 +19,6 @@ PATCHES=(
 
 src_install() {
 	perl-module_src_install
-	dohtml index.html
+	docinto html
+	dodoc index.html
 }
