@@ -10,7 +10,7 @@ HOMEPAGE="https://clover.moe/turtlearena/"
 SRC_URI="
 	https://turtlearena.googlecode.com/files/${P}-0-src.tar.bz2
 	https://turtlearena.googlecode.com/files/${P}-0.zip"
-S+="-0-src"
+S="${WORKDIR}/${P}-0-src"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 mplus-fonts lcc"
 SLOT="0"
