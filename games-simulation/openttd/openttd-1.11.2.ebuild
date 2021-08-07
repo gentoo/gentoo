@@ -11,7 +11,7 @@ SRC_URI="https://cdn.openttd.org/openttd-releases/${PV}/${P}-source.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 IUSE="allegro cpu_flags_x86_sse dedicated +fluidsynth icu +lzma lzo +openmedia +png +sdl timidity +truetype zlib"
 REQUIRED_USE="!dedicated? ( || ( allegro sdl ) )"
