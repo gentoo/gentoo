@@ -20,7 +20,7 @@ HOMEPAGE="https://atar-axis.github.io/xpadneo/"
 LICENSE="GPL-3"
 SLOT="0"
 
-S+="/hid-${PN}"
+S="${WORKDIR}/${P}/hid-${PN}"
 MODULE_NAMES="hid-${PN}(kernel/drivers/hid::src)"
 BUILD_PARAMS='V=1 LD="$(tc-getLD)" KERNEL_SOURCE_DIR="${KV_OUT_DIR}"'
 BUILD_TARGETS="modules"
