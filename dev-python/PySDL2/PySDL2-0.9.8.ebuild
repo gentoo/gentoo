@@ -32,7 +32,7 @@ DEPEND="
 		dev-python/pillow[${PYTHON_USEDEP}]
 		media-libs/libsdl2[joystick,sound,video]
 		media-libs/sdl2-gfx
-		media-libs/sdl2-image
+		media-libs/sdl2-image[gif,jpeg,png,tiff,webp]
 		media-libs/sdl2-mixer
 		media-libs/sdl2-ttf
 	)"
