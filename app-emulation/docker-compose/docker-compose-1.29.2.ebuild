@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit bash-completion-r1 distutils-r1
@@ -16,10 +16,8 @@ SRC_URI="https://github.com/docker/compose/archive/${MY_PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 arm64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
 	>=dev-python/cached-property-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/docker-py-5[${PYTHON_USEDEP}]
@@ -43,6 +41,8 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/compose-${MY_PV}"
 
+distutils_enable_tests pytest
+
 PATCHES=(
 	# Bug #679968 -- https://bugs.gentoo.org/679968
 	# Bug #681002 -- https://bugs.gentoo.org/681002
@@ -60,7 +60,7 @@ src_prepare() {
 
 python_test() {
 	distutils_install_for_testing
-	${PYTHON} -m pytest tests/unit/ || die "tests failed under ${EPYTHON}"
+	epytest tests/unit/
 }
 
 python_install_all() {
