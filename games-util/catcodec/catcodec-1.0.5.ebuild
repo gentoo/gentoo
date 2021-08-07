@@ -11,7 +11,7 @@ SRC_URI="https://binaries.openttd.org/extra/catcodec/${PV}/${P}-source.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 src_prepare() {
 	default
