@@ -33,6 +33,8 @@ BDEPEND="
 distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 
 python_test() {
+	cd "${BUILD_DIR}"/lib || die
+
 	# These tests fail when passing additional options to pytest
 	# so we need to run them separately and not pass any args to pytest
 	pytest ${PN}/test/test_misc.py || die "Tests failed with ${EPYTHON}"
