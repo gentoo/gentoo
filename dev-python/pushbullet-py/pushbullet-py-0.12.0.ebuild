@@ -34,8 +34,7 @@ distutils_enable_tests pytest
 
 python_test() {
 	# Skip tests which require internet access
-	PUSHBULLET_API_KEY= epytest -k "not (test_auth or test_decryption)" \
-		|| die "Tests failed with ${EPYTHON}"
+	PUSHBULLET_API_KEY= epytest -k "not (test_auth or test_decryption)"
 }
 
 python_install_all() {
