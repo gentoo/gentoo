@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -22,7 +22,8 @@ BDEPEND="
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/uvloop[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
-	)"
+	)
+"
 
 distutils_enable_tests pytest
 
