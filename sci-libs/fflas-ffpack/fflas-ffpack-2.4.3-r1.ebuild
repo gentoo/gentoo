@@ -23,7 +23,13 @@ DEPEND="virtual/cblas
 	=sci-libs/givaro-4.1*"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-2.3.2-blaslapack.patch" )
+# The no-test-echelon patch works around a test failure that may
+# eventually be fixed upstream. Gentoo bug 725446 and upstream
+# Github issue 282.
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.2-blaslapack.patch"
+	"${FILESDIR}/${P}-no-test-echelon.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
