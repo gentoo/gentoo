@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-blaslapack.patch"
 	"${FILESDIR}/${P}-no-test-echelon.patch"
 	"${FILESDIR}/${P}-fix-internal-linking.patch"
+	"${FILESDIR}/${P}-no-fabi-version.patch"
 )
 
 pkg_pretend() {
