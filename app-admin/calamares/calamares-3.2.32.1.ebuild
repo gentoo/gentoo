@@ -63,7 +63,7 @@ RDEPEND="${COMMON_DEPEND}
 	upower? ( sys-power/upower )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-3.2.32.1-remove-broken-tests.ebuild )
+PATCHES=( "${FILESDIR}"/${PN}-3.2.32.1-remove-broken-tests.patch )
 
 src_prepare() {
 	ecm_src_prepare
