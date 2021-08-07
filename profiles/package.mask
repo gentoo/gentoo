@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Louis Sautier <sbraz@gentoo.org> (2021-08-07)
+# No reverse dependencies, no upstream activity for more than 5 years,
+# failing tests with Python 3.10. Removal on 2021-09-06.
+dev-python/pydiff
+
 # Stephan Hartmann <sultan@gentoo.org> (2021-08-06)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
