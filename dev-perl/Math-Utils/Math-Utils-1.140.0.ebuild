@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Useful mathematical functions not in Perl"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}
