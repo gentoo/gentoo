@@ -8,7 +8,7 @@ inherit autotools desktop
 DESCRIPTION="Super-Pang clone (destroy bouncing balloons with your grapnel)"
 HOMEPAGE="http://www.losersjuegos.com.ar/juegos/ceferino"
 SRC_URI="mirror://debian/pool/main/c/ceferino/${PN}_${PV}+svn37.orig.tar.gz"
-S+="+svn37"
+S="${WORKDIR}/${P}+svn37"
 
 LICENSE="GPL-2+"
 SLOT="0"
