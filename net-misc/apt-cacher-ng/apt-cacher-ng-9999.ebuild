@@ -18,7 +18,7 @@ IUSE="doc fuse tcpd"
 DEPEND="acct-user/apt-cacher-ng
 	acct-group/apt-cacher-ng
 	app-arch/bzip2
-	dev-libs/libevent:=
+	dev-libs/libevent:=[threads]
 	dev-libs/openssl:0=
 	sys-libs/zlib
 	fuse? ( sys-fs/fuse:0 )
