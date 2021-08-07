@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# James Le Cuirot <chewi@gentoo.org> (2021-08-07)
+# The ORBlite scanner plugin only works on amd64 and x86.
+net-print/hplip-plugin orblite
+
 # Sam James <sam@gentoo.org> (2021-08-04)
 # Needs last-rited app-dicts/kasumi
 # bug #786738
