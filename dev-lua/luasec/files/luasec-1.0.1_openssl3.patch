@@ -1,0 +1,96 @@
+From 79bbc0bc3ed50303d0887f44137a1104ede3ea8f Mon Sep 17 00:00:00 2001
+From: Bruno Silvestre <brunoos@inf.ufg.br>
+Date: Mon, 2 Aug 2021 17:02:44 -0300
+Subject: [PATCH] Ignore SSL_OP_BIT(n) macro and update option.c #178
+
+---
+ src/options.c   | 20 +++++++++++++++++++-
+ src/options.lua |  9 ++++++---
+ 2 files changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/src/options.c b/src/options.c
+index 24fd2c9..7c6f21e 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -13,13 +13,16 @@
+ 
+ 
+ /* 
+-  OpenSSL version: OpenSSL 1.1.1
++  OpenSSL version: OpenSSL 3.0.0-beta2
+ */
+ 
+ static lsec_ssl_option_t ssl_options[] = {
+ #if defined(SSL_OP_ALL)
+   {"all", SSL_OP_ALL},
+ #endif
++#if defined(SSL_OP_ALLOW_CLIENT_RENEGOTIATION)
++  {"allow_client_renegotiation", SSL_OP_ALLOW_CLIENT_RENEGOTIATION},
++#endif
+ #if defined(SSL_OP_ALLOW_NO_DHE_KEX)
+   {"allow_no_dhe_kex", SSL_OP_ALLOW_NO_DHE_KEX},
+ #endif
+@@ -32,21 +35,33 @@ static lsec_ssl_option_t ssl_options[] = {
+ #if defined(SSL_OP_CISCO_ANYCONNECT)
+   {"cisco_anyconnect", SSL_OP_CISCO_ANYCONNECT},
+ #endif
++#if defined(SSL_OP_CLEANSE_PLAINTEXT)
++  {"cleanse_plaintext", SSL_OP_CLEANSE_PLAINTEXT},
++#endif
+ #if defined(SSL_OP_COOKIE_EXCHANGE)
+   {"cookie_exchange", SSL_OP_COOKIE_EXCHANGE},
+ #endif
+ #if defined(SSL_OP_CRYPTOPRO_TLSEXT_BUG)
+   {"cryptopro_tlsext_bug", SSL_OP_CRYPTOPRO_TLSEXT_BUG},
+ #endif
++#if defined(SSL_OP_DISABLE_TLSEXT_CA_NAMES)
++  {"disable_tlsext_ca_names", SSL_OP_DISABLE_TLSEXT_CA_NAMES},
++#endif
+ #if defined(SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS)
+   {"dont_insert_empty_fragments", SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS},
+ #endif
++#if defined(SSL_OP_ENABLE_KTLS)
++  {"enable_ktls", SSL_OP_ENABLE_KTLS},
++#endif
+ #if defined(SSL_OP_ENABLE_MIDDLEBOX_COMPAT)
+   {"enable_middlebox_compat", SSL_OP_ENABLE_MIDDLEBOX_COMPAT},
+ #endif
+ #if defined(SSL_OP_EPHEMERAL_RSA)
+   {"ephemeral_rsa", SSL_OP_EPHEMERAL_RSA},
+ #endif
++#if defined(SSL_OP_IGNORE_UNEXPECTED_EOF)
++  {"ignore_unexpected_eof", SSL_OP_IGNORE_UNEXPECTED_EOF},
++#endif
+ #if defined(SSL_OP_LEGACY_SERVER_CONNECT)
+   {"legacy_server_connect", SSL_OP_LEGACY_SERVER_CONNECT},
+ #endif
+@@ -89,6 +104,9 @@ static lsec_ssl_option_t ssl_options[] = {
+ #if defined(SSL_OP_NO_ENCRYPT_THEN_MAC)
+   {"no_encrypt_then_mac", SSL_OP_NO_ENCRYPT_THEN_MAC},
+ #endif
++#if defined(SSL_OP_NO_EXTENDED_MASTER_SECRET)
++  {"no_extended_master_secret", SSL_OP_NO_EXTENDED_MASTER_SECRET},
++#endif
+ #if defined(SSL_OP_NO_QUERY_MTU)
+   {"no_query_mtu", SSL_OP_NO_QUERY_MTU},
+ #endif
+diff --git a/src/options.lua b/src/options.lua
+index a757c8b..678e8d5 100644
+--- a/src/options.lua
++++ b/src/options.lua
+@@ -60,9 +60,12 @@ local function loadoptions(file)
+   local options = {}
+   local f = assert(io.open(file, "r"))
+   for line in f:lines() do
+-    local op = string.match(line, "define%s+(SSL_OP_%S+)")
+-    if op then
+-      table.insert(options, op)
++    local op = string.match(line, "define%s+(SSL_OP_BIT%()")
++    if not op then
++      op = string.match(line, "define%s+(SSL_OP_%S+)")
++      if op then
++        table.insert(options, op)
++      end
+     end
+   end
+   table.sort(options, function(a,b) return a<b end)
