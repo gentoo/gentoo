@@ -42,16 +42,17 @@ BDEPEND="
 
 DOCS=( "README.md" "samples/." )
 
+PATCHES=( "${FILESDIR}/${PN}-0.8.0_p6-testcrl-openssl.patch" )
+
 src_prepare() {
 	default
 
 	# Allow override of LUA* variables
 	sed -e '/LUA  /s/:=/?=/g' -e '/LUA_VERSION/s/:=/?=/g' -i Makefile || die
 
-	# Disable TestCMS and TestCRL test suite, as it fails
+	# Disable TestCMS test suite, as it fails
 	# See: https://github.com/zhaozg/lua-openssl/issues/230
-	# See: https://github.com/zhaozg/lua-openssl/issues/231
-	sed -e '/6.cms.lua/d' -e '/5.x509_crl.lua/d' -i test/test.lua || die
+	sed -e '/6.cms.lua/d' -i test/test.lua || die
 
 	# Prepare needed dependencies (source code files only)
 	rm -r deps/{auxiliar,lua-compat} || die
