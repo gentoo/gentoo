@@ -13,7 +13,7 @@ SRC_URI="https://github.com/rofafor/vdr-plugin-rssreader/archive/v${PV}.tar.gz -
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND="
 	>=media-video/vdr-2.4.0
