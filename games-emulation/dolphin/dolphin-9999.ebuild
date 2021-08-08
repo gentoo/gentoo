@@ -170,6 +170,10 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	cmake_build unittests
+}
+
 src_install() {
 	cmake_src_install
 
