@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{7..10} )
 
 inherit distutils-r1
 
@@ -25,7 +25,6 @@ IUSE="examples sasl ssl"
 # We do not need OpenSSL, it is never directly used:
 # https://github.com/python-ldap/python-ldap/issues/224
 RDEPEND="
-	!dev-python/pyldap
 	>=dev-python/pyasn1-0.3.7[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-modules-0.1.5[${PYTHON_USEDEP}]
 	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
@@ -71,8 +70,7 @@ python_test() {
 		t_slapdobject.py
 	)
 	pushd Tests >/dev/null || die
-	pytest -vv ${ignored_tests[@]/#/--ignore } \
-		|| die "tests failed with ${EPYTHON}"
+	epytest ${ignored_tests[@]/#/--ignore }
 	popd > /dev/null || die
 }
 
