@@ -13,7 +13,7 @@ S="${WORKDIR}/vdr-plugin-epgsearch-${GIT_COMMIT_ID}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="conflictcheckonly epgsearchonly pcre quicksearch tre"
 REQUIRED_USE="?? ( pcre tre )"
 
