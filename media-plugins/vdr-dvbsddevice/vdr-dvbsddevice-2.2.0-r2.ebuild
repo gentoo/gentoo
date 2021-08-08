@@ -9,7 +9,7 @@ DESCRIPTION="VDR Plugin: output device for the 'Full Featured' SD DVB Card"
 HOMEPAGE="http://www.tvdr.de/"
 SRC_URI="http://ftp.tvdr.de/Plugins/${P}.tgz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2+"
 
