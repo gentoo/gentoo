@@ -121,10 +121,12 @@ src_prepare() {
 	done
 
 	# About 50% compile-time speedup
-	use vulkan || sed -i -e '/Externals\/glslang/d' CMakeLists.txt
+	if ! use vulkan; then
+		sed -i -e '/Externals\/glslang/d' CMakeLists.txt || die
+	fi
 
 	# Remove dirty suffix: needed for netplay
-	sed -i -e 's/--dirty/&=""/' CMakeLists.txt
+	sed -i -e 's/--dirty/&=""/' CMakeLists.txt || die
 }
 
 src_configure() {
