@@ -36,5 +36,5 @@ python_test() {
 		pytest_args+=(--deselect "${test_name}")
 	done
 
-	epytest "${pytest_args[@]}" || die
+	epytest "${pytest_args[@]}"
 }
