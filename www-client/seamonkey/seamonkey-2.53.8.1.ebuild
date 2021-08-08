@@ -42,7 +42,9 @@ HOMEPAGE="https://www.seamonkey-project.org/"
 PATCH="${PN}-2.53.8_beta1-patches-01"
 SRC_URI+="
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/mozilla/${PN}-2.53.8.1-rust-1.45.0.patch.xz
 	system-libvpx? ( https://dev.gentoo.org/~polynomial-c/mozilla/${PN}-2.53.3-system_libvpx-1.8.patch.xz )
+
 "
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -199,7 +201,7 @@ src_prepare() {
 
 	use system-libvpx \
 		&& eapply -p2 "${WORKDIR}/${PN}-2.53.3-system_libvpx-1.8.patch"
-	eapply "${FILESDIR}"/${PN}-2.53.8.1-rust-1.45.0.patch
+	eapply "${WORKDIR}"/${PN}-2.53.8.1-rust-1.45.0.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
