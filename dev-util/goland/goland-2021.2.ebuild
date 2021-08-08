@@ -49,7 +49,7 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{${PN}.sh,fsnotifier64}
+	fperms 755 "${dir}"/bin/{${PN}.sh,fsnotifier}
 	fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jfr,jhsdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
 	fperms 755 "${dir}"/plugins/go/lib/dlv/linux/dlv
 
