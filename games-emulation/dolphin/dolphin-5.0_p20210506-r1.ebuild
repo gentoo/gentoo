@@ -8,13 +8,12 @@ inherit cmake desktop xdg-utils pax-utils
 if [[ ${PV} == *9999 ]]
 then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
-	EGIT_SUBMODULES=( Externals/mGBA/mgba )
 	inherit git-r3
 else
 	inherit vcs-snapshot
-	commit=0dbe8fb2eaa608a6540df3d269648a596c29cf4b
+	commit=eb5cd9be78c76b9ccbab9e5fbd1721ef6876cd68
 	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${commit}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"
@@ -22,7 +21,7 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto mgba profile pulseaudio +qt5 systemd upnp vulkan"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto profile pulseaudio +qt5 systemd upnp vulkan"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -69,6 +68,8 @@ BDEPEND="
 RDEPEND="${RDEPEND}
 	vulkan? ( media-libs/vulkan-loader )"
 
+PATCHES=("${FILESDIR}"/${P}-musl.patch)
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -106,9 +107,6 @@ src_prepare() {
 		picojson
 		# No code to detect shared library.
 		zstd
-
-		# This is a stripped-down mGBA for integrated GBA support
-		mGBA
 	)
 	local s
 	for s in "${KEEP_SOURCES[@]}"; do
@@ -138,7 +136,6 @@ src_configure() {
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DENABLE_LLVM=OFF
 		-DENABLE_LTO=$(usex lto)
-		-DUSE_MGBA=$(usex mgba)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_SDL=OFF # not supported: #666558
