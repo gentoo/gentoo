@@ -11,7 +11,7 @@ SRC_URI="https://github.com/madmartin/noad/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+ffmpeg imagemagick libmpeg2"
 
 BDEPEND="virtual/pkgconfig"
