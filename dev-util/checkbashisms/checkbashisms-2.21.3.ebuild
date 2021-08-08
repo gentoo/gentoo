@@ -9,19 +9,17 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Perl script to check for commonly used bash features not defined by POSIX"
 HOMEPAGE="https://packages.debian.org/devscripts https://salsa.debian.org/debian/devscripts"
 SRC_URI="mirror://debian/pool/main/d/${MY_PN}/${MY_P/-/_}.tar.xz"
+S="${WORKDIR}/${MY_P}/scripts"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE=""
 
 # Requires python packages to check tools we don't need anyway
 RESTRICT="test"
 
 RDEPEND="dev-lang/perl
 	virtual/perl-Getopt-Long"
-
-S="${WORKDIR}/${MY_P}/scripts"
 
 src_prepare() {
 	default
