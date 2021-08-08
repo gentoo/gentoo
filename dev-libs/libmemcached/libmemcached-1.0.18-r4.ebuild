@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc7.patch
 	"${FILESDIR}"/${P}-autotools.patch
 	"${FILESDIR}"/${P}-disable-sphinx.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 src_prepare() {
