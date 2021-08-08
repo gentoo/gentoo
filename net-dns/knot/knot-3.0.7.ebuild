@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd
+inherit flag-o-matic systemd
 
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/"
@@ -11,7 +11,7 @@ SRC_URI="https://secure.nic.cz/files/knot-dns/${P/_/-}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 KNOT_MODULES=(
 	"+cookies"
@@ -72,6 +72,10 @@ src_configure() {
 	for u in "${KNOT_MODULES[@]#+}"; do
 		my_conf+=("$(use_with ${u} module-${u})")
 	done
+
+	if use riscv; then
+		append-libs -latomic
+	fi
 
 	econf "${my_conf[@]}"
 }
