@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	ngspice? (
 		>sci-electronics/ngspice-27[shared]
 	)
-	occ? ( sci-libs/opencascade:=[vtk(+)] )
+	occ? ( <sci-libs/opencascade-7.5.3:=[vtk(+)] )
 	oce? ( sci-libs/oce )
 	python? (
 		$(python_gen_cond_dep '
@@ -114,7 +114,12 @@ src_configure() {
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 	)
 	if use occ; then
-		if has_version ">=sci-libs/opencascade-7.5"; then
+		if has_version "~sci-libs/opencascade-7.5.2"; then
+			mycmakeargs+=(
+				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.2
+				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.2
+			)
+		elif has_version "~sci-libs/opencascade-7.5.1"; then
 			mycmakeargs+=(
 				-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade-7.5.1
 				-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade-7.5.1
