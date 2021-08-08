@@ -24,8 +24,8 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log mgba
-	profile pulseaudio +qt5 systemd upnp vulkan"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg +gui log mgba
+	profile pulseaudio systemd upnp vulkan"
 
 RDEPEND="
 	dev-libs/hidapi:0=
@@ -52,13 +52,13 @@ RDEPEND="
 		virtual/udev
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
-	profile? ( dev-util/oprofile )
-	pulseaudio? ( media-sound/pulseaudio )
-	qt5? (
+	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
 	)
+	profile? ( dev-util/oprofile )
+	pulseaudio? ( media-sound/pulseaudio )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc )
 "
@@ -147,7 +147,7 @@ src_configure() {
 		-DENABLE_LTO=OFF
 		-DUSE_MGBA=$(usex mgba)
 		-DENABLE_PULSEAUDIO=$(usex pulseaudio)
-		-DENABLE_QT=$(usex qt5)
+		-DENABLE_QT=$(usex gui)
 		-DENABLE_SDL=OFF # not supported: #666558
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DFASTLOG=$(usex log)
