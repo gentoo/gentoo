@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{7..9} )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="A wrapper around PyFlakes, pep8 & mccabe"
@@ -20,7 +20,7 @@ RDEPEND="
 	<dev-python/pyflakes-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.7.0[${PYTHON_USEDEP}]
 	<dev-python/pycodestyle-2.8.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
+	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3)
 "
 PDEPEND="
 	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
