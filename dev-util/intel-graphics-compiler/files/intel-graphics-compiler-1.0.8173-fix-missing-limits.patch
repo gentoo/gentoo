@@ -1,0 +1,23 @@
+Fix compilation with >=gcc-11, taken from upstream:
+https://github.com/intel/intel-graphics-compiler/pull/190
+
+From 8e1a461d3e6b85a6cf018caf6abf4a3ba9a1758d Mon Sep 17 00:00:00 2001
+From: Bruno Pagani <bruno.n.pagani@gmail.com>
+Date: Wed, 4 Aug 2021 20:54:21 +0200
+Subject: [PATCH] Fix missing include
+
+---
+ visa/iga/IGALibrary/IR/RegDeps.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/visa/iga/IGALibrary/IR/RegDeps.cpp b/visa/iga/IGALibrary/IR/RegDeps.cpp
+index 83c226a316..585896631e 100644
+--- a/visa/iga/IGALibrary/IR/RegDeps.cpp
++++ b/visa/iga/IGALibrary/IR/RegDeps.cpp
+@@ -10,6 +10,7 @@ SPDX-License-Identifier: MIT
+ #include "../asserts.hpp"
+ #include "../bits.hpp"
+ 
++#include <limits>
+ #include <sstream>
+ #include <cstring>
