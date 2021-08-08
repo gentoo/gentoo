@@ -73,7 +73,6 @@ BDEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )"
 
 GP_VERSION="${PV%.*}"
-E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 PATCHES=(
