@@ -1,18 +1,17 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
-MODULE_AUTHOR=DOUGW
-MODULE_VERSION=0.65
+DIST_AUTHOR=DOUGW
+DIST_VERSION=0.65
 inherit perl-module
 
 DESCRIPTION="Read information from an Excel file"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
-IUSE="test cjk unicode"
-RESTRICT="!test? ( test )"
+IUSE="cjk unicode"
 
 # Digest::Perl::MD5 cannot be replaced by Digest::MD5, as this module actually
 # interacts with the internal state of Digest::Perl::MD5.
@@ -25,7 +24,7 @@ RDEPEND="
 	unicode? ( dev-perl/Unicode-Map )
 	cjk? ( dev-perl/Jcode )
 "
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Unicode-Map
@@ -33,8 +32,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Jcode
 	)
 "
-
-SRC_TEST="do"
 
 src_test() {
 	perl_rm_files t/90_pod.t t/91_minimumversion.t t/92_meta.t
