@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9} )
 
 inherit autotools python-single-r1
 
@@ -21,7 +21,8 @@ DEPEND="virtual/libusb:1=
 	virtual/libudev:="
 BDEPEND="
 	app-arch/xz-utils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	python? ( ${PYTHON_DEPS} )"
 RDEPEND="${DEPEND}
 	sys-apps/hwids
 	python? ( ${PYTHON_DEPS} )"
@@ -49,5 +50,7 @@ src_install() {
 	newdoc usbhid-dump/NEWS NEWS.usbhid-dump
 	dobin usbreset # noinst_PROGRAMS, but installed by other distros
 
-	use python || rm -f "${ED}"/usr/bin/lsusb.py
+	if ! use python ; then
+		rm -f "${ED}"/usr/bin/lsusb.py || die
+	fi
 }
