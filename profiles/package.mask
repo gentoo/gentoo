@@ -535,33 +535,6 @@ sys-libs/db:5.1
 # Removal on 2021-07-27
 media-sound/loudness-scanner
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
-# library with no consumer, removal in 30 days
-# see https://bugs.gentoo.org/794562
-dev-java/bctsp
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-06-23)
-# obsolete, no consumers
-# see bug: https://bugs.gentoo.org/797739
-dev-java/xml-commons
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-21)
-# libraries without consumers, removal in 30 days
-dev-java/bytelist
-dev-java/jcodings
-dev-java/joni
-dev-java/jvyamlb
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-20)
-# no consumer, removal in 30 days
-# see bug: https://bugs.gentoo.org/796587
-# and https://bugs.gentoo.org/561504
-dev-java/annogen
-dev-java/xml-xmlbeans
-java-virtuals/stax-api
-dev-java/jsr173
-dev-java/jibx-tools
-
 # Conrad Kostecki <conikost@gentoo.org> (2021-06-20)
 # New Minecraft server release needs at least Java 16,
 # which is currently not available in Gentoo.
@@ -572,11 +545,6 @@ dev-java/jibx-tools
 >=dev-python/sip-6
 >=dev-python/PyQt5-5.15.5_pre
 >=dev-python/qscintilla-python-2.13
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-06-14)
-# DeprecatedDep jre-1.3, upstream dead,removal in 30 days
-# see bug: https://bugs.gentoo.org/787410
-media-gfx/povtree
 
 # Sam James <sam@gentoo.org> (2021-06-12)
 # Masked until all reverse dependencies support
@@ -602,30 +570,6 @@ media-gfx/povtree
 # Michał Górny <mgorny@gentoo.org> (2021-05-31)
 # Requires removed media-libs/opencv version.
 <media-plugins/gst-plugins-opencv-1.18
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-24)
-# it's just a demo project, not a real app, see disclaimer
-# at https://github.com/romainguy/jext
-# removal in 30 days
-# also removing an obsolete package that has only this dependant
-# see bug: https://bugs.gentoo.org/791106
-app-editors/jext
-dev-java/jgoodies-looks:1.2
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-20)
-# no non-masked consumer, removal in 30 days
-# see bug: https://bugs.gentoo.org/786852
-dev-java/sun-jimi
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-20)
-# no non-masked consumer, removal in 30 days
-# see bug: https://bugs.gentoo.org/786828
-dev-java/squareness-jlf
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2021-05-19)
-# no consumer, removal in 30 days
-# see bug: https://bugs.gentoo.org/784065
-dev-java/werken-xpath
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2021-05-16)
 # Mask gcc-7 branch (ended upstream support). Please switch
