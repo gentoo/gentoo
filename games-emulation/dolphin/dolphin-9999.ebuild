@@ -11,10 +11,10 @@ then
 	EGIT_SUBMODULES=( Externals/mGBA/mgba )
 	inherit git-r3
 else
-	inherit vcs-snapshot
-	commit=0dbe8fb2eaa608a6540df3d269648a596c29cf4b
-	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${commit}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	EGIT_COMMIT=eb5cd9be78c76b9ccbab9e5fbd1721ef6876cd68
+	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
+	KEYWORDS="~amd64 ~arm64"
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"

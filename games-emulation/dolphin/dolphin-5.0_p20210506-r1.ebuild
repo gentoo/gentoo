@@ -10,9 +10,9 @@ then
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
 	inherit git-r3
 else
-	inherit vcs-snapshot
-	commit=eb5cd9be78c76b9ccbab9e5fbd1721ef6876cd68
-	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${commit}.tar.gz -> ${P}.tar.gz"
+	EGIT_COMMIT=eb5cd9be78c76b9ccbab9e5fbd1721ef6876cd68
+	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 	KEYWORDS="~amd64 ~arm64"
 fi
 
