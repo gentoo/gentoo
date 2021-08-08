@@ -1,8 +1,8 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -24,6 +24,11 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/unidecode[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	# https://github.com/mk-fg/pretty-yaml/pull/38
+	"${FILESDIR}/${P}-fix-py3.10.patch"
+)
 
 python_test() {
 	"${EPYTHON}" pyaml/tests/dump.py -v ||
