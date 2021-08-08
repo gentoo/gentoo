@@ -3,6 +3,10 @@
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
 # portaudio & pulseaudio are not tested yet
+app-accessibility/espeak portaudio
+
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
+# portaudio & pulseaudio are not tested yet
 media-libs/openal portaudio pulseaudio
 
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
