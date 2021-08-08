@@ -19,7 +19,7 @@ else
 fi
 
 DESCRIPTION="Gamecube and Wii game emulator"
-HOMEPAGE="https://www.dolphin-emu.org/"
+HOMEPAGE="https://dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
