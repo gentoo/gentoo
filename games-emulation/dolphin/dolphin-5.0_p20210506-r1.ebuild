@@ -21,7 +21,8 @@ fi
 DESCRIPTION="Gamecube and Wii game emulator"
 HOMEPAGE="https://dolphin-emu.org/"
 
-LICENSE="GPL-2"
+# NB: appended below
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg +gui log
 	profile pulseaudio systemd upnp vulkan"
@@ -73,48 +74,49 @@ RDEPEND="${RDEPEND}
 
 PATCHES=("${FILESDIR}"/${P}-musl.patch)
 
+# [directory]=license
+declare -A KEEP_BUNDLED=(
+	[Bochs_disasm]=LGPL-2.1+
+	[FreeSurround]=GPL-2+
+
+	# vulkan's API is not backwards-compatible:
+	# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
+	# but dolphin still relies on it, bug #729832
+	[Vulkan]=Apache-2.0
+
+	[cpp-optparse]=MIT
+	# no support for for using system library
+	[glslang]=BSD
+	[imgui]=MIT
+
+	# not packaged, tiny header library
+	[rangeset]=ZLIB
+
+	# FIXME: xxhash can't be found by cmake
+	[xxhash]=BSD-2
+	# no support for for using system library
+	[minizip]=ZLIB
+	# soundtouch uses shorts, not floats
+	[soundtouch]=LGPL-2.1+
+	[cubeb]=ISC
+	[discord-rpc]=MIT
+	# Their build set up solely relies on the build in gtest.
+	[gtest]= # (build-time only)
+	# gentoo's version requires exception support.
+	# dolphin disables exceptions and fails the build.
+	[picojson]=BSD-2
+	# No code to detect shared library.
+	[zstd]=BSD
+)
+LICENSE+=" ${KEEP_BUNDLED[*]}"
+
 src_prepare() {
 	cmake_src_prepare
 
-	# Remove all the bundled libraries that support system-installed
-	# preference. See CMakeLists.txt for conditional 'add_subdirectory' calls.
-	local keep_sources=(
-		Bochs_disasm
-		FreeSurround
-
-		# vulkan's API is not backwards-compatible:
-		# new release dropped VK_PRESENT_MODE_RANGE_SIZE_KHR
-		# but dolphin still relies on it, bug #729832
-		Vulkan
-
-		cpp-optparse
-		# no support for for using system library
-		glslang
-		imgui
-
-		# not packaged, tiny header library
-		rangeset
-
-		# FIXME: xxhash can't be found by cmake
-		xxhash
-		# no support for for using system library
-		minizip
-		# soundtouch uses shorts, not floats
-		soundtouch
-		cubeb
-		discord-rpc
-		# Their build set up solely relies on the build in gtest.
-		gtest
-		# gentoo's version requires exception support.
-		# dolphin disables exceptions and fails the build.
-		picojson
-		# No code to detect shared library.
-		zstd
-	)
 	local s remove=()
 	for s in Externals/*; do
 		[[ -f ${s} ]] && continue
-		if ! has "${s#Externals/}" "${keep_sources[@]}"; then
+		if ! has "${s#Externals/}" "${!KEEP_BUNDLED[@]}"; then
 			remove+=( "${s}" )
 		fi
 	done
