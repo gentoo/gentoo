@@ -199,6 +199,7 @@ src_prepare() {
 
 	use system-libvpx \
 		&& eapply -p2 "${WORKDIR}/${PN}-2.53.3-system_libvpx-1.8.patch"
+	eapply "${FILESDIR}"/${PN}-2.53.8.1-rust-1.45.0.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
