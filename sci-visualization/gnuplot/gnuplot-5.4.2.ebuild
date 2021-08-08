@@ -69,6 +69,7 @@ BDEPEND="
 		virtual/latex-base
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-langgreek
+		dev-texlive/texlive-mathscience
 		app-text/ghostscript-gpl )
 	qt5? ( dev-qt/linguist-tools:5 )"
 
