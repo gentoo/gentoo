@@ -12,7 +12,9 @@ then
 	inherit git-r3
 else
 	EGIT_COMMIT=eb5cd9be78c76b9ccbab9e5fbd1721ef6876cd68
-	SRC_URI="https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="
+		https://github.com/dolphin-emu/dolphin/archive/${EGIT_COMMIT}.tar.gz
+			-> ${P}.tar.gz"
 	S=${WORKDIR}/${PN}-${EGIT_COMMIT}
 	KEYWORDS="~amd64 ~arm64"
 fi
@@ -22,7 +24,8 @@ HOMEPAGE="https://www.dolphin-emu.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto mgba profile pulseaudio +qt5 systemd upnp vulkan"
+IUSE="alsa bluetooth discord-presence doc +evdev ffmpeg log lto mgba
+	profile pulseaudio +qt5 systemd upnp vulkan"
 
 RDEPEND="
 	dev-libs/hidapi:0=
