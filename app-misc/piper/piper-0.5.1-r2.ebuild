@@ -40,6 +40,10 @@ DEPEND="
 	virtual/libudev
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-disable-flake8-linting.patch
+)
+
 src_configure() {
 	python_setup
 	meson_src_configure
