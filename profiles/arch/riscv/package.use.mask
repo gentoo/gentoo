@@ -116,9 +116,9 @@ media-libs/libcaca doc imlib
 dev-libs/libbytesize test
 sys-libs/libblockdev dmraid escrow
 app-misc/geoclue modemmanager
-dev-libs/libgdata gnome-online-accounts
-gnome-base/gvfs bluray cdda gnome-online-accounts google mtp ios
+gnome-base/gvfs bluray cdda mtp ios
 sys-power/upower ios
+net-libs/gnome-online-accounts gnome
 net-libs/webkit-gtk gstreamer
 xfce-base/xfce4-settings libcanberra
 xfce-extra/tumbler epub ffmpeg gstreamer odf pdf raw
