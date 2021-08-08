@@ -1,6 +1,10 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
+# portaudio & pulseaudio are not tested yet
+media-libs/openal portaudio pulseaudio
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-05)
 # pdfannotextractor depends on java, not (sustainably) supported yet
 app-text/texlive pdfannotextractor
