@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>gentoo@taujhe.de</email>
+		<name>Jan Henke</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>The Intel Graphics Compute Runtime for for oneAPI Level Zero and
 		OpenCL Driver, informally known as NEO, is an open source project providing
 		compute API support (Level Zero, OpenCL) for Intel graphics hardware
