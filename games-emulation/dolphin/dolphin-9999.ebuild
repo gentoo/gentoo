@@ -113,15 +113,16 @@ src_prepare() {
 		# This is a stripped-down mGBA for integrated GBA support
 		mGBA
 	)
-	local s
-	for s in "${KEEP_SOURCES[@]}"; do
-		mv -v "Externals/${s}" . || die
+	local s remove=()
+	for s in Externals/*; do
+		[[ -f ${s} ]] && continue
+		if ! has "${s#Externals/}" "${keep_sources[@]}"; then
+			remove+=( "${s}" )
+		fi
 	done
-	einfo "removing sources: $(echo Externals/*)"
-	rm -r Externals/* || die "Failed to delete Externals dir."
-	for s in "${KEEP_SOURCES[@]}"; do
-		mv -v "${s}" "Externals/" || die
-	done
+
+	einfo "removing sources: ${remove[*]}"
+	rm -r "${remove[@]}" || die
 
 	# About 50% compile-time speedup
 	if ! use vulkan; then
