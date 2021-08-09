@@ -2,33 +2,46 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="A library for shell script-like programs in python"
 HOMEPAGE="https://plumbum.readthedocs.io/en/latest/ https://github.com/tomerfiliba/plumbum"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/psutil[${PYTHON_USEDEP}] )"
+
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
-PATCHES=( "${FILESDIR}"/${PN}-1.7.0-test.patch )
+
+BDEPEND="
+	test? (
+		dev-python/psutil[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+	)"
+
 distutils_enable_tests pytest
 
 src_prepare() {
+	sed -e '/addopts/d' -i setup.cfg || die
 	distutils-r1_src_prepare
+}
 
-	# Need sshd running
-	rm tests/test_remote.py || die "rm test_remote.py failed"
-	rm tests/test_utils.py || die "rm test_utils.py failed"
-	rm tests/_test_paramiko.py || die "rm _test_paramiko.py failed"
-	# Windows specific
-	rm tests/test_putty.py || die "rm test_putty.py failed"
-	# Needs sudo without password
-	rm tests/test_sudo.py || die "rm test_sudo.py failed"
+python_test() {
+	local deselect=(
+		# Need sshd running
+		tests/test_remote.py
+		tests/test_utils.py
+		# Windows specific
+		tests/test_putty.py
+		# Needs sudo without password
+		tests/test_sudo.py
+		# Wrong assumptions about env handling
+		tests/test_env.py::TestEnv::test_change_env
+		tests/test_env.py::TestEnv::test_dictlike
+		tests/test_local.py::TestLocalPath::test_iterdir
+	)
+	epytest ${deselect[@]/#/--deselect }
 }
 
 pkg_postinst() {
