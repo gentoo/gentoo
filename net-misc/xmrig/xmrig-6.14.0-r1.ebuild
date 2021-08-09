@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake systemd
+inherit cmake optfeature systemd
 
 DESCRIPTION="RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner"
 HOMEPAGE="https://xmrig.com https://github.com/xmrig/xmrig"
@@ -25,10 +25,7 @@ DEPEND="
 	hwloc? ( sys-apps/hwloc:= )
 	ssl? ( dev-libs/openssl:= )
 "
-RDEPEND="
-	${DEPEND}
-	!arm64? ( sys-apps/msr-tools )
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-6.12.2-nonotls.patch )
 
@@ -59,4 +56,8 @@ src_install() {
 	dobin "${BUILD_DIR}/xmrig"
 	dobin "${S}/scripts/enable_1gb_pages.sh"
 	dobin "${S}/scripts/randomx_boost.sh"
+}
+
+pkg_postinst() {
+	optfeature "msr related performance tweaks" sys-apps/msr-tools
 }
