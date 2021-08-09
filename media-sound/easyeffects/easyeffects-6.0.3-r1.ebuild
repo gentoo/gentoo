@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="calf zamaudio"
+IUSE="calf mda-lv2 zamaudio"
 
 DEPEND=">=dev-cpp/glibmm-2.68:2.68
 	>=dev-cpp/gtkmm-4.2.0:4.0
@@ -42,6 +42,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/lsp-plugins-1.1.24[lv2]
 	sys-apps/dbus
 	calf? ( >=media-plugins/calf-0.90.1[lv2] )
+	mda-lv2? ( media-plugins/mda-lv2 )
 	zamaudio? ( media-plugins/zam-plugins )"
 # Only header files are used from libsamplerate so put it here rather than DEPEND
 # to avoid unnecessary cross-compilation.
