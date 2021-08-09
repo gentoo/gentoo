@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit distutils-r1
 
@@ -20,11 +20,17 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES="${FILESDIR}/${PN}-${PV//./-}-${PR}-remove-attr-vendor-import.patch"
+PATCHES=( 
+	"${FILESDIR}/${PN}-${PV//./-}-${PR}-remove-attr-vendor-import.patch"
+	"${FILESDIR}/${PN}-${PV//./-}-${PR}-remove-colorama-vendor-import.patch"
+	)
 
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-python/attr[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
+	>=dev-python/jinja-3.0.1[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
 	dev-python/virtualenv-clone[${PYTHON_USEDEP}]
@@ -45,6 +51,7 @@ src_prepare() {
 	# remove vendored versions
 	# see https://bugs.gentoo.org/717666
 	rm -vR "${S}/${PN}/vendor/attr/" || die
+	rm -vR "${S}/${PN}/vendor/colorama/" || die
 	rm -vR "${S}/${PN}/vendor/jinja2/" || die
 	distutils-r1_src_prepare
 }
