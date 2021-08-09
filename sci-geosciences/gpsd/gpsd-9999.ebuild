@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit udev multilib distutils-r1 scons-utils toolchain-funcs
@@ -21,7 +21,7 @@ DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping c
 HOMEPAGE="https://gpsd.gitlab.io/gpsd/"
 
 LICENSE="BSD"
-SLOT="0/27"
+SLOT="0/29"
 
 GPSD_PROTOCOLS=(
 	aivdm ashtech earthmate evermore fury fv18 garmin garmintxt geostar
@@ -63,36 +63,26 @@ RDEPEND="
 	gpsd_protocols_greis? ( dev-python/pyserial )
 	usb? ( virtual/libusb:1 )
 	X? ( dev-python/pygobject:3[cairo,${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
 	test? ( sys-devel/bc )"
 
-# xml packages are for man page generation
+# asciidoctor package is for man page generation
 if [[ ${PV} == *9999* ]] ; then
-	DEPEND+="
-		app-text/xmlto
-		=app-text/docbook-xml-dtd-4.1*"
+	BDEPEND+=" dev-ruby/asciidoctor"
 fi
 
 src_prepare() {
 	# Make sure our list matches the source.
 	local src_protocols=$(echo $(
-		sed -n '/# GPS protocols/,/# Time service/{s:#.*::;s:[(",]::g;p}' "${S}"/SConstruct | awk '{print $1}' | LC_ALL=C sort
+		sed -n '/# GPS protocols/,/# Time service/{s:#.*::;s:[(",]::g;p}' "${S}"/SConscript | awk '{print $1}' | LC_ALL=C sort
 	) )
+
 	if [[ ${src_protocols} != ${GPSD_PROTOCOLS[*]} ]] ; then
 		eerror "Detected protocols: ${src_protocols}"
 		eerror "Ebuild protocols:   ${GPSD_PROTOCOLS[*]}"
 		die "please sync ebuild & source"
 	fi
-
-	# Avoid useless -L paths to the install dir
-	sed -i \
-		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
-		SConstruct || die
-
-	#Fix systemd binary paths
-	sed -i -e 's/local\///' 'systemd/gpsd.service'
-	sed -i -e 's/local\///' 'systemd/gpsdctl@.service.in'
 
 	default
 
@@ -102,8 +92,8 @@ src_prepare() {
 python_prepare_all() {
 	python_setup
 
-	# Extract python info out of SConstruct so we can use saner distribute
-	pyarray() { sed -n "/^ *$1 *= *\\[/,/\\]/p" SConstruct ; }
+	# Extract python info out of SConscript so we can use saner distribute
+	pyarray() { sed -n "/^ *$1 *= *\\[/,/\\]/p" SConscript ; }
 	local pyprogs=$(pyarray python_progs)
 	local pybins=$("${PYTHON}" -c "${pyprogs}; \
 		print(list(set(python_progs) - {'xgps', 'xgpsspeed', 'ubxtool', 'zerk'}))" || die "Unable to list pybins")
@@ -114,17 +104,25 @@ python_prepare_all() {
 	local pysrcs=$(pyarray packet_ffi_extension)
 	local packet=$("${PYTHON}" -c "${pysrcs}; print(packet_ffi_extension)" || die "Unable to extract packet types")
 
-	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
+	pyvar() { sed -n "/^ *$1 *=/s:.*= *::p" SConscript ; }
+	pyvar2() { sed -n "/^ *$1 *=/s:.*= *::p" SConstruct ; }
+
 	# Post 3.19 the clienthelpers were merged into gps.packet
+
+	# TODO: Fix hardcoding https://gpsd.io/ for now for @URL@
 	sed \
-		-e "s|@VERSION@|$(pyvar gpsd_version)|" \
-		-e "s|@URL@|$(pyvar website)|" \
-		-e "s|@EMAIL@|$(pyvar devmail)|" \
+		-e "s|@VERSION@|$(pyvar2 gpsd_version | sed -e 's:\"::g')|" \
+		-e "s|@URL@|https://gpsd.io/|" \
+		-e "s|@DEVMAIL@|$(pyvar devmail)|" \
 		-e "s|@SCRIPTS@|${pybins}|" \
-		-e "s|@GPS_PACKET_SOURCES@|${packet}|" \
-		-e "/@GPS_CLIENT_SOURCES@/d" \
-		-e "s|@SCRIPTS@|${pybins}|" \
-		"${FILESDIR}"/${PN}-3.3-setup.py > setup.py || die
+		-e "s|@DOWNLOAD@|$(pyvar download)|" \
+		-e "s|@IRCCHAN@|$(pyvar ircchan)|" \
+		-e "s|@ISSUES@|$(pyvar bugtracker)|" \
+		-e "s|@MAILMAN@|$(pyvar mailman)|" \
+		-e "s|@PROJECTPAGE@|$(pyvar projectpage)|" \
+		-e "s|@SUPPORT@|https://gpsd.io/SUPPORT.html|" \
+		-e "s|@WEBSITE@|https://gpsd.io/|" \
+		"${S}"/packaging/gpsd-setup.py.in > setup.py || die
 	distutils-r1_python_prepare_all
 }
 
@@ -138,7 +136,8 @@ src_configure() {
 		gpsd_user=gpsd
 		gpsd_group=dialout
 		nostrip=True
-		manbuild=False
+		systemd=yes
+		unitdir="\$prefix/$(get_libdir)"
 		shared=$(usex !static True False)
 		bluez=$(usex bluetooth)
 		libgpsmm=$(usex cxx)
@@ -158,6 +157,10 @@ src_configure() {
 		socket_export=$(usex sockets)
 		usb=$(usex usb)
 	)
+
+	if [[ ${PV} != *9999* ]] ; then
+		scons_opts+=( manbuild=False )
+	fi
 
 	use X && scons_opts+=( xgps=1 xgpsspeed=1 )
 	use qt5 && scons_opts+=( qt_versioned=5 )
