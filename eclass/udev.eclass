@@ -3,7 +3,7 @@
 
 # @ECLASS: udev.eclass
 # @MAINTAINER:
-# udev-bugs@gentoo.org
+# systemd@gentoo.org
 # @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Default eclass for determining udev directories.
 # @DESCRIPTION:
