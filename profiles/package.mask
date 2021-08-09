@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joshua Kinard <kumba@gentoo.org> (2021-08-09)
+# Dead upstream and has build issues in modern times.
+# See bugs #551786 and #715846.  Removal in 30 days.
+net-dialup/xc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2021-08-09)
 # EAPI-5, dead, unused; bug #776403. Removal on 2021-09-08.
 dev-perl/Goo-Canvas
