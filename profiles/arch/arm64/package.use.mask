@@ -19,9 +19,9 @@ sys-boot/grub grub_platforms_qemu grub_platforms_uboot
 dev-util/diffoscope pascal
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# media-libs/rnnoise, media-libs/rubberband[ladspa], media-plugins/gst-plugins-webrtc
+# media-libs/rnnoise, media-plugins/gst-plugins-webrtc
 # and media-plugins/zam-plugins not keyworded here
-media-sound/easyeffects rnnoise rubberband webrtc zamaudio
+media-sound/easyeffects rnnoise webrtc zamaudio
 
 # Ionen Wolkens <ionen@gentoo.org> (2021-07-04)
 # Needed until media-libs/libsdl2[vulkan] is unmasked on this arch.
