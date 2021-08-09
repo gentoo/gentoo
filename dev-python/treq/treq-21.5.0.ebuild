@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS="bdepend"
+
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
@@ -47,17 +47,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
-test_instructions() {
-	ewarn "The 'test' USE flag and FEATURE only ensures that the correct"
-	ewarn "dependenciess are installed for this package."
-	ewarn "Please run eg:"
-	ewarn "$ python3.7 /usr/bin/trial treq"
-	ewarn "as a user for each of the python versions it is installed to"
-	ewarn "to correctly test this package."
-}
-
 python_test() {
-	# Tests fail when run via emerge
-	# they need proper network access
-	test_instructions
+	distutils_install_for_testing
+	"${EPYTHON}" trial treq || die "Tests failed with ${EPYTHON}"
 }
