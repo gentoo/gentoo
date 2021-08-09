@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
-DISTUTILS_USE_SETUPTOOLS=bdepend
-
+PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 
 DESCRIPTION="Flow control and backpressure for event-driven applications"
@@ -16,11 +14,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="
+RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/twisted[${PYTHON_USEDEP}]
 "
-RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/remove-unnecessary-dep.patch")
 
