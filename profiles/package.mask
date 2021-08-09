@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2021-08-09)
+# EAPI-5, dead, unused; bug #776403. Removal on 2021-09-08.
+dev-perl/Goo-Canvas
+x11-libs/goocanvas:0
+
 # Louis Sautier <sbraz@gentoo.org> (2021-08-07)
 # No reverse dependencies, no upstream activity for more than 5 years,
 # failing tests with Python 3.10. Removal on 2021-09-06.
