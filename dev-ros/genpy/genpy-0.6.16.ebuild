@@ -21,6 +21,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 	)
 "
 PATCHES=( "${FILESDIR}/yaml.patch" )
