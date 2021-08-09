@@ -15,7 +15,7 @@ SRC_URI="https://github.com/ruby/set/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 all_ruby_prepare() {
