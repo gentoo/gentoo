@@ -1,0 +1,30 @@
+diff --color -Naru a/src/calibre/devices/smart_device_app/driver.py b/src/calibre/devices/smart_device_app/driver.py
+--- a/src/calibre/devices/smart_device_app/driver.py	2021-08-08 08:32:03.104016444 +0200
++++ b/src/calibre/devices/smart_device_app/driver.py	2021-08-08 08:33:30.699018403 +0200
+@@ -2040,13 +2040,6 @@
+ # Function to monkeypatch zeroconf to remove the 15 character name length restriction.
+ # Copied from https://github.com/jstasiak/python-zeroconf version 0.28.1
+ 
+-
+-from zeroconf import (BadTypeInNameException, _HAS_A_TO_Z,
+-                      _HAS_ONLY_A_TO_Z_NUM_HYPHEN_UNDERSCORE,
+-                      _HAS_ASCII_CONTROL_CHARS,
+-                      _HAS_ONLY_A_TO_Z_NUM_HYPHEN)
+-
+-
+ def service_type_name(type_: str, *, allow_underscores: bool = False) -> str:
+     """
+     Validate a fully qualified service name, instance or subtype. [rfc6763]
+@@ -2087,6 +2080,12 @@
+     :param type_: Type, SubType or service name to validate
+     :return: fully qualified service name (eg: _http._tcp.local.)
+     """
++
++    from zeroconf import (BadTypeInNameException, _HAS_A_TO_Z,
++                      _HAS_ONLY_A_TO_Z_NUM_HYPHEN_UNDERSCORE,
++                      _HAS_ASCII_CONTROL_CHARS,
++                      _HAS_ONLY_A_TO_Z_NUM_HYPHEN)
++
+     if not (type_.endswith('._tcp.local.') or type_.endswith('._udp.local.')):
+         raise BadTypeInNameException("Type '%s' must end with '._tcp.local.' or '._udp.local.'" % type_)
+ 
