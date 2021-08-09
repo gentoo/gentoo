@@ -8,7 +8,7 @@ MY_COMMIT="5f665f60083a9796ec33861240ce31d6d2b844b6"
 MY_PN="Js2Py"
 MY_P="${MY_PN}-${PV}"
 
-PYTHON_COMPAT=( python3_{8,9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
