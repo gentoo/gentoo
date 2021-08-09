@@ -90,6 +90,7 @@ src_configure() {
 		$(use_with client x)
 		--disable-Werror
 		--disable-dga
+		--disable-simd # all this does is append -mavx2 and similar
 		--enable-xdg
 		# non-x11 clients are mostly abandoned/broken (SDL1 still useful for pulseaudio)
 		--with-clients=$(usev client x11)
