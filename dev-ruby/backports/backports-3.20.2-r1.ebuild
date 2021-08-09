@@ -16,7 +16,7 @@ SRC_URI="https://github.com/marcandre/backports/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 all_ruby_prepare() {
