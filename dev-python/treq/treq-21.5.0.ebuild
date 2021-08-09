@@ -25,20 +25,16 @@ RDEPEND="
 	>=dev-python/twisted-18.7.0[crypt,${PYTHON_USEDEP}]
 "
 BDEPEND="
-	doc? ( dev-python/sphinx
-		${RDEPEND} )
 	test? (
 		dev-python/httpbin[${PYTHON_USEDEP}]
 	)"
 
-python_compile_all() {
-	use doc && emake -C "${S}/docs" html
-}
+distutils_enable_sphinx docs
 
-python_install_all() {
-	use doc && HTML_DOCS=( docs/_build/html/ )
-
-	distutils-r1_python_install_all
+src_prepare() {
+	# fix relative path for docs generation
+	sed -e "s@('..')@('../src')@" -i docs/conf.py || die
+	distutils-r1_src_prepare
 }
 
 python_test() {
