@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 
-inherit bash-completion-r1 linux-info meson-multilib ninja-utils python-any-r1 toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info meson-multilib ninja-utils python-any-r1 toolchain-funcs udev usr-ldscript
 
 if [[ ${PV} = 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -15,10 +15,20 @@ else
 	else
 		MY_PN=systemd
 	fi
+
 	MY_PV="${PV/_/-}"
 	MY_P="${MY_PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/systemd/${MY_PN}/archive/v${MY_PV}/${MY_P}.tar.gz"
+
+	# musl patches taken from:
+	# http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/systemd/systemd
+	SRC_URI+="
+	elibc_musl? (
+		https://dev.gentoo.org/~gyakovlev/distfiles/systemd-musl-patches-${PV}.1-r1.tar.xz
+		https://dev.gentoo.org/~soap/distfiles/systemd-musl-patches-${PV}.1-r1.tar.xz
+	)"
+
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
@@ -27,9 +37,8 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl +kmod selinux static-libs"
-
-RESTRICT="test"
+IUSE="acl +kmod selinux static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-util/gperf
@@ -42,6 +51,10 @@ BDEPEND="
 	dev-libs/libxslt
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	test? (
+		app-text/tree
+		dev-lang/perl
+	)
 "
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
@@ -101,6 +114,7 @@ pkg_setup() {
 src_prepare() {
 	local PATCHES=(
 	)
+	use elibc_musl && PATCHES+=( "${WORKDIR}"/musl-patches )
 
 	default
 }
@@ -119,6 +133,7 @@ multilib_src_configure() {
 		# Prevent automagic deps
 		-Dgcrypt=false
 		-Dlibcryptsetup=false
+		-Didn=false
 		-Dlibidn=false
 		-Dlibidn2=false
 		-Dlibiptc=false
@@ -127,6 +142,12 @@ multilib_src_configure() {
 		-Dlz4=false
 		-Dxz=false
 	)
+	use elibc_musl && emesonargs+=(
+		-Dgshadow=false
+		-Dsmack=false
+		-Dutmp=false
+	)
+
 	meson_src_configure
 }
 
@@ -134,6 +155,9 @@ src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 	python_setup
+
+	use elibc_musl && append-cppflags -D__UAPI_DEF_ETHHDR=0
+
 	multilib-minimal_src_configure
 }
 
@@ -169,6 +193,34 @@ multilib_src_compile() {
 		)
 	fi
 	eninja "${targets[@]}"
+}
+
+multilib_src_test() {
+	# The testsuite is *very* finicky. Don't try running it in
+	# containers or anything but a full VM or on bare metal.
+	# udev calls 'mknod' a number of times, and this interacts
+	# badly with kernel namespaces.
+
+	if [[ ${EUID} -ne 0 ]]; then
+		ewarn "udev tests need to run under uid 0"
+		ewarn "Skipping tests"
+	elif has sandbox ${FEATURES}; then
+		ewarn "\'FEATURES=sandbox\' detected"
+		ewarn "udev tests needs full access to /dev"
+		ewarn "Skipping tests"
+	else
+		einfo Running tests
+
+		# two binaries required by udev-test.pl
+		eninja systemd-detect-virt test-udev
+		local -x PATH="${PWD}:${PATH}"
+
+		# prepare ${BUILD_DIR}/test/sys, required by udev-test.pl
+		"${EPYTHON}" "${S}"/test/sys-script.py test || die
+
+		# the perl script contains all the udev tests
+		"${S}"/test/udev-test.pl || die
+	fi
 }
 
 multilib_src_install() {
@@ -226,6 +278,10 @@ multilib_src_install_all() {
 	einstalldocs
 }
 
+pkg_preinst() {
+	has_version 'sys-fs/eudev' && HAD_EUDEV=1
+}
+
 pkg_postinst() {
 	# Update hwdb database in case the format is changed by udev version.
 	if has_version 'sys-apps/hwids[udev]' ; then
@@ -233,5 +289,14 @@ pkg_postinst() {
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		[[ -z ${REPLACING_VERSIONS} ]] && udev_reload
+	fi
+
+	if [[ ${HAD_EUDEV} -eq 1 ]] ; then
+		ewarn
+		ewarn "${P} defaults to predictable interface renaming, as described in the URL below:"
+		ewarn "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
+		ewarn
+		ewarn "If you wish to disable this, please see the above documentation, or set"
+		ewarn "net.ifnames=0 on the kernel command line."
 	fi
 }
