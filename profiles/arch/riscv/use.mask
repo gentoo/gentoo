@@ -7,6 +7,10 @@
 # Unmask systemd
 -systemd
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
+# media-libs/nas failed to compile
+nas
+
 # Yixun Lan <dlan@gentoo.org> (2021-05-19)
 # Unmask for more testing
 -elogind
