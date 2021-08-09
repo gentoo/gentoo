@@ -29,12 +29,11 @@ MY_P=pyside-setup-opensource-src-${PV}
 DESCRIPTION="Python bindings for the Qt framework"
 HOMEPAGE="https://wiki.qt.io/PySide2"
 SRC_URI="https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-${PV}-src/${MY_P}.tar.xz"
-S="${WORKDIR}/${MY_P}/sources/pyside2"
 
 # See "sources/pyside2/PySide2/licensecomment.txt" for licensing details.
 LICENSE="|| ( GPL-2 GPL-3+ LGPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="
 	3d charts concurrent datavis designer gles2-only +gui help location
 	multimedia +network positioning printsupport qml quick script scripttools
@@ -44,7 +43,7 @@ IUSE="
 
 # Manually reextract these requirements on version bumps by running the
 # following one-liner from within "${S}":
-#     $ grep 'set.*_deps' PySide2/Qt*/CMakeLists.txt
+#     $ grep 'set\(.*_deps' PySide2/Qt*/CMakeLists.txt
 # Note that the "designer" USE flag corresponds to the "Qt5UiTools" module.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	3d? ( gui network )
@@ -88,7 +87,7 @@ RDEPEND="${PYTHON_DEPS}
 	concurrent? ( >=dev-qt/qtconcurrent-${QT_PV} )
 	datavis? ( >=dev-qt/qtdatavis3d-${QT_PV}[qml?] )
 	designer? ( >=dev-qt/designer-${QT_PV} )
-	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2-only?] )
+	gui? ( >=dev-qt/qtgui-${QT_PV}[jpeg,gles2-only?] )
 	help? ( >=dev-qt/qthelp-${QT_PV} )
 	location? ( >=dev-qt/qtlocation-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[qml?,widgets?] )
@@ -114,6 +113,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	test? ( x11-misc/xvfb-run )
 "
+
+S=${WORKDIR}/${MY_P}/sources/pyside2
 
 src_configure() {
 	# See COLLECT_MODULE_IF_FOUND macros in CMakeLists.txt
