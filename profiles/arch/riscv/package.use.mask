@@ -95,6 +95,8 @@ dev-vcs/subversion kwallet
 media-libs/allegro dumb openal
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
+#  - media-libs/libcddb
+dev-libs/libcdio cddb
 #  - sys-cluster/ceph, dev-ruby/rrdtool-bindings
 net-analyzer/rrdtool rados ruby
 #  - net-wireless/iwd, net-misc/ofono
