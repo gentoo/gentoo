@@ -1,6 +1,12 @@
 # Copyright 2019-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alex Fan <alexfanqi@yahoo.com> (2021-08-09)
+# ipython[qt5] depends on qtconsole, which depends on QtPy.
+# QtPy cannot be tested atm because QtPy[test] has a hard
+# dependency on PyQt5[bluetooth].
+dev-python/ipython qt5
+
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-08)
 # portaudio & pulseaudio are not tested yet
 app-accessibility/espeak portaudio
