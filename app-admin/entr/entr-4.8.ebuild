@@ -6,14 +6,12 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Run arbitrary commands when files change"
-HOMEPAGE="http://entrproject.org"
-SRC_URI="http://entrproject.org/code/${P}.tar.gz"
+HOMEPAGE="https://entrproject.org"
+SRC_URI="https://entrproject.org/code/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 src_configure() {
 	sh configure || die
