@@ -81,8 +81,6 @@ src_configure() {
 	use devtools && ! use qt5 && \
 		elog "'qt5' USE flag is disabled, 'openmw-cs' will not be installed"
 
-	append-cppflags "-I${ESYSROOT}/usr/include/recastnavigation"
-
 	local mycmakeargs=(
 		-DBUILD_BSATOOL=$(usex devtools)
 		-DBUILD_DOCS=$(usex doc)
