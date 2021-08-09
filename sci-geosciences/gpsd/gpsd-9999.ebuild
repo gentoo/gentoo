@@ -42,6 +42,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/gpsd
+	acct-group/dialout
 	>=net-misc/pps-tools-0.0.20120407
 	bluetooth? ( net-wireless/bluez )
 	dbus? (
