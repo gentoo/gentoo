@@ -17,23 +17,17 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
-	dev-python/incremental[${PYTHON_USEDEP}]
-	>=dev-python/hyperlink-21.0.0[${PYTHON_USEDEP}]
-"
-
-RDEPEND="${COMMON_DEPEND}
-	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/twisted-18.7.0[crypt,${PYTHON_USEDEP}]
-	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]
+RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
+	>=dev-python/hyperlink-21.0.0[${PYTHON_USEDEP}]
+	dev-python/incremental[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-18.7.0[crypt,${PYTHON_USEDEP}]
 "
-
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	doc? ( dev-python/sphinx
 		${RDEPEND} )
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/httpbin[${PYTHON_USEDEP}]
 	)"
 
@@ -49,5 +43,5 @@ python_install_all() {
 
 python_test() {
 	distutils_install_for_testing
-	"${EPYTHON}" trial treq || die "Tests failed with ${EPYTHON}"
+	"${EPYTHON}" -m twisted.trial treq || die "Tests failed with ${EPYTHON}"
 }
