@@ -69,6 +69,7 @@ RDEPEND="
 	dev-ros/rosbag[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosconsole
 	dev-ros/roscpp
+	dev-ros/rostopic[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rostest[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/rosunit[${PYTHON_SINGLE_USEDEP}]
 	dev-ros/topic_tools[${PYTHON_SINGLE_USEDEP}]
