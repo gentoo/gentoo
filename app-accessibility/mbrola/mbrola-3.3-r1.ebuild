@@ -10,7 +10,7 @@ SRC_URI="https://github.com/numediart/MBROLA/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 RDEPEND="app-accessibility/mbrola-voices"
 
