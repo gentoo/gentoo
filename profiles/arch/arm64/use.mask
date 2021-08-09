@@ -98,7 +98,6 @@ mms
 ieee1394
 darcs
 bs2b
-ladspa
 ggi
 nut
 dvd
