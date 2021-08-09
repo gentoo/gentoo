@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="elibc_Darwin"
 
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 
 BDEPEND="virtual/pkgconfig"
 RDEPEND="!elibc_Darwin? ( dev-libs/libbsd )
