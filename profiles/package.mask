@@ -287,10 +287,6 @@ www-servers/resin
 # No revdep. Retire in 30 days (2021-08-22)
 dev-ml/cstruct
 
-# Marek Szuba <marecki@gentoo.org> (2021-07-18)
-# No dev-cpp/gtkmm:4 in the tree yet (Bug #801490)
->=media-sound/easyeffects-6.0.0
-
 # Hans de Graaff <graaff@gentoo.org> (2021-07-18)
 # Compatibility package for ruby 1.8. No longer maintained upstream.
 # Last release in 2016, but current release in gentoo is from 2012.
