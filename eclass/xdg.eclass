@@ -6,7 +6,7 @@
 # freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6 7 8
+# @SUPPORTED_EAPIS: 5 6 7 8
 # @BLURB: Provides phases for XDG compliant packages.
 # @DESCRIPTION:
 # Utility eclass to update the desktop, icon and shared mime info as laid
@@ -16,7 +16,7 @@ inherit xdg-utils
 
 _DEFINE_XDG_SRC_PREPARE=false
 case "${EAPI}" in
-	4|5|6|7)
+	5|6|7)
 		# src_prepare is only exported in EAPI < 8.
 		EXPORT_FUNCTIONS src_prepare
 		_DEFINE_XDG_SRC_PREPARE=true
@@ -35,7 +35,7 @@ _XDG_DEPEND="
 "
 
 case "${EAPI}" in
-	4|5|6|7)
+	5|6|7)
 		DEPEND="${_XDG_DEPEND}"
 		;;
 	*)
@@ -52,7 +52,7 @@ if ${_DEFINE_XDG_SRC_PREPARE}; then
 xdg_src_prepare() {
 	xdg_environment_reset
 
-	[[ ${EAPI:-0} != [45] ]] && default
+	[[ ${EAPI} != 5 ]] && default
 }
 fi
 
