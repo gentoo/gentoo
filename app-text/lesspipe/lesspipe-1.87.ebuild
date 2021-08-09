@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 # Still fragile in 1.87. Passes when lesspipe is not installed.
 # Please check again on bumps!
 # bug #734896
+RESTRICT="test"
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
