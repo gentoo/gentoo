@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Run arbitrary commands when files change"
-HOMEPAGE="http://eradman.com/entrproject/"
-SRC_URI="http://eradman.com/entrproject/code/${P}.tar.gz"
+HOMEPAGE="https://eradman.com/entrproject/"
+SRC_URI="https://eradman.com/entrproject/code/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
