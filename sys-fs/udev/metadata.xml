@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>udev-bugs@gentoo.org</email>
+		<email>systemd@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="kmod">Enable kernel module loading/unloading support using <pkg>sys-apps/kmod</pkg></flag>
