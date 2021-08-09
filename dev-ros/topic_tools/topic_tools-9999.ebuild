@@ -32,4 +32,5 @@ DEPEND="${RDEPEND}
 		dev-ros/rosmsg[${PYTHON_SINGLE_USEDEP}]
 		dev-cpp/gtest
 		$(python_gen_cond_dep "dev-python/nose[\${PYTHON_USEDEP}]")
+		$(python_gen_cond_dep "dev-python/numpy[\${PYTHON_USEDEP}]")
 	)"
