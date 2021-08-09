@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-qt/qtsvg-${QT_PV}
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=net-libs/libisds-0.11
+	>=app-misc/libdatovka-0.1.2
 "
 DEPEND="
 	${RDEPEND}
