@@ -41,7 +41,7 @@ BDEPEND="
 src_configure() {
 	local emesonargs=(
 		-Dbuild-demos=false
-		$(meson_native_use_bool doc build-documentation)
+		$(meson_use doc build-documentation)
 		$(meson_use test build-tests)
 	)
 	meson_src_configure
