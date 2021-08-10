@@ -14,6 +14,7 @@ SLOT="0/2"
 LICENSE="MIT"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc64-solaris"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 DOCS=( AUTHORS CHANGES NEWS README.md RELEASE-NOTES TODO )
 
@@ -24,8 +25,8 @@ MULTILIB_WRAPPED_HEADERS=(
 multilib_src_configure() {
 	# Needed for running unit tests only
 	# Violates sandbox and tests pass fine without
-        ax_cv_uts_namespace=no \
-        ax_cv_user_namespace=no \
+	ax_cv_uts_namespace=no \
+	ax_cv_user_namespace=no \
 	ECONF_SOURCE="${S}" \
 	econf \
 		--enable-nonblocking \
