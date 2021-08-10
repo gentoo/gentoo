@@ -489,11 +489,6 @@ dev-python/pathlib2
 dev-python/traceback2
 dev-python/unittest2
 
-# Hans de Graaff <graaff@gentoo.org> (2021-07-04)
-# Last release in 2016, failing tests, no dependencies.
-# Masked for removal in 30 days.
-dev-ruby/shotgun
-
 # David Seifert <soap@gentoo.org> (2021-07-01)
 # Berkeley DB slots that are long past EOL by Oracle,
 # maintenance burden, and no real path forward by Oracle.
