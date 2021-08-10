@@ -28,7 +28,7 @@ BDEPEND=">=sys-devel/gcc-4.4"
 DEPEND="${BDEPEND}
 	${CDEPEND}
 	dev-libs/check
-	>=dev-cpp/asio-1.10.1[ssl]
+	>=dev-cpp/asio-1.10.1[ssl(+)]
 	<dev-cpp/asio-1.12.0
 	"
 #Run time only
