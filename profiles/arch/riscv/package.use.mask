@@ -97,6 +97,8 @@ app-editors/emacs gconf m17n-lib
 app-crypt/heimdal afs
 #  - app-xemacs/ruby-modes (and by extension xemacs itself)
 dev-lang/ruby xemacs
+#  - media-libs/libcddb
+dev-libs/libcdio cddb
 #  - dev-ruby/asciidoctor
 dev-libs/nanomsg doc
 #  - sci-libs/gdal
@@ -109,8 +111,8 @@ dev-vcs/subversion kwallet
 media-libs/allegro dumb openal
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
-#  - media-libs/libcddb
-dev-libs/libcdio cddb
+#  - dev-lang/php
+media-libs/libvpx doc
 #  - sys-cluster/ceph, dev-ruby/rrdtool-bindings
 net-analyzer/rrdtool rados ruby
 #  - net-wireless/iwd, net-misc/ofono
