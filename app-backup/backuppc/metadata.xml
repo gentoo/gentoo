@@ -4,5 +4,6 @@
 	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">backuppc</remote-id>
+		<remote-id type="github">backuppc/backuppc</remote-id>
 	</upstream>
 </pkgmetadata>
