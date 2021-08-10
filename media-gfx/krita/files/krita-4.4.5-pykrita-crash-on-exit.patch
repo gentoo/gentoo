@@ -1,42 +1,18 @@
-From a0c29913114164ff3f2ba4e255ccee1c52cb3e86 Mon Sep 17 00:00:00 2001
-From: Alvin Wong <alvin@alvinhc.com>
-Date: Sat, 19 Jun 2021 16:29:45 +0800
-Subject: [PATCH] Fix PyKrita cleanup using qApp::aboutToQuit to prevent crash
+From 86a38621fbbf96edf489a0efd2b9c24c123e2051 Mon Sep 17 00:00:00 2001
+From: Dmitry Kazakov <dimula73@gmail.com>
+Date: Tue, 3 Aug 2021 11:57:33 +0300
+Subject: [PATCH] Disable finalizing of the PyQt to prevent crash on exit
 
-Suspecting that we can't have Python clean up its QObject's inside
-QCoreApplication's destructor, but must be done before it.
-
-BUG: 417465
-
-* asturm 2021-06-20: mangled w/ a6296beb25c98d9a4b5a136e0088959bf51d550a
+CCBUG:417465
 ---
- plugins/extensions/pykrita/plugin/plugin.cpp | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ plugins/extensions/pykrita/plugin/plugin.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/plugins/extensions/pykrita/plugin/plugin.cpp b/plugins/extensions/pykrita/plugin/plugin.cpp
-index ef0e27eb65..66f552b007 100644
+index 028798e2f4..cc06c07fbe 100644
 --- a/plugins/extensions/pykrita/plugin/plugin.cpp
 +++ b/plugins/extensions/pykrita/plugin/plugin.cpp
-@@ -13,6 +13,8 @@
- #include <kis_preference_set_registry.h>
- #include "pyqtpluginsettings.h"
- 
-+#include <QCoreApplication>
-+
- #include <Krita.h>
- 
- K_PLUGIN_FACTORY_WITH_JSON(KritaPyQtPluginFactory, "kritapykrita.json", registerPlugin<KritaPyQtPlugin>();)
-@@ -74,15 +76,18 @@ KritaPyQtPlugin::KritaPyQtPlugin(QObject *parent, const QVariantList &)
-     Q_FOREACH (Extension *extension, Krita::instance()->extensions()) {
-         extension->setup();
-     }
-+
-+    // This ensures that QObject's owned by Python are destructed before
-+    // the destructor of QCoreApplication is called, in order to prevent
-+    // a crash on exit.
-+    // See https://bugs.kde.org/show_bug.cgi?id=417465
-+    connect(QCoreApplication::instance(), &QCoreApplication::aboutToQuit, this, []() { PyKrita::finalize(); });
- }
+@@ -89,11 +89,10 @@ KritaPyQtPlugin::KritaPyQtPlugin(QObject *parent, const QVariantList &)
  
  KritaPyQtPlugin::~KritaPyQtPlugin()
  {
@@ -45,11 +21,12 @@ index ef0e27eb65..66f552b007 100644
 -#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
 -    PyKrita::finalize();
 -#endif
-+    // Don't call PyKrita::finalize here, because that can result in a crash
-+    // deep inside Qt.
++    /// XXX: Don't call PyKrita::finalize here, because that can result in a crash
++    ///      deep inside Qt. See https://bugs.kde.org/show_bug.cgi?id=417465
++
++    // PyKrita::finalize();
  }
  
  #include "plugin.moc"
 -- 
 GitLab
-

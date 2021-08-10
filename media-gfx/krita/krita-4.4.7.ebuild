@@ -13,7 +13,7 @@ inherit ecm kde.org python-single-r1
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.gz
 		https://dev.gentoo.org/~asturm/distfiles/${PN}-4.2.9-patchset.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
@@ -91,8 +91,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
 	"${WORKDIR}"/${PN}-4.2.9-patchset/${PN}-4.2.9-ecm-findopenexr.patch
 	"${FILESDIR}"/${PN}-4.4.2-quazip1.patch
-	"${FILESDIR}"/${P}-pykrita-crash-on-exit.patch # KDE-Bug #417465
-	"${FILESDIR}"/${PN}-4.4.7-pykrita-crash-on-exit.patch # git master
+	"${FILESDIR}"/${P}-pykrita-crash-on-exit.patch # KDE-Bug #417465, git master
 )
 
 pkg_setup() {
