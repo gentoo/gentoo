@@ -106,8 +106,8 @@ dev-python/networkx extras
 dev-util/ragel doc
 #  - Qt5 & KDE
 dev-vcs/subversion kwallet
-#  - media-libs/dumb, media-libs/openal
-media-libs/allegro dumb openal
+#  - media-libs/dumb
+media-libs/allegro dumb
 #  - media-gfx/nvidia-texture-tools
 media-libs/devil nvtt
 #  - dev-lang/php
