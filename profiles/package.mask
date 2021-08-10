@@ -406,13 +406,6 @@ dev-lang/lua:5.2
 # Masked for testing
 >=mail-client/claws-mail-4.0.0
 
-# Craig Andrews <candrews@gentoo.org> (2021-07-09)
-# deprecated; replaced by media-plugins/kodi-audiodecoder-sacd
-# No reverse dependencies
-# See https://bugs.gentoo.org/801406
-# Masked for removal in 30 days.
-media-plugins/kodi-vfs-sacd
-
 # Hans de Graaff <graaff@gentoo.org> (2021-07-09)
 # Last release in 2016. Tests fail with recent git versions.
 # No reverse dependencies, no maintainer.
