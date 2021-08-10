@@ -20,12 +20,13 @@ RDEPEND="
 	dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-python/js2py[${PYTHON_USEDEP}]
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
+		net-libs/nodejs
 	)
 "
 
