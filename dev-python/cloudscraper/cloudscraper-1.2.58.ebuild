@@ -26,6 +26,7 @@ BDEPEND="${RDEPEND}
 		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
+		net-libs/nodejs
 	)
 "
 
