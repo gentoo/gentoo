@@ -7,7 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="bladerf">Build with Nuand BladeRF support</flag>
+		<flag name="hackrf">Build with Great Scott Gadgets HackRF support</flag>
 		<flag name="rtlsdr">Build with Realtek RTL2832U (rtlsdr) support</flag>
+		<flag name="minimal">Exclude all HTML/webserver extras for a tiny build, e.g. to export data only</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">flightaware/dump1090</remote-id>
